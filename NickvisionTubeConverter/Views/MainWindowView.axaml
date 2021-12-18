@@ -1,0 +1,213 @@
+<Window x:Class="NickvisionTubeConverter.Views.MainWindowView"
+	    xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+		xmlns:ui="using:FluentAvalonia.UI.Controls"
+		xmlns:i="using:Avalonia.Xaml.Interactivity"
+        xmlns:ia="using:Avalonia.Xaml.Interactions.Core"
+		xmlns:webview="clr-namespace:WebViewControl;assembly=WebViewControl.Avalonia"
+        mc:Ignorable="d" Name="MainWindow" Title="{Binding Title}" Icon="../Resources/icon.png"
+		Width="800" Height="600" WindowState="Maximized">
+	<i:Interaction.Behaviors>
+		<ia:EventTriggerBehavior EventName="Opened" SourceObject="{Binding #MainWindow}">
+			<ia:InvokeCommandAction Command="{Binding OpenedCommand}"/>
+		</ia:EventTriggerBehavior>
+	</i:Interaction.Behaviors>
+	
+	<Grid>
+		<Menu HorizontalAlignment="Stretch" VerticalAlignment="Top">
+			<MenuItem Header="_File">
+				<MenuItem Header="_Select Save Folder" InputGesture="Ctrl+O" HotKey="Ctrl+O" Command="{Binding SelectSaveFolderCommand}">
+					<MenuItem.Icon>
+						<ui:SymbolIcon Symbol="OpenLocal"/>
+					</MenuItem.Icon>
+				</MenuItem>
+
+				<MenuItem Header="_Go To Save Folder" InputGesture="Ctrl+Shift+O" HotKey="Ctrl+Shift+O" Command="{Binding GoToSaveFolderCommand}">
+					<MenuItem.Icon>
+						<ui:SymbolIcon Symbol="Forward"/>
+					</MenuItem.Icon>
+				</MenuItem>
+
+				<Separator />
+
+				<MenuItem Header="E_xit" InputGesture="Alt+F4" HotKey="Alt+F4" Command="{Binding ExitCommand}" CommandParameter="{Binding #MainWindow}">
+					<MenuItem.Icon>
+						<ui:SymbolIcon Symbol="Cancel"/>
+					</MenuItem.Icon>
+				</MenuItem>
+			</MenuItem>
+
+			<MenuItem Header="_Edit">
+				<MenuItem Header="_Settings" InputGesture="Ctrl+." HotKey="Ctrl+." Command="{Binding SettingsCommand}">
+					<MenuItem.Icon>
+						<ui:SymbolIcon Symbol="Settings"/>
+					</MenuItem.Icon>
+				</MenuItem>
+			</MenuItem>
+
+			<MenuItem Header="_Downloader">
+				<MenuItem Header="Download _Video" InputGesture="Ctrl+D" HotKey="Ctrl+D" Command="{Binding DownloadVideoCommand}">
+					<MenuItem.Icon>
+						<ui:SymbolIcon Symbol="Download"/>
+					</MenuItem.Icon>
+				</MenuItem>
+
+				<MenuItem Header="_Clear Completed Downloads" InputGesture="Ctrl+Shift+C" HotKey="Ctrl+Shift+C" Command="{Binding ClearCompletedDownloadsCommand}">
+					<MenuItem.Icon>
+						<ui:SymbolIcon Symbol="Delete"/>
+					</MenuItem.Icon>
+				</MenuItem>
+			</MenuItem>
+
+			<MenuItem Header="_Browser">
+				<MenuItem Header="B_ack" Command="{Binding GoBackCommand}">
+					<MenuItem.Icon>
+						<ui:SymbolIcon Symbol="Back"/>
+					</MenuItem.Icon>
+				</MenuItem>
+
+				<MenuItem Header="F_orward" Command="{Binding GoForwardCommand}">
+					<MenuItem.Icon>
+						<ui:SymbolIcon Symbol="Forward"/>
+					</MenuItem.Icon>
+				</MenuItem>
+
+				<MenuItem Header="Refresh" InputGesture="F5" HotKey="F5" Command="{Binding RefreshCommand}">
+					<MenuItem.Icon>
+						<ui:SymbolIcon Symbol="Refresh"/>
+					</MenuItem.Icon>
+				</MenuItem>
+
+				<MenuItem Header="_Home" Command="{Binding GoHomeCommand}">
+					<MenuItem.Icon>
+						<ui:SymbolIcon Symbol="Home"/>
+					</MenuItem.Icon>
+				</MenuItem>
+			</MenuItem>
+
+			<MenuItem Header="_Help">
+				<MenuItem Header="_Check for Updates" Command="{Binding CheckForUpdatesCommand}" CommandParameter="{Binding #MainWindow}">
+					<MenuItem.Icon>
+						<ui:SymbolIcon Symbol="Sync"/>
+					</MenuItem.Icon>
+				</MenuItem>
+
+				<Separator />
+
+				<MenuItem Header="_GitHub Repo" Command="{Binding GitHubRepoCommand}">
+					<MenuItem.Icon>
+						<ui:SymbolIcon Symbol="Library"/>
+					</MenuItem.Icon>
+				</MenuItem>
+
+				<MenuItem Header="_Report a Bug" Command="{Binding ReportABugCommand}">
+					<MenuItem.Icon>
+						<ui:SymbolIcon Symbol="ReportHacked"/>
+					</MenuItem.Icon>
+				</MenuItem>
+
+				<Separator />
+
+				<MenuItem Header="Cha_ngelog" Command="{Binding ChangelogCommand}">
+					<MenuItem.Icon>
+						<ui:SymbolIcon Symbol="List"/>
+					</MenuItem.Icon>
+				</MenuItem>
+
+				<MenuItem Header="_About" InputGesture="F1" HotKey="F1" Command="{Binding AboutCommand}">
+					<MenuItem.Icon>
+						<ui:SymbolIcon Symbol="Help"/>
+					</MenuItem.Icon>
+				</MenuItem>
+			</MenuItem>
+		</Menu>
+
+		<ui:CommandBar HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="0,40,0,0" DefaultLabelPosition="Right">
+			<ui:CommandBar.Content>
+				<TextBlock Margin="6,12,6,0" Text="{Binding Status}"/>
+			</ui:CommandBar.Content>
+			
+			<ui:CommandBar.PrimaryCommands>
+				<ui:CommandBarSeparator />
+
+				<ui:CommandBarButton Label="Select Save Folder" Icon="OpenLocal" Command="{Binding SelectSaveFolderCommand}"/>
+
+				<ui:CommandBarButton Label="Download Video" Icon="Download" Command="{Binding DownloadVideoCommand}"/>
+
+				<ui:CommandBarSeparator />
+
+				<ui:CommandBarButton Label="Back" Icon="Back" Command="{Binding GoBackCommand}"/>
+
+				<ui:CommandBarButton Label="Forward" Icon="Forward" Command="{Binding GoForwardCommand}"/>
+
+				<ui:CommandBarButton Label="Refresh" Icon="Refresh" Command="{Binding RefreshCommand}"/>
+
+				<ui:CommandBarButton Label="Home" Icon="Home" Command="{Binding GoHomeCommand}"/>
+
+				<ui:CommandBarSeparator />
+
+				<ui:CommandBarButton Label="Settings" Icon="Settings" Command="{Binding SettingsCommand}"/>
+			</ui:CommandBar.PrimaryCommands>
+		</ui:CommandBar>
+
+		<Border HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,90,0,0" Background="{DynamicResource CommandBarBackgroundOpen}" CornerRadius="6">
+			<Grid>
+				<Border HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="6,6,0,6" Width="340" Background="{DynamicResource SolidBackgroundFillColorBaseBrush}" CornerRadius="6">
+					<ScrollViewer>
+						<StackPanel Margin="0,0,0,6">
+							<TextBlock HorizontalAlignment="Left" Margin="12,10,0,0" Text="Video URL"/>
+
+							<TextBox HorizontalAlignment="Left" Margin="10,4,0,0" Width="310" Watermark="Enter video url here" Text="{Binding VideoURL}"/>
+
+							<TextBlock HorizontalAlignment="Left" Margin="12,10,0,0" Text="Save Folder"/>
+
+							<TextBox HorizontalAlignment="Left" Margin="10,4,0,0" Width="310" IsReadOnly="True" Watermark="Select save folder" Text="{Binding SaveFolder}"/>
+
+							<TextBlock HorizontalAlignment="Left" Margin="12,10,0,0" Text="File Format"/>
+
+							<ComboBox HorizontalAlignment="Left" Margin="10,4,0,0" Width="310" PlaceholderText="Select file format" Items="{Binding FileFormats}" SelectedItem="{Binding FileFormat}"/>
+
+							<TextBlock HorizontalAlignment="Left" Margin="12,10,0,0" Text="New Filename"/>
+
+							<TextBox HorizontalAlignment="Left" Margin="10,4,0,0" Width="310" Watermark="Enter new filename here" Text="{Binding NewFilename}"/>
+						</StackPanel>
+					</ScrollViewer>
+				</Border>
+
+				<ScrollViewer HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="350,6,6,6">
+					<DockPanel LastChildFill="True">
+						<Border DockPanel.Dock="Top" Background="{DynamicResource SolidBackgroundFillColorBaseBrush}" CornerRadius="6">
+							<webview:WebView Name="WebView" Margin="6,6,6,6" MinHeight="460" Address="{Binding VideoURL}"/>
+						</Border>
+
+						<Border DockPanel.Dock="Top" Margin="0,6,0,0" Background="{DynamicResource SolidBackgroundFillColorBaseBrush}" CornerRadius="6">
+							<DataGrid Margin="6,6,6,6" MinHeight="200" AutoGenerateColumns="False" IsReadOnly="True" SelectionMode="Extended" GridLinesVisibility="Horizontal" Items="{Binding Downloads}">
+								<DataGrid.Columns>
+									<DataGridTextColumn Header="Filename" Binding="{Binding FullFilename}" MinWidth="240"/>
+
+									<DataGridTextColumn Header="Video Link" Binding="{Binding VideoLink}" MinWidth="300"/>
+
+									<DataGridTextColumn Header="Status" Binding="{Binding Status}" MinWidth="200"/>
+
+									<DataGridTemplateColumn Header="Progress" MinWidth="200">
+										<DataGridTemplateColumn.CellTemplate>
+											<DataTemplate>
+												<Grid>
+													<ProgressBar HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Minimum="0" Maximum="10" Value="{Binding Progress}"/>
+												</Grid>
+											</DataTemplate>
+										</DataGridTemplateColumn.CellTemplate>
+									</DataGridTemplateColumn>
+								</DataGrid.Columns>
+							</DataGrid>
+						</Border>
+					</DockPanel>
+				</ScrollViewer>
+			</Grid>
+		</Border>
+
+		<ui:InfoBar x:Name="InfoBar" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,10,10,0"/>
+	</Grid>
+</Window>
