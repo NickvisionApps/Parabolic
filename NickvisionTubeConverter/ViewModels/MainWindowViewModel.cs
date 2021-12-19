@@ -278,7 +278,7 @@ namespace NickvisionTubeConverter.ViewModels
 
         private async Task CheckForUpdates(ICloseable window)
         {
-            var updater = new Updater(_httpClient, new Uri("https://raw.githubusercontent.com/nlogozzo/NickvisionTubeConverter/main/UpdateConfig.json"), new Version("2021.12.0"));
+            var updater = new Updater(_httpClient, new Uri("https://raw.githubusercontent.com/nlogozzo/NickvisionTubeConverter/main/UpdateConfig.json"), new Version("2021.12.1"));
             await _serviceCollection.GetService<IProgressDialogService>().ShowAsync("Checking for updates...", async () => await updater.CheckForUpdatesAsync());
             if (updater.UpdateAvailable)
             {
@@ -323,7 +323,7 @@ namespace NickvisionTubeConverter.ViewModels
             await _serviceCollection.GetService<IContentDialogService>().ShowMessageAsync(new ContentDialogInfo()
             {
                 Title = "What's New?",
-                Description  = "- Initial Release",
+                Description  = "- Design Tweaks",
                 CloseButtonText = "OK",
                 DefaultButton = ContentDialogButton.Close
             });
@@ -334,7 +334,7 @@ namespace NickvisionTubeConverter.ViewModels
             await _serviceCollection.GetService<IContentDialogService>().ShowMessageAsync(new ContentDialogInfo()
             {
                 Title = "About",
-                Description  = "Nickvision Tube Converter Version 2021.12.0\nAn easy-to-use YouTube video downloader.\n\nUsing Avalonia and .NET 6",
+                Description  = "Nickvision Tube Converter Version 2021.12.1\nAn easy-to-use YouTube video downloader.\n\nUsing Avalonia and .NET 6",
                 CloseButtonText = "OK",
                 DefaultButton = ContentDialogButton.Close
             });

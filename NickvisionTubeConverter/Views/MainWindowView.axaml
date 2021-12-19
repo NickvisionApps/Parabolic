@@ -179,7 +179,7 @@
 				<ScrollViewer HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="350,6,6,6">
 					<DockPanel LastChildFill="True">
 						<Border DockPanel.Dock="Top" Background="{DynamicResource SolidBackgroundFillColorBaseBrush}" CornerRadius="6">
-							<webview:WebView Name="WebView" Margin="6,6,6,6" MinHeight="460" Address="{Binding VideoURL}"/>
+							<webview:WebView Name="WebView" Margin="6,6,6,6" MinHeight="500" Address="{Binding VideoURL}"/>
 						</Border>
 
 						<Border DockPanel.Dock="Top" Margin="0,6,0,0" Background="{DynamicResource SolidBackgroundFillColorBaseBrush}" CornerRadius="6">
@@ -195,7 +195,7 @@
 										<DataGridTemplateColumn.CellTemplate>
 											<DataTemplate>
 												<Grid>
-													<ProgressBar HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Minimum="0" Maximum="10" Value="{Binding Progress}"/>
+													<ProgressBar HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Height="10" Minimum="0" Maximum="10" Value="{Binding Progress}"/>
 												</Grid>
 											</DataTemplate>
 										</DataGridTemplateColumn.CellTemplate>

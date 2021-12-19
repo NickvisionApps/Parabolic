@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "Nickvision Tube Converter"
-#define MyAppVersion "2021.12.0"
+#define MyAppVersion "2021.12.1"
 #define MyAppPublisher "Nickvision"
 #define MyAppURL "https://github.com/nlogozzo/NickvisionTubeConverter"
 #define MyAppExeName "NickvisionTubeConverter.exe"

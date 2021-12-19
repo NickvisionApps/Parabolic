@@ -73,11 +73,11 @@ namespace NickvisionTubeConverter.Models
                 Progress = 8;
                 await Conversion.ToMp4(videoFilePath, newVideoFilePath).SetOverwriteOutput(true).Start();
                 File.Delete(videoFilePath);
-                Status = "Done";
+                Status = "Completed";
                 Progress = 10;
                 return newVideoFilePath;
             }
-            Status = "Done";
+            Status = "Completed";
             Progress = 10;
             return videoFilePath;
         }
@@ -91,7 +91,7 @@ namespace NickvisionTubeConverter.Models
             Progress = 8;
             await Conversion.ExtractAudio(videoFilePath, audioFilePath).SetOverwriteOutput(true).Start();
             File.Delete(videoFilePath);
-            Status = "Done";
+            Status = "Completed";
             Progress = 10;
             return audioFilePath;
         }
