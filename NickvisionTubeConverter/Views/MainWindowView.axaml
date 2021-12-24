@@ -125,13 +125,7 @@
 		</Menu>
 
 		<ui:CommandBar HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="0,40,0,0" DefaultLabelPosition="Right">
-			<ui:CommandBar.Content>
-				<TextBlock Margin="6,12,6,0" Text="{Binding Status}"/>
-			</ui:CommandBar.Content>
-			
 			<ui:CommandBar.PrimaryCommands>
-				<ui:CommandBarSeparator />
-
 				<ui:CommandBarButton Label="Select Save Folder" Icon="OpenLocal" Command="{Binding SelectSaveFolderCommand}"/>
 
 				<ui:CommandBarButton Label="Download Video" Icon="Download" Command="{Binding DownloadVideoCommand}"/>
@@ -154,7 +148,7 @@
 
 		<Border HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,90,0,0" Background="{DynamicResource CommandBarBackgroundOpen}" CornerRadius="6">
 			<Grid>
-				<Border HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="6,6,0,6" Width="340" Background="{DynamicResource SolidBackgroundFillColorBaseBrush}" CornerRadius="6">
+				<Border HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="6,6,0,46" Width="340" Background="{DynamicResource SolidBackgroundFillColorBaseBrush}" CornerRadius="6">
 					<ScrollViewer>
 						<StackPanel Margin="0,0,0,6">
 							<TextBlock HorizontalAlignment="Left" Margin="12,10,0,0" Text="Video URL"/>
@@ -176,7 +170,7 @@
 					</ScrollViewer>
 				</Border>
 
-				<ScrollViewer HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="350,6,6,6">
+				<ScrollViewer HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="350,6,6,46">
 					<DockPanel LastChildFill="True">
 						<Border DockPanel.Dock="Top" Background="{DynamicResource SolidBackgroundFillColorBaseBrush}" CornerRadius="6">
 							<webview:WebView Name="WebView" Margin="6,6,6,6" MinHeight="500" Address="{Binding VideoURL}"/>
@@ -205,6 +199,12 @@
 						</Border>
 					</DockPanel>
 				</ScrollViewer>
+
+				<Border HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Margin="6,0,6,6" Height="36" Background="{DynamicResource SolidBackgroundFillColorBaseBrush}" CornerRadius="6">
+					<Grid>
+						<TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Margin="6,6,0,0" Text="{Binding Status}"/>
+					</Grid>
+				</Border>
 			</Grid>
 		</Border>
 

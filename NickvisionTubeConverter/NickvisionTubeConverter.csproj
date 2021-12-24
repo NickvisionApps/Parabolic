@@ -18,13 +18,13 @@
     <Content Include="Resources\icon.ico" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Avalonia" Version="0.10.10" />
-    <PackageReference Include="Avalonia.Desktop" Version="0.10.10" />
+    <PackageReference Include="Avalonia" Version="0.10.11" />
+    <PackageReference Include="Avalonia.Desktop" Version="0.10.11" />
     <!--Condition below is needed to remove Avalonia.Diagnostics package from build output in Release configuration.-->
-    <PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" Version="0.10.10" />
-    <PackageReference Include="Avalonia.Xaml.Behaviors" Version="0.10.10.4" />
-    <PackageReference Include="FluentAvaloniaUI" Version="1.1.7" />
-    <PackageReference Include="Nickvision.Avalonia" Version="2021.12.5" />
+    <PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" Version="0.10.11" />
+    <PackageReference Include="Avalonia.Xaml.Behaviors" Version="0.10.11.5" />
+    <PackageReference Include="FluentAvaloniaUI" Version="1.1.8" />
+    <PackageReference Include="Nickvision.Avalonia" Version="2021.12.6" />
     <PackageReference Include="VideoLibrary" Version="3.1.4" />
     <PackageReference Include="WebViewControl-Avalonia" Version="2.91.12" />
     <PackageReference Include="Xabe.FFmpeg" Version="3.6.2" />
