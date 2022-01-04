@@ -22,8 +22,22 @@ namespace NickvisionTubeConverter::libyt::Helpers
         size_t start = source.find(opening);
         if(start != std::string::npos)
         {
+            std::vector<std::string> tokens;
+            size_t posDelimiter;
             std::string temp = source.substr(start);
-            //TODO - split and select
+            while((posDelimiter = temp.find(opening)) != std::string::npos)
+            {
+                std::string token = temp.substr(0, posDelimiter);
+                if(!token.empty())
+                {
+                    tokens.push_back(token);
+                }
+                temp.erase(0, posDelimiter + opening.length());
+            }
+            for(const std::string& token : tokens)
+            {
+                uris.push_back(token.substr(0, token.find(closing)));
+            }
             return uris;
         }
         throw std::invalid_argument("Unable to get URIs from source.");

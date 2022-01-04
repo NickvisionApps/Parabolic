@@ -18,8 +18,17 @@ namespace NickvisionTubeConverter::Views
         NickvisionTubeConverter::Controls::HeaderBar m_headerBar;
         Gtk::Box m_mainBox;
         NickvisionTubeConverter::Controls::InfoBar m_infoBar;
-        Gtk::Label m_lblName;
-        Gtk::Entry m_txtName;
+        Gtk::Grid m_gridProperties;
+        Gtk::Label m_lblVideoURL;
+        Gtk::Label m_lblSaveFolder;
+        Gtk::Entry m_txtVideoURL;
+        Gtk::Entry m_txtSaveFolder;
+        Gtk::Label m_lblFileFormat;
+        Gtk::Label m_lblNewFilename;
+        Gtk::ComboBoxText m_cmbFileFormat;
+        Gtk::Entry m_txtNewFilename;
+        Gtk::ScrolledWindow m_scrollDataDownloads;
+        Gtk::TreeView m_dataDownloads;
         //==Slots==//
         void selectSaveFolder();
         void downloadVideo();

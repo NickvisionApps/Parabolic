@@ -24,18 +24,65 @@ namespace NickvisionTubeConverter::Views
         m_headerBar.getActionReportABug()->signal_activate().connect(sigc::mem_fun(*this, &MainWindow::reportABug));
         m_headerBar.getActionChangelog()->signal_activate().connect(sigc::mem_fun(*this, &MainWindow::changelog));
         m_headerBar.getActionAbout()->signal_activate().connect(sigc::mem_fun(*this, &MainWindow::about));
-        //==Name Field==//
-        m_lblName.set_label("Name");
-        m_lblName.set_halign(Gtk::Align::START);
-        m_lblName.set_margin_start(6);
-        m_lblName.set_margin_top(6);
-        m_txtName.set_margin(6);
-        m_txtName.set_placeholder_text("Enter name here");
+        //==Grid==//
+        m_gridProperties.set_margin(6);
+        m_gridProperties.insert_column(0);
+        m_gridProperties.insert_column(1);
+        m_gridProperties.insert_row(0);
+        m_gridProperties.insert_row(1);
+        m_gridProperties.insert_row(2);
+        m_gridProperties.insert_row(3);
+        m_gridProperties.set_column_spacing(6);
+        m_gridProperties.set_row_spacing(6);
+        //Video URL
+        m_lblVideoURL.set_text("Video URL");
+        m_lblVideoURL.set_halign(Gtk::Align::START);
+        m_txtVideoURL.set_placeholder_text("Enter video url here");
+        m_txtVideoURL.set_size_request(340, -1);
+        m_gridProperties.attach(m_lblVideoURL, 0, 0);
+        m_gridProperties.attach(m_txtVideoURL, 0, 1);
+        //Save Folder
+        m_lblSaveFolder.set_text("Save Folder");
+        m_lblSaveFolder.set_halign(Gtk::Align::START);
+        m_txtSaveFolder.set_placeholder_text("Select save folder");
+        m_txtSaveFolder.set_size_request(340, -1);
+        m_txtSaveFolder.set_editable(false);
+        m_gridProperties.attach(m_lblSaveFolder, 1, 0);
+        m_gridProperties.attach(m_txtSaveFolder, 1, 1);
+        //File Format
+        m_lblFileFormat.set_text("File Format");
+        m_lblFileFormat.set_halign(Gtk::Align::START);
+        m_cmbFileFormat.append("MP4 - Video");
+        m_cmbFileFormat.append("MOV - Video");
+        m_cmbFileFormat.append("AVI - Video");
+        m_cmbFileFormat.append("--------------");
+        m_cmbFileFormat.append("MP3 - Audio");
+        m_cmbFileFormat.append("WAV - Audio");
+        m_cmbFileFormat.append("WMA - Audio");
+        m_cmbFileFormat.append("OGG - Audio");
+        m_cmbFileFormat.append("FLAC - Audio");
+        m_cmbFileFormat.set_active(0);
+        m_cmbFileFormat.set_size_request(340, -1);
+        m_gridProperties.attach(m_lblFileFormat, 0, 2);
+        m_gridProperties.attach(m_cmbFileFormat, 0, 3);
+        //New Filename
+        m_lblNewFilename.set_text("New Filename");
+        m_lblNewFilename.set_halign(Gtk::Align::START);
+        m_txtNewFilename.set_placeholder_text("Enter new filename here");
+        m_txtNewFilename.set_size_request(340, -1);
+        m_gridProperties.attach(m_lblNewFilename, 1, 2);
+        m_gridProperties.attach(m_txtNewFilename, 1, 3);
+        //==Data Downloads==//
+        m_dataDownloads.get_selection()->set_mode(Gtk::SelectionMode::NONE);
+        //ScrolledWindow
+        m_scrollDataDownloads.set_child(m_dataDownloads);
+        m_scrollDataDownloads.set_margin(6);
+        m_scrollDataDownloads.set_expand(true);
         //==Layout==//
         m_mainBox.set_orientation(Gtk::Orientation::VERTICAL);
         m_mainBox.append(m_infoBar);
-        m_mainBox.append(m_lblName);
-        m_mainBox.append(m_txtName);
+        m_mainBox.append(m_gridProperties);
+        m_mainBox.append(m_scrollDataDownloads);
         set_child(m_mainBox);
         maximize();
         //==Load Config==//
