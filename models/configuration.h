@@ -9,13 +9,19 @@ namespace NickvisionTubeConverter::Models
     {
     public:
         Configuration();
-        bool isFirstTimeOpen() const;
-        void setIsFirstTimeOpen(bool isFirstTimeOpen);
+        int getMaxNumberOfActiveDownloads() const;
+        void setMaxNumberOfActiveDownloads(int maxNumberOfActiveDownloads);
+        const std::string& getPreviousSaveFolder() const;
+        void setPreviousSaveFolder(const std::string& previousSaveFolder);
+        int getPreviousFileFormat() const;
+        void setPreviousFileFormat(int previousFileFormat);
         void save() const;
 
     private:
         std::string m_configDir;
-        bool m_isFirstTimeOpen;
+        int m_maxNumberOfActiveDownloads;
+        std::string m_previousSaveFolder;
+        int m_previousFileFormat;
     };
 }
 

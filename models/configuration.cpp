@@ -7,7 +7,7 @@
 
 namespace NickvisionTubeConverter::Models
 {
-    Configuration::Configuration() : m_configDir(std::string(getpwuid(getuid())->pw_dir) + "/.config/Nickvision/NickvisionTubeConverter/"), m_isFirstTimeOpen(true)
+    Configuration::Configuration() : m_configDir(std::string(getpwuid(getuid())->pw_dir) + "/.config/Nickvision/NickvisionTubeConverter/"), m_maxNumberOfActiveDownloads(5), m_previousSaveFolder(""), m_previousFileFormat(0)
     {
         if (!std::filesystem::exists(m_configDir))
         {
@@ -20,20 +20,42 @@ namespace NickvisionTubeConverter::Models
             try
             {
                 configFile >> json;
-                setIsFirstTimeOpen(json.get("IsFirstTimeOpen", true).asBool());
+                setMaxNumberOfActiveDownloads(json.get("MaxNumberOfActiveDownloads", 5).asInt());
+                setPreviousSaveFolder(json.get("PreviousSaveFolder", "").asString());
+                setPreviousFileFormat(json.get("PreviousFileFormat", 0).asInt());
             }
             catch (...) { }
         }
     }
 
-    bool Configuration::isFirstTimeOpen() const
+    int Configuration::getMaxNumberOfActiveDownloads() const
     {
-        return m_isFirstTimeOpen;
+        return m_maxNumberOfActiveDownloads;
     }
 
-    void Configuration::setIsFirstTimeOpen(bool isFirstTimeOpen)
+    void Configuration::setMaxNumberOfActiveDownloads(int maxNumberOfActiveDownloads)
     {
-        m_isFirstTimeOpen = isFirstTimeOpen;
+        m_maxNumberOfActiveDownloads = maxNumberOfActiveDownloads;
+    }
+
+    const std::string& Configuration::getPreviousSaveFolder() const
+    {
+        return m_previousSaveFolder;
+    }
+
+    void Configuration::setPreviousSaveFolder(const std::string& previousSaveFolder)
+    {
+        m_previousSaveFolder = previousSaveFolder;
+    }
+
+    int Configuration::getPreviousFileFormat() const
+    {
+        return m_previousFileFormat;
+    }
+
+    void Configuration::setPreviousFileFormat(int previousFileFormat)
+    {
+        m_previousFileFormat = previousFileFormat;
     }
 
     void Configuration::save() const
@@ -42,7 +64,9 @@ namespace NickvisionTubeConverter::Models
         if (configFile.is_open())
         {
             Json::Value json;
-            json["IsFirstTimeOpen"] = isFirstTimeOpen();
+            json["MaxNumberOfActiveDownloads"] = getMaxNumberOfActiveDownloads();
+            json["PreviousSaveFolder"] = getPreviousSaveFolder();
+            json["PreviousFileFormat"] = getPreviousFileFormat();
             configFile << json;
         }
     }

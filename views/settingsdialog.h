@@ -18,7 +18,8 @@ namespace NickvisionTubeConverter::Views
         Gtk::Box m_mainBox;
         Gtk::Label m_lblGeneral;
         Gtk::ListBox m_listGeneral;
-        Gtk::CheckButton m_chkIsFirstTimeOpen;
+        Gtk::Label m_lblMaxNumberOfActiveDownloads;
+        Gtk::ComboBoxText m_cmbMaxNumberOfActiveDownloads;
     };
 }
 

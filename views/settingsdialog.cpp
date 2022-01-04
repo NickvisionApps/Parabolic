@@ -17,8 +17,15 @@ namespace NickvisionTubeConverter::Views
         m_listGeneral.set_margin_top(6);
         m_listGeneral.set_margin_start(20);
         m_listGeneral.set_margin_end(20);
-        m_chkIsFirstTimeOpen.set_label("Is First Time Open");
-        m_listGeneral.append(m_chkIsFirstTimeOpen);
+        m_lblMaxNumberOfActiveDownloads.set_label("Max Number of Active Downloads");
+        m_lblMaxNumberOfActiveDownloads.set_halign(Gtk::Align::START);
+        m_lblMaxNumberOfActiveDownloads.set_margin_start(2);
+        for(int i = 1; i < 11; i++)
+        {
+            m_cmbMaxNumberOfActiveDownloads.append(std::to_string(i));
+        }
+        m_listGeneral.append(m_lblMaxNumberOfActiveDownloads);
+        m_listGeneral.append(m_cmbMaxNumberOfActiveDownloads);
         //==Layout==//
         m_mainBox.set_orientation(Gtk::Orientation::VERTICAL);
         m_mainBox.append(m_lblGeneral);
@@ -26,12 +33,12 @@ namespace NickvisionTubeConverter::Views
         m_scroll.set_child(m_mainBox);
         set_child(m_scroll);
         //==Load Configuration==//
-        m_chkIsFirstTimeOpen.set_active(m_configuration.isFirstTimeOpen());
+        m_cmbMaxNumberOfActiveDownloads.set_active(m_configuration.getMaxNumberOfActiveDownloads() - 1);
     }
 
     SettingsDialog::~SettingsDialog()
     {
-        m_configuration.setIsFirstTimeOpen(m_chkIsFirstTimeOpen.get_active());
+        m_configuration.setMaxNumberOfActiveDownloads(m_cmbMaxNumberOfActiveDownloads.get_active_row_number() + 1);
         m_configuration.save();
     }
 }

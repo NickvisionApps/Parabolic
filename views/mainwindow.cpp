@@ -1,4 +1,5 @@
 #include "mainwindow.h"
+#include <filesystem>
 #include "../models/configuration.h"
 #include "../models/update/updater.h"
 #include "settingsdialog.h"
@@ -62,6 +63,13 @@ namespace NickvisionTubeConverter::Views
         m_cmbFileFormat.append("OGG - Audio");
         m_cmbFileFormat.append("FLAC - Audio");
         m_cmbFileFormat.set_active(0);
+        m_cmbFileFormat.signal_changed().connect([&]()
+        {
+            if(m_cmbFileFormat.get_active_row_number() == 3)
+            {
+                m_cmbFileFormat.set_active(2);
+            }
+        });
         m_cmbFileFormat.set_size_request(340, -1);
         m_gridProperties.attach(m_lblFileFormat, 0, 2);
         m_gridProperties.attach(m_cmbFileFormat, 0, 3);
@@ -87,23 +95,25 @@ namespace NickvisionTubeConverter::Views
         maximize();
         //==Load Config==//
         Configuration configuration;
-        if(configuration.isFirstTimeOpen())
+        if(std::filesystem::exists(configuration.getPreviousSaveFolder()))
         {
-            configuration.setIsFirstTimeOpen(false);
+            m_txtSaveFolder.set_text(configuration.getPreviousSaveFolder());
         }
-        configuration.save();
+        m_cmbFileFormat.set_active(configuration.getPreviousFileFormat());
     }
 
     MainWindow::~MainWindow()
     {
         //==Save Config==//
         Configuration configuration;
+        configuration.setPreviousSaveFolder(m_txtSaveFolder.get_text());
+        configuration.setPreviousFileFormat(m_cmbFileFormat.get_active_row_number());
         configuration.save();
     }
 
     void MainWindow::selectSaveFolder()
     {
-        Gtk::FileChooserDialog* folderDialog = new Gtk::FileChooserDialog(*this, "Select Folder", Gtk::FileChooserDialog::Action::SELECT_FOLDER, true);
+        Gtk::FileChooserDialog* folderDialog = new Gtk::FileChooserDialog(*this, "Select Save Folder", Gtk::FileChooserDialog::Action::SELECT_FOLDER, true);
         folderDialog->set_modal(true);
         folderDialog->add_button("_Select", Gtk::ResponseType::OK);
         folderDialog->add_button("_Cancel", Gtk::ResponseType::CANCEL);
@@ -111,7 +121,7 @@ namespace NickvisionTubeConverter::Views
         {
             if(response == Gtk::ResponseType::OK)
             {
-                set_title("Nickvision Tube Converter (" + dialog->get_file()->get_path() + ")");
+                m_txtSaveFolder.set_text(dialog->get_file()->get_path());
             }
             delete dialog;
         }, folderDialog));
