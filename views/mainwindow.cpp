@@ -1,20 +1,23 @@
 #include "mainwindow.h"
+#include <stdexcept>
 #include <filesystem>
 #include "../models/configuration.h"
-#include "../models/update/updater.h"
+#include "../models/ytdlpmanager.h"
+#include "../controls/progressdialog.h"
 #include "settingsdialog.h"
 
 namespace NickvisionTubeConverter::Views
 {
     using namespace NickvisionTubeConverter::Models;
-    using namespace NickvisionTubeConverter::Models::Update;
+    using namespace NickvisionTubeConverter::Controls;
 
-    MainWindow::MainWindow()
+    MainWindow::MainWindow() : m_updater("https://raw.githubusercontent.com/nlogozzo/NickvisionTubeConverter/main/UpdateConfig.json", { "2022.1.0" }), m_opened(false)
     {
         //==Settings==//
         set_default_size(800, 600);
         set_title("Nickvision Tube Converter");
         set_titlebar(m_headerBar);
+        signal_show().connect(sigc::mem_fun(*this, &MainWindow::onShow));
         //==HeaderBar==//
         m_headerBar.getBtnSelectSaveFolder().signal_clicked().connect(sigc::mem_fun(*this, &MainWindow::selectSaveFolder));
         m_headerBar.getBtnDownloadVideo().signal_clicked().connect(sigc::mem_fun(*this, &MainWindow::downloadVideo));
@@ -36,12 +39,12 @@ namespace NickvisionTubeConverter::Views
         m_gridProperties.set_column_spacing(6);
         m_gridProperties.set_row_spacing(6);
         //Video URL
-        m_lblVideoURL.set_text("Video URL");
-        m_lblVideoURL.set_halign(Gtk::Align::START);
-        m_txtVideoURL.set_placeholder_text("Enter video url here");
-        m_txtVideoURL.set_size_request(340, -1);
-        m_gridProperties.attach(m_lblVideoURL, 0, 0);
-        m_gridProperties.attach(m_txtVideoURL, 0, 1);
+        m_lblVideoUrl.set_text("Video Url");
+        m_lblVideoUrl.set_halign(Gtk::Align::START);
+        m_txtVideoUrl.set_placeholder_text("Enter video url here");
+        m_txtVideoUrl.set_size_request(340, -1);
+        m_gridProperties.attach(m_lblVideoUrl, 0, 0);
+        m_gridProperties.attach(m_txtVideoUrl, 0, 1);
         //Save Folder
         m_lblSaveFolder.set_text("Save Folder");
         m_lblSaveFolder.set_halign(Gtk::Align::START);
@@ -111,6 +114,36 @@ namespace NickvisionTubeConverter::Views
         configuration.save();
     }
 
+    void MainWindow::onShow()
+    {
+        if(!m_opened)
+        {
+            m_opened = true;
+            //==Download Dependencies==//
+            ProgressDialog* loadingDialog = new ProgressDialog(*this, "Downloading required dependencies...", [&]()
+            {
+                Configuration configuration;
+                YtDlpManager ytDlpManager;
+                ytDlpManager.setCurrentVersion(configuration.getCurrentYtDlpVersion());
+                try
+                {
+                    ytDlpManager.downloadLatestVersionIfNeeded();
+                    configuration.setCurrentYtDlpVersion(ytDlpManager.getLatestVersion());
+                    configuration.save();
+                }
+                catch(const std::runtime_error& e)
+                {
+                    m_infoBar.showMessage("Error", std::string(e.what()) + " Please restart the application to try again.");
+                }
+            });
+            loadingDialog->signal_hide().connect(sigc::bind([](ProgressDialog* dialog)
+            {
+                delete dialog;
+            }, loadingDialog));
+            loadingDialog->show();
+        }
+    }
+
     void MainWindow::selectSaveFolder()
     {
         Gtk::FileChooserDialog* folderDialog = new Gtk::FileChooserDialog(*this, "Select Save Folder", Gtk::FileChooserDialog::Action::SELECT_FOLDER, true);
@@ -150,24 +183,26 @@ namespace NickvisionTubeConverter::Views
 
     void MainWindow::checkForUpdates(const Glib::VariantBase& args)
     {
-        Updater updater("https://raw.githubusercontent.com/nlogozzo/NickvisionTubeConverter/main/UpdateConfig.json", { "2022.1.0" });
-        m_infoBar.showMessage("Please Wait", "Checking for updates...", false);
-        updater.checkForUpdates();
-        m_infoBar.hide();
-        if(updater.updateAvailable())
+        ProgressDialog* checkingDialog = new ProgressDialog(*this, "Checking for updates...", [&]() { m_updater.checkForUpdates(); });
+        checkingDialog->signal_hide().connect(sigc::bind([&](ProgressDialog* dialog)
         {
-            Gtk::MessageDialog* updateDialog = new Gtk::MessageDialog(*this, "Update Available", false, Gtk::MessageType::INFO, Gtk::ButtonsType::OK, true);
-            updateDialog->set_secondary_text("\n===V" + updater.getLatestVersion()->toString() + " Changelog===\n" + updater.getChangelog() + "\n\nPlease visit the GitHub repo or update through your package manager to get the latest version.");
-            updateDialog->signal_response().connect(sigc::bind([](int response, Gtk::MessageDialog* dialog)
+            delete dialog;
+            if(m_updater.updateAvailable())
             {
-               delete dialog;
-            }, updateDialog));
-            updateDialog->show();
-        }
-        else
-        {
-            m_infoBar.showMessage("No Update Available", "There is no update at this time. Please check again later.");
-        }
+                Gtk::MessageDialog* updateDialog = new Gtk::MessageDialog(*this, "Update Available", false, Gtk::MessageType::INFO, Gtk::ButtonsType::OK, true);
+                updateDialog->set_secondary_text("\n===V" + m_updater.getLatestVersion()->toString() + " Changelog===\n" + m_updater.getChangelog() + "\n\nPlease visit the GitHub repo or update through your package manager to get the latest version.");
+                updateDialog->signal_response().connect(sigc::bind([](int response, Gtk::MessageDialog* dialog)
+                {
+                    delete dialog;
+                }, updateDialog));
+                updateDialog->show();
+            }
+            else
+            {
+                m_infoBar.showMessage("No Update Available", "There is no update at this time. Please check again later.");
+            }
+        }, checkingDialog));
+        checkingDialog->show();
     }
 
     void MainWindow::gitHubRepo(const Glib::VariantBase& args)

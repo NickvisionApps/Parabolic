@@ -10,7 +10,7 @@ namespace NickvisionTubeConverter::Controls
     {
     public:
         InfoBar();
-        void showMessage(const std::string& title, const std::string& message, bool closeable = true, Gtk::MessageType messageType = Gtk::MessageType::INFO);
+        void showMessage(const std::string& title, const std::string& message, Gtk::MessageType messageType = Gtk::MessageType::INFO);
 
     private:
         Gtk::Box m_mainBox;

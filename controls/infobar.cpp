@@ -18,16 +18,12 @@ namespace NickvisionTubeConverter::Controls
         hide();
     }
 
-    void InfoBar::showMessage(const std::string& title, const std::string& message, bool closeable, Gtk::MessageType messageType)
+    void InfoBar::showMessage(const std::string& title, const std::string& message, Gtk::MessageType messageType)
     {
         m_lblTitle.set_markup("<b>" + title + "</b>");
         m_lblMessage.set_text(message);
-        set_show_close_button(closeable);
+        set_show_close_button(true);
         set_message_type(messageType);
         show();
-        while(Glib::MainContext::get_default()->pending())
-        {
-            Glib::MainContext::get_default()->iteration(true);
-        }
     }
 }
