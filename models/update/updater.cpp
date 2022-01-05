@@ -1,4 +1,13 @@
 #include "updater.h"
+#include <filesystem>
+#include <fstream>
+#include <unistd.h>
+#include <pwd.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <curlpp/cURLpp.hpp>
+#include <curlpp/Easy.hpp>
+#include <curlpp/Options.hpp>
 
 namespace NickvisionTubeConverter::Models::Update
 {
@@ -34,5 +43,42 @@ namespace NickvisionTubeConverter::Models::Update
             m_updateAvailable = true;
         }
         return updateAvailable();
+    }
+
+    bool Updater::update()
+    {
+        if(!updateAvailable())
+        {
+            return false;
+        }
+        std::string downloadsDir = std::string(getpwuid(getuid())->pw_dir) + "/Downloads";
+        if(std::filesystem::exists(downloadsDir))
+        {
+            std::filesystem::create_directories(downloadsDir);
+        }
+        std::string exePath = downloadsDir + "/NickvisionTubeConverter";
+        std::ofstream exeFile(exePath, std::ios::out | std::ios::trunc | std::ios::binary);
+        if(exeFile.is_open())
+        {
+            cURLpp::Easy handle;
+            try
+            {
+                handle.setOpt(cURLpp::Options::Url(m_updateConfig->getLinkToExe()));
+                handle.setOpt(cURLpp::Options::FollowLocation(true));
+                handle.setOpt(cURLpp::Options::WriteStream(&exeFile));
+                handle.perform();
+            }
+            catch(...)
+            {
+                return false;
+            }
+            exeFile.close();
+        }
+        else
+        {
+            return false;
+        }
+        chmod(exePath.c_str(), S_IRWXU);
+        return true;
     }
 }

@@ -15,8 +15,8 @@ namespace NickvisionTubeConverter::Views
         ~MainWindow();
 
     private:
-        NickvisionTubeConverter::Models::Update::Updater m_updater;
         bool m_opened;
+        NickvisionTubeConverter::Models::Update::Updater m_updater;
         //==UI==//
         NickvisionTubeConverter::Controls::HeaderBar m_headerBar;
         Gtk::Box m_mainBox;
