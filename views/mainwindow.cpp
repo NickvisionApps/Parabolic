@@ -96,13 +96,6 @@ namespace NickvisionTubeConverter::Views
         m_mainBox.append(m_scrollDataDownloads);
         set_child(m_mainBox);
         maximize();
-        //==Load Config==//
-        Configuration configuration;
-        if(std::filesystem::exists(configuration.getPreviousSaveFolder()))
-        {
-            m_txtSaveFolder.set_text(configuration.getPreviousSaveFolder());
-        }
-        m_cmbFileFormat.set_active(configuration.getPreviousFileFormat());
     }
 
     MainWindow::~MainWindow()
@@ -119,6 +112,13 @@ namespace NickvisionTubeConverter::Views
         if(!m_opened)
         {
             m_opened = true;
+            //==Load Config==//
+            Configuration configuration;
+            if(std::filesystem::exists(configuration.getPreviousSaveFolder()))
+            {
+                m_txtSaveFolder.set_text(configuration.getPreviousSaveFolder());
+            }
+            m_cmbFileFormat.set_active(configuration.getPreviousFileFormat());
             //==Download Dependencies==//
             ProgressDialog* loadingDialog = new ProgressDialog(*this, "Downloading required dependencies...", [&]()
             {
@@ -201,7 +201,11 @@ namespace NickvisionTubeConverter::Views
                         downloadingDialog->signal_hide().connect(sigc::bind([&](ProgressDialog* dialog, bool* success)
                         {
                             delete dialog;
-                            if(!(*success))
+                            if(*success)
+                            {
+                                m_infoBar.showMessage("Download Successful", "We recommend moving the new version out of your Downloads directory and running it from elsewhere to allow future updates to download smoothly.");
+                            }
+                            else
                             {
                                 m_infoBar.showMessage("Error", "Unable to download the executable. Please try again. If the issue continues, file a bug report.");
                             }
