@@ -18,7 +18,21 @@ namespace NickvisionTubeConverter::Controls
         m_btnRemoveSelectedDownloadFromQueue.set_icon_name("list-remove");
         m_btnRemoveSelectedDownloadFromQueue.set_tooltip_text("Remove Selected Download From Queue");
         //Clear
+        m_boxRemoveAllQueuedDownloads.set_orientation(Gtk::Orientation::VERTICAL);
+        m_lblRemoveAllQueuedDownloads.set_label("Are you sure you want to remove all downloads from the queue?");
+        m_lblRemoveAllQueuedDownloads.set_margin(4);
+        m_btnConfirmRemoveAllQueuedDownloads.set_label("Remove");
+        m_btnCancelRemoveAllQueuedDownloads.set_label("Cancel");
+        m_btnCancelRemoveAllQueuedDownloads.signal_clicked().connect(sigc::mem_fun(m_popRemoveAllQueuedDownloads, &Gtk::Popover::popdown));
+        m_boxBtnsRemoveAllQueuedDownloads.set_homogeneous(true);
+        m_boxBtnsRemoveAllQueuedDownloads.set_spacing(6);
+        m_boxBtnsRemoveAllQueuedDownloads.append(m_btnConfirmRemoveAllQueuedDownloads);
+        m_boxBtnsRemoveAllQueuedDownloads.append(m_btnCancelRemoveAllQueuedDownloads);
+        m_boxRemoveAllQueuedDownloads.append(m_lblRemoveAllQueuedDownloads);
+        m_boxRemoveAllQueuedDownloads.append(m_boxBtnsRemoveAllQueuedDownloads);
+        m_popRemoveAllQueuedDownloads.set_child(m_boxRemoveAllQueuedDownloads);
         m_btnRemoveAllQueuedDownloads.set_icon_name("edit-delete");
+        m_btnRemoveAllQueuedDownloads.set_popover(m_popRemoveAllQueuedDownloads);
         m_btnRemoveAllQueuedDownloads.set_tooltip_text("Clear All Queued Downloads");
         //==Settings==//
         m_btnSettings.set_icon_name("settings");
@@ -78,7 +92,17 @@ namespace NickvisionTubeConverter::Controls
         return m_btnRemoveSelectedDownloadFromQueue;
     }
 
-    Gtk::Button& HeaderBar::getBtnRemoveAllQueuedDownloads()
+    Gtk::Popover& HeaderBar::getPopRemoveAllQueuedDownloads()
+    {
+        return m_popRemoveAllQueuedDownloads;
+    }
+
+    Gtk::Button& HeaderBar::getBtnConfirmRemoveAllQueuedDownloads()
+    {
+        return m_btnConfirmRemoveAllQueuedDownloads;
+    }
+
+    Gtk::MenuButton& HeaderBar::getBtnRemoveAllQueuedDownloads()
     {
         return m_btnRemoveAllQueuedDownloads;
     }

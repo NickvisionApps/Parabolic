@@ -13,7 +13,7 @@ namespace NickvisionTubeConverter::Views
     using namespace NickvisionTubeConverter::Models;
     using namespace NickvisionTubeConverter::Controls;
 
-    MainWindow::MainWindow() : m_opened(false), m_updater("https://raw.githubusercontent.com/nlogozzo/NickvisionTubeConverter/main/UpdateConfig.json", { "2022.1.0" })
+    MainWindow::MainWindow() : m_opened(false), m_updater("https://raw.githubusercontent.com/nlogozzo/NickvisionTubeConverter/main/UpdateConfig.json", { "2022.1.1" })
     {
         //==Settings==//
         set_default_size(800, 600);
@@ -25,7 +25,7 @@ namespace NickvisionTubeConverter::Views
         m_headerBar.getBtnDownloadVideos().signal_clicked().connect(sigc::mem_fun(*this, &MainWindow::downloadVideos));
         m_headerBar.getBtnAddDownloadToQueue().signal_clicked().connect(sigc::mem_fun(*this, &MainWindow::addDownloadToQueue));
         m_headerBar.getBtnRemoveSelectedDownloadFromQueue().signal_clicked().connect(sigc::mem_fun(*this, &MainWindow::removeSelectedDownloadFromQueue));
-        m_headerBar.getBtnRemoveAllQueuedDownloads().signal_clicked().connect(sigc::mem_fun(*this, &MainWindow::removeAllQueuedDownloads));
+        m_headerBar.getBtnConfirmRemoveAllQueuedDownloads().signal_clicked().connect(sigc::mem_fun(*this, &MainWindow::removeAllQueuedDownloads));
         m_headerBar.getBtnSettings().signal_clicked().connect(sigc::mem_fun(*this, &MainWindow::settings));
         m_headerBar.getActionCheckForUpdates()->signal_activate().connect(sigc::mem_fun(*this, &MainWindow::checkForUpdates));
         m_headerBar.getActionGitHubRepo()->signal_activate().connect(sigc::mem_fun(*this, &MainWindow::gitHubRepo));
@@ -228,6 +228,7 @@ namespace NickvisionTubeConverter::Views
 
     void MainWindow::removeAllQueuedDownloads()
     {
+        m_headerBar.getPopRemoveAllQueuedDownloads().popdown();
         m_downloadManager.removeAllFromQueue();
         m_dataDownloadsModel->clear();
         m_headerBar.getBtnDownloadVideos().set_sensitive(false);
@@ -303,7 +304,7 @@ namespace NickvisionTubeConverter::Views
     void MainWindow::changelog(const Glib::VariantBase& args)
     {
         Gtk::MessageDialog* changelogDialog = new Gtk::MessageDialog(*this, "What's New?", false, Gtk::MessageType::INFO, Gtk::ButtonsType::OK, true);
-        changelogDialog->set_secondary_text("\n- Rewrote Tube Converter in C++ using gtkmm\n- Removed support for Windows OS. Only Linux is now supported");
+        changelogDialog->set_secondary_text("\n- Added confirm message for removing all queued downloads");
         changelogDialog->signal_response().connect(sigc::bind([](int response, Gtk::MessageDialog* dialog)
         {
            delete dialog;
@@ -318,7 +319,7 @@ namespace NickvisionTubeConverter::Views
         aboutDialog->set_modal(true);
         aboutDialog->set_hide_on_close(true);
         aboutDialog->set_program_name("Nickvision Tube Converter");
-        aboutDialog->set_version("2022.1.0");
+        aboutDialog->set_version("2022.1.1");
         aboutDialog->set_comments("An easy to use YouTube video downloader.");
         aboutDialog->set_copyright("(C) Nickvision 2021-2022");
         aboutDialog->set_license_type(Gtk::License::GPL_3_0);

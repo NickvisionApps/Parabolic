@@ -14,7 +14,9 @@ namespace NickvisionTubeConverter::Controls
         Gtk::Button& getBtnDownloadVideos();
         Gtk::Button& getBtnAddDownloadToQueue();
         Gtk::Button& getBtnRemoveSelectedDownloadFromQueue();
-        Gtk::Button& getBtnRemoveAllQueuedDownloads();
+        Gtk::Popover& getPopRemoveAllQueuedDownloads();
+        Gtk::Button& getBtnConfirmRemoveAllQueuedDownloads();
+        Gtk::MenuButton& getBtnRemoveAllQueuedDownloads();
         Gtk::Button& getBtnSettings();
         const std::shared_ptr<Gio::SimpleAction>& getActionCheckForUpdates() const;
         const std::shared_ptr<Gio::SimpleAction>& getActionGitHubRepo() const;
@@ -27,10 +29,16 @@ namespace NickvisionTubeConverter::Controls
         Gtk::Button m_btnSelectSaveFolder;
         //==Download Videos==//
         Gtk::Button m_btnDownloadVideos;
-        //====//
+        //==Queue==//
         Gtk::Button m_btnAddDownloadToQueue;
         Gtk::Button m_btnRemoveSelectedDownloadFromQueue;
-        Gtk::Button m_btnRemoveAllQueuedDownloads;
+        Gtk::Popover m_popRemoveAllQueuedDownloads;
+        Gtk::Box m_boxRemoveAllQueuedDownloads;
+        Gtk::Label m_lblRemoveAllQueuedDownloads;
+        Gtk::Box m_boxBtnsRemoveAllQueuedDownloads;
+        Gtk::Button m_btnConfirmRemoveAllQueuedDownloads;
+        Gtk::Button m_btnCancelRemoveAllQueuedDownloads;
+        Gtk::MenuButton m_btnRemoveAllQueuedDownloads;
         //==Settings==//
         Gtk::Button m_btnSettings;
         //==Help==//
