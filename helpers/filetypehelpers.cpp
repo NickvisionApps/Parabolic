@@ -11,18 +11,12 @@ namespace NickvisionTubeConverter::Helpers
         {
             case FileType::MP4:
                 return "MP4";
-            case FileType::MOV:
-                return "MOV";
-            case FileType::AVI:
-                return "AVI";
+            case FileType::WEBM:
+                return "WEBM";
             case FileType::MP3:
                 return "MP3";
             case FileType::WAV:
                 return "WAV";
-            case FileType::WMA:
-                return "WMA";
-            case FileType::OGG:
-                return "OGG";
             case FileType::FLAC:
                 return "FLAC";
         }
@@ -34,17 +28,12 @@ namespace NickvisionTubeConverter::Helpers
         {
             case FileType::MP4:
                 return ".mp4";
-            case FileType::MOV:
-                return ".mov";
-            case FileType::AVI:
-                return ".avi";
+            case FileType::WEBM:
+                return ".webm";
             case FileType::MP3:
                 return ".mp3";
             case FileType::WAV:
                 return ".wav";
-            case FileType::WMA:
-                return ".wma";
-            case FileType::OGG:
                 return ".ogg";
             case FileType::FLAC:
                 return ".flac";
@@ -59,13 +48,9 @@ namespace NickvisionTubeConverter::Helpers
         {
             return FileType::MP4;
         }
-        else if(sToLower.find("mov") != std::string::npos)
+        else if(sToLower.find("webm") != std::string::npos)
         {
-            return FileType::MOV;
-        }
-        else if(sToLower.find("avi") != std::string::npos)
-        {
-            return FileType::AVI;
+            return FileType::WEBM;
         }
         else if(sToLower.find("mp3") != std::string::npos)
         {
@@ -74,14 +59,6 @@ namespace NickvisionTubeConverter::Helpers
         else if(sToLower.find("wav") != std::string::npos)
         {
             return FileType::WAV;
-        }
-        else if(sToLower.find("wma") != std::string::npos)
-        {
-            return FileType::WMA;
-        }
-        else if(sToLower.find("ogg") != std::string::npos)
-        {
-            return FileType::OGG;
         }
         else if(sToLower.find("flac") != std::string::npos)
         {
@@ -99,17 +76,11 @@ namespace NickvisionTubeConverter::Helpers
         {
             case FileType::MP4:
                 return false;
-            case FileType::MOV:
-                return false;
-            case FileType::AVI:
+            case FileType::WEBM:
                 return false;
             case FileType::MP3:
                 return true;
             case FileType::WAV:
-                return true;
-            case FileType::WMA:
-                return true;
-            case FileType::OGG:
                 return true;
             case FileType::FLAC:
                 return true;
@@ -122,17 +93,11 @@ namespace NickvisionTubeConverter::Helpers
         {
             case FileType::MP4:
                 return true;
-            case FileType::MOV:
-                return true;
-            case FileType::AVI:
+            case FileType::WEBM:
                 return true;
             case FileType::MP3:
                 return false;
             case FileType::WAV:
-                return false;
-            case FileType::WMA:
-                return false;
-            case FileType::OGG:
                 return false;
             case FileType::FLAC:
                 return false;

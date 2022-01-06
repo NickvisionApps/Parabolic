@@ -6,12 +6,9 @@ namespace NickvisionTubeConverter::Models
     enum class FileType
     {
         MP4,
-        MOV,
-        AVI,
+        WEBM,
         MP3,
         WAV,
-        WMA,
-        OGG,
         FLAC
     };
 }

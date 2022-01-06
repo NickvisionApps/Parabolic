@@ -3,6 +3,8 @@
 
 #include <gtkmm.h>
 #include "../models/update/updater.h"
+#include "../models/downloadmanager.h"
+#include "../models/datadownloadscolumns.h"
 #include "../controls/headerbar.h"
 #include "../controls/infobar.h"
 
@@ -17,6 +19,7 @@ namespace NickvisionTubeConverter::Views
     private:
         bool m_opened;
         NickvisionTubeConverter::Models::Update::Updater m_updater;
+        NickvisionTubeConverter::Models::DownloadManager m_downloadManager;
         //==UI==//
         NickvisionTubeConverter::Controls::HeaderBar m_headerBar;
         Gtk::Box m_mainBox;
@@ -32,11 +35,15 @@ namespace NickvisionTubeConverter::Views
         Gtk::Entry m_txtNewFilename;
         Gtk::ScrolledWindow m_scrollDataDownloads;
         Gtk::TreeView m_dataDownloads;
+        NickvisionTubeConverter::Models::DataDownloadsColumns m_dataDownloadsColumns;
+        std::shared_ptr<Gtk::ListStore> m_dataDownloadsModel;
         //==Slots==//
         void onShow();
         void selectSaveFolder();
-        void downloadVideo();
-        void clearCompletedDownloads();
+        void downloadVideos();
+        void addDownloadToQueue();
+        void removeSelectedDownloadFromQueue();
+        void removeAllQueuedDownloads();
         void settings();
         void checkForUpdates(const Glib::VariantBase& args);
         void gitHubRepo(const Glib::VariantBase& args);

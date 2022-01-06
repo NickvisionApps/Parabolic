@@ -11,8 +11,10 @@ namespace NickvisionTubeConverter::Controls
     public:
         HeaderBar();
         Gtk::Button& getBtnSelectSaveFolder();
-        Gtk::Button& getBtnDownloadVideo();
-        Gtk::Button& getBtnClearCompletedDownloads();
+        Gtk::Button& getBtnDownloadVideos();
+        Gtk::Button& getBtnAddDownloadToQueue();
+        Gtk::Button& getBtnRemoveSelectedDownloadFromQueue();
+        Gtk::Button& getBtnRemoveAllQueuedDownloads();
         Gtk::Button& getBtnSettings();
         const std::shared_ptr<Gio::SimpleAction>& getActionCheckForUpdates() const;
         const std::shared_ptr<Gio::SimpleAction>& getActionGitHubRepo() const;
@@ -23,10 +25,12 @@ namespace NickvisionTubeConverter::Controls
     private:
         //==Select Save Folder==//
         Gtk::Button m_btnSelectSaveFolder;
-        //==Download Video==//
-        Gtk::Button m_btnDownloadVideo;
-        //==Clear Completed Downloads==//
-        Gtk::Button m_btnClearCompletedDownloads;
+        //==Download Videos==//
+        Gtk::Button m_btnDownloadVideos;
+        //====//
+        Gtk::Button m_btnAddDownloadToQueue;
+        Gtk::Button m_btnRemoveSelectedDownloadFromQueue;
+        Gtk::Button m_btnRemoveAllQueuedDownloads;
         //==Settings==//
         Gtk::Button m_btnSettings;
         //==Help==//
@@ -43,6 +47,7 @@ namespace NickvisionTubeConverter::Controls
         Gtk::MenuButton m_btnHelp;
         //==Separators==//
         Gtk::Separator m_sep1;
+        Gtk::Separator m_sep2;
     };
 }
 

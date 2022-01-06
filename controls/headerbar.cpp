@@ -7,12 +7,19 @@ namespace NickvisionTubeConverter::Controls
         //==Select Save Folder==//
         m_btnSelectSaveFolder.set_icon_name("folder-open");
         m_btnSelectSaveFolder.set_tooltip_text("Select Save Folder");
-        //==Download Video==//
-        m_btnDownloadVideo.set_icon_name("document-save");
-        m_btnDownloadVideo.set_tooltip_text("Download Video");
+        //==Download Queue==//
+        m_btnDownloadVideos.set_icon_name("document-save");
+        m_btnDownloadVideos.set_tooltip_text("Download Queued Videos");
         //==Clear Completed Downloads==//
-        m_btnClearCompletedDownloads.set_icon_name("edit-select-all");
-        m_btnClearCompletedDownloads.set_tooltip_text("Clear Completed Downloads");
+        //Add
+        m_btnAddDownloadToQueue.set_icon_name("list-add");
+        m_btnAddDownloadToQueue.set_tooltip_text("Add Download To Queue");
+        //Remove
+        m_btnRemoveSelectedDownloadFromQueue.set_icon_name("list-remove");
+        m_btnRemoveSelectedDownloadFromQueue.set_tooltip_text("Remove Selected Download From Queue");
+        //Clear
+        m_btnRemoveAllQueuedDownloads.set_icon_name("edit-delete");
+        m_btnRemoveAllQueuedDownloads.set_tooltip_text("Clear All Queued Downloads");
         //==Settings==//
         m_btnSettings.set_icon_name("settings");
         m_btnSettings.set_tooltip_text("Settings");
@@ -42,8 +49,11 @@ namespace NickvisionTubeConverter::Controls
         //==Layout==//
         pack_start(m_btnSelectSaveFolder);
         pack_start(m_sep1);
-        pack_start(m_btnDownloadVideo);
-        pack_start(m_btnClearCompletedDownloads);
+        pack_start(m_btnDownloadVideos);
+        pack_start(m_sep2);
+        pack_start(m_btnAddDownloadToQueue);
+        pack_start(m_btnRemoveSelectedDownloadFromQueue);
+        pack_start(m_btnRemoveAllQueuedDownloads);
         pack_end(m_btnHelp);
         pack_end(m_btnSettings);
     }
@@ -53,14 +63,24 @@ namespace NickvisionTubeConverter::Controls
         return m_btnSelectSaveFolder;
     }
 
-    Gtk::Button& HeaderBar::getBtnDownloadVideo()
+    Gtk::Button& HeaderBar::getBtnDownloadVideos()
     {
-        return m_btnDownloadVideo;
+        return m_btnDownloadVideos;
     }
 
-    Gtk::Button& HeaderBar::getBtnClearCompletedDownloads()
+    Gtk::Button& HeaderBar::getBtnAddDownloadToQueue()
     {
-        return m_btnClearCompletedDownloads;
+        return m_btnAddDownloadToQueue;
+    }
+
+    Gtk::Button& HeaderBar::getBtnRemoveSelectedDownloadFromQueue()
+    {
+        return m_btnRemoveSelectedDownloadFromQueue;
+    }
+
+    Gtk::Button& HeaderBar::getBtnRemoveAllQueuedDownloads()
+    {
+        return m_btnRemoveAllQueuedDownloads;
     }
 
     Gtk::Button& HeaderBar::getBtnSettings()

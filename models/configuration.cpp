@@ -7,9 +7,7 @@
 
 namespace NickvisionTubeConverter::Models
 {
-    using namespace NickvisionTubeConverter::Models::Update;
-
-    Configuration::Configuration() : m_configDir(std::string(getpwuid(getuid())->pw_dir) + "/.config/Nickvision/NickvisionTubeConverter/"), m_currentYtDlpVersion("0.0.0"), m_maxNumberOfActiveDownloads(5), m_previousSaveFolder(""), m_previousFileFormat(0)
+    Configuration::Configuration() : m_configDir(std::string(getpwuid(getuid())->pw_dir) + "/.config/Nickvision/NickvisionTubeConverter/"), m_maxNumberOfActiveDownloads(5), m_previousSaveFolder(""), m_previousFileFormat(0)
     {
         if (!std::filesystem::exists(m_configDir))
         {
@@ -22,23 +20,12 @@ namespace NickvisionTubeConverter::Models
             try
             {
                 configFile >> json;
-                setCurrentYtDlpVersion({ json.get("CurrentYtDlpVersion", "0.0.0").asString() });
                 setMaxNumberOfActiveDownloads(json.get("MaxNumberOfActiveDownloads", 5).asInt());
                 setPreviousSaveFolder(json.get("PreviousSaveFolder", "").asString());
                 setPreviousFileFormat(json.get("PreviousFileFormat", 0).asInt());
             }
             catch (...) { }
         }
-    }
-
-    const Version& Configuration::getCurrentYtDlpVersion() const
-    {
-        return m_currentYtDlpVersion;
-    }
-
-    void Configuration::setCurrentYtDlpVersion(const Version& currentYtDlpVersion)
-    {
-        m_currentYtDlpVersion = currentYtDlpVersion;
     }
 
     int Configuration::getMaxNumberOfActiveDownloads() const
@@ -77,7 +64,6 @@ namespace NickvisionTubeConverter::Models
         if (configFile.is_open())
         {
             Json::Value json;
-            json["CurrentYtDlpVersion"] = getCurrentYtDlpVersion().toString();
             json["MaxNumberOfActiveDownloads"] = getMaxNumberOfActiveDownloads();
             json["PreviousSaveFolder"] = getPreviousSaveFolder();
             json["PreviousFileFormat"] = getPreviousFileFormat();
