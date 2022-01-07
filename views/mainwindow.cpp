@@ -13,7 +13,7 @@ namespace NickvisionTubeConverter::Views
     using namespace NickvisionTubeConverter::Models;
     using namespace NickvisionTubeConverter::Controls;
 
-    MainWindow::MainWindow() : m_opened(false), m_updater("https://raw.githubusercontent.com/nlogozzo/NickvisionTubeConverter/main/UpdateConfig.json", { "2022.1.1" })
+    MainWindow::MainWindow() : m_opened(false), m_updater("https://raw.githubusercontent.com/nlogozzo/NickvisionTubeConverter/main/UpdateConfig.json", { "2022.1.2" })
     {
         //==Settings==//
         set_default_size(800, 600);
@@ -304,7 +304,7 @@ namespace NickvisionTubeConverter::Views
     void MainWindow::changelog(const Glib::VariantBase& args)
     {
         Gtk::MessageDialog* changelogDialog = new Gtk::MessageDialog(*this, "What's New?", false, Gtk::MessageType::INFO, Gtk::ButtonsType::OK, true);
-        changelogDialog->set_secondary_text("\n- Added confirm message for removing all queued downloads");
+        changelogDialog->set_secondary_text("\n- UX improvements");
         changelogDialog->signal_response().connect(sigc::bind([](int response, Gtk::MessageDialog* dialog)
         {
            delete dialog;
@@ -319,7 +319,7 @@ namespace NickvisionTubeConverter::Views
         aboutDialog->set_modal(true);
         aboutDialog->set_hide_on_close(true);
         aboutDialog->set_program_name("Nickvision Tube Converter");
-        aboutDialog->set_version("2022.1.1");
+        aboutDialog->set_version("2022.1.2");
         aboutDialog->set_comments("An easy to use YouTube video downloader.");
         aboutDialog->set_copyright("(C) Nickvision 2021-2022");
         aboutDialog->set_license_type(Gtk::License::GPL_3_0);

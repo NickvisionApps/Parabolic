@@ -35,7 +35,7 @@ namespace NickvisionTubeConverter::Controls
         m_btnRemoveAllQueuedDownloads.set_popover(m_popRemoveAllQueuedDownloads);
         m_btnRemoveAllQueuedDownloads.set_tooltip_text("Clear All Queued Downloads");
         //==Settings==//
-        m_btnSettings.set_icon_name("settings");
+        m_btnSettings.set_icon_name("preferences-system");
         m_btnSettings.set_tooltip_text("Settings");
         //==Help==//
         m_actionHelp = Gio::SimpleActionGroup::create();
