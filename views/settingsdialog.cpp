@@ -18,7 +18,8 @@ namespace NickvisionTubeConverter::Views
         m_listGeneral.set_margin_start(20);
         m_listGeneral.set_margin_end(20);
         m_lblMaxNumberOfActiveDownloads.set_label("Max Number of Active Downloads");
-        m_lblMaxNumberOfActiveDownloads.set_halign(Gtk::Align::START);
+        m_lblMaxNumberOfActiveDownloads.set_tooltip_text("The maximum number of downloads allowed to be added to the queue.");
+        m_lblMaxNumberOfActiveDownloads.set_halign(Gtk::Align::FILL);
         m_lblMaxNumberOfActiveDownloads.set_margin_start(2);
         for(int i = 1; i < 11; i++)
         {

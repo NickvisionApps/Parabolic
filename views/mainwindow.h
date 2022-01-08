@@ -44,10 +44,10 @@ namespace NickvisionTubeConverter::Views
         void addDownloadToQueue();
         void removeSelectedDownloadFromQueue();
         void removeAllQueuedDownloads();
-        void settings();
         void checkForUpdates(const Glib::VariantBase& args);
         void gitHubRepo(const Glib::VariantBase& args);
         void reportABug(const Glib::VariantBase& args);
+        void settings(const Glib::VariantBase& args);
         void changelog(const Glib::VariantBase& args);
         void about(const Glib::VariantBase& args);
     };

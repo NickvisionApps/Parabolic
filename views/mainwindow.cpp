@@ -13,12 +13,12 @@ namespace NickvisionTubeConverter::Views
     using namespace NickvisionTubeConverter::Models;
     using namespace NickvisionTubeConverter::Controls;
 
-    MainWindow::MainWindow() : m_opened(false), m_updater("https://raw.githubusercontent.com/nlogozzo/NickvisionTubeConverter/main/UpdateConfig.json", { "2022.1.2" })
+    MainWindow::MainWindow() : m_opened(false), m_updater("https://raw.githubusercontent.com/nlogozzo/NickvisionTubeConverter/main/UpdateConfig.json", { "2022.1.3" })
     {
         //==Settings==//
         set_default_size(800, 600);
-        set_title("Nickvision Tube Converter");
         set_titlebar(m_headerBar);
+        m_headerBar.setTitle("Nickvision Tube Converter");
         signal_show().connect(sigc::mem_fun(*this, &MainWindow::onShow));
         //==HeaderBar==//
         m_headerBar.getBtnSelectSaveFolder().signal_clicked().connect(sigc::mem_fun(*this, &MainWindow::selectSaveFolder));
@@ -26,10 +26,10 @@ namespace NickvisionTubeConverter::Views
         m_headerBar.getBtnAddDownloadToQueue().signal_clicked().connect(sigc::mem_fun(*this, &MainWindow::addDownloadToQueue));
         m_headerBar.getBtnRemoveSelectedDownloadFromQueue().signal_clicked().connect(sigc::mem_fun(*this, &MainWindow::removeSelectedDownloadFromQueue));
         m_headerBar.getBtnConfirmRemoveAllQueuedDownloads().signal_clicked().connect(sigc::mem_fun(*this, &MainWindow::removeAllQueuedDownloads));
-        m_headerBar.getBtnSettings().signal_clicked().connect(sigc::mem_fun(*this, &MainWindow::settings));
         m_headerBar.getActionCheckForUpdates()->signal_activate().connect(sigc::mem_fun(*this, &MainWindow::checkForUpdates));
         m_headerBar.getActionGitHubRepo()->signal_activate().connect(sigc::mem_fun(*this, &MainWindow::gitHubRepo));
         m_headerBar.getActionReportABug()->signal_activate().connect(sigc::mem_fun(*this, &MainWindow::reportABug));
+        m_headerBar.getActionSettings()->signal_activate().connect(sigc::mem_fun(*this, &MainWindow::settings));
         m_headerBar.getActionChangelog()->signal_activate().connect(sigc::mem_fun(*this, &MainWindow::changelog));
         m_headerBar.getActionAbout()->signal_activate().connect(sigc::mem_fun(*this, &MainWindow::about));
         m_headerBar.getBtnDownloadVideos().set_sensitive(false);
@@ -236,18 +236,6 @@ namespace NickvisionTubeConverter::Views
         m_dataDownloads.columns_autosize();
     }
 
-    void MainWindow::settings()
-    {
-        SettingsDialog* settingsDialog = new SettingsDialog(*this);
-        settingsDialog->signal_hide().connect(sigc::bind([&](SettingsDialog* dialog)
-        {
-            delete dialog;
-            Configuration configuration;
-            m_downloadManager.setMaxNumOfDownloads(configuration.getMaxNumberOfActiveDownloads());
-        }, settingsDialog));
-        settingsDialog->show();
-    }
-
     void MainWindow::checkForUpdates(const Glib::VariantBase& args)
     {
         ProgressDialog* checkingDialog = new ProgressDialog(*this, "Checking for updates...", [&]() { m_updater.checkForUpdates(); });
@@ -301,10 +289,22 @@ namespace NickvisionTubeConverter::Views
         Gio::AppInfo::launch_default_for_uri("https://github.com/nlogozzo/NickvisionTubeConverter/issues/new");
     }
 
+    void MainWindow::settings(const Glib::VariantBase& args)
+    {
+        SettingsDialog* settingsDialog = new SettingsDialog(*this);
+        settingsDialog->signal_hide().connect(sigc::bind([&](SettingsDialog* dialog)
+        {
+            delete dialog;
+            Configuration configuration;
+            m_downloadManager.setMaxNumOfDownloads(configuration.getMaxNumberOfActiveDownloads());
+        }, settingsDialog));
+        settingsDialog->show();
+    }
+
     void MainWindow::changelog(const Glib::VariantBase& args)
     {
         Gtk::MessageDialog* changelogDialog = new Gtk::MessageDialog(*this, "What's New?", false, Gtk::MessageType::INFO, Gtk::ButtonsType::OK, true);
-        changelogDialog->set_secondary_text("\n- UX improvements");
+        changelogDialog->set_secondary_text("\n- Added subtitle to headerbar\n- Moved settings to help menu\n- Other UX improvements");
         changelogDialog->signal_response().connect(sigc::bind([](int response, Gtk::MessageDialog* dialog)
         {
            delete dialog;
@@ -319,7 +319,7 @@ namespace NickvisionTubeConverter::Views
         aboutDialog->set_modal(true);
         aboutDialog->set_hide_on_close(true);
         aboutDialog->set_program_name("Nickvision Tube Converter");
-        aboutDialog->set_version("2022.1.2");
+        aboutDialog->set_version("2022.1.3");
         aboutDialog->set_comments("An easy to use YouTube video downloader.");
         aboutDialog->set_copyright("(C) Nickvision 2021-2022");
         aboutDialog->set_license_type(Gtk::License::GPL_3_0);

@@ -10,6 +10,8 @@ namespace NickvisionTubeConverter::Controls
     {
     public:
         HeaderBar();
+        void setTitle(const std::string& title);
+        void setSubtitle(const std::string& subtitle);
         Gtk::Button& getBtnSelectSaveFolder();
         Gtk::Button& getBtnDownloadVideos();
         Gtk::Button& getBtnAddDownloadToQueue();
@@ -17,14 +19,18 @@ namespace NickvisionTubeConverter::Controls
         Gtk::Popover& getPopRemoveAllQueuedDownloads();
         Gtk::Button& getBtnConfirmRemoveAllQueuedDownloads();
         Gtk::MenuButton& getBtnRemoveAllQueuedDownloads();
-        Gtk::Button& getBtnSettings();
         const std::shared_ptr<Gio::SimpleAction>& getActionCheckForUpdates() const;
         const std::shared_ptr<Gio::SimpleAction>& getActionGitHubRepo() const;
         const std::shared_ptr<Gio::SimpleAction>& getActionReportABug() const;
+        const std::shared_ptr<Gio::SimpleAction>& getActionSettings() const;
         const std::shared_ptr<Gio::SimpleAction>& getActionChangelog() const;
         const std::shared_ptr<Gio::SimpleAction>& getActionAbout() const;
 
     private:
+        //==Title Widget==//
+        Gtk::Box m_boxTitle;
+        Gtk::Label m_lblTitle;
+        Gtk::Label m_lblSubtitle;
         //==Select Save Folder==//
         Gtk::Button m_btnSelectSaveFolder;
         //==Download Videos==//
@@ -39,14 +45,13 @@ namespace NickvisionTubeConverter::Controls
         Gtk::Button m_btnConfirmRemoveAllQueuedDownloads;
         Gtk::Button m_btnCancelRemoveAllQueuedDownloads;
         Gtk::MenuButton m_btnRemoveAllQueuedDownloads;
-        //==Settings==//
-        Gtk::Button m_btnSettings;
         //==Help==//
         std::shared_ptr<Gio::SimpleActionGroup> m_actionHelp;
         std::shared_ptr<Gio::SimpleAction> m_actionCheckForUpdates;
         std::shared_ptr<Gio::SimpleAction> m_actionGitHubRepo;
         std::shared_ptr<Gio::SimpleAction> m_actionReportABug;
         std::shared_ptr<Gio::SimpleAction> m_actionChangelog;
+        std::shared_ptr<Gio::SimpleAction> m_actionSettings;
         std::shared_ptr<Gio::SimpleAction> m_actionAbout;
         std::shared_ptr<Gio::Menu> m_menuHelp;
         std::shared_ptr<Gio::Menu> m_menuHelpUpdate;
