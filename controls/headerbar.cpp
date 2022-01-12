@@ -28,6 +28,7 @@ namespace NickvisionTubeConverter::Controls
         m_lblRemoveAllQueuedDownloads.set_label("Are you sure you want to remove all downloads from the queue?");
         m_lblRemoveAllQueuedDownloads.set_margin(4);
         m_btnConfirmRemoveAllQueuedDownloads.set_label("Remove");
+        m_btnConfirmRemoveAllQueuedDownloads.get_style_context()->add_class("destructive-action");
         m_btnCancelRemoveAllQueuedDownloads.set_label("Cancel");
         m_btnCancelRemoveAllQueuedDownloads.signal_clicked().connect(sigc::mem_fun(m_popRemoveAllQueuedDownloads, &Gtk::Popover::popdown));
         m_boxBtnsRemoveAllQueuedDownloads.set_homogeneous(true);

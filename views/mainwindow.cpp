@@ -13,7 +13,7 @@ namespace NickvisionTubeConverter::Views
     using namespace NickvisionTubeConverter::Models;
     using namespace NickvisionTubeConverter::Controls;
 
-    MainWindow::MainWindow() : m_opened(false), m_updater("https://raw.githubusercontent.com/nlogozzo/NickvisionTubeConverter/main/UpdateConfig.json", { "2022.1.3" })
+    MainWindow::MainWindow() : m_opened(false), m_updater("https://raw.githubusercontent.com/nlogozzo/NickvisionTubeConverter/main/UpdateConfig.json", { "2022.1.4" })
     {
         //==Settings==//
         set_default_size(800, 600);
@@ -138,7 +138,8 @@ namespace NickvisionTubeConverter::Views
     {
         Gtk::FileChooserDialog* folderDialog = new Gtk::FileChooserDialog(*this, "Select Save Folder", Gtk::FileChooserDialog::Action::SELECT_FOLDER, true);
         folderDialog->set_modal(true);
-        folderDialog->add_button("_Select", Gtk::ResponseType::OK);
+        Gtk::Button* btnSelect = folderDialog->add_button("_Select", Gtk::ResponseType::OK);
+        btnSelect->get_style_context()->add_class("suggested-action");
         folderDialog->add_button("_Cancel", Gtk::ResponseType::CANCEL);
         folderDialog->signal_response().connect(sigc::bind([&](int response, Gtk::FileChooserDialog* dialog)
         {
@@ -304,7 +305,7 @@ namespace NickvisionTubeConverter::Views
     void MainWindow::changelog(const Glib::VariantBase& args)
     {
         Gtk::MessageDialog* changelogDialog = new Gtk::MessageDialog(*this, "What's New?", false, Gtk::MessageType::INFO, Gtk::ButtonsType::OK, true);
-        changelogDialog->set_secondary_text("\n- Added subtitle to headerbar\n- Moved settings to help menu\n- Other UX improvements");
+        changelogDialog->set_secondary_text("\n- Added action color to buttons");
         changelogDialog->signal_response().connect(sigc::bind([](int response, Gtk::MessageDialog* dialog)
         {
            delete dialog;
@@ -319,7 +320,7 @@ namespace NickvisionTubeConverter::Views
         aboutDialog->set_modal(true);
         aboutDialog->set_hide_on_close(true);
         aboutDialog->set_program_name("Nickvision Tube Converter");
-        aboutDialog->set_version("2022.1.3");
+        aboutDialog->set_version("2022.1.4");
         aboutDialog->set_comments("An easy to use YouTube video downloader.");
         aboutDialog->set_copyright("(C) Nickvision 2021-2022");
         aboutDialog->set_license_type(Gtk::License::GPL_3_0);
