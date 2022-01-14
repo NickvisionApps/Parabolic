@@ -47,6 +47,7 @@ namespace NickvisionTubeConverter::Controls
         m_actionGitHubRepo = m_actionHelp->add_action("gitHubRepo");
         m_actionReportABug = m_actionHelp->add_action("reportABug");
         m_actionSettings = m_actionHelp->add_action("settings");
+        m_actionShortcuts = m_actionHelp->add_action("shortcuts");
         m_actionChangelog = m_actionHelp->add_action("changelog");
         m_actionAbout = m_actionHelp->add_action("about");
         insert_action_group("help", m_actionHelp);
@@ -58,6 +59,7 @@ namespace NickvisionTubeConverter::Controls
         m_menuHelpLinks->append("Report a Bug", "help.reportABug");
         m_menuHelpActions = Gio::Menu::create();
         m_menuHelpActions->append("Settings", "help.settings");
+        m_menuHelpActions->append("Keyboard Shortcuts", "help.shortcuts");
         m_menuHelpActions->append("Changelog", "help.changelog");
         m_menuHelpActions->append("About Tube Converter", "help.about");
         m_menuHelp->append_section(m_menuHelpUpdate);
@@ -145,6 +147,11 @@ namespace NickvisionTubeConverter::Controls
     const std::shared_ptr<Gio::SimpleAction>& HeaderBar::getActionSettings() const
     {
         return m_actionSettings;
+    }
+
+    const std::shared_ptr<Gio::SimpleAction>& HeaderBar::getActionShortcuts() const
+    {
+        return m_actionShortcuts;
     }
 
     const std::shared_ptr<Gio::SimpleAction>& HeaderBar::getActionChangelog() const

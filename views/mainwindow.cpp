@@ -6,6 +6,7 @@
 #include "../models/download.h"
 #include "../controls/progressdialog.h"
 #include "settingsdialog.h"
+#include "shortcutswindow.h"
 
 namespace NickvisionTubeConverter::Views
 {
@@ -13,7 +14,7 @@ namespace NickvisionTubeConverter::Views
     using namespace NickvisionTubeConverter::Models;
     using namespace NickvisionTubeConverter::Controls;
 
-    MainWindow::MainWindow() : m_opened(false), m_updater("https://raw.githubusercontent.com/nlogozzo/NickvisionTubeConverter/main/UpdateConfig.json", { "2022.1.4" })
+    MainWindow::MainWindow() : m_opened(false), m_updater("https://raw.githubusercontent.com/nlogozzo/NickvisionTubeConverter/main/UpdateConfig.json", { "2022.1.5" })
     {
         //==Settings==//
         set_default_size(800, 600);
@@ -30,6 +31,7 @@ namespace NickvisionTubeConverter::Views
         m_headerBar.getActionGitHubRepo()->signal_activate().connect(sigc::mem_fun(*this, &MainWindow::gitHubRepo));
         m_headerBar.getActionReportABug()->signal_activate().connect(sigc::mem_fun(*this, &MainWindow::reportABug));
         m_headerBar.getActionSettings()->signal_activate().connect(sigc::mem_fun(*this, &MainWindow::settings));
+        m_headerBar.getActionShortcuts()->signal_activate().connect(sigc::mem_fun(*this, &MainWindow::shortcuts));
         m_headerBar.getActionChangelog()->signal_activate().connect(sigc::mem_fun(*this, &MainWindow::changelog));
         m_headerBar.getActionAbout()->signal_activate().connect(sigc::mem_fun(*this, &MainWindow::about));
         m_headerBar.getBtnDownloadVideos().set_sensitive(false);
@@ -100,6 +102,73 @@ namespace NickvisionTubeConverter::Views
         m_scrollDataDownloads.set_child(m_dataDownloads);
         m_scrollDataDownloads.set_margin(6);
         m_scrollDataDownloads.set_expand(true);
+        //==Shortcuts==//
+        m_shortcutController = Gtk::ShortcutController::create();
+        m_shortcutController->set_scope(Gtk::ShortcutScope::GLOBAL);
+        //Select Save Folder
+        m_shortcutSelectSaveFolderTrigger = Gtk::KeyvalTrigger::create(GDK_KEY_O, Gdk::ModifierType::CONTROL_MASK);
+        m_shortcutSelectSaveFolderAction = Gtk::CallbackAction::create([&](Gtk::Widget& widget, const Glib::VariantBase& args)
+        {
+            selectSaveFolder();
+            return true;
+        });
+        m_shortcutSelectSaveFolder = Gtk::Shortcut::create(m_shortcutSelectSaveFolderTrigger, m_shortcutSelectSaveFolderAction);
+        m_shortcutController->add_shortcut(m_shortcutSelectSaveFolder);
+        //Download Videos
+        m_shortcutDownloadVideosTrigger = Gtk::KeyvalTrigger::create(GDK_KEY_D, Gdk::ModifierType::CONTROL_MASK);
+        m_shortcutDownloadVideosAction = Gtk::CallbackAction::create([&](Gtk::Widget& widget, const Glib::VariantBase& args)
+        {
+            if(m_downloadManager.getQueueCount() != 0)
+            {
+                downloadVideos();
+            }
+            return true;
+        });
+        m_shortcutDownloadVideos = Gtk::Shortcut::create(m_shortcutDownloadVideosTrigger, m_shortcutDownloadVideosAction);
+        m_shortcutController->add_shortcut(m_shortcutDownloadVideos);
+        //Add Download to Queue
+        m_shortcutAddDownloadToQueueTrigger = Gtk::KeyvalTrigger::create(GDK_KEY_A, Gdk::ModifierType::CONTROL_MASK | Gdk::ModifierType::SHIFT_MASK);
+        m_shortcutAddDownloadToQueueAction = Gtk::CallbackAction::create([&](Gtk::Widget& widget, const Glib::VariantBase& args)
+        {
+            addDownloadToQueue();
+            return true;
+        });
+        m_shortcutAddDownloadToQueue = Gtk::Shortcut::create(m_shortcutAddDownloadToQueueTrigger, m_shortcutAddDownloadToQueueAction);
+        m_shortcutController->add_shortcut(m_shortcutAddDownloadToQueue);
+        //Remove Download from Queue
+        m_shortcutRemoveDownloadFromQueueTrigger = Gtk::KeyvalTrigger::create(GDK_KEY_Delete);
+        m_shortcutRemoveDownloadFromQueueAction = Gtk::CallbackAction::create([&](Gtk::Widget& widget, const Glib::VariantBase& args)
+        {
+            if(m_dataDownloads.get_selection()->get_selected_rows().size() == 1)
+            {
+                removeSelectedDownloadFromQueue();
+            }
+            return true;
+        });
+        m_shortcutRemoveDownloadFromQueue = Gtk::Shortcut::create(m_shortcutRemoveDownloadFromQueueTrigger, m_shortcutRemoveDownloadFromQueueAction);
+        m_shortcutController->add_shortcut(m_shortcutRemoveDownloadFromQueue);
+        //Clear Downloads Queue
+        m_shortcutClearDownloadsQueueTrigger = Gtk::KeyvalTrigger::create(GDK_KEY_C, Gdk::ModifierType::CONTROL_MASK | Gdk::ModifierType::SHIFT_MASK);
+        m_shortcutClearDownloadsQueueAction = Gtk::CallbackAction::create([&](Gtk::Widget& widget, const Glib::VariantBase& args)
+        {
+            if(m_downloadManager.getQueueCount() != 0)
+            {
+                m_headerBar.getPopRemoveAllQueuedDownloads().popup();
+            }
+            return true;
+        });
+        m_shortcutClearDownloadsQueue = Gtk::Shortcut::create(m_shortcutClearDownloadsQueueTrigger, m_shortcutClearDownloadsQueueAction);
+        m_shortcutController->add_shortcut(m_shortcutClearDownloadsQueue);
+        //About
+        m_shortcutAboutTrigger = Gtk::KeyvalTrigger::create(GDK_KEY_F1);
+        m_shortcutAboutAction = Gtk::CallbackAction::create([&](Gtk::Widget& widget, const Glib::VariantBase& args)
+        {
+            about(args);
+            return true;
+        });
+        m_shortcutAbout = Gtk::Shortcut::create(m_shortcutAboutTrigger, m_shortcutAboutAction);
+        m_shortcutController->add_shortcut(m_shortcutAbout);
+        add_controller(m_shortcutController);
         //==Layout==//
         m_mainBox.set_orientation(Gtk::Orientation::VERTICAL);
         m_mainBox.append(m_infoBar);
@@ -302,10 +371,20 @@ namespace NickvisionTubeConverter::Views
         settingsDialog->show();
     }
 
+    void MainWindow::shortcuts(const Glib::VariantBase& args)
+    {
+        ShortcutsWindow* shortcutsWindow = new ShortcutsWindow(*this);
+        shortcutsWindow->signal_hide().connect(sigc::bind([](ShortcutsWindow* window)
+        {
+            delete window;
+        }, shortcutsWindow));
+        shortcutsWindow->show();
+    }
+
     void MainWindow::changelog(const Glib::VariantBase& args)
     {
         Gtk::MessageDialog* changelogDialog = new Gtk::MessageDialog(*this, "What's New?", false, Gtk::MessageType::INFO, Gtk::ButtonsType::OK, true);
-        changelogDialog->set_secondary_text("\n- Added action color to buttons");
+        changelogDialog->set_secondary_text("\n- Fixed a bug preventing some downloads from completing\n- Added keyboard shortcuts");
         changelogDialog->signal_response().connect(sigc::bind([](int response, Gtk::MessageDialog* dialog)
         {
            delete dialog;
@@ -320,7 +399,7 @@ namespace NickvisionTubeConverter::Views
         aboutDialog->set_modal(true);
         aboutDialog->set_hide_on_close(true);
         aboutDialog->set_program_name("Nickvision Tube Converter");
-        aboutDialog->set_version("2022.1.4");
+        aboutDialog->set_version("2022.1.5");
         aboutDialog->set_comments("An easy to use YouTube video downloader.");
         aboutDialog->set_copyright("(C) Nickvision 2021-2022");
         aboutDialog->set_license_type(Gtk::License::GPL_3_0);

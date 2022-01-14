@@ -12,7 +12,7 @@ namespace NickvisionTubeConverter::Models
         Download(const std::string& videoUrl, FileType fileType, const std::string& saveFolder, const std::string& newFilename);
         const std::string& getVideoUrl() const;
         FileType getFileType() const;
-        const std::string& getPath() const;
+        std::string getPath() const;
         bool download() const;
 
     private:

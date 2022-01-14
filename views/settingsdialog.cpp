@@ -28,6 +28,9 @@ namespace NickvisionTubeConverter::Views
         m_listGeneral.append(m_lblMaxNumberOfActiveDownloads);
         m_listGeneral.append(m_cmbMaxNumberOfActiveDownloads);
         //==Layout==//
+        Gtk::Button* btnSave = add_button("Save", Gtk::ResponseType::CLOSE);
+        btnSave->get_style_context()->add_class("suggested-action");
+        btnSave->signal_clicked().connect(sigc::mem_fun(*this, &Gtk::Dialog::hide));
         m_mainBox.set_orientation(Gtk::Orientation::VERTICAL);
         m_mainBox.append(m_lblGeneral);
         m_mainBox.append(m_listGeneral);
