@@ -16,6 +16,7 @@ public class Configuration
     public int MaxNumberOfActiveDownloads { get; set; }
     public string PreviousSaveFolder { get; set; }
     public FileFormat PreviousFileFormat { get; set; }
+    public Quality PreviousQuality { get; set; }
 
     public Configuration()
     {
@@ -24,6 +25,7 @@ public class Configuration
         MaxNumberOfActiveDownloads = 5;
         PreviousSaveFolder = "";
         PreviousFileFormat = FileFormat.MP4;
+        PreviousQuality = Quality.Best;
     }
 
     public static Configuration Load()

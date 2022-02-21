@@ -129,6 +129,10 @@
 						<TextBlock HorizontalAlignment="Left" Margin="12,10,0,0" Text="New Filename"/>
 
 						<TextBox HorizontalAlignment="Left" Margin="10,4,0,0" Width="310" Watermark="Enter new filename here" Text="{Binding NewFilename}"/>
+
+						<TextBlock HorizontalAlignment="Left" Margin="12,10,0,0" Text="Quality"/>
+
+						<ComboBox HorizontalAlignment="Left" Margin="10,4,0,0" Width="310" PlaceholderText="Select download quality" Items="{Binding Qualities}" SelectedItem="{Binding Quality}"/>
 					</StackPanel>
 				</ScrollViewer>
 			</Border>

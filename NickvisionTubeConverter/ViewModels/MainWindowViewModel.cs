@@ -12,6 +12,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
@@ -28,14 +29,17 @@ public class MainWindowViewModel : ViewModelBase
     private readonly HttpClient _httpClient;
     private string? _videoURL;
     private string? _saveFolder;
-    private FileFormat? _fileFormat;
+    private FileFormat _fileFormat;
     private string? _newFilename;
+    private Quality _quality;
     private int _activeDownloadsCount;
+    private int _maxNumberOfActiveDownloads;
     private List<CancellationTokenSource> _downloadCancellationSources;
 
     public string Status => $"Remaining Downloads: {_activeDownloadsCount}";
 
     public ObservableCollection<FileFormat> FileFormats { get; init; }
+    public ObservableCollection<Quality> Qualities { get; init; }
     public ObservableCollection<Download> Downloads { get; init; }
     public DelegateAsyncCommand<object?> OpenedCommand { get; init; }
     public DelegateAsyncCommand<CancelEventArgs?> ClosingCommand { get; init; }
@@ -59,8 +63,10 @@ public class MainWindowViewModel : ViewModelBase
         _canClose = false;
         _httpClient = new HttpClient();
         _activeDownloadsCount = 0;
+        _maxNumberOfActiveDownloads = 5;
         _downloadCancellationSources = new List<CancellationTokenSource>();
         FileFormats = EnumExtensions.GetObservableCollection<FileFormat>();
+        Qualities = EnumExtensions.GetObservableCollection<Quality>();
         Downloads = new ObservableCollection<Download>();
         OpenedCommand = new DelegateAsyncCommand<object?>(Opened);
         ClosingCommand = new DelegateAsyncCommand<CancelEventArgs?>(Closing);
@@ -68,8 +74,8 @@ public class MainWindowViewModel : ViewModelBase
         GoToSaveFolderCommand = new DelegateCommand<object>(GoToSaveFolder, () => !string.IsNullOrEmpty(SaveFolder));
         ExitCommand = new DelegateCommand<object?>(Exit);
         SettingsCommand = new DelegateAsyncCommand<object?>(Settings);
-        DownloadVideoCommand = new DelegateAsyncCommand<object>(DownloadVideo, () => !string.IsNullOrEmpty(VideoURL) && (VideoURL.StartsWith("https://www.youtube.com/watch?v=") || VideoURL.StartsWith("http://www.youtube.com/watch?v=")) && !string.IsNullOrEmpty(SaveFolder) && FileFormat != null && !string.IsNullOrEmpty(NewFilename));
-        ClearCompletedDownloadsCommand = new DelegateCommand<object>(ClearCompletedDownloads, () => Downloads.Count != 0);
+        DownloadVideoCommand = new DelegateAsyncCommand<object>(DownloadVideo, () => !string.IsNullOrEmpty(VideoURL) && (VideoURL.StartsWith("https://www.youtube.com/watch?v=") || VideoURL.StartsWith("http://www.youtube.com/watch?v=")) && !string.IsNullOrEmpty(SaveFolder) && !string.IsNullOrEmpty(NewFilename));
+        ClearCompletedDownloadsCommand = new DelegateCommand<object>(ClearCompletedDownloads, () => Downloads.Count != 0 && Downloads.Where(x => x.Status == DownloadStatus.Completed).Count() > 0);
         CheckForUpdatesCommand = new DelegateAsyncCommand<object?>(CheckForUpdates);
         GitHubRepoCommand = new DelegateCommand<object?>(GitHubRepo);
         ReportABugCommand = new DelegateCommand<object?>(ReportAbug);
@@ -100,7 +106,7 @@ public class MainWindowViewModel : ViewModelBase
         }
     }
 
-    public FileFormat? FileFormat
+    public FileFormat FileFormat
     {
         get => _fileFormat;
 
@@ -108,12 +114,9 @@ public class MainWindowViewModel : ViewModelBase
         {
             SetProperty(ref _fileFormat, value);
             DownloadVideoCommand.RaiseCanExecuteChanged();
-            if(value != null)
-            {
-                var configuration = Configuration.Load();
-                configuration.PreviousFileFormat = (FileFormat)FileFormat!;
-                configuration.Save();
-            }
+            var configuration = Configuration.Load();
+            configuration.PreviousFileFormat = FileFormat!;
+            configuration.Save();
         }
     }
 
@@ -128,6 +131,20 @@ public class MainWindowViewModel : ViewModelBase
         }
     }
 
+    public Quality Quality
+    {
+        get => _quality;
+
+        set
+        {
+            SetProperty(ref _quality, value);
+            DownloadVideoCommand.RaiseCanExecuteChanged();
+            var config = Configuration.Load();
+            config.PreviousQuality = Quality!;
+            config.Save();
+        }
+    }
+
     private async Task Opened(object? parameter)
     {
         var config = await Configuration.LoadAsync();
@@ -137,11 +154,13 @@ public class MainWindowViewModel : ViewModelBase
         {
             _serviceCollection.GetService<IThemeService>()?.ForceWin32WindowToTheme();
         }
+        _maxNumberOfActiveDownloads = config.MaxNumberOfActiveDownloads;
         if (Directory.Exists(config.PreviousSaveFolder))
         {
             SaveFolder = config.PreviousSaveFolder;
         }
         FileFormat = config.PreviousFileFormat;
+        Quality = config.PreviousQuality;
         FFmpeg.SetExecutablesPath($"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}{Path.DirectorySeparatorChar}Nickvision{Path.DirectorySeparatorChar}NickvisionTubeConverter");
         await _serviceCollection.GetService<IProgressDialogService>()?.ShowAsync("Downloading required dependencies...", async () =>
         {
@@ -202,9 +221,9 @@ public class MainWindowViewModel : ViewModelBase
         if (result != null)
         {
             SaveFolder = result;
-            var configuration = await Configuration.LoadAsync();
-            configuration.PreviousSaveFolder = SaveFolder;
-            await configuration.SaveAsync();
+            var config = await Configuration.LoadAsync();
+            config.PreviousSaveFolder = SaveFolder;
+            await config.SaveAsync();
         }
     }
 
@@ -212,14 +231,19 @@ public class MainWindowViewModel : ViewModelBase
 
     private void Exit(object? parameter) => _mainWindowCloseable.Close();
 
-    private async Task Settings(object? parameter) => await _serviceCollection.GetService<IContentDialogService>()?.ShowCustomAsync(new SettingsDialogViewModel(_serviceCollection))!;
+    private async Task Settings(object? parameter)
+    {
+        await _serviceCollection.GetService<IContentDialogService>()?.ShowCustomAsync(new SettingsDialogViewModel(_serviceCollection))!;
+        var config = await Configuration.LoadAsync();
+        _maxNumberOfActiveDownloads = config.MaxNumberOfActiveDownloads;
+    }
 
     private async Task DownloadVideo(object? parameter)
     {
         DownloadVideoCommand.IsExecuting = false;
-        if (_activeDownloadsCount < (await Configuration.LoadAsync()).MaxNumberOfActiveDownloads)
+        if (_activeDownloadsCount < _maxNumberOfActiveDownloads)
         {
-            var download = new Download(VideoURL!, SaveFolder!, NewFilename!, (FileFormat)FileFormat!);
+            var download = new Download(VideoURL!, SaveFolder!, NewFilename!, FileFormat, Quality);
             var cancellationSource = new CancellationTokenSource();
             _downloadCancellationSources.Add(cancellationSource);
             Downloads.Add(download);
@@ -233,7 +257,7 @@ public class MainWindowViewModel : ViewModelBase
             }
             catch (Exception ex)
             {
-                download.Status = "Error";
+                download.Status = DownloadStatus.Error;
                 await _serviceCollection.GetService<IContentDialogService>()?.ShowMessageAsync(new ContentDialogMessageInfo()
                 {
                     Title = $"Error: {ex.Message}",
@@ -256,7 +280,13 @@ public class MainWindowViewModel : ViewModelBase
 
     private void ClearCompletedDownloads(object? parameter)
     {
-        Downloads.Clear();
+        foreach(var download in Downloads.ToList())
+        {
+            if(download.Status == DownloadStatus.Completed)
+            {
+                Downloads.Remove(download);
+            }
+        }
         ClearCompletedDownloadsCommand.RaiseCanExecuteChanged();
     }
 
@@ -336,7 +366,7 @@ public class MainWindowViewModel : ViewModelBase
         await _serviceCollection.GetService<IContentDialogService>()?.ShowMessageAsync(new ContentDialogMessageInfo()
         {
             Title = "What's New?",
-            Message = "- Rewrote application in C# and Avalonia\n\nNew in Alpha 2:\n- Added \"Are You Sure\" dialog when trying to close the app when downloads are in progress\n- Fixed an issue where Download Video would not enable in some cases\n- Fixed DataGrid column spacing\n- Updated theme colors\n- Updated Xabe.FFMPEG",
+            Message = "- Rewrote application in C# and Avalonia\n\nNew in Alpha 3:\n- Added quality option for download\n- Improved download sequence",
             CloseButtonText = "OK",
             DefaultButton = ContentDialogButton.Close
         })!;
@@ -347,7 +377,7 @@ public class MainWindowViewModel : ViewModelBase
         await _serviceCollection.GetService<IContentDialogService>()?.ShowMessageAsync(new ContentDialogMessageInfo()
         {
             Title = "About",
-            Message = "Nickvision Tube Converter Version 2022.2.0-alpha2\nA template for creating Nickvision applications.\n\nBuilt with C# and Avalonia\n(C) Nickvision 2021-2022",
+            Message = "Nickvision Tube Converter Version 2022.2.0-alpha3\nA template for creating Nickvision applications.\n\nBuilt with C# and Avalonia\n(C) Nickvision 2021-2022",
             CloseButtonText = "OK",
             DefaultButton = ContentDialogButton.Close
         })!;

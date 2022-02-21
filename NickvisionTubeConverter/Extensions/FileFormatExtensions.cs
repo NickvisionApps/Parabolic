@@ -4,7 +4,7 @@ namespace NickvisionTubeConverter.Extensions;
 
 public static class FileFormatExtensions
 {
-    public static string? ToString(this FileFormat? fileFormat)
+    public static string? ToString(this FileFormat fileFormat)
     {
         return fileFormat switch
         {
@@ -20,7 +20,7 @@ public static class FileFormatExtensions
         };
     }
 
-    public static string? ToDotExtension(this FileFormat? fileFormat)
+    public static string? ToDotExtension(this FileFormat fileFormat)
     {
         return fileFormat switch
         {
@@ -36,7 +36,7 @@ public static class FileFormatExtensions
         };
     }
 
-    public static bool IsAudio(this FileFormat? fileFormat)
+    public static bool IsAudio(this FileFormat fileFormat)
     {
         return fileFormat switch
         {
@@ -52,7 +52,7 @@ public static class FileFormatExtensions
         };
     }
 
-    public static bool IsVideo(this FileFormat? fileFormat)
+    public static bool IsVideo(this FileFormat fileFormat)
     {
         return fileFormat switch
         {
