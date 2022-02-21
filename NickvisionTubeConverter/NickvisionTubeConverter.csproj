@@ -4,9 +4,19 @@
         <TargetFramework>net6.0</TargetFramework>
         <Nullable>enable</Nullable>
         <LangVersion>10</LangVersion>
+        <ApplicationIcon>Resources\icon.ico</ApplicationIcon>
     </PropertyGroup>
     <ItemGroup>
         <None Remove=".gitignore" />
+        <None Remove="Resources\icon.ico" />
+        <None Remove="Resources\icon.png" />
+    </ItemGroup>
+    <ItemGroup>
+      <AvaloniaResource Include="Resources\icon.ico" />
+      <AvaloniaResource Include="Resources\icon.png" />
+    </ItemGroup>
+    <ItemGroup>
+      <Content Include="Resources\icon.ico" />
     </ItemGroup>
     <ItemGroup>
         <PackageReference Include="Avalonia" Version="0.10.12" />

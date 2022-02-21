@@ -366,7 +366,7 @@ public class MainWindowViewModel : ViewModelBase
         await _serviceCollection.GetService<IContentDialogService>()?.ShowMessageAsync(new ContentDialogMessageInfo()
         {
             Title = "What's New?",
-            Message = "- Rewrote application in C# and Avalonia\n\nNew in Alpha 3:\n- Added quality option for download\n- Improved download sequence",
+            Message = "- Rewrote application in C# and Avalonia\n- Added quality option for download\n\nNew in Beta 1:\n- Added icon\n- Updated about description",
             CloseButtonText = "OK",
             DefaultButton = ContentDialogButton.Close
         })!;
@@ -377,7 +377,7 @@ public class MainWindowViewModel : ViewModelBase
         await _serviceCollection.GetService<IContentDialogService>()?.ShowMessageAsync(new ContentDialogMessageInfo()
         {
             Title = "About",
-            Message = "Nickvision Tube Converter Version 2022.2.0-alpha3\nA template for creating Nickvision applications.\n\nBuilt with C# and Avalonia\n(C) Nickvision 2021-2022",
+            Message = "Nickvision Tube Converter Version 2022.2.0-beta1\nAn easy-to-use YouTube video downloader.\n\nBuilt with C# and Avalonia\n(C) Nickvision 2021-2022",
             CloseButtonText = "OK",
             DefaultButton = ContentDialogButton.Close
         })!;
