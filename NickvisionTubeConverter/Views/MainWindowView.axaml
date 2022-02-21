@@ -5,7 +5,6 @@
         xmlns:ui="using:FluentAvalonia.UI.Controls"
         xmlns:i="using:Avalonia.Xaml.Interactivity"
         xmlns:ia="using:Avalonia.Xaml.Interactions.Core"
-        xmlns:sys="clr-namespace:System;assembly=mscorlib"
         x:Class="NickvisionTubeConverter.Views.MainWindowView"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="600"
         Name="MainWindow" Title="{Binding Title}"
@@ -16,12 +15,12 @@
         </ia:EventTriggerBehavior>
         
         <ia:EventTriggerBehavior EventName="Closing" SourceObject="{Binding #MainWindow}">
-            <ia:InvokeCommandAction Command="{Binding ClosingCommand}"/>
+            <ia:InvokeCommandAction PassEventArgsToCommand="True" Command="{Binding ClosingCommand}"/>
         </ia:EventTriggerBehavior>
     </i:Interaction.Behaviors>
     
     <Grid>
-        <Menu HorizontalAlignment="Stretch" VerticalAlignment="Top" Background="{DynamicResource CommandBarBackgroundOpen}">
+        <Menu HorizontalAlignment="Stretch" VerticalAlignment="Top" Background="{DynamicResource SolidBackgroundFillColorTertiaryBrush}">
             <MenuItem Header="_File">
                 <MenuItem Header="Select Save Folder" HotKey="Ctrl+O" InputGesture="Ctrl+O" Command="{Binding SelectSaveFolderCommand}">
                     <MenuItem.Icon>
@@ -37,7 +36,7 @@
                 
                 <Separator/>
                 
-                <MenuItem Header="E_xit" HotKey="Alt+F4" InputGesture="Alt+F4" Command="{Binding ExitCommand}" CommandParameter="{Binding #MainWindow}">
+                <MenuItem Header="E_xit" HotKey="Alt+F4" InputGesture="Alt+F4" Command="{Binding ExitCommand}">
                     <MenuItem.Icon>
                         <ui:FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" FontSize="18" Glyph="&#xe7e8;"/>
                     </MenuItem.Icon>
@@ -67,7 +66,7 @@
 			</MenuItem>
             
             <MenuItem Header="_Help">
-                <MenuItem Header="Check for _Updates" Command="{Binding CheckForUpdatesCommand}" CommandParameter="{Binding #MainWindow}">
+                <MenuItem Header="Check for _Updates" Command="{Binding CheckForUpdatesCommand}">
                     <MenuItem.Icon>
                         <ui:SymbolIcon Symbol="Sync"/>
                     </MenuItem.Icon>
@@ -103,7 +102,7 @@
             </MenuItem>
         </Menu>
 
-		<ui:CommandBar HorizontalAlignment="Stretch" VerticalAlignment="Top" Background="{DynamicResource CommandBarBackgroundOpen}" Margin="0,40,0,0" DefaultLabelPosition="Right">
+		<ui:CommandBar HorizontalAlignment="Stretch" VerticalAlignment="Top" Background="{DynamicResource SolidBackgroundFillColorTertiaryBrush}" Margin="0,40,0,0" DefaultLabelPosition="Right">
 			<ui:CommandBar.PrimaryCommands>
 				<ui:CommandBarButton Label="Download Video" Icon="Download" Command="{Binding DownloadVideoCommand}"/>
 
@@ -111,8 +110,8 @@
 			</ui:CommandBar.PrimaryCommands>
 		</ui:CommandBar>
 
-		<Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,90,0,36" Background="{DynamicResource SolidBackgroundFillColorBaseBrush}">
-			<Border HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="6,6,0,6" Width="340" Background="{DynamicResource CommandBarBackgroundOpen}" CornerRadius="6">
+		<Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,90,0,42" Background="{DynamicResource SolidBackgroundFillColorBaseBrush}">
+			<Border HorizontalAlignment="Left" VerticalAlignment="Stretch" Margin="6,6,0,6" Width="340" Background="{DynamicResource SolidBackgroundFillColorTertiaryBrush}" CornerRadius="6">
 				<ScrollViewer>
 					<StackPanel Margin="0,0,0,6">
 						<TextBlock HorizontalAlignment="Left" Margin="12,10,0,0" Text="Video URL"/>
@@ -134,19 +133,44 @@
 				</ScrollViewer>
 			</Border>
 
-			<Border HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="354,6,6,6" Background="{DynamicResource CommandBarBackgroundOpen}" CornerRadius="6">
-				<DataGrid Margin="6,6,6,6" MinHeight="200" AutoGenerateColumns="False" IsReadOnly="True" SelectionMode="Extended" GridLinesVisibility="Horizontal" Items="{Binding Downloads}">
+			<Border HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="354,6,6,6" Background="{DynamicResource SolidBackgroundFillColorTertiaryBrush}" CornerRadius="6">
+				<DataGrid Margin="6,6,6,6" AutoGenerateColumns="False" IsReadOnly="True" SelectionMode="Single" 
+						  GridLinesVisibility="Horizontal" CanUserResizeColumns="True" Items="{Binding Downloads}" SelectionChanged="DataDownloads_SelectionChanged">
 					<DataGrid.Columns>
-						<DataGridTextColumn Header="Filename" Binding="{Binding FullFilename}" MinWidth="240"/>
+						<DataGridTemplateColumn Header="Filename" MinWidth="240">
+							<DataGridTemplateColumn.CellTemplate>
+								<DataTemplate>
+									<Grid Margin="6,6,6,6">
+										<TextBlock HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Text="{Binding FullFilename}"/>
+									</Grid>
+								</DataTemplate>
+							</DataGridTemplateColumn.CellTemplate>
+						</DataGridTemplateColumn>
 
-						<DataGridTextColumn Header="Video Link" Binding="{Binding VideoLink}" MinWidth="300"/>
+						<DataGridTemplateColumn Header="Video Link" MinWidth="300">
+							<DataGridTemplateColumn.CellTemplate>
+								<DataTemplate>
+									<Grid Margin="6,6,6,6">
+										<TextBlock HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Text="{Binding VideoLink}"/>
+									</Grid>
+								</DataTemplate>
+							</DataGridTemplateColumn.CellTemplate>
+						</DataGridTemplateColumn>
 
-						<DataGridTextColumn Header="Status" Binding="{Binding Status}" MinWidth="200"/>
+						<DataGridTemplateColumn Header="Status" MinWidth="200">
+							<DataGridTemplateColumn.CellTemplate>
+								<DataTemplate>
+									<Grid Margin="6,6,6,6">
+										<TextBlock HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Text="{Binding Status}"/>
+									</Grid>
+								</DataTemplate>
+							</DataGridTemplateColumn.CellTemplate>
+						</DataGridTemplateColumn>
 
 						<DataGridTemplateColumn Header="Progress" MinWidth="200">
 							<DataGridTemplateColumn.CellTemplate>
 								<DataTemplate>
-									<Grid>
+									<Grid Margin="6,6,6,6">
 										<ProgressBar HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Height="10" Minimum="0" Maximum="10" Value="{Binding Progress}"/>
 									</Grid>
 								</DataTemplate>
@@ -157,9 +181,11 @@
 			</Border>
 		</Grid>
 
-		<DockPanel HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Height="36" Background="{DynamicResource CommandBarBackgroundOpen}">
-			<TextBlock DockPanel.Dock="Left" Margin="6,6,0,0" Text="{Binding Status}"/>
-		</DockPanel>
+		<Border HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Margin="6,0,6,6" Height="36" Background="{DynamicResource SolidBackgroundFillColorTertiaryBrush}" CornerRadius="6">
+			<DockPanel>
+				<TextBlock DockPanel.Dock="Left" Margin="6,6,0,0" Text="{Binding Status}"/>
+			</DockPanel>
+		</Border>
 		
         <ui:InfoBar Name="InfoBar" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,10,10,0"/>
     </Grid>

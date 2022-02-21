@@ -5,64 +5,72 @@ using Nickvision.Avalonia.MVVM;
 using Nickvision.Avalonia.MVVM.Commands;
 using Nickvision.Avalonia.MVVM.Services;
 using Nickvision.Avalonia.Update;
-using NickvisionTubeConverter.Extensions;
 using NickvisionTubeConverter.Models;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 using System.Net.Http;
+using System.Threading;
 using System.Threading.Tasks;
 using Xabe.FFmpeg;
-using Xabe.FFmpeg.Enums;
+using Xabe.FFmpeg.Downloader;
 
 namespace NickvisionTubeConverter.ViewModels;
 
 public class MainWindowViewModel : ViewModelBase
 {
+    private ICloseable _mainWindowCloseable;
     private readonly ServiceCollection _serviceCollection;
+    private bool _canClose;
     private readonly HttpClient _httpClient;
     private string? _videoURL;
     private string? _saveFolder;
     private FileFormat? _fileFormat;
     private string? _newFilename;
     private int _activeDownloadsCount;
+    private List<CancellationTokenSource> _downloadCancellationSources;
 
     public string Status => $"Remaining Downloads: {_activeDownloadsCount}";
 
     public ObservableCollection<FileFormat> FileFormats { get; init; }
     public ObservableCollection<Download> Downloads { get; init; }
     public DelegateAsyncCommand<object?> OpenedCommand { get; init; }
-    public DelegateAsyncCommand<object?> ClosingCommand { get; init; }
+    public DelegateAsyncCommand<CancelEventArgs?> ClosingCommand { get; init; }
     public DelegateAsyncCommand<object> SelectSaveFolderCommand { get; init; }
     public DelegateCommand<object> GoToSaveFolderCommand { get; init; }
-    public DelegateCommand<ICloseable?> ExitCommand { get; init; }
+    public DelegateCommand<object?> ExitCommand { get; init; }
     public DelegateAsyncCommand<object?> SettingsCommand { get; init; }
     public DelegateAsyncCommand<object> DownloadVideoCommand { get; init; }
     public DelegateCommand<object> ClearCompletedDownloadsCommand { get; init; }
-    public DelegateAsyncCommand<ICloseable?> CheckForUpdatesCommand { get; init; }
+    public DelegateAsyncCommand<object?> CheckForUpdatesCommand { get; init; }
     public DelegateCommand<object?> GitHubRepoCommand { get; init; }
     public DelegateCommand<object?> ReportABugCommand { get; init; }
     public DelegateAsyncCommand<object?> ChangelogCommand { get; init; }
     public DelegateAsyncCommand<object?> AboutCommand { get; init; }
 
-    public MainWindowViewModel(ServiceCollection serviceCollection)
+    public MainWindowViewModel(ICloseable mainWindowCloseable, ServiceCollection serviceCollection)
     {
         Title = "Nickvision Tube Converter";
+        _mainWindowCloseable = mainWindowCloseable;
         _serviceCollection = serviceCollection;
+        _canClose = false;
         _httpClient = new HttpClient();
         _activeDownloadsCount = 0;
+        _downloadCancellationSources = new List<CancellationTokenSource>();
         FileFormats = EnumExtensions.GetObservableCollection<FileFormat>();
         Downloads = new ObservableCollection<Download>();
         OpenedCommand = new DelegateAsyncCommand<object?>(Opened);
-        ClosingCommand = new DelegateAsyncCommand<object?>(Closing);
+        ClosingCommand = new DelegateAsyncCommand<CancelEventArgs?>(Closing);
         SelectSaveFolderCommand = new DelegateAsyncCommand<object>(SelectSaveFolder);
         GoToSaveFolderCommand = new DelegateCommand<object>(GoToSaveFolder, () => !string.IsNullOrEmpty(SaveFolder));
-        ExitCommand = new DelegateCommand<ICloseable?>(Exit);
+        ExitCommand = new DelegateCommand<object?>(Exit);
         SettingsCommand = new DelegateAsyncCommand<object?>(Settings);
         DownloadVideoCommand = new DelegateAsyncCommand<object>(DownloadVideo, () => !string.IsNullOrEmpty(VideoURL) && (VideoURL.StartsWith("https://www.youtube.com/watch?v=") || VideoURL.StartsWith("http://www.youtube.com/watch?v=")) && !string.IsNullOrEmpty(SaveFolder) && FileFormat != null && !string.IsNullOrEmpty(NewFilename));
         ClearCompletedDownloadsCommand = new DelegateCommand<object>(ClearCompletedDownloads, () => Downloads.Count != 0);
-        CheckForUpdatesCommand = new DelegateAsyncCommand<ICloseable?>(CheckForUpdates);
+        CheckForUpdatesCommand = new DelegateAsyncCommand<object?>(CheckForUpdates);
         GitHubRepoCommand = new DelegateCommand<object?>(GitHubRepo);
         ReportABugCommand = new DelegateCommand<object?>(ReportAbug);
         ChangelogCommand = new DelegateAsyncCommand<object?>(Changelog);
@@ -87,6 +95,7 @@ public class MainWindowViewModel : ViewModelBase
         set
         {
             SetProperty(ref _saveFolder, value);
+            DownloadVideoCommand.RaiseCanExecuteChanged();
             GoToSaveFolderCommand.RaiseCanExecuteChanged();
         }
     }
@@ -133,12 +142,12 @@ public class MainWindowViewModel : ViewModelBase
             SaveFolder = config.PreviousSaveFolder;
         }
         FileFormat = config.PreviousFileFormat;
-        FFmpeg.ExecutablesPath = $"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}{Path.DirectorySeparatorChar}Nickvision{Path.DirectorySeparatorChar}NickvisionTubeConverter";
+        FFmpeg.SetExecutablesPath($"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}{Path.DirectorySeparatorChar}Nickvision{Path.DirectorySeparatorChar}NickvisionTubeConverter");
         await _serviceCollection.GetService<IProgressDialogService>()?.ShowAsync("Downloading required dependencies...", async () =>
         {
             try
             {
-                await FFmpeg.GetLatestVersion(FFmpegVersion.Official);
+                await FFmpegDownloader.GetLatestVersion(FFmpegVersion.Official, FFmpeg.ExecutablesPath);
             }
             catch
             {
@@ -147,10 +156,44 @@ public class MainWindowViewModel : ViewModelBase
         })!;
     }
 
-    private async Task Closing(object? parameter)
+    private async Task Closing(CancelEventArgs? args)
     {
-        var config = await Configuration.LoadAsync();
-        await config.SaveAsync();
+        if(!_canClose)
+        {
+            if(args != null)
+            {
+                args.Cancel = true;
+            }
+            if (_activeDownloadsCount > 0)
+            {
+                var result = await _serviceCollection.GetService<IContentDialogService>()?.ShowMessageAsync(new ContentDialogMessageInfo()
+                {
+                    Title = "Downloads in Progress",
+                    Message = "There are currently downloads in progress. Closing the application will cancel the current downloads. Are you sure you want to exit?",
+                    CloseButtonText = "No",
+                    PrimaryButtonText = "Yes",
+                    DefaultButton = ContentDialogButton.Close
+                })!;
+                if (result == ContentDialogResult.Primary)
+                {
+                    _canClose = true;
+                    _mainWindowCloseable.Close();
+                }
+            }
+            else
+            {
+                _canClose = true;
+                _mainWindowCloseable.Close();
+            }
+        }
+        else
+        {
+            foreach (var cancellationSource in _downloadCancellationSources)
+            {
+                cancellationSource.Cancel();
+                cancellationSource.Dispose();
+            }
+        }
     }
 
     private async Task SelectSaveFolder(object? parameter)
@@ -167,24 +210,26 @@ public class MainWindowViewModel : ViewModelBase
 
     private void GoToSaveFolder(object? parameter) => Process.Start(new ProcessStartInfo(SaveFolder!) { UseShellExecute = true });
 
-    private void Exit(ICloseable? parameter) => parameter?.Close();
+    private void Exit(object? parameter) => _mainWindowCloseable.Close();
 
     private async Task Settings(object? parameter) => await _serviceCollection.GetService<IContentDialogService>()?.ShowCustomAsync(new SettingsDialogViewModel(_serviceCollection))!;
 
     private async Task DownloadVideo(object? parameter)
     {
+        DownloadVideoCommand.IsExecuting = false;
         if (_activeDownloadsCount < (await Configuration.LoadAsync()).MaxNumberOfActiveDownloads)
         {
-            var download = new Download(VideoURL!, SaveFolder!, NewFilename!, (FileFormat)FileFormat);
+            var download = new Download(VideoURL!, SaveFolder!, NewFilename!, (FileFormat)FileFormat!);
+            var cancellationSource = new CancellationTokenSource();
+            _downloadCancellationSources.Add(cancellationSource);
             Downloads.Add(download);
             _activeDownloadsCount++;
             OnPropertyChanged("Status");
             VideoURL = "";
             NewFilename = "";
-            DownloadVideoCommand.IsExecuting = false;
             try
             {
-                await download.DownloadAsync();
+                await download.DownloadAsync(cancellationSource);
             }
             catch (Exception ex)
             {
@@ -197,6 +242,8 @@ public class MainWindowViewModel : ViewModelBase
                     DefaultButton = ContentDialogButton.Close
                 })!;
             }
+            cancellationSource.Dispose();
+            _downloadCancellationSources.Remove(cancellationSource);
             _activeDownloadsCount--;
             OnPropertyChanged("Status");
             ClearCompletedDownloadsCommand.RaiseCanExecuteChanged();
@@ -213,7 +260,7 @@ public class MainWindowViewModel : ViewModelBase
         ClearCompletedDownloadsCommand.RaiseCanExecuteChanged();
     }
 
-    private async Task CheckForUpdates(ICloseable? parameter)
+    private async Task CheckForUpdates(object? parameter)
     {
         var updater = new Updater(_httpClient, new Uri("https://raw.githubusercontent.com/nlogozzo/NickvisionTubeConverter/main/UpdateConfig.json"), new Version("2022.2.0"));
         await _serviceCollection.GetService<IProgressDialogService>()?.ShowAsync("Checking for updates...", async () => await updater.CheckForUpdatesAsync())!;
@@ -232,7 +279,7 @@ public class MainWindowViewModel : ViewModelBase
                 if (result == ContentDialogResult.Primary)
                 {
                     var updateSuccess = false;
-                    await _serviceCollection.GetService<IProgressDialogService>()?.ShowAsync("Downloading and installing the update...", async () => updateSuccess = await updater.WindowsUpdateAsync(parameter!))!;
+                    await _serviceCollection.GetService<IProgressDialogService>()?.ShowAsync("Downloading and installing the update...", async () => updateSuccess = await updater.WindowsUpdateAsync(_mainWindowCloseable))!;
                     if (!updateSuccess)
                     {
                         _serviceCollection.GetService<IInfoBarService>()?.ShowCloseableNotification("Error", "An unknown error occurred when trying to download and install the update.", InfoBarSeverity.Error);
@@ -289,7 +336,7 @@ public class MainWindowViewModel : ViewModelBase
         await _serviceCollection.GetService<IContentDialogService>()?.ShowMessageAsync(new ContentDialogMessageInfo()
         {
             Title = "What's New?",
-            Message = "- Rewrote application in C# and Avalonia",
+            Message = "- Rewrote application in C# and Avalonia\n\nNew in Alpha 2:\n- Added \"Are You Sure\" dialog when trying to close the app when downloads are in progress\n- Fixed an issue where Download Video would not enable in some cases\n- Fixed DataGrid column spacing\n- Updated theme colors\n- Updated Xabe.FFMPEG",
             CloseButtonText = "OK",
             DefaultButton = ContentDialogButton.Close
         })!;
@@ -300,7 +347,7 @@ public class MainWindowViewModel : ViewModelBase
         await _serviceCollection.GetService<IContentDialogService>()?.ShowMessageAsync(new ContentDialogMessageInfo()
         {
             Title = "About",
-            Message = "Nickvision Tube Converter Version 2022.2.0-alpha1\nA template for creating Nickvision applications.\n\nBuilt with C# and Avalonia\n(C) Nickvision 2021-2022",
+            Message = "Nickvision Tube Converter Version 2022.2.0-alpha2\nA template for creating Nickvision applications.\n\nBuilt with C# and Avalonia\n(C) Nickvision 2021-2022",
             CloseButtonText = "OK",
             DefaultButton = ContentDialogButton.Close
         })!;

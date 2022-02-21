@@ -2,6 +2,8 @@
 using NickvisionTubeConverter.Extensions;
 using System;
 using System.IO;
+using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using VideoLibrary;
 using Xabe.FFmpeg;
@@ -27,7 +29,6 @@ public class Download : ObservableObject
         _fileFormat = fileFormat;
         _status = "";
         _progress = 0;
-        FFmpeg.ExecutablesPath = $"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}{Path.DirectorySeparatorChar}Nickvision{Path.DirectorySeparatorChar}NickvisionTubeConverter";
     }
 
     public string Status
@@ -44,39 +45,29 @@ public class Download : ObservableObject
         set => SetProperty(ref _progress, value);
     }
 
-    public async Task<string> DownloadAsync()
+    public async Task<string> DownloadAsync(CancellationTokenSource cancellationSource)
     {
         Status = "Downloading...";
         Progress = 3;
         var video = await YouTube.Default.GetVideoAsync(VideoLink);
         var videoBytes = await video.GetBytesAsync();
         var videoFilePath = $"{_saveFolder}{Path.DirectorySeparatorChar}{_newFilename}{video.FileExtension}";
-        var filePath = $"{_saveFolder}{Path.DirectorySeparatorChar}{FullFilename}";
+        var desiredfilePath = $"{_saveFolder}{Path.DirectorySeparatorChar}{FullFilename}";
         await File.WriteAllBytesAsync(videoFilePath, videoBytes);
         Progress = 6;
-        if(_fileFormat.IsAudio())
+        if (videoFilePath != desiredfilePath)
         {
+            Status = "Converting...";
             Progress = 8;
-            await Conversion.ExtractAudio(videoFilePath, filePath).SetOverwriteOutput(true).Start();
+            var mediaInfo = await FFmpeg.GetMediaInfo(videoFilePath);
+            await FFmpeg.Conversions.New().AddStream(mediaInfo.VideoStreams.FirstOrDefault()).AddStream(mediaInfo.AudioStreams.FirstOrDefault()).SetOutput(desiredfilePath).SetOverwriteOutput(true).Start(cancellationSource.Token);
             File.Delete(videoFilePath);
             Status = "Completed";
             Progress = 10;
-            return filePath;
+            return desiredfilePath;
         }
-        else
-        {
-            if(videoFilePath != filePath)
-            {
-                Progress = 8;
-                await Conversion.ToMp4(videoFilePath, filePath).SetOverwriteOutput(true).Start();
-                File.Delete(videoFilePath);
-                Status = "Completed";
-                Progress = 10;
-                return filePath;
-            }
-            Status = "Completed";
-            Progress = 10;
-            return videoFilePath;
-        }
+        Status = "Completed";
+        Progress = 10;
+        return videoFilePath;
     }
 }
