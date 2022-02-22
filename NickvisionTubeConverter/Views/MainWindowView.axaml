@@ -104,9 +104,9 @@
 
 		<ui:CommandBar HorizontalAlignment="Stretch" VerticalAlignment="Top" Background="{DynamicResource SolidBackgroundFillColorTertiaryBrush}" Margin="0,40,0,0" DefaultLabelPosition="Right">
 			<ui:CommandBar.PrimaryCommands>
-				<ui:CommandBarButton Label="Download Video" Icon="Download" Command="{Binding DownloadVideoCommand}"/>
+				<ui:CommandBarButton Label="Download Video" Icon="Download" ToolTip.Tip="Ctrl+D" Command="{Binding DownloadVideoCommand}"/>
 
-				<ui:CommandBarButton Label="Select Save Folder" Icon="OpenLocal" Command="{Binding SelectSaveFolderCommand}"/>
+				<ui:CommandBarButton Label="Select Save Folder" Icon="OpenLocal" ToolTip.Tip="Ctrl+O" Command="{Binding SelectSaveFolderCommand}"/>
 			</ui:CommandBar.PrimaryCommands>
 		</ui:CommandBar>
 
