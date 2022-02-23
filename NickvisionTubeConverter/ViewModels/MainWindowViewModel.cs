@@ -43,12 +43,12 @@ public class MainWindowViewModel : ViewModelBase
     public ObservableCollection<Download> Downloads { get; init; }
     public DelegateAsyncCommand<object?> OpenedCommand { get; init; }
     public DelegateAsyncCommand<CancelEventArgs?> ClosingCommand { get; init; }
-    public DelegateAsyncCommand<object> SelectSaveFolderCommand { get; init; }
+    public DelegateAsyncCommand<object?> SelectSaveFolderCommand { get; init; }
     public DelegateCommand<object> GoToSaveFolderCommand { get; init; }
     public DelegateCommand<object?> ExitCommand { get; init; }
     public DelegateAsyncCommand<object?> SettingsCommand { get; init; }
-    public DelegateAsyncCommand<object> DownloadVideoCommand { get; init; }
-    public DelegateCommand<object> ClearCompletedDownloadsCommand { get; init; }
+    public DelegateAsyncCommand<object?> DownloadVideoCommand { get; init; }
+    public DelegateCommand<object?> ClearCompletedDownloadsCommand { get; init; }
     public DelegateAsyncCommand<object?> CheckForUpdatesCommand { get; init; }
     public DelegateCommand<object?> GitHubRepoCommand { get; init; }
     public DelegateCommand<object?> ReportABugCommand { get; init; }
@@ -70,12 +70,12 @@ public class MainWindowViewModel : ViewModelBase
         Downloads = new ObservableCollection<Download>();
         OpenedCommand = new DelegateAsyncCommand<object?>(Opened);
         ClosingCommand = new DelegateAsyncCommand<CancelEventArgs?>(Closing);
-        SelectSaveFolderCommand = new DelegateAsyncCommand<object>(SelectSaveFolder);
+        SelectSaveFolderCommand = new DelegateAsyncCommand<object?>(SelectSaveFolder);
         GoToSaveFolderCommand = new DelegateCommand<object>(GoToSaveFolder, () => !string.IsNullOrEmpty(SaveFolder));
         ExitCommand = new DelegateCommand<object?>(Exit);
         SettingsCommand = new DelegateAsyncCommand<object?>(Settings);
-        DownloadVideoCommand = new DelegateAsyncCommand<object>(DownloadVideo, () => !string.IsNullOrEmpty(VideoURL) && (VideoURL.StartsWith("https://www.youtube.com/watch?v=") || VideoURL.StartsWith("http://www.youtube.com/watch?v=")) && !string.IsNullOrEmpty(SaveFolder) && !string.IsNullOrEmpty(NewFilename));
-        ClearCompletedDownloadsCommand = new DelegateCommand<object>(ClearCompletedDownloads, () => Downloads.Count != 0 && Downloads.Where(x => x.Status == DownloadStatus.Completed || x.Status == DownloadStatus.Error).Count() > 0);
+        DownloadVideoCommand = new DelegateAsyncCommand<object?>(DownloadVideo, () => !string.IsNullOrEmpty(VideoURL) && (VideoURL.StartsWith("https://www.youtube.com/watch?v=") || VideoURL.StartsWith("http://www.youtube.com/watch?v=")) && !string.IsNullOrEmpty(SaveFolder) && !string.IsNullOrEmpty(NewFilename));
+        ClearCompletedDownloadsCommand = new DelegateCommand<object?>(ClearCompletedDownloads, () => Downloads.Count != 0 && Downloads.Where(x => x.Status == DownloadStatus.Completed || x.Status == DownloadStatus.Error).Count() > 0);
         CheckForUpdatesCommand = new DelegateAsyncCommand<object?>(CheckForUpdates);
         GitHubRepoCommand = new DelegateCommand<object?>(GitHubRepo);
         ReportABugCommand = new DelegateCommand<object?>(ReportAbug);
@@ -287,7 +287,7 @@ public class MainWindowViewModel : ViewModelBase
                 var result = await _serviceCollection.GetService<IContentDialogService>()?.ShowMessageAsync(new ContentDialogMessageInfo()
                 {
                     Title = "Update Available",
-                    Message = $"===V{updater.LatestVersion} Changelog===\n{updater.Changelog}\n\nNickvisionApp will automatically download and install the update, please save all work before continuing. Are you ready to update?",
+                    Message = $"===V{updater.LatestVersion} Changelog===\n{updater.Changelog}\n\nNickvision Tube Converter will automatically download and install the update, please save all work before continuing. Are you ready to update?",
                     PrimaryButtonText = "Yes",
                     CloseButtonText = "No",
                     DefaultButton = ContentDialogButton.Close
@@ -307,7 +307,7 @@ public class MainWindowViewModel : ViewModelBase
                 var result = await _serviceCollection.GetService<IContentDialogService>()?.ShowMessageAsync(new ContentDialogMessageInfo()
                 {
                     Title = "Update Available",
-                    Message = $"===V{updater.LatestVersion} Changelog===\n{updater.Changelog}\n\nNickvisionApp will automatically download the updated application to your downloads directory. If the app is currently running from your downloads directory, please move it before updating. Are you ready to update?",
+                    Message = $"===V{updater.LatestVersion} Changelog===\n{updater.Changelog}\n\nNickvision Tube Converter will automatically download the updated application to your downloads directory. If the app is currently running from your downloads directory, please move it before updating. Are you ready to update?",
                     PrimaryButtonText = "Yes",
                     CloseButtonText = "No",
                     DefaultButton = ContentDialogButton.Close
