@@ -258,6 +258,7 @@ public class MainWindowViewModel : ViewModelBase
             catch (Exception ex)
             {
                 download.Status = DownloadStatus.Error;
+                download.Working = false;
                 await _serviceCollection.GetService<IContentDialogService>()?.ShowMessageAsync(new ContentDialogMessageInfo()
                 {
                     Title = $"Error: {ex.Message}",
@@ -292,7 +293,7 @@ public class MainWindowViewModel : ViewModelBase
 
     private async Task CheckForUpdates(object? parameter)
     {
-        var updater = new Updater(_httpClient, new Uri("https://raw.githubusercontent.com/nlogozzo/NickvisionTubeConverter/main/UpdateConfig.json"), new Version("2022.2.0"));
+        var updater = new Updater(_httpClient, new Uri("https://raw.githubusercontent.com/nlogozzo/NickvisionTubeConverter/main/UpdateConfig.json"), new Version("2022.2.1"));
         await _serviceCollection.GetService<IProgressDialogService>()?.ShowAsync("Checking for updates...", async () => await updater.CheckForUpdatesAsync())!;
         if (updater.UpdateAvailable)
         {
@@ -366,7 +367,7 @@ public class MainWindowViewModel : ViewModelBase
         await _serviceCollection.GetService<IContentDialogService>()?.ShowMessageAsync(new ContentDialogMessageInfo()
         {
             Title = "What's New?",
-            Message = "- Rewrote application in C# and Avalonia\n- Added quality option for download",
+            Message = "- A downloading video will now show an indeterminate progress while downloading instead of a fixed progress that increases slowly",
             CloseButtonText = "OK",
             DefaultButton = ContentDialogButton.Close
         })!;
@@ -377,7 +378,7 @@ public class MainWindowViewModel : ViewModelBase
         await _serviceCollection.GetService<IContentDialogService>()?.ShowMessageAsync(new ContentDialogMessageInfo()
         {
             Title = "About",
-            Message = "Nickvision Tube Converter Version 2022.2.0\nAn easy-to-use YouTube video downloader.\n\nBuilt with C# and Avalonia\n(C) Nickvision 2021-2022",
+            Message = "Nickvision Tube Converter Version 2022.2.1\nAn easy-to-use YouTube video downloader.\n\nBuilt with C# and Avalonia\n(C) Nickvision 2021-2022",
             CloseButtonText = "OK",
             DefaultButton = ContentDialogButton.Close
         })!;

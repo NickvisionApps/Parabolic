@@ -16,7 +16,7 @@ public class Download : ObservableObject
     private FileFormat _fileFormat;
     private Quality _quality;
     private DownloadStatus _status;
-    private int _progress;
+    private bool _working;
 
     public string VideoLink { get; init; }
     public string FullFilename => $"{_newFilename}{_fileFormat.ToDotExtension()}";
@@ -29,7 +29,7 @@ public class Download : ObservableObject
         _fileFormat = fileFormat;
         _quality = quality;
         _status = DownloadStatus.Waiting;
-        _progress = 0;
+        _working = false;
     }
 
     public DownloadStatus Status
@@ -39,17 +39,17 @@ public class Download : ObservableObject
         set => SetProperty(ref _status, value);
     }
 
-    public int Progress
+    public bool Working
     {
-        get => _progress;
+        get => _working;
 
-        set => SetProperty(ref _progress, value);
+        set => SetProperty(ref _working, value);
     }
 
     public async Task<string> DownloadAsync(CancellationTokenSource cancellationSource)
     {
+        Working = true;
         Status = DownloadStatus.Finding;
-        Progress = 2;
         var streams = await YouTube.Default.GetAllVideosAsync(VideoLink);
         YouTubeVideo? selectedVideo = null;
         if (_fileFormat.IsVideo())
@@ -73,22 +73,19 @@ public class Download : ObservableObject
             };
         }
         Status = DownloadStatus.Downloading;
-        Progress = 4;
         var videoBytes = await selectedVideo!.GetBytesAsync();
         var videoFilePath = $"{_saveFolder}{Path.DirectorySeparatorChar}{_newFilename}{selectedVideo.FileExtension}";
         var desiredfilePath = $"{_saveFolder}{Path.DirectorySeparatorChar}{FullFilename}";
         await File.WriteAllBytesAsync(videoFilePath, videoBytes);
-        Progress = 6;
         if (videoFilePath != desiredfilePath)
         {
             Status = DownloadStatus.Converting;
-            Progress = 8;
             var mediaInfo = await FFmpeg.GetMediaInfo(videoFilePath, cancellationSource.Token);
             await FFmpeg.Conversions.New().AddStream(mediaInfo.VideoStreams.FirstOrDefault()).AddStream(mediaInfo.AudioStreams.FirstOrDefault()).SetOutput(desiredfilePath).SetOverwriteOutput(true).Start(cancellationSource.Token);
             File.Delete(videoFilePath);
         }
         Status = DownloadStatus.Completed;
-        Progress = 10;
+        Working = false;
         return desiredfilePath;
     }
 }

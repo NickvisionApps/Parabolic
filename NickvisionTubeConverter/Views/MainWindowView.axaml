@@ -175,7 +175,7 @@
 							<DataGridTemplateColumn.CellTemplate>
 								<DataTemplate>
 									<Grid Margin="6,6,6,6">
-										<ProgressBar HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Height="10" Minimum="0" Maximum="10" Value="{Binding Progress}"/>
+										<ProgressBar HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Height="10" IsIndeterminate="{Binding Working}"/>
 									</Grid>
 								</DataTemplate>
 							</DataGridTemplateColumn.CellTemplate>

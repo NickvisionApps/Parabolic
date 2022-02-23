@@ -52,7 +52,7 @@
                     <StackPanel Spacing="6">
 						<TextBlock Text="Max Number of Active Downloads"/>
 
-						<ComboBox Width="300" PlaceholderText="Select max number" Items="{Binding ListMaxNumberOfActiveDownloads}" SelectedItem="{Binding MaxNumberOfActiveDownloads}"/>
+						<ComboBox Width="300" PlaceholderText="Select max number" ToolTip.Tip="Determines the number of downloads that can occur at the same time." Items="{Binding ListMaxNumberOfActiveDownloads}" SelectedItem="{Binding MaxNumberOfActiveDownloads}"/>
                     </StackPanel>
                 </Expander.Content>
             </Expander>
