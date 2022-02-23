@@ -139,13 +139,13 @@
 
 			<Border HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="354,6,6,6" Background="{DynamicResource SolidBackgroundFillColorTertiaryBrush}" CornerRadius="6">
 				<DataGrid Margin="6,6,6,6" AutoGenerateColumns="False" IsReadOnly="True" SelectionMode="Single" 
-						  GridLinesVisibility="Horizontal" CanUserResizeColumns="True" Items="{Binding Downloads}" SelectionChanged="DataDownloads_SelectionChanged">
+						  GridLinesVisibility="Horizontal" CanUserResizeColumns="True" Items="{Binding Downloads}">
 					<DataGrid.Columns>
 						<DataGridTemplateColumn Header="Filename" MinWidth="240">
 							<DataGridTemplateColumn.CellTemplate>
 								<DataTemplate>
 									<Grid Margin="6,6,6,6">
-										<TextBlock HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Text="{Binding FullFilename}"/>
+										<TextBlock Name="TxtFullFilename" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Text="{Binding FullFilename}"/>
 									</Grid>
 								</DataTemplate>
 							</DataGridTemplateColumn.CellTemplate>
@@ -181,6 +181,16 @@
 							</DataGridTemplateColumn.CellTemplate>
 						</DataGridTemplateColumn>
 					</DataGrid.Columns>
+
+					<DataGrid.RowDetailsTemplate>
+						<DataTemplate>
+							<StackPanel Margin="10,10,10,10">
+								<TextBlock Text="{Binding Error.Message}"/>
+
+								<TextBlock Text="{Binding Error.StackTrace}"/>
+							</StackPanel>
+						</DataTemplate>
+					</DataGrid.RowDetailsTemplate>
 				</DataGrid>
 			</Border>
 		</Grid>

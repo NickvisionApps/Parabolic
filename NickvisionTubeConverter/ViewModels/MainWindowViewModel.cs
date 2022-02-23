@@ -75,7 +75,7 @@ public class MainWindowViewModel : ViewModelBase
         ExitCommand = new DelegateCommand<object?>(Exit);
         SettingsCommand = new DelegateAsyncCommand<object?>(Settings);
         DownloadVideoCommand = new DelegateAsyncCommand<object>(DownloadVideo, () => !string.IsNullOrEmpty(VideoURL) && (VideoURL.StartsWith("https://www.youtube.com/watch?v=") || VideoURL.StartsWith("http://www.youtube.com/watch?v=")) && !string.IsNullOrEmpty(SaveFolder) && !string.IsNullOrEmpty(NewFilename));
-        ClearCompletedDownloadsCommand = new DelegateCommand<object>(ClearCompletedDownloads, () => Downloads.Count != 0 && Downloads.Where(x => x.Status == DownloadStatus.Completed).Count() > 0);
+        ClearCompletedDownloadsCommand = new DelegateCommand<object>(ClearCompletedDownloads, () => Downloads.Count != 0 && Downloads.Where(x => x.Status == DownloadStatus.Completed || x.Status == DownloadStatus.Error).Count() > 0);
         CheckForUpdatesCommand = new DelegateAsyncCommand<object?>(CheckForUpdates);
         GitHubRepoCommand = new DelegateCommand<object?>(GitHubRepo);
         ReportABugCommand = new DelegateCommand<object?>(ReportAbug);
@@ -251,22 +251,7 @@ public class MainWindowViewModel : ViewModelBase
             OnPropertyChanged("Status");
             VideoURL = "";
             NewFilename = "";
-            try
-            {
-                await download.DownloadAsync(cancellationSource);
-            }
-            catch (Exception ex)
-            {
-                download.Status = DownloadStatus.Error;
-                download.Working = false;
-                await _serviceCollection.GetService<IContentDialogService>()?.ShowMessageAsync(new ContentDialogMessageInfo()
-                {
-                    Title = $"Error: {ex.Message}",
-                    Message = ex.StackTrace,
-                    CloseButtonText = "OK",
-                    DefaultButton = ContentDialogButton.Close
-                })!;
-            }
+            await download.TryDownloadAsync(cancellationSource);
             cancellationSource.Dispose();
             _downloadCancellationSources.Remove(cancellationSource);
             _activeDownloadsCount--;
@@ -283,7 +268,7 @@ public class MainWindowViewModel : ViewModelBase
     {
         foreach(var download in Downloads.ToList())
         {
-            if(download.Status == DownloadStatus.Completed)
+            if(download.Status == DownloadStatus.Completed || download.Status == DownloadStatus.Error)
             {
                 Downloads.Remove(download);
             }
@@ -293,7 +278,7 @@ public class MainWindowViewModel : ViewModelBase
 
     private async Task CheckForUpdates(object? parameter)
     {
-        var updater = new Updater(_httpClient, new Uri("https://raw.githubusercontent.com/nlogozzo/NickvisionTubeConverter/main/UpdateConfig.json"), new Version("2022.2.1"));
+        var updater = new Updater(_httpClient, new Uri("https://raw.githubusercontent.com/nlogozzo/NickvisionTubeConverter/main/UpdateConfig.json"), new Version("2022.2.2"));
         await _serviceCollection.GetService<IProgressDialogService>()?.ShowAsync("Checking for updates...", async () => await updater.CheckForUpdatesAsync())!;
         if (updater.UpdateAvailable)
         {
@@ -367,7 +352,7 @@ public class MainWindowViewModel : ViewModelBase
         await _serviceCollection.GetService<IContentDialogService>()?.ShowMessageAsync(new ContentDialogMessageInfo()
         {
             Title = "What's New?",
-            Message = "- A downloading video will now show an indeterminate progress while downloading instead of a fixed progress that increases slowly",
+            Message = "- When a download has an error, the user can now click the download in the grid and the error will be displayed underneath\n- Clearing completed downloads will remove downloads with errors as well",
             CloseButtonText = "OK",
             DefaultButton = ContentDialogButton.Close
         })!;
@@ -378,7 +363,7 @@ public class MainWindowViewModel : ViewModelBase
         await _serviceCollection.GetService<IContentDialogService>()?.ShowMessageAsync(new ContentDialogMessageInfo()
         {
             Title = "About",
-            Message = "Nickvision Tube Converter Version 2022.2.1\nAn easy-to-use YouTube video downloader.\n\nBuilt with C# and Avalonia\n(C) Nickvision 2021-2022",
+            Message = "Nickvision Tube Converter Version 2022.2.2\nAn easy-to-use YouTube video downloader.\n\nBuilt with C# and Avalonia\n(C) Nickvision 2021-2022",
             CloseButtonText = "OK",
             DefaultButton = ContentDialogButton.Close
         })!;

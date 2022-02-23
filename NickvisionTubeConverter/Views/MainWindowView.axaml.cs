@@ -26,13 +26,4 @@ public class MainWindowView : Window, ICloseable
         serviceCollection.AddService(new InfoBarService(this.FindControl<InfoBar>("InfoBar")));
         DataContext = new MainWindowViewModel(this, serviceCollection);
     }
-
-    private void DataDownloads_SelectionChanged(object sender, SelectionChangedEventArgs e)
-    {
-        var dataGrid = sender as DataGrid;
-        if(dataGrid != null)
-        {
-            dataGrid.SelectedItem = null;
-        }
-    }
 }
