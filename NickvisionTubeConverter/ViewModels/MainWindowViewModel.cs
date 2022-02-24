@@ -278,7 +278,7 @@ public class MainWindowViewModel : ViewModelBase
 
     private async Task CheckForUpdates(object? parameter)
     {
-        var updater = new Updater(_httpClient, new Uri("https://raw.githubusercontent.com/nlogozzo/NickvisionTubeConverter/main/UpdateConfig.json"), new Version("2022.2.3"));
+        var updater = new Updater(_httpClient, new Uri("https://raw.githubusercontent.com/nlogozzo/NickvisionTubeConverter/main/UpdateConfig.json"), new Version("2022.2.4"));
         await _serviceCollection.GetService<IProgressDialogService>()?.ShowAsync("Checking for updates...", async () => await updater.CheckForUpdatesAsync())!;
         if (updater.UpdateAvailable)
         {
@@ -352,7 +352,7 @@ public class MainWindowViewModel : ViewModelBase
         await _serviceCollection.GetService<IContentDialogService>()?.ShowMessageAsync(new ContentDialogMessageInfo()
         {
             Title = "What's New?",
-            Message = "- UX tweaks",
+            Message = "- Improved design\n- Updated dependencies",
             CloseButtonText = "OK",
             DefaultButton = ContentDialogButton.Close
         })!;
@@ -363,7 +363,7 @@ public class MainWindowViewModel : ViewModelBase
         await _serviceCollection.GetService<IContentDialogService>()?.ShowMessageAsync(new ContentDialogMessageInfo()
         {
             Title = "About",
-            Message = "Nickvision Tube Converter Version 2022.2.3\nAn easy-to-use YouTube video downloader.\n\nBuilt with C# and Avalonia\n(C) Nickvision 2021-2022",
+            Message = "Nickvision Tube Converter Version 2022.2.4\nAn easy-to-use YouTube video downloader.\n\nBuilt with C# and Avalonia\n(C) Nickvision 2021-2022",
             CloseButtonText = "OK",
             DefaultButton = ContentDialogButton.Close
         })!;
