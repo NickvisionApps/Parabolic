@@ -16,3 +16,5 @@ TODO
 - [jsoncpp](https://github.com/open-source-parsers/jsoncpp)
 - [yt-dlp](https://github.com/yt-dlp/yt-dlp)
 
+# Special Thanks
+- [daudix-UFO](https://github.com/daudix-UFO) for our application icons
