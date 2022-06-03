@@ -10,17 +10,40 @@
             <object class="GtkShortcutsSection">
                 <child>
                     <object class="GtkShortcutsGroup">
-                        <property name="title">Folder</property>
+                        <property name="title">Tube Converter</property>
                         <child>
                             <object class="GtkShortcutsShortcut">
-                                <property name="title">Open Folder</property>
+                                <property name="title">Select Save Folder</property>
                                 <property name="accelerator">&lt;Control&gt;o</property>
                             </object>
                         </child>
                         <child>
                             <object class="GtkShortcutsShortcut">
-                                <property name="title">Close Folder</property>
-                                <property name="accelerator">&lt;Control&gt;w</property>
+                                <property name="title">Download Videos</property>
+                                <property name="accelerator">&lt;Control&gt;d</property>
+                            </object>
+                        </child>
+                    </object>
+                </child>
+                <child>
+                    <object class="GtkShortcutsGroup">
+                        <property name="title">Downloads Queue</property>
+                        <child>
+                            <object class="GtkShortcutsShortcut">
+                                <property name="title">Add To Queue</property>
+                                <property name="accelerator">&lt;Control&gt;&lt;Shift&gt;a</property>
+                            </object>
+                        </child>
+                        <child>
+                            <object class="GtkShortcutsShortcut">
+                                <property name="title">Remove From Queue</property>
+                                <property name="accelerator">Delete</property>
+                            </object>
+                        </child>
+                        <child>
+                            <object class="GtkShortcutsShortcut">
+                                <property name="title">Clear Queue</property>
+                                <property name="accelerator">&lt;Control&gt;&lt;Shift&gt;c</property>
                             </object>
                         </child>
                     </object>

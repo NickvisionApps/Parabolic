@@ -18,8 +18,11 @@ namespace NickvisionTubeConverter::UI::Views
         NickvisionTubeConverter::Models::Configuration& m_configuration;
         bool m_opened;
         //==App Actions==//
-        GSimpleAction* m_gio_actOpenFolder;
-        GSimpleAction* m_gio_actCloseFolder;
+        GSimpleAction* m_gio_actSelectSaveFolder;
+        GSimpleAction* m_gio_actAddToQueue;
+        GSimpleAction* m_gio_actRemoveFromQueue;
+        GSimpleAction* m_gio_actClearQueue;
+        GSimpleAction* m_gio_actDownloadVideos;
         //==Help Actions==//
         GSimpleAction* m_gio_actPreferences;
         GSimpleAction* m_gio_actKeyboardShortcuts;
@@ -27,8 +30,11 @@ namespace NickvisionTubeConverter::UI::Views
         GSimpleAction* m_gio_actAbout;
         //==Signals==//
         void onStartup();
-        void openFolder();
-        void closeFolder();
+        void selectSaveFolder();
+        void addToQueue();
+        void removeFromQueue();
+        void clearQueue();
+        void downloadVideos();
         void preferences();
         void keyboardShortcuts();
         void changelog();

@@ -14,14 +14,26 @@ MainWindow::MainWindow(Configuration& configuration) : Widget{"/org/nickvision/t
     //==Signals==//
     g_signal_connect(m_gobj, "show", G_CALLBACK((void (*)(GtkWidget*, gpointer*))[](GtkWidget* widget, gpointer* data) { reinterpret_cast<MainWindow*>(data)->onStartup(); }), this);
     //==App Actions==//
-    //Open Folder
-    m_gio_actOpenFolder = g_simple_action_new("openFolder", nullptr);
-    g_signal_connect(m_gio_actOpenFolder, "activate", G_CALLBACK((void (*)(GSimpleAction*, GVariant*, gpointer*))[](GSimpleAction* action, GVariant* parameter, gpointer* data) { reinterpret_cast<MainWindow*>(data)->openFolder(); }), this);
-    g_action_map_add_action(G_ACTION_MAP(m_gobj), G_ACTION(m_gio_actOpenFolder));
-    //Close Folder
-    m_gio_actCloseFolder = g_simple_action_new("closeFolder", nullptr);
-    g_signal_connect(m_gio_actCloseFolder, "activate", G_CALLBACK((void (*)(GSimpleAction*, GVariant*, gpointer*))[](GSimpleAction* action, GVariant* parameter, gpointer* data) { reinterpret_cast<MainWindow*>(data)->closeFolder(); }), this);
-    g_action_map_add_action(G_ACTION_MAP(m_gobj), G_ACTION(m_gio_actCloseFolder));
+    //Select Save Folder
+    m_gio_actSelectSaveFolder = g_simple_action_new("selectSaveFolder", nullptr);
+    g_signal_connect(m_gio_actSelectSaveFolder, "activate", G_CALLBACK((void (*)(GSimpleAction*, GVariant*, gpointer*))[](GSimpleAction* action, GVariant* parameter, gpointer* data) { reinterpret_cast<MainWindow*>(data)->selectSaveFolder(); }), this);
+    g_action_map_add_action(G_ACTION_MAP(m_gobj), G_ACTION(m_gio_actSelectSaveFolder));
+    //Add To Queue
+    m_gio_actAddToQueue = g_simple_action_new("addToQueue", nullptr);
+    g_signal_connect(m_gio_actAddToQueue, "activate", G_CALLBACK((void (*)(GSimpleAction*, GVariant*, gpointer*))[](GSimpleAction* action, GVariant* parameter, gpointer* data) { reinterpret_cast<MainWindow*>(data)->addToQueue(); }), this);
+    g_action_map_add_action(G_ACTION_MAP(m_gobj), G_ACTION(m_gio_actAddToQueue));
+    //Remove From Queue
+    m_gio_actRemoveFromQueue = g_simple_action_new("removeFromQueue", nullptr);
+    g_signal_connect(m_gio_actAddToQueue, "activate", G_CALLBACK((void (*)(GSimpleAction*, GVariant*, gpointer*))[](GSimpleAction* action, GVariant* parameter, gpointer* data) { reinterpret_cast<MainWindow*>(data)->removeFromQueue(); }), this);
+    g_action_map_add_action(G_ACTION_MAP(m_gobj), G_ACTION(m_gio_actRemoveFromQueue));
+    //Clear Queue
+    m_gio_actClearQueue = g_simple_action_new("clearQueue", nullptr);
+    g_signal_connect(m_gio_actClearQueue, "activate", G_CALLBACK((void (*)(GSimpleAction*, GVariant*, gpointer*))[](GSimpleAction* action, GVariant* parameter, gpointer* data) { reinterpret_cast<MainWindow*>(data)->clearQueue(); }), this);
+    g_action_map_add_action(G_ACTION_MAP(m_gobj), G_ACTION(m_gio_actClearQueue));
+    //Download Videos
+    m_gio_actDownloadVideos = g_simple_action_new("downloadVideos", nullptr);
+    g_signal_connect(m_gio_actDownloadVideos, "activate", G_CALLBACK((void (*)(GSimpleAction*, GVariant*, gpointer*))[](GSimpleAction* action, GVariant* parameter, gpointer* data) { reinterpret_cast<MainWindow*>(data)->downloadVideos(); }), this);
+    g_action_map_add_action(G_ACTION_MAP(m_gobj), G_ACTION(m_gio_actDownloadVideos));
     //==Help Actions==//
     //Preferences
     m_gio_actPreferences = g_simple_action_new("preferences", nullptr);
@@ -62,10 +74,16 @@ void MainWindow::onStartup()
     if(!m_opened)
     {
         //==Set Action Shortcuts==//
-        //Open Folder
-        gtk_application_set_accels_for_action(gtk_window_get_application(GTK_WINDOW(m_gobj)), "win.openFolder", new const char*[2]{ "<Ctrl>o", nullptr });
-        //Close Folder
-        gtk_application_set_accels_for_action(gtk_window_get_application(GTK_WINDOW(m_gobj)), "win.closeFolder", new const char*[2]{ "<Ctrl>w", nullptr });
+        //Select Save Folder
+        gtk_application_set_accels_for_action(gtk_window_get_application(GTK_WINDOW(m_gobj)), "win.selectSaveFolder", new const char*[2]{ "<Ctrl>o", nullptr });
+        //Add To Queue
+        gtk_application_set_accels_for_action(gtk_window_get_application(GTK_WINDOW(m_gobj)), "win.addToQueue", new const char*[2]{ "<Ctrl><Shift>a", nullptr });
+        //Remove From Queue
+        gtk_application_set_accels_for_action(gtk_window_get_application(GTK_WINDOW(m_gobj)), "win.removeFromQueue", new const char*[2]{ "Delete", nullptr });
+        //Clear Queue
+        gtk_application_set_accels_for_action(gtk_window_get_application(GTK_WINDOW(m_gobj)), "win.clearQueue", new const char*[2]{ "<Ctrl><Shift>c", nullptr });
+        //Download Videos
+        gtk_application_set_accels_for_action(gtk_window_get_application(GTK_WINDOW(m_gobj)), "win.downloadVideos", new const char*[2]{ "<Ctrl>d", nullptr });
         //About
         gtk_application_set_accels_for_action(gtk_window_get_application(GTK_WINDOW(m_gobj)), "win.about", new const char*[2]{ "F1", nullptr });
         //==Load Configuration==//
@@ -74,7 +92,7 @@ void MainWindow::onStartup()
     }
 }
 
-void MainWindow::openFolder()
+void MainWindow::selectSaveFolder()
 {
     GtkFileChooserNative* openFolderDialog{gtk_file_chooser_native_new("Open Folder", GTK_WINDOW(m_gobj), GTK_FILE_CHOOSER_ACTION_SELECT_FOLDER, "_Open", "_Cancel")};
     gtk_native_dialog_set_modal(GTK_NATIVE_DIALOG(openFolderDialog), true);
@@ -95,10 +113,24 @@ void MainWindow::openFolder()
     gtk_native_dialog_show(GTK_NATIVE_DIALOG(openFolderDialog));
 }
 
-void MainWindow::closeFolder()
+void MainWindow::addToQueue()
 {
-    adw_window_title_set_subtitle(ADW_WINDOW_TITLE(gtk_builder_get_object(GTK_BUILDER(m_builder), "adw_title")), nullptr);
-    gtk_widget_set_visible(GTK_WIDGET(gtk_builder_get_object(m_builder, "gtk_btnCloseFolder")), false);
+    
+}
+
+void MainWindow::removeFromQueue()
+{
+    
+}
+
+void MainWindow::clearQueue()
+{
+    
+}
+
+void MainWindow::downloadVideos()
+{
+    
 }
 
 void MainWindow::preferences()
