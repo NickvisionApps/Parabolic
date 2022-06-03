@@ -2,6 +2,7 @@
 
 #include <mutex>
 #include <string>
+#include "mediafiletype.h"
 
 namespace NickvisionTubeConverter::Models
 {
@@ -18,14 +19,20 @@ namespace NickvisionTubeConverter::Models
         Configuration();
         Theme getTheme() const;
         void setTheme(Theme theme);
-        bool getIsFirstTimeOpen() const;
-        void setIsFirstTimeOpen(bool isFirstTimeOpen);
+        unsigned int getMaxNumberOfActiveDownloads() const;
+        void setMaxNumberOfActiveDownloads(unsigned int maxNumberOfActiveDownloads);
+        const std::string& getPreviousSaveFolder() const;
+        void setPreviousSaveFolder(const std::string& previousSaveFolder);
+        const MediaFileType& getPreviousFileFormat() const;
+        void setPreviousFileFormat(const MediaFileType& previousFileFormat);
         void save() const;
 
     private:
         mutable std::mutex m_mutex;
         std::string m_configDir;
         Theme m_theme;
-        bool m_isFirstTimeOpen;
+        unsigned int m_maxNumberOfActiveDownloads;
+        std::string m_previousSaveFolder;
+        MediaFileType m_previousFileFormat;
     };
 }

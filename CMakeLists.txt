@@ -13,11 +13,12 @@ set(HELPERS helpers/curlhelpers.h helpers/curlhelpers.cpp)
 set(MODELS models/configuration.h models/configuration.cpp models/mediafiletype.h models/mediafiletype.cpp models/download.h models/download.cpp models/downloadmanager.h models/downloadmanager.cpp)
 set(UI ui/application.h ui/application.cpp ui/widget.h ui/widget.cpp)
 set(XML ui/controls/progressdialog.xml ui/controls/progresstracker.xml ui/controls/comboboxdialog.xml ui/views/menuhelp.xml ui/views/mainwindow.xml ui/views/preferencesdialog.xml ui/views/shortcutsdialog.xml)
+set(RESOURCES resources/org.nickvision.tubeconverter.svg resources/org.nickvision.tubeconverter-devel.svg resources/org.nickvision.tubeconverter-symbolic.svg)
 set(CONTROLS ui/controls/progressdialog.h ui/controls/progressdialog.cpp ui/controls/progresstracker.h ui/controls/progresstracker.cpp ui/controls/comboboxdialog.h ui/controls/comboboxdialog.cpp)
 set(VIEWS ui/views/mainwindow.h ui/views/mainwindow.cpp ui/views/preferencesdialog.h ui/views/preferencesdialog.cpp ui/views/shortcutsdialog.h ui/views/shortcutsdialog.cpp)
 
 #Create Exe
-add_executable(org.nickvision.tubeconverter main.cpp ${HELPERS} ${MODELS} ${UI} ${XML} ${CONTROLS} ${VIEWS})
+add_executable(org.nickvision.tubeconverter main.cpp ${HELPERS} ${MODELS} ${UI} ${XML} ${RESOURCES} ${CONTROLS} ${VIEWS})
 
 #Find Libraries
 find_package(PkgConfig)
@@ -44,4 +45,7 @@ add_custom_target(resource ALL DEPENDS ${RESOURCE_FILE})
 install(FILES ${CMAKE_BINARY_DIR}/resources.gresource DESTINATION share/org.nickvision.tubeconverter)
 install(FILES ${CMAKE_BINARY_DIR}/resources.gresource.xml DESTINATION share/org.nickvision.tubeconverter)
 install(FILES ${CMAKE_SOURCE_DIR}/org.nickvision.tubeconverter.desktop DESTINATION share/applications/)
+install(FILES ${CMAKE_SOURCE_DIR}/resources/org.nickvision.tubeconverter.svg DESTINATION share/icons/hicolor/scalable/apps)
+install(FILES ${CMAKE_SOURCE_DIR}/resources/org.nickvision.tubeconverter-devel.svg DESTINATION share/icons/hicolor/scalable/apps)
+install(FILES ${CMAKE_SOURCE_DIR}/resources/org.nickvision.tubeconverter-symbolic.svg DESTINATION share/icons/hicolor/symbolic/apps)
 install(FILES ${CMAKE_BINARY_DIR}/org.nickvision.tubeconverter PERMISSIONS WORLD_EXECUTE WORLD_WRITE WORLD_READ DESTINATION bin)

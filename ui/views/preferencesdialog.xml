@@ -57,20 +57,27 @@
                         </child>
                         <child>
                             <object class="AdwPreferencesGroup">
-                                <property name="title" translatable="yes">Application</property>
-                                <property name="description" translatable="yes">Customize application settings.</property>
+                                <property name="title" translatable="yes">Tube Converter</property>
+                                <property name="description" translatable="yes">Customize tube converter settings.</property>
                                 <child>
-                                    <object class="AdwActionRow" id="adw_rowIsFirstTimeOpen">
-                                        <property name="title" translatable="yes">Is First Time Open</property>
-                                        <binding name="activatable-widget">
-                                            <lookup name="child">adw_rowIsFirstTimeOpen</lookup>
-                                        </binding>
-                                        <child>
-                                            <object class="GtkSwitch" id="gtk_switchIsFirstTimeOpen">
-                                                <property name="valign">center</property>
-                                                <property name="active">true</property>
+                                    <object class="AdwComboRow" id="adw_rowMaxNumberOfActiveDownloads">
+                                        <property name="title" translatable="yes">Max Number of Active Downloads</property>
+                                         <property name="model">
+                                            <object class="GtkStringList">
+                                                <items>
+                                                    <item>1</item>
+                                                    <item>2</item>
+                                                    <item>3</item>
+                                                    <item>4</item>
+                                                    <item>5</item>
+                                                    <item>6</item>
+                                                    <item>7</item>
+                                                    <item>8</item>
+                                                    <item>9</item>
+                                                    <item>10</item>
+                                                </items>
                                             </object>
-                                        </child>
+                                        </property>
                                     </object>
                                 </child>
                             </object>

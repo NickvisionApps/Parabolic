@@ -69,7 +69,6 @@ void MainWindow::onStartup()
         //About
         gtk_application_set_accels_for_action(gtk_window_get_application(GTK_WINDOW(m_gobj)), "win.about", new const char*[2]{ "F1", nullptr });
         //==Load Configuration==//
-        m_configuration.setIsFirstTimeOpen(false);
         m_configuration.save();
         m_opened = true;
     }
@@ -142,17 +141,16 @@ void MainWindow::changelog()
 {
     GtkWidget* changelogDialog{gtk_message_dialog_new(GTK_WINDOW(m_gobj), GtkDialogFlags(GTK_DIALOG_MODAL),
         GTK_MESSAGE_INFO, GTK_BUTTONS_OK, "What's New?")};
-    gtk_message_dialog_format_secondary_text(GTK_MESSAGE_DIALOG(changelogDialog), "- Initial Release");
+    gtk_message_dialog_format_secondary_text(GTK_MESSAGE_DIALOG(changelogDialog), "- Application rewrite in C++ and GTK4");
     g_signal_connect(changelogDialog, "response", G_CALLBACK(gtk_window_destroy), nullptr);
     gtk_widget_show(changelogDialog);
 }
 
 void MainWindow::about()
 {
-    const char* authors[]{ "Nicholas Logozzo", nullptr };
     gtk_show_about_dialog(GTK_WINDOW(m_gobj), "program-name", "Nickvision Tube Converter", "version", "2022.5.0", "comments", "An easy-to-use YouTube video downloader.",
                           "copyright", "(C) Nickvision 2021-2022", "license-type", GTK_LICENSE_GPL_3_0, "website", "https://github.com/nlogozzo/NickvisionTubeConverter", "website-label", "GitHub",
-                          "authors", authors, nullptr);
+                          "authors", new const char*[2]{ "Nicholas Logozzo", nullptr }, "artists", new const char*[3]{ "Nicholas Logozzo", "daudix-UFO (Icons)", nullptr }, "logo-icon-name", "org.nickvision.tubeconverter", nullptr);
 }
 
 void MainWindow::sendToast(const std::string& message)

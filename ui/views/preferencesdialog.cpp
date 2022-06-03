@@ -11,7 +11,6 @@ PreferencesDialog::PreferencesDialog(GtkWidget* parent, Configuration& configura
     //==Signals==//
     g_signal_connect(gtk_builder_get_object(m_builder, "gtk_btnCancel"), "clicked", G_CALLBACK((void (*)(GtkButton*, gpointer*))[](GtkButton* button, gpointer* data) { reinterpret_cast<PreferencesDialog*>(data)->cancel(); }), this);
     g_signal_connect(gtk_builder_get_object(m_builder, "gtk_btnSave"), "clicked", G_CALLBACK((void (*)(GtkButton*, gpointer*))[](GtkButton* button, gpointer* data) { reinterpret_cast<PreferencesDialog*>(data)->save(); }), this);
-    g_signal_connect(gtk_builder_get_object(m_builder, "adw_rowIsFirstTimeOpen"), "activated", G_CALLBACK((void (*)(AdwActionRow*, gpointer*))[](AdwActionRow* row, gpointer* data) { reinterpret_cast<PreferencesDialog*>(data)->onRowIsFirstTimeOpenActivate(); }), this);
     //==Load Config==//
     if(m_configuration.getTheme() == Theme::System)
     {
@@ -25,7 +24,7 @@ PreferencesDialog::PreferencesDialog(GtkWidget* parent, Configuration& configura
     {
         adw_combo_row_set_selected(ADW_COMBO_ROW(gtk_builder_get_object(m_builder, "adw_rowTheme")), 2);
     }
-    gtk_switch_set_active(GTK_SWITCH(gtk_builder_get_object(m_builder, "gtk_switchIsFirstTimeOpen")), m_configuration.getIsFirstTimeOpen());
+    adw_combo_row_set_selected(ADW_COMBO_ROW(gtk_builder_get_object(m_builder, "adw_rowMaxNumberOfActiveDownloads")), m_configuration.getMaxNumberOfActiveDownloads() - 1);
 }
 
 PreferencesDialog::~PreferencesDialog()
@@ -41,12 +40,7 @@ void PreferencesDialog::cancel()
 void PreferencesDialog::save()
 {
     m_configuration.setTheme(static_cast<Theme>(adw_combo_row_get_selected(ADW_COMBO_ROW(gtk_builder_get_object(m_builder, "adw_rowTheme")))));
-    m_configuration.setIsFirstTimeOpen(gtk_switch_get_active(GTK_SWITCH(gtk_builder_get_object(m_builder, "gtk_switchIsFirstTimeOpen"))));
+    m_configuration.setMaxNumberOfActiveDownloads(adw_combo_row_get_selected(ADW_COMBO_ROW(gtk_builder_get_object(m_builder, "adw_rowMaxNumberOfActiveDownloads"))) + 1);
     m_configuration.save();
     gtk_widget_hide(m_gobj);
-}
-
-void PreferencesDialog::onRowIsFirstTimeOpenActivate()
-{
-    gtk_switch_set_active(GTK_SWITCH(gtk_builder_get_object(m_builder, "gtk_switchIsFirstTimeOpen")), !gtk_switch_get_active(GTK_SWITCH(gtk_builder_get_object(m_builder, "gtk_switchIsFirstTimeOpen"))));
 }

@@ -17,6 +17,5 @@ namespace NickvisionTubeConverter::UI::Views
         //==Signals==//
         void cancel();
         void save();
-        void onRowIsFirstTimeOpenActivate();
     };
 }
