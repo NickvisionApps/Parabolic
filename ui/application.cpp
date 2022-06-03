@@ -7,7 +7,7 @@ using namespace NickvisionTubeConverter::UI::Views;
 Application::Application(const std::string& id, GApplicationFlags flags) : m_adwApp{adw_application_new(id.c_str(), flags)}
 {
     //==Resources==//
-    g_resources_register(g_resource_load("resources.gresource", nullptr));
+    g_resources_register(g_resource_load("/usr/share/org.nickvision.tubeconverter/resources.gresource", nullptr));
     //==Signals==//
     g_signal_connect(m_adwApp, "activate", G_CALLBACK((void (*)(GtkApplication*, gpointer*))[](GtkApplication* app, gpointer* data) { reinterpret_cast<Application*>(data)->onActivate(app); }), this);
 }
