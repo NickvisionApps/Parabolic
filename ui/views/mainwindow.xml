@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+    <object class="AdwApplicationWindow" id="adw_winMain">
+        <property name="default-width">800</property>
+        <property name="default-height">600</property>
+        <child>
+            <object class="GtkBox">
+                <property name="orientation">vertical</property>
+                <child>
+                    <object class="AdwHeaderBar" id="adw_headerBar">
+                        <property name="title-widget">
+                            <object class="AdwWindowTitle" id="adw_title">
+                                <property name="title">Tube Converter</property>
+                            </object>
+                        </property>
+                        <child type="start">
+                            <object class="GtkButton" id="gtk_btnOpenFolder">
+                                <property name="action-name">win.openFolder</property>
+                                <property name="tooltip-text" translatable="yes">Open Folder (Ctrl+O)</property>
+                                <property name="child">
+                                    <object class="AdwButtonContent">
+                                        <property name="icon-name" translatable="yes">folder-open-symbolic</property>
+                                        <property name="label" translatable="yes">Open</property>
+                                    </object>
+                                </property>
+                            </object>
+                        </child>
+                        <child type="start">
+                            <object class="GtkButton" id="gtk_btnCloseFolder">
+                                <property name="action-name">win.closeFolder</property>
+                                <property name="icon-name">folder-visiting-symbolic</property>
+                                <property name="tooltip-text" translatable="yes">Close Folder (Ctrl+W)</property>
+                                <property name="visible">false</property>
+                            </object>
+                        </child>
+                        <child type="end">
+                            <object class="GtkMenuButton" id="gtk_btnMenuHelp">
+                                <property name="direction">none</property>
+                                <property name="tooltip-text">Main Menu</property>
+                            </object>
+                        </child>
+                    </object>
+                </child>
+                <child>
+                    <object class="AdwToastOverlay" id="adw_toastOverlay">
+                        <property name="hexpand">true</property>
+                        <property name="vexpand">true</property>
+                        <child>
+                            <object class="GtkBox">
+                                <property name="margin-start">10</property>
+                                <property name="margin-top">10</property>
+                                <property name="margin-end">10</property>
+                                <property name="margin-bottom">10</property>
+                                <property name="orientation">vertical</property>
+                                <property name="spacing">6</property>
+                                <child>
+                                    <object class="GtkLabel">
+                                        <property name="halign">start</property>
+                                        <property name="label" translatable="yes">First Name</property>
+                                    </object>
+                                </child>
+                                <child>
+                                    <object class="GtkEntry" id="gtk_txtFirstName">
+                                        <property name="placeholder-text" translatable="yes">Enter first name here</property>
+                                    </object>
+                                </child>
+                                <child>
+                                    <object class="GtkLabel">
+                                        <property name="halign">start</property>
+                                        <property name="label" translatable="yes">Last Name</property>
+                                    </object>
+                                </child>
+                                <child>
+                                    <object class="GtkEntry" id="gtk_txtLastName">
+                                        <property name="placeholder-text" translatable="yes">Enter last name here</property>
+                                    </object>
+                                </child>
+                            </object>
+                        </child>
+                    </object>
+                </child>
+            </object>
+        </child>
+    </object>
+</interface>

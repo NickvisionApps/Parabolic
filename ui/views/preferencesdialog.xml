@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+    <object class="AdwWindow" id="adw_preferencesDialog">
+        <property name="default-width">600</property>
+        <property name="default-height">500</property>
+        <property name="modal">true</property>
+        <property name="deletable">false</property>
+        <property name="destroy-with-parent">false</property>
+        <property name="hide-on-close">true</property>
+        <child>
+            <object class="GtkBox">
+                <property name="orientation">vertical</property>
+                <child>
+                    <object class="AdwHeaderBar">
+                        <property name="show-end-title-buttons">true</property>
+                        <property name="title-widget">
+                            <object class="AdwWindowTitle">
+                                <property name="title" translatable="yes">Preferences</property>
+                            </object>
+                        </property>
+                        <child type="start">
+                            <object class="GtkButton" id="gtk_btnCancel">
+                                <property name="label" translatable="yes">Cancel</property>
+                            </object>
+                        </child>
+                        <child type="end">
+                            <object class="GtkButton" id="gtk_btnSave">
+                                <style>
+                                    <class name="suggested-action"/>
+                                </style>
+                                <property name="label" translatable="yes">Save</property>
+                            </object>
+                        </child>
+                    </object>
+                </child>
+                <child>
+                    <object class="AdwPreferencesPage">
+                        <child>
+                            <object class="AdwPreferencesGroup">
+                                <property name="title" translatable="yes">User Interface</property>
+                                <property name="description" translatable="yes">Customize the application's user interface.</property>
+                                <child>
+                                    <object class="AdwComboRow" id="adw_rowTheme">
+                                        <property name="title" translatable="yes">Theme</property>
+                                        <property name="model">
+                                            <object class="GtkStringList">
+                                                <items>
+                                                    <item translatable="yes">System</item>
+                                                    <item translatable="yes">Light</item>
+                                                    <item translatable="yes">Dark</item>
+                                                </items>
+                                            </object>
+                                        </property>
+                                    </object>
+                                </child>
+                            </object>
+                        </child>
+                        <child>
+                            <object class="AdwPreferencesGroup">
+                                <property name="title" translatable="yes">Application</property>
+                                <property name="description" translatable="yes">Customize application settings.</property>
+                                <child>
+                                    <object class="AdwActionRow" id="adw_rowIsFirstTimeOpen">
+                                        <property name="title" translatable="yes">Is First Time Open</property>
+                                        <binding name="activatable-widget">
+                                            <lookup name="child">adw_rowIsFirstTimeOpen</lookup>
+                                        </binding>
+                                        <child>
+                                            <object class="GtkSwitch" id="gtk_switchIsFirstTimeOpen">
+                                                <property name="valign">center</property>
+                                                <property name="active">true</property>
+                                            </object>
+                                        </child>
+                                    </object>
+                                </child>
+                            </object>
+                        </child>
+                    </object>
+                </child>
+            </object>
+        </child>
+    </object>
+</interface>

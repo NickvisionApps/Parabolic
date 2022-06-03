@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+    <object class="AdwWindow" id="gtk_comboBoxDialog">
+        <property name="default-width">420</property>
+        <property name="default-height">210</property>
+        <property name="modal">true</property>
+        <property name="resizable">false</property>
+        <property name="deletable">false</property>
+        <property name="destroy-with-parent">false</property>
+        <property name="hide-on-close">true</property>
+        <child>
+            <object class="GtkBox">
+                <property name="orientation">vertical</property>
+                <child>
+                    <object class="AdwHeaderBar">
+                        <property name="show-end-title-buttons">true</property>
+                        <property name="title-widget">
+                            <object class="AdwWindowTitle">
+                                <property name="title"></property>
+                            </object>
+                        </property>
+                        <child type="start">
+                            <object class="GtkButton" id="gtk_btnCancel">
+                                <property name="label" translatable="yes">Cancel</property>
+                            </object>
+                        </child>
+                        <child type="end">
+                            <object class="GtkButton" id="gtk_btnOK">
+                                <style>
+                                    <class name="suggested-action"/>
+                                </style>
+                                <property name="label" translatable="yes">OK</property>
+                            </object>
+                        </child>
+                    </object>
+                </child>
+                <child>
+                    <object class="AdwPreferencesPage">
+                        <child>
+                            <object class="AdwPreferencesGroup" id="adw_group">
+                                <child>
+                                    <object class="AdwComboRow" id="adw_row"></object>
+                                </child>
+                            </object>
+                        </child>
+                    </object>
+                </child>
+            </object>
+        </child>
+    </object>
+</interface>
