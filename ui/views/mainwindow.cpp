@@ -84,11 +84,11 @@ void MainWindow::onStartup()
         //Select Save Folder
         gtk_application_set_accels_for_action(gtk_window_get_application(GTK_WINDOW(m_gobj)), "win.selectSaveFolder", new const char*[2]{ "<Ctrl>o", nullptr });
         //Add To Queue
-        gtk_application_set_accels_for_action(gtk_window_get_application(GTK_WINDOW(m_gobj)), "win.addToQueue", new const char*[2]{ "<Ctrl><Shift>a", nullptr });
+        gtk_application_set_accels_for_action(gtk_window_get_application(GTK_WINDOW(m_gobj)), "win.addToQueue", new const char*[2]{ "Insert", nullptr });
         //Remove From Queue
         gtk_application_set_accels_for_action(gtk_window_get_application(GTK_WINDOW(m_gobj)), "win.removeFromQueue", new const char*[2]{ "Delete", nullptr });
         //Clear Queue
-        gtk_application_set_accels_for_action(gtk_window_get_application(GTK_WINDOW(m_gobj)), "win.clearQueue", new const char*[2]{ "<Ctrl><Shift>c", nullptr });
+        gtk_application_set_accels_for_action(gtk_window_get_application(GTK_WINDOW(m_gobj)), "win.clearQueue", new const char*[2]{ "<Ctrl>Delete", nullptr });
         //Download Videos
         gtk_application_set_accels_for_action(gtk_window_get_application(GTK_WINDOW(m_gobj)), "win.downloadVideos", new const char*[2]{ "<Ctrl>d", nullptr });
         //About
