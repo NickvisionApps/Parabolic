@@ -94,7 +94,7 @@ void MainWindow::onStartup()
 
 void MainWindow::selectSaveFolder()
 {
-    GtkFileChooserNative* openFolderDialog{gtk_file_chooser_native_new("Open Folder", GTK_WINDOW(m_gobj), GTK_FILE_CHOOSER_ACTION_SELECT_FOLDER, "_Open", "_Cancel")};
+    GtkFileChooserNative* openFolderDialog{gtk_file_chooser_native_new("Select Save Folder", GTK_WINDOW(m_gobj), GTK_FILE_CHOOSER_ACTION_SELECT_FOLDER, "_Open", "_Cancel")};
     gtk_native_dialog_set_modal(GTK_NATIVE_DIALOG(openFolderDialog), true);
     g_signal_connect(openFolderDialog, "response", G_CALLBACK((void (*)(GtkNativeDialog*, gint, gpointer*))([](GtkNativeDialog* dialog, gint response_id, gpointer* data)
     {
@@ -105,8 +105,9 @@ void MainWindow::selectSaveFolder()
             GFile* file{gtk_file_chooser_get_file(chooser)};
             std::string path{g_file_get_path(file)};
             g_object_unref(file);
-            adw_window_title_set_subtitle(ADW_WINDOW_TITLE(gtk_builder_get_object(GTK_BUILDER(mainWindow->m_builder), "adw_title")), path.c_str());
-            gtk_widget_set_visible(GTK_WIDGET(gtk_builder_get_object(mainWindow->m_builder, "gtk_btnCloseFolder")), true);
+            gtk_editable_set_text(GTK_EDITABLE(gtk_builder_get_object(GTK_BUILDER(mainWindow->m_builder), "gtk_txtSaveFolder")), path.c_str());
+            mainWindow->m_configuration.setPreviousSaveFolder(path);
+            mainWindow->m_configuration.save();
         }
         g_object_unref(dialog);
     })), this);

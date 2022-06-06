@@ -76,8 +76,125 @@
                         <property name="hexpand">true</property>
                         <property name="vexpand">true</property>
                         <child>
-                            <object class="GtkBox">
-                                
+                            <object class="GtkScrolledWindow">
+                                <child>
+                                    <object class="GtkBox">
+                                        <property name="margin-start">10</property>
+                                        <property name="margin-top">10</property>
+                                        <property name="margin-end">10</property>
+                                        <property name="margin-bottom">10</property>
+                                        <property name="orientation">vertical</property>
+                                        <property name="spacing">10</property>
+                                        <child>
+                                            <object class="GtkGrid">
+                                                <property name="column-spacing">10</property>
+                                                <property name="row-spacing">6</property>
+                                                <child>
+                                                    <object class="GtkLabel">
+                                                        <layout>
+                                                            <property name="row">0</property>
+                                                            <property name="column">0</property>
+                                                        </layout>
+                                                        <property name="halign">start</property>
+                                                        <property name="label" translatable="yes">Video Url</property>
+                                                    </object>
+                                                </child>
+                                                <child>
+                                                    <object class="GtkLabel">
+                                                        <layout>
+                                                            <property name="row">0</property>
+                                                            <property name="column">1</property>
+                                                        </layout>
+                                                        <property name="halign">start</property>
+                                                        <property name="label" translatable="yes">Save Folder</property>
+                                                    </object>
+                                                </child>
+                                                <child>
+                                                    <object class="GtkEntry" id="gtk_txtVideoUrl">
+                                                        <layout>
+                                                            <property name="row">1</property>
+                                                            <property name="column">0</property>
+                                                        </layout>
+                                                        <property name="width-request">340</property>
+                                                        <property name="placeholder-text" translatable="yes">Enter video url here</property>
+                                                    </object>
+                                                </child>
+                                                <child>
+                                                    <object class="GtkEntry" id="gtk_txtSaveFolder">
+                                                        <layout>
+                                                            <property name="row">1</property>
+                                                            <property name="column">1</property>
+                                                        </layout>
+                                                        <property name="width-request">340</property>
+                                                        <property name="placeholder-text" translatable="yes">Select save folder</property>
+                                                        <property name="editable">false</property>
+                                                    </object>
+                                                </child>
+                                                <child>
+                                                    <object class="GtkLabel">
+                                                        <layout>
+                                                            <property name="row">2</property>
+                                                            <property name="column">0</property>
+                                                        </layout>
+                                                        <property name="halign">start</property>
+                                                        <property name="label" translatable="yes">File Format</property>
+                                                    </object>
+                                                </child>
+                                                <child>
+                                                    <object class="GtkLabel">
+                                                        <layout>
+                                                            <property name="row">2</property>
+                                                            <property name="column">1</property>
+                                                        </layout>
+                                                        <property name="halign">start</property>
+                                                        <property name="label" translatable="yes">New Filename</property>
+                                                    </object>
+                                                </child>
+                                                <child>
+                                                    <object class="GtkComboBoxText" id="gtk_cmbFileFormat">
+                                                        <layout>
+                                                            <property name="row">3</property>
+                                                            <property name="column">0</property>
+                                                        </layout>
+                                                        <property name="width-request">340</property>
+                                                        <property name="active">0</property>
+                                                        <items>
+                                                            <item>MP4</item>
+                                                            <item>WEBM</item>
+                                                            <item>MP3</item>
+                                                            <item>OGG</item>
+                                                            <item>FLAC</item>
+                                                        </items>
+                                                    </object>
+                                                </child>
+                                                <child>
+                                                    <object class="GtkEntry" id="gtk_txtNewFilename">
+                                                        <layout>
+                                                            <property name="row">3</property>
+                                                            <property name="column">1</property>
+                                                        </layout>
+                                                        <property name="width-request">340</property>
+                                                        <property name="placeholder-text" translatable="yes">Enter new filename here</property>
+                                                    </object>
+                                                </child>
+                                            </object>
+                                        </child>
+                                        <child>
+                                            <object class="GtkScrolledWindow">
+                                                <property name="hexpand">true</property>
+                                                <property name="vexpand">true</property>
+                                                <child>
+                                                    <object class="GtkListBox" id="gtk_listDownloads">
+                                                        <style>
+                                                            <class name="boxed-list"/>
+                                                        </style>
+                                                        <property name="selection-mode">single</property>
+                                                    </object>
+                                                </child>
+                                            </object>
+                                        </child>
+                                    </object>
+                                </child>
                             </object>
                         </child>
                     </object>

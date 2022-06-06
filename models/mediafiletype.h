@@ -14,9 +14,7 @@ namespace NickvisionTubeConverter::Models
             WEBM,
             MP3,
             OGG,
-            FLAC,
-            WMA,
-            WAV
+            FLAC
         };
 
         MediaFileType(Value fileType);
