@@ -12,23 +12,23 @@ std::optional<MediaFileType> MediaFileType::parse(const std::string& s)
 {
     std::string sToLower{s};
     std::transform(sToLower.begin(), sToLower.end(), sToLower.begin(), ::tolower);
-    if(sToLower.find(".mp4") != std::string::npos)
+    if(sToLower.find("mp4") != std::string::npos)
     {
         return MediaFileType::MP4;
     }
-    else if(sToLower.find(".webm") != std::string::npos)
+    else if(sToLower.find("webm") != std::string::npos)
     {
         return MediaFileType::WEBM;
     }
-    else if(sToLower.find(".mp3") != std::string::npos)
+    else if(sToLower.find("mp3") != std::string::npos)
     {
         return MediaFileType::MP3;
     }
-    else if(sToLower.find(".ogg") != std::string::npos)
+    else if(sToLower.find("ogg") != std::string::npos)
     {
         return MediaFileType::OGG;
     }
-    else if(sToLower.find(".flac") != std::string::npos)
+    else if(sToLower.find("flac") != std::string::npos)
     {
         return MediaFileType::FLAC;
     }

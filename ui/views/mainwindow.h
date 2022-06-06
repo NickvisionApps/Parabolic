@@ -1,9 +1,11 @@
 #pragma once
 
 #include <string>
+#include <vector>
 #include <adwaita.h>
 #include "../widget.h"
 #include "../../models/configuration.h"
+#include "../../models/downloadmanager.h"
 
 namespace NickvisionTubeConverter::UI::Views
 {
@@ -17,6 +19,8 @@ namespace NickvisionTubeConverter::UI::Views
     private:
         NickvisionTubeConverter::Models::Configuration& m_configuration;
         bool m_opened;
+        NickvisionTubeConverter::Models::DownloadManager m_downloadManager;
+        std::vector<GtkWidget*> m_listDownloadsRows;
         //==App Actions==//
         GSimpleAction* m_gio_actSelectSaveFolder;
         GSimpleAction* m_gio_actAddToQueue;
@@ -39,6 +43,8 @@ namespace NickvisionTubeConverter::UI::Views
         void keyboardShortcuts();
         void changelog();
         void about();
+        void onCmbFileFormatSelectionChanged();
+        void onListDownloadsSelectionChanged();
         //==Other Functions==//
         void sendToast(const std::string& message);
     };

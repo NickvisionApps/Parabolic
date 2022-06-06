@@ -44,6 +44,7 @@
                                 <property name="action-name">win.removeFromQueue</property>
                                 <property name="tooltip-text" translatable="yes">Remove Download From Queue (Delete)</property>
                                 <property name="icon-name">list-remove-symbolic</property>
+                                <property name="visible">false</property>
                             </object>
                         </child>
                         <child type="start">
@@ -51,6 +52,7 @@
                                 <property name="action-name">win.clearQueue</property>
                                 <property name="tooltip-text" translatable="yes">Clear Downloads Queue (Ctrl+Shift+C)</property>
                                 <property name="icon-name">software-remove-symbolic</property>
+                                <property name="visible">false</property>
                             </object>
                         </child>
                         <child type="end">
@@ -67,6 +69,7 @@
                                 <property name="action-name">win.downloadVideos</property>
                                 <property name="label" translatable="yes">Download</property>
                                 <property name="tooltip-text" translatable="yes">Download Videos (Ctrl+D)</property>
+                                <property name="visible">false</property>
                             </object>
                         </child>
                     </object>

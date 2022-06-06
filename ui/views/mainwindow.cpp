@@ -1,6 +1,9 @@
 #include "mainwindow.h"
+#include <iostream>
+#include <filesystem>
+#include <regex>
+#include "../../models/download.h"
 #include "../controls/progressdialog.h"
-#include "../controls/progresstracker.h"
 #include "preferencesdialog.h"
 #include "shortcutsdialog.h"
 
@@ -24,7 +27,7 @@ MainWindow::MainWindow(Configuration& configuration) : Widget{"/org/nickvision/t
     g_action_map_add_action(G_ACTION_MAP(m_gobj), G_ACTION(m_gio_actAddToQueue));
     //Remove From Queue
     m_gio_actRemoveFromQueue = g_simple_action_new("removeFromQueue", nullptr);
-    g_signal_connect(m_gio_actAddToQueue, "activate", G_CALLBACK((void (*)(GSimpleAction*, GVariant*, gpointer*))[](GSimpleAction* action, GVariant* parameter, gpointer* data) { reinterpret_cast<MainWindow*>(data)->removeFromQueue(); }), this);
+    g_signal_connect(m_gio_actRemoveFromQueue, "activate", G_CALLBACK((void (*)(GSimpleAction*, GVariant*, gpointer*))[](GSimpleAction* action, GVariant* parameter, gpointer* data) { reinterpret_cast<MainWindow*>(data)->removeFromQueue(); }), this);
     g_action_map_add_action(G_ACTION_MAP(m_gobj), G_ACTION(m_gio_actRemoveFromQueue));
     //Clear Queue
     m_gio_actClearQueue = g_simple_action_new("clearQueue", nullptr);
@@ -55,6 +58,10 @@ MainWindow::MainWindow(Configuration& configuration) : Widget{"/org/nickvision/t
     GtkBuilder* builderMenu{gtk_builder_new_from_resource("/org/nickvision/tubeconverter/ui/views/menuhelp.xml")};
     gtk_menu_button_set_menu_model(GTK_MENU_BUTTON(gtk_builder_get_object(m_builder, "gtk_btnMenuHelp")), G_MENU_MODEL(gtk_builder_get_object(builderMenu, "gio_menuHelp")));
     g_object_unref(builderMenu);
+    //==Cmb File Format==//
+    g_signal_connect(gtk_builder_get_object(m_builder, "gtk_cmbFileFormat"), "changed", G_CALLBACK((void (*)(GtkComboBox*, gpointer*))[](GtkComboBox* comboBox, gpointer* data) { reinterpret_cast<MainWindow*>(data)->onCmbFileFormatSelectionChanged(); }), this);
+    //==List Downloads==//
+    g_signal_connect(gtk_builder_get_object(m_builder, "gtk_listDownloads"), "row-selected", G_CALLBACK((void (*)(GtkListBox*, GtkListBoxRow*, gpointer*))[](GtkListBox* listBox, GtkListBoxRow* row, gpointer* data) { reinterpret_cast<MainWindow*>(data)->onListDownloadsSelectionChanged(); }), this);
 }
 
 MainWindow::~MainWindow()
@@ -87,7 +94,12 @@ void MainWindow::onStartup()
         //About
         gtk_application_set_accels_for_action(gtk_window_get_application(GTK_WINDOW(m_gobj)), "win.about", new const char*[2]{ "F1", nullptr });
         //==Load Configuration==//
-        m_configuration.save();
+        m_downloadManager.setMaxNumOfDownloads(m_configuration.getMaxNumberOfActiveDownloads());
+        if(std::filesystem::exists(m_configuration.getPreviousSaveFolder()))
+        {
+            gtk_editable_set_text(GTK_EDITABLE(gtk_builder_get_object(m_builder, "gtk_txtSaveFolder")), m_configuration.getPreviousSaveFolder().c_str());
+        }
+        gtk_combo_box_set_active(GTK_COMBO_BOX(gtk_builder_get_object(m_builder, "gtk_cmbFileFormat")), static_cast<int>(m_configuration.getPreviousFileFormat()));
         m_opened = true;
     }
 }
@@ -116,22 +128,101 @@ void MainWindow::selectSaveFolder()
 
 void MainWindow::addToQueue()
 {
-    
+    std::string videoUrl{gtk_editable_get_text(GTK_EDITABLE(gtk_builder_get_object(m_builder, "gtk_txtVideoUrl")))};
+    std::string saveFolder{gtk_editable_get_text(GTK_EDITABLE(gtk_builder_get_object(m_builder, "gtk_txtSaveFolder")))};
+    MediaFileType fileFormat{static_cast<MediaFileType::Value>(gtk_combo_box_get_active(GTK_COMBO_BOX(gtk_builder_get_object(m_builder, "gtk_cmbFileFormat"))))};
+    std::string newFilename{gtk_editable_get_text(GTK_EDITABLE(gtk_builder_get_object(m_builder, "gtk_txtNewFilename")))};
+    if(videoUrl.empty())
+    {
+        sendToast("Error: Video url can't be empty.");
+    }
+    else if(videoUrl.find("https://www.youtube.com/watch?v=") == std::string::npos && videoUrl.find("http://www.youtube.com/watch?v=") == std::string::npos)
+    {
+        sendToast("Error: Video url must be a valid YouTube link.");
+    }
+    else if(saveFolder.empty())
+    {
+        sendToast("Error: Save folder can't be empty.");
+    }
+    else if(!std::filesystem::exists(saveFolder))
+    {
+        sendToast("Error: Save folder must be a valid folder.");
+    }
+    else if(newFilename.empty())
+    {
+        sendToast("Error: New filename can't be empty.");
+    }
+    else if(m_downloadManager.isQueueFull())
+    {
+        sendToast("Error: Download queue is full.");
+    }
+    else
+    {
+        std::shared_ptr<Download> download{std::make_shared<Download>(videoUrl, fileFormat, saveFolder, newFilename)};
+        m_downloadManager.addToQueue(download);
+        GtkWidget* row{adw_action_row_new()};
+        adw_preferences_row_set_title(ADW_PREFERENCES_ROW(row), download->getPath().c_str());
+        adw_action_row_set_subtitle(ADW_ACTION_ROW(row), std::regex_replace(download->getVideoUrl(), std::regex("\\&"), "&amp;").c_str());
+        gtk_list_box_append(GTK_LIST_BOX(gtk_builder_get_object(m_builder, "gtk_listDownloads")), row);
+        m_listDownloadsRows.push_back(row);
+        gtk_editable_set_text(GTK_EDITABLE(gtk_builder_get_object(m_builder, "gtk_txtVideoUrl")), "");
+        gtk_editable_set_text(GTK_EDITABLE(gtk_builder_get_object(m_builder, "gtk_txtNewFilename")), "");
+        gtk_widget_set_visible(GTK_WIDGET(gtk_builder_get_object(m_builder, "gtk_btnClearQueue")), true);
+        gtk_widget_set_visible(GTK_WIDGET(gtk_builder_get_object(m_builder, "gtk_btnDownloadVideos")), true);
+    }
 }
 
 void MainWindow::removeFromQueue()
 {
-    
+    GtkListBoxRow* selectedRow{gtk_list_box_get_selected_row(GTK_LIST_BOX(gtk_builder_get_object(m_builder, "gtk_listDownloads")))};
+    m_downloadManager.removeFromQueue(gtk_list_box_row_get_index(selectedRow));
+    gtk_list_box_remove(GTK_LIST_BOX(gtk_builder_get_object(m_builder, "gtk_listDownloads")), GTK_WIDGET(selectedRow));
+    gtk_widget_set_visible(GTK_WIDGET(gtk_builder_get_object(m_builder, "gtk_btnClearQueue")), m_downloadManager.getQueueCount() > 0);
+    gtk_widget_set_visible(GTK_WIDGET(gtk_builder_get_object(m_builder, "gtk_btnDownloadVideos")), m_downloadManager.getQueueCount() > 0);
 }
 
 void MainWindow::clearQueue()
 {
-    
+    GtkWidget* removeDialog{gtk_message_dialog_new(GTK_WINDOW(m_gobj), GtkDialogFlags(GTK_DIALOG_MODAL),
+        GTK_MESSAGE_INFO, GTK_BUTTONS_YES_NO, "Clear Queue?")};
+    gtk_message_dialog_format_secondary_text(GTK_MESSAGE_DIALOG(removeDialog), "Are you sure you want to remove all downloads in queue?\nThis action is irreversible.");
+    g_signal_connect(removeDialog, "response", G_CALLBACK((void (*)(GtkDialog*, gint, gpointer*))([](GtkDialog* dialog, gint response_id, gpointer* data)
+    {
+        gtk_window_destroy(GTK_WINDOW(dialog));
+        if(response_id == GTK_RESPONSE_YES)
+        {
+            MainWindow* mainWindow{reinterpret_cast<MainWindow*>(data)};
+            mainWindow->m_downloadManager.clearQueue();
+            gtk_list_box_unselect_all(GTK_LIST_BOX(gtk_builder_get_object(mainWindow->m_builder, "gtk_listDownloads")));
+            for(GtkWidget* row : mainWindow->m_listDownloadsRows)
+            {
+                gtk_list_box_remove(GTK_LIST_BOX(gtk_builder_get_object(mainWindow->m_builder, "gtk_listDownloads")), row);
+            }
+            mainWindow->m_listDownloadsRows.clear();
+            gtk_widget_set_visible(GTK_WIDGET(gtk_builder_get_object(mainWindow->m_builder, "gtk_btnClearQueue")), false);
+            gtk_widget_set_visible(GTK_WIDGET(gtk_builder_get_object(mainWindow->m_builder, "gtk_btnDownloadVideos")), false);
+        }
+    })), this);
+    gtk_widget_show(removeDialog);
 }
 
 void MainWindow::downloadVideos()
 {
-    
+    ProgressDialog* progDialogDownloading{new ProgressDialog(m_gobj, "Downloading videos...", [&]() { m_downloadManager.downloadAll(); }, [&]()
+    {
+        m_downloadManager.clearQueue();
+        gtk_list_box_unselect_all(GTK_LIST_BOX(gtk_builder_get_object(m_builder, "gtk_listDownloads")));
+        for(GtkWidget* row : m_listDownloadsRows)
+        {
+            gtk_list_box_remove(GTK_LIST_BOX(gtk_builder_get_object(m_builder, "gtk_listDownloads")), row);
+        }
+        m_listDownloadsRows.clear();
+        gtk_widget_set_visible(GTK_WIDGET(gtk_builder_get_object(m_builder, "gtk_btnClearQueue")), false);
+        gtk_widget_set_visible(GTK_WIDGET(gtk_builder_get_object(m_builder, "gtk_btnDownloadVideos")), false);
+        sendToast("Downloaded " + std::to_string(m_downloadManager.getSuccessfulDownloads()) + " video(s) successfully. View logs for details.");
+        std::cout << "\n\n" << m_downloadManager.getLog() << "\n\n";
+    })};
+    progDialogDownloading->show();
 }
 
 void MainWindow::preferences()
@@ -153,6 +244,10 @@ void MainWindow::preferences()
         else if(pointers->second->m_configuration.getTheme() == Theme::Dark)
         {
            adw_style_manager_set_color_scheme(adw_style_manager_get_default(), ADW_COLOR_SCHEME_FORCE_DARK);
+        }
+        if(pointers->second->m_configuration.getMaxNumberOfActiveDownloads() != pointers->second->m_downloadManager.getMaxNumOfDownloads())
+        {
+            pointers->second->m_downloadManager.setMaxNumOfDownloads(pointers->second->m_configuration.getMaxNumberOfActiveDownloads());
         }
         delete pointers;
     })), pointers);
@@ -190,4 +285,16 @@ void MainWindow::sendToast(const std::string& message)
 {
     AdwToast* toast{adw_toast_new(message.c_str())};
     adw_toast_overlay_add_toast(ADW_TOAST_OVERLAY(gtk_builder_get_object(m_builder, "adw_toastOverlay")), toast);
+}
+
+void MainWindow::onCmbFileFormatSelectionChanged()
+{
+    m_configuration.setPreviousFileFormat(static_cast<MediaFileType::Value>(gtk_combo_box_get_active(GTK_COMBO_BOX(gtk_builder_get_object(m_builder, "gtk_cmbFileFormat")))));
+    m_configuration.save();
+}
+
+void MainWindow::onListDownloadsSelectionChanged()
+{
+    GtkListBoxRow* selectedRow{gtk_list_box_get_selected_row(GTK_LIST_BOX(gtk_builder_get_object(m_builder, "gtk_listDownloads")))};
+    gtk_widget_set_visible(GTK_WIDGET(gtk_builder_get_object(m_builder, "gtk_btnRemoveFromQueue")), selectedRow != nullptr);
 }
