@@ -6,8 +6,6 @@ using namespace NickvisionTubeConverter::UI::Views;
 
 Application::Application(const std::string& id, GApplicationFlags flags) : m_adwApp{adw_application_new(id.c_str(), flags)}
 {
-    //==WebKit==//
-    g_type_ensure(WEBKIT_TYPE_WEB_VIEW);
     //==Resources==//
     g_resources_register(g_resource_load("/usr/share/org.nickvision.tubeconverter/resources.gresource", nullptr));
     //==Signals==//

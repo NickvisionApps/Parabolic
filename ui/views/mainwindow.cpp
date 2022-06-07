@@ -58,8 +58,6 @@ MainWindow::MainWindow(Configuration& configuration) : Widget{"/org/nickvision/t
     GtkBuilder* builderMenu{gtk_builder_new_from_resource("/org/nickvision/tubeconverter/ui/views/menuhelp.xml")};
     gtk_menu_button_set_menu_model(GTK_MENU_BUTTON(gtk_builder_get_object(m_builder, "gtk_btnMenuHelp")), G_MENU_MODEL(gtk_builder_get_object(builderMenu, "gio_menuHelp")));
     g_object_unref(builderMenu);
-    //==Browser==//
-    webkit_web_view_load_uri(WEBKIT_WEB_VIEW(gtk_builder_get_object(m_builder, "web_browser")), "https://youtube.com");
     //==Cmb File Format==//
     g_signal_connect(gtk_builder_get_object(m_builder, "gtk_cmbFileFormat"), "changed", G_CALLBACK((void (*)(GtkComboBox*, gpointer*))[](GtkComboBox* comboBox, gpointer* data) { reinterpret_cast<MainWindow*>(data)->onCmbFileFormatSelectionChanged(); }), this);
     //==List Downloads==//
@@ -278,7 +276,7 @@ void MainWindow::changelog()
 
 void MainWindow::about()
 {
-    gtk_show_about_dialog(GTK_WINDOW(m_gobj), "program-name", "Nickvision Tube Converter", "version", "2022.5.0", "comments", "An easy-to-use YouTube video downloader.",
+    gtk_show_about_dialog(GTK_WINDOW(m_gobj), "program-name", "Nickvision Tube Converter", "version", "2022.6.0", "comments", "An easy-to-use YouTube video downloader.",
                           "copyright", "(C) Nickvision 2021-2022", "license-type", GTK_LICENSE_GPL_3_0, "website", "https://github.com/nlogozzo/NickvisionTubeConverter", "website-label", "GitHub",
                           "authors", new const char*[2]{ "Nicholas Logozzo", nullptr }, "artists", new const char*[3]{ "Nicholas Logozzo", "daudix-UFO (Icons)", nullptr }, "logo-icon-name", "org.nickvision.tubeconverter", nullptr);
 }
