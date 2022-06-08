@@ -219,8 +219,10 @@ void MainWindow::downloadVideos()
         m_listDownloadsRows.clear();
         gtk_widget_set_visible(GTK_WIDGET(gtk_builder_get_object(m_builder, "gtk_btnClearQueue")), false);
         gtk_widget_set_visible(GTK_WIDGET(gtk_builder_get_object(m_builder, "gtk_btnDownloadVideos")), false);
+        GtkTextBuffer* logBuffer{gtk_text_buffer_new(nullptr)};
+        gtk_text_buffer_set_text(logBuffer, m_downloadManager.getLog().c_str(), -1);
+        gtk_text_view_set_buffer(GTK_TEXT_VIEW(gtk_builder_get_object(m_builder, "gtk_txtLogs")), logBuffer);
         sendToast("Downloaded " + std::to_string(m_downloadManager.getSuccessfulDownloads()) + " video(s) successfully. View logs for details.");
-        std::cout << "\n\n" << m_downloadManager.getLog() << "\n\n";
     })};
     progDialogDownloading->show();
 }

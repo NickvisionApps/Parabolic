@@ -33,11 +33,11 @@ std::pair<bool, std::string> Download::download() const
     std::string cmdDownload{""};
     if(m_fileType.isVideo())
     {
-        cmdDownload = "yt-dlp -f 'bv*+ba' --format " + m_fileType.toString() + " " + m_videoUrl + " -o \"" + m_path + ".%(ext)s\"";
+        cmdDownload = "yt-dlp -f 'bv*+ba' --format " + m_fileType.toString() + " \"" + m_videoUrl + "\" -o \"" + m_path + ".%(ext)s\"";
     }
     else
     {
-        cmdDownload = "yt-dlp -f 'ba' -x --audio-format " + m_fileType.toString() + " " + m_videoUrl + " -o \"" + m_path + ".%(ext)s\"";
+        cmdDownload = "yt-dlp -f 'ba' -x --audio-format " + m_fileType.toString() + " \"" + m_videoUrl + "\" -o \"" + m_path + ".%(ext)s\"";
     }
     std::string cmdOutput{"===Starting Download===\nURL: " + m_videoUrl + "\nPath: " + m_path + "\n\n"};
     std::array<char, 128> buffer;
