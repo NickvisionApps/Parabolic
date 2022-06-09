@@ -94,6 +94,7 @@
                         <child>
                             <object class="AdwFlap" id="adw_flap">
                                 <property name="flap-position">end</property>
+                                <property name="fold-policy">never</property>
                                 <property name="reveal-flap" bind-source="gtk_btnToggleLogs" bind-property="active" bind-flags="sync-create|bidirectional"></property>
                                 <property name="content">
                                     <object class="GtkScrolledWindow">

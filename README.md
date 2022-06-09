@@ -4,7 +4,9 @@
 **An easy-to-use YouTube video downloader**
 
 # Features
-TODO
+- A basic yt-dlp frontend
+- Supports downloading videos in multiple formats (mp4, webm, mp3, ogg, and flac)
+- Run up to 10 downloads at once
 
 # Screenshots
 TODO

@@ -1,4 +1,5 @@
 #include "downloadmanager.h"
+#include <thread>
 
 using namespace NickvisionTubeConverter::Models;
 
@@ -82,9 +83,15 @@ unsigned int DownloadManager::downloadAll()
     std::lock_guard<std::mutex> lock{m_mutex};
     m_log = "";
     m_successfulDownloads = 0;
+    std::vector<std::pair<bool, std::string>> downloadResults;
+    std::vector<std::jthread> downloadThreads;
     for(const std::shared_ptr<Download>& download : m_downloads)
     {
-        std::pair<bool, std::string> result{download->download()};
+        downloadThreads.push_back(std::jthread([&]() { downloadResults.push_back(download->download()); }));
+    }
+    downloadThreads.clear();
+    for(const std::pair<bool, std::string>& result : downloadResults)
+    {
         m_log += result.second;
         if(result.first)
         {
