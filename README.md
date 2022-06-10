@@ -8,6 +8,9 @@
 - Supports downloading videos in multiple formats (mp4, webm, mp3, ogg, and flac)
 - Run up to 10 downloads at once
 
+# Disclaimer
+The authors of Nickvision Tube Converter are not responsible/liable for any misuse of this program that may violate local copyright/DMCA laws. Users use this application at their own risk.
+
 # Screenshots
 ![MainWindow](https://user-images.githubusercontent.com/17648453/172919510-b99d02c5-601b-41a5-8ba6-889c8a64582c.png)
 ![InQueue](https://user-images.githubusercontent.com/17648453/172919518-f3dc89b2-b268-499d-a0da-1884f6090f5d.png)
@@ -15,7 +18,6 @@
 ![LightMode](https://user-images.githubusercontent.com/17648453/172919537-fef307a1-6831-410d-8483-8c66ed42fe43.png)
 ![Preferences](https://user-images.githubusercontent.com/17648453/172919549-de752856-361b-4d53-aec5-6b0b3906fc11.png)
 ![KeyboardShortcuts](https://user-images.githubusercontent.com/17648453/172919557-71737a17-700f-4e05-a7f3-506f91f5dfb8.png)
-
 
 # Dependencies
 - [c++20](https://en.cppreference.com/w/cpp/20) [Only for building the app]
