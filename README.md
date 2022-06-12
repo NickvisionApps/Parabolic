@@ -1,5 +1,5 @@
 # Nickvision Tube Converter
-![icon](https://user-images.githubusercontent.com/17648453/171770636-91b75760-b3ee-4032-b67f-f2e0eddd99cd.svg)
+![icon](resources/org.nickvision.tubeconverter.svg)
 
 **An easy-to-use YouTube video downloader**
 
