@@ -32,12 +32,12 @@
   </ImportGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="QtSettings">
     <QtInstall>6.2.4_msvc2019_64</QtInstall>
-    <QtModules>core;gui;widgets;</QtModules>
+    <QtModules>core;gui;widgets;webenginewidgets;</QtModules>
     <QtBuildConfig>debug</QtBuildConfig>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'" Label="QtSettings">
     <QtInstall>6.2.4_msvc2019_64</QtInstall>
-    <QtModules>core;gui;widgets;</QtModules>
+    <QtModules>core;gui;widgets;webenginewidgets;</QtModules>
     <QtBuildConfig>release</QtBuildConfig>
   </PropertyGroup>
   <Target Name="QtMsBuildNotFound" BeforeTargets="CustomBuild;ClCompile" Condition="!Exists('$(QtMsBuild)\qt.targets') or !Exists('$(QtMsBuild)\qt.props')">
@@ -143,12 +143,13 @@
   <ItemGroup>
     <Image Include="Resources\About.png" />
     <Image Include="Resources\Browse.png" />
+    <Image Include="Resources\Download.png" />
+    <Image Include="Resources\DownloadFolder.png" />
     <Image Include="Resources\Edit.png" />
     <Image Include="Resources\Home.png" />
     <Image Include="Resources\icon.ico" />
     <Image Include="Resources\icon.png" />
     <Image Include="Resources\Interface.png" />
-    <Image Include="Resources\List.png" />
     <Image Include="Resources\Logs.png" />
     <Image Include="Resources\Settings.png" />
     <Image Include="Resources\Update.png" />
