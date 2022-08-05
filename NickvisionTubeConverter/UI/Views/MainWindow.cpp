@@ -25,6 +25,8 @@ namespace NickvisionTubeConverter::UI::Views
 		//==Pages==//
 		m_ui.viewStack->addWidget(&m_homePage);
 		m_ui.viewStack->addWidget(new QFrame());
+		m_ui.viewStack->addWidget(new QFrame());
+		m_ui.viewStack->addWidget(new QFrame());
 		changePage(Pages::Home);
 		//==Theme==//
 		refreshTheme();
@@ -48,7 +50,7 @@ namespace NickvisionTubeConverter::UI::Views
 		//==Load Config==//
 		if (!Configuration::getInstance().getAlwaysStartOnHomePage())
 		{
-			changePage(Pages::Editor);
+			changePage(Pages::Browse);
 		}
 	}
 
@@ -57,9 +59,19 @@ namespace NickvisionTubeConverter::UI::Views
 		changePage(Pages::Home);
 	}
 
-	void MainWindow::on_navEditor_clicked()
+	void MainWindow::on_navBrowse_clicked()
 	{
-		changePage(Pages::Editor);
+		changePage(Pages::Browse);
+	}
+
+	void MainWindow::on_navQueue_clicked()
+	{
+		changePage(Pages::Queue);
+	}
+
+	void MainWindow::on_navLogs_clicked()
+	{
+		changePage(Pages::Logs);
 	}
 
 	void MainWindow::on_navCheckForUpdates_clicked()
@@ -123,12 +135,30 @@ namespace NickvisionTubeConverter::UI::Views
 		if (page == Pages::Home)
 		{
 			m_ui.navHome->setChecked(true);
-			m_ui.navEditor->setChecked(false);
+			m_ui.navBrowse->setChecked(false);
+			m_ui.navQueue->setChecked(false);
+			m_ui.navLogs->setChecked(false);
 		}
-		else if (page == Pages::Editor)
+		else if (page == Pages::Browse)
 		{
 			m_ui.navHome->setChecked(false);
-			m_ui.navEditor->setChecked(true);
+			m_ui.navBrowse->setChecked(true);
+			m_ui.navQueue->setChecked(false);
+			m_ui.navLogs->setChecked(false);
+		}
+		else if (page == Pages::Queue)
+		{
+			m_ui.navHome->setChecked(false);
+			m_ui.navBrowse->setChecked(false);
+			m_ui.navQueue->setChecked(true);
+			m_ui.navLogs->setChecked(false);
+		}
+		else if (page == Pages::Logs)
+		{
+			m_ui.navHome->setChecked(false);
+			m_ui.navBrowse->setChecked(false);
+			m_ui.navQueue->setChecked(false);
+			m_ui.navLogs->setChecked(true);
 		}
 	}
 }

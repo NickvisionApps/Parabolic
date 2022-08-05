@@ -8,6 +8,8 @@ namespace NickvisionTubeConverter::UI::Views
 	enum class Pages
 	{
 		Home = 0,
-		Editor
+		Browse,
+		Queue,
+		Logs
 	};
 }

@@ -51,7 +51,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QCommandLinkButton" name="navEditor">
+       <widget class="QCommandLinkButton" name="navBrowse">
         <property name="minimumSize">
          <size>
           <width>160</width>
@@ -65,11 +65,75 @@
          </size>
         </property>
         <property name="text">
-         <string>Editor</string>
+         <string>Browse</string>
         </property>
         <property name="icon">
          <iconset resource="../../resources.qrc">
-          <normaloff>:/Resources/Edit.png</normaloff>:/Resources/Edit.png</iconset>
+          <normaloff>:/Resources/Browse.png</normaloff>:/Resources/Browse.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>22</width>
+          <height>22</height>
+         </size>
+        </property>
+        <property name="checkable">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QCommandLinkButton" name="navQueue">
+        <property name="minimumSize">
+         <size>
+          <width>160</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>160</width>
+          <height>16777215</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>Queue</string>
+        </property>
+        <property name="icon">
+         <iconset resource="../../resources.qrc">
+          <normaloff>:/Resources/List.png</normaloff>:/Resources/List.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>22</width>
+          <height>22</height>
+         </size>
+        </property>
+        <property name="checkable">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QCommandLinkButton" name="navLogs">
+        <property name="minimumSize">
+         <size>
+          <width>160</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>160</width>
+          <height>16777215</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>Logs</string>
+        </property>
+        <property name="icon">
+         <iconset resource="../../resources.qrc">
+          <normaloff>:/Resources/Logs.png</normaloff>:/Resources/Logs.png</iconset>
         </property>
         <property name="iconSize">
          <size>

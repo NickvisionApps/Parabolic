@@ -29,9 +29,17 @@ namespace NickvisionTubeConverter::UI::Views
         /// </summary>
         void on_navHome_clicked();
         /// <summary>
-        /// Navigate to editor page
+        /// Navigate to browse page
         /// </summary>
-        void on_navEditor_clicked();
+        void on_navBrowse_clicked();
+        /// <summary>
+        /// Navigate to queue page
+        /// </summary>
+        void on_navQueue_clicked();
+        /// <summary>
+        /// Navigate to logs page
+        /// </summary>
+        void on_navLogs_clicked();
         /// <summary>
         /// Checks for an application update
         /// </summary>
