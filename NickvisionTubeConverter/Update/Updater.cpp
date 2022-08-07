@@ -55,10 +55,11 @@ namespace NickvisionTubeConverter::Update
         }
         std::string exePath{ downloadsDir + "/Setup.exe" };
         m_updateSuccessful = CurlHelpers::downloadFile(m_updateConfig->getLinkToSetupExe(), exePath);
-        QProcess::execute(QString::fromStdString(exePath));
-        window->close();
-        return m_updateSuccessful;
-        m_updateSuccessful = false;
+        if (m_updateSuccessful)
+        {
+            QProcess::execute(QString::fromStdString(exePath));
+            window->close();
+        }
         return m_updateSuccessful;
     }
 }

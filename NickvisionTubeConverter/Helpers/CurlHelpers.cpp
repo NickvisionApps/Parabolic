@@ -8,7 +8,7 @@ namespace NickvisionTubeConverter::Helpers
 {
     bool CurlHelpers::downloadFile(const std::string& url, const std::string& path)
     {
-        std::ofstream fileOut{ path };
+        std::ofstream fileOut{ path, std::ios::binary };
         if (fileOut.is_open())
         {
             cURLpp::Cleanup cleanup;
