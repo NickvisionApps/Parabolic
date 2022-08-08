@@ -32,12 +32,12 @@
   </ImportGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="QtSettings">
     <QtInstall>6.2.4_msvc2019_64</QtInstall>
-    <QtModules>core;gui;widgets;webenginewidgets;</QtModules>
+    <QtModules>core;gui;widgets;webenginewidgets</QtModules>
     <QtBuildConfig>debug</QtBuildConfig>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'" Label="QtSettings">
     <QtInstall>6.2.4_msvc2019_64</QtInstall>
-    <QtModules>core;gui;widgets;webenginewidgets;</QtModules>
+    <QtModules>core;gui;widgets;webenginewidgets</QtModules>
     <QtBuildConfig>release</QtBuildConfig>
   </PropertyGroup>
   <Target Name="QtMsBuildNotFound" BeforeTargets="CustomBuild;ClCompile" Condition="!Exists('$(QtMsBuild)\qt.targets') or !Exists('$(QtMsBuild)\qt.props')">
@@ -107,6 +107,7 @@
     <ClCompile Include="UI\Controls\ProgressDialog.cpp" />
     <ClCompile Include="UI\Messenger.cpp" />
     <ClCompile Include="UI\Controls\AboutDialog.cpp" />
+    <ClCompile Include="UI\Views\BrowsePage.cpp" />
     <ClCompile Include="UI\Views\HomePage.cpp" />
     <ClCompile Include="UI\Views\SettingsDialog.cpp" />
     <ClCompile Include="Update\UpdateConfig.cpp" />
@@ -115,6 +116,7 @@
     <QtRcc Include="resources.qrc" />
     <QtUic Include="UI\Controls\ProgressDialog.ui" />
     <QtUic Include="UI\Controls\AboutDialog.ui" />
+    <QtUic Include="UI\Views\BrowsePage.ui" />
     <QtUic Include="UI\Views\HomePage.ui" />
     <QtUic Include="UI\Views\MainWindow.ui" />
     <QtMoc Include="UI\Views\MainWindow.h" />
@@ -135,6 +137,7 @@
     <QtMoc Include="UI\Views\SettingsDialog.h" />
     <QtMoc Include="UI\Controls\AboutDialog.h" />
     <QtMoc Include="UI\Views\HomePage.h" />
+    <QtMoc Include="UI\Views\BrowsePage.h" />
     <ClInclude Include="UI\Views\Pages.h" />
     <ClInclude Include="Update\UpdateConfig.h" />
     <ClInclude Include="Update\Updater.h" />
@@ -142,15 +145,18 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="Resources\About.png" />
+    <Image Include="Resources\Back.png" />
     <Image Include="Resources\Browse.png" />
     <Image Include="Resources\Download.png" />
     <Image Include="Resources\DownloadFolder.png" />
     <Image Include="Resources\Edit.png" />
+    <Image Include="Resources\Forward.png" />
     <Image Include="Resources\Home.png" />
     <Image Include="Resources\icon.ico" />
     <Image Include="Resources\icon.png" />
     <Image Include="Resources\Interface.png" />
     <Image Include="Resources\Logs.png" />
+    <Image Include="Resources\Refresh.png" />
     <Image Include="Resources\Settings.png" />
     <Image Include="Resources\Update.png" />
   </ItemGroup>

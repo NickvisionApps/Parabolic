@@ -2,6 +2,7 @@
 
 #include <QMainWindow>
 #include "ui_MainWindow.h"
+#include "BrowsePage.h"
 #include "HomePage.h"
 #include "Pages.h"
 #include "../../Models/Theme.h"
@@ -61,6 +62,7 @@ namespace NickvisionTubeConverter::UI::Views
         //==UI==//
         Ui::MainWindow m_ui;
         HomePage m_homePage;
+        BrowsePage m_browsePage;
         //==Functions==//
         /// <summary>
         /// Refreshes the theme of the window

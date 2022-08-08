@@ -76,6 +76,9 @@
     <ClCompile Include="UI\Views\HomePage.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="UI\Views\BrowsePage.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Helpers\CurlHelpers.h">
@@ -149,6 +152,15 @@
     <Image Include="Resources\DownloadFolder.png">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="Resources\Back.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\Forward.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\Refresh.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="UI\Views\SettingsDialog.h">
@@ -163,6 +175,9 @@
     <QtMoc Include="UI\Views\HomePage.h">
       <Filter>Header Files</Filter>
     </QtMoc>
+    <QtMoc Include="UI\Views\BrowsePage.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="UI\Views\SettingsDialog.ui">
@@ -175,6 +190,9 @@
       <Filter>Form Files</Filter>
     </QtUic>
     <QtUic Include="UI\Views\HomePage.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="UI\Views\BrowsePage.ui">
       <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>
