@@ -34,9 +34,9 @@ namespace NickvisionTubeConverter::UI::Views
         /// </summary>
         void on_navBrowse_clicked();
         /// <summary>
-        /// Navigate to queue page
+        /// Navigate to downloads page
         /// </summary>
-        void on_navQueue_clicked();
+        void on_navDownloads_clicked();
         /// <summary>
         /// Navigate to logs page
         /// </summary>

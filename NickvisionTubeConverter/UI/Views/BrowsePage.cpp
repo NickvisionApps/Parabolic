@@ -17,6 +17,8 @@ namespace NickvisionTubeConverter::UI::Views
 		}
 		//Setup UI
 		m_ui.setupUi(this);
+		//Download Button
+		m_ui.btnDownload->setVisible(false);
 		//==Theme==//
 		refreshTheme();
 	}
@@ -54,5 +56,6 @@ namespace NickvisionTubeConverter::UI::Views
 	void BrowsePage::on_webView_urlChanged(const QUrl& url)
 	{
 		m_ui.txtUrl->setText(url.toString());
+		m_ui.btnDownload->setVisible(url.toString().startsWith("https://www.youtube.com/watch?v="));
 	}
 }

@@ -9,7 +9,7 @@ namespace NickvisionTubeConverter::UI::Views
 	{
 		Home = 0,
 		Browse,
-		Queue,
+		Downloads,
 		Logs
 	};
 }
