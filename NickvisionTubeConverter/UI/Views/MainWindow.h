@@ -1,10 +1,12 @@
 #pragma once
 
 #include <QMainWindow>
+#include <QShowEvent>
 #include "ui_MainWindow.h"
 #include "BrowsePage.h"
 #include "HomePage.h"
 #include "Pages.h"
+#include "../../Models/DependencyManager.h"
 #include "../../Models/Theme.h"
 #include "../../Update/Updater.h"
 
@@ -23,6 +25,13 @@ namespace NickvisionTubeConverter::UI::Views
         /// </summary>
         /// <param name="parent">The parent of the widget, if any</param>
         MainWindow(QWidget* parent = nullptr);
+
+    protected:
+        /// <summary>
+        /// Occurs when the window is shown
+        /// </summary>
+        /// <param name="event">QShowEvent</param>
+        void showEvent(QShowEvent* event) override;
 
     private slots:
         /// <summary>
@@ -59,6 +68,7 @@ namespace NickvisionTubeConverter::UI::Views
         bool m_opened;
         NickvisionTubeConverter::Models::Theme m_currentTheme;
         NickvisionTubeConverter::Update::Updater m_updater;
+        NickvisionTubeConverter::Models::DependencyManager m_dependencyManager;
         //==UI==//
         Ui::MainWindow m_ui;
         HomePage m_homePage;

@@ -101,6 +101,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Models\DependencyManager.cpp" />
     <ClCompile Include="Helpers\ThemeHelpers.cpp" />
     <ClCompile Include="Models\AppInfo.cpp" />
     <ClCompile Include="Models\Configuration.cpp" />
@@ -113,6 +114,7 @@
     <ClCompile Include="Update\UpdateConfig.cpp" />
     <ClCompile Include="Update\Updater.cpp" />
     <ClCompile Include="Update\Version.cpp" />
+    <ClCompile Include="Helpers\ZipHelpers.cpp" />
     <QtRcc Include="resources.qrc" />
     <QtUic Include="UI\Controls\ProgressDialog.ui" />
     <QtUic Include="UI\Controls\AboutDialog.ui" />
@@ -126,11 +128,13 @@
     <QtUic Include="UI\Views\SettingsDialog.ui" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Models\DependencyManager.h" />
     <ClInclude Include="Helpers\CurlHelpers.h" />
     <ClInclude Include="Helpers\ThemeHelpers.h" />
     <ClInclude Include="Models\AppInfo.h" />
     <ClInclude Include="Models\Configuration.h" />
     <ClInclude Include="Models\Theme.h" />
+    <ClInclude Include="Helpers\ZipHelpers.h" />
     <QtMoc Include="UI\Controls\ProgressDialog.h" />
     <ClInclude Include="resources.h" />
     <ClInclude Include="UI\Messenger.h" />
