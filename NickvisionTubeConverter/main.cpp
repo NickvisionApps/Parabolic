@@ -1,3 +1,4 @@
+#include <windows.h>
 #include <QApplication>
 #include "Models/AppInfo.h"
 #include "UI/Views/MainWindow.h"
@@ -18,6 +19,9 @@ int main(int argc, char *argv[])
     //==App Settings==//
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling, true);
     QApplication::setStyle("fusion");
+    //==Create Hidden Console==//
+    AllocConsole();
+    ShowWindow(GetConsoleWindow(), SW_HIDE);
     //==Run App==//
     QApplication application{ argc, argv };
     MainWindow mainWindow;

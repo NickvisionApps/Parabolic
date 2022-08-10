@@ -101,6 +101,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Models\MediaFileType.cpp" />
+    <ClCompile Include="Models\Download.cpp" />
     <ClCompile Include="Models\DependencyManager.cpp" />
     <ClCompile Include="Helpers\ThemeHelpers.cpp" />
     <ClCompile Include="Models\AppInfo.cpp" />
@@ -128,6 +130,8 @@
     <QtUic Include="UI\Views\SettingsDialog.ui" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Models\MediaFileType.h" />
+    <ClInclude Include="Models\Download.h" />
     <ClInclude Include="Models\DependencyManager.h" />
     <ClInclude Include="Helpers\CurlHelpers.h" />
     <ClInclude Include="Helpers\ThemeHelpers.h" />
