@@ -1,7 +1,6 @@
 #pragma once
 
 #include <string>
-#include <utility>
 #include "MediaFileType.h"
 
 namespace NickvisionTubeConverter::Models
@@ -36,15 +35,21 @@ namespace NickvisionTubeConverter::Models
 		/// <returns>The path to save the download to</returns>
 		std::string getSavePath() const;
 		/// <summary>
+		/// Gets the log from the download
+		/// </summary>
+		/// <returns>The log from the download</returns>
+		const std::string& getLog() const;
+		/// <summary>
 		/// Downloads the video
 		/// </summary>
-		/// <returns>A bool representing if the download was successful (True for success, false for error) and a string with the log for the download</returns>
-		std::pair<bool, std::string> download() const;
+		/// <returns>True if the download was successful, else false</returns>
+		bool download();
 
 	private:
 		std::string m_videoUrl;
 		MediaFileType m_fileType;
 		std::string m_path;
+		std::string m_log;
 	};
 }
 

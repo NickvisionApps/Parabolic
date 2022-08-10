@@ -5,7 +5,7 @@
 
 namespace NickvisionTubeConverter::Models
 {
-	Download::Download(const std::string& videoUrl, const MediaFileType& fileType, const std::string& saveFolder, const std::string& newFilename) : m_videoUrl{ videoUrl }, m_fileType{ fileType }, m_path{ saveFolder + "/" + newFilename }
+	Download::Download(const std::string& videoUrl, const MediaFileType& fileType, const std::string& saveFolder, const std::string& newFilename) : m_videoUrl{ videoUrl }, m_fileType{ fileType }, m_path{ saveFolder + "/" + newFilename }, m_log{ "" }
 	{
 
 	}
@@ -25,7 +25,12 @@ namespace NickvisionTubeConverter::Models
 		return m_path + m_fileType.toDotExtension();
 	}
 
-	std::pair<bool, std::string> Download::download() const
+	const std::string& Download::getLog() const
+	{
+		return m_log;
+	}
+
+	bool Download::download()
 	{
 		std::string cmd{ QStandardPaths::writableLocation(QStandardPaths::AppDataLocation).toStdString() + "/yt-dlp.exe "};
 		if (m_fileType.isVideo())
@@ -36,26 +41,27 @@ namespace NickvisionTubeConverter::Models
 		{
 			cmd += "--extract-audio --audio-format " + m_fileType.toString() + " \"" + m_videoUrl + "\" -o \"" + m_path + ".%(ext)s\"";
 		}
-		std::string cmdOutput{ "===Starting Download===\nURL: " + m_videoUrl + "\nPath: " + getSavePath() + "\n\n"};
+		m_log = "===Starting Download===\nURL: " + m_videoUrl + "\nPath: " + getSavePath() + "\n\n";
 		std::array<char, 128> buffer;
 		FILE* pipe = _popen(cmd.c_str(), "r");
 		if (!pipe)
 		{
-			return std::make_pair(false, "[Error] Unable to run command");
+			m_log += "[Error] Unable to run command\n";
+			return false;
 		}
 		while (!feof(pipe))
 		{
 			if (fgets(buffer.data(), 128, pipe) != nullptr)
 			{
-				cmdOutput += buffer.data();
+				m_log += buffer.data();
 			}
 		}
 		int result{ _pclose(pipe) };
 		if (result != 0)
 		{
-			cmdOutput += "[Error] Unable to download video\n";
+			m_log += "[Error] Unable to download video\n";
 		}
-		cmdOutput += "==========\n\n";
-		return std::make_pair(result == 0, cmdOutput);
+		m_log += "==========\n\n";
+		return result == 0;
 	}
 }
