@@ -61,7 +61,7 @@ namespace NickvisionTubeConverter::Models
 		{
 			m_log += "[Error] Unable to download video\n";
 		}
-		m_log += "==========\n\n";
+		m_log += "==========";
 		return result == 0;
 	}
 }

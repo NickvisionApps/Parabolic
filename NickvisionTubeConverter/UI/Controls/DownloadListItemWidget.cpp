@@ -53,7 +53,7 @@ namespace NickvisionTubeConverter::UI::Controls
 
 	void DownloadListItemWidget::on_btnLog_clicked()
 	{
-		QMessageBox msgLogs{ QMessageBox::Icon::Information, "Logs", QString::fromStdString(m_download.getLog()), QMessageBox::StandardButton::Ok, this};
+		QMessageBox msgLogs{ QMessageBox::Icon::Information, "Log", QString::fromStdString(m_download.getLog()), QMessageBox::StandardButton::Ok, this};
 		ThemeHelpers::applyWin32Theme(&msgLogs);
 		msgLogs.exec();
 	}

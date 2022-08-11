@@ -25,7 +25,7 @@ namespace NickvisionTubeConverter::UI::Views
 		//==Pages==//
 		m_ui.viewStack->addWidget(&m_homePage);
 		m_ui.viewStack->addWidget(&m_browsePage);
-		m_ui.viewStack->addWidget(new QFrame());
+		m_ui.viewStack->addWidget(&m_downloadsPage);
 		changePage(Pages::Home);
 		//==Theme==//
 		refreshTheme();
@@ -139,6 +139,7 @@ namespace NickvisionTubeConverter::UI::Views
 		setStyleSheet("QCommandLinkButton { font-weight: normal; }");
 		m_homePage.refreshTheme();
 		m_browsePage.refreshTheme();
+		m_downloadsPage.refreshTheme();
 		ThemeHelpers::applyWin32Theme(this);
 		m_currentTheme = Configuration::getInstance().getTheme();
 	}

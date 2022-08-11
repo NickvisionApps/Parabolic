@@ -4,6 +4,7 @@
 #include <QShowEvent>
 #include "ui_MainWindow.h"
 #include "BrowsePage.h"
+#include "DownloadsPage.h"
 #include "HomePage.h"
 #include "Pages.h"
 #include "../../Models/DependencyManager.h"
@@ -69,6 +70,7 @@ namespace NickvisionTubeConverter::UI::Views
         Ui::MainWindow m_ui;
         HomePage m_homePage;
         BrowsePage m_browsePage;
+        DownloadsPage m_downloadsPage;
         //==Functions==//
         /// <summary>
         /// Refreshes the theme of the window
