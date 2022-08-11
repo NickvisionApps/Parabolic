@@ -59,15 +59,18 @@ namespace NickvisionTubeConverter::UI::Views
 		if (!m_opened)
 		{
 			//==Download Dependencies==//
-			bool successful{ false };
-			ProgressDialog downloadingDialog{ this, "Downloading dependencies (this may take some time)...", [&]() { successful = m_dependencyManager.downloadDependencies(); } };
-			downloadingDialog.exec();
-			if (!successful)
+			QMetaObject::invokeMethod(this, [&]() 
 			{
-				QMessageBox msgError{ QMessageBox::Icon::Critical, "Error", "There was an error downloading dependencies. Please try restarting the application.\nIf the error continues, file a bug report.", QMessageBox::StandardButton::Ok, this };
-				ThemeHelpers::applyWin32Theme(&msgError);
-				msgError.exec();
-			}
+				bool successful{ false };
+				ProgressDialog downloadingDialog{ this, "Downloading dependencies (this may take some time)...", [&]() { successful = m_dependencyManager.downloadDependencies(); } };
+				downloadingDialog.exec();
+				if (!successful)
+				{
+					QMessageBox msgError{ QMessageBox::Icon::Critical, "Error", "There was an error downloading dependencies. Please try restarting the application.\nIf the error continues, file a bug report.", QMessageBox::StandardButton::Ok, this };
+					ThemeHelpers::applyWin32Theme(&msgError);
+					msgError.exec();
+				}
+			}, Qt::ConnectionType::QueuedConnection);
 			m_opened = true;
 		}
 	}
