@@ -33,6 +33,12 @@ namespace NickvisionTubeConverter::UI::Controls
 		/// </summary>
 		void timeout();
 
+	private slots:
+		/// <summary>
+		/// Shows a dialog with the log of the download
+		/// </summary>
+		void on_btnLog_clicked();
+
 	private:
 		//==Vars==//
 		mutable std::mutex m_mutex;

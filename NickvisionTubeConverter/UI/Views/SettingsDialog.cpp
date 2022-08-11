@@ -24,11 +24,6 @@ namespace NickvisionTubeConverter::UI::Views
 		changeView(Views::UserInterface);
 	}
 
-	void SettingsDialog::on_navApplication_clicked()
-	{
-		changeView(Views::Application);
-	}
-
 	void SettingsDialog::on_btnSave_clicked()
 	{
 		m_configuration.setTheme(static_cast<Theme>(m_ui.cmbTheme->currentIndex()));
@@ -47,12 +42,6 @@ namespace NickvisionTubeConverter::UI::Views
 		if (view == Views::UserInterface)
 		{
 			m_ui.navUserInterface->setChecked(true);
-			m_ui.navApplication->setChecked(false);
-		}
-		else if (view == Views::Application)
-		{
-			m_ui.navUserInterface->setChecked(false);
-			m_ui.navApplication->setChecked(true);
 		}
 	}
 }

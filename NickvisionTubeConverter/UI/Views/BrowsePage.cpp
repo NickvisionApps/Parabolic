@@ -1,10 +1,13 @@
 #include "BrowsePage.h"
+#include "Pages.h"
+#include "../Messenger.h"
 #include "../Controls/DownloadDialog.h"
 #include "../../Helpers/ThemeHelpers.h"
 #include "../../Models/Configuration.h"
 
 using namespace NickvisionTubeConverter::Helpers;
 using namespace NickvisionTubeConverter::Models;
+using namespace NickvisionTubeConverter::UI;
 using namespace NickvisionTubeConverter::UI::Controls;
 
 namespace NickvisionTubeConverter::UI::Views
@@ -57,6 +60,9 @@ namespace NickvisionTubeConverter::UI::Views
 		if (result == QDialog::Accepted)
 		{
 			Download download{ downloadDialog.getDownload() };
+			Pages downloadsPage{ Pages::Downloads };
+			Messenger::getInstance().sendMessage("DownloadsPage.addDownload", &download);
+			Messenger::getInstance().sendMessage("MainWindow.changePage", &downloadsPage);
 		}
 	}
 

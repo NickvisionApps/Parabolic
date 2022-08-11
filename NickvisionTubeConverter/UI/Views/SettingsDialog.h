@@ -26,10 +26,6 @@ namespace NickvisionTubeConverter::UI::Views
 		/// </summary>
 		void on_navUserInterface_clicked();
 		/// <summary>
-		/// Navigate to application view
-		/// </summary>
-		void on_navApplication_clicked();
-		/// <summary>
 		/// Saves the configuration and closes the dialog
 		/// </summary>
 		void on_btnSave_clicked();
@@ -44,8 +40,7 @@ namespace NickvisionTubeConverter::UI::Views
 		/// </summary>
 		enum class Views
 		{
-			UserInterface = 0,
-			Application
+			UserInterface = 0
 		};
 		//==Vars==//
 		NickvisionTubeConverter::Models::Configuration& m_configuration;

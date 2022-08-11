@@ -56,9 +56,28 @@
      </property>
     </widget>
    </item>
+   <item>
+    <widget class="QCommandLinkButton" name="btnLog">
+     <property name="maximumSize">
+      <size>
+       <width>34</width>
+       <height>16777215</height>
+      </size>
+     </property>
+     <property name="toolTip">
+      <string>Logs</string>
+     </property>
+     <property name="icon">
+      <iconset resource="../../resources.qrc">
+       <normaloff>:/Resources/About.png</normaloff>:/Resources/About.png</iconset>
+     </property>
+    </widget>
+   </item>
   </layout>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
- <resources/>
+ <resources>
+  <include location="../../resources.qrc"/>
+ </resources>
  <connections/>
 </ui>

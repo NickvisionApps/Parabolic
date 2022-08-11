@@ -51,6 +51,10 @@ namespace NickvisionTubeConverter::UI::Controls
 		{
 			m_ui.lblError->setText("[Error] Video Url can not be empty.");
 		}
+		else if (!m_ui.txtVideoUrl->text().startsWith("https://www.youtube.com/watch?v=") && !m_ui.txtVideoUrl->text().startsWith("http://www.youtube.com/watch?v="))
+		{
+			m_ui.lblError->setText("[Error] Video Url must be a valid YouTube url.");
+		}
 		else if (m_ui.txtSaveFolder->text().isEmpty())
 		{
 			m_ui.lblError->setText("[Error] Save Folder can not be empty.");
