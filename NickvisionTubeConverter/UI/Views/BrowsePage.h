@@ -1,5 +1,7 @@
 #pragma once
 
+#include <QHideEvent>
+#include <QShowEvent>
 #include <QUrl>
 #include <QWidget>
 #include "ui_BrowsePage.h"
@@ -23,6 +25,18 @@ namespace NickvisionTubeConverter::UI::Views
 		/// Refreshes the theme of the page
 		/// </summary>
 		void refreshTheme();
+
+	protected:
+		/// <summary>
+		/// Occurs when the page is shown
+		/// </summary>
+		/// <param name="event">QShowEvent</param>
+		void showEvent(QShowEvent* event) override;
+		/// <summary>
+		/// Occurs when the page is hidden
+		/// </summary>
+		/// <param name="event"></param>
+		void hideEvent(QHideEvent* event) override;
 
 	private slots:
 		/// <summary>

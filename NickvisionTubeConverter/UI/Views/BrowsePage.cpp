@@ -33,6 +33,20 @@ namespace NickvisionTubeConverter::UI::Views
 		m_ui.separator1->setStyleSheet(ThemeHelpers::getThemedSeparatorStyle());
 	}
 
+	void BrowsePage::showEvent(QShowEvent* event)
+	{
+		QWidget::showEvent(event);
+		m_ui.txtUrl->setText("https://www.youtube.com");
+		m_ui.webView->setUrl({ "https://www.youtube.com" });
+	}
+
+	void BrowsePage::hideEvent(QHideEvent* event)
+	{
+		QWidget::hideEvent(event);
+		m_ui.txtUrl->setText("");
+		m_ui.webView->setUrl({});
+	}
+
 	void BrowsePage::on_btnBack_clicked()
 	{
 		m_ui.webView->back();
