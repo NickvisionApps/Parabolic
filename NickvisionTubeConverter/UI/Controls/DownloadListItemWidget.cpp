@@ -14,7 +14,7 @@ namespace NickvisionTubeConverter::UI::Controls
 		m_thread = std::jthread{ [&]()
 		{
 			bool isSuccess = m_download.download();
-			std::lock_guard<std::mutex> lock{m_mutex};
+			std::lock_guard<std::mutex> lock{ m_mutex };
 			m_isFinished = true;
 			m_isSuccess = isSuccess;
 		}};
