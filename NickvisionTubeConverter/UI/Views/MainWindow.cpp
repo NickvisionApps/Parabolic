@@ -26,7 +26,6 @@ namespace NickvisionTubeConverter::UI::Views
 		m_ui.viewStack->addWidget(&m_homePage);
 		m_ui.viewStack->addWidget(&m_browsePage);
 		m_ui.viewStack->addWidget(new QFrame());
-		m_ui.viewStack->addWidget(new QFrame());
 		changePage(Pages::Home);
 		//==Theme==//
 		refreshTheme();
@@ -86,11 +85,6 @@ namespace NickvisionTubeConverter::UI::Views
 	void MainWindow::on_navDownloads_clicked()
 	{
 		changePage(Pages::Downloads);
-	}
-
-	void MainWindow::on_navLogs_clicked()
-	{
-		changePage(Pages::Logs);
 	}
 
 	void MainWindow::on_navCheckForUpdates_clicked()
@@ -157,28 +151,18 @@ namespace NickvisionTubeConverter::UI::Views
 			m_ui.navHome->setChecked(true);
 			m_ui.navBrowse->setChecked(false);
 			m_ui.navDownloads->setChecked(false);
-			m_ui.navLogs->setChecked(false);
 		}
 		else if (page == Pages::Browse)
 		{
 			m_ui.navHome->setChecked(false);
 			m_ui.navBrowse->setChecked(true);
 			m_ui.navDownloads->setChecked(false);
-			m_ui.navLogs->setChecked(false);
 		}
 		else if (page == Pages::Downloads)
 		{
 			m_ui.navHome->setChecked(false);
 			m_ui.navBrowse->setChecked(false);
 			m_ui.navDownloads->setChecked(true);
-			m_ui.navLogs->setChecked(false);
-		}
-		else if (page == Pages::Logs)
-		{
-			m_ui.navHome->setChecked(false);
-			m_ui.navBrowse->setChecked(false);
-			m_ui.navDownloads->setChecked(false);
-			m_ui.navLogs->setChecked(true);
 		}
 	}
 }

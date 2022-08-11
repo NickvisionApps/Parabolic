@@ -47,10 +47,6 @@ namespace NickvisionTubeConverter::UI::Views
         /// </summary>
         void on_navDownloads_clicked();
         /// <summary>
-        /// Navigate to logs page
-        /// </summary>
-        void on_navLogs_clicked();
-        /// <summary>
         /// Checks for an application update
         /// </summary>
         void on_navCheckForUpdates_clicked();
