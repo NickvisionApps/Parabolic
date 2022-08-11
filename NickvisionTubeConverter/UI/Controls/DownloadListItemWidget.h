@@ -24,13 +24,18 @@ namespace NickvisionTubeConverter::UI::Controls
 		/// <param name="parent">The parent of the widget, if any</param>
 		DownloadListItemWidget(const NickvisionTubeConverter::Models::Download& download, QWidget* parent = nullptr);
 		/// <summary>
+		/// Gets whether or not the download is finished
+		/// </summary>
+		/// <returns>True for finished, else false</returns>
+		bool getIsFinished() const;
+		/// <summary>
 		/// Updates the UI from the timer
 		/// </summary>
 		void timeout();
 
 	private:
 		//==Vars==//
-		std::mutex m_mutex;
+		mutable std::mutex m_mutex;
 		NickvisionTubeConverter::Models::Download m_download;
 		bool m_isFinished;
 		bool m_isSuccess;

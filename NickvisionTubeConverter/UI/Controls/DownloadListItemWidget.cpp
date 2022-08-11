@@ -20,8 +20,14 @@ namespace NickvisionTubeConverter::UI::Controls
 		}};
 		//==Timer==//
 		m_timer = new QTimer(this);
-		connect(m_timer, &QTimer::timeout, this, &DownloadListItemWidget::on_timer_timeout);
+		connect(m_timer, &QTimer::timeout, this, &DownloadListItemWidget::timeout);
 		m_timer->start(50);
+	}
+
+	bool DownloadListItemWidget::getIsFinished() const
+	{
+		std::lock_guard<std::mutex> lock{ m_mutex };
+		return m_isFinished;
 	}
 
 	void DownloadListItemWidget::timeout()
@@ -31,14 +37,9 @@ namespace NickvisionTubeConverter::UI::Controls
 		{
 			m_ui.progressBar->setMaximum(100);
 			m_ui.progressBar->setValue(100);
-			if (m_isSuccess)
-			{
-
-			}
-			else
-			{
-
-			}
+			QPalette palette{ m_ui.progressBar->palette() };
+			palette.setColor(QPalette::Highlight, m_isSuccess ? Qt::darkGreen : Qt::red);
+			m_ui.progressBar->setPalette(palette);
 		}
 	}
 }
