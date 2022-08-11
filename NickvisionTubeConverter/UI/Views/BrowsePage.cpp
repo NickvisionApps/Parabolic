@@ -36,14 +36,12 @@ namespace NickvisionTubeConverter::UI::Views
 	void BrowsePage::showEvent(QShowEvent* event)
 	{
 		QWidget::showEvent(event);
-		m_ui.txtUrl->setText("https://www.youtube.com");
 		m_ui.webView->setUrl({ "https://www.youtube.com" });
 	}
 
 	void BrowsePage::hideEvent(QHideEvent* event)
 	{
 		QWidget::hideEvent(event);
-		m_ui.txtUrl->setText("");
 		m_ui.webView->setUrl({});
 	}
 
