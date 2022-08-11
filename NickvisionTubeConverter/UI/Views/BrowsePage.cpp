@@ -1,9 +1,11 @@
 #include "BrowsePage.h"
+#include "../Controls/DownloadDialog.h"
 #include "../../Helpers/ThemeHelpers.h"
 #include "../../Models/Configuration.h"
 
 using namespace NickvisionTubeConverter::Helpers;
 using namespace NickvisionTubeConverter::Models;
+using namespace NickvisionTubeConverter::UI::Controls;
 
 namespace NickvisionTubeConverter::UI::Views
 {
@@ -50,7 +52,12 @@ namespace NickvisionTubeConverter::UI::Views
 
 	void BrowsePage::on_btnDownload_clicked()
 	{
-
+		DownloadDialog downloadDialog{ this, m_ui.txtUrl->text() };
+		int result{ downloadDialog.exec() };
+		if (result == QDialog::Accepted)
+		{
+			Download download{ downloadDialog.getDownload() };
+		}
 	}
 
 	void BrowsePage::on_webView_urlChanged(const QUrl& url)

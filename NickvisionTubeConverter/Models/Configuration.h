@@ -2,6 +2,7 @@
 
 #include <string>
 #include "Theme.h"
+#include "MediaFileType.h"
 
 namespace NickvisionTubeConverter::Models
 {
@@ -40,6 +41,26 @@ namespace NickvisionTubeConverter::Models
 		/// <param name="alwaysStartOnHomePage">True for yes, false for no</param>
 		void setAlwaysStartOnHomePage(bool alwaysStartOnHomePage);
 		/// <summary>
+		/// Gets the previous save folder used in a download
+		/// </summary>
+		/// <returns>The previous save folder used in a download</returns>
+		const std::string& getPreviousSaveFolder() const;
+		/// <summary>
+		/// Sets the previous save folder used in a download
+		/// </summary>
+		/// <param name="previousSaveFolder">The new previous save folder</param>
+		void setPreviousSaveFolder(const std::string& previousSaveFolder);
+		/// <summary>
+		/// Gets the previous file format used in a download
+		/// </summary>
+		/// <returns>The previous file format used in a download</returns>
+		const MediaFileType& getPreviousFileFormat() const;
+		/// <summary>
+		/// Sets the previous file format used in a download
+		/// </summary>
+		/// <param name="previousFileFormat">The new previous file format</param>
+		void setPreviousFileForamt(const MediaFileType& previousFileFormat);
+		/// <summary>
 		/// Saves the configuration file to disk
 		/// </summary>
 		void save() const;
@@ -52,6 +73,8 @@ namespace NickvisionTubeConverter::Models
 		std::string m_configDir;
 		Theme m_theme;
 		bool m_alwaysStartOnHomePage;
+		std::string m_previousSaveFolder;
+		MediaFileType m_previousFileFormat;
 	};
 }
 
