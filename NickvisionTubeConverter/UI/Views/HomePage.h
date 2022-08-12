@@ -25,6 +25,14 @@ namespace NickvisionTubeConverter::UI::Views
 
 	private slots:
 		/// <summary>
+		/// Navigates to Browse page
+		/// </summary>
+		void on_btnBrowseVideo_clicked();
+		/// <summary>
+		/// Navigates to Downloads page and shows DownloadDialog
+		/// </summary>
+		void on_btnDownloadVideo_clicked();
+		/// <summary>
 		/// Updates the alwaysStartOnHomePage configuration preference
 		/// </summary>
 		void on_chkAlwaysStartOnHomePage_clicked();

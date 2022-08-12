@@ -1,10 +1,13 @@
 #include "HomePage.h"
 #include <ctime>
+#include "Pages.h"
+#include "../Messenger.h"
 #include "../../Helpers/ThemeHelpers.h"
 #include "../../Models/Configuration.h"
 
 using namespace NickvisionTubeConverter::Helpers;
 using namespace NickvisionTubeConverter::Models;
+using namespace NickvisionTubeConverter::UI;
 
 namespace NickvisionTubeConverter::UI::Views
 {
@@ -36,6 +39,19 @@ namespace NickvisionTubeConverter::UI::Views
     void HomePage::refreshTheme()
     {
         m_ui.separator1->setStyleSheet(ThemeHelpers::getThemedSeparatorStyle());
+    }
+
+    void HomePage::on_btnBrowseVideo_clicked()
+    {
+        Pages browsePage{ Pages::Browse };
+        Messenger::getInstance().sendMessage("MainWindow.changePage", &browsePage);
+    }
+
+    void HomePage::on_btnDownloadVideo_clicked()
+    {
+        Pages downloadsPage{ Pages::Downloads };
+        Messenger::getInstance().sendMessage("MainWindow.changePage", &downloadsPage);
+        Messenger::getInstance().sendMessage("DownloadsPage.addDownloadWithDialog", nullptr);
     }
 
     void HomePage::on_chkAlwaysStartOnHomePage_clicked()

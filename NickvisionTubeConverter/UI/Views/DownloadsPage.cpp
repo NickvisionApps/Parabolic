@@ -19,13 +19,14 @@ namespace NickvisionTubeConverter::UI::Views
 		refreshTheme();
 		//==Messages==//
 		Messenger::getInstance().registerMessage("DownloadsPage.addDownload", [&](void* parameter)
+		{
+			Download* download{ static_cast<Download*>(parameter) };
+			if (download)
 			{
-				Download* download{ static_cast<Download*>(parameter) };
-				if (download)
-				{
-					addDownload(*download);
-				}
-			});
+				addDownload(*download);
+			}
+		});
+		Messenger::getInstance().registerMessage("DownloadsPage.addDownloadWithDialog", [&](void* parameter) { on_btnAddDownload_clicked(); });
 	}
 
 	void DownloadsPage::refreshTheme()
