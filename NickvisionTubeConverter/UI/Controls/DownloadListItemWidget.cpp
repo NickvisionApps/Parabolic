@@ -1,4 +1,5 @@
 #include "DownloadListItemWidget.h"
+#include <QDesktopServices>
 #include <QMessageBox>
 #include "../../Helpers/ThemeHelpers.h"
 
@@ -48,6 +49,16 @@ namespace NickvisionTubeConverter::UI::Controls
 			palette.setColor(QPalette::Highlight, m_isSuccess ? Qt::darkGreen : Qt::red);
 			m_ui.progressBar->setPalette(palette);
 			m_ui.btnLog->setVisible(true);
+		}
+	}
+
+	void DownloadListItemWidget::mouseDoubleClickEvent(QMouseEvent* event)
+	{
+		std::lock_guard<std::mutex> lock{ m_mutex };
+		QWidget::mouseDoubleClickEvent(event);
+		if (event->button() == Qt::LeftButton && m_isSuccess)
+		{
+			QDesktopServices::openUrl({ m_ui.lblPath->text() });
 		}
 	}
 

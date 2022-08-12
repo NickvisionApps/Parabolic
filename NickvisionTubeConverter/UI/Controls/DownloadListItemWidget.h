@@ -2,6 +2,7 @@
 
 #include <mutex>
 #include <thread>
+#include <QMouseEvent>
 #include <QTimer>
 #include <QWidget>
 #include "ui_DownloadListItemWidget.h"
@@ -32,6 +33,9 @@ namespace NickvisionTubeConverter::UI::Controls
 		/// Updates the UI from the timer
 		/// </summary>
 		void timeout();
+
+	protected:
+		void mouseDoubleClickEvent(QMouseEvent* event) override;
 
 	private slots:
 		/// <summary>
