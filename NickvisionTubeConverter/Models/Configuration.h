@@ -3,6 +3,7 @@
 #include <string>
 #include "Theme.h"
 #include "MediaFileType.h"
+#include "../Update/Version.h"
 
 namespace NickvisionTubeConverter::Models
 {
@@ -41,6 +42,26 @@ namespace NickvisionTubeConverter::Models
 		/// <param name="alwaysStartOnHomePage">True for yes, false for no</param>
 		void setAlwaysStartOnHomePage(bool alwaysStartOnHomePage);
 		/// <summary>
+		/// Gets the version of ytdlp downloaded
+		/// </summary>
+		/// <returns>The version of ytdlp downloaded</returns>
+		const NickvisionTubeConverter::Update::Version& getYtdlpVersion() const;
+		/// <summary>
+		/// Sets the version of ytdlp downloaded
+		/// </summary>
+		/// <param name="ytdlpVersion">The new version of ytdlp</param>
+		void setYtdlpVersion(const NickvisionTubeConverter::Update::Version& ytdlpVersion);
+		/// <summary>
+		/// Gets the version of ffmpeg downloaded
+		/// </summary>
+		/// <returns>The version of ffmpeg downloaded</returns>
+		const NickvisionTubeConverter::Update::Version& getFfmpegVersion() const;
+		/// <summary>
+		/// Sets the version of ffmpeg downloaded
+		/// </summary>
+		/// <param name="ffmpegVersion">The new version of ffmpeg</param>
+		void setFfmpegVersion(const NickvisionTubeConverter::Update::Version& ffmpegVersion);
+		/// <summary>
 		/// Gets the previous save folder used in a download
 		/// </summary>
 		/// <returns>The previous save folder used in a download</returns>
@@ -73,6 +94,8 @@ namespace NickvisionTubeConverter::Models
 		std::string m_configDir;
 		Theme m_theme;
 		bool m_alwaysStartOnHomePage;
+		NickvisionTubeConverter::Update::Version m_ytdlpVersion;
+		NickvisionTubeConverter::Update::Version m_ffmpegVersion;
 		std::string m_previousSaveFolder;
 		MediaFileType m_previousFileFormat;
 	};

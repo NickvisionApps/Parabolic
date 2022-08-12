@@ -1,6 +1,7 @@
 #pragma once
 
 #include <string>
+#include "../Update/Version.h"
 
 namespace NickvisionTubeConverter::Models
 {
@@ -34,6 +35,8 @@ namespace NickvisionTubeConverter::Models
 		std::string m_configDir;
 		bool m_ytdlpExists;
 		bool m_ffmpegExists;
+		NickvisionTubeConverter::Update::Version m_ytdlpLatestVersion;
+		NickvisionTubeConverter::Update::Version m_ffmpegLatestVersion;
 	};
 }
 
