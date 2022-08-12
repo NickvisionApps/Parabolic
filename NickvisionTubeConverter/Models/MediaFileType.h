@@ -10,7 +10,7 @@ namespace NickvisionTubeConverter::Models
     public:
         enum Value
         {
-            MP4,
+            MP4 = 0,
             WEBM,
             MP3,
             OPUS,

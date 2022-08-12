@@ -32,7 +32,7 @@ namespace NickvisionTubeConverter::UI::Controls
 
 	Download DownloadDialog::getDownload() const
 	{
-		return { m_ui.txtVideoUrl->text().toStdString(), static_cast<MediaFileType::Value>(m_ui.cmbFileFormat->currentIndex()), m_ui.txtSaveFolder->text().toStdString(), m_ui.txtNewFilename->text().toStdString() };
+		return { m_ui.txtVideoUrl->text().toStdString(), static_cast<MediaFileType::Value>(m_ui.cmbFileFormat->currentIndex()), m_ui.txtSaveFolder->text().toStdString(), m_ui.txtNewFilename->text().toStdString(), static_cast<Quality>(m_ui.cmbQuality->currentIndex()) };
 	}
 
 	void DownloadDialog::on_btnSelectSaveFolder_clicked()

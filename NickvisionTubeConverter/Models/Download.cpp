@@ -5,7 +5,7 @@
 
 namespace NickvisionTubeConverter::Models
 {
-	Download::Download(const std::string& videoUrl, const MediaFileType& fileType, const std::string& saveFolder, const std::string& newFilename) : m_videoUrl{ videoUrl }, m_fileType{ fileType }, m_path{ saveFolder + "/" + newFilename }, m_log{ "" }
+	Download::Download(const std::string& videoUrl, const MediaFileType& fileType, const std::string& saveFolder, const std::string& newFilename, Quality quality) : m_videoUrl{ videoUrl }, m_fileType{ fileType }, m_path{ saveFolder + "/" + newFilename }, m_quality{ quality }, m_log { "" }
 	{
 
 	}
@@ -25,6 +25,11 @@ namespace NickvisionTubeConverter::Models
 		return m_path + m_fileType.toDotExtension();
 	}
 
+	Quality Download::getQuality() const
+	{
+		return m_quality;
+	}
+
 	const std::string& Download::getLog() const
 	{
 		return m_log;
@@ -35,13 +40,14 @@ namespace NickvisionTubeConverter::Models
 		std::string cmd{ QStandardPaths::writableLocation(QStandardPaths::AppDataLocation).toStdString() + "/yt-dlp.exe "};
 		if (m_fileType.isVideo())
 		{
-			cmd += "--remux-video " + m_fileType.toString() + " \"" + m_videoUrl + "\" -o \"" + m_path + ".%(ext)s\"";
+			std::string format{ m_quality == Quality::Best ? "bv*+ba/b" : m_quality == Quality::Good ? "bv*+ba/b" : "wv*+wa/w" };
+			cmd += "--format " + format + " --remux-video " + m_fileType.toString() + " \"" + m_videoUrl + "\" -o \"" + m_path + ".%(ext)s\"";
 		}
 		else
 		{
-			cmd += "--extract-audio --audio-format " + m_fileType.toString() + " \"" + m_videoUrl + "\" -o \"" + m_path + ".%(ext)s\"";
+			cmd += "--extract-audio --audio-format " + m_fileType.toString() + " --audio-quality " + (m_quality == Quality::Best ? "0" : m_quality == Quality::Good ? "5" : "10") + " \"" + m_videoUrl + "\" -o \"" + m_path + ".%(ext)s\"";
 		}
-		m_log = "===Starting Download===\nURL: " + m_videoUrl + "\nPath: " + getSavePath() + "\n\n";
+		m_log = "===Starting Download===\nURL: " + m_videoUrl + "\nPath: " + getSavePath() + "\nQuality: " + std::to_string(static_cast<int>(m_quality)) + "\n\n";
 		std::array<char, 128> buffer;
 		FILE* pipe = _popen(cmd.c_str(), "r");
 		if (!pipe)

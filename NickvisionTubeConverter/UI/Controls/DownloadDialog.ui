@@ -136,6 +136,35 @@
     </widget>
    </item>
    <item>
+    <widget class="QLabel" name="lblQuality">
+     <property name="text">
+      <string>Quality</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QComboBox" name="cmbQuality">
+     <property name="placeholderText">
+      <string>Select quality</string>
+     </property>
+     <item>
+      <property name="text">
+       <string>Best</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Good</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Worst</string>
+      </property>
+     </item>
+    </widget>
+   </item>
+   <item>
     <widget class="QLabel" name="lblError">
      <property name="styleSheet">
       <string notr="true">QLabel { color: rgb(250, 71, 55); }</string>
