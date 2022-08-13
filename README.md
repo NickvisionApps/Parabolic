@@ -4,18 +4,21 @@
 **An easy-to-use YouTube video downloader**
 
 # Features
-TODO
+- A basic yt-dlp frontend
+- Browse YouTube from within the app
+- Supports downloading videos in multiple formats (mp4, webm, mp3, opus, and flac, wav)
+- Run multiple downloads at a time
 
 # Disclaimer
 The authors of Nickvision Tube Converter are not responsible/liable for any misuse of this program that may violate local copyright/DMCA laws. Users use this application at their own risk.
 
 # Screenshots
-![HomePage](https://user-images.githubusercontent.com/17648453/184068677-73f31eda-3a89-4a6d-9d95-204edee5145d.png)
-![BrowsePage](https://user-images.githubusercontent.com/17648453/184068681-8ea1e9da-35ed-4f76-8478-cfa1a03bd3e8.png)
-![AddDownload](https://user-images.githubusercontent.com/17648453/184068687-d2f5b602-9780-4e96-a570-191da49c2965.png)
-![Downloading](https://user-images.githubusercontent.com/17648453/184068692-fb0e8e41-a83f-4cbd-8d9f-e0794007bcc7.png)
-![DarkMode](https://user-images.githubusercontent.com/17648453/184068694-ec314b10-fd8b-438e-9254-644793b61833.png)
-![DownloadLog](https://user-images.githubusercontent.com/17648453/184068696-b814f8eb-e3c0-494c-bb46-408d9909f081.png)
+![HomePage](https://user-images.githubusercontent.com/17648453/184460742-9d5a9c61-ef34-4049-93be-ba4978a22e80.png)
+![DownloadDialog](https://user-images.githubusercontent.com/17648453/184460744-52085522-04a6-4a13-99b8-d1aa412ad739.png)
+![Downloading](https://user-images.githubusercontent.com/17648453/184460745-6c81fc89-7953-465e-86e1-d8b12fa7d40c.png)
+![DarkMode](https://user-images.githubusercontent.com/17648453/184460747-b042c215-b5f0-45b4-9e0e-054b761c61bc.png)
+![Logs](https://user-images.githubusercontent.com/17648453/184460750-93c35c48-846b-4d5e-9c42-7b8f623f4aaa.png)
+![AboutDialog](https://user-images.githubusercontent.com/17648453/184460753-8963f159-699d-4e08-9db6-40be97343df4.png)
 
 # Dependencies
 - [C++20](https://en.cppreference.com/w/cpp/20)
