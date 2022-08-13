@@ -12,8 +12,8 @@ int main(int argc, char *argv[])
     AppInfo& appInfo = AppInfo::getInstance();
     appInfo.setName("Nickvision Tube Converter");
     appInfo.setDescription("An easy-to-use YouTube video downloader.");
-    appInfo.setVersion("2022.8.0");
-    appInfo.setChangelog("- Application rewrite with C++ and Qt\n- New workflow design");
+    appInfo.setVersion("2022.8.1");
+    appInfo.setChangelog("- Introduced ribbon interface for commands\n- Fixed an issue where the application would not exit correctly when updating");
     appInfo.setGitHubRepo("https://github.com/nlogozzo/NickvisionTubeConverter");
     appInfo.setIssueTracker("https://github.com/nlogozzo/NickvisionTubeConverter/issues/new");
     //==App Settings==//

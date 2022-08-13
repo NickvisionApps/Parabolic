@@ -15,6 +15,8 @@ namespace NickvisionTubeConverter::UI::Views
 	{
 		//==UI==//
 		m_ui.setupUi(this);
+		//Ribbon
+		m_ui.ribbon->setCurrentIndex(0);
 		//==Theme==//
 		refreshTheme();
 		//==Messages==//
@@ -31,7 +33,7 @@ namespace NickvisionTubeConverter::UI::Views
 
 	void DownloadsPage::refreshTheme()
 	{
-		m_ui.separator1->setStyleSheet(ThemeHelpers::getThemedSeparatorStyle());
+		m_ui.ribbon->setStyleSheet(ThemeHelpers::getThemedRibbonStyle());
 	}
 
 	void DownloadsPage::on_btnAddDownload_clicked()

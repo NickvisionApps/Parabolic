@@ -2,7 +2,6 @@
 
 #include <string>
 #include <optional>
-#include <QMainWindow>
 #include "Version.h"
 #include "UpdateConfig.h"
 
@@ -48,9 +47,8 @@ namespace NickvisionTubeConverter::Update
         /// <summary>
         /// Preforms an application update on a windows system.
         /// </summary>
-        /// <param name="window">The wxWindow object to close when updating</param>
         /// <returns>True if the update was successful, else false. (Also returns false if system is not running Windows or if no update is available)</returns>
-        bool windowsUpdate(QMainWindow* window);
+        bool windowsUpdate();
 
     private:
         std::string m_linkToConfig;

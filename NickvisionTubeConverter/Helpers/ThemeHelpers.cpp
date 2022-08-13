@@ -68,6 +68,18 @@ namespace NickvisionTubeConverter::Helpers
         }
     }
 
+    QString ThemeHelpers::getThemedRibbonStyle()
+    {
+        if (Configuration::getInstance().getTheme() == Theme::Light)
+        {
+            return "QTabWidget::pane { background: transparent; border: 1px solid #c4c2c2; }";
+        }
+        else
+        {
+            return "QTabWidget::pane { background: transparent; border: 1px solid #2b2b2b; }";
+        }
+    }
+
 	void ThemeHelpers::applyWin32Theme(QWidget* widget)
 	{
         BOOL isDarkMode{ Configuration::getInstance().getTheme() == Theme::Light ? FALSE : TRUE };

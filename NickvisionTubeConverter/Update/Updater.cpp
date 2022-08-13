@@ -1,6 +1,7 @@
 #include "Updater.h"
 #include <filesystem>
 #include <fstream>
+#include <QApplication>
 #include <QStandardPaths>
 #include <QProcess>
 #include "../Helpers/CurlHelpers.h"
@@ -41,7 +42,7 @@ namespace NickvisionTubeConverter::Update
         return m_updateAvailable;
     }
 
-    bool Updater::windowsUpdate(QMainWindow* window)
+    bool Updater::windowsUpdate()
     {
         if (!m_updateAvailable)
         {
@@ -58,7 +59,7 @@ namespace NickvisionTubeConverter::Update
         if (m_updateSuccessful)
         {
             QProcess::execute(QString::fromStdString(exePath));
-            window->close();
+            qApp->exit();
         }
         return m_updateSuccessful;
     }

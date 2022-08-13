@@ -22,6 +22,8 @@ namespace NickvisionTubeConverter::UI::Views
 		}
 		//Setup UI
 		m_ui.setupUi(this);
+		//Ribbon
+		m_ui.ribbon->setCurrentIndex(0);
 		//Download Button
 		m_ui.btnDownload->setVisible(false);
 		//==Theme==//
@@ -30,7 +32,7 @@ namespace NickvisionTubeConverter::UI::Views
 
 	void BrowsePage::refreshTheme()
 	{
-		m_ui.separator1->setStyleSheet(ThemeHelpers::getThemedSeparatorStyle());
+		m_ui.ribbon->setStyleSheet(ThemeHelpers::getThemedRibbonStyle());
 	}
 
 	void BrowsePage::showEvent(QShowEvent* event)
@@ -82,5 +84,6 @@ namespace NickvisionTubeConverter::UI::Views
 	{
 		m_ui.txtUrl->setText(url.toString());
 		m_ui.btnDownload->setVisible(url.toString().startsWith("https://www.youtube.com/watch?v="));
+		m_ui.ribbon->setCurrentIndex(url.toString().startsWith("https://www.youtube.com/watch?v=") ? 1 : 0);
 	}
 }

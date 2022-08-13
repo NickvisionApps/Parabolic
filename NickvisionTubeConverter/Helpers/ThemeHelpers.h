@@ -20,6 +20,11 @@ namespace NickvisionTubeConverter::Helpers::ThemeHelpers
 	/// <returns>Separator stylesheet themed for Configuration::getTheme()</returns>
 	QString getThemedSeparatorStyle();
 	/// <summary>
+	/// Gets a themed stylesheet for a ribbon (QTabWidget)
+	/// </summary>
+	/// <returns>Ribbon stylesheet themed for Configuration::getTheme()</returns>
+	QString getThemedRibbonStyle();
+	/// <summary>
 	/// Applys Win32 theming to QWidget's Title Bar
 	/// </summary>
 	/// <param name="widget">The QWidget object</param>
