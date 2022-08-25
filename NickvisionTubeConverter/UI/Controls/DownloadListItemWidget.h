@@ -1,5 +1,6 @@
 #pragma once
 
+#include <memory>
 #include <mutex>
 #include <thread>
 #include <QMouseEvent>
@@ -49,7 +50,7 @@ namespace NickvisionTubeConverter::UI::Controls
 		NickvisionTubeConverter::Models::Download m_download;
 		bool m_isFinished;
 		bool m_isSuccess;
-		std::jthread m_thread;
+		std::unique_ptr<std::jthread> m_thread;
 		//==UI==//
 		Ui::DownloadListItemWidget m_ui;
 		QTimer* m_timer{ nullptr };

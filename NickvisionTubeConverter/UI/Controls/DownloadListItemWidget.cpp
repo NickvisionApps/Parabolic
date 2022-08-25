@@ -18,13 +18,13 @@ namespace NickvisionTubeConverter::UI::Controls
 		//Logs
 		m_ui.btnLog->setVisible(false);
 		//==Thread==//
-		m_thread = std::jthread{ [&]()
+		m_thread = std::make_unique<std::jthread>([&]()
 		{
 			bool isSuccess = m_download.download();
 			std::lock_guard<std::mutex> lock{ m_mutex };
 			m_isFinished = true;
 			m_isSuccess = isSuccess;
-		}};
+		});
 		//==Timer==//
 		m_timer = new QTimer(this);
 		connect(m_timer, &QTimer::timeout, this, &DownloadListItemWidget::timeout);
@@ -42,7 +42,10 @@ namespace NickvisionTubeConverter::UI::Controls
 		std::lock_guard<std::mutex> lock{ m_mutex };
 		if (m_isFinished)
 		{
+			//Cleanup
 			m_timer->stop();
+			m_thread.reset();
+			//Update UI
 			m_ui.progressBar->setMaximum(100);
 			m_ui.progressBar->setValue(100);
 			QPalette palette{ m_ui.progressBar->palette() };
