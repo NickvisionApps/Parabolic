@@ -13,7 +13,7 @@ EntryDialog::EntryDialog(GtkWindow* parent, const std::string& title, const std:
     g_signal_connect(m_gobj, "response", G_CALLBACK((void (*)(AdwMessageDialog*, gchar*, gpointer))([](AdwMessageDialog*, gchar* response, gpointer data) { reinterpret_cast<EntryDialog*>(data)->setResponse({ response }); })), this);
     //Preferences Group
     m_preferencesGroup = adw_preferences_group_new();
-    //Choices
+    //Entry
     m_rowEntry = adw_entry_row_new();
     gtk_widget_set_size_request(m_rowEntry, 420, -1);
     adw_preferences_row_set_title(ADW_PREFERENCES_ROW(m_rowEntry), entryTitle.c_str());

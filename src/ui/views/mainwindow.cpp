@@ -2,6 +2,7 @@
 #include <chrono>
 #include <thread>
 #include <utility>
+#include "adddownloaddialog.hpp"
 #include "preferencesdialog.hpp"
 #include "shortcutsdialog.hpp"
 #include "../controls/progressdialog.hpp"
@@ -104,7 +105,9 @@ void MainWindow::start()
 
 void MainWindow::onAddDownload()
 {
-
+    AddDownloadDialogController addDownloadDialogController{ m_controller.createAddDownloadDialogController() };
+    AddDownloadDialog addDownloadDialog{ GTK_WINDOW(m_gobj), addDownloadDialogController };
+    addDownloadDialog.run();
 }
 
 void MainWindow::onPreferences()
@@ -139,4 +142,5 @@ void MainWindow::onAbout()
                           "release-notes", m_controller.getAppInfo().getChangelog().c_str(),
                           nullptr);
 }
+
 

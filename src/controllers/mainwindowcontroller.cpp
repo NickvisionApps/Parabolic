@@ -14,6 +14,11 @@ const AppInfo& MainWindowController::getAppInfo() const
     return m_appInfo;
 }
 
+AddDownloadDialogController MainWindowController::createAddDownloadDialogController() const
+{
+    return { };
+}
+
 PreferencesDialogController MainWindowController::createPreferencesDialogController() const
 {
     return { m_configuration };

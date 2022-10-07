@@ -2,6 +2,7 @@
 
 #include <functional>
 #include <string>
+#include "adddownloaddialogcontroller.hpp"
 #include "preferencesdialogcontroller.hpp"
 #include "../models/appinfo.hpp"
 #include "../models/configuration.hpp"
@@ -27,6 +28,12 @@ namespace NickvisionTubeConverter::Controllers
 		 * @returns The AppInfo object for the application
 		 */
 		const NickvisionTubeConverter::Models::AppInfo& getAppInfo() const;
+		/**
+		 * Creates a AddDownloadDialogController
+		 *
+		 * @returns A new AddDownloadDialogController
+		 */
+		AddDownloadDialogController createAddDownloadDialogController() const;
 		/**
 		 * Creates a PreferencesDialogController
 		 *
