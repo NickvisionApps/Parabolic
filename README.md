@@ -13,6 +13,7 @@ The authors of Nickvision Tube Converter are not responsible/liable for any misu
 
 # Screenshots
 ![MainWindow](https://user-images.githubusercontent.com/17648453/194580418-990818fb-05f5-423f-bee1-7b833b2bb269.png)
+![AddDownloadDialog](https://user-images.githubusercontent.com/17648453/194594599-95f0f593-a47a-438f-8c26-907e98cb41f5.png)
 
 # Dependencies
 - [C++20](https://en.cppreference.com/w/cpp/20)
