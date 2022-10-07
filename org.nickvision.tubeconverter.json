@@ -1,0 +1,42 @@
+{
+    "app-id" : "org.nickvision.tubeconverter",
+    "runtime" : "org.gnome.Platform",
+    "runtime-version" : "43",
+    "sdk" : "org.gnome.Sdk",
+    "command" : "org.nickvision.tubeconverter",
+    "finish-args":[
+        "--socket=fallback-x11",
+        "--socket=wayland",
+        "--device=dri",
+        "--share=ipc",
+        "--share=network",
+        "--filesystem=host"
+    ],
+    "modules" : [
+        {
+            "name": "jsoncpp",
+            "buildsystem": "meson",
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/open-source-parsers/jsoncpp.git",
+                    "tag": "1.9.5"
+                }
+            ]
+        },
+        {
+            "name": "org.nickvision.tubeconverter",
+            "buildsystem": "meson",
+            "config-opts": [
+                "-Dbuildtype=release"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/nlogozzo/NickvisionTubeConverter.git",
+                    "branch": "master"
+                }
+            ]
+        }
+    ]
+}

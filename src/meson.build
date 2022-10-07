@@ -1,0 +1,28 @@
+sources = files('main.cpp',
+		'models/appinfo.hpp',
+		'models/appinfo.cpp',
+		'models/configuration.hpp',
+		'models/configuration.cpp',
+		'controllers/mainwindowcontroller.hpp',
+		'controllers/mainwindowcontroller.cpp',
+		'controllers/preferencesdialogcontroller.hpp',
+		'controllers/preferencesdialogcontroller.cpp',
+		'ui/application.hpp',
+		'ui/application.cpp',
+		'ui/controls/comboboxdialog.hpp',
+		'ui/controls/comboboxdialog.cpp',
+		'ui/controls/entrydialog.hpp',
+		'ui/controls/entrydialog.cpp',
+		'ui/controls/messagedialog.hpp',
+		'ui/controls/messagedialog.cpp',
+		'ui/controls/progressdialog.hpp',
+		'ui/controls/progressdialog.cpp',
+		'ui/views/mainwindow.hpp',
+		'ui/views/mainwindow.cpp',
+		'ui/views/preferencesdialog.hpp',
+		'ui/views/preferencesdialog.cpp',
+		'ui/views/shortcutsdialog.hpp',
+		'ui/views/shortcutsdialog.cpp')
+
+resources = files('resources/org.nickvision.tubeconverter.svg', 'resources/org.nickvision.tubeconverter-devel.svg')
+resources_symbolic = files('resources/org.nickvision.tubeconverter-symbolic.svg')
