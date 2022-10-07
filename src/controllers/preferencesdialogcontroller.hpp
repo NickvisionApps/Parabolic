@@ -29,18 +29,6 @@ namespace NickvisionTubeConverter::Controllers
 		 */
 		void setTheme(int theme);
 		/**
-		 * Gets whether or not the application is first time open from configuration
-		 *
-		 * @returns True for first time open, else false
-		 */
-		bool getIsFirstTimeOpen() const;
-		/**
-		 * Sets whether or not the application is first time open in the configuration
-		 *
-		 * @param isFirstTimeOpen True for is first time open, else false
-		 */
-		void setIsFirstTimeOpen(bool isFirstTimeOpen);
-		/**
 		 * Saves the configuration file
 		 */
 		void saveConfiguration() const;

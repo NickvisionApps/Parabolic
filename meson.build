@@ -10,6 +10,7 @@ jsoncpp = dependency('jsoncpp')
 subdir('src')
 
 executable('org.nickvision.tubeconverter', sources, dependencies: [threads, adwaita, jsoncpp], install: true)
+install_data('yt-dlp', install_dir: 'bin', install_mode: 'rwxrwxrwx')
 install_data(resources, install_dir: 'share/icons/hicolor/scalable/apps')
 install_data(resources_symbolic, install_dir: 'share/icons/hicolor/symbolic/apps')
 install_data('org.nickvision.tubeconverter.desktop', install_dir: 'share/applications')

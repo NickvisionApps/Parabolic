@@ -35,23 +35,11 @@ namespace NickvisionTubeConverter::UI::Views
 		GtkWidget* m_mainBox{ nullptr };
 		GtkWidget* m_headerBar{ nullptr };
 		GtkWidget* m_adwTitle{ nullptr };
-		GtkWidget* m_btnOpenFolder{ nullptr };
-		GtkWidget* m_btnCloseFolder{ nullptr };
 		GtkWidget* m_btnMenuHelp{ nullptr };
 		GtkWidget* m_toastOverlay{ nullptr };
-		GSimpleAction* m_actOpenFolder{ nullptr };
-		GSimpleAction* m_actCloseFolder{ nullptr };
 		GSimpleAction* m_actPreferences{ nullptr };
 		GSimpleAction* m_actKeyboardShortcuts{ nullptr };
 		GSimpleAction* m_actAbout{ nullptr };
-		/**
-		 * Updates the UI with the current folder
-		 */
-		void onFolderChanged();
-		/**
-		 * Prompts the user to open a folder from disk and load it in the app
-		 */
-		void onOpenFolder();
 		/**
 		 * Displays the preferences dialog
 		 */

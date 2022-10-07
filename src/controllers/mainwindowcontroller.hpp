@@ -47,42 +47,11 @@ namespace NickvisionTubeConverter::Controllers
 		 * Updates the controller based on the configuration changes
 		 */
 		void onConfigurationChanged();
-		/**
-		 * Gets the opened folder path
-		 *
-		 * @returns The opened folder path or "No Folder Path" if no folder is opened
-		 */
-		const std::string& getFolderPath() const;
-		/**
-		 * Gets whether or not the folder is valid
-		 *
-		 * @returns True if folder is valid, else false
-		 */
-		bool getIsFolderValid() const;
-		/**
-		 * Registers a callback for when the folder is changed
-		 *
-		 * @param callback A void() function
-		 */
-		void registerFolderChangedCallback(const std::function<void()>& callback);
-		/**
-		 * Opens a folder with the given path
-		 *
-		 * @param folderPath The path to the folder to open
-		 * @returns True if the folderPath is valid and the folder was opened, else false
-		 */
-		bool openFolder(const std::string& folderPath);
-		/**
-		 * Closes the folder if one is open
-		 */
-		void closeFolder();
 
 	private:
 		NickvisionTubeConverter::Models::AppInfo& m_appInfo;
 		NickvisionTubeConverter::Models::Configuration& m_configuration;
 		bool m_isOpened;
 		std::function<void(const std::string& message)> m_sendToastCallback;
-		std::string m_folderPath;
-		std::function<void()> m_folderChangedCallback;
 	};
 }
