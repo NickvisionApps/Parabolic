@@ -13,12 +13,22 @@ using namespace NickvisionTubeConverter::UI::Views;
 MainWindow::MainWindow(GtkApplication* application, const MainWindowController& controller) : m_controller{ controller }, m_gobj{ adw_application_window_new(application) }
 {
     //Window Settings
+    gtk_widget_set_size_request(m_gobj, 800, 600);
     gtk_window_set_default_size(GTK_WINDOW(m_gobj), 1000, 800);
     gtk_style_context_add_class(gtk_widget_get_style_context(m_gobj), "devel");
     //Header Bar
     m_headerBar = adw_header_bar_new();
     m_adwTitle = adw_window_title_new(m_controller.getAppInfo().getShortName().c_str(), nullptr);
     adw_header_bar_set_title_widget(ADW_HEADER_BAR(m_headerBar), m_adwTitle);
+    //Add Download Button
+    m_btnAddDownload = gtk_button_new();
+    GtkWidget* btnAddDownloadContent{ adw_button_content_new() };
+    adw_button_content_set_icon_name(ADW_BUTTON_CONTENT(btnAddDownloadContent), "list-add-symbolic");
+    adw_button_content_set_label(ADW_BUTTON_CONTENT(btnAddDownloadContent), "Add");
+    gtk_button_set_child(GTK_BUTTON(m_btnAddDownload), btnAddDownloadContent);
+    gtk_widget_set_tooltip_text(m_btnAddDownload, "Add Download (Ctrl+N)");
+    gtk_actionable_set_action_name(GTK_ACTIONABLE(m_btnAddDownload), "win.addDownload");
+    adw_header_bar_pack_start(ADW_HEADER_BAR(m_headerBar), m_btnAddDownload);
     //Menu Help Button
     m_btnMenuHelp = gtk_menu_button_new();
     GMenu* menuHelp{ g_menu_new() };
@@ -34,6 +44,24 @@ MainWindow::MainWindow(GtkApplication* application, const MainWindowController& 
     m_toastOverlay = adw_toast_overlay_new();
     gtk_widget_set_hexpand(m_toastOverlay, true);
     gtk_widget_set_vexpand(m_toastOverlay, true);
+    //Page No Downloads
+    m_pageStatusNoDownloads = adw_status_page_new();
+    adw_status_page_set_icon_name(ADW_STATUS_PAGE(m_pageStatusNoDownloads), "org.nickvision.tubeconverter-symbolic");
+    adw_status_page_set_title(ADW_STATUS_PAGE(m_pageStatusNoDownloads), "No Downloads Running");
+    adw_status_page_set_description(ADW_STATUS_PAGE(m_pageStatusNoDownloads), "Add a download to get started.");
+    //Page Downloads
+    m_listDownloads = gtk_list_box_new();
+    gtk_style_context_add_class(gtk_widget_get_style_context(m_listDownloads), "boxed-list");
+    gtk_list_box_set_selection_mode(GTK_LIST_BOX(m_listDownloads), GTK_SELECTION_NONE);
+    gtk_list_box_set_activate_on_single_click(GTK_LIST_BOX(m_listDownloads), false);
+    m_pageScrollDownloads = gtk_scrolled_window_new();
+    gtk_widget_set_hexpand(m_pageScrollDownloads, true);
+    gtk_scrolled_window_set_child(GTK_SCROLLED_WINDOW(m_pageScrollDownloads), m_listDownloads);
+    //View Stack
+    m_viewStack = adw_view_stack_new();
+    adw_view_stack_add_named(ADW_VIEW_STACK(m_viewStack), m_pageStatusNoDownloads, "pageNoDownloads");
+    adw_view_stack_add_named(ADW_VIEW_STACK(m_viewStack), m_pageScrollDownloads, "pageDownloads");
+    adw_toast_overlay_set_child(ADW_TOAST_OVERLAY(m_toastOverlay), m_viewStack);
     //Main Box
     m_mainBox = gtk_box_new(GTK_ORIENTATION_VERTICAL, 0);
     gtk_box_append(GTK_BOX(m_mainBox), m_headerBar);
@@ -41,6 +69,11 @@ MainWindow::MainWindow(GtkApplication* application, const MainWindowController& 
     adw_application_window_set_content(ADW_APPLICATION_WINDOW(m_gobj), m_mainBox);
     //Send Toast Callback
     m_controller.registerSendToastCallback([&](const std::string& message) { adw_toast_overlay_add_toast(ADW_TOAST_OVERLAY(m_toastOverlay), adw_toast_new(message.c_str())); });
+    //Add Download Action
+    m_actAddDownload = g_simple_action_new("addDownload", nullptr);
+    g_signal_connect(m_actAddDownload, "activate", G_CALLBACK((void (*)(GSimpleAction*, GVariant*, gpointer))[](GSimpleAction*, GVariant*, gpointer data) { reinterpret_cast<MainWindow*>(data)->onAddDownload(); }), this);
+    g_action_map_add_action(G_ACTION_MAP(m_gobj), G_ACTION(m_actAddDownload));
+    gtk_application_set_accels_for_action(application, "win.addDownload", new const char*[2]{ "<Ctrl>n", nullptr });
     //Preferences Action
     m_actPreferences = g_simple_action_new("preferences", nullptr);
     g_signal_connect(m_actPreferences, "activate", G_CALLBACK((void (*)(GSimpleAction*, GVariant*, gpointer))[](GSimpleAction*, GVariant*, gpointer data) { reinterpret_cast<MainWindow*>(data)->onPreferences(); }), this);
@@ -67,6 +100,11 @@ void MainWindow::start()
 {
     gtk_widget_show(m_gobj);
     m_controller.startup();
+}
+
+void MainWindow::onAddDownload()
+{
+
 }
 
 void MainWindow::onPreferences()

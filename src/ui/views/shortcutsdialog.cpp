@@ -18,6 +18,17 @@ ShortcutsDialog::ShortcutsDialog(GtkWindow* parent)
                 <object class="GtkShortcutsSection">
                     <child>
                         <object class="GtkShortcutsGroup">
+                            <property name="title">Download</property>
+                            <child>
+                                <object class="GtkShortcutsShortcut">
+                                    <property name="title">Add</property>
+                                    <property name="accelerator">&lt;Control&gt;n</property>
+                                </object>
+                            </child>
+                        </object>
+                    </child>
+                    <child>
+                        <object class="GtkShortcutsGroup">
                             <property name="title">Application</property>
                             <child>
                                 <object class="GtkShortcutsShortcut">
@@ -63,3 +74,4 @@ void ShortcutsDialog::run()
     }
     gtk_window_destroy(GTK_WINDOW(m_gobj));
 }
+

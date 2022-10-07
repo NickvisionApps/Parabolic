@@ -35,11 +35,21 @@ namespace NickvisionTubeConverter::UI::Views
 		GtkWidget* m_mainBox{ nullptr };
 		GtkWidget* m_headerBar{ nullptr };
 		GtkWidget* m_adwTitle{ nullptr };
+		GtkWidget* m_btnAddDownload{ nullptr };
 		GtkWidget* m_btnMenuHelp{ nullptr };
 		GtkWidget* m_toastOverlay{ nullptr };
+		GtkWidget* m_viewStack{ nullptr };
+		GtkWidget* m_pageStatusNoDownloads{ nullptr };
+		GtkWidget* m_pageScrollDownloads{ nullptr };
+		GtkWidget* m_listDownloads{ nullptr };
+		GSimpleAction* m_actAddDownload{ nullptr };
 		GSimpleAction* m_actPreferences{ nullptr };
 		GSimpleAction* m_actKeyboardShortcuts{ nullptr };
 		GSimpleAction* m_actAbout{ nullptr };
+		/**
+		 * Prompts the user to add a download with AddDownloadDialog
+		 */
+		void onAddDownload();
 		/**
 		 * Displays the preferences dialog
 		 */
