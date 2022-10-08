@@ -50,10 +50,6 @@ namespace NickvisionTubeConverter::Controllers
 		 * Runs startup functions
 		 */
 		void startup();
-		/**
-		 * Updates the controller based on the configuration changes
-		 */
-		void onConfigurationChanged();
 
 	private:
 		NickvisionTubeConverter::Models::AppInfo& m_appInfo;

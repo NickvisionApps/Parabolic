@@ -36,8 +36,3 @@ void MainWindowController::startup()
         m_isOpened = true;
     }
 }
-
-void MainWindowController::onConfigurationChanged()
-{
-
-}

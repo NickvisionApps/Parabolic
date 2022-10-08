@@ -49,10 +49,14 @@ MainWindow::MainWindow(GtkApplication* application, const MainWindowController& 
     //Page No Downloads
     m_pageStatusNoDownloads = adw_status_page_new();
     adw_status_page_set_icon_name(ADW_STATUS_PAGE(m_pageStatusNoDownloads), "org.nickvision.tubeconverter-symbolic");
-    adw_status_page_set_title(ADW_STATUS_PAGE(m_pageStatusNoDownloads), "No Downloads Running");
+    adw_status_page_set_title(ADW_STATUS_PAGE(m_pageStatusNoDownloads), "No Downloads");
     adw_status_page_set_description(ADW_STATUS_PAGE(m_pageStatusNoDownloads), "Add a download to get started.");
     //Page Downloads
     m_listDownloads = gtk_list_box_new();
+    gtk_widget_set_margin_start(m_listDownloads, 10);
+    gtk_widget_set_margin_top(m_listDownloads, 10);
+    gtk_widget_set_margin_end(m_listDownloads, 10);
+    gtk_widget_set_margin_bottom(m_listDownloads, 10);
     gtk_style_context_add_class(gtk_widget_get_style_context(m_listDownloads), "boxed-list");
     gtk_list_box_set_selection_mode(GTK_LIST_BOX(m_listDownloads), GTK_SELECTION_NONE);
     gtk_list_box_set_activate_on_single_click(GTK_LIST_BOX(m_listDownloads), false);
@@ -110,6 +114,7 @@ void MainWindow::onAddDownload()
     AddDownloadDialog addDownloadDialog{ GTK_WINDOW(m_gobj), addDownloadDialogController };
     if(addDownloadDialog.run())
     {
+        adw_view_stack_set_visible_child_name(ADW_VIEW_STACK(m_viewStack), "pageDownloads");
         const Download& download{ addDownloadDialogController.getDownload() };
     }
 }
@@ -118,7 +123,6 @@ void MainWindow::onPreferences()
 {
     PreferencesDialog preferencesDialog{ GTK_WINDOW(m_gobj), m_controller.createPreferencesDialogController() };
     preferencesDialog.run();
-    m_controller.onConfigurationChanged();
 }
 
 void MainWindow::onKeyboardShortcuts()
@@ -129,9 +133,10 @@ void MainWindow::onKeyboardShortcuts()
 
 void MainWindow::onAbout()
 {
+    bool isDev{ m_controller.getAppInfo().getVersion().find("-") != std::string::npos };
     adw_show_about_window(GTK_WINDOW(m_gobj),
                           "application-name", m_controller.getAppInfo().getShortName().c_str(),
-                          "application-icon", m_controller.getAppInfo().getId().c_str(),
+                          "application-icon", (m_controller.getAppInfo().getId() + (isDev ? "-devel" : "")).c_str(),
                           "version", m_controller.getAppInfo().getVersion().c_str(),
                           "comments", m_controller.getAppInfo().getDescription().c_str(),
                           "developer-name", "Nickvision",
