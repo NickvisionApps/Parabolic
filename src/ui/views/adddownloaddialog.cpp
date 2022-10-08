@@ -3,7 +3,7 @@
 using namespace NickvisionTubeConverter::Controllers;
 using namespace NickvisionTubeConverter::UI::Views;
 
-AddDownloadDialog::AddDownloadDialog(GtkWindow* parent, AddDownloadDialogController& controller) : m_controller{ controller }, m_response{ "cancel" }, m_gobj{ adw_message_dialog_new(parent, "Add Download", "Fill in the video properties below to add and start a download.") }
+AddDownloadDialog::AddDownloadDialog(GtkWindow* parent, AddDownloadDialogController& controller) : m_controller{ controller }, m_response{ "cancel" }, m_gobj{ adw_message_dialog_new(parent, "Add Download", nullptr) }
 {
     //Dialog Settings
     gtk_window_set_hide_on_close(GTK_WINDOW(m_gobj), true);
@@ -31,6 +31,7 @@ AddDownloadDialog::AddDownloadDialog(GtkWindow* parent, AddDownloadDialogControl
     adw_preferences_group_add(ADW_PREFERENCES_GROUP(m_preferencesGroup), m_rowQuality);
     //Save Folder
     m_btnSelectSaveFolder = gtk_button_new();
+    gtk_widget_set_valign(m_btnSelectSaveFolder, GTK_ALIGN_CENTER);
     gtk_style_context_add_class(gtk_widget_get_style_context(m_btnSelectSaveFolder), "flat");
     gtk_button_set_icon_name(GTK_BUTTON(m_btnSelectSaveFolder), "folder-open-symbolic");
     gtk_widget_set_tooltip_text(m_btnSelectSaveFolder, "Select Save Folder");
