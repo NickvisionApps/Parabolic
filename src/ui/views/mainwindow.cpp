@@ -115,7 +115,10 @@ void MainWindow::onAddDownload()
     if(addDownloadDialog.run())
     {
         adw_view_stack_set_visible_child_name(ADW_VIEW_STACK(m_viewStack), "pageDownloads");
-        const Download& download{ addDownloadDialogController.getDownload() };
+        DownloadRow row{ addDownloadDialogController.getDownload() };
+        gtk_list_box_append(GTK_LIST_BOX(m_listDownloads), row.gobj());
+        row.start();
+        m_downloadRows.push_back(row);
     }
 }
 
