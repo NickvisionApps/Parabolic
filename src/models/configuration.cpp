@@ -6,7 +6,7 @@
 
 using namespace NickvisionTubeConverter::Models;
 
-Configuration::Configuration() : m_configDir{ std::string(g_get_user_config_dir()) + "/Nickvision/NickvisionTubeConverter/" }, m_theme{ Theme::System }, m_previousSaveFolder { "" }, m_previousFileFormat{MediaFileType::MP4}
+Configuration::Configuration() : m_configDir{ std::string(g_get_user_config_dir()) + "/Nickvision/NickvisionTubeConverter/" }, m_theme{ Theme::System }, m_previousSaveFolder { "" }, m_previousFileType{ MediaFileType::MP4 }
 {
     if(!std::filesystem::exists(m_configDir))
     {
@@ -19,7 +19,7 @@ Configuration::Configuration() : m_configDir{ std::string(g_get_user_config_dir(
         configFile >> json;
         m_theme = static_cast<Theme>(json.get("Theme", 0).asInt());
         m_previousSaveFolder = json.get("PreviousSaveFolder", "").asString();
-        m_previousFileFormat = static_cast<MediaFileType::Value>(json.get("PreviousFileFormat", 0).asInt());
+        m_previousFileType = static_cast<MediaFileType::Value>(json.get("PreviousFileType", 0).asInt());
     }
 }
 
@@ -43,14 +43,14 @@ void Configuration::setPreviousSaveFolder(const std::string& previousSaveFolder)
     m_previousSaveFolder = previousSaveFolder;
 }
 
-const MediaFileType& Configuration::getPreviousFileFormat() const
+const MediaFileType& Configuration::getPreviousFileType() const
 {
-    return m_previousFileFormat;
+    return m_previousFileType;
 }
 
-void Configuration::setPreviousFileForamt(const MediaFileType& previousFileFormat)
+void Configuration::setPreviousFileType(const MediaFileType& previousFileType)
 {
-    m_previousFileFormat = previousFileFormat;
+    m_previousFileType = previousFileType;
 }
 
 void Configuration::save() const
@@ -61,7 +61,7 @@ void Configuration::save() const
         Json::Value json;
         json["Theme"] = static_cast<int>(m_theme);
         json["PreviousSaveFolder"] = m_previousSaveFolder;
-        json["PreviousFileFormat"] = static_cast<int>(m_previousFileFormat);
+        json["PreviousFileType"] = static_cast<int>(m_previousFileType);
         configFile << json;
     }
 }

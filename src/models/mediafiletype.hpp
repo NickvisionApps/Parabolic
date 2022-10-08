@@ -41,30 +41,6 @@ namespace NickvisionTubeConverter::Models
         operator Value() const;
         explicit operator bool() = delete;
         /**
-         * Compares two MediaFileType based on == equality
-         *
-         * @returns True if equal, else false
-         */
-        bool operator==(const MediaFileType& toCompare) const;
-        /**
-         * Compares two MediaFileType based on != equality
-         *
-         * @returns True if not equal, else false
-         */
-        bool operator!=(const MediaFileType& toCompare) const;
-        /**
-         * Compares two MediaFileType::Value based on == equality
-         *
-         * @returns True if equal, else false
-         */
-        bool operator==(MediaFileType::Value toCompare) const;
-        /**
-         * Compares two MediaFileTypes::Value based on != equality
-         *
-         * @returns True if not equal, else false
-         */
-        bool operator!=(MediaFileType::Value toCompare) const;
-        /**
          * Gets a string representation of the MediaFileType
          *
          * @returns The string representation of the MediaFileType
@@ -88,6 +64,30 @@ namespace NickvisionTubeConverter::Models
          * @returns True if video type, else false
          */
         bool isVideo() const;
+        /**
+         * Compares two MediaFileType based on == equality
+         *
+         * @returns True if equal, else false
+         */
+        bool operator==(const MediaFileType& toCompare) const;
+        /**
+         * Compares two MediaFileType based on != equality
+         *
+         * @returns True if not equal, else false
+         */
+        bool operator!=(const MediaFileType& toCompare) const;
+        /**
+         * Compares two MediaFileType::Value based on == equality
+         *
+         * @returns True if equal, else false
+         */
+        bool operator==(MediaFileType::Value toCompare) const;
+        /**
+         * Compares two MediaFileTypes::Value based on != equality
+         *
+         * @returns True if not equal, else false
+         */
+        bool operator!=(MediaFileType::Value toCompare) const;
 
     private:
         Value m_value;

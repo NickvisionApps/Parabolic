@@ -50,17 +50,17 @@ namespace NickvisionTubeConverter::Models
 		 */
 		void setPreviousSaveFolder(const std::string& previousSaveFolder);
 		/**
-		 * Gets the previous file format used in a download
+		 * Gets the previous file type used in a download
 		 *
-		 * @returns The previous file format
+		 * @returns The previous file type
 		 */
-		const MediaFileType& getPreviousFileFormat() const;
+		const MediaFileType& getPreviousFileType() const;
 		/**
-		 * Sets the previous file format used in a download
+		 * Sets the previous file type used in a download
 		 *
-		 * @param previousFileFormat The new previous file format
+		 * @param previousFileType The new previous file type
 		 */
-		void setPreviousFileForamt(const MediaFileType& previousFileFormat);
+		void setPreviousFileType(const MediaFileType& previousFileType);
 		/**
 		 * Saves the configuration to disk
 		 */
@@ -70,6 +70,6 @@ namespace NickvisionTubeConverter::Models
 		std::string m_configDir;
 		Theme m_theme;
 		std::string m_previousSaveFolder;
-		MediaFileType m_previousFileFormat;
+		MediaFileType m_previousFileType;
 	};
 }

@@ -47,26 +47,6 @@ MediaFileType::operator Value() const
     return m_value;
 }
 
-bool MediaFileType::operator==(const MediaFileType& toCompare) const
-{
-    return m_value == toCompare.m_value;
-}
-
-bool MediaFileType::operator!=(const MediaFileType& toCompare) const
-{
-    return m_value != toCompare.m_value;
-}
-
-bool MediaFileType::operator==(MediaFileType::Value toCompare) const
-{
-    return m_value == toCompare;
-}
-
-bool MediaFileType::operator!=(MediaFileType::Value toCompare) const
-{
-    return m_value != toCompare;
-}
-
 std::string MediaFileType::toString() const
 {
     switch (m_value)
@@ -151,3 +131,22 @@ bool MediaFileType::isVideo() const
     }
 }
 
+bool MediaFileType::operator==(const MediaFileType& toCompare) const
+{
+    return m_value == toCompare.m_value;
+}
+
+bool MediaFileType::operator!=(const MediaFileType& toCompare) const
+{
+    return m_value != toCompare.m_value;
+}
+
+bool MediaFileType::operator==(MediaFileType::Value toCompare) const
+{
+    return m_value == toCompare;
+}
+
+bool MediaFileType::operator!=(MediaFileType::Value toCompare) const
+{
+    return m_value != toCompare;
+}

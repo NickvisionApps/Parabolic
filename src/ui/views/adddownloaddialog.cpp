@@ -3,7 +3,7 @@
 using namespace NickvisionTubeConverter::Controllers;
 using namespace NickvisionTubeConverter::UI::Views;
 
-AddDownloadDialog::AddDownloadDialog(GtkWindow* parent, AddDownloadDialogController& controller) : m_controller{ controller }, m_response{ "cancel" }, m_gobj{ adw_message_dialog_new(parent, "Add Download", "Fill in video properties below to add and start a download.") }
+AddDownloadDialog::AddDownloadDialog(GtkWindow* parent, AddDownloadDialogController& controller) : m_controller{ controller }, m_response{ "cancel" }, m_gobj{ adw_message_dialog_new(parent, "Add Download", "Fill in the video properties below to add and start a download.") }
 {
     //Dialog Settings
     gtk_window_set_hide_on_close(GTK_WINDOW(m_gobj), true);
@@ -48,6 +48,9 @@ AddDownloadDialog::AddDownloadDialog(GtkWindow* parent, AddDownloadDialogControl
     adw_preferences_group_add(ADW_PREFERENCES_GROUP(m_preferencesGroup), m_rowNewFilename);
     //Layout
     adw_message_dialog_set_extra_child(ADW_MESSAGE_DIALOG(m_gobj), m_preferencesGroup);
+    //Load Config
+    adw_combo_row_set_selected(ADW_COMBO_ROW(m_rowFileType), m_controller.getPreviousFileTypeAsInt());
+    gtk_editable_set_text(GTK_EDITABLE(m_rowSaveFolder), m_controller.getPreviousSaveFolder().c_str());
 }
 
 GtkWidget* AddDownloadDialog::gobj()
@@ -62,17 +65,56 @@ bool AddDownloadDialog::run()
     {
         g_main_context_iteration(g_main_context_default(), false);
     }
-    if(m_response == "ok")
+    if(m_controller.getResponse() == "ok")
     {
-
+        DownloadCheckStatus downloadCheckStatus { m_controller.setDownload(gtk_editable_get_text(GTK_EDITABLE(m_rowVideoUrl)), adw_combo_row_get_selected(ADW_COMBO_ROW(m_rowFileType)), gtk_editable_get_text(GTK_EDITABLE(m_rowSaveFolder)), gtk_editable_get_text(GTK_EDITABLE(m_rowNewFilename)), adw_combo_row_get_selected(ADW_COMBO_ROW(m_rowQuality))) };
+        //Invalid Download
+        if(downloadCheckStatus != DownloadCheckStatus::Valid)
+        {
+            //Reset UI
+            gtk_style_context_remove_class(gtk_widget_get_style_context(m_rowVideoUrl), "error");
+            adw_preferences_row_set_title(ADW_PREFERENCES_ROW(m_rowVideoUrl), "Video Url");
+            gtk_style_context_remove_class(gtk_widget_get_style_context(m_rowSaveFolder), "error");
+            adw_preferences_row_set_title(ADW_PREFERENCES_ROW(m_rowSaveFolder), "Save Folder");
+            gtk_style_context_remove_class(gtk_widget_get_style_context(m_rowNewFilename), "error");
+            adw_preferences_row_set_title(ADW_PREFERENCES_ROW(m_rowNewFilename), "New Filename");
+            //Mark Error
+            if(downloadCheckStatus == DownloadCheckStatus::EmptyVideoUrl)
+            {
+                gtk_style_context_add_class(gtk_widget_get_style_context(m_rowVideoUrl), "error");
+                adw_preferences_row_set_title(ADW_PREFERENCES_ROW(m_rowVideoUrl), "Video Url (Empty)");
+            }
+            if(downloadCheckStatus == DownloadCheckStatus::InvalidVideoUrl)
+            {
+                gtk_style_context_add_class(gtk_widget_get_style_context(m_rowVideoUrl), "error");
+                adw_preferences_row_set_title(ADW_PREFERENCES_ROW(m_rowVideoUrl), "Video Url (Invalid)");
+            }
+            if(downloadCheckStatus == DownloadCheckStatus::EmptySaveFolder)
+            {
+                gtk_style_context_add_class(gtk_widget_get_style_context(m_rowSaveFolder), "error");
+                adw_preferences_row_set_title(ADW_PREFERENCES_ROW(m_rowSaveFolder), "Save Folder (Empty)");
+            }
+            if(downloadCheckStatus == DownloadCheckStatus::InvalidSaveFolder)
+            {
+                gtk_style_context_add_class(gtk_widget_get_style_context(m_rowSaveFolder), "error");
+                adw_preferences_row_set_title(ADW_PREFERENCES_ROW(m_rowSaveFolder), "Save Folder (Invalid)");
+            }
+            if(downloadCheckStatus == DownloadCheckStatus::EmptyNewFilename)
+            {
+                gtk_style_context_add_class(gtk_widget_get_style_context(m_rowNewFilename), "error");
+                adw_preferences_row_set_title(ADW_PREFERENCES_ROW(m_rowNewFilename), "New Filename (Empty)");
+            }
+            //Prompt User to Fix
+            return run();
+        }
     }
     gtk_window_destroy(GTK_WINDOW(m_gobj));
-    return m_response == "ok";
+    return m_controller.getResponse() == "ok";
 }
 
 void AddDownloadDialog::setResponse(const std::string& response)
 {
-    m_response = response;
+    m_controller.setResponse(response);
 }
 
 void AddDownloadDialog::onSelectSaveFolder()

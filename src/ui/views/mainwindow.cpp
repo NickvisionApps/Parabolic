@@ -8,6 +8,7 @@
 #include "../controls/progressdialog.hpp"
 
 using namespace NickvisionTubeConverter::Controllers;
+using namespace NickvisionTubeConverter::Models;
 using namespace NickvisionTubeConverter::UI::Controls;
 using namespace NickvisionTubeConverter::UI::Views;
 
@@ -107,7 +108,10 @@ void MainWindow::onAddDownload()
 {
     AddDownloadDialogController addDownloadDialogController{ m_controller.createAddDownloadDialogController() };
     AddDownloadDialog addDownloadDialog{ GTK_WINDOW(m_gobj), addDownloadDialogController };
-    addDownloadDialog.run();
+    if(addDownloadDialog.run())
+    {
+        const Download& download{ addDownloadDialogController.getDownload() };
+    }
 }
 
 void MainWindow::onPreferences()
