@@ -52,17 +52,15 @@ MainWindow::MainWindow(GtkApplication* application, const MainWindowController& 
     adw_status_page_set_title(ADW_STATUS_PAGE(m_pageStatusNoDownloads), "No Downloads");
     adw_status_page_set_description(ADW_STATUS_PAGE(m_pageStatusNoDownloads), "Add a download to get started.");
     //Page Downloads
-    m_listDownloads = gtk_list_box_new();
-    gtk_widget_set_margin_start(m_listDownloads, 10);
-    gtk_widget_set_margin_top(m_listDownloads, 10);
-    gtk_widget_set_margin_end(m_listDownloads, 10);
-    gtk_widget_set_margin_bottom(m_listDownloads, 10);
-    gtk_style_context_add_class(gtk_widget_get_style_context(m_listDownloads), "boxed-list");
-    gtk_list_box_set_selection_mode(GTK_LIST_BOX(m_listDownloads), GTK_SELECTION_NONE);
-    gtk_list_box_set_activate_on_single_click(GTK_LIST_BOX(m_listDownloads), false);
+    m_grpDownloads = adw_preferences_group_new();
+    gtk_widget_set_margin_start(m_grpDownloads, 30);
+    gtk_widget_set_margin_top(m_grpDownloads, 10);
+    gtk_widget_set_margin_end(m_grpDownloads, 30);
+    gtk_widget_set_margin_bottom(m_grpDownloads, 10);
+    adw_preferences_group_set_title(ADW_PREFERENCES_GROUP(m_grpDownloads), "Downloads");
     m_pageScrollDownloads = gtk_scrolled_window_new();
     gtk_widget_set_hexpand(m_pageScrollDownloads, true);
-    gtk_scrolled_window_set_child(GTK_SCROLLED_WINDOW(m_pageScrollDownloads), m_listDownloads);
+    gtk_scrolled_window_set_child(GTK_SCROLLED_WINDOW(m_pageScrollDownloads), m_grpDownloads);
     //View Stack
     m_viewStack = adw_view_stack_new();
     adw_view_stack_add_named(ADW_VIEW_STACK(m_viewStack), m_pageStatusNoDownloads, "pageNoDownloads");
@@ -116,7 +114,7 @@ void MainWindow::onAddDownload()
     {
         adw_view_stack_set_visible_child_name(ADW_VIEW_STACK(m_viewStack), "pageDownloads");
         std::shared_ptr<DownloadRow> row{ std::make_shared<DownloadRow>(GTK_WINDOW(m_gobj), addDownloadDialogController.getDownload()) };
-        gtk_list_box_append(GTK_LIST_BOX(m_listDownloads), row->gobj());
+        adw_preferences_group_add(ADW_PREFERENCES_GROUP(m_grpDownloads), row->gobj());
         row->start();
         m_downloadRows.push_back(row);
     }

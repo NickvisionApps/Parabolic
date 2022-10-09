@@ -44,7 +44,7 @@ namespace NickvisionTubeConverter::UI::Views
 		GtkWidget* m_viewStack{ nullptr };
 		GtkWidget* m_pageStatusNoDownloads{ nullptr };
 		GtkWidget* m_pageScrollDownloads{ nullptr };
-		GtkWidget* m_listDownloads{ nullptr };
+		GtkWidget* m_grpDownloads{ nullptr };
 		GSimpleAction* m_actAddDownload{ nullptr };
 		GSimpleAction* m_actPreferences{ nullptr };
 		GSimpleAction* m_actKeyboardShortcuts{ nullptr };
