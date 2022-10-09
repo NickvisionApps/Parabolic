@@ -51,8 +51,7 @@ void DownloadRow::start()
         status = result.wait_for(std::chrono::milliseconds(40));
     }
     adw_view_stack_set_visible_child_name(ADW_VIEW_STACK(m_viewStackProgress), "levelBar");
-    gtk_level_bar_set_value(GTK_LEVEL_BAR(m_levelBar), 1.0);
-    gtk_style_context_add_class(gtk_widget_get_style_context(m_levelBar), result.get() ? "success" : "error");
+    gtk_level_bar_set_value(GTK_LEVEL_BAR(m_levelBar), result.get() ? 1.0 : 0.0);
     gtk_widget_set_sensitive(m_btnViewLogs, true);
 }
 

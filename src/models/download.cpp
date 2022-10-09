@@ -46,12 +46,12 @@ bool Download::download()
 	{
 		cmd = "yt-dlp --extract-audio --audio-format " + m_fileType.toString() + " --audio-quality " + (m_quality == Quality::Best ? "0" : m_quality == Quality::Good ? "5" : "10") + " \"" + m_videoUrl + "\" -o \"" + m_path + ".%(ext)s\"";
 	}
-	m_log = "===Starting Download===\nURL: " + m_videoUrl + "\nPath: " + getSavePath() + "\nQuality: " + std::to_string(static_cast<int>(m_quality)) + "\n\n";
+	m_log = "URL: " + m_videoUrl + "\nPath: " + getSavePath() + "\nQuality: " + std::to_string(static_cast<int>(m_quality)) + "\n\n";
 	std::array<char, 128> buffer;
 	FILE* pipe = popen(cmd.c_str(), "r");
 	if (!pipe)
 	{
-		m_log += "[Error] Unable to run command\n";
+		m_log += "[Error] Unable to run command";
 		return false;
 	}
 	while (!feof(pipe))
@@ -64,9 +64,8 @@ bool Download::download()
 	int result{ pclose(pipe) };
 	if (result != 0)
 	{
-		m_log += "[Error] Unable to download video\n";
+		m_log += "[Error] Unable to download video";
 	}
-	m_log += "==========";
 	return result == 0;
 }
 
