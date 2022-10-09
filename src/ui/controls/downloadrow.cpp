@@ -11,16 +11,30 @@ DownloadRow::DownloadRow(GtkWindow* parent, const Download& download) : m_downlo
     //Row Settings
     adw_preferences_row_set_title(ADW_PREFERENCES_ROW(m_gobj), m_download.getSavePath().c_str());
     adw_action_row_set_subtitle(ADW_ACTION_ROW(m_gobj), m_download.getVideoUrl().c_str());
-    //Progress
-    m_viewStackProgress = adw_view_stack_new();
-    gtk_widget_set_valign(m_viewStackProgress, GTK_ALIGN_CENTER);
+    //Box Downloading
+    m_boxDownloading = gtk_box_new(GTK_ORIENTATION_HORIZONTAL, 6);
+    //ProgBar
     m_progBar = gtk_progress_bar_new();
+    gtk_widget_set_valign(m_progBar, GTK_ALIGN_CENTER);
     gtk_widget_set_size_request(m_progBar, 300, -1);
+    gtk_box_append(GTK_BOX(m_boxDownloading), m_progBar);
+    //Stop Button
+    m_btnStop = gtk_button_new();
+    gtk_widget_set_valign(m_btnStop, GTK_ALIGN_CENTER);
+    gtk_style_context_add_class(gtk_widget_get_style_context(m_btnStop), "flat");
+    gtk_button_set_icon_name(GTK_BUTTON(m_btnStop), "media-playback-stop-symbolic");
+    gtk_widget_set_tooltip_text(m_btnStop, "Stop");
+    g_signal_connect(m_btnStop, "clicked", G_CALLBACK((void (*)(GtkButton*, gpointer))[](GtkButton*, gpointer data) { reinterpret_cast<DownloadRow*>(data)->onStop(); }), this);
+    gtk_box_append(GTK_BOX(m_boxDownloading), m_btnStop);
+    //Box Done
+    m_boxDone = gtk_box_new(GTK_ORIENTATION_HORIZONTAL, 6);
+    gtk_widget_set_valign(m_boxDone, GTK_ALIGN_CENTER);
+    //LevelBar
     m_levelBar = gtk_level_bar_new();
+    gtk_widget_set_valign(m_levelBar, GTK_ALIGN_CENTER);
     gtk_widget_set_size_request(m_levelBar, 300, -1);
-    adw_view_stack_add_named(ADW_VIEW_STACK(m_viewStackProgress), m_progBar, "progBar");
-    adw_view_stack_add_named(ADW_VIEW_STACK(m_viewStackProgress), m_levelBar, "levelBar");
-    //View Log Button
+    gtk_box_append(GTK_BOX(m_boxDone), m_levelBar);
+    //View Logs Button
     m_btnViewLogs = gtk_button_new();
     gtk_widget_set_valign(m_btnViewLogs, GTK_ALIGN_CENTER);
     gtk_widget_set_sensitive(m_btnViewLogs, false);
@@ -28,11 +42,12 @@ DownloadRow::DownloadRow(GtkWindow* parent, const Download& download) : m_downlo
     gtk_button_set_icon_name(GTK_BUTTON(m_btnViewLogs), "dialog-information-symbolic");
     gtk_widget_set_tooltip_text(m_btnViewLogs, "View Logs");
     g_signal_connect(m_btnViewLogs, "clicked", G_CALLBACK((void (*)(GtkButton*, gpointer))[](GtkButton*, gpointer data) { reinterpret_cast<DownloadRow*>(data)->onViewLogs(); }), this);
-    //Box
-    m_boxSuffix = gtk_box_new(GTK_ORIENTATION_HORIZONTAL, 6);
-    gtk_box_append(GTK_BOX(m_boxSuffix), m_viewStackProgress);
-    gtk_box_append(GTK_BOX(m_boxSuffix), m_btnViewLogs);
-    adw_action_row_add_suffix(ADW_ACTION_ROW(m_gobj), m_boxSuffix);
+    gtk_box_append(GTK_BOX(m_boxDone), m_btnViewLogs);
+    //View Stack
+    m_viewStack = adw_view_stack_new();
+    adw_view_stack_add_named(ADW_VIEW_STACK(m_viewStack), m_boxDownloading, "downloading");
+    adw_view_stack_add_named(ADW_VIEW_STACK(m_viewStack), m_boxDone, "done");
+    adw_action_row_add_suffix(ADW_ACTION_ROW(m_gobj), m_viewStack);
 }
 
 GtkWidget* DownloadRow::gobj()
@@ -50,9 +65,14 @@ void DownloadRow::start()
         g_main_context_iteration(g_main_context_default(), false);
         status = result.wait_for(std::chrono::milliseconds(40));
     }
-    adw_view_stack_set_visible_child_name(ADW_VIEW_STACK(m_viewStackProgress), "levelBar");
+    adw_view_stack_set_visible_child_name(ADW_VIEW_STACK(m_viewStack), "done");
     gtk_level_bar_set_value(GTK_LEVEL_BAR(m_levelBar), result.get() ? 1.0 : 0.0);
     gtk_widget_set_sensitive(m_btnViewLogs, true);
+}
+
+void DownloadRow::onStop()
+{
+
 }
 
 void DownloadRow::onViewLogs()

@@ -16,11 +16,14 @@ namespace NickvisionTubeConverter::UI::Controls
 		NickvisionTubeConverter::Models::Download m_download;
 		GtkWidget* m_gobj;
 		GtkWindow* m_parent;
-		GtkWidget* m_boxSuffix;
-		GtkWidget* m_viewStackProgress;
+		GtkWidget* m_viewStack;
+		GtkWidget* m_boxDownloading;
 		GtkWidget* m_progBar;
+		GtkWidget* m_btnStop;
+		GtkWidget* m_boxDone;
 		GtkWidget* m_levelBar;
 		GtkWidget* m_btnViewLogs;
+		void onStop();
 		void onViewLogs();
 	};
 }
