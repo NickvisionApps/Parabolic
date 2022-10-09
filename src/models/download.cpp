@@ -39,7 +39,7 @@ bool Download::download()
     std::string cmd{ "" };
 	if (m_fileType.isVideo())
 	{
-	    std::string format{ m_quality == Quality::Best ? "bv*+ba/b" : m_quality == Quality::Good ? "bv*+ba/b" : "wv*+wa/w" };
+	    std::string format{ m_quality == Quality::Best ? "bv*+ba/b" : m_quality == Quality::Worst ? "wv*+wa/w" : "" };
 		cmd = "yt-dlp --format " + format + " --remux-video " + m_fileType.toString() + " \"" + m_videoUrl + "\" -o \"" + m_path + ".%(ext)s\"";
 	}
 	else
@@ -69,3 +69,4 @@ bool Download::download()
 	m_log += "==========";
 	return result == 0;
 }
+

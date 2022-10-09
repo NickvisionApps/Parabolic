@@ -1,5 +1,6 @@
 #pragma once
 
+#include <memory>
 #include <string>
 #include "../models/configuration.hpp"
 #include "../models/download.hpp"
@@ -25,13 +26,13 @@ namespace NickvisionTubeConverter::Controllers
 		void setResponse(const std::string& response);
 		std::string getPreviousSaveFolder() const;
 		int getPreviousFileTypeAsInt() const;
-		const NickvisionTubeConverter::Models::Download& getDownload() const;
+		const std::shared_ptr<NickvisionTubeConverter::Models::Download>& getDownload() const;
 		DownloadCheckStatus checkIfDownloadValid() const;
 		DownloadCheckStatus setDownload(const std::string& videoUrl, int mediaFileType, const std::string& saveFolder, const std::string& newFilename, int quality);
 
 	private:
 		NickvisionTubeConverter::Models::Configuration& m_configuration;
 		std::string m_response;
-		NickvisionTubeConverter::Models::Download m_download;
+		std::shared_ptr<NickvisionTubeConverter::Models::Download> m_download;
 	};
 }

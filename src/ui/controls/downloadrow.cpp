@@ -1,15 +1,16 @@
 #include "downloadrow.hpp"
 #include <future>
 #include "messagedialog.hpp"
+#include <iostream>
 
 using namespace NickvisionTubeConverter::Models;
 using namespace NickvisionTubeConverter::UI::Controls;
 
-DownloadRow::DownloadRow(GtkWindow* parent, const Download& download) : m_download{ download }, m_gobj{ adw_action_row_new() }, m_parent{ parent }
+DownloadRow::DownloadRow(GtkWindow* parent, const std::shared_ptr<Download>& download) : m_download{ download }, m_gobj{ adw_action_row_new() }, m_parent{ parent }
 {
     //Row Settings
-    adw_preferences_row_set_title(ADW_PREFERENCES_ROW(m_gobj), m_download.getSavePath().c_str());
-    adw_action_row_set_subtitle(ADW_ACTION_ROW(m_gobj), m_download.getVideoUrl().c_str());
+    adw_preferences_row_set_title(ADW_PREFERENCES_ROW(m_gobj), m_download->getSavePath().c_str());
+    adw_action_row_set_subtitle(ADW_ACTION_ROW(m_gobj), m_download->getVideoUrl().c_str());
     //Progress
     m_viewStackProgress = adw_view_stack_new();
     gtk_widget_set_valign(m_viewStackProgress, GTK_ALIGN_CENTER);
@@ -41,7 +42,7 @@ GtkWidget* DownloadRow::gobj()
 
 void DownloadRow::start()
 {
-    std::future<bool> result{ std::async(std::launch::async, [&]() -> bool { return m_download.download(); }) };
+    std::future<bool> result{ std::async(std::launch::async, [&]() -> bool { return m_download->download(); }) };
     std::future_status status{ std::future_status::timeout };
     while(status != std::future_status::ready)
     {
@@ -57,6 +58,6 @@ void DownloadRow::start()
 
 void DownloadRow::onViewLogs()
 {
-    MessageDialog messageDialog{ m_parent, "Logs", m_download.getLog(), "OK" };
+    MessageDialog messageDialog{ m_parent, "Logs", m_download->getLog(), "OK" };
     messageDialog.run();
 }
