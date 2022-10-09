@@ -5,7 +5,7 @@
 
 # Features
 - A basic yt-dlp frontend
-- Supports downloading videos in multiple formats (mp4, webm, mp3, opus, and flac, wav)
+- Supports downloading videos in multiple formats (mp4, webm, mp3, opus, flac, and wav)
 - Run multiple downloads at a time
 
 # Disclaimer
