@@ -1,6 +1,5 @@
 #pragma once
 
-#include <memory>
 #include <adwaita.h>
 #include "../../models/download.hpp"
 
@@ -9,12 +8,12 @@ namespace NickvisionTubeConverter::UI::Controls
 	class DownloadRow
 	{
 	public:
-		DownloadRow(GtkWindow* parent, const std::shared_ptr<NickvisionTubeConverter::Models::Download>& download);
+		DownloadRow(GtkWindow* parent, const NickvisionTubeConverter::Models::Download& download);
 		GtkWidget* gobj();
 		void start();
 
 	private:
-		std::shared_ptr<NickvisionTubeConverter::Models::Download> m_download;
+		NickvisionTubeConverter::Models::Download m_download;
 		GtkWidget* m_gobj;
 		GtkWindow* m_parent;
 		GtkWidget* m_boxSuffix;

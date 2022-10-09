@@ -1,5 +1,6 @@
 #pragma once
 
+#include <memory>
 #include <vector>
 #include <adwaita.h>
 #include "../controls/downloadrow.hpp"
@@ -48,7 +49,7 @@ namespace NickvisionTubeConverter::UI::Views
 		GSimpleAction* m_actPreferences{ nullptr };
 		GSimpleAction* m_actKeyboardShortcuts{ nullptr };
 		GSimpleAction* m_actAbout{ nullptr };
-		std::vector<NickvisionTubeConverter::UI::Controls::DownloadRow> m_downloadRows;
+		std::vector<std::shared_ptr<NickvisionTubeConverter::UI::Controls::DownloadRow>> m_downloadRows;
 		/**
 		 * Prompts the user to add a download with AddDownloadDialog
 		 */
