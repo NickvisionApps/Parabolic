@@ -7,6 +7,9 @@
 
 namespace NickvisionTubeConverter::Controllers
 {
+	/**
+	 * Statuses for when a download is checked
+	 */
 	enum class DownloadCheckStatus
 	{
 		Valid = 0,
@@ -17,16 +20,59 @@ namespace NickvisionTubeConverter::Controllers
 		EmptyNewFilename
 	};
 
+	/**
+	 * A controller for the AddDownloadDialog
+	 */
 	class AddDownloadDialogController
 	{
 	public:
+		/**
+		 * Constructs an AddDownloadDialogController
+		 *
+		 * @param configuration The Configuration for the application (Stored as a reference)
+		 */
 		AddDownloadDialogController(NickvisionTubeConverter::Models::Configuration& configuration);
+		/**
+		 * Gets the response of the dialog
+		 *
+		 * @returns The response of the dialog
+		 */
 		const std::string& getResponse() const;
+		/**
+		 * Sets the response of the dialog
+		 *
+		 * @param response The new response of the dialog
+		 */
 		void setResponse(const std::string& response);
+		/**
+		 * Gets the previously used saved folder from the configuration
+		 *
+		 * @returns The previously used saved folder
+		 */
 		std::string getPreviousSaveFolder() const;
+		/**
+		 * Gets the previously used file type (as an int) from the configuration
+		 *
+		 * @returns The previously used file type (as an int)
+		 */
 		int getPreviousFileTypeAsInt() const;
+		/**
+		 * Gets the download created by the dialog
+		 *
+		 * @returns The download created by the dialog
+		 */
 		const NickvisionTubeConverter::Models::Download& getDownload() const;
+		/**
+		 * Checks if a download is valid
+		 *
+		 * @returns The DownloadCheckStatus
+		 */
 		DownloadCheckStatus checkIfDownloadValid() const;
+		/**
+		 * Sets the download from the dialog and checks if it is valid
+		 *
+		 * @returns The DownloadCheckStatus
+		 */
 		DownloadCheckStatus setDownload(const std::string& videoUrl, int mediaFileType, const std::string& saveFolder, const std::string& newFilename, int quality);
 
 	private:

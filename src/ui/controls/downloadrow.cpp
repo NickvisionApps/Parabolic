@@ -1,7 +1,7 @@
 #include "downloadrow.hpp"
 #include <future>
+#include <regex>
 #include "messagedialog.hpp"
-#include <iostream>
 
 using namespace NickvisionTubeConverter::Models;
 using namespace NickvisionTubeConverter::UI::Controls;
@@ -9,8 +9,12 @@ using namespace NickvisionTubeConverter::UI::Controls;
 DownloadRow::DownloadRow(GtkWindow* parent, const Download& download) : m_download{ download }, m_gobj{ adw_action_row_new() }, m_parent{ parent }
 {
     //Row Settings
-    adw_preferences_row_set_title(ADW_PREFERENCES_ROW(m_gobj), m_download.getSavePath().c_str());
-    adw_action_row_set_subtitle(ADW_ACTION_ROW(m_gobj), m_download.getVideoUrl().c_str());
+    adw_preferences_row_set_title(ADW_PREFERENCES_ROW(m_gobj), std::regex_replace(download.getSavePath(), std::regex("\\&"), "&amp;").c_str());
+    adw_action_row_set_subtitle(ADW_ACTION_ROW(m_gobj), std::regex_replace(download.getVideoUrl(), std::regex("\\&"), "&amp;").c_str());
+    //Status Image
+    m_imgStatus = gtk_image_new_from_icon_name("folder-download-symbolic");
+    gtk_image_set_pixel_size(GTK_IMAGE(m_imgStatus), 20);
+    adw_action_row_add_prefix(ADW_ACTION_ROW(m_gobj), m_imgStatus);
     //Box Downloading
     m_boxDownloading = gtk_box_new(GTK_ORIENTATION_HORIZONTAL, 6);
     //ProgBar
@@ -51,14 +55,18 @@ void DownloadRow::start()
 {
     std::future<bool> result{ std::async(std::launch::async, [&]() -> bool { return m_download.download(); }) };
     std::future_status status{ std::future_status::timeout };
+    gtk_style_context_add_class(gtk_widget_get_style_context(m_imgStatus), "accent");
     while(status != std::future_status::ready)
     {
         gtk_progress_bar_pulse(GTK_PROGRESS_BAR(m_progBar));
         g_main_context_iteration(g_main_context_default(), false);
         status = result.wait_for(std::chrono::milliseconds(40));
     }
+    bool successful{ result.get() };
+    gtk_style_context_remove_class(gtk_widget_get_style_context(m_imgStatus), "accent");
+    gtk_style_context_add_class(gtk_widget_get_style_context(m_imgStatus), successful ? "success" : "error");
     adw_view_stack_set_visible_child_name(ADW_VIEW_STACK(m_viewStack), "done");
-    gtk_level_bar_set_value(GTK_LEVEL_BAR(m_levelBar), result.get() ? 1.0 : 0.0);
+    gtk_level_bar_set_value(GTK_LEVEL_BAR(m_levelBar), successful ? 1.0 : 0.0);
     gtk_widget_set_sensitive(m_btnViewLogs, true);
 }
 

@@ -66,7 +66,7 @@ DownloadCheckStatus AddDownloadDialogController::setDownload(const std::string& 
     DownloadCheckStatus checkStatus{ checkIfDownloadValid() };
     if(checkStatus == DownloadCheckStatus::Valid)
     {
-        m_configuration.setPreviousSaveFolder(std::filesystem::path(m_download.getSavePath()).parent_path().string() + "/");
+        m_configuration.setPreviousSaveFolder(std::filesystem::path(m_download.getSavePath()).parent_path().string());
         m_configuration.setPreviousFileType(m_download.getMediaFileType());
         m_configuration.save();
     }

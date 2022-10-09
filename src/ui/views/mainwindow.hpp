@@ -51,6 +51,10 @@ namespace NickvisionTubeConverter::UI::Views
 		GSimpleAction* m_actAbout{ nullptr };
 		std::vector<std::shared_ptr<NickvisionTubeConverter::UI::Controls::DownloadRow>> m_downloadRows;
 		/**
+		 * Runs closing functions
+		 */
+		void onCloseRequest();
+		/**
 		 * Prompts the user to add a download with AddDownloadDialog
 		 */
 		void onAddDownload();
