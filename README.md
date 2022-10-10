@@ -12,10 +12,12 @@
 The authors of Nickvision Tube Converter are not responsible/liable for any misuse of this program that may violate local copyright/DMCA laws. Users use this application at their own risk.
 
 # Screenshots
-![MainWindow](https://user-images.githubusercontent.com/17648453/194580418-990818fb-05f5-423f-bee1-7b833b2bb269.png)
-![AddDownloadDialog](https://user-images.githubusercontent.com/17648453/194594599-95f0f593-a47a-438f-8c26-907e98cb41f5.png)
-![Downloads](https://user-images.githubusercontent.com/17648453/194770000-59b25f4e-bdf5-40c1-83d7-a1a628fbaf5b.png)
-![Logs](https://user-images.githubusercontent.com/17648453/194770004-a9dc60e6-0043-42e5-88af-152bdf5a34a0.png)
+![MainWindow](https://user-images.githubusercontent.com/17648453/194887430-b934194b-ad9f-4b42-a3e1-ef3b6a17aab4.png)
+![AddDownload](https://user-images.githubusercontent.com/17648453/194887444-d942988b-4611-4b28-92df-1289f09d6e10.png)
+![Downloading](https://user-images.githubusercontent.com/17648453/194887457-4dcbc6e3-2c03-447b-9de6-e0b3d5faefd3.png)
+![Downloads](https://user-images.githubusercontent.com/17648453/194887476-0738e031-3364-434d-a075-88f52ff70e44.png)
+![DarkMode](https://user-images.githubusercontent.com/17648453/194887509-06bc2df8-577c-4c47-9f47-efe52312bc7c.png)
+![Logs](https://user-images.githubusercontent.com/17648453/194887523-27b91569-911e-4618-8da0-88145c75adaa.png)
 
 # Dependencies
 - [C++20](https://en.cppreference.com/w/cpp/20)
