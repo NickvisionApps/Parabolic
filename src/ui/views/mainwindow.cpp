@@ -17,7 +17,7 @@ MainWindow::MainWindow(GtkApplication* application, const MainWindowController& 
     //Window Settings
     gtk_widget_set_size_request(m_gobj, 800, 600);
     gtk_window_set_default_size(GTK_WINDOW(m_gobj), 1000, 800);
-    gtk_style_context_add_class(gtk_widget_get_style_context(m_gobj), "devel");
+    //gtk_style_context_add_class(gtk_widget_get_style_context(m_gobj), "devel");
     g_signal_connect(m_gobj, "close_request", G_CALLBACK((void (*)(GtkWidget*, gpointer))[](GtkWidget*, gpointer data) { reinterpret_cast<MainWindow*>(data)->onCloseRequest(); }), this);
     //Header Bar
     m_headerBar = adw_header_bar_new();
