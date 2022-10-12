@@ -29,6 +29,12 @@ namespace NickvisionTubeConverter::Controllers
 		 */
 		const NickvisionTubeConverter::Models::AppInfo& getAppInfo() const;
 		/**
+		 * Gets whether or not the application version is a development version or not
+		 *
+		 * @returns True for development version, else false
+		 */
+		bool getIsDevVersion() const;
+		/**
 		 * Creates a AddDownloadDialogController
 		 *
 		 * @returns A new AddDownloadDialogController
@@ -55,6 +61,7 @@ namespace NickvisionTubeConverter::Controllers
 		NickvisionTubeConverter::Models::AppInfo& m_appInfo;
 		NickvisionTubeConverter::Models::Configuration& m_configuration;
 		bool m_isOpened;
+		bool m_isDevVersion;
 		std::function<void(const std::string& message)> m_sendToastCallback;
 	};
 }

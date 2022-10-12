@@ -16,7 +16,10 @@ MainWindow::MainWindow(GtkApplication* application, const MainWindowController& 
 {
     //Window Settings
     gtk_window_set_default_size(GTK_WINDOW(m_gobj), 800, 600);
-    //gtk_style_context_add_class(gtk_widget_get_style_context(m_gobj), "devel");
+    if(m_controller.getIsDevVersion())
+    {
+        gtk_style_context_add_class(gtk_widget_get_style_context(m_gobj), "devel");
+    }
     g_signal_connect(m_gobj, "close_request", G_CALLBACK((void (*)(GtkWidget*, gpointer))[](GtkWidget*, gpointer data) { reinterpret_cast<MainWindow*>(data)->onCloseRequest(); }), this);
     //Header Bar
     m_headerBar = adw_header_bar_new();
@@ -139,10 +142,9 @@ void MainWindow::onKeyboardShortcuts()
 
 void MainWindow::onAbout()
 {
-    bool isDev{ m_controller.getAppInfo().getVersion().find("-") != std::string::npos };
     adw_show_about_window(GTK_WINDOW(m_gobj),
                           "application-name", m_controller.getAppInfo().getShortName().c_str(),
-                          "application-icon", (m_controller.getAppInfo().getId() + (isDev ? "-devel" : "")).c_str(),
+                          "application-icon", (m_controller.getAppInfo().getId() + (m_controller.getIsDevVersion() ? "-devel" : "")).c_str(),
                           "version", m_controller.getAppInfo().getVersion().c_str(),
                           "comments", m_controller.getAppInfo().getDescription().c_str(),
                           "developer-name", "Nickvision",
