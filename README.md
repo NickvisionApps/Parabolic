@@ -11,6 +11,18 @@
 # Disclaimer
 The authors of Nickvision Tube Converter are not responsible/liable for any misuse of this program that may violate local copyright/DMCA laws. Users use this application at their own risk.
 
+# Installation
+<table>
+  <tr>
+    <td>Flatpak</td>
+  </tr>
+  <tr>
+    <td>
+      <a href='https://beta.flathub.org/apps/details/org.nickvision.tubeconverter'><img width='130' alt='Download on Flathub' src='https://flathub.org/assets/badges/flathub-badge-en.png'/></a>
+    </td>
+  </tr>
+</table>
+
 # Screenshots
 ![MainWindow](https://user-images.githubusercontent.com/17648453/194887430-b934194b-ad9f-4b42-a3e1-ef3b6a17aab4.png)
 ![AddDownload](https://user-images.githubusercontent.com/17648453/194887444-d942988b-4611-4b28-92df-1289f09d6e10.png)
