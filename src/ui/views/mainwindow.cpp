@@ -155,7 +155,7 @@ void MainWindow::onAbout()
                           "support-url", m_controller.getAppInfo().getSupportUrl().c_str(),
                           "developers", new const char*[3]{ "Nicholas Logozzo https://github.com/nlogozzo", "Contributors on GitHub ❤️ https://github.com/nlogozzo/NickvisionTubeConverter/graphs/contributors", nullptr },
                           "designers", new const char*[2]{ "Nicholas Logozzo https://github.com/nlogozzo", nullptr },
-                          "artists", new const char*[2]{ "David Lapshin https://github.com/daudix-UFO", nullptr },
+                          "artists", new const char*[3]{ "David Lapshin https://github.com/daudix-UFO", "marcin https://github.com/martin-desktops", nullptr },
                           "release-notes", m_controller.getAppInfo().getChangelog().c_str(),
                           nullptr);
 }

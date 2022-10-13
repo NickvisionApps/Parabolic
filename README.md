@@ -26,4 +26,5 @@ The authors of Nickvision Tube Converter are not responsible/liable for any misu
 - [jsoncpp](https://github.com/open-source-parsers/jsoncpp)
 
 # Special Thanks
-- [daudix-UFO](https://github.com/daudix-UFO) for our application icons
+- [daudix-UFO](https://github.com/daudix-UFO) and [martin-desktops](https://github.com/martin-desktops) for our application icons
+
