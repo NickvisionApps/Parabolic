@@ -38,6 +38,12 @@ namespace NickvisionTubeConverter::Models
 		 */
 		const std::string& getVideoUrl() const;
 		/**
+		 * Checks if the video url is valid
+		 *
+		 * @returns True if valid, else false
+		 */
+		bool checkIfVideoUrlValid() const;
+		/**
 		 * Gets the file type to download the video as
 		 *
 		 * @returns The file type to download the video as

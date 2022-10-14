@@ -1,9 +1,11 @@
 #include "adddownloaddialog.hpp"
+#include "../controls/progressdialog.hpp"
 
 using namespace NickvisionTubeConverter::Controllers;
+using namespace NickvisionTubeConverter::UI::Controls;
 using namespace NickvisionTubeConverter::UI::Views;
 
-AddDownloadDialog::AddDownloadDialog(GtkWindow* parent, AddDownloadDialogController& controller) : m_controller{ controller }, m_response{ "cancel" }, m_gobj{ adw_message_dialog_new(parent, "Add Download", nullptr) }
+AddDownloadDialog::AddDownloadDialog(GtkWindow* parent, AddDownloadDialogController& controller) : m_controller{ controller }, m_response{ "cancel" }, m_parent{ parent }, m_gobj{ adw_message_dialog_new(m_parent, "Add Download", nullptr) }
 {
     //Dialog Settings
     gtk_window_set_hide_on_close(GTK_WINDOW(m_gobj), true);
@@ -68,7 +70,10 @@ bool AddDownloadDialog::run()
     }
     if(m_controller.getResponse() == "ok")
     {
-        DownloadCheckStatus downloadCheckStatus { m_controller.setDownload(gtk_editable_get_text(GTK_EDITABLE(m_rowVideoUrl)), adw_combo_row_get_selected(ADW_COMBO_ROW(m_rowFileType)), gtk_editable_get_text(GTK_EDITABLE(m_rowSaveFolder)), gtk_editable_get_text(GTK_EDITABLE(m_rowNewFilename)), adw_combo_row_get_selected(ADW_COMBO_ROW(m_rowQuality))) };
+        gtk_widget_hide(m_gobj);
+        DownloadCheckStatus downloadCheckStatus{ DownloadCheckStatus::InvalidVideoUrl };
+        ProgressDialog progressDialog{ GTK_WINDOW(m_parent), "Checking if download is valid...", [&]() { downloadCheckStatus = m_controller.setDownload(gtk_editable_get_text(GTK_EDITABLE(m_rowVideoUrl)), adw_combo_row_get_selected(ADW_COMBO_ROW(m_rowFileType)), gtk_editable_get_text(GTK_EDITABLE(m_rowSaveFolder)), gtk_editable_get_text(GTK_EDITABLE(m_rowNewFilename)), adw_combo_row_get_selected(ADW_COMBO_ROW(m_rowQuality))); } };
+        progressDialog.run();
         //Invalid Download
         if(downloadCheckStatus != DownloadCheckStatus::Valid)
         {

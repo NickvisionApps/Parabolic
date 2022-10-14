@@ -35,6 +35,7 @@ namespace NickvisionTubeConverter::UI::Views
 	private:
 		NickvisionTubeConverter::Controllers::AddDownloadDialogController& m_controller;
 		std::string m_response;
+		GtkWindow* m_parent{ nullptr };
     	GtkWidget* m_gobj{ nullptr };
     	GtkWidget* m_preferencesGroup{ nullptr };
     	GtkWidget* m_rowVideoUrl{ nullptr };

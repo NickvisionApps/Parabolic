@@ -40,7 +40,7 @@ DownloadCheckStatus AddDownloadDialogController::checkIfDownloadValid() const
     {
         return DownloadCheckStatus::EmptyVideoUrl;
     }
-    if(m_download.getVideoUrl().find("https://www.youtube.com/watch?v=") == std::string::npos && m_download.getVideoUrl().find("http://www.youtube.com/watch?v=") == std::string::npos)
+    if(!m_download.checkIfVideoUrlValid())
     {
         return DownloadCheckStatus::InvalidVideoUrl;
     }

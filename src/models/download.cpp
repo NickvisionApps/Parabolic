@@ -14,6 +14,22 @@ const std::string& Download::getVideoUrl() const
 	return m_videoUrl;
 }
 
+bool Download::checkIfVideoUrlValid() const
+{
+    std::string cmd{ "yt-dlp -j " + m_videoUrl };
+    std::array<char, 128> buffer;
+    FILE* pipe = popen(cmd.c_str(), "r");
+    if (!pipe)
+	{
+		return false;
+	}
+	while (!feof(pipe))
+	{
+	    fgets(buffer.data(), 128, pipe);
+	}
+	return pclose(pipe) == 0;
+}
+
 const MediaFileType& Download::getMediaFileType() const
 {
 	return m_fileType;
