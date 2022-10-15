@@ -26,12 +26,25 @@ namespace NickvisionTubeConverter::UI::Controls
 		 */
 		GtkWidget* gobj();
 		/**
-		 * Starts the Download managed by the row
+		 * Gets whether or not the Download is completed (successful or not)
+		 *
+		 * @returns True if completed, else false
 		 */
-		void start();
+		bool getIsDone() const;
+		/**
+		 * Starts the Download managed by the row
+		 *
+		 * @param iterateMainContext True to run g_main_context_iteration, else false. (Only 1 running row should be true)
+		 */
+		void start(bool iterateMainContext = false);
+		/**
+		 * Stops the download
+		 */
+		void stop();
 
 	private:
 		std::shared_ptr<NickvisionTubeConverter::Models::Download> m_download;
+		bool m_isDone;
 		GtkWidget* m_gobj;
 		GtkWindow* m_parent;
 		GtkWidget* m_imgStatus;
@@ -42,10 +55,6 @@ namespace NickvisionTubeConverter::UI::Controls
 		GtkWidget* m_boxDone;
 		GtkWidget* m_levelBar;
 		GtkWidget* m_btnViewLogs;
-		/**
-		 * Stops the download
-		 */
-		void onStop();
 		/**
 		 * Displays a MessageDialog with the log from the download
 		 */

@@ -5,6 +5,7 @@
 #include "adddownloaddialog.hpp"
 #include "preferencesdialog.hpp"
 #include "shortcutsdialog.hpp"
+#include "../controls/messagedialog.hpp"
 #include "../controls/progressdialog.hpp"
 
 using namespace NickvisionTubeConverter::Controllers;
@@ -20,7 +21,7 @@ MainWindow::MainWindow(GtkApplication* application, const MainWindowController& 
     {
         gtk_style_context_add_class(gtk_widget_get_style_context(m_gobj), "devel");
     }
-    g_signal_connect(m_gobj, "close_request", G_CALLBACK((void (*)(GtkWidget*, gpointer))[](GtkWidget*, gpointer data) { reinterpret_cast<MainWindow*>(data)->onCloseRequest(); }), this);
+    g_signal_connect(m_gobj, "close_request", G_CALLBACK((bool (*)(GtkWindow*, gpointer))[](GtkWindow*, gpointer data) -> bool { return reinterpret_cast<MainWindow*>(data)->onCloseRequest(); }), this);
     //Header Bar
     m_headerBar = adw_header_bar_new();
     m_adwTitle = adw_window_title_new(m_controller.getAppInfo().getShortName().c_str(), nullptr);
@@ -109,9 +110,34 @@ void MainWindow::start()
     m_controller.startup();
 }
 
-void MainWindow::onCloseRequest()
+int MainWindow::getRunningDownloadsCount() const
 {
-    m_downloadRows.clear();
+    int count{ 0 };
+    for(const std::shared_ptr<DownloadRow>& row : m_downloadRows)
+    {
+        if(!row->getIsDone())
+        {
+            count++;
+        }
+    }
+    return count;
+}
+
+bool MainWindow::onCloseRequest()
+{
+    if(getRunningDownloadsCount() > 0)
+    {
+        MessageDialog messageDialog{ GTK_WINDOW(m_gobj), "Close and Stop Downloads?", "Some downloads are still in progress. Are you sure you want to close Tube Converter and stop the running downloads?", "No", "Yes" };
+        if(messageDialog.run() == MessageDialogResponse::Cancel)
+        {
+            return true;
+        }
+    }
+    for(const std::shared_ptr<DownloadRow>& row : m_downloadRows)
+    {
+        row->stop();
+    }
+    return false;
 }
 
 void MainWindow::onAddDownload()
@@ -123,7 +149,7 @@ void MainWindow::onAddDownload()
         adw_view_stack_set_visible_child_name(ADW_VIEW_STACK(m_viewStack), "pageDownloads");
         std::shared_ptr<DownloadRow> row{ std::make_shared<DownloadRow>(GTK_WINDOW(m_gobj), addDownloadDialogController.getDownload()) };
         adw_preferences_group_add(ADW_PREFERENCES_GROUP(m_grpDownloads), row->gobj());
-        row->start();
+        row->start(getRunningDownloadsCount() == 0);
         m_downloadRows.push_back(row);
     }
 }

@@ -51,9 +51,15 @@ namespace NickvisionTubeConverter::UI::Views
 		GSimpleAction* m_actAbout{ nullptr };
 		std::vector<std::shared_ptr<NickvisionTubeConverter::UI::Controls::DownloadRow>> m_downloadRows;
 		/**
+		 * Gets the number of downloads running
+		 *
+		 * @returns The number of downloads running
+		 */
+		int getRunningDownloadsCount() const;
+		/**
 		 * Runs closing functions
 		 */
-		void onCloseRequest();
+		bool onCloseRequest();
 		/**
 		 * Prompts the user to add a download with AddDownloadDialog
 		 */

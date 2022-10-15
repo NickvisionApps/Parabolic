@@ -6,7 +6,7 @@
 using namespace NickvisionTubeConverter::Models;
 using namespace NickvisionTubeConverter::UI::Controls;
 
-DownloadRow::DownloadRow(GtkWindow* parent, const std::shared_ptr<Download>& download) : m_download{ download }, m_gobj{ adw_action_row_new() }, m_parent{ parent }
+DownloadRow::DownloadRow(GtkWindow* parent, const std::shared_ptr<Download>& download) : m_download{ download }, m_isDone{ false }, m_gobj{ adw_action_row_new() }, m_parent{ parent }
 {
     //Row Settings
     adw_preferences_row_set_title(ADW_PREFERENCES_ROW(m_gobj), std::regex_replace(m_download->getSavePath(), std::regex("\\&"), "&amp;").c_str());
@@ -28,7 +28,7 @@ DownloadRow::DownloadRow(GtkWindow* parent, const std::shared_ptr<Download>& dow
     gtk_style_context_add_class(gtk_widget_get_style_context(m_btnStop), "flat");
     gtk_button_set_icon_name(GTK_BUTTON(m_btnStop), "media-playback-stop-symbolic");
     gtk_widget_set_tooltip_text(m_btnStop, "Stop Download");
-    g_signal_connect(m_btnStop, "clicked", G_CALLBACK((void (*)(GtkButton*, gpointer))[](GtkButton*, gpointer data) { reinterpret_cast<DownloadRow*>(data)->onStop(); }), this);
+    g_signal_connect(m_btnStop, "clicked", G_CALLBACK((void (*)(GtkButton*, gpointer))[](GtkButton*, gpointer data) { reinterpret_cast<DownloadRow*>(data)->stop(); }), this);
     gtk_box_append(GTK_BOX(m_boxDownloading), m_btnStop);
     //Box Done
     m_boxDone = gtk_box_new(GTK_ORIENTATION_HORIZONTAL, 6);
@@ -58,7 +58,12 @@ GtkWidget* DownloadRow::gobj()
     return m_gobj;
 }
 
-void DownloadRow::start()
+bool DownloadRow::getIsDone() const
+{
+    return m_isDone;
+}
+
+void DownloadRow::start(bool iterateMainContext)
 {
     std::future<bool> result{ std::async(std::launch::async, [&]() -> bool { return m_download->download(); }) };
     std::future_status status{ std::future_status::timeout };
@@ -66,9 +71,13 @@ void DownloadRow::start()
     while(status != std::future_status::ready)
     {
         gtk_progress_bar_pulse(GTK_PROGRESS_BAR(m_progBar));
-        g_main_context_iteration(g_main_context_default(), false);
-        status = result.wait_for(std::chrono::milliseconds(30));
+        if(iterateMainContext)
+        {
+            g_main_context_iteration(g_main_context_default(), true);
+        }
+        status = result.wait_for(std::chrono::milliseconds(40));
     }
+    m_isDone = true;
     bool successful{ result.get() };
     gtk_style_context_remove_class(gtk_widget_get_style_context(m_imgStatus), "accent");
     gtk_style_context_add_class(gtk_widget_get_style_context(m_imgStatus), successful ? "success" : "error");
@@ -76,9 +85,12 @@ void DownloadRow::start()
     gtk_level_bar_set_value(GTK_LEVEL_BAR(m_levelBar), successful ? 1.0 : 0.0);
 }
 
-void DownloadRow::onStop()
+void DownloadRow::stop()
 {
-    m_download->stop();
+    if(!m_isDone)
+    {
+        m_download->stop();
+    }
 }
 
 void DownloadRow::onViewLogs()
