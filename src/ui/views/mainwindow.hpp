@@ -49,7 +49,7 @@ namespace NickvisionTubeConverter::UI::Views
 		GSimpleAction* m_actPreferences{ nullptr };
 		GSimpleAction* m_actKeyboardShortcuts{ nullptr };
 		GSimpleAction* m_actAbout{ nullptr };
-		std::vector<std::shared_ptr<NickvisionTubeConverter::UI::Controls::DownloadRow>> m_downloadRows;
+		std::vector<std::unique_ptr<NickvisionTubeConverter::UI::Controls::DownloadRow>> m_downloadRows;
 		/**
 		 * Gets the number of downloads running
 		 *

@@ -113,7 +113,7 @@ void MainWindow::start()
 int MainWindow::getRunningDownloadsCount() const
 {
     int count{ 0 };
-    for(const std::shared_ptr<DownloadRow>& row : m_downloadRows)
+    for(const std::unique_ptr<DownloadRow>& row : m_downloadRows)
     {
         if(!row->getIsDone())
         {
@@ -133,10 +133,11 @@ bool MainWindow::onCloseRequest()
             return true;
         }
     }
-    for(const std::shared_ptr<DownloadRow>& row : m_downloadRows)
+    for(const std::unique_ptr<DownloadRow>& row : m_downloadRows)
     {
         row->stop();
     }
+    m_downloadRows.clear();
     return false;
 }
 
@@ -147,10 +148,10 @@ void MainWindow::onAddDownload()
     if(addDownloadDialog.run())
     {
         adw_view_stack_set_visible_child_name(ADW_VIEW_STACK(m_viewStack), "pageDownloads");
-        std::shared_ptr<DownloadRow> row{ std::make_shared<DownloadRow>(GTK_WINDOW(m_gobj), addDownloadDialogController.getDownload()) };
+        std::unique_ptr<DownloadRow> row{ std::make_unique<DownloadRow>(GTK_WINDOW(m_gobj), addDownloadDialogController.getDownload()) };
         adw_preferences_group_add(ADW_PREFERENCES_GROUP(m_grpDownloads), row->gobj());
         row->start(getRunningDownloadsCount() == 0);
-        m_downloadRows.push_back(row);
+        m_downloadRows.push_back(std::move(row));
     }
 }
 
