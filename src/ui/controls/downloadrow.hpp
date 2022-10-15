@@ -1,5 +1,6 @@
 #pragma once
 
+#include <memory>
 #include <adwaita.h>
 #include "../../models/download.hpp"
 
@@ -17,7 +18,7 @@ namespace NickvisionTubeConverter::UI::Controls
 		 * @param parent The parent window the holds the row
 		 * @param download The Download model to manage
 		 */
-		DownloadRow(GtkWindow* parent, const NickvisionTubeConverter::Models::Download& download);
+		DownloadRow(GtkWindow* parent, const std::shared_ptr<NickvisionTubeConverter::Models::Download>& download);
 		/**
 		 * Gets the GtkWidget* representing the DownloadRow
 		 *
@@ -30,7 +31,7 @@ namespace NickvisionTubeConverter::UI::Controls
 		void start();
 
 	private:
-		NickvisionTubeConverter::Models::Download m_download;
+		std::shared_ptr<NickvisionTubeConverter::Models::Download> m_download;
 		GtkWidget* m_gobj;
 		GtkWindow* m_parent;
 		GtkWidget* m_imgStatus;
