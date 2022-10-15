@@ -1,5 +1,6 @@
 #pragma once
 
+#include <mutex>
 #include <string>
 #include "mediafiletype.hpp"
 
@@ -36,37 +37,43 @@ namespace NickvisionTubeConverter::Models
 		 *
 		 * @returns The url of the video to download
 		 */
-		const std::string& getVideoUrl() const;
+		const std::string& getVideoUrl();
 		/**
 		 * Checks if the video url is valid
 		 *
 		 * @returns True if valid, else false
 		 */
-		bool checkIfVideoUrlValid() const;
+		bool checkIfVideoUrlValid();
 		/**
 		 * Gets the file type to download the video as
 		 *
 		 * @returns The file type to download the video as
 		 */
-		const MediaFileType& getMediaFileType() const;
+		const MediaFileType& getMediaFileType();
 		/**
 		 * Gets the path to save the download to
 		 *
 		 * @returns The path to save the download to
 		 */
-		std::string getSavePath() const;
+		std::string getSavePath();
 		/**
 		 * Gets the quality of the download
 		 *
 		 * @returns The quality of the download
 		 */
-		Quality getQuality() const;
+		Quality getQuality();
 		/**
 		 * Gets the log from the download
 		 *
 		 * @returns The log from the download
 		 */
-		const std::string& getLog() const;
+		const std::string& getLog();
+		/**
+		 * Gets whether or not the download is done or not
+		 *
+		 * @returns True if done, else false
+		 */
+		bool getIsDone();
 		/**
 		 * Downloads the video
 		 *
@@ -79,11 +86,21 @@ namespace NickvisionTubeConverter::Models
 		void stop();
 
 	private:
+		std::mutex m_mutex;
 		std::string m_videoUrl;
 		MediaFileType m_fileType;
 		std::string m_path;
 		Quality m_quality;
 		std::string m_log;
+		bool m_done;
 		int m_pid;
+		/**
+		 * Gets the path to save the download to (without the dot extension)
+		 *
+		 * @returns The path to save the download to (without the dot extension)
+		 */
+		const std::string& getSavePathWithoutExtension();
+		void setLog(const std::string& log);
+		void setDone(bool done);
 	};
 }

@@ -41,3 +41,29 @@ void MainWindowController::startup()
         m_isOpened = true;
     }
 }
+
+int MainWindowController::getRunningDownloadsCount() const
+{
+    int count{ 0 };
+    for(const std::shared_ptr<Download>& download : m_downloads)
+    {
+        if(!download->getIsDone())
+        {
+            count++;
+        }
+    }
+    return count;
+}
+
+void MainWindowController::addDownload(const std::shared_ptr<Download>& download)
+{
+    m_downloads.push_back(download);
+}
+
+void MainWindowController::stopDownloads()
+{
+    for(const std::shared_ptr<Download>& download : m_downloads)
+    {
+        download->stop();
+    }
+}

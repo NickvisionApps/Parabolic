@@ -1,11 +1,13 @@
 #pragma once
 
 #include <functional>
+#include <memory>
 #include <string>
 #include "adddownloaddialogcontroller.hpp"
 #include "preferencesdialogcontroller.hpp"
 #include "../models/appinfo.hpp"
 #include "../models/configuration.hpp"
+#include "../models/download.hpp"
 
 namespace NickvisionTubeConverter::Controllers
 {
@@ -56,6 +58,20 @@ namespace NickvisionTubeConverter::Controllers
 		 * Runs startup functions
 		 */
 		void startup();
+		/**
+		 * Gets the count of running downloads
+		 *
+		 * @returns The count of running downloads
+		 */
+		int getRunningDownloadsCount() const;
+		/**
+		 * Adds a download to the list of downloads
+		 */
+		void addDownload(const std::shared_ptr<NickvisionTubeConverter::Models::Download>& download);
+		/**
+		 * Stops all downloads
+		 */
+		void stopDownloads();
 
 	private:
 		NickvisionTubeConverter::Models::AppInfo& m_appInfo;
@@ -63,5 +79,6 @@ namespace NickvisionTubeConverter::Controllers
 		bool m_isOpened;
 		bool m_isDevVersion;
 		std::function<void(const std::string& message)> m_sendToastCallback;
+		std::vector<std::shared_ptr<NickvisionTubeConverter::Models::Download>> m_downloads;
 	};
 }

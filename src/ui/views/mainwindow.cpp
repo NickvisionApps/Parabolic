@@ -110,22 +110,9 @@ void MainWindow::start()
     m_controller.startup();
 }
 
-int MainWindow::getRunningDownloadsCount() const
-{
-    int count{ 0 };
-    for(const std::unique_ptr<DownloadRow>& row : m_downloadRows)
-    {
-        if(!row->getIsDone())
-        {
-            count++;
-        }
-    }
-    return count;
-}
-
 bool MainWindow::onCloseRequest()
 {
-    if(getRunningDownloadsCount() > 0)
+    if(m_controller.getRunningDownloadsCount() > 0)
     {
         MessageDialog messageDialog{ GTK_WINDOW(m_gobj), "Close and Stop Downloads?", "Some downloads are still in progress. Are you sure you want to close Tube Converter and stop the running downloads?", "No", "Yes" };
         if(messageDialog.run() == MessageDialogResponse::Cancel)
@@ -133,10 +120,7 @@ bool MainWindow::onCloseRequest()
             return true;
         }
     }
-    for(const std::unique_ptr<DownloadRow>& row : m_downloadRows)
-    {
-        row->stop();
-    }
+    m_controller.stopDownloads();
     m_downloadRows.clear();
     return false;
 }
@@ -148,9 +132,11 @@ void MainWindow::onAddDownload()
     if(addDownloadDialog.run())
     {
         adw_view_stack_set_visible_child_name(ADW_VIEW_STACK(m_viewStack), "pageDownloads");
-        std::unique_ptr<DownloadRow> row{ std::make_unique<DownloadRow>(GTK_WINDOW(m_gobj), addDownloadDialogController.getDownload()) };
+        const std::shared_ptr<Download>& download{ addDownloadDialogController.getDownload() };
+        std::unique_ptr<DownloadRow> row{ std::make_unique<DownloadRow>(GTK_WINDOW(m_gobj), download) };
+        m_controller.addDownload(download);
         adw_preferences_group_add(ADW_PREFERENCES_GROUP(m_grpDownloads), row->gobj());
-        row->start(getRunningDownloadsCount() == 0);
+        row->start();
         m_downloadRows.push_back(std::move(row));
     }
 }
@@ -186,5 +172,6 @@ void MainWindow::onAbout()
                           "release-notes", m_controller.getAppInfo().getChangelog().c_str(),
                           nullptr);
 }
+
 
 

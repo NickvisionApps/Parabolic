@@ -72,19 +72,20 @@ int pclose2(FILE* fp, pid_t pid)
     return stat;
 }
 
-Download::Download(const std::string& videoUrl, const MediaFileType& fileType, const std::string& saveFolder, const std::string& newFilename, Quality quality) : m_videoUrl{ videoUrl }, m_fileType{ fileType }, m_path{ saveFolder + "/" + newFilename }, m_quality{ quality }, m_log { "" }
+Download::Download(const std::string& videoUrl, const MediaFileType& fileType, const std::string& saveFolder, const std::string& newFilename, Quality quality) : m_videoUrl{ videoUrl }, m_fileType{ fileType }, m_path{ saveFolder + "/" + newFilename }, m_quality{ quality }, m_log { "" }, m_done{ false }
 {
 
 }
 
-const std::string& Download::getVideoUrl() const
+const std::string& Download::getVideoUrl()
 {
+    std::lock_guard<std::mutex> lock{ m_mutex };
 	return m_videoUrl;
 }
 
-bool Download::checkIfVideoUrlValid() const
+bool Download::checkIfVideoUrlValid()
 {
-    std::string cmd{ "yt-dlp -j " + m_videoUrl };
+    std::string cmd{ "yt-dlp -j " + getVideoUrl() };
     std::array<char, 128> buffer;
     FILE* pipe = popen(cmd.c_str(), "r");
     if (!pipe)
@@ -98,39 +99,49 @@ bool Download::checkIfVideoUrlValid() const
 	return pclose(pipe) == 0;
 }
 
-const MediaFileType& Download::getMediaFileType() const
+const MediaFileType& Download::getMediaFileType()
 {
+    std::lock_guard<std::mutex> lock{ m_mutex };
 	return m_fileType;
 }
 
-std::string Download::getSavePath() const
+std::string Download::getSavePath()
 {
+    std::lock_guard<std::mutex> lock{ m_mutex };
 	return m_path + m_fileType.toDotExtension();
 }
 
-Quality Download::getQuality() const
+Quality Download::getQuality()
 {
+    std::lock_guard<std::mutex> lock{ m_mutex };
 	return m_quality;
 }
 
-const std::string& Download::getLog() const
+const std::string& Download::getLog()
 {
+    std::lock_guard<std::mutex> lock{ m_mutex };
 	return m_log;
+}
+
+bool Download::getIsDone()
+{
+    std::lock_guard<std::mutex> lock{ m_mutex };
+    return m_done;
 }
 
 bool Download::download()
 {
     std::string cmd{ "" };
-	if (m_fileType.isVideo())
+	if (getMediaFileType().isVideo())
 	{
-	    std::string format{ m_quality == Quality::Best ? "bv*+ba/b" : m_quality == Quality::Worst ? "wv*+wa/w" : "" };
-		cmd = "yt-dlp --format " + format + " --remux-video " + m_fileType.toString() + " \"" + m_videoUrl + "\" -o \"" + m_path + ".%(ext)s\"";
+	    std::string format{ getQuality() == Quality::Best ? "bv*+ba/b" : getQuality() == Quality::Worst ? "wv*+wa/w" : "" };
+		cmd = "yt-dlp --format " + format + " --remux-video " + getMediaFileType().toString() + " \"" + getVideoUrl() + "\" -o \"" + getSavePathWithoutExtension() + ".%(ext)s\"";
 	}
 	else
 	{
-		cmd = "yt-dlp --extract-audio --audio-format " + m_fileType.toString() + " --audio-quality " + (m_quality == Quality::Best ? "0" : m_quality == Quality::Good ? "5" : "10") + " \"" + m_videoUrl + "\" -o \"" + m_path + ".%(ext)s\"";
+		cmd = "yt-dlp --extract-audio --audio-format " + getMediaFileType().toString() + " --audio-quality " + (getQuality() == Quality::Best ? "0" : getQuality() == Quality::Good ? "5" : "10") + " \"" + getVideoUrl() + "\" -o \"" + getSavePathWithoutExtension() + ".%(ext)s\"";
 	}
-	m_log = "URL: " + m_videoUrl + "\nPath: " + getSavePath() + "\nQuality: " + std::to_string(static_cast<int>(m_quality)) + "\n\n";
+	setLog("URL: " + getVideoUrl() + "\nPath: " + getSavePath() + "\nQuality: " + std::to_string(static_cast<int>(getQuality())) + "\n\n");
 	std::array<char, 128> buffer;
 	FILE* fp{ popen2(cmd, "r", m_pid) };
 	if (!fp)
@@ -141,12 +152,15 @@ bool Download::download()
 	{
 		if (fgets(buffer.data(), 128, fp) != nullptr)
 		{
+		    std::lock_guard<std::mutex> lock{ m_mutex };
 			m_log += buffer.data();
 		}
 	}
 	int result{ pclose2(fp, m_pid) };
+	setDone(true);
 	if (result != 0)
 	{
+	    std::lock_guard<std::mutex> lock{ m_mutex };
 		m_log += "[Error] Unable to download video";
 	}
 	return result == 0;
@@ -154,5 +168,25 @@ bool Download::download()
 
 void Download::stop()
 {
+    std::lock_guard<std::mutex> lock{ m_mutex };
     kill(-m_pid, 9);
+    m_done = true;
+}
+
+const std::string& Download::getSavePathWithoutExtension()
+{
+    std::lock_guard<std::mutex> lock{ m_mutex };
+	return m_path;
+}
+
+void Download::setLog(const std::string& log)
+{
+    std::lock_guard<std::mutex> lock{ m_mutex };
+    m_log = log;
+}
+
+void Download::setDone(bool done)
+{
+    std::lock_guard<std::mutex> lock{ m_mutex };
+    m_done = done;
 }
