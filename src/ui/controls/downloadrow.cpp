@@ -6,11 +6,11 @@
 using namespace NickvisionTubeConverter::Models;
 using namespace NickvisionTubeConverter::UI::Controls;
 
-DownloadRow::DownloadRow(GtkWindow* parent, const std::shared_ptr<Download>& download) : m_download{ download }, m_isDone{ false }, m_gobj{ adw_action_row_new() }, m_parent{ parent }
+DownloadRow::DownloadRow(GtkWindow* parent, const Download& download) : m_download{ download }, m_isDone{ false }, m_gobj{ adw_action_row_new() }, m_parent{ parent }
 {
     //Row Settings
-    adw_preferences_row_set_title(ADW_PREFERENCES_ROW(m_gobj), std::regex_replace(m_download->getSavePath(), std::regex("\\&"), "&amp;").c_str());
-    adw_action_row_set_subtitle(ADW_ACTION_ROW(m_gobj), std::regex_replace(m_download->getVideoUrl(), std::regex("\\&"), "&amp;").c_str());
+    adw_preferences_row_set_title(ADW_PREFERENCES_ROW(m_gobj), std::regex_replace(m_download.getSavePath(), std::regex("\\&"), "&amp;").c_str());
+    adw_action_row_set_subtitle(ADW_ACTION_ROW(m_gobj), std::regex_replace(m_download.getVideoUrl(), std::regex("\\&"), "&amp;").c_str());
     //Status Image
     m_imgStatus = gtk_image_new_from_icon_name("folder-download-symbolic");
     gtk_image_set_pixel_size(GTK_IMAGE(m_imgStatus), 20);
@@ -65,7 +65,7 @@ bool DownloadRow::getIsDone() const
 
 void DownloadRow::start(bool iterateMainContext)
 {
-    std::future<bool> result{ std::async(std::launch::async, [&]() -> bool { return m_download->download(); }) };
+    std::future<bool> result{ std::async(std::launch::async, [&]() -> bool { return m_download.download(); }) };
     std::future_status status{ std::future_status::timeout };
     gtk_style_context_add_class(gtk_widget_get_style_context(m_imgStatus), "accent");
     while(status != std::future_status::ready)
@@ -89,12 +89,12 @@ void DownloadRow::stop()
 {
     if(!m_isDone)
     {
-        m_download->stop();
+        m_download.stop();
     }
 }
 
 void DownloadRow::onViewLogs()
 {
-    MessageDialog messageDialog{ m_parent, "Logs", m_download->getLog(), "OK" };
+    MessageDialog messageDialog{ m_parent, "Logs", m_download.getLog(), "OK" };
     messageDialog.run();
 }

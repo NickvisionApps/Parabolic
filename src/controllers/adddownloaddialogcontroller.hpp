@@ -1,6 +1,5 @@
 #pragma once
 
-#include <memory>
 #include <string>
 #include "../models/configuration.hpp"
 #include "../models/download.hpp"
@@ -62,7 +61,7 @@ namespace NickvisionTubeConverter::Controllers
 		 *
 		 * @returns The download created by the dialog
 		 */
-		const std::shared_ptr<NickvisionTubeConverter::Models::Download>& getDownload() const;
+		const NickvisionTubeConverter::Models::Download& getDownload() const;
 		/**
 		 * Checks if a download is valid
 		 *
@@ -79,6 +78,6 @@ namespace NickvisionTubeConverter::Controllers
 	private:
 		NickvisionTubeConverter::Models::Configuration& m_configuration;
 		std::string m_response;
-		std::shared_ptr<NickvisionTubeConverter::Models::Download> m_download;
+		NickvisionTubeConverter::Models::Download m_download;
 	};
 }
