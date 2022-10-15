@@ -67,7 +67,7 @@ void DownloadRow::start()
     {
         gtk_progress_bar_pulse(GTK_PROGRESS_BAR(m_progBar));
         g_main_context_iteration(g_main_context_default(), false);
-        status = result.wait_for(std::chrono::milliseconds(40));
+        status = result.wait_for(std::chrono::milliseconds(30));
     }
     bool successful{ result.get() };
     gtk_style_context_remove_class(gtk_widget_get_style_context(m_imgStatus), "accent");

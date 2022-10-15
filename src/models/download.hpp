@@ -84,5 +84,6 @@ namespace NickvisionTubeConverter::Models
 		std::string m_path;
 		Quality m_quality;
 		std::string m_log;
+		int m_pid;
 	};
 }

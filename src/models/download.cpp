@@ -1,8 +1,76 @@
 #include "download.hpp"
 #include <array>
 #include <cstdio>
+#include <signal.h>
+#include <unistd.h>
+#include <sys/types.h>
+#include <sys/wait.h>
 
 using namespace NickvisionTubeConverter::Models;
+
+#define READ   0
+#define WRITE  1
+FILE* popen2(const std::string& command, const std::string& type, int& pid)
+{
+    pid_t child_pid;
+    int fd[2];
+    pipe(fd);
+
+    if((child_pid = fork()) == -1)
+    {
+        perror("fork");
+        exit(1);
+    }
+    /* child process */
+    if (child_pid == 0)
+    {
+        if (type == "r")
+        {
+            close(fd[READ]);    //Close the READ end of the pipe since the child's fd is write-only
+            dup2(fd[WRITE], 1); //Redirect stdout to pipe
+        }
+        else
+        {
+            close(fd[WRITE]);    //Close the WRITE end of the pipe since the child's fd is read-only
+            dup2(fd[READ], 0);   //Redirect stdin to pipe
+        }
+        setpgid(child_pid, child_pid); //Needed so negative PIDs can kill children of /bin/sh
+        execl("/bin/sh", "/bin/sh", "-c", command.c_str(), NULL);
+        exit(0);
+    }
+    else
+    {
+        if (type == "r")
+        {
+            close(fd[WRITE]); //Close the WRITE end of the pipe since parent's fd is read-only
+        }
+        else
+        {
+            close(fd[READ]); //Close the READ end of the pipe since parent's fd is write-only
+        }
+    }
+    pid = child_pid;
+    if (type == "r")
+    {
+        return fdopen(fd[READ], "r");
+    }
+    return fdopen(fd[WRITE], "w");
+}
+
+int pclose2(FILE* fp, pid_t pid)
+{
+    int stat;
+    fclose(fp);
+    while (waitpid(pid, &stat, 0) == -1)
+    {
+        if (errno != EINTR)
+        {
+            stat = -1;
+            break;
+        }
+    }
+    return stat;
+}
 
 Download::Download(const std::string& videoUrl, const MediaFileType& fileType, const std::string& saveFolder, const std::string& newFilename, Quality quality) : m_videoUrl{ videoUrl }, m_fileType{ fileType }, m_path{ saveFolder + "/" + newFilename }, m_quality{ quality }, m_log { "" }
 {
@@ -64,20 +132,19 @@ bool Download::download()
 	}
 	m_log = "URL: " + m_videoUrl + "\nPath: " + getSavePath() + "\nQuality: " + std::to_string(static_cast<int>(m_quality)) + "\n\n";
 	std::array<char, 128> buffer;
-	FILE* pipe = popen(cmd.c_str(), "r");
-	if (!pipe)
+	FILE* fp{ popen2(cmd, "r", m_pid) };
+	if (!fp)
 	{
-		m_log += "[Error] Unable to run command";
 		return false;
 	}
-	while (!feof(pipe))
+	while (!feof(fp))
 	{
-		if (fgets(buffer.data(), 128, pipe) != nullptr)
+		if (fgets(buffer.data(), 128, fp) != nullptr)
 		{
 			m_log += buffer.data();
 		}
 	}
-	int result{ pclose(pipe) };
+	int result{ pclose2(fp, m_pid) };
 	if (result != 0)
 	{
 		m_log += "[Error] Unable to download video";
@@ -87,5 +154,5 @@ bool Download::download()
 
 void Download::stop()
 {
-
+    kill(-m_pid, 9);
 }
