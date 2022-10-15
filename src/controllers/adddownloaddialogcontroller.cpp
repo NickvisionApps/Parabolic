@@ -34,36 +34,10 @@ const std::shared_ptr<Download>& AddDownloadDialogController::getDownload() cons
     return m_download;
 }
 
-DownloadCheckStatus AddDownloadDialogController::checkIfDownloadValid() const
-{
-    if(m_download->getVideoUrl().empty())
-    {
-        return DownloadCheckStatus::EmptyVideoUrl;
-    }
-    if(!m_download->checkIfVideoUrlValid())
-    {
-        return DownloadCheckStatus::InvalidVideoUrl;
-    }
-    std::filesystem::path downloadPath{ m_download->getSavePath() };
-    if(downloadPath.parent_path() == "/")
-    {
-        return DownloadCheckStatus::EmptySaveFolder;
-    }
-    if(!std::filesystem::exists(downloadPath.parent_path()))
-    {
-        return DownloadCheckStatus::InvalidSaveFolder;
-    }
-    if(downloadPath.filename() == m_download->getMediaFileType().toDotExtension())
-    {
-        return DownloadCheckStatus::EmptyNewFilename;
-    }
-    return DownloadCheckStatus::Valid;
-}
-
 DownloadCheckStatus AddDownloadDialogController::setDownload(const std::string& videoUrl, int mediaFileType, const std::string& saveFolder, const std::string& newFilename, int quality)
 {
     m_download = std::make_shared<Download>(videoUrl, static_cast<MediaFileType::Value>(mediaFileType), saveFolder, newFilename, static_cast<Quality>(quality));
-    DownloadCheckStatus checkStatus{ checkIfDownloadValid() };
+    DownloadCheckStatus checkStatus{ m_download->getValidStatus() };
     if(checkStatus == DownloadCheckStatus::Valid)
     {
         m_configuration.setPreviousSaveFolder(std::filesystem::path(m_download->getSavePath()).parent_path().string());

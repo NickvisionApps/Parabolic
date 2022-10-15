@@ -1,6 +1,8 @@
 #include "download.hpp"
+#include <algorithm>
 #include <array>
 #include <cstdio>
+#include <filesystem>
 #include <signal.h>
 #include <unistd.h>
 #include <sys/types.h>
@@ -74,7 +76,10 @@ int pclose2(FILE* fp, pid_t pid)
 
 Download::Download(const std::string& videoUrl, const MediaFileType& fileType, const std::string& saveFolder, const std::string& newFilename, Quality quality) : m_videoUrl{ videoUrl }, m_fileType{ fileType }, m_path{ saveFolder + "/" + newFilename }, m_quality{ quality }, m_log { "" }, m_done{ false }
 {
-
+    if(newFilename.empty())
+    {
+        m_path += getTitleFromVideo();
+    }
 }
 
 const std::string& Download::getVideoUrl()
@@ -83,20 +88,26 @@ const std::string& Download::getVideoUrl()
 	return m_videoUrl;
 }
 
-bool Download::checkIfVideoUrlValid()
+DownloadCheckStatus Download::getValidStatus()
 {
-    std::string cmd{ "yt-dlp -j " + getVideoUrl() };
-    std::array<char, 128> buffer;
-    FILE* pipe = popen(cmd.c_str(), "r");
-    if (!pipe)
-	{
-		return false;
-	}
-	while (!feof(pipe))
-	{
-	    fgets(buffer.data(), 128, pipe);
-	}
-	return pclose(pipe) == 0;
+    if(getVideoUrl().empty())
+    {
+        return DownloadCheckStatus::EmptyVideoUrl;
+    }
+    if(getTitleFromVideo().empty())
+    {
+        return DownloadCheckStatus::InvalidVideoUrl;
+    }
+    std::filesystem::path downloadPath{ getSavePath() };
+    if(downloadPath.parent_path() == "/")
+    {
+        return DownloadCheckStatus::EmptySaveFolder;
+    }
+    if(!std::filesystem::exists(downloadPath.parent_path()))
+    {
+        return DownloadCheckStatus::InvalidSaveFolder;
+    }
+    return DownloadCheckStatus::Valid;
 }
 
 const MediaFileType& Download::getMediaFileType()
@@ -177,6 +188,28 @@ const std::string& Download::getSavePathWithoutExtension()
 {
     std::lock_guard<std::mutex> lock{ m_mutex };
 	return m_path;
+}
+
+std::string Download::getTitleFromVideo()
+{
+    std::string cmd{ "yt-dlp --get-title --skip-download " + getVideoUrl() };
+    std::array<char, 128> buffer;
+    std::string title{ "" };
+    FILE* pipe = popen(cmd.c_str(), "r");
+    if (!pipe)
+	{
+		return title;
+	}
+	while (!feof(pipe))
+	{
+	    if(fgets(buffer.data(), 128, pipe) != nullptr)
+	    {
+	        title += buffer.data();
+	    }
+	}
+	pclose(pipe);
+	title.erase(std::remove(title.begin(), title.end(), '\n'), title.cend());
+	return title;
 }
 
 void Download::setLog(const std::string& log)

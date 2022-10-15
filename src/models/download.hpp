@@ -17,6 +17,18 @@ namespace NickvisionTubeConverter::Models
 	};
 
 	/**
+	 * Statuses for when a download is checked
+	 */
+	enum class DownloadCheckStatus
+	{
+		Valid = 0,
+		EmptyVideoUrl,
+		InvalidVideoUrl,
+		EmptySaveFolder,
+		InvalidSaveFolder
+	};
+
+	/**
 	 * A model of a video download
 	 */
 	class Download
@@ -39,11 +51,11 @@ namespace NickvisionTubeConverter::Models
 		 */
 		const std::string& getVideoUrl();
 		/**
-		 * Checks if the video url is valid
+		 * Checks if the download is valid
 		 *
-		 * @returns True if valid, else false
+		 * @returns The DownloadCheckStatus
 		 */
-		bool checkIfVideoUrlValid();
+		DownloadCheckStatus getValidStatus();
 		/**
 		 * Gets the file type to download the video as
 		 *
@@ -100,7 +112,23 @@ namespace NickvisionTubeConverter::Models
 		 * @returns The path to save the download to (without the dot extension)
 		 */
 		const std::string& getSavePathWithoutExtension();
+		/**
+		 * Downloads the title from the video
+		 *
+		 * @returns The title from the video
+		 */
+		std::string getTitleFromVideo();
+		/**
+		 * Sets the log of the download
+		 *
+		 * @param log The new log
+		 */
 		void setLog(const std::string& log);
+		/**
+		 * Sets whether or not the download is done
+		 *
+		 * @param done True for done, else false
+		 */
 		void setDone(bool done);
 	};
 }

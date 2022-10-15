@@ -2,6 +2,7 @@
 #include "../controls/progressdialog.hpp"
 
 using namespace NickvisionTubeConverter::Controllers;
+using namespace NickvisionTubeConverter::Models;
 using namespace NickvisionTubeConverter::UI::Controls;
 using namespace NickvisionTubeConverter::UI::Views;
 
@@ -72,7 +73,7 @@ bool AddDownloadDialog::run()
     {
         gtk_widget_hide(m_gobj);
         DownloadCheckStatus downloadCheckStatus{ DownloadCheckStatus::InvalidVideoUrl };
-        ProgressDialog progressDialog{ GTK_WINDOW(m_parent), "Checking if download is valid...", [&]() { downloadCheckStatus = m_controller.setDownload(gtk_editable_get_text(GTK_EDITABLE(m_rowVideoUrl)), adw_combo_row_get_selected(ADW_COMBO_ROW(m_rowFileType)), gtk_editable_get_text(GTK_EDITABLE(m_rowSaveFolder)), gtk_editable_get_text(GTK_EDITABLE(m_rowNewFilename)), adw_combo_row_get_selected(ADW_COMBO_ROW(m_rowQuality))); } };
+        ProgressDialog progressDialog{ GTK_WINDOW(m_parent), "Preparing download...", [&]() { downloadCheckStatus = m_controller.setDownload(gtk_editable_get_text(GTK_EDITABLE(m_rowVideoUrl)), adw_combo_row_get_selected(ADW_COMBO_ROW(m_rowFileType)), gtk_editable_get_text(GTK_EDITABLE(m_rowSaveFolder)), gtk_editable_get_text(GTK_EDITABLE(m_rowNewFilename)), adw_combo_row_get_selected(ADW_COMBO_ROW(m_rowQuality))); } };
         progressDialog.run();
         //Invalid Download
         if(downloadCheckStatus != DownloadCheckStatus::Valid)
@@ -82,8 +83,6 @@ bool AddDownloadDialog::run()
             adw_preferences_row_set_title(ADW_PREFERENCES_ROW(m_rowVideoUrl), "Video Url");
             gtk_style_context_remove_class(gtk_widget_get_style_context(m_rowSaveFolder), "error");
             adw_preferences_row_set_title(ADW_PREFERENCES_ROW(m_rowSaveFolder), "Save Folder");
-            gtk_style_context_remove_class(gtk_widget_get_style_context(m_rowNewFilename), "error");
-            adw_preferences_row_set_title(ADW_PREFERENCES_ROW(m_rowNewFilename), "New Filename");
             //Mark Error
             if(downloadCheckStatus == DownloadCheckStatus::EmptyVideoUrl)
             {
@@ -104,11 +103,6 @@ bool AddDownloadDialog::run()
             {
                 gtk_style_context_add_class(gtk_widget_get_style_context(m_rowSaveFolder), "error");
                 adw_preferences_row_set_title(ADW_PREFERENCES_ROW(m_rowSaveFolder), "Save Folder (Invalid)");
-            }
-            if(downloadCheckStatus == DownloadCheckStatus::EmptyNewFilename)
-            {
-                gtk_style_context_add_class(gtk_widget_get_style_context(m_rowNewFilename), "error");
-                adw_preferences_row_set_title(ADW_PREFERENCES_ROW(m_rowNewFilename), "New Filename (Empty)");
             }
             //Prompt User to Fix
             return run();
