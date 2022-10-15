@@ -73,6 +73,10 @@ namespace NickvisionTubeConverter::Models
 		 * @returns True if successful, else false
 		 */
 		bool download();
+		/**
+		 * Stops the download
+		 */
+		void stop();
 
 	private:
 		std::string m_videoUrl;

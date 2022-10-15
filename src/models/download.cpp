@@ -85,3 +85,7 @@ bool Download::download()
 	return result == 0;
 }
 
+void Download::stop()
+{
+
+}

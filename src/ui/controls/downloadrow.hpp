@@ -38,9 +38,14 @@ namespace NickvisionTubeConverter::UI::Controls
 		GtkWidget* m_viewStack;
 		GtkWidget* m_boxDownloading;
 		GtkWidget* m_progBar;
+		GtkWidget* m_btnStop;
 		GtkWidget* m_boxDone;
 		GtkWidget* m_levelBar;
 		GtkWidget* m_btnViewLogs;
+		/**
+		 * Stops the download
+		 */
+		void onStop();
 		/**
 		 * Displays a MessageDialog with the log from the download
 		 */
