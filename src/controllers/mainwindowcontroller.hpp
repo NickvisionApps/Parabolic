@@ -59,11 +59,11 @@ namespace NickvisionTubeConverter::Controllers
 		 */
 		void startup();
 		/**
-		 * Gets the count of running downloads
+		 * Gets whether or not downloads are running
 		 *
-		 * @returns The count of running downloads
+		 * @returns True for downloads running, else false
 		 */
-		int getRunningDownloadsCount() const;
+		bool getIsDownloadsRunning() const;
 		/**
 		 * Adds a download to the list of downloads
 		 */

@@ -42,17 +42,16 @@ void MainWindowController::startup()
     }
 }
 
-int MainWindowController::getRunningDownloadsCount() const
+bool MainWindowController::getIsDownloadsRunning() const
 {
-    int count{ 0 };
     for(const std::shared_ptr<Download>& download : m_downloads)
     {
         if(!download->getIsDone())
         {
-            count++;
+            return true;
         }
     }
-    return count;
+    return false;
 }
 
 void MainWindowController::addDownload(const std::shared_ptr<Download>& download)

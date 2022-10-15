@@ -112,7 +112,7 @@ void MainWindow::start()
 
 bool MainWindow::onCloseRequest()
 {
-    if(m_controller.getRunningDownloadsCount() > 0)
+    if(m_controller.getIsDownloadsRunning())
     {
         MessageDialog messageDialog{ GTK_WINDOW(m_gobj), "Close and Stop Downloads?", "Some downloads are still in progress. Are you sure you want to close Tube Converter and stop the running downloads?", "No", "Yes" };
         if(messageDialog.run() == MessageDialogResponse::Cancel)
