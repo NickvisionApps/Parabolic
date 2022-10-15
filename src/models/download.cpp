@@ -74,11 +74,13 @@ int pclose2(FILE* fp, pid_t pid)
     return stat;
 }
 
-Download::Download(const std::string& videoUrl, const MediaFileType& fileType, const std::string& saveFolder, const std::string& newFilename, Quality quality) : m_videoUrl{ videoUrl }, m_fileType{ fileType }, m_path{ saveFolder + "/" + newFilename }, m_quality{ quality }, m_log { "" }, m_done{ false }
+Download::Download(const std::string& videoUrl, const MediaFileType& fileType, const std::string& saveFolder, const std::string& newFilename, Quality quality) : m_videoUrl{ videoUrl }, m_fileType{ fileType }, m_path{ saveFolder + "/" + newFilename }, m_quality{ quality }, m_log { "" }, m_isValidUrl{ false }, m_isDone{ false }
 {
+    std::string videoTitle{ getTitleFromVideo() };
+    m_isValidUrl = !videoTitle.empty();
     if(newFilename.empty())
     {
-        m_path += getTitleFromVideo();
+        m_path += videoTitle;
     }
 }
 
@@ -94,7 +96,7 @@ DownloadCheckStatus Download::getValidStatus()
     {
         return DownloadCheckStatus::EmptyVideoUrl;
     }
-    if(getTitleFromVideo().empty())
+    if(!m_isValidUrl)
     {
         return DownloadCheckStatus::InvalidVideoUrl;
     }
@@ -137,7 +139,7 @@ const std::string& Download::getLog()
 bool Download::getIsDone()
 {
     std::lock_guard<std::mutex> lock{ m_mutex };
-    return m_done;
+    return m_isDone;
 }
 
 bool Download::download()
@@ -168,7 +170,7 @@ bool Download::download()
 		}
 	}
 	int result{ pclose2(fp, m_pid) };
-	setDone(true);
+	setIsDone(true);
 	if (result != 0)
 	{
 	    std::lock_guard<std::mutex> lock{ m_mutex };
@@ -181,7 +183,7 @@ void Download::stop()
 {
     std::lock_guard<std::mutex> lock{ m_mutex };
     kill(-m_pid, 9);
-    m_done = true;
+    m_isDone = true;
 }
 
 const std::string& Download::getSavePathWithoutExtension()
@@ -218,8 +220,9 @@ void Download::setLog(const std::string& log)
     m_log = log;
 }
 
-void Download::setDone(bool done)
+void Download::setIsDone(bool isDone)
 {
     std::lock_guard<std::mutex> lock{ m_mutex };
-    m_done = done;
+    m_isDone = isDone;
 }
+

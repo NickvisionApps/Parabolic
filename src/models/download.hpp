@@ -104,7 +104,8 @@ namespace NickvisionTubeConverter::Models
 		std::string m_path;
 		Quality m_quality;
 		std::string m_log;
-		bool m_done;
+		bool m_isValidUrl;
+		bool m_isDone;
 		int m_pid;
 		/**
 		 * Gets the path to save the download to (without the dot extension)
@@ -127,8 +128,8 @@ namespace NickvisionTubeConverter::Models
 		/**
 		 * Sets whether or not the download is done
 		 *
-		 * @param done True for done, else false
+		 * @param isDone True for done, else false
 		 */
-		void setDone(bool done);
+		void setIsDone(bool isDone);
 	};
 }
