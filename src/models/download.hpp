@@ -17,6 +17,16 @@ namespace NickvisionTubeConverter::Models
 	};
 
 	/**
+	 * Subtitle types for a Download
+	 */
+	enum class Subtitles
+	{
+		None = 0,
+		VTT,
+		SRT
+	};
+
+	/**
 	 * Statuses for when a download is checked
 	 */
 	enum class DownloadCheckStatus
@@ -24,6 +34,7 @@ namespace NickvisionTubeConverter::Models
 		Valid = 0,
 		EmptyVideoUrl,
 		InvalidVideoUrl,
+		NoSubtitles,
 		EmptySaveFolder,
 		InvalidSaveFolder
 	};
@@ -42,8 +53,9 @@ namespace NickvisionTubeConverter::Models
 		 * @param saveFolder The folder to save the download to
 		 * @param newFilename The filename to save the download as
 		 * @param quality The quality of the download
+		 * @param subtitles The subtitles for the download
 		 */
-		Download(const std::string& videoUrl, const MediaFileType& fileType, const std::string& saveFolder, const std::string& newFilename, Quality quality = Quality::Best);
+		Download(const std::string& videoUrl, const MediaFileType& fileType, const std::string& saveFolder, const std::string& newFilename, Quality quality = Quality::Best, Subtitles subtitles = Subtitles::None);
 		/**
 		 * Gets the url of the video to download
 		 *
@@ -75,6 +87,12 @@ namespace NickvisionTubeConverter::Models
 		 */
 		Quality getQuality();
 		/**
+		 * Gets the subtitles for the download
+		 *
+		 * @returns The subtitles for the download
+		 */
+		Subtitles getSubtitles();
+		/**
 		 * Gets the log from the download
 		 *
 		 * @returns The log from the download
@@ -104,6 +122,7 @@ namespace NickvisionTubeConverter::Models
 		MediaFileType m_fileType;
 		std::string m_path;
 		Quality m_quality;
+		Subtitles m_subtitles;
 		std::string m_log;
 		bool m_isValidUrl;
 		bool m_isDone;
@@ -120,6 +139,12 @@ namespace NickvisionTubeConverter::Models
 		 * @returns The title from the video
 		 */
 		std::string getTitleFromVideo();
+		/**
+		 * Checks if the video contains subtitles to download
+		 *
+		 * @returns True if subtitles available, else false
+		 */
+		bool getContainsSubtitles();
 		/**
 		 * Sets the log of the download
 		 *

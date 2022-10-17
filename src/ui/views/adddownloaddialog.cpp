@@ -32,6 +32,11 @@ AddDownloadDialog::AddDownloadDialog(GtkWindow* parent, AddDownloadDialogControl
     adw_preferences_row_set_title(ADW_PREFERENCES_ROW(m_rowQuality), "Quality");
     adw_combo_row_set_model(ADW_COMBO_ROW(m_rowQuality), G_LIST_MODEL(gtk_string_list_new(new const char*[4]{ "Best", "Good", "Worst", nullptr })));
     adw_preferences_group_add(ADW_PREFERENCES_GROUP(m_preferencesGroup), m_rowQuality);
+    //Subtitles
+    m_rowSubtitles = adw_combo_row_new();
+    adw_preferences_row_set_title(ADW_PREFERENCES_ROW(m_rowSubtitles), "Subtitles");
+    adw_combo_row_set_model(ADW_COMBO_ROW(m_rowSubtitles), G_LIST_MODEL(gtk_string_list_new(new const char*[4]{ "None", "VTT", "SRT", nullptr })));
+    adw_preferences_group_add(ADW_PREFERENCES_GROUP(m_preferencesGroup), m_rowSubtitles);
     //Save Folder
     m_btnSelectSaveFolder = gtk_button_new();
     gtk_widget_set_valign(m_btnSelectSaveFolder, GTK_ALIGN_CENTER);
@@ -73,7 +78,7 @@ bool AddDownloadDialog::run()
     {
         gtk_widget_hide(m_gobj);
         DownloadCheckStatus downloadCheckStatus{ DownloadCheckStatus::InvalidVideoUrl };
-        ProgressDialog progressDialog{ GTK_WINDOW(m_parent), "Preparing download...", [&]() { downloadCheckStatus = m_controller.setDownload(gtk_editable_get_text(GTK_EDITABLE(m_rowVideoUrl)), adw_combo_row_get_selected(ADW_COMBO_ROW(m_rowFileType)), gtk_editable_get_text(GTK_EDITABLE(m_rowSaveFolder)), gtk_editable_get_text(GTK_EDITABLE(m_rowNewFilename)), adw_combo_row_get_selected(ADW_COMBO_ROW(m_rowQuality))); } };
+        ProgressDialog progressDialog{ GTK_WINDOW(m_parent), "Preparing download...", [&]() { downloadCheckStatus = m_controller.setDownload(gtk_editable_get_text(GTK_EDITABLE(m_rowVideoUrl)), adw_combo_row_get_selected(ADW_COMBO_ROW(m_rowFileType)), gtk_editable_get_text(GTK_EDITABLE(m_rowSaveFolder)), gtk_editable_get_text(GTK_EDITABLE(m_rowNewFilename)), adw_combo_row_get_selected(ADW_COMBO_ROW(m_rowQuality)), adw_combo_row_get_selected(ADW_COMBO_ROW(m_rowSubtitles))); } };
         progressDialog.run();
         //Invalid Download
         if(downloadCheckStatus != DownloadCheckStatus::Valid)
@@ -81,6 +86,8 @@ bool AddDownloadDialog::run()
             //Reset UI
             gtk_style_context_remove_class(gtk_widget_get_style_context(m_rowVideoUrl), "error");
             adw_preferences_row_set_title(ADW_PREFERENCES_ROW(m_rowVideoUrl), "Video Url");
+            gtk_style_context_remove_class(gtk_widget_get_style_context(m_rowSubtitles), "warning");
+            adw_preferences_row_set_title(ADW_PREFERENCES_ROW(m_rowSubtitles), "Subtitles");
             gtk_style_context_remove_class(gtk_widget_get_style_context(m_rowSaveFolder), "error");
             adw_preferences_row_set_title(ADW_PREFERENCES_ROW(m_rowSaveFolder), "Save Folder");
             //Mark Error
@@ -89,17 +96,23 @@ bool AddDownloadDialog::run()
                 gtk_style_context_add_class(gtk_widget_get_style_context(m_rowVideoUrl), "error");
                 adw_preferences_row_set_title(ADW_PREFERENCES_ROW(m_rowVideoUrl), "Video Url (Empty)");
             }
-            if(downloadCheckStatus == DownloadCheckStatus::InvalidVideoUrl)
+            else if(downloadCheckStatus == DownloadCheckStatus::InvalidVideoUrl)
             {
                 gtk_style_context_add_class(gtk_widget_get_style_context(m_rowVideoUrl), "error");
                 adw_preferences_row_set_title(ADW_PREFERENCES_ROW(m_rowVideoUrl), "Video Url (Invalid)");
             }
-            if(downloadCheckStatus == DownloadCheckStatus::EmptySaveFolder)
+            else if(downloadCheckStatus == DownloadCheckStatus::NoSubtitles)
+            {
+                gtk_style_context_add_class(gtk_widget_get_style_context(m_rowSubtitles), "warning");
+                adw_preferences_row_set_title(ADW_PREFERENCES_ROW(m_rowSubtitles), "Subtitles (Not Available)");
+                adw_combo_row_set_selected(ADW_COMBO_ROW(m_rowSubtitles), 0);
+            }
+            else if(downloadCheckStatus == DownloadCheckStatus::EmptySaveFolder)
             {
                 gtk_style_context_add_class(gtk_widget_get_style_context(m_rowSaveFolder), "error");
                 adw_preferences_row_set_title(ADW_PREFERENCES_ROW(m_rowSaveFolder), "Save Folder (Empty)");
             }
-            if(downloadCheckStatus == DownloadCheckStatus::InvalidSaveFolder)
+            else if(downloadCheckStatus == DownloadCheckStatus::InvalidSaveFolder)
             {
                 gtk_style_context_add_class(gtk_widget_get_style_context(m_rowSaveFolder), "error");
                 adw_preferences_row_set_title(ADW_PREFERENCES_ROW(m_rowSaveFolder), "Save Folder (Invalid)");

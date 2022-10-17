@@ -41,6 +41,7 @@ namespace NickvisionTubeConverter::UI::Views
     	GtkWidget* m_rowVideoUrl{ nullptr };
     	GtkWidget* m_rowFileType{ nullptr };
     	GtkWidget* m_rowQuality{ nullptr };
+    	GtkWidget* m_rowSubtitles{ nullptr };
     	GtkWidget* m_btnSelectSaveFolder{ nullptr };
     	GtkWidget* m_rowSaveFolder{ nullptr };
     	GtkWidget* m_rowNewFilename{ nullptr };

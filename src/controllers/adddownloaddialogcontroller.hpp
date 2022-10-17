@@ -53,9 +53,15 @@ namespace NickvisionTubeConverter::Controllers
 		/**
 		 * Sets the download from the dialog and checks if it is valid
 		 *
+		 * @param videoUrl The url of the video to download
+		 * @param mediaFileType The file type to download the video as
+		 * @param saveFolder The folder to save the download to
+		 * @param newFilename The filename to save the download as
+		 * @param quality The quality of the download
+		 * @param subtitles The subtitles for the download
 		 * @returns The DownloadCheckStatus
 		 */
-		NickvisionTubeConverter::Models::DownloadCheckStatus setDownload(const std::string& videoUrl, int mediaFileType, const std::string& saveFolder, const std::string& newFilename, int quality);
+		NickvisionTubeConverter::Models::DownloadCheckStatus setDownload(const std::string& videoUrl, int mediaFileType, const std::string& saveFolder, const std::string& newFilename, int quality, int subtitles);
 
 	private:
 		NickvisionTubeConverter::Models::Configuration& m_configuration;

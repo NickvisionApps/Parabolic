@@ -34,9 +34,9 @@ const std::shared_ptr<Download>& AddDownloadDialogController::getDownload() cons
     return m_download;
 }
 
-DownloadCheckStatus AddDownloadDialogController::setDownload(const std::string& videoUrl, int mediaFileType, const std::string& saveFolder, const std::string& newFilename, int quality)
+DownloadCheckStatus AddDownloadDialogController::setDownload(const std::string& videoUrl, int mediaFileType, const std::string& saveFolder, const std::string& newFilename, int quality, int subtitles)
 {
-    m_download = std::make_shared<Download>(videoUrl, static_cast<MediaFileType::Value>(mediaFileType), saveFolder, newFilename, static_cast<Quality>(quality));
+    m_download = std::make_shared<Download>(videoUrl, static_cast<MediaFileType::Value>(mediaFileType), saveFolder, newFilename, static_cast<Quality>(quality), static_cast<Subtitles>(subtitles));
     DownloadCheckStatus checkStatus{ m_download->getValidStatus() };
     if(checkStatus == DownloadCheckStatus::Valid)
     {
