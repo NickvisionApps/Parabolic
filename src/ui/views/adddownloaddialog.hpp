@@ -52,6 +52,10 @@ namespace NickvisionTubeConverter::UI::Views
     	 */
 		void setResponse(const std::string& response);
 		/**
+		 * Occurs when the file type row is changed
+		 */
+		void onFileTypeChanged();
+		/**
 		 * Prompts the user to select a save folder
 		 */
 		void onSelectSaveFolder();

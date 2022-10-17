@@ -34,10 +34,6 @@ DownloadCheckStatus Download::getValidStatus()
     {
         return DownloadCheckStatus::InvalidVideoUrl;
     }
-    if(getMediaFileType().isVideo() && getSubtitles() != Subtitles::None && !getContainsSubtitles())
-    {
-        return DownloadCheckStatus::NoSubtitles;
-    }
     std::filesystem::path downloadPath{ getSavePath() };
     if(downloadPath.parent_path() == "/")
     {
@@ -96,7 +92,14 @@ bool Download::download(bool embedMetadata)
 		if(getSubtitles() != Subtitles::None)
 	    {
 	        std::string subtitles{ getSubtitles() == Subtitles::VTT ? "vtt" : "srv3" };
-	        cmd += " --embed-subs --all-subs --sub-format " + subtitles;
+	        if(getContainsSubtitles())
+	        {
+	            cmd += " --embed-subs --all-subs --sub-format " + subtitles;
+	        }
+	        else
+	        {
+	            cmd += " --write-auto-sub --embed-subs --all-subs --sub-format " + subtitles;
+	        }
 	    }
 	}
 	else
@@ -147,8 +150,8 @@ std::string Download::getTitleFromVideo()
 bool Download::getContainsSubtitles()
 {
     int pid;
-    int exitCode{ CmdHelpers::run("yt-dlp --list-subs " + getVideoUrl(), "r", pid).first };
-	return exitCode == 0;
+    std::string output{ CmdHelpers::run("yt-dlp --list-subs " + getVideoUrl(), "r", pid).second };
+	return output.find("has no subtitles") == std::string::npos;
 }
 
 void Download::setLog(const std::string& log)

@@ -34,7 +34,6 @@ namespace NickvisionTubeConverter::Models
 		Valid = 0,
 		EmptyVideoUrl,
 		InvalidVideoUrl,
-		NoSubtitles,
 		EmptySaveFolder,
 		InvalidSaveFolder
 	};

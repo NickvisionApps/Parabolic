@@ -27,6 +27,7 @@ AddDownloadDialog::AddDownloadDialog(GtkWindow* parent, AddDownloadDialogControl
     adw_preferences_row_set_title(ADW_PREFERENCES_ROW(m_rowFileType), "File Type");
     adw_combo_row_set_model(ADW_COMBO_ROW(m_rowFileType), G_LIST_MODEL(gtk_string_list_new(new const char*[7]{ "MP4", "WEBM", "MP3", "OPUS", "FLAC", "WAV", nullptr })));
     adw_preferences_group_add(ADW_PREFERENCES_GROUP(m_preferencesGroup), m_rowFileType);
+    g_signal_connect(m_rowFileType, "notify::selected-item", G_CALLBACK((void (*)(GObject*, GParamSpec*, gpointer))[](GObject*, GParamSpec*, gpointer data) { reinterpret_cast<AddDownloadDialog*>(data)->onFileTypeChanged(); }), this);
     //Quality
     m_rowQuality = adw_combo_row_new();
     adw_preferences_row_set_title(ADW_PREFERENCES_ROW(m_rowQuality), "Quality");
@@ -86,8 +87,6 @@ bool AddDownloadDialog::run()
             //Reset UI
             gtk_style_context_remove_class(gtk_widget_get_style_context(m_rowVideoUrl), "error");
             adw_preferences_row_set_title(ADW_PREFERENCES_ROW(m_rowVideoUrl), "Video Url");
-            gtk_style_context_remove_class(gtk_widget_get_style_context(m_rowSubtitles), "warning");
-            adw_preferences_row_set_title(ADW_PREFERENCES_ROW(m_rowSubtitles), "Subtitles");
             gtk_style_context_remove_class(gtk_widget_get_style_context(m_rowSaveFolder), "error");
             adw_preferences_row_set_title(ADW_PREFERENCES_ROW(m_rowSaveFolder), "Save Folder");
             //Mark Error
@@ -100,12 +99,6 @@ bool AddDownloadDialog::run()
             {
                 gtk_style_context_add_class(gtk_widget_get_style_context(m_rowVideoUrl), "error");
                 adw_preferences_row_set_title(ADW_PREFERENCES_ROW(m_rowVideoUrl), "Video Url (Invalid)");
-            }
-            else if(downloadCheckStatus == DownloadCheckStatus::NoSubtitles)
-            {
-                gtk_style_context_add_class(gtk_widget_get_style_context(m_rowSubtitles), "warning");
-                adw_preferences_row_set_title(ADW_PREFERENCES_ROW(m_rowSubtitles), "Subtitles (Not Available)");
-                adw_combo_row_set_selected(ADW_COMBO_ROW(m_rowSubtitles), 0);
             }
             else if(downloadCheckStatus == DownloadCheckStatus::EmptySaveFolder)
             {
@@ -128,6 +121,12 @@ bool AddDownloadDialog::run()
 void AddDownloadDialog::setResponse(const std::string& response)
 {
     m_controller.setResponse(response);
+}
+
+void AddDownloadDialog::onFileTypeChanged()
+{
+    MediaFileType fileType{ static_cast<MediaFileType::Value>(adw_combo_row_get_selected(ADW_COMBO_ROW(m_rowFileType))) };
+    gtk_widget_set_sensitive(m_rowSubtitles, fileType.isVideo());
 }
 
 void AddDownloadDialog::onSelectSaveFolder()

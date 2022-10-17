@@ -169,6 +169,7 @@ void MainWindow::onAbout()
                           "developers", new const char*[3]{ "Nicholas Logozzo https://github.com/nlogozzo", "Contributors on GitHub ❤️ https://github.com/nlogozzo/NickvisionTubeConverter/graphs/contributors", nullptr },
                           "designers", new const char*[2]{ "Nicholas Logozzo https://github.com/nlogozzo", nullptr },
                           "artists", new const char*[3]{ "David Lapshin https://github.com/daudix-UFO", "marcin https://github.com/martin-desktops", nullptr },
+                          "debug-info", "Dependencies:\n- yt-dlp Version 2022.10.04\n- ffmpeg Version 5.1.2",
                           "release-notes", m_controller.getAppInfo().getChangelog().c_str(),
                           nullptr);
 }

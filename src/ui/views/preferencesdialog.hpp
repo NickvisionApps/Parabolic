@@ -40,5 +40,9 @@ namespace NickvisionTubeConverter::UI::Views
 		GtkWidget* m_grpConverter{ nullptr };
 		GtkWidget* m_rowEmbedMetadata{ nullptr };
 		GtkWidget* m_switchEmbedMetadata{ nullptr };
+		/**
+		 * Ocurrs when the theme row is changed
+		 */
+		void onThemeChanged();
 	};
 }
