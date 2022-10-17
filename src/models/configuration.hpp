@@ -62,6 +62,18 @@ namespace NickvisionTubeConverter::Models
 		 */
 		void setPreviousFileType(const MediaFileType& previousFileType);
 		/**
+		 * Gets whether or not to embed metadata in a download
+		 *
+		 * @returns True to embed, else false
+		 */
+		bool getEmbedMetadata() const;
+		/**
+		 * Sets whether or not to embed metadata in a download
+		 *
+		 * @param embedMetadata True to embed, else false
+		 */
+		void setEmbedMetadata(bool embedMetadata);
+		/**
 		 * Saves the configuration to disk
 		 */
 		void save() const;
@@ -71,5 +83,6 @@ namespace NickvisionTubeConverter::Models
 		Theme m_theme;
 		std::string m_previousSaveFolder;
 		MediaFileType m_previousFileType;
+		bool m_embedMetadata;
 	};
 }

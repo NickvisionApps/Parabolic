@@ -42,6 +42,11 @@ void MainWindowController::startup()
     }
 }
 
+bool MainWindowController::getEmbedMetadata() const
+{
+    return m_configuration.getEmbedMetadata();
+}
+
 bool MainWindowController::getIsDownloadsRunning() const
 {
     for(const std::shared_ptr<Download>& download : m_downloads)

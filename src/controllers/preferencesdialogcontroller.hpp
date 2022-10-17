@@ -29,6 +29,18 @@ namespace NickvisionTubeConverter::Controllers
 		 */
 		void setTheme(int theme);
 		/**
+		 * Gets whether or not to embed metadata in a download
+		 *
+		 * @returns True to embed, else false
+		 */
+		bool getEmbedMetadata() const;
+		/**
+		 * Sets whether or not to embed metadata in a download
+		 *
+		 * @param embedMetadata True to embed, else false
+		 */
+		void setEmbedMetadata(bool embedMetadata);
+		/**
 		 * Saves the configuration file
 		 */
 		void saveConfiguration() const;

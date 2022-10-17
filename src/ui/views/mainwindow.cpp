@@ -16,7 +16,7 @@ using namespace NickvisionTubeConverter::UI::Views;
 MainWindow::MainWindow(GtkApplication* application, const MainWindowController& controller) : m_controller{ controller }, m_gobj{ adw_application_window_new(application) }
 {
     //Window Settings
-    gtk_window_set_default_size(GTK_WINDOW(m_gobj), 800, 600);
+    gtk_window_set_default_size(GTK_WINDOW(m_gobj), 900, 700);
     if(m_controller.getIsDevVersion())
     {
         gtk_style_context_add_class(gtk_widget_get_style_context(m_gobj), "devel");
@@ -136,7 +136,7 @@ void MainWindow::onAddDownload()
         std::unique_ptr<DownloadRow> row{ std::make_unique<DownloadRow>(GTK_WINDOW(m_gobj), download) };
         m_controller.addDownload(download);
         adw_preferences_group_add(ADW_PREFERENCES_GROUP(m_grpDownloads), row->gobj());
-        row->start();
+        row->start(m_controller.getEmbedMetadata());
         m_downloadRows.push_back(std::move(row));
     }
 }

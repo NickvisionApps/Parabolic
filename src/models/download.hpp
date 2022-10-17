@@ -89,9 +89,10 @@ namespace NickvisionTubeConverter::Models
 		/**
 		 * Downloads the video
 		 *
+		 * @param embedMetadata Whether or not to embed metadata into the download file
 		 * @returns True if successful, else false
 		 */
-		bool download();
+		bool download(bool embedMetadata);
 		/**
 		 * Stops the download
 		 */

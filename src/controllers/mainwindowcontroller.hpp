@@ -59,6 +59,12 @@ namespace NickvisionTubeConverter::Controllers
 		 */
 		void startup();
 		/**
+		 * Gets whether or not to embed metadata in a download
+		 *
+		 * @returns True to embed, else false
+		 */
+		bool getEmbedMetadata() const;
+		/**
 		 * Gets whether or not downloads are running
 		 *
 		 * @returns True for downloads running, else false

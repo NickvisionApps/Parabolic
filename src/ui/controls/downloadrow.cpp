@@ -58,9 +58,9 @@ GtkWidget* DownloadRow::gobj()
     return m_gobj;
 }
 
-void DownloadRow::start()
+void DownloadRow::start(bool embedMetadata)
 {
-    std::future<bool> result{ std::async(std::launch::async, [&]() -> bool { return m_download->download(); }) };
+    std::future<bool> result{ std::async(std::launch::async, [&, embedMetadata]() -> bool { return m_download->download(embedMetadata); }) };
     std::future_status status{ std::future_status::timeout };
     gtk_style_context_add_class(gtk_widget_get_style_context(m_imgStatus), "accent");
     while(status != std::future_status::ready)

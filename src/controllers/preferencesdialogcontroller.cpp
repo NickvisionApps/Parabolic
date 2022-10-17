@@ -18,6 +18,16 @@ void PreferencesDialogController::setTheme(int theme)
     m_configuration.setTheme(static_cast<Theme>(theme));
 }
 
+bool PreferencesDialogController::getEmbedMetadata() const
+{
+    return m_configuration.getEmbedMetadata();
+}
+
+void PreferencesDialogController::setEmbedMetadata(bool embedMetadata)
+{
+    m_configuration.setEmbedMetadata(embedMetadata);
+}
+
 void PreferencesDialogController::saveConfiguration() const
 {
     m_configuration.save();

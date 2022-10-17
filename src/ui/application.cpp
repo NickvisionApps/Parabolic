@@ -13,8 +13,8 @@ Application::Application(const std::string& id, GApplicationFlags flags) : m_adw
     m_appInfo.setName("Nickvision Tube Converter");
     m_appInfo.setShortName("Tube Converter");
     m_appInfo.setDescription("An easy-to-use YouTube video downloader.");
-    m_appInfo.setVersion("2022.10.2");
-    m_appInfo.setChangelog("<ul><li>New application icon (Thanks @martin-desktops!)</li><li>Implemented proper stop function for download</li><li>'New Filename' is now allowed to be empty. If it is empty, the video title will be used</li><li>Improved video url checking</li></ul>");
+    m_appInfo.setVersion("2022.10.3-beta1");
+    m_appInfo.setChangelog("<ul><li>Added a preference to embed metadata in a download</li></ul>");
     m_appInfo.setGitHubRepo("https://github.com/nlogozzo/NickvisionTubeConverter");
     m_appInfo.setIssueTracker("https://github.com/nlogozzo/NickvisionTubeConverter/issues/new");
     m_appInfo.setSupportUrl("https://github.com/nlogozzo/NickvisionTubeConverter/discussions");

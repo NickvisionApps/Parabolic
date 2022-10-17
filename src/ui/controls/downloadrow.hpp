@@ -27,8 +27,10 @@ namespace NickvisionTubeConverter::UI::Controls
 		GtkWidget* gobj();
 		/**
 		 * Starts the Download managed by the row
+		 *
+		 * @param embedMetadata Whether or not to embed metadata in a download
 		 */
-		void start();
+		void start(bool embedMetadata);
 
 	private:
 		std::shared_ptr<NickvisionTubeConverter::Models::Download> m_download;

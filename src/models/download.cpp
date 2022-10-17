@@ -142,7 +142,7 @@ bool Download::getIsDone()
     return m_isDone;
 }
 
-bool Download::download()
+bool Download::download(bool embedMetadata)
 {
     std::string cmd{ "" };
 	if (getMediaFileType().isVideo())
@@ -153,6 +153,10 @@ bool Download::download()
 	else
 	{
 		cmd = "yt-dlp --extract-audio --audio-format " + getMediaFileType().toString() + " --audio-quality " + (getQuality() == Quality::Best ? "0" : getQuality() == Quality::Good ? "5" : "10") + " \"" + getVideoUrl() + "\" -o \"" + getSavePathWithoutExtension() + ".%(ext)s\"";
+	}
+	if(embedMetadata)
+	{
+	    cmd += " --add-metadata --embed-thumbnail";
 	}
 	setLog("URL: " + getVideoUrl() + "\nPath: " + getSavePath() + "\nQuality: " + std::to_string(static_cast<int>(getQuality())) + "\n\n");
 	std::array<char, 128> buffer;

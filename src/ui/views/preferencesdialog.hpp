@@ -37,5 +37,8 @@ namespace NickvisionTubeConverter::UI::Views
 		GtkWidget* m_page{ nullptr };
 		GtkWidget* m_grpUserInterface{ nullptr };
 		GtkWidget* m_rowTheme{ nullptr };
+		GtkWidget* m_grpConverter{ nullptr };
+		GtkWidget* m_rowEmbedMetadata{ nullptr };
+		GtkWidget* m_switchEmbedMetadata{ nullptr };
 	};
 }
