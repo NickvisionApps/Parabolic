@@ -1,7 +1,7 @@
 #include "downloadrow.hpp"
 #include <future>
 #include <regex>
-#include "messagedialog.hpp"
+#include "longmessagedialog.hpp"
 
 using namespace NickvisionTubeConverter::Models;
 using namespace NickvisionTubeConverter::UI::Controls;
@@ -83,8 +83,6 @@ void DownloadRow::onStop()
 
 void DownloadRow::onViewLogs()
 {
-    MessageDialog messageDialog{ m_parent, "Logs", m_download->getLog(), "OK" };
+    LongMessageDialog messageDialog{ m_parent, "Logs", m_download->getLog(), "OK" };
     messageDialog.run();
 }
-
-

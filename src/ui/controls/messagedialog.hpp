@@ -45,7 +45,7 @@ namespace NickvisionTubeConverter::UI::Controls
     	 */
     	MessageDialogResponse run();
 
-    private:
+    protected:
     	MessageDialogResponse m_response;
     	GtkWidget* m_gobj{ nullptr };
 		void setResponse(const std::string& response);
