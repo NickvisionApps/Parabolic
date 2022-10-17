@@ -34,7 +34,7 @@ DownloadCheckStatus Download::getValidStatus()
     {
         return DownloadCheckStatus::InvalidVideoUrl;
     }
-    if(getSubtitles() != Subtitles::None && !getContainsSubtitles())
+    if(getMediaFileType().isVideo() && getSubtitles() != Subtitles::None && !getContainsSubtitles())
     {
         return DownloadCheckStatus::NoSubtitles;
     }
@@ -93,6 +93,11 @@ bool Download::download(bool embedMetadata)
 	{
 	    std::string format{ getQuality() == Quality::Best ? "bv*+ba/b" : getQuality() == Quality::Worst ? "wv*+wa/w" : "" };
 		cmd = "yt-dlp --format " + format + " --remux-video " + getMediaFileType().toString() + " \"" + getVideoUrl() + "\" -o \"" + getSavePathWithoutExtension() + ".%(ext)s\"";
+		if(getSubtitles() != Subtitles::None)
+	    {
+	        std::string subtitles{ getSubtitles() == Subtitles::VTT ? "vtt" : "srv3" };
+	        cmd += " --embed-subs --all-subs --sub-format " + subtitles;
+	    }
 	}
 	else
 	{
@@ -102,7 +107,7 @@ bool Download::download(bool embedMetadata)
 	{
 	    cmd += " --add-metadata --embed-thumbnail";
 	}
-	setLog("URL: " + getVideoUrl() + "\nPath: " + getSavePath() + "\nQuality: " + std::to_string(static_cast<int>(getQuality())) + "\n\n");
+	setLog("URL: " + getVideoUrl() + "\nPath: " + getSavePath() + "\nQuality: " + std::to_string(static_cast<int>(getQuality())) + "\n");
 	std::pair<int, std::string> result{ CmdHelpers::run(cmd, "r", m_pid) };
 	{
 	    std::lock_guard<std::mutex> lock{ m_mutex };
@@ -112,7 +117,7 @@ bool Download::download(bool embedMetadata)
 	if (result.first != 0)
 	{
 	    std::lock_guard<std::mutex> lock{ m_mutex };
-		m_log += "[Error] Unable to download video";
+		m_log += "\n[Error] Unable to download video";
 	    return false;
 	}
 	return true;
