@@ -19,11 +19,11 @@ The authors of Nickvision Tube Converter are not responsible/liable for any misu
 
 # Screenshots
 ![MainWindow](https://user-images.githubusercontent.com/17648453/194887430-b934194b-ad9f-4b42-a3e1-ef3b6a17aab4.png)
-![AddDownload](https://user-images.githubusercontent.com/17648453/194887444-d942988b-4611-4b28-92df-1289f09d6e10.png)
-![Downloading](https://user-images.githubusercontent.com/17648453/194887457-4dcbc6e3-2c03-447b-9de6-e0b3d5faefd3.png)
-![Downloads](https://user-images.githubusercontent.com/17648453/194887476-0738e031-3364-434d-a075-88f52ff70e44.png)
-![DarkMode](https://user-images.githubusercontent.com/17648453/194887509-06bc2df8-577c-4c47-9f47-efe52312bc7c.png)
-![Logs](https://user-images.githubusercontent.com/17648453/194887523-27b91569-911e-4618-8da0-88145c75adaa.png)
+![AddDownloadDialog](https://user-images.githubusercontent.com/17648453/196213073-a321c459-96b3-4f11-a5e9-7352c4d7b6c4.png)
+![Downloading](https://user-images.githubusercontent.com/17648453/196213082-e9b2bb79-a276-425f-9d3c-f93a8203e703.png)
+![Done](https://user-images.githubusercontent.com/17648453/196213096-0522cf8e-41b4-4043-a1f7-8c0acd0c0e1d.png)
+![DarkMode](https://user-images.githubusercontent.com/17648453/196213105-fe26ca19-cf68-40c3-87aa-e7d71a86c4ba.png)
+![Logs](https://user-images.githubusercontent.com/17648453/196213126-3b51380c-f6dc-41bd-9372-d3be2be3524e.png)
 
 # Dependencies
 - [C++20](https://en.cppreference.com/w/cpp/20)
