@@ -4,7 +4,7 @@
 using namespace NickvisionTubeConverter::Controllers;
 using namespace NickvisionTubeConverter::Models;
 
-AddDownloadDialogController::AddDownloadDialogController(Configuration& configuration) : m_configuration{ configuration }
+AddDownloadDialogController::AddDownloadDialogController(Configuration& configuration) : m_configuration{ configuration }, m_response{ "cancel" }
 {
 
 }

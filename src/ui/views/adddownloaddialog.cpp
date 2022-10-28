@@ -6,7 +6,7 @@ using namespace NickvisionTubeConverter::Models;
 using namespace NickvisionTubeConverter::UI::Controls;
 using namespace NickvisionTubeConverter::UI::Views;
 
-AddDownloadDialog::AddDownloadDialog(GtkWindow* parent, AddDownloadDialogController& controller) : m_controller{ controller }, m_response{ "cancel" }, m_parent{ parent }, m_gobj{ adw_message_dialog_new(m_parent, "Add Download", nullptr) }
+AddDownloadDialog::AddDownloadDialog(GtkWindow* parent, AddDownloadDialogController& controller) : m_controller{ controller }, m_parent{ parent }, m_gobj{ adw_message_dialog_new(m_parent, "Add Download", nullptr) }
 {
     //Dialog Settings
     gtk_window_set_hide_on_close(GTK_WINDOW(m_gobj), true);
