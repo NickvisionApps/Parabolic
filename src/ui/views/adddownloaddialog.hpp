@@ -28,7 +28,7 @@ namespace NickvisionTubeConverter::UI::Views
     	/**
     	 * Run the AddDownloadDialog
     	 *
-    	 * @returns The download from the dialog is one is available, else std::nullopt
+    	 * @returns True if dialog was accepted, else false
     	 */
     	bool run();
 
