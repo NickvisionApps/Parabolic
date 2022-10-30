@@ -12,6 +12,12 @@
         "--share=network",
         "--filesystem=host"
     ],
+    "cleanup":[
+    	"/include",
+    	"/lib/debug",
+	    "/lib/pkgconfig",
+    	"*.a"
+    ],
     "modules" : [
         {
             "name": "jsoncpp",
