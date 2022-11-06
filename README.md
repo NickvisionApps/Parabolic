@@ -26,12 +26,6 @@ The authors of Nickvision Tube Converter are not responsible/liable for any misu
 ![DarkMode](https://user-images.githubusercontent.com/17648453/196213105-fe26ca19-cf68-40c3-87aa-e7d71a86c4ba.png)
 ![Logs](https://user-images.githubusercontent.com/17648453/196213126-3b51380c-f6dc-41bd-9372-d3be2be3524e.png)
 
-# Dependencies
-- [C++20](https://en.cppreference.com/w/cpp/20)
-- [GTK 4](https://www.gtk.org/)
-- [libadwaita](https://gnome.pages.gitlab.gnome.org/libadwaita/)
-- [jsoncpp](https://github.com/open-source-parsers/jsoncpp)
-
 # Translating
 Everyone is welcome to translate this app into their native or known languages, so that the application is accessible to everyone.
 
@@ -63,6 +57,11 @@ As more strings may be added in the application in future, the following command
 meson compile org.nickvision.tubeconverter-update-po
 ```
 
+# Dependencies
+- [C++20](https://en.cppreference.com/w/cpp/20)
+- [GTK 4](https://www.gtk.org/)
+- [libadwaita](https://gnome.pages.gitlab.gnome.org/libadwaita/)
+- [jsoncpp](https://github.com/open-source-parsers/jsoncpp)
+
 # Special Thanks
 - [daudix-UFO](https://github.com/daudix-UFO) and [martin-desktops](https://github.com/martin-desktops) for our application icons
-
