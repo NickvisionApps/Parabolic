@@ -32,6 +32,37 @@ The authors of Nickvision Tube Converter are not responsible/liable for any misu
 - [libadwaita](https://gnome.pages.gitlab.gnome.org/libadwaita/)
 - [jsoncpp](https://github.com/open-source-parsers/jsoncpp)
 
+# Translating
+Everyone is welcome to translate this app into their native or known languages, so that the application is accessible to everyone.
+
+To translate the app, fork the repository and clone it locally. Make sure that `meson` is installed. Run the commands in your shell while in the directory of repository:
+```bash
+meson build
+cd build
+meson compile org.nickvision.tubeconverter-pot
+```
+This would generate a `NickvisionTubeConverter/po/org.nickvision.tubeconverter.pot` file, now you can use this file to translate the strings into your target language. You may use [Gtranslator](https://flathub.org/apps/details/org.gnome.Gtranslator) or [poedit.com](https://poedit.com) if you do not know how to translate manually in text itself. After translating (either through tools or directly in text editor), make sure to include the required metadata on the top of translation file (see existing files in `NickvisionTubeConverter/po/` directory.)
+
+One particular thing you should keep in mind is that some strings in this project are bifurcated into multiple strings to cater to responsiveness of the application, like:
+```
+msgid ""
+"If checked, the currency symbol will be displayed on the right of a monetary "
+"value."
+```
+You should use the same format for translated strings as well. But, because all languages do not have the same sentence structure, you may not need to follow this word-by-word, rather you should bifurcate the string in about the same ratio. (For examples, look into translations of languages which do not have a English-like structure in `NickvisionTubeConverter/po/`)
+
+Put your translated file in `NickvisionTubeConverter/po` directory in format `<LANG>.po` where `<LANG>` is the language code.
+
+Put the language code of your language in `NickvisionTubeConverter/po/LINGUAS` (this file, as a convention, should remain in alphabetical order.)
+
+Commit these changes, and then create a pull request to the project.
+
+As more strings may be added in the application in future, the following command needs to be ran to update all the `.po` files, which would add new strings to be translated without altering the already translated strings. But, because running this command would do this for all the languages, generally a maintainer would do that.
+
+```bash
+meson compile org.nickvision.tubeconverter-update-po
+```
+
 # Special Thanks
 - [daudix-UFO](https://github.com/daudix-UFO) and [martin-desktops](https://github.com/martin-desktops) for our application icons
 
