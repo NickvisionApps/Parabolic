@@ -1,5 +1,6 @@
 sources = files('main.cpp',
 		'helpers/translation.hpp',
+		'helpers/translation.cpp',
 		'helpers/stringhelpers.hpp',
 		'helpers/stringhelpers.cpp',
 		'helpers/cmdhelpers.hpp',
