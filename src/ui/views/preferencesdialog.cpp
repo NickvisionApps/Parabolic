@@ -1,4 +1,5 @@
 #include "preferencesdialog.hpp"
+#include "../../helpers/translation.hpp"
 
 using namespace NickvisionTubeConverter::Controllers;
 using namespace NickvisionTubeConverter::UI::Views;
@@ -13,27 +14,27 @@ PreferencesDialog::PreferencesDialog(GtkWindow* parent, const PreferencesDialogC
     gtk_window_set_hide_on_close(GTK_WINDOW(m_gobj), true);
     //Header Bar
     m_headerBar = adw_header_bar_new();
-    adw_header_bar_set_title_widget(ADW_HEADER_BAR(m_headerBar), adw_window_title_new("Preferences", nullptr));
+    adw_header_bar_set_title_widget(ADW_HEADER_BAR(m_headerBar), adw_window_title_new(_("Preferences"), nullptr));
     //User Interface Group
     m_grpUserInterface = adw_preferences_group_new();
-    adw_preferences_group_set_title(ADW_PREFERENCES_GROUP(m_grpUserInterface), "User Interface");
-    adw_preferences_group_set_description(ADW_PREFERENCES_GROUP(m_grpUserInterface), "Customize the application's user interface.");
+    adw_preferences_group_set_title(ADW_PREFERENCES_GROUP(m_grpUserInterface), _("User Interface"));
+    adw_preferences_group_set_description(ADW_PREFERENCES_GROUP(m_grpUserInterface), _("Customize the application's user interface."));
     //Theme Row
     m_rowTheme = adw_combo_row_new();
-    adw_preferences_row_set_title(ADW_PREFERENCES_ROW(m_rowTheme), "Theme");
-    adw_combo_row_set_model(ADW_COMBO_ROW(m_rowTheme), G_LIST_MODEL(gtk_string_list_new(new const char*[4]{ "System", "Light", "Dark", nullptr })));
+    adw_preferences_row_set_title(ADW_PREFERENCES_ROW(m_rowTheme), _("Theme"));
+    adw_combo_row_set_model(ADW_COMBO_ROW(m_rowTheme), G_LIST_MODEL(gtk_string_list_new(new const char*[4]{ _("System"), _("Light"), _("Dark"), nullptr })));
     adw_preferences_group_add(ADW_PREFERENCES_GROUP(m_grpUserInterface), m_rowTheme);
     g_signal_connect(m_rowTheme, "notify::selected-item", G_CALLBACK((void (*)(GObject*, GParamSpec*, gpointer))[](GObject*, GParamSpec*, gpointer data) { reinterpret_cast<PreferencesDialog*>(data)->onThemeChanged(); }), this);
     //Converter Group
     m_grpConverter = adw_preferences_group_new();
-    adw_preferences_group_set_title(ADW_PREFERENCES_GROUP(m_grpConverter), "Converter");
-    adw_preferences_group_set_description(ADW_PREFERENCES_GROUP(m_grpConverter), "Customize converter settings.");
+    adw_preferences_group_set_title(ADW_PREFERENCES_GROUP(m_grpConverter), _("Converter"));
+    adw_preferences_group_set_description(ADW_PREFERENCES_GROUP(m_grpConverter), _("Customize converter settings."));
     //Embed Metadata Row
     m_rowEmbedMetadata = adw_action_row_new();
     m_switchEmbedMetadata = gtk_switch_new();
     gtk_widget_set_valign(m_switchEmbedMetadata, GTK_ALIGN_CENTER);
-    adw_preferences_row_set_title(ADW_PREFERENCES_ROW(m_rowEmbedMetadata), "Embed Metadata");
-    adw_action_row_set_subtitle(ADW_ACTION_ROW(m_rowEmbedMetadata), "If checked, video metadata will be included in the downloaded file.");
+    adw_preferences_row_set_title(ADW_PREFERENCES_ROW(m_rowEmbedMetadata), _("Embed Metadata"));
+    adw_action_row_set_subtitle(ADW_ACTION_ROW(m_rowEmbedMetadata), _("If checked, video metadata will be included in the downloaded file."));
     adw_action_row_add_suffix(ADW_ACTION_ROW(m_rowEmbedMetadata), m_switchEmbedMetadata);
     adw_action_row_set_activatable_widget(ADW_ACTION_ROW(m_rowEmbedMetadata), m_switchEmbedMetadata);
     adw_preferences_group_add(ADW_PREFERENCES_GROUP(m_grpConverter), m_rowEmbedMetadata);

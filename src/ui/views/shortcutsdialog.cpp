@@ -1,10 +1,13 @@
 #include "shortcutsdialog.hpp"
+#include "../../helpers/stringhelpers.hpp"
+#include "../../helpers/translation.hpp"
 
+using namespace NickvisionTubeConverter::Helpers;
 using namespace NickvisionTubeConverter::UI::Views;
 
 ShortcutsDialog::ShortcutsDialog(GtkWindow* parent)
 {
-    m_xml = R"(
+    m_xml = StringHelpers::format(R"(
     <?xml version="1.0" encoding="UTF-8"?>
     <interface>
         <object class="GtkShortcutsWindow" id="m_dialog">
@@ -18,10 +21,10 @@ ShortcutsDialog::ShortcutsDialog(GtkWindow* parent)
                 <object class="GtkShortcutsSection">
                     <child>
                         <object class="GtkShortcutsGroup">
-                            <property name="title">Download</property>
+                            <property name="title">%s</property>
                             <child>
                                 <object class="GtkShortcutsShortcut">
-                                    <property name="title">Add</property>
+                                    <property name="title">%s</property>
                                     <property name="accelerator">&lt;Control&gt;n</property>
                                 </object>
                             </child>
@@ -29,22 +32,22 @@ ShortcutsDialog::ShortcutsDialog(GtkWindow* parent)
                     </child>
                     <child>
                         <object class="GtkShortcutsGroup">
-                            <property name="title">Application</property>
+                            <property name="title">%s</property>
                             <child>
                                 <object class="GtkShortcutsShortcut">
-                                    <property name="title">Preferences</property>
+                                    <property name="title">%s</property>
                                     <property name="accelerator">&lt;Control&gt;comma</property>
                                 </object>
                             </child>
                             <child>
                                 <object class="GtkShortcutsShortcut">
-                                    <property name="title">Keyboard Shortcuts</property>
+                                    <property name="title">%s</property>
                                     <property name="accelerator">&lt;Control&gt;question</property>
                                 </object>
                             </child>
                             <child>
                                 <object class="GtkShortcutsShortcut">
-                                    <property name="title">About</property>
+                                    <property name="title">%s</property>
                                     <property name="accelerator">F1</property>
                                 </object>
                             </child>
@@ -54,7 +57,14 @@ ShortcutsDialog::ShortcutsDialog(GtkWindow* parent)
             </child>
         </object>
     </interface>
-    )";
+    )",
+    _("Download"),
+    _("Add Download"),
+    _("Application"),
+    _("Preferences"),
+    _("Keyboard Shortcuts"),
+    _("About")
+    );
     GtkBuilder* builder{ gtk_builder_new_from_string(m_xml.c_str(), -1) };
     m_gobj = GTK_WIDGET(gtk_builder_get_object(builder, "m_dialog"));
     gtk_window_set_transient_for(GTK_WINDOW(m_gobj), GTK_WINDOW(parent));

@@ -1,4 +1,4 @@
-project('org.nickvision.tubeconverter', ['cpp', 'c'], version: '2022.10.3', meson_version: '>= 0.63.0', default_options: ['warning_level=3', 'werror=false', 'cpp_std=c++20'])
+project('org.nickvision.tubeconverter', ['cpp', 'c'], version: '2022.11.0', meson_version: '>= 0.63.0', default_options: ['warning_level=3', 'werror=false', 'cpp_std=c++20'])
 
 gnome = import('gnome')
 
@@ -8,6 +8,7 @@ adwaita = dependency('libadwaita-1', version: '>= 1.2.0')
 jsoncpp = dependency('jsoncpp')
 
 subdir('src')
+subdir('po')
 
 executable('org.nickvision.tubeconverter', sources, dependencies: [threads, adwaita, jsoncpp], install: true)
 install_data('yt-dlp', install_dir: 'bin', install_mode: 'rwxrwxrwx')

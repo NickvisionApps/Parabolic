@@ -1,4 +1,5 @@
 #include "entrydialog.hpp"
+#include "../../helpers/translation.hpp"
 
 using namespace NickvisionTubeConverter::UI::Controls;
 
@@ -6,7 +7,7 @@ EntryDialog::EntryDialog(GtkWindow* parent, const std::string& title, const std:
 {
     //Dialog Settings
     gtk_window_set_hide_on_close(GTK_WINDOW(m_gobj), true);
-    adw_message_dialog_add_responses(ADW_MESSAGE_DIALOG(m_gobj), "cancel", "Cancel", "ok", "OK", nullptr);
+    adw_message_dialog_add_responses(ADW_MESSAGE_DIALOG(m_gobj), "cancel", _("Cancel"), "ok", _("OK"), nullptr);
     adw_message_dialog_set_response_appearance(ADW_MESSAGE_DIALOG(m_gobj), "ok", ADW_RESPONSE_SUGGESTED);
     adw_message_dialog_set_default_response(ADW_MESSAGE_DIALOG(m_gobj), "cancel");
     adw_message_dialog_set_close_response(ADW_MESSAGE_DIALOG(m_gobj), "cancel");

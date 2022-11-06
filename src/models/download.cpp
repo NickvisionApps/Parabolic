@@ -4,6 +4,7 @@
 #include <utility>
 #include <signal.h>
 #include "../helpers/cmdhelpers.hpp"
+#include "../helpers/translation.hpp"
 
 using namespace NickvisionTubeConverter::Helpers;
 using namespace NickvisionTubeConverter::Models;
@@ -120,7 +121,7 @@ bool Download::download(bool embedMetadata)
 	if (result.first != 0)
 	{
 	    std::lock_guard<std::mutex> lock{ m_mutex };
-		m_log += "\n[Error] Unable to download video";
+		m_log += _("\n[Error] Unable to download video");
 	    return false;
 	}
 	return true;

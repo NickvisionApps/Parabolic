@@ -2,6 +2,7 @@
 #include <future>
 #include <regex>
 #include "longmessagedialog.hpp"
+#include "../../helpers/translation.hpp"
 
 using namespace NickvisionTubeConverter::Models;
 using namespace NickvisionTubeConverter::UI::Controls;
@@ -27,7 +28,7 @@ DownloadRow::DownloadRow(GtkWindow* parent, const std::shared_ptr<Download>& dow
     gtk_widget_set_valign(m_btnStop, GTK_ALIGN_CENTER);
     gtk_style_context_add_class(gtk_widget_get_style_context(m_btnStop), "flat");
     gtk_button_set_icon_name(GTK_BUTTON(m_btnStop), "media-playback-stop-symbolic");
-    gtk_widget_set_tooltip_text(m_btnStop, "Stop Download");
+    gtk_widget_set_tooltip_text(m_btnStop, _("Stop Download"));
     g_signal_connect(m_btnStop, "clicked", G_CALLBACK((void (*)(GtkButton*, gpointer))[](GtkButton*, gpointer data) { reinterpret_cast<DownloadRow*>(data)->onStop(); }), this);
     gtk_box_append(GTK_BOX(m_boxDownloading), m_btnStop);
     //Box Done
@@ -43,7 +44,7 @@ DownloadRow::DownloadRow(GtkWindow* parent, const std::shared_ptr<Download>& dow
     gtk_widget_set_valign(m_btnViewLogs, GTK_ALIGN_CENTER);
     gtk_style_context_add_class(gtk_widget_get_style_context(m_btnViewLogs), "flat");
     gtk_button_set_icon_name(GTK_BUTTON(m_btnViewLogs), "dialog-information-symbolic");
-    gtk_widget_set_tooltip_text(m_btnViewLogs, "View Logs");
+    gtk_widget_set_tooltip_text(m_btnViewLogs, _("View Logs"));
     g_signal_connect(m_btnViewLogs, "clicked", G_CALLBACK((void (*)(GtkButton*, gpointer))[](GtkButton*, gpointer data) { reinterpret_cast<DownloadRow*>(data)->onViewLogs(); }), this);
     gtk_box_append(GTK_BOX(m_boxDone), m_btnViewLogs);
     //View Stack
@@ -83,6 +84,6 @@ void DownloadRow::onStop()
 
 void DownloadRow::onViewLogs()
 {
-    LongMessageDialog messageDialog{ m_parent, "Logs", m_download->getLog(), "OK" };
+    LongMessageDialog messageDialog{ m_parent, _("Logs"), m_download->getLog(), _("OK") };
     messageDialog.run();
 }

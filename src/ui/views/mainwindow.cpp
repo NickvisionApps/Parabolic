@@ -7,6 +7,7 @@
 #include "shortcutsdialog.hpp"
 #include "../controls/messagedialog.hpp"
 #include "../controls/progressdialog.hpp"
+#include "../../helpers/translation.hpp"
 
 using namespace NickvisionTubeConverter::Controllers;
 using namespace NickvisionTubeConverter::Models;
@@ -30,20 +31,20 @@ MainWindow::MainWindow(GtkApplication* application, const MainWindowController& 
     m_btnAddDownload = gtk_button_new();
     GtkWidget* btnAddDownloadContent{ adw_button_content_new() };
     adw_button_content_set_icon_name(ADW_BUTTON_CONTENT(btnAddDownloadContent), "list-add-symbolic");
-    adw_button_content_set_label(ADW_BUTTON_CONTENT(btnAddDownloadContent), "Add");
+    adw_button_content_set_label(ADW_BUTTON_CONTENT(btnAddDownloadContent), _("Add"));
     gtk_button_set_child(GTK_BUTTON(m_btnAddDownload), btnAddDownloadContent);
-    gtk_widget_set_tooltip_text(m_btnAddDownload, "Add Download (Ctrl+N)");
+    gtk_widget_set_tooltip_text(m_btnAddDownload, _("Add Download (Ctrl+N)"));
     gtk_actionable_set_action_name(GTK_ACTIONABLE(m_btnAddDownload), "win.addDownload");
     adw_header_bar_pack_start(ADW_HEADER_BAR(m_headerBar), m_btnAddDownload);
     //Menu Help Button
     m_btnMenuHelp = gtk_menu_button_new();
     GMenu* menuHelp{ g_menu_new() };
-    g_menu_append(menuHelp, "Preferences", "win.preferences");
-    g_menu_append(menuHelp, "Keyboard Shortcuts", "win.keyboardShortcuts");
-    g_menu_append(menuHelp, std::string("About " + m_controller.getAppInfo().getShortName()).c_str(), "win.about");
+    g_menu_append(menuHelp, _("Preferences"), "win.preferences");
+    g_menu_append(menuHelp, _("Keyboard Shortcuts"), "win.keyboardShortcuts");
+    g_menu_append(menuHelp, std::string(_("About ") + m_controller.getAppInfo().getShortName()).c_str(), "win.about");
     gtk_menu_button_set_direction(GTK_MENU_BUTTON(m_btnMenuHelp), GTK_ARROW_NONE);
     gtk_menu_button_set_menu_model(GTK_MENU_BUTTON(m_btnMenuHelp), G_MENU_MODEL(menuHelp));
-    gtk_widget_set_tooltip_text(m_btnMenuHelp, "Main Menu");
+    gtk_widget_set_tooltip_text(m_btnMenuHelp, _("Main Menu"));
     adw_header_bar_pack_end(ADW_HEADER_BAR(m_headerBar), m_btnMenuHelp);
     g_object_unref(menuHelp);
     //Toast Overlay
@@ -53,15 +54,15 @@ MainWindow::MainWindow(GtkApplication* application, const MainWindowController& 
     //Page No Downloads
     m_pageStatusNoDownloads = adw_status_page_new();
     adw_status_page_set_icon_name(ADW_STATUS_PAGE(m_pageStatusNoDownloads), "org.nickvision.tubeconverter-symbolic");
-    adw_status_page_set_title(ADW_STATUS_PAGE(m_pageStatusNoDownloads), "No Downloads");
-    adw_status_page_set_description(ADW_STATUS_PAGE(m_pageStatusNoDownloads), "Add a download to get started.");
+    adw_status_page_set_title(ADW_STATUS_PAGE(m_pageStatusNoDownloads), _("No Downloads"));
+    adw_status_page_set_description(ADW_STATUS_PAGE(m_pageStatusNoDownloads), _("Add a download to get started."));
     //Page Downloads
     m_grpDownloads = adw_preferences_group_new();
     gtk_widget_set_margin_start(m_grpDownloads, 30);
     gtk_widget_set_margin_top(m_grpDownloads, 10);
     gtk_widget_set_margin_end(m_grpDownloads, 30);
     gtk_widget_set_margin_bottom(m_grpDownloads, 10);
-    adw_preferences_group_set_title(ADW_PREFERENCES_GROUP(m_grpDownloads), "Downloads");
+    adw_preferences_group_set_title(ADW_PREFERENCES_GROUP(m_grpDownloads), _("Downloads"));
     m_pageScrollDownloads = gtk_scrolled_window_new();
     gtk_widget_set_hexpand(m_pageScrollDownloads, true);
     gtk_scrolled_window_set_child(GTK_SCROLLED_WINDOW(m_pageScrollDownloads), m_grpDownloads);
@@ -114,7 +115,7 @@ bool MainWindow::onCloseRequest()
 {
     if(m_controller.getIsDownloadsRunning())
     {
-        MessageDialog messageDialog{ GTK_WINDOW(m_gobj), "Close and Stop Downloads?", "Some downloads are still in progress. Are you sure you want to close Tube Converter and stop the running downloads?", "No", "Yes" };
+        MessageDialog messageDialog{ GTK_WINDOW(m_gobj), _("Close and Stop Downloads?"), _("Some downloads are still in progress. Are you sure you want to close Tube Converter and stop the running downloads?"), _("No"), _("Yes") };
         if(messageDialog.run() == MessageDialogResponse::Cancel)
         {
             return true;
@@ -162,7 +163,7 @@ void MainWindow::onAbout()
                           "comments", m_controller.getAppInfo().getDescription().c_str(),
                           "developer-name", "Nickvision",
                           "license-type", GTK_LICENSE_GPL_3_0,
-                          "copyright", "(C) Nickvision 2021-2022\n\nDISCLAIMER: The authors of Tube Converter are not responsible/liable for any misuse of this program that may violate local copyright/DMCA laws. Users use this application at their own risk.",
+                          "copyright", std::string(std::string("(C) Nickvision 2021-2022\n\n") + _("DISCLAIMER: The authors of Tube Converter are not responsible/liable for any misuse of this program that may violate local copyright/DMCA laws. Users use this application at their own risk.")).c_str(),
                           "website", m_controller.getAppInfo().getGitHubRepo().c_str(),
                           "issue-url", m_controller.getAppInfo().getIssueTracker().c_str(),
                           "support-url", m_controller.getAppInfo().getSupportUrl().c_str(),

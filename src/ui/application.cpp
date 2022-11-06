@@ -1,5 +1,6 @@
 #include "application.hpp"
 #include "../controllers/mainwindowcontroller.hpp"
+#include "../helpers/translation.hpp"
 
 using namespace NickvisionTubeConverter::Controllers;
 using namespace NickvisionTubeConverter::Models;
@@ -12,9 +13,9 @@ Application::Application(const std::string& id, GApplicationFlags flags) : m_adw
     m_appInfo.setId(id);
     m_appInfo.setName("Nickvision Tube Converter");
     m_appInfo.setShortName("Tube Converter");
-    m_appInfo.setDescription("An easy-to-use YouTube video downloader.");
-    m_appInfo.setVersion("2022.10.3");
-    m_appInfo.setChangelog("<ul><li>Added a preference to embed metadata in a download</li><li>Added the ability to download subtitles for a video</li></ul>");
+    m_appInfo.setDescription(_("An easy-to-use YouTube video downloader."));
+    m_appInfo.setVersion("2022.11.0-beta1");
+    m_appInfo.setChangelog("<ul><li>Added translation support</li></ul>");
     m_appInfo.setGitHubRepo("https://github.com/nlogozzo/NickvisionTubeConverter");
     m_appInfo.setIssueTracker("https://github.com/nlogozzo/NickvisionTubeConverter/issues/new");
     m_appInfo.setSupportUrl("https://github.com/nlogozzo/NickvisionTubeConverter/discussions");
