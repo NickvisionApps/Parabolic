@@ -6,11 +6,11 @@
 
 namespace NickvisionTubeConverter::UI::Controls
 {
-	class LongMessageDialog : public MessageDialog
+	class LogsDialog : public MessageDialog
 	{
 	public:
 		/**
-    	 * Constructs a LongMessageDialog
+    	 * Constructs a LogsDialog
     	 *
     	 * @param parent The parent window for the dialog
     	 * @param title The title of the dialog
@@ -19,10 +19,11 @@ namespace NickvisionTubeConverter::UI::Controls
     	 * @param destructiveText The text of the destructive button
     	 * @param suggestedText The text of the suggested button
     	 */
-		LongMessageDialog(GtkWindow* parent, const std::string& title, const std::string& description, const std::string& cancelText, const std::string& destructiveText = "", const std::string& suggestedText = "");
+		LogsDialog(GtkWindow* parent, const std::string& title, const std::string& description, const std::string& cancelText, const std::string& destructiveText = "", const std::string& suggestedText = "");
 
 	private:
 		GtkWidget* m_scrolledWindow;
-		GtkWidget* m_lblDescription;
+		GtkWidget* m_textView;
+		GtkTextBuffer* m_textBuffer;
 	};
 }

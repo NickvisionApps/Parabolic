@@ -1,7 +1,7 @@
 #include "downloadrow.hpp"
 #include <future>
 #include <regex>
-#include "longmessagedialog.hpp"
+#include "logsdialog.hpp"
 #include "../../helpers/translation.hpp"
 
 using namespace NickvisionTubeConverter::Models;
@@ -84,6 +84,6 @@ void DownloadRow::onStop()
 
 void DownloadRow::onViewLogs()
 {
-    LongMessageDialog messageDialog{ m_parent, _("Logs"), m_download->getLog(), _("OK") };
+    LogsDialog messageDialog{ m_parent, _("Logs"), m_download->getLog(), _("OK") };
     messageDialog.run();
 }
