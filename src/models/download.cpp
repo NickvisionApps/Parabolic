@@ -88,7 +88,7 @@ bool Download::download(bool embedMetadata)
     std::string cmd{ "" };
 	if (getMediaFileType().isVideo())
 	{
-	    std::string format{ getQuality() == Quality::Best ? "bv*+ba/b" : getQuality() == Quality::Worst ? "wv*+wa/w" : "" };
+	    std::string format{ getQuality() == Quality::Best ? "bv*+ba/b" : getQuality() == Quality::Good ? "\"bv*[height<=720]+ba/b[height<=720]\"" : getQuality() == Quality::Worst ? "wv*+wa/w" : "" };
 		cmd = "yt-dlp --format " + format + " --remux-video " + getMediaFileType().toString() + " \"" + getVideoUrl() + "\" -o \"" + getSavePathWithoutExtension() + ".%(ext)s\"";
 		if(getSubtitles() != Subtitles::None)
 	    {
