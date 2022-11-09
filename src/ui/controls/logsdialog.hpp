@@ -23,10 +23,10 @@ namespace NickvisionTubeConverter::UI::Controls
 
 	private:
 		GtkWidget* m_box;
-		GtkWidget* m_copyButton;
 		GtkWidget* m_scrolledWindow;
 		GtkWidget* m_textView;
 		GtkTextBuffer* m_textBuffer;
+		GtkWidget* m_copyButton;
 		/**
 		* Copy logs to clipboard
 		**/
