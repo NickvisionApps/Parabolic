@@ -22,15 +22,14 @@ LogsDialog::LogsDialog(GtkWindow* parent, const std::string& title, const std::s
     gtk_button_set_label(GTK_BUTTON(m_copyButton), _("Copy to clipboard"));
     gtk_widget_add_css_class(m_copyButton, "pill");
     gtk_widget_set_halign(m_copyButton, GTK_ALIGN_END);
-    g_signal_connect(m_copyButton, "clicked", G_CALLBACK((void (*)(GtkButton*, GtkTextBuffer*, gpointer))[](GtkButton*, GtkTextBuffer* m_textBuffer, gpointer data) { reinterpret_cast<LogsDialog*>(data)->onCopyToClipboard({ m_textBuffer }); }), this);
+    g_signal_connect(m_copyButton, "clicked", G_CALLBACK((void (*)(GtkButton*, gpointer))[](GtkButton*, gpointer data) { reinterpret_cast<LogsDialog*>(data)->onCopyToClipboard(); }), this);
     gtk_box_append(GTK_BOX(m_box), m_copyButton);
     adw_message_dialog_set_extra_child(ADW_MESSAGE_DIALOG(m_gobj), m_box);
 }
 
-void LogsDialog::onCopyToClipboard(GtkTextBuffer* m_textBuffer) {
+void LogsDialog::onCopyToClipboard() {
     GtkTextIter start, end;
     gtk_text_buffer_get_iter_at_offset(m_textBuffer, &start, 0);
     gtk_text_buffer_get_iter_at_offset(m_textBuffer, &end, -1);
-    gtk_text_buffer_select_range(m_textBuffer, &start, &end);
-    gtk_text_buffer_copy_clipboard(m_textBuffer, gdk_display_get_primary_clipboard(gdk_display_get_default()));
+    gdk_clipboard_set_text(gdk_display_get_clipboard(gdk_display_get_default()), gtk_text_buffer_get_text(m_textBuffer, &start, &end, FALSE));
 }

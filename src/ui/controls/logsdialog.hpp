@@ -29,9 +29,7 @@ namespace NickvisionTubeConverter::UI::Controls
 		GtkTextBuffer* m_textBuffer;
 		/**
 		* Copy logs to clipboard
-		*
-		* @param m_textBuffer The text buffer from which to copy the text
 		**/
-		void onCopyToClipboard(GtkTextBuffer* m_textBuffer);
+		void onCopyToClipboard();
 	};
 }
