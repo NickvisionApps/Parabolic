@@ -109,7 +109,7 @@ bool Download::download(bool embedMetadata)
 	}
 	if(embedMetadata)
 	{
-	    cmd += " --add-metadata --embed-chapters --write-description --embed-thumbnail";
+	    cmd += " --add-metadata --embed-chapters --embed-thumbnail";
 	}
 	setLog("URL: " + getVideoUrl() + "\nPath: " + getSavePath() + "\nQuality: " + std::to_string(static_cast<int>(getQuality())) + "\n");
 	std::pair<int, std::string> result{ CmdHelpers::run(cmd, "r", m_pid) };
