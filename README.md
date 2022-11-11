@@ -24,7 +24,7 @@ The authors of Nickvision Tube Converter are not responsible/liable for any misu
 ![Downloading](https://user-images.githubusercontent.com/17648453/196213082-e9b2bb79-a276-425f-9d3c-f93a8203e703.png)
 ![Done](https://user-images.githubusercontent.com/17648453/196213096-0522cf8e-41b4-4043-a1f7-8c0acd0c0e1d.png)
 ![DarkMode](https://user-images.githubusercontent.com/17648453/196213105-fe26ca19-cf68-40c3-87aa-e7d71a86c4ba.png)
-![Logs](https://user-images.githubusercontent.com/17648453/196213126-3b51380c-f6dc-41bd-9372-d3be2be3524e.png)
+![Logs](https://camo.githubusercontent.com/0d1b620a9cb25dc9e94c7c26a6d9d4647c9cc42647b6dafdf96c95f62f3ded9d/68747470733a2f2f692e696d6775722e636f6d2f304532753861622e706e67)
 
 # Translating
 Everyone is welcome to translate this app into their native or known languages, so that the application is accessible to everyone.
@@ -35,7 +35,7 @@ meson build
 cd build
 meson compile org.nickvision.tubeconverter-pot
 ```
-This would generate a `NickvisionTubeConverter/po/org.nickvision.tubeconverter.pot` file, now you can use this file to translate the strings into your target language. You may use [Gtranslator](https://flathub.org/apps/details/org.gnome.Gtranslator) or [poedit](poedit.net) if you do not know how to translate manually in text itself. After translating (either through tools or directly in text editor), make sure to include the required metadata on the top of translation file (see existing files in `NickvisionTubeConverter/po/` directory.)
+This would generate a `NickvisionTubeConverter/po/org.nickvision.tubeconverter.pot` file, now you can use this file to translate the strings into your target language. You may use [Gtranslator](https://flathub.org/apps/details/org.gnome.Gtranslator) or [poedit](https://poedit.net) if you do not know how to translate manually in text itself. After translating (either through tools or directly in text editor), make sure to include the required metadata on the top of translation file (see existing files in `NickvisionTubeConverter/po/` directory.)
 
 One particular thing you should keep in mind is that some strings in this project are bifurcated into multiple strings to cater to responsiveness of the application, like:
 ```
