@@ -22,7 +22,7 @@ MainWindow::MainWindow(GtkApplication* application, const MainWindowController& 
     gtk_window_set_default_size(GTK_WINDOW(m_gobj), 900, 700);
     if(m_controller.getIsDevVersion())
     {
-        gtk_style_context_add_class(gtk_widget_get_style_context(m_gobj), "devel");
+        gtk_widget_add_css_class(m_gobj, "devel");
     }
     g_signal_connect(m_gobj, "close_request", G_CALLBACK((bool (*)(GtkWindow*, gpointer))[](GtkWindow*, gpointer data) -> bool { return reinterpret_cast<MainWindow*>(data)->onCloseRequest(); }), this);
     //Header Bar
@@ -176,6 +176,3 @@ void MainWindow::onAbout()
                           "release-notes", m_controller.getAppInfo().getChangelog().c_str(),
                           nullptr);
 }
-
-
-

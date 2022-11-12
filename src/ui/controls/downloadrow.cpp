@@ -26,7 +26,7 @@ DownloadRow::DownloadRow(GtkWindow* parent, const std::shared_ptr<Download>& dow
     //Stop Button
     m_btnStop = gtk_button_new();
     gtk_widget_set_valign(m_btnStop, GTK_ALIGN_CENTER);
-    gtk_style_context_add_class(gtk_widget_get_style_context(m_btnStop), "flat");
+    gtk_widget_add_css_class(m_btnStop, "flat");
     gtk_button_set_icon_name(GTK_BUTTON(m_btnStop), "media-playback-stop-symbolic");
     gtk_widget_set_tooltip_text(m_btnStop, _("Stop Download"));
     g_signal_connect(m_btnStop, "clicked", G_CALLBACK((void (*)(GtkButton*, gpointer))[](GtkButton*, gpointer data) { reinterpret_cast<DownloadRow*>(data)->onStop(); }), this);
@@ -42,7 +42,7 @@ DownloadRow::DownloadRow(GtkWindow* parent, const std::shared_ptr<Download>& dow
     //View Logs Button
     m_btnViewLogs = gtk_button_new();
     gtk_widget_set_valign(m_btnViewLogs, GTK_ALIGN_CENTER);
-    gtk_style_context_add_class(gtk_widget_get_style_context(m_btnViewLogs), "flat");
+    gtk_widget_add_css_class(m_btnViewLogs, "flat");
     gtk_button_set_icon_name(GTK_BUTTON(m_btnViewLogs), "dialog-information-symbolic");
     gtk_widget_set_tooltip_text(m_btnViewLogs, _("View Logs"));
     g_signal_connect(m_btnViewLogs, "clicked", G_CALLBACK((void (*)(GtkButton*, gpointer))[](GtkButton*, gpointer data) { reinterpret_cast<DownloadRow*>(data)->onViewLogs(); }), this);
@@ -63,7 +63,7 @@ void DownloadRow::start(bool embedMetadata)
 {
     std::future<bool> result{ std::async(std::launch::async, [&, embedMetadata]() -> bool { return m_download->download(embedMetadata); }) };
     std::future_status status{ std::future_status::timeout };
-    gtk_style_context_add_class(gtk_widget_get_style_context(m_imgStatus), "accent");
+    gtk_widget_add_css_class(m_imgStatus, "accent");
     while(status != std::future_status::ready)
     {
         gtk_progress_bar_pulse(GTK_PROGRESS_BAR(m_progBar));
@@ -71,8 +71,8 @@ void DownloadRow::start(bool embedMetadata)
         status = result.wait_for(std::chrono::milliseconds(40));
     }
     bool successful{ result.get() };
-    gtk_style_context_remove_class(gtk_widget_get_style_context(m_imgStatus), "accent");
-    gtk_style_context_add_class(gtk_widget_get_style_context(m_imgStatus), successful ? "success" : "error");
+    gtk_widget_remove_css_class(m_imgStatus, "accent");
+    gtk_widget_add_css_class(m_imgStatus, successful ? "success" : "error");
     adw_view_stack_set_visible_child_name(ADW_VIEW_STACK(m_viewStack), "done");
     gtk_level_bar_set_value(GTK_LEVEL_BAR(m_levelBar), successful ? 1.0 : 0.0);
 }

@@ -11,7 +11,7 @@ LogsDialog::LogsDialog(GtkWindow* parent, const std::string& title, const std::s
     //Text View
     m_textView = gtk_text_view_new();
     gtk_widget_set_vexpand(m_textView, TRUE);
-    gtk_style_context_add_class(gtk_widget_get_style_context(m_textView), "card");
+    gtk_widget_add_css_class(m_textView, "card");
     gtk_text_view_set_left_margin(GTK_TEXT_VIEW(m_textView), 6);
     gtk_text_view_set_top_margin(GTK_TEXT_VIEW(m_textView), 6);
     gtk_text_view_set_right_margin(GTK_TEXT_VIEW(m_textView), 6);

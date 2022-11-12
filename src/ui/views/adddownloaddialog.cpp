@@ -42,7 +42,7 @@ AddDownloadDialog::AddDownloadDialog(GtkWindow* parent, AddDownloadDialogControl
     //Save Folder
     m_btnSelectSaveFolder = gtk_button_new();
     gtk_widget_set_valign(m_btnSelectSaveFolder, GTK_ALIGN_CENTER);
-    gtk_style_context_add_class(gtk_widget_get_style_context(m_btnSelectSaveFolder), "flat");
+    gtk_widget_add_css_class(m_btnSelectSaveFolder, "flat");
     gtk_button_set_icon_name(GTK_BUTTON(m_btnSelectSaveFolder), "folder-open-symbolic");
     gtk_widget_set_tooltip_text(m_btnSelectSaveFolder, _("Select Save Folder"));
     g_signal_connect(m_btnSelectSaveFolder, "clicked", G_CALLBACK((void (*)(GtkButton*, gpointer))[](GtkButton*, gpointer data) { reinterpret_cast<AddDownloadDialog*>(data)->onSelectSaveFolder(); }), this);
@@ -86,29 +86,29 @@ bool AddDownloadDialog::run()
         if(downloadCheckStatus != DownloadCheckStatus::Valid)
         {
             //Reset UI
-            gtk_style_context_remove_class(gtk_widget_get_style_context(m_rowVideoUrl), "error");
+            gtk_widget_remove_css_class(m_rowVideoUrl, "error");
             adw_preferences_row_set_title(ADW_PREFERENCES_ROW(m_rowVideoUrl), _("Video Url"));
-            gtk_style_context_remove_class(gtk_widget_get_style_context(m_rowSaveFolder), "error");
+            gtk_widget_remove_css_class(m_rowSaveFolder, "error");
             adw_preferences_row_set_title(ADW_PREFERENCES_ROW(m_rowSaveFolder), _("Save Folder"));
             //Mark Error
             if(downloadCheckStatus == DownloadCheckStatus::EmptyVideoUrl)
             {
-                gtk_style_context_add_class(gtk_widget_get_style_context(m_rowVideoUrl), "error");
+                gtk_widget_add_css_class(m_rowVideoUrl, "error");
                 adw_preferences_row_set_title(ADW_PREFERENCES_ROW(m_rowVideoUrl), _("Video Url (Empty)"));
             }
             else if(downloadCheckStatus == DownloadCheckStatus::InvalidVideoUrl)
             {
-                gtk_style_context_add_class(gtk_widget_get_style_context(m_rowVideoUrl), "error");
+                gtk_widget_add_css_class(m_rowVideoUrl, "error");
                 adw_preferences_row_set_title(ADW_PREFERENCES_ROW(m_rowVideoUrl), _("Video Url (Invalid)"));
             }
             else if(downloadCheckStatus == DownloadCheckStatus::EmptySaveFolder)
             {
-                gtk_style_context_add_class(gtk_widget_get_style_context(m_rowSaveFolder), "error");
+                gtk_widget_add_css_class(m_rowSaveFolder, "error");
                 adw_preferences_row_set_title(ADW_PREFERENCES_ROW(m_rowSaveFolder), _("Save Folder (Empty)"));
             }
             else if(downloadCheckStatus == DownloadCheckStatus::InvalidSaveFolder)
             {
-                gtk_style_context_add_class(gtk_widget_get_style_context(m_rowSaveFolder), "error");
+                gtk_widget_add_css_class(m_rowSaveFolder, "error");
                 adw_preferences_row_set_title(ADW_PREFERENCES_ROW(m_rowSaveFolder), _("Save Folder (Invalid)"));
             }
             //Prompt User to Fix
