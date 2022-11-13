@@ -14,8 +14,8 @@ Application::Application(const std::string& id, GApplicationFlags flags) : m_adw
     m_appInfo.setName("Nickvision Tube Converter");
     m_appInfo.setShortName("Tube Converter");
     m_appInfo.setDescription(_("An easy-to-use YouTube video downloader."));
-    m_appInfo.setVersion("2022.11.0");
-    m_appInfo.setChangelog("<ul><li>Fixed an issue where videos could not be downloaded on ARM64</li><li>Fixed an issue where 'Best' and 'Good' would download the same video quality</li><li>Improved design of the Logs dialog</li><li>Added translation support</li><li>Added Arabic translation (Thanks @fawaz006!)</li><li>Added Dutch translation (Thanks @Vistaus!)</li><li>Added French translation (Thanks @zothma!)</li><li>Added Russian translation (Thanks @fsobolev!)</li></ul>");
+    m_appInfo.setVersion("2022.11.1");
+    m_appInfo.setChangelog("<ul><li>Updated translations</li><li>Updated dependencies</li></ul>");
     m_appInfo.setGitHubRepo("https://github.com/nlogozzo/NickvisionTubeConverter");
     m_appInfo.setIssueTracker("https://github.com/nlogozzo/NickvisionTubeConverter/issues/new");
     m_appInfo.setSupportUrl("https://github.com/nlogozzo/NickvisionTubeConverter/discussions");
