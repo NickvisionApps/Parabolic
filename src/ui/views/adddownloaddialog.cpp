@@ -72,6 +72,7 @@ GtkWidget* AddDownloadDialog::gobj()
 bool AddDownloadDialog::run()
 {
     gtk_widget_show(m_gobj);
+    gtk_window_set_modal(GTK_WINDOW(m_gobj), true);
     while(gtk_widget_is_visible(m_gobj))
     {
         g_main_context_iteration(g_main_context_default(), false);
@@ -79,6 +80,7 @@ bool AddDownloadDialog::run()
     if(m_controller.getResponse() == "ok")
     {
         gtk_widget_hide(m_gobj);
+        gtk_window_set_modal(GTK_WINDOW(m_gobj), false);
         DownloadCheckStatus downloadCheckStatus{ DownloadCheckStatus::InvalidVideoUrl };
         ProgressDialog progressDialog{ GTK_WINDOW(m_parent), _("Preparing download..."), [&]() { downloadCheckStatus = m_controller.setDownload(gtk_editable_get_text(GTK_EDITABLE(m_rowVideoUrl)), adw_combo_row_get_selected(ADW_COMBO_ROW(m_rowFileType)), gtk_editable_get_text(GTK_EDITABLE(m_rowSaveFolder)), gtk_editable_get_text(GTK_EDITABLE(m_rowNewFilename)), adw_combo_row_get_selected(ADW_COMBO_ROW(m_rowQuality)), adw_combo_row_get_selected(ADW_COMBO_ROW(m_rowSubtitles))); } };
         progressDialog.run();
