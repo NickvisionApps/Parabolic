@@ -122,6 +122,16 @@ namespace NickvisionTubeConverter::Models
 		 * @param supportUrl The new support url of the application
 		 */
 		void setSupportUrl(const std::string& supportUrl);
+		/**
+		 * Gets the list of translators
+		 *
+		 * @returns The list of translators
+		 */
+		const std::string& getTranslatorCredits() const;
+		/**
+		 * Generate the list of translators from po/CREDITS.json file
+		 */
+		void generateTranslatorCredits();
 
 	private:
 		std::string m_id;
@@ -133,5 +143,6 @@ namespace NickvisionTubeConverter::Models
 		std::string m_gitHubRepo;
 		std::string m_issueTracker;
 		std::string m_supportUrl;
+		std::string m_translatorCredits;
 	};
 }
