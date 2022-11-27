@@ -35,6 +35,12 @@ meson build
 cd build
 meson compile org.nickvision.tubeconverter-pot
 ```
+Or, if you are using GNOME Builder, build the app and then run in the Builder's terminal:
+```bash
+flatpak run --command=sh org.gnome.Builder
+cd _build
+meson compile org.nickvision.tubeconverter-pot
+```
 This would generate a `NickvisionTubeConverter/po/org.nickvision.tubeconverter.pot` file, now you can use this file to translate the strings into your target language. You may use [Gtranslator](https://flathub.org/apps/details/org.gnome.Gtranslator) or [poedit](https://poedit.net) if you do not know how to translate manually in text itself. After translating (either through tools or directly in text editor), make sure to include the required metadata on the top of translation file (see existing files in `NickvisionTubeConverter/po/` directory.)
 
 One particular thing you should keep in mind is that some strings in this project are bifurcated into multiple strings to cater to responsiveness of the application, like:
@@ -48,6 +54,27 @@ You should use the same format for translated strings as well. But, because all 
 Put your translated file in `NickvisionTubeConverter/po` directory in format `<LANG>.po` where `<LANG>` is the language code.
 
 Put the language code of your language in `NickvisionTubeConverter/po/LINGUAS` (this file, as a convention, should remain in alphabetical order.)
+
+Add information in `NickvisionTubeConverter/po/CREDITS.json` so your name will appear in the app's About dialog:
+```
+"Jango Fett": {
+    "lang": "Mandalorian",
+    "email": "jango@galaxyfarfar.away"
+}
+```
+If you made multiple translations, use an array to list all languages:
+```
+"C-3PO": {
+    "lang": ["Ewokese", "Wookieespeak", "Jawaese"],
+    "url": "https://free.droids"
+}
+```
+
+To test your translation in GNOME Builder, press Ctrl+Alt+T to open a terminal inside the app's environment and then run:
+```
+LC_ALL=<LOCALE> /app/bin/org.nickvision.tubeconverter
+```
+where `<LOCALE>` is your locale (e.g. `it_IT.UTF-8`.)
 
 Commit these changes, and then create a pull request to the project.
 
