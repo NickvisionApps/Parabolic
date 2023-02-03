@@ -100,6 +100,12 @@ MainWindow::MainWindow(GtkApplication* application, const MainWindowController& 
     g_signal_connect(m_actAbout, "activate", G_CALLBACK((void (*)(GSimpleAction*, GVariant*, gpointer))[](GSimpleAction*, GVariant*, gpointer data) { reinterpret_cast<MainWindow*>(data)->onAbout(); }), this);
     g_action_map_add_action(G_ACTION_MAP(m_gobj), G_ACTION(m_actAbout));
     gtk_application_set_accels_for_action(application, "win.about", new const char*[2]{ "F1", nullptr });
+    //Quit Action
+    m_actQuit = g_simple_action_new("quit", nullptr);
+    g_signal_connect(m_actQuit, "activate", G_CALLBACK((void (*)(GSimpleAction*, GVariant*, gpointer))[](GSimpleAction*, GVariant*, gpointer data) { reinterpret_cast<MainWindow*>(data)->onQuit(); }), this);
+    g_action_map_add_action(G_ACTION_MAP(m_gobj), G_ACTION(m_actQuit));
+    gtk_application_set_accels_for_action(application, "win.quit", new const char*[2]{ "<Ctrl>q", nullptr });
+
 }
 
 GtkWidget* MainWindow::gobj()
@@ -176,4 +182,12 @@ void MainWindow::onAbout()
                           "debug-info", "Dependencies:\n- yt-dlp Version 2022.10.04\n- ffmpeg Version 5.1.2",
                           "release-notes", m_controller.getAppInfo().getChangelog().c_str(),
                           nullptr);
+}
+
+void MainWindow::onQuit()
+{
+    if(!onCloseRequest())
+    {
+        g_application_quit(G_APPLICATION(gtk_window_get_application(GTK_WINDOW(m_gobj))));
+    }
 }

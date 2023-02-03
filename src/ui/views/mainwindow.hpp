@@ -49,6 +49,7 @@ namespace NickvisionTubeConverter::UI::Views
 		GSimpleAction* m_actPreferences{ nullptr };
 		GSimpleAction* m_actKeyboardShortcuts{ nullptr };
 		GSimpleAction* m_actAbout{ nullptr };
+		GSimpleAction* m_actQuit{ nullptr };
 		std::vector<std::unique_ptr<NickvisionTubeConverter::UI::Controls::DownloadRow>> m_downloadRows;
 		/**
 		 * Runs closing functions
@@ -70,5 +71,9 @@ namespace NickvisionTubeConverter::UI::Views
 		 * Displays the about dialog
 		 */
 		void onAbout();
+		/**
+		 * Quits the app
+		 */
+		void onQuit();
 	};
 }
