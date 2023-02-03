@@ -48,6 +48,12 @@ ShortcutsDialog::ShortcutsDialog(GtkWindow* parent)
                             <child>
                                 <object class="GtkShortcutsShortcut">
                                     <property name="title">%s</property>
+                                    <property name="accelerator">&lt;Control&gt;q</property>
+                                </object>
+                            </child>
+                            <child>
+                                <object class="GtkShortcutsShortcut">
+                                    <property name="title">%s</property>
                                     <property name="accelerator">F1</property>
                                 </object>
                             </child>
@@ -63,6 +69,7 @@ ShortcutsDialog::ShortcutsDialog(GtkWindow* parent)
     _("Application"),
     _("Preferences"),
     _("Keyboard Shortcuts"),
+    _("Quit"),
     _("About")
     );
     GtkBuilder* builder{ gtk_builder_new_from_string(m_xml.c_str(), -1) };
