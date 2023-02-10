@@ -14,6 +14,9 @@ The authors of Nickvision Tube Converter are not responsible/liable for any misu
 
 # Installation
 <a href='https://flathub.org/apps/details/org.nickvision.tubeconverter'><img width='140' alt='Download on Flathub' src='https://flathub.org/assets/badges/flathub-badge-en.png'/></a>
+[![Get it from the Snap Store](https://snapcraft.io/static/images/badges/en/snap-store-black.svg)](https://snapcraft.io/tube-converter)
+
+
 
 # Chat
 <a href='https://matrix.to/#/#nickvision:matrix.org'><img width='140' alt='Join our room' src='https://user-images.githubusercontent.com/17648453/196094077-c896527d-af6d-4b43-a5d8-e34a00ffd8f6.png'/></a>
