@@ -40,20 +40,20 @@ public class AddDownloadDialog
         _dialog.AddResponse("ok", _controller.Localizer["OK"]);
         _dialog.SetDefaultResponse("ok");
         _dialog.SetResponseAppearance("ok", Adw.ResponseAppearance.Suggested);
-        //TODO: Handle response
+        _dialog.OnResponse += (sender, e) => {
+            if (e.Response == "ok")
+            {
+                Validate();
+                return;
+            }
+            _dialog.Destroy();
+        };
         //Preference Group
         _preferencesGroup = Adw.PreferencesGroup.New();
         //Video Url
         _rowVideoUrl = Adw.EntryRow.New();
         _rowVideoUrl.SetSizeRequest(420, -1);
         _rowVideoUrl.SetTitle(_controller.Localizer["VideoUrl.Field"]);
-        _rowVideoUrl.OnNotify += (sender, e) =>
-        {
-            if (e.Pspec.GetName() == "text")
-            {
-                Validate();
-            }
-        };
         _preferencesGroup.Add(_rowVideoUrl);
         //File Type
         _rowFileType = Adw.ComboRow.New();
@@ -63,7 +63,7 @@ public class AddDownloadDialog
         {
             if (e.Pspec.GetName() == "selected-item")
             {
-                Validate();
+                _rowSubtitles.SetSensitive(MediaFileTypeHelpers.GetIsVideo((MediaFileType)_rowFileType.GetSelected()));
             }
         };
         _preferencesGroup.Add(_rowFileType);
@@ -71,25 +71,11 @@ public class AddDownloadDialog
         _rowQuality = Adw.ComboRow.New();
         _rowQuality.SetTitle(_controller.Localizer["Quality.Field"]);
         _rowQuality.SetModel(Gtk.StringList.New(new string[] { _controller.Localizer["Best"], _controller.Localizer["Good"], _controller.Localizer["Worst"] }));
-        _rowQuality.OnNotify += (sender, e) =>
-        {
-            if (e.Pspec.GetName() == "selected-item")
-            {
-                Validate();
-            }
-        };
         _preferencesGroup.Add(_rowQuality);
         //Subtitles
         _rowSubtitles = Adw.ComboRow.New();
         _rowSubtitles.SetTitle(_controller.Localizer["Subtitles.Field"]);
         _rowSubtitles.SetModel(Gtk.StringList.New(new string[] { _controller.Localizer["None"], "VTT", "SRT" }));
-        _rowSubtitles.OnNotify += (sender, e) =>
-        {
-            if (e.Pspec.GetName() == "selected-item")
-            {
-                Validate();
-            }
-        };
         _preferencesGroup.Add(_rowSubtitles);
         //Save Folder
         _btnSelectSaveFolder = Gtk.Button.New();
@@ -109,13 +95,6 @@ public class AddDownloadDialog
         _rowNewFilename.SetSizeRequest(420, -1);
         _rowNewFilename.SetTitle(_controller.Localizer["NewFilename.Field"]);
         _preferencesGroup.Add(_rowNewFilename);
-        _rowNewFilename.OnNotify += (sender, e) =>
-        {
-            if (e.Pspec.GetName() == "text")
-            {
-                Validate();
-            }
-        };
         //Layout
         _dialog.SetExtraChild(_preferencesGroup);
         //Load Config
@@ -162,10 +141,8 @@ public class AddDownloadDialog
     /// </summary>
     private void Validate()
     {
-        if (_constructing)
-        {
-            return;
-        }
-        _rowSubtitles.SetSensitive(MediaFileTypeHelpers.GetIsVideo((MediaFileType)_rowFileType.GetSelected()));
+        _dialog.Hide();
+        _dialog.SetModal(false);
+        //TODO:
     }
 }
