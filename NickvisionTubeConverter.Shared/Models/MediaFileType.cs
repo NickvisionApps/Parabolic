@@ -2,6 +2,9 @@
 
 namespace NickvisionTubeConverter.Shared.Models;
 
+/// <summary>
+/// A model for media file types
+/// </summary>
 public enum MediaFileType
 {
     MP4 = 0,
@@ -12,8 +15,16 @@ public enum MediaFileType
     WAV
 }
 
+/// <summary>
+/// Helper functions for media file types
+/// </summary>
 public static class MediaFileTypeHelpers
 {
+    /// <summary>
+    /// Parse a MediaFileType from a string
+    /// </summary>
+    /// <param name="s">The string to parse</param>
+    /// <returns>The MediaFileType or null if failed</returns>
     public static MediaFileType? Parse(string s)
     {
         if(s.IndexOf('.') != -1)
@@ -30,8 +41,18 @@ public static class MediaFileTypeHelpers
         }
     }
 
+    /// <summary>
+    /// Gets the dot extension of the MediaFileType
+    /// </summary>
+    /// <param name="type">The MediaFileType</param>
+    /// <returns>The dot extension of the MediaFileType</returns>
     public static string ToDotExtension(this MediaFileType type) => $".{type.ToString().ToLower()}";
 
+    /// <summary>
+    /// Gets whether or not the MediaFileType is an audio file type
+    /// </summary>
+    /// <param name="type">The MediaFileType</param>
+    /// <returns>True if audio file type, else false</returns>
     public static bool GetIsAudio(this MediaFileType type) => type switch
     {
         MediaFileType.MP4 => false,
@@ -43,6 +64,11 @@ public static class MediaFileTypeHelpers
         _ => false
     };
 
+    /// <summary>
+    /// Gets whether or not the MediaFileType is a video file type
+    /// </summary>
+    /// <param name="type">The MediaFileType</param>
+    /// <returns>True if video file type, else false</returns>
     public static bool GetIsVideo(this MediaFileType type) => type switch
     {
         MediaFileType.MP4 => true,
