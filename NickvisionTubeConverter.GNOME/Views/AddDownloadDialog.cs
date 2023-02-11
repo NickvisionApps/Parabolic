@@ -82,7 +82,6 @@ public class AddDownloadDialog
             }
         };
         _preferencesGroup.Add(_rowSubtitles);
-        //TODO: Handle response
         //Save Folder
         //TODO
         //New Filename
@@ -90,11 +89,17 @@ public class AddDownloadDialog
         _rowNewFilename.SetSizeRequest(420, -1);
         _rowNewFilename.SetTitle(_controller.Localizer["NewFilename.Field"]);
         _preferencesGroup.Add(_rowNewFilename);
-        //TODO: Handle response
+        _rowNewFilename.OnNotify += (sender, e) => {
+            if (e.Pspec.GetName() == "text")
+            {
+                Validate();
+            }
+        };
         //Layout
         _dialog.SetExtraChild(_preferencesGroup);
         //Load Config
-        //TODO
+        _rowFileType.SetSelected(_controller.GetPreviousFileTypeAsInt());
+        //TODO: Load save folder from config
         _constructing = false;
 
 
