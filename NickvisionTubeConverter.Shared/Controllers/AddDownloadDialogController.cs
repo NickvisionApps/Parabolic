@@ -1,3 +1,4 @@
+using NickvisionTubeConverter.Shared.Helpers;
 using NickvisionTubeConverter.Shared.Models;
 
 namespace NickvisionTubeConverter.Shared.Controllers;
@@ -8,6 +9,11 @@ namespace NickvisionTubeConverter.Shared.Controllers;
 public class AddDownloadDialogController
 {
     /// <summary>
+    /// The localizer to get translated strings from
+    /// </summary>
+    public Localizer Localizer { get; init; }
+
+    /// <summary>
     /// The response of the dialog
     /// </summary>
     public string Response { get; set; }
@@ -16,6 +22,14 @@ public class AddDownloadDialogController
     /// The download created by the dialog
     /// </summary>
     public Download Download { get; private set; }
+
+    /// <summary>
+    /// Constructs a AddDownloadDialogController
+    /// </summary>
+    public AddDownloadDialogController(Localizer localizer)
+    {
+        Localizer = localizer;
+    }
 
     /// <summary>
     /// Gets the previously used save folder from the configuration

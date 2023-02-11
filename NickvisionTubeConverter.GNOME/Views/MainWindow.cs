@@ -85,7 +85,9 @@ public partial class MainWindow
         _controller.NotificationSent += NotificationSent;
         //Add Download Action
         var actDownload = Gio.SimpleAction.New("addDownload", null);
-        actDownload.OnActivate += (sender, e) => Console.WriteLine("TODO");
+        actDownload.OnActivate += (sender, e) => {
+            new AddDownloadDialog(new AddDownloadDialogController(_controller.Localizer), Handle); //TODO: Do properly
+        };
         Handle.AddAction(actDownload);
         application.SetAccelsForAction("win.addDownload", new string[] { "<Ctrl>n" });
         //Preferences Action
