@@ -31,6 +31,17 @@ public class ShortcutsDialog
                         <object class='GtkShortcutsSection'>
                             <child>
                                 <object class='GtkShortcutsGroup'>
+                                    <property name='title'>{localizer["Download"]}</property>
+                                    <child>
+                                        <object class='GtkShortcutsShortcut'>
+                                            <property name='title'>{localizer["AddDownload"]}</property>
+                                            <property name='accelerator'>&lt;Control&gt;n</property>
+                                        </object>
+                                    </child>
+                                </object>
+                            </child>
+                            <child>
+                                <object class='GtkShortcutsGroup'>
                                     <property name='title'>{localizer["Application", "Shortcut"]}</property>
                                     <child>
                                         <object class='GtkShortcutsShortcut'>
