@@ -85,7 +85,8 @@ public partial class MainWindow
         _controller.NotificationSent += NotificationSent;
         //Add Download Action
         var actDownload = Gio.SimpleAction.New("addDownload", null);
-        actDownload.OnActivate += (sender, e) => {
+        actDownload.OnActivate += (sender, e) =>
+        {
             new AddDownloadDialog(new AddDownloadDialogController(_controller.Localizer), Handle); //TODO: Do properly
         };
         Handle.AddAction(actDownload);

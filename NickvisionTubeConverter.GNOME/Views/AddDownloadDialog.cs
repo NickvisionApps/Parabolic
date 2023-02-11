@@ -46,7 +46,8 @@ public class AddDownloadDialog
         _rowVideoUrl = Adw.EntryRow.New();
         _rowVideoUrl.SetSizeRequest(420, -1);
         _rowVideoUrl.SetTitle(_controller.Localizer["VideoUrl.Field"]);
-        _rowVideoUrl.OnNotify += (sender, e) => {
+        _rowVideoUrl.OnNotify += (sender, e) =>
+        {
             if (e.Pspec.GetName() == "text")
             {
                 Validate();
@@ -57,7 +58,8 @@ public class AddDownloadDialog
         _rowFileType = Adw.ComboRow.New();
         _rowFileType.SetTitle(_controller.Localizer["FileType.Field"]);
         _rowFileType.SetModel(Gtk.StringList.New(new string[] { "MP4", "WEBM", "MP3", "OPUS", "FLAC", "WAV" }));
-        _rowFileType.OnNotify += (sender, e) => {
+        _rowFileType.OnNotify += (sender, e) =>
+        {
             if (e.Pspec.GetName() == "selected-item")
             {
                 Validate();
@@ -68,7 +70,8 @@ public class AddDownloadDialog
         _rowQuality = Adw.ComboRow.New();
         _rowQuality.SetTitle(_controller.Localizer["Quality.Field"]);
         _rowQuality.SetModel(Gtk.StringList.New(new string[] { _controller.Localizer["Best"], _controller.Localizer["Good"], _controller.Localizer["Worst"] }));
-        _rowQuality.OnNotify += (sender, e) => {
+        _rowQuality.OnNotify += (sender, e) =>
+        {
             if (e.Pspec.GetName() == "selected-item")
             {
                 Validate();
@@ -79,7 +82,8 @@ public class AddDownloadDialog
         _rowSubtitles = Adw.ComboRow.New();
         _rowSubtitles.SetTitle(_controller.Localizer["Subtitles.Field"]);
         _rowSubtitles.SetModel(Gtk.StringList.New(new string[] { _controller.Localizer["None"], "VTT", "SRT" }));
-        _rowSubtitles.OnNotify += (sender, e) => {
+        _rowSubtitles.OnNotify += (sender, e) =>
+        {
             if (e.Pspec.GetName() == "selected-item")
             {
                 Validate();
@@ -104,7 +108,8 @@ public class AddDownloadDialog
         _rowNewFilename.SetSizeRequest(420, -1);
         _rowNewFilename.SetTitle(_controller.Localizer["NewFilename.Field"]);
         _preferencesGroup.Add(_rowNewFilename);
-        _rowNewFilename.OnNotify += (sender, e) => {
+        _rowNewFilename.OnNotify += (sender, e) =>
+        {
             if (e.Pspec.GetName() == "text")
             {
                 Validate();
@@ -140,7 +145,8 @@ public class AddDownloadDialog
     {
         var fileDialog = Gtk.FileChooserNative.New(_controller.Localizer["SelectSaveFolder"], _parent, Gtk.FileChooserAction.SelectFolder, _controller.Localizer["OK"], _controller.Localizer["Cancel"]);
         fileDialog.SetModal(true);
-        fileDialog.OnResponse += (sender, e) => {
+        fileDialog.OnResponse += (sender, e) =>
+        {
             if (e.ResponseId == (int)Gtk.ResponseType.Accept)
             {
                 var path = fileDialog.GetFile()!.GetPath();
