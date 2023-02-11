@@ -1,5 +1,6 @@
 using NickvisionTubeConverter.Shared.Controllers;
 using NickvisionTubeConverter.Shared.Helpers;
+using NickvisionTubeConverter.Shared.Models;
 
 namespace NickvisionTubeConverter.GNOME.Views;
 
@@ -41,23 +42,45 @@ public class AddDownloadDialog
         _rowVideoUrl = Adw.EntryRow.New();
         _rowVideoUrl.SetSizeRequest(420, -1);
         _rowVideoUrl.SetTitle(_controller.Localizer["VideoUrl.Field"]);
+        _rowVideoUrl.OnNotify += (sender, e) => {
+            if (e.Pspec.GetName() == "text")
+            {
+                Validate();
+            }
+        };
         _preferencesGroup.Add(_rowVideoUrl);
         //File Type
         _rowFileType = Adw.ComboRow.New();
         _rowFileType.SetTitle(_controller.Localizer["FileType.Field"]);
         _rowFileType.SetModel(Gtk.StringList.New(new string[] { "MP4", "WEBM", "MP3", "OPUS", "FLAC", "WAV" }));
+        _rowFileType.OnNotify += (sender, e) => {
+            if (e.Pspec.GetName() == "selected-item")
+            {
+                Validate();
+            }
+        };
         _preferencesGroup.Add(_rowFileType);
-        //TODO: Handle response
         //Quality
         _rowQuality = Adw.ComboRow.New();
         _rowQuality.SetTitle(_controller.Localizer["Quality.Field"]);
         _rowQuality.SetModel(Gtk.StringList.New(new string[] { _controller.Localizer["Best"], _controller.Localizer["Good"], _controller.Localizer["Worst"] }));
+        _rowQuality.OnNotify += (sender, e) => {
+            if (e.Pspec.GetName() == "selected-item")
+            {
+                Validate();
+            }
+        };
         _preferencesGroup.Add(_rowQuality);
-        //TODO: Handle response
         //Subtitles
         _rowSubtitles = Adw.ComboRow.New();
         _rowSubtitles.SetTitle(_controller.Localizer["Subtitles.Field"]);
         _rowSubtitles.SetModel(Gtk.StringList.New(new string[] { _controller.Localizer["None"], "VTT", "SRT" }));
+        _rowSubtitles.OnNotify += (sender, e) => {
+            if (e.Pspec.GetName() == "selected-item")
+            {
+                Validate();
+            }
+        };
         _preferencesGroup.Add(_rowSubtitles);
         //TODO: Handle response
         //Save Folder
@@ -88,4 +111,16 @@ public class AddDownloadDialog
     /// Destroys the dialog
     /// </summary>
     public void Destroy() => _dialog.Destroy();
+
+    /// <summary>
+    /// Validates the dialog's input
+    /// </summary>
+    private void Validate()
+    {
+        if (_constructing)
+        {
+            return;
+        }
+        _rowSubtitles.SetSensitive(MediaFileTypeHelpers.GetIsVideo((MediaFileType)_rowFileType.GetSelected()));
+    }
 }

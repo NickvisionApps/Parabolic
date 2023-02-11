@@ -64,7 +64,7 @@ public class AddDownloadDialogController
     {
         Download = new Download(videoUrl, (MediaFileType)mediaFileType, saveFolder, newFileName, (Quality)quality, (Subtitle)subtitles);
         var checkStatus = Download.CheckStatus;
-        if(checkStatus == DownloadCheckStatus.Valid)
+        if (checkStatus == DownloadCheckStatus.Valid)
         {
             Configuration.Current.PreviousSaveFolder = saveFolder;
             Configuration.Current.PreviousMediaFileType = (MediaFileType)mediaFileType;
