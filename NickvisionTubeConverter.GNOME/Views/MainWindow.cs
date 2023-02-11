@@ -13,9 +13,12 @@ public partial class MainWindow
     private readonly Adw.Application _application;
     private readonly Gtk.Box _mainBox;
     private readonly Adw.HeaderBar _headerBar;
+    private readonly Gtk.Button _btnAddDownload;
+    private readonly Adw.ButtonContent _btnAddDownloadContent;
     private readonly Adw.WindowTitle _windowTitle;
     private readonly Gtk.MenuButton _btnMenuHelp;
     private readonly Adw.ToastOverlay _toastOverlay;
+    private readonly Adw.StatusPage _statusPageNoDownloads;
     private readonly Adw.ViewStack _viewStack;
 
     public Adw.ApplicationWindow Handle { get; init; }
@@ -44,6 +47,15 @@ public partial class MainWindow
         _windowTitle = Adw.WindowTitle.New(_controller.AppInfo.ShortName, null);
         _headerBar.SetTitleWidget(_windowTitle);
         _mainBox.Append(_headerBar);
+        //Add Download Button
+        _btnAddDownload = Gtk.Button.New();
+        _btnAddDownloadContent = Adw.ButtonContent.New();
+        _btnAddDownloadContent.SetIconName("list-add-symbolic");
+        _btnAddDownloadContent.SetLabel(_controller.Localizer["Add"]);
+        _btnAddDownload.SetChild(_btnAddDownloadContent);
+        _btnAddDownload.SetTooltipText(_controller.Localizer["AddDownload", "Tooltip"]);
+        _btnAddDownload.SetDetailedActionName("win.addDownload");
+        _headerBar.PackStart(_btnAddDownload);
         //Menu Help Button
         _btnMenuHelp = Gtk.MenuButton.New();
         var menuHelp = Gio.Menu.New();
@@ -59,14 +71,24 @@ public partial class MainWindow
         _toastOverlay.SetHexpand(true);
         _toastOverlay.SetVexpand(true);
         _mainBox.Append(_toastOverlay);
+        //Page No Downloads
+        _statusPageNoDownloads = Adw.StatusPage.New();
+        _statusPageNoDownloads.SetIconName("org.nickvision.tubeconverter-symbolic");
+        _statusPageNoDownloads.SetTitle(_controller.Localizer["NoDownloadsTitle"]);
+        _statusPageNoDownloads.SetDescription(_controller.Localizer["NoDownloadsDescription"]);
         //View Stack
         _viewStack = Adw.ViewStack.New();
+        _viewStack.AddNamed(_statusPageNoDownloads, "pageNoDownloads");
         _toastOverlay.SetChild(_viewStack);
         //Layout
         Handle.SetContent(_mainBox);
-        _viewStack.SetVisibleChildName("NoFolder");
         //Register Events 
         _controller.NotificationSent += NotificationSent;
+        //Add Download Action
+        var actDownload = Gio.SimpleAction.New("addDownload", null);
+        actDownload.OnActivate += (sender, e) => Console.WriteLine("TODO");
+        Handle.AddAction(actDownload);
+        application.SetAccelsForAction("win.addDownload", new string[] { "<Ctrl>n" });
         //Preferences Action
         var actPreferences = Gio.SimpleAction.New("preferences", null);
         actPreferences.OnActivate += Preferences;
