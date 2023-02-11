@@ -16,6 +16,9 @@ public partial class PreferencesDialog : Adw.Window
     private readonly Adw.PreferencesPage _page;
     private readonly Adw.PreferencesGroup _grpUserInterface;
     private readonly Adw.ComboRow _rowTheme;
+    private readonly Adw.PreferencesGroup _grpConverter;
+    private readonly Adw.ActionRow _rowEmbedMetadata;
+    private readonly Gtk.Switch _switchEmbedMetadata;
 
     /// <summary>
     /// Constructs a PreferencesDialog
@@ -58,11 +61,26 @@ public partial class PreferencesDialog : Adw.Window
         };
         _grpUserInterface.Add(_rowTheme);
         _page.Add(_grpUserInterface);
+        //Converter Group
+        _grpConverter = Adw.PreferencesGroup.New();
+        _grpConverter.SetTitle(_controller.Localizer["Converter"]);
+        _grpConverter.SetDescription(_controller.Localizer["ConverterDescription"]);
+        //Embed Metadata
+        _rowEmbedMetadata = Adw.ActionRow.New();
+        _switchEmbedMetadata = Gtk.Switch.New();
+        _switchEmbedMetadata.SetValign(Gtk.Align.Center);
+        _rowEmbedMetadata.SetTitle(_controller.Localizer["EmbedMetadata"]);
+        _rowEmbedMetadata.SetSubtitle(_controller.Localizer["EmbedMetadata", "Description"]);
+        _rowEmbedMetadata.AddSuffix(_switchEmbedMetadata);
+        _rowEmbedMetadata.SetActivatableWidget(_switchEmbedMetadata);
+        _grpConverter.Add(_rowEmbedMetadata);
+        _page.Add(_grpConverter);
         //Layout
         SetContent(_mainBox);
         OnHide += Hide;
         //Load Config
         _rowTheme.SetSelected((uint)_controller.Theme);
+        _switchEmbedMetadata.SetActive(_controller.EmbedMetadata);
     }
 
     /// <summary>
@@ -72,6 +90,7 @@ public partial class PreferencesDialog : Adw.Window
     /// <param name="e">EventArgs</param>
     private void Hide(Gtk.Widget sender, EventArgs e)
     {
+        _controller.EmbedMetadata = _switchEmbedMetadata.GetActive();
         _controller.SaveConfiguration();
         Destroy();
     }
