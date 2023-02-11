@@ -1,6 +1,7 @@
 using NickvisionTubeConverter.Shared.Controllers;
 using NickvisionTubeConverter.Shared.Helpers;
 using NickvisionTubeConverter.Shared.Models;
+using System;
 
 namespace NickvisionTubeConverter.GNOME.Views;
 
