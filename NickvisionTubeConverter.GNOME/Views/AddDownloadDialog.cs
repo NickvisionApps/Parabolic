@@ -17,6 +17,8 @@ public class AddDownloadDialog
     private readonly Adw.ComboRow _rowFileType;
     private readonly Adw.ComboRow _rowQuality;
     private readonly Adw.ComboRow _rowSubtitles;
+    private readonly Gtk.Button _btnSelectSaveFolder;
+    private readonly Adw.EntryRow _rowSaveFolder;
     private readonly Adw.EntryRow _rowNewFilename;
 
     /// <summary>
@@ -83,7 +85,18 @@ public class AddDownloadDialog
         };
         _preferencesGroup.Add(_rowSubtitles);
         //Save Folder
-        //TODO
+        _btnSelectSaveFolder = Gtk.Button.New();
+        _btnSelectSaveFolder.SetValign(Gtk.Align.Center);
+        _btnSelectSaveFolder.AddCssClass("flat");
+        _btnSelectSaveFolder.SetIconName("folder-open-symbolic");
+        _btnSelectSaveFolder.SetTooltipText(_controller.Localizer["SelectSaveFolder", "Tooltip"]);
+        //TODO: Handle response
+        _rowSaveFolder = Adw.EntryRow.New();
+        _rowSaveFolder.SetSizeRequest(420, -1);
+        _rowSaveFolder.SetTitle(_controller.Localizer["SelectSaveFolder"]);
+        _rowSaveFolder.AddSuffix(_btnSelectSaveFolder);
+        _rowSaveFolder.SetEditable(false);
+        _preferencesGroup.Add(_rowSaveFolder);
         //New Filename
         _rowNewFilename = Adw.EntryRow.New();
         _rowNewFilename.SetSizeRequest(420, -1);
@@ -99,7 +112,7 @@ public class AddDownloadDialog
         _dialog.SetExtraChild(_preferencesGroup);
         //Load Config
         _rowFileType.SetSelected((uint)_controller.GetPreviousFileTypeAsInt());
-        //TODO: Load save folder from config
+        _rowSaveFolder.SetText(_controller.GetPreviousSaveFolder());
         _constructing = false;
 
 
