@@ -98,7 +98,7 @@ public class AddDownloadDialog
         //Layout
         _dialog.SetExtraChild(_preferencesGroup);
         //Load Config
-        _rowFileType.SetSelected(_controller.GetPreviousFileTypeAsInt());
+        _rowFileType.SetSelected((uint)_controller.GetPreviousFileTypeAsInt());
         //TODO: Load save folder from config
         _constructing = false;
 
