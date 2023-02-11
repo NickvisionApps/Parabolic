@@ -51,11 +51,10 @@ public partial class MainWindow
         _btnAddDownload = Gtk.Button.New();
         _btnAddDownloadContent = Adw.ButtonContent.New();
         _btnAddDownloadContent.SetIconName("list-add-symbolic");
-	_btnAddDownloadContent.SetLabel(_controller.Localizer["Add"]);
-	_btnAddDownload.SetChild(_btnAddDownloadContent);
-	_btnAddDownload.SetTooltipText(_controller.Localizer["AddDownload", "Tooltip"]);
-	_btnAddDownload.SetDetailedActionName("win.addDownload");
-	_headerBar.PackStart(_btnAddDownload);
+        _btnAddDownloadContent.SetLabel(_controller.Localizer["Add"]);
+        _btnAddDownload.SetChild(_btnAddDownloadContent);
+        _btnAddDownload.SetTooltipText(_controller.Localizer["AddDownload", "Tooltip"]);
+        _btnAddDownload.SetDetailedActionName("win.addDownload");_headerBar.PackStart(_btnAddDownload);
         //Menu Help Button
         _btnMenuHelp = Gtk.MenuButton.New();
         var menuHelp = Gio.Menu.New();
