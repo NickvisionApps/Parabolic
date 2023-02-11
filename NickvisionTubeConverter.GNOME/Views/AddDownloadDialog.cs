@@ -10,6 +10,7 @@ namespace NickvisionTubeConverter.GNOME.Views;
 public class AddDownloadDialog
 {
     private bool _constructing;
+    private readonly Gtk.Window _parent;
     private readonly AddDownloadDialogController _controller;
     private readonly Adw.MessageDialog _dialog;
     private readonly Adw.PreferencesGroup _preferencesGroup;
@@ -27,6 +28,7 @@ public class AddDownloadDialog
     public AddDownloadDialog(AddDownloadDialogController controller, Gtk.Window parent)
     {
         _constructing = true;
+        _parent = parent;
         _controller = controller;
         //Dialog Settings
         _dialog = Adw.MessageDialog.New(parent, _controller.Localizer["AddDownload"], "");
@@ -90,7 +92,7 @@ public class AddDownloadDialog
         _btnSelectSaveFolder.AddCssClass("flat");
         _btnSelectSaveFolder.SetIconName("folder-open-symbolic");
         _btnSelectSaveFolder.SetTooltipText(_controller.Localizer["SelectSaveFolder", "Tooltip"]);
-        //TODO: Handle response
+        _btnSelectSaveFolder.OnClicked += SelectSaveFolder;
         _rowSaveFolder = Adw.EntryRow.New();
         _rowSaveFolder.SetSizeRequest(420, -1);
         _rowSaveFolder.SetTitle(_controller.Localizer["SelectSaveFolder"]);
@@ -115,7 +117,6 @@ public class AddDownloadDialog
         _rowSaveFolder.SetText(_controller.GetPreviousSaveFolder());
         _constructing = false;
 
-
         //TODO: Remove this
         Show();
     }
@@ -129,6 +130,25 @@ public class AddDownloadDialog
     /// Destroys the dialog
     /// </summary>
     public void Destroy() => _dialog.Destroy();
+
+    /// <summary>
+    /// Occurs when the select save folder button is clicked
+    /// </summary>
+    /// <param name="sender">Gtk.Button</param>
+    /// <param name="e">EventArgs</param>
+    private void SelectSaveFolder(Gtk.Button sender, EventArgs e)
+    {
+        var fileDialog = Gtk.FileChooserNative.New(_controller.Localizer["SelectSaveFolder"], _parent, Gtk.FileChooserAction.SelectFolder, _controller.Localizer["OK"], _controller.Localizer["Cancel"]);
+        fileDialog.SetModal(true);
+        fileDialog.OnResponse += (sender, e) => {
+            if (e.ResponseId == (int)Gtk.ResponseType.Accept)
+            {
+                var path = fileDialog.GetFile()!.GetPath();
+                _rowSaveFolder.SetText(path);
+            }
+        };
+        fileDialog.Show();
+    }
 
     /// <summary>
     /// Validates the dialog's input
