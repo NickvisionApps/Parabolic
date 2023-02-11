@@ -37,6 +37,16 @@ public class PreferencesViewController
     }
 
     /// <summary>
+    /// Whether or not to embed metadata in a download
+    /// </summary>
+    public bool EmbedMetadata
+    {
+        get => Configuration.Current.EmbedMetadata;
+
+        set => Configuration.Current.EmbedMetadata = value;
+    }
+
+    /// <summary>
     /// Saves the configuration to disk
     /// </summary>
     public void SaveConfiguration() => Configuration.Current.Save();
