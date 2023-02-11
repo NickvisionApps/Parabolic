@@ -17,6 +17,18 @@ public class Configuration
     /// The preferred theme for the application
     /// </summary>
     public Theme Theme { get; set; }
+    /// <summary>
+    /// The previously used download save folder
+    /// </summary>
+    public string PreviousSaveFolder { get; set; }
+    /// <summary>
+    /// The previously used media file type
+    /// </summary>
+    public MediaFileType PreviousMediaFileType { get; set; }
+    /// <summary>
+    /// Whether or not to embed metadata in a download
+    /// </summary>
+    public bool EmbedMetadata { get; set; }
 
     /// <summary>
     /// Occurs when the configuration is saved to disk
@@ -33,6 +45,9 @@ public class Configuration
             Directory.CreateDirectory(ConfigDir);
         }
         Theme = Theme.System;
+        PreviousSaveFolder = "";
+        PreviousMediaFileType = MediaFileType.MP4;
+        EmbedMetadata = true;
     }
 
     /// <summary>
