@@ -51,11 +51,11 @@ public partial class MainWindow
         _btnAddDownload = Gtk.Button.New();
         _btnAddDownloadContent = Adw.ButtonContent.New();
         _btnAddDownloadContent.SetIconName("list-add-symbolic");
-        _btnAddDownloadContent.SetLabel(_controller.Localizer["Add"]);
-        _btnAddDownload.SetChild(_btnAddDownloadContent);
-        _btnAddDownload.SetTooltipText(_controller.Localizer["AddDownload", "Tooltip"]);
-        _btnAddDownload.SetDetailedActionName("win.addDownload");
-        _headerBar.PackStart(_btnAddDownload);
+	_btnAddDownloadContent.SetLabel(_controller.Localizer["Add"]);
+	_btnAddDownload.SetChild(_btnAddDownloadContent);
+	_btnAddDownload.SetTooltipText(_controller.Localizer["AddDownload", "Tooltip"]);
+	_btnAddDownload.SetDetailedActionName("win.addDownload");
+	_headerBar.PackStart(_btnAddDownload);
         //Menu Help Button
         _btnMenuHelp = Gtk.MenuButton.New();
         var menuHelp = Gio.Menu.New();
@@ -103,7 +103,12 @@ public partial class MainWindow
         var actQuit = Gio.SimpleAction.New("quit", null);
         actQuit.OnActivate += Quit;
         Handle.AddAction(actQuit);
-        application.SetAccelsForAction("win.quit", new string[] { "<Ctrl>q" });
+        application.SetAccelsForAction("win.quit", new string[] { "<Ctrl>q", "<Ctrl>w" });
+        //Primary Menu Action
+        var actPrimaryMenu = Gio.SimpleAction.New("primaryMenu", null);
+        actPrimaryMenu.OnActivate += (sender, e) => _btnMenuHelp.Popup();
+        Handle.AddAction(actPrimaryMenu);
+        application.SetAccelsForAction("win.primaryMenu", new string[] { "F10" });
         //About Action
         var actAbout = Gio.SimpleAction.New("about", null);
         actAbout.OnActivate += About;
