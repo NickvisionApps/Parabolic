@@ -1,0 +1,67 @@
+{
+    "app-id" : "org.nickvision.tubeconverter",
+    "runtime" : "org.gnome.Platform",
+    "runtime-version" : "43",
+    "sdk" : "org.gnome.Sdk",
+    "sdk-extensions": [
+    "org.freedesktop.Sdk.Extension.dotnet7"
+    ],
+    "build-options": {
+        "append-path": "/usr/lib/sdk/dotnet7/bin",
+        "append-ld-library-path": "/usr/lib/sdk/dotnet7/lib",
+        "env": {
+            "PKG_CONFIG_PATH": "/app/lib/pkgconfig:/app/share/pkgconfig:/usr/lib/pkgconfig:/usr/share/pkgconfig:/usr/lib/sdk/dotnet7/lib/pkgconfig"
+        }
+    },
+    "command" : "/app/opt/org.nickvision.tubeconverter/NickvisionTubeConverter.GNOME",
+    "finish-args":[
+        "--socket=fallback-x11",
+        "--socket=wayland",
+        "--device=dri",
+        "--share=ipc",
+        "--filesystem=home"
+    ],
+    "cleanup":[
+    "/include",
+    "/lib/pkgconfig",
+    "*.a"
+    ],
+    "modules" : [
+        {
+            "name": "org.nickvision.tubeconverter",
+            "buildsystem": "simple",
+            "build-options": {
+                "arch": {
+                    "arm": {
+                        "env" : {
+                            "RUNTIME": "linux-arm"
+                        }
+                    },
+                    "aarch64": {
+                        "env" : {
+                            "RUNTIME": "linux-arm64"
+                        }
+                    },
+                    "x86_64": {
+                        "env" : {
+                            "RUNTIME": "linux-x64"
+                        }
+                    }
+                }
+            },
+            "build-commands": [
+                "mkdir -p /app/opt/org.nickvision.tubeconverter",
+                "dotnet publish -c Release NickvisionTubeConverter.GNOME/NickvisionTubeConverter.GNOME.csproj $([ -d \"./nuget-sources\" ] && echo \"--source ./nuget-sources\") $([ \"$RUNTIME\" ] && echo \"--runtime $RUNTIME\") --self-contained true -o /app/opt/org.nickvision.tubeconverter",
+                "sh NickvisionTubeConverter.GNOME/install_extras.sh /app",
+                "desktop-file-edit --set-key='Exec' --set-value='/app/opt/org.nickvision.tubeconverter/NickvisionTubeConverter.GNOME' /app/share/applications/org.nickvision.tubeconverter.desktop"
+            ],
+            "sources": [
+                "sources.json",
+                {
+                    "type": "dir",
+                    "path": ".."
+                }
+            ]
+        }
+    ]
+}
