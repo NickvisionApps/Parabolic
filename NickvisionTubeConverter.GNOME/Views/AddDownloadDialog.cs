@@ -1,5 +1,4 @@
 using NickvisionTubeConverter.Shared.Controllers;
-using NickvisionTubeConverter.Shared.Helpers;
 using NickvisionTubeConverter.Shared.Models;
 using System;
 using System.Threading.Tasks;
@@ -17,6 +16,7 @@ public class AddDownloadDialog
     private readonly Adw.MessageDialog _dialog;
     private readonly Adw.PreferencesGroup _preferencesGroup;
     private readonly Adw.EntryRow _rowVideoUrl;
+    private readonly Gtk.Spinner _spinnerVideoUrl;
     private readonly Adw.ComboRow _rowFileType;
     private readonly Adw.ComboRow _rowQuality;
     private readonly Adw.ComboRow _rowSubtitle;
@@ -46,9 +46,12 @@ public class AddDownloadDialog
         //Preference Group
         _preferencesGroup = Adw.PreferencesGroup.New();
         //Video Url
+        _spinnerVideoUrl = Gtk.Spinner.New();
+        _spinnerVideoUrl.SetValign(Gtk.Align.Center);
         _rowVideoUrl = Adw.EntryRow.New();
         _rowVideoUrl.SetSizeRequest(420, -1);
         _rowVideoUrl.SetTitle(_controller.Localizer["VideoUrl", "Field"]);
+        _rowVideoUrl.AddSuffix(_spinnerVideoUrl);
         _rowVideoUrl.OnNotify += async (sender, e) =>
         {
             if (e.Pspec.GetName() == "text")
@@ -186,7 +189,9 @@ public class AddDownloadDialog
     /// </summary>
     private async Task ValidateAsync()
     {
+        _spinnerVideoUrl.Start();
         var checkStatus = await _controller.UpdateDownloadAsync(_rowVideoUrl.GetText(), (MediaFileType)_rowFileType.GetSelected(), _rowSaveFolder.GetText(), _rowNewFilename.GetText(), (Quality)_rowQuality.GetSelected(), (Subtitle)_rowSubtitle.GetSelected());
+        _spinnerVideoUrl.Stop();
         _rowVideoUrl.RemoveCssClass("error");
         _rowVideoUrl.SetTitle(_controller.Localizer["VideoUrl", "Field"]);
         _rowSaveFolder.RemoveCssClass("error");
