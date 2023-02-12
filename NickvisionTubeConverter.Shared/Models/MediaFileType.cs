@@ -46,7 +46,7 @@ public static class MediaFileTypeHelpers
     /// </summary>
     /// <param name="type">The MediaFileType</param>
     /// <returns>The dot extension of the MediaFileType</returns>
-    public static string ToDotExtension(this MediaFileType type) => $".{type.ToString().ToLower()}";
+    public static string GetDotExtension(this MediaFileType type) => $".{type.ToString().ToLower()}";
 
     /// <summary>
     /// Gets whether or not the MediaFileType is an audio file type

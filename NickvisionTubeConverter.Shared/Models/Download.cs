@@ -1,4 +1,11 @@
-﻿namespace NickvisionTubeConverter.Shared.Models;
+﻿using NickvisionTubeConverter.Shared.Helpers;
+using System;
+using System.Threading;
+using System.Threading.Tasks;
+using YoutubeDLSharp;
+using YoutubeDLSharp.Options;
+
+namespace NickvisionTubeConverter.Shared.Models;
 
 /// <summary>
 /// Qualities for a Download
@@ -25,14 +32,15 @@ public enum Subtitle
 /// </summary>
 public class Download
 {
-    private int _pid;
+    private CancellationTokenSource _cancellationToken;
+    private string _saveFolder;
+    private string _newFilename;
 
     public string VideoUrl { get; init; }
     public MediaFileType FileType { get; init; }
     public string Path { get; private set; }
     public Quality Quality { get; init; }
     public Subtitle Subtitle { get; init; }
-    public string Log { get; private set; }
     public bool IsDone { get; private set; }
 
     /// <summary>
@@ -44,16 +52,17 @@ public class Download
     /// <param name="newFilename">The filename to save the download as</param>
     /// <param name="quality">The quality of the download</param>
     /// <param name="subtitle">The subtitles for the download</param>
-    public Download(string videoUrl, MediaFileType fileType, string saveFolder, string newFilename, Quality quality = Quality.Best, Subtitle subtitle = Subtitle.None)
+    public Download(string videoUrl, MediaFileType fileType, string saveFolder, string newFilename = "", Quality quality = Quality.Best, Subtitle subtitle = Subtitle.None)
     {
+        _cancellationToken = new CancellationTokenSource();
+        _saveFolder = saveFolder;
+        _newFilename = newFilename;
         VideoUrl = videoUrl;
         FileType = fileType;
         Path = $"{saveFolder}{System.IO.Path.DirectorySeparatorChar}{newFilename}";
         Quality = quality;
         Subtitle = subtitle;
-        Log = "";
         IsDone = false;
-        _pid = -1;
     }
 
     /// <summary>
@@ -61,30 +70,74 @@ public class Download
     /// </summary>
     /// <param name="url">The video url to check</param>
     /// <returns>True if valid, else false</returns>
-    public static bool GetIsValidVideoUrl(string url)
+    public static async Task<bool> GetIsValidVideoUrl(string url) => (await new YoutubeDL()
     {
-        return true;
-    }
+        YoutubeDLPath = DependencyManager.YtdlpPath,
+        FFmpegPath = DependencyManager.Ffmpeg,
+    }.RunVideoDataFetch(url)).Success;
 
     /// <summary>
     /// Runs the download
     /// </summary>
     /// <param name="embedMetadata">Whether or not to embed video metadata in the downloaded file</param>
+    /// <param name="progressCallback">A callback function for DownloadProgresss</param>
     /// <returns>True if successful, else false</returns>
-    public bool Run(bool embedMetadata)
+    public async Task<bool> RunAsync(bool embedMetadata, Progress<DownloadProgress> progressCallback)
     {
-        if (string.IsNullOrEmpty(System.IO.Path.GetFileName(Path)))
+        if(!IsDone)
         {
-            //Path += VideoTitle
+            var ytdlp = new YoutubeDL()
+            {
+                YoutubeDLPath = DependencyManager.YtdlpPath,
+                FFmpegPath = DependencyManager.Ffmpeg,
+            };
+            if (string.IsNullOrEmpty(System.IO.Path.GetFileName(Path)))
+            {
+                _newFilename = (await ytdlp.RunVideoDataFetch(VideoUrl)).Data.Title;
+                Path += _newFilename;
+            }
+            Path += FileType.GetDotExtension();
+            ytdlp.OutputFolder = _saveFolder;
+            ytdlp.OutputFileTemplate = $"{_newFilename}.%(ext)s";
+            if (FileType.GetIsAudio())
+            {
+                await ytdlp.RunAudioDownload(VideoUrl, FileType switch
+                {
+                    MediaFileType.MP3 => AudioConversionFormat.Mp3,
+                    MediaFileType.OPUS => AudioConversionFormat.Opus,
+                    MediaFileType.FLAC => AudioConversionFormat.Flac,
+                    MediaFileType.WAV => AudioConversionFormat.Wav,
+                    _ => AudioConversionFormat.Best
+                }, _cancellationToken.Token, progressCallback, null, new OptionSet()
+                {
+                    EmbedMetadata = embedMetadata,
+                    AudioQuality = Quality == Quality.Best ? (byte)0 : (Quality == Quality.Good ? (byte)5 : (byte)10)
+                });
+            }
+            else if(FileType.GetIsVideo())
+            {
+                var format = Quality == Quality.Best ? "bv*+ba/b" : (Quality == Quality.Good ? "bv*[height<=720]+ba/b[height<=720]" : "wv*+wa/w");
+                await ytdlp.RunVideoDownload(VideoUrl, format, DownloadMergeFormat.Unspecified, FileType switch
+                {
+                    MediaFileType.MP4 => VideoRecodeFormat.Mp4,
+                    MediaFileType.WEBM => VideoRecodeFormat.Webm,
+                    _ => VideoRecodeFormat.None
+                }, _cancellationToken.Token, progressCallback, null, new OptionSet()
+                {
+                    EmbedMetadata = embedMetadata,
+                    EmbedSubs = true,
+                    WriteAutoSubs = (await ytdlp.RunVideoDataFetch(VideoUrl)).Data.Subtitles.Count == 0,
+                    SubFormat = Subtitle == Subtitle.None ? "" : (Subtitle == Subtitle.SRT ? "srt" : "vtt"),
+                    SubLangs = "all"
+                });
+            }
+            IsDone = true;
         }
-        return false;
+        return IsDone;
     }
 
     /// <summary>
     /// Stops the download
     /// </summary>
-    public void Stop()
-    {
-
-    }
+    public void Stop() => _cancellationToken.Cancel();
 }
