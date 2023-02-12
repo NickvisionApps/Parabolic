@@ -70,4 +70,4 @@ for i in range(len(contents)):
     j += 1
 with open(f'{install_prefix}/share/metainfo/org.nickvision.tubeconverter.metainfo.xml', 'w') as f:
     new_contents = "".join(new_contents)
-    f.write(new_contents)]
+    f.write(new_contents)
