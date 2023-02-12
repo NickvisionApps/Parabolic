@@ -9,11 +9,9 @@ using NickvisionTubeConverter.Shared.Controllers;
 using NickvisionTubeConverter.Shared.Events;
 using NickvisionTubeConverter.WinUI.Controls;
 using System;
+using System.Threading.Tasks;
 using Vanara.PInvoke;
-using Windows.ApplicationModel.DataTransfer;
 using Windows.Graphics;
-using Windows.Storage;
-using Windows.Storage.Pickers;
 using WinRT;
 using WinRT.Interop;
 
@@ -24,6 +22,7 @@ namespace NickvisionTubeConverter.WinUI.Views;
 /// </summary>
 public sealed partial class MainWindow : Window
 {
+    private bool _isOpened;
     private readonly MainWindowController _controller;
     private readonly IntPtr _hwnd;
     private readonly AppWindow _appWindow;
@@ -39,6 +38,7 @@ public sealed partial class MainWindow : Window
     {
         InitializeComponent();
         //Initialize Vars
+        _isOpened = false;
         _controller = controller;
         _hwnd = WindowNative.GetWindowHandle(this);
         _appWindow = AppWindow.GetFromWindowId(Win32Interop.GetWindowIdFromWindow(_hwnd));
@@ -86,6 +86,7 @@ public sealed partial class MainWindow : Window
         _appWindow.Resize(new SizeInt32(800, 600));
         User32.ShowWindow(_hwnd, ShowWindowCommand.SW_SHOWMAXIMIZED);
         //Localize Strings
+        LblLoading.Text = _controller.Localizer["DownloadingDependencies"];
         NavViewItemHome.Content = _controller.Localizer["Home"];
         NavViewItemSettings.Content = _controller.Localizer["Settings"];
         StatusPageHome.Glyph = _controller.ShowSun ? "\xE706" : "\xE708";
@@ -100,6 +101,26 @@ public sealed partial class MainWindow : Window
     /// </summary>
     /// <param name="target">The target object to initialize</param>
     public void InitializeWithWindow(object target) => WinRT.Interop.InitializeWithWindow.Initialize(target, _hwnd);
+
+    /// <summary>
+    /// Occurs when the window is loaded
+    /// </summary>
+    /// <param name="sender">object</param>
+    /// <param name="e">RoutedEventArgs</param>
+    private async void Window_Loaded(object sender, RoutedEventArgs e)
+    {
+        if(!_isOpened)
+        {
+            //Start Loading
+            Loading.IsLoading = true;
+            //Work
+            await Task.Delay(50);
+            await _controller.DownloadDependenciesAsync();
+            //Done Loading
+            Loading.IsLoading = false;
+            _isOpened = true;
+        }
+    }
 
     /// <summary>
     /// Occurs when the window is activated

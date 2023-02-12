@@ -10,7 +10,7 @@
     xmlns:labs="using:CommunityToolkit.Labs.WinUI"
     mc:Ignorable="d" Activated="Window_Activated">
 
-    <Grid x:Name="MainGrid" ActualThemeChanged="Window_ActualThemeChanged" AllowDrop="True">
+    <Grid x:Name="MainGrid" Loaded="Window_Loaded" ActualThemeChanged="Window_ActualThemeChanged" AllowDrop="True">
         <Grid x:Name="TitleBar" HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="32">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition x:Name="TitleBarLeftPaddingColumn" Width="0"/>
@@ -65,5 +65,15 @@
                 <InfoBar x:Name="InfoBar" HorizontalAlignment="Center" VerticalAlignment="Bottom" CornerRadius="12" Margin="0,0,0,10"/>
             </Grid>
         </NavigationView>
+
+        <wct:Loading x:Name="Loading" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,34,0,0" Background="{ThemeResource AcrylicBackgroundFillColorDefaultBrush}" IsLoading="False">
+            <Grid>
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical" Spacing="20">
+                    <ProgressRing Width="50" Height="50" IsActive="True"/>
+
+                    <TextBlock x:Name="LblLoading" HorizontalAlignment="Center" TextWrapping="WrapWholeWords"/>
+                </StackPanel>
+            </Grid>
+        </wct:Loading>
     </Grid>
 </Window>
