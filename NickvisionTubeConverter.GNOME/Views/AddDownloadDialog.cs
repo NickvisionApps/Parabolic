@@ -159,6 +159,7 @@ public class AddDownloadDialog
             _rowSaveFolder.AddCssClass("error");
             _rowSaveFolder.SetTitle(_controller.Localizer["SaveFolder", "Invalid"]);
         }
+        _dialog.SetResponseEnabled("ok", false);
         _constructing = false;
     }
 
