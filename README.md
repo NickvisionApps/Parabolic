@@ -34,6 +34,8 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for details on how can you help the proje
 
 # Dependencies
 - [.NET 7](https://dotnet.microsoft.com/en-us/)
+- [yt-dlp](https://github.com/yt-dlp/yt-dlp)
+- [ffmpeg](https://ffmpeg.org/)
 
 # Code of Conduct
 This project follows the [GNOME Code of Conduct](https://wiki.gnome.org/Foundation/CodeOfConduct).
