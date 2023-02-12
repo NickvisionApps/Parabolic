@@ -69,7 +69,7 @@ public class AddDownloadDialogController
         {
             result |= DownloadCheckStatus.EmptyVideoUrl;
         }
-        if (!Download.GetIsValidVideoUrl(videoUrl).GetAwaiter().GetResult())
+        else if (!Download.GetIsValidVideoUrl(videoUrl).GetAwaiter().GetResult())
         {
             result |= DownloadCheckStatus.InvalidVideoUrl;
         }
