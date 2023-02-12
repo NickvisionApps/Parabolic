@@ -33,14 +33,23 @@ public enum Subtitle
 public class Download
 {
     private CancellationTokenSource? _cancellationToken;
+    private MediaFileType _fileType;
     private string _saveFolder;
     private string _newFilename;
+    private Quality _quality;
+    private Subtitle _subtitle;
 
+    /// <summary>
+    /// The url of the video
+    /// </summary>
     public string VideoUrl { get; init; }
-    public MediaFileType FileType { get; init; }
-    public string Path { get; private set; }
-    public Quality Quality { get; init; }
-    public Subtitle Subtitle { get; init; }
+    /// <summary>
+    /// The filename of the download
+    /// </summary>
+    public string Filename { get; private set; }
+    /// <summary>
+    /// Whether or not the download has completed
+    /// </summary>
     public bool IsDone { get; private set; }
 
     /// <summary>
@@ -55,13 +64,13 @@ public class Download
     public Download(string videoUrl, MediaFileType fileType, string saveFolder, string newFilename = "", Quality quality = Quality.Best, Subtitle subtitle = Subtitle.None)
     {
         _cancellationToken = null;
+        _fileType = fileType;
         _saveFolder = saveFolder;
         _newFilename = newFilename;
+        _quality = quality;
+        _subtitle = subtitle;
         VideoUrl = videoUrl;
-        FileType = fileType;
-        Path = $"{saveFolder}{System.IO.Path.DirectorySeparatorChar}{newFilename}";
-        Quality = quality;
-        Subtitle = subtitle;
+        Filename = $"{newFilename}";
         IsDone = false;
     }
 
@@ -93,17 +102,17 @@ public class Download
                 FFmpegPath = DependencyManager.Ffmpeg,
             };
             RunResult<string>? result = null;
-            if (string.IsNullOrEmpty(System.IO.Path.GetFileName(Path)))
+            if (string.IsNullOrEmpty(Filename))
             {
                 _newFilename = (await ytdlp.RunVideoDataFetch(VideoUrl, _cancellationToken.Token)).Data.Title;
-                Path += _newFilename;
+                Filename += _newFilename;
             }
-            Path += FileType.GetDotExtension();
+            Filename += _fileType.GetDotExtension();
             ytdlp.OutputFolder = _saveFolder;
             ytdlp.OutputFileTemplate = $"{_newFilename}.%(ext)s";
-            if (FileType.GetIsAudio())
+            if (_fileType.GetIsAudio())
             {
-                result = await ytdlp.RunAudioDownload(VideoUrl, FileType switch
+                result = await ytdlp.RunAudioDownload(VideoUrl, _fileType switch
                 {
                     MediaFileType.MP3 => AudioConversionFormat.Mp3,
                     MediaFileType.OPUS => AudioConversionFormat.Opus,
@@ -113,12 +122,12 @@ public class Download
                 }, _cancellationToken.Token, progressCallback, null, new OptionSet()
                 {
                     EmbedMetadata = embedMetadata,
-                    AudioQuality = Quality == Quality.Best ? (byte)0 : (Quality == Quality.Good ? (byte)5 : (byte)10)
+                    AudioQuality = _quality == Quality.Best ? (byte)0 : (_quality == Quality.Good ? (byte)5 : (byte)10)
                 });
             }
-            else if(FileType.GetIsVideo())
+            else if(_fileType.GetIsVideo())
             {
-                result = await ytdlp.RunVideoDownload(VideoUrl, Quality == Quality.Best ? "bv*+ba/b" : (Quality == Quality.Good ? "bv*[height<=720]+ba/b[height<=720]" : "wv*+wa/w"), DownloadMergeFormat.Unspecified, FileType switch
+                result = await ytdlp.RunVideoDownload(VideoUrl, _quality == Quality.Best ? "bv*+ba/b" : (_quality == Quality.Good ? "bv*[height<=720]+ba/b[height<=720]" : "wv*+wa/w"), DownloadMergeFormat.Unspecified, _fileType switch
                 {
                     MediaFileType.MP4 => VideoRecodeFormat.Mp4,
                     MediaFileType.WEBM => VideoRecodeFormat.Webm,
@@ -128,7 +137,7 @@ public class Download
                     EmbedMetadata = embedMetadata,
                     EmbedSubs = true,
                     WriteAutoSubs = (await ytdlp.RunVideoDataFetch(VideoUrl)).Data.Subtitles.Count == 0,
-                    SubFormat = Subtitle == Subtitle.None ? "" : (Subtitle == Subtitle.SRT ? "srt" : "vtt"),
+                    SubFormat = _subtitle == Subtitle.None ? "" : (_subtitle == Subtitle.SRT ? "srt" : "vtt"),
                     SubLangs = "all"
                 });
             }
