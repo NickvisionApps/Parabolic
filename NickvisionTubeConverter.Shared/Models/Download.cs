@@ -81,8 +81,7 @@ public class Download
     /// </summary>
     /// <param name="embedMetadata">Whether or not to embed video metadata in the downloaded file</param>
     /// <param name="progressCallback">A callback function for DownloadProgresss</param>
-    /// <returns>True if successful, else false</returns>
-    public async Task<bool> RunAsync(bool embedMetadata, Progress<DownloadProgress> progressCallback)
+    public async Task RunAsync(bool embedMetadata, Progress<DownloadProgress> progressCallback)
     {
         if(!IsDone)
         {
@@ -93,7 +92,7 @@ public class Download
             };
             if (string.IsNullOrEmpty(System.IO.Path.GetFileName(Path)))
             {
-                _newFilename = (await ytdlp.RunVideoDataFetch(VideoUrl)).Data.Title;
+                _newFilename = (await ytdlp.RunVideoDataFetch(VideoUrl, _cancellationToken.Token)).Data.Title;
                 Path += _newFilename;
             }
             Path += FileType.GetDotExtension();
@@ -133,7 +132,6 @@ public class Download
             }
             IsDone = true;
         }
-        return IsDone;
     }
 
     /// <summary>
