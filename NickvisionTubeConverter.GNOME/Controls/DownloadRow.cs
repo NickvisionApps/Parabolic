@@ -170,5 +170,5 @@ public partial class DownloadRow : Adw.ActionRow, IDownloadRowControl
     /// </summary>
     /// <param name="sender">Gtk.Button</param>
     /// <param name="e">EventArgs</param>
-    private void OnOpenSaveFolder(Gtk.Button sender, EventArgs e) => Process.Start("xdg-open", _download.SaveFolder);
+    private void OnOpenSaveFolder(Gtk.Button sender, EventArgs e) => Gtk.Functions.ShowUri(null, "file://" + _download.SaveFolder, 0);
 }
