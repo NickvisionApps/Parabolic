@@ -2,6 +2,7 @@ using NickvisionTubeConverter.Shared.Controllers;
 using NickvisionTubeConverter.Shared.Helpers;
 using NickvisionTubeConverter.Shared.Models;
 using System;
+using System.Threading.Tasks;
 
 namespace NickvisionTubeConverter.GNOME.Views;
 
@@ -48,13 +49,13 @@ public class AddDownloadDialog
         _rowVideoUrl = Adw.EntryRow.New();
         _rowVideoUrl.SetSizeRequest(420, -1);
         _rowVideoUrl.SetTitle(_controller.Localizer["VideoUrl", "Field"]);
-        _rowVideoUrl.OnNotify += (sender, e) =>
+        _rowVideoUrl.OnNotify += async (sender, e) =>
         {
             if (e.Pspec.GetName() == "text")
             {
                 if (!_constructing)
                 {
-                    Validate();
+                    await ValidateAsync();
                 }
             }
         };
@@ -63,14 +64,14 @@ public class AddDownloadDialog
         _rowFileType = Adw.ComboRow.New();
         _rowFileType.SetTitle(_controller.Localizer["FileType", "Field"]);
         _rowFileType.SetModel(Gtk.StringList.New(new string[] { "MP4", "WEBM", "MP3", "OPUS", "FLAC", "WAV" }));
-        _rowFileType.OnNotify += (sender, e) =>
+        _rowFileType.OnNotify += async (sender, e) =>
         {
             if (e.Pspec.GetName() == "selected-item")
             {
                 _rowSubtitle!.SetSensitive(((MediaFileType)_rowFileType.GetSelected()).GetIsVideo());
                 if (!_constructing)
                 {
-                    Validate();
+                    await ValidateAsync();
                 }
             }
         };
@@ -79,13 +80,13 @@ public class AddDownloadDialog
         _rowQuality = Adw.ComboRow.New();
         _rowQuality.SetTitle(_controller.Localizer["Quality", "Field"]);
         _rowQuality.SetModel(Gtk.StringList.New(new string[] { _controller.Localizer["Quality", "Best"], _controller.Localizer["Quality", "Good"], _controller.Localizer["Quality", "Worst"] }));
-        _rowQuality.OnNotify += (sender, e) =>
+        _rowQuality.OnNotify += async (sender, e) =>
         {
             if (e.Pspec.GetName() == "selected-item")
             {
                 if (!_constructing)
                 {
-                    Validate();
+                    await ValidateAsync();
                 }
             }
         };
@@ -94,13 +95,13 @@ public class AddDownloadDialog
         _rowSubtitle = Adw.ComboRow.New();
         _rowSubtitle.SetTitle(_controller.Localizer["Subtitle", "Field"]);
         _rowSubtitle.SetModel(Gtk.StringList.New(new string[] { _controller.Localizer["Subtitle", "None"], "VTT", "SRT" }));
-        _rowSubtitle.OnNotify += (sender, e) =>
+        _rowSubtitle.OnNotify += async (sender, e) =>
         {
             if (e.Pspec.GetName() == "selected-item")
             {
                 if (!_constructing)
                 {
-                    Validate();
+                    await ValidateAsync();
                 }
             }
         };
@@ -117,13 +118,13 @@ public class AddDownloadDialog
         _rowSaveFolder.SetTitle(_controller.Localizer["SaveFolder", "Field"]);
         _rowSaveFolder.AddSuffix(_btnSelectSaveFolder);
         _rowSaveFolder.SetEditable(false);
-        _rowSaveFolder.OnNotify += (sender, e) =>
+        _rowSaveFolder.OnNotify += async (sender, e) =>
         {
             if (e.Pspec.GetName() == "text")
             {
                 if (!_constructing)
                 {
-                    Validate();
+                    await ValidateAsync();
                 }
             }
         };
@@ -132,23 +133,29 @@ public class AddDownloadDialog
         _rowNewFilename = Adw.EntryRow.New();
         _rowNewFilename.SetSizeRequest(420, -1);
         _rowNewFilename.SetTitle(_controller.Localizer["NewFilename", "Field"]);
-        _rowNewFilename.OnNotify += (sender, e) =>
+        _rowNewFilename.OnNotify += async (sender, e) =>
         {
             if (e.Pspec.GetName() == "text")
             {
                 if (!_constructing)
                 {
-                    Validate();
+                    await ValidateAsync();
                 }
             }
         };
         _preferencesGroup.Add(_rowNewFilename);
         //Layout
         _dialog.SetExtraChild(_preferencesGroup);
-        //Load Config
+        //Load
+        _rowVideoUrl.AddCssClass("error");
+        _rowVideoUrl.SetTitle(_controller.Localizer["VideoUrl", "Empty"]);
         _rowFileType.SetSelected((uint)_controller.PreviousMediaFileType);
         _rowSaveFolder.SetText(_controller.PreviousSaveFolder);
-        Validate();
+        if(string.IsNullOrEmpty(_rowSaveFolder.GetText()))
+        {
+            _rowSaveFolder.AddCssClass("error");
+            _rowSaveFolder.SetTitle(_controller.Localizer["SaveFolder", "Invalid"]);
+        }
         _constructing = false;
     }
 
@@ -177,9 +184,9 @@ public class AddDownloadDialog
     /// <summary>
     /// Validates the dialog's input
     /// </summary>
-    private void Validate()
+    private async Task ValidateAsync()
     {
-        var checkStatus = _controller.UpdateDownload(_rowVideoUrl.GetText(), (MediaFileType)_rowFileType.GetSelected(), _rowSaveFolder.GetText(), _rowNewFilename.GetText(), (Quality)_rowQuality.GetSelected(), (Subtitle)_rowSubtitle.GetSelected());
+        var checkStatus = await _controller.UpdateDownloadAsync(_rowVideoUrl.GetText(), (MediaFileType)_rowFileType.GetSelected(), _rowSaveFolder.GetText(), _rowNewFilename.GetText(), (Quality)_rowQuality.GetSelected(), (Subtitle)_rowSubtitle.GetSelected());
         _rowVideoUrl.RemoveCssClass("error");
         _rowVideoUrl.SetTitle(_controller.Localizer["VideoUrl", "Field"]);
         _rowSaveFolder.RemoveCssClass("error");
@@ -218,13 +225,13 @@ public class AddDownloadDialog
     {
         var fileDialog = Gtk.FileChooserNative.New(_controller.Localizer["SelectSaveFolder"], _parent, Gtk.FileChooserAction.SelectFolder, _controller.Localizer["OK"], _controller.Localizer["Cancel"]);
         fileDialog.SetModal(true);
-        fileDialog.OnResponse += (sender, e) =>
+        fileDialog.OnResponse += async (sender, e) =>
         {
             if (e.ResponseId == (int)Gtk.ResponseType.Accept)
             {
                 var path = fileDialog.GetFile()!.GetPath() ?? "";
                 _rowSaveFolder.SetText(path);
-                Validate();
+                await ValidateAsync();
             }
         };
         fileDialog.Show();
