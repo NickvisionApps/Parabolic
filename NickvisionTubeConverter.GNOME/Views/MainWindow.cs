@@ -18,7 +18,12 @@ public partial class MainWindow
     private readonly Adw.WindowTitle _windowTitle;
     private readonly Gtk.MenuButton _btnMenuHelp;
     private readonly Adw.ToastOverlay _toastOverlay;
-    private readonly Adw.StatusPage _statusPageNoDownloads;
+    private readonly Gtk.ScrolledWindow _scrollStartPage;
+    private readonly Adw.Clamp _clampStartPage;
+    private readonly Gtk.Box _boxStartPage;
+    private readonly Adw.ButtonContent _greetingStartPage;
+    private readonly Gtk.Button _btnAddDownloadStartPage;
+    private readonly Gtk.Label _lblStart;
     private readonly Adw.ViewStack _viewStack;
 
     public Adw.ApplicationWindow Handle { get; init; }
@@ -54,7 +59,8 @@ public partial class MainWindow
         _btnAddDownloadContent.SetLabel(_controller.Localizer["Add"]);
         _btnAddDownload.SetChild(_btnAddDownloadContent);
         _btnAddDownload.SetTooltipText(_controller.Localizer["AddDownload", "Tooltip"]);
-        _btnAddDownload.SetDetailedActionName("win.addDownload");_headerBar.PackStart(_btnAddDownload);
+        _btnAddDownload.SetDetailedActionName("win.addDownload");
+        _headerBar.PackStart(_btnAddDownload);
         //Menu Help Button
         _btnMenuHelp = Gtk.MenuButton.New();
         var menuHelp = Gio.Menu.New();
@@ -70,14 +76,47 @@ public partial class MainWindow
         _toastOverlay.SetHexpand(true);
         _toastOverlay.SetVexpand(true);
         _mainBox.Append(_toastOverlay);
-        //Page No Downloads
-        _statusPageNoDownloads = Adw.StatusPage.New();
-        _statusPageNoDownloads.SetIconName("org.nickvision.tubeconverter-symbolic");
-        _statusPageNoDownloads.SetTitle(_controller.Localizer["NoDownloads", "Title"]);
-        _statusPageNoDownloads.SetDescription(_controller.Localizer["NoDownloads", "Description"]);
+        //Greeting
+        _greetingStartPage = Adw.ButtonContent.New();
+        _greetingStartPage.SetIconName(_controller.ShowSun ? "sun-alt-symbolic" : "moon-symbolic");
+        _greetingStartPage.SetLabel(_controller.Greeting);
+        _greetingStartPage.AddCssClass("title-2");
+        var image = (Gtk.Image)_greetingStartPage.GetFirstChild();
+        image.SetIconSize(Gtk.IconSize.Large);
+        _greetingStartPage.SetHalign(Gtk.Align.Center);
+        _greetingStartPage.SetMarginBottom(32);
+        //Add Download Button Start Page 
+        _btnAddDownloadStartPage = Gtk.Button.NewWithLabel(_controller.Localizer["AddDownload"]);
+        _btnAddDownloadStartPage.SetHalign(Gtk.Align.Center);
+        _btnAddDownloadStartPage.SetSizeRequest(200, 50);
+        _btnAddDownloadStartPage.AddCssClass("pill");
+        _btnAddDownloadStartPage.AddCssClass("suggested-action");
+        _btnAddDownloadStartPage.SetDetailedActionName("win.addDownload");
+        //Start Label
+        _lblStart = Gtk.Label.New(_controller.Localizer["NoDownloads", "Description"]);
+        _lblStart.AddCssClass("dim-label");
+        _lblStart.SetWrap(true);
+        _lblStart.SetJustify(Gtk.Justification.Center);
+        //Start Page
+        _scrollStartPage = Gtk.ScrolledWindow.New();
+        _clampStartPage = Adw.Clamp.New();
+        _clampStartPage.SetMaximumSize(450);
+        _clampStartPage.SetValign(Gtk.Align.Center);
+        _clampStartPage.SetMarginStart(12);
+        _clampStartPage.SetMarginEnd(12);
+        _clampStartPage.SetMarginTop(12);
+        _clampStartPage.SetMarginBottom(12);
+        _scrollStartPage.SetChild(_clampStartPage);
+        _boxStartPage = Gtk.Box.New(Gtk.Orientation.Vertical, 12);
+        _boxStartPage.SetHexpand(true);
+        _boxStartPage.SetHalign(Gtk.Align.Fill);
+        _clampStartPage.SetChild(_boxStartPage);
+        _boxStartPage.Append(_greetingStartPage);
+        _boxStartPage.Append(_btnAddDownloadStartPage);
+        _boxStartPage.Append(_lblStart);
         //View Stack
         _viewStack = Adw.ViewStack.New();
-        _viewStack.AddNamed(_statusPageNoDownloads, "pageNoDownloads");
+        _viewStack.AddNamed(_scrollStartPage, "pageNoDownloads");
         _toastOverlay.SetChild(_viewStack);
         //Layout
         Handle.SetContent(_mainBox);
