@@ -24,6 +24,8 @@ public partial class MainWindow
     private readonly Adw.ButtonContent _greetingStartPage;
     private readonly Gtk.Button _btnAddDownloadStartPage;
     private readonly Gtk.Label _lblStart;
+    private readonly Gtk.ScrolledWindow _scrollDownloadsPage;
+    private readonly Adw.PreferencesGroup _grpDownloads;
     private readonly Adw.ViewStack _viewStack;
 
     public Adw.ApplicationWindow Handle { get; init; }
@@ -114,9 +116,20 @@ public partial class MainWindow
         _boxStartPage.Append(_greetingStartPage);
         _boxStartPage.Append(_btnAddDownloadStartPage);
         _boxStartPage.Append(_lblStart);
+        //Downloads Page
+        _grpDownloads = Adw.PreferencesGroup.New();
+        _grpDownloads.SetMarginStart(30);
+        _grpDownloads.SetMarginTop(10);
+        _grpDownloads.SetMarginEnd(30);
+        _grpDownloads.SetMarginBottom(10);
+        _grpDownloads.SetTitle(_controller.Localizer["Downloads"]);
+        _scrollDownloadsPage = Gtk.ScrolledWindow.New();
+        _scrollDownloadsPage.SetHexpand(true);
+        _scrollDownloadsPage.SetChild(_grpDownloads);
         //View Stack
         _viewStack = Adw.ViewStack.New();
         _viewStack.AddNamed(_scrollStartPage, "pageNoDownloads");
+        _viewStack.AddNamed(_scrollDownloadsPage, "pageDownloads");
         _toastOverlay.SetChild(_viewStack);
         //Layout
         Handle.SetContent(_mainBox);
