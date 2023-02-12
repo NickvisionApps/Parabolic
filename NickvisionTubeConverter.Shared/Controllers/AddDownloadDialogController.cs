@@ -61,12 +61,11 @@ public class AddDownloadDialogController
     /// </summary>
     /// <param name="videoUrl">The url of the video to download</param>
     /// <param name="mediaFileType">The file type to download the video as</param>
-    /// <param name="saveFolder">The folder to save the download to</param>
-    /// <param name="newFilename">The filename to save the download as</param>
+    /// <param name="savePath">The path to save the download to</param>
     /// <param name="quality">The quality of the download</param>
     /// <param name="subtitles">The subtitles for the download</param>
     /// <returns>The DownloadCheckStatus</returns>
-    public async Task<DownloadCheckStatus> UpdateDownloadAsync(string videoUrl, MediaFileType mediaFileType, string saveFolder, string newFilename, Quality quality, Subtitle subtitles)
+    public async Task<DownloadCheckStatus> UpdateDownloadAsync(string videoUrl, MediaFileType mediaFileType, string savePath, Quality quality, Subtitle subtitles)
     {
         DownloadCheckStatus result = 0;
         if (string.IsNullOrEmpty(videoUrl))
@@ -81,6 +80,8 @@ public class AddDownloadDialogController
                 result |= DownloadCheckStatus.InvalidVideoUrl;
             }
         }
+        var saveFolder = Path.GetDirectoryName(savePath);
+        var newFilename = Path.GetFileNameWithoutExtension(savePath);
         if (!Directory.Exists(saveFolder))
         {
             result |= DownloadCheckStatus.InvalidSaveFolder;

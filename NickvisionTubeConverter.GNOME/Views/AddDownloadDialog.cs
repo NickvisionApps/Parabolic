@@ -1,6 +1,7 @@
 using NickvisionTubeConverter.Shared.Controllers;
 using NickvisionTubeConverter.Shared.Models;
 using System;
+using System.IO;
 using System.Threading.Tasks;
 
 namespace NickvisionTubeConverter.GNOME.Views;
@@ -20,9 +21,8 @@ public class AddDownloadDialog
     private readonly Adw.ComboRow _rowFileType;
     private readonly Adw.ComboRow _rowQuality;
     private readonly Adw.ComboRow _rowSubtitle;
-    private readonly Gtk.Button _btnSelectSaveFolder;
-    private readonly Adw.EntryRow _rowSaveFolder;
-    private readonly Adw.EntryRow _rowNewFilename;
+    private readonly Gtk.Button _btnSelectSavePath;
+    private readonly Adw.EntryRow _rowSavePath;
 
     /// <summary>
     /// Constructs an AddDownloadDialog
@@ -109,19 +109,19 @@ public class AddDownloadDialog
             }
         };
         _preferencesGroup.Add(_rowSubtitle);
-        //Save Folder
-        _btnSelectSaveFolder = Gtk.Button.New();
-        _btnSelectSaveFolder.SetValign(Gtk.Align.Center);
-        _btnSelectSaveFolder.AddCssClass("flat");
-        _btnSelectSaveFolder.SetIconName("folder-open-symbolic");
-        _btnSelectSaveFolder.SetTooltipText(_controller.Localizer["SelectSaveFolder"]);
-        _btnSelectSaveFolder.OnClicked += SelectSaveFolder;
-        _rowSaveFolder = Adw.EntryRow.New();
-        _rowSaveFolder.SetSizeRequest(420, -1);
-        _rowSaveFolder.SetTitle(_controller.Localizer["SaveFolder", "Field"]);
-        _rowSaveFolder.AddSuffix(_btnSelectSaveFolder);
-        _rowSaveFolder.SetEditable(false);
-        _rowSaveFolder.OnNotify += async (sender, e) =>
+        //Save Path
+        _btnSelectSavePath = Gtk.Button.New();
+        _btnSelectSavePath.SetValign(Gtk.Align.Center);
+        _btnSelectSavePath.AddCssClass("flat");
+        _btnSelectSavePath.SetIconName("folder-open-symbolic");
+        _btnSelectSavePath.SetTooltipText(_controller.Localizer["SelectSaveFolder"]);
+        _btnSelectSavePath.OnClicked += SelectSavePath;
+        _rowSavePath = Adw.EntryRow.New();
+        _rowSavePath.SetSizeRequest(420, -1);
+        _rowSavePath.SetTitle(_controller.Localizer["SaveFolder", "Field"]);
+        _rowSavePath.AddSuffix(_btnSelectSavePath);
+        _rowSavePath.SetEditable(false);
+        _rowSavePath.OnNotify += async (sender, e) =>
         {
             if (e.Pspec.GetName() == "text")
             {
@@ -131,33 +131,18 @@ public class AddDownloadDialog
                 }
             }
         };
-        _preferencesGroup.Add(_rowSaveFolder);
-        //New Filename
-        _rowNewFilename = Adw.EntryRow.New();
-        _rowNewFilename.SetSizeRequest(420, -1);
-        _rowNewFilename.SetTitle(_controller.Localizer["NewFilename", "Field"]);
-        _rowNewFilename.OnNotify += async (sender, e) =>
-        {
-            if (e.Pspec.GetName() == "text")
-            {
-                if (!_constructing)
-                {
-                    await ValidateAsync();
-                }
-            }
-        };
-        _preferencesGroup.Add(_rowNewFilename);
+        _preferencesGroup.Add(_rowSavePath);
         //Layout
         _dialog.SetExtraChild(_preferencesGroup);
         //Load
         _rowVideoUrl.AddCssClass("error");
         _rowVideoUrl.SetTitle(_controller.Localizer["VideoUrl", "Empty"]);
         _rowFileType.SetSelected((uint)_controller.PreviousMediaFileType);
-        _rowSaveFolder.SetText(_controller.PreviousSaveFolder);
-        if(string.IsNullOrEmpty(_rowSaveFolder.GetText()))
+        _rowSavePath.SetText(_controller.PreviousSaveFolder + Path.DirectorySeparatorChar + "video.mp4");
+        if(string.IsNullOrEmpty(_rowSavePath.GetText()))
         {
-            _rowSaveFolder.AddCssClass("error");
-            _rowSaveFolder.SetTitle(_controller.Localizer["SaveFolder", "Invalid"]);
+            _rowSavePath.AddCssClass("error");
+            _rowSavePath.SetTitle(_controller.Localizer["SaveFolder", "Invalid"]);
         }
         _dialog.SetResponseEnabled("ok", false);
         _constructing = false;
@@ -191,12 +176,12 @@ public class AddDownloadDialog
     private async Task ValidateAsync()
     {
         _spinnerVideoUrl.Start();
-        var checkStatus = await _controller.UpdateDownloadAsync(_rowVideoUrl.GetText(), (MediaFileType)_rowFileType.GetSelected(), _rowSaveFolder.GetText(), _rowNewFilename.GetText(), (Quality)_rowQuality.GetSelected(), (Subtitle)_rowSubtitle.GetSelected());
+        var checkStatus = await _controller.UpdateDownloadAsync(_rowVideoUrl.GetText(), (MediaFileType)_rowFileType.GetSelected(), _rowSavePath.GetText(), (Quality)_rowQuality.GetSelected(), (Subtitle)_rowSubtitle.GetSelected());
         _spinnerVideoUrl.Stop();
         _rowVideoUrl.RemoveCssClass("error");
         _rowVideoUrl.SetTitle(_controller.Localizer["VideoUrl", "Field"]);
-        _rowSaveFolder.RemoveCssClass("error");
-        _rowSaveFolder.SetTitle(_controller.Localizer["SaveFolder", "Field"]);
+        _rowSavePath.RemoveCssClass("error");
+        _rowSavePath.SetTitle(_controller.Localizer["SaveFolder", "Field"]);
         if (checkStatus == DownloadCheckStatus.Valid)
         {
             _dialog.SetResponseEnabled("ok", true);
@@ -215,28 +200,28 @@ public class AddDownloadDialog
             }
             if (checkStatus.HasFlag(DownloadCheckStatus.InvalidSaveFolder))
             {
-                _rowSaveFolder.AddCssClass("error");
-                _rowSaveFolder.SetTitle(_controller.Localizer["SaveFolder", "Invalid"]);
+                _rowSavePath.AddCssClass("error");
+                _rowSavePath.SetTitle(_controller.Localizer["SaveFolder", "Invalid"]);
             }
             _dialog.SetResponseEnabled("ok", false);
         }
     }
 
     /// <summary>
-    /// Occurs when the select save folder button is clicked
+    /// Occurs when the select save path button is clicked
     /// </summary>
     /// <param name="sender">Gtk.Button</param>
     /// <param name="e">EventArgs</param>
-    private void SelectSaveFolder(Gtk.Button sender, EventArgs e)
+    private void SelectSavePath(Gtk.Button sender, EventArgs e)
     {
-        var fileDialog = Gtk.FileChooserNative.New(_controller.Localizer["SelectSaveFolder"], _parent, Gtk.FileChooserAction.SelectFolder, _controller.Localizer["OK"], _controller.Localizer["Cancel"]);
+        var fileDialog = Gtk.FileChooserNative.New(_controller.Localizer["SelectSaveFolder"], _parent, Gtk.FileChooserAction.Save, _controller.Localizer["OK"], _controller.Localizer["Cancel"]);
         fileDialog.SetModal(true);
         fileDialog.OnResponse += async (sender, e) =>
         {
             if (e.ResponseId == (int)Gtk.ResponseType.Accept)
             {
                 var path = fileDialog.GetFile()!.GetPath() ?? "";
-                _rowSaveFolder.SetText(path);
+                _rowSavePath.SetText(path);
                 await ValidateAsync();
             }
         };
