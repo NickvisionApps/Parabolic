@@ -1,3 +1,5 @@
+using System.Runtime.InteropServices;
+
 namespace NickvisionTubeConverter.GNOME.Controls;
 
 /// <summary>
@@ -15,6 +17,12 @@ public enum MessageDialogResponse
 /// </summary>
 public partial class MessageDialog
 {
+    [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
+    private static partial nint g_main_context_default();
+
+    [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
+    private static partial void g_main_context_iteration(nint context, [MarshalAs(UnmanagedType.I1)] bool blocking);
+
     private readonly Adw.MessageDialog _dialog;
 
     public MessageDialogResponse Response { get; private set; }
@@ -68,6 +76,20 @@ public partial class MessageDialog
     /// Shows the dialog
     /// </summary>
     public void Show() => _dialog.Show();
+
+    /// <summary>
+    /// Runs the dialog
+    /// </summary>
+    /// <returns>MessageDialogResponse</returns>
+    public MessageDialogResponse Run()
+    {
+        _dialog.Show();
+        while(_dialog.GetVisible())
+        {
+            g_main_context_iteration(g_main_context_default(), false);
+        }
+        return Response;
+    }
 
     /// <summary>
     /// Destroys the dialog

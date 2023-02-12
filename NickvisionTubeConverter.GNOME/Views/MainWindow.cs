@@ -50,6 +50,7 @@ public partial class MainWindow
         {
             Handle.AddCssClass("devel");
         }
+        Handle.OnCloseRequest += OnCloseRequested;
         //Main Box
         _mainBox = Gtk.Box.New(Gtk.Orientation.Vertical, 0);
         //Header Bar
@@ -186,6 +187,26 @@ public partial class MainWindow
     /// <param name="sender">object?</param>
     /// <param name="e">NotificationSentEventArgs</param>
     private void NotificationSent(object? sender, NotificationSentEventArgs e) => _toastOverlay.AddToast(Adw.Toast.New(e.Message));
+
+    /// <summary>
+    /// Occurs when the window tries to close
+    /// </summary>
+    /// <param name="sender">Gtk.Window</param>
+    /// <param name="e">EventArgs</param>
+    /// <returns>True to stop close, else false</returns>
+    private bool OnCloseRequested(Gtk.Window sender, EventArgs e)
+    {
+        if(_controller.AreDownloadsRunning)
+        {
+            var closeDialog = new MessageDialog(Handle, _controller.Localizer["CloseAndStop", "Title"], _controller.Localizer["CloseAndStop", "Description"], _controller.Localizer["No"], _controller.Localizer["Yes"]);
+            if(closeDialog.Run() == MessageDialogResponse.Cancel)
+            {
+                return true;
+            }
+        }
+        _controller.StopDownloads();
+        return false;
+    }
 
     /// <summary>
     /// Creates a download row and adds it to the view
