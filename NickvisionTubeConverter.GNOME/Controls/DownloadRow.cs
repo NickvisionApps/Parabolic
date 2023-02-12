@@ -31,6 +31,8 @@ public partial class DownloadRow : Adw.ActionRow, IDownloadRowControl
     private readonly Gtk.Label _doneLabel;
     private readonly Adw.ViewStack _viewStack;
     private DownloadProgress? _lastProgress;
+    private GSourceFunc? _processingCallback;
+    private GSourceFunc? _downloadingCallback;
 
     /// <summary>
     /// Whether or not the download is done
@@ -46,9 +48,11 @@ public partial class DownloadRow : Adw.ActionRow, IDownloadRowControl
         _localizer = localizer;
         _download = download;
         //Row Settings
+        SetUseMarkup(false);
         SetTitle(_download.Filename);
         SetSubtitle(_download.VideoUrl);
         SetTitleLines(1);
+        SetSubtitleLines(1);
         //Status Image
         _imgStatus = Gtk.Image.NewFromIconName("folder-download-symbolic");
         _imgStatus.SetPixelSize(20);
@@ -105,12 +109,6 @@ public partial class DownloadRow : Adw.ActionRow, IDownloadRowControl
         _viewStack.AddNamed(boxDownloading, "downloading");
         _viewStack.AddNamed(boxDone, "done");
         AddSuffix(_viewStack);
-        //Timeout
-        g_timeout_add(30, (x) => 
-        {
-            _progBar.Pulse();
-            return _lastProgress == null;
-        }, 0);
     }
 
     /// <summary>
@@ -127,20 +125,22 @@ public partial class DownloadRow : Adw.ActionRow, IDownloadRowControl
             {
                 case DownloadState.PreProcessing:
                 case DownloadState.PostProcessing:
-                    g_timeout_add(30, (d) => 
+                    _processingCallback = (d) =>
                     {
                         _progBar.Pulse();
                         _progLabel.SetText(_localizer["DownloadState", "Processing"]);
                         return _lastProgress.State == DownloadState.PreProcessing || _lastProgress.State == DownloadState.PostProcessing;
-                    }, 0);
+                    };
+                    g_timeout_add(30, _processingCallback, 0);
                     break;
                 case DownloadState.Downloading:
-                    g_idle_add((d) => 
+                    _downloadingCallback = (d) =>
                     {
                         _progBar.SetFraction(x.Progress);
                         _progLabel.SetText(string.Format(_localizer["DownloadState", "Downloading"], x.Progress * 100, x.DownloadSpeed));
                         return false;
-                    }, 0);
+                    };
+                    g_idle_add(_downloadingCallback, 0);
                     break;
             }
         }));
