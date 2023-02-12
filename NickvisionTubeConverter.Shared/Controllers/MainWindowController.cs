@@ -2,6 +2,7 @@
 using NickvisionTubeConverter.Shared.Helpers;
 using NickvisionTubeConverter.Shared.Models;
 using System;
+using System.Threading.Tasks;
 
 namespace NickvisionTubeConverter.Shared.Controllers;
 
@@ -121,4 +122,6 @@ public class MainWindowController : IDisposable
     /// </summary>
     /// <returns></returns>
     public AddDownloadDialogController CreateAddDownloadDialogController() => new AddDownloadDialogController(Localizer);
+
+    public async Task<bool> DownloadDependenciesAsync() => await DependencyManager.DownloadDependenciesAsync();
 }

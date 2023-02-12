@@ -71,7 +71,7 @@ internal static class DependencyManager
     /// Downloads dependencies (For Windows ONLY)
     /// </summary>
     /// <returns>True if successful, else false. Also false if non-windows system</returns>
-    public static async Task<bool> DownloadDependencies()
+    public static async Task<bool> DownloadDependenciesAsync()
     {
         if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
         {
