@@ -14,10 +14,7 @@ public class DownloadRow : Adw.ActionRow
     private readonly Gtk.ProgressBar _progBar;
     private readonly Gtk.Image _imgStatus;
     private readonly Gtk.LevelBar _levelBar;
-    private readonly Gtk.Stack _viewStack;
-
-    private event EventHandler<DownloadProgress> _progressUpdate;
-    private event EventHandler<bool> _progressFinish;
+    private readonly Adw.ViewStack _viewStack;
 
     /// <summary>
     /// Constructs a DownloadRow
@@ -58,13 +55,10 @@ public class DownloadRow : Adw.ActionRow
         _levelBar.SetSizeRequest(300, -1);
         boxDone.Append(_levelBar);
         //View Stack
-        _viewStack = Gtk.Stack.New();
+        _viewStack = Adw.ViewStack.New();
         _viewStack.AddNamed(boxDownloading, "downloading");
         _viewStack.AddNamed(boxDone, "done");
         AddSuffix(_viewStack);
-
-        _progressUpdate += ProgressUpdate;
-        _progressFinish += ProgressFinish;
     }
 
     /// <summary>
@@ -72,32 +66,12 @@ public class DownloadRow : Adw.ActionRow
     /// </summary>
     public async void Start()
     {
-        _progressFinish.Invoke(this, await _download.RunAsync(true, new Progress<DownloadProgress>(p => {
-            _progressUpdate.Invoke(this, p);
-        })));
-    }
-
-    /// <summary>
-    /// Occurs when download progress is reported
-    /// </summary>
-    /// <param name="sender">object</param>
-    /// <param name="progress">DownloadProgress</param>
-    private void ProgressUpdate(object sender, DownloadProgress progress)
-    {
-        _progBar.SetFraction(progress.Progress);
-    }
-
-
-    /// <summary>
-    /// Occurs when a download finishes
-    /// </summary>
-    /// <param name="sender">object</param>
-    /// <param name="success">bool</param>
-    private void ProgressFinish(object sender, bool success)
-    {
+        var success = await _download.RunAsync(true, new Progress<DownloadProgress>(p => {
+          // _progBar.SetFraction(p.Progress); //TODO: Causes issues with multiple downloads...
+        }));
         _imgStatus.RemoveCssClass("accent");
         _imgStatus.AddCssClass(success ? "success" : "error");
-        _viewStack.SetVisibleChildName("done");
+        //_viewStack.SetVisibleChildName("done"); //TODO: Causes issues with multiple downloads...
         _levelBar.SetValue(success ? 1 : 0);
     }
-}   
+}
