@@ -1,7 +1,9 @@
-﻿using NickvisionTubeConverter.Shared.Events;
+﻿using NickvisionTubeConverter.Shared.Controls;
+using NickvisionTubeConverter.Shared.Events;
 using NickvisionTubeConverter.Shared.Helpers;
 using NickvisionTubeConverter.Shared.Models;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace NickvisionTubeConverter.Shared.Controllers;
@@ -12,11 +14,16 @@ namespace NickvisionTubeConverter.Shared.Controllers;
 public class MainWindowController : IDisposable
 {
     private bool _disposed;
+    private List<IDownloadRowControl> _downloadRows;
 
     /// <summary>
     /// The localizer to get translated strings from
     /// </summary>
     public Localizer Localizer { get; init; }
+    /// <summary>
+    /// The UI function for creating a download row
+    /// </summary>
+    public Func<Download, IDownloadRowControl>? UICreateDownloadRow { get; set; }
 
     /// <summary>
     /// Gets the AppInfo object
@@ -46,6 +53,7 @@ public class MainWindowController : IDisposable
     public MainWindowController()
     {
         _disposed = false;
+        _downloadRows = new List<IDownloadRowControl>();
         Localizer = new Localizer();
     }
 
@@ -120,8 +128,23 @@ public class MainWindowController : IDisposable
     /// <summary>
     /// Creates a new AddDownloadDialogController
     /// </summary>
-    /// <returns></returns>
+    /// <returns>The new AddDownloadDialogController</returns>
     public AddDownloadDialogController CreateAddDownloadDialogController() => new AddDownloadDialogController(Localizer);
 
+    /// <summary>
+    /// Downloads dependencies for the application
+    /// </summary>
+    /// <returns>True if successful, else false</returns>
     public async Task<bool> DownloadDependenciesAsync() => await DependencyManager.DownloadDependenciesAsync();
+
+    /// <summary>
+    /// Adds a download row to the window
+    /// </summary>
+    /// <param name="download">The download model for the row</param>
+    public async Task AddDownloadAsync(Download download)
+    {
+        var newRow = UICreateDownloadRow!(download);
+        _downloadRows.Add(newRow);
+        await newRow.StartAsync();
+    }
 }
