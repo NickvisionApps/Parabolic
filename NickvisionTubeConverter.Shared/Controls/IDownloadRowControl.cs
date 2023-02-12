@@ -7,5 +7,19 @@ namespace NickvisionTubeConverter.Shared.Controls;
 /// </summary>
 public interface IDownloadRowControl
 {
-    public Task StartAsync();
+    /// <summary>
+    /// Whether or not the download is done
+    /// </summary>
+    public bool IsDone { get; }
+
+    /// <summary>
+    /// Starts the download
+    /// </summary>
+    /// <param name="embedMetadata">Whether or not to embed video metadata</param>
+    public Task StartAsync(bool embedMetadata);
+
+    /// <summary>
+    /// Stops the download
+    /// </summary>
+    public void Stop();
 }

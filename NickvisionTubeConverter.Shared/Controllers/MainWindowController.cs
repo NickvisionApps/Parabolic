@@ -145,6 +145,6 @@ public class MainWindowController : IDisposable
     {
         var newRow = UICreateDownloadRow!(download);
         _downloadRows.Add(newRow);
-        await newRow.StartAsync();
+        await newRow.StartAsync(Configuration.Current.EmbedMetadata);
     }
 }
