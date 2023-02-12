@@ -1,6 +1,7 @@
 using NickvisionTubeConverter.Shared.Helpers;
 using NickvisionTubeConverter.Shared.Models;
 using System;
+using System.Runtime.InteropServices;
 using YoutubeDLSharp;
 
 namespace NickvisionTubeConverter.GNOME.Controls;
@@ -8,8 +9,14 @@ namespace NickvisionTubeConverter.GNOME.Controls;
 /// <summary>
 /// A DownloadRow for the downloads page
 /// </summary>
-public class DownloadRow : Adw.ActionRow
+public partial class DownloadRow : Adw.ActionRow
 {
+    [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
+    private static partial nint g_main_context_default();
+
+    [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
+    private static partial void g_main_context_iteration(nint context, [MarshalAs(UnmanagedType.I1)] bool blocking);
+
     private readonly Download _download;
     private readonly Gtk.ProgressBar _progBar;
     private readonly Gtk.Image _imgStatus;
@@ -67,11 +74,13 @@ public class DownloadRow : Adw.ActionRow
     public async void Start()
     {
         var success = await _download.RunAsync(true, new Progress<DownloadProgress>(p => {
-          // _progBar.SetFraction(p.Progress); //TODO: Causes issues with multiple downloads...
+            g_main_context_iteration(g_main_context_default(), false);
+            _progBar.SetFraction(p.Progress);
         }));
         _imgStatus.RemoveCssClass("accent");
         _imgStatus.AddCssClass(success ? "success" : "error");
-        //_viewStack.SetVisibleChildName("done"); //TODO: Causes issues with multiple downloads...
+        g_main_context_iteration(g_main_context_default(), false);
+        _viewStack.SetVisibleChildName("done");
         _levelBar.SetValue(success ? 1 : 0);
     }
 }
