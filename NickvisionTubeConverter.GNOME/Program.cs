@@ -55,9 +55,9 @@ public class Program
     /// <summary>
     /// Occurs when the application is activated
     /// </summary>
-    /// <param name="sedner">Gio.Application</param>
+    /// <param name="sender">Gio.Application</param>
     /// <param name="e">EventArgs</param>
-    private void OnActivate(Gio.Application sedner, EventArgs e)
+    private void OnActivate(Gio.Application sender, EventArgs e)
     {
         //Set Adw Theme
         _application.StyleManager!.ColorScheme = _mainWindowController.Theme switch
