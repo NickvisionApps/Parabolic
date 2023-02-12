@@ -1,6 +1,7 @@
 using NickvisionTubeConverter.Shared.Helpers;
 using NickvisionTubeConverter.Shared.Models;
 using System;
+using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using YoutubeDLSharp;
@@ -26,6 +27,7 @@ public partial class DownloadRow : Adw.ActionRow
     private readonly Gtk.Label _progLabel;
     private readonly Gtk.Image _imgStatus;
     private readonly Gtk.LevelBar _levelBar;
+    private readonly Gtk.Label _doneLabel;
     private readonly Adw.ViewStack _viewStack;
     private DownloadProgress? _lastProgress;
 
@@ -55,7 +57,7 @@ public partial class DownloadRow : Adw.ActionRow
         _progBar.SetSizeRequest(300, -1);
         boxProgress.Append(_progBar);
         //Progress Label
-        _progLabel = Gtk.Label.New(localizer["DownloadState", "Preparing"]);
+        _progLabel = Gtk.Label.New(_localizer["DownloadState", "Preparing"]);
         _progLabel.SetValign(Gtk.Align.Center);
         _progLabel.AddCssClass("caption");
         boxProgress.Append(_progLabel);
@@ -65,17 +67,32 @@ public partial class DownloadRow : Adw.ActionRow
         btnStop.SetValign(Gtk.Align.Center);
         btnStop.AddCssClass("flat");
         btnStop.SetIconName("media-playback-stop-symbolic");
-        btnStop.SetTooltipText(localizer["StopDownload"]);
+        btnStop.SetTooltipText(_localizer["StopDownload"]);
         btnStop.OnClicked += OnStop;
         boxDownloading.Append(btnStop);
         //Box Done
         var boxDone = Gtk.Box.New(Gtk.Orientation.Horizontal, 6);
-        boxDone.SetValign(Gtk.Align.Center);
+        var boxLevel = Gtk.Box.New(Gtk.Orientation.Vertical, 3);
+        boxLevel.SetValign(Gtk.Align.Center);
         //Level Bar
         _levelBar = Gtk.LevelBar.New();
         _levelBar.SetValign(Gtk.Align.Center);
         _levelBar.SetSizeRequest(300, -1);
-        boxDone.Append(_levelBar);
+        boxLevel.Append(_levelBar);
+        //Done Label
+        _doneLabel = Gtk.Label.New(null);
+        _doneLabel.SetValign(Gtk.Align.Center);
+        _doneLabel.AddCssClass("caption");
+        boxLevel.Append(_doneLabel);
+        boxDone.Append(boxLevel);
+        //Open Save Folder Button
+        var btnOpenSaveFolder = Gtk.Button.New();
+        btnOpenSaveFolder.SetValign(Gtk.Align.Center);
+        btnOpenSaveFolder.AddCssClass("flat");
+        btnOpenSaveFolder.SetIconName("folder-symbolic");
+        btnOpenSaveFolder.SetTooltipText(localizer["OpenSaveFolder"]);
+        btnOpenSaveFolder.OnClicked += OnOpenSaveFolder;
+        boxDone.Append(btnOpenSaveFolder);
         //View Stack
         _viewStack = Adw.ViewStack.New();
         _viewStack.AddNamed(boxDownloading, "downloading");
@@ -123,13 +140,14 @@ public partial class DownloadRow : Adw.ActionRow
         _imgStatus.AddCssClass(success ? "success" : "error");
         _viewStack.SetVisibleChildName("done");
         _levelBar.SetValue(success ? 1 : 0);
+        _doneLabel.SetText(success ? _localizer["Success"] : _localizer["Error"]);
     }
 
     /// <summary>
-    /// Occurs when a download is stoped
+    /// Occurs when the stop download button is clicked
     /// </summary>
-    /// <param name="sender"></param>
-    /// <param name="e"></param>
+    /// <param name="sender">Gtk.Button</param>
+    /// <param name="e">EventArgs</param>
     private void OnStop(Gtk.Button sender, EventArgs e)
     {
         _download.Stop();
@@ -138,5 +156,13 @@ public partial class DownloadRow : Adw.ActionRow
         _imgStatus.AddCssClass("error");
         _viewStack.SetVisibleChildName("done");
         _levelBar.SetValue(0);
+        _doneLabel.SetText(_localizer["Stopped"]);
     }
+
+    /// <summary>
+    /// Occurs when the open save folder button is clicked
+    /// </summary>
+    /// <param name="sender">Gtk.Button</param>
+    /// <param name="e">EventArgs</param>
+    private void OnOpenSaveFolder(Gtk.Button sender, EventArgs e) => Process.Start("xdg-open", _download.SaveFolder);
 }
