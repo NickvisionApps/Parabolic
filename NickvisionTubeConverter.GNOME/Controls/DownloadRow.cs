@@ -33,6 +33,11 @@ public partial class DownloadRow : Adw.ActionRow, IDownloadRowControl
     private DownloadProgress? _lastProgress;
 
     /// <summary>
+    /// Whether or not the download is done
+    /// </summary>
+    public bool IsDone => _download.IsDone;
+
+    /// <summary>
     /// Constructs a DownloadRow
     /// </summary>
     /// <param name="download">The download displayed by the row</param>
@@ -70,7 +75,7 @@ public partial class DownloadRow : Adw.ActionRow, IDownloadRowControl
         btnStop.AddCssClass("flat");
         btnStop.SetIconName("media-playback-stop-symbolic");
         btnStop.SetTooltipText(_localizer["StopDownload"]);
-        btnStop.OnClicked += OnStop;
+        btnStop.OnClicked += (sender, e) => Stop();
         boxDownloading.Append(btnStop);
         //Box Done
         var boxDone = Gtk.Box.New(Gtk.Orientation.Horizontal, 6);
@@ -111,9 +116,10 @@ public partial class DownloadRow : Adw.ActionRow, IDownloadRowControl
     /// <summary>
     /// Starts the download
     /// </summary>
-    public async Task StartAsync()
+    /// <param name="embedMetadata">Whether or not to embed video metadata</param>
+    public async Task StartAsync(bool embedMetadata)
     {
-        var success = await _download.RunAsync(true, new Progress<DownloadProgress>((x) => 
+        var success = await _download.RunAsync(embedMetadata, new Progress<DownloadProgress>((x) => 
         {
             _lastProgress = x;
             SetTitle(_download.Filename);
@@ -146,11 +152,9 @@ public partial class DownloadRow : Adw.ActionRow, IDownloadRowControl
     }
 
     /// <summary>
-    /// Occurs when the stop download button is clicked
+    /// Stops the download
     /// </summary>
-    /// <param name="sender">Gtk.Button</param>
-    /// <param name="e">EventArgs</param>
-    private void OnStop(Gtk.Button sender, EventArgs e)
+    public void Stop()
     {
         _download.Stop();
         _progBar.SetFraction(1.0);
