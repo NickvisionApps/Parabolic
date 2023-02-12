@@ -88,10 +88,13 @@ public sealed partial class MainWindow : Window
         //Localize Strings
         LblLoading.Text = _controller.Localizer["DownloadingDependencies"];
         NavViewItemHome.Content = _controller.Localizer["Home"];
+        NavViewItemDownloads.Content = _controller.Localizer["Downloads"];
         NavViewItemSettings.Content = _controller.Localizer["Settings"];
         StatusPageHome.Glyph = _controller.ShowSun ? "\xE706" : "\xE708";
         StatusPageHome.Title = _controller.Greeting;
-        StatusPageHome.Description = _controller.Localizer["NoFolderDescription"];
+        StatusPageHome.Description = _controller.Localizer["NoDownloads", "Description"];
+        ToolTipService.SetToolTip(BtnHomeAddDownload, _controller.Localizer["AddDownload", "Tooltip"]);
+        LblBtnHomeAddDownload.Text = _controller.Localizer["AddDownload"];
         //Page
         NavViewItemHome.IsSelected = true;
     }
@@ -196,5 +199,10 @@ public sealed partial class MainWindow : Window
             _ => InfoBarSeverity.Informational
         };
         InfoBar.IsOpen = true;
+    }
+
+    private void AddDownload(object sender, RoutedEventArgs e)
+    {
+
     }
 }

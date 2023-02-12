@@ -35,6 +35,12 @@
                         <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE10F;"/>
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
+
+                <NavigationViewItem x:Name="NavViewItemDownloads" Tag="Downloads">
+                    <NavigationViewItem.Icon>
+                        <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE118;"/>
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
             </NavigationView.MenuItems>
 
             <NavigationView.FooterMenuItems>
@@ -52,12 +58,28 @@
                             <nickvision:StatusPage x:Name="StatusPageHome" HorizontalAlignment="Center" VerticalAlignment="Center">
                                 <nickvision:StatusPage.Child>
                                     <StackPanel HorizontalAlignment="Center" Margin="0,10,0,0" Orientation="Horizontal" Spacing="12">
-                                        
+                                        <Button x:Name="BtnHomeAddDownload" Height="40" Style="{ThemeResource AccentButtonStyle}" Click="AddDownload">
+                                            <Button.Content>
+                                                <StackPanel Orientation="Horizontal" Spacing="6">
+                                                    <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE109;"/>
+
+                                                    <TextBlock x:Name="LblBtnHomeAddDownload"/>
+                                                </StackPanel>
+                                            </Button.Content>
+
+                                            <Button.KeyboardAccelerators>
+                                                <KeyboardAccelerator Modifiers="Control" Key="N"/>
+                                            </Button.KeyboardAccelerators>
+                                        </Button>
                                     </StackPanel>
                                 </nickvision:StatusPage.Child>
                             </nickvision:StatusPage>
                         </nickvision:ViewStackPage>
 
+                        <nickvision:ViewStackPage x:Name="PageDownloads" PageName="Downloads">
+                            
+                        </nickvision:ViewStackPage>
+                        
                         <nickvision:ViewStackPage x:Name="PageSettings" PageName="Settings"/>
                     </nickvision:ViewStack.Pages>
                 </nickvision:ViewStack>
