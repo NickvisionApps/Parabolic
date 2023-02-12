@@ -2,6 +2,7 @@ using NickvisionTubeConverter.Shared.Helpers;
 using NickvisionTubeConverter.Shared.Models;
 using System;
 using System.Runtime.InteropServices;
+using System.Threading.Tasks;
 using YoutubeDLSharp;
 
 namespace NickvisionTubeConverter.GNOME.Controls;
@@ -12,8 +13,10 @@ namespace NickvisionTubeConverter.GNOME.Controls;
 public partial class DownloadRow : Adw.ActionRow
 {
     private delegate bool GSourceFunc(nint data);
+
     [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
     private static partial uint g_idle_add(GSourceFunc function, nint data);
+
     [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
     private static partial uint g_timeout_add(uint interval, GSourceFunc function, nint data);
 
@@ -24,7 +27,7 @@ public partial class DownloadRow : Adw.ActionRow
     private readonly Gtk.Image _imgStatus;
     private readonly Gtk.LevelBar _levelBar;
     private readonly Adw.ViewStack _viewStack;
-    private DownloadProgress _lastProgress;
+    private DownloadProgress? _lastProgress;
 
     /// <summary>
     /// Constructs a DownloadRow
@@ -35,8 +38,8 @@ public partial class DownloadRow : Adw.ActionRow
         _localizer = localizer;
         _download = download;
         //Row Settings
-        SetTitle(download.Path);
-        SetSubtitle(download.VideoUrl);
+        SetTitle(_download.Filename);
+        SetSubtitle(_download.VideoUrl);
         //Status Image
         _imgStatus = Gtk.Image.NewFromIconName("folder-download-symbolic");
         _imgStatus.SetPixelSize(20);
@@ -52,7 +55,7 @@ public partial class DownloadRow : Adw.ActionRow
         _progBar.SetSizeRequest(300, -1);
         boxProgress.Append(_progBar);
         //Progress Label
-        _progLabel = Gtk.Label.New(localizer["DownloadState.Preparing"]);
+        _progLabel = Gtk.Label.New(localizer["DownloadState", "Preparing"]);
         _progLabel.SetValign(Gtk.Align.Center);
         _progLabel.AddCssClass("caption");
         boxProgress.Append(_progLabel);
@@ -63,7 +66,7 @@ public partial class DownloadRow : Adw.ActionRow
         btnStop.AddCssClass("flat");
         btnStop.SetIconName("media-playback-stop-symbolic");
         btnStop.SetTooltipText(localizer["StopDownload"]);
-        btnStop.OnClicked += (sender, args) => _download.Stop();
+        btnStop.OnClicked += OnStop;
         boxDownloading.Append(btnStop);
         //Box Done
         var boxDone = Gtk.Box.New(Gtk.Orientation.Horizontal, 6);
@@ -78,7 +81,9 @@ public partial class DownloadRow : Adw.ActionRow
         _viewStack.AddNamed(boxDownloading, "downloading");
         _viewStack.AddNamed(boxDone, "done");
         AddSuffix(_viewStack);
-        g_timeout_add(30, d => {
+        //Timeout
+        g_timeout_add(30, (x) => 
+        {
             _progBar.Pulse();
             return _lastProgress == null;
         }, 0);
@@ -87,35 +92,51 @@ public partial class DownloadRow : Adw.ActionRow
     /// <summary>
     /// Starts the download
     /// </summary>
-    public async void Start()
+    public async Task StartAsync()
     {
-        var success = await _download.RunAsync(true, new Progress<DownloadProgress>(p => {
-            _lastProgress = p;
-            switch (p.State)
+        var success = await _download.RunAsync(true, new Progress<DownloadProgress>((x) => 
+        {
+            _lastProgress = x;
+            SetTitle(_download.Filename);
+            switch (x.State)
             {
                 case DownloadState.PreProcessing:
                 case DownloadState.PostProcessing:
-                    g_timeout_add(30, d => {
+                    g_timeout_add(30, (d) => 
+                    {
                         _progBar.Pulse();
-                        _progLabel.SetText(_localizer["DownloadState." + p.State.ToString()]);
+                        _progLabel.SetText(_localizer["DownloadState", "Processing"]);
                         return _lastProgress.State == DownloadState.PreProcessing || _lastProgress.State == DownloadState.PostProcessing;
                     }, 0);
                     break;
                 case DownloadState.Downloading:
-                    g_idle_add(d => {
-                        _progBar.SetFraction(p.Progress);
-                        _progLabel.SetText(string.Format(_localizer["DownloadState.Downloading"], p.Progress * 100, p.DownloadSpeed));
+                    g_idle_add((d) => 
+                    {
+                        _progBar.SetFraction(x.Progress);
+                        _progLabel.SetText(string.Format(_localizer["DownloadState", "Downloading"], x.Progress * 100, x.DownloadSpeed));
                         return false;
                     }, 0);
                     break;
             }
         }));
-        g_idle_add(d => {
-            _imgStatus.RemoveCssClass("accent");
-            _imgStatus.AddCssClass(success ? "success" : "error");
-            _viewStack.SetVisibleChildName("done");
-            _levelBar.SetValue(success ? 1 : 0);
-            return false;
-        }, 0);
+        _imgStatus.RemoveCssClass("accent");
+        _imgStatus.AddCssClass(success ? "success" : "error");
+        _viewStack.SetVisibleChildName("done");
+        _levelBar.SetValue(success ? 1 : 0);
+    }
+
+    /// <summary>
+    /// Occurs when a download is stoped
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    private void OnStop(Gtk.Button sender, EventArgs e)
+    {
+        _download.Stop();
+        _progBar.SetFraction(1.0);
+        _imgStatus.RemoveCssClass("accent");
+        _imgStatus.AddCssClass("error");
+        _viewStack.SetVisibleChildName("done");
+        _levelBar.SetValue(0);
     }
 }

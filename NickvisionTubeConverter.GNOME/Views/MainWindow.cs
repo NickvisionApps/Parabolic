@@ -194,18 +194,17 @@ public partial class MainWindow
         var addController = _controller.CreateAddDownloadDialogController();
         var addDialog = new AddDownloadDialog(addController, Handle);
         addDialog.Show();
-        addDialog.OnResponse += (sender, e) =>
+        addDialog.OnResponse += async (sender, e) =>
         {
-            addDialog.Destroy();
-            if (e.Response == "cancel")
+            if (addController.Accepted)
             {
-                return;
+                _viewStack.SetVisibleChildName("pageDownloads");
+                //TODO: Add to MainWindowController
+                var downloadRow = new DownloadRow(_controller.Localizer, addController.Download!);
+                _grpDownloads.Add(downloadRow);
+                await downloadRow.StartAsync();
             }
-            _viewStack.SetVisibleChildName("pageDownloads");
-            //TODO: Add to MainWindowController
-            var downloadRow = new DownloadRow(_controller.Localizer, addController.Download);
-            _grpDownloads.Add(downloadRow);
-            downloadRow.Start();
+            addDialog.Destroy();
         };
     }
 
