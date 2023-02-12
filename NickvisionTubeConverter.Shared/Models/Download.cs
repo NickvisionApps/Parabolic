@@ -81,7 +81,8 @@ public class Download
     /// </summary>
     /// <param name="embedMetadata">Whether or not to embed video metadata in the downloaded file</param>
     /// <param name="progressCallback">A callback function for DownloadProgresss</param>
-    public async Task RunAsync(bool embedMetadata, Progress<DownloadProgress>? progressCallback = null)
+    /// <returns>True if successful, else false</returns>
+    public async Task<bool> RunAsync(bool embedMetadata, Progress<DownloadProgress>? progressCallback = null)
     {
         if(!IsDone)
         {
@@ -91,6 +92,7 @@ public class Download
                 YoutubeDLPath = DependencyManager.YtdlpPath,
                 FFmpegPath = DependencyManager.Ffmpeg,
             };
+            RunResult<string>? result = null;
             if (string.IsNullOrEmpty(System.IO.Path.GetFileName(Path)))
             {
                 _newFilename = (await ytdlp.RunVideoDataFetch(VideoUrl, _cancellationToken.Token)).Data.Title;
@@ -101,7 +103,7 @@ public class Download
             ytdlp.OutputFileTemplate = $"{_newFilename}.%(ext)s";
             if (FileType.GetIsAudio())
             {
-                await ytdlp.RunAudioDownload(VideoUrl, FileType switch
+                result = await ytdlp.RunAudioDownload(VideoUrl, FileType switch
                 {
                     MediaFileType.MP3 => AudioConversionFormat.Mp3,
                     MediaFileType.OPUS => AudioConversionFormat.Opus,
@@ -116,8 +118,7 @@ public class Download
             }
             else if(FileType.GetIsVideo())
             {
-                var format = Quality == Quality.Best ? "bv*+ba/b" : (Quality == Quality.Good ? "bv*[height<=720]+ba/b[height<=720]" : "wv*+wa/w");
-                await ytdlp.RunVideoDownload(VideoUrl, format, DownloadMergeFormat.Unspecified, FileType switch
+                result = await ytdlp.RunVideoDownload(VideoUrl, Quality == Quality.Best ? "bv*+ba/b" : (Quality == Quality.Good ? "bv*[height<=720]+ba/b[height<=720]" : "wv*+wa/w"), DownloadMergeFormat.Unspecified, FileType switch
                 {
                     MediaFileType.MP4 => VideoRecodeFormat.Mp4,
                     MediaFileType.WEBM => VideoRecodeFormat.Webm,
@@ -134,7 +135,13 @@ public class Download
             IsDone = true;
             _cancellationToken.Dispose();
             _cancellationToken = null;
+            if(result != null)
+            {
+                return result.Success;
+            }
+            return false;
         }
+        return false;
     }
 
     /// <summary>
