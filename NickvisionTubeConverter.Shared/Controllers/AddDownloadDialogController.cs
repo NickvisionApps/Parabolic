@@ -1,5 +1,6 @@
 using NickvisionTubeConverter.Shared.Helpers;
 using NickvisionTubeConverter.Shared.Models;
+using System.IO;
 
 namespace NickvisionTubeConverter.Shared.Controllers;
 
@@ -12,46 +13,36 @@ public class AddDownloadDialogController
     /// The localizer to get translated strings from
     /// </summary>
     public Localizer Localizer { get; init; }
+    /// <summary>
+    /// The download represented by the controller
+    /// </summary>
+    public Download? Download { get; private set; }
+    /// <summary>
+    /// Whether or not the dialog was accepted (response)
+    /// </summary>
+    public bool Accepted { get; set; }
 
     /// <summary>
-    /// The response of the dialog
+    /// The previously used save folder
     /// </summary>
-    public string Response { get; set; }
-
+    public string PreviousSaveFolder => Path.Exists(Configuration.Current.PreviousSaveFolder) ? Configuration.Current.PreviousSaveFolder : "";
     /// <summary>
-    /// The download created by the dialog
+    /// The previously used MediaFileType
     /// </summary>
-    public Download Download { get; private set; }
-
+    public MediaFileType PreviousMediaFileType => Configuration.Current.PreviousMediaFileType;
+    
     /// <summary>
     /// Constructs a AddDownloadDialogController
     /// </summary>
     public AddDownloadDialogController(Localizer localizer)
     {
         Localizer = localizer;
+        Download = null;
+        Accepted = false;
     }
 
     /// <summary>
-    /// Gets the previously used save folder from the configuration
-    /// </summary>
-    /// <returns>The previously used save folder</returns>
-    public string GetPreviousSaveFolder()
-    {
-        var path = Configuration.Current.PreviousSaveFolder;
-        return System.IO.Path.Exists(path) ? path : "";
-    }
-
-    /// <summary>
-    /// Gets the previously used file type (as an int) from the configuration
-    /// </summary>
-    /// <returns>The previously used file type (as an int)</returns>
-    public int GetPreviousFileTypeAsInt()
-    {
-        return (int)Configuration.Current.PreviousMediaFileType;
-    }
-
-    /// <summary>
-    /// Sets the download from the dialog and checks if it is valid
+    /// Updates the Download object
     /// </summary>
     /// <param name="videoUrl">The url of the video to download</param>
     /// <param name="mediaFileType">The file type to download the video as</param>
@@ -60,9 +51,9 @@ public class AddDownloadDialogController
     /// <param name="quality">The quality of the download</param>
     /// <param name="subtitles">The subtitles for the download</param>
     /// <returns>The DownloadCheckStatus</returns>
-    public DownloadCheckStatus SetDownload(string videoUrl, int mediaFileType, string saveFolder, string newFileName, int quality, int subtitles)
+    public DownloadCheckStatus UpdateDownload(string videoUrl, int mediaFileType, string saveFolder, string newFilename, int quality, int subtitles)
     {
-        Download = new Download(videoUrl, (MediaFileType)mediaFileType, saveFolder, newFileName, (Quality)quality, (Subtitle)subtitles);
+        Download = new Download(videoUrl, (MediaFileType)mediaFileType, saveFolder, newFilename, (Quality)quality, (Subtitle)subtitles);
         var checkStatus = Download.CheckStatus;
         if (checkStatus == DownloadCheckStatus.Valid)
         {
