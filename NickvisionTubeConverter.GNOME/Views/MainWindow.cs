@@ -1,4 +1,4 @@
-﻿using NickvisionTubeConverter.Shared.Controllers;
+using NickvisionTubeConverter.Shared.Controllers;
 using NickvisionTubeConverter.Shared.Events;
 using System;
 
@@ -195,6 +195,7 @@ public partial class MainWindow
         addDialog.Show();
         addDialog.OnResponse += (sender, e) =>
         {
+            _viewStack.SetVisibleChildName("pageDownloads");
             //TODO w/ download model and controller implementation
             addDialog.Destroy();
         };
