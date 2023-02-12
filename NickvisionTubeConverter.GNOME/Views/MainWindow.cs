@@ -73,8 +73,8 @@ public partial class MainWindow
         //Page No Downloads
         _statusPageNoDownloads = Adw.StatusPage.New();
         _statusPageNoDownloads.SetIconName("org.nickvision.tubeconverter-symbolic");
-        _statusPageNoDownloads.SetTitle(_controller.Localizer["NoDownloadsTitle"]);
-        _statusPageNoDownloads.SetDescription(_controller.Localizer["NoDownloadsDescription"]);
+        _statusPageNoDownloads.SetTitle(_controller.Localizer["NoDownloads", "Title"]);
+        _statusPageNoDownloads.SetDescription(_controller.Localizer["NoDownloads", "Description"]);
         //View Stack
         _viewStack = Adw.ViewStack.New();
         _viewStack.AddNamed(_statusPageNoDownloads, "pageNoDownloads");
@@ -85,10 +85,7 @@ public partial class MainWindow
         _controller.NotificationSent += NotificationSent;
         //Add Download Action
         var actDownload = Gio.SimpleAction.New("addDownload", null);
-        actDownload.OnActivate += (sender, e) =>
-        {
-            new AddDownloadDialog(new AddDownloadDialogController(_controller.Localizer), Handle); //TODO: Do properly
-        };
+        actDownload.OnActivate += AddDownload;
         Handle.AddAction(actDownload);
         application.SetAccelsForAction("win.addDownload", new string[] { "<Ctrl>n" });
         //Preferences Action
@@ -133,6 +130,23 @@ public partial class MainWindow
     /// <param name="sender">object?</param>
     /// <param name="e">NotificationSentEventArgs</param>
     private void NotificationSent(object? sender, NotificationSentEventArgs e) => _toastOverlay.AddToast(Adw.Toast.New(e.Message));
+
+    /// <summary>
+    /// Occurs when the add download action is triggered
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    private void AddDownload(Gio.SimpleAction sender, EventArgs e)
+    {
+        var addController = _controller.CreateAddDownloadDialogController();
+        var addDialog = new AddDownloadDialog(addController, Handle);
+        addDialog.Show();
+        addDialog.OnResponse += (sender, e) =>
+        {
+            //TODO w/ download model and controller implementation
+            addDialog.Destroy();
+        };
+    }
 
     /// <summary>
     /// Occurs when the preferences action is triggered

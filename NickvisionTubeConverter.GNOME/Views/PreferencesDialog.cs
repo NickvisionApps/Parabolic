@@ -64,7 +64,7 @@ public partial class PreferencesDialog : Adw.Window
         //Converter Group
         _grpConverter = Adw.PreferencesGroup.New();
         _grpConverter.SetTitle(_controller.Localizer["Converter"]);
-        _grpConverter.SetDescription(_controller.Localizer["ConverterDescription"]);
+        _grpConverter.SetDescription(_controller.Localizer["Converter", "Description"]);
         //Embed Metadata
         _rowEmbedMetadata = Adw.ActionRow.New();
         _switchEmbedMetadata = Gtk.Switch.New();
