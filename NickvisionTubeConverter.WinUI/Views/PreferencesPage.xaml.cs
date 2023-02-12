@@ -28,6 +28,7 @@ public sealed partial class PreferencesPage : UserControl
         LblAbout.Text = string.Format(_controller.Localizer["About"], _controller.AppInfo.Name);
         LblDescription.Text = $"{_controller.AppInfo.Description}\n";
         LblVersion.Text = string.Format(_controller.Localizer["Version"], _controller.AppInfo.Version);
+        LblCopyright.Text += $"\n{_controller.Localizer["Disclaimer"]}\n";
         LblBtnChangelog.Text = _controller.Localizer["Changelog"];
         LblBtnCredits.Text = _controller.Localizer["Credits"];
         LblBtnGitHubRepo.Text = _controller.Localizer["GitHubRepo"];
