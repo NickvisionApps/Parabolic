@@ -96,70 +96,67 @@ public class Download
     /// <returns>True if successful, else false</returns>
     public async Task<bool> RunAsync(bool embedMetadata, Progress<DownloadProgress>? progressCallback = null)
     {
-        if(!IsDone)
+        IsDone = false;
+        _cancellationToken = new CancellationTokenSource();
+        var ytdlp = new YoutubeDL()
         {
-            _cancellationToken = new CancellationTokenSource();
-            var ytdlp = new YoutubeDL()
+            YoutubeDLPath = DependencyManager.YtdlpPath,
+            FFmpegPath = DependencyManager.Ffmpeg,
+        };
+        RunResult<string>? result = null;
+        if (string.IsNullOrEmpty(Filename))
+        {
+            _newFilename = (await ytdlp.RunVideoDataFetch(VideoUrl)).Data.Title;
+            Filename += _newFilename;
+        }
+        Filename += Filename.EndsWith(_fileType.GetDotExtension()) ? "" : _fileType.GetDotExtension();
+        ytdlp.OutputFolder = SaveFolder;
+        ytdlp.OutputFileTemplate = $"{_newFilename}.%(ext)s";
+        if (_fileType.GetIsAudio())
+        {
+            try
             {
-                YoutubeDLPath = DependencyManager.YtdlpPath,
-                FFmpegPath = DependencyManager.Ffmpeg,
-            };
-            RunResult<string>? result = null;
-            if (string.IsNullOrEmpty(Filename))
-            {
-                _newFilename = (await ytdlp.RunVideoDataFetch(VideoUrl)).Data.Title;
-                Filename += _newFilename;
-            }
-            Filename += _fileType.GetDotExtension();
-            ytdlp.OutputFolder = SaveFolder;
-            ytdlp.OutputFileTemplate = $"{_newFilename}.%(ext)s";
-            if (_fileType.GetIsAudio())
-            {
-                try
+                result = await ytdlp.RunAudioDownload(VideoUrl, _fileType switch
                 {
-                    result = await ytdlp.RunAudioDownload(VideoUrl, _fileType switch
-                    {
-                        MediaFileType.MP3 => AudioConversionFormat.Mp3,
-                        MediaFileType.OPUS => AudioConversionFormat.Opus,
-                        MediaFileType.FLAC => AudioConversionFormat.Flac,
-                        MediaFileType.WAV => AudioConversionFormat.Wav,
-                        _ => AudioConversionFormat.Best
-                    }, _cancellationToken.Token, progressCallback, null, new OptionSet()
-                    {
-                        EmbedMetadata = embedMetadata,
-                        AudioQuality = _quality == Quality.Best ? (byte)0 : (_quality == Quality.Good ? (byte)5 : (byte)10)
-                    });
-                }
-                catch (TaskCanceledException e) { }
-            }
-            else if(_fileType.GetIsVideo())
-            {
-                try
+                    MediaFileType.MP3 => AudioConversionFormat.Mp3,
+                    MediaFileType.OPUS => AudioConversionFormat.Opus,
+                    MediaFileType.FLAC => AudioConversionFormat.Flac,
+                    MediaFileType.WAV => AudioConversionFormat.Wav,
+                    _ => AudioConversionFormat.Best
+                }, _cancellationToken.Token, progressCallback, null, new OptionSet()
                 {
-                    result = await ytdlp.RunVideoDownload(VideoUrl, _quality == Quality.Best ? "bv*+ba/b" : (_quality == Quality.Good ? "bv*[height<=720]+ba/b[height<=720]" : "wv*+wa/w"), DownloadMergeFormat.Unspecified, _fileType switch
-                    {
-                        MediaFileType.MP4 => VideoRecodeFormat.Mp4,
-                        MediaFileType.WEBM => VideoRecodeFormat.Webm,
-                        _ => VideoRecodeFormat.None
-                    }, _cancellationToken.Token, progressCallback, null, new OptionSet()
-                    {
-                        EmbedMetadata = embedMetadata,
-                        EmbedSubs = _subtitle != Subtitle.None,
-                        WriteAutoSubs = _subtitle != Subtitle.None && (await ytdlp.RunVideoDataFetch(VideoUrl)).Data.Subtitles.Count == 0,
-                        SubFormat = _subtitle == Subtitle.None ? "" : (_subtitle == Subtitle.SRT ? "srt" : "vtt"),
-                        SubLangs = _subtitle == Subtitle.None ? "" : "all"
-                    });
-                }
-                catch (TaskCanceledException e) { }
+                    EmbedMetadata = embedMetadata,
+                    AudioQuality = _quality == Quality.Best ? (byte)0 : (_quality == Quality.Good ? (byte)5 : (byte)10)
+                });
             }
-            IsDone = true;
-            _cancellationToken.Dispose();
-            _cancellationToken = null;
-            if(result != null)
+            catch (TaskCanceledException e) { }
+        }
+        else if(_fileType.GetIsVideo())
+        {
+            try
             {
-                return result.Success;
+                result = await ytdlp.RunVideoDownload(VideoUrl, _quality == Quality.Best ? "bv*+ba/b" : (_quality == Quality.Good ? "bv*[height<=720]+ba/b[height<=720]" : "wv*+wa/w"), DownloadMergeFormat.Unspecified, _fileType switch
+                {
+                    MediaFileType.MP4 => VideoRecodeFormat.Mp4,
+                    MediaFileType.WEBM => VideoRecodeFormat.Webm,
+                    _ => VideoRecodeFormat.None
+                }, _cancellationToken.Token, progressCallback, null, new OptionSet()
+                {
+                    EmbedMetadata = embedMetadata,
+                    EmbedSubs = _subtitle != Subtitle.None,
+                    WriteAutoSubs = _subtitle != Subtitle.None && (await ytdlp.RunVideoDataFetch(VideoUrl)).Data.Subtitles.Count == 0,
+                    SubFormat = _subtitle == Subtitle.None ? "" : (_subtitle == Subtitle.SRT ? "srt" : "vtt"),
+                    SubLangs = _subtitle == Subtitle.None ? "" : "all"
+                });
             }
-            return false;
+            catch (TaskCanceledException e) { }
+        }
+        IsDone = true;
+        _cancellationToken.Dispose();
+        _cancellationToken = null;
+        if(result != null)
+        {
+            return result.Success;
         }
         return false;
     }

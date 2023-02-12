@@ -29,6 +29,7 @@ public partial class DownloadRow : Adw.ActionRow, IDownloadRowControl
     private readonly Gtk.Image _imgStatus;
     private readonly Gtk.LevelBar _levelBar;
     private readonly Gtk.Label _doneLabel;
+    private readonly Gtk.Button _btnFinishAction;
     private readonly Adw.ViewStack _viewStack;
     private DownloadProgress? _lastProgress;
     private GSourceFunc? _processingCallback;
@@ -38,6 +39,10 @@ public partial class DownloadRow : Adw.ActionRow, IDownloadRowControl
     /// Whether or not the download is done
     /// </summary>
     public bool IsDone => _download.IsDone;
+    /// <summary>
+    /// Whether or not the download finished successfully
+    /// </summary>
+    public bool _success;
 
     /// <summary>
     /// Constructs a DownloadRow
@@ -56,7 +61,6 @@ public partial class DownloadRow : Adw.ActionRow, IDownloadRowControl
         //Status Image
         _imgStatus = Gtk.Image.NewFromIconName("folder-download-symbolic");
         _imgStatus.SetPixelSize(20);
-        _imgStatus.AddCssClass("accent");
         AddPrefix(_imgStatus);
         //Box Downloading
         var boxDownloading = Gtk.Box.New(Gtk.Orientation.Horizontal, 6);
@@ -96,14 +100,12 @@ public partial class DownloadRow : Adw.ActionRow, IDownloadRowControl
         _doneLabel.AddCssClass("caption");
         boxLevel.Append(_doneLabel);
         boxDone.Append(boxLevel);
-        //Open Save Folder Button
-        var btnOpenSaveFolder = Gtk.Button.New();
-        btnOpenSaveFolder.SetValign(Gtk.Align.Center);
-        btnOpenSaveFolder.AddCssClass("flat");
-        btnOpenSaveFolder.SetIconName("folder-symbolic");
-        btnOpenSaveFolder.SetTooltipText(localizer["OpenSaveFolder"]);
-        btnOpenSaveFolder.OnClicked += OnOpenSaveFolder;
-        boxDone.Append(btnOpenSaveFolder);
+        //Finish Action Button
+        _btnFinishAction = Gtk.Button.New();
+        _btnFinishAction.SetValign(Gtk.Align.Center);
+        _btnFinishAction.AddCssClass("flat");
+        _btnFinishAction.OnClicked += OnFinishAction;
+        boxDone.Append(_btnFinishAction);
         //View Stack
         _viewStack = Adw.ViewStack.New();
         _viewStack.AddNamed(boxDownloading, "downloading");
@@ -117,7 +119,12 @@ public partial class DownloadRow : Adw.ActionRow, IDownloadRowControl
     /// <param name="embedMetadata">Whether or not to embed video metadata</param>
     public async Task StartAsync(bool embedMetadata)
     {
-        var success = await _download.RunAsync(embedMetadata, new Progress<DownloadProgress>((x) => 
+        _imgStatus.AddCssClass("accent");
+        _imgStatus.RemoveCssClass("error");
+        _imgStatus.SetFromIconName("folder-download-symbolic");
+        _viewStack.SetVisibleChildName("downloading");
+        _progLabel.SetText(_localizer["DownloadState", "Preparing"]);
+        _success = await _download.RunAsync(embedMetadata, new Progress<DownloadProgress>((x) =>
         {
             _lastProgress = x;
             SetTitle(_download.Filename);
@@ -145,11 +152,13 @@ public partial class DownloadRow : Adw.ActionRow, IDownloadRowControl
             }
         }));
         _imgStatus.RemoveCssClass("accent");
-        _imgStatus.AddCssClass(success ? "success" : "error");
-        _imgStatus.SetFromIconName(success ? "emblem-ok-symbolic" : "process-stop-symbolic");
+        _imgStatus.AddCssClass(_success ? "success" : "error");
+        _imgStatus.SetFromIconName(_success ? "emblem-ok-symbolic" : "process-stop-symbolic");
         _viewStack.SetVisibleChildName("done");
-        _levelBar.SetValue(success ? 1 : 0);
-        _doneLabel.SetText(success ? _localizer["Success"] : _localizer["Error"]);
+        _levelBar.SetValue(_success ? 1 : 0);
+        _doneLabel.SetText(_success ? _localizer["Success"] : _localizer["Error"]);
+        _btnFinishAction.SetIconName(_success ? "folder-symbolic" : "process-stop-symbolic"); //TOOD: Proper Icon
+        _btnFinishAction.SetTooltipText(_success ? _localizer["OpenSaveFolder"] : _localizer["RetryDownload"]);
     }
 
     /// <summary>
@@ -157,6 +166,7 @@ public partial class DownloadRow : Adw.ActionRow, IDownloadRowControl
     /// </summary>
     public void Stop()
     {
+        _success = false;
         _download.Stop();
         _progBar.SetFraction(1.0);
         _imgStatus.RemoveCssClass("accent");
@@ -167,9 +177,19 @@ public partial class DownloadRow : Adw.ActionRow, IDownloadRowControl
     }
 
     /// <summary>
-    /// Occurs when the open save folder button is clicked
+    /// Occurs when the finished action button is clicked
     /// </summary>
     /// <param name="sender">Gtk.Button</param>
     /// <param name="e">EventArgs</param>
-    private void OnOpenSaveFolder(Gtk.Button sender, EventArgs e) => Gtk.Functions.ShowUri(null, "file://" + _download.SaveFolder, 0);
+    private void OnFinishAction(Gtk.Button sender, EventArgs e)
+    {
+        if (_success)
+        {
+            Gtk.Functions.ShowUri(null, "file://" + _download.SaveFolder, 0);
+        }
+        else
+        {
+            StartAsync(true);
+        }
+    }
 }
