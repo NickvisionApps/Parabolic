@@ -179,6 +179,33 @@ public class AddDownloadDialog
     private void Validate()
     {
         var checkStatus = _controller.UpdateDownload(_rowVideoUrl.GetText(), (MediaFileType)_rowFileType.GetSelected(), _rowSaveFolder.GetText(), _rowNewFilename.GetText(), (Quality)_rowQuality.GetSelected(), (Subtitle)_rowSubtitle.GetSelected());
+        _rowVideoUrl.RemoveCssClass("error");
+        _rowVideoUrl.SetTitle(_controller.Localizer["VideoUrl", "Field"]);
+        _rowSaveFolder.RemoveCssClass("error");
+        _rowSaveFolder.SetTitle(_controller.Localizer["SaveFolder", "Field"]);
+        if (checkStatus == DownloadCheckStatus.Valid)
+        {
+            _dialog.SetResponseEnabled("ok", true);
+        }
+        else
+        {
+            if(checkStatus.HasFlag(DownloadCheckStatus.EmptyVideoUrl))
+            {
+                _rowVideoUrl.AddCssClass("error");
+                _rowVideoUrl.SetTitle(_controller.Localizer["VideoUrl", "Empty"]);
+            }
+            if (checkStatus.HasFlag(DownloadCheckStatus.InvalidVideoUrl))
+            {
+                _rowVideoUrl.AddCssClass("error");
+                _rowVideoUrl.SetTitle(_controller.Localizer["VideoUrl", "Invalid"]);
+            }
+            if (checkStatus.HasFlag(DownloadCheckStatus.InvalidSaveFolder))
+            {
+                _rowSaveFolder.AddCssClass("error");
+                _rowSaveFolder.SetTitle(_controller.Localizer["SaveFolder", "Invalid"]);
+            }
+            _dialog.SetResponseEnabled("ok", false);
+        }
     }
 
     /// <summary>
@@ -196,6 +223,7 @@ public class AddDownloadDialog
             {
                 var path = fileDialog.GetFile()!.GetPath() ?? "";
                 _rowSaveFolder.SetText(path);
+                Validate();
             }
         };
         fileDialog.Show();
