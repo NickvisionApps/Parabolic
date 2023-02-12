@@ -104,7 +104,7 @@ public class Download
             RunResult<string>? result = null;
             if (string.IsNullOrEmpty(Filename))
             {
-                _newFilename = (await ytdlp.RunVideoDataFetch(VideoUrl, _cancellationToken.Token)).Data.Title;
+                _newFilename = (await ytdlp.RunVideoDataFetch(VideoUrl)).Data.Title;
                 Filename += _newFilename;
             }
             Filename += _fileType.GetDotExtension();
@@ -112,34 +112,42 @@ public class Download
             ytdlp.OutputFileTemplate = $"{_newFilename}.%(ext)s";
             if (_fileType.GetIsAudio())
             {
-                result = await ytdlp.RunAudioDownload(VideoUrl, _fileType switch
+                try
                 {
-                    MediaFileType.MP3 => AudioConversionFormat.Mp3,
-                    MediaFileType.OPUS => AudioConversionFormat.Opus,
-                    MediaFileType.FLAC => AudioConversionFormat.Flac,
-                    MediaFileType.WAV => AudioConversionFormat.Wav,
-                    _ => AudioConversionFormat.Best
-                }, _cancellationToken.Token, progressCallback, null, new OptionSet()
-                {
-                    EmbedMetadata = embedMetadata,
-                    AudioQuality = _quality == Quality.Best ? (byte)0 : (_quality == Quality.Good ? (byte)5 : (byte)10)
-                });
+                    result = await ytdlp.RunAudioDownload(VideoUrl, _fileType switch
+                    {
+                        MediaFileType.MP3 => AudioConversionFormat.Mp3,
+                        MediaFileType.OPUS => AudioConversionFormat.Opus,
+                        MediaFileType.FLAC => AudioConversionFormat.Flac,
+                        MediaFileType.WAV => AudioConversionFormat.Wav,
+                        _ => AudioConversionFormat.Best
+                    }, _cancellationToken.Token, progressCallback, null, new OptionSet()
+                    {
+                        EmbedMetadata = embedMetadata,
+                        AudioQuality = _quality == Quality.Best ? (byte)0 : (_quality == Quality.Good ? (byte)5 : (byte)10)
+                    });
+                }
+                catch (TaskCanceledException e) { }
             }
             else if(_fileType.GetIsVideo())
             {
-                result = await ytdlp.RunVideoDownload(VideoUrl, _quality == Quality.Best ? "bv*+ba/b" : (_quality == Quality.Good ? "bv*[height<=720]+ba/b[height<=720]" : "wv*+wa/w"), DownloadMergeFormat.Unspecified, _fileType switch
+                try
                 {
-                    MediaFileType.MP4 => VideoRecodeFormat.Mp4,
-                    MediaFileType.WEBM => VideoRecodeFormat.Webm,
-                    _ => VideoRecodeFormat.None
-                }, _cancellationToken.Token, progressCallback, null, new OptionSet()
-                {
-                    EmbedMetadata = embedMetadata,
-                    EmbedSubs = true,
-                    WriteAutoSubs = (await ytdlp.RunVideoDataFetch(VideoUrl)).Data.Subtitles.Count == 0,
-                    SubFormat = _subtitle == Subtitle.None ? "" : (_subtitle == Subtitle.SRT ? "srt" : "vtt"),
-                    SubLangs = "all"
-                });
+                    result = await ytdlp.RunVideoDownload(VideoUrl, _quality == Quality.Best ? "bv*+ba/b" : (_quality == Quality.Good ? "bv*[height<=720]+ba/b[height<=720]" : "wv*+wa/w"), DownloadMergeFormat.Unspecified, _fileType switch
+                    {
+                        MediaFileType.MP4 => VideoRecodeFormat.Mp4,
+                        MediaFileType.WEBM => VideoRecodeFormat.Webm,
+                        _ => VideoRecodeFormat.None
+                    }, _cancellationToken.Token, progressCallback, null, new OptionSet()
+                    {
+                        EmbedMetadata = embedMetadata,
+                        EmbedSubs = true,
+                        WriteAutoSubs = (await ytdlp.RunVideoDataFetch(VideoUrl)).Data.Subtitles.Count == 0,
+                        SubFormat = _subtitle == Subtitle.None ? "" : (_subtitle == Subtitle.SRT ? "srt" : "vtt"),
+                        SubLangs = "all"
+                    });
+                }
+                catch (TaskCanceledException e) { }
             }
             IsDone = true;
             _cancellationToken.Dispose();
