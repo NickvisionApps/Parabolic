@@ -148,6 +148,7 @@ public class AddDownloadDialog
         //Load Config
         _rowFileType.SetSelected((uint)_controller.PreviousMediaFileType);
         _rowSaveFolder.SetText(_controller.PreviousSaveFolder);
+        Validate();
         _constructing = false;
     }
 
