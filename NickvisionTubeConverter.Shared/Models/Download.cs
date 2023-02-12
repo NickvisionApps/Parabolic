@@ -147,7 +147,7 @@ public class Download
                         EmbedSubs = true,
                         WriteAutoSubs = (await ytdlp.RunVideoDataFetch(VideoUrl)).Data.Subtitles.Count == 0,
                         SubFormat = _subtitle == Subtitle.None ? "" : (_subtitle == Subtitle.SRT ? "srt" : "vtt"),
-                        SubLangs = "all"
+                        SubLangs = _subtitle == Subtitle.None ? "" : "all"
                     });
                 }
                 catch (TaskCanceledException e) { }
