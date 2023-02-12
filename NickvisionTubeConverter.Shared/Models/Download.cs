@@ -34,7 +34,6 @@ public class Download
 {
     private CancellationTokenSource? _cancellationToken;
     private MediaFileType _fileType;
-    private string _saveFolder;
     private string _newFilename;
     private Quality _quality;
     private Subtitle _subtitle;
@@ -43,6 +42,10 @@ public class Download
     /// The url of the video
     /// </summary>
     public string VideoUrl { get; init; }
+    /// <summary>
+    /// The save folder for the download
+    /// </summary>
+    public string SaveFolder { get; init; }
     /// <summary>
     /// The filename of the download
     /// </summary>
@@ -65,12 +68,12 @@ public class Download
     {
         _cancellationToken = null;
         _fileType = fileType;
-        _saveFolder = saveFolder;
         _newFilename = newFilename;
         _quality = quality;
         _subtitle = subtitle;
         VideoUrl = videoUrl;
-        Filename = $"{newFilename}";
+        SaveFolder = saveFolder;
+        Filename = _newFilename;
         IsDone = false;
     }
 
@@ -108,7 +111,7 @@ public class Download
                 Filename += _newFilename;
             }
             Filename += _fileType.GetDotExtension();
-            ytdlp.OutputFolder = _saveFolder;
+            ytdlp.OutputFolder = SaveFolder;
             ytdlp.OutputFileTemplate = $"{_newFilename}.%(ext)s";
             if (_fileType.GetIsAudio())
             {
