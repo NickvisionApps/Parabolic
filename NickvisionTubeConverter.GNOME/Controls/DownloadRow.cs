@@ -1,3 +1,4 @@
+using NickvisionTubeConverter.Shared.Controls;
 using NickvisionTubeConverter.Shared.Helpers;
 using NickvisionTubeConverter.Shared.Models;
 using System;
@@ -11,7 +12,7 @@ namespace NickvisionTubeConverter.GNOME.Controls;
 /// <summary>
 /// A DownloadRow for the downloads page
 /// </summary>
-public partial class DownloadRow : Adw.ActionRow
+public partial class DownloadRow : Adw.ActionRow, IDownloadRowControl
 {
     private delegate bool GSourceFunc(nint data);
 

@@ -1,6 +1,8 @@
 using NickvisionTubeConverter.GNOME.Controls;
 ﻿using NickvisionTubeConverter.Shared.Controllers;
+using NickvisionTubeConverter.Shared.Controls;
 using NickvisionTubeConverter.Shared.Events;
+using NickvisionTubeConverter.Shared.Models;
 using System;
 
 namespace NickvisionTubeConverter.GNOME.Views;
@@ -136,6 +138,7 @@ public partial class MainWindow
         Handle.SetContent(_mainBox);
         //Register Events 
         _controller.NotificationSent += NotificationSent;
+        _controller.UICreateDownloadRow = CreateDownloadRow;
         //Add Download Action
         var actDownload = Gio.SimpleAction.New("addDownload", null);
         actDownload.OnActivate += AddDownload;
@@ -185,6 +188,19 @@ public partial class MainWindow
     private void NotificationSent(object? sender, NotificationSentEventArgs e) => _toastOverlay.AddToast(Adw.Toast.New(e.Message));
 
     /// <summary>
+    /// Creates a download row and adds it to the view
+    /// </summary>
+    /// <param name="download"></param>
+    /// <returns></returns>
+    private IDownloadRowControl CreateDownloadRow(Download download)
+    {
+        var downloadRow = new DownloadRow(_controller.Localizer, download);
+        _viewStack.SetVisibleChildName("pageDownloads");
+        _grpDownloads.Add(downloadRow);
+        return downloadRow;
+    }
+
+    /// <summary>
     /// Occurs when the add download action is triggered
     /// </summary>
     /// <param name="sender"></param>
@@ -198,11 +214,7 @@ public partial class MainWindow
         {
             if (addController.Accepted)
             {
-                _viewStack.SetVisibleChildName("pageDownloads");
-                //TODO: Add to MainWindowController
-                var downloadRow = new DownloadRow(_controller.Localizer, addController.Download!);
-                _grpDownloads.Add(downloadRow);
-                await downloadRow.StartAsync();
+                await _controller.AddDownloadAsync(addController.Download!);
             }
             addDialog.Destroy();
         };
