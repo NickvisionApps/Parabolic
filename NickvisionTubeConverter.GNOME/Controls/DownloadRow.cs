@@ -42,6 +42,7 @@ public partial class DownloadRow : Adw.ActionRow
         //Row Settings
         SetTitle(_download.Filename);
         SetSubtitle(_download.VideoUrl);
+        SetTitleLines(1);
         //Status Image
         _imgStatus = Gtk.Image.NewFromIconName("folder-download-symbolic");
         _imgStatus.SetPixelSize(20);
