@@ -67,6 +67,9 @@ public class DownloadRow : Adw.ActionRow
         _progressFinish += ProgressFinish;
     }
 
+    /// <summary>
+    /// Starts the download
+    /// </summary>
     public async void Start()
     {
         _progressFinish.Invoke(this, await _download.RunAsync(true, new Progress<DownloadProgress>(p => {
@@ -77,7 +80,7 @@ public class DownloadRow : Adw.ActionRow
     /// <summary>
     /// Occurs when download progress is reported
     /// </summary>
-    /// <param name="sender">object?</param>
+    /// <param name="sender">object</param>
     /// <param name="progress">DownloadProgress</param>
     private void ProgressUpdate(object sender, DownloadProgress progress)
     {
@@ -88,7 +91,7 @@ public class DownloadRow : Adw.ActionRow
     /// <summary>
     /// Occurs when a download finishes
     /// </summary>
-    /// <param name="sender">object?</param>
+    /// <param name="sender">object</param>
     /// <param name="success">bool</param>
     private void ProgressFinish(object sender, bool success)
     {
