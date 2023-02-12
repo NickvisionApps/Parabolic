@@ -1,6 +1,7 @@
 using NickvisionTubeConverter.Shared.Helpers;
 using NickvisionTubeConverter.Shared.Models;
 using System.IO;
+using System.Threading.Tasks;
 
 namespace NickvisionTubeConverter.Shared.Controllers;
 
@@ -62,14 +63,14 @@ public class AddDownloadDialogController
     /// <param name="quality">The quality of the download</param>
     /// <param name="subtitles">The subtitles for the download</param>
     /// <returns>The DownloadCheckStatus</returns>
-    public DownloadCheckStatus UpdateDownload(string videoUrl, MediaFileType mediaFileType, string saveFolder, string newFilename, Quality quality, Subtitle subtitles)
+    public async Task<DownloadCheckStatus> UpdateDownloadAsync(string videoUrl, MediaFileType mediaFileType, string saveFolder, string newFilename, Quality quality, Subtitle subtitles)
     {
         DownloadCheckStatus result = 0;
         if (string.IsNullOrEmpty(videoUrl))
         {
             result |= DownloadCheckStatus.EmptyVideoUrl;
         }
-        else if (!Download.GetIsValidVideoUrl(videoUrl).GetAwaiter().GetResult())
+        else if (!(await Download.GetIsValidVideoUrl(videoUrl)))
         {
             result |= DownloadCheckStatus.InvalidVideoUrl;
         }
