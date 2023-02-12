@@ -52,7 +52,7 @@ public partial class App : Application
     /// Occurs when the app is launched
     /// </summary>
     /// <param name="args">LaunchActivatedEventArgs</param>
-    protected override async void OnLaunched(LaunchActivatedEventArgs args)
+    protected override void OnLaunched(LaunchActivatedEventArgs args)
     {
         //Main Window
         _mainWindow = new MainWindow(_mainWindowController);
