@@ -52,10 +52,7 @@ public class AddDownloadDialog
         {
             if (e.Pspec.GetName() == "text")
             {
-                if (!_constructing)
-                {
-                    Validate();
-                }
+                Validate();
             }
         };
         _preferencesGroup.Add(_rowVideoUrl);
@@ -68,10 +65,7 @@ public class AddDownloadDialog
             if (e.Pspec.GetName() == "selected-item")
             {
                 _rowSubtitle!.SetSensitive(((MediaFileType)_rowFileType.GetSelected()).GetIsVideo());
-                if (!_constructing)
-                {
-                    Validate();
-                }
+                Validate();
             }
         };
         _preferencesGroup.Add(_rowFileType);
@@ -83,10 +77,7 @@ public class AddDownloadDialog
         {
             if (e.Pspec.GetName() == "selected-item")
             {
-                if (!_constructing)
-                {
-                    Validate();
-                }
+                Validate();
             }
         };
         _preferencesGroup.Add(_rowQuality);
@@ -98,10 +89,7 @@ public class AddDownloadDialog
         {
             if (e.Pspec.GetName() == "selected-item")
             {
-                if (!_constructing)
-                {
-                    Validate();
-                }
+                Validate();
             }
         };
         _preferencesGroup.Add(_rowSubtitle);
@@ -121,10 +109,7 @@ public class AddDownloadDialog
         {
             if (e.Pspec.GetName() == "text")
             {
-                if (!_constructing)
-                {
-                    Validate();
-                }
+                Validate();
             }
         };
         _preferencesGroup.Add(_rowSaveFolder);
@@ -136,10 +121,7 @@ public class AddDownloadDialog
         {
             if (e.Pspec.GetName() == "text")
             {
-                if (!_constructing)
-                {
-                    Validate();
-                }
+                Validate();
             }
         };
         _preferencesGroup.Add(_rowNewFilename);
@@ -148,8 +130,8 @@ public class AddDownloadDialog
         //Load Config
         _rowFileType.SetSelected((uint)_controller.PreviousMediaFileType);
         _rowSaveFolder.SetText(_controller.PreviousSaveFolder);
-        Validate();
         _constructing = false;
+        Validate();
     }
 
     public event GObject.SignalHandler<Adw.MessageDialog, Adw.MessageDialog.ResponseSignalArgs> OnResponse
@@ -179,6 +161,10 @@ public class AddDownloadDialog
     /// </summary>
     private void Validate()
     {
+        if (_constructing)
+        {
+            return;
+        }
         var checkStatus = _controller.UpdateDownload(_rowVideoUrl.GetText(), (MediaFileType)_rowFileType.GetSelected(), _rowSaveFolder.GetText(), _rowNewFilename.GetText(), (Quality)_rowQuality.GetSelected(), (Subtitle)_rowSubtitle.GetSelected());
         _rowVideoUrl.RemoveCssClass("error");
         _rowVideoUrl.SetTitle(_controller.Localizer["VideoUrl", "Field"]);
