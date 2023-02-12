@@ -59,9 +59,6 @@ public class Program
     /// <param name="e">EventArgs</param>
     private void OnActivate(Gio.Application sedner, EventArgs e)
     {
-        //Python Setup
-        Python.Runtime.Runtime.PythonDLL = "libpython3.so";
-        Python.Runtime.PythonEngine.Initialize();
         //Set Adw Theme
         _application.StyleManager!.ColorScheme = _mainWindowController.Theme switch
         {

@@ -3,7 +3,6 @@ using NickvisionTubeConverter.Shared.Controllers;
 using NickvisionTubeConverter.Shared.Models;
 using NickvisionTubeConverter.WinUI.Views;
 using System;
-using System.IO;
 
 namespace NickvisionTubeConverter.WinUI;
 
@@ -55,10 +54,6 @@ public partial class App : Application
     /// <param name="args">LaunchActivatedEventArgs</param>
     protected override async void OnLaunched(LaunchActivatedEventArgs args)
     {
-        //Python Setup
-        Python.Runtime.Runtime.PythonDLL = $"{Python.Included.Installer.EmbeddedPythonHome}{Path.DirectorySeparatorChar}python311.dll";
-        await Python.Included.Installer.SetupPython();
-        Python.Runtime.PythonEngine.Initialize();
         //Main Window
         _mainWindow = new MainWindow(_mainWindowController);
         _mainWindow.Activate();
