@@ -97,20 +97,18 @@ public partial class DownloadRow : Adw.ActionRow
                 case DownloadState.PostProcessing:
                     g_timeout_add(30, d => {
                         _progBar.Pulse();
+                        _progLabel.SetText(_localizer["DownloadState." + p.State.ToString()]);
                         return _lastProgress.State == DownloadState.PreProcessing || _lastProgress.State == DownloadState.PostProcessing;
                     }, 0);
                     break;
                 case DownloadState.Downloading:
                     g_idle_add(d => {
                         _progBar.SetFraction(p.Progress);
+                        _progLabel.SetText(string.Format(_localizer["DownloadState.Downloading"], p.Progress * 100, p.DownloadSpeed));
                         return false;
                     }, 0);
                     break;
             }
-            g_idle_add(d => {
-                _progLabel.SetText(_localizer["DownloadState." + Enum.GetName(typeof(DownloadState), p.State)]);
-                return false;
-            }, 0);
         }));
         g_idle_add(d => {
             _imgStatus.RemoveCssClass("accent");
