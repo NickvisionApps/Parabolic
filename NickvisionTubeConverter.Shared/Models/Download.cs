@@ -32,7 +32,7 @@ public enum Subtitle
 /// </summary>
 public class Download
 {
-    private CancellationTokenSource _cancellationToken;
+    private CancellationTokenSource? _cancellationToken;
     private string _saveFolder;
     private string _newFilename;
 
@@ -54,7 +54,7 @@ public class Download
     /// <param name="subtitle">The subtitles for the download</param>
     public Download(string videoUrl, MediaFileType fileType, string saveFolder, string newFilename = "", Quality quality = Quality.Best, Subtitle subtitle = Subtitle.None)
     {
-        _cancellationToken = new CancellationTokenSource();
+        _cancellationToken = null;
         _saveFolder = saveFolder;
         _newFilename = newFilename;
         VideoUrl = videoUrl;
@@ -85,6 +85,7 @@ public class Download
     {
         if(!IsDone)
         {
+            _cancellationToken = new CancellationTokenSource();
             var ytdlp = new YoutubeDL()
             {
                 YoutubeDLPath = DependencyManager.YtdlpPath,
@@ -131,11 +132,13 @@ public class Download
                 });
             }
             IsDone = true;
+            _cancellationToken.Dispose();
+            _cancellationToken = null;
         }
     }
 
     /// <summary>
     /// Stops the download
     /// </summary>
-    public void Stop() => _cancellationToken.Cancel();
+    public void Stop() => _cancellationToken?.Cancel();
 }
