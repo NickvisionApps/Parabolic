@@ -51,14 +51,14 @@ public class AddDownloadDialogController
     /// <param name="quality">The quality of the download</param>
     /// <param name="subtitles">The subtitles for the download</param>
     /// <returns>The DownloadCheckStatus</returns>
-    public DownloadCheckStatus UpdateDownload(string videoUrl, int mediaFileType, string saveFolder, string newFilename, int quality, int subtitles)
+    public DownloadCheckStatus UpdateDownload(string videoUrl, MediaFileType mediaFileType, string saveFolder, string newFilename, Quality quality, Subtitle subtitles)
     {
-        Download = new Download(videoUrl, (MediaFileType)mediaFileType, saveFolder, newFilename, (Quality)quality, (Subtitle)subtitles);
+        Download = new Download(videoUrl, mediaFileType, saveFolder, newFilename, quality, subtitles);
         var checkStatus = Download.CheckStatus;
         if (checkStatus == DownloadCheckStatus.Valid)
         {
             Configuration.Current.PreviousSaveFolder = saveFolder;
-            Configuration.Current.PreviousMediaFileType = (MediaFileType)mediaFileType;
+            Configuration.Current.PreviousMediaFileType = mediaFileType;
             Configuration.Current.Save();
         }
         return checkStatus;

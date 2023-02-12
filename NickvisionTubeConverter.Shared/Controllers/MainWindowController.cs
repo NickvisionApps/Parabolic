@@ -115,4 +115,10 @@ public class MainWindowController : IDisposable
         }
         _disposed = true;
     }
+
+    /// <summary>
+    /// Creates a new AddDownloadDialogController
+    /// </summary>
+    /// <returns></returns>
+    public AddDownloadDialogController CreateAddDownloadDialogController() => new AddDownloadDialogController(Localizer);
 }
