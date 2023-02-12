@@ -144,8 +144,8 @@ public class Download
                     }, _cancellationToken.Token, progressCallback, null, new OptionSet()
                     {
                         EmbedMetadata = embedMetadata,
-                        EmbedSubs = true,
-                        WriteAutoSubs = (await ytdlp.RunVideoDataFetch(VideoUrl)).Data.Subtitles.Count == 0,
+                        EmbedSubs = _subtitle != Subtitle.None,
+                        WriteAutoSubs = _subtitle != Subtitle.None && (await ytdlp.RunVideoDataFetch(VideoUrl)).Data.Subtitles.Count == 0,
                         SubFormat = _subtitle == Subtitle.None ? "" : (_subtitle == Subtitle.SRT ? "srt" : "vtt"),
                         SubLangs = _subtitle == Subtitle.None ? "" : "all"
                     });
