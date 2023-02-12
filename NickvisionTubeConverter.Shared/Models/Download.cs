@@ -81,7 +81,7 @@ public class Download
     /// </summary>
     /// <param name="embedMetadata">Whether or not to embed video metadata in the downloaded file</param>
     /// <param name="progressCallback">A callback function for DownloadProgresss</param>
-    public async Task RunAsync(bool embedMetadata, Progress<DownloadProgress> progressCallback)
+    public async Task RunAsync(bool embedMetadata, Progress<DownloadProgress>? progressCallback = null)
     {
         if(!IsDone)
         {
