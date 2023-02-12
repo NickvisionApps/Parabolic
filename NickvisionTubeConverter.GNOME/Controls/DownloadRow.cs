@@ -146,6 +146,7 @@ public partial class DownloadRow : Adw.ActionRow, IDownloadRowControl
         }));
         _imgStatus.RemoveCssClass("accent");
         _imgStatus.AddCssClass(success ? "success" : "error");
+        _imgStatus.SetFromIconName(success ? "emblem-ok-symbolic" : "process-stop-symbolic");
         _viewStack.SetVisibleChildName("done");
         _levelBar.SetValue(success ? 1 : 0);
         _doneLabel.SetText(success ? _localizer["Success"] : _localizer["Error"]);
