@@ -1,6 +1,4 @@
-﻿using System.IO;
-
-namespace NickvisionTubeConverter.Shared.Models;
+﻿namespace NickvisionTubeConverter.Shared.Models;
 
 /// <summary>
 /// Qualities for a Download
@@ -23,27 +21,15 @@ public enum Subtitle
 }
 
 /// <summary>
-/// Statuses for when a download is checked
-/// </summary>
-public enum DownloadCheckStatus
-{
-    Valid = 1,
-    EmptyVideoUrl = 2,
-    InvalidVideoUrl = 4,
-    InvalidSaveFolder = 8
-}
-
-/// <summary>
 /// A model of a video download
 /// </summary>
 public class Download
 {
-    private bool _isValidUrl;
     private int _pid;
 
     public string VideoUrl { get; init; }
     public MediaFileType FileType { get; init; }
-    public string Path { get; init; }
+    public string Path { get; private set; }
     public Quality Quality { get; init; }
     public Subtitle Subtitle { get; init; }
     public string Log { get; private set; }
@@ -68,40 +54,16 @@ public class Download
         Log = "";
         IsDone = false;
         _pid = -1;
-        var videoTitle = GetVideoTitle();
-        _isValidUrl = !string.IsNullOrEmpty(videoTitle);
-        if(string.IsNullOrEmpty(newFilename))
-        {
-            Path += videoTitle;
-        }
     }
 
     /// <summary>
-    /// The validation status of the Download object
+    /// Gets whether or not a video url is valid
     /// </summary>
-    public DownloadCheckStatus CheckStatus
+    /// <param name="url">The video url to check</param>
+    /// <returns>True if valid, else false</returns>
+    public static bool GetIsValidVideoUrl(string url)
     {
-        get
-        {
-            DownloadCheckStatus result = 0;
-            if(string.IsNullOrEmpty(VideoUrl))
-            {
-                result |= DownloadCheckStatus.EmptyVideoUrl;
-            }
-            if(!_isValidUrl)
-            {
-                result |= DownloadCheckStatus.InvalidVideoUrl;
-            }
-            if(!Directory.Exists(Path))
-            {
-                result |= DownloadCheckStatus.InvalidSaveFolder;
-            }
-            if(result == 0)
-            {
-                result = DownloadCheckStatus.Valid;
-            }
-            return result;
-        }
+        return true;
     }
 
     /// <summary>
@@ -111,6 +73,10 @@ public class Download
     /// <returns>True if successful, else false</returns>
     public bool Run(bool embedMetadata)
     {
+        if (string.IsNullOrEmpty(System.IO.Path.GetFileName(Path)))
+        {
+            //Path += VideoTitle
+        }
         return false;
     }
 
@@ -120,23 +86,5 @@ public class Download
     public void Stop()
     {
 
-    }
-
-    /// <summary>
-    /// Gets the title of the source video
-    /// </summary>
-    /// <returns></returns>
-    private string GetVideoTitle()
-    {
-        return "";
-    }
-
-    /// <summary>
-    /// Gets whether or not a source video contains subtitles
-    /// </summary>
-    /// <returns></returns>
-    private bool GetContainsSubtitles()
-    {
-        return false;
     }
 }

@@ -5,6 +5,17 @@ using System.IO;
 namespace NickvisionTubeConverter.Shared.Controllers;
 
 /// <summary>
+/// Statuses for when a download is checked
+/// </summary>
+public enum DownloadCheckStatus
+{
+    Valid = 1,
+    EmptyVideoUrl = 2,
+    InvalidVideoUrl = 4,
+    InvalidSaveFolder = 8
+}
+
+/// <summary>
 /// A controller for a AddDownloadDialog
 /// </summary>
 public class AddDownloadDialogController
@@ -53,14 +64,27 @@ public class AddDownloadDialogController
     /// <returns>The DownloadCheckStatus</returns>
     public DownloadCheckStatus UpdateDownload(string videoUrl, MediaFileType mediaFileType, string saveFolder, string newFilename, Quality quality, Subtitle subtitles)
     {
-        Download = new Download(videoUrl, mediaFileType, saveFolder, newFilename, quality, subtitles);
-        var checkStatus = Download.CheckStatus;
-        if (checkStatus == DownloadCheckStatus.Valid)
+        DownloadCheckStatus result = 0;
+        if (string.IsNullOrEmpty(videoUrl))
         {
-            Configuration.Current.PreviousSaveFolder = saveFolder;
-            Configuration.Current.PreviousMediaFileType = mediaFileType;
-            Configuration.Current.Save();
+            result |= DownloadCheckStatus.EmptyVideoUrl;
         }
-        return checkStatus;
+        if (!Download.GetIsValidVideoUrl(videoUrl))
+        {
+            result |= DownloadCheckStatus.InvalidVideoUrl;
+        }
+        if (!Directory.Exists(saveFolder))
+        {
+            result |= DownloadCheckStatus.InvalidSaveFolder;
+        }
+        if (result != 0)
+        {
+            return result;
+        }
+        Download = new Download(videoUrl, mediaFileType, saveFolder, newFilename, quality, subtitles);
+        Configuration.Current.PreviousSaveFolder = saveFolder;
+        Configuration.Current.PreviousMediaFileType = mediaFileType;
+        Configuration.Current.Save();
+        return DownloadCheckStatus.Valid;
     }
 }
