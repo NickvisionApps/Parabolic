@@ -21,6 +21,8 @@ public enum DownloadCheckStatus
 /// </summary>
 public class AddDownloadDialogController
 {
+    private string? _previousUrl;
+
     /// <summary>
     /// The localizer to get translated strings from
     /// </summary>
@@ -48,6 +50,7 @@ public class AddDownloadDialogController
     /// </summary>
     public AddDownloadDialogController(Localizer localizer)
     {
+        _previousUrl = null;
         Localizer = localizer;
         Download = null;
         Accepted = false;
@@ -70,9 +73,13 @@ public class AddDownloadDialogController
         {
             result |= DownloadCheckStatus.EmptyVideoUrl;
         }
-        else if (!(await Download.GetIsValidVideoUrl(videoUrl)))
+        else if(_previousUrl != videoUrl)
         {
-            result |= DownloadCheckStatus.InvalidVideoUrl;
+            _previousUrl = videoUrl;
+            if (!(await Download.GetIsValidVideoUrl(videoUrl)))
+            {
+                result |= DownloadCheckStatus.InvalidVideoUrl;
+            }
         }
         if (!Directory.Exists(saveFolder))
         {
