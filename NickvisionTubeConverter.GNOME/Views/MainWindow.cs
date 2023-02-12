@@ -1,4 +1,5 @@
-using NickvisionTubeConverter.Shared.Controllers;
+using NickvisionTubeConverter.GNOME.Controls;
+﻿using NickvisionTubeConverter.Shared.Controllers;
 using NickvisionTubeConverter.Shared.Events;
 using System;
 
@@ -195,9 +196,16 @@ public partial class MainWindow
         addDialog.Show();
         addDialog.OnResponse += (sender, e) =>
         {
-            _viewStack.SetVisibleChildName("pageDownloads");
-            //TODO w/ download model and controller implementation
             addDialog.Destroy();
+            if (e.Response == "cancel")
+            {
+                return;
+            }
+            _viewStack.SetVisibleChildName("pageDownloads");
+            //TODO: Add to MainWindowController
+            var downloadRow = new DownloadRow(_controller.Localizer, addController.Download);
+            _grpDownloads.Add(downloadRow);
+            downloadRow.Start();
         };
     }
 
