@@ -101,6 +101,24 @@ public class MainWindowController : IDisposable
     }
 
     /// <summary>
+    /// Whether or not downloads are running
+    /// </summary>
+    public bool AreDownloadsRunning
+    {
+        get
+        {
+            foreach(var row in _downloadRows)
+            {
+                if(!row.IsDone)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+    }
+
+    /// <summary>
     /// Frees resources used by the Account object
     /// </summary>
     public void Dispose()
@@ -146,5 +164,16 @@ public class MainWindowController : IDisposable
         var newRow = UICreateDownloadRow!(download);
         _downloadRows.Add(newRow);
         await newRow.StartAsync(Configuration.Current.EmbedMetadata);
+    }
+
+    /// <summary>
+    /// Stops all downloads
+    /// </summary>
+    public void StopDownloads()
+    {
+        foreach(var row in _downloadRows)
+        {
+            row.Stop();
+        }
     }
 }
