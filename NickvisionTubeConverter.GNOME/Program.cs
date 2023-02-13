@@ -34,7 +34,7 @@ public class Program
         _mainWindowController.AppInfo.ShortName = "Tube Converter";
         _mainWindowController.AppInfo.Description = $"{_mainWindowController.Localizer["Description"]}.";
         _mainWindowController.AppInfo.Version = "2023.2.1-next";
-        _mainWindowController.AppInfo.Changelog = "<ul><li>C# Rewrite</li></ul>";
+        _mainWindowController.AppInfo.Changelog = "<ul><li>Tube Converter has been rewritten in C#. With the C# rewrite, Tube Converter is now available on Windows!</li><li>Added download progress/speed indicators</li><li>Replaced the View Log button with an Open Save Folder button on successful download and a Retry Download button on error</li><li>Redesigned download rows to better fit small screens/mobile devices</li><li>Fixed UI freeze while downloads in progress</li><li>Fixed being unable to close the Preferences window with the Esc key</li><li>Fixed missing GNOME HIG keyboard shortcuts (Ctrl+W, F10)</li></ul>";
         _mainWindowController.AppInfo.GitHubRepo = new Uri("https://github.com/nlogozzo/NickvisionTubeConverter");
         _mainWindowController.AppInfo.IssueTracker = new Uri("https://github.com/nlogozzo/NickvisionTubeConverter/issues/new");
         _mainWindowController.AppInfo.SupportUrl = new Uri("https://github.com/nlogozzo/NickvisionTubeConverter/discussions");
