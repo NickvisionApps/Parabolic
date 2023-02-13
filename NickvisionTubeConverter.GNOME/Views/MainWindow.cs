@@ -29,6 +29,8 @@ public partial class MainWindow
     private readonly Gtk.Button _btnAddDownloadStartPage;
     private readonly Gtk.Label _lblStart;
     private readonly Gtk.ScrolledWindow _scrollDownloadsPage;
+    private readonly Gtk.Box _boxMainContent;
+    private readonly Gtk.Label _lblDownloads;
     private readonly Gtk.Box _boxDownloads;
     private readonly Adw.ViewStack _viewStack;
 
@@ -128,14 +130,23 @@ public partial class MainWindow
         _clampDownloadsPage.SetMaximumSize(800);
         _clampDownloadsPage.SetMarginStart(12);
         _clampDownloadsPage.SetMarginEnd(12);
-        _clampDownloadsPage.SetMarginTop(30);
+        _clampDownloadsPage.SetMarginTop(12);
         _clampDownloadsPage.SetMarginBottom(12);
         _scrollDownloadsPage.SetChild(_clampDownloadsPage);
+        _boxMainContent = Gtk.Box.New(Gtk.Orientation.Vertical, 10);
+        _boxMainContent.SetHexpand(true);
+        _boxMainContent.SetValign(Gtk.Align.Start);
+        _clampDownloadsPage.SetChild(_boxMainContent);
+        _lblDownloads = Gtk.Label.New(_controller.Localizer["Downloads"]);
+        _lblDownloads.SetHalign(Gtk.Align.Start);
+        _lblDownloads.SetMarginStart(5);
+        _lblDownloads.AddCssClass("heading");
+        _boxMainContent.Append(_lblDownloads);
         _boxDownloads = Gtk.Box.New(Gtk.Orientation.Vertical, 0);
         _boxDownloads.SetHexpand(true);
         _boxDownloads.SetValign(Gtk.Align.Start);
         _boxDownloads.AddCssClass("card");
-        _clampDownloadsPage.SetChild(_boxDownloads);
+        _boxMainContent.Append(_boxDownloads);
         //View Stack
         _viewStack = Adw.ViewStack.New();
         _viewStack.AddNamed(_scrollStartPage, "pageNoDownloads");
