@@ -153,7 +153,21 @@ public class MainWindowController : IDisposable
     /// Downloads dependencies for the application
     /// </summary>
     /// <returns>True if successful, else false</returns>
-    public async Task<bool> DownloadDependenciesAsync() => await DependencyManager.DownloadDependenciesAsync();
+    public async Task<bool> DownloadDependenciesAsync()
+    {
+        var ytdlpVersion = new Version(2023, 1, 6);
+        if(Configuration.Current.YtdlpVersion != ytdlpVersion)
+        {
+            if(await DependencyManager.DownloadDependenciesAsync())
+            {
+                Configuration.Current.YtdlpVersion = ytdlpVersion;
+                Configuration.Current.Save();
+                return true;
+            }
+            return false;
+        }
+        return true;
+    }
 
     /// <summary>
     /// Adds a download row to the window

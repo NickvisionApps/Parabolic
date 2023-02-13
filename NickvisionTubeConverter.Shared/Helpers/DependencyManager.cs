@@ -70,15 +70,22 @@ internal static class DependencyManager
     /// <summary>
     /// Downloads dependencies (For Windows ONLY)
     /// </summary>
-    /// <returns>True if successful, else false. Also false if non-windows system</returns>
+    /// <returns>True if successful, else false.</returns>
     public static async Task<bool> DownloadDependenciesAsync()
     {
         if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
         {
+            return true;
+        }
+        try
+        {
+            await YoutubeDL.DownloadYtDlpBinary(YtdlpPath.Remove(YtdlpPath.IndexOf("yt-dlp.exe")));
+            await YoutubeDL.DownloadFFmpegBinary(Ffmpeg.Remove(Ffmpeg.IndexOf("ffmpeg.exe")));
+            return true;
+        }
+        catch
+        {
             return false;
         }
-        await YoutubeDL.DownloadYtDlpBinary(YtdlpPath.Remove(YtdlpPath.IndexOf("yt-dlp.exe")));
-        await YoutubeDL.DownloadFFmpegBinary(Ffmpeg.Remove(Ffmpeg.IndexOf("ffmpeg.exe")));
-        return true;
     }
 }

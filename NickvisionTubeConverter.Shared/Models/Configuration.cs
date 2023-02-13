@@ -29,6 +29,10 @@ public class Configuration
     /// Whether or not to embed metadata in a download
     /// </summary>
     public bool EmbedMetadata { get; set; }
+    /// <summary>
+    /// The installed version of yt-dlp
+    /// </summary>
+    public Version YtdlpVersion { get; set; }
 
     /// <summary>
     /// Occurs when the configuration is saved to disk
@@ -48,6 +52,7 @@ public class Configuration
         PreviousSaveFolder = "";
         PreviousMediaFileType = MediaFileType.MP4;
         EmbedMetadata = true;
+        YtdlpVersion = new Version(0, 0, 0);
     }
 
     /// <summary>
