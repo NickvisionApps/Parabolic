@@ -45,6 +45,7 @@ public partial class MainWindow
         _application = application;
         Handle = Adw.ApplicationWindow.New(_application);
         Handle.SetDefaultSize(800, 600);
+        Handle.SetSizeRequest(360, -1);
         Handle.SetTitle(_controller.AppInfo.ShortName);
         if (_controller.IsDevVersion)
         {
