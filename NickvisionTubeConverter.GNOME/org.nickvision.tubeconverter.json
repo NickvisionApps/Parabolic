@@ -1,10 +1,10 @@
 {
-    "app-id" : "org.nickvision.tubeconverter",
-    "runtime" : "org.gnome.Platform",
-    "runtime-version" : "43",
-    "sdk" : "org.gnome.Sdk",
+    "app-id": "org.nickvision.tubeconverter",
+    "runtime": "org.gnome.Platform",
+    "runtime-version": "43",
+    "sdk": "org.gnome.Sdk",
     "sdk-extensions": [
-    "org.freedesktop.Sdk.Extension.dotnet7"
+        "org.freedesktop.Sdk.Extension.dotnet7"
     ],
     "build-options": {
         "append-path": "/usr/lib/sdk/dotnet7/bin",
@@ -13,8 +13,8 @@
             "PKG_CONFIG_PATH": "/app/lib/pkgconfig:/app/share/pkgconfig:/usr/lib/pkgconfig:/usr/share/pkgconfig:/usr/lib/sdk/dotnet7/lib/pkgconfig"
         }
     },
-    "command" : "/app/opt/org.nickvision.tubeconverter/NickvisionTubeConverter.GNOME",
-    "finish-args":[
+    "command": "/app/opt/org.nickvision.tubeconverter/NickvisionTubeConverter.GNOME",
+    "finish-args": [
         "--socket=fallback-x11",
         "--socket=wayland",
         "--device=dri",
@@ -22,12 +22,12 @@
         "--share=network",
         "--filesystem=home"
     ],
-    "cleanup":[
+    "cleanup": [
       "/include",
       "/lib/pkgconfig",
       "*.a"
     ],
-    "modules" : [
+    "modules": [
         {
             "name": "ffmpeg",
             "config-opts": [
@@ -190,17 +190,17 @@
             "build-options": {
                 "arch": {
                     "arm": {
-                        "env" : {
+                        "env": {
                             "RUNTIME": "linux-arm"
                         }
                     },
                     "aarch64": {
-                        "env" : {
+                        "env": {
                             "RUNTIME": "linux-arm64"
                         }
                     },
                     "x86_64": {
-                        "env" : {
+                        "env": {
                             "RUNTIME": "linux-x64"
                         }
                     }
