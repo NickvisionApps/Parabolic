@@ -48,10 +48,6 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
     /// Whether or not the download is done
     /// </summary>
     public bool IsDone => _download.IsDone;
-    /// <summary>
-    /// Whether or not the download finished successfully
-    /// </summary>
-    public bool _success;
 
     /// <summary>
     /// Constructs a DownloadRow
@@ -162,7 +158,7 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
         _imgStatus.SetFromIconName("folder-download-symbolic");
         _viewStackState.SetVisibleChildName("downloading");
         _progLabel.SetText(_localizer["DownloadState", "Preparing"]);
-        _success = await _download.RunAsync(embedMetadata, new Progress<DownloadProgress>((x) =>
+        var success = await _download.RunAsync(embedMetadata, new Progress<DownloadProgress>((x) =>
         {
             _lastProgress = x;
             _lblFilename.SetText(_download.Filename);
@@ -190,12 +186,12 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
             }
         }));
         _imgStatus.RemoveCssClass("accent");
-        _imgStatus.AddCssClass(_success ? "success" : "error");
-        _imgStatus.SetFromIconName(_success ? "emblem-ok-symbolic" : "process-stop-symbolic");
+        _imgStatus.AddCssClass(success ? "success" : "error");
+        _imgStatus.SetFromIconName(success ? "emblem-ok-symbolic" : "process-stop-symbolic");
         _viewStackState.SetVisibleChildName("done");
-        _levelBar.SetValue(_success ? 1 : 0);
-        _doneLabel.SetText(_success ? _localizer["Success"] : _localizer["Error"]);
-        _viewStackAction.SetVisibleChildName(_success ? "open-folder" : "retry");
+        _levelBar.SetValue(success ? 1 : 0);
+        _doneLabel.SetText(success ? _localizer["Success"] : _localizer["Error"]);
+        _viewStackAction.SetVisibleChildName(success ? "open-folder" : "retry");
     }
 
     /// <summary>
@@ -203,7 +199,6 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
     /// </summary>
     public void Stop()
     {
-        _success = false;
         _download.Stop();
         _progBar.SetFraction(1.0);
         _imgStatus.RemoveCssClass("accent");
