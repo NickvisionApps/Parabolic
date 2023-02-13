@@ -23,6 +23,7 @@ public partial class MainWindow
     private readonly Adw.ToastOverlay _toastOverlay;
     private readonly Gtk.ScrolledWindow _scrollStartPage;
     private readonly Adw.Clamp _clampStartPage;
+    private readonly Adw.Clamp _clampDownloadsPage;
     private readonly Gtk.Box _boxStartPage;
     private readonly Adw.ButtonContent _greetingStartPage;
     private readonly Gtk.Button _btnAddDownloadStartPage;
@@ -117,21 +118,24 @@ public partial class MainWindow
         _boxStartPage = Gtk.Box.New(Gtk.Orientation.Vertical, 12);
         _boxStartPage.SetHexpand(true);
         _boxStartPage.SetHalign(Gtk.Align.Fill);
-        _clampStartPage.SetChild(_boxStartPage);
         _boxStartPage.Append(_greetingStartPage);
         _boxStartPage.Append(_btnAddDownloadStartPage);
         _boxStartPage.Append(_lblStart);
+        _clampStartPage.SetChild(_boxStartPage);
         //Downloads Page
-        _boxDownloads = Gtk.Box.New(Gtk.Orientation.Vertical, 0);
-        _boxDownloads.AddCssClass("card");
-        _boxDownloads.SetMarginStart(30);
-        _boxDownloads.SetMarginTop(10);
-        _boxDownloads.SetMarginEnd(30);
-        _boxDownloads.SetMarginBottom(10);
-        _boxDownloads.SetValign(Gtk.Align.Start);
         _scrollDownloadsPage = Gtk.ScrolledWindow.New();
-        _scrollDownloadsPage.SetHexpand(true);
-        _scrollDownloadsPage.SetChild(_boxDownloads);
+        _clampDownloadsPage = Adw.Clamp.New();
+        _clampDownloadsPage.SetMaximumSize(800);
+        _clampDownloadsPage.SetMarginStart(12);
+        _clampDownloadsPage.SetMarginEnd(12);
+        _clampDownloadsPage.SetMarginTop(30);
+        _clampDownloadsPage.SetMarginBottom(12);
+        _scrollDownloadsPage.SetChild(_clampDownloadsPage);
+        _boxDownloads = Gtk.Box.New(Gtk.Orientation.Vertical, 0);
+        _boxDownloads.SetHexpand(true);
+        _boxDownloads.SetValign(Gtk.Align.Start);
+        _boxDownloads.AddCssClass("card");
+        _clampDownloadsPage.SetChild(_boxDownloads);
         //View Stack
         _viewStack = Adw.ViewStack.New();
         _viewStack.AddNamed(_scrollStartPage, "pageNoDownloads");
