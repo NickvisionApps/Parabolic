@@ -95,6 +95,7 @@ public sealed partial class MainWindow : Window
         StatusPageHome.Description = _controller.Localizer["NoDownloads", "Description"];
         ToolTipService.SetToolTip(BtnHomeAddDownload, _controller.Localizer["AddDownload", "Tooltip"]);
         LblBtnHomeAddDownload.Text = _controller.Localizer["AddDownload"];
+        LblBtnAddDownload.Text = _controller.Localizer["Add"];
         //Page
         NavViewItemHome.IsSelected = true;
     }
