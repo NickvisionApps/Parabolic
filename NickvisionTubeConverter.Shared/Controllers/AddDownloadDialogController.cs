@@ -84,6 +84,7 @@ public class AddDownloadDialogController
         {
             SaveFolder = Path.GetDirectoryName(savePath);
             SaveFilename = Path.GetFileName(savePath);
+            SaveFilename += SaveFilename.EndsWith(mediaFileType.GetDotExtension()) ? "" : mediaFileType.GetDotExtension();
         }
         if (string.IsNullOrEmpty(videoUrl))
         {
@@ -98,7 +99,7 @@ public class AddDownloadDialogController
             }
             else
             {
-                SaveFilename = (await Download.GetVideoTitle(videoUrl)) + MediaFileTypeHelpers.GetDotExtension(mediaFileType);
+                SaveFilename = (await Download.GetVideoTitle(videoUrl)) + mediaFileType.GetDotExtension();
             }
         }
         if (result != 0)
@@ -112,5 +113,9 @@ public class AddDownloadDialogController
         return DownloadCheckStatus.Valid;
     }
 
+    /// <summary>
+    /// Gets full save path
+    /// </summary>
+    /// <returns>Save Path string</returns>
     public string GetSavePath() => SaveFolder + Path.DirectorySeparatorChar + SaveFilename;
 }

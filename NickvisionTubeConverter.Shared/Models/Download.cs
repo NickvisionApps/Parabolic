@@ -34,7 +34,6 @@ public class Download
 {
     private CancellationTokenSource? _cancellationToken;
     private MediaFileType _fileType;
-    private string _newFilename;
     private Quality _quality;
     private Subtitle _subtitle;
 
@@ -64,16 +63,15 @@ public class Download
     /// <param name="newFilename">The filename to save the download as</param>
     /// <param name="quality">The quality of the download</param>
     /// <param name="subtitle">The subtitles for the download</param>
-    public Download(string videoUrl, MediaFileType fileType, string saveFolder, string newFilename = "", Quality quality = Quality.Best, Subtitle subtitle = Subtitle.None)
+    public Download(string videoUrl, MediaFileType fileType, string saveFolder, string saveFilename, Quality quality = Quality.Best, Subtitle subtitle = Subtitle.None)
     {
         _cancellationToken = null;
         _fileType = fileType;
-        _newFilename = newFilename;
         _quality = quality;
         _subtitle = subtitle;
         VideoUrl = videoUrl;
         SaveFolder = saveFolder;
-        Filename = _newFilename;
+        Filename = saveFilename;
         IsDone = false;
     }
 
@@ -104,14 +102,8 @@ public class Download
             FFmpegPath = DependencyManager.Ffmpeg,
         };
         RunResult<string>? result = null;
-        if (string.IsNullOrEmpty(Filename))
-        {
-            _newFilename = (await ytdlp.RunVideoDataFetch(VideoUrl)).Data.Title;
-            Filename += _newFilename;
-        }
-        Filename += Filename.EndsWith(_fileType.GetDotExtension()) ? "" : _fileType.GetDotExtension();
         ytdlp.OutputFolder = SaveFolder;
-        ytdlp.OutputFileTemplate = $"{_newFilename}.%(ext)s";
+        ytdlp.OutputFileTemplate = Filename;
         if (_fileType.GetIsAudio())
         {
             try
@@ -168,6 +160,11 @@ public class Download
     /// </summary>
     public void Stop() => _cancellationToken?.Cancel();
 
+    /// <summary>
+    /// Gets video title from metadata
+    /// </summary>
+    /// <param name="videoUrl">URL of video to get title from</param>
+    /// <returns>Title string</returns>
     public static async Task<string> GetVideoTitle(string videoUrl) => (await new YoutubeDL()
     {
         YoutubeDLPath = DependencyManager.YtdlpPath,

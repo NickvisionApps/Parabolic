@@ -2,6 +2,7 @@ using NickvisionTubeConverter.Shared.Controllers;
 using NickvisionTubeConverter.Shared.Models;
 using System;
 using System.IO;
+using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 
 namespace NickvisionTubeConverter.GNOME.Views;
@@ -9,8 +10,15 @@ namespace NickvisionTubeConverter.GNOME.Views;
 /// <summary>
 /// The AddDownloadDialog for the application
 /// </summary>
-public class AddDownloadDialog
+public partial class AddDownloadDialog
 {
+    [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
+    [return: MarshalAs(UnmanagedType.I1)]
+    public static partial bool gtk_file_chooser_set_current_folder(nint chooser, nint file, nint error);
+
+    [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
+    public static partial void gtk_file_chooser_set_current_name(nint chooser, string name);
+
     private bool _constructing;
     private readonly Gtk.Window _parent;
     private readonly AddDownloadDialogController _controller;
@@ -114,11 +122,11 @@ public class AddDownloadDialog
         _btnSelectSavePath.SetValign(Gtk.Align.Center);
         _btnSelectSavePath.AddCssClass("flat");
         _btnSelectSavePath.SetIconName("folder-open-symbolic");
-        _btnSelectSavePath.SetTooltipText(_controller.Localizer["SelectSaveFolder"]);
+        _btnSelectSavePath.SetTooltipText(_controller.Localizer["SelectSavePath"]);
         _btnSelectSavePath.OnClicked += SelectSavePath;
         _rowSavePath = Adw.EntryRow.New();
         _rowSavePath.SetSizeRequest(420, -1);
-        _rowSavePath.SetTitle(_controller.Localizer["SaveFolder", "Field"]);
+        _rowSavePath.SetTitle(_controller.Localizer["SavePath", "Field"]);
         _rowSavePath.AddSuffix(_btnSelectSavePath);
         _rowSavePath.SetEditable(false);
         _preferencesGroup.Add(_rowSavePath);
@@ -131,7 +139,7 @@ public class AddDownloadDialog
         if(string.IsNullOrEmpty(_rowSavePath.GetText()))
         {
             _rowSavePath.AddCssClass("error");
-            _rowSavePath.SetTitle(_controller.Localizer["SaveFolder", "Invalid"]);
+            _rowSavePath.SetTitle(_controller.Localizer["SavePath", "Invalid"]);
         }
         _dialog.SetResponseEnabled("ok", false);
         _constructing = false;
@@ -170,7 +178,7 @@ public class AddDownloadDialog
         _rowVideoUrl.RemoveCssClass("error");
         _rowVideoUrl.SetTitle(_controller.Localizer["VideoUrl", "Field"]);
         _rowSavePath.RemoveCssClass("error");
-        _rowSavePath.SetTitle(_controller.Localizer["SaveFolder", "Field"]);
+        _rowSavePath.SetTitle(_controller.Localizer["SavePath", "Field"]);
         _rowSavePath.SetText(_controller.GetSavePath());
         if (checkStatus == DownloadCheckStatus.Valid)
         {
@@ -191,7 +199,7 @@ public class AddDownloadDialog
             if (checkStatus.HasFlag(DownloadCheckStatus.InvalidSaveFolder))
             {
                 _rowSavePath.AddCssClass("error");
-                _rowSavePath.SetTitle(_controller.Localizer["SaveFolder", "Invalid"]);
+                _rowSavePath.SetTitle(_controller.Localizer["SavePath", "Invalid"]);
             }
             _dialog.SetResponseEnabled("ok", false);
         }
@@ -204,9 +212,14 @@ public class AddDownloadDialog
     /// <param name="e">EventArgs</param>
     private void SelectSavePath(Gtk.Button sender, EventArgs e)
     {
-        var fileDialog = Gtk.FileChooserNative.New(_controller.Localizer["SelectSaveFolder"], _parent, Gtk.FileChooserAction.Save, _controller.Localizer["OK"], _controller.Localizer["Cancel"]);
+        var fileDialog = Gtk.FileChooserNative.New(_controller.Localizer["SelectSavePath"], _parent, Gtk.FileChooserAction.Save, _controller.Localizer["OK"], _controller.Localizer["Cancel"]);
         fileDialog.SetModal(true);
-        //fileDialog.SetFile(Gio.FileHelper.NewForPath(_rowSavePath.GetText()), null);
+        if (_rowSavePath.GetText().Length > 0)
+        {
+            var folder = Gio.FileHelper.NewForPath(Path.GetDirectoryName(_rowSavePath.GetText()));
+            gtk_file_chooser_set_current_folder(fileDialog.Handle, folder.Handle, IntPtr.Zero);
+            gtk_file_chooser_set_current_name(fileDialog.Handle, Path.GetFileName(_rowSavePath.GetText()));
+        }
         fileDialog.OnResponse += async (sender, e) =>
         {
             if (e.ResponseId == (int)Gtk.ResponseType.Accept)
