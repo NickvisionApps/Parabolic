@@ -117,7 +117,8 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
         _boxDone.Append(_doneLabel);
         //Action Button
         _viewStackAction = Adw.ViewStack.New();
-        _viewStackAction.SetMarginEnd(5);
+        _viewStackAction.SetMarginStart(5);
+        _viewStackAction.SetMarginEnd(10);
         _boxMain.Append(_viewStackAction);
         //Cancel Button
         _btnCancel = Gtk.Button.New();
