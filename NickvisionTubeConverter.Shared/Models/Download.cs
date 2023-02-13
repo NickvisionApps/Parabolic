@@ -126,6 +126,7 @@ public class Download
                 }, _cancellationToken.Token, progressCallback, null, new OptionSet()
                 {
                     EmbedMetadata = embedMetadata,
+                    EmbedThumbnail = embedMetadata,
                     AudioQuality = _quality == Quality.Best ? (byte)0 : (_quality == Quality.Good ? (byte)5 : (byte)10)
                 });
             }
@@ -143,6 +144,7 @@ public class Download
                 }, _cancellationToken.Token, progressCallback, null, new OptionSet()
                 {
                     EmbedMetadata = embedMetadata,
+                    EmbedThumbnail = embedMetadata,
                     EmbedSubs = _subtitle != Subtitle.None,
                     WriteAutoSubs = _subtitle != Subtitle.None && (await ytdlp.RunVideoDataFetch(VideoUrl)).Data.Subtitles.Count == 0,
                     SubFormat = _subtitle == Subtitle.None ? "" : (_subtitle == Subtitle.SRT ? "srt" : "vtt"),
