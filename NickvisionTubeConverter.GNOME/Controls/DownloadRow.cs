@@ -101,6 +101,7 @@ public partial class DownloadRow : Gtk.ListBoxRow, IDownloadRowControl
         box.Append(_viewStackAction);
         //Cancel Button
         var btnCancel = Gtk.Button.New();
+        btnCancel.SetValign(Gtk.Align.Center);
         btnCancel.SetIconName("media-playback-stop-symbolic");
         btnCancel.SetTooltipText(_localizer["StopDownload"]);
         btnCancel.AddCssClass("flat");
@@ -108,6 +109,7 @@ public partial class DownloadRow : Gtk.ListBoxRow, IDownloadRowControl
         _viewStackAction.AddNamed(btnCancel, "cancel");
         //Open Folder Button
         var btnOpenFolder = Gtk.Button.New();
+        btnOpenFolder.SetValign(Gtk.Align.Center);
         btnOpenFolder.SetIconName("folder-symbolic");
         btnOpenFolder.SetTooltipText(_localizer["OpenSaveFolder"]);
         btnOpenFolder.AddCssClass("flat");
@@ -115,6 +117,7 @@ public partial class DownloadRow : Gtk.ListBoxRow, IDownloadRowControl
         _viewStackAction.AddNamed(btnOpenFolder, "open-folder");
         //Retry Button
         var btnRetry = Gtk.Button.New();
+        btnRetry.SetValign(Gtk.Align.Center);
         btnRetry.SetIconName("view-refresh-symbolic");
         btnRetry.SetTooltipText(_localizer["RetryDownload"]);
         btnRetry.AddCssClass("flat");
