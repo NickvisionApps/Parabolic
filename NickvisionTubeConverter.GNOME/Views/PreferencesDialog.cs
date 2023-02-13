@@ -7,7 +7,7 @@ namespace NickvisionTubeConverter.GNOME.Views;
 /// <summary>
 /// The PreferencesDialog for the application
 /// </summary>
-public partial class PreferencesDialog : Adw.Window
+public partial class PreferencesDialog : Adw.PreferencesWindow
 {
     private readonly PreferencesViewController _controller;
     private readonly Adw.Application _application;
