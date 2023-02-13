@@ -2,7 +2,6 @@ using NickvisionTubeConverter.Shared.Controls;
 using NickvisionTubeConverter.Shared.Helpers;
 using NickvisionTubeConverter.Shared.Models;
 using System;
-using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using YoutubeDLSharp;
@@ -24,6 +23,7 @@ public partial class DownloadRow : Gtk.ListBoxRow, IDownloadRowControl
 
     private readonly Localizer _localizer;
     private readonly Download _download;
+    private bool? _previousEmbedMetadata;
     private readonly Gtk.Box _boxMain;
     private readonly Gtk.Image _imgStatus;
     private readonly Gtk.Box _boxInfo;
@@ -61,6 +61,7 @@ public partial class DownloadRow : Gtk.ListBoxRow, IDownloadRowControl
     {
         _localizer = localizer;
         _download = download;
+        _previousEmbedMetadata = null;
         _boxMain = Gtk.Box.New(Gtk.Orientation.Horizontal, 6);
         //Status Image
         _imgStatus = Gtk.Image.NewFromIconName("folder-download-symbolic");
@@ -134,7 +135,7 @@ public partial class DownloadRow : Gtk.ListBoxRow, IDownloadRowControl
         _btnRetry.SetIconName("view-refresh-symbolic");
         _btnRetry.SetTooltipText(_localizer["RetryDownload"]);
         _btnRetry.AddCssClass("flat");
-        _btnRetry.OnClicked += (sender, e) => StartAsync(true);
+        _btnRetry.OnClicked += async (sender, e) => await StartAsync(_previousEmbedMetadata ?? false);
         _viewStackAction.AddNamed(_btnRetry, "retry");
         SetChild(_boxMain);
     }
@@ -145,6 +146,10 @@ public partial class DownloadRow : Gtk.ListBoxRow, IDownloadRowControl
     /// <param name="embedMetadata">Whether or not to embed video metadata</param>
     public async Task StartAsync(bool embedMetadata)
     {
+        if(_previousEmbedMetadata == null)
+        {
+            _previousEmbedMetadata = embedMetadata;
+        }
         _imgStatus.AddCssClass("accent");
         _imgStatus.RemoveCssClass("error");
         _imgStatus.SetFromIconName("folder-download-symbolic");
