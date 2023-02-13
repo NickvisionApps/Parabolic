@@ -4,6 +4,7 @@ using NickvisionTubeConverter.Shared.Helpers;
 using NickvisionTubeConverter.Shared.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Threading.Tasks;
 
 namespace NickvisionTubeConverter.Shared.Controllers;
@@ -156,7 +157,7 @@ public class MainWindowController : IDisposable
     public async Task<bool> DownloadDependenciesAsync()
     {
         var ytdlpVersion = new Version(2023, 1, 6);
-        if(Configuration.Current.YtdlpVersion != ytdlpVersion)
+        if(Configuration.Current.YtdlpVersion != ytdlpVersion || !File.Exists(DependencyManager.YtdlpPath) || !File.Exists(DependencyManager.Ffmpeg))
         {
             if(await DependencyManager.DownloadDependenciesAsync())
             {
