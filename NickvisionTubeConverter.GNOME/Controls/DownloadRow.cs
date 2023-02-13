@@ -24,14 +24,22 @@ public partial class DownloadRow : Gtk.ListBoxRow, IDownloadRowControl
 
     private readonly Localizer _localizer;
     private readonly Download _download;
+    private readonly Gtk.Box _boxMain;
     private readonly Gtk.Image _imgStatus;
+    private readonly Gtk.Box _boxInfo;
     private readonly Gtk.Label _lblFilename;
+    private readonly Gtk.Label _lblUrl;
     private readonly Adw.ViewStack _viewStackState;
+    private readonly Gtk.Box _boxDownload;
+    private readonly Gtk.Box _boxDone;
     private readonly Gtk.Label _progLabel;
     private readonly Gtk.ProgressBar _progBar;
     private readonly Gtk.LevelBar _levelBar;
     private readonly Gtk.Label _doneLabel;
     private readonly Adw.ViewStack _viewStackAction;
+    private readonly Gtk.Button _btnCancel;
+    private readonly Gtk.Button _btnOpenFolder;
+    private readonly Gtk.Button _btnRetry;
     private DownloadProgress? _lastProgress;
     private GSourceFunc? _processingCallback;
     private GSourceFunc? _downloadingCallback;
@@ -53,77 +61,82 @@ public partial class DownloadRow : Gtk.ListBoxRow, IDownloadRowControl
     {
         _localizer = localizer;
         _download = download;
-        var box = Gtk.Box.New(Gtk.Orientation.Horizontal, 6);
+        _boxMain = Gtk.Box.New(Gtk.Orientation.Horizontal, 6);
         //Status Image
         _imgStatus = Gtk.Image.NewFromIconName("folder-download-symbolic");
-        _imgStatus.SetPixelSize(20);
-        box.Append(_imgStatus);
+        _imgStatus.SetPixelSize(24);
+        _imgStatus.SetMarginStart(5);
+        _imgStatus.SetMarginEnd(5);
+        _boxMain.Append(_imgStatus);
         //Info Box
-        var boxInfo = Gtk.Box.New(Gtk.Orientation.Vertical, 3);
-        box.Append(boxInfo);
+        _boxInfo = Gtk.Box.New(Gtk.Orientation.Vertical, 3);
+        _boxInfo.SetMarginTop(5);
+        _boxInfo.SetMarginBottom(5);
+        _boxMain.Append(_boxInfo);
         //Download Filename
         _lblFilename = Gtk.Label.New(download.Filename);
         _lblFilename.SetHalign(Gtk.Align.Start);
         _lblFilename.SetWrap(true);
-        boxInfo.Append(_lblFilename);
+        _boxInfo.Append(_lblFilename);
         //Download Url
-        var lblUrl = Gtk.Label.New(download.VideoUrl);
-        lblUrl.SetHalign(Gtk.Align.Start);
-        lblUrl.SetWrap(true);
-        lblUrl.AddCssClass("caption");
-        boxInfo.Append(lblUrl);
+        _lblUrl = Gtk.Label.New(download.VideoUrl);
+        _lblUrl.SetHalign(Gtk.Align.Start);
+        _lblUrl.SetWrap(true);
+        _lblUrl.AddCssClass("caption");
+        _boxInfo.Append(_lblUrl);
         //State View Stack
         _viewStackState = Adw.ViewStack.New();
-        boxInfo.Append(_viewStackState);
+        _boxInfo.Append(_viewStackState);
         //Download View
-        var boxDownload = Gtk.Box.New(Gtk.Orientation.Vertical, 3);
-        _viewStackState.AddNamed(boxDownload, "downloading");
+        _boxDownload = Gtk.Box.New(Gtk.Orientation.Vertical, 3);
+        _viewStackState.AddNamed(_boxDownload, "downloading");
         //Download Progress Bar
         _progBar = Gtk.ProgressBar.New();
         _progBar.SetHexpand(true);
-        boxDownload.Append(_progBar);
+        _boxDownload.Append(_progBar);
         //Download Progress Label
         _progLabel = Gtk.Label.New(_localizer["DownloadState", "Preparing"]);
         _progLabel.SetHalign(Gtk.Align.Start);
-        boxDownload.Append(_progLabel);
+        _boxDownload.Append(_progLabel);
         //Done View
-        var boxDone = Gtk.Box.New(Gtk.Orientation.Vertical, 3);
-        _viewStackState.AddNamed(boxDone, "done");
+        _boxDone = Gtk.Box.New(Gtk.Orientation.Vertical, 3);
+        _viewStackState.AddNamed(_boxDone, "done");
         //Done Level Bar
         _levelBar = Gtk.LevelBar.New();
-        boxDone.Append(_levelBar);
+        _boxDone.Append(_levelBar);
         //Done Label
         _doneLabel = Gtk.Label.New(null);
         _doneLabel.SetHalign(Gtk.Align.Start);
-        boxDone.Append(_doneLabel);
+        _boxDone.Append(_doneLabel);
         //Action Button
         _viewStackAction = Adw.ViewStack.New();
-        box.Append(_viewStackAction);
+        _viewStackAction.SetMarginEnd(5);
+        _boxMain.Append(_viewStackAction);
         //Cancel Button
-        var btnCancel = Gtk.Button.New();
-        btnCancel.SetValign(Gtk.Align.Center);
-        btnCancel.SetIconName("media-playback-stop-symbolic");
-        btnCancel.SetTooltipText(_localizer["StopDownload"]);
-        btnCancel.AddCssClass("flat");
-        btnCancel.OnClicked += (sender, e) => Stop();
-        _viewStackAction.AddNamed(btnCancel, "cancel");
+        _btnCancel = Gtk.Button.New();
+        _btnCancel.SetValign(Gtk.Align.Center);
+        _btnCancel.SetIconName("media-playback-stop-symbolic");
+        _btnCancel.SetTooltipText(_localizer["StopDownload"]);
+        _btnCancel.AddCssClass("flat");
+        _btnCancel.OnClicked += (sender, e) => Stop();
+        _viewStackAction.AddNamed(_btnCancel, "cancel");
         //Open Folder Button
-        var btnOpenFolder = Gtk.Button.New();
-        btnOpenFolder.SetValign(Gtk.Align.Center);
-        btnOpenFolder.SetIconName("folder-symbolic");
-        btnOpenFolder.SetTooltipText(_localizer["OpenSaveFolder"]);
-        btnOpenFolder.AddCssClass("flat");
-        btnOpenFolder.OnClicked += (sender, e) => Gtk.Functions.ShowUri(null, "file://" + _download.SaveFolder, 0);
-        _viewStackAction.AddNamed(btnOpenFolder, "open-folder");
+        _btnOpenFolder = Gtk.Button.New();
+        _btnOpenFolder.SetValign(Gtk.Align.Center);
+        _btnOpenFolder.SetIconName("folder-symbolic");
+        _btnOpenFolder.SetTooltipText(_localizer["OpenSaveFolder"]);
+        _btnOpenFolder.AddCssClass("flat");
+        _btnOpenFolder.OnClicked += (sender, e) => Gtk.Functions.ShowUri(null, "file://" + _download.SaveFolder, 0);
+        _viewStackAction.AddNamed(_btnOpenFolder, "open-folder");
         //Retry Button
-        var btnRetry = Gtk.Button.New();
-        btnRetry.SetValign(Gtk.Align.Center);
-        btnRetry.SetIconName("view-refresh-symbolic");
-        btnRetry.SetTooltipText(_localizer["RetryDownload"]);
-        btnRetry.AddCssClass("flat");
-        btnRetry.OnClicked += (sender, e) => StartAsync(true);
-        _viewStackAction.AddNamed(btnRetry, "retry");
-        SetChild(box);
+        _btnRetry = Gtk.Button.New();
+        _btnRetry.SetValign(Gtk.Align.Center);
+        _btnRetry.SetIconName("view-refresh-symbolic");
+        _btnRetry.SetTooltipText(_localizer["RetryDownload"]);
+        _btnRetry.AddCssClass("flat");
+        _btnRetry.OnClicked += (sender, e) => StartAsync(true);
+        _viewStackAction.AddNamed(_btnRetry, "retry");
+        SetChild(_boxMain);
     }
 
     /// <summary>
