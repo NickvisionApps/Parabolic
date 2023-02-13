@@ -167,4 +167,10 @@ public class Download
     /// Stops the download
     /// </summary>
     public void Stop() => _cancellationToken?.Cancel();
+
+    public static async Task<string> GetVideoTitle(string videoUrl) => (await new YoutubeDL()
+    {
+        YoutubeDLPath = DependencyManager.YtdlpPath,
+        FFmpegPath = DependencyManager.Ffmpeg,
+    }.RunVideoDataFetch(videoUrl)).Data.Title;
 }

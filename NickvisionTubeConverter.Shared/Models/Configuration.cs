@@ -49,7 +49,7 @@ public class Configuration
             Directory.CreateDirectory(ConfigDir);
         }
         Theme = Theme.System;
-        PreviousSaveFolder = "";
+        PreviousSaveFolder = Environment.GetFolderPath(Environment.SpecialFolder.MyVideos);
         PreviousMediaFileType = MediaFileType.MP4;
         EmbedMetadata = true;
         YtdlpVersion = new Version(0, 0, 0);

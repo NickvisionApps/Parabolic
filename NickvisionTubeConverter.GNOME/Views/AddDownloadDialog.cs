@@ -121,16 +121,6 @@ public class AddDownloadDialog
         _rowSavePath.SetTitle(_controller.Localizer["SaveFolder", "Field"]);
         _rowSavePath.AddSuffix(_btnSelectSavePath);
         _rowSavePath.SetEditable(false);
-        _rowSavePath.OnNotify += async (sender, e) =>
-        {
-            if (e.Pspec.GetName() == "text")
-            {
-                if (!_constructing)
-                {
-                    await ValidateAsync();
-                }
-            }
-        };
         _preferencesGroup.Add(_rowSavePath);
         //Layout
         _dialog.SetExtraChild(_preferencesGroup);
@@ -138,7 +128,6 @@ public class AddDownloadDialog
         _rowVideoUrl.AddCssClass("error");
         _rowVideoUrl.SetTitle(_controller.Localizer["VideoUrl", "Empty"]);
         _rowFileType.SetSelected((uint)_controller.PreviousMediaFileType);
-        _rowSavePath.SetText(_controller.PreviousSaveFolder + Path.DirectorySeparatorChar + "video.mp4");
         if(string.IsNullOrEmpty(_rowSavePath.GetText()))
         {
             _rowSavePath.AddCssClass("error");
@@ -182,6 +171,7 @@ public class AddDownloadDialog
         _rowVideoUrl.SetTitle(_controller.Localizer["VideoUrl", "Field"]);
         _rowSavePath.RemoveCssClass("error");
         _rowSavePath.SetTitle(_controller.Localizer["SaveFolder", "Field"]);
+        _rowSavePath.SetText(_controller.GetSavePath());
         if (checkStatus == DownloadCheckStatus.Valid)
         {
             _dialog.SetResponseEnabled("ok", true);
@@ -216,6 +206,7 @@ public class AddDownloadDialog
     {
         var fileDialog = Gtk.FileChooserNative.New(_controller.Localizer["SelectSaveFolder"], _parent, Gtk.FileChooserAction.Save, _controller.Localizer["OK"], _controller.Localizer["Cancel"]);
         fileDialog.SetModal(true);
+        //fileDialog.SetFile(Gio.FileHelper.NewForPath(_rowSavePath.GetText()), null);
         fileDialog.OnResponse += async (sender, e) =>
         {
             if (e.ResponseId == (int)Gtk.ResponseType.Accept)
