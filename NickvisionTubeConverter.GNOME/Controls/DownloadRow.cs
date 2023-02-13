@@ -11,7 +11,7 @@ namespace NickvisionTubeConverter.GNOME.Controls;
 /// <summary>
 /// A DownloadRow for the downloads page
 /// </summary>
-public partial class DownloadRow : Gtk.ListBoxRow, IDownloadRowControl
+public partial class DownloadRow : Adw.Bin, IDownloadRowControl
 {
     private delegate bool GSourceFunc(nint data);
 
@@ -66,27 +66,31 @@ public partial class DownloadRow : Gtk.ListBoxRow, IDownloadRowControl
         //Status Image
         _imgStatus = Gtk.Image.NewFromIconName("folder-download-symbolic");
         _imgStatus.SetPixelSize(24);
-        _imgStatus.SetMarginStart(5);
+        _imgStatus.SetMarginStart(10);
         _imgStatus.SetMarginEnd(5);
         _boxMain.Append(_imgStatus);
         //Info Box
         _boxInfo = Gtk.Box.New(Gtk.Orientation.Vertical, 3);
-        _boxInfo.SetMarginTop(5);
-        _boxInfo.SetMarginBottom(5);
+        _boxInfo.SetMarginTop(8);
+        _boxInfo.SetMarginBottom(8);
         _boxMain.Append(_boxInfo);
         //Download Filename
         _lblFilename = Gtk.Label.New(download.Filename);
         _lblFilename.SetHalign(Gtk.Align.Start);
-        _lblFilename.SetWrap(true);
+        _lblFilename.SetEllipsize(Pango.EllipsizeMode.End);
+        _lblFilename.SetLines(1);
         _boxInfo.Append(_lblFilename);
         //Download Url
         _lblUrl = Gtk.Label.New(download.VideoUrl);
         _lblUrl.SetHalign(Gtk.Align.Start);
-        _lblUrl.SetWrap(true);
+        _lblUrl.SetEllipsize(Pango.EllipsizeMode.End);
+        _lblUrl.SetLines(1);
         _lblUrl.AddCssClass("caption");
+        _lblUrl.AddCssClass("dim-label");
         _boxInfo.Append(_lblUrl);
         //State View Stack
         _viewStackState = Adw.ViewStack.New();
+        _viewStackState.SetMarginTop(8);
         _boxInfo.Append(_viewStackState);
         //Download View
         _boxDownload = Gtk.Box.New(Gtk.Orientation.Vertical, 3);
@@ -98,6 +102,7 @@ public partial class DownloadRow : Gtk.ListBoxRow, IDownloadRowControl
         //Download Progress Label
         _progLabel = Gtk.Label.New(_localizer["DownloadState", "Preparing"]);
         _progLabel.SetHalign(Gtk.Align.Start);
+        _progLabel.AddCssClass("caption");
         _boxDownload.Append(_progLabel);
         //Done View
         _boxDone = Gtk.Box.New(Gtk.Orientation.Vertical, 3);
@@ -108,6 +113,7 @@ public partial class DownloadRow : Gtk.ListBoxRow, IDownloadRowControl
         //Done Label
         _doneLabel = Gtk.Label.New(null);
         _doneLabel.SetHalign(Gtk.Align.Start);
+        _doneLabel.AddCssClass("caption");
         _boxDone.Append(_doneLabel);
         //Action Button
         _viewStackAction = Adw.ViewStack.New();
@@ -118,7 +124,7 @@ public partial class DownloadRow : Gtk.ListBoxRow, IDownloadRowControl
         _btnCancel.SetValign(Gtk.Align.Center);
         _btnCancel.SetIconName("media-playback-stop-symbolic");
         _btnCancel.SetTooltipText(_localizer["StopDownload"]);
-        _btnCancel.AddCssClass("flat");
+        _btnCancel.AddCssClass("circular");
         _btnCancel.OnClicked += (sender, e) => Stop();
         _viewStackAction.AddNamed(_btnCancel, "cancel");
         //Open Folder Button
@@ -126,7 +132,7 @@ public partial class DownloadRow : Gtk.ListBoxRow, IDownloadRowControl
         _btnOpenFolder.SetValign(Gtk.Align.Center);
         _btnOpenFolder.SetIconName("folder-symbolic");
         _btnOpenFolder.SetTooltipText(_localizer["OpenSaveFolder"]);
-        _btnOpenFolder.AddCssClass("flat");
+        _btnOpenFolder.AddCssClass("circular");
         _btnOpenFolder.OnClicked += (sender, e) => Gtk.Functions.ShowUri(null, "file://" + _download.SaveFolder, 0);
         _viewStackAction.AddNamed(_btnOpenFolder, "open-folder");
         //Retry Button
@@ -134,7 +140,7 @@ public partial class DownloadRow : Gtk.ListBoxRow, IDownloadRowControl
         _btnRetry.SetValign(Gtk.Align.Center);
         _btnRetry.SetIconName("view-refresh-symbolic");
         _btnRetry.SetTooltipText(_localizer["RetryDownload"]);
-        _btnRetry.AddCssClass("flat");
+        _btnRetry.AddCssClass("circular");
         _btnRetry.OnClicked += async (sender, e) => await StartAsync(_previousEmbedMetadata ?? false);
         _viewStackAction.AddNamed(_btnRetry, "retry");
         SetChild(_boxMain);

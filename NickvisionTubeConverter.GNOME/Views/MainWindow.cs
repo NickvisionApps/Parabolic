@@ -28,7 +28,7 @@ public partial class MainWindow
     private readonly Gtk.Button _btnAddDownloadStartPage;
     private readonly Gtk.Label _lblStart;
     private readonly Gtk.ScrolledWindow _scrollDownloadsPage;
-    private readonly Gtk.ListBox _grpDownloads;
+    private readonly Gtk.Box _boxDownloads;
     private readonly Adw.ViewStack _viewStack;
 
     public Adw.ApplicationWindow Handle { get; init; }
@@ -122,14 +122,16 @@ public partial class MainWindow
         _boxStartPage.Append(_btnAddDownloadStartPage);
         _boxStartPage.Append(_lblStart);
         //Downloads Page
-        _grpDownloads = Gtk.ListBox.New();
-        _grpDownloads.SetMarginStart(30);
-        _grpDownloads.SetMarginTop(10);
-        _grpDownloads.SetMarginEnd(30);
-        _grpDownloads.SetMarginBottom(10);
+        _boxDownloads = Gtk.Box.New(Gtk.Orientation.Vertical, 0);
+        _boxDownloads.AddCssClass("card");
+        _boxDownloads.SetMarginStart(30);
+        _boxDownloads.SetMarginTop(10);
+        _boxDownloads.SetMarginEnd(30);
+        _boxDownloads.SetMarginBottom(10);
+        _boxDownloads.SetValign(Gtk.Align.Start);
         _scrollDownloadsPage = Gtk.ScrolledWindow.New();
         _scrollDownloadsPage.SetHexpand(true);
-        _scrollDownloadsPage.SetChild(_grpDownloads);
+        _scrollDownloadsPage.SetChild(_boxDownloads);
         //View Stack
         _viewStack = Adw.ViewStack.New();
         _viewStack.AddNamed(_scrollStartPage, "pageNoDownloads");
@@ -217,7 +219,12 @@ public partial class MainWindow
     {
         var downloadRow = new DownloadRow(_controller.Localizer, download);
         _viewStack.SetVisibleChildName("pageDownloads");
-        _grpDownloads.Append(downloadRow);
+        if (_boxDownloads.GetFirstChild() != null)
+        {
+            var separator = Gtk.Separator.New(Gtk.Orientation.Horizontal);
+            _boxDownloads.Append(separator);
+        }
+        _boxDownloads.Append(downloadRow);
         return downloadRow;
     }
 
