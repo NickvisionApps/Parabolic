@@ -28,7 +28,7 @@ public partial class MainWindow
     private readonly Gtk.Button _btnAddDownloadStartPage;
     private readonly Gtk.Label _lblStart;
     private readonly Gtk.ScrolledWindow _scrollDownloadsPage;
-    private readonly Adw.PreferencesGroup _grpDownloads;
+    private readonly Gtk.ListBox _grpDownloads;
     private readonly Adw.ViewStack _viewStack;
 
     public Adw.ApplicationWindow Handle { get; init; }
@@ -121,12 +121,11 @@ public partial class MainWindow
         _boxStartPage.Append(_btnAddDownloadStartPage);
         _boxStartPage.Append(_lblStart);
         //Downloads Page
-        _grpDownloads = Adw.PreferencesGroup.New();
+        _grpDownloads = Gtk.ListBox.New();
         _grpDownloads.SetMarginStart(30);
         _grpDownloads.SetMarginTop(10);
         _grpDownloads.SetMarginEnd(30);
         _grpDownloads.SetMarginBottom(10);
-        _grpDownloads.SetTitle(_controller.Localizer["Downloads"]);
         _scrollDownloadsPage = Gtk.ScrolledWindow.New();
         _scrollDownloadsPage.SetHexpand(true);
         _scrollDownloadsPage.SetChild(_grpDownloads);
@@ -217,7 +216,7 @@ public partial class MainWindow
     {
         var downloadRow = new DownloadRow(_controller.Localizer, download);
         _viewStack.SetVisibleChildName("pageDownloads");
-        _grpDownloads.Add(downloadRow);
+        _grpDownloads.Append(downloadRow);
         return downloadRow;
     }
 
