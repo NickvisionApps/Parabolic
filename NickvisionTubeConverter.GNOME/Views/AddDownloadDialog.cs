@@ -222,6 +222,10 @@ public partial class AddDownloadDialog
     {
         var fileDialog = Gtk.FileChooserNative.New(_controller.Localizer["SelectSavePath"], _parent, Gtk.FileChooserAction.Save, _controller.Localizer["OK"], _controller.Localizer["Cancel"]);
         fileDialog.SetModal(true);
+        var filter = Gtk.FileFilter.New();
+        filter.SetName(((MediaFileType)_rowFileType.GetSelected()).GetDotExtension());
+        filter.AddPattern($"*{((MediaFileType)_rowFileType.GetSelected()).GetDotExtension()}");
+        fileDialog.SetFilter(filter);
         if (_rowSavePath.GetText().Length > 0)
         {
             var folder = Gio.FileHelper.NewForPath(Path.GetDirectoryName(_rowSavePath.GetText()));
