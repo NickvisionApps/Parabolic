@@ -173,8 +173,16 @@ public partial class AddDownloadDialog
     private async Task ValidateAsync()
     {
         _spinnerVideoUrl.Start();
+        _rowFileType.SetSensitive(false);
+        _rowSavePath.SetSensitive(false);
+        _rowQuality.SetSensitive(false);
+        _rowSubtitle.SetSensitive(false);
         var checkStatus = await _controller.UpdateDownloadAsync(_rowVideoUrl.GetText(), (MediaFileType)_rowFileType.GetSelected(), _rowSavePath.GetText(), (Quality)_rowQuality.GetSelected(), (Subtitle)_rowSubtitle.GetSelected());
         _spinnerVideoUrl.Stop();
+        _rowFileType.SetSensitive(true);
+        _rowSavePath.SetSensitive(true);
+        _rowQuality.SetSensitive(true);
+        _rowSubtitle.SetSensitive(true);
         _rowVideoUrl.RemoveCssClass("error");
         _rowVideoUrl.SetTitle(_controller.Localizer["VideoUrl", "Field"]);
         _rowSavePath.RemoveCssClass("error");
