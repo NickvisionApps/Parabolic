@@ -86,7 +86,7 @@ public sealed partial class MainWindow : Window
         _appWindow.Resize(new SizeInt32(800, 600));
         User32.ShowWindow(_hwnd, ShowWindowCommand.SW_SHOWMAXIMIZED);
         //Localize Strings
-        LblLoading.Text = _controller.Localizer["DownloadingDependencies"];
+        LblLoading.Text = _controller.Localizer["DependencyDownload", "WinUI"];
         NavViewItemHome.Content = _controller.Localizer["Home"];
         NavViewItemDownloads.Content = _controller.Localizer["Downloads"];
         NavViewItemSettings.Content = _controller.Localizer["Settings"];
@@ -118,7 +118,10 @@ public sealed partial class MainWindow : Window
             Loading.IsLoading = true;
             //Work
             await Task.Delay(50);
-            await _controller.DownloadDependenciesAsync();
+            if(!await _controller.DownloadDependenciesAsync())
+            {
+                NotificationSent(sender, new NotificationSentEventArgs(_controller.Localizer["DependencyError", "WinUI"], NotificationSeverity.Error));
+            }
             //Done Loading
             Loading.IsLoading = false;
             _isOpened = true;
@@ -201,8 +204,13 @@ public sealed partial class MainWindow : Window
         InfoBar.IsOpen = true;
     }
 
-    private void AddDownload(object sender, RoutedEventArgs e)
+    /// <summary>
+    /// Occurs when the add download button is clicked
+    /// </summary>
+    /// <param name="sender">object</param>
+    /// <param name="e">RoutedEventArgs</param>
+    private async void AddDownload(object sender, RoutedEventArgs e)
     {
-
+        
     }
 }
