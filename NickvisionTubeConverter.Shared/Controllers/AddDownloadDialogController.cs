@@ -83,8 +83,7 @@ public class AddDownloadDialogController
         else
         {
             SaveFolder = Path.GetDirectoryName(savePath);
-            SaveFilename = Path.GetFileName(savePath);
-            SaveFilename += SaveFilename.EndsWith(mediaFileType.GetDotExtension()) ? "" : mediaFileType.GetDotExtension();
+            SaveFilename = Path.GetFileNameWithoutExtension(savePath) + mediaFileType.GetDotExtension();
         }
         if (string.IsNullOrEmpty(videoUrl))
         {
