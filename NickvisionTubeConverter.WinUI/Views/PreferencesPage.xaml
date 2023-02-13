@@ -14,66 +14,68 @@
         <TextBlock x:Name="LblTitle" Margin="30,30,0,0" Style="{ThemeResource TitleTextBlockStyle}"/>
 
         <wct:DockPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,90,0,10">
-            <StackPanel wct:DockPanel.Dock="Right" Margin="10,0,10,0">
-                <TextBlock x:Name="LblAbout" Style="{ThemeResource NavigationViewItemHeaderTextStyle}"/>
+            <ScrollViewer wct:DockPanel.Dock="Right" Margin="10,0,10,0">
+                <StackPanel Margin="0,0,10,0">
+                    <TextBlock x:Name="LblAbout" Style="{ThemeResource NavigationViewItemHeaderTextStyle}"/>
 
-                <TextBlock x:Name="LblDescription" Foreground="Gray"/>
+                    <TextBlock x:Name="LblDescription" Foreground="Gray"/>
 
-                <TextBlock x:Name="LblVersion"/>
+                    <TextBlock x:Name="LblVersion"/>
 
-                <TextBlock x:Name="LblCopyright" MaxWidth="220" Foreground="Gray" Text="(C) Nickvision 2021-2022&#xA;" TextWrapping="WrapWholeWords"/>
+                    <TextBlock x:Name="LblCopyright" MaxWidth="220" Foreground="Gray" Text="(C) Nickvision 2021-2022&#xA;" TextWrapping="WrapWholeWords"/>
 
-                <HyperlinkButton Margin="-12,0,0,0" Click="Changelog">
-                    <HyperlinkButton.Content>
-                        <StackPanel Orientation="Horizontal" Spacing="6">
-                            <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE8FD;"/>
+                    <HyperlinkButton Margin="-12,0,0,0" Click="Changelog">
+                        <HyperlinkButton.Content>
+                            <StackPanel Orientation="Horizontal" Spacing="6">
+                                <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE8FD;"/>
 
-                            <TextBlock x:Name="LblBtnChangelog"/>
-                        </StackPanel>
-                    </HyperlinkButton.Content>
-                </HyperlinkButton>
+                                <TextBlock x:Name="LblBtnChangelog"/>
+                            </StackPanel>
+                        </HyperlinkButton.Content>
+                    </HyperlinkButton>
 
-                <HyperlinkButton Margin="-12,0,0,0" Click="Credits">
-                    <HyperlinkButton.Content>
-                        <StackPanel Orientation="Horizontal" Spacing="6">
-                            <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE125;"/>
+                    <HyperlinkButton Margin="-12,0,0,0" Click="Credits">
+                        <HyperlinkButton.Content>
+                            <StackPanel Orientation="Horizontal" Spacing="6">
+                                <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE125;"/>
 
-                            <TextBlock x:Name="LblBtnCredits"/>
-                        </StackPanel>
-                    </HyperlinkButton.Content>
-                </HyperlinkButton>
+                                <TextBlock x:Name="LblBtnCredits"/>
+                            </StackPanel>
+                        </HyperlinkButton.Content>
+                    </HyperlinkButton>
 
-                <HyperlinkButton Margin="-12,12,0,0" Click="GitHubRepo">
-                    <HyperlinkButton.Content>
-                        <StackPanel Orientation="Horizontal" Spacing="6">
-                            <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE1D3;"/>
+                    <HyperlinkButton Margin="-12,12,0,0" Click="GitHubRepo">
+                        <HyperlinkButton.Content>
+                            <StackPanel Orientation="Horizontal" Spacing="6">
+                                <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE1D3;"/>
 
-                            <TextBlock x:Name="LblBtnGitHubRepo"/>
-                        </StackPanel>
-                    </HyperlinkButton.Content>
-                </HyperlinkButton>
+                                <TextBlock x:Name="LblBtnGitHubRepo"/>
+                            </StackPanel>
+                        </HyperlinkButton.Content>
+                    </HyperlinkButton>
 
-                <HyperlinkButton Margin="-12,0,0,0" Click="ReportABug">
-                    <HyperlinkButton.Content>
-                        <StackPanel Orientation="Horizontal" Spacing="6">
-                            <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xEBE8;"/>
+                    <HyperlinkButton Margin="-12,0,0,0" Click="ReportABug">
+                        <HyperlinkButton.Content>
+                            <StackPanel Orientation="Horizontal" Spacing="6">
+                                <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xEBE8;"/>
 
-                            <TextBlock x:Name="LblBtnReportABug"/>
-                        </StackPanel>
-                    </HyperlinkButton.Content>
-                </HyperlinkButton>
+                                <TextBlock x:Name="LblBtnReportABug"/>
+                            </StackPanel>
+                        </HyperlinkButton.Content>
+                    </HyperlinkButton>
 
-                <HyperlinkButton Margin="-12,0,0,0" Click="Discussions">
-                    <HyperlinkButton.Content>
-                        <StackPanel Orientation="Horizontal" Spacing="6">
-                            <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE15F;"/>
+                    <HyperlinkButton Margin="-12,0,0,0" Click="Discussions">
+                        <HyperlinkButton.Content>
+                            <StackPanel Orientation="Horizontal" Spacing="6">
+                                <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE15F;"/>
 
-                            <TextBlock x:Name="LblBtnDiscussions"/>
-                        </StackPanel>
-                    </HyperlinkButton.Content>
-                </HyperlinkButton>
-            </StackPanel>
-
+                                <TextBlock x:Name="LblBtnDiscussions"/>
+                            </StackPanel>
+                        </HyperlinkButton.Content>
+                    </HyperlinkButton>
+                </StackPanel>
+            </ScrollViewer>
+            
             <ScrollViewer wct:DockPanel.Dock="Left">
                 <StackPanel Margin="20,0,20,0" Spacing="6">
                     <labs:SettingsExpander x:Name="CardUserInterface">
