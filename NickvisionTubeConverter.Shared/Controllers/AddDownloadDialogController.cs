@@ -1,6 +1,7 @@
 using NickvisionTubeConverter.Shared.Helpers;
 using NickvisionTubeConverter.Shared.Models;
 using System.IO;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace NickvisionTubeConverter.Shared.Controllers;
@@ -106,7 +107,10 @@ public class AddDownloadDialogController
             return result;
         }
         Download = new Download(videoUrl, mediaFileType, SaveFolder, SaveFilename, quality, subtitles);
-        Configuration.Current.PreviousSaveFolder = SaveFolder;
+        if (!Regex.Match(SaveFolder, @"^\/run\/user\/.*\/doc\/.*").Success)
+        {
+            Configuration.Current.PreviousSaveFolder = SaveFolder;
+        }
         Configuration.Current.PreviousMediaFileType = mediaFileType;
         Configuration.Current.Save();
         return DownloadCheckStatus.Valid;

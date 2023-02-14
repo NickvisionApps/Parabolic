@@ -3,6 +3,7 @@ using NickvisionTubeConverter.Shared.Models;
 using System;
 using System.IO;
 using System.Runtime.InteropServices;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace NickvisionTubeConverter.GNOME.Views;
@@ -29,6 +30,10 @@ public partial class AddDownloadDialog
     private readonly Adw.ComboRow _rowFileType;
     private readonly Adw.ComboRow _rowQuality;
     private readonly Adw.ComboRow _rowSubtitle;
+    private readonly Gtk.Label _lblSaveWarning;
+    private readonly Adw.Clamp _clampSaveWarning;
+    private readonly Gtk.Popover _popoverSaveWarning;
+    private readonly Gtk.MenuButton _btnSaveWarning;
     private readonly Gtk.Button _btnSelectSavePath;
     private readonly Adw.EntryRow _rowSavePath;
 
@@ -118,6 +123,21 @@ public partial class AddDownloadDialog
         };
         _preferencesGroup.Add(_rowSubtitle);
         //Save Path
+        _lblSaveWarning = Gtk.Label.New(_controller.Localizer["SaveWarning", "GTK"]);
+        _lblSaveWarning.SetWrap(true);
+        _lblSaveWarning.SetJustify(Gtk.Justification.Center);
+        _clampSaveWarning = Adw.Clamp.New();
+        _clampSaveWarning.SetMaximumSize(300);
+        _clampSaveWarning.SetChild(_lblSaveWarning);
+        _popoverSaveWarning = Gtk.Popover.New();
+        _popoverSaveWarning.SetChild(_clampSaveWarning);
+        _btnSaveWarning = Gtk.MenuButton.New();
+        _btnSaveWarning.SetIconName("dialog-warning-symbolic");
+        _btnSaveWarning.SetValign(Gtk.Align.Center);
+        _btnSaveWarning.AddCssClass("flat");
+        _btnSaveWarning.AddCssClass("warning");
+        _btnSaveWarning.SetPopover(_popoverSaveWarning);
+        _btnSaveWarning.SetVisible(false);
         _btnSelectSavePath = Gtk.Button.New();
         _btnSelectSavePath.SetValign(Gtk.Align.Center);
         _btnSelectSavePath.AddCssClass("flat");
@@ -127,8 +147,15 @@ public partial class AddDownloadDialog
         _rowSavePath = Adw.EntryRow.New();
         _rowSavePath.SetSizeRequest(420, -1);
         _rowSavePath.SetTitle(_controller.Localizer["SavePath", "Field"]);
+        _rowSavePath.AddSuffix(_btnSaveWarning);
         _rowSavePath.AddSuffix(_btnSelectSavePath);
         _rowSavePath.SetEditable(false);
+        _rowSavePath.OnNotify += (sender, e) => {
+            if (e.Pspec.GetName() == "text")
+            {
+                _btnSaveWarning.SetVisible(Regex.Match(_rowSavePath.GetText(), @"^\/run\/user\/.*\/doc\/.*").Success);
+            }
+        };
         _preferencesGroup.Add(_rowSavePath);
         //Layout
         _dialog.SetExtraChild(_preferencesGroup);
