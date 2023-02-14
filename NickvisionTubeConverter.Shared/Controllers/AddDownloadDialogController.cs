@@ -1,6 +1,7 @@
 using NickvisionTubeConverter.Shared.Helpers;
 using NickvisionTubeConverter.Shared.Models;
 using System.IO;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace NickvisionTubeConverter.Shared.Controllers;
@@ -31,6 +32,8 @@ public class AddDownloadDialogController
     /// The download represented by the controller
     /// </summary>
     public Download? Download { get; private set; }
+    public string SaveFolder { get; private set; }
+    public string SaveFilename { get; private set; }
     /// <summary>
     /// Whether or not the dialog was accepted (response)
     /// </summary>
@@ -39,7 +42,7 @@ public class AddDownloadDialogController
     /// <summary>
     /// The previously used save folder
     /// </summary>
-    public string PreviousSaveFolder => Path.Exists(Configuration.Current.PreviousSaveFolder) ? Configuration.Current.PreviousSaveFolder : "";
+    public string PreviousSaveFolder => Configuration.Current.PreviousSaveFolder;
     /// <summary>
     /// The previously used MediaFileType
     /// </summary>
@@ -53,6 +56,8 @@ public class AddDownloadDialogController
         _previousUrl = null;
         Localizer = localizer;
         Download = null;
+        SaveFolder = "";
+        SaveFilename = "";
         Accepted = false;
     }
 
@@ -61,14 +66,26 @@ public class AddDownloadDialogController
     /// </summary>
     /// <param name="videoUrl">The url of the video to download</param>
     /// <param name="mediaFileType">The file type to download the video as</param>
-    /// <param name="saveFolder">The folder to save the download to</param>
-    /// <param name="newFilename">The filename to save the download as</param>
+    /// <param name="savePath">The path to save the download to</param>
     /// <param name="quality">The quality of the download</param>
     /// <param name="subtitles">The subtitles for the download</param>
     /// <returns>The DownloadCheckStatus</returns>
-    public async Task<DownloadCheckStatus> UpdateDownloadAsync(string videoUrl, MediaFileType mediaFileType, string saveFolder, string newFilename, Quality quality, Subtitle subtitles)
+    public async Task<DownloadCheckStatus> UpdateDownloadAsync(string videoUrl, MediaFileType mediaFileType, string savePath, Quality quality, Subtitle subtitles)
     {
         DownloadCheckStatus result = 0;
+        if (string.IsNullOrEmpty(savePath))
+        {
+            SaveFolder = PreviousSaveFolder;
+            if (!Directory.Exists(SaveFolder))
+            {
+                result |= DownloadCheckStatus.InvalidSaveFolder;
+            }
+        }
+        else
+        {
+            SaveFolder = Path.GetDirectoryName(savePath);
+            SaveFilename = Path.GetFileNameWithoutExtension(savePath) + mediaFileType.GetDotExtension();
+        }
         if (string.IsNullOrEmpty(videoUrl))
         {
             result |= DownloadCheckStatus.EmptyVideoUrl;
@@ -80,19 +97,28 @@ public class AddDownloadDialogController
             {
                 result |= DownloadCheckStatus.InvalidVideoUrl;
             }
-        }
-        if (!Directory.Exists(saveFolder))
-        {
-            result |= DownloadCheckStatus.InvalidSaveFolder;
+            else
+            {
+                SaveFilename = (await Download.GetVideoTitle(videoUrl)) + mediaFileType.GetDotExtension();
+            }
         }
         if (result != 0)
         {
             return result;
         }
-        Download = new Download(videoUrl, mediaFileType, saveFolder, newFilename, quality, subtitles);
-        Configuration.Current.PreviousSaveFolder = saveFolder;
+        Download = new Download(videoUrl, mediaFileType, SaveFolder, SaveFilename, quality, subtitles);
+        if (!Regex.Match(SaveFolder, @"^\/run\/user\/.*\/doc\/.*").Success)
+        {
+            Configuration.Current.PreviousSaveFolder = SaveFolder;
+        }
         Configuration.Current.PreviousMediaFileType = mediaFileType;
         Configuration.Current.Save();
         return DownloadCheckStatus.Valid;
     }
+
+    /// <summary>
+    /// Gets full save path
+    /// </summary>
+    /// <returns>Save Path string</returns>
+    public string GetSavePath() => SaveFolder + Path.DirectorySeparatorChar + SaveFilename;
 }
