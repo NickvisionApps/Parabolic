@@ -70,6 +70,7 @@ public partial class MainWindow
         _btnAddDownload.SetChild(_btnAddDownloadContent);
         _btnAddDownload.SetTooltipText(_controller.Localizer["AddDownload", "Tooltip"]);
         _btnAddDownload.SetDetailedActionName("win.addDownload");
+        _btnAddDownload.SetVisible(false);
         _headerBar.PackStart(_btnAddDownload);
         //Menu Help Button
         _btnMenuHelp = Gtk.MenuButton.New();
@@ -232,6 +233,7 @@ public partial class MainWindow
     /// <returns></returns>
     private IDownloadRowControl CreateDownloadRow(Download download)
     {
+        _btnAddDownload.SetVisible(true);
         var downloadRow = new DownloadRow(_controller.Localizer, download);
         _viewStack.SetVisibleChildName("pageDownloads");
         if (_boxDownloads.GetFirstChild() != null)
