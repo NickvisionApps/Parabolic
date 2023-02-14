@@ -19,7 +19,10 @@
         "--socket=wayland",
         "--device=dri",
         "--share=ipc",
-        "--share=network"
+        "--share=network",
+        "--filesystem=xdg-videos",
+        "--filesystem=xdg-music",
+        "--filesystem=xdg-download"
     ],
     "cleanup": [
       "/include",
