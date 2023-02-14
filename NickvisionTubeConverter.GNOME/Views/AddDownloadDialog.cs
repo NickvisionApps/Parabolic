@@ -84,7 +84,6 @@ public partial class AddDownloadDialog
         {
             if (e.Pspec.GetName() == "selected-item")
             {
-                _rowSubtitle!.SetSensitive(((MediaFileType)_rowFileType.GetSelected()).GetIsVideo());
                 if (!_constructing)
                 {
                     await ValidateAsync();
@@ -209,7 +208,7 @@ public partial class AddDownloadDialog
         _rowFileType.SetSensitive(true);
         _rowSavePath.SetSensitive(true);
         _rowQuality.SetSensitive(true);
-        _rowSubtitle.SetSensitive(true);
+        _rowSubtitle.SetSensitive(((MediaFileType)_rowFileType.GetSelected()).GetIsVideo());
         _rowVideoUrl.RemoveCssClass("error");
         _rowVideoUrl.SetTitle(_controller.Localizer["VideoUrl", "Field"]);
         _rowSavePath.RemoveCssClass("error");
