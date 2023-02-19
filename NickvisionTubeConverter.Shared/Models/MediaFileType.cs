@@ -78,5 +78,21 @@ public static class MediaFileTypeHelpers
         MediaFileType.FLAC => false,
         MediaFileType.WAV => false,
         _ => false
+    };    
+
+    /// <summary>
+    /// Gets whether or not the MediaFileType supports embedding thumbnails
+    /// </summary>
+    /// <param name="type">The MediaFileType</param>
+    /// <returns>True if supported, else false</returns>
+    public static bool GetSupportsThumbnails(this MediaFileType type) => type switch
+    {
+        MediaFileType.MP4 => true,
+        MediaFileType.WEBM => false,
+        MediaFileType.MP3 => true,
+        MediaFileType.OPUS => true,
+        MediaFileType.FLAC => true,
+        MediaFileType.WAV => false,
+        _ => false
     };
 }
