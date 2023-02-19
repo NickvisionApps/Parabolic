@@ -156,7 +156,7 @@ public class MainWindowController : IDisposable
     /// <returns>True if successful, else false</returns>
     public async Task<bool> DownloadDependenciesAsync()
     {
-        var ytdlpVersion = new Version(2023, 1, 6);
+        var ytdlpVersion = new Version(2023, 2, 17);
         if(Configuration.Current.YtdlpVersion != ytdlpVersion || !File.Exists(DependencyManager.YtdlpPath) || !File.Exists(DependencyManager.Ffmpeg))
         {
             if(await DependencyManager.DownloadDependenciesAsync())
