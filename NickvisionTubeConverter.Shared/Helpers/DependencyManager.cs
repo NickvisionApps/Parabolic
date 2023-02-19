@@ -1,4 +1,5 @@
-﻿using NickvisionTubeConverter.Shared.Models;
+﻿using NickvisionTubeConverter.Shared.Controllers;
+using NickvisionTubeConverter.Shared.Models;
 using System.IO;
 using System;
 using System.Runtime.InteropServices;
@@ -11,34 +12,6 @@ namespace NickvisionTubeConverter.Shared.Helpers;
 
 internal static class DependencyManager
 {
-    /// <summary>
-    /// The path for yt-dlp
-    /// </summary>
-    public static string YtdlpPath
-    {
-        get
-        {
-            if(RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-            {
-                return $"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}{Path.DirectorySeparatorChar}Nickvision{Path.DirectorySeparatorChar}{AppInfo.Current.Name}{Path.DirectorySeparatorChar}yt-dlp.exe";
-            }
-            var prefixes = new List<string>() {
-                Directory.GetParent(Directory.GetParent(Path.GetFullPath(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)!))!.FullName)!.FullName,
-                Directory.GetParent(Path.GetFullPath(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)!))!.FullName,
-                "/usr"
-            };
-            foreach (var prefix in prefixes)
-            {
-                var path = $"{prefix}/bin/yt-dlp";
-                if (File.Exists(path))
-                {
-                    return path;
-                }
-            }
-            return "";
-        }
-    }
-
     /// <summary>
     /// The path for ffmpeg
     /// </summary>
@@ -68,19 +41,39 @@ internal static class DependencyManager
     }
 
     /// <summary>
-    /// Downloads dependencies (For Windows ONLY)
+    /// Setups dependencies for the application
     /// </summary>
     /// <returns>True if successful, else false.</returns>
-    public static async Task<bool> DownloadDependenciesAsync()
+    public static async Task<bool> SetupDependenciesAsync()
     {
-        if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+        if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
         {
-            return true;
+            await YoutubeDL.DownloadFFmpegBinary(Ffmpeg.Remove(Ffmpeg.IndexOf("ffmpeg.exe")));
+            Python.Deployment.Installer.InstallPath = $"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}{Path.DirectorySeparatorChar}Nickvision{Path.DirectorySeparatorChar}{AppInfo.Current.Name}{Path.DirectorySeparatorChar}Python{Path.DirectorySeparatorChar}";
+            await Python.Deployment.Installer.SetupPython();
+            await Python.Deployment.Installer.InstallWheel(typeof(MainWindowController).Assembly, "yt_dlp-any.whl");
+            Python.Runtime.Runtime.PythonDLL = $"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}{Path.DirectorySeparatorChar}Nickvision{Path.DirectorySeparatorChar}{AppInfo.Current.Name}{Path.DirectorySeparatorChar}Python{Path.DirectorySeparatorChar}python-3.7.3-embed-amd64{Path.DirectorySeparatorChar}python37.dll";
         }
+        else
+        {
+            var prefixes = new List<string>() {
+                Directory.GetParent(Directory.GetParent(Path.GetFullPath(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)!))!.FullName)!.FullName,
+                Directory.GetParent(Path.GetFullPath(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)!))!.FullName,
+                "/usr"
+            };
+            foreach (var prefix in prefixes)
+            {
+                var path = $"{prefix}/lib/x86_64-linux-gnu/libpython3.10.so";
+                if (File.Exists(path))
+                {
+                    Python.Runtime.Runtime.PythonDLL = path;
+                    break;
+                }
+            }
+        }
+        Python.Runtime.PythonEngine.Initialize();
         try
         {
-            await YoutubeDL.DownloadYtDlpBinary(YtdlpPath.Remove(YtdlpPath.IndexOf("yt-dlp.exe")));
-            await YoutubeDL.DownloadFFmpegBinary(Ffmpeg.Remove(Ffmpeg.IndexOf("ffmpeg.exe")));
             return true;
         }
         catch

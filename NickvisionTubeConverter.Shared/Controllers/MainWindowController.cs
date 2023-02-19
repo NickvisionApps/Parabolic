@@ -145,30 +145,22 @@ public class MainWindowController : IDisposable
     }
 
     /// <summary>
+    /// Starts the application
+    /// </summary>
+    /// <returns></returns>
+    public async Task StartupAsync()
+    {
+        if(!await DependencyManager.SetupDependenciesAsync())
+        {
+            NotificationSent?.Invoke(this, new NotificationSentEventArgs(Localizer["DependencyError"], NotificationSeverity.Error));
+        }
+    }
+
+    /// <summary>
     /// Creates a new AddDownloadDialogController
     /// </summary>
     /// <returns>The new AddDownloadDialogController</returns>
     public AddDownloadDialogController CreateAddDownloadDialogController() => new AddDownloadDialogController(Localizer);
-
-    /// <summary>
-    /// Downloads dependencies for the application
-    /// </summary>
-    /// <returns>True if successful, else false</returns>
-    public async Task<bool> DownloadDependenciesAsync()
-    {
-        var ytdlpVersion = new Version(2023, 2, 17);
-        if(Configuration.Current.YtdlpVersion != ytdlpVersion || !File.Exists(DependencyManager.YtdlpPath) || !File.Exists(DependencyManager.Ffmpeg))
-        {
-            if(await DependencyManager.DownloadDependenciesAsync())
-            {
-                Configuration.Current.YtdlpVersion = ytdlpVersion;
-                Configuration.Current.Save();
-                return true;
-            }
-            return false;
-        }
-        return true;
-    }
 
     /// <summary>
     /// Adds a download row to the window

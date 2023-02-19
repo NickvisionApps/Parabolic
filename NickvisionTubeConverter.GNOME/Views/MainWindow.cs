@@ -4,6 +4,7 @@ using NickvisionTubeConverter.Shared.Controls;
 using NickvisionTubeConverter.Shared.Events;
 using NickvisionTubeConverter.Shared.Models;
 using System;
+using System.Threading.Tasks;
 
 namespace NickvisionTubeConverter.GNOME.Views;
 
@@ -32,6 +33,9 @@ public partial class MainWindow
     private readonly Gtk.Box _boxMainContent;
     private readonly Gtk.Label _lblDownloads;
     private readonly Gtk.Box _boxDownloads;
+    private readonly Adw.Bin _binSpinner;
+    private readonly Gtk.Spinner _spinner;
+    private readonly Gtk.Overlay _overlayLoading;
     private readonly Adw.ViewStack _viewStack;
 
     public Adw.ApplicationWindow Handle { get; init; }
@@ -153,8 +157,24 @@ public partial class MainWindow
         _viewStack.AddNamed(_scrollStartPage, "pageNoDownloads");
         _viewStack.AddNamed(_scrollDownloadsPage, "pageDownloads");
         _toastOverlay.SetChild(_viewStack);
-        //Layout
-        Handle.SetContent(_mainBox);
+        //Spinner Box
+        _binSpinner = Adw.Bin.New();
+        _binSpinner.SetHexpand(true);
+        _binSpinner.SetVexpand(true);
+        //Spinner
+        _spinner = Gtk.Spinner.New();
+        _spinner.SetSizeRequest(48, 48);
+        _spinner.SetHalign(Gtk.Align.Center);
+        _spinner.SetValign(Gtk.Align.Center);
+        _spinner.SetHexpand(true);
+        _spinner.SetVexpand(true);
+        _binSpinner.SetChild(_spinner);
+        //Loading Overlay
+        _overlayLoading = Gtk.Overlay.New();
+        _overlayLoading.SetVexpand(true);
+        _overlayLoading.AddOverlay(_binSpinner);
+        _overlayLoading.SetChild(_mainBox);
+        Handle.SetContent(_overlayLoading);
         //Register Events 
         _controller.NotificationSent += NotificationSent;
         _controller.UICreateDownloadRow = CreateDownloadRow;
@@ -193,10 +213,17 @@ public partial class MainWindow
     /// <summary>
     /// Starts the MainWindow
     /// </summary>
-    public void Start()
+    public async Task StartAsync()
     {
         _application.AddWindow(Handle);
         Handle.Show();
+        _binSpinner.SetVisible(true);
+        _mainBox.SetVisible(false);
+        _spinner.Start();
+        await _controller.StartupAsync();
+        _spinner.Stop();
+        _binSpinner.SetVisible(false);
+        _mainBox.SetVisible(true);
     }
 
     /// <summary>

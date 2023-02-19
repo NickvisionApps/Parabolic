@@ -80,9 +80,17 @@ public class Download
     /// </summary>
     /// <param name="url">The video url to check</param>
     /// <returns>True if valid, else false</returns>
+    /*
+     * using(Python.Runtime.Py.GIL())
+        {
+            dynamic ytDlp = Python.Runtime.Py.Import("yt_dlp");
+            dynamic client = ytDlp.YoutubeDL();
+            return false;
+        }
+     */
     public static async Task<bool> GetIsValidVideoUrl(string url) => (await new YoutubeDL()
     {
-        YoutubeDLPath = DependencyManager.YtdlpPath,
+        YoutubeDLPath = "",
         FFmpegPath = DependencyManager.Ffmpeg,
     }.RunVideoDataFetch(url)).Success;
 
@@ -98,7 +106,7 @@ public class Download
         _cancellationToken = new CancellationTokenSource();
         var ytdlp = new YoutubeDL()
         {
-            YoutubeDLPath = DependencyManager.YtdlpPath,
+            YoutubeDLPath = "",
             FFmpegPath = DependencyManager.Ffmpeg,
             OutputFolder = SaveFolder,
             OutputFileTemplate = Filename
@@ -168,7 +176,7 @@ public class Download
     /// <returns>Title string</returns>
     public static async Task<string> GetVideoTitle(string videoUrl) => (await new YoutubeDL()
     {
-        YoutubeDLPath = DependencyManager.YtdlpPath,
+        YoutubeDLPath = "",
         FFmpegPath = DependencyManager.Ffmpeg,
     }.RunVideoDataFetch(videoUrl)).Data.Title;
 }

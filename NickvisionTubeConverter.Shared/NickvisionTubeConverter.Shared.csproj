@@ -10,10 +10,16 @@
 		<None Remove="Resources\org.nickvision.tubeconverter-symbolic.svg" />
 		<None Remove="Resources\org.nickvision.tubeconverter.png" />
 		<None Remove="Resources\org.nickvision.tubeconverter.svg" />
+		<None Remove="Resources\yt_dlp-any.whl" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <EmbeddedResource Include="Resources\yt_dlp-any.whl" />
 	</ItemGroup>
 
 	<ItemGroup>
 	  <PackageReference Include="Microsoft.NETCore.Targets" Version="5.0.0" />
+	  <PackageReference Include="Python.Included" Version="3.11.1" />
 	  <PackageReference Include="YoutubeDLSharp" Version="1.0.0-beta3" />
 	</ItemGroup>
 

@@ -7,8 +7,13 @@ using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
 using NickvisionTubeConverter.Shared.Controllers;
 using NickvisionTubeConverter.Shared.Events;
+using NickvisionTubeConverter.Shared.Models;
 using NickvisionTubeConverter.WinUI.Controls;
+using Python.Deployment;
+using Python.Runtime;
 using System;
+using System.Diagnostics;
+using System.IO;
 using System.Threading.Tasks;
 using Vanara.PInvoke;
 using Windows.Graphics;
@@ -86,7 +91,7 @@ public sealed partial class MainWindow : Window
         _appWindow.Resize(new SizeInt32(800, 600));
         User32.ShowWindow(_hwnd, ShowWindowCommand.SW_SHOWMAXIMIZED);
         //Localize Strings
-        LblLoading.Text = _controller.Localizer["DependencyDownload", "WinUI"];
+        LblLoading.Text = _controller.Localizer["DependencyDownload"];
         NavViewItemHome.Content = _controller.Localizer["Home"];
         NavViewItemDownloads.Content = _controller.Localizer["Downloads"];
         NavViewItemSettings.Content = _controller.Localizer["Settings"];
@@ -119,10 +124,7 @@ public sealed partial class MainWindow : Window
             Loading.IsLoading = true;
             //Work
             await Task.Delay(50);
-            if(!await _controller.DownloadDependenciesAsync())
-            {
-                NotificationSent(sender, new NotificationSentEventArgs(_controller.Localizer["DependencyError", "WinUI"], NotificationSeverity.Error));
-            }
+            await _controller.StartupAsync();
             //Done Loading
             Loading.IsLoading = false;
             _isOpened = true;
@@ -212,6 +214,6 @@ public sealed partial class MainWindow : Window
     /// <param name="e">RoutedEventArgs</param>
     private async void AddDownload(object sender, RoutedEventArgs e)
     {
-        
+
     }
 }
