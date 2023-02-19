@@ -292,7 +292,13 @@ public partial class MainWindow
     /// </summary>
     /// <param name="sender">Gio.SimpleAction</param>
     /// <param name="e">EventArgs</param>
-    private void Quit(Gio.SimpleAction sender, EventArgs e) => _application.Quit();
+    private void Quit(Gio.SimpleAction sender, EventArgs e)
+    {
+        if (!OnCloseRequested(Handle, EventArgs.Empty))
+        {
+            _application.Quit();
+        }
+    }
 
     /// <summary>
     /// Occurs when the about action is triggered
