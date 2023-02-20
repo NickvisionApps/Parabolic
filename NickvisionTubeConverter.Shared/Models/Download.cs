@@ -36,7 +36,6 @@ public class Download
     private MediaFileType _fileType;
     private Quality _quality;
     private Subtitle _subtitle;
-    private dynamic _ytdlp;
 
     /// <summary>
     /// The url of the video
@@ -70,7 +69,6 @@ public class Download
         _fileType = fileType;
         _quality = quality;
         _subtitle = subtitle;
-        _ytdlp = Python.Runtime.Py.Import("yt_dlp");
         VideoUrl = videoUrl;
         SaveFolder = saveFolder;
         Filename = saveFilename;
@@ -124,7 +122,7 @@ public class Download
             }
             catch(Exception e)
             {
-                title = "";
+                title = "video";
             }
             return title;
         });
