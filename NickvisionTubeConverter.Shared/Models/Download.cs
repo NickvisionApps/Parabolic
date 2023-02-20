@@ -1,5 +1,6 @@
 ﻿using NickvisionTubeConverter.Shared.Helpers;
 using System;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using YoutubeDLSharp;
@@ -90,7 +91,8 @@ public class Download
                 using (Python.Runtime.Py.GIL())
                 {
                     dynamic ytdlp = Python.Runtime.Py.Import("yt_dlp");
-                    ytdlp.YoutubeDL().extract_info(url, download: false);
+                    var ytOpt = new Dictionary<string, dynamic>() { { "quiet", true } };
+                    ytdlp.YoutubeDL(ytOpt).extract_info(url, false);
                 }
                 return true;
             }
@@ -116,7 +118,8 @@ public class Download
                 using (Python.Runtime.Py.GIL())
                 {
                     dynamic ytdlp = Python.Runtime.Py.Import("yt_dlp");
-                    title = ytdlp.YoutubeDL().extract_info(url, download: false)["title"];
+                    var ytOpt = new Dictionary<string, dynamic>() { { "quiet", true } };
+                    title = ytdlp.YoutubeDL(ytOpt).extract_info(url, false)["title"];
                 }
             }
             catch(Exception e)
@@ -138,6 +141,7 @@ public class Download
     {
         IsDone = false;
         _cancellationToken = new CancellationTokenSource();
+        /*
         var ytdlp = new YoutubeDL()
         {
             YoutubeDLPath = "",
@@ -147,54 +151,55 @@ public class Download
         };
         var embedThumbnail = embedMetadata && _fileType.GetSupportsThumbnails();
         RunResult<string>? result = null;
-        // if (_fileType.GetIsAudio())
-        // {
-        //     try
-        //     {
-        //         result = await ytdlp.RunAudioDownload(VideoUrl, _fileType switch
-        //         {
-        //             MediaFileType.MP3 => AudioConversionFormat.Mp3,
-        //             MediaFileType.OPUS => AudioConversionFormat.Opus,
-        //             MediaFileType.FLAC => AudioConversionFormat.Flac,
-        //             MediaFileType.WAV => AudioConversionFormat.Wav,
-        //             _ => AudioConversionFormat.Best
-        //         }, _cancellationToken.Token, progressCallback, null, new OptionSet()
-        //         {
-        //             EmbedMetadata = embedMetadata,
-        //             EmbedThumbnail = embedThumbnail,
-        //             AudioQuality = _quality == Quality.Best ? (byte)0 : (_quality == Quality.Good ? (byte)5 : (byte)10)
-        //         });
-        //     }
-        //     catch (TaskCanceledException e) { }
-        // }
-        // else if(_fileType.GetIsVideo())
-        // {
-        //     try
-        //     {
-        //         result = await ytdlp.RunVideoDownload(VideoUrl, _quality == Quality.Best ? "bv*+ba/b" : (_quality == Quality.Good ? "bv*[height<=720]+ba/b[height<=720]" : "wv*+wa/w"), DownloadMergeFormat.Unspecified, _fileType switch
-        //         {
-        //             MediaFileType.MP4 => VideoRecodeFormat.Mp4,
-        //             MediaFileType.WEBM => VideoRecodeFormat.Webm,
-        //             _ => VideoRecodeFormat.None
-        //         }, _cancellationToken.Token, progressCallback, null, new OptionSet()
-        //         {
-        //             EmbedMetadata = embedMetadata,
-        //             EmbedThumbnail = embedThumbnail,
-        //             EmbedSubs = _subtitle != Subtitle.None,
-        //             WriteAutoSubs = _subtitle != Subtitle.None && (await ytdlp.RunVideoDataFetch(VideoUrl)).Data.Subtitles.Count == 0,
-        //             SubFormat = _subtitle == Subtitle.None ? "" : (_subtitle == Subtitle.SRT ? "srt" : "vtt"),
-        //             SubLangs = _subtitle == Subtitle.None ? "" : "all"
-        //         });
-        //     }
-        //     catch (TaskCanceledException e) { }
-        // }
-        // IsDone = true;
-        // _cancellationToken.Dispose();
-        // _cancellationToken = null;
-        // if(result != null)
-        // {
-        //     return result.Success;
-        // }
+        if (_filetype.getisaudio())
+        {
+            try
+            {
+                result = await ytdlp.runaudiodownload(videourl, _filetype switch
+                {
+                    mediafiletype.mp3 => audioconversionformat.mp3,
+                    mediafiletype.opus => audioconversionformat.opus,
+                    mediafiletype.flac => audioconversionformat.flac,
+                    mediafiletype.wav => audioconversionformat.wav,
+                    _ => audioconversionformat.best
+                }, _cancellationtoken.token, progresscallback, null, new optionset()
+                {
+                    embedmetadata = embedmetadata,
+                    embedthumbnail = embedthumbnail,
+                    audioquality = _quality == quality.best ? (byte)0 : (_quality == quality.good ? (byte)5 : (byte)10)
+                });
+            }
+            catch (taskcanceledexception e) { }
+        }
+        else if (_filetype.getisvideo())
+        {
+            try
+            {
+                result = await ytdlp.runvideodownload(videourl, _quality == quality.best ? "bv*+ba/b" : (_quality == quality.good ? "bv*[height<=720]+ba/b[height<=720]" : "wv*+wa/w"), downloadmergeformat.unspecified, _filetype switch
+                {
+                    mediafiletype.mp4 => videorecodeformat.mp4,
+                    mediafiletype.webm => videorecodeformat.webm,
+                    _ => videorecodeformat.none
+                }, _cancellationtoken.token, progresscallback, null, new optionset()
+                {
+                    embedmetadata = embedmetadata,
+                    embedthumbnail = embedthumbnail,
+                    embedsubs = _subtitle != subtitle.none,
+                    writeautosubs = _subtitle != subtitle.none && (await ytdlp.runvideodatafetch(videourl)).data.subtitles.count == 0,
+                    subformat = _subtitle == subtitle.none ? "" : (_subtitle == subtitle.srt ? "srt" : "vtt"),
+                    sublangs = _subtitle == subtitle.none ? "" : "all"
+                });
+            }
+            catch (taskcanceledexception e) { }
+        }
+        isdone = true;
+        _cancellationtoken.dispose();
+        _cancellationtoken = null;
+        if (result != null)
+        {
+            return result.success;
+        }
+        */
         return false;
     }
 
