@@ -95,7 +95,7 @@ public class Download
                 }
                 return true;
             }
-            catch(Exception ex)
+            catch(Exception e)
             {
                 return false;
             }
@@ -112,11 +112,18 @@ public class Download
         return await Task.Run(() =>
         {
             var title = "";
-            Python.Runtime.PythonEngine.Initialize();
-            using (Python.Runtime.Py.GIL())
+            try
             {
-                dynamic ytdlp = Python.Runtime.Py.Import("yt_dlp");
-                title = ytdlp.YoutubeDL().extract_info(url, false)["title"];
+                Python.Runtime.PythonEngine.Initialize();
+                using (Python.Runtime.Py.GIL())
+                {
+                    dynamic ytdlp = Python.Runtime.Py.Import("yt_dlp");
+                    title = ytdlp.YoutubeDL().extract_info(url, false)["title"];
+                }
+            }
+            catch(Exception e)
+            {
+                title = "";
             }
             return title;
         });
