@@ -3,7 +3,7 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 using YoutubeDLSharp;
-using YoutubeDLSharp.Options;
+using Python.Runtime;
 
 namespace NickvisionTubeConverter.Shared.Models;
 
@@ -36,6 +36,7 @@ public class Download
     private MediaFileType _fileType;
     private Quality _quality;
     private Subtitle _subtitle;
+    public dynamic YtDlp;
 
     /// <summary>
     /// The url of the video
@@ -73,6 +74,7 @@ public class Download
         SaveFolder = saveFolder;
         Filename = saveFilename;
         IsDone = false;
+        YtDlp = Py.Import("yt_dlp");
     }
 
     /// <summary>
@@ -80,19 +82,19 @@ public class Download
     /// </summary>
     /// <param name="url">The video url to check</param>
     /// <returns>True if valid, else false</returns>
-    /*
-     * using(Python.Runtime.Py.GIL())
+    public async Task<bool> GetIsValidVideoUrl(string url)
+    {
+        dynamic client = YtDlp.YoutubeDL();
+        try
         {
-            dynamic ytDlp = Python.Runtime.Py.Import("yt_dlp");
-            dynamic client = ytDlp.YoutubeDL();
+            client.extract_info(url, false);
+            return true;
+        }
+        catch
+        {
             return false;
         }
-     */
-    public static async Task<bool> GetIsValidVideoUrl(string url) => (await new YoutubeDL()
-    {
-        YoutubeDLPath = "",
-        FFmpegPath = DependencyManager.Ffmpeg,
-    }.RunVideoDataFetch(url)).Success;
+    }
 
     /// <summary>
     /// Runs the download
@@ -113,54 +115,54 @@ public class Download
         };
         var embedThumbnail = embedMetadata && _fileType.GetSupportsThumbnails();
         RunResult<string>? result = null;
-        if (_fileType.GetIsAudio())
-        {
-            try
-            {
-                result = await ytdlp.RunAudioDownload(VideoUrl, _fileType switch
-                {
-                    MediaFileType.MP3 => AudioConversionFormat.Mp3,
-                    MediaFileType.OPUS => AudioConversionFormat.Opus,
-                    MediaFileType.FLAC => AudioConversionFormat.Flac,
-                    MediaFileType.WAV => AudioConversionFormat.Wav,
-                    _ => AudioConversionFormat.Best
-                }, _cancellationToken.Token, progressCallback, null, new OptionSet()
-                {
-                    EmbedMetadata = embedMetadata,
-                    EmbedThumbnail = embedThumbnail,
-                    AudioQuality = _quality == Quality.Best ? (byte)0 : (_quality == Quality.Good ? (byte)5 : (byte)10)
-                });
-            }
-            catch (TaskCanceledException e) { }
-        }
-        else if(_fileType.GetIsVideo())
-        {
-            try
-            {
-                result = await ytdlp.RunVideoDownload(VideoUrl, _quality == Quality.Best ? "bv*+ba/b" : (_quality == Quality.Good ? "bv*[height<=720]+ba/b[height<=720]" : "wv*+wa/w"), DownloadMergeFormat.Unspecified, _fileType switch
-                {
-                    MediaFileType.MP4 => VideoRecodeFormat.Mp4,
-                    MediaFileType.WEBM => VideoRecodeFormat.Webm,
-                    _ => VideoRecodeFormat.None
-                }, _cancellationToken.Token, progressCallback, null, new OptionSet()
-                {
-                    EmbedMetadata = embedMetadata,
-                    EmbedThumbnail = embedThumbnail,
-                    EmbedSubs = _subtitle != Subtitle.None,
-                    WriteAutoSubs = _subtitle != Subtitle.None && (await ytdlp.RunVideoDataFetch(VideoUrl)).Data.Subtitles.Count == 0,
-                    SubFormat = _subtitle == Subtitle.None ? "" : (_subtitle == Subtitle.SRT ? "srt" : "vtt"),
-                    SubLangs = _subtitle == Subtitle.None ? "" : "all"
-                });
-            }
-            catch (TaskCanceledException e) { }
-        }
-        IsDone = true;
-        _cancellationToken.Dispose();
-        _cancellationToken = null;
-        if(result != null)
-        {
-            return result.Success;
-        }
+        // if (_fileType.GetIsAudio())
+        // {
+        //     try
+        //     {
+        //         result = await ytdlp.RunAudioDownload(VideoUrl, _fileType switch
+        //         {
+        //             MediaFileType.MP3 => AudioConversionFormat.Mp3,
+        //             MediaFileType.OPUS => AudioConversionFormat.Opus,
+        //             MediaFileType.FLAC => AudioConversionFormat.Flac,
+        //             MediaFileType.WAV => AudioConversionFormat.Wav,
+        //             _ => AudioConversionFormat.Best
+        //         }, _cancellationToken.Token, progressCallback, null, new OptionSet()
+        //         {
+        //             EmbedMetadata = embedMetadata,
+        //             EmbedThumbnail = embedThumbnail,
+        //             AudioQuality = _quality == Quality.Best ? (byte)0 : (_quality == Quality.Good ? (byte)5 : (byte)10)
+        //         });
+        //     }
+        //     catch (TaskCanceledException e) { }
+        // }
+        // else if(_fileType.GetIsVideo())
+        // {
+        //     try
+        //     {
+        //         result = await ytdlp.RunVideoDownload(VideoUrl, _quality == Quality.Best ? "bv*+ba/b" : (_quality == Quality.Good ? "bv*[height<=720]+ba/b[height<=720]" : "wv*+wa/w"), DownloadMergeFormat.Unspecified, _fileType switch
+        //         {
+        //             MediaFileType.MP4 => VideoRecodeFormat.Mp4,
+        //             MediaFileType.WEBM => VideoRecodeFormat.Webm,
+        //             _ => VideoRecodeFormat.None
+        //         }, _cancellationToken.Token, progressCallback, null, new OptionSet()
+        //         {
+        //             EmbedMetadata = embedMetadata,
+        //             EmbedThumbnail = embedThumbnail,
+        //             EmbedSubs = _subtitle != Subtitle.None,
+        //             WriteAutoSubs = _subtitle != Subtitle.None && (await ytdlp.RunVideoDataFetch(VideoUrl)).Data.Subtitles.Count == 0,
+        //             SubFormat = _subtitle == Subtitle.None ? "" : (_subtitle == Subtitle.SRT ? "srt" : "vtt"),
+        //             SubLangs = _subtitle == Subtitle.None ? "" : "all"
+        //         });
+        //     }
+        //     catch (TaskCanceledException e) { }
+        // }
+        // IsDone = true;
+        // _cancellationToken.Dispose();
+        // _cancellationToken = null;
+        // if(result != null)
+        // {
+        //     return result.Success;
+        // }
         return false;
     }
 
@@ -174,9 +176,9 @@ public class Download
     /// </summary>
     /// <param name="videoUrl">URL of video to get title from</param>
     /// <returns>Title string</returns>
-    public static async Task<string> GetVideoTitle(string videoUrl) => (await new YoutubeDL()
+    public async Task<string> GetVideoTitle(string videoUrl)
     {
-        YoutubeDLPath = "",
-        FFmpegPath = DependencyManager.Ffmpeg,
-    }.RunVideoDataFetch(videoUrl)).Data.Title;
+        dynamic client = YtDlp.YoutubeDL();
+        return client.extract_info(videoUrl, false)["title"];
+    }
 }

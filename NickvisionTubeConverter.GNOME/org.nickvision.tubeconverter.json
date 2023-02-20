@@ -162,15 +162,30 @@
             ]
         },
         {
-            "name": "yt-dlp",
-            "no-autogen": true,
-            "no-make-install": true,
-            "make-args": [
-                "yt-dlp",
-                "PYTHON=/usr/bin/python3"
+            "name": "certifi",
+            "buildsystem": "simple",
+            "build-commands": [
+                "pip3 install --prefix=/app ."
             ],
-            "post-install": [
-                "install yt-dlp /app/bin"
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://github.com/certifi/python-certifi/archive/refs/tags/2022.12.07.tar.gz",
+                    "sha256": "48d30258d28d0d04b9220492bca614cc596be8f14c94b96ea8298d9284a5e3dd",
+                    "x-checker-data": {
+                        "type": "json",
+                        "url": "https://api.github.com/repos/certifi/python-certifi/releases/latest",
+                        "version-query": ".tag_name",
+                        "url-query": "\"https://github.com/certifi/python-certifi/archive/refs/tags/\" + $version + \".tar.gz\""
+                    }
+                }
+            ]
+        },
+        {
+            "name": "yt-dlp",
+            "buildsystem": "simple",
+            "build-commands": [
+                "pip3 install --prefix=/app ."
             ],
             "sources": [
                 {

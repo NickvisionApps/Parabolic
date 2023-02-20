@@ -7,6 +7,8 @@ using System.Collections.Generic;
 using System.Reflection;
 using System.Threading.Tasks;
 using YoutubeDLSharp;
+using Python.Included;
+using Python.Runtime;
 
 namespace NickvisionTubeConverter.Shared.Helpers;
 
@@ -56,20 +58,7 @@ internal static class DependencyManager
         }
         else
         {
-            var prefixes = new List<string>() {
-                Directory.GetParent(Directory.GetParent(Path.GetFullPath(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)!))!.FullName)!.FullName,
-                Directory.GetParent(Path.GetFullPath(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)!))!.FullName,
-                "/usr"
-            };
-            foreach (var prefix in prefixes)
-            {
-                var path = $"{prefix}/lib/x86_64-linux-gnu/libpython3.10.so";
-                if (File.Exists(path))
-                {
-                    Python.Runtime.Runtime.PythonDLL = path;
-                    break;
-                }
-            }
+            Python.Runtime.Runtime.PythonDLL = "libpython3.10.so";
         }
         Python.Runtime.PythonEngine.Initialize();
         try
