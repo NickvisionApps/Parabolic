@@ -3,7 +3,6 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 using YoutubeDLSharp;
-using Python.Runtime;
 
 namespace NickvisionTubeConverter.Shared.Models;
 
@@ -36,7 +35,7 @@ public class Download
     private MediaFileType _fileType;
     private Quality _quality;
     private Subtitle _subtitle;
-    public dynamic YtDlp;
+    private dynamic _ytdlp;
 
     /// <summary>
     /// The url of the video
@@ -70,11 +69,11 @@ public class Download
         _fileType = fileType;
         _quality = quality;
         _subtitle = subtitle;
+        _ytdlp = Python.Runtime.Py.Import("yt_dlp");
         VideoUrl = videoUrl;
         SaveFolder = saveFolder;
         Filename = saveFilename;
         IsDone = false;
-        YtDlp = Py.Import("yt_dlp");
     }
 
     /// <summary>
@@ -82,19 +81,29 @@ public class Download
     /// </summary>
     /// <param name="url">The video url to check</param>
     /// <returns>True if valid, else false</returns>
-    public async Task<bool> GetIsValidVideoUrl(string url)
+    public static async Task<bool> GetIsValidVideoUrlAsync(string url)
     {
-        dynamic client = YtDlp.YoutubeDL();
-        try
+        return await Task.Run(() =>
         {
-            client.extract_info(url, false);
-            return true;
-        }
-        catch
-        {
-            return false;
-        }
+            try
+            {
+                dynamic ytdlp = Python.Runtime.Py.Import("yt_dlp");
+                ytdlp.YoutubeDL().extract_info(url, false);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        });
     }
+
+    /// <summary>
+    /// Gets video title from metadata
+    /// </summary>
+    /// <param name="videoUrl">URL of video to get title from</param>
+    /// <returns>Title string</returns>
+    public async Task<string> GetVideoTitleAsync(string videoUrl) => await Task.Run(() => _ytdlp.YoutubeDL().extract_info(videoUrl, false)["title"]);
 
     /// <summary>
     /// Runs the download
@@ -170,15 +179,4 @@ public class Download
     /// Stops the download
     /// </summary>
     public void Stop() => _cancellationToken?.Cancel();
-
-    /// <summary>
-    /// Gets video title from metadata
-    /// </summary>
-    /// <param name="videoUrl">URL of video to get title from</param>
-    /// <returns>Title string</returns>
-    public async Task<string> GetVideoTitle(string videoUrl)
-    {
-        dynamic client = YtDlp.YoutubeDL();
-        return client.extract_info(videoUrl, false)["title"];
-    }
 }

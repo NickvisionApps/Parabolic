@@ -72,7 +72,6 @@ public class AddDownloadDialogController
     /// <returns>The DownloadCheckStatus</returns>
     public async Task<DownloadCheckStatus> UpdateDownloadAsync(string videoUrl, MediaFileType mediaFileType, string savePath, Quality quality, Subtitle subtitles)
     {
-        Download = new Download(videoUrl, mediaFileType, SaveFolder, SaveFilename, quality, subtitles);
         DownloadCheckStatus result = 0;
         if (string.IsNullOrEmpty(savePath))
         {
@@ -94,19 +93,20 @@ public class AddDownloadDialogController
         else if(_previousUrl != videoUrl)
         {
             _previousUrl = videoUrl;
-            if (!(await Download.GetIsValidVideoUrl(videoUrl)))
+            if (!(await Download.GetIsValidVideoUrlAsync(videoUrl)))
             {
                 result |= DownloadCheckStatus.InvalidVideoUrl;
             }
             else
             {
-                SaveFilename = (await Download.GetVideoTitle(videoUrl)) + mediaFileType.GetDotExtension();
+                SaveFilename = (await Download.GetVideoTitleAsync(videoUrl)) + mediaFileType.GetDotExtension();
             }
         }
         if (result != 0)
         {
             return result;
         }
+        Download = new Download(videoUrl, mediaFileType, SaveFolder, SaveFilename, quality, subtitles);
         if (!Regex.Match(SaveFolder, @"^\/run\/user\/.*\/doc\/.*").Success)
         {
             Configuration.Current.PreviousSaveFolder = SaveFolder;
