@@ -1,10 +1,11 @@
 ﻿using NickvisionTubeConverter.Shared.Controllers;
 using NickvisionTubeConverter.Shared.Models;
-using System.IO;
 using System;
-using System.Runtime.InteropServices;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
 using System.Reflection;
+using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using YoutubeDLSharp;
 
@@ -58,7 +59,19 @@ internal static class DependencyManager
             }
             else
             {
-                Python.Runtime.Runtime.PythonDLL = "libpython3.10.so";
+                var process = new Process
+                {
+                    StartInfo = new ProcessStartInfo
+                    {
+                        FileName = "python3",
+                        Arguments = "-c \"import sysconfig; print('/'.join(sysconfig.get_config_vars('LIBDIR', 'INSTSONAME')))\"",
+                        UseShellExecute = false,
+                        RedirectStandardOutput = true
+                    }
+                };
+                process.Start();
+                Python.Runtime.Runtime.PythonDLL = process.StandardOutput.ReadToEnd().Trim();
+                process.WaitForExit();
             }
             return true;
         }
