@@ -4,7 +4,6 @@ using NickvisionTubeConverter.Shared.Helpers;
 using NickvisionTubeConverter.Shared.Models;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Threading.Tasks;
 
 namespace NickvisionTubeConverter.Shared.Controllers;
@@ -15,6 +14,7 @@ namespace NickvisionTubeConverter.Shared.Controllers;
 public class MainWindowController : IDisposable
 {
     private bool _disposed;
+    private nint _pythonThreadState;
     private List<IDownloadRowControl> _downloadRows;
 
     /// <summary>
@@ -140,6 +140,8 @@ public class MainWindowController : IDisposable
         if (disposing)
         {
             Localizer.Dispose();
+            Python.Runtime.PythonEngine.EndAllowThreads(_pythonThreadState);
+            Python.Runtime.PythonEngine.Shutdown();
         }
         _disposed = true;
     }
@@ -152,6 +154,11 @@ public class MainWindowController : IDisposable
         if (!await DependencyManager.SetupDependenciesAsync())
         {
             NotificationSent?.Invoke(this, new NotificationSentEventArgs(Localizer["DependencyError"], NotificationSeverity.Error));
+        }
+        else
+        {
+            Python.Runtime.PythonEngine.Initialize();
+            _pythonThreadState = Python.Runtime.PythonEngine.BeginAllowThreads();
         }
     }
 

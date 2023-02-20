@@ -87,11 +87,10 @@ public class Download
         {
             try
             {
-                Python.Runtime.PythonEngine.Initialize();
                 using (Python.Runtime.Py.GIL())
                 {
                     dynamic ytdlp = Python.Runtime.Py.Import("yt_dlp");
-                    ytdlp.YoutubeDL().extract_info(url, false);
+                    ytdlp.YoutubeDL().extract_info(url, download: false);
                 }
                 return true;
             }
@@ -114,11 +113,10 @@ public class Download
             var title = "";
             try
             {
-                Python.Runtime.PythonEngine.Initialize();
                 using (Python.Runtime.Py.GIL())
                 {
                     dynamic ytdlp = Python.Runtime.Py.Import("yt_dlp");
-                    title = ytdlp.YoutubeDL().extract_info(url, false)["title"];
+                    title = ytdlp.YoutubeDL().extract_info(url, download: false)["title"];
                 }
             }
             catch(Exception e)
