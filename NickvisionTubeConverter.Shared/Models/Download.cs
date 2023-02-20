@@ -87,11 +87,15 @@ public class Download
         {
             try
             {
-                dynamic ytdlp = Python.Runtime.Py.Import("yt_dlp");
-                ytdlp.YoutubeDL().extract_info(url, false);
+                Python.Runtime.PythonEngine.Initialize();
+                using (Python.Runtime.Py.GIL())
+                {
+                    dynamic ytdlp = Python.Runtime.Py.Import("yt_dlp");
+                    ytdlp.YoutubeDL().extract_info(url, false);
+                }
                 return true;
             }
-            catch
+            catch(Exception ex)
             {
                 return false;
             }
@@ -101,9 +105,23 @@ public class Download
     /// <summary>
     /// Gets video title from metadata
     /// </summary>
-    /// <param name="videoUrl">URL of video to get title from</param>
+    /// <param name="url">The video url to check</param>
     /// <returns>Title string</returns>
-    public async Task<string> GetVideoTitleAsync(string videoUrl) => await Task.Run(() => _ytdlp.YoutubeDL().extract_info(videoUrl, false)["title"]);
+    public static async Task<string> GetVideoTitleAsync(string url)
+    {
+        return await Task.Run(() =>
+        {
+            var title = "";
+            Python.Runtime.PythonEngine.Initialize();
+            using (Python.Runtime.Py.GIL())
+            {
+                dynamic ytdlp = Python.Runtime.Py.Import("yt_dlp");
+                title = ytdlp.YoutubeDL().extract_info(url, false)["title"];
+            }
+            return title;
+        });
+        
+    }
 
     /// <summary>
     /// Runs the download

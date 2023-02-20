@@ -139,7 +139,6 @@ public class MainWindowController : IDisposable
         }
         if (disposing)
         {
-            Python.Runtime.PythonEngine.Shutdown();
             Localizer.Dispose();
         }
         _disposed = true;
@@ -148,16 +147,11 @@ public class MainWindowController : IDisposable
     /// <summary>
     /// Starts the application
     /// </summary>
-    /// <returns></returns>
     public async Task StartupAsync()
     {
         if (!await DependencyManager.SetupDependenciesAsync())
         {
             NotificationSent?.Invoke(this, new NotificationSentEventArgs(Localizer["DependencyError"], NotificationSeverity.Error));
-        }
-        else
-        {
-            Python.Runtime.PythonEngine.Initialize();
         }
     }
 

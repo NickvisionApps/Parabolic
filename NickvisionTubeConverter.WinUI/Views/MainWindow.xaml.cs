@@ -9,11 +9,7 @@ using NickvisionTubeConverter.Shared.Controllers;
 using NickvisionTubeConverter.Shared.Events;
 using NickvisionTubeConverter.Shared.Models;
 using NickvisionTubeConverter.WinUI.Controls;
-using Python.Deployment;
-using Python.Runtime;
 using System;
-using System.Diagnostics;
-using System.IO;
 using System.Threading.Tasks;
 using Vanara.PInvoke;
 using Windows.Graphics;
@@ -151,7 +147,29 @@ public sealed partial class MainWindow : Window
     /// </summary>
     /// <param name="sender">AppWindow</param>
     /// <param name="e">AppWindowClosingEventArgs</param>
-    private void Window_Closing(AppWindow sender, AppWindowClosingEventArgs e) => _micaController?.Dispose();
+    private async void Window_Closing(AppWindow sender, AppWindowClosingEventArgs e)
+    {
+        if (_controller.AreDownloadsRunning)
+        {
+            var closeDialog = new ContentDialog()
+            {
+                Title = _controller.Localizer["CloseAndStop", "Title"],
+                Content = _controller.Localizer["CloseAndStop", "Description"],
+                CloseButtonText = _controller.Localizer["No"],
+                PrimaryButtonText = _controller.Localizer["Yes"],
+                DefaultButton = ContentDialogButton.Close,
+                XamlRoot = Content.XamlRoot
+            };
+            if (await closeDialog.ShowAsync() != ContentDialogResult.Primary)
+            {
+                e.Cancel = true;
+                return;
+            }
+        }
+        _controller.StopDownloads();
+        _controller.Dispose();
+        _micaController?.Dispose();
+    }
 
     /// <summary>
     /// Occurs when the window's theme is changed
@@ -214,6 +232,7 @@ public sealed partial class MainWindow : Window
     /// <param name="e">RoutedEventArgs</param>
     private async void AddDownload(object sender, RoutedEventArgs e)
     {
-
+        var valid = await Download.GetIsValidVideoUrlAsync("https://www.youtube.com/watch?v=7emz4zZ226E&ab_channel=MarquesBrownlee");
+        NotificationSent(sender, new NotificationSentEventArgs(valid ? "Done" : "Error", valid ? NotificationSeverity.Success : NotificationSeverity.Error));
     }
 }

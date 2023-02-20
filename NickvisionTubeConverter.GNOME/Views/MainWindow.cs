@@ -250,6 +250,7 @@ public partial class MainWindow
             }
         }
         _controller.StopDownloads();
+        _controller.Dispose();
         return false;
     }
 
