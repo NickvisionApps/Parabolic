@@ -91,8 +91,8 @@ public class Download
                 using (Python.Runtime.Py.GIL())
                 {
                     dynamic ytdlp = Python.Runtime.Py.Import("yt_dlp");
-                    var ytOpt = new Dictionary<string, dynamic>() { { "quiet", true } };
-                    ytdlp.YoutubeDL(ytOpt).extract_info(url, false);
+                    var ytOpt = new Dictionary<string, dynamic>() { { "quiet", true }, { "merge_output_format", "/" } };
+                    ytdlp.YoutubeDL(ytOpt).extract_info(url, download: false);
                 }
                 return true;
             }
@@ -118,8 +118,8 @@ public class Download
                 using (Python.Runtime.Py.GIL())
                 {
                     dynamic ytdlp = Python.Runtime.Py.Import("yt_dlp");
-                    var ytOpt = new Dictionary<string, dynamic>() { { "quiet", true } };
-                    title = ytdlp.YoutubeDL(ytOpt).extract_info(url, false)["title"];
+                    var ytOpt = new Dictionary<string, dynamic>() { { "quiet", true }, { "merge_output_format", "/" } };
+                    title = ytdlp.YoutubeDL(ytOpt).extract_info(url, download: false)["title"];
                 }
             }
             catch(Exception e)
