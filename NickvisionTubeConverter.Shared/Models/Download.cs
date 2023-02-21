@@ -157,6 +157,7 @@ public class Download
                         { "quiet", true },
                         { "ignoreerrors", "downloadonly" },
                         { "merge_output_format", "mp4/webm/mp3/opus/flac/wav" },
+                        { "final_ext", _fileType.ToString().ToLower() },
                         { "progress_hooks", hooks },
                         { "postprocessor_hooks", hooks },
                         { "paths", new Dictionary<string, dynamic>() { { "home", SaveFolder } } },
@@ -205,7 +206,7 @@ public class Download
                     }
                     try
                     {
-                        ytdlp.YoutubeDL(ytOpt).download(new string[1] { VideoUrl });
+                        ytdlp.YoutubeDL(ytOpt).download(new List<string>() { VideoUrl });
                         IsDone = true;
                         return true;
                     }
