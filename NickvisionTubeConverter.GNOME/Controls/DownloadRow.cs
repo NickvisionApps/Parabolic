@@ -161,13 +161,13 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
         _lblFilename.SetText(_download.Filename);
         var success = await _download.RunAsync(embedMetadata, (state) =>
         {
-            switch (state["status"])
+            switch (state.Status)
             {
-                case "downloading":
+                case ProgressStatus.Downloading:
                     _downloadingCallback = (d) =>
                     {
-                        _progBar.SetFraction(Convert.ToDouble(state["progress"]));
-                        _progLabel.SetText(string.Format(_localizer["DownloadState", "Downloading"], Convert.ToDouble(state["progress"]) * 100, state["speed"]));
+                        _progBar.SetFraction(state.Progress);
+                        _progLabel.SetText(string.Format(_localizer["DownloadState", "Downloading"], state.Progress * 100, state.Speed));
                         return false;
                     };
                     g_idle_add(_downloadingCallback, 0);
@@ -177,7 +177,7 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
                     {
                         _progBar.Pulse();
                         _progLabel.SetText(_localizer["DownloadState", "Processing"]);
-                        return state["status"] == "processing";
+                        return state.Status == ProgressStatus.Processing;
                     };
                     g_timeout_add(30, _processingCallback, 0);
                     break;
