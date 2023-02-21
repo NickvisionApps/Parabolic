@@ -35,6 +35,7 @@ public class Download
     private MediaFileType _fileType;
     private Quality _quality;
     private Subtitle _subtitle;
+    private Action<DownloadProgressState>? _progressCallback;
 
     /// <summary>
     /// The url of the video
@@ -53,8 +54,6 @@ public class Download
     /// </summary>
     public bool IsDone { get; private set; }
 
-    private Action<Dictionary<string, string>>? _progressCallback;
-
     /// <summary>
     /// Constructs a Download
     /// </summary>
@@ -70,6 +69,7 @@ public class Download
         _fileType = fileType;
         _quality = quality;
         _subtitle = subtitle;
+        _progressCallback = null;
         VideoUrl = videoUrl;
         SaveFolder = saveFolder;
         Filename = saveFilename;
@@ -97,6 +97,7 @@ public class Download
             }
             catch(Exception e)
             {
+                Console.WriteLine(e.Message);
                 return false;
             }
         });
@@ -123,6 +124,7 @@ public class Download
             }
             catch(Exception e)
             {
+                Console.WriteLine(e.Message);
                 title = "video";
             }
             return title;
@@ -130,84 +132,91 @@ public class Download
         
     }
 
-    private void YtdlpHook(Python.Runtime.PyDict entries)
-    {
-        using (Python.Runtime.Py.GIL())
-        {
-            var result = new Dictionary<string, string> {};
-            result.Add("status", entries["status"].As<string>());
-            if (entries.HasKey("downloaded_bytes"))
-            {
-                var progress = entries["downloaded_bytes"].As<double>() / entries["total_bytes"].As<double>();
-                result.Add("progress", progress.ToString());
-            }
-            try // entries["speed"] is None if speed is unknown
-            {
-                result.Add("speed", entries["speed"].As<double>().ToString());
-            }
-            catch
-            {
-                result.Add("speed", "0");
-            }
-            _progressCallback(result);
-        }
-    }
-
     /// <summary>
     /// Runs the download
     /// </summary>
     /// <param name="embedMetadata">Whether or not to embed video metadata in the downloaded file</param>
-    /// <param name="progressCallback">A callback function for DownloadProgresss</param>
+    /// <param name="progressCallback">A callback function for DownloadProgressState</param>
     /// <returns>True if successful, else false</returns>
-    public async Task<bool> RunAsync(bool embedMetadata, Action<Dictionary<string, string>>? progressCallback = null)
+    public async Task<bool> RunAsync(bool embedMetadata, Action<DownloadProgressState>? progressCallback = null)
     {
         _progressCallback = progressCallback;
-        return await Task.Run(() =>
+        _cancellationToken = new CancellationTokenSource();
+        try
         {
             IsDone = false;
-            _cancellationToken = new CancellationTokenSource();
-            using (Python.Runtime.Py.GIL())
+            return await Task.Run(() =>
             {
-                dynamic ytdlp = Python.Runtime.Py.Import("yt_dlp");
-                var hooks = new List<Action<Python.Runtime.PyDict>> {};
-                hooks.Add(YtdlpHook);
-                var ytOpt = new Dictionary<string, dynamic> {
-                    {"quiet", true},
-                    {"ignoreerrors", "downloadonly"},
-                    {"merge_output_format", "mp4/webm/mp3/opus/flac/wav"},
-                    {"progress_hooks", hooks},
-                    {"postprocessor_hooks", hooks}
-                };
-                if (_fileType.GetIsAudio())
+                using (Python.Runtime.Py.GIL())
                 {
-                    ytOpt.Add("format", "ba/b");
+                    dynamic ytdlp = Python.Runtime.Py.Import("yt_dlp");
+                    var hooks = new List<Action<Python.Runtime.PyDict>> { };
+                    hooks.Add(ProgressHook);
+                    var ytOpt = new Dictionary<string, dynamic> {
+                        {"quiet", true},
+                        {"ignoreerrors", "downloadonly"},
+                        {"merge_output_format", "mp4/webm/mp3/opus/flac/wav"},
+                        {"progress_hooks", hooks},
+                        {"postprocessor_hooks", hooks}
+                    };
+                    if (_fileType.GetIsAudio())
+                    {
+                        ytOpt.Add("format", "ba/b");
+                    }
+                    else if (_fileType == MediaFileType.MP4)
+                    {
+                        ytOpt.Add("format", "bv[ext=mp4]+ba[ext=m4a]/b[ext=mp4]");
+                    }
+                    else
+                    {
+                        ytOpt.Add("format", "bv+ba/b");
+                    }
+                    try
+                    {
+                        ytdlp.YoutubeDL(ytOpt).download(new string[1] { VideoUrl });
+                        IsDone = true;
+                        return true;
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine(e);
+                        IsDone = true;
+                        return false;
+                    }
                 }
-                else if (_fileType == MediaFileType.MP4)
-                {
-                    ytOpt.Add("format", "bv[ext=mp4]+ba[ext=m4a]/b[ext=mp4]");
-                }
-                else
-                {
-                    ytOpt.Add("format", "bv+ba/b");
-                }
-                try
-                {
-                    ytdlp.YoutubeDL(ytOpt).download(new string[1] {VideoUrl});
-                    IsDone = true;
-                    return true;
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine(e);
-                    IsDone = true;
-                    return false;
-                }
-            }
-        });
+            }, _cancellationToken.Token);
+        }
+        catch(TaskCanceledException)
+        {
+            IsDone = false;
+            return false;
+        }
     }
 
     /// <summary>
     /// Stops the download
     /// </summary>
     public void Stop() => _cancellationToken?.Cancel();
+
+    private void ProgressHook(Python.Runtime.PyDict entries)
+    {
+        using (Python.Runtime.Py.GIL())
+        {
+            var result = new DownloadProgressState()
+            {
+                Status = entries["status"].As<string>() switch
+                {
+                    "processing" => ProgressStatus.Processing,
+                    "downloading" => ProgressStatus.Downloading,
+                    _ => ProgressStatus.Other
+                },
+                Progress = entries.HasKey("downloaded_bytes") ? entries["downloaded_bytes"].As<double>() / entries["total_bytes"].As<double>() : 0,
+                Speed = entries.HasKey("speed") ? entries["speed"].As<double>() : 0
+            };
+            if (_progressCallback != null)
+            {
+                _progressCallback(result);
+            }
+        }
+    }
 }
