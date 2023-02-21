@@ -177,7 +177,7 @@ public class Download
                     if (_fileType.GetIsAudio())
                     {
                         ytOpt.Add("format", _quality != Quality.Worst ? "ba/b" : "wa/w");
-                        postProcessors.Add(new Dictionary<string, dynamic>() { { "key", " FFmpegExtractAudio" }, { "preferredcodec", _fileType.ToString().ToLower() } });
+                        postProcessors.Add(new Dictionary<string, dynamic>() { { "key", "FFmpegExtractAudio" }, { "preferredcodec", _fileType.ToString().ToLower() } });
                     }
                     else if(_fileType.GetIsVideo())
                     {
@@ -187,7 +187,7 @@ public class Download
                             Quality.Good => "bv*[height<=720]+ba/b[height<=720]",
                             _ => "wv*+wa/w"
                         });
-                        postProcessors.Add(new Dictionary<string, dynamic>() { { "key", " FFmpegVideoConvertor" }, { "preferedformat", _fileType.ToString().ToLower() } });
+                        postProcessors.Add(new Dictionary<string, dynamic>() { { "key", "FFmpegVideoConvertor" }, { "preferedformat", _fileType.ToString().ToLower() } });
                         if(_subtitle != Subtitle.None)
                         {
                             ytOpt.Add("writesubtitles", true);
