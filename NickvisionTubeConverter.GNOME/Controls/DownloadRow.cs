@@ -158,33 +158,31 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
         _imgStatus.SetFromIconName("folder-download-symbolic");
         _viewStackState.SetVisibleChildName("downloading");
         _progLabel.SetText(_localizer["DownloadState", "Preparing"]);
-        var success = await _download.RunAsync(embedMetadata, new Progress<DownloadProgress>((x) =>
+        _lblFilename.SetText(_download.Filename);
+        var success = await _download.RunAsync(embedMetadata, (state) =>
         {
-            _lastProgress = x;
-            _lblFilename.SetText(_download.Filename);
-            switch (x.State)
+            switch (state["status"])
             {
-                case DownloadState.PreProcessing:
-                case DownloadState.PostProcessing:
-                    _processingCallback = (d) =>
-                    {
-                        _progBar.Pulse();
-                        _progLabel.SetText(_localizer["DownloadState", "Processing"]);
-                        return _lastProgress.State == DownloadState.PreProcessing || _lastProgress.State == DownloadState.PostProcessing;
-                    };
-                    g_timeout_add(30, _processingCallback, 0);
-                    break;
-                case DownloadState.Downloading:
+                case "downloading":
                     _downloadingCallback = (d) =>
                     {
-                        _progBar.SetFraction(x.Progress);
-                        _progLabel.SetText(string.Format(_localizer["DownloadState", "Downloading"], x.Progress * 100, x.DownloadSpeed));
+                        _progBar.SetFraction(Convert.ToDouble(state["progress"]));
+                        _progLabel.SetText(string.Format(_localizer["DownloadState", "Downloading"], Convert.ToDouble(state["progress"]) * 100, state["speed"]));
                         return false;
                     };
                     g_idle_add(_downloadingCallback, 0);
                     break;
+                default:
+                    _processingCallback = (d) =>
+                    {
+                        _progBar.Pulse();
+                        _progLabel.SetText(_localizer["DownloadState", "Processing"]);
+                        return state["status"] == "processing";
+                    };
+                    g_timeout_add(30, _processingCallback, 0);
+                    break;
             }
-        }));
+        });
         _imgStatus.RemoveCssClass("accent");
         _imgStatus.AddCssClass(success ? "success" : "error");
         _imgStatus.SetFromIconName(success ? "emblem-ok-symbolic" : "process-stop-symbolic");

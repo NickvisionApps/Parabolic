@@ -3,7 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using YoutubeDLSharp;
 
 namespace NickvisionTubeConverter.Shared.Models;
 
@@ -53,6 +52,8 @@ public class Download
     /// Whether or not the download has completed
     /// </summary>
     public bool IsDone { get; private set; }
+
+    private Action<Dictionary<string, string>>? _progressCallback;
 
     /// <summary>
     /// Constructs a Download
@@ -129,76 +130,80 @@ public class Download
         
     }
 
+    private void YtdlpHook(Python.Runtime.PyDict entries)
+    {
+        using (Python.Runtime.Py.GIL())
+        {
+            var result = new Dictionary<string, string> {};
+            result.Add("status", entries["status"].As<string>());
+            if (entries.HasKey("downloaded_bytes"))
+            {
+                var progress = entries["downloaded_bytes"].As<double>() / entries["total_bytes"].As<double>();
+                result.Add("progress", progress.ToString());
+            }
+            try // entries["speed"] is None if speed is unknown
+            {
+                result.Add("speed", entries["speed"].As<double>().ToString());
+            }
+            catch
+            {
+                result.Add("speed", "0");
+            }
+            _progressCallback(result);
+        }
+    }
+
     /// <summary>
     /// Runs the download
     /// </summary>
     /// <param name="embedMetadata">Whether or not to embed video metadata in the downloaded file</param>
     /// <param name="progressCallback">A callback function for DownloadProgresss</param>
     /// <returns>True if successful, else false</returns>
-    public async Task<bool> RunAsync(bool embedMetadata, Progress<DownloadProgress>? progressCallback = null)
+    public async Task<bool> RunAsync(bool embedMetadata, Action<Dictionary<string, string>>? progressCallback = null)
     {
-        IsDone = false;
-        _cancellationToken = new CancellationTokenSource();
-        /*
-        var ytdlp = new YoutubeDL()
+        _progressCallback = progressCallback;
+        return await Task.Run(() =>
         {
-            YoutubeDLPath = "",
-            FFmpegPath = DependencyManager.Ffmpeg,
-            OutputFolder = SaveFolder,
-            OutputFileTemplate = Filename
-        };
-        var embedThumbnail = embedMetadata && _fileType.GetSupportsThumbnails();
-        RunResult<string>? result = null;
-        if (_filetype.getisaudio())
-        {
-            try
+            IsDone = false;
+            _cancellationToken = new CancellationTokenSource();
+            using (Python.Runtime.Py.GIL())
             {
-                result = await ytdlp.runaudiodownload(videourl, _filetype switch
+                dynamic ytdlp = Python.Runtime.Py.Import("yt_dlp");
+                var hooks = new List<Action<Python.Runtime.PyDict>> {};
+                hooks.Add(YtdlpHook);
+                var ytOpt = new Dictionary<string, dynamic> {
+                    {"quiet", true},
+                    {"ignoreerrors", "downloadonly"},
+                    {"merge_output_format", "mp4/webm/mp3/opus/flac/wav"},
+                    {"progress_hooks", hooks},
+                    {"postprocessor_hooks", hooks}
+                };
+                if (_fileType.GetIsAudio())
                 {
-                    mediafiletype.mp3 => audioconversionformat.mp3,
-                    mediafiletype.opus => audioconversionformat.opus,
-                    mediafiletype.flac => audioconversionformat.flac,
-                    mediafiletype.wav => audioconversionformat.wav,
-                    _ => audioconversionformat.best
-                }, _cancellationtoken.token, progresscallback, null, new optionset()
+                    ytOpt.Add("format", "ba/b");
+                }
+                else if (_fileType == MediaFileType.MP4)
                 {
-                    embedmetadata = embedmetadata,
-                    embedthumbnail = embedthumbnail,
-                    audioquality = _quality == quality.best ? (byte)0 : (_quality == quality.good ? (byte)5 : (byte)10)
-                });
+                    ytOpt.Add("format", "bv[ext=mp4]+ba[ext=m4a]/b[ext=mp4]");
+                }
+                else
+                {
+                    ytOpt.Add("format", "bv+ba/b");
+                }
+                try
+                {
+                    ytdlp.YoutubeDL(ytOpt).download(new string[1] {VideoUrl});
+                    IsDone = true;
+                    return true;
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                    IsDone = true;
+                    return false;
+                }
             }
-            catch (taskcanceledexception e) { }
-        }
-        else if (_filetype.getisvideo())
-        {
-            try
-            {
-                result = await ytdlp.runvideodownload(videourl, _quality == quality.best ? "bv*+ba/b" : (_quality == quality.good ? "bv*[height<=720]+ba/b[height<=720]" : "wv*+wa/w"), downloadmergeformat.unspecified, _filetype switch
-                {
-                    mediafiletype.mp4 => videorecodeformat.mp4,
-                    mediafiletype.webm => videorecodeformat.webm,
-                    _ => videorecodeformat.none
-                }, _cancellationtoken.token, progresscallback, null, new optionset()
-                {
-                    embedmetadata = embedmetadata,
-                    embedthumbnail = embedthumbnail,
-                    embedsubs = _subtitle != subtitle.none,
-                    writeautosubs = _subtitle != subtitle.none && (await ytdlp.runvideodatafetch(videourl)).data.subtitles.count == 0,
-                    subformat = _subtitle == subtitle.none ? "" : (_subtitle == subtitle.srt ? "srt" : "vtt"),
-                    sublangs = _subtitle == subtitle.none ? "" : "all"
-                });
-            }
-            catch (taskcanceledexception e) { }
-        }
-        isdone = true;
-        _cancellationtoken.dispose();
-        _cancellationtoken = null;
-        if (result != null)
-        {
-            return result.success;
-        }
-        */
-        return false;
+        });
     }
 
     /// <summary>
