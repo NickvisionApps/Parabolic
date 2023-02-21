@@ -1,6 +1,7 @@
 ﻿using NickvisionTubeConverter.Shared.Helpers;
 using System;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -157,27 +158,30 @@ public class Download
                         { "ignoreerrors", "downloadonly" },
                         { "merge_output_format", "mp4/webm/mp3/opus/flac/wav" },
                         { "progress_hooks", hooks },
-                        { "postprocessor_hooks", hooks }
+                        { "postprocessor_hooks", hooks },
+                        { "paths", new Dictionary<string, dynamic>() { { "home", SaveFolder } } },
+                        { "outtmpl", new Dictionary<string, dynamic>() { { "default", Filename } } }
                     };
                     var postProcessors = new List<Dictionary<string, dynamic>>();
-                    if(embedMetadata)
+                    if(RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
                     {
-                        postProcessors.Add(new Dictionary<string, dynamic>() { { "key", "EmbedThumbnail" } });
-                        postProcessors.Add(new Dictionary<string, dynamic>() { { "key", "FFmpegMetadata" }, { "add_metadata", true } });
+                        ytOpt.Add("ffmpeg_location", DependencyManager.Ffmpeg);
+                        ytOpt.Add("windowsfilenames", true);
                     }
-                    if(postProcessors.Count == 0)
+                    if (embedMetadata)
                     {
-                        ytOpt.Add("postprocessors", postProcessors);
+                        if(_fileType.GetSupportsThumbnails())
+                        {
+                            postProcessors.Add(new Dictionary<string, dynamic>() { { "key", "EmbedThumbnail" } });
+                        }
+                        postProcessors.Add(new Dictionary<string, dynamic>() { { "key", "FFmpegMetadata" }, { "add_metadata", true } });
                     }
                     if (_fileType.GetIsAudio())
                     {
                         ytOpt.Add("format", _quality != Quality.Worst ? "ba/b" : "wa/w");
+                        postProcessors.Add(new Dictionary<string, dynamic>() { { "key", " FFmpegExtractAudio" }, { "preferredcodec", _fileType.ToString().ToLower() } });
                     }
-                    else if (_fileType == MediaFileType.MP4)
-                    {
-                        ytOpt.Add("format", "bv[ext=mp4]+ba[ext=m4a]/b[ext=mp4]");
-                    }
-                    else
+                    else if(_fileType.GetIsVideo())
                     {
                         ytOpt.Add("format", _quality switch
                         {
@@ -185,6 +189,19 @@ public class Download
                             Quality.Good => "bv*[height<=720]+ba/b[height<=720]",
                             _ => "wv*+wa/w"
                         });
+                        postProcessors.Add(new Dictionary<string, dynamic>() { { "key", " FFmpegVideoConvertor" }, { "preferedformat", _fileType.ToString().ToLower() } });
+                        if(_subtitle != Subtitle.None)
+                        {
+                            ytOpt.Add("writesubtitles", true);
+                            ytOpt.Add("writeautomaticsub", true);
+                            ytOpt.Add("allsubtitles", true);
+                            postProcessors.Add(new Dictionary<string, dynamic>() { { "key", "FFmpegSubtitlesConvertor" }, { "format", _subtitle.ToString().ToLower() } });
+                            postProcessors.Add(new Dictionary<string, dynamic>() { { "key", "FFmpegEmbedSubtitle" } });
+                        }
+                    }
+                    if (postProcessors.Count == 0)
+                    {
+                        ytOpt.Add("postprocessors", postProcessors);
                     }
                     try
                     {
