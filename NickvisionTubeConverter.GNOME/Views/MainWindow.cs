@@ -81,6 +81,7 @@ public partial class MainWindow
         _btnMenuHelp.SetDirection(Gtk.ArrowType.None);
         _btnMenuHelp.SetMenuModel(menuHelp);
         _btnMenuHelp.SetTooltipText(_controller.Localizer["MainMenu", "GTK"]);
+        _btnMenuHelp.SetPrimary(true);
         _headerBar.PackEnd(_btnMenuHelp);
         //Toast Overlay
         _toastOverlay = Adw.ToastOverlay.New();
@@ -178,11 +179,6 @@ public partial class MainWindow
         actQuit.OnActivate += Quit;
         Handle.AddAction(actQuit);
         application.SetAccelsForAction("win.quit", new string[] { "<Ctrl>q", "<Ctrl>w" });
-        //Primary Menu Action
-        var actPrimaryMenu = Gio.SimpleAction.New("primaryMenu", null);
-        actPrimaryMenu.OnActivate += (sender, e) => _btnMenuHelp.Popup();
-        Handle.AddAction(actPrimaryMenu);
-        application.SetAccelsForAction("win.primaryMenu", new string[] { "F10" });
         //About Action
         var actAbout = Gio.SimpleAction.New("about", null);
         actAbout.OnActivate += About;
