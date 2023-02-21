@@ -213,7 +213,7 @@ public partial class AddDownloadDialog
         _rowVideoUrl.SetTitle(_controller.Localizer["VideoUrl", "Field"]);
         _rowSavePath.RemoveCssClass("error");
         _rowSavePath.SetTitle(_controller.Localizer["SavePath", "Field"]);
-        _rowSavePath.SetText(_controller.GetSavePath());
+        _rowSavePath.SetText(_controller.SavePath);
         if (checkStatus == DownloadCheckStatus.Valid)
         {
             _dialog.SetResponseEnabled("ok", true);
