@@ -167,7 +167,7 @@ public class Download
                     }
                     if(postProcessors.Count == 0)
                     {
-                        ytOpt.Add("postprocessors", postProcessors)
+                        ytOpt.Add("postprocessors", postProcessors);
                     }
                     if (_fileType.GetIsAudio())
                     {
