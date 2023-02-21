@@ -217,7 +217,7 @@ public class Download
                         _ => DownloadProgressStatus.Other
                     },
                     Progress = entries.HasKey("downloaded_bytes") ? entries["downloaded_bytes"].As<double>() / entries["total_bytes"].As<double>() : 0,
-                    Speed = entries.HasKey("speed") ? entries["speed"].As<double?>() ?? 0 : 0
+                    Speed = entries.HasKey("speed") ? entries["speed"].As<double?>() / 1024f ?? 0 : 0
                 });
             }
 
