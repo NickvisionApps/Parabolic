@@ -163,7 +163,7 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
         {
             switch (state.Status)
             {
-                case ProgressStatus.Downloading:
+                case DownloadProgressStatus.Downloading:
                     _downloadingCallback = (d) =>
                     {
                         _progBar.SetFraction(state.Progress);
@@ -177,7 +177,7 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
                     {
                         _progBar.Pulse();
                         _progLabel.SetText(_localizer["DownloadState", "Processing"]);
-                        return state.Status == ProgressStatus.Processing;
+                        return state.Status == DownloadProgressStatus.Processing;
                     };
                     g_timeout_add(30, _processingCallback, 0);
                     break;
