@@ -162,13 +162,10 @@ public class Download
                         { "progress_hooks", hooks },
                         { "postprocessor_hooks", hooks },
                         { "outtmpl", $"{SaveFolder}{Path.DirectorySeparatorChar}{Path.GetFileNameWithoutExtension(Filename)}.%(ext)s" },
-                        { "ffmpeg_location", DependencyManager.Ffmpeg }
+                        { "ffmpeg_location", DependencyManager.Ffmpeg },
+                        { "windowsfilenames", RuntimeInformation.IsOSPlatform(OSPlatform.Windows) }
                     };
                     var postProcessors = new List<Dictionary<string, dynamic>>();
-                    if(RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-                    {
-                        ytOpt.Add("windowsfilenames", true);
-                    }
                     if (embedMetadata)
                     {
                         if(_fileType.GetSupportsThumbnails())
@@ -200,7 +197,7 @@ public class Download
                             postProcessors.Add(new Dictionary<string, dynamic>() { { "key", "FFmpegEmbedSubtitle" } });
                         }
                     }
-                    if (postProcessors.Count == 0)
+                    if (postProcessors.Count != 0)
                     {
                         ytOpt.Add("postprocessors", postProcessors);
                     }
