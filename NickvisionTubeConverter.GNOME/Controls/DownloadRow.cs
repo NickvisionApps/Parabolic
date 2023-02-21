@@ -1,10 +1,8 @@
 using NickvisionTubeConverter.Shared.Controls;
 using NickvisionTubeConverter.Shared.Helpers;
 using NickvisionTubeConverter.Shared.Models;
-using System;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
-using YoutubeDLSharp;
 
 namespace NickvisionTubeConverter.GNOME.Controls;
 
@@ -40,7 +38,6 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
     private readonly Gtk.Button _btnCancel;
     private readonly Gtk.Button _btnOpenFolder;
     private readonly Gtk.Button _btnRetry;
-    private DownloadProgress? _lastProgress;
     private GSourceFunc? _processingCallback;
     private GSourceFunc? _downloadingCallback;
 
