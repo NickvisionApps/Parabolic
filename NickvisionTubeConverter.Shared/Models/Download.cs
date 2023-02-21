@@ -198,25 +198,29 @@ public class Download
     /// </summary>
     public void Stop() => _cancellationToken?.Cancel();
 
+    /// <summary>
+    /// Handles progress of the download
+    /// </summary>
+    /// <param name="entries">Python.Runtime.PyDict</param>
     private void ProgressHook(Python.Runtime.PyDict entries)
     {
-        using (Python.Runtime.Py.GIL())
+        if (_progressCallback != null)
         {
-            var result = new DownloadProgressState()
+            using (Python.Runtime.Py.GIL())
             {
-                Status = entries["status"].As<string>() switch
+                _progressCallback(new DownloadProgressState()
                 {
-                    "processing" => ProgressStatus.Processing,
-                    "downloading" => ProgressStatus.Downloading,
-                    _ => ProgressStatus.Other
-                },
-                Progress = entries.HasKey("downloaded_bytes") ? entries["downloaded_bytes"].As<double>() / entries["total_bytes"].As<double>() : 0,
-                Speed = entries.HasKey("speed") ? entries["speed"].As<double>() : 0
-            };
-            if (_progressCallback != null)
-            {
-                _progressCallback(result);
+                    Status = entries["status"].As<string>() switch
+                    {
+                        "processing" => DownloadProgressStatus.Processing,
+                        "downloading" => DownloadProgressStatus.Downloading,
+                        _ => DownloadProgressStatus.Other
+                    },
+                    Progress = entries.HasKey("downloaded_bytes") ? entries["downloaded_bytes"].As<double>() / entries["total_bytes"].As<double>() : 0,
+                    Speed = entries.HasKey("speed") ? entries["speed"].As<double?>() ?? 0 : 0
+                });
             }
+
         }
     }
 }
