@@ -1,6 +1,7 @@
 ﻿using NickvisionTubeConverter.Shared.Helpers;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Threading.Tasks;
@@ -160,8 +161,7 @@ public class Download
                         { "final_ext", _fileType.ToString().ToLower() },
                         { "progress_hooks", hooks },
                         { "postprocessor_hooks", hooks },
-                        { "paths", new Dictionary<string, dynamic>() { { "home", SaveFolder } } },
-                        { "outtmpl", new Dictionary<string, dynamic>() { { "default", Filename } } }
+                        { "outtmpl", $"{SaveFolder}{Path.DirectorySeparatorChar}{Path.GetFileNameWithoutExtension(Filename)}.%(ext)s" }
                     };
                     var postProcessors = new List<Dictionary<string, dynamic>>();
                     if(RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
