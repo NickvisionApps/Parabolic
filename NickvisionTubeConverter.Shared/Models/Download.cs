@@ -161,7 +161,7 @@ public class Download
                     };
                     if (_fileType.GetIsAudio())
                     {
-                        ytOpt.Add("format", "ba/b");
+                        ytOpt.Add("format", _quality != Quality.Worst ? "ba/b" : "wa/w");
                     }
                     else if (_fileType == MediaFileType.MP4)
                     {
@@ -169,7 +169,12 @@ public class Download
                     }
                     else
                     {
-                        ytOpt.Add("format", "bv+ba/b");
+                        ytOpt.Add("format", _quality switch
+                        {
+                            Quality.Best => "bv+ba/b",
+                            Quality.Good => "bv*[height<=720]+ba/b[height<=720]",
+                            _ => "wv*+wa/w"
+                        });
                     }
                     try
                     {
