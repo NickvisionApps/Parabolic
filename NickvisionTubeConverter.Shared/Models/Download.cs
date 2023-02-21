@@ -153,12 +153,22 @@ public class Download
                     var hooks = new List<Action<Python.Runtime.PyDict>> { };
                     hooks.Add(ProgressHook);
                     var ytOpt = new Dictionary<string, dynamic> {
-                        {"quiet", true},
-                        {"ignoreerrors", "downloadonly"},
-                        {"merge_output_format", "mp4/webm/mp3/opus/flac/wav"},
-                        {"progress_hooks", hooks},
-                        {"postprocessor_hooks", hooks}
+                        { "quiet", true },
+                        { "ignoreerrors", "downloadonly" },
+                        { "merge_output_format", "mp4/webm/mp3/opus/flac/wav" },
+                        { "progress_hooks", hooks },
+                        { "postprocessor_hooks", hooks }
                     };
+                    var postProcessors = new List<Dictionary<string, dynamic>>();
+                    if(embedMetadata)
+                    {
+                        postProcessors.Add(new Dictionary<string, dynamic>() { { "key", "EmbedThumbnail" } });
+                        postProcessors.Add(new Dictionary<string, dynamic>() { { "key", "FFmpegMetadata" }, { "add_metadata", true } });
+                    }
+                    if(postProcessors.Count == 0)
+                    {
+                        ytOpt.Add("postprocessors", postProcessors)
+                    }
                     if (_fileType.GetIsAudio())
                     {
                         ytOpt.Add("format", _quality != Quality.Worst ? "ba/b" : "wa/w");
