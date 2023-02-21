@@ -205,10 +205,6 @@ public partial class AddDownloadDialog
         _rowSubtitle.SetSensitive(false);
         var checkStatus = await _controller.UpdateDownloadAsync(_rowVideoUrl.GetText(), (MediaFileType)_rowFileType.GetSelected(), _rowSavePath.GetText(), (Quality)_rowQuality.GetSelected(), (Subtitle)_rowSubtitle.GetSelected());
         _spinnerVideoUrl.Stop();
-        _rowFileType.SetSensitive(true);
-        _rowSavePath.SetSensitive(true);
-        _rowQuality.SetSensitive(true);
-        _rowSubtitle.SetSensitive(((MediaFileType)_rowFileType.GetSelected()).GetIsVideo());
         _rowVideoUrl.RemoveCssClass("error");
         _rowVideoUrl.SetTitle(_controller.Localizer["VideoUrl", "Field"]);
         _rowSavePath.RemoveCssClass("error");
@@ -216,6 +212,10 @@ public partial class AddDownloadDialog
         _rowSavePath.SetText(_controller.SavePath);
         if (checkStatus == DownloadCheckStatus.Valid)
         {
+            _rowFileType.SetSensitive(true);
+            _rowSavePath.SetSensitive(true);
+            _rowQuality.SetSensitive(true);
+            _rowSubtitle.SetSensitive(((MediaFileType)_rowFileType.GetSelected()).GetIsVideo());
             _dialog.SetResponseEnabled("ok", true);
         }
         else
@@ -234,6 +234,10 @@ public partial class AddDownloadDialog
             {
                 _rowSavePath.AddCssClass("error");
                 _rowSavePath.SetTitle(_controller.Localizer["SavePath", "Invalid"]);
+                _rowFileType.SetSensitive(true);
+                _rowSavePath.SetSensitive(true);
+                _rowQuality.SetSensitive(true);
+                _rowSubtitle.SetSensitive(((MediaFileType)_rowFileType.GetSelected()).GetIsVideo());
             }
             _dialog.SetResponseEnabled("ok", false);
         }
