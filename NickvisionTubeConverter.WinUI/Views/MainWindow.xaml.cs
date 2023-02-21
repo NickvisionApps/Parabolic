@@ -232,7 +232,6 @@ public sealed partial class MainWindow : Window
     /// <param name="e">RoutedEventArgs</param>
     private async void AddDownload(object sender, RoutedEventArgs e)
     {
-        var valid = await Download.GetIsValidVideoUrlAsync("https://www.youtube.com/watch?v=7emz4zZ226E&ab_channel=MarquesBrownlee");
-        NotificationSent(sender, new NotificationSentEventArgs(valid ? "Done" : "Error", valid ? NotificationSeverity.Success : NotificationSeverity.Error));
+        
     }
 }
