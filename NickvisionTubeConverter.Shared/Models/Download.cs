@@ -180,13 +180,25 @@ public class Download
                     }
                     else if (_fileType.GetIsVideo())
                     {
-                        ytOpt.Add("format", _quality switch
+                        if(_fileType == MediaFileType.MP4)
                         {
-                            Quality.Best => "bv+ba/b",
-                            Quality.Good => "bv*[height<=720]+ba/b[height<=720]",
-                            _ => "wv*+wa/w"
-                        });
-                        postProcessors.Add(new Dictionary<string, dynamic>() { { "key", "FFmpegVideoConvertor" }, { "preferedformat", _fileType.ToString().ToLower() } });
+                            ytOpt.Add("format", _quality switch
+                            {
+                                Quality.Best => "bv*[ext=mp4]+ba[ext=m4a]/b[ext=mp4] / bv*+ba/b",
+                                Quality.Good => "bv*[ext=mp4][height<=720]+ba[ext=m4a]/b[ext=mp4][height<=720] / bv*[height<=720]+ba/b[height<=720]",
+                                _ => "wv[ext=mp4]*+wa[ext=m4a]/w[ext=mp4] / wv*+wa/w"
+                            });
+                        }
+                        else
+                        {
+                            ytOpt.Add("format", _quality switch
+                            {
+                                Quality.Best => "bv*+ba/b",
+                                Quality.Good => "bv*[height<=720]+ba/b[height<=720]",
+                                _ => "wv*+wa/w"
+                            });
+                        }
+                        postProcessors.Add(new Dictionary<string, dynamic>() { { "key", "FFmpegVideoRemuxer" }, { "preferedformat", _fileType.ToString().ToLower() } });
                         if (_subtitle != Subtitle.None)
                         {
                             ytOpt.Add("writesubtitles", true);
