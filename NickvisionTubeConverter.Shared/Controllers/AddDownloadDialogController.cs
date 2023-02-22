@@ -23,7 +23,6 @@ public enum DownloadCheckStatus
 public class AddDownloadDialogController
 {
     private string? _previousUrl;
-    private bool _previousUrlValid;
     private string _saveFolder;
     private string _saveFilename;
 
@@ -59,7 +58,6 @@ public class AddDownloadDialogController
     public AddDownloadDialogController(Localizer localizer)
     {
         _previousUrl = null;
-        _previousUrlValid = false;
         _saveFolder = "";
         _saveFilename = "";
         Localizer = localizer;
@@ -96,7 +94,7 @@ public class AddDownloadDialogController
         {
             result |= DownloadCheckStatus.EmptyVideoUrl;
         }
-        else if (_previousUrl != videoUrl || !_previousUrlValid)
+        else if(_previousUrl != videoUrl)
         {
             _previousUrl = videoUrl;
             if (!(await Download.GetIsValidVideoUrlAsync(videoUrl)))
@@ -105,7 +103,6 @@ public class AddDownloadDialogController
             }
             else
             {
-                _previousUrlValid = true;
                 _saveFilename = (await Download.GetVideoTitleAsync(videoUrl)) + mediaFileType.GetDotExtension();
             }
         }
