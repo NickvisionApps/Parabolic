@@ -27,7 +27,7 @@ public static class MediaFileTypeHelpers
     /// <returns>The MediaFileType or null if failed</returns>
     public static MediaFileType? Parse(string s)
     {
-        if(s.IndexOf('.') != -1)
+        if (s.IndexOf('.') != -1)
         {
             s = s.Remove(s.IndexOf('.'), 1);
         }
@@ -78,7 +78,7 @@ public static class MediaFileTypeHelpers
         MediaFileType.FLAC => false,
         MediaFileType.WAV => false,
         _ => false
-    };    
+    };
 
     /// <summary>
     /// Gets whether or not the MediaFileType supports embedding thumbnails

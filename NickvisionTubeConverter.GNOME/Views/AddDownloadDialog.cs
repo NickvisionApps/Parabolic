@@ -149,7 +149,8 @@ public partial class AddDownloadDialog
         _rowSavePath.AddSuffix(_btnSaveWarning);
         _rowSavePath.AddSuffix(_btnSelectSavePath);
         _rowSavePath.SetEditable(false);
-        _rowSavePath.OnNotify += (sender, e) => {
+        _rowSavePath.OnNotify += (sender, e) =>
+        {
             if (e.Pspec.GetName() == "text")
             {
                 _btnSaveWarning.SetVisible(Regex.Match(_rowSavePath.GetText(), @"^\/run\/user\/.*\/doc\/.*").Success);
@@ -162,7 +163,7 @@ public partial class AddDownloadDialog
         _rowVideoUrl.AddCssClass("error");
         _rowVideoUrl.SetTitle(_controller.Localizer["VideoUrl", "Empty"]);
         _rowFileType.SetSelected((uint)_controller.PreviousMediaFileType);
-        if(string.IsNullOrEmpty(_rowSavePath.GetText()))
+        if (string.IsNullOrEmpty(_rowSavePath.GetText()))
         {
             _rowSavePath.AddCssClass("error");
             _rowSavePath.SetTitle(_controller.Localizer["SavePath", "Invalid"]);
@@ -222,7 +223,7 @@ public partial class AddDownloadDialog
         }
         else
         {
-            if(checkStatus.HasFlag(DownloadCheckStatus.EmptyVideoUrl))
+            if (checkStatus.HasFlag(DownloadCheckStatus.EmptyVideoUrl))
             {
                 _rowVideoUrl.AddCssClass("error");
                 _rowVideoUrl.SetTitle(_controller.Localizer["VideoUrl", "Empty"]);

@@ -108,9 +108,9 @@ public class MainWindowController : IDisposable
     {
         get
         {
-            foreach(var row in _downloadRows)
+            foreach (var row in _downloadRows)
             {
-                if(!row.IsDone)
+                if (!row.IsDone)
                 {
                     return true;
                 }
@@ -184,7 +184,7 @@ public class MainWindowController : IDisposable
     /// </summary>
     public void StopDownloads()
     {
-        foreach(var row in _downloadRows)
+        foreach (var row in _downloadRows)
         {
             row.Stop();
         }

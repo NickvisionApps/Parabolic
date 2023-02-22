@@ -1,5 +1,5 @@
 using NickvisionTubeConverter.GNOME.Controls;
-﻿using NickvisionTubeConverter.Shared.Controllers;
+using NickvisionTubeConverter.Shared.Controllers;
 using NickvisionTubeConverter.Shared.Controls;
 using NickvisionTubeConverter.Shared.Events;
 using NickvisionTubeConverter.Shared.Models;
@@ -237,10 +237,10 @@ public partial class MainWindow
     /// <returns>True to stop close, else false</returns>
     private bool OnCloseRequested(Gtk.Window sender, EventArgs e)
     {
-        if(_controller.AreDownloadsRunning)
+        if (_controller.AreDownloadsRunning)
         {
             var closeDialog = new MessageDialog(Handle, _controller.Localizer["CloseAndStop", "Title"], _controller.Localizer["CloseAndStop", "Description"], _controller.Localizer["No"], _controller.Localizer["Yes"]);
-            if(closeDialog.Run() == MessageDialogResponse.Cancel)
+            if (closeDialog.Run() == MessageDialogResponse.Cancel)
             {
                 return true;
             }

@@ -146,7 +146,7 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
     /// <param name="embedMetadata">Whether or not to embed video metadata</param>
     public async Task StartAsync(bool embedMetadata)
     {
-        if(_previousEmbedMetadata == null)
+        if (_previousEmbedMetadata == null)
         {
             _previousEmbedMetadata = embedMetadata;
         }

@@ -96,7 +96,7 @@ public class AddDownloadDialogController
         {
             result |= DownloadCheckStatus.EmptyVideoUrl;
         }
-        else if(_previousUrl != videoUrl || !_previousUrlValid)
+        else if (_previousUrl != videoUrl || !_previousUrlValid)
         {
             _previousUrl = videoUrl;
             if (!(await Download.GetIsValidVideoUrlAsync(videoUrl)))

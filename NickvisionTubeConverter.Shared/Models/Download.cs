@@ -97,7 +97,7 @@ public class Download
                 }
                 return true;
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 Console.WriteLine(e.Message);
                 return false;
@@ -124,14 +124,13 @@ public class Download
                     title = ytdlp.YoutubeDL(ytOpt).extract_info(url, download: false)["title"];
                 }
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 Console.WriteLine(e.Message);
                 title = "video";
             }
             return title;
         });
-        
     }
 
     /// <summary>
@@ -168,7 +167,7 @@ public class Download
                     var postProcessors = new List<Dictionary<string, dynamic>>();
                     if (embedMetadata)
                     {
-                        if(_fileType.GetSupportsThumbnails())
+                        if (_fileType.GetSupportsThumbnails())
                         {
                             postProcessors.Add(new Dictionary<string, dynamic>() { { "key", "EmbedThumbnail" } });
                         }
@@ -179,7 +178,7 @@ public class Download
                         ytOpt.Add("format", _quality != Quality.Worst ? "ba/b" : "wa/w");
                         postProcessors.Add(new Dictionary<string, dynamic>() { { "key", "FFmpegExtractAudio" }, { "preferredcodec", _fileType.ToString().ToLower() } });
                     }
-                    else if(_fileType.GetIsVideo())
+                    else if (_fileType.GetIsVideo())
                     {
                         ytOpt.Add("format", _quality switch
                         {
@@ -188,7 +187,7 @@ public class Download
                             _ => "wv*+wa/w"
                         });
                         postProcessors.Add(new Dictionary<string, dynamic>() { { "key", "FFmpegVideoConvertor" }, { "preferedformat", _fileType.ToString().ToLower() } });
-                        if(_subtitle != Subtitle.None)
+                        if (_subtitle != Subtitle.None)
                         {
                             ytOpt.Add("writesubtitles", true);
                             ytOpt.Add("writeautomaticsub", true);
@@ -216,7 +215,7 @@ public class Download
                 }
             }, _cancellationToken.Token);
         }
-        catch(TaskCanceledException)
+        catch (TaskCanceledException)
         {
             IsDone = false;
             return false;
