@@ -269,7 +269,7 @@ public class Download
                 {
                     Status = entries["status"].As<string>() switch
                     {
-                        "started" or "processing" => DownloadProgressStatus.Processing,
+                        "started" or "finished" or "processing" => DownloadProgressStatus.Processing,
                         "downloading" => DownloadProgressStatus.Downloading,
                         _ => DownloadProgressStatus.Other
                     },

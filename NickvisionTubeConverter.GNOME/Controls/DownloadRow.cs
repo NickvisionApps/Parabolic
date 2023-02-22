@@ -177,7 +177,7 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
                     _processingCallback = (d) =>
                     {
                         _progBar.Pulse();
-                        return _progressStatus == DownloadProgressStatus.Processing;
+                        return _progressStatus == DownloadProgressStatus.Processing && !IsDone;
                     };
                     g_timeout_add(30, _processingCallback, 0);
                     break;
