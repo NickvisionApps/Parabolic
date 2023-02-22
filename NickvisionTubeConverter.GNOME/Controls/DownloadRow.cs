@@ -90,7 +90,6 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
         _viewStackState.AddNamed(_boxDownload, "downloading");
         //Download Progress Bar
         _progBar = Gtk.ProgressBar.New();
-        _progBar.SetPulseStep(0.01);
         _progBar.SetHexpand(true);
         _boxDownload.Append(_progBar);
         //Download Progress Label
@@ -171,14 +170,16 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
                     g_idle_add(_downloadingCallback, 0);
                     break;
                 default:
-                    _progBar.SetFraction(0.1);
-                    _processingCallback = (d) =>
+                    if (_processingCallback == null)
                     {
-                        _progBar.Pulse();
-                        _progLabel.SetText(_localizer["DownloadState", "Processing"]);
-                        return state.Status == DownloadProgressStatus.Processing;
-                    };
-                    g_timeout_add(10, _processingCallback, 0);
+                        _processingCallback = (d) =>
+                        {
+                            _progBar.Pulse();
+                            _progLabel.SetText(_localizer["DownloadState", "Processing"]);
+                            return !_download.IsDone;
+                        };
+                    }
+                    g_timeout_add(30, _processingCallback, 0);
                     break;
             }
         });
