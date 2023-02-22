@@ -38,6 +38,7 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
     private readonly Gtk.Button _btnCancel;
     private readonly Gtk.Button _btnOpenFolder;
     private readonly Gtk.Button _btnRetry;
+    private DownloadProgressStatus _progressStatus;
     private GSourceFunc? _processingCallback;
     private GSourceFunc? _downloadingCallback;
 
@@ -157,26 +158,12 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
         _progLabel.SetText(_localizer["DownloadState", "Preparing"]);
         _lblFilename.SetText(_download.Filename);
         _viewStackAction.SetVisibleChildName("cancel");
-        var bar_pulse = true;
-        if (_processingCallback == null)
-        {
-            _processingCallback = (d) =>
-            {
-                if (bar_pulse)
-                {
-                    _progBar.Pulse();
-                    _progLabel.SetText(_localizer["DownloadState", "Processing"]);
-                }
-                return !_download.IsDone;
-            };
-        }
-        g_timeout_add(30, _processingCallback, 0);
         var success = await _download.RunAsync(embedMetadata, (state) =>
         {
+            _progressStatus = state.Status;
             switch (state.Status)
             {
                 case DownloadProgressStatus.Downloading:
-                    bar_pulse = false;
                     _downloadingCallback = (d) =>
                     {
                         _progBar.SetFraction(state.Progress);
@@ -185,8 +172,14 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
                     };
                     g_idle_add(_downloadingCallback, 0);
                     break;
-                default:
-                    bar_pulse = true;
+                case DownloadProgressStatus.Processing:   
+                    _progLabel.SetText(_localizer["DownloadState", "Processing"]);
+                    _processingCallback = (d) =>
+                    {
+                        _progBar.Pulse();
+                        return _progressStatus == DownloadProgressStatus.Processing;
+                    };
+                    g_timeout_add(30, _processingCallback, 0);
                     break;
             }
         });
