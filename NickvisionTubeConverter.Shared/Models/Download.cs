@@ -1,6 +1,7 @@
 ﻿using NickvisionTubeConverter.Shared.Helpers;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
@@ -217,7 +218,7 @@ public class Download
                         {
                             ytOpt.Add("writesubtitles", true);
                             ytOpt.Add("writeautomaticsub", true);
-                            ytOpt.Add("allsubtitles", true);
+                            ytOpt.Add("subtitleslangs", new List<string> {"en", CultureInfo.CurrentCulture.TwoLetterISOLanguageName});
                             postProcessors.Add(new Dictionary<string, dynamic>() { { "key", "FFmpegSubtitlesConvertor" }, { "format", _subtitle.ToString().ToLower() } });
                             postProcessors.Add(new Dictionary<string, dynamic>() { { "key", "FFmpegEmbedSubtitle" } });
                         }
@@ -271,8 +272,8 @@ public class Download
                         "downloading" => DownloadProgressStatus.Downloading,
                         _ => DownloadProgressStatus.Other
                     },
-                    Progress = entries.HasKey("downloaded_bytes") ? entries["downloaded_bytes"].As<double>() / entries["total_bytes"].As<double>() : 0,
-                    Speed = entries.HasKey("speed") ? entries["speed"].As<double?>() / 1024f ?? 0 : 0
+                    Progress = entries.HasKey("downloaded_bytes") ? (entries["downloaded_bytes"].As<double?>() ?? 0) / (entries["total_bytes"].As<double?>() ?? 1) : 0,
+                    Speed = entries.HasKey("speed") ? (entries["speed"].As<double?>() ?? 0) / 1024f : 0
                 });
             }
 
