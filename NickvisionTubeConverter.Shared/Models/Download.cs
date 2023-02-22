@@ -150,6 +150,7 @@ public class Download
     {
         _progressCallback = progressCallback;
         _cancellationToken = new CancellationTokenSource();
+        var pythonThread = ulong.MinValue;
         try
         {
             IsDone = false;
@@ -161,6 +162,7 @@ public class Download
             {
                 using (Python.Runtime.Py.GIL())
                 {
+                    pythonThread = Python.Runtime.PythonEngine.GetPythonThreadID();
                     dynamic ytdlp = Python.Runtime.Py.Import("yt_dlp");
                     var hooks = new List<Action<Python.Runtime.PyDict>> { };
                     hooks.Add(ProgressHook);
@@ -242,6 +244,7 @@ public class Download
         }
         catch (TaskCanceledException)
         {
+            Python.Runtime.PythonEngine.Interrupt(pythonThread);
             IsDone = false;
             return false;
         }
