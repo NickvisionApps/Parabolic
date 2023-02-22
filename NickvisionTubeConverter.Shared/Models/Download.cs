@@ -177,14 +177,6 @@ public class Download
                         { "encoding", "utf_8" }
                     };
                     var postProcessors = new List<Dictionary<string, dynamic>>();
-                    if (embedMetadata)
-                    {
-                        if (_fileType.GetSupportsThumbnails())
-                        {
-                            postProcessors.Add(new Dictionary<string, dynamic>() { { "key", "EmbedThumbnail" } });
-                        }
-                        postProcessors.Add(new Dictionary<string, dynamic>() { { "key", "FFmpegMetadata" }, { "add_metadata", true } });
-                    }
                     if (_fileType.GetIsAudio())
                     {
                         ytOpt.Add("format", _quality != Quality.Worst ? "ba/b" : "wa/w");
@@ -219,6 +211,15 @@ public class Download
                             postProcessors.Add(new Dictionary<string, dynamic>() { { "key", "FFmpegSubtitlesConvertor" }, { "format", _subtitle.ToString().ToLower() } });
                             postProcessors.Add(new Dictionary<string, dynamic>() { { "key", "FFmpegEmbedSubtitle" } });
                         }
+                    }
+                    if (embedMetadata)
+                    {
+                        if (_fileType.GetSupportsThumbnails())
+                        {
+                            ytOpt.Add("writethumbnail", true);
+                            postProcessors.Add(new Dictionary<string, dynamic>() { { "key", "EmbedThumbnail" } });
+                        }
+                        postProcessors.Add(new Dictionary<string, dynamic>() { { "key", "FFmpegMetadata" }, { "add_metadata", true } });
                     }
                     if (postProcessors.Count != 0)
                     {
