@@ -156,7 +156,7 @@ public class Download
                     var ytOpt = new Dictionary<string, dynamic> {
                         { "quiet", true },
                         { "ignoreerrors", "downloadonly" },
-                        { "merge_output_format", "/" },
+                        { "merge_output_format", "mp4/webm/mp3/opus/flac/wav" },
                         { "final_ext", _fileType.ToString().ToLower() },
                         { "progress_hooks", hooks },
                         { "postprocessor_hooks", hooks },
