@@ -156,11 +156,26 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
         _viewStackState.SetVisibleChildName("downloading");
         _progLabel.SetText(_localizer["DownloadState", "Preparing"]);
         _lblFilename.SetText(_download.Filename);
+        var bar_pulse = true;
+        if (_processingCallback == null)
+        {
+            _processingCallback = (d) =>
+            {
+                if (bar_pulse)
+                {
+                    _progBar.Pulse();
+                    _progLabel.SetText(_localizer["DownloadState", "Processing"]);
+                }
+                return !_download.IsDone;
+            };
+        }
+        g_timeout_add(30, _processingCallback, 0);
         var success = await _download.RunAsync(embedMetadata, (state) =>
         {
             switch (state.Status)
             {
                 case DownloadProgressStatus.Downloading:
+                    bar_pulse = false;
                     _downloadingCallback = (d) =>
                     {
                         _progBar.SetFraction(state.Progress);
@@ -170,16 +185,7 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
                     g_idle_add(_downloadingCallback, 0);
                     break;
                 default:
-                    if (_processingCallback == null)
-                    {
-                        _processingCallback = (d) =>
-                        {
-                            _progBar.Pulse();
-                            _progLabel.SetText(_localizer["DownloadState", "Processing"]);
-                            return !_download.IsDone;
-                        };
-                    }
-                    g_timeout_add(30, _processingCallback, 0);
+                    bar_pulse = true;
                     break;
             }
         });
