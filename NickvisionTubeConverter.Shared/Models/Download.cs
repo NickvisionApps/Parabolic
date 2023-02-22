@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Runtime.InteropServices;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -92,7 +93,10 @@ public class Download
                 using (Python.Runtime.Py.GIL())
                 {
                     dynamic ytdlp = Python.Runtime.Py.Import("yt_dlp");
-                    var ytOpt = new Dictionary<string, dynamic>() { { "quiet", true }, { "merge_output_format", "/" } };
+                    var ytOpt = new Dictionary<string, dynamic>() { 
+                        { "quiet", true }, 
+                        { "merge_output_format", "/" } 
+                    };
                     ytdlp.YoutubeDL(ytOpt).extract_info(url, download: false);
                 }
                 return true;
@@ -120,7 +124,10 @@ public class Download
                 using (Python.Runtime.Py.GIL())
                 {
                     dynamic ytdlp = Python.Runtime.Py.Import("yt_dlp");
-                    var ytOpt = new Dictionary<string, dynamic>() { { "quiet", true }, { "merge_output_format", "/" } };
+                    var ytOpt = new Dictionary<string, dynamic>() { 
+                        { "quiet", true }, 
+                        { "merge_output_format", "/" } 
+                    };
                     title = ytdlp.YoutubeDL(ytOpt).extract_info(url, download: false)["title"];
                 }
             }
@@ -165,6 +172,12 @@ public class Download
                         { "windowsfilenames", RuntimeInformation.IsOSPlatform(OSPlatform.Windows) },
                         { "encoding", "utf_8" }
                     };
+                    if(RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+                    {
+                        dynamic sys = Python.Runtime.Py.Import("sys");
+                        var pathToOutput = $"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}{Path.DirectorySeparatorChar}Nickvision{Path.DirectorySeparatorChar}{AppInfo.Current.Name}{Path.DirectorySeparatorChar}output.txt";
+                        sys.stdout = Python.Runtime.PythonEngine.Eval($"open(\"{Regex.Replace(pathToOutput, @"\\", @"\\")}\", \"w\")");
+                    }
                     var postProcessors = new List<Dictionary<string, dynamic>>();
                     if (embedMetadata)
                     {
