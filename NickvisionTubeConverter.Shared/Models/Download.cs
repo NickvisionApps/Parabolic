@@ -229,9 +229,9 @@ public class Download
                     }
                     try
                     {
-                        ytdlp.YoutubeDL(ytOpt).download(new List<string>() { VideoUrl });
+                        Python.Runtime.PyObject success_code = ytdlp.YoutubeDL(ytOpt).download(new List<string>() { VideoUrl });
                         IsDone = true;
-                        return true;
+                        return (success_code.As<int?>() ?? 1) == 0;
                     }
                     catch (Exception e)
                     {
