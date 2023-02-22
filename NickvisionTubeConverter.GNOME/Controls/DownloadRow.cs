@@ -156,6 +156,7 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
         _viewStackState.SetVisibleChildName("downloading");
         _progLabel.SetText(_localizer["DownloadState", "Preparing"]);
         _lblFilename.SetText(_download.Filename);
+        _viewStackAction.SetVisibleChildName("cancel");
         var bar_pulse = true;
         if (_processingCallback == null)
         {
