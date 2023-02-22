@@ -162,7 +162,8 @@ public class Download
                         { "postprocessor_hooks", hooks },
                         { "outtmpl", $"{SaveFolder}{Path.DirectorySeparatorChar}{Path.GetFileNameWithoutExtension(Filename)}.%(ext)s" },
                         { "ffmpeg_location", DependencyManager.Ffmpeg },
-                        { "windowsfilenames", RuntimeInformation.IsOSPlatform(OSPlatform.Windows) }
+                        { "windowsfilenames", RuntimeInformation.IsOSPlatform(OSPlatform.Windows) },
+                        { "encoding", "utf_8" }
                     };
                     var postProcessors = new List<Dictionary<string, dynamic>>();
                     if (embedMetadata)
