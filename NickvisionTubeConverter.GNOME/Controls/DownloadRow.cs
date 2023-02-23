@@ -22,6 +22,7 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
     private readonly Localizer _localizer;
     private readonly Download _download;
     private bool? _previousEmbedMetadata;
+    private bool _wasStopped;
     private readonly Gtk.Box _boxMain;
     private readonly Gtk.Image _imgStatus;
     private readonly Gtk.Box _boxInfo;
@@ -56,6 +57,7 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
         _localizer = localizer;
         _download = download;
         _previousEmbedMetadata = null;
+        _wasStopped = false;
         _boxMain = Gtk.Box.New(Gtk.Orientation.Horizontal, 6);
         //Status Image
         _imgStatus = Gtk.Image.NewFromIconName("folder-download-symbolic");
@@ -151,6 +153,7 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
         {
             _previousEmbedMetadata = embedMetadata;
         }
+        _wasStopped = false;
         _imgStatus.AddCssClass("accent");
         _imgStatus.RemoveCssClass("error");
         _imgStatus.SetFromIconName("folder-download-symbolic");
@@ -191,13 +194,16 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
                     break;
             }
         });
-        _imgStatus.RemoveCssClass("accent");
-        _imgStatus.AddCssClass(success ? "success" : "error");
-        _imgStatus.SetFromIconName(success ? "emblem-ok-symbolic" : "process-stop-symbolic");
-        _viewStackState.SetVisibleChildName("done");
-        _levelBar.SetValue(success ? 1 : 0);
-        _doneLabel.SetText(success ? _localizer["Success"] : _localizer["Error"]);
-        _viewStackAction.SetVisibleChildName(success ? "open-folder" : "retry");
+        if(!_wasStopped)
+        {
+            _imgStatus.RemoveCssClass("accent");
+            _imgStatus.AddCssClass(success ? "success" : "error");
+            _imgStatus.SetFromIconName(success ? "emblem-ok-symbolic" : "process-stop-symbolic");
+            _viewStackState.SetVisibleChildName("done");
+            _levelBar.SetValue(success ? 1 : 0);
+            _doneLabel.SetText(success ? _localizer["Success"] : _localizer["Error"]);
+            _viewStackAction.SetVisibleChildName(success ? "open-folder" : "retry");
+        }
     }
 
     /// <summary>
@@ -205,6 +211,7 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
     /// </summary>
     public void Stop()
     {
+        _wasStopped = true;
         _download.Stop();
         _progBar.SetFraction(1.0);
         _imgStatus.RemoveCssClass("accent");
