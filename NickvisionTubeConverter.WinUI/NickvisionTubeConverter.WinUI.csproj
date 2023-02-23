@@ -20,6 +20,7 @@
     <None Remove="Controls\StatusPage.xaml" />
     <None Remove="Controls\ViewStack.xaml" />
     <None Remove="Controls\ViewStackPage.xaml" />
+    <None Remove="Views\AddDownloadDialog.xaml" />
     <None Remove="Views\PreferencesPage.xaml" />
   </ItemGroup>
 
@@ -56,6 +57,11 @@
   </ItemGroup>
   <ItemGroup>
 	  <Resource Include="Assets\org.nickvision.tubeconverter.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Views\AddDownloadDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Page Update="Controls\ActionRow.xaml">
