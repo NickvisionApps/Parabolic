@@ -83,8 +83,8 @@ public class Download
     /// Gets whether or not a video url is valid
     /// </summary>
     /// <param name="url">The video url to check</param>
-    /// <returns>True if valid, else false</returns>
-    public static async Task<bool> GetIsValidVideoUrlAsync(string url)
+    /// <returns>Whether or not the video url is valid, along with the video title if it is</returns>
+    public static async Task<(bool, string)> GetIsValidVideoUrlAsync(string url)
     {
         return await Task.Run(() =>
         {
@@ -97,46 +97,15 @@ public class Download
                         { "quiet", true },
                         { "merge_output_format", "/" }
                     };
-                    ytdlp.YoutubeDL(ytOpt).extract_info(url, download: false);
-                }
-                return true;
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-                return false;
-            }
-        });
-    }
-
-    /// <summary>
-    /// Gets video title from metadata
-    /// </summary>
-    /// <param name="url">The video url to check</param>
-    /// <returns>Title string</returns>
-    public static async Task<string> GetVideoTitleAsync(string url)
-    {
-        return await Task.Run(() =>
-        {
-            var title = "";
-            try
-            {
-                using (Python.Runtime.Py.GIL())
-                {
-                    dynamic ytdlp = Python.Runtime.Py.Import("yt_dlp");
-                    var ytOpt = new Dictionary<string, dynamic>() {
-                        { "quiet", true },
-                        { "merge_output_format", "/" }
-                    };
-                    title = ytdlp.YoutubeDL(ytOpt).extract_info(url, download: false)["title"];
+                    Python.Runtime.PyDict videoInfo = ytdlp.YoutubeDL(ytOpt).extract_info(url, download: false);
+                    return (true, videoInfo.HasKey("title") ? (videoInfo["title"].As<string>() ?? "Video") : "Video");
                 }
             }
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
-                title = "video";
+                return (false, "");
             }
-            return title;
         });
     }
 

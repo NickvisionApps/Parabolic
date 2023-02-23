@@ -97,13 +97,14 @@ public class AddDownloadDialogController
         else if (_previousUrl != videoUrl)
         {
             _previousUrl = videoUrl;
-            if (!(await Download.GetIsValidVideoUrlAsync(videoUrl)))
+            var (valid, title) = await Download.GetIsValidVideoUrlAsync(videoUrl);
+            if (!valid)
             {
                 result |= DownloadCheckStatus.InvalidVideoUrl;
             }
             else
             {
-                _saveFilename = (await Download.GetVideoTitleAsync(videoUrl)) + mediaFileType.GetDotExtension();
+                _saveFilename = title + mediaFileType.GetDotExtension();
             }
         }
         if (result != 0)
