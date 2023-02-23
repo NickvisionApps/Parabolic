@@ -160,6 +160,7 @@ public class MainWindowController : IDisposable
         }
         else
         {
+            Python.Runtime.RuntimeData.FormatterType = typeof(NoopFormatter);
             Python.Runtime.PythonEngine.Initialize();
             _pythonThreadState = Python.Runtime.PythonEngine.BeginAllowThreads();
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
