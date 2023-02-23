@@ -98,7 +98,7 @@ public class Download
                         { "merge_output_format", "/" }
                     };
                     Python.Runtime.PyDict videoInfo = ytdlp.YoutubeDL(ytOpt).extract_info(url, download: false);
-                    return (true, videoInfo.HasKey("title") ? (videoInfo["title"].As<string>() ?? "Video") : "Video");
+                    return (true, videoInfo.HasKey("title") ? (videoInfo["title"].As<string?>() ?? "Video") : "Video");
                 }
             }
             catch (Exception e)
