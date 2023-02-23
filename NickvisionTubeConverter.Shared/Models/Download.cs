@@ -232,6 +232,8 @@ public class Download
         {
             using (Python.Runtime.Py.GIL())
             {
+                var downloaded = entries.HasKey("downloaded_bytes") ? (entries["downloaded_bytes"].As<double?>() ?? 0) : 0;
+                var total = entries.HasKey("total_bytes") ? (entries["total_bytes"].As<double?>() ?? 1) : downloaded;
                 _progressCallback(new DownloadProgressState()
                 {
                     Status = entries["status"].As<string>() switch
@@ -240,7 +242,7 @@ public class Download
                         "downloading" => DownloadProgressStatus.Downloading,
                         _ => DownloadProgressStatus.Other
                     },
-                    Progress = entries.HasKey("downloaded_bytes") ? (entries["downloaded_bytes"].As<double?>() ?? 0) / (entries["total_bytes"].As<double?>() ?? 1) : 0,
+                    Progress = downloaded / total,
                     Speed = entries.HasKey("speed") ? (entries["speed"].As<double?>() ?? 0) / 1024f : 0
                 });
             }
