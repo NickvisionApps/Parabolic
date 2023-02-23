@@ -217,6 +217,7 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
         _progBar.SetFraction(1.0);
         _imgStatus.RemoveCssClass("accent");
         _imgStatus.AddCssClass("error");
+        _imgStatus.SetFromIconName("process-stop-symbolic");
         _viewStackState.SetVisibleChildName("done");
         _levelBar.SetValue(0);
         _doneLabel.SetText(_localizer["Stopped"]);
