@@ -158,6 +158,7 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
         _progLabel.SetText(_localizer["DownloadState", "Preparing"]);
         _lblFilename.SetText(_download.Filename);
         _viewStackAction.SetVisibleChildName("cancel");
+        _progBar.SetFraction(0);
         var success = await _download.RunAsync(embedMetadata, (state) =>
         {
             _progressStatus = state.Status;
