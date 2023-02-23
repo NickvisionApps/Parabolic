@@ -7,7 +7,7 @@ using System.IO;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
-using YoutubeDLSharp;
+using Xabe.FFmpeg.Downloader;
 
 namespace NickvisionTubeConverter.Shared.Helpers;
 
@@ -51,11 +51,22 @@ internal static class DependencyManager
         {
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
-                await YoutubeDL.DownloadFFmpegBinary(Ffmpeg.Remove(Ffmpeg.IndexOf("ffmpeg.exe")));
-                Python.Deployment.Installer.InstallPath = $"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}{Path.DirectorySeparatorChar}Nickvision{Path.DirectorySeparatorChar}{AppInfo.Current.Name}{Path.DirectorySeparatorChar}Python{Path.DirectorySeparatorChar}";
-                Python.Runtime.Runtime.PythonDLL = $"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}{Path.DirectorySeparatorChar}Nickvision{Path.DirectorySeparatorChar}{AppInfo.Current.Name}{Path.DirectorySeparatorChar}Python{Path.DirectorySeparatorChar}python-3.7.3-embed-amd64{Path.DirectorySeparatorChar}python37.dll";
-                await Python.Deployment.Installer.SetupPython(true);
-                await Python.Deployment.Installer.InstallWheel(typeof(MainWindowController).Assembly, "yt_dlp-any.whl", true);
+                var pythonDirPath = $"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}{Path.DirectorySeparatorChar}Nickvision{Path.DirectorySeparatorChar}{AppInfo.Current.Name}{Path.DirectorySeparatorChar}Python{Path.DirectorySeparatorChar}";
+                var pythonDllPath = $"{pythonDirPath}python-3.7.3-embed-amd64{Path.DirectorySeparatorChar}python37.dll";
+                if (!File.Exists(Ffmpeg) || Configuration.Current.WinUIFfmpegVersion != new Version(5, 3, 1))
+                {
+                    await FFmpegDownloader.GetLatestVersion(FFmpegVersion.Official, Ffmpeg.Remove(Ffmpeg.IndexOf("ffmpeg.exe")));
+                    Configuration.Current.WinUIFfmpegVersion = new Version(5, 3, 1);
+                    Configuration.Current.Save();
+                }
+                if (!File.Exists(pythonDllPath) || Configuration.Current.WinUIPythonVersion != new Version(3, 7, 3))
+                {
+                    Python.Deployment.Installer.InstallPath = pythonDirPath;
+                    Python.Runtime.Runtime.PythonDLL = pythonDllPath;
+                    await Python.Deployment.Installer.SetupPython(true);
+                    await Python.Deployment.Installer.InstallWheel(typeof(MainWindowController).Assembly, "yt_dlp-any.whl", true);
+                    await Python.Deployment.Installer.SetupPython();
+                }
             }
             else
             {

@@ -164,7 +164,7 @@ public class MainWindowController : IDisposable
             _pythonThreadState = Python.Runtime.PythonEngine.BeginAllowThreads();
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
-                using(Python.Runtime.Py.GIL())
+                using (Python.Runtime.Py.GIL())
                 {
                     dynamic sys = Python.Runtime.Py.Import("sys");
                     var pathToOutput = $"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}{Path.DirectorySeparatorChar}Nickvision{Path.DirectorySeparatorChar}{AppInfo.Current.Name}{Path.DirectorySeparatorChar}output.txt";

@@ -172,7 +172,7 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
                     };
                     g_idle_add(_downloadingCallback, 0);
                     break;
-                case DownloadProgressStatus.Processing:   
+                case DownloadProgressStatus.Processing:
                     _progLabel.SetText(_localizer["DownloadState", "Processing"]);
                     if (_processingCallback == null)
                     {

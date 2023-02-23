@@ -29,6 +29,14 @@ public class Configuration
     /// Whether or not to embed metadata in a download
     /// </summary>
     public bool EmbedMetadata { get; set; }
+    /// <summary>
+    /// The version of python installed on WinUI version
+    /// </summary>
+    public Version WinUIPythonVersion { get; set; }
+    /// <summary>
+    /// The version of ffmpeg installed on WinUI version
+    /// </summary>
+    public Version WinUIFfmpegVersion { get; set; }
 
     /// <summary>
     /// Occurs when the configuration is saved to disk
@@ -48,6 +56,8 @@ public class Configuration
         PreviousSaveFolder = Environment.GetFolderPath(Environment.SpecialFolder.MyVideos);
         PreviousMediaFileType = MediaFileType.MP4;
         EmbedMetadata = true;
+        WinUIPythonVersion = new Version(0, 0, 0);
+        WinUIFfmpegVersion = new Version(0, 0, 0);
     }
 
     /// <summary>
