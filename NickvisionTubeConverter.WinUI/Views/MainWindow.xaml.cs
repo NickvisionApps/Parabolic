@@ -86,7 +86,7 @@ public sealed partial class MainWindow : Window
         _appWindow.Resize(new SizeInt32(800, 600));
         User32.ShowWindow(_hwnd, ShowWindowCommand.SW_SHOWMAXIMIZED);
         //Localize Strings
-        LblLoading.Text = _controller.Localizer["DependencyDownload", "WinUI"];
+        LblLoading.Text = _controller.Localizer["DependencyDownload"];
         NavViewItemHome.Content = _controller.Localizer["Home"];
         NavViewItemDownloads.Content = _controller.Localizer["Downloads"];
         NavViewItemSettings.Content = _controller.Localizer["Settings"];
@@ -113,16 +113,13 @@ public sealed partial class MainWindow : Window
     /// <param name="e">RoutedEventArgs</param>
     private async void Window_Loaded(object sender, RoutedEventArgs e)
     {
-        if(!_isOpened)
+        if (!_isOpened)
         {
             //Start Loading
             Loading.IsLoading = true;
             //Work
             await Task.Delay(50);
-            if(!await _controller.DownloadDependenciesAsync())
-            {
-                NotificationSent(sender, new NotificationSentEventArgs(_controller.Localizer["DependencyError", "WinUI"], NotificationSeverity.Error));
-            }
+            await _controller.StartupAsync();
             //Done Loading
             Loading.IsLoading = false;
             _isOpened = true;
@@ -149,7 +146,29 @@ public sealed partial class MainWindow : Window
     /// </summary>
     /// <param name="sender">AppWindow</param>
     /// <param name="e">AppWindowClosingEventArgs</param>
-    private void Window_Closing(AppWindow sender, AppWindowClosingEventArgs e) => _micaController?.Dispose();
+    private async void Window_Closing(AppWindow sender, AppWindowClosingEventArgs e)
+    {
+        if (_controller.AreDownloadsRunning)
+        {
+            var closeDialog = new ContentDialog()
+            {
+                Title = _controller.Localizer["CloseAndStop", "Title"],
+                Content = _controller.Localizer["CloseAndStop", "Description"],
+                CloseButtonText = _controller.Localizer["No"],
+                PrimaryButtonText = _controller.Localizer["Yes"],
+                DefaultButton = ContentDialogButton.Close,
+                XamlRoot = Content.XamlRoot
+            };
+            if (await closeDialog.ShowAsync() != ContentDialogResult.Primary)
+            {
+                e.Cancel = true;
+                return;
+            }
+        }
+        _controller.StopDownloads();
+        _controller.Dispose();
+        _micaController?.Dispose();
+    }
 
     /// <summary>
     /// Occurs when the window's theme is changed
@@ -212,6 +231,6 @@ public sealed partial class MainWindow : Window
     /// <param name="e">RoutedEventArgs</param>
     private async void AddDownload(object sender, RoutedEventArgs e)
     {
-        
+
     }
 }

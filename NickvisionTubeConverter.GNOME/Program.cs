@@ -42,11 +42,6 @@ public class Program
     }
 
     /// <summary>
-    /// Finalizes a Program
-    /// </summary>
-    ~Program() => _mainWindowController.Dispose();
-
-    /// <summary>
     /// Runs the program
     /// </summary>
     /// <returns>Return code from Adw.Application.Run()</returns>
@@ -57,7 +52,7 @@ public class Program
     /// </summary>
     /// <param name="sender">Gio.Application</param>
     /// <param name="e">EventArgs</param>
-    private void OnActivate(Gio.Application sender, EventArgs e)
+    private async void OnActivate(Gio.Application sender, EventArgs e)
     {
         //Set Adw Theme
         _application.StyleManager!.ColorScheme = _mainWindowController.Theme switch
@@ -69,6 +64,6 @@ public class Program
         };
         //Main Window
         _mainWindow = new MainWindow(_mainWindowController, _application);
-        _mainWindow.Start();
+        await _mainWindow.StartAsync();
     }
 }

@@ -5,6 +5,8 @@ using NickvisionTubeConverter.Shared.Models;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Runtime.InteropServices;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace NickvisionTubeConverter.Shared.Controllers;
@@ -15,6 +17,7 @@ namespace NickvisionTubeConverter.Shared.Controllers;
 public class MainWindowController : IDisposable
 {
     private bool _disposed;
+    private nint _pythonThreadState;
     private List<IDownloadRowControl> _downloadRows;
 
     /// <summary>
@@ -108,9 +111,9 @@ public class MainWindowController : IDisposable
     {
         get
         {
-            foreach(var row in _downloadRows)
+            foreach (var row in _downloadRows)
             {
-                if(!row.IsDone)
+                if (!row.IsDone)
                 {
                     return true;
                 }
@@ -140,8 +143,35 @@ public class MainWindowController : IDisposable
         if (disposing)
         {
             Localizer.Dispose();
+            Python.Runtime.PythonEngine.EndAllowThreads(_pythonThreadState);
+            Python.Runtime.PythonEngine.Shutdown();
         }
         _disposed = true;
+    }
+
+    /// <summary>
+    /// Starts the application
+    /// </summary>
+    public async Task StartupAsync()
+    {
+        if (!await DependencyManager.SetupDependenciesAsync())
+        {
+            NotificationSent?.Invoke(this, new NotificationSentEventArgs(Localizer["DependencyError"], NotificationSeverity.Error));
+        }
+        else
+        {
+            Python.Runtime.PythonEngine.Initialize();
+            _pythonThreadState = Python.Runtime.PythonEngine.BeginAllowThreads();
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                using (Python.Runtime.Py.GIL())
+                {
+                    dynamic sys = Python.Runtime.Py.Import("sys");
+                    var pathToOutput = $"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}{Path.DirectorySeparatorChar}Nickvision{Path.DirectorySeparatorChar}{AppInfo.Current.Name}{Path.DirectorySeparatorChar}output.txt";
+                    sys.stdout = Python.Runtime.PythonEngine.Eval($"open(\"{Regex.Replace(pathToOutput, @"\\", @"\\")}\", \"w\")");
+                }
+            }
+        }
     }
 
     /// <summary>
@@ -149,26 +179,6 @@ public class MainWindowController : IDisposable
     /// </summary>
     /// <returns>The new AddDownloadDialogController</returns>
     public AddDownloadDialogController CreateAddDownloadDialogController() => new AddDownloadDialogController(Localizer);
-
-    /// <summary>
-    /// Downloads dependencies for the application
-    /// </summary>
-    /// <returns>True if successful, else false</returns>
-    public async Task<bool> DownloadDependenciesAsync()
-    {
-        var ytdlpVersion = new Version(2023, 2, 17);
-        if(Configuration.Current.YtdlpVersion != ytdlpVersion || !File.Exists(DependencyManager.YtdlpPath) || !File.Exists(DependencyManager.Ffmpeg))
-        {
-            if(await DependencyManager.DownloadDependenciesAsync())
-            {
-                Configuration.Current.YtdlpVersion = ytdlpVersion;
-                Configuration.Current.Save();
-                return true;
-            }
-            return false;
-        }
-        return true;
-    }
 
     /// <summary>
     /// Adds a download row to the window
@@ -186,7 +196,7 @@ public class MainWindowController : IDisposable
     /// </summary>
     public void StopDownloads()
     {
-        foreach(var row in _downloadRows)
+        foreach (var row in _downloadRows)
         {
             row.Stop();
         }

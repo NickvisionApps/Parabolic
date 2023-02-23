@@ -23,6 +23,8 @@ public enum DownloadCheckStatus
 public class AddDownloadDialogController
 {
     private string? _previousUrl;
+    private string _saveFolder;
+    private string _saveFilename;
 
     /// <summary>
     /// The localizer to get translated strings from
@@ -32,8 +34,6 @@ public class AddDownloadDialogController
     /// The download represented by the controller
     /// </summary>
     public Download? Download { get; private set; }
-    public string SaveFolder { get; private set; }
-    public string SaveFilename { get; private set; }
     /// <summary>
     /// Whether or not the dialog was accepted (response)
     /// </summary>
@@ -47,17 +47,21 @@ public class AddDownloadDialogController
     /// The previously used MediaFileType
     /// </summary>
     public MediaFileType PreviousMediaFileType => Configuration.Current.PreviousMediaFileType;
-    
+    /// <summary>
+    /// The save path
+    /// </summary>
+    public string SavePath => $"{_saveFolder}{Path.DirectorySeparatorChar}{_saveFilename}";
+
     /// <summary>
     /// Constructs a AddDownloadDialogController
     /// </summary>
     public AddDownloadDialogController(Localizer localizer)
     {
         _previousUrl = null;
+        _saveFolder = "";
+        _saveFilename = "";
         Localizer = localizer;
         Download = null;
-        SaveFolder = "";
-        SaveFilename = "";
         Accepted = false;
     }
 
@@ -75,50 +79,45 @@ public class AddDownloadDialogController
         DownloadCheckStatus result = 0;
         if (string.IsNullOrEmpty(savePath))
         {
-            SaveFolder = PreviousSaveFolder;
-            if (!Directory.Exists(SaveFolder))
+            _saveFolder = PreviousSaveFolder;
+            if (!Directory.Exists(_saveFolder))
             {
                 result |= DownloadCheckStatus.InvalidSaveFolder;
             }
         }
         else
         {
-            SaveFolder = Path.GetDirectoryName(savePath);
-            SaveFilename = Path.GetFileNameWithoutExtension(savePath) + mediaFileType.GetDotExtension();
+            _saveFolder = Path.GetDirectoryName(savePath);
+            _saveFilename = Path.GetFileNameWithoutExtension(savePath) + mediaFileType.GetDotExtension();
         }
         if (string.IsNullOrEmpty(videoUrl))
         {
             result |= DownloadCheckStatus.EmptyVideoUrl;
         }
-        else if(_previousUrl != videoUrl)
+        else if (_previousUrl != videoUrl)
         {
             _previousUrl = videoUrl;
-            if (!(await Download.GetIsValidVideoUrl(videoUrl)))
+            var (valid, title) = await Download.GetIsValidVideoUrlAsync(videoUrl);
+            if (!valid)
             {
                 result |= DownloadCheckStatus.InvalidVideoUrl;
             }
             else
             {
-                SaveFilename = (await Download.GetVideoTitle(videoUrl)) + mediaFileType.GetDotExtension();
+                _saveFilename = title + mediaFileType.GetDotExtension();
             }
         }
         if (result != 0)
         {
             return result;
         }
-        Download = new Download(videoUrl, mediaFileType, SaveFolder, SaveFilename, quality, subtitles);
-        if (!Regex.Match(SaveFolder, @"^\/run\/user\/.*\/doc\/.*").Success)
+        Download = new Download(videoUrl, mediaFileType, _saveFolder, _saveFilename, quality, subtitles);
+        if (!Regex.Match(_saveFolder, @"^\/run\/user\/.*\/doc\/.*").Success)
         {
-            Configuration.Current.PreviousSaveFolder = SaveFolder;
+            Configuration.Current.PreviousSaveFolder = _saveFolder;
         }
         Configuration.Current.PreviousMediaFileType = mediaFileType;
         Configuration.Current.Save();
         return DownloadCheckStatus.Valid;
     }
-
-    /// <summary>
-    /// Gets full save path
-    /// </summary>
-    /// <returns>Save Path string</returns>
-    public string GetSavePath() => SaveFolder + Path.DirectorySeparatorChar + SaveFilename;
 }

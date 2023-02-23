@@ -30,9 +30,13 @@ public class Configuration
     /// </summary>
     public bool EmbedMetadata { get; set; }
     /// <summary>
-    /// The installed version of yt-dlp
+    /// The version of python installed on WinUI version
     /// </summary>
-    public Version YtdlpVersion { get; set; }
+    public Version WinUIPythonVersion { get; set; }
+    /// <summary>
+    /// The version of ffmpeg installed on WinUI version
+    /// </summary>
+    public Version WinUIFfmpegVersion { get; set; }
 
     /// <summary>
     /// Occurs when the configuration is saved to disk
@@ -52,7 +56,8 @@ public class Configuration
         PreviousSaveFolder = Environment.GetFolderPath(Environment.SpecialFolder.MyVideos);
         PreviousMediaFileType = MediaFileType.MP4;
         EmbedMetadata = true;
-        YtdlpVersion = new Version(0, 0, 0);
+        WinUIPythonVersion = new Version(0, 0, 0);
+        WinUIFfmpegVersion = new Version(0, 0, 0);
     }
 
     /// <summary>

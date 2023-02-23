@@ -1,10 +1,8 @@
 using NickvisionTubeConverter.Shared.Controls;
 using NickvisionTubeConverter.Shared.Helpers;
 using NickvisionTubeConverter.Shared.Models;
-using System;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
-using YoutubeDLSharp;
 
 namespace NickvisionTubeConverter.GNOME.Controls;
 
@@ -24,6 +22,7 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
     private readonly Localizer _localizer;
     private readonly Download _download;
     private bool? _previousEmbedMetadata;
+    private bool _wasStopped;
     private readonly Gtk.Box _boxMain;
     private readonly Gtk.Image _imgStatus;
     private readonly Gtk.Box _boxInfo;
@@ -40,7 +39,7 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
     private readonly Gtk.Button _btnCancel;
     private readonly Gtk.Button _btnOpenFolder;
     private readonly Gtk.Button _btnRetry;
-    private DownloadProgress? _lastProgress;
+    private DownloadProgressStatus _progressStatus;
     private GSourceFunc? _processingCallback;
     private GSourceFunc? _downloadingCallback;
 
@@ -58,6 +57,7 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
         _localizer = localizer;
         _download = download;
         _previousEmbedMetadata = null;
+        _wasStopped = false;
         _boxMain = Gtk.Box.New(Gtk.Orientation.Horizontal, 6);
         //Status Image
         _imgStatus = Gtk.Image.NewFromIconName("folder-download-symbolic");
@@ -149,49 +149,62 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
     /// <param name="embedMetadata">Whether or not to embed video metadata</param>
     public async Task StartAsync(bool embedMetadata)
     {
-        if(_previousEmbedMetadata == null)
+        if (_previousEmbedMetadata == null)
         {
             _previousEmbedMetadata = embedMetadata;
         }
+        _wasStopped = false;
         _imgStatus.AddCssClass("accent");
         _imgStatus.RemoveCssClass("error");
         _imgStatus.SetFromIconName("folder-download-symbolic");
         _viewStackState.SetVisibleChildName("downloading");
         _progLabel.SetText(_localizer["DownloadState", "Preparing"]);
-        var success = await _download.RunAsync(embedMetadata, new Progress<DownloadProgress>((x) =>
+        _lblFilename.SetText(_download.Filename);
+        _viewStackAction.SetVisibleChildName("cancel");
+        _progBar.SetFraction(0);
+        var success = await _download.RunAsync(embedMetadata, (state) =>
         {
-            _lastProgress = x;
-            _lblFilename.SetText(_download.Filename);
-            switch (x.State)
+            _progressStatus = state.Status;
+            switch (state.Status)
             {
-                case DownloadState.PreProcessing:
-                case DownloadState.PostProcessing:
-                    _processingCallback = (d) =>
-                    {
-                        _progBar.Pulse();
-                        _progLabel.SetText(_localizer["DownloadState", "Processing"]);
-                        return _lastProgress.State == DownloadState.PreProcessing || _lastProgress.State == DownloadState.PostProcessing;
-                    };
-                    g_timeout_add(30, _processingCallback, 0);
-                    break;
-                case DownloadState.Downloading:
+                case DownloadProgressStatus.Downloading:
                     _downloadingCallback = (d) =>
                     {
-                        _progBar.SetFraction(x.Progress);
-                        _progLabel.SetText(string.Format(_localizer["DownloadState", "Downloading"], x.Progress * 100, x.DownloadSpeed));
+                        _progBar.SetFraction(state.Progress);
+                        _progLabel.SetText(string.Format(_localizer["DownloadState", "Downloading"], state.Progress * 100, state.Speed));
                         return false;
                     };
                     g_idle_add(_downloadingCallback, 0);
                     break;
+                case DownloadProgressStatus.Processing:
+                    _progLabel.SetText(_localizer["DownloadState", "Processing"]);
+                    if (_processingCallback == null)
+                    {
+                        _processingCallback = (d) =>
+                        {
+                            _progBar.Pulse();
+                            if (_progressStatus != DownloadProgressStatus.Processing || IsDone)
+                            {
+                                _processingCallback = null;
+                                return false;
+                            }
+                            return true;
+                        };
+                        g_timeout_add(30, _processingCallback, 0);
+                    }
+                    break;
             }
-        }));
-        _imgStatus.RemoveCssClass("accent");
-        _imgStatus.AddCssClass(success ? "success" : "error");
-        _imgStatus.SetFromIconName(success ? "emblem-ok-symbolic" : "process-stop-symbolic");
-        _viewStackState.SetVisibleChildName("done");
-        _levelBar.SetValue(success ? 1 : 0);
-        _doneLabel.SetText(success ? _localizer["Success"] : _localizer["Error"]);
-        _viewStackAction.SetVisibleChildName(success ? "open-folder" : "retry");
+        });
+        if(!_wasStopped)
+        {
+            _imgStatus.RemoveCssClass("accent");
+            _imgStatus.AddCssClass(success ? "success" : "error");
+            _imgStatus.SetFromIconName(success ? "emblem-ok-symbolic" : "process-stop-symbolic");
+            _viewStackState.SetVisibleChildName("done");
+            _levelBar.SetValue(success ? 1 : 0);
+            _doneLabel.SetText(success ? _localizer["Success"] : _localizer["Error"]);
+            _viewStackAction.SetVisibleChildName(success ? "open-folder" : "retry");
+        }
     }
 
     /// <summary>
@@ -199,10 +212,12 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
     /// </summary>
     public void Stop()
     {
+        _wasStopped = true;
         _download.Stop();
         _progBar.SetFraction(1.0);
         _imgStatus.RemoveCssClass("accent");
         _imgStatus.AddCssClass("error");
+        _imgStatus.SetFromIconName("process-stop-symbolic");
         _viewStackState.SetVisibleChildName("done");
         _levelBar.SetValue(0);
         _doneLabel.SetText(_localizer["Stopped"]);
