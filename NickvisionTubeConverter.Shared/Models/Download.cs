@@ -34,11 +34,11 @@ public enum Subtitle
 /// </summary>
 public class Download
 {
-    private CancellationTokenSource? _cancellationToken;
     private MediaFileType _fileType;
     private Quality _quality;
     private Subtitle _subtitle;
     private Action<DownloadProgressState>? _progressCallback;
+    private ulong? _pid;
 
     /// <summary>
     /// The url of the video
@@ -68,11 +68,11 @@ public class Download
     /// <param name="subtitle">The subtitles for the download</param>
     public Download(string videoUrl, MediaFileType fileType, string saveFolder, string saveFilename, Quality quality = Quality.Best, Subtitle subtitle = Subtitle.None)
     {
-        _cancellationToken = null;
         _fileType = fileType;
         _quality = quality;
         _subtitle = subtitle;
         _progressCallback = null;
+        _pid = null;
         VideoUrl = videoUrl;
         SaveFolder = saveFolder;
         Filename = saveFilename;
@@ -118,24 +118,20 @@ public class Download
     public async Task<bool> RunAsync(bool embedMetadata, Action<DownloadProgressState>? progressCallback = null)
     {
         _progressCallback = progressCallback;
-        _cancellationToken = new CancellationTokenSource();
-        var pythonThread = ulong.MinValue;
-        try
+        IsDone = false;
+        if (File.Exists($"{SaveFolder}{Path.DirectorySeparatorChar}{Filename}"))
         {
-            IsDone = false;
-            if (File.Exists($"{SaveFolder}{Path.DirectorySeparatorChar}{Filename}"))
+            File.Delete($"{SaveFolder}{Path.DirectorySeparatorChar}{Filename}");
+        }
+        return await Task.Run(() =>
+        {
+            using (Python.Runtime.Py.GIL())
             {
-                File.Delete($"{SaveFolder}{Path.DirectorySeparatorChar}{Filename}");
-            }
-            return await Task.Run(() =>
-            {
-                using (Python.Runtime.Py.GIL())
-                {
-                    pythonThread = Python.Runtime.PythonEngine.GetPythonThreadID();
-                    dynamic ytdlp = Python.Runtime.Py.Import("yt_dlp");
-                    var hooks = new List<Action<Python.Runtime.PyDict>> { };
-                    hooks.Add(ProgressHook);
-                    var ytOpt = new Dictionary<string, dynamic> {
+                _pid = Python.Runtime.PythonEngine.GetPythonThreadID();
+                dynamic ytdlp = Python.Runtime.Py.Import("yt_dlp");
+                var hooks = new List<Action<Python.Runtime.PyDict>> { };
+                hooks.Add(ProgressHook);
+                var ytOpt = new Dictionary<string, dynamic> {
                         { "quiet", true },
                         { "ignoreerrors", "downloadonly" },
                         { "merge_output_format", "mp4/webm/mp3/opus/flac/wav" },
@@ -147,82 +143,84 @@ public class Download
                         { "windowsfilenames", RuntimeInformation.IsOSPlatform(OSPlatform.Windows) },
                         { "encoding", "utf_8" }
                     };
-                    var postProcessors = new List<Dictionary<string, dynamic>>();
-                    if (_fileType.GetIsAudio())
+                var postProcessors = new List<Dictionary<string, dynamic>>();
+                if (_fileType.GetIsAudio())
+                {
+                    ytOpt.Add("format", _quality != Quality.Worst ? "ba/b" : "wa/w");
+                    postProcessors.Add(new Dictionary<string, dynamic>() { { "key", "FFmpegExtractAudio" }, { "preferredcodec", _fileType.ToString().ToLower() } });
+                }
+                else if (_fileType.GetIsVideo())
+                {
+                    if (_fileType == MediaFileType.MP4)
                     {
-                        ytOpt.Add("format", _quality != Quality.Worst ? "ba/b" : "wa/w");
-                        postProcessors.Add(new Dictionary<string, dynamic>() { { "key", "FFmpegExtractAudio" }, { "preferredcodec", _fileType.ToString().ToLower() } });
-                    }
-                    else if (_fileType.GetIsVideo())
-                    {
-                        if (_fileType == MediaFileType.MP4)
+                        ytOpt.Add("format", _quality switch
                         {
-                            ytOpt.Add("format", _quality switch
-                            {
-                                Quality.Best => "bv*[ext=mp4]+ba[ext=m4a]/b[ext=mp4] / bv*+ba/b",
-                                Quality.Good => "bv*[ext=mp4][height<=720]+ba[ext=m4a]/b[ext=mp4][height<=720] / bv*[height<=720]+ba/b[height<=720]",
-                                _ => "wv[ext=mp4]*+wa[ext=m4a]/w[ext=mp4] / wv*+wa/w"
-                            });
-                        }
-                        else
+                            Quality.Best => "bv*[ext=mp4]+ba[ext=m4a]/b[ext=mp4] / bv*+ba/b",
+                            Quality.Good => "bv*[ext=mp4][height<=720]+ba[ext=m4a]/b[ext=mp4][height<=720] / bv*[height<=720]+ba/b[height<=720]",
+                            _ => "wv[ext=mp4]*+wa[ext=m4a]/w[ext=mp4] / wv*+wa/w"
+                        });
+                    }
+                    else
+                    {
+                        ytOpt.Add("format", _quality switch
                         {
-                            ytOpt.Add("format", _quality switch
-                            {
-                                Quality.Best => "bv*+ba/b",
-                                Quality.Good => "bv*[height<=720]+ba/b[height<=720]",
-                                _ => "wv*+wa/w"
-                            });
-                        }
-                        postProcessors.Add(new Dictionary<string, dynamic>() { { "key", "FFmpegVideoRemuxer" }, { "preferedformat", _fileType.ToString().ToLower() } });
-                        if (_subtitle != Subtitle.None)
-                        {
-                            ytOpt.Add("writesubtitles", true);
-                            ytOpt.Add("writeautomaticsub", true);
-                            ytOpt.Add("subtitleslangs", new List<string> { "en", CultureInfo.CurrentCulture.TwoLetterISOLanguageName });
-                            postProcessors.Add(new Dictionary<string, dynamic>() { { "key", "FFmpegSubtitlesConvertor" }, { "format", _subtitle.ToString().ToLower() } });
-                            postProcessors.Add(new Dictionary<string, dynamic>() { { "key", "FFmpegEmbedSubtitle" } });
-                        }
+                            Quality.Best => "bv*+ba/b",
+                            Quality.Good => "bv*[height<=720]+ba/b[height<=720]",
+                            _ => "wv*+wa/w"
+                        });
                     }
-                    if (embedMetadata)
+                    postProcessors.Add(new Dictionary<string, dynamic>() { { "key", "FFmpegVideoRemuxer" }, { "preferedformat", _fileType.ToString().ToLower() } });
+                    if (_subtitle != Subtitle.None)
                     {
-                        if (_fileType.GetSupportsThumbnails())
-                        {
-                            ytOpt.Add("writethumbnail", true);
-                            postProcessors.Add(new Dictionary<string, dynamic>() { { "key", "EmbedThumbnail" } });
-                        }
-                        postProcessors.Add(new Dictionary<string, dynamic>() { { "key", "FFmpegMetadata" }, { "add_metadata", true } });
-                    }
-                    if (postProcessors.Count != 0)
-                    {
-                        ytOpt.Add("postprocessors", postProcessors);
-                    }
-                    try
-                    {
-                        Python.Runtime.PyObject success_code = ytdlp.YoutubeDL(ytOpt).download(new List<string>() { VideoUrl });
-                        IsDone = true;
-                        return (success_code.As<int?>() ?? 1) == 0;
-                    }
-                    catch (Exception e)
-                    {
-                        Console.WriteLine(e);
-                        IsDone = true;
-                        return false;
+                        ytOpt.Add("writesubtitles", true);
+                        ytOpt.Add("writeautomaticsub", true);
+                        ytOpt.Add("subtitleslangs", new List<string> { "en", CultureInfo.CurrentCulture.TwoLetterISOLanguageName });
+                        postProcessors.Add(new Dictionary<string, dynamic>() { { "key", "FFmpegSubtitlesConvertor" }, { "format", _subtitle.ToString().ToLower() } });
+                        postProcessors.Add(new Dictionary<string, dynamic>() { { "key", "FFmpegEmbedSubtitle" } });
                     }
                 }
-            }, _cancellationToken.Token);
-        }
-        catch (TaskCanceledException)
-        {
-            Python.Runtime.PythonEngine.Interrupt(pythonThread);
-            IsDone = false;
-            return false;
-        }
+                if (embedMetadata)
+                {
+                    if (_fileType.GetSupportsThumbnails())
+                    {
+                        ytOpt.Add("writethumbnail", true);
+                        postProcessors.Add(new Dictionary<string, dynamic>() { { "key", "EmbedThumbnail" } });
+                    }
+                    postProcessors.Add(new Dictionary<string, dynamic>() { { "key", "FFmpegMetadata" }, { "add_metadata", true } });
+                }
+                if (postProcessors.Count != 0)
+                {
+                    ytOpt.Add("postprocessors", postProcessors);
+                }
+                try
+                {
+                    Python.Runtime.PyObject success_code = ytdlp.YoutubeDL(ytOpt).download(new List<string>() { VideoUrl });
+                    IsDone = true;
+                    return (success_code.As<int?>() ?? 1) == 0;
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                    IsDone = true;
+                    return false;
+                }
+            }
+        });
     }
 
     /// <summary>
     /// Stops the download
     /// </summary>
-    public void Stop() => _cancellationToken?.Cancel();
+    public void Stop()
+    {
+        if(_pid != null)
+        {
+            using (Python.Runtime.Py.GIL())
+            {
+                Python.Runtime.PythonEngine.Interrupt(_pid.Value);
+            }
+        }
+    }
 
     /// <summary>
     /// Handles progress of the download
