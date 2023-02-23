@@ -174,12 +174,20 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
                     break;
                 case DownloadProgressStatus.Processing:   
                     _progLabel.SetText(_localizer["DownloadState", "Processing"]);
-                    _processingCallback = (d) =>
+                    if (_processingCallback == null)
                     {
-                        _progBar.Pulse();
-                        return _progressStatus == DownloadProgressStatus.Processing && !IsDone;
-                    };
-                    g_timeout_add(30, _processingCallback, 0);
+                        _processingCallback = (d) =>
+                        {
+                            _progBar.Pulse();
+                            if (_progressStatus != DownloadProgressStatus.Processing || IsDone)
+                            {
+                                _processingCallback = null;
+                                return false;
+                            }
+                            return true;
+                        };
+                        g_timeout_add(30, _processingCallback, 0);
+                    }
                     break;
             }
         });
