@@ -24,16 +24,16 @@
             <nickvision:ViewStackPage x:Name="PageDownload" PageName="Download">
                 <ScrollViewer VerticalScrollBarVisibility="Auto">
                     <StackPanel Spacing="6">
-                        <TextBox x:Name="TxtVideoUrl" HorizontalAlignment="Stretch"/>
+                        <TextBox x:Name="TxtVideoUrl" HorizontalAlignment="Stretch" TextChanged="TxtVideoUrl_TextChanged"/>
 
-                        <ComboBox x:Name="CmbFileType" HorizontalAlignment="Stretch"/>
+                        <ComboBox x:Name="CmbFileType" HorizontalAlignment="Stretch" SelectionChanged="CmbFileType_SelectionChanged"/>
 
-                        <ComboBox x:Name="CmbQuality" HorizontalAlignment="Stretch"/>
+                        <ComboBox x:Name="CmbQuality" HorizontalAlignment="Stretch" SelectionChanged="CmbQuality_SelectionChanged"/>
 
-                        <ComboBox x:Name="CmbSubtitle" HorizontalAlignment="Stretch"/>
+                        <ComboBox x:Name="CmbSubtitle" HorizontalAlignment="Stretch" SelectionChanged="CmbSubtitle_SelectionChanged"/>
 
                         <wct:DockPanel HorizontalAlignment="Stretch" LastChildFill="True">
-                            <Button x:Name="BtnSelectSavePath" wct:DockPanel.Dock="Right" Margin="6,26,0,0" Style="{ThemeResource AccentButtonStyle}">
+                            <Button x:Name="BtnSelectSavePath" wct:DockPanel.Dock="Right" Margin="6,26,0,0" Style="{ThemeResource AccentButtonStyle}" Click="SelectSavePath">
                                 <Button.Content>
                                     <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" FontSize="16" Glyph="&#xE838;"/>
                                 </Button.Content>
@@ -41,6 +41,8 @@
 
                             <TextBox Name="TxtSavePath" wct:DockPanel.Dock="Left" IsReadOnly="True"/>
                         </wct:DockPanel>
+
+                        <TextBlock Name="TxtErrors" Visibility="Collapsed" Margin="0,10,0,0" Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"/>
                     </StackPanel>
                 </ScrollViewer>
             </nickvision:ViewStackPage>

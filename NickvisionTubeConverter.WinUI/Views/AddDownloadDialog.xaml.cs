@@ -1,5 +1,9 @@
+using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using NickvisionTubeConverter.Shared.Controllers;
+using NickvisionTubeConverter.Shared.Models;
+using System;
+using System.Threading.Tasks;
 
 namespace NickvisionTubeConverter.WinUI.Views;
 
@@ -34,13 +38,66 @@ public sealed partial class AddDownloadDialog : ContentDialog
         CmbQuality.Items.Add(_controller.Localizer["Quality", "Best"]);
         CmbQuality.Items.Add(_controller.Localizer["Quality", "Good"]);
         CmbQuality.Items.Add(_controller.Localizer["Quality", "Worst"]);
+        CmbQuality.SelectedIndex = 0;
         CmbSubtitle.Header = _controller.Localizer["Subtitle", "Field"];
         CmbSubtitle.Items.Add(_controller.Localizer["Subtitle", "None"]);
         CmbSubtitle.Items.Add("VTT");
         CmbSubtitle.Items.Add("SRT");
+        CmbSubtitle.SelectedIndex = 0;
         TxtSavePath.Header = _controller.Localizer["SavePath", "Field"];
         ToolTipService.SetToolTip(BtnSelectSavePath, _controller.Localizer["SelectSaveFolder"]);
+        TxtErrors.Text = _controller.Localizer["FixErrors", "WinUI"];
         //Load
         ViewStack.ChangePage("Download");
+        TxtVideoUrl.Header = _controller.Localizer["VideoUrl", "Empty"];
+        CmbFileType.SelectedIndex = (int)_controller.PreviousMediaFileType;
+        TxtSavePath.Header = _controller.Localizer["SavePath", "Invalid"];
+        TxtErrors.Visibility = Visibility.Visible;
+        IsPrimaryButtonEnabled = false;
+    }
+
+    public async Task<bool> ShowAsync()
+    {
+        var result = await base.ShowAsync();
+        if (result == ContentDialogResult.None)
+        {
+            _controller.Accepted = false;
+            return false;
+        }
+        _controller.Accepted = true;
+        return true;
+    }
+
+    private async Task ValidateAsync()
+    {
+        var checkStatus = await _controller.UpdateDownloadAsync(TxtVideoUrl.Text, (MediaFileType)CmbFileType.SelectedIndex, TxtSavePath.Text, (Quality)CmbQuality.SelectedIndex, (Subtitle)CmbSubtitle.SelectedIndex);
+    }
+
+    private void SelectSavePath(object sender, RoutedEventArgs e)
+    {
+
+    }
+
+    private async void TxtVideoUrl_TextChanged(object sender, TextChangedEventArgs e)
+    {
+        ViewStack.ChangePage("Loading");
+        await Task.Delay(50);
+        await ValidateAsync();
+        ViewStack.ChangePage("Download");
+    }
+
+    private void CmbFileType_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+
+    }
+
+    private void CmbQuality_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+
+    }
+
+    private void CmbSubtitle_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+
     }
 }
