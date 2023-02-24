@@ -163,11 +163,8 @@ public partial class AddDownloadDialog
         _rowVideoUrl.AddCssClass("error");
         _rowVideoUrl.SetTitle(_controller.Localizer["VideoUrl", "Empty"]);
         _rowFileType.SetSelected((uint)_controller.PreviousMediaFileType);
-        if (string.IsNullOrEmpty(_rowSavePath.GetText()))
-        {
-            _rowSavePath.AddCssClass("error");
-            _rowSavePath.SetTitle(_controller.Localizer["SavePath", "Invalid"]);
-        }
+        _rowSavePath.AddCssClass("error");
+        _rowSavePath.SetTitle(_controller.Localizer["SavePath", "Invalid"]);
         _dialog.SetResponseEnabled("ok", false);
         _constructing = false;
     }
