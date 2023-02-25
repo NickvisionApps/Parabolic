@@ -94,7 +94,7 @@ public partial class MainWindow
         _mainBox.Append(_toastOverlay);
         //Greeting
         _greetingStartPage = Adw.ButtonContent.New();
-        _greetingStartPage.SetIconName(_controller.ShowSun ? "sun-alt-symbolic" : "moon-symbolic");
+        _greetingStartPage.SetIconName(_controller.ShowSun ? "sun-outline-symbolic" : "moon-outline-symbolic");
         _greetingStartPage.SetLabel(_controller.Greeting);
         _greetingStartPage.AddCssClass("title-2");
         var image = (Gtk.Image)_greetingStartPage.GetFirstChild();
