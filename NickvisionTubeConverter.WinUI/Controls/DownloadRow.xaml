@@ -12,34 +12,34 @@
 
     <Border Margin="-14,6,-6,0" Background="{ThemeResource CardBackgroundFillColorDefaultBrush}" BorderThickness="1" BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}" CornerRadius="8">
         <wct:DockPanel Margin="4,4,4,4" LastChildFill="True">
-            <FontIcon x:Name="Icon" wct:DockPanel.Dock="Left" VerticalAlignment="Center" FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE118;"/>
+            <FontIcon x:Name="Icon" wct:DockPanel.Dock="Left" VerticalAlignment="Center" FontFamily="{StaticResource SymbolThemeFontFamily}"/>
 
-            <Button x:Name="BtnStop" wct:DockPanel.Dock="Right" VerticalAlignment="Center">
+            <Button x:Name="BtnStop" wct:DockPanel.Dock="Right" VerticalAlignment="Center" Visibility="Collapsed" Click="BtnStop_Click">
                 <Button.Content>
                     <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE15B;"/>
                 </Button.Content>
             </Button>
 
-            <Button x:Name="BtnRetry" wct:DockPanel.Dock="Right" VerticalAlignment="Center">
+            <Button x:Name="BtnRetry" wct:DockPanel.Dock="Right" VerticalAlignment="Center" Visibility="Collapsed" Click="BtnRetry_Click">
                 <Button.Content>
                     <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE149;"/>
                 </Button.Content>
             </Button>
 
-            <Button x:Name="BtnOpenSaveFolder" wct:DockPanel.Dock="Right" VerticalAlignment="Center">
+            <Button x:Name="BtnOpenSaveFolder" wct:DockPanel.Dock="Right" VerticalAlignment="Center" Visibility="Collapsed" Click="BtnOpenSaveFolder_Click">
                 <Button.Content>
                     <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE838;"/>
                 </Button.Content>
             </Button>
 
             <StackPanel wct:DockPanel.Dock="Left" Margin="10,0,10,0" Orientation="Vertical" Spacing="2">
-                <TextBlock x:Name="TxtFilename" Text="Test.mp3"/>
+                <TextBlock x:Name="LblFilename"/>
 
-                <TextBlock x:Name="TxtUrl" Foreground="Gray" Text="https://www.youtube.com/watch?v="/>
+                <TextBlock x:Name="LblUrl" Foreground="Gray"/>
 
-                <ProgressBar x:Name="ProgBar" HorizontalAlignment="Stretch" Height="10" IsIndeterminate="True"/>
+                <ProgressBar x:Name="ProgBar" HorizontalAlignment="Stretch" Height="10" Minimum="0" Maximum="1"/>
 
-                <TextBlock x:Name="TxtStatus" Text="Status"/>
+                <TextBlock x:Name="LblStatus"/>
             </StackPanel>
         </wct:DockPanel>
     </Border>
