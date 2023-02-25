@@ -253,6 +253,7 @@ public sealed partial class MainWindow : Window
         };
         if (await addDialog.ShowAsync())
         {
+            NavViewItemDownloads.IsSelected = true;
             await _controller.AddDownloadAsync(addController.Download!);
         }
     }

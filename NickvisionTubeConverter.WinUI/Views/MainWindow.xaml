@@ -78,7 +78,23 @@
 
                         <nickvision:ViewStackPage x:Name="PageDownloads" PageName="Downloads">
                             <Grid>
-                                <TextBlock x:Name="LblDownloads" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="14,20,0,0" Style="{ThemeResource NavigationViewItemHeaderTextStyle}"/>
+                                <wct:DockPanel HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="0,10,0,0" LastChildFill="True">
+                                    <Button x:Name="BtnAddDownload" wct:DockPanel.Dock="Right" Margin="0,0,14,0" MinWidth="100" Height="40" Style="{ThemeResource AccentButtonStyle}" Click="AddDownload">
+                                        <Button.Content>
+                                            <StackPanel Orientation="Horizontal" Spacing="6" Margin="0,4,0,4">
+                                                <FontIcon Margin="0,2,0,0" FontFamily="{StaticResource SymbolThemeFontFamily}" FontSize="16" Glyph="&#xE710;"/>
+
+                                                <TextBlock x:Name="LblBtnAddDownload" Margin="0,-2,0,0" FontSize="16"/>
+                                            </StackPanel>
+                                        </Button.Content>
+
+                                        <Button.KeyboardAccelerators>
+                                            <KeyboardAccelerator Modifiers="Control" Key="N"/>
+                                        </Button.KeyboardAccelerators>
+                                    </Button>
+
+                                    <TextBlock x:Name="LblDownloads" wct:DockPanel.Dock="Left" VerticalAlignment="Center" Margin="14,0,0,0" Style="{ThemeResource NavigationViewItemHeaderTextStyle}" FontSize="16"/>
+                                </wct:DockPanel>
 
                                 <Border HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10,56,10,10" Background="{ThemeResource CardBackgroundFillColorDefaultBrush}" BorderThickness="1" BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}" CornerRadius="8">
                                     <ScrollViewer>
@@ -87,20 +103,6 @@
                                         </ListView>
                                     </ScrollViewer>
                                 </Border>
-
-                                <Button x:Name="BtnAddDownload" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,10,14,0" MinWidth="100" Height="40" Style="{ThemeResource AccentButtonStyle}" Click="AddDownload">
-                                    <Button.Content>
-                                        <StackPanel Orientation="Horizontal" Spacing="6" Margin="0,4,0,4">
-                                            <FontIcon Margin="0,2,0,0" FontFamily="{StaticResource SymbolThemeFontFamily}" FontSize="16" Glyph="&#xE710;"/>
-
-                                            <TextBlock x:Name="LblBtnAddDownload" Margin="0,-2,0,0" FontSize="16"/>
-                                        </StackPanel>
-                                    </Button.Content>
-
-                                    <Button.KeyboardAccelerators>
-                                        <KeyboardAccelerator Modifiers="Control" Key="N"/>
-                                    </Button.KeyboardAccelerators>
-                                </Button>
                             </Grid>
                         </nickvision:ViewStackPage>
                         
