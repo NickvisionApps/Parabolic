@@ -160,12 +160,7 @@ public partial class AddDownloadDialog
         //Layout
         _dialog.SetExtraChild(_preferencesGroup);
         //Load
-        _rowVideoUrl.AddCssClass("error");
-        _rowVideoUrl.SetTitle(_controller.Localizer["VideoUrl", "Empty"]);
         _rowFileType.SetSelected((uint)_controller.PreviousMediaFileType);
-        _rowSavePath.AddCssClass("error");
-        _rowSavePath.SetTitle(_controller.Localizer["SavePath", "Invalid"]);
-        _dialog.SetResponseEnabled("ok", false);
         _constructing = false;
     }
 
@@ -184,7 +179,11 @@ public partial class AddDownloadDialog
     /// <summary>
     /// Shows the dialog
     /// </summary>
-    public void Show() => _dialog.Show();
+    public async Task ShowAsync()
+    {
+        await ValidateAsync();
+        _dialog.Show();
+    }
 
     /// <summary>
     /// Destroys the dialog
@@ -199,9 +198,9 @@ public partial class AddDownloadDialog
         _spinnerVideoUrl.Start();
         _rowVideoUrl.SetSensitive(false);
         _rowFileType.SetSensitive(false);
-        _rowSavePath.SetSensitive(false);
         _rowQuality.SetSensitive(false);
         _rowSubtitle.SetSensitive(false);
+        _rowSavePath.SetSensitive(false);
         var checkStatus = await _controller.UpdateDownloadAsync(_rowVideoUrl.GetText(), (MediaFileType)_rowFileType.GetSelected(), _rowSavePath.GetText(), (Quality)_rowQuality.GetSelected(), (Subtitle)_rowSubtitle.GetSelected());
         _spinnerVideoUrl.Stop();
         _rowVideoUrl.SetSensitive(true);
@@ -213,9 +212,9 @@ public partial class AddDownloadDialog
         if (checkStatus == DownloadCheckStatus.Valid)
         {
             _rowFileType.SetSensitive(true);
-            _rowSavePath.SetSensitive(true);
             _rowQuality.SetSensitive(true);
             _rowSubtitle.SetSensitive(((MediaFileType)_rowFileType.GetSelected()).GetIsVideo());
+            _rowSavePath.SetSensitive(true);
             _dialog.SetResponseEnabled("ok", true);
         }
         else
@@ -235,9 +234,9 @@ public partial class AddDownloadDialog
                 _rowSavePath.AddCssClass("error");
                 _rowSavePath.SetTitle(_controller.Localizer["SavePath", "Invalid"]);
                 _rowFileType.SetSensitive(true);
-                _rowSavePath.SetSensitive(true);
                 _rowQuality.SetSensitive(true);
                 _rowSubtitle.SetSensitive(((MediaFileType)_rowFileType.GetSelected()).GetIsVideo());
+                _rowSavePath.SetSensitive(true);
             }
             _dialog.SetResponseEnabled("ok", false);
         }

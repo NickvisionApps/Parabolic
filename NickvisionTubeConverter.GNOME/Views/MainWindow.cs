@@ -274,11 +274,11 @@ public partial class MainWindow
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
-    private void AddDownload(Gio.SimpleAction sender, EventArgs e)
+    private async void AddDownload(Gio.SimpleAction sender, EventArgs e)
     {
         var addController = _controller.CreateAddDownloadDialogController();
         var addDialog = new AddDownloadDialog(addController, Handle);
-        addDialog.Show();
+        await addDialog.ShowAsync();
         addDialog.OnResponse += async (sender, e) =>
         {
             if (addController.Accepted)
