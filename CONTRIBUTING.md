@@ -100,10 +100,10 @@ Enhancement suggestions are tracked as [GitHub issues](https://github.com/nlogoz
 
 Everyone is welcome to translate this app into their native or known languages, so that the application is accessible to everyone.
 
-<!--#### Via Weblate
+#### Via Weblate
 
 Tube Converter is available to translate on [Weblate](https://hosted.weblate.org/engage/nickvision-tube-converter/)!
--->
+
 #### Manually
 
 To start translating the app, fork the repository and clone it locally.
