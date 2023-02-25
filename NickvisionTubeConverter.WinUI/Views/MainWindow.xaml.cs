@@ -236,7 +236,10 @@ public sealed partial class MainWindow : Window
     /// <returns>The new download row</returns>
     private IDownloadRowControl CreateDownloadRow(Download download)
     {
-        return null;
+        var downloadRow = new DownloadRow(_controller.Localizer, download);
+        NavViewItemDownloads.IsSelected = true;
+        ListDownloads.Items.Add(downloadRow);
+        return downloadRow;
     }
 
     /// <summary>
@@ -253,7 +256,6 @@ public sealed partial class MainWindow : Window
         };
         if (await addDialog.ShowAsync())
         {
-            NavViewItemDownloads.IsSelected = true;
             await _controller.AddDownloadAsync(addController.Download!);
         }
     }

@@ -96,13 +96,11 @@
                                     <TextBlock x:Name="LblDownloads" wct:DockPanel.Dock="Left" VerticalAlignment="Center" Margin="14,0,0,0" Style="{ThemeResource NavigationViewItemHeaderTextStyle}" FontSize="16"/>
                                 </wct:DockPanel>
 
-                                <Border HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10,56,10,10" Background="{ThemeResource CardBackgroundFillColorDefaultBrush}" BorderThickness="1" BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}" CornerRadius="8">
-                                    <ScrollViewer>
-                                        <ListView x:Name="ListDownloads">
+                                <ScrollViewer HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10,56,10,10">
+                                    <ListView x:Name="ListDownloads">
 
-                                        </ListView>
-                                    </ScrollViewer>
-                                </Border>
+                                    </ListView>
+                                </ScrollViewer>
                             </Grid>
                         </nickvision:ViewStackPage>
                         
