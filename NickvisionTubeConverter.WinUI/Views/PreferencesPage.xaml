@@ -93,6 +93,22 @@
                             </labs:SettingsCard>
                         </labs:SettingsExpander.Items>
                     </labs:SettingsExpander>
+
+                    <labs:SettingsExpander x:Name="CardConverter">
+                        <labs:SettingsExpander.HeaderIcon>
+                            <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE118;"/>
+                        </labs:SettingsExpander.HeaderIcon>
+
+                        <labs:SettingsExpander.Items>
+                            <labs:SettingsCard x:Name="CardEmbedMetadata">
+                                <labs:SettingsCard.HeaderIcon>
+                                    <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE142;"/>
+                                </labs:SettingsCard.HeaderIcon>
+
+                                <ToggleSwitch x:Name="ToggleEmbedMetadata" Toggled="ToggleEmbedMetadata_Toggled"/>
+                            </labs:SettingsCard>
+                        </labs:SettingsExpander.Items>
+                    </labs:SettingsExpander>
                 </StackPanel>
             </ScrollViewer>
         </wct:DockPanel>

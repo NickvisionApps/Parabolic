@@ -41,8 +41,15 @@ public sealed partial class PreferencesPage : UserControl
         CmbTheme.Items.Add(_controller.Localizer["ThemeLight"]);
         CmbTheme.Items.Add(_controller.Localizer["ThemeDark"]);
         CmbTheme.Items.Add(_controller.Localizer["ThemeSystem"]);
+        CardConverter.Header = _controller.Localizer["Converter"];
+        CardConverter.Description = _controller.Localizer["Converter", "Description"];
+        CardEmbedMetadata.Header = _controller.Localizer["EmbedMetadata"];
+        CardEmbedMetadata.Description = _controller.Localizer["EmbedMetadata", "Description"];
+        ToggleEmbedMetadata.OnContent = "";
+        ToggleEmbedMetadata.OffContent = "";
         //Load Config
         CmbTheme.SelectedIndex = (int)_controller.Theme;
+        ToggleEmbedMetadata.IsOn = _controller.EmbedMetadata;
     }
 
     /// <summary>
@@ -132,8 +139,8 @@ public sealed partial class PreferencesPage : UserControl
     /// <summary>
     /// Occurs when the CmbTheme selection is changed
     /// </summary>
-    /// <param name="sender"></param>
-    /// <param name="e"></param>
+    /// <param name="sender">object</param>
+    /// <param name="e">SelectionChangedEventArgs</param>
     private async void CmbTheme_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
         if (_controller.Theme != (Theme)CmbTheme.SelectedIndex)
@@ -155,5 +162,16 @@ public sealed partial class PreferencesPage : UserControl
                 AppInstance.Restart("Apply new theme");
             }
         }
+    }
+
+    /// <summary>
+    /// Occurs when the ToggleEmbedMetadata switch is toggled
+    /// </summary>
+    /// <param name="sender">object</param>
+    /// <param name="e">RoutedEventArgs</param>
+    private void ToggleEmbedMetadata_Toggled(object sender, RoutedEventArgs e)
+    {
+        _controller.EmbedMetadata = ToggleEmbedMetadata.IsOn;
+        _controller.SaveConfiguration();
     }
 }
