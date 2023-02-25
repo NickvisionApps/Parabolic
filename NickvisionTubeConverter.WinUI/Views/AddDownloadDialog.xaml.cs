@@ -49,15 +49,12 @@ public sealed partial class AddDownloadDialog : ContentDialog
         TxtErrors.Text = _controller.Localizer["FixErrors", "WinUI"];
         //Load
         ViewStack.ChangePage("Download");
-        TxtVideoUrl.Header = _controller.Localizer["VideoUrl", "Empty"];
         CmbFileType.SelectedIndex = (int)_controller.PreviousMediaFileType;
-        TxtSavePath.Header = _controller.Localizer["SavePath", "Invalid"];
-        TxtErrors.Visibility = Visibility.Visible;
-        IsPrimaryButtonEnabled = false;
     }
 
     public async Task<bool> ShowAsync()
     {
+        await ValidateAsync();
         var result = await base.ShowAsync();
         if (result == ContentDialogResult.None)
         {
@@ -71,6 +68,47 @@ public sealed partial class AddDownloadDialog : ContentDialog
     private async Task ValidateAsync()
     {
         var checkStatus = await _controller.UpdateDownloadAsync(TxtVideoUrl.Text, (MediaFileType)CmbFileType.SelectedIndex, TxtSavePath.Text, (Quality)CmbQuality.SelectedIndex, (Subtitle)CmbSubtitle.SelectedIndex);
+        TxtVideoUrl.Header = _controller.Localizer["VideoUrl", "Field"];
+        CmbFileType.IsEnabled = false;
+        CmbQuality.IsEnabled = false;
+        CmbSubtitle.IsEnabled = false;
+        TxtSavePath.Header = _controller.Localizer["SavePath", "Field"];
+        TxtSavePath.IsEnabled = false;
+        TxtSavePath.Text = _controller.SavePath;
+        BtnSelectSavePath.IsEnabled = false;
+        if (checkStatus == DownloadCheckStatus.Valid)
+        {
+            CmbFileType.IsEnabled = true;
+            CmbQuality.IsEnabled = true;
+            CmbSubtitle.IsEnabled = ((MediaFileType)CmbFileType.SelectedIndex).GetIsVideo();
+            TxtSavePath.IsEnabled = true;
+            BtnSelectSavePath.IsEnabled = true;
+            TxtErrors.Visibility = Visibility.Collapsed;
+            IsPrimaryButtonEnabled = true;
+        }
+        else
+        {
+            if (checkStatus.HasFlag(DownloadCheckStatus.EmptyVideoUrl))
+            {
+                TxtVideoUrl.Header = _controller.Localizer["VideoUrl", "Empty"];
+            }
+            if (checkStatus.HasFlag(DownloadCheckStatus.InvalidVideoUrl))
+            {
+                TxtVideoUrl.Header = _controller.Localizer["VideoUrl", "Invalid"];
+            }
+            if (checkStatus.HasFlag(DownloadCheckStatus.InvalidSaveFolder))
+            {
+                TxtSavePath.Header = _controller.Localizer["SavePath", "Invalid"];
+                CmbFileType.IsEnabled = true;
+                CmbQuality.IsEnabled = true;
+                CmbSubtitle.IsEnabled = ((MediaFileType)CmbFileType.SelectedIndex).GetIsVideo();
+                TxtSavePath.IsEnabled = true;
+                BtnSelectSavePath.IsEnabled = true;
+
+            }
+            TxtErrors.Visibility = Visibility.Visible;
+            IsPrimaryButtonEnabled = false;
+        }
     }
 
     private void SelectSavePath(object sender, RoutedEventArgs e)
@@ -86,18 +124,9 @@ public sealed partial class AddDownloadDialog : ContentDialog
         ViewStack.ChangePage("Download");
     }
 
-    private void CmbFileType_SelectionChanged(object sender, SelectionChangedEventArgs e)
-    {
+    private async void CmbFileType_SelectionChanged(object sender, SelectionChangedEventArgs e) => await ValidateAsync();
 
-    }
+    private async void CmbQuality_SelectionChanged(object sender, SelectionChangedEventArgs e) => await ValidateAsync();
 
-    private void CmbQuality_SelectionChanged(object sender, SelectionChangedEventArgs e)
-    {
-
-    }
-
-    private void CmbSubtitle_SelectionChanged(object sender, SelectionChangedEventArgs e)
-    {
-
-    }
+    private async void CmbSubtitle_SelectionChanged(object sender, SelectionChangedEventArgs e) => await ValidateAsync();
 }
