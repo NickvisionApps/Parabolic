@@ -28,11 +28,11 @@ do
        "${INSTALL_PREFIX}"/share/icons/hicolor/symbolic/apps/
 done
 
-# echo "Installing GResource..."
-# mkdir -p "${INSTALL_PREFIX}"/share/org.nickvision.tubeconverter
-# glib-compile-resources ./NickvisionTubeConverter.GNOME/Resources/org.nickvision.tubeconverter.gresource.xml
-# mv ./NickvisionTubeConverter.GNOME/Resources/org.nickvision.tubeconverter.gresource \
-#    "${INSTALL_PREFIX}"/share/org.nickvision.tubeconverter/
+echo "Installing GResource..."
+mkdir -p "${INSTALL_PREFIX}"/share/org.nickvision.tubeconverter
+glib-compile-resources ./NickvisionTubeConverter.GNOME/Resources/org.nickvision.tubeconverter.gresource.xml
+mv ./NickvisionTubeConverter.GNOME/Resources/org.nickvision.tubeconverter.gresource \
+   "${INSTALL_PREFIX}"/share/org.nickvision.tubeconverter/
 
 echo "Installing desktop file..."
 mkdir -p "${INSTALL_PREFIX}"/share/applications

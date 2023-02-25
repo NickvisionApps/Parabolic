@@ -96,11 +96,14 @@ public partial class MainWindow
         _greetingStartPage = Adw.ButtonContent.New();
         _greetingStartPage.SetIconName(_controller.ShowSun ? "sun-outline-symbolic" : "moon-outline-symbolic");
         _greetingStartPage.SetLabel(_controller.Greeting);
-        _greetingStartPage.AddCssClass("title-2");
         var image = (Gtk.Image)_greetingStartPage.GetFirstChild();
-        image.SetIconSize(Gtk.IconSize.Large);
+        image.SetPixelSize(48);
+        image.SetMarginEnd(6);
+        var label = (Gtk.Label)_greetingStartPage.GetLastChild();
+        label.AddCssClass("greeting-title");
         _greetingStartPage.SetHalign(Gtk.Align.Center);
-        _greetingStartPage.SetMarginBottom(32);
+        _greetingStartPage.SetMarginTop(24);
+        _greetingStartPage.SetMarginBottom(14);
         //Add Download Button Start Page 
         _btnAddDownloadStartPage = Gtk.Button.NewWithLabel(_controller.Localizer["AddDownload"]);
         _btnAddDownloadStartPage.SetHalign(Gtk.Align.Center);
