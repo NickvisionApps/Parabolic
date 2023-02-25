@@ -23,7 +23,10 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for details on how can you help the proje
 <details>
  <summary>GNOME</summary>
 
- TODO
+ ![GNOMEStartScreen](NickvisionTubeConverter.GNOME/Screenshots/StartScreen.png)
+ ![GNOMELight](NickvisionTubeConverter.GNOME/Screenshots/Light.png)
+ ![GNOMEDark](NickvisionTubeConverter.GNOME/Screenshots/Dark.png)
+ ![GNOMEAddDownload](NickvisionTubeConverter.GNOME/Screenshots/AddDownload.png)
 </details>
 
 <details>
