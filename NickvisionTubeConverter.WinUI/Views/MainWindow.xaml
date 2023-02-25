@@ -27,7 +27,7 @@
             </StackPanel>
         </Grid>
 
-        <NavigationView x:Name="NavView" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,34,0,0" PaneDisplayMode="Top"
+        <NavigationView x:Name="NavView" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,34,0,0" PaneDisplayMode="LeftCompact"
                         IsBackButtonVisible="Collapsed" IsSettingsVisible="False" OpenPaneLength="260" SelectionChanged="NavView_SelectionChanged">
             <NavigationView.MenuItems>
                 <NavigationViewItem x:Name="NavViewItemHome" Tag="Home">
@@ -78,7 +78,17 @@
 
                         <nickvision:ViewStackPage x:Name="PageDownloads" PageName="Downloads">
                             <Grid>
-                                <Button HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,10" Width="110" Style="{ThemeResource AccentButtonStyle}" CornerRadius="20" Click="AddDownload">
+                                <TextBlock x:Name="LblDownloads" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="14,20,0,0" Style="{ThemeResource NavigationViewItemHeaderTextStyle}"/>
+
+                                <Border HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10,60,10,10" Background="{ThemeResource CardBackgroundFillColorDefaultBrush}" BorderThickness="1" BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}" CornerRadius="8">
+                                    <ScrollViewer>
+                                        <ListView x:Name="ListDownloads">
+
+                                        </ListView>
+                                    </ScrollViewer>
+                                </Border>
+
+                                <Button x:Name="BtnAddDownload" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,10,10,0" MinWidth="100" Height="40" Style="{ThemeResource AccentButtonStyle}" Click="AddDownload">
                                     <Button.Content>
                                         <StackPanel Orientation="Horizontal" Spacing="6" Margin="0,4,0,4">
                                             <FontIcon Margin="0,2,0,0" FontFamily="{StaticResource SymbolThemeFontFamily}" FontSize="16" Glyph="&#xE710;"/>
@@ -86,6 +96,10 @@
                                             <TextBlock x:Name="LblBtnAddDownload" Margin="0,-2,0,0" FontSize="16"/>
                                         </StackPanel>
                                     </Button.Content>
+
+                                    <Button.KeyboardAccelerators>
+                                        <KeyboardAccelerator Modifiers="Control" Key="N"/>
+                                    </Button.KeyboardAccelerators>
                                 </Button>
                             </Grid>
                         </nickvision:ViewStackPage>

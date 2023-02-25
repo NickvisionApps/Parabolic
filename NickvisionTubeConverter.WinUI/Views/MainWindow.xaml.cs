@@ -6,7 +6,9 @@ using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
 using NickvisionTubeConverter.Shared.Controllers;
+using NickvisionTubeConverter.Shared.Controls;
 using NickvisionTubeConverter.Shared.Events;
+using NickvisionTubeConverter.Shared.Models;
 using NickvisionTubeConverter.WinUI.Controls;
 using System;
 using System.Threading.Tasks;
@@ -46,6 +48,7 @@ public sealed partial class MainWindow : Window
         //Register Events
         _appWindow.Closing += Window_Closing;
         _controller.NotificationSent += NotificationSent;
+        _controller.UICreateDownloadRow = CreateDownloadRow;
         //Set TitleBar
         TitleBarTitle.Text = _controller.AppInfo.ShortName;
         _appWindow.Title = TitleBarTitle.Text;
@@ -95,6 +98,8 @@ public sealed partial class MainWindow : Window
         StatusPageHome.Description = _controller.Localizer["NoDownloads", "Description"];
         ToolTipService.SetToolTip(BtnHomeAddDownload, _controller.Localizer["AddDownload", "Tooltip"]);
         LblBtnHomeAddDownload.Text = _controller.Localizer["AddDownload"];
+        LblDownloads.Text = _controller.Localizer["Downloads"];
+        ToolTipService.SetToolTip(BtnAddDownload, _controller.Localizer["AddDownload", "Tooltip"]);
         LblBtnAddDownload.Text = _controller.Localizer["Add"];
         //Page
         NavViewItemHome.IsSelected = true;
@@ -225,16 +230,30 @@ public sealed partial class MainWindow : Window
     }
 
     /// <summary>
+    /// Creates a download row and adds it to the view
+    /// </summary>
+    /// <param name="download">The download model</param>
+    /// <returns>The new download row</returns>
+    private IDownloadRowControl CreateDownloadRow(Download download)
+    {
+        return null;
+    }
+
+    /// <summary>
     /// Occurs when the add download button is clicked
     /// </summary>
     /// <param name="sender">object</param>
     /// <param name="e">RoutedEventArgs</param>
     private async void AddDownload(object sender, RoutedEventArgs e)
     {
-        var dialog = new AddDownloadDialog(_controller.CreateAddDownloadDialogController(), InitializeWithWindow)
+        var addController = _controller.CreateAddDownloadDialogController();
+        var addDialog = new AddDownloadDialog(addController, InitializeWithWindow)
         {
             XamlRoot = Content.XamlRoot
         };
-        await dialog.ShowAsync();
+        if (await addDialog.ShowAsync())
+        {
+            await _controller.AddDownloadAsync(addController.Download!);
+        }
     }
 }
