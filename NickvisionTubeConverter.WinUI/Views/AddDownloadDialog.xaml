@@ -1,0 +1,51 @@
+<ContentDialog
+    x:Class="NickvisionTubeConverter.WinUI.Views.AddDownloadDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:NickvisionTubeConverter.WinUI.Views"
+    xmlns:nickvision="using:NickvisionTubeConverter.WinUI.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:wct="using:CommunityToolkit.WinUI.UI.Controls"
+    xmlns:labs="using:CommunityToolkit.Labs.WinUI"
+    mc:Ignorable="d" Style="{StaticResource DefaultContentDialogStyle}"
+    DefaultButton="Primary">
+
+    <nickvision:ViewStack x:Name="ViewStack" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="400">
+        <nickvision:ViewStack.Pages>
+            <nickvision:ViewStackPage x:Name="PageLoading" PageName="Loading">
+                <wct:Loading IsLoading="True">
+                    <Grid>
+                        <ProgressRing HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10" Width="40" Height="40" IsActive="True"/>
+                    </Grid>
+                </wct:Loading>
+            </nickvision:ViewStackPage>
+
+            <nickvision:ViewStackPage x:Name="PageDownload" PageName="Download">
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <StackPanel Spacing="6">
+                        <TextBox x:Name="TxtVideoUrl" HorizontalAlignment="Stretch" TextChanged="TxtVideoUrl_TextChanged"/>
+
+                        <ComboBox x:Name="CmbFileType" HorizontalAlignment="Stretch" SelectionChanged="CmbFileType_SelectionChanged"/>
+
+                        <ComboBox x:Name="CmbQuality" HorizontalAlignment="Stretch" SelectionChanged="CmbQuality_SelectionChanged"/>
+
+                        <ComboBox x:Name="CmbSubtitle" HorizontalAlignment="Stretch" SelectionChanged="CmbSubtitle_SelectionChanged"/>
+
+                        <wct:DockPanel HorizontalAlignment="Stretch" LastChildFill="True">
+                            <Button x:Name="BtnSelectSavePath" wct:DockPanel.Dock="Right" Margin="6,26,0,0" Style="{ThemeResource AccentButtonStyle}" Click="SelectSavePath">
+                                <Button.Content>
+                                    <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" FontSize="16" Glyph="&#xE838;"/>
+                                </Button.Content>
+                            </Button>
+
+                            <TextBox Name="TxtSavePath" wct:DockPanel.Dock="Left" IsReadOnly="True"/>
+                        </wct:DockPanel>
+
+                        <TextBlock Name="TxtErrors" Visibility="Collapsed" Margin="0,10,0,0" Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"/>
+                    </StackPanel>
+                </ScrollViewer>
+            </nickvision:ViewStackPage>
+        </nickvision:ViewStack.Pages>
+    </nickvision:ViewStack>
+</ContentDialog>

@@ -1,0 +1,26 @@
+on: ["push", "pull_request"]
+name: CI
+jobs:
+  flatpak:
+    name: "Flatpak"
+    runs-on: ubuntu-latest
+    container:
+      image: bilelmoussaoui/flatpak-github-actions:gnome-43
+      options: --privileged
+    strategy:
+      matrix:
+        # As of the time of writing (February 2023), GitHub Actions only provides x86_64 runners. While Flatpak does
+        # provide cross-building for other architectures, it uses QEMU to do so, and dotnet does not play well under
+        # QEMU for arm64. See below links for potential updates:
+        # - https://github.com/dotnet/runtime/issues/13648
+        # - https://github.com/actions/runner-images/issues/5631
+        arch: [x86_64]
+      fail-fast: false
+    steps:
+      - uses: actions/checkout@v3
+      - uses: flatpak/flatpak-github-actions/flatpak-builder@v5
+        with:
+          bundle: org.nickvision.tubeconverter.flatpak
+          manifest-path: NickvisionTubeConverter.GNOME/org.nickvision.tubeconverter.json
+          cache-key: flatpak-builder-${{ github.sha }}
+          arch: ${{ matrix.arch }}
