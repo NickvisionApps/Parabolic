@@ -229,6 +229,11 @@ public partial class AddDownloadDialog
                 _rowVideoUrl.AddCssClass("error");
                 _rowVideoUrl.SetTitle(_controller.Localizer["VideoUrl", "Invalid"]);
             }
+            if (checkStatus.HasFlag(DownloadCheckStatus.PlaylistNotSupported))
+            {
+                _rowVideoUrl.AddCssClass("error");
+                _rowVideoUrl.SetTitle(_controller.Localizer["VideoUrl", "PlaylistNotSupported"]);
+            }
             if (checkStatus.HasFlag(DownloadCheckStatus.InvalidSaveFolder))
             {
                 _rowSavePath.AddCssClass("error");

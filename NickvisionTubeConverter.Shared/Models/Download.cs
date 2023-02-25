@@ -82,8 +82,8 @@ public class Download
     /// Gets whether or not a video url is valid
     /// </summary>
     /// <param name="url">The video url to check</param>
-    /// <returns>Whether or not the video url is valid, along with the video title if it is</returns>
-    public static async Task<(bool, string)> GetIsValidVideoUrlAsync(string url)
+    /// <returns>Whether or not the video url is valid, along with the video title if it is, and whether it is a playlist</returns>
+    public static async Task<(bool, string, bool)> GetIsValidVideoUrlAsync(string url)
     {
         return await Task.Run(() =>
         {
@@ -97,13 +97,20 @@ public class Download
                         { "merge_output_format", "/" }
                     };
                     Python.Runtime.PyDict videoInfo = ytdlp.YoutubeDL(ytOpt).extract_info(url, download: false);
-                    return (true, videoInfo.HasKey("title") ? (videoInfo["title"].As<string?>() ?? "Video") : "Video");
+                    if (videoInfo.HasKey("playlist_count"))
+                    {
+                        return (false, "", true);
+                    }
+                    else
+                    {
+                        return (true, videoInfo.HasKey("title") ? (videoInfo["title"].As<string?>() ?? "Video") : "Video", false);
+                    }
                 }
             }
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
-                return (false, "");
+                return (false, "", false);
             }
         });
     }

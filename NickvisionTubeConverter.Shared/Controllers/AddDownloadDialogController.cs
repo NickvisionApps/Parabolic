@@ -14,7 +14,8 @@ public enum DownloadCheckStatus
     Valid = 1,
     EmptyVideoUrl = 2,
     InvalidVideoUrl = 4,
-    InvalidSaveFolder = 8
+    InvalidSaveFolder = 8,
+    PlaylistNotSupported = 16
 }
 
 /// <summary>
@@ -97,10 +98,10 @@ public class AddDownloadDialogController
         else if (_previousUrl != videoUrl)
         {
             _previousUrl = videoUrl;
-            var (valid, title) = await Download.GetIsValidVideoUrlAsync(videoUrl);
+            var (valid, title, playlist) = await Download.GetIsValidVideoUrlAsync(videoUrl);
             if (!valid)
             {
-                result |= DownloadCheckStatus.InvalidVideoUrl;
+                result |= playlist ? DownloadCheckStatus.PlaylistNotSupported : DownloadCheckStatus.InvalidVideoUrl;
             }
             else
             {
