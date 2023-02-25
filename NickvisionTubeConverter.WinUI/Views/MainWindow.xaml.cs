@@ -231,7 +231,7 @@ public sealed partial class MainWindow : Window
     /// <param name="e">RoutedEventArgs</param>
     private async void AddDownload(object sender, RoutedEventArgs e)
     {
-        var dialog = new AddDownloadDialog(_controller.CreateAddDownloadDialogController())
+        var dialog = new AddDownloadDialog(_controller.CreateAddDownloadDialogController(), InitializeWithWindow)
         {
             XamlRoot = Content.XamlRoot
         };

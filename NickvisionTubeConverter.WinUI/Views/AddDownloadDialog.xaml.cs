@@ -3,7 +3,9 @@ using Microsoft.UI.Xaml.Controls;
 using NickvisionTubeConverter.Shared.Controllers;
 using NickvisionTubeConverter.Shared.Models;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
+using Windows.Storage.Pickers;
 
 namespace NickvisionTubeConverter.WinUI.Views;
 
@@ -13,14 +15,18 @@ namespace NickvisionTubeConverter.WinUI.Views;
 public sealed partial class AddDownloadDialog : ContentDialog
 {
     private AddDownloadDialogController _controller;
+    private readonly Action<object> _initializeWithWindow;
 
     /// <summary>
     /// Constructs an AddDownloadDialog
     /// </summary>
-    public AddDownloadDialog(AddDownloadDialogController controller)
+    /// <param name="controller">The AddDownloadDialogController</param>
+    /// <param name="initializeWithWindow">The Action<object> callback for InitializeWithWindow</param>
+    public AddDownloadDialog(AddDownloadDialogController controller, Action<object> initializeWithWindow)
     {
         InitializeComponent();
         _controller = controller;
+        _initializeWithWindow = initializeWithWindow;
         //Localize Strings
         Title = _controller.Localizer["AddDownload"];
         CloseButtonText = _controller.Localizer["Cancel"];
@@ -52,6 +58,10 @@ public sealed partial class AddDownloadDialog : ContentDialog
         CmbFileType.SelectedIndex = (int)_controller.PreviousMediaFileType;
     }
 
+    // <summary>
+    /// Shows the AddDownloadDialog
+    /// </summary>
+    /// <returns>True if the dialog was accepted, else false</returns>
     public async Task<bool> ShowAsync()
     {
         await ValidateAsync();
@@ -65,6 +75,9 @@ public sealed partial class AddDownloadDialog : ContentDialog
         return true;
     }
 
+    /// <summary>
+    /// Validates the dialog's input
+    /// </summary>
     private async Task ValidateAsync()
     {
         var checkStatus = await _controller.UpdateDownloadAsync(TxtVideoUrl.Text, (MediaFileType)CmbFileType.SelectedIndex, TxtSavePath.Text, (Quality)CmbQuality.SelectedIndex, (Subtitle)CmbSubtitle.SelectedIndex);
@@ -111,11 +124,31 @@ public sealed partial class AddDownloadDialog : ContentDialog
         }
     }
 
-    private void SelectSavePath(object sender, RoutedEventArgs e)
+    /// <summary>
+    /// Occurs when the select save path button is clicked
+    /// </summary>
+    /// <param name="sender">object</param>
+    /// <param name="e">RoutedEventArgs</param>
+    private async void SelectSavePath(object sender, RoutedEventArgs e)
     {
-
+        var fileSavePicker = new FileSavePicker();
+        var fileType = (MediaFileType)CmbFileType.SelectedIndex;
+        _initializeWithWindow(fileSavePicker);
+        fileSavePicker.FileTypeChoices.Add(fileType.ToString(), new List<string>() { fileType.GetDotExtension() });
+        fileSavePicker.SuggestedStartLocation = fileType.GetIsVideo() ? PickerLocationId.VideosLibrary : PickerLocationId.MusicLibrary;
+        var file = await fileSavePicker.PickSaveFileAsync();
+        if (file != null)
+        {
+            TxtSavePath.Text = file.Path;
+            await ValidateAsync();
+        }
     }
 
+    /// <summary>
+    /// Occurs when the video url is changed
+    /// </summary>
+    /// <param name="sender">object</param>
+    /// <param name="e">TextChangedEventArgs</param>
     private async void TxtVideoUrl_TextChanged(object sender, TextChangedEventArgs e)
     {
         ViewStack.ChangePage("Loading");
@@ -124,9 +157,24 @@ public sealed partial class AddDownloadDialog : ContentDialog
         ViewStack.ChangePage("Download");
     }
 
+    /// <summary>
+    /// Occurs when the file type is changed
+    /// </summary>
+    /// <param name="sender">object</param>
+    /// <param name="e">SelectionChangedEventArgs</param>
     private async void CmbFileType_SelectionChanged(object sender, SelectionChangedEventArgs e) => await ValidateAsync();
 
+    /// <summary>
+    /// Occurs when the quality is changed
+    /// </summary>
+    /// <param name="sender">object</param>
+    /// <param name="e">SelectionChangedEventArgs</param>
     private async void CmbQuality_SelectionChanged(object sender, SelectionChangedEventArgs e) => await ValidateAsync();
 
+    /// <summary>
+    /// Occurs when the subtitle is changed
+    /// </summary>
+    /// <param name="sender">object</param>
+    /// <param name="e">SelectionChangedEventArgs</param>
     private async void CmbSubtitle_SelectionChanged(object sender, SelectionChangedEventArgs e) => await ValidateAsync();
 }
