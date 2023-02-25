@@ -253,8 +253,8 @@ public partial class MainWindow
     /// <summary>
     /// Creates a download row and adds it to the view
     /// </summary>
-    /// <param name="download"></param>
-    /// <returns></returns>
+    /// <param name="download">The download model</param>
+    /// <returns>The new download row</returns>
     private IDownloadRowControl CreateDownloadRow(Download download)
     {
         _btnAddDownload.SetVisible(true);
@@ -272,8 +272,8 @@ public partial class MainWindow
     /// <summary>
     /// Occurs when the add download action is triggered
     /// </summary>
-    /// <param name="sender"></param>
-    /// <param name="e"></param>
+    /// <param name="sender">Gio.SimpleAction</param>
+    /// <param name="e">EventArgs</param>
     private async void AddDownload(Gio.SimpleAction sender, EventArgs e)
     {
         var addController = _controller.CreateAddDownloadDialogController();
