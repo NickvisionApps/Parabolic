@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Runtime.InteropServices;
-using System.Threading;
 using System.Threading.Tasks;
 
 namespace NickvisionTubeConverter.Shared.Models;
@@ -213,7 +212,7 @@ public class Download
     /// </summary>
     public void Stop()
     {
-        if(_pid != null)
+        if (_pid != null)
         {
             using (Python.Runtime.Py.GIL())
             {

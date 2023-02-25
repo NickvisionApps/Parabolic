@@ -195,7 +195,7 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
                     break;
             }
         });
-        if(!_wasStopped)
+        if (!_wasStopped)
         {
             _imgStatus.RemoveCssClass("accent");
             _imgStatus.AddCssClass(success ? "success" : "error");
