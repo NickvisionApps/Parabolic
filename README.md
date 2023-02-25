@@ -4,7 +4,10 @@
  **An easy-to-use video downloader**
 
 # Features
-TODO
+- A basic yt-dlp frontend
+- Supports downloading videos in multiple formats (mp4, webm, mp3, opus, flac, and wav)
+- Run multiple downloads at a time
+- Supports downloading metadata and video subtitles
 
 # Disclaimer
 The authors of Nickvision Tube Converter are not responsible/liable for any misuse of this program that may violate local copyright/DMCA laws. Users use this application at their own risk.
