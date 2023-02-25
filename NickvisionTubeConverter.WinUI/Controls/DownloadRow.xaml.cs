@@ -47,7 +47,7 @@ public sealed partial class DownloadRow : UserControl, IDownloadRowControl
     /// <param name="embedMetadata">Whether or not to embed video metadata</param>
     public async Task StartAsync(bool embedMetadata)
     {
-        if(_previousEmbedMetadata == null)
+        if (_previousEmbedMetadata == null)
         {
             _previousEmbedMetadata = embedMetadata;
         }
@@ -61,7 +61,7 @@ public sealed partial class DownloadRow : UserControl, IDownloadRowControl
         ProgBar.Value = 0;
         var success = await _download.RunAsync(embedMetadata, (state) =>
         {
-            switch(state.Status)
+            switch (state.Status)
             {
                 case DownloadProgressStatus.Downloading:
                     App.MainWindow!.DispatcherQueue.TryEnqueue(() =>
@@ -80,7 +80,7 @@ public sealed partial class DownloadRow : UserControl, IDownloadRowControl
                     break;
             }
         });
-        if(!_wasStopped)
+        if (!_wasStopped)
         {
             Icon.Glyph = success ? "\uE10B" : "\uE10A";
             ProgBar.IsIndeterminate = false;
