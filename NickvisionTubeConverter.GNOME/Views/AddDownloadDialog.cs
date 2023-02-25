@@ -260,7 +260,7 @@ public partial class AddDownloadDialog
         filter.SetName(((MediaFileType)_rowFileType.GetSelected()).GetDotExtension());
         filter.AddPattern($"*{((MediaFileType)_rowFileType.GetSelected()).GetDotExtension()}");
         fileDialog.SetFilter(filter);
-        if (_rowSavePath.GetText().Length > 0)
+        if (_rowSavePath.GetText().Length > 0 && Directory.Exists(Path.GetDirectoryName(_rowSavePath.GetText())) && _rowSavePath.GetText() != "/")
         {
             var folder = Gio.FileHelper.NewForPath(Path.GetDirectoryName(_rowSavePath.GetText()));
             gtk_file_chooser_set_current_folder(fileDialog.Handle, folder.Handle, IntPtr.Zero);

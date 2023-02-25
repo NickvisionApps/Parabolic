@@ -113,7 +113,7 @@ public class AddDownloadDialogController
             return result;
         }
         Download = new Download(videoUrl, mediaFileType, _saveFolder, _saveFilename, quality, subtitles);
-        if (!Regex.Match(_saveFolder, @"^\/run\/user\/.*\/doc\/.*").Success)
+        if (!string.IsNullOrEmpty(_saveFolder) && !Regex.Match(_saveFolder, @"^\/run\/user\/.*\/doc\/.*").Success)
         {
             Configuration.Current.PreviousSaveFolder = _saveFolder;
         }
