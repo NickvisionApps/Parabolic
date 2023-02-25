@@ -109,6 +109,10 @@ public sealed partial class AddDownloadDialog : ContentDialog
             {
                 TxtVideoUrl.Header = _controller.Localizer["VideoUrl", "Invalid"];
             }
+            if (checkStatus.HasFlag(DownloadCheckStatus.PlaylistNotSupported))
+            {
+                TxtVideoUrl.Header = _controller.Localizer["VideoUrl", "PlaylistNotSupported"];
+            }
             if (checkStatus.HasFlag(DownloadCheckStatus.InvalidSaveFolder))
             {
                 TxtSavePath.Header = _controller.Localizer["SavePath", "Invalid"];
