@@ -35,10 +35,10 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for details on how can you help the proje
 <details>
  <summary>WinUI</summary>
 
- ![HomePage](NickvisionMoney.WinUI/Screenshots/HomePage.png)
- ![AddDownloadDialog](NickvisionMoney.WinUI/Screenshots/AddDownloadDialog.png)
- ![DownloadsPage](NickvisionMoney.WinUI/Screenshots/DownloadsPage.png)
- ![DarkMode](NickvisionMoney.WinUI/Screenshots/DarkMode.png)
+ ![HomePage](NickvisionTubeConverter.WinUI/Screenshots/HomePage.png)
+ ![AddDownloadDialog](NickvisionTubeConverter.WinUI/Screenshots/AddDownloadDialog.png)
+ ![DownloadsPage](NickvisionTubeConverter.WinUI/Screenshots/DownloadsPage.png)
+ ![DarkMode](NickvisionTubeConverter.WinUI/Screenshots/DarkMode.png)
 </details>
 
 # Dependencies
