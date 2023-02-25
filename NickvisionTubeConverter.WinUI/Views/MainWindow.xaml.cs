@@ -31,6 +31,7 @@ public sealed partial class MainWindow : Window
     private bool _isActived;
     private readonly SystemBackdropConfiguration _backdropConfiguration;
     private readonly MicaController? _micaController;
+    private bool _closeAllowed;
 
     /// <summary>
     /// Constructs a MainWindow
@@ -45,6 +46,7 @@ public sealed partial class MainWindow : Window
         _hwnd = WindowNative.GetWindowHandle(this);
         _appWindow = AppWindow.GetFromWindowId(Win32Interop.GetWindowIdFromWindow(_hwnd));
         _isActived = true;
+        _closeAllowed = false;
         //Register Events
         _appWindow.Closing += Window_Closing;
         _controller.NotificationSent += NotificationSent;
@@ -153,8 +155,9 @@ public sealed partial class MainWindow : Window
     /// <param name="e">AppWindowClosingEventArgs</param>
     private async void Window_Closing(AppWindow sender, AppWindowClosingEventArgs e)
     {
-        if (_controller.AreDownloadsRunning)
+        if (_controller.AreDownloadsRunning && !_closeAllowed)
         {
+            e.Cancel = true;
             var closeDialog = new ContentDialog()
             {
                 Title = _controller.Localizer["CloseAndStop", "Title"],
@@ -164,15 +167,20 @@ public sealed partial class MainWindow : Window
                 DefaultButton = ContentDialogButton.Close,
                 XamlRoot = Content.XamlRoot
             };
-            if (await closeDialog.ShowAsync() != ContentDialogResult.Primary)
+            var result = await closeDialog.ShowAsync();
+            if (result == ContentDialogResult.Primary)
             {
-                e.Cancel = true;
-                return;
+                _closeAllowed = true;
+                e.Cancel = false;
+                Close();
             }
         }
-        _controller.StopDownloads();
-        _controller.Dispose();
-        _micaController?.Dispose();
+        else
+        {
+            _controller.StopDownloads();
+            _controller.Dispose();
+            _micaController?.Dispose();
+        }
     }
 
     /// <summary>
