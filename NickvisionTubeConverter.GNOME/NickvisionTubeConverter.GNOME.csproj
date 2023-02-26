@@ -15,4 +15,10 @@
 		<ProjectReference Include="..\NickvisionTubeConverter.Shared\NickvisionTubeConverter.Shared.csproj" />
 	</ItemGroup>
 
+	<Target Name="EmbedUIFiles" BeforeTargets="BeforeResGen">
+	  <ItemGroup>
+      	<EmbeddedResource Include="Blueprints\*.ui" Type="Non-Resx" WithCulture="false" />
+	  </ItemGroup>
+	</Target>
+
 </Project>

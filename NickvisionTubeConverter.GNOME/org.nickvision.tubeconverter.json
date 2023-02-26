@@ -196,6 +196,17 @@
             ]
         },
         {
+            "name": "blueprint-compiler",
+            "buildsystem": "meson",
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://gitlab.gnome.org/jwestman/blueprint-compiler",
+                    "tag": "v0.6.0"
+                }
+            ]
+        },
+        {
             "name": "org.nickvision.tubeconverter",
             "buildsystem": "simple",
             "build-options": {
@@ -219,7 +230,9 @@
             },
             "build-commands": [
                 "mkdir -p /app/opt/org.nickvision.tubeconverter",
+                "blueprint-compiler batch-compile NickvisionTubeConverter.GNOME/Blueprints/ NickvisionTubeConverter.GNOME/Blueprints/ NickvisionTubeConverter.GNOME/Blueprints/*.blp",
                 "dotnet publish -c Release NickvisionTubeConverter.GNOME/NickvisionTubeConverter.GNOME.csproj $([ -d \"./nuget-sources\" ] && echo \"--source ./nuget-sources\") $([ \"$RUNTIME\" ] && echo \"--runtime $RUNTIME\") --self-contained true -o /app/opt/org.nickvision.tubeconverter",
+                "rm NickvisionTubeConverter.GNOME/Blueprints/*.ui",
                 "sh NickvisionTubeConverter.GNOME/install_extras.sh /app",
                 "desktop-file-edit --set-key='Exec' --set-value='/app/opt/org.nickvision.tubeconverter/NickvisionTubeConverter.GNOME' /app/share/applications/org.nickvision.tubeconverter.desktop"
             ],
