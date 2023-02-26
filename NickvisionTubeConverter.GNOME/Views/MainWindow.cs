@@ -11,7 +11,7 @@ namespace NickvisionTubeConverter.GNOME.Views;
 /// <summary>
 /// The MainWindow for the application
 /// </summary>
-public partial class MainWindow
+public partial class MainWindow : Adw.ApplicationWindow
 {
     private readonly MainWindowController _controller;
     private readonly Adw.Application _application;
@@ -38,8 +38,6 @@ public partial class MainWindow
     private readonly Gtk.Overlay _overlayLoading;
     private readonly Adw.ViewStack _viewStack;
 
-    public Adw.ApplicationWindow Handle { get; init; }
-
     /// <summary>
     /// Constructs a MainWindow
     /// </summary>
@@ -50,15 +48,14 @@ public partial class MainWindow
         //Window Settings
         _controller = controller;
         _application = application;
-        Handle = Adw.ApplicationWindow.New(_application);
-        Handle.SetDefaultSize(800, 600);
-        Handle.SetSizeRequest(360, -1);
-        Handle.SetTitle(_controller.AppInfo.ShortName);
+        SetDefaultSize(800, 600);
+        SetSizeRequest(360, -1);
+        SetTitle(_controller.AppInfo.ShortName);
         if (_controller.IsDevVersion)
         {
-            Handle.AddCssClass("devel");
+            AddCssClass("devel");
         }
-        Handle.OnCloseRequest += OnCloseRequested;
+        OnCloseRequest += OnCloseRequested;
         //Main Box
         _mainBox = Gtk.Box.New(Gtk.Orientation.Vertical, 0);
         //Header Bar
@@ -178,34 +175,34 @@ public partial class MainWindow
         _overlayLoading.SetVexpand(true);
         _overlayLoading.AddOverlay(_binSpinner);
         _overlayLoading.SetChild(_mainBox);
-        Handle.SetContent(_overlayLoading);
+        SetContent(_overlayLoading);
         //Register Events 
         _controller.NotificationSent += NotificationSent;
         _controller.UICreateDownloadRow = CreateDownloadRow;
         //Add Download Action
         var actDownload = Gio.SimpleAction.New("addDownload", null);
         actDownload.OnActivate += AddDownload;
-        Handle.AddAction(actDownload);
+        AddAction(actDownload);
         application.SetAccelsForAction("win.addDownload", new string[] { "<Ctrl>n" });
         //Preferences Action
         var actPreferences = Gio.SimpleAction.New("preferences", null);
         actPreferences.OnActivate += Preferences;
-        Handle.AddAction(actPreferences);
+        AddAction(actPreferences);
         application.SetAccelsForAction("win.preferences", new string[] { "<Ctrl>comma" });
         //Keyboard Shortcuts Action
         var actKeyboardShortcuts = Gio.SimpleAction.New("keyboardShortcuts", null);
         actKeyboardShortcuts.OnActivate += KeyboardShortcuts;
-        Handle.AddAction(actKeyboardShortcuts);
+        AddAction(actKeyboardShortcuts);
         application.SetAccelsForAction("win.keyboardShortcuts", new string[] { "<Ctrl>question" });
         //Quit Action
         var actQuit = Gio.SimpleAction.New("quit", null);
         actQuit.OnActivate += Quit;
-        Handle.AddAction(actQuit);
+        AddAction(actQuit);
         application.SetAccelsForAction("win.quit", new string[] { "<Ctrl>q", "<Ctrl>w" });
         //About Action
         var actAbout = Gio.SimpleAction.New("about", null);
         actAbout.OnActivate += About;
-        Handle.AddAction(actAbout);
+        AddAction(actAbout);
         application.SetAccelsForAction("win.about", new string[] { "F1" });
     }
 
@@ -214,8 +211,8 @@ public partial class MainWindow
     /// </summary>
     public async Task StartAsync()
     {
-        _application.AddWindow(Handle);
-        Handle.Show();
+        _application.AddWindow(this);
+        Show();
         _binSpinner.SetVisible(true);
         _mainBox.SetVisible(false);
         _spinner.Start();
@@ -242,7 +239,7 @@ public partial class MainWindow
     {
         if (_controller.AreDownloadsRunning)
         {
-            var closeDialog = new MessageDialog(Handle, _controller.Localizer["CloseAndStop", "Title"], _controller.Localizer["CloseAndStop", "Description"], _controller.Localizer["No"], _controller.Localizer["Yes"]);
+            var closeDialog = new MessageDialog(this, _controller.Localizer["CloseAndStop", "Title"], _controller.Localizer["CloseAndStop", "Description"], _controller.Localizer["No"], _controller.Localizer["Yes"]);
             if (closeDialog.Run() == MessageDialogResponse.Cancel)
             {
                 return true;
@@ -280,7 +277,7 @@ public partial class MainWindow
     private async void AddDownload(Gio.SimpleAction sender, EventArgs e)
     {
         var addController = _controller.CreateAddDownloadDialogController();
-        var addDialog = new AddDownloadDialog(addController, Handle);
+        var addDialog = new AddDownloadDialog(addController, this);
         await addDialog.ShowAsync();
         addDialog.OnResponse += async (sender, e) =>
         {
@@ -299,7 +296,7 @@ public partial class MainWindow
     /// <param name="e">EventArgs</param>
     private void Preferences(Gio.SimpleAction sender, EventArgs e)
     {
-        var preferencesDialog = new PreferencesDialog(_controller.PreferencesViewController, _application, Handle);
+        var preferencesDialog = new PreferencesDialog(_controller.PreferencesViewController, _application, this);
         preferencesDialog.Show();
     }
 
@@ -310,7 +307,7 @@ public partial class MainWindow
     /// <param name="e">EventArgs</param>
     private void KeyboardShortcuts(Gio.SimpleAction sender, EventArgs e)
     {
-        var shortcutsDialog = new ShortcutsDialog(_controller.Localizer, _controller.AppInfo.ShortName, Handle);
+        var shortcutsDialog = new ShortcutsDialog(_controller.Localizer, _controller.AppInfo.ShortName, this);
         shortcutsDialog.Show();
     }
 
@@ -321,7 +318,7 @@ public partial class MainWindow
     /// <param name="e">EventArgs</param>
     private void Quit(Gio.SimpleAction sender, EventArgs e)
     {
-        if (!OnCloseRequested(Handle, EventArgs.Empty))
+        if (!OnCloseRequested(this, EventArgs.Empty))
         {
             _application.Quit();
         }
@@ -335,7 +332,7 @@ public partial class MainWindow
     private void About(Gio.SimpleAction sender, EventArgs e)
     {
         var dialog = Adw.AboutWindow.New();
-        dialog.SetTransientFor(Handle);
+        dialog.SetTransientFor(this);
         dialog.SetApplicationName(_controller.AppInfo.ShortName);
         dialog.SetApplicationIcon(_controller.AppInfo.ID + (_controller.AppInfo.GetIsDevelVersion() ? "-devel" : ""));
         dialog.SetVersion(_controller.AppInfo.Version);
