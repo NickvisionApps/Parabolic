@@ -1,0 +1,40 @@
+using Gtk 4.0;
+using Adw 1;
+
+Gtk.Box _mainBox {
+  orientation: vertical;
+
+  Adw.HeaderBar {
+    title-widget: Adw.WindowTitle {
+      title: _("Preferences");
+    };
+  }
+
+  Adw.PreferencesPage {
+    Adw.PreferencesGroup {
+      title: _("UserInterface");
+      description: _("UserInterfaceDescription");
+
+      Adw.ComboRow _themeRow {
+        title: _("Theme");
+        model: Gtk.StringList {
+          strings [_("ThemeLight"), _("ThemeDark"), _("ThemeSystem")]
+        };
+      }
+    }
+
+    Adw.PreferencesGroup {
+      title: _("Converter");
+      description: _("Converter.Description");
+
+      Adw.ActionRow {
+        title: _("EmbedMetadata");
+        subtitle: _("EmbedMetadata.Description");
+
+        Gtk.Switch _embedMetadataSwitch {
+          valign: center;
+        }
+      }
+    }
+  }
+}
