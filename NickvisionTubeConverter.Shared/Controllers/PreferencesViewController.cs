@@ -47,6 +47,16 @@ public class PreferencesViewController
     }
 
     /// <summary>
+    /// The maximum number of active downloads (should be between 1-10)
+    /// </summary>
+    public int MaxNumberOfActiveDownloads
+    {
+        get => Configuration.Current.MaxNumberOfActiveDownloads;
+
+        set => Configuration.Current.MaxNumberOfActiveDownloads = value;
+    }
+
+    /// <summary>
     /// Saves the configuration to disk
     /// </summary>
     public void SaveConfiguration() => Configuration.Current.Save();
