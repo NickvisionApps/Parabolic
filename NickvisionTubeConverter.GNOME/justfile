@@ -7,7 +7,9 @@ default:
 
 # Run the application without installing
 run:
+    blueprint-compiler batch-compile Blueprints/ Blueprints/ Blueprints/*.blp
     dotnet build
+    rm Blueprints/*.ui
     glib-compile-resources --sourcedir ./Resources \
     ./Resources/{{app_id}}.gresource.xml
     mv ./Resources/{{app_id}}.gresource ./bin/Debug/net7.0/
@@ -33,10 +35,12 @@ publish PREFIX LIB_DIR=lib: && (_install_extras PREFIX)
         RUNTIME="linux-arm64"
     fi
 
+    blueprint-compiler batch-compile Blueprints/ Blueprints/ Blueprints/*.blp
     mkdir -p {{PREFIX}}/{{LIB_DIR}}/{{app_id}}
     dotnet publish -c Release {{project_name}}.GNOME.csproj \
         $([ "$RUNTIME" ] && echo "--runtime $RUNTIME") \
         --self-contained false -o {{PREFIX}}/{{LIB_DIR}}/{{app_id}}
+    rm Blueprints/*.ui
     mkdir -p {{PREFIX}}/bin
     cat > {{PREFIX}}/bin/{{app_id}} << EOF
     #!/bin/sh
@@ -64,10 +68,12 @@ publish-self-contained PREFIX LIB_DIR=lib: && (_install_extras PREFIX)
         RUNTIME="linux-arm64"
     fi
 
+    blueprint-compiler batch-compile Blueprints/ Blueprints/ Blueprints/*.blp
     mkdir -p {{PREFIX}}/{{LIB_DIR}}/{{app_id}}
     dotnet publish -c Release {{project_name}}.GNOME.csproj \
         $([ "$RUNTIME" ] && echo "--runtime $RUNTIME") \
         --self-contained true -o {{PREFIX}}/{{LIB_DIR}}/{{app_id}}
+    rm Blueprints/*.ui
     mkdir -p {{PREFIX}}/bin
     cat > {{PREFIX}}/bin/{{app_id}} << EOF
     #!/bin/sh
@@ -90,11 +96,13 @@ publish-flatpak: && (_install_extras "/app")
         RUNTIME="linux-arm64"
     fi
 
+    blueprint-compiler batch-compile Blueprints/ Blueprints/ Blueprints/*.blp
     mkdir -p /app/lib/{{app_id}}
     dotnet publish -c Release {{project_name}}.GNOME.csproj \
         $([ -d "$FLATPAK_BUILDER_BUILDDIR/nuget-sources" ] && \
         echo "--source $FLATPAK_BUILDER_BUILDDIR/nuget-sources") \
         --runtime $RUNTIME --self-contained true -o /app/lib/{{app_id}}
+    rm Blueprints/*.ui
     mkdir -p /app/bin
     cat > /app/bin/{{app_id}} << EOF
     #!/bin/sh
