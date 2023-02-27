@@ -36,7 +36,7 @@
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
 
-                <NavigationViewItem x:Name="NavViewItemDownloads" Tag="Downloads">
+                <NavigationViewItem x:Name="NavViewItemDownloads" Tag="Downloads" Visibility="Collapsed">
                     <NavigationViewItem.Icon>
                         <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE118;"/>
                     </NavigationViewItem.Icon>
@@ -81,27 +81,27 @@
                                 <ScrollViewer HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10,10,10,10">
                                     <Grid>
                                         <Grid.RowDefinitions>
-                                            <RowDefinition MinHeight="300" Height="Auto"/>
-                                            <RowDefinition MinHeight="300" Height="Auto"/>
-                                            <RowDefinition MinHeight="300" Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
                                         </Grid.RowDefinitions>
 
-                                        <StackPanel Grid.Row="0" Margin="10,10,10,0" Orientation="Vertical" Spacing="6">
+                                        <StackPanel x:Name="SectionDownloading" Grid.Row="0" Margin="10,10,10,0" Orientation="Vertical" Spacing="6" Visibility="Collapsed">
                                             <TextBlock x:Name="LblDownloading" Margin="4,0,0,0" Style="{ThemeResource NavigationViewItemHeaderTextStyle}" FontSize="16"/>
 
                                             <ListView x:Name="ListDownloading" Margin="-18,0,-6,0"/>
                                         </StackPanel>
 
-                                        <StackPanel Grid.Row="1" Margin="10,10,10,0" Orientation="Vertical" Spacing="6">
-                                            <TextBlock x:Name="LblQueued" Margin="4,0,0,0" Style="{ThemeResource NavigationViewItemHeaderTextStyle}" FontSize="16"/>
-
-                                            <ListView x:Name="ListQueued"/>
-                                        </StackPanel>
-
-                                        <StackPanel Grid.Row="2" Margin="10,10,10,0" Orientation="Vertical" Spacing="6">
+                                        <StackPanel x:Name="SectionCompleted" Grid.Row="1" Margin="10,10,10,0" Orientation="Vertical" Spacing="6" Visibility="Collapsed">
                                             <TextBlock x:Name="LblCompleted" Margin="4,0,0,0" Style="{ThemeResource NavigationViewItemHeaderTextStyle}" FontSize="16"/>
 
                                             <ListView x:Name="ListCompleted"/>
+                                        </StackPanel>
+
+                                        <StackPanel x:Name="SectionQueued" Grid.Row="2" Margin="10,10,10,0" Orientation="Vertical" Spacing="6" Visibility="Collapsed">
+                                            <TextBlock x:Name="LblQueued" Margin="4,0,0,0" Style="{ThemeResource NavigationViewItemHeaderTextStyle}" FontSize="16"/>
+
+                                            <ListView x:Name="ListQueued"/>
                                         </StackPanel>
                                     </Grid>
                                 </ScrollViewer>

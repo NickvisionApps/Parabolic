@@ -101,8 +101,8 @@ public sealed partial class MainWindow : Window
         ToolTipService.SetToolTip(BtnHomeAddDownload, _controller.Localizer["AddDownload", "Tooltip"]);
         LblBtnHomeAddDownload.Text = _controller.Localizer["AddDownload"];
         LblDownloading.Text = _controller.Localizer["Downloading"];
-        LblQueued.Text = _controller.Localizer["Queued"];
         LblCompleted.Text = _controller.Localizer["Completed"];
+        LblQueued.Text = _controller.Localizer["Queued"];
         ToolTipService.SetToolTip(BtnAddDownload, _controller.Localizer["AddDownload", "Tooltip"]);
         LblBtnAddDownload.Text = _controller.Localizer["Add"];
         //Page
@@ -247,7 +247,9 @@ public sealed partial class MainWindow : Window
     private IDownloadRowControl CreateDownloadRow(Download download)
     {
         var downloadRow = new DownloadRow(_controller.Localizer, download);
+        NavViewItemDownloads.Visibility = Visibility.Visible;
         NavViewItemDownloads.IsSelected = true;
+        SectionDownloading.Visibility = Visibility.Visible;
         ListDownloading.Items.Add(downloadRow);
         return downloadRow;
     }
