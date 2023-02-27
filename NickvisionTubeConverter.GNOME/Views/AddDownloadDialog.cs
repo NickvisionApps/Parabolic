@@ -11,7 +11,7 @@ namespace NickvisionTubeConverter.GNOME.Views;
 /// <summary>
 /// The AddDownloadDialog for the application
 /// </summary>
-public partial class AddDownloadDialog
+public partial class AddDownloadDialog : Adw.MessageDialog
 {
     [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
     [return: MarshalAs(UnmanagedType.I1)]
@@ -23,7 +23,6 @@ public partial class AddDownloadDialog
     private bool _constructing;
     private readonly Gtk.Window _parent;
     private readonly AddDownloadDialogController _controller;
-    private readonly Adw.MessageDialog _dialog;
     private readonly Adw.PreferencesGroup _preferencesGroup;
     private readonly Adw.EntryRow _rowVideoUrl;
     private readonly Gtk.Spinner _spinnerVideoUrl;
@@ -46,16 +45,17 @@ public partial class AddDownloadDialog
         _parent = parent;
         _controller = controller;
         //Dialog Settings
-        _dialog = Adw.MessageDialog.New(parent, _controller.Localizer["AddDownload"], "");
-        _dialog.SetDefaultSize(420, -1);
-        _dialog.SetHideOnClose(true);
-        _dialog.SetModal(true);
-        _dialog.AddResponse("cancel", _controller.Localizer["Cancel"]);
-        _dialog.SetCloseResponse("cancel");
-        _dialog.AddResponse("ok", _controller.Localizer["Download"]);
-        _dialog.SetDefaultResponse("ok");
-        _dialog.SetResponseAppearance("ok", Adw.ResponseAppearance.Suggested);
-        _dialog.OnResponse += (sender, e) => _controller.Accepted = e.Response == "ok";
+        SetHeading(_controller.Localizer["AddDownload"]);
+        SetTransientFor(parent);
+        SetDefaultSize(420, -1);
+        SetHideOnClose(true);
+        SetModal(true);
+        AddResponse("cancel", _controller.Localizer["Cancel"]);
+        SetCloseResponse("cancel");
+        AddResponse("ok", _controller.Localizer["Download"]);
+        SetDefaultResponse("ok");
+        SetResponseAppearance("ok", Adw.ResponseAppearance.Suggested);
+        OnResponse += (sender, e) => _controller.Accepted = e.Response == "ok";
         //Preference Group
         _preferencesGroup = Adw.PreferencesGroup.New();
         //Video Url
@@ -158,22 +158,10 @@ public partial class AddDownloadDialog
         };
         _preferencesGroup.Add(_rowSavePath);
         //Layout
-        _dialog.SetExtraChild(_preferencesGroup);
+        SetExtraChild(_preferencesGroup);
         //Load
         _rowFileType.SetSelected((uint)_controller.PreviousMediaFileType);
         _constructing = false;
-    }
-
-    public event GObject.SignalHandler<Adw.MessageDialog, Adw.MessageDialog.ResponseSignalArgs> OnResponse
-    {
-        add
-        {
-            _dialog.OnResponse += value;
-        }
-        remove
-        {
-            _dialog.OnResponse -= value;
-        }
     }
 
     /// <summary>
@@ -182,13 +170,8 @@ public partial class AddDownloadDialog
     public async Task ShowAsync()
     {
         await ValidateAsync();
-        _dialog.Show();
+        Show();
     }
-
-    /// <summary>
-    /// Destroys the dialog
-    /// </summary>
-    public void Destroy() => _dialog.Destroy();
 
     /// <summary>
     /// Validates the dialog's input
@@ -215,7 +198,7 @@ public partial class AddDownloadDialog
             _rowQuality.SetSensitive(true);
             _rowSubtitle.SetSensitive(((MediaFileType)_rowFileType.GetSelected()).GetIsVideo());
             _rowSavePath.SetSensitive(true);
-            _dialog.SetResponseEnabled("ok", true);
+            SetResponseEnabled("ok", true);
         }
         else
         {
@@ -243,7 +226,7 @@ public partial class AddDownloadDialog
                 _rowSubtitle.SetSensitive(((MediaFileType)_rowFileType.GetSelected()).GetIsVideo());
                 _rowSavePath.SetSensitive(true);
             }
-            _dialog.SetResponseEnabled("ok", false);
+            SetResponseEnabled("ok", false);
         }
     }
 
