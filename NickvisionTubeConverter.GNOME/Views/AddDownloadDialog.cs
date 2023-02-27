@@ -56,7 +56,7 @@ public partial class AddDownloadDialog : Adw.MessageDialog
         SetResponseAppearance("ok", Adw.ResponseAppearance.Suggested);
         OnResponse += (sender, e) => _controller.Accepted = e.Response == "ok";
         //Build UI
-        var builder = Builder.FromFile("add_download.ui", _controller.Localizer);
+        var builder = Builder.FromFile("add_download_dialog.ui", _controller.Localizer);
         builder.Connect(this);
         _urlRow.OnNotify += async (sender, e) =>
         {

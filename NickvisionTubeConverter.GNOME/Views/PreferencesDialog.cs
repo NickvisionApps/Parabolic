@@ -34,7 +34,7 @@ public partial class PreferencesDialog : Adw.PreferencesWindow
         SetDestroyWithParent(false);
         SetHideOnClose(true);
         //Build UI
-        var builder = Builder.FromFile("preferences.ui", _controller.Localizer);
+        var builder = Builder.FromFile("preferences_dialog.ui", _controller.Localizer);
         builder.Connect(this);
         SetContent(_mainBox);
         //Theme
