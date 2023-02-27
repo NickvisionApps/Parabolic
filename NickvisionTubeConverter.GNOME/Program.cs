@@ -49,17 +49,25 @@ public partial class Program
         _mainWindowController.AppInfo.IssueTracker = new Uri("https://github.com/nlogozzo/NickvisionTubeConverter/issues/new");
         _mainWindowController.AppInfo.SupportUrl = new Uri("https://github.com/nlogozzo/NickvisionTubeConverter/discussions");
         _application.OnActivate += OnActivate;
-        var prefixes = new List<string> {
-            Directory.GetParent(Directory.GetParent(Path.GetFullPath(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)!))!.FullName)!.FullName,
-            Directory.GetParent(Path.GetFullPath(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)!))!.FullName,
-            "/usr"
-        };
-        foreach (var prefix in prefixes)
+        if (File.Exists(Path.GetFullPath(System.IO.Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)) + "/org.nickvision.tubeconverter.gresource"))
         {
-            if (File.Exists(prefix + "/share/org.nickvision.tubeconverter/org.nickvision.tubeconverter.gresource"))
+            //Load file from program directory, required for `dotnet run`
+            g_resources_register(g_resource_load(Path.GetFullPath(System.IO.Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)) + "/org.nickvision.tubeconverter.gresource"));
+        }
+        else
+        {
+            var prefixes = new List<string> {
+               Directory.GetParent(Directory.GetParent(Path.GetFullPath(System.IO.Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location))).FullName).FullName,
+               Directory.GetParent(Path.GetFullPath(System.IO.Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location))).FullName,
+               "/usr"
+            };
+            foreach (var prefix in prefixes)
             {
-                g_resources_register(g_resource_load(Path.GetFullPath(prefix + "/share/org.nickvision.tubeconverter/org.nickvision.tubeconverter.gresource")));
-                break;
+               if (File.Exists(prefix + "/share/org.nickvision.tubeconverter/org.nickvision.tubeconverter.gresource"))
+               {
+                   g_resources_register(g_resource_load(Path.GetFullPath(prefix + "/share/org.nickvision.tubeconverter/org.nickvision.tubeconverter.gresource")));
+                   break;
+               }
             }
         }
     }
