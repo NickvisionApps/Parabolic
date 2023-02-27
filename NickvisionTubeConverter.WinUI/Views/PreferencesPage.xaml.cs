@@ -47,9 +47,15 @@ public sealed partial class PreferencesPage : UserControl
         CardEmbedMetadata.Description = _controller.Localizer["EmbedMetadata", "Description"];
         ToggleEmbedMetadata.OnContent = "";
         ToggleEmbedMetadata.OffContent = "";
+        CardMaxNumberOfActiveDownloads.Header = _controller.Localizer["MaxNumberOfActiveDownloads"];
+        for(var i = 0; i < 10; i++)
+        {
+            CmbMaxNumberOfActiveDownloads.Items.Add(i + 1);
+        }
         //Load Config
         CmbTheme.SelectedIndex = (int)_controller.Theme;
         ToggleEmbedMetadata.IsOn = _controller.EmbedMetadata;
+        CmbMaxNumberOfActiveDownloads.SelectedIndex = _controller.MaxNumberOfActiveDownloads - 1;
     }
 
     /// <summary>
@@ -172,6 +178,17 @@ public sealed partial class PreferencesPage : UserControl
     private void ToggleEmbedMetadata_Toggled(object sender, RoutedEventArgs e)
     {
         _controller.EmbedMetadata = ToggleEmbedMetadata.IsOn;
+        _controller.SaveConfiguration();
+    }
+
+    /// <summary>
+    /// Occurs when the CmbMaxNumberOfActiveDownloads' selection is changed
+    /// </summary>
+    /// <param name="sender">object</param>
+    /// <param name="e">SelectionChangedEventArgs</param>
+    private void CmbMaxNumberOfActiveDownloads_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        _controller.MaxNumberOfActiveDownloads = CmbMaxNumberOfActiveDownloads.SelectedIndex + 1;
         _controller.SaveConfiguration();
     }
 }
