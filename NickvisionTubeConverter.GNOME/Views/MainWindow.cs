@@ -45,7 +45,7 @@ public partial class MainWindow : Adw.ApplicationWindow
         }
         OnCloseRequest += OnCloseRequested;
         //Build UI
-        var builder = Builder.FromFile("window.ui", _controller.Localizer);
+        var builder = Builder.FromFile("window.ui", _controller.Localizer, (s) => s == "About" ? string.Format(_controller.Localizer[s], _controller.AppInfo.ShortName) : _controller.Localizer[s]);
         builder.Connect(this);
         SetContent(_root);
         //Update Title
