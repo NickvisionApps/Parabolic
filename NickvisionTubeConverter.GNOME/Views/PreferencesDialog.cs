@@ -16,6 +16,7 @@ public partial class PreferencesDialog : Adw.PreferencesWindow
     [Gtk.Connect] private readonly Gtk.Box _mainBox;
     [Gtk.Connect] private readonly Adw.ComboRow _themeRow;
     [Gtk.Connect] private readonly Gtk.Switch _embedMetadataSwitch;
+    [Gtk.Connect] private readonly Adw.ComboRow _maxNumberOfActiveDownloadsRow;
 
     /// <summary>
     /// Constructs a PreferencesDialog
@@ -49,6 +50,7 @@ public partial class PreferencesDialog : Adw.PreferencesWindow
         //Load Config
         _themeRow.SetSelected((uint)_controller.Theme);
         _embedMetadataSwitch.SetActive(_controller.EmbedMetadata);
+        _maxNumberOfActiveDownloadsRow.SetSelected((uint)(_controller.MaxNumberOfActiveDownloads - 1));
     }
 
     /// <summary>
@@ -59,6 +61,7 @@ public partial class PreferencesDialog : Adw.PreferencesWindow
     private void Hide(Gtk.Widget sender, EventArgs e)
     {
         _controller.EmbedMetadata = _embedMetadataSwitch.GetActive();
+        _controller.MaxNumberOfActiveDownloads = (int)_maxNumberOfActiveDownloadsRow.GetSelected() + 1;
         _controller.SaveConfiguration();
         Destroy();
     }
