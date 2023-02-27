@@ -1,3 +1,4 @@
+using NickvisionTubeConverter.GNOME.Helpers;
 using NickvisionTubeConverter.Shared.Controls;
 using NickvisionTubeConverter.Shared.Helpers;
 using NickvisionTubeConverter.Shared.Models;
@@ -23,22 +24,21 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
     private readonly Download _download;
     private bool? _previousEmbedMetadata;
     private bool _wasStopped;
-    private readonly Gtk.Box _boxMain;
-    private readonly Gtk.Image _imgStatus;
-    private readonly Gtk.Box _boxInfo;
-    private readonly Gtk.Label _lblFilename;
-    private readonly Gtk.Label _lblUrl;
-    private readonly Adw.ViewStack _viewStackState;
-    private readonly Gtk.Box _boxDownload;
-    private readonly Gtk.Box _boxDone;
-    private readonly Gtk.Label _progLabel;
-    private readonly Gtk.ProgressBar _progBar;
-    private readonly Gtk.LevelBar _levelBar;
-    private readonly Gtk.Label _doneLabel;
-    private readonly Adw.ViewStack _viewStackAction;
-    private readonly Gtk.Button _btnCancel;
-    private readonly Gtk.Button _btnOpenFolder;
-    private readonly Gtk.Button _btnRetry;
+
+    [Gtk.Connect] private readonly Gtk.Box _mainBox;
+    [Gtk.Connect] private readonly Gtk.Image _statusIcon;
+    [Gtk.Connect] private readonly Gtk.Label _filenameLabel;
+    [Gtk.Connect] private readonly Gtk.Label _urlLabel;
+    [Gtk.Connect] private readonly Adw.ViewStack _stateViewStack;
+    [Gtk.Connect] private readonly Gtk.Label _progressLabel;
+    [Gtk.Connect] private readonly Gtk.ProgressBar _progressBar;
+    [Gtk.Connect] private readonly Gtk.LevelBar _levelBar;
+    [Gtk.Connect] private readonly Gtk.Label _doneLabel;
+    [Gtk.Connect] private readonly Adw.ViewStack _actionViewStack;
+    [Gtk.Connect] private readonly Gtk.Button _stopButton;
+    [Gtk.Connect] private readonly Gtk.Button _openFolderButton;
+    [Gtk.Connect] private readonly Gtk.Button _retryButton;
+
     private DownloadProgressStatus _progressStatus;
     private GSourceFunc? _processingCallback;
     private GSourceFunc? _downloadingCallback;
@@ -58,89 +58,15 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
         _download = download;
         _previousEmbedMetadata = null;
         _wasStopped = false;
-        _boxMain = Gtk.Box.New(Gtk.Orientation.Horizontal, 6);
-        //Status Image
-        _imgStatus = Gtk.Image.NewFromIconName("folder-download-symbolic");
-        _imgStatus.SetPixelSize(24);
-        _imgStatus.SetMarginStart(10);
-        _imgStatus.SetMarginEnd(5);
-        _boxMain.Append(_imgStatus);
-        //Info Box
-        _boxInfo = Gtk.Box.New(Gtk.Orientation.Vertical, 3);
-        _boxInfo.SetMarginTop(8);
-        _boxInfo.SetMarginBottom(8);
-        _boxMain.Append(_boxInfo);
-        //Download Filename
-        _lblFilename = Gtk.Label.New(download.Filename);
-        _lblFilename.SetHalign(Gtk.Align.Start);
-        _lblFilename.SetEllipsize(Pango.EllipsizeMode.End);
-        _lblFilename.SetLines(1);
-        _boxInfo.Append(_lblFilename);
-        //Download Url
-        _lblUrl = Gtk.Label.New(download.VideoUrl);
-        _lblUrl.SetHalign(Gtk.Align.Start);
-        _lblUrl.SetEllipsize(Pango.EllipsizeMode.End);
-        _lblUrl.SetLines(1);
-        _lblUrl.AddCssClass("caption");
-        _lblUrl.AddCssClass("dim-label");
-        _boxInfo.Append(_lblUrl);
-        //State View Stack
-        _viewStackState = Adw.ViewStack.New();
-        _viewStackState.SetMarginTop(8);
-        _boxInfo.Append(_viewStackState);
-        //Download View
-        _boxDownload = Gtk.Box.New(Gtk.Orientation.Vertical, 3);
-        _viewStackState.AddNamed(_boxDownload, "downloading");
-        //Download Progress Bar
-        _progBar = Gtk.ProgressBar.New();
-        _progBar.SetHexpand(true);
-        _boxDownload.Append(_progBar);
-        //Download Progress Label
-        _progLabel = Gtk.Label.New(_localizer["DownloadState", "Preparing"]);
-        _progLabel.SetHalign(Gtk.Align.Start);
-        _progLabel.AddCssClass("caption");
-        _boxDownload.Append(_progLabel);
-        //Done View
-        _boxDone = Gtk.Box.New(Gtk.Orientation.Vertical, 3);
-        _viewStackState.AddNamed(_boxDone, "done");
-        //Done Level Bar
-        _levelBar = Gtk.LevelBar.New();
-        _boxDone.Append(_levelBar);
-        //Done Label
-        _doneLabel = Gtk.Label.New(null);
-        _doneLabel.SetHalign(Gtk.Align.Start);
-        _doneLabel.AddCssClass("caption");
-        _boxDone.Append(_doneLabel);
-        //Action Button
-        _viewStackAction = Adw.ViewStack.New();
-        _viewStackAction.SetMarginStart(5);
-        _viewStackAction.SetMarginEnd(10);
-        _boxMain.Append(_viewStackAction);
-        //Cancel Button
-        _btnCancel = Gtk.Button.New();
-        _btnCancel.SetValign(Gtk.Align.Center);
-        _btnCancel.SetIconName("media-playback-stop-symbolic");
-        _btnCancel.SetTooltipText(_localizer["StopDownload"]);
-        _btnCancel.AddCssClass("circular");
-        _btnCancel.OnClicked += (sender, e) => Stop();
-        _viewStackAction.AddNamed(_btnCancel, "cancel");
-        //Open Folder Button
-        _btnOpenFolder = Gtk.Button.New();
-        _btnOpenFolder.SetValign(Gtk.Align.Center);
-        _btnOpenFolder.SetIconName("folder-symbolic");
-        _btnOpenFolder.SetTooltipText(_localizer["OpenSaveFolder"]);
-        _btnOpenFolder.AddCssClass("circular");
-        _btnOpenFolder.OnClicked += (sender, e) => Gtk.Functions.ShowUri(null, "file://" + _download.SaveFolder, 0);
-        _viewStackAction.AddNamed(_btnOpenFolder, "open-folder");
-        //Retry Button
-        _btnRetry = Gtk.Button.New();
-        _btnRetry.SetValign(Gtk.Align.Center);
-        _btnRetry.SetIconName("view-refresh-symbolic");
-        _btnRetry.SetTooltipText(_localizer["RetryDownload"]);
-        _btnRetry.AddCssClass("circular");
-        _btnRetry.OnClicked += async (sender, e) => await StartAsync(_previousEmbedMetadata ?? false);
-        _viewStackAction.AddNamed(_btnRetry, "retry");
-        SetChild(_boxMain);
+        //Build UI
+        var builder = Builder.FromFile("download_row.ui", _localizer);
+        builder.Connect(this);
+        _filenameLabel.SetLabel(download.Filename);
+        _urlLabel.SetLabel(download.VideoUrl);
+        _stopButton.OnClicked += (sender, e) => Stop();
+        _openFolderButton.OnClicked += (sender, e) => Gtk.Functions.ShowUri(null, "file://" + _download.SaveFolder, 0);
+        _retryButton.OnClicked += async (sender, e) => await StartAsync(_previousEmbedMetadata ?? false);
+        SetChild(_mainBox);
     }
 
     /// <summary>
@@ -154,14 +80,14 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
             _previousEmbedMetadata = embedMetadata;
         }
         _wasStopped = false;
-        _imgStatus.AddCssClass("accent");
-        _imgStatus.RemoveCssClass("error");
-        _imgStatus.SetFromIconName("folder-download-symbolic");
-        _viewStackState.SetVisibleChildName("downloading");
-        _progLabel.SetText(_localizer["DownloadState", "Preparing"]);
-        _lblFilename.SetText(_download.Filename);
-        _viewStackAction.SetVisibleChildName("cancel");
-        _progBar.SetFraction(0);
+        _statusIcon.AddCssClass("accent");
+        _statusIcon.RemoveCssClass("error");
+        _statusIcon.SetFromIconName("folder-download-symbolic");
+        _stateViewStack.SetVisibleChildName("downloading");
+        _progressLabel.SetText(_localizer["DownloadState", "Preparing"]);
+        _filenameLabel.SetText(_download.Filename);
+        _actionViewStack.SetVisibleChildName("cancel");
+        _progressBar.SetFraction(0);
         var success = await _download.RunAsync(embedMetadata, (state) =>
         {
             _progressStatus = state.Status;
@@ -170,19 +96,19 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
                 case DownloadProgressStatus.Downloading:
                     _downloadingCallback = (d) =>
                     {
-                        _progBar.SetFraction(state.Progress);
-                        _progLabel.SetText(string.Format(_localizer["DownloadState", "Downloading"], state.Progress * 100, state.Speed));
+                        _progressBar.SetFraction(state.Progress);
+                        _progressLabel.SetText(string.Format(_localizer["DownloadState", "Downloading"], state.Progress * 100, state.Speed));
                         return false;
                     };
                     g_idle_add(_downloadingCallback, 0);
                     break;
                 case DownloadProgressStatus.Processing:
-                    _progLabel.SetText(_localizer["DownloadState", "Processing"]);
+                    _progressLabel.SetText(_localizer["DownloadState", "Processing"]);
                     if (_processingCallback == null)
                     {
                         _processingCallback = (d) =>
                         {
-                            _progBar.Pulse();
+                            _progressBar.Pulse();
                             if (_progressStatus != DownloadProgressStatus.Processing || IsDone)
                             {
                                 _processingCallback = null;
@@ -197,13 +123,13 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
         });
         if (!_wasStopped)
         {
-            _imgStatus.RemoveCssClass("accent");
-            _imgStatus.AddCssClass(success ? "success" : "error");
-            _imgStatus.SetFromIconName(success ? "emblem-ok-symbolic" : "process-stop-symbolic");
-            _viewStackState.SetVisibleChildName("done");
+            _statusIcon.RemoveCssClass("accent");
+            _statusIcon.AddCssClass(success ? "success" : "error");
+            _statusIcon.SetFromIconName(success ? "emblem-ok-symbolic" : "process-stop-symbolic");
+            _stateViewStack.SetVisibleChildName("done");
             _levelBar.SetValue(success ? 1 : 0);
             _doneLabel.SetText(success ? _localizer["Success"] : _localizer["Error"]);
-            _viewStackAction.SetVisibleChildName(success ? "open-folder" : "retry");
+            _actionViewStack.SetVisibleChildName(success ? "open-folder" : "retry");
         }
     }
 
@@ -214,13 +140,13 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
     {
         _wasStopped = true;
         _download.Stop();
-        _progBar.SetFraction(1.0);
-        _imgStatus.RemoveCssClass("accent");
-        _imgStatus.AddCssClass("error");
-        _imgStatus.SetFromIconName("process-stop-symbolic");
-        _viewStackState.SetVisibleChildName("done");
+        _progressBar.SetFraction(1.0);
+        _statusIcon.RemoveCssClass("accent");
+        _statusIcon.AddCssClass("error");
+        _statusIcon.SetFromIconName("process-stop-symbolic");
+        _stateViewStack.SetVisibleChildName("done");
         _levelBar.SetValue(0);
         _doneLabel.SetText(_localizer["Stopped"]);
-        _viewStackAction.SetVisibleChildName("retry");
+        _actionViewStack.SetVisibleChildName("retry");
     }
 }

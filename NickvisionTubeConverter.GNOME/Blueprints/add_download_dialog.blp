@@ -1,0 +1,70 @@
+using Gtk 4.0;
+using Adw 1;
+
+Adw.PreferencesGroup _preferencesGroup {
+  Adw.EntryRow _urlRow {
+    width-request: 420;
+    title: _("VideoUrl.Field");
+    
+    [suffix]
+    Gtk.Spinner _urlSpinner {
+      valign: center;
+    }
+  }
+  
+  Adw.ComboRow _fileTypeRow {
+    title: _("FileType.Field");
+    model: Gtk.StringList {
+      strings ["MP4", "WEBM", "MP3", "OPUS", "FLAC", "WAV"]
+    };
+  }
+  
+  Adw.ComboRow _qualityRow {
+    title: _("Quality.Field");
+    model: Gtk.StringList {
+      strings [_("Quality.Best"), _("Quality.Good"), _("Quality.Worst")]
+    };
+  }
+  
+  Adw.ComboRow _subtitleRow {
+    title: _("Subtitle.Field");
+    model: Gtk.StringList {
+      strings [_("Subtitle.None"), "VTT", "SRT"]
+    };
+  }
+  
+  Adw.EntryRow _savePathRow {
+    title: _("SavePath.Field");
+    width-request: 420;
+    editable: false;
+    
+    [suffix]
+    Gtk.MenuButton _saveWarning {
+      valign: center;
+      icon-name: "dialog-warning-symbolic";
+      visible: false;
+      popover: Gtk.Popover {
+        Adw.Clamp {
+          maximum-size: 300;
+          
+          Gtk.Label {
+            label: _("SaveWarning.GTK");
+            wrap: true;
+            justify: center;
+          }
+        }
+      };
+      
+      styles ["flat", "warning"]
+    }
+    
+    [suffix]
+    Gtk.Button _selectPathButton {
+      valign: center;
+      icon-name: "folder-open-symbolic";
+      tooltip-text: _("SelectSavePath");
+      
+      styles ["flat"]
+    }
+  }
+}

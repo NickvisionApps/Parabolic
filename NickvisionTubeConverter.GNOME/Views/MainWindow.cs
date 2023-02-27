@@ -1,4 +1,5 @@
 using NickvisionTubeConverter.GNOME.Controls;
+using NickvisionTubeConverter.GNOME.Helpers;
 using NickvisionTubeConverter.Shared.Controllers;
 using NickvisionTubeConverter.Shared.Controls;
 using NickvisionTubeConverter.Shared.Events;
@@ -11,34 +12,19 @@ namespace NickvisionTubeConverter.GNOME.Views;
 /// <summary>
 /// The MainWindow for the application
 /// </summary>
-public partial class MainWindow
+public partial class MainWindow : Adw.ApplicationWindow
 {
     private readonly MainWindowController _controller;
     private readonly Adw.Application _application;
-    private readonly Gtk.Box _mainBox;
-    private readonly Adw.HeaderBar _headerBar;
-    private readonly Gtk.Button _btnAddDownload;
-    private readonly Adw.ButtonContent _btnAddDownloadContent;
-    private readonly Adw.WindowTitle _windowTitle;
-    private readonly Gtk.MenuButton _btnMenuHelp;
-    private readonly Adw.ToastOverlay _toastOverlay;
-    private readonly Gtk.ScrolledWindow _scrollStartPage;
-    private readonly Adw.Clamp _clampStartPage;
-    private readonly Adw.Clamp _clampDownloadsPage;
-    private readonly Gtk.Box _boxStartPage;
-    private readonly Adw.ButtonContent _greetingStartPage;
-    private readonly Gtk.Button _btnAddDownloadStartPage;
-    private readonly Gtk.Label _lblStart;
-    private readonly Gtk.ScrolledWindow _scrollDownloadsPage;
-    private readonly Gtk.Box _boxMainContent;
-    private readonly Gtk.Label _lblDownloads;
-    private readonly Gtk.Box _boxDownloads;
-    private readonly Adw.Bin _binSpinner;
-    private readonly Gtk.Spinner _spinner;
-    private readonly Gtk.Overlay _overlayLoading;
-    private readonly Adw.ViewStack _viewStack;
 
-    public Adw.ApplicationWindow Handle { get; init; }
+    [Gtk.Connect] private readonly Gtk.Overlay _root;
+    [Gtk.Connect] private readonly Adw.Bin _spinnerContainer;
+    [Gtk.Connect] private readonly Gtk.Spinner _spinner;
+    [Gtk.Connect] private readonly Gtk.Box _mainBox;
+    [Gtk.Connect] private readonly Adw.ToastOverlay _toastOverlay;
+    [Gtk.Connect] private readonly Adw.ViewStack _viewStack;
+    [Gtk.Connect] private readonly Gtk.Button _addDownloadButton;
+    [Gtk.Connect] private readonly Gtk.Box _downloadsBox;
 
     /// <summary>
     /// Constructs a MainWindow
@@ -50,162 +36,57 @@ public partial class MainWindow
         //Window Settings
         _controller = controller;
         _application = application;
-        Handle = Adw.ApplicationWindow.New(_application);
-        Handle.SetDefaultSize(800, 600);
-        Handle.SetSizeRequest(360, -1);
-        Handle.SetTitle(_controller.AppInfo.ShortName);
+        SetDefaultSize(800, 600);
+        SetSizeRequest(360, -1);
+        SetTitle(_controller.AppInfo.ShortName);
         if (_controller.IsDevVersion)
         {
-            Handle.AddCssClass("devel");
+            AddCssClass("devel");
         }
-        Handle.OnCloseRequest += OnCloseRequested;
-        //Main Box
-        _mainBox = Gtk.Box.New(Gtk.Orientation.Vertical, 0);
-        //Header Bar
-        _headerBar = Adw.HeaderBar.New();
-        _windowTitle = Adw.WindowTitle.New(_controller.AppInfo.ShortName, null);
-        _headerBar.SetTitleWidget(_windowTitle);
-        _mainBox.Append(_headerBar);
-        //Add Download Button
-        _btnAddDownload = Gtk.Button.New();
-        _btnAddDownloadContent = Adw.ButtonContent.New();
-        _btnAddDownloadContent.SetIconName("list-add-symbolic");
-        _btnAddDownloadContent.SetLabel(_controller.Localizer["Add"]);
-        _btnAddDownload.SetChild(_btnAddDownloadContent);
-        _btnAddDownload.SetTooltipText(_controller.Localizer["AddDownload", "Tooltip"]);
-        _btnAddDownload.SetDetailedActionName("win.addDownload");
-        _btnAddDownload.SetVisible(false);
-        _headerBar.PackStart(_btnAddDownload);
-        //Menu Help Button
-        _btnMenuHelp = Gtk.MenuButton.New();
-        var menuHelp = Gio.Menu.New();
-        menuHelp.Append(_controller.Localizer["Preferences"], "win.preferences");
-        menuHelp.Append(_controller.Localizer["KeyboardShortcuts"], "win.keyboardShortcuts");
-        menuHelp.Append(string.Format(_controller.Localizer["About"], _controller.AppInfo.ShortName), "win.about");
-        _btnMenuHelp.SetDirection(Gtk.ArrowType.None);
-        _btnMenuHelp.SetMenuModel(menuHelp);
-        _btnMenuHelp.SetTooltipText(_controller.Localizer["MainMenu", "GTK"]);
-        _btnMenuHelp.SetPrimary(true);
-        _headerBar.PackEnd(_btnMenuHelp);
-        //Toast Overlay
-        _toastOverlay = Adw.ToastOverlay.New();
-        _toastOverlay.SetHexpand(true);
-        _toastOverlay.SetVexpand(true);
-        _mainBox.Append(_toastOverlay);
-        //Greeting
-        _greetingStartPage = Adw.ButtonContent.New();
-        _greetingStartPage.SetIconName(_controller.ShowSun ? "sun-outline-symbolic" : "moon-outline-symbolic");
-        _greetingStartPage.SetLabel(_controller.Greeting);
-        var image = (Gtk.Image)_greetingStartPage.GetFirstChild();
-        image.SetPixelSize(48);
-        image.SetMarginEnd(6);
-        var label = (Gtk.Label)_greetingStartPage.GetLastChild();
-        label.AddCssClass("greeting-title");
-        _greetingStartPage.SetHalign(Gtk.Align.Center);
-        _greetingStartPage.SetMarginTop(24);
-        _greetingStartPage.SetMarginBottom(14);
-        //Add Download Button Start Page 
-        _btnAddDownloadStartPage = Gtk.Button.NewWithLabel(_controller.Localizer["AddDownload"]);
-        _btnAddDownloadStartPage.SetHalign(Gtk.Align.Center);
-        _btnAddDownloadStartPage.SetSizeRequest(200, 50);
-        _btnAddDownloadStartPage.AddCssClass("pill");
-        _btnAddDownloadStartPage.AddCssClass("suggested-action");
-        _btnAddDownloadStartPage.SetDetailedActionName("win.addDownload");
-        //Start Label
-        _lblStart = Gtk.Label.New(_controller.Localizer["NoDownloads", "Description"]);
-        _lblStart.AddCssClass("dim-label");
-        _lblStart.SetWrap(true);
-        _lblStart.SetJustify(Gtk.Justification.Center);
-        //Start Page
-        _scrollStartPage = Gtk.ScrolledWindow.New();
-        _clampStartPage = Adw.Clamp.New();
-        _clampStartPage.SetMaximumSize(450);
-        _clampStartPage.SetValign(Gtk.Align.Center);
-        _clampStartPage.SetMarginStart(12);
-        _clampStartPage.SetMarginEnd(12);
-        _clampStartPage.SetMarginTop(12);
-        _clampStartPage.SetMarginBottom(12);
-        _scrollStartPage.SetChild(_clampStartPage);
-        _boxStartPage = Gtk.Box.New(Gtk.Orientation.Vertical, 12);
-        _boxStartPage.SetHexpand(true);
-        _boxStartPage.SetHalign(Gtk.Align.Fill);
-        _boxStartPage.Append(_greetingStartPage);
-        _boxStartPage.Append(_btnAddDownloadStartPage);
-        _boxStartPage.Append(_lblStart);
-        _clampStartPage.SetChild(_boxStartPage);
-        //Downloads Page
-        _scrollDownloadsPage = Gtk.ScrolledWindow.New();
-        _clampDownloadsPage = Adw.Clamp.New();
-        _clampDownloadsPage.SetMaximumSize(800);
-        _clampDownloadsPage.SetMarginStart(12);
-        _clampDownloadsPage.SetMarginEnd(12);
-        _clampDownloadsPage.SetMarginTop(12);
-        _clampDownloadsPage.SetMarginBottom(12);
-        _scrollDownloadsPage.SetChild(_clampDownloadsPage);
-        _boxMainContent = Gtk.Box.New(Gtk.Orientation.Vertical, 10);
-        _boxMainContent.SetHexpand(true);
-        _boxMainContent.SetValign(Gtk.Align.Start);
-        _clampDownloadsPage.SetChild(_boxMainContent);
-        _lblDownloads = Gtk.Label.New(_controller.Localizer["Downloads"]);
-        _lblDownloads.SetHalign(Gtk.Align.Start);
-        _lblDownloads.SetMarginStart(5);
-        _lblDownloads.AddCssClass("heading");
-        _boxMainContent.Append(_lblDownloads);
-        _boxDownloads = Gtk.Box.New(Gtk.Orientation.Vertical, 0);
-        _boxDownloads.SetHexpand(true);
-        _boxDownloads.SetValign(Gtk.Align.Start);
-        _boxDownloads.AddCssClass("card");
-        _boxMainContent.Append(_boxDownloads);
-        //View Stack
-        _viewStack = Adw.ViewStack.New();
-        _viewStack.AddNamed(_scrollStartPage, "pageNoDownloads");
-        _viewStack.AddNamed(_scrollDownloadsPage, "pageDownloads");
-        _toastOverlay.SetChild(_viewStack);
-        //Spinner Box
-        _binSpinner = Adw.Bin.New();
-        _binSpinner.SetHexpand(true);
-        _binSpinner.SetVexpand(true);
-        //Spinner
-        _spinner = Gtk.Spinner.New();
-        _spinner.SetSizeRequest(48, 48);
-        _spinner.SetHalign(Gtk.Align.Center);
-        _spinner.SetValign(Gtk.Align.Center);
-        _spinner.SetHexpand(true);
-        _spinner.SetVexpand(true);
-        _binSpinner.SetChild(_spinner);
-        //Loading Overlay
-        _overlayLoading = Gtk.Overlay.New();
-        _overlayLoading.SetVexpand(true);
-        _overlayLoading.AddOverlay(_binSpinner);
-        _overlayLoading.SetChild(_mainBox);
-        Handle.SetContent(_overlayLoading);
+        OnCloseRequest += OnCloseRequested;
+        //Build UI
+        var builder = Builder.FromFile("window.ui", _controller.Localizer, (s) => s == "About" ? string.Format(_controller.Localizer[s], _controller.AppInfo.ShortName) : _controller.Localizer[s]);
+        builder.Connect(this);
+        SetContent(_root);
+        //Update Title
+        var windowTitle = (Adw.WindowTitle)builder.GetObject("_title");
+        windowTitle.SetTitle(_controller.AppInfo.ShortName);
+        //Update Greeting
+        var greeting = (Adw.ButtonContent)builder.GetObject("_greeting");
+        greeting.SetIconName(_controller.ShowSun ? "sun-outline-symbolic" : "moon-outline-symbolic");
+        greeting.SetLabel(_controller.Greeting);
+        var greetingIcon = (Gtk.Image)greeting.GetFirstChild();
+        greetingIcon.SetPixelSize(48);
+        greetingIcon.SetMarginEnd(6);
+        var greetingLabel = (Gtk.Label)greeting.GetLastChild();
+        greetingLabel.AddCssClass("greeting-title");
         //Register Events 
         _controller.NotificationSent += NotificationSent;
         _controller.UICreateDownloadRow = CreateDownloadRow;
         //Add Download Action
         var actDownload = Gio.SimpleAction.New("addDownload", null);
         actDownload.OnActivate += AddDownload;
-        Handle.AddAction(actDownload);
+        AddAction(actDownload);
         application.SetAccelsForAction("win.addDownload", new string[] { "<Ctrl>n" });
         //Preferences Action
         var actPreferences = Gio.SimpleAction.New("preferences", null);
         actPreferences.OnActivate += Preferences;
-        Handle.AddAction(actPreferences);
+        AddAction(actPreferences);
         application.SetAccelsForAction("win.preferences", new string[] { "<Ctrl>comma" });
         //Keyboard Shortcuts Action
         var actKeyboardShortcuts = Gio.SimpleAction.New("keyboardShortcuts", null);
         actKeyboardShortcuts.OnActivate += KeyboardShortcuts;
-        Handle.AddAction(actKeyboardShortcuts);
+        AddAction(actKeyboardShortcuts);
         application.SetAccelsForAction("win.keyboardShortcuts", new string[] { "<Ctrl>question" });
         //Quit Action
         var actQuit = Gio.SimpleAction.New("quit", null);
         actQuit.OnActivate += Quit;
-        Handle.AddAction(actQuit);
+        AddAction(actQuit);
         application.SetAccelsForAction("win.quit", new string[] { "<Ctrl>q", "<Ctrl>w" });
         //About Action
         var actAbout = Gio.SimpleAction.New("about", null);
         actAbout.OnActivate += About;
-        Handle.AddAction(actAbout);
+        AddAction(actAbout);
         application.SetAccelsForAction("win.about", new string[] { "F1" });
     }
 
@@ -214,14 +95,14 @@ public partial class MainWindow
     /// </summary>
     public async Task StartAsync()
     {
-        _application.AddWindow(Handle);
-        Handle.Show();
-        _binSpinner.SetVisible(true);
+        _application.AddWindow(this);
+        Show();
+        _spinnerContainer.SetVisible(true);
         _mainBox.SetVisible(false);
         _spinner.Start();
         await _controller.StartupAsync();
         _spinner.Stop();
-        _binSpinner.SetVisible(false);
+        _spinnerContainer.SetVisible(false);
         _mainBox.SetVisible(true);
     }
 
@@ -242,7 +123,7 @@ public partial class MainWindow
     {
         if (_controller.AreDownloadsRunning)
         {
-            var closeDialog = new MessageDialog(Handle, _controller.Localizer["CloseAndStop", "Title"], _controller.Localizer["CloseAndStop", "Description"], _controller.Localizer["No"], _controller.Localizer["Yes"]);
+            var closeDialog = new MessageDialog(this, _controller.Localizer["CloseAndStop", "Title"], _controller.Localizer["CloseAndStop", "Description"], _controller.Localizer["No"], _controller.Localizer["Yes"]);
             if (closeDialog.Run() == MessageDialogResponse.Cancel)
             {
                 return true;
@@ -260,15 +141,15 @@ public partial class MainWindow
     /// <returns>The new download row</returns>
     private IDownloadRowControl CreateDownloadRow(Download download)
     {
-        _btnAddDownload.SetVisible(true);
+        _addDownloadButton.SetVisible(true);
         var downloadRow = new DownloadRow(_controller.Localizer, download);
         _viewStack.SetVisibleChildName("pageDownloads");
-        if (_boxDownloads.GetFirstChild() != null)
+        if (_downloadsBox.GetFirstChild() != null)
         {
             var separator = Gtk.Separator.New(Gtk.Orientation.Horizontal);
-            _boxDownloads.Append(separator);
+            _downloadsBox.Append(separator);
         }
-        _boxDownloads.Append(downloadRow);
+        _downloadsBox.Append(downloadRow);
         return downloadRow;
     }
 
@@ -280,7 +161,7 @@ public partial class MainWindow
     private async void AddDownload(Gio.SimpleAction sender, EventArgs e)
     {
         var addController = _controller.CreateAddDownloadDialogController();
-        var addDialog = new AddDownloadDialog(addController, Handle);
+        var addDialog = new AddDownloadDialog(addController, this);
         await addDialog.ShowAsync();
         addDialog.OnResponse += async (sender, e) =>
         {
@@ -299,7 +180,7 @@ public partial class MainWindow
     /// <param name="e">EventArgs</param>
     private void Preferences(Gio.SimpleAction sender, EventArgs e)
     {
-        var preferencesDialog = new PreferencesDialog(_controller.PreferencesViewController, _application, Handle);
+        var preferencesDialog = new PreferencesDialog(_controller.PreferencesViewController, _application, this);
         preferencesDialog.Show();
     }
 
@@ -310,8 +191,10 @@ public partial class MainWindow
     /// <param name="e">EventArgs</param>
     private void KeyboardShortcuts(Gio.SimpleAction sender, EventArgs e)
     {
-        var shortcutsDialog = new ShortcutsDialog(_controller.Localizer, _controller.AppInfo.ShortName, Handle);
-        shortcutsDialog.Show();
+        var builder = Builder.FromFile("shortcuts_dialog.ui", _controller.Localizer, (s) => s == "About" ? string.Format(_controller.Localizer[s], _controller.AppInfo.ShortName) : _controller.Localizer[s]);
+        var shortcutsWindow = (Gtk.ShortcutsWindow)builder.GetObject("_shortcuts");
+        shortcutsWindow.SetTransientFor(this);
+        shortcutsWindow.Show();
     }
 
     /// <summary>
@@ -321,7 +204,7 @@ public partial class MainWindow
     /// <param name="e">EventArgs</param>
     private void Quit(Gio.SimpleAction sender, EventArgs e)
     {
-        if (!OnCloseRequested(Handle, EventArgs.Empty))
+        if (!OnCloseRequested(this, EventArgs.Empty))
         {
             _application.Quit();
         }
@@ -335,7 +218,7 @@ public partial class MainWindow
     private void About(Gio.SimpleAction sender, EventArgs e)
     {
         var dialog = Adw.AboutWindow.New();
-        dialog.SetTransientFor(Handle);
+        dialog.SetTransientFor(this);
         dialog.SetApplicationName(_controller.AppInfo.ShortName);
         dialog.SetApplicationIcon(_controller.AppInfo.ID + (_controller.AppInfo.GetIsDevelVersion() ? "-devel" : ""));
         dialog.SetVersion(_controller.AppInfo.Version);
