@@ -24,7 +24,12 @@ public partial class MainWindow : Adw.ApplicationWindow
     [Gtk.Connect] private readonly Adw.ToastOverlay _toastOverlay;
     [Gtk.Connect] private readonly Adw.ViewStack _viewStack;
     [Gtk.Connect] private readonly Gtk.Button _addDownloadButton;
-    [Gtk.Connect] private readonly Gtk.Box _downloadsBox;
+    [Gtk.Connect] private readonly Gtk.Box _sectionDownloading;
+    [Gtk.Connect] private readonly Gtk.Box _downloadingBox;
+    [Gtk.Connect] private readonly Gtk.Box _sectionCompleted;
+    [Gtk.Connect] private readonly Gtk.Box _completedBox;
+    [Gtk.Connect] private readonly Gtk.Box _sectionQueued;
+    [Gtk.Connect] private readonly Gtk.Box _queuedBox;
 
     /// <summary>
     /// Constructs a MainWindow
@@ -63,6 +68,7 @@ public partial class MainWindow : Adw.ApplicationWindow
         //Register Events 
         _controller.NotificationSent += NotificationSent;
         _controller.UICreateDownloadRow = CreateDownloadRow;
+        _controller.UIMoveDownloadRow = MoveDownloadRow;
         //Add Download Action
         var actDownload = Gio.SimpleAction.New("addDownload", null);
         actDownload.OnActivate += AddDownload;
@@ -129,7 +135,7 @@ public partial class MainWindow : Adw.ApplicationWindow
                 return true;
             }
         }
-        _controller.StopDownloads();
+        _controller.StopAllDownloads();
         _controller.Dispose();
         return false;
     }
@@ -141,16 +147,52 @@ public partial class MainWindow : Adw.ApplicationWindow
     /// <returns>The new download row</returns>
     private IDownloadRowControl CreateDownloadRow(Download download)
     {
-        _addDownloadButton.SetVisible(true);
         var downloadRow = new DownloadRow(_controller.Localizer, download);
+        _addDownloadButton.SetVisible(true);
         _viewStack.SetVisibleChildName("pageDownloads");
-        if (_downloadsBox.GetFirstChild() != null)
-        {
-            var separator = Gtk.Separator.New(Gtk.Orientation.Horizontal);
-            _downloadsBox.Append(separator);
-        }
-        _downloadsBox.Append(downloadRow);
         return downloadRow;
+    }
+
+    /// <summary>
+    /// Moves the download row to a new section
+    /// </summary>
+    /// <param name="row">IDownloadRowControl</param>
+    /// <param name="stage">DownloadStage</param>
+    private void MoveDownloadRow(IDownloadRowControl row, DownloadStage stage)
+    {
+        _downloadingBox.Remove((DownloadRow)row);
+        _completedBox.Remove((DownloadRow)row);
+        _queuedBox.Remove((DownloadRow)row);
+        if (stage == DownloadStage.InQueue)
+        {
+            if (_queuedBox.GetFirstChild() != null)
+            {
+                var separator = Gtk.Separator.New(Gtk.Orientation.Horizontal);
+                _queuedBox.Append(separator);
+            }
+            _queuedBox.Append((DownloadRow)row);
+        }
+        else if (stage == DownloadStage.Downloading)
+        {
+            if (_downloadingBox.GetFirstChild() != null)
+            {
+                var separator = Gtk.Separator.New(Gtk.Orientation.Horizontal);
+                _downloadingBox.Append(separator);
+            }
+            _downloadingBox.Append((DownloadRow)row);
+        }
+        else if (stage == DownloadStage.Completed)
+        {
+            if (_completedBox.GetFirstChild() != null)
+            {
+                var separator = Gtk.Separator.New(Gtk.Orientation.Horizontal);
+                _completedBox.Append(separator);
+            }
+            _completedBox.Append((DownloadRow)row);
+        }
+        _sectionDownloading.SetVisible(_downloadingBox.GetFirstChild() != null);
+        _sectionCompleted.SetVisible(_completedBox.GetFirstChild() != null);
+        _sectionQueued.SetVisible(_queuedBox.GetFirstChild() != null);
     }
 
     /// <summary>

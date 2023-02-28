@@ -2,6 +2,7 @@ using NickvisionTubeConverter.GNOME.Helpers;
 using NickvisionTubeConverter.Shared.Controls;
 using NickvisionTubeConverter.Shared.Helpers;
 using NickvisionTubeConverter.Shared.Models;
+using System;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 
@@ -23,6 +24,7 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
     private readonly Localizer _localizer;
     private readonly Download _download;
     private bool? _previousEmbedMetadata;
+    private Func<IDownloadRowControl, Task>? _previousCompletedCallback;
     private bool _wasStopped;
 
     [Gtk.Connect] private readonly Gtk.Box _mainBox;
@@ -65,7 +67,7 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
         _urlLabel.SetLabel(download.VideoUrl);
         _stopButton.OnClicked += (sender, e) => Stop();
         _openFolderButton.OnClicked += (sender, e) => Gtk.Functions.ShowUri(null, "file://" + _download.SaveFolder, 0);
-        _retryButton.OnClicked += async (sender, e) => await StartAsync(_previousEmbedMetadata ?? false);
+        _retryButton.OnClicked += async (sender, e) => await StartAsync(_previousEmbedMetadata ?? false, _previousCompletedCallback);
         SetChild(_mainBox);
     }
 
@@ -73,11 +75,16 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
     /// Starts the download
     /// </summary>
     /// <param name="embedMetadata">Whether or not to embed video metadata</param>
-    public async Task StartAsync(bool embedMetadata)
+    /// <param name="completedCallback">The callback function to run when the download is completed</param>
+    public async Task StartAsync(bool embedMetadata, Func<IDownloadRowControl, Task>? completedCallback)
     {
         if (_previousEmbedMetadata == null)
         {
             _previousEmbedMetadata = embedMetadata;
+        }
+        if (_previousCompletedCallback == null)
+        {
+            _previousCompletedCallback = completedCallback;
         }
         _wasStopped = false;
         _statusIcon.AddCssClass("accent");
@@ -130,6 +137,10 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
             _levelBar.SetValue(success ? 1 : 0);
             _doneLabel.SetText(success ? _localizer["Success"] : _localizer["Error"]);
             _actionViewStack.SetVisibleChildName(success ? "open-folder" : "retry");
+        }
+        if(_previousCompletedCallback != null)
+        {
+            await _previousCompletedCallback(this);
         }
     }
 
