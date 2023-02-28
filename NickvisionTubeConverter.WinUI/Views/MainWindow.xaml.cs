@@ -51,6 +51,7 @@ public sealed partial class MainWindow : Window
         _appWindow.Closing += Window_Closing;
         _controller.NotificationSent += NotificationSent;
         _controller.UICreateDownloadRow = CreateDownloadRow;
+        _controller.UIMoveDownloadRow = MoveDownloadRow;
         //Set TitleBar
         TitleBarTitle.Text = _controller.AppInfo.ShortName;
         _appWindow.Title = TitleBarTitle.Text;
@@ -179,7 +180,7 @@ public sealed partial class MainWindow : Window
         }
         else
         {
-            _controller.StopDownloads();
+            _controller.StopAllDownloads();
             _controller.Dispose();
             _micaController?.Dispose();
         }
@@ -240,7 +241,7 @@ public sealed partial class MainWindow : Window
     }
 
     /// <summary>
-    /// Creates a download row and adds it to the view
+    /// Creates a download row
     /// </summary>
     /// <param name="download">The download model</param>
     /// <returns>The new download row</returns>
@@ -249,9 +250,34 @@ public sealed partial class MainWindow : Window
         var downloadRow = new DownloadRow(_controller.Localizer, download);
         NavViewItemDownloads.Visibility = Visibility.Visible;
         NavViewItemDownloads.IsSelected = true;
-        SectionDownloading.Visibility = Visibility.Visible;
-        ListDownloading.Items.Add(downloadRow);
         return downloadRow;
+    }
+
+    /// <summary>
+    /// Moves the download row to a new section
+    /// </summary>
+    /// <param name="row">IDownloadRowControl</param>
+    /// <param name="stage">DownloadStage</param>
+    private void MoveDownloadRow(IDownloadRowControl row, DownloadStage stage)
+    {
+        ListDownloading.Items.Remove(row);
+        ListCompleted.Items.Remove(row);
+        ListQueued.Items.Remove(row);
+        if(stage == DownloadStage.InQueue)
+        {
+            ListQueued.Items.Add(row);
+        }
+        else if(stage == DownloadStage.Downloading)
+        {
+            ListDownloading.Items.Add(row);
+        }
+        else if(stage == DownloadStage.Completed)
+        {
+            ListCompleted.Items.Add(row);
+        }
+        SectionDownloading.Visibility = ListDownloading.Items.Count > 0 ? Visibility.Visible : Visibility.Collapsed;
+        SectionCompleted.Visibility = ListCompleted.Items.Count > 0 ? Visibility.Visible : Visibility.Collapsed;
+        SectionQueued.Visibility = ListQueued.Items.Count > 0 ? Visibility.Visible : Visibility.Collapsed;
     }
 
     /// <summary>
