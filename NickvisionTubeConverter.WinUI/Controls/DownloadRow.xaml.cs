@@ -34,6 +34,14 @@ public sealed partial class DownloadRow : UserControl, IDownloadRowControl
         _download = download;
         _previousEmbedMetadata = null;
         _wasStopped = false;
+        //Default
+        Icon.Glyph = "\uE118";
+        LblFilename.Text = _download.Filename;
+        LblStatus.Text = _localizer["DownloadState", "Waiting"];
+        BtnStop.Visibility = Visibility.Visible;
+        BtnRetry.Visibility = Visibility.Collapsed;
+        BtnOpenSaveFolder.Visibility = Visibility.Collapsed;
+        ProgBar.Value = 0;
         //Localize Strings
         ToolTipService.SetToolTip(BtnStop, _localizer["StopDownload"]);
         ToolTipService.SetToolTip(BtnRetry, _localizer["RetryDownload"]);
