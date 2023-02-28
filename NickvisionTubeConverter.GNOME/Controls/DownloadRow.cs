@@ -55,7 +55,7 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
     /// <summary>
     /// The callback function to run when the download is retried
     /// </summary>
-    public Func<IDownloadRowControl, Task>? DownloadRetriedCallback { get; set; }
+    public Func<IDownloadRowControl, Task>? DownloadRetriedAsyncCallback { get; set; }
 
     /// <summary>
     /// Whether or not the download is done
@@ -79,7 +79,13 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
         _urlLabel.SetLabel(download.VideoUrl);
         _stopButton.OnClicked += (sender, e) => Stop();
         _openFolderButton.OnClicked += (sender, e) => Gtk.Functions.ShowUri(null, "file://" + _download.SaveFolder, 0);
-        _retryButton.OnClicked += async (sender, e) => await StartAsync(_previousEmbedMetadata ?? false);
+        _retryButton.OnClicked += async (sender, e) =>
+        {
+            if (DownloadRetriedAsyncCallback != null)
+            {
+                await DownloadRetriedAsyncCallback(this);
+            }
+        };
         SetChild(_mainBox);
     }
 

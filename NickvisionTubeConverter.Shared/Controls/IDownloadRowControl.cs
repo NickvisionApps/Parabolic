@@ -23,7 +23,7 @@ public interface IDownloadRowControl
     /// <summary>
     /// The callback function to run when the download is retried
     /// </summary>
-    public Func<IDownloadRowControl, Task>? DownloadRetriedCallback { get; set; }
+    public Func<IDownloadRowControl, Task>? DownloadRetriedAsyncCallback { get; set; }
 
     /// <summary>
     /// Starts the download

@@ -30,7 +30,7 @@ public sealed partial class DownloadRow : UserControl, IDownloadRowControl
     /// <summary>
     /// The callback function to run when the download is retried
     /// </summary>
-    public Func<IDownloadRowControl, Task>? DownloadRetriedCallback { get; set; }
+    public Func<IDownloadRowControl, Task>? DownloadRetriedAsyncCallback { get; set; }
 
     /// <summary>
     /// Whether or not the download is done
@@ -152,7 +152,13 @@ public sealed partial class DownloadRow : UserControl, IDownloadRowControl
     /// </summary>
     /// <param name="sender">object</param>
     /// <param name="e">RoutedEventArgs</param>
-    private async void BtnRetry_Click(object sender, RoutedEventArgs e) => await StartAsync(_previousEmbedMetadata ?? false);
+    private async void BtnRetry_Click(object sender, RoutedEventArgs e)
+    {
+        if (DownloadRetriedAsyncCallback != null)
+        {
+            await DownloadRetriedAsyncCallback(this);
+        }
+    }
 
     /// <summary>
     /// Occurs when the open save folder button is clicked

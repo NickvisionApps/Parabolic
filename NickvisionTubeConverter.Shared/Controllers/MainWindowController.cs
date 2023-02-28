@@ -191,6 +191,7 @@ public class MainWindowController : IDisposable
         var newRow = UICreateDownloadRow!(download);
         newRow.DownloadCompletedAsyncCallback = DownloadCompletedAsync;
         newRow.DownloadStoppedCallback = DownloadStopped;
+        newRow.DownloadRetriedAsyncCallback = DownloadRetried;
         if (_numberOfActiveDownloads < Configuration.Current.MaxNumberOfActiveDownloads)
         {
             _downloadingRows.Add(newRow);
@@ -203,7 +204,6 @@ public class MainWindowController : IDisposable
             _queuedRows.Add(newRow);
             UIMoveDownloadRow!(newRow, DownloadStage.InQueue);
         }
-
     }
 
     /// <summary>
@@ -248,6 +248,26 @@ public class MainWindowController : IDisposable
         {
             _queuedRows.Remove(row);
             UIDeleteDownloadRowFromQueue!(row);
+        }
+    }
+
+    /// <summary>
+    /// Occurs when a row's download is retried
+    /// </summary>
+    /// <param name="row">The retried row</param>
+    private async Task DownloadRetried(IDownloadRowControl row)
+    {
+        if (_numberOfActiveDownloads < Configuration.Current.MaxNumberOfActiveDownloads)
+        {
+            _downloadingRows.Add(row);
+            _numberOfActiveDownloads++;
+            UIMoveDownloadRow!(row, DownloadStage.Downloading);
+            await row.StartAsync(Configuration.Current.EmbedMetadata);
+        }
+        else
+        {
+            _queuedRows.Add(row);
+            UIMoveDownloadRow!(row, DownloadStage.InQueue);
         }
     }
 }
