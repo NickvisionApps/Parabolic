@@ -86,19 +86,19 @@
                                             <RowDefinition Height="Auto"/>
                                         </Grid.RowDefinitions>
 
-                                        <StackPanel x:Name="SectionDownloading" Grid.Row="0" Margin="10,10,10,0" Orientation="Vertical" Spacing="6" Visibility="Collapsed">
+                                        <StackPanel x:Name="SectionDownloading" Grid.Row="0" Margin="40,10,40,0" Orientation="Vertical" Spacing="6" Visibility="Collapsed">
                                             <TextBlock x:Name="LblDownloading" Margin="4,0,0,0" Style="{ThemeResource NavigationViewItemHeaderTextStyle}" FontSize="16"/>
 
                                             <ListView x:Name="ListDownloading" Margin="-18,0,-6,0"/>
                                         </StackPanel>
 
-                                        <StackPanel x:Name="SectionCompleted" Grid.Row="1" Margin="10,10,10,0" Orientation="Vertical" Spacing="6" Visibility="Collapsed">
+                                        <StackPanel x:Name="SectionCompleted" Grid.Row="1" Margin="40,10,40,0" Orientation="Vertical" Spacing="6" Visibility="Collapsed">
                                             <TextBlock x:Name="LblCompleted" Margin="4,0,0,0" Style="{ThemeResource NavigationViewItemHeaderTextStyle}" FontSize="16"/>
 
                                             <ListView x:Name="ListCompleted" Margin="-18,0,-6,0"/>
                                         </StackPanel>
 
-                                        <StackPanel x:Name="SectionQueued" Grid.Row="2" Margin="10,10,10,0" Orientation="Vertical" Spacing="6" Visibility="Collapsed">
+                                        <StackPanel x:Name="SectionQueued" Grid.Row="2" Margin="40,10,40,0" Orientation="Vertical" Spacing="6" Visibility="Collapsed">
                                             <TextBlock x:Name="LblQueued" Margin="4,0,0,0" Style="{ThemeResource NavigationViewItemHeaderTextStyle}" FontSize="16"/>
 
                                             <ListView x:Name="ListQueued" Margin="-18,0,-6,0"/>
