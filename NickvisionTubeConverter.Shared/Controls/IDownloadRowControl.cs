@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 
 namespace NickvisionTubeConverter.Shared.Controls;
 
@@ -16,7 +17,8 @@ public interface IDownloadRowControl
     /// Starts the download
     /// </summary>
     /// <param name="embedMetadata">Whether or not to embed video metadata</param>
-    public Task StartAsync(bool embedMetadata);
+    /// <param name="completedCallback">The callback function to run when the download is completed</param>
+    public Task StartAsync(bool embedMetadata, Func<IDownloadRowControl, Task>? completedCallback);
 
     /// <summary>
     /// Stops the download

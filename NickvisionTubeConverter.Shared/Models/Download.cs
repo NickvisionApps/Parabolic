@@ -29,6 +29,16 @@ public enum Subtitle
 }
 
 /// <summary>
+/// Stages of a download
+/// </summary>
+public enum DownloadStage
+{
+    InQueue,
+    Downloading,
+    Completed
+}
+
+/// <summary>
 /// A model of a video download
 /// </summary>
 public class Download
