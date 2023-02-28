@@ -5,6 +5,7 @@ using NickvisionTubeConverter.Shared.Controls;
 using NickvisionTubeConverter.Shared.Events;
 using NickvisionTubeConverter.Shared.Models;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace NickvisionTubeConverter.GNOME.Views;
@@ -16,6 +17,9 @@ public partial class MainWindow : Adw.ApplicationWindow
 {
     private readonly MainWindowController _controller;
     private readonly Adw.Application _application;
+    private Dictionary<IDownloadRowControl, Gtk.Separator> _downloadingSeparators;
+    private Dictionary<IDownloadRowControl, Gtk.Separator> _completedSeparators;
+    private Dictionary<IDownloadRowControl, Gtk.Separator> _queuedSeparators;
 
     [Gtk.Connect] private readonly Gtk.Overlay _root;
     [Gtk.Connect] private readonly Adw.Bin _spinnerContainer;
@@ -41,6 +45,9 @@ public partial class MainWindow : Adw.ApplicationWindow
         //Window Settings
         _controller = controller;
         _application = application;
+        _downloadingSeparators = new Dictionary<IDownloadRowControl, Gtk.Separator>();
+        _completedSeparators = new Dictionary<IDownloadRowControl, Gtk.Separator>();
+        _queuedSeparators = new Dictionary<IDownloadRowControl, Gtk.Separator>();
         SetDefaultSize(800, 600);
         SetSizeRequest(360, -1);
         SetTitle(_controller.AppInfo.ShortName);
@@ -161,14 +168,30 @@ public partial class MainWindow : Adw.ApplicationWindow
     private void MoveDownloadRow(IDownloadRowControl row, DownloadStage stage)
     {
         _downloadingBox.Remove((DownloadRow)row);
+        if(_downloadingSeparators.ContainsKey(row))
+        {
+            _downloadingBox.Remove(_downloadingSeparators[row]);
+            _downloadingSeparators.Remove(row);
+        }
         _completedBox.Remove((DownloadRow)row);
+        if (_completedSeparators.ContainsKey(row))
+        {
+            _completedBox.Remove(_completedSeparators[row]);
+            _completedSeparators.Remove(row);
+        }
         _queuedBox.Remove((DownloadRow)row);
+        if (_queuedSeparators.ContainsKey(row))
+        {
+            _queuedBox.Remove(_queuedSeparators[row]);
+            _queuedSeparators.Remove(row);
+        }
         if (stage == DownloadStage.InQueue)
         {
             if (_queuedBox.GetFirstChild() != null)
             {
                 var separator = Gtk.Separator.New(Gtk.Orientation.Horizontal);
                 _queuedBox.Append(separator);
+                _queuedSeparators.Add(row, separator);
             }
             _queuedBox.Append((DownloadRow)row);
         }
@@ -178,6 +201,7 @@ public partial class MainWindow : Adw.ApplicationWindow
             {
                 var separator = Gtk.Separator.New(Gtk.Orientation.Horizontal);
                 _downloadingBox.Append(separator);
+                _downloadingSeparators.Add(row, separator);
             }
             _downloadingBox.Append((DownloadRow)row);
         }
@@ -187,6 +211,7 @@ public partial class MainWindow : Adw.ApplicationWindow
             {
                 var separator = Gtk.Separator.New(Gtk.Orientation.Horizontal);
                 _completedBox.Append(separator);
+                _completedSeparators.Add(row, separator);
             }
             _completedBox.Append((DownloadRow)row);
         }
