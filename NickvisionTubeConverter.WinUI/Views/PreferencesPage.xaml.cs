@@ -48,7 +48,7 @@ public sealed partial class PreferencesPage : UserControl
         ToggleEmbedMetadata.OnContent = "";
         ToggleEmbedMetadata.OffContent = "";
         CardMaxNumberOfActiveDownloads.Header = _controller.Localizer["MaxNumberOfActiveDownloads"];
-        for(var i = 0; i < 10; i++)
+        for (var i = 0; i < 10; i++)
         {
             CmbMaxNumberOfActiveDownloads.Items.Add(i + 1);
         }

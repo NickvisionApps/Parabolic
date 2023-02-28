@@ -138,7 +138,7 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
             _doneLabel.SetText(success ? _localizer["Success"] : _localizer["Error"]);
             _actionViewStack.SetVisibleChildName(success ? "open-folder" : "retry");
         }
-        if(_previousCompletedCallback != null)
+        if (_previousCompletedCallback != null)
         {
             await _previousCompletedCallback(this);
         }

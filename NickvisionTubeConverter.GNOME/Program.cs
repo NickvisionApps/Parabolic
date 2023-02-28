@@ -63,11 +63,11 @@ public partial class Program
             };
             foreach (var prefix in prefixes)
             {
-               if (File.Exists(prefix + "/share/org.nickvision.tubeconverter/org.nickvision.tubeconverter.gresource"))
-               {
-                   g_resources_register(g_resource_load(Path.GetFullPath(prefix + "/share/org.nickvision.tubeconverter/org.nickvision.tubeconverter.gresource")));
-                   break;
-               }
+                if (File.Exists(prefix + "/share/org.nickvision.tubeconverter/org.nickvision.tubeconverter.gresource"))
+                {
+                    g_resources_register(g_resource_load(Path.GetFullPath(prefix + "/share/org.nickvision.tubeconverter/org.nickvision.tubeconverter.gresource")));
+                    break;
+                }
             }
         }
     }

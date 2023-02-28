@@ -263,15 +263,15 @@ public sealed partial class MainWindow : Window
         ListDownloading.Items.Remove(row);
         ListCompleted.Items.Remove(row);
         ListQueued.Items.Remove(row);
-        if(stage == DownloadStage.InQueue)
+        if (stage == DownloadStage.InQueue)
         {
             ListQueued.Items.Add(row);
         }
-        else if(stage == DownloadStage.Downloading)
+        else if (stage == DownloadStage.Downloading)
         {
             ListDownloading.Items.Add(row);
         }
-        else if(stage == DownloadStage.Completed)
+        else if (stage == DownloadStage.Completed)
         {
             ListCompleted.Items.Add(row);
         }

@@ -96,7 +96,7 @@ public sealed partial class DownloadRow : UserControl, IDownloadRowControl
             BtnRetry.Visibility = !success ? Visibility.Visible : Visibility.Collapsed;
             BtnOpenSaveFolder.Visibility = success ? Visibility.Visible : Visibility.Collapsed;
         }
-        if(_previousCompletedCallback != null)
+        if (_previousCompletedCallback != null)
         {
             await _previousCompletedCallback(this);
         }
