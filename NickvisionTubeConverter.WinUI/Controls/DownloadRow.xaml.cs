@@ -17,9 +17,24 @@ public sealed partial class DownloadRow : UserControl, IDownloadRowControl
     private readonly Localizer _localizer;
     private readonly Download _download;
     private bool? _previousEmbedMetadata;
-    private Func<IDownloadRowControl, Task>? _previousCompletedCallback;
     private bool _wasStopped;
 
+    /// <summary>
+    /// The callback function to run when the download is completed
+    /// </summary>
+    public Func<IDownloadRowControl, Task>? DownloadCompletedAsyncCallback { get; set; }
+    /// <summary>
+    /// The callback function to run when the download is stopped
+    /// </summary>
+    public Action<IDownloadRowControl>? DownloadStoppedCallback { get; set; }
+    /// <summary>
+    /// The callback function to run when the download is retried
+    /// </summary>
+    public Func<IDownloadRowControl, Task>? DownloadRetriedCallback { get; set; }
+
+    /// <summary>
+    /// Whether or not the download is done
+    /// </summary>
     public bool IsDone => _download.IsDone;
 
     /// <summary>
@@ -54,16 +69,11 @@ public sealed partial class DownloadRow : UserControl, IDownloadRowControl
     /// Starts the download
     /// </summary>
     /// <param name="embedMetadata">Whether or not to embed video metadata</param>
-    /// <param name="completedCallback">The callback function to run when the download is completed</param>
-    public async Task StartAsync(bool embedMetadata, Func<IDownloadRowControl, Task>? completedCallback)
+    public async Task StartAsync(bool embedMetadata)
     {
         if (_previousEmbedMetadata == null)
         {
             _previousEmbedMetadata = embedMetadata;
-        }
-        if (_previousCompletedCallback == null)
-        {
-            _previousCompletedCallback = completedCallback;
         }
         _wasStopped = false;
         Icon.Glyph = "\uE118";
@@ -104,9 +114,9 @@ public sealed partial class DownloadRow : UserControl, IDownloadRowControl
             BtnRetry.Visibility = !success ? Visibility.Visible : Visibility.Collapsed;
             BtnOpenSaveFolder.Visibility = success ? Visibility.Visible : Visibility.Collapsed;
         }
-        if (_previousCompletedCallback != null)
+        if (DownloadCompletedAsyncCallback != null)
         {
-            await _previousCompletedCallback(this);
+            await DownloadCompletedAsyncCallback(this);
         }
     }
 
@@ -124,6 +134,10 @@ public sealed partial class DownloadRow : UserControl, IDownloadRowControl
         BtnStop.Visibility = Visibility.Collapsed;
         BtnRetry.Visibility = Visibility.Visible;
         BtnOpenSaveFolder.Visibility = Visibility.Collapsed;
+        if (DownloadStoppedCallback != null)
+        {
+            DownloadStoppedCallback(this);
+        }
     }
 
     /// <summary>
@@ -138,7 +152,7 @@ public sealed partial class DownloadRow : UserControl, IDownloadRowControl
     /// </summary>
     /// <param name="sender">object</param>
     /// <param name="e">RoutedEventArgs</param>
-    private async void BtnRetry_Click(object sender, RoutedEventArgs e) => await StartAsync(_previousEmbedMetadata ?? false, _previousCompletedCallback);
+    private async void BtnRetry_Click(object sender, RoutedEventArgs e) => await StartAsync(_previousEmbedMetadata ?? false);
 
     /// <summary>
     /// Occurs when the open save folder button is clicked

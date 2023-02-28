@@ -35,6 +35,10 @@ public class MainWindowController : IDisposable
     /// The UI function for moving a download row
     /// </summary>
     public Action<IDownloadRowControl, DownloadStage>? UIMoveDownloadRow { get; set; }
+    /// <summary>
+    /// The UI function for deleting a download row from the queue
+    /// </summary>
+    public Action<IDownloadRowControl>? UIDeleteDownloadRowFromQueue { get; set; }
 
     /// <summary>
     /// Gets the AppInfo object
@@ -185,12 +189,14 @@ public class MainWindowController : IDisposable
     public async Task AddDownloadAsync(Download download)
     {
         var newRow = UICreateDownloadRow!(download);
+        newRow.DownloadCompletedAsyncCallback = DownloadCompletedAsync;
+        newRow.DownloadStoppedCallback = DownloadStopped;
         if (_numberOfActiveDownloads < Configuration.Current.MaxNumberOfActiveDownloads)
         {
             _downloadingRows.Add(newRow);
             _numberOfActiveDownloads++;
             UIMoveDownloadRow!(newRow, DownloadStage.Downloading);
-            await newRow.StartAsync(Configuration.Current.EmbedMetadata, DownloadCompletedAsync);
+            await newRow.StartAsync(Configuration.Current.EmbedMetadata);
         }
         else
         {
@@ -228,7 +234,20 @@ public class MainWindowController : IDisposable
             _queuedRows.RemoveAt(0);
             _numberOfActiveDownloads++;
             UIMoveDownloadRow!(queuedRow, DownloadStage.Downloading);
-            await queuedRow.StartAsync(Configuration.Current.EmbedMetadata, DownloadCompletedAsync);
+            await queuedRow.StartAsync(Configuration.Current.EmbedMetadata);
+        }
+    }
+
+    /// <summary>
+    /// Occurs when a row's download is stopped
+    /// </summary>
+    /// <param name="row">The stopped row</param>
+    private void DownloadStopped(IDownloadRowControl row)
+    {
+        if(_queuedRows.Contains(row))
+        {
+            _queuedRows.Remove(row);
+            UIDeleteDownloadRowFromQueue!(row);
         }
     }
 }

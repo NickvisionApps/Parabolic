@@ -76,6 +76,7 @@ public partial class MainWindow : Adw.ApplicationWindow
         _controller.NotificationSent += NotificationSent;
         _controller.UICreateDownloadRow = CreateDownloadRow;
         _controller.UIMoveDownloadRow = MoveDownloadRow;
+        _controller.UIDeleteDownloadRowFromQueue = DeleteDownloadRowFromQueue;
         //Add Download Action
         var actDownload = Gio.SimpleAction.New("addDownload", null);
         actDownload.OnActivate += AddDownload;
@@ -217,6 +218,21 @@ public partial class MainWindow : Adw.ApplicationWindow
         }
         _sectionDownloading.SetVisible(_downloadingBox.GetFirstChild() != null);
         _sectionCompleted.SetVisible(_completedBox.GetFirstChild() != null);
+        _sectionQueued.SetVisible(_queuedBox.GetFirstChild() != null);
+    }
+
+    /// <summary>
+    /// Deletes a download row from the queue section
+    /// </summary>
+    /// <param name="row">IDownloadRowControl</param>
+    private void DeleteDownloadRowFromQueue(IDownloadRowControl row)
+    {
+        _queuedBox.Remove((DownloadRow)row);
+        if (_queuedSeparators.ContainsKey(row))
+        {
+            _queuedBox.Remove(_queuedSeparators[row]);
+            _queuedSeparators.Remove(row);
+        }
         _sectionQueued.SetVisible(_queuedBox.GetFirstChild() != null);
     }
 

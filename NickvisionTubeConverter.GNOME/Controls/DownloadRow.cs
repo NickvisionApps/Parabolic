@@ -24,7 +24,6 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
     private readonly Localizer _localizer;
     private readonly Download _download;
     private bool? _previousEmbedMetadata;
-    private Func<IDownloadRowControl, Task>? _previousCompletedCallback;
     private bool _wasStopped;
 
     [Gtk.Connect] private readonly Gtk.Box _mainBox;
@@ -44,6 +43,19 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
     private DownloadProgressStatus _progressStatus;
     private GSourceFunc? _processingCallback;
     private GSourceFunc? _downloadingCallback;
+
+    /// <summary>
+    /// The callback function to run when the download is completed
+    /// </summary>
+    public Func<IDownloadRowControl, Task>? DownloadCompletedAsyncCallback { get; set; }
+    /// <summary>
+    /// The callback function to run when the download is stopped
+    /// </summary>
+    public Action<IDownloadRowControl>? DownloadStoppedCallback { get; set; }
+    /// <summary>
+    /// The callback function to run when the download is retried
+    /// </summary>
+    public Func<IDownloadRowControl, Task>? DownloadRetriedCallback { get; set; }
 
     /// <summary>
     /// Whether or not the download is done
@@ -67,7 +79,7 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
         _urlLabel.SetLabel(download.VideoUrl);
         _stopButton.OnClicked += (sender, e) => Stop();
         _openFolderButton.OnClicked += (sender, e) => Gtk.Functions.ShowUri(null, "file://" + _download.SaveFolder, 0);
-        _retryButton.OnClicked += async (sender, e) => await StartAsync(_previousEmbedMetadata ?? false, _previousCompletedCallback);
+        _retryButton.OnClicked += async (sender, e) => await StartAsync(_previousEmbedMetadata ?? false);
         SetChild(_mainBox);
     }
 
@@ -75,16 +87,11 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
     /// Starts the download
     /// </summary>
     /// <param name="embedMetadata">Whether or not to embed video metadata</param>
-    /// <param name="completedCallback">The callback function to run when the download is completed</param>
-    public async Task StartAsync(bool embedMetadata, Func<IDownloadRowControl, Task>? completedCallback)
+    public async Task StartAsync(bool embedMetadata)
     {
         if (_previousEmbedMetadata == null)
         {
             _previousEmbedMetadata = embedMetadata;
-        }
-        if (_previousCompletedCallback == null)
-        {
-            _previousCompletedCallback = completedCallback;
         }
         _wasStopped = false;
         _statusIcon.AddCssClass("accent");
@@ -138,9 +145,9 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
             _doneLabel.SetText(success ? _localizer["Success"] : _localizer["Error"]);
             _actionViewStack.SetVisibleChildName(success ? "open-folder" : "retry");
         }
-        if (_previousCompletedCallback != null)
+        if (DownloadCompletedAsyncCallback != null)
         {
-            await _previousCompletedCallback(this);
+            await DownloadCompletedAsyncCallback(this);
         }
     }
 
@@ -159,5 +166,9 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
         _levelBar.SetValue(0);
         _doneLabel.SetText(_localizer["Stopped"]);
         _actionViewStack.SetVisibleChildName("retry");
+        if (DownloadStoppedCallback != null)
+        {
+            DownloadStoppedCallback(this);
+        }
     }
 }

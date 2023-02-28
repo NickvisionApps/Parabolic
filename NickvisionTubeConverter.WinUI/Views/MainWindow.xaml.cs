@@ -52,6 +52,7 @@ public sealed partial class MainWindow : Window
         _controller.NotificationSent += NotificationSent;
         _controller.UICreateDownloadRow = CreateDownloadRow;
         _controller.UIMoveDownloadRow = MoveDownloadRow;
+        _controller.UIDeleteDownloadRowFromQueue = DeleteDownloadRowFromQueue;
         //Set TitleBar
         TitleBarTitle.Text = _controller.AppInfo.ShortName;
         _appWindow.Title = TitleBarTitle.Text;
@@ -277,6 +278,16 @@ public sealed partial class MainWindow : Window
         }
         SectionDownloading.Visibility = ListDownloading.Items.Count > 0 ? Visibility.Visible : Visibility.Collapsed;
         SectionCompleted.Visibility = ListCompleted.Items.Count > 0 ? Visibility.Visible : Visibility.Collapsed;
+        SectionQueued.Visibility = ListQueued.Items.Count > 0 ? Visibility.Visible : Visibility.Collapsed;
+    }
+
+    /// <summary>
+    /// Deletes a download row from the queue section
+    /// </summary>
+    /// <param name="row">IDownloadRowControl</param>
+    private void DeleteDownloadRowFromQueue(IDownloadRowControl row)
+    {
+        ListQueued.Items.Remove(row);
         SectionQueued.Visibility = ListQueued.Items.Count > 0 ? Visibility.Visible : Visibility.Collapsed;
     }
 
