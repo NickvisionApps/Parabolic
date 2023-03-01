@@ -9,11 +9,11 @@ default:
 run:
     blueprint-compiler batch-compile Blueprints/ Blueprints/ Blueprints/*.blp
     dotnet build
-    rm Blueprints/*.ui
     glib-compile-resources --sourcedir ./Resources \
     ./Resources/{{app_id}}.gresource.xml
     mv ./Resources/{{app_id}}.gresource ./bin/Debug/net7.0/
     dotnet run
+    rm Blueprints/*.ui
 
 # Install the app
 publish PREFIX LIB_DIR=lib: && (_install_extras PREFIX)
