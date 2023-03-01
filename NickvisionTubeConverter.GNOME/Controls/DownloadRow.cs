@@ -116,6 +116,9 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
         {
             _progressStatus = state.Status;
             _lblLog.SetLabel(state.Log);
+            var vadjustment = _scrollLog.GetVadjustment();
+            vadjustment.SetValue(vadjustment.GetUpper() - vadjustment.GetPageSize());
+            _scrollLog.SetVadjustment(vadjustment);
             switch (state.Status)
             {
                 case DownloadProgressStatus.Downloading:
