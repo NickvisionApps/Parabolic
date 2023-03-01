@@ -274,7 +274,7 @@ public class Download
                 };
                 using var fs = new FileStream(_logPath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
                 using var sr = new StreamReader(fs);
-                progressState.Log = sr.ReadToEnd();
+                progressState.Log = sr.ReadToEnd().Remove(0, 1);
                 sr.Close();
                 fs.Close();
                 _progressCallback(progressState);
