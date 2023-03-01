@@ -26,7 +26,6 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
     private bool? _previousEmbedMetadata;
     private bool _wasStopped;
 
-    [Gtk.Connect] private readonly Gtk.Box _mainBox;
     [Gtk.Connect] private readonly Gtk.Image _statusIcon;
     [Gtk.Connect] private readonly Gtk.Label _filenameLabel;
     [Gtk.Connect] private readonly Gtk.Label _urlLabel;
@@ -65,18 +64,13 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
     /// </summary>
     public bool IsDone => _download.IsDone;
 
-    /// <summary>
-    /// Constructs a DownloadRow
-    /// </summary>
-    /// <param name="download">The download displayed by the row</param>
-    public DownloadRow(Localizer localizer, Download download)
+    private DownloadRow(Gtk.Builder builder, Localizer localizer, Download download) : base(builder.GetPointer("_root"), false)
     {
         _localizer = localizer;
         _download = download;
         _previousEmbedMetadata = null;
         _wasStopped = false;
         //Build UI
-        var builder = Builder.FromFile("download_row.ui", _localizer);
         builder.Connect(this);
         _filenameLabel.SetLabel(download.Filename);
         _urlLabel.SetLabel(download.VideoUrl);
@@ -90,7 +84,14 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
             }
         };
         _viewLogToggleBtn.OnClicked += (sender, e) => _scrollLog.SetVisible(!_scrollLog.GetVisible());
-        SetChild(_mainBox);
+    }
+
+    /// <summary>
+    /// Constructs a DownloadRow
+    /// </summary>
+    /// <param name="download">The download displayed by the row</param>
+    public DownloadRow(Localizer localizer, Download download) : this(Builder.FromFile("download_row.ui", localizer), localizer, download)
+    {
     }
 
     /// <summary>

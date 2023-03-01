@@ -7,175 +7,180 @@ menu mainMenu {
   item(_("About"), "win.about")
 }
 
-Gtk.Overlay _root {
-  vexpand: true; 
+Adw.ApplicationWindow _root {
+  default-width: 800;
+  default-height: 600;
   
-  [overlay]
-  Adw.Bin _spinnerContainer {
-    hexpand: true;
-    vexpand: true;
+  Gtk.Overlay {
+    vexpand: true; 
     
-    Gtk.Spinner _spinner {
-      width-request: 48;
-      height-request: 48;
-      halign: center;
-      valign: center;
+    [overlay]
+    Adw.Bin _spinnerContainer {
       hexpand: true;
       vexpand: true;
-    }
-  }
-  
-  Gtk.Box _mainBox {
-    orientation: vertical;
-
-    Adw.HeaderBar {
-      title-widget: Adw.WindowTitle _title {};
       
-      [start]
-      Gtk.Button _addDownloadButton {
-        action-name: "win.addDownload";
-        tooltip-text: _("AddDownload.Tooltip");
-        Adw.ButtonContent {
-          icon-name: "list-add-symbolic";
-          label: _("Add");
-        }
-      }
-      
-      [end]
-      Gtk.MenuButton {
-        direction: none;
-        menu-model: mainMenu;
-        tooltip-text: _("MainMenu.GTK");
-        primary: true;
+      Gtk.Spinner _spinner {
+        width-request: 48;
+        height-request: 48;
+        halign: center;
+        valign: center;
+        hexpand: true;
+        vexpand: true;
       }
     }
     
-    Adw.ToastOverlay _toastOverlay {
-      hexpand: true;
-      vexpand: true;
-      Adw.ViewStack _viewStack {
-        Adw.ViewStackPage {
-          name: "pageNoDownloads";
-          child: Gtk.ScrolledWindow {
-            Adw.Clamp {
-              maximum-size: 450;
-              valign: center;
-              margin-start: 12;
-              margin-end: 12;
-              margin-top: 12;
-              margin-bottom: 12;
+    Gtk.Box _mainBox {
+      orientation: vertical;
 
-              Gtk.Box {
-                orientation: vertical;
-                spacing: 12;
-                hexpand: true;
-                halign: fill;
-                
-                Adw.ButtonContent _greeting {
-                  halign: center;
-                  margin-top: 24;
-                  margin-bottom: 14;
-                }
-                
-                Gtk.Button {
-                  label: _("AddDownload");
-                  halign: center;
-                  width-request: 200;
-                  height-request: 50;
-                  action-name: "win.addDownload";
-                  styles ["pill", "suggested-action"]
-                }
-                
-                Gtk.Label {
-                  label: _("NoDownloads.Description");
-                  wrap: true;
-                  justify: center;
-                  styles ["dim-label"]
-                }
-              }
-            }
-          };
+      Adw.HeaderBar {
+        title-widget: Adw.WindowTitle _title {};
+        
+        [start]
+        Gtk.Button _addDownloadButton {
+          action-name: "win.addDownload";
+          tooltip-text: _("AddDownload.Tooltip");
+          Adw.ButtonContent {
+            icon-name: "list-add-symbolic";
+            label: _("Add");
+          }
         }
         
-        Adw.ViewStackPage {
-          name: "pageDownloads";
-          child: Gtk.ScrolledWindow {
-            Adw.Clamp {
-              maximum-size: 800;
-              margin-start: 12;
-              margin-end: 12;
-              margin-top: 12;
-              margin-bottom: 12;
-              
-              Gtk.Box {
-                orientation: vertical;
-                spacing: 20;
-                hexpand: true;
-                valign: start;
-                    
+        [end]
+        Gtk.MenuButton {
+          direction: none;
+          menu-model: mainMenu;
+          tooltip-text: _("MainMenu.GTK");
+          primary: true;
+        }
+      }
+      
+      Adw.ToastOverlay _toastOverlay {
+        hexpand: true;
+        vexpand: true;
+        Adw.ViewStack _viewStack {
+          Adw.ViewStackPage {
+            name: "pageNoDownloads";
+            child: Gtk.ScrolledWindow {
+              Adw.Clamp {
+                maximum-size: 450;
+                valign: center;
+                margin-start: 12;
+                margin-end: 12;
+                margin-top: 12;
+                margin-bottom: 12;
 
-                Gtk.Box _sectionDownloading {
+                Gtk.Box {
                   orientation: vertical;
-                  spacing: 10;
-                  visible: false;
-
+                  spacing: 12;
+                  hexpand: true;
+                  halign: fill;
+                  
+                  Adw.ButtonContent _greeting {
+                    halign: center;
+                    margin-top: 24;
+                    margin-bottom: 14;
+                  }
+                  
+                  Gtk.Button {
+                    label: _("AddDownload");
+                    halign: center;
+                    width-request: 200;
+                    height-request: 50;
+                    action-name: "win.addDownload";
+                    styles ["pill", "suggested-action"]
+                  }
+                  
                   Gtk.Label {
-                    label: _("Downloading");
-                    halign: start;
-                    margin-start: 5;
-                    styles ["heading"]
-                  }
-                
-                  Gtk.Box _downloadingBox {
-                    orientation: vertical;
-                    hexpand: true;
-                    valign: start;
-                    styles ["card"]
-                  }
-                }
-
-                Gtk.Box _sectionCompleted {
-                  orientation: vertical;
-                  spacing: 10;
-                  visible: false;
-
-                  Gtk.Label {
-                    label: _("Completed");
-                    halign: start;
-                    margin-start: 5;
-                    styles ["heading"]
-                  }
-                
-                  Gtk.Box _completedBox {
-                    orientation: vertical;
-                    hexpand: true;
-                    valign: start;
-                    styles ["card"]
-                  }
-                }
-
-                Gtk.Box _sectionQueued {
-                  orientation: vertical;
-                  spacing: 10;
-                  visible: false;
-
-                  Gtk.Label {
-                    label: _("Queued");
-                    halign: start;
-                    margin-start: 5;
-                    styles ["heading"]
-                  }
-                
-                  Gtk.Box _queuedBox {
-                    orientation: vertical;
-                    hexpand: true;
-                    valign: start;
-                    styles ["card"]
+                    label: _("NoDownloads.Description");
+                    wrap: true;
+                    justify: center;
+                    styles ["dim-label"]
                   }
                 }
               }
-            }
-          };
+            };
+          }
+          
+          Adw.ViewStackPage {
+            name: "pageDownloads";
+            child: Gtk.ScrolledWindow {
+              Adw.Clamp {
+                maximum-size: 800;
+                margin-start: 12;
+                margin-end: 12;
+                margin-top: 12;
+                margin-bottom: 12;
+                
+                Gtk.Box {
+                  orientation: vertical;
+                  spacing: 20;
+                  hexpand: true;
+                  valign: start;
+                      
+
+                  Gtk.Box _sectionDownloading {
+                    orientation: vertical;
+                    spacing: 10;
+                    visible: false;
+
+                    Gtk.Label {
+                      label: _("Downloading");
+                      halign: start;
+                      margin-start: 5;
+                      styles ["heading"]
+                    }
+                  
+                    Gtk.Box _downloadingBox {
+                      orientation: vertical;
+                      hexpand: true;
+                      valign: start;
+                      styles ["card"]
+                    }
+                  }
+
+                  Gtk.Box _sectionCompleted {
+                    orientation: vertical;
+                    spacing: 10;
+                    visible: false;
+
+                    Gtk.Label {
+                      label: _("Completed");
+                      halign: start;
+                      margin-start: 5;
+                      styles ["heading"]
+                    }
+                  
+                    Gtk.Box _completedBox {
+                      orientation: vertical;
+                      hexpand: true;
+                      valign: start;
+                      styles ["card"]
+                    }
+                  }
+
+                  Gtk.Box _sectionQueued {
+                    orientation: vertical;
+                    spacing: 10;
+                    visible: false;
+
+                    Gtk.Label {
+                      label: _("Queued");
+                      halign: start;
+                      margin-start: 5;
+                      styles ["heading"]
+                    }
+                  
+                    Gtk.Box _queuedBox {
+                      orientation: vertical;
+                      hexpand: true;
+                      valign: start;
+                      styles ["card"]
+                    }
+                  }
+                }
+              }
+            };
+          }
         }
       }
     }

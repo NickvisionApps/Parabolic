@@ -21,7 +21,6 @@ public partial class MainWindow : Adw.ApplicationWindow
     private Dictionary<IDownloadRowControl, Gtk.Separator> _completedSeparators;
     private Dictionary<IDownloadRowControl, Gtk.Separator> _queuedSeparators;
 
-    [Gtk.Connect] private readonly Gtk.Overlay _root;
     [Gtk.Connect] private readonly Adw.Bin _spinnerContainer;
     [Gtk.Connect] private readonly Gtk.Spinner _spinner;
     [Gtk.Connect] private readonly Gtk.Box _mainBox;
@@ -35,12 +34,7 @@ public partial class MainWindow : Adw.ApplicationWindow
     [Gtk.Connect] private readonly Gtk.Box _sectionQueued;
     [Gtk.Connect] private readonly Gtk.Box _queuedBox;
 
-    /// <summary>
-    /// Constructs a MainWindow
-    /// </summary>
-    /// <param name="controller">The MainWindowController</param>
-    /// <param name="application">The Adw.Application</param>
-    public MainWindow(MainWindowController controller, Adw.Application application)
+    private MainWindow(Gtk.Builder builder, MainWindowController controller, Adw.Application application) : base(builder.GetPointer("_root"), false)
     {
         //Window Settings
         _controller = controller;
@@ -48,8 +42,6 @@ public partial class MainWindow : Adw.ApplicationWindow
         _downloadingSeparators = new Dictionary<IDownloadRowControl, Gtk.Separator>();
         _completedSeparators = new Dictionary<IDownloadRowControl, Gtk.Separator>();
         _queuedSeparators = new Dictionary<IDownloadRowControl, Gtk.Separator>();
-        SetDefaultSize(800, 600);
-        SetSizeRequest(360, -1);
         SetTitle(_controller.AppInfo.ShortName);
         if (_controller.IsDevVersion)
         {
@@ -57,9 +49,7 @@ public partial class MainWindow : Adw.ApplicationWindow
         }
         OnCloseRequest += OnCloseRequested;
         //Build UI
-        var builder = Builder.FromFile("window.ui", _controller.Localizer, (s) => s == "About" ? string.Format(_controller.Localizer[s], _controller.AppInfo.ShortName) : _controller.Localizer[s]);
         builder.Connect(this);
-        SetContent(_root);
         //Update Title
         var windowTitle = (Adw.WindowTitle)builder.GetObject("_title");
         windowTitle.SetTitle(_controller.AppInfo.ShortName);
@@ -102,6 +92,15 @@ public partial class MainWindow : Adw.ApplicationWindow
         actAbout.OnActivate += About;
         AddAction(actAbout);
         application.SetAccelsForAction("win.about", new string[] { "F1" });
+    }
+
+    /// <summary>
+    /// Constructs a MainWindow
+    /// </summary>
+    /// <param name="controller">The MainWindowController</param>
+    /// <param name="application">The Adw.Application</param>
+    public MainWindow(MainWindowController controller, Adw.Application application) : this(Builder.FromFile("window.ui", controller.Localizer, (s) => s == "About" ? string.Format(controller.Localizer[s], controller.AppInfo.ShortName) : controller.Localizer[s]), controller, application)
+    {
     }
 
     /// <summary>
