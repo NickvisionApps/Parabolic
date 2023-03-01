@@ -169,7 +169,7 @@ public partial class MainWindow : Adw.ApplicationWindow
     private void MoveDownloadRow(IDownloadRowControl row, DownloadStage stage)
     {
         _downloadingBox.Remove((DownloadRow)row);
-        if(_downloadingSeparators.ContainsKey(row))
+        if (_downloadingSeparators.ContainsKey(row))
         {
             _downloadingBox.Remove(_downloadingSeparators[row]);
             _downloadingSeparators.Remove(row);
