@@ -27,6 +27,10 @@ public class DownloadProgressState
     /// The speed of the download
     /// </summary>
     public double Speed { get; set; }
+    /// <summary>
+    /// The current log of the download
+    /// </summary>
+    public string Log { get; set; }
 
     /// <summary>
     /// Constructs a DownloadProgressState
@@ -36,5 +40,6 @@ public class DownloadProgressState
         Status = DownloadProgressStatus.Processing;
         Progress = 0.0;
         Speed = 0.0;
+        Log = "";
     }
 }

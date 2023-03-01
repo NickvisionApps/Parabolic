@@ -43,9 +43,11 @@ public enum DownloadStage
 /// </summary>
 public class Download
 {
-    private MediaFileType _fileType;
-    private Quality _quality;
-    private Subtitle _subtitle;
+    private readonly Guid _id;
+    private readonly MediaFileType _fileType;
+    private readonly Quality _quality;
+    private readonly Subtitle _subtitle;
+    private readonly string _logPath;
     private Action<DownloadProgressState>? _progressCallback;
     private ulong? _pid;
 
@@ -77,9 +79,11 @@ public class Download
     /// <param name="subtitle">The subtitles for the download</param>
     public Download(string videoUrl, MediaFileType fileType, string saveFolder, string saveFilename, Quality quality = Quality.Best, Subtitle subtitle = Subtitle.None)
     {
+        _id = Guid.NewGuid();
         _fileType = fileType;
         _quality = quality;
         _subtitle = subtitle;
+        _logPath = $"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}{Path.DirectorySeparatorChar}Nickvision{Path.DirectorySeparatorChar}{AppInfo.Current.Name}{Path.DirectorySeparatorChar}{_id}.log";
         _progressCallback = null;
         _pid = null;
         VideoUrl = videoUrl;
@@ -95,6 +99,8 @@ public class Download
     /// <returns>Whether or not the video url is valid, along with the video title if it is, and whether it is a playlist</returns>
     public static async Task<(bool, string, bool)> GetIsValidVideoUrlAsync(string url)
     {
+        var pathToOutput = $"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}{Path.DirectorySeparatorChar}Nickvision{Path.DirectorySeparatorChar}{AppInfo.Current.Name}{Path.DirectorySeparatorChar}output.log";
+        PythonExtensions.SetConsoleOutputFilePath(pathToOutput);
         return await Task.Run(() =>
         {
             try
@@ -139,6 +145,11 @@ public class Download
         {
             File.Delete($"{SaveFolder}{Path.DirectorySeparatorChar}{Filename}");
         }
+        if (File.Exists(_logPath))
+        {
+            File.Delete(_logPath);
+        }
+        PythonExtensions.SetConsoleOutputFilePath(_logPath);
         return await Task.Run(() =>
         {
             using (Python.Runtime.Py.GIL())
@@ -250,7 +261,7 @@ public class Download
             {
                 var downloaded = entries.HasKey("downloaded_bytes") ? (entries["downloaded_bytes"].As<double?>() ?? 0) : 0;
                 var total = entries.HasKey("total_bytes") ? (entries["total_bytes"].As<double?>() ?? 1) : downloaded;
-                _progressCallback(new DownloadProgressState()
+                var progressState = new DownloadProgressState()
                 {
                     Status = entries["status"].As<string>() switch
                     {
@@ -260,7 +271,13 @@ public class Download
                     },
                     Progress = downloaded / total,
                     Speed = entries.HasKey("speed") ? (entries["speed"].As<double?>() ?? 0) / 1024f : 0
-                });
+                };
+                using var fs = new FileStream(_logPath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
+                using var sr = new StreamReader(fs);
+                progressState.Log = sr.ReadToEnd();
+                sr.Close();
+                fs.Close();
+                _progressCallback(progressState);
             }
 
         }

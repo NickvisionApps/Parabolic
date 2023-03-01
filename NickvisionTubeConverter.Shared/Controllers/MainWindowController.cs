@@ -4,9 +4,6 @@ using NickvisionTubeConverter.Shared.Helpers;
 using NickvisionTubeConverter.Shared.Models;
 using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Runtime.InteropServices;
-using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace NickvisionTubeConverter.Shared.Controllers;
@@ -164,15 +161,6 @@ public class MainWindowController : IDisposable
             Python.Runtime.RuntimeData.FormatterType = typeof(NoopFormatter);
             Python.Runtime.PythonEngine.Initialize();
             _pythonThreadState = Python.Runtime.PythonEngine.BeginAllowThreads();
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-            {
-                using (Python.Runtime.Py.GIL())
-                {
-                    dynamic sys = Python.Runtime.Py.Import("sys");
-                    var pathToOutput = $"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}{Path.DirectorySeparatorChar}Nickvision{Path.DirectorySeparatorChar}{AppInfo.Current.Name}{Path.DirectorySeparatorChar}output.txt";
-                    sys.stdout = Python.Runtime.PythonEngine.Eval($"open(\"{Regex.Replace(pathToOutput, @"\\", @"\\")}\", \"w\")");
-                }
-            }
         }
     }
 
@@ -244,7 +232,7 @@ public class MainWindowController : IDisposable
     /// <param name="row">The stopped row</param>
     private void DownloadStopped(IDownloadRowControl row)
     {
-        if(_queuedRows.Contains(row))
+        if (_queuedRows.Contains(row))
         {
             _queuedRows.Remove(row);
             UIDeleteDownloadRowFromQueue!(row);
