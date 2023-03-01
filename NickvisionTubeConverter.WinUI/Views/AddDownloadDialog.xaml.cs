@@ -51,7 +51,7 @@ public sealed partial class AddDownloadDialog : ContentDialog
         CmbSubtitle.Items.Add("SRT");
         CmbSubtitle.SelectedIndex = 0;
         TxtSavePath.Header = _controller.Localizer["SavePath", "Field"];
-        ToolTipService.SetToolTip(BtnSelectSavePath, _controller.Localizer["SelectSaveFolder"]);
+        ToolTipService.SetToolTip(BtnSelectSavePath, _controller.Localizer["SelectSavePath"]);
         TxtErrors.Text = _controller.Localizer["FixErrors", "WinUI"];
         //Load
         ViewStack.ChangePage("Download");
