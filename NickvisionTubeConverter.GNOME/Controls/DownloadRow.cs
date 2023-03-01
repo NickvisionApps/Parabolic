@@ -39,6 +39,8 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
     [Gtk.Connect] private readonly Gtk.Button _stopButton;
     [Gtk.Connect] private readonly Gtk.Button _openFolderButton;
     [Gtk.Connect] private readonly Gtk.Button _retryButton;
+    [Gtk.Connect] private readonly Gtk.ToggleButton _viewLogToggleBtn;
+    [Gtk.Connect] private readonly Gtk.ScrolledWindow _scrollLog;
     [Gtk.Connect] private readonly Gtk.Label _lblLog;
 
     private DownloadProgressStatus _progressStatus;
@@ -87,6 +89,7 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
                 await DownloadRetriedAsyncCallback(this);
             }
         };
+        _viewLogToggleBtn.OnClicked += (sender, e) => _scrollLog.SetVisible(!_scrollLog.GetVisible());
         SetChild(_mainBox);
     }
 
