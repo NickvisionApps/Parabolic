@@ -58,6 +58,7 @@ public sealed partial class DownloadRow : UserControl, IDownloadRowControl
         BtnOpenSaveFolder.Visibility = Visibility.Collapsed;
         ProgBar.Value = 0;
         //Localize Strings
+        ToolTipService.SetToolTip(BtnViewLog, _localizer["ViewLog"]);
         ToolTipService.SetToolTip(BtnStop, _localizer["StopDownload"]);
         ToolTipService.SetToolTip(BtnRetry, _localizer["RetryDownload"]);
         ToolTipService.SetToolTip(BtnOpenSaveFolder, _localizer["OpenSaveFolder"]);
@@ -85,6 +86,10 @@ public sealed partial class DownloadRow : UserControl, IDownloadRowControl
         ProgBar.Value = 0;
         var success = await _download.RunAsync(embedMetadata, (state) =>
         {
+            App.MainWindow!.DispatcherQueue.TryEnqueue(() =>
+            {
+                LblLog.Text = state.Log;
+            });
             switch (state.Status)
             {
                 case DownloadProgressStatus.Downloading:
@@ -139,6 +144,13 @@ public sealed partial class DownloadRow : UserControl, IDownloadRowControl
             DownloadStoppedCallback(this);
         }
     }
+
+    /// <summary>
+    /// Occurs when the view log button is clicked
+    /// </summary>
+    /// <param name="sender">object</param>
+    /// <param name="e">RoutedEventArgs</param>
+    private void BtnViewLog_Click(object sender, RoutedEventArgs e) => SectionLog.Visibility = BtnViewLog.IsChecked ?? false ? Visibility.Visible : Visibility.Collapsed;
 
     /// <summary>
     /// Occurs when the stop button is clicked

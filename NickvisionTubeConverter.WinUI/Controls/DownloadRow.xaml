@@ -11,36 +11,50 @@
     mc:Ignorable="d">
 
     <Border Margin="0,6,0,0" Background="{ThemeResource CardBackgroundFillColorDefaultBrush}" BorderThickness="1" BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}" CornerRadius="8">
-        <wct:DockPanel Margin="10,4,10,4" LastChildFill="True">
-            <FontIcon x:Name="Icon" wct:DockPanel.Dock="Left" VerticalAlignment="Center" FontFamily="{StaticResource SymbolThemeFontFamily}"/>
+        <StackPanel Margin="10,4,10,4" Orientation="Vertical" Spacing="12">
+            <wct:DockPanel LastChildFill="True">
+                <FontIcon x:Name="Icon" wct:DockPanel.Dock="Left" VerticalAlignment="Center" FontFamily="{StaticResource SymbolThemeFontFamily}"/>
 
-            <Button x:Name="BtnStop" wct:DockPanel.Dock="Right" VerticalAlignment="Center" Visibility="Collapsed" Click="BtnStop_Click">
-                <Button.Content>
-                    <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE15B;"/>
-                </Button.Content>
-            </Button>
+                <ToggleButton x:Name="BtnViewLog" wct:DockPanel.Dock="Right" VerticalAlignment="Center" Click="BtnViewLog_Click">
+                    <ToggleButton.Content>
+                        <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xEA80;"/>
+                    </ToggleButton.Content>
+                </ToggleButton>
+                
+                <Button x:Name="BtnStop" wct:DockPanel.Dock="Right" VerticalAlignment="Center" Visibility="Collapsed" Click="BtnStop_Click">
+                    <Button.Content>
+                        <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE15B;"/>
+                    </Button.Content>
+                </Button>
 
-            <Button x:Name="BtnRetry" wct:DockPanel.Dock="Right" VerticalAlignment="Center" Visibility="Collapsed" Click="BtnRetry_Click">
-                <Button.Content>
-                    <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE149;"/>
-                </Button.Content>
-            </Button>
+                <Button x:Name="BtnRetry" wct:DockPanel.Dock="Right" VerticalAlignment="Center" Visibility="Collapsed" Click="BtnRetry_Click">
+                    <Button.Content>
+                        <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE149;"/>
+                    </Button.Content>
+                </Button>
 
-            <Button x:Name="BtnOpenSaveFolder" wct:DockPanel.Dock="Right" VerticalAlignment="Center" Visibility="Collapsed" Click="BtnOpenSaveFolder_Click">
-                <Button.Content>
-                    <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE838;"/>
-                </Button.Content>
-            </Button>
+                <Button x:Name="BtnOpenSaveFolder" wct:DockPanel.Dock="Right" VerticalAlignment="Center" Visibility="Collapsed" Click="BtnOpenSaveFolder_Click">
+                    <Button.Content>
+                        <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE838;"/>
+                    </Button.Content>
+                </Button>
 
-            <StackPanel wct:DockPanel.Dock="Left" Margin="10,0,10,0" Orientation="Vertical" Spacing="2">
-                <TextBlock x:Name="LblFilename"/>
+                <StackPanel wct:DockPanel.Dock="Left" Margin="10,0,10,0" Orientation="Vertical" Spacing="2">
+                    <TextBlock x:Name="LblFilename"/>
 
-                <TextBlock x:Name="LblUrl" Foreground="Gray"/>
+                    <TextBlock x:Name="LblUrl" Foreground="Gray"/>
 
-                <ProgressBar x:Name="ProgBar" HorizontalAlignment="Stretch" Height="10" Minimum="0" Maximum="1"/>
+                    <ProgressBar x:Name="ProgBar" HorizontalAlignment="Stretch" Height="10" Minimum="0" Maximum="1"/>
 
-                <TextBlock x:Name="LblStatus"/>
-            </StackPanel>
-        </wct:DockPanel>
+                    <TextBlock x:Name="LblStatus"/>
+                </StackPanel>
+            </wct:DockPanel>
+
+            <Border x:Name="SectionLog" Visibility="Collapsed" Background="{ThemeResource CardBackgroundFillColorSecondaryBrush}" BorderThickness="1" BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}" CornerRadius="8">
+                <ScrollViewer MaxHeight="300">
+                    <TextBlock x:Name="LblLog" Margin="6,6,6,6" TextWrapping="Wrap"/>
+                </ScrollViewer>
+            </Border>
+        </StackPanel>
     </Border>
 </UserControl>
