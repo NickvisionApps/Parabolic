@@ -2,126 +2,132 @@ using Gtk 4.0;
 using Adw 1;
 
 Gtk.Box _mainBox {
-  orientation: horizontal;
-  spacing: 6;
+  orientation: vertical;
+  spacing: 12;
 
-  Gtk.Image _statusIcon {
-    icon-name: "folder-download-symbolic";
-    pixel-size: 24;
-    margin-start: 10;
-    margin-end: 5;
-  }
-  
-  Gtk.Box {
-    orientation: vertical;
-    spacing: 3;
-    margin-top: 8;
-    margin-bottom: 8;
-    
-    Gtk.Label _filenameLabel {
-      halign: start;
-      ellipsize: end;
-      lines: 1;
+  Gtk.Box _contentBox {
+    orientation: horizontal;
+    spacing: 6;
+
+    Gtk.Image _statusIcon {
+      icon-name: "folder-download-symbolic";
+      pixel-size: 24;
+      margin-start: 10;
+      margin-end: 5;
     }
     
-    Gtk.Label _urlLabel {
-      halign: start;
-      ellipsize: end;
-      lines: 1;
-      
-      styles ["caption", "dim-label"]
-    }
-    
-    Adw.ViewStack _stateViewStack {
+    Gtk.Box {
+      orientation: vertical;
+      spacing: 3;
       margin-top: 8;
+      margin-bottom: 8;
       
-      Adw.ViewStackPage {
-        name: "downloading";
-        child: Gtk.Box {
-          orientation: vertical;
-          spacing: 3;
-          
-          Gtk.ProgressBar _progressBar {
-            hexpand: true;
-          }
-          
-          Gtk.Label  _progressLabel {
-            label: _("DownloadState.Waiting");
-            halign: start;
-            
-            styles ["caption"]
-          }
-        };
+      Gtk.Label _filenameLabel {
+        halign: start;
+        ellipsize: end;
+        lines: 1;
       }
       
-      Adw.ViewStackPage {
-        name: "done";
-        child: Gtk.Box {
-          orientation: vertical;
-          spacing: 3;
-          
-          Gtk.LevelBar _levelBar {}
-          
-          Gtk.Label _doneLabel {
-            halign: start;
+      Gtk.Label _urlLabel {
+        halign: start;
+        ellipsize: end;
+        lines: 1;
+        
+        styles ["caption", "dim-label"]
+      }
+      
+      Adw.ViewStack _stateViewStack {
+        margin-top: 8;
+        
+        Adw.ViewStackPage {
+          name: "downloading";
+          child: Gtk.Box {
+            orientation: vertical;
+            spacing: 3;
             
-            styles ["caption"]
-          }
+            Gtk.ProgressBar _progressBar {
+              hexpand: true;
+            }
+            
+            Gtk.Label  _progressLabel {
+              label: _("DownloadState.Waiting");
+              halign: start;
+              
+              styles ["caption"]
+            }
+          };
+        }
+        
+        Adw.ViewStackPage {
+          name: "done";
+          child: Gtk.Box {
+            orientation: vertical;
+            spacing: 3;
+            
+            Gtk.LevelBar _levelBar {}
+            
+            Gtk.Label _doneLabel {
+              halign: start;
+              
+              styles ["caption"]
+            }
+          };
+        }
+      }
+    }
+    Adw.ViewStack _actionViewStack {
+      margin-start: 5;
+      margin-end: 10;
+      
+      Adw.ViewStackPage {
+        name: "cancel";
+        child: Gtk.Button _stopButton {
+          valign: center;
+          icon-name: "media-playback-stop-symbolic";
+          tooltip-text: _("StopDownload");
+
+          styles ["circular"]
+        };
+      }
+
+      Adw.ViewStackPage {
+        name: "open-folder";
+        child: Gtk.Button  _openFolderButton {
+          valign: center;
+          icon-name: "folder-symbolic";
+          tooltip-text: _("OpenSaveFolder");
+
+          styles ["circular"]
+        };
+      }
+
+      Adw.ViewStackPage {
+        name: "retry";
+        child: Gtk.Button _retryButton {
+          valign: center;
+          icon-name: "view-refresh-symbolic";
+          tooltip-text: _("RetryDownload");
+            
+          styles ["circular"]
         };
       }
     }
-
-    Gtk.ScrolledWindow _scrollLog {
-      margin-top: 8;
-      height-request: 100;
-      child: Gtk.Label _lblLog {
-        margin-start: 6;
-        margin-top: 6;
-        margin-end: 6;
-        margin-bottom: 6;
-        wrap: true;
-
-        label: "Testing";
-      };
-
-      styles ["card", "view"]
-    }
   }
-  Adw.ViewStack _actionViewStack {
-    margin-start: 5;
-    margin-end: 10;
-    
-    Adw.ViewStackPage {
-      name: "cancel";
-      child: Gtk.Button _stopButton {
-        valign: center;
-        icon-name: "media-playback-stop-symbolic";
-        tooltip-text: _("StopDownload");
 
-        styles ["circular"]
-      };
-    }
+  Gtk.ScrolledWindow _scrollLog {
+    margin-start: 6;
+    margin-end: 6;
+    margin-bottom: 6;
+    height-request: 100;
+    child: Gtk.Label _lblLog {
+      margin-start: 6;
+      margin-top: 6;
+      margin-end: 6;
+      margin-bottom: 6;
+      halign: start;
+      wrap: true;
+    };
 
-    Adw.ViewStackPage {
-      name: "open-folder";
-      child: Gtk.Button  _openFolderButton {
-        valign: center;
-        icon-name: "folder-symbolic";
-        tooltip-text: _("OpenSaveFolder");
-
-        styles ["circular"]
-      };
-    }
-
-    Adw.ViewStackPage {
-      name: "retry";
-      child: Gtk.Button _retryButton {
-        valign: center;
-        icon-name: "view-refresh-symbolic";
-        tooltip-text: _("RetryDownload");
-          
-        styles ["circular"]
-      };
-    }
+    styles ["card", "view"]
   }
 }
