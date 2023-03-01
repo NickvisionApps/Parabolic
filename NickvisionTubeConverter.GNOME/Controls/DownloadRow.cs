@@ -21,6 +21,7 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
     [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
     private static partial uint g_timeout_add(uint interval, GSourceFunc function, nint data);
 
+    private bool _disposed;
     private readonly Localizer _localizer;
     private readonly Download _download;
     private bool? _previousEmbedMetadata;
@@ -66,6 +67,7 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
 
     private DownloadRow(Gtk.Builder builder, Localizer localizer, Download download) : base(builder.GetPointer("_root"), false)
     {
+        _disposed = false;
         _localizer = localizer;
         _download = download;
         _previousEmbedMetadata = null;
@@ -92,6 +94,32 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
     /// <param name="download">The download displayed by the row</param>
     public DownloadRow(Localizer localizer, Download download) : this(Builder.FromFile("download_row.ui", localizer), localizer, download)
     {
+
+    }
+
+    /// <summary>
+    /// Frees resources used by the DownloadRow object
+    /// </summary>
+    public void Dispose()
+    {
+        Dispose(true);
+        GC.SuppressFinalize(this);
+    }
+
+    /// <summary>
+    /// Frees resources used by the DownloadRow object
+    /// </summary>
+    protected virtual void Dispose(bool disposing)
+    {
+        if (_disposed)
+        {
+            return;
+        }
+        if (disposing)
+        {
+            _download.Dispose();
+        }
+        _disposed = true;
     }
 
     /// <summary>

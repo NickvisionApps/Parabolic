@@ -41,8 +41,9 @@ public enum DownloadStage
 /// <summary>
 /// A model of a video download
 /// </summary>
-public class Download
+public class Download : IDisposable
 {
+    private bool _disposed;
     private readonly Guid _id;
     private readonly MediaFileType _fileType;
     private readonly Quality _quality;
@@ -79,6 +80,7 @@ public class Download
     /// <param name="subtitle">The subtitles for the download</param>
     public Download(string videoUrl, MediaFileType fileType, string saveFolder, string saveFilename, Quality quality = Quality.Best, Subtitle subtitle = Subtitle.None)
     {
+        _disposed = false;
         _id = Guid.NewGuid();
         _fileType = fileType;
         _quality = quality;
@@ -90,6 +92,34 @@ public class Download
         SaveFolder = saveFolder;
         Filename = saveFilename;
         IsDone = false;
+    }
+
+    /// <summary>
+    /// Frees resources used by the Download object
+    /// </summary>
+    public void Dispose()
+    {
+        Dispose(true);
+        GC.SuppressFinalize(this);
+    }
+
+    /// <summary>
+    /// Frees resources used by the Download object
+    /// </summary>
+    protected virtual void Dispose(bool disposing)
+    {
+        if (_disposed)
+        {
+            return;
+        }
+        if (disposing)
+        {
+            if (File.Exists(_logPath))
+            {
+                File.Delete(_logPath);
+            }
+        }
+        _disposed = true;
     }
 
     /// <summary>

@@ -4,6 +4,7 @@ using NickvisionTubeConverter.Shared.Helpers;
 using NickvisionTubeConverter.Shared.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Threading.Tasks;
 
 namespace NickvisionTubeConverter.Shared.Controllers;
@@ -121,7 +122,7 @@ public class MainWindowController : IDisposable
     }
 
     /// <summary>
-    /// Frees resources used by the Account object
+    /// Frees resources used by the MainWindowController object
     /// </summary>
     public void Dispose()
     {
@@ -130,7 +131,7 @@ public class MainWindowController : IDisposable
     }
 
     /// <summary>
-    /// Frees resources used by the Account object
+    /// Frees resources used by the MainWindowController object
     /// </summary>
     protected virtual void Dispose(bool disposing)
     {
@@ -140,9 +141,26 @@ public class MainWindowController : IDisposable
         }
         if (disposing)
         {
+            var pathToOutput = $"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}{Path.DirectorySeparatorChar}Nickvision{Path.DirectorySeparatorChar}{AppInfo.Current.Name}{Path.DirectorySeparatorChar}output.log";
             Localizer.Dispose();
             Python.Runtime.PythonEngine.EndAllowThreads(_pythonThreadState);
             Python.Runtime.PythonEngine.Shutdown();
+            if (File.Exists(pathToOutput))
+            {
+                File.Delete(pathToOutput);
+            }
+            foreach (var row in _downloadingRows)
+            {
+                row.Dispose();
+            }
+            foreach (var row in _completedRows)
+            {
+                row.Dispose();
+            }
+            foreach (var row in _queuedRows)
+            {
+                row.Dispose();
+            }
         }
         _disposed = true;
     }
@@ -200,6 +218,10 @@ public class MainWindowController : IDisposable
     public void StopAllDownloads()
     {
         foreach (var row in _downloadingRows)
+        {
+            row.Stop();
+        }
+        foreach (var row in _queuedRows)
         {
             row.Stop();
         }

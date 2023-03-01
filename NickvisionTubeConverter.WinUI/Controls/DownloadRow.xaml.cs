@@ -14,6 +14,7 @@ namespace NickvisionTubeConverter.WinUI.Controls;
 /// </summary>
 public sealed partial class DownloadRow : UserControl, IDownloadRowControl
 {
+    private bool _disposed;
     private readonly Localizer _localizer;
     private readonly Download _download;
     private bool? _previousEmbedMetadata;
@@ -45,6 +46,7 @@ public sealed partial class DownloadRow : UserControl, IDownloadRowControl
     public DownloadRow(Localizer localizer, Download download)
     {
         InitializeComponent();
+        _disposed = false;
         _localizer = localizer;
         _download = download;
         _previousEmbedMetadata = null;
@@ -64,6 +66,31 @@ public sealed partial class DownloadRow : UserControl, IDownloadRowControl
         ToolTipService.SetToolTip(BtnOpenSaveFolder, _localizer["OpenSaveFolder"]);
         //Load
         LblUrl.Text = _download.VideoUrl;
+    }
+
+    /// <summary>
+    /// Frees resources used by the DownloadRow object
+    /// </summary>
+    public void Dispose()
+    {
+        Dispose(true);
+        GC.SuppressFinalize(this);
+    }
+
+    /// <summary>
+    /// Frees resources used by the DownloadRow object
+    /// </summary>
+    private void Dispose(bool disposing)
+    {
+        if (_disposed)
+        {
+            return;
+        }
+        if (disposing)
+        {
+            _download.Dispose();
+        }
+        _disposed = true;
     }
 
     /// <summary>
