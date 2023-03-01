@@ -46,7 +46,7 @@ Gtk.Box _mainBox {
           }
           
           Gtk.Label  _progressLabel {
-            label: _("DownloadState.Preparing");
+            label: _("DownloadState.Waiting");
             halign: start;
             
             styles ["caption"]
@@ -104,7 +104,7 @@ Gtk.Box _mainBox {
         icon-name: "view-refresh-symbolic";
         tooltip-text: _("RetryDownload");
           
-        styles ["retry"]
+        styles ["circular"]
       };
     }
   }

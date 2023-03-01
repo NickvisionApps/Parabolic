@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 
 namespace NickvisionTubeConverter.Shared.Controls;
 
@@ -11,6 +12,18 @@ public interface IDownloadRowControl
     /// Whether or not the download is done
     /// </summary>
     public bool IsDone { get; }
+    /// <summary>
+    /// The callback function to run when the download is completed
+    /// </summary>
+    public Func<IDownloadRowControl, Task>? DownloadCompletedAsyncCallback { get; set; }
+    /// <summary>
+    /// The callback function to run when the download is stopped
+    /// </summary>
+    public Action<IDownloadRowControl>? DownloadStoppedCallback { get; set; }
+    /// <summary>
+    /// The callback function to run when the download is retried
+    /// </summary>
+    public Func<IDownloadRowControl, Task>? DownloadRetriedAsyncCallback { get; set; }
 
     /// <summary>
     /// Starts the download

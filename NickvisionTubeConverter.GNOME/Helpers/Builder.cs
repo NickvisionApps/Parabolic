@@ -16,7 +16,7 @@ public class Builder
     /// <param name="translatableTransformer">Optional closure to override behavior of transforming localization keys to the translated text</param>
     /// <returns>Gtk.Builder</returns>
     public static Gtk.Builder FromFile(string name, Localizer localizer, Func<string, string>? translatableTransformer = null)
-    {        
+    {
         Gtk.Builder builder;
         using (var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream(name))
         using (var reader = new StreamReader(stream))

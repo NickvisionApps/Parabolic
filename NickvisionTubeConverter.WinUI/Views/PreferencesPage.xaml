@@ -107,6 +107,14 @@
 
                                 <ToggleSwitch x:Name="ToggleEmbedMetadata" Toggled="ToggleEmbedMetadata_Toggled"/>
                             </labs:SettingsCard>
+
+                            <labs:SettingsCard x:Name="CardMaxNumberOfActiveDownloads">
+                                <labs:SettingsCard.HeaderIcon>
+                                    <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE1E9;"/>
+                                </labs:SettingsCard.HeaderIcon>
+
+                                <ComboBox x:Name="CmbMaxNumberOfActiveDownloads" SelectionChanged="CmbMaxNumberOfActiveDownloads_SelectionChanged"/>
+                            </labs:SettingsCard>
                         </labs:SettingsExpander.Items>
                     </labs:SettingsExpander>
                 </StackPanel>

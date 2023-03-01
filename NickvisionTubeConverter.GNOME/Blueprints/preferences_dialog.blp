@@ -35,6 +35,13 @@ Gtk.Box _mainBox {
           valign: center;
         }
       }
+
+      Adw.ComboRow _maxNumberOfActiveDownloadsRow {
+        title: _("MaxNumberOfActiveDownloads");
+        model: Gtk.StringList {
+          strings ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]
+        };
+      }
     }
   }
 }

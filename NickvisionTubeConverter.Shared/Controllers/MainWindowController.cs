@@ -18,7 +18,10 @@ public class MainWindowController : IDisposable
 {
     private bool _disposed;
     private nint _pythonThreadState;
-    private List<IDownloadRowControl> _downloadRows;
+    private int _numberOfActiveDownloads;
+    private List<IDownloadRowControl> _downloadingRows;
+    private List<IDownloadRowControl> _completedRows;
+    private List<IDownloadRowControl> _queuedRows;
 
     /// <summary>
     /// The localizer to get translated strings from
@@ -28,6 +31,14 @@ public class MainWindowController : IDisposable
     /// The UI function for creating a download row
     /// </summary>
     public Func<Download, IDownloadRowControl>? UICreateDownloadRow { get; set; }
+    /// <summary>
+    /// The UI function for moving a download row
+    /// </summary>
+    public Action<IDownloadRowControl, DownloadStage>? UIMoveDownloadRow { get; set; }
+    /// <summary>
+    /// The UI function for deleting a download row from the queue
+    /// </summary>
+    public Action<IDownloadRowControl>? UIDeleteDownloadRowFromQueue { get; set; }
 
     /// <summary>
     /// Gets the AppInfo object
@@ -45,6 +56,10 @@ public class MainWindowController : IDisposable
     /// The preferred theme of the application
     /// </summary>
     public Theme Theme => Configuration.Current.Theme;
+    /// <summary>
+    /// Whether or not downloads are running
+    /// </summary>
+    public bool AreDownloadsRunning => _downloadingRows.Count > 0;
 
     /// <summary>
     /// Occurs when a notification is sent
@@ -57,7 +72,11 @@ public class MainWindowController : IDisposable
     public MainWindowController()
     {
         _disposed = false;
-        _downloadRows = new List<IDownloadRowControl>();
+        _pythonThreadState = IntPtr.Zero;
+        _numberOfActiveDownloads = 0;
+        _downloadingRows = new List<IDownloadRowControl>();
+        _completedRows = new List<IDownloadRowControl>();
+        _queuedRows = new List<IDownloadRowControl>();
         Localizer = new Localizer();
     }
 
@@ -101,24 +120,6 @@ public class MainWindowController : IDisposable
             {
                 return Localizer["Greeting", "Generic"];
             }
-        }
-    }
-
-    /// <summary>
-    /// Whether or not downloads are running
-    /// </summary>
-    public bool AreDownloadsRunning
-    {
-        get
-        {
-            foreach (var row in _downloadRows)
-            {
-                if (!row.IsDone)
-                {
-                    return true;
-                }
-            }
-            return false;
         }
     }
 
@@ -188,18 +189,85 @@ public class MainWindowController : IDisposable
     public async Task AddDownloadAsync(Download download)
     {
         var newRow = UICreateDownloadRow!(download);
-        _downloadRows.Add(newRow);
-        await newRow.StartAsync(Configuration.Current.EmbedMetadata);
+        newRow.DownloadCompletedAsyncCallback = DownloadCompletedAsync;
+        newRow.DownloadStoppedCallback = DownloadStopped;
+        newRow.DownloadRetriedAsyncCallback = DownloadRetried;
+        if (_numberOfActiveDownloads < Configuration.Current.MaxNumberOfActiveDownloads)
+        {
+            _downloadingRows.Add(newRow);
+            _numberOfActiveDownloads++;
+            UIMoveDownloadRow!(newRow, DownloadStage.Downloading);
+            await newRow.StartAsync(Configuration.Current.EmbedMetadata);
+        }
+        else
+        {
+            _queuedRows.Add(newRow);
+            UIMoveDownloadRow!(newRow, DownloadStage.InQueue);
+        }
     }
 
     /// <summary>
     /// Stops all downloads
     /// </summary>
-    public void StopDownloads()
+    public void StopAllDownloads()
     {
-        foreach (var row in _downloadRows)
+        foreach (var row in _downloadingRows)
         {
             row.Stop();
+        }
+    }
+
+    /// <summary>
+    /// Occurs when a row's download is completed
+    /// </summary>
+    /// <param name="row">The completed row</param>
+    private async Task DownloadCompletedAsync(IDownloadRowControl row)
+    {
+        _completedRows.Add(row);
+        _downloadingRows.Remove(row);
+        _numberOfActiveDownloads--;
+        UIMoveDownloadRow!(row, DownloadStage.Completed);
+        if (_queuedRows.Count > 0)
+        {
+            var queuedRow = _queuedRows[0];
+            _downloadingRows.Add(queuedRow);
+            _queuedRows.RemoveAt(0);
+            _numberOfActiveDownloads++;
+            UIMoveDownloadRow!(queuedRow, DownloadStage.Downloading);
+            await queuedRow.StartAsync(Configuration.Current.EmbedMetadata);
+        }
+    }
+
+    /// <summary>
+    /// Occurs when a row's download is stopped
+    /// </summary>
+    /// <param name="row">The stopped row</param>
+    private void DownloadStopped(IDownloadRowControl row)
+    {
+        if(_queuedRows.Contains(row))
+        {
+            _queuedRows.Remove(row);
+            UIDeleteDownloadRowFromQueue!(row);
+        }
+    }
+
+    /// <summary>
+    /// Occurs when a row's download is retried
+    /// </summary>
+    /// <param name="row">The retried row</param>
+    private async Task DownloadRetried(IDownloadRowControl row)
+    {
+        if (_numberOfActiveDownloads < Configuration.Current.MaxNumberOfActiveDownloads)
+        {
+            _downloadingRows.Add(row);
+            _numberOfActiveDownloads++;
+            UIMoveDownloadRow!(row, DownloadStage.Downloading);
+            await row.StartAsync(Configuration.Current.EmbedMetadata);
+        }
+        else
+        {
+            _queuedRows.Add(row);
+            UIMoveDownloadRow!(row, DownloadStage.InQueue);
         }
     }
 }

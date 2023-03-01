@@ -44,7 +44,7 @@ public partial class Program
         _mainWindowController.AppInfo.ShortName = "Tube Converter";
         _mainWindowController.AppInfo.Description = $"{_mainWindowController.Localizer["Description"]}.";
         _mainWindowController.AppInfo.Version = "2023.3.0-beta1";
-        _mainWindowController.AppInfo.Changelog = "<ul><li>Tube Converter has been rewritten in C#. With the C# rewrite, Tube Converter is now available on Windows!</li><li>Added download progress/speed indicators</li><li>Replaced the View Log button with an Open Save Folder button on successful download and a Retry Download button on error</li><li>Redesigned download rows to better fit small screens/mobile devices</li><li>Fixed UI freeze while downloads in progress</li><li>Fixed being unable to close the Preferences window with the Esc key</li><li>Fixed missing GNOME HIG keyboard shortcuts (Ctrl+W, F10)</li></ul>";
+        _mainWindowController.AppInfo.Changelog = "<ul><li>Tube Converter has been rewritten in C#. With the C# rewrite, Tube Converter is now available on Windows!</li><li>Added a queue system with a max number of active downloads option in Preferences</li><li>Added download progress/speed indicators</li><li>Replaced the View Log button with an Open Save Folder button on successful download and a Retry Download button on error</li><li>Redesigned download rows to better fit small screens/mobile devices</li><li>Fixed UI freeze while downloads in progress</li><li>Fixed being unable to close the Preferences window with the Esc key</li><li>Fixed missing GNOME HIG keyboard shortcuts (Ctrl+W, F10)</li></ul>";
         _mainWindowController.AppInfo.GitHubRepo = new Uri("https://github.com/nlogozzo/NickvisionTubeConverter");
         _mainWindowController.AppInfo.IssueTracker = new Uri("https://github.com/nlogozzo/NickvisionTubeConverter/issues/new");
         _mainWindowController.AppInfo.SupportUrl = new Uri("https://github.com/nlogozzo/NickvisionTubeConverter/discussions");
@@ -63,11 +63,11 @@ public partial class Program
             };
             foreach (var prefix in prefixes)
             {
-               if (File.Exists(prefix + "/share/org.nickvision.tubeconverter/org.nickvision.tubeconverter.gresource"))
-               {
-                   g_resources_register(g_resource_load(Path.GetFullPath(prefix + "/share/org.nickvision.tubeconverter/org.nickvision.tubeconverter.gresource")));
-                   break;
-               }
+                if (File.Exists(prefix + "/share/org.nickvision.tubeconverter/org.nickvision.tubeconverter.gresource"))
+                {
+                    g_resources_register(g_resource_load(Path.GetFullPath(prefix + "/share/org.nickvision.tubeconverter/org.nickvision.tubeconverter.gresource")));
+                    break;
+                }
             }
         }
     }

@@ -109,22 +109,69 @@ Gtk.Overlay _root {
               
               Gtk.Box {
                 orientation: vertical;
-                spacing: 10;
+                spacing: 20;
                 hexpand: true;
                 valign: start;
                     
-                Gtk.Label {
-                  label: _("Downloads");
-                  halign: start;
-                  margin-start: 5;
-                  styles ["heading"]
-                }
-                
-                Gtk.Box _downloadsBox {
+
+                Gtk.Box _sectionDownloading {
                   orientation: vertical;
-                  hexpand: true;
-                  valign: start;
-                  styles ["card"]
+                  spacing: 10;
+                  visible: false;
+
+                  Gtk.Label {
+                    label: _("Downloading");
+                    halign: start;
+                    margin-start: 5;
+                    styles ["heading"]
+                  }
+                
+                  Gtk.Box _downloadingBox {
+                    orientation: vertical;
+                    hexpand: true;
+                    valign: start;
+                    styles ["card"]
+                  }
+                }
+
+                Gtk.Box _sectionCompleted {
+                  orientation: vertical;
+                  spacing: 10;
+                  visible: false;
+
+                  Gtk.Label {
+                    label: _("Completed");
+                    halign: start;
+                    margin-start: 5;
+                    styles ["heading"]
+                  }
+                
+                  Gtk.Box _completedBox {
+                    orientation: vertical;
+                    hexpand: true;
+                    valign: start;
+                    styles ["card"]
+                  }
+                }
+
+                Gtk.Box _sectionQueued {
+                  orientation: vertical;
+                  spacing: 10;
+                  visible: false;
+
+                  Gtk.Label {
+                    label: _("Queued");
+                    halign: start;
+                    margin-start: 5;
+                    styles ["heading"]
+                  }
+                
+                  Gtk.Box _queuedBox {
+                    orientation: vertical;
+                    hexpand: true;
+                    valign: start;
+                    styles ["card"]
+                  }
                 }
               }
             }

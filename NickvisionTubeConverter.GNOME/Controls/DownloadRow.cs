@@ -2,6 +2,7 @@ using NickvisionTubeConverter.GNOME.Helpers;
 using NickvisionTubeConverter.Shared.Controls;
 using NickvisionTubeConverter.Shared.Helpers;
 using NickvisionTubeConverter.Shared.Models;
+using System;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 
@@ -44,6 +45,19 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
     private GSourceFunc? _downloadingCallback;
 
     /// <summary>
+    /// The callback function to run when the download is completed
+    /// </summary>
+    public Func<IDownloadRowControl, Task>? DownloadCompletedAsyncCallback { get; set; }
+    /// <summary>
+    /// The callback function to run when the download is stopped
+    /// </summary>
+    public Action<IDownloadRowControl>? DownloadStoppedCallback { get; set; }
+    /// <summary>
+    /// The callback function to run when the download is retried
+    /// </summary>
+    public Func<IDownloadRowControl, Task>? DownloadRetriedAsyncCallback { get; set; }
+
+    /// <summary>
     /// Whether or not the download is done
     /// </summary>
     public bool IsDone => _download.IsDone;
@@ -65,7 +79,13 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
         _urlLabel.SetLabel(download.VideoUrl);
         _stopButton.OnClicked += (sender, e) => Stop();
         _openFolderButton.OnClicked += (sender, e) => Gtk.Functions.ShowUri(null, "file://" + _download.SaveFolder, 0);
-        _retryButton.OnClicked += async (sender, e) => await StartAsync(_previousEmbedMetadata ?? false);
+        _retryButton.OnClicked += async (sender, e) =>
+        {
+            if (DownloadRetriedAsyncCallback != null)
+            {
+                await DownloadRetriedAsyncCallback(this);
+            }
+        };
         SetChild(_mainBox);
     }
 
@@ -131,6 +151,10 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
             _doneLabel.SetText(success ? _localizer["Success"] : _localizer["Error"]);
             _actionViewStack.SetVisibleChildName(success ? "open-folder" : "retry");
         }
+        if (DownloadCompletedAsyncCallback != null)
+        {
+            await DownloadCompletedAsyncCallback(this);
+        }
     }
 
     /// <summary>
@@ -148,5 +172,9 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
         _levelBar.SetValue(0);
         _doneLabel.SetText(_localizer["Stopped"]);
         _actionViewStack.SetVisibleChildName("retry");
+        if (DownloadStoppedCallback != null)
+        {
+            DownloadStoppedCallback(this);
+        }
     }
 }
