@@ -69,6 +69,22 @@ Gtk.Box _mainBox {
           }
         };
       }
+
+      Gtk.ScrolledWindow _scrollLog {
+        margin-top: 8;
+        height-request: 100;
+        child: Gtk.Label _lblLog {
+          margin-start: 6;
+          margin-top: 6;
+          margin-end: 6;
+          margin-bottom: 6;
+          wrap: true;
+
+          label: "Testing";
+        };
+
+        styles ["card", "view"]
+      }
     }
   }
   Adw.ViewStack _actionViewStack {

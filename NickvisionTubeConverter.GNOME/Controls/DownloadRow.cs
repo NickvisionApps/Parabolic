@@ -39,6 +39,7 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
     [Gtk.Connect] private readonly Gtk.Button _stopButton;
     [Gtk.Connect] private readonly Gtk.Button _openFolderButton;
     [Gtk.Connect] private readonly Gtk.Button _retryButton;
+    [Gtk.Connect] private readonly Gtk.Label _lblLog;
 
     private DownloadProgressStatus _progressStatus;
     private GSourceFunc? _processingCallback;
@@ -111,6 +112,7 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
         var success = await _download.RunAsync(embedMetadata, (state) =>
         {
             _progressStatus = state.Status;
+            _lblLog.SetLabel(state.Log);
             switch (state.Status)
             {
                 case DownloadProgressStatus.Downloading:
