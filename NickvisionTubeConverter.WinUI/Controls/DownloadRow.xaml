@@ -15,12 +15,6 @@
             <wct:DockPanel LastChildFill="True">
                 <FontIcon x:Name="Icon" wct:DockPanel.Dock="Left" VerticalAlignment="Center" FontFamily="{StaticResource SymbolThemeFontFamily}"/>
 
-                <ToggleButton x:Name="BtnViewLog" wct:DockPanel.Dock="Right" VerticalAlignment="Center" Click="BtnViewLog_Click">
-                    <ToggleButton.Content>
-                        <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xEA80;"/>
-                    </ToggleButton.Content>
-                </ToggleButton>
-                
                 <Button x:Name="BtnStop" wct:DockPanel.Dock="Right" VerticalAlignment="Center" Visibility="Collapsed" Click="BtnStop_Click">
                     <Button.Content>
                         <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE15B;"/>
@@ -39,8 +33,14 @@
                     </Button.Content>
                 </Button>
 
+                <ToggleButton x:Name="BtnViewLog" wct:DockPanel.Dock="Right" VerticalAlignment="Center" Margin="0,0,6,0" Click="BtnViewLog_Click">
+                    <ToggleButton.Content>
+                        <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xEA80;"/>
+                    </ToggleButton.Content>
+                </ToggleButton>
+
                 <StackPanel wct:DockPanel.Dock="Left" Margin="10,0,10,0" Orientation="Vertical" Spacing="2">
-                    <TextBlock x:Name="LblFilename"/>
+                    <TextBlock x:Name="LblFilename" TextWrapping="Wrap"/>
 
                     <TextBlock x:Name="LblUrl" Foreground="Gray"/>
 
@@ -51,7 +51,7 @@
             </wct:DockPanel>
 
             <Border x:Name="SectionLog" Visibility="Collapsed" Background="{ThemeResource CardBackgroundFillColorSecondaryBrush}" BorderThickness="1" BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}" CornerRadius="8">
-                <ScrollViewer MaxHeight="300">
+                <ScrollViewer x:Name="ScrollLog" MaxHeight="200">
                     <TextBlock x:Name="LblLog" Margin="6,6,6,6" TextWrapping="Wrap"/>
                 </ScrollViewer>
             </Border>

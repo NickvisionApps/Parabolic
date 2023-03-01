@@ -89,6 +89,8 @@ public sealed partial class DownloadRow : UserControl, IDownloadRowControl
             App.MainWindow!.DispatcherQueue.TryEnqueue(() =>
             {
                 LblLog.Text = state.Log;
+                ScrollLog.UpdateLayout();
+                ScrollLog.ScrollToVerticalOffset(ScrollLog.ScrollableHeight);
             });
             switch (state.Status)
             {
