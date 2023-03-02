@@ -17,9 +17,6 @@ public partial class MainWindow : Adw.ApplicationWindow
 {
     private readonly MainWindowController _controller;
     private readonly Adw.Application _application;
-    private Dictionary<IDownloadRowControl, Gtk.Separator> _downloadingSeparators;
-    private Dictionary<IDownloadRowControl, Gtk.Separator> _completedSeparators;
-    private Dictionary<IDownloadRowControl, Gtk.Separator> _queuedSeparators;
 
     [Gtk.Connect] private readonly Adw.Bin _spinnerContainer;
     [Gtk.Connect] private readonly Gtk.Spinner _spinner;
@@ -39,9 +36,6 @@ public partial class MainWindow : Adw.ApplicationWindow
         //Window Settings
         _controller = controller;
         _application = application;
-        _downloadingSeparators = new Dictionary<IDownloadRowControl, Gtk.Separator>();
-        _completedSeparators = new Dictionary<IDownloadRowControl, Gtk.Separator>();
-        _queuedSeparators = new Dictionary<IDownloadRowControl, Gtk.Separator>();
         SetTitle(_controller.AppInfo.ShortName);
         if (_controller.IsDevVersion)
         {
@@ -164,13 +158,13 @@ public partial class MainWindow : Adw.ApplicationWindow
     /// Returns the container widgets associated with a download stage
     /// </summary>
     /// <param name="stage">The download model</param>
-    /// <returns>Returns the download rows Gtk.Box, a dictionary of IDownloadRowControl to Gtk.Separator, and the outter Gtk.Box</returns>
-    private (Gtk.Box, Dictionary<IDownloadRowControl, Gtk.Separator>, Gtk.Box) GetDownloadStageContainers(DownloadStage stage) =>
+    /// <returns>Returns the download rows Gtk.Box and the outter Gtk.Box</returns>
+    private (Gtk.Box, Gtk.Box) GetDownloadStageContainers(DownloadStage stage) =>
         stage switch
         {
-            DownloadStage.InQueue => (_queuedBox, _queuedSeparators, _sectionQueued),
-            DownloadStage.Downloading => (_downloadingBox, _downloadingSeparators, _sectionDownloading),
-            DownloadStage.Completed => (_completedBox, _completedSeparators, _sectionCompleted)
+            DownloadStage.InQueue => (_queuedBox, _sectionQueued),
+            DownloadStage.Downloading => (_downloadingBox, _sectionDownloading),
+            DownloadStage.Completed => (_completedBox, _sectionCompleted)
         };
 
     /// <summary>
@@ -183,12 +177,11 @@ public partial class MainWindow : Adw.ApplicationWindow
         DeleteDownloadRow(row, DownloadStage.InQueue);
         DeleteDownloadRow(row, DownloadStage.Downloading);
         DeleteDownloadRow(row, DownloadStage.Completed);
-        var (box, separators, section) = GetDownloadStageContainers(stage);
+        var (box, section) = GetDownloadStageContainers(stage);
         if (box.GetFirstChild() != null)
         {
             var separator = Gtk.Separator.New(Gtk.Orientation.Horizontal);
             box.Append(separator);
-            _queuedSeparators.Add(row, separator);
         }
         box.Append((DownloadRow)row);
         section.SetVisible(true);
@@ -201,13 +194,14 @@ public partial class MainWindow : Adw.ApplicationWindow
     /// <param name="stage">DownloadStage</param>
     private void DeleteDownloadRow(IDownloadRowControl row, DownloadStage stage)
     {
-        var (box, separators, section) = GetDownloadStageContainers(stage);
-        box.Remove((DownloadRow)row);
-        if (separators.ContainsKey(row))
+        var (box, section) = GetDownloadStageContainers(stage);
+        var gtkRow = (DownloadRow)row;
+        var separator = gtkRow.GetPrevSibling() ?? gtkRow.GetNextSibling();
+        if (separator is Gtk.Separator)
         {
-            box.Remove(separators[row]);
-            separators.Remove(row);
+            box.Remove(separator);
         }
+        box.Remove(gtkRow);
         section.SetVisible(box.GetFirstChild() != null);
     }
 
