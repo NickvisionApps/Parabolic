@@ -24,7 +24,6 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
     private static partial uint g_timeout_add(uint interval, GSourceFunc function, nint data);
 
     private bool _disposed;
-    private MainWindow _parent;
     private readonly Localizer _localizer;
     private readonly Download _download;
     private bool? _previousEmbedMetadata;
@@ -34,6 +33,7 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
     private GSourceFunc? _downloadingCallback;
     private string _logMessage;
     private string _oldLogMessage;
+    private Action<NotificationSentEventArgs> _sendNotificationCallback;
 
     [Gtk.Connect] private readonly Gtk.Image _statusIcon;
     [Gtk.Connect] private readonly Gtk.Label _filenameLabel;
@@ -71,15 +71,22 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
     /// </summary>
     public bool IsDone => _download.IsDone;
 
-    private DownloadRow(Gtk.Builder builder, MainWindow parent, Localizer localizer, Download download) : base(builder.GetPointer("_root"), false)
+    /// <summary>
+    /// Constructs a DownloadRow
+    /// </summary>
+    /// <param name="builder">The Gtk builder for the row</param>
+    /// <param name="download">The download model</param>
+    /// <param name="localizer">The string localizer</param>
+    /// <param name="sendNoticiationCallback">The callback for sending a notification</param>
+    private DownloadRow(Gtk.Builder builder, Download download, Localizer localizer, Action<NotificationSentEventArgs> sendNoticiationCallback) : base(builder.GetPointer("_root"), false)
     {
         _disposed = false;
-        _parent = parent;
         _localizer = localizer;
         _download = download;
         _previousEmbedMetadata = null;
         _wasStopped = false;
         _logMessage = "";
+        _sendNotificationCallback = sendNoticiationCallback;
         //Build UI
         builder.Connect(this);
         _filenameLabel.SetLabel(download.Filename);
@@ -96,15 +103,17 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
         _btnLogToClipboard.OnClicked += (sender, e) =>
         {
             _lblLog.GetClipboard().SetText(_lblLog.GetText());
-            _parent.NotificationSent(null, new NotificationSentEventArgs(_localizer["LogCopied"], NotificationSeverity.Informational));
+            _sendNotificationCallback(new NotificationSentEventArgs(_localizer["LogCopied"], NotificationSeverity.Informational));
         };
     }
 
     /// <summary>
     /// Constructs a DownloadRow
     /// </summary>
-    /// <param name="download">The download displayed by the row</param>
-    public DownloadRow(MainWindow parent, Localizer localizer, Download download) : this(Builder.FromFile("download_row.ui", localizer), parent, localizer, download)
+    /// <param name="download">The download model</param>
+    /// <param name="localizer">The string localizer</param>
+    /// <param name="sendNoticiationCallback">The callback for sending a notification</param>
+    public DownloadRow(Download download, Localizer localizer, Action<NotificationSentEventArgs> sendNoticiationCallback) : this(Builder.FromFile("download_row.ui", localizer), download, localizer, sendNoticiationCallback)
     {
 
     }
