@@ -19,6 +19,7 @@ public static class PythonExtensions
             dynamic sys = Python.Runtime.Py.Import("sys");
             dynamic file = Python.Runtime.PythonEngine.Eval($"open(\"{Regex.Replace(path, @"\\", @"\\")}\", \"w\")");
             sys.stdout = file;
+            sys.stderr = file;
             return file;
         }
     }
