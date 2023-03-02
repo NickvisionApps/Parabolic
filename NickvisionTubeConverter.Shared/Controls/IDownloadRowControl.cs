@@ -26,10 +26,10 @@ public interface IDownloadRowControl : IDisposable
     public Func<IDownloadRowControl, Task>? DownloadRetriedAsyncCallback { get; set; }
 
     /// <summary>
-    /// Starts the download
+    /// Runs the download
     /// </summary>
     /// <param name="embedMetadata">Whether or not to embed video metadata</param>
-    public Task StartAsync(bool embedMetadata);
+    public Task RunAsync(bool embedMetadata);
 
     /// <summary>
     /// Stops the download

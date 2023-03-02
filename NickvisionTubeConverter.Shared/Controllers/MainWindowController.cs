@@ -76,6 +76,7 @@ public class MainWindowController : IDisposable
         _completedRows = new List<IDownloadRowControl>();
         _queuedRows = new List<IDownloadRowControl>();
         Localizer = new Localizer();
+        Configuration.Current.Saved += ConfigurationSaved;
     }
 
     /// <summary>
@@ -203,7 +204,7 @@ public class MainWindowController : IDisposable
             _downloadingRows.Add(newRow);
             _numberOfActiveDownloads++;
             UIMoveDownloadRow!(newRow, DownloadStage.Downloading);
-            await newRow.StartAsync(Configuration.Current.EmbedMetadata);
+            await newRow.RunAsync(Configuration.Current.EmbedMetadata);
         }
         else
         {
@@ -228,6 +229,24 @@ public class MainWindowController : IDisposable
     }
 
     /// <summary>
+    /// Occurs when the configuration is saved
+    /// </summary>
+    /// <param name="sender">object?</param>
+    /// <param name="e">EventArgs</param>
+    private async void ConfigurationSaved(object? sender, EventArgs e)
+    {
+        if (_numberOfActiveDownloads < Configuration.Current.MaxNumberOfActiveDownloads && _queuedRows.Count > 0)
+        {
+            var queuedRow = _queuedRows[0];
+            _downloadingRows.Add(queuedRow);
+            _queuedRows.RemoveAt(0);
+            _numberOfActiveDownloads++;
+            UIMoveDownloadRow!(queuedRow, DownloadStage.Downloading);
+            await queuedRow.RunAsync(Configuration.Current.EmbedMetadata);
+        }
+    }
+
+    /// <summary>
     /// Occurs when a row's download is completed
     /// </summary>
     /// <param name="row">The completed row</param>
@@ -237,14 +256,14 @@ public class MainWindowController : IDisposable
         _downloadingRows.Remove(row);
         _numberOfActiveDownloads--;
         UIMoveDownloadRow!(row, DownloadStage.Completed);
-        if (_queuedRows.Count > 0)
+        if (_numberOfActiveDownloads < Configuration.Current.MaxNumberOfActiveDownloads && _queuedRows.Count > 0)
         {
             var queuedRow = _queuedRows[0];
             _downloadingRows.Add(queuedRow);
             _queuedRows.RemoveAt(0);
             _numberOfActiveDownloads++;
             UIMoveDownloadRow!(queuedRow, DownloadStage.Downloading);
-            await queuedRow.StartAsync(Configuration.Current.EmbedMetadata);
+            await queuedRow.RunAsync(Configuration.Current.EmbedMetadata);
         }
     }
 
@@ -272,7 +291,7 @@ public class MainWindowController : IDisposable
             _downloadingRows.Add(row);
             _numberOfActiveDownloads++;
             UIMoveDownloadRow!(row, DownloadStage.Downloading);
-            await row.StartAsync(Configuration.Current.EmbedMetadata);
+            await row.RunAsync(Configuration.Current.EmbedMetadata);
         }
         else
         {

@@ -94,10 +94,10 @@ public sealed partial class DownloadRow : UserControl, IDownloadRowControl
     }
 
     /// <summary>
-    /// Starts the download
+    /// Runs the download
     /// </summary>
     /// <param name="embedMetadata">Whether or not to embed video metadata</param>
-    public async Task StartAsync(bool embedMetadata)
+    public async Task RunAsync(bool embedMetadata)
     {
         if (_previousEmbedMetadata == null)
         {
