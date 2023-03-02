@@ -14,6 +14,7 @@ namespace NickvisionTubeConverter.WinUI.Controls;
 /// </summary>
 public sealed partial class DownloadRow : UserControl, IDownloadRowControl
 {
+    private bool _disposed;
     private readonly Localizer _localizer;
     private readonly Download _download;
     private bool? _previousEmbedMetadata;
@@ -45,6 +46,7 @@ public sealed partial class DownloadRow : UserControl, IDownloadRowControl
     public DownloadRow(Localizer localizer, Download download)
     {
         InitializeComponent();
+        _disposed = false;
         _localizer = localizer;
         _download = download;
         _previousEmbedMetadata = null;
@@ -58,6 +60,7 @@ public sealed partial class DownloadRow : UserControl, IDownloadRowControl
         BtnOpenSaveFolder.Visibility = Visibility.Collapsed;
         ProgBar.Value = 0;
         //Localize Strings
+        ToolTipService.SetToolTip(BtnViewLog, _localizer["ViewLog"]);
         ToolTipService.SetToolTip(BtnStop, _localizer["StopDownload"]);
         ToolTipService.SetToolTip(BtnRetry, _localizer["RetryDownload"]);
         ToolTipService.SetToolTip(BtnOpenSaveFolder, _localizer["OpenSaveFolder"]);
@@ -66,10 +69,35 @@ public sealed partial class DownloadRow : UserControl, IDownloadRowControl
     }
 
     /// <summary>
-    /// Starts the download
+    /// Frees resources used by the DownloadRow object
+    /// </summary>
+    public void Dispose()
+    {
+        Dispose(true);
+        GC.SuppressFinalize(this);
+    }
+
+    /// <summary>
+    /// Frees resources used by the DownloadRow object
+    /// </summary>
+    private void Dispose(bool disposing)
+    {
+        if (_disposed)
+        {
+            return;
+        }
+        if (disposing)
+        {
+            _download.Dispose();
+        }
+        _disposed = true;
+    }
+
+    /// <summary>
+    /// Runs the download
     /// </summary>
     /// <param name="embedMetadata">Whether or not to embed video metadata</param>
-    public async Task StartAsync(bool embedMetadata)
+    public async Task RunAsync(bool embedMetadata)
     {
         if (_previousEmbedMetadata == null)
         {
@@ -85,6 +113,12 @@ public sealed partial class DownloadRow : UserControl, IDownloadRowControl
         ProgBar.Value = 0;
         var success = await _download.RunAsync(embedMetadata, (state) =>
         {
+            App.MainWindow!.DispatcherQueue.TryEnqueue(() =>
+            {
+                LblLog.Text = state.Log;
+                ScrollLog.UpdateLayout();
+                ScrollLog.ScrollToVerticalOffset(ScrollLog.ScrollableHeight);
+            });
             switch (state.Status)
             {
                 case DownloadProgressStatus.Downloading:
@@ -139,6 +173,13 @@ public sealed partial class DownloadRow : UserControl, IDownloadRowControl
             DownloadStoppedCallback(this);
         }
     }
+
+    /// <summary>
+    /// Occurs when the view log button is clicked
+    /// </summary>
+    /// <param name="sender">object</param>
+    /// <param name="e">RoutedEventArgs</param>
+    private void BtnViewLog_Click(object sender, RoutedEventArgs e) => SectionLog.Visibility = BtnViewLog.IsChecked ?? false ? Visibility.Visible : Visibility.Collapsed;
 
     /// <summary>
     /// Occurs when the stop button is clicked

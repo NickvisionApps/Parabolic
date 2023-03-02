@@ -1,5 +1,7 @@
 using NickvisionTubeConverter.GNOME.Helpers;
+using NickvisionTubeConverter.GNOME.Views;
 using NickvisionTubeConverter.Shared.Controls;
+using NickvisionTubeConverter.Shared.Events;
 using NickvisionTubeConverter.Shared.Helpers;
 using NickvisionTubeConverter.Shared.Models;
 using System;
@@ -21,12 +23,18 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
     [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
     private static partial uint g_timeout_add(uint interval, GSourceFunc function, nint data);
 
+    private bool _disposed;
     private readonly Localizer _localizer;
     private readonly Download _download;
     private bool? _previousEmbedMetadata;
     private bool _wasStopped;
+    private DownloadProgressStatus _progressStatus;
+    private GSourceFunc? _processingCallback;
+    private GSourceFunc? _downloadingCallback;
+    private string _logMessage;
+    private string _oldLogMessage;
+    private Action<NotificationSentEventArgs> _sendNotificationCallback;
 
-    [Gtk.Connect] private readonly Gtk.Box _mainBox;
     [Gtk.Connect] private readonly Gtk.Image _statusIcon;
     [Gtk.Connect] private readonly Gtk.Label _filenameLabel;
     [Gtk.Connect] private readonly Gtk.Label _urlLabel;
@@ -39,10 +47,11 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
     [Gtk.Connect] private readonly Gtk.Button _stopButton;
     [Gtk.Connect] private readonly Gtk.Button _openFolderButton;
     [Gtk.Connect] private readonly Gtk.Button _retryButton;
-
-    private DownloadProgressStatus _progressStatus;
-    private GSourceFunc? _processingCallback;
-    private GSourceFunc? _downloadingCallback;
+    [Gtk.Connect] private readonly Gtk.ToggleButton _viewLogToggleBtn;
+    [Gtk.Connect] private readonly Gtk.Overlay _overlayLog;
+    [Gtk.Connect] private readonly Gtk.ScrolledWindow _scrollLog;
+    [Gtk.Connect] private readonly Gtk.Label _lblLog;
+    [Gtk.Connect] private readonly Gtk.Button _btnLogToClipboard;
 
     /// <summary>
     /// The callback function to run when the download is completed
@@ -65,15 +74,20 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
     /// <summary>
     /// Constructs a DownloadRow
     /// </summary>
-    /// <param name="download">The download displayed by the row</param>
-    public DownloadRow(Localizer localizer, Download download)
+    /// <param name="builder">The Gtk builder for the row</param>
+    /// <param name="download">The download model</param>
+    /// <param name="localizer">The string localizer</param>
+    /// <param name="sendNoticiationCallback">The callback for sending a notification</param>
+    private DownloadRow(Gtk.Builder builder, Download download, Localizer localizer, Action<NotificationSentEventArgs> sendNoticiationCallback) : base(builder.GetPointer("_root"), false)
     {
+        _disposed = false;
         _localizer = localizer;
         _download = download;
         _previousEmbedMetadata = null;
         _wasStopped = false;
+        _logMessage = "";
+        _sendNotificationCallback = sendNoticiationCallback;
         //Build UI
-        var builder = Builder.FromFile("download_row.ui", _localizer);
         builder.Connect(this);
         _filenameLabel.SetLabel(download.Filename);
         _urlLabel.SetLabel(download.VideoUrl);
@@ -86,14 +100,54 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
                 await DownloadRetriedAsyncCallback(this);
             }
         };
-        SetChild(_mainBox);
+        _btnLogToClipboard.OnClicked += (sender, e) =>
+        {
+            _lblLog.GetClipboard().SetText(_lblLog.GetText());
+            _sendNotificationCallback(new NotificationSentEventArgs(_localizer["LogCopied"], NotificationSeverity.Informational));
+        };
     }
 
     /// <summary>
-    /// Starts the download
+    /// Constructs a DownloadRow
+    /// </summary>
+    /// <param name="download">The download model</param>
+    /// <param name="localizer">The string localizer</param>
+    /// <param name="sendNoticiationCallback">The callback for sending a notification</param>
+    public DownloadRow(Download download, Localizer localizer, Action<NotificationSentEventArgs> sendNoticiationCallback) : this(Builder.FromFile("download_row.ui", localizer), download, localizer, sendNoticiationCallback)
+    {
+
+    }
+
+    /// <summary>
+    /// Frees resources used by the DownloadRow object
+    /// </summary>
+    public void Dispose()
+    {
+        Dispose(true);
+        GC.SuppressFinalize(this);
+    }
+
+    /// <summary>
+    /// Frees resources used by the DownloadRow object
+    /// </summary>
+    protected virtual void Dispose(bool disposing)
+    {
+        if (_disposed)
+        {
+            return;
+        }
+        if (disposing)
+        {
+            _download.Dispose();
+        }
+        _disposed = true;
+    }
+
+    /// <summary>
+    /// Runs the download
     /// </summary>
     /// <param name="embedMetadata">Whether or not to embed video metadata</param>
-    public async Task StartAsync(bool embedMetadata)
+    public async Task RunAsync(bool embedMetadata)
     {
         if (_previousEmbedMetadata == null)
         {
@@ -108,9 +162,11 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
         _filenameLabel.SetText(_download.Filename);
         _actionViewStack.SetVisibleChildName("cancel");
         _progressBar.SetFraction(0);
+        _oldLogMessage = "";
         var success = await _download.RunAsync(embedMetadata, (state) =>
         {
             _progressStatus = state.Status;
+            _logMessage = state.Log + "\n";
             switch (state.Status)
             {
                 case DownloadProgressStatus.Downloading:
@@ -118,6 +174,9 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
                     {
                         _progressBar.SetFraction(state.Progress);
                         _progressLabel.SetText(string.Format(_localizer["DownloadState", "Downloading"], state.Progress * 100, state.Speed));
+                        _lblLog.SetLabel(_logMessage);
+                        var vadjustment = _scrollLog.GetVadjustment();
+                        vadjustment.SetValue(vadjustment.GetUpper() - vadjustment.GetPageSize());
                         return false;
                     };
                     g_idle_add(_downloadingCallback, 0);
@@ -129,6 +188,13 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
                         _processingCallback = (d) =>
                         {
                             _progressBar.Pulse();
+                            if (_logMessage != _oldLogMessage)
+                            {
+                                _lblLog.SetLabel(_logMessage);
+                                _oldLogMessage = _logMessage;
+                                var vadjustment = _scrollLog.GetVadjustment();
+                                vadjustment.SetValue(vadjustment.GetUpper() - vadjustment.GetPageSize());
+                            }
                             if (_progressStatus != DownloadProgressStatus.Processing || IsDone)
                             {
                                 _processingCallback = null;

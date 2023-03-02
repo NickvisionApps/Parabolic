@@ -25,7 +25,6 @@ public partial class AddDownloadDialog : Adw.MessageDialog
     private readonly Gtk.Window _parent;
     private readonly AddDownloadDialogController _controller;
 
-    [Gtk.Connect] private readonly Adw.PreferencesGroup _preferencesGroup;
     [Gtk.Connect] private readonly Adw.EntryRow _urlRow;
     [Gtk.Connect] private readonly Gtk.Spinner _urlSpinner;
     [Gtk.Connect] private readonly Adw.ComboRow _fileTypeRow;
@@ -35,28 +34,20 @@ public partial class AddDownloadDialog : Adw.MessageDialog
     [Gtk.Connect] private readonly Gtk.MenuButton _saveWarning;
     [Gtk.Connect] private readonly Gtk.Button _selectPathButton;
 
-    /// <summary>
-    /// Constructs an AddDownloadDialog
-    /// </summary>
-    public AddDownloadDialog(AddDownloadDialogController controller, Gtk.Window parent)
+    private AddDownloadDialog(Gtk.Builder builder, AddDownloadDialogController controller, Gtk.Window parent) : base(builder.GetPointer("_root"), false)
     {
         _constructing = true;
         _parent = parent;
         _controller = controller;
         //Dialog Settings
-        SetHeading(_controller.Localizer["AddDownload"]);
         SetTransientFor(parent);
-        SetDefaultSize(420, -1);
-        SetHideOnClose(true);
-        SetModal(true);
-        AddResponse("cancel", _controller.Localizer["Cancel"]);
+        AddResponse("cancel", controller.Localizer["Cancel"]);
         SetCloseResponse("cancel");
-        AddResponse("ok", _controller.Localizer["Download"]);
+        AddResponse("ok", controller.Localizer["Download"]);
         SetDefaultResponse("ok");
         SetResponseAppearance("ok", Adw.ResponseAppearance.Suggested);
-        OnResponse += (sender, e) => _controller.Accepted = e.Response == "ok";
+        OnResponse += (sender, e) => controller.Accepted = e.Response == "ok";
         //Build UI
-        var builder = Builder.FromFile("add_download_dialog.ui", _controller.Localizer);
         builder.Connect(this);
         _urlRow.OnNotify += async (sender, e) =>
         {
@@ -106,11 +97,16 @@ public partial class AddDownloadDialog : Adw.MessageDialog
                 _saveWarning.SetVisible(Regex.Match(_savePathRow.GetText(), @"^\/run\/user\/.*\/doc\/.*").Success);
             }
         };
-        //Layout
-        SetExtraChild(_preferencesGroup);
         //Load
         _fileTypeRow.SetSelected((uint)_controller.PreviousMediaFileType);
         _constructing = false;
+    }
+
+    /// <summary>
+    /// Constructs an AddDownloadDialog
+    /// </summary>
+    public AddDownloadDialog(AddDownloadDialogController controller, Gtk.Window parent) : this(Builder.FromFile("add_download_dialog.ui", controller.Localizer), controller, parent)
+    {
     }
 
     /// <summary>

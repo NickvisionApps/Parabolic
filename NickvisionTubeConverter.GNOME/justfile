@@ -1,7 +1,18 @@
 app_id := "org.nickvision.tubeconverter"
 project_name := "NickvisionTubeConverter"
-lib := "lib" # this is added to prefix, see "publish" recipe for details
 
+dotnet_runtime := if arch() == "arm" {
+    "linux-arm"
+} else if arch() == "aarch64" {
+    "linux-arm64"
+} else {
+    "linux-x64"
+}
+
+builddir := env_var_or_default('NICK_BUILDDIR', '_nickbuild')
+lib := "lib" # this is added to installation prefix, see "publish" recipe for details
+
+# List all recipes
 default:
     @just --list
 
@@ -9,134 +20,113 @@ default:
 run:
     blueprint-compiler batch-compile Blueprints/ Blueprints/ Blueprints/*.blp
     dotnet build
-    rm Blueprints/*.ui
     glib-compile-resources --sourcedir ./Resources \
     ./Resources/{{app_id}}.gresource.xml
     mv ./Resources/{{app_id}}.gresource ./bin/Debug/net7.0/
     dotnet run
+    rm Blueprints/*.ui
 
-# Install the app
-publish PREFIX LIB_DIR=lib: && (_install_extras PREFIX)
+# Publish the app
+publish PREFIX LIB_DIR=lib: clean && (_install_extras PREFIX)
     #!/bin/sh
     # LIB_DIR id added to prefix.
     # For example, for PREFIX "/usr" and LIB_DIR "lib"
     # all dll and so files will go to "/usr/lib".
     # Resources will go to {{PREFIX}}/shared.
+    # Build directory is "_nickbuild" by default,
+    # use NICK_BUILDDIR env var to change it.
 
-    ARCH={{arch()}}
-    if [ "$ARCH" == "x86_64" ]
-    then
-        RUNTIME="linux-x64"
-    elif [ "$ARCH" == "arm" ]
-    then
-        RUNTIME="linux-arm"
-    elif [ "$ARCH" == "aarch64" ]
-    then
-        RUNTIME="linux-arm64"
-    fi
-
+    mkdir -p {{builddir}}{{PREFIX}}/{{LIB_DIR}}/{{app_id}}
     blueprint-compiler batch-compile Blueprints/ Blueprints/ Blueprints/*.blp
-    mkdir -p {{PREFIX}}/{{LIB_DIR}}/{{app_id}}
     dotnet publish -c Release {{project_name}}.GNOME.csproj \
-        $([ "$RUNTIME" ] && echo "--runtime $RUNTIME") \
-        --self-contained false -o {{PREFIX}}/{{LIB_DIR}}/{{app_id}}
+        --runtime {{dotnet_runtime}} \
+        --self-contained false \
+        -o {{builddir}}{{PREFIX}}/{{LIB_DIR}}/{{app_id}}
+    success=$?
     rm Blueprints/*.ui
-    mkdir -p {{PREFIX}}/bin
-    cat > {{PREFIX}}/bin/{{app_id}} << EOF
+    if [ $success != 0 ]
+    then
+        exit $success
+    fi
+    mkdir -p {{builddir}}{{PREFIX}}/bin
+    cat > {{builddir}}{{PREFIX}}/bin/{{app_id}} << EOF
     #!/bin/sh
     exec dotnet {{PREFIX}}/{{LIB_DIR}}/{{app_id}}/{{project_name}}.GNOME.dll
     EOF
-    chmod +x {{PREFIX}}/bin/{{app_id}}
+    chmod +x {{builddir}}{{PREFIX}}/bin/{{app_id}}
 
-# Install the app (self-contained)
-publish-self-contained PREFIX LIB_DIR=lib: && (_install_extras PREFIX)
+# Publish the app (self-contained)
+publish-self-contained PREFIX LIB_DIR=lib: clean && (_install_extras PREFIX)
     #!/bin/sh
-    # BIN_DIR and LIB_DIR are added to prefix
-    # For example, for PREFIX "/usr" and BIN_DIR "/bin" the executable will go to "/usr/bin"
-    # All dll and so files will go to {{PREFIX}}/{{LIB_DIR}} (e.g. "/usr/lib")
-    # Resources will go to {{PREFIX}}/shared
+    # LIB_DIR id added to prefix.
+    # For example, for PREFIX "/usr" and LIB_DIR "lib"
+    # all dll and so files will go to "/usr/lib".
+    # Resources will go to {{PREFIX}}/shared.
+    # Build directory is "_nickbuild" by default,
+    # use NICK_BUILDDIR env var to change it.
 
-    ARCH={{arch()}}
-    if [ "$ARCH" == "x86_64" ]
-    then
-        RUNTIME="linux-x64"
-    elif [ "$ARCH" == "arm" ]
-    then
-        RUNTIME="linux-arm"
-    elif [ "$ARCH" == "aarch64" ]
-    then
-        RUNTIME="linux-arm64"
-    fi
-
+    mkdir -p {{builddir}}{{PREFIX}}/{{LIB_DIR}}/{{app_id}}
     blueprint-compiler batch-compile Blueprints/ Blueprints/ Blueprints/*.blp
-    mkdir -p {{PREFIX}}/{{LIB_DIR}}/{{app_id}}
-    dotnet publish -c Release {{project_name}}.GNOME.csproj \
-        $([ "$RUNTIME" ] && echo "--runtime $RUNTIME") \
-        --self-contained true -o {{PREFIX}}/{{LIB_DIR}}/{{app_id}}
-    rm Blueprints/*.ui
-    mkdir -p {{PREFIX}}/bin
-    cat > {{PREFIX}}/bin/{{app_id}} << EOF
-    #!/bin/sh
-    exec {{PREFIX}}/{{LIB_DIR}}/{{app_id}}/{{project_name}}.GNOME
-    EOF
-    chmod +x {{PREFIX}}/bin/{{app_id}}
-
-# Command to be used in flatpak manifest
-publish-flatpak: && (_install_extras "/app")
-    #!/bin/sh
-    ARCH={{arch()}}
-    if [ "$ARCH" == "x86_64" ]
-    then
-        RUNTIME="linux-x64"
-    elif [ "$ARCH" == "arm" ]
-    then
-        RUNTIME="linux-arm"
-    elif [ "$ARCH" == "aarch64" ]
-    then
-        RUNTIME="linux-arm64"
-    fi
-
-    blueprint-compiler batch-compile Blueprints/ Blueprints/ Blueprints/*.blp
-    mkdir -p /app/lib/{{app_id}}
     dotnet publish -c Release {{project_name}}.GNOME.csproj \
         $([ -d "$FLATPAK_BUILDER_BUILDDIR/nuget-sources" ] && \
         echo "--source $FLATPAK_BUILDER_BUILDDIR/nuget-sources") \
-        --runtime $RUNTIME --self-contained true -o /app/lib/{{app_id}}
+        --runtime {{dotnet_runtime}} \
+        --self-contained true \
+        -o {{builddir}}{{PREFIX}}/{{LIB_DIR}}/{{app_id}}
+    success=$?
     rm Blueprints/*.ui
-    mkdir -p /app/bin
-    cat > /app/bin/{{app_id}} << EOF
+    if [ $success != 0 ]
+    then
+        exit $success
+    fi
+    mkdir -p {{builddir}}{{PREFIX}}/bin
+    cat > {{builddir}}{{PREFIX}}/bin/{{app_id}} << EOF
     #!/bin/sh
-    exec /app/lib/{{app_id}}/{{project_name}}.GNOME
+    exec {{PREFIX}}/{{LIB_DIR}}/{{app_id}}/{{project_name}}.GNOME
     EOF
-    chmod +x /app/bin/{{app_id}}
+    chmod +x {{builddir}}{{PREFIX}}/bin/{{app_id}}
+
+# Install the app
+install INSTALL_PREFIX="/":
+    # Installing the app to {{INSTALL_PREFIX}}
+    if [ ! -d {{INSTALL_PREFIX}} ]; then mkdir -p {{INSTALL_PREFIX}}; fi
+    cp -r {{builddir}}/* {{INSTALL_PREFIX}}
+
+# Clean build directory
+clean:
+    # Removing build directory
+    rm -r {{builddir}}; exit 0
+
+# Command to be used in flatpak manifest
+publish-flatpak: (publish-self-contained "/app") install && clean
 
 _install_extras PREFIX: && (_translate_meta PREFIX)
     # Installing icons
-    mkdir -p {{PREFIX}}/share/icons/hicolor/scalable/apps
+    mkdir -p {{builddir}}{{PREFIX}}/share/icons/hicolor/scalable/apps
     cp ../{{project_name}}.Shared/Resources/{{app_id}}.svg \
-        {{PREFIX}}/share/icons/hicolor/scalable/apps/
+        {{builddir}}{{PREFIX}}/share/icons/hicolor/scalable/apps/
     cp ../{{project_name}}.Shared/Resources/{{app_id}}-devel.svg \
-        {{PREFIX}}/share/icons/hicolor/scalable/apps/
-    mkdir -p {{PREFIX}}/share/icons/hicolor/symbolic/apps
+        {{builddir}}{{PREFIX}}/share/icons/hicolor/scalable/apps/
+    mkdir -p {{builddir}}{{PREFIX}}/share/icons/hicolor/symbolic/apps
     cp ../{{project_name}}.Shared/Resources/{{app_id}}-symbolic.svg \
-        {{PREFIX}}/share/icons/hicolor/symbolic/apps/
+        {{builddir}}{{PREFIX}}/share/icons/hicolor/symbolic/apps/
 
     # Installing GResource
-    mkdir -p {{PREFIX}}/share/{{app_id}}
+    mkdir -p {{builddir}}{{PREFIX}}/share/{{app_id}}
     glib-compile-resources --sourcedir ./Resources ./Resources/{{app_id}}.gresource.xml
     mv ./Resources/{{app_id}}.gresource \
-        {{PREFIX}}/share/{{app_id}}/
+        {{builddir}}{{PREFIX}}/share/{{app_id}}/
 
     # Installing desktop file
-    mkdir -p {{PREFIX}}/share/applications
-    cp ./{{app_id}}.desktop {{PREFIX}}/share/applications/
+    mkdir -p {{builddir}}{{PREFIX}}/share/applications
+    cp ./{{app_id}}.desktop {{builddir}}{{PREFIX}}/share/applications/
     desktop-file-edit --set-key='Exec' \
     --set-value='{{PREFIX}}/bin/{{app_id}}' \
-    {{PREFIX}}/share/applications/{{app_id}}.desktop
+    {{builddir}}{{PREFIX}}/share/applications/{{app_id}}.desktop
 
     # Installing metainfo
-    mkdir -p {{PREFIX}}/share/metainfo
-    cp ./{{app_id}}.metainfo.xml {{PREFIX}}/share/metainfo/
+    mkdir -p {{builddir}}{{PREFIX}}/share/metainfo
+    cp ./{{app_id}}.metainfo.xml {{builddir}}{{PREFIX}}/share/metainfo/
 
 _translate_meta PREFIX:
     #!/usr/bin/env python3
@@ -177,7 +167,7 @@ _translate_meta PREFIX:
     meta_summaries.sort()
     meta_descriptions.sort()
 
-    with open('{{PREFIX}}/share/applications/{{app_id}}.desktop', 'r') as f:
+    with open('{{builddir}}{{PREFIX}}/share/applications/{{app_id}}.desktop', 'r') as f:
         contents = f.readlines()
         new_contents = contents.copy()
     j = 0
@@ -189,11 +179,11 @@ _translate_meta PREFIX:
             new_contents.insert(j + 1, "\n".join(desktop_keywords) + "\n")
             j += 1
         j += 1
-    with open('{{PREFIX}}/share/applications/{{app_id}}.desktop', 'w') as f:
+    with open('{{builddir}}{{PREFIX}}/share/applications/{{app_id}}.desktop', 'w') as f:
         new_contents = "".join(new_contents)
         f.write(new_contents)
 
-    with open('{{PREFIX}}/share/metainfo/{{app_id}}.metainfo.xml', 'r') as f:
+    with open('{{builddir}}{{PREFIX}}/share/metainfo/{{app_id}}.metainfo.xml', 'r') as f:
         contents = f.readlines()
         new_contents = contents.copy()
     j = 0
@@ -205,7 +195,7 @@ _translate_meta PREFIX:
             new_contents.insert(j + 4, "\n".join(meta_descriptions) + "\n")
             break
         j += 1
-    with open('{{PREFIX}}/share/metainfo/{{app_id}}.metainfo.xml', 'w') as f:
+    with open('{{builddir}}{{PREFIX}}/share/metainfo/{{app_id}}.metainfo.xml', 'w') as f:
         new_contents = "".join(new_contents)
         f.write(new_contents)
     print("Done!")
@@ -215,8 +205,9 @@ generate-flatpak-sources: _generate-flatpak-sources-just _generate-flatpak-sourc
 
 _generate-flatpak-sources-just:
     # Generating sources for just
-    curl "https://raw.githubusercontent.com/casey/just/baa2dfcc6f180d123672544c5ed1aedc32608228/Cargo.lock" -o /tmp/Cargo.lock
-    flatpak-cargo-generator.py -o cargo-sources.json /tmp/Cargo.lock
+    curl "https://raw.githubusercontent.com/casey/just/baa2dfcc6f180d123672544c5ed1aedc32608228/Cargo.lock" -o ./Cargo.lock
+    flatpak-cargo-generator.py -o cargo-sources.json ./Cargo.lock
+    rm ./Cargo.lock
 
 _generate-flatpak-sources-dotnet:
     # Generating sources for dotnet

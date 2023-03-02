@@ -5,8 +5,6 @@ using NickvisionTubeConverter.Shared.Models;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Runtime.InteropServices;
-using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace NickvisionTubeConverter.Shared.Controllers;
@@ -18,7 +16,6 @@ public class MainWindowController : IDisposable
 {
     private bool _disposed;
     private nint _pythonThreadState;
-    private int _numberOfActiveDownloads;
     private List<IDownloadRowControl> _downloadingRows;
     private List<IDownloadRowControl> _completedRows;
     private List<IDownloadRowControl> _queuedRows;
@@ -73,11 +70,11 @@ public class MainWindowController : IDisposable
     {
         _disposed = false;
         _pythonThreadState = IntPtr.Zero;
-        _numberOfActiveDownloads = 0;
         _downloadingRows = new List<IDownloadRowControl>();
         _completedRows = new List<IDownloadRowControl>();
         _queuedRows = new List<IDownloadRowControl>();
         Localizer = new Localizer();
+        Configuration.Current.Saved += ConfigurationSaved;
     }
 
     /// <summary>
@@ -99,32 +96,20 @@ public class MainWindowController : IDisposable
     {
         get
         {
-            var timeNowHours = DateTime.Now.Hour;
-            if (timeNowHours >= 0 && timeNowHours < 6)
+            var greeting = DateTime.Now.Hour switch
             {
-                return Localizer["Greeting", "Night"];
-            }
-            else if (timeNowHours >= 6 && timeNowHours < 12)
-            {
-                return Localizer["Greeting", "Morning"];
-            }
-            else if (timeNowHours >= 12 && timeNowHours < 18)
-            {
-                return Localizer["Greeting", "Afternoon"];
-            }
-            else if (timeNowHours >= 18 && timeNowHours < 24)
-            {
-                return Localizer["Greeting", "Evening"];
-            }
-            else
-            {
-                return Localizer["Greeting", "Generic"];
-            }
+                >= 0 and < 6 => "Night",
+                < 12 => "Morning",
+                < 18 => "Afternoon",
+                < 24 => "Evening",
+                _ => "Generic"
+            };
+            return Localizer["Greeting", greeting];
         }
     }
 
     /// <summary>
-    /// Frees resources used by the Account object
+    /// Frees resources used by the MainWindowController object
     /// </summary>
     public void Dispose()
     {
@@ -133,7 +118,7 @@ public class MainWindowController : IDisposable
     }
 
     /// <summary>
-    /// Frees resources used by the Account object
+    /// Frees resources used by the MainWindowController object
     /// </summary>
     protected virtual void Dispose(bool disposing)
     {
@@ -143,9 +128,26 @@ public class MainWindowController : IDisposable
         }
         if (disposing)
         {
+            var pathToOutput = $"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}{Path.DirectorySeparatorChar}Nickvision{Path.DirectorySeparatorChar}{AppInfo.Current.Name}{Path.DirectorySeparatorChar}output.log";
             Localizer.Dispose();
             Python.Runtime.PythonEngine.EndAllowThreads(_pythonThreadState);
             Python.Runtime.PythonEngine.Shutdown();
+            if (File.Exists(pathToOutput))
+            {
+                File.Delete(pathToOutput);
+            }
+            foreach (var row in _downloadingRows)
+            {
+                row.Dispose();
+            }
+            foreach (var row in _completedRows)
+            {
+                row.Dispose();
+            }
+            foreach (var row in _queuedRows)
+            {
+                row.Dispose();
+            }
         }
         _disposed = true;
     }
@@ -164,15 +166,6 @@ public class MainWindowController : IDisposable
             Python.Runtime.RuntimeData.FormatterType = typeof(NoopFormatter);
             Python.Runtime.PythonEngine.Initialize();
             _pythonThreadState = Python.Runtime.PythonEngine.BeginAllowThreads();
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-            {
-                using (Python.Runtime.Py.GIL())
-                {
-                    dynamic sys = Python.Runtime.Py.Import("sys");
-                    var pathToOutput = $"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}{Path.DirectorySeparatorChar}Nickvision{Path.DirectorySeparatorChar}{AppInfo.Current.Name}{Path.DirectorySeparatorChar}output.txt";
-                    sys.stdout = Python.Runtime.PythonEngine.Eval($"open(\"{Regex.Replace(pathToOutput, @"\\", @"\\")}\", \"w\")");
-                }
-            }
         }
     }
 
@@ -192,12 +185,11 @@ public class MainWindowController : IDisposable
         newRow.DownloadCompletedAsyncCallback = DownloadCompletedAsync;
         newRow.DownloadStoppedCallback = DownloadStopped;
         newRow.DownloadRetriedAsyncCallback = DownloadRetried;
-        if (_numberOfActiveDownloads < Configuration.Current.MaxNumberOfActiveDownloads)
+        if (_downloadingRows.Count < Configuration.Current.MaxNumberOfActiveDownloads)
         {
             _downloadingRows.Add(newRow);
-            _numberOfActiveDownloads++;
             UIMoveDownloadRow!(newRow, DownloadStage.Downloading);
-            await newRow.StartAsync(Configuration.Current.EmbedMetadata);
+            await newRow.RunAsync(Configuration.Current.EmbedMetadata);
         }
         else
         {
@@ -215,6 +207,27 @@ public class MainWindowController : IDisposable
         {
             row.Stop();
         }
+        foreach (var row in _queuedRows)
+        {
+            row.Stop();
+        }
+    }
+
+    /// <summary>
+    /// Occurs when the configuration is saved
+    /// </summary>
+    /// <param name="sender">object?</param>
+    /// <param name="e">EventArgs</param>
+    private async void ConfigurationSaved(object? sender, EventArgs e)
+    {
+        if (_downloadingRows.Count < Configuration.Current.MaxNumberOfActiveDownloads && _queuedRows.Count > 0)
+        {
+            var queuedRow = _queuedRows[0];
+            _downloadingRows.Add(queuedRow);
+            _queuedRows.RemoveAt(0);
+            UIMoveDownloadRow!(queuedRow, DownloadStage.Downloading);
+            await queuedRow.RunAsync(Configuration.Current.EmbedMetadata);
+        }
     }
 
     /// <summary>
@@ -225,16 +238,14 @@ public class MainWindowController : IDisposable
     {
         _completedRows.Add(row);
         _downloadingRows.Remove(row);
-        _numberOfActiveDownloads--;
         UIMoveDownloadRow!(row, DownloadStage.Completed);
-        if (_queuedRows.Count > 0)
+        if (_downloadingRows.Count < Configuration.Current.MaxNumberOfActiveDownloads && _queuedRows.Count > 0)
         {
             var queuedRow = _queuedRows[0];
             _downloadingRows.Add(queuedRow);
             _queuedRows.RemoveAt(0);
-            _numberOfActiveDownloads++;
             UIMoveDownloadRow!(queuedRow, DownloadStage.Downloading);
-            await queuedRow.StartAsync(Configuration.Current.EmbedMetadata);
+            await queuedRow.RunAsync(Configuration.Current.EmbedMetadata);
         }
     }
 
@@ -244,7 +255,7 @@ public class MainWindowController : IDisposable
     /// <param name="row">The stopped row</param>
     private void DownloadStopped(IDownloadRowControl row)
     {
-        if(_queuedRows.Contains(row))
+        if (_queuedRows.Contains(row))
         {
             _queuedRows.Remove(row);
             UIDeleteDownloadRowFromQueue!(row);
@@ -257,12 +268,11 @@ public class MainWindowController : IDisposable
     /// <param name="row">The retried row</param>
     private async Task DownloadRetried(IDownloadRowControl row)
     {
-        if (_numberOfActiveDownloads < Configuration.Current.MaxNumberOfActiveDownloads)
+        if (_downloadingRows.Count < Configuration.Current.MaxNumberOfActiveDownloads)
         {
             _downloadingRows.Add(row);
-            _numberOfActiveDownloads++;
             UIMoveDownloadRow!(row, DownloadStage.Downloading);
-            await row.StartAsync(Configuration.Current.EmbedMetadata);
+            await row.RunAsync(Configuration.Current.EmbedMetadata);
         }
         else
         {
