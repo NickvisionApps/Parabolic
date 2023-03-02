@@ -30,6 +30,7 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
     private GSourceFunc? _processingCallback;
     private GSourceFunc? _downloadingCallback;
     private string _logMessage;
+    private string _oldLogMessage;
 
     [Gtk.Connect] private readonly Gtk.Image _statusIcon;
     [Gtk.Connect] private readonly Gtk.Label _filenameLabel;
@@ -142,6 +143,7 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
         _filenameLabel.SetText(_download.Filename);
         _actionViewStack.SetVisibleChildName("cancel");
         _progressBar.SetFraction(0);
+        _oldLogMessage = "";
         var success = await _download.RunAsync(embedMetadata, (state) =>
         {
             _progressStatus = state.Status;
@@ -167,9 +169,13 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
                         _processingCallback = (d) =>
                         {
                             _progressBar.Pulse();
-                            _lblLog.SetLabel(_logMessage);
-                            var vadjustment = _scrollLog.GetVadjustment();
-                            vadjustment.SetValue(vadjustment.GetUpper() - vadjustment.GetPageSize());
+                            if (_logMessage != _oldLogMessage)
+                            {
+                                _lblLog.SetLabel(_logMessage);
+                                _oldLogMessage = _logMessage;
+                                var vadjustment = _scrollLog.GetVadjustment();
+                                vadjustment.SetValue(vadjustment.GetUpper() - vadjustment.GetPageSize());
+                            }
                             if (_progressStatus != DownloadProgressStatus.Processing || IsDone)
                             {
                                 _processingCallback = null;
