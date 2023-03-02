@@ -309,11 +309,14 @@ public class Download : IDisposable
                     Progress = downloaded / total,
                     Speed = entries.HasKey("speed") ? (entries["speed"].As<double?>() ?? 0) / 1024f : 0
                 };
-                using var fs = new FileStream(_logPath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
-                using var sr = new StreamReader(fs);
-                progressState.Log = sr.ReadToEnd().Remove(0, 1);
-                sr.Close();
-                fs.Close();
+                if (File.Exists(_logPath))
+                {
+                    using var fs = new FileStream(_logPath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
+                    using var sr = new StreamReader(fs);
+                    progressState.Log = sr.ReadToEnd().Remove(0, 1);
+                    sr.Close();
+                    fs.Close();
+                }
                 _progressCallback(progressState);
             }
 
