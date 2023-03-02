@@ -161,12 +161,12 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
                     break;
                 case DownloadProgressStatus.Processing:
                     _progressLabel.SetText(_localizer["DownloadState", "Processing"]);
+                    _lblLog.SetLabel(state.Log);
                     if (_processingCallback == null)
                     {
                         _processingCallback = (d) =>
                         {
                             _progressBar.Pulse();
-                            _lblLog.SetLabel(state.Log);
                             var vadjustment = _scrollLog.GetVadjustment();
                             vadjustment.SetValue(vadjustment.GetUpper() - vadjustment.GetPageSize());
                             _scrollLog.SetVadjustment(vadjustment);
