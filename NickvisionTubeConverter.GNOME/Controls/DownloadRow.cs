@@ -1,5 +1,7 @@
 using NickvisionTubeConverter.GNOME.Helpers;
+using NickvisionTubeConverter.GNOME.Views;
 using NickvisionTubeConverter.Shared.Controls;
+using NickvisionTubeConverter.Shared.Events;
 using NickvisionTubeConverter.Shared.Helpers;
 using NickvisionTubeConverter.Shared.Models;
 using System;
@@ -22,6 +24,7 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
     private static partial uint g_timeout_add(uint interval, GSourceFunc function, nint data);
 
     private bool _disposed;
+    private MainWindow _parent;
     private readonly Localizer _localizer;
     private readonly Download _download;
     private bool? _previousEmbedMetadata;
@@ -45,8 +48,10 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
     [Gtk.Connect] private readonly Gtk.Button _openFolderButton;
     [Gtk.Connect] private readonly Gtk.Button _retryButton;
     [Gtk.Connect] private readonly Gtk.ToggleButton _viewLogToggleBtn;
+    [Gtk.Connect] private readonly Gtk.Overlay _overlayLog;
     [Gtk.Connect] private readonly Gtk.ScrolledWindow _scrollLog;
     [Gtk.Connect] private readonly Gtk.Label _lblLog;
+    [Gtk.Connect] private readonly Gtk.Button _btnLogToClipboard;
 
     /// <summary>
     /// The callback function to run when the download is completed
@@ -66,9 +71,10 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
     /// </summary>
     public bool IsDone => _download.IsDone;
 
-    private DownloadRow(Gtk.Builder builder, Localizer localizer, Download download) : base(builder.GetPointer("_root"), false)
+    private DownloadRow(Gtk.Builder builder, MainWindow parent, Localizer localizer, Download download) : base(builder.GetPointer("_root"), false)
     {
         _disposed = false;
+        _parent = parent;
         _localizer = localizer;
         _download = download;
         _previousEmbedMetadata = null;
@@ -87,13 +93,18 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
                 await DownloadRetriedAsyncCallback(this);
             }
         };
+        _btnLogToClipboard.OnClicked += (sender, e) =>
+        {
+            _lblLog.GetClipboard().SetText(_lblLog.GetText());
+            _parent.NotificationSent(null, new NotificationSentEventArgs(_localizer["LogCopied"], NotificationSeverity.Informational));
+        };
     }
 
     /// <summary>
     /// Constructs a DownloadRow
     /// </summary>
     /// <param name="download">The download displayed by the row</param>
-    public DownloadRow(Localizer localizer, Download download) : this(Builder.FromFile("download_row.ui", localizer), localizer, download)
+    public DownloadRow(MainWindow parent, Localizer localizer, Download download) : this(Builder.FromFile("download_row.ui", localizer), parent, localizer, download)
     {
 
     }

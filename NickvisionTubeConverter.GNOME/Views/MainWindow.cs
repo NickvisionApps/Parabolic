@@ -118,7 +118,7 @@ public partial class MainWindow : Adw.ApplicationWindow
     /// </summary>
     /// <param name="sender">object?</param>
     /// <param name="e">NotificationSentEventArgs</param>
-    private void NotificationSent(object? sender, NotificationSentEventArgs e) => _toastOverlay.AddToast(Adw.Toast.New(e.Message));
+    public void NotificationSent(object? sender, NotificationSentEventArgs e) => _toastOverlay.AddToast(Adw.Toast.New(e.Message));
 
     /// <summary>
     /// Occurs when the window tries to close
@@ -148,7 +148,7 @@ public partial class MainWindow : Adw.ApplicationWindow
     /// <returns>The new download row</returns>
     private IDownloadRowControl CreateDownloadRow(Download download)
     {
-        var downloadRow = new DownloadRow(_controller.Localizer, download);
+        var downloadRow = new DownloadRow(this, _controller.Localizer, download);
         _addDownloadButton.SetVisible(true);
         _viewStack.SetVisibleChildName("pageDownloads");
         return downloadRow;

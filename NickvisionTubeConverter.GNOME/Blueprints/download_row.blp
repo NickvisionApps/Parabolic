@@ -124,23 +124,39 @@ Adw.Bin _root {
       }
     }
 
-    Gtk.ScrolledWindow _scrollLog {
+    Gtk.Overlay _overlayLog {
       margin-start: 6;
       margin-end: 6;
       margin-bottom: 6;
-      height-request: 100;
       visible: bind _viewLogToggleBtn.active;
-      child: Gtk.Label _lblLog {
-        margin-start: 6;
-        margin-top: 6;
-        margin-end: 6;
-        margin-bottom: 6;
-        halign: start;
-        wrap: true;
-        selectable: true;
-      };
 
-      styles ["card", "view"]
+      [overlay]
+      Gtk.Button _btnLogToClipboard {
+        icon-name: "edit-copy-symbolic";
+        tooltip-text: _("CopyToClipboard");
+        vexpand: true;
+        halign: end;
+        valign: end;
+        margin-bottom: 10;
+        margin-end: 16;
+
+        styles ["opaque"]
+      }
+
+      Gtk.ScrolledWindow _scrollLog {
+        height-request: 100;
+        child: Gtk.Label _lblLog {
+          margin-start: 6;
+          margin-top: 6;
+          margin-end: 6;
+          margin-bottom: 6;
+          halign: start;
+          wrap: true;
+          selectable: true;
+        };
+
+        styles ["card", "view"]
+      }
     }
   }
 }
