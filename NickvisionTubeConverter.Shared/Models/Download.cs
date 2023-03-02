@@ -130,9 +130,10 @@ public class Download : IDisposable
     public static async Task<(bool, string, bool)> GetIsValidVideoUrlAsync(string url)
     {
         var pathToOutput = $"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}{Path.DirectorySeparatorChar}Nickvision{Path.DirectorySeparatorChar}{AppInfo.Current.Name}{Path.DirectorySeparatorChar}output.log";
-        PythonExtensions.SetConsoleOutputFilePath(pathToOutput);
+        dynamic outFile = PythonExtensions.SetConsoleOutputFilePath(pathToOutput);
         return await Task.Run(() =>
         {
+            var result = (false, "", false);
             try
             {
                 using (Python.Runtime.Py.GIL())
@@ -145,19 +146,23 @@ public class Download : IDisposable
                     Python.Runtime.PyDict videoInfo = ytdlp.YoutubeDL(ytOpt).extract_info(url, download: false);
                     if (videoInfo.HasKey("playlist_count"))
                     {
-                        return (false, "", true);
+                        result = (false, "", true);
                     }
                     else
                     {
-                        return (true, videoInfo.HasKey("title") ? (videoInfo["title"].As<string?>() ?? "Video") : "Video", false);
+                        result = (true, videoInfo.HasKey("title") ? (videoInfo["title"].As<string?>() ?? "Video") : "Video", false);
                     }
                 }
             }
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
-                return (false, "", false);
             }
+            using (Python.Runtime.Py.GIL())
+            {
+                outFile.close();
+            }
+            return result;
         });
     }
 
@@ -179,7 +184,7 @@ public class Download : IDisposable
         {
             File.Delete(_logPath);
         }
-        PythonExtensions.SetConsoleOutputFilePath(_logPath);
+        dynamic outFile = PythonExtensions.SetConsoleOutputFilePath(_logPath);
         return await Task.Run(() =>
         {
             using (Python.Runtime.Py.GIL())
@@ -253,12 +258,14 @@ public class Download : IDisposable
                 {
                     Python.Runtime.PyObject success_code = ytdlp.YoutubeDL(ytOpt).download(new List<string>() { VideoUrl });
                     IsDone = true;
+                    outFile.close();
                     return (success_code.As<int?>() ?? 1) == 0;
                 }
                 catch (Exception e)
                 {
                     Console.WriteLine(e);
                     IsDone = true;
+                    outFile.close();
                     return false;
                 }
             }
