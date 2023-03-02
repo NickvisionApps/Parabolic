@@ -96,27 +96,15 @@ public class MainWindowController : IDisposable
     {
         get
         {
-            var timeNowHours = DateTime.Now.Hour;
-            if (timeNowHours >= 0 && timeNowHours < 6)
+            var greeting = DateTime.Now.Hour switch
             {
-                return Localizer["Greeting", "Night"];
-            }
-            else if (timeNowHours >= 6 && timeNowHours < 12)
-            {
-                return Localizer["Greeting", "Morning"];
-            }
-            else if (timeNowHours >= 12 && timeNowHours < 18)
-            {
-                return Localizer["Greeting", "Afternoon"];
-            }
-            else if (timeNowHours >= 18 && timeNowHours < 24)
-            {
-                return Localizer["Greeting", "Evening"];
-            }
-            else
-            {
-                return Localizer["Greeting", "Generic"];
-            }
+                >= 0 and < 6 => "Night",
+                < 12 => "Morning",
+                < 18 => "Afternoon",
+                < 24 => "Evening",
+                _ => "Generic"
+            };
+            return Localizer["Greeting", greeting];
         }
     }
 
