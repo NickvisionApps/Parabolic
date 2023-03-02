@@ -16,7 +16,6 @@ public class MainWindowController : IDisposable
 {
     private bool _disposed;
     private nint _pythonThreadState;
-    private int _numberOfActiveDownloads;
     private List<IDownloadRowControl> _downloadingRows;
     private List<IDownloadRowControl> _completedRows;
     private List<IDownloadRowControl> _queuedRows;
@@ -71,7 +70,6 @@ public class MainWindowController : IDisposable
     {
         _disposed = false;
         _pythonThreadState = IntPtr.Zero;
-        _numberOfActiveDownloads = 0;
         _downloadingRows = new List<IDownloadRowControl>();
         _completedRows = new List<IDownloadRowControl>();
         _queuedRows = new List<IDownloadRowControl>();
@@ -199,10 +197,9 @@ public class MainWindowController : IDisposable
         newRow.DownloadCompletedAsyncCallback = DownloadCompletedAsync;
         newRow.DownloadStoppedCallback = DownloadStopped;
         newRow.DownloadRetriedAsyncCallback = DownloadRetried;
-        if (_numberOfActiveDownloads < Configuration.Current.MaxNumberOfActiveDownloads)
+        if (_downloadingRows.Count < Configuration.Current.MaxNumberOfActiveDownloads)
         {
             _downloadingRows.Add(newRow);
-            _numberOfActiveDownloads++;
             UIMoveDownloadRow!(newRow, DownloadStage.Downloading);
             await newRow.RunAsync(Configuration.Current.EmbedMetadata);
         }
@@ -235,12 +232,11 @@ public class MainWindowController : IDisposable
     /// <param name="e">EventArgs</param>
     private async void ConfigurationSaved(object? sender, EventArgs e)
     {
-        if (_numberOfActiveDownloads < Configuration.Current.MaxNumberOfActiveDownloads && _queuedRows.Count > 0)
+        if (_downloadingRows.Count < Configuration.Current.MaxNumberOfActiveDownloads && _queuedRows.Count > 0)
         {
             var queuedRow = _queuedRows[0];
             _downloadingRows.Add(queuedRow);
             _queuedRows.RemoveAt(0);
-            _numberOfActiveDownloads++;
             UIMoveDownloadRow!(queuedRow, DownloadStage.Downloading);
             await queuedRow.RunAsync(Configuration.Current.EmbedMetadata);
         }
@@ -254,14 +250,12 @@ public class MainWindowController : IDisposable
     {
         _completedRows.Add(row);
         _downloadingRows.Remove(row);
-        _numberOfActiveDownloads--;
         UIMoveDownloadRow!(row, DownloadStage.Completed);
-        if (_numberOfActiveDownloads < Configuration.Current.MaxNumberOfActiveDownloads && _queuedRows.Count > 0)
+        if (_downloadingRows.Count < Configuration.Current.MaxNumberOfActiveDownloads && _queuedRows.Count > 0)
         {
             var queuedRow = _queuedRows[0];
             _downloadingRows.Add(queuedRow);
             _queuedRows.RemoveAt(0);
-            _numberOfActiveDownloads++;
             UIMoveDownloadRow!(queuedRow, DownloadStage.Downloading);
             await queuedRow.RunAsync(Configuration.Current.EmbedMetadata);
         }
@@ -286,10 +280,9 @@ public class MainWindowController : IDisposable
     /// <param name="row">The retried row</param>
     private async Task DownloadRetried(IDownloadRowControl row)
     {
-        if (_numberOfActiveDownloads < Configuration.Current.MaxNumberOfActiveDownloads)
+        if (_downloadingRows.Count < Configuration.Current.MaxNumberOfActiveDownloads)
         {
             _downloadingRows.Add(row);
-            _numberOfActiveDownloads++;
             UIMoveDownloadRow!(row, DownloadStage.Downloading);
             await row.RunAsync(Configuration.Current.EmbedMetadata);
         }
