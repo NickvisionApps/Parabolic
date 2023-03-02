@@ -144,10 +144,6 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
         var success = await _download.RunAsync(embedMetadata, (state) =>
         {
             _progressStatus = state.Status;
-            _lblLog.SetLabel(state.Log);
-            var vadjustment = _scrollLog.GetVadjustment();
-            vadjustment.SetValue(vadjustment.GetUpper() - vadjustment.GetPageSize());
-            _scrollLog.SetVadjustment(vadjustment);
             switch (state.Status)
             {
                 case DownloadProgressStatus.Downloading:
@@ -155,6 +151,10 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
                     {
                         _progressBar.SetFraction(state.Progress);
                         _progressLabel.SetText(string.Format(_localizer["DownloadState", "Downloading"], state.Progress * 100, state.Speed));
+                        _lblLog.SetLabel(state.Log);
+                        var vadjustment = _scrollLog.GetVadjustment();
+                        vadjustment.SetValue(vadjustment.GetUpper() - vadjustment.GetPageSize());
+                        _scrollLog.SetVadjustment(vadjustment);
                         return false;
                     };
                     g_idle_add(_downloadingCallback, 0);
