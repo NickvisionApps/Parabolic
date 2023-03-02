@@ -26,6 +26,10 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
     private readonly Download _download;
     private bool? _previousEmbedMetadata;
     private bool _wasStopped;
+    private DownloadProgressStatus _progressStatus;
+    private GSourceFunc? _processingCallback;
+    private GSourceFunc? _downloadingCallback;
+    private string _logMessage;
 
     [Gtk.Connect] private readonly Gtk.Image _statusIcon;
     [Gtk.Connect] private readonly Gtk.Label _filenameLabel;
@@ -42,10 +46,6 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
     [Gtk.Connect] private readonly Gtk.ToggleButton _viewLogToggleBtn;
     [Gtk.Connect] private readonly Gtk.ScrolledWindow _scrollLog;
     [Gtk.Connect] private readonly Gtk.Label _lblLog;
-
-    private DownloadProgressStatus _progressStatus;
-    private GSourceFunc? _processingCallback;
-    private GSourceFunc? _downloadingCallback;
 
     /// <summary>
     /// The callback function to run when the download is completed
@@ -72,6 +72,7 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
         _download = download;
         _previousEmbedMetadata = null;
         _wasStopped = false;
+        _logMessage = "";
         //Build UI
         builder.Connect(this);
         _filenameLabel.SetLabel(download.Filename);
@@ -144,6 +145,7 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
         var success = await _download.RunAsync(embedMetadata, (state) =>
         {
             _progressStatus = state.Status;
+            _logMessage = state.Log + "\n";
             switch (state.Status)
             {
                 case DownloadProgressStatus.Downloading:
@@ -151,7 +153,7 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
                     {
                         _progressBar.SetFraction(state.Progress);
                         _progressLabel.SetText(string.Format(_localizer["DownloadState", "Downloading"], state.Progress * 100, state.Speed));
-                        _lblLog.SetLabel(state.Log + "\n");
+                        _lblLog.SetLabel(_logMessage);
                         var vadjustment = _scrollLog.GetVadjustment();
                         vadjustment.SetValue(vadjustment.GetUpper() - vadjustment.GetPageSize());
                         return false;
@@ -160,12 +162,12 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
                     break;
                 case DownloadProgressStatus.Processing:
                     _progressLabel.SetText(_localizer["DownloadState", "Processing"]);
-                    _lblLog.SetLabel(state.Log + "\n");
                     if (_processingCallback == null)
                     {
                         _processingCallback = (d) =>
                         {
                             _progressBar.Pulse();
+                            _lblLog.SetLabel(_logMessage);
                             var vadjustment = _scrollLog.GetVadjustment();
                             vadjustment.SetValue(vadjustment.GetUpper() - vadjustment.GetPageSize());
                             if (_progressStatus != DownloadProgressStatus.Processing || IsDone)
