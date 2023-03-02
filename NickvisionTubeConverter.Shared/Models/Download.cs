@@ -194,7 +194,7 @@ public class Download : IDisposable
                 var hooks = new List<Action<Python.Runtime.PyDict>> { };
                 hooks.Add(ProgressHook);
                 var ytOpt = new Dictionary<string, dynamic> {
-                        { "quiet", true },
+                        { "quiet", false },
                         { "ignoreerrors", "downloadonly" },
                         { "merge_output_format", "mp4/webm/mp3/opus/flac/wav" },
                         { "final_ext", _fileType.ToString().ToLower() },
