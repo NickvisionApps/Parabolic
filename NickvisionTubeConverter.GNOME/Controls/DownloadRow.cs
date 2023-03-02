@@ -151,17 +151,16 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
                     {
                         _progressBar.SetFraction(state.Progress);
                         _progressLabel.SetText(string.Format(_localizer["DownloadState", "Downloading"], state.Progress * 100, state.Speed));
-                        _lblLog.SetLabel(state.Log);
+                        _lblLog.SetLabel(state.Log + "\n");
                         var vadjustment = _scrollLog.GetVadjustment();
                         vadjustment.SetValue(vadjustment.GetUpper() - vadjustment.GetPageSize());
-                        _scrollLog.SetVadjustment(vadjustment);
                         return false;
                     };
                     g_idle_add(_downloadingCallback, 0);
                     break;
                 case DownloadProgressStatus.Processing:
                     _progressLabel.SetText(_localizer["DownloadState", "Processing"]);
-                    _lblLog.SetLabel(state.Log);
+                    _lblLog.SetLabel(state.Log + "\n");
                     if (_processingCallback == null)
                     {
                         _processingCallback = (d) =>
@@ -169,7 +168,6 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
                             _progressBar.Pulse();
                             var vadjustment = _scrollLog.GetVadjustment();
                             vadjustment.SetValue(vadjustment.GetUpper() - vadjustment.GetPageSize());
-                            _scrollLog.SetVadjustment(vadjustment);
                             if (_progressStatus != DownloadProgressStatus.Processing || IsDone)
                             {
                                 _processingCallback = null;
