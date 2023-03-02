@@ -185,36 +185,19 @@ public partial class MainWindow : Adw.ApplicationWindow
             _queuedBox.Remove(_queuedSeparators[row]);
             _queuedSeparators.Remove(row);
         }
-        if (stage == DownloadStage.InQueue)
+        var (box, separators) = stage switch
         {
-            if (_queuedBox.GetFirstChild() != null)
-            {
-                var separator = Gtk.Separator.New(Gtk.Orientation.Horizontal);
-                _queuedBox.Append(separator);
-                _queuedSeparators.Add(row, separator);
-            }
-            _queuedBox.Append((DownloadRow)row);
-        }
-        else if (stage == DownloadStage.Downloading)
+            DownloadStage.InQueue => (_queuedBox, _queuedSeparators),
+            DownloadStage.Downloading => (_downloadingBox, _downloadingSeparators),
+            DownloadStage.Completed => (_completedBox, _completedSeparators)
+        };
+        if (box.GetFirstChild() != null)
         {
-            if (_downloadingBox.GetFirstChild() != null)
-            {
-                var separator = Gtk.Separator.New(Gtk.Orientation.Horizontal);
-                _downloadingBox.Append(separator);
-                _downloadingSeparators.Add(row, separator);
-            }
-            _downloadingBox.Append((DownloadRow)row);
+            var separator = Gtk.Separator.New(Gtk.Orientation.Horizontal);
+            box.Append(separator);
+            _queuedSeparators.Add(row, separator);
         }
-        else if (stage == DownloadStage.Completed)
-        {
-            if (_completedBox.GetFirstChild() != null)
-            {
-                var separator = Gtk.Separator.New(Gtk.Orientation.Horizontal);
-                _completedBox.Append(separator);
-                _completedSeparators.Add(row, separator);
-            }
-            _completedBox.Append((DownloadRow)row);
-        }
+        box.Append((DownloadRow)row);
         _sectionDownloading.SetVisible(_downloadingBox.GetFirstChild() != null);
         _sectionCompleted.SetVisible(_completedBox.GetFirstChild() != null);
         _sectionQueued.SetVisible(_queuedBox.GetFirstChild() != null);
