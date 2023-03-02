@@ -166,6 +166,10 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
                         _processingCallback = (d) =>
                         {
                             _progressBar.Pulse();
+                            _lblLog.SetLabel(state.Log);
+                            var vadjustment = _scrollLog.GetVadjustment();
+                            vadjustment.SetValue(vadjustment.GetUpper() - vadjustment.GetPageSize());
+                            _scrollLog.SetVadjustment(vadjustment);
                             if (_progressStatus != DownloadProgressStatus.Processing || IsDone)
                             {
                                 _processingCallback = null;
