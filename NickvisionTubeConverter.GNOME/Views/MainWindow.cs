@@ -66,7 +66,7 @@ public partial class MainWindow : Adw.ApplicationWindow
         _controller.NotificationSent += NotificationSent;
         _controller.UICreateDownloadRow = CreateDownloadRow;
         _controller.UIMoveDownloadRow = MoveDownloadRow;
-        _controller.UIDeleteDownloadRowFromQueue = DeleteDownloadRowFromQueue;
+        _controller.UIDeleteDownloadRowFromQueue = (row) => DeleteDownloadRow(row, DownloadStage.InQueue);
         //Add Download Action
         var actDownload = Gio.SimpleAction.New("addDownload", null);
         actDownload.OnActivate += AddDownload;
@@ -161,36 +161,29 @@ public partial class MainWindow : Adw.ApplicationWindow
     }
 
     /// <summary>
+    /// Returns the container widgets associated with a download stage
+    /// </summary>
+    /// <param name="stage">The download model</param>
+    /// <returns>Returns the download rows Gtk.Box, a dictionary of IDownloadRowControl to Gtk.Separator, and the outter Gtk.Box</returns>
+    private (Gtk.Box, Dictionary<IDownloadRowControl, Gtk.Separator>, Gtk.Box) GetDownloadStageContainers(DownloadStage stage) =>
+        stage switch
+        {
+            DownloadStage.InQueue => (_queuedBox, _queuedSeparators, _sectionQueued),
+            DownloadStage.Downloading => (_downloadingBox, _downloadingSeparators, _sectionDownloading),
+            DownloadStage.Completed => (_completedBox, _completedSeparators, _sectionCompleted)
+        };
+
+    /// <summary>
     /// Moves the download row to a new section
     /// </summary>
     /// <param name="row">IDownloadRowControl</param>
     /// <param name="stage">DownloadStage</param>
     private void MoveDownloadRow(IDownloadRowControl row, DownloadStage stage)
     {
-        _downloadingBox.Remove((DownloadRow)row);
-        if (_downloadingSeparators.ContainsKey(row))
-        {
-            _downloadingBox.Remove(_downloadingSeparators[row]);
-            _downloadingSeparators.Remove(row);
-        }
-        _completedBox.Remove((DownloadRow)row);
-        if (_completedSeparators.ContainsKey(row))
-        {
-            _completedBox.Remove(_completedSeparators[row]);
-            _completedSeparators.Remove(row);
-        }
-        _queuedBox.Remove((DownloadRow)row);
-        if (_queuedSeparators.ContainsKey(row))
-        {
-            _queuedBox.Remove(_queuedSeparators[row]);
-            _queuedSeparators.Remove(row);
-        }
-        var (box, separators) = stage switch
-        {
-            DownloadStage.InQueue => (_queuedBox, _queuedSeparators),
-            DownloadStage.Downloading => (_downloadingBox, _downloadingSeparators),
-            DownloadStage.Completed => (_completedBox, _completedSeparators)
-        };
+        DeleteDownloadRow(row, DownloadStage.InQueue);
+        DeleteDownloadRow(row, DownloadStage.Downloading);
+        DeleteDownloadRow(row, DownloadStage.Completed);
+        var (box, separators, section) = GetDownloadStageContainers(stage);
         if (box.GetFirstChild() != null)
         {
             var separator = Gtk.Separator.New(Gtk.Orientation.Horizontal);
@@ -198,24 +191,24 @@ public partial class MainWindow : Adw.ApplicationWindow
             _queuedSeparators.Add(row, separator);
         }
         box.Append((DownloadRow)row);
-        _sectionDownloading.SetVisible(_downloadingBox.GetFirstChild() != null);
-        _sectionCompleted.SetVisible(_completedBox.GetFirstChild() != null);
-        _sectionQueued.SetVisible(_queuedBox.GetFirstChild() != null);
+        section.SetVisible(true);
     }
 
     /// <summary>
-    /// Deletes a download row from the queue section
+    /// Deletes a download row from a section
     /// </summary>
     /// <param name="row">IDownloadRowControl</param>
-    private void DeleteDownloadRowFromQueue(IDownloadRowControl row)
+    /// <param name="stage">DownloadStage</param>
+    private void DeleteDownloadRow(IDownloadRowControl row, DownloadStage stage)
     {
-        _queuedBox.Remove((DownloadRow)row);
-        if (_queuedSeparators.ContainsKey(row))
+        var (box, separators, section) = GetDownloadStageContainers(stage);
+        box.Remove((DownloadRow)row);
+        if (separators.ContainsKey(row))
         {
-            _queuedBox.Remove(_queuedSeparators[row]);
-            _queuedSeparators.Remove(row);
+            box.Remove(separators[row]);
+            separators.Remove(row);
         }
-        _sectionQueued.SetVisible(_queuedBox.GetFirstChild() != null);
+        section.SetVisible(box.GetFirstChild() != null);
     }
 
     /// <summary>
