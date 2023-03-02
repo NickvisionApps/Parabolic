@@ -129,7 +129,7 @@ Adw.Bin _root {
       margin-end: 6;
       margin-bottom: 6;
       height-request: 100;
-      visible: false;
+      visible: bind _viewLogToggleBtn.active;
       child: Gtk.Label _lblLog {
         margin-start: 6;
         margin-top: 6;

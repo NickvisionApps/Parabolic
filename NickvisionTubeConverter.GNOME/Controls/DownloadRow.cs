@@ -87,7 +87,6 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
                 await DownloadRetriedAsyncCallback(this);
             }
         };
-        _viewLogToggleBtn.OnClicked += (sender, e) => _scrollLog.SetVisible(!_scrollLog.GetVisible());
     }
 
     /// <summary>
