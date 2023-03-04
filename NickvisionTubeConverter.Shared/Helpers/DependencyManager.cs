@@ -60,7 +60,7 @@ internal static class DependencyManager
                     Configuration.Current.WinUIFfmpegVersion = new Version(5, 3, 1);
                     Configuration.Current.Save();
                 }
-                if (!File.Exists(pythonDllPath) || Configuration.Current.WinUIPythonVersion != new Version(3, 7, 3))
+                if (!File.Exists(pythonDllPath) || !Directory.Exists(pythonLibPath) || Configuration.Current.WinUIPythonVersion != new Version(3, 7, 3) || (Configuration.Current.WinUIYtdlpVersion != new Version(2023, 3, 4)))
                 {
                     Python.Deployment.Installer.InstallPath = pythonDirPath;
                     Python.Runtime.Runtime.PythonDLL = pythonDllPath;
@@ -78,16 +78,6 @@ internal static class DependencyManager
                 else
                 {
                     Python.Runtime.Runtime.PythonDLL = pythonDllPath;
-                }
-                if (Configuration.Current.WinUIYtdlpVersion != new Version(2023, 3, 4))
-                {
-                    if (Directory.Exists(pythonLibPath))
-                    {
-                        Directory.Delete(pythonLibPath, true);
-                    }
-                    await Python.Deployment.Installer.InstallWheel(typeof(MainWindowController).Assembly, "yt_dlp-any.whl", true);
-                    Configuration.Current.WinUIYtdlpVersion = new Version(2023, 3, 4);
-                    Configuration.Current.Save();
                 }
             }
             else
