@@ -74,7 +74,6 @@ public class MainWindowController : IDisposable
         _completedRows = new List<IDownloadRowControl>();
         _queuedRows = new List<IDownloadRowControl>();
         Localizer = new Localizer();
-        Configuration.Current.Saved += ConfigurationSaved;
     }
 
     /// <summary>
@@ -157,6 +156,7 @@ public class MainWindowController : IDisposable
     /// </summary>
     public async Task StartupAsync()
     {
+        Configuration.Current.Saved += ConfigurationSaved;
         if (!await DependencyManager.SetupDependenciesAsync())
         {
             NotificationSent?.Invoke(this, new NotificationSentEventArgs(Localizer["DependencyError"], NotificationSeverity.Error));
