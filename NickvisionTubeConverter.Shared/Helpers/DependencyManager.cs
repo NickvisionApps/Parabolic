@@ -53,6 +53,7 @@ internal static class DependencyManager
             {
                 var pythonDirPath = $"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}{Path.DirectorySeparatorChar}Nickvision{Path.DirectorySeparatorChar}{AppInfo.Current.Name}{Path.DirectorySeparatorChar}Python{Path.DirectorySeparatorChar}";
                 var pythonDllPath = $"{pythonDirPath}python-3.7.3-embed-amd64{Path.DirectorySeparatorChar}python37.dll";
+                var pythonLibPath = $"{pythonDirPath}python-3.7.3-embed-amd64{Path.DirectorySeparatorChar}Lib{Path.DirectorySeparatorChar}";
                 if (!File.Exists(Ffmpeg) || Configuration.Current.WinUIFfmpegVersion != new Version(5, 3, 1))
                 {
                     await FFmpegDownloader.GetLatestVersion(FFmpegVersion.Official, Ffmpeg.Remove(Ffmpeg.IndexOf("ffmpeg.exe")));
@@ -63,9 +64,30 @@ internal static class DependencyManager
                 {
                     Python.Deployment.Installer.InstallPath = pythonDirPath;
                     Python.Runtime.Runtime.PythonDLL = pythonDllPath;
+                    if(Directory.Exists(pythonLibPath))
+                    {
+                        Directory.Delete(pythonLibPath, true);
+                    }
                     await Python.Deployment.Installer.SetupPython(true);
                     await Python.Deployment.Installer.InstallWheel(typeof(MainWindowController).Assembly, "yt_dlp-any.whl", true);
                     await Python.Deployment.Installer.SetupPython();
+                    Configuration.Current.WinUIPythonVersion = new Version(3, 7, 3);
+                    Configuration.Current.WinUIYtdlpVersion = new Version(2023, 3, 4);
+                    Configuration.Current.Save();
+                }
+                else
+                {
+                    Python.Runtime.Runtime.PythonDLL = pythonDllPath;
+                }
+                if (Configuration.Current.WinUIYtdlpVersion != new Version(2023, 3, 4))
+                {
+                    if (Directory.Exists(pythonLibPath))
+                    {
+                        Directory.Delete(pythonLibPath, true);
+                    }
+                    await Python.Deployment.Installer.InstallWheel(typeof(MainWindowController).Assembly, "yt_dlp-any.whl", true);
+                    Configuration.Current.WinUIYtdlpVersion = new Version(2023, 3, 4);
+                    Configuration.Current.Save();
                 }
             }
             else
