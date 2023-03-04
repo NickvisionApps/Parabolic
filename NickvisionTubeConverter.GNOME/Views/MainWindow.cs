@@ -5,7 +5,6 @@ using NickvisionTubeConverter.Shared.Controls;
 using NickvisionTubeConverter.Shared.Events;
 using NickvisionTubeConverter.Shared.Models;
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace NickvisionTubeConverter.GNOME.Views;

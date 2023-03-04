@@ -1,5 +1,4 @@
 using NickvisionTubeConverter.GNOME.Helpers;
-using NickvisionTubeConverter.GNOME.Views;
 using NickvisionTubeConverter.Shared.Controls;
 using NickvisionTubeConverter.Shared.Events;
 using NickvisionTubeConverter.Shared.Helpers;
