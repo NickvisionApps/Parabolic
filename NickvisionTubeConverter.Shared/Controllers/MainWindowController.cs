@@ -157,6 +157,11 @@ public class MainWindowController : IDisposable
     public async Task StartupAsync()
     {
         Configuration.Current.Saved += ConfigurationSaved;
+        var pathToConfig = $"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}{Path.DirectorySeparatorChar}Nickvision{Path.DirectorySeparatorChar}{AppInfo.Current.Name}{Path.DirectorySeparatorChar}";
+        foreach (var file in Directory.EnumerateFiles(pathToConfig, "*.log", SearchOption.TopDirectoryOnly))
+        {
+            File.Delete(file);
+        }
         if (!await DependencyManager.SetupDependenciesAsync())
         {
             NotificationSent?.Invoke(this, new NotificationSentEventArgs(Localizer["DependencyError"], NotificationSeverity.Error));
