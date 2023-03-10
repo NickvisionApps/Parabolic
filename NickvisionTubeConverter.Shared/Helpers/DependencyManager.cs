@@ -1,13 +1,14 @@
-﻿using NickvisionTubeConverter.Shared.Controllers;
-using NickvisionTubeConverter.Shared.Models;
+﻿using NickvisionTubeConverter.Shared.Models;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.IO.Compression;
+using System.Linq;
+using System.Net.Http;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
-using Xabe.FFmpeg.Downloader;
 
 namespace NickvisionTubeConverter.Shared.Helpers;
 
@@ -22,7 +23,7 @@ internal static class DependencyManager
         {
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
-                return $"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}{Path.DirectorySeparatorChar}Nickvision{Path.DirectorySeparatorChar}{AppInfo.Current.Name}{Path.DirectorySeparatorChar}ffmpeg.exe";
+                return $"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}{Path.DirectorySeparatorChar}Nickvision{Path.DirectorySeparatorChar}{AppInfo.Current.Name}{Path.DirectorySeparatorChar}ffmpeg{Path.DirectorySeparatorChar}ffmpeg.exe";
             }
             var prefixes = new List<string>() {
                 Directory.GetParent(Directory.GetParent(Path.GetFullPath(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)!))!.FullName)!.FullName,
@@ -51,8 +52,34 @@ internal static class DependencyManager
         {
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
+                //Python
                 await PythonExtensions.DeployEmbeddedAsync(new Version("3.11.2"));
-                await FFmpegDownloader.GetLatestVersion(FFmpegVersion.Official, Ffmpeg.Remove(Ffmpeg.IndexOf("ffmpeg.exe")));
+                //Ffmpeg
+                var ffmpegVer = new Version(6, 0, 0);
+                if (!File.Exists(Ffmpeg) || Configuration.Current.WinUIFfmpegVersion != ffmpegVer)
+                {
+                    var httpClient = new HttpClient();
+                    var ffmpegDir = $"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}{Path.DirectorySeparatorChar}Nickvision{Path.DirectorySeparatorChar}{AppInfo.Current.Name}{Path.DirectorySeparatorChar}ffmpeg{Path.DirectorySeparatorChar}";
+                    if(!Directory.Exists(ffmpegDir))
+                    {
+                        Directory.CreateDirectory(ffmpegDir);
+                    }
+                    //Download and Extract Binary Zip
+                    var ffmpegZip = $"{ffmpegDir}ffmpeg.zip";
+                    var bytes = await httpClient.GetByteArrayAsync("https://www.gyan.dev/ffmpeg/builds/ffmpeg-release-essentials.zip");
+                    File.WriteAllBytes(ffmpegZip, bytes);
+                    ZipFile.ExtractToDirectory(ffmpegZip, ffmpegDir);
+                    File.Delete(ffmpegZip);
+                    //Move Binaries
+                    var ffmpegBinaryFolder = $"{Directory.GetDirectories(ffmpegDir).First(x => x.Contains("-essentials_build"))}{Path.DirectorySeparatorChar}bin{Path.DirectorySeparatorChar}";
+                    File.Move($"{ffmpegBinaryFolder}ffmpeg.exe", $"{ffmpegDir}ffmpeg.exe", true);
+                    File.Move($"{ffmpegBinaryFolder}ffplay.exe", $"{ffmpegDir}ffplay.exe", true);
+                    File.Move($"{ffmpegBinaryFolder}ffprobe.exe", $"{ffmpegDir}ffprobe.exe", true);
+                    Directory.Delete(Directory.GetDirectories(ffmpegDir).First(x => x.Contains("-essentials_build")), true);
+                    //Update Config
+                    Configuration.Current.WinUIFfmpegVersion = ffmpegVer;
+                    Configuration.Current.Save();
+                }
             }
             else
             {
