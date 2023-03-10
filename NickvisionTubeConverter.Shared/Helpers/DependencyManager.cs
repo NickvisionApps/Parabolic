@@ -51,40 +51,8 @@ internal static class DependencyManager
         {
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
-                var pythonDirPath = $"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}{Path.DirectorySeparatorChar}Nickvision{Path.DirectorySeparatorChar}{AppInfo.Current.Name}{Path.DirectorySeparatorChar}Python{Path.DirectorySeparatorChar}";
-                var pythonType = RuntimeInformation.OSArchitecture switch
-                {
-                    Architecture.X86 => "python-3.11.2-embed-win32",
-                    Architecture.Arm => "python-3.11.2-embed-win32",
-                    Architecture.Arm64 => "python-3.11.2-embed-arm64",
-                    _ => "python-3.11.2-embed-amd64"
-                };
-                var pythonDllPath = $"{pythonDirPath}{pythonType}{Path.DirectorySeparatorChar}python311.dll";
-                var pythonLibPath = $"{pythonDirPath}{pythonType}{Path.DirectorySeparatorChar}Lib{Path.DirectorySeparatorChar}";
-                if (!File.Exists(Ffmpeg))
-                {
-                    await FFmpegDownloader.GetLatestVersion(FFmpegVersion.Official, Ffmpeg.Remove(Ffmpeg.IndexOf("ffmpeg.exe")));
-                }
-                if (!File.Exists(pythonDllPath) || !Directory.Exists(pythonLibPath) || Configuration.Current.WinUIPythonVersion != new Version(3, 11, 2) || (Configuration.Current.WinUIYtdlpVersion != new Version(2023, 3, 4)))
-                {
-                    Python.Deployment.Installer.InstallPath = pythonDirPath;
-                    Python.Deployment.Installer.Source = new Python.Deployment.Installer.DownloadInstallationSource() { DownloadUrl = $"https://www.python.org/ftp/python/3.11.2/{pythonType}.zip" };
-                    Python.Runtime.Runtime.PythonDLL = pythonDllPath;
-                    if(Directory.Exists(pythonLibPath))
-                    {
-                        Directory.Delete(pythonLibPath, true);
-                    }
-                    await Python.Deployment.Installer.SetupPython(true);
-                    await Python.Deployment.Installer.InstallWheel(typeof(MainWindowController).Assembly, "yt_dlp-any.whl", true);
-                    await Python.Deployment.Installer.SetupPython();
-                    Configuration.Current.WinUIPythonVersion = new Version(3, 11, 2);
-                    Configuration.Current.WinUIYtdlpVersion = new Version(2023, 3, 4);
-                    Configuration.Current.Save();
-                }
-                else
-                {
-                    Python.Runtime.Runtime.PythonDLL = pythonDllPath;
-                }
+                await PythonExtensions.DeployEmbeddedAsync(new Version("3.11.2"));
+                await FFmpegDownloader.GetLatestVersion(FFmpegVersion.Official, Ffmpeg.Remove(Ffmpeg.IndexOf("ffmpeg.exe")));
             }
             else
             {
