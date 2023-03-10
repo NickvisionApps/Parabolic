@@ -38,10 +38,6 @@ public class Configuration
     /// </summary>
     public Version WinUIYtdlpVersion { get; set; }
     /// <summary>
-    /// The version of ffmpeg installed on WinUI version
-    /// </summary>
-    public Version WinUIFfmpegVersion { get; set; }
-    /// <summary>
     /// The maximum number of active downloads (should be between 1-10)
     /// </summary>
     public int MaxNumberOfActiveDownloads { get; set; }
@@ -66,7 +62,6 @@ public class Configuration
         EmbedMetadata = true;
         WinUIPythonVersion = new Version(0, 0, 0);
         WinUIYtdlpVersion = new Version(0, 0, 0);
-        WinUIFfmpegVersion = new Version(0, 0, 0);
         MaxNumberOfActiveDownloads = 5;
     }
 
