@@ -1,13 +1,14 @@
-﻿using NickvisionTubeConverter.Shared.Controllers;
-using NickvisionTubeConverter.Shared.Models;
+﻿using NickvisionTubeConverter.Shared.Models;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.IO.Compression;
+using System.Linq;
+using System.Net.Http;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
-using Xabe.FFmpeg.Downloader;
 
 namespace NickvisionTubeConverter.Shared.Helpers;
 
@@ -22,7 +23,7 @@ internal static class DependencyManager
         {
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
-                return $"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}{Path.DirectorySeparatorChar}Nickvision{Path.DirectorySeparatorChar}{AppInfo.Current.Name}{Path.DirectorySeparatorChar}ffmpeg.exe";
+                return $"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}{Path.DirectorySeparatorChar}Nickvision{Path.DirectorySeparatorChar}{AppInfo.Current.Name}{Path.DirectorySeparatorChar}ffmpeg{Path.DirectorySeparatorChar}ffmpeg.exe";
             }
             var prefixes = new List<string>() {
                 Directory.GetParent(Directory.GetParent(Path.GetFullPath(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)!))!.FullName)!.FullName,
@@ -51,33 +52,33 @@ internal static class DependencyManager
         {
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
-                var pythonDirPath = $"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}{Path.DirectorySeparatorChar}Nickvision{Path.DirectorySeparatorChar}{AppInfo.Current.Name}{Path.DirectorySeparatorChar}Python{Path.DirectorySeparatorChar}";
-                var pythonDllPath = $"{pythonDirPath}python-3.7.3-embed-amd64{Path.DirectorySeparatorChar}python37.dll";
-                var pythonLibPath = $"{pythonDirPath}python-3.7.3-embed-amd64{Path.DirectorySeparatorChar}Lib{Path.DirectorySeparatorChar}";
-                if (!File.Exists(Ffmpeg) || Configuration.Current.WinUIFfmpegVersion != new Version(5, 3, 1))
+                //Python
+                await PythonExtensions.DeployEmbeddedAsync(new Version("3.11.2"));
+                //Ffmpeg
+                var ffmpegVer = new Version(6, 0, 0);
+                if (!File.Exists(Ffmpeg) || Configuration.Current.WinUIFfmpegVersion != ffmpegVer)
                 {
-                    await FFmpegDownloader.GetLatestVersion(FFmpegVersion.Official, Ffmpeg.Remove(Ffmpeg.IndexOf("ffmpeg.exe")));
-                    Configuration.Current.WinUIFfmpegVersion = new Version(5, 3, 1);
-                    Configuration.Current.Save();
-                }
-                if (!File.Exists(pythonDllPath) || !Directory.Exists(pythonLibPath) || Configuration.Current.WinUIPythonVersion != new Version(3, 7, 3) || (Configuration.Current.WinUIYtdlpVersion != new Version(2023, 3, 4)))
-                {
-                    Python.Deployment.Installer.InstallPath = pythonDirPath;
-                    Python.Runtime.Runtime.PythonDLL = pythonDllPath;
-                    if(Directory.Exists(pythonLibPath))
+                    var httpClient = new HttpClient();
+                    var ffmpegDir = $"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}{Path.DirectorySeparatorChar}Nickvision{Path.DirectorySeparatorChar}{AppInfo.Current.Name}{Path.DirectorySeparatorChar}ffmpeg{Path.DirectorySeparatorChar}";
+                    if(!Directory.Exists(ffmpegDir))
                     {
-                        Directory.Delete(pythonLibPath, true);
+                        Directory.CreateDirectory(ffmpegDir);
                     }
-                    await Python.Deployment.Installer.SetupPython(true);
-                    await Python.Deployment.Installer.InstallWheel(typeof(MainWindowController).Assembly, "yt_dlp-any.whl", true);
-                    await Python.Deployment.Installer.SetupPython();
-                    Configuration.Current.WinUIPythonVersion = new Version(3, 7, 3);
-                    Configuration.Current.WinUIYtdlpVersion = new Version(2023, 3, 4);
+                    //Download and Extract Binary Zip
+                    var ffmpegZip = $"{ffmpegDir}ffmpeg.zip";
+                    var bytes = await httpClient.GetByteArrayAsync("https://www.gyan.dev/ffmpeg/builds/ffmpeg-release-essentials.zip");
+                    File.WriteAllBytes(ffmpegZip, bytes);
+                    ZipFile.ExtractToDirectory(ffmpegZip, ffmpegDir);
+                    File.Delete(ffmpegZip);
+                    //Move Binaries
+                    var ffmpegBinaryFolder = $"{Directory.GetDirectories(ffmpegDir).First(x => x.Contains("-essentials_build"))}{Path.DirectorySeparatorChar}bin{Path.DirectorySeparatorChar}";
+                    File.Move($"{ffmpegBinaryFolder}ffmpeg.exe", $"{ffmpegDir}ffmpeg.exe", true);
+                    File.Move($"{ffmpegBinaryFolder}ffplay.exe", $"{ffmpegDir}ffplay.exe", true);
+                    File.Move($"{ffmpegBinaryFolder}ffprobe.exe", $"{ffmpegDir}ffprobe.exe", true);
+                    Directory.Delete(Directory.GetDirectories(ffmpegDir).First(x => x.Contains("-essentials_build")), true);
+                    //Update Config
+                    Configuration.Current.WinUIFfmpegVersion = ffmpegVer;
                     Configuration.Current.Save();
-                }
-                else
-                {
-                    Python.Runtime.Runtime.PythonDLL = pythonDllPath;
                 }
             }
             else
@@ -98,8 +99,9 @@ internal static class DependencyManager
             }
             return true;
         }
-        catch
+        catch(Exception e)
         {
+            Console.WriteLine(e);
             return false;
         }
     }
