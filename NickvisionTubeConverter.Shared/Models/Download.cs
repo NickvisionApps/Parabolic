@@ -85,7 +85,7 @@ public class Download : IDisposable
         _fileType = fileType;
         _quality = quality;
         _subtitle = subtitle;
-        _logPath = $"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}{Path.DirectorySeparatorChar}Nickvision{Path.DirectorySeparatorChar}{AppInfo.Current.Name}{Path.DirectorySeparatorChar}{_id}.log";
+        _logPath = $"{Configuration.ConfigDir}{Path.DirectorySeparatorChar}{_id}.log";
         _progressCallback = null;
         _pid = null;
         VideoUrl = videoUrl;
@@ -120,50 +120,6 @@ public class Download : IDisposable
             }
         }
         _disposed = true;
-    }
-
-    /// <summary>
-    /// Gets whether or not a video url is valid
-    /// </summary>
-    /// <param name="url">The video url to check</param>
-    /// <returns>Whether or not the video url is valid, along with the video title if it is, and whether it is a playlist</returns>
-    public static async Task<(bool, string, bool)> GetIsValidVideoUrlAsync(string url)
-    {
-        var pathToOutput = $"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}{Path.DirectorySeparatorChar}Nickvision{Path.DirectorySeparatorChar}{AppInfo.Current.Name}{Path.DirectorySeparatorChar}output.log";
-        dynamic outFile = PythonExtensions.SetConsoleOutputFilePath(pathToOutput);
-        return await Task.Run(() =>
-        {
-            var result = (false, "", false);
-            try
-            {
-                using (Python.Runtime.Py.GIL())
-                {
-                    dynamic ytdlp = Python.Runtime.Py.Import("yt_dlp");
-                    var ytOpt = new Dictionary<string, dynamic>() {
-                        { "quiet", true },
-                        { "merge_output_format", "/" }
-                    };
-                    Python.Runtime.PyDict videoInfo = ytdlp.YoutubeDL(ytOpt).extract_info(url, download: false);
-                    if (videoInfo.HasKey("playlist_count"))
-                    {
-                        result = (false, "", true);
-                    }
-                    else
-                    {
-                        result = (true, videoInfo.HasKey("title") ? (videoInfo["title"].As<string?>() ?? "Video") : "Video", false);
-                    }
-                }
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-            }
-            using (Python.Runtime.Py.GIL())
-            {
-                outFile.close();
-            }
-            return result;
-        });
     }
 
     /// <summary>

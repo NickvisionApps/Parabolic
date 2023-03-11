@@ -218,7 +218,10 @@ public partial class MainWindow : Adw.ApplicationWindow
         {
             if (addController.Accepted)
             {
-                _controller.AddDownload(addController.Download!);
+                foreach (var download in addController.Downloads)
+                {
+                    _controller.AddDownload(download);
+                }
             }
             addDialog.Destroy();
         };

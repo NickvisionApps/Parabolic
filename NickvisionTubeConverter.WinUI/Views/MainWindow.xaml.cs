@@ -305,7 +305,10 @@ public sealed partial class MainWindow : Window
         };
         if (await addDialog.ShowAsync())
         {
-            _controller.AddDownload(addController.Download!);
+            foreach (var download in addController.Downloads)
+            {
+                _controller.AddDownload(download);
+            }
         }
     }
 }

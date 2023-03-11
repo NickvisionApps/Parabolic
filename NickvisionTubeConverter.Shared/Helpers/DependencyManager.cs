@@ -23,7 +23,7 @@ internal static class DependencyManager
         {
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
-                return $"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}{Path.DirectorySeparatorChar}Nickvision{Path.DirectorySeparatorChar}{AppInfo.Current.Name}{Path.DirectorySeparatorChar}ffmpeg{Path.DirectorySeparatorChar}ffmpeg.exe";
+                return $"{Configuration.ConfigDir}{Path.DirectorySeparatorChar}ffmpeg{Path.DirectorySeparatorChar}ffmpeg.exe";
             }
             var prefixes = new List<string>() {
                 Directory.GetParent(Directory.GetParent(Path.GetFullPath(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)!))!.FullName)!.FullName,
@@ -59,8 +59,8 @@ internal static class DependencyManager
                 if (!File.Exists(Ffmpeg) || Configuration.Current.WinUIFfmpegVersion != ffmpegVer)
                 {
                     var httpClient = new HttpClient();
-                    var ffmpegDir = $"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}{Path.DirectorySeparatorChar}Nickvision{Path.DirectorySeparatorChar}{AppInfo.Current.Name}{Path.DirectorySeparatorChar}ffmpeg{Path.DirectorySeparatorChar}";
-                    if(!Directory.Exists(ffmpegDir))
+                    var ffmpegDir = $"{Configuration.ConfigDir}{Path.DirectorySeparatorChar}ffmpeg{Path.DirectorySeparatorChar}";
+                    if (!Directory.Exists(ffmpegDir))
                     {
                         Directory.CreateDirectory(ffmpegDir);
                     }
@@ -99,7 +99,7 @@ internal static class DependencyManager
             }
             return true;
         }
-        catch(Exception e)
+        catch (Exception e)
         {
             Console.WriteLine(e);
             return false;

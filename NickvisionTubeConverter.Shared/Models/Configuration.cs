@@ -9,7 +9,7 @@ namespace NickvisionTubeConverter.Shared.Models;
 /// </summary>
 public class Configuration
 {
-    private static readonly string ConfigDir = $"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}{Path.DirectorySeparatorChar}Nickvision{Path.DirectorySeparatorChar}{AppInfo.Current.Name}";
+    public static readonly string ConfigDir = $"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}{Path.DirectorySeparatorChar}Nickvision{Path.DirectorySeparatorChar}{AppInfo.Current.Name}";
     private static readonly string ConfigPath = $"{ConfigDir}{Path.DirectorySeparatorChar}config.json";
     private static Configuration? _instance;
 

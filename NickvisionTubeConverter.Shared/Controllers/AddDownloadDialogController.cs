@@ -1,5 +1,6 @@
 using NickvisionTubeConverter.Shared.Helpers;
 using NickvisionTubeConverter.Shared.Models;
+using System.Collections.Generic;
 using System.IO;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -32,9 +33,9 @@ public class AddDownloadDialogController
     /// </summary>
     public Localizer Localizer { get; init; }
     /// <summary>
-    /// The download represented by the controller
+    /// The downloads created by the dialog
     /// </summary>
-    public Download? Download { get; private set; }
+    public List<Download> Downloads { get; init; }
     /// <summary>
     /// Whether or not the dialog was accepted (response)
     /// </summary>
@@ -62,7 +63,7 @@ public class AddDownloadDialogController
         _saveFolder = "";
         _saveFilename = "";
         Localizer = localizer;
-        Download = null;
+        Downloads = new List<Download>();
         Accepted = false;
     }
 
@@ -88,7 +89,7 @@ public class AddDownloadDialogController
         }
         else
         {
-            _saveFolder = Path.GetDirectoryName(savePath);
+            _saveFolder = Path.GetDirectoryName(savePath)!;
             _saveFilename = Path.GetFileNameWithoutExtension(savePath) + mediaFileType.GetDotExtension();
         }
         if (string.IsNullOrEmpty(videoUrl))
@@ -98,21 +99,28 @@ public class AddDownloadDialogController
         else if (_previousUrl != videoUrl)
         {
             _previousUrl = videoUrl;
-            var (valid, title, playlist) = await Download.GetIsValidVideoUrlAsync(videoUrl);
-            if (!valid)
+            var videoUrlInfo = await VideoUrlInfo.GetAsync(videoUrl);
+            if (videoUrlInfo == null)
             {
-                result |= playlist ? DownloadCheckStatus.PlaylistNotSupported : DownloadCheckStatus.InvalidVideoUrl;
+                result |= DownloadCheckStatus.InvalidVideoUrl;
             }
             else
             {
-                _saveFilename = title + mediaFileType.GetDotExtension();
+                if (videoUrlInfo.IsPlaylist)
+                {
+                    result |= DownloadCheckStatus.PlaylistNotSupported;
+                }
+                else if (videoUrlInfo.IsSingleVideo)
+                {
+                    _saveFilename = videoUrlInfo.SingleTitle + mediaFileType.GetDotExtension();
+                }
             }
         }
         if (result != 0)
         {
             return result;
         }
-        Download = new Download(videoUrl, mediaFileType, _saveFolder, _saveFilename, quality, subtitles);
+        Downloads.Add(new Download(videoUrl, mediaFileType, _saveFolder, _saveFilename, quality, subtitles));
         if (!string.IsNullOrEmpty(_saveFolder) && !Regex.Match(_saveFolder, @"^\/run\/user\/.*\/doc\/.*").Success)
         {
             Configuration.Current.PreviousSaveFolder = _saveFolder;
