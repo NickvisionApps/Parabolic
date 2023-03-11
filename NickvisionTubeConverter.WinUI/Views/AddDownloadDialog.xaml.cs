@@ -156,6 +156,7 @@ public sealed partial class AddDownloadDialog : ContentDialog
     private async void TxtVideoUrl_TextChanged(object sender, TextChangedEventArgs e)
     {
         ViewStack.ChangePage("Loading");
+        IsPrimaryButtonEnabled = false;
         await Task.Delay(50);
         await ValidateAsync();
         ViewStack.ChangePage("Download");
