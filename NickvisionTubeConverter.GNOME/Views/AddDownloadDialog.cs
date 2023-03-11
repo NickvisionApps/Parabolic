@@ -21,6 +21,37 @@ public partial class AddDownloadDialog : Adw.MessageDialog
     [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
     public static partial void gtk_file_chooser_set_current_name(nint chooser, string name);
 
+    [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
+    private static partial string g_file_get_path(nint file);
+
+    [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
+    private static partial uint gtk_get_minor_version();
+
+    [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
+    private static partial nint gtk_file_dialog_new();
+
+    [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
+    private static partial void gtk_file_dialog_set_title(nint dialog, string title);
+
+    [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
+    private static partial void gtk_file_dialog_set_filters(nint dialog, nint filters);
+
+    [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
+    private static partial void gtk_file_dialog_set_initial_name(nint dialog, string name);
+
+    [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
+    private static partial void gtk_file_dialog_set_initial_folder(nint dialog, nint folder);
+
+    private delegate void GAsyncReadyCallback(nint source, nint res, nint user_data);
+
+    [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
+    private static partial void gtk_file_dialog_save(nint dialog, nint parent, nint cancellable, GAsyncReadyCallback callback, nint user_data);
+
+    [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
+    private static partial nint gtk_file_dialog_save_finish(nint dialog, nint result, nint error);
+
+    private GAsyncReadyCallback _saveCallback { get; set; }
+
     private bool _constructing;
     private readonly Gtk.Window _parent;
     private readonly AddDownloadDialogController _controller;
@@ -182,27 +213,55 @@ public partial class AddDownloadDialog : Adw.MessageDialog
     /// <param name="e">EventArgs</param>
     private void SelectSavePath(Gtk.Button sender, EventArgs e)
     {
-        var fileDialog = Gtk.FileChooserNative.New(_controller.Localizer["SelectSavePath"], _parent, Gtk.FileChooserAction.Save, _controller.Localizer["OK"], _controller.Localizer["Cancel"]);
-        fileDialog.SetModal(true);
         var filter = Gtk.FileFilter.New();
         filter.SetName(((MediaFileType)_fileTypeRow.GetSelected()).GetDotExtension());
         filter.AddPattern($"*{((MediaFileType)_fileTypeRow.GetSelected()).GetDotExtension()}");
-        fileDialog.SetFilter(filter);
-        if (_savePathRow.GetText().Length > 0 && Directory.Exists(Path.GetDirectoryName(_savePathRow.GetText())) && _savePathRow.GetText() != "/")
+        if (Gtk.Functions.GetMinorVersion() >= 9)
         {
-            var folder = Gio.FileHelper.NewForPath(Path.GetDirectoryName(_savePathRow.GetText()));
-            gtk_file_chooser_set_current_folder(fileDialog.Handle, folder.Handle, IntPtr.Zero);
-            gtk_file_chooser_set_current_name(fileDialog.Handle, Path.GetFileName(_savePathRow.GetText()));
-        }
-        fileDialog.OnResponse += async (sender, e) =>
-        {
-            if (e.ResponseId == (int)Gtk.ResponseType.Accept)
+            var saveFileDialog = gtk_file_dialog_new();
+            gtk_file_dialog_set_title(saveFileDialog, _controller.Localizer["SelectSavePath"]);
+            var filters = Gio.ListStore.New(Gtk.FileFilter.GetGType());
+            filters.Append(filter);
+            gtk_file_dialog_set_filters(saveFileDialog, filters.Handle);
+            if (_savePathRow.GetText().Length > 0 && Directory.Exists(Path.GetDirectoryName(_savePathRow.GetText())) && _savePathRow.GetText() != "/")
             {
-                var path = fileDialog.GetFile()!.GetPath() ?? "";
-                _savePathRow.SetText(path);
-                await ValidateAsync();
+                var folder = Gio.FileHelper.NewForPath(Path.GetDirectoryName(_savePathRow.GetText()));
+                gtk_file_dialog_set_initial_folder(saveFileDialog, folder.Handle);
+                gtk_file_dialog_set_initial_name(saveFileDialog, Path.GetFileName(_savePathRow.GetText()));
             }
-        };
-        fileDialog.Show();
+            _saveCallback = async (source, res, data) =>
+            {
+                var fileHandle = gtk_file_dialog_save_finish(saveFileDialog, res, IntPtr.Zero);
+                if (fileHandle != IntPtr.Zero)
+                {
+                    var path = g_file_get_path(fileHandle);
+                    _savePathRow.SetText(path);
+                    await ValidateAsync();
+                }
+            };
+            gtk_file_dialog_save(saveFileDialog, Handle, IntPtr.Zero, _saveCallback, IntPtr.Zero);
+        }
+        else
+        {
+            var fileDialog = Gtk.FileChooserNative.New(_controller.Localizer["SelectSavePath"], _parent, Gtk.FileChooserAction.Save, _controller.Localizer["OK"], _controller.Localizer["Cancel"]);
+            fileDialog.SetModal(true);
+            fileDialog.SetFilter(filter);
+            if (_savePathRow.GetText().Length > 0 && Directory.Exists(Path.GetDirectoryName(_savePathRow.GetText())) && _savePathRow.GetText() != "/")
+            {
+                var folder = Gio.FileHelper.NewForPath(Path.GetDirectoryName(_savePathRow.GetText()));
+                gtk_file_chooser_set_current_folder(fileDialog.Handle, folder.Handle, IntPtr.Zero);
+                gtk_file_chooser_set_current_name(fileDialog.Handle, Path.GetFileName(_savePathRow.GetText()));
+            }
+            fileDialog.OnResponse += async (sender, e) =>
+            {
+                if (e.ResponseId == (int)Gtk.ResponseType.Accept)
+                {
+                    var path = fileDialog.GetFile()!.GetPath() ?? "";
+                    _savePathRow.SetText(path);
+                    await ValidateAsync();
+                }
+            };
+            fileDialog.Show();
+        }
     }
 }
