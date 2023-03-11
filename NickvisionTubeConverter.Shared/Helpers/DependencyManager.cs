@@ -60,7 +60,7 @@ internal static class DependencyManager
                 {
                     var httpClient = new HttpClient();
                     var ffmpegDir = $"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}{Path.DirectorySeparatorChar}Nickvision{Path.DirectorySeparatorChar}{AppInfo.Current.Name}{Path.DirectorySeparatorChar}ffmpeg{Path.DirectorySeparatorChar}";
-                    if(!Directory.Exists(ffmpegDir))
+                    if (!Directory.Exists(ffmpegDir))
                     {
                         Directory.CreateDirectory(ffmpegDir);
                     }
@@ -99,7 +99,7 @@ internal static class DependencyManager
             }
             return true;
         }
-        catch(Exception e)
+        catch (Exception e)
         {
             Console.WriteLine(e);
             return false;

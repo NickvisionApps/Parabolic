@@ -25,9 +25,6 @@ public partial class AddDownloadDialog : Adw.MessageDialog
     private static partial string g_file_get_path(nint file);
 
     [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
-    private static partial uint gtk_get_minor_version();
-
-    [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
     private static partial nint gtk_file_dialog_new();
 
     [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
