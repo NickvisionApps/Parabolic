@@ -106,7 +106,7 @@
                                     </Grid>
                                 </ScrollViewer>
 
-                                <Button x:Name="BtnAddDownload" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,10" Width="110" Style="{ThemeResource AccentButtonStyle}" CornerRadius="20" Click="AddDownload">
+                                <Button x:Name="BtnAddDownload" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,10" MinWidth="110" Style="{ThemeResource AccentButtonStyle}" CornerRadius="20" Click="AddDownload">
                                     <Button.Content>
                                         <StackPanel Orientation="Horizontal" Spacing="6" Margin="0,4,0,4">
                                             <FontIcon Margin="0,2,0,0" FontFamily="{StaticResource SymbolThemeFontFamily}" FontSize="16" Glyph="&#xE710;"/>
