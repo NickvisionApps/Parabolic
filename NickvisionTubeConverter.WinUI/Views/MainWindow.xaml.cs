@@ -305,7 +305,7 @@ public sealed partial class MainWindow : Window
         };
         if (await addDialog.ShowAsync())
         {
-            await _controller.AddDownloadAsync(addController.Download!);
+            _controller.AddDownload(addController.Download!);
         }
     }
 }

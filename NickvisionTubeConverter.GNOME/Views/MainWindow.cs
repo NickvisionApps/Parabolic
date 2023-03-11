@@ -214,11 +214,11 @@ public partial class MainWindow : Adw.ApplicationWindow
         var addController = _controller.CreateAddDownloadDialogController();
         var addDialog = new AddDownloadDialog(addController, this);
         await addDialog.ShowAsync();
-        addDialog.OnResponse += async (sender, e) =>
+        addDialog.OnResponse += (sender, e) =>
         {
             if (addController.Accepted)
             {
-                await _controller.AddDownloadAsync(addController.Download!);
+                _controller.AddDownload(addController.Download!);
             }
             addDialog.Destroy();
         };

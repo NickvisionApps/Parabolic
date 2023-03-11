@@ -184,7 +184,7 @@ public class MainWindowController : IDisposable
     /// Adds a download row to the window
     /// </summary>
     /// <param name="download">The download model for the row</param>
-    public async Task AddDownloadAsync(Download download)
+    public void AddDownload(Download download)
     {
         var newRow = UICreateDownloadRow!(download);
         newRow.DownloadCompletedAsyncCallback = DownloadCompletedAsync;
@@ -194,7 +194,7 @@ public class MainWindowController : IDisposable
         {
             _downloadingRows.Add(newRow);
             UIMoveDownloadRow!(newRow, DownloadStage.Downloading);
-            await newRow.RunAsync(Configuration.Current.EmbedMetadata);
+            newRow.RunAsync(Configuration.Current.EmbedMetadata).FireAndForget();
         }
         else
         {
@@ -223,15 +223,15 @@ public class MainWindowController : IDisposable
     /// </summary>
     /// <param name="sender">object?</param>
     /// <param name="e">EventArgs</param>
-    private async void ConfigurationSaved(object? sender, EventArgs e)
+    private void ConfigurationSaved(object? sender, EventArgs e)
     {
-        if (_downloadingRows.Count < Configuration.Current.MaxNumberOfActiveDownloads && _queuedRows.Count > 0)
+        while (_downloadingRows.Count < Configuration.Current.MaxNumberOfActiveDownloads && _queuedRows.Count > 0)
         {
             var queuedRow = _queuedRows[0];
             _downloadingRows.Add(queuedRow);
             _queuedRows.RemoveAt(0);
             UIMoveDownloadRow!(queuedRow, DownloadStage.Downloading);
-            await queuedRow.RunAsync(Configuration.Current.EmbedMetadata);
+            queuedRow.RunAsync(Configuration.Current.EmbedMetadata).FireAndForget();
         }
     }
 
