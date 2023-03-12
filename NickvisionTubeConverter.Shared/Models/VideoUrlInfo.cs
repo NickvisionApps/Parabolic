@@ -6,6 +6,21 @@ using System.Threading.Tasks;
 namespace NickvisionTubeConverter.Shared.Models;
 
 /// <summary>
+/// A model of information about a video
+/// </summary>
+public class VideoInfo
+{
+    /// <summary>
+    /// The video url
+    /// </summary>
+    public string Url { get; init; }
+    /// <summary>
+    /// The video title
+    /// </summary>
+    public string Title { get; init; }
+}
+
+/// <summary>
 /// A model of information about a video url
 /// </summary>
 public class VideoUrlInfo
@@ -15,17 +30,9 @@ public class VideoUrlInfo
     /// </summary>
     public string Url { get; init; }
     /// <summary>
-    /// Whether or not the url is a signle video url
+    /// All videos found under a video url
     /// </summary>
-    public bool IsSingleVideo { get; private set; }
-    /// <summary>
-    /// Whether or not the url is a playlist url
-    /// </summary>
-    public bool IsPlaylist { get; private set; }
-    /// <summary>
-    /// The title of the single video (Null if playlist)
-    /// </summary>
-    public string? SingleTitle { get; private set; }
+    public List<VideoInfo> Videos { get; private set; }
 
     /// <summary>
     /// Constructs a VideoUrlInfo
@@ -34,9 +41,7 @@ public class VideoUrlInfo
     private VideoUrlInfo(string url)
     {
         Url = url;
-        IsSingleVideo = false;
-        IsPlaylist = false;
-        SingleTitle = null;
+        Videos = new List<VideoInfo>();
     }
 
     /// <summary>
@@ -61,14 +66,26 @@ public class VideoUrlInfo
                         { "merge_output_format", "/" }
                     };
                     Python.Runtime.PyDict videoInfo = ytdlp.YoutubeDL(ytOpt).extract_info(url, download: false);
-                    if (videoInfo.HasKey("playlist_count"))
+                    if (videoInfo.HasKey("entries"))
                     {
-                        videoUrlInfo.IsPlaylist = true;
+                        var entries = videoInfo["entries"].As<Python.Runtime.PyList>();
+                        foreach (var e in entries)
+                        {
+                            var entry = e.As<Python.Runtime.PyDict>();
+                            videoUrlInfo.Videos.Add(new VideoInfo()
+                            {
+                                Url = entry["webpage_url"].As<string>(),
+                                Title = entry.HasKey("title") ? entry["title"].As<string>() ?? "Video" : "Video"
+                            });
+                        }
                     }
                     else
                     {
-                        videoUrlInfo.IsSingleVideo = true;
-                        videoUrlInfo.SingleTitle = videoInfo.HasKey("title") ? (videoInfo["title"].As<string?>() ?? "Video") : "Video";
+                        videoUrlInfo.Videos.Add(new VideoInfo()
+                        {
+                            Url = videoInfo["webpage_url"].As<string>(),
+                            Title = videoInfo.HasKey("title") ? videoInfo["title"].As<string>() ?? "Video" : "Video"
+                        });
                     }
                     outFile.close();
                 }

@@ -106,13 +106,13 @@ public class AddDownloadDialogController
             }
             else
             {
-                if (videoUrlInfo.IsPlaylist)
+                if (videoUrlInfo.Videos.Count > 1)
                 {
                     result |= DownloadCheckStatus.PlaylistNotSupported;
                 }
-                else if (videoUrlInfo.IsSingleVideo)
+                else
                 {
-                    _saveFilename = videoUrlInfo.SingleTitle + mediaFileType.GetDotExtension();
+                    _saveFilename = videoUrlInfo.Videos[0].Title + mediaFileType.GetDotExtension();
                 }
             }
         }
