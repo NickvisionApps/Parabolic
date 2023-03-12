@@ -22,6 +22,13 @@ public class VideoInfo
     /// The video title
     /// </summary>
     public string Title { get; init; }
+
+    public VideoInfo()
+    {
+        Url = "";
+        Id = "";
+        Title = "";
+    }
 }
 
 /// <summary>
