@@ -168,7 +168,9 @@ public partial class MainWindow : Adw.ApplicationWindow
         if (parent == box)
         {
             return;
-        } else if (parent != null) {
+        }
+        else if (parent != null)
+        {
             DeleteDownloadRow(row, (Gtk.Box)parent);
         }
         if (box.GetFirstChild() != null)
