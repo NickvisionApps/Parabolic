@@ -23,11 +23,8 @@ public partial class MainWindow : Adw.ApplicationWindow
     [Gtk.Connect] private readonly Adw.ToastOverlay _toastOverlay;
     [Gtk.Connect] private readonly Adw.ViewStack _viewStack;
     [Gtk.Connect] private readonly Gtk.Button _addDownloadButton;
-    [Gtk.Connect] private readonly Gtk.Box _sectionDownloading;
     [Gtk.Connect] private readonly Gtk.Box _downloadingBox;
-    [Gtk.Connect] private readonly Gtk.Box _sectionCompleted;
     [Gtk.Connect] private readonly Gtk.Box _completedBox;
-    [Gtk.Connect] private readonly Gtk.Box _sectionQueued;
     [Gtk.Connect] private readonly Gtk.Box _queuedBox;
 
     private MainWindow(Gtk.Builder builder, MainWindowController controller, Adw.Application application) : base(builder.GetPointer("_root"), false)
@@ -59,7 +56,7 @@ public partial class MainWindow : Adw.ApplicationWindow
         _controller.NotificationSent += NotificationSent;
         _controller.UICreateDownloadRow = CreateDownloadRow;
         _controller.UIMoveDownloadRow = MoveDownloadRow;
-        _controller.UIDeleteDownloadRowFromQueue = (row) => DeleteDownloadRow(row, DownloadStage.InQueue);
+        _controller.UIDeleteDownloadRowFromQueue = (row) => DeleteDownloadRow(row, _queuedBox);
         //Add Download Action
         var actDownload = Gio.SimpleAction.New("addDownload", null);
         actDownload.OnActivate += AddDownload;
@@ -154,46 +151,42 @@ public partial class MainWindow : Adw.ApplicationWindow
     }
 
     /// <summary>
-    /// Returns the container widgets associated with a download stage
-    /// </summary>
-    /// <param name="stage">The download model</param>
-    /// <returns>Returns the download rows Gtk.Box and the outter Gtk.Box</returns>
-    private (Gtk.Box, Gtk.Box) GetDownloadStageContainers(DownloadStage stage) =>
-        stage switch
-        {
-            DownloadStage.InQueue => (_queuedBox, _sectionQueued),
-            DownloadStage.Downloading => (_downloadingBox, _sectionDownloading),
-            DownloadStage.Completed => (_completedBox, _sectionCompleted)
-        };
-
-    /// <summary>
     /// Moves the download row to a new section
     /// </summary>
     /// <param name="row">IDownloadRowControl</param>
     /// <param name="stage">DownloadStage</param>
     private void MoveDownloadRow(IDownloadRowControl row, DownloadStage stage)
     {
-        DeleteDownloadRow(row, DownloadStage.InQueue);
-        DeleteDownloadRow(row, DownloadStage.Downloading);
-        DeleteDownloadRow(row, DownloadStage.Completed);
-        var (box, section) = GetDownloadStageContainers(stage);
+        var gtkRow = (DownloadRow)row;
+        var parent = gtkRow.GetParent();
+        var box = stage switch
+        {
+            DownloadStage.InQueue => _queuedBox,
+            DownloadStage.Downloading => _downloadingBox,
+            DownloadStage.Completed => _completedBox
+        };
+        if (parent == box)
+        {
+            return;
+        } else if (parent != null) {
+            DeleteDownloadRow(row, (Gtk.Box)parent);
+        }
         if (box.GetFirstChild() != null)
         {
             var separator = Gtk.Separator.New(Gtk.Orientation.Horizontal);
             box.Append(separator);
         }
-        box.Append((DownloadRow)row);
-        section.SetVisible(true);
+        box.Append(gtkRow);
+        box.GetParent().SetVisible(true);
     }
 
     /// <summary>
     /// Deletes a download row from a section
     /// </summary>
     /// <param name="row">IDownloadRowControl</param>
-    /// <param name="stage">DownloadStage</param>
-    private void DeleteDownloadRow(IDownloadRowControl row, DownloadStage stage)
+    /// <param name="box">Gtk.Box</param>
+    private void DeleteDownloadRow(IDownloadRowControl row, Gtk.Box box)
     {
-        var (box, section) = GetDownloadStageContainers(stage);
         var gtkRow = (DownloadRow)row;
         var separator = gtkRow.GetPrevSibling() ?? gtkRow.GetNextSibling();
         if (separator is Gtk.Separator)
@@ -201,7 +194,7 @@ public partial class MainWindow : Adw.ApplicationWindow
             box.Remove(separator);
         }
         box.Remove(gtkRow);
-        section.SetVisible(box.GetFirstChild() != null);
+        box.GetParent().SetVisible(box.GetFirstChild() != null);
     }
 
     /// <summary>
