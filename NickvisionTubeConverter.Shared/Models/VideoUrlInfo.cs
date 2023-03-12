@@ -15,6 +15,10 @@ public class VideoInfo
     /// </summary>
     public string Url { get; init; }
     /// <summary>
+    /// The video id
+    /// </summary>
+    public string Id { get; init; }
+    /// <summary>
     /// The video title
     /// </summary>
     public string Title { get; init; }
@@ -75,6 +79,7 @@ public class VideoUrlInfo
                             videoUrlInfo.Videos.Add(new VideoInfo()
                             {
                                 Url = entry["webpage_url"].As<string>(),
+                                Id = entry["id"].As<string>(),
                                 Title = entry.HasKey("title") ? entry["title"].As<string>() ?? "Video" : "Video"
                             });
                         }
@@ -84,6 +89,7 @@ public class VideoUrlInfo
                         videoUrlInfo.Videos.Add(new VideoInfo()
                         {
                             Url = videoInfo["webpage_url"].As<string>(),
+                            Id = videoInfo["id"].As<string>(),
                             Title = videoInfo.HasKey("title") ? videoInfo["title"].As<string>() ?? "Video" : "Video"
                         });
                     }
