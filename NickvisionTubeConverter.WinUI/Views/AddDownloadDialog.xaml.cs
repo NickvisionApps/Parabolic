@@ -2,6 +2,7 @@ using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using NickvisionTubeConverter.Shared.Controllers;
 using NickvisionTubeConverter.Shared.Models;
+using NickvisionTubeConverter.WinUI.Controls;
 using System;
 using System.Threading.Tasks;
 using Windows.ApplicationModel.DataTransfer;
@@ -113,7 +114,11 @@ public sealed partial class AddDownloadDialog : ContentDialog
             {
                 LblTitle.Text = _videoUrlInfo.Videos[0].Title;
             }
-            ListVideos.ItemsSource = _videoUrlInfo.Videos;
+            ListVideos.Items.Clear();
+            foreach(var videoInfo in _videoUrlInfo.Videos)
+            {
+                ListVideos.Items.Add(new VideoRow(videoInfo));
+            }
         }
     }
 

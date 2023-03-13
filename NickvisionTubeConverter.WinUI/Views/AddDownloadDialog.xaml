@@ -73,39 +73,7 @@
                                 <TextBox Name="TxtSaveFolder" wct:DockPanel.Dock="Left" IsReadOnly="True"/>
                             </wct:DockPanel>
 
-                            <ListView x:Name="ListVideos" HorizontalAlignment="Stretch" Margin="0,12,0,0" Background="{ThemeResource CardBackgroundFillColorDefaultBrush}" BorderThickness="1" BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}" CornerRadius="8">
-                                <ListView.ItemTemplate>
-                                    <DataTemplate>
-                                        <StackPanel Orientation="Vertical" Margin="-4,0,-4,0">
-                                            <wct:DockPanel LastChildFill="True">
-                                                <Button wct:DockPanel.Dock="Right" VerticalAlignment="Center" Margin="10,0,0,0">
-                                                    <Button.Content>
-                                                        <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" FontSize="16" Glyph="&#xE104;"/>
-                                                    </Button.Content>
-
-                                                    <Button.Flyout>
-                                                        <Flyout Placement="Bottom">
-                                                            <TextBox PlaceholderText="{Binding OriginalTitle}" Text="{Binding Title, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-                                                        </Flyout>
-                                                    </Button.Flyout>
-                                                </Button>
-
-                                                <CheckBox wct:DockPanel.Dock="Left" IsEnabled="{Binding IsPartOfPlaylist}" IsChecked="{Binding ToDownload, Mode=TwoWay}">
-                                                    <CheckBox.Content>
-                                                        <StackPanel wct:DockPanel.Dock="Left" Margin="6,0,0,0" Orientation="Vertical" Spacing="4">
-                                                            <TextBlock Text="{Binding Title, Mode=TwoWay}"/>
-
-                                                            <TextBlock Text="{Binding Url}" Foreground="Gray"/>
-                                                        </StackPanel>
-                                                    </CheckBox.Content>
-                                                </CheckBox>
-                                            </wct:DockPanel>
-
-                                            <MenuFlyoutSeparator/>
-                                        </StackPanel>
-                                    </DataTemplate>
-                                </ListView.ItemTemplate>
-                            </ListView>
+                            <ListView x:Name="ListVideos" HorizontalAlignment="Stretch" Margin="0,12,0,0" Background="{ThemeResource CardBackgroundFillColorDefaultBrush}" BorderThickness="1" BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}" CornerRadius="8"/>
                         </StackPanel>
                     </nickvision:ViewStackPage>
                 </nickvision:ViewStack.Pages>

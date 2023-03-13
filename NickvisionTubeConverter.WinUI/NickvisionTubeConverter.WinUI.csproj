@@ -25,6 +25,7 @@
     <None Remove="Controls\ActionRow.xaml" />
     <None Remove="Controls\DownloadRow.xaml" />
     <None Remove="Controls\StatusPage.xaml" />
+    <None Remove="Controls\VideoRow.xaml" />
     <None Remove="Controls\ViewStack.xaml" />
     <None Remove="Controls\ViewStackPage.xaml" />
     <None Remove="Views\AddDownloadDialog.xaml" />
@@ -102,6 +103,11 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Screenshots\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Controls\VideoRow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
 
   <!-- 
