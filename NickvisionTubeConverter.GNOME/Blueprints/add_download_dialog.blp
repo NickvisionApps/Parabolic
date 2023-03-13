@@ -3,7 +3,6 @@ using Adw 1;
 
 Adw.MessageDialog _root {
   heading: _("AddDownload");
-  default-width: 420;
   hide-on-close: true;
   modal: true;
 
@@ -39,11 +38,27 @@ Adw.MessageDialog _root {
 	Adw.ViewStackPage {
 	  name: "pageDownload";
 	  child: Gtk.ScrolledWindow {
-	    height-request: 400;
+	    height-request: 360;
 
 	    Gtk.Box {
 		  orientation: vertical;
-		  spacing: 20;
+		  spacing: 6;
+
+		  Gtk.Box {
+			orientation: horizontal;
+			spacing: 6;
+
+			Gtk.Button _backButton {
+				icon-name: "go-previous-symbolic";
+				tooltip-text: _("Back");
+			}
+
+			Gtk.Label _titleLabel {
+				label: "Test";
+
+				styles ["heading"]
+			}
+		  }
 
 		  Adw.PreferencesGroup {
 			Adw.ComboRow _fileTypeRow {
@@ -104,7 +119,7 @@ Adw.MessageDialog _root {
 		  }
 
 		  Adw.PreferencesGroup _videosGroup {
-			  
+			  margin-top: 12;
 		  }
 	    }
 	  };
