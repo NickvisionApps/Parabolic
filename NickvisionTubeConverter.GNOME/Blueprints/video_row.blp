@@ -12,11 +12,21 @@ Adw.ActionRow _root {
   }
 
   [suffix]
-  Gtk.Button _editButton {
+  Gtk.MenuButton _editButton {
     icon-name: "document-edit-symbolic";
     valign: center;
-    tooltip-text: _("EditTitle");
-        
+    tooltip-text: _("EditTitle");    
+    popover: Gtk.Popover {
+      Adw.Clamp {
+        maximum-size: 300;
+            
+        Gtk.Entry _titleEntry {
+          wrap: true;
+          justify: center;
+        }
+      }
+    };
+
     styles ["flat"]
   }
 }
