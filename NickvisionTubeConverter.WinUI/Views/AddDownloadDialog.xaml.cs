@@ -110,7 +110,7 @@ public sealed partial class AddDownloadDialog : ContentDialog
             ListVideos.Items.Clear();
             foreach (var videoInfo in _videoUrlInfo.Videos)
             {
-                ListVideos.Items.Add(new VideoRow(videoInfo));
+                ListVideos.Items.Add(new VideoRow(videoInfo, _controller.Localizer));
             }
         }
     }

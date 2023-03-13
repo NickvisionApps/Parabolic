@@ -1,4 +1,5 @@
 using Microsoft.UI.Xaml.Controls;
+using NickvisionTubeConverter.Shared.Helpers;
 using NickvisionTubeConverter.Shared.Models;
 
 namespace NickvisionTubeConverter.WinUI.Controls;
@@ -14,10 +15,12 @@ public sealed partial class VideoRow : UserControl
     /// Constructs a VideoRow
     /// </summary>
     /// <param name="videoInfo">The VideoInfo object</param>
-    public VideoRow(VideoInfo videoInfo)
+    /// <param name="localizer">The Localizer</param>
+    public VideoRow(VideoInfo videoInfo, Localizer localizer)
     {
         InitializeComponent();
         _videoInfo = videoInfo;
         DataContext = _videoInfo;
+        ToolTipService.SetToolTip(BtnEdit, localizer["EditTitle"]);
     }
 }
