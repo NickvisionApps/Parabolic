@@ -1,5 +1,7 @@
+using Microsoft.UI;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Media;
 using NickvisionTubeConverter.Shared.Controls;
 using NickvisionTubeConverter.Shared.Helpers;
 using NickvisionTubeConverter.Shared.Models;
@@ -115,6 +117,8 @@ public sealed partial class DownloadRow : UserControl, IDownloadRowControl
         {
             App.MainWindow!.DispatcherQueue.TryEnqueue(() =>
             {
+                Icon.Foreground = (SolidColorBrush)Application.Current.Resources["AccentAAFillColorDefaultBrush"];
+                ProgBar.Foreground = (SolidColorBrush)Application.Current.Resources["AccentAAFillColorDefaultBrush"];
                 LblLog.Text = state.Log;
                 ScrollLog.UpdateLayout();
                 ScrollLog.ScrollToVerticalOffset(ScrollLog.ScrollableHeight);
@@ -140,9 +144,11 @@ public sealed partial class DownloadRow : UserControl, IDownloadRowControl
         });
         if (!_wasStopped)
         {
+            Icon.Foreground = new SolidColorBrush(success ? Colors.ForestGreen : Colors.Red);
             Icon.Glyph = success ? "\uE10B" : "\uE10A";
             ProgBar.IsIndeterminate = false;
             ProgBar.Value = 1;
+            ProgBar.Foreground = new SolidColorBrush(success ? Colors.ForestGreen : Colors.Red);
             LblStatus.Text = success ? _localizer["Success"] : _localizer["Error"];
             BtnStop.Visibility = Visibility.Collapsed;
             BtnRetry.Visibility = !success ? Visibility.Visible : Visibility.Collapsed;
