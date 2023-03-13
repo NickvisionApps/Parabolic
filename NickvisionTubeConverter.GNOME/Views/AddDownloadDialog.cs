@@ -193,6 +193,7 @@ public partial class AddDownloadDialog : Adw.MessageDialog
                 {
                     var path = g_file_get_path(fileHandle);
                     _saveFolderRow.SetText(path);
+                    _saveWarning.SetVisible(Regex.Match(_saveFolderRow.GetText(), @"^\/run\/user\/.*\/doc\/.*").Success);
                     SetResponseEnabled("ok", true);
                 }
             };
@@ -213,6 +214,7 @@ public partial class AddDownloadDialog : Adw.MessageDialog
                 {
                     var path = folderDialog.GetFile()!.GetPath() ?? "";
                     _saveFolderRow.SetText(path);
+                    _saveWarning.SetVisible(Regex.Match(_saveFolderRow.GetText(), @"^\/run\/user\/.*\/doc\/.*").Success);
                     SetResponseEnabled("ok", true);
                 }
             };
