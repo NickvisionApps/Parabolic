@@ -7,71 +7,72 @@ Adw.MessageDialog _root {
   hide-on-close: true;
   modal: true;
 
-  Adw.PreferencesGroup {
-    Adw.EntryRow _urlRow {
-      width-request: 420;
-      title: _("VideoUrl.Field");
-      
-      [suffix]
-      Gtk.Spinner _urlSpinner {
-        valign: center;
-      }
-    }
+  Adw.ViewStack _viewStack {
+	Adw.ViewStackPage {
+	  name: "pageUrl";
+	  child: Gtk.Box {
+		orientation: vertical;
+		spacing: 20;
+
+		Adw.PreferencesGroup {
+		  Adw.EntryRow _urlRow {
+            width-request: 420;
+		    title: _("VideoUrl.Field");
+		    show-apply-button: true;
+
+			[suffix]
+			Gtk.Button _pasteFromClipboardButton {
+			  valign: center;
+			  tooltip-text: _("PasteFromClipboard");
+			  icon-name: "edit-paste-symbolic";
+			  styles ["flat"]
+			}
+		  }
+		}
+
+		Gtk.Spinner _urlSpinner {
+		  valign: center;
+		}
+	  };
+	}
+
+	Adw.ViewStackPage {
+	  name: "pageDownload";
+	  child: Gtk.ScrolledWindow {
+	    height-request: 400;
+
+	    Gtk.Box {
+		  orientation: vertical;
+		  spacing: 20;
+
+		  Adw.PreferencesGroup {
+			Adw.ComboRow _fileTypeRow {
+			  title: _("FileType.Field");
+			  model: Gtk.StringList {
+			    strings ["MP4", "WEBM", "MP3", "OPUS", "FLAC", "WAV"]
+			  };
+			}
     
-    Adw.ComboRow _fileTypeRow {
-      title: _("FileType.Field");
-      model: Gtk.StringList {
-        strings ["MP4", "WEBM", "MP3", "OPUS", "FLAC", "WAV"]
-      };
-    }
+			Adw.ComboRow _qualityRow {
+			  title: _("Quality.Field");
+			  model: Gtk.StringList {
+				strings [_("Quality.Best"), _("Quality.Good"), _("Quality.Worst")]
+			  };
+			}
     
-    Adw.ComboRow _qualityRow {
-      title: _("Quality.Field");
-      model: Gtk.StringList {
-        strings [_("Quality.Best"), _("Quality.Good"), _("Quality.Worst")]
-      };
-    }
-    
-    Adw.ComboRow _subtitleRow {
-      title: _("Subtitle.Field");
-      model: Gtk.StringList {
-        strings [_("Subtitle.None"), "VTT", "SRT"]
-      };
-    }
-    
-    Adw.EntryRow _savePathRow {
-      title: _("SavePath.Field");
-      width-request: 420;
-      editable: false;
-      
-      [suffix]
-      Gtk.MenuButton _saveWarning {
-        valign: center;
-        icon-name: "dialog-warning-symbolic";
-        visible: false;
-        popover: Gtk.Popover {
-          Adw.Clamp {
-            maximum-size: 300;
-            
-            Gtk.Label {
-              label: _("SaveWarning.GTK");
-              wrap: true;
-              justify: center;
-            }
-          }
-        };
-        
-        styles ["flat", "warning"]
-      }
-      
-      [suffix]
-      Gtk.Button _selectPathButton {
-        valign: center;
-        icon-name: "folder-open-symbolic";
-        tooltip-text: _("SelectSavePath");
-        
-        styles ["flat"]
-      }
-    }
+			Adw.ComboRow _subtitleRow {
+			  title: _("Subtitle.Field");
+			  model: Gtk.StringList {
+			    strings [_("Subtitle.None"), "VTT", "SRT"]
+			  };
+			}
+		  }
+
+		  Adw.PreferencesGroup {
+			  
+		  }
+	    }
+	  };
+	}
   }
 }

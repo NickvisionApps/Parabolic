@@ -204,11 +204,11 @@ public partial class MainWindow : Adw.ApplicationWindow
     /// </summary>
     /// <param name="sender">Gio.SimpleAction</param>
     /// <param name="e">EventArgs</param>
-    private async void AddDownload(Gio.SimpleAction sender, EventArgs e)
+    private void AddDownload(Gio.SimpleAction sender, EventArgs e)
     {
         var addController = _controller.CreateAddDownloadDialogController();
         var addDialog = new AddDownloadDialog(addController, this);
-        await addDialog.ShowAsync();
+        addDialog.Show();
         addDialog.OnResponse += (sender, e) =>
         {
             if (addController.Accepted)
