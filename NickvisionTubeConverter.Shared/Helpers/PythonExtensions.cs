@@ -26,7 +26,7 @@ public static class PythonExtensions
             {
                 Architecture.X86 => $"python-{version}-embed-win32",
                 Architecture.Arm => $"python-{version}-embed-win32",
-                Architecture.Arm64 => $"python-{version}-embed-arm64",
+                Architecture.Arm64 => $"python-{version}-embed-amd64",
                 _ => $"python-{version}-embed-amd64"
             };
             var pythonDllPath = $"{pythonDirPath}{pythonType}{Path.DirectorySeparatorChar}python{version.Major}{version.Minor}.dll";
