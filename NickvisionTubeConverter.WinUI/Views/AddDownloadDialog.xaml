@@ -12,12 +12,18 @@
     DefaultButton="Primary">
 
     <ScrollViewer VerticalScrollBarVisibility="Auto">
-        <StackPanel Orientation="Vertical" Spacing="6">
+        <StackPanel Margin="0,0,14,0" Orientation="Vertical" Spacing="6">
             <nickvision:ViewStack x:Name="ViewStack" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" MinWidth="400">
                 <nickvision:ViewStack.Pages>
                     <nickvision:ViewStackPage x:Name="PageUrl" PageName="Url">
                         <StackPanel Orientation="Vertical" Spacing="20">
                             <wct:DockPanel HorizontalAlignment="Stretch" LastChildFill="True">
+                                <Button x:Name="BtnPasteFromClipboard" wct:DockPanel.Dock="Right" Margin="6,28,0,0" Click="PasteFromClipboard">
+                                    <Button.Content>
+                                        <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" FontSize="16" Glyph="&#xE16D;"/>
+                                    </Button.Content>
+                                </Button>
+
                                 <Button x:Name="BtnSearchUrl" wct:DockPanel.Dock="Right" Margin="6,28,0,0" Style="{ThemeResource AccentButtonStyle}" Click="SearchUrl">
                                     <Button.Content>
                                         <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" FontSize="16" Glyph="&#xE721;"/>

@@ -4,6 +4,7 @@ using NickvisionTubeConverter.Shared.Controllers;
 using NickvisionTubeConverter.Shared.Models;
 using System;
 using System.Threading.Tasks;
+using Windows.ApplicationModel.DataTransfer;
 using Windows.Storage.Pickers;
 
 namespace NickvisionTubeConverter.WinUI.Views;
@@ -35,6 +36,7 @@ public sealed partial class AddDownloadDialog : ContentDialog
         TxtVideoUrl.Header = _controller.Localizer["VideoUrl", "Field"];
         TxtVideoUrl.PlaceholderText = _controller.Localizer["VideoUrl", "Placeholder"];
         ToolTipService.SetToolTip(BtnSearchUrl, _controller.Localizer["Search"]);
+        ToolTipService.SetToolTip(BtnPasteFromClipboard, _controller.Localizer["PasteFromClipboard"]);
         LblBack.Text = _controller.Localizer["Back"];
         CmbFileType.Header = _controller.Localizer["FileType", "Field"];
         CmbFileType.Items.Add("MP4");
@@ -115,14 +117,43 @@ public sealed partial class AddDownloadDialog : ContentDialog
         }
     }
 
+    /// <summary>
+    /// Occurs when the paste from clipboard is clicked
+    /// </summary>
+    /// <param name="sender">object</param>
+    /// <param name="e">RoutedEventArgs</param>
+    private async void PasteFromClipboard(object sender, RoutedEventArgs e)
+    {
+        if (Clipboard.GetContent().Contains(StandardDataFormats.Text))
+        {
+            TxtVideoUrl.Text = (await Clipboard.GetContent().GetTextAsync()).ToString();
+            SearchUrl(sender, e);
+        }
+    }
+
+    /// <summary>
+    /// Occurs when the back button is clicked
+    /// </summary>
+    /// <param name="sender">object</param>
+    /// <param name="e">RoutedEventArgs</param>
     private void Back(object sender, RoutedEventArgs e)
     {
         ViewStack.ChangePage("Url");
         IsPrimaryButtonEnabled = false;
     }
 
+    /// <summary>
+    /// Occurs when the file type combobox is changed
+    /// </summary>
+    /// <param name="sender">object</param>
+    /// <param name="e">SelectionChangedEventArgs</param>
     private void CmbFileType_SelectionChanged(object sender, SelectionChangedEventArgs e) => CmbSubtitle.IsEnabled = ((MediaFileType)CmbFileType.SelectedIndex).GetIsVideo();
 
+    /// <summary>
+    /// Occurs when the select save folder button is clicked
+    /// </summary>
+    /// <param name="sender">object</param>
+    /// <param name="e">RoutedEventArgs</param>
     private async void SelectSaveFolder(object sender, RoutedEventArgs e)
     {
         var folderPicker = new FolderPicker();
