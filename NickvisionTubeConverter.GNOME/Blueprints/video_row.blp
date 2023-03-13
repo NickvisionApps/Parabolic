@@ -1,0 +1,22 @@
+﻿using Gtk 4.0;
+using Adw 1;
+
+Adw.ActionRow _root {
+  use-markup: false;
+  activatable-widget: _editButton;
+
+  [prefix]
+  Gtk.CheckButton _downloadCheck {
+	valign: center;
+    styles ["selection-mode"]
+  }
+
+  [suffix]
+  Gtk.Button _editButton {
+    icon-name: "document-edit-symbolic";
+    valign: center;
+    tooltip-text: _("EditTitle");
+        
+    styles ["flat"]
+  }
+}

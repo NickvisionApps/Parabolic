@@ -1,3 +1,4 @@
+using NickvisionTubeConverter.GNOME.Controls;
 using NickvisionTubeConverter.GNOME.Helpers;
 using NickvisionTubeConverter.Shared.Controllers;
 using NickvisionTubeConverter.Shared.Models;
@@ -162,9 +163,7 @@ public partial class AddDownloadDialog : Adw.MessageDialog
             }
             foreach (var videoInfo in _videoUrlInfo.Videos)
             {
-                var row = new Adw.ActionRow();
-                row.SetTitle(videoInfo.Title);
-                row.SetSubtitle(videoInfo.Url);
+                var row = new VideoRow(videoInfo, _controller.Localizer);
                 _videoRows.Add(row);
                 _videosGroup.Add(row);
             }
