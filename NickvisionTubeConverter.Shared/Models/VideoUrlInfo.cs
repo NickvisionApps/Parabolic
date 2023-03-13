@@ -1,6 +1,8 @@
 ﻿using NickvisionTubeConverter.Shared.Helpers;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
+using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 
 namespace NickvisionTubeConverter.Shared.Models;
@@ -8,27 +10,70 @@ namespace NickvisionTubeConverter.Shared.Models;
 /// <summary>
 /// A model of information about a video
 /// </summary>
-public class VideoInfo
+public class VideoInfo : INotifyPropertyChanged
 {
+    private string _title;
+    private bool _toDownload;
+
     /// <summary>
     /// The video url
     /// </summary>
     public string Url { get; init; }
     /// <summary>
-    /// The video id
+    /// The title of the video
     /// </summary>
-    public string Id { get; init; }
+    public string OriginalTitle { get; init; }
     /// <summary>
-    /// The video title
+    /// Whether or not the video is part of a playlist 
     /// </summary>
-    public string Title { get; init; }
+    public bool IsPartOfPlaylist { get; init; }
 
-    public VideoInfo()
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    /// <summary>
+    /// Constructs a VideoInfo
+    /// </summary>
+    /// <param name="url">The url of the video</param>
+    /// <param name="title">The title of the video</param>
+    /// <param name="partOfPlaylist">Whether or not the video is part of a playlist</param>
+    public VideoInfo(string url, string title, bool partOfPlaylist = false)
     {
-        Url = "";
-        Id = "";
-        Title = "";
+        _title = title;
+        _toDownload = true;
+        Url = url;
+        OriginalTitle = title;
+        IsPartOfPlaylist = partOfPlaylist;
     }
+
+    /// <summary>
+    /// The title to use for downloading
+    /// </summary>
+    public string Title
+    {
+        get => _title;
+
+        set
+        {
+            _title = !string.IsNullOrEmpty(value) ? value : OriginalTitle;
+            NotifyPropertyChanged();
+        }
+    }
+
+    /// <summary>
+    /// Whether or not to download the video
+    /// </summary>
+    public bool ToDownload
+    {
+        get => _toDownload;
+
+        set
+        {
+            _toDownload = value;
+            NotifyPropertyChanged();
+        }
+    }
+
+    private void NotifyPropertyChanged([CallerMemberName] string propertyName = "") => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 }
 
 /// <summary>
@@ -43,7 +88,11 @@ public class VideoUrlInfo
     /// <summary>
     /// All videos found under a video url
     /// </summary>
-    public List<VideoInfo> Videos { get; private set; }
+    public List<VideoInfo> Videos { get; init; }
+    /// <summary>
+    /// The title of the playlist, if available
+    /// </summary>
+    public string? PlaylistTitle { get; private set; }
 
     /// <summary>
     /// Constructs a VideoUrlInfo
@@ -79,26 +128,16 @@ public class VideoUrlInfo
                     Python.Runtime.PyDict videoInfo = ytdlp.YoutubeDL(ytOpt).extract_info(url, download: false);
                     if (videoInfo.HasKey("entries"))
                     {
-                        var entries = videoInfo["entries"].As<Python.Runtime.PyList>();
-                        foreach (var e in entries)
+                        videoUrlInfo.PlaylistTitle = videoInfo.HasKey("title") ? videoInfo["title"].As<string>() ?? "Playlist" : "Playlist";
+                        foreach (var e in videoInfo["entries"].As<Python.Runtime.PyList>())
                         {
                             var entry = e.As<Python.Runtime.PyDict>();
-                            videoUrlInfo.Videos.Add(new VideoInfo()
-                            {
-                                Url = entry["webpage_url"].As<string>(),
-                                Id = entry["id"].As<string>(),
-                                Title = entry.HasKey("title") ? entry["title"].As<string>() ?? "Video" : "Video"
-                            });
+                            videoUrlInfo.Videos.Add(new VideoInfo(entry["webpage_url"].As<string>(), entry.HasKey("title") ? (entry["title"].As<string?>() ?? "Media") : "Media", true));
                         }
                     }
                     else
                     {
-                        videoUrlInfo.Videos.Add(new VideoInfo()
-                        {
-                            Url = videoInfo["webpage_url"].As<string>(),
-                            Id = videoInfo["id"].As<string>(),
-                            Title = videoInfo.HasKey("title") ? videoInfo["title"].As<string>() ?? "Video" : "Video"
-                        });
+                        videoUrlInfo.Videos.Add(new VideoInfo(videoInfo["webpage_url"].As<string>(), videoInfo.HasKey("title") ? (videoInfo["title"].As<string?>() ?? "Media") : "Media"));
                     }
                     outFile.close();
                 }

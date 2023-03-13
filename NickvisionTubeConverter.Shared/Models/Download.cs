@@ -90,7 +90,7 @@ public class Download : IDisposable
         _pid = null;
         VideoUrl = videoUrl;
         SaveFolder = saveFolder;
-        Filename = saveFilename;
+        Filename = $"{saveFilename}{_fileType.GetDotExtension()}";
         IsDone = false;
     }
 
