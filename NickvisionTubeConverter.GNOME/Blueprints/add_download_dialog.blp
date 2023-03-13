@@ -18,19 +18,13 @@ Adw.MessageDialog _root {
             width-request: 420;
 		    title: _("VideoUrl.Field");
 		    show-apply-button: true;
-
-			[suffix]
-			Gtk.Button _pasteFromClipboardButton {
-			  valign: center;
-			  tooltip-text: _("PasteFromClipboard");
-			  icon-name: "edit-paste-symbolic";
-			  styles ["flat"]
-			}
 		  }
 		}
 
 		Gtk.Spinner _urlSpinner {
 		  valign: center;
+		  width-request: 40;
+		  height-request: 40;
 		}
 	  };
 	}
@@ -54,8 +48,6 @@ Adw.MessageDialog _root {
 			}
 
 			Gtk.Label _titleLabel {
-				label: "Test";
-
 				styles ["heading"]
 			}
 		  }

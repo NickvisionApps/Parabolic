@@ -106,16 +106,9 @@ public sealed partial class AddDownloadDialog : ContentDialog
             TxtErrors.Visibility = Visibility.Collapsed;
             ViewStack.ChangePage("Download");
             IsPrimaryButtonEnabled = !string.IsNullOrEmpty(TxtSaveFolder.Text);
-            if (_videoUrlInfo.Videos.Count > 1)
-            {
-                LblTitle.Text = _videoUrlInfo.PlaylistTitle!;
-            }
-            else
-            {
-                LblTitle.Text = _videoUrlInfo.Videos[0].Title;
-            }
+            LblTitle.Text = _videoUrlInfo.Videos.Count > 1 ? _videoUrlInfo.PlaylistTitle! : _videoUrlInfo.Videos[0].Title;
             ListVideos.Items.Clear();
-            foreach(var videoInfo in _videoUrlInfo.Videos)
+            foreach (var videoInfo in _videoUrlInfo.Videos)
             {
                 ListVideos.Items.Add(new VideoRow(videoInfo));
             }
@@ -144,6 +137,7 @@ public sealed partial class AddDownloadDialog : ContentDialog
     private void Back(object sender, RoutedEventArgs e)
     {
         ViewStack.ChangePage("Url");
+        TxtVideoUrl.Text = "";
         IsPrimaryButtonEnabled = false;
     }
 
