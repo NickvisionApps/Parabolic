@@ -63,6 +63,18 @@ public class AddDownloadDialogController
     public async Task<VideoUrlInfo?> SearchUrlAsync(string videoUrl) => await VideoUrlInfo.GetAsync(videoUrl);
 
     /// <summary>
+    /// Numbers the videos in a VideoUrlInfo object
+    /// </summary>
+    /// <param name="videoUrlInfo">The VideoUrlInfo object</param>
+    public void NumberVideos(VideoUrlInfo videoUrlInfo)
+    {
+        for(var i = 0; i < videoUrlInfo.Videos.Count; i++)
+        {
+            videoUrlInfo.Videos[i].Title = $"{i + 1} - {videoUrlInfo.Videos[i].Title}";
+        }
+    }
+
+    /// <summary>
     /// Populates the downloads list
     /// </summary>
     /// <param name="videoUrlInfo">The VideoUrlInfo object</param>

@@ -110,8 +110,18 @@ Adw.MessageDialog _root {
 		    }
 		  }
 
+		  Gtk.Button _numberVideosButton {
+		    margin-top: 12;
+			halign: start;
+
+			Adw.ButtonContent {
+				icon-name: "view-list-ordered-symbolic";
+				label: _("NumberVideos");
+			}
+		  }
+
 		  Adw.PreferencesGroup _videosGroup {
-			  margin-top: 12;
+
 		  }
 	    }
 	  };

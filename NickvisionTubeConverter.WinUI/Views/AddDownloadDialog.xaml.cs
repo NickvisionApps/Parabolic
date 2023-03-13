@@ -58,6 +58,7 @@ public sealed partial class AddDownloadDialog : ContentDialog
         CmbSubtitle.SelectedIndex = 0;
         TxtSaveFolder.Header = _controller.Localizer["SaveFolder", "Field"];
         ToolTipService.SetToolTip(BtnSelectSaveFolder, _controller.Localizer["SelectSaveFolder"]);
+        LblNumberVideos.Text = _controller.Localizer["NumberVideos"];
         TxtErrors.Text = _controller.Localizer["FixErrors", "WinUI"];
         //Load
         ViewStack.ChangePage("Url");
@@ -166,4 +167,11 @@ public sealed partial class AddDownloadDialog : ContentDialog
             IsPrimaryButtonEnabled = true;
         }
     }
+
+    /// <summary>
+    /// Occurs when the number videos button is clicked
+    /// </summary>
+    /// <param name="sender">object</param>
+    /// <param name="e">RoutedEventArgs</param>
+    private void NumberVideos(object sender, RoutedEventArgs e) => _controller.NumberVideos(_videoUrlInfo!);
 }

@@ -44,4 +44,10 @@ public class VideoRow : Adw.ActionRow
     {
 
     }
+
+    public void UpdateTitle()
+    {
+        SetTitle(_videoInfo.Title);
+        _titleEntry.SetText(_videoInfo.Title);
+    }
 }

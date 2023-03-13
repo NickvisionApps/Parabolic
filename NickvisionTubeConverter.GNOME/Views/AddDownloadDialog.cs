@@ -64,8 +64,9 @@ public partial class AddDownloadDialog : Adw.MessageDialog
     [Gtk.Connect] private readonly Adw.EntryRow _saveFolderRow;
     [Gtk.Connect] private readonly Gtk.MenuButton _saveWarning;
     [Gtk.Connect] private readonly Gtk.Button _selectSaveFolderButton;
+    [Gtk.Connect] private readonly Gtk.Button _numberVideosButton;
     [Gtk.Connect] private readonly Adw.PreferencesGroup _videosGroup;
-    private readonly List<Adw.ActionRow> _videoRows;
+    private readonly List<VideoRow> _videoRows;
 
     /// <summary>
     /// Constructs an AddDownloadDialog
@@ -79,7 +80,7 @@ public partial class AddDownloadDialog : Adw.MessageDialog
         _controller = controller;
         _videoUrlInfo = null;
         _saveCallback = null;
-        _videoRows = new List<Adw.ActionRow>();
+        _videoRows = new List<VideoRow>();
         //Dialog Settings
         SetTransientFor(parent);
         AddResponse("cancel", controller.Localizer["Cancel"]);
@@ -105,6 +106,7 @@ public partial class AddDownloadDialog : Adw.MessageDialog
             }
         };
         _selectSaveFolderButton.OnClicked += SelectSaveFolder;
+        _numberVideosButton.OnClicked += NumberVideos;
         //Load
         _viewStack.SetVisibleChildName("pageUrl");
         SetResponseEnabled("ok", false);
@@ -220,6 +222,20 @@ public partial class AddDownloadDialog : Adw.MessageDialog
                 }
             };
             folderDialog.Show();
+        }
+    }
+
+    /// <summary>
+    /// Occurs when the number videos button is clicked
+    /// </summary>
+    /// <param name="sender">Gtk.Button</param>
+    /// <param name="e">EventArgs</param>
+    private void NumberVideos(Gtk.Button sender, EventArgs e)
+    {
+        _controller.NumberVideos(_videoUrlInfo!);
+        foreach(var row in _videoRows)
+        {
+            row.UpdateTitle();
         }
     }
 }
