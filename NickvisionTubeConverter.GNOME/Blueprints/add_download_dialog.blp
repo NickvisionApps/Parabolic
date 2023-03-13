@@ -66,9 +66,44 @@ Adw.MessageDialog _root {
 			    strings [_("Subtitle.None"), "VTT", "SRT"]
 			  };
 			}
+
+			Adw.EntryRow _saveFolderRow {
+			  title: _("SaveFolder.Field");
+			  width-request: 420;
+			  editable: false;
+      
+			  [suffix]
+			  Gtk.MenuButton _saveWarning {
+			    valign: center;
+				icon-name: "dialog-warning-symbolic";
+				visible: false;
+				popover: Gtk.Popover {
+				  Adw.Clamp {
+				    maximum-size: 300;
+            
+					Gtk.Label {
+				      label: _("SaveWarning.GTK");
+					  wrap: true;
+					  justify: center;
+				    }
+				  }
+			    };
+        
+			    styles ["flat", "warning"]
+			  }
+      
+			  [suffix]
+			  Gtk.Button _selectSaveFolderButton {
+			    valign: center;
+			    icon-name: "folder-open-symbolic";
+			    tooltip-text: _("SelectSaveFolder");
+        
+			    styles ["flat"]
+			  }
+		    }
 		  }
 
-		  Adw.PreferencesGroup {
+		  Adw.PreferencesGroup _videosGroup {
 			  
 		  }
 	    }
