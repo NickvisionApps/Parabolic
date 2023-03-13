@@ -249,8 +249,6 @@ public sealed partial class MainWindow : Window
     private IDownloadRowControl CreateDownloadRow(Download download)
     {
         var downloadRow = new DownloadRow(_controller.Localizer, download);
-        NavViewItemDownloads.Visibility = Visibility.Visible;
-        NavViewItemDownloads.IsSelected = true;
         return downloadRow;
     }
 
@@ -305,6 +303,8 @@ public sealed partial class MainWindow : Window
         };
         if (await addDialog.ShowAsync())
         {
+            NavViewItemDownloads.Visibility = Visibility.Visible;
+            NavViewItemDownloads.IsSelected = true;
             foreach (var download in addController.Downloads)
             {
                 _controller.AddDownload(download);

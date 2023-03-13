@@ -11,41 +11,101 @@
     mc:Ignorable="d" Style="{StaticResource DefaultContentDialogStyle}"
     DefaultButton="Primary">
 
-    <nickvision:ViewStack x:Name="ViewStack" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="400">
-        <nickvision:ViewStack.Pages>
-            <nickvision:ViewStackPage x:Name="PageLoading" PageName="Loading">
-                <wct:Loading IsLoading="True">
-                    <Grid>
-                        <ProgressRing HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10" Width="40" Height="40" IsActive="True"/>
-                    </Grid>
-                </wct:Loading>
-            </nickvision:ViewStackPage>
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <StackPanel Orientation="Vertical" Spacing="6">
+            <nickvision:ViewStack x:Name="ViewStack" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" MinWidth="400">
+                <nickvision:ViewStack.Pages>
+                    <nickvision:ViewStackPage x:Name="PageUrl" PageName="Url">
+                        <StackPanel Orientation="Vertical" Spacing="20">
+                            <wct:DockPanel HorizontalAlignment="Stretch" LastChildFill="True">
+                                <Button x:Name="BtnSearchUrl" wct:DockPanel.Dock="Right" Margin="6,28,0,0" Style="{ThemeResource AccentButtonStyle}" Click="SearchUrl">
+                                    <Button.Content>
+                                        <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" FontSize="16" Glyph="&#xE721;"/>
+                                    </Button.Content>
+                                </Button>
 
-            <nickvision:ViewStackPage x:Name="PageDownload" PageName="Download">
-                <ScrollViewer VerticalScrollBarVisibility="Auto">
-                    <StackPanel Spacing="6">
-                        <TextBox x:Name="TxtVideoUrl" HorizontalAlignment="Stretch" TextChanged="TxtVideoUrl_TextChanged"/>
+                                <TextBox x:Name="TxtVideoUrl" wct:DockPanel.Dock="Left" MinWidth="360" MaxWidth="360"/>
+                            </wct:DockPanel>
 
-                        <ComboBox x:Name="CmbFileType" HorizontalAlignment="Stretch" SelectionChanged="CmbFileType_SelectionChanged"/>
+                            <wct:Loading x:Name="LoadingUrl" Visibility="Collapsed" IsLoading="True">
+                                <Grid>
+                                    <ProgressRing HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10" Width="40" Height="40" IsActive="True"/>
+                                </Grid>
+                            </wct:Loading>
+                        </StackPanel>
+                    </nickvision:ViewStackPage>
 
-                        <ComboBox x:Name="CmbQuality" HorizontalAlignment="Stretch" SelectionChanged="CmbQuality_SelectionChanged"/>
+                    <nickvision:ViewStackPage x:Name="PageDonwload" PageName="Download">
+                        <StackPanel Orientation="Vertical" Spacing="6">
+                            <StackPanel Orientation="Horizontal" Spacing="6">
+                                <Button wct:DockPanel.Dock="Left" Click="Back">
+                                    <Button.Content>
+                                        <StackPanel Orientation="Horizontal" Spacing="6">
+                                            <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" FontSize="16" Glyph="&#xE112;"/>
 
-                        <ComboBox x:Name="CmbSubtitle" HorizontalAlignment="Stretch" SelectionChanged="CmbSubtitle_SelectionChanged"/>
+                                            <TextBlock x:Name="LblBack"/>
+                                        </StackPanel>
+                                    </Button.Content>
+                                </Button>
 
-                        <wct:DockPanel HorizontalAlignment="Stretch" LastChildFill="True">
-                            <Button x:Name="BtnSelectSavePath" wct:DockPanel.Dock="Right" Margin="6,26,0,0" Style="{ThemeResource AccentButtonStyle}" Click="SelectSavePath">
-                                <Button.Content>
-                                    <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" FontSize="16" Glyph="&#xE838;"/>
-                                </Button.Content>
-                            </Button>
+                                <TextBlock x:Name="LblTitle" VerticalAlignment="Center" MaxWidth="600" FontWeight="SemiBold" IsTextSelectionEnabled="True" TextWrapping="Wrap"/>
+                            </StackPanel>
 
-                            <TextBox Name="TxtSavePath" wct:DockPanel.Dock="Left" IsReadOnly="True"/>
-                        </wct:DockPanel>
+                            <ComboBox x:Name="CmbFileType" HorizontalAlignment="Stretch" SelectionChanged="CmbFileType_SelectionChanged"/>
 
-                        <TextBlock Name="TxtErrors" Visibility="Collapsed" Margin="0,10,0,0" Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"/>
-                    </StackPanel>
-                </ScrollViewer>
-            </nickvision:ViewStackPage>
-        </nickvision:ViewStack.Pages>
-    </nickvision:ViewStack>
+                            <ComboBox x:Name="CmbQuality" HorizontalAlignment="Stretch"/>
+
+                            <ComboBox x:Name="CmbSubtitle" HorizontalAlignment="Stretch"/>
+
+                            <wct:DockPanel HorizontalAlignment="Stretch" LastChildFill="True">
+                                <Button x:Name="BtnSelectSaveFolder" wct:DockPanel.Dock="Right" Margin="6,28,0,0" Style="{ThemeResource AccentButtonStyle}" Click="SelectSaveFolder">
+                                    <Button.Content>
+                                        <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" FontSize="16" Glyph="&#xE838;"/>
+                                    </Button.Content>
+                                </Button>
+
+                                <TextBox Name="TxtSaveFolder" wct:DockPanel.Dock="Left" IsReadOnly="True"/>
+                            </wct:DockPanel>
+
+                            <ListView x:Name="ListVideos" HorizontalAlignment="Stretch" Margin="0,12,0,0" Background="{ThemeResource CardBackgroundFillColorDefaultBrush}" BorderThickness="1" BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}" CornerRadius="8">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Vertical" Margin="-4,0,-4,0">
+                                            <wct:DockPanel LastChildFill="True">
+                                                <Button wct:DockPanel.Dock="Right" VerticalAlignment="Center" Margin="10,0,0,0">
+                                                    <Button.Content>
+                                                        <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" FontSize="16" Glyph="&#xE104;"/>
+                                                    </Button.Content>
+
+                                                    <Button.Flyout>
+                                                        <Flyout Placement="Bottom">
+                                                            <TextBox PlaceholderText="{Binding OriginalTitle}" Text="{Binding Title, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                                        </Flyout>
+                                                    </Button.Flyout>
+                                                </Button>
+
+                                                <CheckBox wct:DockPanel.Dock="Left" IsEnabled="{Binding IsPartOfPlaylist}" IsChecked="{Binding ToDownload, Mode=TwoWay}">
+                                                    <CheckBox.Content>
+                                                        <StackPanel wct:DockPanel.Dock="Left" Margin="6,0,0,0" Orientation="Vertical" Spacing="4">
+                                                            <TextBlock Text="{Binding Title, Mode=TwoWay}"/>
+
+                                                            <TextBlock Text="{Binding Url}" Foreground="Gray"/>
+                                                        </StackPanel>
+                                                    </CheckBox.Content>
+                                                </CheckBox>
+                                            </wct:DockPanel>
+
+                                            <MenuFlyoutSeparator/>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </StackPanel>
+                    </nickvision:ViewStackPage>
+                </nickvision:ViewStack.Pages>
+            </nickvision:ViewStack>
+
+            <TextBlock Name="TxtErrors" Visibility="Collapsed" Margin="0,10,0,0" Foreground="{ThemeResource AccentTextFillColorPrimaryBrush}"/>
+        </StackPanel>
+    </ScrollViewer>
 </ContentDialog>
