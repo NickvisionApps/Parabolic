@@ -127,29 +127,12 @@ public class MainWindowController : IDisposable
         }
         if (disposing)
         {
-            var pathToOutput = $"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}{Path.DirectorySeparatorChar}Nickvision{Path.DirectorySeparatorChar}{AppInfo.Current.Name}{Path.DirectorySeparatorChar}output.log";
             Localizer.Dispose();
             Python.Runtime.PythonEngine.EndAllowThreads(_pythonThreadState);
             Python.Runtime.PythonEngine.Shutdown();
-            foreach (var row in _downloadingRows)
+            if (Directory.Exists(Configuration.TempDir))
             {
-                row.Dispose();
-            }
-            foreach (var row in _completedRows)
-            {
-                row.Dispose();
-            }
-            foreach (var row in _queuedRows)
-            {
-                row.Dispose();
-            }
-            if (File.Exists(pathToOutput))
-            {
-                File.Delete(pathToOutput);
-            }
-            if (Directory.Exists($"{Configuration.ConfigDir}{Path.DirectorySeparatorChar}temp{Path.DirectorySeparatorChar}"))
-            {
-                Directory.Delete($"{Configuration.ConfigDir}{Path.DirectorySeparatorChar}temp{Path.DirectorySeparatorChar}");
+                Directory.Delete(Configuration.TempDir, true);
             }
         }
         _disposed = true;
@@ -161,10 +144,11 @@ public class MainWindowController : IDisposable
     public async Task StartupAsync()
     {
         Configuration.Current.Saved += ConfigurationSaved;
-        if (Directory.Exists($"{Configuration.ConfigDir}{Path.DirectorySeparatorChar}temp{Path.DirectorySeparatorChar}"))
+        if (Directory.Exists(Configuration.TempDir))
         {
-            Directory.Delete($"{Configuration.ConfigDir}{Path.DirectorySeparatorChar}temp{Path.DirectorySeparatorChar}", true);
+            Directory.Delete(Configuration.TempDir, true);
         }
+        Directory.CreateDirectory(Configuration.TempDir);
         if (!await DependencyManager.SetupDependenciesAsync())
         {
             NotificationSent?.Invoke(this, new NotificationSentEventArgs(Localizer["DependencyError"], NotificationSeverity.Error));

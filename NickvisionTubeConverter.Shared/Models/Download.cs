@@ -41,9 +41,8 @@ public enum DownloadStage
 /// <summary>
 /// A model of a video download
 /// </summary>
-public class Download : IDisposable
+public class Download
 {
-    private bool _disposed;
     private readonly Guid _id;
     private readonly MediaFileType _fileType;
     private readonly Quality _quality;
@@ -83,13 +82,12 @@ public class Download : IDisposable
     /// <param name="subtitle">The subtitles for the download</param>
     public Download(string videoUrl, MediaFileType fileType, string saveFolder, string saveFilename, bool overwriteFiles, Quality quality = Quality.Best, Subtitle subtitle = Subtitle.None)
     {
-        _disposed = false;
         _id = Guid.NewGuid();
         _fileType = fileType;
         _quality = quality;
         _subtitle = subtitle;
         _overwriteFiles = overwriteFiles;
-        _tempDownloadPath = $"{Configuration.ConfigDir}{Path.DirectorySeparatorChar}temp{Path.DirectorySeparatorChar}{_id}{Path.DirectorySeparatorChar}";
+        _tempDownloadPath = $"{Configuration.TempDir}{Path.DirectorySeparatorChar}{_id}{Path.DirectorySeparatorChar}";
         _logPath = $"{_tempDownloadPath}log";
         _progressCallback = null;
         _pid = null;
@@ -98,34 +96,6 @@ public class Download : IDisposable
         Filename = $"{saveFilename}{_fileType.GetDotExtension()}";
         IsDone = false;
         _overwriteFiles = overwriteFiles;
-    }
-
-    /// <summary>
-    /// Frees resources used by the Download object
-    /// </summary>
-    public void Dispose()
-    {
-        Dispose(true);
-        GC.SuppressFinalize(this);
-    }
-
-    /// <summary>
-    /// Frees resources used by the Download object
-    /// </summary>
-    protected virtual void Dispose(bool disposing)
-    {
-        if (_disposed)
-        {
-            return;
-        }
-        if (disposing)
-        {
-            if (Directory.Exists(_tempDownloadPath))
-            {
-                Directory.Delete(_tempDownloadPath, true);
-            }
-        }
-        _disposed = true;
     }
 
     /// <summary>
@@ -152,9 +122,6 @@ public class Download : IDisposable
                 dynamic ytdlp = Python.Runtime.Py.Import("yt_dlp");
                 var hooks = new List<Action<Python.Runtime.PyDict>>();
                 hooks.Add(ProgressHook);
-                var paths = new Python.Runtime.PyDict();
-                paths["temp"] = new Python.Runtime.PyString(_tempDownloadPath);
-                paths["home"] = new Python.Runtime.PyString($"{SaveFolder}{Path.DirectorySeparatorChar}");
                 var ytOpt = new Dictionary<string, dynamic> {
                     { "quiet", false },
                     { "ignoreerrors", "downloadonly" },
@@ -162,12 +129,11 @@ public class Download : IDisposable
                     { "final_ext", _fileType.ToString().ToLower() },
                     { "progress_hooks", hooks },
                     { "postprocessor_hooks", hooks },
-                    { "outtmpl", $"{Path.GetFileNameWithoutExtension(Filename)}.%(ext)s" },
+                    { "outtmpl", $"{SaveFolder}{Path.DirectorySeparatorChar}{Path.GetFileNameWithoutExtension(Filename)}.%(ext)s" },
                     { "ffmpeg_location", DependencyManager.Ffmpeg },
                     { "windowsfilenames", RuntimeInformation.IsOSPlatform(OSPlatform.Windows) },
                     { "encoding", "utf_8" },
-                    { "overwrites", _overwriteFiles },
-                    { "paths", paths }
+                    { "overwrites", _overwriteFiles }
                 };
                 var postProcessors = new List<Dictionary<string, dynamic>>();
                 if (_fileType.GetIsAudio())

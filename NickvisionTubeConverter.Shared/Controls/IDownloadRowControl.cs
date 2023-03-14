@@ -6,7 +6,7 @@ namespace NickvisionTubeConverter.Shared.Controls;
 /// <summary>
 /// A contract for a download row control
 /// </summary>
-public interface IDownloadRowControl : IDisposable
+public interface IDownloadRowControl
 {
     /// <summary>
     /// The filename of the download

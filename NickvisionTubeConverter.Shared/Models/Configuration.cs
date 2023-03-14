@@ -9,7 +9,14 @@ namespace NickvisionTubeConverter.Shared.Models;
 /// </summary>
 public class Configuration
 {
+    /// <summary>
+    /// The directory of the application configuration
+    /// </summary>
     public static readonly string ConfigDir = $"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}{Path.DirectorySeparatorChar}Nickvision{Path.DirectorySeparatorChar}{AppInfo.Current.Name}";
+    /// <summary>
+    /// The directory to store temporary files
+    /// </summary>
+    public static readonly string TempDir = $"{Environment.GetFolderPath(Environment.SpecialFolder.UserProfile)}{Path.DirectorySeparatorChar}.tc-temp";
     private static readonly string ConfigPath = $"{ConfigDir}{Path.DirectorySeparatorChar}config.json";
     private static Configuration? _instance;
 
