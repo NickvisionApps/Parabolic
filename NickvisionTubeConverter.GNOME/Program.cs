@@ -82,7 +82,7 @@ public partial class Program
         {
             return _application.Run();
         }
-        catch(Exception ex)
+        catch (Exception ex)
         {
             Console.WriteLine(ex.Message);
             Console.WriteLine($"\n\n{ex.StackTrace}");

@@ -109,6 +109,7 @@ public sealed partial class AddDownloadDialog : ContentDialog
             ViewStack.ChangePage("Download");
             IsPrimaryButtonEnabled = !string.IsNullOrEmpty(TxtSaveFolder.Text);
             LblTitle.Text = _videoUrlInfo.Videos.Count > 1 ? _videoUrlInfo.PlaylistTitle! : _videoUrlInfo.Videos[0].Title;
+            BtnNumberVideos.Visibility = _videoUrlInfo.Videos.Count > 1 ? Visibility.Visible : Visibility.Collapsed;
             ListVideos.Items.Clear();
             foreach (var videoInfo in _videoUrlInfo.Videos)
             {

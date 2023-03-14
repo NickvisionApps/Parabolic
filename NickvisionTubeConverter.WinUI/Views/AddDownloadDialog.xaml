@@ -73,9 +73,9 @@
                                 <TextBox Name="TxtSaveFolder" wct:DockPanel.Dock="Left" IsReadOnly="True"/>
                             </wct:DockPanel>
 
-                            <CheckBox x:Name="ChkOverwriteFiles" HorizontalAlignment="Stretch" VerticalContentAlignment="Center" IsChecked="True"/>
+                            <CheckBox x:Name="ChkOverwriteFiles" HorizontalAlignment="Stretch" Margin="0,0,0,12" VerticalContentAlignment="Center" IsChecked="True"/>
 
-                            <Button Margin="0,12,0,0" Click="NumberVideos">
+                            <Button x:Name="BtnNumberVideos" Click="NumberVideos">
                                 <Button.Content>
                                     <StackPanel Orientation="Horizontal" Spacing="6">
                                         <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" FontSize="16" Glyph="&#xE16E;"/>

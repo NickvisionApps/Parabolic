@@ -285,7 +285,7 @@ public sealed partial class MainWindow : Window
         else if (stage == DownloadStage.Completed)
         {
             ListCompleted.Items.Add(row);
-            if(!_isActived)
+            if (!_isActived)
             {
                 SendShellNotification(new ShellNotificationSentEventArgs(_controller.Localizer["DownloadFinished"], string.Format(_controller.Localizer["DownloadFinished", "Description"], $"\"{row.Filename}\""), NotificationSeverity.Success));
             }

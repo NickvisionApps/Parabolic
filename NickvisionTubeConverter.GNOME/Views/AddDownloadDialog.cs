@@ -161,6 +161,7 @@ public partial class AddDownloadDialog : Adw.MessageDialog
             _viewStack.SetVisibleChildName("pageDownload");
             SetResponseEnabled("ok", !string.IsNullOrEmpty(_saveFolderRow.GetText()));
             _titleLabel.SetText(_videoUrlInfo.Videos.Count > 1 ? _videoUrlInfo.PlaylistTitle! : _videoUrlInfo.Videos[0].Title);
+            _numberVideosButton.SetVisible(_videoUrlInfo.Videos.Count > 1 ? true : false);
             foreach (var row in _videoRows)
             {
                 _videosGroup.Remove(row);
@@ -234,7 +235,7 @@ public partial class AddDownloadDialog : Adw.MessageDialog
     private void NumberVideos(Gtk.Button sender, EventArgs e)
     {
         _controller.NumberVideos(_videoUrlInfo!);
-        foreach(var row in _videoRows)
+        foreach (var row in _videoRows)
         {
             row.UpdateTitle();
         }

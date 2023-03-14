@@ -9,7 +9,6 @@ public class VideoRow : Adw.ActionRow
     private VideoInfo _videoInfo;
 
     [Gtk.Connect] private readonly Gtk.CheckButton _downloadCheck;
-    [Gtk.Connect] private readonly Gtk.Button _editButton;
     [Gtk.Connect] private readonly Gtk.Entry _titleEntry;
 
     private VideoRow(Gtk.Builder builder, VideoInfo videoInfo) : base(builder.GetPointer("_root"), false)

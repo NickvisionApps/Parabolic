@@ -54,7 +54,6 @@ public partial class MainWindow : Adw.ApplicationWindow
         greetingLabel.AddCssClass("greeting-title");
         //Register Events 
         _controller.NotificationSent += NotificationSent;
-        _controller.ShellNotificationSent += NotificationSent;
         _controller.UICreateDownloadRow = CreateDownloadRow;
         _controller.UIMoveDownloadRow = MoveDownloadRow;
         _controller.UIDeleteDownloadRowFromQueue = (row) => DeleteDownloadRow(row, _queuedBox);

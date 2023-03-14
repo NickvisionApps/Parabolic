@@ -54,6 +54,8 @@ Adw.MessageDialog _root {
           }
 
           Adw.PreferencesGroup {
+            margin-bottom: 12;
+
             Adw.ComboRow _fileTypeRow {
               title: _("FileType.Field");
               model: Gtk.StringList {
@@ -123,7 +125,6 @@ Adw.MessageDialog _root {
           }
 
           Gtk.Button _numberVideosButton {
-            margin-top: 12;
             halign: start;
 
             Adw.ButtonContent {

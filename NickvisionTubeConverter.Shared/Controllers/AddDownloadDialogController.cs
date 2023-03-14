@@ -68,7 +68,7 @@ public class AddDownloadDialogController
     /// <param name="videoUrlInfo">The VideoUrlInfo object</param>
     public void NumberVideos(VideoUrlInfo videoUrlInfo)
     {
-        for(var i = 0; i < videoUrlInfo.Videos.Count; i++)
+        for (var i = 0; i < videoUrlInfo.Videos.Count; i++)
         {
             videoUrlInfo.Videos[i].Title = $"{i + 1} - {videoUrlInfo.Videos[i].Title}";
         }
