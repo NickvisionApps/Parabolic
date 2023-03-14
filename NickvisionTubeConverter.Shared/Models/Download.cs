@@ -152,18 +152,22 @@ public class Download : IDisposable
                 dynamic ytdlp = Python.Runtime.Py.Import("yt_dlp");
                 var hooks = new List<Action<Python.Runtime.PyDict>>();
                 hooks.Add(ProgressHook);
+                var paths = new Python.Runtime.PyDict();
+                paths["temp"] = new Python.Runtime.PyString(_tempDownloadPath);
+                paths["home"] = new Python.Runtime.PyString($"{SaveFolder}{Path.DirectorySeparatorChar}");
                 var ytOpt = new Dictionary<string, dynamic> {
-                        { "quiet", false },
-                        { "ignoreerrors", "downloadonly" },
-                        { "merge_output_format", "mp4/webm/mp3/opus/flac/wav" },
-                        { "final_ext", _fileType.ToString().ToLower() },
-                        { "progress_hooks", hooks },
-                        { "postprocessor_hooks", hooks },
-                        { "outtmpl", $"{SaveFolder}{Path.DirectorySeparatorChar}{Path.GetFileNameWithoutExtension(Filename)}.%(ext)s" },
-                        { "ffmpeg_location", DependencyManager.Ffmpeg },
-                        { "windowsfilenames", RuntimeInformation.IsOSPlatform(OSPlatform.Windows) },
-                        { "encoding", "utf_8" },
-                        { "overwrites", _overwriteFiles }
+                    { "quiet", false },
+                    { "ignoreerrors", "downloadonly" },
+                    { "merge_output_format", "mp4/webm/mp3/opus/flac/wav" },
+                    { "final_ext", _fileType.ToString().ToLower() },
+                    { "progress_hooks", hooks },
+                    { "postprocessor_hooks", hooks },
+                    { "outtmpl", $"{Path.GetFileNameWithoutExtension(Filename)}.%(ext)s" },
+                    { "ffmpeg_location", DependencyManager.Ffmpeg },
+                    { "windowsfilenames", RuntimeInformation.IsOSPlatform(OSPlatform.Windows) },
+                    { "encoding", "utf_8" },
+                    { "overwrites", _overwriteFiles },
+                    { "paths", paths }
                 };
                 var postProcessors = new List<Dictionary<string, dynamic>>();
                 if (_fileType.GetIsAudio())

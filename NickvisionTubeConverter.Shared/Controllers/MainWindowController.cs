@@ -131,10 +131,6 @@ public class MainWindowController : IDisposable
             Localizer.Dispose();
             Python.Runtime.PythonEngine.EndAllowThreads(_pythonThreadState);
             Python.Runtime.PythonEngine.Shutdown();
-            if (File.Exists(pathToOutput))
-            {
-                File.Delete(pathToOutput);
-            }
             foreach (var row in _downloadingRows)
             {
                 row.Dispose();
@@ -146,6 +142,14 @@ public class MainWindowController : IDisposable
             foreach (var row in _queuedRows)
             {
                 row.Dispose();
+            }
+            if (File.Exists(pathToOutput))
+            {
+                File.Delete(pathToOutput);
+            }
+            if (Directory.Exists($"{Configuration.ConfigDir}{Path.DirectorySeparatorChar}temp{Path.DirectorySeparatorChar}"))
+            {
+                Directory.Delete($"{Configuration.ConfigDir}{Path.DirectorySeparatorChar}temp{Path.DirectorySeparatorChar}");
             }
         }
         _disposed = true;
