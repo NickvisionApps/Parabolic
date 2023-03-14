@@ -1,56 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component type="desktop-application">
-	<id>org.nickvision.tubeconverter</id>
-	<metadata_license>CC0-1.0</metadata_license>
-	<project_license>MIT</project_license>
-	<name>Tube Converter</name>
-	<developer_name>Nickvision</developer_name>
-	<summary>Download your favorite videos</summary>
-	<description>
-	  <p>
-			An easy-to-use video downloader
-		</p>
-	</description>
-	<launchable type="desktop-id">org.nickvision.tubeconverter.desktop</launchable>
-	<screenshots>
-		<screenshot type="default">
-			<image>https://raw.githubusercontent.com/nlogozzo/NickvisionTubeConverter/master/NickvisionTubeConverter.GNOME/Screenshots/Light.png</image>
-		</screenshot>
-		<screenshot>
-			<image>https://raw.githubusercontent.com/nlogozzo/NickvisionTubeConverter/master/NickvisionTubeConverter.GNOME/Screenshots/StartScreen.png</image>
-		</screenshot>
-		<screenshot>
-			<image>https://raw.githubusercontent.com/nlogozzo/NickvisionTubeConverter/master/NickvisionTubeConverter.GNOME/Screenshots/AddDownload.png</image>
-		</screenshot>
-		<screenshot>
-			<image>https://raw.githubusercontent.com/nlogozzo/NickvisionTubeConverter/master/NickvisionTubeConverter.GNOME/Screenshots/Dark.png</image>
-		</screenshot>
-	</screenshots>
-	<url type="homepage">https://github.com/nlogozzo/NickvisionTubeConverter</url>
-	<url type="bugtracker">https://github.com/nlogozzo/NickvisionTubeConverter/issues</url>
-	<url type="donation">https://github.com/sponsors/nlogozzo</url>
-	<url type="translate">https://github.com/nlogozzo/NickvisionTubeConverter/blob/master/CONTRIBUTING.md#providing-translations</url>
-	<project_group>Nickvision</project_group>
-	<provides>
-		<binary>org.nickvision.tubeconverter</binary>
-		<binary>NickvisionTubeConverter.GNOME</binary>
-	</provides>
-	<releases>
-		<release version="2023.3.0-beta3" date="2023-03-04">
-			<description>
-			  <p>- Tube Converter has been rewritten in C#. With the C# rewrite, Tube Converter is now available on Windows!</p>
-				<p>- Added support for downloading playlists</p>
-			  <p>- Added a queue system with a max number of active downloads option in Preferences</p>
-			  <p>- Added download progress/speed indicators</p>
-			  <p>- Added the ability to view a download's log as the download is in progress</p>
-			  <p>- Added the ability to open the save folder after the download is complete</p>
-			  <p>- Redesigned download rows to better fit small screens/mobile devices</p>
+  <id>org.nickvision.tubeconverter</id>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>MIT</project_license>
+  <name>Tube Converter</name>
+  <developer_name>Nickvision</developer_name>
+  <summary>Download your favorite videos</summary>
+  <description>
+    <p>
+      An easy-to-use video downloader
+    </p>
+  </description>
+  <launchable type="desktop-id">org.nickvision.tubeconverter.desktop</launchable>
+  <screenshots>
+    <screenshot type="default">
+      <image>https://raw.githubusercontent.com/nlogozzo/NickvisionTubeConverter/master/NickvisionTubeConverter.GNOME/Screenshots/Light.png</image>
+    </screenshot>
+    <screenshot>
+      <image>https://raw.githubusercontent.com/nlogozzo/NickvisionTubeConverter/master/NickvisionTubeConverter.GNOME/Screenshots/StartScreen.png</image>
+    </screenshot>
+    <screenshot>
+      <image>https://raw.githubusercontent.com/nlogozzo/NickvisionTubeConverter/master/NickvisionTubeConverter.GNOME/Screenshots/AddDownload.png</image>
+    </screenshot>
+    <screenshot>
+      <image>https://raw.githubusercontent.com/nlogozzo/NickvisionTubeConverter/master/NickvisionTubeConverter.GNOME/Screenshots/Dark.png</image>
+    </screenshot>
+  </screenshots>
+  <url type="homepage">https://github.com/nlogozzo/NickvisionTubeConverter</url>
+  <url type="bugtracker">https://github.com/nlogozzo/NickvisionTubeConverter/issues</url>
+  <url type="donation">https://github.com/sponsors/nlogozzo</url>
+  <url type="translate">https://github.com/nlogozzo/NickvisionTubeConverter/blob/master/CONTRIBUTING.md#providing-translations</url>
+  <project_group>Nickvision</project_group>
+  <provides>
+    <binary>org.nickvision.tubeconverter</binary>
+    <binary>NickvisionTubeConverter.GNOME</binary>
+  </provides>
+  <releases>
+    <release version="2023.3.0-rc1" date="2023-03-14">
+      <description>
+        <p>- Tube Converter has been rewritten in C#. With the C# rewrite, Tube Converter is now available on Windows!</p>
+        <p>- Added support for downloading playlists</p>
+        <p>- Added a queue system with a max number of active downloads option in Preferences</p>
+        <p>- Added download progress/speed indicators</p>
+        <p>- Added the ability to view a download's log as the download is in progress</p>
+        <p>- Added the ability to open the save folder after the download is complete</p>
+        <p>- Redesigned download rows to better fit small screens/mobile devices</p>
         <p>- A shell notification will be shown when a download has finished and the window is inactive</p>
-			  <p>- Fixed UI freeze while downloads in progress</p>
-			  <p>- Fixed being unable to close the Preferences window with the Esc key</p>
-			  <p>- Fixed missing GNOME HIG keyboard shortcuts (Ctrl+W, F10)</p>
-			</description>
-	  </release>
-	</releases>
-	<content_rating type="oars-1.1" />
+        <p>- Fixed UI freeze while downloads in progress</p>
+        <p>- Fixed being unable to close the Preferences window with the Esc key</p>
+        <p>- Fixed missing GNOME HIG keyboard shortcuts (Ctrl+W, F10)</p>
+      </description>
+    </release>
+  </releases>
+  <content_rating type="oars-1.1" />
 </component>

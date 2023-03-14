@@ -43,7 +43,7 @@ public partial class Program
         _mainWindowController.AppInfo.Name = "Nickvision Tube Converter";
         _mainWindowController.AppInfo.ShortName = "Tube Converter";
         _mainWindowController.AppInfo.Description = $"{_mainWindowController.Localizer["Description"]}.";
-        _mainWindowController.AppInfo.Version = "2023.3.0-beta3";
+        _mainWindowController.AppInfo.Version = "2023.3.0-rc1";
         _mainWindowController.AppInfo.Changelog = "<ul><li>Tube Converter has been rewritten in C#. With the C# rewrite, Tube Converter is now available on Windows!</li><li>Added support for downloading playlists</li><li>Added a queue system with a max number of active downloads option in Preferences</li><li>Added download progress/speed indicators</li><li>Added the ability to view a download's log as the download is in progress</li><li>Added the ability to open the save folder after the download is complete</li><li>Redesigned download rows to better fit small screens/mobile devices</li><li>A shell notification will be shown when a download has finished and the window is inactive</li><li>Fixed UI freeze while downloads in progress</li><li>Fixed being unable to close the Preferences window with the Esc key</li><li>Fixed missing GNOME HIG keyboard shortcuts (Ctrl+W, F10)</li></ul>";
         _mainWindowController.AppInfo.GitHubRepo = new Uri("https://github.com/nlogozzo/NickvisionTubeConverter");
         _mainWindowController.AppInfo.IssueTracker = new Uri("https://github.com/nlogozzo/NickvisionTubeConverter/issues/new");
