@@ -29,7 +29,7 @@ public partial class Program
     /// </summary>
     /// <param name="args">string[]</param>
     /// <returns>Return code from Adw.Application.Run()</returns>
-    public static int Main(string[] args) => new Program().Run();
+    public static int Main(string[] args) => new Program().Run(args);
 
     /// <summary>
     /// Constructs a Program
@@ -76,11 +76,14 @@ public partial class Program
     /// Runs the program
     /// </summary>
     /// <returns>Return code from Adw.Application.Run()</returns>
-    public int Run()
+    public int Run(string[] args)
     {
         try
         {
-            return _application.Run();
+            var argv = new string[args.Length + 1];
+            argv[0] = "NickvisionTubeConverter.GNOME";
+            args.CopyTo(argv, 1);
+            return _application.Run(args.Length + 1, argv);
         }
         catch (Exception ex)
         {
