@@ -50,6 +50,7 @@ public class Download : IDisposable
     private readonly Subtitle _subtitle;
     private readonly bool _overwriteFiles;
     private readonly string _logPath;
+    private readonly string _tempDownloadPath;
     private Action<DownloadProgressState>? _progressCallback;
     private ulong? _pid;
 
@@ -88,7 +89,8 @@ public class Download : IDisposable
         _quality = quality;
         _subtitle = subtitle;
         _overwriteFiles = overwriteFiles;
-        _logPath = $"{Configuration.ConfigDir}{Path.DirectorySeparatorChar}{_id}.log";
+        _tempDownloadPath = $"{Configuration.ConfigDir}{Path.DirectorySeparatorChar}temp{Path.DirectorySeparatorChar}{_id}{Path.DirectorySeparatorChar}";
+        _logPath = $"{_tempDownloadPath}log";
         _progressCallback = null;
         _pid = null;
         VideoUrl = videoUrl;
@@ -118,9 +120,9 @@ public class Download : IDisposable
         }
         if (disposing)
         {
-            if (File.Exists(_logPath))
+            if (Directory.Exists(_tempDownloadPath))
             {
-                File.Delete(_logPath);
+                Directory.Delete(_tempDownloadPath, true);
             }
         }
         _disposed = true;
@@ -136,14 +138,11 @@ public class Download : IDisposable
     {
         _progressCallback = progressCallback;
         IsDone = false;
-        if (File.Exists($"{SaveFolder}{Path.DirectorySeparatorChar}{Filename}"))
+        if (Directory.Exists(_tempDownloadPath))
         {
-            File.Delete($"{SaveFolder}{Path.DirectorySeparatorChar}{Filename}");
+            Directory.Delete(_tempDownloadPath, true);
         }
-        if (File.Exists(_logPath))
-        {
-            File.Delete(_logPath);
-        }
+        Directory.CreateDirectory(_tempDownloadPath);
         dynamic outFile = PythonExtensions.SetConsoleOutputFilePath(_logPath);
         return await Task.Run(() =>
         {
@@ -151,7 +150,7 @@ public class Download : IDisposable
             {
                 _pid = Python.Runtime.PythonEngine.GetPythonThreadID();
                 dynamic ytdlp = Python.Runtime.Py.Import("yt_dlp");
-                var hooks = new List<Action<Python.Runtime.PyDict>> { };
+                var hooks = new List<Action<Python.Runtime.PyDict>>();
                 hooks.Add(ProgressHook);
                 var ytOpt = new Dictionary<string, dynamic> {
                         { "quiet", false },
@@ -160,12 +159,13 @@ public class Download : IDisposable
                         { "final_ext", _fileType.ToString().ToLower() },
                         { "progress_hooks", hooks },
                         { "postprocessor_hooks", hooks },
-                        { "outtmpl", $"{SaveFolder}{Path.DirectorySeparatorChar}{Path.GetFileNameWithoutExtension(Filename)}.%(ext)s" },
+                        { "outtmpl", $"{Path.GetFileNameWithoutExtension(Filename)}.%(ext)s" },
                         { "ffmpeg_location", DependencyManager.Ffmpeg },
                         { "windowsfilenames", RuntimeInformation.IsOSPlatform(OSPlatform.Windows) },
                         { "encoding", "utf_8" },
-                        { "overwrites", _overwriteFiles }
-                    };
+                        { "overwrites", _overwriteFiles },
+                        { "paths", new Dictionary<string, string>() { { "home", $"{SaveFolder}{Path.DirectorySeparatorChar}" }, { "temp", _tempDownloadPath } } }
+                };
                 var postProcessors = new List<Dictionary<string, dynamic>>();
                 if (_fileType.GetIsAudio())
                 {
