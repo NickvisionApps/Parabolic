@@ -8,135 +8,135 @@ Adw.MessageDialog _root {
   width-request: 440;
 
   Adw.ViewStack _viewStack {
-	Adw.ViewStackPage {
-	  name: "pageUrl";
-	  child: Gtk.Box {
-		orientation: vertical;
-		spacing: 20;
+    Adw.ViewStackPage {
+      name: "pageUrl";
+      child: Gtk.Box {
+        orientation: vertical;
+        spacing: 20;
 
-		Adw.PreferencesGroup {
-		  Adw.EntryRow _urlRow {
-		    title: _("VideoUrl.Field");
-			width-request: 420;
-		    show-apply-button: true;
-		  }
-		}
+        Adw.PreferencesGroup {
+          Adw.EntryRow _urlRow {
+            title: _("VideoUrl.Field");
+            width-request: 420;
+            show-apply-button: true;
+          }
+        }
 
-		Gtk.Spinner _urlSpinner {
-		  valign: center;
-		  width-request: 40;
-		  height-request: 40;
-		}
-	  };
-	}
+        Gtk.Spinner _urlSpinner {
+          valign: center;
+          width-request: 40;
+          height-request: 40;
+        }
+      };
+    }
 
-	Adw.ViewStackPage {
-	  name: "pageDownload";
-	  child: Gtk.ScrolledWindow {
-	    height-request: 380;
+    Adw.ViewStackPage {
+      name: "pageDownload";
+      child: Gtk.ScrolledWindow {
+        height-request: 380;
 
-	    Gtk.Box {
-		  orientation: vertical;
-		  spacing: 6;
+        Gtk.Box {
+          orientation: vertical;
+          spacing: 6;
 
-		  Gtk.Box {
-			orientation: horizontal;
-			spacing: 6;
+          Gtk.Box {
+            orientation: horizontal;
+            spacing: 6;
 
-			Gtk.Button _backButton {
-				icon-name: "go-previous-symbolic";
-				tooltip-text: _("Back");
-			}
+            Gtk.Button _backButton {
+                icon-name: "go-previous-symbolic";
+                tooltip-text: _("Back");
+            }
 
-			Gtk.Label _titleLabel {
-				styles ["heading"]
-			}
-		  }
+            Gtk.Label _titleLabel {
+                styles ["heading"]
+            }
+          }
 
-		  Adw.PreferencesGroup {
-			Adw.ComboRow _fileTypeRow {
-			  title: _("FileType.Field");
-			  model: Gtk.StringList {
-			    strings ["MP4", "WEBM", "MP3", "OPUS", "FLAC", "WAV"]
-			  };
-			}
+          Adw.PreferencesGroup {
+            Adw.ComboRow _fileTypeRow {
+              title: _("FileType.Field");
+              model: Gtk.StringList {
+                strings ["MP4", "WEBM", "MP3", "OPUS", "FLAC", "WAV"]
+              };
+            }
     
-			Adw.ComboRow _qualityRow {
-			  title: _("Quality.Field");
-			  model: Gtk.StringList {
-				strings [_("Quality.Best"), _("Quality.Good"), _("Quality.Worst")]
-			  };
-			}
+            Adw.ComboRow _qualityRow {
+              title: _("Quality.Field");
+              model: Gtk.StringList {
+                strings [_("Quality.Best"), _("Quality.Good"), _("Quality.Worst")]
+              };
+            }
     
-			Adw.ComboRow _subtitleRow {
-			  title: _("Subtitle.Field");
-			  model: Gtk.StringList {
-			    strings [_("Subtitle.None"), "VTT", "SRT"]
-			  };
-			}
+            Adw.ComboRow _subtitleRow {
+              title: _("Subtitle.Field");
+              model: Gtk.StringList {
+                strings [_("Subtitle.None"), "VTT", "SRT"]
+              };
+            }
 
-			Adw.EntryRow _saveFolderRow {
-			  title: _("SaveFolder.Field");
-			  width-request: 420;
-			  editable: false;
+            Adw.EntryRow _saveFolderRow {
+              title: _("SaveFolder.Field");
+              width-request: 420;
+              editable: false;
       
-			  [suffix]
-			  Gtk.MenuButton _saveWarning {
-			    valign: center;
-				icon-name: "dialog-warning-symbolic";
-				visible: false;
-				popover: Gtk.Popover {
-				  Adw.Clamp {
-				    maximum-size: 300;
+              [suffix]
+              Gtk.MenuButton _saveWarning {
+                valign: center;
+                icon-name: "dialog-warning-symbolic";
+                visible: false;
+                popover: Gtk.Popover {
+                  Adw.Clamp {
+                    maximum-size: 300;
             
-					Gtk.Label {
-				      label: _("SaveWarning.GTK");
-					  wrap: true;
-					  justify: center;
-				    }
-				  }
-			    };
+                    Gtk.Label {
+                      label: _("SaveWarning.GTK");
+                      wrap: true;
+                      justify: center;
+                    }
+                  }
+                };
         
-			    styles ["flat", "warning"]
-			  }
+                styles ["flat", "warning"]
+              }
       
-			  [suffix]
-			  Gtk.Button _selectSaveFolderButton {
-			    valign: center;
-			    icon-name: "folder-open-symbolic";
-			    tooltip-text: _("SelectSaveFolder");
+              [suffix]
+              Gtk.Button _selectSaveFolderButton {
+                valign: center;
+                icon-name: "folder-open-symbolic";
+                tooltip-text: _("SelectSaveFolder");
         
-			    styles ["flat"]
-			  }
-		    }
+                styles ["flat"]
+              }
+            }
 
-			Adw.ActionRow _overwriteRow {
-			  title: _("OverwriteExistingFiles");
-			  activatable-widget: _overwriteSwitch;
+            Adw.ActionRow _overwriteRow {
+              title: _("OverwriteExistingFiles");
+              activatable-widget: _overwriteSwitch;
 
-			  [suffix]
-			  Gtk.Switch _overwriteSwitch {
-			    valign: center;
-				active: true;
-			  }
-			}
-		  }
+              [suffix]
+              Gtk.Switch _overwriteSwitch {
+                valign: center;
+                active: true;
+              }
+            }
+          }
 
-		  Gtk.Button _numberVideosButton {
-		    margin-top: 12;
-			halign: start;
+          Gtk.Button _numberVideosButton {
+            margin-top: 12;
+            halign: start;
 
-			Adw.ButtonContent {
-				icon-name: "view-list-ordered-symbolic";
-				label: _("NumberVideos");
-			}
-		  }
+            Adw.ButtonContent {
+                icon-name: "view-list-ordered-symbolic";
+                label: _("NumberVideos");
+            }
+          }
 
-		  Adw.PreferencesGroup _videosGroup {
+          Adw.PreferencesGroup _videosGroup {
 
-		  }
-	    }
-	  };
-	}
+          }
+        }
+      };
+    }
   }
 }
