@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Runtime.InteropServices;
 using System.Text.Json;
 
 namespace NickvisionTubeConverter.Shared.Models;
@@ -16,7 +17,20 @@ public class Configuration
     /// <summary>
     /// The directory to store temporary files
     /// </summary>
-    public static readonly string TempDir = $"{Environment.GetFolderPath(Environment.SpecialFolder.UserProfile)}{Path.DirectorySeparatorChar}.tc-temp";
+    public static string TempDir
+    {
+        get
+        {
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                return $"{Environment.GetFolderPath(Environment.SpecialFolder.UserProfile)}{Path.DirectorySeparatorChar}.tc-temp";
+            }
+            else
+            {
+                return $"{ConfigDir}{Path.DirectorySeparatorChar}temp";
+            }
+        }
+    }
 
     private static readonly string ConfigPath = $"{ConfigDir}{Path.DirectorySeparatorChar}config.json";
     private static Configuration? _instance;
