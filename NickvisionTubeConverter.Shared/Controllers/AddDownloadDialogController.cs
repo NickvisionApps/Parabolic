@@ -72,7 +72,7 @@ public class AddDownloadDialogController
         var numberedRegex = new Regex(@"[0-9] - ", RegexOptions.None);
         for (var i = 0; i < videoUrlInfo.Videos.Count; i++)
         {
-            if(toggled)
+            if (toggled)
             {
                 videoUrlInfo.Videos[i].Title = $"{i + 1} - {videoUrlInfo.Videos[i].Title}";
             }

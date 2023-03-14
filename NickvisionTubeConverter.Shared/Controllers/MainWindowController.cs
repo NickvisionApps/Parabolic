@@ -161,7 +161,7 @@ public class MainWindowController : IDisposable
     public async Task StartupAsync()
     {
         Configuration.Current.Saved += ConfigurationSaved;
-        if(Directory.Exists($"{Configuration.ConfigDir}{Path.DirectorySeparatorChar}temp{Path.DirectorySeparatorChar}"))
+        if (Directory.Exists($"{Configuration.ConfigDir}{Path.DirectorySeparatorChar}temp{Path.DirectorySeparatorChar}"))
         {
             Directory.Delete($"{Configuration.ConfigDir}{Path.DirectorySeparatorChar}temp{Path.DirectorySeparatorChar}", true);
         }
