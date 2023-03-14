@@ -231,7 +231,15 @@ public class Download
             using (Python.Runtime.Py.GIL())
             {
                 var downloaded = entries.HasKey("downloaded_bytes") ? (entries["downloaded_bytes"].As<double?>() ?? 0) : 0;
-                var total = entries.HasKey("total_bytes") ? (entries["total_bytes"].As<double?>() ?? 1) : downloaded;
+                var total = 1.0;
+                if (entries.HasKey("total_bytes"))
+                {
+                    total = entries["total_bytes"].As<double?>() ?? 1;
+                }
+                else if (entries.HasKey("total_bytes_estimate"))
+                {
+                    total = entries["total_bytes_estimate"].As<double?>() ?? 1;
+                }
                 var progressState = new DownloadProgressState()
                 {
                     Status = entries["status"].As<string>() switch
