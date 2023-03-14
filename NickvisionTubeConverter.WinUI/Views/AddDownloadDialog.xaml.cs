@@ -2,9 +2,10 @@ using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using NickvisionTubeConverter.Shared.Controllers;
 using NickvisionTubeConverter.Shared.Models;
+using NickvisionTubeConverter.WinUI.Controls;
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
+using Windows.ApplicationModel.DataTransfer;
 using Windows.Storage.Pickers;
 
 namespace NickvisionTubeConverter.WinUI.Views;
@@ -16,6 +17,7 @@ public sealed partial class AddDownloadDialog : ContentDialog
 {
     private AddDownloadDialogController _controller;
     private readonly Action<object> _initializeWithWindow;
+    private VideoUrlInfo? _videoUrlInfo;
 
     /// <summary>
     /// Constructs an AddDownloadDialog
@@ -27,12 +29,16 @@ public sealed partial class AddDownloadDialog : ContentDialog
         InitializeComponent();
         _controller = controller;
         _initializeWithWindow = initializeWithWindow;
+        _videoUrlInfo = null;
         //Localize Strings
         Title = _controller.Localizer["AddDownload"];
         CloseButtonText = _controller.Localizer["Cancel"];
         PrimaryButtonText = _controller.Localizer["Download"];
         TxtVideoUrl.Header = _controller.Localizer["VideoUrl", "Field"];
         TxtVideoUrl.PlaceholderText = _controller.Localizer["VideoUrl", "Placeholder"];
+        ToolTipService.SetToolTip(BtnSearchUrl, _controller.Localizer["Search"]);
+        ToolTipService.SetToolTip(BtnPasteFromClipboard, _controller.Localizer["PasteFromClipboard"]);
+        LblBack.Text = _controller.Localizer["Back"];
         CmbFileType.Header = _controller.Localizer["FileType", "Field"];
         CmbFileType.Items.Add("MP4");
         CmbFileType.Items.Add("WEBM");
@@ -50,21 +56,24 @@ public sealed partial class AddDownloadDialog : ContentDialog
         CmbSubtitle.Items.Add("VTT");
         CmbSubtitle.Items.Add("SRT");
         CmbSubtitle.SelectedIndex = 0;
-        TxtSavePath.Header = _controller.Localizer["SavePath", "Field"];
-        ToolTipService.SetToolTip(BtnSelectSavePath, _controller.Localizer["SelectSavePath"]);
+        TxtSaveFolder.Header = _controller.Localizer["SaveFolder", "Field"];
+        ToolTipService.SetToolTip(BtnSelectSaveFolder, _controller.Localizer["SelectSaveFolder"]);
+        ChkOverwriteFiles.Content = _controller.Localizer["OverwriteExistingFiles"];
+        LblNumberVideos.Text = _controller.Localizer["NumberVideos"];
         TxtErrors.Text = _controller.Localizer["FixErrors", "WinUI"];
         //Load
-        ViewStack.ChangePage("Download");
+        ViewStack.ChangePage("Url");
+        IsPrimaryButtonEnabled = false;
         CmbFileType.SelectedIndex = (int)_controller.PreviousMediaFileType;
+        TxtSaveFolder.Text = _controller.PreviousSaveFolder;
     }
 
     // <summary>
     /// Shows the AddDownloadDialog
     /// </summary>
     /// <returns>True if the dialog was accepted, else false</returns>
-    public async Task<bool> ShowAsync()
+    public new async Task<bool> ShowAsync()
     {
-        await ValidateAsync();
         var result = await base.ShowAsync();
         if (result == ContentDialogResult.None)
         {
@@ -72,113 +81,99 @@ public sealed partial class AddDownloadDialog : ContentDialog
             return false;
         }
         _controller.Accepted = true;
+        _controller.PopulateDownloads(_videoUrlInfo!, (MediaFileType)CmbFileType.SelectedIndex, (Quality)CmbQuality.SelectedIndex, (Subtitle)CmbSubtitle.SelectedIndex, TxtSaveFolder.Text, ChkOverwriteFiles.IsChecked ?? false);
         return true;
     }
 
     /// <summary>
-    /// Validates the dialog's input
-    /// </summary>
-    private async Task ValidateAsync()
-    {
-        var checkStatus = await _controller.UpdateDownloadAsync(TxtVideoUrl.Text, (MediaFileType)CmbFileType.SelectedIndex, TxtSavePath.Text, (Quality)CmbQuality.SelectedIndex, (Subtitle)CmbSubtitle.SelectedIndex);
-        TxtVideoUrl.Header = _controller.Localizer["VideoUrl", "Field"];
-        CmbFileType.IsEnabled = false;
-        CmbQuality.IsEnabled = false;
-        CmbSubtitle.IsEnabled = false;
-        TxtSavePath.Header = _controller.Localizer["SavePath", "Field"];
-        TxtSavePath.IsEnabled = false;
-        TxtSavePath.Text = _controller.SavePath;
-        BtnSelectSavePath.IsEnabled = false;
-        if (checkStatus == DownloadCheckStatus.Valid)
-        {
-            CmbFileType.IsEnabled = true;
-            CmbQuality.IsEnabled = true;
-            CmbSubtitle.IsEnabled = ((MediaFileType)CmbFileType.SelectedIndex).GetIsVideo();
-            TxtSavePath.IsEnabled = true;
-            BtnSelectSavePath.IsEnabled = true;
-            TxtErrors.Visibility = Visibility.Collapsed;
-            IsPrimaryButtonEnabled = true;
-        }
-        else
-        {
-            if (checkStatus.HasFlag(DownloadCheckStatus.EmptyVideoUrl))
-            {
-                TxtVideoUrl.Header = _controller.Localizer["VideoUrl", "Empty"];
-            }
-            if (checkStatus.HasFlag(DownloadCheckStatus.InvalidVideoUrl))
-            {
-                TxtVideoUrl.Header = _controller.Localizer["VideoUrl", "Invalid"];
-            }
-            if (checkStatus.HasFlag(DownloadCheckStatus.PlaylistNotSupported))
-            {
-                TxtVideoUrl.Header = _controller.Localizer["VideoUrl", "PlaylistNotSupported"];
-            }
-            if (checkStatus.HasFlag(DownloadCheckStatus.InvalidSaveFolder))
-            {
-                TxtSavePath.Header = _controller.Localizer["SavePath", "Invalid"];
-                CmbFileType.IsEnabled = true;
-                CmbQuality.IsEnabled = true;
-                CmbSubtitle.IsEnabled = ((MediaFileType)CmbFileType.SelectedIndex).GetIsVideo();
-                TxtSavePath.IsEnabled = true;
-                BtnSelectSavePath.IsEnabled = true;
-
-            }
-            TxtErrors.Visibility = Visibility.Visible;
-            IsPrimaryButtonEnabled = false;
-        }
-    }
-
-    /// <summary>
-    /// Occurs when the select save path button is clicked
+    /// Occurs when the search video url button is clicked
     /// </summary>
     /// <param name="sender">object</param>
     /// <param name="e">RoutedEventArgs</param>
-    private async void SelectSavePath(object sender, RoutedEventArgs e)
+    private async void SearchUrl(object sender, RoutedEventArgs e)
     {
-        var fileSavePicker = new FileSavePicker();
-        var fileType = (MediaFileType)CmbFileType.SelectedIndex;
-        _initializeWithWindow(fileSavePicker);
-        fileSavePicker.FileTypeChoices.Add(fileType.ToString(), new List<string>() { fileType.GetDotExtension() });
-        fileSavePicker.SuggestedStartLocation = fileType.GetIsVideo() ? PickerLocationId.VideosLibrary : PickerLocationId.MusicLibrary;
-        var file = await fileSavePicker.PickSaveFileAsync();
-        if (file != null)
+        LoadingUrl.Visibility = Visibility.Visible;
+        IsPrimaryButtonEnabled = false;
+        await Task.Delay(25);
+        _videoUrlInfo = await _controller.SearchUrlAsync(TxtVideoUrl.Text);
+        LoadingUrl.Visibility = Visibility.Collapsed;
+        if (_videoUrlInfo == null)
         {
-            TxtSavePath.Text = file.Path;
-            await ValidateAsync();
+            TxtVideoUrl.Header = _controller.Localizer["VideoUrl", "Invalid"];
+            TxtErrors.Visibility = Visibility.Visible;
+        }
+        else
+        {
+            TxtVideoUrl.Header = _controller.Localizer["VideoUrl", "Field"];
+            TxtErrors.Visibility = Visibility.Collapsed;
+            ViewStack.ChangePage("Download");
+            IsPrimaryButtonEnabled = !string.IsNullOrEmpty(TxtSaveFolder.Text);
+            LblTitle.Text = _videoUrlInfo.Videos.Count > 1 ? _videoUrlInfo.PlaylistTitle! : _videoUrlInfo.Videos[0].Title;
+            BtnNumberVideos.Visibility = _videoUrlInfo.Videos.Count > 1 ? Visibility.Visible : Visibility.Collapsed;
+            ListVideos.Items.Clear();
+            foreach (var videoInfo in _videoUrlInfo.Videos)
+            {
+                ListVideos.Items.Add(new VideoRow(videoInfo, _controller.Localizer));
+            }
         }
     }
 
     /// <summary>
-    /// Occurs when the video url is changed
+    /// Occurs when the paste from clipboard is clicked
     /// </summary>
     /// <param name="sender">object</param>
-    /// <param name="e">TextChangedEventArgs</param>
-    private async void TxtVideoUrl_TextChanged(object sender, TextChangedEventArgs e)
+    /// <param name="e">RoutedEventArgs</param>
+    private async void PasteFromClipboard(object sender, RoutedEventArgs e)
     {
-        ViewStack.ChangePage("Loading");
-        await Task.Delay(50);
-        await ValidateAsync();
-        ViewStack.ChangePage("Download");
+        if (Clipboard.GetContent().Contains(StandardDataFormats.Text))
+        {
+            TxtVideoUrl.Text = (await Clipboard.GetContent().GetTextAsync()).ToString();
+            SearchUrl(sender, e);
+        }
     }
 
     /// <summary>
-    /// Occurs when the file type is changed
+    /// Occurs when the back button is clicked
     /// </summary>
     /// <param name="sender">object</param>
-    /// <param name="e">SelectionChangedEventArgs</param>
-    private async void CmbFileType_SelectionChanged(object sender, SelectionChangedEventArgs e) => await ValidateAsync();
+    /// <param name="e">RoutedEventArgs</param>
+    private void Back(object sender, RoutedEventArgs e)
+    {
+        ViewStack.ChangePage("Url");
+        TxtVideoUrl.Text = "";
+        IsPrimaryButtonEnabled = false;
+    }
 
     /// <summary>
-    /// Occurs when the quality is changed
+    /// Occurs when the file type combobox is changed
     /// </summary>
     /// <param name="sender">object</param>
     /// <param name="e">SelectionChangedEventArgs</param>
-    private async void CmbQuality_SelectionChanged(object sender, SelectionChangedEventArgs e) => await ValidateAsync();
+    private void CmbFileType_SelectionChanged(object sender, SelectionChangedEventArgs e) => CmbSubtitle.IsEnabled = ((MediaFileType)CmbFileType.SelectedIndex).GetIsVideo();
 
     /// <summary>
-    /// Occurs when the subtitle is changed
+    /// Occurs when the select save folder button is clicked
     /// </summary>
     /// <param name="sender">object</param>
-    /// <param name="e">SelectionChangedEventArgs</param>
-    private async void CmbSubtitle_SelectionChanged(object sender, SelectionChangedEventArgs e) => await ValidateAsync();
+    /// <param name="e">RoutedEventArgs</param>
+    private async void SelectSaveFolder(object sender, RoutedEventArgs e)
+    {
+        var folderPicker = new FolderPicker();
+        var fileType = (MediaFileType)CmbFileType.SelectedIndex;
+        _initializeWithWindow(folderPicker);
+        folderPicker.SuggestedStartLocation = fileType.GetIsVideo() ? PickerLocationId.VideosLibrary : PickerLocationId.MusicLibrary;
+        var folder = await folderPicker.PickSingleFolderAsync();
+        if (folder != null)
+        {
+            TxtSaveFolder.Text = folder.Path;
+            IsPrimaryButtonEnabled = true;
+        }
+    }
+
+    /// <summary>
+    /// Occurs when the number videos toggle button is toggled
+    /// </summary>
+    /// <param name="sender">object</param>
+    /// <param name="e">RoutedEventArgs</param>
+    private void ToggleNumberVideos(object sender, RoutedEventArgs e) => _controller.ToggleNumberVideos(_videoUrlInfo!, BtnNumberVideos.IsChecked ?? false);
 }

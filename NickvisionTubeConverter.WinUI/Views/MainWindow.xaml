@@ -87,26 +87,26 @@
                                         </Grid.RowDefinitions>
 
                                         <StackPanel x:Name="SectionDownloading" Grid.Row="0" Margin="40,10,40,0" Orientation="Vertical" Spacing="6" Visibility="Collapsed">
-                                            <TextBlock x:Name="LblDownloading" Margin="4,0,0,0" Style="{ThemeResource NavigationViewItemHeaderTextStyle}" FontSize="16"/>
+                                            <TextBlock x:Name="LblDownloading" Margin="-12,0,0,0" Style="{ThemeResource NavigationViewItemHeaderTextStyle}" FontSize="16"/>
 
-                                            <ListView x:Name="ListDownloading" Margin="-18,0,-6,0"/>
+                                            <ListView x:Name="ListDownloading" Margin="-18,6,-6,0"/>
                                         </StackPanel>
 
                                         <StackPanel x:Name="SectionCompleted" Grid.Row="1" Margin="40,10,40,0" Orientation="Vertical" Spacing="6" Visibility="Collapsed">
-                                            <TextBlock x:Name="LblCompleted" Margin="4,0,0,0" Style="{ThemeResource NavigationViewItemHeaderTextStyle}" FontSize="16"/>
+                                            <TextBlock x:Name="LblCompleted" Margin="-12,0,0,0" Style="{ThemeResource NavigationViewItemHeaderTextStyle}" FontSize="16"/>
 
-                                            <ListView x:Name="ListCompleted" Margin="-18,0,-6,0"/>
+                                            <ListView x:Name="ListCompleted" Margin="-18,6,-6,0"/>
                                         </StackPanel>
 
                                         <StackPanel x:Name="SectionQueued" Grid.Row="2" Margin="40,10,40,0" Orientation="Vertical" Spacing="6" Visibility="Collapsed">
-                                            <TextBlock x:Name="LblQueued" Margin="4,0,0,0" Style="{ThemeResource NavigationViewItemHeaderTextStyle}" FontSize="16"/>
+                                            <TextBlock x:Name="LblQueued" Margin="-12,0,0,0" Style="{ThemeResource NavigationViewItemHeaderTextStyle}" FontSize="16"/>
 
-                                            <ListView x:Name="ListQueued" Margin="-18,0,-6,0"/>
+                                            <ListView x:Name="ListQueued" Margin="-18,6,-6,0"/>
                                         </StackPanel>
                                     </Grid>
                                 </ScrollViewer>
 
-                                <Button x:Name="BtnAddDownload" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,10" Width="110" Style="{ThemeResource AccentButtonStyle}" CornerRadius="20" Click="AddDownload">
+                                <Button x:Name="BtnAddDownload" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,10" MinWidth="110" Style="{ThemeResource AccentButtonStyle}" CornerRadius="20" Click="AddDownload">
                                     <Button.Content>
                                         <StackPanel Orientation="Horizontal" Spacing="6" Margin="0,4,0,4">
                                             <FontIcon Margin="0,2,0,0" FontFamily="{StaticResource SymbolThemeFontFamily}" FontSize="16" Glyph="&#xE710;"/>

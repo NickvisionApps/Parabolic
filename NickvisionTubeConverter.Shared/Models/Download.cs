@@ -41,14 +41,15 @@ public enum DownloadStage
 /// <summary>
 /// A model of a video download
 /// </summary>
-public class Download : IDisposable
+public class Download
 {
-    private bool _disposed;
     private readonly Guid _id;
     private readonly MediaFileType _fileType;
     private readonly Quality _quality;
     private readonly Subtitle _subtitle;
+    private readonly bool _overwriteFiles;
     private readonly string _logPath;
+    private readonly string _tempDownloadPath;
     private Action<DownloadProgressState>? _progressCallback;
     private ulong? _pid;
 
@@ -75,95 +76,26 @@ public class Download : IDisposable
     /// <param name="videoUrl">The url of the video to download</param>
     /// <param name="fileType">The file type to download the video as</param>
     /// <param name="saveFolder">The folder to save the download to</param>
-    /// <param name="newFilename">The filename to save the download as</param>
+    /// <param name="saveFilename">The filename to save the download as</param>
+    /// <param name="overwriteFiles">Whether or not to overwrite existing files</param>
     /// <param name="quality">The quality of the download</param>
     /// <param name="subtitle">The subtitles for the download</param>
-    public Download(string videoUrl, MediaFileType fileType, string saveFolder, string saveFilename, Quality quality = Quality.Best, Subtitle subtitle = Subtitle.None)
+    public Download(string videoUrl, MediaFileType fileType, string saveFolder, string saveFilename, bool overwriteFiles, Quality quality = Quality.Best, Subtitle subtitle = Subtitle.None)
     {
-        _disposed = false;
         _id = Guid.NewGuid();
         _fileType = fileType;
         _quality = quality;
         _subtitle = subtitle;
-        _logPath = $"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}{Path.DirectorySeparatorChar}Nickvision{Path.DirectorySeparatorChar}{AppInfo.Current.Name}{Path.DirectorySeparatorChar}{_id}.log";
+        _overwriteFiles = overwriteFiles;
+        _tempDownloadPath = $"{Configuration.TempDir}{Path.DirectorySeparatorChar}{_id}{Path.DirectorySeparatorChar}";
+        _logPath = $"{_tempDownloadPath}log";
         _progressCallback = null;
         _pid = null;
         VideoUrl = videoUrl;
         SaveFolder = saveFolder;
-        Filename = saveFilename;
+        Filename = $"{saveFilename}{_fileType.GetDotExtension()}";
         IsDone = false;
-    }
-
-    /// <summary>
-    /// Frees resources used by the Download object
-    /// </summary>
-    public void Dispose()
-    {
-        Dispose(true);
-        GC.SuppressFinalize(this);
-    }
-
-    /// <summary>
-    /// Frees resources used by the Download object
-    /// </summary>
-    protected virtual void Dispose(bool disposing)
-    {
-        if (_disposed)
-        {
-            return;
-        }
-        if (disposing)
-        {
-            if (File.Exists(_logPath))
-            {
-                File.Delete(_logPath);
-            }
-        }
-        _disposed = true;
-    }
-
-    /// <summary>
-    /// Gets whether or not a video url is valid
-    /// </summary>
-    /// <param name="url">The video url to check</param>
-    /// <returns>Whether or not the video url is valid, along with the video title if it is, and whether it is a playlist</returns>
-    public static async Task<(bool, string, bool)> GetIsValidVideoUrlAsync(string url)
-    {
-        var pathToOutput = $"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}{Path.DirectorySeparatorChar}Nickvision{Path.DirectorySeparatorChar}{AppInfo.Current.Name}{Path.DirectorySeparatorChar}output.log";
-        dynamic outFile = PythonExtensions.SetConsoleOutputFilePath(pathToOutput);
-        return await Task.Run(() =>
-        {
-            var result = (false, "", false);
-            try
-            {
-                using (Python.Runtime.Py.GIL())
-                {
-                    dynamic ytdlp = Python.Runtime.Py.Import("yt_dlp");
-                    var ytOpt = new Dictionary<string, dynamic>() {
-                        { "quiet", true },
-                        { "merge_output_format", "/" }
-                    };
-                    Python.Runtime.PyDict videoInfo = ytdlp.YoutubeDL(ytOpt).extract_info(url, download: false);
-                    if (videoInfo.HasKey("playlist_count"))
-                    {
-                        result = (false, "", true);
-                    }
-                    else
-                    {
-                        result = (true, videoInfo.HasKey("title") ? (videoInfo["title"].As<string?>() ?? "Video") : "Video", false);
-                    }
-                }
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-            }
-            using (Python.Runtime.Py.GIL())
-            {
-                outFile.close();
-            }
-            return result;
-        });
+        _overwriteFiles = overwriteFiles;
     }
 
     /// <summary>
@@ -176,14 +108,11 @@ public class Download : IDisposable
     {
         _progressCallback = progressCallback;
         IsDone = false;
-        if (File.Exists($"{SaveFolder}{Path.DirectorySeparatorChar}{Filename}"))
+        if (Directory.Exists(_tempDownloadPath))
         {
-            File.Delete($"{SaveFolder}{Path.DirectorySeparatorChar}{Filename}");
+            Directory.Delete(_tempDownloadPath, true);
         }
-        if (File.Exists(_logPath))
-        {
-            File.Delete(_logPath);
-        }
+        Directory.CreateDirectory(_tempDownloadPath);
         dynamic outFile = PythonExtensions.SetConsoleOutputFilePath(_logPath);
         return await Task.Run(() =>
         {
@@ -191,20 +120,21 @@ public class Download : IDisposable
             {
                 _pid = Python.Runtime.PythonEngine.GetPythonThreadID();
                 dynamic ytdlp = Python.Runtime.Py.Import("yt_dlp");
-                var hooks = new List<Action<Python.Runtime.PyDict>> { };
+                var hooks = new List<Action<Python.Runtime.PyDict>>();
                 hooks.Add(ProgressHook);
                 var ytOpt = new Dictionary<string, dynamic> {
-                        { "quiet", false },
-                        { "ignoreerrors", "downloadonly" },
-                        { "merge_output_format", "mp4/webm/mp3/opus/flac/wav" },
-                        { "final_ext", _fileType.ToString().ToLower() },
-                        { "progress_hooks", hooks },
-                        { "postprocessor_hooks", hooks },
-                        { "outtmpl", $"{SaveFolder}{Path.DirectorySeparatorChar}{Path.GetFileNameWithoutExtension(Filename)}.%(ext)s" },
-                        { "ffmpeg_location", DependencyManager.Ffmpeg },
-                        { "windowsfilenames", RuntimeInformation.IsOSPlatform(OSPlatform.Windows) },
-                        { "encoding", "utf_8" }
-                    };
+                    { "quiet", false },
+                    { "ignoreerrors", "downloadonly" },
+                    { "merge_output_format", "mp4/webm/mp3/opus/flac/wav" },
+                    { "final_ext", _fileType.ToString().ToLower() },
+                    { "progress_hooks", hooks },
+                    { "postprocessor_hooks", hooks },
+                    { "outtmpl", $"{SaveFolder}{Path.DirectorySeparatorChar}{Path.GetFileNameWithoutExtension(Filename)}.%(ext)s" },
+                    { "ffmpeg_location", DependencyManager.Ffmpeg },
+                    { "windowsfilenames", RuntimeInformation.IsOSPlatform(OSPlatform.Windows) },
+                    { "encoding", "utf_8" },
+                    { "overwrites", _overwriteFiles }
+                };
                 var postProcessors = new List<Dictionary<string, dynamic>>();
                 if (_fileType.GetIsAudio())
                 {

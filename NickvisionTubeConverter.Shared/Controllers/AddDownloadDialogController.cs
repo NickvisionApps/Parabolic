@@ -1,5 +1,6 @@
 using NickvisionTubeConverter.Shared.Helpers;
 using NickvisionTubeConverter.Shared.Models;
+using System.Collections.Generic;
 using System.IO;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -23,18 +24,14 @@ public enum DownloadCheckStatus
 /// </summary>
 public class AddDownloadDialogController
 {
-    private string? _previousUrl;
-    private string _saveFolder;
-    private string _saveFilename;
-
     /// <summary>
     /// The localizer to get translated strings from
     /// </summary>
     public Localizer Localizer { get; init; }
     /// <summary>
-    /// The download represented by the controller
+    /// The downloads created by the dialog
     /// </summary>
-    public Download? Download { get; private set; }
+    public List<Download> Downloads { get; init; }
     /// <summary>
     /// Whether or not the dialog was accepted (response)
     /// </summary>
@@ -43,82 +40,74 @@ public class AddDownloadDialogController
     /// <summary>
     /// The previously used save folder
     /// </summary>
-    public string PreviousSaveFolder => Configuration.Current.PreviousSaveFolder;
+    public string PreviousSaveFolder => Directory.Exists(Configuration.Current.PreviousSaveFolder) ? Configuration.Current.PreviousSaveFolder : "";
     /// <summary>
     /// The previously used MediaFileType
     /// </summary>
     public MediaFileType PreviousMediaFileType => Configuration.Current.PreviousMediaFileType;
-    /// <summary>
-    /// The save path
-    /// </summary>
-    public string SavePath => $"{_saveFolder}{Path.DirectorySeparatorChar}{_saveFilename}";
 
     /// <summary>
     /// Constructs a AddDownloadDialogController
     /// </summary>
     public AddDownloadDialogController(Localizer localizer)
     {
-        _previousUrl = null;
-        _saveFolder = "";
-        _saveFilename = "";
         Localizer = localizer;
-        Download = null;
+        Downloads = new List<Download>();
         Accepted = false;
     }
 
     /// <summary>
-    /// Updates the Download object
+    /// Searches for information about a video url
     /// </summary>
-    /// <param name="videoUrl">The url of the video to download</param>
-    /// <param name="mediaFileType">The file type to download the video as</param>
-    /// <param name="savePath">The path to save the download to</param>
-    /// <param name="quality">The quality of the download</param>
-    /// <param name="subtitles">The subtitles for the download</param>
-    /// <returns>The DownloadCheckStatus</returns>
-    public async Task<DownloadCheckStatus> UpdateDownloadAsync(string videoUrl, MediaFileType mediaFileType, string savePath, Quality quality, Subtitle subtitles)
+    /// <param name="videoUrl">The video url</param>
+    /// <returns>A VideoUrlInfo object for the url or null if url is invalid</returns>
+    public async Task<VideoUrlInfo?> SearchUrlAsync(string videoUrl) => await VideoUrlInfo.GetAsync(videoUrl);
+
+    /// <summary>
+    /// Numbers the videos in a VideoUrlInfo object
+    /// </summary>
+    /// <param name="videoUrlInfo">The VideoUrlInfo object</param>
+    public void ToggleNumberVideos(VideoUrlInfo videoUrlInfo, bool toggled)
     {
-        DownloadCheckStatus result = 0;
-        if (string.IsNullOrEmpty(savePath))
+        var numberedRegex = new Regex(@"[0-9] - ", RegexOptions.None);
+        for (var i = 0; i < videoUrlInfo.Videos.Count; i++)
         {
-            _saveFolder = PreviousSaveFolder;
-            if (!Directory.Exists(_saveFolder))
+            if (toggled)
             {
-                result |= DownloadCheckStatus.InvalidSaveFolder;
-            }
-        }
-        else
-        {
-            _saveFolder = Path.GetDirectoryName(savePath);
-            _saveFilename = Path.GetFileNameWithoutExtension(savePath) + mediaFileType.GetDotExtension();
-        }
-        if (string.IsNullOrEmpty(videoUrl))
-        {
-            result |= DownloadCheckStatus.EmptyVideoUrl;
-        }
-        else if (_previousUrl != videoUrl)
-        {
-            _previousUrl = videoUrl;
-            var (valid, title, playlist) = await Download.GetIsValidVideoUrlAsync(videoUrl);
-            if (!valid)
-            {
-                result |= playlist ? DownloadCheckStatus.PlaylistNotSupported : DownloadCheckStatus.InvalidVideoUrl;
+                videoUrlInfo.Videos[i].Title = $"{i + 1} - {videoUrlInfo.Videos[i].Title}";
             }
             else
             {
-                _saveFilename = title + mediaFileType.GetDotExtension();
+                var match = numberedRegex.Match(videoUrlInfo.Videos[i].Title);
+                if (match.Success)
+                {
+                    videoUrlInfo.Videos[i].Title = videoUrlInfo.Videos[i].Title.Remove(videoUrlInfo.Videos[i].Title.IndexOf(match.Value), match.Value.Length);
+                }
             }
         }
-        if (result != 0)
+    }
+
+    /// <summary>
+    /// Populates the downloads list
+    /// </summary>
+    /// <param name="videoUrlInfo">The VideoUrlInfo object</param>
+    /// <param name="mediaFileType">The media file type to download</param>
+    /// <param name="quality">The quality of the downloads</param>
+    /// <param name="subtitles">The subtitle format of the downloads</param>
+    /// <param name="saveFolder">The save folder of the downloads</param>
+    /// <param name="overwriteFiles">Whether or not to overwrite existing files</param>
+    public void PopulateDownloads(VideoUrlInfo videoUrlInfo, MediaFileType mediaFileType, Quality quality, Subtitle subtitles, string saveFolder, bool overwriteFiles)
+    {
+        Downloads.Clear();
+        foreach (var video in videoUrlInfo.Videos)
         {
-            return result;
+            if (video.ToDownload)
+            {
+                Downloads.Add(new Download(video.Url, mediaFileType, saveFolder, video.Title, overwriteFiles, quality, subtitles));
+            }
         }
-        Download = new Download(videoUrl, mediaFileType, _saveFolder, _saveFilename, quality, subtitles);
-        if (!string.IsNullOrEmpty(_saveFolder) && !Regex.Match(_saveFolder, @"^\/run\/user\/.*\/doc\/.*").Success)
-        {
-            Configuration.Current.PreviousSaveFolder = _saveFolder;
-        }
+        Configuration.Current.PreviousSaveFolder = saveFolder;
         Configuration.Current.PreviousMediaFileType = mediaFileType;
         Configuration.Current.Save();
-        return DownloadCheckStatus.Valid;
     }
 }

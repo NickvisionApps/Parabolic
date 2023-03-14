@@ -127,25 +127,12 @@ public class MainWindowController : IDisposable
         }
         if (disposing)
         {
-            var pathToOutput = $"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}{Path.DirectorySeparatorChar}Nickvision{Path.DirectorySeparatorChar}{AppInfo.Current.Name}{Path.DirectorySeparatorChar}output.log";
             Localizer.Dispose();
             Python.Runtime.PythonEngine.EndAllowThreads(_pythonThreadState);
             Python.Runtime.PythonEngine.Shutdown();
-            if (File.Exists(pathToOutput))
+            if (Directory.Exists(Configuration.TempDir))
             {
-                File.Delete(pathToOutput);
-            }
-            foreach (var row in _downloadingRows)
-            {
-                row.Dispose();
-            }
-            foreach (var row in _completedRows)
-            {
-                row.Dispose();
-            }
-            foreach (var row in _queuedRows)
-            {
-                row.Dispose();
+                Directory.Delete(Configuration.TempDir, true);
             }
         }
         _disposed = true;
@@ -157,11 +144,11 @@ public class MainWindowController : IDisposable
     public async Task StartupAsync()
     {
         Configuration.Current.Saved += ConfigurationSaved;
-        var pathToConfig = $"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}{Path.DirectorySeparatorChar}Nickvision{Path.DirectorySeparatorChar}{AppInfo.Current.Name}{Path.DirectorySeparatorChar}";
-        foreach (var file in Directory.EnumerateFiles(pathToConfig, "*.log", SearchOption.TopDirectoryOnly))
+        if (Directory.Exists(Configuration.TempDir))
         {
-            File.Delete(file);
+            Directory.Delete(Configuration.TempDir, true);
         }
+        Directory.CreateDirectory(Configuration.TempDir);
         if (!await DependencyManager.SetupDependenciesAsync())
         {
             NotificationSent?.Invoke(this, new NotificationSentEventArgs(Localizer["DependencyError"], NotificationSeverity.Error));
@@ -184,7 +171,7 @@ public class MainWindowController : IDisposable
     /// Adds a download row to the window
     /// </summary>
     /// <param name="download">The download model for the row</param>
-    public async Task AddDownloadAsync(Download download)
+    public void AddDownload(Download download)
     {
         var newRow = UICreateDownloadRow!(download);
         newRow.DownloadCompletedAsyncCallback = DownloadCompletedAsync;
@@ -194,7 +181,7 @@ public class MainWindowController : IDisposable
         {
             _downloadingRows.Add(newRow);
             UIMoveDownloadRow!(newRow, DownloadStage.Downloading);
-            await newRow.RunAsync(Configuration.Current.EmbedMetadata);
+            newRow.RunAsync(Configuration.Current.EmbedMetadata).FireAndForget();
         }
         else
         {
@@ -223,15 +210,15 @@ public class MainWindowController : IDisposable
     /// </summary>
     /// <param name="sender">object?</param>
     /// <param name="e">EventArgs</param>
-    private async void ConfigurationSaved(object? sender, EventArgs e)
+    private void ConfigurationSaved(object? sender, EventArgs e)
     {
-        if (_downloadingRows.Count < Configuration.Current.MaxNumberOfActiveDownloads && _queuedRows.Count > 0)
+        while (_downloadingRows.Count < Configuration.Current.MaxNumberOfActiveDownloads && _queuedRows.Count > 0)
         {
             var queuedRow = _queuedRows[0];
             _downloadingRows.Add(queuedRow);
             _queuedRows.RemoveAt(0);
             UIMoveDownloadRow!(queuedRow, DownloadStage.Downloading);
-            await queuedRow.RunAsync(Configuration.Current.EmbedMetadata);
+            queuedRow.RunAsync(Configuration.Current.EmbedMetadata).FireAndForget();
         }
     }
 

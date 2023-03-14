@@ -117,6 +117,25 @@ public partial class MainWindow : Adw.ApplicationWindow
     private void NotificationSent(object? sender, NotificationSentEventArgs e) => _toastOverlay.AddToast(Adw.Toast.New(e.Message));
 
     /// <summary>
+    /// Sends a shell notification
+    /// </summary>
+    /// <param name="e">ShellNotificationSentEventArgs</param>
+    private void SendShellNotification(ShellNotificationSentEventArgs e)
+    {
+        var notification = Gio.Notification.New(e.Title);
+        notification.SetBody(e.Message);
+        notification.SetPriority(e.Severity switch
+        {
+            NotificationSeverity.Success => Gio.NotificationPriority.High,
+            NotificationSeverity.Warning => Gio.NotificationPriority.Urgent,
+            NotificationSeverity.Error => Gio.NotificationPriority.Urgent,
+            _ => Gio.NotificationPriority.Normal
+        });
+        notification.SetIcon(Gio.ThemedIcon.New($"{_controller.AppInfo.ID}-symbolic"));
+        _application.SendNotification(_controller.AppInfo.ID, notification);
+    }
+
+    /// <summary>
     /// Occurs when the window tries to close
     /// </summary>
     /// <param name="sender">Gtk.Window</param>
@@ -168,7 +187,9 @@ public partial class MainWindow : Adw.ApplicationWindow
         if (parent == box)
         {
             return;
-        } else if (parent != null) {
+        }
+        else if (parent != null)
+        {
             DeleteDownloadRow(row, (Gtk.Box)parent);
         }
         if (box.GetFirstChild() != null)
@@ -178,6 +199,10 @@ public partial class MainWindow : Adw.ApplicationWindow
         }
         box.Append(gtkRow);
         box.GetParent().SetVisible(true);
+        if (stage == DownloadStage.Completed && !GetFocus()!.GetHasFocus())
+        {
+            SendShellNotification(new ShellNotificationSentEventArgs(_controller.Localizer["DownloadFinished"], string.Format(_controller.Localizer["DownloadFinished", "Description"], $"\"{row.Filename}\""), NotificationSeverity.Success));
+        }
     }
 
     /// <summary>
@@ -202,16 +227,19 @@ public partial class MainWindow : Adw.ApplicationWindow
     /// </summary>
     /// <param name="sender">Gio.SimpleAction</param>
     /// <param name="e">EventArgs</param>
-    private async void AddDownload(Gio.SimpleAction sender, EventArgs e)
+    private void AddDownload(Gio.SimpleAction sender, EventArgs e)
     {
         var addController = _controller.CreateAddDownloadDialogController();
         var addDialog = new AddDownloadDialog(addController, this);
-        await addDialog.ShowAsync();
-        addDialog.OnResponse += async (sender, e) =>
+        addDialog.Show();
+        addDialog.OnResponse += (sender, e) =>
         {
             if (addController.Accepted)
             {
-                await _controller.AddDownloadAsync(addController.Download!);
+                foreach (var download in addController.Downloads)
+                {
+                    _controller.AddDownload(download);
+                }
             }
             addDialog.Destroy();
         };

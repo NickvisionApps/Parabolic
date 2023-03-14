@@ -1,5 +1,7 @@
+using Microsoft.UI;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Media;
 using NickvisionTubeConverter.Shared.Controls;
 using NickvisionTubeConverter.Shared.Helpers;
 using NickvisionTubeConverter.Shared.Models;
@@ -14,7 +16,6 @@ namespace NickvisionTubeConverter.WinUI.Controls;
 /// </summary>
 public sealed partial class DownloadRow : UserControl, IDownloadRowControl
 {
-    private bool _disposed;
     private readonly Localizer _localizer;
     private readonly Download _download;
     private bool? _previousEmbedMetadata;
@@ -34,6 +35,10 @@ public sealed partial class DownloadRow : UserControl, IDownloadRowControl
     public Func<IDownloadRowControl, Task>? DownloadRetriedAsyncCallback { get; set; }
 
     /// <summary>
+    /// The filename of the download
+    /// </summary>
+    public string Filename => _download.Filename;
+    /// <summary>
     /// Whether or not the download is done
     /// </summary>
     public bool IsDone => _download.IsDone;
@@ -46,7 +51,6 @@ public sealed partial class DownloadRow : UserControl, IDownloadRowControl
     public DownloadRow(Localizer localizer, Download download)
     {
         InitializeComponent();
-        _disposed = false;
         _localizer = localizer;
         _download = download;
         _previousEmbedMetadata = null;
@@ -66,31 +70,6 @@ public sealed partial class DownloadRow : UserControl, IDownloadRowControl
         ToolTipService.SetToolTip(BtnOpenSaveFolder, _localizer["OpenSaveFolder"]);
         //Load
         LblUrl.Text = _download.VideoUrl;
-    }
-
-    /// <summary>
-    /// Frees resources used by the DownloadRow object
-    /// </summary>
-    public void Dispose()
-    {
-        Dispose(true);
-        GC.SuppressFinalize(this);
-    }
-
-    /// <summary>
-    /// Frees resources used by the DownloadRow object
-    /// </summary>
-    private void Dispose(bool disposing)
-    {
-        if (_disposed)
-        {
-            return;
-        }
-        if (disposing)
-        {
-            _download.Dispose();
-        }
-        _disposed = true;
     }
 
     /// <summary>
@@ -115,6 +94,8 @@ public sealed partial class DownloadRow : UserControl, IDownloadRowControl
         {
             App.MainWindow!.DispatcherQueue.TryEnqueue(() =>
             {
+                Icon.Foreground = (SolidColorBrush)Application.Current.Resources["AccentAAFillColorDefaultBrush"];
+                ProgBar.Foreground = (SolidColorBrush)Application.Current.Resources["AccentAAFillColorDefaultBrush"];
                 LblLog.Text = state.Log;
                 ScrollLog.UpdateLayout();
                 ScrollLog.ScrollToVerticalOffset(ScrollLog.ScrollableHeight);
@@ -140,9 +121,11 @@ public sealed partial class DownloadRow : UserControl, IDownloadRowControl
         });
         if (!_wasStopped)
         {
+            Icon.Foreground = new SolidColorBrush(success ? Colors.ForestGreen : Colors.Red);
             Icon.Glyph = success ? "\uE10B" : "\uE10A";
             ProgBar.IsIndeterminate = false;
             ProgBar.Value = 1;
+            ProgBar.Foreground = new SolidColorBrush(success ? Colors.ForestGreen : Colors.Red);
             LblStatus.Text = success ? _localizer["Success"] : _localizer["Error"];
             BtnStop.Visibility = Visibility.Collapsed;
             BtnRetry.Visibility = !success ? Visibility.Visible : Visibility.Collapsed;
@@ -164,6 +147,7 @@ public sealed partial class DownloadRow : UserControl, IDownloadRowControl
         Icon.Glyph = "\uE10A";
         ProgBar.IsIndeterminate = false;
         ProgBar.Value = 1;
+        ProgBar.Foreground = new SolidColorBrush(Colors.Red);
         LblStatus.Text = _localizer["Stopped"];
         BtnStop.Visibility = Visibility.Collapsed;
         BtnRetry.Visibility = Visibility.Visible;

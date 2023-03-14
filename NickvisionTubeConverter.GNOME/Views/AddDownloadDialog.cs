@@ -1,11 +1,12 @@
+using NickvisionTubeConverter.GNOME.Controls;
 using NickvisionTubeConverter.GNOME.Helpers;
 using NickvisionTubeConverter.Shared.Controllers;
 using NickvisionTubeConverter.Shared.Models;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
 namespace NickvisionTubeConverter.GNOME.Views;
 
@@ -42,31 +43,46 @@ public partial class AddDownloadDialog : Adw.MessageDialog
     private delegate void GAsyncReadyCallback(nint source, nint res, nint user_data);
 
     [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
-    private static partial void gtk_file_dialog_save(nint dialog, nint parent, nint cancellable, GAsyncReadyCallback callback, nint user_data);
+    private static partial void gtk_file_dialog_select_folder(nint dialog, nint parent, nint cancellable, GAsyncReadyCallback callback, nint user_data);
 
     [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
-    private static partial nint gtk_file_dialog_save_finish(nint dialog, nint result, nint error);
+    private static partial nint gtk_file_dialog_select_folder_finish(nint dialog, nint result, nint error);
 
-    private GAsyncReadyCallback _saveCallback { get; set; }
-
-    private bool _constructing;
     private readonly Gtk.Window _parent;
     private readonly AddDownloadDialogController _controller;
+    private VideoUrlInfo? _videoUrlInfo;
+    private GAsyncReadyCallback? _saveCallback;
 
+    [Gtk.Connect] private readonly Adw.ViewStack _viewStack;
     [Gtk.Connect] private readonly Adw.EntryRow _urlRow;
     [Gtk.Connect] private readonly Gtk.Spinner _urlSpinner;
+    [Gtk.Connect] private readonly Gtk.ScrolledWindow _scrollDownload;
+    [Gtk.Connect] private readonly Gtk.Button _backButton;
+    [Gtk.Connect] private readonly Gtk.Label _titleLabel;
     [Gtk.Connect] private readonly Adw.ComboRow _fileTypeRow;
     [Gtk.Connect] private readonly Adw.ComboRow _qualityRow;
     [Gtk.Connect] private readonly Adw.ComboRow _subtitleRow;
-    [Gtk.Connect] private readonly Adw.EntryRow _savePathRow;
+    [Gtk.Connect] private readonly Adw.EntryRow _saveFolderRow;
     [Gtk.Connect] private readonly Gtk.MenuButton _saveWarning;
-    [Gtk.Connect] private readonly Gtk.Button _selectPathButton;
+    [Gtk.Connect] private readonly Gtk.Button _selectSaveFolderButton;
+    [Gtk.Connect] private readonly Gtk.Switch _overwriteSwitch;
+    [Gtk.Connect] private readonly Gtk.ToggleButton _numberVideosButton;
+    [Gtk.Connect] private readonly Adw.PreferencesGroup _videosGroup;
+    private readonly List<VideoRow> _videoRows;
 
+    /// <summary>
+    /// Constructs an AddDownloadDialog
+    /// </summary>
+    /// <param name="builder">Gtk.Builder</param>
+    /// <param name="controller">AddDownloadDialogController</param>
+    /// <param name="parent">Gtk.Window</param>
     private AddDownloadDialog(Gtk.Builder builder, AddDownloadDialogController controller, Gtk.Window parent) : base(builder.GetPointer("_root"), false)
     {
-        _constructing = true;
         _parent = parent;
         _controller = controller;
+        _videoUrlInfo = null;
+        _saveCallback = null;
+        _videoRows = new List<VideoRow>();
         //Dialog Settings
         SetTransientFor(parent);
         AddResponse("cancel", controller.Localizer["Cancel"]);
@@ -74,191 +90,159 @@ public partial class AddDownloadDialog : Adw.MessageDialog
         AddResponse("ok", controller.Localizer["Download"]);
         SetDefaultResponse("ok");
         SetResponseAppearance("ok", Adw.ResponseAppearance.Suggested);
-        OnResponse += (sender, e) => controller.Accepted = e.Response == "ok";
+        OnResponse += Response;
         //Build UI
         builder.Connect(this);
-        _urlRow.OnNotify += async (sender, e) =>
+        _urlRow.OnApply += SearchUrl;
+        _backButton.OnClicked += (sender, e) =>
         {
-            if (e.Pspec.GetName() == "text")
-            {
-                if (!_constructing)
-                {
-                    await ValidateAsync();
-                }
-            }
+            _viewStack.SetVisibleChildName("pageUrl");
+            _scrollDownload.SetVisible(false);
+            _urlRow.SetText("");
+            SetResponseEnabled("ok", false);
         };
         _fileTypeRow.OnNotify += async (sender, e) =>
         {
             if (e.Pspec.GetName() == "selected-item")
             {
-                if (!_constructing)
-                {
-                    await ValidateAsync();
-                }
+                _subtitleRow.SetSensitive(((MediaFileType)_fileTypeRow.GetSelected()).GetIsVideo());
             }
         };
-        _qualityRow.OnNotify += async (sender, e) =>
-        {
-            if (e.Pspec.GetName() == "selected-item")
-            {
-                if (!_constructing)
-                {
-                    await ValidateAsync();
-                }
-            }
-        };
-        _subtitleRow.OnNotify += async (sender, e) =>
-        {
-            if (e.Pspec.GetName() == "selected-item")
-            {
-                if (!_constructing)
-                {
-                    await ValidateAsync();
-                }
-            }
-        };
-        _selectPathButton.OnClicked += SelectSavePath;
-        _savePathRow.OnNotify += (sender, e) =>
-        {
-            if (e.Pspec.GetName() == "text")
-            {
-                _saveWarning.SetVisible(Regex.Match(_savePathRow.GetText(), @"^\/run\/user\/.*\/doc\/.*").Success);
-            }
-        };
+        _selectSaveFolderButton.OnClicked += SelectSaveFolder;
+        _numberVideosButton.OnClicked += ToggleNumberVideos;
         //Load
+        _viewStack.SetVisibleChildName("pageUrl");
+        SetResponseEnabled("ok", false);
         _fileTypeRow.SetSelected((uint)_controller.PreviousMediaFileType);
-        _constructing = false;
+        _saveFolderRow.SetText(_controller.PreviousSaveFolder);
     }
 
     /// <summary>
     /// Constructs an AddDownloadDialog
     /// </summary>
+    /// <param name="controller">AddDownloadDialogController</param>
+    /// <param name="parent">Gtk.Window</param>
     public AddDownloadDialog(AddDownloadDialogController controller, Gtk.Window parent) : this(Builder.FromFile("add_download_dialog.ui", controller.Localizer), controller, parent)
     {
     }
 
     /// <summary>
-    /// Shows the dialog
+    /// Occurs when the dialog is closed
     /// </summary>
-    public async Task ShowAsync()
+    /// <param name="sender">Adw.MessageDialog</param>
+    /// <param name="e">ResponseSignalArgs</param>
+    private void Response(Adw.MessageDialog sender, ResponseSignalArgs e)
     {
-        await ValidateAsync();
-        Show();
+        _controller.Accepted = e.Response == "ok";
+        if (_controller.Accepted)
+        {
+            _controller.PopulateDownloads(_videoUrlInfo!, (MediaFileType)_fileTypeRow.GetSelected(), (Quality)_qualityRow.GetSelected(), (Subtitle)_subtitleRow.GetSelected(), _saveFolderRow.GetText(), _overwriteSwitch.GetActive());
+        }
     }
 
     /// <summary>
-    /// Validates the dialog's input
+    /// Occurs when the video url is changed
     /// </summary>
-    private async Task ValidateAsync()
+    /// <param name="sender">Adw.EntryRow</param>
+    /// <param name="e">EventArgs</param>
+    private async void SearchUrl(Adw.EntryRow sender, EventArgs e)
     {
+        _urlSpinner.SetVisible(true);
         _urlSpinner.Start();
-        _urlRow.SetSensitive(false);
-        _fileTypeRow.SetSensitive(false);
-        _qualityRow.SetSensitive(false);
-        _subtitleRow.SetSensitive(false);
-        _savePathRow.SetSensitive(false);
-        var checkStatus = await _controller.UpdateDownloadAsync(_urlRow.GetText(), (MediaFileType)_fileTypeRow.GetSelected(), _savePathRow.GetText(), (Quality)_qualityRow.GetSelected(), (Subtitle)_subtitleRow.GetSelected());
+        SetResponseEnabled("ok", false);
+        _videoUrlInfo = await _controller.SearchUrlAsync(_urlRow.GetText());
         _urlSpinner.Stop();
-        _urlRow.SetSensitive(true);
-        _urlRow.RemoveCssClass("error");
-        _urlRow.SetTitle(_controller.Localizer["VideoUrl", "Field"]);
-        _savePathRow.RemoveCssClass("error");
-        _savePathRow.SetTitle(_controller.Localizer["SavePath", "Field"]);
-        _savePathRow.SetText(_controller.SavePath);
-        if (checkStatus == DownloadCheckStatus.Valid)
+        _urlSpinner.SetVisible(false);
+        if (_videoUrlInfo == null)
         {
-            _fileTypeRow.SetSensitive(true);
-            _qualityRow.SetSensitive(true);
-            _subtitleRow.SetSensitive(((MediaFileType)_fileTypeRow.GetSelected()).GetIsVideo());
-            _savePathRow.SetSensitive(true);
-            SetResponseEnabled("ok", true);
+            _urlRow.AddCssClass("error");
+            _urlRow.SetTitle(_controller.Localizer["VideoUrl", "Invalid"]);
         }
         else
         {
-            if (checkStatus.HasFlag(DownloadCheckStatus.EmptyVideoUrl))
+            _urlRow.RemoveCssClass("error");
+            _urlRow.SetTitle(_controller.Localizer["VideoUrl", "Field"]);
+            _scrollDownload.SetVisible(true);
+            _viewStack.SetVisibleChildName("pageDownload");
+            SetResponseEnabled("ok", !string.IsNullOrEmpty(_saveFolderRow.GetText()));
+            _titleLabel.SetText(_videoUrlInfo.Videos.Count > 1 ? _videoUrlInfo.PlaylistTitle! : _videoUrlInfo.Videos[0].Title);
+            _numberVideosButton.SetVisible(_videoUrlInfo.Videos.Count > 1 ? true : false);
+            foreach (var row in _videoRows)
             {
-                _urlRow.AddCssClass("error");
-                _urlRow.SetTitle(_controller.Localizer["VideoUrl", "Empty"]);
+                _videosGroup.Remove(row);
             }
-            if (checkStatus.HasFlag(DownloadCheckStatus.InvalidVideoUrl))
+            foreach (var videoInfo in _videoUrlInfo.Videos)
             {
-                _urlRow.AddCssClass("error");
-                _urlRow.SetTitle(_controller.Localizer["VideoUrl", "Invalid"]);
+                var row = new VideoRow(videoInfo, _controller.Localizer);
+                _videoRows.Add(row);
+                _videosGroup.Add(row);
             }
-            if (checkStatus.HasFlag(DownloadCheckStatus.PlaylistNotSupported))
-            {
-                _urlRow.AddCssClass("error");
-                _urlRow.SetTitle(_controller.Localizer["VideoUrl", "PlaylistNotSupported"]);
-            }
-            if (checkStatus.HasFlag(DownloadCheckStatus.InvalidSaveFolder))
-            {
-                _savePathRow.AddCssClass("error");
-                _savePathRow.SetTitle(_controller.Localizer["SavePath", "Invalid"]);
-                _fileTypeRow.SetSensitive(true);
-                _qualityRow.SetSensitive(true);
-                _subtitleRow.SetSensitive(((MediaFileType)_fileTypeRow.GetSelected()).GetIsVideo());
-                _savePathRow.SetSensitive(true);
-            }
-            SetResponseEnabled("ok", false);
         }
     }
 
     /// <summary>
-    /// Occurs when the select save path button is clicked
+    /// Occurs when the select save folder button is clicked
     /// </summary>
     /// <param name="sender">Gtk.Button</param>
     /// <param name="e">EventArgs</param>
-    private void SelectSavePath(Gtk.Button sender, EventArgs e)
+    private void SelectSaveFolder(Gtk.Button sender, EventArgs e)
     {
-        var filter = Gtk.FileFilter.New();
-        filter.SetName(((MediaFileType)_fileTypeRow.GetSelected()).GetDotExtension());
-        filter.AddPattern($"*{((MediaFileType)_fileTypeRow.GetSelected()).GetDotExtension()}");
         if (Gtk.Functions.GetMinorVersion() >= 9)
         {
-            var saveFileDialog = gtk_file_dialog_new();
-            gtk_file_dialog_set_title(saveFileDialog, _controller.Localizer["SelectSavePath"]);
-            var filters = Gio.ListStore.New(Gtk.FileFilter.GetGType());
-            filters.Append(filter);
-            gtk_file_dialog_set_filters(saveFileDialog, filters.Handle);
-            if (_savePathRow.GetText().Length > 0 && Directory.Exists(Path.GetDirectoryName(_savePathRow.GetText())) && _savePathRow.GetText() != "/")
+            var folderDialog = gtk_file_dialog_new();
+            gtk_file_dialog_set_title(folderDialog, _controller.Localizer["SelectSaveFolder"]);
+            if (Directory.Exists(_saveFolderRow.GetText()) && _saveFolderRow.GetText() != "/")
             {
-                var folder = Gio.FileHelper.NewForPath(Path.GetDirectoryName(_savePathRow.GetText()));
-                gtk_file_dialog_set_initial_folder(saveFileDialog, folder.Handle);
-                gtk_file_dialog_set_initial_name(saveFileDialog, Path.GetFileName(_savePathRow.GetText()));
+                var folder = Gio.FileHelper.NewForPath(_saveFolderRow.GetText());
+                gtk_file_dialog_set_initial_folder(folderDialog, folder.Handle);
             }
-            _saveCallback = async (source, res, data) =>
+            _saveCallback = (source, res, data) =>
             {
-                var fileHandle = gtk_file_dialog_save_finish(saveFileDialog, res, IntPtr.Zero);
+                var fileHandle = gtk_file_dialog_select_folder_finish(folderDialog, res, IntPtr.Zero);
                 if (fileHandle != IntPtr.Zero)
                 {
                     var path = g_file_get_path(fileHandle);
-                    _savePathRow.SetText(path);
-                    await ValidateAsync();
+                    _saveFolderRow.SetText(path);
+                    _saveWarning.SetVisible(Regex.Match(_saveFolderRow.GetText(), @"^\/run\/user\/.*\/doc\/.*").Success);
+                    SetResponseEnabled("ok", true);
                 }
             };
-            gtk_file_dialog_save(saveFileDialog, Handle, IntPtr.Zero, _saveCallback, IntPtr.Zero);
+            gtk_file_dialog_select_folder(folderDialog, Handle, IntPtr.Zero, _saveCallback, IntPtr.Zero);
         }
         else
         {
-            var fileDialog = Gtk.FileChooserNative.New(_controller.Localizer["SelectSavePath"], _parent, Gtk.FileChooserAction.Save, _controller.Localizer["OK"], _controller.Localizer["Cancel"]);
-            fileDialog.SetModal(true);
-            fileDialog.SetFilter(filter);
-            if (_savePathRow.GetText().Length > 0 && Directory.Exists(Path.GetDirectoryName(_savePathRow.GetText())) && _savePathRow.GetText() != "/")
+            var folderDialog = Gtk.FileChooserNative.New(_controller.Localizer["SelectSaveFolder"], _parent, Gtk.FileChooserAction.SelectFolder, _controller.Localizer["OK"], _controller.Localizer["Cancel"]);
+            folderDialog.SetModal(true);
+            if (Directory.Exists(_saveFolderRow.GetText()) && _saveFolderRow.GetText() != "/")
             {
-                var folder = Gio.FileHelper.NewForPath(Path.GetDirectoryName(_savePathRow.GetText()));
-                gtk_file_chooser_set_current_folder(fileDialog.Handle, folder.Handle, IntPtr.Zero);
-                gtk_file_chooser_set_current_name(fileDialog.Handle, Path.GetFileName(_savePathRow.GetText()));
+                var folder = Gio.FileHelper.NewForPath(_saveFolderRow.GetText());
+                gtk_file_chooser_set_current_folder(folderDialog.Handle, folder.Handle, IntPtr.Zero);
             }
-            fileDialog.OnResponse += async (sender, e) =>
+            folderDialog.OnResponse += (sender, e) =>
             {
                 if (e.ResponseId == (int)Gtk.ResponseType.Accept)
                 {
-                    var path = fileDialog.GetFile()!.GetPath() ?? "";
-                    _savePathRow.SetText(path);
-                    await ValidateAsync();
+                    var path = folderDialog.GetFile()!.GetPath() ?? "";
+                    _saveFolderRow.SetText(path);
+                    _saveWarning.SetVisible(Regex.Match(_saveFolderRow.GetText(), @"^\/run\/user\/.*\/doc\/.*").Success);
+                    SetResponseEnabled("ok", true);
                 }
             };
-            fileDialog.Show();
+            folderDialog.Show();
+        }
+    }
+
+    /// <summary>
+    /// Occurs when the number videos toggle button is clicked
+    /// </summary>
+    /// <param name="sender">Gtk.Button</param>
+    /// <param name="e">EventArgs</param>
+    private void ToggleNumberVideos(Gtk.Button sender, EventArgs e)
+    {
+        _controller.ToggleNumberVideos(_videoUrlInfo!, _numberVideosButton.GetActive());
+        foreach (var row in _videoRows)
+        {
+            row.UpdateTitle();
         }
     }
 }
