@@ -9,6 +9,10 @@ namespace NickvisionTubeConverter.Shared.Controls;
 public interface IDownloadRowControl : IDisposable
 {
     /// <summary>
+    /// The filename of the download
+    /// </summary>
+    public string Filename { get; }
+    /// <summary>
     /// Whether or not the download is done
     /// </summary>
     public bool IsDone { get; }

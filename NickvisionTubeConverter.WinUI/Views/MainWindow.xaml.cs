@@ -5,6 +5,8 @@ using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
+using Microsoft.Windows.AppNotifications;
+using Microsoft.Windows.AppNotifications.Builder;
 using NickvisionTubeConverter.Shared.Controllers;
 using NickvisionTubeConverter.Shared.Controls;
 using NickvisionTubeConverter.Shared.Events;
@@ -242,6 +244,16 @@ public sealed partial class MainWindow : Window
     }
 
     /// <summary>
+    /// Sends a shell notification
+    /// </summary>
+    /// <param name="e">ShellNotificationSentEventArgs</param>
+    private void SendShellNotification(ShellNotificationSentEventArgs e)
+    {
+        var notificationBuilder = new AppNotificationBuilder().AddText(e.Title, new AppNotificationTextProperties().SetMaxLines(1)).AddText(e.Message);
+        AppNotificationManager.Default.Show(notificationBuilder.BuildNotification());
+    }
+
+    /// <summary>
     /// Creates a download row
     /// </summary>
     /// <param name="download">The download model</param>
@@ -273,6 +285,10 @@ public sealed partial class MainWindow : Window
         else if (stage == DownloadStage.Completed)
         {
             ListCompleted.Items.Add(row);
+            if(!_isActived)
+            {
+                SendShellNotification(new ShellNotificationSentEventArgs(_controller.Localizer["DownloadFinished"], string.Format(_controller.Localizer["DownloadFinished", "Description"], $"\"{row.Filename}\""), NotificationSeverity.Success));
+            }
         }
         SectionDownloading.Visibility = ListDownloading.Items.Count > 0 ? Visibility.Visible : Visibility.Collapsed;
         SectionCompleted.Visibility = ListCompleted.Items.Count > 0 ? Visibility.Visible : Visibility.Collapsed;

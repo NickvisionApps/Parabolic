@@ -54,6 +54,7 @@ public partial class MainWindow : Adw.ApplicationWindow
         greetingLabel.AddCssClass("greeting-title");
         //Register Events 
         _controller.NotificationSent += NotificationSent;
+        _controller.ShellNotificationSent += NotificationSent;
         _controller.UICreateDownloadRow = CreateDownloadRow;
         _controller.UIMoveDownloadRow = MoveDownloadRow;
         _controller.UIDeleteDownloadRowFromQueue = (row) => DeleteDownloadRow(row, _queuedBox);
@@ -115,6 +116,25 @@ public partial class MainWindow : Adw.ApplicationWindow
     /// <param name="sender">object?</param>
     /// <param name="e">NotificationSentEventArgs</param>
     private void NotificationSent(object? sender, NotificationSentEventArgs e) => _toastOverlay.AddToast(Adw.Toast.New(e.Message));
+
+    /// <summary>
+    /// Sends a shell notification
+    /// </summary>
+    /// <param name="e">ShellNotificationSentEventArgs</param>
+    private void SendShellNotification(ShellNotificationSentEventArgs e)
+    {
+        var notification = Gio.Notification.New(e.Title);
+        notification.SetBody(e.Message);
+        notification.SetPriority(e.Severity switch
+        {
+            NotificationSeverity.Success => Gio.NotificationPriority.High,
+            NotificationSeverity.Warning => Gio.NotificationPriority.Urgent,
+            NotificationSeverity.Error => Gio.NotificationPriority.Urgent,
+            _ => Gio.NotificationPriority.Normal
+        });
+        notification.SetIcon(Gio.ThemedIcon.New($"{_controller.AppInfo.ID}-symbolic"));
+        _application.SendNotification(_controller.AppInfo.ID, notification);
+    }
 
     /// <summary>
     /// Occurs when the window tries to close
@@ -180,6 +200,10 @@ public partial class MainWindow : Adw.ApplicationWindow
         }
         box.Append(gtkRow);
         box.GetParent().SetVisible(true);
+        if (stage == DownloadStage.Completed && !GetFocus()!.GetHasFocus())
+        {
+            SendShellNotification(new ShellNotificationSentEventArgs(_controller.Localizer["DownloadFinished"], string.Format(_controller.Localizer["DownloadFinished", "Description"], $"\"{row.Filename}\""), NotificationSeverity.Success));
+        }
     }
 
     /// <summary>

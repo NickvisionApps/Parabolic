@@ -36,6 +36,10 @@ public sealed partial class DownloadRow : UserControl, IDownloadRowControl
     public Func<IDownloadRowControl, Task>? DownloadRetriedAsyncCallback { get; set; }
 
     /// <summary>
+    /// The filename of the download
+    /// </summary>
+    public string Filename => _download.Filename;
+    /// <summary>
     /// Whether or not the download is done
     /// </summary>
     public bool IsDone => _download.IsDone;
