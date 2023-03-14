@@ -126,6 +126,14 @@ _install_extras PREFIX: && (_translate_meta PREFIX)
     --set-value='{{PREFIX}}/bin/{{app_id}}' \
     {{builddir}}{{PREFIX}}/share/applications/{{app_id}}.desktop
 
+    # Installing DBUS service
+    mkdir -p {{builddir}}{{PREFIX}}/share/dbus-1/services
+    cat > {{builddir}}{{PREFIX}}/share/dbus-1/services/{{app_id}}.service << EOF{{"\n"}}\
+    [D-BUS Service]{{"\n"}}\
+    Name={{app_id}}{{"\n"}}\
+    Exec={{PREFIX}}/bin/{{app_id}} --gapplication-service{{"\n"}}\
+    EOF
+
     # Installing metainfo
     mkdir -p {{builddir}}{{PREFIX}}/share/metainfo
     cp ./{{app_id}}.metainfo.xml {{builddir}}{{PREFIX}}/share/metainfo/
