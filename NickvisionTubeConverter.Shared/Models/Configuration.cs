@@ -17,6 +17,7 @@ public class Configuration
     /// The directory to store temporary files
     /// </summary>
     public static readonly string TempDir = $"{Environment.GetFolderPath(Environment.SpecialFolder.UserProfile)}{Path.DirectorySeparatorChar}.tc-temp";
+
     private static readonly string ConfigPath = $"{ConfigDir}{Path.DirectorySeparatorChar}config.json";
     private static Configuration? _instance;
 
