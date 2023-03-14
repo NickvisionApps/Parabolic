@@ -56,6 +56,7 @@ public partial class AddDownloadDialog : Adw.MessageDialog
     [Gtk.Connect] private readonly Adw.ViewStack _viewStack;
     [Gtk.Connect] private readonly Adw.EntryRow _urlRow;
     [Gtk.Connect] private readonly Gtk.Spinner _urlSpinner;
+    [Gtk.Connect] private readonly Gtk.ScrolledWindow _scrollDownload;
     [Gtk.Connect] private readonly Gtk.Button _backButton;
     [Gtk.Connect] private readonly Gtk.Label _titleLabel;
     [Gtk.Connect] private readonly Adw.ComboRow _fileTypeRow;
@@ -96,6 +97,7 @@ public partial class AddDownloadDialog : Adw.MessageDialog
         _backButton.OnClicked += (sender, e) =>
         {
             _viewStack.SetVisibleChildName("pageUrl");
+            _scrollDownload.SetVisible(false);
             _urlRow.SetText("");
             SetResponseEnabled("ok", false);
         };
@@ -158,6 +160,7 @@ public partial class AddDownloadDialog : Adw.MessageDialog
         {
             _urlRow.RemoveCssClass("error");
             _urlRow.SetTitle(_controller.Localizer["VideoUrl", "Field"]);
+            _scrollDownload.SetVisible(true);
             _viewStack.SetVisibleChildName("pageDownload");
             SetResponseEnabled("ok", !string.IsNullOrEmpty(_saveFolderRow.GetText()));
             _titleLabel.SetText(_videoUrlInfo.Videos.Count > 1 ? _videoUrlInfo.PlaylistTitle! : _videoUrlInfo.Videos[0].Title);

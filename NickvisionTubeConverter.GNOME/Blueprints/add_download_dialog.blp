@@ -32,8 +32,9 @@ Adw.MessageDialog _root {
 
     Adw.ViewStackPage {
       name: "pageDownload";
-      child: Gtk.ScrolledWindow {
+      child: Gtk.ScrolledWindow _scrollDownload {
         height-request: 380;
+        visible: false;
 
         Gtk.Box {
           orientation: vertical;
