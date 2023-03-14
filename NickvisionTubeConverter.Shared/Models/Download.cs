@@ -159,12 +159,11 @@ public class Download : IDisposable
                         { "final_ext", _fileType.ToString().ToLower() },
                         { "progress_hooks", hooks },
                         { "postprocessor_hooks", hooks },
-                        { "outtmpl", $"{Path.GetFileNameWithoutExtension(Filename)}.%(ext)s" },
+                        { "outtmpl", $"{SaveFolder}{Path.DirectorySeparatorChar}{Path.GetFileNameWithoutExtension(Filename)}.%(ext)s" },
                         { "ffmpeg_location", DependencyManager.Ffmpeg },
                         { "windowsfilenames", RuntimeInformation.IsOSPlatform(OSPlatform.Windows) },
                         { "encoding", "utf_8" },
-                        { "overwrites", _overwriteFiles },
-                        { "paths", new Dictionary<string, string>() { { "home", $"{SaveFolder}{Path.DirectorySeparatorChar}" }, { "temp", _tempDownloadPath } } }
+                        { "overwrites", _overwriteFiles }
                 };
                 var postProcessors = new List<Dictionary<string, dynamic>>();
                 if (_fileType.GetIsAudio())
