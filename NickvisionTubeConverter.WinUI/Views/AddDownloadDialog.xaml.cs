@@ -58,6 +58,7 @@ public sealed partial class AddDownloadDialog : ContentDialog
         CmbSubtitle.SelectedIndex = 0;
         TxtSaveFolder.Header = _controller.Localizer["SaveFolder", "Field"];
         ToolTipService.SetToolTip(BtnSelectSaveFolder, _controller.Localizer["SelectSaveFolder"]);
+        ChkOverwriteFiles.Content = _controller.Localizer["OverwriteExistingFiles"];
         LblNumberVideos.Text = _controller.Localizer["NumberVideos"];
         TxtErrors.Text = _controller.Localizer["FixErrors", "WinUI"];
         //Load
@@ -80,7 +81,7 @@ public sealed partial class AddDownloadDialog : ContentDialog
             return false;
         }
         _controller.Accepted = true;
-        _controller.PopulateDownloads(_videoUrlInfo!, (MediaFileType)CmbFileType.SelectedIndex, (Quality)CmbQuality.SelectedIndex, (Subtitle)CmbSubtitle.SelectedIndex, TxtSaveFolder.Text);
+        _controller.PopulateDownloads(_videoUrlInfo!, (MediaFileType)CmbFileType.SelectedIndex, (Quality)CmbQuality.SelectedIndex, (Subtitle)CmbSubtitle.SelectedIndex, TxtSaveFolder.Text, ChkOverwriteFiles.IsChecked ?? false);
         return true;
     }
 

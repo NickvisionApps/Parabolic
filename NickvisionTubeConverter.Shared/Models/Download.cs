@@ -48,6 +48,7 @@ public class Download : IDisposable
     private readonly MediaFileType _fileType;
     private readonly Quality _quality;
     private readonly Subtitle _subtitle;
+    private readonly bool _overwriteFiles;
     private readonly string _logPath;
     private Action<DownloadProgressState>? _progressCallback;
     private ulong? _pid;
@@ -75,16 +76,18 @@ public class Download : IDisposable
     /// <param name="videoUrl">The url of the video to download</param>
     /// <param name="fileType">The file type to download the video as</param>
     /// <param name="saveFolder">The folder to save the download to</param>
-    /// <param name="newFilename">The filename to save the download as</param>
+    /// <param name="saveFilename">The filename to save the download as</param>
+    /// <param name="overwriteFiles">Whether or not to overwrite existing files</param>
     /// <param name="quality">The quality of the download</param>
     /// <param name="subtitle">The subtitles for the download</param>
-    public Download(string videoUrl, MediaFileType fileType, string saveFolder, string saveFilename, Quality quality = Quality.Best, Subtitle subtitle = Subtitle.None)
+    public Download(string videoUrl, MediaFileType fileType, string saveFolder, string saveFilename, bool overwriteFiles, Quality quality = Quality.Best, Subtitle subtitle = Subtitle.None)
     {
         _disposed = false;
         _id = Guid.NewGuid();
         _fileType = fileType;
         _quality = quality;
         _subtitle = subtitle;
+        _overwriteFiles = overwriteFiles;
         _logPath = $"{Configuration.ConfigDir}{Path.DirectorySeparatorChar}{_id}.log";
         _progressCallback = null;
         _pid = null;
@@ -92,6 +95,7 @@ public class Download : IDisposable
         SaveFolder = saveFolder;
         Filename = $"{saveFilename}{_fileType.GetDotExtension()}";
         IsDone = false;
+        _overwriteFiles = overwriteFiles;
     }
 
     /// <summary>
@@ -159,7 +163,8 @@ public class Download : IDisposable
                         { "outtmpl", $"{SaveFolder}{Path.DirectorySeparatorChar}{Path.GetFileNameWithoutExtension(Filename)}.%(ext)s" },
                         { "ffmpeg_location", DependencyManager.Ffmpeg },
                         { "windowsfilenames", RuntimeInformation.IsOSPlatform(OSPlatform.Windows) },
-                        { "encoding", "utf_8" }
+                        { "encoding", "utf_8" },
+                        { "overwrites", _overwriteFiles }
                     };
                 var postProcessors = new List<Dictionary<string, dynamic>>();
                 if (_fileType.GetIsAudio())

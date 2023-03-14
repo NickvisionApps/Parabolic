@@ -5,6 +5,7 @@ Adw.MessageDialog _root {
   heading: _("AddDownload");
   hide-on-close: true;
   modal: true;
+  width-request: 440;
 
   Adw.ViewStack _viewStack {
 	Adw.ViewStackPage {
@@ -15,8 +16,8 @@ Adw.MessageDialog _root {
 
 		Adw.PreferencesGroup {
 		  Adw.EntryRow _urlRow {
-            width-request: 420;
 		    title: _("VideoUrl.Field");
+			width-request: 420;
 		    show-apply-button: true;
 		  }
 		}
@@ -32,7 +33,7 @@ Adw.MessageDialog _root {
 	Adw.ViewStackPage {
 	  name: "pageDownload";
 	  child: Gtk.ScrolledWindow {
-	    height-request: 360;
+	    height-request: 380;
 
 	    Gtk.Box {
 		  orientation: vertical;
@@ -108,6 +109,17 @@ Adw.MessageDialog _root {
 			    styles ["flat"]
 			  }
 		    }
+
+			Adw.ActionRow _overwriteRow {
+			  title: _("OverwriteExistingFiles");
+			  activatable-widget: _overwriteSwitch;
+
+			  [suffix]
+			  Gtk.Switch _overwriteSwitch {
+			    valign: center;
+				active: true;
+			  }
+			}
 		  }
 
 		  Gtk.Button _numberVideosButton {

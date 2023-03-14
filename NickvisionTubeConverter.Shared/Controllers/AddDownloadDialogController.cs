@@ -82,14 +82,15 @@ public class AddDownloadDialogController
     /// <param name="quality">The quality of the downloads</param>
     /// <param name="subtitles">The subtitle format of the downloads</param>
     /// <param name="saveFolder">The save folder of the downloads</param>
-    public void PopulateDownloads(VideoUrlInfo videoUrlInfo, MediaFileType mediaFileType, Quality quality, Subtitle subtitles, string saveFolder)
+    /// <param name="overwriteFiles">Whether or not to overwrite existing files</param>
+    public void PopulateDownloads(VideoUrlInfo videoUrlInfo, MediaFileType mediaFileType, Quality quality, Subtitle subtitles, string saveFolder, bool overwriteFiles)
     {
         Downloads.Clear();
         foreach (var video in videoUrlInfo.Videos)
         {
             if (video.ToDownload)
             {
-                Downloads.Add(new Download(video.Url, mediaFileType, saveFolder, video.Title, quality, subtitles));
+                Downloads.Add(new Download(video.Url, mediaFileType, saveFolder, video.Title, overwriteFiles, quality, subtitles));
             }
         }
         Configuration.Current.PreviousSaveFolder = saveFolder;
