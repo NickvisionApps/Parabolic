@@ -75,15 +75,15 @@
 
                             <CheckBox x:Name="ChkOverwriteFiles" HorizontalAlignment="Stretch" Margin="0,0,0,12" VerticalContentAlignment="Center" IsChecked="True"/>
 
-                            <Button x:Name="BtnNumberVideos" Click="NumberVideos">
-                                <Button.Content>
+                            <ToggleButton x:Name="BtnNumberVideos" Checked="ToggleNumberVideos" Unchecked="ToggleNumberVideos">
+                                <ToggleButton.Content>
                                     <StackPanel Orientation="Horizontal" Spacing="6">
                                         <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" FontSize="16" Glyph="&#xE16E;"/>
 
                                         <TextBlock x:Name="LblNumberVideos" Text="NumberVideos"/>
                                     </StackPanel>
-                                </Button.Content>
-                            </Button>
+                                </ToggleButton.Content>
+                            </ToggleButton>
 
                             <ListView x:Name="ListVideos" HorizontalAlignment="Stretch" Margin="0,0,0,0" Background="{ThemeResource CardBackgroundFillColorDefaultBrush}" BorderThickness="1" BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}" CornerRadius="8" SelectionMode="None"/>
                         </StackPanel>

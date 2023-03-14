@@ -171,9 +171,9 @@ public sealed partial class AddDownloadDialog : ContentDialog
     }
 
     /// <summary>
-    /// Occurs when the number videos button is clicked
+    /// Occurs when the number videos toggle button is toggled
     /// </summary>
     /// <param name="sender">object</param>
     /// <param name="e">RoutedEventArgs</param>
-    private void NumberVideos(object sender, RoutedEventArgs e) => _controller.NumberVideos(_videoUrlInfo!);
+    private void ToggleNumberVideos(object sender, RoutedEventArgs e) => _controller.ToggleNumberVideos(_videoUrlInfo!, BtnNumberVideos.IsChecked ?? false);
 }

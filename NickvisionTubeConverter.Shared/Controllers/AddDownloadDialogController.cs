@@ -2,6 +2,7 @@ using NickvisionTubeConverter.Shared.Helpers;
 using NickvisionTubeConverter.Shared.Models;
 using System.Collections.Generic;
 using System.IO;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace NickvisionTubeConverter.Shared.Controllers;
@@ -66,11 +67,23 @@ public class AddDownloadDialogController
     /// Numbers the videos in a VideoUrlInfo object
     /// </summary>
     /// <param name="videoUrlInfo">The VideoUrlInfo object</param>
-    public void NumberVideos(VideoUrlInfo videoUrlInfo)
+    public void ToggleNumberVideos(VideoUrlInfo videoUrlInfo, bool toggled)
     {
+        var numberedRegex = new Regex(@"[0-9] - ", RegexOptions.None);
         for (var i = 0; i < videoUrlInfo.Videos.Count; i++)
         {
-            videoUrlInfo.Videos[i].Title = $"{i + 1} - {videoUrlInfo.Videos[i].Title}";
+            if(toggled)
+            {
+                videoUrlInfo.Videos[i].Title = $"{i + 1} - {videoUrlInfo.Videos[i].Title}";
+            }
+            else
+            {
+                var match = numberedRegex.Match(videoUrlInfo.Videos[i].Title);
+                if (match.Success)
+                {
+                    videoUrlInfo.Videos[i].Title = videoUrlInfo.Videos[i].Title.Remove(videoUrlInfo.Videos[i].Title.IndexOf(match.Value), match.Value.Length);
+                }
+            }
         }
     }
 

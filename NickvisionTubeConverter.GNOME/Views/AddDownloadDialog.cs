@@ -66,7 +66,7 @@ public partial class AddDownloadDialog : Adw.MessageDialog
     [Gtk.Connect] private readonly Gtk.MenuButton _saveWarning;
     [Gtk.Connect] private readonly Gtk.Button _selectSaveFolderButton;
     [Gtk.Connect] private readonly Gtk.Switch _overwriteSwitch;
-    [Gtk.Connect] private readonly Gtk.Button _numberVideosButton;
+    [Gtk.Connect] private readonly Gtk.ToggleButton _numberVideosButton;
     [Gtk.Connect] private readonly Adw.PreferencesGroup _videosGroup;
     private readonly List<VideoRow> _videoRows;
 
@@ -109,7 +109,7 @@ public partial class AddDownloadDialog : Adw.MessageDialog
             }
         };
         _selectSaveFolderButton.OnClicked += SelectSaveFolder;
-        _numberVideosButton.OnClicked += NumberVideos;
+        _numberVideosButton.OnClicked += ToggleNumberVideos;
         //Load
         _viewStack.SetVisibleChildName("pageUrl");
         SetResponseEnabled("ok", false);
@@ -231,13 +231,13 @@ public partial class AddDownloadDialog : Adw.MessageDialog
     }
 
     /// <summary>
-    /// Occurs when the number videos button is clicked
+    /// Occurs when the number videos toggle button is clicked
     /// </summary>
     /// <param name="sender">Gtk.Button</param>
     /// <param name="e">EventArgs</param>
-    private void NumberVideos(Gtk.Button sender, EventArgs e)
+    private void ToggleNumberVideos(Gtk.Button sender, EventArgs e)
     {
-        _controller.NumberVideos(_videoUrlInfo!);
+        _controller.ToggleNumberVideos(_videoUrlInfo!, _numberVideosButton.GetActive());
         foreach (var row in _videoRows)
         {
             row.UpdateTitle();
