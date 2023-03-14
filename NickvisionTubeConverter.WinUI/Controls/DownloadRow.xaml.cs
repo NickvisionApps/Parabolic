@@ -170,6 +170,7 @@ public sealed partial class DownloadRow : UserControl, IDownloadRowControl
         Icon.Glyph = "\uE10A";
         ProgBar.IsIndeterminate = false;
         ProgBar.Value = 1;
+        ProgBar.Foreground = new SolidColorBrush(Colors.Red);
         LblStatus.Text = _localizer["Stopped"];
         BtnStop.Visibility = Visibility.Collapsed;
         BtnRetry.Visibility = Visibility.Visible;
