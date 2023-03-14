@@ -76,7 +76,19 @@ public partial class Program
     /// Runs the program
     /// </summary>
     /// <returns>Return code from Adw.Application.Run()</returns>
-    public int Run() => _application.Run();
+    public int Run()
+    {
+        try
+        {
+            return _application.Run();
+        }
+        catch(Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+            Console.WriteLine($"\n\n{ex.StackTrace}");
+            return -1;
+        }
+    }
 
     /// <summary>
     /// Occurs when the application is activated
