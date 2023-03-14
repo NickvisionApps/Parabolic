@@ -147,10 +147,12 @@ public partial class AddDownloadDialog : Adw.MessageDialog
     /// <param name="e">EventArgs</param>
     private async void SearchUrl(Adw.EntryRow sender, EventArgs e)
     {
+        _urlSpinner.SetVisible(true);
         _urlSpinner.Start();
         SetResponseEnabled("ok", false);
         _videoUrlInfo = await _controller.SearchUrlAsync(_urlRow.GetText());
         _urlSpinner.Stop();
+        _urlSpinner.SetVisible(false);
         if (_videoUrlInfo == null)
         {
             _urlRow.AddCssClass("error");
