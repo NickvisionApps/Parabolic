@@ -315,7 +315,8 @@ public sealed partial class MainWindow : Window
         var addController = _controller.CreateAddDownloadDialogController();
         var addDialog = new AddDownloadDialog(addController, InitializeWithWindow)
         {
-            XamlRoot = Content.XamlRoot
+            XamlRoot = Content.XamlRoot,
+            RequestedTheme = NavView.RequestedTheme
         };
         if (await addDialog.ShowAsync())
         {
