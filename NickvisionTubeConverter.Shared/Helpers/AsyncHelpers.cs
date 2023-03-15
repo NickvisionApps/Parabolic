@@ -3,9 +3,9 @@
 namespace NickvisionTubeConverter.Shared.Helpers;
 
 /// <summary>
-/// Extension methods for working with System.Threading.Tasks.Task
+/// Helper methods for working with System.Threading.Tasks.Task
 /// </summary>
-public static class AsyncExtensions
+public static class AsyncHelpers
 {
     /// <summary>
     /// Fires an async method and forgets about it's return

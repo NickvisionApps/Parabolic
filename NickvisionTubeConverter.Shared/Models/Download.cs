@@ -113,7 +113,7 @@ public class Download
             Directory.Delete(_tempDownloadPath, true);
         }
         Directory.CreateDirectory(_tempDownloadPath);
-        dynamic outFile = PythonExtensions.SetConsoleOutputFilePath(_logPath);
+        dynamic outFile = PythonHelpers.SetConsoleOutputFilePath(_logPath);
         return await Task.Run(() =>
         {
             using (Python.Runtime.Py.GIL())

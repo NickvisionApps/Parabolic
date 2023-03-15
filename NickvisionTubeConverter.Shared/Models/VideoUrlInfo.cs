@@ -1,5 +1,4 @@
 ﻿using NickvisionTubeConverter.Shared.Helpers;
-using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
@@ -113,7 +112,7 @@ public class VideoUrlInfo
     public static async Task<VideoUrlInfo?> GetAsync(string url)
     {
         var pathToOutput = $"{Configuration.TempDir}{Path.DirectorySeparatorChar}output.log";
-        dynamic outFile = PythonExtensions.SetConsoleOutputFilePath(pathToOutput);
+        dynamic outFile = PythonHelpers.SetConsoleOutputFilePath(pathToOutput);
         return await Task.Run(() =>
         {
             try

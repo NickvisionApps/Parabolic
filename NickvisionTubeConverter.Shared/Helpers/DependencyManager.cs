@@ -53,7 +53,7 @@ internal static class DependencyManager
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
                 //Python
-                await PythonExtensions.DeployEmbeddedAsync(new Version("3.11.2"));
+                await PythonHelpers.DeployEmbeddedAsync(new Version("3.11.2"));
                 //Ffmpeg
                 var ffmpegVer = new Version(6, 0, 0);
                 if (!File.Exists(Ffmpeg) || Configuration.Current.WinUIFfmpegVersion != ffmpegVer)

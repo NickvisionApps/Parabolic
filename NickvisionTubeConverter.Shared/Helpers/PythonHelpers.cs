@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 namespace NickvisionTubeConverter.Shared.Helpers;
 
 /// <summary>
-/// Extension methods for python engine
+/// Helper methods for python engine
 /// </summary>
-public static class PythonExtensions
+public static class PythonHelpers
 {
     /// <summary>
     /// Downloads and installs an embedded version of Python (Windows Only)
