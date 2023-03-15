@@ -102,6 +102,12 @@ clean:
 # Command to be used in flatpak manifest
 publish-flatpak: (publish-self-contained "/app") install
 
+# Command to be used in snap YAML
+install-snap PREFIX="/usr":
+    @set +u; [ -n "$TC_PYTHON_SO" ] || (echo "Environment variable TC_PYTHON_SO is not set, aborting."; exit 1)
+    just install /root/prime/
+    sed -i "2 i export TC_PYTHON_SO=$TC_PYTHON_SO" /root/prime{{PREFIX}}/bin/{{app_id}}
+
 _install_extras PREFIX: && (_translate_meta PREFIX)
     # Installing icons
     mkdir -p {{builddir}}{{PREFIX}}/share/icons/hicolor/scalable/apps

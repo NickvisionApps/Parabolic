@@ -81,6 +81,10 @@ internal static class DependencyManager
                     Configuration.Current.Save();
                 }
             }
+            else if (File.Exists(Environment.GetEnvironmentVariable("TC_PYTHON_SO")))
+            {
+                Python.Runtime.Runtime.PythonDLL = Environment.GetEnvironmentVariable("TC_PYTHON_SO");
+            }
             else
             {
                 var process = new Process
