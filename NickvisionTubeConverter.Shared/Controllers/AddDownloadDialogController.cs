@@ -25,6 +25,10 @@ public enum DownloadCheckStatus
 public class AddDownloadDialogController
 {
     /// <summary>
+    /// Gets the AppInfo object
+    /// </summary>
+    public AppInfo AppInfo => AppInfo.Current;
+    /// <summary>
     /// The localizer to get translated strings from
     /// </summary>
     public Localizer Localizer { get; init; }
