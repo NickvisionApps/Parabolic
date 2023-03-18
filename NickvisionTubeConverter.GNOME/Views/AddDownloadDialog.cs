@@ -85,6 +85,7 @@ public partial class AddDownloadDialog : Adw.MessageDialog
         _videoRows = new List<VideoRow>();
         //Dialog Settings
         SetTransientFor(parent);
+        SetIconName(_controller.AppInfo.ID);
         AddResponse("cancel", controller.Localizer["Cancel"]);
         SetCloseResponse("cancel");
         AddResponse("ok", controller.Localizer["Download"]);

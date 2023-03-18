@@ -33,6 +33,7 @@ public partial class MainWindow : Adw.ApplicationWindow
         _controller = controller;
         _application = application;
         SetTitle(_controller.AppInfo.ShortName);
+        SetIconName(_controller.AppInfo.ID);
         if (_controller.IsDevVersion)
         {
             AddCssClass("devel");
@@ -266,6 +267,7 @@ public partial class MainWindow : Adw.ApplicationWindow
         var builder = Builder.FromFile("shortcuts_dialog.ui", _controller.Localizer, (s) => s == "About" ? string.Format(_controller.Localizer[s], _controller.AppInfo.ShortName) : _controller.Localizer[s]);
         var shortcutsWindow = (Gtk.ShortcutsWindow)builder.GetObject("_shortcuts");
         shortcutsWindow.SetTransientFor(this);
+        shortcutsWindow.SetIconName(_controller.AppInfo.ID);
         shortcutsWindow.Show();
     }
 
@@ -291,6 +293,7 @@ public partial class MainWindow : Adw.ApplicationWindow
     {
         var dialog = Adw.AboutWindow.New();
         dialog.SetTransientFor(this);
+        dialog.SetIconName(_controller.AppInfo.ID);
         dialog.SetApplicationName(_controller.AppInfo.ShortName);
         dialog.SetApplicationIcon(_controller.AppInfo.ID + (_controller.AppInfo.GetIsDevelVersion() ? "-devel" : ""));
         dialog.SetVersion(_controller.AppInfo.Version);
