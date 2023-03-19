@@ -3,7 +3,7 @@ using Adw 1;
 
 Adw.PreferencesWindow _root {
   default-width: 600;
-  default-height: 400;
+  default-height: 460;
   modal: true;
   destroy-with-parent: false;
   hide-on-close: true;
@@ -27,6 +27,16 @@ Adw.PreferencesWindow _root {
           model: Gtk.StringList {
             strings [_("ThemeLight"), _("ThemeDark"), _("ThemeSystem")]
           };
+        }
+
+        Adw.ActionRow {
+          title: _("AllowBackground.GTK");
+          subtitle: _("AllowBackgroundDescription.GTK");
+
+          [suffix]
+          Gtk.Switch _backgroundSwitch {
+            valign: center;
+          }
         }
       }
 

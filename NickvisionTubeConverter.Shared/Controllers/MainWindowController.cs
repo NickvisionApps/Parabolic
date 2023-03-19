@@ -57,6 +57,10 @@ public class MainWindowController : IDisposable
     /// Whether or not downloads are running
     /// </summary>
     public bool AreDownloadsRunning => _downloadingRows.Count > 0;
+    /// <summary>
+    /// Whether to allow running in the background
+    /// </summary>
+    public bool RunInBackground => Configuration.Current.RunInBackground;
 
     /// <summary>
     /// Occurs when a notification is sent

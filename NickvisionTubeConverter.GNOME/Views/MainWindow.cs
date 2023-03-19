@@ -146,6 +146,11 @@ public partial class MainWindow : Adw.ApplicationWindow
     {
         if (_controller.AreDownloadsRunning)
         {
+            if (_controller.RunInBackground)
+            {
+                SetVisible(false);
+                return true;
+            }
             var closeDialog = new MessageDialog(this, _controller.Localizer["CloseAndStop", "Title"], _controller.Localizer["CloseAndStop", "Description"], _controller.Localizer["No"], _controller.Localizer["Yes"]);
             if (closeDialog.Run() == MessageDialogResponse.Cancel)
             {
@@ -200,7 +205,7 @@ public partial class MainWindow : Adw.ApplicationWindow
         }
         box.Append(gtkRow);
         box.GetParent().SetVisible(true);
-        if (stage == DownloadStage.Completed && !GetFocus()!.GetHasFocus())
+        if (stage == DownloadStage.Completed && (!GetFocus()!.GetHasFocus() || !GetVisible()))
         {
             SendShellNotification(new ShellNotificationSentEventArgs(_controller.Localizer["DownloadFinished"], string.Format(_controller.Localizer["DownloadFinished", "Description"], $"\"{row.Filename}\""), NotificationSeverity.Success));
         }
