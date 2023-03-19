@@ -8,6 +8,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Reflection;
 using System.Runtime.InteropServices;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace NickvisionTubeConverter.Shared.Helpers;
@@ -58,7 +59,10 @@ internal static class DependencyManager
                 var ffmpegVer = new Version(6, 0, 0);
                 if (!File.Exists(Ffmpeg) || Configuration.Current.WinUIFfmpegVersion != ffmpegVer)
                 {
-                    var httpClient = new HttpClient();
+                    var httpClient = new HttpClient()
+                    {
+                        Timeout = Timeout.InfiniteTimeSpan
+                    };
                     var ffmpegDir = $"{Configuration.ConfigDir}{Path.DirectorySeparatorChar}ffmpeg{Path.DirectorySeparatorChar}";
                     if (!Directory.Exists(ffmpegDir))
                     {
