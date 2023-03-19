@@ -249,7 +249,7 @@ public class Download
                         _ => DownloadProgressStatus.Other
                     },
                     Progress = downloaded / total,
-                    Speed = entries.HasKey("speed") ? (entries["speed"].As<double?>() ?? 0) / 1024f : 0
+                    Speed = entries.HasKey("speed") ? (entries["speed"].As<double?>() ?? 0.0) : 0.0
                 };
                 if (File.Exists(_logPath))
                 {

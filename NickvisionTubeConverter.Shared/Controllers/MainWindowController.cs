@@ -61,6 +61,62 @@ public class MainWindowController : IDisposable
     /// Whether to allow running in the background
     /// </summary>
     public bool RunInBackground => Configuration.Current.RunInBackground;
+    /// <summary>
+    /// Number of active downloads
+    /// </summary>
+    public uint ActiveDownloads
+    {
+        get
+        {
+            return (uint)(_downloadingRows.Count + _queuedRows.Count);
+        }
+    }
+    /// <summary>
+    /// Total progress of active downloads
+    /// </summary>
+    public double TotalProgress
+    {
+        get
+        {
+            var result = 0.0;
+            foreach (var row in _downloadingRows)
+            {
+                result += row.Progress;
+            }
+            result /= _downloadingRows.Count + _queuedRows.Count;
+            return result;
+        }
+    }
+    /// <summary>
+    /// Total speed of active downloads (in bytes per second)
+    /// </summary>
+    public double TotalSpeed
+    {
+        get
+        {
+            var result = 0.0;
+            foreach (var row in _downloadingRows)
+            {
+                result += row.Speed;
+            }
+            return result;
+        }
+    }
+    /// <summary>
+    /// Downloading errors count
+    /// </summary>
+    public uint ErrorsCount
+    {
+        get
+        {
+            var result = 0u;
+            foreach (var row in _completedRows)
+            {
+                result += row.FinishedWithError ? 1u : 0u;
+            }
+            return result;
+        }
+    }
 
     /// <summary>
     /// Occurs when a notification is sent
