@@ -10,6 +10,35 @@ using System.Threading.Tasks;
 namespace NickvisionTubeConverter.Shared.Models;
 
 /// <summary>
+/// A model of an available video resolution
+/// </summary>
+public class VideoResolution
+{
+    /// <summary>
+    /// The resolution width
+    /// </summary>
+    public int Width { get; init; }
+    /// <summary>
+    /// The resolution height
+    /// </summary>
+    public int Height { get; init; }
+
+
+    /// <summary>
+    /// Constructs a VideoResolution
+    /// </summary>
+    /// <param name="width">The resolution width</param>
+    /// <param name="width">The resolution height</param>
+    public VideoResolution(int width, int height)
+    {
+        Width = width;
+        Height = height;
+    }
+
+    public override string ToString() => $"{Width}x{Height}";
+}
+
+/// <summary>
 /// A model of information about a video
 /// </summary>
 public class VideoInfo : INotifyPropertyChanged
@@ -21,6 +50,10 @@ public class VideoInfo : INotifyPropertyChanged
     /// The video url
     /// </summary>
     public string Url { get; init; }
+    /// <summary>
+    /// The available video resolutions
+    /// </summary>
+    public List<VideoResolution> VideoResolutions { get; init; }
     /// <summary>
     /// The title of the video
     /// </summary>
@@ -38,11 +71,12 @@ public class VideoInfo : INotifyPropertyChanged
     /// <param name="url">The url of the video</param>
     /// <param name="title">The title of the video</param>
     /// <param name="partOfPlaylist">Whether or not the video is part of a playlist</param>
-    public VideoInfo(string url, string title, bool partOfPlaylist = false)
+    public VideoInfo(string url, string title, List<VideoResolution> videoResolutions, bool partOfPlaylist = false)
     {
         _title = title;
         _toDownload = true;
         Url = url;
+        VideoResolutions = videoResolutions; 
         OriginalTitle = title;
         IsPartOfPlaylist = partOfPlaylist;
     }
@@ -91,7 +125,20 @@ public class VideoInfo : INotifyPropertyChanged
         {
             title = title.Replace(c, '_');
         } 
-        return new VideoInfo(url, title, isPartOfPlaylist);
+        var videoResolutions = new List<VideoResolution>();
+        foreach (var f in videoInfo["formats"].As<Python.Runtime.PyList>())
+        {
+            var format = f.As<Python.Runtime.PyDict>();
+            if (format.HasKey("vbr"))
+            {
+                var resolution = new VideoResolution(format["width"].As<int>(), format["height"].As<int>());
+                if (!videoResolutions.Exists(r => r.Width == resolution.Width && r.Height == resolution.Height))
+                {
+                    videoResolutions.Add(resolution);
+                }
+            }
+        }
+        return new VideoInfo(url, title, videoResolutions, isPartOfPlaylist);
     }
 }
 
