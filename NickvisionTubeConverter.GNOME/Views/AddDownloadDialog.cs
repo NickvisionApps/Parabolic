@@ -69,7 +69,7 @@ public partial class AddDownloadDialog : Adw.Window
     [Gtk.Connect] private readonly Gtk.Box _downloadPage;
     [Gtk.Connect] private readonly Gtk.Button _backButton;
     [Gtk.Connect] private readonly Gtk.DropDown _fileTypeDropDown;
-    [Gtk.Connect] private readonly Gtk.DropDown _qualityDropDown;
+    [Gtk.Connect] private readonly Gtk.DropDown _audioQualityDropDown;
     [Gtk.Connect] private readonly Gtk.DropDown _subtitlesDropDown;
     [Gtk.Connect] private readonly Adw.EntryRow _saveFolderRow;
     [Gtk.Connect] private readonly Gtk.Button _selectSaveFolderButton;
@@ -178,7 +178,7 @@ public partial class AddDownloadDialog : Adw.Window
         //Add Download Button
         _addDownloadButton.OnClicked += (sender, e) =>
         {
-            _controller.PopulateDownloads(_videoUrlInfo!, (MediaFileType)_fileTypeDropDown.GetSelected(), (Quality)_qualityDropDown.GetSelected(), (Subtitle)_subtitlesDropDown.GetSelected(), _saveFolderString, _overwriteSwitch.GetActive(), _speedLimitSwitch.GetActive());
+            _controller.PopulateDownloads(_videoUrlInfo!, (MediaFileType)_fileTypeDropDown.GetSelected(), (AudioQuality)_audioQualityDropDown.GetSelected(), (Subtitle)_subtitlesDropDown.GetSelected(), _saveFolderString, _overwriteSwitch.GetActive(), _speedLimitSwitch.GetActive());
             OnDownload?.Invoke(this, EventArgs.Empty);
         };
         _addDownloadButton.SetSensitive(false);
