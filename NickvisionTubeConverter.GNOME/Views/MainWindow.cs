@@ -5,7 +5,6 @@ using NickvisionTubeConverter.Shared.Controls;
 using NickvisionTubeConverter.Shared.Events;
 using NickvisionTubeConverter.Shared.Models;
 using System;
-using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 
@@ -259,16 +258,7 @@ public partial class MainWindow : Adw.ApplicationWindow
         box.GetParent().SetVisible(true);
         if (stage == DownloadStage.Completed && (!GetFocus()!.GetHasFocus() || !GetVisible()))
         {
-            var msg = _controller.Localizer["DownloadFinished"];
-            var desc = _controller.Localizer["DownloadFinished", "Description"];
-            var severity = NotificationSeverity.Success;
-            if (row.FinishedWithError)
-            {
-                msg = _controller.Localizer["DownloadFinishedWithError"];
-                desc = _controller.Localizer["DownloadFinishedWithError", "Description"];
-                severity = NotificationSeverity.Error;
-            }
-            SendShellNotification(new ShellNotificationSentEventArgs(msg, string.Format(desc, $"\"{row.Filename}\""), severity));
+            SendShellNotification(new ShellNotificationSentEventArgs(_controller.Localizer[row.FinishedWithError ? "DownloadFinishedWithError" : "DownloadFinished"], string.Format(_controller.Localizer[row.FinishedWithError ? "DownloadFinishedWithError" : "DownloadFinished", "Description"], $"\"{row.Filename}\""), row.FinishedWithError ? NotificationSeverity.Error : NotificationSeverity.Success));
             if (!GetVisible() && !_controller.AreDownloadsRunning && _controller.ErrorsCount == 0)
             {
                 _application.Quit();
