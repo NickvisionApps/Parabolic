@@ -61,63 +61,6 @@ public class MainWindowController : IDisposable
     /// Whether to allow running in the background
     /// </summary>
     public bool RunInBackground => Configuration.Current.RunInBackground;
-    /// <summary>
-    /// Downloading errors count
-    /// </summary>
-    public uint ErrorsCount
-    {
-        get
-        {
-            var result = 0u;
-            foreach (var row in _completedRows)
-            {
-                result += row.FinishedWithError ? 1u : 0u;
-            }
-            return result;
-        }
-    }
-
-    /// <summary>
-    /// Number of running and queued downloads
-    /// </summary>
-    private uint _incompleteDownloads
-    {
-        get
-        {
-            return (uint)(_downloadingRows.Count + _queuedRows.Count);
-        }
-    }
-    /// <summary>
-    /// Total progress of active downloads
-    /// </summary>
-    private double _totalProgress
-    {
-        get
-        {
-            var result = 0.0;
-            foreach (var row in _downloadingRows)
-            {
-                result += row.Progress;
-            }
-            result /= _incompleteDownloads > 0 ? _incompleteDownloads : 1;
-            return result;
-        }
-    }
-    /// <summary>
-    /// Total speed of active downloads (in bytes per second)
-    /// </summary>
-    private double _totalSpeed
-    {
-        get
-        {
-            var result = 0.0;
-            foreach (var row in _downloadingRows)
-            {
-                result += row.Speed;
-            }
-            return result;
-        }
-    }
 
     /// <summary>
     /// Occurs when a notification is sent
@@ -150,6 +93,22 @@ public class MainWindowController : IDisposable
         {
             var timeNowHours = DateTime.Now.Hour;
             return timeNowHours >= 6 && timeNowHours < 18;
+        }
+    }
+
+    /// <summary>
+    /// Downloading errors count
+    /// </summary>
+    public uint ErrorsCount
+    {
+        get
+        {
+            var result = 0u;
+            foreach (var row in _completedRows)
+            {
+                result += row.FinishedWithError ? 1u : 0u;
+            }
+            return result;
         }
     }
 
@@ -344,9 +303,40 @@ public class MainWindowController : IDisposable
     /// </summary>
     public string GetBackgroundActivityReport()
     {
-        if (_incompleteDownloads > 0)
+        //Total Progress
+        var totalProgress = 0.0;
+        foreach (var row in _downloadingRows)
         {
-            return string.Format(Localizer["BackgroundActivityReport"], _incompleteDownloads, _totalProgress * 100, SpeedFormatter.GetString(_totalSpeed));
+            totalProgress += row.Progress;
+        }
+        totalProgress /= (_downloadingRows.Count + _queuedRows.Count) > 0 ? (_downloadingRows.Count + _queuedRows.Count) : 1;
+        //Total Speed
+        var totalSpeed = 0.0;
+        foreach (var row in _downloadingRows)
+        {
+            totalSpeed += row.Speed;
+        }
+        var speedString = "";
+        if (totalSpeed > Math.Pow(1024, 3))
+        {
+            speedString = string.Format(Localizer["Speed", "GiBps"], totalSpeed / Math.Pow(1024, 3));
+        }
+        else if (totalSpeed > Math.Pow(1024, 2))
+        {
+            speedString = string.Format(Localizer["Speed", "MiBps"], totalSpeed / Math.Pow(1024, 2));
+        }
+        else if (totalSpeed > 1024)
+        {
+            speedString = string.Format(Localizer["Speed", "KiBps"], totalSpeed / 1024.0);
+        }
+        else
+        {
+            speedString = string.Format(Localizer["Speed", "Bps"], totalSpeed);
+        }
+        //Get String
+        if ((_downloadingRows.Count + _queuedRows.Count) > 0)
+        {
+            return string.Format(Localizer["BackgroundActivityReport"], _downloadingRows.Count + _queuedRows.Count, totalProgress * 100, speedString);
         }
         else if (ErrorsCount > 0)
         {
