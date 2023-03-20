@@ -62,47 +62,6 @@ public class MainWindowController : IDisposable
     /// </summary>
     public bool RunInBackground => Configuration.Current.RunInBackground;
     /// <summary>
-    /// Number of active downloads
-    /// </summary>
-    public uint ActiveDownloads
-    {
-        get
-        {
-            return (uint)(_downloadingRows.Count + _queuedRows.Count);
-        }
-    }
-    /// <summary>
-    /// Total progress of active downloads
-    /// </summary>
-    public double TotalProgress
-    {
-        get
-        {
-            var result = 0.0;
-            foreach (var row in _downloadingRows)
-            {
-                result += row.Progress;
-            }
-            result /= _downloadingRows.Count + _queuedRows.Count;
-            return result;
-        }
-    }
-    /// <summary>
-    /// Total speed of active downloads (in bytes per second)
-    /// </summary>
-    public double TotalSpeed
-    {
-        get
-        {
-            var result = 0.0;
-            foreach (var row in _downloadingRows)
-            {
-                result += row.Speed;
-            }
-            return result;
-        }
-    }
-    /// <summary>
     /// Downloading errors count
     /// </summary>
     public uint ErrorsCount
@@ -119,9 +78,55 @@ public class MainWindowController : IDisposable
     }
 
     /// <summary>
+    /// Number of running and queued downloads
+    /// </summary>
+    private uint _incompleteDownloads
+    {
+        get
+        {
+            return (uint)(_downloadingRows.Count + _queuedRows.Count);
+        }
+    }
+    /// <summary>
+    /// Total progress of active downloads
+    /// </summary>
+    private double _totalProgress
+    {
+        get
+        {
+            var result = 0.0;
+            foreach (var row in _downloadingRows)
+            {
+                result += row.Progress;
+            }
+            result /= _incompleteDownloads > 0 ? _incompleteDownloads : 1;
+            return result;
+        }
+    }
+    /// <summary>
+    /// Total speed of active downloads (in bytes per second)
+    /// </summary>
+    private double _totalSpeed
+    {
+        get
+        {
+            var result = 0.0;
+            foreach (var row in _downloadingRows)
+            {
+                result += row.Speed;
+            }
+            return result;
+        }
+    }
+
+    /// <summary>
     /// Occurs when a notification is sent
     /// </summary>
     public event EventHandler<NotificationSentEventArgs>? NotificationSent;
+    /// <summary>
+    /// Invoked to check if RunInBackground changed after settings saved
+    /// </summary>
+    public event EventHandler? RunInBackgroundChanged;
 
     /// <summary>
     /// Constructs a MainWindowController
@@ -272,6 +277,7 @@ public class MainWindowController : IDisposable
     /// <param name="e">EventArgs</param>
     private void ConfigurationSaved(object? sender, EventArgs e)
     {
+        RunInBackgroundChanged?.Invoke(this, EventArgs.Empty);
         while (_downloadingRows.Count < Configuration.Current.MaxNumberOfActiveDownloads && _queuedRows.Count > 0)
         {
             var queuedRow = _queuedRows[0];
@@ -330,6 +336,25 @@ public class MainWindowController : IDisposable
         {
             _queuedRows.Add(row);
             UIMoveDownloadRow!(row, DownloadStage.InQueue);
+        }
+    }
+
+    /// <summary>
+    /// Called to get a string for background activity report
+    /// </summary>
+    public string GetBackgroundActivityReport()
+    {
+        if (_incompleteDownloads > 0)
+        {
+            return string.Format(Localizer["BackgroundActivityReport"], _incompleteDownloads, _totalProgress * 100, SpeedFormatter.GetString(_totalSpeed));
+        }
+        else if (ErrorsCount > 0)
+        {
+            return Localizer["FinishedWithErrors"];
+        }
+        else
+        {
+            return Localizer["NoDownloadsRunning"];
         }
     }
 }

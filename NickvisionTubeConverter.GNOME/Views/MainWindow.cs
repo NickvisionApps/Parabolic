@@ -5,6 +5,8 @@ using NickvisionTubeConverter.Shared.Controls;
 using NickvisionTubeConverter.Shared.Events;
 using NickvisionTubeConverter.Shared.Models;
 using System;
+using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 
 namespace NickvisionTubeConverter.GNOME.Views;
@@ -14,8 +16,32 @@ namespace NickvisionTubeConverter.GNOME.Views;
 /// </summary>
 public partial class MainWindow : Adw.ApplicationWindow
 {
+    private delegate bool GSourceFunc(nint data);
+
+    [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
+    private static partial uint g_timeout_add(uint interval, GSourceFunc function, nint data);
+    [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
+    private static partial nint g_bus_get_sync(uint bus_type, nint cancellable, nint error);
+    [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
+    private static partial nint g_variant_new(string format_string, nint data);
+    [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
+    private static partial nint g_variant_new_string(string data);
+    [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
+    private static partial nint g_variant_builder_new(nint type);
+    [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
+    private static partial void g_variant_builder_add(nint builder, string format, string key, nint data);
+    [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
+    private static partial void g_variant_builder_unref(nint builder);
+    [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
+    private static partial nint g_variant_type_new(string type);
+    [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
+    private static partial void g_dbus_connection_call(nint connection, string bus_name, string object_path, string interface_name, string method_name, nint parameters, nint reply_type, uint flags, int timeout_msec, nint cancellable, nint callback, nint user_data);
+
     private readonly MainWindowController _controller;
     private readonly Adw.Application _application;
+    private readonly nint _bus;
+    private readonly GSourceFunc _backgroundSourceFunc;
+    private bool _isBackgroundStatusReported { get; set; }
 
     [Gtk.Connect] private readonly Adw.Bin _spinnerContainer;
     [Gtk.Connect] private readonly Gtk.Spinner _spinner;
@@ -32,6 +58,32 @@ public partial class MainWindow : Adw.ApplicationWindow
         //Window Settings
         _controller = controller;
         _application = application;
+        _isBackgroundStatusReported = false;
+        _bus = g_bus_get_sync(2, IntPtr.Zero, IntPtr.Zero); // 2 = session bus
+        _backgroundSourceFunc = (d) =>
+        {
+            if (_isBackgroundStatusReported)
+            {
+                var builder = g_variant_builder_new(g_variant_type_new("a{sv}"));
+                g_variant_builder_add(builder, "{sv}", "message", g_variant_new_string(_controller.GetBackgroundActivityReport()));
+                g_dbus_connection_call(_bus,
+                    "org.freedesktop.portal.Desktop", // Bus name
+                    "/org/freedesktop/portal/desktop", // Object path
+                    "org.freedesktop.portal.Background", // Interface name
+                    "SetStatus", // Method name
+                    g_variant_new("(a{sv})", builder), // Parameters
+                    IntPtr.Zero, // Reply type
+                    0, // Flags
+                    -1, // Timeout
+                    IntPtr.Zero, // Cancellable
+                    IntPtr.Zero, // Callback
+                    IntPtr.Zero); // User data
+                g_variant_builder_unref(builder);
+                return true;
+            }
+            return false;
+        };
+        _controller.RunInBackgroundChanged += RunInBackgroundChanged;
         SetTitle(_controller.AppInfo.ShortName);
         SetIconName(_controller.AppInfo.ID);
         if (_controller.IsDevVersion)
@@ -108,6 +160,7 @@ public partial class MainWindow : Adw.ApplicationWindow
         _spinner.Stop();
         _spinnerContainer.SetVisible(false);
         _mainBox.SetVisible(true);
+        RunInBackgroundChanged(this, EventArgs.Empty);
     }
 
     /// <summary>
@@ -207,7 +260,20 @@ public partial class MainWindow : Adw.ApplicationWindow
         box.GetParent().SetVisible(true);
         if (stage == DownloadStage.Completed && (!GetFocus()!.GetHasFocus() || !GetVisible()))
         {
-            SendShellNotification(new ShellNotificationSentEventArgs(_controller.Localizer["DownloadFinished"], string.Format(_controller.Localizer["DownloadFinished", "Description"], $"\"{row.Filename}\""), NotificationSeverity.Success));
+            var msg = _controller.Localizer["DownloadFinished"];
+            var desc = _controller.Localizer["DownloadFinished", "Description"];
+            var severity = NotificationSeverity.Success;
+            if (row.FinishedWithError)
+            {
+                msg = _controller.Localizer["DownloadFinishedWithError"];
+                desc = _controller.Localizer["DownloadFinishedWithError", "Description"];
+                severity = NotificationSeverity.Error;
+            }
+            SendShellNotification(new ShellNotificationSentEventArgs(msg, string.Format(desc, $"\"{row.Filename}\""), severity));
+            if (!GetVisible() && !_controller.AreDownloadsRunning && _controller.ErrorsCount == 0)
+            {
+                _application.Quit();
+            }
         }
     }
 
@@ -315,5 +381,21 @@ public partial class MainWindow : Adw.ApplicationWindow
         dialog.SetTranslatorCredits((string.IsNullOrEmpty(_controller.Localizer["Translators", "Credits"]) ? "" : _controller.Localizer["Translators", "Credits"]));
         dialog.SetReleaseNotes(_controller.AppInfo.Changelog);
         dialog.Show();
+    }
+
+    private void RunInBackgroundChanged(object? sender, EventArgs e)
+    {
+        if (_controller.RunInBackground)
+        {
+            if (!_isBackgroundStatusReported)
+            {
+                _isBackgroundStatusReported = true;
+                g_timeout_add(1000, _backgroundSourceFunc, IntPtr.Zero);
+            }
+        }
+        else
+        {
+            _isBackgroundStatusReported = false;
+        }
     }
 }

@@ -184,8 +184,16 @@
 		<value>Download Finished</value>
 	</data>
 
+	<data name="DownloadFinishedWithError" xml:space="preserve">
+		<value>Download Finished With Error</value>
+	</data>
+
 	<data name="DownloadFinished.Description" xml:space="preserve">
 		<value>{0} has finished downloading.</value>
+	</data>
+
+	<data name="DownloadFinishedWithError.Description" xml:space="preserve">
+		<value>{0} has finished with an error!</value>
 	</data>
 
 	<!--MainWindowController-->
@@ -323,6 +331,18 @@
 
 	<data name="Speed.Bps" xml:space="preserve">
 		<value>{0:f1} B/s</value>
+	</data>
+
+	<data name="BackgroundActivityReport" xml:space="preserve">
+		<value>Downloads: {0} — {1:f1}% ({2})</value>
+	</data>
+
+	<data name="FinishedWithErrors" xml:space="preserve">
+		<value>Some downloads finished with errors!</value>
+	</data>
+
+	<data name="NoDownloadsRunning" xml:space="preserve">
+		<value>No downloads running</value>
 	</data>
 
 	<!--VideoRow-->
