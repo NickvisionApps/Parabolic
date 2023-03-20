@@ -287,7 +287,16 @@ public sealed partial class MainWindow : Window
             ListCompleted.Items.Add(row);
             if (!_isActived)
             {
-                SendShellNotification(new ShellNotificationSentEventArgs(_controller.Localizer["DownloadFinished"], string.Format(_controller.Localizer["DownloadFinished", "Description"], $"\"{row.Filename}\""), NotificationSeverity.Success));
+                var msg = _controller.Localizer["DownloadFinished"];
+                var desc = _controller.Localizer["DownloadFinished", "Description"];
+                var severity = NotificationSeverity.Success;
+                if (row.FinishedWithError)
+                {
+                    msg = _controller.Localizer["DownloadFinishedWithError"];
+                    desc = _controller.Localizer["DownloadFinishedWithError", "Description"];
+                    severity = NotificationSeverity.Error;
+                }
+                SendShellNotification(new ShellNotificationSentEventArgs(msg, string.Format(desc, $"\"{row.Filename}\""), severity));
             }
         }
         SectionDownloading.Visibility = ListDownloading.Items.Count > 0 ? Visibility.Visible : Visibility.Collapsed;
