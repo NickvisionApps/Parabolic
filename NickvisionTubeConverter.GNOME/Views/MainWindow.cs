@@ -79,9 +79,8 @@ public partial class MainWindow : Adw.ApplicationWindow
                     IntPtr.Zero, // Callback
                     IntPtr.Zero); // User data
                 g_variant_builder_unref(builder);
-                return true;
             }
-            return false;
+            return _isBackgroundStatusReported;
         };
         _controller.RunInBackgroundChanged += RunInBackgroundChanged;
         SetTitle(_controller.AppInfo.ShortName);
