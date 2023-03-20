@@ -8,9 +8,9 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:wct="using:CommunityToolkit.WinUI.UI.Controls"
     xmlns:labs="using:CommunityToolkit.Labs.WinUI"
-    mc:Ignorable="d">
+    mc:Ignorable="d" Margin="0,0,0,6">
 
-    <Border Margin="-12,0,-10,6" Background="{ThemeResource CardBackgroundFillColorDefaultBrush}" BorderThickness="1" BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}" CornerRadius="8">
+    <Border Margin="-12,0,-12,0" Background="{ThemeResource CardBackgroundFillColorDefaultBrush}" BorderThickness="1" BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}" CornerRadius="8">
         <StackPanel Margin="10,4,10,4" Orientation="Vertical" Spacing="12">
             <wct:DockPanel LastChildFill="True">
                 <FontIcon x:Name="Icon" wct:DockPanel.Dock="Left" VerticalAlignment="Center" FontFamily="{StaticResource SymbolThemeFontFamily}"/>
