@@ -95,6 +95,7 @@ public sealed partial class MainWindow : Window
         _appWindow.Resize(new SizeInt32(800, 600));
         User32.ShowWindow(_hwnd, ShowWindowCommand.SW_SHOWMAXIMIZED);
         //Localize Strings
+        TaskbarMenuQuit.Text = _controller.Localizer["Quit"];
         LblLoading.Text = _controller.Localizer["DependencyDownload"];
         NavViewItemHome.Content = _controller.Localizer["Home"];
         NavViewItemDownloads.Content = _controller.Localizer["Downloads"];
@@ -208,6 +209,13 @@ public sealed partial class MainWindow : Window
             _ => SystemBackdropTheme.Default
         };
     }
+
+    /// <summary>
+    /// Occurs when the TaskbarMenuQuit item is clicked
+    /// </summary>
+    /// <param name="sender">object</param>
+    /// <param name="e">RoutedEventArgs</param>
+    private void Quit(object sender, RoutedEventArgs e) => Close();
 
     /// <summary>
     /// Occurs when the NavigationView's item selection is changed

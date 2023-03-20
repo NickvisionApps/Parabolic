@@ -8,9 +8,18 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:wct="using:CommunityToolkit.WinUI.UI.Controls"
     xmlns:labs="using:CommunityToolkit.Labs.WinUI"
+    xmlns:notifyIcon="using:H.NotifyIcon"
     mc:Ignorable="d" Activated="Window_Activated">
 
     <Grid x:Name="MainGrid" Loaded="Window_Loaded" ActualThemeChanged="Window_ActualThemeChanged" AllowDrop="True">
+        <notifyIcon:TaskbarIcon x:Name="TaskbarIcon" IconSource="../Assets/org.nickvision.tubeconverter.ico" ContextMenuMode="SecondWindow">
+            <notifyIcon:TaskbarIcon.ContextFlyout>
+                <MenuFlyout>
+                    <MenuFlyoutItem x:Name="TaskbarMenuQuit" Click="Quit"/>
+                </MenuFlyout>
+            </notifyIcon:TaskbarIcon.ContextFlyout>
+        </notifyIcon:TaskbarIcon>
+
         <Grid x:Name="TitleBar" HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="32">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition x:Name="TitleBarLeftPaddingColumn" Width="0"/>
