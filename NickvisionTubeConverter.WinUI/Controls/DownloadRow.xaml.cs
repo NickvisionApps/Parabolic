@@ -129,7 +129,7 @@ public sealed partial class DownloadRow : UserControl, IDownloadRowControl
                     });
                     break;
                 case DownloadProgressStatus.Processing:
-                    Progress = 100.0;
+                    Progress = 1.0;
                     Speed = 0.0;
                     App.MainWindow!.DispatcherQueue.TryEnqueue(() =>
                     {

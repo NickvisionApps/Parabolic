@@ -178,7 +178,7 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
                     break;
                 case DownloadProgressStatus.Processing:
                     _progressLabel.SetText(_localizer["DownloadState", "Processing"]);
-                    Progress = 100.0;
+                    Progress = 1.0;
                     Speed = 0.0;
                     if (_processingCallback == null)
                     {
