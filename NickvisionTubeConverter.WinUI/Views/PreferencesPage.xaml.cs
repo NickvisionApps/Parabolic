@@ -38,6 +38,8 @@ public sealed partial class PreferencesPage : UserControl
         CardUserInterface.Description = _controller.Localizer["UserInterfaceDescription"];
         CardTheme.Header = _controller.Localizer["Theme"];
         CardTheme.Description = _controller.Localizer["ThemeDescription", "WinUI"];
+        CardAllowBackground.Header = _controller.Localizer["AllowBackground"];
+        CardAllowBackground.Description = _controller.Localizer["AllowBackgroundDescription"];
         CmbTheme.Items.Add(_controller.Localizer["ThemeLight"]);
         CmbTheme.Items.Add(_controller.Localizer["ThemeDark"]);
         CmbTheme.Items.Add(_controller.Localizer["ThemeSystem"]);
@@ -54,6 +56,7 @@ public sealed partial class PreferencesPage : UserControl
         }
         //Load Config
         CmbTheme.SelectedIndex = (int)_controller.Theme;
+        ToggleAllowBackground.IsOn = _controller.RunInBackground;
         ToggleEmbedMetadata.IsOn = _controller.EmbedMetadata;
         CmbMaxNumberOfActiveDownloads.SelectedIndex = _controller.MaxNumberOfActiveDownloads - 1;
     }
@@ -168,6 +171,17 @@ public sealed partial class PreferencesPage : UserControl
                 AppInstance.Restart("Apply new theme");
             }
         }
+    }
+
+    /// <summary>
+    /// Occurs when the ToggleAllowBackground switch is toggled
+    /// </summary>
+    /// <param name="sender">object</param>
+    /// <param name="e">RoutedEventArgs</param>
+    private void ToggleAllowBackground_Toggled(object sender, RoutedEventArgs e)
+    {
+        _controller.RunInBackground = ToggleAllowBackground.IsOn;
+        _controller.SaveConfiguration();
     }
 
     /// <summary>
