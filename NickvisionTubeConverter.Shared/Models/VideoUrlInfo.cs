@@ -76,6 +76,23 @@ public class VideoInfo : INotifyPropertyChanged
     }
 
     private void NotifyPropertyChanged([CallerMemberName] string propertyName = "") => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+
+    /// <summary>
+    /// Parses video info from the Python dictionary returned by yt-dlp
+    /// </summary>
+    /// <param name="videoInfo">The dictionary</param>
+    /// <param name="isPartOfPlaylist">Whether or not the video is part of a playlist</param>
+    /// <returns>A VideoUrlInfo object</returns>
+    internal static VideoInfo ParseFromPyDict(Python.Runtime.PyDict videoInfo, bool isPartOfPlaylist = false)
+    {
+        var title = videoInfo.HasKey("title") ? videoInfo["title"].As<string?>() ?? "Media" : "Media";
+        var url = videoInfo["webpage_url"].As<string>();       
+        foreach (var c in Path.GetInvalidFileNameChars())
+        {
+            title = title.Replace(c, '_');
+        } 
+        return new VideoInfo(url, title, isPartOfPlaylist);
+    }
 }
 
 /// <summary>
@@ -140,27 +157,12 @@ public class VideoUrlInfo
                         videoUrlInfo.PlaylistTitle = videoInfo.HasKey("title") ? videoInfo["title"].As<string>() ?? "Playlist" : "Playlist";
                         foreach (var e in videoInfo["entries"].As<Python.Runtime.PyList>())
                         {
-                            if (e.IsNone())
-                            {
-                                continue;
-                            }
-                            var entry = e.As<Python.Runtime.PyDict>();
-                            var title = entry.HasKey("title") ? (entry["title"].As<string?>() ?? "Media") : "Media";
-                            foreach (var c in Path.GetInvalidFileNameChars())
-                            {
-                                title = title.Replace(c, '_');
-                            }
-                            videoUrlInfo.Videos.Add(new VideoInfo(entry["webpage_url"].As<string>(), title, true));
+                            videoUrlInfo.Videos.Add(VideoInfo.ParseFromPyDict(e.As<Python.Runtime.PyDict>(), true));
                         }
                     }
                     else
                     {
-                        var title = videoInfo.HasKey("title") ? (videoInfo["title"].As<string?>() ?? "Media") : "Media";
-                        foreach (var c in Path.GetInvalidFileNameChars())
-                        {
-                            title = title.Replace(c, '_');
-                        }
-                        videoUrlInfo.Videos.Add(new VideoInfo(videoInfo["webpage_url"].As<string>(), title));
+                        videoUrlInfo.Videos.Add(VideoInfo.ParseFromPyDict(videoInfo));
                     }
                     outFile.close();
                 }
