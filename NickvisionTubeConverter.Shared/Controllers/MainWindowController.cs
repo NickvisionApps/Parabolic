@@ -316,27 +316,10 @@ public class MainWindowController : IDisposable
         {
             totalSpeed += row.Speed;
         }
-        var speedString = "";
-        if (totalSpeed > Math.Pow(1024, 3))
-        {
-            speedString = string.Format(Localizer["Speed", "GiBps"], totalSpeed / Math.Pow(1024, 3));
-        }
-        else if (totalSpeed > Math.Pow(1024, 2))
-        {
-            speedString = string.Format(Localizer["Speed", "MiBps"], totalSpeed / Math.Pow(1024, 2));
-        }
-        else if (totalSpeed > 1024)
-        {
-            speedString = string.Format(Localizer["Speed", "KiBps"], totalSpeed / 1024.0);
-        }
-        else
-        {
-            speedString = string.Format(Localizer["Speed", "Bps"], totalSpeed);
-        }
         //Get String
         if ((_downloadingRows.Count + _queuedRows.Count) > 0)
         {
-            return string.Format(Localizer["BackgroundActivityReport"], _downloadingRows.Count + _queuedRows.Count, totalProgress * 100, speedString);
+            return string.Format(Localizer["BackgroundActivityReport"], _downloadingRows.Count + _queuedRows.Count, totalProgress * 100, SpeedFormatter.GetString(totalSpeed, Localizer));
         }
         else if (ErrorsCount > 0)
         {
