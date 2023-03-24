@@ -13,7 +13,7 @@ namespace NickvisionTubeConverter.GNOME.Views;
 /// <summary>
 /// The AddDownloadDialog for the application
 /// </summary>
-public partial class AddDownloadDialog : Adw.MessageDialog
+public partial class AddDownloadDialog : Adw.Window
 {
     [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
     [return: MarshalAs(UnmanagedType.I1)]
@@ -56,6 +56,7 @@ public partial class AddDownloadDialog : Adw.MessageDialog
     [Gtk.Connect] private readonly Adw.ViewStack _viewStack;
     [Gtk.Connect] private readonly Adw.EntryRow _urlRow;
     [Gtk.Connect] private readonly Gtk.Spinner _urlSpinner;
+    [Gtk.Connect] private readonly Gtk.Button _addDownloadButton;
     [Gtk.Connect] private readonly Gtk.ScrolledWindow _scrollDownload;
     [Gtk.Connect] private readonly Gtk.Button _backButton;
     [Gtk.Connect] private readonly Gtk.Label _titleLabel;
@@ -69,6 +70,8 @@ public partial class AddDownloadDialog : Adw.MessageDialog
     [Gtk.Connect] private readonly Gtk.ToggleButton _numberVideosButton;
     [Gtk.Connect] private readonly Adw.PreferencesGroup _videosGroup;
     private readonly List<VideoRow> _videoRows;
+
+    public event EventHandler? OnDownload;
 
     /// <summary>
     /// Constructs an AddDownloadDialog
@@ -86,12 +89,6 @@ public partial class AddDownloadDialog : Adw.MessageDialog
         //Dialog Settings
         SetTransientFor(parent);
         SetIconName(_controller.AppInfo.ID);
-        AddResponse("cancel", controller.Localizer["Cancel"]);
-        SetCloseResponse("cancel");
-        AddResponse("ok", controller.Localizer["Download"]);
-        SetDefaultResponse("ok");
-        SetResponseAppearance("ok", Adw.ResponseAppearance.Suggested);
-        OnResponse += Response;
         //Build UI
         builder.Connect(this);
         _urlRow.OnApply += SearchUrl;
@@ -100,7 +97,7 @@ public partial class AddDownloadDialog : Adw.MessageDialog
             _viewStack.SetVisibleChildName("pageUrl");
             _scrollDownload.SetVisible(false);
             _urlRow.SetText("");
-            SetResponseEnabled("ok", false);
+            _addDownloadButton.SetSensitive(false);
         };
         _fileTypeRow.OnNotify += async (sender, e) =>
         {
@@ -111,9 +108,14 @@ public partial class AddDownloadDialog : Adw.MessageDialog
         };
         _selectSaveFolderButton.OnClicked += SelectSaveFolder;
         _numberVideosButton.OnClicked += ToggleNumberVideos;
+        //Add Download Button
+        _addDownloadButton.OnClicked += (sender, e) => {
+            _controller.PopulateDownloads(_videoUrlInfo!, (MediaFileType)_fileTypeRow.GetSelected(), (Quality)_qualityRow.GetSelected(), (Subtitle)_subtitleRow.GetSelected(), _saveFolderRow.GetText(), _overwriteSwitch.GetActive());
+            OnDownload?.Invoke(this, EventArgs.Empty);
+        };
+        _addDownloadButton.SetSensitive(false);
         //Load
         _viewStack.SetVisibleChildName("pageUrl");
-        SetResponseEnabled("ok", false);
         _fileTypeRow.SetSelected((uint)_controller.PreviousMediaFileType);
         _saveFolderRow.SetText(_controller.PreviousSaveFolder);
     }
@@ -128,20 +130,6 @@ public partial class AddDownloadDialog : Adw.MessageDialog
     }
 
     /// <summary>
-    /// Occurs when the dialog is closed
-    /// </summary>
-    /// <param name="sender">Adw.MessageDialog</param>
-    /// <param name="e">ResponseSignalArgs</param>
-    private void Response(Adw.MessageDialog sender, ResponseSignalArgs e)
-    {
-        _controller.Accepted = e.Response == "ok";
-        if (_controller.Accepted)
-        {
-            _controller.PopulateDownloads(_videoUrlInfo!, (MediaFileType)_fileTypeRow.GetSelected(), (Quality)_qualityRow.GetSelected(), (Subtitle)_subtitleRow.GetSelected(), _saveFolderRow.GetText(), _overwriteSwitch.GetActive());
-        }
-    }
-
-    /// <summary>
     /// Occurs when the video url is changed
     /// </summary>
     /// <param name="sender">Adw.EntryRow</param>
@@ -150,7 +138,7 @@ public partial class AddDownloadDialog : Adw.MessageDialog
     {
         _urlSpinner.SetVisible(true);
         _urlSpinner.Start();
-        SetResponseEnabled("ok", false);
+        _addDownloadButton.SetSensitive(false);
         _videoUrlInfo = await _controller.SearchUrlAsync(_urlRow.GetText());
         _urlSpinner.Stop();
         _urlSpinner.SetVisible(false);
@@ -165,7 +153,7 @@ public partial class AddDownloadDialog : Adw.MessageDialog
             _urlRow.SetTitle(_controller.Localizer["VideoUrl", "Field"]);
             _scrollDownload.SetVisible(true);
             _viewStack.SetVisibleChildName("pageDownload");
-            SetResponseEnabled("ok", !string.IsNullOrEmpty(_saveFolderRow.GetText()));
+            _addDownloadButton.SetSensitive(!string.IsNullOrEmpty(_saveFolderRow.GetText()));
             _titleLabel.SetText(_videoUrlInfo.Videos.Count > 1 ? _videoUrlInfo.PlaylistTitle! : _videoUrlInfo.Videos[0].Title);
             _numberVideosButton.SetVisible(_videoUrlInfo.Videos.Count > 1 ? true : false);
             foreach (var row in _videoRows)
@@ -203,7 +191,7 @@ public partial class AddDownloadDialog : Adw.MessageDialog
                 var path = g_file_get_path(fileHandle);
                 _saveFolderRow.SetText(path);
                 _saveWarning.SetVisible(Regex.Match(_saveFolderRow.GetText(), @"^\/run\/user\/.*\/doc\/.*").Success);
-                SetResponseEnabled("ok", true);
+                _addDownloadButton.SetSensitive(true);
             }
         };
         gtk_file_dialog_select_folder(folderDialog, Handle, IntPtr.Zero, _saveCallback, IntPtr.Zero);
