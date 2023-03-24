@@ -100,7 +100,7 @@ public partial class MainWindow : Adw.ApplicationWindow
     public async Task StartAsync()
     {
         _application.AddWindow(this);
-        Show();
+        Present();
         _spinnerContainer.SetVisible(true);
         _mainBox.SetVisible(false);
         _spinner.Start();
@@ -232,7 +232,7 @@ public partial class MainWindow : Adw.ApplicationWindow
     {
         var addController = _controller.CreateAddDownloadDialogController();
         var addDialog = new AddDownloadDialog(addController, this);
-        addDialog.Show();
+        addDialog.Present();
         addDialog.OnResponse += (sender, e) =>
         {
             if (addController.Accepted)
@@ -254,7 +254,7 @@ public partial class MainWindow : Adw.ApplicationWindow
     private void Preferences(Gio.SimpleAction sender, EventArgs e)
     {
         var preferencesDialog = new PreferencesDialog(_controller.PreferencesViewController, _application, this);
-        preferencesDialog.Show();
+        preferencesDialog.Present();
     }
 
     /// <summary>
@@ -268,7 +268,7 @@ public partial class MainWindow : Adw.ApplicationWindow
         var shortcutsWindow = (Gtk.ShortcutsWindow)builder.GetObject("_shortcuts");
         shortcutsWindow.SetTransientFor(this);
         shortcutsWindow.SetIconName(_controller.AppInfo.ID);
-        shortcutsWindow.Show();
+        shortcutsWindow.Present();
     }
 
     /// <summary>
@@ -309,6 +309,6 @@ public partial class MainWindow : Adw.ApplicationWindow
         dialog.SetArtists(_controller.Localizer["Artists", "Credits"].Split(Environment.NewLine));
         dialog.SetTranslatorCredits((string.IsNullOrEmpty(_controller.Localizer["Translators", "Credits"]) ? "" : _controller.Localizer["Translators", "Credits"]));
         dialog.SetReleaseNotes(_controller.AppInfo.Changelog);
-        dialog.Show();
+        dialog.Present();
     }
 }
