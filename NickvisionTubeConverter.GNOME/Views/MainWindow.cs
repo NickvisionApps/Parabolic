@@ -233,16 +233,13 @@ public partial class MainWindow : Adw.ApplicationWindow
         var addController = _controller.CreateAddDownloadDialogController();
         var addDialog = new AddDownloadDialog(addController, this);
         addDialog.Present();
-        addDialog.OnResponse += (sender, e) =>
+        addDialog.OnDownload += (sender, e) =>
         {
-            if (addController.Accepted)
+            foreach (var download in addController.Downloads)
             {
-                foreach (var download in addController.Downloads)
-                {
-                    _controller.AddDownload(download);
-                }
+                _controller.AddDownload(download);
             }
-            addDialog.Destroy();
+            addDialog.Close();
         };
     }
 
