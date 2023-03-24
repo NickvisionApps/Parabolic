@@ -1,4 +1,5 @@
 ﻿using NickvisionTubeConverter.Shared.Helpers;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
@@ -143,8 +144,9 @@ public class VideoUrlInfo
                 }
                 return videoUrlInfo;
             }
-            catch
+            catch (Exception e)
             {
+                Console.WriteLine(e);
                 using (Python.Runtime.Py.GIL())
                 {
                     outFile.close();
