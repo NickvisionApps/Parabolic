@@ -188,49 +188,25 @@ public partial class AddDownloadDialog : Adw.MessageDialog
     /// <param name="e">EventArgs</param>
     private void SelectSaveFolder(Gtk.Button sender, EventArgs e)
     {
-        if (Gtk.Functions.GetMinorVersion() >= 9)
+        var folderDialog = gtk_file_dialog_new();
+        gtk_file_dialog_set_title(folderDialog, _controller.Localizer["SelectSaveFolder"]);
+        if (Directory.Exists(_saveFolderRow.GetText()) && _saveFolderRow.GetText() != "/")
         {
-            var folderDialog = gtk_file_dialog_new();
-            gtk_file_dialog_set_title(folderDialog, _controller.Localizer["SelectSaveFolder"]);
-            if (Directory.Exists(_saveFolderRow.GetText()) && _saveFolderRow.GetText() != "/")
-            {
-                var folder = Gio.FileHelper.NewForPath(_saveFolderRow.GetText());
-                gtk_file_dialog_set_initial_folder(folderDialog, folder.Handle);
-            }
-            _saveCallback = (source, res, data) =>
-            {
-                var fileHandle = gtk_file_dialog_select_folder_finish(folderDialog, res, IntPtr.Zero);
-                if (fileHandle != IntPtr.Zero)
-                {
-                    var path = g_file_get_path(fileHandle);
-                    _saveFolderRow.SetText(path);
-                    _saveWarning.SetVisible(Regex.Match(_saveFolderRow.GetText(), @"^\/run\/user\/.*\/doc\/.*").Success);
-                    SetResponseEnabled("ok", true);
-                }
-            };
-            gtk_file_dialog_select_folder(folderDialog, Handle, IntPtr.Zero, _saveCallback, IntPtr.Zero);
+            var folder = Gio.FileHelper.NewForPath(_saveFolderRow.GetText());
+            gtk_file_dialog_set_initial_folder(folderDialog, folder.Handle);
         }
-        else
+        _saveCallback = (source, res, data) =>
         {
-            var folderDialog = Gtk.FileChooserNative.New(_controller.Localizer["SelectSaveFolder"], _parent, Gtk.FileChooserAction.SelectFolder, _controller.Localizer["OK"], _controller.Localizer["Cancel"]);
-            folderDialog.SetModal(true);
-            if (Directory.Exists(_saveFolderRow.GetText()) && _saveFolderRow.GetText() != "/")
+            var fileHandle = gtk_file_dialog_select_folder_finish(folderDialog, res, IntPtr.Zero);
+            if (fileHandle != IntPtr.Zero)
             {
-                var folder = Gio.FileHelper.NewForPath(_saveFolderRow.GetText());
-                gtk_file_chooser_set_current_folder(folderDialog.Handle, folder.Handle, IntPtr.Zero);
+                var path = g_file_get_path(fileHandle);
+                _saveFolderRow.SetText(path);
+                _saveWarning.SetVisible(Regex.Match(_saveFolderRow.GetText(), @"^\/run\/user\/.*\/doc\/.*").Success);
+                SetResponseEnabled("ok", true);
             }
-            folderDialog.OnResponse += (sender, e) =>
-            {
-                if (e.ResponseId == (int)Gtk.ResponseType.Accept)
-                {
-                    var path = folderDialog.GetFile()!.GetPath() ?? "";
-                    _saveFolderRow.SetText(path);
-                    _saveWarning.SetVisible(Regex.Match(_saveFolderRow.GetText(), @"^\/run\/user\/.*\/doc\/.*").Success);
-                    SetResponseEnabled("ok", true);
-                }
-            };
-            folderDialog.Show();
-        }
+        };
+        gtk_file_dialog_select_folder(folderDialog, Handle, IntPtr.Zero, _saveCallback, IntPtr.Zero);
     }
 
     /// <summary>
