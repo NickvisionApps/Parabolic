@@ -215,7 +215,11 @@ public sealed partial class MainWindow : Window
     /// </summary>
     /// <param name="sender">object</param>
     /// <param name="e">RoutedEventArgs</param>
-    private void Quit(object sender, RoutedEventArgs e) => Close();
+    private void Quit(object sender, RoutedEventArgs e)
+    {
+        Close();
+        TaskbarIcon.Dispose();
+    }
 
     /// <summary>
     /// Occurs when the NavigationView's item selection is changed
