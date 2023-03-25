@@ -39,12 +39,11 @@ Adw.Window _root {
         }
           
         Adw.ViewStack _viewStack {
-          margin-start: 24;
-          margin-end: 24; 
-          
           Adw.ViewStackPage {
             name: "pageUrl";
             child: Gtk.Box {
+              margin-start: 24;
+              margin-end: 24;
               orientation: vertical;
               spacing: 20;
 
@@ -69,102 +68,99 @@ Adw.Window _root {
             name: "pageDownload";
             child: Gtk.Box _downloadPage {
               visible: false;
-            
-              Gtk.Box {
-                orientation: vertical;
-                hexpand: true;
-                spacing: 6;
+              orientation: vertical;
+              hexpand: true;
+              spacing: 12;
 
-                Adw.PreferencesGroup {
-                  margin-bottom: 12;
-                  margin-start: 2;
-                  margin-end: 2;
+              Adw.PreferencesGroup {
+                margin-bottom: 12;
+                margin-start: 24;
+                margin-end: 24;
 
-                  Adw.ComboRow _fileTypeRow {
-                    title: _("FileType.Field");
-                    model: Gtk.StringList {
-                      strings ["MP4", "WEBM", "MP3", "OPUS", "FLAC", "WAV"]
-                    };
-                  }
-            
-                  Adw.ComboRow _qualityRow {
-                    title: _("Quality.Field");
-                    model: Gtk.StringList {
-                      strings [_("Quality.Best"), _("Quality.Good"), _("Quality.Worst")]
-                    };
-                  }
-            
-                  Adw.ComboRow _subtitleRow {
-                    title: _("Subtitle.Field");
-                    model: Gtk.StringList {
-                      strings [_("Subtitle.None"), "VTT", "SRT"]
-                    };
-                  }
+                Adw.ComboRow _fileTypeRow {
+                  title: _("FileType.Field");
+                  model: Gtk.StringList {
+                    strings ["MP4", "WEBM", "MP3", "OPUS", "FLAC", "WAV"]
+                  };
+                }
 
-                  Adw.EntryRow _saveFolderRow {
-                    title: _("SaveFolder.Field");
-                    width-request: 420;
-                    editable: false;
-              
-                    [suffix]
-                    Gtk.MenuButton _saveWarning {
-                      valign: center;
-                      icon-name: "dialog-warning-symbolic";
-                      visible: false;
-                      popover: Gtk.Popover {
-                        Adw.Clamp {
-                          maximum-size: 300;
-                  
-                          Gtk.Label {
-                            label: _("SaveWarning.GTK");
-                            wrap: true;
-                            justify: center;
-                          }
+                Adw.ComboRow _qualityRow {
+                  title: _("Quality.Field");
+                  model: Gtk.StringList {
+                    strings [_("Quality.Best"), _("Quality.Good"), _("Quality.Worst")]
+                  };
+                }
+
+                Adw.ComboRow _subtitleRow {
+                  title: _("Subtitle.Field");
+                  model: Gtk.StringList {
+                    strings [_("Subtitle.None"), "VTT", "SRT"]
+                  };
+                }
+
+                Adw.EntryRow _saveFolderRow {
+                  title: _("SaveFolder.Field");
+                  width-request: 420;
+                  editable: false;
+            
+                  [suffix]
+                  Gtk.MenuButton _saveWarning {
+                    valign: center;
+                    icon-name: "dialog-warning-symbolic";
+                    visible: false;
+                    popover: Gtk.Popover {
+                      Adw.Clamp {
+                        maximum-size: 300;
+
+                        Gtk.Label {
+                          label: _("SaveWarning.GTK");
+                          wrap: true;
+                          justify: center;
                         }
-                      };
-              
-                      styles ["flat", "warning"]
-                    }
-              
-                    [suffix]
-                    Gtk.Button _selectSaveFolderButton {
-                      valign: center;
-                      icon-name: "folder-open-symbolic";
-                      tooltip-text: _("SelectSaveFolder");
-                
-                      styles ["flat"]
-                    }
+                      }
+                    };
+            
+                    styles ["flat", "warning"]
                   }
-
-                  Adw.ActionRow _overwriteRow {
-                     title: _("OverwriteExistingFiles");
-                    activatable-widget: _overwriteSwitch;
-
-                    [suffix]
-                    Gtk.Switch _overwriteSwitch {
-                      valign: center;
-                      active: true;
-                    }
+            
+                  [suffix]
+                  Gtk.Button _selectSaveFolderButton {
+                    valign: center;
+                    icon-name: "folder-open-symbolic";
+                    tooltip-text: _("SelectSaveFolder");
+              
+                    styles ["flat"]
                   }
                 }
 
-                Gtk.ToggleButton _numberVideosButton {
-                  halign: start;
+                Adw.ActionRow _overwriteRow {
+                   title: _("OverwriteExistingFiles");
+                  activatable-widget: _overwriteSwitch;
 
-                  Adw.ButtonContent {
-                    icon-name: "view-list-ordered-symbolic";
-                    label: _("NumberVideos");
+                  [suffix]
+                  Gtk.Switch _overwriteSwitch {
+                    valign: center;
+                    active: true;
                   }
                 }
+              }
 
-                Gtk.ScrolledWindow {
-                  propagate-natural-height: true;
-                  max-content-height: 150;
+              Gtk.ToggleButton _numberVideosButton {
+                halign: center;
 
-                  Adw.PreferencesGroup _videosGroup {
-                    margin-start: 2;
-                    margin-end: 2;
-                  }
+                Adw.ButtonContent {
+                  icon-name: "view-list-ordered-symbolic";
+                  label: _("NumberVideos");
+                }
+              }
+
+              Gtk.ScrolledWindow _playlist {
+                propagate-natural-height: true;
+                max-content-height: 150;
+
+                Adw.PreferencesGroup _videosGroup {
+                  margin-start: 24;
+                  margin-end: 24;
                 }
               }
             };
