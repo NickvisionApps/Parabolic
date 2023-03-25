@@ -73,9 +73,9 @@ public partial class MessageDialog
     }
 
     /// <summary>
-    /// Shows the dialog
+    /// Presents the dialog
     /// </summary>
-    public void Show() => _dialog.Show();
+    public void Present() => _dialog.Present();
 
     /// <summary>
     /// Runs the dialog
@@ -83,7 +83,7 @@ public partial class MessageDialog
     /// <returns>MessageDialogResponse</returns>
     public MessageDialogResponse Run()
     {
-        _dialog.Show();
+        _dialog.Present();
         while (_dialog.GetVisible())
         {
             g_main_context_iteration(g_main_context_default(), false);

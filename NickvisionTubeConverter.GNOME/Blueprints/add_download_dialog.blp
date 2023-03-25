@@ -1,150 +1,182 @@
 using Gtk 4.0;
 using Adw 1;
 
-Adw.MessageDialog _root {
-  heading: _("AddDownload");
-  hide-on-close: true;
+Adw.Window _root {
+  default-width: 500;
   modal: true;
-  width-request: 440;
+  resizable: false;
 
-  Adw.ViewStack _viewStack {
-    Adw.ViewStackPage {
-      name: "pageUrl";
-      child: Gtk.Box {
+  content: Gtk.Box {
+    orientation: vertical;
+
+    Adw.HeaderBar {
+      title-widget: Gtk.Label {};
+
+      [start]
+      Gtk.Button _backButton {
+        halign: start;
+        valign: center;
+        visible: bind _downloadPage.visible;
+
+        Adw.ButtonContent {
+          icon-name: "go-previous-symbolic";
+          label: _("Back");
+        }
+      }
+
+      styles ["flat"]
+    }
+
+    Gtk.WindowHandle {
+      Gtk.Box {
         orientation: vertical;
-        spacing: 20;
+        spacing: 24;
 
-        Adw.PreferencesGroup {
-          Adw.EntryRow _urlRow {
-            title: _("VideoUrl.Field");
-            width-request: 420;
-            show-apply-button: true;
-          }
+        Gtk.Label {
+          label: _("AddDownload");
+
+          styles ["title-2"]
         }
+          
+        Adw.ViewStack _viewStack {
+          Adw.ViewStackPage {
+            name: "pageUrl";
+            child: Gtk.Box {
+              margin-start: 24;
+              margin-end: 24;
+              orientation: vertical;
+              spacing: 20;
 
-        Gtk.Spinner _urlSpinner {
-          valign: center;
-          width-request: 40;
-          height-request: 40;
-          visible: false;
-        }
-      };
-    }
+              Adw.PreferencesGroup {
+                Adw.EntryRow _urlRow {
+                  title: _("VideoUrl.Field");
+                  width-request: 420;
+                  show-apply-button: true;
+                }
+              }
 
-    Adw.ViewStackPage {
-      name: "pageDownload";
-      child: Gtk.ScrolledWindow _scrollDownload {
-        height-request: 390;
-        hscrollbar-policy: never;
-        visible: false;
-
-        Gtk.Box {
-          orientation: vertical;
-          spacing: 6;
-
-          Gtk.Box {
-            orientation: horizontal;
-            spacing: 6;
-
-            Gtk.Button _backButton {
-                icon-name: "go-previous-symbolic";
-                tooltip-text: _("Back");
-            }
-
-            Gtk.Label _titleLabel {
-                styles ["heading"]
-                ellipsize: end;
-            }
-          }
-
-          Adw.PreferencesGroup {
-            margin-bottom: 12;
-            margin-start: 2;
-            margin-end: 2;
-
-            Adw.ComboRow _fileTypeRow {
-              title: _("FileType.Field");
-              model: Gtk.StringList {
-                strings ["MP4", "WEBM", "MP3", "OPUS", "FLAC", "WAV"]
-              };
-            }
-    
-            Adw.ComboRow _qualityRow {
-              title: _("Quality.Field");
-              model: Gtk.StringList {
-                strings [_("Quality.Best"), _("Quality.Good"), _("Quality.Worst")]
-              };
-            }
-    
-            Adw.ComboRow _subtitleRow {
-              title: _("Subtitle.Field");
-              model: Gtk.StringList {
-                strings [_("Subtitle.None"), "VTT", "SRT"]
-              };
-            }
-
-            Adw.EntryRow _saveFolderRow {
-              title: _("SaveFolder.Field");
-              width-request: 420;
-              editable: false;
-      
-              [suffix]
-              Gtk.MenuButton _saveWarning {
+              Gtk.Spinner _urlSpinner {
                 valign: center;
-                icon-name: "dialog-warning-symbolic";
+                width-request: 40;
+                height-request: 40;
                 visible: false;
-                popover: Gtk.Popover {
-                  Adw.Clamp {
-                    maximum-size: 300;
+              }
+            };
+          }
+
+          Adw.ViewStackPage {
+            name: "pageDownload";
+            child: Gtk.Box _downloadPage {
+              visible: false;
+              orientation: vertical;
+              hexpand: true;
+              spacing: 12;
+
+              Adw.PreferencesGroup {
+                margin-bottom: 12;
+                margin-start: 24;
+                margin-end: 24;
+
+                Adw.ComboRow _fileTypeRow {
+                  title: _("FileType.Field");
+                  model: Gtk.StringList {
+                    strings ["MP4", "WEBM", "MP3", "OPUS", "FLAC", "WAV"]
+                  };
+                }
+
+                Adw.ComboRow _qualityRow {
+                  title: _("Quality.Field");
+                  model: Gtk.StringList {
+                    strings [_("Quality.Best"), _("Quality.Good"), _("Quality.Worst")]
+                  };
+                }
+
+                Adw.ComboRow _subtitleRow {
+                  title: _("Subtitle.Field");
+                  model: Gtk.StringList {
+                    strings [_("Subtitle.None"), "VTT", "SRT"]
+                  };
+                }
+
+                Adw.EntryRow _saveFolderRow {
+                  title: _("SaveFolder.Field");
+                  width-request: 420;
+                  editable: false;
             
-                    Gtk.Label {
-                      label: _("SaveWarning.GTK");
-                      wrap: true;
-                      justify: center;
-                    }
+                  [suffix]
+                  Gtk.MenuButton _saveWarning {
+                    valign: center;
+                    icon-name: "dialog-warning-symbolic";
+                    visible: false;
+                    popover: Gtk.Popover {
+                      Adw.Clamp {
+                        maximum-size: 300;
+
+                        Gtk.Label {
+                          label: _("SaveWarning.GTK");
+                          wrap: true;
+                          justify: center;
+                        }
+                      }
+                    };
+            
+                    styles ["flat", "warning"]
                   }
-                };
-        
-                styles ["flat", "warning"]
+            
+                  [suffix]
+                  Gtk.Button _selectSaveFolderButton {
+                    valign: center;
+                    icon-name: "folder-open-symbolic";
+                    tooltip-text: _("SelectSaveFolder");
+              
+                    styles ["flat"]
+                  }
+                }
+
+                Adw.ActionRow _overwriteRow {
+                   title: _("OverwriteExistingFiles");
+                  activatable-widget: _overwriteSwitch;
+
+                  [suffix]
+                  Gtk.Switch _overwriteSwitch {
+                    valign: center;
+                    active: true;
+                  }
+                }
               }
-      
-              [suffix]
-              Gtk.Button _selectSaveFolderButton {
-                valign: center;
-                icon-name: "folder-open-symbolic";
-                tooltip-text: _("SelectSaveFolder");
-        
-                styles ["flat"]
+
+              Gtk.ToggleButton _numberVideosButton {
+                halign: center;
+
+                Adw.ButtonContent {
+                  icon-name: "view-list-ordered-symbolic";
+                  label: _("NumberVideos");
+                }
               }
-            }
 
-            Adw.ActionRow _overwriteRow {
-              title: _("OverwriteExistingFiles");
-              activatable-widget: _overwriteSwitch;
+              Gtk.ScrolledWindow _playlist {
+                propagate-natural-height: true;
+                max-content-height: 150;
 
-              [suffix]
-              Gtk.Switch _overwriteSwitch {
-                valign: center;
-                active: true;
+                Adw.PreferencesGroup _videosGroup {
+                  margin-start: 24;
+                  margin-end: 24;
+                }
               }
-            }
-          }
-
-          Gtk.ToggleButton _numberVideosButton {
-            halign: start;
-
-            Adw.ButtonContent {
-                icon-name: "view-list-ordered-symbolic";
-                label: _("NumberVideos");
-            }
-          }
-
-          Adw.PreferencesGroup _videosGroup {
-            margin-start: 2;
-            margin-end: 2;
+            };
           }
         }
-      };
+
+        Gtk.Button _addDownloadButton {
+          label: _("Download");
+          halign: center;
+          valign: center;
+          margin-top: 24;
+          margin-bottom: 24;
+
+          styles ["pill", "suggested-action"]
+        }
+      }
     }
-  }
+  };
 }
