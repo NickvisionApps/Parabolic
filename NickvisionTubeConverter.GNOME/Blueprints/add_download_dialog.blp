@@ -11,6 +11,19 @@ Adw.Window _root {
 
     Adw.HeaderBar {
       title-widget: Gtk.Label {};
+
+      [start]
+      Gtk.Button _backButton {
+        halign: start;
+        valign: center;
+        visible: bind _downloadPage.visible;
+
+        Adw.ButtonContent {
+          icon-name: "go-previous-symbolic";
+          label: _("Back");
+        }
+      }
+
       styles ["flat"]
     }
 
@@ -61,21 +74,6 @@ Adw.Window _root {
               Gtk.Box {
                 orientation: vertical;
                 spacing: 6;
-
-                Gtk.Box {
-                  orientation: horizontal;
-                  spacing: 6;
-
-                  Gtk.Button _backButton {
-                    icon-name: "go-previous-symbolic";
-                    tooltip-text: _("Back");
-                  }
-
-                  Gtk.Label _titleLabel {
-                    styles ["heading"]
-                    ellipsize: end;
-                  }
-                }
 
                 Adw.PreferencesGroup {
                   margin-bottom: 12;
