@@ -68,11 +68,11 @@ Adw.Window _root {
           Adw.ViewStackPage {
             name: "pageDownload";
             child: Gtk.Box _downloadPage {
-              height-request: 390;
               visible: false;
             
               Gtk.Box {
                 orientation: vertical;
+                hexpand: true;
                 spacing: 6;
 
                 Adw.PreferencesGroup {
@@ -158,7 +158,8 @@ Adw.Window _root {
                 }
 
                 Gtk.ScrolledWindow {
-                  height-request: 200;
+                  propagate-natural-height: true;
+                  max-content-height: 150;
 
                   Adw.PreferencesGroup _videosGroup {
                     margin-start: 2;
