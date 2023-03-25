@@ -67,6 +67,7 @@ public partial class AddDownloadDialog : Adw.Window
     [Gtk.Connect] private readonly Gtk.Button _selectSaveFolderButton;
     [Gtk.Connect] private readonly Gtk.Switch _overwriteSwitch;
     [Gtk.Connect] private readonly Gtk.ToggleButton _numberVideosButton;
+    [Gtk.Connect] private readonly Gtk.ScrolledWindow _playlist;
     [Gtk.Connect] private readonly Adw.PreferencesGroup _videosGroup;
     private readonly List<VideoRow> _videoRows;
 
@@ -164,6 +165,20 @@ public partial class AddDownloadDialog : Adw.Window
                 _videoRows.Add(row);
                 _videosGroup.Add(row);
             }
+            _playlist.GetVadjustment().OnNotify += (sender, e) =>
+            {
+                if (e.Pspec.GetName() == "page-size")
+                {
+                    if (_playlist.GetVadjustment().GetPageSize() >= _playlist.GetMaxContentHeight())
+                    {
+                        _playlist.AddCssClass("playlist");
+                    }
+                    else
+                    {
+                        _playlist.RemoveCssClass("playlist");
+                    }
+                }
+            };
         }
     }
 
