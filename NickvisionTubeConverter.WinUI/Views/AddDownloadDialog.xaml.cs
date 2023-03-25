@@ -77,10 +77,8 @@ public sealed partial class AddDownloadDialog : ContentDialog
         var result = await base.ShowAsync();
         if (result == ContentDialogResult.None)
         {
-            _controller.Accepted = false;
             return false;
         }
-        _controller.Accepted = true;
         _controller.PopulateDownloads(_videoUrlInfo!, (MediaFileType)CmbFileType.SelectedIndex, (Quality)CmbQuality.SelectedIndex, (Subtitle)CmbSubtitle.SelectedIndex, TxtSaveFolder.Text, ChkOverwriteFiles.IsChecked ?? false);
         return true;
     }
