@@ -59,7 +59,6 @@ public partial class AddDownloadDialog : Adw.Window
     [Gtk.Connect] private readonly Gtk.Button _addDownloadButton;
     [Gtk.Connect] private readonly Gtk.Box _downloadPage;
     [Gtk.Connect] private readonly Gtk.Button _backButton;
-    [Gtk.Connect] private readonly Gtk.Label _titleLabel;
     [Gtk.Connect] private readonly Adw.ComboRow _fileTypeRow;
     [Gtk.Connect] private readonly Adw.ComboRow _qualityRow;
     [Gtk.Connect] private readonly Adw.ComboRow _subtitleRow;
@@ -154,7 +153,6 @@ public partial class AddDownloadDialog : Adw.Window
             _downloadPage.SetVisible(true);
             _viewStack.SetVisibleChildName("pageDownload");
             _addDownloadButton.SetSensitive(!string.IsNullOrEmpty(_saveFolderRow.GetText()));
-            _titleLabel.SetText(_videoUrlInfo.Videos.Count > 1 ? _videoUrlInfo.PlaylistTitle! : _videoUrlInfo.Videos[0].Title);
             _numberVideosButton.SetVisible(_videoUrlInfo.Videos.Count > 1 ? true : false);
             foreach (var row in _videoRows)
             {
