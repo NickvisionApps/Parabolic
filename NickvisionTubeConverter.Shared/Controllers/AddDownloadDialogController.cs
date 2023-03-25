@@ -36,10 +36,6 @@ public class AddDownloadDialogController
     /// The downloads created by the dialog
     /// </summary>
     public List<Download> Downloads { get; init; }
-    /// <summary>
-    /// Whether or not the dialog was accepted (response)
-    /// </summary>
-    public bool Accepted { get; set; }
 
     /// <summary>
     /// The previously used save folder
@@ -57,7 +53,6 @@ public class AddDownloadDialogController
     {
         Localizer = localizer;
         Downloads = new List<Download>();
-        Accepted = false;
     }
 
     /// <summary>
