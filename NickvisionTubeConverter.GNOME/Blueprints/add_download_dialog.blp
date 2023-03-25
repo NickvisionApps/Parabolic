@@ -54,9 +54,8 @@ Adw.Window _root {
 
           Adw.ViewStackPage {
             name: "pageDownload";
-            child: Gtk.ScrolledWindow _scrollDownload {
+            child: Gtk.Box _downloadPage {
               height-request: 390;
-              hscrollbar-policy: never;
               visible: false;
             
               Gtk.Box {
@@ -160,9 +159,13 @@ Adw.Window _root {
                   }
                 }
 
-                Adw.PreferencesGroup _videosGroup {
-                  margin-start: 2;
-                  margin-end: 2;
+                Gtk.ScrolledWindow {
+                  height-request: 200;
+
+                  Adw.PreferencesGroup _videosGroup {
+                    margin-start: 2;
+                    margin-end: 2;
+                  }
                 }
               }
             };
