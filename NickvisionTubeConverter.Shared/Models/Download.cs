@@ -109,7 +109,10 @@ public class Download
     {
         _progressCallback = progressCallback;
         IsDone = false;
-        Filename = Regex.Escape(Filename).Replace(@"\ ", " ");
+        if(!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+        {
+            Filename = Regex.Escape(Filename).Replace(@"\ ", " ");
+        }
         if (Directory.Exists(_tempDownloadPath))
         {
             Directory.Delete(_tempDownloadPath, true);

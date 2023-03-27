@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
 using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 
 namespace NickvisionTubeConverter.Shared.Models;
@@ -125,6 +126,7 @@ public class VideoUrlInfo
                     var ytOpt = new Dictionary<string, dynamic>() {
                         { "quiet", true },
                         { "merge_output_format", "/" },
+                        { "windowsfilenames", RuntimeInformation.IsOSPlatform(OSPlatform.Windows) },
                         { "ignoreerrors", true }
                     };
                     Python.Runtime.PyDict? videoInfo = ytdlp.YoutubeDL(ytOpt).extract_info(url, download: false);
