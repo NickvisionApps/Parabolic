@@ -154,7 +154,7 @@ public class VideoUrlInfo
                     else
                     {
                         var title = videoInfo.HasKey("title") ? (videoInfo["title"].As<string?>() ?? "Media") : "Media";
-                        foreach (var c in Path.GetInvalidPathChars())
+                        foreach (var c in Path.GetInvalidFileNameChars())
                         {
                             title = title.Replace(c, '_');
                         }
