@@ -32,14 +32,9 @@ public sealed partial class VideoRow : UserControl
     /// <param name="e">TextChangedEventArgs</param>
     private void TxtTitle_TextChanged(object sender, TextChangedEventArgs e)
     {
-        if (!_constructing)
+        foreach (var c in Path.GetInvalidFileNameChars())
         {
-            var position = TxtTitle.SelectionStart;
-            foreach (var c in Path.GetInvalidFileNameChars())
-            {
-                TxtTitle.Text = TxtTitle.Text.Replace(c, '_');
-            }
-            TxtAmount.SelectionStart = position - 1;
+            TxtTitle.Text = TxtTitle.Text.Replace(c, '_');
         }
     }
 }
