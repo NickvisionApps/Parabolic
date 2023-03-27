@@ -143,12 +143,22 @@ public class VideoUrlInfo
                                 continue;
                             }
                             var entry = e.As<Python.Runtime.PyDict>();
-                            videoUrlInfo.Videos.Add(new VideoInfo(entry["webpage_url"].As<string>(), entry.HasKey("title") ? (entry["title"].As<string?>() ?? "Media") : "Media", true));
+                            var title = entry.HasKey("title") ? (entry["title"].As<string?>() ?? "Media") : "Media";
+                            foreach (var c in Path.GetInvalidFileNameChars())
+                            {
+                                title = title.Replace(c, '_');
+                            }
+                            videoUrlInfo.Videos.Add(new VideoInfo(entry["webpage_url"].As<string>(), title, true));
                         }
                     }
                     else
                     {
-                        videoUrlInfo.Videos.Add(new VideoInfo(videoInfo["webpage_url"].As<string>(), videoInfo.HasKey("title") ? (videoInfo["title"].As<string?>() ?? "Media") : "Media"));
+                        var title = videoInfo.HasKey("title") ? (videoInfo["title"].As<string?>() ?? "Media") : "Media";
+                        foreach (var c in Path.GetInvalidPathChars())
+                        {
+                            title = title.Replace(c, '_');
+                        }
+                        videoUrlInfo.Videos.Add(new VideoInfo(videoInfo["webpage_url"].As<string>(), title));
                     }
                     outFile.close();
                 }
