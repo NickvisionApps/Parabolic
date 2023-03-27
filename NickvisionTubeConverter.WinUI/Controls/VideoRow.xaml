@@ -19,7 +19,7 @@
 
                 <Button.Flyout>
                     <Flyout Placement="Bottom">
-                        <TextBox x:name="TxtTitle" PlaceholderText="{Binding OriginalTitle}" Text="{Binding Title, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" TextChanged="TxtTitle_TextChanged"/>
+                        <TextBox x:Name="TxtTitle" PlaceholderText="{Binding OriginalTitle}" Text="{Binding Title, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" TextChanged="TxtTitle_TextChanged"/>
                     </Flyout>
                 </Button.Flyout>
             </Button>
