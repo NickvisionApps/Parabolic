@@ -28,7 +28,7 @@ public partial class App : Application
         _mainWindowController.AppInfo.ShortName = "Tube Converter";
         _mainWindowController.AppInfo.Description = $"{_mainWindowController.Localizer["Description"]}.";
         _mainWindowController.AppInfo.Version = "2023.3.1-next";
-        _mainWindowController.AppInfo.Changelog = "- ";
+        _mainWindowController.AppInfo.Changelog = "- Fixed an issue where the user could not download playlists with unavailable videos\n- Fixed an issue where the some videos could not be downloaded when embedding metadata\n- Fixed an issue where videos with invalid filename characters could not be downloaded\n- Updated translations (Thanks everyone on Weblate!)";
         _mainWindowController.AppInfo.GitHubRepo = new Uri("https://github.com/nlogozzo/NickvisionTubeConverter");
         _mainWindowController.AppInfo.IssueTracker = new Uri("https://github.com/nlogozzo/NickvisionTubeConverter/issues/new");
         _mainWindowController.AppInfo.SupportUrl = new Uri("https://github.com/nlogozzo/NickvisionTubeConverter/discussions");
