@@ -182,7 +182,7 @@ public class Download
                         ytOpt.Add("writethumbnail", true);
                         postProcessors.Add(new Dictionary<string, dynamic>() { { "key", "EmbedThumbnail" } });
                     }
-                    postProcessors.Add(new Dictionary<string, dynamic>() { { "key", "FFmpegMetadata" }, { "add_metadata", true } });
+                    postProcessors.Insert(0, new Dictionary<string, dynamic>() { { "key", "FFmpegMetadata" }, { "add_metadata", true } });
                 }
                 if (postProcessors.Count != 0)
                 {
