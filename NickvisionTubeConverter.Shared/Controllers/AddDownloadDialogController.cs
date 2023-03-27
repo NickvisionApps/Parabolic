@@ -68,7 +68,7 @@ public class AddDownloadDialogController
     /// <param name="videoUrlInfo">The VideoUrlInfo object</param>
     public void ToggleNumberVideos(VideoUrlInfo videoUrlInfo, bool toggled)
     {
-        var numberedRegex = new Regex(@"[0-9] - ", RegexOptions.None);
+        var numberedRegex = new Regex(@"[0-9]+ - ", RegexOptions.None);
         for (var i = 0; i < videoUrlInfo.Videos.Count; i++)
         {
             if (toggled)
