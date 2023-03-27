@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
 using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 
 namespace NickvisionTubeConverter.Shared.Models;
@@ -125,6 +126,7 @@ public class VideoUrlInfo
                     var ytOpt = new Dictionary<string, dynamic>() {
                         { "quiet", true },
                         { "merge_output_format", "/" },
+                        { "windowsfilenames", RuntimeInformation.IsOSPlatform(OSPlatform.Windows) },
                         { "ignoreerrors", true }
                     };
                     Python.Runtime.PyDict? videoInfo = ytdlp.YoutubeDL(ytOpt).extract_info(url, download: false);
@@ -143,12 +145,22 @@ public class VideoUrlInfo
                                 continue;
                             }
                             var entry = e.As<Python.Runtime.PyDict>();
-                            videoUrlInfo.Videos.Add(new VideoInfo(entry["webpage_url"].As<string>(), entry.HasKey("title") ? (entry["title"].As<string?>() ?? "Media") : "Media", true));
+                            var title = entry.HasKey("title") ? (entry["title"].As<string?>() ?? "Media") : "Media";
+                            foreach (var c in Path.GetInvalidFileNameChars())
+                            {
+                                title = title.Replace(c, '_');
+                            }
+                            videoUrlInfo.Videos.Add(new VideoInfo(entry["webpage_url"].As<string>(), title, true));
                         }
                     }
                     else
                     {
-                        videoUrlInfo.Videos.Add(new VideoInfo(videoInfo["webpage_url"].As<string>(), videoInfo.HasKey("title") ? (videoInfo["title"].As<string?>() ?? "Media") : "Media"));
+                        var title = videoInfo.HasKey("title") ? (videoInfo["title"].As<string?>() ?? "Media") : "Media";
+                        foreach (var c in Path.GetInvalidFileNameChars())
+                        {
+                            title = title.Replace(c, '_');
+                        }
+                        videoUrlInfo.Videos.Add(new VideoInfo(videoInfo["webpage_url"].As<string>(), title));
                     }
                     outFile.close();
                 }

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Runtime.InteropServices;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace NickvisionTubeConverter.Shared.Models;
@@ -108,6 +109,10 @@ public class Download
     {
         _progressCallback = progressCallback;
         IsDone = false;
+        if(!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+        {
+            Filename = Regex.Escape(Filename).Replace(@"\ ", " ");
+        }
         if (Directory.Exists(_tempDownloadPath))
         {
             Directory.Delete(_tempDownloadPath, true);
