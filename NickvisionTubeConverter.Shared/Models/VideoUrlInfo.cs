@@ -124,14 +124,21 @@ public class VideoUrlInfo
                     dynamic ytdlp = Python.Runtime.Py.Import("yt_dlp");
                     var ytOpt = new Dictionary<string, dynamic>() {
                         { "quiet", true },
-                        { "merge_output_format", "/" }
+                        { "merge_output_format", "/" },
+                        { "ignoreerrors", true }
                     };
                     Python.Runtime.PyDict videoInfo = ytdlp.YoutubeDL(ytOpt).extract_info(url, download: false);
+                    if (videoInfo == null)
+                    {
+                        outFile.close();
+                        return null;
+                    }
                     if (videoInfo.HasKey("entries"))
                     {
                         videoUrlInfo.PlaylistTitle = videoInfo.HasKey("title") ? videoInfo["title"].As<string>() ?? "Playlist" : "Playlist";
                         foreach (var e in videoInfo["entries"].As<Python.Runtime.PyList>())
                         {
+                            if (e.IsNone()) { continue; }
                             var entry = e.As<Python.Runtime.PyDict>();
                             videoUrlInfo.Videos.Add(new VideoInfo(entry["webpage_url"].As<string>(), entry.HasKey("title") ? (entry["title"].As<string?>() ?? "Media") : "Media", true));
                         }
