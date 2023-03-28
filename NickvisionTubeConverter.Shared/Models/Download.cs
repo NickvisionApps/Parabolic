@@ -111,7 +111,7 @@ public class Download
         IsDone = false;
         if(!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
         {
-            Filename = Regex.Escape(Filename).Replace(@"\ ", " ");
+            Filename = Regex.Escape(Filename).Replace(@"\ ", " ").Replace(@"\?", "?").Replace(@"\.", ".");
         }
         if (Directory.Exists(_tempDownloadPath))
         {
