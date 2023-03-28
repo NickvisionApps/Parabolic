@@ -43,8 +43,8 @@ public partial class Program
         _mainWindowController.AppInfo.Name = "Nickvision Tube Converter";
         _mainWindowController.AppInfo.ShortName = "Tube Converter";
         _mainWindowController.AppInfo.Description = $"{_mainWindowController.Localizer["Description"]}.";
-        _mainWindowController.AppInfo.Version = "2023.3.1-next";
-        _mainWindowController.AppInfo.Changelog = "<ul><li></li></ul>";
+        _mainWindowController.AppInfo.Version = "2023.4.0-next";
+        _mainWindowController.AppInfo.Changelog = "<ul><li>Fixed an issue where extra escape characters where added in video titles</li><li>Updated translations (Thanks everyone on Weblate!)</li></ul>";
         _mainWindowController.AppInfo.GitHubRepo = new Uri("https://github.com/nlogozzo/NickvisionTubeConverter");
         _mainWindowController.AppInfo.IssueTracker = new Uri("https://github.com/nlogozzo/NickvisionTubeConverter/issues/new");
         _mainWindowController.AppInfo.SupportUrl = new Uri("https://github.com/nlogozzo/NickvisionTubeConverter/discussions");

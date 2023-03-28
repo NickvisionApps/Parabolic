@@ -7,6 +7,7 @@ namespace NickvisionTubeConverter.GNOME.Controls;
 public class VideoRow : Adw.ActionRow
 {
     private VideoInfo _videoInfo;
+    private readonly Gtk.EventControllerKey _titleKeyController;
 
     [Gtk.Connect] private readonly Gtk.CheckButton _downloadCheck;
     [Gtk.Connect] private readonly Gtk.Entry _titleEntry;
@@ -37,6 +38,10 @@ public class VideoRow : Adw.ActionRow
                 SetTitle(_videoInfo.Title);
             }
         };
+        _titleKeyController = Gtk.EventControllerKey.New();
+        _titleKeyController.SetPropagationPhase(Gtk.PropagationPhase.Capture);
+        _titleKeyController.OnKeyPressed += OnKeyPressed;
+        _titleEntry.AddController(_titleKeyController);
     }
 
     public VideoRow(VideoInfo videoInfo, Localizer localizer) : this(Builder.FromFile("video_row.ui", localizer), videoInfo)
@@ -48,5 +53,10 @@ public class VideoRow : Adw.ActionRow
     {
         SetTitle(_videoInfo.Title);
         _titleEntry.SetText(_videoInfo.Title);
+    }
+
+    private bool OnKeyPressed(Gtk.EventControllerKey sender, Gtk.EventControllerKey.KeyPressedSignalArgs e)
+    {
+        return e.Keyval == 47; // Disallow "/"
     }
 }

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Runtime.InteropServices;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace NickvisionTubeConverter.Shared.Models;
@@ -108,6 +109,10 @@ public class Download
     {
         _progressCallback = progressCallback;
         IsDone = false;
+        if(!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+        {
+            Filename = Regex.Escape(Filename).Replace(@"\ ", " ").Replace(@"\?", "?").Replace(@"\.", ".");
+        }
         if (Directory.Exists(_tempDownloadPath))
         {
             Directory.Delete(_tempDownloadPath, true);
@@ -182,7 +187,7 @@ public class Download
                         ytOpt.Add("writethumbnail", true);
                         postProcessors.Add(new Dictionary<string, dynamic>() { { "key", "EmbedThumbnail" } });
                     }
-                    postProcessors.Add(new Dictionary<string, dynamic>() { { "key", "FFmpegMetadata" }, { "add_metadata", true } });
+                    postProcessors.Insert(0, new Dictionary<string, dynamic>() { { "key", "FFmpegMetadata" }, { "add_metadata", true } });
                 }
                 if (postProcessors.Count != 0)
                 {

@@ -1,6 +1,7 @@
 using Microsoft.UI.Xaml.Controls;
 using NickvisionTubeConverter.Shared.Helpers;
 using NickvisionTubeConverter.Shared.Models;
+using System.IO;
 
 namespace NickvisionTubeConverter.WinUI.Controls;
 
@@ -22,5 +23,18 @@ public sealed partial class VideoRow : UserControl
         _videoInfo = videoInfo;
         DataContext = _videoInfo;
         ToolTipService.SetToolTip(BtnEdit, localizer["EditTitle"]);
+    }
+
+    /// <summary>
+    /// Occurs when the title textbox is changed
+    /// </summary>
+    /// <param name="sender">object</param>
+    /// <param name="e">TextChangedEventArgs</param>
+    private void TxtTitle_TextChanged(object sender, TextChangedEventArgs e)
+    {
+        foreach (var c in Path.GetInvalidFileNameChars())
+        {
+            TxtTitle.Text = TxtTitle.Text.Replace(c, '_');
+        }
     }
 }
