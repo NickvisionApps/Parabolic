@@ -160,6 +160,7 @@ public sealed partial class AddDownloadDialog : ContentDialog
         var fileType = (MediaFileType)CmbFileType.SelectedIndex;
         _initializeWithWindow(folderPicker);
         folderPicker.SuggestedStartLocation = fileType.GetIsVideo() ? PickerLocationId.VideosLibrary : PickerLocationId.MusicLibrary;
+        folderPicker.FileTypeFilter.Add("*");
         var folder = await folderPicker.PickSingleFolderAsync();
         if (folder != null)
         {
