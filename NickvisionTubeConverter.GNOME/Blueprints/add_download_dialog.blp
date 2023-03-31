@@ -51,7 +51,6 @@ Adw.Window _root {
                 Adw.EntryRow _urlRow {
                   title: _("VideoUrl.Field");
                   width-request: 420;
-                  show-apply-button: true;
                 }
               }
 
@@ -60,6 +59,16 @@ Adw.Window _root {
                 width-request: 40;
                 height-request: 40;
                 visible: false;
+              }
+
+              Gtk.Button _validateUrlButton {
+                label: _("ValidateUrl");
+                halign: center;
+                valign: center;
+                margin-top: 24;
+                margin-bottom: 24;
+
+                styles ["pill", "suggested-action"]
               }
             };
           }
@@ -163,18 +172,18 @@ Adw.Window _root {
                   margin-end: 24;
                 }
               }
+
+              Gtk.Button _addDownloadButton {
+                label: _("Download");
+                halign: center;
+                valign: center;
+                margin-top: 24;
+                margin-bottom: 24;
+
+                styles ["pill", "suggested-action"]
+              }
             };
           }
-        }
-
-        Gtk.Button _addDownloadButton {
-          label: _("Download");
-          halign: center;
-          valign: center;
-          margin-top: 24;
-          margin-bottom: 24;
-
-          styles ["pill", "suggested-action"]
         }
       }
     }
