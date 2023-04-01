@@ -55,7 +55,7 @@ public partial class AddDownloadDialog : Adw.Window
 
     [Gtk.Connect] private readonly Adw.ViewStack _viewStack;
     [Gtk.Connect] private readonly Adw.EntryRow _urlRow;
-    [Gtk.Connect] private readonly Gtk.Spinner _urlSpinner;
+    [Gtk.Connect] private readonly Gtk.Button _validateUrlButton;
     [Gtk.Connect] private readonly Gtk.Button _addDownloadButton;
     [Gtk.Connect] private readonly Gtk.Box _downloadPage;
     [Gtk.Connect] private readonly Gtk.Button _backButton;
@@ -91,7 +91,7 @@ public partial class AddDownloadDialog : Adw.Window
         SetIconName(_controller.AppInfo.ID);
         //Build UI
         builder.Connect(this);
-        _urlRow.OnApply += SearchUrl;
+        _validateUrlButton.OnClicked += SearchUrl;
         _backButton.OnClicked += (sender, e) =>
         {
             _viewStack.SetVisibleChildName("pageUrl");
@@ -134,14 +134,17 @@ public partial class AddDownloadDialog : Adw.Window
     /// </summary>
     /// <param name="sender">Adw.EntryRow</param>
     /// <param name="e">EventArgs</param>
-    private async void SearchUrl(Adw.EntryRow sender, EventArgs e)
+    private async void SearchUrl(Gtk.Button sender, EventArgs e)
     {
-        _urlSpinner.SetVisible(true);
-        _urlSpinner.Start();
-        _addDownloadButton.SetSensitive(false);
+        var urlSpinner = Gtk.Spinner.New();
+        _validateUrlButton.SetSensitive(false);
+        _validateUrlButton.SetChild(urlSpinner);
+        urlSpinner.Start();
         _videoUrlInfo = await _controller.SearchUrlAsync(_urlRow.GetText());
-        _urlSpinner.Stop();
-        _urlSpinner.SetVisible(false);
+        urlSpinner.Stop();
+        _validateUrlButton.SetSensitive(true);
+        _validateUrlButton.SetChild(null);
+        _validateUrlButton.SetLabel(_controller.Localizer["ValidateUrl"]);
         if (_videoUrlInfo == null)
         {
             _urlRow.AddCssClass("error");
