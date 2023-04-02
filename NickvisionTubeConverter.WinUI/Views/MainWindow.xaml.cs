@@ -58,7 +58,7 @@ public sealed partial class MainWindow : Window
         _controller.UICreateDownloadRow = CreateDownloadRow;
         _controller.UIMoveDownloadRow = MoveDownloadRow;
         _controller.UIDeleteDownloadRowFromQueue = DeleteDownloadRowFromQueue;
-        _controller.RunInBackgroundChanged += (sender, e) => CreateTaskbarIcon();
+        _controller.RunInBackgroundChanged += (sender, e) => DispatcherQueue.TryEnqueue(CreateTaskbarIcon);
         //Set TitleBar
         TitleBarTitle.Text = _controller.AppInfo.ShortName;
         _appWindow.Title = TitleBarTitle.Text;
