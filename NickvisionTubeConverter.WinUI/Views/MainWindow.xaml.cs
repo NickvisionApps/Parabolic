@@ -15,6 +15,7 @@ using NickvisionTubeConverter.Shared.Events;
 using NickvisionTubeConverter.Shared.Models;
 using NickvisionTubeConverter.WinUI.Controls;
 using System;
+using System.Threading;
 using System.Threading.Tasks;
 using Vanara.PInvoke;
 using Windows.Graphics;
@@ -37,6 +38,7 @@ public sealed partial class MainWindow : Window
     private readonly MicaController? _micaController;
     private bool _closeAllowed;
     private TaskbarIcon? _taskbarIcon;
+    private DispatcherTimer _taskbarTimer;
 
     /// <summary>
     /// Constructs a MainWindow
@@ -52,6 +54,11 @@ public sealed partial class MainWindow : Window
         _appWindow = AppWindow.GetFromWindowId(Win32Interop.GetWindowIdFromWindow(_hwnd));
         _isActived = true;
         _closeAllowed = false;
+        _taskbarIcon = null;
+        _taskbarTimer = new DispatcherTimer()
+        {
+            Interval = new TimeSpan(0, 0, 1)
+        };
         //Register Events
         _appWindow.Closing += Window_Closing;
         _controller.NotificationSent += NotificationSent;
@@ -59,6 +66,7 @@ public sealed partial class MainWindow : Window
         _controller.UIMoveDownloadRow = MoveDownloadRow;
         _controller.UIDeleteDownloadRowFromQueue = DeleteDownloadRowFromQueue;
         _controller.RunInBackgroundChanged += (sender, e) => DispatcherQueue.TryEnqueue(CreateTaskbarIcon);
+        _taskbarTimer.Tick += TaskbarTimer_Tick;
         //Set TitleBar
         TitleBarTitle.Text = _controller.AppInfo.ShortName;
         _appWindow.Title = TitleBarTitle.Text;
@@ -196,6 +204,7 @@ public sealed partial class MainWindow : Window
             }
             else
             {
+                _taskbarTimer.Stop();
                 _controller.StopAllDownloads();
                 _controller.Dispose();
                 _micaController?.Dispose();
@@ -238,6 +247,7 @@ public sealed partial class MainWindow : Window
     /// <param name="e">RoutedEventArgs</param>
     private void Quit(object sender, RoutedEventArgs e)
     {
+        _taskbarTimer.Stop();
         _taskbarIcon!.CloseTrayPopup();
         _controller.StopAllDownloads();
         _controller.Dispose();
@@ -322,9 +332,11 @@ public sealed partial class MainWindow : Window
                 ContextFlyout = taskbarMenuFlyout
             };
             MainGrid.Children.Insert(0, _taskbarIcon);
+            _taskbarTimer.Start();
         }
         else
         {
+            _taskbarTimer.Stop();
             _taskbarIcon?.Dispose();
             _taskbarIcon = null;
         }
@@ -403,6 +415,21 @@ public sealed partial class MainWindow : Window
             {
                 _controller.AddDownload(download);
             }
+        }
+    }
+
+    private void TaskbarTimer_Tick(object? sender, object e)
+    {
+        if(_taskbarIcon != null)
+        {
+            _taskbarIcon.DispatcherQueue.TryEnqueue(() =>
+            {
+                _taskbarIcon.ToolTipText = _controller.GetBackgroundActivityReport();
+                _taskbarIcon.TrayToolTip = new TextBlock()
+                {
+                    Text = _controller.GetBackgroundActivityReport()
+                };
+            });
         }
     }
 }
