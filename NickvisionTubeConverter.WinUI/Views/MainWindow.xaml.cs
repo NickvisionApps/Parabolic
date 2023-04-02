@@ -58,6 +58,7 @@ public sealed partial class MainWindow : Window
         _controller.UICreateDownloadRow = CreateDownloadRow;
         _controller.UIMoveDownloadRow = MoveDownloadRow;
         _controller.UIDeleteDownloadRowFromQueue = DeleteDownloadRowFromQueue;
+        _controller.RunInBackgroundChanged += (sender, e) => CreateTaskbarIcon();
         //Set TitleBar
         TitleBarTitle.Text = _controller.AppInfo.ShortName;
         _appWindow.Title = TitleBarTitle.Text;
@@ -98,34 +99,7 @@ public sealed partial class MainWindow : Window
         _appWindow.Resize(new SizeInt32(800, 600));
         User32.ShowWindow(_hwnd, ShowWindowCommand.SW_SHOWMAXIMIZED);
         //Taskbar Icon
-        if(_controller.RunInBackground)
-        {
-            var taskbarMenuFlyout = new MenuFlyout();
-            //Show Window
-            var taskbarMenuShowWindow = new MenuFlyoutItem()
-            {
-                Text = _controller.Localizer["Open"]
-            };
-            taskbarMenuShowWindow.Click += ShowWindow;
-            taskbarMenuFlyout.Items.Add(taskbarMenuShowWindow);
-            //Separator
-            taskbarMenuFlyout.Items.Add(new MenuFlyoutSeparator());
-            //Quit
-            var taskbarMenuQuit = new MenuFlyoutItem()
-            {
-                Text = _controller.Localizer["Quit"]
-            };
-            taskbarMenuQuit.Click += Quit;
-            taskbarMenuFlyout.Items.Add(taskbarMenuQuit);
-            //Icon
-            _taskbarIcon = new TaskbarIcon()
-            {
-                IconSource = new BitmapImage(new Uri("ms-appx:///Assets/org.nickvision.tubeconverter.ico")),
-                ContextMenuMode = ContextMenuMode.SecondWindow,
-                ContextFlyout = taskbarMenuFlyout
-            };
-            MainGrid.Children.Insert(0, _taskbarIcon);
-        }
+        CreateTaskbarIcon();
         //Localize Strings
         LblLoading.Text = _controller.Localizer["DependencyDownload"];
         NavViewItemHome.Content = _controller.Localizer["Home"];
@@ -314,6 +288,46 @@ public sealed partial class MainWindow : Window
     {
         var notificationBuilder = new AppNotificationBuilder().AddText(e.Title, new AppNotificationTextProperties().SetMaxLines(1)).AddText(e.Message);
         AppNotificationManager.Default.Show(notificationBuilder.BuildNotification());
+    }
+
+    /// <summary>
+    /// Creates a taskbar icon for the app
+    /// </summary>
+    private void CreateTaskbarIcon()
+    {
+        if (_controller.RunInBackground)
+        {
+            var taskbarMenuFlyout = new MenuFlyout();
+            //Show Window
+            var taskbarMenuShowWindow = new MenuFlyoutItem()
+            {
+                Text = _controller.Localizer["Open"]
+            };
+            taskbarMenuShowWindow.Click += ShowWindow;
+            taskbarMenuFlyout.Items.Add(taskbarMenuShowWindow);
+            //Separator
+            taskbarMenuFlyout.Items.Add(new MenuFlyoutSeparator());
+            //Quit
+            var taskbarMenuQuit = new MenuFlyoutItem()
+            {
+                Text = _controller.Localizer["Quit"]
+            };
+            taskbarMenuQuit.Click += Quit;
+            taskbarMenuFlyout.Items.Add(taskbarMenuQuit);
+            //Icon
+            _taskbarIcon = new TaskbarIcon()
+            {
+                IconSource = new BitmapImage(new Uri("ms-appx:///Assets/org.nickvision.tubeconverter.ico")),
+                ContextMenuMode = ContextMenuMode.SecondWindow,
+                ContextFlyout = taskbarMenuFlyout
+            };
+            MainGrid.Children.Insert(0, _taskbarIcon);
+        }
+        else
+        {
+            _taskbarIcon?.Dispose();
+            _taskbarIcon = null;
+        }
     }
 
     /// <summary>
