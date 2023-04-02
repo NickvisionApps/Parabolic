@@ -202,7 +202,7 @@ public partial class MainWindow : Adw.ApplicationWindow
                 SetVisible(false);
                 return true;
             }
-            var closeDialog = new MessageDialog(this, _controller.Localizer["CloseAndStop", "Title"], _controller.Localizer["CloseAndStop", "Description"], _controller.Localizer["No"], _controller.Localizer["Yes"]);
+            var closeDialog = new MessageDialog(this, _controller.AppInfo.ID, _controller.Localizer["CloseAndStop", "Title"], _controller.Localizer["CloseAndStop", "Description"], _controller.Localizer["No"], _controller.Localizer["Yes"]);
             if (closeDialog.Run() == MessageDialogResponse.Cancel)
             {
                 return true;
