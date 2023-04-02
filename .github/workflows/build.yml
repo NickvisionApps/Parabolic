@@ -5,7 +5,7 @@ jobs:
     name: "Flatpak"
     runs-on: ubuntu-latest
     container:
-      image: bilelmoussaoui/flatpak-github-actions:gnome-43
+      image: bilelmoussaoui/flatpak-github-actions:gnome-44
       options: --privileged
     strategy:
       matrix:
@@ -18,7 +18,7 @@ jobs:
       fail-fast: false
     steps:
       - uses: actions/checkout@v3
-      - uses: flatpak/flatpak-github-actions/flatpak-builder@v5
+      - uses: flatpak/flatpak-github-actions/flatpak-builder@v6
         with:
           bundle: org.nickvision.tubeconverter.flatpak
           manifest-path: NickvisionTubeConverter.GNOME/org.nickvision.tubeconverter.json
