@@ -264,11 +264,12 @@ public sealed partial class MainWindow : Window
     /// <param name="e">RoutedEventArgs</param>
     private void Quit(object sender, RoutedEventArgs e)
     {
-        Close();
+        _taskbarIcon!.CloseTrayPopup();
         _controller.StopAllDownloads();
         _controller.Dispose();
         _micaController?.Dispose();
-        _taskbarIcon?.Dispose();
+        _taskbarIcon.Dispose();
+        Close();
     }
 
     /// <summary>
