@@ -28,7 +28,7 @@ public partial class App : Application
         _mainWindowController.AppInfo.ShortName = "Tube Converter";
         _mainWindowController.AppInfo.Description = $"{_mainWindowController.Localizer["Description"]}.";
         _mainWindowController.AppInfo.Version = "2023.4.0-next";
-        _mainWindowController.AppInfo.Changelog = "- Fixed an issue where extra escape characters where added in video titles\n- Updated translations (Thanks everyone on Weblate!)";
+        _mainWindowController.AppInfo.Changelog = "- Added the ability to run downloads in the background\n- Fixed an issue where extra escape characters where added in video titles\n- Updated translations (Thanks everyone on Weblate!)";
         _mainWindowController.AppInfo.GitHubRepo = new Uri("https://github.com/nlogozzo/NickvisionTubeConverter");
         _mainWindowController.AppInfo.IssueTracker = new Uri("https://github.com/nlogozzo/NickvisionTubeConverter/issues/new");
         _mainWindowController.AppInfo.SupportUrl = new Uri("https://github.com/nlogozzo/NickvisionTubeConverter/discussions");
