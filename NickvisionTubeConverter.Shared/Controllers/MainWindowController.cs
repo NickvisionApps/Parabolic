@@ -42,10 +42,6 @@ public class MainWindowController : IDisposable
     /// </summary>
     public AppInfo AppInfo => AppInfo.Current;
     /// <summary>
-    /// A PreferencesViewController
-    /// </summary>
-    public PreferencesViewController PreferencesViewController => new PreferencesViewController(Localizer);
-    /// <summary>
     /// Whether or not the version is a development version or not
     /// </summary>
     public bool IsDevVersion => AppInfo.Current.Version.IndexOf('-') != -1;
@@ -161,6 +157,12 @@ public class MainWindowController : IDisposable
         }
         _disposed = true;
     }
+
+    /// <summary>
+    /// Creates a new PreferencesViewController
+    /// </summary>
+    /// <returns>The PreferencesViewController</returns>
+    public PreferencesViewController CreatePreferencesViewController() => new PreferencesViewController(Localizer);
 
     /// <summary>
     /// Starts the application

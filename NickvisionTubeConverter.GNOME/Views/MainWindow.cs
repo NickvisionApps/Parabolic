@@ -310,7 +310,7 @@ public partial class MainWindow : Adw.ApplicationWindow
     /// <param name="e">EventArgs</param>
     private void Preferences(Gio.SimpleAction sender, EventArgs e)
     {
-        var preferencesDialog = new PreferencesDialog(_controller.PreferencesViewController, _application, this);
+        var preferencesDialog = new PreferencesDialog(_controller.CreatePreferencesViewController(), _application, this);
         preferencesDialog.Present();
     }
 

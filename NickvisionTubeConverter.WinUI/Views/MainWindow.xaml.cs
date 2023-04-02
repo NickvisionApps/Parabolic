@@ -231,7 +231,7 @@ public sealed partial class MainWindow : Window
         var pageName = (string)((NavigationViewItem)e.SelectedItem).Tag;
         if (pageName == "Settings")
         {
-            PageSettings.Content = new PreferencesPage(_controller.PreferencesViewController);
+            PageSettings.Content = new PreferencesPage(_controller.CreatePreferencesViewController());
         }
         ViewStack.ChangePage(pageName);
     }
