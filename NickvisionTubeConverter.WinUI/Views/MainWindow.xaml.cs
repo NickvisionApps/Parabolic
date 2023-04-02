@@ -36,7 +36,6 @@ public sealed partial class MainWindow : Window
     private readonly SystemBackdropConfiguration _backdropConfiguration;
     private readonly MicaController? _micaController;
     private bool _closeAllowed;
-    private bool _closeFromTaskbar;
     private TaskbarIcon? _taskbarIcon;
 
     /// <summary>
@@ -53,7 +52,6 @@ public sealed partial class MainWindow : Window
         _appWindow = AppWindow.GetFromWindowId(Win32Interop.GetWindowIdFromWindow(_hwnd));
         _isActived = true;
         _closeAllowed = false;
-        _closeFromTaskbar = false;
         //Register Events
         _appWindow.Closing += Window_Closing;
         _controller.NotificationSent += NotificationSent;
@@ -195,7 +193,7 @@ public sealed partial class MainWindow : Window
     /// <param name="e">AppWindowClosingEventArgs</param>
     private async void Window_Closing(AppWindow sender, AppWindowClosingEventArgs e)
     {
-        if(_controller.RunInBackground && !_closeFromTaskbar)
+        if(_controller.RunInBackground)
         {
             e.Cancel = true;
             _appWindow.Hide();
@@ -204,7 +202,6 @@ public sealed partial class MainWindow : Window
         {
             if (_controller.AreDownloadsRunning && !_closeAllowed)
             {
-                _appWindow.Show();
                 e.Cancel = true;
                 var closeDialog = new ContentDialog()
                 {
@@ -221,10 +218,6 @@ public sealed partial class MainWindow : Window
                     _closeAllowed = true;
                     e.Cancel = false;
                     Close();
-                }
-                else
-                {
-                    _closeFromTaskbar = false;
                 }
             }
             else
@@ -271,8 +264,11 @@ public sealed partial class MainWindow : Window
     /// <param name="e">RoutedEventArgs</param>
     private void Quit(object sender, RoutedEventArgs e)
     {
-        _closeFromTaskbar = true;
         Close();
+        _controller.StopAllDownloads();
+        _controller.Dispose();
+        _micaController?.Dispose();
+        _taskbarIcon?.Dispose();
     }
 
     /// <summary>
