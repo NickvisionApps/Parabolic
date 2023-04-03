@@ -35,7 +35,7 @@ public sealed partial class PreferencesPage : UserControl
         LblBtnGitHubRepo.Text = _controller.Localizer["GitHubRepo"];
         LblBtnReportABug.Text = _controller.Localizer["ReportABug"];
         LblBtnDiscussions.Text = _controller.Localizer["Discussions"];
-        LblBtnMAtrixChat.Text = _controller.Localizer["MatrixChat"];
+        LblBtnMatrixChat.Text = _controller.Localizer["MatrixChat"];
         CardUserInterface.Header = _controller.Localizer["UserInterface"];
         CardUserInterface.Description = _controller.Localizer["UserInterfaceDescription"];
         CardTheme.Header = _controller.Localizer["Theme"];
@@ -95,7 +95,7 @@ public sealed partial class PreferencesPage : UserControl
     /// </summary>
     /// <param name="sender">object</param>
     /// <param name="e">RoutedEventArgs</param>
-    private async void SupportedSites(object sender, RoutedEventArgs e) => await Launcher.LaunchUriAsync("https://github.com/yt-dlp/yt-dlp/blob/master/supportedsites.md");
+    private async void SupportedSites(object sender, RoutedEventArgs e) => await Launcher.LaunchUriAsync(new Uri("https://github.com/yt-dlp/yt-dlp/blob/master/supportedsites.md"));
 
     /// <summary>
     /// Occurs when the changelog button is clicked
@@ -159,7 +159,7 @@ public sealed partial class PreferencesPage : UserControl
     /// </summary>
     /// <param name="sender">object</param>
     /// <param name="e">RoutedEventArgs</param>
-    private async void MatrixChat(object sender, RoutedEventArgs e) => await Launcher.LaunchUriAsync("https://matrix.to/#/#nickvision:matrix.org");
+    private async void MatrixChat(object sender, RoutedEventArgs e) => await Launcher.LaunchUriAsync(new Uri("https://matrix.to/#/#nickvision:matrix.org"));
 
     /// <summary>
     /// Occurs when the CmbTheme selection is changed
