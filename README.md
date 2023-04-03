@@ -3,7 +3,7 @@
   [![Translation status](https://hosted.weblate.org/widgets/nickvision-tube-converter/-/app/svg-badge.svg)](https://hosted.weblate.org/engage/nickvision-tube-converter/) ✨Powered by [Weblate](https://weblate.org/en/)✨
 
 # Features
-- A basic yt-dlp frontend
+- A basic yt-dlp frontend ([supported sites](https://github.com/yt-dlp/yt-dlp/blob/master/supportedsites.md))
 - Supports downloading videos in multiple formats (mp4, webm, mp3, opus, flac, and wav)
 - Run multiple downloads at a time
 - Supports downloading metadata and video subtitles

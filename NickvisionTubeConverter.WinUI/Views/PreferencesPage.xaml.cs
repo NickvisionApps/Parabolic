@@ -29,6 +29,7 @@ public sealed partial class PreferencesPage : UserControl
         LblDescription.Text = $"{_controller.AppInfo.Description}\n";
         LblVersion.Text = string.Format(_controller.Localizer["Version"], _controller.AppInfo.Version);
         LblCopyright.Text += $"\n{_controller.Localizer["Disclaimer"]}\n";
+        LblBtnSupportedSites.Text = _controller.Localizer["SupportedSites"];
         LblBtnChangelog.Text = _controller.Localizer["Changelog"];
         LblBtnCredits.Text = _controller.Localizer["Credits"];
         LblBtnGitHubRepo.Text = _controller.Localizer["GitHubRepo"];
@@ -87,6 +88,13 @@ public sealed partial class PreferencesPage : UserControl
         }
         return result;
     }
+
+    /// <summary>
+    /// Occurs when the supported sites button is clicked
+    /// </summary>
+    /// <param name="sender">object</param>
+    /// <param name="e">RoutedEventArgs</param>
+    private async void SupportedSites(object sender, RoutedEventArgs e) => await Launcher.LaunchUriAsync("https://github.com/yt-dlp/yt-dlp/blob/master/supportedsites.md");
 
     /// <summary>
     /// Occurs when the changelog button is clicked
