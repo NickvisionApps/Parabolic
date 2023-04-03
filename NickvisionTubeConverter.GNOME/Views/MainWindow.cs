@@ -362,6 +362,8 @@ public partial class MainWindow : Adw.ApplicationWindow
         dialog.SetWebsite(_controller.AppInfo.GitHubRepo.ToString());
         dialog.SetIssueUrl(_controller.AppInfo.IssueTracker.ToString());
         dialog.SetSupportUrl(_controller.AppInfo.SupportUrl.ToString());
+        dialog.AddLink(_controller.Localizer["SupportedSites"], "https://github.com/yt-dlp/yt-dlp/blob/master/supportedsites.md");
+        dialog.AddLink(_controller.Localizer["MatrixChat"], "https://matrix.to/#/#nickvision:matrix.org");
         dialog.SetDevelopers(_controller.Localizer["Developers", "Credits"].Split(Environment.NewLine));
         dialog.SetDesigners(_controller.Localizer["Designers", "Credits"].Split(Environment.NewLine));
         dialog.SetArtists(_controller.Localizer["Artists", "Credits"].Split(Environment.NewLine));

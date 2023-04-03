@@ -24,6 +24,16 @@
 
                     <TextBlock x:Name="LblCopyright" MaxWidth="220" Foreground="Gray" Text="(C) Nickvision 2021-2022&#xA;" TextWrapping="WrapWholeWords"/>
 
+                    <HyperlinkButton Margin="-12,0,0,0" Click="SupportedSites">
+                        <HyperlinkButton.Content>
+                            <StackPanel Orientation="Horizontal" Spacing="6">
+                                <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE118;"/>
+
+                                <TextBlock x:Name="LblBtnSupportedSites"/>
+                            </StackPanel>
+                        </HyperlinkButton.Content>
+                    </HyperlinkButton>
+
                     <HyperlinkButton Margin="-12,0,0,0" Click="Changelog">
                         <HyperlinkButton.Content>
                             <StackPanel Orientation="Horizontal" Spacing="6">
@@ -70,6 +80,16 @@
                                 <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE15F;"/>
 
                                 <TextBlock x:Name="LblBtnDiscussions"/>
+                            </StackPanel>
+                        </HyperlinkButton.Content>
+                    </HyperlinkButton>
+
+                    <HyperlinkButton Margin="-12,0,0,0" Click="MatrixChat">
+                        <HyperlinkButton.Content>
+                            <StackPanel Orientation="Horizontal" Spacing="6">
+                                <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE134;"/>
+
+                                <TextBlock x:Name="LblBtnMatrixChat"/>
                             </StackPanel>
                         </HyperlinkButton.Content>
                     </HyperlinkButton>
