@@ -42,6 +42,18 @@ public sealed partial class DownloadRow : UserControl, IDownloadRowControl
     /// Whether or not the download is done
     /// </summary>
     public bool IsDone => _download.IsDone;
+    /// <summary>
+    /// Download progress
+    /// </summary>
+    public double Progress { get; set; }
+    /// <summary>
+    /// Download speed (in bytes per second)
+    /// </summary>
+    public double Speed { get; set; }
+    /// <summary>
+    /// Whether or not download was finished with error
+    /// </summary>
+    public bool FinishedWithError { get; set; }
 
     /// <summary>
     /// Constructs a DownloadRow
@@ -55,6 +67,9 @@ public sealed partial class DownloadRow : UserControl, IDownloadRowControl
         _download = download;
         _previousEmbedMetadata = null;
         _wasStopped = false;
+        Progress = 0.0;
+        Speed = 0.0;
+        FinishedWithError = false;
         //Default
         Icon.Glyph = "\uE118";
         LblFilename.Text = _download.Filename;
@@ -83,6 +98,7 @@ public sealed partial class DownloadRow : UserControl, IDownloadRowControl
             _previousEmbedMetadata = embedMetadata;
         }
         _wasStopped = false;
+        FinishedWithError = false;
         Icon.Glyph = "\uE118";
         LblFilename.Text = _download.Filename;
         LblStatus.Text = _localizer["DownloadState", "Preparing"];
@@ -103,14 +119,18 @@ public sealed partial class DownloadRow : UserControl, IDownloadRowControl
             switch (state.Status)
             {
                 case DownloadProgressStatus.Downloading:
+                    Progress = state.Progress;
+                    Speed = state.Speed;
                     App.MainWindow!.DispatcherQueue.TryEnqueue(() =>
                     {
                         ProgBar.IsIndeterminate = false;
                         ProgBar.Value = state.Progress;
-                        LblStatus.Text = string.Format(_localizer["DownloadState", "Downloading"], state.Progress * 100, state.Speed);
+                        LblStatus.Text = string.Format(_localizer["DownloadState", "Downloading"], state.Progress * 100, SpeedFormatter.GetString(state.Speed, _localizer));
                     });
                     break;
                 case DownloadProgressStatus.Processing:
+                    Progress = 1.0;
+                    Speed = 0.0;
                     App.MainWindow!.DispatcherQueue.TryEnqueue(() =>
                     {
                         LblStatus.Text = _localizer["DownloadState", "Processing"];
@@ -121,6 +141,7 @@ public sealed partial class DownloadRow : UserControl, IDownloadRowControl
         });
         if (!_wasStopped)
         {
+            FinishedWithError = !success;
             Icon.Foreground = new SolidColorBrush(success ? Colors.ForestGreen : Colors.Red);
             Icon.Glyph = success ? "\uE10B" : "\uE10A";
             ProgBar.IsIndeterminate = false;

@@ -72,6 +72,18 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
     /// Whether or not the download is done
     /// </summary>
     public bool IsDone => _download.IsDone;
+    /// <summary>
+    /// Download progress
+    /// </summary>
+    public double Progress { get; set; }
+    /// <summary>
+    /// Download speed (in bytes per second)
+    /// </summary>
+    public double Speed { get; set; }
+    /// <summary>
+    /// Whether or not download was finished with error
+    /// </summary>
+    public bool FinishedWithError { get; set; }
 
     /// <summary>
     /// Constructs a DownloadRow
@@ -88,6 +100,9 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
         _wasStopped = false;
         _logMessage = "";
         _sendNotificationCallback = sendNoticiationCallback;
+        Progress = 0.0;
+        Speed = 0.0;
+        FinishedWithError = false;
         //Build UI
         builder.Connect(this);
         _filenameLabel.SetLabel(download.Filename);
@@ -130,6 +145,7 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
             _previousEmbedMetadata = embedMetadata;
         }
         _wasStopped = false;
+        FinishedWithError = false;
         _statusIcon.AddCssClass("accent");
         _statusIcon.RemoveCssClass("error");
         _statusIcon.SetFromIconName("folder-download-symbolic");
@@ -148,8 +164,11 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
                 case DownloadProgressStatus.Downloading:
                     _downloadingCallback = (d) =>
                     {
+                        Progress = state.Progress;
                         _progressBar.SetFraction(state.Progress);
-                        _progressLabel.SetText(string.Format(_localizer["DownloadState", "Downloading"], state.Progress * 100, state.Speed));
+                        Speed = state.Speed;
+                        var speedString = SpeedFormatter.GetString(state.Speed, _localizer);
+                        _progressLabel.SetText(string.Format(_localizer["DownloadState", "Downloading"], state.Progress * 100, speedString));
                         _lblLog.SetLabel(_logMessage);
                         var vadjustment = _scrollLog.GetVadjustment();
                         vadjustment.SetValue(vadjustment.GetUpper() - vadjustment.GetPageSize());
@@ -159,6 +178,8 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
                     break;
                 case DownloadProgressStatus.Processing:
                     _progressLabel.SetText(_localizer["DownloadState", "Processing"]);
+                    Progress = 1.0;
+                    Speed = 0.0;
                     if (_processingCallback == null)
                     {
                         _processingCallback = (d) =>
@@ -185,6 +206,7 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
         });
         if (!_wasStopped)
         {
+            FinishedWithError = !success;
             _statusIcon.RemoveCssClass("accent");
             _statusIcon.AddCssClass(success ? "success" : "error");
             _statusIcon.SetFromIconName(success ? "emblem-ok-symbolic" : "process-stop-symbolic");

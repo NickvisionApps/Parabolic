@@ -28,6 +28,19 @@ public interface IDownloadRowControl
     /// The callback function to run when the download is retried
     /// </summary>
     public Func<IDownloadRowControl, Task>? DownloadRetriedAsyncCallback { get; set; }
+    /// <summary>
+    /// Download progress
+    /// </summary>
+    public double Progress { get; set; }
+    /// <summary>
+    /// Download speed (in bytes per second)
+    /// </summary>
+    public double Speed { get; set; }
+    /// <summary>
+    /// Whether or not download was finished with error
+    /// </summary>
+    public bool FinishedWithError { get; set; }
+
 
     /// <summary>
     /// Runs the download

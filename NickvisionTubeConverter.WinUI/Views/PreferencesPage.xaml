@@ -89,7 +89,15 @@
                                     <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE790;"/>
                                 </labs:SettingsCard.HeaderIcon>
 
-                                <ComboBox x:Name="CmbTheme" Width="60" SelectionChanged="CmbTheme_SelectionChanged"/>
+                                <ComboBox x:Name="CmbTheme" SelectionChanged="CmbTheme_SelectionChanged"/>
+                            </labs:SettingsCard>
+
+                            <labs:SettingsCard x:Name="CardAllowBackground">
+                                <labs:SettingsCard.HeaderIcon>
+                                    <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE1E1;"/>
+                                </labs:SettingsCard.HeaderIcon>
+
+                                <ToggleSwitch x:Name="ToggleAllowBackground" Toggled="ToggleAllowBackground_Toggled"/>
                             </labs:SettingsCard>
                         </labs:SettingsExpander.Items>
                     </labs:SettingsExpander>

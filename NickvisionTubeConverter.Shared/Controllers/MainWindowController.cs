@@ -42,10 +42,6 @@ public class MainWindowController : IDisposable
     /// </summary>
     public AppInfo AppInfo => AppInfo.Current;
     /// <summary>
-    /// A PreferencesViewController
-    /// </summary>
-    public PreferencesViewController PreferencesViewController => new PreferencesViewController(Localizer);
-    /// <summary>
     /// Whether or not the version is a development version or not
     /// </summary>
     public bool IsDevVersion => AppInfo.Current.Version.IndexOf('-') != -1;
@@ -57,11 +53,19 @@ public class MainWindowController : IDisposable
     /// Whether or not downloads are running
     /// </summary>
     public bool AreDownloadsRunning => _downloadingRows.Count > 0;
+    /// <summary>
+    /// Whether to allow running in the background
+    /// </summary>
+    public bool RunInBackground => Configuration.Current.RunInBackground;
 
     /// <summary>
     /// Occurs when a notification is sent
     /// </summary>
     public event EventHandler<NotificationSentEventArgs>? NotificationSent;
+    /// <summary>
+    /// Invoked to check if RunInBackground changed after settings saved
+    /// </summary>
+    public event EventHandler? RunInBackgroundChanged;
 
     /// <summary>
     /// Constructs a MainWindowController
@@ -85,6 +89,22 @@ public class MainWindowController : IDisposable
         {
             var timeNowHours = DateTime.Now.Hour;
             return timeNowHours >= 6 && timeNowHours < 18;
+        }
+    }
+
+    /// <summary>
+    /// Downloading errors count
+    /// </summary>
+    public uint ErrorsCount
+    {
+        get
+        {
+            var result = 0u;
+            foreach (var row in _completedRows)
+            {
+                result += row.FinishedWithError ? 1u : 0u;
+            }
+            return result;
         }
     }
 
@@ -137,6 +157,12 @@ public class MainWindowController : IDisposable
         }
         _disposed = true;
     }
+
+    /// <summary>
+    /// Creates a new PreferencesViewController
+    /// </summary>
+    /// <returns>The PreferencesViewController</returns>
+    public PreferencesViewController CreatePreferencesViewController() => new PreferencesViewController(Localizer);
 
     /// <summary>
     /// Starts the application
@@ -212,6 +238,7 @@ public class MainWindowController : IDisposable
     /// <param name="e">EventArgs</param>
     private void ConfigurationSaved(object? sender, EventArgs e)
     {
+        RunInBackgroundChanged?.Invoke(this, EventArgs.Empty);
         while (_downloadingRows.Count < Configuration.Current.MaxNumberOfActiveDownloads && _queuedRows.Count > 0)
         {
             var queuedRow = _queuedRows[0];
@@ -270,6 +297,39 @@ public class MainWindowController : IDisposable
         {
             _queuedRows.Add(row);
             UIMoveDownloadRow!(row, DownloadStage.InQueue);
+        }
+    }
+
+    /// <summary>
+    /// Called to get a string for background activity report
+    /// </summary>
+    public string GetBackgroundActivityReport()
+    {
+        //Total Progress
+        var totalProgress = 0.0;
+        foreach (var row in _downloadingRows)
+        {
+            totalProgress += row.Progress;
+        }
+        totalProgress /= (_downloadingRows.Count + _queuedRows.Count) > 0 ? (_downloadingRows.Count + _queuedRows.Count) : 1;
+        //Total Speed
+        var totalSpeed = 0.0;
+        foreach (var row in _downloadingRows)
+        {
+            totalSpeed += row.Speed;
+        }
+        //Get String
+        if ((_downloadingRows.Count + _queuedRows.Count) > 0)
+        {
+            return string.Format(Localizer["BackgroundActivityReport"], _downloadingRows.Count + _queuedRows.Count, totalProgress * 100, SpeedFormatter.GetString(totalSpeed, Localizer));
+        }
+        else if (ErrorsCount > 0)
+        {
+            return Localizer["FinishedWithErrors"];
+        }
+        else
+        {
+            return Localizer["NoDownloadsRunning"];
         }
     }
 }

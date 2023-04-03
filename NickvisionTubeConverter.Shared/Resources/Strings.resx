@@ -184,8 +184,16 @@
 		<value>Download Finished</value>
 	</data>
 
+	<data name="DownloadFinishedWithError" xml:space="preserve">
+		<value>Download Finished With Error</value>
+	</data>
+
 	<data name="DownloadFinished.Description" xml:space="preserve">
 		<value>{0} has finished downloading.</value>
+	</data>
+
+	<data name="DownloadFinishedWithError.Description" xml:space="preserve">
+		<value>{0} has finished with an error!</value>
 	</data>
 
 	<!--MainWindowController-->
@@ -274,7 +282,7 @@
 	</data>
 
 	<data name="DownloadState.Downloading" xml:space="preserve">
-		<value>Downloading {0:f2}% ({1:N0} KiB/s)</value>
+		<value>Downloading {0:f2}% ({1})</value>
 	</data>
 
 	<data name="ViewLog" xml:space="preserve">
@@ -311,6 +319,34 @@
 
 	<data name="Stopped" xml:space="preserve">
 		<value>Stopped</value>
+	</data>
+
+	<data name="Speed.GiBps" xml:space="preserve">
+		<value>{0:f1} GiB/s</value>
+	</data>
+
+	<data name="Speed.MiBps" xml:space="preserve">
+		<value>{0:f1} MiB/s</value>
+	</data>
+
+	<data name="Speed.KiBps" xml:space="preserve">
+		<value>{0:f1} KiB/s</value>
+	</data>
+
+	<data name="Speed.Bps" xml:space="preserve">
+		<value>{0:f1} B/s</value>
+	</data>
+
+	<data name="BackgroundActivityReport" xml:space="preserve">
+		<value>Downloads: {0} — {1:f1}% ({2})</value>
+	</data>
+
+	<data name="FinishedWithErrors" xml:space="preserve">
+		<value>Some downloads finished with errors!</value>
+	</data>
+
+	<data name="NoDownloadsRunning" xml:space="preserve">
+		<value>No downloads running</value>
 	</data>
 
 	<!--VideoRow-->
@@ -361,6 +397,14 @@
 
 	<data name="MaxNumberOfActiveDownloads" xml:space="preserve">
 		<value>Max Number of Active Downloads</value>
+	</data>
+
+	<data name="AllowBackground" xml:space="preserve">
+		<value>Allow Running In Background</value>
+	</data>
+
+	<data name="AllowBackgroundDescription" xml:space="preserve">
+		<value>Hide the window instead of quitting if there are downloads running.</value>
 	</data>
 
 	<!--Shortcuts Dialog-->
@@ -445,5 +489,9 @@
 
 	<data name="SaveWarning.GTK" xml:space="preserve">
 		<value>The selected save folder is outside the Flatpak sandbox. The file will be saved, but the folder path will not be remembered for future use.&#xA;&#xA;If you want to always remember this folder, give Tube Converter Flatpak write permissions to the selected folder. (You can use Flatseal to achieve this task)</value>
+	</data>
+
+	<data name="AllowBackgroundDescription.GTK" xml:space="preserve">
+		<value>Hide the window instead of quitting if there are downloads running. Showing background activity status requires GNOME 44+</value>
 	</data>
 </root>

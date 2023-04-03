@@ -44,7 +44,7 @@ public partial class Program
         _mainWindowController.AppInfo.ShortName = "Tube Converter";
         _mainWindowController.AppInfo.Description = $"{_mainWindowController.Localizer["Description"]}.";
         _mainWindowController.AppInfo.Version = "2023.4.0-next";
-        _mainWindowController.AppInfo.Changelog = "<ul><li>Fixed an issue where extra escape characters where added in video titles</li><li>Updated translations (Thanks everyone on Weblate!)</li></ul>";
+        _mainWindowController.AppInfo.Changelog = "<ul><li>Added the ability to run downloads in the background</li><li>Fixed an issue where extra escape characters where added in video titles</li><li>Updated translations (Thanks everyone on Weblate!)</li></ul>";
         _mainWindowController.AppInfo.GitHubRepo = new Uri("https://github.com/nlogozzo/NickvisionTubeConverter");
         _mainWindowController.AppInfo.IssueTracker = new Uri("https://github.com/nlogozzo/NickvisionTubeConverter/issues/new");
         _mainWindowController.AppInfo.SupportUrl = new Uri("https://github.com/nlogozzo/NickvisionTubeConverter/discussions");
@@ -109,7 +109,15 @@ public partial class Program
             _ => Adw.ColorScheme.PreferLight
         };
         //Main Window
-        _mainWindow = new MainWindow(_mainWindowController, _application);
-        await _mainWindow.StartAsync();
+        if (_mainWindow != null)
+        {
+            _mainWindow!.SetVisible(true);
+            _mainWindow!.Present();
+        }
+        else
+        {
+            _mainWindow = new MainWindow(_mainWindowController, _application);
+            await _mainWindow.StartAsync();
+        }
     }
 }

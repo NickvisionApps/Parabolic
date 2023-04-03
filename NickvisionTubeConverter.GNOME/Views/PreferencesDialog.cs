@@ -2,6 +2,7 @@ using NickvisionTubeConverter.GNOME.Helpers;
 using NickvisionTubeConverter.Shared.Controllers;
 using NickvisionTubeConverter.Shared.Models;
 using System;
+using System.IO;
 
 namespace NickvisionTubeConverter.GNOME.Views;
 
@@ -14,6 +15,8 @@ public partial class PreferencesDialog : Adw.PreferencesWindow
     private readonly Adw.Application _application;
 
     [Gtk.Connect] private readonly Adw.ComboRow _themeRow;
+    [Gtk.Connect] private readonly Adw.ActionRow _backgroundRow;
+    [Gtk.Connect] private readonly Gtk.Switch _backgroundSwitch;
     [Gtk.Connect] private readonly Gtk.Switch _embedMetadataSwitch;
     [Gtk.Connect] private readonly Adw.ComboRow _maxNumberOfActiveDownloadsRow;
 
@@ -37,6 +40,8 @@ public partial class PreferencesDialog : Adw.PreferencesWindow
         OnHide += Hide;
         //Load Config
         _themeRow.SetSelected((uint)_controller.Theme);
+        _backgroundRow.SetVisible(File.Exists("/.flatpak-info"));
+        _backgroundSwitch.SetActive(_controller.RunInBackground);
         _embedMetadataSwitch.SetActive(_controller.EmbedMetadata);
         _maxNumberOfActiveDownloadsRow.SetSelected((uint)(_controller.MaxNumberOfActiveDownloads - 1));
     }
@@ -58,6 +63,7 @@ public partial class PreferencesDialog : Adw.PreferencesWindow
     /// <param name="e">EventArgs</param>
     private void Hide(Gtk.Widget sender, EventArgs e)
     {
+        _controller.RunInBackground = _backgroundSwitch.GetActive();
         _controller.EmbedMetadata = _embedMetadataSwitch.GetActive();
         _controller.MaxNumberOfActiveDownloads = (int)_maxNumberOfActiveDownloadsRow.GetSelected() + 1;
         _controller.SaveConfiguration();

@@ -1,3 +1,4 @@
+using H.NotifyIcon;
 using Microsoft.UI;
 using Microsoft.UI.Composition;
 using Microsoft.UI.Composition.SystemBackdrops;
@@ -5,6 +6,7 @@ using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
+using Microsoft.UI.Xaml.Media.Imaging;
 using Microsoft.Windows.AppNotifications;
 using Microsoft.Windows.AppNotifications.Builder;
 using NickvisionTubeConverter.Shared.Controllers;
@@ -13,6 +15,7 @@ using NickvisionTubeConverter.Shared.Events;
 using NickvisionTubeConverter.Shared.Models;
 using NickvisionTubeConverter.WinUI.Controls;
 using System;
+using System.Threading;
 using System.Threading.Tasks;
 using Vanara.PInvoke;
 using Windows.Graphics;
@@ -34,6 +37,8 @@ public sealed partial class MainWindow : Window
     private readonly SystemBackdropConfiguration _backdropConfiguration;
     private readonly MicaController? _micaController;
     private bool _closeAllowed;
+    private TaskbarIcon? _taskbarIcon;
+    private DispatcherTimer _taskbarTimer;
 
     /// <summary>
     /// Constructs a MainWindow
@@ -49,12 +54,19 @@ public sealed partial class MainWindow : Window
         _appWindow = AppWindow.GetFromWindowId(Win32Interop.GetWindowIdFromWindow(_hwnd));
         _isActived = true;
         _closeAllowed = false;
+        _taskbarIcon = null;
+        _taskbarTimer = new DispatcherTimer()
+        {
+            Interval = new TimeSpan(0, 0, 1)
+        };
         //Register Events
         _appWindow.Closing += Window_Closing;
         _controller.NotificationSent += NotificationSent;
         _controller.UICreateDownloadRow = CreateDownloadRow;
         _controller.UIMoveDownloadRow = MoveDownloadRow;
         _controller.UIDeleteDownloadRowFromQueue = DeleteDownloadRowFromQueue;
+        _controller.RunInBackgroundChanged += (sender, e) => DispatcherQueue.TryEnqueue(CreateTaskbarIcon);
+        _taskbarTimer.Tick += TaskbarTimer_Tick;
         //Set TitleBar
         TitleBarTitle.Text = _controller.AppInfo.ShortName;
         _appWindow.Title = TitleBarTitle.Text;
@@ -94,6 +106,8 @@ public sealed partial class MainWindow : Window
         //Window Sizing
         _appWindow.Resize(new SizeInt32(800, 600));
         User32.ShowWindow(_hwnd, ShowWindowCommand.SW_SHOWMAXIMIZED);
+        //Taskbar Icon
+        CreateTaskbarIcon();
         //Localize Strings
         LblLoading.Text = _controller.Localizer["DependencyDownload"];
         NavViewItemHome.Content = _controller.Localizer["Home"];
@@ -161,31 +175,41 @@ public sealed partial class MainWindow : Window
     /// <param name="e">AppWindowClosingEventArgs</param>
     private async void Window_Closing(AppWindow sender, AppWindowClosingEventArgs e)
     {
-        if (_controller.AreDownloadsRunning && !_closeAllowed)
+        if(_controller.RunInBackground)
         {
             e.Cancel = true;
-            var closeDialog = new ContentDialog()
-            {
-                Title = _controller.Localizer["CloseAndStop", "Title"],
-                Content = _controller.Localizer["CloseAndStop", "Description"],
-                CloseButtonText = _controller.Localizer["No"],
-                PrimaryButtonText = _controller.Localizer["Yes"],
-                DefaultButton = ContentDialogButton.Close,
-                XamlRoot = Content.XamlRoot
-            };
-            var result = await closeDialog.ShowAsync();
-            if (result == ContentDialogResult.Primary)
-            {
-                _closeAllowed = true;
-                e.Cancel = false;
-                Close();
-            }
+            _appWindow.Hide();
         }
         else
         {
-            _controller.StopAllDownloads();
-            _controller.Dispose();
-            _micaController?.Dispose();
+            if (_controller.AreDownloadsRunning && !_closeAllowed)
+            {
+                e.Cancel = true;
+                var closeDialog = new ContentDialog()
+                {
+                    Title = _controller.Localizer["CloseAndStop", "Title"],
+                    Content = _controller.Localizer["CloseAndStop", "Description"],
+                    CloseButtonText = _controller.Localizer["No"],
+                    PrimaryButtonText = _controller.Localizer["Yes"],
+                    DefaultButton = ContentDialogButton.Close,
+                    XamlRoot = Content.XamlRoot
+                };
+                var result = await closeDialog.ShowAsync();
+                if (result == ContentDialogResult.Primary)
+                {
+                    _closeAllowed = true;
+                    e.Cancel = false;
+                    Close();
+                }
+            }
+            else
+            {
+                _taskbarTimer.Stop();
+                _controller.StopAllDownloads();
+                _controller.Dispose();
+                _micaController?.Dispose();
+                _taskbarIcon?.Dispose();
+            }
         }
     }
 
@@ -210,6 +234,29 @@ public sealed partial class MainWindow : Window
     }
 
     /// <summary>
+    /// Occurs whhen the TaskbarMenuShowWindow item is clicked
+    /// </summary>
+    /// <param name="sender">object</param>
+    /// <param name="e">RoutedEventArgs</param>
+    private void ShowWindow(object sender, RoutedEventArgs e) => _appWindow.Show();
+
+    /// <summary>
+    /// Occurs when the TaskbarMenuQuit item is clicked
+    /// </summary>
+    /// <param name="sender">object</param>
+    /// <param name="e">RoutedEventArgs</param>
+    private void Quit(object sender, RoutedEventArgs e)
+    {
+        _taskbarTimer.Stop();
+        _taskbarIcon!.CloseTrayPopup();
+        _controller.StopAllDownloads();
+        _controller.Dispose();
+        _micaController?.Dispose();
+        _taskbarIcon.Dispose();
+        Close();
+    }
+
+    /// <summary>
     /// Occurs when the NavigationView's item selection is changed
     /// </summary>
     /// <param name="sender">NavigationView</param>
@@ -219,7 +266,7 @@ public sealed partial class MainWindow : Window
         var pageName = (string)((NavigationViewItem)e.SelectedItem).Tag;
         if (pageName == "Settings")
         {
-            PageSettings.Content = new PreferencesPage(_controller.PreferencesViewController);
+            PageSettings.Content = new PreferencesPage(_controller.CreatePreferencesViewController());
         }
         ViewStack.ChangePage(pageName);
     }
@@ -251,6 +298,48 @@ public sealed partial class MainWindow : Window
     {
         var notificationBuilder = new AppNotificationBuilder().AddText(e.Title, new AppNotificationTextProperties().SetMaxLines(1)).AddText(e.Message);
         AppNotificationManager.Default.Show(notificationBuilder.BuildNotification());
+    }
+
+    /// <summary>
+    /// Creates a taskbar icon for the app
+    /// </summary>
+    private void CreateTaskbarIcon()
+    {
+        if (_controller.RunInBackground)
+        {
+            var taskbarMenuFlyout = new MenuFlyout();
+            //Show Window
+            var taskbarMenuShowWindow = new MenuFlyoutItem()
+            {
+                Text = _controller.Localizer["Open"]
+            };
+            taskbarMenuShowWindow.Click += ShowWindow;
+            taskbarMenuFlyout.Items.Add(taskbarMenuShowWindow);
+            //Separator
+            taskbarMenuFlyout.Items.Add(new MenuFlyoutSeparator());
+            //Quit
+            var taskbarMenuQuit = new MenuFlyoutItem()
+            {
+                Text = _controller.Localizer["Quit"]
+            };
+            taskbarMenuQuit.Click += Quit;
+            taskbarMenuFlyout.Items.Add(taskbarMenuQuit);
+            //Icon
+            _taskbarIcon = new TaskbarIcon()
+            {
+                IconSource = new BitmapImage(new Uri("ms-appx:///Assets/org.nickvision.tubeconverter.ico")),
+                ContextMenuMode = ContextMenuMode.SecondWindow,
+                ContextFlyout = taskbarMenuFlyout
+            };
+            MainGrid.Children.Insert(0, _taskbarIcon);
+            _taskbarTimer.Start();
+        }
+        else
+        {
+            _taskbarTimer.Stop();
+            _taskbarIcon?.Dispose();
+            _taskbarIcon = null;
+        }
     }
 
     /// <summary>
@@ -287,7 +376,7 @@ public sealed partial class MainWindow : Window
             ListCompleted.Items.Add(row);
             if (!_isActived)
             {
-                SendShellNotification(new ShellNotificationSentEventArgs(_controller.Localizer["DownloadFinished"], string.Format(_controller.Localizer["DownloadFinished", "Description"], $"\"{row.Filename}\""), NotificationSeverity.Success));
+                SendShellNotification(new ShellNotificationSentEventArgs(_controller.Localizer[row.FinishedWithError ? "DownloadFinishedWithError" : "DownloadFinished"], string.Format(_controller.Localizer[row.FinishedWithError ? "DownloadFinishedWithError" : "DownloadFinished", "Description"], $"\"{row.Filename}\""), row.FinishedWithError ? NotificationSeverity.Error : NotificationSeverity.Success));
             }
         }
         SectionDownloading.Visibility = ListDownloading.Items.Count > 0 ? Visibility.Visible : Visibility.Collapsed;
@@ -326,6 +415,21 @@ public sealed partial class MainWindow : Window
             {
                 _controller.AddDownload(download);
             }
+        }
+    }
+
+    private void TaskbarTimer_Tick(object? sender, object e)
+    {
+        if(_taskbarIcon != null)
+        {
+            _taskbarIcon.DispatcherQueue.TryEnqueue(() =>
+            {
+                _taskbarIcon.ToolTipText = _controller.GetBackgroundActivityReport();
+                _taskbarIcon.TrayToolTip = new TextBlock()
+                {
+                    Text = _controller.GetBackgroundActivityReport()
+                };
+            });
         }
     }
 }

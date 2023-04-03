@@ -37,6 +37,16 @@ public class PreferencesViewController
     }
 
     /// <summary>
+    /// Whether to allow running in the background
+    /// </summary>
+    public bool RunInBackground
+    {
+        get => Configuration.Current.RunInBackground;
+
+        set => Configuration.Current.RunInBackground = value;
+    }
+
+    /// <summary>
     /// Whether or not to embed metadata in a download
     /// </summary>
     public bool EmbedMetadata
