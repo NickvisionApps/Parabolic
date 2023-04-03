@@ -5,6 +5,7 @@ using NickvisionTubeConverter.Shared.Controls;
 using NickvisionTubeConverter.Shared.Events;
 using NickvisionTubeConverter.Shared.Models;
 using System;
+using System.IO;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 
@@ -197,7 +198,7 @@ public partial class MainWindow : Adw.ApplicationWindow
     {
         if (_controller.AreDownloadsRunning)
         {
-            if (_controller.RunInBackground)
+            if (_controller.RunInBackground && File.Exists("/.flatpak-info"))
             {
                 SetVisible(false);
                 return true;
