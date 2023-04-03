@@ -109,7 +109,7 @@ public class Download
     {
         _progressCallback = progressCallback;
         IsDone = false;
-        if(!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+        if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
         {
             Filename = Regex.Escape(Filename);
         }
@@ -128,7 +128,7 @@ public class Download
                 var hooks = new List<Action<Python.Runtime.PyDict>>();
                 hooks.Add(ProgressHook);
                 var postHooks = new List<Action<Python.Runtime.PyString>>();
-                if(!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+                if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
                 {
                     postHooks.Add(UnescapeHook);
                 }

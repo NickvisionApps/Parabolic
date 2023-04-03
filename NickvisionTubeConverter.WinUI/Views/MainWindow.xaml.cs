@@ -15,7 +15,6 @@ using NickvisionTubeConverter.Shared.Events;
 using NickvisionTubeConverter.Shared.Models;
 using NickvisionTubeConverter.WinUI.Controls;
 using System;
-using System.Threading;
 using System.Threading.Tasks;
 using Vanara.PInvoke;
 using Windows.Graphics;
@@ -175,7 +174,7 @@ public sealed partial class MainWindow : Window
     /// <param name="e">AppWindowClosingEventArgs</param>
     private async void Window_Closing(AppWindow sender, AppWindowClosingEventArgs e)
     {
-        if(_controller.RunInBackground)
+        if (_controller.RunInBackground)
         {
             e.Cancel = true;
             _appWindow.Hide();
@@ -420,7 +419,7 @@ public sealed partial class MainWindow : Window
 
     private void TaskbarTimer_Tick(object? sender, object e)
     {
-        if(_taskbarIcon != null)
+        if (_taskbarIcon != null)
         {
             _taskbarIcon.DispatcherQueue.TryEnqueue(() =>
             {

@@ -6,7 +6,6 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Runtime.InteropServices;
-using System.Text.RegularExpressions;
 
 namespace NickvisionTubeConverter.GNOME.Views;
 
@@ -108,7 +107,8 @@ public partial class AddDownloadDialog : Adw.Window
         _selectSaveFolderButton.OnClicked += SelectSaveFolder;
         _numberVideosButton.OnClicked += ToggleNumberVideos;
         //Add Download Button
-        _addDownloadButton.OnClicked += (sender, e) => {
+        _addDownloadButton.OnClicked += (sender, e) =>
+        {
             _controller.PopulateDownloads(_videoUrlInfo!, (MediaFileType)_fileTypeRow.GetSelected(), (Quality)_qualityRow.GetSelected(), (Subtitle)_subtitleRow.GetSelected(), _saveFolderRow.GetText(), _overwriteSwitch.GetActive());
             OnDownload?.Invoke(this, EventArgs.Empty);
         };

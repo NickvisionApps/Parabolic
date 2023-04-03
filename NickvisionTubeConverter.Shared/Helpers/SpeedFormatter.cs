@@ -30,6 +30,6 @@ public static class SpeedFormatter
         else
         {
             return string.Format(localizer["Speed", "Bps"], speed);
-        }   
+        }
     }
 }
