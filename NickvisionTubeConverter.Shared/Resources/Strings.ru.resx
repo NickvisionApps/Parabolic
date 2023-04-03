@@ -78,6 +78,7 @@ DaPigGuy https://github.com/DaPigGuy</value>
   <data name="Artists.Credits" xml:space="preserve">
     <!--ARTIST NAME(S) GOES HERE. SEPARATE WITH &#xA;-->
     <value>David Lapshin https://github.com/daudix-UFO
+Brage Fuglseth https://github.com/bragefuglseth
 marcin https://github.com/martin-desktops</value>
   </data>
   <data name="OK" xml:space="preserve">
@@ -242,7 +243,7 @@ marcin https://github.com/martin-desktops</value>
     <value>Худшее</value>
   </data>
   <data name="DownloadState.Downloading" xml:space="preserve">
-    <value>Загрузка {0:f2}% ({1:N0} КиБ/с)</value>
+    <value>Загрузка {0:f2}% ({1})</value>
   </data>
   <data name="UserInterfaceDescription" xml:space="preserve">
     <value>Настройте интерфейс приложения.</value>
@@ -266,13 +267,13 @@ marcin https://github.com/martin-desktops</value>
     <value>Приложение</value>
   </data>
   <data name="VideoUrl.Field" xml:space="preserve">
-    <value>Ссылка на видео</value>
+    <value>Ссылка</value>
   </data>
   <data name="VideoUrl.Invalid" xml:space="preserve">
-    <value>Ссылка на видео (Некорректная)</value>
+    <value>Ссылка (Некорректная)</value>
   </data>
   <data name="VideoUrl.Placeholder" xml:space="preserve">
-    <value>Введите ссылку на видео</value>
+    <value>Введите ссылку на видео, аудио или плейлист</value>
   </data>
   <data name="FileType.Field" xml:space="preserve">
     <value>Тип файла</value>
@@ -380,5 +381,44 @@ marcin https://github.com/martin-desktops</value>
   </data>
   <data name="LogCopied" xml:space="preserve">
     <value>Журнал загрузки скопирован в буфер обмена</value>
+  </data>
+  <data name="DownloadFinishedWithError" xml:space="preserve">
+    <value>Загрузка завершилась с ошибкой</value>
+  </data>
+  <data name="DownloadFinishedWithError.Description" xml:space="preserve">
+    <value>{0} завершилось с ошибкой!</value>
+  </data>
+  <data name="ValidateUrl" xml:space="preserve">
+    <value>Проверить</value>
+  </data>
+  <data name="Speed.GiBps" xml:space="preserve">
+    <value>{0:f1} ГиБ/с</value>
+  </data>
+  <data name="Speed.MiBps" xml:space="preserve">
+    <value>{0:f1} МиБ/с</value>
+  </data>
+  <data name="Speed.KiBps" xml:space="preserve">
+    <value>{0:f1} КиБ/с</value>
+  </data>
+  <data name="Speed.Bps" xml:space="preserve">
+    <value>{0:f1} Б/с</value>
+  </data>
+  <data name="BackgroundActivityReport" xml:space="preserve">
+    <value>Загрузки: {0} — {1:f1}% ({2})</value>
+  </data>
+  <data name="FinishedWithErrors" xml:space="preserve">
+    <value>Некоторые загрузки завершились с ошибкой!</value>
+  </data>
+  <data name="NoDownloadsRunning" xml:space="preserve">
+    <value>Ничего не загружается</value>
+  </data>
+  <data name="AllowBackground" xml:space="preserve">
+    <value>Разрешить работать в фоне</value>
+  </data>
+  <data name="AllowBackgroundDescription" xml:space="preserve">
+    <value>Если есть активные загрузки, скрывать окно вместо закрытия приложения.</value>
+  </data>
+  <data name="AllowBackgroundDescription.GTK" xml:space="preserve">
+    <value>Если есть активные загрузки, скрывать окно вместо закрытия приложения. Для отображения статуса фоновой активности требуется GNOME 44+</value>
   </data>
 </root>
