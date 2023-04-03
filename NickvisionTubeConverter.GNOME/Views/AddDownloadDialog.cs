@@ -63,7 +63,6 @@ public partial class AddDownloadDialog : Adw.Window
     [Gtk.Connect] private readonly Adw.ComboRow _qualityRow;
     [Gtk.Connect] private readonly Adw.ComboRow _subtitleRow;
     [Gtk.Connect] private readonly Adw.EntryRow _saveFolderRow;
-    [Gtk.Connect] private readonly Gtk.MenuButton _saveWarning;
     [Gtk.Connect] private readonly Gtk.Button _selectSaveFolderButton;
     [Gtk.Connect] private readonly Gtk.Switch _overwriteSwitch;
     [Gtk.Connect] private readonly Gtk.ToggleButton _numberVideosButton;
@@ -206,7 +205,6 @@ public partial class AddDownloadDialog : Adw.Window
             {
                 var path = g_file_get_path(fileHandle);
                 _saveFolderRow.SetText(path);
-                _saveWarning.SetVisible(Regex.Match(_saveFolderRow.GetText(), @"^\/run\/user\/.*\/doc\/.*").Success);
                 _addDownloadButton.SetSensitive(true);
             }
         };

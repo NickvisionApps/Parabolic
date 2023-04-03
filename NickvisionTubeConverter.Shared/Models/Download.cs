@@ -111,7 +111,7 @@ public class Download
         IsDone = false;
         if(!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
         {
-            Filename = Regex.Escape(Filename).Replace(@"\ ", " ").Replace(@"\?", "?").Replace(@"\.", ".");
+            Filename = Regex.Escape(Filename);
         }
         if (Directory.Exists(_tempDownloadPath))
         {
@@ -127,6 +127,11 @@ public class Download
                 dynamic ytdlp = Python.Runtime.Py.Import("yt_dlp");
                 var hooks = new List<Action<Python.Runtime.PyDict>>();
                 hooks.Add(ProgressHook);
+                var postHooks = new List<Action<Python.Runtime.PyString>>();
+                if(!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+                {
+                    postHooks.Add(UnescapeHook);
+                }
                 var paths = new Python.Runtime.PyDict();
                 paths["home"] = new Python.Runtime.PyString($"{SaveFolder}{Path.DirectorySeparatorChar}");
                 paths["temp"] = new Python.Runtime.PyString(_tempDownloadPath);
@@ -137,6 +142,7 @@ public class Download
                     { "final_ext", _fileType.ToString().ToLower() },
                     { "progress_hooks", hooks },
                     { "postprocessor_hooks", hooks },
+                    { "post_hooks", postHooks },
                     { "outtmpl", $"{Path.GetFileNameWithoutExtension(Filename)}.%(ext)s" },
                     { "ffmpeg_location", DependencyManager.Ffmpeg },
                     { "windowsfilenames", RuntimeInformation.IsOSPlatform(OSPlatform.Windows) },
@@ -267,6 +273,28 @@ public class Download
                 _progressCallback(progressState);
             }
 
+        }
+    }
+
+    /// <summary>
+    /// Unescape filename after downloading
+    /// </summary>
+    /// <param name="path">Python.Runtime.PyString</param>
+    private void UnescapeHook(Python.Runtime.PyString path)
+    {
+        try
+        {
+            using (Python.Runtime.Py.GIL())
+            {
+                var filename = Path.GetFileName(path.As<string>());
+                filename = Regex.Unescape(filename);
+                var directory = Path.GetDirectoryName(path.As<string>());
+                File.Move(path.As<string>(), $"{directory}{Path.DirectorySeparatorChar}{filename}", _overwriteFiles);
+            }
+        }
+        catch
+        {
+            Console.WriteLine($"Failed to unescape file: {path.As<string?>()}");
         }
     }
 }
