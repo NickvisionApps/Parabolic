@@ -1,8 +1,5 @@
-# Tube Converter
-<img src="NickvisionTubeConverter.Shared/Resources/org.nickvision.tubeconverter.png" width="100" height="100"/>
+![](NickvisionTubeConverter.Shared/Resources/banner.png)
 
- **An easy-to-use multimedia downloader**
- 
   [![Translation status](https://hosted.weblate.org/widgets/nickvision-tube-converter/-/app/svg-badge.svg)](https://hosted.weblate.org/engage/nickvision-tube-converter/) ✨Powered by [Weblate](https://weblate.org/en/)✨
 
 # Features
