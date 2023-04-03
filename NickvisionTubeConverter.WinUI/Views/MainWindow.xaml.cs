@@ -252,7 +252,7 @@ public sealed partial class MainWindow : Window
         _controller.StopAllDownloads();
         _controller.Dispose();
         _micaController?.Dispose();
-        _taskbarIcon.Dispose();
+        _taskbarIcon.DispatcherQueue.TryEnqueue(() => _taskbarIcon.Dispose());
         Close();
     }
 
