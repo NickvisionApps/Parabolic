@@ -62,25 +62,32 @@ public partial class MainWindow : Adw.ApplicationWindow
         _bus = g_bus_get_sync(2, IntPtr.Zero, IntPtr.Zero); // 2 = session bus
         _backgroundSourceFunc = (d) =>
         {
-            if (_isBackgroundStatusReported)
+            try
             {
-                var builder = g_variant_builder_new(g_variant_type_new("a{sv}"));
-                g_variant_builder_add(builder, "{sv}", "message", g_variant_new_string(_controller.GetBackgroundActivityReport()));
-                g_dbus_connection_call(_bus,
-                    "org.freedesktop.portal.Desktop", // Bus name
-                    "/org/freedesktop/portal/desktop", // Object path
-                    "org.freedesktop.portal.Background", // Interface name
-                    "SetStatus", // Method name
-                    g_variant_new("(a{sv})", builder), // Parameters
-                    IntPtr.Zero, // Reply type
-                    0, // Flags
-                    -1, // Timeout
-                    IntPtr.Zero, // Cancellable
-                    IntPtr.Zero, // Callback
-                    IntPtr.Zero); // User data
-                g_variant_builder_unref(builder);
+                if (_isBackgroundStatusReported)
+                {
+                    var builder = g_variant_builder_new(g_variant_type_new("a{sv}"));
+                    g_variant_builder_add(builder, "{sv}", "message", g_variant_new_string(_controller.GetBackgroundActivityReport()));
+                    g_dbus_connection_call(_bus,
+                        "org.freedesktop.portal.Desktop", // Bus name
+                        "/org/freedesktop/portal/desktop", // Object path
+                        "org.freedesktop.portal.Background", // Interface name
+                        "SetStatus", // Method name
+                        g_variant_new("(a{sv})", builder), // Parameters
+                        IntPtr.Zero, // Reply type
+                        0, // Flags
+                        -1, // Timeout
+                        IntPtr.Zero, // Cancellable
+                        IntPtr.Zero, // Callback
+                        IntPtr.Zero); // User data
+                    g_variant_builder_unref(builder);
+                }
+                return _isBackgroundStatusReported;
             }
-            return _isBackgroundStatusReported;
+            catch
+            {
+                return false;
+            }
         };
         _controller.RunInBackgroundChanged += RunInBackgroundChanged;
         SetTitle(_controller.AppInfo.ShortName);
