@@ -105,6 +105,11 @@ internal static class DependencyManager
                 Python.Runtime.Runtime.PythonDLL = process.StandardOutput.ReadToEnd().Trim();
                 process.WaitForExit();
             }
+            var pluginPath = $"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}{Path.DirectorySeparatorChar}yt-dlp{Path.DirectorySeparatorChar}plugins{Path.DirectorySeparatorChar}tubeconverter{Path.DirectorySeparatorChar}yt_dlp_plugins{Path.DirectorySeparatorChar}postprocessor{Path.DirectorySeparatorChar}tubeconverter.py";
+            Directory.CreateDirectory(pluginPath.Substring(0, pluginPath.LastIndexOf(Path.DirectorySeparatorChar)));
+            using var pluginResource = Assembly.GetExecutingAssembly().GetManifestResourceStream("NickvisionTubeConverter.Shared.Resources.tubeconverter.py")!;
+            using var pluginFile = new FileStream(pluginPath, FileMode.Create, FileAccess.Write);
+            pluginResource.CopyTo(pluginFile);
             return true;
         }
         catch (Exception e)
