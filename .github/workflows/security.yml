@@ -1,0 +1,54 @@
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  schedule:
+    - cron: '21 11 * * 0'
+name: CodeQL
+jobs:
+  windows:
+    name: Security Analysis
+    strategy:
+      matrix:
+        configuration: [Release]
+        platform: [x64]
+    runs-on: windows-latest
+    env:
+      Solution_Name: NickvisionTubeConverter.sln
+    permissions:
+      actions: read
+      contents: read
+      security-events: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3.5.0
+        with:
+          fetch-depth: 0
+      # Install the .NET Core workload
+      - name: Install .NET Core
+        uses: actions/setup-dotnet@v3.0.3
+        with:
+          dotnet-version: 7.0.x
+      # Add MSBuild to the PATH: https://github.com/microsoft/setup-msbuild
+      - name: Setup MSBuild.exe
+        uses: microsoft/setup-msbuild@v1.3.1
+      # Setup CodeQL
+      - name: Setup CodeQL
+        uses: github/codeql-action/init@v2
+        with:
+          languages: csharp
+      # Restore
+      - name: Restore Solution
+        run: msbuild $env:Solution_Name /t:Restore /p:Configuration=$env:Configuration
+        env:
+          Configuration: ${{ matrix.configuration }}
+      # Build
+      - name: Build Solution
+        run: msbuild $env:Solution_Name /p:Configuration=$env:Configuration /p:Platform=$env:Platform
+        env:
+          Configuration: ${{ matrix.configuration }}
+          Platform: ${{ matrix.platform }}
+      # Analyze
+      - name: Analyze
+        uses: github/codeql-action/analyze@v2
