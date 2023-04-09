@@ -6,6 +6,7 @@ using NickvisionTubeConverter.Shared.Controls;
 using NickvisionTubeConverter.Shared.Helpers;
 using NickvisionTubeConverter.Shared.Models;
 using System;
+using System.IO;
 using System.Threading.Tasks;
 using Windows.System;
 
@@ -76,12 +77,14 @@ public sealed partial class DownloadRow : UserControl, IDownloadRowControl
         LblStatus.Text = _localizer["DownloadState", "Waiting"];
         BtnStop.Visibility = Visibility.Visible;
         BtnRetry.Visibility = Visibility.Collapsed;
+        BtnOpenFile.Visibility = Visibility.Collapsed;
         BtnOpenSaveFolder.Visibility = Visibility.Collapsed;
         ProgBar.Value = 0;
         //Localize Strings
         ToolTipService.SetToolTip(BtnViewLog, _localizer["ViewLog"]);
         ToolTipService.SetToolTip(BtnStop, _localizer["StopDownload"]);
         ToolTipService.SetToolTip(BtnRetry, _localizer["RetryDownload"]);
+        ToolTipService.SetToolTip(BtnOpenFile, _localizer["OpenFile"]);
         ToolTipService.SetToolTip(BtnOpenSaveFolder, _localizer["OpenSaveFolder"]);
         //Load
         LblUrl.Text = _download.VideoUrl;
@@ -104,6 +107,7 @@ public sealed partial class DownloadRow : UserControl, IDownloadRowControl
         LblStatus.Text = _localizer["DownloadState", "Preparing"];
         BtnStop.Visibility = Visibility.Visible;
         BtnRetry.Visibility = Visibility.Collapsed;
+        BtnOpenFile.Visibility = Visibility.Collapsed;
         BtnOpenSaveFolder.Visibility = Visibility.Collapsed;
         ProgBar.Value = 0;
         var success = await _download.RunAsync(embedMetadata, (state) =>
@@ -150,6 +154,7 @@ public sealed partial class DownloadRow : UserControl, IDownloadRowControl
             LblStatus.Text = success ? _localizer["Success"] : _localizer["Error"];
             BtnStop.Visibility = Visibility.Collapsed;
             BtnRetry.Visibility = !success ? Visibility.Visible : Visibility.Collapsed;
+            BtnOpenFile.Visibility = success ? Visibility.Visible : Visibility.Collapsed;
             BtnOpenSaveFolder.Visibility = success ? Visibility.Visible : Visibility.Collapsed;
         }
         if (DownloadCompletedAsyncCallback != null)
@@ -172,6 +177,7 @@ public sealed partial class DownloadRow : UserControl, IDownloadRowControl
         LblStatus.Text = _localizer["Stopped"];
         BtnStop.Visibility = Visibility.Collapsed;
         BtnRetry.Visibility = Visibility.Visible;
+        BtnOpenFile.Visibility = Visibility.Collapsed;
         BtnOpenSaveFolder.Visibility = Visibility.Collapsed;
         if (DownloadStoppedCallback != null)
         {
@@ -205,6 +211,13 @@ public sealed partial class DownloadRow : UserControl, IDownloadRowControl
             await DownloadRetriedAsyncCallback(this);
         }
     }
+
+    /// <summary>
+    /// Occurs when the open file button is clicked
+    /// </summary>
+    /// <param name="sender">object</param>
+    /// <param name="e">RoutedEventArgs</param>
+    private async void BtnOpenFile_Click(object sender, RoutedEventArgs e) => await Launcher.LaunchUriAsync(new Uri($"{_download.SaveFolder}{Path.DirectorySeparatorChar}{_download.Filename}"));
 
     /// <summary>
     /// Occurs when the open save folder button is clicked

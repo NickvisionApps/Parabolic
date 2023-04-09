@@ -33,6 +33,12 @@
                     </Button.Content>
                 </Button>
 
+                <Button x:Name="BtnOpenFile" wct:DockPanel.Dock="Right" VerticalAlignment="Center" Margin="0,0,6,0" Visibility="Collapsed" Click="BtnOpenFile_Click">
+                    <Button.Content>
+                        <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE102;"/>
+                    </Button.Content>
+                </Button>
+
                 <ToggleButton x:Name="BtnViewLog" wct:DockPanel.Dock="Right" VerticalAlignment="Center" Margin="0,0,6,0" Click="BtnViewLog_Click">
                     <ToggleButton.Content>
                         <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xEA80;"/>
