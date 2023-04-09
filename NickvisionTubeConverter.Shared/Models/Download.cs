@@ -286,10 +286,10 @@ public class Download
         {
             using (Python.Runtime.Py.GIL())
             {
-                var filename = Path.GetFileName(path.As<string>());
-                filename = Regex.Unescape(filename);
+                Filename = Path.GetFileName(path.As<string>());
+                Filename = Regex.Unescape(Filename);
                 var directory = Path.GetDirectoryName(path.As<string>());
-                File.Move(path.As<string>(), $"{directory}{Path.DirectorySeparatorChar}{filename}", _overwriteFiles);
+                File.Move(path.As<string>(), $"{directory}{Path.DirectorySeparatorChar}{Filename}", _overwriteFiles);
             }
         }
         catch
