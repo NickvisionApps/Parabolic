@@ -110,7 +110,7 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
         _filenameLabel.SetLabel(download.Filename);
         _urlLabel.SetLabel(download.VideoUrl);
         _stopButton.OnClicked += (sender, e) => Stop();
-        _openFileButton.OnClicked += (sender, e) => Gtk.Functions.ShowUri(null, $"{_download.SaveFolder}{Path.DirectorySeparatorChar}{_download.Filename}", 0);
+        _openFileButton.OnClicked += (sender, e) => Gtk.Functions.ShowUri(null, $"file://{_download.SaveFolder}{Path.DirectorySeparatorChar}{_download.Filename}", 0);
         _openFolderButton.OnClicked += (sender, e) => Gtk.Functions.ShowUri(null, "file://" + _download.SaveFolder, 0);
         _retryButton.OnClicked += async (sender, e) =>
         {
