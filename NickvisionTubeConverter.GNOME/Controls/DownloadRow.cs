@@ -4,6 +4,7 @@ using NickvisionTubeConverter.Shared.Events;
 using NickvisionTubeConverter.Shared.Helpers;
 using NickvisionTubeConverter.Shared.Models;
 using System;
+using System.IO;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 
@@ -43,6 +44,7 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
     [Gtk.Connect] private readonly Gtk.Label _doneLabel;
     [Gtk.Connect] private readonly Adw.ViewStack _actionViewStack;
     [Gtk.Connect] private readonly Gtk.Button _stopButton;
+    [Gtk.Connect] private readonly Gtk.Button _openFileButton;
     [Gtk.Connect] private readonly Gtk.Button _openFolderButton;
     [Gtk.Connect] private readonly Gtk.Button _retryButton;
     [Gtk.Connect] private readonly Gtk.ToggleButton _viewLogToggleBtn;
@@ -108,6 +110,7 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
         _filenameLabel.SetLabel(download.Filename);
         _urlLabel.SetLabel(download.VideoUrl);
         _stopButton.OnClicked += (sender, e) => Stop();
+        _openFileButton.OnClicked += (sender, e) => Gtk.Functions.ShowUri(null, $"{_download.SaveFolder}{Path.DirectorySeparatorChar}{_download.Filename}", 0);
         _openFolderButton.OnClicked += (sender, e) => Gtk.Functions.ShowUri(null, "file://" + _download.SaveFolder, 0);
         _retryButton.OnClicked += async (sender, e) =>
         {
@@ -213,7 +216,7 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
             _stateViewStack.SetVisibleChildName("done");
             _levelBar.SetValue(success ? 1 : 0);
             _doneLabel.SetText(success ? _localizer["Success"] : _localizer["Error"]);
-            _actionViewStack.SetVisibleChildName(success ? "open-folder" : "retry");
+            _actionViewStack.SetVisibleChildName(success ? "open" : "retry");
         }
         if (DownloadCompletedAsyncCallback != null)
         {

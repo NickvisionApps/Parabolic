@@ -101,13 +101,26 @@ Adw.Bin _root {
         }
 
         Adw.ViewStackPage {
-          name: "open-folder";
-          child: Gtk.Button  _openFolderButton {
-            valign: center;
-            icon-name: "folder-symbolic";
-            tooltip-text: _("OpenSaveFolder");
+          name: "open";
+          child: Gtk.Box {
+            orientation: horizontal;
+            spacing: 6;
+            
+            Gtk.Button  _openFileButton {
+              valign: center;
+              icon-name: "media-playback-start-symbolic";
+              tooltip-text: _("OpenFile");
 
-            styles ["circular"]
+              styles ["circular"]
+            }
+
+            Gtk.Button  _openFolderButton {
+              valign: center;
+              icon-name: "folder-symbolic";
+              tooltip-text: _("OpenSaveFolder");
+
+              styles ["circular"]
+            }
           };
         }
 
