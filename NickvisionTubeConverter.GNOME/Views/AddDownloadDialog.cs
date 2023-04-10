@@ -118,6 +118,7 @@ public partial class AddDownloadDialog : Adw.Window
                 _urlRow.SetTitle(_controller.Localizer["VideoUrl", "Field"]);
                 _downloadPage.SetVisible(true);
                 _viewStack.SetVisibleChildName("pageDownload");
+                SetDefaultWidget(_addDownloadButton);
                 _addDownloadButton.SetSensitive(!string.IsNullOrEmpty(_saveFolderRow.GetText()));
                 _numberVideosButton.SetVisible(_videoUrlInfo.Videos.Count > 1 ? true : false);
                 foreach (var row in _videoRows)
@@ -156,6 +157,7 @@ public partial class AddDownloadDialog : Adw.Window
         _backButton.OnClicked += (sender, e) =>
         {
             _viewStack.SetVisibleChildName("pageUrl");
+            SetDefaultWidget(_validateUrlButton);
             _downloadPage.SetVisible(false);
             _urlRow.SetText("");
             _addDownloadButton.SetSensitive(false);
@@ -178,6 +180,7 @@ public partial class AddDownloadDialog : Adw.Window
         _addDownloadButton.SetSensitive(false);
         //Load
         _viewStack.SetVisibleChildName("pageUrl");
+        SetDefaultWidget(_validateUrlButton);
         _fileTypeRow.SetSelected((uint)_controller.PreviousMediaFileType);
         _saveFolderRow.SetText(_controller.PreviousSaveFolder);
     }
