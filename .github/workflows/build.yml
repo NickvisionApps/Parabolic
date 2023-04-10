@@ -24,6 +24,7 @@ jobs:
           manifest-path: NickvisionTubeConverter.GNOME/org.nickvision.tubeconverter.json
           cache-key: flatpak-builder-${{ github.sha }}
           arch: ${{ matrix.arch }}
+          restore-cache: true
   winui:
     name: "WinUI"
     strategy:
