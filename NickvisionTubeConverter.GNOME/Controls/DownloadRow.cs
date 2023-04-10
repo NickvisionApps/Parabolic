@@ -18,6 +18,9 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
     private delegate bool GSourceFunc(nint data);
 
     [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
+    private static partial void g_main_context_invoke(nint context, GSourceFunc function, nint data);
+
+    [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
     private static partial uint g_idle_add(GSourceFunc function, nint data);
 
     [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
@@ -28,6 +31,9 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
     private bool? _previousEmbedMetadata;
     private bool _wasStopped;
     private DownloadProgressStatus _progressStatus;
+    private GSourceFunc _runStartCallback;
+    private GSourceFunc _runEndCallback;
+    private GSourceFunc _stopCallback;
     private GSourceFunc? _processingCallback;
     private GSourceFunc? _downloadingCallback;
     private string _logMessage;
@@ -124,6 +130,42 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
             _lblLog.GetClipboard().SetText(_lblLog.GetText());
             _sendNotificationCallback(new NotificationSentEventArgs(_localizer["LogCopied"], NotificationSeverity.Informational));
         };
+        //Callbacks
+        _runStartCallback = (x) =>
+        {
+            _statusIcon.AddCssClass("accent");
+            _statusIcon.RemoveCssClass("error");
+            _statusIcon.SetFromIconName("folder-download-symbolic");
+            _stateViewStack.SetVisibleChildName("downloading");
+            _progressLabel.SetText(_localizer["DownloadState", "Preparing"]);
+            _filenameLabel.SetText(_download.Filename);
+            _actionViewStack.SetVisibleChildName("cancel");
+            _progressBar.SetFraction(0);
+            return false;
+        };
+        _runEndCallback = (x) =>
+        {
+            _statusIcon.RemoveCssClass("accent");
+            _statusIcon.AddCssClass(!FinishedWithError ? "success" : "error");
+            _statusIcon.SetFromIconName(!FinishedWithError ? "emblem-ok-symbolic" : "process-stop-symbolic");
+            _stateViewStack.SetVisibleChildName("done");
+            _levelBar.SetValue(!FinishedWithError ? 1 : 0);
+            _doneLabel.SetText(!FinishedWithError ? _localizer["Success"] : _localizer["Error"]);
+            _actionViewStack.SetVisibleChildName(!FinishedWithError ? "open" : "retry");
+            return false;
+        };
+        _stopCallback = (x) =>
+        {
+            _progressBar.SetFraction(1.0);
+            _statusIcon.RemoveCssClass("accent");
+            _statusIcon.AddCssClass("error");
+            _statusIcon.SetFromIconName("process-stop-symbolic");
+            _stateViewStack.SetVisibleChildName("done");
+            _levelBar.SetValue(0);
+            _doneLabel.SetText(_localizer["Stopped"]);
+            _actionViewStack.SetVisibleChildName("retry");
+            return false;
+        };
     }
 
     /// <summary>
@@ -149,14 +191,7 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
         }
         _wasStopped = false;
         FinishedWithError = false;
-        _statusIcon.AddCssClass("accent");
-        _statusIcon.RemoveCssClass("error");
-        _statusIcon.SetFromIconName("folder-download-symbolic");
-        _stateViewStack.SetVisibleChildName("downloading");
-        _progressLabel.SetText(_localizer["DownloadState", "Preparing"]);
-        _filenameLabel.SetText(_download.Filename);
-        _actionViewStack.SetVisibleChildName("cancel");
-        _progressBar.SetFraction(0);
+        g_main_context_invoke(0, _runStartCallback, 0);
         _oldLogMessage = "";
         var success = await _download.RunAsync(embedMetadata, (state) =>
         {
@@ -210,13 +245,7 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
         if (!_wasStopped)
         {
             FinishedWithError = !success;
-            _statusIcon.RemoveCssClass("accent");
-            _statusIcon.AddCssClass(success ? "success" : "error");
-            _statusIcon.SetFromIconName(success ? "emblem-ok-symbolic" : "process-stop-symbolic");
-            _stateViewStack.SetVisibleChildName("done");
-            _levelBar.SetValue(success ? 1 : 0);
-            _doneLabel.SetText(success ? _localizer["Success"] : _localizer["Error"]);
-            _actionViewStack.SetVisibleChildName(success ? "open" : "retry");
+            g_main_context_invoke(0, _runEndCallback, 0);
         }
         if (DownloadCompletedAsyncCallback != null)
         {
@@ -231,14 +260,7 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
     {
         _wasStopped = true;
         _download.Stop();
-        _progressBar.SetFraction(1.0);
-        _statusIcon.RemoveCssClass("accent");
-        _statusIcon.AddCssClass("error");
-        _statusIcon.SetFromIconName("process-stop-symbolic");
-        _stateViewStack.SetVisibleChildName("done");
-        _levelBar.SetValue(0);
-        _doneLabel.SetText(_localizer["Stopped"]);
-        _actionViewStack.SetVisibleChildName("retry");
+        g_main_context_invoke(0, _stopCallback, 0);
         if (DownloadStoppedCallback != null)
         {
             DownloadStoppedCallback(this);

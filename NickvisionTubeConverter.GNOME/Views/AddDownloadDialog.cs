@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Runtime.InteropServices;
+using System.Threading.Tasks;
 
 namespace NickvisionTubeConverter.GNOME.Views;
 
@@ -14,6 +15,11 @@ namespace NickvisionTubeConverter.GNOME.Views;
 /// </summary>
 public partial class AddDownloadDialog : Adw.Window
 {
+    private delegate bool GSourceFunc(nint data);
+
+    [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
+    private static partial void g_main_context_invoke(nint context, GSourceFunc function, nint data);
+
     [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
     [return: MarshalAs(UnmanagedType.I1)]
     public static partial bool gtk_file_chooser_set_current_folder(nint chooser, nint file, nint error);
@@ -51,6 +57,8 @@ public partial class AddDownloadDialog : Adw.Window
     private readonly AddDownloadDialogController _controller;
     private VideoUrlInfo? _videoUrlInfo;
     private GAsyncReadyCallback? _saveCallback;
+    private GSourceFunc _startSearchCallback;
+    private GSourceFunc _finishSearchCallback;
 
     [Gtk.Connect] private readonly Adw.ViewStack _viewStack;
     [Gtk.Connect] private readonly Adw.EntryRow _urlRow;
@@ -67,6 +75,7 @@ public partial class AddDownloadDialog : Adw.Window
     [Gtk.Connect] private readonly Gtk.ToggleButton _numberVideosButton;
     [Gtk.Connect] private readonly Gtk.ScrolledWindow _playlist;
     [Gtk.Connect] private readonly Adw.PreferencesGroup _videosGroup;
+    private Gtk.Spinner? _urlSpinner;
     private readonly List<VideoRow> _videoRows;
 
     public event EventHandler? OnDownload;
@@ -84,6 +93,60 @@ public partial class AddDownloadDialog : Adw.Window
         _videoUrlInfo = null;
         _saveCallback = null;
         _videoRows = new List<VideoRow>();
+        _startSearchCallback = (x) =>
+        {
+            _urlSpinner = Gtk.Spinner.New();
+            _validateUrlButton.SetSensitive(false);
+            _validateUrlButton.SetChild(_urlSpinner);
+            _urlSpinner.Start();
+            return false;
+        };
+        _finishSearchCallback = (x) =>
+        {
+            _urlSpinner.Stop();
+            _validateUrlButton.SetSensitive(true);
+            _validateUrlButton.SetChild(null);
+            _validateUrlButton.SetLabel(_controller.Localizer["ValidateUrl"]);
+            if (_videoUrlInfo == null)
+            {
+                _urlRow.AddCssClass("error");
+                _urlRow.SetTitle(_controller.Localizer["VideoUrl", "Invalid"]);
+            }
+            else
+            {
+                _urlRow.RemoveCssClass("error");
+                _urlRow.SetTitle(_controller.Localizer["VideoUrl", "Field"]);
+                _downloadPage.SetVisible(true);
+                _viewStack.SetVisibleChildName("pageDownload");
+                _addDownloadButton.SetSensitive(!string.IsNullOrEmpty(_saveFolderRow.GetText()));
+                _numberVideosButton.SetVisible(_videoUrlInfo.Videos.Count > 1 ? true : false);
+                foreach (var row in _videoRows)
+                {
+                    _videosGroup.Remove(row);
+                }
+                foreach (var videoInfo in _videoUrlInfo.Videos)
+                {
+                    var row = new VideoRow(videoInfo, _controller.Localizer);
+                    _videoRows.Add(row);
+                    _videosGroup.Add(row);
+                }
+                _playlist.GetVadjustment().OnNotify += (sender, e) =>
+                {
+                    if (e.Pspec.GetName() == "page-size")
+                    {
+                        if (_playlist.GetVadjustment().GetPageSize() >= _playlist.GetMaxContentHeight())
+                        {
+                            _playlist.AddCssClass("playlist");
+                        }
+                        else
+                        {
+                            _playlist.RemoveCssClass("playlist");
+                        }
+                    }
+                };
+            }
+            return false;
+        };
         //Dialog Settings
         SetTransientFor(parent);
         SetIconName(_controller.AppInfo.ID);
@@ -135,53 +198,20 @@ public partial class AddDownloadDialog : Adw.Window
     /// <param name="e">EventArgs</param>
     private async void SearchUrl(Gtk.Button sender, EventArgs e)
     {
-        var urlSpinner = Gtk.Spinner.New();
-        _validateUrlButton.SetSensitive(false);
-        _validateUrlButton.SetChild(urlSpinner);
-        urlSpinner.Start();
-        _videoUrlInfo = await _controller.SearchUrlAsync(_urlRow.GetText());
-        urlSpinner.Stop();
-        _validateUrlButton.SetSensitive(true);
-        _validateUrlButton.SetChild(null);
-        _validateUrlButton.SetLabel(_controller.Localizer["ValidateUrl"]);
-        if (_videoUrlInfo == null)
+        g_main_context_invoke(0, _startSearchCallback, 0);
+        await Task.Run(async () =>
         {
-            _urlRow.AddCssClass("error");
-            _urlRow.SetTitle(_controller.Localizer["VideoUrl", "Invalid"]);
-        }
-        else
-        {
-            _urlRow.RemoveCssClass("error");
-            _urlRow.SetTitle(_controller.Localizer["VideoUrl", "Field"]);
-            _downloadPage.SetVisible(true);
-            _viewStack.SetVisibleChildName("pageDownload");
-            _addDownloadButton.SetSensitive(!string.IsNullOrEmpty(_saveFolderRow.GetText()));
-            _numberVideosButton.SetVisible(_videoUrlInfo.Videos.Count > 1 ? true : false);
-            foreach (var row in _videoRows)
+            try
             {
-                _videosGroup.Remove(row);
+                _videoUrlInfo = await _controller.SearchUrlAsync(_urlRow.GetText());
             }
-            foreach (var videoInfo in _videoUrlInfo.Videos)
+            catch (Exception ex)
             {
-                var row = new VideoRow(videoInfo, _controller.Localizer);
-                _videoRows.Add(row);
-                _videosGroup.Add(row);
+                Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.StackTrace);
             }
-            _playlist.GetVadjustment().OnNotify += (sender, e) =>
-            {
-                if (e.Pspec.GetName() == "page-size")
-                {
-                    if (_playlist.GetVadjustment().GetPageSize() >= _playlist.GetMaxContentHeight())
-                    {
-                        _playlist.AddCssClass("playlist");
-                    }
-                    else
-                    {
-                        _playlist.RemoveCssClass("playlist");
-                    }
-                }
-            };
-        }
+        });
+        g_main_context_invoke(0, _finishSearchCallback, 0);
     }
 
     /// <summary>

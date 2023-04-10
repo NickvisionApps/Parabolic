@@ -19,6 +19,8 @@ public partial class MainWindow : Adw.ApplicationWindow
     private delegate bool GSourceFunc(nint data);
 
     [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
+    private static partial void g_main_context_invoke(nint context, GSourceFunc function, nint data);
+    [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
     private static partial uint g_timeout_add(uint interval, GSourceFunc function, nint data);
     [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
     private static partial nint g_bus_get_sync(uint bus_type, nint cancellable, nint error);
@@ -40,7 +42,9 @@ public partial class MainWindow : Adw.ApplicationWindow
     private readonly MainWindowController _controller;
     private readonly Adw.Application _application;
     private readonly nint _bus;
+    private readonly GSourceFunc[] _rowCallbacks;
     private readonly GSourceFunc _backgroundSourceFunc;
+
     private bool _isBackgroundStatusReported { get; set; }
 
     [Gtk.Connect] private readonly Adw.Bin _spinnerContainer;
@@ -60,6 +64,7 @@ public partial class MainWindow : Adw.ApplicationWindow
         _application = application;
         _isBackgroundStatusReported = false;
         _bus = g_bus_get_sync(2, IntPtr.Zero, IntPtr.Zero); // 2 = session bus
+        _rowCallbacks = new GSourceFunc[3];
         _backgroundSourceFunc = (d) =>
         {
             try
@@ -229,8 +234,13 @@ public partial class MainWindow : Adw.ApplicationWindow
     private IDownloadRowControl CreateDownloadRow(Download download)
     {
         var downloadRow = new DownloadRow(download, _controller.Localizer, (e) => NotificationSent(null, e));
-        _addDownloadButton.SetVisible(true);
-        _viewStack.SetVisibleChildName("pageDownloads");
+        _rowCallbacks[0] = (x) =>
+        {
+            _addDownloadButton.SetVisible(true);
+            _viewStack.SetVisibleChildName("pageDownloads");
+            return false;
+        };
+        g_main_context_invoke(0, _rowCallbacks[0], 0);
         return downloadRow;
     }
 
@@ -241,37 +251,42 @@ public partial class MainWindow : Adw.ApplicationWindow
     /// <param name="stage">DownloadStage</param>
     private void MoveDownloadRow(IDownloadRowControl row, DownloadStage stage)
     {
-        var gtkRow = (DownloadRow)row;
-        var parent = gtkRow.GetParent();
-        var box = stage switch
+        _rowCallbacks[1] = (x) =>
         {
-            DownloadStage.InQueue => _queuedBox,
-            DownloadStage.Downloading => _downloadingBox,
-            DownloadStage.Completed => _completedBox
-        };
-        if (parent == box)
-        {
-            return;
-        }
-        else if (parent != null)
-        {
-            DeleteDownloadRow(row, (Gtk.Box)parent);
-        }
-        if (box.GetFirstChild() != null)
-        {
-            var separator = Gtk.Separator.New(Gtk.Orientation.Horizontal);
-            box.Append(separator);
-        }
-        box.Append(gtkRow);
-        box.GetParent().SetVisible(true);
-        if (stage == DownloadStage.Completed && (!GetFocus()!.GetHasFocus() || !GetVisible()))
-        {
-            SendShellNotification(new ShellNotificationSentEventArgs(_controller.Localizer[row.FinishedWithError ? "DownloadFinishedWithError" : "DownloadFinished"], string.Format(_controller.Localizer[row.FinishedWithError ? "DownloadFinishedWithError" : "DownloadFinished", "Description"], $"\"{row.Filename}\""), row.FinishedWithError ? NotificationSeverity.Error : NotificationSeverity.Success));
-            if (!GetVisible() && !_controller.AreDownloadsRunning && _controller.ErrorsCount == 0)
+            var gtkRow = (DownloadRow)row;
+            var parent = gtkRow.GetParent();
+            var box = stage switch
             {
-                _application.Quit();
+                DownloadStage.InQueue => _queuedBox,
+                DownloadStage.Downloading => _downloadingBox,
+                DownloadStage.Completed => _completedBox
+            };
+            if (parent == box)
+            {
+                return false;
             }
-        }
+            else if (parent != null)
+            {
+                DeleteDownloadRow(row, (Gtk.Box)parent);
+            }
+            if (box.GetFirstChild() != null)
+            {
+                var separator = Gtk.Separator.New(Gtk.Orientation.Horizontal);
+                box.Append(separator);
+            }
+            box.Append(gtkRow);
+            box.GetParent().SetVisible(true);
+            if (stage == DownloadStage.Completed && (!GetFocus()!.GetHasFocus() || !GetVisible()))
+            {
+                SendShellNotification(new ShellNotificationSentEventArgs(_controller.Localizer[row.FinishedWithError ? "DownloadFinishedWithError" : "DownloadFinished"], string.Format(_controller.Localizer[row.FinishedWithError ? "DownloadFinishedWithError" : "DownloadFinished", "Description"], $"\"{row.Filename}\""), row.FinishedWithError ? NotificationSeverity.Error : NotificationSeverity.Success));
+                if (!GetVisible() && !_controller.AreDownloadsRunning && _controller.ErrorsCount == 0)
+                {
+                    _application.Quit();
+                }
+            }
+            return false;
+        };
+        g_main_context_invoke(0, _rowCallbacks[1], 0);
     }
 
     /// <summary>
@@ -281,14 +296,19 @@ public partial class MainWindow : Adw.ApplicationWindow
     /// <param name="box">Gtk.Box</param>
     private void DeleteDownloadRow(IDownloadRowControl row, Gtk.Box box)
     {
-        var gtkRow = (DownloadRow)row;
-        var separator = gtkRow.GetPrevSibling() ?? gtkRow.GetNextSibling();
-        if (separator is Gtk.Separator)
+        _rowCallbacks[2] = (x) =>
         {
-            box.Remove(separator);
-        }
-        box.Remove(gtkRow);
-        box.GetParent().SetVisible(box.GetFirstChild() != null);
+            var gtkRow = (DownloadRow)row;
+            var separator = gtkRow.GetPrevSibling() ?? gtkRow.GetNextSibling();
+            if (separator is Gtk.Separator)
+            {
+                box.Remove(separator);
+            }
+            box.Remove(gtkRow);
+            box.GetParent().SetVisible(box.GetFirstChild() != null);
+            return false;
+        };
+        g_main_context_invoke(0, _rowCallbacks[2], 0);
     }
 
     /// <summary>
