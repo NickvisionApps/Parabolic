@@ -59,6 +59,7 @@ public partial class AddDownloadDialog : Adw.Window
     private GAsyncReadyCallback? _saveCallback;
     private GSourceFunc _startSearchCallback;
     private GSourceFunc _finishSearchCallback;
+    private readonly Gtk.ShortcutController _shortcutController;
 
     [Gtk.Connect] private readonly Adw.ViewStack _viewStack;
     [Gtk.Connect] private readonly Adw.EntryRow _urlRow;
@@ -178,6 +179,11 @@ public partial class AddDownloadDialog : Adw.Window
             OnDownload?.Invoke(this, EventArgs.Empty);
         };
         _addDownloadButton.SetSensitive(false);
+        //Shotcut Controller
+        _shortcutController = Gtk.ShortcutController.New();
+        _shortcutController.SetScope(Gtk.ShortcutScope.Managed);
+        _shortcutController.AddShortcut(Gtk.Shortcut.New(Gtk.ShortcutTrigger.ParseString("Escape"), Gtk.CallbackAction.New(OnEscapeKey)));
+        AddController(_shortcutController);
         //Load
         _viewStack.SetVisibleChildName("pageUrl");
         SetDefaultWidget(_validateUrlButton);
@@ -256,5 +262,27 @@ public partial class AddDownloadDialog : Adw.Window
         {
             row.UpdateTitle();
         }
+    }
+
+    /// <summary>
+    /// Occurs when the escape key is pressed on the window
+    /// </summary>
+    /// <param name="sender">Gtk.Widget</param>
+    /// <param name="e">GLib.Variant</param>
+    private bool OnEscapeKey(Gtk.Widget sender, GLib.Variant e)
+    {
+        if(_viewStack.GetVisibleChildName() == "pageUrl")
+        {
+            Close();
+        }
+        else if(_viewStack.GetVisibleChildName() == "pageDownload")
+        {
+            _viewStack.SetVisibleChildName("pageUrl");
+            SetDefaultWidget(_validateUrlButton);
+            _downloadPage.SetVisible(false);
+            _urlRow.SetText("");
+            _addDownloadButton.SetSensitive(false);
+        }
+        return true;
     }
 }
