@@ -17,6 +17,8 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
 {
     private delegate bool GSourceFunc(nint data);
 
+    private delegate void GAsyncReadyCallback(nint source, nint res, nint user_data);
+
     [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
     private static partial void g_main_context_invoke(nint context, GSourceFunc function, nint data);
 
@@ -25,6 +27,12 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
 
     [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
     private static partial uint g_timeout_add(uint interval, GSourceFunc function, nint data);
+
+    [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
+    private static partial nint gtk_file_launcher_new(nint file);
+
+    [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
+    private static partial void gtk_file_launcher_launch(nint fileLauncher, nint parent, nint cancellable, GAsyncReadyCallback callback, nint data);
 
     private readonly Localizer _localizer;
     private readonly Download _download;
@@ -116,8 +124,18 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
         _filenameLabel.SetLabel(download.Filename);
         _urlLabel.SetLabel(download.VideoUrl);
         _stopButton.OnClicked += (sender, e) => Stop();
-        _openFileButton.OnClicked += (sender, e) => Gtk.Functions.ShowUri(null, $"file://{_download.SaveFolder}{Path.DirectorySeparatorChar}{_download.Filename}", 0);
-        _openFolderButton.OnClicked += (sender, e) => Gtk.Functions.ShowUri(null, "file://" + _download.SaveFolder, 0);
+        _openFileButton.OnClicked += (sender, e) =>
+        {
+            var file = Gio.FileHelper.NewForPath($"{_download.SaveFolder}{Path.DirectorySeparatorChar}{_download.Filename}");
+            var fileLauncher = gtk_file_launcher_new(file.Handle);
+            gtk_file_launcher_launch(fileLauncher, 0, 0, (source, res, data) => { }, 0);
+        };
+        _openFolderButton.OnClicked += (sender, e) =>
+        {
+            var file = Gio.FileHelper.NewForPath(_download.SaveFolder);
+            var fileLauncher = gtk_file_launcher_new(file.Handle);
+            gtk_file_launcher_launch(fileLauncher, 0, 0, (source, res, data) => { }, 0);
+        };
         _retryButton.OnClicked += async (sender, e) =>
         {
             if (DownloadRetriedAsyncCallback != null)
