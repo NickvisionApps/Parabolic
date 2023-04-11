@@ -271,11 +271,11 @@ public partial class AddDownloadDialog : Adw.Window
     /// <param name="e">GLib.Variant</param>
     private bool OnEscapeKey(Gtk.Widget sender, GLib.Variant e)
     {
-        if(_viewStack.GetVisibleChildName() == "pageUrl")
+        if (_viewStack.GetVisibleChildName() == "pageUrl")
         {
             Close();
         }
-        else if(_viewStack.GetVisibleChildName() == "pageDownload")
+        else if (_viewStack.GetVisibleChildName() == "pageDownload")
         {
             _viewStack.SetVisibleChildName("pageUrl");
             SetDefaultWidget(_validateUrlButton);
