@@ -4,7 +4,6 @@ using Adw 1;
 Adw.Bin _root {
   Gtk.Box {
     orientation: vertical;
-    spacing: 12;
 
     Gtk.Box {
       orientation: horizontal;
@@ -22,6 +21,7 @@ Adw.Bin _root {
         spacing: 3;
         margin-top: 8;
         margin-bottom: 8;
+        hexpand: true;
         
         Gtk.Label _filenameLabel {
           halign: start;
@@ -36,45 +36,6 @@ Adw.Bin _root {
           
           styles ["caption", "dim-label"]
         }
-        
-        Adw.ViewStack _stateViewStack {
-          margin-top: 8;
-          
-          Adw.ViewStackPage {
-            name: "downloading";
-            child: Gtk.Box {
-              orientation: vertical;
-              spacing: 3;
-              
-              Gtk.ProgressBar _progressBar {
-                hexpand: true;
-              }
-              
-              Gtk.Label  _progressLabel {
-                label: _("DownloadState.Waiting");
-                halign: start;
-                
-                styles ["caption"]
-              }
-            };
-          }
-          
-          Adw.ViewStackPage {
-            name: "done";
-            child: Gtk.Box {
-              orientation: vertical;
-              spacing: 3;
-              
-              Gtk.LevelBar _levelBar {}
-              
-              Gtk.Label _doneLabel {
-                halign: start;
-                
-                styles ["caption"]
-              }
-            };
-          }
-        }
       }
 
       Gtk.ToggleButton _viewLogToggleBtn {
@@ -86,8 +47,9 @@ Adw.Bin _root {
       }
 
       Adw.ViewStack _actionViewStack {
-        margin-start: 5;
+        margin-start: 1;
         margin-end: 10;
+        hhomogeneous: false;
         
         Adw.ViewStackPage {
           name: "cancel";
@@ -137,10 +99,53 @@ Adw.Bin _root {
       }
     }
 
+    Adw.ViewStack _stateViewStack {
+      margin-start: 8;
+      margin-end: 8;
+      margin-bottom: 8;
+
+      Adw.ViewStackPage {
+        name: "downloading";
+        child: Gtk.Box {
+          orientation: vertical;
+          spacing: 3;
+
+          Gtk.ProgressBar _progressBar {
+            hexpand: true;
+          }
+
+          Gtk.Label  _progressLabel {
+            label: _("DownloadState.Waiting");
+            halign: start;
+            margin-start: 1;
+
+            styles ["caption"]
+          }
+        };
+      }
+
+      Adw.ViewStackPage {
+        name: "done";
+        child: Gtk.Box {
+          orientation: vertical;
+          spacing: 3;
+
+          Gtk.LevelBar _levelBar {}
+
+          Gtk.Label _doneLabel {
+            halign: start;
+            margin-start: 1;
+
+            styles ["caption"]
+          }
+        };
+      }
+    }
+
     Gtk.Overlay _overlayLog {
-      margin-start: 6;
-      margin-end: 6;
-      margin-bottom: 6;
+      margin-start: 8;
+      margin-end: 8;
+      margin-bottom: 8;
       visible: bind _viewLogToggleBtn.active;
 
       [overlay]
@@ -150,7 +155,7 @@ Adw.Bin _root {
         vexpand: true;
         halign: end;
         valign: end;
-        margin-bottom: 10;
+        margin-bottom: 8;
         margin-end: 14;
 
         styles ["opaque"]
