@@ -45,17 +45,19 @@
                     </ToggleButton.Content>
                 </ToggleButton>
 
-                <StackPanel wct:DockPanel.Dock="Left" Margin="10,0,10,0" Orientation="Vertical" Spacing="2">
+                <StackPanel Margin="10,0,10,0" Orientation="Vertical" Spacing="2">
                     <TextBlock x:Name="LblFilename" TextWrapping="Wrap"/>
 
                     <TextBlock x:Name="LblUrl" Foreground="Gray"/>
-
-                    <ProgressBar x:Name="ProgBar" HorizontalAlignment="Stretch" Margin="0,10,0,0" Minimum="0" Maximum="1"/>
-
-                    <TextBlock x:Name="LblStatus"/>
                 </StackPanel>
             </wct:DockPanel>
 
+            <StackPanel Margin="6,0,6,0" Orientation="Vertical" Spacing="6">
+                <ProgressBar x:Name="ProgBar" HorizontalAlignment="Stretch" Margin="0,10,0,0" Minimum="0" Maximum="1"/>
+
+                <TextBlock x:Name="LblStatus"/>
+            </StackPanel>
+            
             <Border x:Name="SectionLog" Visibility="Collapsed" Background="{ThemeResource CardBackgroundFillColorSecondaryBrush}" BorderThickness="1" BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}" CornerRadius="8">
                 <ScrollViewer x:Name="ScrollLog" MaxHeight="100">
                     <TextBlock x:Name="LblLog" Margin="6,6,6,6" IsTextSelectionEnabled="True" TextWrapping="Wrap"/>
