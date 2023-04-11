@@ -152,8 +152,8 @@ _translate_meta PREFIX:
     regex = re.compile(r'Strings\.(.+)\.resx')
     desktop_comments = []
     desktop_keywords = []
-    meta_summaries = []
-    meta_descriptions = []
+    meta_summaries = {}
+    meta_descriptions = {}
     for filename in os.listdir(resx_dir):
         regex_match = regex.search(filename)
         if regex_match:
@@ -165,19 +165,19 @@ _translate_meta PREFIX:
                     text = item.find('value').text
                     if text:
                         desktop_comments.append(f'Comment[{lang_code}]={text}')
-                        meta_descriptions.append(f'    <p xml:lang="{lang_code}">\n      {text}\n    </p>')
-                elif item.attrib['name'] == 'Summary.GTK':
-                    text = item.find('value').text
+                        meta_summaries[lang_code] = ET.fromstring(f'<summary xml:lang="{lang_code}">{text}</summary>')
+                elif item.attrib['name'] == 'MetadataDescription.GTK':
+                    text = ET.tostring(item.find('value'), encoding='unicode').strip()[7:-8]
                     if text:
-                        meta_summaries.append(f'  <summary xml:lang="{lang_code}">{text}</summary>')
+                        meta_descriptions[lang_code] = ET.fromstring(f'<p xml:lang="{lang_code}">{text}</p>')
                 elif item.attrib['name'] == 'Keywords.GTK':
                     text = item.find('value').text
                     if text:
                         desktop_keywords.append(f'Keywords[{lang_code}]={text}')
     desktop_comments.sort()
     desktop_keywords.sort()
-    meta_summaries.sort()
-    meta_descriptions.sort()
+    meta_summaries = {i: meta_summaries[i] for i in sorted(meta_summaries)}
+    meta_descriptions = {i: meta_descriptions[i] for i in sorted(meta_descriptions)}
 
     with open('{{builddir}}{{PREFIX}}/share/applications/{{app_id}}.desktop', 'r') as f:
         contents = f.readlines()
@@ -192,24 +192,18 @@ _translate_meta PREFIX:
             j += 1
         j += 1
     with open('{{builddir}}{{PREFIX}}/share/applications/{{app_id}}.desktop', 'w') as f:
-        new_contents = "".join(new_contents)
+        new_contents = ''.join(new_contents)
         f.write(new_contents)
 
     with open('{{builddir}}{{PREFIX}}/share/metainfo/{{app_id}}.metainfo.xml', 'r') as f:
-        contents = f.readlines()
-        new_contents = contents.copy()
-    j = 0
-    for i in range(len(contents)):
-        if contents[i].find('<summary>') > -1:
-            new_contents.insert(j + 1, "\n".join(meta_summaries) + "\n")
-            j += 1
-        elif contents[i].find('<description>') > -1:
-            new_contents.insert(j + 4, "\n".join(meta_descriptions) + "\n")
-            break
-        j += 1
+        metainfo = ET.fromstring(''.join(f.readlines()))
+        for i, v in enumerate(meta_summaries.values()):
+            metainfo.insert(list(metainfo).index(metainfo.find('summary')) + i + 1, v)
+        for v in meta_descriptions.values():
+            metainfo.find('description[1]').append(v)
+        ET.indent(metainfo, '  ')
     with open('{{builddir}}{{PREFIX}}/share/metainfo/{{app_id}}.metainfo.xml', 'w') as f:
-        new_contents = "".join(new_contents)
-        f.write(new_contents)
+        f.write('<?xml version="1.0" encoding="UTF-8"?>\n' + ET.tostring(metainfo, encoding='unicode'))
 
 # Generate sources files for Flatpak
 generate-flatpak-sources: _generate-flatpak-sources-just _generate-flatpak-sources-dotnet
