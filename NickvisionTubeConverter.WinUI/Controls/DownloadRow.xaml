@@ -11,7 +11,7 @@
     mc:Ignorable="d" Margin="0,0,0,6">
 
     <Border Margin="-12,0,-12,0" Background="{ThemeResource CardBackgroundFillColorDefaultBrush}" BorderThickness="1" BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}" CornerRadius="8">
-        <StackPanel Margin="10,4,10,4" Orientation="Vertical" Spacing="12">
+        <StackPanel Margin="10,10,10,10" VerticalAlignment="Center" Orientation="Vertical" Spacing="12">
             <wct:DockPanel LastChildFill="True">
                 <FontIcon x:Name="Icon" wct:DockPanel.Dock="Left" VerticalAlignment="Center" FontFamily="{StaticResource SymbolThemeFontFamily}"/>
 
@@ -50,7 +50,7 @@
 
                     <TextBlock x:Name="LblUrl" Foreground="Gray"/>
 
-                    <ProgressBar x:Name="ProgBar" HorizontalAlignment="Stretch" Height="10" Minimum="0" Maximum="1"/>
+                    <ProgressBar x:Name="ProgBar" HorizontalAlignment="Stretch" Margin="0,10,0,0" Minimum="0" Maximum="1"/>
 
                     <TextBlock x:Name="LblStatus"/>
                 </StackPanel>

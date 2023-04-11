@@ -170,6 +170,7 @@ public sealed partial class DownloadRow : UserControl, IDownloadRowControl
     {
         _wasStopped = true;
         _download.Stop();
+        Icon.Foreground = new SolidColorBrush(Colors.Red);
         Icon.Glyph = "\uE10A";
         ProgBar.IsIndeterminate = false;
         ProgBar.Value = 1;
