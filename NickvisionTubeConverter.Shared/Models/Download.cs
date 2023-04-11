@@ -138,7 +138,7 @@ public class Download
                 var ytOpt = new Dictionary<string, dynamic> {
                     { "quiet", false },
                     { "ignoreerrors", "downloadonly" },
-                    { "merge_output_format", "mp4/webm/mp3/opus/flac/wav" },
+                    { "merge_output_format", "mp4/webm/mp3/opus/flac/wav/mkv" },
                     { "final_ext", _fileType.ToString().ToLower() },
                     { "progress_hooks", hooks },
                     { "postprocessor_hooks", hooks },
@@ -176,7 +176,7 @@ public class Download
                             _ => "wv*+wa/w"
                         });
                     }
-                    postProcessors.Add(new Dictionary<string, dynamic>() { { "key", "FFmpegVideoRemuxer" }, { "preferedformat", _fileType.ToString().ToLower() } });
+                    postProcessors.Add(new Dictionary<string, dynamic>() { { "key", "FFmpegVideoConvertor" }, { "preferedformat", _fileType.ToString().ToLower() } });
                     if (_subtitle != Subtitle.None)
                     {
                         ytOpt.Add("writesubtitles", true);
@@ -286,10 +286,10 @@ public class Download
         {
             using (Python.Runtime.Py.GIL())
             {
-                var filename = Path.GetFileName(path.As<string>());
-                filename = Regex.Unescape(filename);
+                Filename = Path.GetFileName(path.As<string>());
+                Filename = Regex.Unescape(Filename);
                 var directory = Path.GetDirectoryName(path.As<string>());
-                File.Move(path.As<string>(), $"{directory}{Path.DirectorySeparatorChar}{filename}", _overwriteFiles);
+                File.Move(path.As<string>(), $"{directory}{Path.DirectorySeparatorChar}{Filename}", _overwriteFiles);
             }
         }
         catch

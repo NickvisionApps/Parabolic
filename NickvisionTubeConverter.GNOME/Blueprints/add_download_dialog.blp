@@ -51,6 +51,7 @@ Adw.Window _root {
                 Adw.EntryRow _urlRow {
                   title: _("VideoUrl.Field");
                   width-request: 420;
+                  activates-default: true;
                 }
               }
 
@@ -123,7 +124,7 @@ Adw.Window _root {
                 }
 
                 Adw.ActionRow _overwriteRow {
-                   title: _("OverwriteExistingFiles");
+                  title: _("OverwriteExistingFiles");
                   activatable-widget: _overwriteSwitch;
 
                   [suffix]

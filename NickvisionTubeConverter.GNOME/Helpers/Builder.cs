@@ -17,25 +17,20 @@ public class Builder
     /// <returns>Gtk.Builder</returns>
     public static Gtk.Builder FromFile(string name, Localizer localizer, Func<string, string>? translatableTransformer = null)
     {
-        Gtk.Builder builder;
-        using (var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream(name))
-        using (var reader = new StreamReader(stream))
+        using var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream(name);
+        using var reader = new StreamReader(stream!);
+        var uiContents = reader.ReadToEnd();
+        var xml = new XmlDocument();
+        xml.LoadXml(uiContents);
+        var elements = xml.GetElementsByTagName("*");
+        foreach (XmlElement element in elements)
         {
-
-            var uiContents = reader.ReadToEnd();
-            var xml = new XmlDocument();
-            xml.LoadXml(uiContents);
-            var elements = xml.GetElementsByTagName("*");
-            foreach (XmlElement element in elements)
+            if (element.HasAttribute("translatable"))
             {
-                if (element.HasAttribute("translatable"))
-                {
-                    element.RemoveAttribute("translatable");
-                    element.InnerText = translatableTransformer == null ? localizer[element.InnerText] : translatableTransformer(element.InnerText);
-                }
+                element.RemoveAttribute("translatable");
+                element.InnerText = translatableTransformer == null ? localizer[element.InnerText] : translatableTransformer(element.InnerText);
             }
-            builder = Gtk.Builder.NewFromString(xml.OuterXml, -1);
         }
-        return builder;
+        return Gtk.Builder.NewFromString(xml.OuterXml, -1);
     }
 }
