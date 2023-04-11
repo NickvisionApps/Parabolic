@@ -46,6 +46,7 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
     private GSourceFunc? _downloadingCallback;
     private string _logMessage;
     private string _oldLogMessage;
+    private bool _processingCallbackRunning;
     private Action<NotificationSentEventArgs> _sendNotificationCallback;
 
     [Gtk.Connect] private readonly Gtk.Image _statusIcon;
@@ -116,6 +117,7 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
         _wasStopped = false;
         _logMessage = "";
         _sendNotificationCallback = sendNoticiationCallback;
+        _processingCallbackRunning = false;
         Progress = 0.0;
         Speed = 0.0;
         FinishedWithError = false;
@@ -236,25 +238,25 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
                     _progressLabel.SetText(_localizer["DownloadState", "Processing"]);
                     Progress = 1.0;
                     Speed = 0.0;
-                    if (_processingCallback == null)
+                    _processingCallback = (d) =>
                     {
-                        _processingCallback = (d) =>
+                        _progressBar.Pulse();
+                        if (_logMessage != _oldLogMessage)
                         {
-                            _progressBar.Pulse();
-                            if (_logMessage != _oldLogMessage)
-                            {
-                                _lblLog.SetLabel(_logMessage);
-                                _oldLogMessage = _logMessage;
-                                var vadjustment = _scrollLog.GetVadjustment();
-                                vadjustment.SetValue(vadjustment.GetUpper() - vadjustment.GetPageSize());
-                            }
-                            if (_progressStatus != DownloadProgressStatus.Processing || IsDone)
-                            {
-                                _processingCallback = null;
-                                return false;
-                            }
-                            return true;
-                        };
+                            _lblLog.SetLabel(_logMessage);
+                            _oldLogMessage = _logMessage;
+                            var vadjustment = _scrollLog.GetVadjustment();
+                            vadjustment.SetValue(vadjustment.GetUpper() - vadjustment.GetPageSize());
+                        }
+                        if (_progressStatus != DownloadProgressStatus.Processing || IsDone)
+                        {
+                            _processingCallbackRunning = false;
+                        }
+                        return _processingCallbackRunning;
+                    };
+                    if (!_processingCallbackRunning)
+                    {
+                        _processingCallbackRunning = true;
                         g_timeout_add(30, _processingCallback, 0);
                     }
                     break;
