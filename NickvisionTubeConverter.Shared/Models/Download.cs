@@ -104,8 +104,9 @@ public class Download
     /// </summary>
     /// <param name="embedMetadata">Whether or not to embed video metadata in the downloaded file</param>
     /// <param name="progressCallback">A callback function for DownloadProgressState</param>
+    /// <param name="localizer">Localizer</param>
     /// <returns>True if successful, else false</returns>
-    public async Task<bool> RunAsync(bool embedMetadata, Action<DownloadProgressState>? progressCallback = null)
+    public async Task<bool> RunAsync(bool embedMetadata, Localizer localizer, Action<DownloadProgressState>? progressCallback = null)
     {
         _progressCallback = progressCallback;
         IsDone = false;
@@ -118,7 +119,7 @@ public class Download
                     Status = DownloadProgressStatus.Other,
                     Progress = 0.0,
                     Speed = 0.0,
-                    Log = "File already exists, and overwriting is disallowed"
+                    Log = localizer["FileExistsError"]
                 });
             }
             return false;

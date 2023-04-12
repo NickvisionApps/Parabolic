@@ -219,7 +219,7 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
         _wasStopped = false;
         FinishedWithError = false;
         g_main_context_invoke(0, _runStartCallback, 0);
-        var success = await _download.RunAsync(embedMetadata, (state) =>
+        var success = await _download.RunAsync(embedMetadata, _localizer, (state) =>
         {
             _progressStatus = state.Status;
             _logMessage = state.Log + "\n";
