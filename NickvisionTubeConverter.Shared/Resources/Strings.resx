@@ -399,6 +399,14 @@
 		<value>System</value>
 	</data>
 
+	<data name="AllowBackground" xml:space="preserve">
+		<value>Allow Running In Background</value>
+	</data>
+
+	<data name="AllowBackgroundDescription" xml:space="preserve">
+		<value>Hide the window instead of quitting if there are downloads running.</value>
+	</data>
+
 	<data name="Downloader" xml:space="preserve">
 		<value>Downloader</value>
 	</data>
@@ -407,12 +415,24 @@
 		<value>Customize downloader settings.</value>
 	</data>
 
+	<data name="MaxNumberOfActiveDownloads" xml:space="preserve">
+		<value>Max Number of Active Downloads</value>
+	</data>
+
 	<data name="SpeedLimit" xml:space="preserve">
 		<value>Speed Limit</value>
 	</data>
 
 	<data name="SpeedLimit.Description" xml:space="preserve">
 		<value>This limit (in KiB/s) is applied to downloads that have speed limit enabled. Changing the value doesn't affect already running downloads.</value>
+	</data>
+
+	<data name="UseAria" xml:space="preserve">
+		<value>Use Aria2</value>
+	</data>
+
+	<data name="UseAria.Description" xml:space="preserve">
+		<value>Enabling this option will cause yt-dlp to use aria2 as its downloader. Aria2 is known to be faster for some users.</value>
 	</data>
 
 	<data name="Converter" xml:space="preserve">
@@ -429,18 +449,6 @@
 
 	<data name="EmbedMetadata.Description" xml:space="preserve">
 		<value>If checked, video metadata will be included in the downloaded file.</value>
-	</data>
-
-	<data name="MaxNumberOfActiveDownloads" xml:space="preserve">
-		<value>Max Number of Active Downloads</value>
-	</data>
-
-	<data name="AllowBackground" xml:space="preserve">
-		<value>Allow Running In Background</value>
-	</data>
-
-	<data name="AllowBackgroundDescription" xml:space="preserve">
-		<value>Hide the window instead of quitting if there are downloads running.</value>
 	</data>
 
 	<!--Shortcuts Dialog-->

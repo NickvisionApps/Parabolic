@@ -77,6 +77,16 @@ public class PreferencesViewController
     }
 
     /// <summary>
+    /// Whether or not to use aria2
+    /// </summary>
+    public bool UseAria
+    {
+        get => Configuration.Current.UseAria;
+
+        set => Configuration.Current.UseAria = value;
+    }
+
+    /// <summary>
     /// Saves the configuration to disk
     /// </summary>
     public void SaveConfiguration() => Configuration.Current.Save();

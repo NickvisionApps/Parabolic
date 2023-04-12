@@ -79,6 +79,10 @@ public class Configuration
     /// Speed limit in KiB/s (should be between 512-10240)
     /// </summary>
     public uint SpeedLimit { get; set; }
+    /// <summary>
+    /// Whether or not to use aria2
+    /// </summary>
+    public bool UseAria { get; set; }
 
     /// <summary>
     /// Occurs when the configuration is saved to disk
@@ -105,6 +109,7 @@ public class Configuration
         MaxNumberOfActiveDownloads = 5;
         RunInBackground = RuntimeInformation.IsOSPlatform(OSPlatform.Windows);
         SpeedLimit = 1024;
+        UseAria = false;
     }
 
     /// <summary>
