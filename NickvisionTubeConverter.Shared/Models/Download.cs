@@ -49,7 +49,8 @@ public class Download
     private readonly Quality _quality;
     private readonly Subtitle _subtitle;
     private readonly bool _overwriteFiles;
-    private readonly bool _speedLimit;
+    private readonly bool _limitSpeed;
+    private readonly uint _speedLimit;
     private readonly string _logPath;
     private readonly string _tempDownloadPath;
     private Action<DownloadProgressState>? _progressCallback;
@@ -80,15 +81,18 @@ public class Download
     /// <param name="saveFolder">The folder to save the download to</param>
     /// <param name="saveFilename">The filename to save the download as</param>
     /// <param name="overwriteFiles">Whether or not to overwrite existing files</param>
+    /// <param name="limitSpeed">Whether or not to limit the download speed</param>
     /// <param name="quality">The quality of the download</param>
     /// <param name="subtitle">The subtitles for the download</param>
-    public Download(string videoUrl, MediaFileType fileType, string saveFolder, string saveFilename, bool overwriteFiles, bool speedLimit, Quality quality = Quality.Best, Subtitle subtitle = Subtitle.None)
+    ///     /// <param name="speedLimit">The speed at which to limit the download</param>
+    public Download(string videoUrl, MediaFileType fileType, string saveFolder, string saveFilename, bool overwriteFiles, bool limitSpeed, Quality quality = Quality.Best, Subtitle subtitle = Subtitle.None, uint speedLimit = 1024)
     {
         _id = Guid.NewGuid();
         _fileType = fileType;
         _quality = quality;
         _subtitle = subtitle;
         _overwriteFiles = overwriteFiles;
+        _limitSpeed = limitSpeed;
         _speedLimit = speedLimit;
         _tempDownloadPath = $"{Configuration.TempDir}{Path.DirectorySeparatorChar}{_id}{Path.DirectorySeparatorChar}";
         _logPath = $"{_tempDownloadPath}log";
@@ -163,9 +167,9 @@ public class Download
                     { "overwrites", _overwriteFiles },
                     { "paths", paths }
                 };
-                if (_speedLimit)
+                if (_limitSpeed)
                 {
-                    ytOpt.Add("ratelimit", Configuration.Current.SpeedLimit * 1024);
+                    ytOpt.Add("ratelimit", _speedLimit * 1024);
                 }
                 var postProcessors = new List<Dictionary<string, dynamic>>();
                 if (_fileType.GetIsAudio())
