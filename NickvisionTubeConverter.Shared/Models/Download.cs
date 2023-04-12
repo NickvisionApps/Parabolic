@@ -49,6 +49,7 @@ public class Download
     private readonly Quality _quality;
     private readonly Subtitle _subtitle;
     private readonly bool _overwriteFiles;
+    private readonly bool _speedLimit;
     private readonly string _logPath;
     private readonly string _tempDownloadPath;
     private Action<DownloadProgressState>? _progressCallback;
@@ -81,13 +82,14 @@ public class Download
     /// <param name="overwriteFiles">Whether or not to overwrite existing files</param>
     /// <param name="quality">The quality of the download</param>
     /// <param name="subtitle">The subtitles for the download</param>
-    public Download(string videoUrl, MediaFileType fileType, string saveFolder, string saveFilename, bool overwriteFiles, Quality quality = Quality.Best, Subtitle subtitle = Subtitle.None)
+    public Download(string videoUrl, MediaFileType fileType, string saveFolder, string saveFilename, bool overwriteFiles, bool speedLimit, Quality quality = Quality.Best, Subtitle subtitle = Subtitle.None)
     {
         _id = Guid.NewGuid();
         _fileType = fileType;
         _quality = quality;
         _subtitle = subtitle;
         _overwriteFiles = overwriteFiles;
+        _speedLimit = speedLimit;
         _tempDownloadPath = $"{Configuration.TempDir}{Path.DirectorySeparatorChar}{_id}{Path.DirectorySeparatorChar}";
         _logPath = $"{_tempDownloadPath}log";
         _progressCallback = null;
@@ -150,6 +152,10 @@ public class Download
                     { "overwrites", _overwriteFiles },
                     { "paths", paths }
                 };
+                if (_speedLimit)
+                {
+                    ytOpt.Add("ratelimit", Configuration.Current.SpeedLimit * 1024);
+                }
                 var postProcessors = new List<Dictionary<string, dynamic>>();
                 if (_fileType.GetIsAudio())
                 {
