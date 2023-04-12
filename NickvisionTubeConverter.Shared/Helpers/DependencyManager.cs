@@ -113,10 +113,10 @@ internal static class DependencyManager
                 }
                 //Aria2
                 var ariaVer = new Version(1, 36, 0);
-                if(!File.Exists(Aria2) || Configuration.Current.WinUIAriaVersion != ariaVer)
+                if (!File.Exists(Aria2) || Configuration.Current.WinUIAriaVersion != ariaVer)
                 {
                     var ariaDir = $"{Configuration.ConfigDir}{Path.DirectorySeparatorChar}aria2{Path.DirectorySeparatorChar}";
-                    if(!Directory.Exists(ariaDir))
+                    if (!Directory.Exists(ariaDir))
                     {
                         Directory.CreateDirectory(ariaDir);
                     }
