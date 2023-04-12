@@ -36,15 +36,15 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
 
     private readonly Localizer _localizer;
     private readonly Download _download;
+    private readonly GSourceFunc _runStartCallback;
+    private readonly GSourceFunc _runEndCallback;
+    private readonly GSourceFunc _stopCallback;
+    private readonly GSourceFunc _updateLogCallback;
+    private readonly GSourceFunc _processingCallback;
+    private GSourceFunc? _downloadingCallback;
     private bool? _previousEmbedMetadata;
     private bool _wasStopped;
     private DownloadProgressStatus _progressStatus;
-    private GSourceFunc _runStartCallback;
-    private GSourceFunc _runEndCallback;
-    private GSourceFunc _stopCallback;
-    private GSourceFunc _updateLogCallback;
-    private GSourceFunc? _processingCallback;
-    private GSourceFunc? _downloadingCallback;
     private string _logMessage;
     private bool _processingCallbackRunning;
     private Action<NotificationSentEventArgs> _sendNotificationCallback;
@@ -193,6 +193,15 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
             vadjustment.SetValue(vadjustment.GetUpper() - vadjustment.GetPageSize());
             return false;
         };
+        _processingCallback = (d) =>
+        {
+            _progressBar.Pulse();
+            if (_progressStatus != DownloadProgressStatus.Processing || IsDone)
+            {
+                _processingCallbackRunning = false;
+            }
+            return _processingCallbackRunning;
+        };
     }
 
     /// <summary>
@@ -245,15 +254,6 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
                     _progressLabel.SetText(_localizer["DownloadState", "Processing"]);
                     Progress = 1.0;
                     Speed = 0.0;
-                    _processingCallback = (d) =>
-                    {
-                        _progressBar.Pulse();
-                        if (_progressStatus != DownloadProgressStatus.Processing || IsDone)
-                        {
-                            _processingCallbackRunning = false;
-                        }
-                        return _processingCallbackRunning;
-                    };
                     if (!_processingCallbackRunning)
                     {
                         _processingCallbackRunning = true;
