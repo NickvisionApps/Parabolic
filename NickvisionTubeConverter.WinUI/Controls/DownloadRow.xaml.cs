@@ -110,7 +110,7 @@ public sealed partial class DownloadRow : UserControl, IDownloadRowControl
         BtnOpenFile.Visibility = Visibility.Collapsed;
         BtnOpenSaveFolder.Visibility = Visibility.Collapsed;
         ProgBar.Value = 0;
-        var success = await _download.RunAsync(embedMetadata, (state) =>
+        var success = await _download.RunAsync(embedMetadata, _localizer, (state) =>
         {
             App.MainWindow!.DispatcherQueue.TryEnqueue(() =>
             {
