@@ -73,6 +73,7 @@ public partial class AddDownloadDialog : Adw.Window
     [Gtk.Connect] private readonly Adw.EntryRow _saveFolderRow;
     [Gtk.Connect] private readonly Gtk.Button _selectSaveFolderButton;
     [Gtk.Connect] private readonly Gtk.Switch _overwriteSwitch;
+    [Gtk.Connect] private readonly Gtk.Switch _speedLimitSwitch;
     [Gtk.Connect] private readonly Gtk.ToggleButton _numberVideosButton;
     [Gtk.Connect] private readonly Gtk.ScrolledWindow _playlist;
     [Gtk.Connect] private readonly Adw.PreferencesGroup _videosGroup;
@@ -136,7 +137,7 @@ public partial class AddDownloadDialog : Adw.Window
                 {
                     if (e.Pspec.GetName() == "page-size")
                     {
-                        if (_playlist.GetVadjustment().GetPageSize() >= _playlist.GetMaxContentHeight())
+                        if (_playlist.GetVadjustment().GetPageSize() < _playlist.GetVadjustment().GetUpper())
                         {
                             _playlist.AddCssClass("playlist");
                         }
@@ -175,7 +176,7 @@ public partial class AddDownloadDialog : Adw.Window
         //Add Download Button
         _addDownloadButton.OnClicked += (sender, e) =>
         {
-            _controller.PopulateDownloads(_videoUrlInfo!, (MediaFileType)_fileTypeRow.GetSelected(), (Quality)_qualityRow.GetSelected(), (Subtitle)_subtitleRow.GetSelected(), _saveFolderRow.GetText(), _overwriteSwitch.GetActive());
+            _controller.PopulateDownloads(_videoUrlInfo!, (MediaFileType)_fileTypeRow.GetSelected(), (Quality)_qualityRow.GetSelected(), (Subtitle)_subtitleRow.GetSelected(), _saveFolderRow.GetText(), _overwriteSwitch.GetActive(), _speedLimitSwitch.GetActive());
             OnDownload?.Invoke(this, EventArgs.Empty);
         };
         _addDownloadButton.SetSensitive(false);

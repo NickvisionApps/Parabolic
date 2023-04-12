@@ -45,22 +45,27 @@ public sealed partial class PreferencesPage : UserControl
         CmbTheme.Items.Add(_controller.Localizer["ThemeLight"]);
         CmbTheme.Items.Add(_controller.Localizer["ThemeDark"]);
         CmbTheme.Items.Add(_controller.Localizer["ThemeSystem"]);
+        CardDownloader.Header = _controller.Localizer["Downloader"];
+        CardDownloader.Description = _controller.Localizer["Downloader", "Description"];
+        CardMaxNumberOfActiveDownloads.Header = _controller.Localizer["MaxNumberOfActiveDownloads"];
+        for (var i = 0; i < 10; i++)
+        {
+            CmbMaxNumberOfActiveDownloads.Items.Add(i + 1);
+        }
+        CardSpeedLimit.Header = _controller.Localizer["SpeedLimit"];
+        CardSpeedLimit.Description = _controller.Localizer["SpeedLimit", "Description"];
         CardConverter.Header = _controller.Localizer["Converter"];
         CardConverter.Description = _controller.Localizer["Converter", "Description"];
         CardEmbedMetadata.Header = _controller.Localizer["EmbedMetadata"];
         CardEmbedMetadata.Description = _controller.Localizer["EmbedMetadata", "Description"];
         ToggleEmbedMetadata.OnContent = "";
         ToggleEmbedMetadata.OffContent = "";
-        CardMaxNumberOfActiveDownloads.Header = _controller.Localizer["MaxNumberOfActiveDownloads"];
-        for (var i = 0; i < 10; i++)
-        {
-            CmbMaxNumberOfActiveDownloads.Items.Add(i + 1);
-        }
         //Load Config
         CmbTheme.SelectedIndex = (int)_controller.Theme;
         ToggleAllowBackground.IsOn = _controller.RunInBackground;
-        ToggleEmbedMetadata.IsOn = _controller.EmbedMetadata;
         CmbMaxNumberOfActiveDownloads.SelectedIndex = _controller.MaxNumberOfActiveDownloads - 1;
+        NumSpeedLimit.Value = _controller.SpeedLimit;
+        ToggleEmbedMetadata.IsOn = _controller.EmbedMetadata;
     }
 
     /// <summary>
@@ -201,17 +206,6 @@ public sealed partial class PreferencesPage : UserControl
     }
 
     /// <summary>
-    /// Occurs when the ToggleEmbedMetadata switch is toggled
-    /// </summary>
-    /// <param name="sender">object</param>
-    /// <param name="e">RoutedEventArgs</param>
-    private void ToggleEmbedMetadata_Toggled(object sender, RoutedEventArgs e)
-    {
-        _controller.EmbedMetadata = ToggleEmbedMetadata.IsOn;
-        _controller.SaveConfiguration();
-    }
-
-    /// <summary>
     /// Occurs when the CmbMaxNumberOfActiveDownloads' selection is changed
     /// </summary>
     /// <param name="sender">object</param>
@@ -219,6 +213,28 @@ public sealed partial class PreferencesPage : UserControl
     private void CmbMaxNumberOfActiveDownloads_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
         _controller.MaxNumberOfActiveDownloads = CmbMaxNumberOfActiveDownloads.SelectedIndex + 1;
+        _controller.SaveConfiguration();
+    }
+
+    /// <summary>
+    /// Occurs when the NumSpeedLimit's value is changed
+    /// </summary>
+    /// <param name="sender">NumberBox</param>
+    /// <param name="args">NumberBoxValueChangedEventArgs</param>
+    private void NumSpeedLimit_ValueChanged(NumberBox sender, NumberBoxValueChangedEventArgs args)
+    {
+        _controller.SpeedLimit = (uint)NumSpeedLimit.Value;
+        _controller.SaveConfiguration();
+    }
+
+    /// <summary>
+    /// Occurs when the ToggleEmbedMetadata switch is toggled
+    /// </summary>
+    /// <param name="sender">object</param>
+    /// <param name="e">RoutedEventArgs</param>
+    private void ToggleEmbedMetadata_Toggled(object sender, RoutedEventArgs e)
+    {
+        _controller.EmbedMetadata = ToggleEmbedMetadata.IsOn;
         _controller.SaveConfiguration();
     }
 }

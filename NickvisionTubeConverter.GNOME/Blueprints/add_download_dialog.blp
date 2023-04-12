@@ -133,6 +133,17 @@ Adw.Window _root {
                     active: true;
                   }
                 }
+
+                Adw.ActionRow _speedLimitRow {
+                  title: _("EnableSpeedLimit");
+                  activatable-widget: _speedLimitSwitch;
+
+                  [suffix]
+                  Gtk.Switch _speedLimitSwitch {
+                    valign: center;
+                    active: false;
+                  }
+                }
               }
 
               Gtk.ToggleButton _numberVideosButton {

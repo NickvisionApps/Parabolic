@@ -67,6 +67,16 @@ public class PreferencesViewController
     }
 
     /// <summary>
+    /// Speed limit in KiB/s (should be between 512-10240)
+    /// </summary>
+    public uint SpeedLimit
+    {
+        get => Configuration.Current.SpeedLimit;
+
+        set => Configuration.Current.SpeedLimit = value;
+    }
+
+    /// <summary>
     /// Saves the configuration to disk
     /// </summary>
     public void SaveConfiguration() => Configuration.Current.Save();

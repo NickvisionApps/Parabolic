@@ -71,6 +71,10 @@ public class Configuration
     /// Whether to allow running in the background
     /// </summary>
     public bool RunInBackground { get; set; }
+    /// <summary>
+    /// Speed limit in KiB/s (should be between 512-10240)
+    /// </summary>
+    public uint SpeedLimit { get; set; }
 
     /// <summary>
     /// Occurs when the configuration is saved to disk
@@ -95,6 +99,7 @@ public class Configuration
         WinUIFfmpegVersion = new Version(0, 0, 0);
         MaxNumberOfActiveDownloads = 5;
         RunInBackground = RuntimeInformation.IsOSPlatform(OSPlatform.Windows);
+        SpeedLimit = 1024;
     }
 
     /// <summary>

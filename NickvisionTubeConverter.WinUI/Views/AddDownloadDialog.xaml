@@ -73,7 +73,9 @@
                                 <TextBox Name="TxtSaveFolder" wct:DockPanel.Dock="Left" IsReadOnly="True"/>
                             </wct:DockPanel>
 
-                            <CheckBox x:Name="ChkOverwriteFiles" HorizontalAlignment="Stretch" Margin="0,0,0,12" VerticalContentAlignment="Center" IsChecked="True"/>
+                            <CheckBox x:Name="ChkOverwriteFiles" HorizontalAlignment="Stretch" Margin="0,0,0,0" VerticalContentAlignment="Top" IsChecked="True"/>
+
+                            <CheckBox x:Name="ChkSpeedLimit" HorizontalAlignment="Stretch" Margin="0,0,0,6" VerticalContentAlignment="Top" IsChecked="False"/>
 
                             <ToggleButton x:Name="BtnNumberVideos" Checked="ToggleNumberVideos" Unchecked="ToggleNumberVideos">
                                 <ToggleButton.Content>

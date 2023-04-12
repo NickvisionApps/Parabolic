@@ -3,62 +3,106 @@ using Adw 1;
 
 Adw.PreferencesWindow _root {
   default-width: 600;
-  default-height: 460;
+  default-height: 620;
+  width-request: 360;
   modal: true;
   destroy-with-parent: false;
   hide-on-close: true;
+  title: _("Preferences");
 
-  Gtk.Box {
-    orientation: vertical;
+  Adw.PreferencesPage {
+    Adw.PreferencesGroup {
+      title: _("UserInterface");
+      description: _("UserInterfaceDescription");
 
-    Adw.HeaderBar {
-      title-widget: Adw.WindowTitle {
-        title: _("Preferences");
-      };
-    }
+      Adw.ComboRow _themeRow {
+        title: _("Theme");
+        model: Gtk.StringList {
+          strings [_("ThemeLight"), _("ThemeDark"), _("ThemeSystem")]
+        };
 
-    Adw.PreferencesPage {
-      Adw.PreferencesGroup {
-        title: _("UserInterface");
-        description: _("UserInterfaceDescription");
-
-        Adw.ComboRow _themeRow {
-          title: _("Theme");
-          model: Gtk.StringList {
-            strings [_("ThemeLight"), _("ThemeDark"), _("ThemeSystem")]
-          };
-        }
-
-        Adw.ActionRow _backgroundRow {
-          title: _("AllowBackground");
-          subtitle: _("AllowBackgroundDescription.GTK");
-
-          [suffix]
-          Gtk.Switch _backgroundSwitch {
-            valign: center;
-          }
+        [prefix]
+        Gtk.Image {
+          icon-name: "dark-mode-symbolic";
         }
       }
 
-      Adw.PreferencesGroup {
-        title: _("Converter");
-        description: _("Converter.Description");
+      Adw.ActionRow _backgroundRow {
+        title: _("AllowBackground");
+        subtitle: _("AllowBackgroundDescription.GTK");
 
-        Adw.ActionRow {
-          title: _("EmbedMetadata");
-          subtitle: _("EmbedMetadata.Description");
-
-          Gtk.Switch _embedMetadataSwitch {
-            valign: center;
-          }
+        [prefix]
+        Gtk.Image {
+          icon-name: "background-app-ghost-symbolic";
         }
 
-        Adw.ComboRow _maxNumberOfActiveDownloadsRow {
-          title: _("MaxNumberOfActiveDownloads");
-          model: Gtk.StringList {
-            strings ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]
+        [suffix]
+        Gtk.Switch _backgroundSwitch {
+          valign: center;
+        }
+
+        activatable-widget: _backgroundSwitch;
+      }
+    }
+
+    Adw.PreferencesGroup {
+      title: _("Downloader");
+      description: _("Downloader.Description");
+
+      Adw.ComboRow _maxNumberOfActiveDownloadsRow {
+        title: _("MaxNumberOfActiveDownloads");
+        model: Gtk.StringList {
+          strings ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]
+        };
+
+        [prefix]
+        Gtk.Image {
+          icon-name: "folder-download-symbolic";
+        }
+      }
+
+      Adw.ActionRow {
+        title: _("SpeedLimit");
+        subtitle: _("SpeedLimit.Description");
+
+        [prefix]
+        Gtk.Image {
+          icon-name: "speedometer-symbolic";
+        }
+
+        [suffix]
+        Gtk.SpinButton _speedLimitSpin {
+          valign: center;
+          numeric: true;
+          adjustment: Gtk.Adjustment {
+            lower: 512.0;
+            upper: 10240.0;
+            step-increment: 512.0;
+            page-increment: 1024.0;
           };
         }
+      }
+    }
+
+    Adw.PreferencesGroup {
+      title: _("Converter");
+      description: _("Converter.Description");
+
+      Adw.ActionRow {
+        title: _("EmbedMetadata");
+        subtitle: _("EmbedMetadata.Description");
+
+        [prefix]
+        Gtk.Image {
+          icon-name: "encode-symbolic";
+        }
+
+        [suffix]
+        Gtk.Switch _embedMetadataSwitch {
+          valign: center;
+        }
+
+        activatable-widget: _embedMetadataSwitch;
       }
     }
   }

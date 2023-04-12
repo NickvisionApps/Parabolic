@@ -122,9 +122,33 @@
                         </labs:SettingsExpander.Items>
                     </labs:SettingsExpander>
 
-                    <labs:SettingsExpander x:Name="CardConverter">
+                    <labs:SettingsExpander x:Name="CardDownloader">
                         <labs:SettingsExpander.HeaderIcon>
                             <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE118;"/>
+                        </labs:SettingsExpander.HeaderIcon>
+
+                        <labs:SettingsExpander.Items>
+                            <labs:SettingsCard x:Name="CardMaxNumberOfActiveDownloads">
+                                <labs:SettingsCard.HeaderIcon>
+                                    <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE1E9;"/>
+                                </labs:SettingsCard.HeaderIcon>
+
+                                <ComboBox x:Name="CmbMaxNumberOfActiveDownloads" SelectionChanged="CmbMaxNumberOfActiveDownloads_SelectionChanged"/>
+                            </labs:SettingsCard>
+
+                            <labs:SettingsCard x:Name="CardSpeedLimit">
+                                <labs:SettingsCard.HeaderIcon>
+                                    <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xEC4A;"/>
+                                </labs:SettingsCard.HeaderIcon>
+
+                                <NumberBox x:Name="NumSpeedLimit" Minimum="512" Maximum="10240" SmallChange="512" LargeChange="1024" SpinButtonPlacementMode="Inline" ValueChanged="NumSpeedLimit_ValueChanged"/>
+                            </labs:SettingsCard>
+                        </labs:SettingsExpander.Items>
+                    </labs:SettingsExpander>
+
+                    <labs:SettingsExpander x:Name="CardConverter">
+                        <labs:SettingsExpander.HeaderIcon>
+                            <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE9F5;"/>
                         </labs:SettingsExpander.HeaderIcon>
 
                         <labs:SettingsExpander.Items>
@@ -134,14 +158,6 @@
                                 </labs:SettingsCard.HeaderIcon>
 
                                 <ToggleSwitch x:Name="ToggleEmbedMetadata" Toggled="ToggleEmbedMetadata_Toggled"/>
-                            </labs:SettingsCard>
-
-                            <labs:SettingsCard x:Name="CardMaxNumberOfActiveDownloads">
-                                <labs:SettingsCard.HeaderIcon>
-                                    <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE1E9;"/>
-                                </labs:SettingsCard.HeaderIcon>
-
-                                <ComboBox x:Name="CmbMaxNumberOfActiveDownloads" SelectionChanged="CmbMaxNumberOfActiveDownloads_SelectionChanged"/>
                             </labs:SettingsCard>
                         </labs:SettingsExpander.Items>
                     </labs:SettingsExpander>
