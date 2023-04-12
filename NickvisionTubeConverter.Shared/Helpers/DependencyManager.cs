@@ -60,7 +60,7 @@ internal static class DependencyManager
             };
             foreach (var prefix in prefixes)
             {
-                var path = $"{prefix}/bin/aria2";
+                var path = $"{prefix}/bin/aria2c";
                 if (File.Exists(path))
                 {
                     return path;
