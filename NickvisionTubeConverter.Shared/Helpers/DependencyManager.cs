@@ -51,7 +51,7 @@ internal static class DependencyManager
         {
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
-                return $"{Configuration.ConfigDir}{Path.DirectorySeparatorChar}aria2{Path.DirectorySeparatorChar}aria2.exe";
+                return $"{Configuration.ConfigDir}{Path.DirectorySeparatorChar}aria2{Path.DirectorySeparatorChar}aria2c.exe";
             }
             var prefixes = new List<string>() {
                 Directory.GetParent(Directory.GetParent(Path.GetFullPath(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)!))!.FullName)!.FullName,
@@ -128,7 +128,7 @@ internal static class DependencyManager
                     File.Delete(ariaZip);
                     //Move Binaries
                     var ariaBinaryFolder = $"{Directory.GetDirectories(ariaDir).First(x => x.Contains("-1.36.0"))}{Path.DirectorySeparatorChar}";
-                    File.Move($"{ariaBinaryFolder}aria2c.exe", $"{ariaDir}aria2.exe", true);
+                    File.Move($"{ariaBinaryFolder}aria2c.exe", $"{ariaDir}aria2c.exe", true);
                     Directory.Delete(ariaBinaryFolder, true);
                     //Update Config
                     Configuration.Current.WinUIAriaVersion = ariaVer;
