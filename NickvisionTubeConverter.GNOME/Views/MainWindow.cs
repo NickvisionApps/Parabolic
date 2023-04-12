@@ -223,6 +223,7 @@ public partial class MainWindow : Adw.ApplicationWindow
         }
         _controller.StopAllDownloads();
         _controller.Dispose();
+        Environment.Exit(0);
         return false;
     }
 
