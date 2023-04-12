@@ -36,16 +36,16 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
 
     private readonly Localizer _localizer;
     private readonly Download _download;
+    private readonly GSourceFunc _runStartCallback;
+    private readonly GSourceFunc _runEndCallback;
+    private readonly GSourceFunc _stopCallback;
+    private readonly GSourceFunc _updateLogCallback;
+    private readonly GSourceFunc _processingCallback;
+    private GSourceFunc? _downloadingCallback;
     private bool? _previousEmbedMetadata;
     private bool _wasStopped;
     private DownloadProgressStatus _progressStatus;
-    private GSourceFunc _runStartCallback;
-    private GSourceFunc _runEndCallback;
-    private GSourceFunc _stopCallback;
-    private GSourceFunc? _processingCallback;
-    private GSourceFunc? _downloadingCallback;
     private string _logMessage;
-    private string _oldLogMessage;
     private bool _processingCallbackRunning;
     private Action<NotificationSentEventArgs> _sendNotificationCallback;
 
@@ -186,6 +186,22 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
             _actionViewStack.SetVisibleChildName("retry");
             return false;
         };
+        _updateLogCallback = (x) =>
+        {
+            _lblLog.SetLabel(_logMessage);
+            var vadjustment = _scrollLog.GetVadjustment();
+            vadjustment.SetValue(vadjustment.GetUpper() - vadjustment.GetPageSize());
+            return false;
+        };
+        _processingCallback = (d) =>
+        {
+            _progressBar.Pulse();
+            if (_progressStatus != DownloadProgressStatus.Processing || IsDone)
+            {
+                _processingCallbackRunning = false;
+            }
+            return _processingCallbackRunning;
+        };
     }
 
     /// <summary>
@@ -212,24 +228,24 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
         _wasStopped = false;
         FinishedWithError = false;
         g_main_context_invoke(0, _runStartCallback, 0);
-        _oldLogMessage = "";
-        var success = await _download.RunAsync(embedMetadata, (state) =>
+        var success = await _download.RunAsync(embedMetadata, _localizer, (state) =>
         {
             _progressStatus = state.Status;
             _logMessage = state.Log + "\n";
+            g_idle_add(_updateLogCallback, 0);
             switch (state.Status)
             {
                 case DownloadProgressStatus.Downloading:
                     _downloadingCallback = (d) =>
                     {
-                        Progress = state.Progress;
-                        _progressBar.SetFraction(state.Progress);
-                        Speed = state.Speed;
-                        var speedString = SpeedFormatter.GetString(state.Speed, _localizer);
-                        _progressLabel.SetText(string.Format(_localizer["DownloadState", "Downloading"], state.Progress * 100, speedString));
-                        _lblLog.SetLabel(_logMessage);
-                        var vadjustment = _scrollLog.GetVadjustment();
-                        vadjustment.SetValue(vadjustment.GetUpper() - vadjustment.GetPageSize());
+                        if (!_processingCallbackRunning)
+                        {
+                            Progress = state.Progress;
+                            _progressBar.SetFraction(state.Progress);
+                            Speed = state.Speed;
+                            var speedString = SpeedFormatter.GetString(state.Speed, _localizer);
+                            _progressLabel.SetText(string.Format(_localizer["DownloadState", "Downloading"], state.Progress * 100, speedString));
+                        }
                         return false;
                     };
                     g_idle_add(_downloadingCallback, 0);
@@ -238,22 +254,6 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
                     _progressLabel.SetText(_localizer["DownloadState", "Processing"]);
                     Progress = 1.0;
                     Speed = 0.0;
-                    _processingCallback = (d) =>
-                    {
-                        _progressBar.Pulse();
-                        if (_logMessage != _oldLogMessage)
-                        {
-                            _lblLog.SetLabel(_logMessage);
-                            _oldLogMessage = _logMessage;
-                            var vadjustment = _scrollLog.GetVadjustment();
-                            vadjustment.SetValue(vadjustment.GetUpper() - vadjustment.GetPageSize());
-                        }
-                        if (_progressStatus != DownloadProgressStatus.Processing || IsDone)
-                        {
-                            _processingCallbackRunning = false;
-                        }
-                        return _processingCallbackRunning;
-                    };
                     if (!_processingCallbackRunning)
                     {
                         _processingCallbackRunning = true;

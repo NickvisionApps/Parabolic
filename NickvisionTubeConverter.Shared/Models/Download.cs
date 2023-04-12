@@ -106,18 +106,29 @@ public class Download
     /// </summary>
     /// <param name="embedMetadata">Whether or not to embed video metadata in the downloaded file</param>
     /// <param name="progressCallback">A callback function for DownloadProgressState</param>
+    /// <param name="localizer">Localizer</param>
     /// <returns>True if successful, else false</returns>
-    public async Task<bool> RunAsync(bool embedMetadata, Action<DownloadProgressState>? progressCallback = null)
+    public async Task<bool> RunAsync(bool embedMetadata, Localizer localizer, Action<DownloadProgressState>? progressCallback = null)
     {
         _progressCallback = progressCallback;
         IsDone = false;
+        if (File.Exists($"{SaveFolder}{Path.DirectorySeparatorChar}{Filename}") && !_overwriteFiles)
+        {
+            if (_progressCallback != null)
+            {
+                _progressCallback(new DownloadProgressState()
+                {
+                    Status = DownloadProgressStatus.Other,
+                    Progress = 0.0,
+                    Speed = 0.0,
+                    Log = localizer["FileExistsError"]
+                });
+            }
+            return false;
+        }
         if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
         {
             Filename = Regex.Escape(Filename);
-        }
-        if (Directory.Exists(_tempDownloadPath))
-        {
-            Directory.Delete(_tempDownloadPath, true);
         }
         Directory.CreateDirectory(_tempDownloadPath);
         dynamic outFile = PythonHelpers.SetConsoleOutputFilePath(_logPath);
@@ -197,7 +208,7 @@ public class Download
                     if (_fileType.GetSupportsThumbnails())
                     {
                         ytOpt.Add("writethumbnail", true);
-                        postProcessors.Add(new Dictionary<string, dynamic>() { { "key", "EmbedThumbnail" } });
+                        postProcessors.Add(new Dictionary<string, dynamic>() { { "key", "TCEmbedThumbnail" } });
                     }
                     postProcessors.Insert(0, new Dictionary<string, dynamic>() { { "key", "TCMetadata" }, { "add_metadata", true } });
                 }
@@ -208,13 +219,20 @@ public class Download
                 try
                 {
                     Python.Runtime.PyObject success_code = ytdlp.YoutubeDL(ytOpt).download(new List<string>() { VideoUrl });
+                    if ((success_code.As<int?>() ?? 1) != 0)
+                    {
+                        Filename = Regex.Unescape(Filename);
+                    }
+                    ForceUpdateLog();
                     IsDone = true;
                     outFile.close();
                     return (success_code.As<int?>() ?? 1) == 0;
                 }
                 catch (Exception e)
                 {
+                    Filename = Regex.Unescape(Filename);
                     Console.WriteLine(e);
+                    ForceUpdateLog();
                     IsDone = true;
                     outFile.close();
                     return false;
@@ -234,6 +252,31 @@ public class Download
             {
                 Python.Runtime.PythonEngine.Interrupt(_pid.Value);
             }
+        }
+    }
+
+    /// <summary>
+    /// Call progress callback to only update the log
+    /// </summary>
+    private void ForceUpdateLog()
+    {
+        if (_progressCallback != null)
+        {
+            var progressState = new DownloadProgressState()
+            {
+                Status = DownloadProgressStatus.Other,
+                Progress = 0.0,
+                Speed = 0.0
+            };
+            if (File.Exists(_logPath))
+            {
+                using var fs = new FileStream(_logPath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
+                using var sr = new StreamReader(fs);
+                progressState.Log = sr.ReadToEnd();
+                sr.Close();
+                fs.Close();
+            }
+            _progressCallback(progressState);
         }
     }
 
@@ -272,13 +315,12 @@ public class Download
                 {
                     using var fs = new FileStream(_logPath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
                     using var sr = new StreamReader(fs);
-                    progressState.Log = sr.ReadToEnd().Remove(0, 1);
+                    progressState.Log = sr.ReadToEnd();
                     sr.Close();
                     fs.Close();
                 }
                 _progressCallback(progressState);
             }
-
         }
     }
 
@@ -288,19 +330,11 @@ public class Download
     /// <param name="path">Python.Runtime.PyString</param>
     private void UnescapeHook(Python.Runtime.PyString path)
     {
-        try
+        using (Python.Runtime.Py.GIL())
         {
-            using (Python.Runtime.Py.GIL())
-            {
-                Filename = Path.GetFileName(path.As<string>());
-                Filename = Regex.Unescape(Filename);
-                var directory = Path.GetDirectoryName(path.As<string>());
-                File.Move(path.As<string>(), $"{directory}{Path.DirectorySeparatorChar}{Filename}", _overwriteFiles);
-            }
-        }
-        catch
-        {
-            Console.WriteLine($"Failed to unescape file: {path.As<string?>()}");
+            Filename = Regex.Unescape(Filename);
+            var directory = Path.GetDirectoryName(path.As<string>());
+            File.Move(path.As<string>(), $"{directory}{Path.DirectorySeparatorChar}{Filename}", _overwriteFiles);
         }
     }
 }
