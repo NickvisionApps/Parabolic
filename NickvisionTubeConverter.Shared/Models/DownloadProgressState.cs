@@ -7,6 +7,7 @@ public enum DownloadProgressStatus
 {
     Processing = 0,
     Downloading,
+    DownloadingAria,
     Other
 }
 

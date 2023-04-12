@@ -196,7 +196,7 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
         _processingCallback = (d) =>
         {
             _progressBar.Pulse();
-            if (_progressStatus != DownloadProgressStatus.Processing || IsDone)
+            if ((_progressStatus != DownloadProgressStatus.Processing && _progressStatus != DownloadProgressStatus.DownloadingAria) || IsDone)
             {
                 _processingCallbackRunning = false;
             }
@@ -249,6 +249,16 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
                         return false;
                     };
                     g_idle_add(_downloadingCallback, 0);
+                    break;
+                case DownloadProgressStatus.DownloadingAria:
+                    _progressLabel.SetText(_localizer["Downloading"]);
+                    Progress = 0.0;
+                    Speed = 0.0;
+                    if (!_processingCallbackRunning)
+                    {
+                        _processingCallbackRunning = true;
+                        g_timeout_add(30, _processingCallback, 0);
+                    }
                     break;
                 case DownloadProgressStatus.Processing:
                     _progressLabel.SetText(_localizer["DownloadState", "Processing"]);

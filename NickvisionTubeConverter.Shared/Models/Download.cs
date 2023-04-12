@@ -230,6 +230,16 @@ public class Download
                 }
                 try
                 {
+                    if (_useAria && _progressCallback != null)
+                    {
+                        _progressCallback(new DownloadProgressState()
+                        {
+                            Status = DownloadProgressStatus.DownloadingAria,
+                            Progress = 0.0,
+                            Speed = 0.0,
+                            Log = localizer["StartAria"]
+                        });
+                    }
                     Python.Runtime.PyObject success_code = ytdlp.YoutubeDL(ytOpt).download(new List<string>() { VideoUrl });
                     if ((success_code.As<int?>() ?? 1) != 0)
                     {
