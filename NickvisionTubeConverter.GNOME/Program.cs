@@ -15,6 +15,9 @@ namespace NickvisionTubeConverter.GNOME;
 public partial class Program
 {
     [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
+    private static partial nuint gtk_file_chooser_cell_get_type();
+
+    [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
     private static partial nint g_resource_load(string path);
 
     [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
@@ -36,6 +39,7 @@ public partial class Program
     /// </summary>
     public Program()
     {
+        gtk_file_chooser_cell_get_type();
         _application = Adw.Application.New("org.nickvision.tubeconverter", Gio.ApplicationFlags.FlagsNone);
         _mainWindow = null;
         _mainWindowController = new MainWindowController();
