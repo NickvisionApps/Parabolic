@@ -202,7 +202,7 @@ public class Download
                     if (_fileType.GetSupportsThumbnails())
                     {
                         ytOpt.Add("writethumbnail", true);
-                        postProcessors.Add(new Dictionary<string, dynamic>() { { "key", "EmbedThumbnail" } });
+                        postProcessors.Add(new Dictionary<string, dynamic>() { { "key", "TCEmbedThumbnail" } });
                     }
                     postProcessors.Insert(0, new Dictionary<string, dynamic>() { { "key", "TCMetadata" }, { "add_metadata", true } });
                 }
