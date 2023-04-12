@@ -63,8 +63,9 @@ public sealed partial class PreferencesPage : UserControl
         //Load Config
         CmbTheme.SelectedIndex = (int)_controller.Theme;
         ToggleAllowBackground.IsOn = _controller.RunInBackground;
-        ToggleEmbedMetadata.IsOn = _controller.EmbedMetadata;
         CmbMaxNumberOfActiveDownloads.SelectedIndex = _controller.MaxNumberOfActiveDownloads - 1;
+        NumSpeedLimit.Value = _controller.SpeedLimit;
+        ToggleEmbedMetadata.IsOn = _controller.EmbedMetadata;
     }
 
     /// <summary>
