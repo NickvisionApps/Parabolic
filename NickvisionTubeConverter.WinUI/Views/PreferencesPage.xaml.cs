@@ -221,7 +221,7 @@ public sealed partial class PreferencesPage : UserControl
     /// </summary>
     /// <param name="sender">NumberBox</param>
     /// <param name="args">NumberBoxValueChangedEventArgs</param>
-    private void NumSpeedLimit_ValueChange(NumberBox sender, NumberBoxValueChangedEventArgs args)
+    private void NumSpeedLimit_ValueChanged(NumberBox sender, NumberBoxValueChangedEventArgs args)
     {
         _controller.SpeedLimit = (uint)NumSpeedLimit.Value;
         _controller.SaveConfiguration();
