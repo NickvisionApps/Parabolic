@@ -39,7 +39,7 @@ internal static class DependencyManager
                     return path;
                 }
             }
-            return "";
+            return "ffmpeg";
         }
     }
     /// <summary>
@@ -66,7 +66,7 @@ internal static class DependencyManager
                     return path;
                 }
             }
-            return "";
+            return "aria2c";
         }
     }
 
