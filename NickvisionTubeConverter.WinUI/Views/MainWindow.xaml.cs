@@ -1,4 +1,4 @@
-using H.NotifyIcon;
+﻿using H.NotifyIcon.Core;
 using Microsoft.UI;
 using Microsoft.UI.Composition;
 using Microsoft.UI.Composition.SystemBackdrops;
@@ -6,7 +6,6 @@ using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
-using Microsoft.UI.Xaml.Media.Imaging;
 using Microsoft.Windows.AppNotifications;
 using Microsoft.Windows.AppNotifications.Builder;
 using NickvisionTubeConverter.Shared.Controllers;
@@ -15,6 +14,8 @@ using NickvisionTubeConverter.Shared.Events;
 using NickvisionTubeConverter.Shared.Models;
 using NickvisionTubeConverter.WinUI.Controls;
 using System;
+using System.Drawing;
+using System.Reflection;
 using System.Threading.Tasks;
 using Vanara.PInvoke;
 using Windows.Graphics;
@@ -36,7 +37,7 @@ public sealed partial class MainWindow : Window
     private readonly SystemBackdropConfiguration _backdropConfiguration;
     private readonly MicaController? _micaController;
     private bool _closeAllowed;
-    private TaskbarIcon? _taskbarIcon;
+    private TrayIconWithContextMenu? _taskbarIcon;
     private DispatcherTimer _taskbarTimer;
 
     /// <summary>
@@ -64,11 +65,12 @@ public sealed partial class MainWindow : Window
         _controller.UICreateDownloadRow = CreateDownloadRow;
         _controller.UIMoveDownloadRow = MoveDownloadRow;
         _controller.UIDeleteDownloadRowFromQueue = DeleteDownloadRowFromQueue;
-        _controller.RunInBackgroundChanged += (sender, e) => DispatcherQueue.TryEnqueue(CreateTaskbarIcon);
+        _controller.RunInBackgroundChanged += ToggleTaskbarIcon;
         _taskbarTimer.Tick += TaskbarTimer_Tick;
         //Set TitleBar
         TitleBarTitle.Text = _controller.AppInfo.ShortName;
         _appWindow.Title = TitleBarTitle.Text;
+        _appWindow.SetIcon(@"Assets\org.nickvision.tubeconverter.ico");
         TitlePreview.Text = _controller.IsDevVersion ? _controller.Localizer["Preview", "WinUI"] : "";
         if (AppWindowTitleBar.IsCustomizationSupported())
         {
@@ -106,7 +108,7 @@ public sealed partial class MainWindow : Window
         _appWindow.Resize(new SizeInt32(800, 600));
         User32.ShowWindow(_hwnd, ShowWindowCommand.SW_SHOWMAXIMIZED);
         //Taskbar Icon
-        CreateTaskbarIcon();
+        ToggleTaskbarIcon(null, EventArgs.Empty);
         //Localize Strings
         LblLoading.Text = _controller.Localizer["DependencyDownload"];
         NavViewItemHome.Content = _controller.Localizer["Home"];
@@ -148,6 +150,7 @@ public sealed partial class MainWindow : Window
             await _controller.StartupAsync();
             //Done Loading
             Loading.IsLoading = false;
+            await Task.Delay(25);
             _isOpened = true;
         }
     }
@@ -199,6 +202,7 @@ public sealed partial class MainWindow : Window
                     _closeAllowed = true;
                     e.Cancel = false;
                     Close();
+                    Environment.Exit(0);
                 }
             }
             else
@@ -235,24 +239,28 @@ public sealed partial class MainWindow : Window
     /// <summary>
     /// Occurs whhen the TaskbarMenuShowWindow item is clicked
     /// </summary>
-    /// <param name="sender">object</param>
-    /// <param name="e">RoutedEventArgs</param>
-    private void ShowWindow(object sender, RoutedEventArgs e) => _appWindow.Show();
+    /// <param name="sender">object?</param>
+    /// <param name="e">EventArgs</param>
+    private void ShowWindow(object? sender, EventArgs e) => _appWindow.Show();
 
     /// <summary>
     /// Occurs when the TaskbarMenuQuit item is clicked
     /// </summary>
-    /// <param name="sender">object</param>
-    /// <param name="e">RoutedEventArgs</param>
-    private void Quit(object sender, RoutedEventArgs e)
+    /// <param name="sender">object?</param>
+    /// <param name="e">EventArgs</param>
+    private void Quit(object? sender, EventArgs e)
     {
-        _taskbarTimer.Stop();
-        _taskbarIcon!.CloseTrayPopup();
-        _controller.StopAllDownloads();
-        _controller.Dispose();
-        _micaController?.Dispose();
-        _taskbarIcon.DispatcherQueue.TryEnqueue(() => _taskbarIcon.Dispose());
-        Close();
+        DispatcherQueue.TryEnqueue(() =>
+        {
+            _controller.StopAllDownloads();
+            _taskbarTimer.Stop();
+            _taskbarIcon!.Remove();
+            _appWindow.Hide();
+            _micaController?.Dispose();
+            _taskbarIcon!.Dispose();
+            _controller.Dispose();
+            Environment.Exit(0);
+        });
     }
 
     /// <summary>
@@ -300,42 +308,49 @@ public sealed partial class MainWindow : Window
     }
 
     /// <summary>
-    /// Creates a taskbar icon for the app
+    /// Toggles a taskbar icon for the app
     /// </summary>
-    private void CreateTaskbarIcon()
+    /// <param name="sender">object?</param>
+    /// <param name="e">EventArgs</param>
+    private void ToggleTaskbarIcon(object? sender, EventArgs e)
     {
         if (_controller.RunInBackground)
         {
-            var taskbarMenuFlyout = new MenuFlyout();
+            var taskbarMenuPopup = new PopupMenu();
+            //var taskbarMenuFlyout = new MenuFlyout();
             //Show Window
-            var taskbarMenuShowWindow = new MenuFlyoutItem()
+            var taskbarMenuShowWindow = new PopupMenuItem()
             {
-                Text = _controller.Localizer["Open"]
+                Text = _controller.Localizer["Open"],
+                Visible = true
             };
             taskbarMenuShowWindow.Click += ShowWindow;
-            taskbarMenuFlyout.Items.Add(taskbarMenuShowWindow);
+            taskbarMenuPopup.Items.Add(taskbarMenuShowWindow);
             //Separator
-            taskbarMenuFlyout.Items.Add(new MenuFlyoutSeparator());
+            taskbarMenuPopup.Items.Add(new PopupMenuSeparator());
             //Quit
-            var taskbarMenuQuit = new MenuFlyoutItem()
+            var taskbarMenuQuit = new PopupMenuItem()
             {
-                Text = _controller.Localizer["Quit"]
+                Text = _controller.Localizer["Quit"],
+                Visible = true
             };
             taskbarMenuQuit.Click += Quit;
-            taskbarMenuFlyout.Items.Add(taskbarMenuQuit);
+            taskbarMenuPopup.Items.Add(taskbarMenuQuit);
             //Icon
-            _taskbarIcon = new TaskbarIcon()
+            _taskbarIcon = new TrayIconWithContextMenu()
             {
-                IconSource = new BitmapImage(new Uri("ms-appx:///Assets/org.nickvision.tubeconverter.ico")),
-                ContextMenuMode = ContextMenuMode.SecondWindow,
-                ContextFlyout = taskbarMenuFlyout
+                Icon = new Icon(Assembly.GetExecutingAssembly().GetManifestResourceStream("NickvisionTubeConverter.WinUI.Assets.org.nickvision.tubeconverter.resource.ico")!).Handle,
+                UseStandardTooltip = true,
+                ToolTip = "Nickvision Tube Converter",
+                ContextMenu = taskbarMenuPopup
             };
-            MainGrid.Children.Insert(0, _taskbarIcon);
+            _taskbarIcon.Create();
             _taskbarTimer.Start();
         }
         else
         {
             _taskbarTimer.Stop();
+            _taskbarIcon?.Remove();
             _taskbarIcon?.Dispose();
             _taskbarIcon = null;
         }
@@ -421,14 +436,7 @@ public sealed partial class MainWindow : Window
     {
         if (_taskbarIcon != null)
         {
-            _taskbarIcon.DispatcherQueue.TryEnqueue(() =>
-            {
-                _taskbarIcon.ToolTipText = _controller.GetBackgroundActivityReport();
-                _taskbarIcon.TrayToolTip = new TextBlock()
-                {
-                    Text = _controller.GetBackgroundActivityReport()
-                };
-            });
+            _taskbarIcon.UpdateToolTip(_controller.GetBackgroundActivityReport());
         }
     }
 }

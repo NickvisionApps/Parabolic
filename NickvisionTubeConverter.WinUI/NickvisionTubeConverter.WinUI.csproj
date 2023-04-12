@@ -20,8 +20,12 @@
     <AppxBundle>Never</AppxBundle>
     <HoursBetweenUpdateChecks>0</HoursBetweenUpdateChecks>
   </PropertyGroup>
+  <ItemGroup>
+    <Content Remove="Assets\org.nickvision.tubeconverter.resource.ico" />
+  </ItemGroup>
 
   <ItemGroup>
+    <None Remove="Assets\org.nickvision.tubeconverter.resource.ico" />
     <None Remove="Controls\ActionRow.xaml" />
     <None Remove="Controls\DownloadRow.xaml" />
     <None Remove="Controls\StatusPage.xaml" />
@@ -33,13 +37,16 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="Assets\org.nickvision.tubeconverter.ico" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\Square150x150Logo.scale-200.png" />
     <Content Include="Assets\Square44x44Logo.scale-200.png" />
     <Content Include="Assets\Square44x44Logo.targetsize-24_altform-unplated.png" />
     <Content Include="Assets\Wide310x150Logo.scale-200.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Assets\org.nickvision.tubeconverter.resource.ico" />
   </ItemGroup>
 
   <ItemGroup>
@@ -63,9 +70,6 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\NickvisionTubeConverter.Shared\NickvisionTubeConverter.Shared.csproj" />
-  </ItemGroup>
-  <ItemGroup>
-	  <Resource Include="Assets\org.nickvision.tubeconverter.ico" />
   </ItemGroup>
   <ItemGroup>
     <Page Update="Controls\DownloadRow.xaml">
