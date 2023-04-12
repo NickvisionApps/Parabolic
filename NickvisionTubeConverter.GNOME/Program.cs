@@ -47,7 +47,7 @@ public partial class Program
         _mainWindowController.AppInfo.Name = "Nickvision Tube Converter";
         _mainWindowController.AppInfo.ShortName = "Tube Converter";
         _mainWindowController.AppInfo.Description = $"{_mainWindowController.Localizer["Description"]}.";
-        _mainWindowController.AppInfo.Version = "2023.4.1-next";
+        _mainWindowController.AppInfo.Version = "2023.4.1";
         _mainWindowController.AppInfo.Changelog = "<ul><li>Added the ability to open a download file directly instead of just the save folder</li><li>Fixed an issue where embedding metadata would cause some downloads to fail</li><li>Fixed an issue where some file formats and qualities could not be downloaded</li><li>Fixed random GTK crashing issues users were experiencing</li><li>Updated translations (Thanks everyone on Weblate!)</li></ul>";
         _mainWindowController.AppInfo.GitHubRepo = new Uri("https://github.com/nlogozzo/NickvisionTubeConverter");
         _mainWindowController.AppInfo.IssueTracker = new Uri("https://github.com/nlogozzo/NickvisionTubeConverter/issues/new");
