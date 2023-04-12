@@ -19,6 +19,7 @@ public partial class PreferencesDialog : Adw.PreferencesWindow
     [Gtk.Connect] private readonly Gtk.Switch _backgroundSwitch;
     [Gtk.Connect] private readonly Adw.ComboRow _maxNumberOfActiveDownloadsRow;
     [Gtk.Connect] private readonly Gtk.SpinButton _speedLimitSpin;
+    [Gtk.Connect] private readonly Gtk.Switch _useAriaSwitch;
     [Gtk.Connect] private readonly Gtk.Switch _embedMetadataSwitch;
 
     private PreferencesDialog(Gtk.Builder builder, PreferencesViewController controller, Adw.Application application, Gtk.Window parent) : base(builder.GetPointer("_root"), false)
@@ -45,6 +46,7 @@ public partial class PreferencesDialog : Adw.PreferencesWindow
         _backgroundSwitch.SetActive(_controller.RunInBackground);
         _maxNumberOfActiveDownloadsRow.SetSelected((uint)(_controller.MaxNumberOfActiveDownloads - 1));
         _speedLimitSpin.SetValue((double)_controller.SpeedLimit);
+        _useAriaSwitch.SetActive(_controller.UseAria);
         _embedMetadataSwitch.SetActive(_controller.EmbedMetadata);
     }
 
@@ -66,9 +68,10 @@ public partial class PreferencesDialog : Adw.PreferencesWindow
     private void Hide(Gtk.Widget sender, EventArgs e)
     {
         _controller.RunInBackground = _backgroundSwitch.GetActive();
-        _controller.SpeedLimit = (uint)_speedLimitSpin.GetValue();
-        _controller.EmbedMetadata = _embedMetadataSwitch.GetActive();
         _controller.MaxNumberOfActiveDownloads = (int)_maxNumberOfActiveDownloadsRow.GetSelected() + 1;
+        _controller.SpeedLimit = (uint)_speedLimitSpin.GetValue();
+        _controller.UseAria = _useAriaSwitch.GetActive();
+        _controller.EmbedMetadata = _embedMetadataSwitch.GetActive();
         _controller.SaveConfiguration();
         Destroy();
     }

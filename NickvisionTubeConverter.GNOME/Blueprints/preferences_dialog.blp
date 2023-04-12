@@ -82,6 +82,23 @@ Adw.PreferencesWindow _root {
           };
         }
       }
+
+      Adw.ActionRow _useAriaRow {
+        title: _("UseAria");
+        subtitle: _("UseAria.Description");
+
+        [prefix]
+        Gtk.Image {
+          icon-name: "globe-alt2-symbolic";
+        }
+
+        [suffix]
+        Gtk.Switch _useAriaSwitch {
+          valign: center;
+        }
+
+        activatable-widget: _useAriaSwitch;
+      }
     }
 
     Adw.PreferencesGroup {
