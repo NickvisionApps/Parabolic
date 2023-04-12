@@ -208,6 +208,7 @@ public class Download
                 }
                 catch (Exception e)
                 {
+                    Filename = Regex.Unescape(Filename);
                     Console.WriteLine(e);
                     IsDone = true;
                     outFile.close();
