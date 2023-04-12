@@ -216,6 +216,10 @@ public class Download
                 try
                 {
                     Python.Runtime.PyObject success_code = ytdlp.YoutubeDL(ytOpt).download(new List<string>() { VideoUrl });
+                    if ((success_code.As<int?>() ?? 1) != 0)
+                    {
+                        Filename = Regex.Unescape(Filename);
+                    }
                     ForceUpdateLog();
                     IsDone = true;
                     outFile.close();
