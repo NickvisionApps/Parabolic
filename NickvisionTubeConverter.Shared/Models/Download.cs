@@ -109,6 +109,20 @@ public class Download
     {
         _progressCallback = progressCallback;
         IsDone = false;
+        if (File.Exists($"{SaveFolder}{Path.DirectorySeparatorChar}{Filename}") && !_overwriteFiles)
+        {
+            if (_progressCallback != null)
+            {
+                _progressCallback(new DownloadProgressState()
+                {
+                    Status = DownloadProgressStatus.Other,
+                    Progress = 0.0,
+                    Speed = 0.0,
+                    Log = "File already exists, and overwriting is disallowed"
+                });
+            }
+            return false;
+        }
         if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
         {
             Filename = Regex.Escape(Filename);
@@ -293,7 +307,7 @@ public class Download
                 File.Move(path.As<string>(), $"{directory}{Path.DirectorySeparatorChar}{Filename}", _overwriteFiles);
             }
         }
-        catch
+        catch (Exception e)
         {
             Console.WriteLine($"Failed to unescape file: {path.As<string?>()}");
         }
