@@ -137,7 +137,7 @@ public partial class AddDownloadDialog : Adw.Window
                 {
                     if (e.Pspec.GetName() == "page-size")
                     {
-                        if (_playlist.GetVadjustment().GetPageSize() >= _playlist.GetMaxContentHeight())
+                        if (_playlist.GetVadjustment().GetPageSize() < _playlist.GetVadjustment().GetUpper())
                         {
                             _playlist.AddCssClass("playlist");
                         }
