@@ -3,7 +3,8 @@ using Adw 1;
 
 Adw.PreferencesWindow _root {
   default-width: 600;
-  default-height: 460;
+  default-height: 600;
+  width-request: 360;
   modal: true;
   destroy-with-parent: false;
   hide-on-close: true;
@@ -41,6 +42,28 @@ Adw.PreferencesWindow _root {
       }
 
       Adw.PreferencesGroup {
+        title: _("Downloader");
+        description: _("Downloader.Description");
+
+        Adw.ActionRow {
+          title: _("SpeedLimit");
+          subtitle: _("SpeedLimit.Description");
+
+          [suffix]
+          Gtk.SpinButton _speedLimitSpin {
+            valign: center;
+            numeric: true;
+            adjustment: Gtk.Adjustment {
+              lower: 512.0;
+              upper: 10240.0;
+              step-increment: 512.0;
+              page-increment: 1024.0;
+            };
+          }
+        }
+      }
+
+      Adw.PreferencesGroup {
         title: _("Converter");
         description: _("Converter.Description");
 
@@ -48,6 +71,7 @@ Adw.PreferencesWindow _root {
           title: _("EmbedMetadata");
           subtitle: _("EmbedMetadata.Description");
 
+          [suffix]
           Gtk.Switch _embedMetadataSwitch {
             valign: center;
           }

@@ -17,6 +17,7 @@ public partial class PreferencesDialog : Adw.PreferencesWindow
     [Gtk.Connect] private readonly Adw.ComboRow _themeRow;
     [Gtk.Connect] private readonly Adw.ActionRow _backgroundRow;
     [Gtk.Connect] private readonly Gtk.Switch _backgroundSwitch;
+    [Gtk.Connect] private readonly Gtk.SpinButton _speedLimitSpin;
     [Gtk.Connect] private readonly Gtk.Switch _embedMetadataSwitch;
     [Gtk.Connect] private readonly Adw.ComboRow _maxNumberOfActiveDownloadsRow;
 
@@ -42,6 +43,7 @@ public partial class PreferencesDialog : Adw.PreferencesWindow
         _themeRow.SetSelected((uint)_controller.Theme);
         _backgroundRow.SetVisible(File.Exists("/.flatpak-info"));
         _backgroundSwitch.SetActive(_controller.RunInBackground);
+        _speedLimitSpin.SetValue((double)_controller.SpeedLimit);
         _embedMetadataSwitch.SetActive(_controller.EmbedMetadata);
         _maxNumberOfActiveDownloadsRow.SetSelected((uint)(_controller.MaxNumberOfActiveDownloads - 1));
     }
@@ -64,6 +66,7 @@ public partial class PreferencesDialog : Adw.PreferencesWindow
     private void Hide(Gtk.Widget sender, EventArgs e)
     {
         _controller.RunInBackground = _backgroundSwitch.GetActive();
+        _controller.SpeedLimit = (uint)_speedLimitSpin.GetValue();
         _controller.EmbedMetadata = _embedMetadataSwitch.GetActive();
         _controller.MaxNumberOfActiveDownloads = (int)_maxNumberOfActiveDownloadsRow.GetSelected() + 1;
         _controller.SaveConfiguration();
