@@ -51,6 +51,7 @@ public class Download
     private readonly bool _overwriteFiles;
     private readonly bool _limitSpeed;
     private readonly uint _speedLimit;
+    private readonly bool _useAria;
     private readonly string _logPath;
     private readonly string _tempDownloadPath;
     private Action<DownloadProgressState>? _progressCallback;
@@ -82,10 +83,11 @@ public class Download
     /// <param name="saveFilename">The filename to save the download as</param>
     /// <param name="overwriteFiles">Whether or not to overwrite existing files</param>
     /// <param name="limitSpeed">Whether or not to limit the download speed</param>
+    /// <param name="useAria">Whether or not to use aria2 for the download</param>
     /// <param name="quality">The quality of the download</param>
     /// <param name="subtitle">The subtitles for the download</param>
     ///     /// <param name="speedLimit">The speed at which to limit the download</param>
-    public Download(string videoUrl, MediaFileType fileType, string saveFolder, string saveFilename, bool overwriteFiles, bool limitSpeed, Quality quality = Quality.Best, Subtitle subtitle = Subtitle.None, uint speedLimit = 1024)
+    public Download(string videoUrl, MediaFileType fileType, string saveFolder, string saveFilename, bool overwriteFiles, bool limitSpeed, bool useAria, Quality quality = Quality.Best, Subtitle subtitle = Subtitle.None, uint speedLimit = 1024)
     {
         _id = Guid.NewGuid();
         _fileType = fileType;
@@ -94,6 +96,7 @@ public class Download
         _overwriteFiles = overwriteFiles;
         _limitSpeed = limitSpeed;
         _speedLimit = speedLimit;
+        _useAria = useAria;
         _tempDownloadPath = $"{Configuration.TempDir}{Path.DirectorySeparatorChar}{_id}{Path.DirectorySeparatorChar}";
         _logPath = $"{_tempDownloadPath}log";
         _progressCallback = null;
@@ -170,6 +173,10 @@ public class Download
                 if (_limitSpeed)
                 {
                     ytOpt.Add("ratelimit", _speedLimit * 1024);
+                }
+                if(_useAria)
+                {
+                    ytOpt.Add("external_downloader", new Dictionary<string, dynamic>() { { "default", DependencyManager.Aria2 } });
                 }
                 var postProcessors = new List<Dictionary<string, dynamic>>();
                 if (_fileType.GetIsAudio())
