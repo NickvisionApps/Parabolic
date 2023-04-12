@@ -113,7 +113,7 @@ public class Download
         {
             Filename = Regex.Escape(Filename);
         }
-        if (Directory.Exists(_tempDownloadPath))
+        if (Directory.Exists(_tempDownloadPath) && _overwriteFiles)
         {
             Directory.Delete(_tempDownloadPath, true);
         }
