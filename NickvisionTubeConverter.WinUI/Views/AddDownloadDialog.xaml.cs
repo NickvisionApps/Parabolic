@@ -59,6 +59,7 @@ public sealed partial class AddDownloadDialog : ContentDialog
         TxtSaveFolder.Header = _controller.Localizer["SaveFolder", "Field"];
         ToolTipService.SetToolTip(BtnSelectSaveFolder, _controller.Localizer["SelectSaveFolder"]);
         ChkOverwriteFiles.Content = _controller.Localizer["OverwriteExistingFiles"];
+        ChkSpeedLimit.Content = _controller.Localizer["EnableSpeedLimit"];
         LblNumberVideos.Text = _controller.Localizer["NumberVideos"];
         TxtErrors.Text = _controller.Localizer["FixErrors", "WinUI"];
         //Load
@@ -79,7 +80,7 @@ public sealed partial class AddDownloadDialog : ContentDialog
         {
             return false;
         }
-        _controller.PopulateDownloads(_videoUrlInfo!, (MediaFileType)CmbFileType.SelectedIndex, (Quality)CmbQuality.SelectedIndex, (Subtitle)CmbSubtitle.SelectedIndex, TxtSaveFolder.Text, ChkOverwriteFiles.IsChecked ?? false);
+        _controller.PopulateDownloads(_videoUrlInfo!, (MediaFileType)CmbFileType.SelectedIndex, (Quality)CmbQuality.SelectedIndex, (Subtitle)CmbSubtitle.SelectedIndex, TxtSaveFolder.Text, ChkOverwriteFiles.IsChecked ?? false, ChkSpeedLimit.IsChecked ?? false);
         return true;
     }
 
