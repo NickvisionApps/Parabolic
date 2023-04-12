@@ -128,10 +128,6 @@ public class Download
         {
             Filename = Regex.Escape(Filename);
         }
-        if (Directory.Exists(_tempDownloadPath) && _overwriteFiles)
-        {
-            Directory.Delete(_tempDownloadPath, true);
-        }
         Directory.CreateDirectory(_tempDownloadPath);
         dynamic outFile = PythonHelpers.SetConsoleOutputFilePath(_logPath);
         return await Task.Run(() =>
