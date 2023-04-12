@@ -216,6 +216,7 @@ public class Download
                 try
                 {
                     Python.Runtime.PyObject success_code = ytdlp.YoutubeDL(ytOpt).download(new List<string>() { VideoUrl });
+                    ForceUpdateLog();
                     IsDone = true;
                     outFile.close();
                     return (success_code.As<int?>() ?? 1) == 0;
@@ -224,6 +225,7 @@ public class Download
                 {
                     Filename = Regex.Unescape(Filename);
                     Console.WriteLine(e);
+                    ForceUpdateLog();
                     IsDone = true;
                     outFile.close();
                     return false;
@@ -243,6 +245,31 @@ public class Download
             {
                 Python.Runtime.PythonEngine.Interrupt(_pid.Value);
             }
+        }
+    }
+
+    /// <summary>
+    /// Call progress callback to only update the log
+    /// </summary>
+    private void ForceUpdateLog()
+    {
+        if (_progressCallback != null)
+        {
+            var progressState = new DownloadProgressState()
+            {
+                Status = DownloadProgressStatus.Other,
+                Progress = 0.0,
+                Speed = 0.0
+            };
+            if (File.Exists(_logPath))
+            {
+                using var fs = new FileStream(_logPath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
+                using var sr = new StreamReader(fs);
+                progressState.Log = sr.ReadToEnd();
+                sr.Close();
+                fs.Close();
+            }
+            _progressCallback(progressState);
         }
     }
 
@@ -281,13 +308,12 @@ public class Download
                 {
                     using var fs = new FileStream(_logPath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
                     using var sr = new StreamReader(fs);
-                    progressState.Log = sr.ReadToEnd().Remove(0, 1);
+                    progressState.Log = sr.ReadToEnd();
                     sr.Close();
                     fs.Close();
                 }
                 _progressCallback(progressState);
             }
-
         }
     }
 
@@ -297,19 +323,11 @@ public class Download
     /// <param name="path">Python.Runtime.PyString</param>
     private void UnescapeHook(Python.Runtime.PyString path)
     {
-        try
+        using (Python.Runtime.Py.GIL())
         {
-            using (Python.Runtime.Py.GIL())
-            {
-                Filename = Path.GetFileName(path.As<string>());
-                Filename = Regex.Unescape(Filename);
-                var directory = Path.GetDirectoryName(path.As<string>());
-                File.Move(path.As<string>(), $"{directory}{Path.DirectorySeparatorChar}{Filename}", _overwriteFiles);
-            }
-        }
-        catch (Exception e)
-        {
-            Console.WriteLine($"Failed to unescape file: {path.As<string?>()}");
+            Filename = Regex.Unescape(Filename);
+            var directory = Path.GetDirectoryName(path.As<string>());
+            File.Move(path.As<string>(), $"{directory}{Path.DirectorySeparatorChar}{Filename}", _overwriteFiles);
         }
     }
 }
