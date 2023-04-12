@@ -86,7 +86,7 @@ public class Download
     /// <param name="useAria">Whether or not to use aria2 for the download</param>
     /// <param name="quality">The quality of the download</param>
     /// <param name="subtitle">The subtitles for the download</param>
-    ///     /// <param name="speedLimit">The speed at which to limit the download</param>
+    /// <param name="speedLimit">The speed at which to limit the download</param>
     public Download(string videoUrl, MediaFileType fileType, string saveFolder, string saveFilename, bool overwriteFiles, bool limitSpeed, bool useAria, Quality quality = Quality.Best, Subtitle subtitle = Subtitle.None, uint speedLimit = 1024)
     {
         _id = Guid.NewGuid();
@@ -170,13 +170,14 @@ public class Download
                     { "overwrites", _overwriteFiles },
                     { "paths", paths }
                 };
-                if (_limitSpeed)
-                {
-                    ytOpt.Add("ratelimit", _speedLimit * 1024);
-                }
-                if(_useAria)
+                if (_useAria)
                 {
                     ytOpt.Add("external_downloader", new Dictionary<string, dynamic>() { { "default", DependencyManager.Aria2 } });
+                    ytOpt.Add("external_downloader_args", Python.Runtime.PythonEngine.Eval($"{{'default': ['--max-overall-download-limit={(_limitSpeed ? _speedLimit : 0)}K', '--allow-overwrite=true', '--max-tries=1', '--show-console-readout=false']}}")); // stupid, but working
+                }
+                else if (_limitSpeed)
+                {
+                    ytOpt.Add("ratelimit", _speedLimit * 1024);
                 }
                 var postProcessors = new List<Dictionary<string, dynamic>>();
                 if (_fileType.GetIsAudio())
