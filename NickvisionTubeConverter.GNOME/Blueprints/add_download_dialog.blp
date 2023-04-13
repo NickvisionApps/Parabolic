@@ -74,31 +74,92 @@ Adw.Window _root {
               hexpand: true;
               spacing: 12;
 
+              Gtk.Box {
+                margin-top: 12;
+                margin-start: 24;
+                margin-end: 24;
+                margin-bottom: 12;
+                homogeneous: true;
+
+                Gtk.Box {
+                  orientation: vertical;
+                  hexpand: true;
+                  spacing: 8;
+
+                  Gtk.Box {
+                    spacing: 12;
+                    halign: center;
+                    Gtk.Image {
+                      icon-name: "dotted-box-symbolic";
+                    }
+                    Gtk.Label {
+                      label: _("FileType.Field");
+                      styles ["heading"]
+                    }
+                  }
+
+                  Gtk.DropDown _fileTypeDropDown {
+                    model: Gtk.StringList {
+                      strings ["MP4", "WEBM", "MP3", "OPUS", "FLAC", "WAV"]
+                    };
+                  }
+                }
+
+                Gtk.Box {
+                  orientation: vertical;
+                  hexpand: true;
+                  spacing: 8;
+
+                  Gtk.Box {
+                    spacing: 12;
+                    halign: center;
+                    Gtk.Image {
+                      icon-name: "settings-symbolic";
+                    }
+                    Gtk.Label {
+                      label: _("Quality.Field");
+                      styles ["heading"]
+                    }
+                  }
+
+                  Gtk.DropDown _qualityDropDown {
+                    model: Gtk.StringList {
+                      strings [_("Quality.Best"), _("Quality.Good"), _("Quality.Worst")]
+                    };
+                  }
+                }
+
+                Gtk.Box {
+                  orientation: vertical;
+                  hexpand: true;
+                  spacing: 8;
+
+                  Gtk.Box {
+                    spacing: 12;
+                    halign: center;
+                    Gtk.Image {
+                      icon-name: "media-view-subtitles-symbolic";
+                    }
+                    Gtk.Label {
+                      label: _("Subtitle.Field");
+                      styles ["heading"]
+                    }
+                  }
+
+                  Gtk.DropDown _subtitlesDropDown {
+                    model: Gtk.StringList {
+                      strings [_("Subtitle.None"), "VTT", "SRT"]
+                    };
+                  }
+                }
+
+                styles ["card", "download-settings"]
+              }
+
               Adw.PreferencesGroup {
                 margin-bottom: 12;
                 margin-start: 24;
                 margin-end: 24;
-
-                Adw.ComboRow _fileTypeRow {
-                  title: _("FileType.Field");
-                  model: Gtk.StringList {
-                    strings ["MP4", "WEBM", "MP3", "OPUS", "FLAC", "WAV"]
-                  };
-                }
-
-                Adw.ComboRow _qualityRow {
-                  title: _("Quality.Field");
-                  model: Gtk.StringList {
-                    strings [_("Quality.Best"), _("Quality.Good"), _("Quality.Worst")]
-                  };
-                }
-
-                Adw.ComboRow _subtitleRow {
-                  title: _("Subtitle.Field");
-                  model: Gtk.StringList {
-                    strings [_("Subtitle.None"), "VTT", "SRT"]
-                  };
-                }
 
                 Adw.EntryRow _saveFolderRow {
                   title: _("SaveFolder.Field");

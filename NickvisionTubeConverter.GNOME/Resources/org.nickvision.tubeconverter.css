@@ -40,3 +40,13 @@
   border-style: solid;
   border-color: @borders;
 }
+
+.download-settings > box {
+  padding: 12px;
+}
+
+.download-settings > box + box {
+  border-style: solid;
+  border-left-width: 1px;
+  border-color: @borders;
+}
