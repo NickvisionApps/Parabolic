@@ -75,6 +75,7 @@ Adw.Window _root {
               spacing: 12;
 
               Gtk.Box {
+                margin-top: 12;
                 margin-start: 24;
                 margin-end: 24;
                 margin-bottom: 12;
@@ -86,7 +87,7 @@ Adw.Window _root {
                   spacing: 8;
 
                   Gtk.Box {
-                    spacing: 8;
+                    spacing: 12;
                     halign: center;
                     Gtk.Image {
                       icon-name: "dotted-box-symbolic";
@@ -110,20 +111,20 @@ Adw.Window _root {
                   spacing: 8;
 
                   Gtk.Box {
-                    spacing: 8;
+                    spacing: 12;
                     halign: center;
                     Gtk.Image {
                       icon-name: "settings-symbolic";
                     }
                     Gtk.Label {
-                      label: _("Quality.Field");
+                      label: _("AudioQuality.Field");
                       styles ["heading"]
                     }
                   }
 
                   Gtk.DropDown _audioQualityDropDown {
                     model: Gtk.StringList {
-                      strings [_("AudioQuality.Best"), _("AudioQuality.Worst"]
+                      strings [_("AudioQuality.Best"), _("AudioQuality.Worst")]
                     };
                   }
                 }
@@ -134,7 +135,7 @@ Adw.Window _root {
                   spacing: 8;
 
                   Gtk.Box {
-                    spacing: 8;
+                    spacing: 12;
                     halign: center;
                     Gtk.Image {
                       icon-name: "media-view-subtitles-symbolic";
