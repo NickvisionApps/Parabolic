@@ -39,7 +39,34 @@ internal static class DependencyManager
                     return path;
                 }
             }
-            return "";
+            return "ffmpeg";
+        }
+    }
+    /// <summary>
+    /// The path for aria2
+    /// </summary>
+    public static string Aria2
+    {
+        get
+        {
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                return $"{Configuration.ConfigDir}{Path.DirectorySeparatorChar}aria2{Path.DirectorySeparatorChar}aria2c.exe";
+            }
+            var prefixes = new List<string>() {
+                Directory.GetParent(Directory.GetParent(Path.GetFullPath(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)!))!.FullName)!.FullName,
+                Directory.GetParent(Path.GetFullPath(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)!))!.FullName,
+                "/usr"
+            };
+            foreach (var prefix in prefixes)
+            {
+                var path = $"{prefix}/bin/aria2c";
+                if (File.Exists(path))
+                {
+                    return path;
+                }
+            }
+            return "aria2c";
         }
     }
 
@@ -53,16 +80,16 @@ internal static class DependencyManager
         {
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
+                using var httpClient = new HttpClient()
+                {
+                    Timeout = Timeout.InfiniteTimeSpan,
+                };
                 //Python
                 await PythonHelpers.DeployEmbeddedAsync(new Version("3.11.2"));
                 //Ffmpeg
                 var ffmpegVer = new Version(6, 0, 0);
                 if (!File.Exists(Ffmpeg) || Configuration.Current.WinUIFfmpegVersion != ffmpegVer)
                 {
-                    var httpClient = new HttpClient()
-                    {
-                        Timeout = Timeout.InfiniteTimeSpan
-                    };
                     var ffmpegDir = $"{Configuration.ConfigDir}{Path.DirectorySeparatorChar}ffmpeg{Path.DirectorySeparatorChar}";
                     if (!Directory.Exists(ffmpegDir))
                     {
@@ -84,6 +111,30 @@ internal static class DependencyManager
                     Configuration.Current.WinUIFfmpegVersion = ffmpegVer;
                     Configuration.Current.Save();
                 }
+                //Aria2
+                var ariaVer = new Version(1, 36, 0);
+                if (!File.Exists(Aria2) || Configuration.Current.WinUIAriaVersion != ariaVer)
+                {
+                    var ariaDir = $"{Configuration.ConfigDir}{Path.DirectorySeparatorChar}aria2{Path.DirectorySeparatorChar}";
+                    if (!Directory.Exists(ariaDir))
+                    {
+                        Directory.CreateDirectory(ariaDir);
+                    }
+                    //Download and Extract Binary Zip
+                    var ariaZip = $"{ariaDir}aria.zip";
+                    var bytes = await httpClient.GetByteArrayAsync("https://github.com/aria2/aria2/releases/download/release-1.36.0/aria2-1.36.0-win-64bit-build1.zip");
+                    File.WriteAllBytes(ariaZip, bytes);
+                    ZipFile.ExtractToDirectory(ariaZip, ariaDir);
+                    File.Delete(ariaZip);
+                    //Move Binaries
+                    var ariaBinaryFolder = $"{Directory.GetDirectories(ariaDir).First(x => x.Contains("-1.36.0"))}{Path.DirectorySeparatorChar}";
+                    File.Move($"{ariaBinaryFolder}aria2c.exe", $"{ariaDir}aria2c.exe", true);
+                    Directory.Delete(ariaBinaryFolder, true);
+                    //Update Config
+                    Configuration.Current.WinUIAriaVersion = ariaVer;
+                    Configuration.Current.Save();
+                }
+
             }
             else if (File.Exists(Environment.GetEnvironmentVariable("TC_PYTHON_SO")))
             {
@@ -105,11 +156,16 @@ internal static class DependencyManager
                 Python.Runtime.Runtime.PythonDLL = process.StandardOutput.ReadToEnd().Trim();
                 process.WaitForExit();
             }
+            // Install yt-dlp plugin
             var pluginPath = $"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}{Path.DirectorySeparatorChar}yt-dlp{Path.DirectorySeparatorChar}plugins{Path.DirectorySeparatorChar}tubeconverter{Path.DirectorySeparatorChar}yt_dlp_plugins{Path.DirectorySeparatorChar}postprocessor{Path.DirectorySeparatorChar}tubeconverter.py";
             Directory.CreateDirectory(pluginPath.Substring(0, pluginPath.LastIndexOf(Path.DirectorySeparatorChar)));
             using var pluginResource = Assembly.GetExecutingAssembly().GetManifestResourceStream("NickvisionTubeConverter.Shared.Resources.tubeconverter.py")!;
             using var pluginFile = new FileStream(pluginPath, FileMode.Create, FileAccess.Write);
             pluginResource.CopyTo(pluginFile);
+            // Install Aria2 Keeper
+            using var scriptResource = Assembly.GetExecutingAssembly().GetManifestResourceStream("NickvisionTubeConverter.Shared.Resources.aria2_keeper.py")!;
+            using var scriptFile = new FileStream($"{Configuration.ConfigDir}{Path.DirectorySeparatorChar}aria2_keeper.py", FileMode.Create, FileAccess.Write);
+            scriptResource.CopyTo(scriptFile);
             return true;
         }
         catch (Exception e)

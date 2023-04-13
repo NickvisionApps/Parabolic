@@ -143,6 +143,14 @@
 
                                 <NumberBox x:Name="NumSpeedLimit" Minimum="512" Maximum="10240" SmallChange="512" LargeChange="1024" SpinButtonPlacementMode="Inline" ValueChanged="NumSpeedLimit_ValueChanged"/>
                             </labs:SettingsCard>
+
+                            <labs:SettingsCard x:Name="CardUseAria">
+                                <labs:SettingsCard.HeaderIcon>
+                                    <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE968;"/>
+                                </labs:SettingsCard.HeaderIcon>
+
+                                <ToggleSwitch x:Name="ToggleUseAria" Toggled="ToggleUseAria_Toggled"/>
+                            </labs:SettingsCard>
                         </labs:SettingsExpander.Items>
                     </labs:SettingsExpander>
 

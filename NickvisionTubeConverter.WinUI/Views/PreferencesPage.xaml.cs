@@ -42,6 +42,8 @@ public sealed partial class PreferencesPage : UserControl
         CardTheme.Description = _controller.Localizer["ThemeDescription", "WinUI"];
         CardAllowBackground.Header = _controller.Localizer["AllowBackground"];
         CardAllowBackground.Description = _controller.Localizer["AllowBackgroundDescription"];
+        ToggleAllowBackground.OnContent = "";
+        ToggleAllowBackground.OffContent = "";
         CmbTheme.Items.Add(_controller.Localizer["ThemeLight"]);
         CmbTheme.Items.Add(_controller.Localizer["ThemeDark"]);
         CmbTheme.Items.Add(_controller.Localizer["ThemeSystem"]);
@@ -54,6 +56,10 @@ public sealed partial class PreferencesPage : UserControl
         }
         CardSpeedLimit.Header = _controller.Localizer["SpeedLimit"];
         CardSpeedLimit.Description = _controller.Localizer["SpeedLimit", "Description"];
+        CardUseAria.Header = _controller.Localizer["UseAria"];
+        CardUseAria.Description = _controller.Localizer["UseAria", "Description"];
+        ToggleUseAria.OnContent = "";
+        ToggleUseAria.OffContent = "";
         CardConverter.Header = _controller.Localizer["Converter"];
         CardConverter.Description = _controller.Localizer["Converter", "Description"];
         CardEmbedMetadata.Header = _controller.Localizer["EmbedMetadata"];
@@ -65,6 +71,7 @@ public sealed partial class PreferencesPage : UserControl
         ToggleAllowBackground.IsOn = _controller.RunInBackground;
         CmbMaxNumberOfActiveDownloads.SelectedIndex = _controller.MaxNumberOfActiveDownloads - 1;
         NumSpeedLimit.Value = _controller.SpeedLimit;
+        ToggleUseAria.IsOn = _controller.UseAria;
         ToggleEmbedMetadata.IsOn = _controller.EmbedMetadata;
     }
 
@@ -226,6 +233,18 @@ public sealed partial class PreferencesPage : UserControl
         _controller.SpeedLimit = (uint)NumSpeedLimit.Value;
         _controller.SaveConfiguration();
     }
+
+    /// <summary>
+    /// Occurs when the ToggleUseAria switch is toggled
+    /// </summary>
+    /// <param name="sender">object</param>
+    /// <param name="e">RoutedEventArgs</param>
+    private void ToggleUseAria_Toggled(object sender, RoutedEventArgs e)
+    {
+        _controller.UseAria = ToggleUseAria.IsOn;
+        _controller.SaveConfiguration();
+    }
+
 
     /// <summary>
     /// Occurs when the ToggleEmbedMetadata switch is toggled

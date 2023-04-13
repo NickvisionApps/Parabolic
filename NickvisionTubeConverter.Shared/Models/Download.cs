@@ -1,6 +1,7 @@
 ﻿using NickvisionTubeConverter.Shared.Helpers;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.Runtime.InteropServices;
@@ -49,9 +50,12 @@ public class Download
     private readonly Quality _quality;
     private readonly Subtitle _subtitle;
     private readonly bool _overwriteFiles;
-    private readonly bool _speedLimit;
+    private readonly bool _limitSpeed;
+    private readonly uint _speedLimit;
+    private readonly bool _useAria;
     private readonly string _logPath;
     private readonly string _tempDownloadPath;
+    private readonly Process _ariaKeeper;
     private Action<DownloadProgressState>? _progressCallback;
     private ulong? _pid;
 
@@ -80,16 +84,21 @@ public class Download
     /// <param name="saveFolder">The folder to save the download to</param>
     /// <param name="saveFilename">The filename to save the download as</param>
     /// <param name="overwriteFiles">Whether or not to overwrite existing files</param>
+    /// <param name="limitSpeed">Whether or not to limit the download speed</param>
+    /// <param name="useAria">Whether or not to use aria2 for the download</param>
     /// <param name="quality">The quality of the download</param>
     /// <param name="subtitle">The subtitles for the download</param>
-    public Download(string videoUrl, MediaFileType fileType, string saveFolder, string saveFilename, bool overwriteFiles, bool speedLimit, Quality quality = Quality.Best, Subtitle subtitle = Subtitle.None)
+    /// <param name="speedLimit">The speed at which to limit the download</param>
+    public Download(string videoUrl, MediaFileType fileType, string saveFolder, string saveFilename, bool overwriteFiles, bool limitSpeed, bool useAria, Quality quality = Quality.Best, Subtitle subtitle = Subtitle.None, uint speedLimit = 1024)
     {
         _id = Guid.NewGuid();
         _fileType = fileType;
         _quality = quality;
         _subtitle = subtitle;
         _overwriteFiles = overwriteFiles;
+        _limitSpeed = limitSpeed;
         _speedLimit = speedLimit;
+        _useAria = useAria;
         _tempDownloadPath = $"{Configuration.TempDir}{Path.DirectorySeparatorChar}{_id}{Path.DirectorySeparatorChar}";
         _logPath = $"{_tempDownloadPath}log";
         _progressCallback = null;
@@ -99,6 +108,16 @@ public class Download
         Filename = $"{saveFilename}{_fileType.GetDotExtension()}";
         IsDone = false;
         _overwriteFiles = overwriteFiles;
+        _ariaKeeper = new Process
+        {
+            StartInfo = new ProcessStartInfo
+            {
+                FileName = "python3",
+                Arguments = $"\"{Configuration.ConfigDir}{Path.DirectorySeparatorChar}aria2_keeper.py\"",
+                UseShellExecute = false,
+                CreateNoWindow = true
+            }
+        };
     }
 
     /// <summary>
@@ -163,9 +182,22 @@ public class Download
                     { "overwrites", _overwriteFiles },
                     { "paths", paths }
                 };
-                if (_speedLimit)
+                if (_useAria)
                 {
-                    ytOpt.Add("ratelimit", Configuration.Current.SpeedLimit * 1024);
+                    _ariaKeeper.Start();
+                    ytOpt.Add("external_downloader", new Dictionary<string, dynamic>() { { "default", DependencyManager.Aria2 } });
+                    var ariaArgs = new string[]
+                    {
+                        $"--max-overall-download-limit={(_limitSpeed ? _speedLimit : 0)}K",
+                        "--allow-overwrite=true",
+                        "--show-console-readout=false",
+                        $"--stop-with-process={_ariaKeeper.Id}"
+                    };
+                    ytOpt.Add("external_downloader_args", Python.Runtime.PythonEngine.Eval($"{{'default': ['{string.Join("', '", ariaArgs)}']}}")); // stupid, but working
+                }
+                else if (_limitSpeed)
+                {
+                    ytOpt.Add("ratelimit", _speedLimit * 1024);
                 }
                 var postProcessors = new List<Dictionary<string, dynamic>>();
                 if (_fileType.GetIsAudio())
@@ -218,11 +250,22 @@ public class Download
                 }
                 try
                 {
+                    if (_useAria && _progressCallback != null)
+                    {
+                        _progressCallback(new DownloadProgressState()
+                        {
+                            Status = DownloadProgressStatus.DownloadingAria,
+                            Progress = 0.0,
+                            Speed = 0.0,
+                            Log = localizer["StartAria"]
+                        });
+                    }
                     Python.Runtime.PyObject success_code = ytdlp.YoutubeDL(ytOpt).download(new List<string>() { VideoUrl });
                     if ((success_code.As<int?>() ?? 1) != 0)
                     {
                         Filename = Regex.Unescape(Filename);
                     }
+                    KillAriaKeeper();
                     ForceUpdateLog();
                     IsDone = true;
                     outFile.close();
@@ -230,6 +273,7 @@ public class Download
                 }
                 catch (Exception e)
                 {
+                    KillAriaKeeper();
                     Filename = Regex.Unescape(Filename);
                     Console.WriteLine(e);
                     ForceUpdateLog();
@@ -248,11 +292,21 @@ public class Download
     {
         if (_pid != null)
         {
+            KillAriaKeeper();
             using (Python.Runtime.Py.GIL())
             {
                 Python.Runtime.PythonEngine.Interrupt(_pid.Value);
             }
         }
+    }
+
+    private void KillAriaKeeper()
+    {
+        try
+        {
+            _ariaKeeper.Kill();
+        }
+        catch { }
     }
 
     /// <summary>

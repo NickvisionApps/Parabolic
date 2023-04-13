@@ -132,6 +132,15 @@ public sealed partial class DownloadRow : UserControl, IDownloadRowControl
                         LblStatus.Text = string.Format(_localizer["DownloadState", "Downloading"], state.Progress * 100, SpeedFormatter.GetString(state.Speed, _localizer));
                     });
                     break;
+                case DownloadProgressStatus.DownloadingAria:
+                    Progress = 1.0;
+                    Speed = 0.0;
+                    App.MainWindow!.DispatcherQueue.TryEnqueue(() =>
+                    {
+                        LblStatus.Text = _localizer["Downloading"];
+                        ProgBar.IsIndeterminate = true;
+                    });
+                    break;
                 case DownloadProgressStatus.Processing:
                     Progress = 1.0;
                     Speed = 0.0;

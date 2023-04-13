@@ -64,6 +64,10 @@ public class Configuration
     /// </summary>
     public Version WinUIFfmpegVersion { get; set; }
     /// <summary>
+    /// The version of aria2 installed on WinUI version
+    /// </summary>
+    public Version WinUIAriaVersion { get; set; }
+    /// <summary>
     /// The maximum number of active downloads (should be between 1-10)
     /// </summary>
     public int MaxNumberOfActiveDownloads { get; set; }
@@ -75,6 +79,10 @@ public class Configuration
     /// Speed limit in KiB/s (should be between 512-10240)
     /// </summary>
     public uint SpeedLimit { get; set; }
+    /// <summary>
+    /// Whether or not to use aria2
+    /// </summary>
+    public bool UseAria { get; set; }
 
     /// <summary>
     /// Occurs when the configuration is saved to disk
@@ -97,9 +105,11 @@ public class Configuration
         WinUIPythonVersion = new Version(0, 0, 0);
         WinUIYtdlpVersion = new Version(0, 0, 0);
         WinUIFfmpegVersion = new Version(0, 0, 0);
+        WinUIAriaVersion = new Version(0, 0, 0);
         MaxNumberOfActiveDownloads = 5;
         RunInBackground = RuntimeInformation.IsOSPlatform(OSPlatform.Windows);
         SpeedLimit = 1024;
+        UseAria = false;
     }
 
     /// <summary>
