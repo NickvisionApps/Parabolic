@@ -210,7 +210,7 @@ public partial class MainWindow : Adw.ApplicationWindow
     {
         if (_controller.AreDownloadsRunning)
         {
-            if (_controller.RunInBackground && File.Exists("/.flatpak-info"))
+            if (_controller.RunInBackground && (File.Exists("/.flatpak-info") || !String.IsNullOrEmpty(Environment.GetEnvironmentVariable("SNAP"))))
             {
                 SetVisible(false);
                 return true;
