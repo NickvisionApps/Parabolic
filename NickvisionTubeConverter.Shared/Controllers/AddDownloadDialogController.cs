@@ -107,7 +107,7 @@ public class AddDownloadDialogController
         {
             if (video.ToDownload)
             {
-                Downloads.Add(new Download(video.Url, mediaFileType, saveFolder, video.Title, limitSpeed, Configuration.Current.SpeedLimit, audioQuality, subtitles, overwriteFiles));
+                Downloads.Add(new Download(video.Url, mediaFileType, saveFolder, video.Title, overwriteFiles, limitSpeed, Configuration.Current.UseAria, audioQuality, subtitles, Configuration.Current.SpeedLimit));
             }
         }
         Configuration.Current.PreviousSaveFolder = saveFolder;

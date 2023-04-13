@@ -103,12 +103,13 @@ public class Download
     /// <param name="fileType">The file type to download the video as</param>
     /// <param name="saveFolder">The folder to save the download to</param>
     /// <param name="saveFilename">The filename to save the download as</param>
+    /// <param name="overwriteFiles">Whether or not to overwrite existing files</param>
     /// <param name="limitSpeed">Whether or not to limit the download speed</param>
     /// <param name="speedLimit">The speed at which to limit the download</param>
     /// <param name="quality">The quality of the download</param>
     /// <param name="subtitle">The subtitles for the download</param>
-    /// <param name="overwriteFiles">Whether or not to overwrite existing files</param>
-    public Download(string videoUrl, MediaFileType fileType, string saveFolder, string saveFilename, bool limitSpeed, uint speedLimit, AudioQuality audioQuality, Subtitle subtitle, bool overwriteFiles)
+    /// <param name="speedLimit">The speed at which to limit the download</param>
+    public Download(string videoUrl, MediaFileType fileType, string saveFolder, string saveFilename, bool overwriteFiles, bool limitSpeed, bool useAria, AudioQuality audioQuality = AudioQuality.Best, Subtitle subtitle = Subtitle.None, uint speedLimit = 1024)
     {
         Id = Guid.NewGuid();
         VideoUrl = videoUrl;
