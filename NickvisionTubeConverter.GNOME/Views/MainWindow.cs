@@ -38,6 +38,12 @@ public partial class MainWindow : Adw.ApplicationWindow
     private static partial nint g_variant_type_new(string type);
     [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
     private static partial void g_dbus_connection_call(nint connection, string bus_name, string object_path, string interface_name, string method_name, nint parameters, nint reply_type, uint flags, int timeout_msec, nint cancellable, nint callback, nint user_data);
+    [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
+    private static partial nint g_file_new_for_path(string path);
+    [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
+    private static partial nint g_file_icon_new(nint gfile);
+    [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
+    private static partial void g_notification_set_icon(nint notification, nint icon);
 
     private readonly MainWindowController _controller;
     private readonly Adw.Application _application;
@@ -196,7 +202,15 @@ public partial class MainWindow : Adw.ApplicationWindow
             NotificationSeverity.Error => Gio.NotificationPriority.Urgent,
             _ => Gio.NotificationPriority.Normal
         });
-        notification.SetIcon(Gio.ThemedIcon.New($"{_controller.AppInfo.ID}-symbolic"));
+        if (String.IsNullOrEmpty(Environment.GetEnvironmentVariable("SNAP")))
+        {
+            notification.SetIcon(Gio.ThemedIcon.New($"{_controller.AppInfo.ID}-symbolic"));
+        }
+        else
+        {
+            var iconHandle = g_file_icon_new(g_file_new_for_path($"{Environment.GetEnvironmentVariable("SNAP")}/usr/share/icons/hicolor/symbolic/apps/{_controller.AppInfo.ID}-symbolic.svg"));
+            g_notification_set_icon(notification.Handle, iconHandle);
+        }
         _application.SendNotification(_controller.AppInfo.ID, notification);
     }
 
@@ -210,7 +224,7 @@ public partial class MainWindow : Adw.ApplicationWindow
     {
         if (_controller.AreDownloadsRunning)
         {
-            if (_controller.RunInBackground && File.Exists("/.flatpak-info"))
+            if (_controller.RunInBackground && (File.Exists("/.flatpak-info") || !String.IsNullOrEmpty(Environment.GetEnvironmentVariable("SNAP"))))
             {
                 SetVisible(false);
                 return true;
