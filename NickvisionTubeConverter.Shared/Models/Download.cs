@@ -108,12 +108,14 @@ public class Download
         Filename = $"{saveFilename}{_fileType.GetDotExtension()}";
         IsDone = false;
         _overwriteFiles = overwriteFiles;
-        _ariaKeeper = new Process{
+        _ariaKeeper = new Process
+        {
             StartInfo = new ProcessStartInfo
             {
                 FileName = "python3",
                 Arguments = $"\"{Configuration.ConfigDir}{Path.DirectorySeparatorChar}aria2_keeper.py\"",
-                UseShellExecute = false
+                UseShellExecute = false,
+                CreateNoWindow = true
             }
         };
     }
