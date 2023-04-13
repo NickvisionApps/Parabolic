@@ -300,10 +300,11 @@ public class Download
 
     private void KillAriaKeeper()
     {
-        if (!_ariaKeeper.HasExited)
+        try
         {
             _ariaKeeper.Kill();
         }
+        catch { }
     }
 
     /// <summary>
