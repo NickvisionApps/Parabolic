@@ -1,6 +1,7 @@
 ﻿using NickvisionTubeConverter.Shared.Helpers;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.Runtime.InteropServices;
@@ -54,6 +55,7 @@ public class Download
     private readonly bool _useAria;
     private readonly string _logPath;
     private readonly string _tempDownloadPath;
+    private readonly Process _ariaKeeper;
     private Action<DownloadProgressState>? _progressCallback;
     private ulong? _pid;
 
@@ -106,6 +108,14 @@ public class Download
         Filename = $"{saveFilename}{_fileType.GetDotExtension()}";
         IsDone = false;
         _overwriteFiles = overwriteFiles;
+        _ariaKeeper = new Process{
+            StartInfo = new ProcessStartInfo
+            {
+                FileName = "python3",
+                Arguments = $"\"{Configuration.ConfigDir}{Path.DirectorySeparatorChar}aria2_keeper.py\"",
+                UseShellExecute = false
+            }
+        };
     }
 
     /// <summary>
@@ -172,8 +182,16 @@ public class Download
                 };
                 if (_useAria)
                 {
+                    _ariaKeeper.Start();
                     ytOpt.Add("external_downloader", new Dictionary<string, dynamic>() { { "default", DependencyManager.Aria2 } });
-                    ytOpt.Add("external_downloader_args", Python.Runtime.PythonEngine.Eval($"{{'default': ['--max-overall-download-limit={(_limitSpeed ? _speedLimit : 0)}K', '--allow-overwrite=true', '--max-tries=1', '--show-console-readout=false']}}")); // stupid, but working
+                    var ariaArgs = new string[]
+                    {
+                        $"--max-overall-download-limit={(_limitSpeed ? _speedLimit : 0)}K",
+                        "--allow-overwrite=true",
+                        "--show-console-readout=false",
+                        $"--stop-with-process={_ariaKeeper.Id}"
+                    };
+                    ytOpt.Add("external_downloader_args", Python.Runtime.PythonEngine.Eval($"{{'default': ['{string.Join("', '", ariaArgs)}']}}")); // stupid, but working
                 }
                 else if (_limitSpeed)
                 {
@@ -245,6 +263,7 @@ public class Download
                     {
                         Filename = Regex.Unescape(Filename);
                     }
+                    KillAriaKeeper();
                     ForceUpdateLog();
                     IsDone = true;
                     outFile.close();
@@ -252,6 +271,7 @@ public class Download
                 }
                 catch (Exception e)
                 {
+                    KillAriaKeeper();
                     Filename = Regex.Unescape(Filename);
                     Console.WriteLine(e);
                     ForceUpdateLog();
@@ -270,10 +290,19 @@ public class Download
     {
         if (_pid != null)
         {
+            KillAriaKeeper();
             using (Python.Runtime.Py.GIL())
             {
                 Python.Runtime.PythonEngine.Interrupt(_pid.Value);
             }
+        }
+    }
+
+    private void KillAriaKeeper()
+    {
+        if (!_ariaKeeper.HasExited)
+        {
+            _ariaKeeper.Kill();
         }
     }
 

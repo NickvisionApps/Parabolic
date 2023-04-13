@@ -6,6 +6,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+		<None Remove="Resources\aria2_keeper.py" />
 		<None Remove="Resources\org.nickvision.tubeconverter-devel.svg" />
 		<None Remove="Resources\org.nickvision.tubeconverter-symbolic.svg" />
 		<None Remove="Resources\org.nickvision.tubeconverter.png" />
@@ -15,6 +16,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <EmbeddedResource Include="Resources\aria2_keeper.py" />
 	  <EmbeddedResource Include="Resources\tubeconverter.py" />
 	  <EmbeddedResource Include="Resources\yt_dlp-any.whl" />
 	</ItemGroup>

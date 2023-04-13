@@ -156,11 +156,16 @@ internal static class DependencyManager
                 Python.Runtime.Runtime.PythonDLL = process.StandardOutput.ReadToEnd().Trim();
                 process.WaitForExit();
             }
+            // Install yt-dlp plugin
             var pluginPath = $"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}{Path.DirectorySeparatorChar}yt-dlp{Path.DirectorySeparatorChar}plugins{Path.DirectorySeparatorChar}tubeconverter{Path.DirectorySeparatorChar}yt_dlp_plugins{Path.DirectorySeparatorChar}postprocessor{Path.DirectorySeparatorChar}tubeconverter.py";
             Directory.CreateDirectory(pluginPath.Substring(0, pluginPath.LastIndexOf(Path.DirectorySeparatorChar)));
             using var pluginResource = Assembly.GetExecutingAssembly().GetManifestResourceStream("NickvisionTubeConverter.Shared.Resources.tubeconverter.py")!;
             using var pluginFile = new FileStream(pluginPath, FileMode.Create, FileAccess.Write);
             pluginResource.CopyTo(pluginFile);
+            // Install Aria2 Keeper
+            using var scriptResource = Assembly.GetExecutingAssembly().GetManifestResourceStream("NickvisionTubeConverter.Shared.Resources.aria2_keeper.py")!;
+            using var scriptFile = new FileStream($"{Configuration.ConfigDir}{Path.DirectorySeparatorChar}aria2_keeper.py", FileMode.Create, FileAccess.Write);
+            scriptResource.CopyTo(scriptFile);
             return true;
         }
         catch (Exception e)
