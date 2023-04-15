@@ -3,6 +3,7 @@ on:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
+    types: [ "review_requested", "ready_for_review" ]
   schedule:
     - cron: '21 11 * * 0'
 name: CodeQL
@@ -14,6 +15,7 @@ jobs:
         configuration: [Release]
         platform: [x64]
     runs-on: windows-latest
+    if: ${{ github.event.pull_request.user.login != 'weblate' }}
     env:
       Solution_Name: NickvisionTubeConverter.sln
     permissions:
