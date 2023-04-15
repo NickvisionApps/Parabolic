@@ -1,9 +1,15 @@
-on: ["push", "pull_request"]
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+    types: [ "review_requested", "ready_for_review" ]
 name: CI
 jobs:
   flatpak:
     name: "Flatpak"
     runs-on: ubuntu-latest
+    if: ${{ github.event.pull_request.user.login != 'weblate' }}
     container:
       image: bilelmoussaoui/flatpak-github-actions:gnome-44
       options: --privileged
@@ -31,7 +37,8 @@ jobs:
       matrix:
         configuration: [Release]
         platform: [x64, arm64]
-    runs-on: windows-latest  
+    runs-on: windows-latest
+    if: ${{ github.event.pull_request.user.login != 'weblate' }}
     env:
       Solution_Name: NickvisionTubeConverter.sln
     steps:
