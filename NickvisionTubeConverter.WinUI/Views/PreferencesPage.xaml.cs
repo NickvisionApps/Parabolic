@@ -14,6 +14,7 @@ namespace NickvisionTubeConverter.WinUI.Views;
 public sealed partial class PreferencesPage : UserControl
 {
     private readonly PreferencesViewController _controller;
+    private bool _constructing;
 
     /// <summary>
     /// Constructs a PreferencesPage
@@ -23,6 +24,7 @@ public sealed partial class PreferencesPage : UserControl
     {
         InitializeComponent();
         _controller = controller;
+        _constructing = true;
         //Localize Strings
         LblTitle.Text = _controller.Localizer["Settings"];
         LblAbout.Text = string.Format(_controller.Localizer["About"], _controller.AppInfo.Name);
@@ -73,6 +75,7 @@ public sealed partial class PreferencesPage : UserControl
         NumSpeedLimit.Value = _controller.SpeedLimit;
         ToggleUseAria.IsOn = _controller.UseAria;
         ToggleEmbedMetadata.IsOn = _controller.EmbedMetadata;
+        _constructing = false;
     }
 
     /// <summary>
@@ -180,23 +183,26 @@ public sealed partial class PreferencesPage : UserControl
     /// <param name="e">SelectionChangedEventArgs</param>
     private async void CmbTheme_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
-        if (_controller.Theme != (Theme)CmbTheme.SelectedIndex)
+        if(!_constructing)
         {
-            _controller.Theme = (Theme)CmbTheme.SelectedIndex;
-            _controller.SaveConfiguration();
-            var restartDialog = new ContentDialog()
+            if (_controller.Theme != (Theme)CmbTheme.SelectedIndex)
             {
-                Title = _controller.Localizer["RestartThemeTitle", "WinUI"],
-                Content = string.Format(_controller.Localizer["RestartThemeDescription", "WinUI"], _controller.AppInfo.ShortName),
-                PrimaryButtonText = _controller.Localizer["Yes"],
-                CloseButtonText = _controller.Localizer["No"],
-                DefaultButton = ContentDialogButton.Close,
-                XamlRoot = Content.XamlRoot
-            };
-            var result = await restartDialog.ShowAsync();
-            if (result == ContentDialogResult.Primary)
-            {
-                AppInstance.Restart("Apply new theme");
+                _controller.Theme = (Theme)CmbTheme.SelectedIndex;
+                _controller.SaveConfiguration();
+                var restartDialog = new ContentDialog()
+                {
+                    Title = _controller.Localizer["RestartThemeTitle", "WinUI"],
+                    Content = string.Format(_controller.Localizer["RestartThemeDescription", "WinUI"], _controller.AppInfo.ShortName),
+                    PrimaryButtonText = _controller.Localizer["Yes"],
+                    CloseButtonText = _controller.Localizer["No"],
+                    DefaultButton = ContentDialogButton.Close,
+                    XamlRoot = Content.XamlRoot
+                };
+                var result = await restartDialog.ShowAsync();
+                if (result == ContentDialogResult.Primary)
+                {
+                    AppInstance.Restart("Apply new theme");
+                }
             }
         }
     }
@@ -208,8 +214,11 @@ public sealed partial class PreferencesPage : UserControl
     /// <param name="e">RoutedEventArgs</param>
     private void ToggleAllowBackground_Toggled(object sender, RoutedEventArgs e)
     {
-        _controller.RunInBackground = ToggleAllowBackground.IsOn;
-        _controller.SaveConfiguration();
+        if(!_constructing)
+        {
+            _controller.RunInBackground = ToggleAllowBackground.IsOn;
+            _controller.SaveConfiguration();
+        }
     }
 
     /// <summary>
@@ -219,8 +228,11 @@ public sealed partial class PreferencesPage : UserControl
     /// <param name="e">SelectionChangedEventArgs</param>
     private void CmbMaxNumberOfActiveDownloads_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
-        _controller.MaxNumberOfActiveDownloads = CmbMaxNumberOfActiveDownloads.SelectedIndex + 1;
-        _controller.SaveConfiguration();
+        if(!_constructing)
+        {
+            _controller.MaxNumberOfActiveDownloads = CmbMaxNumberOfActiveDownloads.SelectedIndex + 1;
+            _controller.SaveConfiguration();
+        }
     }
 
     /// <summary>
@@ -230,8 +242,11 @@ public sealed partial class PreferencesPage : UserControl
     /// <param name="args">NumberBoxValueChangedEventArgs</param>
     private void NumSpeedLimit_ValueChanged(NumberBox sender, NumberBoxValueChangedEventArgs args)
     {
-        _controller.SpeedLimit = (uint)NumSpeedLimit.Value;
-        _controller.SaveConfiguration();
+        if(!_constructing)
+        {
+            _controller.SpeedLimit = (uint)NumSpeedLimit.Value;
+            _controller.SaveConfiguration();
+        }
     }
 
     /// <summary>
@@ -241,8 +256,11 @@ public sealed partial class PreferencesPage : UserControl
     /// <param name="e">RoutedEventArgs</param>
     private void ToggleUseAria_Toggled(object sender, RoutedEventArgs e)
     {
-        _controller.UseAria = ToggleUseAria.IsOn;
-        _controller.SaveConfiguration();
+        if(!_constructing)
+        {
+            _controller.UseAria = ToggleUseAria.IsOn;
+            _controller.SaveConfiguration();
+        }
     }
 
 
@@ -253,7 +271,10 @@ public sealed partial class PreferencesPage : UserControl
     /// <param name="e">RoutedEventArgs</param>
     private void ToggleEmbedMetadata_Toggled(object sender, RoutedEventArgs e)
     {
-        _controller.EmbedMetadata = ToggleEmbedMetadata.IsOn;
-        _controller.SaveConfiguration();
+        if(!_constructing)
+        {
+            _controller.EmbedMetadata = ToggleEmbedMetadata.IsOn;
+            _controller.SaveConfiguration();
+        }
     }
 }
