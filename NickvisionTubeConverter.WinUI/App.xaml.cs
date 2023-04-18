@@ -27,8 +27,8 @@ public partial class App : Application
         _mainWindowController.AppInfo.Name = "Nickvision Tube Converter";
         _mainWindowController.AppInfo.ShortName = "Tube Converter";
         _mainWindowController.AppInfo.Description = $"{_mainWindowController.Localizer["Description"]}.";
-        _mainWindowController.AppInfo.Version = "2023.4.2";
-        _mainWindowController.AppInfo.Changelog = "- Added a configurable speed limit that can be used to limit individual downloads\n- Added support for using aria2 as the downloader backend\n- Fixed an issue where not all logs were shown for a download\n- Fixed an issue where opening the Settings page with `Run in\nBackground` enabled would crash the app\n- Updated translations (Thanks everyone on Weblate!)";
+        _mainWindowController.AppInfo.Version = "2023.4.3-next";
+        _mainWindowController.AppInfo.Changelog = "- Updated translations (Thanks everyone on Weblate!)";
         _mainWindowController.AppInfo.GitHubRepo = new Uri("https://github.com/NickvisionApps/TubeConverter");
         _mainWindowController.AppInfo.IssueTracker = new Uri("https://github.com/NickvisionApps/TubeConverter/issues/new");
         _mainWindowController.AppInfo.SupportUrl = new Uri("https://github.com/NickvisionApps/TubeConverter/discussions");
