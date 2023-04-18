@@ -44,8 +44,6 @@ public sealed partial class PreferencesPage : UserControl
         CardTheme.Description = _controller.Localizer["ThemeDescription", "WinUI"];
         CardAllowBackground.Header = _controller.Localizer["AllowBackground"];
         CardAllowBackground.Description = _controller.Localizer["AllowBackgroundDescription"];
-        ToggleAllowBackground.OnContent = "";
-        ToggleAllowBackground.OffContent = "";
         CmbTheme.Items.Add(_controller.Localizer["ThemeLight"]);
         CmbTheme.Items.Add(_controller.Localizer["ThemeDark"]);
         CmbTheme.Items.Add(_controller.Localizer["ThemeSystem"]);
@@ -60,14 +58,10 @@ public sealed partial class PreferencesPage : UserControl
         CardSpeedLimit.Description = _controller.Localizer["SpeedLimit", "Description"];
         CardUseAria.Header = _controller.Localizer["UseAria"];
         CardUseAria.Description = _controller.Localizer["UseAria", "Description"];
-        ToggleUseAria.OnContent = "";
-        ToggleUseAria.OffContent = "";
         CardConverter.Header = _controller.Localizer["Converter"];
         CardConverter.Description = _controller.Localizer["Converter", "Description"];
         CardEmbedMetadata.Header = _controller.Localizer["EmbedMetadata"];
         CardEmbedMetadata.Description = _controller.Localizer["EmbedMetadata", "Description"];
-        ToggleEmbedMetadata.OnContent = "";
-        ToggleEmbedMetadata.OffContent = "";
         //Load Config
         CmbTheme.SelectedIndex = (int)_controller.Theme;
         ToggleAllowBackground.IsOn = _controller.RunInBackground;
