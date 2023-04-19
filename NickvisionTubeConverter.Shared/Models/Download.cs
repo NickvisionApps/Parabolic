@@ -316,7 +316,7 @@ public class Download
     {
         if (_progressCallback != null)
         {
-            var progressState = new DownloadProgressState()
+            var state = new DownloadProgressState()
             {
                 Status = DownloadProgressStatus.Other,
                 Progress = 0.0,
@@ -326,11 +326,11 @@ public class Download
             {
                 using var fs = new FileStream(_logPath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
                 using var sr = new StreamReader(fs);
-                progressState.Log = sr.ReadToEnd();
+                state.Log = sr.ReadToEnd();
                 sr.Close();
                 fs.Close();
             }
-            _progressCallback(progressState);
+            _progressCallback(state);
         }
     }
 
@@ -354,7 +354,7 @@ public class Download
                 {
                     total = entries["total_bytes_estimate"].As<double?>() ?? 1;
                 }
-                var progressState = new DownloadProgressState()
+                var state = new DownloadProgressState()
                 {
                     Status = entries["status"].As<string>() switch
                     {
@@ -369,11 +369,11 @@ public class Download
                 {
                     using var fs = new FileStream(_logPath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
                     using var sr = new StreamReader(fs);
-                    progressState.Log = sr.ReadToEnd();
+                    state.Log = sr.ReadToEnd();
                     sr.Close();
                     fs.Close();
                 }
-                _progressCallback(progressState);
+                _progressCallback(state);
             }
         }
     }
