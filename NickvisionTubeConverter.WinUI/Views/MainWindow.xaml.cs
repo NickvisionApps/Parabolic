@@ -1,7 +1,5 @@
 ﻿using H.NotifyIcon.Core;
 using Microsoft.UI;
-using Microsoft.UI.Composition;
-using Microsoft.UI.Composition.SystemBackdrops;
 using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
@@ -19,7 +17,6 @@ using System.Reflection;
 using System.Threading.Tasks;
 using Vanara.PInvoke;
 using Windows.Graphics;
-using WinRT;
 using WinRT.Interop;
 
 namespace NickvisionTubeConverter.WinUI.Views;
