@@ -1,4 +1,7 @@
-﻿namespace NickvisionTubeConverter.Shared.Models;
+﻿using System;
+using System.Runtime.InteropServices;
+
+namespace NickvisionTubeConverter.Shared.Models;
 
 /// <summary>
 /// Progress statuses for a download
@@ -14,7 +17,7 @@ public enum DownloadProgressStatus
 /// <summary>
 /// The progress state of a download
 /// </summary>
-public class DownloadProgressState
+public sealed class DownloadProgressState : IDisposable
 {
     /// <summary>
     /// The status of the download
@@ -32,6 +35,11 @@ public class DownloadProgressState
     /// The current log of the download
     /// </summary>
     public string Log { get; set; }
+    /// <summary>
+    /// GCHandle to pass to unmanaged code
+    /// </summary>
+    public GCHandle Handle { get; private set; }
+
 
     /// <summary>
     /// Constructs a DownloadProgressState
@@ -42,5 +50,12 @@ public class DownloadProgressState
         Progress = 0.0;
         Speed = 0.0;
         Log = "";
+        Handle = GCHandle.Alloc(this);
+    }
+
+    public void Dispose()
+    {
+        Handle.Free();
+        GC.SuppressFinalize(this);
     }
 }

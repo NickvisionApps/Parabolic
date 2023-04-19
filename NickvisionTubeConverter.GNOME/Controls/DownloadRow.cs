@@ -41,7 +41,7 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
     private readonly GSourceFunc _stopCallback;
     private readonly GSourceFunc _updateLogCallback;
     private readonly GSourceFunc _processingCallback;
-    private GSourceFunc? _downloadingCallback;
+    private readonly GSourceFunc _downloadingCallback;
     private bool? _previousEmbedMetadata;
     private bool _wasStopped;
     private DownloadProgressStatus _progressStatus;
@@ -193,7 +193,20 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
             vadjustment.SetValue(vadjustment.GetUpper() - vadjustment.GetPageSize());
             return false;
         };
-        _processingCallback = (d) =>
+        _downloadingCallback = (stateHandle) =>
+        {
+            var state = (DownloadProgressState)(GCHandle.FromIntPtr(stateHandle).Target);
+            if (!_processingCallbackRunning)
+            {
+                Progress = state.Progress;
+                _progressBar.SetFraction(state.Progress);
+                Speed = state.Speed;
+                var speedString = SpeedFormatter.GetString(state.Speed, _localizer);
+                _progressLabel.SetText(string.Format(_localizer["DownloadState", "Downloading"], state.Progress * 100, speedString));
+            }
+            return false;
+        };
+        _processingCallback = (x) =>
         {
             _progressBar.Pulse();
             if ((_progressStatus != DownloadProgressStatus.Processing && _progressStatus != DownloadProgressStatus.DownloadingAria) || IsDone)
@@ -236,19 +249,7 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
             switch (state.Status)
             {
                 case DownloadProgressStatus.Downloading:
-                    _downloadingCallback = (d) =>
-                    {
-                        if (!_processingCallbackRunning)
-                        {
-                            Progress = state.Progress;
-                            _progressBar.SetFraction(state.Progress);
-                            Speed = state.Speed;
-                            var speedString = SpeedFormatter.GetString(state.Speed, _localizer);
-                            _progressLabel.SetText(string.Format(_localizer["DownloadState", "Downloading"], state.Progress * 100, speedString));
-                        }
-                        return false;
-                    };
-                    g_idle_add(_downloadingCallback, 0);
+                    g_idle_add(_downloadingCallback, (IntPtr)state.Handle);
                     break;
                 case DownloadProgressStatus.DownloadingAria:
                     _progressLabel.SetText(_localizer["Downloading"]);
