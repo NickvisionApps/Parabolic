@@ -57,7 +57,7 @@ public class DownloadProgressState : IDisposable
     }
 
     /// <summary>
-    /// Frees resources used by the Account object
+    /// Frees resources used by the DownloadProgressState object
     /// </summary>
     public void Dispose()
     {
@@ -66,7 +66,7 @@ public class DownloadProgressState : IDisposable
     }
 
     /// <summary>
-    /// Frees resources used by the Account object
+    /// Frees resources used by the DownloadProgressState object
     /// </summary>
     protected virtual void Dispose(bool disposing)
     {
