@@ -40,7 +40,7 @@ public class DownloadProgressState : IDisposable
     /// <summary>
     /// GCHandle to pass to unmanaged code
     /// </summary>
-    public GCHandle Handle { get; init; }
+    public GCHandle? Handle { get; init; }
 
 
     /// <summary>
@@ -53,7 +53,10 @@ public class DownloadProgressState : IDisposable
         Progress = 0.0;
         Speed = 0.0;
         Log = "";
-        Handle = GCHandle.Alloc(this);
+        if(!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+        {
+            Handle = GCHandle.Alloc(this);
+        }
     }
 
     /// <summary>
@@ -76,7 +79,7 @@ public class DownloadProgressState : IDisposable
         }
         if (disposing)
         {
-            Handle.Free();
+            Handle?.Free();
         }
         _disposed = true;
     }

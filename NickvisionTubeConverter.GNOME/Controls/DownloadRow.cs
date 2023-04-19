@@ -195,7 +195,7 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
         };
         _downloadingCallback = (stateHandle) =>
         {
-            var state = (DownloadProgressState)(GCHandle.FromIntPtr(stateHandle).Target);
+            var state = (DownloadProgressState)(GCHandle.FromIntPtr(stateHandle).Target!);
             if (!_processingCallbackRunning)
             {
                 Progress = state.Progress;
@@ -204,6 +204,7 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
                 var speedString = SpeedFormatter.GetString(state.Speed, _localizer);
                 _progressLabel.SetText(string.Format(_localizer["DownloadState", "Downloading"], state.Progress * 100, speedString));
             }
+            state.Dispose();
             return false;
         };
         _processingCallback = (x) =>
@@ -249,7 +250,7 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
             switch (state.Status)
             {
                 case DownloadProgressStatus.Downloading:
-                    g_idle_add(_downloadingCallback, (IntPtr)state.Handle);
+                    g_idle_add(_downloadingCallback, (IntPtr)state.Handle!);
                     break;
                 case DownloadProgressStatus.DownloadingAria:
                     _progressLabel.SetText(_localizer["Downloading"]);

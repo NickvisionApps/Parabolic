@@ -135,14 +135,13 @@ public class Download
         {
             if (_progressCallback != null)
             {
-                using var state = new DownloadProgressState()
+                _progressCallback(new DownloadProgressState()
                 {
                     Status = DownloadProgressStatus.Other,
                     Progress = 0.0,
                     Speed = 0.0,
                     Log = localizer["FileExistsError"]
-                };
-                _progressCallback(state);
+                });
             }
             return false;
         }
@@ -253,14 +252,13 @@ public class Download
                 {
                     if (_useAria && _progressCallback != null)
                     {
-                        using var state = new DownloadProgressState()
+                        _progressCallback(new DownloadProgressState()
                         {
                             Status = DownloadProgressStatus.DownloadingAria,
                             Progress = 0.0,
                             Speed = 0.0,
                             Log = localizer["StartAria"]
-                        };
-                        _progressCallback(state);
+                        });
                     }
                     Python.Runtime.PyObject success_code = ytdlp.YoutubeDL(ytOpt).download(new List<string>() { VideoUrl });
                     if ((success_code.As<int?>() ?? 1) != 0)
@@ -318,7 +316,7 @@ public class Download
     {
         if (_progressCallback != null)
         {
-            using var state = new DownloadProgressState()
+            var state = new DownloadProgressState()
             {
                 Status = DownloadProgressStatus.Other,
                 Progress = 0.0,
@@ -356,7 +354,7 @@ public class Download
                 {
                     total = entries["total_bytes_estimate"].As<double?>() ?? 1;
                 }
-                using var progressState = new DownloadProgressState()
+                var state = new DownloadProgressState()
                 {
                     Status = entries["status"].As<string>() switch
                     {
@@ -371,11 +369,11 @@ public class Download
                 {
                     using var fs = new FileStream(_logPath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
                     using var sr = new StreamReader(fs);
-                    progressState.Log = sr.ReadToEnd();
+                    state.Log = sr.ReadToEnd();
                     sr.Close();
                     fs.Close();
                 }
-                _progressCallback(progressState);
+                _progressCallback(state);
             }
         }
     }
