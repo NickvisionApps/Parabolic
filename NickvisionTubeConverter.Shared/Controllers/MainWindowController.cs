@@ -301,18 +301,25 @@ public class MainWindowController : IDisposable
     }
 
     /// <summary>
+    /// Called to get total download progress (in range from 0 to 1)
+    /// </summary>
+    public double GetTotalProgress()
+    {
+        var result = 0.0;
+        foreach (var row in _downloadingRows)
+        {
+            result += row.Progress;
+        }
+        result /= (_downloadingRows.Count + _queuedRows.Count) > 0 ? (_downloadingRows.Count + _queuedRows.Count) : 1;
+        return result;
+    }
+
+    /// <summary>
     /// Called to get a string for background activity report
     /// </summary>
     public string GetBackgroundActivityReport()
     {
-        //Total Progress
-        var totalProgress = 0.0;
-        foreach (var row in _downloadingRows)
-        {
-            totalProgress += row.Progress;
-        }
-        totalProgress /= (_downloadingRows.Count + _queuedRows.Count) > 0 ? (_downloadingRows.Count + _queuedRows.Count) : 1;
-        //Total Speed
+        var totalProgress = GetTotalProgress();
         var totalSpeed = 0.0;
         foreach (var row in _downloadingRows)
         {

@@ -1,0 +1,52 @@
+diff --git a/libdbusmenu-glib/Makefile.am b/libdbusmenu-glib/Makefile.am
+index 2dea5f6..8733523 100644
+--- a/libdbusmenu-glib/Makefile.am
++++ b/libdbusmenu-glib/Makefile.am
+@@ -66,7 +66,7 @@ libdbusmenu_glib_la_LDFLAGS = \
+ libdbusmenu_glib_la_CFLAGS = \
+ 	$(DBUSMENUGLIB_CFLAGS) \
+ 	$(COVERAGE_CFLAGS) \
+-	-Wall -Werror -Wno-error=deprecated-declarations \
++	-Wall  -Wno-error=deprecated-declarations \
+ 	-DG_LOG_DOMAIN="\"LIBDBUSMENU-GLIB\""
+ 
+ libdbusmenu_glib_la_LIBADD = \
+diff --git a/libdbusmenu-glib/Makefile.in b/libdbusmenu-glib/Makefile.in
+index cc1c6dd..72b02be 100644
+--- a/libdbusmenu-glib/Makefile.in
++++ b/libdbusmenu-glib/Makefile.in
+@@ -498,7 +498,7 @@ libdbusmenu_glib_la_LDFLAGS = \
+ libdbusmenu_glib_la_CFLAGS = \
+ 	$(DBUSMENUGLIB_CFLAGS) \
+ 	$(COVERAGE_CFLAGS) \
+-	-Wall -Werror -Wno-error=deprecated-declarations \
++	-Wall  -Wno-error=deprecated-declarations \
+ 	-DG_LOG_DOMAIN="\"LIBDBUSMENU-GLIB\""
+ 
+ libdbusmenu_glib_la_LIBADD = \
+diff --git a/libdbusmenu-gtk/Makefile.am b/libdbusmenu-gtk/Makefile.am
+index 9a7a2b0..8b5ecde 100644
+--- a/libdbusmenu-gtk/Makefile.am
++++ b/libdbusmenu-gtk/Makefile.am
+@@ -66,7 +66,7 @@ libdbusmenu_gtk_la_CFLAGS = \
+ 	$(DBUSMENUGTK_CFLAGS) \
+ 	$(COVERAGE_CFLAGS) \
+ 	-I$(top_srcdir) \
+-	-Wall -Werror -Wno-error=deprecated-declarations \
++	-Wall  -Wno-error=deprecated-declarations \
+ 	-DG_LOG_DOMAIN="\"LIBDBUSMENU-GTK\""
+ 
+ libdbusmenu_gtk_la_LIBADD = \
+diff --git a/libdbusmenu-gtk/Makefile.in b/libdbusmenu-gtk/Makefile.in
+index 58ee568..2ce2216 100644
+--- a/libdbusmenu-gtk/Makefile.in
++++ b/libdbusmenu-gtk/Makefile.in
+@@ -507,7 +507,7 @@ libdbusmenu_gtk_la_CFLAGS = \
+ 	$(DBUSMENUGTK_CFLAGS) \
+ 	$(COVERAGE_CFLAGS) \
+ 	-I$(top_srcdir) \
+-	-Wall -Werror -Wno-error=deprecated-declarations \
++	-Wall  -Wno-error=deprecated-declarations \
+ 	-DG_LOG_DOMAIN="\"LIBDBUSMENU-GTK\""
+ 
+ libdbusmenu_gtk_la_LIBADD = \

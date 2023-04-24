@@ -45,11 +45,20 @@ public partial class MainWindow : Adw.ApplicationWindow
     [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
     private static partial void g_notification_set_icon(nint notification, nint icon);
 
+    [LibraryImport("libunity.so.9", StringMarshalling = StringMarshalling.Utf8)]
+    private static partial nint unity_launcher_entry_get_for_desktop_id(string desktop_id);
+    [LibraryImport("libunity.so.9", StringMarshalling = StringMarshalling.Utf8)]
+    private static partial void unity_launcher_entry_set_progress_visible(nint launcher, [MarshalAs(UnmanagedType.I1)] bool visibility);
+    [LibraryImport("libunity.so.9", StringMarshalling = StringMarshalling.Utf8)]
+    private static partial void unity_launcher_entry_set_progress(nint launcher, double progress);
+
     private readonly MainWindowController _controller;
     private readonly Adw.Application _application;
     private readonly nint _bus;
     private readonly GSourceFunc[] _rowCallbacks;
     private readonly GSourceFunc _backgroundSourceFunc;
+    private readonly GSourceFunc _libUnitySourceFunc;
+    private readonly nint _unityLauncher;
 
     private bool _isBackgroundStatusReported { get; set; }
 
@@ -101,6 +110,35 @@ public partial class MainWindow : Adw.ApplicationWindow
             }
         };
         _controller.RunInBackgroundChanged += RunInBackgroundChanged;
+        _libUnitySourceFunc = (x) => {
+            try
+            {
+                var progress = _controller.GetTotalProgress();
+                if (progress > 0 && progress < 1)
+                {
+                    unity_launcher_entry_set_progress_visible(_unityLauncher, true);
+                    unity_launcher_entry_set_progress(_unityLauncher, progress);
+                }
+                else
+                {
+                    unity_launcher_entry_set_progress_visible(_unityLauncher, false);
+                }
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        };
+        try
+        {
+            _unityLauncher = unity_launcher_entry_get_for_desktop_id(String.IsNullOrEmpty(Environment.GetEnvironmentVariable("SNAP")) ? $"{_controller.AppInfo.ID}.desktop" : "tube-converter.desktop");
+            g_timeout_add(1000, _libUnitySourceFunc, IntPtr.Zero);
+        }
+        catch (DllNotFoundException e)
+        {
+            _unityLauncher = IntPtr.Zero;
+        }
         SetTitle(_controller.AppInfo.ShortName);
         SetIconName(_controller.AppInfo.ID);
         if (_controller.IsDevVersion)

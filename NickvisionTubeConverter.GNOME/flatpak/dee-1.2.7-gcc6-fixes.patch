@@ -1,0 +1,36 @@
+diff -up dee-1.2.7/src/dee-serializable-model.c.fix dee-1.2.7/src/dee-serializable-model.c
+--- dee-1.2.7/src/dee-serializable-model.c.fix	2016-02-12 11:23:15.745512142 -0500
++++ dee-1.2.7/src/dee-serializable-model.c	2016-02-12 11:24:31.251827989 -0500
+@@ -1326,9 +1326,10 @@ dee_serializable_model_get_position (Dee
+ 
+   pos = 0;
+   _iter = dee_model_get_first_iter (self);
+-  while (!dee_model_is_last (self, iter) && iter != _iter)
++  while (!dee_model_is_last (self, iter) && iter != _iter) {
+     _iter = dee_model_next (self, _iter);
+     pos++;
++  }
+ 
+   if (iter == _iter)
+     return pos;
+diff -up dee-1.2.7/src/dee-shared-model.c.fix dee-1.2.7/src/dee-shared-model.c
+--- dee-1.2.7/src/dee-shared-model.c.fix	2016-02-12 11:27:13.807355094 -0500
++++ dee-1.2.7/src/dee-shared-model.c	2016-02-12 11:28:28.530678035 -0500
+@@ -1083,7 +1083,7 @@ on_clone_received (GObject      *source_
+   if (data != NULL)
+     {
+       const gchar **column_names;
+-      guint         i, n_column_names;
++      guint         i, n_column_names = 0;
+       GVariant     *vardict;
+       GVariantIter *iter;
+ 
+@@ -2242,7 +2242,7 @@ dee_shared_model_parse_serialized (GVari
+   GVariantIter   *vardict_schema_iter;
+   const gchar   **column_names;
+   gchar          *swarm_name;
+-  guint           i, n_cols;
++  guint           i, n_cols = 0;
+   gsize           tuple_items;
+ 
+   g_return_val_if_fail (data != NULL, NULL);
