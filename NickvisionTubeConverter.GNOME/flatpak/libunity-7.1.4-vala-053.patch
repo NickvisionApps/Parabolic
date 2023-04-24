@@ -1,0 +1,22 @@
+--- libunity-7.1.4/protocol/protocol-icon.vala.debug	2019-03-19 19:17:56.000000000 +0900
++++ libunity-7.1.4/protocol/protocol-icon.vala	2021-09-13 22:11:06.634930969 +0900
+@@ -185,7 +185,7 @@ public class AnnotatedIcon : Object, GLi
+   }
+ 
+   /* Added to GIcon interface in 2.37 */
+-  private Variant serialize ()
++  private Variant? serialize ()
+   {
+     Variant? ret = null;
+     return ret;
+--- libunity-7.1.4/src/unity-scope-channel.vala.debug	2019-03-19 19:18:05.000000000 +0900
++++ libunity-7.1.4/src/unity-scope-channel.vala	2021-09-13 22:16:25.440323188 +0900
+@@ -312,7 +312,7 @@ internal class ScopeChannel : Object
+           DBusSignalFlags.NONE, this.owner_changed);
+     }
+ 
+-    private void owner_changed (DBusConnection con, string sender_name,
++    private void owner_changed (DBusConnection con, string? sender_name,
+                                 string obj_path, string ifc_name,
+                                 string sig_name, Variant parameters)
+     {

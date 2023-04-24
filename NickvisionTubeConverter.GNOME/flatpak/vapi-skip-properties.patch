@@ -1,0 +1,15 @@
+Index: dee-1.2.7+17.10.20170616/vapi/Dee-1.0.metadata
+===================================================================
+--- dee-1.2.7+17.10.20170616.orig/vapi/Dee-1.0.metadata
++++ dee-1.2.7+17.10.20170616/vapi/Dee-1.0.metadata
+@@ -2,7 +2,9 @@ GListResultSet skip
+ GListResultSetClass skip
+ 
+ FilterModel
+-	.filter unowned
++        .filter skip // unsupported type for construct property
++Index
++        .reader skip // unsupported type for construct property
+ Model
+ 	.append skip=false
+ 	.build_named_row skip

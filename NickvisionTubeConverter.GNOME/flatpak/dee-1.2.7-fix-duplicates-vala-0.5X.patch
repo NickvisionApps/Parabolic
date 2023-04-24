@@ -1,0 +1,24 @@
+diff -up dee-1.2.7/vapi/Dee-1.0.metadata.spot dee-1.2.7/vapi/Dee-1.0.metadata
+--- dee-1.2.7/vapi/Dee-1.0.metadata.spot	2022-01-10 13:09:03.075105767 -0500
++++ dee-1.2.7/vapi/Dee-1.0.metadata	2022-01-10 13:10:20.477570607 -0500
+@@ -1,6 +1,10 @@
+ GListResultSet skip
+ GListResultSetClass skip
+ 
++Filter
++	.new skip
++	.destroy skip
++
+ FilterModel
+         .filter skip // unsupported type for construct property
+ Index
+@@ -22,6 +26,9 @@ Model
+ 	.get_tag skip
+ 	.set_tag skip
+ 	.clear_tag skip
++ModelReader
++	.destroy skip
++
+ 
+ SerializableParseFunc skip=false
+ Serializable

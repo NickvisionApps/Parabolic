@@ -1,0 +1,927 @@
+diff -up dee-1.2.7/configure.ac.dep dee-1.2.7/configure.ac
+--- dee-1.2.7/configure.ac.dep	2013-09-09 05:22:35.000000000 -0400
++++ dee-1.2.7/configure.ac	2019-09-05 11:17:15.833415732 -0400
+@@ -95,7 +95,7 @@ AC_FUNC_MMAP
+ AC_CHECK_FUNCS([memset munmap strcasecmp strdup])
+ 
+ PKG_CHECK_MODULES(DEE,
+-                  glib-2.0     >= 2.32
++                  glib-2.0     >= 2.38
+                   gthread-2.0  >= 2.32
+                   gobject-2.0  >= 2.32
+                   gio-2.0      >= 2.32
+diff -up dee-1.2.7/src/dee-analyzer.c.dep dee-1.2.7/src/dee-analyzer.c
+--- dee-1.2.7/src/dee-analyzer.c.dep	2012-11-08 05:13:46.000000000 -0500
++++ dee-1.2.7/src/dee-analyzer.c	2019-09-05 11:22:55.498031535 -0400
+@@ -45,13 +45,6 @@
+ #include <string.h>
+ #include "dee-analyzer.h"
+ 
+-G_DEFINE_TYPE (DeeAnalyzer,
+-               dee_analyzer,
+-               G_TYPE_OBJECT);
+-
+-#define DEE_ANALYZER_GET_PRIVATE(obj) \
+-  (G_TYPE_INSTANCE_GET_PRIVATE(obj, DEE_TYPE_ANALYZER, DeeAnalyzerPrivate))
+-
+ typedef struct {
+   DeeTermFilterFunc filter_func;
+   gpointer          data;
+@@ -76,6 +69,10 @@ enum
+   PROP_0,
+ };
+ 
++G_DEFINE_TYPE_WITH_PRIVATE (DeeAnalyzer,
++               dee_analyzer,
++               G_TYPE_OBJECT);
++
+ /*
+  * DeeAnalyzer forward declarations
+  */
+@@ -195,9 +192,6 @@ dee_analyzer_class_init (DeeAnalyzerClas
+   klass->add_term_filter = dee_analyzer_add_term_filter_real;
+   klass->collate_key = dee_analyzer_collate_key_real;
+   klass->collate_cmp = dee_analyzer_collate_cmp_real;
+-
+-  /* Add private data */
+-  g_type_class_add_private (obj_class, sizeof (DeeAnalyzerPrivate));
+ }
+ 
+ static void
+@@ -205,7 +199,7 @@ dee_analyzer_init (DeeAnalyzer *self)
+ {
+   DeeAnalyzerPrivate *priv;
+ 
+-  priv = self->priv = DEE_ANALYZER_GET_PRIVATE (self);
++  priv = self->priv = dee_analyzer_get_instance_private (self);
+   
+   priv->term_filters = NULL;
+   priv->term_pool = (DeeTermList*) g_object_new (DEE_TYPE_TERM_LIST, NULL);
+diff -up dee-1.2.7/src/dee-client.c.dep dee-1.2.7/src/dee-client.c
+--- dee-1.2.7/src/dee-client.c.dep	2012-11-08 05:13:46.000000000 -0500
++++ dee-1.2.7/src/dee-client.c	2019-09-05 11:42:29.972418434 -0400
+@@ -37,11 +37,6 @@
+ #include "dee-marshal.h"
+ #include "trace-log.h"
+ 
+-G_DEFINE_TYPE (DeeClient, dee_client, DEE_TYPE_PEER)
+-
+-#define GET_PRIVATE(o) \
+-      (G_TYPE_INSTANCE_GET_PRIVATE ((o), DEE_TYPE_CLIENT, DeeClientPrivate))
+-
+ /**
+  * DeeClientPrivate:
+  *
+@@ -69,6 +64,8 @@ enum
+   LAST_SIGNAL
+ };
+ 
++G_DEFINE_TYPE_WITH_PRIVATE (DeeClient, dee_client, DEE_TYPE_PEER)
++
+ //static guint32 _server_signals[LAST_SIGNAL] = { 0 };
+ 
+ /* Forwards */
+@@ -208,8 +205,6 @@ dee_client_class_init (DeeClientClass *k
+   GObjectClass *object_class = G_OBJECT_CLASS (klass);
+   DeePeerClass *peer_class = DEE_PEER_CLASS (klass);
+ 
+-  g_type_class_add_private (klass, sizeof (DeeClientPrivate));
+-
+   object_class->constructed    = dee_client_constructed;
+   object_class->get_property   = dee_client_get_property;
+   object_class->set_property   = dee_client_set_property;
+@@ -238,7 +233,7 @@ dee_client_class_init (DeeClientClass *k
+ static void
+ dee_client_init (DeeClient *self)
+ {
+-  self->priv = GET_PRIVATE (self);
++  self->priv = dee_client_get_instance_private (self);
+ }
+ 
+ /**
+diff -up dee-1.2.7/src/dee-file-resource-manager.c.dep dee-1.2.7/src/dee-file-resource-manager.c
+--- dee-1.2.7/src/dee-file-resource-manager.c.dep	2012-11-08 05:13:46.000000000 -0500
++++ dee-1.2.7/src/dee-file-resource-manager.c	2019-09-05 11:30:57.925525012 -0400
+@@ -41,14 +41,6 @@
+ #include "trace-log.h"
+ 
+ static void dee_file_resource_manager_resource_manager_iface_init (DeeResourceManagerIface *iface);
+-G_DEFINE_TYPE_WITH_CODE (DeeFileResourceManager,
+-                         dee_file_resource_manager,
+-                         G_TYPE_OBJECT,
+-                         G_IMPLEMENT_INTERFACE (DEE_TYPE_RESOURCE_MANAGER,
+-                                                dee_file_resource_manager_resource_manager_iface_init))
+-
+-#define DEE_FILE_RESOURCE_MANAGER_GET_PRIVATE(obj) \
+-  (G_TYPE_INSTANCE_GET_PRIVATE(obj, DEE_TYPE_FILE_RESOURCE_MANAGER, DeeFileResourceManagerPrivate))
+ 
+ enum
+ {
+@@ -66,13 +58,20 @@ typedef struct
+   GHashTable *monitors_by_id;
+ } DeeFileResourceManagerPrivate;
+ 
++G_DEFINE_TYPE_WITH_CODE (DeeFileResourceManager,
++                         dee_file_resource_manager,
++                         G_TYPE_OBJECT,
++                         G_ADD_PRIVATE(DeeFileResourceManager)
++                         G_IMPLEMENT_INTERFACE (DEE_TYPE_RESOURCE_MANAGER,
++                                                dee_file_resource_manager_resource_manager_iface_init))
++
+ /* GObject Init */
+ static void
+ dee_file_resource_manager_finalize (GObject *object)
+ {
+   DeeFileResourceManagerPrivate *priv;
+   
+-  priv = DEE_FILE_RESOURCE_MANAGER_GET_PRIVATE (object);
++  priv = dee_file_resource_manager_get_instance_private ((DeeFileResourceManager*) object);
+   
+   g_slist_free_full (priv->resource_dirs, g_free);
+   priv->resource_dirs = NULL;
+@@ -121,7 +120,7 @@ dee_file_resource_manager_get_property (
+ {
+   DeeFileResourceManagerPrivate *priv;
+ 
+-  priv = DEE_FILE_RESOURCE_MANAGER_GET_PRIVATE (object);
++  priv = dee_file_resource_manager_get_instance_private ((DeeFileResourceManager *) object);
+ 
+   switch (id)
+     {
+@@ -156,9 +155,6 @@ dee_file_resource_manager_class_init (De
+                               G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY
+                               | G_PARAM_STATIC_STRINGS);
+   g_object_class_install_property (obj_class, PROP_PRIMARY_PATH, pspec);
+-
+-  /* Add private data */
+-  g_type_class_add_private (obj_class, sizeof (DeeFileResourceManagerPrivate));
+ }
+ 
+ static void
+@@ -166,7 +162,7 @@ dee_file_resource_manager_init (DeeFileR
+ {
+   DeeFileResourceManagerPrivate *priv;
+ 
+-  priv = DEE_FILE_RESOURCE_MANAGER_GET_PRIVATE (self);
++  priv = dee_file_resource_manager_get_instance_private (self);
+   priv->resource_dirs = NULL;
+   priv->monitors_by_id = g_hash_table_new_full(g_direct_hash,
+                                                g_direct_equal,
+@@ -222,7 +218,7 @@ dee_file_resource_manager_add_search_pat
+   g_return_if_fail (DEE_IS_FILE_RESOURCE_MANAGER (self));
+   g_return_if_fail (path != NULL);
+ 
+-  priv = DEE_FILE_RESOURCE_MANAGER_GET_PRIVATE (self);
++  priv = dee_file_resource_manager_get_instance_private ((DeeFileResourceManager *) self);
+   priv->resource_dirs = g_slist_append (priv->resource_dirs,
+                                         g_strdup (path));
+ }
+@@ -242,7 +238,7 @@ dee_file_resource_manager_get_primary_pa
+ 
+   g_return_val_if_fail (DEE_IS_FILE_RESOURCE_MANAGER (self), NULL);
+ 
+-  priv = DEE_FILE_RESOURCE_MANAGER_GET_PRIVATE (self);
++  priv = dee_file_resource_manager_get_instance_private ((DeeFileResourceManager *) self);
+   return (const gchar *) priv->resource_dirs->data;
+ }
+ 
+@@ -393,7 +389,7 @@ dee_file_resource_manager_load (DeeResou
+   g_return_val_if_fail (resource_name != NULL, NULL);
+   g_return_val_if_fail (error == NULL || *error == NULL, NULL);
+ 
+-  priv = DEE_FILE_RESOURCE_MANAGER_GET_PRIVATE (self);
++  priv = dee_file_resource_manager_get_instance_private ((DeeFileResourceManager *) self);
+ 
+   for (iter = priv->resource_dirs; iter != NULL; iter = iter->next)
+     {
+diff -up dee-1.2.7/src/dee-filter-model.c.dep dee-1.2.7/src/dee-filter-model.c
+--- dee-1.2.7/src/dee-filter-model.c.dep	2013-09-10 06:57:15.000000000 -0400
++++ dee-1.2.7/src/dee-filter-model.c	2019-09-05 11:32:21.687699629 -0400
+@@ -65,15 +65,6 @@
+ 
+ static void dee_filter_model_model_iface_init (DeeModelIface *iface);
+ 
+-G_DEFINE_TYPE_WITH_CODE (DeeFilterModel,
+-                         dee_filter_model,
+-                         DEE_TYPE_PROXY_MODEL,
+-                         G_IMPLEMENT_INTERFACE (DEE_TYPE_MODEL,
+-                                                dee_filter_model_model_iface_init));
+-
+-#define DEE_FILTER_MODEL_GET_PRIVATE(obj) \
+-  (G_TYPE_INSTANCE_GET_PRIVATE(obj, DEE_TYPE_FILTER_MODEL, DeeFilterModelPrivate))
+-
+ /**
+  * DeeFilterModelPrivate:
+  *
+@@ -107,6 +98,13 @@ enum
+   PROP_FILTER,
+ };
+ 
++G_DEFINE_TYPE_WITH_CODE (DeeFilterModel,
++                         dee_filter_model,
++                         DEE_TYPE_PROXY_MODEL,
++                         G_ADD_PRIVATE(DeeFilterModel)
++                         G_IMPLEMENT_INTERFACE (DEE_TYPE_MODEL,
++                                                dee_filter_model_model_iface_init));
++
+ /*
+  * DeeModel forward declarations
+  */
+@@ -332,9 +330,6 @@ dee_filter_model_class_init (DeeFilterMo
+                                 G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY
+                                 | G_PARAM_STATIC_STRINGS);
+   g_object_class_install_property (obj_class, PROP_FILTER, pspec);
+-
+-  /* Add private data */
+-  g_type_class_add_private (obj_class, sizeof (DeeFilterModelPrivate));
+ }
+ 
+ static void
+@@ -342,7 +337,7 @@ dee_filter_model_init (DeeFilterModel *s
+ {
+   DeeFilterModelPrivate *priv;
+ 
+-  priv = self->priv = DEE_FILTER_MODEL_GET_PRIVATE (self);
++  priv = self->priv = dee_filter_model_get_instance_private (self);
+   
+   priv->iter_map = g_hash_table_new (g_direct_hash, g_direct_equal);
+   priv->iter_list = g_sequence_new (NULL);
+diff -up dee-1.2.7/src/dee-glist-result-set.c.dep dee-1.2.7/src/dee-glist-result-set.c
+--- dee-1.2.7/src/dee-glist-result-set.c.dep	2012-11-08 05:13:46.000000000 -0500
++++ dee-1.2.7/src/dee-glist-result-set.c	2019-09-05 11:37:49.387557145 -0400
+@@ -32,14 +32,6 @@
+ #include "dee-glist-result-set.h"
+ 
+ static void dee_glist_result_set_result_set_iface_init (DeeResultSetIface *iface);
+-G_DEFINE_TYPE_WITH_CODE (DeeGListResultSet,
+-                         dee_glist_result_set,
+-                         G_TYPE_OBJECT,
+-                         G_IMPLEMENT_INTERFACE (DEE_TYPE_RESULT_SET,
+-                                                dee_glist_result_set_result_set_iface_init))
+-
+-#define DEE_GLIST_RESULT_SET_GET_PRIVATE(obj) \
+-  (G_TYPE_INSTANCE_GET_PRIVATE(obj, DEE_TYPE_GLIST_RESULT_SET, DeeGListResultSetPrivate))
+ 
+ typedef struct
+ {
+@@ -52,13 +44,20 @@ typedef struct
+   gboolean  n_rows_calculated;
+ } DeeGListResultSetPrivate;
+ 
++G_DEFINE_TYPE_WITH_CODE (DeeGListResultSet,
++                         dee_glist_result_set,
++                         G_TYPE_OBJECT,
++                         G_ADD_PRIVATE(DeeGListResultSet)
++                         G_IMPLEMENT_INTERFACE (DEE_TYPE_RESULT_SET,
++                                                dee_glist_result_set_result_set_iface_init))
++
+ /* GObject Init */
+ static void
+ dee_glist_result_set_finalize (GObject *object)
+ {
+   DeeGListResultSetPrivate *priv;
+   
+-  priv = DEE_GLIST_RESULT_SET_GET_PRIVATE (object);
++  priv = dee_glist_result_set_get_instance_private ((DeeGListResultSet *) object);
+   
+   if (priv->model)
+     g_object_unref (priv->model);
+@@ -74,9 +73,6 @@ dee_glist_result_set_class_init (DeeGLis
+   GObjectClass  *obj_class = G_OBJECT_CLASS (klass);
+ 
+   obj_class->finalize     = dee_glist_result_set_finalize;
+-
+-  /* Add private data */
+-  g_type_class_add_private (obj_class, sizeof (DeeGListResultSetPrivate));
+ }
+ 
+ static void
+@@ -84,7 +80,7 @@ dee_glist_result_set_init (DeeGListResul
+ {
+   DeeGListResultSetPrivate *priv;
+ 
+-  priv = DEE_GLIST_RESULT_SET_GET_PRIVATE (self);
++  priv = dee_glist_result_set_get_instance_private (self);
+   priv->pos = 0;
+   priv->n_rows_calculated = FALSE;
+ }
+@@ -96,7 +92,7 @@ dee_glist_result_set_get_n_rows (DeeResu
+   
+   g_return_val_if_fail (DEE_IS_GLIST_RESULT_SET (self), 0);
+   
+-  priv = DEE_GLIST_RESULT_SET_GET_PRIVATE (self);
++  priv = dee_glist_result_set_get_instance_private ((DeeGListResultSet *) self);
+   
+   if (!priv->n_rows_calculated)
+     {
+@@ -116,7 +112,7 @@ dee_glist_result_set_next (DeeResultSet
+   g_return_val_if_fail (DEE_IS_GLIST_RESULT_SET (self), NULL);
+   g_return_val_if_fail (dee_result_set_has_next (self), NULL);
+   
+-  priv = DEE_GLIST_RESULT_SET_GET_PRIVATE (self);
++  priv = dee_glist_result_set_get_instance_private ((DeeGListResultSet *) self);
+   next = dee_result_set_peek (self);
+   priv->cursor = priv->cursor->next;
+   priv->pos++;
+@@ -130,7 +126,7 @@ dee_glist_result_set_has_next (DeeResult
+   
+   g_return_val_if_fail (DEE_IS_GLIST_RESULT_SET (self), FALSE);
+   
+-  priv = DEE_GLIST_RESULT_SET_GET_PRIVATE (self);
++  priv = dee_glist_result_set_get_instance_private ((DeeGListResultSet *) self);
+ 
+   return priv->cursor != NULL;
+ }
+@@ -142,7 +138,7 @@ dee_glist_result_set_peek (DeeResultSet
+   
+   g_return_val_if_fail (DEE_IS_GLIST_RESULT_SET (self), NULL);
+   
+-  priv = DEE_GLIST_RESULT_SET_GET_PRIVATE (self);
++  priv = dee_glist_result_set_get_instance_private ((DeeGListResultSet *) self);
+ 
+   if (priv->cursor == NULL)
+     return NULL;
+@@ -158,7 +154,7 @@ dee_glist_result_set_seek (DeeResultSet
+   
+   g_return_if_fail (DEE_IS_GLIST_RESULT_SET (self));
+   
+-  priv = DEE_GLIST_RESULT_SET_GET_PRIVATE (self);
++  priv = dee_glist_result_set_get_instance_private ((DeeGListResultSet *) self);
+   priv->cursor = g_list_nth (priv->rows, pos);
+   priv->pos = pos;
+ 
+@@ -177,7 +173,7 @@ dee_glist_result_set_tell (DeeResultSet
+   
+   g_return_val_if_fail (DEE_IS_GLIST_RESULT_SET (self), 0);
+   
+-  priv = DEE_GLIST_RESULT_SET_GET_PRIVATE (self);
++  priv = dee_glist_result_set_get_instance_private ((DeeGListResultSet *) self);
+   return priv->pos;
+ }
+ 
+@@ -188,7 +184,7 @@ dee_glist_result_set_get_model (DeeResul
+ 
+   g_return_val_if_fail (DEE_IS_GLIST_RESULT_SET (self), NULL);
+ 
+-  priv = DEE_GLIST_RESULT_SET_GET_PRIVATE (self);
++  priv = dee_glist_result_set_get_instance_private ((DeeGListResultSet *) self);
+   return priv->model;
+ }
+ 
+@@ -216,7 +212,7 @@ dee_glist_result_set_new (GList    *rows
+   DeeGListResultSetPrivate *priv;
+ 
+   self = g_object_new (DEE_TYPE_GLIST_RESULT_SET, NULL);
+-  priv = DEE_GLIST_RESULT_SET_GET_PRIVATE (self);
++  priv = dee_glist_result_set_get_instance_private ((DeeGListResultSet *) self);
+   priv->rows = rows;
+   priv->cursor = rows;
+   priv->model = g_object_ref (model);
+diff -up dee-1.2.7/src/dee-hash-index.c.dep dee-1.2.7/src/dee-hash-index.c
+--- dee-1.2.7/src/dee-hash-index.c.dep	2012-11-08 05:13:46.000000000 -0500
++++ dee-1.2.7/src/dee-hash-index.c	2019-09-05 11:38:58.981034578 -0400
+@@ -37,11 +37,6 @@
+ #include "dee-glist-result-set.h"
+ #include "trace-log.h"
+ 
+-G_DEFINE_TYPE (DeeHashIndex, dee_hash_index, DEE_TYPE_INDEX);
+-
+-#define DEE_HASH_INDEX_GET_PRIVATE(obj) \
+-  (G_TYPE_INSTANCE_GET_PRIVATE(obj, DEE_TYPE_HASH_INDEX, DeeHashIndexPrivate))
+-
+ /*
+  * FORWARDS
+  */
+@@ -102,6 +97,8 @@ enum
+   PROP_0,
+ };
+ 
++G_DEFINE_TYPE_WITH_PRIVATE (DeeHashIndex, dee_hash_index, DEE_TYPE_INDEX);
++
+ /* GObject stuff */
+ static void
+ dee_hash_index_finalize (GObject *object)
+@@ -180,15 +177,12 @@ dee_hash_index_class_init (DeeHashIndexC
+   idx_class->get_n_rows  = dee_hash_index_get_n_rows;
+   idx_class->get_n_rows_for_term = dee_hash_index_get_n_rows_for_term;
+   idx_class->get_supported_term_match_flags  = dee_hash_index_get_supported_term_match_flags;
+-
+-  /* Add private data */
+-  g_type_class_add_private (obj_class, sizeof (DeeHashIndexPrivate));
+ }
+ 
+ static void
+ dee_hash_index_init (DeeHashIndex *self)
+ {
+-  self->priv = DEE_HASH_INDEX_GET_PRIVATE (self);
++  self->priv = dee_hash_index_get_instance_private (self);
+ 
+   self->priv->terms = g_hash_table_new (g_str_hash, g_str_equal);
+   self->priv->row_terms = g_hash_table_new_full(g_direct_hash, g_direct_equal,
+diff -up dee-1.2.7/src/dee-index.c.dep dee-1.2.7/src/dee-index.c
+--- dee-1.2.7/src/dee-index.c.dep	2012-11-08 05:13:46.000000000 -0500
++++ dee-1.2.7/src/dee-index.c	2019-09-05 11:39:52.657860216 -0400
+@@ -43,11 +43,6 @@
+ #include "dee-marshal.h"
+ #include "trace-log.h"
+ 
+-G_DEFINE_ABSTRACT_TYPE (DeeIndex, dee_index, G_TYPE_OBJECT);
+-
+-#define DEE_INDEX_GET_PRIVATE(obj) \
+-  (G_TYPE_INSTANCE_GET_PRIVATE(obj, DEE_TYPE_INDEX, DeeIndexPrivate))
+-
+ /**
+  * DeeIndexPrivate:
+  *
+@@ -68,6 +63,8 @@ enum
+   PROP_READER
+ };
+ 
++G_DEFINE_ABSTRACT_TYPE_WITH_PRIVATE (DeeIndex, dee_index, G_TYPE_OBJECT);
++
+ /* GObject stuff */
+ static void
+ dee_index_finalize (GObject *object)
+@@ -195,15 +192,12 @@ dee_index_class_init (DeeIndexClass *kla
+                                  G_PARAM_WRITABLE | G_PARAM_CONSTRUCT_ONLY
+                                  | G_PARAM_STATIC_STRINGS);
+     g_object_class_install_property (obj_class, PROP_READER, pspec);
+-
+-  /* Add private data */
+-  g_type_class_add_private (obj_class, sizeof (DeeIndexPrivate));
+ }
+ 
+ static void
+ dee_index_init (DeeIndex *self)
+ {
+-  self->priv = DEE_INDEX_GET_PRIVATE (self);
++  self->priv = dee_index_get_instance_private (self);
+ }
+ 
+ /**
+diff -up dee-1.2.7/src/dee-peer.c.dep dee-1.2.7/src/dee-peer.c
+--- dee-1.2.7/src/dee-peer.c.dep	2013-07-21 18:27:22.000000000 -0400
++++ dee-1.2.7/src/dee-peer.c	2019-09-05 11:40:51.330576540 -0400
+@@ -62,11 +62,6 @@
+ #include "dee-marshal.h"
+ #include "trace-log.h"
+ 
+-G_DEFINE_TYPE (DeePeer, dee_peer, G_TYPE_OBJECT)
+-
+-#define DEE_PEER_GET_PRIVATE(obj) \
+-  (G_TYPE_INSTANCE_GET_PRIVATE(obj, DEE_TYPE_PEER, DeePeerPrivate))
+-
+ #define _DeePeerIter GSequenceIter
+ 
+ /**
+@@ -145,6 +140,8 @@ enum
+   LAST_SIGNAL
+ };
+ 
++G_DEFINE_TYPE_WITH_PRIVATE (DeePeer, dee_peer, G_TYPE_OBJECT)
++
+ static guint32 _peer_signals[LAST_SIGNAL] = { 0 };
+ 
+ /* Forwards */
+@@ -568,9 +565,6 @@ dee_peer_class_init (DeePeerClass *klass
+                                 G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY
+                                 | G_PARAM_STATIC_STRINGS);
+   g_object_class_install_property (obj_class, PROP_SWARM_OWNER, pspec);
+-
+-  /* Add private data */
+-  g_type_class_add_private (obj_class, sizeof (DeePeerPrivate));
+ }
+ 
+ static void
+@@ -578,7 +572,7 @@ dee_peer_init (DeePeer *peer)
+ {
+   DeePeerPrivate *priv;
+ 
+-  priv = peer->priv = DEE_PEER_GET_PRIVATE (peer);
++  priv = peer->priv = dee_peer_get_instance_private (peer);
+ 
+   priv->swarm_name = NULL;
+   priv->swarm_leader = NULL;
+diff -up dee-1.2.7/src/dee-proxy-model.c.dep dee-1.2.7/src/dee-proxy-model.c
+--- dee-1.2.7/src/dee-proxy-model.c.dep	2013-09-10 06:52:03.000000000 -0400
++++ dee-1.2.7/src/dee-proxy-model.c	2019-09-05 11:43:32.123058716 -0400
+@@ -43,15 +43,6 @@
+ 
+ static void dee_proxy_model_model_iface_init (DeeModelIface *iface);
+ 
+-G_DEFINE_TYPE_WITH_CODE (DeeProxyModel,
+-                         dee_proxy_model,
+-                         DEE_TYPE_SERIALIZABLE_MODEL,
+-                         G_IMPLEMENT_INTERFACE (DEE_TYPE_MODEL,
+-                                                dee_proxy_model_model_iface_init));
+-
+-#define DEE_PROXY_MODEL_GET_PRIVATE(obj) \
+-  (G_TYPE_INSTANCE_GET_PRIVATE(obj, DEE_TYPE_PROXY_MODEL, DeeProxyModelPrivate))
+-
+ enum
+ {
+   PROP_0,
+@@ -85,6 +76,13 @@ struct _DeeProxyModelPrivate
+   gulong     changeset_finished_handler;
+ };
+ 
++G_DEFINE_TYPE_WITH_CODE (DeeProxyModel,
++                         dee_proxy_model,
++                         DEE_TYPE_SERIALIZABLE_MODEL,
++                         G_ADD_PRIVATE(DeeProxyModel)
++                         G_IMPLEMENT_INTERFACE (DEE_TYPE_MODEL,
++                                                dee_proxy_model_model_iface_init));
++
+ #define DEE_PROXY_MODEL_BACK_END(model) (DEE_PROXY_MODEL(model)->priv->back_end)
+ #define SUPER_CLASS DEE_SERIALIZABLE_MODEL_CLASS (dee_proxy_model_parent_class)
+ 
+@@ -441,9 +439,6 @@ dee_proxy_model_class_init (DeeProxyMode
+                                 G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY
+                                 | G_PARAM_STATIC_STRINGS);
+   g_object_class_install_property (obj_class, PROP_INHERIT_SEQNUMS, pspec);
+-  
+-  /* Add private data */
+-  g_type_class_add_private (obj_class, sizeof (DeeProxyModelPrivate));
+ }
+ 
+ static void
+@@ -500,7 +495,7 @@ dee_proxy_model_init (DeeProxyModel *mod
+ {
+   DeeProxyModelPrivate *priv;
+ 
+-  priv = model->priv = DEE_PROXY_MODEL_GET_PRIVATE (model);
++  priv = model->priv = dee_proxy_model_get_instance_private (model);
+   priv->back_end = NULL;
+   priv->inherit_seqnums = TRUE;
+   
+diff -up dee-1.2.7/src/dee-sequence-model.c.dep dee-1.2.7/src/dee-sequence-model.c
+--- dee-1.2.7/src/dee-sequence-model.c.dep	2013-09-16 14:07:09.000000000 -0400
++++ dee-1.2.7/src/dee-sequence-model.c	2019-09-05 11:45:05.301020171 -0400
+@@ -49,15 +49,6 @@
+ 
+ static void dee_sequence_model_model_iface_init (DeeModelIface *iface);
+ 
+-G_DEFINE_TYPE_WITH_CODE (DeeSequenceModel,
+-                         dee_sequence_model,
+-                         DEE_TYPE_SERIALIZABLE_MODEL,
+-                         G_IMPLEMENT_INTERFACE (DEE_TYPE_MODEL,
+-                                                dee_sequence_model_model_iface_init));
+-
+-#define DEE_SEQUENCE_MODEL_GET_PRIVATE(obj) \
+-  (G_TYPE_INSTANCE_GET_PRIVATE(obj, DEE_TYPE_SEQUENCE_MODEL, DeeSequenceModelPrivate))
+-
+ /* Signal ids for emitting row update signals a just a smidgeon faster */
+ static guint sigid_row_added;
+ static guint sigid_row_removed;
+@@ -85,6 +76,13 @@ struct _DeeSequenceModelPrivate
+   gboolean   setting_many;
+ };
+ 
++G_DEFINE_TYPE_WITH_CODE (DeeSequenceModel,
++                         dee_sequence_model,
++                         DEE_TYPE_SERIALIZABLE_MODEL,
++                         G_ADD_PRIVATE(DeeSequenceModel)
++                         G_IMPLEMENT_INTERFACE (DEE_TYPE_MODEL,
++                                                dee_sequence_model_model_iface_init));
++
+ /*
+  * DeeModel forward declarations
+  */
+@@ -283,9 +281,6 @@ dee_sequence_model_class_init (DeeSequen
+   sigid_row_added = g_signal_lookup ("row-added", DEE_TYPE_MODEL);
+   sigid_row_removed = g_signal_lookup ("row-removed", DEE_TYPE_MODEL);
+   sigid_row_changed = g_signal_lookup ("row-changed", DEE_TYPE_MODEL);
+-
+-  /* Add private data */
+-  g_type_class_add_private (obj_class, sizeof (DeeSequenceModelPrivate));
+ }
+ 
+ static void
+@@ -327,7 +322,7 @@ dee_sequence_model_init (DeeSequenceMode
+ {
+   DeeSequenceModelPrivate *priv;
+ 
+-  priv = model->priv = DEE_SEQUENCE_MODEL_GET_PRIVATE (model);
++  priv = model->priv = dee_sequence_model_get_instance_private (model);
+   priv->sequence = g_sequence_new (NULL);
+   priv->tags = NULL;
+   priv->setting_many = FALSE;
+diff -up dee-1.2.7/src/dee-serializable-model.c.dep dee-1.2.7/src/dee-serializable-model.c
+--- dee-1.2.7/src/dee-serializable-model.c.dep	2019-09-05 11:17:15.831415776 -0400
++++ dee-1.2.7/src/dee-serializable-model.c	2019-09-05 11:46:05.331706803 -0400
+@@ -47,16 +47,6 @@
+ static void     dee_serializable_model_model_iface_init (DeeModelIface *iface);
+ static void     dee_serializable_model_serializable_iface_init (DeeSerializableIface *iface);
+ static GObject* dee_serializable_model_parse_serialized (GVariant *data);
+-G_DEFINE_ABSTRACT_TYPE_WITH_CODE (DeeSerializableModel,
+-                                  dee_serializable_model,
+-                                  G_TYPE_OBJECT,
+-                                  G_IMPLEMENT_INTERFACE (DEE_TYPE_MODEL,
+-                                                         dee_serializable_model_model_iface_init)
+-                                  G_IMPLEMENT_INTERFACE (DEE_TYPE_SERIALIZABLE,
+-                                                         dee_serializable_model_serializable_iface_init));
+-
+-#define DEE_SERIALIZABLE_MODEL_GET_PRIVATE(obj) \
+-  (G_TYPE_INSTANCE_GET_PRIVATE(obj, DEE_TYPE_SERIALIZABLE_MODEL, DeeSerializableModelPrivate))
+ 
+ #define MODEL_VARIANT_TYPE_1_0 G_VARIANT_TYPE ("(asaav(tt))")
+ #define MODEL_VARIANT_TYPE     G_VARIANT_TYPE ("(asaav(tt)a{sv})")
+@@ -80,6 +70,15 @@ struct _DeeSerializableModelPrivate
+   gboolean    inside_changeset;
+ };
+ 
++G_DEFINE_ABSTRACT_TYPE_WITH_CODE (DeeSerializableModel,
++                                  dee_serializable_model,
++                                  G_TYPE_OBJECT,
++                                  G_ADD_PRIVATE(DeeSerializableModel)
++                                  G_IMPLEMENT_INTERFACE (DEE_TYPE_MODEL,
++                                                         dee_serializable_model_model_iface_init)
++                                  G_IMPLEMENT_INTERFACE (DEE_TYPE_SERIALIZABLE,
++                                                         dee_serializable_model_serializable_iface_init));
++
+ typedef struct _FieldSchemaInfo FieldSchemaInfo;
+ 
+ struct _FieldSchemaInfo
+@@ -362,9 +361,6 @@ dee_serializable_model_class_init (DeeSe
+ 
+   sigid_changeset_started = g_signal_lookup ("changeset-started", DEE_TYPE_MODEL);
+   sigid_changeset_finished = g_signal_lookup ("changeset-finished", DEE_TYPE_MODEL);
+-
+-  /* Add private data */
+-  g_type_class_add_private (obj_class, sizeof (DeeSerializableModelPrivate));
+ }
+ 
+ static void
+@@ -372,7 +368,7 @@ dee_serializable_model_init (DeeSerializ
+ {
+   DeeSerializableModelPrivate *priv;
+ 
+-  priv = model->priv = DEE_SERIALIZABLE_MODEL_GET_PRIVATE (model);
++  priv = model->priv = dee_serializable_model_get_instance_private (model);
+ 
+   priv->seqnum = 0;
+ 
+diff -up dee-1.2.7/src/dee-server.c.dep dee-1.2.7/src/dee-server.c
+--- dee-1.2.7/src/dee-server.c.dep	2012-11-08 05:13:46.000000000 -0500
++++ dee-1.2.7/src/dee-server.c	2019-09-05 11:41:45.727386434 -0400
+@@ -39,11 +39,6 @@
+ #include "dee-marshal.h"
+ #include "trace-log.h"
+ 
+-G_DEFINE_TYPE (DeeServer, dee_server, DEE_TYPE_PEER)
+-
+-#define GET_PRIVATE(o) \
+-      (G_TYPE_INSTANCE_GET_PRIVATE ((o), DEE_TYPE_SERVER, DeeServerPrivate))
+-
+ #define ACTIVE_CONNECTIONS_KEY "dee-active-connections-list"
+ #define CONNECTION_ACCEPTED_KEY "dee-connection-accepted"
+ 
+@@ -78,6 +73,8 @@ enum
+   LAST_SIGNAL
+ };
+ 
++G_DEFINE_TYPE_WITH_PRIVATE (DeeServer, dee_server, DEE_TYPE_PEER)
++
+ //static guint32 _server_signals[LAST_SIGNAL] = { 0 };
+ static GHashTable *active_servers = NULL;
+ 
+@@ -397,8 +394,6 @@ dee_server_class_init (DeeServerClass *k
+   GObjectClass *object_class = G_OBJECT_CLASS (klass);
+   DeePeerClass *peer_class = DEE_PEER_CLASS (klass);
+ 
+-  g_type_class_add_private (klass, sizeof (DeeServerPrivate));
+-
+   object_class->constructed = dee_server_constructed;
+   object_class->get_property = dee_server_get_property;
+   object_class->set_property = dee_server_set_property;
+@@ -447,7 +442,7 @@ dee_server_class_init (DeeServerClass *k
+ static void
+ dee_server_init (DeeServer *self)
+ {
+-  self->priv = GET_PRIVATE (self);
++  self->priv = dee_server_get_instance_private (self);
+ 
+   self->priv->connection_id_map = g_hash_table_new_full (g_direct_hash,
+                                                          g_direct_equal,
+diff -up dee-1.2.7/src/dee-shared-model.c.dep dee-1.2.7/src/dee-shared-model.c
+--- dee-1.2.7/src/dee-shared-model.c.dep	2019-09-05 11:17:15.831415776 -0400
++++ dee-1.2.7/src/dee-shared-model.c	2019-09-05 11:46:58.495543664 -0400
+@@ -61,17 +61,6 @@ static void dee_shared_model_serializabl
+ 
+ static void dee_shared_model_model_iface_init        (DeeModelIface *iface);
+ 
+-G_DEFINE_TYPE_WITH_CODE (DeeSharedModel,
+-                         dee_shared_model,
+-                         DEE_TYPE_PROXY_MODEL,
+-                         G_IMPLEMENT_INTERFACE (DEE_TYPE_SERIALIZABLE,
+-                                                dee_shared_model_serializable_iface_init)
+-                         G_IMPLEMENT_INTERFACE (DEE_TYPE_MODEL,
+-                                                dee_shared_model_model_iface_init));
+-
+-#define DEE_SHARED_MODEL_GET_PRIVATE(obj) \
+-  (G_TYPE_INSTANCE_GET_PRIVATE(obj, DEE_TYPE_SHARED_MODEL, DeeSharedModelPrivate))
+-
+ #define COMMIT_VARIANT_TYPE   G_VARIANT_TYPE("(sasaavauay(tt))")
+ #define COMMIT_TUPLE_ITEMS    6
+ #define CLONE_VARIANT_TYPE    G_VARIANT_TYPE("(sasaavauay(tt)a{sv})")
+@@ -109,6 +98,15 @@ struct _DeeSharedModelPrivate
+   DeeSharedModelFlushMode flush_mode;
+ };
+ 
++G_DEFINE_TYPE_WITH_CODE (DeeSharedModel,
++                         dee_shared_model,
++                         DEE_TYPE_PROXY_MODEL,
++                         G_ADD_PRIVATE(DeeSharedModel)
++                         G_IMPLEMENT_INTERFACE (DEE_TYPE_SERIALIZABLE,
++                                                dee_shared_model_serializable_iface_init)
++                         G_IMPLEMENT_INTERFACE (DEE_TYPE_MODEL,
++                                                dee_shared_model_model_iface_init));
++
+ typedef struct
+ {
+   /* The revision type is: ROWS_ADDED, ROWS_REMOVED, or ROWS_CHANGED */
+@@ -806,9 +804,6 @@ dee_shared_model_class_init (DeeSharedMo
+                   G_TYPE_NONE, 2,
+                   G_TYPE_UINT64, G_TYPE_UINT64);
+ 
+-  /* Add private data */
+-  g_type_class_add_private (obj_class, sizeof (DeeSharedModelPrivate));
+-
+   /* Runtime-check that our defines are correct */
+   g_assert (g_variant_type_n_items (CLONE_VARIANT_TYPE) == CLONE_TUPLE_ITEMS);
+   g_assert (g_variant_type_n_items (COMMIT_VARIANT_TYPE) == COMMIT_TUPLE_ITEMS);
+@@ -819,7 +814,7 @@ dee_shared_model_init (DeeSharedModel *s
+ {
+   DeeSharedModelPrivate *priv;
+ 
+-  priv = self->priv = DEE_SHARED_MODEL_GET_PRIVATE (self);
++  priv = self->priv = dee_shared_model_get_instance_private (self);
+ 
+   priv->swarm = NULL;
+   priv->model_path = NULL;
+diff -up dee-1.2.7/src/dee-term-list.c.dep dee-1.2.7/src/dee-term-list.c
+--- dee-1.2.7/src/dee-term-list.c.dep	2012-11-08 05:13:46.000000000 -0500
++++ dee-1.2.7/src/dee-term-list.c	2019-09-05 11:47:44.472537770 -0400
+@@ -43,11 +43,6 @@
+ #include "dee-term-list.h"
+ #include "trace-log.h"
+ 
+-G_DEFINE_TYPE (DeeTermList, dee_term_list, G_TYPE_OBJECT);
+-
+-#define DEE_TERM_LIST_GET_PRIVATE(obj) \
+-  (G_TYPE_INSTANCE_GET_PRIVATE(obj, DEE_TYPE_TERM_LIST, DeeTermListPrivate))
+-
+ /*
+  * FORWARDS
+  */
+@@ -93,6 +88,8 @@ enum
+   PROP_0,
+ };
+ 
++G_DEFINE_TYPE_WITH_PRIVATE (DeeTermList, dee_term_list, G_TYPE_OBJECT);
++
+ #define CHECK_LAZY_SETUP(term_list) \
+   if (G_UNLIKELY(term_list->priv->chunk == NULL)) \
+     { \
+@@ -154,9 +151,6 @@ dee_term_list_class_init (DeeTermListCla
+                                 | G_PARAM_STATIC_STRINGS);
+   g_object_class_install_property (obj_class, PROP_FILTER, pspec);
+   */
+-
+-  /* Add private data */
+-  g_type_class_add_private (obj_class, sizeof (DeeTermListPrivate));
+ }
+ 
+ static void
+@@ -164,7 +158,7 @@ dee_term_list_init (DeeTermList *self)
+ {
+   DeeTermListPrivate *priv;
+ 
+-  priv = self->priv = DEE_TERM_LIST_GET_PRIVATE (self);
++  priv = self->priv = dee_term_list_get_instance_private (self);
+ 
+   /* The chunk and terms are allocated lazily, to make clone() work more
+    * eficiently */
+diff -up dee-1.2.7/src/dee-text-analyzer.c.dep dee-1.2.7/src/dee-text-analyzer.c
+--- dee-1.2.7/src/dee-text-analyzer.c.dep	2012-11-08 05:13:46.000000000 -0500
++++ dee-1.2.7/src/dee-text-analyzer.c	2019-09-05 11:48:34.262448464 -0400
+@@ -36,14 +36,6 @@
+ 
+ #include "dee-text-analyzer.h"
+ 
+-G_DEFINE_TYPE (DeeTextAnalyzer,
+-               dee_text_analyzer,
+-               DEE_TYPE_ANALYZER);
+-
+-#define DEE_TEXT_ANALYZER_GET_PRIVATE(obj) \
+-  (G_TYPE_INSTANCE_GET_PRIVATE(obj, DEE_TYPE_TEXT_ANALYZER, DeeTextAnalyzerPrivate))
+-
+-
+ /**
+  * DeeAnalyzerPrivate:
+  *
+@@ -59,6 +51,10 @@ enum
+   PROP_0,
+ };
+ 
++G_DEFINE_TYPE_WITH_PRIVATE (DeeTextAnalyzer,
++               dee_text_analyzer,
++               DEE_TYPE_ANALYZER);
++
+ /*
+  * DeeAnalyzer forward declarations
+  */
+@@ -88,15 +84,12 @@ dee_text_analyzer_class_init (DeeTextAna
+ 
+   a_class->tokenize = dee_text_analyzer_tokenize_real;
+   a_class->collate_key = dee_text_analyzer_collate_key_real;
+-
+-  /* Add private data */
+-  g_type_class_add_private (obj_class, sizeof (DeeTextAnalyzerPrivate));
+ }
+ 
+ static void
+ dee_text_analyzer_init (DeeTextAnalyzer *self)
+ {
+-  self->priv = DEE_TEXT_ANALYZER_GET_PRIVATE (self);
++  self->priv = dee_text_analyzer_get_instance_private (self);
+ }
+ 
+ /*
+diff -up dee-1.2.7/src/dee-transaction.c.dep dee-1.2.7/src/dee-transaction.c
+--- dee-1.2.7/src/dee-transaction.c.dep	2012-11-28 03:46:41.000000000 -0500
++++ dee-1.2.7/src/dee-transaction.c	2019-09-05 11:49:21.474415553 -0400
+@@ -403,12 +403,10 @@ static void dee_transaction_model_iface_
+ G_DEFINE_TYPE_WITH_CODE (DeeTransaction,
+                          dee_transaction,
+                          DEE_TYPE_SERIALIZABLE_MODEL,
++                         G_ADD_PRIVATE(DeeTransaction)
+                          G_IMPLEMENT_INTERFACE (DEE_TYPE_MODEL,
+                                                 dee_transaction_model_iface_init));
+ 
+-#define DEE_TRANSACTION_GET_PRIVATE(obj) \
+-  (G_TYPE_INSTANCE_GET_PRIVATE(obj, DEE_TYPE_TRANSACTION, DeeTransactionPrivate))
+-
+ enum
+ {
+   PROP_0,
+@@ -644,9 +642,6 @@ dee_transaction_class_init (DeeTransacti
+                                G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY
+                                | G_PARAM_STATIC_STRINGS);
+   g_object_class_install_property (obj_class, PROP_TARGET, pspec);
+-  
+-  /* Add private data */
+-  g_type_class_add_private (obj_class, sizeof (DeeTransactionPrivate));
+ }
+ 
+ static void
+@@ -695,7 +690,7 @@ dee_transaction_init (DeeTransaction *mo
+ {
+   DeeTransactionPrivate *priv;
+ 
+-  priv = model->priv = DEE_TRANSACTION_GET_PRIVATE (model);
++  priv = model->priv = dee_transaction_get_instance_private (model);
+   priv->target = NULL;
+   
+   priv->journal = g_hash_table_new (g_direct_hash, g_direct_equal);
+diff -up dee-1.2.7/src/dee-tree-index.c.dep dee-1.2.7/src/dee-tree-index.c
+--- dee-1.2.7/src/dee-tree-index.c.dep	2012-11-08 05:13:46.000000000 -0500
++++ dee-1.2.7/src/dee-tree-index.c	2019-09-05 11:50:32.860853766 -0400
+@@ -40,11 +40,6 @@
+ #include "dee-glist-result-set.h"
+ #include "trace-log.h"
+ 
+-G_DEFINE_TYPE (DeeTreeIndex, dee_tree_index, DEE_TYPE_INDEX);
+-
+-#define DEE_TREE_INDEX_GET_PRIVATE(obj) \
+-  (G_TYPE_INSTANCE_GET_PRIVATE(obj, DEE_TYPE_TREE_INDEX, DeeTreeIndexPrivate))
+-
+ /*
+  * FORWARDS
+  */
+@@ -310,6 +305,8 @@ enum
+   PROP_0,
+ };
+ 
++G_DEFINE_TYPE_WITH_PRIVATE (DeeTreeIndex, dee_tree_index, DEE_TYPE_INDEX);
++
+ /* GObject stuff */
+ static void
+ dee_tree_index_finalize (GObject *object)
+@@ -388,15 +385,12 @@ dee_tree_index_class_init (DeeTreeIndexC
+   idx_class->get_n_rows  = dee_tree_index_get_n_rows;
+   idx_class->get_n_rows_for_term = dee_tree_index_get_n_rows_for_term;
+   idx_class->get_supported_term_match_flags  = dee_tree_index_get_supported_term_match_flags;
+-
+-  /* Add private data */
+-  g_type_class_add_private (obj_class, sizeof (DeeTreeIndexPrivate));
+ }
+ 
+ static void
+ dee_tree_index_init (DeeTreeIndex *self)
+ {
+-  self->priv = DEE_TREE_INDEX_GET_PRIVATE (self);
++  self->priv = dee_tree_index_get_instance_private (self);
+ 
+   self->priv->terms = g_sequence_new ((GDestroyNotify) term_destroy);
+   self->priv->row_terms = g_hash_table_new_full(g_direct_hash, g_direct_equal,
