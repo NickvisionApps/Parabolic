@@ -150,17 +150,24 @@ _translate_meta PREFIX:
     print("\033[1m# Translating desktop and metainfo files\033[0m")
     resx_dir = (Path(os.getcwd()) / '../{{project_name}}.Shared/Resources/').resolve()
     regex = re.compile(r'Strings\.(.+)\.resx')
+    desktop_names = []
     desktop_comments = []
     desktop_keywords = []
+    meta_names = {}
     meta_summaries = {}
     meta_descriptions = {}
     for filename in os.listdir(resx_dir):
         regex_match = regex.search(filename)
         if regex_match:
-            lang_code = regex_match.group(1)
+            lang_code = regex_match.group(1).replace('-', '_')
             tree = ET.parse(f'{resx_dir}/{filename}')
             root = tree.getroot()
             for item in root.findall('./data'):
+                if item.attrib['name'] == 'ShortName':
+                    text = item.find('value').text
+                    if text:
+                        desktop_names.append(f'Name[{lang_code}]={text}')
+                        meta_names[lang_code] = ET.fromstring(f'<name xml:lang="{lang_code}">{text}</name>')
                 if item.attrib['name'] == 'Description':
                     text = item.find('value').text
                     if text:
@@ -169,7 +176,12 @@ _translate_meta PREFIX:
                 elif item.attrib['name'] == 'MetadataDescription.GTK':
                     text = ET.tostring(item.find('value'), encoding='unicode').strip()[7:-8]
                     if text:
-                        meta_descriptions[lang_code] = ET.fromstring(f'<p xml:lang="{lang_code}">{text}</p>')
+                        lines = text.split('\n')
+                        meta_descriptions[lang_code] = []
+                        for line in lines:
+                            text = line.strip()
+                            if text == "": continue
+                            meta_descriptions[lang_code].append(ET.fromstring(f'<p xml:lang="{lang_code}">{text}</p>'))
                 elif item.attrib['name'] == 'Keywords.GTK':
                     text = item.find('value').text
                     if text:
@@ -184,6 +196,9 @@ _translate_meta PREFIX:
         new_contents = contents.copy()
     j = 0
     for i in range(len(contents)):
+        if contents[i].startswith('Name='):
+            new_contents.insert(j + 1, "\n".join(desktop_names) + "\n")
+            j += 1
         if contents[i].startswith('Comment='):
             new_contents.insert(j + 1, "\n".join(desktop_comments) + "\n")
             j += 1
@@ -197,23 +212,26 @@ _translate_meta PREFIX:
 
     with open('{{builddir}}{{PREFIX}}/share/metainfo/{{app_id}}.metainfo.xml', 'r') as f:
         metainfo = ET.fromstring(''.join(f.readlines()))
+        for i, v in enumerate(meta_names.values()):
+            metainfo.insert(list(metainfo).index(metainfo.find('name')) + i + 1, v)
         for i, v in enumerate(meta_summaries.values()):
             metainfo.insert(list(metainfo).index(metainfo.find('summary')) + i + 1, v)
-        for v in meta_descriptions.values():
-            metainfo.find('description[1]').append(v)
+        for arr in meta_descriptions.values():
+            for element in arr:
+                metainfo.find('description[1]').append(element)
         ET.indent(metainfo, '  ')
     with open('{{builddir}}{{PREFIX}}/share/metainfo/{{app_id}}.metainfo.xml', 'w') as f:
         f.write('<?xml version="1.0" encoding="UTF-8"?>\n' + ET.tostring(metainfo, encoding='unicode'))
 
 # Generate sources files for Flatpak
-generate-flatpak-sources: _generate-flatpak-sources-just _generate-flatpak-sources-dotnet
+generate-flatpak-sources: _generate_flatpak_sources_just _generate_flatpak_sources_dotnet
 
-_generate-flatpak-sources-just:
+_generate_flatpak_sources_just:
     # Generating sources for just
     curl "https://raw.githubusercontent.com/casey/just/baa2dfcc6f180d123672544c5ed1aedc32608228/Cargo.lock" -o ./Cargo.lock
     flatpak-cargo-generator.py -o cargo-sources.json ./Cargo.lock
     rm ./Cargo.lock
 
-_generate-flatpak-sources-dotnet:
+_generate_flatpak_sources_dotnet:
     # Generating sources for dotnet
     flatpak-dotnet-generator.py nuget-sources.json {{project_name}}.GNOME.csproj

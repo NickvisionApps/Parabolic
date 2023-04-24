@@ -25,7 +25,7 @@ public partial class App : Application
         //AppInfo
         _mainWindowController.AppInfo.ID = "org.nickvision.tubeconverter";
         _mainWindowController.AppInfo.Name = "Nickvision Tube Converter";
-        _mainWindowController.AppInfo.ShortName = "Tube Converter";
+        _mainWindowController.AppInfo.ShortName = _mainWindowController.Localizer["ShortName"];
         _mainWindowController.AppInfo.Description = $"{_mainWindowController.Localizer["Description"]}.";
         _mainWindowController.AppInfo.Version = "2023.4.3-next";
         _mainWindowController.AppInfo.Changelog = "- Updated translations (Thanks everyone on Weblate!)";
