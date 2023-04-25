@@ -85,6 +85,7 @@
   <data name="Artists.Credits" xml:space="preserve">
     <!--ARTIST NAME(S) GOES HERE. SEPARATE WITH &#xA;-->
     <value>David Lapshin https://github.com/daudix-UFO
+Brage Fuglseth https://github.com/bragefuglseth
 marcin https://github.com/martin-desktops</value>
   </data>
   <data name="GitHubRepo" xml:space="preserve">
@@ -201,7 +202,9 @@ Fyodor Sobolev https://github.com/fsobolev</value>
     <value>God dag.</value>
   </data>
   <data name="DependencyDownload" xml:space="preserve">
-    <value>Laster ned påkrevde avhengigheter …</value>
+    <value>Laster ned påkrevde avhengigheter …
+
+(Dette kan ta litt tid.)</value>
   </data>
   <data name="DependencyError" xml:space="preserve">
     <value>Kunne ikke laste ned avhengigheter. Start programmet på ny og prøv igjen.</value>
@@ -220,7 +223,7 @@ Lukk Tube Converter og stopp kjørende nedlastinger?</value>
     <value>God morgen.</value>
   </data>
   <data name="DownloadState.Downloading" xml:space="preserve">
-    <value>Laster ned {0:f2}% ({1:N0} KiB/s)</value>
+    <value>Laster ned {0:f2}% ({1})</value>
   </data>
   <data name="OpenSaveFolder" xml:space="preserve">
     <value>Åpne lagringsmappe</value>
@@ -319,6 +322,142 @@ Oversettere:
   <data name="Developers.Credits" xml:space="preserve">
     <!--DEVELOPER NAME(S) GOES HERE. SEPARATE WITH &#xA;-->
     <value>Nicholas Logozzo https://github.com/nlogozzo
-Contributors on GitHub ❤️ https://github.com/NickvisionApps/TubeConverter/graphs/contributors</value>
+Bidragsytere på GitHub ❤️ https://github.com/NickvisionApps/TubeConverter/graphs/contributors</value>
+  </data>
+  <data name="OpenFile" xml:space="preserve">
+    <value>Åpne fil</value>
+  </data>
+  <data name="EnableSpeedLimit" xml:space="preserve">
+    <value>Skru på hastighetsgrense</value>
+  </data>
+  <data name="FileExistsError" xml:space="preserve">
+    <value>Filen finnes allerede, og overskriving er ikke tillatt</value>
+  </data>
+  <data name="Downloader" xml:space="preserve">
+    <value>Nedlaster</value>
+  </data>
+  <data name="StartAria" xml:space="preserve">
+    <value>Nedlasting med aria2 har startet</value>
+  </data>
+  <data name="UseAria" xml:space="preserve">
+    <value>Bruk aria2</value>
+  </data>
+  <data name="SpeedLimit.Description" xml:space="preserve">
+    <value>Denne grensen (i KiB/s) brukes for nedlastinger som har en hastighetsgrense påskrudd. Endring av verdien har ingen innvirkning på igangsatte nedlastinger.</value>
+  </data>
+  <data name="UseAria.Description" xml:space="preserve">
+    <value>Bruker aria2-nedlasteren, som kan være raskere, men du får ingen indikasjon om nedlatingsframdrift.</value>
+  </data>
+  <data name="Queued" xml:space="preserve">
+    <value>I kø</value>
+  </data>
+  <data name="Downloading" xml:space="preserve">
+    <value>Laster ned</value>
+  </data>
+  <data name="DownloadState.Waiting" xml:space="preserve">
+    <value>Venter …</value>
+  </data>
+  <data name="Completed" xml:space="preserve">
+    <value>Fullført</value>
+  </data>
+  <data name="DownloadFinished" xml:space="preserve">
+    <value>Nedlasting fullført</value>
+  </data>
+  <data name="DownloadFinished.Description" xml:space="preserve">
+    <value>{0} er nedlastet.</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Søk</value>
+  </data>
+  <data name="PasteFromClipboard" xml:space="preserve">
+    <value>Lim inn fra utklippstavlen</value>
+  </data>
+  <data name="Back" xml:space="preserve">
+    <value>Tilbake</value>
+  </data>
+  <data name="SelectSaveFolder" xml:space="preserve">
+    <value>Velg lagringsmappe</value>
+  </data>
+  <data name="CopyToClipboard" xml:space="preserve">
+    <value>Kopier til utklippstavlen</value>
+  </data>
+  <data name="LogCopied" xml:space="preserve">
+    <value>Nedlastingslogg kopiert til utklippstavlen</value>
+  </data>
+  <data name="SaveFolder.Field" xml:space="preserve">
+    <value>Lagre mappe</value>
+  </data>
+  <data name="SaveFolder.Invalid" xml:space="preserve">
+    <value>Lagre mappe (ugyldig)</value>
+  </data>
+  <data name="DownloadFinishedWithError" xml:space="preserve">
+    <value>Nedlasting fullført med feil</value>
+  </data>
+  <data name="ValidateUrl" xml:space="preserve">
+    <value>Bekreft</value>
+  </data>
+  <data name="DownloadFinishedWithError.Description" xml:space="preserve">
+    <value>{0} fullført med feil.</value>
+  </data>
+  <data name="Speed.KiBps" xml:space="preserve">
+    <value>{0:f1} KiB/s</value>
+  </data>
+  <data name="BackgroundActivityReport" xml:space="preserve">
+    <value>Nedlastinger: {0} — {1:f1}% ({2})</value>
+  </data>
+  <data name="Speed.GiBps" xml:space="preserve">
+    <value>{0:f1} GiB/s</value>
+  </data>
+  <data name="Speed.MiBps" xml:space="preserve">
+    <value>{0:f1} MiB/s</value>
+  </data>
+  <data name="Speed.Bps" xml:space="preserve">
+    <value>{0:f1} B/s</value>
+  </data>
+  <data name="FinishedWithErrors" xml:space="preserve">
+    <value>Noen nedlastinger ble fullført med feil.</value>
+  </data>
+  <data name="NoDownloadsRunning" xml:space="preserve">
+    <value>Ingen nedlastinger kjører</value>
+  </data>
+  <data name="AllowBackgroundDescription" xml:space="preserve">
+    <value>Skjul vinduet istedenfor å avslutte hvis nedlastinger kjører.</value>
+  </data>
+  <data name="SupportedSites" xml:space="preserve">
+    <value>Liste over støttede sider</value>
+  </data>
+  <data name="MatrixChat" xml:space="preserve">
+    <value>Matrix-sludring</value>
+  </data>
+  <data name="ViewLog" xml:space="preserve">
+    <value>Vis loggføring</value>
+  </data>
+  <data name="MaxNumberOfActiveDownloads" xml:space="preserve">
+    <value>Maks. antall aktive nedlastinger</value>
+  </data>
+  <data name="OverwriteExistingFiles" xml:space="preserve">
+    <value>Overskriv eksisterende filer</value>
+  </data>
+  <data name="SpeedLimit" xml:space="preserve">
+    <value>Hastighetsgrense</value>
+  </data>
+  <data name="ShortName" xml:space="preserve">
+    <!--Follow guidelines and/or common practices for your language translations to decide whether the app name should be translated/transliterated-->
+    <value>Tube-konverterer</value>
+  </data>
+  <data name="EditFilename" xml:space="preserve">
+    <value>Rediger filnavn</value>
+  </data>
+  <data name="AllowBackground" xml:space="preserve">
+    <value>Tillat kjøring i bakgrunnen</value>
+  </data>
+  <data name="Downloader.Description" xml:space="preserve">
+    <value>Tilpass nedlastingsinnstillinger.</value>
+  </data>
+  <data name="NumberVideos" xml:space="preserve">
+    <value>Videoantall</value>
+  </data>
+  <data name="AllowBackgroundDescription.GTK" xml:space="preserve">
+    <value>Skjul vinduet istedenfor å avslutte hvis nedlastinger kjører. Visning av bakgrunnsaktivitet krever GNOME 44+.</value>
   </data>
 </root>
