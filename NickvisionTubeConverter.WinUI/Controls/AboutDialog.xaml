@@ -29,6 +29,8 @@
                 </StackPanel>
             </StackPanel>
 
+            <InfoBar x:Name="InfoBar" Margin="0,6,0,0" Severity="Success"/>
+
             <labs:SettingsExpander x:Name="CardChangelog" Margin="0,9,0,0">
                 <labs:SettingsExpander.HeaderIcon>
                     <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xEC24;"/>
@@ -78,8 +80,6 @@
                     <labs:SettingsCard x:Name="CardLblCredits"/>
                 </labs:SettingsExpander.Items>
             </labs:SettingsExpander>
-
-            <InfoBar x:Name="InfoBar" Margin="0,3,0,0" Severity="Success"/>
         </StackPanel>
     </ScrollViewer>
 </ContentDialog>
