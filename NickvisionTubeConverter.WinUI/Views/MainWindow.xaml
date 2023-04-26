@@ -138,21 +138,21 @@
                                     </Grid.RowDefinitions>
 
                                     <StackPanel x:Name="SectionDownloading" Grid.Row="0" Orientation="Vertical" Spacing="6" Visibility="Collapsed">
-                                        <TextBlock x:Name="LblDownloading" Margin="8,0,0,0" Style="{ThemeResource NavigationViewItemHeaderTextStyle}" FontSize="16"/>
+                                        <TextBlock x:Name="LblDownloading" Margin="8,0,0,0" Style="{ThemeResource NavigationViewItemHeaderTextStyle}"/>
 
-                                        <ListView x:Name="ListDownloading" SelectionMode="None"/>
+                                        <ListView x:Name="ListDownloading" Margin="6,0,6,0" SelectionMode="None"/>
                                     </StackPanel>
 
                                     <StackPanel x:Name="SectionCompleted" Grid.Row="1" Orientation="Vertical" Spacing="6" Visibility="Collapsed">
-                                        <TextBlock x:Name="LblCompleted" Margin="8,0,0,0" Style="{ThemeResource NavigationViewItemHeaderTextStyle}" FontSize="16"/>
+                                        <TextBlock x:Name="LblCompleted" Margin="8,0,0,0" Style="{ThemeResource NavigationViewItemHeaderTextStyle}"/>
 
-                                        <ListView x:Name="ListCompleted" SelectionMode="None"/>
+                                        <ListView x:Name="ListCompleted" Margin="6,0,6,0" SelectionMode="None"/>
                                     </StackPanel>
 
                                     <StackPanel x:Name="SectionQueued" Grid.Row="2" Orientation="Vertical" Spacing="6" Visibility="Collapsed">
-                                        <TextBlock x:Name="LblQueued" Margin="8,0,0,0" Style="{ThemeResource NavigationViewItemHeaderTextStyle}" FontSize="16"/>
+                                        <TextBlock x:Name="LblQueued" Margin="8,0,0,0" Style="{ThemeResource NavigationViewItemHeaderTextStyle}"/>
 
-                                        <ListView x:Name="ListQueued" SelectionMode="None"/>
+                                        <ListView x:Name="ListQueued" Margin="6,0,6,0" SelectionMode="None"/>
                                     </StackPanel>
                                 </Grid>
                             </ScrollViewer>
