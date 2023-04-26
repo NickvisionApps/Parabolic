@@ -419,6 +419,7 @@ public sealed partial class MainWindow : Window
         SectionDownloading.Visibility = ListDownloading.Items.Count > 0 ? Visibility.Visible : Visibility.Collapsed;
         SectionCompleted.Visibility = ListCompleted.Items.Count > 0 ? Visibility.Visible : Visibility.Collapsed;
         SectionQueued.Visibility = ListQueued.Items.Count > 0 ? Visibility.Visible : Visibility.Collapsed;
+        LblStatus.Text = string.Format(_controller.Localizer["RemainingDownloads"], _controller.RemainingDownloads);
     }
 
     /// <summary>
@@ -447,6 +448,8 @@ public sealed partial class MainWindow : Window
         if (await addDialog.ShowAsync())
         {
             ViewStack.ChangePage("Downloads");
+            IconStatus.Glyph = "\uE118";
+            LblStatus.Text = string.Format(_controller.Localizer["RemainingDownloads"], _controller.RemainingDownloads);
             foreach (var download in addController.Downloads)
             {
                 _controller.AddDownload(download);

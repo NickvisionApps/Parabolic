@@ -57,6 +57,10 @@ public class MainWindowController : IDisposable
     /// Whether to allow running in the background
     /// </summary>
     public bool RunInBackground => Configuration.Current.RunInBackground;
+    /// <summary>
+    /// The number of remaining downloads (Downloads + Queue)
+    /// </summary>
+    public int RemainingDownloads => _downloadingRows.Count + _queuedRows.Count;
 
     /// <summary>
     /// Occurs when a notification is sent
