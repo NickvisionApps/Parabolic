@@ -163,15 +163,17 @@
 
             <InfoBar x:Name="InfoBar" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,6"/>
 
-            <wct:Loading x:Name="Loading" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="6,0,6,0" Background="{ThemeResource AcrylicBackgroundFillColorDefaultBrush}" CornerRadius="8" IsLoading="False">
-                <Grid>
-                    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical" Spacing="20">
-                        <ProgressRing Width="50" Height="50" IsActive="True"/>
+            <Border x:Name="BorderLoading" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="6,0,6,0" Background="{ThemeResource AcrylicBackgroundFillColorDefaultBrush}" CornerRadius="8" Visibility="Collapsed">
+                <wct:Loading x:Name="Loading" IsLoading="False">
+                    <Grid>
+                        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical" Spacing="20">
+                            <ProgressRing Width="50" Height="50" IsActive="True"/>
 
-                        <TextBlock x:Name="LblLoading" HorizontalAlignment="Center" TextWrapping="WrapWholeWords" TextAlignment="Center"/>
-                    </StackPanel>
-                </Grid>
-            </wct:Loading>
+                            <TextBlock x:Name="LblLoading" HorizontalAlignment="Center" TextWrapping="WrapWholeWords" TextAlignment="Center"/>
+                        </StackPanel>
+                    </Grid>
+                </wct:Loading>
+            </Border>
         </Grid>
 
         <Border x:Name="StatusBar" Grid.Row="2" HorizontalAlignment="Stretch" Margin="0,6,0,0" Height="36" Background="{ThemeResource CardBackgroundFillColorDefaultBrush}" BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}" BorderThickness="1">

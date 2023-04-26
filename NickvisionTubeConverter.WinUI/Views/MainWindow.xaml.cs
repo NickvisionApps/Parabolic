@@ -129,12 +129,18 @@ public sealed partial class MainWindow : Window
         {
             //Start Loading
             MenuAddDownload.IsEnabled = false;
+            IconStatus.Glyph = "\uE12B";
+            LblStatus.Text = _controller.Localizer["DependencyDownload", "Short"];
             Loading.IsLoading = true;
+            BorderLoading.Visibility = Visibility.Visible;
             //Work
             await _controller.StartupAsync();
             //Done Loading
             MenuAddDownload.IsEnabled = true;
+            IconStatus.Glyph = "\uE73E";
+            LblStatus.Text = _controller.Localizer["StatusReady", "WinUI"];
             Loading.IsLoading = false;
+            BorderLoading.Visibility = Visibility.Collapsed;
             _isOpened = true;
         }
     }
