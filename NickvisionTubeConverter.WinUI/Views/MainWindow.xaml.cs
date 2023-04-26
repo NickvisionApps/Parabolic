@@ -280,7 +280,7 @@ public sealed partial class MainWindow : Window
     /// </summary>
     /// <param name="sender">object?</param>
     /// <param name="e">EventArgs</param>
-    private void ShowWindow(object? sender, EventArgs e) => AppWindow.Show();
+    private void ShowWindow(object? sender, EventArgs e) => DispatcherQueue.TryEnqueue(() => AppWindow.Show());
 
     /// <summary>
     /// Occurs when the TaskbarMenuQuit item is clicked
