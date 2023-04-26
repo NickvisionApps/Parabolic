@@ -110,7 +110,8 @@ public partial class MainWindow : Adw.ApplicationWindow
             }
         };
         _controller.RunInBackgroundChanged += RunInBackgroundChanged;
-        _libUnitySourceFunc = (x) => {
+        _libUnitySourceFunc = (x) =>
+        {
             try
             {
                 var progress = _controller.GetTotalProgress();

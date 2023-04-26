@@ -53,7 +53,7 @@ public class DownloadProgressState : IDisposable
         Progress = 0.0;
         Speed = 0.0;
         Log = "";
-        if(!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+        if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
         {
             Handle = GCHandle.Alloc(this);
         }

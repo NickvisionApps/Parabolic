@@ -177,7 +177,7 @@ public sealed partial class PreferencesPage : UserControl
     /// <param name="e">SelectionChangedEventArgs</param>
     private async void CmbTheme_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
-        if(!_constructing)
+        if (!_constructing)
         {
             if (_controller.Theme != (Theme)CmbTheme.SelectedIndex)
             {
@@ -208,7 +208,7 @@ public sealed partial class PreferencesPage : UserControl
     /// <param name="e">RoutedEventArgs</param>
     private void ToggleAllowBackground_Toggled(object sender, RoutedEventArgs e)
     {
-        if(!_constructing)
+        if (!_constructing)
         {
             _controller.RunInBackground = ToggleAllowBackground.IsOn;
             _controller.SaveConfiguration();
@@ -222,7 +222,7 @@ public sealed partial class PreferencesPage : UserControl
     /// <param name="e">SelectionChangedEventArgs</param>
     private void CmbMaxNumberOfActiveDownloads_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
-        if(!_constructing)
+        if (!_constructing)
         {
             _controller.MaxNumberOfActiveDownloads = CmbMaxNumberOfActiveDownloads.SelectedIndex + 1;
             _controller.SaveConfiguration();
@@ -236,7 +236,7 @@ public sealed partial class PreferencesPage : UserControl
     /// <param name="args">NumberBoxValueChangedEventArgs</param>
     private void NumSpeedLimit_ValueChanged(NumberBox sender, NumberBoxValueChangedEventArgs args)
     {
-        if(!_constructing)
+        if (!_constructing)
         {
             _controller.SpeedLimit = (uint)NumSpeedLimit.Value;
             _controller.SaveConfiguration();
@@ -250,7 +250,7 @@ public sealed partial class PreferencesPage : UserControl
     /// <param name="e">RoutedEventArgs</param>
     private void ToggleUseAria_Toggled(object sender, RoutedEventArgs e)
     {
-        if(!_constructing)
+        if (!_constructing)
         {
             _controller.UseAria = ToggleUseAria.IsOn;
             _controller.SaveConfiguration();
@@ -265,7 +265,7 @@ public sealed partial class PreferencesPage : UserControl
     /// <param name="e">RoutedEventArgs</param>
     private void ToggleEmbedMetadata_Toggled(object sender, RoutedEventArgs e)
     {
-        if(!_constructing)
+        if (!_constructing)
         {
             _controller.EmbedMetadata = ToggleEmbedMetadata.IsOn;
             _controller.SaveConfiguration();
