@@ -11,8 +11,8 @@
     mc:Ignorable="d" Style="{StaticResource DefaultContentDialogStyle}"
     DefaultButton="Primary">
 
-    <ScrollViewer x:Name="ScrollViewer" VerticalScrollBarVisibility="Auto" SizeChanged="ScrollViewer_SizeChanged">
-        <StackPanel x:Name="StackPanel" Orientation="Vertical" Spacing="6">
+    <ScrollViewer x:Name="ScrollViewer" VerticalScrollBarVisibility="Auto" MaxHeight="500" SizeChanged="ScrollViewer_SizeChanged">
+        <StackPanel x:Name="StackPanel" Orientation="Vertical" Spacing="6" MaxWidth="700">
             <nickvision:ViewStack x:Name="ViewStack" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" MinWidth="400">
                 <nickvision:ViewStack.Pages>
                     <nickvision:ViewStackPage x:Name="PageUrl" PageName="Url">
