@@ -5,8 +5,11 @@ using NickvisionTubeConverter.Shared.Controls;
 using NickvisionTubeConverter.Shared.Events;
 using NickvisionTubeConverter.Shared.Models;
 using System;
+using System.Diagnostics;
+using System.Globalization;
 using System.IO;
 using System.Runtime.InteropServices;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace NickvisionTubeConverter.GNOME.Views;
@@ -430,12 +433,98 @@ public partial class MainWindow : Adw.ApplicationWindow
     /// <param name="e">EventArgs</param>
     private void About(Gio.SimpleAction sender, EventArgs e)
     {
+        var debugInfo = new StringBuilder();
+        debugInfo.AppendLine(_controller.AppInfo.ID);
+        debugInfo.AppendLine(_controller.AppInfo.Version);
+        debugInfo.AppendLine($"GTK {Gtk.Functions.GetMajorVersion()}.{Gtk.Functions.GetMinorVersion()}.{Gtk.Functions.GetMicroVersion()}");
+        debugInfo.AppendLine($"libadwaita {Adw.Functions.GetMajorVersion()}.{Adw.Functions.GetMinorVersion()}.{Adw.Functions.GetMicroVersion()}");
+        if (File.Exists("/.flatpak-info"))
+        {
+            debugInfo.AppendLine("Flatpak");
+        }
+        else if (!String.IsNullOrEmpty(Environment.GetEnvironmentVariable("SNAP")))
+        {
+            debugInfo.AppendLine("Snap");
+        }
+        using (Python.Runtime.Py.GIL())
+        {
+            dynamic yt_dlp = Python.Runtime.Py.Import("yt_dlp");
+            debugInfo.AppendLine($"yt-dlp {yt_dlp.version.__version__.As<string>()}");
+        }
+        var ffmpegProcess = new Process
+        {
+            StartInfo = new ProcessStartInfo
+            {
+                FileName = "ffmpeg",
+                Arguments = "-version",
+                UseShellExecute = false,
+                RedirectStandardOutput = true
+            }
+        };
+        try
+        {
+            ffmpegProcess.Start();
+            var ffmpegVersion = ffmpegProcess.StandardOutput.ReadToEnd();
+            ffmpegProcess.WaitForExit();
+            ffmpegVersion = ffmpegVersion.Remove(ffmpegVersion.IndexOf(Environment.NewLine))
+                                         .Remove(ffmpegVersion.IndexOf("Copyright"))
+                                         .Trim();
+            debugInfo.AppendLine(ffmpegVersion);
+        }
+        catch
+        {
+            debugInfo.AppendLine("ffmpeg not found");
+        }
+        var ariaProcess = new Process
+        {
+            StartInfo = new ProcessStartInfo
+            {
+                FileName = "aria2c",
+                Arguments = "--version",
+                UseShellExecute = false,
+                RedirectStandardOutput = true
+            }
+        };
+        try
+        {
+            ariaProcess.Start();
+            var ariaVersion = ariaProcess.StandardOutput.ReadToEnd();
+            ariaProcess.WaitForExit();
+            ariaVersion = ariaVersion.Remove(ariaVersion.IndexOf(Environment.NewLine)).Trim();
+            debugInfo.AppendLine(ariaVersion);
+        }
+        catch
+        {
+            debugInfo.AppendLine("aria2c not found");
+        }
+        debugInfo.AppendLine(CultureInfo.CurrentCulture.ToString());
+        var localeProcess = new Process
+        {
+            StartInfo = new ProcessStartInfo
+            {
+                FileName = "locale",
+                UseShellExecute = false,
+                RedirectStandardOutput = true
+            }
+        };
+        try
+        {
+            localeProcess.Start();
+            var localeString = localeProcess.StandardOutput.ReadToEnd().Trim();
+            localeProcess.WaitForExit();
+            debugInfo.AppendLine(localeString);
+        }
+        catch
+        {
+            debugInfo.AppendLine("Unknown locale");
+        }
         var dialog = Adw.AboutWindow.New();
         dialog.SetTransientFor(this);
         dialog.SetIconName(_controller.AppInfo.ID);
         dialog.SetApplicationName(_controller.AppInfo.ShortName);
         dialog.SetApplicationIcon(_controller.AppInfo.ID + (_controller.AppInfo.GetIsDevelVersion() ? "-devel" : ""));
         dialog.SetVersion(_controller.AppInfo.Version);
+        dialog.SetDebugInfo(debugInfo.ToString());
         dialog.SetComments(_controller.AppInfo.Description);
         dialog.SetDeveloperName("Nickvision");
         dialog.SetLicenseType(Gtk.License.MitX11);
