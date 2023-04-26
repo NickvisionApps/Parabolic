@@ -48,7 +48,7 @@ public sealed partial class SettingsDialog : ContentDialog
         CardUseAria.Header = _controller.Localizer["UseAria"];
         CardUseAria.Description = _controller.Localizer["UseAria", "Description"];
         LblConverter.Text = _controller.Localizer["Converter"];
-        LblConverter.Text = _controller.Localizer["Converter", "Description"];
+        LblConverterDescription.Text = _controller.Localizer["Converter", "Description"];
         CardEmbedMetadata.Header = _controller.Localizer["EmbedMetadata"];
         CardEmbedMetadata.Description = _controller.Localizer["EmbedMetadata", "Description"];
         //Load Config
