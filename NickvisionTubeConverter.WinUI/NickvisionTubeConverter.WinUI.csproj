@@ -34,7 +34,7 @@
     <None Remove="Controls\ViewStack.xaml" />
     <None Remove="Controls\ViewStackPage.xaml" />
     <None Remove="Views\AddDownloadDialog.xaml" />
-    <None Remove="Views\PreferencesPage.xaml" />
+    <None Remove="Views\SettingsDialog.xaml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -88,11 +88,6 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Page Update="Views\PreferencesPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-  </ItemGroup>
-  <ItemGroup>
     <Page Update="Controls\ViewStack.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -109,6 +104,11 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Screenshots\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Views\SettingsDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Page Update="Controls\AboutDialog.xaml">

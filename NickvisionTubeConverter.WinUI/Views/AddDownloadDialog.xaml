@@ -11,8 +11,8 @@
     mc:Ignorable="d" Style="{StaticResource DefaultContentDialogStyle}"
     DefaultButton="Primary">
 
-    <ScrollViewer VerticalScrollBarVisibility="Auto">
-        <StackPanel Orientation="Vertical" Spacing="6">
+    <ScrollViewer x:Name="ScrollViewer" VerticalScrollBarVisibility="Auto" SizeChanged="ScrollViewer_SizeChanged">
+        <StackPanel x:Name="StackPanel" Orientation="Vertical" Spacing="6">
             <nickvision:ViewStack x:Name="ViewStack" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" MinWidth="400">
                 <nickvision:ViewStack.Pages>
                     <nickvision:ViewStackPage x:Name="PageUrl" PageName="Url">
@@ -42,7 +42,7 @@
                     </nickvision:ViewStackPage>
 
                     <nickvision:ViewStackPage x:Name="PageDonwload" PageName="Download">
-                        <StackPanel Margin="0,0,14,0" Orientation="Vertical" Spacing="6">
+                        <StackPanel Orientation="Vertical" Spacing="6">
                             <StackPanel Orientation="Horizontal" Spacing="6">
                                 <Button wct:DockPanel.Dock="Left" Click="Back">
                                     <Button.Content>

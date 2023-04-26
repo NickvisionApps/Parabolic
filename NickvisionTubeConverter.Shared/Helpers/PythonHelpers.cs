@@ -34,7 +34,7 @@ public static class PythonHelpers
             if (!File.Exists(pythonDllPath) || !Directory.Exists(pythonLibPath) || Configuration.Current.WinUIPythonVersion != version || (Configuration.Current.WinUIYtdlpVersion != new Version(2023, 3, 4)))
             {
                 Python.Deployment.Installer.InstallPath = pythonDirPath;
-                Python.Deployment.Installer.Source = new Python.Deployment.Installer.DownloadInstallationSource() { DownloadUrl = $"https://www.python.org/ftp/python/3.11.2/{pythonType}.zip" };
+                Python.Deployment.Installer.Source = new Python.Deployment.Installer.DownloadInstallationSource() { DownloadUrl = $"https://www.python.org/ftp/python/3.11.3/{pythonType}.zip" };
                 Python.Runtime.Runtime.PythonDLL = pythonDllPath;
                 if (Directory.Exists(pythonLibPath))
                 {

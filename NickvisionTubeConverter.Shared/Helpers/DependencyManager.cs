@@ -85,7 +85,7 @@ internal static class DependencyManager
                     Timeout = Timeout.InfiniteTimeSpan,
                 };
                 //Python
-                await PythonHelpers.DeployEmbeddedAsync(new Version("3.11.2"));
+                await PythonHelpers.DeployEmbeddedAsync(new Version("3.11.3"));
                 //Ffmpeg
                 var ffmpegVer = new Version(6, 0, 0);
                 if (!File.Exists(Ffmpeg) || Configuration.Current.WinUIFfmpegVersion != ffmpegVer)

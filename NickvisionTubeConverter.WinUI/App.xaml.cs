@@ -27,8 +27,8 @@ public partial class App : Application
         _mainWindowController.AppInfo.Name = "Nickvision Tube Converter";
         _mainWindowController.AppInfo.ShortName = _mainWindowController.Localizer["ShortName"];
         _mainWindowController.AppInfo.Description = $"{_mainWindowController.Localizer["Description"]}.";
-        _mainWindowController.AppInfo.Version = "2023.4.3-next";
-        _mainWindowController.AppInfo.Changelog = "- Updated translations (Thanks everyone on Weblate!)";
+        _mainWindowController.AppInfo.Version = "2023.5.0-next";
+        _mainWindowController.AppInfo.Changelog = "- Redesigned UI\n- Updated translations (Thanks everyone on Weblate!)";
         _mainWindowController.AppInfo.GitHubRepo = new Uri("https://github.com/NickvisionApps/TubeConverter");
         _mainWindowController.AppInfo.IssueTracker = new Uri("https://github.com/NickvisionApps/TubeConverter/issues/new");
         _mainWindowController.AppInfo.SupportUrl = new Uri("https://github.com/NickvisionApps/TubeConverter/discussions");
