@@ -52,7 +52,7 @@
                     <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE1E9;"/>
                 </labs:SettingsCard.HeaderIcon>
 
-                <ComboBox x:Name="CmbMaxNumberOfActiveDownloads"/>
+                <NumberBox x:Name="NumMaxNumberOfActiveDownloads" SpinButtonPlacementMode="Inline" Minimum="1" Maximum="10" Value="5" SmallChange="1" LargeChange="2" ValueChanged="NumMaxNumberOfActiveDownloads_ValueChanged"/>
             </labs:SettingsCard>
 
             <labs:SettingsCard x:Name="CardSpeedLimit">

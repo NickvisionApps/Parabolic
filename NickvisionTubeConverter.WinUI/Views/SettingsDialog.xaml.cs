@@ -39,10 +39,6 @@ public sealed partial class SettingsDialog : ContentDialog
         LblDownloader.Text = _controller.Localizer["Downloader"];
         LblDownloaderDescription.Text = _controller.Localizer["Downloader", "Description"];
         CardMaxNumberOfActiveDownloads.Header = _controller.Localizer["MaxNumberOfActiveDownloads"];
-        for (var i = 0; i < 10; i++)
-        {
-            CmbMaxNumberOfActiveDownloads.Items.Add(i + 1);
-        }
         CardSpeedLimit.Header = _controller.Localizer["SpeedLimit"];
         CardSpeedLimit.Description = _controller.Localizer["SpeedLimit", "Description"];
         CardUseAria.Header = _controller.Localizer["UseAria"];
@@ -54,7 +50,7 @@ public sealed partial class SettingsDialog : ContentDialog
         //Load Config
         CmbTheme.SelectedIndex = (int)_controller.Theme;
         ToggleAllowBackground.IsOn = _controller.RunInBackground;
-        CmbMaxNumberOfActiveDownloads.SelectedIndex = _controller.MaxNumberOfActiveDownloads - 1;
+        NumMaxNumberOfActiveDownloads.Value = _controller.MaxNumberOfActiveDownloads;
         NumSpeedLimit.Value = _controller.SpeedLimit;
         ToggleUseAria.IsOn = _controller.UseAria;
         ToggleEmbedMetadata.IsOn = _controller.EmbedMetadata;
@@ -76,7 +72,12 @@ public sealed partial class SettingsDialog : ContentDialog
                 needsRestart = true;
             }
             _controller.RunInBackground = ToggleAllowBackground.IsOn;
-            _controller.MaxNumberOfActiveDownloads = CmbMaxNumberOfActiveDownloads.SelectedIndex + 1;
+            var maxNumberOfActiveDownloads = (int)NumMaxNumberOfActiveDownloads.Value;
+            if(maxNumberOfActiveDownloads < 1 && (int)NumMaxNumberOfActiveDownloads.Value > 10)
+            {
+                maxNumberOfActiveDownloads = 5;
+            }
+            _controller.MaxNumberOfActiveDownloads = maxNumberOfActiveDownloads;
             _controller.SpeedLimit = (uint)NumSpeedLimit.Value;
             _controller.UseAria = ToggleUseAria.IsOn;
             _controller.EmbedMetadata = ToggleEmbedMetadata.IsOn;
@@ -108,4 +109,17 @@ public sealed partial class SettingsDialog : ContentDialog
     /// <param name="sender">object</param>
     /// <param name="e">SizeChangedEventArgs</param>
     private void ScrollViewer_SizeChanged(object sender, SizeChangedEventArgs e) => StackPanel.Margin = new Thickness(0, 0, ScrollViewer.ComputedVerticalScrollBarVisibility == Visibility.Visible ? 14 : 0, 0);
+
+    /// <summary>
+    /// Occurs when the NumMaxNumberOfActiveDownloads' value is changed
+    /// </summary>
+    /// <param name="sender">NumberBox</param>
+    /// <param name="args">NumberBoxValueChangedEventArgs</param>
+    private void NumMaxNumberOfActiveDownloads_ValueChanged(NumberBox sender, NumberBoxValueChangedEventArgs args)
+    {
+        if (NumMaxNumberOfActiveDownloads.Value % 1 != 0)
+        {
+            NumMaxNumberOfActiveDownloads.Value = Math.Round(NumMaxNumberOfActiveDownloads.Value);
+        }
+    }
 }
