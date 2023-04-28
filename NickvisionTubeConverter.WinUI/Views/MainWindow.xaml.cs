@@ -32,6 +32,7 @@ public sealed partial class MainWindow : Window
     private readonly MainWindowController _controller;
     private readonly IntPtr _hwnd;
     private bool _isActived;
+    private RoutedEventHandler? _notificationButtonClickEvent;
     private bool _closeAllowed;
     private TrayIconWithContextMenu? _taskbarIcon;
     private DispatcherTimer _timer;
@@ -324,6 +325,11 @@ public sealed partial class MainWindow : Window
             NotificationSeverity.Error => InfoBarSeverity.Error,
             _ => InfoBarSeverity.Informational
         };
+        if (_notificationButtonClickEvent != null)
+        {
+            BtnInfoBar.Click -= _notificationButtonClickEvent;
+        }
+        BtnInfoBar.Visibility = !string.IsNullOrEmpty(e.Action) ? Visibility.Visible : Visibility.Collapsed;
         InfoBar.IsOpen = true;
     }
 

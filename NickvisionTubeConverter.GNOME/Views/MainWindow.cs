@@ -227,7 +227,11 @@ public partial class MainWindow : Adw.ApplicationWindow
     /// </summary>
     /// <param name="sender">object?</param>
     /// <param name="e">NotificationSentEventArgs</param>
-    private void NotificationSent(object? sender, NotificationSentEventArgs e) => _toastOverlay.AddToast(Adw.Toast.New(e.Message));
+    private void NotificationSent(object? sender, NotificationSentEventArgs e)
+    {
+        var toast = Adw.Toast.New(e.Message);
+        _toastOverlay.AddToast(toast);
+    }
 
     /// <summary>
     /// Sends a shell notification

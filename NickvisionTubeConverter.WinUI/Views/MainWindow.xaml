@@ -161,7 +161,11 @@
                 </nickvision:ViewStack.Pages>
             </nickvision:ViewStack>
 
-            <InfoBar x:Name="InfoBar" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,6"/>
+            <InfoBar x:Name="InfoBar" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,6" CornerRadius="12">
+                <InfoBar.ActionButton>
+                    <Button x:Name="BtnInfoBar" HorizontalAlignment="Right"/>
+                </InfoBar.ActionButton>
+            </InfoBar>
 
             <Border x:Name="BorderLoading" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="6,0,6,0" Background="{ThemeResource AcrylicBackgroundFillColorDefaultBrush}" CornerRadius="8" Visibility="Collapsed">
                 <wct:Loading x:Name="Loading" IsLoading="False">
