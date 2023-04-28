@@ -136,7 +136,7 @@ public partial class MainWindow : Adw.ApplicationWindow
         };
         try
         {
-            _unityLauncher = unity_launcher_entry_get_for_desktop_id(String.IsNullOrEmpty(Environment.GetEnvironmentVariable("SNAP")) ? $"{_controller.AppInfo.ID}.desktop" : "tube-converter.desktop");
+            _unityLauncher = unity_launcher_entry_get_for_desktop_id(string.IsNullOrEmpty(Environment.GetEnvironmentVariable("SNAP")) ? $"{_controller.AppInfo.ID}.desktop" : "tube-converter.desktop");
             g_timeout_add(1000, _libUnitySourceFunc, IntPtr.Zero);
         }
         catch (DllNotFoundException e)
@@ -244,7 +244,7 @@ public partial class MainWindow : Adw.ApplicationWindow
             NotificationSeverity.Error => Gio.NotificationPriority.Urgent,
             _ => Gio.NotificationPriority.Normal
         });
-        if (String.IsNullOrEmpty(Environment.GetEnvironmentVariable("SNAP")))
+        if (string.IsNullOrEmpty(Environment.GetEnvironmentVariable("SNAP")))
         {
             notification.SetIcon(Gio.ThemedIcon.New($"{_controller.AppInfo.ID}-symbolic"));
         }
@@ -266,7 +266,7 @@ public partial class MainWindow : Adw.ApplicationWindow
     {
         if (_controller.AreDownloadsRunning)
         {
-            if (_controller.RunInBackground && (File.Exists("/.flatpak-info") || !String.IsNullOrEmpty(Environment.GetEnvironmentVariable("SNAP"))))
+            if (_controller.RunInBackground && (File.Exists("/.flatpak-info") || !string.IsNullOrEmpty(Environment.GetEnvironmentVariable("SNAP"))))
             {
                 SetVisible(false);
                 return true;
@@ -442,7 +442,7 @@ public partial class MainWindow : Adw.ApplicationWindow
         {
             debugInfo.AppendLine("Flatpak");
         }
-        else if (!String.IsNullOrEmpty(Environment.GetEnvironmentVariable("SNAP")))
+        else if (!string.IsNullOrEmpty(Environment.GetEnvironmentVariable("SNAP")))
         {
             debugInfo.AppendLine("Snap");
         }
