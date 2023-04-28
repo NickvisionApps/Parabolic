@@ -34,7 +34,7 @@ public sealed partial class MainWindow : Window
     private bool _isActived;
     private bool _closeAllowed;
     private TrayIconWithContextMenu? _taskbarIcon;
-    private DispatcherTimer _taskbarTimer;
+    private DispatcherTimer _timer;
 
     private enum Monitor_DPI_Type : int
     {
@@ -61,7 +61,7 @@ public sealed partial class MainWindow : Window
         _isActived = true;
         _closeAllowed = false;
         _taskbarIcon = null;
-        _taskbarTimer = new DispatcherTimer()
+        _timer = new DispatcherTimer()
         {
             Interval = new TimeSpan(0, 0, 1)
         };
@@ -72,7 +72,7 @@ public sealed partial class MainWindow : Window
         _controller.UIMoveDownloadRow = MoveDownloadRow;
         _controller.UIDeleteDownloadRowFromQueue = DeleteDownloadRowFromQueue;
         _controller.RunInBackgroundChanged += ToggleTaskbarIcon;
-        _taskbarTimer.Tick += TaskbarTimer_Tick;
+        _timer.Tick += Timer_Tick;
         //Set TitleBar
         TitleBarTitle.Text = _controller.AppInfo.ShortName;
         AppWindow.TitleBar.ExtendsContentIntoTitleBar = true;
@@ -135,6 +135,7 @@ public sealed partial class MainWindow : Window
             BorderLoading.Visibility = Visibility.Visible;
             //Work
             await _controller.StartupAsync();
+            _timer.Start();
             //Done Loading
             MenuAddDownload.IsEnabled = true;
             IconStatus.Glyph = "\uE73E";
@@ -198,7 +199,7 @@ public sealed partial class MainWindow : Window
             }
             else
             {
-                _taskbarTimer.Stop();
+                _timer.Stop();
                 _controller.StopAllDownloads();
                 _controller.Dispose();
                 _taskbarIcon?.Dispose();
@@ -298,7 +299,7 @@ public sealed partial class MainWindow : Window
         DispatcherQueue.TryEnqueue(() =>
         {
             _controller.StopAllDownloads();
-            _taskbarTimer.Stop();
+            _timer.Stop();
             _taskbarIcon!.Remove();
             AppWindow.Hide();
             _taskbarIcon!.Dispose();
@@ -374,11 +375,9 @@ public sealed partial class MainWindow : Window
                 ContextMenu = taskbarMenuPopup
             };
             _taskbarIcon.Create();
-            _taskbarTimer.Start();
         }
         else
         {
-            _taskbarTimer.Stop();
             _taskbarIcon?.Remove();
             _taskbarIcon?.Dispose();
             _taskbarIcon = null;
@@ -501,15 +500,19 @@ public sealed partial class MainWindow : Window
     }
 
     /// <summary>
-    /// Occurs when the taskbar timer ticks
+    /// Occurs when the timer ticks
     /// </summary>
     /// <param name="sender">object?</param>
     /// <param name="e">object</param>
-    private void TaskbarTimer_Tick(object? sender, object e)
+    private void Timer_Tick(object? sender, object e)
     {
         if (_taskbarIcon != null)
         {
-            _taskbarIcon.UpdateToolTip(_controller.GetBackgroundActivityReport());
+            _taskbarIcon.UpdateToolTip(_controller.BackgroundActivityReport);
+        }
+        if(_controller.AreDownloadsRunning)
+        {
+
         }
     }
 }

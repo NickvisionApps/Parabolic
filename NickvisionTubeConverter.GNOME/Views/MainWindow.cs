@@ -90,7 +90,7 @@ public partial class MainWindow : Adw.ApplicationWindow
                 if (_isBackgroundStatusReported)
                 {
                     var builder = g_variant_builder_new(g_variant_type_new("a{sv}"));
-                    g_variant_builder_add(builder, "{sv}", "message", g_variant_new_string(_controller.GetBackgroundActivityReport()));
+                    g_variant_builder_add(builder, "{sv}", "message", g_variant_new_string(_controller.BackgroundActivityReport));
                     g_dbus_connection_call(_bus,
                         "org.freedesktop.portal.Desktop", // Bus name
                         "/org/freedesktop/portal/desktop", // Object path
@@ -117,7 +117,7 @@ public partial class MainWindow : Adw.ApplicationWindow
         {
             try
             {
-                var progress = _controller.GetTotalProgress();
+                var progress = _controller.TotalProgress;
                 if (progress > 0 && progress < 1)
                 {
                     unity_launcher_entry_set_progress_visible(_unityLauncher, true);
