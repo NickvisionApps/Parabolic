@@ -234,24 +234,23 @@ public class MainWindowController : IDisposable
             Directory.Delete(Configuration.TempDir, true);
         }
         Directory.CreateDirectory(Configuration.TempDir);
-        var success = false;
         try
         {
-            success = await DependencyManager.SetupDependenciesAsync();
+            var success = await DependencyManager.SetupDependenciesAsync();
+            if (!success)
+            {
+                NotificationSent?.Invoke(this, new NotificationSentEventArgs(Localizer["DependencyError"], NotificationSeverity.Error));
+            }
+            else
+            {
+                Python.Runtime.RuntimeData.FormatterType = typeof(NoopFormatter);
+                Python.Runtime.PythonEngine.Initialize();
+                _pythonThreadState = Python.Runtime.PythonEngine.BeginAllowThreads();
+            }
         }
         catch (Exception e)
         {
             NotificationSent?.Invoke(this, new NotificationSentEventArgs(Localizer["DependencyError"], NotificationSeverity.Error, "error", $"{e.Message}\n\n{e.StackTrace}"));
-        }
-        if (!success)
-        {
-            NotificationSent?.Invoke(this, new NotificationSentEventArgs(Localizer["DependencyError"], NotificationSeverity.Error));
-        }
-        else
-        {
-            Python.Runtime.RuntimeData.FormatterType = typeof(NoopFormatter);
-            Python.Runtime.PythonEngine.Initialize();
-            _pythonThreadState = Python.Runtime.PythonEngine.BeginAllowThreads();
         }
     }
 

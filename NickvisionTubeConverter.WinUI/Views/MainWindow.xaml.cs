@@ -345,7 +345,8 @@ public sealed partial class MainWindow : Window
                         }
                     },
                     CloseButtonText = _controller.Localizer["OK"],
-                    DefaultButton = ContentDialogButton.Close
+                    DefaultButton = ContentDialogButton.Close,
+                    XamlRoot = Content.XamlRoot
                 };
                 await contentDialog.ShowAsync();
             };
