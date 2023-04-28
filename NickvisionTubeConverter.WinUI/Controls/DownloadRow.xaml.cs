@@ -86,8 +86,6 @@ public sealed partial class DownloadRow : UserControl, IDownloadRowControl
         ToolTipService.SetToolTip(BtnRetry, _localizer["RetryDownload"]);
         ToolTipService.SetToolTip(BtnOpenFile, _localizer["OpenFile"]);
         ToolTipService.SetToolTip(BtnOpenSaveFolder, _localizer["OpenSaveFolder"]);
-        //Load
-        LblUrl.Text = _download.VideoUrl;
     }
 
     /// <summary>
