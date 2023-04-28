@@ -328,6 +328,29 @@ public sealed partial class MainWindow : Window
         {
             BtnInfoBar.Click -= _notificationButtonClickEvent;
         }
+        if (e.Action == "error")
+        {
+            BtnInfoBar.Content = _controller.Localizer["Info"];
+            _notificationButtonClickEvent = async (sender, ex) =>
+            {
+                var contentDialog = new ContentDialog()
+                {
+                    Title = "Error",
+                    Content = new ScrollViewer()
+                    {
+                        VerticalScrollBarVisibility = ScrollBarVisibility.Auto,
+                        Content = new TextBlock()
+                        {
+                            Text = e.ActionParam
+                        }
+                    },
+                    CloseButtonText = _controller.Localizer["OK"],
+                    DefaultButton = ContentDialogButton.Close
+                };
+                await contentDialog.ShowAsync();
+            };
+            BtnInfoBar.Click += _notificationButtonClickEvent;
+        }
         BtnInfoBar.Visibility = !string.IsNullOrEmpty(e.Action) ? Visibility.Visible : Visibility.Collapsed;
         InfoBar.IsOpen = true;
     }

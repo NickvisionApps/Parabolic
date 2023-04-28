@@ -234,7 +234,16 @@ public class MainWindowController : IDisposable
             Directory.Delete(Configuration.TempDir, true);
         }
         Directory.CreateDirectory(Configuration.TempDir);
-        if (!await DependencyManager.SetupDependenciesAsync())
+        var success = false;
+        try
+        {
+            success = await DependencyManager.SetupDependenciesAsync();
+        }
+        catch (Exception e)
+        {
+            NotificationSent?.Invoke(this, new NotificationSentEventArgs(Localizer["DependencyError"], NotificationSeverity.Error, "error", $"{e.Message}\n\n{e.StackTrace}"));
+        }
+        if (!success)
         {
             NotificationSent?.Invoke(this, new NotificationSentEventArgs(Localizer["DependencyError"], NotificationSeverity.Error));
         }
