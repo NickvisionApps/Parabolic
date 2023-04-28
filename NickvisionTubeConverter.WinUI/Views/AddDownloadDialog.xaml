@@ -11,7 +11,7 @@
     mc:Ignorable="d" Style="{StaticResource DefaultContentDialogStyle}"
     DefaultButton="Primary">
 
-    <ScrollViewer x:Name="ScrollViewer" VerticalScrollBarVisibility="Auto" MaxHeight="530" SizeChanged="ScrollViewer_SizeChanged">
+    <ScrollViewer x:Name="ScrollViewer" VerticalScrollBarVisibility="Auto" MaxHeight="550" SizeChanged="ScrollViewer_SizeChanged">
         <StackPanel x:Name="StackPanel" Orientation="Vertical" Spacing="6" MaxWidth="700">
             <nickvision:ViewStack x:Name="ViewStack" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" MinWidth="400">
                 <nickvision:ViewStack.Pages>
@@ -95,7 +95,6 @@
                                 </StackPanel>
                             </labs:SettingsCard>
 
-
                             <labs:SettingsCard x:Name="CardOverwriteFiles">
                                 <labs:SettingsCard.HeaderIcon>
                                     <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE130;"/>
@@ -122,7 +121,7 @@
                                 </ToggleButton.Content>
                             </ToggleButton>
 
-                            <ListView x:Name="ListVideos" HorizontalAlignment="Stretch" Background="{ThemeResource CardBackgroundFillColorDefaultBrush}" BorderThickness="1" BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}" CornerRadius="8" SelectionMode="None"/>
+                            <StackPanel x:Name="ListVideos" HorizontalAlignment="Stretch" Margin="0,-3,0,0" Spacing="3"/>
                         </StackPanel>
                     </nickvision:ViewStackPage>
                 </nickvision:ViewStack.Pages>

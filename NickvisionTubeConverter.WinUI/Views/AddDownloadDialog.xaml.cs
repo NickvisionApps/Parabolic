@@ -116,10 +116,10 @@ public sealed partial class AddDownloadDialog : ContentDialog
             IsPrimaryButtonEnabled = !string.IsNullOrEmpty(LblSaveFolder.Text);
             Title = $"{_controller.Localizer["AddDownload"]} - {(_videoUrlInfo.Videos.Count > 1 ? _videoUrlInfo.PlaylistTitle! : _videoUrlInfo.Videos[0].Title)}";
             BtnNumberVideos.Visibility = _videoUrlInfo.Videos.Count > 1 ? Visibility.Visible : Visibility.Collapsed;
-            ListVideos.Items.Clear();
+            ListVideos.Children.Clear();
             foreach (var videoInfo in _videoUrlInfo.Videos)
             {
-                ListVideos.Items.Add(new VideoRow(videoInfo, _controller.Localizer));
+                ListVideos.Children.Add(new VideoRow(videoInfo, _controller.Localizer));
             }
         }
     }

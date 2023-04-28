@@ -85,7 +85,7 @@ public sealed partial class MainWindow : Window
         AppWindow.SetIcon(@"Assets\org.nickvision.tubeconverter.ico");
         SystemBackdrop = new MicaBackdrop();
         //Window Sizing
-        AppWindow.Resize(new SizeInt32(900, 700));
+        AppWindow.Resize(new SizeInt32(900, 740));
         User32.ShowWindow(_hwnd, ShowWindowCommand.SW_SHOWMAXIMIZED);
         //Taskbar Icon
         ToggleTaskbarIcon(null, EventArgs.Empty);
