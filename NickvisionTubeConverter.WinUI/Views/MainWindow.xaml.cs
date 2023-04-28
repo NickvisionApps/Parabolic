@@ -16,7 +16,6 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Reflection;
 using System.Runtime.InteropServices;
-using System.Threading.Tasks;
 using Vanara.PInvoke;
 using Windows.Graphics;
 using WinRT.Interop;
@@ -516,7 +515,7 @@ public sealed partial class MainWindow : Window
         {
             _taskbarIcon.UpdateToolTip(_controller.BackgroundActivityReport);
         }
-        if(_controller.AreDownloadsRunning)
+        if (_controller.AreDownloadsRunning)
         {
             LblSpeed.Text = string.Format(_controller.Localizer["TotalSpeed"], _controller.TotalSpeedString);
         }

@@ -2,7 +2,6 @@ using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using NickvisionTubeConverter.Shared.Helpers;
 using NickvisionTubeConverter.Shared.Models;
-using NickvisionTubeConverter.Shared.Helpers;
 using System;
 using System.Globalization;
 using Windows.ApplicationModel.DataTransfer;
