@@ -94,6 +94,8 @@ public sealed partial class MainWindow : Window
         MenuExit.Text = _controller.Localizer["Exit"];
         MenuEdit.Title = _controller.Localizer["Edit"];
         MenuSettings.Text = _controller.Localizer["Settings"];
+        MenuDownloader.Title = _controller.Localizer["Downloader"];
+        MenuStopAllDownloads.Text = _controller.Localizer["StopDownloads"];
         MenuAbout.Text = string.Format(_controller.Localizer["About"], _controller.AppInfo.ShortName);
         MenuHelp.Title = _controller.Localizer["Help"];
         LblStatus.Text = _controller.Localizer["StatusReady", "WinUI"];
@@ -108,6 +110,8 @@ public sealed partial class MainWindow : Window
         LblQueued.Text = _controller.Localizer["Queued"];
         BtnAddDownload.Label = _controller.Localizer["AddDownload"];
         ToolTipService.SetToolTip(BtnAddDownload, _controller.Localizer["AddDownload", "Tooltip"]);
+        BtnStopAllDownloads.Label = _controller.Localizer["StopDownloads"];
+        ToolTipService.SetToolTip(BtnStopAllDownloads, _controller.Localizer["StopDownloads", "Tooltip"]);
         //Page
         ViewStack.ChangePage("Home");
     }
@@ -481,6 +485,7 @@ public sealed partial class MainWindow : Window
         };
         if (await addDialog.ShowAsync())
         {
+            MenuStopAllDownloads.IsEnabled = true;
             ViewStack.ChangePage("Downloads");
             IconStatus.Glyph = "\uE118";
             LblStatus.Text = string.Format(_controller.Localizer["RemainingDownloads"], _controller.RemainingDownloads);
@@ -512,6 +517,13 @@ public sealed partial class MainWindow : Window
         };
         await preferencesDialog.ShowAsync();
     }
+
+    /// <summary>
+    /// Occurs when the stop all downloads menu item is clicked
+    /// </summary>
+    /// <param name="sender">object</param>
+    /// <param name="e">RoutedEventArgs</param>
+    private void StopAllDownloads(object sender, RoutedEventArgs e) => _controller.StopAllDownloads();
 
     /// <summary>
     /// Occurs when the about menu item is clicked
