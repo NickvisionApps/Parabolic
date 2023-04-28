@@ -68,6 +68,7 @@ public partial class MainWindow : Adw.ApplicationWindow
     [Gtk.Connect] private readonly Adw.Bin _spinnerContainer;
     [Gtk.Connect] private readonly Gtk.Spinner _spinner;
     [Gtk.Connect] private readonly Gtk.Box _mainBox;
+    [Gtk.Connect] private readonly Adw.HeaderBar _headerBar;
     [Gtk.Connect] private readonly Adw.ToastOverlay _toastOverlay;
     [Gtk.Connect] private readonly Adw.ViewStack _viewStack;
     [Gtk.Connect] private readonly Gtk.Button _addDownloadButton;
@@ -390,6 +391,8 @@ public partial class MainWindow : Adw.ApplicationWindow
         addDialog.Present();
         addDialog.OnDownload += (sender, e) =>
         {
+            _headerBar.RemoveCssClass("flat");
+            _addDownloadButton.SetVisible(true);
             _stopAllDownloadsButton.SetVisible(true);
             foreach (var download in addController.Downloads)
             {

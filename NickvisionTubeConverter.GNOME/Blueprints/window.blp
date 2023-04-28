@@ -33,27 +33,20 @@ Adw.ApplicationWindow _root {
     Gtk.Box _mainBox {
       orientation: vertical;
 
-      Adw.HeaderBar {
+      Adw.HeaderBar _headerBar {
         title-widget: Adw.WindowTitle _title {};
         
         [start]
         Gtk.Button _addDownloadButton {
           action-name: "win.addDownload";
           tooltip-text: _("AddDownload.Tooltip");
+          visible: false;
           Adw.ButtonContent {
             icon-name: "list-add-symbolic";
             label: _("Add");
           }
         }
 
-        [start]
-        Gtk.Button _stopAllDownloadsButton {
-          action-name: "win.stopAllDownloads";
-          tooltip-text: _("StopDownloads.Tooltip");
-          icon-name: "media-playback-stop-symbolic";
-          visible: false;
-        }
-        
         [end]
         Gtk.MenuButton {
           direction: none;
@@ -61,6 +54,19 @@ Adw.ApplicationWindow _root {
           tooltip-text: _("MainMenu.GTK");
           primary: true;
         }
+
+        [end]
+        Gtk.Button _stopAllDownloadsButton {
+          action-name: "win.stopAllDownloads";
+          tooltip-text: _("StopDownloads.Tooltip");
+          visible: false;
+          Adw.ButtonContent {
+            icon-name: "media-playback-stop-symbolic";
+            label: _("StopDownloads");
+          }
+        }
+
+        styles ["flat"]
       }
       
       Adw.ToastOverlay _toastOverlay {
