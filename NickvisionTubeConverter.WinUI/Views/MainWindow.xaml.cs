@@ -512,7 +512,7 @@ public sealed partial class MainWindow : Window
         }
         if(_controller.AreDownloadsRunning)
         {
-
+            LblSpeed.Text = string.Format(_controller.Localizer["TotalSpeed"], _controller.TotalSpeedString);
         }
     }
 }

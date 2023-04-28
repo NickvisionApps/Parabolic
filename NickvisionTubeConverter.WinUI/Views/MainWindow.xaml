@@ -118,7 +118,7 @@
                             </Grid.RowDefinitions>
 
                             <Border Grid.Row="0" Background="{ThemeResource CardBackgroundFillColorDefaultBrush}" BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}" BorderThickness="1" CornerRadius="8">
-                                <CommandBar HorizontalAlignment="Left" DefaultLabelPosition="Right">
+                                <CommandBar HorizontalAlignment="Left" DefaultLabelPosition="Right" VerticalContentAlignment="Center">
                                     <CommandBar.PrimaryCommands>
                                         <AppBarButton x:Name="BtnAddDownload" Click="AddDownload">
                                             <AppBarButton.Icon>
@@ -181,6 +181,8 @@
                 <FontIcon x:Name="IconStatus" wct:DockPanel.Dock="Left" VerticalAlignment="Center" Margin="6,0,10,0" FontFamily="{StaticResource SymbolThemeFontFamily}" FontSize="16" Glyph="&#xE73E;"/>
 
                 <TextBlock x:Name="LblStatus" wct:DockPanel.Dock="Left" VerticalAlignment="Center"/>
+
+                <TextBlock x:Name="LblSpeed" wct:DockPanel.Dock="Right" VerticalAlignment="Center" Margin="0,0,6,0"/>
             </wct:DockPanel>
         </Border>
     </Grid>
