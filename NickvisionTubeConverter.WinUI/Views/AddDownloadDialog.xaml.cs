@@ -39,34 +39,34 @@ public sealed partial class AddDownloadDialog : ContentDialog
         ToolTipService.SetToolTip(BtnSearchUrl, _controller.Localizer["Search"]);
         ToolTipService.SetToolTip(BtnPasteFromClipboard, _controller.Localizer["PasteFromClipboard"]);
         LblBack.Text = _controller.Localizer["Back"];
-        CmbFileType.Header = _controller.Localizer["FileType", "Field"];
+        CardFileType.Header = _controller.Localizer["FileType", "Field"];
         CmbFileType.Items.Add("MP4");
         CmbFileType.Items.Add("WEBM");
         CmbFileType.Items.Add("MP3");
         CmbFileType.Items.Add("OPUS");
         CmbFileType.Items.Add("FLAC");
         CmbFileType.Items.Add("WAV");
-        CmbQuality.Header = _controller.Localizer["Quality", "Field"];
+        CardQuality.Header = _controller.Localizer["Quality", "Field"];
         CmbQuality.Items.Add(_controller.Localizer["Quality", "Best"]);
         CmbQuality.Items.Add(_controller.Localizer["Quality", "Good"]);
         CmbQuality.Items.Add(_controller.Localizer["Quality", "Worst"]);
         CmbQuality.SelectedIndex = 0;
-        CmbSubtitle.Header = _controller.Localizer["Subtitle", "Field"];
+        CardSubtitle.Header = _controller.Localizer["Subtitle", "Field"];
         CmbSubtitle.Items.Add(_controller.Localizer["Subtitle", "None"]);
         CmbSubtitle.Items.Add("VTT");
         CmbSubtitle.Items.Add("SRT");
         CmbSubtitle.SelectedIndex = 0;
-        TxtSaveFolder.Header = _controller.Localizer["SaveFolder", "Field"];
+        CardSaveFolder.Header = _controller.Localizer["SaveFolder", "Field"];
         ToolTipService.SetToolTip(BtnSelectSaveFolder, _controller.Localizer["SelectSaveFolder"]);
-        ChkOverwriteFiles.Content = _controller.Localizer["OverwriteExistingFiles"];
-        ChkSpeedLimit.Content = _controller.Localizer["EnableSpeedLimit"];
+        CardOverwriteFiles.Header = _controller.Localizer["OverwriteExistingFiles"];
+        CardSpeedLimit.Header = _controller.Localizer["EnableSpeedLimit"];
         LblNumberVideos.Text = _controller.Localizer["NumberVideos"];
         TxtErrors.Text = _controller.Localizer["FixErrors", "WinUI"];
         //Load
         ViewStack.ChangePage("Url");
         IsPrimaryButtonEnabled = false;
         CmbFileType.SelectedIndex = (int)_controller.PreviousMediaFileType;
-        TxtSaveFolder.Text = _controller.PreviousSaveFolder;
+        LblSaveFolder.Text = _controller.PreviousSaveFolder;
     }
 
     // <summary>
@@ -80,7 +80,7 @@ public sealed partial class AddDownloadDialog : ContentDialog
         {
             return false;
         }
-        _controller.PopulateDownloads(_videoUrlInfo!, (MediaFileType)CmbFileType.SelectedIndex, (Quality)CmbQuality.SelectedIndex, (Subtitle)CmbSubtitle.SelectedIndex, TxtSaveFolder.Text, ChkOverwriteFiles.IsChecked ?? false, ChkSpeedLimit.IsChecked ?? false);
+        _controller.PopulateDownloads(_videoUrlInfo!, (MediaFileType)CmbFileType.SelectedIndex, (Quality)CmbQuality.SelectedIndex, (Subtitle)CmbSubtitle.SelectedIndex, LblSaveFolder.Text, TglOverwriteFiles.IsOn, TglSpeedLimit.IsOn);
         return true;
     }
 
@@ -113,8 +113,8 @@ public sealed partial class AddDownloadDialog : ContentDialog
             TxtVideoUrl.Header = _controller.Localizer["VideoUrl", "Field"];
             TxtErrors.Visibility = Visibility.Collapsed;
             ViewStack.ChangePage("Download");
-            IsPrimaryButtonEnabled = !string.IsNullOrEmpty(TxtSaveFolder.Text);
-            LblTitle.Text = _videoUrlInfo.Videos.Count > 1 ? _videoUrlInfo.PlaylistTitle! : _videoUrlInfo.Videos[0].Title;
+            IsPrimaryButtonEnabled = !string.IsNullOrEmpty(LblSaveFolder.Text);
+            Title = $"{_controller.Localizer["AddDownload"]} - {(_videoUrlInfo.Videos.Count > 1 ? _videoUrlInfo.PlaylistTitle! : _videoUrlInfo.Videos[0].Title)}";
             BtnNumberVideos.Visibility = _videoUrlInfo.Videos.Count > 1 ? Visibility.Visible : Visibility.Collapsed;
             ListVideos.Items.Clear();
             foreach (var videoInfo in _videoUrlInfo.Videos)
@@ -146,6 +146,7 @@ public sealed partial class AddDownloadDialog : ContentDialog
     private void Back(object sender, RoutedEventArgs e)
     {
         ViewStack.ChangePage("Url");
+        Title = _controller.Localizer["AddDownload"];
         TxtVideoUrl.Text = "";
         IsPrimaryButtonEnabled = false;
     }
@@ -172,7 +173,7 @@ public sealed partial class AddDownloadDialog : ContentDialog
         var folder = await folderPicker.PickSingleFolderAsync();
         if (folder != null)
         {
-            TxtSaveFolder.Text = folder.Path;
+            LblSaveFolder.Text = folder.Path;
             IsPrimaryButtonEnabled = true;
         }
     }
