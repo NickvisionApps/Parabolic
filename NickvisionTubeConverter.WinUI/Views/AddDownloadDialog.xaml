@@ -111,6 +111,8 @@
                                 <ToggleSwitch x:Name="TglSpeedLimit" OnContent="" OffContent="" IsOn="False"/>
                             </labs:SettingsCard>
 
+                            <TextBlock x:Name="LblDownloads" Margin="0,6,0,6" Style="{ThemeResource NavigationViewItemHeaderTextStyle}"/>
+
                             <ToggleButton x:Name="BtnNumberVideos" Margin="0,6,0,6" Checked="ToggleNumberVideos" Unchecked="ToggleNumberVideos">
                                 <ToggleButton.Content>
                                     <StackPanel Orientation="Horizontal" Spacing="6">
