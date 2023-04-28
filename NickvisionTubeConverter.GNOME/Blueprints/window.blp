@@ -45,6 +45,14 @@ Adw.ApplicationWindow _root {
             label: _("Add");
           }
         }
+
+        [start]
+        Gtk.Button _stopAllDownloadsButton {
+          action-name: "win.stopAllDownloads";
+          tooltip-text: _("StopDownloads.Tooltip");
+          icon-name: "media-playback-stop-symbolic";
+          visible: false;
+        }
         
         [end]
         Gtk.MenuButton {

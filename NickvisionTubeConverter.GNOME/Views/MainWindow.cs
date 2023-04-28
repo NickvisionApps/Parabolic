@@ -71,6 +71,7 @@ public partial class MainWindow : Adw.ApplicationWindow
     [Gtk.Connect] private readonly Adw.ToastOverlay _toastOverlay;
     [Gtk.Connect] private readonly Adw.ViewStack _viewStack;
     [Gtk.Connect] private readonly Gtk.Button _addDownloadButton;
+    [Gtk.Connect] private readonly Gtk.Button _stopAllDownloadsButton;
     [Gtk.Connect] private readonly Gtk.Box _downloadingBox;
     [Gtk.Connect] private readonly Gtk.Box _completedBox;
     [Gtk.Connect] private readonly Gtk.Box _queuedBox;
@@ -174,6 +175,11 @@ public partial class MainWindow : Adw.ApplicationWindow
         actDownload.OnActivate += AddDownload;
         AddAction(actDownload);
         application.SetAccelsForAction("win.addDownload", new string[] { "<Ctrl>n" });
+        //Stop All Downloads Action
+        var actStopAllDownloads = Gio.SimpleAction.New("stopAllDownloads", null);
+        actStopAllDownloads.OnActivate += (sender, e) => _controller.StopAllDownloads();
+        AddAction(actStopAllDownloads);
+        application.SetAccelsForAction("win.stopAllDownloads", new string[] { "<Ctrl><Shift>c" });
         //Preferences Action
         var actPreferences = Gio.SimpleAction.New("preferences", null);
         actPreferences.OnActivate += Preferences;
@@ -384,6 +390,7 @@ public partial class MainWindow : Adw.ApplicationWindow
         addDialog.Present();
         addDialog.OnDownload += (sender, e) =>
         {
+            _stopAllDownloadsButton.SetVisible(true);
             foreach (var download in addController.Downloads)
             {
                 _controller.AddDownload(download);
