@@ -114,8 +114,6 @@ public sealed partial class AddDownloadDialog : ContentDialog
             TxtErrors.Visibility = Visibility.Collapsed;
             ViewStack.ChangePage("Download");
             IsPrimaryButtonEnabled = !string.IsNullOrEmpty(LblSaveFolder.Text);
-            var title = _videoUrlInfo.Videos.Count > 1 ? _videoUrlInfo.PlaylistTitle! : _videoUrlInfo.Videos[0].Title;
-            Title = $"{_controller.Localizer["AddDownload"]} - {(title.Length <= 50 ? title : title.Substring(0, 50) + "...")}";
             BtnNumberVideos.Visibility = _videoUrlInfo.Videos.Count > 1 ? Visibility.Visible : Visibility.Collapsed;
             ListVideos.Children.Clear();
             foreach (var videoInfo in _videoUrlInfo.Videos)
