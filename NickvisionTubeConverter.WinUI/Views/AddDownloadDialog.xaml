@@ -12,7 +12,7 @@
     DefaultButton="Primary">
 
     <ScrollViewer x:Name="ScrollViewer" VerticalScrollBarVisibility="Auto" MaxHeight="550" SizeChanged="ScrollViewer_SizeChanged">
-        <StackPanel x:Name="StackPanel" Orientation="Vertical" Spacing="6" MaxWidth="700">
+        <StackPanel x:Name="StackPanel" Orientation="Vertical" Spacing="6">
             <nickvision:ViewStack x:Name="ViewStack" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" MinWidth="400">
                 <nickvision:ViewStack.Pages>
                     <nickvision:ViewStackPage x:Name="PageUrl" PageName="Url">
@@ -43,18 +43,6 @@
 
                     <nickvision:ViewStackPage x:Name="PageDonwload" PageName="Download">
                         <StackPanel Orientation="Vertical" Spacing="3">
-                            <StackPanel Orientation="Horizontal" Spacing="6">
-                                <Button wct:DockPanel.Dock="Left" Click="Back">
-                                    <Button.Content>
-                                        <StackPanel Orientation="Horizontal" Spacing="6">
-                                            <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" FontSize="16" Glyph="&#xE112;"/>
-
-                                            <TextBlock x:Name="LblBack"/>
-                                        </StackPanel>
-                                    </Button.Content>
-                                </Button>
-                            </StackPanel>
-
                             <labs:SettingsCard x:Name="CardFileType" Margin="0,3,0,0" MinWidth="500">
                                 <labs:SettingsCard.HeaderIcon>
                                     <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE97C;"/>

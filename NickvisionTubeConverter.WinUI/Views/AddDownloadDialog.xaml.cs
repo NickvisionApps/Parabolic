@@ -38,7 +38,6 @@ public sealed partial class AddDownloadDialog : ContentDialog
         TxtVideoUrl.PlaceholderText = _controller.Localizer["VideoUrl", "Placeholder"];
         ToolTipService.SetToolTip(BtnSearchUrl, _controller.Localizer["Search"]);
         ToolTipService.SetToolTip(BtnPasteFromClipboard, _controller.Localizer["PasteFromClipboard"]);
-        LblBack.Text = _controller.Localizer["Back"];
         CardFileType.Header = _controller.Localizer["FileType", "Field"];
         CmbFileType.Items.Add("MP4");
         CmbFileType.Items.Add("WEBM");
@@ -115,8 +114,6 @@ public sealed partial class AddDownloadDialog : ContentDialog
             TxtErrors.Visibility = Visibility.Collapsed;
             ViewStack.ChangePage("Download");
             IsPrimaryButtonEnabled = !string.IsNullOrEmpty(LblSaveFolder.Text);
-            var title = _videoUrlInfo.Videos.Count > 1 ? _videoUrlInfo.PlaylistTitle! : _videoUrlInfo.Videos[0].Title;
-            Title = $"{_controller.Localizer["AddDownload"]} - {(title.Length <= 50 ? title : title.Substring(0, 50) + "...")}";
             BtnNumberVideos.Visibility = _videoUrlInfo.Videos.Count > 1 ? Visibility.Visible : Visibility.Collapsed;
             ListVideos.Children.Clear();
             foreach (var videoInfo in _videoUrlInfo.Videos)
@@ -138,19 +135,6 @@ public sealed partial class AddDownloadDialog : ContentDialog
             TxtVideoUrl.Text = (await Clipboard.GetContent().GetTextAsync()).ToString();
             SearchUrl(sender, e);
         }
-    }
-
-    /// <summary>
-    /// Occurs when the back button is clicked
-    /// </summary>
-    /// <param name="sender">object</param>
-    /// <param name="e">RoutedEventArgs</param>
-    private void Back(object sender, RoutedEventArgs e)
-    {
-        ViewStack.ChangePage("Url");
-        Title = _controller.Localizer["AddDownload"];
-        TxtVideoUrl.Text = "";
-        IsPrimaryButtonEnabled = false;
     }
 
     /// <summary>

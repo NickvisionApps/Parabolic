@@ -10,11 +10,15 @@
     xmlns:labs="using:CommunityToolkit.Labs.WinUI"
     mc:Ignorable="d">
 
-    <labs:SettingsCard x:Name="Card" Header="{Binding Title, Mode=TwoWay}" Description="{Binding Url}">
+    <labs:SettingsCard x:Name="Card" Description="{Binding Url}">
         <labs:SettingsCard.HeaderIcon>
             <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE118;"/>
         </labs:SettingsCard.HeaderIcon>
 
+        <labs:SettingsCard.Header>
+            <TextBlock MaxWidth="400" TextWrapping="Wrap" Text="{Binding Title, Mode=TwoWay}"/>
+        </labs:SettingsCard.Header>
+        
         <StackPanel Orientation="Horizontal">
             <Button x:Name="BtnEdit" VerticalAlignment="Center">
                 <Button.Content>
