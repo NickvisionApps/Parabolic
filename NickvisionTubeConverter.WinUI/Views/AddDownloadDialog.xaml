@@ -43,18 +43,6 @@
 
                     <nickvision:ViewStackPage x:Name="PageDonwload" PageName="Download">
                         <StackPanel Orientation="Vertical" Spacing="3">
-                            <StackPanel Orientation="Horizontal" Spacing="6">
-                                <Button wct:DockPanel.Dock="Left" Click="Back">
-                                    <Button.Content>
-                                        <StackPanel Orientation="Horizontal" Spacing="6">
-                                            <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" FontSize="16" Glyph="&#xE112;"/>
-
-                                            <TextBlock x:Name="LblBack"/>
-                                        </StackPanel>
-                                    </Button.Content>
-                                </Button>
-                            </StackPanel>
-
                             <labs:SettingsCard x:Name="CardFileType" Margin="0,3,0,0" MinWidth="500">
                                 <labs:SettingsCard.HeaderIcon>
                                     <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE97C;"/>

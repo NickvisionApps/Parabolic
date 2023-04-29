@@ -38,7 +38,6 @@ public sealed partial class AddDownloadDialog : ContentDialog
         TxtVideoUrl.PlaceholderText = _controller.Localizer["VideoUrl", "Placeholder"];
         ToolTipService.SetToolTip(BtnSearchUrl, _controller.Localizer["Search"]);
         ToolTipService.SetToolTip(BtnPasteFromClipboard, _controller.Localizer["PasteFromClipboard"]);
-        LblBack.Text = _controller.Localizer["Back"];
         CardFileType.Header = _controller.Localizer["FileType", "Field"];
         CmbFileType.Items.Add("MP4");
         CmbFileType.Items.Add("WEBM");
@@ -138,19 +137,6 @@ public sealed partial class AddDownloadDialog : ContentDialog
             TxtVideoUrl.Text = (await Clipboard.GetContent().GetTextAsync()).ToString();
             SearchUrl(sender, e);
         }
-    }
-
-    /// <summary>
-    /// Occurs when the back button is clicked
-    /// </summary>
-    /// <param name="sender">object</param>
-    /// <param name="e">RoutedEventArgs</param>
-    private void Back(object sender, RoutedEventArgs e)
-    {
-        ViewStack.ChangePage("Url");
-        Title = _controller.Localizer["AddDownload"];
-        TxtVideoUrl.Text = "";
-        IsPrimaryButtonEnabled = false;
     }
 
     /// <summary>
