@@ -158,11 +158,29 @@ Adw.ApplicationWindow _root {
                     spacing: 10;
                     visible: false;
 
-                    Gtk.Label {
-                      label: _("Completed");
-                      halign: start;
-                      margin-start: 5;
-                      styles ["heading"]
+                    Gtk.Box {
+                      orientation: horizontal;
+                      hexpand: true;
+
+                      Gtk.Label {
+                        label: _("Completed");
+                        halign: start;
+                        hexpand: true;
+                        margin-start: 5;
+                        styles ["heading"]
+                      }
+
+                      Gtk.Button _retryFailedDownloadsButton {
+                        action-name: "win.retryFailedDownloads";
+                        halign: end;
+
+                        Adw.ButtonContent {
+                          icon-name: "view-refresh-symbolic";
+                          label: _("RetryDownloads");
+                        }
+
+                        styles ["flat"]
+                      }
                     }
                   
                     Gtk.Box _completedBox {

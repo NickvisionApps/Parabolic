@@ -75,6 +75,7 @@ public partial class MainWindow : Adw.ApplicationWindow
     [Gtk.Connect] private readonly Adw.ViewStack _viewStack;
     [Gtk.Connect] private readonly Gtk.Button _addDownloadButton;
     [Gtk.Connect] private readonly Gtk.Button _stopAllDownloadsButton;
+    [Gtk.Connect] private readonly Gtk.Button _retryFailedDownloadsButton;
     [Gtk.Connect] private readonly Gtk.Box _downloadingBox;
     [Gtk.Connect] private readonly Gtk.Box _completedBox;
     [Gtk.Connect] private readonly Gtk.Box _queuedBox;
@@ -236,6 +237,10 @@ public partial class MainWindow : Adw.ApplicationWindow
         actStopAllDownloads.OnActivate += (sender, e) => _controller.StopAllDownloads();
         AddAction(actStopAllDownloads);
         application.SetAccelsForAction("win.stopAllDownloads", new string[] { "<Ctrl><Shift>c" });
+        //Retry Failed Downloads Action
+        var actRetryFailedDownloads = Gio.SimpleAction.New("retryFailedDownloads", null);
+        actRetryFailedDownloads.OnActivate += (sender, e) => _controller.RetryFailedDownloads();
+        AddAction(actRetryFailedDownloads);
         //Preferences Action
         var actPreferences = Gio.SimpleAction.New("preferences", null);
         actPreferences.OnActivate += Preferences;
