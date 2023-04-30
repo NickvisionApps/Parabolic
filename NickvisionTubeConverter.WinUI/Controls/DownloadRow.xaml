@@ -53,11 +53,20 @@
             </wct:DockPanel>
 
             <ProgressBar x:Name="ProgBar" HorizontalAlignment="Stretch" Margin="6,10,6,0" Minimum="0" Maximum="1"/>
-            
-            <Border x:Name="SectionLog" Visibility="Collapsed" Background="{ThemeResource CardBackgroundFillColorSecondaryBrush}" BorderThickness="1" BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}" CornerRadius="4">
-                <ScrollViewer x:Name="ScrollLog" MaxHeight="100">
-                    <TextBlock x:Name="LblLog" Margin="6,6,6,6" IsTextSelectionEnabled="True" TextWrapping="Wrap"/>
-                </ScrollViewer>
+
+            <Border x:Name="SectionLog" Visibility="Collapsed">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <MenuFlyoutSeparator Grid.Row="0"/>
+
+                    <ScrollViewer x:Name="ScrollLog" Grid.Row="1" MaxHeight="100">
+                        <TextBlock x:Name="LblLog" Margin="6,6,6,0" IsTextSelectionEnabled="True" TextWrapping="Wrap"/>
+                    </ScrollViewer>
+                </Grid>
             </Border>
         </StackPanel>
     </Border>
