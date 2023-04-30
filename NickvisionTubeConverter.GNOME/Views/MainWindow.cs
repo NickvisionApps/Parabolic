@@ -241,6 +241,7 @@ public partial class MainWindow : Adw.ApplicationWindow
         var actRetryFailedDownloads = Gio.SimpleAction.New("retryFailedDownloads", null);
         actRetryFailedDownloads.OnActivate += (sender, e) => _controller.RetryFailedDownloads();
         AddAction(actRetryFailedDownloads);
+        application.SetAccelsForAction("win.retryFailedDownloads", new string[] { "<Ctrl><Shift>r" });
         //Preferences Action
         var actPreferences = Gio.SimpleAction.New("preferences", null);
         actPreferences.OnActivate += Preferences;
@@ -409,6 +410,7 @@ public partial class MainWindow : Adw.ApplicationWindow
             _headerBar.RemoveCssClass("flat");
             _addDownloadButton.SetVisible(true);
             _stopAllDownloadsButton.SetVisible(true);
+            _retryFailedDownloadsButton.SetVisible(true);
             foreach (var download in addController.Downloads)
             {
                 _controller.AddDownload(download);

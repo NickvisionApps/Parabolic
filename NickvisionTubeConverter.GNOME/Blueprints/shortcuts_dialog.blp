@@ -14,8 +14,18 @@ Gtk.ShortcutsWindow _shortcuts {
       title: _("Download");
 
       Gtk.ShortcutsShortcut {
-        title: _("Download");
+        title: _("AddDownload");
         accelerator: "<Control>n";
+      }
+
+      Gtk.ShortcutsShortcut {
+        title: _("StopDownloads");
+        accelerator: "<Control><Shift>c";
+      }
+
+      Gtk.ShortcutsShortcut {
+        title: _("RetryDownloads");
+        accelerator: "<Control><Shift>r";
       }
     }
 
