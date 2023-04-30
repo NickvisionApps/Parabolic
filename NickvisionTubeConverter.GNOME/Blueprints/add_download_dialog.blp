@@ -75,7 +75,6 @@ Adw.Window _root {
               spacing: 12;
 
               Gtk.Box {
-                margin-top: 12;
                 margin-start: 24;
                 margin-end: 24;
                 margin-bottom: 12;
@@ -87,7 +86,7 @@ Adw.Window _root {
                   spacing: 8;
 
                   Gtk.Box {
-                    spacing: 12;
+                    spacing: 8;
                     halign: center;
                     Gtk.Image {
                       icon-name: "dotted-box-symbolic";
@@ -111,7 +110,7 @@ Adw.Window _root {
                   spacing: 8;
 
                   Gtk.Box {
-                    spacing: 12;
+                    spacing: 8;
                     halign: center;
                     Gtk.Image {
                       icon-name: "settings-symbolic";
@@ -135,7 +134,7 @@ Adw.Window _root {
                   spacing: 8;
 
                   Gtk.Box {
-                    spacing: 12;
+                    spacing: 8;
                     halign: center;
                     Gtk.Image {
                       icon-name: "media-view-subtitles-symbolic";
@@ -210,7 +209,7 @@ Adw.Window _root {
 
               Gtk.ScrolledWindow _playlist {
                 propagate-natural-height: true;
-                max-content-height: 150;
+                max-content-height: 200;
 
                 Adw.PreferencesGroup _videosGroup {
                   margin-top: 2;
@@ -224,7 +223,7 @@ Adw.Window _root {
                 label: _("Download");
                 halign: center;
                 valign: center;
-                margin-top: 24;
+                margin-top: 12;
                 margin-bottom: 24;
 
                 styles ["pill", "suggested-action"]
