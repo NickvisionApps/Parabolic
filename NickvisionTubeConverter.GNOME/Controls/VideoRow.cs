@@ -4,21 +4,20 @@ using NickvisionTubeConverter.Shared.Models;
 
 namespace NickvisionTubeConverter.GNOME.Controls;
 
-public class VideoRow : Adw.ActionRow
+public class VideoRow : Adw.EntryRow
 {
     private VideoInfo _videoInfo;
     private readonly Gtk.EventControllerKey _titleKeyController;
 
     [Gtk.Connect] private readonly Gtk.CheckButton _downloadCheck;
-    [Gtk.Connect] private readonly Gtk.Entry _titleEntry;
 
     private VideoRow(Gtk.Builder builder, VideoInfo videoInfo) : base(builder.GetPointer("_root"), false)
     {
         _videoInfo = videoInfo;
         //Build UI
         builder.Connect(this);
-        SetTitle(_videoInfo.Title);
-        SetSubtitle(_videoInfo.Url);
+        SetTitle(_videoInfo.Url);
+        SetText(_videoInfo.Title);
         _downloadCheck.SetSensitive(_videoInfo.IsPartOfPlaylist);
         _downloadCheck.SetActive(_videoInfo.ToDownload);
         _downloadCheck.OnNotify += (sender, e) =>
@@ -28,20 +27,21 @@ public class VideoRow : Adw.ActionRow
                 _videoInfo.ToDownload = _downloadCheck.GetActive();
             }
         };
-        _titleEntry.SetText(_videoInfo.Title);
-        _titleEntry.SetPlaceholderText(_videoInfo.OriginalTitle);
-        _titleEntry.OnNotify += (sender, e) =>
+        OnNotify += (sender, e) =>
         {
             if (e.Pspec.GetName() == "text")
             {
-                _videoInfo.Title = _titleEntry.GetText();
-                SetTitle(_videoInfo.Title);
+                _videoInfo.Title = GetText();
+                if(GetText() != _videoInfo.Title)
+                {
+                    SetText(_videoInfo.Title);
+                }
             }
         };
         _titleKeyController = Gtk.EventControllerKey.New();
         _titleKeyController.SetPropagationPhase(Gtk.PropagationPhase.Capture);
         _titleKeyController.OnKeyPressed += OnKeyPressed;
-        _titleEntry.AddController(_titleKeyController);
+        AddController(_titleKeyController);
     }
 
     public VideoRow(VideoInfo videoInfo, Localizer localizer) : this(Builder.FromFile("video_row.ui", localizer), videoInfo)
@@ -49,11 +49,7 @@ public class VideoRow : Adw.ActionRow
 
     }
 
-    public void UpdateTitle()
-    {
-        SetTitle(_videoInfo.Title);
-        _titleEntry.SetText(_videoInfo.Title);
-    }
+    public void UpdateTitle() => SetText(_videoInfo.Title);
 
     private bool OnKeyPressed(Gtk.EventControllerKey sender, Gtk.EventControllerKey.KeyPressedSignalArgs e)
     {
