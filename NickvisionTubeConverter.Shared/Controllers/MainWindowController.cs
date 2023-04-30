@@ -294,7 +294,7 @@ public class MainWindowController : IDisposable
         }
         while(_queuedRows.Count > 0)
         {
-            _queuedRows[0].Stop();
+            _queuedRows[_queuedRows.Count - 1].Stop();
         }
     }
 
