@@ -153,7 +153,6 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
             _statusIcon.SetFromIconName("folder-download-symbolic");
             _stateViewStack.SetVisibleChildName("downloading");
             _progressLabel.SetText(_localizer["DownloadState", "Preparing"]);
-            _filenameLabel.SetText(_download.Filename);
             _actionViewStack.SetVisibleChildName("cancel");
             _progressBar.SetFraction(0);
             return false;
