@@ -124,9 +124,6 @@ Adw.Bin _root {
     }
 
     Gtk.Overlay _overlayLog {
-      margin-start: 8;
-      margin-end: 8;
-      margin-bottom: 8;
       visible: bind _viewLogToggleBtn.active;
 
       [overlay]
@@ -142,22 +139,22 @@ Adw.Bin _root {
         styles ["opaque"]
       }
 
-      Gtk.Frame _frameLog {
-        child: Gtk.ScrolledWindow _scrollLog {
-          height-request: 100;
-          child: Gtk.Label _lblLog {
-            margin-start: 6;
-            margin-top: 6;
-            margin-end: 6;
-            margin-bottom: 6;
-            halign: start;
-            valign: start;
-            wrap: true;
-            wrap-mode: char;
-            selectable: true;
-          };
+      Gtk.ScrolledWindow _scrollLog {
+        height-request: 100;
+        child: Gtk.Label _lblLog {
+          margin-start: 6;
+          margin-top: 4;
+          margin-end: 4;
+          margin-bottom: 6;
+          halign: start;
+          valign: start;
+          wrap: true;
+          wrap-mode: char;
+          selectable: true;
         };
       }
+
+      styles ["logs"]
     }
   }
 }
