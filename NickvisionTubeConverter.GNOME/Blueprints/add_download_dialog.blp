@@ -45,7 +45,7 @@ Adw.Window _root {
               margin-start: 24;
               margin-end: 24;
               orientation: vertical;
-              spacing: 20;
+              spacing: 24;
 
               Adw.PreferencesGroup {
                 Adw.EntryRow _urlRow {
@@ -55,18 +55,10 @@ Adw.Window _root {
                 }
               }
 
-              Gtk.Spinner _urlSpinner {
-                valign: center;
-                width-request: 40;
-                height-request: 40;
-                visible: false;
-              }
-
               Gtk.Button _validateUrlButton {
                 label: _("ValidateUrl");
                 halign: center;
                 valign: center;
-                margin-top: 24;
                 margin-bottom: 24;
 
                 styles ["pill", "suggested-action"]
