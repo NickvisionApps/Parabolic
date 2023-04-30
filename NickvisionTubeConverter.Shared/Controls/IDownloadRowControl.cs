@@ -52,4 +52,9 @@ public interface IDownloadRowControl
     /// Stops the download
     /// </summary>
     public void Stop();
+
+    /// <summary>
+    /// Retries the download if needed
+    /// </summary>
+    public Task RetryAsync();
 }

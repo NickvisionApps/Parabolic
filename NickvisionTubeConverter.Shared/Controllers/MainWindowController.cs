@@ -299,6 +299,17 @@ public class MainWindowController : IDisposable
     }
 
     /// <summary>
+    /// Retries failed downloads
+    /// </summary>
+    public void RetryFailedDownloads()
+    {
+        foreach (var row in _completedRows)
+        {
+            row.RetryAsync();
+        }
+    }
+
+    /// <summary>
     /// Occurs when the configuration is saved
     /// </summary>
     /// <param name="sender">object?</param>
