@@ -191,7 +191,7 @@ public partial class AddDownloadDialog : Adw.Window
         SetDefaultWidget(_validateUrlButton);
         _fileTypeRow.SetSelected((uint)_controller.PreviousMediaFileType);
         _saveFolderRow.SetText(_controller.PreviousSaveFolder);
-        _speedLimitRow.SetSubtitle(string.Format(_controller.Localizer["Speed", "KiBps"], _controller.CurrentSpeedLimit));
+        _speedLimitRow.SetSubtitle($"{string.Format(_controller.Localizer["Speed", "KiBps"], _controller.CurrentSpeedLimit)} ({_controller.Localizer["Configurable", "GTK"]})");
     }
 
     /// <summary>
