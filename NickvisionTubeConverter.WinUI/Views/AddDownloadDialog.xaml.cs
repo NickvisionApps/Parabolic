@@ -1,5 +1,6 @@
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Input;
 using NickvisionTubeConverter.Shared.Controllers;
 using NickvisionTubeConverter.Shared.Models;
 using NickvisionTubeConverter.WinUI.Controls;
@@ -7,6 +8,7 @@ using System;
 using System.Threading.Tasks;
 using Windows.ApplicationModel.DataTransfer;
 using Windows.Storage.Pickers;
+using Windows.System;
 
 namespace NickvisionTubeConverter.WinUI.Views;
 
@@ -36,8 +38,8 @@ public sealed partial class AddDownloadDialog : ContentDialog
         PrimaryButtonText = _controller.Localizer["Download"];
         TxtVideoUrl.Header = _controller.Localizer["VideoUrl", "Field"];
         TxtVideoUrl.PlaceholderText = _controller.Localizer["VideoUrl", "Placeholder"];
-        ToolTipService.SetToolTip(BtnSearchUrl, _controller.Localizer["Search"]);
         ToolTipService.SetToolTip(BtnPasteFromClipboard, _controller.Localizer["PasteFromClipboard"]);
+        BtnValidateUrl.Content = _controller.Localizer["ValidateUrl"];
         CardFileType.Header = _controller.Localizer["FileType", "Field"];
         CmbFileType.Items.Add("MP4");
         CmbFileType.Items.Add("WEBM");
@@ -92,16 +94,18 @@ public sealed partial class AddDownloadDialog : ContentDialog
     private void ScrollViewer_SizeChanged(object sender, SizeChangedEventArgs e) => StackPanel.Margin = new Thickness(0, 0, ScrollViewer.ComputedVerticalScrollBarVisibility == Visibility.Visible ? 14 : 0, 0);
 
     /// <summary>
-    /// Occurs when the search video url button is clicked
+    /// Occurs when the validate video url button is clicked
     /// </summary>
     /// <param name="sender">object</param>
     /// <param name="e">RoutedEventArgs</param>
-    private async void SearchUrl(object sender, RoutedEventArgs e)
+    private async void ValidateUrl(object sender, RoutedEventArgs e)
     {
+        BtnValidateUrl.IsEnabled = false;
         LoadingUrl.Visibility = Visibility.Visible;
         IsPrimaryButtonEnabled = false;
         await Task.Delay(25);
         _videoUrlInfo = await _controller.SearchUrlAsync(TxtVideoUrl.Text);
+        BtnValidateUrl.IsEnabled = true;
         LoadingUrl.Visibility = Visibility.Collapsed;
         if (_videoUrlInfo == null)
         {
@@ -124,6 +128,20 @@ public sealed partial class AddDownloadDialog : ContentDialog
     }
 
     /// <summary>
+    /// Occurs when a key is pressed on the TxtVideoUrl control
+    /// </summary>
+    /// <param name="sender">object</param>
+    /// <param name="e">KeyRoutedEventArgs</param>
+    private void TxtVideoUrl_KeyDown(object sender, KeyRoutedEventArgs e)
+    {
+        if(e.Key == VirtualKey.Enter)
+        {
+            ValidateUrl(sender, e);
+        }
+    }
+
+
+    /// <summary>
     /// Occurs when the paste from clipboard is clicked
     /// </summary>
     /// <param name="sender">object</param>
@@ -133,7 +151,7 @@ public sealed partial class AddDownloadDialog : ContentDialog
         if (Clipboard.GetContent().Contains(StandardDataFormats.Text))
         {
             TxtVideoUrl.Text = (await Clipboard.GetContent().GetTextAsync()).ToString();
-            SearchUrl(sender, e);
+            ValidateUrl(sender, e);
         }
     }
 

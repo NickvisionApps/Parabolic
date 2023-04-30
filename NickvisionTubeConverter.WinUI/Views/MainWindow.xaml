@@ -70,6 +70,28 @@
                         </MenuFlyoutItem>
                     </MenuBarItem>
 
+                    <MenuBarItem x:Name="MenuDownloader">
+                        <MenuFlyoutItem x:Name="MenuStopAllDownloads" IsEnabled="False" Click="StopAllDownloads">
+                            <MenuFlyoutItem.Icon>
+                                <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE15B;"/>
+                            </MenuFlyoutItem.Icon>
+
+                            <MenuFlyoutItem.KeyboardAccelerators>
+                                <KeyboardAccelerator Modifiers="Control,Shift" Key="C"/>
+                            </MenuFlyoutItem.KeyboardAccelerators>
+                        </MenuFlyoutItem>
+
+                        <MenuFlyoutItem x:Name="MenuRetryFailedDownloads" IsEnabled="False" Click="RetryFailedDownloads">
+                            <MenuFlyoutItem.Icon>
+                                <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE149;"/>
+                            </MenuFlyoutItem.Icon>
+
+                            <MenuFlyoutItem.KeyboardAccelerators>
+                                <KeyboardAccelerator Modifiers="Control,Shift" Key="R"/>
+                            </MenuFlyoutItem.KeyboardAccelerators>
+                        </MenuFlyoutItem>
+                    </MenuBarItem>
+
                     <MenuBarItem x:Name="MenuHelp">
                         <MenuFlyoutItem x:Name="MenuAbout" Click="About">
                             <MenuFlyoutItem.Icon>
@@ -123,6 +145,20 @@
                                         <AppBarButton x:Name="BtnAddDownload" Click="AddDownload">
                                             <AppBarButton.Icon>
                                                 <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE710;"/>
+                                            </AppBarButton.Icon>
+                                        </AppBarButton>
+
+                                        <AppBarSeparator/>
+
+                                        <AppBarButton x:Name="BtnStopAllDownloads" Click="StopAllDownloads">
+                                            <AppBarButton.Icon>
+                                                <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE15B;"/>
+                                            </AppBarButton.Icon>
+                                        </AppBarButton>
+
+                                        <AppBarButton x:Name="BtnRetryFailedDownloads" Click="RetryFailedDownloads">
+                                            <AppBarButton.Icon>
+                                                <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE149;"/>
                                             </AppBarButton.Icon>
                                         </AppBarButton>
                                     </CommandBar.PrimaryCommands>

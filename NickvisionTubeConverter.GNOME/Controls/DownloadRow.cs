@@ -298,4 +298,15 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
             DownloadStoppedCallback(this);
         }
     }
+
+    public async Task RetryAsync()
+    {
+        if(_wasStopped || FinishedWithError)
+        {
+            if (DownloadRetriedAsyncCallback != null)
+            {
+                await DownloadRetriedAsyncCallback(this);
+            }
+        }
+    }
 }

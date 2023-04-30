@@ -33,19 +33,20 @@ Adw.ApplicationWindow _root {
     Gtk.Box _mainBox {
       orientation: vertical;
 
-      Adw.HeaderBar {
+      Adw.HeaderBar _headerBar {
         title-widget: Adw.WindowTitle _title {};
         
         [start]
         Gtk.Button _addDownloadButton {
           action-name: "win.addDownload";
           tooltip-text: _("AddDownload.Tooltip");
+          visible: false;
           Adw.ButtonContent {
             icon-name: "list-add-symbolic";
             label: _("Add");
           }
         }
-        
+
         [end]
         Gtk.MenuButton {
           direction: none;
@@ -53,6 +54,24 @@ Adw.ApplicationWindow _root {
           tooltip-text: _("MainMenu.GTK");
           primary: true;
         }
+
+        [end]
+        Gtk.Button _retryFailedDownloadsButton {
+          action-name: "win.retryFailedDownloads";
+          tooltip-text: _("RetryDownloads.Tooltip");
+          visible: false;
+          icon-name: "view-refresh-symbolic";
+        }
+
+        [end]
+        Gtk.Button _stopAllDownloadsButton {
+          action-name: "win.stopAllDownloads";
+          tooltip-text: _("StopDownloads.Tooltip");
+          visible: false;
+          icon-name: "media-playback-stop-symbolic";
+        }
+
+        styles ["flat"]
       }
       
       Adw.ToastOverlay _toastOverlay {
@@ -144,11 +163,17 @@ Adw.ApplicationWindow _root {
                     spacing: 10;
                     visible: false;
 
-                    Gtk.Label {
-                      label: _("Completed");
-                      halign: start;
-                      margin-start: 5;
-                      styles ["heading"]
+                    Gtk.Box {
+                      orientation: horizontal;
+                      hexpand: true;
+
+                      Gtk.Label {
+                        label: _("Completed");
+                        halign: start;
+                        hexpand: true;
+                        margin-start: 5;
+                        styles ["heading"]
+                      }
                     }
                   
                     Gtk.Box _completedBox {

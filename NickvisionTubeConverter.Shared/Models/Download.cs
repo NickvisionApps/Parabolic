@@ -155,7 +155,6 @@ public class Download
         {
             using (Python.Runtime.Py.GIL())
             {
-                _pid = Python.Runtime.PythonEngine.GetPythonThreadID();
                 dynamic ytdlp = Python.Runtime.Py.Import("yt_dlp");
                 var hooks = new List<Action<Python.Runtime.PyDict>>();
                 hooks.Add(ProgressHook);
@@ -344,6 +343,7 @@ public class Download
         {
             using (Python.Runtime.Py.GIL())
             {
+                _pid = Python.Runtime.PythonEngine.GetPythonThreadID();
                 var downloaded = entries.HasKey("downloaded_bytes") ? (entries["downloaded_bytes"].As<double?>() ?? 0) : 0;
                 var total = 1.0;
                 if (entries.HasKey("total_bytes"))
