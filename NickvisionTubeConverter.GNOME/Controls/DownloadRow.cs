@@ -150,8 +150,8 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
         //Callbacks
         _runStartCallback = (x) =>
         {
-            _statusIcon.AddCssClass("accent");
             _statusIcon.RemoveCssClass("error");
+            _statusIcon.RemoveCssClass("stopped");
             _statusIcon.SetFromIconName("folder-download-symbolic");
             _stateViewStack.SetVisibleChildName("downloading");
             _progressLabel.SetText(_localizer["DownloadState", "Preparing"]);
@@ -162,7 +162,6 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
         };
         _runEndCallback = (x) =>
         {
-            _statusIcon.RemoveCssClass("accent");
             _statusIcon.AddCssClass(!FinishedWithError ? "success" : "error");
             _statusIcon.SetFromIconName(!FinishedWithError ? "emblem-ok-symbolic" : "process-stop-symbolic");
             _stateViewStack.SetVisibleChildName("done");
@@ -174,7 +173,6 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
         _stopCallback = (x) =>
         {
             _progressBar.SetFraction(1.0);
-            _statusIcon.RemoveCssClass("accent");
             _statusIcon.AddCssClass("stopped");
             _statusIcon.SetFromIconName("process-stop-symbolic");
             _stateViewStack.SetVisibleChildName("done");
