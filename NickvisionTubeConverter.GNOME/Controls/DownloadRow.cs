@@ -133,13 +133,7 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
             var fileLauncher = gtk_file_launcher_new(file.Handle);
             gtk_file_launcher_launch(fileLauncher, 0, 0, (source, res, data) => { }, 0);
         };
-        _retryButton.OnClicked += async (sender, e) =>
-        {
-            if (DownloadRetriedAsyncCallback != null)
-            {
-                await DownloadRetriedAsyncCallback(this);
-            }
-        };
+        _retryButton.OnClicked += async (sender, e) => await RetryAsync();
         _btnLogToClipboard.OnClicked += (sender, e) =>
         {
             _lblLog.GetClipboard().SetText(_lblLog.GetText());

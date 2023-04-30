@@ -533,7 +533,7 @@ public sealed partial class MainWindow : Window
     /// </summary>
     /// <param name="sender">object</param>
     /// <param name="e">RoutedEventArgs</param>
-    private void RetryFailedDownloads(object sender, RoutedEventArgs e) => _controller.RetryFailedDownloads();
+    private async void RetryFailedDownloads(object sender, RoutedEventArgs e) => await _controller.RetryFailedDownloadsAsync();
 
     /// <summary>
     /// Occurs when the about menu item is clicked

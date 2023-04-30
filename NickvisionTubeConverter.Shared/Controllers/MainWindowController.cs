@@ -288,11 +288,11 @@ public class MainWindowController : IDisposable
     /// </summary>
     public void StopAllDownloads()
     {
-        foreach (var row in _downloadingRows)
+        while (_downloadingRows.Count > 0)
         {
-            row.Stop();
+            _downloadingRows[_downloadingRows.Count - 1].Stop();
         }
-        while(_queuedRows.Count > 0)
+        while (_queuedRows.Count > 0)
         {
             _queuedRows[_queuedRows.Count - 1].Stop();
         }
@@ -301,11 +301,24 @@ public class MainWindowController : IDisposable
     /// <summary>
     /// Retries failed downloads
     /// </summary>
-    public void RetryFailedDownloads()
+    public async Task RetryFailedDownloadsAsync()
     {
-        foreach (var row in _completedRows)
+        while (_completedRows.Count > 0) 
         {
-            row.RetryAsync();
+            await _completedRows[_completedRows.Count - 1].RetryAsync();
+        }
+    }
+
+    /// <summary>
+    /// Clears all queued downloads
+    /// </summary>
+    public void ClearQueuedDownloads()
+    {
+        while (_queuedRows.Count > 0)
+        {
+            var row = _queuedRows[_queuedRows.Count - 1];
+            _queuedRows.Remove(row);
+            UIDeleteDownloadRowFromQueue!(row);
         }
     }
 
@@ -354,8 +367,9 @@ public class MainWindowController : IDisposable
     {
         if (_queuedRows.Contains(row))
         {
+            _completedRows.Add(row);
             _queuedRows.Remove(row);
-            UIDeleteDownloadRowFromQueue!(row);
+            UIMoveDownloadRow!(row, DownloadStage.Completed);
         }
     }
 
@@ -368,12 +382,14 @@ public class MainWindowController : IDisposable
         if (_downloadingRows.Count < Configuration.Current.MaxNumberOfActiveDownloads)
         {
             _downloadingRows.Add(row);
+            _completedRows.Remove(row);
             UIMoveDownloadRow!(row, DownloadStage.Downloading);
             await row.RunAsync(Configuration.Current.EmbedMetadata);
         }
         else
         {
             _queuedRows.Add(row);
+            _completedRows.Remove(row);
             UIMoveDownloadRow!(row, DownloadStage.InQueue);
         }
     }
