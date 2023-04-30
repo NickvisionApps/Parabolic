@@ -80,6 +80,12 @@
                                 <KeyboardAccelerator Modifiers="Control,Shift" Key="C"/>
                             </MenuFlyoutItem.KeyboardAccelerators>
                         </MenuFlyoutItem>
+
+                        <MenuFlyoutItem x:Name="MenuRetryFailedDownloads" IsEnabled="False" Click="RetryFailedDownloads">
+                            <MenuFlyoutItem.Icon>
+                                <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE149;"/>
+                            </MenuFlyoutItem.Icon>
+                        </MenuFlyoutItem>
                     </MenuBarItem>
 
                     <MenuBarItem x:Name="MenuHelp">
@@ -138,9 +144,17 @@
                                             </AppBarButton.Icon>
                                         </AppBarButton>
 
+                                        <AppBarSeparator/>
+
                                         <AppBarButton x:Name="BtnStopAllDownloads" Click="StopAllDownloads">
                                             <AppBarButton.Icon>
                                                 <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE15B;"/>
+                                            </AppBarButton.Icon>
+                                        </AppBarButton>
+
+                                        <AppBarButton x:Name="BtnRetryFailedDownloads" Click="RetryFailedDownloads">
+                                            <AppBarButton.Icon>
+                                                <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE149;"/>
                                             </AppBarButton.Icon>
                                         </AppBarButton>
                                     </CommandBar.PrimaryCommands>

@@ -194,6 +194,20 @@ public sealed partial class DownloadRow : UserControl, IDownloadRowControl
     }
 
     /// <summary>
+    /// Retries the download if needed
+    /// </summary>
+    public async Task RetryAsync()
+    {
+        if(_wasStopped || FinishedWithError)
+        {
+            if (DownloadRetriedAsyncCallback != null)
+            {
+                await DownloadRetriedAsyncCallback(this);
+            }
+        }
+    }
+
+    /// <summary>
     /// Occurs when the view log button is clicked
     /// </summary>
     /// <param name="sender">object</param>
