@@ -1,0 +1,85 @@
+<ContentDialog
+    x:Class="NickvisionTubeConverter.WinUI.Controls.AboutDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:NickvisionTubeConverter.WinUI.Controls"
+    xmlns:nickvision="using:NickvisionTubeConverter.WinUI.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:wct="using:CommunityToolkit.WinUI.UI.Controls"
+    xmlns:labs="using:CommunityToolkit.Labs.WinUI"
+    mc:Ignorable="d" Style="{StaticResource DefaultContentDialogStyle}"
+    DefaultButton="Close">
+
+    <ScrollViewer x:Name="ScrollViewer" VerticalScrollBarVisibility="Auto" MaxHeight="500" SizeChanged="ScrollViewer_SizeChanged">
+        <StackPanel x:Name="StackPanel" Orientation="Vertical" Spacing="3">
+            <StackPanel Orientation="Horizontal" Spacing="6">
+                <Image Width="128" Height="128" Source="../Assets/org.nickvision.tubeconverter.ico"/>
+
+                <StackPanel VerticalAlignment="Center" Orientation="Vertical" Spacing="6">
+                    <TextBlock x:Name="LblDescription" Margin="4,0,0,0" FontWeight="SemiBold" FontSize="16"/>
+
+                    <TextBlock Margin="4,0,0,0" Foreground="Gray" Text="© Nickvision 2021-2023"/>
+
+                    <Button Style="{ThemeResource AccentButtonStyle}" CornerRadius="12" Click="CopySystemInformation">
+                        <Button.Content>
+                            <TextBlock x:Name="LblVersion"/>
+                        </Button.Content>
+                    </Button>
+                </StackPanel>
+            </StackPanel>
+
+            <InfoBar x:Name="InfoBar" Margin="0,6,0,0" Severity="Success"/>
+
+            <labs:SettingsExpander x:Name="CardChangelog" Margin="0,9,0,0">
+                <labs:SettingsExpander.HeaderIcon>
+                    <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xEC24;"/>
+                </labs:SettingsExpander.HeaderIcon>
+
+                <labs:SettingsExpander.Items>
+                    <labs:SettingsCard x:Name="CardLblChangelog"/>
+                </labs:SettingsExpander.Items>
+            </labs:SettingsExpander>
+
+            <labs:SettingsCard x:Name="CardGitHubRepo" IsClickEnabled="True" Click="GitHubRepo">
+                <labs:SettingsCard.HeaderIcon>
+                    <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE8F1;"/>
+                </labs:SettingsCard.HeaderIcon>
+
+                <labs:SettingsCard.ActionIcon>
+                    <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE8A7;"/>
+                </labs:SettingsCard.ActionIcon>
+            </labs:SettingsCard>
+
+            <labs:SettingsCard x:Name="CardReportABug" IsClickEnabled="True" Click="ReportABug">
+                <labs:SettingsCard.HeaderIcon>
+                    <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xEBE8;"/>
+                </labs:SettingsCard.HeaderIcon>
+
+                <labs:SettingsCard.ActionIcon>
+                    <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE8A7;"/>
+                </labs:SettingsCard.ActionIcon>
+            </labs:SettingsCard>
+
+            <labs:SettingsCard x:Name="CardDiscussions" IsClickEnabled="True" Click="Discussions">
+                <labs:SettingsCard.HeaderIcon>
+                    <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE8F2;"/>
+                </labs:SettingsCard.HeaderIcon>
+
+                <labs:SettingsCard.ActionIcon>
+                    <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE8A7;"/>
+                </labs:SettingsCard.ActionIcon>
+            </labs:SettingsCard>
+
+            <labs:SettingsExpander x:Name="CardCredits">
+                <labs:SettingsExpander.HeaderIcon>
+                    <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE125;"/>
+                </labs:SettingsExpander.HeaderIcon>
+
+                <labs:SettingsExpander.Items>
+                    <labs:SettingsCard x:Name="CardLblCredits"/>
+                </labs:SettingsExpander.Items>
+            </labs:SettingsExpander>
+        </StackPanel>
+    </ScrollViewer>
+</ContentDialog>

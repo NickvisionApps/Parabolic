@@ -11,8 +11,8 @@
     mc:Ignorable="d" Style="{StaticResource DefaultContentDialogStyle}"
     DefaultButton="Primary">
 
-    <ScrollViewer VerticalScrollBarVisibility="Auto">
-        <StackPanel Orientation="Vertical" Spacing="6">
+    <ScrollViewer x:Name="ScrollViewer" VerticalScrollBarVisibility="Auto" MaxHeight="550" SizeChanged="ScrollViewer_SizeChanged">
+        <StackPanel x:Name="StackPanel" Orientation="Vertical" Spacing="6">
             <nickvision:ViewStack x:Name="ViewStack" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" MinWidth="400">
                 <nickvision:ViewStack.Pages>
                     <nickvision:ViewStackPage x:Name="PageUrl" PageName="Url">
@@ -42,42 +42,66 @@
                     </nickvision:ViewStackPage>
 
                     <nickvision:ViewStackPage x:Name="PageDonwload" PageName="Download">
-                        <StackPanel Margin="0,0,14,0" Orientation="Vertical" Spacing="6">
-                            <StackPanel Orientation="Horizontal" Spacing="6">
-                                <Button wct:DockPanel.Dock="Left" Click="Back">
-                                    <Button.Content>
-                                        <StackPanel Orientation="Horizontal" Spacing="6">
-                                            <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" FontSize="16" Glyph="&#xE112;"/>
+                        <StackPanel Orientation="Vertical" Spacing="3">
+                            <labs:SettingsCard x:Name="CardFileType" Margin="0,3,0,0" MinWidth="500">
+                                <labs:SettingsCard.HeaderIcon>
+                                    <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE97C;"/>
+                                </labs:SettingsCard.HeaderIcon>
 
-                                            <TextBlock x:Name="LblBack"/>
-                                        </StackPanel>
-                                    </Button.Content>
-                                </Button>
+                                <ComboBox x:Name="CmbFileType" SelectionChanged="CmbFileType_SelectionChanged"/>
+                            </labs:SettingsCard>
 
-                                <TextBlock x:Name="LblTitle" VerticalAlignment="Center" MaxWidth="600" FontWeight="SemiBold" IsTextSelectionEnabled="True" TextWrapping="Wrap"/>
-                            </StackPanel>
+                            <labs:SettingsCard x:Name="CardQuality">
+                                <labs:SettingsCard.HeaderIcon>
+                                    <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE904;"/>
+                                </labs:SettingsCard.HeaderIcon>
 
-                            <ComboBox x:Name="CmbFileType" HorizontalAlignment="Stretch" SelectionChanged="CmbFileType_SelectionChanged"/>
+                                <ComboBox x:Name="CmbQuality"/>
+                            </labs:SettingsCard>
 
-                            <ComboBox x:Name="CmbQuality" HorizontalAlignment="Stretch"/>
+                            <labs:SettingsCard x:Name="CardSubtitle">
+                                <labs:SettingsCard.HeaderIcon>
+                                    <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xED1E;"/>
+                                </labs:SettingsCard.HeaderIcon>
 
-                            <ComboBox x:Name="CmbSubtitle" HorizontalAlignment="Stretch"/>
+                                <ComboBox x:Name="CmbSubtitle"/>
+                            </labs:SettingsCard>
 
-                            <wct:DockPanel HorizontalAlignment="Stretch" LastChildFill="True">
-                                <Button x:Name="BtnSelectSaveFolder" wct:DockPanel.Dock="Right" Margin="6,28,0,0" Style="{ThemeResource AccentButtonStyle}" Click="SelectSaveFolder">
-                                    <Button.Content>
-                                        <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" FontSize="16" Glyph="&#xE838;"/>
-                                    </Button.Content>
-                                </Button>
+                            <labs:SettingsCard x:Name="CardSaveFolder">
+                                <labs:SettingsCard.HeaderIcon>
+                                    <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE8B7;"/>
+                                </labs:SettingsCard.HeaderIcon>
 
-                                <TextBox Name="TxtSaveFolder" wct:DockPanel.Dock="Left" IsReadOnly="True"/>
-                            </wct:DockPanel>
+                                <StackPanel Orientation="Horizontal" Spacing="6">
+                                    <TextBlock Name="LblSaveFolder" VerticalAlignment="Center"/>
 
-                            <CheckBox x:Name="ChkOverwriteFiles" HorizontalAlignment="Stretch" Margin="0,0,0,0" VerticalContentAlignment="Top" IsChecked="True"/>
+                                    <Button x:Name="BtnSelectSaveFolder" VerticalAlignment="Center" Click="SelectSaveFolder">
+                                        <Button.Content>
+                                            <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" FontSize="16" Glyph="&#xE838;"/>
+                                        </Button.Content>
+                                    </Button>
+                                </StackPanel>
+                            </labs:SettingsCard>
 
-                            <CheckBox x:Name="ChkSpeedLimit" HorizontalAlignment="Stretch" Margin="0,0,0,6" VerticalContentAlignment="Top" IsChecked="False"/>
+                            <labs:SettingsCard x:Name="CardOverwriteFiles">
+                                <labs:SettingsCard.HeaderIcon>
+                                    <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE130;"/>
+                                </labs:SettingsCard.HeaderIcon>
 
-                            <ToggleButton x:Name="BtnNumberVideos" Checked="ToggleNumberVideos" Unchecked="ToggleNumberVideos">
+                                <ToggleSwitch x:Name="TglOverwriteFiles" OnContent="" OffContent="" IsOn="True"/>
+                            </labs:SettingsCard>
+
+                            <labs:SettingsCard x:Name="CardSpeedLimit">
+                                <labs:SettingsCard.HeaderIcon>
+                                    <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xEC4A;"/>
+                                </labs:SettingsCard.HeaderIcon>
+
+                                <ToggleSwitch x:Name="TglSpeedLimit" OnContent="" OffContent="" IsOn="False"/>
+                            </labs:SettingsCard>
+
+                            <TextBlock x:Name="LblDownloads" Margin="0,6,0,6" Style="{ThemeResource NavigationViewItemHeaderTextStyle}"/>
+
+                            <ToggleButton x:Name="BtnNumberVideos" Margin="0,6,0,6" Checked="ToggleNumberVideos" Unchecked="ToggleNumberVideos">
                                 <ToggleButton.Content>
                                     <StackPanel Orientation="Horizontal" Spacing="6">
                                         <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" FontSize="16" Glyph="&#xE16E;"/>
@@ -87,7 +111,7 @@
                                 </ToggleButton.Content>
                             </ToggleButton>
 
-                            <ListView x:Name="ListVideos" HorizontalAlignment="Stretch" Margin="0,0,0,0" Background="{ThemeResource CardBackgroundFillColorDefaultBrush}" BorderThickness="1" BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}" CornerRadius="8" SelectionMode="None"/>
+                            <StackPanel x:Name="ListVideos" HorizontalAlignment="Stretch" Margin="0,-3,0,0" Spacing="3"/>
                         </StackPanel>
                     </nickvision:ViewStackPage>
                 </nickvision:ViewStack.Pages>

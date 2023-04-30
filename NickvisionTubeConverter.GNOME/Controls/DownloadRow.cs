@@ -201,7 +201,7 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
                 Progress = state.Progress;
                 _progressBar.SetFraction(state.Progress);
                 Speed = state.Speed;
-                var speedString = SpeedFormatter.GetString(state.Speed, _localizer);
+                var speedString = state.Speed.GetSpeedString(_localizer);
                 _progressLabel.SetText(string.Format(_localizer["DownloadState", "Downloading"], state.Progress * 100, speedString));
             }
             state.Dispose();

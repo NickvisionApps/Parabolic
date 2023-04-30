@@ -13,7 +13,7 @@ public static class SpeedFormatter
     /// <param name="speed">The speed</param>
     /// <param name="localizer">Localizer</param>
     /// <returns>The string representation of the speed</returns>
-    public static string GetString(double speed, Localizer localizer)
+    public static string GetSpeedString(this double speed, Localizer localizer)
     {
         if (speed > Math.Pow(1024, 3))
         {

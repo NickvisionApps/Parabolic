@@ -38,35 +38,35 @@ public sealed partial class AddDownloadDialog : ContentDialog
         TxtVideoUrl.PlaceholderText = _controller.Localizer["VideoUrl", "Placeholder"];
         ToolTipService.SetToolTip(BtnSearchUrl, _controller.Localizer["Search"]);
         ToolTipService.SetToolTip(BtnPasteFromClipboard, _controller.Localizer["PasteFromClipboard"]);
-        LblBack.Text = _controller.Localizer["Back"];
-        CmbFileType.Header = _controller.Localizer["FileType", "Field"];
+        CardFileType.Header = _controller.Localizer["FileType", "Field"];
         CmbFileType.Items.Add("MP4");
         CmbFileType.Items.Add("WEBM");
         CmbFileType.Items.Add("MP3");
         CmbFileType.Items.Add("OPUS");
         CmbFileType.Items.Add("FLAC");
         CmbFileType.Items.Add("WAV");
-        CmbQuality.Header = _controller.Localizer["Quality", "Field"];
+        CardQuality.Header = _controller.Localizer["Quality", "Field"];
         CmbQuality.Items.Add(_controller.Localizer["Quality", "Best"]);
         CmbQuality.Items.Add(_controller.Localizer["Quality", "Good"]);
         CmbQuality.Items.Add(_controller.Localizer["Quality", "Worst"]);
         CmbQuality.SelectedIndex = 0;
-        CmbSubtitle.Header = _controller.Localizer["Subtitle", "Field"];
+        CardSubtitle.Header = _controller.Localizer["Subtitle", "Field"];
         CmbSubtitle.Items.Add(_controller.Localizer["Subtitle", "None"]);
         CmbSubtitle.Items.Add("VTT");
         CmbSubtitle.Items.Add("SRT");
         CmbSubtitle.SelectedIndex = 0;
-        TxtSaveFolder.Header = _controller.Localizer["SaveFolder", "Field"];
+        CardSaveFolder.Header = _controller.Localizer["SaveFolder", "Field"];
         ToolTipService.SetToolTip(BtnSelectSaveFolder, _controller.Localizer["SelectSaveFolder"]);
-        ChkOverwriteFiles.Content = _controller.Localizer["OverwriteExistingFiles"];
-        ChkSpeedLimit.Content = _controller.Localizer["EnableSpeedLimit"];
+        CardOverwriteFiles.Header = _controller.Localizer["OverwriteExistingFiles"];
+        CardSpeedLimit.Header = _controller.Localizer["EnableSpeedLimit"];
+        LblDownloads.Text = _controller.Localizer["Downloads"];
         LblNumberVideos.Text = _controller.Localizer["NumberVideos"];
         TxtErrors.Text = _controller.Localizer["FixErrors", "WinUI"];
         //Load
         ViewStack.ChangePage("Url");
         IsPrimaryButtonEnabled = false;
         CmbFileType.SelectedIndex = (int)_controller.PreviousMediaFileType;
-        TxtSaveFolder.Text = _controller.PreviousSaveFolder;
+        LblSaveFolder.Text = _controller.PreviousSaveFolder;
     }
 
     // <summary>
@@ -80,9 +80,16 @@ public sealed partial class AddDownloadDialog : ContentDialog
         {
             return false;
         }
-        _controller.PopulateDownloads(_videoUrlInfo!, (MediaFileType)CmbFileType.SelectedIndex, (Quality)CmbQuality.SelectedIndex, (Subtitle)CmbSubtitle.SelectedIndex, TxtSaveFolder.Text, ChkOverwriteFiles.IsChecked ?? false, ChkSpeedLimit.IsChecked ?? false);
+        _controller.PopulateDownloads(_videoUrlInfo!, (MediaFileType)CmbFileType.SelectedIndex, (Quality)CmbQuality.SelectedIndex, (Subtitle)CmbSubtitle.SelectedIndex, LblSaveFolder.Text, TglOverwriteFiles.IsOn, TglSpeedLimit.IsOn);
         return true;
     }
+
+    /// <summary>
+    /// Occurs when the ScrollViewer's size is changed
+    /// </summary>
+    /// <param name="sender">object</param>
+    /// <param name="e">SizeChangedEventArgs</param>
+    private void ScrollViewer_SizeChanged(object sender, SizeChangedEventArgs e) => StackPanel.Margin = new Thickness(0, 0, ScrollViewer.ComputedVerticalScrollBarVisibility == Visibility.Visible ? 14 : 0, 0);
 
     /// <summary>
     /// Occurs when the search video url button is clicked
@@ -106,13 +113,12 @@ public sealed partial class AddDownloadDialog : ContentDialog
             TxtVideoUrl.Header = _controller.Localizer["VideoUrl", "Field"];
             TxtErrors.Visibility = Visibility.Collapsed;
             ViewStack.ChangePage("Download");
-            IsPrimaryButtonEnabled = !string.IsNullOrEmpty(TxtSaveFolder.Text);
-            LblTitle.Text = _videoUrlInfo.Videos.Count > 1 ? _videoUrlInfo.PlaylistTitle! : _videoUrlInfo.Videos[0].Title;
+            IsPrimaryButtonEnabled = !string.IsNullOrEmpty(LblSaveFolder.Text);
             BtnNumberVideos.Visibility = _videoUrlInfo.Videos.Count > 1 ? Visibility.Visible : Visibility.Collapsed;
-            ListVideos.Items.Clear();
+            ListVideos.Children.Clear();
             foreach (var videoInfo in _videoUrlInfo.Videos)
             {
-                ListVideos.Items.Add(new VideoRow(videoInfo, _controller.Localizer));
+                ListVideos.Children.Add(new VideoRow(videoInfo, _controller.Localizer));
             }
         }
     }
@@ -129,18 +135,6 @@ public sealed partial class AddDownloadDialog : ContentDialog
             TxtVideoUrl.Text = (await Clipboard.GetContent().GetTextAsync()).ToString();
             SearchUrl(sender, e);
         }
-    }
-
-    /// <summary>
-    /// Occurs when the back button is clicked
-    /// </summary>
-    /// <param name="sender">object</param>
-    /// <param name="e">RoutedEventArgs</param>
-    private void Back(object sender, RoutedEventArgs e)
-    {
-        ViewStack.ChangePage("Url");
-        TxtVideoUrl.Text = "";
-        IsPrimaryButtonEnabled = false;
     }
 
     /// <summary>
@@ -165,7 +159,7 @@ public sealed partial class AddDownloadDialog : ContentDialog
         var folder = await folderPicker.PickSingleFolderAsync();
         if (folder != null)
         {
-            TxtSaveFolder.Text = folder.Path;
+            LblSaveFolder.Text = folder.Path;
             IsPrimaryButtonEnabled = true;
         }
     }

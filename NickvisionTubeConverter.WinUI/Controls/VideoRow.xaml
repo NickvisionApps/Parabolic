@@ -10,9 +10,17 @@
     xmlns:labs="using:CommunityToolkit.Labs.WinUI"
     mc:Ignorable="d">
 
-    <StackPanel Orientation="Vertical" Margin="-4,0,-4,0">
-        <wct:DockPanel LastChildFill="True">
-            <Button x:Name="BtnEdit" wct:DockPanel.Dock="Right" VerticalAlignment="Center" Margin="10,0,0,0">
+    <labs:SettingsCard x:Name="Card" Description="{Binding Url}">
+        <labs:SettingsCard.HeaderIcon>
+            <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE118;"/>
+        </labs:SettingsCard.HeaderIcon>
+
+        <labs:SettingsCard.Header>
+            <TextBlock MaxWidth="400" TextWrapping="Wrap" Text="{Binding Title, Mode=TwoWay}"/>
+        </labs:SettingsCard.Header>
+        
+        <StackPanel Orientation="Horizontal">
+            <Button x:Name="BtnEdit" VerticalAlignment="Center">
                 <Button.Content>
                     <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" FontSize="16" Glyph="&#xE104;"/>
                 </Button.Content>
@@ -24,17 +32,7 @@
                 </Button.Flyout>
             </Button>
 
-            <CheckBox wct:DockPanel.Dock="Left" IsEnabled="{Binding IsPartOfPlaylist}" IsChecked="{Binding ToDownload, Mode=TwoWay}">
-                <CheckBox.Content>
-                    <StackPanel wct:DockPanel.Dock="Left" Margin="6,0,0,0" Orientation="Vertical" Spacing="4">
-                        <TextBlock Text="{Binding Title, Mode=TwoWay}"/>
-
-                        <TextBlock Text="{Binding Url}" Foreground="Gray"/>
-                    </StackPanel>
-                </CheckBox.Content>
-            </CheckBox>
-        </wct:DockPanel>
-
-        <MenuFlyoutSeparator/>
-    </StackPanel>
+            <ToggleSwitch OnContent="" OffContent="" IsEnabled="{Binding IsPartOfPlaylist}" IsOn="{Binding ToDownload, Mode=TwoWay}"/>
+        </StackPanel>
+    </labs:SettingsCard>
 </UserControl>

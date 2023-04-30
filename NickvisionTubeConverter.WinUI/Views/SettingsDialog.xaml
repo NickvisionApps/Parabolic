@@ -1,0 +1,87 @@
+<ContentDialog
+    x:Class="NickvisionTubeConverter.WinUI.Views.SettingsDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:NickvisionTubeConverter.WinUI.Views"
+    xmlns:nickvision="using:NickvisionTubeConverter.WinUI.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:wct="using:CommunityToolkit.WinUI.UI.Controls"
+    xmlns:labs="using:CommunityToolkit.Labs.WinUI"
+    mc:Ignorable="d" Style="{StaticResource DefaultContentDialogStyle}"
+    DefaultButton="Primary">
+
+    <ContentDialog.Resources>
+        <Style x:Key="SettingsSectionHeaderTextBlockStyle"
+               BasedOn="{StaticResource BodyStrongTextBlockStyle}"
+               TargetType="TextBlock">
+            <Style.Setters>
+                <Setter Property="Margin" Value="1,29,0,5" />
+            </Style.Setters>
+        </Style>
+    </ContentDialog.Resources>
+
+    <ScrollViewer x:Name="ScrollViewer" VerticalScrollBarVisibility="Auto" MaxHeight="500" SizeChanged="ScrollViewer_SizeChanged">
+        <StackPanel x:Name="StackPanel" Spacing="6" MaxWidth="600">
+            <TextBlock x:Name="LblUserInterface" Margin="0,6,0,0" Style="{StaticResource SettingsSectionHeaderTextBlockStyle}"/>
+
+            <TextBlock x:Name="LblUserInterfaceDescription" Foreground="Gray"/>
+
+            <labs:SettingsCard x:Name="CardTheme" MinWidth="540">
+                <labs:SettingsCard.HeaderIcon>
+                    <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE790;"/>
+                </labs:SettingsCard.HeaderIcon>
+
+                <ComboBox x:Name="CmbTheme"/>
+            </labs:SettingsCard>
+
+            <labs:SettingsCard x:Name="CardAllowBackground">
+                <labs:SettingsCard.HeaderIcon>
+                    <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE1E1;"/>
+                </labs:SettingsCard.HeaderIcon>
+
+                <ToggleSwitch x:Name="ToggleAllowBackground" OnContent="" OffContent=""/>
+            </labs:SettingsCard>
+
+            <TextBlock x:Name="LblDownloader" Margin="0,6,0,0" Style="{StaticResource SettingsSectionHeaderTextBlockStyle}"/>
+
+            <TextBlock x:Name="LblDownloaderDescription" Foreground="Gray"/>
+
+            <labs:SettingsCard x:Name="CardMaxNumberOfActiveDownloads">
+                <labs:SettingsCard.HeaderIcon>
+                    <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE1E9;"/>
+                </labs:SettingsCard.HeaderIcon>
+
+                <NumberBox x:Name="NumMaxNumberOfActiveDownloads" SpinButtonPlacementMode="Inline" Minimum="1" Maximum="10" Value="5" SmallChange="1" LargeChange="2" ValueChanged="NumMaxNumberOfActiveDownloads_ValueChanged"/>
+            </labs:SettingsCard>
+
+            <labs:SettingsCard x:Name="CardSpeedLimit">
+                <labs:SettingsCard.HeaderIcon>
+                    <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xEC4A;"/>
+                </labs:SettingsCard.HeaderIcon>
+
+                <NumberBox x:Name="NumSpeedLimit" Minimum="512" Maximum="10240" SmallChange="512" LargeChange="1024" SpinButtonPlacementMode="Inline"/>
+            </labs:SettingsCard>
+
+            <labs:SettingsCard x:Name="CardUseAria">
+                <labs:SettingsCard.HeaderIcon>
+                    <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE968;"/>
+                </labs:SettingsCard.HeaderIcon>
+
+                <ToggleSwitch x:Name="ToggleUseAria" OnContent="" OffContent=""/>
+            </labs:SettingsCard>
+
+            <TextBlock x:Name="LblConverter" Margin="0,6,0,0" Style="{StaticResource SettingsSectionHeaderTextBlockStyle}"/>
+
+            <TextBlock x:Name="LblConverterDescription" Foreground="Gray"/>
+
+            <labs:SettingsCard x:Name="CardEmbedMetadata">
+                <labs:SettingsCard.HeaderIcon>
+                    <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE142;"/>
+                </labs:SettingsCard.HeaderIcon>
+
+                <ToggleSwitch x:Name="ToggleEmbedMetadata" OnContent="" OffContent=""/>
+            </labs:SettingsCard>
+        </StackPanel>
+    </ScrollViewer>
+</ContentDialog>

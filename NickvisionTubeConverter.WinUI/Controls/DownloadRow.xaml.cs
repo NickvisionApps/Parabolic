@@ -86,8 +86,6 @@ public sealed partial class DownloadRow : UserControl, IDownloadRowControl
         ToolTipService.SetToolTip(BtnRetry, _localizer["RetryDownload"]);
         ToolTipService.SetToolTip(BtnOpenFile, _localizer["OpenFile"]);
         ToolTipService.SetToolTip(BtnOpenSaveFolder, _localizer["OpenSaveFolder"]);
-        //Load
-        LblUrl.Text = _download.VideoUrl;
     }
 
     /// <summary>
@@ -129,7 +127,7 @@ public sealed partial class DownloadRow : UserControl, IDownloadRowControl
                     {
                         ProgBar.IsIndeterminate = false;
                         ProgBar.Value = state.Progress;
-                        LblStatus.Text = string.Format(_localizer["DownloadState", "Downloading"], state.Progress * 100, SpeedFormatter.GetString(state.Speed, _localizer));
+                        LblStatus.Text = string.Format(_localizer["DownloadState", "Downloading"], state.Progress * 100, state.Speed.GetSpeedString(_localizer));
                     });
                     break;
                 case DownloadProgressStatus.DownloadingAria:

@@ -122,7 +122,26 @@
 	</data>
 
 	<data name="Close" xml:space="preserve">
+		<!--Mostly used in GNOME-->
 		<value>Close</value>
+	</data>
+
+	<data name="Exit" xml:space="preserve">
+		<!--Mostly used in WinUI-->
+		<value>Exit</value>
+	</data>
+
+	<data name="Quit" xml:space="preserve">
+		<!--Mostly used in GNOME-->
+		<value>Quit</value>
+	</data>
+
+	<data name="Apply" xml:space="preserve">
+		<value>Apply</value>
+	</data>
+
+	<data name="Info" xml:space="preserve">
+		<value>Info</value>
 	</data>
 	
 	<!--Pages-->
@@ -148,13 +167,25 @@
 		<value>Keyboard Shortcuts</value>
 	</data>
 
-	<data name="Quit" xml:space="preserve">
-		<value>Quit</value>
+	<!--MainWindow-->
+	<data name="File" xml:space="preserve">
+		<value>File</value>
 	</data>
 
-	<!--MainWindow-->
+	<data name="Edit" xml:space="preserve">
+		<value>Edit</value>
+	</data>
+
+	<data name="Help" xml:space="preserve">
+		<value>Help</value>
+	</data>
+
 	<data name="DependencyDownload" xml:space="preserve">
 		<value>Downloading required dependencies...&#xA;&#xA;(This may take some time)</value>
+	</data>
+
+	<data name="DependencyDownload.Short" xml:space="preserve">
+		<value>Downloading required dependencies...</value>
 	</data>
 
 	<data name="DependencyError" xml:space="preserve">
@@ -207,6 +238,14 @@
 
 	<data name="DownloadFinishedWithError.Description" xml:space="preserve">
 		<value>{0} has finished with an error!</value>
+	</data>
+
+	<data name="RemainingDownloads" xml:space="preserve">
+		<value>Remaining Downloads: {0}</value>
+	</data>
+
+	<data name="TotalSpeed" xml:space="preserve">
+		<value>Total Speed: {0}</value>
 	</data>
 
 	<!--MainWindowController-->
@@ -437,7 +476,7 @@
 	</data>
 
 	<data name="UseAria" xml:space="preserve">
-		<value>Use Aria2</value>
+		<value>Use aria2</value>
 	</data>
 
 	<data name="UseAria.Description" xml:space="preserve">
@@ -529,6 +568,14 @@
 	
 	<data name="RestartThemeDescription.WinUI" xml:space="preserve">
 		<value>Would you like to restart {0} to apply the new theme?&#xA;Any unsaved work will be lost.</value>
+	</data>
+
+	<data name="StatusReady.WinUI" xml:space="preserve">
+		<value>Ready</value>
+	</data>
+
+	<data name="CopiedSysInfo.WinUI" xml:space="preserve">
+		<value>Copied debug info to clipboard.</value>
 	</data>
 	
 	<!--GTK Specific-->

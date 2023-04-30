@@ -57,6 +57,10 @@ public class MainWindowController : IDisposable
     /// Whether to allow running in the background
     /// </summary>
     public bool RunInBackground => Configuration.Current.RunInBackground;
+    /// <summary>
+    /// The number of remaining downloads (Downloads + Queue)
+    /// </summary>
+    public int RemainingDownloads => _downloadingRows.Count + _queuedRows.Count;
 
     /// <summary>
     /// Occurs when a notification is sent
@@ -93,6 +97,25 @@ public class MainWindowController : IDisposable
     }
 
     /// <summary>
+    /// The string for greeting on the home page
+    /// </summary>
+    public string Greeting
+    {
+        get
+        {
+            var greeting = DateTime.Now.Hour switch
+            {
+                >= 0 and < 6 => "Night",
+                < 12 => "Morning",
+                < 18 => "Afternoon",
+                < 24 => "Evening",
+                _ => "Generic"
+            };
+            return Localizer["Greeting", greeting];
+        }
+    }
+
+    /// <summary>
     /// Downloading errors count
     /// </summary>
     public uint ErrorsCount
@@ -109,21 +132,57 @@ public class MainWindowController : IDisposable
     }
 
     /// <summary>
-    /// The string for greeting on the home page
+    /// The total download progress
     /// </summary>
-    public string Greeting
+    public double TotalProgress
     {
         get
         {
-            var greeting = DateTime.Now.Hour switch
+            var result = 0.0;
+            foreach (var row in _downloadingRows)
             {
-                >= 0 and < 6 => "Night",
-                < 12 => "Morning",
-                < 18 => "Afternoon",
-                < 24 => "Evening",
-                _ => "Generic"
-            };
-            return Localizer["Greeting", greeting];
+                result += row.Progress;
+            }
+            result /= (_downloadingRows.Count + _queuedRows.Count) > 0 ? (_downloadingRows.Count + _queuedRows.Count) : 1;
+            return result;
+        }
+    }
+
+    /// <summary>
+    /// The total download speed string
+    /// </summary>
+    public string TotalSpeedString
+    {
+        get
+        {
+            var totalSpeed = 0.0;
+            foreach (var row in _downloadingRows)
+            {
+                totalSpeed += row.Speed;
+            }
+            return totalSpeed.GetSpeedString(Localizer);
+        }
+    }
+
+    /// <summary>
+    /// The background activity report string
+    /// </summary>
+    public string BackgroundActivityReport
+    {
+        get
+        {
+            if ((_downloadingRows.Count + _queuedRows.Count) > 0)
+            {
+                return string.Format(Localizer["BackgroundActivityReport"], _downloadingRows.Count + _queuedRows.Count, TotalProgress * 100, TotalSpeedString);
+            }
+            else if (ErrorsCount > 0)
+            {
+                return Localizer["FinishedWithErrors"];
+            }
+            else
+            {
+                return Localizer["NoDownloadsRunning"];
+            }
         }
     }
 
@@ -175,15 +234,23 @@ public class MainWindowController : IDisposable
             Directory.Delete(Configuration.TempDir, true);
         }
         Directory.CreateDirectory(Configuration.TempDir);
-        if (!await DependencyManager.SetupDependenciesAsync())
+        try
         {
-            NotificationSent?.Invoke(this, new NotificationSentEventArgs(Localizer["DependencyError"], NotificationSeverity.Error));
+            var success = await DependencyManager.SetupDependenciesAsync();
+            if (!success)
+            {
+                NotificationSent?.Invoke(this, new NotificationSentEventArgs(Localizer["DependencyError"], NotificationSeverity.Error));
+            }
+            else
+            {
+                Python.Runtime.RuntimeData.FormatterType = typeof(NoopFormatter);
+                Python.Runtime.PythonEngine.Initialize();
+                _pythonThreadState = Python.Runtime.PythonEngine.BeginAllowThreads();
+            }
         }
-        else
+        catch (Exception e)
         {
-            Python.Runtime.RuntimeData.FormatterType = typeof(NoopFormatter);
-            Python.Runtime.PythonEngine.Initialize();
-            _pythonThreadState = Python.Runtime.PythonEngine.BeginAllowThreads();
+            NotificationSent?.Invoke(this, new NotificationSentEventArgs(Localizer["DependencyError"], NotificationSeverity.Error, "error", $"{e.Message}\n\n{e.StackTrace}"));
         }
     }
 
@@ -297,46 +364,6 @@ public class MainWindowController : IDisposable
         {
             _queuedRows.Add(row);
             UIMoveDownloadRow!(row, DownloadStage.InQueue);
-        }
-    }
-
-    /// <summary>
-    /// Called to get total download progress (in range from 0 to 1)
-    /// </summary>
-    public double GetTotalProgress()
-    {
-        var result = 0.0;
-        foreach (var row in _downloadingRows)
-        {
-            result += row.Progress;
-        }
-        result /= (_downloadingRows.Count + _queuedRows.Count) > 0 ? (_downloadingRows.Count + _queuedRows.Count) : 1;
-        return result;
-    }
-
-    /// <summary>
-    /// Called to get a string for background activity report
-    /// </summary>
-    public string GetBackgroundActivityReport()
-    {
-        var totalProgress = GetTotalProgress();
-        var totalSpeed = 0.0;
-        foreach (var row in _downloadingRows)
-        {
-            totalSpeed += row.Speed;
-        }
-        //Get String
-        if ((_downloadingRows.Count + _queuedRows.Count) > 0)
-        {
-            return string.Format(Localizer["BackgroundActivityReport"], _downloadingRows.Count + _queuedRows.Count, totalProgress * 100, SpeedFormatter.GetString(totalSpeed, Localizer));
-        }
-        else if (ErrorsCount > 0)
-        {
-            return Localizer["FinishedWithErrors"];
-        }
-        else
-        {
-            return Localizer["NoDownloadsRunning"];
         }
     }
 }

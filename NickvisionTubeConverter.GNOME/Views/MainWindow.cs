@@ -5,8 +5,11 @@ using NickvisionTubeConverter.Shared.Controls;
 using NickvisionTubeConverter.Shared.Events;
 using NickvisionTubeConverter.Shared.Models;
 using System;
+using System.Diagnostics;
+using System.Globalization;
 using System.IO;
 using System.Runtime.InteropServices;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace NickvisionTubeConverter.GNOME.Views;
@@ -87,7 +90,7 @@ public partial class MainWindow : Adw.ApplicationWindow
                 if (_isBackgroundStatusReported)
                 {
                     var builder = g_variant_builder_new(g_variant_type_new("a{sv}"));
-                    g_variant_builder_add(builder, "{sv}", "message", g_variant_new_string(_controller.GetBackgroundActivityReport()));
+                    g_variant_builder_add(builder, "{sv}", "message", g_variant_new_string(_controller.BackgroundActivityReport));
                     g_dbus_connection_call(_bus,
                         "org.freedesktop.portal.Desktop", // Bus name
                         "/org/freedesktop/portal/desktop", // Object path
@@ -110,10 +113,11 @@ public partial class MainWindow : Adw.ApplicationWindow
             }
         };
         _controller.RunInBackgroundChanged += RunInBackgroundChanged;
-        _libUnitySourceFunc = (x) => {
+        _libUnitySourceFunc = (x) =>
+        {
             try
             {
-                var progress = _controller.GetTotalProgress();
+                var progress = _controller.TotalProgress;
                 if (progress > 0 && progress < 1)
                 {
                     unity_launcher_entry_set_progress_visible(_unityLauncher, true);
@@ -132,7 +136,7 @@ public partial class MainWindow : Adw.ApplicationWindow
         };
         try
         {
-            _unityLauncher = unity_launcher_entry_get_for_desktop_id(String.IsNullOrEmpty(Environment.GetEnvironmentVariable("SNAP")) ? $"{_controller.AppInfo.ID}.desktop" : "tube-converter.desktop");
+            _unityLauncher = unity_launcher_entry_get_for_desktop_id(string.IsNullOrEmpty(Environment.GetEnvironmentVariable("SNAP")) ? $"{_controller.AppInfo.ID}.desktop" : "tube-converter.desktop");
             g_timeout_add(1000, _libUnitySourceFunc, IntPtr.Zero);
         }
         catch (DllNotFoundException e)
@@ -223,7 +227,11 @@ public partial class MainWindow : Adw.ApplicationWindow
     /// </summary>
     /// <param name="sender">object?</param>
     /// <param name="e">NotificationSentEventArgs</param>
-    private void NotificationSent(object? sender, NotificationSentEventArgs e) => _toastOverlay.AddToast(Adw.Toast.New(e.Message));
+    private void NotificationSent(object? sender, NotificationSentEventArgs e)
+    {
+        var toast = Adw.Toast.New(e.Message);
+        _toastOverlay.AddToast(toast);
+    }
 
     /// <summary>
     /// Sends a shell notification
@@ -240,7 +248,7 @@ public partial class MainWindow : Adw.ApplicationWindow
             NotificationSeverity.Error => Gio.NotificationPriority.Urgent,
             _ => Gio.NotificationPriority.Normal
         });
-        if (String.IsNullOrEmpty(Environment.GetEnvironmentVariable("SNAP")))
+        if (string.IsNullOrEmpty(Environment.GetEnvironmentVariable("SNAP")))
         {
             notification.SetIcon(Gio.ThemedIcon.New($"{_controller.AppInfo.ID}-symbolic"));
         }
@@ -262,7 +270,7 @@ public partial class MainWindow : Adw.ApplicationWindow
     {
         if (_controller.AreDownloadsRunning)
         {
-            if (_controller.RunInBackground && (File.Exists("/.flatpak-info") || !String.IsNullOrEmpty(Environment.GetEnvironmentVariable("SNAP"))))
+            if (_controller.RunInBackground && (File.Exists("/.flatpak-info") || !string.IsNullOrEmpty(Environment.GetEnvironmentVariable("SNAP"))))
             {
                 SetVisible(false);
                 return true;
@@ -429,12 +437,98 @@ public partial class MainWindow : Adw.ApplicationWindow
     /// <param name="e">EventArgs</param>
     private void About(Gio.SimpleAction sender, EventArgs e)
     {
+        var debugInfo = new StringBuilder();
+        debugInfo.AppendLine(_controller.AppInfo.ID);
+        debugInfo.AppendLine(_controller.AppInfo.Version);
+        debugInfo.AppendLine($"GTK {Gtk.Functions.GetMajorVersion()}.{Gtk.Functions.GetMinorVersion()}.{Gtk.Functions.GetMicroVersion()}");
+        debugInfo.AppendLine($"libadwaita {Adw.Functions.GetMajorVersion()}.{Adw.Functions.GetMinorVersion()}.{Adw.Functions.GetMicroVersion()}");
+        if (File.Exists("/.flatpak-info"))
+        {
+            debugInfo.AppendLine("Flatpak");
+        }
+        else if (!string.IsNullOrEmpty(Environment.GetEnvironmentVariable("SNAP")))
+        {
+            debugInfo.AppendLine("Snap");
+        }
+        using (Python.Runtime.Py.GIL())
+        {
+            dynamic yt_dlp = Python.Runtime.Py.Import("yt_dlp");
+            debugInfo.AppendLine($"yt-dlp {yt_dlp.version.__version__.As<string>()}");
+        }
+        var ffmpegProcess = new Process
+        {
+            StartInfo = new ProcessStartInfo
+            {
+                FileName = "ffmpeg",
+                Arguments = "-version",
+                UseShellExecute = false,
+                RedirectStandardOutput = true
+            }
+        };
+        try
+        {
+            ffmpegProcess.Start();
+            var ffmpegVersion = ffmpegProcess.StandardOutput.ReadToEnd();
+            ffmpegProcess.WaitForExit();
+            ffmpegVersion = ffmpegVersion.Remove(ffmpegVersion.IndexOf(Environment.NewLine))
+                                         .Remove(ffmpegVersion.IndexOf("Copyright"))
+                                         .Trim();
+            debugInfo.AppendLine(ffmpegVersion);
+        }
+        catch
+        {
+            debugInfo.AppendLine("ffmpeg not found");
+        }
+        var ariaProcess = new Process
+        {
+            StartInfo = new ProcessStartInfo
+            {
+                FileName = "aria2c",
+                Arguments = "--version",
+                UseShellExecute = false,
+                RedirectStandardOutput = true
+            }
+        };
+        try
+        {
+            ariaProcess.Start();
+            var ariaVersion = ariaProcess.StandardOutput.ReadToEnd();
+            ariaProcess.WaitForExit();
+            ariaVersion = ariaVersion.Remove(ariaVersion.IndexOf(Environment.NewLine)).Trim();
+            debugInfo.AppendLine(ariaVersion);
+        }
+        catch
+        {
+            debugInfo.AppendLine("aria2c not found");
+        }
+        debugInfo.AppendLine(CultureInfo.CurrentCulture.ToString());
+        var localeProcess = new Process
+        {
+            StartInfo = new ProcessStartInfo
+            {
+                FileName = "locale",
+                UseShellExecute = false,
+                RedirectStandardOutput = true
+            }
+        };
+        try
+        {
+            localeProcess.Start();
+            var localeString = localeProcess.StandardOutput.ReadToEnd().Trim();
+            localeProcess.WaitForExit();
+            debugInfo.AppendLine(localeString);
+        }
+        catch
+        {
+            debugInfo.AppendLine("Unknown locale");
+        }
         var dialog = Adw.AboutWindow.New();
         dialog.SetTransientFor(this);
         dialog.SetIconName(_controller.AppInfo.ID);
         dialog.SetApplicationName(_controller.AppInfo.ShortName);
         dialog.SetApplicationIcon(_controller.AppInfo.ID + (_controller.AppInfo.GetIsDevelVersion() ? "-devel" : ""));
         dialog.SetVersion(_controller.AppInfo.Version);
+        dialog.SetDebugInfo(debugInfo.ToString());
         dialog.SetComments(_controller.AppInfo.Description);
         dialog.SetDeveloperName("Nickvision");
         dialog.SetLicenseType(Gtk.License.MitX11);
