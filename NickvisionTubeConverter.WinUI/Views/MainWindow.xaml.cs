@@ -114,6 +114,7 @@ public sealed partial class MainWindow : Window
         BtnStopAllDownloads.Label = _controller.Localizer["StopDownloads"];
         ToolTipService.SetToolTip(BtnStopAllDownloads, _controller.Localizer["StopDownloads", "Tooltip"]);
         BtnRetryFailedDownloads.Label = _controller.Localizer["RetryDownloads"];
+        ToolTipService.SetToolTip(BtnRetryFailedDownloads, _controller.Localizer["RetryDownloads", "Tooltip"]);
         //Page
         ViewStack.ChangePage("Home");
     }
