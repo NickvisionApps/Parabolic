@@ -71,11 +71,10 @@ public partial class MainWindow : Adw.ApplicationWindow
     [Gtk.Connect] private readonly Gtk.Spinner _spinner;
     [Gtk.Connect] private readonly Gtk.Box _mainBox;
     [Gtk.Connect] private readonly Adw.HeaderBar _headerBar;
+    [Gtk.Connect] private readonly Gtk.MenuButton _downloaderMenuButton;
     [Gtk.Connect] private readonly Adw.ToastOverlay _toastOverlay;
     [Gtk.Connect] private readonly Adw.ViewStack _viewStack;
     [Gtk.Connect] private readonly Gtk.Button _addDownloadButton;
-    [Gtk.Connect] private readonly Gtk.Button _stopAllDownloadsButton;
-    [Gtk.Connect] private readonly Gtk.Button _retryFailedDownloadsButton;
     [Gtk.Connect] private readonly Gtk.Box _downloadingBox;
     [Gtk.Connect] private readonly Gtk.Box _completedBox;
     [Gtk.Connect] private readonly Gtk.Box _queuedBox;
@@ -230,6 +229,11 @@ public partial class MainWindow : Adw.ApplicationWindow
         actRetryFailedDownloads.OnActivate += async (sender, e) => await _controller.RetryFailedDownloadsAsync();
         AddAction(actRetryFailedDownloads);
         application.SetAccelsForAction("win.retryFailedDownloads", new string[] { "<Ctrl><Shift>r" });
+        //Clear Queued Downloads Action
+        var actClearQueuedDownloads = Gio.SimpleAction.New("clearQueuedDownloads", null);
+        actClearQueuedDownloads.OnActivate += (sender, e) => _controller.ClearQueuedDownloads();
+        AddAction(actClearQueuedDownloads);
+        application.SetAccelsForAction("win.clearQueuedDownloads", new string[] { "<Ctrl>Delete" });
         //Preferences Action
         var actPreferences = Gio.SimpleAction.New("preferences", null);
         actPreferences.OnActivate += Preferences;
@@ -397,8 +401,7 @@ public partial class MainWindow : Adw.ApplicationWindow
         {
             _headerBar.RemoveCssClass("flat");
             _addDownloadButton.SetVisible(true);
-            _stopAllDownloadsButton.SetVisible(true);
-            _retryFailedDownloadsButton.SetVisible(true);
+            _downloaderMenuButton.SetVisible(true);
             foreach (var download in addController.Downloads)
             {
                 _controller.AddDownload(download);

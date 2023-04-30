@@ -7,6 +7,12 @@ menu mainMenu {
   item(_("About"), "win.about")
 }
 
+menu downloaderMenu {
+  item(_("StopDownloads"), "win.stopAllDownloads")
+  item(_("RetryDownloads"), "win.retryFailedDownloads")
+  item(_("ClearQueue"), "win.clearQueuedDownloads")
+}
+
 Adw.ApplicationWindow _root {
   default-width: 800;
   default-height: 600;
@@ -58,19 +64,13 @@ Adw.ApplicationWindow _root {
         }
 
         [end]
-        Gtk.Button _retryFailedDownloadsButton {
-          action-name: "win.retryFailedDownloads";
-          tooltip-text: _("RetryDownloads.Tooltip");
+        Gtk.MenuButton _downloaderMenuButton {
+          direction: none;
+          menu-model: downloaderMenu;
+          tooltip-text: _("Downloader");
+          primary: false;
           visible: false;
-          icon-name: "view-refresh-symbolic";
-        }
-
-        [end]
-        Gtk.Button _stopAllDownloadsButton {
-          action-name: "win.stopAllDownloads";
-          tooltip-text: _("StopDownloads.Tooltip");
-          visible: false;
-          icon-name: "media-playback-stop-symbolic";
+          icon-name: "folder-download-symbolic";
         }
 
         styles ["flat"]

@@ -97,6 +97,7 @@ public sealed partial class MainWindow : Window
         MenuDownloader.Title = _controller.Localizer["Downloader"];
         MenuStopAllDownloads.Text = _controller.Localizer["StopDownloads"];
         MenuRetryFailedDownloads.Text = _controller.Localizer["RetryDownloads"];
+        MenuClearQueuedDownloads.Text = _controller.Localizer["ClearQueue"];
         MenuAbout.Text = string.Format(_controller.Localizer["About"], _controller.AppInfo.ShortName);
         MenuHelp.Title = _controller.Localizer["Help"];
         LblStatus.Text = _controller.Localizer["StatusReady", "WinUI"];
@@ -115,6 +116,8 @@ public sealed partial class MainWindow : Window
         ToolTipService.SetToolTip(BtnStopAllDownloads, _controller.Localizer["StopDownloads", "Tooltip"]);
         BtnRetryFailedDownloads.Label = _controller.Localizer["RetryDownloads"];
         ToolTipService.SetToolTip(BtnRetryFailedDownloads, _controller.Localizer["RetryDownloads", "Tooltip"]);
+        BtnClearQueuedDownloads.Label = _controller.Localizer["ClearQueue"];
+        ToolTipService.SetToolTip(BtnClearQueuedDownloads, _controller.Localizer["ClearQueue", "Tooltip"]);
         //Page
         ViewStack.ChangePage("Home");
     }
@@ -489,6 +492,8 @@ public sealed partial class MainWindow : Window
         if (await addDialog.ShowAsync())
         {
             MenuStopAllDownloads.IsEnabled = true;
+            MenuRetryFailedDownloads.IsEnabled = true;
+            MenuClearQueuedDownloads.IsEnabled = true;
             ViewStack.ChangePage("Downloads");
             IconStatus.Glyph = "\uE118";
             LblStatus.Text = string.Format(_controller.Localizer["RemainingDownloads"], _controller.RemainingDownloads);
@@ -534,6 +539,13 @@ public sealed partial class MainWindow : Window
     /// <param name="sender">object</param>
     /// <param name="e">RoutedEventArgs</param>
     private async void RetryFailedDownloads(object sender, RoutedEventArgs e) => await _controller.RetryFailedDownloadsAsync();
+
+    /// <summary>
+    /// Occurs when the clear queued downloads menu item is clicked
+    /// </summary>
+    /// <param name="sender">object</param>
+    /// <param name="e">RoutedEventArgs</param>
+    private void ClearQueuedDownloads(object sender, RoutedEventArgs e) => _controller.ClearQueuedDownloads();
 
     /// <summary>
     /// Occurs when the about menu item is clicked
