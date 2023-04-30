@@ -16,7 +16,7 @@
         </labs:SettingsCard.HeaderIcon>
 
         <labs:SettingsCard.Header>
-            <TextBox x:Name="TxtTitle" Margin="0,0,0,6" Width="300" Text="{Binding Title, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" TextChanged="TxtTitle_TextChanged"/>
+            <TextBox x:Name="TxtTitle" Margin="0,0,0,6" Width="320" Text="{Binding Title, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" TextChanged="TxtTitle_TextChanged"/>
         </labs:SettingsCard.Header>
 
         <ToggleSwitch OnContent="" OffContent="" IsEnabled="{Binding IsPartOfPlaylist}" IsOn="{Binding ToDownload, Mode=TwoWay}"/>
