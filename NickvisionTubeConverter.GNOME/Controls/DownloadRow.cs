@@ -51,19 +51,15 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
 
     [Gtk.Connect] private readonly Gtk.Image _statusIcon;
     [Gtk.Connect] private readonly Gtk.Label _filenameLabel;
-    [Gtk.Connect] private readonly Gtk.Label _urlLabel;
-    [Gtk.Connect] private readonly Adw.ViewStack _stateViewStack;
     [Gtk.Connect] private readonly Gtk.Label _progressLabel;
+    [Gtk.Connect] private readonly Adw.ViewStack _stateViewStack;
     [Gtk.Connect] private readonly Gtk.ProgressBar _progressBar;
     [Gtk.Connect] private readonly Gtk.LevelBar _levelBar;
-    [Gtk.Connect] private readonly Gtk.Label _doneLabel;
     [Gtk.Connect] private readonly Adw.ViewStack _actionViewStack;
     [Gtk.Connect] private readonly Gtk.Button _stopButton;
     [Gtk.Connect] private readonly Gtk.Button _openFileButton;
     [Gtk.Connect] private readonly Gtk.Button _openFolderButton;
     [Gtk.Connect] private readonly Gtk.Button _retryButton;
-    [Gtk.Connect] private readonly Gtk.ToggleButton _viewLogToggleBtn;
-    [Gtk.Connect] private readonly Gtk.Overlay _overlayLog;
     [Gtk.Connect] private readonly Gtk.ScrolledWindow _scrollLog;
     [Gtk.Connect] private readonly Gtk.Label _lblLog;
     [Gtk.Connect] private readonly Gtk.Button _btnLogToClipboard;
@@ -124,7 +120,6 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
         //Build UI
         builder.Connect(this);
         _filenameLabel.SetLabel(download.Filename);
-        _urlLabel.SetLabel(download.VideoUrl);
         _stopButton.OnClicked += (sender, e) => Stop();
         _openFileButton.OnClicked += (sender, e) =>
         {
@@ -170,7 +165,7 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
             _statusIcon.SetFromIconName(!FinishedWithError ? "emblem-ok-symbolic" : "process-stop-symbolic");
             _stateViewStack.SetVisibleChildName("done");
             _levelBar.SetValue(!FinishedWithError ? 1 : 0);
-            _doneLabel.SetText(!FinishedWithError ? _localizer["Success"] : _localizer["Error"]);
+            _progressLabel.SetText(!FinishedWithError ? _localizer["Success"] : _localizer["Error"]);
             _actionViewStack.SetVisibleChildName(!FinishedWithError ? "open" : "retry");
             return false;
         };
@@ -182,7 +177,7 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
             _statusIcon.SetFromIconName("process-stop-symbolic");
             _stateViewStack.SetVisibleChildName("done");
             _levelBar.SetValue(0);
-            _doneLabel.SetText(_localizer["Stopped"]);
+            _progressLabel.SetText(_localizer["Stopped"]);
             _actionViewStack.SetVisibleChildName("retry");
             return false;
         };
