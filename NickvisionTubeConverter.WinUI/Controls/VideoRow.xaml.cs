@@ -22,7 +22,6 @@ public sealed partial class VideoRow : UserControl
         InitializeComponent();
         _videoInfo = videoInfo;
         DataContext = _videoInfo;
-        ToolTipService.SetToolTip(BtnEdit, localizer["EditFilename"]);
     }
 
     /// <summary>
