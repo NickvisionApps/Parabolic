@@ -1,0 +1,143 @@
+name: tube-converter # you probably want to 'snapcraft register <name>'
+base: core22 # the base snap is the execution environment for this snap
+version: '2023.4.2' # just for humans, typically '1.2+git' or '1.3.2'
+adopt-info: tube-converter
+icon: NickvisionTubeConverter.Shared/Resources/org.nickvision.tubeconverter.png
+summary: An easy-to-use YouTube video downloader # 79 char long summary
+description: |
+ * A basic yt-dlp frontend
+ * Supports downloading videos in multiple formats (mp4, webm, mp3, opus, flac, and wav)
+ * Run multiple downloads at a time
+ * Supports downloading metadata and video subtitles
+grade: stable # must be 'stable' to release into candidate/stable channels
+confinement: strict # use 'strict' once you have the right plugs and slots
+compression: lzo
+architectures:
+  - build-on: amd64
+  - build-on: arm64
+  - build-on: armhf
+
+layout:
+  /usr/lib/org.nickvision.tubeconverter:
+    symlink: $SNAP/usr/lib/org.nickvision.tubeconverter
+  /usr/share/org.nickvision.tubeconverter:
+    symlink: $SNAP/usr/share/org.nickvision.tubeconverter
+  /usr/lib/$CRAFT_ARCH_TRIPLET/libpython3.10.so.1.0:
+    bind-file: $SNAP/gnome-platform/usr/lib/$CRAFT_ARCH_TRIPLET/libpython3.10.so.1.0
+
+parts:
+  yt-dlp:
+    # Missing optional dependencies atomicparsley, mpv, phantomjs and rtmpdump
+    plugin: python
+    source: https://github.com/yt-dlp/yt-dlp.git
+    source-tag: 2023.03.04
+    python-packages:
+      - pyxattr==0.7.2
+      - PyGObject
+    build-environment:
+      # WORKAROUND: The python plugin is broken with gnome extension
+      - PATH: ${CRAFT_PART_INSTALL}/bin:${PATH}
+      - PYTHONPATH: ""
+    override-pull: |
+      craftctl default
+      sed -i 's/^certifi\b/#\0/' requirements.txt
+    stage:
+      # WORKAROUND: Skip venv from python plugin
+      - -bin/activate
+      - -bin/activate.csh
+      - -bin/activate.fish
+      - -bin/Activate.ps1
+      - -bin/python
+      - -bin/python3
+      - -bin/python3.10
+      - -bin/pip
+      - -bin/pip3
+      - -bin/pip3.10
+      - -pyvenv.cfg
+  ffmpeg:
+    after: [ yt-dlp ]
+    # WORKAROUND:
+    # Build from source because the ffmpeg package installs libraries as dependencies
+    # that conflict with the Gnome extension
+    plugin: autotools
+    source: https://ffmpeg.org/releases/ffmpeg-6.0.tar.xz
+    source-checksum: sha256/57be87c22d9b49c112b6d24bc67d42508660e6b718b3db89c44e47e289137082
+    autotools-configure-parameters:
+      # WORKAROUND: Install to /usr instead of /usr/local because it's not in search paths
+      - --prefix=/usr
+      - --disable-debug
+      - --disable-doc
+      - --disable-static
+      - --enable-gpl
+      - --enable-shared
+      - --disable-ffplay
+      - --disable-devices
+      - --enable-gnutls
+      - --enable-libmp3lame
+      - --enable-libvorbis
+    build-packages:
+      - nasm
+      - libgnutls28-dev
+      - libmp3lame-dev
+      - libvorbis-dev
+    stage-packages:
+      - libmp3lame0
+    prime:
+      - usr/include
+  tube-converter:
+    after: [ ffmpeg, yt-dlp ]
+    plugin: dump
+    source: https://github.com/NickvisionApps/TubeConverter.git
+    source-type: git
+    source-tag: $SNAPCRAFT_PROJECT_VERSION
+    source-subdir: NickvisionTubeConverter.GNOME
+    build-environment:
+      - TC_PYTHON_SO: $SNAP/gnome-platform/usr/lib/$CRAFT_ARCH_TRIPLET/libpython3.10.so.1.0
+    build-packages:
+      - brotli
+      - blueprint-compiler
+      - wget
+      - cargo
+    stage-packages:
+      - aria2
+    override-pull: |
+      craftctl default
+      cargo install just
+      wget https://dot.net/v1/dotnet-install.sh -O dotnet-install.sh
+      chmod +x ./dotnet-install.sh
+      ./dotnet-install.sh --channel 7.0
+    override-prime: |
+      craftctl default
+      export DOTNET_ROOT=$HOME/.dotnet
+      export PATH=$PATH:$HOME/.dotnet:$HOME/.dotnet/tools:$HOME/.cargo/bin
+      cd $CRAFT_PART_SRC_WORK
+      just publish-self-contained /usr
+      just install $CRAFT_PRIME
+      sed -i "2 i export TC_PYTHON_SO=$TC_PYTHON_SO" $CRAFT_PRIME/usr/bin/org.nickvision.tubeconverter
+      sed -i "s|Exec=/usr/bin/org.nickvision.tubeconverter --gapplication-service|Exec=/snap/tube-converter/current/usr/bin/org.nickvision.tubeconverter --gapplication-service|" $CRAFT_PRIME/usr/share/dbus-1/services/org.nickvision.tubeconverter.service
+    parse-info: [usr/share/metainfo/org.nickvision.tubeconverter.metainfo.xml]
+    prime:
+      - usr/*
+
+slots:
+  # for GtkApplication registration
+  tube-converter:
+    interface: dbus
+    bus: session
+    name: org.nickvision.tubeconverter    
+
+apps:
+  tube-converter:
+    command: usr/bin/org.nickvision.tubeconverter
+    extensions:
+      - gnome
+    common-id: org.nickvision.tubeconverter
+    desktop: usr/share/applications/org.nickvision.tubeconverter.desktop
+    environment:
+      TC_PYTHON_SO: $SNAP/gnome-platform/usr/lib/$CRAFT_ARCH_TRIPLET/libpython3.10.so.1.0
+      PYTHONPATH: $SNAP/lib/python3.10/site-packages:$PYTHONPATH
+    plugs:
+      - network
+      - network-status
+      - removable-media
+      - mount-observe
