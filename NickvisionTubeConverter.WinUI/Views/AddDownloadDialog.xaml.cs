@@ -60,7 +60,7 @@ public sealed partial class AddDownloadDialog : ContentDialog
         CardSaveFolder.Header = _controller.Localizer["SaveFolder", "Field"];
         ToolTipService.SetToolTip(BtnSelectSaveFolder, _controller.Localizer["SelectSaveFolder"]);
         CardOverwriteFiles.Header = _controller.Localizer["OverwriteExistingFiles"];
-        CardSpeedLimit.Header = _controller.Localizer["EnableSpeedLimit"];
+        CardSpeedLimit.Header = _controller.Localizer["SpeedLimit"];
         LblDownloads.Text = _controller.Localizer["Downloads"];
         LblNumberVideos.Text = _controller.Localizer["NumberVideos"];
         TxtErrors.Text = _controller.Localizer["FixErrors", "WinUI"];
