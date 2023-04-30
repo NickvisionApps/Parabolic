@@ -241,6 +241,7 @@ public partial class MainWindow : Adw.ApplicationWindow
         var actRetryFailedDownloads = Gio.SimpleAction.New("retryFailedDownloads", null);
         actRetryFailedDownloads.OnActivate += (sender, e) => _controller.RetryFailedDownloads();
         AddAction(actRetryFailedDownloads);
+        application.SetAccelsForAction("win.retryFailedDownloads", new string[] { "<Ctrl><Shift>r" });
         //Preferences Action
         var actPreferences = Gio.SimpleAction.New("preferences", null);
         actPreferences.OnActivate += Preferences;
