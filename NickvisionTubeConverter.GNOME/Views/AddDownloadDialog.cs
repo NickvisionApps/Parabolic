@@ -73,6 +73,7 @@ public partial class AddDownloadDialog : Adw.Window
     [Gtk.Connect] private readonly Adw.EntryRow _saveFolderRow;
     [Gtk.Connect] private readonly Gtk.Button _selectSaveFolderButton;
     [Gtk.Connect] private readonly Gtk.Switch _overwriteSwitch;
+    [Gtk.Connect] private readonly Adw.ActionRow _speedLimitRow;
     [Gtk.Connect] private readonly Gtk.Switch _speedLimitSwitch;
     [Gtk.Connect] private readonly Gtk.ToggleButton _numberVideosButton;
     [Gtk.Connect] private readonly Gtk.ScrolledWindow _playlist;
@@ -190,6 +191,7 @@ public partial class AddDownloadDialog : Adw.Window
         SetDefaultWidget(_validateUrlButton);
         _fileTypeRow.SetSelected((uint)_controller.PreviousMediaFileType);
         _saveFolderRow.SetText(_controller.PreviousSaveFolder);
+        _speedLimitRow.SetSubtitle(string.Format(_controller.Localizer["Speed", "KiBps"], _controller.CurrentSpeedLimit));
     }
 
     /// <summary>

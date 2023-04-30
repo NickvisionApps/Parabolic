@@ -45,6 +45,10 @@ public class AddDownloadDialogController
     /// The previously used MediaFileType
     /// </summary>
     public MediaFileType PreviousMediaFileType => Configuration.Current.PreviousMediaFileType;
+    /// <summary>
+    /// The speed limit in the configuration
+    /// </summary>
+    public uint CurrentSpeedLimit => Configuration.Current.SpeedLimit;
 
     /// <summary>
     /// Constructs a AddDownloadDialogController
