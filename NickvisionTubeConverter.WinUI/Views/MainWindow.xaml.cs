@@ -538,7 +538,7 @@ public sealed partial class MainWindow : Window
     /// </summary>
     /// <param name="sender">object</param>
     /// <param name="e">RoutedEventArgs</param>
-    private async void RetryFailedDownloads(object sender, RoutedEventArgs e) => await _controller.RetryFailedDownloadsAsync();
+    private void RetryFailedDownloads(object sender, RoutedEventArgs e) => _controller.RetryFailedDownloads();
 
     /// <summary>
     /// Occurs when the clear queued downloads menu item is clicked

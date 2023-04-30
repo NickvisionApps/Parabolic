@@ -226,7 +226,7 @@ public partial class MainWindow : Adw.ApplicationWindow
         application.SetAccelsForAction("win.stopAllDownloads", new string[] { "<Ctrl><Shift>c" });
         //Retry Failed Downloads Action
         var actRetryFailedDownloads = Gio.SimpleAction.New("retryFailedDownloads", null);
-        actRetryFailedDownloads.OnActivate += async (sender, e) => await _controller.RetryFailedDownloadsAsync();
+        actRetryFailedDownloads.OnActivate += (sender, e) => _controller.RetryFailedDownloads();
         AddAction(actRetryFailedDownloads);
         application.SetAccelsForAction("win.retryFailedDownloads", new string[] { "<Ctrl><Shift>r" });
         //Clear Queued Downloads Action

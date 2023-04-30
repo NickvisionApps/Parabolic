@@ -301,11 +301,11 @@ public class MainWindowController : IDisposable
     /// <summary>
     /// Retries failed downloads
     /// </summary>
-    public async Task RetryFailedDownloadsAsync()
+    public void RetryFailedDownloads()
     {
         while (_completedRows.Count > 0) 
         {
-            await _completedRows[_completedRows.Count - 1].RetryAsync();
+            _completedRows[_completedRows.Count - 1].RetryAsync().FireAndForget();
         }
     }
 
