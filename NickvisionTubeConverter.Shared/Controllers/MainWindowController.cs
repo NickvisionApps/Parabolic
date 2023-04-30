@@ -5,6 +5,7 @@ using NickvisionTubeConverter.Shared.Models;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace NickvisionTubeConverter.Shared.Controllers;
@@ -288,11 +289,11 @@ public class MainWindowController : IDisposable
     /// </summary>
     public void StopAllDownloads()
     {
-        foreach (var row in _queuedRows.ToArray())
+        foreach (var row in _queuedRows.ToList())
         {
             row.Stop();
         }
-        foreach (var row in _downloadingRows.ToArray())
+        foreach (var row in _downloadingRows.ToList())
         {
             row.Stop();
         }
@@ -303,7 +304,7 @@ public class MainWindowController : IDisposable
     /// </summary>
     public void RetryFailedDownloads()
     {
-        foreach (var row in _completedRows.ToArray())
+        foreach (var row in _completedRows.ToList())
         {
             row.RetryAsync().FireAndForget();
         }
@@ -314,7 +315,7 @@ public class MainWindowController : IDisposable
     /// </summary>
     public void ClearQueuedDownloads()
     {
-        foreach (var row in _queuedRows.ToArray())
+        foreach (var row in _queuedRows.ToList())
         {
             _queuedRows.Remove(row);
             UIDeleteDownloadRowFromQueue!(row);
