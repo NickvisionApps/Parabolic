@@ -292,9 +292,9 @@ public class MainWindowController : IDisposable
         {
             row.Stop();
         }
-        foreach (var row in _queuedRows)
+        while(_queuedRows.Count > 0)
         {
-            row.Stop();
+            _queuedRows[0].Stop();
         }
     }
 
