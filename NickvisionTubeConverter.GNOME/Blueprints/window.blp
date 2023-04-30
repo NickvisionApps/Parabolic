@@ -56,14 +56,19 @@ Adw.ApplicationWindow _root {
         }
 
         [end]
+        Gtk.Button _retryFailedDownloadsButton {
+          action-name: "win.retryFailedDownloads";
+          tooltip-text: _("RetryDownloads.Tooltip");
+          visible: false;
+          icon-name: "view-refresh-symbolic";
+        }
+
+        [end]
         Gtk.Button _stopAllDownloadsButton {
           action-name: "win.stopAllDownloads";
           tooltip-text: _("StopDownloads.Tooltip");
           visible: false;
-          Adw.ButtonContent {
-            icon-name: "media-playback-stop-symbolic";
-            label: _("StopDownloads");
-          }
+          icon-name: "media-playback-stop-symbolic";
         }
 
         styles ["flat"]
@@ -168,18 +173,6 @@ Adw.ApplicationWindow _root {
                         hexpand: true;
                         margin-start: 5;
                         styles ["heading"]
-                      }
-
-                      Gtk.Button _retryFailedDownloadsButton {
-                        action-name: "win.retryFailedDownloads";
-                        halign: end;
-
-                        Adw.ButtonContent {
-                          icon-name: "view-refresh-symbolic";
-                          label: _("RetryDownloads");
-                        }
-
-                        styles ["flat"]
                       }
                     }
                   

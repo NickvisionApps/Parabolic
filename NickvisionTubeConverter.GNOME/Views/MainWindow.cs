@@ -409,6 +409,7 @@ public partial class MainWindow : Adw.ApplicationWindow
             _headerBar.RemoveCssClass("flat");
             _addDownloadButton.SetVisible(true);
             _stopAllDownloadsButton.SetVisible(true);
+            _retryFailedDownloadsButton.SetVisible(true);
             foreach (var download in addController.Downloads)
             {
                 _controller.AddDownload(download);
