@@ -34,7 +34,9 @@ Adw.ApplicationWindow _root {
       orientation: vertical;
 
       Adw.HeaderBar _headerBar {
-        title-widget: Adw.WindowTitle _title {};
+        title-widget: Adw.WindowTitle {
+          title: _("ShortName");
+        };
         
         [start]
         Gtk.Button _addDownloadButton {
@@ -80,44 +82,16 @@ Adw.ApplicationWindow _root {
         Adw.ViewStack _viewStack {
           Adw.ViewStackPage {
             name: "pageNoDownloads";
-            child: Gtk.ScrolledWindow {
-              Adw.Clamp {
-                maximum-size: 450;
-                valign: center;
-                margin-start: 12;
-                margin-end: 12;
-                margin-top: 12;
-                margin-bottom: 12;
-
-                Gtk.Box {
-                  orientation: vertical;
-                  spacing: 12;
-                  hexpand: true;
-                  halign: fill;
-                  
-                  Adw.ButtonContent _greeting {
-                    halign: center;
-                    margin-top: 24;
-                    margin-bottom: 14;
-                  }
-                  
-                  Gtk.Button {
-                    label: _("AddDownload");
-                    halign: center;
-                    width-request: 200;
-                    height-request: 50;
-                    action-name: "win.addDownload";
-                    styles ["pill", "suggested-action"]
-                  }
-                  
-                  Gtk.Label {
-                    label: _("NoDownloads.Description");
-                    wrap: true;
-                    justify: center;
-                    styles ["dim-label"]
-                  }
-                }
-              }
+            child: Adw.StatusPage {
+              icon-name: "org.nickvision.tubeconverter";
+              title: _("NoDownloadsRunning");
+              description: _("NoDownloads.Description");
+              child: Gtk.Button {
+                label: _("AddDownload");
+                halign: center;
+                action-name: "win.addDownload";
+                styles ["pill", "suggested-action"]
+              };
             };
           }
           

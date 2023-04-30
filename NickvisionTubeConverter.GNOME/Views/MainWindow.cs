@@ -210,18 +210,6 @@ public partial class MainWindow : Adw.ApplicationWindow
         OnCloseRequest += OnCloseRequested;
         //Build UI
         builder.Connect(this);
-        //Update Title
-        var windowTitle = (Adw.WindowTitle)builder.GetObject("_title");
-        windowTitle.SetTitle(_controller.AppInfo.ShortName);
-        //Update Greeting
-        var greeting = (Adw.ButtonContent)builder.GetObject("_greeting");
-        greeting.SetIconName(_controller.ShowSun ? "sun-outline-symbolic" : "moon-outline-symbolic");
-        greeting.SetLabel(_controller.Greeting);
-        var greetingIcon = (Gtk.Image)greeting.GetFirstChild();
-        greetingIcon.SetPixelSize(48);
-        greetingIcon.SetMarginEnd(6);
-        var greetingLabel = (Gtk.Label)greeting.GetLastChild();
-        greetingLabel.AddCssClass("greeting-title");
         //Register Events 
         _controller.NotificationSent += NotificationSent;
         _controller.UICreateDownloadRow = CreateDownloadRow;
