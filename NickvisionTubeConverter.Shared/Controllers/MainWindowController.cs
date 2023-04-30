@@ -288,13 +288,13 @@ public class MainWindowController : IDisposable
     /// </summary>
     public void StopAllDownloads()
     {
-        while (_downloadingRows.Count > 0)
-        {
-            _downloadingRows[_downloadingRows.Count - 1].Stop();
-        }
         while (_queuedRows.Count > 0)
         {
             _queuedRows[_queuedRows.Count - 1].Stop();
+        }
+        while (_downloadingRows.Count > 0)
+        {
+            _downloadingRows[_downloadingRows.Count - 1].Stop();
         }
     }
 
