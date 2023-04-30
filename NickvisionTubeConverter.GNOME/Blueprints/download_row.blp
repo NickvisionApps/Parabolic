@@ -139,21 +139,21 @@ Adw.Bin _root {
         styles ["opaque"]
       }
 
-      Gtk.ScrolledWindow _scrollLog {
-        height-request: 100;
-        child: Gtk.Label _lblLog {
-          margin-start: 6;
-          margin-top: 6;
-          margin-end: 6;
-          margin-bottom: 6;
-          halign: start;
-          valign: start;
-          wrap: true;
-          wrap-mode: char;
-          selectable: true;
+      Gtk.Frame _frameLog {
+        child: Gtk.ScrolledWindow _scrollLog {
+          height-request: 100;
+          child: Gtk.Label _lblLog {
+            margin-start: 6;
+            margin-top: 6;
+            margin-end: 6;
+            margin-bottom: 6;
+            halign: start;
+            valign: start;
+            wrap: true;
+            wrap-mode: char;
+            selectable: true;
+          };
         };
-
-        styles ["card", "view"]
       }
     }
   }
