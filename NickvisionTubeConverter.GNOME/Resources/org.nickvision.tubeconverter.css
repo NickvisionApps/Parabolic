@@ -1,6 +1,26 @@
-.greeting-title {
-  font-size: 32px;
-  font-weight: 900;
+.status-icon {
+  border-radius: 50%;
+  background: @accent_bg_color;
+  color: @accent_fg_color;
+  min-width: 30px;
+  min-height: 30px;
+}
+
+.status-icon.large {
+  min-width: 86px;
+  min-height: 86px;
+}
+
+.stopped.status-icon {
+  background: @insensitive_fg_color;
+}
+
+.error.status-icon {
+  background: @destructive_bg_color;
+}
+
+.success.status-icon {
+  background: @success_bg_color;
 }
 
 .playlist {
