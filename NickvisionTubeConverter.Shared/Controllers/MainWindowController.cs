@@ -288,13 +288,13 @@ public class MainWindowController : IDisposable
     /// </summary>
     public void StopAllDownloads()
     {
-        while (_queuedRows.Count > 0)
+        foreach (var row in _queuedRows.ToArray())
         {
-            _queuedRows[_queuedRows.Count - 1].Stop();
+            row.Stop();
         }
-        while (_downloadingRows.Count > 0)
+        foreach (var row in _downloadingRows.ToArray())
         {
-            _downloadingRows[_downloadingRows.Count - 1].Stop();
+            row.Stop();
         }
     }
 
@@ -303,9 +303,9 @@ public class MainWindowController : IDisposable
     /// </summary>
     public void RetryFailedDownloads()
     {
-        while (_completedRows.Count > 0) 
+        foreach (var row in _completedRows.ToArray())
         {
-            _completedRows[_completedRows.Count - 1].RetryAsync().FireAndForget();
+            row.RetryAsync().FireAndForget();
         }
     }
 
@@ -314,9 +314,8 @@ public class MainWindowController : IDisposable
     /// </summary>
     public void ClearQueuedDownloads()
     {
-        while (_queuedRows.Count > 0)
+        foreach (var row in _queuedRows.ToArray())
         {
-            var row = _queuedRows[_queuedRows.Count - 1];
             _queuedRows.Remove(row);
             UIDeleteDownloadRowFromQueue!(row);
         }
