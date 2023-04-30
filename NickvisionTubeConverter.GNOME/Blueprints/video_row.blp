@@ -9,4 +9,13 @@ Adw.EntryRow _root {
     valign: center;
     styles ["selection-mode"]
   }
+
+  [suffix]
+  Gtk.Button _undoButton {
+    icon-name: "edit-undo-symbolic";
+    tooltip-text: _("UndoTitleEdit");
+    valign: center;
+
+    styles ["flat"]
+  }
 }

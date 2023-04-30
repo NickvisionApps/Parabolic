@@ -263,7 +263,7 @@ public partial class AddDownloadDialog : Adw.Window
         _controller.ToggleNumberVideos(_videoUrlInfo!, _numberVideosButton.GetActive());
         foreach (var row in _videoRows)
         {
-            row.UpdateTitle();
+            row.UpdateTitle(_numberVideosButton.GetActive());
         }
     }
 
