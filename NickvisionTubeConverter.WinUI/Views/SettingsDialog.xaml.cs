@@ -73,7 +73,7 @@ public sealed partial class SettingsDialog : ContentDialog
             }
             _controller.RunInBackground = ToggleAllowBackground.IsOn;
             var maxNumberOfActiveDownloads = (int)NumMaxNumberOfActiveDownloads.Value;
-            if(maxNumberOfActiveDownloads < 1 && (int)NumMaxNumberOfActiveDownloads.Value > 10)
+            if (maxNumberOfActiveDownloads < 1 && (int)NumMaxNumberOfActiveDownloads.Value > 10)
             {
                 maxNumberOfActiveDownloads = 5;
             }

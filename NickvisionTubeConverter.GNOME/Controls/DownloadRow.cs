@@ -287,7 +287,7 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
 
     public async Task RetryAsync()
     {
-        if(_wasStopped || FinishedWithError)
+        if (_wasStopped || FinishedWithError)
         {
             _progressLabel.SetText(_localizer["DownloadState", "Waiting"]);
             if (DownloadRetriedAsyncCallback != null)

@@ -197,7 +197,7 @@ public sealed partial class DownloadRow : UserControl, IDownloadRowControl
     /// </summary>
     public async Task RetryAsync()
     {
-        if(_wasStopped || FinishedWithError)
+        if (_wasStopped || FinishedWithError)
         {
             _wasStopped = false;
             FinishedWithError = false;

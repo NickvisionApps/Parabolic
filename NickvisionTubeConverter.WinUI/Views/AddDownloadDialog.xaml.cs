@@ -135,7 +135,7 @@ public sealed partial class AddDownloadDialog : ContentDialog
     /// <param name="e">KeyRoutedEventArgs</param>
     private void TxtVideoUrl_KeyDown(object sender, KeyRoutedEventArgs e)
     {
-        if(e.Key == VirtualKey.Enter)
+        if (e.Key == VirtualKey.Enter)
         {
             ValidateUrl(sender, e);
         }

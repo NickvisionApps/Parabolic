@@ -19,7 +19,8 @@ public class VideoRow : Adw.EntryRow
         _videoInfo = videoInfo;
         _numberString = "";
         //Build UI
-        builder.Connect(this);SetText(_videoInfo.Title);
+        builder.Connect(this);
+        SetText(_videoInfo.Title);
         SetTitle(_videoInfo.Url);
         _downloadCheck.SetSensitive(_videoInfo.IsPartOfPlaylist);
         _downloadCheck.SetActive(_videoInfo.ToDownload);

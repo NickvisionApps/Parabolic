@@ -35,7 +35,7 @@ public sealed partial class VideoRow : UserControl
         {
             TxtTitle.Text = TxtTitle.Text.Replace(c, '_');
         }
-        if(TxtTitle.Text != _videoInfo.Title)
+        if (TxtTitle.Text != _videoInfo.Title)
         {
             TxtTitle.Text = _videoInfo.Title;
         }
