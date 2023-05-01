@@ -71,11 +71,10 @@ public partial class MainWindow : Adw.ApplicationWindow
     [Gtk.Connect] private readonly Gtk.Spinner _spinner;
     [Gtk.Connect] private readonly Gtk.Box _mainBox;
     [Gtk.Connect] private readonly Adw.HeaderBar _headerBar;
+    [Gtk.Connect] private readonly Gtk.MenuButton _downloaderMenuButton;
     [Gtk.Connect] private readonly Adw.ToastOverlay _toastOverlay;
     [Gtk.Connect] private readonly Adw.ViewStack _viewStack;
     [Gtk.Connect] private readonly Gtk.Button _addDownloadButton;
-    [Gtk.Connect] private readonly Gtk.Button _stopAllDownloadsButton;
-    [Gtk.Connect] private readonly Gtk.Button _retryFailedDownloadsButton;
     [Gtk.Connect] private readonly Gtk.Box _downloadingBox;
     [Gtk.Connect] private readonly Gtk.Box _completedBox;
     [Gtk.Connect] private readonly Gtk.Box _queuedBox;
@@ -210,18 +209,6 @@ public partial class MainWindow : Adw.ApplicationWindow
         OnCloseRequest += OnCloseRequested;
         //Build UI
         builder.Connect(this);
-        //Update Title
-        var windowTitle = (Adw.WindowTitle)builder.GetObject("_title");
-        windowTitle.SetTitle(_controller.AppInfo.ShortName);
-        //Update Greeting
-        var greeting = (Adw.ButtonContent)builder.GetObject("_greeting");
-        greeting.SetIconName(_controller.ShowSun ? "sun-outline-symbolic" : "moon-outline-symbolic");
-        greeting.SetLabel(_controller.Greeting);
-        var greetingIcon = (Gtk.Image)greeting.GetFirstChild();
-        greetingIcon.SetPixelSize(48);
-        greetingIcon.SetMarginEnd(6);
-        var greetingLabel = (Gtk.Label)greeting.GetLastChild();
-        greetingLabel.AddCssClass("greeting-title");
         //Register Events 
         _controller.NotificationSent += NotificationSent;
         _controller.UICreateDownloadRow = CreateDownloadRow;
@@ -242,6 +229,11 @@ public partial class MainWindow : Adw.ApplicationWindow
         actRetryFailedDownloads.OnActivate += (sender, e) => _controller.RetryFailedDownloads();
         AddAction(actRetryFailedDownloads);
         application.SetAccelsForAction("win.retryFailedDownloads", new string[] { "<Ctrl><Shift>r" });
+        //Clear Queued Downloads Action
+        var actClearQueuedDownloads = Gio.SimpleAction.New("clearQueuedDownloads", null);
+        actClearQueuedDownloads.OnActivate += (sender, e) => _controller.ClearQueuedDownloads();
+        AddAction(actClearQueuedDownloads);
+        application.SetAccelsForAction("win.clearQueuedDownloads", new string[] { "<Ctrl>Delete" });
         //Preferences Action
         var actPreferences = Gio.SimpleAction.New("preferences", null);
         actPreferences.OnActivate += Preferences;
@@ -409,8 +401,7 @@ public partial class MainWindow : Adw.ApplicationWindow
         {
             _headerBar.RemoveCssClass("flat");
             _addDownloadButton.SetVisible(true);
-            _stopAllDownloadsButton.SetVisible(true);
-            _retryFailedDownloadsButton.SetVisible(true);
+            _downloaderMenuButton.SetVisible(true);
             foreach (var download in addController.Downloads)
             {
                 _controller.AddDownload(download);

@@ -60,7 +60,8 @@ public sealed partial class AddDownloadDialog : ContentDialog
         CardSaveFolder.Header = _controller.Localizer["SaveFolder", "Field"];
         ToolTipService.SetToolTip(BtnSelectSaveFolder, _controller.Localizer["SelectSaveFolder"]);
         CardOverwriteFiles.Header = _controller.Localizer["OverwriteExistingFiles"];
-        CardSpeedLimit.Header = _controller.Localizer["EnableSpeedLimit"];
+        CardSpeedLimit.Header = _controller.Localizer["SpeedLimit"];
+        CardSpeedLimit.Description = $"{string.Format(_controller.Localizer["Speed", "KiBps"], _controller.CurrentSpeedLimit)} ({_controller.Localizer["Configurable", "WinUI"]})";
         LblDownloads.Text = _controller.Localizer["Downloads"];
         LblNumberVideos.Text = _controller.Localizer["NumberVideos"];
         TxtErrors.Text = _controller.Localizer["FixErrors", "WinUI"];
@@ -134,7 +135,7 @@ public sealed partial class AddDownloadDialog : ContentDialog
     /// <param name="e">KeyRoutedEventArgs</param>
     private void TxtVideoUrl_KeyDown(object sender, KeyRoutedEventArgs e)
     {
-        if(e.Key == VirtualKey.Enter)
+        if (e.Key == VirtualKey.Enter)
         {
             ValidateUrl(sender, e);
         }

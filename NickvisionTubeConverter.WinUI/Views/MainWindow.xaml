@@ -90,6 +90,18 @@
                                 <KeyboardAccelerator Modifiers="Control,Shift" Key="R"/>
                             </MenuFlyoutItem.KeyboardAccelerators>
                         </MenuFlyoutItem>
+
+                        <MenuFlyoutSeparator/>
+
+                        <MenuFlyoutItem x:Name="MenuClearQueuedDownloads" IsEnabled="False" Click="ClearQueuedDownloads">
+                            <MenuFlyoutItem.Icon>
+                                <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE107;"/>
+                            </MenuFlyoutItem.Icon>
+
+                            <MenuFlyoutItem.KeyboardAccelerators>
+                                <KeyboardAccelerator Modifiers="Control" Key="Delete"/>
+                            </MenuFlyoutItem.KeyboardAccelerators>
+                        </MenuFlyoutItem>
                     </MenuBarItem>
 
                     <MenuBarItem x:Name="MenuHelp">
@@ -159,6 +171,14 @@
                                         <AppBarButton x:Name="BtnRetryFailedDownloads" Click="RetryFailedDownloads">
                                             <AppBarButton.Icon>
                                                 <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE149;"/>
+                                            </AppBarButton.Icon>
+                                        </AppBarButton>
+
+                                        <AppBarSeparator/>
+
+                                        <AppBarButton x:Name="BtnClearQueuedDownloads" Click="ClearQueuedDownloads">
+                                            <AppBarButton.Icon>
+                                                <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE107;"/>
                                             </AppBarButton.Icon>
                                         </AppBarButton>
                                     </CommandBar.PrimaryCommands>

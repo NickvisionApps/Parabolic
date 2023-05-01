@@ -7,6 +7,12 @@ menu mainMenu {
   item(_("About"), "win.about")
 }
 
+menu downloaderMenu {
+  item(_("StopDownloads"), "win.stopAllDownloads")
+  item(_("RetryDownloads"), "win.retryFailedDownloads")
+  item(_("ClearQueue"), "win.clearQueuedDownloads")
+}
+
 Adw.ApplicationWindow _root {
   default-width: 800;
   default-height: 600;
@@ -34,7 +40,9 @@ Adw.ApplicationWindow _root {
       orientation: vertical;
 
       Adw.HeaderBar _headerBar {
-        title-widget: Adw.WindowTitle _title {};
+        title-widget: Adw.WindowTitle {
+          title: _("ShortName");
+        };
         
         [start]
         Gtk.Button _addDownloadButton {
@@ -56,19 +64,13 @@ Adw.ApplicationWindow _root {
         }
 
         [end]
-        Gtk.Button _retryFailedDownloadsButton {
-          action-name: "win.retryFailedDownloads";
-          tooltip-text: _("RetryDownloads.Tooltip");
+        Gtk.MenuButton _downloaderMenuButton {
+          direction: none;
+          menu-model: downloaderMenu;
+          tooltip-text: _("Downloader");
+          primary: false;
           visible: false;
-          icon-name: "view-refresh-symbolic";
-        }
-
-        [end]
-        Gtk.Button _stopAllDownloadsButton {
-          action-name: "win.stopAllDownloads";
-          tooltip-text: _("StopDownloads.Tooltip");
-          visible: false;
-          icon-name: "media-playback-stop-symbolic";
+          icon-name: "folder-download-symbolic";
         }
 
         styles ["flat"]
@@ -80,44 +82,16 @@ Adw.ApplicationWindow _root {
         Adw.ViewStack _viewStack {
           Adw.ViewStackPage {
             name: "pageNoDownloads";
-            child: Gtk.ScrolledWindow {
-              Adw.Clamp {
-                maximum-size: 450;
-                valign: center;
-                margin-start: 12;
-                margin-end: 12;
-                margin-top: 12;
-                margin-bottom: 12;
-
-                Gtk.Box {
-                  orientation: vertical;
-                  spacing: 12;
-                  hexpand: true;
-                  halign: fill;
-                  
-                  Adw.ButtonContent _greeting {
-                    halign: center;
-                    margin-top: 24;
-                    margin-bottom: 14;
-                  }
-                  
-                  Gtk.Button {
-                    label: _("AddDownload");
-                    halign: center;
-                    width-request: 200;
-                    height-request: 50;
-                    action-name: "win.addDownload";
-                    styles ["pill", "suggested-action"]
-                  }
-                  
-                  Gtk.Label {
-                    label: _("NoDownloads.Description");
-                    wrap: true;
-                    justify: center;
-                    styles ["dim-label"]
-                  }
-                }
-              }
+            child: Adw.StatusPage {
+              icon-name: "org.nickvision.tubeconverter";
+              title: _("NoDownloadsRunning");
+              description: _("NoDownloads.Description");
+              child: Gtk.Button {
+                label: _("AddDownload");
+                halign: center;
+                action-name: "win.addDownload";
+                styles ["pill", "suggested-action"]
+              };
             };
           }
           

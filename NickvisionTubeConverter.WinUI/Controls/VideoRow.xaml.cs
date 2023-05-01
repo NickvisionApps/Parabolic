@@ -22,7 +22,6 @@ public sealed partial class VideoRow : UserControl
         InitializeComponent();
         _videoInfo = videoInfo;
         DataContext = _videoInfo;
-        ToolTipService.SetToolTip(BtnEdit, localizer["EditFilename"]);
     }
 
     /// <summary>
@@ -35,6 +34,10 @@ public sealed partial class VideoRow : UserControl
         foreach (var c in Path.GetInvalidFileNameChars())
         {
             TxtTitle.Text = TxtTitle.Text.Replace(c, '_');
+        }
+        if (TxtTitle.Text != _videoInfo.Title)
+        {
+            TxtTitle.Text = _videoInfo.Title;
         }
     }
 }

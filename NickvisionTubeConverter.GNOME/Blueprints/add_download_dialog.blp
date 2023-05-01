@@ -45,7 +45,7 @@ Adw.Window _root {
               margin-start: 24;
               margin-end: 24;
               orientation: vertical;
-              spacing: 20;
+              spacing: 24;
 
               Adw.PreferencesGroup {
                 Adw.EntryRow _urlRow {
@@ -55,18 +55,10 @@ Adw.Window _root {
                 }
               }
 
-              Gtk.Spinner _urlSpinner {
-                valign: center;
-                width-request: 40;
-                height-request: 40;
-                visible: false;
-              }
-
               Gtk.Button _validateUrlButton {
                 label: _("ValidateUrl");
                 halign: center;
                 valign: center;
-                margin-top: 24;
                 margin-bottom: 24;
 
                 styles ["pill", "suggested-action"]
@@ -82,31 +74,91 @@ Adw.Window _root {
               hexpand: true;
               spacing: 12;
 
+              Gtk.Box {
+                margin-start: 24;
+                margin-end: 24;
+                margin-bottom: 12;
+                homogeneous: true;
+
+                Gtk.Box {
+                  orientation: vertical;
+                  hexpand: true;
+                  spacing: 8;
+
+                  Gtk.Box {
+                    spacing: 8;
+                    halign: center;
+                    Gtk.Image {
+                      icon-name: "dotted-box-symbolic";
+                    }
+                    Gtk.Label {
+                      label: _("FileType.Field");
+                      styles ["heading"]
+                    }
+                  }
+
+                  Gtk.DropDown _fileTypeDropDown {
+                    model: Gtk.StringList {
+                      strings ["MP4", "WEBM", "MP3", "OPUS", "FLAC", "WAV"]
+                    };
+                  }
+                }
+
+                Gtk.Box {
+                  orientation: vertical;
+                  hexpand: true;
+                  spacing: 8;
+
+                  Gtk.Box {
+                    spacing: 8;
+                    halign: center;
+                    Gtk.Image {
+                      icon-name: "settings-symbolic";
+                    }
+                    Gtk.Label {
+                      label: _("Quality.Field");
+                      styles ["heading"]
+                    }
+                  }
+
+                  Gtk.DropDown _qualityDropDown {
+                    model: Gtk.StringList {
+                      strings [_("Quality.Best"), _("Quality.Good"), _("Quality.Worst")]
+                    };
+                  }
+                }
+
+                Gtk.Box {
+                  orientation: vertical;
+                  hexpand: true;
+                  spacing: 8;
+
+                  Gtk.Box {
+                    spacing: 8;
+                    halign: center;
+                    Gtk.Image {
+                      icon-name: "media-view-subtitles-symbolic";
+                    }
+                    Gtk.Label {
+                      label: _("Subtitle.Field");
+                      styles ["heading"]
+                    }
+                  }
+
+                  Gtk.DropDown _subtitlesDropDown {
+                    model: Gtk.StringList {
+                      strings [_("Subtitle.None"), "VTT", "SRT"]
+                    };
+                  }
+                }
+
+                styles ["card", "download-settings"]
+              }
+
               Adw.PreferencesGroup {
                 margin-bottom: 12;
                 margin-start: 24;
                 margin-end: 24;
-
-                Adw.ComboRow _fileTypeRow {
-                  title: _("FileType.Field");
-                  model: Gtk.StringList {
-                    strings ["MP4", "WEBM", "MP3", "OPUS", "FLAC", "WAV"]
-                  };
-                }
-
-                Adw.ComboRow _qualityRow {
-                  title: _("Quality.Field");
-                  model: Gtk.StringList {
-                    strings [_("Quality.Best"), _("Quality.Good"), _("Quality.Worst")]
-                  };
-                }
-
-                Adw.ComboRow _subtitleRow {
-                  title: _("Subtitle.Field");
-                  model: Gtk.StringList {
-                    strings [_("Subtitle.None"), "VTT", "SRT"]
-                  };
-                }
 
                 Adw.EntryRow _saveFolderRow {
                   title: _("SaveFolder.Field");
@@ -135,7 +187,7 @@ Adw.Window _root {
                 }
 
                 Adw.ActionRow _speedLimitRow {
-                  title: _("EnableSpeedLimit");
+                  title: _("SpeedLimit");
                   activatable-widget: _speedLimitSwitch;
 
                   [suffix]
@@ -157,7 +209,7 @@ Adw.Window _root {
 
               Gtk.ScrolledWindow _playlist {
                 propagate-natural-height: true;
-                max-content-height: 150;
+                max-content-height: 200;
 
                 Adw.PreferencesGroup _videosGroup {
                   margin-top: 2;
@@ -171,7 +223,7 @@ Adw.Window _root {
                 label: _("Download");
                 halign: center;
                 valign: center;
-                margin-top: 24;
+                margin-top: 12;
                 margin-bottom: 24;
 
                 styles ["pill", "suggested-action"]

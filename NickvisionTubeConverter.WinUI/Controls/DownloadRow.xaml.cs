@@ -73,6 +73,7 @@ public sealed partial class DownloadRow : UserControl, IDownloadRowControl
         FinishedWithError = false;
         //Default
         Icon.Glyph = "\uE118";
+        Icon.Foreground = (SolidColorBrush)Application.Current.Resources["ToolTipForegroundThemeBrush"];
         LblFilename.Text = _download.Filename;
         LblStatus.Text = _localizer["DownloadState", "Waiting"];
         BtnStop.Visibility = Visibility.Visible;
@@ -101,6 +102,7 @@ public sealed partial class DownloadRow : UserControl, IDownloadRowControl
         _wasStopped = false;
         FinishedWithError = false;
         Icon.Glyph = "\uE118";
+        Icon.Foreground = (SolidColorBrush)Application.Current.Resources["ToolTipForegroundThemeBrush"];
         LblFilename.Text = _download.Filename;
         LblStatus.Text = _localizer["DownloadState", "Preparing"];
         BtnStop.Visibility = Visibility.Visible;
@@ -150,20 +152,17 @@ public sealed partial class DownloadRow : UserControl, IDownloadRowControl
                     break;
             }
         });
-        if (!_wasStopped)
-        {
-            FinishedWithError = !success;
-            Icon.Foreground = new SolidColorBrush(success ? Colors.ForestGreen : Colors.Red);
-            Icon.Glyph = success ? "\uE10B" : "\uE10A";
-            ProgBar.IsIndeterminate = false;
-            ProgBar.Value = 1;
-            ProgBar.Foreground = new SolidColorBrush(success ? Colors.ForestGreen : Colors.Red);
-            LblStatus.Text = success ? _localizer["Success"] : _localizer["Error"];
-            BtnStop.Visibility = Visibility.Collapsed;
-            BtnRetry.Visibility = !success ? Visibility.Visible : Visibility.Collapsed;
-            BtnOpenFile.Visibility = success ? Visibility.Visible : Visibility.Collapsed;
-            BtnOpenSaveFolder.Visibility = success ? Visibility.Visible : Visibility.Collapsed;
-        }
+        FinishedWithError = !success;
+        Icon.Foreground = new SolidColorBrush(success ? Colors.ForestGreen : Colors.Red);
+        Icon.Glyph = success ? "\uE10B" : "\uE10A";
+        ProgBar.IsIndeterminate = false;
+        ProgBar.Value = 1;
+        ProgBar.Foreground = new SolidColorBrush(success ? Colors.ForestGreen : Colors.Red);
+        LblStatus.Text = success ? _localizer["Success"] : (_wasStopped ? _localizer["Stopped"] : _localizer["Error"]);
+        BtnStop.Visibility = Visibility.Collapsed;
+        BtnRetry.Visibility = !success ? Visibility.Visible : Visibility.Collapsed;
+        BtnOpenFile.Visibility = success ? Visibility.Visible : Visibility.Collapsed;
+        BtnOpenSaveFolder.Visibility = success ? Visibility.Visible : Visibility.Collapsed;
         if (DownloadCompletedAsyncCallback != null)
         {
             await DownloadCompletedAsyncCallback(this);
@@ -198,8 +197,19 @@ public sealed partial class DownloadRow : UserControl, IDownloadRowControl
     /// </summary>
     public async Task RetryAsync()
     {
-        if(_wasStopped || FinishedWithError)
+        if (_wasStopped || FinishedWithError)
         {
+            _wasStopped = false;
+            FinishedWithError = false;
+            Icon.Glyph = "\uE118";
+            Icon.Foreground = (SolidColorBrush)Application.Current.Resources["ToolTipForegroundThemeBrush"];
+            LblFilename.Text = _download.Filename;
+            LblStatus.Text = _localizer["DownloadState", "Waiting"];
+            BtnStop.Visibility = Visibility.Visible;
+            BtnRetry.Visibility = Visibility.Collapsed;
+            BtnOpenFile.Visibility = Visibility.Collapsed;
+            BtnOpenSaveFolder.Visibility = Visibility.Collapsed;
+            ProgBar.Value = 0;
             if (DownloadRetriedAsyncCallback != null)
             {
                 await DownloadRetriedAsyncCallback(this);
@@ -226,13 +236,7 @@ public sealed partial class DownloadRow : UserControl, IDownloadRowControl
     /// </summary>
     /// <param name="sender">object</param>
     /// <param name="e">RoutedEventArgs</param>
-    private async void BtnRetry_Click(object sender, RoutedEventArgs e)
-    {
-        if (DownloadRetriedAsyncCallback != null)
-        {
-            await DownloadRetriedAsyncCallback(this);
-        }
-    }
+    private async void BtnRetry_Click(object sender, RoutedEventArgs e) => await RetryAsync();
 
     /// <summary>
     /// Occurs when the open file button is clicked

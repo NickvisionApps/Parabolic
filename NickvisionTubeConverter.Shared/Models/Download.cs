@@ -274,7 +274,11 @@ public class Download
                 {
                     KillAriaKeeper();
                     Filename = Regex.Unescape(Filename);
-                    Console.WriteLine(e);
+                    try
+                    {
+                        Console.WriteLine(e);
+                    }
+                    catch { }
                     ForceUpdateLog();
                     IsDone = true;
                     outFile.close();

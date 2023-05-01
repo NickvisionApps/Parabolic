@@ -16,23 +16,9 @@
         </labs:SettingsCard.HeaderIcon>
 
         <labs:SettingsCard.Header>
-            <TextBlock MaxWidth="400" TextWrapping="Wrap" Text="{Binding Title, Mode=TwoWay}"/>
+            <TextBox x:Name="TxtTitle" Margin="0,0,0,6" Width="320" Text="{Binding Title, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" TextChanged="TxtTitle_TextChanged"/>
         </labs:SettingsCard.Header>
-        
-        <StackPanel Orientation="Horizontal">
-            <Button x:Name="BtnEdit" VerticalAlignment="Center">
-                <Button.Content>
-                    <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" FontSize="16" Glyph="&#xE104;"/>
-                </Button.Content>
 
-                <Button.Flyout>
-                    <Flyout Placement="Bottom">
-                        <TextBox x:Name="TxtTitle" PlaceholderText="{Binding OriginalTitle}" Text="{Binding Title, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" TextChanged="TxtTitle_TextChanged"/>
-                    </Flyout>
-                </Button.Flyout>
-            </Button>
-
-            <ToggleSwitch OnContent="" OffContent="" IsEnabled="{Binding IsPartOfPlaylist}" IsOn="{Binding ToDownload, Mode=TwoWay}"/>
-        </StackPanel>
+        <ToggleSwitch OnContent="" OffContent="" IsEnabled="{Binding IsPartOfPlaylist}" IsOn="{Binding ToDownload, Mode=TwoWay}"/>
     </labs:SettingsCard>
 </UserControl>

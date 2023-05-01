@@ -67,12 +67,13 @@ public partial class AddDownloadDialog : Adw.Window
     [Gtk.Connect] private readonly Gtk.Button _addDownloadButton;
     [Gtk.Connect] private readonly Gtk.Box _downloadPage;
     [Gtk.Connect] private readonly Gtk.Button _backButton;
-    [Gtk.Connect] private readonly Adw.ComboRow _fileTypeRow;
-    [Gtk.Connect] private readonly Adw.ComboRow _qualityRow;
-    [Gtk.Connect] private readonly Adw.ComboRow _subtitleRow;
+    [Gtk.Connect] private readonly Gtk.DropDown _fileTypeDropDown;
+    [Gtk.Connect] private readonly Gtk.DropDown _qualityDropDown;
+    [Gtk.Connect] private readonly Gtk.DropDown _subtitlesDropDown;
     [Gtk.Connect] private readonly Adw.EntryRow _saveFolderRow;
     [Gtk.Connect] private readonly Gtk.Button _selectSaveFolderButton;
     [Gtk.Connect] private readonly Gtk.Switch _overwriteSwitch;
+    [Gtk.Connect] private readonly Adw.ActionRow _speedLimitRow;
     [Gtk.Connect] private readonly Gtk.Switch _speedLimitSwitch;
     [Gtk.Connect] private readonly Gtk.ToggleButton _numberVideosButton;
     [Gtk.Connect] private readonly Gtk.ScrolledWindow _playlist;
@@ -164,11 +165,11 @@ public partial class AddDownloadDialog : Adw.Window
             _urlRow.SetText("");
             _addDownloadButton.SetSensitive(false);
         };
-        _fileTypeRow.OnNotify += async (sender, e) =>
+        _fileTypeDropDown.OnNotify += async (sender, e) =>
         {
             if (e.Pspec.GetName() == "selected-item")
             {
-                _subtitleRow.SetSensitive(((MediaFileType)_fileTypeRow.GetSelected()).GetIsVideo());
+                _subtitlesDropDown.SetSensitive(((MediaFileType)_fileTypeDropDown.GetSelected()).GetIsVideo());
             }
         };
         _selectSaveFolderButton.OnClicked += SelectSaveFolder;
@@ -176,7 +177,7 @@ public partial class AddDownloadDialog : Adw.Window
         //Add Download Button
         _addDownloadButton.OnClicked += (sender, e) =>
         {
-            _controller.PopulateDownloads(_videoUrlInfo!, (MediaFileType)_fileTypeRow.GetSelected(), (Quality)_qualityRow.GetSelected(), (Subtitle)_subtitleRow.GetSelected(), _saveFolderRow.GetText(), _overwriteSwitch.GetActive(), _speedLimitSwitch.GetActive());
+            _controller.PopulateDownloads(_videoUrlInfo!, (MediaFileType)_fileTypeDropDown.GetSelected(), (Quality)_qualityDropDown.GetSelected(), (Subtitle)_subtitlesDropDown.GetSelected(), _saveFolderRow.GetText(), _overwriteSwitch.GetActive(), _speedLimitSwitch.GetActive());
             OnDownload?.Invoke(this, EventArgs.Empty);
         };
         _addDownloadButton.SetSensitive(false);
@@ -188,8 +189,9 @@ public partial class AddDownloadDialog : Adw.Window
         //Load
         _viewStack.SetVisibleChildName("pageUrl");
         SetDefaultWidget(_validateUrlButton);
-        _fileTypeRow.SetSelected((uint)_controller.PreviousMediaFileType);
+        _fileTypeDropDown.SetSelected((uint)_controller.PreviousMediaFileType);
         _saveFolderRow.SetText(_controller.PreviousSaveFolder);
+        _speedLimitRow.SetSubtitle($"{string.Format(_controller.Localizer["Speed", "KiBps"], _controller.CurrentSpeedLimit)} ({_controller.Localizer["Configurable", "GTK"]})");
     }
 
     /// <summary>
@@ -261,7 +263,7 @@ public partial class AddDownloadDialog : Adw.Window
         _controller.ToggleNumberVideos(_videoUrlInfo!, _numberVideosButton.GetActive());
         foreach (var row in _videoRows)
         {
-            row.UpdateTitle();
+            row.UpdateTitle(_numberVideosButton.GetActive());
         }
     }
 
