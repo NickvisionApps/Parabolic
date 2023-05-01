@@ -34,6 +34,9 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
     [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
     private static partial void gtk_file_launcher_launch(nint fileLauncher, nint parent, nint cancellable, GAsyncReadyCallback callback, nint data);
 
+    [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
+    private static partial void gtk_file_launcher_open_containing_folder(nint fileLauncher, nint parent, nint cancellable, GAsyncReadyCallback callback, nint data);
+
     private readonly Localizer _localizer;
     private readonly Download _download;
     private readonly GSourceFunc _runStartCallback;
@@ -129,9 +132,9 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
         };
         _openFolderButton.OnClicked += (sender, e) =>
         {
-            var file = Gio.FileHelper.NewForPath(_download.SaveFolder);
+            var file = Gio.FileHelper.NewForPath($"{_download.SaveFolder}{Path.DirectorySeparatorChar}{_download.Filename}");
             var fileLauncher = gtk_file_launcher_new(file.Handle);
-            gtk_file_launcher_launch(fileLauncher, 0, 0, (source, res, data) => { }, 0);
+            gtk_file_launcher_open_containing_folder(fileLauncher, 0, 0, (source, res, data) => { }, 0);
         };
         _retryButton.OnClicked += async (sender, e) => await RetryAsync();
         _btnLogToClipboard.OnClicked += (sender, e) =>

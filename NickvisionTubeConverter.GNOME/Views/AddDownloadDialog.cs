@@ -56,6 +56,7 @@ public partial class AddDownloadDialog : Adw.Window
     private readonly Gtk.Window _parent;
     private readonly AddDownloadDialogController _controller;
     private VideoUrlInfo? _videoUrlInfo;
+    private string _saveFolderString;
     private GAsyncReadyCallback? _saveCallback;
     private GSourceFunc _startSearchCallback;
     private GSourceFunc _finishSearchCallback;
@@ -177,7 +178,7 @@ public partial class AddDownloadDialog : Adw.Window
         //Add Download Button
         _addDownloadButton.OnClicked += (sender, e) =>
         {
-            _controller.PopulateDownloads(_videoUrlInfo!, (MediaFileType)_fileTypeDropDown.GetSelected(), (Quality)_qualityDropDown.GetSelected(), (Subtitle)_subtitlesDropDown.GetSelected(), _saveFolderRow.GetText(), _overwriteSwitch.GetActive(), _speedLimitSwitch.GetActive());
+            _controller.PopulateDownloads(_videoUrlInfo!, (MediaFileType)_fileTypeDropDown.GetSelected(), (Quality)_qualityDropDown.GetSelected(), (Subtitle)_subtitlesDropDown.GetSelected(), _saveFolderString, _overwriteSwitch.GetActive(), _speedLimitSwitch.GetActive());
             OnDownload?.Invoke(this, EventArgs.Empty);
         };
         _addDownloadButton.SetSensitive(false);
@@ -190,8 +191,18 @@ public partial class AddDownloadDialog : Adw.Window
         _viewStack.SetVisibleChildName("pageUrl");
         SetDefaultWidget(_validateUrlButton);
         _fileTypeDropDown.SetSelected((uint)_controller.PreviousMediaFileType);
-        _saveFolderRow.SetText(_controller.PreviousSaveFolder);
-        _speedLimitRow.SetSubtitle($"{string.Format(_controller.Localizer["Speed", "KiBps"], _controller.CurrentSpeedLimit)} ({_controller.Localizer["Configurable", "GTK"]})");
+        if (Directory.Exists(_controller.PreviousSaveFolder))
+        {
+            _saveFolderString = _controller.PreviousSaveFolder;
+        }
+        else
+        {
+            _saveFolderRow.SetTitle(_controller.Localizer["SaveFolder.Invalid"]);
+            _saveFolderRow.AddCssClass("error");
+            _addDownloadButton.SetSensitive(false);
+            _saveFolderString = "";
+        }
+        _saveFolderRow.SetText(Path.GetFileName(_saveFolderString) ?? "");
     }
 
     /// <summary>
@@ -245,8 +256,10 @@ public partial class AddDownloadDialog : Adw.Window
             var fileHandle = gtk_file_dialog_select_folder_finish(folderDialog, res, IntPtr.Zero);
             if (fileHandle != IntPtr.Zero)
             {
-                var path = g_file_get_path(fileHandle);
-                _saveFolderRow.SetText(path);
+                _saveFolderString = g_file_get_path(fileHandle);
+                _saveFolderRow.SetText(Path.GetFileName(_saveFolderString));
+                _saveFolderRow.SetTitle(_controller.Localizer["SaveFolder.Field"]);
+                _saveFolderRow.RemoveCssClass("error");
                 _addDownloadButton.SetSensitive(true);
             }
         };
