@@ -25,7 +25,7 @@ public sealed partial class DownloadRow : UserControl, IDownloadRowControl
     /// <summary>
     /// The callback function to run when the download is completed
     /// </summary>
-    public Func<IDownloadRowControl, Task>? DownloadCompletedAsyncCallback { get; set; }
+    public Action<IDownloadRowControl>? DownloadCompletedCallback { get; set; }
     /// <summary>
     /// The callback function to run when the download is stopped
     /// </summary>
@@ -33,7 +33,7 @@ public sealed partial class DownloadRow : UserControl, IDownloadRowControl
     /// <summary>
     /// The callback function to run when the download is retried
     /// </summary>
-    public Func<IDownloadRowControl, Task>? DownloadRetriedAsyncCallback { get; set; }
+    public Action<IDownloadRowControl>? DownloadRetriedCallback { get; set; }
 
     /// <summary>
     /// The filename of the download
@@ -90,11 +90,11 @@ public sealed partial class DownloadRow : UserControl, IDownloadRowControl
     }
 
     /// <summary>
-    /// Runs the download
+    /// Starts the download
     /// </summary>
     /// <param name="useAria">Whether or not to use aria2 downloader</param>
     /// <param name="embedMetadata">Whether or not to embed video metadata</param>
-    public async Task RunAsync(bool useAria, bool embedMetadata)
+    public void Start(bool useAria, bool embedMetadata)
     {
         if (_previousEmbedMetadata == null)
         {
@@ -153,22 +153,28 @@ public sealed partial class DownloadRow : UserControl, IDownloadRowControl
                     break;
             }
         };
-        var success = await _download.RunAsync(useAria, embedMetadata, _localizer);
-        FinishedWithError = !success;
-        Icon.Foreground = new SolidColorBrush(success ? Colors.ForestGreen : Colors.Red);
-        Icon.Glyph = success ? "\uE10B" : "\uE10A";
-        ProgBar.IsIndeterminate = false;
-        ProgBar.Value = 1;
-        ProgBar.Foreground = new SolidColorBrush(success ? Colors.ForestGreen : Colors.Red);
-        LblStatus.Text = success ? _localizer["Success"] : (_wasStopped ? _localizer["Stopped"] : _localizer["Error"]);
-        BtnStop.Visibility = Visibility.Collapsed;
-        BtnRetry.Visibility = !success ? Visibility.Visible : Visibility.Collapsed;
-        BtnOpenFile.Visibility = success ? Visibility.Visible : Visibility.Collapsed;
-        BtnOpenSaveFolder.Visibility = success ? Visibility.Visible : Visibility.Collapsed;
-        if (DownloadCompletedAsyncCallback != null)
+        _download.DownloadCompleted += (sender, success) =>
         {
-            await DownloadCompletedAsyncCallback(this);
-        }
+            App.MainWindow!.DispatcherQueue.TryEnqueue(() =>
+            {
+                FinishedWithError = !success;
+                Icon.Foreground = new SolidColorBrush(success ? Colors.ForestGreen : Colors.Red);
+                Icon.Glyph = success ? "\uE10B" : "\uE10A";
+                ProgBar.IsIndeterminate = false;
+                ProgBar.Value = 1;
+                ProgBar.Foreground = new SolidColorBrush(success ? Colors.ForestGreen : Colors.Red);
+                LblStatus.Text = success ? _localizer["Success"] : (_wasStopped ? _localizer["Stopped"] : _localizer["Error"]);
+                BtnStop.Visibility = Visibility.Collapsed;
+                BtnRetry.Visibility = !success ? Visibility.Visible : Visibility.Collapsed;
+                BtnOpenFile.Visibility = success ? Visibility.Visible : Visibility.Collapsed;
+                BtnOpenSaveFolder.Visibility = success ? Visibility.Visible : Visibility.Collapsed;
+                if (DownloadCompletedCallback != null)
+                {
+                    DownloadCompletedCallback(this);
+                }
+            });
+        };
+        _download.Start(useAria, embedMetadata, _localizer);
     }
 
     /// <summary>
@@ -197,7 +203,7 @@ public sealed partial class DownloadRow : UserControl, IDownloadRowControl
     /// <summary>
     /// Retries the download if needed
     /// </summary>
-    public async Task RetryAsync()
+    public void Retry()
     {
         if (_wasStopped || FinishedWithError)
         {
@@ -212,9 +218,9 @@ public sealed partial class DownloadRow : UserControl, IDownloadRowControl
             BtnOpenFile.Visibility = Visibility.Collapsed;
             BtnOpenSaveFolder.Visibility = Visibility.Collapsed;
             ProgBar.Value = 0;
-            if (DownloadRetriedAsyncCallback != null)
+            if (DownloadRetriedCallback != null)
             {
-                await DownloadRetriedAsyncCallback(this);
+                DownloadRetriedCallback(this);
             }
         }
     }
@@ -238,7 +244,7 @@ public sealed partial class DownloadRow : UserControl, IDownloadRowControl
     /// </summary>
     /// <param name="sender">object</param>
     /// <param name="e">RoutedEventArgs</param>
-    private async void BtnRetry_Click(object sender, RoutedEventArgs e) => await RetryAsync();
+    private void BtnRetry_Click(object sender, RoutedEventArgs e) => Retry();
 
     /// <summary>
     /// Occurs when the open file button is clicked

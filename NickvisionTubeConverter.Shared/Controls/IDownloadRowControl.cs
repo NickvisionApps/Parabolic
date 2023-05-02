@@ -19,7 +19,7 @@ public interface IDownloadRowControl
     /// <summary>
     /// The callback function to run when the download is completed
     /// </summary>
-    public Func<IDownloadRowControl, Task>? DownloadCompletedAsyncCallback { get; set; }
+    public Action<IDownloadRowControl>? DownloadCompletedCallback { get; set; }
     /// <summary>
     /// The callback function to run when the download is stopped
     /// </summary>
@@ -27,7 +27,7 @@ public interface IDownloadRowControl
     /// <summary>
     /// The callback function to run when the download is retried
     /// </summary>
-    public Func<IDownloadRowControl, Task>? DownloadRetriedAsyncCallback { get; set; }
+    public Action<IDownloadRowControl>? DownloadRetriedCallback { get; set; }
     /// <summary>
     /// Download progress
     /// </summary>
@@ -42,11 +42,11 @@ public interface IDownloadRowControl
     public bool FinishedWithError { get; set; }
 
     /// <summary>
-    /// Runs the download
+    /// Starts the download
     /// </summary>
     /// <param name="useAria">Whether or not to use aria2 downloader</param>
     /// <param name="embedMetadata">Whether or not to embed video metadata</param>
-    public Task RunAsync(bool useAria, bool embedMetadata);
+    public void Start(bool useAria, bool embedMetadata);
 
     /// <summary>
     /// Stops the download
@@ -56,5 +56,5 @@ public interface IDownloadRowControl
     /// <summary>
     /// Retries the download if needed
     /// </summary>
-    public Task RetryAsync();
+    public void Retry();
 }

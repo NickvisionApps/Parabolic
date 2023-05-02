@@ -70,7 +70,7 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
     /// <summary>
     /// The callback function to run when the download is completed
     /// </summary>
-    public Func<IDownloadRowControl, Task>? DownloadCompletedAsyncCallback { get; set; }
+    public Action<IDownloadRowControl>? DownloadCompletedCallback { get; set; }
     /// <summary>
     /// The callback function to run when the download is stopped
     /// </summary>
@@ -78,7 +78,7 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
     /// <summary>
     /// The callback function to run when the download is retried
     /// </summary>
-    public Func<IDownloadRowControl, Task>? DownloadRetriedAsyncCallback { get; set; }
+    public Action<IDownloadRowControl>? DownloadRetriedCallback { get; set; }
 
     /// <summary>
     /// The filename of the download
@@ -136,7 +136,7 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
             var fileLauncher = gtk_file_launcher_new(file.Handle);
             gtk_file_launcher_open_containing_folder(fileLauncher, 0, 0, (source, res, data) => { }, 0);
         };
-        _retryButton.OnClicked += async (sender, e) => await RetryAsync();
+        _retryButton.OnClicked += (sender, e) => Retry();
         _btnLogToClipboard.OnClicked += (sender, e) =>
         {
             _lblLog.GetClipboard().SetText(_lblLog.GetText());
@@ -219,11 +219,11 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
     }
 
     /// <summary>
-    /// Runs the download
+    /// Starts the download
     /// </summary>
     /// <param name="useAria">Whether or not to use aria2 downloader</param>
     /// <param name="embedMetadata">Whether or not to embed video metadata</param>
-    public async Task RunAsync(bool useAria, bool embedMetadata)
+    public void Start(bool useAria, bool embedMetadata)
     {
         if (_previousEmbedMetadata == null)
         {
@@ -264,16 +264,19 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
                     break;
             }
         };
-        var success = await _download.RunAsync(useAria, embedMetadata, _localizer);
-        if (!_wasStopped)
+        _download.DownloadCompleted += (sender, success) => 
         {
-            FinishedWithError = !success;
-            g_main_context_invoke(0, _runEndCallback, 0);
-        }
-        if (DownloadCompletedAsyncCallback != null)
-        {
-            await DownloadCompletedAsyncCallback(this);
-        }
+            if (!_wasStopped)
+            {
+                FinishedWithError = !success;
+                g_main_context_invoke(0, _runEndCallback, 0);
+            }
+            if (DownloadCompletedCallback != null)
+            {
+                DownloadCompletedCallback(this);
+            }
+        };
+        _download.Start(useAria, embedMetadata, _localizer);
     }
 
     /// <summary>
@@ -290,14 +293,17 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
         }
     }
 
-    public async Task RetryAsync()
+    /// <summary>
+    /// Retries the download
+    /// </summary>
+    public void Retry()
     {
         if (_wasStopped || FinishedWithError)
         {
             _progressLabel.SetText(_localizer["DownloadState", "Waiting"]);
-            if (DownloadRetriedAsyncCallback != null)
+            if (DownloadRetriedCallback != null)
             {
-                await DownloadRetriedAsyncCallback(this);
+                DownloadRetriedCallback(this);
             }
         }
     }

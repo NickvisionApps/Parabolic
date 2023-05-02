@@ -268,14 +268,14 @@ public class MainWindowController : IDisposable
     public void AddDownload(Download download)
     {
         var newRow = UICreateDownloadRow!(download);
-        newRow.DownloadCompletedAsyncCallback = DownloadCompletedAsync;
+        newRow.DownloadCompletedCallback = DownloadCompleted;
         newRow.DownloadStoppedCallback = DownloadStopped;
-        newRow.DownloadRetriedAsyncCallback = DownloadRetried;
+        newRow.DownloadRetriedCallback = DownloadRetried;
         if (_downloadingRows.Count < Configuration.Current.MaxNumberOfActiveDownloads)
         {
             _downloadingRows.Add(newRow);
             UIMoveDownloadRow!(newRow, DownloadStage.Downloading);
-            newRow.RunAsync(Configuration.Current.UseAria, Configuration.Current.EmbedMetadata).FireAndForget();
+            newRow.Start(Configuration.Current.UseAria, Configuration.Current.EmbedMetadata);
         }
         else
         {
@@ -306,7 +306,7 @@ public class MainWindowController : IDisposable
     {
         foreach (var row in _completedRows.ToList())
         {
-            row.RetryAsync().FireAndForget();
+            row.Retry();
         }
     }
 
@@ -336,7 +336,7 @@ public class MainWindowController : IDisposable
             _downloadingRows.Add(queuedRow);
             _queuedRows.RemoveAt(0);
             UIMoveDownloadRow!(queuedRow, DownloadStage.Downloading);
-            queuedRow.RunAsync(Configuration.Current.UseAria, Configuration.Current.EmbedMetadata).FireAndForget();
+            queuedRow.Start(Configuration.Current.UseAria, Configuration.Current.EmbedMetadata);
         }
     }
 
@@ -344,7 +344,7 @@ public class MainWindowController : IDisposable
     /// Occurs when a row's download is completed
     /// </summary>
     /// <param name="row">The completed row</param>
-    private async Task DownloadCompletedAsync(IDownloadRowControl row)
+    private async void DownloadCompleted(IDownloadRowControl row)
     {
         _completedRows.Add(row);
         _downloadingRows.Remove(row);
@@ -355,7 +355,7 @@ public class MainWindowController : IDisposable
             _downloadingRows.Add(queuedRow);
             _queuedRows.RemoveAt(0);
             UIMoveDownloadRow!(queuedRow, DownloadStage.Downloading);
-            await queuedRow.RunAsync(Configuration.Current.UseAria, Configuration.Current.EmbedMetadata);
+            queuedRow.Start(Configuration.Current.UseAria, Configuration.Current.EmbedMetadata);
         }
     }
 
@@ -377,14 +377,14 @@ public class MainWindowController : IDisposable
     /// Occurs when a row's download is retried
     /// </summary>
     /// <param name="row">The retried row</param>
-    private async Task DownloadRetried(IDownloadRowControl row)
+    private void DownloadRetried(IDownloadRowControl row)
     {
         if (_downloadingRows.Count < Configuration.Current.MaxNumberOfActiveDownloads)
         {
             _downloadingRows.Add(row);
             _completedRows.Remove(row);
             UIMoveDownloadRow!(row, DownloadStage.Downloading);
-            await row.RunAsync(Configuration.Current.UseAria, Configuration.Current.EmbedMetadata);
+            row.Start(Configuration.Current.UseAria, Configuration.Current.EmbedMetadata);
         }
         else
         {
