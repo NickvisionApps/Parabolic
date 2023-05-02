@@ -99,15 +99,15 @@ public class AddDownloadDialogController
     /// <param name="subtitles">The subtitle format of the downloads</param>
     /// <param name="saveFolder">The save folder of the downloads</param>
     /// <param name="overwriteFiles">Whether or not to overwrite existing files</param>
-    /// <param name="speedLimit">Whether or not to use speed limit</param>
-    public void PopulateDownloads(VideoUrlInfo videoUrlInfo, MediaFileType mediaFileType, Quality quality, Subtitle subtitles, string saveFolder, bool overwriteFiles, bool speedLimit)
+    /// <param name="limitSpeed">Whether or not to use speed limit</param>
+    public void PopulateDownloads(VideoUrlInfo videoUrlInfo, MediaFileType mediaFileType, Quality quality, Subtitle subtitles, string saveFolder, bool overwriteFiles, bool limitSpeed)
     {
         Downloads.Clear();
         foreach (var video in videoUrlInfo.Videos)
         {
             if (video.ToDownload)
             {
-                Downloads.Add(new Download(video.Url, mediaFileType, saveFolder, video.Title, overwriteFiles, speedLimit, Configuration.Current.UseAria, quality, subtitles, Configuration.Current.SpeedLimit));
+                Downloads.Add(new Download(video.Url, mediaFileType, saveFolder, video.Title, limitSpeed, Configuration.Current.SpeedLimit, quality, subtitles, overwriteFiles));
             }
         }
         Configuration.Current.PreviousSaveFolder = saveFolder;

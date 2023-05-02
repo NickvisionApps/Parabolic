@@ -45,20 +45,19 @@ public enum DownloadStage
 /// </summary>
 public class Download
 {
-    private readonly Guid _id;
-    private readonly MediaFileType _fileType;
-    private readonly Quality _quality;
-    private readonly Subtitle _subtitle;
-    private readonly bool _overwriteFiles;
-    private readonly bool _limitSpeed;
-    private readonly uint _speedLimit;
-    private readonly bool _useAria;
-    private readonly string _logPath;
     private readonly string _tempDownloadPath;
-    private readonly Process _ariaKeeper;
+    private readonly string _logPath;
+    private bool _limitSpeed;
+    private uint _speedLimit;
+    private bool _overwriteFiles;
     private Action<DownloadProgressState>? _progressCallback;
     private ulong? _pid;
+    private Process? _ariaKeeper;
 
+    /// <summary>
+    /// The id of the download
+    /// </summary>
+    public Guid Id { get; init; }
     /// <summary>
     /// The url of the video
     /// </summary>
@@ -67,6 +66,18 @@ public class Download
     /// The save folder for the download
     /// </summary>
     public string SaveFolder { get; init; }
+    /// <summary>
+    /// The file type of the download
+    /// </summary>
+    public MediaFileType FileType { get; init; }
+    /// <summary>
+    /// The quality of the download
+    /// </summary>
+    public Quality Quality { get; init; }
+    /// <summary>
+    /// The subtitles for the download
+    /// </summary>
+    public Subtitle Subtitle { get; init; }
     /// <summary>
     /// The filename of the download
     /// </summary>
@@ -83,55 +94,44 @@ public class Download
     /// <param name="fileType">The file type to download the video as</param>
     /// <param name="saveFolder">The folder to save the download to</param>
     /// <param name="saveFilename">The filename to save the download as</param>
-    /// <param name="overwriteFiles">Whether or not to overwrite existing files</param>
     /// <param name="limitSpeed">Whether or not to limit the download speed</param>
-    /// <param name="useAria">Whether or not to use aria2 for the download</param>
+    /// <param name="speedLimit">The speed at which to limit the download</param>
     /// <param name="quality">The quality of the download</param>
     /// <param name="subtitle">The subtitles for the download</param>
-    /// <param name="speedLimit">The speed at which to limit the download</param>
-    public Download(string videoUrl, MediaFileType fileType, string saveFolder, string saveFilename, bool overwriteFiles, bool limitSpeed, bool useAria, Quality quality = Quality.Best, Subtitle subtitle = Subtitle.None, uint speedLimit = 1024)
+    /// <param name="overwriteFiles">Whether or not to overwrite existing files</param>
+    public Download(string videoUrl, MediaFileType fileType, string saveFolder, string saveFilename, bool limitSpeed, uint speedLimit = 1024, Quality quality = Quality.Best, Subtitle subtitle = Subtitle.None, bool overwriteFiles = true)
     {
-        _id = Guid.NewGuid();
-        _fileType = fileType;
-        _quality = quality;
-        _subtitle = subtitle;
-        _overwriteFiles = overwriteFiles;
-        _limitSpeed = limitSpeed;
-        _speedLimit = speedLimit;
-        _useAria = useAria;
-        _tempDownloadPath = $"{Configuration.TempDir}{Path.DirectorySeparatorChar}{_id}{Path.DirectorySeparatorChar}";
-        _logPath = $"{_tempDownloadPath}log";
-        _progressCallback = null;
-        _pid = null;
+        Id = Guid.NewGuid();
         VideoUrl = videoUrl;
         SaveFolder = saveFolder;
-        Filename = $"{saveFilename}{_fileType.GetDotExtension()}";
+        FileType = fileType;
+        Quality = quality;
+        Subtitle = subtitle;
+        Filename = $"{saveFilename}{FileType.GetDotExtension()}";
         IsDone = false;
+        _tempDownloadPath = $"{Configuration.TempDir}{Path.DirectorySeparatorChar}{Id}{Path.DirectorySeparatorChar}";
+        _logPath = $"{_tempDownloadPath}log";
+        _limitSpeed = limitSpeed;
+        _speedLimit = speedLimit;
         _overwriteFiles = overwriteFiles;
-        _ariaKeeper = new Process
-        {
-            StartInfo = new ProcessStartInfo
-            {
-                FileName = "python3",
-                Arguments = $"\"{Configuration.ConfigDir}{Path.DirectorySeparatorChar}aria2_keeper.py\"",
-                UseShellExecute = false,
-                CreateNoWindow = true
-            }
-        };
+        _progressCallback = null;
+        _pid = null;
+        _ariaKeeper = null;
     }
 
     /// <summary>
     /// Runs the download
     /// </summary>
+    /// <param name="useAria">Whether or not to use aria2 for the download</param>
     /// <param name="embedMetadata">Whether or not to embed video metadata in the downloaded file</param>
-    /// <param name="progressCallback">A callback function for DownloadProgressState</param>
     /// <param name="localizer">Localizer</param>
+    /// <param name="progressCallback">A callback function for DownloadProgressState</param>
     /// <returns>True if successful, else false</returns>
-    public async Task<bool> RunAsync(bool embedMetadata, Localizer localizer, Action<DownloadProgressState>? progressCallback = null)
+    public async Task<bool> RunAsync(bool useAria, bool embedMetadata, Localizer localizer, Action<DownloadProgressState>? progressCallback = null)
     {
         _progressCallback = progressCallback;
         IsDone = false;
-        if (File.Exists($"{SaveFolder}{Path.DirectorySeparatorChar}{Filename}") && !_overwriteFiles)
+        if (File.Exists($"{SaveFolder}{Path.DirectorySeparatorChar}{Filename}") && _overwriteFiles)
         {
             if (_progressCallback != null)
             {
@@ -170,21 +170,31 @@ public class Download
                     { "quiet", false },
                     { "ignoreerrors", "downloadonly" },
                     { "merge_output_format", "mp4/webm/mp3/opus/flac/wav/mkv" },
-                    { "final_ext", _fileType.ToString().ToLower() },
+                    { "final_ext", FileType.ToString().ToLower() },
                     { "progress_hooks", hooks },
                     { "postprocessor_hooks", hooks },
                     { "post_hooks", postHooks },
                     { "outtmpl", $"{Path.GetFileNameWithoutExtension(Filename)}.%(ext)s" },
-                    { "ffmpeg_location", DependencyManager.Ffmpeg },
+                    { "ffmpeg_location", DependencyManager.FfmpegPath },
                     { "windowsfilenames", RuntimeInformation.IsOSPlatform(OSPlatform.Windows) },
                     { "encoding", "utf_8" },
                     { "overwrites", _overwriteFiles },
                     { "paths", paths }
                 };
-                if (_useAria)
+                if (useAria)
                 {
+                    _ariaKeeper = new Process()
+                    {
+                        StartInfo = new ProcessStartInfo()
+                        {
+                            FileName = DependencyManager.PythonPath,
+                            Arguments = $"\"{Configuration.ConfigDir}{Path.DirectorySeparatorChar}aria2_keeper.py\"",
+                            UseShellExecute = false,
+                            CreateNoWindow = true
+                        }
+                    };
                     _ariaKeeper.Start();
-                    ytOpt.Add("external_downloader", new Dictionary<string, dynamic>() { { "default", DependencyManager.Aria2 } });
+                    ytOpt.Add("external_downloader", new Dictionary<string, dynamic>() { { "default", DependencyManager.Aria2Path } });
                     var ariaArgs = new string[]
                     {
                         $"--max-overall-download-limit={(_limitSpeed ? _speedLimit : 0)}K",
@@ -199,16 +209,16 @@ public class Download
                     ytOpt.Add("ratelimit", _speedLimit * 1024);
                 }
                 var postProcessors = new List<Dictionary<string, dynamic>>();
-                if (_fileType.GetIsAudio())
+                if (FileType.GetIsAudio())
                 {
-                    ytOpt.Add("format", _quality != Quality.Worst ? "ba/b" : "wa/w");
-                    postProcessors.Add(new Dictionary<string, dynamic>() { { "key", "FFmpegExtractAudio" }, { "preferredcodec", _fileType.ToString().ToLower() } });
+                    ytOpt.Add("format", Quality != Quality.Worst ? "ba/b" : "wa/w");
+                    postProcessors.Add(new Dictionary<string, dynamic>() { { "key", "FFmpegExtractAudio" }, { "preferredcodec", FileType.ToString().ToLower() } });
                 }
-                else if (_fileType.GetIsVideo())
+                else if (FileType.GetIsVideo())
                 {
-                    if (_fileType == MediaFileType.MP4)
+                    if (FileType == MediaFileType.MP4)
                     {
-                        ytOpt.Add("format", _quality switch
+                        ytOpt.Add("format", Quality switch
                         {
                             Quality.Best => "bv*[ext=mp4]+ba[ext=m4a]/b[ext=mp4] / bv*+ba/b",
                             Quality.Good => "bv*[ext=mp4][height<=720]+ba[ext=m4a]/b[ext=mp4][height<=720] / bv*[height<=720]+ba/b[height<=720]",
@@ -217,26 +227,26 @@ public class Download
                     }
                     else
                     {
-                        ytOpt.Add("format", _quality switch
+                        ytOpt.Add("format", Quality switch
                         {
                             Quality.Best => "bv*+ba/b",
                             Quality.Good => "bv*[height<=720]+ba/b[height<=720]",
                             _ => "wv*+wa/w"
                         });
                     }
-                    postProcessors.Add(new Dictionary<string, dynamic>() { { "key", "FFmpegVideoConvertor" }, { "preferedformat", _fileType.ToString().ToLower() } });
-                    if (_subtitle != Subtitle.None)
+                    postProcessors.Add(new Dictionary<string, dynamic>() { { "key", "FFmpegVideoConvertor" }, { "preferedformat", FileType.ToString().ToLower() } });
+                    if (Subtitle != Subtitle.None)
                     {
                         ytOpt.Add("writesubtitles", true);
                         ytOpt.Add("writeautomaticsub", true);
                         ytOpt.Add("subtitleslangs", new List<string> { "en", CultureInfo.CurrentCulture.TwoLetterISOLanguageName });
-                        postProcessors.Add(new Dictionary<string, dynamic>() { { "key", "FFmpegSubtitlesConvertor" }, { "format", _subtitle.ToString().ToLower() } });
+                        postProcessors.Add(new Dictionary<string, dynamic>() { { "key", "FFmpegSubtitlesConvertor" }, { "format", Subtitle.ToString().ToLower() } });
                         postProcessors.Add(new Dictionary<string, dynamic>() { { "key", "FFmpegEmbedSubtitle" } });
                     }
                 }
                 if (embedMetadata)
                 {
-                    if (_fileType.GetSupportsThumbnails())
+                    if (FileType.GetSupportsThumbnails())
                     {
                         ytOpt.Add("writethumbnail", true);
                         postProcessors.Add(new Dictionary<string, dynamic>() { { "key", "TCEmbedThumbnail" } });
@@ -249,7 +259,7 @@ public class Download
                 }
                 try
                 {
-                    if (_useAria && _progressCallback != null)
+                    if (useAria && _progressCallback != null)
                     {
                         _progressCallback(new DownloadProgressState()
                         {
@@ -307,7 +317,7 @@ public class Download
     {
         try
         {
-            _ariaKeeper.Kill();
+            _ariaKeeper?.Kill();
         }
         catch { }
     }

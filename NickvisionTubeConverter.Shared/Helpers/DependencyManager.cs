@@ -15,10 +15,45 @@ namespace NickvisionTubeConverter.Shared.Helpers;
 
 internal static class DependencyManager
 {
+    private static string _windowsPythonPath;
+
+    static DependencyManager()
+    {
+        _windowsPythonPath = "python.exe";
+    }
+
+    /// <summary>
+    /// The path for python
+    /// </summary>
+    public static string PythonPath
+    {
+        get
+        {
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                return _windowsPythonPath;
+            }
+            var prefixes = new List<string>() {
+                Directory.GetParent(Directory.GetParent(Path.GetFullPath(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)!))!.FullName)!.FullName,
+                Directory.GetParent(Path.GetFullPath(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)!))!.FullName,
+                "/usr"
+            };
+            foreach (var prefix in prefixes)
+            {
+                var path = $"{prefix}/bin/python3";
+                if (File.Exists(path))
+                {
+                    return path;
+                }
+            }
+            return "python3";
+        }
+    }
+
     /// <summary>
     /// The path for ffmpeg
     /// </summary>
-    public static string Ffmpeg
+    public static string FfmpegPath
     {
         get
         {
@@ -42,10 +77,11 @@ internal static class DependencyManager
             return "ffmpeg";
         }
     }
+
     /// <summary>
     /// The path for aria2
     /// </summary>
-    public static string Aria2
+    public static string Aria2Path
     {
         get
         {
@@ -85,10 +121,10 @@ internal static class DependencyManager
                     Timeout = Timeout.InfiniteTimeSpan,
                 };
                 //Python
-                await PythonHelpers.DeployEmbeddedAsync(new Version("3.11.3"));
+                _windowsPythonPath = await PythonHelpers.DeployEmbeddedAsync(new Version("3.11.3"));
                 //Ffmpeg
                 var ffmpegVer = new Version(6, 0, 0);
-                if (!File.Exists(Ffmpeg) || Configuration.Current.WinUIFfmpegVersion != ffmpegVer)
+                if (!File.Exists(FfmpegPath) || Configuration.Current.WinUIFfmpegVersion != ffmpegVer)
                 {
                     var ffmpegDir = $"{Configuration.ConfigDir}{Path.DirectorySeparatorChar}ffmpeg{Path.DirectorySeparatorChar}";
                     if (!Directory.Exists(ffmpegDir))
@@ -113,7 +149,7 @@ internal static class DependencyManager
                 }
                 //Aria2
                 var ariaVer = new Version(1, 36, 0);
-                if (!File.Exists(Aria2) || Configuration.Current.WinUIAriaVersion != ariaVer)
+                if (!File.Exists(Aria2Path) || Configuration.Current.WinUIAriaVersion != ariaVer)
                 {
                     var ariaDir = $"{Configuration.ConfigDir}{Path.DirectorySeparatorChar}aria2{Path.DirectorySeparatorChar}";
                     if (!Directory.Exists(ariaDir))

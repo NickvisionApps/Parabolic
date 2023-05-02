@@ -17,7 +17,8 @@ public static class PythonHelpers
     /// Downloads and installs an embedded version of Python (Windows Only)
     /// </summary>
     /// <param name="version">The version of python to download</param>
-    public static async Task DeployEmbeddedAsync(Version version)
+    /// <returns>The path of python.exe</returns>
+    public static async Task<string> DeployEmbeddedAsync(Version version)
     {
         if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
         {
@@ -51,7 +52,9 @@ public static class PythonHelpers
             {
                 Python.Runtime.Runtime.PythonDLL = pythonDllPath;
             }
+            return $"{pythonDirPath}{pythonType}{Path.DirectorySeparatorChar}python.exe";
         }
+        return "";
     }
 
     /// <summary>

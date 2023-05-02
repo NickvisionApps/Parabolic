@@ -41,12 +41,12 @@ public interface IDownloadRowControl
     /// </summary>
     public bool FinishedWithError { get; set; }
 
-
     /// <summary>
     /// Runs the download
     /// </summary>
+    /// <param name="useAria">Whether or not to use aria2 downloader</param>
     /// <param name="embedMetadata">Whether or not to embed video metadata</param>
-    public Task RunAsync(bool embedMetadata);
+    public Task RunAsync(bool useAria, bool embedMetadata);
 
     /// <summary>
     /// Stops the download

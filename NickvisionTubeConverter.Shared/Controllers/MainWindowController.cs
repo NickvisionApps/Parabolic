@@ -275,7 +275,7 @@ public class MainWindowController : IDisposable
         {
             _downloadingRows.Add(newRow);
             UIMoveDownloadRow!(newRow, DownloadStage.Downloading);
-            newRow.RunAsync(Configuration.Current.EmbedMetadata).FireAndForget();
+            newRow.RunAsync(Configuration.Current.UseAria, Configuration.Current.EmbedMetadata).FireAndForget();
         }
         else
         {
@@ -336,7 +336,7 @@ public class MainWindowController : IDisposable
             _downloadingRows.Add(queuedRow);
             _queuedRows.RemoveAt(0);
             UIMoveDownloadRow!(queuedRow, DownloadStage.Downloading);
-            queuedRow.RunAsync(Configuration.Current.EmbedMetadata).FireAndForget();
+            queuedRow.RunAsync(Configuration.Current.UseAria, Configuration.Current.EmbedMetadata).FireAndForget();
         }
     }
 
@@ -355,7 +355,7 @@ public class MainWindowController : IDisposable
             _downloadingRows.Add(queuedRow);
             _queuedRows.RemoveAt(0);
             UIMoveDownloadRow!(queuedRow, DownloadStage.Downloading);
-            await queuedRow.RunAsync(Configuration.Current.EmbedMetadata);
+            await queuedRow.RunAsync(Configuration.Current.UseAria, Configuration.Current.EmbedMetadata);
         }
     }
 
@@ -384,7 +384,7 @@ public class MainWindowController : IDisposable
             _downloadingRows.Add(row);
             _completedRows.Remove(row);
             UIMoveDownloadRow!(row, DownloadStage.Downloading);
-            await row.RunAsync(Configuration.Current.EmbedMetadata);
+            await row.RunAsync(Configuration.Current.UseAria, Configuration.Current.EmbedMetadata);
         }
         else
         {

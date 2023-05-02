@@ -221,8 +221,9 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
     /// <summary>
     /// Runs the download
     /// </summary>
+    /// <param name="useAria">Whether or not to use aria2 downloader</param>
     /// <param name="embedMetadata">Whether or not to embed video metadata</param>
-    public async Task RunAsync(bool embedMetadata)
+    public async Task RunAsync(bool useAria, bool embedMetadata)
     {
         if (_previousEmbedMetadata == null)
         {
@@ -231,7 +232,7 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
         _wasStopped = false;
         FinishedWithError = false;
         g_main_context_invoke(0, _runStartCallback, 0);
-        var success = await _download.RunAsync(embedMetadata, _localizer, (state) =>
+        var success = await _download.RunAsync(useAria, embedMetadata, _localizer, (state) =>
         {
             _progressStatus = state.Status;
             _logMessage = state.Log + "\n";

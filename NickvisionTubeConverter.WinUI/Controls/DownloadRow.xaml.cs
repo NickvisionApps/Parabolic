@@ -92,8 +92,9 @@ public sealed partial class DownloadRow : UserControl, IDownloadRowControl
     /// <summary>
     /// Runs the download
     /// </summary>
+    /// <param name="useAria">Whether or not to use aria2 downloader</param>
     /// <param name="embedMetadata">Whether or not to embed video metadata</param>
-    public async Task RunAsync(bool embedMetadata)
+    public async Task RunAsync(bool useAria, bool embedMetadata)
     {
         if (_previousEmbedMetadata == null)
         {
@@ -110,7 +111,7 @@ public sealed partial class DownloadRow : UserControl, IDownloadRowControl
         BtnOpenFile.Visibility = Visibility.Collapsed;
         BtnOpenSaveFolder.Visibility = Visibility.Collapsed;
         ProgBar.Value = 0;
-        var success = await _download.RunAsync(embedMetadata, _localizer, (state) =>
+        var success = await _download.RunAsync(useAria, embedMetadata, _localizer, (state) =>
         {
             App.MainWindow!.DispatcherQueue.TryEnqueue(() =>
             {
