@@ -94,6 +94,10 @@ public class Download
     /// Occurs when the download's progress is changed
     /// </summary>
     public event EventHandler<DownloadProgressState>? ProgressChanged;
+    /// <summary>
+    /// Occurs when the download is finished
+    /// </summary>
+    public event EventHandler<bool>? DownloadCompleted;
 
     /// <summary>
     /// Constructs a Download
@@ -128,16 +132,16 @@ public class Download
     }
 
     /// <summary>
-    /// Runs the download
+    /// Starts the download
     /// </summary>
     /// <param name="useAria">Whether or not to use aria2 for the download</param>
     /// <param name="embedMetadata">Whether or not to embed video metadata in the downloaded file</param>
     /// <param name="localizer">Localizer</param>
-    public async Task<bool> RunAsync(bool useAria, bool embedMetadata, Localizer localizer)
+    public void Start(bool useAria, bool embedMetadata, Localizer localizer)
     {
         IsDone = false;
         IsSuccess = false;
-        if (File.Exists($"{SaveFolder}{Path.DirectorySeparatorChar}{Filename}") && _overwriteFiles)
+        if (File.Exists($"{SaveFolder}{Path.DirectorySeparatorChar}{Filename}") && !_overwriteFiles)
         {
             ProgressChanged?.Invoke(this, new DownloadProgressState()
             {
@@ -148,7 +152,8 @@ public class Download
             });
             IsDone = true;
             IsSuccess = false;
-            return IsSuccess;
+            DownloadCompleted?.Invoke(this, IsSuccess);
+            return;
         }
         if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
         {
@@ -156,7 +161,7 @@ public class Download
         }
         Directory.CreateDirectory(_tempDownloadPath);
         dynamic outFile = PythonHelpers.SetConsoleOutputFilePath(_logPath);
-        return await Task.Run(() =>
+        Task.Run(() =>
         {
             using (Python.Runtime.Py.GIL())
             {
@@ -284,7 +289,7 @@ public class Download
                     IsDone = true;
                     outFile.close();
                     IsSuccess = (success_code.As<int?>() ?? 1) == 0;
-                    return IsSuccess;
+                    DownloadCompleted?.Invoke(this, IsSuccess);
                 }
                 catch (Exception e)
                 {
@@ -299,10 +304,10 @@ public class Download
                     IsDone = true;
                     outFile.close();
                     IsSuccess = false;
-                    return IsSuccess;
+                    DownloadCompleted?.Invoke(this, IsSuccess);
                 }
             }
-        });
+        }).FireAndForget();
     }
 
     /// <summary>
@@ -320,13 +325,19 @@ public class Download
         }
     }
 
+    /// <summary>
+    /// Kills the aria keeper (if used)
+    /// </summary>
     private void KillAriaKeeper()
     {
-        try
+        if(_ariaKeeper != null)
         {
-            _ariaKeeper?.Kill();
+            try
+            {
+                _ariaKeeper.Kill();
+            }
+            catch { }
         }
-        catch { }
     }
 
     /// <summary>
