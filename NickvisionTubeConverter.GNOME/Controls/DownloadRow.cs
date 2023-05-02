@@ -232,7 +232,7 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
         _wasStopped = false;
         FinishedWithError = false;
         g_main_context_invoke(0, _runStartCallback, 0);
-        var success = await _download.RunAsync(useAria, embedMetadata, _localizer, (state) =>
+        _download.ProgressChanged += (sender, state) =>
         {
             _progressStatus = state.Status;
             _logMessage = state.Log + "\n";
@@ -263,7 +263,8 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
                     }
                     break;
             }
-        });
+        };
+        var success = await _download.RunAsync(useAria, embedMetadata, _localizer);
         if (!_wasStopped)
         {
             FinishedWithError = !success;

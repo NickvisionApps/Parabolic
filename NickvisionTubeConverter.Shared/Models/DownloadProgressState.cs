@@ -42,7 +42,6 @@ public class DownloadProgressState : IDisposable
     /// </summary>
     public GCHandle? Handle { get; init; }
 
-
     /// <summary>
     /// Constructs a DownloadProgressState
     /// </summary>

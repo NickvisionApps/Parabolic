@@ -111,7 +111,7 @@ public sealed partial class DownloadRow : UserControl, IDownloadRowControl
         BtnOpenFile.Visibility = Visibility.Collapsed;
         BtnOpenSaveFolder.Visibility = Visibility.Collapsed;
         ProgBar.Value = 0;
-        var success = await _download.RunAsync(useAria, embedMetadata, _localizer, (state) =>
+        _download.ProgressChanged += (sender, state) =>
         {
             App.MainWindow!.DispatcherQueue.TryEnqueue(() =>
             {
@@ -152,7 +152,8 @@ public sealed partial class DownloadRow : UserControl, IDownloadRowControl
                     });
                     break;
             }
-        });
+        };
+        var success = await _download.RunAsync(useAria, embedMetadata, _localizer);
         FinishedWithError = !success;
         Icon.Foreground = new SolidColorBrush(success ? Colors.ForestGreen : Colors.Red);
         Icon.Glyph = success ? "\uE10B" : "\uE10A";

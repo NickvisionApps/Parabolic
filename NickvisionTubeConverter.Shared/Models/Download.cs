@@ -50,7 +50,6 @@ public class Download
     private bool _limitSpeed;
     private uint _speedLimit;
     private bool _overwriteFiles;
-    private Action<DownloadProgressState>? _progressCallback;
     private ulong? _pid;
     private Process? _ariaKeeper;
 
@@ -86,6 +85,15 @@ public class Download
     /// Whether or not the download has completed
     /// </summary>
     public bool IsDone { get; private set; }
+    /// <summary>
+    /// Whether or not the download was successful
+    /// </summary>
+    public bool IsSuccess { get; private set; }
+
+    /// <summary>
+    /// Occurs when the download's progress is changed
+    /// </summary>
+    public event EventHandler<DownloadProgressState>? ProgressChanged;
 
     /// <summary>
     /// Constructs a Download
@@ -99,7 +107,7 @@ public class Download
     /// <param name="quality">The quality of the download</param>
     /// <param name="subtitle">The subtitles for the download</param>
     /// <param name="overwriteFiles">Whether or not to overwrite existing files</param>
-    public Download(string videoUrl, MediaFileType fileType, string saveFolder, string saveFilename, bool limitSpeed, uint speedLimit = 1024, Quality quality = Quality.Best, Subtitle subtitle = Subtitle.None, bool overwriteFiles = true)
+    public Download(string videoUrl, MediaFileType fileType, string saveFolder, string saveFilename, bool limitSpeed, uint speedLimit, Quality quality, Subtitle subtitle, bool overwriteFiles)
     {
         Id = Guid.NewGuid();
         VideoUrl = videoUrl;
@@ -109,12 +117,12 @@ public class Download
         Subtitle = subtitle;
         Filename = $"{saveFilename}{FileType.GetDotExtension()}";
         IsDone = false;
+        IsSuccess = false;
         _tempDownloadPath = $"{Configuration.TempDir}{Path.DirectorySeparatorChar}{Id}{Path.DirectorySeparatorChar}";
         _logPath = $"{_tempDownloadPath}log";
         _limitSpeed = limitSpeed;
         _speedLimit = speedLimit;
         _overwriteFiles = overwriteFiles;
-        _progressCallback = null;
         _pid = null;
         _ariaKeeper = null;
     }
@@ -125,25 +133,22 @@ public class Download
     /// <param name="useAria">Whether or not to use aria2 for the download</param>
     /// <param name="embedMetadata">Whether or not to embed video metadata in the downloaded file</param>
     /// <param name="localizer">Localizer</param>
-    /// <param name="progressCallback">A callback function for DownloadProgressState</param>
-    /// <returns>True if successful, else false</returns>
-    public async Task<bool> RunAsync(bool useAria, bool embedMetadata, Localizer localizer, Action<DownloadProgressState>? progressCallback = null)
+    public async Task<bool> RunAsync(bool useAria, bool embedMetadata, Localizer localizer)
     {
-        _progressCallback = progressCallback;
         IsDone = false;
+        IsSuccess = false;
         if (File.Exists($"{SaveFolder}{Path.DirectorySeparatorChar}{Filename}") && _overwriteFiles)
         {
-            if (_progressCallback != null)
+            ProgressChanged?.Invoke(this, new DownloadProgressState()
             {
-                _progressCallback(new DownloadProgressState()
-                {
-                    Status = DownloadProgressStatus.Other,
-                    Progress = 0.0,
-                    Speed = 0.0,
-                    Log = localizer["FileExistsError"]
-                });
-            }
-            return false;
+                Status = DownloadProgressStatus.Other,
+                Progress = 0.0,
+                Speed = 0.0,
+                Log = localizer["FileExistsError"]
+            });
+            IsDone = true;
+            IsSuccess = false;
+            return IsSuccess;
         }
         if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
         {
@@ -259,9 +264,9 @@ public class Download
                 }
                 try
                 {
-                    if (useAria && _progressCallback != null)
+                    if (useAria)
                     {
-                        _progressCallback(new DownloadProgressState()
+                        ProgressChanged?.Invoke(this, new DownloadProgressState()
                         {
                             Status = DownloadProgressStatus.DownloadingAria,
                             Progress = 0.0,
@@ -278,7 +283,8 @@ public class Download
                     ForceUpdateLog();
                     IsDone = true;
                     outFile.close();
-                    return (success_code.As<int?>() ?? 1) == 0;
+                    IsSuccess = (success_code.As<int?>() ?? 1) == 0;
+                    return IsSuccess;
                 }
                 catch (Exception e)
                 {
@@ -292,7 +298,8 @@ public class Download
                     ForceUpdateLog();
                     IsDone = true;
                     outFile.close();
-                    return false;
+                    IsSuccess = false;
+                    return IsSuccess;
                 }
             }
         });
@@ -327,7 +334,7 @@ public class Download
     /// </summary>
     private void ForceUpdateLog()
     {
-        if (_progressCallback != null)
+        if (ProgressChanged != null)
         {
             var state = new DownloadProgressState()
             {
@@ -343,7 +350,7 @@ public class Download
                 sr.Close();
                 fs.Close();
             }
-            _progressCallback(state);
+            ProgressChanged.Invoke(this, state);
         }
     }
 
@@ -353,7 +360,7 @@ public class Download
     /// <param name="entries">Python.Runtime.PyDict</param>
     private void ProgressHook(Python.Runtime.PyDict entries)
     {
-        if (_progressCallback != null)
+        if (ProgressChanged != null)
         {
             using (Python.Runtime.Py.GIL())
             {
@@ -387,7 +394,7 @@ public class Download
                     sr.Close();
                     fs.Close();
                 }
-                _progressCallback(state);
+                ProgressChanged.Invoke(this, state);
             }
         }
     }
