@@ -323,6 +323,9 @@ public class Download
                 Python.Runtime.PythonEngine.Interrupt(_pid.Value);
             }
         }
+        IsDone = true;
+        IsSuccess = false;
+        DownloadCompleted?.Invoke(this, IsSuccess);
     }
 
     /// <summary>
