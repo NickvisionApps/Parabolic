@@ -203,7 +203,7 @@ public partial class AddDownloadDialog : Adw.Window
             _saveFolderString = "";
         }
         _saveFolderRow.SetText(Path.GetFileName(_saveFolderString) ?? "");
-        _speedLimitRow.SetSubtitle(string.Format(_controller.Localizer["Speed", "KiBps"], _controller.CurrentSpeedLimit));
+        _speedLimitRow.SetSubtitle($"{string.Format(_controller.Localizer["Speed", "KiBps"], _controller.CurrentSpeedLimit)} ({_controller.Localizer["Configurable", "GTK"]})");
     }
 
     /// <summary>
