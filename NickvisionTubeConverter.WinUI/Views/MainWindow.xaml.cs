@@ -293,7 +293,7 @@ public sealed partial class MainWindow : Window
     private void ScrollViewer_SizeChanged(object sender, SizeChangedEventArgs e) => GridDownloads.Margin = new Thickness(0, 0, ScrollViewer.ComputedVerticalScrollBarVisibility == Visibility.Visible ? 14 : 0, 0);
 
     /// <summary>
-    /// Occurs whhen the TaskbarMenuShowWindow item is clicked
+    /// Occurs when the TaskbarMenuShowWindow item is clicked
     /// </summary>
     /// <param name="sender">object?</param>
     /// <param name="e">EventArgs</param>
