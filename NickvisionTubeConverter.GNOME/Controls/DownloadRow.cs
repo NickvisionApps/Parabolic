@@ -39,6 +39,7 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
 
     private readonly Localizer _localizer;
     private readonly Download _download;
+    private readonly GSourceFunc _setDefultStateCallback;
     private readonly GSourceFunc _runStartCallback;
     private readonly GSourceFunc _runEndCallback;
     private readonly GSourceFunc _stopCallback;
@@ -143,6 +144,17 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
             _sendNotificationCallback(new NotificationSentEventArgs(_localizer["LogCopied"], NotificationSeverity.Informational));
         };
         //Callbacks
+        _setDefultStateCallback = (x) =>
+        {
+            _statusIcon.RemoveCssClass("error");
+            _statusIcon.AddCssClass("stopped");
+            _statusIcon.SetFromIconName("folder-download-symbolic");
+            _stateViewStack.SetVisibleChildName("downloading");
+            _progressLabel.SetText(_localizer["DownloadState", "Waiting"]);
+            _actionViewStack.SetVisibleChildName("cancel");
+            _progressBar.SetFraction(0);
+            return false;
+        };
         _runStartCallback = (x) =>
         {
             _statusIcon.RemoveCssClass("error");
@@ -184,7 +196,12 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
         };
         _downloadingCallback = (stateHandle) =>
         {
-            var state = (DownloadProgressState?)(GCHandle.FromIntPtr(stateHandle).Target);
+            DownloadProgressState? state = null;
+            try
+            {
+                state = (DownloadProgressState)(GCHandle.FromIntPtr(stateHandle).Target!);
+            }
+            catch { } 
             if (!_processingCallbackRunning && state != null)
             {
                 Progress = state.Progress;
@@ -266,11 +283,8 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
         };
         _download.DownloadCompleted += (sender, success) => 
         {
-            if (!_wasStopped)
-            {
-                FinishedWithError = !success;
-                g_main_context_invoke(0, _runEndCallback, 0);
-            }
+            FinishedWithError = !success;
+            g_main_context_invoke(0, _runEndCallback, 0);
             if (DownloadCompletedCallback != null)
             {
                 DownloadCompletedCallback(this);
@@ -300,8 +314,7 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
     {
         if (_wasStopped || FinishedWithError)
         {
-            g_main_context_invoke(0, _runStartCallback, 0);
-            _progressLabel.SetText(_localizer["DownloadState", "Waiting"]);
+            g_main_context_invoke(0, _setDefultStateCallback, 0);
             if (DownloadRetriedCallback != null)
             {
                 DownloadRetriedCallback(this);
