@@ -6,6 +6,9 @@ on:
     types: [ "review_requested", "ready_for_review" ]
   workflow_dispatch:
 name: CI
+permissions:
+  id-token: write
+  contents: read
 jobs:
   flatpak:
     name: "Flatpak"
@@ -16,11 +19,6 @@ jobs:
       options: --privileged
     strategy:
       matrix:
-        # As of the time of writing (February 2023), GitHub Actions only provides x86_64 runners. While Flatpak does
-        # provide cross-building for other architectures, it uses QEMU to do so, and dotnet does not play well under
-        # QEMU for arm64. See below links for potential updates:
-        # - https://github.com/dotnet/runtime/issues/13648
-        # - https://github.com/actions/runner-images/issues/5631
         arch: [x86_64]
       fail-fast: false
     steps:
@@ -87,3 +85,33 @@ jobs:
       with:
         name: org.nickvision.tubeconverter-winui-${{ matrix.platform }}
         path: ${{ github.workspace }}\NickvisionTubeConverter.WinUI\Packages
+  snap:
+    name: "Snap"
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        arch: [x86_64]
+      fail-fast: false
+    steps:
+      - name: Checkout Git repository
+        uses: actions/checkout@v3
+      - name: Build Snap
+        uses: snapcore/action-build@v1
+        id: snapcraft-build
+        with:
+          snapcraft-args: "-v"
+      - uses: actions/upload-artifact@v3
+        with:
+          name: snap
+          path: ${{ steps.snapcraft-build.outputs.snap }} 
+      #- uses: diddlesnaps/snapcraft-review-action@v1
+        #with:
+          #snap: ${{ steps.snapcraft-build.outputs.snap }}
+          #isClassic: 'false'          
+      #- name: Upload and release tube-converter Snap
+        #uses: snapcore/action-publish@v1
+        #env: 
+          #SNAPCRAFT_STORE_CREDENTIALS: ${{ secrets.STORE_LOGIN }}
+        #with:
+          #snap: ${{ steps.snapcraft-build.outputs.snap }}
+          #release: ${{ startsWith(github.ref, 'refs/tags/') && 'candidate' || 'edge'}}
