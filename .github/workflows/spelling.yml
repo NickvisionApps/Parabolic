@@ -13,5 +13,5 @@ jobs:
       - uses: codespell-project/actions-codespell@master
         with:
           check_filenames: true
-          skip: cargo-sources.json,.git
+          skip: cargo-sources.json,.git,Strings.*.resx,*.svg
           ignore_words_list: gir
