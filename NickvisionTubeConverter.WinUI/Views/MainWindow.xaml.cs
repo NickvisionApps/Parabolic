@@ -442,8 +442,8 @@ public sealed partial class MainWindow : Window
     private void MoveDownloadRow(IDownloadRowControl row, DownloadStage stage)
     {
         ListDownloading.Items.Remove(row);
-        ListCompleted.Items.Remove(row);
         ListQueued.Items.Remove(row);
+        ListCompleted.Items.Remove(row);
         if (stage == DownloadStage.InQueue)
         {
             ListQueued.Items.Add(row);

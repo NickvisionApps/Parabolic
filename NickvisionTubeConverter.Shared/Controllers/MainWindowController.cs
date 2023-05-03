@@ -18,8 +18,8 @@ public class MainWindowController : IDisposable
     private bool _disposed;
     private nint _pythonThreadState;
     private List<IDownloadRowControl> _downloadingRows;
-    private List<IDownloadRowControl> _completedRows;
     private List<IDownloadRowControl> _queuedRows;
+    private List<IDownloadRowControl> _completedRows;
 
     /// <summary>
     /// The localizer to get translated strings from
@@ -344,7 +344,7 @@ public class MainWindowController : IDisposable
     /// Occurs when a row's download is completed
     /// </summary>
     /// <param name="row">The completed row</param>
-    private async void DownloadCompleted(IDownloadRowControl row)
+    private void DownloadCompleted(IDownloadRowControl row)
     {
         _completedRows.Add(row);
         _downloadingRows.Remove(row);
