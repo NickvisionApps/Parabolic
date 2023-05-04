@@ -275,7 +275,7 @@ public class MainWindowController : IDisposable
         {
             _downloadingRows.Add(newRow);
             UIMoveDownloadRow!(newRow, DownloadStage.Downloading);
-            newRow.Start(Configuration.Current.UseAria, Configuration.Current.EmbedMetadata);
+            newRow.Start(Configuration.Current.UseAria, Configuration.Current.EmbedMetadata, false);
         }
         else
         {
@@ -336,7 +336,7 @@ public class MainWindowController : IDisposable
             _downloadingRows.Add(queuedRow);
             _queuedRows.RemoveAt(0);
             UIMoveDownloadRow!(queuedRow, DownloadStage.Downloading);
-            queuedRow.Start(Configuration.Current.UseAria, Configuration.Current.EmbedMetadata);
+            queuedRow.Start(Configuration.Current.UseAria, Configuration.Current.EmbedMetadata, false);
         }
     }
 
@@ -355,7 +355,7 @@ public class MainWindowController : IDisposable
             _downloadingRows.Add(queuedRow);
             _queuedRows.RemoveAt(0);
             UIMoveDownloadRow!(queuedRow, DownloadStage.Downloading);
-            queuedRow.Start(Configuration.Current.UseAria, Configuration.Current.EmbedMetadata);
+            queuedRow.Start(Configuration.Current.UseAria, Configuration.Current.EmbedMetadata, false);
         }
     }
 
@@ -384,7 +384,7 @@ public class MainWindowController : IDisposable
             _downloadingRows.Add(row);
             _completedRows.Remove(row);
             UIMoveDownloadRow!(row, DownloadStage.Downloading);
-            row.Start(Configuration.Current.UseAria, Configuration.Current.EmbedMetadata);
+            row.Start(Configuration.Current.UseAria, Configuration.Current.EmbedMetadata, true);
         }
         else
         {

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Threading.Tasks;
 
 namespace NickvisionTubeConverter.Shared.Controls;
 
@@ -46,7 +45,8 @@ public interface IDownloadRowControl
     /// </summary>
     /// <param name="useAria">Whether or not to use aria2 downloader</param>
     /// <param name="embedMetadata">Whether or not to embed video metadata</param>
-    public void Start(bool useAria, bool embedMetadata);
+    /// <param name="isRetry">Whether or not this download is being retried</param>
+    public void Start(bool useAria, bool embedMetadata, bool isRetry);
 
     /// <summary>
     /// Stops the download

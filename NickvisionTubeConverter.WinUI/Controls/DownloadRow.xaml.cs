@@ -7,7 +7,6 @@ using NickvisionTubeConverter.Shared.Helpers;
 using NickvisionTubeConverter.Shared.Models;
 using System;
 using System.IO;
-using System.Threading.Tasks;
 using Windows.System;
 
 namespace NickvisionTubeConverter.WinUI.Controls;
@@ -94,7 +93,8 @@ public sealed partial class DownloadRow : UserControl, IDownloadRowControl
     /// </summary>
     /// <param name="useAria">Whether or not to use aria2 downloader</param>
     /// <param name="embedMetadata">Whether or not to embed video metadata</param>
-    public void Start(bool useAria, bool embedMetadata)
+    /// <param name="isRetry">Whether or not this download is being retried</param>
+    public void Start(bool useAria, bool embedMetadata, bool isRetry)
     {
         if (_previousEmbedMetadata == null)
         {
@@ -174,7 +174,14 @@ public sealed partial class DownloadRow : UserControl, IDownloadRowControl
                 }
             });
         };
-        _download.Start(useAria, embedMetadata, _localizer);
+        if (isRetry)
+        {
+            _download.Retry(useAria, embedMetadata, _localizer);
+        }
+        else
+        {
+            _download.Start(useAria, embedMetadata, _localizer);
+        }
     }
 
     /// <summary>

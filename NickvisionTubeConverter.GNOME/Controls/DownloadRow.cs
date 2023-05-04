@@ -6,7 +6,6 @@ using NickvisionTubeConverter.Shared.Models;
 using System;
 using System.IO;
 using System.Runtime.InteropServices;
-using System.Threading.Tasks;
 
 namespace NickvisionTubeConverter.GNOME.Controls;
 
@@ -201,7 +200,7 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
             {
                 state = (DownloadProgressState)(GCHandle.FromIntPtr(stateHandle).Target!);
             }
-            catch { } 
+            catch { }
             if (!_processingCallbackRunning && state != null)
             {
                 Progress = state.Progress;
@@ -240,7 +239,8 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
     /// </summary>
     /// <param name="useAria">Whether or not to use aria2 downloader</param>
     /// <param name="embedMetadata">Whether or not to embed video metadata</param>
-    public void Start(bool useAria, bool embedMetadata)
+    /// <param name="isRetry">Whether or not this download is being retried</param>
+    public void Start(bool useAria, bool embedMetadata, bool isRetry)
     {
         if (_previousEmbedMetadata == null)
         {
@@ -281,7 +281,7 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
                     break;
             }
         };
-        _download.DownloadCompleted += (sender, success) => 
+        _download.DownloadCompleted += (sender, success) =>
         {
             FinishedWithError = !success;
             g_main_context_invoke(0, _runEndCallback, 0);
@@ -290,7 +290,14 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
                 DownloadCompletedCallback(this);
             }
         };
-        _download.Start(useAria, embedMetadata, _localizer);
+        if (isRetry)
+        {
+            _download.Retry(useAria, embedMetadata, _localizer);
+        }
+        else
+        {
+            _download.Start(useAria, embedMetadata, _localizer);
+        }
     }
 
     /// <summary>
