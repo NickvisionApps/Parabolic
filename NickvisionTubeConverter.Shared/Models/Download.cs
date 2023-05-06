@@ -31,16 +31,6 @@ public enum Subtitle
 }
 
 /// <summary>
-/// Stages of a download
-/// </summary>
-public enum DownloadStage
-{
-    InQueue,
-    Downloading,
-    Completed
-}
-
-/// <summary>
 /// A model of a video download
 /// </summary>
 public class Download
@@ -101,7 +91,7 @@ public class Download
     /// <summary>
     /// Occurs when the download is finished
     /// </summary>
-    public event EventHandler<bool>? DownloadCompleted;
+    public event EventHandler<bool>? Completed;
 
     /// <summary>
     /// Constructs a Download
@@ -144,7 +134,7 @@ public class Download
     /// <param name="localizer">Localizer</param>
     public void Start(bool useAria, bool embedMetadata, Localizer localizer)
     {
-        if (!IsDone && !IsRunning)
+        if (!IsRunning)
         {
             IsRunning = true;
             IsSuccess = false;
@@ -161,7 +151,7 @@ public class Download
                 IsDone = true;
                 IsRunning = false;
                 IsSuccess = false;
-                DownloadCompleted?.Invoke(this, IsSuccess);
+                Completed?.Invoke(this, IsSuccess);
                 return;
             }
             //Escape filename
@@ -304,7 +294,7 @@ public class Download
                         IsRunning = false;
                         outFile.close();
                         IsSuccess = (success_code.As<int?>() ?? 1) == 0;
-                        DownloadCompleted?.Invoke(this, IsSuccess);
+                        Completed?.Invoke(this, IsSuccess);
                     }
                 }
                 catch (Exception e)
@@ -321,7 +311,7 @@ public class Download
                     IsRunning = false;
                     outFile.close();
                     IsSuccess = false;
-                    DownloadCompleted?.Invoke(this, IsSuccess);
+                    Completed?.Invoke(this, IsSuccess);
                 }
             }).FireAndForget();
         }
@@ -345,22 +335,7 @@ public class Download
             IsDone = true;
             IsRunning = false;
             IsSuccess = false;
-            DownloadCompleted?.Invoke(this, IsSuccess);
         }
-    }
-
-    /// <summary>
-    /// Restart the download
-    /// </summary>
-    /// <param name="useAria">Whether or not to use aria2 for the download</param>
-    /// <param name="embedMetadata">Whether or not to embed video metadata in the downloaded file</param>
-    /// <param name="localizer">Localizer</param>
-    public void Retry(bool useAria, bool embedMetadata, Localizer localizer)
-    {
-        IsDone = false;
-        IsRunning = false;
-        IsSuccess = false;
-        Start(useAria, embedMetadata, localizer);
     }
 
     /// <summary>
