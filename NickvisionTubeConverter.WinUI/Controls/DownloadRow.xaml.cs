@@ -17,69 +17,35 @@ namespace NickvisionTubeConverter.WinUI.Controls;
 public sealed partial class DownloadRow : UserControl, IDownloadRowControl
 {
     private readonly Localizer _localizer;
-    private readonly Download _download;
-    private bool? _previousEmbedMetadata;
-    private bool _wasStopped;
+    private Guid _id;
+    private string _filename;
+    private string _saveFolder;
 
     /// <summary>
-    /// The filename of the download
+    /// Occurs when the download is requested to stop
     /// </summary>
-    public string Filename => _download.Filename;
+    public event EventHandler<Guid>? StopRequested;
     /// <summary>
-    /// Whether or not the download is done
+    /// Occurs when the download is requested to be retried
     /// </summary>
-    public bool IsDone => _download.IsDone;
-    /// <summary>
-    /// Download progress
-    /// </summary>
-    public double Progress { get; set; }
-    /// <summary>
-    /// Download speed (in bytes per second)
-    /// </summary>
-    public double Speed { get; set; }
-    /// <summary>
-    /// Whether or not download was finished with error
-    /// </summary>
-    public bool FinishedWithError { get; set; }
-
-    /// <summary>
-    /// Occurs when a download is completed
-    /// </summary>
-    public event EventHandler<EventArgs>? DownloadCompleted;
-    /// <summary>
-    /// Occurs when a download is stopped
-    /// </summary>
-    public event EventHandler<EventArgs>? DownloadStopped;
-    /// <summary>
-    /// Occurs when a download is retried
-    /// </summary>
-    public event EventHandler<EventArgs>? DownloadRetried;
+    public event EventHandler<Guid>? RetryRequested;
 
     /// <summary>
     /// Constructs a DownloadRow
     /// </summary>
-    /// <param name="localizer">Localizer</param>
-    /// <param name="download">Download</param>
-    public DownloadRow(Localizer localizer, Download download)
+    /// <param name="id">The Guid of the download</param>
+    /// <param name="filename">The filename of the download</param>
+    /// <param name="saveFolder">The save folder of the download</param>
+    /// <param name="localizer">The Localizer of strings</param>
+    public DownloadRow(Guid id, string filename, string saveFolder, Localizer localizer)
     {
         InitializeComponent();
         _localizer = localizer;
-        _download = download;
-        _previousEmbedMetadata = null;
-        _wasStopped = false;
-        Progress = 0.0;
-        Speed = 0.0;
-        FinishedWithError = false;
+        _id = id;
+        _filename = filename;
+        _saveFolder = saveFolder;
         //Default
-        Icon.Glyph = "\uE118";
-        Icon.Foreground = (SolidColorBrush)Application.Current.Resources["ToolTipForegroundThemeBrush"];
-        LblFilename.Text = _download.Filename;
-        LblStatus.Text = _localizer["DownloadState", "Waiting"];
-        BtnStop.Visibility = Visibility.Visible;
-        BtnRetry.Visibility = Visibility.Collapsed;
-        BtnOpenFile.Visibility = Visibility.Collapsed;
-        BtnOpenSaveFolder.Visibility = Visibility.Collapsed;
-        ProgBar.Value = 0;
+        SetWaitingState();
         //Localize Strings
         ToolTipService.SetToolTip(BtnViewLog, _localizer["ViewLog"]);
         ToolTipService.SetToolTip(BtnStop, _localizer["StopDownload"]);
@@ -89,105 +55,89 @@ public sealed partial class DownloadRow : UserControl, IDownloadRowControl
     }
 
     /// <summary>
-    /// Starts the download
+    /// Sets the row to the waiting state
     /// </summary>
-    /// <param name="useAria">Whether or not to use aria2 downloader</param>
-    /// <param name="embedMetadata">Whether or not to embed video metadata</param>
-    /// <param name="isRetry">Whether or not this download is being retried</param>
-    public void Start(bool useAria, bool embedMetadata, bool isRetry)
+    public void SetWaitingState()
     {
-        if (_previousEmbedMetadata == null)
-        {
-            _previousEmbedMetadata = embedMetadata;
-        }
-        _wasStopped = false;
-        FinishedWithError = false;
         Icon.Glyph = "\uE118";
         Icon.Foreground = (SolidColorBrush)Application.Current.Resources["ToolTipForegroundThemeBrush"];
-        LblFilename.Text = _download.Filename;
+        LblFilename.Text = _filename;
+        LblStatus.Text = _localizer["DownloadState", "Waiting"];
+        BtnStop.Visibility = Visibility.Visible;
+        BtnRetry.Visibility = Visibility.Collapsed;
+        BtnOpenFile.Visibility = Visibility.Collapsed;
+        BtnOpenSaveFolder.Visibility = Visibility.Collapsed;
+        ProgBar.Value = 0;
+    }
+
+    /// <summary>
+    /// Sets the row to the preparing state
+    /// </summary>
+    public void SetPreparingState()
+    {
+        Icon.Glyph = "\uE118";
+        Icon.Foreground = (SolidColorBrush)Application.Current.Resources["ToolTipForegroundThemeBrush"];
+        LblFilename.Text = _filename;
         LblStatus.Text = _localizer["DownloadState", "Preparing"];
         BtnStop.Visibility = Visibility.Visible;
         BtnRetry.Visibility = Visibility.Collapsed;
         BtnOpenFile.Visibility = Visibility.Collapsed;
         BtnOpenSaveFolder.Visibility = Visibility.Collapsed;
         ProgBar.Value = 0;
-        _download.ProgressChanged += (sender, state) =>
+    }
+
+    /// <summary>
+    /// Sets the row to the progress state
+    /// </summary>
+    /// <param name="state">The DownloadProgressState</param>
+    public void SetProgressState(DownloadProgressState state)
+    {
+        Icon.Foreground = (SolidColorBrush)Application.Current.Resources["AccentAAFillColorDefaultBrush"];
+        ProgBar.Foreground = (SolidColorBrush)Application.Current.Resources["AccentAAFillColorDefaultBrush"];
+        LblLog.Text = state.Log;
+        ScrollLog.UpdateLayout();
+        ScrollLog.ScrollToVerticalOffset(ScrollLog.ScrollableHeight);
+        switch (state.Status)
         {
-            App.MainWindow!.DispatcherQueue.TryEnqueue(() =>
-            {
-                Icon.Foreground = (SolidColorBrush)Application.Current.Resources["AccentAAFillColorDefaultBrush"];
-                ProgBar.Foreground = (SolidColorBrush)Application.Current.Resources["AccentAAFillColorDefaultBrush"];
-                LblLog.Text = state.Log;
-                ScrollLog.UpdateLayout();
-                ScrollLog.ScrollToVerticalOffset(ScrollLog.ScrollableHeight);
-            });
-            switch (state.Status)
-            {
-                case DownloadProgressStatus.Downloading:
-                    Progress = state.Progress;
-                    Speed = state.Speed;
-                    App.MainWindow!.DispatcherQueue.TryEnqueue(() =>
-                    {
-                        ProgBar.IsIndeterminate = false;
-                        ProgBar.Value = state.Progress;
-                        LblStatus.Text = string.Format(_localizer["DownloadState", "Downloading"], state.Progress * 100, state.Speed.GetSpeedString(_localizer));
-                    });
-                    break;
-                case DownloadProgressStatus.DownloadingAria:
-                    Progress = 1.0;
-                    Speed = 0.0;
-                    App.MainWindow!.DispatcherQueue.TryEnqueue(() =>
-                    {
-                        LblStatus.Text = _localizer["Downloading"];
-                        ProgBar.IsIndeterminate = true;
-                    });
-                    break;
-                case DownloadProgressStatus.Processing:
-                    Progress = 1.0;
-                    Speed = 0.0;
-                    App.MainWindow!.DispatcherQueue.TryEnqueue(() =>
-                    {
-                        LblStatus.Text = _localizer["DownloadState", "Processing"];
-                        ProgBar.IsIndeterminate = true;
-                    });
-                    break;
-            }
-        };
-        _download.DownloadCompleted += (sender, success) =>
-        {
-            App.MainWindow!.DispatcherQueue.TryEnqueue(() =>
-            {
-                FinishedWithError = !success;
-                Icon.Foreground = new SolidColorBrush(success ? Colors.ForestGreen : Colors.Red);
-                Icon.Glyph = success ? "\uE10B" : "\uE10A";
+            case DownloadProgressStatus.Downloading:
                 ProgBar.IsIndeterminate = false;
-                ProgBar.Value = 1;
-                ProgBar.Foreground = new SolidColorBrush(success ? Colors.ForestGreen : Colors.Red);
-                LblStatus.Text = success ? _localizer["Success"] : (_wasStopped ? _localizer["Stopped"] : _localizer["Error"]);
-                BtnStop.Visibility = Visibility.Collapsed;
-                BtnRetry.Visibility = !success ? Visibility.Visible : Visibility.Collapsed;
-                BtnOpenFile.Visibility = success ? Visibility.Visible : Visibility.Collapsed;
-                BtnOpenSaveFolder.Visibility = success ? Visibility.Visible : Visibility.Collapsed;
-                DownloadCompleted?.Invoke(this, EventArgs.Empty);
-            });
-        };
-        if (isRetry)
-        {
-            _download.Retry(useAria, embedMetadata, _localizer);
-        }
-        else
-        {
-            _download.Start(useAria, embedMetadata, _localizer);
+                ProgBar.Value = state.Progress;
+                LblStatus.Text = string.Format(_localizer["DownloadState", "Downloading"], state.Progress * 100, state.Speed.GetSpeedString(_localizer));
+                break;
+            case DownloadProgressStatus.DownloadingAria:
+                LblStatus.Text = _localizer["Downloading"];
+                ProgBar.IsIndeterminate = true;
+                break;
+            case DownloadProgressStatus.Processing:
+                LblStatus.Text = _localizer["DownloadState", "Processing"];
+                ProgBar.IsIndeterminate = true;
+                break;
         }
     }
 
     /// <summary>
-    /// Stops the download
+    /// Sets the row to the completed state
     /// </summary>
-    public void Stop()
+    /// <param name="success">Whether or not the download was successful</param>
+    public void SetCompletedState(bool success)
     {
-        _wasStopped = true;
-        _download.Stop();
+        Icon.Glyph = success ? "\uE10B" : "\uE10A";
+        Icon.Foreground = new SolidColorBrush(success ? Colors.ForestGreen : Colors.Red);
+        ProgBar.IsIndeterminate = false;
+        ProgBar.Value = 1;
+        ProgBar.Foreground = new SolidColorBrush(success ? Colors.ForestGreen : Colors.Red);
+        LblStatus.Text = success ? _localizer["Success"] : _localizer["Error"];
+        BtnStop.Visibility = Visibility.Collapsed;
+        BtnRetry.Visibility = !success ? Visibility.Visible : Visibility.Collapsed;
+        BtnOpenFile.Visibility = success ? Visibility.Visible : Visibility.Collapsed;
+        BtnOpenSaveFolder.Visibility = success ? Visibility.Visible : Visibility.Collapsed;
+    }
+
+    /// <summary>
+    /// Sets the row to the stop state
+    /// </summary>
+    public void SetStopState()
+    {
         Icon.Foreground = new SolidColorBrush(Colors.Red);
         Icon.Glyph = "\uE10A";
         ProgBar.IsIndeterminate = false;
@@ -198,29 +148,22 @@ public sealed partial class DownloadRow : UserControl, IDownloadRowControl
         BtnRetry.Visibility = Visibility.Visible;
         BtnOpenFile.Visibility = Visibility.Collapsed;
         BtnOpenSaveFolder.Visibility = Visibility.Collapsed;
-        DownloadStopped?.Invoke(this, EventArgs.Empty); 
     }
 
     /// <summary>
-    /// Retries the download if needed
+    /// Sets the row to the retry state
     /// </summary>
-    public void Retry()
+    public void SetRetryState()
     {
-        if (_wasStopped || FinishedWithError)
-        {
-            _wasStopped = false;
-            FinishedWithError = false;
-            Icon.Glyph = "\uE118";
-            Icon.Foreground = (SolidColorBrush)Application.Current.Resources["ToolTipForegroundThemeBrush"];
-            LblFilename.Text = _download.Filename;
-            LblStatus.Text = _localizer["DownloadState", "Waiting"];
-            BtnStop.Visibility = Visibility.Visible;
-            BtnRetry.Visibility = Visibility.Collapsed;
-            BtnOpenFile.Visibility = Visibility.Collapsed;
-            BtnOpenSaveFolder.Visibility = Visibility.Collapsed;
-            ProgBar.Value = 0;
-            DownloadRetried?.Invoke(this, EventArgs.Empty);
-        }
+        Icon.Glyph = "\uE118";
+        Icon.Foreground = (SolidColorBrush)Application.Current.Resources["ToolTipForegroundThemeBrush"];
+        LblFilename.Text = _filename;
+        LblStatus.Text = _localizer["DownloadState", "Waiting"];
+        BtnStop.Visibility = Visibility.Visible;
+        BtnRetry.Visibility = Visibility.Collapsed;
+        BtnOpenFile.Visibility = Visibility.Collapsed;
+        BtnOpenSaveFolder.Visibility = Visibility.Collapsed;
+        ProgBar.Value = 0;
     }
 
     /// <summary>
@@ -235,26 +178,26 @@ public sealed partial class DownloadRow : UserControl, IDownloadRowControl
     /// </summary>
     /// <param name="sender">object</param>
     /// <param name="e">RoutedEventArgs</param>
-    private void BtnStop_Click(object sender, RoutedEventArgs e) => Stop();
+    private void BtnStop_Click(object sender, RoutedEventArgs e) => StopRequested?.Invoke(this, _id);
 
     /// <summary>
     /// Occurs when the retry button is clicked
     /// </summary>
     /// <param name="sender">object</param>
     /// <param name="e">RoutedEventArgs</param>
-    private void BtnRetry_Click(object sender, RoutedEventArgs e) => Retry();
+    private void BtnRetry_Click(object sender, RoutedEventArgs e) => RetryRequested?.Invoke(this, _id);
 
     /// <summary>
     /// Occurs when the open file button is clicked
     /// </summary>
     /// <param name="sender">object</param>
     /// <param name="e">RoutedEventArgs</param>
-    private async void BtnOpenFile_Click(object sender, RoutedEventArgs e) => await Launcher.LaunchUriAsync(new Uri($"{_download.SaveFolder}{Path.DirectorySeparatorChar}{_download.Filename}"));
+    private async void BtnOpenFile_Click(object sender, RoutedEventArgs e) => await Launcher.LaunchUriAsync(new Uri($"{_saveFolder}{Path.DirectorySeparatorChar}{_filename}"));
 
     /// <summary>
     /// Occurs when the open save folder button is clicked
     /// </summary>
     /// <param name="sender">object</param>
     /// <param name="e">RoutedEventArgs</param>
-    private async void BtnOpenSaveFolder_Click(object sender, RoutedEventArgs e) => await Launcher.LaunchFolderPathAsync(_download.SaveFolder);
+    private async void BtnOpenSaveFolder_Click(object sender, RoutedEventArgs e) => await Launcher.LaunchFolderPathAsync(_saveFolder);
 }
