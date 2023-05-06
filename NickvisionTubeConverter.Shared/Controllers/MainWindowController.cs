@@ -86,6 +86,11 @@ public class MainWindowController : IDisposable
     }
 
     /// <summary>
+    /// Finalizes the MainWindowController
+    /// </summary>
+    ~MainWindowController() => Dispose(false);
+
+    /// <summary>
     /// Whether or not to show a sun icon on the home page
     /// </summary>
     public bool ShowSun
@@ -208,12 +213,12 @@ public class MainWindowController : IDisposable
         if (disposing)
         {
             Localizer.Dispose();
-            Python.Runtime.PythonEngine.EndAllowThreads(_pythonThreadState);
-            Python.Runtime.PythonEngine.Shutdown();
-            if (Directory.Exists(Configuration.TempDir))
-            {
-                Directory.Delete(Configuration.TempDir, true);
-            }
+        }
+        Python.Runtime.PythonEngine.EndAllowThreads(_pythonThreadState);
+        Python.Runtime.PythonEngine.Shutdown();
+        if (Directory.Exists(Configuration.TempDir))
+        {
+            Directory.Delete(Configuration.TempDir, true);
         }
         _disposed = true;
     }

@@ -38,7 +38,12 @@ public class RowCallbackData : IDisposable
     }
 
     /// <summary>
-    /// Frees resources used by the DownloadProgressState object
+    /// Finalizes the RowCallbackData
+    /// </summary>
+    ~RowCallbackData() => Dispose(false);
+
+    /// <summary>
+    /// Frees resources used by the RowCallbackData object
     /// </summary>
     public void Dispose()
     {
@@ -47,7 +52,7 @@ public class RowCallbackData : IDisposable
     }
 
     /// <summary>
-    /// Frees resources used by the DownloadProgressState object
+    /// Frees resources used by the RowCallbackData object
     /// </summary>
     protected virtual void Dispose(bool disposing)
     {

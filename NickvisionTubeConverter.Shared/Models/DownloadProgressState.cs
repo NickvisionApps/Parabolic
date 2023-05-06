@@ -59,6 +59,11 @@ public class DownloadProgressState : IDisposable
     }
 
     /// <summary>
+    /// Finalizes the DownloadProgressState
+    /// </summary>
+    ~DownloadProgressState() => Dispose(false);
+
+    /// <summary>
     /// Frees resources used by the DownloadProgressState object
     /// </summary>
     public void Dispose()
