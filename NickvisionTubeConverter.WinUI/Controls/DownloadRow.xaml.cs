@@ -22,19 +22,6 @@ public sealed partial class DownloadRow : UserControl, IDownloadRowControl
     private bool _wasStopped;
 
     /// <summary>
-    /// The callback function to run when the download is completed
-    /// </summary>
-    public Action<IDownloadRowControl>? DownloadCompletedCallback { get; set; }
-    /// <summary>
-    /// The callback function to run when the download is stopped
-    /// </summary>
-    public Action<IDownloadRowControl>? DownloadStoppedCallback { get; set; }
-    /// <summary>
-    /// The callback function to run when the download is retried
-    /// </summary>
-    public Action<IDownloadRowControl>? DownloadRetriedCallback { get; set; }
-
-    /// <summary>
     /// The filename of the download
     /// </summary>
     public string Filename => _download.Filename;
@@ -54,6 +41,19 @@ public sealed partial class DownloadRow : UserControl, IDownloadRowControl
     /// Whether or not download was finished with error
     /// </summary>
     public bool FinishedWithError { get; set; }
+
+    /// <summary>
+    /// Occurs when a download is completed
+    /// </summary>
+    public event EventHandler<EventArgs>? DownloadCompleted;
+    /// <summary>
+    /// Occurs when a download is stopped
+    /// </summary>
+    public event EventHandler<EventArgs>? DownloadStopped;
+    /// <summary>
+    /// Occurs when a download is retried
+    /// </summary>
+    public event EventHandler<EventArgs>? DownloadRetried;
 
     /// <summary>
     /// Constructs a DownloadRow
@@ -168,10 +168,7 @@ public sealed partial class DownloadRow : UserControl, IDownloadRowControl
                 BtnRetry.Visibility = !success ? Visibility.Visible : Visibility.Collapsed;
                 BtnOpenFile.Visibility = success ? Visibility.Visible : Visibility.Collapsed;
                 BtnOpenSaveFolder.Visibility = success ? Visibility.Visible : Visibility.Collapsed;
-                if (DownloadCompletedCallback != null)
-                {
-                    DownloadCompletedCallback(this);
-                }
+                DownloadCompleted?.Invoke(this, EventArgs.Empty);
             });
         };
         if (isRetry)
@@ -201,10 +198,7 @@ public sealed partial class DownloadRow : UserControl, IDownloadRowControl
         BtnRetry.Visibility = Visibility.Visible;
         BtnOpenFile.Visibility = Visibility.Collapsed;
         BtnOpenSaveFolder.Visibility = Visibility.Collapsed;
-        if (DownloadStoppedCallback != null)
-        {
-            DownloadStoppedCallback(this);
-        }
+        DownloadStopped?.Invoke(this, EventArgs.Empty); 
     }
 
     /// <summary>
@@ -225,10 +219,7 @@ public sealed partial class DownloadRow : UserControl, IDownloadRowControl
             BtnOpenFile.Visibility = Visibility.Collapsed;
             BtnOpenSaveFolder.Visibility = Visibility.Collapsed;
             ProgBar.Value = 0;
-            if (DownloadRetriedCallback != null)
-            {
-                DownloadRetriedCallback(this);
-            }
+            DownloadRetried?.Invoke(this, EventArgs.Empty);
         }
     }
 

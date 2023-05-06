@@ -273,9 +273,9 @@ public class MainWindowController : IDisposable
     public void AddDownload(Download download)
     {
         var newRow = UICreateDownloadRow!(download);
-        newRow.DownloadCompletedCallback = DownloadCompleted;
-        newRow.DownloadStoppedCallback = DownloadStopped;
-        newRow.DownloadRetriedCallback = DownloadRetried;
+        newRow.DownloadCompleted += DownloadCompleted;
+        newRow.DownloadStopped += DownloadStopped;
+        newRow.DownloadRetried += DownloadRetried;
         if (_downloadingRows.Count < Configuration.Current.MaxNumberOfActiveDownloads)
         {
             _downloadingRows.Add(newRow);
@@ -348,9 +348,11 @@ public class MainWindowController : IDisposable
     /// <summary>
     /// Occurs when a row's download is completed
     /// </summary>
-    /// <param name="row">The completed row</param>
-    private void DownloadCompleted(IDownloadRowControl row)
+    /// <param name="sender">object?</param>
+    /// <param name="e">EventARgs</param>
+    private void DownloadCompleted(object? sender, EventArgs e)
     {
+        var row = (IDownloadRowControl)sender!;
         _completedRows.Add(row);
         _downloadingRows.Remove(row);
         UIMoveDownloadRow!(row, DownloadStage.Completed);
@@ -367,9 +369,11 @@ public class MainWindowController : IDisposable
     /// <summary>
     /// Occurs when a row's download is stopped
     /// </summary>
-    /// <param name="row">The stopped row</param>
-    private void DownloadStopped(IDownloadRowControl row)
+    /// <param name="sender">object?</param>
+    /// <param name="e">EventARgs</param>
+    private void DownloadStopped(object? sender, EventArgs e)
     {
+        var row = (IDownloadRowControl)sender!;
         if (_queuedRows.Contains(row))
         {
             _completedRows.Add(row);
@@ -381,9 +385,11 @@ public class MainWindowController : IDisposable
     /// <summary>
     /// Occurs when a row's download is retried
     /// </summary>
-    /// <param name="row">The retried row</param>
-    private void DownloadRetried(IDownloadRowControl row)
+    /// <param name="sender">object?</param>
+    /// <param name="e">EventARgs</param>
+    private void DownloadRetried(object? sender, EventArgs e)
     {
+        var row = (IDownloadRowControl)sender!;
         if (_downloadingRows.Count < Configuration.Current.MaxNumberOfActiveDownloads)
         {
             _downloadingRows.Add(row);

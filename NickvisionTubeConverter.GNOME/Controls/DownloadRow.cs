@@ -68,19 +68,6 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
     [Gtk.Connect] private readonly Gtk.Button _btnLogToClipboard;
 
     /// <summary>
-    /// The callback function to run when the download is completed
-    /// </summary>
-    public Action<IDownloadRowControl>? DownloadCompletedCallback { get; set; }
-    /// <summary>
-    /// The callback function to run when the download is stopped
-    /// </summary>
-    public Action<IDownloadRowControl>? DownloadStoppedCallback { get; set; }
-    /// <summary>
-    /// The callback function to run when the download is retried
-    /// </summary>
-    public Action<IDownloadRowControl>? DownloadRetriedCallback { get; set; }
-
-    /// <summary>
     /// The filename of the download
     /// </summary>
     public string Filename => _download.Filename;
@@ -100,6 +87,19 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
     /// Whether or not download was finished with error
     /// </summary>
     public bool FinishedWithError { get; set; }
+
+    /// <summary>
+    /// Occurs when a download is completed
+    /// </summary>
+    public event EventHandler<EventArgs>? DownloadCompleted;
+    /// <summary>
+    /// Occurs when a download is stopped
+    /// </summary>
+    public event EventHandler<EventArgs>? DownloadStopped;
+    /// <summary>
+    /// Occurs when a download is retried
+    /// </summary>
+    public event EventHandler<EventArgs>? DownloadRetried;
 
     /// <summary>
     /// Constructs a DownloadRow
@@ -152,6 +152,7 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
             _progressLabel.SetText(_localizer["DownloadState", "Waiting"]);
             _actionViewStack.SetVisibleChildName("cancel");
             _progressBar.SetFraction(0);
+            DownloadRetried?.Invoke(this, EventArgs.Empty);
             return false;
         };
         _runStartCallback = (x) =>
@@ -173,6 +174,7 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
             _levelBar.SetValue(!FinishedWithError ? 1 : 0);
             _progressLabel.SetText(!FinishedWithError ? _localizer["Success"] : _localizer["Error"]);
             _actionViewStack.SetVisibleChildName(!FinishedWithError ? "open" : "retry");
+            DownloadCompleted?.Invoke(this, EventArgs.Empty);
             return false;
         };
         _stopCallback = (x) =>
@@ -184,6 +186,7 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
             _levelBar.SetValue(0);
             _progressLabel.SetText(_localizer["Stopped"]);
             _actionViewStack.SetVisibleChildName("retry");
+            DownloadStopped?.Invoke(this, EventArgs.Empty);
             return false;
         };
         _updateLogCallback = (x) =>
@@ -285,10 +288,6 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
         {
             FinishedWithError = !success;
             g_main_context_invoke(0, _runEndCallback, 0);
-            if (DownloadCompletedCallback != null)
-            {
-                DownloadCompletedCallback(this);
-            }
         };
         if (isRetry)
         {
@@ -308,10 +307,6 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
         _wasStopped = true;
         _download.Stop();
         g_main_context_invoke(0, _stopCallback, 0);
-        if (DownloadStoppedCallback != null)
-        {
-            DownloadStoppedCallback(this);
-        }
     }
 
     /// <summary>
@@ -322,10 +317,6 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
         if (_wasStopped || FinishedWithError)
         {
             g_main_context_invoke(0, _setDefultStateCallback, 0);
-            if (DownloadRetriedCallback != null)
-            {
-                DownloadRetriedCallback(this);
-            }
         }
     }
 }
