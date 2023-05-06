@@ -29,27 +29,27 @@ public class DownloadManager
     /// <summary>
     /// Occurs when a download is added
     /// </summary>
-    public EventHandler<(Guid Id, string Filename, string SaveFolder, bool IsDownloading)>? DownloadAdded;
+    public event EventHandler<(Guid Id, string Filename, string SaveFolder, bool IsDownloading)>? DownloadAdded;
     /// <summary>
     /// Occurs when a download's progress is changed
     /// </summary>
-    public EventHandler<(Guid Id, DownloadProgressState State)>? DownloadProgressUpdated;
+    public event EventHandler<(Guid Id, DownloadProgressState State)>? DownloadProgressUpdated;
     /// <summary>
     /// Occurs when a download is completed
     /// </summary>
-    public EventHandler<(Guid Id, bool Successful)>? DownloadCompleted;
+    public event EventHandler<(Guid Id, bool Successful)>? DownloadCompleted;
     /// <summary>
     /// Occurs when a download is stopped
     /// </summary>
-    public EventHandler<Guid>? DownloadStopped;
+    public event EventHandler<Guid>? DownloadStopped;
     /// <summary>
     /// Occurs when a download is retried
     /// </summary>
-    public EventHandler<Guid>? DownloadRetried;
+    public event EventHandler<Guid>? DownloadRetried;
     /// <summary>
     /// Occurs when a download from the queue starts downloading
     /// </summary>
-    public EventHandler<Guid>? DownloadStartedFromQueue;
+    public event EventHandler<Guid>? DownloadStartedFromQueue;
 
     /// <summary>
     /// Constructs a DownloadManager
