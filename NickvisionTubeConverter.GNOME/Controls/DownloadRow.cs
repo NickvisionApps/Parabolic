@@ -135,26 +135,29 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
         };
         _setProgressStateCb = (data) =>
         {
-            var state = (DownloadProgressState)GCHandle.FromIntPtr(data).Target;
-            _lblLog.SetLabel(state.Log);
-            var vadjustment = _scrollLog.GetVadjustment();
-            vadjustment.SetValue(vadjustment.GetUpper() - vadjustment.GetPageSize());
-            switch (state.Status)
+            var state = (DownloadProgressState?)GCHandle.FromIntPtr(data).Target;
+            if(state != null)
             {
-                case DownloadProgressStatus.Downloading:
-                    _progressBar.SetFraction(state.Progress);
-                    _progressLabel.SetText(string.Format(_localizer["DownloadState", "Downloading"], state.Progress * 100, state.Speed.GetSpeedString(_localizer)));
-                    break;
-                case DownloadProgressStatus.DownloadingAria:
-                    _progressBar.Pulse();
-                    _progressLabel.SetText(_localizer["Downloading"]);
-                    break;
-                case DownloadProgressStatus.Processing:
-                    _progressBar.Pulse();
-                    _progressLabel.SetText(_localizer["DownloadState", "Processing"]);
-                    break;
+                _lblLog.SetLabel(state.Log);
+                var vadjustment = _scrollLog.GetVadjustment();
+                vadjustment.SetValue(vadjustment.GetUpper() - vadjustment.GetPageSize());
+                switch (state.Status)
+                {
+                    case DownloadProgressStatus.Downloading:
+                        _progressBar.SetFraction(state.Progress);
+                        _progressLabel.SetText(string.Format(_localizer["DownloadState", "Downloading"], state.Progress * 100, state.Speed.GetSpeedString(_localizer)));
+                        break;
+                    case DownloadProgressStatus.DownloadingAria:
+                        _progressBar.Pulse();
+                        _progressLabel.SetText(_localizer["Downloading"]);
+                        break;
+                    case DownloadProgressStatus.Processing:
+                        _progressBar.Pulse();
+                        _progressLabel.SetText(_localizer["DownloadState", "Processing"]);
+                        break;
+                }
+                state.Dispose();
             }
-            state.Dispose();
             return false;
         };
         _setCompletedStateCb = (data) =>
