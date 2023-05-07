@@ -160,18 +160,7 @@ public sealed partial class DownloadRow : UserControl, IDownloadRowControl
     /// <summary>
     /// Sets the row to the retry state
     /// </summary>
-    public void SetRetryState()
-    {
-        Icon.Glyph = "\uE118";
-        Icon.Foreground = (SolidColorBrush)Application.Current.Resources["ToolTipForegroundThemeBrush"];
-        LblFilename.Text = Filename;
-        LblStatus.Text = _localizer["DownloadState", "Waiting"];
-        BtnStop.Visibility = Visibility.Visible;
-        BtnRetry.Visibility = Visibility.Collapsed;
-        BtnOpenFile.Visibility = Visibility.Collapsed;
-        BtnOpenSaveFolder.Visibility = Visibility.Collapsed;
-        ProgBar.Value = 0;
-    }
+    public void SetRetryState() => SetWaitingState();
 
     /// <summary>
     /// Occurs when the view log button is clicked
