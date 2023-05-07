@@ -7,7 +7,6 @@ using Microsoft.UI.Xaml.Media;
 using Microsoft.Windows.AppNotifications;
 using Microsoft.Windows.AppNotifications.Builder;
 using NickvisionTubeConverter.Shared.Controllers;
-using NickvisionTubeConverter.Shared.Controls;
 using NickvisionTubeConverter.Shared.Events;
 using NickvisionTubeConverter.Shared.Models;
 using NickvisionTubeConverter.WinUI.Controls;
@@ -571,10 +570,10 @@ public sealed partial class MainWindow : Window
         DispatcherQueue.TryEnqueue(() =>
         {
             var downloading = ListDownloading.Items.Where(x => ((DownloadRow)x).Id == e.Id).ToList();
-            if(downloading.Count > 0)
+            if (downloading.Count > 0)
             {
                 ((DownloadRow)downloading[0]).SetProgressState(e.State);
-            }    
+            }
         });
     }
 

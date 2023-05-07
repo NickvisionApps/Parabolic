@@ -97,7 +97,7 @@ public class DownloadManager
             var result = 0u;
             foreach (var pair in _completed)
             {
-                if(!pair.Value.IsSuccess)
+                if (!pair.Value.IsSuccess)
                 {
                     result++;
                 }
@@ -116,7 +116,7 @@ public class DownloadManager
             var result = 0.0;
             foreach (var pair in _downloading)
             {
-                if(_progressStates.ContainsKey(pair.Value.Id))
+                if (_progressStates.ContainsKey(pair.Value.Id))
                 {
                     result += _progressStates[pair.Value.Id].Progress;
                 }
@@ -136,7 +136,7 @@ public class DownloadManager
             var totalSpeed = 0.0;
             foreach (var pair in _downloading)
             {
-                if(_progressStates.ContainsKey(pair.Value.Id))
+                if (_progressStates.ContainsKey(pair.Value.Id))
                 {
                     totalSpeed += _progressStates[pair.Value.Id].Speed;
                 }
@@ -177,7 +177,7 @@ public class DownloadManager
     {
         download.ProgressChanged += Download_ProgressChanged;
         download.Completed += Download_Completed;
-        if(_downloading.Count < MaxNumberOfActiveDownloads)
+        if (_downloading.Count < MaxNumberOfActiveDownloads)
         {
             _downloading.Add(download.Id, download);
             DownloadAdded?.Invoke(this, (download.Id, download.Filename, download.SaveFolder, true));
@@ -198,20 +198,20 @@ public class DownloadManager
     public void RequestStop(Guid id, bool updateUI = true)
     {
         var stopped = false;
-        if(_downloading.ContainsKey(id))
+        if (_downloading.ContainsKey(id))
         {
             _downloading[id].Stop();
             _completed.Add(id, _downloading[id]);
             _downloading.Remove(id);
             stopped = true;
         }
-        if(_queued.ContainsKey(id))
+        if (_queued.ContainsKey(id))
         {
             _completed.Add(id, _queued[id].Download);
             _queued.Remove(id);
             stopped = true;
         }
-        if(stopped && updateUI)
+        if (stopped && updateUI)
         {
             DownloadStopped?.Invoke(this, id);
         }
@@ -225,7 +225,7 @@ public class DownloadManager
     /// <param name="embedMetadata">Whether or not to emebed metadata</param>
     public void RequestRetry(Guid id, bool useAria, bool embedMetadata)
     {
-        if(_completed.ContainsKey(id))
+        if (_completed.ContainsKey(id))
         {
             var download = _completed[id];
             _completed.Remove(id);
@@ -259,7 +259,7 @@ public class DownloadManager
     {
         foreach (var pair in _completed)
         {
-            if(!pair.Value.IsSuccess)
+            if (!pair.Value.IsSuccess)
             {
                 RequestRetry(pair.Key, useAria, embedMetadata);
             }
@@ -279,7 +279,7 @@ public class DownloadManager
     private void Download_ProgressChanged(object? sender, DownloadProgressState e)
     {
         var download = (Download)sender!;
-        if(!download.WasStopped)
+        if (!download.WasStopped)
         {
             _progressStates[download.Id] = e;
             DownloadProgressUpdated?.Invoke(this, (download.Id, e));
@@ -294,7 +294,7 @@ public class DownloadManager
     private void Download_Completed(object? sender, bool successful)
     {
         var download = (Download)sender!;
-        if(!download.WasStopped && _downloading.ContainsKey(download.Id))
+        if (!download.WasStopped && _downloading.ContainsKey(download.Id))
         {
             _completed.Add(download.Id, _downloading[download.Id]);
             _downloading.Remove(download.Id);
