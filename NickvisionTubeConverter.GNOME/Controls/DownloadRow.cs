@@ -14,11 +14,8 @@ namespace NickvisionTubeConverter.GNOME.Controls;
 /// </summary>
 public partial class DownloadRow : Adw.Bin, IDownloadRowControl
 {
-    private delegate bool GSourceFunc(nint data);
     private delegate void GAsyncReadyCallback(nint source, nint res, nint user_data);
 
-    [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
-    private static partial void g_main_context_invoke(nint context, GSourceFunc function, nint data);
     [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
     private static partial nint gtk_file_launcher_new(nint file);
     [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
@@ -27,11 +24,6 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
     private static partial void gtk_file_launcher_open_containing_folder(nint fileLauncher, nint parent, nint cancellable, GAsyncReadyCallback callback, nint data);
 
     private readonly Localizer _localizer;
-    private readonly GSourceFunc _setWaitingStateCb;
-    private readonly GSourceFunc _setPreparingStateCb;
-    private readonly GSourceFunc _setProgressStateCb;
-    private readonly GSourceFunc _setCompletedStateCb;
-    private readonly GSourceFunc _setStopStateCb;
     private string _saveFolder;
     private Action<NotificationSentEventArgs> _sendNotificationCallback;
 
@@ -80,7 +72,6 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
     private DownloadRow(Gtk.Builder builder, Guid id, string filename, string saveFolder, Localizer localizer, Action<NotificationSentEventArgs> sendNoticiationCallback) : base(builder.GetPointer("_root"), false)
     {
         _localizer = localizer;
-        _localizer = localizer;
         _saveFolder = saveFolder;
         Id = id;
         Filename = filename;
@@ -107,78 +98,6 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
             _lblLog.GetClipboard().SetText(_lblLog.GetText());
             _sendNotificationCallback(new NotificationSentEventArgs(_localizer["LogCopied"], NotificationSeverity.Informational));
         };
-        //Set downloading states callbacks
-        _setWaitingStateCb = (data) =>
-        {
-            _statusIcon.RemoveCssClass("error");
-            _statusIcon.AddCssClass("stopped");
-            _statusIcon.SetFromIconName("folder-download-symbolic");
-            _stateViewStack.SetVisibleChildName("downloading");
-            _progressLabel.SetText(_localizer["DownloadState", "Waiting"]);
-            _actionViewStack.SetVisibleChildName("cancel");
-            _progressBar.SetFraction(0);
-            return false;
-        };
-        _setPreparingStateCb = (data) =>
-        {
-            _statusIcon.RemoveCssClass("error");
-            _statusIcon.RemoveCssClass("stopped");
-            _statusIcon.SetFromIconName("folder-download-symbolic");
-            _stateViewStack.SetVisibleChildName("downloading");
-            _progressLabel.SetText(_localizer["DownloadState", "Preparing"]);
-            _actionViewStack.SetVisibleChildName("cancel");
-            _progressBar.SetFraction(0);
-            return false;
-        };
-        _setProgressStateCb = (data) =>
-        {
-            var state = (DownloadProgressState?)GCHandle.FromIntPtr(data).Target;
-            if (state != null)
-            {
-                _lblLog.SetLabel(state.Log);
-                var vadjustment = _scrollLog.GetVadjustment();
-                vadjustment.SetValue(vadjustment.GetUpper() - vadjustment.GetPageSize());
-                switch (state.Status)
-                {
-                    case DownloadProgressStatus.Downloading:
-                        _progressBar.SetFraction(state.Progress);
-                        _progressLabel.SetText(string.Format(_localizer["DownloadState", "Downloading"], state.Progress * 100, state.Speed.GetSpeedString(_localizer)));
-                        break;
-                    case DownloadProgressStatus.DownloadingAria:
-                        _progressBar.Pulse();
-                        _progressLabel.SetText(_localizer["Downloading"]);
-                        break;
-                    case DownloadProgressStatus.Processing:
-                        _progressBar.Pulse();
-                        _progressLabel.SetText(_localizer["DownloadState", "Processing"]);
-                        break;
-                }
-                state.Dispose();
-            }
-            return false;
-        };
-        _setCompletedStateCb = (data) =>
-        {
-            var success = data == 1;
-            _statusIcon.AddCssClass(success ? "success" : "error");
-            _statusIcon.SetFromIconName(success ? "emblem-ok-symbolic" : "process-stop-symbolic");
-            _stateViewStack.SetVisibleChildName("done");
-            _levelBar.SetValue(success ? 1 : 0);
-            _progressLabel.SetText(success ? _localizer["Success"] : _localizer["Error"]);
-            _actionViewStack.SetVisibleChildName(success ? "open" : "retry");
-            return false;
-        };
-        _setStopStateCb = (data) =>
-        {
-            _progressBar.SetFraction(1.0);
-            _statusIcon.AddCssClass("stopped");
-            _statusIcon.SetFromIconName("process-stop-symbolic");
-            _stateViewStack.SetVisibleChildName("done");
-            _levelBar.SetValue(0);
-            _progressLabel.SetText(_localizer["Stopped"]);
-            _actionViewStack.SetVisibleChildName("retry");
-            return false;
-        };
     }
 
     /// <summary>
@@ -197,27 +116,82 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
     /// <summary>
     /// Sets the row to the waiting state
     /// </summary>
-    public void SetWaitingState() => g_main_context_invoke(0, _setWaitingStateCb, 0);
+    public void SetWaitingState()
+    {
+        _statusIcon.RemoveCssClass("error");
+        _statusIcon.AddCssClass("stopped");
+        _statusIcon.SetFromIconName("folder-download-symbolic");
+        _stateViewStack.SetVisibleChildName("downloading");
+        _progressLabel.SetText(_localizer["DownloadState", "Waiting"]);
+        _actionViewStack.SetVisibleChildName("cancel");
+        _progressBar.SetFraction(0);
+    }
 
     /// <summary>
     /// Sets the row to the preparing state
     /// </summary>
-    public void SetPreparingState() => g_main_context_invoke(0, _setPreparingStateCb, 0);
+    public void SetPreparingState()
+    {
+        _statusIcon.RemoveCssClass("error");
+        _statusIcon.RemoveCssClass("stopped");
+        _statusIcon.SetFromIconName("folder-download-symbolic");
+        _stateViewStack.SetVisibleChildName("downloading");
+        _progressLabel.SetText(_localizer["DownloadState", "Preparing"]);
+        _actionViewStack.SetVisibleChildName("cancel");
+        _progressBar.SetFraction(0);
+    }
 
     /// <summary>
     /// Sets the row to the progress state
     /// </summary>
     /// <param name="state">The DownloadProgressState</param>
-    public void SetProgressState(DownloadProgressState state) => g_main_context_invoke(0, _setProgressStateCb, (IntPtr)state.Handle!);
+    public void SetProgressState(DownloadProgressState state)
+    {
+        _lblLog.SetLabel(state.Log);
+        var vadjustment = _scrollLog.GetVadjustment();
+        vadjustment.SetValue(vadjustment.GetUpper() - vadjustment.GetPageSize());
+        switch (state.Status)
+        {
+            case DownloadProgressStatus.Downloading:
+                _progressBar.SetFraction(state.Progress);
+                _progressLabel.SetText(string.Format(_localizer["DownloadState", "Downloading"], state.Progress * 100, state.Speed.GetSpeedString(_localizer)));
+                break;
+            case DownloadProgressStatus.DownloadingAria:
+                _progressBar.Pulse();
+                _progressLabel.SetText(_localizer["Downloading"]);
+                break;
+            case DownloadProgressStatus.Processing:
+                _progressBar.Pulse();
+                _progressLabel.SetText(_localizer["DownloadState", "Processing"]);
+                break;
+        }
+    }
 
     /// <summary>
     /// Sets the row to the completed state
     /// </summary>
     /// <param name="success">Whether or not the download was successful</param>
-    public void SetCompletedState(bool success) => g_main_context_invoke(0, _setCompletedStateCb, success ? 1 : 0);
+    public void SetCompletedState(bool success)
+    {
+        _statusIcon.AddCssClass(success ? "success" : "error");
+        _statusIcon.SetFromIconName(success ? "emblem-ok-symbolic" : "process-stop-symbolic");
+        _stateViewStack.SetVisibleChildName("done");
+        _levelBar.SetValue(success ? 1 : 0);
+        _progressLabel.SetText(success ? _localizer["Success"] : _localizer["Error"]);
+        _actionViewStack.SetVisibleChildName(success ? "open" : "retry");
+    }
 
     /// <summary>
     /// Sets the row to the stop state
     /// </summary>
-    public void SetStopState() => g_main_context_invoke(0, _setStopStateCb, 0);
+    public void SetStopState()
+    {
+        _progressBar.SetFraction(1.0);
+        _statusIcon.AddCssClass("stopped");
+        _statusIcon.SetFromIconName("process-stop-symbolic");
+        _stateViewStack.SetVisibleChildName("done");
+        _levelBar.SetValue(0);
+        _progressLabel.SetText(_localizer["Stopped"]);
+        _actionViewStack.SetVisibleChildName("retry");
+    }
 }
