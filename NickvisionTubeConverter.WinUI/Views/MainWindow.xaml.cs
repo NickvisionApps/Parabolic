@@ -590,10 +590,8 @@ public sealed partial class MainWindow : Window
             }
             SectionDownloading.Visibility = ListDownloading.Items.Count > 0 ? Visibility.Visible : Visibility.Collapsed;
             SectionCompleted.Visibility = Visibility.Visible;
-            if(SectionDownloading.Visibility == Visibility.Collapsed)
-            {
-                LblSpeed.Text = string.Format(_controller.Localizer["TotalSpeed"], _controller.DownloadManager.TotalSpeedString);
-            }
+            LblStatus.Text = string.Format(_controller.Localizer["RemainingDownloads"], _controller.DownloadManager.RemainingDownloadsCount);
+            LblSpeed.Text = string.Format(_controller.Localizer["TotalSpeed"], _controller.DownloadManager.TotalSpeedString);
         });
     }
 
