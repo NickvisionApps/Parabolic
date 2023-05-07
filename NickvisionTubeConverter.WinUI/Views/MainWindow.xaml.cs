@@ -594,7 +594,7 @@ public sealed partial class MainWindow : Window
             {
                 SendShellNotification(new ShellNotificationSentEventArgs(_controller.Localizer[!e.Successful ? "DownloadFinishedWithError" : "DownloadFinished"], string.Format(_controller.Localizer[!e.Successful ? "DownloadFinishedWithError" : "DownloadFinished", "Description"], $"\"{downloadRow.Filename}\""), !e.Successful ? NotificationSeverity.Error : NotificationSeverity.Success));
             }
-            SectionDownloading.Visibility = ListDownloading.Items.Count > 0 ? Visibility.Visible : Visibility.Collapsed;
+            SectionDownloading.Visibility = _controller.DownloadManager.AreDownloadsRunning ? Visibility.Visible : Visibility.Collapsed;
             SectionCompleted.Visibility = Visibility.Visible;
             LblStatus.Text = string.Format(_controller.Localizer["RemainingDownloads"], _controller.DownloadManager.RemainingDownloadsCount);
             LblSpeed.Text = string.Format(_controller.Localizer["TotalSpeed"], _controller.DownloadManager.TotalSpeedString);
@@ -618,7 +618,7 @@ public sealed partial class MainWindow : Window
                 downloadRow.SetStopState();
                 ListDownloading.Items.Remove(downloadRow);
                 ListCompleted.Items.Add(downloadRow);
-                SectionDownloading.Visibility = ListDownloading.Items.Count > 0 ? Visibility.Visible : Visibility.Collapsed;
+                SectionDownloading.Visibility = _controller.DownloadManager.AreDownloadsRunning ? Visibility.Visible : Visibility.Collapsed;
                 SectionCompleted.Visibility = Visibility.Visible;
             }
             else if (downloadRowQueued.Count > 0)
@@ -627,7 +627,7 @@ public sealed partial class MainWindow : Window
                 downloadRow.SetStopState();
                 ListQueued.Items.Remove(downloadRow);
                 ListCompleted.Items.Add(downloadRow);
-                SectionQueued.Visibility = ListQueued.Items.Count > 0 ? Visibility.Visible : Visibility.Collapsed;
+                SectionQueued.Visibility = _controller.DownloadManager.AreDownloadsQueued ? Visibility.Visible : Visibility.Collapsed;
                 SectionCompleted.Visibility = Visibility.Visible;
             }
         });
@@ -645,7 +645,7 @@ public sealed partial class MainWindow : Window
             var downloadRow = (DownloadRow)ListCompleted.Items.Where(x => ((DownloadRow)x).Id == e).First();
             downloadRow.SetWaitingState();
             ListCompleted.Items.Remove(downloadRow);
-            SectionCompleted.Visibility = ListCompleted.Items.Count > 0 ? Visibility.Visible : Visibility.Collapsed;
+            SectionCompleted.Visibility = _controller.DownloadManager.AreDownloadsCompleted ? Visibility.Visible : Visibility.Collapsed;
         });
     }
 
@@ -662,7 +662,7 @@ public sealed partial class MainWindow : Window
             downloadRow.SetPreparingState();
             ListQueued.Items.Remove(downloadRow);
             ListDownloading.Items.Add(downloadRow);
-            SectionQueued.Visibility = ListQueued.Items.Count > 0 ? Visibility.Visible : Visibility.Collapsed;
+            SectionQueued.Visibility = _controller.DownloadManager.AreDownloadsQueued ? Visibility.Visible : Visibility.Collapsed;
             SectionDownloading.Visibility = Visibility.Visible;
         });
     }

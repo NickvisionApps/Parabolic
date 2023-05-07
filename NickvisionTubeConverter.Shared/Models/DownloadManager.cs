@@ -22,6 +22,14 @@ public class DownloadManager
     /// </summary>
     public bool AreDownloadsRunning => _downloading.Count > 0;
     /// <summary>
+    /// Whether or not any downloads are in the queue
+    /// </summary>
+    public bool AreDownloadsQueued => _queued.Count > 0;
+    /// <summary>
+    /// Whether or not any downloads are completed
+    /// </summary>
+    public bool AreDownloadsCompleted => _completed.Count > 0;
+    /// <summary>
     /// The number of remaining downloads
     /// </summary>
     public int RemainingDownloadsCount => _downloading.Count + _queued.Count;
