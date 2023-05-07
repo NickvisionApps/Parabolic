@@ -116,7 +116,10 @@ public class DownloadManager
             var result = 0.0;
             foreach (var pair in _downloading)
             {
-                result += _progressStates[pair.Value.Id].Progress;
+                if(_progressStates.ContainsKey(pair.Value.Id))
+                {
+                    result += _progressStates[pair.Value.Id].Progress;
+                }
             }
             result /= (_downloading.Count + _queued.Count) > 0 ? (_downloading.Count + _queued.Count) : 1;
             return result;
@@ -133,7 +136,10 @@ public class DownloadManager
             var totalSpeed = 0.0;
             foreach (var pair in _downloading)
             {
-                totalSpeed += _progressStates[pair.Value.Id].Speed;
+                if(_progressStates.ContainsKey(pair.Value.Id))
+                {
+                    totalSpeed += _progressStates[pair.Value.Id].Speed;
+                }
             }
             return totalSpeed.GetSpeedString(_localizer);
         }
