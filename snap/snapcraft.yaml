@@ -84,9 +84,7 @@ parts:
   tube-converter:
     after: [ ffmpeg, yt-dlp ]
     plugin: dump
-    source: https://github.com/NickvisionApps/TubeConverter.git
-    source-type: git
-    source-tag: $SNAPCRAFT_PROJECT_VERSION
+    source: .
     source-subdir: NickvisionTubeConverter.GNOME
     build-environment:
       - TC_PYTHON_SO: $SNAP/gnome-platform/usr/lib/$CRAFT_ARCH_TRIPLET/libpython3.10.so.1.0
