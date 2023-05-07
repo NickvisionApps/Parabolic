@@ -31,9 +31,6 @@ parts:
     plugin: python
     source: https://github.com/yt-dlp/yt-dlp.git
     source-tag: 2023.03.04
-    python-packages:
-      - pyxattr==0.7.2
-      - PyGObject
     build-environment:
       # WORKAROUND: The python plugin is broken with gnome extension
       - PATH: ${CRAFT_PART_INSTALL}/bin:${PATH}
