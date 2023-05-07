@@ -18,7 +18,7 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
     private delegate void GAsyncReadyCallback(nint source, nint res, nint user_data);
 
     [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
-    private static partial uint g_idle_add(GSourceFunc function, nint data);
+    private static partial void g_main_context_invoke(nint context, GSourceFunc function, nint data);
 
     [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
     private static partial nint gtk_file_launcher_new(nint file);
@@ -200,42 +200,27 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
     /// <summary>
     /// Sets the row to the waiting state
     /// </summary>
-    public void SetWaitingState()
-    {
-        g_idle_add(_setWaitingStateCb, 0);
-    }
+    public void SetWaitingState() => g_main_context_invoke(0, _setWaitingStateCb, 0);
 
     /// <summary>
     /// Sets the row to the preparing state
     /// </summary>
-    public void SetPreparingState()
-    {
-        g_idle_add(_setPreparingStateCb, 0);
-    }
+    public void SetPreparingState() => g_main_context_invoke(0, _setPreparingStateCb, 0);
 
     /// <summary>
     /// Sets the row to the progress state
     /// </summary>
     /// <param name="state">The DownloadProgressState</param>
-    public void SetProgressState(DownloadProgressState state)
-    {
-        g_idle_add(_setProgressStateCb, (IntPtr)state.Handle);
-    }
+    public void SetProgressState(DownloadProgressState state) => g_main_context_invoke(0, _setProgressStateCb, (IntPtr)state.Handle!);
 
     /// <summary>
     /// Sets the row to the completed state
     /// </summary>
     /// <param name="success">Whether or not the download was successful</param>
-    public void SetCompletedState(bool success)
-    {
-        g_idle_add(_setCompletedStateCb, success ? 1 : 0);
-    }
+    public void SetCompletedState(bool success) => g_main_context_invoke(0, _setCompletedStateCb, success ? 1 : 0);
 
     /// <summary>
     /// Sets the row to the stop state
     /// </summary>
-    public void SetStopState()
-    {
-        g_idle_add(_setStopStateCb, 0);
-    }
+    public void SetStopState() => g_main_context_invoke(0, _setStopStateCb, 0);
 }
