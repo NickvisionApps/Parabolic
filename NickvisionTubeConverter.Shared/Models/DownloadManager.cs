@@ -279,8 +279,11 @@ public class DownloadManager
     private void Download_ProgressChanged(object? sender, DownloadProgressState e)
     {
         var download = (Download)sender!;
-        _progressStates[download.Id] = e;
-        DownloadProgressUpdated?.Invoke(this, (download.Id, e));
+        if(!download.WasStopped)
+        {
+            _progressStates[download.Id] = e;
+            DownloadProgressUpdated?.Invoke(this, (download.Id, e));
+        }
     }
 
     /// <summary>
@@ -291,9 +294,12 @@ public class DownloadManager
     private void Download_Completed(object? sender, bool successful)
     {
         var download = (Download)sender!;
-        _completed.Add(download.Id, _downloading[download.Id]);
-        _downloading.Remove(download.Id);
-        DownloadCompleted?.Invoke(this, (download.Id, successful));
+        if(!download.WasStopped)
+        {
+            _completed.Add(download.Id, _downloading[download.Id]);
+            _downloading.Remove(download.Id);
+            DownloadCompleted?.Invoke(this, (download.Id, successful));
+        }
         if (_downloading.Count < MaxNumberOfActiveDownloads && _queued.Count > 0)
         {
             var firstPair = _queued.First();

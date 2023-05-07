@@ -83,6 +83,10 @@ public class Download
     /// Whether or not the download was successful
     /// </summary>
     public bool IsSuccess { get; private set; }
+    /// <summary>
+    /// Whether or not the download was stopped
+    /// </summary>
+    public bool WasStopped { get; private set; }
 
     /// <summary>
     /// Occurs when the download's progress is changed
@@ -117,6 +121,7 @@ public class Download
         IsRunning = false;
         IsDone = false;
         IsSuccess = false;
+        WasStopped = false;
         _tempDownloadPath = $"{Configuration.TempDir}{Path.DirectorySeparatorChar}{Id}{Path.DirectorySeparatorChar}";
         _logPath = $"{_tempDownloadPath}log";
         _limitSpeed = limitSpeed;
@@ -137,7 +142,9 @@ public class Download
         if (!IsRunning)
         {
             IsRunning = true;
+            IsDone = false;
             IsSuccess = false;
+            WasStopped = false;
             //Check if can overwrite
             if (File.Exists($"{SaveFolder}{Path.DirectorySeparatorChar}{Filename}") && !_overwriteFiles)
             {
@@ -335,6 +342,7 @@ public class Download
             IsDone = true;
             IsRunning = false;
             IsSuccess = false;
+            WasStopped = true;
         }
     }
 
