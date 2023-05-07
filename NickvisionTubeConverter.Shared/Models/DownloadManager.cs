@@ -259,7 +259,10 @@ public class DownloadManager
     {
         foreach (var pair in _completed)
         {
-            RequestRetry(pair.Key, useAria, embedMetadata);
+            if(!pair.Value.IsSuccess)
+            {
+                RequestRetry(pair.Key, useAria, embedMetadata);
+            }
         }
     }
 
