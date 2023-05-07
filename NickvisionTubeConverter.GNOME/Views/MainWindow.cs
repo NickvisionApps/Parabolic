@@ -446,6 +446,7 @@ public partial class MainWindow : Adw.ApplicationWindow
             {
                 _queuedBox.Remove(_queuedBox.GetFirstChild());
             }
+            _queuedBox.GetParent().SetVisible(false);
         };
         AddAction(actClearQueuedDownloads);
         application.SetAccelsForAction("win.clearQueuedDownloads", new string[] { "<Ctrl>Delete" });
