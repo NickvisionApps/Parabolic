@@ -148,7 +148,14 @@ public partial class MainWindow : Adw.ApplicationWindow
                 downloadRow.StopRequested += (sender, e) => _controller.DownloadManager.RequestStop(e);
                 downloadRow.RetryRequested += (sender, e) => _controller.DownloadManager.RequestRetry(e, _controller.UseAria, _controller.EmbedMetadata);
                 var box = e.IsDownloading ? _downloadingBox : _queuedBox;
-                downloadRow.SetPreparingState();
+                if(e.IsDownloading)
+                {
+                    downloadRow.SetPreparingState();
+                }
+                else
+                {
+                    downloadRow.SetWaitingState();
+                }
                 if (box.GetFirstChild() != null)
                 {
                     var separator = Gtk.Separator.New(Gtk.Orientation.Horizontal);
