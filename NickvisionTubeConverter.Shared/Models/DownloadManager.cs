@@ -294,7 +294,7 @@ public class DownloadManager
     private void Download_Completed(object? sender, bool successful)
     {
         var download = (Download)sender!;
-        if(!download.WasStopped)
+        if(!download.WasStopped && _downloading.ContainsKey(download.Id))
         {
             _completed.Add(download.Id, _downloading[download.Id]);
             _downloading.Remove(download.Id);

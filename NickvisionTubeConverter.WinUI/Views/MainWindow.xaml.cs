@@ -496,7 +496,11 @@ public sealed partial class MainWindow : Window
     /// </summary>
     /// <param name="sender">object</param>
     /// <param name="e">RoutedEventArgs</param>
-    private void ClearQueuedDownloads(object sender, RoutedEventArgs e) => _controller.DownloadManager.ClearQueuedDownloads();
+    private void ClearQueuedDownloads(object sender, RoutedEventArgs e)
+    {
+        _controller.DownloadManager.ClearQueuedDownloads();
+        ListQueued.Items.Clear();
+    }
 
     /// <summary>
     /// Occurs when the about menu item is clicked
@@ -566,8 +570,11 @@ public sealed partial class MainWindow : Window
     {
         DispatcherQueue.TryEnqueue(() =>
         {
-            var downloadRow = (DownloadRow)ListDownloading.Items.Where(x => ((DownloadRow)x).Id == e.Id).First();
-            downloadRow.SetProgressState(e.State);
+            var downloading = ListDownloading.Items.Where(x => ((DownloadRow)x).Id == e.Id).ToList();
+            if(downloading.Count > 0)
+            {
+                ((DownloadRow)downloading[0]).SetProgressState(e.State);
+            }    
         });
     }
 
