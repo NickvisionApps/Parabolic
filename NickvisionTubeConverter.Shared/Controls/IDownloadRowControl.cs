@@ -9,38 +9,47 @@ namespace NickvisionTubeConverter.Shared.Controls;
 public interface IDownloadRowControl
 {
     /// <summary>
+    /// The Id of the download
+    /// </summary>
+    public Guid Id { get; }
+    /// <summary>
+    /// The filename of the download
+    /// </summary>
+    public string Filename { get; }
+
+    /// <summary>
     /// Occurs when the download is requested to stop
     /// </summary>
-    event EventHandler<Guid>? StopRequested;
+    public event EventHandler<Guid>? StopRequested;
     /// <summary>
     /// Occurs when the download is requested to be retried
     /// </summary>
-    event EventHandler<Guid>? RetryRequested;
+    public event EventHandler<Guid>? RetryRequested;
 
     /// <summary>
     /// Sets the row to the waiting state
     /// </summary>
-    void SetWaitingState();
+    public void SetWaitingState();
     /// <summary>
     /// Sets the row to the preparing state
     /// </summary>
-    void SetPreparingState();
+    public void SetPreparingState();
     /// <summary>
     /// Sets the row to the progress state
     /// </summary>
     /// <param name="state">The DownloadProgressState</param>
-    void SetProgressState(DownloadProgressState state);
+    public void SetProgressState(DownloadProgressState state);
     /// <summary>
     /// Sets the row to the completed state
     /// </summary>
     /// <param name="success">Whether or not the download was successful</param>
-    void SetCompletedState(bool success);
+    public void SetCompletedState(bool success);
     /// <summary>
     /// Sets the row to the stop state
     /// </summary>
-    void SetStopState();
+    public void SetStopState();
     // <summary>
     /// Sets the row to the retry state
     /// </summary>
-    void SetRetryState();
+    public void SetRetryState();
 }

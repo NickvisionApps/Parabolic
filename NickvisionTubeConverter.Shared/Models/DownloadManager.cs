@@ -170,7 +170,7 @@ public class DownloadManager
     public void AddDownload(Download download, bool useAria, bool embedMetadata)
     {
         download.ProgressChanged += Download_ProgressChanged;
-        download.Completed += Download_Compelted;
+        download.Completed += Download_Completed;
         if(_downloading.Count < MaxNumberOfActiveDownloads)
         {
             _downloading.Add(download.Id, download);
@@ -188,7 +188,8 @@ public class DownloadManager
     /// Requests for a download to stop
     /// </summary>
     /// <param name="id">The id of the download</param>
-    public void RequestStop(Guid id)
+    /// <param name="updateUI">Whether or not to update the UI when download stopped</param>
+    public void RequestStop(Guid id, bool updateUI = true)
     {
         var stopped = false;
         if(_downloading.ContainsKey(id))
@@ -204,7 +205,7 @@ public class DownloadManager
             _queued.Remove(id);
             stopped = true;
         }
-        if(stopped)
+        if(stopped && updateUI)
         {
             DownloadStopped?.Invoke(this, id);
         }
@@ -230,15 +231,16 @@ public class DownloadManager
     /// <summary>
     /// Requests all downloads to be stopped
     /// </summary>
-    public void StopAllDownloads()
+    /// <param name="updateUI">Whether or not to update the UI when downloads are stopped</param>
+    public void StopAllDownloads(bool updateUI)
     {
         foreach (var pair in _queued)
         {
-            RequestStop(pair.Key);
+            RequestStop(pair.Key, updateUI);
         }
         foreach (var pair in _downloading)
         {
-            RequestStop(pair.Key);
+            RequestStop(pair.Key, updateUI);
         }
     }
 
@@ -277,7 +279,7 @@ public class DownloadManager
     /// </summary>
     /// <param name="sender">object?</param>
     /// <param name="successful">Whether or not the download was successful</param>
-    private void Download_Compelted(object? sender, bool successful)
+    private void Download_Completed(object? sender, bool successful)
     {
         var download = (Download)sender!;
         _completed.Add(download.Id, _downloading[download.Id]);

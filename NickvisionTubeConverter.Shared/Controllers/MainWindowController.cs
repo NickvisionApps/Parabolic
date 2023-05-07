@@ -40,6 +40,14 @@ public class MainWindowController : IDisposable
     /// Whether to allow running in the background
     /// </summary>
     public bool RunInBackground => Configuration.Current.RunInBackground;
+    /// <summary>
+    /// Whether to use aria2 for downloader
+    /// </summary>
+    public bool UseAria => Configuration.Current.UseAria;
+    /// <summary>
+    /// Whether to embed metadata
+    /// </summary>
+    public bool EmbedMetadata => Configuration.Current.EmbedMetadata;
 
     /// <summary>
     /// Occurs when a notification is sent
