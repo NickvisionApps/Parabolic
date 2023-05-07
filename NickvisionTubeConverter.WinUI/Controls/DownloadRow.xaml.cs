@@ -17,9 +17,16 @@ namespace NickvisionTubeConverter.WinUI.Controls;
 public sealed partial class DownloadRow : UserControl, IDownloadRowControl
 {
     private readonly Localizer _localizer;
-    private Guid _id;
-    private string _filename;
     private string _saveFolder;
+
+    /// <summary>
+    /// The Id of the download
+    /// </summary>
+    public Guid Id { get; private set; }
+    /// <summary>
+    /// The filename of the download
+    /// </summary>
+    public string Filename { get; private set; }
 
     /// <summary>
     /// Occurs when the download is requested to stop
@@ -41,9 +48,9 @@ public sealed partial class DownloadRow : UserControl, IDownloadRowControl
     {
         InitializeComponent();
         _localizer = localizer;
-        _id = id;
-        _filename = filename;
         _saveFolder = saveFolder;
+        Id = id;
+        Filename = filename;
         //Default
         SetWaitingState();
         //Localize Strings
@@ -61,7 +68,7 @@ public sealed partial class DownloadRow : UserControl, IDownloadRowControl
     {
         Icon.Glyph = "\uE118";
         Icon.Foreground = (SolidColorBrush)Application.Current.Resources["ToolTipForegroundThemeBrush"];
-        LblFilename.Text = _filename;
+        LblFilename.Text = Filename;
         LblStatus.Text = _localizer["DownloadState", "Waiting"];
         BtnStop.Visibility = Visibility.Visible;
         BtnRetry.Visibility = Visibility.Collapsed;
@@ -77,7 +84,7 @@ public sealed partial class DownloadRow : UserControl, IDownloadRowControl
     {
         Icon.Glyph = "\uE118";
         Icon.Foreground = (SolidColorBrush)Application.Current.Resources["ToolTipForegroundThemeBrush"];
-        LblFilename.Text = _filename;
+        LblFilename.Text = Filename;
         LblStatus.Text = _localizer["DownloadState", "Preparing"];
         BtnStop.Visibility = Visibility.Visible;
         BtnRetry.Visibility = Visibility.Collapsed;
@@ -157,7 +164,7 @@ public sealed partial class DownloadRow : UserControl, IDownloadRowControl
     {
         Icon.Glyph = "\uE118";
         Icon.Foreground = (SolidColorBrush)Application.Current.Resources["ToolTipForegroundThemeBrush"];
-        LblFilename.Text = _filename;
+        LblFilename.Text = Filename;
         LblStatus.Text = _localizer["DownloadState", "Waiting"];
         BtnStop.Visibility = Visibility.Visible;
         BtnRetry.Visibility = Visibility.Collapsed;
@@ -178,21 +185,21 @@ public sealed partial class DownloadRow : UserControl, IDownloadRowControl
     /// </summary>
     /// <param name="sender">object</param>
     /// <param name="e">RoutedEventArgs</param>
-    private void BtnStop_Click(object sender, RoutedEventArgs e) => StopRequested?.Invoke(this, _id);
+    private void BtnStop_Click(object sender, RoutedEventArgs e) => StopRequested?.Invoke(this, Id);
 
     /// <summary>
     /// Occurs when the retry button is clicked
     /// </summary>
     /// <param name="sender">object</param>
     /// <param name="e">RoutedEventArgs</param>
-    private void BtnRetry_Click(object sender, RoutedEventArgs e) => RetryRequested?.Invoke(this, _id);
+    private void BtnRetry_Click(object sender, RoutedEventArgs e) => RetryRequested?.Invoke(this, Id);
 
     /// <summary>
     /// Occurs when the open file button is clicked
     /// </summary>
     /// <param name="sender">object</param>
     /// <param name="e">RoutedEventArgs</param>
-    private async void BtnOpenFile_Click(object sender, RoutedEventArgs e) => await Launcher.LaunchUriAsync(new Uri($"{_saveFolder}{Path.DirectorySeparatorChar}{_filename}"));
+    private async void BtnOpenFile_Click(object sender, RoutedEventArgs e) => await Launcher.LaunchUriAsync(new Uri($"{_saveFolder}{Path.DirectorySeparatorChar}{Filename}"));
 
     /// <summary>
     /// Occurs when the open save folder button is clicked
