@@ -42,7 +42,6 @@ public class DownloadProgressState : IDisposable
     /// </summary>
     public GCHandle? Handle { get; init; }
 
-
     /// <summary>
     /// Constructs a DownloadProgressState
     /// </summary>
@@ -58,6 +57,11 @@ public class DownloadProgressState : IDisposable
             Handle = GCHandle.Alloc(this);
         }
     }
+
+    /// <summary>
+    /// Finalizes the DownloadProgressState
+    /// </summary>
+    ~DownloadProgressState() => Dispose(false);
 
     /// <summary>
     /// Frees resources used by the DownloadProgressState object

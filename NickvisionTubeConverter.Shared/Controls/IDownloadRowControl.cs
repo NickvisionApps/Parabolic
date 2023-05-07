@@ -1,60 +1,51 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using NickvisionTubeConverter.Shared.Models;
+using System;
 
 namespace NickvisionTubeConverter.Shared.Controls;
 
 /// <summary>
-/// A contract for a download row control
+/// An interface for download rows
 /// </summary>
 public interface IDownloadRowControl
 {
     /// <summary>
+    /// The Id of the download
+    /// </summary>
+    public Guid Id { get; }
+    /// <summary>
     /// The filename of the download
     /// </summary>
     public string Filename { get; }
-    /// <summary>
-    /// Whether or not the download is done
-    /// </summary>
-    public bool IsDone { get; }
-    /// <summary>
-    /// The callback function to run when the download is completed
-    /// </summary>
-    public Func<IDownloadRowControl, Task>? DownloadCompletedAsyncCallback { get; set; }
-    /// <summary>
-    /// The callback function to run when the download is stopped
-    /// </summary>
-    public Action<IDownloadRowControl>? DownloadStoppedCallback { get; set; }
-    /// <summary>
-    /// The callback function to run when the download is retried
-    /// </summary>
-    public Func<IDownloadRowControl, Task>? DownloadRetriedAsyncCallback { get; set; }
-    /// <summary>
-    /// Download progress
-    /// </summary>
-    public double Progress { get; set; }
-    /// <summary>
-    /// Download speed (in bytes per second)
-    /// </summary>
-    public double Speed { get; set; }
-    /// <summary>
-    /// Whether or not download was finished with error
-    /// </summary>
-    public bool FinishedWithError { get; set; }
-
 
     /// <summary>
-    /// Runs the download
+    /// Occurs when the download is requested to stop
     /// </summary>
-    /// <param name="embedMetadata">Whether or not to embed video metadata</param>
-    public Task RunAsync(bool embedMetadata);
+    public event EventHandler<Guid>? StopRequested;
+    /// <summary>
+    /// Occurs when the download is requested to be retried
+    /// </summary>
+    public event EventHandler<Guid>? RetryRequested;
 
     /// <summary>
-    /// Stops the download
+    /// Sets the row to the waiting state
     /// </summary>
-    public void Stop();
-
+    public void SetWaitingState();
     /// <summary>
-    /// Retries the download if needed
+    /// Sets the row to the preparing state
     /// </summary>
-    public Task RetryAsync();
+    public void SetPreparingState();
+    /// <summary>
+    /// Sets the row to the progress state
+    /// </summary>
+    /// <param name="state">The DownloadProgressState</param>
+    public void SetProgressState(DownloadProgressState state);
+    /// <summary>
+    /// Sets the row to the completed state
+    /// </summary>
+    /// <param name="success">Whether or not the download was successful</param>
+    public void SetCompletedState(bool success);
+    /// <summary>
+    /// Sets the row to the stop state
+    /// </summary>
+    public void SetStopState();
 }

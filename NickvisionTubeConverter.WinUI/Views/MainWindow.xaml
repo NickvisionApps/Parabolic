@@ -186,7 +186,7 @@
                             </Border>
 
                             <ScrollViewer x:Name="ScrollViewer" Grid.Row="1" HorizontalAlignment="Stretch" VerticalScrollBarVisibility="Auto" SizeChanged="ScrollViewer_SizeChanged">
-                                <Grid x:Name="GridDownloads" RowSpacing="6">
+                                <Grid x:Name="GridDownloads" RowSpacing="0">
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="Auto"/>
                                         <RowDefinition Height="Auto"/>
@@ -199,16 +199,16 @@
                                         <ListView x:Name="ListDownloading" Margin="6,0,6,0" SelectionMode="None"/>
                                     </StackPanel>
 
-                                    <StackPanel x:Name="SectionCompleted" Grid.Row="1" Orientation="Vertical" Spacing="6" Visibility="Collapsed">
-                                        <TextBlock x:Name="LblCompleted" Margin="8,0,0,0" Style="{ThemeResource NavigationViewItemHeaderTextStyle}"/>
-
-                                        <ListView x:Name="ListCompleted" Margin="6,0,6,0" SelectionMode="None"/>
-                                    </StackPanel>
-
-                                    <StackPanel x:Name="SectionQueued" Grid.Row="2" Orientation="Vertical" Spacing="6" Visibility="Collapsed">
+                                    <StackPanel x:Name="SectionQueued" Grid.Row="1" Orientation="Vertical" Spacing="6" Visibility="Collapsed">
                                         <TextBlock x:Name="LblQueued" Margin="8,0,0,0" Style="{ThemeResource NavigationViewItemHeaderTextStyle}"/>
 
                                         <ListView x:Name="ListQueued" Margin="6,0,6,0" SelectionMode="None"/>
+                                    </StackPanel>
+
+                                    <StackPanel x:Name="SectionCompleted" Grid.Row="2" Orientation="Vertical" Spacing="6" Visibility="Collapsed">
+                                        <TextBlock x:Name="LblCompleted" Margin="8,0,0,0" Style="{ThemeResource NavigationViewItemHeaderTextStyle}"/>
+
+                                        <ListView x:Name="ListCompleted" Margin="6,0,6,0" SelectionMode="None"/>
                                     </StackPanel>
                                 </Grid>
                             </ScrollViewer>

@@ -7,13 +7,13 @@ using Microsoft.UI.Xaml.Media;
 using Microsoft.Windows.AppNotifications;
 using Microsoft.Windows.AppNotifications.Builder;
 using NickvisionTubeConverter.Shared.Controllers;
-using NickvisionTubeConverter.Shared.Controls;
 using NickvisionTubeConverter.Shared.Events;
 using NickvisionTubeConverter.Shared.Models;
 using NickvisionTubeConverter.WinUI.Controls;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using Vanara.PInvoke;
@@ -68,10 +68,13 @@ public sealed partial class MainWindow : Window
         //Register Events
         AppWindow.Closing += Window_Closing;
         _controller.NotificationSent += NotificationSent;
-        _controller.UICreateDownloadRow = CreateDownloadRow;
-        _controller.UIMoveDownloadRow = MoveDownloadRow;
-        _controller.UIDeleteDownloadRowFromQueue = DeleteDownloadRowFromQueue;
         _controller.RunInBackgroundChanged += ToggleTaskbarIcon;
+        _controller.DownloadManager.DownloadAdded += DownloadManager_DownloadAdded;
+        _controller.DownloadManager.DownloadProgressUpdated += DownloadManager_DownloadProgressUpdated;
+        _controller.DownloadManager.DownloadCompleted += DownloadManager_DownloadCompleted;
+        _controller.DownloadManager.DownloadStopped += DownloadManager_DownloadStopped;
+        _controller.DownloadManager.DownloadRetried += DownloadManager_DownloadRetried;
+        _controller.DownloadManager.DownloadStartedFromQueue += DownloadManager_DownloadStartedFromQueue;
         _timer.Tick += Timer_Tick;
         //Set TitleBar
         TitleBarTitle.Text = _controller.AppInfo.ShortName;
@@ -186,7 +189,7 @@ public sealed partial class MainWindow : Window
         }
         else
         {
-            if (_controller.AreDownloadsRunning && !_closeAllowed)
+            if (_controller.DownloadManager.AreDownloadsRunning && !_closeAllowed)
             {
                 e.Cancel = true;
                 var closeDialog = new ContentDialog()
@@ -210,7 +213,7 @@ public sealed partial class MainWindow : Window
             else
             {
                 _timer.Stop();
-                _controller.StopAllDownloads();
+                _controller.DownloadManager.StopAllDownloads(false);
                 _controller.Dispose();
                 _taskbarIcon?.Dispose();
             }
@@ -308,7 +311,7 @@ public sealed partial class MainWindow : Window
     {
         DispatcherQueue.TryEnqueue(() =>
         {
-            _controller.StopAllDownloads();
+            _controller.DownloadManager.StopAllDownloads(false);
             _timer.Stop();
             _taskbarIcon!.Remove();
             AppWindow.Hide();
@@ -424,59 +427,6 @@ public sealed partial class MainWindow : Window
     }
 
     /// <summary>
-    /// Creates a download row
-    /// </summary>
-    /// <param name="download">The download model</param>
-    /// <returns>The new download row</returns>
-    private IDownloadRowControl CreateDownloadRow(Download download)
-    {
-        var downloadRow = new DownloadRow(_controller.Localizer, download);
-        return downloadRow;
-    }
-
-    /// <summary>
-    /// Moves the download row to a new section
-    /// </summary>
-    /// <param name="row">IDownloadRowControl</param>
-    /// <param name="stage">DownloadStage</param>
-    private void MoveDownloadRow(IDownloadRowControl row, DownloadStage stage)
-    {
-        ListDownloading.Items.Remove(row);
-        ListCompleted.Items.Remove(row);
-        ListQueued.Items.Remove(row);
-        if (stage == DownloadStage.InQueue)
-        {
-            ListQueued.Items.Add(row);
-        }
-        else if (stage == DownloadStage.Downloading)
-        {
-            ListDownloading.Items.Add(row);
-        }
-        else if (stage == DownloadStage.Completed)
-        {
-            ListCompleted.Items.Add(row);
-            if (!_isActived)
-            {
-                SendShellNotification(new ShellNotificationSentEventArgs(_controller.Localizer[row.FinishedWithError ? "DownloadFinishedWithError" : "DownloadFinished"], string.Format(_controller.Localizer[row.FinishedWithError ? "DownloadFinishedWithError" : "DownloadFinished", "Description"], $"\"{row.Filename}\""), row.FinishedWithError ? NotificationSeverity.Error : NotificationSeverity.Success));
-            }
-        }
-        SectionDownloading.Visibility = ListDownloading.Items.Count > 0 ? Visibility.Visible : Visibility.Collapsed;
-        SectionCompleted.Visibility = ListCompleted.Items.Count > 0 ? Visibility.Visible : Visibility.Collapsed;
-        SectionQueued.Visibility = ListQueued.Items.Count > 0 ? Visibility.Visible : Visibility.Collapsed;
-        LblStatus.Text = string.Format(_controller.Localizer["RemainingDownloads"], _controller.RemainingDownloads);
-    }
-
-    /// <summary>
-    /// Deletes a download row from the queue section
-    /// </summary>
-    /// <param name="row">IDownloadRowControl</param>
-    private void DeleteDownloadRowFromQueue(IDownloadRowControl row)
-    {
-        ListQueued.Items.Remove(row);
-        SectionQueued.Visibility = ListQueued.Items.Count > 0 ? Visibility.Visible : Visibility.Collapsed;
-    }
-
-    /// <summary>
     /// Occurs when the add download button is clicked
     /// </summary>
     /// <param name="sender">object</param>
@@ -496,11 +446,11 @@ public sealed partial class MainWindow : Window
             MenuClearQueuedDownloads.IsEnabled = true;
             ViewStack.ChangePage("Downloads");
             IconStatus.Glyph = "\uE118";
-            LblStatus.Text = string.Format(_controller.Localizer["RemainingDownloads"], _controller.RemainingDownloads);
             foreach (var download in addController.Downloads)
             {
-                _controller.AddDownload(download);
+                _controller.DownloadManager.AddDownload(download, _controller.UseAria, _controller.EmbedMetadata);
             }
+            LblStatus.Text = string.Format(_controller.Localizer["RemainingDownloads"], _controller.DownloadManager.RemainingDownloadsCount);
         }
     }
 
@@ -531,21 +481,25 @@ public sealed partial class MainWindow : Window
     /// </summary>
     /// <param name="sender">object</param>
     /// <param name="e">RoutedEventArgs</param>
-    private void StopAllDownloads(object sender, RoutedEventArgs e) => _controller.StopAllDownloads();
+    private void StopAllDownloads(object sender, RoutedEventArgs e) => _controller.DownloadManager.StopAllDownloads(true);
 
     /// <summary>
     /// Occurs when the retry failed downloads menu item is clicked
     /// </summary>
     /// <param name="sender">object</param>
     /// <param name="e">RoutedEventArgs</param>
-    private void RetryFailedDownloads(object sender, RoutedEventArgs e) => _controller.RetryFailedDownloads();
+    private void RetryFailedDownloads(object sender, RoutedEventArgs e) => _controller.DownloadManager.RetryFailedDownloads(_controller.UseAria, _controller.EmbedMetadata);
 
     /// <summary>
     /// Occurs when the clear queued downloads menu item is clicked
     /// </summary>
     /// <param name="sender">object</param>
     /// <param name="e">RoutedEventArgs</param>
-    private void ClearQueuedDownloads(object sender, RoutedEventArgs e) => _controller.ClearQueuedDownloads();
+    private void ClearQueuedDownloads(object sender, RoutedEventArgs e)
+    {
+        _controller.DownloadManager.ClearQueuedDownloads();
+        ListQueued.Items.Clear();
+    }
 
     /// <summary>
     /// Occurs when the about menu item is clicked
@@ -571,11 +525,145 @@ public sealed partial class MainWindow : Window
     {
         if (_taskbarIcon != null)
         {
-            _taskbarIcon.UpdateToolTip(_controller.BackgroundActivityReport);
+            _taskbarIcon.UpdateToolTip(_controller.DownloadManager.BackgroundActivityReport);
         }
-        if (_controller.AreDownloadsRunning)
+        if (_controller.DownloadManager.AreDownloadsRunning)
         {
-            LblSpeed.Text = string.Format(_controller.Localizer["TotalSpeed"], _controller.TotalSpeedString);
+            LblSpeed.Text = string.Format(_controller.Localizer["TotalSpeed"], _controller.DownloadManager.TotalSpeedString);
         }
+    }
+
+    /// <summary>
+    /// Occurs when a download is added 
+    /// </summary>
+    /// <param name="sender">object?</param>
+    /// <param name="e">(Guid Id, string Filename, string SaveFolder, bool IsDownloading)</param>
+    private void DownloadManager_DownloadAdded(object? sender, (Guid Id, string Filename, string SaveFolder, bool IsDownloading) e)
+    {
+        DispatcherQueue.TryEnqueue(() =>
+        {
+            var downloadRow = new DownloadRow(e.Id, e.Filename, e.SaveFolder, _controller.Localizer);
+            downloadRow.StopRequested += (sender, e) => _controller.DownloadManager.RequestStop(e);
+            downloadRow.RetryRequested += (sender, e) => _controller.DownloadManager.RequestRetry(e, _controller.UseAria, _controller.EmbedMetadata);
+            if (e.IsDownloading)
+            {
+                downloadRow.SetPreparingState();
+                ListDownloading.Items.Add(downloadRow);
+                SectionDownloading.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                downloadRow.SetWaitingState();
+                ListQueued.Items.Add(downloadRow);
+                SectionQueued.Visibility = Visibility.Visible;
+            }
+        });
+    }
+
+    /// <summary>
+    /// Occurs when a download's progress is changed
+    /// </summary>
+    /// <param name="sender">object?</param>
+    /// <param name="e">(Guid Id, DownloadProgressState State)</param>
+    private void DownloadManager_DownloadProgressUpdated(object? sender, (Guid Id, DownloadProgressState State) e)
+    {
+        DispatcherQueue.TryEnqueue(() =>
+        {
+            var downloading = ListDownloading.Items.Where(x => ((DownloadRow)x).Id == e.Id).ToList();
+            if (downloading.Count > 0)
+            {
+                ((DownloadRow)downloading[0]).SetProgressState(e.State);
+            }
+        });
+    }
+
+    /// <summary>
+    /// Occurs when a download is completed
+    /// </summary>
+    /// <param name="sender">object?</param>
+    /// <param name="e">(Guid Id, bool Successful)</param>
+    private void DownloadManager_DownloadCompleted(object? sender, (Guid Id, bool Successful) e)
+    {
+        DispatcherQueue.TryEnqueue(() =>
+        {
+            var downloadRow = (DownloadRow)ListDownloading.Items.Where(x => ((DownloadRow)x).Id == e.Id).First();
+            downloadRow.SetCompletedState(e.Successful);
+            ListDownloading.Items.Remove(downloadRow);
+            ListCompleted.Items.Add(downloadRow);
+            if (!_isActived)
+            {
+                SendShellNotification(new ShellNotificationSentEventArgs(_controller.Localizer[!e.Successful ? "DownloadFinishedWithError" : "DownloadFinished"], string.Format(_controller.Localizer[!e.Successful ? "DownloadFinishedWithError" : "DownloadFinished", "Description"], $"\"{downloadRow.Filename}\""), !e.Successful ? NotificationSeverity.Error : NotificationSeverity.Success));
+            }
+            SectionDownloading.Visibility = _controller.DownloadManager.AreDownloadsRunning ? Visibility.Visible : Visibility.Collapsed;
+            SectionCompleted.Visibility = Visibility.Visible;
+            LblStatus.Text = string.Format(_controller.Localizer["RemainingDownloads"], _controller.DownloadManager.RemainingDownloadsCount);
+            LblSpeed.Text = string.Format(_controller.Localizer["TotalSpeed"], _controller.DownloadManager.TotalSpeedString);
+        });
+    }
+
+    /// <summary>
+    /// Occurs when a download is stopped
+    /// </summary>
+    /// <param name="sender">object?</param>
+    /// <param name="e">Guid</param>
+    private void DownloadManager_DownloadStopped(object? sender, Guid e)
+    {
+        DispatcherQueue.TryEnqueue(() =>
+        {
+            var downloadRowDownloading = ListDownloading.Items.Where(x => ((DownloadRow)x).Id == e).ToList();
+            var downloadRowQueued = ListQueued.Items.Where(x => ((DownloadRow)x).Id == e).ToList();
+            if (downloadRowDownloading.Count > 0)
+            {
+                var downloadRow = (DownloadRow)downloadRowDownloading[0];
+                downloadRow.SetStopState();
+                ListDownloading.Items.Remove(downloadRow);
+                ListCompleted.Items.Add(downloadRow);
+                SectionDownloading.Visibility = _controller.DownloadManager.AreDownloadsRunning ? Visibility.Visible : Visibility.Collapsed;
+                SectionCompleted.Visibility = Visibility.Visible;
+            }
+            else if (downloadRowQueued.Count > 0)
+            {
+                var downloadRow = (DownloadRow)downloadRowQueued[0];
+                downloadRow.SetStopState();
+                ListQueued.Items.Remove(downloadRow);
+                ListCompleted.Items.Add(downloadRow);
+                SectionQueued.Visibility = _controller.DownloadManager.AreDownloadsQueued ? Visibility.Visible : Visibility.Collapsed;
+                SectionCompleted.Visibility = Visibility.Visible;
+            }
+        });
+    }
+
+    /// <summary>
+    /// Occurs when a download is retried
+    /// </summary>
+    /// <param name="sender">object?</param>
+    /// <param name="e">Guid</param>
+    private void DownloadManager_DownloadRetried(object? sender, Guid e)
+    {
+        DispatcherQueue.TryEnqueue(() =>
+        {
+            var downloadRow = (DownloadRow)ListCompleted.Items.Where(x => ((DownloadRow)x).Id == e).First();
+            downloadRow.SetWaitingState();
+            ListCompleted.Items.Remove(downloadRow);
+            SectionCompleted.Visibility = _controller.DownloadManager.AreDownloadsCompleted ? Visibility.Visible : Visibility.Collapsed;
+        });
+    }
+
+    /// <summary>
+    /// Occurs when a download is started from queue
+    /// </summary>
+    /// <param name="sender">object?</param>
+    /// <param name="e">Guid</param>
+    private void DownloadManager_DownloadStartedFromQueue(object? sender, Guid e)
+    {
+        DispatcherQueue.TryEnqueue(() =>
+        {
+            var downloadRow = (DownloadRow)ListQueued.Items.Where(x => ((DownloadRow)x).Id == e).First();
+            downloadRow.SetPreparingState();
+            ListQueued.Items.Remove(downloadRow);
+            ListDownloading.Items.Add(downloadRow);
+            SectionQueued.Visibility = _controller.DownloadManager.AreDownloadsQueued ? Visibility.Visible : Visibility.Collapsed;
+            SectionDownloading.Visibility = Visibility.Visible;
+        });
     }
 }

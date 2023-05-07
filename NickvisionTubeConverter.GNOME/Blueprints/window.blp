@@ -137,20 +137,14 @@ Adw.ApplicationWindow _root {
                     spacing: 10;
                     visible: false;
 
-                    Gtk.Box {
-                      orientation: horizontal;
-                      hexpand: true;
-
-                      Gtk.Label {
-                        label: _("Completed");
-                        halign: start;
-                        hexpand: true;
-                        margin-start: 5;
-                        styles ["heading"]
-                      }
+                    Gtk.Label {
+                      label: _("Queued");
+                      halign: start;
+                      margin-start: 5;
+                      styles ["heading"]
                     }
                   
-                    Gtk.Box _completedBox {
+                    Gtk.Box _queuedBox {
                       orientation: vertical;
                       hexpand: true;
                       valign: start;
@@ -164,13 +158,13 @@ Adw.ApplicationWindow _root {
                     visible: false;
 
                     Gtk.Label {
-                      label: _("Queued");
+                      label: _("Completed");
                       halign: start;
                       margin-start: 5;
                       styles ["heading"]
                     }
                   
-                    Gtk.Box _queuedBox {
+                    Gtk.Box _completedBox {
                       orientation: vertical;
                       hexpand: true;
                       valign: start;

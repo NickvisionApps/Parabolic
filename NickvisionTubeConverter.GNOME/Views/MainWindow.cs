@@ -1,7 +1,6 @@
 using NickvisionTubeConverter.GNOME.Controls;
 using NickvisionTubeConverter.GNOME.Helpers;
 using NickvisionTubeConverter.Shared.Controllers;
-using NickvisionTubeConverter.Shared.Controls;
 using NickvisionTubeConverter.Shared.Events;
 using NickvisionTubeConverter.Shared.Models;
 using System;
@@ -58,14 +57,16 @@ public partial class MainWindow : Adw.ApplicationWindow
     private readonly MainWindowController _controller;
     private readonly Adw.Application _application;
     private readonly nint _bus;
-    private readonly GSourceFunc _createRowCallback;
-    private readonly GSourceFunc _moveRowCallback;
-    private readonly GSourceFunc _deleteRowCallback;
     private readonly GSourceFunc _backgroundSourceFunc;
     private readonly GSourceFunc _libUnitySourceFunc;
+    private readonly GSourceFunc _downloadAddedFunc;
+    private readonly GSourceFunc _downloadProgressUpdatedFunc;
+    private readonly GSourceFunc _downloadCompletedFunc;
+    private readonly GSourceFunc _downloadStoppedFunc;
+    private readonly GSourceFunc _downloadRetriedFunc;
+    private readonly GSourceFunc _downloadStartedFromQueueFunc;
     private readonly nint _unityLauncher;
-
-    private bool _isBackgroundStatusReported { get; set; }
+    private bool _isBackgroundStatusReported;
 
     [Gtk.Connect] private readonly Adw.Bin _spinnerContainer;
     [Gtk.Connect] private readonly Gtk.Spinner _spinner;
@@ -86,60 +87,6 @@ public partial class MainWindow : Adw.ApplicationWindow
         _application = application;
         _isBackgroundStatusReported = false;
         _bus = g_bus_get_sync(2, IntPtr.Zero, IntPtr.Zero); // 2 = session bus
-        _createRowCallback = (x) =>
-        {
-            _addDownloadButton.SetVisible(true);
-            _viewStack.SetVisibleChildName("pageDownloads");
-            return false;
-        };
-        _moveRowCallback = (dataHandle) =>
-        {
-            var data = (RowCallbackData)(GCHandle.FromIntPtr(dataHandle).Target!);
-            var row = data.Row;
-            var box = data.Box;
-            var parent = row.GetParent();
-            if (parent == box)
-            {
-                return false;
-            }
-            else if (parent != null)
-            {
-                DeleteDownloadRow(row, (Gtk.Box)parent);
-            }
-            if (box.GetFirstChild() != null)
-            {
-                var separator = Gtk.Separator.New(Gtk.Orientation.Horizontal);
-                box.Append(separator);
-            }
-            box.Append(row);
-            box.GetParent().SetVisible(true);
-            if (box == _completedBox && (!GetFocus()!.GetHasFocus() || !GetVisible()))
-            {
-                SendShellNotification(new ShellNotificationSentEventArgs(_controller.Localizer[row.FinishedWithError ? "DownloadFinishedWithError" : "DownloadFinished"], string.Format(_controller.Localizer[row.FinishedWithError ? "DownloadFinishedWithError" : "DownloadFinished", "Description"], $"\"{row.Filename}\""), row.FinishedWithError ? NotificationSeverity.Error : NotificationSeverity.Success));
-                if (!GetVisible() && !_controller.AreDownloadsRunning && _controller.ErrorsCount == 0)
-                {
-                    _application.Quit();
-                }
-            }
-            data.Dispose();
-            return false;
-        };
-        _deleteRowCallback = (dataHandle) =>
-        {
-            var data = (RowCallbackData)(GCHandle.FromIntPtr(dataHandle).Target!);
-            var row = data.Row;
-            var box = data.Box;
-            var gtkRow = (DownloadRow)row;
-            var separator = row.GetPrevSibling() ?? row.GetNextSibling();
-            if (separator is Gtk.Separator)
-            {
-                box.Remove(separator);
-            }
-            box.Remove(gtkRow);
-            box.GetParent().SetVisible(box.GetFirstChild() != null);
-            data.Dispose();
-            return false;
-        };
         _backgroundSourceFunc = (x) =>
         {
             try
@@ -147,7 +94,7 @@ public partial class MainWindow : Adw.ApplicationWindow
                 if (_isBackgroundStatusReported)
                 {
                     var builder = g_variant_builder_new(g_variant_type_new("a{sv}"));
-                    g_variant_builder_add(builder, "{sv}", "message", g_variant_new_string(_controller.BackgroundActivityReport));
+                    g_variant_builder_add(builder, "{sv}", "message", g_variant_new_string(_controller.DownloadManager.BackgroundActivityReport));
                     g_dbus_connection_call(_bus,
                         "org.freedesktop.portal.Desktop", // Bus name
                         "/org/freedesktop/portal/desktop", // Object path
@@ -169,12 +116,11 @@ public partial class MainWindow : Adw.ApplicationWindow
                 return false;
             }
         };
-        _controller.RunInBackgroundChanged += RunInBackgroundChanged;
         _libUnitySourceFunc = (x) =>
         {
             try
             {
-                var progress = _controller.TotalProgress;
+                var progress = _controller.DownloadManager.TotalProgress;
                 if (progress > 0 && progress < 1)
                 {
                     unity_launcher_entry_set_progress_visible(_unityLauncher, true);
@@ -191,6 +137,264 @@ public partial class MainWindow : Adw.ApplicationWindow
                 return false;
             }
         };
+        _downloadAddedFunc = (x) =>
+        {
+            var handle = GCHandle.FromIntPtr(x);
+            var target = ((Guid Id, string Filename, string SaveFolder, bool IsDownloading)?)handle.Target;
+            if (target != null)
+            {
+                var e = target.Value;
+                var downloadRow = new DownloadRow(e.Id, e.Filename, e.SaveFolder, _controller.Localizer, (e) => NotificationSent(null, e));
+                downloadRow.StopRequested += (sender, e) => _controller.DownloadManager.RequestStop(e);
+                downloadRow.RetryRequested += (sender, e) => _controller.DownloadManager.RequestRetry(e, _controller.UseAria, _controller.EmbedMetadata);
+                var box = e.IsDownloading ? _downloadingBox : _queuedBox;
+                if(e.IsDownloading)
+                {
+                    downloadRow.SetPreparingState();
+                }
+                else
+                {
+                    downloadRow.SetWaitingState();
+                }
+                if (box.GetFirstChild() != null)
+                {
+                    var separator = Gtk.Separator.New(Gtk.Orientation.Horizontal);
+                    box.Append(separator);
+                }
+                box.Append(downloadRow);
+                box.GetParent().SetVisible(true);
+            }
+            handle.Free();
+            return false;
+        };
+        _downloadProgressUpdatedFunc = (x) =>
+        {
+            var handle = GCHandle.FromIntPtr(x);
+            var target = ((Guid Id, DownloadProgressState State)?)handle.Target;
+            if (target != null)
+            {
+                var e = target.Value;
+                var i = _downloadingBox.GetFirstChild();
+                DownloadRow? row = null;
+                while (row == null && i != null)
+                {
+                    if (i is DownloadRow j)
+                    {
+                        if (j.Id == e.Id)
+                        {
+                            row = j;
+                            break;
+                        }
+                    }
+                    i = i.GetNextSibling();
+                }
+                if (row != null)
+                {
+                    row.SetProgressState(e.State);
+                }
+            }
+            handle.Free();
+            return false;
+        };
+        _downloadCompletedFunc = (x) =>
+        {
+            var handle = GCHandle.FromIntPtr(x);
+            var target = ((Guid Id, bool Successful)?)handle.Target;
+            if (target != null)
+            {
+                var e = target.Value;
+                var i = _downloadingBox.GetFirstChild();
+                DownloadRow? row = null;
+                while (row == null && i != null)
+                {
+                    if (i is DownloadRow j)
+                    {
+                        if (j.Id == e.Id)
+                        {
+                            row = j;
+                            break;
+                        }
+                    }
+                    i = i.GetNextSibling();
+                }
+                if (row != null)
+                {
+                    row.SetCompletedState(e.Successful);
+                    var oldSeparator = row.GetPrevSibling() ?? row.GetNextSibling();
+                    if (oldSeparator is Gtk.Separator)
+                    {
+                        _downloadingBox.Remove(oldSeparator);
+                    }
+                    _downloadingBox.Remove(row);
+                    if (_completedBox.GetFirstChild() != null)
+                    {
+                        var newSeparator = Gtk.Separator.New(Gtk.Orientation.Horizontal);
+                        _completedBox.Append(newSeparator);
+                    }
+                    _completedBox.Append(row);
+                    _downloadingBox.GetParent().SetVisible(_controller.DownloadManager.RemainingDownloadsCount > 0 ? true : false);
+                    _completedBox.GetParent().SetVisible(true);
+                }
+            }
+            handle.Free();
+            return false;
+        };
+        _downloadStoppedFunc = (x) =>
+        {
+            var handle = GCHandle.FromIntPtr(x);
+            var target = (Guid?)handle.Target;
+            if (target != null)
+            {
+                var e = target.Value;
+                var i = _downloadingBox.GetFirstChild();
+                DownloadRow? row = null;
+                while (row == null && i != null)
+                {
+                    if (i is DownloadRow j)
+                    {
+                        if (j.Id == e)
+                        {
+                            row = j;
+                            break;
+                        }
+                    }
+                    i = i.GetNextSibling();
+                }
+                if (row != null)
+                {
+                    row.SetStopState();
+                    var oldSeparator = row.GetPrevSibling() ?? row.GetNextSibling();
+                    if (oldSeparator is Gtk.Separator)
+                    {
+                        _downloadingBox.Remove(oldSeparator);
+                    }
+                    _downloadingBox.Remove(row);
+                    if (_completedBox.GetFirstChild() != null)
+                    {
+                        var newSeparator = Gtk.Separator.New(Gtk.Orientation.Horizontal);
+                        _completedBox.Append(newSeparator);
+                    }
+                    _completedBox.Append(row);
+                    _downloadingBox.GetParent().SetVisible(_controller.DownloadManager.AreDownloadsRunning);
+                    _completedBox.GetParent().SetVisible(true);
+                }
+                else
+                {
+                    i = _queuedBox.GetFirstChild();
+                    while (row == null && i != null)
+                    {
+                        if (i is DownloadRow j)
+                        {
+                            if (j.Id == e)
+                            {
+                                row = j;
+                                break;
+                            }
+                        }
+                        i = i.GetNextSibling();
+                    }
+                    if (row != null)
+                    {
+                        row.SetStopState();
+                        var oldSeparator = row.GetPrevSibling() ?? row.GetNextSibling();
+                        if (oldSeparator is Gtk.Separator)
+                        {
+                            _queuedBox.Remove(oldSeparator);
+                        }
+                        _queuedBox.Remove(row);
+                        if (_completedBox.GetFirstChild() != null)
+                        {
+                            var newSeparator = Gtk.Separator.New(Gtk.Orientation.Horizontal);
+                            _completedBox.Append(newSeparator);
+                        }
+                        _completedBox.Append(row);
+                        _queuedBox.GetParent().SetVisible(_controller.DownloadManager.AreDownloadsQueued);
+                        _completedBox.GetParent().SetVisible(true);
+                    }
+                }
+            }
+            handle.Free();
+            return false;
+        };
+        _downloadRetriedFunc = (x) =>
+        {
+            var handle = GCHandle.FromIntPtr(x);
+            var target = (Guid?)handle.Target;
+            if (target != null)
+            {
+                var e = target.Value;
+                var i = _completedBox.GetFirstChild();
+                DownloadRow? row = null;
+                while (row == null && i != null)
+                {
+                    if (i is DownloadRow j)
+                    {
+                        if (j.Id == e)
+                        {
+                            row = j;
+                            break;
+                        }
+                    }
+                    i = i.GetNextSibling();
+                }
+                if (row != null)
+                {
+                    row.SetWaitingState();
+                    var oldSeparator = row.GetPrevSibling() ?? row.GetNextSibling();
+                    if (oldSeparator is Gtk.Separator)
+                    {
+                        _completedBox.Remove(oldSeparator);
+                    }
+                    _completedBox.Remove(row);
+                    _completedBox.GetParent().SetVisible(_controller.DownloadManager.AreDownloadsCompleted);
+                }
+            }
+            handle.Free();
+            return false;
+        };
+        _downloadStartedFromQueueFunc = (x) =>
+        {
+            var handle = GCHandle.FromIntPtr(x);
+            var target = (Guid?)handle.Target;
+            if (target != null)
+            {
+                var e = target.Value;
+                var i = _queuedBox.GetFirstChild();
+                DownloadRow? row = null;
+                while (row == null && i != null)
+                {
+                    if (i is DownloadRow j)
+                    {
+                        if (j.Id == e)
+                        {
+                            row = j;
+                            break;
+                        }
+                    }
+                    i = i.GetNextSibling();
+                }
+                if (row != null)
+                {
+                    row.SetPreparingState();
+                    var oldSeparator = row.GetPrevSibling() ?? row.GetNextSibling();
+                    if (oldSeparator is Gtk.Separator)
+                    {
+                        _queuedBox.Remove(oldSeparator);
+                    }
+                    _queuedBox.Remove(row);
+                    if (_downloadingBox.GetFirstChild() != null)
+                    {
+                        var newSeparator = Gtk.Separator.New(Gtk.Orientation.Horizontal);
+                        _downloadingBox.Append(newSeparator);
+                    }
+                    _downloadingBox.Append(row);
+                    _queuedBox.GetParent().SetVisible(_controller.DownloadManager.AreDownloadsQueued);
+                    _downloadingBox.GetParent().SetVisible(true);
+                }
+            }
+            handle.Free();
+            return false;
+        };
         try
         {
             _unityLauncher = unity_launcher_entry_get_for_desktop_id(string.IsNullOrEmpty(Environment.GetEnvironmentVariable("SNAP")) ? $"{_controller.AppInfo.ID}.desktop" : "tube-converter.desktop");
@@ -200,20 +404,24 @@ public partial class MainWindow : Adw.ApplicationWindow
         {
             _unityLauncher = IntPtr.Zero;
         }
+        //Build UI
         SetTitle(_controller.AppInfo.ShortName);
         SetIconName(_controller.AppInfo.ID);
         if (_controller.IsDevVersion)
         {
             AddCssClass("devel");
         }
-        OnCloseRequest += OnCloseRequested;
-        //Build UI
         builder.Connect(this);
-        //Register Events 
+        //Register Events
+        OnCloseRequest += OnCloseRequested;
         _controller.NotificationSent += NotificationSent;
-        _controller.UICreateDownloadRow = CreateDownloadRow;
-        _controller.UIMoveDownloadRow = MoveDownloadRow;
-        _controller.UIDeleteDownloadRowFromQueue = (row) => DeleteDownloadRow(row, _queuedBox);
+        _controller.RunInBackgroundChanged += RunInBackgroundChanged;
+        _controller.DownloadManager.DownloadAdded += (sender, e) => g_main_context_invoke(0, _downloadAddedFunc, (IntPtr)GCHandle.Alloc(e));
+        _controller.DownloadManager.DownloadProgressUpdated += (sender, e) => g_main_context_invoke(0, _downloadProgressUpdatedFunc, (IntPtr)GCHandle.Alloc(e));
+        _controller.DownloadManager.DownloadCompleted += (sender, e) => g_main_context_invoke(0, _downloadCompletedFunc, (IntPtr)GCHandle.Alloc(e));
+        _controller.DownloadManager.DownloadStopped += (sender, e) => g_main_context_invoke(0, _downloadStoppedFunc, (IntPtr)GCHandle.Alloc(e));
+        _controller.DownloadManager.DownloadRetried += (sender, e) => g_main_context_invoke(0, _downloadRetriedFunc, (IntPtr)GCHandle.Alloc(e));
+        _controller.DownloadManager.DownloadStartedFromQueue += (sender, e) => g_main_context_invoke(0, _downloadStartedFromQueueFunc, (IntPtr)GCHandle.Alloc(e));
         //Add Download Action
         var actDownload = Gio.SimpleAction.New("addDownload", null);
         actDownload.OnActivate += AddDownload;
@@ -221,17 +429,25 @@ public partial class MainWindow : Adw.ApplicationWindow
         application.SetAccelsForAction("win.addDownload", new string[] { "<Ctrl>n" });
         //Stop All Downloads Action
         var actStopAllDownloads = Gio.SimpleAction.New("stopAllDownloads", null);
-        actStopAllDownloads.OnActivate += (sender, e) => _controller.StopAllDownloads();
+        actStopAllDownloads.OnActivate += (sender, e) => _controller.DownloadManager.StopAllDownloads(true);
         AddAction(actStopAllDownloads);
         application.SetAccelsForAction("win.stopAllDownloads", new string[] { "<Ctrl><Shift>c" });
         //Retry Failed Downloads Action
         var actRetryFailedDownloads = Gio.SimpleAction.New("retryFailedDownloads", null);
-        actRetryFailedDownloads.OnActivate += (sender, e) => _controller.RetryFailedDownloads();
+        actRetryFailedDownloads.OnActivate += (sender, e) => _controller.DownloadManager.RetryFailedDownloads(_controller.UseAria, _controller.EmbedMetadata);
         AddAction(actRetryFailedDownloads);
         application.SetAccelsForAction("win.retryFailedDownloads", new string[] { "<Ctrl><Shift>r" });
         //Clear Queued Downloads Action
         var actClearQueuedDownloads = Gio.SimpleAction.New("clearQueuedDownloads", null);
-        actClearQueuedDownloads.OnActivate += (sender, e) => _controller.ClearQueuedDownloads();
+        actClearQueuedDownloads.OnActivate += (sender, e) =>
+        {
+            _controller.DownloadManager.ClearQueuedDownloads();
+            while (_queuedBox.GetFirstChild() != null)
+            {
+                _queuedBox.Remove(_queuedBox.GetFirstChild());
+            }
+            _queuedBox.GetParent().SetVisible(false);
+        };
         AddAction(actClearQueuedDownloads);
         application.SetAccelsForAction("win.clearQueuedDownloads", new string[] { "<Ctrl>Delete" });
         //Preferences Action
@@ -328,7 +544,7 @@ public partial class MainWindow : Adw.ApplicationWindow
     /// <returns>True to stop close, else false</returns>
     private bool OnCloseRequested(Gtk.Window sender, EventArgs e)
     {
-        if (_controller.AreDownloadsRunning)
+        if (_controller.DownloadManager.AreDownloadsRunning)
         {
             if (_controller.RunInBackground && (File.Exists("/.flatpak-info") || !string.IsNullOrEmpty(Environment.GetEnvironmentVariable("SNAP"))))
             {
@@ -341,50 +557,10 @@ public partial class MainWindow : Adw.ApplicationWindow
                 return true;
             }
         }
-        _controller.StopAllDownloads();
+        _controller.DownloadManager.StopAllDownloads(false);
         _controller.Dispose();
         Environment.Exit(0);
         return false;
-    }
-
-    /// <summary>
-    /// Creates a download row and adds it to the view
-    /// </summary>
-    /// <param name="download">The download model</param>
-    /// <returns>The new download row</returns>
-    private IDownloadRowControl CreateDownloadRow(Download download)
-    {
-        var downloadRow = new DownloadRow(download, _controller.Localizer, (e) => NotificationSent(null, e));
-        g_main_context_invoke(0, _createRowCallback, 0);
-        return downloadRow;
-    }
-
-    /// <summary>
-    /// Moves the download row to a new section
-    /// </summary>
-    /// <param name="row">IDownloadRowControl</param>
-    /// <param name="stage">DownloadStage</param>
-    private void MoveDownloadRow(IDownloadRowControl row, DownloadStage stage)
-    {
-        var box = stage switch
-        {
-            DownloadStage.InQueue => _queuedBox,
-            DownloadStage.Downloading => _downloadingBox,
-            DownloadStage.Completed => _completedBox
-        };
-        var callbackData = new RowCallbackData((DownloadRow)row, box);
-        g_main_context_invoke(0, _moveRowCallback, (IntPtr)callbackData.Handle);
-    }
-
-    /// <summary>
-    /// Deletes a download row from a section
-    /// </summary>
-    /// <param name="row">IDownloadRowControl</param>
-    /// <param name="box">Gtk.Box</param>
-    private void DeleteDownloadRow(IDownloadRowControl row, Gtk.Box box)
-    {
-        var callbackData = new RowCallbackData((DownloadRow)row, box);
-        g_main_context_invoke(0, _deleteRowCallback, (IntPtr)callbackData.Handle);
     }
 
     /// <summary>
@@ -402,9 +578,10 @@ public partial class MainWindow : Adw.ApplicationWindow
             _headerBar.RemoveCssClass("flat");
             _addDownloadButton.SetVisible(true);
             _downloaderMenuButton.SetVisible(true);
+            _viewStack.SetVisibleChildName("pageDownloads");
             foreach (var download in addController.Downloads)
             {
-                _controller.AddDownload(download);
+                _controller.DownloadManager.AddDownload(download, _controller.UseAria, _controller.EmbedMetadata);
             }
             addDialog.Close();
         };
