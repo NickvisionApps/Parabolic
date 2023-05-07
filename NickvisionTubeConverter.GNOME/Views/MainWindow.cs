@@ -442,11 +442,9 @@ public partial class MainWindow : Adw.ApplicationWindow
         actClearQueuedDownloads.OnActivate += (sender, e) =>
         {
             _controller.DownloadManager.ClearQueuedDownloads();
-            var i = _queuedBox.GetFirstChild();
-            while (i != null)
+            while (_queuedBox.GetFirstChild() != null)
             {
-                _queuedBox.Remove(i);
-                i = i.GetNextSibling();
+                _queuedBox.Remove(_queuedBox.GetFirstChild());
             }
         };
         AddAction(actClearQueuedDownloads);
