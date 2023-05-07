@@ -567,7 +567,17 @@ public partial class MainWindow : Adw.ApplicationWindow
         if (row != null)
         {
             row.SetCompletedState(e.Successful);
+            var oldSeparator = row.GetPrevSibling() ?? row.GetNextSibling();
+            if (oldSeparator is Gtk.Separator)
+            {
+                _downloadingBox.Remove(oldSeparator);
+            }
             _downloadingBox.Remove(row);
+            if (_completedBox.GetFirstChild() != null)
+            {
+                var newSeparator = Gtk.Separator.New(Gtk.Orientation.Horizontal);
+                _completedBox.Append(newSeparator);
+            }
             _completedBox.Append(row);
             _downloadingBox.GetParent().SetVisible(_controller.DownloadManager.RemainingDownloadsCount > 0 ? true : false);
             _completedBox.GetParent().SetVisible(true);
@@ -598,7 +608,17 @@ public partial class MainWindow : Adw.ApplicationWindow
         if (row != null)
         {
             row.SetStopState();
+            var oldSeparator = row.GetPrevSibling() ?? row.GetNextSibling();
+            if (oldSeparator is Gtk.Separator)
+            {
+                _downloadingBox.Remove(oldSeparator);
+            }
             _downloadingBox.Remove(row);
+            if (_completedBox.GetFirstChild() != null)
+            {
+                var newSeparator = Gtk.Separator.New(Gtk.Orientation.Horizontal);
+                _completedBox.Append(newSeparator);
+            }
             _completedBox.Append(row);
             _downloadingBox.GetParent().SetVisible(_controller.DownloadManager.AreDownloadsRunning);
             _completedBox.GetParent().SetVisible(true);
@@ -621,7 +641,17 @@ public partial class MainWindow : Adw.ApplicationWindow
             if (row != null)
             {
                 row.SetStopState();
+                var oldSeparator = row.GetPrevSibling() ?? row.GetNextSibling();
+                if (oldSeparator is Gtk.Separator)
+                {
+                    _queuedBox.Remove(oldSeparator);
+                }
                 _queuedBox.Remove(row);
+                if (_completedBox.GetFirstChild() != null)
+                {
+                    var newSeparator = Gtk.Separator.New(Gtk.Orientation.Horizontal);
+                    _completedBox.Append(newSeparator);
+                }
                 _completedBox.Append(row);
                 _queuedBox.GetParent().SetVisible(_controller.DownloadManager.AreDownloadsQueued);
                 _completedBox.GetParent().SetVisible(true);
@@ -653,6 +683,11 @@ public partial class MainWindow : Adw.ApplicationWindow
         if (row != null)
         {
             row.SetWaitingState();
+            var oldSeparator = row.GetPrevSibling() ?? row.GetNextSibling();
+            if (oldSeparator is Gtk.Separator)
+            {
+                _completedBox.Remove(oldSeparator);
+            }
             _completedBox.Remove(row);
             _completedBox.GetParent().SetVisible(_controller.DownloadManager.AreDownloadsCompleted);
         }
@@ -682,7 +717,17 @@ public partial class MainWindow : Adw.ApplicationWindow
         if (row != null)
         {
             row.SetPreparingState();
+            var oldSeparator = row.GetPrevSibling() ?? row.GetNextSibling();
+            if (oldSeparator is Gtk.Separator)
+            {
+                _queuedBox.Remove(oldSeparator);
+            }
             _queuedBox.Remove(row);
+            if (_downloadingBox.GetFirstChild() != null)
+            {
+                var newSeparator = Gtk.Separator.New(Gtk.Orientation.Horizontal);
+                _downloadingBox.Append(newSeparator);
+            }
             _downloadingBox.Append(row);
             _queuedBox.GetParent().SetVisible(_controller.DownloadManager.AreDownloadsQueued);
             _downloadingBox.GetParent().SetVisible(true);
