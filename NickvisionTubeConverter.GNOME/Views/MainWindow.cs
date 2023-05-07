@@ -1,4 +1,3 @@
-using GLib;
 using NickvisionTubeConverter.GNOME.Controls;
 using NickvisionTubeConverter.GNOME.Helpers;
 using NickvisionTubeConverter.Shared.Controllers;
@@ -142,7 +141,7 @@ public partial class MainWindow : Adw.ApplicationWindow
         {
             var handle = GCHandle.FromIntPtr(x);
             var target = ((Guid Id, string Filename, string SaveFolder, bool IsDownloading)?)handle.Target;
-            if(target != null)
+            if (target != null)
             {
                 var e = target.Value;
                 var downloadRow = new DownloadRow(e.Id, e.Filename, e.SaveFolder, _controller.Localizer, (e) => NotificationSent(null, e));
@@ -194,7 +193,7 @@ public partial class MainWindow : Adw.ApplicationWindow
         {
             var handle = GCHandle.FromIntPtr(x);
             var target = ((Guid Id, bool Successful)?)handle.Target;
-            if(target != null)
+            if (target != null)
             {
                 var e = target.Value;
                 var i = _downloadingBox.GetFirstChild();

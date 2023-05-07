@@ -19,13 +19,10 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
 
     [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
     private static partial void g_main_context_invoke(nint context, GSourceFunc function, nint data);
-
     [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
     private static partial nint gtk_file_launcher_new(nint file);
-
     [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
     private static partial void gtk_file_launcher_launch(nint fileLauncher, nint parent, nint cancellable, GAsyncReadyCallback callback, nint data);
-
     [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
     private static partial void gtk_file_launcher_open_containing_folder(nint fileLauncher, nint parent, nint cancellable, GAsyncReadyCallback callback, nint data);
 
@@ -136,7 +133,7 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
         _setProgressStateCb = (data) =>
         {
             var state = (DownloadProgressState?)GCHandle.FromIntPtr(data).Target;
-            if(state != null)
+            if (state != null)
             {
                 _lblLog.SetLabel(state.Log);
                 var vadjustment = _scrollLog.GetVadjustment();
