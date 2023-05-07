@@ -197,9 +197,4 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
         _progressLabel.SetText(_localizer["Stopped"]);
         _actionViewStack.SetVisibleChildName("retry");
     }
-
-    /// <summary>
-    /// Sets the row to the retry state
-    /// </summary>
-    public void SetRetryState() => SetWaitingState();
 }

@@ -158,11 +158,6 @@ public sealed partial class DownloadRow : UserControl, IDownloadRowControl
     }
 
     /// <summary>
-    /// Sets the row to the retry state
-    /// </summary>
-    public void SetRetryState() => SetWaitingState();
-
-    /// <summary>
     /// Occurs when the view log button is clicked
     /// </summary>
     /// <param name="sender">object</param>

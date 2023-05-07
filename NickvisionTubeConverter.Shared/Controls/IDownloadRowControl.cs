@@ -48,8 +48,4 @@ public interface IDownloadRowControl
     /// Sets the row to the stop state
     /// </summary>
     public void SetStopState();
-    // <summary>
-    /// Sets the row to the retry state
-    /// </summary>
-    public void SetRetryState();
 }
