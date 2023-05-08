@@ -80,7 +80,7 @@ parts:
     stage-packages:
       - libmp3lame0
     prime:
-      - usr/include
+      - -usr/include
   tube-converter:
     after: [ ffmpeg, yt-dlp ]
     plugin: dump
@@ -120,6 +120,10 @@ slots:
     interface: dbus
     bus: session
     name: org.nickvision.tubeconverter    
+  #unity:
+  #  interface: dbus
+  #  bus: session
+  #  name: com.canonical.Unity
 
 apps:
   tube-converter:
@@ -134,5 +138,5 @@ apps:
     plugs:
       - network
       - network-status
-      - removable-media
       - mount-observe
+      - unity7
