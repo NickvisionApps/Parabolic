@@ -40,7 +40,7 @@ We will then take care of the question as soon as possible.
 ## I Want To Contribute
 
 > ### Legal Notice
-> When contributing to this project, you must agree that you have authored 100% of the content, that you have the necessary rights to the content and that the content you contribute may be provided under the project license.
+> When contributing to this project, you must agree that you have authored 100% of the content, that you have the necessary rights to the content and that the content you contribute may be provided under the project [license](LICENSE).
 
 ### Reporting Bugs
 
@@ -52,6 +52,9 @@ A good bug report shouldn't leave others needing to chase you up for more inform
 - Determine if your bug is really a bug and not an error on your side. If you are looking for support, you might want to check [this section](#i-have-a-question).
 - To see if other users have experienced (and potentially already solved) the same issue you are having, check if there is not already a bug report existing for your bug or error in both the [Discussions](https://github.com/NickvisionApps/TubeConverter/discussions) and [Issues](https://github.com/NickvisionApps/TubeConverter/issues) sections.
 - Collect information about the bug:
+  - Debug information provided by the application
+    - WinUI: open Help → About Tube Converter, click on the button with version number, debug information will be copied to clipboard.
+    - GNOME: from main menu open About Tube Converter → Troubleshooting → Debugging Information, here you can copy information to clipboard or save to a file.
   - Stack trace (Traceback)
     - Including any error messages thrown by the application
     - You may need to start the application via the terminal/console to receive an error message for a crash.
@@ -100,11 +103,11 @@ Enhancement suggestions are tracked as [GitHub issues](https://github.com/Nickvi
 
 Everyone is welcome to translate this app into their native or known languages, so that the application is accessible to everyone.
 
-#### Via Weblate
+##### Via Weblate
 
 Tube Converter is available to translate on [Weblate](https://hosted.weblate.org/engage/nickvision-tube-converter/)!
 
-#### Manually
+##### Manually
 
 To start translating the app, fork the repository and clone it locally.
 
@@ -130,7 +133,7 @@ The solution is setup into 3 projects:
 
 The whole solution utilizes the [MVC](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller) pattern for separating data and UI views.
 
-#### NickvisionTubeConverter.Shared
+##### NickvisionTubeConverter.Shared
 
 This project contains all of the code used by all platforms of the app. 
 - Models => The data driven objects of the application (i.e. Configuration, Database, etc...)
@@ -138,15 +141,17 @@ This project contains all of the code used by all platforms of the app.
 - Helpers => Useful objects such as the Localizer for receiving translated strings throughout the app
 - Resources => Strings, icons, and fonts used by the app
 
-#### NickvisionTubeConverter.GNOME
+##### NickvisionTubeConverter.GNOME
 
 This project contains all of the code used for the GNOME platform version of the app, including flathub manifest and desktop files.
 Powered by the C# bindings for GTK4/Libadwaita: [gir.core](https://github.com/gircore/gir.core)
 - Views => The views (pages, windows, dialogs) of the app that connect to the shared controllers
 - Controls => Generic controls for the app
-  - These controls should not be connected to a controller and should be able to be ported to any other application 
+  - These controls should not be connected to a controller and should be able to be ported to any other application
+- Helpers => Useful objects that are specific for GNOME platform version of the app
+- Blueprints => UI files written in [Blueprint markup language](https://jwestman.pages.gitlab.gnome.org/blueprint-compiler/)
 
-#### NickvisionTubeConverter.WinUI
+##### NickvisionTubeConverter.WinUI
 
 This project contains all of the code used for the Windows platform version of the app.
 Powered by the [WindowsAppSDK](https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/)
@@ -156,6 +161,8 @@ Powered by the [WindowsAppSDK](https://learn.microsoft.com/en-us/windows/apps/wi
 
 #### Developing on Windows
 
+##### WinUI
+
 Recommended IDE:
 - Visual Studio 2019 or Visual Studio 2022 with the required workloads (including .NET 7) and components for Windows app development. For more information, see [Install tools for the Windows App SDK](https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/set-up-your-development-environment?tabs=cs-vs-community%2Ccpp-vs-community%2Cvs-2022-17-1-a%2Cvs-2022-17-1-b)
 
@@ -163,17 +170,45 @@ Although, any IDE that supports .NET 7 and WindowsAppSDK should work.
 
 *Rider does support .NET 7, but has no WindowsAppSDK support at the time of writing this. Therefore, you will be able to develop part of the application use Rider, but will be unable to build and run the Windows platform version.*
 
+##### GNOME
+
+Follow developing on Linux instructions below to build the app in WSL. Make sure you use a distro in which you can install all required dependencies (OpenSUSE Tumbleweed is recommended).
+
 #### Developing on Linux
 
-Recommended IDE:
-- Builder 43 and up.
+##### WinUI
+
+Can't be built on Linux.
+
+##### GNOME
+
+Recommended IDEs:
+- GNOME Builder 43 and up.
+- VS Code with [flatpak extension](https://github.com/bilelmoussaoui/flatpak-vscode).
 
 You may also make your changes via any code editor and use `flatpak-builder` to run the application locally through flatpak.
 
-You may also simply install .NET 7 locally and use dotnet's CLI to run the application.
+You may also build the app manually without using flatpak. List of dependencies:
+- dotnet >=7.0
+- GTK >=4.10
+- libadwaita >=1.2
+- python3 >=3.7
+- yt-dlp (as python module, standalone binary won't work)
+- ffmpeg
+- aria2 (optional)
+- libunity (optional)
+- [just](https://github.com/casey/just) (build only)
+- blueprint-compiler, GTK and libadwaita development files (build only)
+- glib-compile-resources (build only)
 
-*Running through dotnet CLI won't give you all the desktop integration features provided when using Builder or `flatpak-builder`. 
-For example, resources will not be loaded and css files/custom icon files will not be displayed when running the app through cli.*
+Navigate to `NickvisionTubeConverter.GNOME` and use one of the commands to build the app:
+
+| Command | Result |
+|---|---|
+| `just run` | Builds the application in a temporary build directory and runs it. Tube Converter will not get installed, which might result in some missing icons and lack of desktop integration. |
+| `just publish PREFIX` | Builds the application, preparing it to be installed in a provided prefix (examples of a valid prefix: `/usr`, `/app`). When built using this command, the application will require dotnet-runtime to be installed in order to run. |
+| `just publish-self-contained PREFIX` | Same as above, but application will not need dotnet-runtime to run. |
+| `just install ROOT` | Copies files to a provided root directory (it's optional, `/` by default). This command should be used after `publish` or `publish-self-contained`. |
 
 ## Styleguides
 
