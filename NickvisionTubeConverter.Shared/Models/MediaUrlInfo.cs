@@ -1,82 +1,11 @@
 ﻿using NickvisionTubeConverter.Shared.Helpers;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.IO;
-using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 
 namespace NickvisionTubeConverter.Shared.Models;
-
-/// <summary>
-/// A model of information about a media
-/// </summary>
-public class MediaInfo : INotifyPropertyChanged
-{
-    private string _title;
-    private bool _toDownload;
-
-    /// <summary>
-    /// The media url
-    /// </summary>
-    public string Url { get; init; }
-    /// <summary>
-    /// The title of the media
-    /// </summary>
-    public string OriginalTitle { get; init; }
-    /// <summary>
-    /// Whether or not the media is part of a playlist 
-    /// </summary>
-    public bool IsPartOfPlaylist { get; init; }
-
-    public event PropertyChangedEventHandler? PropertyChanged;
-
-    /// <summary>
-    /// Constructs a MediaInfo
-    /// </summary>
-    /// <param name="url">The url of the media</param>
-    /// <param name="title">The title of the media</param>
-    /// <param name="partOfPlaylist">Whether or not the media is part of a playlist</param>
-    public MediaInfo(string url, string title, bool partOfPlaylist = false)
-    {
-        _title = title;
-        _toDownload = true;
-        Url = url;
-        OriginalTitle = title;
-        IsPartOfPlaylist = partOfPlaylist;
-    }
-
-    /// <summary>
-    /// The title to use for downloading
-    /// </summary>
-    public string Title
-    {
-        get => _title;
-
-        set
-        {
-            _title = !string.IsNullOrEmpty(value) ? value : OriginalTitle;
-            NotifyPropertyChanged();
-        }
-    }
-
-    /// <summary>
-    /// Whether or not to download the media
-    /// </summary>
-    public bool ToDownload
-    {
-        get => _toDownload;
-
-        set
-        {
-            _toDownload = value;
-            NotifyPropertyChanged();
-        }
-    }
-
-    private void NotifyPropertyChanged([CallerMemberName] string propertyName = "") => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-}
 
 /// <summary>
 /// A model of information about a media url
@@ -95,6 +24,10 @@ public class MediaUrlInfo
     /// The title of the playlist, if available
     /// </summary>
     public string? PlaylistTitle { get; private set; }
+    /// <summary>
+    /// The available video resolutions
+    /// </summary>
+    public List<VideoResolution> VideoResolutions { get; init; }
 
     /// <summary>
     /// Constructs a MediaUrlInfo
@@ -104,6 +37,7 @@ public class MediaUrlInfo
     {
         Url = url;
         MediaList = new List<MediaInfo>();
+        VideoResolutions = new List<VideoResolution>();
     }
 
     /// <summary>
@@ -144,23 +78,12 @@ public class MediaUrlInfo
                             {
                                 continue;
                             }
-                            var entry = e.As<Python.Runtime.PyDict>();
-                            var title = entry.HasKey("title") ? (entry["title"].As<string?>() ?? "Media") : "Media";
-                            foreach (var c in Path.GetInvalidFileNameChars())
-                            {
-                                title = title.Replace(c, '_');
-                            }
-                            mediaUrlInfo.MediaList.Add(new MediaInfo(entry["webpage_url"].As<string>(), title, true));
+                            mediaUrlInfo.ParseFromPyDict(e.As<Python.Runtime.PyDict>(), true);
                         }
                     }
                     else
                     {
-                        var title = mediaInfo.HasKey("title") ? (mediaInfo["title"].As<string?>() ?? "Media") : "Media";
-                        foreach (var c in Path.GetInvalidFileNameChars())
-                        {
-                            title = title.Replace(c, '_');
-                        }
-                        mediaUrlInfo.MediaList.Add(new MediaInfo(mediaInfo["webpage_url"].As<string>(), title));
+                        mediaUrlInfo.ParseFromPyDict(mediaInfo);
                     }
                     outFile.close();
                 }
@@ -176,5 +99,28 @@ public class MediaUrlInfo
                 return null;
             }
         });
+    }
+
+    private void ParseFromPyDict(Python.Runtime.PyDict mediaInfo, bool isPartOfPlaylist = false)
+    {
+        var title = mediaInfo.HasKey("title") ? (mediaInfo["title"].As<string?>() ?? "Media") : "Media";
+        foreach (var c in Path.GetInvalidFileNameChars())
+        {
+            title = title.Replace(c, '_');
+        }
+        foreach (var f in mediaInfo["formats"].As<Python.Runtime.PyList>())
+        {
+            var format = f.As<Python.Runtime.PyDict>();
+            if (format.HasKey("vbr"))
+            {
+                var resolution = new VideoResolution(format["width"].As<int>(), format["height"].As<int>());
+                if (!VideoResolutions.Contains(resolution))
+                {
+                    VideoResolutions.Add(resolution);
+                }
+            }
+        }
+        VideoResolutions.Sort();
+        MediaList.Add(new MediaInfo(mediaInfo["webpage_url"].As<string>(), title, isPartOfPlaylist));
     }
 }
