@@ -6,22 +6,22 @@ using System.IO;
 namespace NickvisionTubeConverter.WinUI.Controls;
 
 /// <summary>
-/// A row for managing a video
+/// A row for managing a media
 /// </summary>
-public sealed partial class VideoRow : UserControl
+public sealed partial class MediaRow : UserControl
 {
-    private VideoInfo _videoInfo;
+    private MediaInfo _mediaInfo;
 
     /// <summary>
-    /// Constructs a VideoRow
+    /// Constructs a MediaRow
     /// </summary>
-    /// <param name="videoInfo">The VideoInfo object</param>
+    /// <param name="mediaInfo">The MediaInfo object</param>
     /// <param name="localizer">The Localizer</param>
-    public VideoRow(VideoInfo videoInfo, Localizer localizer)
+    public MediaRow(MediaInfo mediaInfo, Localizer localizer)
     {
         InitializeComponent();
-        _videoInfo = videoInfo;
-        DataContext = _videoInfo;
+        _mediaInfo = mediaInfo;
+        DataContext = _mediaInfo;
     }
 
     /// <summary>
@@ -35,9 +35,9 @@ public sealed partial class VideoRow : UserControl
         {
             TxtTitle.Text = TxtTitle.Text.Replace(c, '_');
         }
-        if (TxtTitle.Text != _videoInfo.Title)
+        if (TxtTitle.Text != _mediaInfo.Title)
         {
-            TxtTitle.Text = _videoInfo.Title;
+            TxtTitle.Text = _mediaInfo.Title;
         }
     }
 }

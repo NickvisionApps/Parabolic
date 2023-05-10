@@ -31,7 +31,7 @@ public enum Subtitle
 }
 
 /// <summary>
-/// A model of a video download
+/// A model of a media download
 /// </summary>
 public class Download
 {
@@ -48,9 +48,9 @@ public class Download
     /// </summary>
     public Guid Id { get; init; }
     /// <summary>
-    /// The url of the video
+    /// The url of the media
     /// </summary>
-    public string VideoUrl { get; init; }
+    public string MediaUrl { get; init; }
     /// <summary>
     /// The save folder for the download
     /// </summary>
@@ -100,8 +100,8 @@ public class Download
     /// <summary>
     /// Constructs a Download
     /// </summary>
-    /// <param name="videoUrl">The url of the video to download</param>
-    /// <param name="fileType">The file type to download the video as</param>
+    /// <param name="mediaUrl">The url of the media to download</param>
+    /// <param name="fileType">The file type to download the media as</param>
     /// <param name="saveFolder">The folder to save the download to</param>
     /// <param name="saveFilename">The filename to save the download as</param>
     /// <param name="limitSpeed">Whether or not to limit the download speed</param>
@@ -109,10 +109,10 @@ public class Download
     /// <param name="quality">The quality of the download</param>
     /// <param name="subtitle">The subtitles for the download</param>
     /// <param name="overwriteFiles">Whether or not to overwrite existing files</param>
-    public Download(string videoUrl, MediaFileType fileType, string saveFolder, string saveFilename, bool limitSpeed, uint speedLimit, Quality quality, Subtitle subtitle, bool overwriteFiles)
+    public Download(string mediaUrl, MediaFileType fileType, string saveFolder, string saveFilename, bool limitSpeed, uint speedLimit, Quality quality, Subtitle subtitle, bool overwriteFiles)
     {
         Id = Guid.NewGuid();
-        VideoUrl = videoUrl;
+        MediaUrl = mediaUrl;
         SaveFolder = saveFolder;
         FileType = fileType;
         Quality = quality;
@@ -135,7 +135,7 @@ public class Download
     /// Starts the download
     /// </summary>
     /// <param name="useAria">Whether or not to use aria2 for the download</param>
-    /// <param name="embedMetadata">Whether or not to embed video metadata in the downloaded file</param>
+    /// <param name="embedMetadata">Whether or not to embed media metadata in the downloaded file</param>
     /// <param name="localizer">Localizer</param>
     public void Start(bool useAria, bool embedMetadata, Localizer localizer)
     {
@@ -290,7 +290,7 @@ public class Download
                                 Log = localizer["StartAria"]
                             });
                         }
-                        Python.Runtime.PyObject success_code = ytdlp.YoutubeDL(ytOpt).download(new List<string>() { VideoUrl });
+                        Python.Runtime.PyObject success_code = ytdlp.YoutubeDL(ytOpt).download(new List<string>() { MediaUrl });
                         if ((success_code.As<int?>() ?? 1) != 0)
                         {
                             Filename = Regex.Unescape(Filename);

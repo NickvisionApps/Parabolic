@@ -24,7 +24,7 @@
                                     </Button.Content>
                                 </Button>
 
-                                <TextBox x:Name="TxtVideoUrl" wct:DockPanel.Dock="Left" MinWidth="360" MaxWidth="360" KeyDown="TxtVideoUrl_KeyDown"/>
+                                <TextBox x:Name="TxtMediaUrl" wct:DockPanel.Dock="Left" MinWidth="360" MaxWidth="360" KeyDown="TxtMediaUrl_KeyDown"/>
                             </wct:DockPanel>
 
                             <Button x:Name="BtnValidateUrl" HorizontalAlignment="Center" Style="{ThemeResource AccentButtonStyle}" Click="ValidateUrl"/>
@@ -97,17 +97,17 @@
 
                             <TextBlock x:Name="LblDownloads" Margin="0,6,0,6" Style="{ThemeResource NavigationViewItemHeaderTextStyle}"/>
 
-                            <ToggleButton x:Name="BtnNumberVideos" Margin="0,6,0,6" Checked="ToggleNumberVideos" Unchecked="ToggleNumberVideos">
+                            <ToggleButton x:Name="BtnNumberTitles" Margin="0,6,0,6" Checked="ToggleNumberTitles" Unchecked="ToggleNumberTitles">
                                 <ToggleButton.Content>
                                     <StackPanel Orientation="Horizontal" Spacing="6">
                                         <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" FontSize="16" Glyph="&#xE16E;"/>
 
-                                        <TextBlock x:Name="LblNumberVideos" Text="NumberVideos"/>
+                                        <TextBlock x:Name="LblNumberTitles" Text="NumberTitles"/>
                                     </StackPanel>
                                 </ToggleButton.Content>
                             </ToggleButton>
 
-                            <StackPanel x:Name="ListVideos" HorizontalAlignment="Stretch" Margin="0,-3,0,0" Spacing="3"/>
+                            <StackPanel x:Name="ListMediaList" HorizontalAlignment="Stretch" Margin="0,-3,0,0" Spacing="3"/>
                         </StackPanel>
                     </nickvision:ViewStackPage>
                 </nickvision:ViewStack.Pages>

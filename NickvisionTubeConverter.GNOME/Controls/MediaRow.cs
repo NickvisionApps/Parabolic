@@ -5,37 +5,37 @@ using System.Text.RegularExpressions;
 
 namespace NickvisionTubeConverter.GNOME.Controls;
 
-public class VideoRow : Adw.EntryRow
+public class MediaRow : Adw.EntryRow
 {
-    private VideoInfo _videoInfo;
+    private MediaInfo _mediaInfo;
     private string _numberString;
     private readonly Gtk.EventControllerKey _titleKeyController;
 
     [Gtk.Connect] private readonly Gtk.CheckButton _downloadCheck;
     [Gtk.Connect] private readonly Gtk.Button _undoButton;
 
-    private VideoRow(Gtk.Builder builder, VideoInfo videoInfo) : base(builder.GetPointer("_root"), false)
+    private MediaRow(Gtk.Builder builder, MediaInfo mediaInfo) : base(builder.GetPointer("_root"), false)
     {
-        _videoInfo = videoInfo;
+        _mediaInfo = mediaInfo;
         _numberString = "";
         //Build UI
         builder.Connect(this);
-        SetText(_videoInfo.Title);
-        SetTitle(_videoInfo.Url);
-        _downloadCheck.SetSensitive(_videoInfo.IsPartOfPlaylist);
-        _downloadCheck.SetActive(_videoInfo.ToDownload);
+        SetText(_mediaInfo.Title);
+        SetTitle(_mediaInfo.Url);
+        _downloadCheck.SetSensitive(_mediaInfo.IsPartOfPlaylist);
+        _downloadCheck.SetActive(_mediaInfo.ToDownload);
         _downloadCheck.OnNotify += (sender, e) =>
         {
             if (e.Pspec.GetName() == "active")
             {
-                _videoInfo.ToDownload = _downloadCheck.GetActive();
+                _mediaInfo.ToDownload = _downloadCheck.GetActive();
             }
         };
         OnNotify += (sender, e) =>
         {
             if (e.Pspec.GetName() == "text")
             {
-                _videoInfo.Title = GetText();
+                _mediaInfo.Title = GetText();
             }
         };
         _titleKeyController = Gtk.EventControllerKey.New();
@@ -44,22 +44,22 @@ public class VideoRow : Adw.EntryRow
         AddController(_titleKeyController);
         _undoButton.OnClicked += (sender, e) =>
         {
-            SetText(_numberString + _videoInfo.OriginalTitle);
+            SetText(_numberString + _mediaInfo.OriginalTitle);
         };
     }
 
-    public VideoRow(VideoInfo videoInfo, Localizer localizer) : this(Builder.FromFile("video_row.ui", localizer), videoInfo)
+    public MediaRow(MediaInfo mediaInfo, Localizer localizer) : this(Builder.FromFile("media_row.ui", localizer), mediaInfo)
     {
 
     }
 
     public void UpdateTitle(bool numbered)
     {
-        SetText(_videoInfo.Title);
+        SetText(_mediaInfo.Title);
         if (numbered)
         {
             var numberedRegex = new Regex(@"[0-9]+ - ", RegexOptions.None);
-            _numberString = numberedRegex.Match(_videoInfo.Title).Value;
+            _numberString = numberedRegex.Match(_mediaInfo.Title).Value;
         }
         else
         {

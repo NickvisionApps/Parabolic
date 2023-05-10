@@ -19,7 +19,7 @@ public sealed partial class AddDownloadDialog : ContentDialog
 {
     private AddDownloadDialogController _controller;
     private readonly Action<object> _initializeWithWindow;
-    private VideoUrlInfo? _videoUrlInfo;
+    private MediaUrlInfo? _mediaUrlInfo;
 
     /// <summary>
     /// Constructs an AddDownloadDialog
@@ -31,13 +31,13 @@ public sealed partial class AddDownloadDialog : ContentDialog
         InitializeComponent();
         _controller = controller;
         _initializeWithWindow = initializeWithWindow;
-        _videoUrlInfo = null;
+        _mediaUrlInfo = null;
         //Localize Strings
         Title = _controller.Localizer["AddDownload"];
         CloseButtonText = _controller.Localizer["Cancel"];
         PrimaryButtonText = _controller.Localizer["Download"];
-        TxtVideoUrl.Header = _controller.Localizer["VideoUrl", "Field"];
-        TxtVideoUrl.PlaceholderText = _controller.Localizer["VideoUrl", "Placeholder"];
+        TxtMediaUrl.Header = _controller.Localizer["MediaUrl", "Field"];
+        TxtMediaUrl.PlaceholderText = _controller.Localizer["MediaUrl", "Placeholder"];
         ToolTipService.SetToolTip(BtnPasteFromClipboard, _controller.Localizer["PasteFromClipboard"]);
         BtnValidateUrl.Content = _controller.Localizer["ValidateUrl"];
         CardFileType.Header = _controller.Localizer["FileType", "Field"];
@@ -63,7 +63,7 @@ public sealed partial class AddDownloadDialog : ContentDialog
         CardSpeedLimit.Header = _controller.Localizer["SpeedLimit"];
         CardSpeedLimit.Description = $"{string.Format(_controller.Localizer["Speed", "KiBps"], _controller.CurrentSpeedLimit)} ({_controller.Localizer["Configurable", "WinUI"]})";
         LblDownloads.Text = _controller.Localizer["Downloads"];
-        LblNumberVideos.Text = _controller.Localizer["NumberVideos"];
+        LblNumberTitles.Text = _controller.Localizer["NumberTitles"];
         TxtErrors.Text = _controller.Localizer["FixErrors", "WinUI"];
         //Load
         ViewStack.ChangePage("Url");
@@ -83,7 +83,7 @@ public sealed partial class AddDownloadDialog : ContentDialog
         {
             return false;
         }
-        _controller.PopulateDownloads(_videoUrlInfo!, (MediaFileType)CmbFileType.SelectedIndex, (Quality)CmbQuality.SelectedIndex, (Subtitle)CmbSubtitle.SelectedIndex, LblSaveFolder.Text, TglOverwriteFiles.IsOn, TglSpeedLimit.IsOn);
+        _controller.PopulateDownloads(_mediaUrlInfo!, (MediaFileType)CmbFileType.SelectedIndex, (Quality)CmbQuality.SelectedIndex, (Subtitle)CmbSubtitle.SelectedIndex, LblSaveFolder.Text, TglOverwriteFiles.IsOn, TglSpeedLimit.IsOn);
         return true;
     }
 
@@ -95,7 +95,7 @@ public sealed partial class AddDownloadDialog : ContentDialog
     private void ScrollViewer_SizeChanged(object sender, SizeChangedEventArgs e) => StackPanel.Margin = new Thickness(0, 0, ScrollViewer.ComputedVerticalScrollBarVisibility == Visibility.Visible ? 14 : 0, 0);
 
     /// <summary>
-    /// Occurs when the validate video url button is clicked
+    /// Occurs when the validate media url button is clicked
     /// </summary>
     /// <param name="sender">object</param>
     /// <param name="e">RoutedEventArgs</param>
@@ -105,35 +105,35 @@ public sealed partial class AddDownloadDialog : ContentDialog
         LoadingUrl.Visibility = Visibility.Visible;
         IsPrimaryButtonEnabled = false;
         await Task.Delay(25);
-        _videoUrlInfo = await _controller.SearchUrlAsync(TxtVideoUrl.Text);
+        _mediaUrlInfo = await _controller.SearchUrlAsync(TxtMediaUrl.Text);
         BtnValidateUrl.IsEnabled = true;
         LoadingUrl.Visibility = Visibility.Collapsed;
-        if (_videoUrlInfo == null)
+        if (_mediaUrlInfo == null)
         {
-            TxtVideoUrl.Header = _controller.Localizer["VideoUrl", "Invalid"];
+            TxtMediaUrl.Header = _controller.Localizer["MediaUrl", "Invalid"];
             TxtErrors.Visibility = Visibility.Visible;
         }
         else
         {
-            TxtVideoUrl.Header = _controller.Localizer["VideoUrl", "Field"];
+            TxtMediaUrl.Header = _controller.Localizer["MediaUrl", "Field"];
             TxtErrors.Visibility = Visibility.Collapsed;
             ViewStack.ChangePage("Download");
             IsPrimaryButtonEnabled = !string.IsNullOrEmpty(LblSaveFolder.Text);
-            BtnNumberVideos.Visibility = _videoUrlInfo.Videos.Count > 1 ? Visibility.Visible : Visibility.Collapsed;
-            ListVideos.Children.Clear();
-            foreach (var videoInfo in _videoUrlInfo.Videos)
+            BtnNumberTitles.Visibility = _mediaUrlInfo.MediaList.Count > 1 ? Visibility.Visible : Visibility.Collapsed;
+            ListMediaList.Children.Clear();
+            foreach (var mediaInfo in _mediaUrlInfo.MediaList)
             {
-                ListVideos.Children.Add(new VideoRow(videoInfo, _controller.Localizer));
+                ListMediaList.Children.Add(new MediaRow(mediaInfo, _controller.Localizer));
             }
         }
     }
 
     /// <summary>
-    /// Occurs when a key is pressed on the TxtVideoUrl control
+    /// Occurs when a key is pressed on the TxtMediaUrl control
     /// </summary>
     /// <param name="sender">object</param>
     /// <param name="e">KeyRoutedEventArgs</param>
-    private void TxtVideoUrl_KeyDown(object sender, KeyRoutedEventArgs e)
+    private void TxtMediaUrl_KeyDown(object sender, KeyRoutedEventArgs e)
     {
         if (e.Key == VirtualKey.Enter)
         {
@@ -151,7 +151,7 @@ public sealed partial class AddDownloadDialog : ContentDialog
     {
         if (Clipboard.GetContent().Contains(StandardDataFormats.Text))
         {
-            TxtVideoUrl.Text = (await Clipboard.GetContent().GetTextAsync()).ToString();
+            TxtMediaUrl.Text = (await Clipboard.GetContent().GetTextAsync()).ToString();
             ValidateUrl(sender, e);
         }
     }
@@ -173,7 +173,7 @@ public sealed partial class AddDownloadDialog : ContentDialog
         var folderPicker = new FolderPicker();
         var fileType = (MediaFileType)CmbFileType.SelectedIndex;
         _initializeWithWindow(folderPicker);
-        folderPicker.SuggestedStartLocation = fileType.GetIsVideo() ? PickerLocationId.VideosLibrary : PickerLocationId.MusicLibrary;
+        folderPicker.SuggestedStartLocation = fileType.GetIsVideo() ? PickerLocationId.MediaListLibrary : PickerLocationId.MusicLibrary;
         folderPicker.FileTypeFilter.Add("*");
         var folder = await folderPicker.PickSingleFolderAsync();
         if (folder != null)
@@ -184,9 +184,9 @@ public sealed partial class AddDownloadDialog : ContentDialog
     }
 
     /// <summary>
-    /// Occurs when the number videos toggle button is toggled
+    /// Occurs when the number medias toggle button is toggled
     /// </summary>
     /// <param name="sender">object</param>
     /// <param name="e">RoutedEventArgs</param>
-    private void ToggleNumberVideos(object sender, RoutedEventArgs e) => _controller.ToggleNumberVideos(_videoUrlInfo!, BtnNumberVideos.IsChecked ?? false);
+    private void ToggleNumberTitles(object sender, RoutedEventArgs e) => _controller.ToggleNumberTitles(_mediaUrlInfo!, BtnNumberTitles.IsChecked ?? false);
 }

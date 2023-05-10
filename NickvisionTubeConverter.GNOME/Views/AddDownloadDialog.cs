@@ -55,7 +55,7 @@ public partial class AddDownloadDialog : Adw.Window
 
     private readonly Gtk.Window _parent;
     private readonly AddDownloadDialogController _controller;
-    private VideoUrlInfo? _videoUrlInfo;
+    private MediaUrlInfo? _mediaUrlInfo;
     private string _saveFolderString;
     private GAsyncReadyCallback? _saveCallback;
     private GSourceFunc _startSearchCallback;
@@ -76,11 +76,11 @@ public partial class AddDownloadDialog : Adw.Window
     [Gtk.Connect] private readonly Gtk.Switch _overwriteSwitch;
     [Gtk.Connect] private readonly Adw.ActionRow _speedLimitRow;
     [Gtk.Connect] private readonly Gtk.Switch _speedLimitSwitch;
-    [Gtk.Connect] private readonly Gtk.ToggleButton _numberVideosButton;
+    [Gtk.Connect] private readonly Gtk.ToggleButton _numberTitlesButton;
     [Gtk.Connect] private readonly Gtk.ScrolledWindow _playlist;
-    [Gtk.Connect] private readonly Adw.PreferencesGroup _videosGroup;
+    [Gtk.Connect] private readonly Adw.PreferencesGroup _mediaItemsGroup;
     private Gtk.Spinner? _urlSpinner;
-    private readonly List<VideoRow> _videoRows;
+    private readonly List<MediaRow> _mediaRows;
 
     public event EventHandler? OnDownload;
 
@@ -94,9 +94,9 @@ public partial class AddDownloadDialog : Adw.Window
     {
         _parent = parent;
         _controller = controller;
-        _videoUrlInfo = null;
+        _mediaUrlInfo = null;
         _saveCallback = null;
-        _videoRows = new List<VideoRow>();
+        _mediaRows = new List<MediaRow>();
         _startSearchCallback = (x) =>
         {
             _urlSpinner = Gtk.Spinner.New();
@@ -111,29 +111,29 @@ public partial class AddDownloadDialog : Adw.Window
             _validateUrlButton.SetSensitive(true);
             _validateUrlButton.SetChild(null);
             _validateUrlButton.SetLabel(_controller.Localizer["ValidateUrl"]);
-            if (_videoUrlInfo == null)
+            if (_mediaUrlInfo == null)
             {
                 _urlRow.AddCssClass("error");
-                _urlRow.SetTitle(_controller.Localizer["VideoUrl", "Invalid"]);
+                _urlRow.SetTitle(_controller.Localizer["MediaUrl", "Invalid"]);
             }
             else
             {
                 _urlRow.RemoveCssClass("error");
-                _urlRow.SetTitle(_controller.Localizer["VideoUrl", "Field"]);
+                _urlRow.SetTitle(_controller.Localizer["MediaUrl", "Field"]);
                 _downloadPage.SetVisible(true);
                 _viewStack.SetVisibleChildName("pageDownload");
                 SetDefaultWidget(_addDownloadButton);
                 _addDownloadButton.SetSensitive(!string.IsNullOrEmpty(_saveFolderRow.GetText()));
-                _numberVideosButton.SetVisible(_videoUrlInfo.Videos.Count > 1 ? true : false);
-                foreach (var row in _videoRows)
+                _numberTitlesButton.SetVisible(_mediaUrlInfo.MediaList.Count > 1 ? true : false);
+                foreach (var row in _mediaRows)
                 {
-                    _videosGroup.Remove(row);
+                    _mediaItemsGroup.Remove(row);
                 }
-                foreach (var videoInfo in _videoUrlInfo.Videos)
+                foreach (var mediaInfo in _mediaUrlInfo.MediaList)
                 {
-                    var row = new VideoRow(videoInfo, _controller.Localizer);
-                    _videoRows.Add(row);
-                    _videosGroup.Add(row);
+                    var row = new MediaRow(mediaInfo, _controller.Localizer);
+                    _mediaRows.Add(row);
+                    _mediaItemsGroup.Add(row);
                 }
                 _playlist.GetVadjustment().OnNotify += (sender, e) =>
                 {
@@ -174,11 +174,11 @@ public partial class AddDownloadDialog : Adw.Window
             }
         };
         _selectSaveFolderButton.OnClicked += SelectSaveFolder;
-        _numberVideosButton.OnClicked += ToggleNumberVideos;
+        _numberTitlesButton.OnClicked += ToggleNumberTitles;
         //Add Download Button
         _addDownloadButton.OnClicked += (sender, e) =>
         {
-            _controller.PopulateDownloads(_videoUrlInfo!, (MediaFileType)_fileTypeDropDown.GetSelected(), (Quality)_qualityDropDown.GetSelected(), (Subtitle)_subtitlesDropDown.GetSelected(), _saveFolderString, _overwriteSwitch.GetActive(), _speedLimitSwitch.GetActive());
+            _controller.PopulateDownloads(_mediaUrlInfo!, (MediaFileType)_fileTypeDropDown.GetSelected(), (Quality)_qualityDropDown.GetSelected(), (Subtitle)_subtitlesDropDown.GetSelected(), _saveFolderString, _overwriteSwitch.GetActive(), _speedLimitSwitch.GetActive());
             OnDownload?.Invoke(this, EventArgs.Empty);
         };
         _addDownloadButton.SetSensitive(false);
@@ -216,7 +216,7 @@ public partial class AddDownloadDialog : Adw.Window
     }
 
     /// <summary>
-    /// Occurs when the video url is changed
+    /// Occurs when the media url is changed
     /// </summary>
     /// <param name="sender">Adw.EntryRow</param>
     /// <param name="e">EventArgs</param>
@@ -227,7 +227,7 @@ public partial class AddDownloadDialog : Adw.Window
         {
             try
             {
-                _videoUrlInfo = await _controller.SearchUrlAsync(_urlRow.GetText());
+                _mediaUrlInfo = await _controller.SearchUrlAsync(_urlRow.GetText());
             }
             catch (Exception ex)
             {
@@ -268,16 +268,16 @@ public partial class AddDownloadDialog : Adw.Window
     }
 
     /// <summary>
-    /// Occurs when the number videos toggle button is clicked
+    /// Occurs when the number titles toggle button is clicked
     /// </summary>
     /// <param name="sender">Gtk.Button</param>
     /// <param name="e">EventArgs</param>
-    private void ToggleNumberVideos(Gtk.Button sender, EventArgs e)
+    private void ToggleNumberTitles(Gtk.Button sender, EventArgs e)
     {
-        _controller.ToggleNumberVideos(_videoUrlInfo!, _numberVideosButton.GetActive());
-        foreach (var row in _videoRows)
+        _controller.ToggleNumberTitles(_mediaUrlInfo!, _numberTitlesButton.GetActive());
+        foreach (var row in _mediaRows)
         {
-            row.UpdateTitle(_numberVideosButton.GetActive());
+            row.UpdateTitle(_numberTitlesButton.GetActive());
         }
     }
 

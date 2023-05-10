@@ -10,35 +10,35 @@ using System.Threading.Tasks;
 namespace NickvisionTubeConverter.Shared.Models;
 
 /// <summary>
-/// A model of information about a video
+/// A model of information about a media
 /// </summary>
-public class VideoInfo : INotifyPropertyChanged
+public class MediaInfo : INotifyPropertyChanged
 {
     private string _title;
     private bool _toDownload;
 
     /// <summary>
-    /// The video url
+    /// The media url
     /// </summary>
     public string Url { get; init; }
     /// <summary>
-    /// The title of the video
+    /// The title of the media
     /// </summary>
     public string OriginalTitle { get; init; }
     /// <summary>
-    /// Whether or not the video is part of a playlist 
+    /// Whether or not the media is part of a playlist 
     /// </summary>
     public bool IsPartOfPlaylist { get; init; }
 
     public event PropertyChangedEventHandler? PropertyChanged;
 
     /// <summary>
-    /// Constructs a VideoInfo
+    /// Constructs a MediaInfo
     /// </summary>
-    /// <param name="url">The url of the video</param>
-    /// <param name="title">The title of the video</param>
-    /// <param name="partOfPlaylist">Whether or not the video is part of a playlist</param>
-    public VideoInfo(string url, string title, bool partOfPlaylist = false)
+    /// <param name="url">The url of the media</param>
+    /// <param name="title">The title of the media</param>
+    /// <param name="partOfPlaylist">Whether or not the media is part of a playlist</param>
+    public MediaInfo(string url, string title, bool partOfPlaylist = false)
     {
         _title = title;
         _toDownload = true;
@@ -62,7 +62,7 @@ public class VideoInfo : INotifyPropertyChanged
     }
 
     /// <summary>
-    /// Whether or not to download the video
+    /// Whether or not to download the media
     /// </summary>
     public bool ToDownload
     {
@@ -79,39 +79,39 @@ public class VideoInfo : INotifyPropertyChanged
 }
 
 /// <summary>
-/// A model of information about a video url
+/// A model of information about a media url
 /// </summary>
-public class VideoUrlInfo
+public class MediaUrlInfo
 {
     /// <summary>
-    /// The video url
+    /// The media url
     /// </summary>
     public string Url { get; init; }
     /// <summary>
-    /// All videos found under a video url
+    /// All medias found under a media url
     /// </summary>
-    public List<VideoInfo> Videos { get; init; }
+    public List<MediaInfo> MediaList { get; init; }
     /// <summary>
     /// The title of the playlist, if available
     /// </summary>
     public string? PlaylistTitle { get; private set; }
 
     /// <summary>
-    /// Constructs a VideoUrlInfo
+    /// Constructs a MediaUrlInfo
     /// </summary>
-    /// <param name="url">The url of the video</param>
-    private VideoUrlInfo(string url)
+    /// <param name="url">The url of the media</param>
+    private MediaUrlInfo(string url)
     {
         Url = url;
-        Videos = new List<VideoInfo>();
+        MediaList = new List<MediaInfo>();
     }
 
     /// <summary>
-    /// Gets a VideoUrlInfo from a url string
+    /// Gets a MediaUrlInfo from a url string
     /// </summary>
-    /// <param name="url">The video url string</param>
-    /// <returns>A VideoUrlInfo object. Null if url invalid</returns>
-    public static async Task<VideoUrlInfo?> GetAsync(string url)
+    /// <param name="url">The media url string</param>
+    /// <returns>A MediaUrlInfo object. Null if url invalid</returns>
+    public static async Task<MediaUrlInfo?> GetAsync(string url)
     {
         var pathToOutput = $"{Configuration.TempDir}{Path.DirectorySeparatorChar}output.log";
         dynamic outFile = PythonHelpers.SetConsoleOutputFilePath(pathToOutput);
@@ -119,7 +119,7 @@ public class VideoUrlInfo
         {
             try
             {
-                var videoUrlInfo = new VideoUrlInfo(url);
+                var mediaUrlInfo = new MediaUrlInfo(url);
                 using (Python.Runtime.Py.GIL())
                 {
                     dynamic ytdlp = Python.Runtime.Py.Import("yt_dlp");
@@ -129,16 +129,16 @@ public class VideoUrlInfo
                         { "windowsfilenames", RuntimeInformation.IsOSPlatform(OSPlatform.Windows) },
                         { "ignoreerrors", true }
                     };
-                    Python.Runtime.PyDict? videoInfo = ytdlp.YoutubeDL(ytOpt).extract_info(url, download: false);
-                    if (videoInfo == null)
+                    Python.Runtime.PyDict? mediaInfo = ytdlp.YoutubeDL(ytOpt).extract_info(url, download: false);
+                    if (mediaInfo == null)
                     {
                         outFile.close();
                         return null;
                     }
-                    if (videoInfo.HasKey("entries"))
+                    if (mediaInfo.HasKey("entries"))
                     {
-                        videoUrlInfo.PlaylistTitle = videoInfo.HasKey("title") ? videoInfo["title"].As<string>() ?? "Playlist" : "Playlist";
-                        foreach (var e in videoInfo["entries"].As<Python.Runtime.PyList>())
+                        mediaUrlInfo.PlaylistTitle = mediaInfo.HasKey("title") ? mediaInfo["title"].As<string>() ?? "Playlist" : "Playlist";
+                        foreach (var e in mediaInfo["entries"].As<Python.Runtime.PyList>())
                         {
                             if (e.IsNone())
                             {
@@ -150,21 +150,21 @@ public class VideoUrlInfo
                             {
                                 title = title.Replace(c, '_');
                             }
-                            videoUrlInfo.Videos.Add(new VideoInfo(entry["webpage_url"].As<string>(), title, true));
+                            mediaUrlInfo.MediaList.Add(new MediaInfo(entry["webpage_url"].As<string>(), title, true));
                         }
                     }
                     else
                     {
-                        var title = videoInfo.HasKey("title") ? (videoInfo["title"].As<string?>() ?? "Media") : "Media";
+                        var title = mediaInfo.HasKey("title") ? (mediaInfo["title"].As<string?>() ?? "Media") : "Media";
                         foreach (var c in Path.GetInvalidFileNameChars())
                         {
                             title = title.Replace(c, '_');
                         }
-                        videoUrlInfo.Videos.Add(new VideoInfo(videoInfo["webpage_url"].As<string>(), title));
+                        mediaUrlInfo.MediaList.Add(new MediaInfo(mediaInfo["webpage_url"].As<string>(), title));
                     }
                     outFile.close();
                 }
-                return videoUrlInfo;
+                return mediaUrlInfo;
             }
             catch (Exception e)
             {

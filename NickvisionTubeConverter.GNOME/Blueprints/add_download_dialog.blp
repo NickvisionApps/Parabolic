@@ -49,7 +49,7 @@ Adw.Window _root {
 
               Adw.PreferencesGroup {
                 Adw.EntryRow _urlRow {
-                  title: _("VideoUrl.Field");
+                  title: _("MediaUrl.Field");
                   width-request: 420;
                   activates-default: true;
                 }
@@ -198,12 +198,12 @@ Adw.Window _root {
                 }
               }
 
-              Gtk.ToggleButton _numberVideosButton {
+              Gtk.ToggleButton _numberTitlesButton {
                 halign: center;
 
                 Adw.ButtonContent {
                   icon-name: "view-list-ordered-symbolic";
-                  label: _("NumberVideos");
+                  label: _("NumberTitles");
                 }
               }
 
@@ -211,7 +211,7 @@ Adw.Window _root {
                 propagate-natural-height: true;
                 max-content-height: 200;
 
-                Adw.PreferencesGroup _videosGroup {
+                Adw.PreferencesGroup _mediaItemsGroup {
                   margin-top: 2;
                   margin-start: 24;
                   margin-end: 24;
