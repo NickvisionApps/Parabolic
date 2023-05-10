@@ -116,6 +116,13 @@ Adw.Bin _root {
       }
 
       Adw.ViewStackPage {
+        name: "processing";
+        child: Gtk.ProgressBar _pulsingBar {
+          hexpand: true;
+        };
+      }
+
+      Adw.ViewStackPage {
         name: "done";
         child: Gtk.LevelBar _levelBar {
           hexpand: true;

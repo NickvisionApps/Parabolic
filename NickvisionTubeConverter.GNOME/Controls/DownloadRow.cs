@@ -15,6 +15,7 @@ namespace NickvisionTubeConverter.GNOME.Controls;
 public partial class DownloadRow : Adw.Bin, IDownloadRowControl
 {
     private delegate void GAsyncReadyCallback(nint source, nint res, nint user_data);
+    private delegate bool GSourceFunc(nint user_data);
 
     [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
     private static partial nint gtk_file_launcher_new(nint file);
@@ -22,8 +23,12 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
     private static partial void gtk_file_launcher_launch(nint fileLauncher, nint parent, nint cancellable, GAsyncReadyCallback callback, nint data);
     [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
     private static partial void gtk_file_launcher_open_containing_folder(nint fileLauncher, nint parent, nint cancellable, GAsyncReadyCallback callback, nint data);
+    [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
+    private static partial uint g_timeout_add(uint interval, GSourceFunc func, nint data);
 
     private readonly Localizer _localizer;
+    private readonly GSourceFunc _pulsingBarCallback;
+    private bool _runPulsingBar;
     private string _saveFolder;
     private Action<NotificationSentEventArgs> _sendNotificationCallback;
 
@@ -32,6 +37,7 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
     [Gtk.Connect] private readonly Gtk.Label _progressLabel;
     [Gtk.Connect] private readonly Adw.ViewStack _stateViewStack;
     [Gtk.Connect] private readonly Gtk.ProgressBar _progressBar;
+    [Gtk.Connect] private readonly Gtk.ProgressBar _pulsingBar;
     [Gtk.Connect] private readonly Gtk.LevelBar _levelBar;
     [Gtk.Connect] private readonly Adw.ViewStack _actionViewStack;
     [Gtk.Connect] private readonly Gtk.Button _stopButton;
@@ -98,6 +104,12 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
             _lblLog.GetClipboard().SetText(_lblLog.GetText());
             _sendNotificationCallback(new NotificationSentEventArgs(_localizer["LogCopied"], NotificationSeverity.Informational));
         };
+        _runPulsingBar = false;
+        _pulsingBarCallback = (data) =>
+        {
+            _pulsingBar.Pulse();
+            return _runPulsingBar;
+        };
     }
 
     /// <summary>
@@ -153,15 +165,26 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
         switch (state.Status)
         {
             case DownloadProgressStatus.Downloading:
+                _stateViewStack.SetVisibleChildName("downloading");
                 _progressBar.SetFraction(state.Progress);
                 _progressLabel.SetText(string.Format(_localizer["DownloadState", "Downloading"], state.Progress * 100, state.Speed.GetSpeedString(_localizer)));
                 break;
             case DownloadProgressStatus.DownloadingAria:
-                _progressBar.Pulse();
+                if (!_runPulsingBar)
+                {
+                    _runPulsingBar = true;
+                    g_timeout_add(30, _pulsingBarCallback, 0);
+                }
+                _stateViewStack.SetVisibleChildName("processing");
                 _progressLabel.SetText(_localizer["Downloading"]);
                 break;
             case DownloadProgressStatus.Processing:
-                _progressBar.Pulse();
+                if (!_runPulsingBar)
+                {
+                    _runPulsingBar = true;
+                    g_timeout_add(30, _pulsingBarCallback, 0);
+                }
+                _stateViewStack.SetVisibleChildName("processing");
                 _progressLabel.SetText(_localizer["DownloadState", "Processing"]);
                 break;
         }
@@ -173,6 +196,7 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
     /// <param name="success">Whether or not the download was successful</param>
     public void SetCompletedState(bool success)
     {
+        _runPulsingBar = false;
         _statusIcon.AddCssClass(success ? "success" : "error");
         _statusIcon.SetFromIconName(success ? "emblem-ok-symbolic" : "process-stop-symbolic");
         _stateViewStack.SetVisibleChildName("done");
@@ -186,6 +210,7 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
     /// </summary>
     public void SetStopState()
     {
+        _runPulsingBar = false;
         _progressBar.SetFraction(1.0);
         _statusIcon.AddCssClass("stopped");
         _statusIcon.SetFromIconName("process-stop-symbolic");
