@@ -114,13 +114,14 @@ public class MediaUrlInfo
             if (format.HasKey("vbr"))
             {
                 var resolution = new VideoResolution(format["width"].As<int>(), format["height"].As<int>());
-                if (!VideoResolutions.Contains(resolution))
+                if (!VideoResolutions.Exists(r => r == resolution))
                 {
                     VideoResolutions.Add(resolution);
                 }
             }
         }
         VideoResolutions.Sort();
+        VideoResolutions.Reverse();
         MediaList.Add(new MediaInfo(mediaInfo["webpage_url"].As<string>(), title, isPartOfPlaylist));
     }
 }

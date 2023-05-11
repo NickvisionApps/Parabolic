@@ -16,8 +16,8 @@ namespace NickvisionTubeConverter.Shared.Models;
 public enum Quality
 {
     Best = 0,
-    Good,
-    Worst
+    Worst,
+    Resolution
 }
 
 /// <summary>
@@ -64,6 +64,10 @@ public class Download
     /// </summary>
     public Quality Quality { get; init; }
     /// <summary>
+    /// The video resolution (null for audio)
+    /// </summary>
+    public VideoResolution? Resolution { get; init; }
+    /// <summary>
     /// The subtitles for the download
     /// </summary>
     public Subtitle Subtitle { get; init; }
@@ -109,13 +113,14 @@ public class Download
     /// <param name="quality">The quality of the download</param>
     /// <param name="subtitle">The subtitles for the download</param>
     /// <param name="overwriteFiles">Whether or not to overwrite existing files</param>
-    public Download(string mediaUrl, MediaFileType fileType, string saveFolder, string saveFilename, bool limitSpeed, uint speedLimit, Quality quality, Subtitle subtitle, bool overwriteFiles)
+    public Download(string mediaUrl, MediaFileType fileType, string saveFolder, string saveFilename, bool limitSpeed, uint speedLimit, Quality quality, VideoResolution? resolution, Subtitle subtitle, bool overwriteFiles)
     {
         Id = Guid.NewGuid();
         MediaUrl = mediaUrl;
         SaveFolder = saveFolder;
         FileType = fileType;
         Quality = quality;
+        Resolution = resolution;
         Subtitle = subtitle;
         Filename = $"{saveFilename}{FileType.GetDotExtension()}";
         IsRunning = false;
@@ -228,21 +233,11 @@ public class Download
             {
                 if (FileType == MediaFileType.MP4)
                 {
-                    ytOpt.Add("format", Quality switch
-                    {
-                        Quality.Best => "bv*[ext=mp4]+ba[ext=m4a]/b[ext=mp4] / bv*+ba/b",
-                        Quality.Good => "bv*[ext=mp4][height<=720]+ba[ext=m4a]/b[ext=mp4][height<=720] / bv*[height<=720]+ba/b[height<=720]",
-                        _ => "wv[ext=mp4]*+wa[ext=m4a]/w[ext=mp4] / wv*+wa/w"
-                    });
+                    ytOpt.Add("format", $"bv*[ext=mp4][width<={Resolution.Width}][height<={Resolution.Height}]+ba[ext=m4a]/b[ext=mp4][width<={Resolution.Width}][height<={Resolution.Height}] / bv*[width<={Resolution.Width}][height<={Resolution.Height}]+ba/b[width<={Resolution.Width}][height<={Resolution.Height}]");
                 }
                 else
                 {
-                    ytOpt.Add("format", Quality switch
-                    {
-                        Quality.Best => "bv*+ba/b",
-                        Quality.Good => "bv*[height<=720]+ba/b[height<=720]",
-                        _ => "wv*+wa/w"
-                    });
+                    ytOpt.Add("format", $"bv*[width<={Resolution.Width}][height<={Resolution.Height}]+ba/b[width<={Resolution.Width}][height<={Resolution.Height}]");
                 }
                 postProcessors.Add(new Dictionary<string, dynamic>() { { "key", "FFmpegVideoConvertor" }, { "preferedformat", FileType.ToString().ToLower() } });
                 if (Subtitle != Subtitle.None)

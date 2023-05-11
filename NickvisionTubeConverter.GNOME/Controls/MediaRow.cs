@@ -1,6 +1,7 @@
 ﻿using NickvisionTubeConverter.GNOME.Helpers;
 using NickvisionTubeConverter.Shared.Helpers;
 using NickvisionTubeConverter.Shared.Models;
+using System;
 using System.Text.RegularExpressions;
 
 namespace NickvisionTubeConverter.GNOME.Controls;
@@ -14,21 +15,24 @@ public class MediaRow : Adw.EntryRow
     [Gtk.Connect] private readonly Gtk.CheckButton _downloadCheck;
     [Gtk.Connect] private readonly Gtk.Button _undoButton;
 
-    private MediaRow(Gtk.Builder builder, MediaInfo mediaInfo) : base(builder.GetPointer("_root"), false)
+    public event Action OnSelectionChanged;
+
+    private MediaRow(Gtk.Builder builder, MediaInfo mediaInfo, Localizer localizer) : base(builder.GetPointer("_root"), false)
     {
         _mediaInfo = mediaInfo;
         _numberString = "";
         //Build UI
         builder.Connect(this);
         SetText(_mediaInfo.Title);
-        SetTitle(_mediaInfo.Url);
-        _downloadCheck.SetSensitive(_mediaInfo.IsPartOfPlaylist);
+        SetTitle(_mediaInfo.IsPartOfPlaylist ? _mediaInfo.Url : localizer["Filename", "Field"]);
+        _downloadCheck.GetParent().SetVisible(_mediaInfo.IsPartOfPlaylist);
         _downloadCheck.SetActive(_mediaInfo.ToDownload);
         _downloadCheck.OnNotify += (sender, e) =>
         {
             if (e.Pspec.GetName() == "active")
             {
                 _mediaInfo.ToDownload = _downloadCheck.GetActive();
+                OnSelectionChanged?.Invoke();
             }
         };
         OnNotify += (sender, e) =>
@@ -48,7 +52,7 @@ public class MediaRow : Adw.EntryRow
         };
     }
 
-    public MediaRow(MediaInfo mediaInfo, Localizer localizer) : this(Builder.FromFile("media_row.ui", localizer), mediaInfo)
+    public MediaRow(MediaInfo mediaInfo, Localizer localizer) : this(Builder.FromFile("media_row.ui", localizer), mediaInfo, localizer)
     {
 
     }
