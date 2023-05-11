@@ -327,7 +327,9 @@ public partial class AddDownloadDialog : Adw.Window
         gtk_file_dialog_select_folder(folderDialog, Handle, IntPtr.Zero, _saveCallback, IntPtr.Zero);
     }
 
-    ///
+    /// <summary>
+    /// Occurs when the number of items selected to download has changed
+    /// </summary>
     private void PlaylistChanged()
     {
         var downloadsCount = _mediaUrlInfo.MediaList.FindAll(x => x.ToDownload).Count;

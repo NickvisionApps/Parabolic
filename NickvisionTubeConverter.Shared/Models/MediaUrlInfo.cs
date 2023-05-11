@@ -21,10 +21,6 @@ public class MediaUrlInfo
     /// </summary>
     public List<MediaInfo> MediaList { get; init; }
     /// <summary>
-    /// The title of the playlist, if available
-    /// </summary>
-    public string? PlaylistTitle { get; private set; }
-    /// <summary>
     /// The available video resolutions
     /// </summary>
     public List<VideoResolution> VideoResolutions { get; init; }
@@ -71,7 +67,6 @@ public class MediaUrlInfo
                     }
                     if (mediaInfo.HasKey("entries"))
                     {
-                        mediaUrlInfo.PlaylistTitle = mediaInfo.HasKey("title") ? mediaInfo["title"].As<string>() ?? "Playlist" : "Playlist";
                         foreach (var e in mediaInfo["entries"].As<Python.Runtime.PyList>())
                         {
                             if (e.IsNone())
