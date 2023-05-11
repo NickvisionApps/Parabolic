@@ -147,10 +147,11 @@ public partial class AddDownloadDialog : Adw.Window
                         var row = new MediaRow(mediaInfo, _controller.Localizer);
                         _mediaRows.Add(row);
                         row.OnSelectionChanged += PlaylistChanged;
-                        _openPlaylistGroup.SetVisible(true);
-                        _openPlaylistRow.SetTitle(string.Format(_controller.Localizer["Playlist", "Count"], _mediaUrlInfo.MediaList.Count, _mediaUrlInfo.MediaList.Count));
                         _playlistGroup.Add(row);
                     }
+                    _openPlaylistGroup.SetVisible(true);
+                    _openPlaylistRow.SetTitle(string.Format(_controller.Localizer["Playlist", "Count"], _mediaUrlInfo.MediaList.Count, _mediaUrlInfo.MediaList.Count));
+                    _qualityRow.SetTitle(_controller.Localizer["MaxQuality", "Field"]);
                 }
                 else
                 {
@@ -172,7 +173,9 @@ public partial class AddDownloadDialog : Adw.Window
         {
             if (e.Pspec.GetName() == "visible-child")
             {
-                _backButton.SetVisible(_viewStack.GetVisibleChildName() == "pagePlaylist");
+                var isPagePlaylist = _viewStack.GetVisibleChildName() == "pagePlaylist";
+                _backButton.SetVisible(isPagePlaylist);
+                _titleLabel.SetLabel(_controller.Localizer[isPagePlaylist ? "Playlist" : "AddDownload"]);
             }
         };
         _backButton.OnClicked += (sender, e) =>
