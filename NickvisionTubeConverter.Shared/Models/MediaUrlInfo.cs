@@ -115,8 +115,7 @@ public class MediaUrlInfo
                 }
             }
         }
-        VideoResolutions.Sort();
-        VideoResolutions.Reverse();
+        VideoResolutions.Sort((a, b) => b.CompareTo(a));
         MediaList.Add(new MediaInfo(mediaInfo["webpage_url"].As<string>(), title, isPartOfPlaylist));
     }
 }
