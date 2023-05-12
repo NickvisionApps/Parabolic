@@ -216,14 +216,14 @@ public class Download
                     };
                     _ariaKeeper.Start();
                     _ytOpt.Add("external_downloader", new Dictionary<string, dynamic>() { { "default", DependencyManager.Aria2Path } });
-                    var ariaArgs = new string[]
-                    {
-                            $"--max-overall-download-limit={(_limitSpeed ? _speedLimit : 0)}K",
-                            "--allow-overwrite=true",
-                            "--show-console-readout=false",
-                            $"--stop-with-process={_ariaKeeper.Id}"
-                    };
-                    _ytOpt.Add("external_downloader_args", Python.Runtime.PythonEngine.Eval($"{{'default': ['{string.Join("', '", ariaArgs)}']}}")); // stupid, but working
+                    dynamic ariaDict = new Python.Runtime.PyDict();
+                    dynamic ariaParams = new Python.Runtime.PyList();
+                    ariaParams.Append(new Python.Runtime.PyString($"--max-overall-download-limit={(_limitSpeed ? _speedLimit : 0)}K"));
+                    ariaParams.Append(new Python.Runtime.PyString("--allow-overwrite=true"));
+                    ariaParams.Append(new Python.Runtime.PyString("--show-console-readout=false"));
+                    ariaParams.Append(new Python.Runtime.PyString($"--stop-with-process={_ariaKeeper.Id}"));
+                    ariaDict["default"] = ariaParams;
+                    _ytOpt.Add("external_downloader_args", ariaDict);
                 }
                 else if (_limitSpeed)
                 {
