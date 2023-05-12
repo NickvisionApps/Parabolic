@@ -46,6 +46,10 @@ public class AddDownloadDialogController
     /// </summary>
     public MediaFileType PreviousMediaFileType => Configuration.Current.PreviousMediaFileType;
     /// <summary>
+    /// Whether to embed metadata
+    /// </summary>
+    public bool EmbedMetadata => Configuration.Current.EmbedMetadata;
+    /// <summary>
     /// The speed limit in the configuration
     /// </summary>
     public uint CurrentSpeedLimit => Configuration.Current.SpeedLimit;
@@ -100,14 +104,14 @@ public class AddDownloadDialogController
     /// <param name="saveFolder">The save folder of the downloads</param>
     /// <param name="overwriteFiles">Whether or not to overwrite existing files</param>
     /// <param name="limitSpeed">Whether or not to use speed limit</param>
-    public void PopulateDownloads(MediaUrlInfo mediaUrlInfo, MediaFileType mediaFileType, Quality quality, VideoResolution? resolution, Subtitle subtitles, string saveFolder, bool overwriteFiles, bool limitSpeed)
+    public void PopulateDownloads(MediaUrlInfo mediaUrlInfo, MediaFileType mediaFileType, Quality quality, VideoResolution? resolution, Subtitle subtitles, string saveFolder, bool overwriteFiles, bool limitSpeed, bool cropThumbnail)
     {
         Downloads.Clear();
         foreach (var media in mediaUrlInfo.MediaList)
         {
             if (media.ToDownload)
             {
-                Downloads.Add(new Download(media.Url, mediaFileType, saveFolder, media.Title, limitSpeed, Configuration.Current.SpeedLimit, quality, resolution, subtitles, overwriteFiles));
+                Downloads.Add(new Download(media.Url, mediaFileType, saveFolder, media.Title, limitSpeed, Configuration.Current.SpeedLimit, quality, resolution, subtitles, overwriteFiles, cropThumbnail));
             }
         }
         Configuration.Current.PreviousSaveFolder = saveFolder;

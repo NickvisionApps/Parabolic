@@ -77,6 +77,8 @@ public partial class AddDownloadDialog : Adw.Window
     [Gtk.Connect] private readonly Gtk.Switch _overwriteSwitch;
     [Gtk.Connect] private readonly Adw.ActionRow _speedLimitRow;
     [Gtk.Connect] private readonly Gtk.Switch _speedLimitSwitch;
+    [Gtk.Connect] private readonly Adw.ActionRow _cropThumbnailRow;
+    [Gtk.Connect] private readonly Gtk.Switch _cropThumbnailSwitch;
     [Gtk.Connect] private readonly Adw.PreferencesGroup _mediaGroup;
     [Gtk.Connect] private readonly Adw.PreferencesGroup _openPlaylistGroup;
     [Gtk.Connect] private readonly Adw.ActionRow _openPlaylistRow;
@@ -191,6 +193,7 @@ public partial class AddDownloadDialog : Adw.Window
             }
         };
         _selectSaveFolderButton.OnClicked += SelectSaveFolder;
+        _cropThumbnailRow.SetVisible(_controller.EmbedMetadata);
         _openPlaylistRow.OnActivated += (sender, e) => _viewStack.SetVisibleChildName("pagePlaylist");
         _numberTitlesButton.OnClicked += ToggleNumberTitles;
         _playlist.GetVadjustment().OnNotify += (sender, e) =>
@@ -222,7 +225,7 @@ public partial class AddDownloadDialog : Adw.Window
                 quality = Quality.Resolution;
                 resolution = _mediaUrlInfo.VideoResolutions[(int)_qualityRow.GetSelected()];
             }
-            _controller.PopulateDownloads(_mediaUrlInfo!, (MediaFileType)_fileTypeRow.GetSelected(), quality, resolution, (Subtitle)_subtitleRow.GetSelected(), _saveFolderString, _overwriteSwitch.GetActive(), _speedLimitSwitch.GetActive());
+            _controller.PopulateDownloads(_mediaUrlInfo!, (MediaFileType)_fileTypeRow.GetSelected(), quality, resolution, (Subtitle)_subtitleRow.GetSelected(), _saveFolderString, _overwriteSwitch.GetActive(), _speedLimitSwitch.GetActive(), _cropThumbnailSwitch.GetActive());
             OnDownload?.Invoke(this, EventArgs.Empty);
         };
         _addDownloadButton.SetSensitive(false);
