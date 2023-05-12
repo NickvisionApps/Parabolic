@@ -90,6 +90,7 @@ public partial class AddDownloadDialog : Adw.Window
     private readonly List<MediaRow> _mediaRows;
     private readonly string[] _audioQualityArray;
     private List<string>? _videoQualityList;
+    private bool _audioOnly;
 
     public event EventHandler? OnDownload;
 
@@ -106,6 +107,7 @@ public partial class AddDownloadDialog : Adw.Window
         _mediaUrlInfo = null;
         _saveCallback = null;
         _mediaRows = new List<MediaRow>();
+        _audioOnly = false;
         _audioQualityArray = new string[] { _controller.Localizer["Quality", "Best"], _controller.Localizer["Quality", "Worst"] };
         _startSearchCallback = (x) =>
         {
@@ -129,12 +131,21 @@ public partial class AddDownloadDialog : Adw.Window
             else
             {
                 _videoQualityList = new List<string> {};
-                foreach (var resolution in _mediaUrlInfo.VideoResolutions)
+                if (_mediaUrlInfo.VideoResolutions.Count == 0)
                 {
-                    _videoQualityList.Add(resolution.ToString());
+                    _audioOnly = true;
+                    _fileTypeRow.SetModel(Gtk.StringList.New(new string[] {"MP3", "OPUS", "FLAC", "WAV"}));
+                    _fileTypeRow.SetSelected((uint)Math.Max((int)_controller.PreviousMediaFileType - 2, 0));
                 }
-                _fileTypeRow.SetSelected((uint)_controller.PreviousMediaFileType);
-                SetQualityRowModel(); // in case previous string doesn't invoke OnNotify
+                else
+                {
+                    foreach (var resolution in _mediaUrlInfo.VideoResolutions)
+                    {
+                        _videoQualityList.Add(resolution.ToString());
+                    }
+                    _fileTypeRow.SetSelected((uint)_controller.PreviousMediaFileType);
+                }
+                SetQualityRowModel(); // in case _fileTypeRow.SetSelected didn't invoke OnNotify
                 _urlRow.RemoveCssClass("error");
                 _urlRow.SetTitle(_controller.Localizer["MediaUrl", "Field"]);
                 _downloadPage.SetVisible(true);
@@ -215,7 +226,12 @@ public partial class AddDownloadDialog : Adw.Window
         {
             Quality quality;
             VideoResolution? resolution;
-            if (((MediaFileType)_fileTypeRow.GetSelected()).GetIsAudio())
+            var fileType = (MediaFileType)_fileTypeRow.GetSelected();
+            if (_audioOnly)
+            {
+                fileType += 2;
+            }
+            if (fileType.GetIsAudio())
             {
                 quality = (Quality)_qualityRow.GetSelected();
                 resolution = null;
@@ -225,7 +241,7 @@ public partial class AddDownloadDialog : Adw.Window
                 quality = Quality.Resolution;
                 resolution = _mediaUrlInfo.VideoResolutions[(int)_qualityRow.GetSelected()];
             }
-            _controller.PopulateDownloads(_mediaUrlInfo!, (MediaFileType)_fileTypeRow.GetSelected(), quality, resolution, (Subtitle)_subtitleRow.GetSelected(), _saveFolderString, _overwriteSwitch.GetActive(), _speedLimitSwitch.GetActive(), _cropThumbnailSwitch.GetActive());
+            _controller.PopulateDownloads(_mediaUrlInfo!, fileType, quality, resolution, (Subtitle)_subtitleRow.GetSelected(), _saveFolderString, _overwriteSwitch.GetActive(), _speedLimitSwitch.GetActive(), _cropThumbnailSwitch.GetActive());
             OnDownload?.Invoke(this, EventArgs.Empty);
         };
         _addDownloadButton.SetSensitive(false);
@@ -289,7 +305,7 @@ public partial class AddDownloadDialog : Adw.Window
     /// </summary>
     private void SetQualityRowModel()
     {
-        if (((MediaFileType)_fileTypeRow.GetSelected()).GetIsVideo())
+        if (((MediaFileType)_fileTypeRow.GetSelected()).GetIsVideo() && !_audioOnly)
         {
             _qualityRow.SetModel(Gtk.StringList.New(_videoQualityList.ToArray()));
             _subtitleRow.SetSensitive(true);
