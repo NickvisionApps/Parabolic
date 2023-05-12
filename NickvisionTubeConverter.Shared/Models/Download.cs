@@ -1,4 +1,5 @@
 ﻿using NickvisionTubeConverter.Shared.Helpers;
+using Python.Runtime;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -150,7 +151,7 @@ public class Download
     {
         if (!IsRunning)
         {
-            using (Python.Runtime.Py.GIL())
+            using (Py.GIL())
             {
                 IsRunning = true;
                 IsDone = false;
@@ -181,9 +182,9 @@ public class Download
                 Directory.CreateDirectory(_tempDownloadPath);
                 _outFile = PythonHelpers.SetConsoleOutputFilePath(_logPath);
                 //Setup download params
-                var hooks = new List<Action<Python.Runtime.PyDict>>();
+                var hooks = new List<Action<PyDict>>();
                 hooks.Add(ProgressHook);
-                var postHooks = new List<Action<Python.Runtime.PyString>>();
+                var postHooks = new List<Action<PyString>>();
                 if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
                 {
                     postHooks.Add(UnescapeHook);
@@ -216,12 +217,12 @@ public class Download
                     };
                     _ariaKeeper.Start();
                     _ytOpt.Add("external_downloader", new Dictionary<string, dynamic>() { { "default", DependencyManager.Aria2Path } });
-                    dynamic ariaDict = new Python.Runtime.PyDict();
-                    dynamic ariaParams = new Python.Runtime.PyList();
-                    ariaParams.Append(new Python.Runtime.PyString($"--max-overall-download-limit={(_limitSpeed ? _speedLimit : 0)}K"));
-                    ariaParams.Append(new Python.Runtime.PyString("--allow-overwrite=true"));
-                    ariaParams.Append(new Python.Runtime.PyString("--show-console-readout=false"));
-                    ariaParams.Append(new Python.Runtime.PyString($"--stop-with-process={_ariaKeeper.Id}"));
+                    dynamic ariaDict = new PyDict();
+                    dynamic ariaParams = new PyList();
+                    ariaParams.Append(new PyString($"--max-overall-download-limit={(_limitSpeed ? _speedLimit : 0)}K"));
+                    ariaParams.Append(new PyString("--allow-overwrite=true"));
+                    ariaParams.Append(new PyString("--show-console-readout=false"));
+                    ariaParams.Append(new PyString($"--stop-with-process={_ariaKeeper.Id}"));
                     ariaDict["default"] = ariaParams;
                     _ytOpt.Add("external_downloader_args", ariaDict);
                 }
@@ -263,10 +264,10 @@ public class Download
                         postProcessors.Add(new Dictionary<string, dynamic>() { { "key", "TCEmbedThumbnail" } });
                         if (_cropThumbnail)
                         {
-                            dynamic cropDict = new Python.Runtime.PyDict();
-                            dynamic cropParams = new Python.Runtime.PyList();
-                            cropParams.Append(new Python.Runtime.PyString("-vf"));
-                            cropParams.Append(new Python.Runtime.PyString("crop=\'if(gt(ih,iw),iw,ih)\':\'if(gt(iw,ih),ih,iw)\'"));
+                            dynamic cropDict = new PyDict();
+                            dynamic cropParams = new PyList();
+                            cropParams.Append(new PyString("-vf"));
+                            cropParams.Append(new PyString("crop=\'if(gt(ih,iw),iw,ih)\':\'if(gt(iw,ih),ih,iw)\'"));
                             cropDict["thumbnailsconvertor"] = cropParams;
                             _ytOpt.Add("postprocessor_args", cropDict);
                         }
@@ -283,14 +284,14 @@ public class Download
             {
                 try
                 {
-                    using (Python.Runtime.Py.GIL())
+                    using (Py.GIL())
                     {
-                        _pid = Python.Runtime.PythonEngine.GetPythonThreadID();
-                        var paths = new Python.Runtime.PyDict();
-                        paths["home"] = new Python.Runtime.PyString($"{SaveFolder}{Path.DirectorySeparatorChar}");
-                        paths["temp"] = new Python.Runtime.PyString(_tempDownloadPath);
+                        _pid = PythonEngine.GetPythonThreadID();
+                        var paths = new PyDict();
+                        paths["home"] = new PyString($"{SaveFolder}{Path.DirectorySeparatorChar}");
+                        paths["temp"] = new PyString(_tempDownloadPath);
                         _ytOpt.Add("paths", paths);
-                        dynamic ytdlp = Python.Runtime.Py.Import("yt_dlp");
+                        dynamic ytdlp = Py.Import("yt_dlp");
                         if (useAria)
                         {
                             ProgressChanged?.Invoke(this, new DownloadProgressState()
@@ -301,7 +302,7 @@ public class Download
                                 Log = localizer["StartAria"]
                             });
                         }
-                        Python.Runtime.PyObject success_code = ytdlp.YoutubeDL(_ytOpt).download(new List<string>() { MediaUrl });
+                        PyObject success_code = ytdlp.YoutubeDL(_ytOpt).download(new List<string>() { MediaUrl });
                         if ((success_code.As<int?>() ?? 1) != 0)
                         {
                             Filename = Regex.Unescape(Filename);
@@ -345,9 +346,9 @@ public class Download
             if (_pid != null)
             {
                 KillAriaKeeper();
-                using (Python.Runtime.Py.GIL())
+                using (Py.GIL())
                 {
-                    Python.Runtime.PythonEngine.Interrupt(_pid.Value);
+                    PythonEngine.Interrupt(_pid.Value);
                 }
             }
             IsDone = true;
@@ -400,12 +401,12 @@ public class Download
     /// <summary>
     /// Handles progress of the download
     /// </summary>
-    /// <param name="entries">Python.Runtime.PyDict</param>
-    private void ProgressHook(Python.Runtime.PyDict entries)
+    /// <param name="entries">PyDict</param>
+    private void ProgressHook(PyDict entries)
     {
         if (ProgressChanged != null)
         {
-            using (Python.Runtime.Py.GIL())
+            using (Py.GIL())
             {
                 var downloaded = entries.HasKey("downloaded_bytes") ? (entries["downloaded_bytes"].As<double?>() ?? 0) : 0;
                 var total = 1.0;
@@ -444,10 +445,10 @@ public class Download
     /// <summary>
     /// Unescape filename after downloading
     /// </summary>
-    /// <param name="path">Python.Runtime.PyString</param>
-    private void UnescapeHook(Python.Runtime.PyString path)
+    /// <param name="path">PyString</param>
+    private void UnescapeHook(PyString path)
     {
-        using (Python.Runtime.Py.GIL())
+        using (Py.GIL())
         {
             Filename = Regex.Unescape(Filename);
             var directory = Path.GetDirectoryName(path.As<string>());

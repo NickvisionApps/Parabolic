@@ -3,6 +3,7 @@ using NickvisionTubeConverter.GNOME.Helpers;
 using NickvisionTubeConverter.Shared.Controllers;
 using NickvisionTubeConverter.Shared.Events;
 using NickvisionTubeConverter.Shared.Models;
+using Python.Runtime;
 using System;
 using System.Diagnostics;
 using System.Globalization;
@@ -645,9 +646,9 @@ public partial class MainWindow : Adw.ApplicationWindow
         {
             debugInfo.AppendLine("Snap");
         }
-        using (Python.Runtime.Py.GIL())
+        using (Py.GIL())
         {
-            dynamic yt_dlp = Python.Runtime.Py.Import("yt_dlp");
+            dynamic yt_dlp = Py.Import("yt_dlp");
             debugInfo.AppendLine($"yt-dlp {yt_dlp.version.__version__.As<string>()}");
         }
         var ffmpegProcess = new Process

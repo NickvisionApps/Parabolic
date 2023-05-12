@@ -1,4 +1,5 @@
 ﻿using NickvisionTubeConverter.Shared.Models;
+using Python.Runtime;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -174,7 +175,7 @@ internal static class DependencyManager
             }
             else if (File.Exists(Environment.GetEnvironmentVariable("TC_PYTHON_SO")))
             {
-                Python.Runtime.Runtime.PythonDLL = Environment.GetEnvironmentVariable("TC_PYTHON_SO");
+                Runtime.PythonDLL = Environment.GetEnvironmentVariable("TC_PYTHON_SO");
             }
             else
             {
@@ -189,7 +190,7 @@ internal static class DependencyManager
                     }
                 };
                 process.Start();
-                Python.Runtime.Runtime.PythonDLL = process.StandardOutput.ReadToEnd().Trim();
+                Runtime.PythonDLL = process.StandardOutput.ReadToEnd().Trim();
                 process.WaitForExit();
             }
             // Install yt-dlp plugin

@@ -1,4 +1,5 @@
 ﻿using NickvisionTubeConverter.Shared.Helpers;
+using Python.Runtime;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -50,16 +51,16 @@ public class MediaUrlInfo
             try
             {
                 var mediaUrlInfo = new MediaUrlInfo(url);
-                using (Python.Runtime.Py.GIL())
+                using (Py.GIL())
                 {
-                    dynamic ytdlp = Python.Runtime.Py.Import("yt_dlp");
+                    dynamic ytdlp = Py.Import("yt_dlp");
                     var ytOpt = new Dictionary<string, dynamic>() {
                         { "quiet", true },
                         { "merge_output_format", "/" },
                         { "windowsfilenames", RuntimeInformation.IsOSPlatform(OSPlatform.Windows) },
                         { "ignoreerrors", true }
                     };
-                    Python.Runtime.PyDict? mediaInfo = ytdlp.YoutubeDL(ytOpt).extract_info(url, download: false);
+                    PyDict? mediaInfo = ytdlp.YoutubeDL(ytOpt).extract_info(url, download: false);
                     if (mediaInfo == null)
                     {
                         outFile.close();
@@ -67,13 +68,13 @@ public class MediaUrlInfo
                     }
                     if (mediaInfo.HasKey("entries"))
                     {
-                        foreach (var e in mediaInfo["entries"].As<Python.Runtime.PyList>())
+                        foreach (var e in mediaInfo["entries"].As<PyList>())
                         {
                             if (e.IsNone())
                             {
                                 continue;
                             }
-                            mediaUrlInfo.ParseFromPyDict(e.As<Python.Runtime.PyDict>(), true);
+                            mediaUrlInfo.ParseFromPyDict(e.As<PyDict>(), true);
                         }
                     }
                     else
@@ -87,7 +88,7 @@ public class MediaUrlInfo
             catch (Exception e)
             {
                 Console.WriteLine(e);
-                using (Python.Runtime.Py.GIL())
+                using (Py.GIL())
                 {
                     outFile.close();
                 }
@@ -96,16 +97,16 @@ public class MediaUrlInfo
         });
     }
 
-    private void ParseFromPyDict(Python.Runtime.PyDict mediaInfo, bool isPartOfPlaylist = false)
+    private void ParseFromPyDict(PyDict mediaInfo, bool isPartOfPlaylist = false)
     {
         var title = mediaInfo.HasKey("title") ? (mediaInfo["title"].As<string?>() ?? "Media") : "Media";
         foreach (var c in Path.GetInvalidFileNameChars())
         {
             title = title.Replace(c, '_');
         }
-        foreach (var f in mediaInfo["formats"].As<Python.Runtime.PyList>())
+        foreach (var f in mediaInfo["formats"].As<PyList>())
         {
-            var format = f.As<Python.Runtime.PyDict>();
+            var format = f.As<PyDict>();
             if (format.HasKey("vbr"))
             {
                 var resolution = new VideoResolution(format["width"].As<int>(), format["height"].As<int>());

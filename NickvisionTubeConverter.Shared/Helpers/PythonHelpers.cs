@@ -1,5 +1,6 @@
 ﻿using NickvisionTubeConverter.Shared.Controllers;
 using NickvisionTubeConverter.Shared.Models;
+using Python.Runtime;
 using System;
 using System.IO;
 using System.Runtime.InteropServices;
@@ -36,7 +37,7 @@ public static class PythonHelpers
             {
                 Python.Deployment.Installer.InstallPath = pythonDirPath;
                 Python.Deployment.Installer.Source = new Python.Deployment.Installer.DownloadInstallationSource() { DownloadUrl = $"https://www.python.org/ftp/python/3.11.3/{pythonType}.zip" };
-                Python.Runtime.Runtime.PythonDLL = pythonDllPath;
+                Runtime.PythonDLL = pythonDllPath;
                 if (Directory.Exists(pythonLibPath))
                 {
                     Directory.Delete(pythonLibPath, true);
@@ -50,7 +51,7 @@ public static class PythonHelpers
             }
             else
             {
-                Python.Runtime.Runtime.PythonDLL = pythonDllPath;
+                Runtime.PythonDLL = pythonDllPath;
             }
             return $"{pythonDirPath}{pythonType}{Path.DirectorySeparatorChar}python.exe";
         }
@@ -64,10 +65,10 @@ public static class PythonHelpers
     /// <returns>The file handle object</returns>
     public static dynamic SetConsoleOutputFilePath(string path)
     {
-        using (Python.Runtime.Py.GIL())
+        using (Py.GIL())
         {
-            dynamic sys = Python.Runtime.Py.Import("sys");
-            dynamic file = Python.Runtime.PythonEngine.Eval($"open(\"{Regex.Replace(path, @"\\", @"\\")}\", \"w\")");
+            dynamic sys = Py.Import("sys");
+            dynamic file = PythonEngine.Eval($"open(\"{Regex.Replace(path, @"\\", @"\\")}\", \"w\")");
             sys.stdout = file;
             sys.stderr = file;
             return file;
