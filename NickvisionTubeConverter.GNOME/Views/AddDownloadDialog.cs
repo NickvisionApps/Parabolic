@@ -106,7 +106,7 @@ public partial class AddDownloadDialog : Adw.Window
         _mediaUrlInfo = null;
         _saveCallback = null;
         _mediaRows = new List<MediaRow>();
-        _audioQualityArray = new string[] { _controller.Localizer["AudioQuality", "Best"], _controller.Localizer["AudioQuality", "Worst"] };
+        _audioQualityArray = new string[] { _controller.Localizer["Quality", "Best"], _controller.Localizer["Quality", "Worst"] };
         _startSearchCallback = (x) =>
         {
             _urlSpinner = Gtk.Spinner.New();
