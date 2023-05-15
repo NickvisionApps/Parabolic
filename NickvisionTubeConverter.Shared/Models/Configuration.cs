@@ -98,6 +98,10 @@ public class Configuration
         {
             Directory.CreateDirectory(ConfigDir);
         }
+        if (!string.IsNullOrEmpty(Environment.GetEnvironmentVariable("SNAP_USER_COMMON")))
+        {
+        PreviousSaveFolder = Environment.GetEnvironmentVariable("SNAP_USER_COMMON");
+        }
         Theme = Theme.System;
         PreviousSaveFolder = Environment.GetFolderPath(Environment.SpecialFolder.MyVideos);
         PreviousMediaFileType = MediaFileType.MP4;
