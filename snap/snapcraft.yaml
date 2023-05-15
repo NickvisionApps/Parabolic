@@ -51,38 +51,38 @@ parts:
   #    - -bin/pip3
   #    - -bin/pip3.10
   #    - -pyvenv.cfg
-  ffmpeg:
-    after: [ yt-dlp ]
-    # WORKAROUND:
-    # Build from source because the ffmpeg package installs libraries as dependencies
-    # that conflict with the Gnome extension
-    plugin: autotools
-    source: https://ffmpeg.org/releases/ffmpeg-6.0.tar.xz
-    source-checksum: sha256/57be87c22d9b49c112b6d24bc67d42508660e6b718b3db89c44e47e289137082
-    autotools-configure-parameters:
-      # WORKAROUND: Install to /usr instead of /usr/local because it's not in search paths
-      - --prefix=/usr
-      - --disable-debug
-      - --disable-doc
-      - --disable-static
-      - --enable-gpl
-      - --enable-shared
-      - --disable-ffplay
-      - --disable-devices
-      - --enable-gnutls
-      - --enable-libmp3lame
-      - --enable-libvorbis
-    build-packages:
-      - nasm
-      - libgnutls28-dev
-      - libmp3lame-dev
-      - libvorbis-dev
-    stage-packages:
-      - libmp3lame0
-    prime:
-      - -usr/include
+  #ffmpeg:
+  #  after: [ yt-dlp ]
+  #  # WORKAROUND:
+  #  # Build from source because the ffmpeg package installs libraries as dependencies
+  #  # that conflict with the Gnome extension
+  #  plugin: autotools
+  #  source: https://ffmpeg.org/releases/ffmpeg-6.0.tar.xz
+  #  source-checksum: sha256/57be87c22d9b49c112b6d24bc67d42508660e6b718b3db89c44e47e289137082
+  #  autotools-configure-parameters:
+  #    # WORKAROUND: Install to /usr instead of /usr/local because it's not in search paths
+  #    - --prefix=/usr
+  #    - --disable-debug
+  #    - --disable-doc
+  #    - --disable-static
+  #    - --enable-gpl
+  #    - --enable-shared
+  #    - --disable-ffplay
+  #    - --disable-devices
+  #    - --enable-gnutls
+  #    - --enable-libmp3lame
+  #    - --enable-libvorbis
+  #  build-packages:
+  #    - nasm
+  #    - libgnutls28-dev
+  #    - libmp3lame-dev
+  #    - libvorbis-dev
+  #  stage-packages:
+  #    - libmp3lame0
+  #  prime:
+  #    - -usr/include
   tube-converter:
-    after: [ ffmpeg, yt-dlp ]
+    #after: [ ffmpeg, yt-dlp ]
     plugin: dump
     source: .
     source-subdir: NickvisionTubeConverter.GNOME
@@ -95,6 +95,8 @@ parts:
       - cargo
     stage-packages:
       - aria2
+    stage-snaps:
+      - ffmpeg/latest/edge
     override-pull: |
       craftctl default
       cargo install just
@@ -120,10 +122,6 @@ slots:
     interface: dbus
     bus: session
     name: org.nickvision.tubeconverter    
-  #unity:
-  #  interface: dbus
-  #  bus: session
-  #  name: com.canonical.Unity
 
 apps:
   tube-converter:
