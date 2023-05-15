@@ -26,33 +26,33 @@ layout:
     bind-file: $SNAP/gnome-platform/usr/lib/$CRAFT_ARCH_TRIPLET/libpython3.10.so.1.0
 
 parts:
-  yt-dlp:
-    # Missing optional dependencies atomicparsley, mpv, phantomjs and rtmpdump
-    plugin: python
-    source: https://github.com/yt-dlp/yt-dlp.git
-    source-tag: 2023.03.04
-    build-environment:
-      # WORKAROUND: The python plugin is broken with gnome extension
-      - PATH: ${CRAFT_PART_INSTALL}/bin:${PATH}
-      - PYTHONPATH: ""
-    override-pull: |
-      craftctl default
-      sed -i 's/^certifi\b/#\0/' requirements.txt
-    stage:
-      # WORKAROUND: Skip venv from python plugin
-      - -bin/activate
-      - -bin/activate.csh
-      - -bin/activate.fish
-      - -bin/Activate.ps1
-      - -bin/python
-      - -bin/python3
-      - -bin/python3.10
-      - -bin/pip
-      - -bin/pip3
-      - -bin/pip3.10
-      - -pyvenv.cfg
+  #yt-dlp:
+  #  # Missing optional dependencies atomicparsley, mpv, phantomjs and rtmpdump
+  #  plugin: python
+  #  source: https://github.com/yt-dlp/yt-dlp.git
+  #  source-tag: 2023.03.04
+  #  build-environment:
+  #    # WORKAROUND: The python plugin is broken with gnome extension
+  #    - PATH: ${CRAFT_PART_INSTALL}/bin:${PATH}
+  #    - PYTHONPATH: ""
+  #  override-pull: |
+  #    craftctl default
+  #    sed -i 's/^certifi\b/#\0/' requirements.txt
+  #  stage:
+  #    # WORKAROUND: Skip venv from python plugin
+  #    - -bin/activate
+  #    - -bin/activate.csh
+  #    - -bin/activate.fish
+  #    - -bin/Activate.ps1
+  #    - -bin/python
+  #    - -bin/python3
+  #    - -bin/python3.10
+  #    - -bin/pip
+  #    - -bin/pip3
+  #    - -bin/pip3.10
+  #    - -pyvenv.cfg
   ffmpeg:
-    after: [ yt-dlp ]
+    #after: [ yt-dlp ]
     # WORKAROUND:
     # Build from source because the ffmpeg package installs libraries as dependencies
     # that conflict with the Gnome extension
@@ -81,8 +81,10 @@ parts:
       - libmp3lame0
     prime:
       - -usr/include
+      - -usr/share/ffmpeg
+      - -usr/lib/pkgconfig
   tube-converter:
-    after: [ ffmpeg, yt-dlp ]
+    after: [ ffmpeg ]
     plugin: dump
     source: .
     source-subdir: NickvisionTubeConverter.GNOME
@@ -95,6 +97,14 @@ parts:
       - cargo
     stage-packages:
       - aria2
+      - libunity9
+      - libunity-tools
+      - libunity-protocol-private0
+      - libunity-scopes-json-def-phone
+      - unity-scopes-runner
+      - libdbusmenu-glib4
+      - libdbusmenu-jsonloader4
+      - libdbusmenu-gtk3-4
     override-pull: |
       craftctl default
       cargo install just
@@ -109,17 +119,24 @@ parts:
       just publish-self-contained /usr
       just install $CRAFT_PRIME
       sed -i "2 i export TC_PYTHON_SO=$TC_PYTHON_SO" $CRAFT_PRIME/usr/bin/org.nickvision.tubeconverter
-      sed -i "s|Exec=/usr/bin/org.nickvision.tubeconverter --gapplication-service|Exec=/snap/tube-converter/current/usr/bin/org.nickvision.tubeconverter --gapplication-service|" $CRAFT_PRIME/usr/share/dbus-1/services/org.nickvision.tubeconverter.service
+      pip install --target=$CRAFT_PART_INSTALL/usr/lib/python3.10/site-packages yt-dlp
     parse-info: [usr/share/metainfo/org.nickvision.tubeconverter.metainfo.xml]
     prime:
       - usr/*
+      - -usr/lib/$CRAFT_ARCH_TRIPLET
+      - -usr/lib/libssh*
+      - -usr/share/doc
+      - -usr/share/locale
+      - -usr/lib/python3/dist-packages/gi/overrides/Unity.py
+      - -usr/share/man
+      - -usr/share/locale/*/*/aria2.mo
 
 slots:
   # for GtkApplication registration
   tube-converter:
     interface: dbus
     bus: session
-    name: org.nickvision.tubeconverter    
+    name: org.nickvision.tubeconverter
   #unity:
   #  interface: dbus
   #  bus: session
@@ -134,7 +151,7 @@ apps:
     desktop: usr/share/applications/org.nickvision.tubeconverter.desktop
     environment:
       TC_PYTHON_SO: $SNAP/gnome-platform/usr/lib/$CRAFT_ARCH_TRIPLET/libpython3.10.so.1.0
-      PYTHONPATH: $SNAP/lib/python3.10/site-packages:$PYTHONPATH
+      PYTHONPATH: $SNAP/usr/lib/python3.10/site-packages:$PYTHONPATH
     plugs:
       - network
       - network-status
