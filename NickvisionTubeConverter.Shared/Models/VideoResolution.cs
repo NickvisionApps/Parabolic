@@ -28,6 +28,10 @@ public class VideoResolution : IComparable<VideoResolution>
         Height = height;
     }
 
+    /// <summary>
+    /// Gets a string representation of a VideoResolution
+    /// </summary>
+    /// <returns>The string representation of the VideoResolution</returns>
     public override string ToString() => $"{Width}x{Height}";
 
     /// <summary>

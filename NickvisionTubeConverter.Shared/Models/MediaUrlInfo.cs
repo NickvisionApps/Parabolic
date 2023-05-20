@@ -97,6 +97,11 @@ public class MediaUrlInfo
         });
     }
 
+    /// <summary>
+    /// Adds data retrieved from yt-dlp to MediaInfo
+    /// </summary>
+    /// <param name="mediaInfo">Python dictionary with media info</param>
+    /// <param name="isPartOfPlaylist">Whether or not the media is part of a playlist</param>
     private void ParseFromPyDict(PyDict mediaInfo, bool isPartOfPlaylist = false)
     {
         var title = mediaInfo.HasKey("title") ? (mediaInfo["title"].As<string?>() ?? "Media") : "Media";
