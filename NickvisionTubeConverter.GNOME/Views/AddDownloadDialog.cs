@@ -69,6 +69,7 @@ public partial class AddDownloadDialog : Adw.Window
     [Gtk.Connect] private readonly Gtk.Button _addDownloadButton;
     [Gtk.Connect] private readonly Gtk.Box _downloadPage;
     [Gtk.Connect] private readonly Gtk.Button _backButton;
+    [Gtk.Connect] private readonly Gtk.ScrolledWindow _scrolledWindow;
     [Gtk.Connect] private readonly Adw.ComboRow _fileTypeRow;
     [Gtk.Connect] private readonly Adw.ComboRow _qualityRow;
     [Gtk.Connect] private readonly Adw.ComboRow _subtitleRow;
@@ -79,6 +80,9 @@ public partial class AddDownloadDialog : Adw.Window
     [Gtk.Connect] private readonly Gtk.Switch _speedLimitSwitch;
     [Gtk.Connect] private readonly Adw.ActionRow _cropThumbnailRow;
     [Gtk.Connect] private readonly Gtk.Switch _cropThumbnailSwitch;
+    [Gtk.Connect] private readonly Adw.ExpanderRow _downloadTimeframeRow;
+    [Gtk.Connect] private readonly Adw.EntryRow _timeframeStartRow;
+    [Gtk.Connect] private readonly Adw.EntryRow _timeframeEndRow;
     [Gtk.Connect] private readonly Adw.PreferencesGroup _mediaGroup;
     [Gtk.Connect] private readonly Adw.PreferencesGroup _openPlaylistGroup;
     [Gtk.Connect] private readonly Adw.ActionRow _openPlaylistRow;
@@ -91,6 +95,7 @@ public partial class AddDownloadDialog : Adw.Window
     private readonly string[] _audioQualityArray;
     private List<string>? _videoQualityList;
     private bool _audioOnly;
+    private double _singleMediaDuration;
 
     public event EventHandler? OnDownload;
 
@@ -108,6 +113,7 @@ public partial class AddDownloadDialog : Adw.Window
         _saveCallback = null;
         _mediaRows = new List<MediaRow>();
         _audioOnly = false;
+        _singleMediaDuration = 0;
         _audioQualityArray = new string[] { _controller.Localizer["Quality", "Best"], _controller.Localizer["Quality", "Worst"] };
         _startSearchCallback = (x) =>
         {
@@ -162,18 +168,21 @@ public partial class AddDownloadDialog : Adw.Window
                         row.OnSelectionChanged += PlaylistChanged;
                         _playlistGroup.Add(row);
                     }
+                    _downloadTimeframeRow.SetVisible(false);
                     _openPlaylistGroup.SetVisible(true);
                     _openPlaylistRow.SetTitle(string.Format(_controller.Localizer["Playlist", "Count"], _mediaUrlInfo.MediaList.Count, _mediaUrlInfo.MediaList.Count));
                     _qualityRow.SetTitle(_controller.Localizer["MaxQuality", "Field"]);
                 }
                 else
                 {
+                    _singleMediaDuration = _mediaUrlInfo.MediaList[0].Duration;
                     var row = new MediaRow(_mediaUrlInfo.MediaList[0], _controller.Localizer);
                     _mediaRows.Add(row);
                     _mediaGroup.SetVisible(true);
                     _mediaGroup.Add(row);
                 }
             }
+            ValidateOptions();
             return false;
         };
         //Dialog Settings
@@ -196,6 +205,17 @@ public partial class AddDownloadDialog : Adw.Window
             _viewStack.SetVisibleChildName("pageDownload");
             SetDefaultWidget(_addDownloadButton);
         };
+        var vadjustment = _scrolledWindow.GetVadjustment();
+        vadjustment.OnNotify += (sender, e) =>
+        {
+            if (e.Pspec.GetName() == "upper")
+            {
+                if (vadjustment.GetPageSize() < vadjustment.GetUpper())
+                {
+                    _scrolledWindow.AddCssClass("scrolled-window");
+                }
+            }
+        };
         _fileTypeRow.OnNotify += (sender, e) =>
         {
             if (e.Pspec.GetName() == "selected-item")
@@ -204,7 +224,46 @@ public partial class AddDownloadDialog : Adw.Window
             }
         };
         _selectSaveFolderButton.OnClicked += SelectSaveFolder;
+        _speedLimitSwitch.OnNotify += (sender, e) =>
+        {
+            if (e.Pspec.GetName() == "active")
+            {
+                if (_speedLimitSwitch.GetActive())
+                {
+                    _downloadTimeframeRow.SetExpanded(false);
+                }
+                _downloadTimeframeRow.SetSensitive(!_speedLimitSwitch.GetActive());
+            }
+        };
         _cropThumbnailRow.SetVisible(_controller.EmbedMetadata);
+        _downloadTimeframeRow.OnNotify += (sender, e) =>
+        {
+            if (e.Pspec.GetName() == "expanded")
+            {
+                if (_downloadTimeframeRow.GetExpanded())
+                {
+                    _speedLimitSwitch.SetActive(false);
+                    _timeframeStartRow.SetText(TimeSpan.FromSeconds(0).ToString(@"hh\:mm\:ss"));
+                    _timeframeEndRow.SetText(TimeSpan.FromSeconds(_singleMediaDuration).ToString(@"hh\:mm\:ss"));
+                }
+                _speedLimitRow.SetSensitive(!_downloadTimeframeRow.GetExpanded());
+                ValidateOptions();
+            }
+        };
+        _timeframeStartRow.OnNotify += (sender, e) =>
+        {
+            if (e.Pspec.GetName() == "text")
+            {
+                ValidateOptions();
+            }
+        };
+        _timeframeEndRow.OnNotify += (sender, e) =>
+        {
+            if (e.Pspec.GetName() == "text")
+            {
+                ValidateOptions();
+            }
+        };
         _openPlaylistRow.OnActivated += (sender, e) => _viewStack.SetVisibleChildName("pagePlaylist");
         _numberTitlesButton.OnClicked += ToggleNumberTitles;
         _playlist.GetVadjustment().OnNotify += (sender, e) =>
@@ -259,9 +318,6 @@ public partial class AddDownloadDialog : Adw.Window
         }
         else
         {
-            _saveFolderRow.SetTitle(_controller.Localizer["SaveFolder.Invalid"]);
-            _saveFolderRow.AddCssClass("error");
-            _addDownloadButton.SetSensitive(false);
             _saveFolderString = "";
         }
         _saveFolderRow.SetText(Path.GetFileName(_saveFolderString) ?? "");
@@ -298,6 +354,41 @@ public partial class AddDownloadDialog : Adw.Window
             }
         });
         g_main_context_invoke(0, _finishSearchCallback, 0);
+    }
+
+    /// <summary>
+    /// Validate download options
+    /// </summary>
+    private void ValidateOptions()
+    {
+        _saveFolderRow.RemoveCssClass("error");
+        _saveFolderRow.SetTitle(_controller.Localizer["SaveFolder.Field"]);
+        _timeframeStartRow.RemoveCssClass("error");
+        _timeframeStartRow.SetTitle(_controller.Localizer["DownloadTimeframeStart.Field"]);
+        _timeframeEndRow.RemoveCssClass("error");
+        _timeframeEndRow.SetTitle(_controller.Localizer["DownloadTimeframeEnd.Field"]);
+        _addDownloadButton.SetSensitive(false);
+        var status = _controller.CheckDownloadOptions(_saveFolderString, _downloadTimeframeRow.GetExpanded(), _timeframeStartRow.GetText(), _timeframeEndRow.GetText(), _singleMediaDuration);
+        if (status == DownloadOptionsCheckStatus.Valid)
+        {
+            _addDownloadButton.SetSensitive(true);
+            return;
+        }
+        if (status.HasFlag(DownloadOptionsCheckStatus.InvalidSaveFolder))
+        {
+            _saveFolderRow.SetTitle(_controller.Localizer["SaveFolder.Invalid"]);
+            _saveFolderRow.AddCssClass("error");
+        }
+        if (status.HasFlag(DownloadOptionsCheckStatus.InvalidTimeframeStart))
+        {
+            _timeframeStartRow.SetTitle(_controller.Localizer["DownloadTimeframeStart.Invalid"]);
+            _timeframeStartRow.AddCssClass("error");
+        }
+        if (status.HasFlag(DownloadOptionsCheckStatus.InvalidTimeframeEnd))
+        {
+            _timeframeEndRow.SetTitle(_controller.Localizer["DownloadTimeframeEnd.Invalid"]);
+            _timeframeEndRow.AddCssClass("error");
+        }
     }
 
     /// <summary>
@@ -342,6 +433,7 @@ public partial class AddDownloadDialog : Adw.Window
                 _saveFolderRow.RemoveCssClass("error");
                 _addDownloadButton.SetSensitive(true);
             }
+            ValidateOptions();
         };
         gtk_file_dialog_select_folder(folderDialog, Handle, IntPtr.Zero, _saveCallback, IntPtr.Zero);
     }

@@ -20,6 +20,10 @@ public class MediaInfo : INotifyPropertyChanged
     /// </summary>
     public string OriginalTitle { get; init; }
     /// <summary>
+    /// Media duration in seconds
+    /// </summary>
+    public double Duration { get; init; }
+    /// <summary>
     /// Whether or not the media is part of a playlist 
     /// </summary>
     public bool IsPartOfPlaylist { get; init; }
@@ -32,12 +36,13 @@ public class MediaInfo : INotifyPropertyChanged
     /// <param name="url">The url of the media</param>
     /// <param name="title">The title of the media</param>
     /// <param name="partOfPlaylist">Whether or not the media is part of a playlist</param>
-    public MediaInfo(string url, string title, bool partOfPlaylist = false)
+    public MediaInfo(string url, string title, double duration, bool partOfPlaylist = false)
     {
         _title = title;
         _toDownload = true;
         Url = url;
         OriginalTitle = title;
+        Duration = duration;
         IsPartOfPlaylist = partOfPlaylist;
     }
 

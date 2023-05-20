@@ -1,6 +1,8 @@
 using NickvisionTubeConverter.Shared.Helpers;
 using NickvisionTubeConverter.Shared.Models;
+using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -8,15 +10,15 @@ using System.Threading.Tasks;
 namespace NickvisionTubeConverter.Shared.Controllers;
 
 /// <summary>
-/// Statuses for when a download is checked
+/// Statuses for when a download options are checked
 /// </summary>
-public enum DownloadCheckStatus
+[Flags]
+public enum DownloadOptionsCheckStatus
 {
     Valid = 1,
-    EmptyMediaUrl = 2,
-    InvalidMediaUrl = 4,
-    InvalidSaveFolder = 8,
-    PlaylistNotSupported = 16
+    InvalidSaveFolder = 2,
+    InvalidTimeframeStart = 4,
+    InvalidTimeframeEnd = 8
 }
 
 /// <summary>
@@ -92,6 +94,47 @@ public class AddDownloadDialogController
                 }
             }
         }
+    }
+
+    /// <summary>
+    /// Check that download options are valid
+    /// </summary>
+    /// <param name="saveFolder">Save folder path</param>
+    /// <param name="downloadTimeframe">Whether or not to download a specific timeframe</param>
+    /// <param name="timeframeStart">Download timeframe start string</param>
+    /// <param name="timeframeEnd">Download timeframe end string</param>
+    /// <returns>DownloadOptionsCheckStatus</returns>
+    public DownloadOptionsCheckStatus CheckDownloadOptions(string saveFolder, bool downloadTimeframe, string timeframeStart, string timeframeEnd, double duration)
+    {
+        DownloadOptionsCheckStatus result = 0;
+        if (!Directory.Exists(saveFolder))
+        {
+            result |= DownloadOptionsCheckStatus.InvalidSaveFolder;
+        }
+        if (downloadTimeframe)
+        {
+            var startTimeParsed = true;
+            var startTime = TimeSpan.FromSeconds(0);
+            if (!string.IsNullOrEmpty(timeframeStart))
+            {
+                startTimeParsed = TimeSpan.TryParse(timeframeStart, CultureInfo.CurrentCulture, out startTime);
+            }
+            if (!startTimeParsed || startTime < TimeSpan.FromSeconds(0))
+            {
+                result |= DownloadOptionsCheckStatus.InvalidTimeframeStart;
+            }
+            var endTimeParsed = true;
+            var endTime = TimeSpan.FromSeconds(duration);
+            if (!string.IsNullOrEmpty(timeframeEnd))
+            {
+                endTimeParsed = TimeSpan.TryParse(timeframeEnd, CultureInfo.CurrentCulture, out endTime);
+            }
+            if (!endTimeParsed || endTime < startTime + TimeSpan.FromSeconds(1) || endTime > TimeSpan.FromSeconds(duration))
+            {
+                result |= DownloadOptionsCheckStatus.InvalidTimeframeEnd;
+            }
+        }
+        return result == 0 ? DownloadOptionsCheckStatus.Valid : result;
     }
 
     /// <summary>
