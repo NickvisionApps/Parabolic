@@ -115,7 +115,7 @@ public class MediaUrlInfo
             if (format.HasKey("vbr"))
             {
                 var resolution = new VideoResolution(format["width"].As<int>(), format["height"].As<int>());
-                if (!VideoResolutions.Exists(r => r == resolution))
+                if (!VideoResolutions.Contains(resolution))
                 {
                     VideoResolutions.Add(resolution);
                 }

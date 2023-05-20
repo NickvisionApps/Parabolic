@@ -5,7 +5,7 @@ namespace NickvisionTubeConverter.Shared.Models;
 /// <summary>
 /// A model of an available video resolution
 /// </summary>
-public class VideoResolution : IComparable<VideoResolution>
+public class VideoResolution : IComparable<VideoResolution>, IEquatable<VideoResolution>
 {
     /// <summary>
     /// The resolution width
@@ -93,4 +93,25 @@ public class VideoResolution : IComparable<VideoResolution>
     /// <param name="b">The second VideoResolution object</param>
     /// <returns>True if a < b, else false</returns>
     public static bool operator >(VideoResolution? a, VideoResolution? b) => a?.Width > b?.Width && a?.Height >= b?.Height;
+
+    /// <summary>
+    /// Gets whether or not an object is equal to this VideoResolution
+    /// </summary>
+    /// <param name="obj">The object to compare</param>
+    /// <returns>True if equals, else false</returns>
+    public override bool Equals(object? obj)
+    {
+        if (obj is VideoResolution toCompare)
+        {
+            return Width == toCompare.Width && Height == toCompare.Height;
+        }
+        return false;
+    }
+
+    /// <summary>
+    /// Gets whether or not an object is equal to this VideoResolution
+    /// </summary>
+    /// <param name="obj">The VideoResolution? object to compare</param>
+    /// <returns>True if equals, else false</returns>
+    public bool Equals(VideoResolution? obj) => Equals((object?)obj);
 }
