@@ -87,7 +87,6 @@ parts:
     after: [ ffmpeg ]
     plugin: dump
     source: .
-    source-subdir: NickvisionTubeConverter.GNOME
     build-environment:
       - TC_PYTHON_SO: $SNAP/gnome-platform/usr/lib/$CRAFT_ARCH_TRIPLET/libpython3.10.so.1.0
     build-packages:
