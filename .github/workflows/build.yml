@@ -47,7 +47,7 @@ jobs:
           snapcraft-args: "-v"
       - uses: actions/upload-artifact@v3
         with:
-          name: tube-converter-snap_x86-64
+          name: org.nickvision.tubeconverter-snap-x86_64
           path: ${{ steps.snapcraft-build.outputs.snap }} 
       #- uses: diddlesnaps/snapcraft-review-action@v1
         #with:
