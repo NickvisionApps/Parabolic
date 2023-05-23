@@ -26,7 +26,7 @@ jobs:
       - uses: DaPigGuy/flatpak-github-actions/flatpak-builder@master
         with:
           bundle: org.nickvision.tubeconverter.flatpak
-          manifest-path: NickvisionTubeConverter.GNOME/org.nickvision.tubeconverter.json
+          manifest-path: flatpak/org.nickvision.tubeconverter.json
           cache-key: flatpak-builder-${{ github.sha }}
           arch: ${{ matrix.arch }}
           restore-cache: true
