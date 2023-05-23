@@ -305,7 +305,7 @@
             "name": "org.nickvision.tubeconverter",
             "buildsystem": "simple",
             "build-commands": [
-                "./flatpak/build.sh gnome"
+                "build.sh gnome"
             ],
             "sources": [
                 {
@@ -313,7 +313,7 @@
                     "path": ".."
                 },
                 "cake-sources.json",
-                "../NickvisionApplication.GNOME/nuget-sources.json"
+                "../NickvisionTubeConverter.GNOME/nuget-sources.json"
             ]
         }
     ]
