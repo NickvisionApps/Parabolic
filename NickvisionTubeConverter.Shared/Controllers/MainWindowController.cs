@@ -4,7 +4,6 @@ using NickvisionTubeConverter.Shared.Models;
 using Python.Runtime;
 using System;
 using System.IO;
-using System.Threading.Tasks;
 
 namespace NickvisionTubeConverter.Shared.Controllers;
 
@@ -146,7 +145,7 @@ public class MainWindowController : IDisposable
     /// <summary>
     /// Starts the application
     /// </summary>
-    public async Task StartupAsync()
+    public void Startup()
     {
         Configuration.Current.Saved += ConfigurationSaved;
         DownloadManager.MaxNumberOfActiveDownloads = Configuration.Current.MaxNumberOfActiveDownloads;
@@ -157,7 +156,7 @@ public class MainWindowController : IDisposable
         Directory.CreateDirectory(Configuration.TempDir);
         try
         {
-            var success = await DependencyManager.SetupDependenciesAsync();
+            var success = DependencyManager.SetupDependencies();
             if (!success)
             {
                 NotificationSent?.Invoke(this, new NotificationSentEventArgs(Localizer["DependencyError"], NotificationSeverity.Error));
