@@ -127,55 +127,19 @@ Adw.Window _root {
                         styles ["flat"]
                       }
                     }
-
-                    Adw.ActionRow _overwriteRow {
-                      title: _("OverwriteExistingFiles");
-                      activatable-widget: _overwriteSwitch;
-
-                      [suffix]
-                      Gtk.Switch _overwriteSwitch {
-                        valign: center;
-                        active: true;
-                      }
-                    }
-
-                    Adw.ActionRow _speedLimitRow {
-                      title: _("SpeedLimit");
-                      activatable-widget: _speedLimitSwitch;
+                    
+                    Adw.ActionRow _openAdvancedRow {
+                      title: _("Advanced");
+                      subtitle: _("Advanced.Description");
+                      icon-name: "wrench-wide-symbolic";
+                      activatable-widget: _openAdvancedButton;
 
                       [suffix]
-                      Gtk.Switch _speedLimitSwitch {
+                      Gtk.Button _openAdvancedButton {
                         valign: center;
-                        active: false;
-                      }
-                    }
+                        icon-name: "go-next-symbolic";
 
-                    Adw.ActionRow _cropThumbnailRow {
-                      title: _("Crop.Field");
-                      subtitle: _("Crop.Description");
-                      activatable-widget: _cropThumbnailSwitch;
-
-                      [suffix]
-                      Gtk.Switch _cropThumbnailSwitch {
-                        valign: center;
-                        active: false;
-                      }
-                    }
-
-                    Adw.ExpanderRow _downloadTimeframeRow {
-                      title: _("DownloadTimeframe.Field");
-                      subtitle: _("DownloadTimeframe.Description");
-                      enable-expansion: false;
-                      show-enable-switch: true;
-
-                      Adw.EntryRow _timeframeStartRow {
-                        title: _("DownloadTimeframeStart.Field");
-                        tooltip-text: _("DownloadTimeframeStart.Tooltip");
-                      }
-
-                      Adw.EntryRow _timeframeEndRow {
-                        title: _("DownloadTimeframeEnd.Field");
-                        tooltip-text: _("DownloadTimeframeEnd.Tooltip");
+                        styles ["flat"]
                       }
                     }
                   }
@@ -242,6 +206,77 @@ Adw.Window _root {
                   margin-start: 24;
                   margin-end: 24;
                   margin-bottom: 12;
+                }
+              }
+            };
+          }
+          
+          Adw.ViewStackPage {
+            name: "pageAdvanced";
+            child: Gtk.Box _advancedPage {
+              orientation: vertical;
+              hexpand: true;
+              spacing: 12;
+              
+              Gtk.ScrolledWindow _advanced {
+                vexpand: true;
+
+                Adw.PreferencesGroup _advancedGroup {
+                  margin-top: 2;
+                  margin-start: 24;
+                  margin-end: 24;
+                  margin-bottom: 12;
+                  
+                  Adw.ActionRow _overwriteRow {
+                    title: _("OverwriteExistingFiles");
+                    activatable-widget: _overwriteSwitch;
+
+                    [suffix]
+                    Gtk.Switch _overwriteSwitch {
+                      valign: center;
+                      active: true;
+                    }
+                  }
+                  
+                  Adw.ActionRow _speedLimitRow {
+                    title: _("SpeedLimit");
+                    activatable-widget: _speedLimitSwitch;
+
+                    [suffix]
+                    Gtk.Switch _speedLimitSwitch {
+                      valign: center;
+                      active: false;
+                    }
+                  }
+
+                  Adw.ActionRow _cropThumbnailRow {
+                    title: _("Crop.Field");
+                    subtitle: _("Crop.Description");
+                    activatable-widget: _cropThumbnailSwitch;
+
+                    [suffix]
+                    Gtk.Switch _cropThumbnailSwitch {
+                      valign: center;
+                      active: false;
+                    }
+                  }
+
+                  Adw.ExpanderRow _downloadTimeframeRow {
+                    title: _("DownloadTimeframe.Field");
+                    subtitle: _("DownloadTimeframe.Description");
+                    enable-expansion: false;
+                    show-enable-switch: true;
+
+                    Adw.EntryRow _timeframeStartRow {
+                      title: _("DownloadTimeframeStart.Field");
+                      tooltip-text: _("DownloadTimeframeStart.Tooltip");
+                    }
+
+                    Adw.EntryRow _timeframeEndRow {
+                      title: _("DownloadTimeframeEnd.Field");
+                      tooltip-text: _("DownloadTimeframeEnd.Tooltip");
+                    }
+                  }
                 }
               }
             };

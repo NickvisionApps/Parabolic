@@ -75,6 +75,17 @@ public partial class AddDownloadDialog : Adw.Window
     [Gtk.Connect] private readonly Adw.ComboRow _subtitleRow;
     [Gtk.Connect] private readonly Adw.EntryRow _saveFolderRow;
     [Gtk.Connect] private readonly Gtk.Button _selectSaveFolderButton;
+    [Gtk.Connect] private readonly Adw.ActionRow _openAdvancedRow;
+    [Gtk.Connect] private readonly Adw.PreferencesGroup _mediaGroup;
+    [Gtk.Connect] private readonly Adw.PreferencesGroup _openPlaylistGroup;
+    [Gtk.Connect] private readonly Adw.ActionRow _openPlaylistRow;
+    [Gtk.Connect] private readonly Gtk.Box _playlistPage;
+    [Gtk.Connect] private readonly Gtk.ToggleButton _numberTitlesButton;
+    [Gtk.Connect] private readonly Gtk.ScrolledWindow _playlist;
+    [Gtk.Connect] private readonly Adw.PreferencesGroup _playlistGroup;
+    [Gtk.Connect] private readonly Gtk.Box _advancedPage;
+    [Gtk.Connect] private readonly Gtk.ScrolledWindow _advanced;
+    [Gtk.Connect] private readonly Adw.PreferencesGroup _advancedGroup;
     [Gtk.Connect] private readonly Gtk.Switch _overwriteSwitch;
     [Gtk.Connect] private readonly Adw.ActionRow _speedLimitRow;
     [Gtk.Connect] private readonly Gtk.Switch _speedLimitSwitch;
@@ -83,13 +94,6 @@ public partial class AddDownloadDialog : Adw.Window
     [Gtk.Connect] private readonly Adw.ExpanderRow _downloadTimeframeRow;
     [Gtk.Connect] private readonly Adw.EntryRow _timeframeStartRow;
     [Gtk.Connect] private readonly Adw.EntryRow _timeframeEndRow;
-    [Gtk.Connect] private readonly Adw.PreferencesGroup _mediaGroup;
-    [Gtk.Connect] private readonly Adw.PreferencesGroup _openPlaylistGroup;
-    [Gtk.Connect] private readonly Adw.ActionRow _openPlaylistRow;
-    [Gtk.Connect] private readonly Gtk.Box _playlistPage;
-    [Gtk.Connect] private readonly Gtk.ToggleButton _numberTitlesButton;
-    [Gtk.Connect] private readonly Gtk.ScrolledWindow _playlist;
-    [Gtk.Connect] private readonly Adw.PreferencesGroup _playlistGroup;
     private Gtk.Spinner? _urlSpinner;
     private readonly List<MediaRow> _mediaRows;
     private readonly string[] _audioQualityArray;
@@ -195,9 +199,8 @@ public partial class AddDownloadDialog : Adw.Window
         {
             if (e.Pspec.GetName() == "visible-child")
             {
-                var isPagePlaylist = _viewStack.GetVisibleChildName() == "pagePlaylist";
-                _backButton.SetVisible(isPagePlaylist);
-                _titleLabel.SetLabel(_controller.Localizer[isPagePlaylist ? "Playlist" : "AddDownload"]);
+                _backButton.SetVisible(_viewStack.GetVisibleChildName() == "pagePlaylist" || _viewStack.GetVisibleChildName() == "pageAdvanced");
+                _titleLabel.SetLabel(_controller.Localizer[_viewStack.GetVisibleChildName() == "pagePlaylist" ? "Playlist" : (_viewStack.GetVisibleChildName() == "pageAdvanced" ? "Advanced" : "AddDownload")]);
             }
         };
         _backButton.OnClicked += (sender, e) =>
@@ -264,6 +267,7 @@ public partial class AddDownloadDialog : Adw.Window
                 ValidateOptions();
             }
         };
+        _openAdvancedRow.OnActivated += (sender, e) => _viewStack.SetVisibleChildName("pageAdvanced");
         _openPlaylistRow.OnActivated += (sender, e) => _viewStack.SetVisibleChildName("pagePlaylist");
         _numberTitlesButton.OnClicked += ToggleNumberTitles;
         _playlist.GetVadjustment().OnNotify += (sender, e) =>
