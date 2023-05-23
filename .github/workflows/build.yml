@@ -11,7 +11,7 @@ permissions:
   contents: read
 jobs:
   flatpak:
-    name: "Flatpak"
+    name: "GNOME on Flatpak"
     runs-on: ubuntu-latest
     if: ${{ github.event.pull_request.user.login != 'weblate' }}
     container:
@@ -30,63 +30,8 @@ jobs:
           cache-key: flatpak-builder-${{ github.sha }}
           arch: ${{ matrix.arch }}
           restore-cache: true
-  winui:
-    name: "WinUI"
-    strategy:
-      matrix:
-        configuration: [Release]
-        platform: [x64, arm64]
-    runs-on: windows-latest
-    if: ${{ github.event.pull_request.user.login != 'weblate' }}
-    env:
-      Solution_Name: NickvisionTubeConverter.sln
-    steps:
-    - name: Checkout
-      uses: actions/checkout@v3.5.0
-      with:
-        fetch-depth: 0
-    # Install the .NET Core workload
-    - name: Install .NET Core
-      uses: actions/setup-dotnet@v3.0.3
-      with:
-        dotnet-version: 7.0.x
-    # Add  MSBuild to the PATH: https://github.com/microsoft/setup-msbuild
-    - name: Setup MSBuild.exe
-      uses: microsoft/setup-msbuild@v1.3.1
-    # Restore the application to populate the obj folder with RuntimeIdentifiers
-    - name: Restore the application
-      run: msbuild $env:Solution_Name /t:Restore /p:Configuration=$env:Configuration
-      env:
-        Configuration: ${{ matrix.configuration }}
-    # Decode the base 64 encoded pfx and save the Signing_Certificate
-    - name: Decode the pfx
-      env:
-         PfxPath: ${{ github.workspace }}\GitHubActionsWorkflow.pfx
-      run: |
-        $pfx_cert_byte = [System.Convert]::FromBase64String("${{ secrets.BASE64_ENCODED_PFX }}")
-        $certificatePath = $env:PfxPath
-        [IO.File]::WriteAllBytes("$certificatePath", $pfx_cert_byte)
-   # Create the app package by building and packaging the project
-    - name: Create the app package
-      run: msbuild $env:Solution_Name /p:Configuration=$env:Configuration /p:Platform=$env:Platform /p:UapAppxPackageBuildMode=$env:Appx_Package_Build_Mode /p:AppxBundle=$env:Appx_Bundle /p:AppxPackageSigningEnabled=true /p:PackageCertificateThumbprint="" /p:PackageCertificateKeyFile="$env:Pfx_Path" /p:AppxPackageDir="$env:Appx_Package_Dir" /p:GenerateAppxPackageOnBuild=true
-      env:
-        Pfx_Path: ${{ github.workspace }}\GitHubActionsWorkflow.pfx
-        Appx_Bundle: Always
-        Appx_Package_Build_Mode: StoreUpload
-        Appx_Package_Dir: Packages\
-        Configuration: ${{ matrix.configuration }}
-        Platform: ${{ matrix.platform }}
-    # Remove the pfx
-    - name: Remove the pfx
-      run: Remove-Item -path GitHubActionsWorkflow.pfx
-    # Upload the app
-    - name: Upload app
-      uses: actions/upload-artifact@v3.1.2
-      with:
-        name: org.nickvision.tubeconverter-winui-${{ matrix.platform }}
-        path: ${{ github.workspace }}\NickvisionTubeConverter.WinUI\Packages
   snap:
-    name: "Snap"
+    name: "GNOME on Snap"
     runs-on: ubuntu-latest
     strategy:
       matrix:
