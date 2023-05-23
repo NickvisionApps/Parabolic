@@ -20,7 +20,6 @@ All types of contributions are encouraged and valued. See the [Table of Contents
     - [Via Weblate](#via-weblate)
     - [Manually](#manually)
   - [Your First Code Contribution](#your-first-code-contribution)
-    - [Developing on Windows](#developing-on-windows)
     - [Developing on Linux](#developing-on-linux)
 - [Styleguides](#styleguides)
 - [Join The Project Team](#join-the-project-team)
@@ -53,12 +52,11 @@ A good bug report shouldn't leave others needing to chase you up for more inform
 - To see if other users have experienced (and potentially already solved) the same issue you are having, check if there is not already a bug report existing for your bug or error in both the [Discussions](https://github.com/NickvisionApps/TubeConverter/discussions) and [Issues](https://github.com/NickvisionApps/TubeConverter/issues) sections.
 - Collect information about the bug:
   - Debug information provided by the application
-    - WinUI: open Help → About Tube Converter, click on the button with version number, debug information will be copied to clipboard.
     - GNOME: from main menu open About Tube Converter → Troubleshooting → Debugging Information, here you can copy information to clipboard or save to a file.
   - Stack trace (Traceback)
     - Including any error messages thrown by the application
     - You may need to start the application via the terminal/console to receive an error message for a crash.
-  - OS, Platform and Version (Windows, Linux, macOS, x86, ARM)
+  - OS, Platform and Version (Linux/Distro, Kernel Version, x64/ARM)
   - Possibly your input and the output
   - Can you reliably reproduce the issue? And can you also reproduce it with older versions?
 
@@ -125,11 +123,12 @@ Once all changes to your translated file are made, make sure the file is in the 
 
 ### Your First Code Contribution
 
-Tube Converter is built using .NET 7 and C#. With these technologies, Tube Converter is built for both GNOME (Linux) and Windows.
-The solution is setup into 3 projects:
+#### Structure
+
+Tube Converter is built using .NET 7 and C#. With these technologies, Tube Converter is built for GNOME (Linux).
+The solution is setup into 2 projects:
  - NickvisionTubeConverter.Shared
  - NickvisionTubeConverter.GNOME
- - NickvisionTubeConverter.WinUI
 
 The whole solution utilizes the [MVC](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller) pattern for separating data and UI views.
 
@@ -151,34 +150,7 @@ Powered by the C# bindings for GTK4/Libadwaita: [gir.core](https://github.com/gi
 - Helpers => Useful objects that are specific for GNOME platform version of the app
 - Blueprints => UI files written in [Blueprint markup language](https://jwestman.pages.gitlab.gnome.org/blueprint-compiler/)
 
-##### NickvisionTubeConverter.WinUI
-
-This project contains all of the code used for the Windows platform version of the app.
-Powered by the [WindowsAppSDK](https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/)
-- Views => The views (pages, windows, dialogs) of the app that connect to the shared controllers
-- Controls => Generic controls for the app
-  - These controls should not be connected to a controller and should be able to be ported to any other application 
-
-#### Developing on Windows
-
-##### WinUI
-
-Recommended IDE:
-- Visual Studio 2019 or Visual Studio 2022 with the required workloads (including .NET 7) and components for Windows app development. For more information, see [Install tools for the Windows App SDK](https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/set-up-your-development-environment?tabs=cs-vs-community%2Ccpp-vs-community%2Cvs-2022-17-1-a%2Cvs-2022-17-1-b)
-
-Although, any IDE that supports .NET 7 and WindowsAppSDK should work.
-
-*Rider does support .NET 7, but has no WindowsAppSDK support at the time of writing this. Therefore, you will be able to develop part of the application use Rider, but will be unable to build and run the Windows platform version.*
-
-##### GNOME
-
-Follow developing on Linux instructions below to build the app in WSL. Make sure you use a distro in which you can install all required dependencies (OpenSUSE Tumbleweed is recommended).
-
 #### Developing on Linux
-
-##### WinUI
-
-Can't be built on Linux.
 
 ##### GNOME
 
@@ -186,7 +158,7 @@ Recommended IDEs:
 - GNOME Builder 43 and up.
 - VS Code with [flatpak extension](https://github.com/bilelmoussaoui/flatpak-vscode).
 
-You may also make your changes via any code editor and use `flatpak-builder` to run the application locally through flatpak.
+You may also make your changes via any code editor and use [`flatpak-builder`](https://docs.flatpak.org/en/latest/flatpak-builder.html) to run the application locally through flatpak.
 
 You may also build the app manually without using flatpak. List of dependencies:
 - dotnet >=7.0
@@ -197,18 +169,18 @@ You may also build the app manually without using flatpak. List of dependencies:
 - ffmpeg
 - aria2 (optional)
 - libunity (optional)
-- [just](https://github.com/casey/just) (build only)
+- [cake](https://cakebuild.net/) (build only)
+    - `dotnet tool install --global Cake.Tool` or `dotnet tool restore` (in repository root folder)
 - blueprint-compiler, GTK and libadwaita development files (build only)
 - glib-compile-resources (build only)
 
-Navigate to `NickvisionTubeConverter.GNOME` and use one of the commands to build the app:
+Use one of the commands to build the app:
 
 | Command | Result |
 |---|---|
-| `just run` | Builds the application in a temporary build directory and runs it. Tube Converter will not get installed, which might result in some missing icons and lack of desktop integration. |
-| `just publish PREFIX` | Builds the application, preparing it to be installed in a provided prefix (examples of a valid prefix: `/usr`, `/app`). When built using this command, the application will require dotnet-runtime to be installed in order to run. |
-| `just publish-self-contained PREFIX` | Same as above, but application will not need dotnet-runtime to run. |
-| `just install ROOT` | Copies files to a provided root directory (it's optional, `/` by default). This command should be used after `publish` or `publish-self-contained`. |
+| `dotnet cake --target=Run --ui=gnome` (in repo root folder) or `dotnet run` (in project subfolder) | Builds the application and runs it. Application will not get installed, which might result in some missing icons and lack of desktop integration. |
+| `dotnet cake --target=Publish --prefix=PREFIX --ui=gnome` | Builds the application in `_nickbuild` directory, preparing it to be installed in a provided prefix (examples of a valid prefix: `/usr`, `/app`). If `--self-contained` is added, the application will not need dotnet-runtime to run. 
+| `dotnet cake --target=Install --destdir=DESTDIR` | Copies files to the `DESTDIR`. `--destdir` is optional, by default files are copied to root (`/`). This command should be used after `Publish`. |
 
 ## Styleguides
 

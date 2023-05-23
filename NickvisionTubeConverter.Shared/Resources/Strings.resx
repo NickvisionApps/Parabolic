@@ -189,7 +189,7 @@
 	</data>
 
 	<data name="DependencyError" xml:space="preserve">
-		<value>Unable to download dependencies. Please restart the app and try again.</value>
+		<value>Unable to setup dependencies. Please restart the app and try again.</value>
 	</data>
 
 	<data name="AddDownload" xml:space="preserve">
@@ -312,10 +312,6 @@
 		<value>Best</value>
 	</data>
 
-	<data name="Quality.Good" xml:space="preserve">
-		<value>Good</value>
-	</data>
-
 	<data name="Quality.Worst" xml:space="preserve">
 		<value>Worst</value>
 	</data>
@@ -332,8 +328,8 @@
 		<value>Select Save Folder</value>
 	</data>
 
-	<data name="NumberVideos" xml:space="preserve">
-		<value>Number Videos</value>
+	<data name="NumberTitles" xml:space="preserve">
+		<value>Number Titles</value>
 	</data>
 
 	<data name="OverwriteExistingFiles" xml:space="preserve">
@@ -511,7 +507,7 @@
 	</data>
 
 	<data name="EmbedMetadata.Description" xml:space="preserve">
-		<value>If checked, video metadata will be included in the downloaded file.</value>
+		<value>If checked, media metadata will be included in the downloaded file.</value>
 	</data>
 
 	<!--Shortcuts Dialog-->
@@ -520,15 +516,15 @@
 	</data>
 
 	<!--Fields-->
-	<data name="VideoUrl.Field" xml:space="preserve">
+	<data name="MediaUrl.Field" xml:space="preserve">
 		<value>Media URL</value>
 	</data>
 
-	<data name="VideoUrl.Invalid" xml:space="preserve">
+	<data name="MediaUrl.Invalid" xml:space="preserve">
 		<value>Media URL (Invalid)</value>
 	</data>
 	
-	<data name="VideoUrl.Placeholder" xml:space="preserve">
+	<data name="MediaUrl.Placeholder" xml:space="preserve">
 		<value>Enter media URL here</value>
 	</data>
 
@@ -538,6 +534,10 @@
 
 	<data name="Quality.Field" xml:space="preserve">
 		<value>Quality</value>
+	</data>
+
+	<data name="MaxQuality.Field" xml:space="preserve">
+		<value>Maximum Quality</value>
 	</data>
 
 	<data name="Subtitle.Field" xml:space="preserve">
@@ -552,8 +552,68 @@
 		<value>Save Folder (Invalid)</value>
 	</data>
 
-	<data name="NewFilename.Field" xml:space="preserve">
-		<value>New Filename</value>
+	<data name="Filename.Field" xml:space="preserve">
+		<value>Filename</value>
+	</data>
+
+	<data name="Crop.Field" xml:space="preserve">
+		<value>Crop Thumbnail</value>
+	</data>
+
+	<data name="Crop.Description" xml:space="preserve">
+		<value>Make thumbnail square, useful when downloading music.</value>
+	</data>
+
+	<data name="DownloadTimeframe.Field" xml:space="preserve">
+		<value>Download Specific Timeframe</value>
+	</data>
+
+	<data name="DownloadTimeframe.Description" xml:space="preserve">
+		<value>Enabling this option will disable the use of aria2 as the downloader if it is enabled.</value>
+	</data>
+
+	<data name="DownloadTimeframeStart.Field" xml:space="preserve">
+		<value>Start Time</value>
+	</data>
+
+	<data name="DownloadTimeframeStart.Tooltip" xml:space="preserve">
+		<value>Leave empty to download from start.</value>
+	</data>
+
+	<data name="DownloadTimeframeStart.Invalid" xml:space="preserve">
+		<value>Start Time (Invalid)</value>
+	</data>
+
+	<data name="DownloadTimeframeEnd.Field" xml:space="preserve">
+		<value>End Time</value>
+	</data>
+
+	<data name="DownloadTimeframeEnd.Tooltip" xml:space="preserve">
+		<value>Leave empty to download to end.</value>
+	</data>
+
+	<data name="DownloadTimeframeEnd.Invalid" xml:space="preserve">
+		<value>End Time (Invalid)</value>
+	</data>
+
+	<data name="Playlist" xml:space="preserve">
+		<value>Playlist</value>
+	</data>
+
+	<data name="Playlist.Count" xml:space="preserve">
+		<value>{0} of {1} items</value>
+	</data>
+
+	<data name="Playlist.Description" xml:space="preserve">
+		<value>Select items to download or change filenames.</value>
+	</data>
+
+	<data name="Advanced" xml:space="preserve">
+		<value>Advanced Options</value>
+	</data>
+
+	<data name="Advanced.Description" xml:space="preserve">
+		<value>More options for configuring the download</value>
 	</data>
 
 	<!--WinUI Specific-->

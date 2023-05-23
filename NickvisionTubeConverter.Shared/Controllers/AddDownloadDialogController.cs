@@ -1,6 +1,8 @@
 using NickvisionTubeConverter.Shared.Helpers;
 using NickvisionTubeConverter.Shared.Models;
+using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -8,15 +10,13 @@ using System.Threading.Tasks;
 namespace NickvisionTubeConverter.Shared.Controllers;
 
 /// <summary>
-/// Statuses for when a download is checked
+/// Statuses for when a download options are checked
 /// </summary>
-public enum DownloadCheckStatus
+[Flags]
+public enum DownloadOptionsCheckStatus
 {
     Valid = 1,
-    EmptyVideoUrl = 2,
-    InvalidVideoUrl = 4,
-    InvalidSaveFolder = 8,
-    PlaylistNotSupported = 16
+    InvalidSaveFolder = 2
 }
 
 /// <summary>
@@ -46,6 +46,10 @@ public class AddDownloadDialogController
     /// </summary>
     public MediaFileType PreviousMediaFileType => Configuration.Current.PreviousMediaFileType;
     /// <summary>
+    /// Whether to embed metadata
+    /// </summary>
+    public bool EmbedMetadata => Configuration.Current.EmbedMetadata;
+    /// <summary>
     /// The speed limit in the configuration
     /// </summary>
     public uint CurrentSpeedLimit => Configuration.Current.SpeedLimit;
@@ -60,54 +64,69 @@ public class AddDownloadDialogController
     }
 
     /// <summary>
-    /// Searches for information about a video url
+    /// Searches for information about a media url
     /// </summary>
-    /// <param name="videoUrl">The video url</param>
-    /// <returns>A VideoUrlInfo object for the url or null if url is invalid</returns>
-    public async Task<VideoUrlInfo?> SearchUrlAsync(string videoUrl) => await VideoUrlInfo.GetAsync(videoUrl);
+    /// <param name="mediaUrl">The media url</param>
+    /// <returns>A MediaUrlInfo object for the url or null if url is invalid</returns>
+    public async Task<MediaUrlInfo?> SearchUrlAsync(string mediaUrl) => await MediaUrlInfo.GetAsync(mediaUrl);
 
     /// <summary>
-    /// Numbers the videos in a VideoUrlInfo object
+    /// Numbers the titles in a MediaUrlInfo object
     /// </summary>
-    /// <param name="videoUrlInfo">The VideoUrlInfo object</param>
-    public void ToggleNumberVideos(VideoUrlInfo videoUrlInfo, bool toggled)
+    /// <param name="mediaUrlInfo">The MediaUrlInfo object</param>
+    public void ToggleNumberTitles(MediaUrlInfo mediaUrlInfo, bool toggled)
     {
         var numberedRegex = new Regex(@"[0-9]+ - ", RegexOptions.None);
-        for (var i = 0; i < videoUrlInfo.Videos.Count; i++)
+        for (var i = 0; i < mediaUrlInfo.MediaList.Count; i++)
         {
             if (toggled)
             {
-                videoUrlInfo.Videos[i].Title = $"{i + 1} - {videoUrlInfo.Videos[i].Title}";
+                mediaUrlInfo.MediaList[i].Title = $"{i + 1} - {mediaUrlInfo.MediaList[i].Title}";
             }
             else
             {
-                var match = numberedRegex.Match(videoUrlInfo.Videos[i].Title);
+                var match = numberedRegex.Match(mediaUrlInfo.MediaList[i].Title);
                 if (match.Success)
                 {
-                    videoUrlInfo.Videos[i].Title = videoUrlInfo.Videos[i].Title.Remove(videoUrlInfo.Videos[i].Title.IndexOf(match.Value), match.Value.Length);
+                    mediaUrlInfo.MediaList[i].Title = mediaUrlInfo.MediaList[i].Title.Remove(mediaUrlInfo.MediaList[i].Title.IndexOf(match.Value), match.Value.Length);
                 }
             }
         }
     }
 
     /// <summary>
+    /// Check that download options are valid
+    /// </summary>
+    /// <param name="saveFolder">Save folder path</param>
+    /// <returns>DownloadOptionsCheckStatus</returns>
+    public DownloadOptionsCheckStatus CheckDownloadOptions(string saveFolder)
+    {
+        DownloadOptionsCheckStatus result = 0;
+        if (!Directory.Exists(saveFolder))
+        {
+            result |= DownloadOptionsCheckStatus.InvalidSaveFolder;
+        }
+        return result == 0 ? DownloadOptionsCheckStatus.Valid : result;
+    }
+
+    /// <summary>
     /// Populates the downloads list
     /// </summary>
-    /// <param name="videoUrlInfo">The VideoUrlInfo object</param>
+    /// <param name="mediaUrlInfo">The MediaUrlInfo object</param>
     /// <param name="mediaFileType">The media file type to download</param>
     /// <param name="quality">The quality of the downloads</param>
     /// <param name="subtitles">The subtitle format of the downloads</param>
     /// <param name="saveFolder">The save folder of the downloads</param>
     /// <param name="overwriteFiles">Whether or not to overwrite existing files</param>
     /// <param name="limitSpeed">Whether or not to use speed limit</param>
-    public void PopulateDownloads(VideoUrlInfo videoUrlInfo, MediaFileType mediaFileType, Quality quality, Subtitle subtitles, string saveFolder, bool overwriteFiles, bool limitSpeed)
+    public void PopulateDownloads(MediaUrlInfo mediaUrlInfo, MediaFileType mediaFileType, Quality quality, VideoResolution? resolution, Subtitle subtitles, string saveFolder, bool overwriteFiles, bool limitSpeed, bool cropThumbnail)
     {
         Downloads.Clear();
-        foreach (var video in videoUrlInfo.Videos)
+        foreach (var media in mediaUrlInfo.MediaList)
         {
-            if (video.ToDownload)
+            if (media.ToDownload)
             {
-                Downloads.Add(new Download(video.Url, mediaFileType, saveFolder, video.Title, limitSpeed, Configuration.Current.SpeedLimit, quality, subtitles, overwriteFiles));
+                Downloads.Add(new Download(media.Url, mediaFileType, saveFolder, media.Title, limitSpeed, Configuration.Current.SpeedLimit, quality, resolution, subtitles, overwriteFiles, cropThumbnail));
             }
         }
         Configuration.Current.PreviousSaveFolder = saveFolder;

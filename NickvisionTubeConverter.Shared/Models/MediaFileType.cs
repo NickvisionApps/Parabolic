@@ -65,10 +65,10 @@ public static class MediaFileTypeHelpers
     };
 
     /// <summary>
-    /// Gets whether or not the MediaFileType is a video file type
+    /// Gets whether or not the MediaFileType is a media file type
     /// </summary>
     /// <param name="type">The MediaFileType</param>
-    /// <returns>True if video file type, else false</returns>
+    /// <returns>True if media file type, else false</returns>
     public static bool GetIsVideo(this MediaFileType type) => type switch
     {
         MediaFileType.MP4 => true,

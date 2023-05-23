@@ -15,6 +15,20 @@
 		<ProjectReference Include="..\NickvisionTubeConverter.Shared\NickvisionTubeConverter.Shared.csproj" />
 	</ItemGroup>
 
+	<Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+    	<Exec Command="echo Compiling extra resources..." />
+    	<Exec Command="blueprint-compiler batch-compile ./Blueprints ./Blueprints ./Blueprints/*.blp" />
+    	<Exec Command="glib-compile-resources --sourcedir ./Resources ./Resources/org.nickvision.tubeconverter.gresource.xml --target=$(OutDir)/org.nickvision.tubeconverter.gresource" />
+  	</Target>
+
+	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
+		<Exec Command="rm ./Blueprints/*.ui" />
+	</Target>
+
+	<Target Name="PostPublish" AfterTargets="Publish">
+		<Exec Command="mv $(OutDir)/org.nickvision.tubeconverter.gresource $(PublishDir)/org.nickvision.tubeconverter.gresource" />
+	</Target>
+
 	<Target Name="EmbedUIFiles" BeforeTargets="BeforeResGen">
 	  <ItemGroup>
       	<EmbeddedResource Include="Blueprints\*.ui" Type="Non-Resx" WithCulture="false" />

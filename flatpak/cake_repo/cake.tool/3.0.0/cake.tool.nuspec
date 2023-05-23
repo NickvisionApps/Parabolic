@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>Cake.Tool</id>
+    <version>3.0.0</version>
+    <authors>Patrik Svensson, Mattias Karlsson, Gary Ewan Park, Alistair Chapman, Martin Björkström, Dave Glick, Pascal Berger, Jérémie Desautels, Enrico Campidoglio, C. Augusto Proiete, Nils Andresen, and contributors</authors>
+    <license type="expression">MIT</license>
+    <licenseUrl>https://licenses.nuget.org/MIT</licenseUrl>
+    <icon>cake-medium.png</icon>
+    <readme>NuGet.org.md</readme>
+    <projectUrl>https://cakebuild.net/</projectUrl>
+    <description>The Cake .NET Tool.</description>
+    <releaseNotes>4046 Add typed data context CakeTaskBuilder.Finally overload.
+4000 Remove obsolete CakeEngine Setup/Teardown events.
+3997 Remove obsolete Logger property from DotNetTestSettings.
+3991 Remove obsolete DotNetCore aliases.
+3972 Remove .NET Core 3.1 TFM.
+3969 Update Spectre.Console to 0.45.0.
+3949 Remove .NET 5 TFM.
+3946 Access to ITaskSetupContext in Frosting.
+3867 Rename WindowsFact to WindowsFactAttribute to follow best practices.
+3722 DotNetCore -&gt; DotNet Rename Missed Objects.
+4047 Add typed CakeTaskBuilder / TaskOf() to easier work with typed data context.
+4028 Add GitLab CI SetEnvironmentVariable Command.
+4019 Add support for TeamCity build status message.
+4018 Add Support For TeamCity Statistics.
+4011 Add GitHub Actions SetStepSummary Command.
+4009 Add GitHub Actions SetOutputParameter Command.
+3950 Add .NET 7 Support.
+3328 Frosting: Support criteria description.
+2863 Add support for GitHub Action workflow commands.
+2470 Call multiple tasks from CLI and pass them to RunTarget.
+1146 Add OutputDirectory property for Chocolatey Aliases.
+4060 Update Microsoft.NETCore.Platforms to 7.0.0.
+4059 Update System.Reflection.Metadata to 7.0.0.
+4058 Update System.Collections.Immutable to 7.0.0.
+4057 Update Microsoft.Extensions.DependencyInjection to 7.0.0.
+4055 Add column to summary to include skip reason.
+4052 Update Basic.Reference.Assemblies.* to 1.4.1.
+4050 Overhaul Chocolatey Cake aliases.
+4044 Overload missing for IsDependeeOf accepting a CakeTaskBuilder object.
+4038 Add missing MSBuildSettings to DotNetRunSettings.
+4036 Add missing MSBuildSettings to DotNetTestSettings.
+4032 Add additional settings for ILMerge.
+4020 Update Basic.Reference.Assemblies.* to 1.4.0.
+4016 Update Microsoft.CodeAnalysis.CSharp.Scripting to 4.4.0-4.final.
+4006 Add missing GitVersion command line options.
+3124 EscapedBranchName is not supported by GitVersion.CommandLine.
+4023 Update supported versions of Cake.
+4034 DotNetMSBuildSettings ArgumentCustomization is not called with all DotNet* aliases.
+4030 GitLab CI runner tags are not split correctly.</releaseNotes>
+    <copyright>Copyright (c) .NET Foundation and contributors</copyright>
+    <tags>Cake Script Build</tags>
+    <packageTypes>
+      <packageType name="DotnetTool" />
+    </packageTypes>
+    <repository type="git" url="https://github.com/cake-build/cake" commit="7728438164e8aa7fef243a8747e0f013d50d3a94" />
+  </metadata>
+</package>

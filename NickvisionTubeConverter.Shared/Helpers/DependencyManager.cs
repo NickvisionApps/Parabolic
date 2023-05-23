@@ -1,27 +1,14 @@
 ﻿using NickvisionTubeConverter.Shared.Models;
+using Python.Runtime;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.IO.Compression;
-using System.Linq;
-using System.Net.Http;
 using System.Reflection;
-using System.Runtime.InteropServices;
-using System.Threading;
-using System.Threading.Tasks;
-
 namespace NickvisionTubeConverter.Shared.Helpers;
 
 internal static class DependencyManager
 {
-    private static string _windowsPythonPath;
-
-    static DependencyManager()
-    {
-        _windowsPythonPath = "python.exe";
-    }
-
     /// <summary>
     /// The path for python
     /// </summary>
@@ -29,10 +16,6 @@ internal static class DependencyManager
     {
         get
         {
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-            {
-                return _windowsPythonPath;
-            }
             var prefixes = new List<string>() {
                 Directory.GetParent(Directory.GetParent(Path.GetFullPath(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)!))!.FullName)!.FullName,
                 Directory.GetParent(Path.GetFullPath(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)!))!.FullName,
@@ -57,10 +40,6 @@ internal static class DependencyManager
     {
         get
         {
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-            {
-                return $"{Configuration.ConfigDir}{Path.DirectorySeparatorChar}ffmpeg{Path.DirectorySeparatorChar}ffmpeg.exe";
-            }
             var prefixes = new List<string>() {
                 Directory.GetParent(Directory.GetParent(Path.GetFullPath(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)!))!.FullName)!.FullName,
                 Directory.GetParent(Path.GetFullPath(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)!))!.FullName,
@@ -85,10 +64,6 @@ internal static class DependencyManager
     {
         get
         {
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-            {
-                return $"{Configuration.ConfigDir}{Path.DirectorySeparatorChar}aria2{Path.DirectorySeparatorChar}aria2c.exe";
-            }
             var prefixes = new List<string>() {
                 Directory.GetParent(Directory.GetParent(Path.GetFullPath(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)!))!.FullName)!.FullName,
                 Directory.GetParent(Path.GetFullPath(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)!))!.FullName,
@@ -110,71 +85,13 @@ internal static class DependencyManager
     /// Setups dependencies for the application
     /// </summary>
     /// <returns>True if successful, else false.</returns>
-    public static async Task<bool> SetupDependenciesAsync()
+    public static bool SetupDependencies()
     {
         try
         {
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            if (File.Exists(Environment.GetEnvironmentVariable("TC_PYTHON_SO")))
             {
-                using var httpClient = new HttpClient()
-                {
-                    Timeout = Timeout.InfiniteTimeSpan,
-                };
-                //Python
-                _windowsPythonPath = await PythonHelpers.DeployEmbeddedAsync(new Version("3.11.3"));
-                //Ffmpeg
-                var ffmpegVer = new Version(6, 0, 0);
-                if (!File.Exists(FfmpegPath) || Configuration.Current.WinUIFfmpegVersion != ffmpegVer)
-                {
-                    var ffmpegDir = $"{Configuration.ConfigDir}{Path.DirectorySeparatorChar}ffmpeg{Path.DirectorySeparatorChar}";
-                    if (!Directory.Exists(ffmpegDir))
-                    {
-                        Directory.CreateDirectory(ffmpegDir);
-                    }
-                    //Download and Extract Binary Zip
-                    var ffmpegZip = $"{ffmpegDir}ffmpeg.zip";
-                    var bytes = await httpClient.GetByteArrayAsync("https://www.gyan.dev/ffmpeg/builds/ffmpeg-release-essentials.zip");
-                    File.WriteAllBytes(ffmpegZip, bytes);
-                    ZipFile.ExtractToDirectory(ffmpegZip, ffmpegDir);
-                    File.Delete(ffmpegZip);
-                    //Move Binaries
-                    var ffmpegBinaryFolder = $"{Directory.GetDirectories(ffmpegDir).First(x => x.Contains("-essentials_build"))}{Path.DirectorySeparatorChar}bin{Path.DirectorySeparatorChar}";
-                    File.Move($"{ffmpegBinaryFolder}ffmpeg.exe", $"{ffmpegDir}ffmpeg.exe", true);
-                    File.Move($"{ffmpegBinaryFolder}ffplay.exe", $"{ffmpegDir}ffplay.exe", true);
-                    File.Move($"{ffmpegBinaryFolder}ffprobe.exe", $"{ffmpegDir}ffprobe.exe", true);
-                    Directory.Delete(Directory.GetDirectories(ffmpegDir).First(x => x.Contains("-essentials_build")), true);
-                    //Update Config
-                    Configuration.Current.WinUIFfmpegVersion = ffmpegVer;
-                    Configuration.Current.Save();
-                }
-                //Aria2
-                var ariaVer = new Version(1, 36, 0);
-                if (!File.Exists(Aria2Path) || Configuration.Current.WinUIAriaVersion != ariaVer)
-                {
-                    var ariaDir = $"{Configuration.ConfigDir}{Path.DirectorySeparatorChar}aria2{Path.DirectorySeparatorChar}";
-                    if (!Directory.Exists(ariaDir))
-                    {
-                        Directory.CreateDirectory(ariaDir);
-                    }
-                    //Download and Extract Binary Zip
-                    var ariaZip = $"{ariaDir}aria.zip";
-                    var bytes = await httpClient.GetByteArrayAsync("https://github.com/aria2/aria2/releases/download/release-1.36.0/aria2-1.36.0-win-64bit-build1.zip");
-                    File.WriteAllBytes(ariaZip, bytes);
-                    ZipFile.ExtractToDirectory(ariaZip, ariaDir);
-                    File.Delete(ariaZip);
-                    //Move Binaries
-                    var ariaBinaryFolder = $"{Directory.GetDirectories(ariaDir).First(x => x.Contains("-1.36.0"))}{Path.DirectorySeparatorChar}";
-                    File.Move($"{ariaBinaryFolder}aria2c.exe", $"{ariaDir}aria2c.exe", true);
-                    Directory.Delete(ariaBinaryFolder, true);
-                    //Update Config
-                    Configuration.Current.WinUIAriaVersion = ariaVer;
-                    Configuration.Current.Save();
-                }
-
-            }
-            else if (File.Exists(Environment.GetEnvironmentVariable("TC_PYTHON_SO")))
-            {
-                Python.Runtime.Runtime.PythonDLL = Environment.GetEnvironmentVariable("TC_PYTHON_SO");
+                Runtime.PythonDLL = Environment.GetEnvironmentVariable("TC_PYTHON_SO");
             }
             else
             {
@@ -189,7 +106,7 @@ internal static class DependencyManager
                     }
                 };
                 process.Start();
-                Python.Runtime.Runtime.PythonDLL = process.StandardOutput.ReadToEnd().Trim();
+                Runtime.PythonDLL = process.StandardOutput.ReadToEnd().Trim();
                 process.WaitForExit();
             }
             // Install yt-dlp plugin

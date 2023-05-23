@@ -1,4 +1,5 @@
 ﻿using NickvisionTubeConverter.Shared.Helpers;
+using Python.Runtime;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -16,8 +17,8 @@ namespace NickvisionTubeConverter.Shared.Models;
 public enum Quality
 {
     Best = 0,
-    Good,
-    Worst
+    Worst,
+    Resolution
 }
 
 /// <summary>
@@ -31,7 +32,7 @@ public enum Subtitle
 }
 
 /// <summary>
-/// A model of a video download
+/// A model of a media download
 /// </summary>
 public class Download
 {
@@ -40,7 +41,10 @@ public class Download
     private bool _limitSpeed;
     private uint _speedLimit;
     private bool _overwriteFiles;
+    private bool _cropThumbnail;
     private ulong? _pid;
+    private Dictionary<string, dynamic>? _ytOpt;
+    private dynamic? _outFile;
     private Process? _ariaKeeper;
 
     /// <summary>
@@ -48,9 +52,9 @@ public class Download
     /// </summary>
     public Guid Id { get; init; }
     /// <summary>
-    /// The url of the video
+    /// The url of the media
     /// </summary>
-    public string VideoUrl { get; init; }
+    public string MediaUrl { get; init; }
     /// <summary>
     /// The save folder for the download
     /// </summary>
@@ -63,6 +67,10 @@ public class Download
     /// The quality of the download
     /// </summary>
     public Quality Quality { get; init; }
+    /// <summary>
+    /// The video resolution (null for audio)
+    /// </summary>
+    public VideoResolution? Resolution { get; init; }
     /// <summary>
     /// The subtitles for the download
     /// </summary>
@@ -100,8 +108,8 @@ public class Download
     /// <summary>
     /// Constructs a Download
     /// </summary>
-    /// <param name="videoUrl">The url of the video to download</param>
-    /// <param name="fileType">The file type to download the video as</param>
+    /// <param name="mediaUrl">The url of the media to download</param>
+    /// <param name="fileType">The file type to download the media as</param>
     /// <param name="saveFolder">The folder to save the download to</param>
     /// <param name="saveFilename">The filename to save the download as</param>
     /// <param name="limitSpeed">Whether or not to limit the download speed</param>
@@ -109,13 +117,14 @@ public class Download
     /// <param name="quality">The quality of the download</param>
     /// <param name="subtitle">The subtitles for the download</param>
     /// <param name="overwriteFiles">Whether or not to overwrite existing files</param>
-    public Download(string videoUrl, MediaFileType fileType, string saveFolder, string saveFilename, bool limitSpeed, uint speedLimit, Quality quality, Subtitle subtitle, bool overwriteFiles)
+    public Download(string mediaUrl, MediaFileType fileType, string saveFolder, string saveFilename, bool limitSpeed, uint speedLimit, Quality quality, VideoResolution? resolution, Subtitle subtitle, bool overwriteFiles, bool cropThumbnail)
     {
         Id = Guid.NewGuid();
-        VideoUrl = videoUrl;
+        MediaUrl = mediaUrl;
         SaveFolder = saveFolder;
         FileType = fileType;
         Quality = quality;
+        Resolution = resolution;
         Subtitle = subtitle;
         Filename = $"{saveFilename}{FileType.GetDotExtension()}";
         IsRunning = false;
@@ -127,6 +136,7 @@ public class Download
         _limitSpeed = limitSpeed;
         _speedLimit = speedLimit;
         _overwriteFiles = overwriteFiles;
+        _cropThumbnail = cropThumbnail;
         _pid = null;
         _ariaKeeper = null;
     }
@@ -135,151 +145,153 @@ public class Download
     /// Starts the download
     /// </summary>
     /// <param name="useAria">Whether or not to use aria2 for the download</param>
-    /// <param name="embedMetadata">Whether or not to embed video metadata in the downloaded file</param>
+    /// <param name="embedMetadata">Whether or not to embed media metadata in the downloaded file</param>
     /// <param name="localizer">Localizer</param>
     public void Start(bool useAria, bool embedMetadata, Localizer localizer)
     {
         if (!IsRunning)
         {
-            IsRunning = true;
-            IsDone = false;
-            IsSuccess = false;
-            WasStopped = false;
-            //Check if can overwrite
-            if (File.Exists($"{SaveFolder}{Path.DirectorySeparatorChar}{Filename}") && !_overwriteFiles)
+            using (Py.GIL())
             {
-                ProgressChanged?.Invoke(this, new DownloadProgressState()
-                {
-                    Status = DownloadProgressStatus.Other,
-                    Progress = 0.0,
-                    Speed = 0.0,
-                    Log = localizer["FileExistsError"]
-                });
-                IsDone = true;
-                IsRunning = false;
+                IsRunning = true;
+                IsDone = false;
                 IsSuccess = false;
-                Completed?.Invoke(this, IsSuccess);
-                return;
-            }
-            //Escape filename
-            if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-            {
-                Filename = Regex.Escape(Filename);
-            }
-            //Setup logs
-            Directory.CreateDirectory(_tempDownloadPath);
-            dynamic outFile = PythonHelpers.SetConsoleOutputFilePath(_logPath);
-            //Setup download params
-            var hooks = new List<Action<Python.Runtime.PyDict>>();
-            hooks.Add(ProgressHook);
-            var postHooks = new List<Action<Python.Runtime.PyString>>();
-            if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-            {
-                postHooks.Add(UnescapeHook);
-            }
-            var ytOpt = new Dictionary<string, dynamic> {
-            { "quiet", false },
-            { "ignoreerrors", "downloadonly" },
-            { "merge_output_format", "mp4/webm/mp3/opus/flac/wav/mkv" },
-            { "final_ext", FileType.ToString().ToLower() },
-            { "progress_hooks", hooks },
-            { "postprocessor_hooks", hooks },
-            { "post_hooks", postHooks },
-            { "outtmpl", $"{Path.GetFileNameWithoutExtension(Filename)}.%(ext)s" },
-            { "ffmpeg_location", DependencyManager.FfmpegPath },
-            { "windowsfilenames", RuntimeInformation.IsOSPlatform(OSPlatform.Windows) },
-            { "encoding", "utf_8" },
-            { "overwrites", _overwriteFiles }
-        };
-            if (useAria)
-            {
-                _ariaKeeper = new Process()
+                WasStopped = false;
+                //Check if can overwrite
+                if (File.Exists($"{SaveFolder}{Path.DirectorySeparatorChar}{Filename}") && !_overwriteFiles)
                 {
-                    StartInfo = new ProcessStartInfo()
+                    ProgressChanged?.Invoke(this, new DownloadProgressState()
                     {
-                        FileName = DependencyManager.PythonPath,
-                        Arguments = $"\"{Configuration.ConfigDir}{Path.DirectorySeparatorChar}aria2_keeper.py\"",
-                        UseShellExecute = false,
-                        CreateNoWindow = true
+                        Status = DownloadProgressStatus.Other,
+                        Progress = 0.0,
+                        Speed = 0.0,
+                        Log = localizer["FileExistsError"]
+                    });
+                    IsDone = true;
+                    IsRunning = false;
+                    IsSuccess = false;
+                    Completed?.Invoke(this, IsSuccess);
+                    return;
+                }
+                //Escape filename
+                if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+                {
+                    Filename = Regex.Escape(Filename);
+                }
+                //Setup logs
+                Directory.CreateDirectory(_tempDownloadPath);
+                _outFile = PythonHelpers.SetConsoleOutputFilePath(_logPath);
+                //Setup download params
+                var hooks = new List<Action<PyDict>>();
+                hooks.Add(ProgressHook);
+                var postHooks = new List<Action<PyString>>();
+                if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+                {
+                    postHooks.Add(UnescapeHook);
+                }
+                _ytOpt = new Dictionary<string, dynamic> {
+                    { "quiet", false },
+                    { "ignoreerrors", "downloadonly" },
+                    { "merge_output_format", "mp4/webm/mp3/opus/flac/wav/mkv" },
+                    { "final_ext", FileType.ToString().ToLower() },
+                    { "progress_hooks", hooks },
+                    { "postprocessor_hooks", hooks },
+                    { "post_hooks", postHooks },
+                    { "outtmpl", $"{Path.GetFileNameWithoutExtension(Filename)}.%(ext)s" },
+                    { "ffmpeg_location", DependencyManager.FfmpegPath },
+                    { "windowsfilenames", RuntimeInformation.IsOSPlatform(OSPlatform.Windows) },
+                    { "encoding", "utf_8" },
+                    { "overwrites", _overwriteFiles }
+                };
+                if (useAria)
+                {
+                    _ariaKeeper = new Process()
+                    {
+                        StartInfo = new ProcessStartInfo()
+                        {
+                            FileName = DependencyManager.PythonPath,
+                            Arguments = $"\"{Configuration.ConfigDir}{Path.DirectorySeparatorChar}aria2_keeper.py\"",
+                            UseShellExecute = false,
+                            CreateNoWindow = true
+                        }
+                    };
+                    _ariaKeeper.Start();
+                    _ytOpt.Add("external_downloader", new Dictionary<string, dynamic>() { { "default", DependencyManager.Aria2Path } });
+                    dynamic ariaDict = new PyDict();
+                    dynamic ariaParams = new PyList();
+                    ariaParams.Append(new PyString($"--max-overall-download-limit={(_limitSpeed ? _speedLimit : 0)}K"));
+                    ariaParams.Append(new PyString("--allow-overwrite=true"));
+                    ariaParams.Append(new PyString("--show-console-readout=false"));
+                    ariaParams.Append(new PyString($"--stop-with-process={_ariaKeeper.Id}"));
+                    ariaDict["default"] = ariaParams;
+                    _ytOpt.Add("external_downloader_args", ariaDict);
+                }
+                else if (_limitSpeed)
+                {
+                    _ytOpt.Add("ratelimit", _speedLimit * 1024);
+                }
+                var postProcessors = new List<Dictionary<string, dynamic>>();
+                if (FileType.GetIsAudio())
+                {
+                    _ytOpt.Add("format", Quality != Quality.Worst ? "ba/b" : "wa/w");
+                    postProcessors.Add(new Dictionary<string, dynamic>() { { "key", "FFmpegExtractAudio" }, { "preferredcodec", FileType.ToString().ToLower() } });
+                }
+                else if (FileType.GetIsVideo())
+                {
+                    if (FileType == MediaFileType.MP4)
+                    {
+                        _ytOpt.Add("format", $"bv*[ext=mp4][width<={Resolution.Width}][height<={Resolution.Height}]+ba[ext=m4a]/b[ext=mp4][width<={Resolution.Width}][height<={Resolution.Height}] / bv*[width<={Resolution.Width}][height<={Resolution.Height}]+ba/b[width<={Resolution.Width}][height<={Resolution.Height}]");
                     }
-                };
-                _ariaKeeper.Start();
-                ytOpt.Add("external_downloader", new Dictionary<string, dynamic>() { { "default", DependencyManager.Aria2Path } });
-                var ariaArgs = new string[]
-                {
-                        $"--max-overall-download-limit={(_limitSpeed ? _speedLimit : 0)}K",
-                        "--allow-overwrite=true",
-                        "--show-console-readout=false",
-                        $"--stop-with-process={_ariaKeeper.Id}"
-                };
-                ytOpt.Add("external_downloader_args", Python.Runtime.PythonEngine.Eval($"{{'default': ['{string.Join("', '", ariaArgs)}']}}")); // stupid, but working
-            }
-            else if (_limitSpeed)
-            {
-                ytOpt.Add("ratelimit", _speedLimit * 1024);
-            }
-            var postProcessors = new List<Dictionary<string, dynamic>>();
-            if (FileType.GetIsAudio())
-            {
-                ytOpt.Add("format", Quality != Quality.Worst ? "ba/b" : "wa/w");
-                postProcessors.Add(new Dictionary<string, dynamic>() { { "key", "FFmpegExtractAudio" }, { "preferredcodec", FileType.ToString().ToLower() } });
-            }
-            else if (FileType.GetIsVideo())
-            {
-                if (FileType == MediaFileType.MP4)
-                {
-                    ytOpt.Add("format", Quality switch
+                    else
                     {
-                        Quality.Best => "bv*[ext=mp4]+ba[ext=m4a]/b[ext=mp4] / bv*+ba/b",
-                        Quality.Good => "bv*[ext=mp4][height<=720]+ba[ext=m4a]/b[ext=mp4][height<=720] / bv*[height<=720]+ba/b[height<=720]",
-                        _ => "wv[ext=mp4]*+wa[ext=m4a]/w[ext=mp4] / wv*+wa/w"
-                    });
-                }
-                else
-                {
-                    ytOpt.Add("format", Quality switch
+                        _ytOpt.Add("format", $"bv*[width<={Resolution.Width}][height<={Resolution.Height}]+ba/b[width<={Resolution.Width}][height<={Resolution.Height}]");
+                    }
+                    postProcessors.Add(new Dictionary<string, dynamic>() { { "key", "FFmpegVideoConvertor" }, { "preferedformat", FileType.ToString().ToLower() } });
+                    if (Subtitle != Subtitle.None)
                     {
-                        Quality.Best => "bv*+ba/b",
-                        Quality.Good => "bv*[height<=720]+ba/b[height<=720]",
-                        _ => "wv*+wa/w"
-                    });
+                        _ytOpt.Add("writesubtitles", true);
+                        _ytOpt.Add("writeautomaticsub", true);
+                        _ytOpt.Add("subtitleslangs", new List<string> { "en", CultureInfo.CurrentCulture.TwoLetterISOLanguageName });
+                        postProcessors.Add(new Dictionary<string, dynamic>() { { "key", "FFmpegSubtitlesConvertor" }, { "format", Subtitle.ToString().ToLower() } });
+                        postProcessors.Add(new Dictionary<string, dynamic>() { { "key", "FFmpegEmbedSubtitle" } });
+                    }
                 }
-                postProcessors.Add(new Dictionary<string, dynamic>() { { "key", "FFmpegVideoConvertor" }, { "preferedformat", FileType.ToString().ToLower() } });
-                if (Subtitle != Subtitle.None)
+                if (embedMetadata)
                 {
-                    ytOpt.Add("writesubtitles", true);
-                    ytOpt.Add("writeautomaticsub", true);
-                    ytOpt.Add("subtitleslangs", new List<string> { "en", CultureInfo.CurrentCulture.TwoLetterISOLanguageName });
-                    postProcessors.Add(new Dictionary<string, dynamic>() { { "key", "FFmpegSubtitlesConvertor" }, { "format", Subtitle.ToString().ToLower() } });
-                    postProcessors.Add(new Dictionary<string, dynamic>() { { "key", "FFmpegEmbedSubtitle" } });
+                    if (FileType.GetSupportsThumbnails())
+                    {
+                        _ytOpt.Add("writethumbnail", true);
+                        postProcessors.Add(new Dictionary<string, dynamic>() { { "key", "TCEmbedThumbnail" } });
+                        if (_cropThumbnail)
+                        {
+                            dynamic cropDict = new PyDict();
+                            dynamic cropParams = new PyList();
+                            cropParams.Append(new PyString("-vf"));
+                            cropParams.Append(new PyString("crop=\'if(gt(ih,iw),iw,ih)\':\'if(gt(iw,ih),ih,iw)\'"));
+                            cropDict["thumbnailsconvertor"] = cropParams;
+                            _ytOpt.Add("postprocessor_args", cropDict);
+                        }
+                    }
+                    postProcessors.Insert(0, new Dictionary<string, dynamic>() { { "key", "TCMetadata" }, { "add_metadata", true } });
                 }
-            }
-            if (embedMetadata)
-            {
-                if (FileType.GetSupportsThumbnails())
+                if (postProcessors.Count != 0)
                 {
-                    ytOpt.Add("writethumbnail", true);
-                    postProcessors.Add(new Dictionary<string, dynamic>() { { "key", "TCEmbedThumbnail" } });
+                    _ytOpt.Add("postprocessors", postProcessors);
                 }
-                postProcessors.Insert(0, new Dictionary<string, dynamic>() { { "key", "TCMetadata" }, { "add_metadata", true } });
-            }
-            if (postProcessors.Count != 0)
-            {
-                ytOpt.Add("postprocessors", postProcessors);
             }
             //Run download
             Task.Run(() =>
             {
                 try
                 {
-                    using (Python.Runtime.Py.GIL())
+                    using (Py.GIL())
                     {
-                        _pid = Python.Runtime.PythonEngine.GetPythonThreadID();
-                        var paths = new Python.Runtime.PyDict();
-                        paths["home"] = new Python.Runtime.PyString($"{SaveFolder}{Path.DirectorySeparatorChar}");
-                        paths["temp"] = new Python.Runtime.PyString(_tempDownloadPath);
-                        ytOpt.Add("paths", paths);
-                        dynamic ytdlp = Python.Runtime.Py.Import("yt_dlp");
+                        _pid = PythonEngine.GetPythonThreadID();
+                        var paths = new PyDict();
+                        paths["home"] = new PyString($"{SaveFolder}{Path.DirectorySeparatorChar}");
+                        paths["temp"] = new PyString(_tempDownloadPath);
+                        _ytOpt.Add("paths", paths);
+                        dynamic ytdlp = Py.Import("yt_dlp");
                         if (useAria)
                         {
                             ProgressChanged?.Invoke(this, new DownloadProgressState()
@@ -290,7 +302,7 @@ public class Download
                                 Log = localizer["StartAria"]
                             });
                         }
-                        Python.Runtime.PyObject success_code = ytdlp.YoutubeDL(ytOpt).download(new List<string>() { VideoUrl });
+                        PyObject success_code = ytdlp.YoutubeDL(_ytOpt).download(new List<string>() { MediaUrl });
                         if ((success_code.As<int?>() ?? 1) != 0)
                         {
                             Filename = Regex.Unescape(Filename);
@@ -299,7 +311,7 @@ public class Download
                         ForceUpdateLog();
                         IsDone = true;
                         IsRunning = false;
-                        outFile.close();
+                        _outFile.close();
                         IsSuccess = (success_code.As<int?>() ?? 1) == 0;
                         Completed?.Invoke(this, IsSuccess);
                     }
@@ -316,7 +328,7 @@ public class Download
                     ForceUpdateLog();
                     IsDone = true;
                     IsRunning = false;
-                    outFile.close();
+                    _outFile.close();
                     IsSuccess = false;
                     Completed?.Invoke(this, IsSuccess);
                 }
@@ -334,9 +346,9 @@ public class Download
             if (_pid != null)
             {
                 KillAriaKeeper();
-                using (Python.Runtime.Py.GIL())
+                using (Py.GIL())
                 {
-                    Python.Runtime.PythonEngine.Interrupt(_pid.Value);
+                    PythonEngine.Interrupt(_pid.Value);
                 }
             }
             IsDone = true;
@@ -389,12 +401,12 @@ public class Download
     /// <summary>
     /// Handles progress of the download
     /// </summary>
-    /// <param name="entries">Python.Runtime.PyDict</param>
-    private void ProgressHook(Python.Runtime.PyDict entries)
+    /// <param name="entries">PyDict</param>
+    private void ProgressHook(PyDict entries)
     {
         if (ProgressChanged != null)
         {
-            using (Python.Runtime.Py.GIL())
+            using (Py.GIL())
             {
                 var downloaded = entries.HasKey("downloaded_bytes") ? (entries["downloaded_bytes"].As<double?>() ?? 0) : 0;
                 var total = 1.0;
@@ -433,10 +445,10 @@ public class Download
     /// <summary>
     /// Unescape filename after downloading
     /// </summary>
-    /// <param name="path">Python.Runtime.PyString</param>
-    private void UnescapeHook(Python.Runtime.PyString path)
+    /// <param name="path">PyString</param>
+    private void UnescapeHook(PyString path)
     {
-        using (Python.Runtime.Py.GIL())
+        using (Py.GIL())
         {
             Filename = Regex.Unescape(Filename);
             var directory = Path.GetDirectoryName(path.As<string>());

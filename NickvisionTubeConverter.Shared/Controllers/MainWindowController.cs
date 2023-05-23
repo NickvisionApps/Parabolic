@@ -1,9 +1,9 @@
 ﻿using NickvisionTubeConverter.Shared.Events;
 using NickvisionTubeConverter.Shared.Helpers;
 using NickvisionTubeConverter.Shared.Models;
+using Python.Runtime;
 using System;
 using System.IO;
-using System.Threading.Tasks;
 
 namespace NickvisionTubeConverter.Shared.Controllers;
 
@@ -127,8 +127,8 @@ public class MainWindowController : IDisposable
         {
             Localizer.Dispose();
         }
-        Python.Runtime.PythonEngine.EndAllowThreads(_pythonThreadState);
-        Python.Runtime.PythonEngine.Shutdown();
+        PythonEngine.EndAllowThreads(_pythonThreadState);
+        PythonEngine.Shutdown();
         if (Directory.Exists(Configuration.TempDir))
         {
             Directory.Delete(Configuration.TempDir, true);
@@ -145,7 +145,7 @@ public class MainWindowController : IDisposable
     /// <summary>
     /// Starts the application
     /// </summary>
-    public async Task StartupAsync()
+    public void Startup()
     {
         Configuration.Current.Saved += ConfigurationSaved;
         DownloadManager.MaxNumberOfActiveDownloads = Configuration.Current.MaxNumberOfActiveDownloads;
@@ -156,16 +156,16 @@ public class MainWindowController : IDisposable
         Directory.CreateDirectory(Configuration.TempDir);
         try
         {
-            var success = await DependencyManager.SetupDependenciesAsync();
+            var success = DependencyManager.SetupDependencies();
             if (!success)
             {
                 NotificationSent?.Invoke(this, new NotificationSentEventArgs(Localizer["DependencyError"], NotificationSeverity.Error));
             }
             else
             {
-                Python.Runtime.RuntimeData.FormatterType = typeof(NoopFormatter);
-                Python.Runtime.PythonEngine.Initialize();
-                _pythonThreadState = Python.Runtime.PythonEngine.BeginAllowThreads();
+                RuntimeData.FormatterType = typeof(NoopFormatter);
+                PythonEngine.Initialize();
+                _pythonThreadState = PythonEngine.BeginAllowThreads();
             }
         }
         catch (Exception e)

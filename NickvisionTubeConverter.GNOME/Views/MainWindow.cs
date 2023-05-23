@@ -3,13 +3,13 @@ using NickvisionTubeConverter.GNOME.Helpers;
 using NickvisionTubeConverter.Shared.Controllers;
 using NickvisionTubeConverter.Shared.Events;
 using NickvisionTubeConverter.Shared.Models;
+using Python.Runtime;
 using System;
 using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace NickvisionTubeConverter.GNOME.Views;
 
@@ -484,14 +484,14 @@ public partial class MainWindow : Adw.ApplicationWindow
     /// <summary>
     /// Starts the MainWindow
     /// </summary>
-    public async Task StartAsync()
+    public void Start()
     {
         _application.AddWindow(this);
         Present();
         _spinnerContainer.SetVisible(true);
         _mainBox.SetVisible(false);
         _spinner.Start();
-        await _controller.StartupAsync();
+        _controller.Startup();
         _spinner.Stop();
         _spinnerContainer.SetVisible(false);
         _mainBox.SetVisible(true);
@@ -645,9 +645,9 @@ public partial class MainWindow : Adw.ApplicationWindow
         {
             debugInfo.AppendLine("Snap");
         }
-        using (Python.Runtime.Py.GIL())
+        using (Py.GIL())
         {
-            dynamic yt_dlp = Python.Runtime.Py.Import("yt_dlp");
+            dynamic yt_dlp = Py.Import("yt_dlp");
             debugInfo.AppendLine($"yt-dlp {yt_dlp.version.__version__.As<string>()}");
         }
         var ffmpegProcess = new Process
