@@ -18,7 +18,7 @@ public class MediaUrlInfo
     /// </summary>
     public string Url { get; init; }
     /// <summary>
-    /// All medias found under a media url
+    /// All media found under a media url
     /// </summary>
     public List<MediaInfo> MediaList { get; init; }
     /// <summary>
