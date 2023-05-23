@@ -16,9 +16,7 @@ namespace NickvisionTubeConverter.Shared.Controllers;
 public enum DownloadOptionsCheckStatus
 {
     Valid = 1,
-    InvalidSaveFolder = 2,
-    InvalidTimeframeStart = 4,
-    InvalidTimeframeEnd = 8
+    InvalidSaveFolder = 2
 }
 
 /// <summary>
@@ -100,39 +98,13 @@ public class AddDownloadDialogController
     /// Check that download options are valid
     /// </summary>
     /// <param name="saveFolder">Save folder path</param>
-    /// <param name="downloadTimeframe">Whether or not to download a specific timeframe</param>
-    /// <param name="timeframeStart">Download timeframe start string</param>
-    /// <param name="timeframeEnd">Download timeframe end string</param>
     /// <returns>DownloadOptionsCheckStatus</returns>
-    public DownloadOptionsCheckStatus CheckDownloadOptions(string saveFolder, bool downloadTimeframe, string timeframeStart, string timeframeEnd, double duration)
+    public DownloadOptionsCheckStatus CheckDownloadOptions(string saveFolder)
     {
         DownloadOptionsCheckStatus result = 0;
         if (!Directory.Exists(saveFolder))
         {
             result |= DownloadOptionsCheckStatus.InvalidSaveFolder;
-        }
-        if (downloadTimeframe)
-        {
-            var startTimeParsed = true;
-            var startTime = TimeSpan.FromSeconds(0);
-            if (!string.IsNullOrEmpty(timeframeStart))
-            {
-                startTimeParsed = TimeSpan.TryParse(timeframeStart, CultureInfo.CurrentCulture, out startTime);
-            }
-            if (!startTimeParsed || startTime < TimeSpan.FromSeconds(0))
-            {
-                result |= DownloadOptionsCheckStatus.InvalidTimeframeStart;
-            }
-            var endTimeParsed = true;
-            var endTime = TimeSpan.FromSeconds(duration);
-            if (!string.IsNullOrEmpty(timeframeEnd))
-            {
-                endTimeParsed = TimeSpan.TryParse(timeframeEnd, CultureInfo.CurrentCulture, out endTime);
-            }
-            if (!endTimeParsed || endTime < startTime + TimeSpan.FromSeconds(1) || endTime > TimeSpan.FromSeconds(duration))
-            {
-                result |= DownloadOptionsCheckStatus.InvalidTimeframeEnd;
-            }
         }
         return result == 0 ? DownloadOptionsCheckStatus.Valid : result;
     }
