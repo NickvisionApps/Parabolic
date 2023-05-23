@@ -158,7 +158,7 @@ Recommended IDEs:
 - GNOME Builder 43 and up.
 - VS Code with [flatpak extension](https://github.com/bilelmoussaoui/flatpak-vscode).
 
-You may also make your changes via any code editor and use `flatpak-builder` to run the application locally through flatpak.
+You may also make your changes via any code editor and use [`flatpak-builder`](https://docs.flatpak.org/en/latest/flatpak-builder.html) to run the application locally through flatpak.
 
 You may also build the app manually without using flatpak. List of dependencies:
 - dotnet >=7.0
@@ -170,7 +170,7 @@ You may also build the app manually without using flatpak. List of dependencies:
 - aria2 (optional)
 - libunity (optional)
 - [cake](https://cakebuild.net/) (build only)
-    - `dotnet tool install --global Cake.Tool`
+    - `dotnet tool install --global Cake.Tool` or `dotnet tool restore` (in repository root folder)
 - blueprint-compiler, GTK and libadwaita development files (build only)
 - glib-compile-resources (build only)
 
@@ -178,9 +178,9 @@ Use one of the commands to build the app:
 
 | Command | Result |
 |---|---|
-| `dotnet run` | Builds the application in a temporary build directory and runs it. Application will not get installed, which might result in some missing icons and lack of desktop integration. |
-| `dotnet cake --target=Publish --prefix=PREFIX --ui=gnome --self-contained` | Builds the application, preparing it to be installed in a provided prefix (examples of a valid prefix: `/usr`, `/app`). When built using this command, the application will not need dotnet-runtime to run. 
-| `dotnet cake --target=Install` | Copies files to the root directory (`/`). This command should be used after `publish`. |
+| `dotnet cake --target=Run --ui=gnome` (in repo root folder) or `dotnet run` (in project subfolder) | Builds the application and runs it. Application will not get installed, which might result in some missing icons and lack of desktop integration. |
+| `dotnet cake --target=Publish --prefix=PREFIX --ui=gnome` | Builds the application in `_nickbuild` directory, preparing it to be installed in a provided prefix (examples of a valid prefix: `/usr`, `/app`). If `--self-contained` is added, the application will not need dotnet-runtime to run. 
+| `dotnet cake --target=Install --destdir=DESTDIR` | Copies files to the `DESTDIR`. `--destdir` is optional, by default files are copied to root (`/`). This command should be used after `Publish`. |
 
 ## Styleguides
 
