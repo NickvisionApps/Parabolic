@@ -94,7 +94,6 @@ parts:
       - brotli
       - blueprint-compiler
       - wget
-      - cargo
     stage-packages:
       - aria2
       - libunity9
@@ -107,17 +106,17 @@ parts:
       - libdbusmenu-gtk3-4
     override-pull: |
       craftctl default
-      cargo install just
       wget https://dot.net/v1/dotnet-install.sh -O dotnet-install.sh
       chmod +x ./dotnet-install.sh
       ./dotnet-install.sh --channel 7.0
     override-prime: |
       craftctl default
       export DOTNET_ROOT=$HOME/.dotnet
-      export PATH=$PATH:$HOME/.dotnet:$HOME/.dotnet/tools:$HOME/.cargo/bin
+      export PATH=$PATH:$HOME/.dotnet:$HOME/.dotnet/tools
       cd $CRAFT_PART_SRC_WORK
-      just publish-self-contained /usr
-      just install $CRAFT_PRIME
+      dotnet tool restore
+      dotnet cake --target=Publish --prefix=/usr --ui=gnome --self-contained
+      dotnet cake --target=Install --destdir=$CRAFT_PRIME
       sed -i "2 i export TC_PYTHON_SO=$TC_PYTHON_SO" $CRAFT_PRIME/usr/bin/org.nickvision.tubeconverter
       pip install --target=$CRAFT_PART_INSTALL/usr/lib/python3.10/site-packages yt-dlp
     parse-info: [usr/share/metainfo/org.nickvision.tubeconverter.metainfo.xml]
