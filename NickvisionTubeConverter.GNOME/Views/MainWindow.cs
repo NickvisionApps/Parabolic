@@ -236,6 +236,10 @@ public partial class MainWindow : Adw.ApplicationWindow
                     _completedBox.GetParent().SetVisible(true);
                 }
             }
+            if (!GetVisible() && _controller.DownloadManager.RemainingDownloadsCount == 0 && _controller.DownloadManager.ErrorsCount == 0)
+            {
+                _application.Quit();
+            }
             handle.Free();
             return false;
         };
@@ -397,7 +401,7 @@ public partial class MainWindow : Adw.ApplicationWindow
         };
         try
         {
-            _unityLauncher = unity_launcher_entry_get_for_desktop_id(string.IsNullOrEmpty(Environment.GetEnvironmentVariable("SNAP")) ? $"{_controller.AppInfo.ID}.desktop" : "tube-converter.desktop");
+            _unityLauncher = unity_launcher_entry_get_for_desktop_id($"{_controller.AppInfo.ID}.desktop");
             g_timeout_add(1000, _libUnitySourceFunc, IntPtr.Zero);
         }
         catch (DllNotFoundException e)
