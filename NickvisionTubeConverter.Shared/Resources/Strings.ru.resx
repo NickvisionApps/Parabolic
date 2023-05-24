@@ -234,7 +234,7 @@ marcin https://github.com/martin-desktops</value>
     <value>Настройки</value>
   </data>
   <data name="DependencyError" xml:space="preserve">
-    <value>Невозможно скачать зависимости. Пожалуйста, перезапустите приложение и попробуйте снова.</value>
+    <value>Невозможно установить зависимости. Пожалуйста, перезапустите приложение и попробуйте снова.</value>
   </data>
   <data name="Greeting.Afternoon" xml:space="preserve">
     <!-- Shown from noon to 6pm -->
@@ -322,7 +322,7 @@ marcin https://github.com/martin-desktops</value>
     <value>Выберите папку загрузки</value>
   </data>
   <data name="NumberTitles" xml:space="preserve">
-    <value>Пронумеровать видео</value>
+    <value>Пронумеровать заголовки</value>
   </data>
   <data name="OverwriteExistingFiles" xml:space="preserve">
     <value>Перезаписывать существующие файлы</value>
@@ -403,18 +403,121 @@ marcin https://github.com/martin-desktops</value>
     <value>Загрузчик</value>
   </data>
   <data name="StartAria" xml:space="preserve">
-    <value>Началась загрузка с помощью Aria2</value>
+    <value>Началась загрузка с помощью aria2</value>
   </data>
   <data name="UseAria" xml:space="preserve">
-    <value>Использовать Aria2</value>
+    <value>Использовать aria2</value>
   </data>
   <data name="SpeedLimit" xml:space="preserve">
     <value>Ограничение скорости</value>
   </data>
   <data name="UseAria.Description" xml:space="preserve">
-    <value>Включите для использования загрузчика Aria2. Он может оказаться быстрее, но вы не увидите прогресс загрузки.</value>
+    <value>Включите для использования загрузчика aria2. Он может оказаться быстрее, но вы не увидите прогресс загрузки.</value>
   </data>
   <data name="SpeedLimit.Description" xml:space="preserve">
     <value>Этот предел (в КиБ/с) будет применяться к загрузкам, для которых будет включено ограничение скорости. Изменение значения не затрагивает уже запущенные загрузки.</value>
+  </data>
+  <data name="DependencyDownload.Short" xml:space="preserve">
+    <value>Скачивание необходимых зависимостей...</value>
+  </data>
+  <data name="TotalSpeed" xml:space="preserve">
+    <value>Общая скорость: {0}</value>
+  </data>
+  <data name="StopDownloads" xml:space="preserve">
+    <value>Остановить все загрузки</value>
+  </data>
+  <data name="StopDownloads.Tooltip" xml:space="preserve">
+    <value>Остановить все загрузки (Ctrl+Shift+C)</value>
+  </data>
+  <data name="RetryDownloads" xml:space="preserve">
+    <value>Перезапустить неудавшиеся загрузки</value>
+  </data>
+  <data name="RetryDownloads.Tooltip" xml:space="preserve">
+    <value>Перезапустить неудавшиеся загрузки (Ctrl+Shift+R)</value>
+  </data>
+  <data name="ClearQueue" xml:space="preserve">
+    <value>Очистить очередь</value>
+  </data>
+  <data name="UndoTitleEdit" xml:space="preserve">
+    <value>Отменить изменение заголовка</value>
+  </data>
+  <data name="Exit" xml:space="preserve">
+    <!--Mostly used in WinUI-->
+    <value>Выход</value>
+  </data>
+  <data name="Apply" xml:space="preserve">
+    <value>Применить</value>
+  </data>
+  <data name="Info" xml:space="preserve">
+    <value>Информация</value>
+  </data>
+  <data name="File" xml:space="preserve">
+    <value>Файл</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Правка</value>
+  </data>
+  <data name="Help" xml:space="preserve">
+    <value>Помощь</value>
+  </data>
+  <data name="ClearQueue.Tooltip" xml:space="preserve">
+    <value>Очистить очередь (Ctrl+Delete)</value>
+  </data>
+  <data name="RemainingDownloads" xml:space="preserve">
+    <value>Осталось загрузок: {0}</value>
+  </data>
+  <data name="Configurable.GTK" xml:space="preserve">
+    <value>Изменяется в настройках</value>
+  </data>
+  <data name="DownloadTimeframeStart.Tooltip" xml:space="preserve">
+    <value>Оставьте пустым, чтобы скачать с начала.</value>
+  </data>
+  <data name="Playlist" xml:space="preserve">
+    <value>Плейлист</value>
+  </data>
+  <data name="Playlist.Count" xml:space="preserve">
+    <value>Элементов: {0} из {1}</value>
+  </data>
+  <data name="Playlist.Description" xml:space="preserve">
+    <value>Выберите элементы для загрузки или смените имена файлов.</value>
+  </data>
+  <data name="Advanced" xml:space="preserve">
+    <value>Дополнительные опции</value>
+  </data>
+  <data name="Advanced.Description" xml:space="preserve">
+    <value>Больше опций для настройки загрузки</value>
+  </data>
+  <data name="Crop.Field" xml:space="preserve">
+    <value>Обрезать миниатюру</value>
+  </data>
+  <data name="Crop.Description" xml:space="preserve">
+    <value>Сделать миниатюру квадратной, полезно при скачивании музыки.</value>
+  </data>
+  <data name="DownloadTimeframe.Field" xml:space="preserve">
+    <value>Скачать фрагмент</value>
+  </data>
+  <data name="DownloadTimeframe.Description" xml:space="preserve">
+    <value>При включении этой опции не будет использоваться загрузчик aria2.</value>
+  </data>
+  <data name="MaxQuality.Field" xml:space="preserve">
+    <value>Максимальное качество</value>
+  </data>
+  <data name="Filename.Field" xml:space="preserve">
+    <value>Имя файла</value>
+  </data>
+  <data name="DownloadTimeframeStart.Field" xml:space="preserve">
+    <value>Время начала</value>
+  </data>
+  <data name="DownloadTimeframeStart.Invalid" xml:space="preserve">
+    <value>Время начала (Некорректное)</value>
+  </data>
+  <data name="DownloadTimeframeEnd.Field" xml:space="preserve">
+    <value>Время конца</value>
+  </data>
+  <data name="DownloadTimeframeEnd.Tooltip" xml:space="preserve">
+    <value>Оставьте пустым, чтобы скачать до конца.</value>
+  </data>
+  <data name="DownloadTimeframeEnd.Invalid" xml:space="preserve">
+    <value>Время конца (Некорректное)</value>
   </data>
 </root>
