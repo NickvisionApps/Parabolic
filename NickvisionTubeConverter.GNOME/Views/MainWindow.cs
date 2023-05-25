@@ -234,11 +234,15 @@ public partial class MainWindow : Adw.ApplicationWindow
                     _completedBox.Append(row);
                     _downloadingBox.GetParent().SetVisible(_controller.DownloadManager.RemainingDownloadsCount > 0 ? true : false);
                     _completedBox.GetParent().SetVisible(true);
+                    if (!GetFocus()!.GetHasFocus() || !GetVisible())
+                    {
+                        SendShellNotification(new ShellNotificationSentEventArgs(_controller.Localizer[!e.Successful ? "DownloadFinishedWithError" : "DownloadFinished"], string.Format(_controller.Localizer[!e.Successful ? "DownloadFinishedWithError" : "DownloadFinished", "Description"], $"\"{row.Filename}\""), !e.Successful ? NotificationSeverity.Error : NotificationSeverity.Success));
+                    }
                 }
-            }
-            if (!GetVisible() && _controller.DownloadManager.RemainingDownloadsCount == 0 && _controller.DownloadManager.ErrorsCount == 0)
-            {
-                _application.Quit();
+                if (!GetVisible() && _controller.DownloadManager.RemainingDownloadsCount == 0 && _controller.DownloadManager.ErrorsCount == 0)
+                {
+                    _application.Quit();
+                }
             }
             handle.Free();
             return false;
