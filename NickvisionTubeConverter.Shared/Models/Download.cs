@@ -146,8 +146,9 @@ public class Download
     /// </summary>
     /// <param name="useAria">Whether or not to use aria2 for the download</param>
     /// <param name="embedMetadata">Whether or not to embed media metadata in the downloaded file</param>
+    /// <param name="cookiesPath">The path to the cookies file to use for yt-dlp</param>
     /// <param name="localizer">Localizer</param>
-    public void Start(bool useAria, bool embedMetadata, Localizer localizer)
+    public void Start(bool useAria, bool embedMetadata, string? cookiesPath, Localizer localizer)
     {
         if (!IsRunning)
         {
@@ -291,6 +292,10 @@ public class Download
                         paths["home"] = new PyString($"{SaveFolder}{Path.DirectorySeparatorChar}");
                         paths["temp"] = new PyString(_tempDownloadPath);
                         _ytOpt.Add("paths", paths);
+                        if (File.Exists(cookiesPath))
+                        {
+                            _ytOpt.Add("cookiefile", new PyString(cookiesPath));
+                        }
                         dynamic ytdlp = Py.Import("yt_dlp");
                         if (useAria)
                         {
