@@ -26,6 +26,10 @@ public partial class PreferencesDialog : Adw.PreferencesWindow
     private static partial void gtk_file_dialog_open(nint dialog, nint parent, nint cancellable, GAsyncReadyCallback callback, nint user_data);
     [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
     private static partial nint gtk_file_dialog_open_finish(nint dialog, nint result, nint error);
+    [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
+    private static partial nint gtk_uri_launcher_new(string uri);
+    [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
+    private static partial void gtk_uri_launcher_launch(nint uriLauncher, nint parent, nint cancellable, GAsyncReadyCallback callback, nint data);
     
     private readonly PreferencesViewController _controller;
     private readonly Adw.Application _application;
@@ -41,6 +45,8 @@ public partial class PreferencesDialog : Adw.PreferencesWindow
     [Gtk.Connect] private readonly Gtk.Button _cookiesFileButton;
     [Gtk.Connect] private readonly Gtk.Label _cookiesFileLabel;
     [Gtk.Connect] private readonly Gtk.Button _unsetCookiesFileButton;
+    [Gtk.Connect] private readonly Gtk.Button _chromeCookiesButton;
+    [Gtk.Connect] private readonly Gtk.Button _firefoxCookiesButton;
     [Gtk.Connect] private readonly Gtk.Switch _embedMetadataSwitch;
     
     private GAsyncReadyCallback _fileDialogCallback;
@@ -64,6 +70,8 @@ public partial class PreferencesDialog : Adw.PreferencesWindow
         _selectCookiesFileButton.OnClicked += SelectCookiesFile;
         _cookiesFileButton.OnClicked += SelectCookiesFile;
         _unsetCookiesFileButton.OnClicked += UnsetCookiesFile;
+        _chromeCookiesButton.OnClicked += LaunchChromeCookiesExtension;
+        _firefoxCookiesButton.OnClicked += LaunchFirefoxCookiesExtension;
         OnHide += Hide;
         //Load Config
         _themeRow.SetSelected((uint)_controller.Theme);
@@ -160,5 +168,28 @@ public partial class PreferencesDialog : Adw.PreferencesWindow
     {
         _controller.CookiesPath = "";
         _cookiesViewStack.SetVisibleChildName("no-file");
+    }
+
+    /// <summary>
+    /// Occurs when a button to open chrome's cookies extension is clicked
+    /// </summary>
+    /// <param name="sender">Gtk.Button</param>
+    /// <param name="e">EventArgs</param>
+    private void LaunchChromeCookiesExtension(Gtk.Button sender, EventArgs e)
+    {
+        var uriLauncher = gtk_uri_launcher_new("https://chrome.google.com/webstore/detail/get-cookiestxt-locally/cclelndahbckbenkjhflpdbgdldlbecc");
+        gtk_uri_launcher_launch(uriLauncher, 0, 0, (source, res, data) => { }, 0);
+    }
+
+    /// <summary>
+    /// Occurs when a button to open firefox's cookies extension is clicked
+    /// </summary>
+    /// <param name="sender">Gtk.Button</param>
+    /// <param name="e">EventArgs</param>
+    private void LaunchFirefoxCookiesExtension(Gtk.Button sender, EventArgs e)
+    {
+        var uriLauncher = gtk_uri_launcher_new("https://addons.mozilla.org/en-US/firefox/addon/cookies-txt/");
+        gtk_uri_launcher_launch(uriLauncher, 0, 0, (source, res, data) => { }, 0);
+        
     }
 }
