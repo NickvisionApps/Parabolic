@@ -234,7 +234,7 @@ public class Download
                 var postProcessors = new List<Dictionary<string, dynamic>>();
                 if (FileType.GetIsAudio())
                 {
-                    _ytOpt.Add("format", Quality != Quality.Worst ? "ba/b" : "wa/w");
+                    _ytOpt.Add("format", Quality != Quality.Worst ? $"ba[ext={FileType.ToString().ToLower()}]/ba/b" : $"wa[ext={FileType.ToString().ToLower()}]/wa/w");
                     postProcessors.Add(new Dictionary<string, dynamic>() { { "key", "FFmpegExtractAudio" }, { "preferredcodec", FileType.ToString().ToLower() } });
                 }
                 else if (FileType.GetIsVideo())
