@@ -136,8 +136,12 @@ Adw.PreferencesWindow _root {
                 margin-end: 6;
                 margin-bottom: 6;
                 
-                Gtk.Label {
-                  label: _("Cookies.Description");
+                Adw.Clamp {
+                  maximum-size: 300;
+                  child: Gtk.Label {
+                    wrap: true;
+                    label: _("Cookies.Description");
+                  };
                 }
                 
                 Gtk.Box {
