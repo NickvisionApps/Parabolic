@@ -162,3 +162,4 @@ public class AddDownloadDialogController
         Configuration.Current.Save();
     }
 }
+

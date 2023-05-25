@@ -485,3 +485,4 @@ public partial class AddDownloadDialog : Adw.Window
         return true;
     }
 }
+
