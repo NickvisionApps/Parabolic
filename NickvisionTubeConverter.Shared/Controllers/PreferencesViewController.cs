@@ -87,6 +87,16 @@ public class PreferencesViewController
     }
 
     /// <summary>
+    /// The path of the cookies file to use for yt-dlp
+    /// </summary>
+    public string CookiesPath
+    {
+        get => Configuration.Current.CookiesPath;
+
+        set => Configuration.Current.CookiesPath = value;
+    }
+
+    /// <summary>
     /// Saves the configuration to disk
     /// </summary>
     public void SaveConfiguration() => Configuration.Current.Save();

@@ -48,6 +48,10 @@ public class MainWindowController : IDisposable
     /// Whether to embed metadata
     /// </summary>
     public bool EmbedMetadata => Configuration.Current.EmbedMetadata;
+    /// <summary>
+    /// The path to the cookies file to use for yt-dlp
+    /// </summary>
+    public string CookiesPath => Configuration.Current.CookiesPath;
 
     /// <summary>
     /// Occurs when a notification is sent

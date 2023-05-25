@@ -2,7 +2,7 @@ using Gtk 4.0;
 using Adw 1;
 
 Adw.PreferencesWindow _root {
-  default-width: 600;
+  default-width: 700;
   default-height: 620;
   width-request: 360;
   modal: true;
@@ -95,6 +95,7 @@ Adw.PreferencesWindow _root {
       Adw.ActionRow _useAriaRow {
         title: _("UseAria");
         subtitle: _("UseAria.Description");
+        activatable-widget: _useAriaSwitch;
 
         [prefix]
         Gtk.Image {
@@ -105,8 +106,111 @@ Adw.PreferencesWindow _root {
         Gtk.Switch _useAriaSwitch {
           valign: center;
         }
+      }
+      
+      Adw.ActionRow {
+        title: _("CookiesFile");
+        subtitle: _("CookiesFile.Description");
 
-        activatable-widget: _useAriaSwitch;
+        [prefix]
+        Gtk.Image {
+          icon-name: "document-properties-symbolic";
+        }
+
+        [suffix]
+        Gtk.Box {
+          orientation: horizontal;
+          spacing: 6;
+          
+          Gtk.MenuButton _cookiesHelpButton {
+            valign: center;
+            direction: none;
+            icon-name: "dialog-question-symbolic";
+            
+            popover: Gtk.Popover {
+              child: Gtk.Box {
+                orientation: vertical;
+                spacing: 6;
+                margin-start: 6;
+                margin-top: 6;
+                margin-end: 6;
+                margin-bottom: 6;
+                
+                Adw.Clamp {
+                  maximum-size: 300;
+                  child: Gtk.Label {
+                    wrap: true;
+                    label: _("Cookies.Description");
+                  };
+                }
+                
+                Gtk.Box {
+                  hexpand: true;
+                  orientation: horizontal;
+                  
+                  Gtk.Button _chromeCookiesButton {
+                    hexpand: true;
+                    
+                    child: Adw.ButtonContent {
+                      label: "Chrome";
+                      icon-name: "google-chrome-symbolic";
+                    };
+                  }
+
+                  Gtk.Button _firefoxCookiesButton {
+                    hexpand: true;
+                    
+                    child: Adw.ButtonContent {
+                      label: "Firefox";
+                      icon-name: "firefox-symbolic";
+                    };
+                  }
+                  
+                  styles ["linked"]
+                }
+              };
+            };
+            
+            styles ["flat"]
+          }
+          
+          Adw.ViewStack _cookiesViewStack {
+            Adw.ViewStackPage {
+              name: "no-file";
+              child: Gtk.Button _selectCookiesFileButton {
+                halign: end;
+                valign: center;
+                child: Adw.ButtonContent {
+                  label: _("SelectCookiesFile");
+                  icon-name: "document-open-symbolic";
+                };
+              };
+            }
+  
+            Adw.ViewStackPage {
+              name: "file-selected";
+              child: Gtk.Box {
+                orientation: horizontal;
+                halign: end;
+                valign: center;
+  
+                Gtk.Button _cookiesFileButton {
+                  tooltip-text: _("SelectCookiesFile");
+                  child: Gtk.Label _cookiesFileLabel {
+                    ellipsize: start;
+                  };
+                }
+  
+                Gtk.Button _unsetCookiesFileButton {
+                  icon-name: "larger-brush-symbolic";
+                  tooltip-text: _("ClearCookiesFile");
+                }
+  
+                styles ["linked"]
+              };
+            }
+          } 
+        }
       }
     }
 
