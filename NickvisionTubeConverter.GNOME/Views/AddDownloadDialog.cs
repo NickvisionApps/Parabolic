@@ -445,7 +445,9 @@ public partial class AddDownloadDialog : Adw.Window
     /// <summary>
     /// Occurs when the number of items selected to download has changed
     /// </summary>
-    private void PlaylistChanged()
+    /// <param name="sender">object?</param>
+    /// <param name="e">EventArgs</param>
+    private void PlaylistChanged(object? sender, EventArgs e)
     {
         var downloadsCount = _mediaUrlInfo.MediaList.FindAll(x => x.ToDownload).Count;
          _openPlaylistRow.SetTitle(string.Format(_controller.Localizer["Playlist", "Count"], downloadsCount, _mediaUrlInfo.MediaList.Count));
