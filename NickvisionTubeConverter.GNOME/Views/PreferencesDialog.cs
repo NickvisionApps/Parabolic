@@ -20,6 +20,11 @@ public partial class PreferencesDialog : Adw.PreferencesWindow
     [Gtk.Connect] private readonly Gtk.SpinButton _maxNumberOfActiveDownloadsSpin;
     [Gtk.Connect] private readonly Gtk.SpinButton _speedLimitSpin;
     [Gtk.Connect] private readonly Gtk.Switch _useAriaSwitch;
+    [Gtk.Connect] private readonly Adw.ViewStack _cookiesViewStack;
+    [Gtk.Connect] private readonly Gtk.Button _selectCookiesFileButton;
+    [Gtk.Connect] private readonly Gtk.Button _cookiesFileButton;
+    [Gtk.Connect] private readonly Gtk.Label _cookiesFileLabel;
+    [Gtk.Connect] private readonly Gtk.Button _unsetCookiesFileButton;
     [Gtk.Connect] private readonly Gtk.Switch _embedMetadataSwitch;
 
     private PreferencesDialog(Gtk.Builder builder, PreferencesViewController controller, Adw.Application application, Gtk.Window parent) : base(builder.GetPointer("_root"), false)

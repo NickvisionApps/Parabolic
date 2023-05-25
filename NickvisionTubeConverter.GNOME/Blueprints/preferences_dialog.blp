@@ -95,6 +95,7 @@ Adw.PreferencesWindow _root {
       Adw.ActionRow _useAriaRow {
         title: _("UseAria");
         subtitle: _("UseAria.Description");
+        activatable-widget: _useAriaSwitch;
 
         [prefix]
         Gtk.Image {
@@ -105,8 +106,54 @@ Adw.PreferencesWindow _root {
         Gtk.Switch _useAriaSwitch {
           valign: center;
         }
+      }
+      
+      Adw.ActionRow {
+        title: _("CookiesFile");
+        subtitle: _("CookiesFile.Description");
 
-        activatable-widget: _useAriaSwitch;
+        [prefix]
+        Gtk.Image {
+          icon-name: "file-cabinet-symbolic";
+        }
+
+        [suffix]
+        Adw.ViewStack _cookiesViewStack {
+          Adw.ViewStackPage {
+            name: "no-file";
+            child: Gtk.Button _selectCookiesFileButton {
+              halign: end;
+              valign: center;
+              child: Adw.ButtonContent {
+                label: _("SelectCookiesFile");
+                icon-name: "document-open-symbolic";
+              };
+            };
+          }
+
+          Adw.ViewStackPage {
+            name: "file-selected";
+            child: Gtk.Box {
+              orientation: horizontal;
+              halign: end;
+              valign: center;
+
+              Gtk.Button _cookiesFileButton {
+                tooltip-text: _("SelectCookiesFile");
+                child: Gtk.Label _cookiesFileLabel {
+                  ellipsize: start;
+                };
+              }
+
+              Gtk.Button _unsetCookiesFileButton {
+                icon-name: "larger-brush-symbolic";
+                tooltip-text: _("ClearCookiesFile");
+              }
+
+              styles ["linked"]
+            };
+          }
+        }
       }
     }
 
