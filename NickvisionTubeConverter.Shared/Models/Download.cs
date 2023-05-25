@@ -429,6 +429,10 @@ public class Download
                     Progress = downloaded / total,
                     Speed = entries.HasKey("speed") ? (entries["speed"].As<double?>() ?? 0.0) : 0.0
                 };
+                if (state.Status == DownloadProgressStatus.Processing)
+                {
+                    state.Progress = 1;
+                }
                 if (File.Exists(_logPath))
                 {
                     using var fs = new FileStream(_logPath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);

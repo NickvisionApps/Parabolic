@@ -74,14 +74,14 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
     /// <param name="filename">The filename of the download</param>
     /// <param name="saveFolder">The save folder of the download</param>
     /// <param name="localizer">The Localizer of strings</param>
-    /// <param name="sendNoticiationCallback">The callback for sending a notification</param>
-    private DownloadRow(Gtk.Builder builder, Guid id, string filename, string saveFolder, Localizer localizer, Action<NotificationSentEventArgs> sendNoticiationCallback) : base(builder.GetPointer("_root"), false)
+    /// <param name="sendNotificationCallback">The callback for sending a notification</param>
+    private DownloadRow(Gtk.Builder builder, Guid id, string filename, string saveFolder, Localizer localizer, Action<NotificationSentEventArgs> sendNotificationCallback) : base(builder.GetPointer("_root"), false)
     {
         _localizer = localizer;
         _saveFolder = saveFolder;
         Id = id;
         Filename = filename;
-        _sendNotificationCallback = sendNoticiationCallback;
+        _sendNotificationCallback = sendNotificationCallback;
         //Build UI
         builder.Connect(this);
         _filenameLabel.SetLabel(Filename);
@@ -119,8 +119,8 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
     /// <param name="filename">The filename of the download</param>
     /// <param name="saveFolder">The save folder of the download</param>
     /// <param name="localizer">The Localizer of strings</param>
-    /// <param name="sendNoticiationCallback">The callback for sending a notification</param>
-    public DownloadRow(Guid id, string filename, string saveFolder, Localizer localizer, Action<NotificationSentEventArgs> sendNoticiationCallback) : this(Builder.FromFile("download_row.ui", localizer), id, filename, saveFolder, localizer, sendNoticiationCallback)
+    /// <param name="sendNotificationCallback">The callback for sending a notification</param>
+    public DownloadRow(Guid id, string filename, string saveFolder, Localizer localizer, Action<NotificationSentEventArgs> sendNotificationCallback) : this(Builder.FromFile("download_row.ui", localizer), id, filename, saveFolder, localizer, sendNotificationCallback)
     {
 
     }

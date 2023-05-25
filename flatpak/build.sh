@@ -6,6 +6,8 @@ then
     exit 1
 fi
 
+set -eu
+
 if [ -d "nuget-sources" ]
 then
     mv flatpak/NuGet.config ./
