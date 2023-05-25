@@ -241,11 +241,11 @@ public class Download
                 {
                     if (FileType == MediaFileType.MP4)
                     {
-                        _ytOpt.Add("format", $"bv*[ext=mp4][width<={Resolution.Width}][height<={Resolution.Height}]+ba[ext=m4a]/b[ext=mp4][width<={Resolution.Width}][height<={Resolution.Height}] / bv*[width<={Resolution.Width}][height<={Resolution.Height}]+ba/b[width<={Resolution.Width}][height<={Resolution.Height}]");
+                        _ytOpt.Add("format", $"bv*[ext=mp4][width<={Resolution!.Width}][height<={Resolution.Height}]+ba[ext=m4a]/b[ext=mp4][width<={Resolution.Width}][height<={Resolution.Height}] / bv*[width<={Resolution.Width}][height<={Resolution.Height}]+ba/b[width<={Resolution.Width}][height<={Resolution.Height}]");
                     }
                     else
                     {
-                        _ytOpt.Add("format", $"bv*[width<={Resolution.Width}][height<={Resolution.Height}]+ba/b[width<={Resolution.Width}][height<={Resolution.Height}]");
+                        _ytOpt.Add("format", $"bv*[width<={Resolution!.Width}][height<={Resolution.Height}]+ba/b[width<={Resolution.Width}][height<={Resolution.Height}]");
                     }
                     postProcessors.Add(new Dictionary<string, dynamic>() { { "key", "FFmpegVideoConvertor" }, { "preferedformat", FileType.ToString().ToLower() } });
                     if (Subtitle != Subtitle.None)
@@ -434,6 +434,10 @@ public class Download
                     Progress = downloaded / total,
                     Speed = entries.HasKey("speed") ? (entries["speed"].As<double?>() ?? 0.0) : 0.0
                 };
+                if (state.Status == DownloadProgressStatus.Processing)
+                {
+                    state.Progress = 1;
+                }
                 if (File.Exists(_logPath))
                 {
                     using var fs = new FileStream(_logPath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
