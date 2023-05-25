@@ -15,7 +15,7 @@ public class MediaRow : Adw.EntryRow
     [Gtk.Connect] private readonly Gtk.CheckButton _downloadCheck;
     [Gtk.Connect] private readonly Gtk.Button _undoButton;
 
-    public event Action OnSelectionChanged;
+    public event EventHandler<EventArgs> OnSelectionChanged;
 
     private MediaRow(Gtk.Builder builder, MediaInfo mediaInfo, Localizer localizer) : base(builder.GetPointer("_root"), false)
     {
@@ -32,7 +32,7 @@ public class MediaRow : Adw.EntryRow
             if (e.Pspec.GetName() == "active")
             {
                 _mediaInfo.ToDownload = _downloadCheck.GetActive();
-                OnSelectionChanged?.Invoke();
+                OnSelectionChanged?.Invoke(this, EventArgs.Empty);
             }
         };
         OnNotify += (sender, e) =>

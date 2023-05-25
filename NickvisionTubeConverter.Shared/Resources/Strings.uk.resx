@@ -104,7 +104,7 @@
 (Це може зайняти деякий час)</value>
   </data>
   <data name="DependencyError" xml:space="preserve">
-    <value>Неможливо завантажити залежності. Перезапустіть застосунок та повторіть спробу.</value>
+    <value>Не вдалося налаштувати залежності. Будь ласка, перезапустіть застосунок та спробуйте ще раз.</value>
   </data>
   <data name="AddDownload" xml:space="preserve">
     <value>Додати завантаження</value>
@@ -157,9 +157,6 @@
   </data>
   <data name="Quality.Best" xml:space="preserve">
     <value>Найкраще</value>
-  </data>
-  <data name="Quality.Good" xml:space="preserve">
-    <value>Хороше</value>
   </data>
   <data name="Quality.Worst" xml:space="preserve">
     <value>Найгірше</value>
@@ -219,10 +216,10 @@
     <value>URL-адреса медіа</value>
   </data>
   <data name="MediaUrl.Invalid" xml:space="preserve">
-    <value>URL-адреса медіа (невірна)</value>
+    <value>URL-адреса медіа (неправильна)</value>
   </data>
   <data name="MediaUrl.Placeholder" xml:space="preserve">
-    <value>Введіть тут URL-адресу медіа</value>
+    <value>Введіть URL-адресу медіа</value>
   </data>
   <data name="FileType.Field" xml:space="preserve">
     <value>Тип файлу</value>
@@ -232,38 +229,6 @@
   </data>
   <data name="Subtitle.Field" xml:space="preserve">
     <value>Субтитри</value>
-  </data>
-  <data name="NewFilename.Field" xml:space="preserve">
-    <value>Нове ім'я файлу</value>
-  </data>
-  <data name="Preview.WinUI" xml:space="preserve">
-    <value>ПОПЕРЕДНІЙ ПЕРЕГЛЯД</value>
-  </data>
-  <data name="FixErrors.WinUI" xml:space="preserve">
-    <value>Будь ласка, виправте вищевказані помилки.</value>
-  </data>
-  <data name="CreditsDialogDescription.WinUI" xml:space="preserve">
-    <value>Розробники:
-{0}
-
-Дизайнери:
-{1}
-
-Художники:
-{2}
-
-Перекладачі:
-{3}</value>
-  </data>
-  <data name="ThemeDescription.WinUI" xml:space="preserve">
-    <value>Для зміни теми потрібно перезапустити застосунок.</value>
-  </data>
-  <data name="RestartThemeTitle.WinUI" xml:space="preserve">
-    <value>Перезапустити, щоб застосувати тему?</value>
-  </data>
-  <data name="RestartThemeDescription.WinUI" xml:space="preserve">
-    <value>Ви хочете перезапустити {0}, щоб застосувати нову тему?
-Усі незбережені роботи буде втрачено.</value>
   </data>
   <data name="MainMenu.GTK" xml:space="preserve">
     <value>Головне меню</value>
@@ -335,13 +300,10 @@ marcin https://github.com/martin-desktops</value>
     <value>Світла</value>
   </data>
   <data name="EmbedMetadata.Description" xml:space="preserve">
-    <value>Якщо позначено, метадані відео буде включено до завантаженого файлу.</value>
+    <value>Якщо позначити цей пункт, метадані медіа будуть включені до завантаженого файлу.</value>
   </data>
   <data name="MaxNumberOfActiveDownloads" xml:space="preserve">
     <value>Максимальна кількість активних завантажень</value>
-  </data>
-  <data name="ChangelogTitle.WinUI" xml:space="preserve">
-    <value>Що нового?</value>
   </data>
   <data name="ViewLog" xml:space="preserve">
     <value>Переглянути журнал</value>
@@ -359,7 +321,7 @@ marcin https://github.com/martin-desktops</value>
     <value>Назад</value>
   </data>
   <data name="NumberTitles" xml:space="preserve">
-    <value>Кількість відео</value>
+    <value>Назви чисел</value>
   </data>
   <data name="OverwriteExistingFiles" xml:space="preserve">
     <value>Перезаписати наявні файли</value>
@@ -483,12 +445,6 @@ marcin https://github.com/martin-desktops</value>
   <data name="RetryDownloads.Tooltip" xml:space="preserve">
     <value>Повторити невдалу спробу завантаження (Ctrl+Shift+R)</value>
   </data>
-  <data name="StatusReady.WinUI" xml:space="preserve">
-    <value>Готово</value>
-  </data>
-  <data name="CopiedSysInfo.WinUI" xml:space="preserve">
-    <value>Скопійовано інформацію про налагодження в буфер обміну.</value>
-  </data>
   <data name="ClearQueue" xml:space="preserve">
     <value>Очистити завантаження в черзі</value>
   </data>
@@ -504,9 +460,6 @@ marcin https://github.com/martin-desktops</value>
   <data name="UndoTitleEdit" xml:space="preserve">
     <value>Скасувати редагування назви</value>
   </data>
-  <data name="Configurable.WinUI" xml:space="preserve">
-    <value>Налаштовується в налаштуваннях</value>
-  </data>
   <data name="Configurable.GTK" xml:space="preserve">
     <value>Налаштовується в параметрах</value>
   </data>
@@ -515,5 +468,56 @@ marcin https://github.com/martin-desktops</value>
   </data>
   <data name="Info" xml:space="preserve">
     <value>Інформація</value>
+  </data>
+  <data name="MaxQuality.Field" xml:space="preserve">
+    <value>Максимальна якість</value>
+  </data>
+  <data name="Filename.Field" xml:space="preserve">
+    <value>Ім'я файлу</value>
+  </data>
+  <data name="Crop.Field" xml:space="preserve">
+    <value>Обрізати мініатюру</value>
+  </data>
+  <data name="Crop.Description" xml:space="preserve">
+    <value>Зробіть мініатюру квадратною, корисно при завантаженні музики.</value>
+  </data>
+  <data name="DownloadTimeframe.Field" xml:space="preserve">
+    <value>Завантажити конкретний часовий проміжок</value>
+  </data>
+  <data name="DownloadTimeframeEnd.Tooltip" xml:space="preserve">
+    <value>Залиште поле порожнім, щоб завантаження завершилося.</value>
+  </data>
+  <data name="Playlist" xml:space="preserve">
+    <value>Список відтворення</value>
+  </data>
+  <data name="DownloadTimeframeEnd.Invalid" xml:space="preserve">
+    <value>Час закінчення (неправильний)</value>
+  </data>
+  <data name="Playlist.Count" xml:space="preserve">
+    <value>{0} з {1} елементів</value>
+  </data>
+  <data name="Advanced" xml:space="preserve">
+    <value>Додаткові параметри</value>
+  </data>
+  <data name="DownloadTimeframe.Description" xml:space="preserve">
+    <value>Ввімкнення цієї опції вимкне використання aria2 як завантажувача, якщо його було ввімкнено.</value>
+  </data>
+  <data name="DownloadTimeframeStart.Field" xml:space="preserve">
+    <value>Час початку</value>
+  </data>
+  <data name="DownloadTimeframeStart.Tooltip" xml:space="preserve">
+    <value>Залиште порожнім, щоб завантажити з самого початку.</value>
+  </data>
+  <data name="Playlist.Description" xml:space="preserve">
+    <value>Виберіть елементи для завантаження або зміни назв файлів.</value>
+  </data>
+  <data name="DownloadTimeframeStart.Invalid" xml:space="preserve">
+    <value>Час початку (неправильний)</value>
+  </data>
+  <data name="DownloadTimeframeEnd.Field" xml:space="preserve">
+    <value>Час закінчення</value>
+  </data>
+  <data name="Advanced.Description" xml:space="preserve">
+    <value>Більше можливостей для налаштування завантаження</value>
   </data>
 </root>
