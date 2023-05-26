@@ -92,19 +92,14 @@ Adw.PreferencesWindow _root {
         }
       }
 
-      Adw.ActionRow _useAriaRow {
+      Adw.ExpanderRow _useAriaRow {
         title: _("UseAria");
         subtitle: _("UseAria.Description");
-        activatable-widget: _useAriaSwitch;
+        show-enable-switch: true;
 
         [prefix]
         Gtk.Image {
           icon-name: "preferences-system-network-proxy-symbolic";
-        }
-
-        [suffix]
-        Gtk.Switch _useAriaSwitch {
-          valign: center;
         }
       }
       
