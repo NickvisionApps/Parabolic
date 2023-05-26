@@ -3,7 +3,7 @@ using Adw 1;
 
 Adw.PreferencesWindow _root {
   default-width: 700;
-  default-height: 620;
+  default-height: 650;
   width-request: 360;
   modal: true;
   destroy-with-parent: false;
@@ -117,10 +117,17 @@ Adw.PreferencesWindow _root {
             numeric: true;
             adjustment: Gtk.Adjustment {
               lower: 1;
-              upper: 10;
+              upper: 32;
               step-increment: 1;
               page-increment: 2;
             };
+          }
+
+          [suffix]
+          Gtk.Button _ariaMaxConnectionsPerServerResetButton {
+            valign: center;
+            icon-name: "larger-brush-symbolic";
+            tooltip-text: _("AriaSettingReset");
           }
         }
 
@@ -143,6 +150,13 @@ Adw.PreferencesWindow _root {
               step-increment: 1;
               page-increment: 128;
             };
+          }
+
+          [suffix]
+          Gtk.Button _ariaMinSplitSizeResetButton {
+            valign: center;
+            icon-name: "larger-brush-symbolic";
+            tooltip-text: _("AriaSettingReset");
           }
         }
       }

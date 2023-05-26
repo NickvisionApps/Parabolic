@@ -90,7 +90,7 @@ public class Configuration
         RunInBackground = RuntimeInformation.IsOSPlatform(OSPlatform.Windows);
         SpeedLimit = 1024;
         UseAria = false;
-        AriaMaxConnectionsPerServer = 1;
+        AriaMaxConnectionsPerServer = 16;
         AriaMinSplitSize = 20;
         CookiesPath = "";
     }
