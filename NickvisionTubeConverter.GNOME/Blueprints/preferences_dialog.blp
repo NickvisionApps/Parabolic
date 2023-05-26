@@ -3,7 +3,7 @@ using Adw 1;
 
 Adw.PreferencesWindow _root {
   default-width: 700;
-  default-height: 620;
+  default-height: 650;
   width-request: 360;
   modal: true;
   destroy-with-parent: false;
@@ -92,19 +92,72 @@ Adw.PreferencesWindow _root {
         }
       }
 
-      Adw.ActionRow _useAriaRow {
+      Adw.ExpanderRow _useAriaRow {
         title: _("UseAria");
         subtitle: _("UseAria.Description");
-        activatable-widget: _useAriaSwitch;
+        show-enable-switch: true;
 
         [prefix]
         Gtk.Image {
           icon-name: "preferences-system-network-proxy-symbolic";
         }
 
-        [suffix]
-        Gtk.Switch _useAriaSwitch {
-          valign: center;
+        Adw.ActionRow {
+          title: _("AriaMaxConnectionsPerServer");
+          subtitle: _("AriaMaxConnectionsPerServer.Description");
+
+          [prefix]
+          Gtk.Image {
+            icon-name: "globe-symbolic";
+          }
+
+          [suffix]
+          Gtk.SpinButton _ariaMaxConnectionsPerServerSpin {
+            valign: center;
+            numeric: true;
+            adjustment: Gtk.Adjustment {
+              lower: 1;
+              upper: 32;
+              step-increment: 1;
+              page-increment: 2;
+            };
+          }
+
+          [suffix]
+          Gtk.Button _ariaMaxConnectionsPerServerResetButton {
+            valign: center;
+            icon-name: "larger-brush-symbolic";
+            tooltip-text: _("AriaSettingReset");
+          }
+        }
+
+        Adw.ActionRow {
+          title: _("AriaMinSplitSize");
+          subtitle: _("AriaMinSplitSize.Description");
+
+          [prefix]
+          Gtk.Image {
+            icon-name: "edit-cut-symbolic";
+          }
+
+          [suffix]
+          Gtk.SpinButton _ariaMinSplitSizeSpin {
+            valign: center;
+            numeric: true;
+            adjustment: Gtk.Adjustment {
+              lower: 1;
+              upper: 1024;
+              step-increment: 1;
+              page-increment: 128;
+            };
+          }
+
+          [suffix]
+          Gtk.Button _ariaMinSplitSizeResetButton {
+            valign: center;
+            icon-name: "larger-brush-symbolic";
+            tooltip-text: _("AriaSettingReset");
+          }
         }
       }
       

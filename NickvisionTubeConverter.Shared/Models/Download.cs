@@ -147,8 +147,10 @@ public class Download
     /// <param name="useAria">Whether or not to use aria2 for the download</param>
     /// <param name="embedMetadata">Whether or not to embed media metadata in the downloaded file</param>
     /// <param name="cookiesPath">The path to the cookies file to use for yt-dlp</param>
+    /// <param name="ariaMaxConnectionsPerServer">The maximum number of connections to one server for each download (-x)</param>
+    /// <param name="ariaMinSplitSize">The minimum size of which to split a file (-k)</param>
     /// <param name="localizer">Localizer</param>
-    public void Start(bool useAria, bool embedMetadata, string? cookiesPath, Localizer localizer)
+    public void Start(bool useAria, bool embedMetadata, string? cookiesPath, int ariaMaxConnectionsPerServer, int ariaMinSplitSize, Localizer localizer)
     {
         if (!IsRunning)
         {
@@ -224,6 +226,8 @@ public class Download
                     ariaParams.Append(new PyString("--allow-overwrite=true"));
                     ariaParams.Append(new PyString("--show-console-readout=false"));
                     ariaParams.Append(new PyString($"--stop-with-process={_ariaKeeper.Id}"));
+                    ariaParams.Append(new PyString($"--max-connection-per-server={ariaMaxConnectionsPerServer}"));
+                    ariaParams.Append(new PyString($"--min-split-size={ariaMinSplitSize}"));
                     ariaDict["default"] = ariaParams;
                     _ytOpt.Add("external_downloader_args", ariaDict);
                 }
