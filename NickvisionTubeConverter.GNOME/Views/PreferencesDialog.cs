@@ -41,6 +41,7 @@ public partial class PreferencesDialog : Adw.PreferencesWindow
     [Gtk.Connect] private readonly Gtk.SpinButton _speedLimitSpin;
     [Gtk.Connect] private readonly Adw.ExpanderRow _useAriaRow;
     [Gtk.Connect] private readonly Gtk.SpinButton _ariaMaxConnectionsPerServerSpin;
+    [Gtk.Connect] private readonly Gtk.SpinButton _ariaMinSplitSizeSpin;
     [Gtk.Connect] private readonly Adw.ViewStack _cookiesViewStack;
     [Gtk.Connect] private readonly Gtk.Button _selectCookiesFileButton;
     [Gtk.Connect] private readonly Gtk.Button _cookiesFileButton;
@@ -82,6 +83,7 @@ public partial class PreferencesDialog : Adw.PreferencesWindow
         _speedLimitSpin.SetValue(_controller.SpeedLimit);
         _useAriaRow.SetEnableExpansion(_controller.UseAria);
         _ariaMaxConnectionsPerServerSpin.SetValue(_controller.AriaMaxConnectionsPerServer);
+        _ariaMinSplitSizeSpin.SetValue(_controller.AriaMinSplitSize);
         if (File.Exists(_controller.CookiesPath))
         {
             _cookiesViewStack.SetVisibleChildName("file-selected");
@@ -112,6 +114,7 @@ public partial class PreferencesDialog : Adw.PreferencesWindow
         _controller.SpeedLimit = (uint)_speedLimitSpin.GetValue();
         _controller.UseAria = _useAriaRow.GetEnableExpansion();
         _controller.AriaMaxConnectionsPerServer = (int)_ariaMaxConnectionsPerServerSpin.GetValue();
+        _controller.AriaMinSplitSize = (int)_ariaMinSplitSizeSpin.GetValue();
         _controller.EmbedMetadata = _embedMetadataSwitch.GetActive();
         _controller.SaveConfiguration();
         Destroy();

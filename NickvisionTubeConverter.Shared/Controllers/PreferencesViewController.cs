@@ -97,6 +97,16 @@ public class PreferencesViewController
     }
 
     /// <summary>
+    /// The minimum size of which to split a file (-k)
+    /// </summary>
+    public int AriaMinSplitSize
+    {
+        get => Configuration.Current.AriaMinSplitSize;
+
+        set => Configuration.Current.AriaMinSplitSize = value;
+    }
+
+    /// <summary>
     /// The path of the cookies file to use for yt-dlp
     /// </summary>
     public string CookiesPath

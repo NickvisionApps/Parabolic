@@ -123,6 +123,28 @@ Adw.PreferencesWindow _root {
             };
           }
         }
+
+        Adw.ActionRow {
+          title: _("AriaMinSplitSize");
+          subtitle: _("AriaMinSplitSize.Description");
+
+          [prefix]
+          Gtk.Image {
+            icon-name: "edit-cut-symbolic";
+          }
+
+          [suffix]
+          Gtk.SpinButton _ariaMinSplitSizeSpin {
+            valign: center;
+            numeric: true;
+            adjustment: Gtk.Adjustment {
+              lower: 1;
+              upper: 1024;
+              step-increment: 1;
+              page-increment: 128;
+            };
+          }
+        }
       }
       
       Adw.ActionRow {

@@ -60,6 +60,10 @@ public class Configuration
     /// </summary>
     public int AriaMaxConnectionsPerServer { get; set; }
     /// <summary>
+    /// The minimum size of which to split a file (-k)
+    /// </summary>
+    public int AriaMinSplitSize { get; set; }
+    /// <summary>
     /// The path of the cookies file to use for yt-dlp
     /// </summary>
     public string CookiesPath { get; set; }
@@ -87,6 +91,7 @@ public class Configuration
         SpeedLimit = 1024;
         UseAria = false;
         AriaMaxConnectionsPerServer = 1;
+        AriaMinSplitSize = 20;
         CookiesPath = "";
     }
 
