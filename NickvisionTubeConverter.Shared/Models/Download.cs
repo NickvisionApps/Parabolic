@@ -223,7 +223,7 @@ public class Download
                     dynamic ariaDict = new PyDict();
                     dynamic ariaParams = new PyList();
                     ariaParams.Append(new PyString($"--max-overall-download-limit={(_limitSpeed ? _speedLimit : 0)}K"));
-                    ariaParams.Append(new PyString("--allow-overwrite=true"));
+                    ariaParams.Append(new PyString($"--allow-overwrite={_overwriteFiles}"));
                     ariaParams.Append(new PyString("--show-console-readout=false"));
                     ariaParams.Append(new PyString($"--stop-with-process={_ariaKeeper.Id}"));
                     ariaParams.Append(new PyString($"--max-connection-per-server={ariaMaxConnectionsPerServer}"));
