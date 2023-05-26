@@ -101,6 +101,28 @@ Adw.PreferencesWindow _root {
         Gtk.Image {
           icon-name: "preferences-system-network-proxy-symbolic";
         }
+
+        Adw.ActionRow {
+          title: _("AriaMaxConnectionsPerServer");
+          subtitle: _("AriaMaxConnectionsPerServer.Description");
+
+          [prefix]
+          Gtk.Image {
+            icon-name: "globe-symbolic";
+          }
+
+          [suffix]
+          Gtk.SpinButton _ariaMaxConnectionsPerServerSpin {
+            valign: center;
+            numeric: true;
+            adjustment: Gtk.Adjustment {
+              lower: 1;
+              upper: 10;
+              step-increment: 1;
+              page-increment: 2;
+            };
+          }
+        }
       }
       
       Adw.ActionRow {

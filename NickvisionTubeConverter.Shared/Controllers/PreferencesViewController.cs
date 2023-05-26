@@ -87,6 +87,16 @@ public class PreferencesViewController
     }
 
     /// <summary>
+    /// The maximum number of connections to one server for each download (-x)
+    /// </summary>
+    public int AriaMaxConnectionsPerServer
+    {
+         get => Configuration.Current.AriaMaxConnectionsPerServer;
+
+         set => Configuration.Current.AriaMaxConnectionsPerServer = value;
+    }
+
+    /// <summary>
     /// The path of the cookies file to use for yt-dlp
     /// </summary>
     public string CookiesPath

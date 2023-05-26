@@ -15,25 +15,12 @@ public class Configuration
     /// The directory of the application configuration
     /// </summary>
     public static readonly string ConfigDir = $"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}{Path.DirectorySeparatorChar}Nickvision{Path.DirectorySeparatorChar}{AppInfo.Current.Name}";
+    private static readonly string ConfigPath = $"{ConfigDir}{Path.DirectorySeparatorChar}config.json";
     /// <summary>
     /// The directory to store temporary files
     /// </summary>
-    public static string TempDir
-    {
-        get
-        {
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-            {
-                return $"{Environment.GetFolderPath(Environment.SpecialFolder.UserProfile)}{Path.DirectorySeparatorChar}.tc-temp";
-            }
-            else
-            {
-                return $"{ConfigDir}{Path.DirectorySeparatorChar}temp";
-            }
-        }
-    }
+    public static string TempDir = RuntimeInformation.IsOSPlatform(OSPlatform.Windows) ? $"{Environment.GetFolderPath(Environment.SpecialFolder.UserProfile)}{Path.DirectorySeparatorChar}.tc-temp" :  $"{ConfigDir}{Path.DirectorySeparatorChar}temp";
 
-    private static readonly string ConfigPath = $"{ConfigDir}{Path.DirectorySeparatorChar}config.json";
     private static Configuration? _instance;
 
     /// <summary>
@@ -69,6 +56,10 @@ public class Configuration
     /// </summary>
     public bool UseAria { get; set; }
     /// <summary>
+    /// The maximum number of connections to one server for each download (-x)
+    /// </summary>
+    public int AriaMaxConnectionsPerServer { get; set; }
+    /// <summary>
     /// The path of the cookies file to use for yt-dlp
     /// </summary>
     public string CookiesPath { get; set; }
@@ -95,6 +86,7 @@ public class Configuration
         RunInBackground = RuntimeInformation.IsOSPlatform(OSPlatform.Windows);
         SpeedLimit = 1024;
         UseAria = false;
+        AriaMaxConnectionsPerServer = 1;
         CookiesPath = "";
     }
 
