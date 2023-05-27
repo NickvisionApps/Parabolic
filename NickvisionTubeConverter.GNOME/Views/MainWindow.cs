@@ -593,11 +593,6 @@ public partial class MainWindow : Adw.ApplicationWindow
     {
         var addController = _controller.CreateAddDownloadDialogController();
         var addDialog = new AddDownloadDialog(addController, this);
-        addDialog.Present();
-        if (!string.IsNullOrEmpty(e.ActionParam))
-        {
-            await addDialog.SearchUrlAsync(e.ActionParam);
-        }
         addDialog.OnDownload += (s, ex) =>
         {
             _headerBar.RemoveCssClass("flat");
@@ -610,6 +605,7 @@ public partial class MainWindow : Adw.ApplicationWindow
             }
             addDialog.Close();
         };
+        await addDialog.PresentAsync(e.ActionParam);
     }
 
     /// <summary>
@@ -793,13 +789,12 @@ public partial class MainWindow : Adw.ApplicationWindow
     private void ValidateClipboard()
     {
         var clipboard = Gdk.Display.GetDefault()!.GetClipboard();
-        _clipboardCallback = async (source, res, data) =>
+        _clipboardCallback = (source, res, data) =>
         {
             var clipboardText = gdk_clipboard_read_text_finish(clipboard.Handle, res, IntPtr.Zero);
             if(!string.IsNullOrEmpty(clipboardText))
             {
-                NotificationSent(null, new NotificationSentEventArgs(_("Checking clipboard for valid media url..."), NotificationSeverity.Informational));
-                await _controller.ValidateClipboardAsync(clipboardText);
+                _controller.ValidateClipboard(clipboardText);
             }
         };
         gdk_clipboard_read_text_async(clipboard.Handle, IntPtr.Zero, _clipboardCallback, IntPtr.Zero);

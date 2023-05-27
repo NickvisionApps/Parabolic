@@ -169,12 +169,12 @@ public class MainWindowController : IDisposable
     /// Validates clipboard text for a media URL
     /// </summary>
     /// <param name="clipboardText">The text from the clipboard</param>
-    public async Task ValidateClipboardAsync(string clipboardText)
+    public void ValidateClipboard(string clipboardText)
     {
         if (!string.IsNullOrEmpty(clipboardText))
         {
-            var result = await MediaUrlInfo.GetAsync(clipboardText);
-            if (result != null)
+            var result = Uri.TryCreate(clipboardText, UriKind.Absolute, out var uriResult) && (uriResult.Scheme == Uri.UriSchemeHttp || uriResult.Scheme == Uri.UriSchemeHttps);
+            if (result)
             {
                 NotificationSent?.Invoke(this, new NotificationSentEventArgs(_("Media URL found from clipboard."), NotificationSeverity.Informational, "clipboard", clipboardText));
             }

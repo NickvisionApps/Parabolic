@@ -17,42 +17,35 @@ namespace NickvisionTubeConverter.GNOME.Views;
 public partial class AddDownloadDialog : Adw.Window
 {
     private delegate bool GSourceFunc(nint data);
-
-    [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
-    private static partial void g_main_context_invoke(nint context, GSourceFunc function, nint data);
-
-    [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
-    [return: MarshalAs(UnmanagedType.I1)]
-    public static partial bool gtk_file_chooser_set_current_folder(nint chooser, nint file, nint error);
-
-    [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
-    public static partial void gtk_file_chooser_set_current_name(nint chooser, string name);
-
-    [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
-    private static partial string g_file_get_path(nint file);
-
-    [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
-    private static partial nint gtk_file_dialog_new();
-
-    [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
-    private static partial void gtk_file_dialog_set_title(nint dialog, string title);
-
-    [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
-    private static partial void gtk_file_dialog_set_filters(nint dialog, nint filters);
-
-    [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
-    private static partial void gtk_file_dialog_set_initial_name(nint dialog, string name);
-
-    [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
-    private static partial void gtk_file_dialog_set_initial_folder(nint dialog, nint folder);
-
     private delegate void GAsyncReadyCallback(nint source, nint res, nint user_data);
 
     [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
+    private static partial void g_main_context_invoke(nint context, GSourceFunc function, nint data);
+    [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
+    [return: MarshalAs(UnmanagedType.I1)]
+    public static partial bool gtk_file_chooser_set_current_folder(nint chooser, nint file, nint error);
+    [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
+    public static partial void gtk_file_chooser_set_current_name(nint chooser, string name);
+    [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
+    private static partial string g_file_get_path(nint file);
+    [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
+    private static partial nint gtk_file_dialog_new();
+    [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
+    private static partial void gtk_file_dialog_set_title(nint dialog, string title);
+    [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
+    private static partial void gtk_file_dialog_set_filters(nint dialog, nint filters);
+    [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
+    private static partial void gtk_file_dialog_set_initial_name(nint dialog, string name);
+    [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
+    private static partial void gtk_file_dialog_set_initial_folder(nint dialog, nint folder);
+    [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
     private static partial void gtk_file_dialog_select_folder(nint dialog, nint parent, nint cancellable, GAsyncReadyCallback callback, nint user_data);
-
     [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
     private static partial nint gtk_file_dialog_select_folder_finish(nint dialog, nint result, nint error);
+    [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
+    private static partial void gdk_clipboard_read_text_async(nint clipboard, nint cancellable, GAsyncReadyCallback callback, nint user_data);
+    [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
+    private static partial string gdk_clipboard_read_text_finish(nint clipboard, nint result, nint error);
 
     private readonly Gtk.Window _parent;
     private readonly AddDownloadDialogController _controller;
@@ -61,9 +54,11 @@ public partial class AddDownloadDialog : Adw.Window
     private GAsyncReadyCallback? _saveCallback;
     private GSourceFunc _startSearchCallback;
     private GSourceFunc _finishSearchCallback;
+    private GAsyncReadyCallback _clipboardCallback;
     private readonly Gtk.ShortcutController _shortcutController;
 
     [Gtk.Connect] private readonly Gtk.Label _titleLabel;
+    [Gtk.Connect] private readonly Adw.ToastOverlay _toastOverlay;
     [Gtk.Connect] private readonly Adw.ViewStack _viewStack;
     [Gtk.Connect] private readonly Adw.EntryRow _urlRow;
     [Gtk.Connect] private readonly Gtk.Button _validateUrlButton;
@@ -191,7 +186,7 @@ public partial class AddDownloadDialog : Adw.Window
         SetIconName(_controller.AppInfo.ID);
         //Build UI
         builder.Connect(this);
-        _validateUrlButton.OnClicked += SearchUrl;
+        _validateUrlButton.OnClicked += async (sender, e) => await SearchUrlAsync(_urlRow.GetText());;
         _viewStack.OnNotify += (sender, e) =>
         {
             if (e.Pspec.GetName() == "visible-child")
@@ -301,16 +296,50 @@ public partial class AddDownloadDialog : Adw.Window
     }
 
     /// <summary>
+    /// Presents the dialog
+    /// </summary>
+    /// <param name="url">A url to validate at startup</param>
+    public async Task PresentAsync(string? url = null)
+    {
+        base.Present();
+        if (!string.IsNullOrEmpty(url))
+        {
+            await SearchUrlAsync(url);
+        }
+        else
+        {
+            //Validate Clipboard
+            var clipboard = Gdk.Display.GetDefault()!.GetClipboard();
+            _clipboardCallback = (source, res, data) =>
+            {
+                var clipboardText = gdk_clipboard_read_text_finish(clipboard.Handle, res, IntPtr.Zero);
+                if(!string.IsNullOrEmpty(clipboardText))
+                {
+                    var result = Uri.TryCreate(clipboardText, UriKind.Absolute, out var uriResult) && (uriResult.Scheme == Uri.UriSchemeHttp || uriResult.Scheme == Uri.UriSchemeHttps);
+                    if (result)
+                    {
+                        _urlRow.SetText(clipboardText);
+                        var toast = Adw.Toast.New(_("Link pasted from clipboard."));
+                        _toastOverlay.AddToast(toast);
+                    }
+                }
+            };
+            gdk_clipboard_read_text_async(clipboard.Handle, IntPtr.Zero, _clipboardCallback, IntPtr.Zero);
+        }
+    }
+
+    /// <summary>
     /// Searches for information about a URL in the dialog
     /// </summary>
     /// <param name="url">The URL to search</param>
-    public async Task SearchUrlAsync(string url)
+    private async Task SearchUrlAsync(string url)
     {
         g_main_context_invoke(0, _startSearchCallback, 0);
         await Task.Run(async () =>
         {
             try
             {
+                _urlRow.SetText(url);
                 _mediaUrlInfo = await _controller.SearchUrlAsync(url);
             }
             catch (Exception ex)
@@ -321,13 +350,6 @@ public partial class AddDownloadDialog : Adw.Window
         });
         g_main_context_invoke(0, _finishSearchCallback, 0);
     }
-
-    /// <summary>
-    /// Occurs when the media url is changed
-    /// </summary>
-    /// <param name="sender">Adw.EntryRow</param>
-    /// <param name="e">EventArgs</param>
-    private async void SearchUrl(Gtk.Button sender, EventArgs e) => await SearchUrlAsync(_urlRow.GetText());
 
     /// <summary>
     /// Validate download options
