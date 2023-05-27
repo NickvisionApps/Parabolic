@@ -1,5 +1,4 @@
 ﻿using NickvisionTubeConverter.GNOME.Helpers;
-using NickvisionTubeConverter.Shared.Helpers;
 using NickvisionTubeConverter.Shared.Models;
 using System;
 using System.Text.RegularExpressions;

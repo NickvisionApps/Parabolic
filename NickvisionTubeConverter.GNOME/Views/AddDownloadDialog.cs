@@ -301,18 +301,17 @@ public partial class AddDownloadDialog : Adw.Window
     }
 
     /// <summary>
-    /// Occurs when the media url is changed
+    /// Searches for information about a URL in the dialog
     /// </summary>
-    /// <param name="sender">Adw.EntryRow</param>
-    /// <param name="e">EventArgs</param>
-    private async void SearchUrl(Gtk.Button sender, EventArgs e)
+    /// <param name="url">The URL to search</param>
+    public async Task SearchUrlAsync(string url)
     {
         g_main_context_invoke(0, _startSearchCallback, 0);
         await Task.Run(async () =>
         {
             try
             {
-                _mediaUrlInfo = await _controller.SearchUrlAsync(_urlRow.GetText());
+                _mediaUrlInfo = await _controller.SearchUrlAsync(url);
             }
             catch (Exception ex)
             {
@@ -322,6 +321,13 @@ public partial class AddDownloadDialog : Adw.Window
         });
         g_main_context_invoke(0, _finishSearchCallback, 0);
     }
+
+    /// <summary>
+    /// Occurs when the media url is changed
+    /// </summary>
+    /// <param name="sender">Adw.EntryRow</param>
+    /// <param name="e">EventArgs</param>
+    private async void SearchUrl(Gtk.Button sender, EventArgs e) => await SearchUrlAsync(_urlRow.GetText());
 
     /// <summary>
     /// Validate download options

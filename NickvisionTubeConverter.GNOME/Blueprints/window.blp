@@ -70,7 +70,7 @@ Adw.ApplicationWindow _root {
           tooltip-text: _("Downloader");
           primary: false;
           visible: false;
-          icon-name: "folder-download-symbolic";
+          icon-name: "wrench-wide-symbolic";
         }
 
         styles ["flat"]
@@ -84,14 +84,16 @@ Adw.ApplicationWindow _root {
             name: "pageNoDownloads";
             child: Adw.StatusPage {
               icon-name: "org.nickvision.tubeconverter";
-              title: _("No downloads running");
-              description: _("Add a download to get started.");
+              title: _("Download Media");
+              description: _("Add a video, audio, or playlist URL to start downloading.");
               child: Gtk.Button {
                 label: _("Add Download");
                 halign: center;
                 action-name: "win.addDownload";
                 styles ["pill", "suggested-action"]
               };
+
+              styles ["icon-dropshadow"]
             };
           }
           
