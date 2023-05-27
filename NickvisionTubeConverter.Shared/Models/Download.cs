@@ -8,6 +8,7 @@ using System.IO;
 using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using static NickvisionTubeConverter.Shared.Helpers.Gettext;
 
 namespace NickvisionTubeConverter.Shared.Models;
 
@@ -149,8 +150,7 @@ public class Download
     /// <param name="cookiesPath">The path to the cookies file to use for yt-dlp</param>
     /// <param name="ariaMaxConnectionsPerServer">The maximum number of connections to one server for each download (-x)</param>
     /// <param name="ariaMinSplitSize">The minimum size of which to split a file (-k)</param>
-    /// <param name="localizer">Localizer</param>
-    public void Start(bool useAria, bool embedMetadata, string? cookiesPath, int ariaMaxConnectionsPerServer, int ariaMinSplitSize, Localizer localizer)
+    public void Start(bool useAria, bool embedMetadata, string? cookiesPath, int ariaMaxConnectionsPerServer, int ariaMinSplitSize)
     {
         if (!IsRunning)
         {
@@ -168,7 +168,7 @@ public class Download
                         Status = DownloadProgressStatus.Other,
                         Progress = 0.0,
                         Speed = 0.0,
-                        Log = localizer["FileExistsError"]
+                        Log = _("File already exists, and overwriting is disallowed")
                     });
                     IsDone = true;
                     IsRunning = false;
@@ -308,7 +308,7 @@ public class Download
                                 Status = DownloadProgressStatus.DownloadingAria,
                                 Progress = 0.0,
                                 Speed = 0.0,
-                                Log = localizer["StartAria"]
+                                Log = _("Download using aria2 has started")
                             });
                         }
                         PyObject success_code = ytdlp.YoutubeDL(_ytOpt).download(new List<string>() { MediaUrl });

@@ -109,7 +109,7 @@ Tube Converter is available to translate on [Weblate](https://hosted.weblate.org
 
 To start translating the app, fork the repository and clone it locally.
 
-In the `NickvisionTubeConverter.Shared/Resources` folder you will see a file called `String.resx`. This is a C# resource file that contains all the strings for the application. Simply copy that file and rename it `String.<lang-code>.resx`. For example, if I'm creating an Italian translation, the copied file would be called `Strings.it.resx`. Once you have your copied file, simply replace each `<value>` block of each `<data>` string block with your language's appropriate translation.
+Tube Converter uses [gettext](https://www.gnu.org/software/gettext/manual/gettext.html#PO-Files) for translations. In the `NickvisionTubeConverter.Shared/Resources/po` you will find files that can be edited in your favourite `*.po` files editor or any text editor. If you want to create a new translation, copy `tubeconverter.pot` file, name the new file `<lang_code>.po`, where `<lang_code>` is the language code for your translation (usually it's 2 letters, but it also can be a locale code to differentiate between different version of the same language, for example `pt` and `pt_BR`) and edit this file. Also add the language code to `LINGUAS` file (please keep codes sorted alphabetically there).
 
 To check your translation file, make sure your system is in the locale of the language you are translating and run the app. You should see your translated strings!
 
@@ -117,9 +117,9 @@ In case you run the app in GNOME Builder, it will force the app to run in en_US 
 
 1. Build the application
 2. Press Ctrl+Alt+T to open a terminal inside the application environment
-3. Run the application with the following command: `LC_ALL=<locale-code> /app/opt/org.nickvision.tubeconverter/NickvisionTubeConverter.GNOME`, where `<locale-code>` is your system locale code (e.g. `it_IT.UTF8`).
+3. Run the application with the following command: `LC_ALL=<locale-code> /app/bin/org.nickvision.tubeconverter`, where `<locale-code>` is your system locale code (e.g. `it_IT.UTF8`).
 
-Once all changes to your translated file are made, make sure the file is in the path `NickvisionTubeConverter.Shared/Resources/String.<lang-code>.resx`, commit these changes and create a pull request to the project.
+Once all changes to your translated file are made, commit these changes and create a pull request to the project.
 
 ### Your First Code Contribution
 
@@ -137,7 +137,7 @@ The whole solution utilizes the [MVC](https://en.wikipedia.org/wiki/Model%E2%80%
 This project contains all of the code used by all platforms of the app. 
 - Models => The data driven objects of the application (i.e. Configuration, Database, etc...)
 - Controllers => The objects used by UI views to receive and manipulate data from the Models
-- Helpers => Useful objects such as the Localizer for receiving translated strings throughout the app
+- Helpers => Useful objects and functions such as the Gettext functions for receiving translated strings throughout the app
 - Resources => Strings, icons, and fonts used by the app
 
 ##### NickvisionTubeConverter.GNOME

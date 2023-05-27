@@ -4,6 +4,7 @@ using NickvisionTubeConverter.Shared.Models;
 using Python.Runtime;
 using System;
 using System.IO;
+using static NickvisionTubeConverter.Shared.Helpers.Gettext;
 
 namespace NickvisionTubeConverter.Shared.Controllers;
 
@@ -16,14 +17,9 @@ public class MainWindowController : IDisposable
     private nint _pythonThreadState;
 
     /// <summary>
-    /// The localizer to get translated strings from
-    /// </summary>
-    public Localizer Localizer { get; init; }
-    /// <summary>
     /// The manager for downloads
     /// </summary>
     public DownloadManager DownloadManager { get; init; }
-
     /// <summary>
     /// Gets the AppInfo object
     /// </summary>
@@ -77,8 +73,7 @@ public class MainWindowController : IDisposable
     {
         _disposed = false;
         _pythonThreadState = IntPtr.Zero;
-        Localizer = new Localizer();
-        DownloadManager = new DownloadManager(5, Localizer);
+        DownloadManager = new DownloadManager(5);
     }
 
     /// <summary>
@@ -95,25 +90,6 @@ public class MainWindowController : IDisposable
         {
             var timeNowHours = DateTime.Now.Hour;
             return timeNowHours >= 6 && timeNowHours < 18;
-        }
-    }
-
-    /// <summary>
-    /// The string for greeting on the home page
-    /// </summary>
-    public string Greeting
-    {
-        get
-        {
-            var greeting = DateTime.Now.Hour switch
-            {
-                >= 0 and < 6 => "Night",
-                < 12 => "Morning",
-                < 18 => "Afternoon",
-                < 24 => "Evening",
-                _ => "Generic"
-            };
-            return Localizer["Greeting", greeting];
         }
     }
 
@@ -135,10 +111,6 @@ public class MainWindowController : IDisposable
         {
             return;
         }
-        if (disposing)
-        {
-            Localizer.Dispose();
-        }
         PythonEngine.EndAllowThreads(_pythonThreadState);
         PythonEngine.Shutdown();
         if (Directory.Exists(Configuration.TempDir))
@@ -152,7 +124,7 @@ public class MainWindowController : IDisposable
     /// Creates a new PreferencesViewController
     /// </summary>
     /// <returns>The PreferencesViewController</returns>
-    public PreferencesViewController CreatePreferencesViewController() => new PreferencesViewController(Localizer);
+    public PreferencesViewController CreatePreferencesViewController() => new PreferencesViewController();
 
     /// <summary>
     /// Starts the application
@@ -171,7 +143,7 @@ public class MainWindowController : IDisposable
             var success = DependencyManager.SetupDependencies();
             if (!success)
             {
-                NotificationSent?.Invoke(this, new NotificationSentEventArgs(Localizer["DependencyError"], NotificationSeverity.Error));
+                NotificationSent?.Invoke(this, new NotificationSentEventArgs(_("Unable to setup dependencies. Please restart the app and try again."), NotificationSeverity.Error));
             }
             else
             {
@@ -182,7 +154,7 @@ public class MainWindowController : IDisposable
         }
         catch (Exception e)
         {
-            NotificationSent?.Invoke(this, new NotificationSentEventArgs(Localizer["DependencyError"], NotificationSeverity.Error, "error", $"{e.Message}\n\n{e.StackTrace}"));
+            NotificationSent?.Invoke(this, new NotificationSentEventArgs(_("Unable to setup dependencies. Please restart the app and try again."), NotificationSeverity.Error, "error", $"{e.Message}\n\n{e.StackTrace}"));
         }
     }
 
@@ -190,7 +162,7 @@ public class MainWindowController : IDisposable
     /// Creates a new AddDownloadDialogController
     /// </summary>
     /// <returns>The new AddDownloadDialogController</returns>
-    public AddDownloadDialogController CreateAddDownloadDialogController() => new AddDownloadDialogController(Localizer);
+    public AddDownloadDialogController CreateAddDownloadDialogController() => new AddDownloadDialogController();
 
     /// <summary>
     /// Occurs when the configuration is saved

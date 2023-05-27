@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
+using static NickvisionTubeConverter.Shared.Helpers.Gettext;
 
 namespace NickvisionTubeConverter.GNOME.Views;
 
@@ -115,7 +116,7 @@ public partial class AddDownloadDialog : Adw.Window
         _mediaRows = new List<MediaRow>();
         _audioOnly = false;
         _singleMediaDuration = 0;
-        _audioQualityArray = new string[] { _controller.Localizer["Quality", "Best"], _controller.Localizer["Quality", "Worst"] };
+        _audioQualityArray = new string[] { _("Best"), _("Worst") };
         _startSearchCallback = (x) =>
         {
             _urlSpinner = Gtk.Spinner.New();
@@ -129,11 +130,11 @@ public partial class AddDownloadDialog : Adw.Window
             _urlSpinner.Stop();
             _validateUrlButton.SetSensitive(true);
             _validateUrlButton.SetChild(null);
-            _validateUrlButton.SetLabel(_controller.Localizer["ValidateUrl"]);
+            _validateUrlButton.SetLabel(_("Validate"));
             if (_mediaUrlInfo == null)
             {
                 _urlRow.AddCssClass("error");
-                _urlRow.SetTitle(_controller.Localizer["MediaUrl", "Invalid"]);
+                _urlRow.SetTitle(_("Media URL (Invalid)"));
             }
             else
             {
@@ -154,7 +155,7 @@ public partial class AddDownloadDialog : Adw.Window
                 }
                 SetQualityRowModel(); // in case _fileTypeRow.SetSelected didn't invoke OnNotify
                 _urlRow.RemoveCssClass("error");
-                _urlRow.SetTitle(_controller.Localizer["MediaUrl", "Field"]);
+                _urlRow.SetTitle(_("Media URL"));
                 _downloadPage.SetVisible(true);
                 _viewStack.SetVisibleChildName("pageDownload");
                 SetDefaultWidget(_addDownloadButton);
@@ -164,19 +165,19 @@ public partial class AddDownloadDialog : Adw.Window
                 {
                     foreach (var mediaInfo in _mediaUrlInfo.MediaList)
                     {
-                        var row = new MediaRow(mediaInfo, _controller.Localizer);
+                        var row = new MediaRow(mediaInfo);
                         _mediaRows.Add(row);
                         row.OnSelectionChanged += PlaylistChanged;
                         _playlistGroup.Add(row);
                     }
                     _openPlaylistGroup.SetVisible(true);
-                    _openPlaylistRow.SetTitle(string.Format(_controller.Localizer["Playlist", "Count"], _mediaUrlInfo.MediaList.Count, _mediaUrlInfo.MediaList.Count));
-                    _qualityRow.SetTitle(_controller.Localizer["MaxQuality", "Field"]);
+                    _openPlaylistRow.SetTitle(_n("{0} of {1} items", "{0} of {1} items", _mediaUrlInfo.MediaList.Count, _mediaUrlInfo.MediaList.Count, _mediaUrlInfo.MediaList.Count));
+                    _qualityRow.SetTitle(_("Maximum Quality"));
                 }
                 else
                 {
                     _singleMediaDuration = _mediaUrlInfo.MediaList[0].Duration;
-                    var row = new MediaRow(_mediaUrlInfo.MediaList[0], _controller.Localizer);
+                    var row = new MediaRow(_mediaUrlInfo.MediaList[0]);
                     _mediaRows.Add(row);
                     _mediaGroup.SetVisible(true);
                     _mediaGroup.Add(row);
@@ -196,7 +197,12 @@ public partial class AddDownloadDialog : Adw.Window
             if (e.Pspec.GetName() == "visible-child")
             {
                 _backButton.SetVisible(_viewStack.GetVisibleChildName() == "pagePlaylist" || _viewStack.GetVisibleChildName() == "pageAdvanced");
-                _titleLabel.SetLabel(_controller.Localizer[_viewStack.GetVisibleChildName() == "pagePlaylist" ? "Playlist" : (_viewStack.GetVisibleChildName() == "pageAdvanced" ? "Advanced" : "AddDownload")]);
+                _titleLabel.SetLabel(_viewStack.GetVisibleChildName() switch
+                {
+                    "pagePlaylist" => _("Playlist"),
+                    "pageAdvanced" => _("Advanced Options"),
+                    _ => _("Add Download")
+                });
             }
         };
         _backButton.OnClicked += (sender, e) =>
@@ -282,7 +288,7 @@ public partial class AddDownloadDialog : Adw.Window
             _saveFolderString = "";
         }
         _saveFolderRow.SetText(Path.GetFileName(_saveFolderString) ?? "");
-        _speedLimitRow.SetSubtitle($"{string.Format(_controller.Localizer["Speed", "KiBps"], _controller.CurrentSpeedLimit)} ({_controller.Localizer["Configurable", "GTK"]})");
+        _speedLimitRow.SetSubtitle($"{_("{0:f1} KiB/s", _controller.CurrentSpeedLimit)} {_("(Configurable in preferences)")}");
     }
 
     /// <summary>
@@ -290,7 +296,7 @@ public partial class AddDownloadDialog : Adw.Window
     /// </summary>
     /// <param name="controller">AddDownloadDialogController</param>
     /// <param name="parent">Gtk.Window</param>
-    public AddDownloadDialog(AddDownloadDialogController controller, Gtk.Window parent) : this(Builder.FromFile("add_download_dialog.ui", controller.Localizer), controller, parent)
+    public AddDownloadDialog(AddDownloadDialogController controller, Gtk.Window parent) : this(Builder.FromFile("add_download_dialog.ui"), controller, parent)
     {
     }
 
@@ -323,7 +329,7 @@ public partial class AddDownloadDialog : Adw.Window
     private void ValidateOptions()
     {
         _saveFolderRow.RemoveCssClass("error");
-        _saveFolderRow.SetTitle(_controller.Localizer["SaveFolder.Field"]);
+        _saveFolderRow.SetTitle(_("Save Folder"));
         _addDownloadButton.SetSensitive(false);
         var status = _controller.CheckDownloadOptions(_saveFolderString);
         if (status == DownloadOptionsCheckStatus.Valid)
@@ -333,7 +339,7 @@ public partial class AddDownloadDialog : Adw.Window
         }
         if (status.HasFlag(DownloadOptionsCheckStatus.InvalidSaveFolder))
         {
-            _saveFolderRow.SetTitle(_controller.Localizer["SaveFolder.Invalid"]);
+            _saveFolderRow.SetTitle(_("Save Folder (Invalid)"));
             _saveFolderRow.AddCssClass("error");
         }
     }
@@ -363,7 +369,7 @@ public partial class AddDownloadDialog : Adw.Window
     private void SelectSaveFolder(Gtk.Button sender, EventArgs e)
     {
         var folderDialog = gtk_file_dialog_new();
-        gtk_file_dialog_set_title(folderDialog, _controller.Localizer["SelectSaveFolder"]);
+        gtk_file_dialog_set_title(folderDialog, _("Select Save Folder"));
         if (Directory.Exists(_saveFolderString) && _saveFolderString != "/")
         {
             var folder = Gio.FileHelper.NewForPath(_saveFolderString);
@@ -376,7 +382,6 @@ public partial class AddDownloadDialog : Adw.Window
             {
                 _saveFolderString = g_file_get_path(fileHandle);
                 _saveFolderRow.SetText(Path.GetFileName(_saveFolderString));
-                _saveFolderRow.SetTitle(_controller.Localizer["SaveFolder.Field"]);
                 _saveFolderRow.RemoveCssClass("error");
                 _addDownloadButton.SetSensitive(true);
             }
@@ -393,7 +398,7 @@ public partial class AddDownloadDialog : Adw.Window
     private void PlaylistChanged(object? sender, EventArgs e)
     {
         var downloadsCount = _mediaUrlInfo.MediaList.FindAll(x => x.ToDownload).Count;
-         _openPlaylistRow.SetTitle(string.Format(_controller.Localizer["Playlist", "Count"], downloadsCount, _mediaUrlInfo.MediaList.Count));
+        _openPlaylistRow.SetTitle(_n("{0} of {1} items", "{0} of {1} items", _mediaUrlInfo.MediaList.Count, downloadsCount, _mediaUrlInfo.MediaList.Count));
     }
 
     /// <summary>

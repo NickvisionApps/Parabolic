@@ -33,7 +33,7 @@ Adw.Window _root {
         spacing: 24;
 
         Gtk.Label _titleLabel {
-          label: _("AddDownload");
+          label: _("Add Download");
 
           styles ["title-2"]
         }
@@ -49,14 +49,14 @@ Adw.Window _root {
 
               Adw.PreferencesGroup {
                 Adw.EntryRow _urlRow {
-                  title: _("MediaUrl.Field");
+                  title: _("Media URL");
                   width-request: 420;
                   activates-default: true;
                 }
               }
 
               Gtk.Button _validateUrlButton {
-                label: _("ValidateUrl");
+                label: _("Validate");
                 halign: center;
                 valign: center;
                 margin-bottom: 24;
@@ -88,23 +88,23 @@ Adw.Window _root {
                     margin-end: 24;
 
                     Adw.ComboRow _fileTypeRow {
-                      title: _("FileType.Field");
+                      title: _("File Type");
                       model: Gtk.StringList {
                         strings ["MP4", "WEBM", "MP3", "M4A", "OPUS", "FLAC", "WAV"]
                       };
                     }
 
                     Adw.ComboRow _qualityRow {
-                      title: _("Quality.Field");
+                      title: _("Quality");
                       model: Gtk.StringList {
                         strings [""]
                       };
                     }
 
                     Adw.ComboRow _subtitleRow {
-                      title: _("Subtitle.Field");
+                      title: _("Subtitle");
                       model: Gtk.StringList {
-                        strings [_("Subtitle.None"), "VTT", "SRT"]
+                        strings [C_("Subtitle", "None"), "VTT", "SRT"]
                       };
                     }
                   }
@@ -114,7 +114,7 @@ Adw.Window _root {
                     margin-end: 24;
 
                     Adw.EntryRow _saveFolderRow {
-                      title: _("SaveFolder.Field");
+                      title: _("Save Folder");
                       width-request: 420;
                       editable: false;
 
@@ -122,15 +122,15 @@ Adw.Window _root {
                       Gtk.Button _selectSaveFolderButton {
                         valign: center;
                         icon-name: "folder-open-symbolic";
-                        tooltip-text: _("SelectSaveFolder");
+                        tooltip-text: _("Select Save Folder");
                   
                         styles ["flat"]
                       }
                     }
                     
                     Adw.ActionRow _openAdvancedRow {
-                      title: _("Advanced");
-                      subtitle: _("Advanced.Description");
+                      title: _("Advanced Options");
+                      subtitle: _("More options for configuring the download.");
                       icon-name: "wrench-wide-symbolic";
                       activatable-widget: _openAdvancedButton;
 
@@ -156,7 +156,7 @@ Adw.Window _root {
                     margin-end: 24;
 
                     Adw.ActionRow _openPlaylistRow {
-                      subtitle: _("Playlist.Description");
+                      subtitle: _("Select items to download or change filenames.");
                       activatable-widget: _openPlaylistButton;
 
                       [suffix]
@@ -194,7 +194,7 @@ Adw.Window _root {
 
                 Adw.ButtonContent {
                   icon-name: "view-list-ordered-symbolic";
-                  label: _("NumberTitles");
+                  label: _("Number Titles");
                 }
               }
 
@@ -228,7 +228,7 @@ Adw.Window _root {
                   margin-bottom: 12;
                   
                   Adw.ActionRow _overwriteRow {
-                    title: _("OverwriteExistingFiles");
+                    title: _("Overwrite Existing Files");
                     activatable-widget: _overwriteSwitch;
 
                     [suffix]
@@ -239,7 +239,7 @@ Adw.Window _root {
                   }
                   
                   Adw.ActionRow _speedLimitRow {
-                    title: _("SpeedLimit");
+                    title: _("Speed Limit");
                     activatable-widget: _speedLimitSwitch;
 
                     [suffix]
@@ -250,8 +250,8 @@ Adw.Window _root {
                   }
 
                   Adw.ActionRow _cropThumbnailRow {
-                    title: _("Crop.Field");
-                    subtitle: _("Crop.Description");
+                    title: _("Crop Thumbnail");
+                    subtitle: _("Make thumbnail square, useful when downloading music.");
                     activatable-widget: _cropThumbnailSwitch;
 
                     [suffix]

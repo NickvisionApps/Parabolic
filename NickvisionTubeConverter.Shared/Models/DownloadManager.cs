@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using static NickvisionTubeConverter.Shared.Helpers.Gettext;
 
 namespace NickvisionTubeConverter.Shared.Models;
 
@@ -10,7 +11,6 @@ namespace NickvisionTubeConverter.Shared.Models;
 /// </summary>
 public class DownloadManager
 {
-    private Localizer _localizer;
     private int _maxNumberOfActiveDownloads;
     private Dictionary<Guid, Download> _downloading;
     private Dictionary<Guid, (Download Download, bool UseAria, bool EmbedMetadata, string? CookiesPath, int AriaMaxConnectionsPerServer, int AriaMinSplitSize)> _queued;
@@ -63,10 +63,8 @@ public class DownloadManager
     /// Constructs a DownloadManager
     /// </summary>
     /// <param name="maxNumberOfActiveDownloads">The maximum number of active downloads</param>
-    /// <param name="localizer">The Localizer for strings</param>
-    public DownloadManager(int maxNumberOfActiveDownloads, Localizer localizer)
+    public DownloadManager(int maxNumberOfActiveDownloads)
     {
-        _localizer = localizer;
         _downloading = new Dictionary<Guid, Download>();
         _queued = new Dictionary<Guid, (Download Download, bool UseAria, bool EmbedMetadata, string? CookiesPath, int AriaMaxConnectionsPerServer, int AriaMinSplitSize)>();
         _completed = new Dictionary<Guid, Download>();
@@ -90,7 +88,7 @@ public class DownloadManager
                 _downloading.Add(firstPair.Key, firstPair.Value.Download);
                 _queued.Remove(firstPair.Key);
                 DownloadStartedFromQueue?.Invoke(this, firstPair.Key);
-                firstPair.Value.Download.Start(firstPair.Value.UseAria, firstPair.Value.EmbedMetadata, firstPair.Value.CookiesPath, firstPair.Value.AriaMaxConnectionsPerServer, firstPair.Value.AriaMinSplitSize, _localizer);
+                firstPair.Value.Download.Start(firstPair.Value.UseAria, firstPair.Value.EmbedMetadata, firstPair.Value.CookiesPath, firstPair.Value.AriaMaxConnectionsPerServer, firstPair.Value.AriaMinSplitSize);
             }
         }
     }
@@ -129,7 +127,7 @@ public class DownloadManager
                     result += _progressStates[pair.Value.Id].Progress;
                 }
             }
-            result /= (_downloading.Count + _queued.Count) > 0 ? (_downloading.Count + _queued.Count) : 1;
+            result /= (RemainingDownloadsCount) > 0 ? (RemainingDownloadsCount) : 1;
             return result;
         }
     }
@@ -149,7 +147,7 @@ public class DownloadManager
                     totalSpeed += _progressStates[pair.Value.Id].Speed;
                 }
             }
-            return totalSpeed.GetSpeedString(_localizer);
+            return totalSpeed.GetSpeedString();
         }
     }
 
@@ -160,17 +158,17 @@ public class DownloadManager
     {
         get
         {
-            if ((_downloading.Count + _queued.Count) > 0)
+            if (RemainingDownloadsCount > 0)
             {
-                return string.Format(_localizer["BackgroundActivityReport"], _downloading.Count + _queued.Count, TotalProgress * 100, TotalSpeedString);
+                return _n("{0} download — {1:f1}% ({2})", "{0} downloads — {1:f1}% ({2})", RemainingDownloadsCount, RemainingDownloadsCount, TotalProgress * 100, TotalSpeedString);
             }
             else if (ErrorsCount > 0)
             {
-                return _localizer["FinishedWithErrors"];
+                return _("Some downloads finished with errors!");
             }
             else
             {
-                return _localizer["NoDownloadsRunning"];
+                return _("No downloads running");
             }
         }
     }
@@ -192,7 +190,7 @@ public class DownloadManager
         {
             _downloading.Add(download.Id, download);
             DownloadAdded?.Invoke(this, (download.Id, download.Filename, download.SaveFolder, true));
-            download.Start(useAria, embedMetadata, cookiesPath, ariaMaxConnectionsPerServer, ariaMinSplitSize, _localizer);
+            download.Start(useAria, embedMetadata, cookiesPath, ariaMaxConnectionsPerServer, ariaMinSplitSize);
         }
         else
         {
@@ -323,7 +321,7 @@ public class DownloadManager
             _downloading.Add(firstPair.Key, firstPair.Value.Download);
             _queued.Remove(firstPair.Key);
             DownloadStartedFromQueue?.Invoke(this, firstPair.Key);
-            firstPair.Value.Download.Start(firstPair.Value.UseAria, firstPair.Value.EmbedMetadata, firstPair.Value.CookiesPath, firstPair.Value.AriaMaxConnectionsPerServer, firstPair.Value.AriaMinSplitSize, _localizer);
+            firstPair.Value.Download.Start(firstPair.Value.UseAria, firstPair.Value.EmbedMetadata, firstPair.Value.CookiesPath, firstPair.Value.AriaMaxConnectionsPerServer, firstPair.Value.AriaMinSplitSize);
         }
     }
 }

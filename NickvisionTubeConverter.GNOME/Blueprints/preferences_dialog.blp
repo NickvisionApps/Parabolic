@@ -12,13 +12,13 @@ Adw.PreferencesWindow _root {
 
   Adw.PreferencesPage {
     Adw.PreferencesGroup {
-      title: _("UserInterface");
-      description: _("UserInterfaceDescription");
+      title: _("User Interface");
+      description: _("Customize the application's user interface.");
 
       Adw.ComboRow _themeRow {
         title: _("Theme");
         model: Gtk.StringList {
-          strings [_("ThemeLight"), _("ThemeDark"), _("ThemeSystem")]
+          strings [C_("Theme", "Light"), C_("Theme", "Dark"), C_("Theme", "System")]
         };
 
         [prefix]
@@ -28,8 +28,8 @@ Adw.PreferencesWindow _root {
       }
 
       Adw.ActionRow _backgroundRow {
-        title: _("AllowBackground");
-        subtitle: _("AllowBackgroundDescription.GTK");
+        title: _("Allow Running In Background");
+        subtitle: _("Hide the window instead of quitting if there are downloads running.");
 
         [prefix]
         Gtk.Image {
@@ -47,10 +47,10 @@ Adw.PreferencesWindow _root {
 
     Adw.PreferencesGroup {
       title: _("Downloader");
-      description: _("Downloader.Description");
+      description: _("Customize downloader settings.");
 
       Adw.ActionRow {
-        title: _("MaxNumberOfActiveDownloads");
+        title: _("Max Number of Active Downloads");
 
         [prefix]
         Gtk.Image {
@@ -71,8 +71,8 @@ Adw.PreferencesWindow _root {
       }
 
       Adw.ActionRow {
-        title: _("SpeedLimit");
-        subtitle: _("SpeedLimit.Description");
+        title: _("Speed Limit");
+        subtitle: _("This limit (in KiB/s) is applied to downloads that have speed limit enabled. Changing the value doesn't affect already running downloads.");
 
         [prefix]
         Gtk.Image {
@@ -93,8 +93,8 @@ Adw.PreferencesWindow _root {
       }
 
       Adw.ExpanderRow _useAriaRow {
-        title: _("UseAria");
-        subtitle: _("UseAria.Description");
+        title: _("Use aria2");
+        subtitle: _("Enable to use aria2 downloader. It can be faster, but you will not see download progress.");
         show-enable-switch: true;
 
         [prefix]
@@ -103,8 +103,8 @@ Adw.PreferencesWindow _root {
         }
 
         Adw.ActionRow {
-          title: _("AriaMaxConnectionsPerServer");
-          subtitle: _("AriaMaxConnectionsPerServer.Description");
+          title: _("Max Connections Per Server (-x)");
+          subtitle: _("The maximum number of connections to one server for each download.");
 
           [prefix]
           Gtk.Image {
@@ -127,13 +127,13 @@ Adw.PreferencesWindow _root {
           Gtk.Button _ariaMaxConnectionsPerServerResetButton {
             valign: center;
             icon-name: "larger-brush-symbolic";
-            tooltip-text: _("AriaSettingReset");
+            tooltip-text: _("Reset to default");
           }
         }
 
         Adw.ActionRow {
-          title: _("AriaMinSplitSize");
-          subtitle: _("AriaMinSplitSize.Description");
+          title: _("Minimum Split Size (-k)");
+          subtitle: _("The minimum size of which to split a file (in MiB).");
 
           [prefix]
           Gtk.Image {
@@ -156,14 +156,14 @@ Adw.PreferencesWindow _root {
           Gtk.Button _ariaMinSplitSizeResetButton {
             valign: center;
             icon-name: "larger-brush-symbolic";
-            tooltip-text: _("AriaSettingReset");
+            tooltip-text: _("Reset to default");
           }
         }
       }
       
       Adw.ActionRow {
-        title: _("CookiesFile");
-        subtitle: _("CookiesFile.Description");
+        title: _("Cookies File");
+        subtitle: _("A cookies file can be provided to yt-dlp to allow downloading media that requires a login.");
 
         [prefix]
         Gtk.Image {
@@ -193,7 +193,7 @@ Adw.PreferencesWindow _root {
                   maximum-size: 300;
                   child: Gtk.Label {
                     wrap: true;
-                    label: _("Cookies.Description");
+                    label: _("Cookies can be passed to yt-dlp in the form of TXT files. Export cookies from your browser using the following extensions (use at your own risk):");
                   };
                 }
                 
@@ -234,7 +234,7 @@ Adw.PreferencesWindow _root {
                 halign: end;
                 valign: center;
                 child: Adw.ButtonContent {
-                  label: _("SelectCookiesFile");
+                  label: _("Select Cookies File");
                   icon-name: "document-open-symbolic";
                 };
               };
@@ -248,7 +248,7 @@ Adw.PreferencesWindow _root {
                 valign: center;
   
                 Gtk.Button _cookiesFileButton {
-                  tooltip-text: _("SelectCookiesFile");
+                  tooltip-text: _("Select Cookies File");
                   child: Gtk.Label _cookiesFileLabel {
                     ellipsize: start;
                   };
@@ -256,7 +256,7 @@ Adw.PreferencesWindow _root {
   
                 Gtk.Button _unsetCookiesFileButton {
                   icon-name: "larger-brush-symbolic";
-                  tooltip-text: _("ClearCookiesFile");
+                  tooltip-text: _("Clear Cookies File");
                 }
   
                 styles ["linked"]
@@ -269,11 +269,11 @@ Adw.PreferencesWindow _root {
 
     Adw.PreferencesGroup {
       title: _("Converter");
-      description: _("Converter.Description");
+      description: _("Customize converter settings.");
 
       Adw.ActionRow {
-        title: _("EmbedMetadata");
-        subtitle: _("EmbedMetadata.Description");
+        title: _("Embed Metadata");
+        subtitle: _("If checked, media metadata will be included in the downloaded file.");
 
         [prefix]
         Gtk.Image {
