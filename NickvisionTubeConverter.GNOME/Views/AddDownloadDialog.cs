@@ -295,7 +295,7 @@ public partial class AddDownloadDialog : Adw.Window
     }
 
     /// <summary>
-    /// Searchs for information about a URL in the dialog
+    /// Searches for information about a URL in the dialog
     /// </summary>
     /// <param name="url">The URL to search</param>
     public async Task SearchUrlAsync(string url)
