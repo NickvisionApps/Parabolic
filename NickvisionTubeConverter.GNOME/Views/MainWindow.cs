@@ -154,7 +154,7 @@ public partial class MainWindow : Adw.ApplicationWindow
                 var e = target.Value;
                 var downloadRow = new DownloadRow(e.Id, e.Filename, e.SaveFolder, (e) => NotificationSent(null, e));
                 downloadRow.StopRequested += (sender, e) => _controller.DownloadManager.RequestStop(e);
-                downloadRow.RetryRequested += (sender, e) => _controller.DownloadManager.RequestRetry(e, _controller.UseAria, _controller.EmbedMetadata, _controller.CookiesPath, _controller.AriaMaxConnectionsPerServer, _controller.AriaMinSplitSize);
+                downloadRow.RetryRequested += (sender, e) => _controller.DownloadManager.RequestRetry(e, new DownloadOptions(_controller.UseAria, _controller.EmbedMetadata, _controller.CookiesPath, _controller.AriaMaxConnectionsPerServer, _controller.AriaMinSplitSize));
                 var box = e.IsDownloading ? _downloadingBox : _queuedBox;
                 if(e.IsDownloading)
                 {
@@ -450,7 +450,7 @@ public partial class MainWindow : Adw.ApplicationWindow
         application.SetAccelsForAction("win.stopAllDownloads", new string[] { "<Ctrl><Shift>c" });
         //Retry Failed Downloads Action
         var actRetryFailedDownloads = Gio.SimpleAction.New("retryFailedDownloads", null);
-        actRetryFailedDownloads.OnActivate += (sender, e) => _controller.DownloadManager.RetryFailedDownloads(_controller.UseAria, _controller.EmbedMetadata, _controller.CookiesPath, _controller.AriaMaxConnectionsPerServer, _controller.AriaMinSplitSize);
+        actRetryFailedDownloads.OnActivate += (sender, e) => _controller.DownloadManager.RetryFailedDownloads(new DownloadOptions(_controller.UseAria, _controller.EmbedMetadata, _controller.CookiesPath, _controller.AriaMaxConnectionsPerServer, _controller.AriaMinSplitSize));
         AddAction(actRetryFailedDownloads);
         application.SetAccelsForAction("win.retryFailedDownloads", new string[] { "<Ctrl><Shift>r" });
         //Clear Queued Downloads Action
@@ -585,7 +585,7 @@ public partial class MainWindow : Adw.ApplicationWindow
         return false;
     }
 
-     /// <summary>
+    /// <summary>
     /// Prompts the AddDownloadDialog
     /// </summary>
     /// <param name="e">NotificationSentEventArgs</param>
@@ -606,7 +606,7 @@ public partial class MainWindow : Adw.ApplicationWindow
             _viewStack.SetVisibleChildName("pageDownloads");
             foreach (var download in addController.Downloads)
             {
-                _controller.DownloadManager.AddDownload(download, _controller.UseAria, _controller.EmbedMetadata, _controller.CookiesPath, _controller.AriaMaxConnectionsPerServer, _controller.AriaMinSplitSize);
+                _controller.DownloadManager.AddDownload(download, new DownloadOptions(_controller.UseAria, _controller.EmbedMetadata, _controller.CookiesPath, _controller.AriaMaxConnectionsPerServer, _controller.AriaMinSplitSize));
             }
             addDialog.Close();
         };

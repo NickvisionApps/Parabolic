@@ -13,7 +13,7 @@ public class DownloadManager
 {
     private int _maxNumberOfActiveDownloads;
     private Dictionary<Guid, Download> _downloading;
-    private Dictionary<Guid, (Download Download, bool UseAria, bool EmbedMetadata, string? CookiesPath, int AriaMaxConnectionsPerServer, int AriaMinSplitSize)> _queued;
+    private Dictionary<Guid, (Download Download, DownloadOptions Options)> _queued;
     private Dictionary<Guid, Download> _completed;
     private Dictionary<Guid, DownloadProgressState> _progressStates;
 
@@ -66,7 +66,7 @@ public class DownloadManager
     public DownloadManager(int maxNumberOfActiveDownloads)
     {
         _downloading = new Dictionary<Guid, Download>();
-        _queued = new Dictionary<Guid, (Download Download, bool UseAria, bool EmbedMetadata, string? CookiesPath, int AriaMaxConnectionsPerServer, int AriaMinSplitSize)>();
+        _queued = new Dictionary<Guid, (Download Download, DownloadOptions Options)>();
         _completed = new Dictionary<Guid, Download>();
         _progressStates = new Dictionary<Guid, DownloadProgressState>();
         _maxNumberOfActiveDownloads = maxNumberOfActiveDownloads;
@@ -88,7 +88,7 @@ public class DownloadManager
                 _downloading.Add(firstPair.Key, firstPair.Value.Download);
                 _queued.Remove(firstPair.Key);
                 DownloadStartedFromQueue?.Invoke(this, firstPair.Key);
-                firstPair.Value.Download.Start(firstPair.Value.UseAria, firstPair.Value.EmbedMetadata, firstPair.Value.CookiesPath, firstPair.Value.AriaMaxConnectionsPerServer, firstPair.Value.AriaMinSplitSize);
+                firstPair.Value.Download.Start(firstPair.Value.Options);
             }
         }
     }
@@ -177,12 +177,8 @@ public class DownloadManager
     /// Adds a download
     /// </summary>
     /// <param name="download">The Download model</param>
-    /// <param name="useAria">Whether or not to use aria2 for the download</param>
-    /// <param name="embedMetadata">Whether or not to embed media metadata in the downloaded file</param>
-    /// <param name="cookiesPath">The path to the cookies file to use for yt-dlp</param>
-    /// <param name="ariaMaxConnectionsPerServer">The maximum number of connections to one server for each download (-x)</param>
-    /// <param name="ariaMinSplitSize">The minimum size of which to split a file (-k)</param>
-    public void AddDownload(Download download, bool useAria, bool embedMetadata, string? cookiesPath, int ariaMaxConnectionsPerServer, int ariaMinSplitSize)
+    /// <param name="options">The DownloadOptions</param>
+    public void AddDownload(Download download, DownloadOptions options)
     {
         download.ProgressChanged += Download_ProgressChanged;
         download.Completed += Download_Completed;
@@ -190,11 +186,11 @@ public class DownloadManager
         {
             _downloading.Add(download.Id, download);
             DownloadAdded?.Invoke(this, (download.Id, download.Filename, download.SaveFolder, true));
-            download.Start(useAria, embedMetadata, cookiesPath, ariaMaxConnectionsPerServer, ariaMinSplitSize);
+            download.Start(options);
         }
         else
         {
-            _queued.Add(download.Id, (download, useAria, embedMetadata, cookiesPath, ariaMaxConnectionsPerServer, ariaMinSplitSize));
+            _queued.Add(download.Id, (download, options));
             DownloadAdded?.Invoke(this, (download.Id, download.Filename, download.SaveFolder, false));
         }
     }
@@ -230,19 +226,15 @@ public class DownloadManager
     /// Requests for a download to be retried
     /// </summary>
     /// <param name="id">The id of the download</param>
-    /// <param name="useAria">Whether or not to use aria2 downloader</param>
-    /// <param name="embedMetadata">Whether or not to emebed metadata</param>
-    /// <param name="cookiesPath">The path to the cookies file to use for yt-dlp</param>
-    /// <param name="ariaMaxConnectionsPerServer">The maximum number of connections to one server for each download (-x)</param>
-    /// <param name="ariaMinSplitSize">The minimum size of which to split a file (-k)</param>
-    public void RequestRetry(Guid id, bool useAria, bool embedMetadata, string? cookiesPath, int ariaMaxConnectionsPerServer, int ariaMinSplitSize)
+    /// <param name="options">The DownloadOptions</param>
+    public void RequestRetry(Guid id, DownloadOptions options)
     {
         if (_completed.ContainsKey(id))
         {
             var download = _completed[id];
             _completed.Remove(id);
             DownloadRetried?.Invoke(this, id);
-            AddDownload(download, useAria, embedMetadata, cookiesPath, ariaMaxConnectionsPerServer, ariaMinSplitSize);
+            AddDownload(download, options);
         }
     }
 
@@ -265,18 +257,14 @@ public class DownloadManager
     /// <summary>
     /// Requests all failed downloads to be retried
     /// </summary>
-    /// <param name="useAria">Whether or not to use aria2 downloader</param>
-    /// <param name="embedMetadata">Whether or not to emebed metadata</param>
-    /// <param name="cookiesPath">The path to the cookies file to use for yt-dlp</param>
-    /// <param name="ariaMaxConnectionsPerServer">The maximum number of connections to one server for each download (-x)</param>
-    /// <param name="ariaMinSplitSize">The minimum size of which to split a file (-k)</param>
-    public void RetryFailedDownloads(bool useAria, bool embedMetadata, string? cookiesPath, int ariaMaxConnectionsPerServer, int ariaMinSplitSize)
+    /// <param name="options">The DownloadOptions</param>
+    public void RetryFailedDownloads(DownloadOptions options)
     {
         foreach (var pair in _completed)
         {
             if (!pair.Value.IsSuccess)
             {
-                RequestRetry(pair.Key, useAria, embedMetadata, cookiesPath, ariaMaxConnectionsPerServer, ariaMinSplitSize);
+                RequestRetry(pair.Key, options);
             }
         }
     }
@@ -321,7 +309,7 @@ public class DownloadManager
             _downloading.Add(firstPair.Key, firstPair.Value.Download);
             _queued.Remove(firstPair.Key);
             DownloadStartedFromQueue?.Invoke(this, firstPair.Key);
-            firstPair.Value.Download.Start(firstPair.Value.UseAria, firstPair.Value.EmbedMetadata, firstPair.Value.CookiesPath, firstPair.Value.AriaMaxConnectionsPerServer, firstPair.Value.AriaMinSplitSize);
+            firstPair.Value.Download.Start(firstPair.Value.Options);
         }
     }
 }
