@@ -103,8 +103,8 @@ Adw.PreferencesWindow _root {
         }
 
         Adw.ActionRow {
-          title: _("AriaMaxConnectionsPerServer");
-          subtitle: _("AriaMaxConnectionsPerServer.Description");
+          title: _("Max Connections Per Server (-x)");
+          subtitle: _("The maximum number of connections to one server for each download.");
 
           [prefix]
           Gtk.Image {
@@ -127,13 +127,13 @@ Adw.PreferencesWindow _root {
           Gtk.Button _ariaMaxConnectionsPerServerResetButton {
             valign: center;
             icon-name: "larger-brush-symbolic";
-            tooltip-text: _("AriaSettingReset");
+            tooltip-text: _("Reset to default");
           }
         }
 
         Adw.ActionRow {
-          title: _("AriaMinSplitSize");
-          subtitle: _("AriaMinSplitSize.Description");
+          title: _("Minimum Split Size (-k)");
+          subtitle: _("The minimum size of which to split a file (in MiB).");
 
           [prefix]
           Gtk.Image {
@@ -156,7 +156,7 @@ Adw.PreferencesWindow _root {
           Gtk.Button _ariaMinSplitSizeResetButton {
             valign: center;
             icon-name: "larger-brush-symbolic";
-            tooltip-text: _("AriaSettingReset");
+            tooltip-text: _("Reset to default");
           }
         }
       }

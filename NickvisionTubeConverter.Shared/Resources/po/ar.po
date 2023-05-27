@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-27 09:51+0300\n"
+"POT-Creation-Date: 2023-05-27 11:04+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,63 +16,61 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:203
-#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:132
-msgid "Advanced Options"
-msgstr "خيارات متقدمة"
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:158
+#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:52
+msgid "Media URL"
+msgstr "رابط الوسائط"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:332
-#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:117
-msgid "Save Folder"
-msgstr "مجلد الحفظ"
-
-#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:103
-#, fuzzy
-msgid "Download log was copied to clipboard."
-msgstr "نُسخ سجل التنزيل إلى الحافظة"
-
-#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:216
-msgid "Stopped"
-msgstr "أوقف"
-
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:743
-msgid "List of supported sites"
-msgstr "قائمة المواقع المدعومة"
-
-#: ../../../../NickvisionTubeConverter.GNOME/Controls/MediaRow.cs:28
-#, fuzzy
-msgid "File Name"
-msgstr "اسم الملف"
-
-#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:167
-msgid "Downloading {0:f2}% ({1})"
-msgstr "ينزَّل {0:f2}% ({1})"
+#: ../../../Models/DownloadManager.cs:171
+#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:87
+msgid "No downloads running"
+msgstr "لا يوجد ما ينزَّل الآن"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:291
 #, fuzzy
 msgid "(Configurable in preferences)"
 msgstr "يُضبط في التفضيلات"
 
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:240
+msgid "{0} has finished downloading."
+msgstr "انتهى تنزيل {0}."
+
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:240
+msgid "Download Finished"
+msgstr "انتهى التنزيل"
+
+#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:148
+msgid "Preparing..."
+msgstr "يجهِّز..."
+
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:174
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:401
+#, fuzzy, csharp-format
+msgid "{0} of {1} items"
+msgid_plural "{0} of {1} items"
+msgstr[0] "{0} من {1} من العناصر"
+msgstr[1] "{0} من {1} من العناصر"
+
+#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:216
+msgid "Stopped"
+msgstr "أوقف"
+
 #: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:563
-msgid "No"
-msgstr "لا"
+msgid "Close and Stop Downloads?"
+msgstr "أأغلق التطبيق وأوقف التنزيلات؟"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:372
-#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:125
-msgid "Select Save Folder"
-msgstr "اختر مجلد الحفظ"
+#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:201
+msgid "Success"
+msgstr "نجاح"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:204
-#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:36
-#: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:17
-#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:90
-msgid "Add Download"
-msgstr "أضف تنزيلًا"
+#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:176
+#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:121
+msgid "Downloading"
+msgstr "ينزَّل"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:134
-#: NickvisionTubeConverter.GNOME/Blueprints/download_row.blp:36
-msgid "Waiting..."
-msgstr "ينتظر..."
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:137
+msgid "Media URL (Invalid)"
+msgstr "رابط الوسائط (غير صالح)"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:745
 msgid ""
@@ -80,9 +78,14 @@ msgid ""
 "Contributors on GitHub ❤️ {1}"
 msgstr ""
 
-#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:201
-msgid "Error"
-msgstr "خطأ"
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:175
+msgid "Maximum Quality"
+msgstr "أقصى جودة"
+
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:332
+#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:117
+msgid "Save Folder"
+msgstr "مجلد الحفظ"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Program.cs:49
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:44
@@ -91,28 +94,9 @@ msgstr "خطأ"
 msgid "Tube Converter"
 msgstr "محول المقاطع"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:158
-#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:52
-msgid "Media URL"
-msgstr "رابط الوسائط"
-
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:744
-msgid "Matrix Chat"
-msgstr "دردشة ماتركس"
-
-#: ../../../Helpers/SpeedFormatter.cs:24
-msgid "{0:f1} MiB/s"
-msgstr "{0:f1} م‌بايت\\ث"
-
-#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:176
-#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:121
-msgid "Downloading"
-msgstr "ينزَّل"
-
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:291
-#: ../../../Helpers/SpeedFormatter.cs:28
-msgid "{0:f1} KiB/s"
-msgstr "{0:f1} ك‌بايت\\ث"
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:563
+msgid "Yes"
+msgstr "نعم"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:739
 msgid ""
@@ -124,9 +108,157 @@ msgstr ""
 "تنتهك قوانين حقوق النشر المحلية أو قانون الألفية للملكية الرقمية (DMCA). "
 "يستخدم المستخدمون هذا التطبيق على مسؤوليتهم الخاصة."
 
+#: ../../../Controllers/MainWindowController.cs:146
+#: ../../../Controllers/MainWindowController.cs:157
+msgid "Unable to setup dependencies. Please restart the app and try again."
+msgstr "تعذر تثبيت التبعيات. أعد تشغيل التطبيق وحاول مرةً أخرى."
+
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:744
+msgid "Matrix Chat"
+msgstr "دردشة ماتركس"
+
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:203
+#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:132
+msgid "Advanced Options"
+msgstr "خيارات متقدمة"
+
+#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:201
+msgid "Error"
+msgstr "خطأ"
+
+#: ../../../Models/DownloadManager.cs:167
+msgid "Some downloads finished with errors!"
+msgstr "انتهت بعض التنزيلات بخطأ!"
+
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:748
+msgid "translator-credits"
+msgstr ""
+
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:342
+msgid "Save Folder (Invalid)"
+msgstr "مجلد الحفظ (غير صالح)"
+
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:204
+#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:36
+#: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:17
+#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:90
+msgid "Add Download"
+msgstr "أضف تنزيلًا"
+
+#: ../../../Models/DownloadManager.cs:163
+#, fuzzy, csharp-format
+msgid "{0} download — {1:f1}% ({2})"
+msgid_plural "{0} downloads — {1:f1}% ({2})"
+msgstr[0] "التنزيلات: {0} — {1:f1}% ({2})"
+msgstr[1] "التنزيلات: {0} — {1:f1}% ({2})"
+
+#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:185
+msgid "Processing..."
+msgstr "يعالج..."
+
+#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:167
+msgid "Downloading {0:f2}% ({1})"
+msgstr "ينزَّل {0:f2}% ({1})"
+
+#: ../../../../NickvisionTubeConverter.GNOME/Program.cs:50
+#: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.desktop.in:5
+#: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.metainfo.xml.in:8
+msgid "Get video and audio from the web"
+msgstr "اجلب مقاطع وصوتيات من الوِب"
+
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:119
+msgid "Worst"
+msgstr "الأسوأ"
+
+#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:134
+#: NickvisionTubeConverter.GNOME/Blueprints/download_row.blp:36
+msgid "Waiting..."
+msgstr "ينتظر..."
+
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:746
+msgid ""
+"Nicholas Logozzo {0}\n"
+"Fyodor Sobolev {1}\n"
+"DaPigGuy {2}"
+msgstr ""
+
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:240
+msgid "Download Finished With Error"
+msgstr "انتهى التنزيل بخطأ"
+
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:202
+msgid "Playlist"
+msgstr "قائمة التشغيل"
+
+#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:103
+#, fuzzy
+msgid "Download log was copied to clipboard."
+msgstr "نُسخ سجل التنزيل إلى الحافظة"
+
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:372
+#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:125
+msgid "Select Save Folder"
+msgstr "اختر مجلد الحفظ"
+
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:291
+#: ../../../Helpers/SpeedFormatter.cs:28
+msgid "{0:f1} KiB/s"
+msgstr "{0:f1} ك‌بايت\\ث"
+
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:747
+msgid ""
+"David Lapshin {0}\n"
+"Brage Fuglseth {1}\n"
+"marcin {2}"
+msgstr ""
+
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:240
+msgid "{0} has finished with an error!"
+msgstr "انتهى {0} بخطأ!"
+
+#: ../../../../NickvisionTubeConverter.GNOME/Views/PreferencesDialog.cs:155
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:237
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:251
+#, fuzzy
+msgid "Select Cookies File"
+msgstr "اختر مجلد الحفظ"
+
+#: ../../../Helpers/SpeedFormatter.cs:24
+msgid "{0:f1} MiB/s"
+msgstr "{0:f1} م‌بايت\\ث"
+
+#: ../../../Models/Download.cs:171
+msgid "File already exists, and overwriting is disallowed"
+msgstr "يوجد الملفُّ بالفعل ولا يسمح بالكتابة فوقه"
+
 #: ../../../Helpers/SpeedFormatter.cs:32
 msgid "{0:f1} B/s"
 msgstr "{0:f1} بايت\\ث"
+
+#: ../../../Helpers/SpeedFormatter.cs:20
+msgid "{0:f1} GiB/s"
+msgstr "{0:f1} ج‌بايت\\ث"
+
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:743
+msgid "List of supported sites"
+msgstr "قائمة المواقع المدعومة"
+
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:133
+#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:59
+msgid "Validate"
+msgstr "تحقَّق"
+
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:119
+msgid "Best"
+msgstr "الأفضل"
+
+#: ../../../Models/Download.cs:311
+msgid "Download using aria2 has started"
+msgstr "بدأ التنزيل باستخدام آريا٢"
+
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:563
+msgid "No"
+msgstr "لا"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:563
 msgid ""
@@ -136,142 +268,10 @@ msgstr ""
 "لا تزال بعض التنزيلات جاريةً.\n"
 "أمتأكد أنك تريد إغلاق محوِّل المقاطع وإيقاف التنزيلات الجارية؟"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:240
-msgid "{0} has finished downloading."
-msgstr "انتهى تنزيل {0}."
-
-#: ../../../Models/Download.cs:171
-msgid "File already exists, and overwriting is disallowed"
-msgstr "يوجد الملفُّ بالفعل ولا يسمح بالكتابة فوقه"
-
-#: ../../../../NickvisionTubeConverter.GNOME/Views/PreferencesDialog.cs:155
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:237
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:251
+#: ../../../../NickvisionTubeConverter.GNOME/Controls/MediaRow.cs:28
 #, fuzzy
-msgid "Select Cookies File"
-msgstr "اختر مجلد الحفظ"
-
-#: ../../../Models/DownloadManager.cs:171
-#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:87
-msgid "No downloads running"
-msgstr "لا يوجد ما ينزَّل الآن"
-
-#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:201
-msgid "Success"
-msgstr "نجاح"
-
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:342
-msgid "Save Folder (Invalid)"
-msgstr "مجلد الحفظ (غير صالح)"
-
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:175
-msgid "Maximum Quality"
-msgstr "أقصى جودة"
-
-#: ../../../Models/Download.cs:311
-msgid "Download using aria2 has started"
-msgstr "بدأ التنزيل باستخدام آريا٢"
-
-#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:148
-msgid "Preparing..."
-msgstr "يجهِّز..."
-
-#: ../../../Controllers/MainWindowController.cs:146
-#: ../../../Controllers/MainWindowController.cs:157
-msgid "Unable to setup dependencies. Please restart the app and try again."
-msgstr "تعذر تثبيت التبعيات. أعد تشغيل التطبيق وحاول مرةً أخرى."
-
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:133
-#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:59
-msgid "Validate"
-msgstr "تحقَّق"
-
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:746
-msgid ""
-"Nicholas Logozzo {0}\n"
-"Fyodor Sobolev {1}\n"
-"DaPigGuy {2}"
-msgstr ""
-
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:748
-msgid "translator-credits"
-msgstr ""
-
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:563
-msgid "Close and Stop Downloads?"
-msgstr "أأغلق التطبيق وأوقف التنزيلات؟"
-
-#: ../../../Helpers/SpeedFormatter.cs:20
-msgid "{0:f1} GiB/s"
-msgstr "{0:f1} ج‌بايت\\ث"
-
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:119
-msgid "Best"
-msgstr "الأفضل"
-
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:137
-msgid "Media URL (Invalid)"
-msgstr "رابط الوسائط (غير صالح)"
-
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:240
-msgid "{0} has finished with an error!"
-msgstr "انتهى {0} بخطأ!"
-
-#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:185
-msgid "Processing..."
-msgstr "يعالج..."
-
-#: ../../../../NickvisionTubeConverter.GNOME/Program.cs:50
-#: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.desktop.in:5
-#: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.metainfo.xml.in:8
-msgid "Get video and audio from the web"
-msgstr "اجلب مقاطع وصوتيات من الوِب"
-
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:202
-msgid "Playlist"
-msgstr "قائمة التشغيل"
-
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:119
-msgid "Worst"
-msgstr "الأسوأ"
-
-#: ../../../Models/DownloadManager.cs:167
-msgid "Some downloads finished with errors!"
-msgstr "انتهت بعض التنزيلات بخطأ!"
-
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:240
-msgid "Download Finished With Error"
-msgstr "انتهى التنزيل بخطأ"
-
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:563
-msgid "Yes"
-msgstr "نعم"
-
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:240
-msgid "Download Finished"
-msgstr "انتهى التنزيل"
-
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:747
-msgid ""
-"David Lapshin {0}\n"
-"Brage Fuglseth {1}\n"
-"marcin {2}"
-msgstr ""
-
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:174
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:401
-#, fuzzy, csharp-format
-msgid "{0} of {1} items"
-msgid_plural "{0} of {1} items"
-msgstr[0] "{0} من {1} من العناصر"
-msgstr[1] "{0} من {1} من العناصر"
-
-#: ../../../Models/DownloadManager.cs:163
-#, fuzzy, csharp-format
-msgid "{0} download — {1:f1}% ({2})"
-msgid_plural "{0} downloads — {1:f1}% ({2})"
-msgstr[0] "التنزيلات: {0} — {1:f1}% ({2})"
-msgstr[1] "التنزيلات: {0} — {1:f1}% ({2})"
+msgid "File Name"
+msgstr "اسم الملف"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:23
 msgid "Back"
@@ -434,25 +434,24 @@ msgid ""
 msgstr "مكِّنه لتستخدم منزِّل آريا٢، فربما يكون أسرع، ولكنك لن ترى سير التنزيل."
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:106
-msgid "AriaMaxConnectionsPerServer"
+msgid "Max Connections Per Server (-x)"
 msgstr ""
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:107
-msgid "AriaMaxConnectionsPerServer.Description"
+msgid "The maximum number of connections to one server for each download."
 msgstr ""
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:130
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:159
-#, fuzzy
-msgid "AriaSettingReset"
-msgstr "الإعدادات"
+msgid "Reset to default"
+msgstr ""
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:135
-msgid "AriaMinSplitSize"
+msgid "Minimum Split Size (-k)"
 msgstr ""
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:136
-msgid "AriaMinSplitSize.Description"
+msgid "The minimum size of which to split a file (in MiB)."
 msgstr ""
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:165
@@ -588,6 +587,10 @@ msgstr ""
 #, fuzzy
 msgid "download"
 msgstr "نزِّل"
+
+#, fuzzy
+#~ msgid "AriaSettingReset"
+#~ msgstr "الإعدادات"
 
 #~ msgid "About {0}"
 #~ msgstr "عن {0}"
