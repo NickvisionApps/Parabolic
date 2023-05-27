@@ -47,18 +47,26 @@ Task("Publish")
     .Does(() =>
 {
     var selfContained = Argument("self-contained", false) || HasArgument("self-contained") || HasArgument("sc");
+    var runtime = Argument("runtime", "");
+    if (string.IsNullOrEmpty(runtime))
+    {
+        runtime = "linux-";
+        runtime += System.Runtime.InteropServices.RuntimeInformation.ProcessArchitecture.ToString().ToLower();
+    }
     var outDir = EnvironmentVariable("NICK_BUILDDIR", "_nickbuild");
     CleanDirectory(outDir);
     var prefix = Argument("prefix", "/usr");
     var libDir = string.IsNullOrEmpty(prefix) ? "lib" : $"{prefix}{sep}lib";
     var publishDir = $"{outDir}{libDir}{sep}{appId}";
     var exitCode = 0;
+    Information($"Publishing {projectName}.{projectSuffix} ({runtime})...");
     DotNetPublish($".{sep}{projectName}.{projectSuffix}{sep}{projectName}.{projectSuffix}.csproj", new DotNetPublishSettings
     {
         Configuration = "Release",
         SelfContained = selfContained,
         OutputDirectory = publishDir,
         Sources = Argument("sources", "").Split(" "),
+        Runtime = runtime,
         HandleExitCode = code => {
             exitCode = code;
             return false;

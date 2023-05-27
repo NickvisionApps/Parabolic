@@ -39,7 +39,11 @@ public partial class PreferencesDialog : Adw.PreferencesWindow
     [Gtk.Connect] private readonly Gtk.Switch _backgroundSwitch;
     [Gtk.Connect] private readonly Gtk.SpinButton _maxNumberOfActiveDownloadsSpin;
     [Gtk.Connect] private readonly Gtk.SpinButton _speedLimitSpin;
-    [Gtk.Connect] private readonly Gtk.Switch _useAriaSwitch;
+    [Gtk.Connect] private readonly Adw.ExpanderRow _useAriaRow;
+    [Gtk.Connect] private readonly Gtk.SpinButton _ariaMaxConnectionsPerServerSpin;
+    [Gtk.Connect] private readonly Gtk.Button _ariaMaxConnectionsPerServerResetButton;
+    [Gtk.Connect] private readonly Gtk.SpinButton _ariaMinSplitSizeSpin;
+    [Gtk.Connect] private readonly Gtk.Button _ariaMinSplitSizeResetButton;
     [Gtk.Connect] private readonly Adw.ViewStack _cookiesViewStack;
     [Gtk.Connect] private readonly Gtk.Button _selectCookiesFileButton;
     [Gtk.Connect] private readonly Gtk.Button _cookiesFileButton;
@@ -79,7 +83,11 @@ public partial class PreferencesDialog : Adw.PreferencesWindow
         _backgroundSwitch.SetActive(_controller.RunInBackground);
         _maxNumberOfActiveDownloadsSpin.SetValue(_controller.MaxNumberOfActiveDownloads);
         _speedLimitSpin.SetValue(_controller.SpeedLimit);
-        _useAriaSwitch.SetActive(_controller.UseAria);
+        _useAriaRow.SetEnableExpansion(_controller.UseAria);
+        _ariaMaxConnectionsPerServerSpin.SetValue(_controller.AriaMaxConnectionsPerServer);
+        _ariaMaxConnectionsPerServerResetButton.OnClicked += (sender, e) => _ariaMaxConnectionsPerServerSpin.SetValue(16);
+        _ariaMinSplitSizeSpin.SetValue(_controller.AriaMinSplitSize);
+        _ariaMinSplitSizeResetButton.OnClicked += (sender, e) => _ariaMinSplitSizeSpin.SetValue(20);
         if (File.Exists(_controller.CookiesPath))
         {
             _cookiesViewStack.SetVisibleChildName("file-selected");
@@ -108,7 +116,9 @@ public partial class PreferencesDialog : Adw.PreferencesWindow
         _controller.RunInBackground = _backgroundSwitch.GetActive();
         _controller.MaxNumberOfActiveDownloads = (int)_maxNumberOfActiveDownloadsSpin.GetValue();
         _controller.SpeedLimit = (uint)_speedLimitSpin.GetValue();
-        _controller.UseAria = _useAriaSwitch.GetActive();
+        _controller.UseAria = _useAriaRow.GetEnableExpansion();
+        _controller.AriaMaxConnectionsPerServer = (int)_ariaMaxConnectionsPerServerSpin.GetValue();
+        _controller.AriaMinSplitSize = (int)_ariaMinSplitSizeSpin.GetValue();
         _controller.EmbedMetadata = _embedMetadataSwitch.GetActive();
         _controller.SaveConfiguration();
         Destroy();
