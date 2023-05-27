@@ -302,6 +302,7 @@ public partial class AddDownloadDialog : Adw.Window
     public async Task PresentAsync(string? url = null)
     {
         base.Present();
+        //Validated from startup
         if (!string.IsNullOrEmpty(url))
         {
             await SearchUrlAsync(url);
