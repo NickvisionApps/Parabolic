@@ -102,7 +102,7 @@ public partial class PreferencesDialog : Adw.PreferencesWindow
     /// <param name="controller">PreferencesViewController</param>
     /// <param name="application">Adw.Application</param>
     /// <param name="parent">Gtk.Window</param>
-    public PreferencesDialog(PreferencesViewController controller, Adw.Application application, Gtk.Window parent) : this(Builder.FromFile("preferences_dialog.ui", controller.Localizer), controller, application, parent)
+    public PreferencesDialog(PreferencesViewController controller, Adw.Application application, Gtk.Window parent) : this(Builder.FromFile("preferences_dialog.ui"), controller, application, parent)
     {
     }
 
@@ -151,7 +151,7 @@ public partial class PreferencesDialog : Adw.PreferencesWindow
         filterTxt.AddPattern("*.txt");
         filterTxt.AddPattern("*.TXT");
         var fileDialog = gtk_file_dialog_new();
-        gtk_file_dialog_set_title(fileDialog, _controller.Localizer["SelectCookiesFile"]);
+        gtk_file_dialog_set_title(fileDialog, _("Select Cookies File"));
         var filters = Gio.ListStore.New(Gtk.FileFilter.GetGType());
         filters.Append(filterTxt);
         gtk_file_dialog_set_filters(fileDialog, filters.Handle);

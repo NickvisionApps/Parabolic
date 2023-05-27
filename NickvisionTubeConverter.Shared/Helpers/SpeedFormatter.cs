@@ -1,4 +1,5 @@
 ﻿using System;
+using static NickvisionTubeConverter.Shared.Helpers.Gettext;
 
 namespace NickvisionTubeConverter.Shared.Helpers;
 
@@ -11,25 +12,24 @@ public static class SpeedFormatter
     /// Gets a string representation of a speed
     /// </summary>
     /// <param name="speed">The speed</param>
-    /// <param name="localizer">Localizer</param>
     /// <returns>The string representation of the speed</returns>
-    public static string GetSpeedString(this double speed, Localizer localizer)
+    public static string GetSpeedString(this double speed)
     {
         if (speed > Math.Pow(1024, 3))
         {
-            return string.Format(localizer["Speed", "GiBps"], speed / Math.Pow(1024, 3));
+            return string.Format(_("{0:f1} GiB/s"), speed / Math.Pow(1024, 3));
         }
         else if (speed > Math.Pow(1024, 2))
         {
-            return string.Format(localizer["Speed", "MiBps"], speed / Math.Pow(1024, 2));
+            return string.Format(_("{0:f1} MiB/s"), speed / Math.Pow(1024, 2));
         }
         else if (speed > 1024)
         {
-            return string.Format(localizer["Speed", "KiBps"], speed / 1024.0);
+            return string.Format(_("{0:f1} KiB/s"), speed / 1024.0);
         }
         else
         {
-            return string.Format(localizer["Speed", "Bps"], speed);
+            return string.Format(_("{0:f1} B/s"), speed);
         }
     }
 }

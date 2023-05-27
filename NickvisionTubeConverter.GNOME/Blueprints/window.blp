@@ -3,14 +3,14 @@ using Adw 1;
 
 menu mainMenu {
   item(_("Preferences"), "win.preferences")
-  item(_("KeyboardShortcuts"), "win.keyboardShortcuts")
-  item(_("About"), "win.about")
+  item(_("Keyboard Shortcuts"), "win.keyboardShortcuts")
+  item(_("About Tube Converter"), "win.about")
 }
 
 menu downloaderMenu {
-  item(_("StopDownloads"), "win.stopAllDownloads")
-  item(_("RetryDownloads"), "win.retryFailedDownloads")
-  item(_("ClearQueue"), "win.clearQueuedDownloads")
+  item(_("Stop All Downloads"), "win.stopAllDownloads")
+  item(_("Retry Failed Downloads"), "win.retryFailedDownloads")
+  item(_("Clear Queued Downloads"), "win.clearQueuedDownloads")
 }
 
 Adw.ApplicationWindow _root {
@@ -41,13 +41,13 @@ Adw.ApplicationWindow _root {
 
       Adw.HeaderBar _headerBar {
         title-widget: Adw.WindowTitle {
-          title: _("ShortName");
+          title: _("Tube Converter");
         };
         
         [start]
         Gtk.Button _addDownloadButton {
           action-name: "win.addDownload";
-          tooltip-text: _("AddDownload.Tooltip");
+          tooltip-text: _("Add Download (Ctrl+N)");
           visible: false;
           Adw.ButtonContent {
             icon-name: "list-add-symbolic";
@@ -59,7 +59,7 @@ Adw.ApplicationWindow _root {
         Gtk.MenuButton {
           direction: none;
           menu-model: mainMenu;
-          tooltip-text: _("MainMenu.GTK");
+          tooltip-text: _("Main Menu");
           primary: true;
         }
 
@@ -84,10 +84,10 @@ Adw.ApplicationWindow _root {
             name: "pageNoDownloads";
             child: Adw.StatusPage {
               icon-name: "org.nickvision.tubeconverter";
-              title: _("NoDownloadsRunning");
-              description: _("NoDownloads.Description");
+              title: _("No downloads running");
+              description: _("Add a download to get started.");
               child: Gtk.Button {
-                label: _("AddDownload");
+                label: _("Add Download");
                 halign: center;
                 action-name: "win.addDownload";
                 styles ["pill", "suggested-action"]

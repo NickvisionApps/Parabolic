@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 using System.Runtime.InteropServices;
+using static NickvisionTubeConverter.Shared.Helpers.Gettext;
 
 namespace NickvisionTubeConverter.GNOME;
 
@@ -45,8 +46,8 @@ public partial class Program
         _mainWindowController = new MainWindowController();
         _mainWindowController.AppInfo.ID = "org.nickvision.tubeconverter";
         _mainWindowController.AppInfo.Name = "Nickvision Tube Converter";
-        _mainWindowController.AppInfo.ShortName = _mainWindowController.Localizer["ShortName"];
-        _mainWindowController.AppInfo.Description = $"{_mainWindowController.Localizer["Description"]}.";
+        _mainWindowController.AppInfo.ShortName = _("Tube Converter");
+        _mainWindowController.AppInfo.Description = $"{_("Get video and audio from the web")}.";
         _mainWindowController.AppInfo.Version = "2023.6.0-next";
         _mainWindowController.AppInfo.Changelog = "<ul><li>Added the ability to upload a cookie file to use for media downloads that require a login</li><li>Added support for downloading media as M4A</li><li>Added more configurable options for aria2 downloader</li><li>Updated translations (Thanks everyone on Weblate!)</li></ul>";
         _mainWindowController.AppInfo.GitHubRepo = new Uri("https://github.com/NickvisionApps/TubeConverter");

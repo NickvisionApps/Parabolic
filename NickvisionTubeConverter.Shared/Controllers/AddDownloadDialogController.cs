@@ -29,14 +29,9 @@ public class AddDownloadDialogController
     /// </summary>
     public AppInfo AppInfo => AppInfo.Current;
     /// <summary>
-    /// The localizer to get translated strings from
-    /// </summary>
-    public Localizer Localizer { get; init; }
-    /// <summary>
     /// The downloads created by the dialog
     /// </summary>
     public List<Download> Downloads { get; init; }
-
     /// <summary>
     /// The previously used save folder
     /// </summary>
@@ -57,9 +52,8 @@ public class AddDownloadDialogController
     /// <summary>
     /// Constructs a AddDownloadDialogController
     /// </summary>
-    public AddDownloadDialogController(Localizer localizer)
+    public AddDownloadDialogController()
     {
-        Localizer = localizer;
         Downloads = new List<Download>();
     }
 
