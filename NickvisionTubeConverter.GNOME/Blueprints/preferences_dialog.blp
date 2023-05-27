@@ -2,8 +2,8 @@ using Gtk 4.0;
 using Adw 1;
 
 Adw.PreferencesWindow _root {
-  default-width: 600;
-  default-height: 620;
+  default-width: 700;
+  default-height: 650;
   width-request: 360;
   modal: true;
   destroy-with-parent: false;
@@ -92,21 +92,178 @@ Adw.PreferencesWindow _root {
         }
       }
 
-      Adw.ActionRow _useAriaRow {
+      Adw.ExpanderRow _useAriaRow {
         title: _("UseAria");
         subtitle: _("UseAria.Description");
+        show-enable-switch: true;
 
         [prefix]
         Gtk.Image {
           icon-name: "preferences-system-network-proxy-symbolic";
         }
 
-        [suffix]
-        Gtk.Switch _useAriaSwitch {
-          valign: center;
+        Adw.ActionRow {
+          title: _("AriaMaxConnectionsPerServer");
+          subtitle: _("AriaMaxConnectionsPerServer.Description");
+
+          [prefix]
+          Gtk.Image {
+            icon-name: "globe-symbolic";
+          }
+
+          [suffix]
+          Gtk.SpinButton _ariaMaxConnectionsPerServerSpin {
+            valign: center;
+            numeric: true;
+            adjustment: Gtk.Adjustment {
+              lower: 1;
+              upper: 32;
+              step-increment: 1;
+              page-increment: 2;
+            };
+          }
+
+          [suffix]
+          Gtk.Button _ariaMaxConnectionsPerServerResetButton {
+            valign: center;
+            icon-name: "larger-brush-symbolic";
+            tooltip-text: _("AriaSettingReset");
+          }
         }
 
-        activatable-widget: _useAriaSwitch;
+        Adw.ActionRow {
+          title: _("AriaMinSplitSize");
+          subtitle: _("AriaMinSplitSize.Description");
+
+          [prefix]
+          Gtk.Image {
+            icon-name: "edit-cut-symbolic";
+          }
+
+          [suffix]
+          Gtk.SpinButton _ariaMinSplitSizeSpin {
+            valign: center;
+            numeric: true;
+            adjustment: Gtk.Adjustment {
+              lower: 1;
+              upper: 1024;
+              step-increment: 1;
+              page-increment: 128;
+            };
+          }
+
+          [suffix]
+          Gtk.Button _ariaMinSplitSizeResetButton {
+            valign: center;
+            icon-name: "larger-brush-symbolic";
+            tooltip-text: _("AriaSettingReset");
+          }
+        }
+      }
+      
+      Adw.ActionRow {
+        title: _("CookiesFile");
+        subtitle: _("CookiesFile.Description");
+
+        [prefix]
+        Gtk.Image {
+          icon-name: "document-properties-symbolic";
+        }
+
+        [suffix]
+        Gtk.Box {
+          orientation: horizontal;
+          spacing: 6;
+          
+          Gtk.MenuButton _cookiesHelpButton {
+            valign: center;
+            direction: none;
+            icon-name: "dialog-question-symbolic";
+            
+            popover: Gtk.Popover {
+              child: Gtk.Box {
+                orientation: vertical;
+                spacing: 6;
+                margin-start: 6;
+                margin-top: 6;
+                margin-end: 6;
+                margin-bottom: 6;
+                
+                Adw.Clamp {
+                  maximum-size: 300;
+                  child: Gtk.Label {
+                    wrap: true;
+                    label: _("Cookies.Description");
+                  };
+                }
+                
+                Gtk.Box {
+                  hexpand: true;
+                  orientation: horizontal;
+                  
+                  Gtk.Button _chromeCookiesButton {
+                    hexpand: true;
+                    
+                    child: Adw.ButtonContent {
+                      label: "Chrome";
+                      icon-name: "google-chrome-symbolic";
+                    };
+                  }
+
+                  Gtk.Button _firefoxCookiesButton {
+                    hexpand: true;
+                    
+                    child: Adw.ButtonContent {
+                      label: "Firefox";
+                      icon-name: "firefox-symbolic";
+                    };
+                  }
+                  
+                  styles ["linked"]
+                }
+              };
+            };
+            
+            styles ["flat"]
+          }
+          
+          Adw.ViewStack _cookiesViewStack {
+            Adw.ViewStackPage {
+              name: "no-file";
+              child: Gtk.Button _selectCookiesFileButton {
+                halign: end;
+                valign: center;
+                child: Adw.ButtonContent {
+                  label: _("SelectCookiesFile");
+                  icon-name: "document-open-symbolic";
+                };
+              };
+            }
+  
+            Adw.ViewStackPage {
+              name: "file-selected";
+              child: Gtk.Box {
+                orientation: horizontal;
+                halign: end;
+                valign: center;
+  
+                Gtk.Button _cookiesFileButton {
+                  tooltip-text: _("SelectCookiesFile");
+                  child: Gtk.Label _cookiesFileLabel {
+                    ellipsize: start;
+                  };
+                }
+  
+                Gtk.Button _unsetCookiesFileButton {
+                  icon-name: "larger-brush-symbolic";
+                  tooltip-text: _("ClearCookiesFile");
+                }
+  
+                styles ["linked"]
+              };
+            }
+          } 
+        }
       }
     }
 

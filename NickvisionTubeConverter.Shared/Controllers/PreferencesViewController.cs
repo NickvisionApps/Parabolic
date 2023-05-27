@@ -87,6 +87,36 @@ public class PreferencesViewController
     }
 
     /// <summary>
+    /// The maximum number of connections to one server for each download (-x)
+    /// </summary>
+    public int AriaMaxConnectionsPerServer
+    {
+         get => Configuration.Current.AriaMaxConnectionsPerServer;
+
+         set => Configuration.Current.AriaMaxConnectionsPerServer = value;
+    }
+
+    /// <summary>
+    /// The minimum size of which to split a file (-k)
+    /// </summary>
+    public int AriaMinSplitSize
+    {
+        get => Configuration.Current.AriaMinSplitSize;
+
+        set => Configuration.Current.AriaMinSplitSize = value;
+    }
+
+    /// <summary>
+    /// The path of the cookies file to use for yt-dlp
+    /// </summary>
+    public string CookiesPath
+    {
+        get => Configuration.Current.CookiesPath;
+
+        set => Configuration.Current.CookiesPath = value;
+    }
+
+    /// <summary>
     /// Saves the configuration to disk
     /// </summary>
     public void SaveConfiguration() => Configuration.Current.Save();

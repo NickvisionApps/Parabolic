@@ -48,6 +48,18 @@ public class MainWindowController : IDisposable
     /// Whether to embed metadata
     /// </summary>
     public bool EmbedMetadata => Configuration.Current.EmbedMetadata;
+    /// <summary>
+    /// The path to the cookies file to use for yt-dlp
+    /// </summary>
+    public string CookiesPath => Configuration.Current.CookiesPath;
+    /// <summary>
+    /// The maximum number of connections to one server for each download (-x)
+    /// </summary>
+    public int AriaMaxConnectionsPerServer => Configuration.Current.AriaMaxConnectionsPerServer;
+    /// <summary>
+    /// The minimum size of which to split a file (-k)
+    /// </summary>
+    public int AriaMinSplitSize => Configuration.Current.AriaMinSplitSize;
 
     /// <summary>
     /// Occurs when a notification is sent
