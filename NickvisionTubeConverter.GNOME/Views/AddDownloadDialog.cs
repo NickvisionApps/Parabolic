@@ -171,7 +171,7 @@ public partial class AddDownloadDialog : Adw.Window
                         _playlistGroup.Add(row);
                     }
                     _openPlaylistGroup.SetVisible(true);
-                    _openPlaylistRow.SetTitle(string.Format(_n("{0} of {1} items", "{0} of {1} items", _mediaUrlInfo.MediaList.Count), _mediaUrlInfo.MediaList.Count, _mediaUrlInfo.MediaList.Count));
+                    _openPlaylistRow.SetTitle(_n("{0} of {1} items", "{0} of {1} items", _mediaUrlInfo.MediaList.Count, _mediaUrlInfo.MediaList.Count, _mediaUrlInfo.MediaList.Count));
                     _qualityRow.SetTitle(_("Maximum Quality"));
                 }
                 else
@@ -288,7 +288,7 @@ public partial class AddDownloadDialog : Adw.Window
             _saveFolderString = "";
         }
         _saveFolderRow.SetText(Path.GetFileName(_saveFolderString) ?? "");
-        _speedLimitRow.SetSubtitle($"{string.Format(_("{0:f1} KiB/s"), _controller.CurrentSpeedLimit)} {_("(Configurable in preferences)")}");
+        _speedLimitRow.SetSubtitle($"{_("{0:f1} KiB/s", _controller.CurrentSpeedLimit)} {_("(Configurable in preferences)")}");
     }
 
     /// <summary>
@@ -398,7 +398,7 @@ public partial class AddDownloadDialog : Adw.Window
     private void PlaylistChanged(object? sender, EventArgs e)
     {
         var downloadsCount = _mediaUrlInfo.MediaList.FindAll(x => x.ToDownload).Count;
-        _openPlaylistRow.SetTitle(string.Format(_n("{0} of {1} items", "{0} of {1} items", _mediaUrlInfo.MediaList.Count), downloadsCount, _mediaUrlInfo.MediaList.Count));
+        _openPlaylistRow.SetTitle(_n("{0} of {1} items", "{0} of {1} items", _mediaUrlInfo.MediaList.Count, downloadsCount, _mediaUrlInfo.MediaList.Count));
     }
 
     /// <summary>

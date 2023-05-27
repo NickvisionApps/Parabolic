@@ -160,7 +160,7 @@ public class DownloadManager
         {
             if (RemainingDownloadsCount > 0)
             {
-                return string.Format(_n("{0} download — {1:f1}% ({2})", "{0} downloads — {1:f1}% ({2})", RemainingDownloadsCount), RemainingDownloadsCount, TotalProgress * 100, TotalSpeedString);
+                return _n("{0} download — {1:f1}% ({2})", "{0} downloads — {1:f1}% ({2})", RemainingDownloadsCount, RemainingDownloadsCount, TotalProgress * 100, TotalSpeedString);
             }
             else if (ErrorsCount > 0)
             {

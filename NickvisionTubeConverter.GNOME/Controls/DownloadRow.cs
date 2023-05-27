@@ -164,7 +164,7 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
             case DownloadProgressStatus.Downloading:
                 _stateViewStack.SetVisibleChildName("downloading");
                 _progressBar.SetFraction(state.Progress);
-                _progressLabel.SetText(string.Format(_("Downloading {0:f2}% ({1})"), state.Progress * 100, state.Speed.GetSpeedString()));
+                _progressLabel.SetText(_("Downloading {0:f2}% ({1})", state.Progress * 100, state.Speed.GetSpeedString()));
                 break;
             case DownloadProgressStatus.DownloadingAria:
                 if (!_runPulsingBar)

@@ -237,7 +237,7 @@ public partial class MainWindow : Adw.ApplicationWindow
                     _completedBox.GetParent().SetVisible(true);
                     if (!GetFocus()!.GetHasFocus() || !GetVisible())
                     {
-                        SendShellNotification(new ShellNotificationSentEventArgs(!e.Successful ? _("Download Finished With Error") : _("Download Finished"), string.Format(!e.Successful ? _("{0} has finished with an error!")  : _("{0} has finished downloading."), $"\"{row.Filename}\""), !e.Successful ? NotificationSeverity.Error : NotificationSeverity.Success));
+                        SendShellNotification(new ShellNotificationSentEventArgs(!e.Successful ? _("Download Finished With Error") : _("Download Finished"), !e.Successful ? _("\"{0}\" has finished with an error!", row.Filename) : _("\"{0}\" has finished downloading.", row.Filename), !e.Successful ? NotificationSeverity.Error : NotificationSeverity.Success));
                     }
                 }
                 if (!GetVisible() && _controller.DownloadManager.RemainingDownloadsCount == 0 && _controller.DownloadManager.ErrorsCount == 0)
@@ -742,9 +742,9 @@ public partial class MainWindow : Adw.ApplicationWindow
         dialog.SetSupportUrl(_controller.AppInfo.SupportUrl.ToString());
         dialog.AddLink(_("List of supported sites"), "https://github.com/yt-dlp/yt-dlp/blob/master/supportedsites.md");
         dialog.AddLink(_("Matrix Chat"), "https://matrix.to/#/#nickvision:matrix.org");
-        dialog.SetDevelopers(string.Format(_("Nicholas Logozzo {0}\nContributors on GitHub ❤️ {1}"), "https://github.com/nlogozzo", "https://github.com/NickvisionApps/TubeConverter/graphs/contributors").Split("\n"));
-        dialog.SetDesigners(string.Format(_("Nicholas Logozzo {0}\nFyodor Sobolev {1}\nDaPigGuy {2}"), "https://github.com/nlogozzo", "https://github.com/fsobolev", "https://github.com/DaPigGuy").Split("\n"));
-        dialog.SetArtists(string.Format(_("David Lapshin {0}\nBrage Fuglseth {1}\nmarcin {2}"), "https://github.com/daudix-UFO", "https://github.com/bragefuglseth", "https://github.com/martin-desktops").Split("\n"));
+        dialog.SetDevelopers(_("Nicholas Logozzo {0}\nContributors on GitHub ❤️ {1}", "https://github.com/nlogozzo", "https://github.com/NickvisionApps/TubeConverter/graphs/contributors").Split("\n"));
+        dialog.SetDesigners(_("Nicholas Logozzo {0}\nFyodor Sobolev {1}\nDaPigGuy {2}", "https://github.com/nlogozzo", "https://github.com/fsobolev", "https://github.com/DaPigGuy").Split("\n"));
+        dialog.SetArtists(_("David Lapshin {0}\nBrage Fuglseth {1}\nmarcin {2}", "https://github.com/daudix-UFO", "https://github.com/bragefuglseth", "https://github.com/martin-desktops").Split("\n"));
         dialog.SetTranslatorCredits(_("translator-credits"));
         dialog.SetReleaseNotes(_controller.AppInfo.Changelog);
         dialog.Present();

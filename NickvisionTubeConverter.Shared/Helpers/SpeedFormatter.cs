@@ -17,19 +17,19 @@ public static class SpeedFormatter
     {
         if (speed > Math.Pow(1024, 3))
         {
-            return string.Format(_("{0:f1} GiB/s"), speed / Math.Pow(1024, 3));
+            return _("{0:f1} GiB/s", speed / Math.Pow(1024, 3));
         }
         else if (speed > Math.Pow(1024, 2))
         {
-            return string.Format(_("{0:f1} MiB/s"), speed / Math.Pow(1024, 2));
+            return _("{0:f1} MiB/s", speed / Math.Pow(1024, 2));
         }
         else if (speed > 1024)
         {
-            return string.Format(_("{0:f1} KiB/s"), speed / 1024.0);
+            return _("{0:f1} KiB/s", speed / 1024.0);
         }
         else
         {
-            return string.Format(_("{0:f1} B/s"), speed);
+            return _("{0:f1} B/s", speed);
         }
     }
 }

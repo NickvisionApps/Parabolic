@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-27 11:04+0300\n"
+"POT-Creation-Date: 2023-05-27 11:49+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,77 +16,11 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:158
-#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:52
-msgid "Media URL"
-msgstr "URL Media"
-
-#: ../../../Models/DownloadManager.cs:171
-#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:87
-#, fuzzy
-msgid "No downloads running"
-msgstr "Mengunduh"
-
 #: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:291
-msgid "(Configurable in preferences)"
-msgstr ""
-
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:240
-msgid "{0} has finished downloading."
-msgstr "{0} telah selesai diunduh."
-
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:240
-msgid "Download Finished"
-msgstr "Unduhan Selesai"
-
-#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:148
-msgid "Preparing..."
-msgstr "Menyiapkan..."
-
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:174
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:401
+#: ../../../Helpers/SpeedFormatter.cs:28
 #, csharp-format
-msgid "{0} of {1} items"
-msgid_plural "{0} of {1} items"
-msgstr[0] ""
-msgstr[1] ""
-
-#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:216
-msgid "Stopped"
-msgstr "Dihentikan"
-
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:563
-msgid "Close and Stop Downloads?"
-msgstr "Tutup dan Hentikan Unduhan?"
-
-#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:201
-msgid "Success"
-msgstr "Sukses"
-
-#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:176
-#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:121
-msgid "Downloading"
-msgstr "Mengunduh"
-
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:137
-msgid "Media URL (Invalid)"
-msgstr "URL Media (tidak sah)"
-
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:745
-msgid ""
-"Nicholas Logozzo {0}\n"
-"Contributors on GitHub ❤️ {1}"
+msgid "{0:f1} KiB/s"
 msgstr ""
-
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:175
-#, fuzzy
-msgid "Maximum Quality"
-msgstr "Kualitas"
-
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:332
-#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:117
-msgid "Save Folder"
-msgstr "Folder Penyimpanan"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Program.cs:49
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:44
@@ -96,9 +30,38 @@ msgstr "Folder Penyimpanan"
 msgid "Tube Converter"
 msgstr "Konverter"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:563
-msgid "Yes"
-msgstr "Iya"
+#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:201
+msgid "Error"
+msgstr "Kesalahan"
+
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:119
+msgid "Best"
+msgstr "Terbaik"
+
+#: ../../../Helpers/SpeedFormatter.cs:24
+#, csharp-format
+msgid "{0:f1} MiB/s"
+msgstr ""
+
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:743
+msgid "List of supported sites"
+msgstr ""
+
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:174
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:401
+#, csharp-format
+msgid "{0} of {1} items"
+msgid_plural "{0} of {1} items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:119
+msgid "Worst"
+msgstr "Terburuk"
+
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:202
+msgid "Playlist"
+msgstr ""
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:739
 msgid ""
@@ -110,37 +73,23 @@ msgstr ""
 "penyalahgunaan program ini yang mungkin melanggar hak cipta lokal/hukum "
 "DMCA. Pengguna menggunakan aplikasi ini dengan risiko mereka sendiri."
 
-#: ../../../Controllers/MainWindowController.cs:146
-#: ../../../Controllers/MainWindowController.cs:157
-msgid "Unable to setup dependencies. Please restart the app and try again."
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:563
+msgid ""
+"Some downloads are still in progress.\n"
+"Are you sure you want to close Tube Converter and stop the running downloads?"
 msgstr ""
-"Tidak dapat mengunduh dependensi. Silahkan mulai ulang aplikasi dan coba "
-"lagi."
-
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:744
-msgid "Matrix Chat"
-msgstr ""
-
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:203
-#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:132
-msgid "Advanced Options"
-msgstr ""
-
-#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:201
-msgid "Error"
-msgstr "Kesalahan"
-
-#: ../../../Models/DownloadManager.cs:167
-msgid "Some downloads finished with errors!"
-msgstr ""
-
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:748
-msgid "translator-credits"
-msgstr ""
+"Beberapa unduhan masih dalam proses.\n"
+"Apakah anda yakin ingin menutup Tube Converter dan menghentikan unduhan yang "
+"sedang berjalan?"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:342
 msgid "Save Folder (Invalid)"
 msgstr "Folder Penyimpanan (tidak sah)"
+
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:133
+#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:59
+msgid "Validate"
+msgstr ""
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:204
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:36
@@ -149,6 +98,11 @@ msgstr "Folder Penyimpanan (tidak sah)"
 msgid "Add Download"
 msgstr "Tambah Unduhan"
 
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:203
+#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:132
+msgid "Advanced Options"
+msgstr ""
+
 #: ../../../Models/DownloadManager.cs:163
 #, fuzzy, csharp-format
 msgid "{0} download — {1:f1}% ({2})"
@@ -156,13 +110,19 @@ msgid_plural "{0} downloads — {1:f1}% ({2})"
 msgstr[0] "Mengunduh {0:f2}% ({1:N0} KiB/s)"
 msgstr[1] "Mengunduh {0:f2}% ({1:N0} KiB/s)"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:185
-msgid "Processing..."
-msgstr "Memproses..."
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:747
+#, csharp-format
+msgid ""
+"David Lapshin {0}\n"
+"Brage Fuglseth {1}\n"
+"marcin {2}"
+msgstr ""
 
-#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:167
-msgid "Downloading {0:f2}% ({1})"
-msgstr "Mengunduh {0:f2}% ({1:N0} KiB/s)"
+#: ../../../Models/DownloadManager.cs:171
+#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:87
+#, fuzzy
+msgid "No downloads running"
+msgstr "Mengunduh"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Program.cs:50
 #: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.desktop.in:5
@@ -170,16 +130,95 @@ msgstr "Mengunduh {0:f2}% ({1:N0} KiB/s)"
 msgid "Get video and audio from the web"
 msgstr "Unduh video favorit anda"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:119
-msgid "Worst"
-msgstr "Terburuk"
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:240
+#, fuzzy, csharp-format
+msgid "\"{0}\" has finished with an error!"
+msgstr "{0} telah selesai diunduh."
+
+#: ../../../Helpers/SpeedFormatter.cs:32
+#, csharp-format
+msgid "{0:f1} B/s"
+msgstr ""
+
+#: ../../../Models/Download.cs:171
+msgid "File already exists, and overwriting is disallowed"
+msgstr ""
+
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:137
+msgid "Media URL (Invalid)"
+msgstr "URL Media (tidak sah)"
+
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:158
+#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:52
+msgid "Media URL"
+msgstr "URL Media"
+
+#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:216
+msgid "Stopped"
+msgstr "Dihentikan"
+
+#: ../../../Controllers/MainWindowController.cs:146
+#: ../../../Controllers/MainWindowController.cs:157
+msgid "Unable to setup dependencies. Please restart the app and try again."
+msgstr ""
+"Tidak dapat mengunduh dependensi. Silahkan mulai ulang aplikasi dan coba "
+"lagi."
+
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:372
+#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:125
+msgid "Select Save Folder"
+msgstr "Pilih Folder Simpan"
+
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:563
+msgid "Yes"
+msgstr "Iya"
+
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:332
+#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:117
+msgid "Save Folder"
+msgstr "Folder Penyimpanan"
+
+#: ../../../../NickvisionTubeConverter.GNOME/Controls/MediaRow.cs:28
+#, fuzzy
+msgid "File Name"
+msgstr "Tipe Berkas"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:134
 #: NickvisionTubeConverter.GNOME/Blueprints/download_row.blp:36
 msgid "Waiting..."
 msgstr "Menunggu..."
 
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:240
+msgid "Download Finished"
+msgstr "Unduhan Selesai"
+
+#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:167
+#, csharp-format
+msgid "Downloading {0:f2}% ({1})"
+msgstr "Mengunduh {0:f2}% ({1:N0} KiB/s)"
+
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:745
+#, csharp-format
+msgid ""
+"Nicholas Logozzo {0}\n"
+"Contributors on GitHub ❤️ {1}"
+msgstr ""
+
+#: ../../../Models/DownloadManager.cs:167
+msgid "Some downloads finished with errors!"
+msgstr ""
+
+#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:176
+#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:121
+msgid "Downloading"
+msgstr "Mengunduh"
+
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:291
+msgid "(Configurable in preferences)"
+msgstr ""
+
 #: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:746
+#, csharp-format
 msgid ""
 "Nicholas Logozzo {0}\n"
 "Fyodor Sobolev {1}\n"
@@ -191,36 +230,9 @@ msgstr ""
 msgid "Download Finished With Error"
 msgstr "Unduhan Selesai"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:202
-msgid "Playlist"
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:744
+msgid "Matrix Chat"
 msgstr ""
-
-#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:103
-#, fuzzy
-msgid "Download log was copied to clipboard."
-msgstr "Log unduhan telah disalin ke papan klip"
-
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:372
-#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:125
-msgid "Select Save Folder"
-msgstr "Pilih Folder Simpan"
-
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:291
-#: ../../../Helpers/SpeedFormatter.cs:28
-msgid "{0:f1} KiB/s"
-msgstr ""
-
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:747
-msgid ""
-"David Lapshin {0}\n"
-"Brage Fuglseth {1}\n"
-"marcin {2}"
-msgstr ""
-
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:240
-#, fuzzy
-msgid "{0} has finished with an error!"
-msgstr "{0} telah selesai diunduh."
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/PreferencesDialog.cs:155
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:237
@@ -229,57 +241,54 @@ msgstr "{0} telah selesai diunduh."
 msgid "Select Cookies File"
 msgstr "Pilih Folder Simpan"
 
-#: ../../../Helpers/SpeedFormatter.cs:24
-msgid "{0:f1} MiB/s"
-msgstr ""
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:563
+msgid "No"
+msgstr "Tidak"
 
-#: ../../../Models/Download.cs:171
-msgid "File already exists, and overwriting is disallowed"
-msgstr ""
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:240
+#, fuzzy, csharp-format
+msgid "\"{0}\" has finished downloading."
+msgstr "{0} telah selesai diunduh."
 
-#: ../../../Helpers/SpeedFormatter.cs:32
-msgid "{0:f1} B/s"
-msgstr ""
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:175
+#, fuzzy
+msgid "Maximum Quality"
+msgstr "Kualitas"
 
-#: ../../../Helpers/SpeedFormatter.cs:20
-msgid "{0:f1} GiB/s"
-msgstr ""
+#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:103
+#, fuzzy
+msgid "Download log was copied to clipboard."
+msgstr "Log unduhan telah disalin ke papan klip"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:743
-msgid "List of supported sites"
-msgstr ""
+#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:148
+msgid "Preparing..."
+msgstr "Menyiapkan..."
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:133
-#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:59
-msgid "Validate"
-msgstr ""
-
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:119
-msgid "Best"
-msgstr "Terbaik"
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:563
+msgid "Close and Stop Downloads?"
+msgstr "Tutup dan Hentikan Unduhan?"
 
 #: ../../../Models/Download.cs:311
 #, fuzzy
 msgid "Download using aria2 has started"
 msgstr "Unduhan Selesai"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:563
-msgid "No"
-msgstr "Tidak"
+#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:201
+msgid "Success"
+msgstr "Sukses"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:563
-msgid ""
-"Some downloads are still in progress.\n"
-"Are you sure you want to close Tube Converter and stop the running downloads?"
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:748
+msgid "translator-credits"
 msgstr ""
-"Beberapa unduhan masih dalam proses.\n"
-"Apakah anda yakin ingin menutup Tube Converter dan menghentikan unduhan yang "
-"sedang berjalan?"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Controls/MediaRow.cs:28
-#, fuzzy
-msgid "File Name"
-msgstr "Tipe Berkas"
+#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:185
+msgid "Processing..."
+msgstr "Memproses..."
+
+#: ../../../Helpers/SpeedFormatter.cs:20
+#, csharp-format
+msgid "{0:f1} GiB/s"
+msgstr ""
 
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:23
 msgid "Back"

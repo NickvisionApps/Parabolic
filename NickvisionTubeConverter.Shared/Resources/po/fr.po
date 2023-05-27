@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-27 11:04+0300\n"
+"POT-Creation-Date: 2023-05-27 11:49+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,32 +16,35 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:158
-#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:52
-msgid "Media URL"
-msgstr "URL du média"
-
-#: ../../../Models/DownloadManager.cs:171
-#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:87
-msgid "No downloads running"
-msgstr "Aucun téléchargement en cours"
-
 #: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:291
-#, fuzzy
-msgid "(Configurable in preferences)"
-msgstr "Modifiable dans les préférences"
+#: ../../../Helpers/SpeedFormatter.cs:28
+#, csharp-format
+msgid "{0:f1} KiB/s"
+msgstr "{0:f1} Kb/s"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:240
-msgid "{0} has finished downloading."
-msgstr "{0} a été téléchargé."
+#: ../../../../NickvisionTubeConverter.GNOME/Program.cs:49
+#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:44
+#: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.desktop.in:4
+#: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.metainfo.xml.in:6
+msgid "Tube Converter"
+msgstr "Tube Converter"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:240
-msgid "Download Finished"
-msgstr "Téléchargement terminé"
+#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:201
+msgid "Error"
+msgstr "Erreur"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:148
-msgid "Preparing..."
-msgstr "Préparation..."
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:119
+msgid "Best"
+msgstr "Meilleure"
+
+#: ../../../Helpers/SpeedFormatter.cs:24
+#, csharp-format
+msgid "{0:f1} MiB/s"
+msgstr "{0:f1} Mb/s"
+
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:743
+msgid "List of supported sites"
+msgstr "Liste des sites pris en charge"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:174
 #: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:401
@@ -51,52 +54,13 @@ msgid_plural "{0} of {1} items"
 msgstr[0] "{0} sur {1} éléments"
 msgstr[1] "{0} sur {1} éléments"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:216
-msgid "Stopped"
-msgstr "Arrêté"
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:119
+msgid "Worst"
+msgstr "Basse"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:563
-msgid "Close and Stop Downloads?"
-msgstr "Fermer et arrêter les téléchargements ?"
-
-#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:201
-msgid "Success"
-msgstr "Succès"
-
-#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:176
-#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:121
-msgid "Downloading"
-msgstr "Téléchargement"
-
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:137
-msgid "Media URL (Invalid)"
-msgstr "URL du média (invalide)"
-
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:745
-msgid ""
-"Nicholas Logozzo {0}\n"
-"Contributors on GitHub ❤️ {1}"
-msgstr ""
-
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:175
-msgid "Maximum Quality"
-msgstr "Qualité maximale"
-
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:332
-#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:117
-msgid "Save Folder"
-msgstr "Dossier de sauvegarde"
-
-#: ../../../../NickvisionTubeConverter.GNOME/Program.cs:49
-#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:44
-#: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.desktop.in:4
-#: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.metainfo.xml.in:6
-msgid "Tube Converter"
-msgstr "Tube Converter"
-
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:563
-msgid "Yes"
-msgstr "Oui"
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:202
+msgid "Playlist"
+msgstr "Liste de lecture"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:739
 msgid ""
@@ -109,37 +73,23 @@ msgstr ""
 "locales sur le copyright/DMCA. Les utilisateurs se servent de cette "
 "application à leurs propres risques."
 
-#: ../../../Controllers/MainWindowController.cs:146
-#: ../../../Controllers/MainWindowController.cs:157
-msgid "Unable to setup dependencies. Please restart the app and try again."
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:563
+msgid ""
+"Some downloads are still in progress.\n"
+"Are you sure you want to close Tube Converter and stop the running downloads?"
 msgstr ""
-"Impossible de configurer les dépendances. Veuillez redémarrer l’application "
-"et réessayer."
-
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:744
-msgid "Matrix Chat"
-msgstr "Discussion Matrix"
-
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:203
-#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:132
-msgid "Advanced Options"
-msgstr "Options avancées"
-
-#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:201
-msgid "Error"
-msgstr "Erreur"
-
-#: ../../../Models/DownloadManager.cs:167
-msgid "Some downloads finished with errors!"
-msgstr "Certains téléchargements se sont terminés avec des erreurs !"
-
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:748
-msgid "translator-credits"
-msgstr ""
+"Certains téléchargements sont toujours en cours.\n"
+"Êtes-vous sûr de vouloir fermer Tube Converter et arrêter les téléchargement "
+"en cours ?"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:342
 msgid "Save Folder (Invalid)"
 msgstr "Dossier de sauvegarde (invalide)"
+
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:133
+#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:59
+msgid "Validate"
+msgstr "Valider"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:204
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:36
@@ -148,6 +98,11 @@ msgstr "Dossier de sauvegarde (invalide)"
 msgid "Add Download"
 msgstr "Ajouter un téléchargement"
 
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:203
+#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:132
+msgid "Advanced Options"
+msgstr "Options avancées"
+
 #: ../../../Models/DownloadManager.cs:163
 #, fuzzy, csharp-format
 msgid "{0} download — {1:f1}% ({2})"
@@ -155,13 +110,18 @@ msgid_plural "{0} downloads — {1:f1}% ({2})"
 msgstr[0] "Téléchargements : {0} — {1:f1}% ({2})"
 msgstr[1] "Téléchargements : {0} — {1:f1}% ({2})"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:185
-msgid "Processing..."
-msgstr "Traitement..."
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:747
+#, csharp-format
+msgid ""
+"David Lapshin {0}\n"
+"Brage Fuglseth {1}\n"
+"marcin {2}"
+msgstr ""
 
-#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:167
-msgid "Downloading {0:f2}% ({1})"
-msgstr "Téléchargement {0:f2}% ({1})"
+#: ../../../Models/DownloadManager.cs:171
+#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:87
+msgid "No downloads running"
+msgstr "Aucun téléchargement en cours"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Program.cs:50
 #: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.desktop.in:5
@@ -169,16 +129,96 @@ msgstr "Téléchargement {0:f2}% ({1})"
 msgid "Get video and audio from the web"
 msgstr "Téléchargez vos vidéos favorites"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:119
-msgid "Worst"
-msgstr "Basse"
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:240
+#, fuzzy, csharp-format
+msgid "\"{0}\" has finished with an error!"
+msgstr "{0} s’est terminé avec une erreur !"
+
+#: ../../../Helpers/SpeedFormatter.cs:32
+#, csharp-format
+msgid "{0:f1} B/s"
+msgstr "{0:f1} B/s"
+
+#: ../../../Models/Download.cs:171
+msgid "File already exists, and overwriting is disallowed"
+msgstr "Le fichier existe déjà, et le remplacement n’a pas été activé"
+
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:137
+msgid "Media URL (Invalid)"
+msgstr "URL du média (invalide)"
+
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:158
+#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:52
+msgid "Media URL"
+msgstr "URL du média"
+
+#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:216
+msgid "Stopped"
+msgstr "Arrêté"
+
+#: ../../../Controllers/MainWindowController.cs:146
+#: ../../../Controllers/MainWindowController.cs:157
+msgid "Unable to setup dependencies. Please restart the app and try again."
+msgstr ""
+"Impossible de configurer les dépendances. Veuillez redémarrer l’application "
+"et réessayer."
+
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:372
+#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:125
+msgid "Select Save Folder"
+msgstr "Sélectionner un dossier de sauvegarde"
+
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:563
+msgid "Yes"
+msgstr "Oui"
+
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:332
+#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:117
+msgid "Save Folder"
+msgstr "Dossier de sauvegarde"
+
+#: ../../../../NickvisionTubeConverter.GNOME/Controls/MediaRow.cs:28
+#, fuzzy
+msgid "File Name"
+msgstr "Nom du fichier"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:134
 #: NickvisionTubeConverter.GNOME/Blueprints/download_row.blp:36
 msgid "Waiting..."
 msgstr "Attente..."
 
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:240
+msgid "Download Finished"
+msgstr "Téléchargement terminé"
+
+#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:167
+#, csharp-format
+msgid "Downloading {0:f2}% ({1})"
+msgstr "Téléchargement {0:f2}% ({1})"
+
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:745
+#, csharp-format
+msgid ""
+"Nicholas Logozzo {0}\n"
+"Contributors on GitHub ❤️ {1}"
+msgstr ""
+
+#: ../../../Models/DownloadManager.cs:167
+msgid "Some downloads finished with errors!"
+msgstr "Certains téléchargements se sont terminés avec des erreurs !"
+
+#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:176
+#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:121
+msgid "Downloading"
+msgstr "Téléchargement"
+
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:291
+#, fuzzy
+msgid "(Configurable in preferences)"
+msgstr "Modifiable dans les préférences"
+
 #: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:746
+#, csharp-format
 msgid ""
 "Nicholas Logozzo {0}\n"
 "Fyodor Sobolev {1}\n"
@@ -189,35 +229,9 @@ msgstr ""
 msgid "Download Finished With Error"
 msgstr "Téléchargement terminé avec une erreur"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:202
-msgid "Playlist"
-msgstr "Liste de lecture"
-
-#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:103
-#, fuzzy
-msgid "Download log was copied to clipboard."
-msgstr "Le journal de téléchargement a été copié"
-
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:372
-#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:125
-msgid "Select Save Folder"
-msgstr "Sélectionner un dossier de sauvegarde"
-
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:291
-#: ../../../Helpers/SpeedFormatter.cs:28
-msgid "{0:f1} KiB/s"
-msgstr "{0:f1} Kb/s"
-
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:747
-msgid ""
-"David Lapshin {0}\n"
-"Brage Fuglseth {1}\n"
-"marcin {2}"
-msgstr ""
-
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:240
-msgid "{0} has finished with an error!"
-msgstr "{0} s’est terminé avec une erreur !"
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:744
+msgid "Matrix Chat"
+msgstr "Discussion Matrix"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/PreferencesDialog.cs:155
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:237
@@ -226,56 +240,52 @@ msgstr "{0} s’est terminé avec une erreur !"
 msgid "Select Cookies File"
 msgstr "Sélectionner un dossier de sauvegarde"
 
-#: ../../../Helpers/SpeedFormatter.cs:24
-msgid "{0:f1} MiB/s"
-msgstr "{0:f1} Mb/s"
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:563
+msgid "No"
+msgstr "Non"
 
-#: ../../../Models/Download.cs:171
-msgid "File already exists, and overwriting is disallowed"
-msgstr "Le fichier existe déjà, et le remplacement n’a pas été activé"
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:240
+#, fuzzy, csharp-format
+msgid "\"{0}\" has finished downloading."
+msgstr "{0} a été téléchargé."
 
-#: ../../../Helpers/SpeedFormatter.cs:32
-msgid "{0:f1} B/s"
-msgstr "{0:f1} B/s"
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:175
+msgid "Maximum Quality"
+msgstr "Qualité maximale"
 
-#: ../../../Helpers/SpeedFormatter.cs:20
-msgid "{0:f1} GiB/s"
-msgstr "{0:f1} Gb/s"
+#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:103
+#, fuzzy
+msgid "Download log was copied to clipboard."
+msgstr "Le journal de téléchargement a été copié"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:743
-msgid "List of supported sites"
-msgstr "Liste des sites pris en charge"
+#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:148
+msgid "Preparing..."
+msgstr "Préparation..."
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:133
-#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:59
-msgid "Validate"
-msgstr "Valider"
-
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:119
-msgid "Best"
-msgstr "Meilleure"
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:563
+msgid "Close and Stop Downloads?"
+msgstr "Fermer et arrêter les téléchargements ?"
 
 #: ../../../Models/Download.cs:311
 msgid "Download using aria2 has started"
 msgstr "Le téléchargement via aria2 a débuté"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:563
-msgid "No"
-msgstr "Non"
+#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:201
+msgid "Success"
+msgstr "Succès"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:563
-msgid ""
-"Some downloads are still in progress.\n"
-"Are you sure you want to close Tube Converter and stop the running downloads?"
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:748
+msgid "translator-credits"
 msgstr ""
-"Certains téléchargements sont toujours en cours.\n"
-"Êtes-vous sûr de vouloir fermer Tube Converter et arrêter les téléchargement "
-"en cours ?"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Controls/MediaRow.cs:28
-#, fuzzy
-msgid "File Name"
-msgstr "Nom du fichier"
+#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:185
+msgid "Processing..."
+msgstr "Traitement..."
+
+#: ../../../Helpers/SpeedFormatter.cs:20
+#, csharp-format
+msgid "{0:f1} GiB/s"
+msgstr "{0:f1} Gb/s"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:23
 msgid "Back"
