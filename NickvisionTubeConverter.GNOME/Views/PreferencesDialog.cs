@@ -4,6 +4,7 @@ using NickvisionTubeConverter.Shared.Models;
 using System;
 using System.IO;
 using System.Runtime.InteropServices;
+using static NickvisionTubeConverter.Shared.Helpers.Gettext;
 
 namespace NickvisionTubeConverter.GNOME.Views;
 
