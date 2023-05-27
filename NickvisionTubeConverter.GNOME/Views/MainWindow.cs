@@ -1,3 +1,4 @@
+using GLib.Internal;
 using NickvisionTubeConverter.GNOME.Controls;
 using NickvisionTubeConverter.GNOME.Helpers;
 using NickvisionTubeConverter.Shared.Controllers;
@@ -10,6 +11,7 @@ using System.Globalization;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace NickvisionTubeConverter.GNOME.Views;
 
@@ -19,6 +21,7 @@ namespace NickvisionTubeConverter.GNOME.Views;
 public partial class MainWindow : Adw.ApplicationWindow
 {
     private delegate bool GSourceFunc(nint data);
+    private delegate void GAsyncReadyCallback(nint source, nint res, nint user_data);
 
     [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
     private static partial void g_main_context_invoke(nint context, GSourceFunc function, nint data);
@@ -46,6 +49,10 @@ public partial class MainWindow : Adw.ApplicationWindow
     private static partial nint g_file_icon_new(nint gfile);
     [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
     private static partial void g_notification_set_icon(nint notification, nint icon);
+    [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
+    private static partial void gdk_clipboard_read_text_async(nint clipboard, nint cancellable, GAsyncReadyCallback callback, nint user_data);
+    [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
+    private static partial string gdk_clipboard_read_text_finish(nint clipboard, nint result, nint error);
 
     [LibraryImport("libunity.so.9", StringMarshalling = StringMarshalling.Utf8)]
     private static partial nint unity_launcher_entry_get_for_desktop_id(string desktop_id);
@@ -67,6 +74,7 @@ public partial class MainWindow : Adw.ApplicationWindow
     private readonly GSourceFunc _downloadStartedFromQueueFunc;
     private readonly nint _unityLauncher;
     private bool _isBackgroundStatusReported;
+    private GAsyncReadyCallback _clipboardCallback;
 
     [Gtk.Connect] private readonly Adw.Bin _spinnerContainer;
     [Gtk.Connect] private readonly Gtk.Spinner _spinner;
@@ -432,7 +440,7 @@ public partial class MainWindow : Adw.ApplicationWindow
         _controller.DownloadManager.DownloadStartedFromQueue += (sender, e) => g_main_context_invoke(0, _downloadStartedFromQueueFunc, (IntPtr)GCHandle.Alloc(e));
         //Add Download Action
         var actDownload = Gio.SimpleAction.New("addDownload", null);
-        actDownload.OnActivate += AddDownload;
+        actDownload.OnActivate += async (sender, e) => await AddDownloadAsync(new NotificationSentEventArgs("", NotificationSeverity.Informational));
         AddAction(actDownload);
         application.SetAccelsForAction("win.addDownload", new string[] { "<Ctrl>n" });
         //Stop All Downloads Action
@@ -500,6 +508,7 @@ public partial class MainWindow : Adw.ApplicationWindow
         _mainBox.SetVisible(false);
         _spinner.Start();
         _controller.Startup();
+        ValidateClipboard();
         _spinner.Stop();
         _spinnerContainer.SetVisible(false);
         _mainBox.SetVisible(true);
@@ -514,6 +523,11 @@ public partial class MainWindow : Adw.ApplicationWindow
     private void NotificationSent(object? sender, NotificationSentEventArgs e)
     {
         var toast = Adw.Toast.New(e.Message);
+        if (e.Action == "clipboard")
+        {
+            toast.SetButtonLabel(_controller.Localizer["Download"]);
+            toast.OnButtonClicked += async (s, ex) => await AddDownloadAsync(e);
+        }
         _toastOverlay.AddToast(toast);
     }
 
@@ -572,16 +586,19 @@ public partial class MainWindow : Adw.ApplicationWindow
     }
 
     /// <summary>
-    /// Occurs when the add download action is triggered
+    /// Prompts the AddDownloadDialog
     /// </summary>
-    /// <param name="sender">Gio.SimpleAction</param>
-    /// <param name="e">EventArgs</param>
-    private void AddDownload(Gio.SimpleAction sender, EventArgs e)
+    /// <param name="e">NotificationSentEventArgs</param>
+    private async Task AddDownloadAsync(NotificationSentEventArgs e)
     {
         var addController = _controller.CreateAddDownloadDialogController();
         var addDialog = new AddDownloadDialog(addController, this);
         addDialog.Present();
-        addDialog.OnDownload += (sender, e) =>
+        if (!string.IsNullOrEmpty(e.ActionParam))
+        {
+            await addDialog.SearchUrlAsync(e.ActionParam);
+        }
+        addDialog.OnDownload += (s, ex) =>
         {
             _headerBar.RemoveCssClass("flat");
             _addDownloadButton.SetVisible(true);
@@ -749,6 +766,11 @@ public partial class MainWindow : Adw.ApplicationWindow
         dialog.Present();
     }
 
+    /// <summary>
+    /// Occurs when the run in background option is changed
+    /// </summary>
+    /// <param name="sender">object?</param>
+    /// <param name="e">EventArgs</param>
     private void RunInBackgroundChanged(object? sender, EventArgs e)
     {
         if (_controller.RunInBackground)
@@ -763,5 +785,23 @@ public partial class MainWindow : Adw.ApplicationWindow
         {
             _isBackgroundStatusReported = false;
         }
+    }
+
+    /// <summary>
+    /// Reads the clipboard's text and checks for a valid media url
+    /// </summary>
+    private void ValidateClipboard()
+    {
+        var clipboard = Gdk.Display.GetDefault()!.GetClipboard();
+        _clipboardCallback = async (source, res, data) =>
+        {
+            var clipboardText = gdk_clipboard_read_text_finish(clipboard.Handle, res, IntPtr.Zero);
+            if(!string.IsNullOrEmpty(clipboardText))
+            {
+                NotificationSent(null, new NotificationSentEventArgs(_controller.Localizer["ValidatingClipboard"], NotificationSeverity.Informational));
+                await _controller.ValidateClipboardAsync(clipboardText);
+            }
+        };
+        gdk_clipboard_read_text_async(clipboard.Handle, IntPtr.Zero, _clipboardCallback, IntPtr.Zero);
     }
 }

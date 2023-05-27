@@ -57,6 +57,7 @@ public class AddDownloadDialogController
     /// <summary>
     /// Constructs a AddDownloadDialogController
     /// </summary>
+    /// <param name="localizer">The Localizer</param>
     public AddDownloadDialogController(Localizer localizer)
     {
         Localizer = localizer;
