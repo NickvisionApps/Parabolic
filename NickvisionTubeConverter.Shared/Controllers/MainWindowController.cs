@@ -176,7 +176,7 @@ public class MainWindowController : IDisposable
             var result = Uri.TryCreate(clipboardText, UriKind.Absolute, out var uriResult) && (uriResult.Scheme == Uri.UriSchemeHttp || uriResult.Scheme == Uri.UriSchemeHttps);
             if (result)
             {
-                NotificationSent?.Invoke(this, new NotificationSentEventArgs(_("Media URL found from clipboard."), NotificationSeverity.Informational, "clipboard", clipboardText));
+                NotificationSent?.Invoke(this, new NotificationSentEventArgs(_("A link is detected in clipboard."), NotificationSeverity.Informational, "clipboard", clipboardText));
             }
         }
     }
