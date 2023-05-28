@@ -84,6 +84,7 @@ public partial class MainWindow : Adw.ApplicationWindow
     [Gtk.Connect] private readonly Adw.ViewStack _viewStack;
     [Gtk.Connect] private readonly Gtk.Button _addDownloadButton;
     [Gtk.Connect] private readonly Gtk.Box _downloadingBox;
+    [Gtk.Connect] private readonly Gtk.Button _stopAllDownloadsButton;
     [Gtk.Connect] private readonly Gtk.Box _completedBox;
     [Gtk.Connect] private readonly Gtk.Box _queuedBox;
 
@@ -169,6 +170,7 @@ public partial class MainWindow : Adw.ApplicationWindow
                     box.Append(separator);
                 }
                 box.Append(downloadRow);
+                _stopAllDownloadsButton.SetVisible(_controller.DownloadManager.RemainingDownloadsCount > 1);
                 box.GetParent().SetVisible(true);
             }
             handle.Free();

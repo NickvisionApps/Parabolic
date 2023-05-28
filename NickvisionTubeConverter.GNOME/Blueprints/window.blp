@@ -115,10 +115,11 @@ Adw.ApplicationWindow _root {
                         styles ["heading"]
                       }
 
-                      Gtk.Button {
+                      Gtk.Button _stopAllDownloadsButton {
                         halign: end;
                         action-name: "win.stopAllDownloads";
                         tooltip-text: _("Stop All Downloads");
+                        visible: false;
 
                         Adw.ButtonContent {
                           icon-name: "media-playback-stop-symbolic";
