@@ -80,7 +80,6 @@ public partial class MainWindow : Adw.ApplicationWindow
     [Gtk.Connect] private readonly Gtk.Spinner _spinner;
     [Gtk.Connect] private readonly Gtk.Box _mainBox;
     [Gtk.Connect] private readonly Adw.HeaderBar _headerBar;
-    [Gtk.Connect] private readonly Gtk.MenuButton _downloaderMenuButton;
     [Gtk.Connect] private readonly Adw.ToastOverlay _toastOverlay;
     [Gtk.Connect] private readonly Adw.ViewStack _viewStack;
     [Gtk.Connect] private readonly Gtk.Button _addDownloadButton;
@@ -463,9 +462,33 @@ public partial class MainWindow : Adw.ApplicationWindow
                 _queuedBox.Remove(_queuedBox.GetFirstChild());
             }
             _queuedBox.GetParent().SetVisible(false);
+            if(!_controller.DownloadManager.AreDownloadsQueued && !_controller.DownloadManager.AreDownloadsRunning && !_controller.DownloadManager.AreDownloadsCompleted)
+            {
+                _headerBar.AddCssClass("flat");
+                _addDownloadButton.SetVisible(false);
+                _viewStack.SetVisibleChildName("pageNoDownloads");
+            }
         };
         AddAction(actClearQueuedDownloads);
         application.SetAccelsForAction("win.clearQueuedDownloads", new string[] { "<Ctrl>Delete" });
+        //Clear Completed Downloads Action
+        var actClearCompletedDownloads = Gio.SimpleAction.New("clearCompletedDownloads", null);
+        actClearCompletedDownloads.OnActivate += (sender, e) =>
+        {
+            _controller.DownloadManager.ClearCompletedDownloads();
+            while (_completedBox.GetFirstChild() != null)
+            {
+                _completedBox.Remove(_completedBox.GetFirstChild());
+            }
+            _completedBox.GetParent().SetVisible(false);
+            if(!_controller.DownloadManager.AreDownloadsQueued && !_controller.DownloadManager.AreDownloadsRunning && !_controller.DownloadManager.AreDownloadsCompleted)
+            {
+                _headerBar.AddCssClass("flat");
+                _addDownloadButton.SetVisible(false);
+                _viewStack.SetVisibleChildName("pageNoDownloads");
+            }
+        };
+        AddAction(actClearCompletedDownloads);
         //Preferences Action
         var actPreferences = Gio.SimpleAction.New("preferences", null);
         actPreferences.OnActivate += Preferences;
@@ -597,7 +620,6 @@ public partial class MainWindow : Adw.ApplicationWindow
         {
             _headerBar.RemoveCssClass("flat");
             _addDownloadButton.SetVisible(true);
-            _downloaderMenuButton.SetVisible(true);
             _viewStack.SetVisibleChildName("pageDownloads");
             foreach (var download in addController.Downloads)
             {

@@ -275,6 +275,11 @@ public class DownloadManager
     public void ClearQueuedDownloads() => _queued.Clear();
 
     /// <summary>
+    /// Clears all completed downloads
+    /// </summary>
+    public void ClearCompletedDownloads() => _completed.Clear();
+
+    /// <summary>
     /// Occurs when a download's progress is changed
     /// </summary>
     /// <param name="sender">object?</param>

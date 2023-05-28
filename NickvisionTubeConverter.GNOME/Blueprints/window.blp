@@ -7,12 +7,6 @@ menu mainMenu {
   item(_("About Tube Converter"), "win.about")
 }
 
-menu downloaderMenu {
-  item(_("Stop All Downloads"), "win.stopAllDownloads")
-  item(_("Retry Failed Downloads"), "win.retryFailedDownloads")
-  item(_("Clear Queued Downloads"), "win.clearQueuedDownloads")
-}
-
 Adw.ApplicationWindow _root {
   default-width: 800;
   default-height: 600;
@@ -63,16 +57,6 @@ Adw.ApplicationWindow _root {
           primary: true;
         }
 
-        [end]
-        Gtk.MenuButton _downloaderMenuButton {
-          direction: none;
-          menu-model: downloaderMenu;
-          tooltip-text: _("Downloader");
-          primary: false;
-          visible: false;
-          icon-name: "wrench-wide-symbolic";
-        }
-
         styles ["flat"]
       }
       
@@ -119,11 +103,26 @@ Adw.ApplicationWindow _root {
                     spacing: 10;
                     visible: false;
 
-                    Gtk.Label {
-                      label: _("Downloading");
-                      halign: start;
-                      margin-start: 5;
-                      styles ["heading"]
+                    Gtk.Box {
+                      hexpand: true;
+                      orientation: horizontal;
+
+                      Gtk.Label {
+                        label: _("Downloading");
+                        halign: start;
+                        margin-start: 5;
+                        hexpand: true;
+                        styles ["heading"]
+                      }
+
+                      Gtk.Button {
+                        halign: end;
+                        icon-name: "media-playback-stop-symbolic";
+                        action-name: "win.stopAllDownloads";
+                        tooltip-text: _("Stop All Downloads");
+
+                        styles ["flat"]
+                      }
                     }
                   
                     Gtk.Box _downloadingBox {
@@ -139,11 +138,26 @@ Adw.ApplicationWindow _root {
                     spacing: 10;
                     visible: false;
 
-                    Gtk.Label {
-                      label: _("Queued");
-                      halign: start;
-                      margin-start: 5;
-                      styles ["heading"]
+                    Gtk.Box {
+                      hexpand: true;
+                      orientation: horizontal;
+
+                      Gtk.Label {
+                        label: _("Queued");
+                        halign: start;
+                        margin-start: 5;
+                        hexpand: true;
+                        styles ["heading"]
+                      }
+
+                      Gtk.Button {
+                        halign: end;
+                        icon-name: "user-trash-symbolic";
+                        action-name: "win.clearQueuedDownloads";
+                        tooltip-text: _("Clear Queued Downloads");
+
+                        styles ["flat"]
+                      }
                     }
                   
                     Gtk.Box _queuedBox {
@@ -159,13 +173,37 @@ Adw.ApplicationWindow _root {
                     spacing: 10;
                     visible: false;
 
-                    Gtk.Label {
-                      label: _("Completed");
-                      halign: start;
-                      margin-start: 5;
-                      styles ["heading"]
+                    Gtk.Box {
+                      hexpand: true;
+                      orientation: horizontal;
+
+                      Gtk.Label {
+                        label: _("Completed");
+                        halign: start;
+                        margin-start: 5;
+                        hexpand: true;
+                        styles ["heading"]
+                      }
+
+                      Gtk.Button {
+                        halign: end;
+                        icon-name: "view-refresh-symbolic";
+                        action-name: "win.retryFailedDownloads";
+                        tooltip-text: _("Retry Failed Downloads");
+
+                        styles ["flat"]
+                      }
+
+                      Gtk.Button {
+                        halign: end;
+                        icon-name: "user-trash-symbolic";
+                        action-name: "win.clearCompletedDownloads";
+                        tooltip-text: _("Clear Completed Downloads");
+
+                        styles ["flat"]
+                      }
                     }
-                  
+
                     Gtk.Box _completedBox {
                       orientation: vertical;
                       hexpand: true;
