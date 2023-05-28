@@ -1,6 +1,5 @@
 ﻿using System;
 using System.IO;
-using System.Net;
 using System.Runtime.InteropServices;
 using System.Text.Json;
 
@@ -27,6 +26,10 @@ public class Configuration
     /// The preferred theme for the application
     /// </summary>
     public Theme Theme { get; set; }
+    /// <summary>
+    /// The preference of how often to show completed notifications
+    /// </summary>
+    public NotificationPreference CompletedNotificationPreference { get; set; }
     /// <summary>
     /// The previously used download save folder
     /// </summary>
@@ -83,6 +86,7 @@ public class Configuration
             Directory.CreateDirectory(ConfigDir);
         }
         Theme = Theme.System;
+        CompletedNotificationPreference = NotificationPreference.ForEach;
         PreviousSaveFolder = Environment.GetFolderPath(Environment.SpecialFolder.MyVideos);
         PreviousMediaFileType = MediaFileType.MP4;
         EmbedMetadata = true;
