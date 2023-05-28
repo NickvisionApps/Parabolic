@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-28 01:00+0300\n"
+"POT-Creation-Date: 2023-05-28 00:11-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,17 +16,17 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:247
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:248
 #, fuzzy, csharp-format
 msgid "\"{0}\" has finished downloading."
 msgstr "{0} har laddats ned."
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:247
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:248
 #, fuzzy, csharp-format
 msgid "\"{0}\" has finished with an error!"
 msgstr "{0} har avslutat med ett fel!"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:286
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:291
 #, fuzzy
 msgid "(Configurable in preferences)"
 msgstr "Kan konfigureras i inställningar"
@@ -41,7 +41,7 @@ msgstr "{0:f1} B/s"
 msgid "{0:f1} GiB/s"
 msgstr "{0:f1} GiB/s"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:286
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:291
 #: ../../../Helpers/SpeedFormatter.cs:28
 #, csharp-format
 msgid "{0:f1} KiB/s"
@@ -59,39 +59,46 @@ msgid_plural "{0} downloads — {1:f1}% ({2})"
 msgstr[0] "Nedladdningar: {0} — {1:f1}% ({2})"
 msgstr[1] "Nedladdningar: {0} — {1:f1}% ({2})"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:169
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:430
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:170
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:441
 #, fuzzy, csharp-format
 msgid "{0} of {1} items"
 msgid_plural "{0} of {1} items"
 msgstr[0] "{0} av {1} objekt"
 msgstr[1] "{0} av {1} objekt"
 
-#: ../../../Controllers/MainWindowController.cs:179
-msgid "A link is detected in clipboard."
-msgstr ""
+#: ../../../Controllers/MainWindowController.cs:167
+#, fuzzy
+msgid "A link has been detected in your clipboard."
+msgstr "Klistra in från urklipp"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:199
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:204
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:36
 #: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:17
-#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:90
+#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:74
 msgid "Add Download"
 msgstr "Lägg till nedladdning"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:198
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:203
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:136
 msgid "Advanced Options"
 msgstr "Avancerade inställningar"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:114
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:252
+#, fuzzy
+#| msgid "Download Finished"
+msgid "All downloads have finished."
+msgstr "Nedladdning klar"
+
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:115
 msgid "Best"
 msgstr "Bäst"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:576
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:606
 msgid "Close and Stop Downloads?"
 msgstr "Stäng och stoppa nedladdningar?"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:759
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:788
 #, csharp-format
 msgid ""
 "David Lapshin {0}\n"
@@ -99,17 +106,17 @@ msgid ""
 "marcin {2}"
 msgstr ""
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:528
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:558
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:179
 #: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:14
 msgid "Download"
 msgstr "Ladda ned"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:247
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:248
 msgid "Download Finished"
 msgstr "Nedladdning klar"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:247
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:248
 msgid "Download Finished With Error"
 msgstr "Nedladdningen slutfördes med fel"
 
@@ -123,7 +130,7 @@ msgid "Download using aria2 has started"
 msgstr "Nedladdning med aria2 har startat"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:176
-#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:123
+#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:111
 msgid "Downloading"
 msgstr "Laddar ned"
 
@@ -131,6 +138,12 @@ msgstr "Laddar ned"
 #, csharp-format
 msgid "Downloading {0:f2}% ({1})"
 msgstr "Laddar ned {0:f2}% ({1})"
+
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:252
+#, fuzzy
+#| msgid "Download Finished"
+msgid "Downloads Finished"
+msgstr "Nedladdning klar"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:201
 msgid "Error"
@@ -151,40 +164,40 @@ msgstr "Filnamn"
 msgid "Get video and audio from the web"
 msgstr "Ladda ned video och ljud från webben"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:323
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:328
 #, fuzzy
 msgid "Link pasted from clipboard."
 msgstr "Klistra in från urklipp"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:755
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:784
 msgid "List of supported sites"
 msgstr "Lista över webbplatser som stöds"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:756
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:785
 msgid "Matrix Chat"
 msgstr "Matrix-chatt"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:170
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:171
 msgid "Maximum Quality"
 msgstr "Högsta kvalitet"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:153
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:154
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:56
 msgid "Media URL"
 msgstr "Media-URL"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:132
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:133
 msgid "Media URL (Invalid)"
 msgstr "Media-URL (ogiltig)"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:757
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:786
 #, csharp-format
 msgid ""
 "Nicholas Logozzo {0}\n"
 "Contributors on GitHub ❤️ {1}"
 msgstr ""
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:758
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:787
 #, csharp-format
 msgid ""
 "Nicholas Logozzo {0}\n"
@@ -192,7 +205,7 @@ msgid ""
 "DaPigGuy {2}"
 msgstr ""
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:576
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:606
 msgid "No"
 msgstr "Nej"
 
@@ -200,7 +213,7 @@ msgstr "Nej"
 msgid "No downloads running"
 msgstr "Inga nedladdningar körs"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:197
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:202
 msgid "Playlist"
 msgstr "Spellista"
 
@@ -212,28 +225,28 @@ msgstr "Förbereder..."
 msgid "Processing..."
 msgstr "Bearbetar..."
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:361
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:372
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:121
 msgid "Save Folder"
 msgstr "Lagringsmapp"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:371
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:382
 msgid "Save Folder (Invalid)"
 msgstr "Lagringsmapp (ogiltig)"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/PreferencesDialog.cs:155
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:237
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:251
+#: ../../../../NickvisionTubeConverter.GNOME/Views/PreferencesDialog.cs:158
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:250
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:264
 #, fuzzy
 msgid "Select Cookies File"
 msgstr "Välj lagringsmapp"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:401
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:412
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:129
 msgid "Select Save Folder"
 msgstr "Välj lagringsmapp"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:576
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:606
 msgid ""
 "Some downloads are still in progress.\n"
 "Are you sure you want to close Tube Converter and stop the running downloads?"
@@ -254,7 +267,7 @@ msgstr "Stoppad"
 msgid "Success"
 msgstr "Klar"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:751
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:780
 msgid ""
 "The authors of Nickvision Tube Converter are not responsible/liable for any "
 "misuse of this program that may violate local copyright/DMCA laws. Users use "
@@ -264,24 +277,24 @@ msgstr ""
 "detta program som kan bryta mot lokala upphovsrättslagar/DMCA-lagar. "
 "Användare använder detta program på egen risk."
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:760
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:789
 msgid "translator-credits"
 msgstr ""
 
 #: ../../../../NickvisionTubeConverter.GNOME/Program.cs:49
-#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:44
+#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:38
 #: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.desktop.in:4
 #: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.metainfo.xml.in:6
 msgid "Tube Converter"
 msgstr "Tube Converter"
 
-#: ../../../Controllers/MainWindowController.cs:147
-#: ../../../Controllers/MainWindowController.cs:158
+#: ../../../Controllers/MainWindowController.cs:135
+#: ../../../Controllers/MainWindowController.cs:146
 msgid "Unable to setup dependencies. Please restart the app and try again."
 msgstr ""
 "Det gick inte att installera beroenden. Starta om appen och försök igen."
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:128
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:129
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:63
 msgid "Validate"
 msgstr "Validera"
@@ -291,11 +304,11 @@ msgstr "Validera"
 msgid "Waiting..."
 msgstr "Väntar..."
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:114
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:115
 msgid "Worst"
 msgstr "Sämst"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:576
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:606
 msgid "Yes"
 msgstr "Ja"
 
@@ -340,7 +353,7 @@ msgid "Overwrite Existing Files"
 msgstr "Skriv över befintliga filer"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:246
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:74
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:87
 msgid "Speed Limit"
 msgstr "Hastighetsbegränsning"
 
@@ -417,27 +430,54 @@ msgid "System"
 msgstr "System"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:31
+msgid "Completed Notification Trigger"
+msgstr ""
+
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:32
+msgid ""
+"In combination with the trigger, completed notifications will only be shown "
+"if the window is not focused."
+msgstr ""
+
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:34
+#, fuzzy
+msgctxt "CompletedNotification"
+msgid "For each download"
+msgstr "Ladda ned"
+
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:34
+#, fuzzy
+#| msgid "Download Finished"
+msgctxt "CompletedNotification"
+msgid "When all downloads finish"
+msgstr "Nedladdning klar"
+
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:34
+msgctxt "CompletedNotification"
+msgid "Never"
+msgstr ""
+
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:44
 msgid "Allow Running In Background"
 msgstr "Tillåt körning i bakgrunden"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:32
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:45
 msgid "Hide the window instead of quitting if there are downloads running."
 msgstr "Dölj fönstret istället för att avsluta om nedladdningar pågår."
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:49
-#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:70
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:62
 msgid "Downloader"
 msgstr "Nedladdare"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:50
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:63
 msgid "Customize downloader settings."
 msgstr "Anpassa inställningarna för nedladdaren."
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:53
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:66
 msgid "Max Number of Active Downloads"
 msgstr "Max antal aktiva nedladdningar"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:75
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:88
 msgid ""
 "This limit (in KiB/s) is applied to downloads that have speed limit enabled. "
 "Changing the value doesn't affect already running downloads."
@@ -446,11 +486,11 @@ msgstr ""
 "hastighetsbegränsning aktiverad. Att ändra värdet påverkar inte "
 "nedladdningar som redan är igång."
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:96
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:109
 msgid "Use aria2"
 msgstr "Använd aria2"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:97
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:110
 msgid ""
 "Enable to use aria2 downloader. It can be faster, but you will not see "
 "download progress."
@@ -458,76 +498,76 @@ msgstr ""
 "Aktivera för att använda aria2-nedladdaren. Det kan vara snabbare, men du "
 "kommer inte kunna se nedladdningsförloppet."
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:106
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:119
 msgid "Max Connections Per Server (-x)"
 msgstr ""
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:107
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:120
 msgid "The maximum number of connections to one server for each download."
 msgstr ""
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:130
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:159
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:143
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:172
 msgid "Reset to default"
 msgstr ""
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:135
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:148
 msgid "Minimum Split Size (-k)"
 msgstr ""
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:136
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:149
 msgid "The minimum size of which to split a file (in MiB)."
 msgstr ""
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:165
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:178
 msgid "Cookies File"
 msgstr ""
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:166
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:179
 msgid ""
 "A cookies file can be provided to yt-dlp to allow downloading media that "
 "requires a login."
 msgstr ""
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:196
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:209
 msgid ""
 "Cookies can be passed to yt-dlp in the form of TXT files. Export cookies "
 "from your browser using the following extensions (use at your own risk):"
 msgstr ""
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:259
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:272
 msgid "Clear Cookies File"
 msgstr ""
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:271
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:284
 msgid "Converter"
 msgstr "Konverterare"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:272
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:285
 msgid "Customize converter settings."
 msgstr "Anpassa konverterarens inställningar."
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:275
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:288
 msgid "Embed Metadata"
 msgstr "Bädda in metadata"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:276
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:289
 msgid "If checked, media metadata will be included in the downloaded file."
 msgstr ""
 "Om markerad kommer mediametadata att inkluderas i den nedladdade filen."
 
 #: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:22
-#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:11
+#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:121
 msgid "Stop All Downloads"
 msgstr "Stoppa alla nedladdningar"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:27
-#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:12
+#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:200
 msgid "Retry Failed Downloads"
 msgstr "Försök misslyckade nedladdningar igen"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:32
-#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:13
+#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:160
 msgid "Clear Queued Downloads"
 msgstr "Rensa köade nedladdningar"
 
@@ -550,34 +590,51 @@ msgstr "Tube Converter"
 msgid "Quit"
 msgstr "Avsluta"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:50
+#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:44
 msgid "Add Download (Ctrl+N)"
 msgstr "Lägg till nedladdning (Ctrl+N)"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:54
+#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:48
 msgid "Add"
 msgstr "Lägg till"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:62
+#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:56
 msgid "Main Menu"
 msgstr "Huvudmeny"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:87
+#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:71
 #, fuzzy
 msgid "Download Media"
 msgstr "Nedladdare"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:88
+#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:72
 msgid "Add a video, audio, or playlist URL to start downloading."
 msgstr ""
 
-#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:143
+#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:125
+#, fuzzy
+#| msgid "Stop All Downloads"
+msgid "Stop All"
+msgstr "Stoppa alla nedladdningar"
+
+#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:150
 msgid "Queued"
 msgstr "Köat"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:163
+#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:164
+#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:212
+msgid "Clear"
+msgstr ""
+
+#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:189
 msgid "Completed"
 msgstr "Slutförda"
+
+#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:208
+#, fuzzy
+#| msgid "Clear Queued Downloads"
+msgid "Clear Completed Downloads"
+msgstr "Rensa köade nedladdningar"
 
 #: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.metainfo.xml.in:10
 msgid "— A basic yt-dlp frontend"
