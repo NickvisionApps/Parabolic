@@ -247,7 +247,7 @@ public partial class MainWindow : Adw.ApplicationWindow
                         {
                             SendShellNotification(new ShellNotificationSentEventArgs(!e.Successful ? _("Download Finished With Error") : _("Download Finished"), !e.Successful ? _("\"{0}\" has finished with an error!", row.Filename) : _("\"{0}\" has finished downloading.", row.Filename), !e.Successful ? NotificationSeverity.Error : NotificationSeverity.Success));
                         }
-                        else if(_controller.CompletedNotificationPreference == NotificationPreference.AllCompleted && (!_controller.DownloadManager.AreDownloadsRunning && !_controller.DownloadManager.AreDownloadsQueued))
+                        else if(_controller.CompletedNotificationPreference == NotificationPreference.AllCompleted && !_controller.DownloadManager.AreDownloadsRunning && !_controller.DownloadManager.AreDownloadsQueued)
                         {
                             SendShellNotification(new ShellNotificationSentEventArgs(_("Downloads Finished"), _("All downloads have finished."), NotificationSeverity.Informational));
                         }
