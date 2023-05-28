@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-28 01:00+0300\n"
+"POT-Creation-Date: 2023-05-28 00:11-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,17 +16,17 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:247
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:248
 #, fuzzy, csharp-format
 msgid "\"{0}\" has finished downloading."
 msgstr "{0} はダウンロード完了です。"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:247
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:248
 #, fuzzy, csharp-format
 msgid "\"{0}\" has finished with an error!"
 msgstr "{0} のダウンロードはエラーで終了しました！"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:286
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:291
 msgid "(Configurable in preferences)"
 msgstr ""
 
@@ -40,7 +40,7 @@ msgstr "{0:f1} B/毎秒"
 msgid "{0:f1} GiB/s"
 msgstr "{0:f1} GiB /毎秒"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:286
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:291
 #: ../../../Helpers/SpeedFormatter.cs:28
 #, csharp-format
 msgid "{0:f1} KiB/s"
@@ -58,39 +58,46 @@ msgid_plural "{0} downloads — {1:f1}% ({2})"
 msgstr[0] "ダウンロード: {0} — {1:f1}% ({2})"
 msgstr[1] "ダウンロード: {0} — {1:f1}% ({2})"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:169
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:430
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:170
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:441
 #, csharp-format
 msgid "{0} of {1} items"
 msgid_plural "{0} of {1} items"
 msgstr[0] ""
 msgstr[1] ""
 
-#: ../../../Controllers/MainWindowController.cs:179
-msgid "A link is detected in clipboard."
-msgstr ""
+#: ../../../Controllers/MainWindowController.cs:167
+#, fuzzy
+msgid "A link has been detected in your clipboard."
+msgstr "クリップボードから貼り付け"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:199
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:204
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:36
 #: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:17
-#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:90
+#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:74
 msgid "Add Download"
 msgstr "ダウンロードを追加"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:198
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:203
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:136
 msgid "Advanced Options"
 msgstr ""
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:114
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:252
+#, fuzzy
+#| msgid "Download Finished"
+msgid "All downloads have finished."
+msgstr "ダウンロードが完了"
+
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:115
 msgid "Best"
 msgstr "最高"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:576
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:606
 msgid "Close and Stop Downloads?"
 msgstr "閉じてダウンロードを中止しますか？"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:759
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:788
 #, csharp-format
 msgid ""
 "David Lapshin {0}\n"
@@ -98,17 +105,17 @@ msgid ""
 "marcin {2}"
 msgstr ""
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:528
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:558
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:179
 #: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:14
 msgid "Download"
 msgstr "ダウンロード"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:247
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:248
 msgid "Download Finished"
 msgstr "ダウンロードが完了"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:247
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:248
 msgid "Download Finished With Error"
 msgstr "ダウンロードはエラーで終了"
 
@@ -122,7 +129,7 @@ msgid "Download using aria2 has started"
 msgstr "Aria2 を使用したダウンロードが開始"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:176
-#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:123
+#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:111
 msgid "Downloading"
 msgstr "ダウンロード中"
 
@@ -130,6 +137,12 @@ msgstr "ダウンロード中"
 #, csharp-format
 msgid "Downloading {0:f2}% ({1})"
 msgstr "ダウンロード中 {0:f2}% ({1})"
+
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:252
+#, fuzzy
+#| msgid "Download Finished"
+msgid "Downloads Finished"
+msgstr "ダウンロードが完了"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:201
 msgid "Error"
@@ -150,41 +163,41 @@ msgstr "ファイルの種類"
 msgid "Get video and audio from the web"
 msgstr "動画や音声をウェブから入手"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:323
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:328
 #, fuzzy
 msgid "Link pasted from clipboard."
 msgstr "クリップボードから貼り付け"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:755
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:784
 msgid "List of supported sites"
 msgstr "サポートされているサイト"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:756
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:785
 msgid "Matrix Chat"
 msgstr "Matrix チャット"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:170
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:171
 #, fuzzy
 msgid "Maximum Quality"
 msgstr "品質"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:153
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:154
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:56
 msgid "Media URL"
 msgstr "メディアの URL"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:132
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:133
 msgid "Media URL (Invalid)"
 msgstr "メディアの URL (無効)"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:757
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:786
 #, csharp-format
 msgid ""
 "Nicholas Logozzo {0}\n"
 "Contributors on GitHub ❤️ {1}"
 msgstr ""
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:758
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:787
 #, csharp-format
 msgid ""
 "Nicholas Logozzo {0}\n"
@@ -192,7 +205,7 @@ msgid ""
 "DaPigGuy {2}"
 msgstr ""
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:576
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:606
 msgid "No"
 msgstr "いいえ"
 
@@ -200,7 +213,7 @@ msgstr "いいえ"
 msgid "No downloads running"
 msgstr "進行中のダウンロードはありません"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:197
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:202
 msgid "Playlist"
 msgstr ""
 
@@ -212,28 +225,28 @@ msgstr "準備中..."
 msgid "Processing..."
 msgstr "進行中..."
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:361
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:372
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:121
 msgid "Save Folder"
 msgstr "保存フォルダー"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:371
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:382
 msgid "Save Folder (Invalid)"
 msgstr "保存フォルダー（不可）"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/PreferencesDialog.cs:155
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:237
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:251
+#: ../../../../NickvisionTubeConverter.GNOME/Views/PreferencesDialog.cs:158
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:250
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:264
 #, fuzzy
 msgid "Select Cookies File"
 msgstr "保存するフォルダーを選択"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:401
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:412
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:129
 msgid "Select Save Folder"
 msgstr "保存するフォルダーを選択"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:576
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:606
 msgid ""
 "Some downloads are still in progress.\n"
 "Are you sure you want to close Tube Converter and stop the running downloads?"
@@ -253,7 +266,7 @@ msgstr "一時停止中"
 msgid "Success"
 msgstr "成功"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:751
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:780
 msgid ""
 "The authors of Nickvision Tube Converter are not responsible/liable for any "
 "misuse of this program that may violate local copyright/DMCA laws. Users use "
@@ -263,24 +276,24 @@ msgstr ""
 "ミレニアム著作権法）に反する可能性のある、このプログラムの誤用について責任を"
 "負いません。ユーザーによる、このアプリケーションの使用は自己責任です。"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:760
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:789
 msgid "translator-credits"
 msgstr ""
 
 #: ../../../../NickvisionTubeConverter.GNOME/Program.cs:49
-#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:44
+#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:38
 #: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.desktop.in:4
 #: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.metainfo.xml.in:6
 msgid "Tube Converter"
 msgstr "Tube Converter"
 
-#: ../../../Controllers/MainWindowController.cs:147
-#: ../../../Controllers/MainWindowController.cs:158
+#: ../../../Controllers/MainWindowController.cs:135
+#: ../../../Controllers/MainWindowController.cs:146
 msgid "Unable to setup dependencies. Please restart the app and try again."
 msgstr ""
 "依存関係をダウンロードできません。アプリを再起動して試してみてください。"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:128
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:129
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:63
 msgid "Validate"
 msgstr "内容の確認"
@@ -290,11 +303,11 @@ msgstr "内容の確認"
 msgid "Waiting..."
 msgstr "待機中..."
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:114
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:115
 msgid "Worst"
 msgstr "最低"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:576
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:606
 msgid "Yes"
 msgstr "はい"
 
@@ -337,7 +350,7 @@ msgid "Overwrite Existing Files"
 msgstr "存在するファイルを上書きする"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:246
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:74
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:87
 msgid "Speed Limit"
 msgstr "スピード制限"
 
@@ -414,27 +427,54 @@ msgid "System"
 msgstr "システムに従う"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:31
+msgid "Completed Notification Trigger"
+msgstr ""
+
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:32
+msgid ""
+"In combination with the trigger, completed notifications will only be shown "
+"if the window is not focused."
+msgstr ""
+
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:34
+#, fuzzy
+msgctxt "CompletedNotification"
+msgid "For each download"
+msgstr "ダウンロード"
+
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:34
+#, fuzzy
+#| msgid "Download Finished"
+msgctxt "CompletedNotification"
+msgid "When all downloads finish"
+msgstr "ダウンロードが完了"
+
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:34
+msgctxt "CompletedNotification"
+msgid "Never"
+msgstr ""
+
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:44
 msgid "Allow Running In Background"
 msgstr "バックグラウンドでの動作を許可"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:32
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:45
 msgid "Hide the window instead of quitting if there are downloads running."
 msgstr "ウィンドウが閉じて隠れても、ダウンロードを続けます。"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:49
-#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:70
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:62
 msgid "Downloader"
 msgstr "ダウンローダー"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:50
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:63
 msgid "Customize downloader settings."
 msgstr "ダウンローダーの設定をカスタマイズします。"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:53
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:66
 msgid "Max Number of Active Downloads"
 msgstr "同時にダウンロードできる最大数"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:75
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:88
 msgid ""
 "This limit (in KiB/s) is applied to downloads that have speed limit enabled. "
 "Changing the value doesn't affect already running downloads."
@@ -442,11 +482,11 @@ msgstr ""
 "この制限（KIB/毎秒に制限）は、ダウンロードにスピード制限が設定されている時の"
 "み有効になります。すでに進行中のダウンロードには、設定は適用されません。"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:96
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:109
 msgid "Use aria2"
 msgstr "Aria2 を使用"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:97
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:110
 msgid ""
 "Enable to use aria2 downloader. It can be faster, but you will not see "
 "download progress."
@@ -454,77 +494,77 @@ msgstr ""
 "Aria 2 をダウンローダーとして使用します。ダウンロードは速くなりますが、ダウン"
 "ロードの進捗を見ることはできません。"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:106
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:119
 msgid "Max Connections Per Server (-x)"
 msgstr ""
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:107
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:120
 msgid "The maximum number of connections to one server for each download."
 msgstr ""
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:130
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:159
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:143
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:172
 msgid "Reset to default"
 msgstr ""
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:135
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:148
 msgid "Minimum Split Size (-k)"
 msgstr ""
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:136
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:149
 msgid "The minimum size of which to split a file (in MiB)."
 msgstr ""
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:165
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:178
 msgid "Cookies File"
 msgstr ""
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:166
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:179
 msgid ""
 "A cookies file can be provided to yt-dlp to allow downloading media that "
 "requires a login."
 msgstr ""
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:196
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:209
 msgid ""
 "Cookies can be passed to yt-dlp in the form of TXT files. Export cookies "
 "from your browser using the following extensions (use at your own risk):"
 msgstr ""
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:259
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:272
 msgid "Clear Cookies File"
 msgstr ""
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:271
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:284
 msgid "Converter"
 msgstr "コンバーター"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:272
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:285
 msgid "Customize converter settings."
 msgstr "コンバーターを設定します。"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:275
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:288
 msgid "Embed Metadata"
 msgstr "メタデータを埋め込む"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:276
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:289
 msgid "If checked, media metadata will be included in the downloaded file."
 msgstr "選択すると、動画のメタデータがダウンロードファイルに含まれます。"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:22
-#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:11
+#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:121
 #, fuzzy
 msgid "Stop All Downloads"
 msgstr "ダウンロードを停止"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:27
-#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:12
+#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:200
 #, fuzzy
 msgid "Retry Failed Downloads"
 msgstr "ダウンロードを再試行"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:32
-#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:13
+#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:160
 #, fuzzy
 msgid "Clear Queued Downloads"
 msgstr "閉じてダウンロードを中止しますか？"
@@ -548,34 +588,49 @@ msgstr "Tube Converter"
 msgid "Quit"
 msgstr "閉じる"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:50
+#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:44
 msgid "Add Download (Ctrl+N)"
 msgstr "ダウンロードを追加 (Ctrl+N)"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:54
+#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:48
 msgid "Add"
 msgstr "追加"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:62
+#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:56
 msgid "Main Menu"
 msgstr "メインメニュー"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:87
+#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:71
 #, fuzzy
 msgid "Download Media"
 msgstr "ダウンローダー"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:88
+#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:72
 msgid "Add a video, audio, or playlist URL to start downloading."
 msgstr ""
 
-#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:143
+#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:125
+#, fuzzy
+msgid "Stop All"
+msgstr "ダウンロードを停止"
+
+#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:150
 msgid "Queued"
 msgstr "停止中"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:163
+#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:164
+#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:212
+msgid "Clear"
+msgstr ""
+
+#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:189
 msgid "Completed"
 msgstr "完了済"
+
+#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:208
+#, fuzzy
+msgid "Clear Completed Downloads"
+msgstr "閉じてダウンロードを中止しますか？"
 
 #: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.metainfo.xml.in:10
 msgid "— A basic yt-dlp frontend"
