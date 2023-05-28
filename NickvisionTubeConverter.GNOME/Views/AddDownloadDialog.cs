@@ -189,7 +189,7 @@ public partial class AddDownloadDialog : Adw.Window
         builder.Connect(this);
         _validateUrlButton.OnClicked += async (sender, e) =>
         {
-            _toast.Dismiss();
+            _toast?.Dismiss();
             await SearchUrlAsync(_urlRow.GetText());;
         };
         _viewStack.OnNotify += (sender, e) =>
