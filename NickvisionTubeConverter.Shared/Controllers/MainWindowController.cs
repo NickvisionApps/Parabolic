@@ -34,29 +34,17 @@ public class MainWindowController : IDisposable
     /// </summary>
     public Theme Theme => Configuration.Current.Theme;
     /// <summary>
+    /// The preferred theme of the application
+    /// </summary>
+    public NotificationPreference CompletedNotificationPreference => Configuration.Current.CompletedNotificationPreference;
+    /// <summary>
     /// Whether to allow running in the background
     /// </summary>
     public bool RunInBackground => Configuration.Current.RunInBackground;
     /// <summary>
-    /// Whether to use aria2 for downloader
+    /// The DownloadOptions for a download
     /// </summary>
-    public bool UseAria => Configuration.Current.UseAria;
-    /// <summary>
-    /// Whether to embed metadata
-    /// </summary>
-    public bool EmbedMetadata => Configuration.Current.EmbedMetadata;
-    /// <summary>
-    /// The path to the cookies file to use for yt-dlp
-    /// </summary>
-    public string CookiesPath => Configuration.Current.CookiesPath;
-    /// <summary>
-    /// The maximum number of connections to one server for each download (-x)
-    /// </summary>
-    public int AriaMaxConnectionsPerServer => Configuration.Current.AriaMaxConnectionsPerServer;
-    /// <summary>
-    /// The minimum size of which to split a file (-k)
-    /// </summary>
-    public int AriaMinSplitSize => Configuration.Current.AriaMinSplitSize;
+    public DownloadOptions DownloadOptions => new DownloadOptions(Configuration.Current.UseAria, Configuration.Current.EmbedMetadata, Configuration.Current.CookiesPath, Configuration.Current.AriaMaxConnectionsPerServer, Configuration.Current.AriaMinSplitSize);
 
     /// <summary>
     /// Occurs when a notification is sent
