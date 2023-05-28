@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-05-28 09:43-0400\n"
-"PO-Revision-Date: 2023-05-28 13:01+0000\n"
+"PO-Revision-Date: 2023-05-28 21:16+0000\n"
 "Last-Translator: albanobattistella <albano_battistella@hotmail.com>\n"
-"Language-Team: Italian <https://hosted.weblate.org/projects/nickvision-tube-"
-"converter/app/it/>\n"
+"Language-Team: Italian <https://hosted.weblate.org/projects/"
+"nickvision-tube-converter/app/it/>\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -202,6 +202,9 @@ msgid ""
 "Fyodor Sobolev {1}\n"
 "DaPigGuy {2}"
 msgstr ""
+"Nicholas Logozzo {0}\n"
+"Fyodor Sobolev {1}\n"
+"DaPigGuy {2}"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:608
 msgid "No"
@@ -426,22 +429,19 @@ msgid ""
 msgstr ""
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:34
-#, fuzzy
 msgctxt "CompletedNotification"
 msgid "For each download"
-msgstr "Download"
+msgstr "Per ogni download"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:34
-#, fuzzy
-#| msgid "Download Finished"
 msgctxt "CompletedNotification"
 msgid "When all downloads finish"
-msgstr "Download terminato"
+msgstr "Al termine di tutti i download"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:34
 msgctxt "CompletedNotification"
 msgid "Never"
-msgstr ""
+msgstr "Mai"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:44
 msgid "Allow Running In Background"
@@ -500,31 +500,36 @@ msgstr "Ripristina i valori predefiniti"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:148
 msgid "Minimum Split Size (-k)"
-msgstr ""
+msgstr "Dimensione minima divisione (-k)"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:149
 msgid "The minimum size of which to split a file (in MiB)."
-msgstr ""
+msgstr "La dimensione minima di cui suddividere un file (in MiB)."
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:178
 msgid "Cookies File"
-msgstr ""
+msgstr "File dei cookie"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:179
 msgid ""
 "A cookies file can be provided to yt-dlp to allow downloading media that "
 "requires a login."
 msgstr ""
+"È possibile fornire un file cookie a yt-dlp per consentire il download di "
+"contenuti multimediali che richiedono un accesso."
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:209
 msgid ""
 "Cookies can be passed to yt-dlp in the form of TXT files. Export cookies "
 "from your browser using the following extensions (use at your own risk):"
 msgstr ""
+"I cookie possono essere passati a yt-dlp sotto forma di file TXT. Esporta i "
+"cookie dal tuo browser utilizzando le seguenti estensioni (usale a tuo "
+"rischio e pericolo):"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:272
 msgid "Clear Cookies File"
-msgstr ""
+msgstr "Cancella file cookie"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:284
 msgid "Converter"
@@ -569,9 +574,8 @@ msgstr "Scorciatoie da tastiera"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:51
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:7
-#, fuzzy
 msgid "About Tube Converter"
-msgstr "Tube Converter"
+msgstr "Informazioni su Tube Converter"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:56
 msgid "Quit"
@@ -590,19 +594,16 @@ msgid "Main Menu"
 msgstr "Menu principale"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:71
-#, fuzzy
 msgid "Download Media"
-msgstr "Scaricatore"
+msgstr "Download Media"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:72
 msgid "Add a video, audio, or playlist URL to start downloading."
-msgstr ""
+msgstr "Aggiungi un URL video, audio o playlist per avviare il download."
 
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:126
-#, fuzzy
-#| msgid "Stop All Downloads"
 msgid "Stop All"
-msgstr "Arresta tutti i download"
+msgstr "Ferma tutto"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:151
 msgid "Queued"
@@ -611,56 +612,55 @@ msgstr "In coda"
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:165
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:213
 msgid "Clear"
-msgstr ""
+msgstr "Cancella"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:190
 msgid "Completed"
 msgstr "Completato"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:209
-#, fuzzy
-#| msgid "Clear Queued Downloads"
 msgid "Clear Completed Downloads"
-msgstr "Elimina i download in coda"
+msgstr "Cancella download completati"
 
 #: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.metainfo.xml.in:10
 msgid "— A basic yt-dlp frontend"
-msgstr ""
+msgstr "— Un frontend yt-dlp di base"
 
 #: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.metainfo.xml.in:11
 msgid ""
 "— Supports downloading videos in multiple formats (mp4, webm, mp3, opus, "
 "flac, and wav)"
 msgstr ""
+"— Supporta il download di video in più formati (mp4, webm, mp3, opus, flac e "
+"wav)"
 
 #: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.metainfo.xml.in:12
 msgid "— Run multiple downloads at a time"
-msgstr ""
+msgstr "— Avvia più download alla volta"
 
 #: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.metainfo.xml.in:13
 msgid "— Supports downloading metadata and video subtitles"
-msgstr ""
+msgstr "— Supporta il download di metadati e sottotitoli video"
 
 #: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.metainfo.xml.in:16
 msgid "youtube"
-msgstr ""
+msgstr "youtube"
 
 #: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.metainfo.xml.in:17
 msgid "video"
-msgstr ""
+msgstr "video"
 
 #: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.metainfo.xml.in:18
 msgid "audio"
-msgstr ""
+msgstr "audio"
 
 #: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.metainfo.xml.in:19
 msgid "media"
-msgstr ""
+msgstr "media"
 
 #: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.metainfo.xml.in:20
-#, fuzzy
 msgid "download"
-msgstr "Download"
+msgstr "download"
 
 #~ msgid "More options for configuring the download."
 #~ msgstr "Altre opzioni per la configurazione del download."
