@@ -117,9 +117,13 @@ Adw.ApplicationWindow _root {
 
                       Gtk.Button {
                         halign: end;
-                        icon-name: "media-playback-stop-symbolic";
                         action-name: "win.stopAllDownloads";
                         tooltip-text: _("Stop All Downloads");
+
+                        Adw.ButtonContent {
+                          icon-name: "media-playback-stop-symbolic";
+                          label: _("Stop");
+                        }
 
                         styles ["flat"]
                       }
@@ -152,9 +156,13 @@ Adw.ApplicationWindow _root {
 
                       Gtk.Button {
                         halign: end;
-                        icon-name: "user-trash-symbolic";
                         action-name: "win.clearQueuedDownloads";
                         tooltip-text: _("Clear Queued Downloads");
+
+                        Adw.ButtonContent {
+                          icon-name: "user-trash-symbolic";
+                          label: _("Clear");
+                        }
 
                         styles ["flat"]
                       }
@@ -196,9 +204,13 @@ Adw.ApplicationWindow _root {
 
                       Gtk.Button {
                         halign: end;
-                        icon-name: "user-trash-symbolic";
                         action-name: "win.clearCompletedDownloads";
                         tooltip-text: _("Clear Completed Downloads");
+
+                        Adw.ButtonContent {
+                          icon-name: "user-trash-symbolic";
+                          label: _("Clear");
+                        }
 
                         styles ["flat"]
                       }
