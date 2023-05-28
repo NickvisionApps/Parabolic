@@ -29,6 +29,7 @@ Adw.PreferencesWindow _root {
 
       Adw.ComboRow _completedNotificationRow {
         title: _("Completed Notification Trigger");
+        subtitle: _("In combination with the trigger, completed notifications will only be shown if the window is not focused.");
         model: Gtk.StringList {
           strings [C_("CompletedNotification", "For each download"), C_("CompletedNotification", "When all downloads finish"), C_("CompletedNotification", "Never")]
         };
