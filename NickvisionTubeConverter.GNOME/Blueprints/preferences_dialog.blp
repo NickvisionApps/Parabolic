@@ -133,7 +133,6 @@ Adw.PreferencesWindow _root {
 
         Adw.ActionRow {
           title: _("Max Connections Per Server (-x)");
-          subtitle: _("The maximum number of connections to one server for each download.");
 
           [prefix]
           Gtk.Image {
@@ -302,11 +301,10 @@ Adw.PreferencesWindow _root {
 
       Adw.ActionRow {
         title: _("Embed Metadata");
-        subtitle: _("If checked, media metadata will be included in the downloaded file.");
 
         [prefix]
         Gtk.Image {
-          icon-name: "encode-symbolic";
+          icon-name: "tag-outline-symbolic";
         }
 
         [suffix]
