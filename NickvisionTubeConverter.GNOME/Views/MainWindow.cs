@@ -10,6 +10,7 @@ using System.Globalization;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Text;
+using System.Threading.Tasks;
 using static NickvisionTubeConverter.Shared.Helpers.Gettext;
 
 namespace NickvisionTubeConverter.GNOME.Views;
@@ -20,6 +21,7 @@ namespace NickvisionTubeConverter.GNOME.Views;
 public partial class MainWindow : Adw.ApplicationWindow
 {
     private delegate bool GSourceFunc(nint data);
+    private delegate void GAsyncReadyCallback(nint source, nint res, nint user_data);
 
     [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
     private static partial void g_main_context_invoke(nint context, GSourceFunc function, nint data);
@@ -47,6 +49,10 @@ public partial class MainWindow : Adw.ApplicationWindow
     private static partial nint g_file_icon_new(nint gfile);
     [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
     private static partial void g_notification_set_icon(nint notification, nint icon);
+    [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
+    private static partial void gdk_clipboard_read_text_async(nint clipboard, nint cancellable, GAsyncReadyCallback callback, nint user_data);
+    [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
+    private static partial string gdk_clipboard_read_text_finish(nint clipboard, nint result, nint error);
 
     [LibraryImport("libunity.so.9", StringMarshalling = StringMarshalling.Utf8)]
     private static partial nint unity_launcher_entry_get_for_desktop_id(string desktop_id);
@@ -68,12 +74,12 @@ public partial class MainWindow : Adw.ApplicationWindow
     private readonly GSourceFunc _downloadStartedFromQueueFunc;
     private readonly nint _unityLauncher;
     private bool _isBackgroundStatusReported;
+    private GAsyncReadyCallback _clipboardCallback;
 
     [Gtk.Connect] private readonly Adw.Bin _spinnerContainer;
     [Gtk.Connect] private readonly Gtk.Spinner _spinner;
     [Gtk.Connect] private readonly Gtk.Box _mainBox;
     [Gtk.Connect] private readonly Adw.HeaderBar _headerBar;
-    [Gtk.Connect] private readonly Gtk.MenuButton _downloaderMenuButton;
     [Gtk.Connect] private readonly Adw.ToastOverlay _toastOverlay;
     [Gtk.Connect] private readonly Adw.ViewStack _viewStack;
     [Gtk.Connect] private readonly Gtk.Button _addDownloadButton;
@@ -147,7 +153,7 @@ public partial class MainWindow : Adw.ApplicationWindow
                 var e = target.Value;
                 var downloadRow = new DownloadRow(e.Id, e.Filename, e.SaveFolder, (e) => NotificationSent(null, e));
                 downloadRow.StopRequested += (sender, e) => _controller.DownloadManager.RequestStop(e);
-                downloadRow.RetryRequested += (sender, e) => _controller.DownloadManager.RequestRetry(e, _controller.UseAria, _controller.EmbedMetadata, _controller.CookiesPath, _controller.AriaMaxConnectionsPerServer, _controller.AriaMinSplitSize);
+                downloadRow.RetryRequested += (sender, e) => _controller.DownloadManager.RequestRetry(e, new DownloadOptions(_controller.UseAria, _controller.EmbedMetadata, _controller.CookiesPath, _controller.AriaMaxConnectionsPerServer, _controller.AriaMinSplitSize));
                 var box = e.IsDownloading ? _downloadingBox : _queuedBox;
                 if(e.IsDownloading)
                 {
@@ -433,7 +439,7 @@ public partial class MainWindow : Adw.ApplicationWindow
         _controller.DownloadManager.DownloadStartedFromQueue += (sender, e) => g_main_context_invoke(0, _downloadStartedFromQueueFunc, (IntPtr)GCHandle.Alloc(e));
         //Add Download Action
         var actDownload = Gio.SimpleAction.New("addDownload", null);
-        actDownload.OnActivate += AddDownload;
+        actDownload.OnActivate += async (sender, e) => await AddDownloadAsync(new NotificationSentEventArgs("", NotificationSeverity.Informational));;
         AddAction(actDownload);
         application.SetAccelsForAction("win.addDownload", new string[] { "<Ctrl>n" });
         //Stop All Downloads Action
@@ -443,7 +449,7 @@ public partial class MainWindow : Adw.ApplicationWindow
         application.SetAccelsForAction("win.stopAllDownloads", new string[] { "<Ctrl><Shift>c" });
         //Retry Failed Downloads Action
         var actRetryFailedDownloads = Gio.SimpleAction.New("retryFailedDownloads", null);
-        actRetryFailedDownloads.OnActivate += (sender, e) => _controller.DownloadManager.RetryFailedDownloads(_controller.UseAria, _controller.EmbedMetadata, _controller.CookiesPath, _controller.AriaMaxConnectionsPerServer, _controller.AriaMinSplitSize);
+        actRetryFailedDownloads.OnActivate += (sender, e) => _controller.DownloadManager.RetryFailedDownloads(new DownloadOptions(_controller.UseAria, _controller.EmbedMetadata, _controller.CookiesPath, _controller.AriaMaxConnectionsPerServer, _controller.AriaMinSplitSize));
         AddAction(actRetryFailedDownloads);
         application.SetAccelsForAction("win.retryFailedDownloads", new string[] { "<Ctrl><Shift>r" });
         //Clear Queued Downloads Action
@@ -456,9 +462,33 @@ public partial class MainWindow : Adw.ApplicationWindow
                 _queuedBox.Remove(_queuedBox.GetFirstChild());
             }
             _queuedBox.GetParent().SetVisible(false);
+            if(!_controller.DownloadManager.AreDownloadsQueued && !_controller.DownloadManager.AreDownloadsRunning && !_controller.DownloadManager.AreDownloadsCompleted)
+            {
+                _headerBar.AddCssClass("flat");
+                _addDownloadButton.SetVisible(false);
+                _viewStack.SetVisibleChildName("pageNoDownloads");
+            }
         };
         AddAction(actClearQueuedDownloads);
         application.SetAccelsForAction("win.clearQueuedDownloads", new string[] { "<Ctrl>Delete" });
+        //Clear Completed Downloads Action
+        var actClearCompletedDownloads = Gio.SimpleAction.New("clearCompletedDownloads", null);
+        actClearCompletedDownloads.OnActivate += (sender, e) =>
+        {
+            _controller.DownloadManager.ClearCompletedDownloads();
+            while (_completedBox.GetFirstChild() != null)
+            {
+                _completedBox.Remove(_completedBox.GetFirstChild());
+            }
+            _completedBox.GetParent().SetVisible(false);
+            if(!_controller.DownloadManager.AreDownloadsQueued && !_controller.DownloadManager.AreDownloadsRunning && !_controller.DownloadManager.AreDownloadsCompleted)
+            {
+                _headerBar.AddCssClass("flat");
+                _addDownloadButton.SetVisible(false);
+                _viewStack.SetVisibleChildName("pageNoDownloads");
+            }
+        };
+        AddAction(actClearCompletedDownloads);
         //Preferences Action
         var actPreferences = Gio.SimpleAction.New("preferences", null);
         actPreferences.OnActivate += Preferences;
@@ -501,6 +531,7 @@ public partial class MainWindow : Adw.ApplicationWindow
         _mainBox.SetVisible(false);
         _spinner.Start();
         _controller.Startup();
+        ValidateClipboard();
         _spinner.Stop();
         _spinnerContainer.SetVisible(false);
         _mainBox.SetVisible(true);
@@ -515,6 +546,11 @@ public partial class MainWindow : Adw.ApplicationWindow
     private void NotificationSent(object? sender, NotificationSentEventArgs e)
     {
         var toast = Adw.Toast.New(e.Message);
+        if (e.Action == "clipboard")
+        {
+            toast.SetButtonLabel(_("Download"));
+            toast.OnButtonClicked += async (s, ex) => await AddDownloadAsync(e);
+        }
         _toastOverlay.AddToast(toast);
     }
 
@@ -573,27 +609,25 @@ public partial class MainWindow : Adw.ApplicationWindow
     }
 
     /// <summary>
-    /// Occurs when the add download action is triggered
+    /// Prompts the AddDownloadDialog
     /// </summary>
-    /// <param name="sender">Gio.SimpleAction</param>
-    /// <param name="e">EventArgs</param>
-    private void AddDownload(Gio.SimpleAction sender, EventArgs e)
+    /// <param name="e">NotificationSentEventArgs</param>
+    private async Task AddDownloadAsync(NotificationSentEventArgs e)
     {
         var addController = _controller.CreateAddDownloadDialogController();
         var addDialog = new AddDownloadDialog(addController, this);
-        addDialog.Present();
-        addDialog.OnDownload += (sender, e) =>
+        addDialog.OnDownload += (s, ex) =>
         {
             _headerBar.RemoveCssClass("flat");
             _addDownloadButton.SetVisible(true);
-            _downloaderMenuButton.SetVisible(true);
             _viewStack.SetVisibleChildName("pageDownloads");
             foreach (var download in addController.Downloads)
             {
-                _controller.DownloadManager.AddDownload(download, _controller.UseAria, _controller.EmbedMetadata, _controller.CookiesPath, _controller.AriaMaxConnectionsPerServer, _controller.AriaMinSplitSize);
+                _controller.DownloadManager.AddDownload(download, new DownloadOptions(_controller.UseAria, _controller.EmbedMetadata, _controller.CookiesPath, _controller.AriaMaxConnectionsPerServer, _controller.AriaMinSplitSize));
             }
             addDialog.Close();
         };
+        await addDialog.PresentAsync(e.ActionParam);
     }
 
     /// <summary>
@@ -750,6 +784,11 @@ public partial class MainWindow : Adw.ApplicationWindow
         dialog.Present();
     }
 
+    /// <summary>
+    /// Occurs when the run in background option is changed
+    /// </summary>
+    /// <param name="sender">object?</param>
+    /// <param name="e">EventArgs</param>
     private void RunInBackgroundChanged(object? sender, EventArgs e)
     {
         if (_controller.RunInBackground)
@@ -764,5 +803,22 @@ public partial class MainWindow : Adw.ApplicationWindow
         {
             _isBackgroundStatusReported = false;
         }
+    }
+
+    /// <summary>
+    /// Reads the clipboard's text and checks for a valid media url
+    /// </summary>
+    private void ValidateClipboard()
+    {
+        var clipboard = Gdk.Display.GetDefault()!.GetClipboard();
+        _clipboardCallback = (source, res, data) =>
+        {
+            var clipboardText = gdk_clipboard_read_text_finish(clipboard.Handle, res, IntPtr.Zero);
+            if(!string.IsNullOrEmpty(clipboardText))
+            {
+                _controller.ValidateClipboard(clipboardText);
+            }
+        };
+        gdk_clipboard_read_text_async(clipboard.Handle, IntPtr.Zero, _clipboardCallback, IntPtr.Zero);
     }
 }

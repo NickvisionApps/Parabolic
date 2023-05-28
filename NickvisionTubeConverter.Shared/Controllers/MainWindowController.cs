@@ -4,6 +4,7 @@ using NickvisionTubeConverter.Shared.Models;
 using Python.Runtime;
 using System;
 using System.IO;
+using System.Threading.Tasks;
 using static NickvisionTubeConverter.Shared.Helpers.Gettext;
 
 namespace NickvisionTubeConverter.Shared.Controllers;
@@ -163,6 +164,22 @@ public class MainWindowController : IDisposable
     /// </summary>
     /// <returns>The new AddDownloadDialogController</returns>
     public AddDownloadDialogController CreateAddDownloadDialogController() => new AddDownloadDialogController();
+
+    /// <summary>
+    /// Validates clipboard text for a media URL
+    /// </summary>
+    /// <param name="clipboardText">The text from the clipboard</param>
+    public void ValidateClipboard(string clipboardText)
+    {
+        if (!string.IsNullOrEmpty(clipboardText))
+        {
+            var result = Uri.TryCreate(clipboardText, UriKind.Absolute, out var uriResult) && (uriResult.Scheme == Uri.UriSchemeHttp || uriResult.Scheme == Uri.UriSchemeHttps);
+            if (result)
+            {
+                NotificationSent?.Invoke(this, new NotificationSentEventArgs(_("A link has been detected in your clipboard."), NotificationSeverity.Informational, "clipboard", clipboardText));
+            }
+        }
+    }
 
     /// <summary>
     /// Occurs when the configuration is saved

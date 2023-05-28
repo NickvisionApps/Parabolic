@@ -105,7 +105,7 @@ Task("GeneratePot")
     .Does(() =>
 {
     StartProcess("GetText.Extractor", new ProcessSettings {
-        Arguments = $"-s ./{projectName}.GNOME -s ./{projectName}.Shared -as \"_\" -ad \"_p\" -ap \"_n\" -adp \"_pn\" -t ./{projectName}.Shared/Resources/po/{shortName}.pot"
+        Arguments = $"-o -s ./{projectName}.GNOME -s ./{projectName}.Shared -as \"_\" -ad \"_p\" -ap \"_n\" -adp \"_pn\" -t ./{projectName}.Shared/Resources/po/{shortName}.pot"
     });
     StartProcess("sh", new ProcessSettings {
         Arguments = $"-c \"xgettext --from-code=UTF-8 --add-comments --keyword=_ --keyword=C_:1c,2 -o ./{projectName}.Shared/Resources/po/{shortName}.pot -j ./{projectName}.GNOME/Blueprints/*.blp\""

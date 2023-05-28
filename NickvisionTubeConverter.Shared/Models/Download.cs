@@ -1,4 +1,5 @@
 ﻿using NickvisionTubeConverter.Shared.Helpers;
+using NickvisionTubeConverter.Shared.Models;
 using Python.Runtime;
 using System;
 using System.Collections.Generic;
@@ -145,12 +146,8 @@ public class Download
     /// <summary>
     /// Starts the download
     /// </summary>
-    /// <param name="useAria">Whether or not to use aria2 for the download</param>
-    /// <param name="embedMetadata">Whether or not to embed media metadata in the downloaded file</param>
-    /// <param name="cookiesPath">The path to the cookies file to use for yt-dlp</param>
-    /// <param name="ariaMaxConnectionsPerServer">The maximum number of connections to one server for each download (-x)</param>
-    /// <param name="ariaMinSplitSize">The minimum size of which to split a file (-k)</param>
-    public void Start(bool useAria, bool embedMetadata, string? cookiesPath, int ariaMaxConnectionsPerServer, int ariaMinSplitSize)
+    /// <param name="options">The DownloadOptions</param>
+    public void Start(DownloadOptions options)
     {
         if (!IsRunning)
         {
@@ -206,7 +203,7 @@ public class Download
                     { "encoding", "utf_8" },
                     { "overwrites", _overwriteFiles }
                 };
-                if (useAria)
+                if (options.UseAria)
                 {
                     _ariaKeeper = new Process()
                     {
@@ -226,8 +223,8 @@ public class Download
                     ariaParams.Append(new PyString("--allow-overwrite=true"));
                     ariaParams.Append(new PyString("--show-console-readout=false"));
                     ariaParams.Append(new PyString($"--stop-with-process={_ariaKeeper.Id}"));
-                    ariaParams.Append(new PyString($"--max-connection-per-server={ariaMaxConnectionsPerServer}"));
-                    ariaParams.Append(new PyString($"--min-split-size={ariaMinSplitSize}"));
+                    ariaParams.Append(new PyString($"--max-connection-per-server={options.AriaMaxConnectionsPerServer}"));
+                    ariaParams.Append(new PyString($"--min-split-size={options.AriaMinSplitSize}"));
                     ariaDict["default"] = ariaParams;
                     _ytOpt.Add("external_downloader_args", ariaDict);
                 }
@@ -261,7 +258,7 @@ public class Download
                         postProcessors.Add(new Dictionary<string, dynamic>() { { "key", "FFmpegEmbedSubtitle" } });
                     }
                 }
-                if (embedMetadata)
+                if (options.EmbedMetadata)
                 {
                     if (FileType.GetSupportsThumbnails())
                     {
@@ -296,12 +293,12 @@ public class Download
                         paths["home"] = new PyString($"{SaveFolder}{Path.DirectorySeparatorChar}");
                         paths["temp"] = new PyString(_tempDownloadPath);
                         _ytOpt.Add("paths", paths);
-                        if (File.Exists(cookiesPath))
+                        if (File.Exists(options.CookiesPath))
                         {
-                            _ytOpt.Add("cookiefile", new PyString(cookiesPath));
+                            _ytOpt.Add("cookiefile", new PyString(options.CookiesPath));
                         }
                         dynamic ytdlp = Py.Import("yt_dlp");
-                        if (useAria)
+                        if (options.UseAria)
                         {
                             ProgressChanged?.Invoke(this, new DownloadProgressState()
                             {
