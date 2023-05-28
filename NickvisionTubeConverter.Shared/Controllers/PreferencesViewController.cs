@@ -32,6 +32,16 @@ public class PreferencesViewController
     }
 
     /// <summary>
+    /// The preference of how often to show completed notifications
+    /// </summary>
+    public NotificationPreference CompletedNotificationPreference
+    {
+        get => Configuration.Current.CompletedNotificationPreference;
+
+        set => Configuration.Current.CompletedNotificationPreference = value;
+    }
+
+    /// <summary>
     /// Whether to allow running in the background
     /// </summary>
     public bool RunInBackground

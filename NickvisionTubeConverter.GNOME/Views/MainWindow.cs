@@ -153,7 +153,7 @@ public partial class MainWindow : Adw.ApplicationWindow
                 var e = target.Value;
                 var downloadRow = new DownloadRow(e.Id, e.Filename, e.SaveFolder, (e) => NotificationSent(null, e));
                 downloadRow.StopRequested += (sender, e) => _controller.DownloadManager.RequestStop(e);
-                downloadRow.RetryRequested += (sender, e) => _controller.DownloadManager.RequestRetry(e, new DownloadOptions(_controller.UseAria, _controller.EmbedMetadata, _controller.CookiesPath, _controller.AriaMaxConnectionsPerServer, _controller.AriaMinSplitSize));
+                downloadRow.RetryRequested += (sender, e) => _controller.DownloadManager.RequestRetry(e, _controller.DownloadOptions);
                 var box = e.IsDownloading ? _downloadingBox : _queuedBox;
                 if(e.IsDownloading)
                 {
@@ -243,7 +243,14 @@ public partial class MainWindow : Adw.ApplicationWindow
                     _completedBox.GetParent().SetVisible(true);
                     if (!GetFocus()!.GetHasFocus() || !GetVisible())
                     {
-                        SendShellNotification(new ShellNotificationSentEventArgs(!e.Successful ? _("Download Finished With Error") : _("Download Finished"), !e.Successful ? _("\"{0}\" has finished with an error!", row.Filename) : _("\"{0}\" has finished downloading.", row.Filename), !e.Successful ? NotificationSeverity.Error : NotificationSeverity.Success));
+                        if(_controller.CompletedNotificationPreference == NotificationPreference.ForEach)
+                        {
+                            SendShellNotification(new ShellNotificationSentEventArgs(!e.Successful ? _("Download Finished With Error") : _("Download Finished"), !e.Successful ? _("\"{0}\" has finished with an error!", row.Filename) : _("\"{0}\" has finished downloading.", row.Filename), !e.Successful ? NotificationSeverity.Error : NotificationSeverity.Success));
+                        }
+                        else if(_controller.CompletedNotificationPreference == NotificationPreference.AllCompleted && !_controller.DownloadManager.AreDownloadsRunning && !_controller.DownloadManager.AreDownloadsQueued)
+                        {
+                            SendShellNotification(new ShellNotificationSentEventArgs(_("Downloads Finished"), _("All downloads have finished."), NotificationSeverity.Informational));
+                        }
                     }
                 }
                 if (!GetVisible() && _controller.DownloadManager.RemainingDownloadsCount == 0 && _controller.DownloadManager.ErrorsCount == 0)
@@ -449,7 +456,7 @@ public partial class MainWindow : Adw.ApplicationWindow
         application.SetAccelsForAction("win.stopAllDownloads", new string[] { "<Ctrl><Shift>c" });
         //Retry Failed Downloads Action
         var actRetryFailedDownloads = Gio.SimpleAction.New("retryFailedDownloads", null);
-        actRetryFailedDownloads.OnActivate += (sender, e) => _controller.DownloadManager.RetryFailedDownloads(new DownloadOptions(_controller.UseAria, _controller.EmbedMetadata, _controller.CookiesPath, _controller.AriaMaxConnectionsPerServer, _controller.AriaMinSplitSize));
+        actRetryFailedDownloads.OnActivate += (sender, e) => _controller.DownloadManager.RetryFailedDownloads(_controller.DownloadOptions);
         AddAction(actRetryFailedDownloads);
         application.SetAccelsForAction("win.retryFailedDownloads", new string[] { "<Ctrl><Shift>r" });
         //Clear Queued Downloads Action
@@ -623,7 +630,7 @@ public partial class MainWindow : Adw.ApplicationWindow
             _viewStack.SetVisibleChildName("pageDownloads");
             foreach (var download in addController.Downloads)
             {
-                _controller.DownloadManager.AddDownload(download, new DownloadOptions(_controller.UseAria, _controller.EmbedMetadata, _controller.CookiesPath, _controller.AriaMaxConnectionsPerServer, _controller.AriaMinSplitSize));
+                _controller.DownloadManager.AddDownload(download, _controller.DownloadOptions);
             }
             addDialog.Close();
         };
