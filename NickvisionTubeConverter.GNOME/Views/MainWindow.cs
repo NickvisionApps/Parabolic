@@ -243,7 +243,7 @@ public partial class MainWindow : Adw.ApplicationWindow
                     _completedBox.Append(row);
                     _downloadingBox.GetParent().SetVisible(_controller.DownloadManager.RemainingDownloadsCount > 0 ? true : false);
                     _completedBox.GetParent().SetVisible(true);
-                    if (!GetFocus()!.GetHasFocus() || !GetVisible())
+                    if ((GetFocus() != null && !GetFocus()!.GetHasFocus()) || !GetVisible())
                     {
                         if(_controller.CompletedNotificationPreference == NotificationPreference.ForEach)
                         {
