@@ -249,7 +249,7 @@ public partial class MainWindow : Adw.ApplicationWindow
                         }
                         else if(_controller.CompletedNotificationPreference == NotificationPreference.AllCompleted && (!_controller.DownloadManager.AreDownloadsRunning && !_controller.DownloadManager.AreDownloadsQueued))
                         {
-                            SendShellNotification(new ShellNotificationSentEventArgs(_("Downloads Finished"), _("All downloads have finsihed."), NotificationSeverity.Informational));
+                            SendShellNotification(new ShellNotificationSentEventArgs(_("Downloads Finished"), _("All downloads have finished."), NotificationSeverity.Informational));
                         }
                     }
                 }
