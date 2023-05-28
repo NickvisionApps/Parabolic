@@ -42,6 +42,16 @@ public class PreferencesViewController
     }
 
     /// <summary>
+    /// Whether or not to read the clipboard for a valid link
+    /// </summary>
+    public bool ReadClipboard
+    {
+        get => Configuration.Current.ReadClipboard;
+
+        set => Configuration.Current.ReadClipboard = value;
+    }
+
+    /// <summary>
     /// Whether to allow running in the background
     /// </summary>
     public bool RunInBackground

@@ -38,6 +38,10 @@ public class MainWindowController : IDisposable
     /// </summary>
     public NotificationPreference CompletedNotificationPreference => Configuration.Current.CompletedNotificationPreference;
     /// <summary>
+    /// Whether or not to read the clipboard for a valid link
+    /// </summary>
+    public bool ReadClipboard => Configuration.Current.ReadClipboard;
+    /// <summary>
     /// Whether to allow running in the background
     /// </summary>
     public bool RunInBackground => Configuration.Current.RunInBackground;

@@ -33,6 +33,10 @@ public class AddDownloadDialogController
     /// </summary>
     public List<Download> Downloads { get; init; }
     /// <summary>
+    /// Whether or not to read the clipboard for a valid link
+    /// </summary>
+    public bool ReadClipboard => Configuration.Current.ReadClipboard;
+    /// <summary>
     /// The previously used save folder
     /// </summary>
     public string PreviousSaveFolder => Directory.Exists(Configuration.Current.PreviousSaveFolder) ? Configuration.Current.PreviousSaveFolder : "";

@@ -40,6 +40,22 @@ Adw.PreferencesWindow _root {
         }
       }
 
+      Adw.ActionRow {
+        title: _("Scan Clipboard for URLs");
+
+        [prefix]
+        Gtk.Image {
+          icon-name: "clipboard-symbolic";
+        }
+
+        [suffix]
+        Gtk.Switch _clipboardSwitch {
+          valign: center;
+        }
+
+        activatable-widget: _clipboardSwitch;
+      }
+
       Adw.ActionRow _backgroundRow {
         title: _("Allow Running In Background");
         subtitle: _("Hide the window instead of quitting if there are downloads running.");
