@@ -54,6 +54,7 @@ Adw.Window _root {
                 Adw.PreferencesGroup {
                   Adw.EntryRow _urlRow {
                     title: _("Media URL");
+                    margin-top: 2;
                     width-request: 420;
                     activates-default: true;
                   }
@@ -134,8 +135,6 @@ Adw.Window _root {
 
                       Adw.ActionRow _openAdvancedRow {
                         title: _("Advanced Options");
-                        subtitle: _("More options for configuring the download.");
-                        icon-name: "wrench-wide-symbolic";
                         activatable-widget: _openAdvancedButton;
 
                         [suffix]

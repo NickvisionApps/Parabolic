@@ -4,6 +4,10 @@ using Adw 1;
 Adw.Bin _root {
   Gtk.Box {
     orientation: vertical;
+    margin-start: 6;
+    margin-top: 6;
+    margin-end: 6;
+    margin-bottom: 6;
 
     Gtk.Box {
       orientation: horizontal;
@@ -112,6 +116,7 @@ Adw.Bin _root {
         name: "downloading";
         child: Gtk.ProgressBar _progressBar {
           hexpand: true;
+          margin-top: 6;
         };
       }
 
@@ -119,6 +124,7 @@ Adw.Bin _root {
         name: "processing";
         child: Gtk.ProgressBar _pulsingBar {
           hexpand: true;
+          margin-top: 6;
         };
       }
 
@@ -126,6 +132,7 @@ Adw.Bin _root {
         name: "done";
         child: Gtk.LevelBar _levelBar {
           hexpand: true;
+          margin-top: 6;
         };
       }
     }
