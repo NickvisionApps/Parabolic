@@ -88,6 +88,7 @@ public partial class AddDownloadDialog : Adw.Window
     [Gtk.Connect] private readonly Adw.ActionRow _cropThumbnailRow;
     [Gtk.Connect] private readonly Gtk.Switch _cropThumbnailSwitch;
     private Gtk.Spinner? _urlSpinner;
+    private Adw.Toast? _toast;
     private readonly List<MediaRow> _mediaRows;
     private readonly string[] _audioQualityArray;
     private List<string>? _videoQualityList;
@@ -186,7 +187,11 @@ public partial class AddDownloadDialog : Adw.Window
         SetIconName(_controller.AppInfo.ID);
         //Build UI
         builder.Connect(this);
-        _validateUrlButton.OnClicked += async (sender, e) => await SearchUrlAsync(_urlRow.GetText());;
+        _validateUrlButton.OnClicked += async (sender, e) =>
+        {
+            _toast.Dismiss();
+            await SearchUrlAsync(_urlRow.GetText());;
+        };
         _viewStack.OnNotify += (sender, e) =>
         {
             if (e.Pspec.GetName() == "visible-child")
@@ -320,8 +325,14 @@ public partial class AddDownloadDialog : Adw.Window
                     if (result)
                     {
                         _urlRow.SetText(clipboardText);
-                        var toast = Adw.Toast.New(_("Link pasted from clipboard."));
-                        _toastOverlay.AddToast(toast);
+                        _toast = Adw.Toast.New(_("Link pasted from clipboard."));
+                        _toast.OnDismissed += (sender, e) =>
+                        {
+                            _validateUrlButton.SetMarginBottom(25);
+                            _toast = null;
+                        };
+                        _toastOverlay.AddToast(_toast);
+                        _validateUrlButton.SetMarginBottom(80);
                     }
                 }
             };
