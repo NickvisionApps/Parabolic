@@ -1,13 +1,6 @@
 name: tube-converter # you probably want to 'snapcraft register <name>'
 base: core22 # the base snap is the execution environment for this snap
 adopt-info: tube-converter
-#version: 2023.5.0
-#summary: An easy-to-use YouTube video downloader # 79 char long summary
-#description: |
-# * A basic yt-dlp frontend
-# * Supports downloading videos in multiple formats (mp4, webm, mp3, opus, flac, and wav)
-# * Run multiple downloads at a time
-# * Supports downloading metadata and video subtitles
 grade: stable # must be 'stable' to release into candidate/stable channels
 confinement: strict # use 'strict' once you have the right plugs and slots
 compression: lzo
@@ -70,8 +63,6 @@ parts:
       - wget
     override-pull: |
       craftctl default
-      #sed -i 's|Icon=org.nickvision.tubeconverter|Icon=snap.org.nickvision.tubeconverter|' NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.desktop.in
-      #sed '/<id>org.nickvision.tubeconverter<\/id>/a <icon type="stock">snap.org.nickvision.tubeconverter<\/icon>' NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.metainfo.xml.in
       mkdir -p $CRAFT_PART_INSTALL/usr/lib/python3/dist-packages
       pip install --target=$CRAFT_PART_INSTALL/usr/lib/python3/dist-packages yt-dlp==2023.03.04
       wget https://dot.net/v1/dotnet-install.sh -O dotnet-install.sh
@@ -86,11 +77,6 @@ parts:
       dotnet cake --target=Publish --prefix=/usr --ui=gnome --self-contained
       dotnet cake --target=Install --destdir=$CRAFT_PART_INSTALL
       sed -i "2 i export TC_PYTHON_SO=$TC_PYTHON_SO" $CRAFT_PART_INSTALL/usr/bin/org.nickvision.tubeconverter
-      mkdir -p $CRAFT_PART_INSTALL/meta/gui
-      mv $CRAFT_PART_INSTALL/usr/share/icons $CRAFT_PART_INSTALL/meta/gui/
-      #for i in `find $CRAFT_PART_INSTALL/meta/gui/icons -name "*.svg" -o -name "*.png"`; do
-      #  mv $i "`dirname $i`/snap.`basename $i`"
-      #done
     prime:
       - meta/*
       - usr/*
@@ -99,63 +85,62 @@ parts:
     plugin: nil
     stage-packages:
       - aria2
-      - libunity9
-      - libunity-tools
-      - libunity-protocol-private0
-      - libunity-scopes-json-def-phone
-      - unity-scopes-runner
-      - libdbusmenu-glib4
-      - libdbusmenu-jsonloader4
-      - libdbusmenu-gtk3-4
+      #- libunity9
+      #- libunity-tools
+      #- libunity-protocol-private0
+      #- libunity-scopes-json-def-phone
+      #- unity-scopes-runner
+      #- libdbusmenu-glib4
+      #- libdbusmenu-jsonloader4
+      #- libdbusmenu-gtk3-4
     prime:
       - -usr/share/doc
       - -usr/share/man
-      - -usr/lib/python3/dist-packages/gi/overrides/Unity.py
   cleanup:
     after: [ tube-converter, ffmpeg, deps ]
     plugin: nil
     override-prime: |
       set -eux
-      rm -rf $CRAFT_PRIME/etc
-      rm -rf $CRAFT_PRIME/usr/bin/fc*
-      rm -rf $CRAFT_PRIME/usr/lib/*/libharfbuzz*
-      rm -rf $CRAFT_PRIME/usr/lib/pkgconfig
-      rm -rf $CRAFT_PRIME/usr/lib/*/gdk-pixbuf-2.0
-      rm -rf $CRAFT_PRIME/usr/lib/*/libgdk*
-      rm -rf $CRAFT_PRIME/usr/lib/*/libicu*
-      rm -rf $CRAFT_PRIME/usr/lib/*/libgtk*
-      rm -rf $CRAFT_PRIME/usr/lib/*/libpango*
-      rm -rf $CRAFT_PRIME/usr/lib/*/libpixman*
-      rm -rf $CRAFT_PRIME/usr/lib/*/libcairo*
-      rm -rf $CRAFT_PRIME/usr/lib/*/gio
-      rm -rf $CRAFT_PRIME/usr/lib/*/gtk*
-      rm -rf $CRAFT_PRIME/usr/lib/*/libwayland*
-      rm -rf $CRAFT_PRIME/usr/lib/systemd
-      rm -rf $CRAFT_PRIME/usr/lib/*/libat*
-      rm -rf $CRAFT_PRIME/usr/lib/*/libdeflate*
-      rm -rf $CRAFT_PRIME/usr/lib/*/libfontconfig*
-      rm -rf $CRAFT_PRIME/usr/lib/*/libwebp*
-      rm -rf $CRAFT_PRIME/usr/lib/*/libX*
-      rm -rf $CRAFT_PRIME/usr/lib/*/libx*
-      rm -rf $CRAFT_PRIME/usr/sbin
       rm -rf $CRAFT_PRIME/usr/share/pkgconfig
-      rm -rf $CRAFT_PRIME/usr/share/themes
-      rm -rf $CRAFT_PRIME/usr/share/doc*
-      rm -rf $CRAFT_PRIME/usr/share/X11
-      rm -rf $CRAFT_PRIME/usr/share/xml
-      rm -rf $CRAFT_PRIME/usr/share/gettext
-      rm -rf $CRAFT_PRIME/usr/share/libthai
-      rm -rf $CRAFT_PRIME/usr/share/lintian
-      rm -rf $CRAFT_PRIME/usr/share/bug
-      rm -rf $CRAFT_PRIME/usr/share/apport
-      rm -rf $CRAFT_PRIME/usr/lib/x86_64-linux-gnu/libcolord*
-      rm -rf $CRAFT_PRIME/usr/lib/x86_64-linux-gnu/libcups*
-      rm -rf $CRAFT_PRIME/usr/lib/x86_64-linux-gnu/libdbusmenu-gtk3*
-      rm -rf $CRAFT_PRIME/usr/lib/x86_64-linux-gnu/libdbusmenu-jsonloader*
-      rm -rf $CRAFT_PRIME/usr/lib/x86_64-linux-gnu/libdconf*
-      rm -rf $CRAFT_PRIME/usr/lib/x86_64-linux-gnu/libtiff*
-      rm -rf $CRAFT_PRIME/usr/lib/x86_64-linux-gnu/libunity-extras*
-      cp -r $CRAFT_STAGE/meta/gui/icons $CRAFT_PRIME/usr/share/
+      rm -rf $CRAFT_PRIME/usr/lib/pkgconfig
+      rm -rf $CRAFT_PRIME/usr/lib/*/libfontconfig*      
+  #    rm -rf $CRAFT_PRIME/etc
+  #    rm -rf $CRAFT_PRIME/usr/bin/fc*
+  #    rm -rf $CRAFT_PRIME/usr/lib/*/libharfbuzz*
+  #    rm -rf $CRAFT_PRIME/usr/lib/*/gdk-pixbuf-2.0
+  #    rm -rf $CRAFT_PRIME/usr/lib/*/libgdk*
+  #    rm -rf $CRAFT_PRIME/usr/lib/*/libicu*
+  #    rm -rf $CRAFT_PRIME/usr/lib/*/libgtk*
+  #    rm -rf $CRAFT_PRIME/usr/lib/*/libpango*
+  #    rm -rf $CRAFT_PRIME/usr/lib/*/libpixman*
+  #    rm -rf $CRAFT_PRIME/usr/lib/*/libcairo*
+  #    rm -rf $CRAFT_PRIME/usr/lib/*/gio
+  #    rm -rf $CRAFT_PRIME/usr/lib/*/gtk*
+  #    rm -rf $CRAFT_PRIME/usr/lib/*/libwayland*
+  #    rm -rf $CRAFT_PRIME/usr/lib/systemd
+  #    rm -rf $CRAFT_PRIME/usr/lib/*/libat*
+  #    rm -rf $CRAFT_PRIME/usr/lib/*/libdeflate*
+  #    rm -rf $CRAFT_PRIME/usr/lib/*/libwebp*
+  #    rm -rf $CRAFT_PRIME/usr/lib/*/libX*
+  #    rm -rf $CRAFT_PRIME/usr/lib/*/libx*
+  #    rm -rf $CRAFT_PRIME/usr/sbin
+  #    rm -rf $CRAFT_PRIME/usr/share/themes
+  #    rm -rf $CRAFT_PRIME/usr/share/doc*
+  #    rm -rf $CRAFT_PRIME/usr/share/X11
+  #    rm -rf $CRAFT_PRIME/usr/share/xml
+  #    rm -rf $CRAFT_PRIME/usr/share/gettext
+  #    rm -rf $CRAFT_PRIME/usr/share/libthai
+  #    rm -rf $CRAFT_PRIME/usr/share/lintian
+  #    rm -rf $CRAFT_PRIME/usr/share/bug
+  #    rm -rf $CRAFT_PRIME/usr/share/apport
+  #    rm -rf $CRAFT_PRIME/usr/lib/x86_64-linux-gnu/libcolord*
+  #    rm -rf $CRAFT_PRIME/usr/lib/x86_64-linux-gnu/libcups*
+  #    rm -rf $CRAFT_PRIME/usr/lib/x86_64-linux-gnu/libdbusmenu-gtk3*
+  #    rm -rf $CRAFT_PRIME/usr/lib/x86_64-linux-gnu/libdbusmenu-jsonloader*
+  #    rm -rf $CRAFT_PRIME/usr/lib/x86_64-linux-gnu/libdconf*
+  #    rm -rf $CRAFT_PRIME/usr/lib/x86_64-linux-gnu/libtiff*
+  #    rm -rf $CRAFT_PRIME/usr/lib/x86_64-linux-gnu/libunity-extras*
+  #    cp -r $CRAFT_STAGE/meta/gui/icons $CRAFT_PRIME/usr/share/
 slots:
   # for GtkApplication registration
   tube-converter:
