@@ -70,6 +70,8 @@ parts:
       - wget
     override-pull: |
       craftctl default
+      #sed -i 's|Icon=org.nickvision.tubeconverter|Icon=snap.org.nickvision.tubeconverter|' NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.desktop.in
+      #sed '/<id>org.nickvision.tubeconverter<\/id>/a <icon type="stock">snap.org.nickvision.tubeconverter<\/icon>' NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.metainfo.xml.in
       mkdir -p $CRAFT_PART_INSTALL/usr/lib/python3/dist-packages
       pip install --target=$CRAFT_PART_INSTALL/usr/lib/python3/dist-packages yt-dlp==2023.03.04
       wget https://dot.net/v1/dotnet-install.sh -O dotnet-install.sh
@@ -85,7 +87,10 @@ parts:
       dotnet cake --target=Install --destdir=$CRAFT_PART_INSTALL
       sed -i "2 i export TC_PYTHON_SO=$TC_PYTHON_SO" $CRAFT_PART_INSTALL/usr/bin/org.nickvision.tubeconverter
       mkdir -p $CRAFT_PART_INSTALL/meta/gui
-      cp -r $CRAFT_PART_INSTALL/usr/share/icons $CRAFT_PART_INSTALL/meta/gui/
+      mv $CRAFT_PART_INSTALL/usr/share/icons $CRAFT_PART_INSTALL/meta/gui/
+      #for i in `find $CRAFT_PART_INSTALL/meta/gui/icons -name "*.svg" -o -name "*.png"`; do
+      #  mv $i "`dirname $i`/snap.`basename $i`"
+      #done
     prime:
       - meta/*
       - usr/*
@@ -106,9 +111,6 @@ parts:
       - -usr/share/doc
       - -usr/share/man
       - -usr/lib/python3/dist-packages/gi/overrides/Unity.py
-  desktop:
-    source: .
-    plugin: dump
   cleanup:
     after: [ tube-converter, ffmpeg, deps ]
     plugin: nil
@@ -153,6 +155,7 @@ parts:
       rm -rf $CRAFT_PRIME/usr/lib/x86_64-linux-gnu/libdconf*
       rm -rf $CRAFT_PRIME/usr/lib/x86_64-linux-gnu/libtiff*
       rm -rf $CRAFT_PRIME/usr/lib/x86_64-linux-gnu/libunity-extras*
+      cp -r $CRAFT_STAGE/meta/gui/icons $CRAFT_PRIME/usr/share/
 slots:
   # for GtkApplication registration
   tube-converter:
