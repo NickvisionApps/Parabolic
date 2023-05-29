@@ -186,6 +186,7 @@ apps:
       TC_PYTHON_SO: $SNAP/gnome-platform/usr/lib/$CRAFT_ARCH_TRIPLET/libpython3.10.so.1.0
       PYTHONPATH: $SNAP/usr/lib/python3/dist-packages:$PYTHONPATH
       PATH: $SNAP/usr/lib/python3/dist-packages/bin:$PATH
+      GDK_BACKEND: freedesktop
     plugs:
       - home
       - network
