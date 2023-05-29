@@ -1,13 +1,16 @@
 ﻿using NickvisionTubeConverter.Shared.Helpers;
+using NickvisionTubeConverter.Shared.Models;
 using Python.Runtime;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
 using System.IO;
+using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using static NickvisionTubeConverter.Shared.Helpers.Gettext;
 
 namespace NickvisionTubeConverter.Shared.Models;
 
@@ -144,10 +147,8 @@ public class Download
     /// <summary>
     /// Starts the download
     /// </summary>
-    /// <param name="useAria">Whether or not to use aria2 for the download</param>
-    /// <param name="embedMetadata">Whether or not to embed media metadata in the downloaded file</param>
-    /// <param name="localizer">Localizer</param>
-    public void Start(bool useAria, bool embedMetadata, Localizer localizer)
+    /// <param name="options">The DownloadOptions</param>
+    public void Start(DownloadOptions options)
     {
         if (!IsRunning)
         {
@@ -165,7 +166,7 @@ public class Download
                         Status = DownloadProgressStatus.Other,
                         Progress = 0.0,
                         Speed = 0.0,
-                        Log = localizer["FileExistsError"]
+                        Log = _("File already exists, and overwriting is disallowed")
                     });
                     IsDone = true;
                     IsRunning = false;
@@ -173,22 +174,12 @@ public class Download
                     Completed?.Invoke(this, IsSuccess);
                     return;
                 }
-                //Escape filename
-                if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-                {
-                    Filename = Regex.Escape(Filename);
-                }
                 //Setup logs
                 Directory.CreateDirectory(_tempDownloadPath);
                 _outFile = PythonHelpers.SetConsoleOutputFilePath(_logPath);
                 //Setup download params
                 var hooks = new List<Action<PyDict>>();
                 hooks.Add(ProgressHook);
-                var postHooks = new List<Action<PyString>>();
-                if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-                {
-                    postHooks.Add(UnescapeHook);
-                }
                 _ytOpt = new Dictionary<string, dynamic> {
                     { "quiet", false },
                     { "ignoreerrors", "downloadonly" },
@@ -196,14 +187,13 @@ public class Download
                     { "final_ext", FileType.ToString().ToLower() },
                     { "progress_hooks", hooks },
                     { "postprocessor_hooks", hooks },
-                    { "post_hooks", postHooks },
-                    { "outtmpl", $"{Path.GetFileNameWithoutExtension(Filename)}.%(ext)s" },
+                    { "outtmpl", $"{Id.ToString()}.%(ext)s" },
                     { "ffmpeg_location", DependencyManager.FfmpegPath },
                     { "windowsfilenames", RuntimeInformation.IsOSPlatform(OSPlatform.Windows) },
                     { "encoding", "utf_8" },
                     { "overwrites", _overwriteFiles }
                 };
-                if (useAria)
+                if (options.UseAria)
                 {
                     _ariaKeeper = new Process()
                     {
@@ -223,6 +213,8 @@ public class Download
                     ariaParams.Append(new PyString("--allow-overwrite=true"));
                     ariaParams.Append(new PyString("--show-console-readout=false"));
                     ariaParams.Append(new PyString($"--stop-with-process={_ariaKeeper.Id}"));
+                    ariaParams.Append(new PyString($"--max-connection-per-server={options.AriaMaxConnectionsPerServer}"));
+                    ariaParams.Append(new PyString($"--min-split-size={options.AriaMinSplitSize}"));
                     ariaDict["default"] = ariaParams;
                     _ytOpt.Add("external_downloader_args", ariaDict);
                 }
@@ -233,7 +225,7 @@ public class Download
                 var postProcessors = new List<Dictionary<string, dynamic>>();
                 if (FileType.GetIsAudio())
                 {
-                    _ytOpt.Add("format", Quality != Quality.Worst ? "ba/b" : "wa/w");
+                    _ytOpt.Add("format", Quality != Quality.Worst ? $"ba[ext={FileType.ToString().ToLower()}]/ba/b" : $"wa[ext={FileType.ToString().ToLower()}]/wa/w");
                     postProcessors.Add(new Dictionary<string, dynamic>() { { "key", "FFmpegExtractAudio" }, { "preferredcodec", FileType.ToString().ToLower() } });
                 }
                 else if (FileType.GetIsVideo())
@@ -256,7 +248,7 @@ public class Download
                         postProcessors.Add(new Dictionary<string, dynamic>() { { "key", "FFmpegEmbedSubtitle" } });
                     }
                 }
-                if (embedMetadata)
+                if (options.EmbedMetadata)
                 {
                     if (FileType.GetSupportsThumbnails())
                     {
@@ -291,35 +283,56 @@ public class Download
                         paths["home"] = new PyString($"{SaveFolder}{Path.DirectorySeparatorChar}");
                         paths["temp"] = new PyString(_tempDownloadPath);
                         _ytOpt.Add("paths", paths);
+                        if (File.Exists(options.CookiesPath))
+                        {
+                            _ytOpt.Add("cookiefile", new PyString(options.CookiesPath));
+                        }
                         dynamic ytdlp = Py.Import("yt_dlp");
-                        if (useAria)
+                        if (options.UseAria)
                         {
                             ProgressChanged?.Invoke(this, new DownloadProgressState()
                             {
                                 Status = DownloadProgressStatus.DownloadingAria,
                                 Progress = 0.0,
                                 Speed = 0.0,
-                                Log = localizer["StartAria"]
+                                Log = _("Download using aria2 has started")
                             });
                         }
                         PyObject success_code = ytdlp.YoutubeDL(_ytOpt).download(new List<string>() { MediaUrl });
-                        if ((success_code.As<int?>() ?? 1) != 0)
-                        {
-                            Filename = Regex.Unescape(Filename);
-                        }
                         KillAriaKeeper();
                         ForceUpdateLog();
                         IsDone = true;
                         IsRunning = false;
                         _outFile.close();
                         IsSuccess = (success_code.As<int?>() ?? 1) == 0;
+                        if(IsSuccess)
+                        {
+                            foreach (var path in Directory.EnumerateFiles(SaveFolder))
+                            {
+                                if(path.Contains(Id.ToString()))
+                                {
+                                    try
+                                    {
+                                        File.Move(path, path.Replace(Id.ToString(), Filename));
+                                    }
+                                    catch
+                                    {
+                                        var chars = new char[] { '"', '*', '/', ':', '<', '>', '?', '\\' };
+                                        foreach(var c in chars.Where(x => Filename.Contains(x)))
+                                        {
+                                            Filename = Filename.Replace(c, '_');
+                                        }
+                                        File.Move(path, path.Replace(Id.ToString(), Filename));
+                                    }
+                                }
+                            }
+                        }
                         Completed?.Invoke(this, IsSuccess);
                     }
                 }
                 catch (Exception e)
                 {
                     KillAriaKeeper();
-                    Filename = Regex.Unescape(Filename);
                     try
                     {
                         Console.WriteLine(e);
@@ -443,20 +456,6 @@ public class Download
                 }
                 ProgressChanged.Invoke(this, state);
             }
-        }
-    }
-
-    /// <summary>
-    /// Unescape filename after downloading
-    /// </summary>
-    /// <param name="path">PyString</param>
-    private void UnescapeHook(PyString path)
-    {
-        using (Py.GIL())
-        {
-            Filename = Regex.Unescape(Filename);
-            var directory = Path.GetDirectoryName(path.As<string>());
-            File.Move(path.As<string>(), $"{directory}{Path.DirectorySeparatorChar}{Filename}", _overwriteFiles);
         }
     }
 }

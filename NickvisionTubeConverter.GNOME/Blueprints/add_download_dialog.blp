@@ -33,236 +33,236 @@ Adw.Window _root {
         spacing: 24;
 
         Gtk.Label _titleLabel {
-          label: _("AddDownload");
+          label: _("Add Download");
 
           styles ["title-2"]
         }
           
-        Adw.ViewStack _viewStack {
-          Adw.ViewStackPage {
-            name: "pageUrl";
-            child: Gtk.Box {
-              margin-start: 24;
-              margin-end: 24;
-              orientation: vertical;
-              spacing: 24;
+        Adw.ToastOverlay _toastOverlay {
+          hexpand: true;
+          vexpand: true;
 
-              Adw.PreferencesGroup {
-                Adw.EntryRow _urlRow {
-                  title: _("MediaUrl.Field");
-                  width-request: 420;
-                  activates-default: true;
+          Adw.ViewStack _viewStack {
+            Adw.ViewStackPage {
+              name: "pageUrl";
+              child: Gtk.Box {
+                margin-start: 24;
+                margin-end: 24;
+                orientation: vertical;
+                spacing: 24;
+
+                Adw.PreferencesGroup {
+                  Adw.EntryRow _urlRow {
+                    title: _("Media URL");
+                    margin-top: 2;
+                    width-request: 420;
+                    activates-default: true;
+                  }
                 }
-              }
 
-              Gtk.Button _validateUrlButton {
-                label: _("ValidateUrl");
-                halign: center;
-                valign: center;
-                margin-bottom: 24;
+                Gtk.Button _validateUrlButton {
+                  label: _("Validate");
+                  halign: center;
+                  valign: center;
+                  margin-bottom: 25;
 
-                styles ["pill", "suggested-action"]
-              }
-            };
-          }
+                  styles ["pill", "suggested-action"]
+                }
+              };
+            }
 
-          Adw.ViewStackPage {
-            name: "pageDownload";
-            child: Gtk.Box {
-              orientation: vertical;
-              spacing: 24;
+            Adw.ViewStackPage {
+              name: "pageDownload";
+              child: Gtk.Box {
+                orientation: vertical;
+                spacing: 24;
 
-              Gtk.ScrolledWindow _scrolledWindow {
-                hscrollbar-policy: never;
-                propagate-natural-height: true;
-                child: Gtk.Box _downloadPage {
-                  visible: false;
-                  orientation: vertical;
-                  hexpand: true;
-                  margin-top: 12;
-                  margin-bottom: 12;
-                  spacing: 24;
-
-                  Adw.PreferencesGroup {
-                    margin-start: 24;
-                    margin-end: 24;
-
-                    Adw.ComboRow _fileTypeRow {
-                      title: _("FileType.Field");
-                      model: Gtk.StringList {
-                        strings ["MP4", "WEBM", "MP3", "OPUS", "FLAC", "WAV"]
-                      };
-                    }
-
-                    Adw.ComboRow _qualityRow {
-                      title: _("Quality.Field");
-                      model: Gtk.StringList {
-                        strings [""]
-                      };
-                    }
-
-                    Adw.ComboRow _subtitleRow {
-                      title: _("Subtitle.Field");
-                      model: Gtk.StringList {
-                        strings [_("Subtitle.None"), "VTT", "SRT"]
-                      };
-                    }
-                  }
-
-                  Adw.PreferencesGroup {
-                    margin-start: 24;
-                    margin-end: 24;
-
-                    Adw.EntryRow _saveFolderRow {
-                      title: _("SaveFolder.Field");
-                      width-request: 420;
-                      editable: false;
-
-                      [suffix]
-                      Gtk.Button _selectSaveFolderButton {
-                        valign: center;
-                        icon-name: "folder-open-symbolic";
-                        tooltip-text: _("SelectSaveFolder");
-                  
-                        styles ["flat"]
-                      }
-                    }
-                    
-                    Adw.ActionRow _openAdvancedRow {
-                      title: _("Advanced");
-                      subtitle: _("Advanced.Description");
-                      icon-name: "wrench-wide-symbolic";
-                      activatable-widget: _openAdvancedButton;
-
-                      [suffix]
-                      Gtk.Button _openAdvancedButton {
-                        valign: center;
-                        icon-name: "go-next-symbolic";
-
-                        styles ["flat"]
-                      }
-                    }
-                  }
-
-                  Adw.PreferencesGroup _mediaGroup {
+                Gtk.ScrolledWindow _scrolledWindow {
+                  hscrollbar-policy: never;
+                  propagate-natural-height: true;
+                  child: Gtk.Box _downloadPage {
                     visible: false;
-                    margin-start: 24;
-                    margin-end: 24;
+                    orientation: vertical;
+                    hexpand: true;
+                    margin-top: 12;
+                    margin-bottom: 12;
+                    spacing: 24;
+
+                    Adw.PreferencesGroup {
+                      margin-start: 24;
+                      margin-end: 24;
+
+                      Adw.ComboRow _fileTypeRow {
+                        title: _("File Type");
+                        model: Gtk.StringList {
+                          strings ["MP4", "WEBM", "MP3", "M4A", "OPUS", "FLAC", "WAV"]
+                        };
+                      }
+
+                      Adw.ComboRow _qualityRow {
+                        title: _("Quality");
+                        model: Gtk.StringList {
+                          strings [""]
+                        };
+                      }
+
+                      Adw.ComboRow _subtitleRow {
+                        title: _("Subtitle");
+                        model: Gtk.StringList {
+                          strings [C_("Subtitle", "None"), "VTT", "SRT"]
+                        };
+                      }
+                    }
+
+                    Adw.PreferencesGroup {
+                      margin-start: 24;
+                      margin-end: 24;
+
+                      Adw.EntryRow _saveFolderRow {
+                        title: _("Save Folder");
+                        width-request: 420;
+                        editable: false;
+
+                        [suffix]
+                        Gtk.Button _selectSaveFolderButton {
+                          valign: center;
+                          icon-name: "folder-open-symbolic";
+                          tooltip-text: _("Select Save Folder");
+
+                          styles ["flat"]
+                        }
+                      }
+
+                      Adw.ActionRow _openAdvancedRow {
+                        title: _("Advanced Options");
+                        activatable-widget: _openAdvancedImage;
+
+                        [suffix]
+                        Gtk.Image _openAdvancedImage {
+                          valign: center;
+                          icon-name: "go-next-symbolic";
+                        }
+                      }
+                    }
+
+                    Adw.PreferencesGroup _mediaGroup {
+                      visible: false;
+                      margin-start: 24;
+                      margin-end: 24;
+                    }
+
+                    Adw.PreferencesGroup _openPlaylistGroup {
+                      visible: false;
+                      margin-start: 24;
+                      margin-end: 24;
+
+                      Adw.ActionRow _openPlaylistRow {
+                        subtitle: _("Select items to download or change file names.");
+                        activatable-widget: _openPlaylistImage;
+
+                        [suffix]
+                        Gtk.Image _openPlaylistImage {
+                          valign: center;
+                          icon-name: "go-next-symbolic";
+                        }
+                      }
+                    }
+                  };
+                }
+
+                Gtk.Button _addDownloadButton {
+                  label: _("Download");
+                  halign: center;
+                  valign: center;
+                  margin-bottom: 24;
+
+                  styles ["pill", "suggested-action"]
+                }
+              };
+            }
+
+            Adw.ViewStackPage {
+              name: "pagePlaylist";
+              child: Gtk.Box _playlistPage {
+                orientation: vertical;
+                hexpand: true;
+                spacing: 12;
+
+                Gtk.ToggleButton _numberTitlesButton {
+                  halign: center;
+
+                  Adw.ButtonContent {
+                    icon-name: "view-list-ordered-symbolic";
+                    label: _("Number Titles");
                   }
+                }
 
-                  Adw.PreferencesGroup _openPlaylistGroup {
-                    visible: false;
+                Gtk.ScrolledWindow _playlist {
+                  vexpand: true;
+
+                  Adw.PreferencesGroup _playlistGroup {
+                    margin-top: 2;
                     margin-start: 24;
                     margin-end: 24;
+                    margin-bottom: 12;
+                  }
+                }
+              };
+            }
 
-                    Adw.ActionRow _openPlaylistRow {
-                      subtitle: _("Playlist.Description");
-                      activatable-widget: _openPlaylistButton;
+            Adw.ViewStackPage {
+              name: "pageAdvanced";
+              child: Gtk.Box _advancedPage {
+                orientation: vertical;
+                hexpand: true;
+                spacing: 12;
+
+                Gtk.ScrolledWindow _advanced {
+                  vexpand: true;
+
+                  Adw.PreferencesGroup _advancedGroup {
+                    margin-top: 2;
+                    margin-start: 24;
+                    margin-end: 24;
+                    margin-bottom: 12;
+
+                    Adw.ActionRow _overwriteRow {
+                      title: _("Overwrite Existing Files");
+                      activatable-widget: _overwriteSwitch;
 
                       [suffix]
-                      Gtk.Button _openPlaylistButton {
+                      Gtk.Switch _overwriteSwitch {
                         valign: center;
-                        icon-name: "go-next-symbolic";
+                        active: true;
+                      }
+                    }
 
-                        styles ["flat"]
+                    Adw.ActionRow _speedLimitRow {
+                      title: _("Speed Limit");
+                      activatable-widget: _speedLimitSwitch;
+
+                      [suffix]
+                      Gtk.Switch _speedLimitSwitch {
+                        valign: center;
+                        active: false;
+                      }
+                    }
+
+                    Adw.ActionRow _cropThumbnailRow {
+                      title: _("Crop Thumbnail");
+                      subtitle: _("Make thumbnail square, useful when downloading music.");
+                      activatable-widget: _cropThumbnailSwitch;
+
+                      [suffix]
+                      Gtk.Switch _cropThumbnailSwitch {
+                        valign: center;
+                        active: false;
                       }
                     }
                   }
-                };
-              }
-
-              Gtk.Button _addDownloadButton {
-                label: _("Download");
-                halign: center;
-                valign: center;
-                margin-bottom: 24;
-
-                styles ["pill", "suggested-action"]
-              }
-            };
-          }
-
-          Adw.ViewStackPage {
-            name: "pagePlaylist";
-            child: Gtk.Box _playlistPage {
-              orientation: vertical;
-              hexpand: true;
-              spacing: 12;
-
-              Gtk.ToggleButton _numberTitlesButton {
-                halign: center;
-
-                Adw.ButtonContent {
-                  icon-name: "view-list-ordered-symbolic";
-                  label: _("NumberTitles");
                 }
-              }
-
-              Gtk.ScrolledWindow _playlist {
-                vexpand: true;
-
-                Adw.PreferencesGroup _playlistGroup {
-                  margin-top: 2;
-                  margin-start: 24;
-                  margin-end: 24;
-                  margin-bottom: 12;
-                }
-              }
-            };
-          }
-          
-          Adw.ViewStackPage {
-            name: "pageAdvanced";
-            child: Gtk.Box _advancedPage {
-              orientation: vertical;
-              hexpand: true;
-              spacing: 12;
-              
-              Gtk.ScrolledWindow _advanced {
-                vexpand: true;
-
-                Adw.PreferencesGroup _advancedGroup {
-                  margin-top: 2;
-                  margin-start: 24;
-                  margin-end: 24;
-                  margin-bottom: 12;
-                  
-                  Adw.ActionRow _overwriteRow {
-                    title: _("OverwriteExistingFiles");
-                    activatable-widget: _overwriteSwitch;
-
-                    [suffix]
-                    Gtk.Switch _overwriteSwitch {
-                      valign: center;
-                      active: true;
-                    }
-                  }
-                  
-                  Adw.ActionRow _speedLimitRow {
-                    title: _("SpeedLimit");
-                    activatable-widget: _speedLimitSwitch;
-
-                    [suffix]
-                    Gtk.Switch _speedLimitSwitch {
-                      valign: center;
-                      active: false;
-                    }
-                  }
-
-                  Adw.ActionRow _cropThumbnailRow {
-                    title: _("Crop.Field");
-                    subtitle: _("Crop.Description");
-                    activatable-widget: _cropThumbnailSwitch;
-
-                    [suffix]
-                    Gtk.Switch _cropThumbnailSwitch {
-                      valign: center;
-                      active: false;
-                    }
-                  }
-                }
-              }
-            };
+              };
+            }
           }
         }
       }

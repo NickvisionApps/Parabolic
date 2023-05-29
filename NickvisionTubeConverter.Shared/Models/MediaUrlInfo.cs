@@ -122,6 +122,15 @@ public class MediaUrlInfo
             }
         }
         VideoResolutions.Sort((a, b) => b.CompareTo(a));
-        MediaList.Add(new MediaInfo(mediaInfo["webpage_url"].As<string>(), title, mediaInfo["duration"].As<double>(), isPartOfPlaylist));
+        double duration = 0.00;
+        try
+        {
+            duration = mediaInfo["duration"].As<double>();
+        }
+        catch
+        {
+            duration = Double.NaN;
+        }
+        MediaList.Add(new MediaInfo(mediaInfo["webpage_url"].As<string>(), title, duration, isPartOfPlaylist));
     }
 }

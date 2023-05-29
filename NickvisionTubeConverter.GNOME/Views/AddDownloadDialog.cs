@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
+using static NickvisionTubeConverter.Shared.Helpers.Gettext;
 
 namespace NickvisionTubeConverter.GNOME.Views;
 
@@ -16,42 +17,35 @@ namespace NickvisionTubeConverter.GNOME.Views;
 public partial class AddDownloadDialog : Adw.Window
 {
     private delegate bool GSourceFunc(nint data);
-
-    [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
-    private static partial void g_main_context_invoke(nint context, GSourceFunc function, nint data);
-
-    [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
-    [return: MarshalAs(UnmanagedType.I1)]
-    public static partial bool gtk_file_chooser_set_current_folder(nint chooser, nint file, nint error);
-
-    [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
-    public static partial void gtk_file_chooser_set_current_name(nint chooser, string name);
-
-    [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
-    private static partial string g_file_get_path(nint file);
-
-    [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
-    private static partial nint gtk_file_dialog_new();
-
-    [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
-    private static partial void gtk_file_dialog_set_title(nint dialog, string title);
-
-    [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
-    private static partial void gtk_file_dialog_set_filters(nint dialog, nint filters);
-
-    [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
-    private static partial void gtk_file_dialog_set_initial_name(nint dialog, string name);
-
-    [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
-    private static partial void gtk_file_dialog_set_initial_folder(nint dialog, nint folder);
-
     private delegate void GAsyncReadyCallback(nint source, nint res, nint user_data);
 
     [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
+    private static partial void g_main_context_invoke(nint context, GSourceFunc function, nint data);
+    [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
+    [return: MarshalAs(UnmanagedType.I1)]
+    public static partial bool gtk_file_chooser_set_current_folder(nint chooser, nint file, nint error);
+    [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
+    public static partial void gtk_file_chooser_set_current_name(nint chooser, string name);
+    [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
+    private static partial string g_file_get_path(nint file);
+    [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
+    private static partial nint gtk_file_dialog_new();
+    [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
+    private static partial void gtk_file_dialog_set_title(nint dialog, string title);
+    [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
+    private static partial void gtk_file_dialog_set_filters(nint dialog, nint filters);
+    [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
+    private static partial void gtk_file_dialog_set_initial_name(nint dialog, string name);
+    [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
+    private static partial void gtk_file_dialog_set_initial_folder(nint dialog, nint folder);
+    [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
     private static partial void gtk_file_dialog_select_folder(nint dialog, nint parent, nint cancellable, GAsyncReadyCallback callback, nint user_data);
-
     [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
     private static partial nint gtk_file_dialog_select_folder_finish(nint dialog, nint result, nint error);
+    [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
+    private static partial void gdk_clipboard_read_text_async(nint clipboard, nint cancellable, GAsyncReadyCallback callback, nint user_data);
+    [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
+    private static partial string gdk_clipboard_read_text_finish(nint clipboard, nint result, nint error);
 
     private readonly Gtk.Window _parent;
     private readonly AddDownloadDialogController _controller;
@@ -60,9 +54,11 @@ public partial class AddDownloadDialog : Adw.Window
     private GAsyncReadyCallback? _saveCallback;
     private GSourceFunc _startSearchCallback;
     private GSourceFunc _finishSearchCallback;
+    private GAsyncReadyCallback _clipboardCallback;
     private readonly Gtk.ShortcutController _shortcutController;
 
     [Gtk.Connect] private readonly Gtk.Label _titleLabel;
+    [Gtk.Connect] private readonly Adw.ToastOverlay _toastOverlay;
     [Gtk.Connect] private readonly Adw.ViewStack _viewStack;
     [Gtk.Connect] private readonly Adw.EntryRow _urlRow;
     [Gtk.Connect] private readonly Gtk.Button _validateUrlButton;
@@ -115,7 +111,7 @@ public partial class AddDownloadDialog : Adw.Window
         _mediaRows = new List<MediaRow>();
         _audioOnly = false;
         _singleMediaDuration = 0;
-        _audioQualityArray = new string[] { _controller.Localizer["Quality", "Best"], _controller.Localizer["Quality", "Worst"] };
+        _audioQualityArray = new string[] { _("Best"), _("Worst") };
         _startSearchCallback = (x) =>
         {
             _urlSpinner = Gtk.Spinner.New();
@@ -129,11 +125,11 @@ public partial class AddDownloadDialog : Adw.Window
             _urlSpinner.Stop();
             _validateUrlButton.SetSensitive(true);
             _validateUrlButton.SetChild(null);
-            _validateUrlButton.SetLabel(_controller.Localizer["ValidateUrl"]);
+            _validateUrlButton.SetLabel(_("Validate"));
             if (_mediaUrlInfo == null)
             {
                 _urlRow.AddCssClass("error");
-                _urlRow.SetTitle(_controller.Localizer["MediaUrl", "Invalid"]);
+                _urlRow.SetTitle(_("Media URL (Invalid)"));
             }
             else
             {
@@ -154,7 +150,7 @@ public partial class AddDownloadDialog : Adw.Window
                 }
                 SetQualityRowModel(); // in case _fileTypeRow.SetSelected didn't invoke OnNotify
                 _urlRow.RemoveCssClass("error");
-                _urlRow.SetTitle(_controller.Localizer["MediaUrl", "Field"]);
+                _urlRow.SetTitle(_("Media URL"));
                 _downloadPage.SetVisible(true);
                 _viewStack.SetVisibleChildName("pageDownload");
                 SetDefaultWidget(_addDownloadButton);
@@ -164,19 +160,19 @@ public partial class AddDownloadDialog : Adw.Window
                 {
                     foreach (var mediaInfo in _mediaUrlInfo.MediaList)
                     {
-                        var row = new MediaRow(mediaInfo, _controller.Localizer);
+                        var row = new MediaRow(mediaInfo);
                         _mediaRows.Add(row);
                         row.OnSelectionChanged += PlaylistChanged;
                         _playlistGroup.Add(row);
                     }
                     _openPlaylistGroup.SetVisible(true);
-                    _openPlaylistRow.SetTitle(string.Format(_controller.Localizer["Playlist", "Count"], _mediaUrlInfo.MediaList.Count, _mediaUrlInfo.MediaList.Count));
-                    _qualityRow.SetTitle(_controller.Localizer["MaxQuality", "Field"]);
+                    _openPlaylistRow.SetTitle(_n("{0} of {1} items", "{0} of {1} items", _mediaUrlInfo.MediaList.Count, _mediaUrlInfo.MediaList.Count, _mediaUrlInfo.MediaList.Count));
+                    _qualityRow.SetTitle(_("Maximum Quality"));
                 }
                 else
                 {
                     _singleMediaDuration = _mediaUrlInfo.MediaList[0].Duration;
-                    var row = new MediaRow(_mediaUrlInfo.MediaList[0], _controller.Localizer);
+                    var row = new MediaRow(_mediaUrlInfo.MediaList[0]);
                     _mediaRows.Add(row);
                     _mediaGroup.SetVisible(true);
                     _mediaGroup.Add(row);
@@ -190,13 +186,18 @@ public partial class AddDownloadDialog : Adw.Window
         SetIconName(_controller.AppInfo.ID);
         //Build UI
         builder.Connect(this);
-        _validateUrlButton.OnClicked += SearchUrl;
+        _validateUrlButton.OnClicked += async (sender, e) => await SearchUrlAsync(_urlRow.GetText());
         _viewStack.OnNotify += (sender, e) =>
         {
             if (e.Pspec.GetName() == "visible-child")
             {
                 _backButton.SetVisible(_viewStack.GetVisibleChildName() == "pagePlaylist" || _viewStack.GetVisibleChildName() == "pageAdvanced");
-                _titleLabel.SetLabel(_controller.Localizer[_viewStack.GetVisibleChildName() == "pagePlaylist" ? "Playlist" : (_viewStack.GetVisibleChildName() == "pageAdvanced" ? "Advanced" : "AddDownload")]);
+                _titleLabel.SetLabel(_viewStack.GetVisibleChildName() switch
+                {
+                    "pagePlaylist" => _("Playlist"),
+                    "pageAdvanced" => _("Advanced Options"),
+                    _ => _("Add Download")
+                });
             }
         };
         _backButton.OnClicked += (sender, e) =>
@@ -207,11 +208,15 @@ public partial class AddDownloadDialog : Adw.Window
         var vadjustment = _scrolledWindow.GetVadjustment();
         vadjustment.OnNotify += (sender, e) =>
         {
-            if (e.Pspec.GetName() == "upper")
+            if (e.Pspec.GetName() == "page-size")
             {
                 if (vadjustment.GetPageSize() < vadjustment.GetUpper())
                 {
                     _scrolledWindow.AddCssClass("scrolled-window");
+                }
+                else
+                {
+                    _scrolledWindow.RemoveCssClass("scrolled-window");
                 }
             }
         };
@@ -282,7 +287,7 @@ public partial class AddDownloadDialog : Adw.Window
             _saveFolderString = "";
         }
         _saveFolderRow.SetText(Path.GetFileName(_saveFolderString) ?? "");
-        _speedLimitRow.SetSubtitle($"{string.Format(_controller.Localizer["Speed", "KiBps"], _controller.CurrentSpeedLimit)} ({_controller.Localizer["Configurable", "GTK"]})");
+        _speedLimitRow.SetSubtitle($"{_("{0:f1} KiB/s", _controller.CurrentSpeedLimit)} {_("(Configurable in preferences)")}");
     }
 
     /// <summary>
@@ -290,23 +295,58 @@ public partial class AddDownloadDialog : Adw.Window
     /// </summary>
     /// <param name="controller">AddDownloadDialogController</param>
     /// <param name="parent">Gtk.Window</param>
-    public AddDownloadDialog(AddDownloadDialogController controller, Gtk.Window parent) : this(Builder.FromFile("add_download_dialog.ui", controller.Localizer), controller, parent)
+    public AddDownloadDialog(AddDownloadDialogController controller, Gtk.Window parent) : this(Builder.FromFile("add_download_dialog.ui"), controller, parent)
     {
     }
 
     /// <summary>
-    /// Occurs when the media url is changed
+    /// Presents the dialog
     /// </summary>
-    /// <param name="sender">Adw.EntryRow</param>
-    /// <param name="e">EventArgs</param>
-    private async void SearchUrl(Gtk.Button sender, EventArgs e)
+    /// <param name="url">A url to validate at startup</param>
+    public async Task PresentAsync(string? url = null)
+    {
+        base.Present();
+        //Validated from startup
+        if (!string.IsNullOrEmpty(url))
+        {
+            await SearchUrlAsync(url);
+        }
+        else
+        {
+            //Validate Clipboard
+            if(_controller.ReadClipboard)
+            {
+                var clipboard = Gdk.Display.GetDefault()!.GetClipboard();
+                _clipboardCallback = (source, res, data) =>
+                {
+                    var clipboardText = gdk_clipboard_read_text_finish(clipboard.Handle, res, IntPtr.Zero);
+                    if(!string.IsNullOrEmpty(clipboardText))
+                    {
+                        var result = Uri.TryCreate(clipboardText, UriKind.Absolute, out var uriResult) && (uriResult.Scheme == Uri.UriSchemeHttp || uriResult.Scheme == Uri.UriSchemeHttps);
+                        if (result)
+                        {
+                            _urlRow.SetText(clipboardText);
+                        }
+                    }
+                };
+                gdk_clipboard_read_text_async(clipboard.Handle, IntPtr.Zero, _clipboardCallback, IntPtr.Zero);
+            }
+        }
+    }
+
+    /// <summary>
+    /// Searches for information about a URL in the dialog
+    /// </summary>
+    /// <param name="url">The URL to search</param>
+    private async Task SearchUrlAsync(string url)
     {
         g_main_context_invoke(0, _startSearchCallback, 0);
         await Task.Run(async () =>
         {
             try
             {
-                _mediaUrlInfo = await _controller.SearchUrlAsync(_urlRow.GetText());
+                _urlRow.SetText(url);
+                _mediaUrlInfo = await _controller.SearchUrlAsync(url);
             }
             catch (Exception ex)
             {
@@ -323,7 +363,7 @@ public partial class AddDownloadDialog : Adw.Window
     private void ValidateOptions()
     {
         _saveFolderRow.RemoveCssClass("error");
-        _saveFolderRow.SetTitle(_controller.Localizer["SaveFolder.Field"]);
+        _saveFolderRow.SetTitle(_("Save Folder"));
         _addDownloadButton.SetSensitive(false);
         var status = _controller.CheckDownloadOptions(_saveFolderString);
         if (status == DownloadOptionsCheckStatus.Valid)
@@ -333,7 +373,7 @@ public partial class AddDownloadDialog : Adw.Window
         }
         if (status.HasFlag(DownloadOptionsCheckStatus.InvalidSaveFolder))
         {
-            _saveFolderRow.SetTitle(_controller.Localizer["SaveFolder.Invalid"]);
+            _saveFolderRow.SetTitle(_("Save Folder (Invalid)"));
             _saveFolderRow.AddCssClass("error");
         }
     }
@@ -363,7 +403,7 @@ public partial class AddDownloadDialog : Adw.Window
     private void SelectSaveFolder(Gtk.Button sender, EventArgs e)
     {
         var folderDialog = gtk_file_dialog_new();
-        gtk_file_dialog_set_title(folderDialog, _controller.Localizer["SelectSaveFolder"]);
+        gtk_file_dialog_set_title(folderDialog, _("Select Save Folder"));
         if (Directory.Exists(_saveFolderString) && _saveFolderString != "/")
         {
             var folder = Gio.FileHelper.NewForPath(_saveFolderString);
@@ -376,7 +416,6 @@ public partial class AddDownloadDialog : Adw.Window
             {
                 _saveFolderString = g_file_get_path(fileHandle);
                 _saveFolderRow.SetText(Path.GetFileName(_saveFolderString));
-                _saveFolderRow.SetTitle(_controller.Localizer["SaveFolder.Field"]);
                 _saveFolderRow.RemoveCssClass("error");
                 _addDownloadButton.SetSensitive(true);
             }
@@ -393,7 +432,7 @@ public partial class AddDownloadDialog : Adw.Window
     private void PlaylistChanged(object? sender, EventArgs e)
     {
         var downloadsCount = _mediaUrlInfo.MediaList.FindAll(x => x.ToDownload).Count;
-         _openPlaylistRow.SetTitle(string.Format(_controller.Localizer["Playlist", "Count"], downloadsCount, _mediaUrlInfo.MediaList.Count));
+        _openPlaylistRow.SetTitle(_n("{0} of {1} items", "{0} of {1} items", _mediaUrlInfo.MediaList.Count, downloadsCount, _mediaUrlInfo.MediaList.Count));
     }
 
     /// <summary>

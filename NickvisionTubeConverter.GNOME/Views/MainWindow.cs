@@ -10,6 +10,8 @@ using System.Globalization;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Text;
+using System.Threading.Tasks;
+using static NickvisionTubeConverter.Shared.Helpers.Gettext;
 
 namespace NickvisionTubeConverter.GNOME.Views;
 
@@ -19,6 +21,7 @@ namespace NickvisionTubeConverter.GNOME.Views;
 public partial class MainWindow : Adw.ApplicationWindow
 {
     private delegate bool GSourceFunc(nint data);
+    private delegate void GAsyncReadyCallback(nint source, nint res, nint user_data);
 
     [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
     private static partial void g_main_context_invoke(nint context, GSourceFunc function, nint data);
@@ -46,6 +49,10 @@ public partial class MainWindow : Adw.ApplicationWindow
     private static partial nint g_file_icon_new(nint gfile);
     [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
     private static partial void g_notification_set_icon(nint notification, nint icon);
+    [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
+    private static partial void gdk_clipboard_read_text_async(nint clipboard, nint cancellable, GAsyncReadyCallback callback, nint user_data);
+    [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
+    private static partial string gdk_clipboard_read_text_finish(nint clipboard, nint result, nint error);
 
     [LibraryImport("libunity.so.9", StringMarshalling = StringMarshalling.Utf8)]
     private static partial nint unity_launcher_entry_get_for_desktop_id(string desktop_id);
@@ -67,16 +74,17 @@ public partial class MainWindow : Adw.ApplicationWindow
     private readonly GSourceFunc _downloadStartedFromQueueFunc;
     private readonly nint _unityLauncher;
     private bool _isBackgroundStatusReported;
+    private GAsyncReadyCallback _clipboardCallback;
 
     [Gtk.Connect] private readonly Adw.Bin _spinnerContainer;
     [Gtk.Connect] private readonly Gtk.Spinner _spinner;
     [Gtk.Connect] private readonly Gtk.Box _mainBox;
     [Gtk.Connect] private readonly Adw.HeaderBar _headerBar;
-    [Gtk.Connect] private readonly Gtk.MenuButton _downloaderMenuButton;
     [Gtk.Connect] private readonly Adw.ToastOverlay _toastOverlay;
     [Gtk.Connect] private readonly Adw.ViewStack _viewStack;
     [Gtk.Connect] private readonly Gtk.Button _addDownloadButton;
     [Gtk.Connect] private readonly Gtk.Box _downloadingBox;
+    [Gtk.Connect] private readonly Gtk.Button _stopAllDownloadsButton;
     [Gtk.Connect] private readonly Gtk.Box _completedBox;
     [Gtk.Connect] private readonly Gtk.Box _queuedBox;
 
@@ -144,9 +152,9 @@ public partial class MainWindow : Adw.ApplicationWindow
             if (target != null)
             {
                 var e = target.Value;
-                var downloadRow = new DownloadRow(e.Id, e.Filename, e.SaveFolder, _controller.Localizer, (e) => NotificationSent(null, e));
+                var downloadRow = new DownloadRow(e.Id, e.Filename, e.SaveFolder, (e) => NotificationSent(null, e));
                 downloadRow.StopRequested += (sender, e) => _controller.DownloadManager.RequestStop(e);
-                downloadRow.RetryRequested += (sender, e) => _controller.DownloadManager.RequestRetry(e, _controller.UseAria, _controller.EmbedMetadata);
+                downloadRow.RetryRequested += (sender, e) => _controller.DownloadManager.RequestRetry(e, _controller.DownloadOptions);
                 var box = e.IsDownloading ? _downloadingBox : _queuedBox;
                 if(e.IsDownloading)
                 {
@@ -162,6 +170,7 @@ public partial class MainWindow : Adw.ApplicationWindow
                     box.Append(separator);
                 }
                 box.Append(downloadRow);
+                _stopAllDownloadsButton.SetVisible(_controller.DownloadManager.RemainingDownloadsCount > 1);
                 box.GetParent().SetVisible(true);
             }
             handle.Free();
@@ -234,9 +243,16 @@ public partial class MainWindow : Adw.ApplicationWindow
                     _completedBox.Append(row);
                     _downloadingBox.GetParent().SetVisible(_controller.DownloadManager.RemainingDownloadsCount > 0 ? true : false);
                     _completedBox.GetParent().SetVisible(true);
-                    if (!GetFocus()!.GetHasFocus() || !GetVisible())
+                    if ((GetFocus() != null && !GetFocus()!.GetHasFocus()) || !GetVisible())
                     {
-                        SendShellNotification(new ShellNotificationSentEventArgs(_controller.Localizer[!e.Successful ? "DownloadFinishedWithError" : "DownloadFinished"], string.Format(_controller.Localizer[!e.Successful ? "DownloadFinishedWithError" : "DownloadFinished", "Description"], $"\"{row.Filename}\""), !e.Successful ? NotificationSeverity.Error : NotificationSeverity.Success));
+                        if(_controller.CompletedNotificationPreference == NotificationPreference.ForEach)
+                        {
+                            SendShellNotification(new ShellNotificationSentEventArgs(!e.Successful ? _("Download Finished With Error") : _("Download Finished"), !e.Successful ? _("\"{0}\" has finished with an error!", row.Filename) : _("\"{0}\" has finished downloading.", row.Filename), !e.Successful ? NotificationSeverity.Error : NotificationSeverity.Success));
+                        }
+                        else if(_controller.CompletedNotificationPreference == NotificationPreference.AllCompleted && !_controller.DownloadManager.AreDownloadsRunning && !_controller.DownloadManager.AreDownloadsQueued)
+                        {
+                            SendShellNotification(new ShellNotificationSentEventArgs(_("Downloads Finished"), _("All downloads have finished."), NotificationSeverity.Informational));
+                        }
                     }
                 }
                 if (!GetVisible() && _controller.DownloadManager.RemainingDownloadsCount == 0 && _controller.DownloadManager.ErrorsCount == 0)
@@ -432,7 +448,7 @@ public partial class MainWindow : Adw.ApplicationWindow
         _controller.DownloadManager.DownloadStartedFromQueue += (sender, e) => g_main_context_invoke(0, _downloadStartedFromQueueFunc, (IntPtr)GCHandle.Alloc(e));
         //Add Download Action
         var actDownload = Gio.SimpleAction.New("addDownload", null);
-        actDownload.OnActivate += AddDownload;
+        actDownload.OnActivate += async (sender, e) => await AddDownloadAsync(new NotificationSentEventArgs("", NotificationSeverity.Informational));;
         AddAction(actDownload);
         application.SetAccelsForAction("win.addDownload", new string[] { "<Ctrl>n" });
         //Stop All Downloads Action
@@ -442,7 +458,7 @@ public partial class MainWindow : Adw.ApplicationWindow
         application.SetAccelsForAction("win.stopAllDownloads", new string[] { "<Ctrl><Shift>c" });
         //Retry Failed Downloads Action
         var actRetryFailedDownloads = Gio.SimpleAction.New("retryFailedDownloads", null);
-        actRetryFailedDownloads.OnActivate += (sender, e) => _controller.DownloadManager.RetryFailedDownloads(_controller.UseAria, _controller.EmbedMetadata);
+        actRetryFailedDownloads.OnActivate += (sender, e) => _controller.DownloadManager.RetryFailedDownloads(_controller.DownloadOptions);
         AddAction(actRetryFailedDownloads);
         application.SetAccelsForAction("win.retryFailedDownloads", new string[] { "<Ctrl><Shift>r" });
         //Clear Queued Downloads Action
@@ -455,9 +471,33 @@ public partial class MainWindow : Adw.ApplicationWindow
                 _queuedBox.Remove(_queuedBox.GetFirstChild());
             }
             _queuedBox.GetParent().SetVisible(false);
+            if(!_controller.DownloadManager.AreDownloadsQueued && !_controller.DownloadManager.AreDownloadsRunning && !_controller.DownloadManager.AreDownloadsCompleted)
+            {
+                _headerBar.AddCssClass("flat");
+                _addDownloadButton.SetVisible(false);
+                _viewStack.SetVisibleChildName("pageNoDownloads");
+            }
         };
         AddAction(actClearQueuedDownloads);
         application.SetAccelsForAction("win.clearQueuedDownloads", new string[] { "<Ctrl>Delete" });
+        //Clear Completed Downloads Action
+        var actClearCompletedDownloads = Gio.SimpleAction.New("clearCompletedDownloads", null);
+        actClearCompletedDownloads.OnActivate += (sender, e) =>
+        {
+            _controller.DownloadManager.ClearCompletedDownloads();
+            while (_completedBox.GetFirstChild() != null)
+            {
+                _completedBox.Remove(_completedBox.GetFirstChild());
+            }
+            _completedBox.GetParent().SetVisible(false);
+            if(!_controller.DownloadManager.AreDownloadsQueued && !_controller.DownloadManager.AreDownloadsRunning && !_controller.DownloadManager.AreDownloadsCompleted)
+            {
+                _headerBar.AddCssClass("flat");
+                _addDownloadButton.SetVisible(false);
+                _viewStack.SetVisibleChildName("pageNoDownloads");
+            }
+        };
+        AddAction(actClearCompletedDownloads);
         //Preferences Action
         var actPreferences = Gio.SimpleAction.New("preferences", null);
         actPreferences.OnActivate += Preferences;
@@ -485,7 +525,7 @@ public partial class MainWindow : Adw.ApplicationWindow
     /// </summary>
     /// <param name="controller">The MainWindowController</param>
     /// <param name="application">The Adw.Application</param>
-    public MainWindow(MainWindowController controller, Adw.Application application) : this(Builder.FromFile("window.ui", controller.Localizer, (s) => s == "About" ? string.Format(controller.Localizer[s], controller.AppInfo.ShortName) : controller.Localizer[s]), controller, application)
+    public MainWindow(MainWindowController controller, Adw.Application application) : this(Builder.FromFile("window.ui"), controller, application)
     {
     }
 
@@ -500,6 +540,7 @@ public partial class MainWindow : Adw.ApplicationWindow
         _mainBox.SetVisible(false);
         _spinner.Start();
         _controller.Startup();
+        ValidateClipboard();
         _spinner.Stop();
         _spinnerContainer.SetVisible(false);
         _mainBox.SetVisible(true);
@@ -514,6 +555,11 @@ public partial class MainWindow : Adw.ApplicationWindow
     private void NotificationSent(object? sender, NotificationSentEventArgs e)
     {
         var toast = Adw.Toast.New(e.Message);
+        if (e.Action == "clipboard")
+        {
+            toast.SetButtonLabel(_("Download"));
+            toast.OnButtonClicked += async (s, ex) => await AddDownloadAsync(e);
+        }
         _toastOverlay.AddToast(toast);
     }
 
@@ -559,7 +605,7 @@ public partial class MainWindow : Adw.ApplicationWindow
                 SetVisible(false);
                 return true;
             }
-            var closeDialog = new MessageDialog(this, _controller.AppInfo.ID, _controller.Localizer["CloseAndStop", "Title"], _controller.Localizer["CloseAndStop", "Description"], _controller.Localizer["No"], _controller.Localizer["Yes"]);
+            var closeDialog = new MessageDialog(this, _controller.AppInfo.ID, _("Close and Stop Downloads?"), _("Some downloads are still in progress.\nAre you sure you want to close Tube Converter and stop the running downloads?"), _("No"), _("Yes"));
             if (closeDialog.Run() == MessageDialogResponse.Cancel)
             {
                 return true;
@@ -572,27 +618,25 @@ public partial class MainWindow : Adw.ApplicationWindow
     }
 
     /// <summary>
-    /// Occurs when the add download action is triggered
+    /// Prompts the AddDownloadDialog
     /// </summary>
-    /// <param name="sender">Gio.SimpleAction</param>
-    /// <param name="e">EventArgs</param>
-    private void AddDownload(Gio.SimpleAction sender, EventArgs e)
+    /// <param name="e">NotificationSentEventArgs</param>
+    private async Task AddDownloadAsync(NotificationSentEventArgs e)
     {
         var addController = _controller.CreateAddDownloadDialogController();
         var addDialog = new AddDownloadDialog(addController, this);
-        addDialog.Present();
-        addDialog.OnDownload += (sender, e) =>
+        addDialog.OnDownload += (s, ex) =>
         {
             _headerBar.RemoveCssClass("flat");
             _addDownloadButton.SetVisible(true);
-            _downloaderMenuButton.SetVisible(true);
             _viewStack.SetVisibleChildName("pageDownloads");
             foreach (var download in addController.Downloads)
             {
-                _controller.DownloadManager.AddDownload(download, _controller.UseAria, _controller.EmbedMetadata);
+                _controller.DownloadManager.AddDownload(download, _controller.DownloadOptions);
             }
             addDialog.Close();
         };
+        await addDialog.PresentAsync(e.ActionParam);
     }
 
     /// <summary>
@@ -613,7 +657,7 @@ public partial class MainWindow : Adw.ApplicationWindow
     /// <param name="e">EventArgs</param>
     private void KeyboardShortcuts(Gio.SimpleAction sender, EventArgs e)
     {
-        var builder = Builder.FromFile("shortcuts_dialog.ui", _controller.Localizer, (s) => s == "About" ? string.Format(_controller.Localizer[s], _controller.AppInfo.ShortName) : _controller.Localizer[s]);
+        var builder = Builder.FromFile("shortcuts_dialog.ui");
         var shortcutsWindow = (Gtk.ShortcutsWindow)builder.GetObject("_shortcuts");
         shortcutsWindow.SetTransientFor(this);
         shortcutsWindow.SetIconName(_controller.AppInfo.ID);
@@ -735,20 +779,25 @@ public partial class MainWindow : Adw.ApplicationWindow
         dialog.SetComments(_controller.AppInfo.Description);
         dialog.SetDeveloperName("Nickvision");
         dialog.SetLicenseType(Gtk.License.MitX11);
-        dialog.SetCopyright($"© Nickvision 2021-2023\n\n{_controller.Localizer["Disclaimer"]}");
+        dialog.SetCopyright($"© Nickvision 2021-2023\n\n{_("The authors of Nickvision Tube Converter are not responsible/liable for any misuse of this program that may violate local copyright/DMCA laws. Users use this application at their own risk.")}");
         dialog.SetWebsite(_controller.AppInfo.GitHubRepo.ToString());
         dialog.SetIssueUrl(_controller.AppInfo.IssueTracker.ToString());
         dialog.SetSupportUrl(_controller.AppInfo.SupportUrl.ToString());
-        dialog.AddLink(_controller.Localizer["SupportedSites"], "https://github.com/yt-dlp/yt-dlp/blob/master/supportedsites.md");
-        dialog.AddLink(_controller.Localizer["MatrixChat"], "https://matrix.to/#/#nickvision:matrix.org");
-        dialog.SetDevelopers(_controller.Localizer["Developers", "Credits"].Split(Environment.NewLine));
-        dialog.SetDesigners(_controller.Localizer["Designers", "Credits"].Split(Environment.NewLine));
-        dialog.SetArtists(_controller.Localizer["Artists", "Credits"].Split(Environment.NewLine));
-        dialog.SetTranslatorCredits((string.IsNullOrEmpty(_controller.Localizer["Translators", "Credits"]) ? "" : _controller.Localizer["Translators", "Credits"]));
+        dialog.AddLink(_("List of supported sites"), "https://github.com/yt-dlp/yt-dlp/blob/master/supportedsites.md");
+        dialog.AddLink(_("Matrix Chat"), "https://matrix.to/#/#nickvision:matrix.org");
+        dialog.SetDevelopers(_("Nicholas Logozzo {0}\nContributors on GitHub ❤️ {1}", "https://github.com/nlogozzo", "https://github.com/NickvisionApps/TubeConverter/graphs/contributors").Split("\n"));
+        dialog.SetDesigners(_("Nicholas Logozzo {0}\nFyodor Sobolev {1}\nDaPigGuy {2}", "https://github.com/nlogozzo", "https://github.com/fsobolev", "https://github.com/DaPigGuy").Split("\n"));
+        dialog.SetArtists(_("David Lapshin {0}\nBrage Fuglseth {1}\nmarcin {2}", "https://github.com/daudix-UFO", "https://github.com/bragefuglseth", "https://github.com/martin-desktops").Split("\n"));
+        dialog.SetTranslatorCredits(_("translator-credits"));
         dialog.SetReleaseNotes(_controller.AppInfo.Changelog);
         dialog.Present();
     }
 
+    /// <summary>
+    /// Occurs when the run in background option is changed
+    /// </summary>
+    /// <param name="sender">object?</param>
+    /// <param name="e">EventArgs</param>
     private void RunInBackgroundChanged(object? sender, EventArgs e)
     {
         if (_controller.RunInBackground)
@@ -762,6 +811,26 @@ public partial class MainWindow : Adw.ApplicationWindow
         else
         {
             _isBackgroundStatusReported = false;
+        }
+    }
+
+    /// <summary>
+    /// Reads the clipboard's text and checks for a valid media url
+    /// </summary>
+    private void ValidateClipboard()
+    {
+        if(_controller.ReadClipboard)
+        {
+            var clipboard = Gdk.Display.GetDefault()!.GetClipboard();
+            _clipboardCallback = (source, res, data) =>
+            {
+                var clipboardText = gdk_clipboard_read_text_finish(clipboard.Handle, res, IntPtr.Zero);
+                if(!string.IsNullOrEmpty(clipboardText))
+                {
+                    _controller.ValidateClipboard(clipboardText);
+                }
+            };
+            gdk_clipboard_read_text_async(clipboard.Handle, IntPtr.Zero, _clipboardCallback, IntPtr.Zero);   
         }
     }
 }

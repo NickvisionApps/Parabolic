@@ -4,7 +4,7 @@
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>MIT</project_license>
   <name>Tube Converter</name>
-  <developer_name>Nickvision</developer_name>
+  <developer_name translatable="no">Nickvision</developer_name>
   <summary>Get video and audio from the web</summary>
   <description>
     <p>— A basic yt-dlp frontend</p>
@@ -22,16 +22,16 @@
   <launchable type="desktop-id">org.nickvision.tubeconverter.desktop</launchable>
   <screenshots>
     <screenshot type="default">
-      <image>https://raw.githubusercontent.com/NickvisionApps/TubeConverter/master/NickvisionTubeConverter.GNOME/Screenshots/Light.png</image>
+      <image>https://raw.githubusercontent.com/NickvisionApps/TubeConverter/master/@PROJECT@/Screenshots/Light.png</image>
     </screenshot>
     <screenshot>
-      <image>https://raw.githubusercontent.com/NickvisionApps/TubeConverter/master/NickvisionTubeConverter.GNOME/Screenshots/StartScreen.png</image>
+      <image>https://raw.githubusercontent.com/NickvisionApps/TubeConverter/master/@PROJECT@/Screenshots/StartScreen.png</image>
     </screenshot>
     <screenshot>
-      <image>https://raw.githubusercontent.com/NickvisionApps/TubeConverter/master/NickvisionTubeConverter.GNOME/Screenshots/AddDownload.png</image>
+      <image>https://raw.githubusercontent.com/NickvisionApps/TubeConverter/master/@PROJECT@/Screenshots/AddDownload.png</image>
     </screenshot>
     <screenshot>
-      <image>https://raw.githubusercontent.com/NickvisionApps/TubeConverter/master/NickvisionTubeConverter.GNOME/Screenshots/Dark.png</image>
+      <image>https://raw.githubusercontent.com/NickvisionApps/TubeConverter/master/@PROJECT@/Screenshots/Dark.png</image>
     </screenshot>
   </screenshots>
   <url type="homepage">https://github.com/NickvisionApps/TubeConverter</url>
@@ -50,16 +50,16 @@
   </custom>
   
   <releases>
-    <release version="2023.5.0-rc2" date="2023-05-24">
-      <description>
-        <p>- Added the per-download option to crop the thumbnail of a video as a square</p>
-        <p>- Added the ability to stop all downloads</p>
-        <p>- Added the ability to retry all failed downloads</p>
-        <p>- Added the ability to clear queued downloads</p>
-        <p>- When downloading a video, the quality options will be the specific resolutions of the video instead of Best, Good, Worst</p>
-        <p>- Fixed an issue where some downloads could not be stopped and retried</p>
-        <p>- Fixed a random crash users where experiencing when downloading</p>
-        <p>- Improved UI/UX</p>
+    <release version="2023.6.0-beta1" date="2023-05-28">
+      <description translatable="no">
+        <p>- Added the ability to upload a cookie file to use for media downloads that require a login</p>
+        <p>- Added support for downloading media as M4A</p>
+        <p>- Added more configurable options for aria2 downloader</p>
+        <p>- Added options to configure when completed download notifications are shown</p>
+        <p>- Added the ability to clear completed downloads</p>
+        <p>- Tube Converter will check the clipboard for a valid media url on startup and when AddDownloadDialog is opened</p>
+        <p>- Fixed an issue that prevented downloading m3u8 streams</p>
+        <p>- Fixed an issue that prevented downloading media to NTFS drives</p>
         <p>- Updated translations (Thanks everyone on Weblate!)</p>
       </description>
     </release>

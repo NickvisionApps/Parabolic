@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using static NickvisionTubeConverter.Shared.Helpers.Gettext;
 
 namespace NickvisionTubeConverter.Shared.Models;
 
@@ -10,10 +11,9 @@ namespace NickvisionTubeConverter.Shared.Models;
 /// </summary>
 public class DownloadManager
 {
-    private Localizer _localizer;
     private int _maxNumberOfActiveDownloads;
     private Dictionary<Guid, Download> _downloading;
-    private Dictionary<Guid, (Download Download, bool UseAria, bool EmbedMetadata)> _queued;
+    private Dictionary<Guid, (Download Download, DownloadOptions Options)> _queued;
     private Dictionary<Guid, Download> _completed;
     private Dictionary<Guid, DownloadProgressState> _progressStates;
 
@@ -63,12 +63,10 @@ public class DownloadManager
     /// Constructs a DownloadManager
     /// </summary>
     /// <param name="maxNumberOfActiveDownloads">The maximum number of active downloads</param>
-    /// <param name="localizer">The Localizer for strings</param>
-    public DownloadManager(int maxNumberOfActiveDownloads, Localizer localizer)
+    public DownloadManager(int maxNumberOfActiveDownloads)
     {
-        _localizer = localizer;
         _downloading = new Dictionary<Guid, Download>();
-        _queued = new Dictionary<Guid, (Download Download, bool UseAria, bool EmbedMetadata)>();
+        _queued = new Dictionary<Guid, (Download Download, DownloadOptions Options)>();
         _completed = new Dictionary<Guid, Download>();
         _progressStates = new Dictionary<Guid, DownloadProgressState>();
         _maxNumberOfActiveDownloads = maxNumberOfActiveDownloads;
@@ -90,7 +88,7 @@ public class DownloadManager
                 _downloading.Add(firstPair.Key, firstPair.Value.Download);
                 _queued.Remove(firstPair.Key);
                 DownloadStartedFromQueue?.Invoke(this, firstPair.Key);
-                firstPair.Value.Download.Start(firstPair.Value.UseAria, firstPair.Value.EmbedMetadata, _localizer);
+                firstPair.Value.Download.Start(firstPair.Value.Options);
             }
         }
     }
@@ -129,7 +127,7 @@ public class DownloadManager
                     result += _progressStates[pair.Value.Id].Progress;
                 }
             }
-            result /= (_downloading.Count + _queued.Count) > 0 ? (_downloading.Count + _queued.Count) : 1;
+            result /= (RemainingDownloadsCount) > 0 ? (RemainingDownloadsCount) : 1;
             return result;
         }
     }
@@ -149,7 +147,7 @@ public class DownloadManager
                     totalSpeed += _progressStates[pair.Value.Id].Speed;
                 }
             }
-            return totalSpeed.GetSpeedString(_localizer);
+            return totalSpeed.GetSpeedString();
         }
     }
 
@@ -160,17 +158,17 @@ public class DownloadManager
     {
         get
         {
-            if ((_downloading.Count + _queued.Count) > 0)
+            if (RemainingDownloadsCount > 0)
             {
-                return string.Format(_localizer["BackgroundActivityReport"], _downloading.Count + _queued.Count, TotalProgress * 100, TotalSpeedString);
+                return _n("{0} download — {1:f1}% ({2})", "{0} downloads — {1:f1}% ({2})", RemainingDownloadsCount, RemainingDownloadsCount, TotalProgress * 100, TotalSpeedString);
             }
             else if (ErrorsCount > 0)
             {
-                return _localizer["FinishedWithErrors"];
+                return _("Some downloads finished with errors!");
             }
             else
             {
-                return _localizer["NoDownloadsRunning"];
+                return _("No downloads running");
             }
         }
     }
@@ -178,10 +176,9 @@ public class DownloadManager
     /// <summary>
     /// Adds a download
     /// </summary>
-    /// <param name="download"></param>
-    /// <param name="useAria"></param>
-    /// <param name="embedMetadata"></param>
-    public void AddDownload(Download download, bool useAria, bool embedMetadata)
+    /// <param name="download">The Download model</param>
+    /// <param name="options">The DownloadOptions</param>
+    public void AddDownload(Download download, DownloadOptions options)
     {
         download.ProgressChanged += Download_ProgressChanged;
         download.Completed += Download_Completed;
@@ -189,11 +186,11 @@ public class DownloadManager
         {
             _downloading.Add(download.Id, download);
             DownloadAdded?.Invoke(this, (download.Id, download.Filename, download.SaveFolder, true));
-            download.Start(useAria, embedMetadata, _localizer);
+            download.Start(options);
         }
         else
         {
-            _queued.Add(download.Id, (download, useAria, embedMetadata));
+            _queued.Add(download.Id, (download, options));
             DownloadAdded?.Invoke(this, (download.Id, download.Filename, download.SaveFolder, false));
         }
     }
@@ -229,16 +226,15 @@ public class DownloadManager
     /// Requests for a download to be retried
     /// </summary>
     /// <param name="id">The id of the download</param>
-    /// <param name="useAria">Whether or not to use aria2 downloader</param>
-    /// <param name="embedMetadata">Whether or not to emebed metadata</param>
-    public void RequestRetry(Guid id, bool useAria, bool embedMetadata)
+    /// <param name="options">The DownloadOptions</param>
+    public void RequestRetry(Guid id, DownloadOptions options)
     {
         if (_completed.ContainsKey(id))
         {
             var download = _completed[id];
             _completed.Remove(id);
             DownloadRetried?.Invoke(this, id);
-            AddDownload(download, useAria, embedMetadata);
+            AddDownload(download, options);
         }
     }
 
@@ -261,15 +257,14 @@ public class DownloadManager
     /// <summary>
     /// Requests all failed downloads to be retried
     /// </summary>
-    /// <param name="useAria">Whether or not to use aria2 downloader</param>
-    /// <param name="embedMetadata">Whether or not to emebed metadata</param>
-    public void RetryFailedDownloads(bool useAria, bool embedMetadata)
+    /// <param name="options">The DownloadOptions</param>
+    public void RetryFailedDownloads(DownloadOptions options)
     {
         foreach (var pair in _completed)
         {
             if (!pair.Value.IsSuccess)
             {
-                RequestRetry(pair.Key, useAria, embedMetadata);
+                RequestRetry(pair.Key, options);
             }
         }
     }
@@ -278,6 +273,11 @@ public class DownloadManager
     /// Clears all downloads from queue
     /// </summary>
     public void ClearQueuedDownloads() => _queued.Clear();
+
+    /// <summary>
+    /// Clears all completed downloads
+    /// </summary>
+    public void ClearCompletedDownloads() => _completed.Clear();
 
     /// <summary>
     /// Occurs when a download's progress is changed
@@ -314,7 +314,7 @@ public class DownloadManager
             _downloading.Add(firstPair.Key, firstPair.Value.Download);
             _queued.Remove(firstPair.Key);
             DownloadStartedFromQueue?.Invoke(this, firstPair.Key);
-            firstPair.Value.Download.Start(firstPair.Value.UseAria, firstPair.Value.EmbedMetadata, _localizer);
+            firstPair.Value.Download.Start(firstPair.Value.Options);
         }
     }
 }

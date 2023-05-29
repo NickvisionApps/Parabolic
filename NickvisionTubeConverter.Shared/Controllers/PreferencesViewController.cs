@@ -9,11 +9,6 @@ namespace NickvisionTubeConverter.Shared.Controllers;
 public class PreferencesViewController
 {
     /// <summary>
-    /// The localizer to get translated strings from
-    /// </summary>
-    public Localizer Localizer { get; init; }
-
-    /// <summary>
     /// Gets the AppInfo object
     /// </summary>
     public AppInfo AppInfo => AppInfo.Current;
@@ -21,9 +16,9 @@ public class PreferencesViewController
     /// <summary>
     /// Constructs a PreferencesViewController
     /// </summary>
-    internal PreferencesViewController(Localizer localizer)
+    internal PreferencesViewController()
     {
-        Localizer = localizer;
+        
     }
 
     /// <summary>
@@ -34,6 +29,26 @@ public class PreferencesViewController
         get => Configuration.Current.Theme;
 
         set => Configuration.Current.Theme = value;
+    }
+
+    /// <summary>
+    /// The preference of how often to show completed notifications
+    /// </summary>
+    public NotificationPreference CompletedNotificationPreference
+    {
+        get => Configuration.Current.CompletedNotificationPreference;
+
+        set => Configuration.Current.CompletedNotificationPreference = value;
+    }
+
+    /// <summary>
+    /// Whether or not to read the clipboard for a valid link
+    /// </summary>
+    public bool ReadClipboard
+    {
+        get => Configuration.Current.ReadClipboard;
+
+        set => Configuration.Current.ReadClipboard = value;
     }
 
     /// <summary>
@@ -84,6 +99,36 @@ public class PreferencesViewController
         get => Configuration.Current.UseAria;
 
         set => Configuration.Current.UseAria = value;
+    }
+
+    /// <summary>
+    /// The maximum number of connections to one server for each download (-x)
+    /// </summary>
+    public int AriaMaxConnectionsPerServer
+    {
+         get => Configuration.Current.AriaMaxConnectionsPerServer;
+
+         set => Configuration.Current.AriaMaxConnectionsPerServer = value;
+    }
+
+    /// <summary>
+    /// The minimum size of which to split a file (-k)
+    /// </summary>
+    public int AriaMinSplitSize
+    {
+        get => Configuration.Current.AriaMinSplitSize;
+
+        set => Configuration.Current.AriaMinSplitSize = value;
+    }
+
+    /// <summary>
+    /// The path of the cookies file to use for yt-dlp
+    /// </summary>
+    public string CookiesPath
+    {
+        get => Configuration.Current.CookiesPath;
+
+        set => Configuration.Current.CookiesPath = value;
     }
 
     /// <summary>

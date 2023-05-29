@@ -14,31 +14,30 @@ public class Configuration
     /// The directory of the application configuration
     /// </summary>
     public static readonly string ConfigDir = $"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}{Path.DirectorySeparatorChar}Nickvision{Path.DirectorySeparatorChar}{AppInfo.Current.Name}";
+    private static readonly string ConfigPath = $"{ConfigDir}{Path.DirectorySeparatorChar}config.json";
     /// <summary>
     /// The directory to store temporary files
     /// </summary>
-    public static string TempDir
-    {
-        get
-        {
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-            {
-                return $"{Environment.GetFolderPath(Environment.SpecialFolder.UserProfile)}{Path.DirectorySeparatorChar}.tc-temp";
-            }
-            else
-            {
-                return $"{ConfigDir}{Path.DirectorySeparatorChar}temp";
-            }
-        }
-    }
+    public static string TempDir = RuntimeInformation.IsOSPlatform(OSPlatform.Windows) ? $"{Environment.GetFolderPath(Environment.SpecialFolder.UserProfile)}{Path.DirectorySeparatorChar}.tc-temp" :  $"{ConfigDir}{Path.DirectorySeparatorChar}temp";
 
-    private static readonly string ConfigPath = $"{ConfigDir}{Path.DirectorySeparatorChar}config.json";
     private static Configuration? _instance;
 
     /// <summary>
     /// The preferred theme for the application
     /// </summary>
     public Theme Theme { get; set; }
+    /// <summary>
+    /// The preference of how often to show completed notifications
+    /// </summary>
+    public NotificationPreference CompletedNotificationPreference { get; set; }
+    /// <summary>
+    /// Whether or not to read the clipboard for a valid link
+    /// </summary>
+    public bool ReadClipboard { get; set; }
+    /// <summary>
+    /// Whether to allow running in the background
+    /// </summary>
+    public bool RunInBackground { get; set; }
     /// <summary>
     /// The previously used download save folder
     /// </summary>
@@ -52,29 +51,9 @@ public class Configuration
     /// </summary>
     public bool EmbedMetadata { get; set; }
     /// <summary>
-    /// The version of python installed on WinUI version
-    /// </summary>
-    public Version WinUIPythonVersion { get; set; }
-    /// <summary>
-    /// The version of ytdlp installed on WinUI version
-    /// </summary>
-    public Version WinUIYtdlpVersion { get; set; }
-    /// <summary>
-    /// The version of ffmpeg installed on WinUI version
-    /// </summary>
-    public Version WinUIFfmpegVersion { get; set; }
-    /// <summary>
-    /// The version of aria2 installed on WinUI version
-    /// </summary>
-    public Version WinUIAriaVersion { get; set; }
-    /// <summary>
     /// The maximum number of active downloads (should be between 1-10)
     /// </summary>
     public int MaxNumberOfActiveDownloads { get; set; }
-    /// <summary>
-    /// Whether to allow running in the background
-    /// </summary>
-    public bool RunInBackground { get; set; }
     /// <summary>
     /// Speed limit in KiB/s (should be between 512-10240)
     /// </summary>
@@ -83,6 +62,18 @@ public class Configuration
     /// Whether or not to use aria2
     /// </summary>
     public bool UseAria { get; set; }
+    /// <summary>
+    /// The maximum number of connections to one server for each download (-x)
+    /// </summary>
+    public int AriaMaxConnectionsPerServer { get; set; }
+    /// <summary>
+    /// The minimum size of which to split a file (-k)
+    /// </summary>
+    public int AriaMinSplitSize { get; set; }
+    /// <summary>
+    /// The path of the cookies file to use for yt-dlp
+    /// </summary>
+    public string CookiesPath { get; set; }
 
     /// <summary>
     /// Occurs when the configuration is saved to disk
@@ -99,17 +90,18 @@ public class Configuration
             Directory.CreateDirectory(ConfigDir);
         }
         Theme = Theme.System;
+        CompletedNotificationPreference = NotificationPreference.ForEach;
+        ReadClipboard = true;
+        RunInBackground = RuntimeInformation.IsOSPlatform(OSPlatform.Windows);
         PreviousSaveFolder = Environment.GetFolderPath(Environment.SpecialFolder.MyVideos);
         PreviousMediaFileType = MediaFileType.MP4;
         EmbedMetadata = true;
-        WinUIPythonVersion = new Version(0, 0, 0);
-        WinUIYtdlpVersion = new Version(0, 0, 0);
-        WinUIFfmpegVersion = new Version(0, 0, 0);
-        WinUIAriaVersion = new Version(0, 0, 0);
         MaxNumberOfActiveDownloads = 5;
-        RunInBackground = RuntimeInformation.IsOSPlatform(OSPlatform.Windows);
         SpeedLimit = 1024;
         UseAria = false;
+        AriaMaxConnectionsPerServer = 16;
+        AriaMinSplitSize = 20;
+        CookiesPath = "";
     }
 
     /// <summary>

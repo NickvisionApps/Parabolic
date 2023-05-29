@@ -2,8 +2,8 @@ using Gtk 4.0;
 using Adw 1;
 
 Adw.PreferencesWindow _root {
-  default-width: 600;
-  default-height: 620;
+  default-width: 700;
+  default-height: 650;
   width-request: 360;
   modal: true;
   destroy-with-parent: false;
@@ -12,13 +12,13 @@ Adw.PreferencesWindow _root {
 
   Adw.PreferencesPage {
     Adw.PreferencesGroup {
-      title: _("UserInterface");
-      description: _("UserInterfaceDescription");
+      title: _("User Interface");
+      description: _("Customize the application's user interface.");
 
       Adw.ComboRow _themeRow {
         title: _("Theme");
         model: Gtk.StringList {
-          strings [_("ThemeLight"), _("ThemeDark"), _("ThemeSystem")]
+          strings [C_("Theme", "Light"), C_("Theme", "Dark"), C_("Theme", "System")]
         };
 
         [prefix]
@@ -27,9 +27,38 @@ Adw.PreferencesWindow _root {
         }
       }
 
+      Adw.ComboRow _completedNotificationRow {
+        title: _("Completed Notification Trigger");
+        subtitle: _("In combination with the trigger, completed notifications will only be shown if the window is not focused.");
+        model: Gtk.StringList {
+          strings [C_("CompletedNotification", "For each download"), C_("CompletedNotification", "When all downloads finish"), C_("CompletedNotification", "Never")]
+        };
+
+        [prefix]
+        Gtk.Image {
+          icon-name: "preferences-system-notifications-symbolic";
+        }
+      }
+
+      Adw.ActionRow {
+        title: _("Scan Clipboard for URLs");
+
+        [prefix]
+        Gtk.Image {
+          icon-name: "clipboard-symbolic";
+        }
+
+        [suffix]
+        Gtk.Switch _clipboardSwitch {
+          valign: center;
+        }
+
+        activatable-widget: _clipboardSwitch;
+      }
+
       Adw.ActionRow _backgroundRow {
-        title: _("AllowBackground");
-        subtitle: _("AllowBackgroundDescription.GTK");
+        title: _("Allow Running In Background");
+        subtitle: _("Hide the window instead of quitting if there are downloads running.");
 
         [prefix]
         Gtk.Image {
@@ -47,10 +76,10 @@ Adw.PreferencesWindow _root {
 
     Adw.PreferencesGroup {
       title: _("Downloader");
-      description: _("Downloader.Description");
+      description: _("Customize downloader settings.");
 
       Adw.ActionRow {
-        title: _("MaxNumberOfActiveDownloads");
+        title: _("Max Number of Active Downloads");
 
         [prefix]
         Gtk.Image {
@@ -71,8 +100,8 @@ Adw.PreferencesWindow _root {
       }
 
       Adw.ActionRow {
-        title: _("SpeedLimit");
-        subtitle: _("SpeedLimit.Description");
+        title: _("Speed Limit");
+        subtitle: _("This limit (in KiB/s) is applied to downloads that have speed limit enabled. Changing the value doesn't affect already running downloads.");
 
         [prefix]
         Gtk.Image {
@@ -92,35 +121,190 @@ Adw.PreferencesWindow _root {
         }
       }
 
-      Adw.ActionRow _useAriaRow {
-        title: _("UseAria");
-        subtitle: _("UseAria.Description");
+      Adw.ExpanderRow _useAriaRow {
+        title: _("Use aria2");
+        subtitle: _("Enable to use aria2 downloader. It can be faster, but you will not see download progress.");
+        show-enable-switch: true;
 
         [prefix]
         Gtk.Image {
           icon-name: "preferences-system-network-proxy-symbolic";
         }
 
-        [suffix]
-        Gtk.Switch _useAriaSwitch {
-          valign: center;
+        Adw.ActionRow {
+          title: _("Max Connections Per Server (-x)");
+
+          [prefix]
+          Gtk.Image {
+            icon-name: "globe-symbolic";
+          }
+
+          [suffix]
+          Gtk.SpinButton _ariaMaxConnectionsPerServerSpin {
+            valign: center;
+            numeric: true;
+            adjustment: Gtk.Adjustment {
+              lower: 1;
+              upper: 32;
+              step-increment: 1;
+              page-increment: 2;
+            };
+          }
+
+          [suffix]
+          Gtk.Button _ariaMaxConnectionsPerServerResetButton {
+            valign: center;
+            icon-name: "larger-brush-symbolic";
+            tooltip-text: _("Reset to default");
+          }
         }
 
-        activatable-widget: _useAriaSwitch;
+        Adw.ActionRow {
+          title: _("Minimum Split Size (-k)");
+          subtitle: _("The minimum size of which to split a file (in MiB).");
+
+          [prefix]
+          Gtk.Image {
+            icon-name: "edit-cut-symbolic";
+          }
+
+          [suffix]
+          Gtk.SpinButton _ariaMinSplitSizeSpin {
+            valign: center;
+            numeric: true;
+            adjustment: Gtk.Adjustment {
+              lower: 1;
+              upper: 1024;
+              step-increment: 1;
+              page-increment: 128;
+            };
+          }
+
+          [suffix]
+          Gtk.Button _ariaMinSplitSizeResetButton {
+            valign: center;
+            icon-name: "larger-brush-symbolic";
+            tooltip-text: _("Reset to default");
+          }
+        }
+      }
+      
+      Adw.ActionRow {
+        title: _("Cookies File");
+        subtitle: _("A cookies file can be provided to yt-dlp to allow downloading media that requires a login.");
+
+        [prefix]
+        Gtk.Image {
+          icon-name: "document-properties-symbolic";
+        }
+
+        [suffix]
+        Gtk.Box {
+          orientation: horizontal;
+          spacing: 6;
+          
+          Gtk.MenuButton _cookiesHelpButton {
+            valign: center;
+            direction: none;
+            icon-name: "dialog-question-symbolic";
+            
+            popover: Gtk.Popover {
+              child: Gtk.Box {
+                orientation: vertical;
+                spacing: 6;
+                margin-start: 6;
+                margin-top: 6;
+                margin-end: 6;
+                margin-bottom: 6;
+                
+                Adw.Clamp {
+                  maximum-size: 300;
+                  child: Gtk.Label {
+                    wrap: true;
+                    label: _("Cookies can be passed to yt-dlp in the form of TXT files. Export cookies from your browser using the following extensions (use at your own risk):");
+                  };
+                }
+                
+                Gtk.Box {
+                  hexpand: true;
+                  orientation: horizontal;
+                  
+                  Gtk.Button _chromeCookiesButton {
+                    hexpand: true;
+                    
+                    child: Adw.ButtonContent {
+                      label: "Chrome";
+                      icon-name: "google-chrome-symbolic";
+                    };
+                  }
+
+                  Gtk.Button _firefoxCookiesButton {
+                    hexpand: true;
+                    
+                    child: Adw.ButtonContent {
+                      label: "Firefox";
+                      icon-name: "firefox-symbolic";
+                    };
+                  }
+                  
+                  styles ["linked"]
+                }
+              };
+            };
+            
+            styles ["flat"]
+          }
+          
+          Adw.ViewStack _cookiesViewStack {
+            Adw.ViewStackPage {
+              name: "no-file";
+              child: Gtk.Button _selectCookiesFileButton {
+                halign: end;
+                valign: center;
+                child: Adw.ButtonContent {
+                  label: _("Select Cookies File");
+                  icon-name: "document-open-symbolic";
+                };
+              };
+            }
+  
+            Adw.ViewStackPage {
+              name: "file-selected";
+              child: Gtk.Box {
+                orientation: horizontal;
+                halign: end;
+                valign: center;
+  
+                Gtk.Button _cookiesFileButton {
+                  tooltip-text: _("Select Cookies File");
+                  child: Gtk.Label _cookiesFileLabel {
+                    ellipsize: start;
+                  };
+                }
+  
+                Gtk.Button _unsetCookiesFileButton {
+                  icon-name: "larger-brush-symbolic";
+                  tooltip-text: _("Clear Cookies File");
+                }
+  
+                styles ["linked"]
+              };
+            }
+          } 
+        }
       }
     }
 
     Adw.PreferencesGroup {
       title: _("Converter");
-      description: _("Converter.Description");
+      description: _("Customize converter settings.");
 
       Adw.ActionRow {
-        title: _("EmbedMetadata");
-        subtitle: _("EmbedMetadata.Description");
+        title: _("Embed Metadata");
 
         [prefix]
         Gtk.Image {
-          icon-name: "encode-symbolic";
+          icon-name: "tag-outline-symbolic";
         }
 
         [suffix]

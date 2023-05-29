@@ -1,38 +1,47 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-	<PropertyGroup>
-		<OutputType>Exe</OutputType>
-		<TargetFramework>net7.0</TargetFramework>
-		<Nullable>enable</Nullable>
-		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-	</PropertyGroup>
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net7.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
 
-	<ItemGroup>
-		<PackageReference Include="GirCore.Adw-1" Version="0.3.0" />
-	</ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="GirCore.Adw-1" Version="0.3.0" />
+  </ItemGroup>
 
-	<ItemGroup>
-		<ProjectReference Include="..\NickvisionTubeConverter.Shared\NickvisionTubeConverter.Shared.csproj" />
-	</ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NickvisionTubeConverter.Shared\NickvisionTubeConverter.Shared.csproj" />
+  </ItemGroup>
 
-	<Target Name="PreBuild" BeforeTargets="PreBuildEvent">
-    	<Exec Command="echo Compiling extra resources..." />
-    	<Exec Command="blueprint-compiler batch-compile ./Blueprints ./Blueprints ./Blueprints/*.blp" />
-    	<Exec Command="glib-compile-resources --sourcedir ./Resources ./Resources/org.nickvision.tubeconverter.gresource.xml --target=$(OutDir)/org.nickvision.tubeconverter.gresource" />
-  	</Target>
+  <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+    <Exec Command="echo Compiling extra resources..." />
+    <Exec Command="blueprint-compiler batch-compile ./Blueprints ./Blueprints ./Blueprints/*.blp" />
+    <Exec Command="glib-compile-resources --sourcedir ./Resources ./Resources/org.nickvision.tubeconverter.gresource.xml --target=$(OutDir)/org.nickvision.tubeconverter.gresource" />
+    <Exec Command="
+      while read lang_code; do \
+        mkdir -p $(OutDir)/${lang_code}; \
+        msgfmt ../NickvisionTubeConverter.Shared/Resources/po/${lang_code}.po -o $(OutDir)/${lang_code}/tubeconverter.mo; \
+      done %3C ../NickvisionTubeConverter.Shared/Resources/po/LINGUAS" />
+  </Target>
 
-	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
-		<Exec Command="rm ./Blueprints/*.ui" />
-	</Target>
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="rm ./Blueprints/*.ui" />
+  </Target>
 
-	<Target Name="PostPublish" AfterTargets="Publish">
-		<Exec Command="mv $(OutDir)/org.nickvision.tubeconverter.gresource $(PublishDir)/org.nickvision.tubeconverter.gresource" />
-	</Target>
+  <Target Name="PostPublish" AfterTargets="Publish">
+    <Exec Command="cp $(OutDir)/org.nickvision.tubeconverter.gresource $(PublishDir)/org.nickvision.tubeconverter.gresource" />
+    <Exec Command="
+      while read lang_code; do \
+        cp -r $(OutDir)/${lang_code} $(PublishDir)/; \
+      done %3C ../NickvisionTubeConverter.Shared/Resources/po/LINGUAS" />
+  </Target>
 
-	<Target Name="EmbedUIFiles" BeforeTargets="BeforeResGen">
-	  <ItemGroup>
-      	<EmbeddedResource Include="Blueprints\*.ui" Type="Non-Resx" WithCulture="false" />
-	  </ItemGroup>
-	</Target>
+  <Target Name="EmbedUIFiles" BeforeTargets="BeforeResGen">
+    <ItemGroup>
+        <EmbeddedResource Include="Blueprints\*.ui" Type="Non-Resx" WithCulture="false" />
+    </ItemGroup>
+  </Target>
 
 </Project>
