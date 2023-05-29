@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
 using System.IO;
+using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -310,7 +311,19 @@ public class Download
                             {
                                 if(path.Contains(Id.ToString()))
                                 {
-                                    File.Move(path, path.Replace(Id.ToString(), Filename));
+                                    try
+                                    {
+                                        File.Move(path, path.Replace(Id.ToString(), Filename));
+                                    }
+                                    catch
+                                    {
+                                        var chars = new char[] { '"', '*', '/', ':', '<', '>', '?', '\\' };
+                                        foreach(var c in chars.Where(x => Filename.Contains(x)))
+                                        {
+                                            Filename = Filename.Replace(c, '_');
+                                        }
+                                        File.Move(path, path.Replace(Id.ToString(), Filename));
+                                    }
                                 }
                             }
                         }
