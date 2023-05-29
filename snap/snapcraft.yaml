@@ -106,6 +106,9 @@ parts:
       - -usr/share/doc
       - -usr/share/man
       - -usr/lib/python3/dist-packages/gi/overrides/Unity.py
+  desktop:
+    source: .
+    plugin: dump
   cleanup:
     after: [ tube-converter, ffmpeg, deps ]
     plugin: nil
