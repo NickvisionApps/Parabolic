@@ -8,28 +8,30 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-05-28 22:22-0400\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"PO-Revision-Date: 2023-05-29 20:53+0000\n"
+"Last-Translator: Fjuro <ifjuro@proton.me>\n"
+"Language-Team: Czech <https://hosted.weblate.org/projects/"
+"nickvision-tube-converter/app/cs/>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+"X-Generator: Weblate 4.18-dev\n"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:250
-#, fuzzy, csharp-format
+#, csharp-format
 msgid "\"{0}\" has finished downloading."
-msgstr "Soubor {0} byl stažen."
+msgstr "Soubor „{0}“ byl stažen."
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:250
-#, fuzzy, csharp-format
+#, csharp-format
 msgid "\"{0}\" has finished with an error!"
-msgstr "Stahování {0} skončilo s chybou!"
+msgstr "Stahování souboru „{0}“ skončilo s chybou!"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:286
-#, fuzzy
 msgid "(Configurable in preferences)"
-msgstr "Lze upravit v předvolbách"
+msgstr "(Lze upravit v předvolbách)"
 
 #: ../../../Helpers/SpeedFormatter.cs:32
 #, csharp-format
@@ -53,24 +55,25 @@ msgid "{0:f1} MiB/s"
 msgstr "{0:f1} MiB/s"
 
 #: ../../../Models/DownloadManager.cs:163
-#, fuzzy, csharp-format
+#, csharp-format
 msgid "{0} download — {1:f1}% ({2})"
 msgid_plural "{0} downloads — {1:f1}% ({2})"
-msgstr[0] "Stahování: {0} — {1:f1}% ({2})"
-msgstr[1] "Stahování: {0} — {1:f1}% ({2})"
+msgstr[0] "{0} stahování — {1:f1}% ({2})"
+msgstr[1] "{0} stahování — {1:f1}% ({2})"
+msgstr[2] "{0} stahování — {1:f1}% ({2})"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:169
 #: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:431
-#, fuzzy, csharp-format
+#, csharp-format
 msgid "{0} of {1} items"
 msgid_plural "{0} of {1} items"
-msgstr[0] "{0} z {1} položek"
-msgstr[1] "{0} z {1} položek"
+msgstr[0] "{0} z {1} položky"
+msgstr[1] "{0} ze {1} položek"
+msgstr[2] "{0} z {1} položek"
 
 #: ../../../Controllers/MainWindowController.cs:171
-#, fuzzy
 msgid "A link has been detected in your clipboard."
-msgstr "Vložit ze schránky"
+msgstr "Ve vaší schránce byl nalezen odkaz."
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:199
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:36
@@ -85,10 +88,8 @@ msgid "Advanced Options"
 msgstr "Rozšířené možnosti"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:254
-#, fuzzy
-#| msgid "Download Finished"
 msgid "All downloads have finished."
-msgstr "Stahování dokončeno"
+msgstr "Všechna stahování byla dokončena."
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:114
 msgid "Best"
@@ -105,6 +106,9 @@ msgid ""
 "Brage Fuglseth {1}\n"
 "marcin {2}"
 msgstr ""
+"David Lapshin {0}\n"
+"Brage Fuglseth {1}\n"
+"marcin {2}"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:560
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:174
@@ -121,9 +125,8 @@ msgid "Download Finished With Error"
 msgstr "Stahování dokončeno s chybou"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:103
-#, fuzzy
 msgid "Download log was copied to clipboard."
-msgstr "Protokol stahování byl zkopírován do schránky"
+msgstr "Protokol stahování byl zkopírován do schránky."
 
 #: ../../../Models/Download.cs:297
 msgid "Download using aria2 has started"
@@ -140,10 +143,8 @@ msgid "Downloading {0:f2}% ({1})"
 msgstr "Stahování {0:f2}% ({1})"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:254
-#, fuzzy
-#| msgid "Download Finished"
 msgid "Downloads Finished"
-msgstr "Stahování dokončeno"
+msgstr "Stahování dokončena"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:201
 msgid "Error"
@@ -154,7 +155,6 @@ msgid "File already exists, and overwriting is disallowed"
 msgstr "Soubor již existuje a přepisování je zakázáno"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Controls/MediaRow.cs:27
-#, fuzzy
 msgid "File Name"
 msgstr "Název souboru"
 
@@ -191,6 +191,8 @@ msgid ""
 "Nicholas Logozzo {0}\n"
 "Contributors on GitHub ❤️ {1}"
 msgstr ""
+"Nicholas Logozzo {0}\n"
+"Přispěvatelé na GitHubu ❤️ {1}"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:789
 #, csharp-format
@@ -199,6 +201,9 @@ msgid ""
 "Fyodor Sobolev {1}\n"
 "DaPigGuy {2}"
 msgstr ""
+"Nicholas Logozzo {0}\n"
+"Fyodor Sobolev {1}\n"
+"DaPigGuy {2}"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:608
 msgid "No"
@@ -232,9 +237,8 @@ msgstr "Složka k uložení (neplatná)"
 #: ../../../../NickvisionTubeConverter.GNOME/Views/PreferencesDialog.cs:161
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:265
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:279
-#, fuzzy
 msgid "Select Cookies File"
-msgstr "Vybrat složku k uložení"
+msgstr "Vybrat soubor s cookies"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:402
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:130
@@ -273,7 +277,7 @@ msgstr ""
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:791
 msgid "translator-credits"
-msgstr ""
+msgstr "translator-credits"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Program.cs:49
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:38
@@ -324,13 +328,11 @@ msgid "Subtitle"
 msgstr "Titulky"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:112
-#, fuzzy
 msgctxt "Subtitle"
 msgid "None"
 msgstr "Žádné"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:160
-#, fuzzy
 msgid "Select items to download or change file names."
 msgstr "Vyberte položky ke stažení nebo změňte názvy souborů."
 
@@ -402,54 +404,50 @@ msgid "Theme"
 msgstr "Motiv"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:21
-#, fuzzy
 msgctxt "Theme"
 msgid "Light"
 msgstr "Světlý"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:21
-#, fuzzy
 msgctxt "Theme"
 msgid "Dark"
 msgstr "Tmavý"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:21
-#, fuzzy
 msgctxt "Theme"
 msgid "System"
 msgstr "Systémový"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:31
 msgid "Completed Notification Trigger"
-msgstr ""
+msgstr "Spuštění oznámení o dokončení"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:32
 msgid ""
 "In combination with the trigger, completed notifications will only be shown "
 "if the window is not focused."
 msgstr ""
+"V kombinaci se spouštěčem budou oznámení o dokončení zobrazena pouze, pokud "
+"je okno na pozadí."
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:34
-#, fuzzy
 msgctxt "CompletedNotification"
 msgid "For each download"
-msgstr "Stáhnout"
+msgstr "Pro každé stahování"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:34
-#, fuzzy
-#| msgid "Download Finished"
 msgctxt "CompletedNotification"
 msgid "When all downloads finish"
-msgstr "Stahování dokončeno"
+msgstr "Při dokončení všech stahování"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:34
 msgctxt "CompletedNotification"
 msgid "Never"
-msgstr ""
+msgstr "Nikdy"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:44
 msgid "Scan Clipboard for URLs"
-msgstr ""
+msgstr "Vyhledat adresy URL ve schránce"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:60
 msgid "Allow Running In Background"
@@ -493,40 +491,45 @@ msgstr ""
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:135
 msgid "Max Connections Per Server (-x)"
-msgstr ""
+msgstr "Maximální počet připojení na server (-x)"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:158
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:187
 msgid "Reset to default"
-msgstr ""
+msgstr "Obnovit na výchozí"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:163
 msgid "Minimum Split Size (-k)"
-msgstr ""
+msgstr "Minimální velikost rozdělení (-k)"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:164
 msgid "The minimum size of which to split a file (in MiB)."
-msgstr ""
+msgstr "Minimální velikost, na kterou má být soubor rozdělen (v MiB)."
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:193
 msgid "Cookies File"
-msgstr ""
+msgstr "Soubor s cookies"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:194
 msgid ""
 "A cookies file can be provided to yt-dlp to allow downloading media that "
 "requires a login."
 msgstr ""
+"Programu yt-dlp lze poskytnout soubor s cookies pro stáhnutí médií, která "
+"vyžadují přihlášení."
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:224
 msgid ""
 "Cookies can be passed to yt-dlp in the form of TXT files. Export cookies "
 "from your browser using the following extensions (use at your own risk):"
 msgstr ""
+"Programu yt-dlp lze soubory cookies předat ve formě souborů TXT. Cookies "
+"můžete ze svého prohlížeče exportovat pomocí následujících rozšíření ("
+"používejte na vlastní nebezpečí):"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:287
 msgid "Clear Cookies File"
-msgstr ""
+msgstr "Vymazat soubor s cookies"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:299
 msgid "Converter"
@@ -566,9 +569,8 @@ msgstr "Klávesové zkratky"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:51
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:7
-#, fuzzy
 msgid "About Tube Converter"
-msgstr "Tube Converter"
+msgstr "O aplikaci Tube Converter"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:56
 msgid "Quit"
@@ -587,19 +589,16 @@ msgid "Main Menu"
 msgstr "Hlavní nabídka"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:71
-#, fuzzy
 msgid "Download Media"
-msgstr "Stahování"
+msgstr "Stáhnout média"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:72
 msgid "Add a video, audio, or playlist URL to start downloading"
-msgstr ""
+msgstr "Pro spuštění stahování přidejte adresu URL videa, zvuku nebo playlistu"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:126
-#, fuzzy
-#| msgid "Stop All Downloads"
 msgid "Stop All"
-msgstr "Zastavit všechna stahování"
+msgstr "Zastavit vše"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:151
 msgid "Queued"
@@ -608,56 +607,55 @@ msgstr "Ve frontě"
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:165
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:213
 msgid "Clear"
-msgstr ""
+msgstr "Vymazat"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:190
 msgid "Completed"
 msgstr "Dokončeno"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:209
-#, fuzzy
-#| msgid "Clear Queued Downloads"
 msgid "Clear Completed Downloads"
-msgstr "Vymazat stahování ve frontě"
+msgstr "Vymazat dokončená stahování"
 
 #: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.metainfo.xml.in:10
 msgid "— A basic yt-dlp frontend"
-msgstr ""
+msgstr "— Jednoduché rozhraní pro yt-dlp"
 
 #: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.metainfo.xml.in:11
 msgid ""
 "— Supports downloading videos in multiple formats (mp4, webm, mp3, opus, "
 "flac, and wav)"
 msgstr ""
+"— Podporuje stahování videí v několika různých formátech (mp4, webm, mp3, "
+"opus, flac, a wav)"
 
 #: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.metainfo.xml.in:12
 msgid "— Run multiple downloads at a time"
-msgstr ""
+msgstr "— Možnost stahovat několik videí najednou"
 
 #: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.metainfo.xml.in:13
 msgid "— Supports downloading metadata and video subtitles"
-msgstr ""
+msgstr "— Podporuje stahování metadat a titulků videí"
 
 #: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.metainfo.xml.in:16
 msgid "youtube"
-msgstr ""
+msgstr "youtube"
 
 #: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.metainfo.xml.in:17
 msgid "video"
-msgstr ""
+msgstr "video"
 
 #: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.metainfo.xml.in:18
 msgid "audio"
-msgstr ""
+msgstr "zvuk"
 
 #: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.metainfo.xml.in:19
 msgid "media"
-msgstr ""
+msgstr "média"
 
 #: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.metainfo.xml.in:20
-#, fuzzy
 msgid "download"
-msgstr "Stáhnout"
+msgstr "stahování"
 
 #, fuzzy
 #~ msgid "Link pasted from clipboard."
