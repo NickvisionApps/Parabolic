@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
 using System.IO;
+using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -173,22 +174,12 @@ public class Download
                     Completed?.Invoke(this, IsSuccess);
                     return;
                 }
-                //Escape filename
-                if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-                {
-                    Filename = Regex.Escape(Filename);
-                }
                 //Setup logs
                 Directory.CreateDirectory(_tempDownloadPath);
                 _outFile = PythonHelpers.SetConsoleOutputFilePath(_logPath);
                 //Setup download params
                 var hooks = new List<Action<PyDict>>();
                 hooks.Add(ProgressHook);
-                var postHooks = new List<Action<PyString>>();
-                if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-                {
-                    postHooks.Add(UnescapeHook);
-                }
                 _ytOpt = new Dictionary<string, dynamic> {
                     { "quiet", false },
                     { "ignoreerrors", "downloadonly" },
@@ -196,8 +187,7 @@ public class Download
                     { "final_ext", FileType.ToString().ToLower() },
                     { "progress_hooks", hooks },
                     { "postprocessor_hooks", hooks },
-                    { "post_hooks", postHooks },
-                    { "outtmpl", $"{Path.GetFileNameWithoutExtension(Filename)}.%(ext)s" },
+                    { "outtmpl", $"{Id.ToString()}.%(ext)s" },
                     { "ffmpeg_location", DependencyManager.FfmpegPath },
                     { "windowsfilenames", RuntimeInformation.IsOSPlatform(OSPlatform.Windows) },
                     { "encoding", "utf_8" },
@@ -309,23 +299,40 @@ public class Download
                             });
                         }
                         PyObject success_code = ytdlp.YoutubeDL(_ytOpt).download(new List<string>() { MediaUrl });
-                        if ((success_code.As<int?>() ?? 1) != 0)
-                        {
-                            Filename = Regex.Unescape(Filename);
-                        }
                         KillAriaKeeper();
                         ForceUpdateLog();
                         IsDone = true;
                         IsRunning = false;
                         _outFile.close();
                         IsSuccess = (success_code.As<int?>() ?? 1) == 0;
+                        if(IsSuccess)
+                        {
+                            foreach (var path in Directory.EnumerateFiles(SaveFolder))
+                            {
+                                if(path.Contains(Id.ToString()))
+                                {
+                                    try
+                                    {
+                                        File.Move(path, path.Replace(Id.ToString(), Filename));
+                                    }
+                                    catch
+                                    {
+                                        var chars = new char[] { '"', '*', '/', ':', '<', '>', '?', '\\' };
+                                        foreach(var c in chars.Where(x => Filename.Contains(x)))
+                                        {
+                                            Filename = Filename.Replace(c, '_');
+                                        }
+                                        File.Move(path, path.Replace(Id.ToString(), Filename));
+                                    }
+                                }
+                            }
+                        }
                         Completed?.Invoke(this, IsSuccess);
                     }
                 }
                 catch (Exception e)
                 {
                     KillAriaKeeper();
-                    Filename = Regex.Unescape(Filename);
                     try
                     {
                         Console.WriteLine(e);
@@ -449,20 +456,6 @@ public class Download
                 }
                 ProgressChanged.Invoke(this, state);
             }
-        }
-    }
-
-    /// <summary>
-    /// Unescape filename after downloading
-    /// </summary>
-    /// <param name="path">PyString</param>
-    private void UnescapeHook(PyString path)
-    {
-        using (Py.GIL())
-        {
-            Filename = Regex.Unescape(Filename);
-            var directory = Path.GetDirectoryName(path.As<string>());
-            File.Move(path.As<string>(), $"{directory}{Path.DirectorySeparatorChar}{Filename}", _overwriteFiles);
         }
     }
 }

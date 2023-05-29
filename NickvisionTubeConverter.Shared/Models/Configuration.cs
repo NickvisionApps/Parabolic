@@ -31,6 +31,14 @@ public class Configuration
     /// </summary>
     public NotificationPreference CompletedNotificationPreference { get; set; }
     /// <summary>
+    /// Whether or not to read the clipboard for a valid link
+    /// </summary>
+    public bool ReadClipboard { get; set; }
+    /// <summary>
+    /// Whether to allow running in the background
+    /// </summary>
+    public bool RunInBackground { get; set; }
+    /// <summary>
     /// The previously used download save folder
     /// </summary>
     public string PreviousSaveFolder { get; set; }
@@ -46,10 +54,6 @@ public class Configuration
     /// The maximum number of active downloads (should be between 1-10)
     /// </summary>
     public int MaxNumberOfActiveDownloads { get; set; }
-    /// <summary>
-    /// Whether to allow running in the background
-    /// </summary>
-    public bool RunInBackground { get; set; }
     /// <summary>
     /// Speed limit in KiB/s (should be between 512-10240)
     /// </summary>
@@ -87,11 +91,12 @@ public class Configuration
         }
         Theme = Theme.System;
         CompletedNotificationPreference = NotificationPreference.ForEach;
+        ReadClipboard = true;
+        RunInBackground = RuntimeInformation.IsOSPlatform(OSPlatform.Windows);
         PreviousSaveFolder = Environment.GetFolderPath(Environment.SpecialFolder.MyVideos);
         PreviousMediaFileType = MediaFileType.MP4;
         EmbedMetadata = true;
         MaxNumberOfActiveDownloads = 5;
-        RunInBackground = RuntimeInformation.IsOSPlatform(OSPlatform.Windows);
         SpeedLimit = 1024;
         UseAria = false;
         AriaMaxConnectionsPerServer = 16;

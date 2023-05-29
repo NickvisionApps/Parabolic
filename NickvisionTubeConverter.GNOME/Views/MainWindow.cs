@@ -243,7 +243,7 @@ public partial class MainWindow : Adw.ApplicationWindow
                     _completedBox.Append(row);
                     _downloadingBox.GetParent().SetVisible(_controller.DownloadManager.RemainingDownloadsCount > 0 ? true : false);
                     _completedBox.GetParent().SetVisible(true);
-                    if (!GetFocus()!.GetHasFocus() || !GetVisible())
+                    if ((GetFocus() != null && !GetFocus()!.GetHasFocus()) || !GetVisible())
                     {
                         if(_controller.CompletedNotificationPreference == NotificationPreference.ForEach)
                         {
@@ -819,15 +819,18 @@ public partial class MainWindow : Adw.ApplicationWindow
     /// </summary>
     private void ValidateClipboard()
     {
-        var clipboard = Gdk.Display.GetDefault()!.GetClipboard();
-        _clipboardCallback = (source, res, data) =>
+        if(_controller.ReadClipboard)
         {
-            var clipboardText = gdk_clipboard_read_text_finish(clipboard.Handle, res, IntPtr.Zero);
-            if(!string.IsNullOrEmpty(clipboardText))
+            var clipboard = Gdk.Display.GetDefault()!.GetClipboard();
+            _clipboardCallback = (source, res, data) =>
             {
-                _controller.ValidateClipboard(clipboardText);
-            }
-        };
-        gdk_clipboard_read_text_async(clipboard.Handle, IntPtr.Zero, _clipboardCallback, IntPtr.Zero);
+                var clipboardText = gdk_clipboard_read_text_finish(clipboard.Handle, res, IntPtr.Zero);
+                if(!string.IsNullOrEmpty(clipboardText))
+                {
+                    _controller.ValidateClipboard(clipboardText);
+                }
+            };
+            gdk_clipboard_read_text_async(clipboard.Handle, IntPtr.Zero, _clipboardCallback, IntPtr.Zero);   
+        }
     }
 }

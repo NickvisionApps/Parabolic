@@ -40,6 +40,22 @@ Adw.PreferencesWindow _root {
         }
       }
 
+      Adw.ActionRow {
+        title: _("Scan Clipboard for URLs");
+
+        [prefix]
+        Gtk.Image {
+          icon-name: "clipboard-symbolic";
+        }
+
+        [suffix]
+        Gtk.Switch _clipboardSwitch {
+          valign: center;
+        }
+
+        activatable-widget: _clipboardSwitch;
+      }
+
       Adw.ActionRow _backgroundRow {
         title: _("Allow Running In Background");
         subtitle: _("Hide the window instead of quitting if there are downloads running.");
@@ -117,7 +133,6 @@ Adw.PreferencesWindow _root {
 
         Adw.ActionRow {
           title: _("Max Connections Per Server (-x)");
-          subtitle: _("The maximum number of connections to one server for each download.");
 
           [prefix]
           Gtk.Image {
@@ -286,11 +301,10 @@ Adw.PreferencesWindow _root {
 
       Adw.ActionRow {
         title: _("Embed Metadata");
-        subtitle: _("If checked, media metadata will be included in the downloaded file.");
 
         [prefix]
         Gtk.Image {
-          icon-name: "encode-symbolic";
+          icon-name: "tag-outline-symbolic";
         }
 
         [suffix]
