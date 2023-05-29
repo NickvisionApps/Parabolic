@@ -187,6 +187,7 @@ apps:
       PYTHONPATH: $SNAP/usr/lib/python3/dist-packages:$PYTHONPATH
       PATH: $SNAP/usr/lib/python3/dist-packages/bin:$PATH
     plugs:
+      - home
       - network
       - network-status
       - mount-observe
