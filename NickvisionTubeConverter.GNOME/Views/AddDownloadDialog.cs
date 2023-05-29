@@ -208,11 +208,15 @@ public partial class AddDownloadDialog : Adw.Window
         var vadjustment = _scrolledWindow.GetVadjustment();
         vadjustment.OnNotify += (sender, e) =>
         {
-            if (e.Pspec.GetName() == "upper")
+            if (e.Pspec.GetName() == "page-size")
             {
                 if (vadjustment.GetPageSize() < vadjustment.GetUpper())
                 {
                     _scrolledWindow.AddCssClass("scrolled-window");
+                }
+                else
+                {
+                    _scrolledWindow.RemoveCssClass("scrolled-window");
                 }
             }
         };
