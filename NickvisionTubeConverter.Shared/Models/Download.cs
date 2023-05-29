@@ -306,7 +306,14 @@ public class Download
                         IsSuccess = (success_code.As<int?>() ?? 1) == 0;
                         if(IsSuccess)
                         {
-                            File.Move($"{SaveFolder}{Path.DirectorySeparatorChar}{Id.ToString()}{FileType.GetDotExtension()}", $"{SaveFolder}{Path.DirectorySeparatorChar}{Filename}");
+                            foreach(var file in Directory.EnumerateFiles(SaveFolder, "*", SearchOption.TopDirectoryOnly))
+                            {
+                                if(file.StartsWith(Id.ToString()))
+                                {
+                                    File.Move(file, file.Replace(Id.ToString(), Filename));
+                                }
+                            }
+
                         }
                         Completed?.Invoke(this, IsSuccess);
                     }
