@@ -135,14 +135,12 @@ Adw.Window _root {
 
                       Adw.ActionRow _openAdvancedRow {
                         title: _("Advanced Options");
-                        activatable-widget: _openAdvancedButton;
+                        activatable-widget: _openAdvancedImage;
 
                         [suffix]
-                        Gtk.Button _openAdvancedButton {
+                        Gtk.Image _openAdvancedImage {
                           valign: center;
                           icon-name: "go-next-symbolic";
-
-                          styles ["flat"]
                         }
                       }
                     }
@@ -160,14 +158,12 @@ Adw.Window _root {
 
                       Adw.ActionRow _openPlaylistRow {
                         subtitle: _("Select items to download or change file names.");
-                        activatable-widget: _openPlaylistButton;
+                        activatable-widget: _openPlaylistImage;
 
                         [suffix]
-                        Gtk.Button _openPlaylistButton {
+                        Gtk.Image _openPlaylistImage {
                           valign: center;
                           icon-name: "go-next-symbolic";
-
-                          styles ["flat"]
                         }
                       }
                     }
