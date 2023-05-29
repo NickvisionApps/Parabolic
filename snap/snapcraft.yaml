@@ -1,7 +1,7 @@
 name: tube-converter # you probably want to 'snapcraft register <name>'
 base: core22 # the base snap is the execution environment for this snap
 adopt-info: tube-converter
-icon: NickvisionTubeConverter.Shared/Resources/org.nickvision.tubeconverter.png
+#icon: NickvisionTubeConverter.Shared/Resources/org.nickvision.tubeconverter.png
 version: 2023.5.0
 summary: An easy-to-use YouTube video downloader # 79 char long summary
 description: |
@@ -108,6 +108,11 @@ parts:
       dotnet cake --target=Publish --prefix=/usr --ui=gnome --self-contained
       dotnet cake --target=Install --destdir=$CRAFT_PRIME
       sed -i "2 i export TC_PYTHON_SO=$TC_PYTHON_SO" $CRAFT_PRIME/usr/bin/org.nickvision.tubeconverter
+      mkdir -p meta/gui
+      mv usr/share/icons meta/gui/
+      for i in `find meta/gui/icons -name "*.svg" -o -name "*.png"`; do
+        mv $i "`dirname $i`/snap.$CRAFT_PROJECT_NAME.`basename $i`"
+      done
     parse-info: [ usr/share/metainfo/org.nickvision.tubeconverter.metainfo.xml ]
     prime:
       - usr/*
@@ -186,7 +191,6 @@ apps:
       TC_PYTHON_SO: $SNAP/gnome-platform/usr/lib/$CRAFT_ARCH_TRIPLET/libpython3.10.so.1.0
       PYTHONPATH: $SNAP/usr/lib/python3/dist-packages:$PYTHONPATH
       PATH: $SNAP/usr/lib/python3/dist-packages/bin:$PATH
-      GNOTIFICATION_BACKEND: freedesktop
     plugs:
       - home
       - network
