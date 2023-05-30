@@ -165,7 +165,7 @@ public partial class PreferencesDialog : Adw.PreferencesWindow
         var filters = Gio.ListStore.New(Gtk.FileFilter.GetGType());
         filters.Append(filterTxt);
         gtk_file_dialog_set_filters(fileDialog, filters.Handle);
-        _fileDialogCallback = async (source, res, data) =>
+        _fileDialogCallback = (source, res, data) =>
         {
             var fileHandle = gtk_file_dialog_open_finish(fileDialog, res, IntPtr.Zero);
             if (fileHandle != IntPtr.Zero)
