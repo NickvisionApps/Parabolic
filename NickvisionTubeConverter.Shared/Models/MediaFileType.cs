@@ -13,7 +13,9 @@ public enum MediaFileType
     M4A,
     OPUS,
     FLAC,
-    WAV
+    WAV,
+    Video,
+    Audio
 }
 
 /// <summary>
@@ -63,6 +65,8 @@ public static class MediaFileTypeHelpers
         MediaFileType.OPUS => true,
         MediaFileType.FLAC => true,
         MediaFileType.WAV => true,
+        MediaFileType.Video => false,
+        MediaFileType.Audio => true,
         _ => false
     };
 
@@ -80,6 +84,8 @@ public static class MediaFileTypeHelpers
         MediaFileType.OPUS => false,
         MediaFileType.FLAC => false,
         MediaFileType.WAV => false,
+        MediaFileType.Video => true,
+        MediaFileType.Audio => false,
         _ => false
     };
 
@@ -97,6 +103,20 @@ public static class MediaFileTypeHelpers
         MediaFileType.OPUS => true,
         MediaFileType.FLAC => true,
         MediaFileType.WAV => false,
+        MediaFileType.Video => false,
+        MediaFileType.Audio => false,
+        _ => false
+    };
+
+    /// <summary>
+    /// Gets whether or not the MediaFileType is generic
+    /// </summary>
+    /// <param name="type">The MediaFileType</param>
+    /// <returns>True if generic, else false</returns>
+    public static bool GetIsGeneric(this MediaFileType type) => type switch
+    {
+        MediaFileType.Video => true,
+        MediaFileType.Audio => true,
         _ => false
     };
 }

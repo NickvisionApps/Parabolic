@@ -43,10 +43,6 @@ public class Configuration
     /// </summary>
     public MediaFileType PreviousMediaFileType { get; set; }
     /// <summary>
-    /// Whether or not to embed metadata in a download
-    /// </summary>
-    public bool EmbedMetadata { get; set; }
-    /// <summary>
     /// The maximum number of active downloads (should be between 1-10)
     /// </summary>
     public int MaxNumberOfActiveDownloads { get; set; }
@@ -70,6 +66,14 @@ public class Configuration
     /// The path of the cookies file to use for yt-dlp
     /// </summary>
     public string CookiesPath { get; set; }
+    /// <summary>
+    /// Whether or not to disallow converting of formats
+    /// </summary>
+    public bool DisallowConversions { get; set; }
+    /// <summary>
+    /// Whether or not to embed metadata in a download
+    /// </summary>
+    public bool EmbedMetadata { get; set; }
 
     /// <summary>
     /// Occurs when the configuration is saved to disk
@@ -90,13 +94,14 @@ public class Configuration
         RunInBackground = RuntimeInformation.IsOSPlatform(OSPlatform.Windows);
         PreviousSaveFolder = Environment.GetFolderPath(Environment.SpecialFolder.MyVideos);
         PreviousMediaFileType = MediaFileType.MP4;
-        EmbedMetadata = true;
         MaxNumberOfActiveDownloads = 5;
         SpeedLimit = 1024;
         UseAria = false;
         AriaMaxConnectionsPerServer = 16;
         AriaMinSplitSize = 20;
         CookiesPath = "";
+        DisallowConversions = false;
+        EmbedMetadata = true;
     }
 
     /// <summary>

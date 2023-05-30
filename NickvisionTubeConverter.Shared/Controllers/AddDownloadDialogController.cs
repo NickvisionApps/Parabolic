@@ -41,13 +41,17 @@ public class AddDownloadDialogController
     /// </summary>
     public MediaFileType PreviousMediaFileType => Configuration.Current.PreviousMediaFileType;
     /// <summary>
-    /// Whether to embed metadata
-    /// </summary>
-    public bool EmbedMetadata => Configuration.Current.EmbedMetadata;
-    /// <summary>
     /// The speed limit in the configuration
     /// </summary>
     public uint CurrentSpeedLimit => Configuration.Current.SpeedLimit;
+    /// <summary>
+    /// Whether or not to disallow converting of formats
+    /// </summary>
+    public bool DisallowConversions => Configuration.Current.DisallowConversions;
+    /// <summary>
+    /// Whether to embed metadata
+    /// </summary>
+    public bool EmbedMetadata => Configuration.Current.EmbedMetadata;
 
     /// <summary>
     /// Constructs a AddDownloadDialogController
@@ -124,7 +128,10 @@ public class AddDownloadDialogController
             }
         }
         Configuration.Current.PreviousSaveFolder = saveFolder;
-        Configuration.Current.PreviousMediaFileType = mediaFileType;
+        if (!mediaFileType.GetIsGeneric())
+        {
+            Configuration.Current.PreviousMediaFileType = mediaFileType;
+        }
         Configuration.Current.Save();
     }
 }

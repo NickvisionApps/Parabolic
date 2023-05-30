@@ -52,16 +52,6 @@ public class PreferencesViewController
     }
 
     /// <summary>
-    /// Whether or not to embed metadata in a download
-    /// </summary>
-    public bool EmbedMetadata
-    {
-        get => Configuration.Current.EmbedMetadata;
-
-        set => Configuration.Current.EmbedMetadata = value;
-    }
-
-    /// <summary>
     /// The maximum number of active downloads (should be between 1-10)
     /// </summary>
     public int MaxNumberOfActiveDownloads
@@ -119,6 +109,26 @@ public class PreferencesViewController
         get => Configuration.Current.CookiesPath;
 
         set => Configuration.Current.CookiesPath = value;
+    }
+
+    /// <summary>
+    /// Whether or not to disallow converting of formats
+    /// </summary>
+    public bool DisallowConversions
+    {
+        get => Configuration.Current.DisallowConversions;
+
+        set => Configuration.Current.DisallowConversions = value;
+    }
+
+    /// <summary>
+    /// Whether or not to embed metadata in a download
+    /// </summary>
+    public bool EmbedMetadata
+    {
+        get => Configuration.Current.EmbedMetadata;
+
+        set => Configuration.Current.EmbedMetadata = value;
     }
 
     /// <summary>

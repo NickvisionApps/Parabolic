@@ -129,7 +129,7 @@ public class Download
         Quality = quality;
         Resolution = resolution;
         Subtitle = subtitle;
-        Filename = $"{saveFilename}{FileType.GetDotExtension()}";
+        Filename = $"{saveFilename}{(FileType.GetIsGeneric() ? "" : FileType.GetDotExtension())}";
         IsRunning = false;
         IsDone = false;
         IsSuccess = false;
@@ -183,16 +183,19 @@ public class Download
                 _ytOpt = new Dictionary<string, dynamic> {
                     { "quiet", false },
                     { "ignoreerrors", "downloadonly" },
-                    { "merge_output_format", "mp4/webm/mp3/opus/flac/wav/mkv" },
-                    { "final_ext", FileType.ToString().ToLower() },
                     { "progress_hooks", hooks },
                     { "postprocessor_hooks", hooks },
+                    { "merge_output_format", null },
                     { "outtmpl", $"{Id.ToString()}.%(ext)s" },
                     { "ffmpeg_location", DependencyManager.FfmpegPath },
                     { "windowsfilenames", RuntimeInformation.IsOSPlatform(OSPlatform.Windows) },
                     { "encoding", "utf_8" },
                     { "overwrites", _overwriteFiles }
                 };
+                if(!FileType.GetIsGeneric())
+                {
+                    _ytOpt.Add("final_ext", FileType.ToString().ToLower());
+                }
                 if (options.UseAria)
                 {
                     _ariaKeeper = new Process()
@@ -225,8 +228,16 @@ public class Download
                 var postProcessors = new List<Dictionary<string, dynamic>>();
                 if (FileType.GetIsAudio())
                 {
-                    _ytOpt.Add("format", Quality != Quality.Worst ? $"ba[ext={FileType.ToString().ToLower()}]/ba/b" : $"wa[ext={FileType.ToString().ToLower()}]/wa/w");
-                    postProcessors.Add(new Dictionary<string, dynamic>() { { "key", "FFmpegExtractAudio" }, { "preferredcodec", FileType.ToString().ToLower() } });
+                    if(FileType.GetIsGeneric())
+                    {
+                        _ytOpt.Add("format", Quality != Quality.Worst ? "ba/b" : "wa/w");
+                        postProcessors.Add(new Dictionary<string, dynamic>() { { "key", "FFmpegExtractAudio" } });
+                    }
+                    else
+                    {
+                        _ytOpt.Add("format", Quality != Quality.Worst ? $"ba[ext={FileType.ToString().ToLower()}]/ba/b" : $"wa[ext={FileType.ToString().ToLower()}]/wa/w");
+                        postProcessors.Add(new Dictionary<string, dynamic>() { { "key", "FFmpegExtractAudio" }, { "preferredcodec", FileType.ToString().ToLower() } });
+                    }
                 }
                 else if (FileType.GetIsVideo())
                 {
@@ -238,7 +249,10 @@ public class Download
                     {
                         _ytOpt.Add("format", $"bv*[width<={Resolution!.Width}][height<={Resolution.Height}]+ba/b[width<={Resolution.Width}][height<={Resolution.Height}]");
                     }
-                    postProcessors.Add(new Dictionary<string, dynamic>() { { "key", "FFmpegVideoConvertor" }, { "preferedformat", FileType.ToString().ToLower() } });
+                    if(!FileType.GetIsGeneric())
+                    {
+                        postProcessors.Add(new Dictionary<string, dynamic>() { { "key", "FFmpegVideoConvertor" }, { "preferedformat", FileType.ToString().ToLower() } });
+                    }
                     if (Subtitle != Subtitle.None)
                     {
                         _ytOpt.Add("writesubtitles", true);
@@ -313,7 +327,7 @@ public class Download
                                 {
                                     try
                                     {
-                                        File.Move(path, path.Replace(Id.ToString(), Filename));
+                                        File.Move(path, path.Replace(Id.ToString(), Path.GetFileNameWithoutExtension(Filename)), _overwriteFiles);
                                     }
                                     catch
                                     {
@@ -322,7 +336,22 @@ public class Download
                                         {
                                             Filename = Filename.Replace(c, '_');
                                         }
-                                        File.Move(path, path.Replace(Id.ToString(), Filename));
+                                        File.Move(path, path.Replace(Id.ToString(), Path.GetFileNameWithoutExtension(Filename)), _overwriteFiles);
+                                    }
+                                }
+                            }
+                            if(FileType.GetIsGeneric())
+                            {
+                                foreach (var path in Directory.EnumerateFiles(SaveFolder))
+                                {
+                                    if(path.Contains(Filename))
+                                    {
+                                        var extension = Path.GetExtension(path).ToLower();
+                                        if(extension != ".srt" && extension != ".vtt")
+                                        {
+                                            Filename += extension;
+                                            break;
+                                        }
                                     }
                                 }
                             }

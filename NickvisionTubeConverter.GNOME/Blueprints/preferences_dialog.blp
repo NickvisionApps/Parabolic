@@ -284,6 +284,23 @@ Adw.PreferencesWindow _root {
       description: _("Customize converter settings.");
 
       Adw.ActionRow {
+        title: _("Disallow Conversions");
+        subtitle: _("If enabled, Tube Converter will download the appropriate video/audio format for the selected quality without converting to other formats. (You will be unable to select a file format)");
+
+        [prefix]
+        Gtk.Image {
+          icon-name: "encode-symbolic";
+        }
+
+        [suffix]
+        Gtk.Switch _disallowConversionsSwitch {
+          valign: center;
+        }
+
+        activatable-widget: _disallowConversionsSwitch;
+      }
+
+      Adw.ActionRow {
         title: _("Embed Metadata");
 
         [prefix]

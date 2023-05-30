@@ -54,6 +54,7 @@ public partial class PreferencesDialog : Adw.PreferencesWindow
     [Gtk.Connect] private readonly Gtk.Button _chromeCookiesButton;
     [Gtk.Connect] private readonly Gtk.Button _firefoxCookiesButton;
     [Gtk.Connect] private readonly Gtk.Switch _embedMetadataSwitch;
+    [Gtk.Connect] private readonly Gtk.Switch _disallowConversionsSwitch;
     
     private GAsyncReadyCallback _fileDialogCallback;
 
@@ -97,6 +98,7 @@ public partial class PreferencesDialog : Adw.PreferencesWindow
             _cookiesFileLabel.SetText(_controller.CookiesPath);
         }
         _embedMetadataSwitch.SetActive(_controller.EmbedMetadata);
+        _disallowConversionsSwitch.SetActive(_controller.DisallowConversions);
     }
 
     /// <summary>
@@ -124,6 +126,7 @@ public partial class PreferencesDialog : Adw.PreferencesWindow
         _controller.AriaMaxConnectionsPerServer = (int)_ariaMaxConnectionsPerServerSpin.GetValue();
         _controller.AriaMinSplitSize = (int)_ariaMinSplitSizeSpin.GetValue();
         _controller.EmbedMetadata = _embedMetadataSwitch.GetActive();
+        _controller.DisallowConversions = _disallowConversionsSwitch.GetActive();
         _controller.SaveConfiguration();
         Destroy();
     }
@@ -159,7 +162,7 @@ public partial class PreferencesDialog : Adw.PreferencesWindow
         var filters = Gio.ListStore.New(Gtk.FileFilter.GetGType());
         filters.Append(filterTxt);
         gtk_file_dialog_set_filters(fileDialog, filters.Handle);
-        _fileDialogCallback = async (source, res, data) =>
+        _fileDialogCallback = (source, res, data) =>
         {
             var fileHandle = gtk_file_dialog_open_finish(fileDialog, res, IntPtr.Zero);
             if (fileHandle != IntPtr.Zero)

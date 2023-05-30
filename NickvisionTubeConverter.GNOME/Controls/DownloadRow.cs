@@ -51,7 +51,7 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
     /// <summary>
     /// The Id of the download
     /// </summary>
-    public Guid Id { get; private set; }
+    public Guid Id { get; init; }
     /// <summary>
     /// The filename of the download
     /// </summary>
@@ -191,7 +191,8 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
     /// Sets the row to the completed state
     /// </summary>
     /// <param name="success">Whether or not the download was successful</param>
-    public void SetCompletedState(bool success)
+    /// <param name="filename">The filename of the download</param>
+    public void SetCompletedState(bool success, string filename)
     {
         _runPulsingBar = false;
         _statusIcon.AddCssClass(success ? "success" : "error");
@@ -200,6 +201,8 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
         _levelBar.SetValue(success ? 1 : 0);
         _progressLabel.SetText(success ? _("Success") : _("Error"));
         _actionViewStack.SetVisibleChildName(success ? "open" : "retry");
+        Filename = filename;
+        _filenameLabel.SetLabel(Filename);
     }
 
     /// <summary>
