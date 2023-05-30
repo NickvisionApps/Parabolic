@@ -45,7 +45,7 @@ public class DownloadManager
     /// <summary>
     /// Occurs when a download is completed
     /// </summary>
-    public event EventHandler<(Guid Id, bool Successful)>? DownloadCompleted;
+    public event EventHandler<(Guid Id, bool Successful, string Filename)>? DownloadCompleted;
     /// <summary>
     /// Occurs when a download is stopped
     /// </summary>
@@ -306,7 +306,7 @@ public class DownloadManager
         {
             _completed.Add(download.Id, _downloading[download.Id]);
             _downloading.Remove(download.Id);
-            DownloadCompleted?.Invoke(this, (download.Id, successful));
+            DownloadCompleted?.Invoke(this, (download.Id, successful, download.Filename));
         }
         if (_downloading.Count < MaxNumberOfActiveDownloads && _queued.Count > 0)
         {

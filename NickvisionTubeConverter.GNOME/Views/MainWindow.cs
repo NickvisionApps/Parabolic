@@ -208,7 +208,7 @@ public partial class MainWindow : Adw.ApplicationWindow
         _downloadCompletedFunc = (x) =>
         {
             var handle = GCHandle.FromIntPtr(x);
-            var target = ((Guid Id, bool Successful)?)handle.Target;
+            var target = ((Guid Id, bool Successful, string Filename)?)handle.Target;
             if (target != null)
             {
                 var e = target.Value;
@@ -228,7 +228,7 @@ public partial class MainWindow : Adw.ApplicationWindow
                 }
                 if (row != null)
                 {
-                    row.SetCompletedState(e.Successful);
+                    row.SetCompletedState(e.Successful, e.Filename);
                     var oldSeparator = row.GetPrevSibling() ?? row.GetNextSibling();
                     if (oldSeparator is Gtk.Separator)
                     {

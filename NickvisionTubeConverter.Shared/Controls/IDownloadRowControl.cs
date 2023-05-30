@@ -43,7 +43,8 @@ public interface IDownloadRowControl
     /// Sets the row to the completed state
     /// </summary>
     /// <param name="success">Whether or not the download was successful</param>
-    public void SetCompletedState(bool success);
+    /// <param name="filename">The filename of the download</param>
+    public void SetCompletedState(bool success, string filename);
     /// <summary>
     /// Sets the row to the stop state
     /// </summary>
