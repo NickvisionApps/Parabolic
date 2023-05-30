@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-05-30 01:07-0400\n"
-"PO-Revision-Date: 2023-05-28 21:16+0000\n"
-"Last-Translator: albanobattistella <albano_battistella@hotmail.com>\n"
-"Language-Team: Italian <https://hosted.weblate.org/projects/nickvision-tube-"
-"converter/app/it/>\n"
+"PO-Revision-Date: 2023-05-30 18:43+0000\n"
+"Last-Translator: Davide <davide.ferracin@protonmail.com>\n"
+"Language-Team: Italian <https://hosted.weblate.org/projects/"
+"nickvision-tube-converter/app/it/>\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -55,7 +55,7 @@ msgid "{0:f1} MiB/s"
 msgstr "{0:f1} MiB/s"
 
 #: ../../../Models/DownloadManager.cs:163
-#, fuzzy, csharp-format
+#, csharp-format
 msgid "{0} download — {1:f1}% ({2})"
 msgid_plural "{0} downloads — {1:f1}% ({2})"
 msgstr[0] "Download: {0} — {1:f1}% ({2})"
@@ -82,17 +82,13 @@ msgid "Advanced Options"
 msgstr "Opzioni avanzate"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:254
-#, fuzzy
-#| msgid "Download Finished"
 msgid "All downloads have finished."
-msgstr "Download terminato"
+msgstr "Tutti i download sono terminati."
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:142
 #: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:159
-#, fuzzy
-#| msgid "audio"
 msgid "Audio"
-msgstr "audio"
+msgstr "Audio"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:114
 msgid "Best"
@@ -103,12 +99,15 @@ msgid "Close and Stop Downloads?"
 msgstr "Chiudere e interrompere i download?"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:789
-#, csharp-format
+#, csharp-format, fuzzy
 msgid ""
 "David Lapshin {0}\n"
 "Brage Fuglseth {1}\n"
 "marcin {2}"
 msgstr ""
+"David Lapshin {0}\n"
+"Brage Fuglseth {1}\n"
+"marcin {2}"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:559
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:173
@@ -143,10 +142,8 @@ msgid "Downloading {0:f2}% ({1})"
 msgstr "In scaricamento {0:f2}% ({1})"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:254
-#, fuzzy
-#| msgid "Download Finished"
 msgid "Downloads Finished"
-msgstr "Download terminato"
+msgstr "Download terminati"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:202
 msgid "Error"
@@ -193,6 +190,8 @@ msgid ""
 "Nicholas Logozzo {0}\n"
 "Contributors on GitHub ❤️ {1}"
 msgstr ""
+"Nicholas Logozzo {0}\n"
+"I collaboratori su GitHub ❤️ {1}"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:788
 #, csharp-format
@@ -298,10 +297,8 @@ msgid "Validate"
 msgstr "Valida"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:159
-#, fuzzy
-#| msgid "video"
 msgid "Video"
-msgstr "video"
+msgstr "Video"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:134
 #: NickvisionTubeConverter.GNOME/Blueprints/download_row.blp:40
@@ -542,7 +539,7 @@ msgstr "Personalizza le impostazioni del convertitore."
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:287
 msgid "Disallow Conversions"
-msgstr ""
+msgstr "Non permettere conversioni"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:288
 msgid ""
@@ -550,6 +547,9 @@ msgid ""
 "for the selected quality without converting to other formats. (You will be "
 "unable to select a file format)"
 msgstr ""
+"Se abilitato, Tube Converter scaricherà il video o l'audio nel formato "
+"appropriato alla qualità selezionata, senza convertire in altri formati (non "
+"si potrà selezionare il formato di file)."
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:304
 msgid "Embed Metadata"
@@ -605,10 +605,8 @@ msgid "Download Media"
 msgstr "Download Media"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:72
-#, fuzzy
-#| msgid "Add a video, audio, or playlist URL to start downloading."
 msgid "Add a video, audio, or playlist URL to start downloading"
-msgstr "Aggiungi un URL video, audio o playlist per avviare il download."
+msgstr "Aggiungere l'URL di un video, un audio o una playlist per scaricare"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:126
 msgid "Stop All"
