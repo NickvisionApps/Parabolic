@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-30 00:03-0400\n"
+"POT-Creation-Date: 2023-05-30 01:07-0400\n"
 "PO-Revision-Date: 2023-05-28 21:16+0000\n"
 "Last-Translator: Khải <hvksmr1996@gmail.com>\n"
 "Language-Team: Vietnamese <https://hosted.weblate.org/projects/nickvision-"
@@ -29,7 +29,7 @@ msgstr "\"{0}\" đã được hoàn thành."
 msgid "\"{0}\" has finished with an error!"
 msgstr "\"{0}\" đã kết thúc với lỗi!"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:290
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:318
 msgid "(Configurable in preferences)"
 msgstr "(Có thể thay đổi trong tùy thích)"
 
@@ -43,7 +43,7 @@ msgstr "{0:f1} B/s"
 msgid "{0:f1} GiB/s"
 msgstr "{0:f1} GiB/s"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:290
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:318
 #: ../../../Helpers/SpeedFormatter.cs:28
 #, csharp-format
 msgid "{0:f1} KiB/s"
@@ -60,25 +60,21 @@ msgid "{0} download — {1:f1}% ({2})"
 msgid_plural "{0} downloads — {1:f1}% ({2})"
 msgstr[0] "{0} tải xuống — {1:f1}% ({2})"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:169
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:432
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:185
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:469
 #, csharp-format
 msgid "{0} of {1} items"
 msgid_plural "{0} of {1} items"
 msgstr[0] "{0} trên {1} mục"
 
-#: ../../../Controllers/MainWindowController.cs:167
-msgid "A link has been detected in your clipboard."
-msgstr "Đã phát hiện liên kết trong bảng ghi tạm."
-
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:199
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:215
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:37
 #: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:17
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:74
 msgid "Add Download"
 msgstr "Thêm Tải xuống"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:198
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:214
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:136
 msgid "Advanced Options"
 msgstr "Tùy chọn Nâng cao"
@@ -87,15 +83,22 @@ msgstr "Tùy chọn Nâng cao"
 msgid "All downloads have finished."
 msgstr "Tất cả tải xuống đều đã hoàn thành."
 
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:142
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:159
+#, fuzzy
+#| msgid "audio"
+msgid "Audio"
+msgstr "âm thanh"
+
 #: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:114
 msgid "Best"
 msgstr "Tốt nhất"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:608
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:607
 msgid "Close and Stop Downloads?"
 msgstr "Đóng và Dừng tất cả các quá trình tải xuống?"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:790
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:789
 #, csharp-format
 msgid ""
 "David Lapshin {0}\n"
@@ -103,7 +106,7 @@ msgid ""
 "marcin {2}"
 msgstr ""
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:560
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:559
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:173
 #: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:14
 msgid "Download"
@@ -121,7 +124,7 @@ msgstr "Tải xuống kết thúc với lỗi"
 msgid "Download log was copied to clipboard."
 msgstr "Nhật ký tải xuống đã được lưu vào bảng ghi tạm."
 
-#: ../../../Models/Download.cs:298
+#: ../../../Models/Download.cs:311
 msgid "Download using aria2 has started"
 msgstr "Tải xuống bằng aria2 đã bắt đầu"
 
@@ -139,7 +142,7 @@ msgstr "Đang tải về {0:f2}% ({1:N0} KiB/s)"
 msgid "Downloads Finished"
 msgstr "Hoàn thành Tải xuống"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:201
+#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:202
 msgid "Error"
 msgstr "Lỗi"
 
@@ -157,19 +160,19 @@ msgstr "Tên Tệp"
 msgid "Get video and audio from the web"
 msgstr "Tải xuống nhưng video mà bạn yêu thích"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:786
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:785
 msgid "List of supported sites"
 msgstr "Danh sách các trang được hỗ trợ"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:787
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:786
 msgid "Matrix Chat"
 msgstr ""
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:170
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:186
 msgid "Maximum Quality"
 msgstr "Chất lượng Tối đa"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:153
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:169
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:57
 msgid "Media URL"
 msgstr "Địa chỉ"
@@ -178,14 +181,14 @@ msgstr "Địa chỉ"
 msgid "Media URL (Invalid)"
 msgstr "Địa chỉ (Không hợp lệ)"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:788
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:787
 #, csharp-format
 msgid ""
 "Nicholas Logozzo {0}\n"
 "Contributors on GitHub ❤️ {1}"
 msgstr ""
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:789
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:788
 #, csharp-format
 msgid ""
 "Nicholas Logozzo {0}\n"
@@ -193,7 +196,7 @@ msgid ""
 "DaPigGuy {2}"
 msgstr ""
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:608
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:607
 msgid "No"
 msgstr "Không"
 
@@ -201,7 +204,7 @@ msgstr "Không"
 msgid "No downloads running"
 msgstr "Không có tải xuống nào đang chạy"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:197
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:213
 msgid "Playlist"
 msgstr "Danh sách phát"
 
@@ -213,27 +216,27 @@ msgstr "Đang chuẩn bị..."
 msgid "Processing..."
 msgstr "Đang xử lý..."
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:363
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:391
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:122
 msgid "Save Folder"
 msgstr "Thư mục Lưu"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:373
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:401
 msgid "Save Folder (Invalid)"
 msgstr "Thư mục Lưu (Không hợp lệ)"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/PreferencesDialog.cs:158
+#: ../../../../NickvisionTubeConverter.GNOME/Views/PreferencesDialog.cs:161
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:249
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:263
 msgid "Select Cookies File"
 msgstr "Chọn Tệp Cookie"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:403
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:440
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:129
 msgid "Select Save Folder"
 msgstr "Chọn Thư mục Lưu"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:608
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:607
 msgid ""
 "Some downloads are still in progress.\n"
 "Are you sure you want to close Tube Converter and stop the running downloads?"
@@ -245,15 +248,15 @@ msgstr ""
 msgid "Some downloads finished with errors!"
 msgstr "Một số tải xuống kết thúc với lỗi!"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:216
+#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:219
 msgid "Stopped"
 msgstr "Đã dừng"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:201
+#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:202
 msgid "Success"
 msgstr "Thành công"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:782
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:781
 msgid ""
 "The authors of Nickvision Tube Converter are not responsible/liable for any "
 "misuse of this program that may violate local copyright/DMCA laws. Users use "
@@ -263,7 +266,7 @@ msgstr ""
 "với mọi hành vi lạm dụng chương trình này mà có thể vi phạm luật bản quyền "
 "hoặc luật DMCA sở tại. Người dùng tự chịu rủi ro khi sử dụng ứng dụng này."
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:791
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:790
 msgid "translator-credits"
 msgstr ""
 
@@ -286,6 +289,12 @@ msgstr ""
 msgid "Validate"
 msgstr "Xác thực"
 
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:159
+#, fuzzy
+#| msgid "video"
+msgid "Video"
+msgstr "băng hình"
+
 #: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:134
 #: NickvisionTubeConverter.GNOME/Blueprints/download_row.blp:40
 msgid "Waiting..."
@@ -295,7 +304,7 @@ msgstr "Đang chờ..."
 msgid "Worst"
 msgstr "Tệ nhất"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:608
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:607
 msgid "Yes"
 msgstr "Có"
 
@@ -526,6 +535,17 @@ msgid "Customize converter settings."
 msgstr "Tủy chỉnh thiết lập của bộ chuyển đổi."
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:287
+msgid "Disallow Conversions"
+msgstr ""
+
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:288
+msgid ""
+"If enabled, Tube Converter will download the appropriate video/audio format "
+"for the selected quality without converting to other formats. (You will be "
+"unable to select a file format)"
+msgstr ""
+
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:304
 msgid "Embed Metadata"
 msgstr "Nhúng Siêu dữ liệu"
 
@@ -646,6 +666,9 @@ msgstr "phương tiện truyền thông"
 #: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.metainfo.xml.in:20
 msgid "download"
 msgstr "tải xuống"
+
+#~ msgid "A link has been detected in your clipboard."
+#~ msgstr "Đã phát hiện liên kết trong bảng ghi tạm."
 
 #~ msgid "Link pasted from clipboard."
 #~ msgstr "Liên kết đã được dán từ bảng ghi tạm."
