@@ -137,8 +137,16 @@ public partial class AddDownloadDialog : Adw.Window
                 if (_mediaUrlInfo.VideoResolutions.Count == 0)
                 {
                     _audioOnly = true;
-                    _fileTypeRow.SetModel(Gtk.StringList.New(new string[] {"MP3", "OPUS", "FLAC", "WAV"}));
-                    _fileTypeRow.SetSelected((uint)Math.Max((int)_controller.PreviousMediaFileType - 2, 0));
+                    if (_controller.DisallowConversions)
+                    {
+                        _fileTypeRow.SetModel(Gtk.StringList.New(new string[] { _("Audio") }));
+                        _fileTypeRow.SetSelected(0);
+                    }
+                    else
+                    {
+                        _fileTypeRow.SetModel(Gtk.StringList.New(new string[] {"MP3", "OPUS", "FLAC", "WAV"}));
+                        _fileTypeRow.SetSelected((uint)Math.Max((int)_controller.PreviousMediaFileType - 2, 0));
+                    }
                 }
                 else
                 {
@@ -146,7 +154,15 @@ public partial class AddDownloadDialog : Adw.Window
                     {
                         _videoQualityList.Add(resolution.ToString());
                     }
-                    _fileTypeRow.SetSelected((uint)_controller.PreviousMediaFileType);
+                    if(_controller.DisallowConversions)
+                    {
+                        _fileTypeRow.SetModel(Gtk.StringList.New(new string[] { _("Video"), _("Audio") }));
+                        _fileTypeRow.SetSelected(0);
+                    }
+                    else
+                    {
+                        _fileTypeRow.SetSelected((uint)_controller.PreviousMediaFileType);
+                    }
                 }
                 SetQualityRowModel(); // in case _fileTypeRow.SetSelected didn't invoke OnNotify
                 _urlRow.RemoveCssClass("error");
@@ -251,10 +267,22 @@ public partial class AddDownloadDialog : Adw.Window
         {
             Quality quality;
             VideoResolution? resolution;
-            var fileType = (MediaFileType)_fileTypeRow.GetSelected();
-            if (_audioOnly)
+            MediaFileType fileType;
+            if (_controller.DisallowConversions)
             {
-                fileType += 2;
+                fileType = _fileTypeRow.GetSelected() == 0 ? MediaFileType.Video : MediaFileType.Audio;
+                if (_audioOnly)
+                {
+                    fileType = MediaFileType.Audio;
+                }
+            }
+            else
+            {
+                fileType = (MediaFileType)_fileTypeRow.GetSelected();
+                if (_audioOnly)
+                {
+                    fileType += 2;
+                }
             }
             if (fileType.GetIsAudio())
             {
@@ -383,7 +411,16 @@ public partial class AddDownloadDialog : Adw.Window
     /// </summary>
     private void SetQualityRowModel()
     {
-        if (((MediaFileType)_fileTypeRow.GetSelected()).GetIsVideo() && !_audioOnly)
+        var isVideo = false;
+        if (_controller.DisallowConversions)
+        {
+            isVideo = _fileTypeRow.GetSelected() == 0;
+        }
+        else
+        {
+            isVideo = ((MediaFileType)_fileTypeRow.GetSelected()).GetIsVideo();
+        }
+        if (isVideo && !_audioOnly)
         {
             _qualityRow.SetModel(Gtk.StringList.New(_videoQualityList.ToArray()));
             _subtitleRow.SetSensitive(true);
