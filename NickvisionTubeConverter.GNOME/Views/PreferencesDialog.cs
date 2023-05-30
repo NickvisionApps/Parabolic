@@ -37,7 +37,6 @@ public partial class PreferencesDialog : Adw.PreferencesWindow
 
     [Gtk.Connect] private readonly Adw.ComboRow _themeRow;
     [Gtk.Connect] private readonly Adw.ComboRow _completedNotificationRow;
-    [Gtk.Connect] private readonly Gtk.Switch _clipboardSwitch;
     [Gtk.Connect] private readonly Adw.ActionRow _backgroundRow;
     [Gtk.Connect] private readonly Gtk.Switch _backgroundSwitch;
     [Gtk.Connect] private readonly Gtk.SpinButton _maxNumberOfActiveDownloadsSpin;
@@ -83,7 +82,6 @@ public partial class PreferencesDialog : Adw.PreferencesWindow
         //Load Config
         _themeRow.SetSelected((uint)_controller.Theme);
         _completedNotificationRow.SetSelected((uint)_controller.CompletedNotificationPreference);
-        _clipboardSwitch.SetActive(_controller.ReadClipboard);
         _backgroundRow.SetVisible(File.Exists("/.flatpak-info") || !String.IsNullOrEmpty(Environment.GetEnvironmentVariable("SNAP")));
         _backgroundSwitch.SetActive(_controller.RunInBackground);
         _maxNumberOfActiveDownloadsSpin.SetValue(_controller.MaxNumberOfActiveDownloads);
@@ -119,7 +117,6 @@ public partial class PreferencesDialog : Adw.PreferencesWindow
     private void Hide(Gtk.Widget sender, EventArgs e)
     {
         _controller.CompletedNotificationPreference = (NotificationPreference)_completedNotificationRow.GetSelected();
-        _controller.ReadClipboard = _clipboardSwitch.GetActive();
         _controller.RunInBackground = _backgroundSwitch.GetActive();
         _controller.MaxNumberOfActiveDownloads = (int)_maxNumberOfActiveDownloadsSpin.GetValue();
         _controller.SpeedLimit = (uint)_speedLimitSpin.GetValue();
