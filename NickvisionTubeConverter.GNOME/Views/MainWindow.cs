@@ -540,7 +540,6 @@ public partial class MainWindow : Adw.ApplicationWindow
         _mainBox.SetVisible(false);
         _spinner.Start();
         _controller.Startup();
-        ValidateClipboard();
         _spinner.Stop();
         _spinnerContainer.SetVisible(false);
         _mainBox.SetVisible(true);
@@ -812,22 +811,5 @@ public partial class MainWindow : Adw.ApplicationWindow
         {
             _isBackgroundStatusReported = false;
         }
-    }
-
-    /// <summary>
-    /// Reads the clipboard's text and checks for a valid media url
-    /// </summary>
-    private void ValidateClipboard()
-    {
-        var clipboard = Gdk.Display.GetDefault()!.GetClipboard();
-        _clipboardCallback = (source, res, data) =>
-        {
-            var clipboardText = gdk_clipboard_read_text_finish(clipboard.Handle, res, IntPtr.Zero);
-            if(!string.IsNullOrEmpty(clipboardText))
-            {
-                _controller.ValidateClipboard(clipboardText);
-            }
-        };
-        gdk_clipboard_read_text_async(clipboard.Handle, IntPtr.Zero, _clipboardCallback, IntPtr.Zero);
     }
 }
