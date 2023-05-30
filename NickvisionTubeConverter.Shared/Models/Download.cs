@@ -185,7 +185,7 @@ public class Download
                     { "ignoreerrors", "downloadonly" },
                     { "progress_hooks", hooks },
                     { "postprocessor_hooks", hooks },
-                    { "merge_output_format", "mp4/webm/mp3/opus/flac/wav/mkv" },
+                    { "merge_output_format", null },
                     { "outtmpl", $"{Id.ToString()}.%(ext)s" },
                     { "ffmpeg_location", DependencyManager.FfmpegPath },
                     { "windowsfilenames", RuntimeInformation.IsOSPlatform(OSPlatform.Windows) },
@@ -230,7 +230,8 @@ public class Download
                 {
                     if(FileType.GetIsGeneric())
                     {
-                        _ytOpt.Add("format", Quality != Quality.Worst ? "ba" : "wa");
+                        _ytOpt.Add("format", Quality != Quality.Worst ? "ba/b" : "wa/w");
+                        postProcessors.Add(new Dictionary<string, dynamic>() { { "key", "FFmpegExtractAudio" } });
                     }
                     else
                     {

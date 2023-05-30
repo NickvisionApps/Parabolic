@@ -56,7 +56,7 @@ public class MediaUrlInfo
                     dynamic ytdlp = Py.Import("yt_dlp");
                     var ytOpt = new Dictionary<string, dynamic>() {
                         { "quiet", true },
-                        { "merge_output_format", "/" },
+                        { "merge_output_format", null },
                         { "windowsfilenames", RuntimeInformation.IsOSPlatform(OSPlatform.Windows) },
                         { "ignoreerrors", true }
                     };
