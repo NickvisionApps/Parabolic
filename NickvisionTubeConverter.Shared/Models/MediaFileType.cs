@@ -103,7 +103,7 @@ public static class MediaFileTypeHelpers
         MediaFileType.OPUS => true,
         MediaFileType.FLAC => true,
         MediaFileType.WAV => false,
-        MediaFileType.Video => true,
+        MediaFileType.Video => false,
         MediaFileType.Audio => false,
         _ => false
     };
@@ -115,13 +115,6 @@ public static class MediaFileTypeHelpers
     /// <returns>True if generic, else false</returns>
     public static bool GetIsGeneric(this MediaFileType type) => type switch
     {
-        MediaFileType.MP4 => false,
-        MediaFileType.WEBM => false,
-        MediaFileType.MP3 => false,
-        MediaFileType.M4A => false,
-        MediaFileType.OPUS => false,
-        MediaFileType.FLAC => false,
-        MediaFileType.WAV => false,
         MediaFileType.Video => true,
         MediaFileType.Audio => true,
         _ => false
