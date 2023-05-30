@@ -342,23 +342,20 @@ public partial class AddDownloadDialog : Adw.Window
         else
         {
             //Validate Clipboard
-            if(_controller.ReadClipboard)
+            var clipboard = Gdk.Display.GetDefault()!.GetClipboard();
+            _clipboardCallback = (source, res, data) =>
             {
-                var clipboard = Gdk.Display.GetDefault()!.GetClipboard();
-                _clipboardCallback = (source, res, data) =>
+                var clipboardText = gdk_clipboard_read_text_finish(clipboard.Handle, res, IntPtr.Zero);
+                if(!string.IsNullOrEmpty(clipboardText))
                 {
-                    var clipboardText = gdk_clipboard_read_text_finish(clipboard.Handle, res, IntPtr.Zero);
-                    if(!string.IsNullOrEmpty(clipboardText))
+                    var result = Uri.TryCreate(clipboardText, UriKind.Absolute, out var uriResult) && (uriResult.Scheme == Uri.UriSchemeHttp || uriResult.Scheme == Uri.UriSchemeHttps);
+                    if (result)
                     {
-                        var result = Uri.TryCreate(clipboardText, UriKind.Absolute, out var uriResult) && (uriResult.Scheme == Uri.UriSchemeHttp || uriResult.Scheme == Uri.UriSchemeHttps);
-                        if (result)
-                        {
-                            _urlRow.SetText(clipboardText);
-                        }
+                        _urlRow.SetText(clipboardText);
                     }
-                };
-                gdk_clipboard_read_text_async(clipboard.Handle, IntPtr.Zero, _clipboardCallback, IntPtr.Zero);
-            }
+                }
+            };
+            gdk_clipboard_read_text_async(clipboard.Handle, IntPtr.Zero, _clipboardCallback, IntPtr.Zero);
         }
     }
 

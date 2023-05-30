@@ -31,10 +31,6 @@ public class Configuration
     /// </summary>
     public NotificationPreference CompletedNotificationPreference { get; set; }
     /// <summary>
-    /// Whether or not to read the clipboard for a valid link
-    /// </summary>
-    public bool ReadClipboard { get; set; }
-    /// <summary>
     /// Whether to allow running in the background
     /// </summary>
     public bool RunInBackground { get; set; }
@@ -95,7 +91,6 @@ public class Configuration
         }
         Theme = Theme.System;
         CompletedNotificationPreference = NotificationPreference.ForEach;
-        ReadClipboard = true;
         RunInBackground = RuntimeInformation.IsOSPlatform(OSPlatform.Windows);
         PreviousSaveFolder = Environment.GetFolderPath(Environment.SpecialFolder.MyVideos);
         PreviousMediaFileType = MediaFileType.MP4;

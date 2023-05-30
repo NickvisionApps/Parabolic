@@ -2,7 +2,8 @@ using Gtk 4.0;
 using Adw 1;
 
 Adw.Window _root {
-  default-width: 500;
+  width-request: 360;
+  default-width: 420;
   modal: true;
   resizable: false;
 
@@ -55,7 +56,6 @@ Adw.Window _root {
                   Adw.EntryRow _urlRow {
                     title: _("Media URL");
                     margin-top: 2;
-                    width-request: 420;
                     activates-default: true;
                   }
                 }
@@ -120,7 +120,6 @@ Adw.Window _root {
 
                       Adw.EntryRow _saveFolderRow {
                         title: _("Save Folder");
-                        width-request: 420;
                         editable: false;
 
                         [suffix]
