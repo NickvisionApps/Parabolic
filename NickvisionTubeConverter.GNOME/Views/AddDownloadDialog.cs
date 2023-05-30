@@ -270,11 +270,7 @@ public partial class AddDownloadDialog : Adw.Window
             MediaFileType fileType;
             if (_controller.DisallowConversions)
             {
-                fileType = _fileTypeRow.GetSelected() == 0 ? MediaFileType.Video : MediaFileType.Audio;
-                if (_audioOnly)
-                {
-                    fileType = MediaFileType.Audio;
-                }
+                fileType = _fileTypeRow.GetSelected() == 0 && !_audioOnly ? MediaFileType.Video : MediaFileType.Audio;
             }
             else
             {
