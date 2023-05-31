@@ -434,7 +434,7 @@ public partial class AddDownloadDialog : Adw.Window
     {
         var folderDialog = gtk_file_dialog_new();
         gtk_file_dialog_set_title(folderDialog, _("Select Save Folder"));
-        if (Directory.Exists(_saveFolderString) && _saveFolderString != "/")
+        if (Directory.Exists(_saveFolderString) && _saveFolderString != "/" && string.IsNullOrEmpty(Environment.GetEnvironmentVariable("SNAP")))
         {
             var folder = Gio.FileHelper.NewForPath(_saveFolderString);
             gtk_file_dialog_set_initial_folder(folderDialog, folder.Handle);
