@@ -43,7 +43,6 @@ public class Download
     private readonly string _logPath;
     private bool _limitSpeed;
     private uint _speedLimit;
-    private bool _overwriteFiles;
     private bool _cropThumbnail;
     private ulong? _pid;
     private Dictionary<string, dynamic>? _ytOpt;
@@ -117,10 +116,11 @@ public class Download
     /// <param name="saveFilename">The filename to save the download as</param>
     /// <param name="limitSpeed">Whether or not to limit the download speed</param>
     /// <param name="speedLimit">The speed at which to limit the download</param>
+    /// <param name="resolution">The video resolution if available</param>
     /// <param name="quality">The quality of the download</param>
     /// <param name="subtitle">The subtitles for the download</param>
-    /// <param name="overwriteFiles">Whether or not to overwrite existing files</param>
-    public Download(string mediaUrl, MediaFileType fileType, string saveFolder, string saveFilename, bool limitSpeed, uint speedLimit, Quality quality, VideoResolution? resolution, Subtitle subtitle, bool overwriteFiles, bool cropThumbnail)
+    /// <param name="cropThumbnail">Whether or not to crop the thumbnail</param>
+    public Download(string mediaUrl, MediaFileType fileType, string saveFolder, string saveFilename, bool limitSpeed, uint speedLimit, Quality quality, VideoResolution? resolution, Subtitle subtitle, bool cropThumbnail)
     {
         Id = Guid.NewGuid();
         MediaUrl = mediaUrl;
@@ -138,7 +138,6 @@ public class Download
         _logPath = $"{_tempDownloadPath}log";
         _limitSpeed = limitSpeed;
         _speedLimit = speedLimit;
-        _overwriteFiles = overwriteFiles;
         _cropThumbnail = cropThumbnail;
         _pid = null;
         _ariaKeeper = null;
@@ -159,7 +158,7 @@ public class Download
                 IsSuccess = false;
                 WasStopped = false;
                 //Check if can overwrite
-                if (File.Exists($"{SaveFolder}{Path.DirectorySeparatorChar}{Filename}") && !_overwriteFiles)
+                if (File.Exists($"{SaveFolder}{Path.DirectorySeparatorChar}{Filename}") && !options.OverwriteExistingFiles)
                 {
                     ProgressChanged?.Invoke(this, new DownloadProgressState()
                     {
@@ -190,7 +189,7 @@ public class Download
                     { "ffmpeg_location", DependencyManager.FfmpegPath },
                     { "windowsfilenames", RuntimeInformation.IsOSPlatform(OSPlatform.Windows) },
                     { "encoding", "utf_8" },
-                    { "overwrites", _overwriteFiles }
+                    { "overwrites", options.OverwriteExistingFiles }
                 };
                 if(!FileType.GetIsGeneric())
                 {
@@ -327,7 +326,7 @@ public class Download
                                 {
                                     try
                                     {
-                                        File.Move(path, path.Replace(Id.ToString(), Path.GetFileNameWithoutExtension(Filename)), _overwriteFiles);
+                                        File.Move(path, path.Replace(Id.ToString(), Path.GetFileNameWithoutExtension(Filename)), options.OverwriteExistingFiles);
                                     }
                                     catch
                                     {
@@ -336,7 +335,7 @@ public class Download
                                         {
                                             Filename = Filename.Replace(c, '_');
                                         }
-                                        File.Move(path, path.Replace(Id.ToString(), Path.GetFileNameWithoutExtension(Filename)), _overwriteFiles);
+                                        File.Move(path, path.Replace(Id.ToString(), Path.GetFileNameWithoutExtension(Filename)), options.OverwriteExistingFiles);
                                     }
                                 }
                             }

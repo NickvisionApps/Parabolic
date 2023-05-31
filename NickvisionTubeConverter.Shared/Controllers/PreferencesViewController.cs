@@ -62,6 +62,16 @@ public class PreferencesViewController
     }
 
     /// <summary>
+    /// Whether or not to overwrite existing files
+    /// </summary>
+    public bool OverwriteExistingFiles
+    {
+        get => Configuration.Current.OverwriteExistingFiles;
+
+        set => Configuration.Current.OverwriteExistingFiles = value;
+    }
+
+    /// <summary>
     /// Speed limit in KiB/s (should be between 512-10240)
     /// </summary>
     public uint SpeedLimit

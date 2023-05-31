@@ -44,7 +44,7 @@ public class MainWindowController : IDisposable
     /// <summary>
     /// The DownloadOptions for a download
     /// </summary>
-    public DownloadOptions DownloadOptions => new DownloadOptions(Configuration.Current.UseAria, Configuration.Current.EmbedMetadata, Configuration.Current.CookiesPath, Configuration.Current.AriaMaxConnectionsPerServer, Configuration.Current.AriaMinSplitSize);
+    public DownloadOptions DownloadOptions => new DownloadOptions(Configuration.Current.OverwriteExistingFiles, Configuration.Current.UseAria, Configuration.Current.EmbedMetadata, Configuration.Current.CookiesPath, Configuration.Current.AriaMaxConnectionsPerServer, Configuration.Current.AriaMinSplitSize);
 
     /// <summary>
     /// Occurs when a notification is sent

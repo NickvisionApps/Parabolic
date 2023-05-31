@@ -113,18 +113,19 @@ public class AddDownloadDialogController
     /// <param name="mediaUrlInfo">The MediaUrlInfo object</param>
     /// <param name="mediaFileType">The media file type to download</param>
     /// <param name="quality">The quality of the downloads</param>
+    /// <param name="resolution">The video resolution if available</param>
     /// <param name="subtitles">The subtitle format of the downloads</param>
     /// <param name="saveFolder">The save folder of the downloads</param>
-    /// <param name="overwriteFiles">Whether or not to overwrite existing files</param>
     /// <param name="limitSpeed">Whether or not to use speed limit</param>
-    public void PopulateDownloads(MediaUrlInfo mediaUrlInfo, MediaFileType mediaFileType, Quality quality, VideoResolution? resolution, Subtitle subtitles, string saveFolder, bool overwriteFiles, bool limitSpeed, bool cropThumbnail)
+    /// <param name="cropThumbnail">Whether or not to crop the thumbnail</param>
+    public void PopulateDownloads(MediaUrlInfo mediaUrlInfo, MediaFileType mediaFileType, Quality quality, VideoResolution? resolution, Subtitle subtitles, string saveFolder, bool limitSpeed, bool cropThumbnail)
     {
         Downloads.Clear();
         foreach (var media in mediaUrlInfo.MediaList)
         {
             if (media.ToDownload)
             {
-                Downloads.Add(new Download(media.Url, mediaFileType, saveFolder, media.Title, limitSpeed, Configuration.Current.SpeedLimit, quality, resolution, subtitles, overwriteFiles, cropThumbnail));
+                Downloads.Add(new Download(media.Url, mediaFileType, saveFolder, media.Title, limitSpeed, Configuration.Current.SpeedLimit, quality, resolution, subtitles, cropThumbnail));
             }
         }
         Configuration.Current.PreviousSaveFolder = saveFolder;

@@ -225,17 +225,6 @@ Adw.Window _root {
                     margin-end: 24;
                     margin-bottom: 12;
 
-                    Adw.ActionRow _overwriteRow {
-                      title: _("Overwrite Existing Files");
-                      activatable-widget: _overwriteSwitch;
-
-                      [suffix]
-                      Gtk.Switch _overwriteSwitch {
-                        valign: center;
-                        active: true;
-                      }
-                    }
-
                     Adw.ActionRow _speedLimitRow {
                       title: _("Speed Limit");
                       activatable-widget: _speedLimitSwitch;

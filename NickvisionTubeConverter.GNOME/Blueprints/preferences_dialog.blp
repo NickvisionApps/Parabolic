@@ -83,6 +83,22 @@ Adw.PreferencesWindow _root {
         }
       }
 
+      Adw.ActionRow _overwriteRow {
+        title: _("Overwrite Existing Files");
+
+        [prefix]
+        Gtk.Image {
+          icon-name: "document-new-symbolic";
+        }
+
+        [suffix]
+        Gtk.Switch _overwriteSwitch {
+          valign: center;
+        }
+
+        activatable-widget: _overwriteSwitch;
+      }
+
       Adw.ActionRow {
         title: _("Speed Limit");
         subtitle: _("This limit (in KiB/s) is applied to downloads that have speed limit enabled. Changing the value doesn't affect already running downloads.");
