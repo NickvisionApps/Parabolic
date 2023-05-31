@@ -82,7 +82,6 @@ public partial class AddDownloadDialog : Adw.Window
     [Gtk.Connect] private readonly Gtk.Box _advancedPage;
     [Gtk.Connect] private readonly Gtk.ScrolledWindow _advanced;
     [Gtk.Connect] private readonly Adw.PreferencesGroup _advancedGroup;
-    [Gtk.Connect] private readonly Gtk.Switch _overwriteSwitch;
     [Gtk.Connect] private readonly Adw.ActionRow _speedLimitRow;
     [Gtk.Connect] private readonly Gtk.Switch _speedLimitSwitch;
     [Gtk.Connect] private readonly Adw.ActionRow _cropThumbnailRow;
@@ -290,7 +289,7 @@ public partial class AddDownloadDialog : Adw.Window
                 quality = Quality.Resolution;
                 resolution = _mediaUrlInfo.VideoResolutions[(int)_qualityRow.GetSelected()];
             }
-            _controller.PopulateDownloads(_mediaUrlInfo!, fileType, quality, resolution, (Subtitle)_subtitleRow.GetSelected(), _saveFolderString, _overwriteSwitch.GetActive(), _speedLimitSwitch.GetActive(), _cropThumbnailSwitch.GetActive());
+            _controller.PopulateDownloads(_mediaUrlInfo!, fileType, quality, resolution, (Subtitle)_subtitleRow.GetSelected(), _saveFolderString, _speedLimitSwitch.GetActive(), _cropThumbnailSwitch.GetActive());
             OnDownload?.Invoke(this, EventArgs.Empty);
         };
         _addDownloadButton.SetSensitive(false);

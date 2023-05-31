@@ -6,6 +6,10 @@ namespace NickvisionTubeConverter.Shared.Models;
 public class DownloadOptions
 {
     /// <summary>
+    /// Whether or not to overwrite existing files
+    /// </summary>
+    public bool OverwriteExistingFiles { get; set; }
+    /// <summary>
     /// Whether or not to use aria2 for the download
     /// </summary>
     public bool UseAria { get; init; }
@@ -29,13 +33,15 @@ public class DownloadOptions
     /// <summary>
     /// Constructs a DownloadOptions
     /// </summary>
+    /// <param name="overwriteExistingFiles">Whether or not to overwrite existing files</param>
     /// <param name="useAria">Whether or not to use aria2 for the download</param>
     /// <param name="embedMetadata">Whether or not to embed media metadata in the downloaded file</param>
     /// <param name="cookiesPath">The path to the cookies file to use for yt-dlp</param>
     /// <param name="ariaMaxConnectionsPerServer">The maximum number of connections to one server for each download (-x)</param>
     /// <param name="ariaMinSplitSize">The minimum size of which to split a file (-k)</param>
-    public DownloadOptions(bool useAria, bool embedMetadata, string? cookiesPath, int ariaMaxConnectionsPerServer, int ariaMinSplitSize)
+    public DownloadOptions(bool overwriteExistingFiles, bool useAria, bool embedMetadata, string? cookiesPath, int ariaMaxConnectionsPerServer, int ariaMinSplitSize)
     {
+        OverwriteExistingFiles = overwriteExistingFiles;
         UseAria = useAria;
         EmbedMetadata = embedMetadata;
         CookiesPath = cookiesPath;

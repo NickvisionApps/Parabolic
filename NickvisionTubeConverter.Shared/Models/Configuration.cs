@@ -47,6 +47,10 @@ public class Configuration
     /// </summary>
     public int MaxNumberOfActiveDownloads { get; set; }
     /// <summary>
+    /// Whether or not to overwrite existing files
+    /// </summary>
+    public bool OverwriteExistingFiles { get; set; }
+    /// <summary>
     /// Speed limit in KiB/s (should be between 512-10240)
     /// </summary>
     public uint SpeedLimit { get; set; }
@@ -95,6 +99,7 @@ public class Configuration
         PreviousSaveFolder = Environment.GetFolderPath(Environment.SpecialFolder.MyVideos);
         PreviousMediaFileType = MediaFileType.MP4;
         MaxNumberOfActiveDownloads = 5;
+        OverwriteExistingFiles = true;
         SpeedLimit = 1024;
         UseAria = false;
         AriaMaxConnectionsPerServer = 16;
