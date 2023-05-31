@@ -9,14 +9,6 @@ architectures:
   - build-on: arm64
   #- build-on: armhf
 
-layout:
-  /usr/lib/org.nickvision.tubeconverter:
-    symlink: $SNAP/usr/lib/org.nickvision.tubeconverter
-  /usr/share/org.nickvision.tubeconverter:
-    symlink: $SNAP/usr/share/org.nickvision.tubeconverter
-  /usr/lib/$CRAFT_ARCH_TRIPLET/libpython3.10.so.1.0:
-    bind-file: $SNAP/gnome-platform/usr/lib/$CRAFT_ARCH_TRIPLET/libpython3.10.so.1.0
-
 parts:
   ffmpeg:
     # WORKAROUND:
@@ -37,62 +29,57 @@ parts:
       - --disable-ffplay
       - --disable-devices
       - --enable-gnutls
-      - --enable-libmp3lame
-      - --enable-libvorbis
     build-packages:
       - nasm
       - libgnutls28-dev
-      - libmp3lame-dev
-      - libvorbis-dev
-    stage-packages:
-      - libmp3lame0
     prime:
       - -usr/include
       - -usr/share/ffmpeg
+      - -usr/share/doc
   tube-converter:
     after: [ ffmpeg ]
     plugin: dump
     source: https://github.com/NickvisionApps/TubeConverter.git
-    source-tag: '2023.6.0-rc1'
+    #source-tag: '2023.6.0-rc1'
+    source-branch: 'snap-permission-fix'
     source-depth: 1
-    build-environment:
-      - TC_PYTHON_SO: $SNAP/gnome-platform/usr/lib/$CRAFT_ARCH_TRIPLET/libpython3.10.so.1.0
     build-packages:
       - brotli
       - blueprint-compiler
       - wget
     override-pull: |
       craftctl default
-      mkdir -p $CRAFT_PART_INSTALL/usr/lib/python3/dist-packages
-      pip install --target=$CRAFT_PART_INSTALL/usr/lib/python3/dist-packages yt-dlp==2023.03.04
       wget https://dot.net/v1/dotnet-install.sh -O dotnet-install.sh
       chmod +x ./dotnet-install.sh
       ./dotnet-install.sh --channel 7.0
+      pip install --prefix=$CRAFT_PART_INSTALL/usr yt-dlp==2023.03.04
     override-build: |
       set -eux
       export DOTNET_ROOT=$HOME/.dotnet
       export PATH=$PATH:$HOME/.dotnet:$HOME/.dotnet/tools
-      cd $CRAFT_PART_SRC_WORK
+      cd $CRAFT_PART_SRC
       dotnet tool restore
-      dotnet cake --target=Publish --prefix=/usr --ui=gnome --self-contained
+      dotnet cake --target=Publish --prefix=/snap/tube-converter/current/usr --ui=gnome --self-contained
       dotnet cake --target=Install --destdir=$CRAFT_PART_INSTALL
-      sed -i "2 i export TC_PYTHON_SO=$TC_PYTHON_SO" $CRAFT_PART_INSTALL/usr/bin/org.nickvision.tubeconverter
+      sed -i "2 i export TC_PYTHON_SO=\$SNAP/gnome-platform/usr/lib/$CRAFT_ARCH_TRIPLET/libpython3.10.so.1.0" $CRAFT_PART_INSTALL/snap/tube-converter/current/usr/bin/org.nickvision.tubeconverter
+      sed -e '1c#!/usr/bin/python3' -i $CRAFT_PART_INSTALL/usr/local/bin/*
     prime:
-      - meta/*
-      - usr/*
+      - usr/bin/*
+      - usr/lib/*
+      - usr/share/applications/*
+      - usr/share/dbus-1/*
+      - usr/share/icons/* 
+      - usr/share/locale/*
+      - usr/share/metainfo/*
+      - usr/share/org.nickvision.tubeconverter/*
+    organize:
+      usr/local: usr
+      snap/tube-converter/current: .
     parse-info: [usr/share/metainfo/org.nickvision.tubeconverter.metainfo.xml]
   deps:
     plugin: nil
     stage-packages:
       - aria2
-      #- libunity9
-      #- libunity-tools
-      #- libunity-protocol-private0
-      #- libunity-scopes-json-def-phone
-      #- unity-scopes-runner
-      #- libdbusmenu-glib4
-      #- libdbusmenu-jsonloader4
-      #- libdbusmenu-gtk3-4
     prime:
       - -usr/share/doc
       - -usr/share/man
@@ -104,53 +91,13 @@ parts:
       rm -rf $CRAFT_PRIME/usr/share/pkgconfig
       rm -rf $CRAFT_PRIME/usr/lib/pkgconfig
       rm -rf $CRAFT_PRIME/usr/lib/*/libfontconfig*      
-  #    rm -rf $CRAFT_PRIME/etc
-  #    rm -rf $CRAFT_PRIME/usr/bin/fc*
-  #    rm -rf $CRAFT_PRIME/usr/lib/*/libharfbuzz*
-  #    rm -rf $CRAFT_PRIME/usr/lib/*/gdk-pixbuf-2.0
-  #    rm -rf $CRAFT_PRIME/usr/lib/*/libgdk*
-  #    rm -rf $CRAFT_PRIME/usr/lib/*/libicu*
-  #    rm -rf $CRAFT_PRIME/usr/lib/*/libgtk*
-  #    rm -rf $CRAFT_PRIME/usr/lib/*/libpango*
-  #    rm -rf $CRAFT_PRIME/usr/lib/*/libpixman*
-  #    rm -rf $CRAFT_PRIME/usr/lib/*/libcairo*
-  #    rm -rf $CRAFT_PRIME/usr/lib/*/gio
-  #    rm -rf $CRAFT_PRIME/usr/lib/*/gtk*
-  #    rm -rf $CRAFT_PRIME/usr/lib/*/libwayland*
-  #    rm -rf $CRAFT_PRIME/usr/lib/systemd
-  #    rm -rf $CRAFT_PRIME/usr/lib/*/libat*
-  #    rm -rf $CRAFT_PRIME/usr/lib/*/libdeflate*
-  #    rm -rf $CRAFT_PRIME/usr/lib/*/libwebp*
-  #    rm -rf $CRAFT_PRIME/usr/lib/*/libX*
-  #    rm -rf $CRAFT_PRIME/usr/lib/*/libx*
-  #    rm -rf $CRAFT_PRIME/usr/sbin
-  #    rm -rf $CRAFT_PRIME/usr/share/themes
-  #    rm -rf $CRAFT_PRIME/usr/share/doc*
-  #    rm -rf $CRAFT_PRIME/usr/share/X11
-  #    rm -rf $CRAFT_PRIME/usr/share/xml
-  #    rm -rf $CRAFT_PRIME/usr/share/gettext
-  #    rm -rf $CRAFT_PRIME/usr/share/libthai
-  #    rm -rf $CRAFT_PRIME/usr/share/lintian
-  #    rm -rf $CRAFT_PRIME/usr/share/bug
-  #    rm -rf $CRAFT_PRIME/usr/share/apport
-  #    rm -rf $CRAFT_PRIME/usr/lib/x86_64-linux-gnu/libcolord*
-  #    rm -rf $CRAFT_PRIME/usr/lib/x86_64-linux-gnu/libcups*
-  #    rm -rf $CRAFT_PRIME/usr/lib/x86_64-linux-gnu/libdbusmenu-gtk3*
-  #    rm -rf $CRAFT_PRIME/usr/lib/x86_64-linux-gnu/libdbusmenu-jsonloader*
-  #    rm -rf $CRAFT_PRIME/usr/lib/x86_64-linux-gnu/libdconf*
-  #    rm -rf $CRAFT_PRIME/usr/lib/x86_64-linux-gnu/libtiff*
-  #    rm -rf $CRAFT_PRIME/usr/lib/x86_64-linux-gnu/libunity-extras*
-  #    cp -r $CRAFT_STAGE/meta/gui/icons $CRAFT_PRIME/usr/share/
+      
 slots:
   # for GtkApplication registration
   tube-converter:
     interface: dbus
     bus: session
     name: org.nickvision.tubeconverter
-  #unity:
-  #  interface: dbus
-  #  bus: session
-  #  name: com.canonical.Unity
 
 apps:
   tube-converter:
@@ -160,8 +107,7 @@ apps:
     common-id: org.nickvision.tubeconverter
     environment:
       TC_PYTHON_SO: $SNAP/gnome-platform/usr/lib/$CRAFT_ARCH_TRIPLET/libpython3.10.so.1.0
-      PYTHONPATH: $SNAP/usr/lib/python3/dist-packages:$PYTHONPATH
-      PATH: $SNAP/usr/lib/python3/dist-packages/bin:$PATH
+      PYTHONPATH: $SNAP/usr/lib/python3.10/dist-packages:$PYTHONPATH
     plugs:
       - home
       - network
