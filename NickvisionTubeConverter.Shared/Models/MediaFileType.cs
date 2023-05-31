@@ -104,7 +104,7 @@ public static class MediaFileTypeHelpers
         MediaFileType.FLAC => true,
         MediaFileType.WAV => false,
         MediaFileType.Video => false,
-        MediaFileType.Audio => false,
+        MediaFileType.Audio => true,
         _ => false
     };
 
