@@ -103,7 +103,7 @@ public static class MediaFileTypeHelpers
         MediaFileType.OPUS => true,
         MediaFileType.FLAC => true,
         MediaFileType.WAV => false,
-        MediaFileType.Video => false,
+        MediaFileType.Video => true,
         MediaFileType.Audio => true,
         _ => false
     };
