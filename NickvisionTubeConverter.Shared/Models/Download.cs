@@ -217,7 +217,7 @@ public class Download
                     ariaParams.Append(new PyString("--show-console-readout=false"));
                     ariaParams.Append(new PyString($"--stop-with-process={_ariaKeeper.Id}"));
                     ariaParams.Append(new PyString($"--max-connection-per-server={options.AriaMaxConnectionsPerServer}"));
-                    ariaParams.Append(new PyString($"--min-split-size={options.AriaMinSplitSize}"));
+                    ariaParams.Append(new PyString($"--min-split-size={options.AriaMinSplitSize}M"));
                     ariaDict["default"] = ariaParams;
                     _ytOpt.Add("external_downloader_args", ariaDict);
                 }
