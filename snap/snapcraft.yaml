@@ -29,9 +29,15 @@ parts:
       - --disable-ffplay
       - --disable-devices
       - --enable-gnutls
+      - --enable-libmp3lame
+      - --enable-libvorbis
     build-packages:
       - nasm
       - libgnutls28-dev
+      - libmp3lame-dev
+      - libvorbis-dev
+    stage-packages:
+      - libmp3lame0
     prime:
       - -usr/include
       - -usr/share/ffmpeg
@@ -40,7 +46,7 @@ parts:
     after: [ ffmpeg ]
     plugin: dump
     source: https://github.com/NickvisionApps/TubeConverter.git
-    source-tag: '2023.6.0-rc1'
+    source-branch: 'snap'
     source-depth: 1
     build-packages:
       - brotli
