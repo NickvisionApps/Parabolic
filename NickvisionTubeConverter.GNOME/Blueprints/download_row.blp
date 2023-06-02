@@ -4,13 +4,12 @@ using Adw 1;
 Adw.Bin _root {
   Gtk.Box {
     orientation: vertical;
-    margin-start: 6;
-    margin-top: 6;
-    margin-end: 6;
-    margin-bottom: 6;
 
     Gtk.Box {
       orientation: horizontal;
+      margin-start: 6;
+      margin-top: 6;
+      margin-end: 6;
       spacing: 6;
 
       Gtk.Image _statusIcon {
@@ -108,8 +107,8 @@ Adw.Bin _root {
     }
 
     Adw.ViewStack _stateViewStack {
-      margin-start: 10;
-      margin-end: 10;
+      margin-start: 16;
+      margin-end: 16;
       margin-bottom: 8;
 
       Adw.ViewStackPage {
@@ -147,13 +146,15 @@ Adw.Bin _root {
         vexpand: true;
         halign: end;
         valign: end;
-        margin-bottom: 8;
-        margin-end: 14;
+        margin-bottom: 14;
+        margin-end: 20;
 
         styles ["opaque"]
       }
 
       Gtk.ScrolledWindow _scrollLog {
+        margin-start: 6;
+        margin-end: 6;
         height-request: 100;
         child: Gtk.Label _lblLog {
           margin-start: 6;
