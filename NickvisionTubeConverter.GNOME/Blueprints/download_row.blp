@@ -109,7 +109,7 @@ Adw.Bin _root {
     Adw.ViewStack _stateViewStack {
       margin-start: 16;
       margin-end: 16;
-      margin-bottom: 8;
+      margin-bottom: 12;
 
       Adw.ViewStackPage {
         name: "downloading";
@@ -146,21 +146,19 @@ Adw.Bin _root {
         vexpand: true;
         halign: end;
         valign: end;
-        margin-bottom: 14;
-        margin-end: 20;
+        margin-bottom: 7;
+        margin-end: 15;
 
         styles ["opaque"]
       }
 
       Gtk.ScrolledWindow _scrollLog {
-        margin-start: 6;
-        margin-end: 6;
         height-request: 100;
         child: Gtk.Label _lblLog {
-          margin-start: 6;
-          margin-top: 4;
-          margin-end: 4;
-          margin-bottom: 6;
+          margin-start: 12;
+          margin-top: 6;
+          margin-end: 6;
+          margin-bottom: 12;
           halign: start;
           valign: start;
           wrap: true;
