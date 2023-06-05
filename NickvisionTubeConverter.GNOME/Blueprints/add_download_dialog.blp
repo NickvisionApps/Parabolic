@@ -165,6 +165,17 @@ Adw.Window _root {
                           icon-name: "go-next-symbolic";
                         }
                       }
+
+                      Adw.ActionRow _numberTitlesRow {
+                        title: _("Number Titles");
+                        activatable-widget: _numberTitlesSwitch;
+
+                        [suffix]
+                        Gtk.Switch _numberTitlesSwitch {
+                          valign: center;
+                          active: false;
+                        }
+                      }
                     }
                   };
                 }
@@ -182,29 +193,20 @@ Adw.Window _root {
 
             Adw.ViewStackPage {
               name: "pagePlaylist";
-              child: Gtk.Box _playlistPage {
-                orientation: vertical;
+              child: Gtk.ScrolledWindow _playlist {
                 hexpand: true;
-                spacing: 12;
-
-                Gtk.ToggleButton _numberTitlesButton {
-                  halign: center;
-
-                  Adw.ButtonContent {
-                    icon-name: "view-list-ordered-symbolic";
-                    label: _("Number Titles");
-                  }
-                }
-
-                Gtk.ScrolledWindow _playlist {
-                  vexpand: true;
-
-                  Adw.PreferencesGroup _playlistGroup {
+                vexpand: true;
+                Gtk.Box _playlistPage {
                     margin-top: 2;
                     margin-start: 24;
                     margin-end: 24;
                     margin-bottom: 12;
-                  }
+                    orientation: vertical;
+                    spacing: 12;
+
+                    Adw.PreferencesGroup _playlistGroup {
+
+                    }
                 }
               };
             }

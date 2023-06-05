@@ -78,6 +78,10 @@ public class Configuration
     /// Whether or not to embed metadata in a download
     /// </summary>
     public bool EmbedMetadata { get; set; }
+    /// <summary>
+    /// Whether or not to number titles
+    /// </summary>
+    public bool NumberTitles { get; set; }
 
     /// <summary>
     /// Occurs when the configuration is saved to disk
@@ -107,6 +111,7 @@ public class Configuration
         CookiesPath = "";
         DisallowConversions = false;
         EmbedMetadata = true;
+        NumberTitles = false;
     }
 
     /// <summary>

@@ -62,6 +62,20 @@ public class AddDownloadDialogController
     }
 
     /// <summary>
+    /// Whether or not to number titles
+    /// </summary>
+    public bool NumberTitles
+    {
+        get => Configuration.Current.NumberTitles;
+
+        set
+        {
+            Configuration.Current.NumberTitles = value;
+            Configuration.Current.Save();
+        }
+    }
+
+    /// <summary>
     /// Searches for information about a media url
     /// </summary>
     /// <param name="mediaUrl">The media url</param>
