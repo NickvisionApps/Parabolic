@@ -5,7 +5,7 @@
   <project_license>MIT</project_license>
   <name>Tube Converter</name>
   <developer_name translatable="no">Nickvision</developer_name>
-  <summary>Get video and audio from the web</summary>
+  <summary>Download web video and audio</summary>
   <description>
     <p>— A basic yt-dlp frontend</p>
     <p>— Supports downloading videos in multiple formats (mp4, webm, mp3, opus, flac, and wav)</p>
@@ -50,18 +50,8 @@
   </custom>
   
   <releases>
-    <release version="2023.6.0-p1" date="2023-06-02">
+    <release version="2023.6.1-next" date="2023-06-02">
       <description translatable="no">
-        <p>- Added the ability to upload a cookie file to use for media downloads that require a login</p>
-        <p>- Added support for downloading media as M4A</p>
-        <p>- Added more configurable options for aria2 downloader</p>
-        <p>- Added options to configure when completed download notifications are shown</p>
-        <p>- Added the ability to clear completed downloads</p>
-        <p>- Added the ability to disallow conversions and simply download the appropriate video/audio format for the selected quality without converting to other formats</p>
-        <p>- Overwrite Existing Files is now a global option in Preferences instead of an individual setting in the AddDownloadDialog</p>
-        <p>- Tube Converter will check the clipboard for a valid media url when AddDownloadDialog is opened</p>
-        <p>- Fixed an issue that prevented downloading m3u8 streams</p>
-        <p>- Fixed an issue that prevented downloading media to NTFS drives</p>
         <p>- Updated translations (Thanks everyone on Weblate!)</p>
       </description>
     </release>

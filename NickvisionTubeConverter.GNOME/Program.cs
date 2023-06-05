@@ -47,9 +47,9 @@ public partial class Program
         _mainWindowController.AppInfo.ID = "org.nickvision.tubeconverter";
         _mainWindowController.AppInfo.Name = "Nickvision Tube Converter";
         _mainWindowController.AppInfo.ShortName = _("Tube Converter");
-        _mainWindowController.AppInfo.Description = $"{_("Get video and audio from the web")}.";
-        _mainWindowController.AppInfo.Version = "2023.6.0";
-        _mainWindowController.AppInfo.Changelog = "<ul><li>Added the ability to upload a cookie file to use for media downloads that require a login</li><li>Added support for downloading media as M4A</li><li>Added more configurable options for aria2 downloader</li><li>Added options to configure when completed download notifications are shown</li><li>Added the ability to clear completed downloads</li><li>Added the ability to disallow conversions and simply download the appropriate video/audio format for the selected quality without converting to other formats</li><li>Overwrite Existing Files is now a global option in Preferences instead of an individual setting in the AddDownloadDialog</li><li>Tube Converter will check the clipboard for a valid media url and when AddDownloadDialog is opened</li><li>Fixed an issue that prevented downloading m3u8 streams</li><li>Fixed an issue that prevented downloading media to NTFS drives</li><li>Improved UI/UX</li><li>Updated translations (Thanks everyone on Weblate!)</li></ul>";
+        _mainWindowController.AppInfo.Description = $"{_("Download web video and audio")}.";
+        _mainWindowController.AppInfo.Version = "2023.6.1-next";
+        _mainWindowController.AppInfo.Changelog = "<ul><li>Updated translations (Thanks everyone on Weblate!)</li></ul>";
         _mainWindowController.AppInfo.GitHubRepo = new Uri("https://github.com/NickvisionApps/TubeConverter");
         _mainWindowController.AppInfo.IssueTracker = new Uri("https://github.com/NickvisionApps/TubeConverter/issues/new");
         _mainWindowController.AppInfo.SupportUrl = new Uri("https://github.com/NickvisionApps/TubeConverter/discussions");
