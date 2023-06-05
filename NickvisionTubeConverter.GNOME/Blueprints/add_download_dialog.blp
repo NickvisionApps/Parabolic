@@ -60,6 +60,18 @@ Adw.Window _root {
                   }
                 }
 
+                Adw.PreferencesGroup _authGroup {
+                  title: _("Authentication");
+
+                  Adw.EntryRow _usernameRow {
+                    title: _("Username");
+                  }
+
+                  Adw.PasswordEntryRow _passwordRow {
+                    title: _("Password");
+                  }
+                }
+
                 Gtk.Button _validateUrlButton {
                   label: _("Validate");
                   halign: center;
@@ -256,18 +268,6 @@ Adw.Window _root {
                         valign: center;
                         active: false;
                       }
-                    }
-                  }
-
-                  Adw.PreferencesGroup _authGroup {
-                    title: _("Authentication");
-
-                    Adw.EntryRow _usernameRow {
-                      title: _("Username");
-                    }
-
-                    Adw.PasswordEntryRow _passwordRow {
-                      title: _("Password");
                     }
                   }
                 }

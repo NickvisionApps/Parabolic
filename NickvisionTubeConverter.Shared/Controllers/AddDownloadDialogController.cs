@@ -80,7 +80,9 @@ public class AddDownloadDialogController
     /// </summary>
     /// <param name="mediaUrl">The media url</param>
     /// <returns>A MediaUrlInfo object for the url or null if url is invalid</returns>
-    public async Task<MediaUrlInfo?> SearchUrlAsync(string mediaUrl) => await MediaUrlInfo.GetAsync(mediaUrl);
+    /// <param name="username">A username for the website (if available)</param>
+    /// <param name="password">A password for the website (if available)</param>
+    public async Task<MediaUrlInfo?> SearchUrlAsync(string mediaUrl, string? username, string? password) => await MediaUrlInfo.GetAsync(mediaUrl, username, password);
 
     /// <summary>
     /// Numbers the titles in a MediaUrlInfo object

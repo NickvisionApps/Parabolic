@@ -374,7 +374,7 @@ public partial class AddDownloadDialog : Adw.Window
             try
             {
                 _urlRow.SetText(url);
-                _mediaUrlInfo = await _controller.SearchUrlAsync(url);
+                _mediaUrlInfo = await _controller.SearchUrlAsync(url, _usernameRow.GetText(), _passwordRow.GetText());
             }
             catch (Exception ex)
             {
