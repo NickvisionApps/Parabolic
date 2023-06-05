@@ -44,6 +44,8 @@ public class Download
     private bool _limitSpeed;
     private uint _speedLimit;
     private bool _cropThumbnail;
+    private string? _username;
+    private string? _password;
     private ulong? _pid;
     private Dictionary<string, dynamic>? _ytOpt;
     private dynamic? _outFile;
@@ -120,7 +122,9 @@ public class Download
     /// <param name="quality">The quality of the download</param>
     /// <param name="subtitle">The subtitles for the download</param>
     /// <param name="cropThumbnail">Whether or not to crop the thumbnail</param>
-    public Download(string mediaUrl, MediaFileType fileType, string saveFolder, string saveFilename, bool limitSpeed, uint speedLimit, Quality quality, VideoResolution? resolution, Subtitle subtitle, bool cropThumbnail)
+    /// <param name="username">A username for the website (if available)</param>
+    /// <param name="password">A password for the website (if available)</param>
+    public Download(string mediaUrl, MediaFileType fileType, string saveFolder, string saveFilename, bool limitSpeed, uint speedLimit, Quality quality, VideoResolution? resolution, Subtitle subtitle, bool cropThumbnail, string? username, string? password)
     {
         Id = Guid.NewGuid();
         MediaUrl = mediaUrl;
@@ -139,6 +143,8 @@ public class Download
         _limitSpeed = limitSpeed;
         _speedLimit = speedLimit;
         _cropThumbnail = cropThumbnail;
+        _username = username;
+        _password = password;
         _pid = null;
         _ariaKeeper = null;
     }
@@ -282,6 +288,14 @@ public class Download
                 if (postProcessors.Count != 0)
                 {
                     _ytOpt.Add("postprocessors", postProcessors);
+                }
+                if(!string.IsNullOrEmpty(_username))
+                {
+                    _ytOpt.Add("username", _username);
+                }
+                if(!string.IsNullOrEmpty(_password))
+                {
+                    _ytOpt.Add("password", _password);
                 }
             }
             //Run download

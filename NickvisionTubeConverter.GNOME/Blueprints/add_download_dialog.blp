@@ -211,20 +211,19 @@ Adw.Window _root {
 
             Adw.ViewStackPage {
               name: "pageAdvanced";
-              child: Gtk.Box _advancedPage {
-                orientation: vertical;
+              child: Gtk.ScrolledWindow _advanced {
                 hexpand: true;
-                spacing: 12;
+                vexpand: true;
 
-                Gtk.ScrolledWindow _advanced {
-                  vexpand: true;
+                Gtk.Box _advancedPage {
+                  orientation: vertical;
+                  spacing: 12;
+                  margin-top: 2;
+                  margin-start: 24;
+                  margin-end: 24;
+                  margin-bottom: 12;
 
                   Adw.PreferencesGroup _advancedGroup {
-                    margin-top: 2;
-                    margin-start: 24;
-                    margin-end: 24;
-                    margin-bottom: 12;
-
                     Adw.ActionRow _speedLimitRow {
                       title: _("Speed Limit");
                       activatable-widget: _speedLimitSwitch;
@@ -246,6 +245,18 @@ Adw.Window _root {
                         valign: center;
                         active: false;
                       }
+                    }
+                  }
+
+                  Adw.PreferencesGroup _authGroup {
+                    title: _("Authentication");
+
+                    Adw.EntryRow _usernameRow {
+                      title: _("Username");
+                    }
+
+                    Adw.PasswordEntryRow _passwordRow {
+                      title: _("Password");
                     }
                   }
                 }
