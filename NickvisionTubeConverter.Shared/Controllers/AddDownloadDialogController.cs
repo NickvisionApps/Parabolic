@@ -62,11 +62,27 @@ public class AddDownloadDialogController
     }
 
     /// <summary>
+    /// Whether or not to number titles
+    /// </summary>
+    public bool NumberTitles
+    {
+        get => Configuration.Current.NumberTitles;
+
+        set
+        {
+            Configuration.Current.NumberTitles = value;
+            Configuration.Current.Save();
+        }
+    }
+
+    /// <summary>
     /// Searches for information about a media url
     /// </summary>
     /// <param name="mediaUrl">The media url</param>
     /// <returns>A MediaUrlInfo object for the url or null if url is invalid</returns>
-    public async Task<MediaUrlInfo?> SearchUrlAsync(string mediaUrl) => await MediaUrlInfo.GetAsync(mediaUrl);
+    /// <param name="username">A username for the website (if available)</param>
+    /// <param name="password">A password for the website (if available)</param>
+    public async Task<MediaUrlInfo?> SearchUrlAsync(string mediaUrl, string? username, string? password) => await MediaUrlInfo.GetAsync(mediaUrl, username, password);
 
     /// <summary>
     /// Numbers the titles in a MediaUrlInfo object
@@ -118,14 +134,16 @@ public class AddDownloadDialogController
     /// <param name="saveFolder">The save folder of the downloads</param>
     /// <param name="limitSpeed">Whether or not to use speed limit</param>
     /// <param name="cropThumbnail">Whether or not to crop the thumbnail</param>
-    public void PopulateDownloads(MediaUrlInfo mediaUrlInfo, MediaFileType mediaFileType, Quality quality, VideoResolution? resolution, Subtitle subtitles, string saveFolder, bool limitSpeed, bool cropThumbnail)
+    /// <param name="username">A username for the website (if available)</param>
+    /// <param name="password">A password for the website (if available)</param>
+    public void PopulateDownloads(MediaUrlInfo mediaUrlInfo, MediaFileType mediaFileType, Quality quality, VideoResolution? resolution, Subtitle subtitles, string saveFolder, bool limitSpeed, bool cropThumbnail, string? username, string? password)
     {
         Downloads.Clear();
         foreach (var media in mediaUrlInfo.MediaList)
         {
             if (media.ToDownload)
             {
-                Downloads.Add(new Download(media.Url, mediaFileType, saveFolder, media.Title, limitSpeed, Configuration.Current.SpeedLimit, quality, resolution, subtitles, cropThumbnail));
+                Downloads.Add(new Download(media.Url, mediaFileType, saveFolder, media.Title, limitSpeed, Configuration.Current.SpeedLimit, quality, resolution, subtitles, cropThumbnail, username, password));
             }
         }
         Configuration.Current.PreviousSaveFolder = saveFolder;

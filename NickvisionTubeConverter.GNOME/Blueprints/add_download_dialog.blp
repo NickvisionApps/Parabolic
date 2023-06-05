@@ -60,11 +60,24 @@ Adw.Window _root {
                   }
                 }
 
+                Adw.PreferencesGroup _authGroup {
+                  title: _("Authentication");
+                  description: _("Please provide credentials only if required by the website you are downloading media from.");
+
+                  Adw.EntryRow _usernameRow {
+                    title: _("Username");
+                  }
+
+                  Adw.PasswordEntryRow _passwordRow {
+                    title: _("Password");
+                  }
+                }
+
                 Gtk.Button _validateUrlButton {
                   label: _("Validate");
                   halign: center;
                   valign: center;
-                  margin-bottom: 25;
+                  margin-bottom: 34;
 
                   styles ["pill", "suggested-action"]
                 }
@@ -165,6 +178,17 @@ Adw.Window _root {
                           icon-name: "go-next-symbolic";
                         }
                       }
+
+                      Adw.ActionRow _numberTitlesRow {
+                        title: _("Number Video Titles");
+                        activatable-widget: _numberTitlesSwitch;
+
+                        [suffix]
+                        Gtk.Switch _numberTitlesSwitch {
+                          valign: center;
+                          active: false;
+                        }
+                      }
                     }
                   };
                 }
@@ -182,49 +206,48 @@ Adw.Window _root {
 
             Adw.ViewStackPage {
               name: "pagePlaylist";
-              child: Gtk.Box _playlistPage {
-                orientation: vertical;
+              child: Gtk.ScrolledWindow _playlist {
                 hexpand: true;
-                spacing: 12;
-
-                Gtk.ToggleButton _numberTitlesButton {
-                  halign: center;
-
-                  Adw.ButtonContent {
-                    icon-name: "view-list-ordered-symbolic";
-                    label: _("Number Titles");
-                  }
-                }
-
-                Gtk.ScrolledWindow _playlist {
-                  vexpand: true;
-
-                  Adw.PreferencesGroup _playlistGroup {
+                vexpand: true;
+                Gtk.Box _playlistPage {
                     margin-top: 2;
                     margin-start: 24;
                     margin-end: 24;
                     margin-bottom: 12;
-                  }
+                    orientation: vertical;
+                    spacing: 12;
+
+                    Adw.PreferencesGroup _playlistGroup {
+                      Adw.ActionRow _numberTitlesRow2 {
+                        title: _("Number Video Titles");
+                        activatable-widget: _numberTitlesSwitch;
+
+                        [suffix]
+                        Gtk.Switch _numberTitlesSwitch2 {
+                          valign: center;
+                          active: false;
+                        }
+                      }
+                    }
                 }
               };
             }
 
             Adw.ViewStackPage {
               name: "pageAdvanced";
-              child: Gtk.Box _advancedPage {
-                orientation: vertical;
+              child: Gtk.ScrolledWindow _advanced {
                 hexpand: true;
-                spacing: 12;
+                vexpand: true;
 
-                Gtk.ScrolledWindow _advanced {
-                  vexpand: true;
+                Gtk.Box _advancedPage {
+                  orientation: vertical;
+                  spacing: 12;
+                  margin-top: 2;
+                  margin-start: 24;
+                  margin-end: 24;
+                  margin-bottom: 12;
 
                   Adw.PreferencesGroup _advancedGroup {
-                    margin-top: 2;
-                    margin-start: 24;
-                    margin-end: 24;
-                    margin-bottom: 12;
-
                     Adw.ActionRow _speedLimitRow {
                       title: _("Speed Limit");
                       activatable-widget: _speedLimitSwitch;

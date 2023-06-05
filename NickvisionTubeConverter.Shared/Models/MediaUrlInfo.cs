@@ -41,8 +41,10 @@ public class MediaUrlInfo
     /// Gets a MediaUrlInfo from a url string
     /// </summary>
     /// <param name="url">The media url string</param>
+    /// <param name="username">A username for the website (if available)</param>
+    /// <param name="password">A password for the website (if available)</param>
     /// <returns>A MediaUrlInfo object. Null if url invalid</returns>
-    public static async Task<MediaUrlInfo?> GetAsync(string url)
+    public static async Task<MediaUrlInfo?> GetAsync(string url, string? username, string? password)
     {
         var pathToOutput = $"{Configuration.TempDir}{Path.DirectorySeparatorChar}output.log";
         dynamic outFile = PythonHelpers.SetConsoleOutputFilePath(pathToOutput);
@@ -60,6 +62,14 @@ public class MediaUrlInfo
                         { "windowsfilenames", RuntimeInformation.IsOSPlatform(OSPlatform.Windows) },
                         { "ignoreerrors", true }
                     };
+                    if(!string.IsNullOrEmpty(username))
+                    {
+                        ytOpt.Add("username", username);
+                    }
+                    if(!string.IsNullOrEmpty(password))
+                    {
+                        ytOpt.Add("password", password);
+                    }
                     PyDict? mediaInfo = ytdlp.YoutubeDL(ytOpt).extract_info(url, download: false);
                     if (mediaInfo == null)
                     {

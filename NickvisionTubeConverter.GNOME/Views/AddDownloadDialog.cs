@@ -22,20 +22,11 @@ public partial class AddDownloadDialog : Adw.Window
     [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
     private static partial void g_main_context_invoke(nint context, GSourceFunc function, nint data);
     [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
-    [return: MarshalAs(UnmanagedType.I1)]
-    public static partial bool gtk_file_chooser_set_current_folder(nint chooser, nint file, nint error);
-    [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
-    public static partial void gtk_file_chooser_set_current_name(nint chooser, string name);
-    [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
     private static partial string g_file_get_path(nint file);
     [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
     private static partial nint gtk_file_dialog_new();
     [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
     private static partial void gtk_file_dialog_set_title(nint dialog, string title);
-    [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
-    private static partial void gtk_file_dialog_set_filters(nint dialog, nint filters);
-    [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
-    private static partial void gtk_file_dialog_set_initial_name(nint dialog, string name);
     [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
     private static partial void gtk_file_dialog_set_initial_folder(nint dialog, nint folder);
     [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
@@ -75,10 +66,13 @@ public partial class AddDownloadDialog : Adw.Window
     [Gtk.Connect] private readonly Adw.PreferencesGroup _mediaGroup;
     [Gtk.Connect] private readonly Adw.PreferencesGroup _openPlaylistGroup;
     [Gtk.Connect] private readonly Adw.ActionRow _openPlaylistRow;
+    [Gtk.Connect] private readonly Adw.ActionRow _numberTitlesRow;
+    [Gtk.Connect] private readonly Gtk.Switch _numberTitlesSwitch;
     [Gtk.Connect] private readonly Gtk.Box _playlistPage;
-    [Gtk.Connect] private readonly Gtk.ToggleButton _numberTitlesButton;
     [Gtk.Connect] private readonly Gtk.ScrolledWindow _playlist;
     [Gtk.Connect] private readonly Adw.PreferencesGroup _playlistGroup;
+    [Gtk.Connect] private readonly Adw.ActionRow _numberTitlesRow2;
+    [Gtk.Connect] private readonly Gtk.Switch _numberTitlesSwitch2;
     [Gtk.Connect] private readonly Gtk.Box _advancedPage;
     [Gtk.Connect] private readonly Gtk.ScrolledWindow _advanced;
     [Gtk.Connect] private readonly Adw.PreferencesGroup _advancedGroup;
@@ -86,6 +80,9 @@ public partial class AddDownloadDialog : Adw.Window
     [Gtk.Connect] private readonly Gtk.Switch _speedLimitSwitch;
     [Gtk.Connect] private readonly Adw.ActionRow _cropThumbnailRow;
     [Gtk.Connect] private readonly Gtk.Switch _cropThumbnailSwitch;
+    [Gtk.Connect] private readonly Adw.PreferencesGroup _authGroup;
+    [Gtk.Connect] private readonly Adw.EntryRow _usernameRow;
+    [Gtk.Connect] private readonly Adw.PasswordEntryRow _passwordRow;
     private Gtk.Spinner? _urlSpinner;
     private readonly List<MediaRow> _mediaRows;
     private readonly string[] _audioQualityArray;
@@ -170,7 +167,7 @@ public partial class AddDownloadDialog : Adw.Window
                 _viewStack.SetVisibleChildName("pageDownload");
                 SetDefaultWidget(_addDownloadButton);
                 _addDownloadButton.SetSensitive(!string.IsNullOrEmpty(_saveFolderRow.GetText()));
-                _numberTitlesButton.SetVisible(_mediaUrlInfo.MediaList.Count > 1 ? true : false);
+                _numberTitlesRow.SetVisible(_mediaUrlInfo.MediaList.Count > 1 ? true : false);
                 if (_mediaUrlInfo.MediaList.Count > 1)
                 {
                     foreach (var mediaInfo in _mediaUrlInfo.MediaList)
@@ -183,6 +180,10 @@ public partial class AddDownloadDialog : Adw.Window
                     _openPlaylistGroup.SetVisible(true);
                     _openPlaylistRow.SetTitle(_n("{0} of {1} items", "{0} of {1} items", _mediaUrlInfo.MediaList.Count, _mediaUrlInfo.MediaList.Count, _mediaUrlInfo.MediaList.Count));
                     _qualityRow.SetTitle(_("Maximum Quality"));
+                    if(_controller.NumberTitles)
+                    {
+                        _numberTitlesSwitch.SetActive(true);
+                    }
                 }
                 else
                 {
@@ -246,7 +247,13 @@ public partial class AddDownloadDialog : Adw.Window
         _cropThumbnailRow.SetVisible(_controller.EmbedMetadata);
         _openAdvancedRow.OnActivated += (sender, e) => _viewStack.SetVisibleChildName("pageAdvanced");
         _openPlaylistRow.OnActivated += (sender, e) => _viewStack.SetVisibleChildName("pagePlaylist");
-        _numberTitlesButton.OnClicked += ToggleNumberTitles;
+        _numberTitlesSwitch.OnNotify += (sender, e) =>
+        {
+            if(e.Pspec.GetName() == "active")
+            {
+                ToggleNumberTitles();
+            }
+        };
         _playlist.GetVadjustment().OnNotify += (sender, e) =>
         {
             if (e.Pspec.GetName() == "value")
@@ -289,10 +296,11 @@ public partial class AddDownloadDialog : Adw.Window
                 quality = Quality.Resolution;
                 resolution = _mediaUrlInfo.VideoResolutions[(int)_qualityRow.GetSelected()];
             }
-            _controller.PopulateDownloads(_mediaUrlInfo!, fileType, quality, resolution, (Subtitle)_subtitleRow.GetSelected(), _saveFolderString, _speedLimitSwitch.GetActive(), _cropThumbnailSwitch.GetActive());
+            _controller.PopulateDownloads(_mediaUrlInfo!, fileType, quality, resolution, (Subtitle)_subtitleRow.GetSelected(), _saveFolderString, _speedLimitSwitch.GetActive(), _cropThumbnailSwitch.GetActive(), _usernameRow.GetText(), _passwordRow.GetText());
             OnDownload?.Invoke(this, EventArgs.Empty);
         };
         _addDownloadButton.SetSensitive(false);
+        _numberTitlesSwitch2.BindProperty("active", _numberTitlesSwitch, "active", GObject.BindingFlags.Bidirectional);
         //Shortcut Controller
         _shortcutController = Gtk.ShortcutController.New();
         _shortcutController.SetScope(Gtk.ShortcutScope.Managed);
@@ -366,7 +374,7 @@ public partial class AddDownloadDialog : Adw.Window
             try
             {
                 _urlRow.SetText(url);
-                _mediaUrlInfo = await _controller.SearchUrlAsync(url);
+                _mediaUrlInfo = await _controller.SearchUrlAsync(url, _usernameRow.GetText(), _passwordRow.GetText());
             }
             catch (Exception ex)
             {
@@ -467,14 +475,13 @@ public partial class AddDownloadDialog : Adw.Window
     /// <summary>
     /// Occurs when the number titles toggle button is clicked
     /// </summary>
-    /// <param name="sender">Gtk.Button</param>
-    /// <param name="e">EventArgs</param>
-    private void ToggleNumberTitles(Gtk.Button sender, EventArgs e)
+    private void ToggleNumberTitles()
     {
-        _controller.ToggleNumberTitles(_mediaUrlInfo!, _numberTitlesButton.GetActive());
+        _controller.ToggleNumberTitles(_mediaUrlInfo!, _numberTitlesSwitch.GetActive());
+        _controller.NumberTitles = _numberTitlesSwitch.GetActive();
         foreach (var row in _mediaRows)
         {
-            row.UpdateTitle(_numberTitlesButton.GetActive());
+            row.UpdateTitle(_numberTitlesSwitch.GetActive());
         }
     }
 
