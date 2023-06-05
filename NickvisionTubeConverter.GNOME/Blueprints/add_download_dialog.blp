@@ -167,7 +167,7 @@ Adw.Window _root {
                       }
 
                       Adw.ActionRow _numberTitlesRow {
-                        title: _("Number Titles");
+                        title: _("Number Video Titles");
                         activatable-widget: _numberTitlesSwitch;
 
                         [suffix]
@@ -205,7 +205,16 @@ Adw.Window _root {
                     spacing: 12;
 
                     Adw.PreferencesGroup _playlistGroup {
+                      Adw.ActionRow _numberTitlesRow2 {
+                        title: _("Number Video Titles");
+                        activatable-widget: _numberTitlesSwitch;
 
+                        [suffix]
+                        Gtk.Switch _numberTitlesSwitch2 {
+                          valign: center;
+                          active: false;
+                        }
+                      }
                     }
                 }
               };

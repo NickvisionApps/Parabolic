@@ -71,6 +71,8 @@ public partial class AddDownloadDialog : Adw.Window
     [Gtk.Connect] private readonly Gtk.Box _playlistPage;
     [Gtk.Connect] private readonly Gtk.ScrolledWindow _playlist;
     [Gtk.Connect] private readonly Adw.PreferencesGroup _playlistGroup;
+    [Gtk.Connect] private readonly Adw.ActionRow _numberTitlesRow2;
+    [Gtk.Connect] private readonly Gtk.Switch _numberTitlesSwitch2;
     [Gtk.Connect] private readonly Gtk.Box _advancedPage;
     [Gtk.Connect] private readonly Gtk.ScrolledWindow _advanced;
     [Gtk.Connect] private readonly Adw.PreferencesGroup _advancedGroup;
@@ -298,6 +300,7 @@ public partial class AddDownloadDialog : Adw.Window
             OnDownload?.Invoke(this, EventArgs.Empty);
         };
         _addDownloadButton.SetSensitive(false);
+        _numberTitlesSwitch2.BindProperty("active", _numberTitlesSwitch, "active", GObject.BindingFlags.Bidirectional);
         //Shortcut Controller
         _shortcutController = Gtk.ShortcutController.New();
         _shortcutController.SetScope(Gtk.ShortcutScope.Managed);
