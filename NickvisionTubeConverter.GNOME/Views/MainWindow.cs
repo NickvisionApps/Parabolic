@@ -498,6 +498,11 @@ public partial class MainWindow : Adw.ApplicationWindow
             }
         };
         AddAction(actClearCompletedDownloads);
+        //Keyring Action
+        var actKeyring = Gio.SimpleAction.New("keyring", null);
+        actKeyring.OnActivate += Keyring;
+        AddAction(actKeyring);
+        application.SetAccelsForAction("win.keyring", new string[] { "<Ctrl>k" });
         //Preferences Action
         var actPreferences = Gio.SimpleAction.New("preferences", null);
         actPreferences.OnActivate += Preferences;
@@ -636,6 +641,16 @@ public partial class MainWindow : Adw.ApplicationWindow
             addDialog.Close();
         };
         await addDialog.PresentAsync(e.ActionParam);
+    }
+
+    /// <summary>
+    /// Occurs when the keyring action is triggered
+    /// </summary>
+    /// <param name="sender">Gio.SimpleAction</param>
+    /// <param name="e">EventArgs</param>
+    private void Keyring(Gio.SimpleAction sender, EventArgs e)
+    {
+
     }
 
     /// <summary>
