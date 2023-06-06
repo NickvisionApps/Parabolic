@@ -421,7 +421,7 @@ public partial class MainWindow : Adw.ApplicationWindow
         };
         try
         {
-            _unityLauncher = unity_launcher_entry_get_for_desktop_id($"{_controller.AppInfo.ID}.desktop");
+             _unityLauncher = unity_launcher_entry_get_for_desktop_id(string.IsNullOrEmpty(Environment.GetEnvironmentVariable("SNAP")) ? $"{_controller.AppInfo.ID}.desktop" : "tube-converter_tube-converter.desktop");
             g_timeout_add(1000, _libUnitySourceFunc, IntPtr.Zero);
         }
         catch (DllNotFoundException e)
