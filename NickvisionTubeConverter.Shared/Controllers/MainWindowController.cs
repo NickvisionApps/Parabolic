@@ -110,10 +110,22 @@ public class MainWindowController : IDisposable
     }
 
     /// <summary>
+    /// Creates a new KeyringDialogController
+    /// </summary>
+    /// <returns>The KeyringDialogController</returns>
+    public KeyringDialogController CreateKeyringDialogController() => new KeyringDialogController();
+
+    /// <summary>
     /// Creates a new PreferencesViewController
     /// </summary>
     /// <returns>The PreferencesViewController</returns>
     public PreferencesViewController CreatePreferencesViewController() => new PreferencesViewController();
+
+    /// <summary>
+    /// Creates a new AddDownloadDialogController
+    /// </summary>
+    /// <returns>The new AddDownloadDialogController</returns>
+    public AddDownloadDialogController CreateAddDownloadDialogController() => new AddDownloadDialogController();
 
     /// <summary>
     /// Starts the application
@@ -146,12 +158,6 @@ public class MainWindowController : IDisposable
             NotificationSent?.Invoke(this, new NotificationSentEventArgs(_("Unable to setup dependencies. Please restart the app and try again."), NotificationSeverity.Error, "error", $"{e.Message}\n\n{e.StackTrace}"));
         }
     }
-
-    /// <summary>
-    /// Creates a new AddDownloadDialogController
-    /// </summary>
-    /// <returns>The new AddDownloadDialogController</returns>
-    public AddDownloadDialogController CreateAddDownloadDialogController() => new AddDownloadDialogController();
 
     /// <summary>
     /// Occurs when the configuration is saved

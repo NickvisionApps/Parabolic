@@ -1,0 +1,37 @@
+using Gtk 4.0;
+using Adw 1;
+
+Adw.Window _root {
+  width-request: 360;
+  default-width: 420;
+  modal: true;
+  resizable: false;
+
+  content: Gtk.Box {
+    orientation: vertical;
+
+    Adw.HeaderBar {
+      title-widget: Gtk.Label {};
+
+      styles ["flat"]
+    }
+
+    Gtk.WindowHandle {
+      Gtk.Box {
+        orientation: vertical;
+        spacing: 24;
+
+        Gtk.Label _titleLabel {
+          label: _("Keyring");
+
+          styles ["title-2"]
+        }
+          
+        Adw.ToastOverlay _toastOverlay {
+          hexpand: true;
+          vexpand: true;
+        }
+      }
+    }
+  };
+}

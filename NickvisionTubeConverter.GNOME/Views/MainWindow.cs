@@ -650,7 +650,8 @@ public partial class MainWindow : Adw.ApplicationWindow
     /// <param name="e">EventArgs</param>
     private void Keyring(Gio.SimpleAction sender, EventArgs e)
     {
-
+        var keyringDialog = new KeyringDialog(_controller.CreateKeyringDialogController(), this);
+        keyringDialog.Present();
     }
 
     /// <summary>
