@@ -423,6 +423,14 @@ public partial class AddDownloadDialog : Adw.Window
         if (isVideo && !_audioOnly)
         {
             _qualityRow.SetModel(Gtk.StringList.New(_videoQualityList.ToArray()));
+            if(_controller.PreviousVideoResolution != null)
+            {
+                var find = _mediaUrlInfo.VideoResolutions.IndexOf(_controller.PreviousVideoResolution);
+                if(find != -1)
+                {
+                    _qualityRow.SetSelected((uint)find);
+                }
+            }
             _subtitleRow.SetSensitive(true);
         }
         else

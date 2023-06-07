@@ -29,6 +29,25 @@ public class VideoResolution : IComparable<VideoResolution>, IEquatable<VideoRes
     }
 
     /// <summary>
+    /// Parses a VideoResolution from a string
+    /// </summary>
+    /// <param name="s">The string to parse (Format: WidthxHeight)</param>
+    /// <returns>The parsed VideoResolution, null if error</returns>
+    public static VideoResolution? Parse(string s)
+    {
+        var split = s.Split("x");
+        if(split.Length == 2)
+        {
+            try
+            {
+                return new VideoResolution(int.Parse(split[0]), int.Parse(split[1]));
+            }
+            catch { }
+        }
+        return null;
+    }
+
+    /// <summary>
     /// Gets a string representation of a VideoResolution
     /// </summary>
     /// <returns>The string representation of the VideoResolution</returns>

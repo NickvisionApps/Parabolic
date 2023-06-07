@@ -43,6 +43,10 @@ public class Configuration
     /// </summary>
     public MediaFileType PreviousMediaFileType { get; set; }
     /// <summary>
+    /// The previously used video resolution
+    /// </summary>
+    public string PreviousVideoResolution { get; set; }
+    /// <summary>
     /// The maximum number of active downloads (should be between 1-10)
     /// </summary>
     public int MaxNumberOfActiveDownloads { get; set; }
@@ -102,6 +106,7 @@ public class Configuration
         RunInBackground = RuntimeInformation.IsOSPlatform(OSPlatform.Windows);
         PreviousSaveFolder = Environment.GetFolderPath(Environment.SpecialFolder.MyVideos);
         PreviousMediaFileType = MediaFileType.MP4;
+        PreviousVideoResolution = "";
         MaxNumberOfActiveDownloads = 5;
         OverwriteExistingFiles = true;
         SpeedLimit = 1024;
