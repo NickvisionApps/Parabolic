@@ -43,8 +43,9 @@ public class MediaUrlInfo
     /// <param name="url">The media url string</param>
     /// <param name="username">A username for the website (if available)</param>
     /// <param name="password">A password for the website (if available)</param>
+    /// <param name="playlistCustomization">Whether or not to add support for playlist customization</param>
     /// <returns>A MediaUrlInfo object. Null if url invalid</returns>
-    public static async Task<MediaUrlInfo?> GetAsync(string url, string? username, string? password)
+    public static async Task<MediaUrlInfo?> GetAsync(string url, string? username, string? password, bool playlistCustomization)
     {
         var pathToOutput = $"{Configuration.TempDir}{Path.DirectorySeparatorChar}output.log";
         dynamic outFile = PythonHelpers.SetConsoleOutputFilePath(pathToOutput);

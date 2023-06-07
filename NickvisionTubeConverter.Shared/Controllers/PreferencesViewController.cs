@@ -121,6 +121,16 @@ public class PreferencesViewController
         set => Configuration.Current.CookiesPath = value;
     }
 
+     /// <summary>
+    /// Whether or not to allow playlist customization
+    /// </summary>
+    public bool PlaylistCustomization
+    {
+        get => Configuration.Current.PlaylistCustomization;
+
+        set => Configuration.Current.PlaylistCustomization = value;
+    }
+
     /// <summary>
     /// Whether or not to disallow converting of formats
     /// </summary>
