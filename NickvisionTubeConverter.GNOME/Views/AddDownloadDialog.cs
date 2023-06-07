@@ -418,7 +418,8 @@ public partial class AddDownloadDialog : Adw.Window
         }
         else
         {
-            isVideo = ((MediaFileType)(_fileTypeRow.GetSelected() + _mediaUrlInfo.VideoResolutions.Count > 0 ? 0 : 2)).GetIsVideo();
+            var index = _fileTypeRow.GetSelected() + (_mediaUrlInfo.VideoResolutions.Count > 0 ? 0 : 2);
+            isVideo = ((MediaFileType)index).GetIsVideo();
         }
         if (isVideo && !_audioOnly)
         {
