@@ -9,9 +9,12 @@ public class KeyringDialog : Adw.Window
     private readonly Gtk.Window _parent;
     private readonly KeyringDialogController _controller;
     private readonly Gtk.ShortcutController _shortcutController;
+    private bool _handlingEnableToggle;
     
     [Gtk.Connect] private readonly Gtk.Label _titleLabel;
     [Gtk.Connect] private readonly Adw.ToastOverlay _toastOverlay;
+    [Gtk.Connect] private readonly Adw.ActionRow _enableKeyringRow;
+    [Gtk.Connect] private readonly Gtk.Switch _enableKeyringSwitch;
     
     /// <summary>
     /// Constructs a KeyringDialog
@@ -23,6 +26,7 @@ public class KeyringDialog : Adw.Window
     {
         _parent = parent;
         _controller = controller;
+        _handlingEnableToggle = false;
         //Dialog Settings
         SetTransientFor(parent);
         SetIconName(_controller.AppInfo.ID);
@@ -33,6 +37,15 @@ public class KeyringDialog : Adw.Window
         _shortcutController.SetScope(Gtk.ShortcutScope.Managed);
         _shortcutController.AddShortcut(Gtk.Shortcut.New(Gtk.ShortcutTrigger.ParseString("Escape"), Gtk.CallbackAction.New(OnEscapeKey)));
         AddController(_shortcutController);
+        //Load
+        _enableKeyringSwitch.SetActive(false);
+        _enableKeyringSwitch.OnNotify += (sender, e) =>
+        {
+            if(e.Pspec.GetName() == "active")
+            {
+                ToggleEnable();
+            }
+        }
     }
     
     /// <summary>
@@ -53,5 +66,25 @@ public class KeyringDialog : Adw.Window
     {
         Close();
         return true;
+    }
+
+    /// <summary>
+    /// Occurs when the enable switch is toggled
+    /// </summary>
+    private void ToggleEnable()
+    {
+        if(!_handlingEnableToggle)
+        {
+            _handlingEnableToggle = true;
+            if(_enableKeyringSwitch.GetActive())
+            {
+
+            }
+            else
+            {
+
+            }
+            _handlingEnableToggle = false;
+        }
     }
 }

@@ -30,6 +30,27 @@ Adw.Window _root {
         Adw.ToastOverlay _toastOverlay {
           hexpand: true;
           vexpand: true;
+
+          Gtk.Box {
+            margin-start: 24;
+            margin-end: 24;
+            margin-bottom: 24;
+            orientation: vertical;
+            spacing: 24;
+
+            Adw.PreferencesGroup {
+              Adw.ActionRow _enableKeyringRow {
+                title: _("Enable");
+                activatable-widget: _enableKeyringRow;
+
+                [suffix]
+                Gtk.Switch _enableKeyringSwitch {
+                  valign: center;
+                  active: false;
+                }
+              }
+            }
+          }
         }
       }
     }
