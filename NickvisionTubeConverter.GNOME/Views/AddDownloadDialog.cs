@@ -414,11 +414,11 @@ public partial class AddDownloadDialog : Adw.Window
         var isVideo = false;
         if (_controller.DisallowConversions)
         {
-            isVideo = _fileTypeRow.GetSelected() == 0;
+            isVideo = _mediaUrlInfo.VideoResolutions.Count > 0;
         }
         else
         {
-            isVideo = ((MediaFileType)_fileTypeRow.GetSelected()).GetIsVideo();
+            isVideo = ((MediaFileType)(_fileTypeRow.GetSelected() + _mediaUrlInfo.VideoResolutions.Count > 0 ? 0 : 2)).GetIsVideo();
         }
         if (isVideo && !_audioOnly)
         {
