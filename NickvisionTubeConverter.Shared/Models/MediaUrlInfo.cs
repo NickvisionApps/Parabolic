@@ -13,6 +13,8 @@ namespace NickvisionTubeConverter.Shared.Models;
 /// </summary>
 public class MediaUrlInfo
 {
+    private bool _tryVideo;
+
     /// <summary>
     /// The media url
     /// </summary>
@@ -32,6 +34,7 @@ public class MediaUrlInfo
     /// <param name="url">The url of the media</param>
     private MediaUrlInfo(string url)
     {
+        _tryVideo = false;
         Url = url;
         MediaList = new List<MediaInfo>();
         VideoResolutions = new List<VideoResolution>();
@@ -43,9 +46,8 @@ public class MediaUrlInfo
     /// <param name="url">The media url string</param>
     /// <param name="username">A username for the website (if available)</param>
     /// <param name="password">A password for the website (if available)</param>
-    /// <param name="playlistCustomization">Whether or not to add support for playlist customization</param>
     /// <returns>A MediaUrlInfo object. Null if url invalid</returns>
-    public static async Task<MediaUrlInfo?> GetAsync(string url, string? username, string? password, bool playlistCustomization)
+    public static async Task<MediaUrlInfo?> GetAsync(string url, string? username, string? password)
     {
         var pathToOutput = $"{Configuration.TempDir}{Path.DirectorySeparatorChar}output.log";
         dynamic outFile = PythonHelpers.SetConsoleOutputFilePath(pathToOutput);
@@ -61,7 +63,8 @@ public class MediaUrlInfo
                         { "quiet", true },
                         { "merge_output_format", null },
                         { "windowsfilenames", RuntimeInformation.IsOSPlatform(OSPlatform.Windows) },
-                        { "ignoreerrors", true }
+                        { "ignoreerrors", true },
+                        { "extract_flat", "in_playlist" }
                     };
                     if(!string.IsNullOrEmpty(username))
                     {
@@ -71,7 +74,8 @@ public class MediaUrlInfo
                     {
                         ytOpt.Add("password", password);
                     }
-                    PyDict? mediaInfo = ytdlp.YoutubeDL(ytOpt).extract_info(url, download: false);
+                    var yt = ytdlp.YoutubeDL(ytOpt);
+                    PyDict? mediaInfo = yt.extract_info(url, download: false);
                     if (mediaInfo == null)
                     {
                         outFile.close();
@@ -85,12 +89,12 @@ public class MediaUrlInfo
                             {
                                 continue;
                             }
-                            mediaUrlInfo.ParseFromPyDict(e.As<PyDict>(), true);
+                            mediaUrlInfo.ParseFromPyDict(yt, e.As<PyDict>(), true, url);
                         }
                     }
                     else
                     {
-                        mediaUrlInfo.ParseFromPyDict(mediaInfo);
+                        mediaUrlInfo.ParseFromPyDict(yt, mediaInfo, false, url);
                     }
                     outFile.close();
                 }
@@ -109,39 +113,71 @@ public class MediaUrlInfo
     }
 
     /// <summary>
+    /// Parses formats from media info
+    /// </summary>
+    private void ParseFormats(PyDict mediaInfo)
+    {
+        if(mediaInfo.HasKey("formats"))
+        {
+            foreach (var f in mediaInfo["formats"].As<PyList>())
+            {
+                var format = f.As<PyDict>();
+                if (format.HasKey("vbr"))
+                {
+                    var resolution = new VideoResolution(format["width"].As<int>(), format["height"].As<int>());
+                    if (!VideoResolutions.Contains(resolution))
+                    {
+                        VideoResolutions.Add(resolution);
+                    }
+                }
+            }
+            VideoResolutions.Sort((a, b) => b.CompareTo(a));
+        }
+    }
+
+    /// <summary>
     /// Adds data retrieved from yt-dlp to MediaInfo
     /// </summary>
+    /// <param name="yt">The YouttubeDL object</param>
     /// <param name="mediaInfo">Python dictionary with media info</param>
     /// <param name="isPartOfPlaylist">Whether or not the media is part of a playlist</param>
-    private void ParseFromPyDict(PyDict mediaInfo, bool isPartOfPlaylist = false)
+    /// <param name="defaultUrl">A default URL to use if none available</param>
+    private void ParseFromPyDict(dynamic yt, PyDict mediaInfo, bool isPartOfPlaylist, string defaultUrl)
     {
         var title = mediaInfo.HasKey("title") ? (mediaInfo["title"].As<string?>() ?? "Media") : "Media";
         foreach (var c in Path.GetInvalidFileNameChars())
         {
             title = title.Replace(c, '_');
         }
-        foreach (var f in mediaInfo["formats"].As<PyList>())
+        if(mediaInfo.HasKey("formats"))
         {
-            var format = f.As<PyDict>();
-            if (format.HasKey("vbr"))
+            ParseFormats(mediaInfo);
+        }
+        else if(VideoResolutions.Count == 0 && mediaInfo.HasKey("url") && !_tryVideo)
+        {
+            var tempUrl = mediaInfo["url"].As<string>();
+            PyDict? tempInfo = yt.extract_info(tempUrl, download: false);
+            if(tempInfo != null)
             {
-                var resolution = new VideoResolution(format["width"].As<int>(), format["height"].As<int>());
-                if (!VideoResolutions.Contains(resolution))
-                {
-                    VideoResolutions.Add(resolution);
-                }
+                ParseFormats(tempInfo);
+                _tryVideo = true;
             }
         }
-        VideoResolutions.Sort((a, b) => b.CompareTo(a));
-        double duration = 0.00;
+        var duration = Double.NaN;
         try
         {
             duration = mediaInfo["duration"].As<double>();
         }
-        catch
+        catch {  }
+        var url = defaultUrl;
+        if(mediaInfo.HasKey("webpage_url"))
         {
-            duration = Double.NaN;
+            url = mediaInfo["webpage_url"].As<string>();
         }
-        MediaList.Add(new MediaInfo(mediaInfo["webpage_url"].As<string>(), title, duration, isPartOfPlaylist));
+        else if (mediaInfo.HasKey("url"))
+        {
+            url = mediaInfo["url"].As<string>();
+        }
+        MediaList.Add(new MediaInfo(url, title, duration, isPartOfPlaylist));
     }
 }

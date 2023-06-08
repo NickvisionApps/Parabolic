@@ -63,10 +63,6 @@ public class Configuration
     /// </summary>
     public string CookiesPath { get; set; }
     /// <summary>
-    /// Whether or not to allow playlist customization
-    /// </summary>
-    public bool PlaylistCustomization { get; set; }
-    /// <summary>
     /// Whether or not to disallow converting of formats
     /// </summary>
     public bool DisallowConversions { get; set; }
@@ -115,7 +111,6 @@ public class Configuration
         AriaMaxConnectionsPerServer = 16;
         AriaMinSplitSize = 20;
         CookiesPath = "";
-        PlaylistCustomization = true;
         DisallowConversions = false;
         EmbedMetadata = true;
         PreviousSaveFolder = Environment.GetFolderPath(Environment.SpecialFolder.MyVideos);

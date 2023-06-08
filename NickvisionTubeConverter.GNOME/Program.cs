@@ -49,7 +49,7 @@ public partial class Program
         _mainWindowController.AppInfo.ShortName = _("Tube Converter");
         _mainWindowController.AppInfo.Description = $"{_("Download web video and audio")}.";
         _mainWindowController.AppInfo.Version = "2023.6.1-beta1";
-        _mainWindowController.AppInfo.Changelog = "<ul><li>Added username and password fields to authenticate when adding a download</li><li>The \"Number Titles\" switch's state will now be remembered and used again for future downloads</li><li>The previous \"Video Resolution\" will be remembered and pre-selected if available for future downloads</li><li>Updated translations (Thanks everyone on Weblate!)</li></ul>";
+        _mainWindowController.AppInfo.Changelog = "<ul><li>Added username and password fields to authenticate when adding a download if needed</li><li>Playlist validation is a lot faster now</li><li>The \"Number Titles\" switch's state will now be remembered and used again for future downloads</li><li>The previous \"Video Resolution\" will be remembered and pre-selected if available for future downloads</li><li>Updated translations (Thanks everyone on Weblate!)</li></ul>";
         _mainWindowController.AppInfo.GitHubRepo = new Uri("https://github.com/NickvisionApps/TubeConverter");
         _mainWindowController.AppInfo.IssueTracker = new Uri("https://github.com/NickvisionApps/TubeConverter/issues/new");
         _mainWindowController.AppInfo.SupportUrl = new Uri("https://github.com/NickvisionApps/TubeConverter/discussions");

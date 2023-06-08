@@ -296,28 +296,6 @@ Adw.PreferencesWindow _root {
     }
 
     Adw.PreferencesGroup {
-      title: _("Validator");
-      description: _("Customize Validator settings.");
-
-      Adw.ActionRow {
-        title: _("Playlist Customization");
-        subtitle: _("If enabled, Tube Converter will fetch playlist data to allow customization of individual media in the playlist. (This may slow down validation of playlists)");
-
-        [prefix]
-        Gtk.Image {
-          icon-name: "playlist-symbolic";
-        }
-
-        [suffix]
-        Gtk.Switch _playlistCustomizationSwitch {
-          valign: center;
-        }
-
-        activatable-widget: _playlistCustomizationSwitch;
-      }
-    }
-
-    Adw.PreferencesGroup {
       title: _("Converter");
       description: _("Customize converter settings.");
 

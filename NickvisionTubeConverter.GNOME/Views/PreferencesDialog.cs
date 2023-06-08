@@ -54,7 +54,6 @@ public partial class PreferencesDialog : Adw.PreferencesWindow
     [Gtk.Connect] private readonly Gtk.Button _unsetCookiesFileButton;
     [Gtk.Connect] private readonly Gtk.Button _chromeCookiesButton;
     [Gtk.Connect] private readonly Gtk.Button _firefoxCookiesButton;
-    [Gtk.Connect] private readonly Gtk.Switch _playlistCustomizationSwitch;
     [Gtk.Connect] private readonly Gtk.Switch _disallowConversionsSwitch;
     [Gtk.Connect] private readonly Gtk.Switch _embedMetadataSwitch;
     
@@ -100,7 +99,6 @@ public partial class PreferencesDialog : Adw.PreferencesWindow
             _cookiesViewStack.SetVisibleChildName("file-selected");
             _cookiesFileLabel.SetText(_controller.CookiesPath);
         }
-        _playlistCustomizationSwitch.SetActive(_controller.PlaylistCustomization);
         _disallowConversionsSwitch.SetActive(_controller.DisallowConversions);
         _embedMetadataSwitch.SetActive(_controller.EmbedMetadata);
     }
@@ -130,7 +128,6 @@ public partial class PreferencesDialog : Adw.PreferencesWindow
         _controller.UseAria = _useAriaRow.GetEnableExpansion();
         _controller.AriaMaxConnectionsPerServer = (int)_ariaMaxConnectionsPerServerSpin.GetValue();
         _controller.AriaMinSplitSize = (int)_ariaMinSplitSizeSpin.GetValue();
-        _controller.PlaylistCustomization = _playlistCustomizationSwitch.GetActive();
         _controller.DisallowConversions = _disallowConversionsSwitch.GetActive();
         _controller.EmbedMetadata = _embedMetadataSwitch.GetActive();
         _controller.SaveConfiguration();
