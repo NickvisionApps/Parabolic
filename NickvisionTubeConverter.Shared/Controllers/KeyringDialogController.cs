@@ -1,16 +1,58 @@
+using Nickvision.Keyring;
 using NickvisionTubeConverter.Shared.Models;
 
 namespace NickvisionTubeConverter.Shared.Controllers;
 
+/// <summary>
+/// A dialog for managing a Keyring
+/// </summary>
 public class KeyringDialogController
 {
+    private readonly string _keyringName;
+
+    /// <summary>
+    /// The Keyring managed by the dialog
+    /// </summary>
+    public Keyring? Keyring { get; private set; }
+
     /// <summary>
     /// Gets the AppInfo object
     /// </summary>
     public AppInfo AppInfo => AppInfo.Current;
-    
-    public KeyringDialogController()
+    /// <summary>
+    /// Whether or not the Keyring is enabled
+    /// </summary>
+    public bool IsEnabled => Keyring != null;
+
+    /// <summary>
+    /// Constructs a KeyringDialogController
+    /// </summary>
+    /// <param name="name">The name of the Keyring</param>
+    /// <param name="keyring">The Keyring object</param>
+    /// <exception cref="ArgumentException">Thrown if the keyring name is empty or if there is a mismatch between the name and Keyring object</exception>
+    public KeyringDialogController(string name, Keyring? keyring)
     {
-        
+        if(string.IsNullOrEmpty(name))
+        {
+            throw new ArgumentException("Keyring name can not be empty.");
+        }
+        else if(keyring != null && keyring.Name != name)
+        {
+            throw new ArgumentException("Provided Keyring object does not match the provided keyring name.");
+        }
+        _name = name;
+        Keyring = keyring;
+    }
+
+    /// <summary>
+    /// Disables the Keyring and destroys its data
+    /// </summary>
+    public void DisableKeyring()
+    {
+        if(Keyring != null)
+        {
+            Keyring.Destroy();
+            Keyring = null;
+        }
     }
 }

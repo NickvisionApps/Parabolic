@@ -1,5 +1,7 @@
+using NickvisionTubeConverter.GNOME.Controls;
 using NickvisionTubeConverter.GNOME.Helpers;
 using NickvisionTubeConverter.Shared.Controllers;
+using System;
 using static NickvisionTubeConverter.Shared.Helpers.Gettext;
 
 namespace NickvisionTubeConverter.GNOME.Views;
@@ -38,7 +40,7 @@ public class KeyringDialog : Adw.Window
         _shortcutController.AddShortcut(Gtk.Shortcut.New(Gtk.ShortcutTrigger.ParseString("Escape"), Gtk.CallbackAction.New(OnEscapeKey)));
         AddController(_shortcutController);
         //Load
-        _enableKeyringSwitch.SetActive(false);
+        _enableKeyringSwitch.SetActive(_controller.IsEnabled);
         _enableKeyringSwitch.OnNotify += (sender, e) =>
         {
             if(e.Pspec.GetName() == "active")
@@ -78,11 +80,26 @@ public class KeyringDialog : Adw.Window
             _handlingEnableToggle = true;
             if(_enableKeyringSwitch.GetActive())
             {
-
+                
             }
             else
             {
-
+                var dialog = new MessageDialog(this, _controller.AppInfo.ID, _("Disable Keyring?"), _("Disabling the Keyring will delete all current data currently stored in the Keyring. Are you sure you want to delete?"), _("No"), _("Yes"));
+                dialog.OnResponse += (sender, e) =>
+                {
+                    if(dialog.Response == MessageDialogResponse.Destructive)
+                    {
+                        _controller.DisableKeyring();
+                    }
+                    else
+                    {
+                        _handlingEnableToggle = true;
+                        _enableKeyringSwitch.SetActive(true);
+                        _handlingEnableToggle = false;
+                    }
+                    dialog.Destroy();
+                };
+                dialog.Present();
             }
             _handlingEnableToggle = false;
         }
