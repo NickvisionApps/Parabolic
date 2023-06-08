@@ -1,3 +1,4 @@
+using Nickvision.Keyring;
 using NickvisionTubeConverter.GNOME.Controls;
 using NickvisionTubeConverter.GNOME.Helpers;
 using NickvisionTubeConverter.Shared.Controllers;
@@ -13,13 +14,16 @@ public class KeyringDialog : Adw.Window
     private readonly Gtk.ShortcutController _shortcutController;
     private bool _handlingEnableToggle;
     
+    [Gtk.Connect] private readonly Gtk.Button _backButton;
     [Gtk.Connect] private readonly Gtk.Label _titleLabel;
     [Gtk.Connect] private readonly Adw.ToastOverlay _toastOverlay;
+    [Gtk.Connect] private readonly Adw.ViewStack _viewStack;
     [Gtk.Connect] private readonly Gtk.Box _mainBox;
     [Gtk.Connect] private readonly Adw.ActionRow _enableKeyringRow;
     [Gtk.Connect] private readonly Gtk.Switch _enableKeyringSwitch;
-    [Gtk.Connect] private readonly Adw.PreferencesGroup _accountsGroup;
-    [Gtk.Connect] private readonly Gtk.Button _addAccountButton;
+    [Gtk.Connect] private readonly Adw.PreferencesGroup _credentialsGroup;
+    [Gtk.Connect] private readonly Gtk.Button _addCredentialButton;
+    [Gtk.Connect] private readonly Adw.StatusPage _noCredentialsPage;
     
     /// <summary>
     /// Constructs a KeyringDialog
@@ -37,6 +41,13 @@ public class KeyringDialog : Adw.Window
         SetIconName(_controller.AppInfo.ID);
         //Build UI
         builder.Connect(this);
+        _backButton.OnClicked += (sender, e) =>
+        {
+            _viewStack.SetVisibleChildName("main");
+            _backButton.SetVisible(false);
+            _titleLabel.SetLabel(_("Keyring"));
+        };
+        _addCredentialButton.OnClicked += (sender, e) => AddCredentialPage();
         //Shortcut Controller
         _shortcutController = Gtk.ShortcutController.New();
         _shortcutController.SetScope(Gtk.ShortcutScope.Managed);
@@ -127,5 +138,17 @@ public class KeyringDialog : Adw.Window
             }
             _handlingEnableToggle = false;
         }
+    }
+
+    private void AddCredentialPage()
+    {
+        _viewStack.SetVisibleChildName("credential");
+        _backButton.SetVisible(true);
+        _titleLabel.SetLabel(_("Credential"));
+    }
+
+    private void EditCredentialPage(Credential credential)
+    {
+
     }
 }

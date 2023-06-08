@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-08 08:02-0400\n"
+"POT-Creation-Date: 2023-06-08 12:11-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -97,6 +97,10 @@ msgstr ""
 msgid "Close and Stop Downloads?"
 msgstr ""
 
+#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:147
+msgid "Credential"
+msgstr ""
+
 #: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:825
 #, csharp-format
 msgid ""
@@ -105,11 +109,11 @@ msgid ""
 "marcin {2}"
 msgstr ""
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:109
+#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:122
 msgid "Disable Keyring?"
 msgstr ""
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:109
+#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:122
 msgid ""
 "Disabling the keyring will delete all data currently stored inside. Are you "
 "sure you want to delete?"
@@ -156,8 +160,8 @@ msgstr ""
 msgid "Downloads Finished"
 msgstr ""
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:93
-#: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:43
+#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:106
+#: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:58
 msgid "Enable"
 msgstr ""
 
@@ -173,7 +177,14 @@ msgstr ""
 msgid "File Name"
 msgstr ""
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:47
+#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:48
+#: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:37
+#: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:41
+#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:5
+msgid "Keyring"
+msgstr ""
+
+#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:60
 msgid "Keyring has not been unlocked."
 msgstr ""
 
@@ -213,8 +224,8 @@ msgid ""
 "DaPigGuy {2}"
 msgstr ""
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:109
 #: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:613
+#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:122
 msgid "No"
 msgstr ""
 
@@ -254,7 +265,7 @@ msgstr ""
 msgid "Select Save Folder"
 msgstr ""
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:93
+#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:106
 msgid "Setup Keyring"
 msgstr ""
 
@@ -325,12 +336,13 @@ msgstr ""
 msgid "Worst"
 msgstr ""
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:109
 #: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:613
+#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:122
 msgid "Yes"
 msgstr ""
 
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:24
+#: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:24
 msgid "Back"
 msgstr ""
 
@@ -416,10 +428,26 @@ msgstr ""
 msgid "Copy to Clipboard"
 msgstr ""
 
-#: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:25
-#: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:41
-#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:5
-msgid "Keyring"
+#: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:70
+msgid "Credentials"
+msgstr ""
+
+#: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:71
+msgid "Manage credentials in your keyring."
+msgstr ""
+
+#: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:76
+msgid "Add Credential"
+msgstr ""
+
+#: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:81
+#: NickvisionTubeConverter.GNOME/Blueprints/new_password_dialog.blp:54
+#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:49
+msgid "Add"
+msgstr ""
+
+#: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:90
+msgid "No Credentials"
 msgstr ""
 
 #: NickvisionTubeConverter.GNOME/Blueprints/media_row.blp:16
@@ -436,11 +464,6 @@ msgstr ""
 
 #: NickvisionTubeConverter.GNOME/Blueprints/new_password_dialog.blp:44
 msgid "If the password is lost, there is no way to restore the keyring!"
-msgstr ""
-
-#: NickvisionTubeConverter.GNOME/Blueprints/new_password_dialog.blp:54
-#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:49
-msgid "Add"
 msgstr ""
 
 #: NickvisionTubeConverter.GNOME/Blueprints/password_dialog.blp:50

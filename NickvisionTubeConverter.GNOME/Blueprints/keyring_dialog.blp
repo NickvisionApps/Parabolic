@@ -13,6 +13,18 @@ Adw.Window _root {
     Adw.HeaderBar {
       title-widget: Gtk.Label {};
 
+      [start]
+      Gtk.Button _backButton {
+        halign: start;
+        valign: center;
+        visible: false;
+
+        Adw.ButtonContent {
+          icon-name: "go-previous-symbolic";
+          label: _("Back");
+        }
+      }
+
       styles ["flat"]
     }
 
@@ -31,51 +43,65 @@ Adw.Window _root {
           hexpand: true;
           vexpand: true;
 
-          Gtk.Box _mainBox {
-            margin-start: 24;
-            margin-end: 24;
-            margin-bottom: 24;
-            orientation: vertical;
-            spacing: 24;
+          Adw.ViewStack _viewStack {
+            Adw.ViewStackPage {
+              name: "main";
+              child: Gtk.Box _mainBox {
+                margin-start: 24;
+                margin-end: 24;
+                margin-bottom: 24;
+                orientation: vertical;
+                spacing: 24;
 
-            Adw.PreferencesGroup {
-              Adw.ActionRow _enableKeyringRow {
-                title: _("Enable");
-                activatable-widget: _enableKeyringSwitch;
+                Adw.PreferencesGroup {
+                  Adw.ActionRow _enableKeyringRow {
+                    title: _("Enable");
+                    activatable-widget: _enableKeyringSwitch;
 
-                [suffix]
-                Gtk.Switch _enableKeyringSwitch {
-                  valign: center;
-                  active: true;
-                }
-              }
-            }
-
-            Adw.PreferencesGroup _accountsGroup {
-              title: _("Accounts");
-              description: _("Manage accounts in your keyring.");
-              visible: bind _enableKeyringSwitch.active;
-
-              [header-suffix]
-              Gtk.Button _addAccountButton {
-                tooltip-text: _("Add Account");
-                valign: center;
-
-                Adw.ButtonContent {
-                  icon-name: "list-add-symbolic";
-                  label: _("Add");
+                    [suffix]
+                    Gtk.Switch _enableKeyringSwitch {
+                      valign: center;
+                      active: true;
+                    }
+                  }
                 }
 
-                styles ["flat"]
-              }
+                Adw.PreferencesGroup _credentialsGroup {
+                  title: _("Credentials");
+                  description: _("Manage credentials in your keyring.");
+                  visible: bind _enableKeyringSwitch.active;
+
+                  [header-suffix]
+                  Gtk.Button _addCredentialButton {
+                    tooltip-text: _("Add Credential");
+                    valign: center;
+
+                    Adw.ButtonContent {
+                      icon-name: "list-add-symbolic";
+                      label: _("Add");
+                    }
+
+                    styles ["flat"]
+                  }
+                }
+
+                Adw.StatusPage _noCredentialsPage {
+                  icon-name: "key2-symbolic";
+                  title: _("No Credentials");
+                  visible: bind _enableKeyringSwitch.active;
+
+                  styles ["compact"]
+                }
+              };
             }
 
-            Adw.StatusPage _noAccountsPage {
-              icon-name: "online-symbolic";
-              title: _("No Accounts");
-              visible: bind _enableKeyringSwitch.active;
+            Adw.ViewStackPage {
+              name: "credential";
+              child: Gtk.Box {
+                Adw.PreferencesGroup {
 
-              styles ["compact"]
+                }
+              };
             }
           }
         }
