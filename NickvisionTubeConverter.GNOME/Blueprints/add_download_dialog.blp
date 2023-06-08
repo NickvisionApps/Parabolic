@@ -170,6 +170,7 @@ Adw.Window _root {
 
                       Adw.ActionRow _openPlaylistRow {
                         subtitle: _("Select items to download or change file names.");
+                        subtitle-lines: 1;
                         activatable-widget: _openPlaylistImage;
 
                         [suffix]
@@ -210,7 +211,7 @@ Adw.Window _root {
                 hexpand: true;
                 vexpand: true;
                 Gtk.Box _playlistPage {
-                    margin-top: 2;
+                    margin-top: 12;
                     margin-start: 24;
                     margin-end: 24;
                     margin-bottom: 12;

@@ -41,6 +41,10 @@ public class AddDownloadDialogController
     /// </summary>
     public MediaFileType PreviousMediaFileType => Configuration.Current.PreviousMediaFileType;
     /// <summary>
+    /// The previously used VideoResolution
+    /// </summary>
+    public VideoResolution? PreviousVideoResolution => VideoResolution.Parse(Configuration.Current.PreviousVideoResolution);
+    /// <summary>
     /// The speed limit in the configuration
     /// </summary>
     public uint CurrentSpeedLimit => Configuration.Current.SpeedLimit;
@@ -150,6 +154,10 @@ public class AddDownloadDialogController
         if (!mediaFileType.GetIsGeneric())
         {
             Configuration.Current.PreviousMediaFileType = mediaFileType;
+        }
+        if(resolution != null)
+        {
+            Configuration.Current.PreviousVideoResolution = resolution.ToString();
         }
         Configuration.Current.Save();
     }

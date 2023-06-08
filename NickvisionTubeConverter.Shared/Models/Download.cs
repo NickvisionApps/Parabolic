@@ -1,5 +1,4 @@
 ﻿using NickvisionTubeConverter.Shared.Helpers;
-using NickvisionTubeConverter.Shared.Models;
 using Python.Runtime;
 using System;
 using System.Collections.Generic;
@@ -8,7 +7,6 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
-using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using static NickvisionTubeConverter.Shared.Helpers.Gettext;
 
@@ -269,6 +267,8 @@ public class Download
                 }
                 if (options.EmbedMetadata)
                 {
+                    postProcessors.Add(new Dictionary<string, dynamic>() { { "key", "MetadataFromField" }, { "formats", new List<string>() { ":(?P<meta_comment>)", ":(?P<meta_description>)", ":(?P<meta_synopsis>)" } } });
+                    postProcessors.Add(new Dictionary<string, dynamic>() { { "key", "TCMetadata" }, { "add_metadata", true } });
                     if (FileType.GetSupportsThumbnails())
                     {
                         _ytOpt.Add("writethumbnail", true);
@@ -283,7 +283,6 @@ public class Download
                             _ytOpt.Add("postprocessor_args", cropDict);
                         }
                     }
-                    postProcessors.Insert(0, new Dictionary<string, dynamic>() { { "key", "TCMetadata" }, { "add_metadata", true } });
                 }
                 if (postProcessors.Count != 0)
                 {
@@ -334,10 +333,20 @@ public class Download
                         IsSuccess = (success_code.As<int?>() ?? 1) == 0;
                         if(IsSuccess)
                         {
+                            var genericExtensionFound = false;
                             foreach (var path in Directory.EnumerateFiles(SaveFolder))
                             {
                                 if(path.Contains(Id.ToString()))
                                 {
+                                    if(FileType.GetIsGeneric() && !genericExtensionFound)
+                                    {
+                                        var extension = Path.GetExtension(path).ToLower();
+                                        if(extension != ".srt" && extension != ".vtt")
+                                        {
+                                            Filename += extension;
+                                            genericExtensionFound = true;
+                                        }
+                                    }
                                     try
                                     {
                                         File.Move(path, path.Replace(Id.ToString(), Path.GetFileNameWithoutExtension(Filename)), options.OverwriteExistingFiles);
@@ -350,21 +359,6 @@ public class Download
                                             Filename = Filename.Replace(c, '_');
                                         }
                                         File.Move(path, path.Replace(Id.ToString(), Path.GetFileNameWithoutExtension(Filename)), options.OverwriteExistingFiles);
-                                    }
-                                }
-                            }
-                            if(FileType.GetIsGeneric())
-                            {
-                                foreach (var path in Directory.EnumerateFiles(SaveFolder))
-                                {
-                                    if(path.Contains(Filename))
-                                    {
-                                        var extension = Path.GetExtension(path).ToLower();
-                                        if(extension != ".srt" && extension != ".vtt")
-                                        {
-                                            Filename += extension;
-                                            break;
-                                        }
                                     }
                                 }
                             }

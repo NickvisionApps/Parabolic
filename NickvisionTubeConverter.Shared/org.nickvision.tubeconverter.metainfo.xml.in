@@ -52,8 +52,12 @@
   <releases>
     <release version="2023.6.1-beta1" date="2023-06-05">
       <description translatable="no">
-        <p>- Added username and password fields to authenticate when adding a download</p>
+        <p>- Added username and password fields to authenticate when adding a download if needed</p>
+        <p>- Playlist validation is a lot faster now</p>
         <p>- The "Number Titles" switch's state will now be remembered and used again for future downloads</p>
+        <p>- The previous "Video Resolution" will be remembered and pre-selected if available for future downloads</p>
+        <p>- Comment, Description, and Synopsis fields will no longer be embedded in metadata</p>
+        <p>- Fixed an issue where the incorrect file extension was sometimes shown for generic downloads</p>
         <p>- Updated translations (Thanks everyone on Weblate!)</p>
       </description>
     </release>
