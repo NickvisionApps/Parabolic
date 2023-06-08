@@ -276,7 +276,7 @@ public partial class AddDownloadDialog : Adw.Window
             MediaFileType fileType;
             if (_controller.DisallowConversions)
             {
-                fileType = _fileTypeRow.GetSelected() == 0 && !_audioOnly ? MediaFileType.Video : MediaFileType.Audio;
+                fileType = (_fileTypeRow.GetSelected() == 0 && !_audioOnly) ? MediaFileType.Video : MediaFileType.Audio;
             }
             else
             {
@@ -414,11 +414,11 @@ public partial class AddDownloadDialog : Adw.Window
         var isVideo = false;
         if (_controller.DisallowConversions)
         {
-            isVideo = _mediaUrlInfo.VideoResolutions.Count > 0;
+            isVideo = !_audioOnly && _fileTypeRow.GetSelected() == 0;
         }
         else
         {
-            var index = _fileTypeRow.GetSelected() + (_mediaUrlInfo.VideoResolutions.Count > 0 ? 0 : 2);
+            var index = _fileTypeRow.GetSelected() + (_audioOnly ? 2 : 0);
             isVideo = ((MediaFileType)index).GetIsVideo();
         }
         if (isVideo && !_audioOnly)
