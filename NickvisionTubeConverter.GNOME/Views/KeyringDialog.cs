@@ -2,6 +2,7 @@ using Nickvision.Keyring;
 using NickvisionTubeConverter.GNOME.Controls;
 using NickvisionTubeConverter.GNOME.Helpers;
 using NickvisionTubeConverter.Shared.Controllers;
+using System;
 using System.Threading.Tasks;
 using static NickvisionTubeConverter.Shared.Helpers.Gettext;
 
@@ -54,6 +55,7 @@ public class KeyringDialog : Adw.Window
             _titleLabel.SetLabel(_("Keyring"));
         };
         _addCredentialButton.OnClicked += (sender, e) => AddCredentialPage();
+        _credentialDeleteButton.OnClicked += DeleteAction;
         //Shortcut Controller
         _shortcutController = Gtk.ShortcutController.New();
         _shortcutController.SetScope(Gtk.ShortcutScope.Managed);
@@ -156,6 +158,7 @@ public class KeyringDialog : Adw.Window
         _titleLabel.SetLabel(_("Credential"));
         _credentialDeleteButton.SetVisible(false);
         _credentialActionButton.SetLabel("Add");
+        _credentialActionButton.OnClicked += AddAction;
     }
 
     /// <summary>
@@ -169,5 +172,21 @@ public class KeyringDialog : Adw.Window
         _titleLabel.SetLabel(_("Credential"));
         _credentialDeleteButton.SetVisible(true);
         _credentialActionButton.SetLabel("Apply");
+        _credentialActionButton.OnClicked += EditAction;
+    }
+
+    private void AddAction(Gtk.Button sender, EventArgs e)
+    {
+        _credentialActionButton.OnClicked -= AddAction;
+    }
+
+    private void EditAction(Gtk.Button sender, EventArgs e)
+    {
+        _credentialActionButton.OnClicked -= EditAction;
+    }
+
+    private void DeleteAction(Gtk.Button sender, EventArgs e)
+    {
+
     }
 }
