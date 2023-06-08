@@ -15,7 +15,15 @@ public partial class NewPasswordDialog : Adw.Window
     [Gtk.Connect] private readonly Adw.PasswordEntryRow _confirmPasswordEntry;
     [Gtk.Connect] private readonly Gtk.Button _addButton;
 
-    private NewPasswordDialog(Gtk.Builder builder, Gtk.Window parent, string title, TaskCompletionSource<string?> tcs) : base(builder.GetPointer("_root"), false)
+    /// <summary>
+    /// Constructs a NewPasswordDialog
+    /// </summary>
+    /// <param name="builder">Gtk.Builder</param>
+    /// <param name="parent">Gtk.Window</param>
+    /// <param name="title">The title of the dialog</param>
+    /// <param name="tcs">TaskCompletionSource used to pass result to the controller</param>
+    /// <param name="addButtonLabel">A replacement for the add button label</param>
+    private NewPasswordDialog(Gtk.Builder builder, Gtk.Window parent, string title, TaskCompletionSource<string?> tcs, string? addButtonLabel = null) : base(builder.GetPointer("_root"), false)
     {
         var setPassword = false;
         builder.Connect(this);
@@ -37,6 +45,10 @@ public partial class NewPasswordDialog : Adw.Window
             }
         };
         _addButton.SetSensitive(false);
+        if(!string.IsNullOrEmpty(addButtonLabel))
+        {
+            _addButton.SetLabel(addButtonLabel);
+        }
         _addButton.OnClicked += (sender, e) =>
         {
             setPassword = true;
@@ -64,7 +76,8 @@ public partial class NewPasswordDialog : Adw.Window
     /// <param name="parent">Gtk.Window</param>
     /// <param name="title">The title of the dialog</param>
     /// <param name="tcs">TaskCompletionSource used to pass result to the controller</param>
-    public NewPasswordDialog(Gtk.Window parent, string title, TaskCompletionSource<string?> tcs) : this(Builder.FromFile("new_password_dialog.ui"), parent, title, tcs)
+    /// <param name="addButtonLabel">A replacement for the add button label</param>
+    public NewPasswordDialog(Gtk.Window parent, string title, TaskCompletionSource<string?> tcs, string? addButtonLabel = null) : this(Builder.FromFile("new_password_dialog.ui"), parent, title, tcs, addButtonLabel)
     {
     }
 

@@ -90,7 +90,7 @@ public class KeyringDialog : Adw.Window
             if(_enableKeyringSwitch.GetActive())
             {
                 var tcs = new TaskCompletionSource<string?>();
-                var newPasswordDialog = new NewPasswordDialog(this, _("Enable Keyring"), tcs);
+                var newPasswordDialog = new NewPasswordDialog(this, _("Setup Keyring"), tcs, _("Enable"));
                 newPasswordDialog.Present();
                 var password = await tcs.Task;
                 if(string.IsNullOrEmpty(password))
