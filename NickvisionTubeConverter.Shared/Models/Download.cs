@@ -333,10 +333,20 @@ public class Download
                         IsSuccess = (success_code.As<int?>() ?? 1) == 0;
                         if(IsSuccess)
                         {
+                            var genericExtensionFound = false;
                             foreach (var path in Directory.EnumerateFiles(SaveFolder))
                             {
                                 if(path.Contains(Id.ToString()))
                                 {
+                                    if(FileType.GetIsGeneric() && !genericExtensionFound)
+                                    {
+                                        var extension = Path.GetExtension(path).ToLower();
+                                        if(extension != ".srt" && extension != ".vtt")
+                                        {
+                                            Filename += extension;
+                                            genericExtensionFound = true;
+                                        }
+                                    }
                                     try
                                     {
                                         File.Move(path, path.Replace(Id.ToString(), Path.GetFileNameWithoutExtension(Filename)), options.OverwriteExistingFiles);
@@ -349,21 +359,6 @@ public class Download
                                             Filename = Filename.Replace(c, '_');
                                         }
                                         File.Move(path, path.Replace(Id.ToString(), Path.GetFileNameWithoutExtension(Filename)), options.OverwriteExistingFiles);
-                                    }
-                                }
-                            }
-                            if(FileType.GetIsGeneric())
-                            {
-                                foreach (var path in Directory.EnumerateFiles(SaveFolder))
-                                {
-                                    if(path.Contains(Filename))
-                                    {
-                                        var extension = Path.GetExtension(path).ToLower();
-                                        if(extension != ".srt" && extension != ".vtt")
-                                        {
-                                            Filename += extension;
-                                            break;
-                                        }
                                     }
                                 }
                             }
