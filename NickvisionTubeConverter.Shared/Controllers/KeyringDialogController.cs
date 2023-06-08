@@ -14,7 +14,7 @@ public class KeyringDialogController
     /// <summary>
     /// The Keyring managed by the dialog
     /// </summary>
-    public Keyring? Keyring { get; private set; }
+    internal Keyring? Keyring { get; private set; }
 
     /// <summary>
     /// Gets the AppInfo object

@@ -1,7 +1,6 @@
 using NickvisionTubeConverter.GNOME.Controls;
 using NickvisionTubeConverter.GNOME.Helpers;
 using NickvisionTubeConverter.Shared.Controllers;
-using System;
 using System.Threading.Tasks;
 using static NickvisionTubeConverter.Shared.Helpers.Gettext;
 

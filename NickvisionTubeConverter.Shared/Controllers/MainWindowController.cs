@@ -1,4 +1,5 @@
-﻿using NickvisionTubeConverter.Shared.Events;
+﻿using Nickvision.Keyring;
+using NickvisionTubeConverter.Shared.Events;
 using NickvisionTubeConverter.Shared.Helpers;
 using NickvisionTubeConverter.Shared.Models;
 using Python.Runtime;
@@ -16,6 +17,7 @@ public class MainWindowController : IDisposable
 {
     private bool _disposed;
     private nint _pythonThreadState;
+    private Keyring? _keyring;
 
     /// <summary>
     /// The manager for downloads
@@ -106,6 +108,7 @@ public class MainWindowController : IDisposable
         {
             Directory.Delete(Configuration.TempDir, true);
         }
+        _keyring?.Dispose();
         _disposed = true;
     }
 
@@ -113,7 +116,7 @@ public class MainWindowController : IDisposable
     /// Creates a new KeyringDialogController
     /// </summary>
     /// <returns>The KeyringDialogController</returns>
-    public KeyringDialogController CreateKeyringDialogController() => new KeyringDialogController(AppInfo.Current.ID, null);
+    public KeyringDialogController CreateKeyringDialogController() => new KeyringDialogController(AppInfo.Current.ID, _keyring);
 
     /// <summary>
     /// Creates a new PreferencesViewController
@@ -157,6 +160,27 @@ public class MainWindowController : IDisposable
         {
             NotificationSent?.Invoke(this, new NotificationSentEventArgs(_("Unable to setup dependencies. Please restart the app and try again."), NotificationSeverity.Error, "error", $"{e.Message}\n\n{e.StackTrace}"));
         }
+        if(Keyring.Exists(AppInfo.Current.ID))
+        {
+            
+        }
+    }
+
+    /// <summary>
+    /// Updates the Keyring object
+    /// </summary>
+    /// <param name="controller">The KeyringDialogController</param>
+    /// <exception cref="ArgumentException">Thrown if the Keyring does not belong</exception>
+    public void UpdateKeyring(KeyringDialogController controller)
+    {
+        if(controller.Keyring != null && _keyring != null)
+        {
+            if(controller.Keyring.Name != _keyring.Name)
+            {
+                throw new ArgumentException($"Keyring is not {_keyring.Name}");
+            }
+        }
+        _keyring = controller.Keyring;
     }
 
     /// <summary>
