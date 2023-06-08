@@ -45,7 +45,7 @@ public class KeyringDialog : Adw.Window
             {
                 ToggleEnable();
             }
-        }
+        };
     }
     
     /// <summary>
