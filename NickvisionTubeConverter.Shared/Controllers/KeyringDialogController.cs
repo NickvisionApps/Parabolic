@@ -1,5 +1,6 @@
 using Nickvision.Keyring;
 using NickvisionTubeConverter.Shared.Models;
+using System;
 
 namespace NickvisionTubeConverter.Shared.Controllers;
 
@@ -40,19 +41,47 @@ public class KeyringDialogController
         {
             throw new ArgumentException("Provided Keyring object does not match the provided keyring name.");
         }
-        _name = name;
+        _keyringName = name;
         Keyring = keyring;
+    }
+
+    /// <summary>
+    /// Enables the Keyring
+    /// </summary>
+    /// <returns>True if successful, false is Keyring already enabled or error</returns>
+    public bool EnableKeyring(string password)
+    {
+        if(Keyring == null)
+        {
+            if(string.IsNullOrEmpty(password))
+            {
+                return false;
+            }
+            try
+            {
+                Keyring = Keyring.Access(_keyringName, password);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+        return false;
     }
 
     /// <summary>
     /// Disables the Keyring and destroys its data
     /// </summary>
-    public void DisableKeyring()
+    /// <returns>True if successful, false is Keyring already disabled</returns>
+    public bool DisableKeyring()
     {
         if(Keyring != null)
         {
             Keyring.Destroy();
             Keyring = null;
+            return true;
         }
+        return false;
     }
 }

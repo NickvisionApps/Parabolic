@@ -2,6 +2,7 @@ using NickvisionTubeConverter.GNOME.Controls;
 using NickvisionTubeConverter.GNOME.Helpers;
 using NickvisionTubeConverter.Shared.Controllers;
 using System;
+using System.Threading.Tasks;
 using static NickvisionTubeConverter.Shared.Helpers.Gettext;
 
 namespace NickvisionTubeConverter.GNOME.Views;
@@ -41,11 +42,11 @@ public class KeyringDialog : Adw.Window
         AddController(_shortcutController);
         //Load
         _enableKeyringSwitch.SetActive(_controller.IsEnabled);
-        _enableKeyringSwitch.OnNotify += (sender, e) =>
+        _enableKeyringSwitch.OnNotify += async (sender, e) =>
         {
             if(e.Pspec.GetName() == "active")
             {
-                ToggleEnable();
+                await ToggleEnableAsync();
             }
         };
     }
@@ -73,21 +74,34 @@ public class KeyringDialog : Adw.Window
     /// <summary>
     /// Occurs when the enable switch is toggled
     /// </summary>
-    private void ToggleEnable()
+    private async Task ToggleEnableAsync()
     {
         if(!_handlingEnableToggle)
         {
             _handlingEnableToggle = true;
             if(_enableKeyringSwitch.GetActive())
             {
-                
+                var tcs = new TaskCompletionSource<string?>();
+                var newPasswordDialog = new NewPasswordDialog(this, _("Enable Keyring"), tcs);
+                newPasswordDialog.Present();
+                var password = await tcs.Task;
+                if(string.IsNullOrEmpty(password))
+                {
+                    _handlingEnableToggle = true;
+                    _enableKeyringSwitch.SetActive(false);
+                    _handlingEnableToggle = false;
+                }
+                else
+                {
+                    _controller.EnableKeyring(password);
+                }
             }
             else
             {
-                var dialog = new MessageDialog(this, _controller.AppInfo.ID, _("Disable Keyring?"), _("Disabling the Keyring will delete all current data currently stored in the Keyring. Are you sure you want to delete?"), _("No"), _("Yes"));
-                dialog.OnResponse += (sender, e) =>
+                var disableDialog = new MessageDialog(this, _controller.AppInfo.ID, _("Disable Keyring?"), _("Disabling the Keyring will delete all current data currently stored in the Keyring. Are you sure you want to delete?"), _("No"), _("Yes"));
+                disableDialog.OnResponse += (sender, e) =>
                 {
-                    if(dialog.Response == MessageDialogResponse.Destructive)
+                    if(disableDialog.Response == MessageDialogResponse.Destructive)
                     {
                         _controller.DisableKeyring();
                     }
@@ -97,9 +111,9 @@ public class KeyringDialog : Adw.Window
                         _enableKeyringSwitch.SetActive(true);
                         _handlingEnableToggle = false;
                     }
-                    dialog.Destroy();
+                    disableDialog.Destroy();
                 };
-                dialog.Present();
+                disableDialog.Present();
             }
             _handlingEnableToggle = false;
         }

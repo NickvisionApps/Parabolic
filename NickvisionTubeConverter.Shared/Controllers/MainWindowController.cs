@@ -113,7 +113,7 @@ public class MainWindowController : IDisposable
     /// Creates a new KeyringDialogController
     /// </summary>
     /// <returns>The KeyringDialogController</returns>
-    public KeyringDialogController CreateKeyringDialogController() => new KeyringDialogController(null);
+    public KeyringDialogController CreateKeyringDialogController() => new KeyringDialogController(AppInfo.Current.ID, null);
 
     /// <summary>
     /// Creates a new PreferencesViewController
