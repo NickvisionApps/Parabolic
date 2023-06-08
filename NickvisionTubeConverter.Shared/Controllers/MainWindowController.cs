@@ -24,6 +24,11 @@ public class MainWindowController : IDisposable
     /// </summary>
     public DownloadManager DownloadManager { get; init; }
     /// <summary>
+    /// A function for getting a password for the Keyring
+    /// </summary>
+    public Func<string, Task<string?>>? KeyringLoginAsync { get; set; }
+
+    /// <summary>
     /// Gets the AppInfo object
     /// </summary>
     public AppInfo AppInfo => AppInfo.Current;
@@ -133,7 +138,7 @@ public class MainWindowController : IDisposable
     /// <summary>
     /// Starts the application
     /// </summary>
-    public void Startup()
+    public async Task StartupAsync()
     {
         Configuration.Current.Saved += ConfigurationSaved;
         DownloadManager.MaxNumberOfActiveDownloads = Configuration.Current.MaxNumberOfActiveDownloads;
@@ -162,7 +167,17 @@ public class MainWindowController : IDisposable
         }
         if(Keyring.Exists(AppInfo.Current.ID))
         {
-            
+            var attempts = 0;
+            while(_keyring == null && attempts < 3)
+            {
+                var password = await KeyringLoginAsync!(_("Unlock Keyring"));
+                _keyring = Keyring.Access(AppInfo.Current.ID, password);
+                attempts++;
+            }
+            if(_keyring == null)
+            {
+                NotificationSent?.Invoke(this, new NotificationSentEventArgs(_("Unable to unlock keyring. Restart the app to try again."), NotificationSeverity.Error));
+            }
         }
     }
 

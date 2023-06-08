@@ -15,6 +15,7 @@ public class KeyringDialog : Adw.Window
     
     [Gtk.Connect] private readonly Gtk.Label _titleLabel;
     [Gtk.Connect] private readonly Adw.ToastOverlay _toastOverlay;
+    [Gtk.Connect] private readonly Gtk.Box _mainBox;
     [Gtk.Connect] private readonly Adw.ActionRow _enableKeyringRow;
     [Gtk.Connect] private readonly Gtk.Switch _enableKeyringSwitch;
     
@@ -40,14 +41,22 @@ public class KeyringDialog : Adw.Window
         _shortcutController.AddShortcut(Gtk.Shortcut.New(Gtk.ShortcutTrigger.ParseString("Escape"), Gtk.CallbackAction.New(OnEscapeKey)));
         AddController(_shortcutController);
         //Load
-        _enableKeyringSwitch.SetActive(_controller.IsEnabled);
-        _enableKeyringSwitch.OnNotify += async (sender, e) =>
+        if(!_controller.IsValid)
         {
-            if(e.Pspec.GetName() == "active")
+            _mainBox.SetSensitive(false);
+            _toastOverlay.AddToast(Adw.Toast.New(_("Keyring has not been unlocked.")));
+        }
+        else
+        {
+            _enableKeyringSwitch.SetActive(_controller.IsEnabled);
+            _enableKeyringSwitch.OnNotify += async (sender, e) =>
             {
-                await ToggleEnableAsync();
-            }
-        };
+                if(e.Pspec.GetName() == "active")
+                {
+                    await ToggleEnableAsync();
+                }
+            };
+        }
     }
     
     /// <summary>

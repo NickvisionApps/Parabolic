@@ -24,6 +24,10 @@ public class KeyringDialogController
     /// Whether or not the Keyring is enabled
     /// </summary>
     public bool IsEnabled => Keyring != null;
+    /// <summary>
+    /// Whether or not the Keyring state is valid
+    /// </summary>
+    public bool IsValid => !(Keyring == null && Keyring.Exists(_keyringName));
 
     /// <summary>
     /// Constructs a KeyringDialogController

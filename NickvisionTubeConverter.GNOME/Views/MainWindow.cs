@@ -440,6 +440,7 @@ public partial class MainWindow : Adw.ApplicationWindow
         OnCloseRequest += OnCloseRequested;
         _controller.NotificationSent += NotificationSent;
         _controller.RunInBackgroundChanged += RunInBackgroundChanged;
+        _controller.KeyringLoginAsync = KeyringLoginAsync;
         _controller.DownloadManager.DownloadAdded += (sender, e) => g_main_context_invoke(0, _downloadAddedFunc, (IntPtr)GCHandle.Alloc(e));
         _controller.DownloadManager.DownloadProgressUpdated += (sender, e) => g_main_context_invoke(0, _downloadProgressUpdatedFunc, (IntPtr)GCHandle.Alloc(e));
         _controller.DownloadManager.DownloadCompleted += (sender, e) => g_main_context_invoke(0, _downloadCompletedFunc, (IntPtr)GCHandle.Alloc(e));
@@ -537,14 +538,14 @@ public partial class MainWindow : Adw.ApplicationWindow
     /// <summary>
     /// Starts the MainWindow
     /// </summary>
-    public void Start()
+    public async Task StartAsync()
     {
         _application.AddWindow(this);
         Present();
         _spinnerContainer.SetVisible(true);
         _mainBox.SetVisible(false);
         _spinner.Start();
-        _controller.Startup();
+        await _controller.StartupAsync();
         _spinner.Stop();
         _spinnerContainer.SetVisible(false);
         _mainBox.SetVisible(true);
@@ -619,6 +620,19 @@ public partial class MainWindow : Adw.ApplicationWindow
         _controller.Dispose();
         Environment.Exit(0);
         return false;
+    }
+
+    /// <summary>
+    /// Occurs when Keyring needs a login
+    /// </summary>
+    /// <param name="title">The title of the account</param>
+    public async Task<string?> KeyringLoginAsync(string title)
+    {
+        var tcs = new TaskCompletionSource<string?>();
+        var passwordDialog = new PasswordDialog(this, title, tcs);
+        passwordDialog.SetIconName(_controller.AppInfo.ID);
+        passwordDialog.Present();
+        return await tcs.Task;
     }
 
     /// <summary>
