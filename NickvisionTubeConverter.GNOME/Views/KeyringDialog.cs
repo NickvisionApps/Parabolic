@@ -18,6 +18,8 @@ public class KeyringDialog : Adw.Window
     [Gtk.Connect] private readonly Gtk.Box _mainBox;
     [Gtk.Connect] private readonly Adw.ActionRow _enableKeyringRow;
     [Gtk.Connect] private readonly Gtk.Switch _enableKeyringSwitch;
+    [Gtk.Connect] private readonly Adw.PreferencesGroup _accountsGroup;
+    [Gtk.Connect] private readonly Gtk.Button _addAccountButton;
     
     /// <summary>
     /// Constructs a KeyringDialog

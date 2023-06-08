@@ -46,9 +46,36 @@ Adw.Window _root {
                 [suffix]
                 Gtk.Switch _enableKeyringSwitch {
                   valign: center;
-                  active: false;
+                  active: true;
                 }
               }
+            }
+
+            Adw.PreferencesGroup _accountsGroup {
+              title: _("Accounts");
+              description: _("Manage accounts in your keyring.");
+              visible: bind _enableKeyringSwitch.active;
+
+              [header-suffix]
+              Gtk.Button _addAccountButton {
+                tooltip-text: _("Add Account");
+                valign: center;
+
+                Adw.ButtonContent {
+                  icon-name: "list-add-symbolic";
+                  label: _("Add");
+                }
+
+                styles ["flat"]
+              }
+            }
+
+            Adw.StatusPage _noAccountsPage {
+              icon-name: "online-symbolic";
+              title: _("No Accounts");
+              visible: bind _enableKeyringSwitch.active;
+
+              styles ["compact"]
             }
           }
         }
