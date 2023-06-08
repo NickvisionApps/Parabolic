@@ -106,7 +106,7 @@ public class KeyringDialog : Adw.Window
             }
             else
             {
-                var disableDialog = new MessageDialog(this, _controller.AppInfo.ID, _("Disable Keyring?"), _("Disabling the Keyring will delete all data currently stored in the Keyring. Are you sure you want to delete?"), _("No"), _("Yes"));
+                var disableDialog = new MessageDialog(this, _controller.AppInfo.ID, _("Disable Keyring?"), _("Disabling the keyring will delete all data currently stored inside. Are you sure you want to delete?"), _("No"), _("Yes"));
                 disableDialog.OnResponse += (sender, e) =>
                 {
                     if(disableDialog.Response == MessageDialogResponse.Destructive)
