@@ -1,6 +1,7 @@
 using Nickvision.Keyring;
 using NickvisionTubeConverter.Shared.Models;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace NickvisionTubeConverter.Shared.Controllers;
@@ -110,7 +111,7 @@ public class KeyringDialogController
     /// <param name="username">The username of the credential</param>
     /// <param name="password">The password of the credential</param>
     /// <returns>CredentialCheckStatus</returns>
-    public CredentialCheckStatus ValidateCredential(string name, string? uri, string? username, string? password)
+    public CredentialCheckStatus ValidateCredential(string name, string? uri, string username, string password)
     {
         CredentialCheckStatus result = 0;
         if(string.IsNullOrEmpty(name))
@@ -140,6 +141,19 @@ public class KeyringDialogController
     }
 
     /// <summary>
+    /// Gets all credentials from the Keyring
+    /// </summary>
+    /// <returns>The list of Credential objects</returns>
+    public async Task<List<Credential>> GetAllCredentialsAsync()
+    {
+        if(Keyring != null)
+        {
+            return await Keyring.GetAllCredentialsAsync();
+        }
+        return new List<Credential>();
+    }
+
+    /// <summary>
     /// Adds a credential to the Keyring
     /// </summary>
     /// <param name="name">The name of the credential</param>
@@ -147,11 +161,51 @@ public class KeyringDialogController
     /// <param name="username">The username of the credential</param>
     /// <param name="password">The password of the credential</param>
     /// <returns>True if successful, else false</returns>
-    public async Task<bool> AddCredentialAsync(string name, string? uri, string? username, string? password)
+    public async Task<bool> AddCredentialAsync(string name, string? uri, string username, string password)
     {
         if(ValidateCredential(name, uri, username, password) == CredentialCheckStatus.Valid && Keyring != null)
         {
-            return await Keyring.AddCredentialAsync(new Credential(name, new Uri(uri), username, password));
+            return await Keyring.AddCredentialAsync(new Credential(name, string.IsNullOrEmpty(uri) ? null : new Uri(uri), username, password));
+        }
+        return false;
+    }
+
+    /// <summary>
+    /// Updates a credential in the Keyring
+    /// </summary>
+    /// <param name="id">The id of the credential</param>
+    /// <param name="name">The name of the credential</param>
+    /// <param name="uri">The uri of the credential</param>
+    /// <param name="username">The username of the credential</param>
+    /// <param name="password">The password of the credential</param>
+    /// <returns>True if successful, else false</returns>
+    public async Task<bool> UpdateCredentialAsync(int id, string name, string? uri, string username, string password)
+    {
+        if(ValidateCredential(name, uri, username, password) == CredentialCheckStatus.Valid && Keyring != null)
+        {
+            var credential = await Keyring.LookupCredentialAsync(id);
+            if(credential != null)
+            {
+                credential.Name = name;
+                credential.Uri = string.IsNullOrEmpty(uri) ? null : new Uri(uri);
+                credential.Username = username;
+                credential.Password = password;
+                return await Keyring.UpdateCredentialAsync(credential);
+            }
+        }
+        return false;
+    }
+
+    /// <summary>
+    /// Deletes a credential in the Keyring
+    /// </summary>
+    /// <param name="id">The id of the credential</param>
+    /// <returns>True if successful, else false</returns>
+    public async Task<bool> DeleteCredentialAsync(int id)
+    {
+        if(Keyring != null)
+        {
+            return await Keyring.DeleteCredentialAsync(id);
         }
         return false;
     }

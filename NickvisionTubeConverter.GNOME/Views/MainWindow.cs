@@ -662,7 +662,7 @@ public partial class MainWindow : Adw.ApplicationWindow
     /// </summary>
     /// <param name="sender">Gio.SimpleAction</param>
     /// <param name="e">EventArgs</param>
-    private void Keyring(Gio.SimpleAction sender, EventArgs e)
+    private async void Keyring(Gio.SimpleAction sender, EventArgs e)
     {
         var keyringDialogController = _controller.CreateKeyringDialogController();
         var keyringDialog = new KeyringDialog(keyringDialogController, this);
@@ -671,7 +671,7 @@ public partial class MainWindow : Adw.ApplicationWindow
             _controller.UpdateKeyring(keyringDialogController);
             return false;
         };
-        keyringDialog.Present();
+        await keyringDialog.PresentAsync();
     }
 
     /// <summary>
