@@ -35,14 +35,6 @@ public class Configuration
     /// </summary>
     public bool RunInBackground { get; set; }
     /// <summary>
-    /// The previously used download save folder
-    /// </summary>
-    public string PreviousSaveFolder { get; set; }
-    /// <summary>
-    /// The previously used media file type
-    /// </summary>
-    public MediaFileType PreviousMediaFileType { get; set; }
-    /// <summary>
     /// The maximum number of active downloads (should be between 1-10)
     /// </summary>
     public int MaxNumberOfActiveDownloads { get; set; }
@@ -79,6 +71,18 @@ public class Configuration
     /// </summary>
     public bool EmbedMetadata { get; set; }
     /// <summary>
+    /// The previously used download save folder
+    /// </summary>
+    public string PreviousSaveFolder { get; set; }
+    /// <summary>
+    /// The previously used media file type
+    /// </summary>
+    public MediaFileType PreviousMediaFileType { get; set; }
+    /// <summary>
+    /// The previously used video resolution
+    /// </summary>
+    public string PreviousVideoResolution { get; set; }
+    /// <summary>
     /// Whether or not to number titles
     /// </summary>
     public bool NumberTitles { get; set; }
@@ -100,8 +104,6 @@ public class Configuration
         Theme = Theme.System;
         CompletedNotificationPreference = NotificationPreference.ForEach;
         RunInBackground = RuntimeInformation.IsOSPlatform(OSPlatform.Windows);
-        PreviousSaveFolder = Environment.GetFolderPath(Environment.SpecialFolder.MyVideos);
-        PreviousMediaFileType = MediaFileType.MP4;
         MaxNumberOfActiveDownloads = 5;
         OverwriteExistingFiles = true;
         SpeedLimit = 1024;
@@ -111,6 +113,9 @@ public class Configuration
         CookiesPath = "";
         DisallowConversions = false;
         EmbedMetadata = true;
+        PreviousSaveFolder = Environment.GetFolderPath(Environment.SpecialFolder.MyVideos);
+        PreviousMediaFileType = MediaFileType.MP4;
+        PreviousVideoResolution = "";
         NumberTitles = false;
     }
 

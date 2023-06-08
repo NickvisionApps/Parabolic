@@ -276,7 +276,7 @@ public partial class AddDownloadDialog : Adw.Window
             MediaFileType fileType;
             if (_controller.DisallowConversions)
             {
-                fileType = _fileTypeRow.GetSelected() == 0 && !_audioOnly ? MediaFileType.Video : MediaFileType.Audio;
+                fileType = (_fileTypeRow.GetSelected() == 0 && !_audioOnly) ? MediaFileType.Video : MediaFileType.Audio;
             }
             else
             {
@@ -414,15 +414,24 @@ public partial class AddDownloadDialog : Adw.Window
         var isVideo = false;
         if (_controller.DisallowConversions)
         {
-            isVideo = _fileTypeRow.GetSelected() == 0;
+            isVideo = !_audioOnly && _fileTypeRow.GetSelected() == 0;
         }
         else
         {
-            isVideo = ((MediaFileType)_fileTypeRow.GetSelected()).GetIsVideo();
+            var index = _fileTypeRow.GetSelected() + (_audioOnly ? 2 : 0);
+            isVideo = ((MediaFileType)index).GetIsVideo();
         }
         if (isVideo && !_audioOnly)
         {
             _qualityRow.SetModel(Gtk.StringList.New(_videoQualityList.ToArray()));
+            if(_controller.PreviousVideoResolution != null)
+            {
+                var find = _mediaUrlInfo.VideoResolutions.IndexOf(_controller.PreviousVideoResolution);
+                if(find != -1)
+                {
+                    _qualityRow.SetSelected((uint)find);
+                }
+            }
             _subtitleRow.SetSensitive(true);
         }
         else
