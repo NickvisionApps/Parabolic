@@ -71,6 +71,10 @@ public class Configuration
     /// </summary>
     public bool EmbedMetadata { get; set; }
     /// <summary>
+    /// Whether or not to embed chapters in a download
+    /// </summary>
+    public bool EmbedChapters { get; set; }
+    /// <summary>
     /// The previously used download save folder
     /// </summary>
     public string PreviousSaveFolder { get; set; }
@@ -113,6 +117,7 @@ public class Configuration
         CookiesPath = "";
         DisallowConversions = false;
         EmbedMetadata = true;
+        EmbedChapters = false;
         PreviousSaveFolder = Environment.GetFolderPath(Environment.SpecialFolder.MyVideos);
         PreviousMediaFileType = MediaFileType.MP4;
         PreviousVideoResolution = "";

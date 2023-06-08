@@ -142,6 +142,16 @@ public class PreferencesViewController
     }
 
     /// <summary>
+    /// Whether or not to embed chapters in a download
+    /// </summary>
+    public bool EmbedChapters
+    {
+        get => Configuration.Current.EmbedChapters;
+
+        set => Configuration.Current.EmbedChapters = value;
+    }
+
+    /// <summary>
     /// Saves the configuration to disk
     /// </summary>
     public void SaveConfiguration() => Configuration.Current.Save();

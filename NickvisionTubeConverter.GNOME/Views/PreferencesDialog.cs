@@ -56,6 +56,7 @@ public partial class PreferencesDialog : Adw.PreferencesWindow
     [Gtk.Connect] private readonly Gtk.Button _firefoxCookiesButton;
     [Gtk.Connect] private readonly Gtk.Switch _disallowConversionsSwitch;
     [Gtk.Connect] private readonly Gtk.Switch _embedMetadataSwitch;
+    [Gtk.Connect] private readonly Gtk.Switch _embedChaptersSwitch;
     
     private GAsyncReadyCallback _fileDialogCallback;
 
@@ -101,6 +102,7 @@ public partial class PreferencesDialog : Adw.PreferencesWindow
         }
         _disallowConversionsSwitch.SetActive(_controller.DisallowConversions);
         _embedMetadataSwitch.SetActive(_controller.EmbedMetadata);
+        _embedChaptersSwitch.SetActive(_controller.EmbedChapters);
     }
 
     /// <summary>
@@ -130,6 +132,7 @@ public partial class PreferencesDialog : Adw.PreferencesWindow
         _controller.AriaMinSplitSize = (int)_ariaMinSplitSizeSpin.GetValue();
         _controller.DisallowConversions = _disallowConversionsSwitch.GetActive();
         _controller.EmbedMetadata = _embedMetadataSwitch.GetActive();
+        _controller.EmbedChapters = _embedChaptersSwitch.GetActive();
         _controller.SaveConfiguration();
         Destroy();
     }

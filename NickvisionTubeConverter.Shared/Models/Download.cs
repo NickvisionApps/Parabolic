@@ -284,6 +284,10 @@ public class Download
                         }
                     }
                 }
+                if (options.EmbedChapters)
+                {
+                    postProcessors.Add(new Dictionary<string, dynamic>() { { "key", "TCMetadata" }, { "add_chapters", true } });
+                }
                 if (postProcessors.Count != 0)
                 {
                     _ytOpt.Add("postprocessors", postProcessors);

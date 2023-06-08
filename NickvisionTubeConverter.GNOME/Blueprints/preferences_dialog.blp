@@ -331,6 +331,22 @@ Adw.PreferencesWindow _root {
 
         activatable-widget: _embedMetadataSwitch;
       }
+
+      Adw.ActionRow {
+        title: _("Embed Chapters");
+
+        [prefix]
+        Gtk.Image {
+          icon-name: "playlist-symbolic";
+        }
+
+        [suffix]
+        Gtk.Switch _embedChaptersSwitch {
+          valign: center;
+        }
+
+        activatable-widget: _embedChaptersSwitch;
+      }
     }
   }
 }
