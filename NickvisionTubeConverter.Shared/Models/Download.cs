@@ -1,5 +1,4 @@
 ﻿using NickvisionTubeConverter.Shared.Helpers;
-using NickvisionTubeConverter.Shared.Models;
 using Python.Runtime;
 using System;
 using System.Collections.Generic;
@@ -8,7 +7,6 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
-using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using static NickvisionTubeConverter.Shared.Helpers.Gettext;
 
@@ -269,6 +267,8 @@ public class Download
                 }
                 if (options.EmbedMetadata)
                 {
+                    postProcessors.Add(new Dictionary<string, dynamic>() { { "key", "MetadataFromField" }, { "formats", new List<string>() { ":(?P<meta_comment>)", ":(?P<meta_description>)", ":(?P<meta_synopsis>)" } } });
+                    postProcessors.Add(new Dictionary<string, dynamic>() { { "key", "TCMetadata" }, { "add_metadata", true } });
                     if (FileType.GetSupportsThumbnails())
                     {
                         _ytOpt.Add("writethumbnail", true);
@@ -283,7 +283,6 @@ public class Download
                             _ytOpt.Add("postprocessor_args", cropDict);
                         }
                     }
-                    postProcessors.Insert(0, new Dictionary<string, dynamic>() { { "key", "TCMetadata" }, { "add_metadata", true } });
                 }
                 if (postProcessors.Count != 0)
                 {
