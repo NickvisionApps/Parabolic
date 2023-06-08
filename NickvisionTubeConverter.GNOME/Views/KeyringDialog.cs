@@ -48,13 +48,8 @@ public class KeyringDialog : Adw.Window
         SetIconName(_controller.AppInfo.ID);
         //Build UI
         builder.Connect(this);
-        _backButton.OnClicked += (sender, e) =>
-        {
-            _viewStack.SetVisibleChildName("main");
-            _backButton.SetVisible(false);
-            _titleLabel.SetLabel(_("Keyring"));
-        };
-        _addCredentialButton.OnClicked += (sender, e) => AddCredentialPage();
+        _backButton.OnClicked += async (sender, e) => await LoadHomePageAsync();
+        _addCredentialButton.OnClicked += (sender, e) => LoadAddCredentialPage();
         _credentialDeleteButton.OnClicked += DeleteAction;
         //Shortcut Controller
         _shortcutController = Gtk.ShortcutController.New();
@@ -149,9 +144,19 @@ public class KeyringDialog : Adw.Window
     }
 
     /// <summary>
+    /// Loads the Home page
+    /// </summary>
+    private async Task LoadHomePageAsync()
+    {
+        _viewStack.SetVisibleChildName("home");
+        _backButton.SetVisible(false);
+        _titleLabel.SetLabel(_("Keyring"));
+    }
+
+    /// <summary>
     /// Loads the AddCredential page
     /// </summary>
-    private void AddCredentialPage()
+    private void LoadAddCredentialPage()
     {
         _viewStack.SetVisibleChildName("credential");
         _backButton.SetVisible(true);
@@ -165,7 +170,7 @@ public class KeyringDialog : Adw.Window
     /// Loads the EditCredential page
     /// </summary>
     /// <param name="credential">The Credential model</param>
-    private void EditCredentialPage(Credential credential)
+    private void LoadEditCredentialPage(Credential credential)
     {
         _viewStack.SetVisibleChildName("credential");
         _backButton.SetVisible(true);
@@ -175,16 +180,65 @@ public class KeyringDialog : Adw.Window
         _credentialActionButton.OnClicked += EditAction;
     }
 
-    private void AddAction(Gtk.Button sender, EventArgs e)
+    /// <summary>
+    /// Occurs when the add button is clicked
+    /// </summary>
+    /// <param name="sender">Gtk.Button</param>
+    /// <param name="e">EventArgs</param>
+    private async void AddAction(Gtk.Button sender, EventArgs e)
     {
-        _credentialActionButton.OnClicked -= AddAction;
+        var checkStatus = _controller.ValidateCredential(_nameRow.GetText(), _urlRow.GetText(), _usernameRow.GetText(), _passwordRow.GetText());
+        _nameRow.RemoveCssClass("error");
+        _nameRow.SetTitle(_("Name"));
+        _urlRow.RemoveCssClass("error");
+        _urlRow.SetTitle(_("URL"));
+        _usernameRow.RemoveCssClass("error");
+        _usernameRow.SetTitle(_("Username"));
+        _passwordRow.RemoveCssClass("error");
+        _passwordRow.SetTitle(_("Password"));
+        if(checkStatus == CredentialCheckStatus.Valid)
+        {
+            await _controller.AddCredentialAsync(_nameRow.GetText(), _urlRow.GetText(), _usernameRow.GetText(), _passwordRow.GetText());
+            _credentialActionButton.OnClicked -= AddAction;
+            await LoadHomePageAsync();
+        }
+        else
+        {
+            if(checkStatus.HasFlag(CredentialCheckStatus.EmptyName))
+            {
+                _nameRow.AddCssClass("error");
+                _nameRow.SetTitle(_("Name (Empty)"));
+            }
+            if(checkStatus.HasFlag(CredentialCheckStatus.EmptyUsernamePassword))
+            {
+                _usernameRow.AddCssClass("error");
+                _usernameRow.SetTitle(_("Username (Empty)"));
+                _passwordRow.AddCssClass("error");
+                _passwordRow.SetTitle(_("Password (Empty)"));
+            }
+            if(checkStatus.HasFlag(CredentialCheckStatus.InvalidUri))
+            {
+                _urlRow.AddCssClass("error");
+                _urlRow.SetTitle(_("URL (Invalid)"));
+            }
+        }
     }
 
+    /// <summary>
+    /// Occurs when the apply button is clicked
+    /// </summary>
+    /// <param name="sender">Gtk.Button</param>
+    /// <param name="e">EventArgs</param>
     private void EditAction(Gtk.Button sender, EventArgs e)
     {
         _credentialActionButton.OnClicked -= EditAction;
     }
 
+    /// <summary>
+    /// Occurs when the delete button is clicked
+    /// </summary>
+    /// <param name="sender">Gtk.Button</param>
+    /// <param name="e">EventArgs</param>
     private void DeleteAction(Gtk.Button sender, EventArgs e)
     {
 

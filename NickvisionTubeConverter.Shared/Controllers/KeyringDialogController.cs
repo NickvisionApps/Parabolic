@@ -1,8 +1,21 @@
 using Nickvision.Keyring;
 using NickvisionTubeConverter.Shared.Models;
 using System;
+using System.Threading.Tasks;
 
 namespace NickvisionTubeConverter.Shared.Controllers;
+
+/// <summary>
+/// Statuses for when a credential is validated
+/// </summary>
+[Flags]
+public enum CredentialCheckStatus
+{
+    Valid = 1,
+    EmptyName = 2,
+    EmptyUsernamePassword = 4,
+    InvalidUri = 8
+}
 
 /// <summary>
 /// A dialog for managing a Keyring
@@ -85,6 +98,60 @@ public class KeyringDialogController
             Keyring.Destroy();
             Keyring = null;
             return true;
+        }
+        return false;
+    }
+
+    /// <summary>
+    /// Validates a credential
+    /// </summary>
+    /// <param name="name">The name of the credential</param>
+    /// <param name="uri">The uri of the credential</param>
+    /// <param name="username">The username of the credential</param>
+    /// <param name="password">The password of the credential</param>
+    /// <returns>CredentialCheckStatus</returns>
+    public CredentialCheckStatus ValidateCredential(string name, string? uri, string? username, string? password)
+    {
+        CredentialCheckStatus result = 0;
+        if(string.IsNullOrEmpty(name))
+        {
+            result |= CredentialCheckStatus.EmptyName;
+        }
+        if(string.IsNullOrEmpty(username) && string.IsNullOrEmpty(password))
+        {
+            result |= CredentialCheckStatus.EmptyUsernamePassword;
+        }
+        if(!string.IsNullOrEmpty(uri))
+        {
+            try
+            {
+                var x = new Uri(uri);
+            }
+            catch
+            {
+                result |= CredentialCheckStatus.InvalidUri;
+            }
+        }
+        if (result != 0)
+        {
+            return result;
+        }
+        return CredentialCheckStatus.Valid;
+    }
+
+    /// <summary>
+    /// Adds a credential to the Keyring
+    /// </summary>
+    /// <param name="name">The name of the credential</param>
+    /// <param name="uri">The uri of the credential</param>
+    /// <param name="username">The username of the credential</param>
+    /// <param name="password">The password of the credential</param>
+    /// <returns>True if successful, else false</returns>
+    public async Task<bool> AddCredentialAsync(string name, string? uri, string? username, string? password)
+    {
+        if(ValidateCredential(name, uri, username, password) == CredentialCheckStatus.Valid && Keyring != null)
+        {
+            return await Keyring.AddCredentialAsync(new Credential(name, new Uri(uri), username, password));
         }
         return false;
     }
