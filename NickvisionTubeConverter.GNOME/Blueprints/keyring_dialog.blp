@@ -98,8 +98,51 @@ Adw.Window _root {
             Adw.ViewStackPage {
               name: "credential";
               child: Gtk.Box {
-                Adw.PreferencesGroup {
+                orientation: vertical;
+                spacing: 24;
 
+                Adw.PreferencesGroup {
+                  margin-start: 24;
+                  margin-end: 24;
+                  vexpand: true;
+
+                  Adw.EntryRow _nameRow {
+                    title: _("Name");
+                  }
+
+                  Adw.EntryRow _urlRow {
+                    title: _("URL");
+                  }
+
+                  Adw.EntryRow _usernameRow {
+                    title: _("Username");
+                  }
+
+                  Adw.PasswordEntryRow _passwordRow {
+                    title: _("Password");
+                  }
+                }
+
+                Gtk.Box {
+                  orientation: horizontal;
+                  spacing: 24;
+                  halign: center;
+                  homogeneous: true;
+                  margin-bottom: 24;
+
+                  Gtk.Button _credentialDeleteButton {
+                    valign: center;
+                    visible: false;
+                    label: _("Delete");
+
+                    styles ["pill", "destructive-action"]
+                  }
+
+                  Gtk.Button _credentialActionButton {
+                    valign: center;
+
+                    styles ["pill", "suggested-action"]
+                  }
                 }
               };
             }

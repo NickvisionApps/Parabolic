@@ -24,7 +24,13 @@ public class KeyringDialog : Adw.Window
     [Gtk.Connect] private readonly Adw.PreferencesGroup _credentialsGroup;
     [Gtk.Connect] private readonly Gtk.Button _addCredentialButton;
     [Gtk.Connect] private readonly Adw.StatusPage _noCredentialsPage;
-    
+    [Gtk.Connect] private readonly Adw.EntryRow _nameRow;
+    [Gtk.Connect] private readonly Adw.EntryRow _urlRow;
+    [Gtk.Connect] private readonly Adw.EntryRow _usernameRow;
+    [Gtk.Connect] private readonly Adw.PasswordEntryRow _passwordRow;
+    [Gtk.Connect] private readonly Gtk.Button _credentialDeleteButton;
+    [Gtk.Connect] private readonly Gtk.Button _credentialActionButton;
+
     /// <summary>
     /// Constructs a KeyringDialog
     /// </summary>
@@ -140,15 +146,28 @@ public class KeyringDialog : Adw.Window
         }
     }
 
+    /// <summary>
+    /// Loads the AddCredential page
+    /// </summary>
     private void AddCredentialPage()
     {
         _viewStack.SetVisibleChildName("credential");
         _backButton.SetVisible(true);
         _titleLabel.SetLabel(_("Credential"));
+        _credentialDeleteButton.SetVisible(false);
+        _credentialActionButton.SetLabel("Add");
     }
 
+    /// <summary>
+    /// Loads the EditCredential page
+    /// </summary>
+    /// <param name="credential">The Credential model</param>
     private void EditCredentialPage(Credential credential)
     {
-
+        _viewStack.SetVisibleChildName("credential");
+        _backButton.SetVisible(true);
+        _titleLabel.SetLabel(_("Credential"));
+        _credentialDeleteButton.SetVisible(true);
+        _credentialActionButton.SetLabel("Apply");
     }
 }
