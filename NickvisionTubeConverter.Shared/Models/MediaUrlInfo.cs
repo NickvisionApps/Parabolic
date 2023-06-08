@@ -117,22 +117,19 @@ public class MediaUrlInfo
     /// </summary>
     private void ParseFormats(PyDict mediaInfo)
     {
-        if(mediaInfo.HasKey("formats"))
+        foreach (var f in mediaInfo["formats"].As<PyList>())
         {
-            foreach (var f in mediaInfo["formats"].As<PyList>())
+            var format = f.As<PyDict>();
+            if (format.HasKey("vbr"))
             {
-                var format = f.As<PyDict>();
-                if (format.HasKey("vbr"))
+                var resolution = new VideoResolution(format["width"].As<int>(), format["height"].As<int>());
+                if (!VideoResolutions.Contains(resolution))
                 {
-                    var resolution = new VideoResolution(format["width"].As<int>(), format["height"].As<int>());
-                    if (!VideoResolutions.Contains(resolution))
-                    {
-                        VideoResolutions.Add(resolution);
-                    }
+                    VideoResolutions.Add(resolution);
                 }
             }
-            VideoResolutions.Sort((a, b) => b.CompareTo(a));
         }
+        VideoResolutions.Sort((a, b) => b.CompareTo(a));
     }
 
     /// <summary>
