@@ -58,18 +58,21 @@ Adw.Window _root {
                     margin-top: 2;
                     activates-default: true;
                   }
-                }
 
-                Adw.PreferencesGroup _authGroup {
-                  title: _("Authentication");
-                  description: _("Please provide credentials only if required by the website you are downloading media from.");
+                  Adw.ExpanderRow _authRow {
+                    title: _("Authenticate");
 
-                  Adw.EntryRow _usernameRow {
-                    title: _("Username");
-                  }
+                    Adw.ComboRow _keyringRow {
+                      title: _("Keyring Credential");
+                    }
 
-                  Adw.PasswordEntryRow _passwordRow {
-                    title: _("Password");
+                    Adw.EntryRow _usernameRow {
+                      title: _("Username");
+                    }
+
+                    Adw.PasswordEntryRow _passwordRow {
+                      title: _("Password");
+                    }
                   }
                 }
 

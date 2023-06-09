@@ -133,7 +133,7 @@ public class MainWindowController : IDisposable
     /// Creates a new AddDownloadDialogController
     /// </summary>
     /// <returns>The new AddDownloadDialogController</returns>
-    public AddDownloadDialogController CreateAddDownloadDialogController() => new AddDownloadDialogController();
+    public AddDownloadDialogController CreateAddDownloadDialogController() => new AddDownloadDialogController(_keyring);
 
     /// <summary>
     /// Starts the application
