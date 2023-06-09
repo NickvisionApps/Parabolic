@@ -161,6 +161,12 @@ public partial class KeyringDialog : Adw.Window
                     if(disableDialog.Response == MessageDialogResponse.Destructive)
                     {
                         _controller.DisableKeyring();
+                        _noCredentialsPage.SetVisible(true);
+                        foreach(var row in _credentialRows)
+                        {
+                            _credentialsGroup.Remove(row);
+                        }
+                        _credentialRows.Clear();
                     }
                     else
                     {
