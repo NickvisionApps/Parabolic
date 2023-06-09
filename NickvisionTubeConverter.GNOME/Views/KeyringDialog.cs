@@ -4,19 +4,26 @@ using NickvisionTubeConverter.GNOME.Helpers;
 using NickvisionTubeConverter.Shared.Controllers;
 using System;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using static NickvisionTubeConverter.Shared.Helpers.Gettext;
 
 namespace NickvisionTubeConverter.GNOME.Views;
 
-public class KeyringDialog : Adw.Window
+public partial class KeyringDialog : Adw.Window
 {
+    private delegate bool GSourceFunc(nint user_data);
+
+    [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
+    private static partial void g_main_context_invoke(nint context, GSourceFunc function, nint data);
+
     private readonly Gtk.Window _parent;
     private readonly KeyringDialogController _controller;
     private readonly Gtk.ShortcutController _shortcutController;
     private bool _handlingEnableToggle;
     private int? _editId;
     private readonly List<Gtk.Widget> _credentialRows;
+    private readonly GSourceFunc _loadHomeCallback;
     
     [Gtk.Connect] private readonly Gtk.Button _backButton;
     [Gtk.Connect] private readonly Gtk.Label _titleLabel;
@@ -28,6 +35,7 @@ public class KeyringDialog : Adw.Window
     [Gtk.Connect] private readonly Adw.PreferencesGroup _credentialsGroup;
     [Gtk.Connect] private readonly Gtk.Button _addCredentialButton;
     [Gtk.Connect] private readonly Adw.StatusPage _noCredentialsPage;
+    [Gtk.Connect] private readonly Gtk.Spinner _loadingSpinner;
     [Gtk.Connect] private readonly Adw.EntryRow _nameRow;
     [Gtk.Connect] private readonly Adw.EntryRow _urlRow;
     [Gtk.Connect] private readonly Adw.EntryRow _usernameRow;
@@ -56,6 +64,16 @@ public class KeyringDialog : Adw.Window
         _backButton.OnClicked += async (sender, e) => await LoadHomePageAsync();
         _addCredentialButton.OnClicked += (sender, e) => LoadAddCredentialPage();
         _credentialDeleteButton.OnClicked += DeleteAction;
+        _loadHomeCallback = (x) =>
+        {
+            foreach (var row in _credentialRows)
+            {
+                _credentialsGroup.Add(row);
+            }
+            _loadingSpinner.SetVisible(false);
+            _noCredentialsPage.SetVisible(_credentialRows.Count == 0);
+            return false;
+        };
         //Shortcut Controller
         _shortcutController = Gtk.ShortcutController.New();
         _shortcutController.SetScope(Gtk.ShortcutScope.Managed);
@@ -169,8 +187,11 @@ public class KeyringDialog : Adw.Window
             _credentialsGroup.Remove(row);
         }
         _credentialRows.Clear();
-        var credentials = await _controller.GetAllCredentialsAsync();
-        foreach(var credential in credentials)
+        _noCredentialsPage.SetVisible(false);
+        _loadingSpinner.SetVisible(true);
+        var tcs = new TaskCompletionSource<List<Credential>>();
+        await Task.Run(async () => tcs.SetResult(await _controller.GetAllCredentialsAsync()));
+        foreach(var credential in tcs.Task.Result)
         {
             var row = Adw.ActionRow.New();
             row.SetTitle(credential.Name);
@@ -180,10 +201,9 @@ public class KeyringDialog : Adw.Window
             row.AddSuffix(img);
             row.SetActivatableWidget(img);
             row.OnActivated += (sender, e) => LoadEditCredentialPage(credential);
-            _credentialsGroup.Add(row);
             _credentialRows.Add(row);
         }
-        _noCredentialsPage.SetVisible(_credentialRows.Count == 0);
+        g_main_context_invoke(0, _loadHomeCallback, 0);
     }
 
     /// <summary>

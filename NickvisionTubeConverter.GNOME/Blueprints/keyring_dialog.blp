@@ -91,6 +91,13 @@ Adw.Window _root {
 
                   styles ["compact"]
                 }
+
+                Gtk.Spinner _loadingSpinner {
+                  spinning: true;
+                  visible: false;
+                  width-request: 24;
+                  height-request: 24;
+                }
               };
             }
 
