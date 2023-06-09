@@ -61,6 +61,8 @@ Adw.Window _root {
 
                   Adw.ExpanderRow _authRow {
                     title: _("Authenticate");
+                    enable-expansion: false;
+                    show-enable-switch: true;
 
                     Adw.ComboRow _keyringRow {
                       title: _("Keyring Credential");

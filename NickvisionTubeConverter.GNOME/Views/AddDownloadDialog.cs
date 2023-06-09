@@ -222,6 +222,14 @@ public partial class AddDownloadDialog : Adw.Window
             _viewStack.SetVisibleChildName("pageDownload");
             SetDefaultWidget(_addDownloadButton);
         };
+        _authRow.OnNotify += (sender, e) =>
+        {
+            if(e.Pspec.GetName() == "enable-expansion")
+            {
+                _usernameRow.SetText("");
+                _passwordRow.SetText("");
+            }
+        };
         _keyringRow.OnNotify += (sender, e) =>
         {
             if(e.Pspec.GetName() == "selected")
@@ -313,7 +321,7 @@ public partial class AddDownloadDialog : Adw.Window
                 quality = Quality.Resolution;
                 resolution = _mediaUrlInfo.VideoResolutions[(int)_qualityRow.GetSelected()];
             }
-            if(_keyringRow.GetSelected() == 0 || _keyringRow.GetSelected() == 4294967295)
+            if(_keyringRow.GetSelected() == 0 || _keyringRow.GetSelected() == 4294967295 || !_authRow.GetEnableExpansion())
             {
                 _controller.PopulateDownloads(_mediaUrlInfo!, fileType, quality, resolution, (Subtitle)_subtitleRow.GetSelected(), _saveFolderString, _speedLimitSwitch.GetActive(), _cropThumbnailSwitch.GetActive(), _usernameRow.GetText(), _passwordRow.GetText());
             }
@@ -415,7 +423,7 @@ public partial class AddDownloadDialog : Adw.Window
             try
             {
                 _urlRow.SetText(url);
-                if(_keyringRow.GetSelected() == 0 || _keyringRow.GetSelected() == 4294967295)
+                if(_keyringRow.GetSelected() == 0 || _keyringRow.GetSelected() == 4294967295 || !_authRow.GetEnableExpansion())
                 {
                     _mediaUrlInfo = await _controller.SearchUrlAsync(url, _usernameRow.GetText(), _passwordRow.GetText());
                 }
