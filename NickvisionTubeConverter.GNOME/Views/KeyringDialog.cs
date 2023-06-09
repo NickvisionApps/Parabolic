@@ -40,8 +40,10 @@ public partial class KeyringDialog : Adw.Window
     [Gtk.Connect] private readonly Adw.EntryRow _urlRow;
     [Gtk.Connect] private readonly Adw.EntryRow _usernameRow;
     [Gtk.Connect] private readonly Adw.PasswordEntryRow _passwordRow;
+    [Gtk.Connect] private readonly Adw.ViewStack _buttonViewStack;
+    [Gtk.Connect] private readonly Gtk.Button _credentialAddButton;
     [Gtk.Connect] private readonly Gtk.Button _credentialDeleteButton;
-    [Gtk.Connect] private readonly Gtk.Button _credentialActionButton;
+    [Gtk.Connect] private readonly Gtk.Button _credentialEditButton;
 
     /// <summary>
     /// Constructs a KeyringDialog
@@ -63,7 +65,9 @@ public partial class KeyringDialog : Adw.Window
         builder.Connect(this);
         _backButton.OnClicked += async (sender, e) => await LoadHomePageAsync();
         _addCredentialButton.OnClicked += (sender, e) => LoadAddCredentialPage();
-        _credentialDeleteButton.OnClicked += DeleteAction;
+        _credentialAddButton.OnClicked += AddCredential;
+        _credentialDeleteButton.OnClicked += DeleteCredential;
+        _credentialEditButton.OnClicked += EditCredential;
         _loadHomeCallback = (x) =>
         {
             foreach (var row in _credentialRows)
@@ -181,6 +185,7 @@ public partial class KeyringDialog : Adw.Window
         _viewStack.SetVisibleChildName("home");
         _backButton.SetVisible(false);
         _titleLabel.SetLabel(_("Keyring"));
+        SetDefaultWidget(null);
         //Update Rows
         foreach(var row in _credentialRows)
         {
@@ -214,13 +219,13 @@ public partial class KeyringDialog : Adw.Window
         _viewStack.SetVisibleChildName("credential");
         _backButton.SetVisible(true);
         _titleLabel.SetLabel(_("Credential"));
-        _credentialDeleteButton.SetVisible(false);
-        _credentialActionButton.SetLabel("Add");
+        _buttonViewStack.SetVisibleChildName("add");
         _nameRow.SetText("");
         _urlRow.SetText("");
         _usernameRow.SetText("");
         _passwordRow.SetText("");
-        _credentialActionButton.OnClicked += AddAction;
+        SetValidation(CredentialCheckStatus.Valid);
+        SetDefaultWidget(_credentialAddButton);
     }
 
     /// <summary>
@@ -232,14 +237,14 @@ public partial class KeyringDialog : Adw.Window
         _viewStack.SetVisibleChildName("credential");
         _backButton.SetVisible(true);
         _titleLabel.SetLabel(_("Credential"));
-        _credentialDeleteButton.SetVisible(true);
-        _credentialActionButton.SetLabel("Apply");
+        _buttonViewStack.SetVisibleChildName("edit");
         _editId = credential.Id;
         _nameRow.SetText(credential.Name);
         _urlRow.SetText(credential.Uri?.ToString() ?? "");
         _usernameRow.SetText(credential.Username);
         _passwordRow.SetText(credential.Password);
-        _credentialActionButton.OnClicked += EditAction;
+        SetValidation(CredentialCheckStatus.Valid);
+        SetDefaultWidget(_credentialEditButton);
     }
 
     /// <summary>
@@ -280,13 +285,12 @@ public partial class KeyringDialog : Adw.Window
     /// </summary>
     /// <param name="sender">Gtk.Button</param>
     /// <param name="e">EventArgs</param>
-    private async void AddAction(Gtk.Button sender, EventArgs e)
+    private async void AddCredential(Gtk.Button sender, EventArgs e)
     {
         var checkStatus = _controller.ValidateCredential(_nameRow.GetText(), _urlRow.GetText(), _usernameRow.GetText(), _passwordRow.GetText());
         SetValidation(checkStatus);
         if(checkStatus == CredentialCheckStatus.Valid)
         {
-            _credentialActionButton.OnClicked -= AddAction;
             await _controller.AddCredentialAsync(_nameRow.GetText(), _urlRow.GetText(), _usernameRow.GetText(), _passwordRow.GetText());
             await LoadHomePageAsync();
         }
@@ -297,13 +301,12 @@ public partial class KeyringDialog : Adw.Window
     /// </summary>
     /// <param name="sender">Gtk.Button</param>
     /// <param name="e">EventArgs</param>
-    private async void EditAction(Gtk.Button sender, EventArgs e)
+    private async void EditCredential(Gtk.Button sender, EventArgs e)
     {
         var checkStatus = _controller.ValidateCredential(_nameRow.GetText(), _urlRow.GetText(), _usernameRow.GetText(), _passwordRow.GetText());
         SetValidation(checkStatus);
         if(checkStatus == CredentialCheckStatus.Valid)
         {
-            _credentialActionButton.OnClicked -= EditAction;
             await _controller.UpdateCredentialAsync(_editId!.Value, _nameRow.GetText(), _urlRow.GetText(), _usernameRow.GetText(), _passwordRow.GetText());
             await LoadHomePageAsync();
         }
@@ -314,7 +317,7 @@ public partial class KeyringDialog : Adw.Window
     /// </summary>
     /// <param name="sender">Gtk.Button</param>
     /// <param name="e">EventArgs</param>
-    private void DeleteAction(Gtk.Button sender, EventArgs e)
+    private void DeleteCredential(Gtk.Button sender, EventArgs e)
     {
         var disableDialog = new MessageDialog(this, _controller.AppInfo.ID, _("Delete Credential?"), _("This action is irreversible. Are you sure you want to delete it?"), _("No"), _("Yes"));
         disableDialog.OnResponse += async (sender, e) =>

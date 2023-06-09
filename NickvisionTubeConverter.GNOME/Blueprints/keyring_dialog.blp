@@ -114,40 +114,61 @@ Adw.Window _root {
 
                   Adw.EntryRow _nameRow {
                     title: _("Name");
+                    activates-default: true;
                   }
 
                   Adw.EntryRow _urlRow {
                     title: _("URL");
+                    activates-default: true;
                   }
 
                   Adw.EntryRow _usernameRow {
                     title: _("Username");
+                    activates-default: true;
                   }
 
                   Adw.PasswordEntryRow _passwordRow {
                     title: _("Password");
+                    activates-default: true;
                   }
                 }
 
-                Gtk.Box {
-                  orientation: horizontal;
-                  spacing: 24;
-                  halign: center;
-                  homogeneous: true;
-                  margin-bottom: 24;
+                Adw.ViewStack _buttonViewStack {
+                  Adw.ViewStackPage {
+                    name: "add";
+                    child: Gtk.Button _credentialAddButton {
+                      halign: center;
+                      valign: center;
+                      margin-bottom: 24;
+                      label: _("Add");
 
-                  Gtk.Button _credentialDeleteButton {
-                    valign: center;
-                    visible: false;
-                    label: _("Delete");
-
-                    styles ["pill", "destructive-action"]
+                      styles ["pill", "suggested-action"]
+                    };
                   }
 
-                  Gtk.Button _credentialActionButton {
-                    valign: center;
+                  Adw.ViewStackPage {
+                    name: "edit";
+                    child: Gtk.Box {
+                      orientation: horizontal;
+                      spacing: 24;
+                      halign: center;
+                      homogeneous: true;
+                      margin-bottom: 24;
 
-                    styles ["pill", "suggested-action"]
+                      Gtk.Button _credentialDeleteButton {
+                        valign: center;
+                        label: _("Delete");
+
+                        styles ["pill", "destructive-action"]
+                      }
+
+                      Gtk.Button _credentialEditButton {
+                        valign: center;
+                        label: _("Apply");
+
+                        styles ["pill", "suggested-action"]
+                      }
+                    };
                   }
                 }
               };
