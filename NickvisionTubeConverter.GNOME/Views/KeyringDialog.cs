@@ -189,9 +189,9 @@ public partial class KeyringDialog : Adw.Window
         _credentialRows.Clear();
         _noCredentialsPage.SetVisible(false);
         _loadingSpinner.SetVisible(true);
-        var tcs = new TaskCompletionSource<List<Credential>>();
-        await Task.Run(async () => tcs.SetResult(await _controller.GetAllCredentialsAsync()));
-        foreach(var credential in tcs.Task.Result)
+        var credentials = new List<Credential>();
+        await Task.Run(async () => credentials = await _controller.GetAllCredentialsAsync());
+        foreach(var credential in credentials)
         {
             var row = Adw.ActionRow.New();
             row.SetTitle(credential.Name);
