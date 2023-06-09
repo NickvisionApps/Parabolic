@@ -244,7 +244,11 @@ public class Download
                 }
                 else if (FileType.GetIsVideo())
                 {
-                    if (FileType == MediaFileType.MP4)
+                    if(Resolution!.Width == 0 && Resolution.Height == 0)
+                    {
+                        _ytOpt.Add("format", FileType == MediaFileType.MP4 ? "bv*[ext=mp4]+ba[ext=m4a]/b[ext=mp4] / bv+ba/b" : "bv+ba/b");
+                    }
+                    else if (FileType == MediaFileType.MP4)
                     {
                         _ytOpt.Add("format", $"bv*[ext=mp4][width<={Resolution!.Width}][height<={Resolution.Height}]+ba[ext=m4a]/b[ext=mp4][width<={Resolution.Width}][height<={Resolution.Height}] / bv*[width<={Resolution.Width}][height<={Resolution.Height}]+ba/b[width<={Resolution.Width}][height<={Resolution.Height}]");
                     }

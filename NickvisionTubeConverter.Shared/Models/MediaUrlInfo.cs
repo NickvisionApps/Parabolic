@@ -160,6 +160,10 @@ public class MediaUrlInfo
                 _tryVideo = true;
             }
         }
+        if(VideoResolutions.Count == 0 && mediaInfo.HasKey("video_ext") && mediaInfo["video_ext"].As<string>() != "None")
+        {
+            VideoResolutions.Add(new VideoResolution(0, 0));
+        }
         var duration = Double.NaN;
         try
         {

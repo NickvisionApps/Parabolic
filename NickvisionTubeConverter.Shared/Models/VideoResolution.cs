@@ -1,4 +1,5 @@
 using System;
+using static NickvisionTubeConverter.Shared.Helpers.Gettext;
 
 namespace NickvisionTubeConverter.Shared.Models;
 
@@ -51,7 +52,7 @@ public class VideoResolution : IComparable<VideoResolution>, IEquatable<VideoRes
     /// Gets a string representation of a VideoResolution
     /// </summary>
     /// <returns>The string representation of the VideoResolution</returns>
-    public override string ToString() => $"{Width}x{Height}";
+    public override string ToString() => Width == 0 && Height == 0 ? _("Default") : $"{Width}x{Height}";
 
     /// <summary>
     /// Compares this with other
