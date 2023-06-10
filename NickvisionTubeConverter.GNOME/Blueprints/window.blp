@@ -3,9 +3,12 @@ using Adw 1;
 
 menu mainMenu {
   item(_("Keyring"), "win.keyring")
-  item(_("Preferences"), "win.preferences")
-  item(_("Keyboard Shortcuts"), "win.keyboardShortcuts")
-  item(_("About Tube Converter"), "win.about")
+
+  section {
+    item(_("Preferences"), "win.preferences")
+    item(_("Keyboard Shortcuts"), "win.keyboardShortcuts")
+    item(_("About Tube Converter"), "win.about")
+  }
 }
 
 Adw.ApplicationWindow _root {
