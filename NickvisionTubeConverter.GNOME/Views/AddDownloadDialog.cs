@@ -38,6 +38,8 @@ public partial class AddDownloadDialog : Adw.Window
     [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
     private static partial string gdk_clipboard_read_text_finish(nint clipboard, nint result, nint error);
 
+    private const uint GTK_INVALID_LIST_POSITION = 4294967295;
+
     private readonly Gtk.Window _parent;
     private readonly AddDownloadDialogController _controller;
     private MediaUrlInfo? _mediaUrlInfo;
@@ -321,7 +323,7 @@ public partial class AddDownloadDialog : Adw.Window
                 quality = Quality.Resolution;
                 resolution = _mediaUrlInfo.VideoResolutions[(int)_qualityRow.GetSelected()];
             }
-            if(_keyringRow.GetSelected() == 0 || _keyringRow.GetSelected() == 4294967295 || !_authRow.GetEnableExpansion())
+            if(_keyringRow.GetSelected() == 0 || _keyringRow.GetSelected() == GTK_INVALID_LIST_POSITION || !_authRow.GetEnableExpansion())
             {
                 _controller.PopulateDownloads(_mediaUrlInfo!, fileType, quality, resolution, (Subtitle)_subtitleRow.GetSelected(), _saveFolderString, _speedLimitSwitch.GetActive(), _cropThumbnailSwitch.GetActive(), _usernameRow.GetText(), _passwordRow.GetText());
             }
@@ -423,7 +425,7 @@ public partial class AddDownloadDialog : Adw.Window
             try
             {
                 _urlRow.SetText(url);
-                if(_keyringRow.GetSelected() == 0 || _keyringRow.GetSelected() == 4294967295 || !_authRow.GetEnableExpansion())
+                if(_keyringRow.GetSelected() == 0 || _keyringRow.GetSelected() == GTK_INVALID_LIST_POSITION || !_authRow.GetEnableExpansion())
                 {
                     _mediaUrlInfo = await _controller.SearchUrlAsync(url, _usernameRow.GetText(), _passwordRow.GetText());
                 }
