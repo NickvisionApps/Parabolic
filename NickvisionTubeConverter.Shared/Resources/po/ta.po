@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-08 05:53-0400\n"
+"POT-Creation-Date: 2023-06-09 17:19-0400\n"
 "PO-Revision-Date: 2023-06-01 16:56+0000\n"
 "Last-Translator: \"K.B.Dharun Krishna\" <kbdharunkrishna@gmail.com>\n"
 "Language-Team: Tamil <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -29,7 +29,7 @@ msgstr "\"{0}\" வின் பதிவிறக்கம் முடிந�
 msgid "\"{0}\" has finished with an error!"
 msgstr "\"{0}\" பிழையுடன் முடிந்தது!"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:321
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:353
 msgid "(Configurable in preferences)"
 msgstr "(விருப்பங்களில் கட்டமைக்கக்கூடியது)"
 
@@ -43,7 +43,7 @@ msgstr "{0:f1} பைட்டுகள்/வினாடி (B/s)"
 msgid "{0:f1} GiB/s"
 msgstr "{0:f1} ஜிபிபைட்/வினாடி (GiB/s)"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:321
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:353
 #: ../../../Helpers/SpeedFormatter.cs:28
 #, csharp-format
 msgid "{0:f1} KiB/s"
@@ -61,23 +61,23 @@ msgid_plural "{0} downloads — {1:f1}% ({2})"
 msgstr[0] "{0} பதிவிறக்கம் — {1:f1}% ({2})"
 msgstr[1] "{0} பதிவிறக்கங்கள் — {1:f1}% ({2})"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:181
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:481
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:182
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:537
 #, csharp-format
 msgid "{0} of {1} items"
 msgid_plural "{0} of {1} items"
 msgstr[0] "{1} இல் {0} உருப்படிகள்"
 msgstr[1] "{1} இல் {0} உருப்படிகள்"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:215
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:216
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:37
 #: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:17
-#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:74
+#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:75
 msgid "Add Download"
 msgstr "பதிவிறக்கத்தைச் சேர்க்கவும்"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:214
-#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:149
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:215
+#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:154
 msgid "Advanced Options"
 msgstr "மேம்பட்ட விருப்பங்கள்"
 
@@ -85,20 +85,25 @@ msgstr "மேம்பட்ட விருப்பங்கள்"
 msgid "All downloads have finished."
 msgstr "அனைத்து பதிவிறக்கங்களும் முடிந்துவிட்டன."
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:138
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:155
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:139
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:156
 msgid "Audio"
 msgstr "ஒலி அமைவு"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:110
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:111
 msgid "Best"
 msgstr "சிறந்த"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:607
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:613
 msgid "Close and Stop Downloads?"
 msgstr "பதிவிறக்கங்களை மூடிவிட்டு நிறுத்தவா?"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:789
+#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:221
+#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:239
+msgid "Credential"
+msgstr ""
+
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:825
 #, csharp-format
 msgid ""
 "David Lapshin {0}\n"
@@ -109,8 +114,26 @@ msgstr ""
 "பிரேஜ் ஃபுல்செத் {1}\n"
 "மார்சின் {2}"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:559
-#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:198
+#: ../../../Models/VideoResolution.cs:55
+msgid "Default"
+msgstr ""
+
+#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:322
+msgid "Delete Credential?"
+msgstr ""
+
+#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:158
+msgid "Disable Keyring?"
+msgstr ""
+
+#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:158
+msgid ""
+"Disabling the keyring will delete all data currently stored inside. Are you "
+"sure you want to disable it?"
+msgstr ""
+
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:565
+#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:203
 #: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:14
 msgid "Download"
 msgstr "பதிவிறக்கு"
@@ -127,7 +150,7 @@ msgstr "பதிவிறக்கம் பிழையுடன் முட�
 msgid "Download log was copied to clipboard."
 msgstr "பதிவிறக்கப் பதிவு கிளிப்போர்டுக்கு நகலெடுக்கப்பட்டது."
 
-#: ../../../Models/Download.cs:324
+#: ../../../Models/Download.cs:332
 msgid "Download using aria2 has started"
 msgstr "aria2 ஐப் பயன்படுத்தி பதிவிறக்கம் தொடங்கப்பட்டது"
 
@@ -137,7 +160,7 @@ msgid "Download web video and audio"
 msgstr ""
 
 #: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:176
-#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:111
+#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:112
 msgid "Downloading"
 msgstr "பதிவிறக்குகிறது"
 
@@ -149,6 +172,11 @@ msgstr "பதிவிறக்குகிறது {0:f2}% ({1})"
 #: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:254
 msgid "Downloads Finished"
 msgstr "பதிவிறக்கங்கள் முடிந்தது"
+
+#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:142
+#: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:58
+msgid "Enable"
+msgstr ""
 
 #: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:202
 msgid "Error"
@@ -162,28 +190,50 @@ msgstr "கோப்பு ஏற்கனவே உள்ளது, மேல�
 msgid "File Name"
 msgstr "கோப்பு பெயர்"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:785
+#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:187
+#: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:37
+#: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:41
+#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:5
+msgid "Keyring"
+msgstr ""
+
+#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:90
+msgid "Keyring has not been unlocked."
+msgstr ""
+
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:821
 msgid "List of supported sites"
 msgstr "ஆதரிக்கப்படும் தளங்களின் பட்டியல்"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:786
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:822
 msgid "Matrix Chat"
 msgstr "மேட்ரிக்ஸ் மன்றம்"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:182
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:183
 msgid "Maximum Quality"
 msgstr "அதிகபட்ச தரம்"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:165
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:166
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:57
 msgid "Media URL"
 msgstr "ஊடகத்தின் URL"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:128
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:129
 msgid "Media URL (Invalid)"
 msgstr "ஊடகத்தின் URL (தவறானது)"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:787
+#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:257
+#: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:116
+#, fuzzy
+#| msgid "File Name"
+msgid "Name"
+msgstr "கோப்பு பெயர்"
+
+#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:267
+msgid "Name (Empty)"
+msgstr ""
+
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:823
 #, csharp-format
 msgid ""
 "Nicholas Logozzo {0}\n"
@@ -192,7 +242,7 @@ msgstr ""
 "நிக்கோலஸ் லோகோஸோ {0}\n"
 "GitHub இல் பங்களிப்பாளர்கள் ❤️ {1}"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:788
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:824
 #, csharp-format
 msgid ""
 "Nicholas Logozzo {0}\n"
@@ -203,7 +253,9 @@ msgstr ""
 "ஃபியோடர் சோபோலெவ் {1}\n"
 "DaPigGuy {2}"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:607
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:613
+#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:158
+#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:322
 msgid "No"
 msgstr "இல்லை"
 
@@ -211,7 +263,18 @@ msgstr "இல்லை"
 msgid "No downloads running"
 msgstr "பதிவிறக்கங்கள் எதுவும் இயங்கவில்லை"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:213
+#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:263
+#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:76
+#: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:131
+#: NickvisionTubeConverter.GNOME/Blueprints/password_dialog.blp:39
+msgid "Password"
+msgstr ""
+
+#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:274
+msgid "Password (Empty)"
+msgstr ""
+
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:214
 msgid "Playlist"
 msgstr "பாடல் பட்டியல்"
 
@@ -223,27 +286,31 @@ msgstr "தயாராகிறது..."
 msgid "Processing..."
 msgstr "செயலாக்குகிறது..."
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:394
-#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:135
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:450
+#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:140
 msgid "Save Folder"
 msgstr "கோப்புறையை சேமி"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:404
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:460
 msgid "Save Folder (Invalid)"
 msgstr "கோப்புறையைச் சேமி (தவறானது)"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/PreferencesDialog.cs:164
+#: ../../../../NickvisionTubeConverter.GNOME/Views/PreferencesDialog.cs:167
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:265
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:279
 msgid "Select Cookies File"
 msgstr "குக்கீகள் கோப்பைத் தேர்ந்தெடுக்கவும்"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:452
-#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:142
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:508
+#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:147
 msgid "Select Save Folder"
 msgstr "சேமி கோப்புறையை தேர்ந்தெடுக்கவும்"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:607
+#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:142
+msgid "Setup Keyring"
+msgstr ""
+
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:613
 msgid ""
 "Some downloads are still in progress.\n"
 "Are you sure you want to close Tube Converter and stop the running downloads?"
@@ -263,7 +330,7 @@ msgstr "நிறுத்தப்பட்டது"
 msgid "Success"
 msgstr "வெற்றி"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:781
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:817
 msgid ""
 "The authors of Nickvision Tube Converter are not responsible/liable for any "
 "misuse of this program that may violate local copyright/DMCA laws. Users use "
@@ -273,28 +340,71 @@ msgstr ""
 "நிக்விஷன் குழாய் மாற்றி இன் ஆசிரியர்கள் பொறுப்பல்ல/பொறுப்பேற்க மாட்டார்கள். பயனர்கள் இந்த "
 "பயன்பாட்டை தங்கள் சொந்த ஆபத்தில் பயன்படுத்துகின்றனர்."
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:790
+#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:322
+msgid "This action is irreversible. Are you sure you want to delete it?"
+msgstr ""
+
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:826
 msgid "translator-credits"
 msgstr "K.B.Dharun Krishna http://github.com/kbdharun"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Program.cs:49
-#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:38
+#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:39
 #: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.desktop.in:4
 #: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.metainfo.xml.in:6
 msgid "Tube Converter"
 msgstr "குழாய் மாற்றி"
 
-#: ../../../Controllers/MainWindowController.cs:135
-#: ../../../Controllers/MainWindowController.cs:146
+#: ../../../Controllers/MainWindowController.cs:155
+#: ../../../Controllers/MainWindowController.cs:166
 msgid "Unable to setup dependencies. Please restart the app and try again."
 msgstr "சார்புகளை அமைக்க முடியவில்லை. பயன்பாட்டை மறுதொடக்கம் செய்து மீண்டும் முயற்சிக்கவும்."
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:124
-#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:77
+#: ../../../Controllers/MainWindowController.cs:179
+#, fuzzy
+#| msgid "Unable to setup dependencies. Please restart the app and try again."
+msgid "Unable to unlock keyring. Restart the app to try again."
+msgstr "சார்புகளை அமைக்க முடியவில்லை. பயன்பாட்டை மறுதொடக்கம் செய்து மீண்டும் முயற்சிக்கவும்."
+
+#: ../../../Controllers/MainWindowController.cs:173
+msgid "Unlock Keyring"
+msgstr ""
+
+#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:259
+#: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:121
+msgid "URL"
+msgstr ""
+
+#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:279
+#, fuzzy
+#| msgid "Media URL (Invalid)"
+msgid "URL (Invalid)"
+msgstr "ஊடகத்தின் URL (தவறானது)"
+
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:399
+msgid "Use manual credential"
+msgstr ""
+
+#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:261
+#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:72
+#: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:126
+#, fuzzy
+#| msgid "User Interface"
+msgid "Username"
+msgstr "பயனர் இடைமுகம்"
+
+#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:272
+#, fuzzy
+#| msgid "User Interface"
+msgid "Username (Empty)"
+msgstr "பயனர் இடைமுகம்"
+
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:125
+#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:82
 msgid "Validate"
 msgstr "சரிபார்க்கவும்"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:155
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:156
 msgid "Video"
 msgstr "காணொளி"
 
@@ -303,78 +413,69 @@ msgstr "காணொளி"
 msgid "Waiting..."
 msgstr "காத்திருக்கிறது..."
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:110
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:111
 msgid "Worst"
 msgstr "மோசமான"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:607
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:613
+#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:158
+#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:322
 msgid "Yes"
 msgstr "ஆம்"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:24
+#: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:24
 msgid "Back"
 msgstr "திரும்பவும்"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:64
+#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:63
 #, fuzzy
 #| msgid "Application"
-msgid "Authentication"
+msgid "Authenticate"
 msgstr "பயன்பாடு"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:65
-msgid ""
-"Please provide credentials only if required by the website you are "
-"downloading media from."
-msgstr ""
-
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:68
-#, fuzzy
-#| msgid "User Interface"
-msgid "Username"
-msgstr "பயனர் இடைமுகம்"
-
-#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:72
-msgid "Password"
+msgid "Keyring Credential"
 msgstr ""
 
-#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:109
+#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:114
 msgid "File Type"
 msgstr "கோப்பு வகை"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:116
+#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:121
 msgid "Quality"
 msgstr "தரம்"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:123
+#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:128
 msgid "Subtitle"
 msgstr "துணைத்தலைப்பு"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:125
+#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:130
 msgctxt "Subtitle"
 msgid "None"
 msgstr "எதுவும் இல்லை"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:172
+#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:177
 msgid "Select items to download or change file names."
 msgstr "கோப்புப் பெயர்களைப் பதிவிறக்க அல்லது மாற்ற உருப்படிகளைத் தேர்ந்தெடுக்கவும்."
 
-#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:184
-#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:223
+#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:189
+#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:228
 #, fuzzy
 #| msgid "Number Titles"
 msgid "Number Video Titles"
 msgstr "எண் தலைப்புகள்"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:253
+#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:258
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:103
 msgid "Speed Limit"
 msgstr "வேக வரம்பு"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:264
+#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:269
 msgid "Crop Thumbnail"
 msgstr "சிறுபடம் வெட்டவும்"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:265
+#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:270
 msgid "Make thumbnail square, useful when downloading music."
 msgstr "இசை பதிவிறக்கம் செய்யும் போது உபயோகமான சிறுபடவுரு சதுரத்தை உருவாக்கவும்."
 
@@ -404,13 +505,60 @@ msgstr "பதிவிறக்க மீண்டும் முயற்ச�
 msgid "Copy to Clipboard"
 msgstr "கிளிப்போர்டுக்கு நகலெடுக்கவும்"
 
+#: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:70
+msgid "Credentials"
+msgstr ""
+
+#: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:71
+msgid "Manage credentials in your keyring."
+msgstr ""
+
+#: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:76
+msgid "Add Credential"
+msgstr ""
+
+#: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:81
+#: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:143
+#: NickvisionTubeConverter.GNOME/Blueprints/new_password_dialog.blp:54
+#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:49
+msgid "Add"
+msgstr "சேர்"
+
+#: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:90
+msgid "No Credentials"
+msgstr ""
+
+#: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:160
+msgid "Delete"
+msgstr ""
+
+#: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:167
+msgid "Apply"
+msgstr ""
+
 #: NickvisionTubeConverter.GNOME/Blueprints/media_row.blp:16
 msgid "Undo Title Editing"
 msgstr "தலைப்பு திருத்தத்தை செயல்தவிர்க்கவும்"
 
+#: NickvisionTubeConverter.GNOME/Blueprints/new_password_dialog.blp:31
+msgid "New Password"
+msgstr ""
+
+#: NickvisionTubeConverter.GNOME/Blueprints/new_password_dialog.blp:36
+msgid "Confirm Password"
+msgstr ""
+
+#: NickvisionTubeConverter.GNOME/Blueprints/new_password_dialog.blp:44
+msgid "If the password is lost, there is no way to restore the keyring!"
+msgstr ""
+
+#: NickvisionTubeConverter.GNOME/Blueprints/password_dialog.blp:50
+msgid "Unlock"
+msgstr ""
+
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:11
-#: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:41
-#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:5
+#: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:46
+#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:6
 msgid "Preferences"
 msgstr "விருப்பத்தேர்வுகள்"
 
@@ -580,18 +728,22 @@ msgstr ""
 msgid "Embed Metadata"
 msgstr "மெட்டாடேட்டாவை உட்பொதிக்கவும்"
 
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:336
+msgid "Embed Chapters"
+msgstr ""
+
 #: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:22
-#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:121
+#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:122
 msgid "Stop All Downloads"
 msgstr "அனைத்து பதிவிறக்கங்களையும் நிறுத்து"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:27
-#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:201
+#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:202
 msgid "Retry Failed Downloads"
 msgstr "தோல்வியடைந்த பதிவிறக்கங்களை மீண்டும் முயற்சிக்கவும்"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:32
-#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:161
+#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:162
 msgid "Clear Queued Downloads"
 msgstr "வரிசைப்படுத்தப்பட்ட பதிவிறக்கங்களை அழிக்கவும்"
 
@@ -599,58 +751,54 @@ msgstr "வரிசைப்படுத்தப்பட்ட பதிவ�
 msgid "Application"
 msgstr "பயன்பாடு"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:46
-#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:6
+#: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:51
+#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:7
 msgid "Keyboard Shortcuts"
 msgstr "விசைப்பலகை குறுக்குவழிகள்"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:51
-#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:7
+#: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:56
+#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:8
 msgid "About Tube Converter"
 msgstr "குழாய் மாற்றி பற்றி"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:56
+#: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:61
 msgid "Quit"
 msgstr "வெளியேறு"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:44
+#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:45
 msgid "Add Download (Ctrl+N)"
 msgstr "பதிவிறக்கத்தைச் சேர் (Ctrl+N)"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:48
-msgid "Add"
-msgstr "சேர்"
-
-#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:56
+#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:57
 msgid "Main Menu"
 msgstr "முதன்மை பட்டியல்"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:71
+#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:72
 msgid "Download Media"
 msgstr "ஊடகத்தைப் பதிவிறக்கவும்"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:72
+#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:73
 msgid "Add a video, audio, or playlist URL to start downloading"
 msgstr "பதிவிறக்கம் செய்ய, காணொளி, ஒலி அமைவு அல்லது பாடல் பட்டியல் URL ஐச் சேர்க்கவும்"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:126
+#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:127
 msgid "Stop All"
 msgstr "அனைத்தையும் நிறுத்து"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:151
+#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:152
 msgid "Queued"
 msgstr "வரிசையில் நிற்கிறது"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:165
-#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:213
+#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:166
+#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:214
 msgid "Clear"
 msgstr "தெளிவாக்கு"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:190
+#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:191
 msgid "Completed"
 msgstr "முடிக்கப்பட்டது"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:209
+#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:210
 msgid "Clear Completed Downloads"
 msgstr "முடிக்கப்பட்ட பதிவிறக்கங்களை அழிக்கவும்"
 
