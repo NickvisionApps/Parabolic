@@ -1,4 +1,5 @@
-﻿using NickvisionTubeConverter.Shared.Events;
+﻿using Nickvision.Keyring;
+using NickvisionTubeConverter.Shared.Events;
 using NickvisionTubeConverter.Shared.Helpers;
 using NickvisionTubeConverter.Shared.Models;
 using Python.Runtime;
@@ -16,11 +17,17 @@ public class MainWindowController : IDisposable
 {
     private bool _disposed;
     private nint _pythonThreadState;
+    private Keyring? _keyring;
 
     /// <summary>
     /// The manager for downloads
     /// </summary>
     public DownloadManager DownloadManager { get; init; }
+    /// <summary>
+    /// A function for getting a password for the Keyring
+    /// </summary>
+    public Func<string, Task<string?>>? KeyringLoginAsync { get; set; }
+
     /// <summary>
     /// Gets the AppInfo object
     /// </summary>
@@ -44,7 +51,7 @@ public class MainWindowController : IDisposable
     /// <summary>
     /// The DownloadOptions for a download
     /// </summary>
-    public DownloadOptions DownloadOptions => new DownloadOptions(Configuration.Current.OverwriteExistingFiles, Configuration.Current.UseAria, Configuration.Current.EmbedMetadata, Configuration.Current.CookiesPath, Configuration.Current.AriaMaxConnectionsPerServer, Configuration.Current.AriaMinSplitSize);
+    public DownloadOptions DownloadOptions => new DownloadOptions(Configuration.Current.OverwriteExistingFiles, Configuration.Current.UseAria, Configuration.Current.CookiesPath, Configuration.Current.AriaMaxConnectionsPerServer, Configuration.Current.AriaMinSplitSize, Configuration.Current.EmbedMetadata, Configuration.Current.EmbedChapters);
 
     /// <summary>
     /// Occurs when a notification is sent
@@ -106,8 +113,15 @@ public class MainWindowController : IDisposable
         {
             Directory.Delete(Configuration.TempDir, true);
         }
+        _keyring?.Dispose();
         _disposed = true;
     }
+
+    /// <summary>
+    /// Creates a new KeyringDialogController
+    /// </summary>
+    /// <returns>The KeyringDialogController</returns>
+    public KeyringDialogController CreateKeyringDialogController() => new KeyringDialogController(AppInfo.Current.ID, _keyring);
 
     /// <summary>
     /// Creates a new PreferencesViewController
@@ -116,9 +130,15 @@ public class MainWindowController : IDisposable
     public PreferencesViewController CreatePreferencesViewController() => new PreferencesViewController();
 
     /// <summary>
+    /// Creates a new AddDownloadDialogController
+    /// </summary>
+    /// <returns>The new AddDownloadDialogController</returns>
+    public AddDownloadDialogController CreateAddDownloadDialogController() => new AddDownloadDialogController(_keyring);
+
+    /// <summary>
     /// Starts the application
     /// </summary>
-    public void Startup()
+    public async Task StartupAsync()
     {
         Configuration.Current.Saved += ConfigurationSaved;
         DownloadManager.MaxNumberOfActiveDownloads = Configuration.Current.MaxNumberOfActiveDownloads;
@@ -145,13 +165,38 @@ public class MainWindowController : IDisposable
         {
             NotificationSent?.Invoke(this, new NotificationSentEventArgs(_("Unable to setup dependencies. Please restart the app and try again."), NotificationSeverity.Error, "error", $"{e.Message}\n\n{e.StackTrace}"));
         }
+        if(Keyring.Exists(AppInfo.Current.ID))
+        {
+            var attempts = 0;
+            while(_keyring == null && attempts < 3)
+            {
+                var password = await KeyringLoginAsync!(_("Unlock Keyring"));
+                _keyring = Keyring.Access(AppInfo.Current.ID, password);
+                attempts++;
+            }
+            if(_keyring == null)
+            {
+                NotificationSent?.Invoke(this, new NotificationSentEventArgs(_("Unable to unlock keyring. Restart the app to try again."), NotificationSeverity.Error));
+            }
+        }
     }
 
     /// <summary>
-    /// Creates a new AddDownloadDialogController
+    /// Updates the Keyring object
     /// </summary>
-    /// <returns>The new AddDownloadDialogController</returns>
-    public AddDownloadDialogController CreateAddDownloadDialogController() => new AddDownloadDialogController();
+    /// <param name="controller">The KeyringDialogController</param>
+    /// <exception cref="ArgumentException">Thrown if the Keyring does not belong</exception>
+    public void UpdateKeyring(KeyringDialogController controller)
+    {
+        if(controller.Keyring != null && _keyring != null)
+        {
+            if(controller.Keyring.Name != _keyring.Name)
+            {
+                throw new ArgumentException($"Keyring is not {_keyring.Name}");
+            }
+        }
+        _keyring = controller.Keyring;
+    }
 
     /// <summary>
     /// Occurs when the configuration is saved

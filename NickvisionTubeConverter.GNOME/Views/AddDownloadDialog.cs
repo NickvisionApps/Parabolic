@@ -38,6 +38,8 @@ public partial class AddDownloadDialog : Adw.Window
     [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
     private static partial string gdk_clipboard_read_text_finish(nint clipboard, nint result, nint error);
 
+    private const uint GTK_INVALID_LIST_POSITION = 4294967295;
+
     private readonly Gtk.Window _parent;
     private readonly AddDownloadDialogController _controller;
     private MediaUrlInfo? _mediaUrlInfo;
@@ -80,7 +82,8 @@ public partial class AddDownloadDialog : Adw.Window
     [Gtk.Connect] private readonly Gtk.Switch _speedLimitSwitch;
     [Gtk.Connect] private readonly Adw.ActionRow _cropThumbnailRow;
     [Gtk.Connect] private readonly Gtk.Switch _cropThumbnailSwitch;
-    [Gtk.Connect] private readonly Adw.PreferencesGroup _authGroup;
+    [Gtk.Connect] private readonly Adw.ExpanderRow _authRow;
+    [Gtk.Connect] private readonly Adw.ComboRow _keyringRow;
     [Gtk.Connect] private readonly Adw.EntryRow _usernameRow;
     [Gtk.Connect] private readonly Adw.PasswordEntryRow _passwordRow;
     private Gtk.Spinner? _urlSpinner;
@@ -221,6 +224,30 @@ public partial class AddDownloadDialog : Adw.Window
             _viewStack.SetVisibleChildName("pageDownload");
             SetDefaultWidget(_addDownloadButton);
         };
+        _authRow.OnNotify += (sender, e) =>
+        {
+            if(e.Pspec.GetName() == "enable-expansion")
+            {
+                _usernameRow.SetText("");
+                _passwordRow.SetText("");
+            }
+        };
+        _keyringRow.OnNotify += (sender, e) =>
+        {
+            if(e.Pspec.GetName() == "selected")
+            {
+                if(_keyringRow.GetSelected() == 0)
+                {
+                    _usernameRow.SetVisible(true);
+                    _passwordRow.SetVisible(true);
+                }
+                else
+                {
+                    _usernameRow.SetVisible(false);
+                    _passwordRow.SetVisible(false);
+                }
+            }
+        };
         var vadjustment = _scrolledWindow.GetVadjustment();
         vadjustment.OnNotify += (sender, e) =>
         {
@@ -269,7 +296,7 @@ public partial class AddDownloadDialog : Adw.Window
             }
         };
         //Add Download Button
-        _addDownloadButton.OnClicked += (sender, e) =>
+        _addDownloadButton.OnClicked += async (sender, e) =>
         {
             Quality quality;
             VideoResolution? resolution;
@@ -296,7 +323,14 @@ public partial class AddDownloadDialog : Adw.Window
                 quality = Quality.Resolution;
                 resolution = _mediaUrlInfo.VideoResolutions[(int)_qualityRow.GetSelected()];
             }
-            _controller.PopulateDownloads(_mediaUrlInfo!, fileType, quality, resolution, (Subtitle)_subtitleRow.GetSelected(), _saveFolderString, _speedLimitSwitch.GetActive(), _cropThumbnailSwitch.GetActive(), _usernameRow.GetText(), _passwordRow.GetText());
+            if(_keyringRow.GetSelected() == 0 || _keyringRow.GetSelected() == GTK_INVALID_LIST_POSITION || !_authRow.GetEnableExpansion())
+            {
+                _controller.PopulateDownloads(_mediaUrlInfo!, fileType, quality, resolution, (Subtitle)_subtitleRow.GetSelected(), _saveFolderString, _speedLimitSwitch.GetActive(), _cropThumbnailSwitch.GetActive(), _usernameRow.GetText(), _passwordRow.GetText());
+            }
+            else
+            {
+                await _controller.PopulateDownloadsAsync(_mediaUrlInfo!, fileType, quality, resolution, (Subtitle)_subtitleRow.GetSelected(), _saveFolderString, _speedLimitSwitch.GetActive(), _cropThumbnailSwitch.GetActive(), ((int)_keyringRow.GetSelected()) - 1);
+            }
             OnDownload?.Invoke(this, EventArgs.Empty);
         };
         _addDownloadButton.SetSensitive(false);
@@ -360,6 +394,23 @@ public partial class AddDownloadDialog : Adw.Window
             };
             gdk_clipboard_read_text_async(clipboard.Handle, IntPtr.Zero, _clipboardCallback, IntPtr.Zero);
         }
+        //Keyring
+        var names = await _controller.GetKeyringCredentialNamesAsync();
+        if(_controller.KeyringAuthAvailable)
+        {
+            names.Insert(0, _("Use manual credential"));
+        }
+        if(names.Count > 0)
+        {
+            _keyringRow.SetModel(Gtk.StringList.New(names.ToArray()));
+            _keyringRow.SetSelected(names.Count > 1 ? 1u : 0u);
+        }
+        else
+        {
+            _keyringRow.SetVisible(false);
+            _usernameRow.SetVisible(true);
+            _passwordRow.SetVisible(true);
+        }
     }
 
     /// <summary>
@@ -374,7 +425,14 @@ public partial class AddDownloadDialog : Adw.Window
             try
             {
                 _urlRow.SetText(url);
-                _mediaUrlInfo = await _controller.SearchUrlAsync(url, _usernameRow.GetText(), _passwordRow.GetText());
+                if(_keyringRow.GetSelected() == 0 || _keyringRow.GetSelected() == GTK_INVALID_LIST_POSITION || !_authRow.GetEnableExpansion())
+                {
+                    _mediaUrlInfo = await _controller.SearchUrlAsync(url, _usernameRow.GetText(), _passwordRow.GetText());
+                }
+                else
+                {
+                    _mediaUrlInfo = await _controller.SearchUrlAsync(url, ((int)_keyringRow.GetSelected()) - 1);
+                }
             }
             catch (Exception ex)
             {

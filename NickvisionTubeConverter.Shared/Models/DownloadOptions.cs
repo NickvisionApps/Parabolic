@@ -14,10 +14,6 @@ public class DownloadOptions
     /// </summary>
     public bool UseAria { get; init; }
     /// <summary>
-    /// Whether or not to embed media metadata in the downloaded file
-    /// </summary>
-    public bool EmbedMetadata { get; init; }
-    /// <summary>
     /// The path to the cookies file to use for yt-dlp
     /// </summary>
     public string? CookiesPath { get; init; }
@@ -29,23 +25,33 @@ public class DownloadOptions
     /// The minimum size of which to split a file (-k)
     /// </summary>
     public int AriaMinSplitSize { get; init; }
+    /// <summary>
+    /// Whether or not to embed media metadata in the downloaded file
+    /// </summary>
+    public bool EmbedMetadata { get; init; }
+    /// <summary>
+    /// Whether or not to embed chapters in the downloaded file
+    /// </summary>
+    public bool EmbedChapters { get; init; }
     
     /// <summary>
     /// Constructs a DownloadOptions
     /// </summary>
     /// <param name="overwriteExistingFiles">Whether or not to overwrite existing files</param>
     /// <param name="useAria">Whether or not to use aria2 for the download</param>
-    /// <param name="embedMetadata">Whether or not to embed media metadata in the downloaded file</param>
     /// <param name="cookiesPath">The path to the cookies file to use for yt-dlp</param>
     /// <param name="ariaMaxConnectionsPerServer">The maximum number of connections to one server for each download (-x)</param>
     /// <param name="ariaMinSplitSize">The minimum size of which to split a file (-k)</param>
-    public DownloadOptions(bool overwriteExistingFiles, bool useAria, bool embedMetadata, string? cookiesPath, int ariaMaxConnectionsPerServer, int ariaMinSplitSize)
+    /// <param name="embedMetadata">Whether or not to embed media metadata in the downloaded file</param>
+    /// <param name="embedChapters">Whether or not to embed chapters in the downloaded file</param>
+    public DownloadOptions(bool overwriteExistingFiles, bool useAria, string? cookiesPath, int ariaMaxConnectionsPerServer, int ariaMinSplitSize, bool embedMetadata, bool embedChapters)
     {
         OverwriteExistingFiles = overwriteExistingFiles;
         UseAria = useAria;
-        EmbedMetadata = embedMetadata;
         CookiesPath = cookiesPath;
         AriaMaxConnectionsPerServer = ariaMaxConnectionsPerServer;
         AriaMinSplitSize = ariaMinSplitSize;
+        EmbedMetadata = embedMetadata;
+        EmbedChapters = embedChapters;
     }
 }

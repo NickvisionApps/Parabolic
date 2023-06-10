@@ -1,5 +1,4 @@
-﻿using NickvisionTubeConverter.Shared.Helpers;
-using NickvisionTubeConverter.Shared.Models;
+﻿using NickvisionTubeConverter.Shared.Models;
 
 namespace NickvisionTubeConverter.Shared.Controllers;
 
@@ -139,6 +138,16 @@ public class PreferencesViewController
         get => Configuration.Current.EmbedMetadata;
 
         set => Configuration.Current.EmbedMetadata = value;
+    }
+
+    /// <summary>
+    /// Whether or not to embed chapters in a download
+    /// </summary>
+    public bool EmbedChapters
+    {
+        get => Configuration.Current.EmbedChapters;
+
+        set => Configuration.Current.EmbedChapters = value;
     }
 
     /// <summary>

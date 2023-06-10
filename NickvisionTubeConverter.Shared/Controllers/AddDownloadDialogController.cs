@@ -1,9 +1,9 @@
-using NickvisionTubeConverter.Shared.Helpers;
+using Nickvision.Keyring;
 using NickvisionTubeConverter.Shared.Models;
 using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.IO;
+using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
@@ -24,6 +24,8 @@ public enum DownloadOptionsCheckStatus
 /// </summary>
 public class AddDownloadDialogController
 {
+    private Keyring? _keyring;
+
     /// <summary>
     /// Gets the AppInfo object
     /// </summary>
@@ -56,12 +58,18 @@ public class AddDownloadDialogController
     /// Whether to embed metadata
     /// </summary>
     public bool EmbedMetadata => Configuration.Current.EmbedMetadata;
+    /// <summary>
+    /// Whether or not keyring auth is available
+    /// </summary>
+    public bool KeyringAuthAvailable => _keyring != null;
 
     /// <summary>
     /// Constructs a AddDownloadDialogController
     /// </summary>
-    public AddDownloadDialogController()
+    /// <param name="keyring">The application Keyring</param>
+    public AddDownloadDialogController(Keyring? keyring)
     {
+        _keyring = keyring;
         Downloads = new List<Download>();
     }
 
@@ -80,6 +88,21 @@ public class AddDownloadDialogController
     }
 
     /// <summary>
+    /// Gets a list of names of credentials in the keyring
+    /// </summary>
+    /// <returns>The list of names of credentials</returns>
+    public async Task<List<string>> GetKeyringCredentialNamesAsync()
+    {
+        if(_keyring != null)
+        {
+            var names = (await _keyring.GetAllCredentialsAsync()).Select(x => x.Name).ToList();
+            names.Sort();
+            return names;
+        }
+        return new List<string>();
+    }
+
+    /// <summary>
     /// Searches for information about a media url
     /// </summary>
     /// <param name="mediaUrl">The media url</param>
@@ -87,6 +110,23 @@ public class AddDownloadDialogController
     /// <param name="username">A username for the website (if available)</param>
     /// <param name="password">A password for the website (if available)</param>
     public async Task<MediaUrlInfo?> SearchUrlAsync(string mediaUrl, string? username, string? password) => await MediaUrlInfo.GetAsync(mediaUrl, username, password);
+
+    /// <summary>
+    /// Searches for information about a media url
+    /// </summary>
+    /// <param name="mediaUrl">The media url</param>
+    /// <returns>A MediaUrlInfo object for the url or null if url is invalid</returns>
+    /// <param name="credentialIndex">The index of the credential to use</param>
+    public async Task<MediaUrlInfo?> SearchUrlAsync(string mediaUrl, int credentialIndex)
+    {
+        if(_keyring != null)
+        {
+            var credentials = await _keyring.GetAllCredentialsAsync();
+            credentials.Sort((a, b) => a.Name.CompareTo(b.Name));
+            return await MediaUrlInfo.GetAsync(mediaUrl, credentials[credentialIndex].Username, credentials[credentialIndex].Password);
+        }
+        return await MediaUrlInfo.GetAsync(mediaUrl, "", "");
+    }
 
     /// <summary>
     /// Numbers the titles in a MediaUrlInfo object
@@ -160,5 +200,31 @@ public class AddDownloadDialogController
             Configuration.Current.PreviousVideoResolution = resolution.ToString();
         }
         Configuration.Current.Save();
+    }
+
+    /// <summary>
+    /// Populates the downloads list
+    /// </summary>
+    /// <param name="mediaUrlInfo">The MediaUrlInfo object</param>
+    /// <param name="mediaFileType">The media file type to download</param>
+    /// <param name="quality">The quality of the downloads</param>
+    /// <param name="resolution">The video resolution if available</param>
+    /// <param name="subtitles">The subtitle format of the downloads</param>
+    /// <param name="saveFolder">The save folder of the downloads</param>
+    /// <param name="limitSpeed">Whether or not to use speed limit</param>
+    /// <param name="cropThumbnail">Whether or not to crop the thumbnail</param>
+    /// <param name="credentialIndex">The index of the credential to use</param>
+    public async Task PopulateDownloadsAsync(MediaUrlInfo mediaUrlInfo, MediaFileType mediaFileType, Quality quality, VideoResolution? resolution, Subtitle subtitles, string saveFolder, bool limitSpeed, bool cropThumbnail, int credentialIndex)
+    {
+        if(_keyring != null)
+        {
+            var credentials = await _keyring.GetAllCredentialsAsync();
+            credentials.Sort((a, b) => a.Name.CompareTo(b.Name));
+            PopulateDownloads(mediaUrlInfo, mediaFileType, quality, resolution, subtitles, saveFolder, limitSpeed, cropThumbnail, credentials[credentialIndex].Username, credentials[credentialIndex].Password);
+        }
+        else
+        {
+            PopulateDownloads(mediaUrlInfo, mediaFileType, quality, resolution, subtitles, saveFolder, limitSpeed, cropThumbnail, "", "");
+        }
     }
 }

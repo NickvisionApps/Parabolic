@@ -440,6 +440,7 @@ public partial class MainWindow : Adw.ApplicationWindow
         OnCloseRequest += OnCloseRequested;
         _controller.NotificationSent += NotificationSent;
         _controller.RunInBackgroundChanged += RunInBackgroundChanged;
+        _controller.KeyringLoginAsync = KeyringLoginAsync;
         _controller.DownloadManager.DownloadAdded += (sender, e) => g_main_context_invoke(0, _downloadAddedFunc, (IntPtr)GCHandle.Alloc(e));
         _controller.DownloadManager.DownloadProgressUpdated += (sender, e) => g_main_context_invoke(0, _downloadProgressUpdatedFunc, (IntPtr)GCHandle.Alloc(e));
         _controller.DownloadManager.DownloadCompleted += (sender, e) => g_main_context_invoke(0, _downloadCompletedFunc, (IntPtr)GCHandle.Alloc(e));
@@ -498,6 +499,11 @@ public partial class MainWindow : Adw.ApplicationWindow
             }
         };
         AddAction(actClearCompletedDownloads);
+        //Keyring Action
+        var actKeyring = Gio.SimpleAction.New("keyring", null);
+        actKeyring.OnActivate += Keyring;
+        AddAction(actKeyring);
+        application.SetAccelsForAction("win.keyring", new string[] { "<Ctrl>k" });
         //Preferences Action
         var actPreferences = Gio.SimpleAction.New("preferences", null);
         actPreferences.OnActivate += Preferences;
@@ -532,14 +538,14 @@ public partial class MainWindow : Adw.ApplicationWindow
     /// <summary>
     /// Starts the MainWindow
     /// </summary>
-    public void Start()
+    public async Task StartAsync()
     {
         _application.AddWindow(this);
         Present();
         _spinnerContainer.SetVisible(true);
         _mainBox.SetVisible(false);
         _spinner.Start();
-        _controller.Startup();
+        await _controller.StartupAsync();
         _spinner.Stop();
         _spinnerContainer.SetVisible(false);
         _mainBox.SetVisible(true);
@@ -617,6 +623,19 @@ public partial class MainWindow : Adw.ApplicationWindow
     }
 
     /// <summary>
+    /// Occurs when Keyring needs a login
+    /// </summary>
+    /// <param name="title">The title of the account</param>
+    public async Task<string?> KeyringLoginAsync(string title)
+    {
+        var tcs = new TaskCompletionSource<string?>();
+        var passwordDialog = new PasswordDialog(this, title, tcs);
+        passwordDialog.SetIconName(_controller.AppInfo.ID);
+        passwordDialog.Present();
+        return await tcs.Task;
+    }
+
+    /// <summary>
     /// Prompts the AddDownloadDialog
     /// </summary>
     /// <param name="e">NotificationSentEventArgs</param>
@@ -636,6 +655,23 @@ public partial class MainWindow : Adw.ApplicationWindow
             addDialog.Close();
         };
         await addDialog.PresentAsync(e.ActionParam);
+    }
+
+    /// <summary>
+    /// Occurs when the keyring action is triggered
+    /// </summary>
+    /// <param name="sender">Gio.SimpleAction</param>
+    /// <param name="e">EventArgs</param>
+    private async void Keyring(Gio.SimpleAction sender, EventArgs e)
+    {
+        var keyringDialogController = _controller.CreateKeyringDialogController();
+        var keyringDialog = new KeyringDialog(keyringDialogController, this);
+        keyringDialog.OnCloseRequest += (sender, e) =>
+        {
+            _controller.UpdateKeyring(keyringDialogController);
+            return false;
+        };
+        await keyringDialog.PresentAsync();
     }
 
     /// <summary>
