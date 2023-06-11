@@ -71,6 +71,10 @@ public class Configuration
     /// </summary>
     public bool EmbedMetadata { get; set; }
     /// <summary>
+    /// Whether or not to turn on crop thumbnail in an audio download
+    /// </summary>
+    public bool CropAudioThumbnails { get; set; }
+    /// <summary>
     /// Whether or not to embed chapters in a download
     /// </summary>
     public bool EmbedChapters { get; set; }
@@ -117,6 +121,7 @@ public class Configuration
         CookiesPath = "";
         DisallowConversions = false;
         EmbedMetadata = true;
+        CropAudioThumbnails = false;
         EmbedChapters = false;
         PreviousSaveFolder = Environment.GetFolderPath(Environment.SpecialFolder.MyVideos);
         PreviousMediaFileType = MediaFileType.MP4;

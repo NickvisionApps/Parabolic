@@ -141,6 +141,16 @@ public class PreferencesViewController
     }
 
     /// <summary>
+    /// Whether or not to turn on crop thumbnail in an audio download
+    /// </summary>
+    public bool CropAudioThumbnails
+    {
+        get => Configuration.Current.CropAudioThumbnails;
+
+        set => Configuration.Current.CropAudioThumbnails = value;
+    }
+
+    /// <summary>
     /// Whether or not to embed chapters in a download
     /// </summary>
     public bool EmbedChapters
