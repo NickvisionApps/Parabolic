@@ -119,87 +119,7 @@ public partial class AddDownloadDialog : Adw.Window
             _urlSpinner.Start();
             return false;
         };
-        _finishSearchCallback = (x) =>
-        {
-            _urlSpinner.Stop();
-            _validateUrlButton.SetSensitive(true);
-            _validateUrlButton.SetChild(null);
-            _validateUrlButton.SetLabel(_("Validate"));
-            if (_mediaUrlInfo == null)
-            {
-                _urlRow.AddCssClass("error");
-                _urlRow.SetTitle(_("Media URL (Invalid)"));
-            }
-            else
-            {
-                _videoQualityList = new List<string> {};
-                if (_mediaUrlInfo.VideoResolutions.Count == 0)
-                {
-                    _audioOnly = true;
-                    if (_controller.DisallowConversions)
-                    {
-                        _fileTypeRow.SetModel(Gtk.StringList.New(new string[] { _("Audio") }));
-                        _fileTypeRow.SetSelected(0);
-                    }
-                    else
-                    {
-                        _fileTypeRow.SetModel(Gtk.StringList.New(new string[] {"MP3", "OPUS", "FLAC", "WAV"}));
-                        _fileTypeRow.SetSelected((uint)Math.Max((int)_controller.PreviousMediaFileType - 2, 0));
-                    }
-                }
-                else
-                {
-                    foreach (var resolution in _mediaUrlInfo.VideoResolutions)
-                    {
-                        _videoQualityList.Add(resolution.ToString());
-                    }
-                    if(_controller.DisallowConversions)
-                    {
-                        _fileTypeRow.SetModel(Gtk.StringList.New(new string[] { _("Video"), _("Audio") }));
-                        _fileTypeRow.SetSelected(0);
-                    }
-                    else
-                    {
-                        _fileTypeRow.SetSelected((uint)_controller.PreviousMediaFileType);
-                    }
-                }
-                SetQualityRowModel(); // in case _fileTypeRow.SetSelected didn't invoke OnNotify
-                _urlRow.RemoveCssClass("error");
-                _urlRow.SetTitle(_("Media URL"));
-                _downloadPage.SetVisible(true);
-                _viewStack.SetVisibleChildName("pageDownload");
-                SetDefaultWidget(_addDownloadButton);
-                _addDownloadButton.SetSensitive(!string.IsNullOrEmpty(_saveFolderRow.GetText()));
-                _numberTitlesRow.SetVisible(_mediaUrlInfo.MediaList.Count > 1 ? true : false);
-                if (_mediaUrlInfo.MediaList.Count > 1)
-                {
-                    foreach (var mediaInfo in _mediaUrlInfo.MediaList)
-                    {
-                        var row = new MediaRow(mediaInfo);
-                        _mediaRows.Add(row);
-                        row.OnSelectionChanged += PlaylistChanged;
-                        _playlistGroup.Add(row);
-                    }
-                    _openPlaylistGroup.SetVisible(true);
-                    _openPlaylistRow.SetTitle(_n("{0} of {1} items", "{0} of {1} items", _mediaUrlInfo.MediaList.Count, _mediaUrlInfo.MediaList.Count, _mediaUrlInfo.MediaList.Count));
-                    _qualityRow.SetTitle(_("Maximum Quality"));
-                    if(_controller.NumberTitles)
-                    {
-                        _numberTitlesSwitch.SetActive(true);
-                    }
-                }
-                else
-                {
-                    _singleMediaDuration = _mediaUrlInfo.MediaList[0].Duration;
-                    var row = new MediaRow(_mediaUrlInfo.MediaList[0]);
-                    _mediaRows.Add(row);
-                    _mediaGroup.SetVisible(true);
-                    _mediaGroup.Add(row);
-                }
-            }
-            ValidateOptions();
-            return false;
-        };
+        _finishSearchCallback = (x) => FinishSearchUrl();
         //Dialog Settings
         SetTransientFor(parent);
         SetIconName(_controller.AppInfo.ID);
@@ -268,6 +188,10 @@ public partial class AddDownloadDialog : Adw.Window
             if (e.Pspec.GetName() == "selected-item")
             {
                 SetQualityRowModel();
+                if(_controller.CropAudioThumbnails)
+                {
+                    _cropThumbnailSwitch.SetActive(SelectedMediaFileType.GetIsAudio());
+                }
             }
         };
         _selectSaveFolderButton.OnClicked += SelectSaveFolder;
@@ -296,43 +220,7 @@ public partial class AddDownloadDialog : Adw.Window
             }
         };
         //Add Download Button
-        _addDownloadButton.OnClicked += async (sender, e) =>
-        {
-            Quality quality;
-            VideoResolution? resolution;
-            MediaFileType fileType;
-            if (_controller.DisallowConversions)
-            {
-                fileType = (_fileTypeRow.GetSelected() == 0 && !_audioOnly) ? MediaFileType.Video : MediaFileType.Audio;
-            }
-            else
-            {
-                fileType = (MediaFileType)_fileTypeRow.GetSelected();
-                if (_audioOnly)
-                {
-                    fileType += 2;
-                }
-            }
-            if (fileType.GetIsAudio())
-            {
-                quality = (Quality)_qualityRow.GetSelected();
-                resolution = null;
-            }
-            else
-            {
-                quality = Quality.Resolution;
-                resolution = _mediaUrlInfo.VideoResolutions[(int)_qualityRow.GetSelected()];
-            }
-            if(_keyringRow.GetSelected() == 0 || _keyringRow.GetSelected() == GTK_INVALID_LIST_POSITION || !_authRow.GetEnableExpansion())
-            {
-                _controller.PopulateDownloads(_mediaUrlInfo!, fileType, quality, resolution, (Subtitle)_subtitleRow.GetSelected(), _saveFolderString, _speedLimitSwitch.GetActive(), _cropThumbnailSwitch.GetActive(), _usernameRow.GetText(), _passwordRow.GetText());
-            }
-            else
-            {
-                await _controller.PopulateDownloadsAsync(_mediaUrlInfo!, fileType, quality, resolution, (Subtitle)_subtitleRow.GetSelected(), _saveFolderString, _speedLimitSwitch.GetActive(), _cropThumbnailSwitch.GetActive(), ((int)_keyringRow.GetSelected()) - 1);
-            }
-            OnDownload?.Invoke(this, EventArgs.Empty);
-        };
+        _addDownloadButton.OnClicked += AddDownload;
         _addDownloadButton.SetSensitive(false);
         _numberTitlesSwitch2.BindProperty("active", _numberTitlesSwitch, "active", GObject.BindingFlags.Bidirectional);
         //Shortcut Controller
@@ -362,6 +250,27 @@ public partial class AddDownloadDialog : Adw.Window
     /// <param name="parent">Gtk.Window</param>
     public AddDownloadDialog(AddDownloadDialogController controller, Gtk.Window parent) : this(Builder.FromFile("add_download_dialog.ui"), controller, parent)
     {
+    }
+
+    private MediaFileType SelectedMediaFileType
+    {
+        get
+        {
+            MediaFileType fileType;
+            if (_controller.DisallowConversions)
+            {
+                fileType = (_fileTypeRow.GetSelected() == 0 && !_audioOnly) ? MediaFileType.Video : MediaFileType.Audio;
+            }
+            else
+            {
+                fileType = (MediaFileType)_fileTypeRow.GetSelected();
+                if (_audioOnly)
+                {
+                    fileType += 2;
+                }
+            }
+            return fileType;
+        }
     }
 
     /// <summary>
@@ -414,6 +323,26 @@ public partial class AddDownloadDialog : Adw.Window
     }
 
     /// <summary>
+    /// Occurs when the escape key is pressed on the window
+    /// </summary>
+    /// <param name="sender">Gtk.Widget</param>
+    /// <param name="e">GLib.Variant</param>
+    private bool OnEscapeKey(Gtk.Widget sender, GLib.Variant e)
+    {
+        if (_viewStack.GetVisibleChildName() == "pagePlaylist")
+        {
+            _viewStack.SetVisibleChildName("pageDownload");
+            SetDefaultWidget(_addDownloadButton);
+            _playlistPage.SetVisible(false);
+        }
+        else
+        {
+            Close();
+        }
+        return true;
+    }
+
+    /// <summary>
     /// Searches for information about a URL in the dialog
     /// </summary>
     /// <param name="url">The URL to search</param>
@@ -444,6 +373,91 @@ public partial class AddDownloadDialog : Adw.Window
     }
 
     /// <summary>
+    /// Finishes a URL search
+    /// </summary>
+    private bool FinishSearchUrl()
+    {
+        _urlSpinner.Stop();
+        _validateUrlButton.SetSensitive(true);
+        _validateUrlButton.SetChild(null);
+        _validateUrlButton.SetLabel(_("Validate"));
+        if (_mediaUrlInfo == null)
+        {
+            _urlRow.AddCssClass("error");
+            _urlRow.SetTitle(_("Media URL (Invalid)"));
+        }
+        else
+        {
+            _videoQualityList = new List<string> {};
+            if (_mediaUrlInfo.VideoResolutions.Count == 0)
+            {
+                _audioOnly = true;
+                if (_controller.DisallowConversions)
+                {
+                    _fileTypeRow.SetModel(Gtk.StringList.New(new string[] { _("Audio") }));
+                    _fileTypeRow.SetSelected(0);
+                }
+                else
+                {
+                    _fileTypeRow.SetModel(Gtk.StringList.New(new string[] {"MP3", "OPUS", "FLAC", "WAV"}));
+                    _fileTypeRow.SetSelected((uint)Math.Max((int)_controller.PreviousMediaFileType - 2, 0));
+                }
+            }
+            else
+            {
+                foreach (var resolution in _mediaUrlInfo.VideoResolutions)
+                {
+                    _videoQualityList.Add(resolution.ToString());
+                }
+                if(_controller.DisallowConversions)
+                {
+                    _fileTypeRow.SetModel(Gtk.StringList.New(new string[] { _("Video"), _("Audio") }));
+                    _fileTypeRow.SetSelected(0);
+                }
+                else
+                {
+                    _fileTypeRow.SetSelected((uint)_controller.PreviousMediaFileType);
+                }
+            }
+            SetQualityRowModel(); // in case _fileTypeRow.SetSelected didn't invoke OnNotify
+            _urlRow.RemoveCssClass("error");
+            _urlRow.SetTitle(_("Media URL"));
+            _downloadPage.SetVisible(true);
+            _viewStack.SetVisibleChildName("pageDownload");
+            SetDefaultWidget(_addDownloadButton);
+            _addDownloadButton.SetSensitive(!string.IsNullOrEmpty(_saveFolderRow.GetText()));
+            _numberTitlesRow.SetVisible(_mediaUrlInfo.MediaList.Count > 1 ? true : false);
+            if (_mediaUrlInfo.MediaList.Count > 1)
+            {
+                foreach (var mediaInfo in _mediaUrlInfo.MediaList)
+                {
+                    var row = new MediaRow(mediaInfo);
+                    _mediaRows.Add(row);
+                    row.OnSelectionChanged += PlaylistChanged;
+                    _playlistGroup.Add(row);
+                }
+                _openPlaylistGroup.SetVisible(true);
+                _openPlaylistRow.SetTitle(_n("{0} of {1} items", "{0} of {1} items", _mediaUrlInfo.MediaList.Count, _mediaUrlInfo.MediaList.Count, _mediaUrlInfo.MediaList.Count));
+                _qualityRow.SetTitle(_("Maximum Quality"));
+                if(_controller.NumberTitles)
+                {
+                    _numberTitlesSwitch.SetActive(true);
+                }
+            }
+            else
+            {
+                _singleMediaDuration = _mediaUrlInfo.MediaList[0].Duration;
+                var row = new MediaRow(_mediaUrlInfo.MediaList[0]);
+                _mediaRows.Add(row);
+                _mediaGroup.SetVisible(true);
+                _mediaGroup.Add(row);
+            }
+        }
+        ValidateOptions();
+        return false;
+    }
+
+    /// <summary>
     /// Validate download options
     /// </summary>
     private void ValidateOptions()
@@ -469,17 +483,7 @@ public partial class AddDownloadDialog : Adw.Window
     /// </summary>
     private void SetQualityRowModel()
     {
-        var isVideo = false;
-        if (_controller.DisallowConversions)
-        {
-            isVideo = !_audioOnly && _fileTypeRow.GetSelected() == 0;
-        }
-        else
-        {
-            var index = _fileTypeRow.GetSelected() + (_audioOnly ? 2 : 0);
-            isVideo = ((MediaFileType)index).GetIsVideo();
-        }
-        if (isVideo && !_audioOnly)
+        if (SelectedMediaFileType.GetIsVideo())
         {
             _qualityRow.SetModel(Gtk.StringList.New(_videoQualityList.ToArray()));
             if(_controller.PreviousVideoResolution != null)
@@ -553,22 +557,32 @@ public partial class AddDownloadDialog : Adw.Window
     }
 
     /// <summary>
-    /// Occurs when the escape key is pressed on the window
+    /// Occurs when the add download button is clicked
     /// </summary>
-    /// <param name="sender">Gtk.Widget</param>
-    /// <param name="e">GLib.Variant</param>
-    private bool OnEscapeKey(Gtk.Widget sender, GLib.Variant e)
+    /// <param name="sender">Gtk.Button</param>
+    /// <param name="e">EventArgs</param>
+    private async void AddDownload(Gtk.Button sender, EventArgs e)
     {
-        if (_viewStack.GetVisibleChildName() == "pagePlaylist")
+        Quality quality;
+        VideoResolution? resolution;
+        if (SelectedMediaFileType.GetIsAudio())
         {
-            _viewStack.SetVisibleChildName("pageDownload");
-            SetDefaultWidget(_addDownloadButton);
-            _playlistPage.SetVisible(false);
+            quality = (Quality)_qualityRow.GetSelected();
+            resolution = null;
         }
         else
         {
-            Close();
+            quality = Quality.Resolution;
+            resolution = _mediaUrlInfo.VideoResolutions[(int)_qualityRow.GetSelected()];
         }
-        return true;
+        if(_keyringRow.GetSelected() == 0 || _keyringRow.GetSelected() == GTK_INVALID_LIST_POSITION || !_authRow.GetEnableExpansion())
+        {
+            _controller.PopulateDownloads(_mediaUrlInfo!, SelectedMediaFileType, quality, resolution, (Subtitle)_subtitleRow.GetSelected(), _saveFolderString, _speedLimitSwitch.GetActive(), _cropThumbnailSwitch.GetActive(), _usernameRow.GetText(), _passwordRow.GetText());
+        }
+        else
+        {
+            await _controller.PopulateDownloadsAsync(_mediaUrlInfo!, SelectedMediaFileType, quality, resolution, (Subtitle)_subtitleRow.GetSelected(), _saveFolderString, _speedLimitSwitch.GetActive(), _cropThumbnailSwitch.GetActive(), ((int)_keyringRow.GetSelected()) - 1);
+        }
+        OnDownload?.Invoke(this, EventArgs.Empty);
     }
 }

@@ -55,7 +55,8 @@ public partial class PreferencesDialog : Adw.PreferencesWindow
     [Gtk.Connect] private readonly Gtk.Button _chromeCookiesButton;
     [Gtk.Connect] private readonly Gtk.Button _firefoxCookiesButton;
     [Gtk.Connect] private readonly Gtk.Switch _disallowConversionsSwitch;
-    [Gtk.Connect] private readonly Gtk.Switch _embedMetadataSwitch;
+    [Gtk.Connect] private readonly Adw.ExpanderRow _embedMetadataRow;
+    [Gtk.Connect] private readonly Gtk.Switch _cropAudioThumbnailSwitch;
     [Gtk.Connect] private readonly Gtk.Switch _embedChaptersSwitch;
     
     private GAsyncReadyCallback _fileDialogCallback;
@@ -101,7 +102,8 @@ public partial class PreferencesDialog : Adw.PreferencesWindow
             _cookiesFileLabel.SetText(_controller.CookiesPath);
         }
         _disallowConversionsSwitch.SetActive(_controller.DisallowConversions);
-        _embedMetadataSwitch.SetActive(_controller.EmbedMetadata);
+        _embedMetadataRow.SetEnableExpansion(_controller.EmbedMetadata);
+        _cropAudioThumbnailSwitch.SetActive(_controller.CropAudioThumbnails);
         _embedChaptersSwitch.SetActive(_controller.EmbedChapters);
     }
 
@@ -131,7 +133,8 @@ public partial class PreferencesDialog : Adw.PreferencesWindow
         _controller.AriaMaxConnectionsPerServer = (int)_ariaMaxConnectionsPerServerSpin.GetValue();
         _controller.AriaMinSplitSize = (int)_ariaMinSplitSizeSpin.GetValue();
         _controller.DisallowConversions = _disallowConversionsSwitch.GetActive();
-        _controller.EmbedMetadata = _embedMetadataSwitch.GetActive();
+        _controller.EmbedMetadata = _embedMetadataRow.GetEnableExpansion();
+        _controller.CropAudioThumbnails = _cropAudioThumbnailSwitch.GetActive();
         _controller.EmbedChapters = _embedChaptersSwitch.GetActive();
         _controller.SaveConfiguration();
         Destroy();

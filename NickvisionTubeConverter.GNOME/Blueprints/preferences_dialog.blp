@@ -43,6 +43,7 @@ Adw.PreferencesWindow _root {
       Adw.ActionRow _backgroundRow {
         title: _("Allow Running In Background");
         subtitle: _("Hide the window instead of quitting if there are downloads running.");
+        activatable-widget: _backgroundSwitch;
 
         [prefix]
         Gtk.Image {
@@ -53,8 +54,6 @@ Adw.PreferencesWindow _root {
         Gtk.Switch _backgroundSwitch {
           valign: center;
         }
-
-        activatable-widget: _backgroundSwitch;
       }
     }
 
@@ -85,6 +84,7 @@ Adw.PreferencesWindow _root {
 
       Adw.ActionRow _overwriteRow {
         title: _("Overwrite Existing Files");
+        activatable-widget: _overwriteSwitch;
 
         [prefix]
         Gtk.Image {
@@ -95,8 +95,6 @@ Adw.PreferencesWindow _root {
         Gtk.Switch _overwriteSwitch {
           valign: center;
         }
-
-        activatable-widget: _overwriteSwitch;
       }
 
       Adw.ActionRow {
@@ -302,6 +300,7 @@ Adw.PreferencesWindow _root {
       Adw.ActionRow {
         title: _("Disallow Conversions");
         subtitle: _("If enabled, Tube Converter will download the appropriate video/audio format for the selected quality without converting to other formats. (You will be unable to select a file format)");
+        activatable-widget: _disallowConversionsSwitch;
 
         [prefix]
         Gtk.Image {
@@ -312,28 +311,37 @@ Adw.PreferencesWindow _root {
         Gtk.Switch _disallowConversionsSwitch {
           valign: center;
         }
-
-        activatable-widget: _disallowConversionsSwitch;
       }
 
-      Adw.ActionRow {
+      Adw.ExpanderRow _embedMetadataRow {
         title: _("Embed Metadata");
+        show-enable-switch: true;
 
         [prefix]
         Gtk.Image {
           icon-name: "tag-outline-symbolic";
         }
 
-        [suffix]
-        Gtk.Switch _embedMetadataSwitch {
-          valign: center;
-        }
+        Adw.ActionRow {
+          title: _("Crop Audio Thumbnails");
+          subtitle: _("If enabled, Tube Converter will automatically turn on the crop thumbnail advanced option for audio downloads");
+          activatable-widget: _cropAudioThumbnailSwitch;
 
-        activatable-widget: _embedMetadataSwitch;
+          [prefix]
+          Gtk.Image {
+            icon-name: "dotted-box-symbolic";
+          }
+
+          [suffix]
+          Gtk.Switch _cropAudioThumbnailSwitch {
+            valign: center;
+          }
+        }
       }
 
       Adw.ActionRow {
         title: _("Embed Chapters");
+        activatable-widget: _embedChaptersSwitch;
 
         [prefix]
         Gtk.Image {
@@ -344,8 +352,6 @@ Adw.PreferencesWindow _root {
         Gtk.Switch _embedChaptersSwitch {
           valign: center;
         }
-
-        activatable-widget: _embedChaptersSwitch;
       }
     }
   }

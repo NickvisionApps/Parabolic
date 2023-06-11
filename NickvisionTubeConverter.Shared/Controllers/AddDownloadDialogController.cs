@@ -59,6 +59,10 @@ public class AddDownloadDialogController
     /// </summary>
     public bool EmbedMetadata => Configuration.Current.EmbedMetadata;
     /// <summary>
+    /// Whether to turn on crop thumbnail for audio downloads
+    /// </summary>
+    public bool CropAudioThumbnails => Configuration.Current.CropAudioThumbnails;
+    /// <summary>
     /// Whether or not keyring auth is available
     /// </summary>
     public bool KeyringAuthAvailable => _keyring != null;

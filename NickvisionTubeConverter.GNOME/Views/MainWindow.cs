@@ -255,6 +255,7 @@ public partial class MainWindow : Adw.ApplicationWindow
                         }
                     }
                 }
+                _stopAllDownloadsButton.SetVisible(_controller.DownloadManager.RemainingDownloadsCount > 1);
                 if (!GetVisible() && _controller.DownloadManager.RemainingDownloadsCount == 0 && _controller.DownloadManager.ErrorsCount == 0)
                 {
                     _application.Quit();
