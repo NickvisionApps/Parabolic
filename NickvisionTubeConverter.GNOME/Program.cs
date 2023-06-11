@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 using System.Runtime.InteropServices;
+using static NickvisionTubeConverter.Shared.Helpers.Gettext;
 
 namespace NickvisionTubeConverter.GNOME;
 
@@ -45,10 +46,10 @@ public partial class Program
         _mainWindowController = new MainWindowController();
         _mainWindowController.AppInfo.ID = "org.nickvision.tubeconverter";
         _mainWindowController.AppInfo.Name = "Nickvision Tube Converter";
-        _mainWindowController.AppInfo.ShortName = _mainWindowController.Localizer["ShortName"];
-        _mainWindowController.AppInfo.Description = $"{_mainWindowController.Localizer["Description"]}.";
-        _mainWindowController.AppInfo.Version = "2023.6.0-next";
-        _mainWindowController.AppInfo.Changelog = "<ul><li>Added the ability to upload a cookie file to use for media downloads that require a login</li><li>Updated translations (Thanks everyone on Weblate!)</li></ul>";
+        _mainWindowController.AppInfo.ShortName = _("Tube Converter");
+        _mainWindowController.AppInfo.Description = $"{_("Download web video and audio")}.";
+        _mainWindowController.AppInfo.Version = "2023.6.1-beta2";
+        _mainWindowController.AppInfo.Changelog = "<ul><li>Added authentication options when adding a download if needed</li><li>Added a Keyring to store credentials that can be used when authenticating</li><li>Added the ability to embed chapters in a download</li><li>Added the ability to turn on automatically cropping audio thumbnails</li><li>Playlist validation is a lot faster now</li><li>The \"Number Titles\" switch's state will now be remembered and used again for future downloads</li><li>The previous \"Video Resolution\" will be remembered and pre-selected if available for future downloads</li><li>Comment, Description, and Synopsis fields will no longer be embedded in metadata</li><li>If a download fails and was not stopped, Tube Converter will automatically retry it one more time</li><li>Fixed an issue where some websites were not validated</li><li>Fixed an issue where the incorrect file extension was sometimes shown for generic downloads</li><li>Updated translations (Thanks everyone on Weblate!)</li></ul>";
         _mainWindowController.AppInfo.GitHubRepo = new Uri("https://github.com/NickvisionApps/TubeConverter");
         _mainWindowController.AppInfo.IssueTracker = new Uri("https://github.com/NickvisionApps/TubeConverter/issues/new");
         _mainWindowController.AppInfo.SupportUrl = new Uri("https://github.com/NickvisionApps/TubeConverter/discussions");
@@ -102,7 +103,7 @@ public partial class Program
     /// </summary>
     /// <param name="sender">Gio.Application</param>
     /// <param name="e">EventArgs</param>
-    private void OnActivate(Gio.Application sender, EventArgs e)
+    private async void OnActivate(Gio.Application sender, EventArgs e)
     {
         //Set Adw Theme
         _application.StyleManager!.ColorScheme = _mainWindowController.Theme switch
@@ -121,7 +122,7 @@ public partial class Program
         else
         {
             _mainWindow = new MainWindow(_mainWindowController, _application);
-            _mainWindow.Start();
+            await _mainWindow.StartAsync();
         }
     }
 }

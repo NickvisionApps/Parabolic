@@ -1,8 +1,8 @@
 ﻿using NickvisionTubeConverter.GNOME.Helpers;
-using NickvisionTubeConverter.Shared.Helpers;
 using NickvisionTubeConverter.Shared.Models;
 using System;
 using System.Text.RegularExpressions;
+using static NickvisionTubeConverter.Shared.Helpers.Gettext;
 
 namespace NickvisionTubeConverter.GNOME.Controls;
 
@@ -17,14 +17,14 @@ public class MediaRow : Adw.EntryRow
 
     public event EventHandler<EventArgs> OnSelectionChanged;
 
-    private MediaRow(Gtk.Builder builder, MediaInfo mediaInfo, Localizer localizer) : base(builder.GetPointer("_root"), false)
+    private MediaRow(Gtk.Builder builder, MediaInfo mediaInfo) : base(builder.GetPointer("_root"), false)
     {
         _mediaInfo = mediaInfo;
         _numberString = "";
         //Build UI
         builder.Connect(this);
         SetText(_mediaInfo.Title);
-        SetTitle(_mediaInfo.IsPartOfPlaylist ? _mediaInfo.Url : localizer["Filename", "Field"]);
+        SetTitle(_mediaInfo.IsPartOfPlaylist ? _mediaInfo.Url : _("File Name"));
         _downloadCheck.GetParent().SetVisible(_mediaInfo.IsPartOfPlaylist);
         _downloadCheck.SetActive(_mediaInfo.ToDownload);
         _downloadCheck.OnNotify += (sender, e) =>
@@ -52,7 +52,7 @@ public class MediaRow : Adw.EntryRow
         };
     }
 
-    public MediaRow(MediaInfo mediaInfo, Localizer localizer) : this(Builder.FromFile("media_row.ui", localizer), mediaInfo, localizer)
+    public MediaRow(MediaInfo mediaInfo) : this(Builder.FromFile("media_row.ui"), mediaInfo)
     {
 
     }

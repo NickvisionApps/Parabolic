@@ -7,6 +7,9 @@ Adw.Bin _root {
 
     Gtk.Box {
       orientation: horizontal;
+      margin-start: 6;
+      margin-top: 6;
+      margin-end: 6;
       spacing: 6;
 
       Gtk.Image _statusIcon {
@@ -33,7 +36,7 @@ Adw.Bin _root {
         }
 
         Gtk.Label  _progressLabel {
-          label: _("DownloadState.Waiting");
+          label: _("Waiting...");
           halign: start;
           ellipsize: end;
           lines: 1;
@@ -44,8 +47,8 @@ Adw.Bin _root {
 
       Gtk.ToggleButton _viewLogToggleBtn {
         valign: center;
-        icon-name: "tubeconverter-logs-symbolic";
-        tooltip-text: _("ViewLog");
+        icon-name: "utilities-terminal-symbolic";
+        tooltip-text: _("View Log");
 
         styles ["circular"]
       }
@@ -60,7 +63,7 @@ Adw.Bin _root {
           child: Gtk.Button _stopButton {
             valign: center;
             icon-name: "media-playback-stop-symbolic";
-            tooltip-text: _("StopDownload");
+            tooltip-text: _("Stop Download");
 
             styles ["circular"]
           };
@@ -75,7 +78,7 @@ Adw.Bin _root {
             Gtk.Button  _openFileButton {
               valign: center;
               icon-name: "media-playback-start-symbolic";
-              tooltip-text: _("OpenFile");
+              tooltip-text: _("Open File");
 
               styles ["circular"]
             }
@@ -83,7 +86,7 @@ Adw.Bin _root {
             Gtk.Button  _openFolderButton {
               valign: center;
               icon-name: "folder-symbolic";
-              tooltip-text: _("OpenSaveFolder");
+              tooltip-text: _("Open Folder");
 
               styles ["circular"]
             }
@@ -95,7 +98,7 @@ Adw.Bin _root {
           child: Gtk.Button _retryButton {
             valign: center;
             icon-name: "view-refresh-symbolic";
-            tooltip-text: _("RetryDownload");
+            tooltip-text: _("Retry Download");
               
             styles ["circular"]
           };
@@ -104,14 +107,15 @@ Adw.Bin _root {
     }
 
     Adw.ViewStack _stateViewStack {
-      margin-start: 10;
-      margin-end: 10;
-      margin-bottom: 8;
+      margin-start: 16;
+      margin-end: 16;
+      margin-bottom: 12;
 
       Adw.ViewStackPage {
         name: "downloading";
         child: Gtk.ProgressBar _progressBar {
           hexpand: true;
+          margin-top: 6;
         };
       }
 
@@ -119,6 +123,7 @@ Adw.Bin _root {
         name: "processing";
         child: Gtk.ProgressBar _pulsingBar {
           hexpand: true;
+          margin-top: 6;
         };
       }
 
@@ -126,6 +131,7 @@ Adw.Bin _root {
         name: "done";
         child: Gtk.LevelBar _levelBar {
           hexpand: true;
+          margin-top: 6;
         };
       }
     }
@@ -136,12 +142,12 @@ Adw.Bin _root {
       [overlay]
       Gtk.Button _btnLogToClipboard {
         icon-name: "edit-copy-symbolic";
-        tooltip-text: _("CopyToClipboard");
+        tooltip-text: _("Copy to Clipboard");
         vexpand: true;
         halign: end;
         valign: end;
-        margin-bottom: 8;
-        margin-end: 14;
+        margin-bottom: 7;
+        margin-end: 15;
 
         styles ["opaque"]
       }
@@ -149,10 +155,10 @@ Adw.Bin _root {
       Gtk.ScrolledWindow _scrollLog {
         height-request: 100;
         child: Gtk.Label _lblLog {
-          margin-start: 6;
-          margin-top: 4;
-          margin-end: 4;
-          margin-bottom: 6;
+          margin-start: 12;
+          margin-top: 6;
+          margin-end: 6;
+          margin-bottom: 12;
           halign: start;
           valign: start;
           wrap: true;

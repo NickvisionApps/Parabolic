@@ -1,52 +1,39 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-	<PropertyGroup>
-		<TargetFramework>net7.0</TargetFramework>
-		<Nullable>enable</Nullable>
-	</PropertyGroup>
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
 
-	<ItemGroup>
-		<None Remove="Resources\aria2_keeper.py" />
-		<None Remove="Resources\org.nickvision.tubeconverter-devel.svg" />
-		<None Remove="Resources\org.nickvision.tubeconverter-symbolic.svg" />
-		<None Remove="Resources\org.nickvision.tubeconverter.png" />
-		<None Remove="Resources\org.nickvision.tubeconverter.svg" />
-		<None Remove="Resources\tubeconverter.py" />
-		<None Remove="Resources\yt_dlp-any.whl" />
-	</ItemGroup>
+  <ItemGroup>
+    <None Remove="Resources\aria2_keeper.py" />
+    <None Remove="Resources\org.nickvision.tubeconverter-devel.svg" />
+    <None Remove="Resources\org.nickvision.tubeconverter-symbolic.svg" />
+    <None Remove="Resources\org.nickvision.tubeconverter.png" />
+    <None Remove="Resources\org.nickvision.tubeconverter.svg" />
+    <None Remove="Resources\tubeconverter.py" />
+    <None Remove="Resources\yt_dlp-any.whl" />
+  </ItemGroup>
 
-	<ItemGroup>
-	  <EmbeddedResource Include="Resources\aria2_keeper.py" />
-	  <EmbeddedResource Include="Resources\tubeconverter.py" />
-	  <EmbeddedResource Include="Resources\yt_dlp-any.whl" />
-	</ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\aria2_keeper.py" />
+    <EmbeddedResource Include="Resources\tubeconverter.py" />
+    <EmbeddedResource Include="Resources\yt_dlp-any.whl" />
+  </ItemGroup>
 
-	<ItemGroup>
-	  <PackageReference Include="Microsoft.NETCore.Targets" Version="5.0.0" />
-	  <PackageReference Include="Python.Included" Version="3.11.2" />
-	  <PackageReference Include="pythonnet" Version="3.0.1" />
-	</ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="GetText.NET" Version="1.8.7" />
+    <PackageReference Include="Microsoft.NETCore.Targets" Version="5.0.0" />
+    <PackageReference Include="Python.Included" Version="3.11.2" />
+    <PackageReference Include="pythonnet" Version="3.0.1" />
+    <PackageReference Include="Nickvision.Keyring" Version="2023.6.3" />
+  </ItemGroup>
 
-	<ItemGroup>
-	  <Resource Include="Resources\org.nickvision.tubeconverter-devel.svg" />
-	  <Resource Include="Resources\org.nickvision.tubeconverter-symbolic.svg" />
-	  <Resource Include="Resources\org.nickvision.tubeconverter.png" />
-	  <Resource Include="Resources\org.nickvision.tubeconverter.svg" />
-	</ItemGroup>
-
-	<ItemGroup>
-		<Compile Update="Resources\Strings.Designer.cs">
-			<DesignTime>True</DesignTime>
-			<AutoGen>True</AutoGen>
-			<DependentUpon>Strings.resx</DependentUpon>
-		</Compile>
-	</ItemGroup>
-
-	<ItemGroup>
-		<EmbeddedResource Update="Resources\Strings.resx">
-			<Generator>ResXFileCodeGenerator</Generator>
-			<LastGenOutput>Strings.Designer.cs</LastGenOutput>
-		</EmbeddedResource>
-	</ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\org.nickvision.tubeconverter-devel.svg" />
+    <Resource Include="Resources\org.nickvision.tubeconverter-symbolic.svg" />
+    <Resource Include="Resources\org.nickvision.tubeconverter.png" />
+    <Resource Include="Resources\org.nickvision.tubeconverter.svg" />
+  </ItemGroup>
 
 </Project>

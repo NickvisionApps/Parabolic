@@ -4,6 +4,7 @@ using NickvisionTubeConverter.Shared.Models;
 using System;
 using System.IO;
 using System.Runtime.InteropServices;
+using static NickvisionTubeConverter.Shared.Helpers.Gettext;
 
 namespace NickvisionTubeConverter.GNOME.Views;
 
@@ -35,11 +36,17 @@ public partial class PreferencesDialog : Adw.PreferencesWindow
     private readonly Adw.Application _application;
 
     [Gtk.Connect] private readonly Adw.ComboRow _themeRow;
+    [Gtk.Connect] private readonly Adw.ComboRow _completedNotificationRow;
     [Gtk.Connect] private readonly Adw.ActionRow _backgroundRow;
     [Gtk.Connect] private readonly Gtk.Switch _backgroundSwitch;
     [Gtk.Connect] private readonly Gtk.SpinButton _maxNumberOfActiveDownloadsSpin;
+    [Gtk.Connect] private readonly Gtk.Switch _overwriteSwitch;
     [Gtk.Connect] private readonly Gtk.SpinButton _speedLimitSpin;
-    [Gtk.Connect] private readonly Gtk.Switch _useAriaSwitch;
+    [Gtk.Connect] private readonly Adw.ExpanderRow _useAriaRow;
+    [Gtk.Connect] private readonly Gtk.SpinButton _ariaMaxConnectionsPerServerSpin;
+    [Gtk.Connect] private readonly Gtk.Button _ariaMaxConnectionsPerServerResetButton;
+    [Gtk.Connect] private readonly Gtk.SpinButton _ariaMinSplitSizeSpin;
+    [Gtk.Connect] private readonly Gtk.Button _ariaMinSplitSizeResetButton;
     [Gtk.Connect] private readonly Adw.ViewStack _cookiesViewStack;
     [Gtk.Connect] private readonly Gtk.Button _selectCookiesFileButton;
     [Gtk.Connect] private readonly Gtk.Button _cookiesFileButton;
@@ -47,7 +54,10 @@ public partial class PreferencesDialog : Adw.PreferencesWindow
     [Gtk.Connect] private readonly Gtk.Button _unsetCookiesFileButton;
     [Gtk.Connect] private readonly Gtk.Button _chromeCookiesButton;
     [Gtk.Connect] private readonly Gtk.Button _firefoxCookiesButton;
-    [Gtk.Connect] private readonly Gtk.Switch _embedMetadataSwitch;
+    [Gtk.Connect] private readonly Gtk.Switch _disallowConversionsSwitch;
+    [Gtk.Connect] private readonly Adw.ExpanderRow _embedMetadataRow;
+    [Gtk.Connect] private readonly Gtk.Switch _cropAudioThumbnailSwitch;
+    [Gtk.Connect] private readonly Gtk.Switch _embedChaptersSwitch;
     
     private GAsyncReadyCallback _fileDialogCallback;
 
@@ -75,17 +85,26 @@ public partial class PreferencesDialog : Adw.PreferencesWindow
         OnHide += Hide;
         //Load Config
         _themeRow.SetSelected((uint)_controller.Theme);
+        _completedNotificationRow.SetSelected((uint)_controller.CompletedNotificationPreference);
         _backgroundRow.SetVisible(File.Exists("/.flatpak-info") || !String.IsNullOrEmpty(Environment.GetEnvironmentVariable("SNAP")));
         _backgroundSwitch.SetActive(_controller.RunInBackground);
         _maxNumberOfActiveDownloadsSpin.SetValue(_controller.MaxNumberOfActiveDownloads);
+        _overwriteSwitch.SetActive(_controller.OverwriteExistingFiles);
         _speedLimitSpin.SetValue(_controller.SpeedLimit);
-        _useAriaSwitch.SetActive(_controller.UseAria);
+        _useAriaRow.SetEnableExpansion(_controller.UseAria);
+        _ariaMaxConnectionsPerServerSpin.SetValue(_controller.AriaMaxConnectionsPerServer);
+        _ariaMaxConnectionsPerServerResetButton.OnClicked += (sender, e) => _ariaMaxConnectionsPerServerSpin.SetValue(16);
+        _ariaMinSplitSizeSpin.SetValue(_controller.AriaMinSplitSize);
+        _ariaMinSplitSizeResetButton.OnClicked += (sender, e) => _ariaMinSplitSizeSpin.SetValue(20);
         if (File.Exists(_controller.CookiesPath))
         {
             _cookiesViewStack.SetVisibleChildName("file-selected");
             _cookiesFileLabel.SetText(_controller.CookiesPath);
         }
-        _embedMetadataSwitch.SetActive(_controller.EmbedMetadata);
+        _disallowConversionsSwitch.SetActive(_controller.DisallowConversions);
+        _embedMetadataRow.SetEnableExpansion(_controller.EmbedMetadata);
+        _cropAudioThumbnailSwitch.SetActive(_controller.CropAudioThumbnails);
+        _embedChaptersSwitch.SetActive(_controller.EmbedChapters);
     }
 
     /// <summary>
@@ -94,7 +113,7 @@ public partial class PreferencesDialog : Adw.PreferencesWindow
     /// <param name="controller">PreferencesViewController</param>
     /// <param name="application">Adw.Application</param>
     /// <param name="parent">Gtk.Window</param>
-    public PreferencesDialog(PreferencesViewController controller, Adw.Application application, Gtk.Window parent) : this(Builder.FromFile("preferences_dialog.ui", controller.Localizer), controller, application, parent)
+    public PreferencesDialog(PreferencesViewController controller, Adw.Application application, Gtk.Window parent) : this(Builder.FromFile("preferences_dialog.ui"), controller, application, parent)
     {
     }
 
@@ -105,11 +124,18 @@ public partial class PreferencesDialog : Adw.PreferencesWindow
     /// <param name="e">EventArgs</param>
     private void Hide(Gtk.Widget sender, EventArgs e)
     {
+        _controller.CompletedNotificationPreference = (NotificationPreference)_completedNotificationRow.GetSelected();
         _controller.RunInBackground = _backgroundSwitch.GetActive();
         _controller.MaxNumberOfActiveDownloads = (int)_maxNumberOfActiveDownloadsSpin.GetValue();
+        _controller.OverwriteExistingFiles = _overwriteSwitch.GetActive();
         _controller.SpeedLimit = (uint)_speedLimitSpin.GetValue();
-        _controller.UseAria = _useAriaSwitch.GetActive();
-        _controller.EmbedMetadata = _embedMetadataSwitch.GetActive();
+        _controller.UseAria = _useAriaRow.GetEnableExpansion();
+        _controller.AriaMaxConnectionsPerServer = (int)_ariaMaxConnectionsPerServerSpin.GetValue();
+        _controller.AriaMinSplitSize = (int)_ariaMinSplitSizeSpin.GetValue();
+        _controller.DisallowConversions = _disallowConversionsSwitch.GetActive();
+        _controller.EmbedMetadata = _embedMetadataRow.GetEnableExpansion();
+        _controller.CropAudioThumbnails = _cropAudioThumbnailSwitch.GetActive();
+        _controller.EmbedChapters = _embedChaptersSwitch.GetActive();
         _controller.SaveConfiguration();
         Destroy();
     }
@@ -141,11 +167,11 @@ public partial class PreferencesDialog : Adw.PreferencesWindow
         filterTxt.AddPattern("*.txt");
         filterTxt.AddPattern("*.TXT");
         var fileDialog = gtk_file_dialog_new();
-        gtk_file_dialog_set_title(fileDialog, _controller.Localizer["SelectCookiesFile"]);
+        gtk_file_dialog_set_title(fileDialog, _("Select Cookies File"));
         var filters = Gio.ListStore.New(Gtk.FileFilter.GetGType());
         filters.Append(filterTxt);
         gtk_file_dialog_set_filters(fileDialog, filters.Handle);
-        _fileDialogCallback = async (source, res, data) =>
+        _fileDialogCallback = (source, res, data) =>
         {
             var fileHandle = gtk_file_dialog_open_finish(fileDialog, res, IntPtr.Zero);
             if (fileHandle != IntPtr.Zero)

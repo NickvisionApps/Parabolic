@@ -1,5 +1,4 @@
-﻿using NickvisionTubeConverter.Shared.Helpers;
-using NickvisionTubeConverter.Shared.Models;
+﻿using NickvisionTubeConverter.Shared.Models;
 
 namespace NickvisionTubeConverter.Shared.Controllers;
 
@@ -9,11 +8,6 @@ namespace NickvisionTubeConverter.Shared.Controllers;
 public class PreferencesViewController
 {
     /// <summary>
-    /// The localizer to get translated strings from
-    /// </summary>
-    public Localizer Localizer { get; init; }
-
-    /// <summary>
     /// Gets the AppInfo object
     /// </summary>
     public AppInfo AppInfo => AppInfo.Current;
@@ -21,9 +15,9 @@ public class PreferencesViewController
     /// <summary>
     /// Constructs a PreferencesViewController
     /// </summary>
-    internal PreferencesViewController(Localizer localizer)
+    internal PreferencesViewController()
     {
-        Localizer = localizer;
+        
     }
 
     /// <summary>
@@ -37,6 +31,16 @@ public class PreferencesViewController
     }
 
     /// <summary>
+    /// The preference of how often to show completed notifications
+    /// </summary>
+    public NotificationPreference CompletedNotificationPreference
+    {
+        get => Configuration.Current.CompletedNotificationPreference;
+
+        set => Configuration.Current.CompletedNotificationPreference = value;
+    }
+
+    /// <summary>
     /// Whether to allow running in the background
     /// </summary>
     public bool RunInBackground
@@ -47,16 +51,6 @@ public class PreferencesViewController
     }
 
     /// <summary>
-    /// Whether or not to embed metadata in a download
-    /// </summary>
-    public bool EmbedMetadata
-    {
-        get => Configuration.Current.EmbedMetadata;
-
-        set => Configuration.Current.EmbedMetadata = value;
-    }
-
-    /// <summary>
     /// The maximum number of active downloads (should be between 1-10)
     /// </summary>
     public int MaxNumberOfActiveDownloads
@@ -64,6 +58,16 @@ public class PreferencesViewController
         get => Configuration.Current.MaxNumberOfActiveDownloads;
 
         set => Configuration.Current.MaxNumberOfActiveDownloads = value;
+    }
+
+    /// <summary>
+    /// Whether or not to overwrite existing files
+    /// </summary>
+    public bool OverwriteExistingFiles
+    {
+        get => Configuration.Current.OverwriteExistingFiles;
+
+        set => Configuration.Current.OverwriteExistingFiles = value;
     }
 
     /// <summary>
@@ -87,6 +91,26 @@ public class PreferencesViewController
     }
 
     /// <summary>
+    /// The maximum number of connections to one server for each download (-x)
+    /// </summary>
+    public int AriaMaxConnectionsPerServer
+    {
+         get => Configuration.Current.AriaMaxConnectionsPerServer;
+
+         set => Configuration.Current.AriaMaxConnectionsPerServer = value;
+    }
+
+    /// <summary>
+    /// The minimum size of which to split a file (-k)
+    /// </summary>
+    public int AriaMinSplitSize
+    {
+        get => Configuration.Current.AriaMinSplitSize;
+
+        set => Configuration.Current.AriaMinSplitSize = value;
+    }
+
+    /// <summary>
     /// The path of the cookies file to use for yt-dlp
     /// </summary>
     public string CookiesPath
@@ -94,6 +118,46 @@ public class PreferencesViewController
         get => Configuration.Current.CookiesPath;
 
         set => Configuration.Current.CookiesPath = value;
+    }
+
+    /// <summary>
+    /// Whether or not to disallow converting of formats
+    /// </summary>
+    public bool DisallowConversions
+    {
+        get => Configuration.Current.DisallowConversions;
+
+        set => Configuration.Current.DisallowConversions = value;
+    }
+
+    /// <summary>
+    /// Whether or not to embed metadata in a download
+    /// </summary>
+    public bool EmbedMetadata
+    {
+        get => Configuration.Current.EmbedMetadata;
+
+        set => Configuration.Current.EmbedMetadata = value;
+    }
+
+    /// <summary>
+    /// Whether or not to turn on crop thumbnail in an audio download
+    /// </summary>
+    public bool CropAudioThumbnails
+    {
+        get => Configuration.Current.CropAudioThumbnails;
+
+        set => Configuration.Current.CropAudioThumbnails = value;
+    }
+
+    /// <summary>
+    /// Whether or not to embed chapters in a download
+    /// </summary>
+    public bool EmbedChapters
+    {
+        get => Configuration.Current.EmbedChapters;
+
+        set => Configuration.Current.EmbedChapters = value;
     }
 
     /// <summary>

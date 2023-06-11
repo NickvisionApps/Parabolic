@@ -47,18 +47,26 @@ Task("Publish")
     .Does(() =>
 {
     var selfContained = Argument("self-contained", false) || HasArgument("self-contained") || HasArgument("sc");
+    var runtime = Argument("runtime", "");
+    if (string.IsNullOrEmpty(runtime))
+    {
+        runtime = "linux-";
+        runtime += System.Runtime.InteropServices.RuntimeInformation.ProcessArchitecture.ToString().ToLower();
+    }
     var outDir = EnvironmentVariable("NICK_BUILDDIR", "_nickbuild");
     CleanDirectory(outDir);
     var prefix = Argument("prefix", "/usr");
     var libDir = string.IsNullOrEmpty(prefix) ? "lib" : $"{prefix}{sep}lib";
     var publishDir = $"{outDir}{libDir}{sep}{appId}";
     var exitCode = 0;
+    Information($"Publishing {projectName}.{projectSuffix} ({runtime})...");
     DotNetPublish($".{sep}{projectName}.{projectSuffix}{sep}{projectName}.{projectSuffix}.csproj", new DotNetPublishSettings
     {
         Configuration = "Release",
         SelfContained = selfContained,
         OutputDirectory = publishDir,
         Sources = Argument("sources", "").Split(" "),
+        Runtime = runtime,
         HandleExitCode = code => {
             exitCode = code;
             return false;
@@ -88,9 +96,37 @@ Task("Install")
 Task("FlatpakSourcesGen")
     .Does(() =>
 {
-    StartProcess("flatpak-dotnet-generator.py", new ProcessSettings{
+    StartProcess("flatpak-dotnet-generator.py", new ProcessSettings {
         Arguments = $"{projectName}.{projectSuffix}{sep}nuget-sources.json {projectName}.{projectSuffix}{sep}{projectName}.{projectSuffix}.csproj"
     });
+});
+
+Task("GeneratePot")
+    .Does(() =>
+{
+    StartProcess("GetText.Extractor", new ProcessSettings {
+        Arguments = $"-o -s ./{projectName}.GNOME -s ./{projectName}.Shared -as \"_\" -ad \"_p\" -ap \"_n\" -adp \"_pn\" -t ./{projectName}.Shared/Resources/po/{shortName}.pot"
+    });
+    StartProcess("sh", new ProcessSettings {
+        Arguments = $"-c \"xgettext --from-code=UTF-8 --add-comments --keyword=_ --keyword=C_:1c,2 -o ./{projectName}.Shared/Resources/po/{shortName}.pot -j ./{projectName}.GNOME/Blueprints/*.blp\""
+    });
+    StartProcess("xgettext", new ProcessSettings {
+        Arguments = $"-o ./{projectName}.Shared/Resources/po/{shortName}.pot -j ./{projectName}.Shared/{appId}.desktop.in"
+    });
+    StartProcess("xgettext", new ProcessSettings {
+        Arguments = $"-o ./{projectName}.Shared/Resources/po/{shortName}.pot -j ./{projectName}.Shared/{appId}.metainfo.xml.in"
+    });
+});
+
+Task("UpdatePo")
+    .Does(() =>
+{
+    foreach (var lang in FileReadLines($"./{projectName}.Shared/Resources/po/LINGUAS"))
+    {
+        StartProcess("msgmerge", new ProcessSettings {
+            Arguments = $"-U ./{projectName}.Shared/Resources/po/{lang}.po ./{projectName}.Shared/Resources/po/{shortName}.pot"
+        });
+    }
 });
 
 //////////////////////////////////////////////////////////////////////
@@ -122,13 +158,19 @@ private void FinishPublishLinux(string outDir, string prefix, string libDir, boo
     CreateDirectory(desktopDir);
     CopyFileToDirectory($"./{projectName}.Shared/{appId}.desktop.in", desktopDir);
     ReplaceTextInFiles($"{desktopDir}/{appId}.desktop.in", "@EXEC@", $"{prefix}/bin/{appId}");
-    MoveFile($"{desktopDir}/{appId}.desktop.in", $"{desktopDir}/{appId}.desktop");
+    StartProcess("msgfmt", new ProcessSettings {
+        Arguments = $"--desktop --template={desktopDir}/{appId}.desktop.in -o {desktopDir}/{appId}.desktop -d ./{projectName}.Shared/Resources/po/"
+    });
+    DeleteFile($"{desktopDir}/{appId}.desktop.in");
 
     var metainfoDir = $"{shareDir}/metainfo";
     CreateDirectory(metainfoDir);
     CopyFileToDirectory($"./{projectName}.Shared/{appId}.metainfo.xml.in", metainfoDir);
     ReplaceTextInFiles($"{metainfoDir}/{appId}.metainfo.xml.in", "@PROJECT@", $"{projectName}.{projectSuffix}");
-    MoveFile($"{metainfoDir}/{appId}.metainfo.xml.in", $"{metainfoDir}/{appId}.metainfo.xml");
+    StartProcess("msgfmt", new ProcessSettings {
+        Arguments = $"--xml --template={metainfoDir}/{appId}.metainfo.xml.in -o {metainfoDir}/{appId}.metainfo.xml -d ./{projectName}.Shared/Resources/po/"
+    });
+    DeleteFile($"{metainfoDir}/{appId}.metainfo.xml.in");
 }
 
 private void PostPublishGNOME(string outDir, string prefix, string libDir)
@@ -151,7 +193,12 @@ private void PostPublishGNOME(string outDir, string prefix, string libDir)
 // EXECUTION
 //////////////////////////////////////////////////////////////////////
 
-if (target == "Install")
+var requiresUI = target switch
+{
+    "Clean" or "Build" or "Run" or "Publish" or "FlatpakSourcesGen" => true,
+    _ => false
+};
+if (!requiresUI)
 {
     RunTarget(target);
     return;

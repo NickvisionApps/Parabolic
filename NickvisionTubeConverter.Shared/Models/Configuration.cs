@@ -1,6 +1,5 @@
 ﻿using System;
 using System.IO;
-using System.Net;
 using System.Runtime.InteropServices;
 using System.Text.Json;
 
@@ -15,25 +14,12 @@ public class Configuration
     /// The directory of the application configuration
     /// </summary>
     public static readonly string ConfigDir = $"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}{Path.DirectorySeparatorChar}Nickvision{Path.DirectorySeparatorChar}{AppInfo.Current.Name}";
+    private static readonly string ConfigPath = $"{ConfigDir}{Path.DirectorySeparatorChar}config.json";
     /// <summary>
     /// The directory to store temporary files
     /// </summary>
-    public static string TempDir
-    {
-        get
-        {
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-            {
-                return $"{Environment.GetFolderPath(Environment.SpecialFolder.UserProfile)}{Path.DirectorySeparatorChar}.tc-temp";
-            }
-            else
-            {
-                return $"{ConfigDir}{Path.DirectorySeparatorChar}temp";
-            }
-        }
-    }
+    public static string TempDir = RuntimeInformation.IsOSPlatform(OSPlatform.Windows) ? $"{Environment.GetFolderPath(Environment.SpecialFolder.UserProfile)}{Path.DirectorySeparatorChar}.tc-temp" :  $"{ConfigDir}{Path.DirectorySeparatorChar}temp";
 
-    private static readonly string ConfigPath = $"{ConfigDir}{Path.DirectorySeparatorChar}config.json";
     private static Configuration? _instance;
 
     /// <summary>
@@ -41,25 +27,21 @@ public class Configuration
     /// </summary>
     public Theme Theme { get; set; }
     /// <summary>
-    /// The previously used download save folder
+    /// The preference of how often to show completed notifications
     /// </summary>
-    public string PreviousSaveFolder { get; set; }
+    public NotificationPreference CompletedNotificationPreference { get; set; }
     /// <summary>
-    /// The previously used media file type
+    /// Whether to allow running in the background
     /// </summary>
-    public MediaFileType PreviousMediaFileType { get; set; }
-    /// <summary>
-    /// Whether or not to embed metadata in a download
-    /// </summary>
-    public bool EmbedMetadata { get; set; }
+    public bool RunInBackground { get; set; }
     /// <summary>
     /// The maximum number of active downloads (should be between 1-10)
     /// </summary>
     public int MaxNumberOfActiveDownloads { get; set; }
     /// <summary>
-    /// Whether to allow running in the background
+    /// Whether or not to overwrite existing files
     /// </summary>
-    public bool RunInBackground { get; set; }
+    public bool OverwriteExistingFiles { get; set; }
     /// <summary>
     /// Speed limit in KiB/s (should be between 512-10240)
     /// </summary>
@@ -69,9 +51,49 @@ public class Configuration
     /// </summary>
     public bool UseAria { get; set; }
     /// <summary>
+    /// The maximum number of connections to one server for each download (-x)
+    /// </summary>
+    public int AriaMaxConnectionsPerServer { get; set; }
+    /// <summary>
+    /// The minimum size of which to split a file (-k)
+    /// </summary>
+    public int AriaMinSplitSize { get; set; }
+    /// <summary>
     /// The path of the cookies file to use for yt-dlp
     /// </summary>
     public string CookiesPath { get; set; }
+    /// <summary>
+    /// Whether or not to disallow converting of formats
+    /// </summary>
+    public bool DisallowConversions { get; set; }
+    /// <summary>
+    /// Whether or not to embed metadata in a download
+    /// </summary>
+    public bool EmbedMetadata { get; set; }
+    /// <summary>
+    /// Whether or not to turn on crop thumbnail in an audio download
+    /// </summary>
+    public bool CropAudioThumbnails { get; set; }
+    /// <summary>
+    /// Whether or not to embed chapters in a download
+    /// </summary>
+    public bool EmbedChapters { get; set; }
+    /// <summary>
+    /// The previously used download save folder
+    /// </summary>
+    public string PreviousSaveFolder { get; set; }
+    /// <summary>
+    /// The previously used media file type
+    /// </summary>
+    public MediaFileType PreviousMediaFileType { get; set; }
+    /// <summary>
+    /// The previously used video resolution
+    /// </summary>
+    public string PreviousVideoResolution { get; set; }
+    /// <summary>
+    /// Whether or not to number titles
+    /// </summary>
+    public bool NumberTitles { get; set; }
 
     /// <summary>
     /// Occurs when the configuration is saved to disk
@@ -88,14 +110,23 @@ public class Configuration
             Directory.CreateDirectory(ConfigDir);
         }
         Theme = Theme.System;
-        PreviousSaveFolder = Environment.GetFolderPath(Environment.SpecialFolder.MyVideos);
-        PreviousMediaFileType = MediaFileType.MP4;
-        EmbedMetadata = true;
-        MaxNumberOfActiveDownloads = 5;
+        CompletedNotificationPreference = NotificationPreference.ForEach;
         RunInBackground = RuntimeInformation.IsOSPlatform(OSPlatform.Windows);
+        MaxNumberOfActiveDownloads = 5;
+        OverwriteExistingFiles = true;
         SpeedLimit = 1024;
         UseAria = false;
+        AriaMaxConnectionsPerServer = 16;
+        AriaMinSplitSize = 20;
         CookiesPath = "";
+        DisallowConversions = false;
+        EmbedMetadata = true;
+        CropAudioThumbnails = false;
+        EmbedChapters = false;
+        PreviousSaveFolder = Environment.GetFolderPath(Environment.SpecialFolder.MyVideos);
+        PreviousMediaFileType = MediaFileType.MP4;
+        PreviousVideoResolution = "";
+        NumberTitles = false;
     }
 
     /// <summary>

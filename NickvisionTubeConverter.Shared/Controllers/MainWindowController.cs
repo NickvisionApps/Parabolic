@@ -1,9 +1,12 @@
-﻿using NickvisionTubeConverter.Shared.Events;
+﻿using Nickvision.Keyring;
+using NickvisionTubeConverter.Shared.Events;
 using NickvisionTubeConverter.Shared.Helpers;
 using NickvisionTubeConverter.Shared.Models;
 using Python.Runtime;
 using System;
 using System.IO;
+using System.Threading.Tasks;
+using static NickvisionTubeConverter.Shared.Helpers.Gettext;
 
 namespace NickvisionTubeConverter.Shared.Controllers;
 
@@ -14,15 +17,16 @@ public class MainWindowController : IDisposable
 {
     private bool _disposed;
     private nint _pythonThreadState;
+    private Keyring? _keyring;
 
-    /// <summary>
-    /// The localizer to get translated strings from
-    /// </summary>
-    public Localizer Localizer { get; init; }
     /// <summary>
     /// The manager for downloads
     /// </summary>
     public DownloadManager DownloadManager { get; init; }
+    /// <summary>
+    /// A function for getting a password for the Keyring
+    /// </summary>
+    public Func<string, Task<string?>>? KeyringLoginAsync { get; set; }
 
     /// <summary>
     /// Gets the AppInfo object
@@ -37,21 +41,17 @@ public class MainWindowController : IDisposable
     /// </summary>
     public Theme Theme => Configuration.Current.Theme;
     /// <summary>
+    /// The preferred theme of the application
+    /// </summary>
+    public NotificationPreference CompletedNotificationPreference => Configuration.Current.CompletedNotificationPreference;
+    /// <summary>
     /// Whether to allow running in the background
     /// </summary>
     public bool RunInBackground => Configuration.Current.RunInBackground;
     /// <summary>
-    /// Whether to use aria2 for downloader
+    /// The DownloadOptions for a download
     /// </summary>
-    public bool UseAria => Configuration.Current.UseAria;
-    /// <summary>
-    /// Whether to embed metadata
-    /// </summary>
-    public bool EmbedMetadata => Configuration.Current.EmbedMetadata;
-    /// <summary>
-    /// The path to the cookies file to use for yt-dlp
-    /// </summary>
-    public string CookiesPath => Configuration.Current.CookiesPath;
+    public DownloadOptions DownloadOptions => new DownloadOptions(Configuration.Current.OverwriteExistingFiles, Configuration.Current.UseAria, Configuration.Current.CookiesPath, Configuration.Current.AriaMaxConnectionsPerServer, Configuration.Current.AriaMinSplitSize, Configuration.Current.EmbedMetadata, Configuration.Current.EmbedChapters);
 
     /// <summary>
     /// Occurs when a notification is sent
@@ -69,8 +69,7 @@ public class MainWindowController : IDisposable
     {
         _disposed = false;
         _pythonThreadState = IntPtr.Zero;
-        Localizer = new Localizer();
-        DownloadManager = new DownloadManager(5, Localizer);
+        DownloadManager = new DownloadManager(5);
     }
 
     /// <summary>
@@ -87,25 +86,6 @@ public class MainWindowController : IDisposable
         {
             var timeNowHours = DateTime.Now.Hour;
             return timeNowHours >= 6 && timeNowHours < 18;
-        }
-    }
-
-    /// <summary>
-    /// The string for greeting on the home page
-    /// </summary>
-    public string Greeting
-    {
-        get
-        {
-            var greeting = DateTime.Now.Hour switch
-            {
-                >= 0 and < 6 => "Night",
-                < 12 => "Morning",
-                < 18 => "Afternoon",
-                < 24 => "Evening",
-                _ => "Generic"
-            };
-            return Localizer["Greeting", greeting];
         }
     }
 
@@ -127,29 +107,38 @@ public class MainWindowController : IDisposable
         {
             return;
         }
-        if (disposing)
-        {
-            Localizer.Dispose();
-        }
         PythonEngine.EndAllowThreads(_pythonThreadState);
         PythonEngine.Shutdown();
         if (Directory.Exists(Configuration.TempDir))
         {
             Directory.Delete(Configuration.TempDir, true);
         }
+        _keyring?.Dispose();
         _disposed = true;
     }
+
+    /// <summary>
+    /// Creates a new KeyringDialogController
+    /// </summary>
+    /// <returns>The KeyringDialogController</returns>
+    public KeyringDialogController CreateKeyringDialogController() => new KeyringDialogController(AppInfo.Current.ID, _keyring);
 
     /// <summary>
     /// Creates a new PreferencesViewController
     /// </summary>
     /// <returns>The PreferencesViewController</returns>
-    public PreferencesViewController CreatePreferencesViewController() => new PreferencesViewController(Localizer);
+    public PreferencesViewController CreatePreferencesViewController() => new PreferencesViewController();
+
+    /// <summary>
+    /// Creates a new AddDownloadDialogController
+    /// </summary>
+    /// <returns>The new AddDownloadDialogController</returns>
+    public AddDownloadDialogController CreateAddDownloadDialogController() => new AddDownloadDialogController(_keyring);
 
     /// <summary>
     /// Starts the application
     /// </summary>
-    public void Startup()
+    public async Task StartupAsync()
     {
         Configuration.Current.Saved += ConfigurationSaved;
         DownloadManager.MaxNumberOfActiveDownloads = Configuration.Current.MaxNumberOfActiveDownloads;
@@ -163,7 +152,7 @@ public class MainWindowController : IDisposable
             var success = DependencyManager.SetupDependencies();
             if (!success)
             {
-                NotificationSent?.Invoke(this, new NotificationSentEventArgs(Localizer["DependencyError"], NotificationSeverity.Error));
+                NotificationSent?.Invoke(this, new NotificationSentEventArgs(_("Unable to setup dependencies. Please restart the app and try again."), NotificationSeverity.Error));
             }
             else
             {
@@ -174,15 +163,40 @@ public class MainWindowController : IDisposable
         }
         catch (Exception e)
         {
-            NotificationSent?.Invoke(this, new NotificationSentEventArgs(Localizer["DependencyError"], NotificationSeverity.Error, "error", $"{e.Message}\n\n{e.StackTrace}"));
+            NotificationSent?.Invoke(this, new NotificationSentEventArgs(_("Unable to setup dependencies. Please restart the app and try again."), NotificationSeverity.Error, "error", $"{e.Message}\n\n{e.StackTrace}"));
+        }
+        if(Keyring.Exists(AppInfo.Current.ID))
+        {
+            var attempts = 0;
+            while(_keyring == null && attempts < 3)
+            {
+                var password = await KeyringLoginAsync!(_("Unlock Keyring"));
+                _keyring = Keyring.Access(AppInfo.Current.ID, password);
+                attempts++;
+            }
+            if(_keyring == null)
+            {
+                NotificationSent?.Invoke(this, new NotificationSentEventArgs(_("Unable to unlock keyring. Restart the app to try again."), NotificationSeverity.Error));
+            }
         }
     }
 
     /// <summary>
-    /// Creates a new AddDownloadDialogController
+    /// Updates the Keyring object
     /// </summary>
-    /// <returns>The new AddDownloadDialogController</returns>
-    public AddDownloadDialogController CreateAddDownloadDialogController() => new AddDownloadDialogController(Localizer);
+    /// <param name="controller">The KeyringDialogController</param>
+    /// <exception cref="ArgumentException">Thrown if the Keyring does not belong</exception>
+    public void UpdateKeyring(KeyringDialogController controller)
+    {
+        if(controller.Keyring != null && _keyring != null)
+        {
+            if(controller.Keyring.Name != _keyring.Name)
+            {
+                throw new ArgumentException($"Keyring is not {_keyring.Name}");
+            }
+        }
+        _keyring = controller.Keyring;
+    }
 
     /// <summary>
     /// Occurs when the configuration is saved

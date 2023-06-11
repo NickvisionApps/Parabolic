@@ -4,8 +4,8 @@
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>MIT</project_license>
   <name>Tube Converter</name>
-  <developer_name>Nickvision</developer_name>
-  <summary>Get video and audio from the web</summary>
+  <developer_name translatable="no">Nickvision</developer_name>
+  <summary>Download web video and audio</summary>
   <description>
     <p>— A basic yt-dlp frontend</p>
     <p>— Supports downloading videos in multiple formats (mp4, webm, mp3, opus, flac, and wav)</p>
@@ -22,16 +22,16 @@
   <launchable type="desktop-id">org.nickvision.tubeconverter.desktop</launchable>
   <screenshots>
     <screenshot type="default">
-      <image>https://raw.githubusercontent.com/NickvisionApps/TubeConverter/master/NickvisionTubeConverter.GNOME/Screenshots/Light.png</image>
+      <image>https://raw.githubusercontent.com/NickvisionApps/TubeConverter/master/@PROJECT@/Screenshots/Light.png</image>
     </screenshot>
     <screenshot>
-      <image>https://raw.githubusercontent.com/NickvisionApps/TubeConverter/master/NickvisionTubeConverter.GNOME/Screenshots/StartScreen.png</image>
+      <image>https://raw.githubusercontent.com/NickvisionApps/TubeConverter/master/@PROJECT@/Screenshots/StartScreen.png</image>
     </screenshot>
     <screenshot>
-      <image>https://raw.githubusercontent.com/NickvisionApps/TubeConverter/master/NickvisionTubeConverter.GNOME/Screenshots/AddDownload.png</image>
+      <image>https://raw.githubusercontent.com/NickvisionApps/TubeConverter/master/@PROJECT@/Screenshots/AddDownload.png</image>
     </screenshot>
     <screenshot>
-      <image>https://raw.githubusercontent.com/NickvisionApps/TubeConverter/master/NickvisionTubeConverter.GNOME/Screenshots/Dark.png</image>
+      <image>https://raw.githubusercontent.com/NickvisionApps/TubeConverter/master/@PROJECT@/Screenshots/Dark.png</image>
     </screenshot>
   </screenshots>
   <url type="homepage">https://github.com/NickvisionApps/TubeConverter</url>
@@ -50,9 +50,19 @@
   </custom>
   
   <releases>
-    <release version="2023.6.0-next" date="2023-06-01">
-      <description>
-        <p>- Added the ability to upload a cookie file to use for media downloads that require a login</p>
+    <release version="2023.6.1-beta2" date="2023-06-05">
+      <description translatable="no">
+        <p>- Added authentication options when adding a download if needed</p>
+        <p>- Added a Keyring to store credentials that can be used when authenticating</p>
+        <p>- Added the ability to embed chapters in a download</p>
+        <p>- Added the ability to turn on automatically cropping audio thumbnails</p>
+        <p>- Playlist validation is a lot faster now</p>
+        <p>- The "Number Titles" switch's state will now be remembered and used again for future downloads</p>
+        <p>- The previous "Video Resolution" will be remembered and pre-selected if available for future downloads</p>
+        <p>- Comment, Description, and Synopsis fields will no longer be embedded in metadata</p>
+        <p>- If a download fails and was not stopped, Tube Converter will automatically retry it one more time</p>
+        <p>- Fixed an issue where some websites were not validated</p>
+        <p>- Fixed an issue where the incorrect file extension was sometimes shown for generic downloads</p>
         <p>- Updated translations (Thanks everyone on Weblate!)</p>
       </description>
     </release>
