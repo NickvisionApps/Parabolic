@@ -208,7 +208,7 @@ public partial class MainWindow : Adw.ApplicationWindow
         _downloadCompletedFunc = (x) =>
         {
             var handle = GCHandle.FromIntPtr(x);
-            var target = ((Guid Id, bool Successful, string Filename)?)handle.Target;
+            var target = ((Guid Id, bool Successful, string Filename, bool ShowNotification)?)handle.Target;
             if (target != null)
             {
                 var e = target.Value;
@@ -243,7 +243,7 @@ public partial class MainWindow : Adw.ApplicationWindow
                     _completedBox.Append(row);
                     _downloadingBox.GetParent().SetVisible(_controller.DownloadManager.RemainingDownloadsCount > 0 ? true : false);
                     _completedBox.GetParent().SetVisible(true);
-                    if ((GetFocus() != null && !GetFocus()!.GetHasFocus()) || !GetVisible())
+                    if (e.ShowNotification && (GetFocus() != null && !GetFocus()!.GetHasFocus()) || !GetVisible())
                     {
                         if(_controller.CompletedNotificationPreference == NotificationPreference.ForEach)
                         {
