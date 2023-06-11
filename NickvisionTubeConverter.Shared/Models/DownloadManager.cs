@@ -46,7 +46,7 @@ public class DownloadManager
     /// <summary>
     /// Occurs when a download is completed
     /// </summary>
-    public event EventHandler<(Guid Id, bool Successful, string Filename)>? DownloadCompleted;
+    public event EventHandler<(Guid Id, bool Successful, string Filename, bool ShowNotification)>? DownloadCompleted;
     /// <summary>
     /// Occurs when a download is stopped
     /// </summary>
@@ -312,7 +312,7 @@ public class DownloadManager
         {
             _completed.Add(download.Id, _downloading[download.Id]);
             _downloading.Remove(download.Id);
-            DownloadCompleted?.Invoke(this, (download.Id, successful, download.Filename));
+            DownloadCompleted?.Invoke(this, (download.Id, successful, download.Filename, _autoRetry[download.Id].WasRetried || successful));
             if(!successful && !_autoRetry[download.Id].WasRetried)
             {
                 var autoRetry = _autoRetry[download.Id];
