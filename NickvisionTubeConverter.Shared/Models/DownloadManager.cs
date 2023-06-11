@@ -16,6 +16,7 @@ public class DownloadManager
     private Dictionary<Guid, (Download Download, DownloadOptions Options)> _queued;
     private Dictionary<Guid, Download> _completed;
     private Dictionary<Guid, DownloadProgressState> _progressStates;
+    private Dictionary<Guid, (bool WasRetried, DownloadOptions Options)> _autoRetry;
 
     /// <summary>
     /// Whether or not any downloads are running
@@ -65,11 +66,12 @@ public class DownloadManager
     /// <param name="maxNumberOfActiveDownloads">The maximum number of active downloads</param>
     public DownloadManager(int maxNumberOfActiveDownloads)
     {
+        _maxNumberOfActiveDownloads = maxNumberOfActiveDownloads;
         _downloading = new Dictionary<Guid, Download>();
         _queued = new Dictionary<Guid, (Download Download, DownloadOptions Options)>();
         _completed = new Dictionary<Guid, Download>();
         _progressStates = new Dictionary<Guid, DownloadProgressState>();
-        _maxNumberOfActiveDownloads = maxNumberOfActiveDownloads;
+        _autoRetry = new Dictionary<Guid, (bool WasRetried, DownloadOptions options)>();
     }
 
     /// <summary>
@@ -182,6 +184,10 @@ public class DownloadManager
     {
         download.ProgressChanged += Download_ProgressChanged;
         download.Completed += Download_Completed;
+        if(!_autoRetry.ContainsKey(download.Id))
+        {
+            _autoRetry.Add(download.Id, (false, options));
+        }
         if (_downloading.Count < MaxNumberOfActiveDownloads)
         {
             _downloading.Add(download.Id, download);
@@ -307,6 +313,16 @@ public class DownloadManager
             _completed.Add(download.Id, _downloading[download.Id]);
             _downloading.Remove(download.Id);
             DownloadCompleted?.Invoke(this, (download.Id, successful, download.Filename));
+            if(!successful && !_autoRetry[download.Id].WasRetried)
+            {
+                var autoRetry = _autoRetry[download.Id];
+                if(!autoRetry.WasRetried)
+                {
+                    autoRetry.WasRetried = true;
+                    _autoRetry[download.Id] = autoRetry;
+                    RequestRetry(download.Id, autoRetry.Options);
+                }
+            }
         }
         if (_downloading.Count < MaxNumberOfActiveDownloads && _queued.Count > 0)
         {
