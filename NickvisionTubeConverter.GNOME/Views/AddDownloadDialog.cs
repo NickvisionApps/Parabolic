@@ -54,6 +54,10 @@ public partial class AddDownloadDialog : Adw.Window
     [Gtk.Connect] private readonly Adw.ToastOverlay _toastOverlay;
     [Gtk.Connect] private readonly Adw.ViewStack _viewStack;
     [Gtk.Connect] private readonly Adw.EntryRow _urlRow;
+    [Gtk.Connect] private readonly Adw.ExpanderRow _authRow;
+    [Gtk.Connect] private readonly Adw.ComboRow _keyringRow;
+    [Gtk.Connect] private readonly Adw.EntryRow _usernameRow;
+    [Gtk.Connect] private readonly Adw.PasswordEntryRow _passwordRow;
     [Gtk.Connect] private readonly Gtk.Button _validateUrlButton;
     [Gtk.Connect] private readonly Gtk.Button _addDownloadButton;
     [Gtk.Connect] private readonly Gtk.Box _downloadPage;
@@ -82,10 +86,9 @@ public partial class AddDownloadDialog : Adw.Window
     [Gtk.Connect] private readonly Gtk.Switch _speedLimitSwitch;
     [Gtk.Connect] private readonly Adw.ActionRow _cropThumbnailRow;
     [Gtk.Connect] private readonly Gtk.Switch _cropThumbnailSwitch;
-    [Gtk.Connect] private readonly Adw.ExpanderRow _authRow;
-    [Gtk.Connect] private readonly Adw.ComboRow _keyringRow;
-    [Gtk.Connect] private readonly Adw.EntryRow _usernameRow;
-    [Gtk.Connect] private readonly Adw.PasswordEntryRow _passwordRow;
+    [Gtk.Connect] private readonly Adw.ExpanderRow _downloadTimeframeRow;
+    [Gtk.Connect] private readonly Adw.EntryRow _timeframeStartRow;
+    [Gtk.Connect] private readonly Adw.EntryRow _timeframeEndRow;
     private Gtk.Spinner? _urlSpinner;
     private readonly List<MediaRow> _mediaRows;
     private readonly string[] _audioQualityArray;
@@ -196,6 +199,45 @@ public partial class AddDownloadDialog : Adw.Window
         };
         _selectSaveFolderButton.OnClicked += SelectSaveFolder;
         _cropThumbnailRow.SetVisible(_controller.EmbedMetadata);
+        _speedLimitSwitch.OnNotify += (sender, e) =>
+        {
+            if (e.Pspec.GetName() == "active")
+            {
+                if (_speedLimitSwitch.GetActive())
+                {
+                    _downloadTimeframeRow.SetExpanded(false);
+                }
+                _downloadTimeframeRow.SetSensitive(!_speedLimitSwitch.GetActive());
+            }
+        };
+        _downloadTimeframeRow.OnNotify += (sender, e) =>
+        {
+            if (e.Pspec.GetName() == "expanded")
+            {
+                if (_downloadTimeframeRow.GetExpanded())
+                {
+                    _speedLimitSwitch.SetActive(false);
+                    _timeframeStartRow.SetText(TimeSpan.FromSeconds(0).ToString(@"hh\:mm\:ss"));
+                    _timeframeEndRow.SetText(TimeSpan.FromSeconds(_singleMediaDuration).ToString(@"hh\:mm\:ss"));
+                }
+                _speedLimitRow.SetSensitive(!_downloadTimeframeRow.GetExpanded());
+                ValidateOptions();
+            }
+        };
+        _timeframeStartRow.OnNotify += (sender, e) =>
+        {
+            if (e.Pspec.GetName() == "text")
+            {
+                ValidateOptions();
+            }
+        };
+        _timeframeEndRow.OnNotify += (sender, e) =>
+        {
+            if (e.Pspec.GetName() == "text")
+            {
+                ValidateOptions();
+            }
+        };
         _openAdvancedRow.OnActivated += (sender, e) => _viewStack.SetVisibleChildName("pageAdvanced");
         _openPlaylistRow.OnActivated += (sender, e) => _viewStack.SetVisibleChildName("pagePlaylist");
         _numberTitlesSwitch.OnNotify += (sender, e) =>
@@ -436,6 +478,7 @@ public partial class AddDownloadDialog : Adw.Window
                     row.OnSelectionChanged += PlaylistChanged;
                     _playlistGroup.Add(row);
                 }
+                _downloadTimeframeRow.SetVisible(false);
                 _openPlaylistGroup.SetVisible(true);
                 _openPlaylistRow.SetTitle(_n("{0} of {1} items", "{0} of {1} items", _mediaUrlInfo.MediaList.Count, _mediaUrlInfo.MediaList.Count, _mediaUrlInfo.MediaList.Count));
                 _qualityRow.SetTitle(_("Maximum Quality"));
@@ -464,8 +507,12 @@ public partial class AddDownloadDialog : Adw.Window
     {
         _saveFolderRow.RemoveCssClass("error");
         _saveFolderRow.SetTitle(_("Save Folder"));
+        _timeframeStartRow.RemoveCssClass("error");
+        _timeframeStartRow.SetTitle(_("Start Time"));
+        _timeframeEndRow.RemoveCssClass("error");
+        _timeframeEndRow.SetTitle(_("End Time"));
         _addDownloadButton.SetSensitive(false);
-        var status = _controller.CheckDownloadOptions(_saveFolderString);
+        var status = _controller.CheckDownloadOptions(_saveFolderString, _downloadTimeframeRow.GetExpanded(), _timeframeStartRow.GetText(), _timeframeEndRow.GetText(), _singleMediaDuration);
         if (status == DownloadOptionsCheckStatus.Valid)
         {
             _addDownloadButton.SetSensitive(true);
@@ -475,6 +522,16 @@ public partial class AddDownloadDialog : Adw.Window
         {
             _saveFolderRow.SetTitle(_("Save Folder (Invalid)"));
             _saveFolderRow.AddCssClass("error");
+        }
+        if (status.HasFlag(DownloadOptionsCheckStatus.InvalidTimeframeStart))
+        {
+            _timeframeStartRow.SetTitle(_("Start Time (Invalid)"));
+            _timeframeStartRow.AddCssClass("error");
+        }
+        if (status.HasFlag(DownloadOptionsCheckStatus.InvalidTimeframeEnd))
+        {
+            _timeframeEndRow.SetTitle(_("End Time (Invalid)"));
+            _timeframeEndRow.AddCssClass("error");
         }
     }
 
