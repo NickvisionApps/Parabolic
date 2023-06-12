@@ -158,9 +158,12 @@ public class AddDownloadDialogController
     public async Task<bool> SearchUrlAsync(string mediaUrl, string? username, string? password)
     {
         _mediaUrlInfo = await MediaUrlInfo.GetAsync(mediaUrl, username, password);
-        foreach (var resolution in _mediaUrlInfo.VideoResolutions)
+        if(_mediaUrlInfo != null)
         {
-            VideoQualityList.Add(resolution.ToString());
+            foreach (var resolution in _mediaUrlInfo.VideoResolutions)
+            {
+                VideoQualityList.Add(resolution.ToString());
+            }
         }
         return _mediaUrlInfo != null;
     }
