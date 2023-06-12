@@ -207,10 +207,31 @@
             ]
         },
         {
+            "name": "setuptools",
+            "buildsystem": "simple",
+            "build-commands": [
+                "pip3 install --prefix=/app ."
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://files.pythonhosted.org/packages/03/20/630783571e76e5fa5f3e9f29398ca3ace377207b8196b54e0ffdf09f12c1/setuptools-67.8.0.tar.gz",
+                    "sha256": "62642358adc77ffa87233bc4d2354c4b2682d214048f500964dbe760ccedf102"
+                }
+            ]
+        },
+        {
             "name": "psutil",
             "buildsystem": "simple",
             "build-commands": [
-                "pip3 install --prefix=/app 'psutil>=5.9.5'"
+                "pip3 install --prefix=/app ."
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://files.pythonhosted.org/packages/d6/0f/96b7309212a926c1448366e9ce69b081ea79d63265bde33f11cc9cfc2c07/psutil-5.9.5.tar.gz",
+                    "sha256": "5410638e4df39c54d957fc51ce03048acd8e6d60abc0f5107af51e5fb566eb3c"
+                }
             ]
         },
         {
