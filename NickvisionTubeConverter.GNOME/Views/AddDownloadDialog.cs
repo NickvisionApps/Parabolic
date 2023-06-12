@@ -42,12 +42,12 @@ public partial class AddDownloadDialog : Adw.Window
 
     private readonly Gtk.Window _parent;
     private readonly AddDownloadDialogController _controller;
+    private readonly List<MediaRow> _mediaRows;
     private string _saveFolderString;
     private GAsyncReadyCallback? _saveCallback;
     private GSourceFunc _startSearchCallback;
     private GSourceFunc _finishSearchCallback;
     private GAsyncReadyCallback _clipboardCallback;
-    private readonly Gtk.ShortcutController _shortcutController;
 
     [Gtk.Connect] private readonly Gtk.Label _titleLabel;
     [Gtk.Connect] private readonly Adw.ToastOverlay _toastOverlay;
@@ -89,7 +89,7 @@ public partial class AddDownloadDialog : Adw.Window
     [Gtk.Connect] private readonly Adw.EntryRow _timeframeStartRow;
     [Gtk.Connect] private readonly Adw.EntryRow _timeframeEndRow;
     private Gtk.Spinner? _urlSpinner;
-    private readonly List<MediaRow> _mediaRows;
+    private readonly Gtk.ShortcutController _shortcutController;
 
     public event EventHandler? OnDownload;
 
@@ -496,7 +496,7 @@ public partial class AddDownloadDialog : Adw.Window
         _timeframeEndRow.RemoveCssClass("error");
         _timeframeEndRow.SetTitle(_("End Time"));
         _addDownloadButton.SetSensitive(false);
-        var status = _controller.CheckDownloadOptions(_saveFolderString, _downloadTimeframeRow.GetExpanded(), _timeframeStartRow.GetText(), _timeframeEndRow.GetText(), _controller.MediaList[0].Duration);
+        var status = _controller.ValidateDownloadOptions(_saveFolderString, _downloadTimeframeRow.GetExpanded(), _timeframeStartRow.GetText(), _timeframeEndRow.GetText(), _controller.MediaList[0].Duration);
         if (status == DownloadOptionsCheckStatus.Valid)
         {
             _addDownloadButton.SetSensitive(true);
@@ -616,13 +616,22 @@ public partial class AddDownloadDialog : Adw.Window
             quality = Quality.Resolution;
             resolutionIndex = (int)_qualityRow.GetSelected();
         }
+        Timeframe? timeframe = null;
+        if(_downloadTimeframeRow.GetExpanded())
+        {
+            try
+            {
+                timeframe = Timeframe.Parse(_timeframeStartRow.GetText(), _timeframeEndRow.GetText(), _controller.MediaList[0].Duration);
+            }
+            catch { }
+        }
         if(_keyringRow.GetSelected() == 0 || _keyringRow.GetSelected() == GTK_INVALID_LIST_POSITION || !_authRow.GetEnableExpansion())
         {
-            _controller.PopulateDownloads(SelectedMediaFileType, quality, resolutionIndex, (Subtitle)_subtitleRow.GetSelected(), _saveFolderString, _speedLimitSwitch.GetActive(), _cropThumbnailSwitch.GetActive(), _usernameRow.GetText(), _passwordRow.GetText());
+            _controller.PopulateDownloads(SelectedMediaFileType, quality, resolutionIndex, (Subtitle)_subtitleRow.GetSelected(), _saveFolderString, _speedLimitSwitch.GetActive(), _cropThumbnailSwitch.GetActive(), timeframe, _usernameRow.GetText(), _passwordRow.GetText());
         }
         else
         {
-            await _controller.PopulateDownloadsAsync(SelectedMediaFileType, quality, resolutionIndex, (Subtitle)_subtitleRow.GetSelected(), _saveFolderString, _speedLimitSwitch.GetActive(), _cropThumbnailSwitch.GetActive(), ((int)_keyringRow.GetSelected()) - 1);
+            await _controller.PopulateDownloadsAsync(SelectedMediaFileType, quality, resolutionIndex, (Subtitle)_subtitleRow.GetSelected(), _saveFolderString, _speedLimitSwitch.GetActive(), _cropThumbnailSwitch.GetActive(), timeframe, ((int)_keyringRow.GetSelected()) - 1);
         }
         OnDownload?.Invoke(this, EventArgs.Empty);
     }

@@ -2,7 +2,6 @@ using Nickvision.Keyring;
 using NickvisionTubeConverter.Shared.Models;
 using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
@@ -210,14 +209,14 @@ public class AddDownloadDialogController
     }
 
     /// <summary>
-    /// Check that download options are valid
+    /// Validates download options
     /// </summary>
     /// <param name="saveFolder">Save folder path</param>
     /// <param name="downloadTimeframe">Whether or not to download a specific timeframe</param>
     /// <param name="timeframeStart">Download timeframe start string</param>
     /// <param name="timeframeEnd">Download timeframe end string</param>
     /// <returns>DownloadOptionsCheckStatus</returns>
-    public DownloadOptionsCheckStatus CheckDownloadOptions(string saveFolder, bool downloadTimeframe, string timeframeStart, string timeframeEnd, double duration)
+    public DownloadOptionsCheckStatus ValidateDownloadOptions(string saveFolder, bool downloadTimeframe, string timeframeStart, string timeframeEnd, double duration)
     {
         DownloadOptionsCheckStatus result = 0;
         if (!Directory.Exists(saveFolder))
@@ -226,25 +225,20 @@ public class AddDownloadDialogController
         }
         if (downloadTimeframe)
         {
-            var startTimeParsed = true;
-            var startTime = TimeSpan.FromSeconds(0);
-            if (!string.IsNullOrEmpty(timeframeStart))
+            try
             {
-                startTimeParsed = TimeSpan.TryParse(timeframeStart, CultureInfo.CurrentCulture, out startTime);
+                var timeframe = Timeframe.Parse(timeframeStart, timeframeEnd, duration);
             }
-            if (!startTimeParsed || startTime < TimeSpan.FromSeconds(0))
+            catch(ArgumentException e)
             {
-                result |= DownloadOptionsCheckStatus.InvalidTimeframeStart;
-            }
-            var endTimeParsed = true;
-            var endTime = TimeSpan.FromSeconds(duration);
-            if (!string.IsNullOrEmpty(timeframeEnd))
-            {
-                endTimeParsed = TimeSpan.TryParse(timeframeEnd, CultureInfo.CurrentCulture, out endTime);
-            }
-            if (!endTimeParsed || endTime < startTime + TimeSpan.FromSeconds(1) || endTime > TimeSpan.FromSeconds(duration))
-            {
-                result |= DownloadOptionsCheckStatus.InvalidTimeframeEnd;
+                if(e.Message.Contains("start time"))
+                {
+                    result |= DownloadOptionsCheckStatus.InvalidTimeframeStart;
+                }
+                else if(e.Message.Contains("end time"))
+                {
+                    result |= DownloadOptionsCheckStatus.InvalidTimeframeEnd;
+                }
             }
         }
         return result == 0 ? DownloadOptionsCheckStatus.Valid : result;
@@ -260,16 +254,17 @@ public class AddDownloadDialogController
     /// <param name="saveFolder">The save folder of the downloads</param>
     /// <param name="limitSpeed">Whether or not to use speed limit</param>
     /// <param name="cropThumbnail">Whether or not to crop the thumbnail</param>
+    /// <param name="timeframe">A Timeframe to restrict the timespan of the media download</param>
     /// <param name="username">A username for the website (if available)</param>
     /// <param name="password">A password for the website (if available)</param>
-    public void PopulateDownloads(MediaFileType mediaFileType, Quality quality, int? resolution, Subtitle subtitles, string saveFolder, bool limitSpeed, bool cropThumbnail, string? username, string? password)
+    public void PopulateDownloads(MediaFileType mediaFileType, Quality quality, int? resolution, Subtitle subtitles, string saveFolder, bool limitSpeed, bool cropThumbnail, Timeframe? timeframe, string? username, string? password)
     {
         Downloads.Clear();
         foreach (var media in _mediaUrlInfo.MediaList)
         {
             if (media.ToDownload)
             {
-                Downloads.Add(new Download(media.Url, mediaFileType, saveFolder, media.Title, limitSpeed, Configuration.Current.SpeedLimit, quality, resolution == null ? null : _mediaUrlInfo.VideoResolutions[resolution.Value], subtitles, cropThumbnail, username, password));
+                Downloads.Add(new Download(media.Url, mediaFileType, saveFolder, media.Title, limitSpeed, Configuration.Current.SpeedLimit, quality, resolution == null ? null : _mediaUrlInfo.VideoResolutions[resolution.Value], subtitles, cropThumbnail, timeframe, username, password));
             }
         }
         Configuration.Current.PreviousSaveFolder = saveFolder;
@@ -294,18 +289,19 @@ public class AddDownloadDialogController
     /// <param name="saveFolder">The save folder of the downloads</param>
     /// <param name="limitSpeed">Whether or not to use speed limit</param>
     /// <param name="cropThumbnail">Whether or not to crop the thumbnail</param>
+    /// <param name="timeframe">A Timeframe to restrict the timespan of the media download</param>
     /// <param name="credentialIndex">The index of the credential to use</param>
-    public async Task PopulateDownloadsAsync(MediaFileType mediaFileType, Quality quality, int? resolution, Subtitle subtitles, string saveFolder, bool limitSpeed, bool cropThumbnail, int credentialIndex)
+    public async Task PopulateDownloadsAsync(MediaFileType mediaFileType, Quality quality, int? resolution, Subtitle subtitles, string saveFolder, bool limitSpeed, bool cropThumbnail, Timeframe? timeframe, int credentialIndex)
     {
         if(_keyring != null)
         {
             var credentials = await _keyring.GetAllCredentialsAsync();
             credentials.Sort((a, b) => a.Name.CompareTo(b.Name));
-            PopulateDownloads(mediaFileType, quality, resolution, subtitles, saveFolder, limitSpeed, cropThumbnail, credentials[credentialIndex].Username, credentials[credentialIndex].Password);
+            PopulateDownloads(mediaFileType, quality, resolution, subtitles, saveFolder, limitSpeed, cropThumbnail, timeframe, credentials[credentialIndex].Username, credentials[credentialIndex].Password);
         }
         else
         {
-            PopulateDownloads(mediaFileType, quality, resolution, subtitles, saveFolder, limitSpeed, cropThumbnail, "", "");
+            PopulateDownloads(mediaFileType, quality, resolution, subtitles, saveFolder, limitSpeed, cropThumbnail, timeframe, "", "");
         }
     }
 }
