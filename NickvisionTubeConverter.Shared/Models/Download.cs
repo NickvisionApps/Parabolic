@@ -207,7 +207,7 @@ public class Download
                 {
                     _ytOpt.Add("final_ext", FileType.ToString().ToLower());
                 }
-                if (options.UseAria)
+                if (options.UseAria && _timeframe == null)
                 {
                     _ariaKeeper = new Process()
                     {
@@ -417,6 +417,18 @@ public class Download
                 KillAriaKeeper();
                 using (Py.GIL())
                 {
+                    // Kill FFMPEGs
+                    dynamic psutil = Py.Import("psutil");
+                    var pythonProcessChildren = psutil.Process().children(recursive: true);
+                    foreach(PyObject child in pythonProcessChildren)
+                    {
+                        var processName = child.GetAttr(new PyString("name")).Invoke().As<string?>() ?? "";
+                        if(processName == "ffmpeg")
+                        {
+                            child.InvokeMethod("kill");
+                        }
+                    }
+                    // Kill Python
                     PythonEngine.Interrupt(_pid.Value);
                 }
             }
