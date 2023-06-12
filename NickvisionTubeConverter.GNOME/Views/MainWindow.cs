@@ -802,6 +802,7 @@ public partial class MainWindow : Adw.ApplicationWindow
                     _completedBox.GetParent().SetVisible(true);
                 }
             }
+            _stopAllDownloadsButton.SetVisible(_controller.DownloadManager.RemainingDownloadsCount > 1);
         }
         handle.Free();
         return false;
@@ -843,6 +844,7 @@ public partial class MainWindow : Adw.ApplicationWindow
                 _completedBox.Remove(row);
                 _completedBox.GetParent().SetVisible(_controller.DownloadManager.AreDownloadsCompleted);
             }
+            _stopAllDownloadsButton.SetVisible(_controller.DownloadManager.RemainingDownloadsCount > 1);
         }
         handle.Free();
         return false;
@@ -891,6 +893,7 @@ public partial class MainWindow : Adw.ApplicationWindow
                 _queuedBox.GetParent().SetVisible(_controller.DownloadManager.AreDownloadsQueued);
                 _downloadingBox.GetParent().SetVisible(true);
             }
+            _stopAllDownloadsButton.SetVisible(_controller.DownloadManager.RemainingDownloadsCount > 1);
         }
         handle.Free();
         return false;
