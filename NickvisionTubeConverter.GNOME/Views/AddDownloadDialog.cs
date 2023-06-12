@@ -527,13 +527,10 @@ public partial class AddDownloadDialog : Adw.Window
         if (SelectedMediaFileType.GetIsVideo())
         {
             _qualityRow.SetModel(Gtk.StringList.New(_controller.VideoQualityList.ToArray()));
-            if(_controller.PreviousVideoResolution != null)
+            var findPrevious = _controller.PreviousVideoResolutionIndex;
+            if(findPrevious != -1)
             {
-                var find = _controller.IndexOfResolution(_controller.PreviousVideoResolution);
-                if(find != -1)
-                {
-                    _qualityRow.SetSelected((uint)find);
-                }
+                _qualityRow.SetSelected((uint)findPrevious);
             }
             _subtitleRow.SetSensitive(true);
         }

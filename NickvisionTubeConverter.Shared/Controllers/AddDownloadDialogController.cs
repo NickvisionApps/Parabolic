@@ -62,7 +62,7 @@ public class AddDownloadDialogController
     /// <summary>
     /// Whether or not media info has video resolutions
     /// </summary>
-    public bool HasVideoResolutions => _mediaUrlInfo != null ? _mediaUrlInfo.VideoResolutions.Count > 0 : false;
+    public bool HasVideoResolutions => _mediaUrlInfo != null && _mediaUrlInfo.VideoResolutions.Count > 0;
     /// <summary>
     /// The previously used save folder
     /// </summary>
@@ -71,10 +71,6 @@ public class AddDownloadDialogController
     /// The previously used MediaFileType
     /// </summary>
     public MediaFileType PreviousMediaFileType => Configuration.Current.PreviousMediaFileType;
-    /// <summary>
-    /// The previously used VideoResolution
-    /// </summary>
-    public VideoResolution? PreviousVideoResolution => VideoResolution.Parse(Configuration.Current.PreviousVideoResolution);
     /// <summary>
     /// The speed limit in the configuration
     /// </summary>
@@ -102,6 +98,25 @@ public class AddDownloadDialogController
         Downloads = new List<Download>();
         AudioQualityArray = new string[] { _("Best"), _("Worst") };
         VideoQualityList = new List<string>();
+    }
+
+    /// <summary>
+    /// The previously used VideoResolution's index
+    /// </summary>
+    public int PreviousVideoResolutionIndex
+    {
+        get
+        {
+            var videoResolution = VideoResolution.Parse(Configuration.Current.PreviousVideoResolution);
+            if(videoResolution != null)
+            {
+                if(_mediaUrlInfo != null)
+                {
+                    return _mediaUrlInfo.VideoResolutions.IndexOf(videoResolution);
+                }
+            }
+            return -1;
+        }
     }
 
     /// <summary>
@@ -195,20 +210,6 @@ public class AddDownloadDialogController
     }
 
     /// <summary>
-    /// Gets the index of a resolution in the VideoResolutions list
-    /// <summary>
-    /// <param name="resolution">The resoltuion to find</param>
-    /// <returns>The index of the resolution. -1 if not found</returns>
-    public int IndexOfResolution(VideoResolution resolution)
-    {
-        if(_mediaUrlInfo == null)
-        {
-            return -1;
-        }
-        return _mediaUrlInfo.VideoResolutions.IndexOf(resolution);
-    }
-
-    /// <summary>
     /// Validates download options
     /// </summary>
     /// <param name="saveFolder">Save folder path</param>
@@ -274,7 +275,7 @@ public class AddDownloadDialogController
         }
         if(resolution != null)
         {
-            Configuration.Current.PreviousVideoResolution = resolution.ToString();
+            Configuration.Current.PreviousVideoResolution = _mediaUrlInfo.VideoResolutions[resolution.Value].ToString();
         }
         Configuration.Current.Save();
     }
