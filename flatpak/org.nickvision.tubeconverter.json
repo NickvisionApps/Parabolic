@@ -187,7 +187,7 @@
             ]
         },
         {
-            "name": "yt-dlp",
+            "name": "flit-core",
             "buildsystem": "simple",
             "build-commands": [
                 "pip3 install --prefix=/app ."
@@ -195,14 +195,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://github.com/yt-dlp/yt-dlp/releases/download/2023.03.04/yt-dlp.tar.gz",
-                    "sha256": "771d2abefcd5f1e6f3ab6d6d18cdae98be4ab73538d1174e7e7236640418e150",
-                    "x-checker-data": {
-                        "type": "json",
-                        "url": "https://api.github.com/repos/yt-dlp/yt-dlp/tags",
-                        "version-query": "[.[].name] | sort[-1]",
-                        "url-query": "\"https://github.com/yt-dlp/yt-dlp/releases/download/\" + $version + \"/yt-dlp.tar.gz\""
-                    }
+                    "url": "https://files.pythonhosted.org/packages/c4/e6/c1ac50fe3eebb38a155155711e6e864e254ce4b6e17fe2429b4c4d5b9e80/flit_core-3.9.0.tar.gz",
+                    "sha256": "72ad266176c4a3fcfab5f2930d76896059851240570ce9a98733b658cb786eba"
                 }
             ]
         },
@@ -245,6 +239,26 @@
                     "type": "archive",
                     "url": "https://files.pythonhosted.org/packages/d6/0f/96b7309212a926c1448366e9ce69b081ea79d63265bde33f11cc9cfc2c07/psutil-5.9.5.tar.gz",
                     "sha256": "5410638e4df39c54d957fc51ce03048acd8e6d60abc0f5107af51e5fb566eb3c"
+                }
+            ]
+        },
+        {
+            "name": "yt-dlp",
+            "buildsystem": "simple",
+            "build-commands": [
+                "pip3 install --prefix=/app ."
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://github.com/yt-dlp/yt-dlp/releases/download/2023.03.04/yt-dlp.tar.gz",
+                    "sha256": "771d2abefcd5f1e6f3ab6d6d18cdae98be4ab73538d1174e7e7236640418e150",
+                    "x-checker-data": {
+                        "type": "json",
+                        "url": "https://api.github.com/repos/yt-dlp/yt-dlp/tags",
+                        "version-query": "[.[].name] | sort[-1]",
+                        "url-query": "\"https://github.com/yt-dlp/yt-dlp/releases/download/\" + $version + \"/yt-dlp.tar.gz\""
+                    }
                 }
             ]
         },
