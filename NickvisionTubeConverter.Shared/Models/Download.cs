@@ -342,7 +342,7 @@ public class Download
                         }
                         if(_timeframe != null)
                         {
-                            _ytOpt.Add("download_ranges", ytdlp.utils.download_range_func(null, new List<double>() { _timeframe.Start.TotalSeconds, _timeframe.End.TotalSeconds }));
+                            _ytOpt.Add("download_ranges", ytdlp.utils.download_range_func(null, new List<List<double>>() { new List<double>() { _timeframe.Start.TotalSeconds, _timeframe.End.TotalSeconds } }));
                         }
                         PyObject success_code = ytdlp.YoutubeDL(_ytOpt).download(new List<string>() { MediaUrl });
                         KillAriaKeeper();
