@@ -261,7 +261,7 @@ public class Download
                         }
                         _ytOpt.Add("writesubtitles", true);
                         _ytOpt.Add("writeautomaticsub", true);
-                        _ytOpt.Add("subtitleslangs", subtitleLangs.Split(",").ToList());
+                        _ytOpt.Add("subtitleslangs", subtitleLangs.Split(",").Select(x => x.Trim()).ToList());
                         postProcessors.Add(new Dictionary<string, dynamic>() { { "key", "FFmpegSubtitlesConvertor" }, { "format", Subtitle.ToString().ToLower() } });
                         postProcessors.Add(new Dictionary<string, dynamic>() { { "key", "FFmpegEmbedSubtitle" } });
                     }

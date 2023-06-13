@@ -202,7 +202,7 @@ public class PreferencesViewController
         {
             s = s.Remove(s.Length - 1);
         }
-        var codes = s.Split(",");
+        var codes = s.Split(",").Select(x => x.Trim());
         foreach(var code in codes)
         {
             if(!_supportedLangCodes.Contains(code))
