@@ -2,7 +2,6 @@
 using Python.Runtime;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.Linq;
@@ -48,7 +47,6 @@ public class Download
     private ulong? _pid;
     private Dictionary<string, dynamic>? _ytOpt;
     private dynamic? _outFile;
-    private Process? _ariaKeeper;
 
     /// <summary>
     /// The id of the download
@@ -148,7 +146,6 @@ public class Download
         _username = username;
         _password = password;
         _pid = null;
-        _ariaKeeper = null;
         if(_timeframe != null && _limitSpeed)
         {
             throw new ArgumentException("A timeframe can only be specified if limit speed is disabled");
@@ -209,24 +206,12 @@ public class Download
                 }
                 if (options.UseAria && _timeframe == null)
                 {
-                    _ariaKeeper = new Process()
-                    {
-                        StartInfo = new ProcessStartInfo()
-                        {
-                            FileName = DependencyManager.PythonPath,
-                            Arguments = $"\"{Configuration.ConfigDir}{Path.DirectorySeparatorChar}aria2_keeper.py\"",
-                            UseShellExecute = false,
-                            CreateNoWindow = true
-                        }
-                    };
-                    _ariaKeeper.Start();
                     _ytOpt.Add("external_downloader", new Dictionary<string, dynamic>() { { "default", DependencyManager.Aria2Path } });
                     dynamic ariaDict = new PyDict();
                     dynamic ariaParams = new PyList();
                     ariaParams.Append(new PyString($"--max-overall-download-limit={(_limitSpeed ? _speedLimit : 0)}K"));
                     ariaParams.Append(new PyString("--allow-overwrite=true"));
                     ariaParams.Append(new PyString("--show-console-readout=false"));
-                    ariaParams.Append(new PyString($"--stop-with-process={_ariaKeeper.Id}"));
                     ariaParams.Append(new PyString($"--max-connection-per-server={options.AriaMaxConnectionsPerServer}"));
                     ariaParams.Append(new PyString($"--min-split-size={options.AriaMinSplitSize}M"));
                     ariaDict["default"] = ariaParams;
@@ -343,9 +328,15 @@ public class Download
                         if(_timeframe != null)
                         {
                             _ytOpt.Add("download_ranges", ytdlp.utils.download_range_func(null, new List<List<double>>() { new List<double>() { _timeframe.Start.TotalSeconds, _timeframe.End.TotalSeconds } }));
+                            ProgressChanged?.Invoke(this, new DownloadProgressState()
+                            {
+                                Status = DownloadProgressStatus.DownloadingFfmpeg,
+                                Progress = 0.0,
+                                Speed = 0.0,
+                                Log = _("Download using ffmpeg has started")
+                            });
                         }
                         PyObject success_code = ytdlp.YoutubeDL(_ytOpt).download(new List<string>() { MediaUrl });
-                        KillAriaKeeper();
                         ForceUpdateLog();
                         IsDone = true;
                         IsRunning = false;
@@ -388,7 +379,6 @@ public class Download
                 }
                 catch (Exception e)
                 {
-                    KillAriaKeeper();
                     try
                     {
                         Console.WriteLine(e);
@@ -414,16 +404,15 @@ public class Download
         {
             if (_pid != null)
             {
-                KillAriaKeeper();
                 using (Py.GIL())
                 {
-                    // Kill FFMPEGs
+                    // Kill ffmpeg and aria
                     dynamic psutil = Py.Import("psutil");
                     var pythonProcessChildren = psutil.Process().children(recursive: true);
                     foreach(PyObject child in pythonProcessChildren)
                     {
                         var processName = child.GetAttr(new PyString("name")).Invoke().As<string?>() ?? "";
-                        if(processName == "ffmpeg")
+                        if(processName == "ffmpeg" || processName == "aria2c")
                         {
                             child.InvokeMethod("kill");
                         }
@@ -436,21 +425,6 @@ public class Download
             IsRunning = false;
             IsSuccess = false;
             WasStopped = true;
-        }
-    }
-
-    /// <summary>
-    /// Kills the aria keeper (if used)
-    /// </summary>
-    private void KillAriaKeeper()
-    {
-        if (_ariaKeeper != null)
-        {
-            try
-            {
-                _ariaKeeper.Kill();
-            }
-            catch { }
         }
     }
 

@@ -165,6 +165,7 @@ You may also build the app manually without using flatpak. List of dependencies:
 - GTK >=4.10
 - libadwaita >=1.2
 - python3 >=3.7
+- python3-psutil
 - yt-dlp (as python module, standalone binary won't work)
 - ffmpeg
 - aria2 (optional)
