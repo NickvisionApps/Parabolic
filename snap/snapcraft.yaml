@@ -57,7 +57,7 @@ parts:
       wget https://dot.net/v1/dotnet-install.sh -O dotnet-install.sh
       chmod +x ./dotnet-install.sh
       ./dotnet-install.sh --channel 7.0
-      pip install --prefix=$CRAFT_PART_INSTALL/usr yt-dlp==2023.03.04
+      pip install --prefix=$CRAFT_PART_INSTALL/usr yt-dlp==2023.03.04 psutil==5.9.5
       patch -p1 < $CRAFT_PROJECT_DIR/snap/tube-converter.patch
     override-build: |
       set -eux

@@ -144,10 +144,14 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
         _statusIcon.RemoveCssClass("error");
         _statusIcon.RemoveCssClass("stopped");
         _statusIcon.SetFromIconName("folder-download-symbolic");
-        _stateViewStack.SetVisibleChildName("downloading");
+        _stateViewStack.SetVisibleChildName("processing");
         _progressLabel.SetText(_("Preparing..."));
         _actionViewStack.SetVisibleChildName("cancel");
-        _progressBar.SetFraction(0);
+        if (!_runPulsingBar)
+        {
+            _runPulsingBar = true;
+            g_timeout_add(30, _pulsingBarCallback, 0);
+        }
     }
 
     /// <summary>
@@ -162,6 +166,7 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
         switch (state.Status)
         {
             case DownloadProgressStatus.Downloading:
+                _runPulsingBar = false;
                 _stateViewStack.SetVisibleChildName("downloading");
                 _progressBar.SetFraction(state.Progress);
                 _progressLabel.SetText(_("Downloading {0:f2}% ({1})", state.Progress * 100, state.Speed.GetSpeedString()));

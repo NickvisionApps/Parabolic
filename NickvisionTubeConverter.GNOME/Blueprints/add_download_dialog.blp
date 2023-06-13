@@ -276,6 +276,23 @@ Adw.Window _root {
                         active: false;
                       }
                     }
+
+                    Adw.ExpanderRow _downloadTimeframeRow {
+                      title: _("Download Specific Timeframe");
+                      subtitle: _("Enabling this option will disable the use of aria2 as the downloader if it is enabled.");
+                      enable-expansion: false;
+                      show-enable-switch: true;
+
+                      Adw.EntryRow _timeframeStartRow {
+                        title: _("Start Time");
+                        tooltip-text: _("Leave empty to download from start.");
+                      }
+
+                      Adw.EntryRow _timeframeEndRow {
+                        title: _("End Time");
+                        tooltip-text: _("Leave empty to download to end.");
+                      }
+                    }
                   }
                 }
               };

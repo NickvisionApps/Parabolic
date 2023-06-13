@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using static NickvisionTubeConverter.Shared.Helpers.Gettext;
 
 namespace NickvisionTubeConverter.Shared.Controllers;
 
@@ -16,7 +17,9 @@ namespace NickvisionTubeConverter.Shared.Controllers;
 public enum DownloadOptionsCheckStatus
 {
     Valid = 1,
-    InvalidSaveFolder = 2
+    InvalidSaveFolder = 2,
+    InvalidTimeframeStart = 4,
+    InvalidTimeframeEnd = 8
 }
 
 /// <summary>
@@ -25,15 +28,37 @@ public enum DownloadOptionsCheckStatus
 public class AddDownloadDialogController
 {
     private Keyring? _keyring;
+    private MediaUrlInfo? _mediaUrlInfo;
+
+    /// <summary>
+    /// The downloads created by the dialog
+    /// </summary>
+    public List<Download> Downloads { get; init; }
+    /// <summary>
+    /// The list of video resolutions as strings
+    /// </summary>
+    public List<string> VideoResolutions { get; init; }
 
     /// <summary>
     /// Gets the AppInfo object
     /// </summary>
     public AppInfo AppInfo => AppInfo.Current;
     /// <summary>
-    /// The downloads created by the dialog
+    /// Whether or not keyring auth is available
     /// </summary>
-    public List<Download> Downloads { get; init; }
+    public bool KeyringAuthAvailable => _keyring != null;
+    /// <summary>
+    /// Whether or not media info is available (Check after running SearchUrlAsync)
+    /// </summary>
+    public bool HasMediaInfo => _mediaUrlInfo != null;
+    /// <summary>
+    /// The list of media available from media info
+    /// </summary>
+    public List<MediaInfo> MediaList => _mediaUrlInfo != null ? _mediaUrlInfo.MediaList : new List<MediaInfo>();
+    /// <summary>
+    /// Whether or not media info has video resolutions
+    /// </summary>
+    public bool HasVideoResolutions => _mediaUrlInfo != null && _mediaUrlInfo.VideoResolutions.Count > 0;
     /// <summary>
     /// The previously used save folder
     /// </summary>
@@ -43,9 +68,9 @@ public class AddDownloadDialogController
     /// </summary>
     public MediaFileType PreviousMediaFileType => Configuration.Current.PreviousMediaFileType;
     /// <summary>
-    /// The previously used VideoResolution
+    /// Whether or not to number titles
     /// </summary>
-    public VideoResolution? PreviousVideoResolution => VideoResolution.Parse(Configuration.Current.PreviousVideoResolution);
+    public bool NumberTitles => Configuration.Current.NumberTitles;
     /// <summary>
     /// The speed limit in the configuration
     /// </summary>
@@ -62,10 +87,6 @@ public class AddDownloadDialogController
     /// Whether to turn on crop thumbnail for audio downloads
     /// </summary>
     public bool CropAudioThumbnails => Configuration.Current.CropAudioThumbnails;
-    /// <summary>
-    /// Whether or not keyring auth is available
-    /// </summary>
-    public bool KeyringAuthAvailable => _keyring != null;
 
     /// <summary>
     /// Constructs a AddDownloadDialogController
@@ -75,19 +96,25 @@ public class AddDownloadDialogController
     {
         _keyring = keyring;
         Downloads = new List<Download>();
+        VideoResolutions = new List<string>();
     }
 
     /// <summary>
-    /// Whether or not to number titles
+    /// The previously used VideoResolution's index
     /// </summary>
-    public bool NumberTitles
+    public int PreviousVideoResolutionIndex
     {
-        get => Configuration.Current.NumberTitles;
-
-        set
+        get
         {
-            Configuration.Current.NumberTitles = value;
-            Configuration.Current.Save();
+            var videoResolution = VideoResolution.Parse(Configuration.Current.PreviousVideoResolution);
+            if(videoResolution != null)
+            {
+                if(_mediaUrlInfo != null)
+                {
+                    return _mediaUrlInfo.VideoResolutions.IndexOf(videoResolution);
+                }
+            }
+            return -1;
         }
     }
 
@@ -110,63 +137,103 @@ public class AddDownloadDialogController
     /// Searches for information about a media url
     /// </summary>
     /// <param name="mediaUrl">The media url</param>
-    /// <returns>A MediaUrlInfo object for the url or null if url is invalid</returns>
     /// <param name="username">A username for the website (if available)</param>
     /// <param name="password">A password for the website (if available)</param>
-    public async Task<MediaUrlInfo?> SearchUrlAsync(string mediaUrl, string? username, string? password) => await MediaUrlInfo.GetAsync(mediaUrl, username, password);
+    /// <returns>Whether media info was loaded or not</returns>
+    public async Task<bool> SearchUrlAsync(string mediaUrl, string? username, string? password)
+    {
+        _mediaUrlInfo = await MediaUrlInfo.GetAsync(mediaUrl, username, password);
+        if(_mediaUrlInfo != null)
+        {
+            foreach (var resolution in _mediaUrlInfo.VideoResolutions)
+            {
+                VideoResolutions.Add(resolution.ToString());
+            }
+        }
+        return _mediaUrlInfo != null;
+    }
 
     /// <summary>
     /// Searches for information about a media url
     /// </summary>
     /// <param name="mediaUrl">The media url</param>
-    /// <returns>A MediaUrlInfo object for the url or null if url is invalid</returns>
     /// <param name="credentialIndex">The index of the credential to use</param>
-    public async Task<MediaUrlInfo?> SearchUrlAsync(string mediaUrl, int credentialIndex)
+    /// <returns>Whether media info was loaded or not</returns>
+    public async Task<bool> SearchUrlAsync(string mediaUrl, int credentialIndex)
     {
         if(_keyring != null)
         {
             var credentials = await _keyring.GetAllCredentialsAsync();
             credentials.Sort((a, b) => a.Name.CompareTo(b.Name));
-            return await MediaUrlInfo.GetAsync(mediaUrl, credentials[credentialIndex].Username, credentials[credentialIndex].Password);
+            return await SearchUrlAsync(mediaUrl, credentials[credentialIndex].Username, credentials[credentialIndex].Password);
         }
-        return await MediaUrlInfo.GetAsync(mediaUrl, "", "");
+        return await SearchUrlAsync(mediaUrl, "", "");
     }
 
     /// <summary>
     /// Numbers the titles in a MediaUrlInfo object
     /// </summary>
-    /// <param name="mediaUrlInfo">The MediaUrlInfo object</param>
-    public void ToggleNumberTitles(MediaUrlInfo mediaUrlInfo, bool toggled)
+    /// <param name="toggled">Whether or not to number titles</param>
+    /// <returns>True if successful, else false</returns>
+    public bool ToggleNumberTitles(bool toggled)
     {
-        var numberedRegex = new Regex(@"[0-9]+ - ", RegexOptions.None);
-        for (var i = 0; i < mediaUrlInfo.MediaList.Count; i++)
+        if(_mediaUrlInfo != null)
         {
-            if (toggled)
+            var numberedRegex = new Regex(@"[0-9]+ - ", RegexOptions.None);
+            for (var i = 0; i < _mediaUrlInfo.MediaList.Count; i++)
             {
-                mediaUrlInfo.MediaList[i].Title = $"{i + 1} - {mediaUrlInfo.MediaList[i].Title}";
-            }
-            else
-            {
-                var match = numberedRegex.Match(mediaUrlInfo.MediaList[i].Title);
-                if (match.Success)
+                if (toggled)
                 {
-                    mediaUrlInfo.MediaList[i].Title = mediaUrlInfo.MediaList[i].Title.Remove(mediaUrlInfo.MediaList[i].Title.IndexOf(match.Value), match.Value.Length);
+                    _mediaUrlInfo.MediaList[i].Title = $"{i + 1} - {_mediaUrlInfo.MediaList[i].Title}";
+                }
+                else
+                {
+                    var match = numberedRegex.Match(_mediaUrlInfo.MediaList[i].Title);
+                    if (match.Success)
+                    {
+                        _mediaUrlInfo.MediaList[i].Title = _mediaUrlInfo.MediaList[i].Title.Remove(_mediaUrlInfo.MediaList[i].Title.IndexOf(match.Value), match.Value.Length);
+                    }
                 }
             }
+            Configuration.Current.NumberTitles = toggled;
+            Configuration.Current.Save();
+            return true;
         }
+        return false;
     }
 
     /// <summary>
-    /// Check that download options are valid
+    /// Validates download options
     /// </summary>
     /// <param name="saveFolder">Save folder path</param>
+    /// <param name="downloadTimeframe">Whether or not to download a specific timeframe</param>
+    /// <param name="timeframeStart">Download timeframe start string</param>
+    /// <param name="timeframeEnd">Download timeframe end string</param>
     /// <returns>DownloadOptionsCheckStatus</returns>
-    public DownloadOptionsCheckStatus CheckDownloadOptions(string saveFolder)
+    public DownloadOptionsCheckStatus ValidateDownloadOptions(string saveFolder, bool downloadTimeframe, string timeframeStart, string timeframeEnd, double duration)
     {
         DownloadOptionsCheckStatus result = 0;
         if (!Directory.Exists(saveFolder))
         {
             result |= DownloadOptionsCheckStatus.InvalidSaveFolder;
+        }
+        if (downloadTimeframe)
+        {
+            try
+            {
+                var timeframe = Timeframe.Parse(timeframeStart, timeframeEnd, duration);
+            }
+            catch(ArgumentException e)
+            {
+                if(e.Message.Contains("start time"))
+                {
+                    result |= DownloadOptionsCheckStatus.InvalidTimeframeStart;
+                }
+                else if(e.Message.Contains("end time"))
+                {
+                    result |= DownloadOptionsCheckStatus.InvalidTimeframeEnd;
+                }
+            }
         }
         return result == 0 ? DownloadOptionsCheckStatus.Valid : result;
     }
@@ -174,24 +241,24 @@ public class AddDownloadDialogController
     /// <summary>
     /// Populates the downloads list
     /// </summary>
-    /// <param name="mediaUrlInfo">The MediaUrlInfo object</param>
     /// <param name="mediaFileType">The media file type to download</param>
     /// <param name="quality">The quality of the downloads</param>
-    /// <param name="resolution">The video resolution if available</param>
+    /// <param name="resolution">The index of the video resolution if available</param>
     /// <param name="subtitles">The subtitle format of the downloads</param>
     /// <param name="saveFolder">The save folder of the downloads</param>
     /// <param name="limitSpeed">Whether or not to use speed limit</param>
     /// <param name="cropThumbnail">Whether or not to crop the thumbnail</param>
+    /// <param name="timeframe">A Timeframe to restrict the timespan of the media download</param>
     /// <param name="username">A username for the website (if available)</param>
     /// <param name="password">A password for the website (if available)</param>
-    public void PopulateDownloads(MediaUrlInfo mediaUrlInfo, MediaFileType mediaFileType, Quality quality, VideoResolution? resolution, Subtitle subtitles, string saveFolder, bool limitSpeed, bool cropThumbnail, string? username, string? password)
+    public void PopulateDownloads(MediaFileType mediaFileType, Quality quality, int? resolution, Subtitle subtitles, string saveFolder, bool limitSpeed, bool cropThumbnail, Timeframe? timeframe, string? username, string? password)
     {
         Downloads.Clear();
-        foreach (var media in mediaUrlInfo.MediaList)
+        foreach (var media in _mediaUrlInfo.MediaList)
         {
             if (media.ToDownload)
             {
-                Downloads.Add(new Download(media.Url, mediaFileType, saveFolder, media.Title, limitSpeed, Configuration.Current.SpeedLimit, quality, resolution, subtitles, cropThumbnail, username, password));
+                Downloads.Add(new Download(media.Url, mediaFileType, saveFolder, media.Title, limitSpeed, Configuration.Current.SpeedLimit, quality, resolution == null ? null : _mediaUrlInfo.VideoResolutions[resolution.Value], subtitles, cropThumbnail, timeframe, username, password));
             }
         }
         Configuration.Current.PreviousSaveFolder = saveFolder;
@@ -201,7 +268,7 @@ public class AddDownloadDialogController
         }
         if(resolution != null)
         {
-            Configuration.Current.PreviousVideoResolution = resolution.ToString();
+            Configuration.Current.PreviousVideoResolution = _mediaUrlInfo.VideoResolutions[resolution.Value].ToString();
         }
         Configuration.Current.Save();
     }
@@ -209,26 +276,26 @@ public class AddDownloadDialogController
     /// <summary>
     /// Populates the downloads list
     /// </summary>
-    /// <param name="mediaUrlInfo">The MediaUrlInfo object</param>
     /// <param name="mediaFileType">The media file type to download</param>
     /// <param name="quality">The quality of the downloads</param>
-    /// <param name="resolution">The video resolution if available</param>
+    /// <param name="resolution">The index of the video resolution if available</param>
     /// <param name="subtitles">The subtitle format of the downloads</param>
     /// <param name="saveFolder">The save folder of the downloads</param>
     /// <param name="limitSpeed">Whether or not to use speed limit</param>
     /// <param name="cropThumbnail">Whether or not to crop the thumbnail</param>
+    /// <param name="timeframe">A Timeframe to restrict the timespan of the media download</param>
     /// <param name="credentialIndex">The index of the credential to use</param>
-    public async Task PopulateDownloadsAsync(MediaUrlInfo mediaUrlInfo, MediaFileType mediaFileType, Quality quality, VideoResolution? resolution, Subtitle subtitles, string saveFolder, bool limitSpeed, bool cropThumbnail, int credentialIndex)
+    public async Task PopulateDownloadsAsync(MediaFileType mediaFileType, Quality quality, int? resolution, Subtitle subtitles, string saveFolder, bool limitSpeed, bool cropThumbnail, Timeframe? timeframe, int credentialIndex)
     {
         if(_keyring != null)
         {
             var credentials = await _keyring.GetAllCredentialsAsync();
             credentials.Sort((a, b) => a.Name.CompareTo(b.Name));
-            PopulateDownloads(mediaUrlInfo, mediaFileType, quality, resolution, subtitles, saveFolder, limitSpeed, cropThumbnail, credentials[credentialIndex].Username, credentials[credentialIndex].Password);
+            PopulateDownloads(mediaFileType, quality, resolution, subtitles, saveFolder, limitSpeed, cropThumbnail, timeframe, credentials[credentialIndex].Username, credentials[credentialIndex].Password);
         }
         else
         {
-            PopulateDownloads(mediaUrlInfo, mediaFileType, quality, resolution, subtitles, saveFolder, limitSpeed, cropThumbnail, "", "");
+            PopulateDownloads(mediaFileType, quality, resolution, subtitles, saveFolder, limitSpeed, cropThumbnail, timeframe, "", "");
         }
     }
 }

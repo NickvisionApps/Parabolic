@@ -42,6 +42,7 @@ public class Download
     private bool _limitSpeed;
     private uint _speedLimit;
     private bool _cropThumbnail;
+    private Timeframe? _timeframe;
     private string? _username;
     private string? _password;
     private ulong? _pid;
@@ -120,9 +121,11 @@ public class Download
     /// <param name="quality">The quality of the download</param>
     /// <param name="subtitle">The subtitles for the download</param>
     /// <param name="cropThumbnail">Whether or not to crop the thumbnail</param>
+    /// <param name="timeframe">A Timeframe to restrict the timespan of the media download</param>
     /// <param name="username">A username for the website (if available)</param>
     /// <param name="password">A password for the website (if available)</param>
-    public Download(string mediaUrl, MediaFileType fileType, string saveFolder, string saveFilename, bool limitSpeed, uint speedLimit, Quality quality, VideoResolution? resolution, Subtitle subtitle, bool cropThumbnail, string? username, string? password)
+    /// <exception cref="ArgumentException">Thrown if timeframe is specified and limitSpeed is enabled</exception>
+    public Download(string mediaUrl, MediaFileType fileType, string saveFolder, string saveFilename, bool limitSpeed, uint speedLimit, Quality quality, VideoResolution? resolution, Subtitle subtitle, bool cropThumbnail, Timeframe? timeframe, string? username, string? password)
     {
         Id = Guid.NewGuid();
         MediaUrl = mediaUrl;
@@ -141,10 +144,15 @@ public class Download
         _limitSpeed = limitSpeed;
         _speedLimit = speedLimit;
         _cropThumbnail = cropThumbnail;
+        _timeframe = timeframe;
         _username = username;
         _password = password;
         _pid = null;
         _ariaKeeper = null;
+        if(_timeframe != null && _limitSpeed)
+        {
+            throw new ArgumentException("A timeframe can only be specified if limit speed is disabled");
+        }
     }
 
     /// <summary>
@@ -199,7 +207,7 @@ public class Download
                 {
                     _ytOpt.Add("final_ext", FileType.ToString().ToLower());
                 }
-                if (options.UseAria)
+                if (options.UseAria && _timeframe == null)
                 {
                     _ariaKeeper = new Process()
                     {
@@ -313,6 +321,7 @@ public class Download
                     using (Py.GIL())
                     {
                         _pid = PythonEngine.GetPythonThreadID();
+                        dynamic ytdlp = Py.Import("yt_dlp");
                         var paths = new PyDict();
                         paths["home"] = new PyString($"{SaveFolder}{Path.DirectorySeparatorChar}");
                         paths["temp"] = new PyString(_tempDownloadPath);
@@ -321,7 +330,6 @@ public class Download
                         {
                             _ytOpt.Add("cookiefile", new PyString(options.CookiesPath));
                         }
-                        dynamic ytdlp = Py.Import("yt_dlp");
                         if (options.UseAria)
                         {
                             ProgressChanged?.Invoke(this, new DownloadProgressState()
@@ -331,6 +339,10 @@ public class Download
                                 Speed = 0.0,
                                 Log = _("Download using aria2 has started")
                             });
+                        }
+                        if(_timeframe != null)
+                        {
+                            _ytOpt.Add("download_ranges", ytdlp.utils.download_range_func(null, new List<List<double>>() { new List<double>() { _timeframe.Start.TotalSeconds, _timeframe.End.TotalSeconds } }));
                         }
                         PyObject success_code = ytdlp.YoutubeDL(_ytOpt).download(new List<string>() { MediaUrl });
                         KillAriaKeeper();
@@ -405,6 +417,18 @@ public class Download
                 KillAriaKeeper();
                 using (Py.GIL())
                 {
+                    // Kill FFMPEGs
+                    dynamic psutil = Py.Import("psutil");
+                    var pythonProcessChildren = psutil.Process().children(recursive: true);
+                    foreach(PyObject child in pythonProcessChildren)
+                    {
+                        var processName = child.GetAttr(new PyString("name")).Invoke().As<string?>() ?? "";
+                        if(processName == "ffmpeg")
+                        {
+                            child.InvokeMethod("kill");
+                        }
+                    }
+                    // Kill Python
                     PythonEngine.Interrupt(_pid.Value);
                 }
             }
