@@ -419,7 +419,9 @@ public partial class MainWindow : Adw.ApplicationWindow
         using (Py.GIL())
         {
             dynamic yt_dlp = Py.Import("yt_dlp");
+            dynamic psutil = Py.Import("psutil");
             debugInfo.AppendLine($"yt-dlp {yt_dlp.version.__version__.As<string>()}");
+            debugInfo.AppendLine($"psutil {psutil.__version__.As<string>()}");
         }
         var ffmpegProcess = new Process
         {
