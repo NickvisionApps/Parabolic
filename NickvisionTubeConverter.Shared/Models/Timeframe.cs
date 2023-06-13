@@ -58,7 +58,7 @@ public class Timeframe
         {
             throw new ArgumentException("Invalid start time.");
         }
-        if(endSpan < startSpan + TimeSpan.FromSeconds(1) || endSpan > TimeSpan.FromSeconds(duration))
+        if(endSpan <= startSpan || endSpan > TimeSpan.FromSeconds(duration))
         {
             throw new ArgumentException("Invalid end time");
         }
