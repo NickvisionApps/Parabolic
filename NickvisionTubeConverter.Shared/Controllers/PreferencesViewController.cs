@@ -1,5 +1,5 @@
-﻿using System;
-using NickvisionTubeConverter.Shared.Models;
+﻿using NickvisionTubeConverter.Shared.Models;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
