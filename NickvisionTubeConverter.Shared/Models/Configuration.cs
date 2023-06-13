@@ -123,7 +123,7 @@ public class Configuration
         UseAria = false;
         AriaMaxConnectionsPerServer = 16;
         AriaMinSplitSize = 20;
-        SubtitleLangs = CultureInfo.CurrentCulture.TwoLetterISOLanguageName;
+        SubtitleLangs = $"{CultureInfo.CurrentCulture.TwoLetterISOLanguageName},{CultureInfo.CurrentCulture.ThreeLetterISOLanguageName}";
         CookiesPath = "";
         DisallowConversions = false;
         EmbedMetadata = true;
