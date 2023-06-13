@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-12 20:33-0400\n"
+"POT-Creation-Date: 2023-06-12 22:51-0400\n"
 "PO-Revision-Date: 2023-06-12 02:55+0000\n"
 "Last-Translator: Sabri Ünal <libreajans@gmail.com>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -19,17 +19,17 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Weblate 4.18-dev\n"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:710
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:726
 #, csharp-format
 msgid "\"{0}\" has finished downloading."
 msgstr "\"{0}\" indirmeyi tamamladı."
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:710
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:726
 #, csharp-format
 msgid "\"{0}\" has finished with an error!"
 msgstr "\"{0}\" bir hatayla tamamlandı!"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:278
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:274
 msgid "(Configurable in preferences)"
 msgstr "(Tercihlerde yapılandırılabilir)"
 
@@ -43,7 +43,7 @@ msgstr "{0:f1} B/s"
 msgid "{0:f1} GiB/s"
 msgstr "{0:f1} GiB/s"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:278
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:274
 #: ../../../Helpers/SpeedFormatter.cs:28
 #, csharp-format
 msgid "{0:f1} KiB/s"
@@ -61,8 +61,8 @@ msgid_plural "{0} downloads — {1:f1}% ({2})"
 msgstr[0] "İndirmeler: {0} — %{1:f1} ({2})"
 msgstr[1] "İndirmeler: {0} — %{1:f1} ({2})"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:470
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:583
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:465
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:579
 #, csharp-format
 msgid "{0} of {1} items"
 msgid_plural "{0} of {1} items"
@@ -81,12 +81,12 @@ msgstr "İndirme Ekle"
 msgid "Advanced Options"
 msgstr "Gelişmiş Seçenekler"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:714
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:730
 msgid "All downloads have finished."
 msgstr "Tüm indirmeler tamamlandı."
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:430
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:443
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:425
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:438
 msgid "Audio"
 msgstr "Ses"
 
@@ -103,7 +103,7 @@ msgstr "İndirmeler Kapatılsın ve Durdurulsun mu?"
 msgid "Credential"
 msgstr "Kimlik Bilgileri"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:509
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:525
 #, csharp-format
 msgid ""
 "David Lapshin {0}\n"
@@ -140,11 +140,11 @@ msgstr ""
 msgid "Download"
 msgstr "İndir"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:710
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:726
 msgid "Download Finished"
 msgstr "İndirme Tamamlandı"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:710
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:726
 msgid "Download Finished With Error"
 msgstr "İndirme Hata İle Tamamlandı"
 
@@ -152,8 +152,14 @@ msgstr "İndirme Hata İle Tamamlandı"
 msgid "Download log was copied to clipboard."
 msgstr "İndirme günlüğü panoya kopyalandı."
 
-#: ../../../Models/Download.cs:340
+#: ../../../Models/Download.cs:325
 msgid "Download using aria2 has started"
+msgstr "Aria2 kullanarak indirme işlemi başladı"
+
+#: ../../../Models/Download.cs:336
+#, fuzzy
+#| msgid "Download using aria2 has started"
+msgid "Download using ffmpeg has started"
 msgstr "Aria2 kullanarak indirme işlemi başladı"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Program.cs:50
@@ -161,17 +167,17 @@ msgstr "Aria2 kullanarak indirme işlemi başladı"
 msgid "Download web video and audio"
 msgstr "Web video ve seslerini indir"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:181
+#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:177
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:115
 msgid "Downloading"
 msgstr "İndiriliyor"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:172
+#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:167
 #, csharp-format
 msgid "Downloading {0:f2}% ({1})"
 msgstr "İndiriliyor %{0:f2} ({1})"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:714
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:730
 msgid "Downloads Finished"
 msgstr "İndirmeler Tamamlandı"
 
@@ -180,20 +186,20 @@ msgstr "İndirmeler Tamamlandı"
 msgid "Enable"
 msgstr "Etkinleştir"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:499
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:495
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:292
 msgid "End Time"
 msgstr "Bitiş Zamanı"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:519
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:515
 msgid "End Time (Invalid)"
 msgstr "Bitiş Zamanı (Geçersiz)"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:207
+#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:203
 msgid "Error"
 msgstr "Hata"
 
-#: ../../../Models/Download.cs:180
+#: ../../../Models/Download.cs:177
 msgid "File already exists, and overwriting is disallowed"
 msgstr "Dosya zaten var ve üzerine yazılmasına izin verilmiyor"
 
@@ -212,24 +218,24 @@ msgstr "Anahtarlık"
 msgid "Keyring has not been unlocked."
 msgstr "Anahtarlık kilidi açılmamış."
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:505
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:521
 msgid "List of supported sites"
 msgstr "Desteklenen sitelerin listesi"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:506
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:522
 msgid "Matrix Chat"
 msgstr "Matrix Sohbet"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:471
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:466
 msgid "Maximum Quality"
 msgstr "Azami Kalite"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:453
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:448
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:57
 msgid "Media URL"
 msgstr "Ortam URLʼsi"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:422
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:417
 msgid "Media URL (Invalid)"
 msgstr "Ortam URLʼsi (Geçersiz)"
 
@@ -242,7 +248,7 @@ msgstr "Ad"
 msgid "Name (Empty)"
 msgstr "Ad (Boş)"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:507
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:523
 #, csharp-format
 msgid ""
 "Nicholas Logozzo {0}\n"
@@ -251,7 +257,7 @@ msgstr ""
 "Nicholas Logozzo {0}\n"
 "GitHub Katkıcıları ❤️ {1}"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:508
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:524
 #, csharp-format
 msgid ""
 "Nicholas Logozzo {0}\n"
@@ -291,16 +297,16 @@ msgstr "Çalma Listesi"
 msgid "Preparing..."
 msgstr "Hazırlanıyor..."
 
-#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:190
+#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:186
 msgid "Processing..."
 msgstr "İşleniyor..."
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:495
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:491
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:140
 msgid "Save Folder"
 msgstr "Kayıt Klasörü"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:509
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:505
 msgid "Save Folder (Invalid)"
 msgstr "Kayıt Klasörü (Geçersiz)"
 
@@ -310,7 +316,7 @@ msgstr "Kayıt Klasörü (Geçersiz)"
 msgid "Select Cookies File"
 msgstr "Çerez Dosyasını Seç"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:554
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:550
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:147
 msgid "Select Save Folder"
 msgstr "Kayıt Klasörünü Seçin"
@@ -332,24 +338,24 @@ msgstr ""
 msgid "Some downloads finished with errors!"
 msgstr "Bazı indirmeler hatalarla tamamlandı!"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:497
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:493
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:287
 msgid "Start Time"
 msgstr "Başlangıç Zamanı"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:514
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:510
 msgid "Start Time (Invalid)"
 msgstr "Başlangıç Zamanı (Geçersiz)"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:224
+#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:220
 msgid "Stopped"
 msgstr "Durduruldu"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:207
+#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:203
 msgid "Success"
 msgstr "Başarılı"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:501
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:517
 msgid ""
 "The authors of Nickvision Tube Converter are not responsible/liable for any "
 "misuse of this program that may violate local copyright/DMCA laws. Users use "
@@ -364,7 +370,7 @@ msgstr ""
 msgid "This action is irreversible. Are you sure you want to delete it?"
 msgstr "Bu işlem geri alınamaz. Silmek istediğinizden emin misiniz?"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:510
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:526
 msgid "translator-credits"
 msgstr ""
 "Sabri Ünal <libreajans@gmail.com>\n"
@@ -403,7 +409,7 @@ msgstr "URL"
 msgid "URL (Invalid)"
 msgstr "URL (Geçersiz)"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:345
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:341
 msgid "Use manual credential"
 msgstr "El ile kimlik bilgisi kullan"
 
@@ -417,12 +423,12 @@ msgstr "Kullanıcı adı"
 msgid "Username (Empty)"
 msgstr "Kullanıcı adı (Boş)"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:418
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:413
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:82
 msgid "Validate"
 msgstr "Doğrula"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:443
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:438
 msgid "Video"
 msgstr "Video"
 
