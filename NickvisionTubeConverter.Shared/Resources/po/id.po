@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-12 20:33-0400\n"
+"POT-Creation-Date: 2023-06-12 22:51-0400\n"
 "PO-Revision-Date: 2023-06-12 02:55+0000\n"
 "Last-Translator: Krindog7337 <igstkrisna2006@gmail.com>\n"
 "Language-Team: Indonesian <https://hosted.weblate.org/projects/nickvision-"
@@ -19,17 +19,17 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Weblate 4.18-dev\n"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:710
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:726
 #, csharp-format
 msgid "\"{0}\" has finished downloading."
 msgstr "\"{0}\" telah selesai diunduh."
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:710
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:726
 #, csharp-format
 msgid "\"{0}\" has finished with an error!"
 msgstr "\"{0}\" telah selesai dengan kesalahan!"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:278
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:274
 msgid "(Configurable in preferences)"
 msgstr "(Dapat dikonfigurasi di preferensi)"
 
@@ -43,7 +43,7 @@ msgstr "{0:f1} B/s"
 msgid "{0:f1} GiB/s"
 msgstr "{0:f1} GiB/dtk"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:278
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:274
 #: ../../../Helpers/SpeedFormatter.cs:28
 #, csharp-format
 msgid "{0:f1} KiB/s"
@@ -60,8 +60,8 @@ msgid "{0} download — {1:f1}% ({2})"
 msgid_plural "{0} downloads — {1:f1}% ({2})"
 msgstr[0] "{0} unduhan - {1:f1}% ({2})"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:470
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:583
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:465
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:579
 #, csharp-format
 msgid "{0} of {1} items"
 msgid_plural "{0} of {1} items"
@@ -79,12 +79,12 @@ msgstr "Tambah Unduhan"
 msgid "Advanced Options"
 msgstr "Opsi Lanjutan"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:714
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:730
 msgid "All downloads have finished."
 msgstr "Semua unduhan selesai."
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:430
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:443
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:425
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:438
 msgid "Audio"
 msgstr "Suara"
 
@@ -101,7 +101,7 @@ msgstr "Tutup dan Hentikan Unduhan?"
 msgid "Credential"
 msgstr ""
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:509
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:525
 #, csharp-format
 msgid ""
 "David Lapshin {0}\n"
@@ -138,11 +138,11 @@ msgstr ""
 msgid "Download"
 msgstr "Unduh"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:710
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:726
 msgid "Download Finished"
 msgstr "Unduhan Selesai"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:710
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:726
 msgid "Download Finished With Error"
 msgstr "Unduh Selesai Dengan Error"
 
@@ -150,8 +150,14 @@ msgstr "Unduh Selesai Dengan Error"
 msgid "Download log was copied to clipboard."
 msgstr "Log unduhan disalin ke papan klip."
 
-#: ../../../Models/Download.cs:340
+#: ../../../Models/Download.cs:325
 msgid "Download using aria2 has started"
+msgstr "Pengunduhan menggunakan aria2 telah dimulai"
+
+#: ../../../Models/Download.cs:336
+#, fuzzy
+#| msgid "Download using aria2 has started"
+msgid "Download using ffmpeg has started"
 msgstr "Pengunduhan menggunakan aria2 telah dimulai"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Program.cs:50
@@ -159,17 +165,17 @@ msgstr "Pengunduhan menggunakan aria2 telah dimulai"
 msgid "Download web video and audio"
 msgstr "Unduh video web dan audio"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:181
+#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:177
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:115
 msgid "Downloading"
 msgstr "Mengunduh"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:172
+#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:167
 #, csharp-format
 msgid "Downloading {0:f2}% ({1})"
 msgstr "Mengunduh {0:f2}% ({1:N0} KiB/s)"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:714
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:730
 msgid "Downloads Finished"
 msgstr "Unduhan Selesai"
 
@@ -178,22 +184,22 @@ msgstr "Unduhan Selesai"
 msgid "Enable"
 msgstr "Aktifkan"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:499
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:495
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:292
 msgid "End Time"
 msgstr ""
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:519
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:515
 #, fuzzy
 #| msgid "Media URL (Invalid)"
 msgid "End Time (Invalid)"
 msgstr "URL Media (tidak sah)"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:207
+#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:203
 msgid "Error"
 msgstr "Kesalahan"
 
-#: ../../../Models/Download.cs:180
+#: ../../../Models/Download.cs:177
 msgid "File already exists, and overwriting is disallowed"
 msgstr "File sudah ada, dan penimpaan tidak diperbolehkan"
 
@@ -212,24 +218,24 @@ msgstr "Keyring"
 msgid "Keyring has not been unlocked."
 msgstr "Keyring belum dibuka."
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:505
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:521
 msgid "List of supported sites"
 msgstr "Daftar situs yang didukung"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:506
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:522
 msgid "Matrix Chat"
 msgstr "Obrolan Matriks"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:471
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:466
 msgid "Maximum Quality"
 msgstr "Kualitas Maksimum"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:453
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:448
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:57
 msgid "Media URL"
 msgstr "URL Media"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:422
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:417
 msgid "Media URL (Invalid)"
 msgstr "URL Media (tidak sah)"
 
@@ -242,7 +248,7 @@ msgstr "Nama"
 msgid "Name (Empty)"
 msgstr "Nama (Kosong)"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:507
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:523
 #, csharp-format
 msgid ""
 "Nicholas Logozzo {0}\n"
@@ -251,7 +257,7 @@ msgstr ""
 "Nicholas Logozzo {0}\n"
 "Kontributor di GitHub ❤️ {1}"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:508
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:524
 #, csharp-format
 msgid ""
 "Nicholas Logozzo {0}\n"
@@ -291,16 +297,16 @@ msgstr "Daftar Putar"
 msgid "Preparing..."
 msgstr "Menyiapkan..."
 
-#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:190
+#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:186
 msgid "Processing..."
 msgstr "Memproses..."
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:495
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:491
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:140
 msgid "Save Folder"
 msgstr "Folder Penyimpanan"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:509
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:505
 msgid "Save Folder (Invalid)"
 msgstr "Folder Penyimpanan (tidak sah)"
 
@@ -310,7 +316,7 @@ msgstr "Folder Penyimpanan (tidak sah)"
 msgid "Select Cookies File"
 msgstr "Pilih File Cookie"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:554
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:550
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:147
 msgid "Select Save Folder"
 msgstr "Pilih Folder Simpan"
@@ -332,26 +338,26 @@ msgstr ""
 msgid "Some downloads finished with errors!"
 msgstr "Beberapa unduhan selesai dengan error!"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:497
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:493
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:287
 msgid "Start Time"
 msgstr ""
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:514
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:510
 #, fuzzy
 #| msgid "Save Folder (Invalid)"
 msgid "Start Time (Invalid)"
 msgstr "Folder Penyimpanan (tidak sah)"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:224
+#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:220
 msgid "Stopped"
 msgstr "Dihentikan"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:207
+#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:203
 msgid "Success"
 msgstr "Sukses"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:501
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:517
 msgid ""
 "The authors of Nickvision Tube Converter are not responsible/liable for any "
 "misuse of this program that may violate local copyright/DMCA laws. Users use "
@@ -365,7 +371,7 @@ msgstr ""
 msgid "This action is irreversible. Are you sure you want to delete it?"
 msgstr "Aksi ini tidak dapat diurungkan. Apakah anda yakin untuk menghapusnya?"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:510
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:526
 msgid "translator-credits"
 msgstr "kredit penerjemah"
 
@@ -402,7 +408,7 @@ msgstr "URL"
 msgid "URL (Invalid)"
 msgstr "URL (tidak sah)"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:345
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:341
 msgid "Use manual credential"
 msgstr "Gunakan kredensial manual"
 
@@ -416,12 +422,12 @@ msgstr "Nama pengguna"
 msgid "Username (Empty)"
 msgstr "Nama pengguna (Kosong)"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:418
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:413
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:82
 msgid "Validate"
 msgstr "Memvalidasi"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:443
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:438
 msgid "Video"
 msgstr "Video"
 
