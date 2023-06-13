@@ -2,7 +2,6 @@
 using Python.Runtime;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.Linq;
@@ -329,6 +328,13 @@ public class Download
                         if(_timeframe != null)
                         {
                             _ytOpt.Add("download_ranges", ytdlp.utils.download_range_func(null, new List<List<double>>() { new List<double>() { _timeframe.Start.TotalSeconds, _timeframe.End.TotalSeconds } }));
+                            ProgressChanged?.Invoke(this, new DownloadProgressState()
+                            {
+                                Status = DownloadProgressStatus.DownloadingFfmpeg,
+                                Progress = 0.0,
+                                Speed = 0.0,
+                                Log = _("Download using ffmpeg has started")
+                            });
                         }
                         PyObject success_code = ytdlp.YoutubeDL(_ytOpt).download(new List<string>() { MediaUrl });
                         ForceUpdateLog();
@@ -406,11 +412,7 @@ public class Download
                     foreach(PyObject child in pythonProcessChildren)
                     {
                         var processName = child.GetAttr(new PyString("name")).Invoke().As<string?>() ?? "";
-                        if(processName == "ffmpeg")
-                        {
-                            child.InvokeMethod("kill");
-                        }
-                        if(processName == "aria2c")
+                        if(processName == "ffmpeg" || processName == "aria2c")
                         {
                             child.InvokeMethod("kill");
                         }
