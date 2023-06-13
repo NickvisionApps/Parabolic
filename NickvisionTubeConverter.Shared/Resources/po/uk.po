@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-10 21:47-0400\n"
+"POT-Creation-Date: 2023-06-12 20:33-0400\n"
 "PO-Revision-Date: 2023-06-11 15:09+0000\n"
 "Last-Translator: Dan <jonweblin2205@protonmail.com>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/nickvision-"
@@ -20,17 +20,17 @@ msgstr ""
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Generator: Weblate 4.18-dev\n"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:250
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:710
 #, csharp-format
 msgid "\"{0}\" has finished downloading."
 msgstr "\"{0}\" завершено завантаження."
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:250
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:710
 #, csharp-format
 msgid "\"{0}\" has finished with an error!"
 msgstr "\"{0}\" завершився з помилкою!"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:243
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:278
 msgid "(Configurable in preferences)"
 msgstr "(Налаштовується в параметрах)"
 
@@ -44,7 +44,7 @@ msgstr "{0:f1} Б/с"
 msgid "{0:f1} GiB/s"
 msgstr "{0:f1} ГіБ/с"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:243
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:278
 #: ../../../Helpers/SpeedFormatter.cs:28
 #, csharp-format
 msgid "{0:f1} KiB/s"
@@ -55,7 +55,7 @@ msgstr "{0:f1} КіБ/с"
 msgid "{0:f1} MiB/s"
 msgstr "{0:f1} МіБ/с"
 
-#: ../../../Models/DownloadManager.cs:163
+#: ../../../Models/DownloadManager.cs:165
 #, csharp-format
 msgid "{0} download — {1:f1}% ({2})"
 msgid_plural "{0} downloads — {1:f1}% ({2})"
@@ -63,8 +63,8 @@ msgstr[0] "{0} завантаження - {1:f1}% ({2})"
 msgstr[1] "{0} завантаження - {1:f1}% ({2})"
 msgstr[2] "{0} завантажень - {1:f1}% ({2})"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:440
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:543
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:470
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:583
 #, csharp-format
 msgid "{0} of {1} items"
 msgid_plural "{0} of {1} items"
@@ -72,32 +72,32 @@ msgstr[0] "{0} з {1} елемента"
 msgstr[1] "{0} з {1} елементів"
 msgstr[2] "{0} з {1} елементів"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:138
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:134
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:37
 #: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:17
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:78
 msgid "Add Download"
 msgstr "Додати завантаження"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:137
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:133
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:154
 msgid "Advanced Options"
 msgstr "Додаткові параметри"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:254
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:714
 msgid "All downloads have finished."
 msgstr "Всі завантаження завершено."
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:397
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:414
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:430
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:443
 msgid "Audio"
 msgstr "Аудіо"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:113
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:109
 msgid "Best"
 msgstr "Найкраще"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:614
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:297
 msgid "Close and Stop Downloads?"
 msgstr "Закрити та зупинити завантаження?"
 
@@ -106,7 +106,7 @@ msgstr "Закрити та зупинити завантаження?"
 msgid "Credential"
 msgstr "Облікові дані"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:826
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:509
 #, csharp-format
 msgid ""
 "David Lapshin {0}\n"
@@ -137,17 +137,17 @@ msgstr ""
 "Вимкнення keyring призведе до видалення всіх даних, що зберігаються в ньому. "
 "Ви впевнені, що хочете його вимкнути?"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:566
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:249
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:203
 #: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:14
 msgid "Download"
 msgstr "Завантаження"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:250
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:710
 msgid "Download Finished"
 msgstr "Завантаження завершено"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:250
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:710
 msgid "Download Finished With Error"
 msgstr "Завантаження завершено з помилкою"
 
@@ -155,7 +155,7 @@ msgstr "Завантаження завершено з помилкою"
 msgid "Download log was copied to clipboard."
 msgstr "Журнал завантажень скопійовано до буфера обміну."
 
-#: ../../../Models/Download.cs:332
+#: ../../../Models/Download.cs:340
 msgid "Download using aria2 has started"
 msgstr "Розпочато завантаження за допомогою aria2"
 
@@ -164,17 +164,17 @@ msgstr "Розпочато завантаження за допомогою aria
 msgid "Download web video and audio"
 msgstr "Завантажити веб відео та аудіо"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:176
+#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:181
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:115
 msgid "Downloading"
 msgstr "Завантаження"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:167
+#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:172
 #, csharp-format
 msgid "Downloading {0:f2}% ({1})"
 msgstr "Завантаження {0:f2}% ({1})"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:254
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:714
 msgid "Downloads Finished"
 msgstr "Завантаження завершені"
 
@@ -183,11 +183,20 @@ msgstr "Завантаження завершені"
 msgid "Enable"
 msgstr "Ввімкнути"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:202
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:499
+#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:292
+msgid "End Time"
+msgstr "Час закінчення"
+
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:519
+msgid "End Time (Invalid)"
+msgstr "Час закінчення (неправильний)"
+
+#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:207
 msgid "Error"
 msgstr "Помилка"
 
-#: ../../../Models/Download.cs:172
+#: ../../../Models/Download.cs:180
 msgid "File already exists, and overwriting is disallowed"
 msgstr "Файл вже існує, і його перезапис заборонено"
 
@@ -206,24 +215,24 @@ msgstr "Keyring"
 msgid "Keyring has not been unlocked."
 msgstr "Keyring не розблоковано."
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:822
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:505
 msgid "List of supported sites"
 msgstr "Список підтримуваних сайтів"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:823
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:506
 msgid "Matrix Chat"
 msgstr "Чат Matrix"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:441
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:471
 msgid "Maximum Quality"
 msgstr "Максимальна якість"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:424
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:453
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:57
 msgid "Media URL"
 msgstr "URL-адреса медіа"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:387
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:422
 msgid "Media URL (Invalid)"
 msgstr "URL-адреса медіа (неправильна)"
 
@@ -236,7 +245,7 @@ msgstr "Ім'я"
 msgid "Name (Empty)"
 msgstr "Ім'я (Порожньо)"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:824
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:507
 #, csharp-format
 msgid ""
 "Nicholas Logozzo {0}\n"
@@ -245,7 +254,7 @@ msgstr ""
 "Nicholas Logozzo {0}\n"
 "Учасники на GitHub ❤️ {1}"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:825
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:508
 #, csharp-format
 msgid ""
 "Nicholas Logozzo {0}\n"
@@ -256,13 +265,13 @@ msgstr ""
 "Fyodor Sobolev {1}\n"
 "DaPigGuy {2}"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:614
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:158
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:328
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:297
 msgid "No"
 msgstr "Ні"
 
-#: ../../../Models/DownloadManager.cs:171
+#: ../../../Models/DownloadManager.cs:173
 msgid "No downloads running"
 msgstr "Немає завантажень"
 
@@ -277,7 +286,7 @@ msgstr "Пароль"
 msgid "Password (Empty)"
 msgstr "Пароль (Порожньо)"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:136
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:132
 msgid "Playlist"
 msgstr "Список відтворення"
 
@@ -285,26 +294,26 @@ msgstr "Список відтворення"
 msgid "Preparing..."
 msgstr "Підготовка..."
 
-#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:185
+#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:190
 msgid "Processing..."
 msgstr "Обробка..."
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:466
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:495
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:140
 msgid "Save Folder"
 msgstr "Зберегти папки"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:476
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:509
 msgid "Save Folder (Invalid)"
 msgstr "Зберегти папку (неправильно)"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/PreferencesDialog.cs:170
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:263
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:277
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:264
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:278
 msgid "Select Cookies File"
 msgstr "Виберіть файл cookies"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:514
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:554
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:147
 msgid "Select Save Folder"
 msgstr "Натисніть \"Зберегти папку\""
@@ -313,7 +322,7 @@ msgstr "Натисніть \"Зберегти папку\""
 msgid "Setup Keyring"
 msgstr "Налаштування Keyring"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:614
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:297
 msgid ""
 "Some downloads are still in progress.\n"
 "Are you sure you want to close Tube Converter and stop the running downloads?"
@@ -322,19 +331,28 @@ msgstr ""
 "Ви впевнені, що бажаєте закрити Tube Converter і зупинити поточні "
 "завантаження?"
 
-#: ../../../Models/DownloadManager.cs:167
+#: ../../../Models/DownloadManager.cs:169
 msgid "Some downloads finished with errors!"
 msgstr "Деякі завантаження завершено з помилками!"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:219
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:497
+#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:287
+msgid "Start Time"
+msgstr "Час початку"
+
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:514
+msgid "Start Time (Invalid)"
+msgstr "Час початку (неправильний)"
+
+#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:224
 msgid "Stopped"
 msgstr "Зупинено"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:202
+#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:207
 msgid "Success"
 msgstr "Успіх"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:818
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:501
 msgid ""
 "The authors of Nickvision Tube Converter are not responsible/liable for any "
 "misuse of this program that may violate local copyright/DMCA laws. Users use "
@@ -349,7 +367,7 @@ msgstr ""
 msgid "This action is irreversible. Are you sure you want to delete it?"
 msgstr "Ця дія є незворотною. Ви впевнені, що хочете його видалити?"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:827
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:510
 msgid "translator-credits"
 msgstr ""
 "kefir2105\n"
@@ -388,7 +406,7 @@ msgstr "URL"
 msgid "URL (Invalid)"
 msgstr "URL (Неправильна)"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:310
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:345
 msgid "Use manual credential"
 msgstr "Використання облікових даних вручну"
 
@@ -402,12 +420,12 @@ msgstr "Ім'я користувача"
 msgid "Username (Empty)"
 msgstr "Ім'я користувача (Порожнє)"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:383
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:418
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:82
 msgid "Validate"
 msgstr "Підтвердити"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:414
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:443
 msgid "Video"
 msgstr "Відео"
 
@@ -416,13 +434,13 @@ msgstr "Відео"
 msgid "Waiting..."
 msgstr "Очікування..."
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:113
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:109
 msgid "Worst"
 msgstr "Найгірше"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:614
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:158
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:328
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:297
 msgid "Yes"
 msgstr "Так"
 
@@ -466,7 +484,7 @@ msgid "Number Titles"
 msgstr "Пронумерувати заголовки"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:258
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:101
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:102
 msgid "Speed Limit"
 msgstr "Обмеження швидкості"
 
@@ -477,6 +495,26 @@ msgstr "Обрізати мініатюру"
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:270
 msgid "Make thumbnail square, useful when downloading music."
 msgstr "Зробіть мініатюру квадратною, корисно при завантаженні музики."
+
+#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:281
+msgid "Download Specific Timeframe"
+msgstr "Завантажити конкретний часовий проміжок"
+
+#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:282
+msgid ""
+"Enabling this option will disable the use of aria2 as the downloader if it "
+"is enabled."
+msgstr ""
+"Ввімкнення цієї опції вимкне використання aria2 як завантажувача, якщо його "
+"було ввімкнено."
+
+#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:288
+msgid "Leave empty to download from start."
+msgstr "Залиште порожнім, щоб завантажити з самого початку."
+
+#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:293
+msgid "Leave empty to download to end."
+msgstr "Залиште поле порожнім, щоб завантаження завершилося."
 
 #: NickvisionTubeConverter.GNOME/Blueprints/download_row.blp:51
 msgid "View Log"
@@ -598,46 +636,46 @@ msgstr ""
 "У поєднанні з показом сповіщень про завершення будуть показані, тільки якщо "
 "вікно знаходиться у фоновому режимі."
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:34
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:35
 msgctxt "CompletedNotification"
 msgid "For each download"
 msgstr "Для кожного завантаження"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:34
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:35
 msgctxt "CompletedNotification"
 msgid "When all downloads finish"
 msgstr "Коли всі завантаження завершаться"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:34
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:35
 msgctxt "CompletedNotification"
 msgid "Never"
 msgstr "Ніколи"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:44
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:45
 msgid "Allow Running In Background"
 msgstr "Дозволити роботу у фоновому режимі"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:45
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:46
 msgid "Hide the window instead of quitting if there are downloads running."
 msgstr "Приховати вікно замість того, щоб вийти, якщо триває завантаження."
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:61
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:62
 msgid "Downloader"
 msgstr "Завантажувач"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:62
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:63
 msgid "Customize downloader settings."
 msgstr "Налаштувати параметри завантажувача."
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:65
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:66
 msgid "Max Number of Active Downloads"
 msgstr "Максимальна кількість активних завантажень"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:86
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:87
 msgid "Overwrite Existing Files"
 msgstr "Перезаписати наявні файли"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:102
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:103
 msgid ""
 "This limit (in KiB/s) is applied to downloads that have speed limit enabled. "
 "Changing the value doesn't affect already running downloads."
@@ -645,11 +683,11 @@ msgstr ""
 "Цей ліміт (у Кбіт/с) застосовується до завантажень, для яких увімкнено "
 "обмеження швидкості. Зміна значення не впливає на вже запущені завантаження."
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:123
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:124
 msgid "Use aria2"
 msgstr "Використовувати aria2"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:124
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:125
 msgid ""
 "Enable to use aria2 downloader. It can be faster, but you will not see "
 "download progress."
@@ -657,28 +695,28 @@ msgstr ""
 "Увімкніть використання завантажувача aria2. Це може бути швидше, але ви не "
 "побачите прогрес завантаження."
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:133
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:134
 msgid "Max Connections Per Server (-x)"
 msgstr "Максимальна кількість з'єднань на сервер (-x)"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:156
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:185
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:157
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:186
 msgid "Reset to default"
 msgstr "Скидання до налаштувань за замовчуванням"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:161
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:162
 msgid "Minimum Split Size (-k)"
 msgstr "Мінімальний розмір розділення (-k)"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:162
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:163
 msgid "The minimum size of which to split a file (in MiB)."
 msgstr "Мінімальний розмір, на який потрібно розділити файл (у MiB)."
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:191
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:192
 msgid "Cookies File"
 msgstr "Файл cookie"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:192
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:193
 msgid ""
 "A cookies file can be provided to yt-dlp to allow downloading media that "
 "requires a login."
@@ -686,7 +724,7 @@ msgstr ""
 "Файл cookies може бути наданий yt-dlp, щоб дозволити завантажувати медіа, "
 "які потребують входу."
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:222
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:223
 msgid ""
 "Cookies can be passed to yt-dlp in the form of TXT files. Export cookies "
 "from your browser using the following extensions (use at your own risk):"
@@ -695,23 +733,23 @@ msgstr ""
 "файли cookie з вашого браузера за допомогою наступних розширень "
 "(використовуйте на свій страх і ризик):"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:285
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:286
 msgid "Clear Cookies File"
 msgstr "Очистити файл cookie"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:297
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:298
 msgid "Converter"
 msgstr "Конвертер"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:298
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:299
 msgid "Customize converter settings."
 msgstr "Налаштуйте параметри конвертера."
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:301
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:302
 msgid "Disallow Conversions"
 msgstr "Заборонити перетворення"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:302
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:303
 msgid ""
 "If enabled, Tube Converter will download the appropriate video/audio format "
 "for the selected quality without converting to other formats. (You will be "
@@ -721,23 +759,23 @@ msgstr ""
 "для вибраної якості без конвертації в інші формати. (Ви не зможете вибрати "
 "формат файлу)"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:317
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:318
 msgid "Embed Metadata"
 msgstr "Вставити метадані"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:326
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:327
 #, fuzzy
 #| msgid "Crop Thumbnail"
 msgid "Crop Audio Thumbnails"
 msgstr "Обрізати мініатюру"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:327
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:328
 msgid ""
 "If enabled, Tube Converter will automatically turn on the crop thumbnail "
 "advanced option for audio downloads"
 msgstr ""
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:343
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:344
 msgid "Embed Chapters"
 msgstr "Вставити розділи"
 
@@ -816,6 +854,10 @@ msgstr "Очистити завершені завантаження"
 #: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.desktop.in:5
 msgid "Get video and audio from the web"
 msgstr "Отримуйте відео та аудіо з Інтернету"
+
+#: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.desktop.in:11
+msgid "YouTube;Downloader;ytdlp;Nickvision;"
+msgstr ""
 
 #: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.metainfo.xml.in:10
 msgid "— A basic yt-dlp frontend"
@@ -1041,31 +1083,3 @@ msgstr "завантаження"
 
 #~ msgid "Info"
 #~ msgstr "Інформація"
-
-#~ msgid "Download Specific Timeframe"
-#~ msgstr "Завантажити конкретний часовий проміжок"
-
-#~ msgid "Leave empty to download to end."
-#~ msgstr "Залиште поле порожнім, щоб завантаження завершилося."
-
-#~ msgid "End Time (Invalid)"
-#~ msgstr "Час закінчення (неправильний)"
-
-#~ msgid ""
-#~ "Enabling this option will disable the use of aria2 as the downloader if "
-#~ "it is enabled."
-#~ msgstr ""
-#~ "Ввімкнення цієї опції вимкне використання aria2 як завантажувача, якщо "
-#~ "його було ввімкнено."
-
-#~ msgid "Start Time"
-#~ msgstr "Час початку"
-
-#~ msgid "Leave empty to download from start."
-#~ msgstr "Залиште порожнім, щоб завантажити з самого початку."
-
-#~ msgid "Start Time (Invalid)"
-#~ msgstr "Час початку (неправильний)"
-
-#~ msgid "End Time"
-#~ msgstr "Час закінчення"
