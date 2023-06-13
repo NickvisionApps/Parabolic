@@ -187,7 +187,17 @@ Adw.PreferencesWindow _root {
           }
         }
       }
-      
+
+      Adw.EntryRow _subtitleLangsRow {
+        title: _("Subtitle Languages (Comma-Separated)");
+        show-apply-button: true;
+
+        [prefix]
+        Gtk.Image {
+          icon-name: "subtitles-symbolic";
+        }
+      }
+
       Adw.ActionRow {
         title: _("Cookies File");
         subtitle: _("A cookies file can be provided to yt-dlp to allow downloading media that requires a login.");

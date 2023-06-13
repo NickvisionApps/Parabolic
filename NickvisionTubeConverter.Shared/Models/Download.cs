@@ -255,9 +255,14 @@ public class Download
                     }
                     if (Subtitle != Subtitle.None)
                     {
+                        var subtitleLangs = options.SubtitleLangs;
+                        if(subtitleLangs[subtitleLangs.Length - 1] == ';')
+                        {
+                            subtitleLangs = subtitleLangs.Remove(subtitleLangs.Length - 1);
+                        }
                         _ytOpt.Add("writesubtitles", true);
                         _ytOpt.Add("writeautomaticsub", true);
-                        _ytOpt.Add("subtitleslangs", options.SubtitleLangs.Split(";").ToList());
+                        _ytOpt.Add("subtitleslangs", subtitleLangs.Split(";").ToList());
                         postProcessors.Add(new Dictionary<string, dynamic>() { { "key", "FFmpegSubtitlesConvertor" }, { "format", Subtitle.ToString().ToLower() } });
                         postProcessors.Add(new Dictionary<string, dynamic>() { { "key", "FFmpegEmbedSubtitle" } });
                     }
