@@ -129,7 +129,7 @@ public class PreferencesViewController
 
         set
         {
-            if(value[value.Length - 1] == ';')
+            if(value[value.Length - 1] == ',')
             {
                 value = value.Remove(value.Length - 1);
             }
@@ -198,11 +198,11 @@ public class PreferencesViewController
         {
             return false;
         }
-        if(s[s.Length - 1] == ';')
+        if(s[s.Length - 1] == ',')
         {
             s = s.Remove(s.Length - 1);
         }
-        var codes = s.Split(";");
+        var codes = s.Split(",");
         foreach(var code in codes)
         {
             if(!_supportedLangCodes.Contains(code))
