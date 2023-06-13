@@ -43,6 +43,7 @@ public partial class AddDownloadDialog : Adw.Window
     private readonly Gtk.Window _parent;
     private readonly AddDownloadDialogController _controller;
     private readonly List<MediaRow> _mediaRows;
+    private readonly string[] _audioQualities;
     private string _saveFolderString;
     private GAsyncReadyCallback? _saveCallback;
     private GSourceFunc _startSearchCallback;
@@ -105,6 +106,7 @@ public partial class AddDownloadDialog : Adw.Window
         _controller = controller;
         _saveCallback = null;
         _mediaRows = new List<MediaRow>();
+        _audioQualities = new string[] { _("Best"), _("Worst") };
         _startSearchCallback = (x) =>
         {
             _urlSpinner = Gtk.Spinner.New();
@@ -526,7 +528,7 @@ public partial class AddDownloadDialog : Adw.Window
     {
         if (SelectedMediaFileType.GetIsVideo())
         {
-            _qualityRow.SetModel(Gtk.StringList.New(_controller.VideoQualityList.ToArray()));
+            _qualityRow.SetModel(Gtk.StringList.New(_controller.VideoResolutions.ToArray()));
             var findPrevious = _controller.PreviousVideoResolutionIndex;
             if(findPrevious != -1)
             {
@@ -536,7 +538,7 @@ public partial class AddDownloadDialog : Adw.Window
         }
         else
         {
-            _qualityRow.SetModel(Gtk.StringList.New(_controller.AudioQualityArray));
+            _qualityRow.SetModel(Gtk.StringList.New(_audioQualities));
             _subtitleRow.SetSensitive(false);
         }
     }

@@ -35,13 +35,9 @@ public class AddDownloadDialogController
     /// </summary>
     public List<Download> Downloads { get; init; }
     /// <summary>
-    /// The array of audio qualities
+    /// The list of video resolutions as strings
     /// </summary>
-    public string[] AudioQualityArray { get; init; }
-    /// <summary>
-    /// The list of video qualities
-    /// </summary>
-    public List<string> VideoQualityList { get; init; }
+    public List<string> VideoResolutions { get; init; }
 
     /// <summary>
     /// Gets the AppInfo object
@@ -100,8 +96,7 @@ public class AddDownloadDialogController
     {
         _keyring = keyring;
         Downloads = new List<Download>();
-        AudioQualityArray = new string[] { _("Best"), _("Worst") };
-        VideoQualityList = new List<string>();
+        VideoResolutions = new List<string>();
     }
 
     /// <summary>
@@ -152,7 +147,7 @@ public class AddDownloadDialogController
         {
             foreach (var resolution in _mediaUrlInfo.VideoResolutions)
             {
-                VideoQualityList.Add(resolution.ToString());
+                VideoResolutions.Add(resolution.ToString());
             }
         }
         return _mediaUrlInfo != null;
