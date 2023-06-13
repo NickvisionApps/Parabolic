@@ -586,11 +586,12 @@ public partial class AddDownloadDialog : Adw.Window
     /// </summary>
     private void ToggleNumberTitles()
     {
-        _controller.ToggleNumberTitles(_numberTitlesSwitch.GetActive());
-        _controller.NumberTitles = _numberTitlesSwitch.GetActive();
-        foreach (var row in _mediaRows)
+        if(_controller.ToggleNumberTitles(_numberTitlesSwitch.GetActive()))
         {
-            row.UpdateTitle(_numberTitlesSwitch.GetActive());
+            foreach (var row in _mediaRows)
+            {
+                row.UpdateTitle(_numberTitlesSwitch.GetActive());
+            }
         }
     }
 

@@ -72,6 +72,10 @@ public class AddDownloadDialogController
     /// </summary>
     public MediaFileType PreviousMediaFileType => Configuration.Current.PreviousMediaFileType;
     /// <summary>
+    /// Whether or not to number titles
+    /// </summary>
+    public bool NumberTitles => Configuration.Current.NumberTitles;
+    /// <summary>
     /// The speed limit in the configuration
     /// </summary>
     public uint CurrentSpeedLimit => Configuration.Current.SpeedLimit;
@@ -116,20 +120,6 @@ public class AddDownloadDialogController
                 }
             }
             return -1;
-        }
-    }
-
-    /// <summary>
-    /// Whether or not to number titles
-    /// </summary>
-    public bool NumberTitles
-    {
-        get => Configuration.Current.NumberTitles;
-
-        set
-        {
-            Configuration.Current.NumberTitles = value;
-            Configuration.Current.Save();
         }
     }
 
@@ -189,12 +179,13 @@ public class AddDownloadDialogController
     /// Numbers the titles in a MediaUrlInfo object
     /// </summary>
     /// <param name="toggled">Whether or not to number titles</param>
-    public void ToggleNumberTitles(bool toggled)
+    /// <returns>True if successful, else false</returns>
+    public bool ToggleNumberTitles(bool toggled)
     {
-        var numberedRegex = new Regex(@"[0-9]+ - ", RegexOptions.None);
-        for (var i = 0; i < _mediaUrlInfo.MediaList.Count; i++)
+        if(_mediaUrlInfo != null)
         {
-            if(_mediaUrlInfo != null)
+            var numberedRegex = new Regex(@"[0-9]+ - ", RegexOptions.None);
+            for (var i = 0; i < _mediaUrlInfo.MediaList.Count; i++)
             {
                 if (toggled)
                 {
@@ -209,7 +200,11 @@ public class AddDownloadDialogController
                     }
                 }
             }
+            Configuration.Current.NumberTitles = toggled;
+            Configuration.Current.Save();
+            return true;
         }
+        return false;
     }
 
     /// <summary>
