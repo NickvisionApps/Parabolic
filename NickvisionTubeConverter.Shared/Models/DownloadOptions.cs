@@ -26,6 +26,10 @@ public class DownloadOptions
     /// </summary>
     public int AriaMinSplitSize { get; init; }
     /// <summary>
+    /// A comma separated list of language codes for subtitle downloads
+    /// </summary>
+    public string SubtitleLangs { get; init; }
+    /// <summary>
     /// Whether or not to embed media metadata in the downloaded file
     /// </summary>
     public bool EmbedMetadata { get; init; }
@@ -42,15 +46,17 @@ public class DownloadOptions
     /// <param name="cookiesPath">The path to the cookies file to use for yt-dlp</param>
     /// <param name="ariaMaxConnectionsPerServer">The maximum number of connections to one server for each download (-x)</param>
     /// <param name="ariaMinSplitSize">The minimum size of which to split a file (-k)</param>
+    /// <param name="subtitleLangs">A comma separated list of language codes for subtitle downloads</param>
     /// <param name="embedMetadata">Whether or not to embed media metadata in the downloaded file</param>
     /// <param name="embedChapters">Whether or not to embed chapters in the downloaded file</param>
-    public DownloadOptions(bool overwriteExistingFiles, bool useAria, string? cookiesPath, int ariaMaxConnectionsPerServer, int ariaMinSplitSize, bool embedMetadata, bool embedChapters)
+    public DownloadOptions(bool overwriteExistingFiles, bool useAria, string? cookiesPath, int ariaMaxConnectionsPerServer, int ariaMinSplitSize, string subtitleLangs, bool embedMetadata, bool embedChapters)
     {
         OverwriteExistingFiles = overwriteExistingFiles;
         UseAria = useAria;
         CookiesPath = cookiesPath;
         AriaMaxConnectionsPerServer = ariaMaxConnectionsPerServer;
         AriaMinSplitSize = ariaMinSplitSize;
+        SubtitleLangs = subtitleLangs;
         EmbedMetadata = embedMetadata;
         EmbedChapters = embedChapters;
     }

@@ -111,6 +111,16 @@ public class PreferencesViewController
     }
 
     /// <summary>
+    /// A comma separated list of language codes for subtitle downloads
+    /// </summary>
+    public string SubtitleLangs
+    {
+        get => Configuration.Current.SubtitleLangs;
+
+        set => Configuration.Current.SubtitleLangs = value;
+    }
+
+    /// <summary>
     /// The path of the cookies file to use for yt-dlp
     /// </summary>
     public string CookiesPath
