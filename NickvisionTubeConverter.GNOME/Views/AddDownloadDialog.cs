@@ -329,6 +329,7 @@ public partial class AddDownloadDialog : Adw.Window
                     if (result)
                     {
                         _urlRow.SetText(clipboardText);
+                        _urlRow.SelectRegion(0, -1);
                     }
                 }
             };
