@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-12 20:33-0400\n"
+"POT-Creation-Date: 2023-06-12 22:51-0400\n"
 "PO-Revision-Date: 2023-05-30 20:10+0100\n"
 "Last-Translator: Ricardo Simões xmcorporation.com <simplelogin-"
 "newsletter.635e2@aleeas.com>\n"
@@ -19,17 +19,17 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 3.2.2\n"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:710
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:726
 #, csharp-format
 msgid "\"{0}\" has finished downloading."
 msgstr "\"{0}\" terminou de ser transferido."
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:710
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:726
 #, csharp-format
 msgid "\"{0}\" has finished with an error!"
 msgstr "\"{0}\" terminou com um erro!"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:278
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:274
 msgid "(Configurable in preferences)"
 msgstr "(Configurável nas preferências)"
 
@@ -43,7 +43,7 @@ msgstr "{0:f1} B/s"
 msgid "{0:f1} GiB/s"
 msgstr "{0:f1} GiB/s"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:278
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:274
 #: ../../../Helpers/SpeedFormatter.cs:28
 #, csharp-format
 msgid "{0:f1} KiB/s"
@@ -61,8 +61,8 @@ msgid_plural "{0} downloads — {1:f1}% ({2})"
 msgstr[0] "{0} transferência — {1:f1}% ({2})"
 msgstr[1] "{0} transferências — {1:f1}% ({2})"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:470
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:583
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:465
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:579
 #, csharp-format
 msgid "{0} of {1} items"
 msgid_plural "{0} of {1} items"
@@ -81,12 +81,12 @@ msgstr "Adicionar Transferência"
 msgid "Advanced Options"
 msgstr "Opções Avançadas"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:714
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:730
 msgid "All downloads have finished."
 msgstr "Terminaram todas as transferências."
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:430
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:443
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:425
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:438
 msgid "Audio"
 msgstr "Audio"
 
@@ -103,7 +103,7 @@ msgstr "Fechar e Parar Transferências?"
 msgid "Credential"
 msgstr ""
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:509
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:525
 #, csharp-format
 msgid ""
 "David Lapshin {0}\n"
@@ -138,11 +138,11 @@ msgstr ""
 msgid "Download"
 msgstr "Transferência"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:710
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:726
 msgid "Download Finished"
 msgstr "Transferência Terminada"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:710
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:726
 msgid "Download Finished With Error"
 msgstr "Transferência Terminada com Erro"
 
@@ -150,8 +150,14 @@ msgstr "Transferência Terminada com Erro"
 msgid "Download log was copied to clipboard."
 msgstr "O Histórico de transferências for copiado para o clipboard."
 
-#: ../../../Models/Download.cs:340
+#: ../../../Models/Download.cs:325
 msgid "Download using aria2 has started"
+msgstr "Transferência a usar aria2 iniciou-se"
+
+#: ../../../Models/Download.cs:336
+#, fuzzy
+#| msgid "Download using aria2 has started"
+msgid "Download using ffmpeg has started"
 msgstr "Transferência a usar aria2 iniciou-se"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Program.cs:50
@@ -159,17 +165,17 @@ msgstr "Transferência a usar aria2 iniciou-se"
 msgid "Download web video and audio"
 msgstr ""
 
-#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:181
+#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:177
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:115
 msgid "Downloading"
 msgstr "A transferir"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:172
+#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:167
 #, csharp-format
 msgid "Downloading {0:f2}% ({1})"
 msgstr "A transferir {0:f2}% ({1})"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:714
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:730
 msgid "Downloads Finished"
 msgstr "Transferências Terminadas"
 
@@ -178,22 +184,22 @@ msgstr "Transferências Terminadas"
 msgid "Enable"
 msgstr ""
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:499
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:495
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:292
 msgid "End Time"
 msgstr ""
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:519
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:515
 #, fuzzy
 #| msgid "Media URL (Invalid)"
 msgid "End Time (Invalid)"
 msgstr "URL da Media (Inválido)"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:207
+#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:203
 msgid "Error"
 msgstr "Erro"
 
-#: ../../../Models/Download.cs:180
+#: ../../../Models/Download.cs:177
 msgid "File already exists, and overwriting is disallowed"
 msgstr "O ficheiro já existe, e a sobrescrita não é permitida"
 
@@ -212,24 +218,24 @@ msgstr ""
 msgid "Keyring has not been unlocked."
 msgstr ""
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:505
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:521
 msgid "List of supported sites"
 msgstr "Lista de sítios suportados"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:506
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:522
 msgid "Matrix Chat"
 msgstr "Matrix Chat"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:471
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:466
 msgid "Maximum Quality"
 msgstr "Qualidade Máxima"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:453
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:448
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:57
 msgid "Media URL"
 msgstr "URL da Media"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:422
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:417
 msgid "Media URL (Invalid)"
 msgstr "URL da Media (Inválido)"
 
@@ -244,7 +250,7 @@ msgstr "Nome do Ficheiro"
 msgid "Name (Empty)"
 msgstr ""
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:507
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:523
 #, csharp-format
 msgid ""
 "Nicholas Logozzo {0}\n"
@@ -253,7 +259,7 @@ msgstr ""
 "Nicholas Logozzo {0}\n"
 "Contribuintes no GitHub ❤️ {1}"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:508
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:524
 #, csharp-format
 msgid ""
 "Nicholas Logozzo {0}\n"
@@ -293,16 +299,16 @@ msgstr "Playlist"
 msgid "Preparing..."
 msgstr "A preparar..."
 
-#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:190
+#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:186
 msgid "Processing..."
 msgstr "A processar..."
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:495
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:491
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:140
 msgid "Save Folder"
 msgstr "Pasta de Destino"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:509
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:505
 msgid "Save Folder (Invalid)"
 msgstr "Pasta de Destino (Inválida)"
 
@@ -312,7 +318,7 @@ msgstr "Pasta de Destino (Inválida)"
 msgid "Select Cookies File"
 msgstr "Selecione Ficheiro de Cookies"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:554
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:550
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:147
 msgid "Select Save Folder"
 msgstr "Selecione Pasta de Destino"
@@ -334,26 +340,26 @@ msgstr ""
 msgid "Some downloads finished with errors!"
 msgstr "Algumas transferências terminaram com erros!"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:497
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:493
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:287
 msgid "Start Time"
 msgstr ""
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:514
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:510
 #, fuzzy
 #| msgid "Save Folder (Invalid)"
 msgid "Start Time (Invalid)"
 msgstr "Pasta de Destino (Inválida)"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:224
+#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:220
 msgid "Stopped"
 msgstr "Parado"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:207
+#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:203
 msgid "Success"
 msgstr "Sucesso"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:501
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:517
 msgid ""
 "The authors of Nickvision Tube Converter are not responsible/liable for any "
 "misuse of this program that may violate local copyright/DMCA laws. Users use "
@@ -368,7 +374,7 @@ msgstr ""
 msgid "This action is irreversible. Are you sure you want to delete it?"
 msgstr ""
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:510
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:526
 msgid "translator-credits"
 msgstr "Ricardo Simões https://xmcorporation.com"
 
@@ -409,7 +415,7 @@ msgstr ""
 msgid "URL (Invalid)"
 msgstr "URL da Media (Inválido)"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:345
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:341
 msgid "Use manual credential"
 msgstr ""
 
@@ -427,12 +433,12 @@ msgstr "Interface do Utilizador"
 msgid "Username (Empty)"
 msgstr "Interface do Utilizador"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:418
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:413
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:82
 msgid "Validate"
 msgstr "Validar"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:443
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:438
 msgid "Video"
 msgstr "Video"
 
