@@ -44,7 +44,7 @@ parts:
       - -usr/share/doc
   tube-converter:
     after: [ ffmpeg ]
-    plugin: dump
+    plugin: nil
     source: https://github.com/NickvisionApps/TubeConverter.git
     source-branch: 'snap'
     source-depth: 1
@@ -58,6 +58,7 @@ parts:
       chmod +x ./dotnet-install.sh
       ./dotnet-install.sh --channel 7.0
       pip install --prefix=$CRAFT_PART_INSTALL/usr yt-dlp==2023.03.04 psutil==5.9.5
+      patch -p1 < $CRAFT_PROJECT_DIR/snap/tube-converter.patch
     override-build: |
       set -eux
       export DOTNET_ROOT=$HOME/.dotnet
@@ -68,6 +69,11 @@ parts:
       dotnet cake --target=Install --destdir=$CRAFT_PART_INSTALL
       sed -i "2 i export TC_PYTHON_SO=\$SNAP/gnome-platform/usr/lib/$CRAFT_ARCH_TRIPLET/libpython3.10.so.1.0" $CRAFT_PART_INSTALL/snap/tube-converter/current/usr/bin/org.nickvision.tubeconverter
       sed -e '1c#!/usr/bin/python3' -i $CRAFT_PART_INSTALL/usr/local/bin/*
+      mkdir -p $CRAFT_PART_INSTALL/meta/gui
+      cp -r $CRAFT_PART_INSTALL/snap/tube-converter/current/usr/share/icons $CRAFT_PART_INSTALL/meta/gui/
+      for i in `find $CRAFT_PART_INSTALL/meta/gui/icons -name "*.svg" -o -name "*.png"`; do
+        mv $i "`dirname $i`/snap.$CRAFT_PROJECT_NAME.`basename $i`"
+      done
     prime:
       - usr/bin/*
       - usr/lib/*
@@ -114,7 +120,6 @@ apps:
       TC_PYTHON_SO: $SNAP/gnome-platform/usr/lib/$CRAFT_ARCH_TRIPLET/libpython3.10.so.1.0
       PYTHONPATH: $SNAP/usr/lib/python3.10/dist-packages:$PYTHONPATH
     plugs:
-      - home
       - network
       - network-status
       - mount-observe
