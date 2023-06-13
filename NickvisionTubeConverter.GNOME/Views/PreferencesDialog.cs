@@ -47,6 +47,7 @@ public partial class PreferencesDialog : Adw.PreferencesWindow
     [Gtk.Connect] private readonly Gtk.Button _ariaMaxConnectionsPerServerResetButton;
     [Gtk.Connect] private readonly Gtk.SpinButton _ariaMinSplitSizeSpin;
     [Gtk.Connect] private readonly Gtk.Button _ariaMinSplitSizeResetButton;
+    [Gtk.Connect] private readonly Adw.EntryRow _subtitleLangsRow;
     [Gtk.Connect] private readonly Adw.ViewStack _cookiesViewStack;
     [Gtk.Connect] private readonly Gtk.Button _selectCookiesFileButton;
     [Gtk.Connect] private readonly Gtk.Button _cookiesFileButton;
@@ -77,6 +78,7 @@ public partial class PreferencesDialog : Adw.PreferencesWindow
                 OnThemeChanged();
             }
         };
+        _subtitleLangsRow.OnApply += SubtitleLangsChanged;
         _selectCookiesFileButton.OnClicked += SelectCookiesFile;
         _cookiesFileButton.OnClicked += SelectCookiesFile;
         _unsetCookiesFileButton.OnClicked += UnsetCookiesFile;
@@ -96,6 +98,7 @@ public partial class PreferencesDialog : Adw.PreferencesWindow
         _ariaMaxConnectionsPerServerResetButton.OnClicked += (sender, e) => _ariaMaxConnectionsPerServerSpin.SetValue(16);
         _ariaMinSplitSizeSpin.SetValue(_controller.AriaMinSplitSize);
         _ariaMinSplitSizeResetButton.OnClicked += (sender, e) => _ariaMinSplitSizeSpin.SetValue(20);
+        _subtitleLangsRow.SetText(_controller.SubtitleLangs);
         if (File.Exists(_controller.CookiesPath))
         {
             _cookiesViewStack.SetVisibleChildName("file-selected");
@@ -153,6 +156,28 @@ public partial class PreferencesDialog : Adw.PreferencesWindow
             Theme.Dark => Adw.ColorScheme.ForceDark,
             _ => Adw.ColorScheme.PreferLight
         };
+    }
+
+    /// <summary>
+    /// Occurs when the subtitle langs row is applied
+    /// </summary>
+    /// <param name="sender">Adw.EntryRow</param>
+    /// <param name="e">EventArgs</param>
+    private void SubtitleLangsChanged(Adw.EntryRow sender, EventArgs e)
+    {
+        _subtitleLangsRow.SetTitle(_("Subtitle Languages (Comma-Separated)"));
+        _subtitleLangsRow.RemoveCssClass("error");
+        var valid = _controller.ValidateSubtitleLangs(_subtitleLangsRow.GetText());
+        if(valid)
+        {
+            _controller.SubtitleLangs = _subtitleLangsRow.GetText();
+            _controller.SaveConfiguration();
+        }
+        else
+        {
+            _subtitleLangsRow.SetTitle(_("Subtitle Languages (Invalid)"));
+            _subtitleLangsRow.AddCssClass("error");
+        }
     }
 
     /// <summary>

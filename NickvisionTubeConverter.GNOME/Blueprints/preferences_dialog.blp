@@ -187,7 +187,45 @@ Adw.PreferencesWindow _root {
           }
         }
       }
-      
+
+      Adw.EntryRow _subtitleLangsRow {
+        title: _("Subtitle Languages (Comma-Separated)");
+        show-apply-button: true;
+
+        [prefix]
+        Gtk.Image {
+          icon-name: "subtitles-symbolic";
+        }
+
+        [suffix]
+        Gtk.MenuButton {
+          valign: center;
+          direction: none;
+          icon-name: "dialog-question-symbolic";
+
+          popover: Gtk.Popover {
+            child: Gtk.Box {
+                orientation: vertical;
+                spacing: 6;
+                margin-start: 6;
+                margin-top: 6;
+                margin-end: 6;
+                margin-bottom: 6;
+
+                Adw.Clamp {
+                  maximum-size: 300;
+                  child: Gtk.Label {
+                    wrap: true;
+                    label: _("Some sites use two-letter language codes, whereas others use three-letter. For example, \"en\" and \"eng\" are both used for English.\n\nPlease specify both two-letter and three-letter codes for your languages for the best results.");
+                  };
+                }
+            };
+          };
+
+          styles ["flat"]
+        }
+      }
+
       Adw.ActionRow {
         title: _("Cookies File");
         subtitle: _("A cookies file can be provided to yt-dlp to allow downloading media that requires a login.");

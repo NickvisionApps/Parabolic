@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Text.Json;
@@ -59,6 +60,10 @@ public class Configuration
     /// </summary>
     public int AriaMinSplitSize { get; set; }
     /// <summary>
+    /// A comma separated list of language codes for subtitle downloads
+    /// </summary>
+    public string SubtitleLangs { get; set; }
+    /// <summary>
     /// The path of the cookies file to use for yt-dlp
     /// </summary>
     public string CookiesPath { get; set; }
@@ -118,6 +123,7 @@ public class Configuration
         UseAria = false;
         AriaMaxConnectionsPerServer = 16;
         AriaMinSplitSize = 20;
+        SubtitleLangs = $"{CultureInfo.CurrentCulture.TwoLetterISOLanguageName},{CultureInfo.CurrentCulture.ThreeLetterISOLanguageName}";
         CookiesPath = "";
         DisallowConversions = false;
         EmbedMetadata = true;

@@ -1,4 +1,8 @@
 ﻿using NickvisionTubeConverter.Shared.Models;
+using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
 
 namespace NickvisionTubeConverter.Shared.Controllers;
 
@@ -7,6 +11,8 @@ namespace NickvisionTubeConverter.Shared.Controllers;
 /// </summary>
 public class PreferencesViewController
 {
+    private readonly List<string> _supportedLangCodes;
+
     /// <summary>
     /// Gets the AppInfo object
     /// </summary>
@@ -17,7 +23,11 @@ public class PreferencesViewController
     /// </summary>
     internal PreferencesViewController()
     {
-        
+        var cultures = CultureInfo.GetCultures(CultureTypes.AllCultures).Where(x => !string.IsNullOrEmpty(x.Name)).ToArray();
+        var codes = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+        codes.UnionWith(cultures.Select(x => x.TwoLetterISOLanguageName));
+        codes.UnionWith(cultures.Select(x => x.ThreeLetterISOLanguageName));
+        _supportedLangCodes = codes.ToList();
     }
 
     /// <summary>
@@ -111,6 +121,23 @@ public class PreferencesViewController
     }
 
     /// <summary>
+    /// A comma separated list of language codes for subtitle downloads
+    /// </summary>
+    public string SubtitleLangs
+    {
+        get => Configuration.Current.SubtitleLangs;
+
+        set
+        {
+            if(value[value.Length - 1] == ',')
+            {
+                value = value.Remove(value.Length - 1);
+            }
+            Configuration.Current.SubtitleLangs = value;
+        }
+    }
+
+    /// <summary>
     /// The path of the cookies file to use for yt-dlp
     /// </summary>
     public string CookiesPath
@@ -158,6 +185,32 @@ public class PreferencesViewController
         get => Configuration.Current.EmbedChapters;
 
         set => Configuration.Current.EmbedChapters = value;
+    }
+
+    /// <summary>
+    /// Validates a subtitles langs string
+    /// </summary>
+    /// <param name="s">The comma-separated list of lang codes</param>
+    /// <returns>True if valid, else false</returns>
+    public bool ValidateSubtitleLangs(string s)
+    {
+        if(string.IsNullOrEmpty(s))
+        {
+            return false;
+        }
+        if(s[s.Length - 1] == ',')
+        {
+            s = s.Remove(s.Length - 1);
+        }
+        var codes = s.Split(",").Select(x => x.Trim());
+        foreach(var code in codes)
+        {
+            if(!_supportedLangCodes.Contains(code))
+            {
+                return false;
+            }
+        }
+        return true;
     }
 
     /// <summary>
