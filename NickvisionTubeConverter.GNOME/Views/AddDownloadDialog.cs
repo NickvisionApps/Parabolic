@@ -135,11 +135,7 @@ public partial class AddDownloadDialog : Adw.Window
                 });
             }
         };
-        _backButton.OnClicked += (sender, e) =>
-        {
-            _viewStack.SetVisibleChildName("pageDownload");
-            SetDefaultWidget(_addDownloadButton);
-        };
+        _backButton.OnClicked += (sender, e) => _viewStack.SetVisibleChildName("pageDownload");
         _authRow.OnNotify += (sender, e) =>
         {
             if(e.Pspec.GetName() == "enable-expansion")
@@ -367,7 +363,6 @@ public partial class AddDownloadDialog : Adw.Window
         if (_viewStack.GetVisibleChildName() == "pagePlaylist")
         {
             _viewStack.SetVisibleChildName("pageDownload");
-            SetDefaultWidget(_addDownloadButton);
             _playlistPage.SetVisible(false);
         }
         else
@@ -477,6 +472,7 @@ public partial class AddDownloadDialog : Adw.Window
             else
             {
                 var row = new MediaRow(_controller.MediaList[0]);
+                row.SetActivatesDefault(true);
                 _mediaRows.Add(row);
                 _mediaGroup.SetVisible(true);
                 _mediaGroup.Add(row);
