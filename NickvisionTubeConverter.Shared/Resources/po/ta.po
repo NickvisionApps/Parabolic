@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-12 20:33-0400\n"
+"POT-Creation-Date: 2023-06-12 22:51-0400\n"
 "PO-Revision-Date: 2023-06-13 01:53+0000\n"
 "Last-Translator: \"K.B.Dharun Krishna\" <kbdharunkrishna@gmail.com>\n"
 "Language-Team: Tamil <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -19,17 +19,17 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Weblate 4.18-dev\n"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:710
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:726
 #, csharp-format
 msgid "\"{0}\" has finished downloading."
 msgstr "\"{0}\" வின் பதிவிறக்கம் முடிந்தது."
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:710
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:726
 #, csharp-format
 msgid "\"{0}\" has finished with an error!"
 msgstr "\"{0}\" பிழையுடன் முடிந்தது!"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:278
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:274
 msgid "(Configurable in preferences)"
 msgstr "(விருப்பங்களில் கட்டமைக்கக்கூடியது)"
 
@@ -43,7 +43,7 @@ msgstr "{0:f1} பைட்டுகள்/வினாடி (B/s)"
 msgid "{0:f1} GiB/s"
 msgstr "{0:f1} ஜிபிபைட்/வினாடி (GiB/s)"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:278
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:274
 #: ../../../Helpers/SpeedFormatter.cs:28
 #, csharp-format
 msgid "{0:f1} KiB/s"
@@ -61,8 +61,8 @@ msgid_plural "{0} downloads — {1:f1}% ({2})"
 msgstr[0] "{0} பதிவிறக்கம் — {1:f1}% ({2})"
 msgstr[1] "{0} பதிவிறக்கங்கள் — {1:f1}% ({2})"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:470
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:583
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:465
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:579
 #, csharp-format
 msgid "{0} of {1} items"
 msgid_plural "{0} of {1} items"
@@ -81,12 +81,12 @@ msgstr "பதிவிறக்கத்தைச் சேர்க்கவ�
 msgid "Advanced Options"
 msgstr "மேம்பட்ட விருப்பங்கள்"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:714
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:730
 msgid "All downloads have finished."
 msgstr "அனைத்து பதிவிறக்கங்களும் முடிந்துவிட்டன."
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:430
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:443
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:425
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:438
 msgid "Audio"
 msgstr "ஒலி அமைவு"
 
@@ -103,7 +103,7 @@ msgstr "பதிவிறக்கங்களை மூடிவிட்ட�
 msgid "Credential"
 msgstr "நற்சான்றிதழ்"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:509
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:525
 #, csharp-format
 msgid ""
 "David Lapshin {0}\n"
@@ -140,11 +140,11 @@ msgstr ""
 msgid "Download"
 msgstr "பதிவிறக்கு"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:710
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:726
 msgid "Download Finished"
 msgstr "பதிவிறக்கம் முடிந்தது"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:710
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:726
 msgid "Download Finished With Error"
 msgstr "பதிவிறக்கம் பிழையுடன் முடிந்தது"
 
@@ -152,8 +152,14 @@ msgstr "பதிவிறக்கம் பிழையுடன் முட�
 msgid "Download log was copied to clipboard."
 msgstr "பதிவிறக்கப் பதிவு கிளிப்போர்டுக்கு நகலெடுக்கப்பட்டது."
 
-#: ../../../Models/Download.cs:340
+#: ../../../Models/Download.cs:325
 msgid "Download using aria2 has started"
+msgstr "aria2 ஐப் பயன்படுத்தி பதிவிறக்கம் தொடங்கப்பட்டது"
+
+#: ../../../Models/Download.cs:336
+#, fuzzy
+#| msgid "Download using aria2 has started"
+msgid "Download using ffmpeg has started"
 msgstr "aria2 ஐப் பயன்படுத்தி பதிவிறக்கம் தொடங்கப்பட்டது"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Program.cs:50
@@ -161,17 +167,17 @@ msgstr "aria2 ஐப் பயன்படுத்தி பதிவிறக�
 msgid "Download web video and audio"
 msgstr "இணைய காணொளி மற்றும் ஒலி அமைவைப் பதிவிறக்கவும்"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:181
+#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:177
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:115
 msgid "Downloading"
 msgstr "பதிவிறக்குகிறது"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:172
+#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:167
 #, csharp-format
 msgid "Downloading {0:f2}% ({1})"
 msgstr "பதிவிறக்குகிறது {0:f2}% ({1})"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:714
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:730
 msgid "Downloads Finished"
 msgstr "பதிவிறக்கங்கள் முடிந்தது"
 
@@ -180,22 +186,22 @@ msgstr "பதிவிறக்கங்கள் முடிந்தது"
 msgid "Enable"
 msgstr "இயக்கு"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:499
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:495
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:292
 msgid "End Time"
 msgstr ""
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:519
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:515
 #, fuzzy
 #| msgid "Media URL (Invalid)"
 msgid "End Time (Invalid)"
 msgstr "ஊடகத்தின் URL (தவறானது)"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:207
+#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:203
 msgid "Error"
 msgstr "பிழை"
 
-#: ../../../Models/Download.cs:180
+#: ../../../Models/Download.cs:177
 msgid "File already exists, and overwriting is disallowed"
 msgstr "கோப்பு ஏற்கனவே உள்ளது, மேலெழுத அனுமதிக்கப்படவில்லை"
 
@@ -214,24 +220,24 @@ msgstr "சாவி வளையம்"
 msgid "Keyring has not been unlocked."
 msgstr "சாவி வளையம் திறக்கப்படவில்லை."
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:505
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:521
 msgid "List of supported sites"
 msgstr "ஆதரிக்கப்படும் தளங்களின் பட்டியல்"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:506
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:522
 msgid "Matrix Chat"
 msgstr "மேட்ரிக்ஸ் மன்றம்"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:471
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:466
 msgid "Maximum Quality"
 msgstr "அதிகபட்ச தரம்"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:453
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:448
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:57
 msgid "Media URL"
 msgstr "ஊடகத்தின் URL"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:422
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:417
 msgid "Media URL (Invalid)"
 msgstr "ஊடகத்தின் URL (தவறானது)"
 
@@ -244,7 +250,7 @@ msgstr "பெயர்"
 msgid "Name (Empty)"
 msgstr "பெயர் (காலி)"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:507
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:523
 #, csharp-format
 msgid ""
 "Nicholas Logozzo {0}\n"
@@ -253,7 +259,7 @@ msgstr ""
 "நிக்கோலஸ் லோகோஸோ {0}\n"
 "GitHub இல் பங்களிப்பாளர்கள் ❤️ {1}"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:508
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:524
 #, csharp-format
 msgid ""
 "Nicholas Logozzo {0}\n"
@@ -293,16 +299,16 @@ msgstr "பாடல் பட்டியல்"
 msgid "Preparing..."
 msgstr "தயாராகிறது..."
 
-#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:190
+#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:186
 msgid "Processing..."
 msgstr "செயலாக்குகிறது..."
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:495
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:491
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:140
 msgid "Save Folder"
 msgstr "கோப்புறையை சேமி"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:509
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:505
 msgid "Save Folder (Invalid)"
 msgstr "கோப்புறையைச் சேமி (தவறானது)"
 
@@ -312,7 +318,7 @@ msgstr "கோப்புறையைச் சேமி (தவறானது
 msgid "Select Cookies File"
 msgstr "குக்கீகள் கோப்பைத் தேர்ந்தெடுக்கவும்"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:554
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:550
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:147
 msgid "Select Save Folder"
 msgstr "சேமி கோப்புறையை தேர்ந்தெடுக்கவும்"
@@ -333,26 +339,26 @@ msgstr ""
 msgid "Some downloads finished with errors!"
 msgstr "சில பதிவிறக்கங்கள் பிழைகளுடன் முடிந்தது!"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:497
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:493
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:287
 msgid "Start Time"
 msgstr ""
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:514
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:510
 #, fuzzy
 #| msgid "Save Folder (Invalid)"
 msgid "Start Time (Invalid)"
 msgstr "கோப்புறையைச் சேமி (தவறானது)"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:224
+#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:220
 msgid "Stopped"
 msgstr "நிறுத்தப்பட்டது"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:207
+#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:203
 msgid "Success"
 msgstr "வெற்றி"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:501
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:517
 msgid ""
 "The authors of Nickvision Tube Converter are not responsible/liable for any "
 "misuse of this program that may violate local copyright/DMCA laws. Users use "
@@ -366,7 +372,7 @@ msgstr ""
 msgid "This action is irreversible. Are you sure you want to delete it?"
 msgstr "இந்த நடவடிக்கை மீள முடியாதது. நிச்சயமாக அதை நீக்க வேண்டுமா?"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:510
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:526
 msgid "translator-credits"
 msgstr "K.B.Dharun Krishna http://github.com/kbdharun"
 
@@ -400,7 +406,7 @@ msgstr "URL"
 msgid "URL (Invalid)"
 msgstr "URL (தவறானது)"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:345
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:341
 msgid "Use manual credential"
 msgstr "கைமுறை நற்சான்றிதழைப் பயன்படுத்தவும்"
 
@@ -414,12 +420,12 @@ msgstr "பயனர் பெயர்"
 msgid "Username (Empty)"
 msgstr "பயனர் பெயர் (காலி)"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:418
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:413
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:82
 msgid "Validate"
 msgstr "சரிபார்க்கவும்"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:443
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:438
 msgid "Video"
 msgstr "காணொளி"
 
