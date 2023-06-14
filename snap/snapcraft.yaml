@@ -21,10 +21,6 @@ parts:
       - PYTHONPATH: ""
     python-packages:
       - psutil==5.9.5
-      - certifi==2023.5.7
-    override-pull: |
-      craftctl default
-      sed -i 's/^certifi\b/#\0/' requirements.txt
     stage:
       # WORKAROUND: Skip venv from python plugin
       - -usr/bin/activate
