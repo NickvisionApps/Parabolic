@@ -66,9 +66,10 @@ parts:
       - libgnutls28-dev
       - libmp3lame-dev
       - libvorbis-dev
-    stage-packages:
-      - libmp3lame0
     prime:
+      - -usr/lib/pkgconfig
+      - -usr/lib/*/pkgconfig
+      - -usr/share/pkgconfig
       - -usr/include
       - -usr/share/ffmpeg
       - -usr/share/doc
@@ -111,17 +112,17 @@ parts:
     plugin: nil
     stage-packages:
       - aria2
+      - libc-ares2
+      - libaria2-0
+      - libmp3lame0
     prime:
-      - -usr/share/doc
-      - -usr/share/man
-  cleanup:
-    after: [ tube-converter, ffmpeg, deps ]
-    plugin: nil
-    override-prime: |
-      set -eux
-      rm -rf $CRAFT_PRIME/usr/share/pkgconfig
-      rm -rf $CRAFT_PRIME/usr/lib/pkgconfig
-      rm -rf $CRAFT_PRIME/usr/lib/*/libfontconfig*      
+      - usr/lib/x86_64-linux-gnu/libaria2.so.0
+      - usr/lib/x86_64-linux-gnu/libaria2.so.0.0.0
+      - usr/lib/x86_64-linux-gnu/libmp3lame.so.0
+      - usr/lib/x86_64-linux-gnu/libmp3lame.so.0.0.0
+      - usr/lib/x86_64-linux-gnu/libcares.so.2
+      - usr/lib/x86_64-linux-gnu/libcares.so.2.5.1
+      - usr/bin/aria2c
       
 slots:
   # for GtkApplication registration
