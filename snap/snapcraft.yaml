@@ -19,6 +19,8 @@ parts:
       # WORKAROUND: The python plugin is broken with gnome extension
       - PATH: ${CRAFT_PART_INSTALL}/bin:${PATH}
       - PYTHONPATH: ""
+    python-packages:
+      - psutil==5.9.5
     override-pull: |
       craftctl default
       sed -i 's/^certifi\b/#\0/' requirements.txt
