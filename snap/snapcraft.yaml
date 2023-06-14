@@ -10,6 +10,44 @@ architectures:
   #- build-on: armhf
 
 parts:
+  yt-dlp:
+    # Missing optional dependencies atomicparsley, mpv, phantomjs and rtmpdump
+    plugin: python
+    source: https://github.com/yt-dlp/yt-dlp.git
+    source-tag: '2023.03.04'
+    build-environment:
+      # WORKAROUND: The python plugin is broken with gnome extension
+      - PATH: ${CRAFT_PART_INSTALL}/bin:${PATH}
+      - PYTHONPATH: ""
+    python-packages:
+      - psutil==5.9.5
+    stage:
+      # WORKAROUND: Skip venv from python plugin
+      - -usr/bin/activate
+      - -usr/bin/activate.csh
+      - -usr/bin/activate.fish
+      - -usr/bin/Activate.ps1
+      - -usr/bin/python
+      - -usr/bin/python3
+      - -usr/bin/python3.10
+      - -usr/bin/pip
+      - -usr/bin/pip3
+      - -usr/bin/pip3.10
+      - -usr/bin/wheel
+      - -usr/lib/*/*/pip*
+      - -usr/lib/*/*/_dist*
+      - -usr/lib/*/*/dist*
+      - -usr/lib/*/*/setup*
+      - -usr/lib/*/*/wheel*
+      - -usr/lib/*/*/pkg*
+      - -pyvenv.cfg
+      - -lib
+      - -lib64
+      - -include
+    organize:
+      bin: usr/bin
+      lib/python3.10/site-packages: usr/lib/python3.10/dist-packages
+
   ffmpeg:
     # WORKAROUND:
     # Build from source because the ffmpeg package installs libraries as dependencies
@@ -36,9 +74,10 @@ parts:
       - libgnutls28-dev
       - libmp3lame-dev
       - libvorbis-dev
-    stage-packages:
-      - libmp3lame0
     prime:
+      - -usr/lib/pkgconfig
+      - -usr/lib/*/pkgconfig
+      - -usr/share/pkgconfig
       - -usr/include
       - -usr/share/ffmpeg
       - -usr/share/doc
@@ -57,7 +96,6 @@ parts:
       wget https://dot.net/v1/dotnet-install.sh -O dotnet-install.sh
       chmod +x ./dotnet-install.sh
       ./dotnet-install.sh --channel 7.0
-      pip install --prefix=$CRAFT_PART_INSTALL/usr yt-dlp==2023.03.04 psutil==5.9.5
       patch -p1 < $CRAFT_PROJECT_DIR/snap/tube-converter.patch
     override-build: |
       set -eux
@@ -68,40 +106,31 @@ parts:
       dotnet cake --target=Publish --prefix=/snap/tube-converter/current/usr --ui=gnome --self-contained
       dotnet cake --target=Install --destdir=$CRAFT_PART_INSTALL
       sed -i "2 i export TC_PYTHON_SO=\$SNAP/gnome-platform/usr/lib/$CRAFT_ARCH_TRIPLET/libpython3.10.so.1.0" $CRAFT_PART_INSTALL/snap/tube-converter/current/usr/bin/org.nickvision.tubeconverter
-      sed -e '1c#!/usr/bin/python3' -i $CRAFT_PART_INSTALL/usr/local/bin/*
       mkdir -p $CRAFT_PART_INSTALL/meta/gui
       cp -r $CRAFT_PART_INSTALL/snap/tube-converter/current/usr/share/icons $CRAFT_PART_INSTALL/meta/gui/
       for i in `find $CRAFT_PART_INSTALL/meta/gui/icons -name "*.svg" -o -name "*.png"`; do
         mv $i "`dirname $i`/snap.$CRAFT_PROJECT_NAME.`basename $i`"
       done
     prime:
-      - usr/bin/*
-      - usr/lib/*
-      - usr/share/applications/*
-      - usr/share/dbus-1/*
-      - usr/share/icons/* 
-      - usr/share/locale/*
-      - usr/share/metainfo/*
-      - usr/share/org.nickvision.tubeconverter/*
+      - -snap/tube-converter
     organize:
-      usr/local: usr
       snap/tube-converter/current: .
     parse-info: [usr/share/metainfo/org.nickvision.tubeconverter.metainfo.xml]
   deps:
     plugin: nil
     stage-packages:
       - aria2
+      - libc-ares2
+      - libaria2-0
+      - libmp3lame0
     prime:
-      - -usr/share/doc
-      - -usr/share/man
-  cleanup:
-    after: [ tube-converter, ffmpeg, deps ]
-    plugin: nil
-    override-prime: |
-      set -eux
-      rm -rf $CRAFT_PRIME/usr/share/pkgconfig
-      rm -rf $CRAFT_PRIME/usr/lib/pkgconfig
-      rm -rf $CRAFT_PRIME/usr/lib/*/libfontconfig*      
+      - usr/lib/x86_64-linux-gnu/libaria2.so.0
+      - usr/lib/x86_64-linux-gnu/libaria2.so.0.0.0
+      - usr/lib/x86_64-linux-gnu/libmp3lame.so.0
+      - usr/lib/x86_64-linux-gnu/libmp3lame.so.0.0.0
+      - usr/lib/x86_64-linux-gnu/libcares.so.2
+      - usr/lib/x86_64-linux-gnu/libcares.so.2.5.1
+      - usr/bin/aria2c
       
 slots:
   # for GtkApplication registration
