@@ -103,16 +103,8 @@ parts:
         mv $i "`dirname $i`/snap.$CRAFT_PROJECT_NAME.`basename $i`"
       done
     prime:
-      - usr/bin/*
-      - usr/lib/*
-      - usr/share/applications/*
-      - usr/share/dbus-1/*
-      - usr/share/icons/* 
-      - usr/share/locale/*
-      - usr/share/metainfo/*
-      - usr/share/org.nickvision.tubeconverter/*
+      - -snap/tube-converter
     organize:
-      usr/local: usr
       snap/tube-converter/current: .
     parse-info: [usr/share/metainfo/org.nickvision.tubeconverter.metainfo.xml]
   deps:
