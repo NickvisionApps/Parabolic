@@ -21,6 +21,7 @@ parts:
       - PYTHONPATH: ""
     python-packages:
       - psutil==5.9.5
+      - certifi==2023.5.7
     override-pull: |
       craftctl default
       sed -i 's/^certifi\b/#\0/' requirements.txt
@@ -36,8 +37,17 @@ parts:
       - -usr/bin/pip
       - -usr/bin/pip3
       - -usr/bin/pip3.10
+      - -usr/bin/wheel
       - -usr/lib/*/*/pip*
+      - -usr/lib/*/*/_dist*
+      - -usr/lib/*/*/dist*
+      - -usr/lib/*/*/setup*
+      - -usr/lib/*/*/wheel*
+      - -usr/lib/*/*/
       - -pyvenv.cfg
+      - -lib
+      - -lib64
+      - -include
     organize:
       bin: usr/bin
       lib/python3.10/site-packages: usr/lib/python3.10/dist-packages
