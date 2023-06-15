@@ -7,7 +7,7 @@ compression: lzo
 architectures:
   - build-on: amd64
   - build-on: arm64
-  #- build-on: armhf
+  - build-on: armhf
 
 parts:
   yt-dlp:
@@ -21,7 +21,7 @@ parts:
       - PYTHONPATH: ""
     python-packages:
       - psutil==5.9.5
-    stage:
+    prime:
       # WORKAROUND: Skip venv from python plugin
       - -usr/bin/activate
       - -usr/bin/activate.csh
@@ -34,16 +34,14 @@ parts:
       - -usr/bin/pip3
       - -usr/bin/pip3.10
       - -usr/bin/wheel
-      - -usr/lib/*/*/pip*
-      - -usr/lib/*/*/_dist*
-      - -usr/lib/*/*/dist*
-      - -usr/lib/*/*/setup*
-      - -usr/lib/*/*/wheel*
-      - -usr/lib/*/*/pkg*
+      - -usr/lib/python3.10/dist-packages/pip*
+      - -usr/lib/python3.10/dist-packages/pkg_resources
+      - -usr/lib/python3.10/dist-packages/setuptools*
       - -pyvenv.cfg
       - -lib
       - -lib64
       - -include
+      - -share
     organize:
       bin: usr/bin
       lib/python3.10/site-packages: usr/lib/python3.10/dist-packages
@@ -82,7 +80,7 @@ parts:
       - -usr/share/ffmpeg
       - -usr/share/doc
   tube-converter:
-    after: [ ffmpeg ]
+    after: [ ffmpeg, yt-dlp ]
     plugin: nil
     source: https://github.com/NickvisionApps/TubeConverter.git
     source-branch: 'snap'
