@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-06-12 22:51-0400\n"
-"PO-Revision-Date: 2023-06-13 01:53+0000\n"
+"PO-Revision-Date: 2023-06-15 18:28+0000\n"
 "Last-Translator: \"K.B.Dharun Krishna\" <kbdharunkrishna@gmail.com>\n"
-"Language-Team: Tamil <https://hosted.weblate.org/projects/nickvision-tube-"
-"converter/app/ta/>\n"
+"Language-Team: Tamil <https://hosted.weblate.org/projects/"
+"nickvision-tube-converter/app/ta/>\n"
 "Language: ta\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.18-dev\n"
+"X-Generator: Weblate 4.18.1-dev\n"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:726
 #, csharp-format
@@ -157,10 +157,8 @@ msgid "Download using aria2 has started"
 msgstr "aria2 ஐப் பயன்படுத்தி பதிவிறக்கம் தொடங்கப்பட்டது"
 
 #: ../../../Models/Download.cs:336
-#, fuzzy
-#| msgid "Download using aria2 has started"
 msgid "Download using ffmpeg has started"
-msgstr "aria2 ஐப் பயன்படுத்தி பதிவிறக்கம் தொடங்கப்பட்டது"
+msgstr "ffmpeg ஐப் பயன்படுத்தி பதிவிறக்கம் தொடங்கப்பட்டது"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Program.cs:50
 #: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.metainfo.xml.in:8
@@ -189,13 +187,11 @@ msgstr "இயக்கு"
 #: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:495
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:292
 msgid "End Time"
-msgstr ""
+msgstr "முடிவு நேரம்"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:515
-#, fuzzy
-#| msgid "Media URL (Invalid)"
 msgid "End Time (Invalid)"
-msgstr "ஊடகத்தின் URL (தவறானது)"
+msgstr "முடிவு நேரம் (செல்லாதது)"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:203
 msgid "Error"
@@ -239,7 +235,7 @@ msgstr "ஊடகத்தின் URL"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:417
 msgid "Media URL (Invalid)"
-msgstr "ஊடகத்தின் URL (தவறானது)"
+msgstr "ஊடகத்தின் URL (செல்லாதது)"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:263
 #: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:116
@@ -310,7 +306,7 @@ msgstr "கோப்புறையை சேமி"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:505
 msgid "Save Folder (Invalid)"
-msgstr "கோப்புறையைச் சேமி (தவறானது)"
+msgstr "கோப்புறையைச் சேமி (செல்லாதது)"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/PreferencesDialog.cs:170
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:264
@@ -342,13 +338,11 @@ msgstr "சில பதிவிறக்கங்கள் பிழைகள�
 #: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:493
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:287
 msgid "Start Time"
-msgstr ""
+msgstr "ஆரம்பிக்கும் நேரம்"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:510
-#, fuzzy
-#| msgid "Save Folder (Invalid)"
 msgid "Start Time (Invalid)"
-msgstr "கோப்புறையைச் சேமி (தவறானது)"
+msgstr "தொடக்க நேரம் (செல்லாதது)"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:220
 msgid "Stopped"
@@ -404,7 +398,7 @@ msgstr "URL"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:285
 msgid "URL (Invalid)"
-msgstr "URL (தவறானது)"
+msgstr "URL (செல்லாதது)"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:341
 msgid "Use manual credential"
@@ -498,21 +492,23 @@ msgstr "இசை பதிவிறக்கம் செய்யும் ப
 
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:281
 msgid "Download Specific Timeframe"
-msgstr ""
+msgstr "குறிப்பிட்ட காலக்கெடுவைப் பதிவிறக்கவும்"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:282
 msgid ""
 "Enabling this option will disable the use of aria2 as the downloader if it "
 "is enabled."
 msgstr ""
+"இந்த விருப்பத்தை இயக்குவது, அது இயக்கப்பட்டிருந்தால், பதிவிறக்கியாக aria2 ஐப்"
+" பயன்படுத்துவது முடக்கப்படும்."
 
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:288
 msgid "Leave empty to download from start."
-msgstr ""
+msgstr "தொடக்கத்தில் இருந்து பதிவிறக்கம் செய்ய காலியாக விடவும்."
 
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:293
 msgid "Leave empty to download to end."
-msgstr ""
+msgstr "இறுதிவரை பதிவிறக்கம் செய்ய காலியாக விடவும்."
 
 #: NickvisionTubeConverter.GNOME/Blueprints/download_row.blp:51
 msgid "View Log"
@@ -853,7 +849,7 @@ msgstr "எளிதாகப் பயன்படுத்தக்கூட�
 
 #: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.desktop.in:11
 msgid "YouTube;Downloader;ytdlp;Nickvision;"
-msgstr ""
+msgstr "YouTube;பதிவிறக்கி;ytdlp;நிக்விஷன்;"
 
 #: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.metainfo.xml.in:10
 msgid "— A basic yt-dlp frontend"
