@@ -122,12 +122,12 @@ parts:
       - libaria2-0
       - libmp3lame0
     prime:
-      - usr/lib/x86_64-linux-gnu/libaria2.so.0
-      - usr/lib/x86_64-linux-gnu/libaria2.so.0.0.0
-      - usr/lib/x86_64-linux-gnu/libmp3lame.so.0
-      - usr/lib/x86_64-linux-gnu/libmp3lame.so.0.0.0
-      - usr/lib/x86_64-linux-gnu/libcares.so.2
-      - usr/lib/x86_64-linux-gnu/libcares.so.2.5.1
+      - usr/lib/$CRAFT_ARCH_TRIPLET/libaria2.so.0
+      - usr/lib/$CRAFT_ARCH_TRIPLET/libaria2.so.0.0.0
+      - usr/lib/$CRAFT_ARCH_TRIPLET/libmp3lame.so.0
+      - usr/lib/$CRAFT_ARCH_TRIPLET/libmp3lame.so.0.0.0
+      - usr/lib/$CRAFT_ARCH_TRIPLET/libcares.so.2
+      - usr/lib/$CRAFT_ARCH_TRIPLET/libcares.so.2.5.1
       - usr/bin/aria2c
       
 slots:
