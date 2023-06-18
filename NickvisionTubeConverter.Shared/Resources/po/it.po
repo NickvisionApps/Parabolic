@@ -7,11 +7,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-12 22:51-0400\n"
+"POT-Creation-Date: 2023-06-17 22:02-0400\n"
 "PO-Revision-Date: 2023-06-16 00:43+0000\n"
 "Last-Translator: Davide <davide.ferracin@protonmail.com>\n"
-"Language-Team: Italian <https://hosted.weblate.org/projects/"
-"nickvision-tube-converter/app/it/>\n"
+"Language-Team: Italian <https://hosted.weblate.org/projects/nickvision-tube-"
+"converter/app/it/>\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -19,12 +19,12 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Weblate 4.18.1-dev\n"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:726
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:729
 #, csharp-format
 msgid "\"{0}\" has finished downloading."
 msgstr "Lo scaricamento di \"{0}\" è terminato."
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:726
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:729
 #, csharp-format
 msgid "\"{0}\" has finished with an error!"
 msgstr "\"{0}\" è terminato con un errore."
@@ -61,8 +61,8 @@ msgid_plural "{0} downloads — {1:f1}% ({2})"
 msgstr[0] "{0} scaricamento — {1:f1}% ({2})"
 msgstr[1] "{0} scaricamenti — {1:f1}% ({2})"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:465
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:579
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:473
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:587
 #, csharp-format
 msgid "{0} of {1} items"
 msgid_plural "{0} of {1} items"
@@ -81,14 +81,25 @@ msgstr "Aggiungi scaricamento"
 msgid "Advanced Options"
 msgstr "Opzioni avanzate"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:730
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:733
 msgid "All downloads have finished."
 msgstr "Tutti gli scaricamenti sono terminati."
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:425
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:438
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:435
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:448
 msgid "Audio"
 msgstr "Audio"
+
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:415
+#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:63
+msgid "Authenticate"
+msgstr "Autenticazione"
+
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:427
+#, fuzzy
+#| msgid "Authenticate"
+msgid "Authenticate (Invalid)"
+msgstr "Autenticazione"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:109
 msgid "Best"
@@ -140,23 +151,23 @@ msgstr ""
 msgid "Download"
 msgstr "Scarica"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:726
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:729
 msgid "Download Finished"
 msgstr "Scaricamento terminato"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:726
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:729
 msgid "Download Finished With Error"
 msgstr "Scaricamento terminato con errori"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:103
+#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:102
 msgid "Download log was copied to clipboard."
 msgstr "Registro dello scaricamento copiato negli appunti."
 
-#: ../../../Models/Download.cs:325
+#: ../../../Models/Download.cs:329
 msgid "Download using aria2 has started"
 msgstr "Lo scaricamento con aria2 è iniziato"
 
-#: ../../../Models/Download.cs:336
+#: ../../../Models/Download.cs:340
 msgid "Download using ffmpeg has started"
 msgstr "Lo scaricamento con ffmpeg è iniziato"
 
@@ -165,17 +176,17 @@ msgstr "Lo scaricamento con ffmpeg è iniziato"
 msgid "Download web video and audio"
 msgstr "Scaricare video e audio dalla rete"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:177
+#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:176
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:115
 msgid "Downloading"
 msgstr "In corso"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:167
+#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:166
 #, csharp-format
 msgid "Downloading {0:f2}% ({1})"
 msgstr "In scaricamento {0:f2}% ({1})"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:730
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:733
 msgid "Downloads Finished"
 msgstr "Scaricamenti terminati"
 
@@ -184,20 +195,20 @@ msgstr "Scaricamenti terminati"
 msgid "Enable"
 msgstr "Attiva"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:495
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:503
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:292
 msgid "End Time"
 msgstr "Ora di fine"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:515
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:523
 msgid "End Time (Invalid)"
 msgstr "Ora di fine (non valida)"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:203
+#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:202
 msgid "Error"
 msgstr "Errore"
 
-#: ../../../Models/Download.cs:177
+#: ../../../Models/Download.cs:176
 msgid "File already exists, and overwriting is disallowed"
 msgstr "Il file esiste già, e la sovrascrittura è disabilitata"
 
@@ -224,16 +235,16 @@ msgstr "Elenco dei siti supportati"
 msgid "Matrix Chat"
 msgstr "Chat di Matrix"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:466
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:474
 msgid "Maximum Quality"
 msgstr "Massima qualità"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:448
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:413
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:57
 msgid "Media URL"
 msgstr "URL del media"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:417
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:422
 msgid "Media URL (Invalid)"
 msgstr "URL del media (non valido)"
 
@@ -291,30 +302,30 @@ msgstr "Password (vuota)"
 msgid "Playlist"
 msgstr "Playlist"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:148
+#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:147
 msgid "Preparing..."
 msgstr "In preparazione…"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:186
+#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:185
 msgid "Processing..."
 msgstr "In lavorazione…"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:491
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:499
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:140
 msgid "Save Folder"
 msgstr "Cartella di salvataggio"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:505
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:513
 msgid "Save Folder (Invalid)"
 msgstr "Cartella di salvataggio (non valida)"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/PreferencesDialog.cs:170
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:264
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:278
+#: ../../../../NickvisionTubeConverter.GNOME/Views/PreferencesDialog.cs:195
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:302
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:316
 msgid "Select Cookies File"
 msgstr "Seleziona file cookie"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:550
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:558
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:147
 msgid "Select Save Folder"
 msgstr "Seleziona cartella di salvataggio"
@@ -335,20 +346,31 @@ msgstr ""
 msgid "Some downloads finished with errors!"
 msgstr "Alcuni scaricamenti sono terminati con degli errori."
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:493
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:501
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:287
 msgid "Start Time"
 msgstr "Ora di inizio"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:510
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:518
 msgid "Start Time (Invalid)"
 msgstr "Ora di inizio (non valida)"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:220
+#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:219
 msgid "Stopped"
 msgstr "Fermato"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:203
+#: ../../../../NickvisionTubeConverter.GNOME/Views/PreferencesDialog.cs:168
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:192
+msgid "Subtitle Languages (Comma-Separated)"
+msgstr ""
+
+#: ../../../../NickvisionTubeConverter.GNOME/Views/PreferencesDialog.cs:178
+#, fuzzy
+#| msgid "Start Time (Invalid)"
+msgid "Subtitle Languages (Invalid)"
+msgstr "Ora di inizio (non valida)"
+
+#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:202
 msgid "Success"
 msgstr "Completato"
 
@@ -404,7 +426,7 @@ msgstr "URL"
 msgid "URL (Invalid)"
 msgstr "URL (non valido)"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:341
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:342
 msgid "Use manual credential"
 msgstr "Usa un certificato manuale"
 
@@ -418,16 +440,16 @@ msgstr "Nome utente"
 msgid "Username (Empty)"
 msgstr "Nome utente (vuoto)"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:413
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:418
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:82
 msgid "Validate"
 msgstr "Valida"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:438
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:448
 msgid "Video"
 msgstr "Video"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:134
+#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:133
 #: NickvisionTubeConverter.GNOME/Blueprints/download_row.blp:39
 msgid "Waiting..."
 msgstr "In attesa…"
@@ -446,10 +468,6 @@ msgstr "Sì"
 #: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:24
 msgid "Back"
 msgstr "Indietro"
-
-#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:63
-msgid "Authenticate"
-msgstr "Autenticazione"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:68
 msgid "Keyring Credential"
@@ -713,11 +731,20 @@ msgstr "Dimensione minima suddivisioni (-k)"
 msgid "The minimum size of which to split a file (in MiB)."
 msgstr "La dimensione minima in cui suddividere un file (in MiB)."
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:192
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:219
+msgid ""
+"Some sites use two-letter language codes, whereas others use three-letter. "
+"For example, \"en\" and \"eng\" are both used for English.\n"
+"\n"
+"Please specify both two-letter and three-letter codes for your languages for "
+"the best results."
+msgstr ""
+
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:230
 msgid "Cookies File"
 msgstr "File dei cookie"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:193
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:231
 msgid ""
 "A cookies file can be provided to yt-dlp to allow downloading media that "
 "requires a login."
@@ -725,7 +752,7 @@ msgstr ""
 "È possibile fornire un file cookie a yt-dlp per consentire lo scaricamento "
 "di contenuti multimediali che richiedono un accesso."
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:223
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:261
 msgid ""
 "Cookies can be passed to yt-dlp in the form of TXT files. Export cookies "
 "from your browser using the following extensions (use at your own risk):"
@@ -734,23 +761,23 @@ msgstr ""
 "seguenti estensioni per esportare i cookie dal browser (a proprio rischio e "
 "pericolo):"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:286
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:324
 msgid "Clear Cookies File"
 msgstr "Cancella file cookie"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:298
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:336
 msgid "Converter"
 msgstr "Convertitore"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:299
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:337
 msgid "Customize converter settings."
 msgstr "Personalizza le impostazioni del convertitore."
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:302
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:340
 msgid "Disallow Conversions"
 msgstr "Non permettere conversioni"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:303
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:341
 msgid ""
 "If enabled, Tube Converter will download the appropriate video/audio format "
 "for the selected quality without converting to other formats. (You will be "
@@ -760,15 +787,15 @@ msgstr ""
 "appropriato alla qualità selezionata, senza convertirlo in altri formati "
 "(non si potrà selezionare il formato di file)."
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:318
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:356
 msgid "Embed Metadata"
 msgstr "Incorpora metadati"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:327
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:365
 msgid "Crop Audio Thumbnails"
 msgstr "Ritaglia miniature audio"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:328
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:366
 msgid ""
 "If enabled, Tube Converter will automatically turn on the crop thumbnail "
 "advanced option for audio downloads"
@@ -776,7 +803,7 @@ msgstr ""
 "Se abilitato, Tube Converter ritaglierà automaticamente le miniature degli "
 "audio scaricati"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:344
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:382
 msgid "Embed Chapters"
 msgstr "Includi i capitoli"
 
