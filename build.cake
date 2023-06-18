@@ -180,13 +180,15 @@ private void PostPublishGNOME(string outDir, string prefix, string libDir)
     CreateDirectory($"{shareDir}{sep}{appId}");
     MoveFileToDirectory($"{outDir}{libDir}{sep}{appId}{sep}{appId}.gresource", $"{shareDir}{sep}{appId}");
 
-    var servicesDir = $"{shareDir}{sep}dbus-1{sep}services";
-    CreateDirectory(servicesDir);
-    CopyFileToDirectory($".{sep}{projectName}.GNOME{sep}{appId}.service.in", servicesDir);
-    ReplaceTextInFiles($"{servicesDir}{sep}{appId}.service.in", "@PREFIX@", $"{prefix}");
-    MoveFile($"{servicesDir}{sep}{appId}.service.in", $"{servicesDir}{sep}{appId}.service");
-
-    FileAppendLines($"{shareDir}{sep}applications{sep}{appId}.desktop" , new string[] { "\nDBusActivatable=true" });
+    if (FileExists($".{sep}{projectName}.GNOME{sep}{appId}.service.in"))
+    {
+        var servicesDir = $"{shareDir}{sep}dbus-1{sep}services";
+        CreateDirectory(servicesDir);
+        CopyFileToDirectory($".{sep}{projectName}.GNOME{sep}{appId}.service.in", servicesDir);
+        ReplaceTextInFiles($"{servicesDir}{sep}{appId}.service.in", "@PREFIX@", $"{prefix}");
+        MoveFile($"{servicesDir}{sep}{appId}.service.in", $"{servicesDir}{sep}{appId}.service");
+        FileAppendLines($"{shareDir}{sep}applications{sep}{appId}.desktop" , new string[] { "DBusActivatable=true" });
+    }
 }
 
 //////////////////////////////////////////////////////////////////////
