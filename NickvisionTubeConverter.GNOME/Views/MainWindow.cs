@@ -713,10 +713,13 @@ public partial class MainWindow : Adw.ApplicationWindow
                 _downloadingBox.Remove(row);
                 if (_completedBox.GetFirstChild() != null)
                 {
-                    var newSeparator = Gtk.Separator.New(Gtk.Orientation.Horizontal);
-                    _completedBox.Append(newSeparator);
+                    _completedBox.InsertChildAfter(row, null);
+                    _completedBox.InsertChildAfter(Gtk.Separator.New(Gtk.Orientation.Horizontal), row);
                 }
-                _completedBox.Append(row);
+                else
+                {
+                    _completedBox.InsertChildAfter(row, null);
+                }
                 _downloadingBox.GetParent().SetVisible(_controller.DownloadManager.RemainingDownloadsCount > 0 ? true : false);
                 _completedBox.GetParent().SetVisible(true);
                 if (e.ShowNotification && (GetFocus() != null && !GetFocus()!.GetHasFocus()) || !GetVisible())

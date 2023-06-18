@@ -44,8 +44,7 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
     [Gtk.Connect] private readonly Gtk.Button _openFileButton;
     [Gtk.Connect] private readonly Gtk.Button _openFolderButton;
     [Gtk.Connect] private readonly Gtk.Button _retryButton;
-    [Gtk.Connect] private readonly Gtk.ScrolledWindow _scrollLog;
-    [Gtk.Connect] private readonly Gtk.Label _lblLog;
+    [Gtk.Connect] private readonly Gtk.TextView _lblLog;
     [Gtk.Connect] private readonly Gtk.Button _btnLogToClipboard;
 
     /// <summary>
@@ -99,7 +98,7 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
         };
         _btnLogToClipboard.OnClicked += (sender, e) =>
         {
-            _lblLog.GetClipboard().SetText(_lblLog.GetText());
+            _lblLog.GetClipboard().SetText(_lblLog.GetBuffer().Text ?? "");
             _sendNotificationCallback(new NotificationSentEventArgs(_("Download log was copied to clipboard."), NotificationSeverity.Informational));
         };
         _runPulsingBar = false;
@@ -156,8 +155,8 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
     /// <param name="state">The DownloadProgressState</param>
     public void SetProgressState(DownloadProgressState state)
     {
-        _lblLog.SetLabel(state.Log);
-        var vadjustment = _scrollLog.GetVadjustment();
+        _lblLog.GetBuffer().SetText(state.Log, state.Log.Length);
+        var vadjustment = _lblLog.GetVadjustment()!;
         vadjustment.SetValue(vadjustment.GetUpper() - vadjustment.GetPageSize());
         switch (state.Status)
         {

@@ -409,6 +409,10 @@ public partial class AddDownloadDialog : Adw.Window
     private bool FinishSearchUrl()
     {
         _urlSpinner.Stop();
+        _urlRow.RemoveCssClass("error");
+        _urlRow.SetTitle(_("Media URL"));
+        _authRow.RemoveCssClass("error");
+        _authRow.SetTitle(_("Authenticate"));
         _validateUrlButton.SetSensitive(true);
         _validateUrlButton.SetChild(null);
         _validateUrlButton.SetLabel(_("Validate"));
@@ -416,6 +420,11 @@ public partial class AddDownloadDialog : Adw.Window
         {
             _urlRow.AddCssClass("error");
             _urlRow.SetTitle(_("Media URL (Invalid)"));
+        }
+        else if(_controller.MediaList.Count == 0)
+        {
+            _authRow.AddCssClass("error");
+            _authRow.SetTitle(_("Authenticate (Invalid)"));
         }
         else
         {
@@ -445,8 +454,6 @@ public partial class AddDownloadDialog : Adw.Window
                 }
             }
             SetQualityRowModel(); // in case _fileTypeRow.SetSelected didn't invoke OnNotify
-            _urlRow.RemoveCssClass("error");
-            _urlRow.SetTitle(_("Media URL"));
             _downloadPage.SetVisible(true);
             _viewStack.SetVisibleChildName("pageDownload");
             SetDefaultWidget(_addDownloadButton);

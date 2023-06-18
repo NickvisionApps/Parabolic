@@ -154,16 +154,16 @@ Adw.Bin _root {
 
       Gtk.ScrolledWindow _scrollLog {
         height-request: 100;
-        child: Gtk.Label _lblLog {
+
+        child: Gtk.TextView _lblLog {
           margin-start: 12;
           margin-top: 6;
           margin-end: 6;
           margin-bottom: 12;
-          halign: start;
-          valign: start;
-          wrap: true;
+          editable: false;
           wrap-mode: char;
-          selectable: true;
+
+          styles ["transparent"]
         };
       }
 
