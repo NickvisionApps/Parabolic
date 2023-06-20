@@ -48,13 +48,12 @@ public partial class PreferencesDialog : Adw.PreferencesWindow
     [Gtk.Connect] private readonly Gtk.SpinButton _ariaMinSplitSizeSpin;
     [Gtk.Connect] private readonly Gtk.Button _ariaMinSplitSizeResetButton;
     [Gtk.Connect] private readonly Adw.EntryRow _subtitleLangsRow;
-    [Gtk.Connect] private readonly Adw.ViewStack _cookiesViewStack;
-    [Gtk.Connect] private readonly Gtk.Button _selectCookiesFileButton;
-    [Gtk.Connect] private readonly Gtk.Button _cookiesFileButton;
-    [Gtk.Connect] private readonly Gtk.Label _cookiesFileLabel;
-    [Gtk.Connect] private readonly Gtk.Button _unsetCookiesFileButton;
+    [Gtk.Connect] private readonly Adw.EntryRow _cookiesRow;
+    [Gtk.Connect] private readonly Gtk.Popover _cookiesPopover;
     [Gtk.Connect] private readonly Gtk.Button _chromeCookiesButton;
     [Gtk.Connect] private readonly Gtk.Button _firefoxCookiesButton;
+    [Gtk.Connect] private readonly Gtk.Button _selectCookiesFileButton;
+    [Gtk.Connect] private readonly Gtk.Button _unsetCookiesFileButton;
     [Gtk.Connect] private readonly Gtk.Switch _disallowConversionsSwitch;
     [Gtk.Connect] private readonly Adw.ExpanderRow _embedMetadataRow;
     [Gtk.Connect] private readonly Gtk.Switch _cropAudioThumbnailSwitch;
@@ -79,11 +78,10 @@ public partial class PreferencesDialog : Adw.PreferencesWindow
             }
         };
         _subtitleLangsRow.OnApply += SubtitleLangsChanged;
-        _selectCookiesFileButton.OnClicked += SelectCookiesFile;
-        _cookiesFileButton.OnClicked += SelectCookiesFile;
-        _unsetCookiesFileButton.OnClicked += UnsetCookiesFile;
         _chromeCookiesButton.OnClicked += LaunchChromeCookiesExtension;
         _firefoxCookiesButton.OnClicked += LaunchFirefoxCookiesExtension;
+        _selectCookiesFileButton.OnClicked += SelectCookiesFile;
+        _unsetCookiesFileButton.OnClicked += UnsetCookiesFile;
         OnHide += Hide;
         //Load Config
         _themeRow.SetSelected((uint)_controller.Theme);
@@ -101,8 +99,7 @@ public partial class PreferencesDialog : Adw.PreferencesWindow
         _subtitleLangsRow.SetText(_controller.SubtitleLangs);
         if (File.Exists(_controller.CookiesPath))
         {
-            _cookiesViewStack.SetVisibleChildName("file-selected");
-            _cookiesFileLabel.SetText(_controller.CookiesPath);
+            _cookiesRow.SetText(_controller.CookiesPath);
         }
         _disallowConversionsSwitch.SetActive(_controller.DisallowConversions);
         _embedMetadataRow.SetEnableExpansion(_controller.EmbedMetadata);
@@ -203,8 +200,7 @@ public partial class PreferencesDialog : Adw.PreferencesWindow
             {
                 var path = g_file_get_path(fileHandle);
                 _controller.CookiesPath = path;
-                _cookiesViewStack.SetVisibleChildName("file-selected");
-                _cookiesFileLabel.SetText(path);
+                _cookiesRow.SetText(path);
             }
         };
         gtk_file_dialog_open(fileDialog, Handle, IntPtr.Zero, _fileDialogCallback, IntPtr.Zero);
@@ -218,7 +214,7 @@ public partial class PreferencesDialog : Adw.PreferencesWindow
     private void UnsetCookiesFile(Gtk.Button sender, EventArgs e)
     {
         _controller.CookiesPath = "";
-        _cookiesViewStack.SetVisibleChildName("no-file");
+        _cookiesRow.SetText("");
     }
 
     /// <summary>
@@ -228,6 +224,7 @@ public partial class PreferencesDialog : Adw.PreferencesWindow
     /// <param name="e">EventArgs</param>
     private void LaunchChromeCookiesExtension(Gtk.Button sender, EventArgs e)
     {
+        _cookiesPopover.Popdown();
         var uriLauncher = gtk_uri_launcher_new("https://chrome.google.com/webstore/detail/get-cookiestxt-locally/cclelndahbckbenkjhflpdbgdldlbecc");
         gtk_uri_launcher_launch(uriLauncher, 0, 0, (source, res, data) => { }, 0);
     }
@@ -239,6 +236,7 @@ public partial class PreferencesDialog : Adw.PreferencesWindow
     /// <param name="e">EventArgs</param>
     private void LaunchFirefoxCookiesExtension(Gtk.Button sender, EventArgs e)
     {
+        _cookiesPopover.Popdown();
         var uriLauncher = gtk_uri_launcher_new("https://addons.mozilla.org/en-US/firefox/addon/cookies-txt/");
         gtk_uri_launcher_launch(uriLauncher, 0, 0, (source, res, data) => { }, 0);
         

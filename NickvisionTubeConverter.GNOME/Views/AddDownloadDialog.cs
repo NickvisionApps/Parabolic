@@ -136,6 +136,17 @@ public partial class AddDownloadDialog : Adw.Window
             }
         };
         _backButton.OnClicked += (sender, e) => _viewStack.SetVisibleChildName("pageDownload");
+        _urlRow.OnNotify += (sender, e) => 
+        {
+            if(e.Pspec.GetName() == "text")
+            {
+                if(!string.IsNullOrEmpty(_urlRow.GetText()))
+                {
+                    var result = Uri.TryCreate(_urlRow.GetText(), UriKind.Absolute, out var uriResult) && (uriResult.Scheme == Uri.UriSchemeHttp || uriResult.Scheme == Uri.UriSchemeHttps);
+                    _validateUrlButton.SetSensitive(result);
+                }
+            }
+        };
         _authRow.OnNotify += (sender, e) =>
         {
             if(e.Pspec.GetName() == "enable-expansion")
@@ -411,8 +422,6 @@ public partial class AddDownloadDialog : Adw.Window
         _urlSpinner.Stop();
         _urlRow.RemoveCssClass("error");
         _urlRow.SetTitle(_("Media URL"));
-        _authRow.RemoveCssClass("error");
-        _authRow.SetTitle(_("Authenticate"));
         _validateUrlButton.SetSensitive(true);
         _validateUrlButton.SetChild(null);
         _validateUrlButton.SetLabel(_("Validate"));
@@ -420,11 +429,10 @@ public partial class AddDownloadDialog : Adw.Window
         {
             _urlRow.AddCssClass("error");
             _urlRow.SetTitle(_("Media URL (Invalid)"));
-        }
-        else if(_controller.MediaList.Count == 0)
-        {
-            _authRow.AddCssClass("error");
-            _authRow.SetTitle(_("Authenticate (Invalid)"));
+            if(_authRow.GetEnableExpansion())
+            {
+                _toastOverlay.AddToast(Adw.Toast.New(_("Ensure credentials are correct.")));
+            }
         }
         else
         {
@@ -485,8 +493,8 @@ public partial class AddDownloadDialog : Adw.Window
                 _mediaGroup.SetVisible(true);
                 _mediaGroup.Add(row);
             }
+            ValidateOptions();
         }
-        ValidateOptions();
         return false;
     }
 
