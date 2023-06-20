@@ -102,7 +102,7 @@ public class MediaUrlInfo
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.Message);
+                Console.WriteLine(e);
                 using (Py.GIL())
                 {
                     outFile.close();
@@ -122,11 +122,27 @@ public class MediaUrlInfo
             var format = f.As<PyDict>();
             if (format.HasKey("vbr"))
             {
-                var resolution = new VideoResolution(format["width"].As<int>(), format["height"].As<int>());
-                if (!VideoResolutions.Contains(resolution))
+                try
                 {
-                    VideoResolutions.Add(resolution);
+                    var resolution = new VideoResolution(format["width"].As<int>(), format["height"].As<int>());
+                    if (!VideoResolutions.Contains(resolution))
+                    {
+                        VideoResolutions.Add(resolution);
+                    }
                 }
+                catch { }
+            }
+            else if (format.HasKey("resolution"))
+            {
+                try
+                {
+                    var resolution = VideoResolution.Parse(format["resolution"].As<string>());
+                    if (resolution != null && !VideoResolutions.Contains(resolution))
+                    {
+                        VideoResolutions.Add(resolution);
+                    }
+                }
+                catch { }
             }
         }
         VideoResolutions.Sort((a, b) => b.CompareTo(a));
