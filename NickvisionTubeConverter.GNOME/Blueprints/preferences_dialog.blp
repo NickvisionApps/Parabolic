@@ -202,6 +202,7 @@ Adw.PreferencesWindow _root {
           valign: center;
           direction: none;
           icon-name: "dialog-question-symbolic";
+          tooltip-text: _("Language Code Information");
 
           popover: Gtk.Popover {
             child: Gtk.Box {
@@ -226,9 +227,10 @@ Adw.PreferencesWindow _root {
         }
       }
 
-      Adw.ActionRow {
+      Adw.EntryRow _cookiesRow {
         title: _("Cookies File");
-        subtitle: _("A cookies file can be provided to yt-dlp to allow downloading media that requires a login.");
+        tooltip-text: _("A cookies file can be provided to yt-dlp to allow downloading media that requires a login.");
+        editable: false;
 
         [prefix]
         Gtk.Image {
@@ -236,98 +238,75 @@ Adw.PreferencesWindow _root {
         }
 
         [suffix]
-        Gtk.Box {
-          orientation: horizontal;
-          spacing: 6;
-          
-          Gtk.MenuButton _cookiesHelpButton {
-            valign: center;
-            direction: none;
-            icon-name: "dialog-question-symbolic";
-            
-            popover: Gtk.Popover _cookiesPopover {
-              child: Gtk.Box {
-                orientation: vertical;
-                spacing: 6;
-                margin-start: 6;
-                margin-top: 6;
-                margin-end: 6;
-                margin-bottom: 6;
-                
-                Adw.Clamp {
-                  maximum-size: 300;
-                  child: Gtk.Label {
-                    wrap: true;
-                    label: _("Cookies can be passed to yt-dlp in the form of TXT files. Export cookies from your browser using the following extensions (use at your own risk):");
-                  };
-                }
-                
-                Gtk.Box {
-                  hexpand: true;
-                  orientation: horizontal;
-                  
-                  Gtk.Button _chromeCookiesButton {
-                    hexpand: true;
-                    
-                    child: Adw.ButtonContent {
-                      label: "Chrome";
-                      icon-name: "google-chrome-symbolic";
-                    };
-                  }
+        Gtk.Button _selectCookiesFileButton {
+          valign: center;
+          tooltip-text: _("Select Cookies File");
+          icon-name: "folder-open-symbolic";
 
-                  Gtk.Button _firefoxCookiesButton {
-                    hexpand: true;
-                    
-                    child: Adw.ButtonContent {
-                      label: "Firefox";
-                      icon-name: "firefox-symbolic";
-                    };
-                  }
-                  
-                  styles ["linked"]
-                }
-              };
-            };
-            
-            styles ["flat"]
-          }
-          
-          Adw.ViewStack _cookiesViewStack {
-            Adw.ViewStackPage {
-              name: "no-file";
-              child: Gtk.Button _selectCookiesFileButton {
-                halign: end;
-                valign: center;
-                child: Adw.ButtonContent {
-                  label: _("Select Cookies File");
-                  icon-name: "document-open-symbolic";
+          styles ["flat"]
+        }
+
+        [suffix]
+        Gtk.Button _unsetCookiesFileButton {
+          valign: center;
+          icon-name: "larger-brush-symbolic";
+          tooltip-text: _("Clear Cookies File");
+
+          styles ["flat"]
+        }
+
+        [suffix]
+        Gtk.MenuButton {
+          valign: center;
+          direction: none;
+          icon-name: "dialog-question-symbolic";
+          tooltip-text: _("Cookies File Information");
+
+          popover: Gtk.Popover _cookiesPopover {
+            child: Gtk.Box {
+              orientation: vertical;
+              spacing: 6;
+              margin-start: 6;
+              margin-top: 6;
+              margin-end: 6;
+              margin-bottom: 6;
+
+              Adw.Clamp {
+                maximum-size: 300;
+                child: Gtk.Label {
+                  wrap: true;
+                  label: _("Cookies can be passed to yt-dlp in the form of TXT files. Export cookies from your browser using the following extensions (use at your own risk):");
                 };
-              };
-            }
-  
-            Adw.ViewStackPage {
-              name: "file-selected";
-              child: Gtk.Box {
+              }
+
+              Gtk.Box {
+                hexpand: true;
                 orientation: horizontal;
-                halign: end;
-                valign: center;
-  
-                Gtk.Button _cookiesFileButton {
-                  tooltip-text: _("Select Cookies File");
-                  child: Gtk.Label _cookiesFileLabel {
-                    ellipsize: start;
+
+                Gtk.Button _chromeCookiesButton {
+                  hexpand: true;
+
+                  child: Adw.ButtonContent {
+                    label: "Chrome";
+                    icon-name: "google-chrome-symbolic";
                   };
                 }
-  
-                Gtk.Button _unsetCookiesFileButton {
-                  icon-name: "larger-brush-symbolic";
-                  tooltip-text: _("Clear Cookies File");
+
+                Gtk.Button _firefoxCookiesButton {
+                  hexpand: true;
+
+                  child: Adw.ButtonContent {
+                    label: "Firefox";
+                    icon-name: "firefox-symbolic";
+                  };
                 }
-  
+
                 styles ["linked"]
-              };
-            }
-          } 
+              }
+            };
+          };
+
+          styles ["flat"]
         }
       }
     }
