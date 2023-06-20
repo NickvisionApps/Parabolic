@@ -129,7 +129,7 @@ public class Configuration
         EmbedMetadata = true;
         CropAudioThumbnails = false;
         EmbedChapters = false;
-        PreviousSaveFolder = Environment.GetFolderPath(Environment.SpecialFolder.MyVideos);
+        PreviousSaveFolder = "";
         PreviousMediaFileType = MediaFileType.MP4;
         PreviousVideoResolution = "";
         NumberTitles = false;

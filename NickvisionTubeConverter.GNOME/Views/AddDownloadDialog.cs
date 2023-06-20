@@ -37,6 +37,8 @@ public partial class AddDownloadDialog : Adw.Window
     private static partial void gdk_clipboard_read_text_async(nint clipboard, nint cancellable, GAsyncReadyCallback callback, nint user_data);
     [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
     private static partial string gdk_clipboard_read_text_finish(nint clipboard, nint result, nint error);
+    [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
+    private static partial string g_get_user_special_dir(int dir);
 
     private const uint GTK_INVALID_LIST_POSITION = 4294967295;
 
@@ -279,7 +281,7 @@ public partial class AddDownloadDialog : Adw.Window
         }
         else
         {
-            _saveFolderString = "";
+            _saveFolderString = g_get_user_special_dir(2); //XDG_DOWNLOAD_DIR
         }
         _saveFolderRow.SetText(Path.GetFileName(_saveFolderString) ?? "");
         _speedLimitRow.SetSubtitle($"{_("{0:f1} KiB/s", _controller.CurrentSpeedLimit)} {_("(Configurable in preferences)")}");
