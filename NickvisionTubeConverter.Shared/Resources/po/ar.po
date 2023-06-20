@@ -7,11 +7,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-17 22:02-0400\n"
+"POT-Creation-Date: 2023-06-19 23:28-0400\n"
 "PO-Revision-Date: 2023-06-20 03:29+0000\n"
 "Last-Translator: Ali Aljishi <ahj696@hotmail.com>\n"
-"Language-Team: Arabic <https://hosted.weblate.org/projects/"
-"nickvision-tube-converter/app/ar/>\n"
+"Language-Team: Arabic <https://hosted.weblate.org/projects/nickvision-tube-"
+"converter/app/ar/>\n"
 "Language: ar\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -30,7 +30,7 @@ msgstr "انتهى تنزيل «{0}»."
 msgid "\"{0}\" has finished with an error!"
 msgstr "انتهى «{0}» بخطأ!"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:274
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:285
 msgid "(Configurable in preferences)"
 msgstr "(يُضبط في التفضيلات)"
 
@@ -44,7 +44,7 @@ msgstr "{0:f1} بايت\\ث"
 msgid "{0:f1} GiB/s"
 msgstr "{0:f1} ج‌بايت\\ث"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:274
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:285
 #: ../../../Helpers/SpeedFormatter.cs:28
 #, csharp-format
 msgid "{0:f1} KiB/s"
@@ -66,8 +66,8 @@ msgstr[3] "{0} تنزيلات — {1:f1}% ({2})"
 msgstr[4] "{0} تنزيلًا — {1:f1}% ({2})"
 msgstr[5] "{0} تنزيل — {1:f1}% ({2})"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:473
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:587
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:481
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:595
 #, csharp-format
 msgid "{0} of {1} items"
 msgid_plural "{0} of {1} items"
@@ -86,7 +86,7 @@ msgid "Add Download"
 msgstr "أضف تنزيلًا"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:133
-#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:154
+#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:155
 msgid "Advanced Options"
 msgstr "خيارات متقدمة"
 
@@ -94,19 +94,10 @@ msgstr "خيارات متقدمة"
 msgid "All downloads have finished."
 msgstr "انتهت كل التنزيلات."
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:435
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:448
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:443
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:456
 msgid "Audio"
 msgstr "صوت"
-
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:415
-#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:63
-msgid "Authenticate"
-msgstr "المصادقة"
-
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:427
-msgid "Authenticate (Invalid)"
-msgstr "المصادقة (غير صالح)"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:109
 msgid "Best"
@@ -153,7 +144,7 @@ msgstr ""
 "أنت متأكد أنك تريد تعطيله؟"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:249
-#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:203
+#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:204
 #: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:14
 msgid "Download"
 msgstr "نزِّل"
@@ -202,14 +193,20 @@ msgstr "انتهت التنزيلات"
 msgid "Enable"
 msgstr "ممكن"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:503
-#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:292
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:511
+#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:293
 msgid "End Time"
 msgstr "وقت النهاية"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:523
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:531
 msgid "End Time (Invalid)"
 msgstr "وقت الانتهاء (غير صالح)"
+
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:434
+#, fuzzy
+#| msgid "Manage credentials in your keyring."
+msgid "Ensure credentials are correct."
+msgstr "إدارة بيانات الاعتماد في حلقة المفاتيح الخاصة بك."
 
 #: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:202
 msgid "Error"
@@ -242,21 +239,21 @@ msgstr "قائمة المواقع المدعومة"
 msgid "Matrix Chat"
 msgstr "دردشة ماتركس"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:474
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:482
 msgid "Maximum Quality"
 msgstr "أقصى جودة"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:413
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:424
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:57
 msgid "Media URL"
 msgstr "رابط الوسائط"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:422
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:431
 msgid "Media URL (Invalid)"
 msgstr "رابط الوسائط (غير صالح)"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:263
-#: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:116
+#: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:117
 msgid "Name"
 msgstr "اسم"
 
@@ -296,7 +293,7 @@ msgstr "لا يوجد ما ينزَّل الآن"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:269
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:76
-#: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:131
+#: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:132
 #: NickvisionTubeConverter.GNOME/Blueprints/password_dialog.blp:39
 msgid "Password"
 msgstr "كلمة السر"
@@ -317,23 +314,22 @@ msgstr "يجهِّز..."
 msgid "Processing..."
 msgstr "يعالج..."
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:499
-#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:140
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:507
+#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:141
 msgid "Save Folder"
 msgstr "مجلد الحفظ"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:513
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:521
 msgid "Save Folder (Invalid)"
 msgstr "مجلد الحفظ (غير صالح)"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/PreferencesDialog.cs:195
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:302
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:316
+#: ../../../../NickvisionTubeConverter.GNOME/Views/PreferencesDialog.cs:192
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:243
 msgid "Select Cookies File"
 msgstr "حدِّد ملف تعريف الارتباط"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:558
-#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:147
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:566
+#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:148
 msgid "Select Save Folder"
 msgstr "اختر مجلد الحفظ"
 
@@ -353,12 +349,12 @@ msgstr ""
 msgid "Some downloads finished with errors!"
 msgstr "انتهت بعض التنزيلات بخطأ!"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:501
-#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:287
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:509
+#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:288
 msgid "Start Time"
 msgstr "وقت البَدْء"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:518
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:526
 msgid "Start Time (Invalid)"
 msgstr "وقت البدء (غير صالح)"
 
@@ -366,12 +362,12 @@ msgstr "وقت البدء (غير صالح)"
 msgid "Stopped"
 msgstr "أوقف"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/PreferencesDialog.cs:168
+#: ../../../../NickvisionTubeConverter.GNOME/Views/PreferencesDialog.cs:165
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:192
 msgid "Subtitle Languages (Comma-Separated)"
 msgstr "لغات الترجمة (مفصولة بفاصلة)"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/PreferencesDialog.cs:178
+#: ../../../../NickvisionTubeConverter.GNOME/Views/PreferencesDialog.cs:175
 msgid "Subtitle Languages (Invalid)"
 msgstr "لغات الترجمة (غير صالح)"
 
@@ -418,7 +414,7 @@ msgid "Unlock Keyring"
 msgstr "فتح حلقة مفاتيح"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:265
-#: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:121
+#: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:122
 msgid "URL"
 msgstr "URL"
 
@@ -426,13 +422,13 @@ msgstr "URL"
 msgid "URL (Invalid)"
 msgstr "الرابط (غير صالح)"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:342
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:353
 msgid "Use manual credential"
 msgstr "استخدم بيانات الاعتماد اليدوية"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:267
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:72
-#: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:126
+#: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:127
 msgid "Username"
 msgstr "اسم المستخدم"
 
@@ -440,12 +436,12 @@ msgstr "اسم المستخدم"
 msgid "Username (Empty)"
 msgstr "اسم المستخدم (فارغ)"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:418
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:427
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:82
 msgid "Validate"
 msgstr "تحقَّق"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:448
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:456
 msgid "Video"
 msgstr "مقطع"
 
@@ -469,54 +465,58 @@ msgstr "نعم"
 msgid "Back"
 msgstr "عُد"
 
+#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:63
+msgid "Authenticate"
+msgstr "المصادقة"
+
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:68
 msgid "Keyring Credential"
 msgstr "الاعتماد حلقة مفاتيح"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:114
+#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:115
 msgid "File Type"
 msgstr "نوع الملف"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:121
+#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:122
 msgid "Quality"
 msgstr "الجودة"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:128
+#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:129
 msgid "Subtitle"
 msgstr "الترجمة"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:130
+#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:131
 msgctxt "Subtitle"
 msgid "None"
 msgstr "لا شيء"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:177
+#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:178
 msgid "Select items to download or change file names."
 msgstr "حدد العناصر لتنزِّلها أو لتغيِّر أسماءها."
 
-#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:189
-#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:228
+#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:190
+#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:229
 msgid "Number Titles"
 msgstr "ترقِّيم العناوين"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:258
+#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:259
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:102
 msgid "Speed Limit"
 msgstr "حدُّ السرعة"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:269
+#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:270
 msgid "Crop Thumbnail"
 msgstr "قص الصور المصغرة"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:270
+#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:271
 msgid "Make thumbnail square, useful when downloading music."
 msgstr "اجعل الصورة المصغرة مربعة، مفيدة عند تنزيل الموسيقى."
 
-#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:281
+#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:282
 msgid "Download Specific Timeframe"
 msgstr "تحميل جزء معين"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:282
+#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:283
 msgid ""
 "Enabling this option will disable the use of aria2 as the downloader if it "
 "is enabled."
@@ -524,11 +524,11 @@ msgstr ""
 "سيؤدي تمكين هذا الخِيار إلى تعطيل استخدام aria2 باعتباره أداة التحميل إذا تم "
 "تفعليه."
 
-#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:288
+#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:289
 msgid "Leave empty to download from start."
 msgstr "اتركه فارغًا للتنزيل من البداية."
 
-#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:293
+#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:294
 msgid "Leave empty to download to end."
 msgstr "اتركه فارغًا للتنزيل حتى النهاية."
 
@@ -556,34 +556,34 @@ msgstr "حاول إعادة التنزيل"
 msgid "Copy to Clipboard"
 msgstr "انسخ إلى الحافظة"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:70
+#: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:71
 msgid "Credentials"
 msgstr "أوراق اعتماد"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:71
+#: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:72
 msgid "Manage credentials in your keyring."
 msgstr "إدارة بيانات الاعتماد في حلقة المفاتيح الخاصة بك."
 
-#: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:76
+#: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:77
 msgid "Add Credential"
 msgstr "أضف بيانات الاعتماد"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:81
-#: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:143
+#: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:82
+#: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:144
 #: NickvisionTubeConverter.GNOME/Blueprints/new_password_dialog.blp:54
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:52
 msgid "Add"
 msgstr "أضف"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:90
+#: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:91
 msgid "No Credentials"
 msgstr "لا يوجد أوراق اعتماد"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:160
+#: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:161
 msgid "Delete"
 msgstr "حذف"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:167
+#: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:168
 msgid "Apply"
 msgstr "طبِّق"
 
@@ -724,7 +724,11 @@ msgstr "أصغر حجم تقسيمات (k-)"
 msgid "The minimum size of which to split a file (in MiB)."
 msgstr "أصغر حجم تقسيم يقسَّم له الملف (بالميجابايت)."
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:219
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:205
+msgid "Language Code Information"
+msgstr ""
+
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:220
 msgid ""
 "Some sites use two-letter language codes, whereas others use three-letter. "
 "For example, \"en\" and \"eng\" are both used for English.\n"
@@ -737,11 +741,11 @@ msgstr ""
 "\n"
 "عيِّن كلا الترميزين تجد أحسن النتائج."
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:230
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:231
 msgid "Cookies File"
 msgstr "ملف تعريف الارتباط"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:231
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:232
 msgid ""
 "A cookies file can be provided to yt-dlp to allow downloading media that "
 "requires a login."
@@ -749,7 +753,17 @@ msgstr ""
 "لك أن تدخل ملف تعريف ارتباط في yt-dlp، وعندها تستطيع أن تنزِّل الوسائط التي "
 "تتطلب الولوج."
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:261
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:253
+msgid "Clear Cookies File"
+msgstr "امحُ ملف تعريف الارتباط"
+
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:263
+#, fuzzy
+#| msgid "Cookies File"
+msgid "Cookies File Information"
+msgstr "ملف تعريف الارتباط"
+
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:278
 msgid ""
 "Cookies can be passed to yt-dlp in the form of TXT files. Export cookies "
 "from your browser using the following extensions (use at your own risk):"
@@ -757,23 +771,19 @@ msgstr ""
 "تدخل ملفات تعريف الارتباط في yt-dlp في تنسيق ملف نص. يمكنك أن تصدِّرها من "
 "متصفحك باستخدام الامتدادات التالية (استخدمها على مسؤوليتك):"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:324
-msgid "Clear Cookies File"
-msgstr "امحُ ملف تعريف الارتباط"
-
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:336
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:315
 msgid "Converter"
 msgstr "المحوِّل"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:337
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:316
 msgid "Customize converter settings."
 msgstr "خصِّص إعدادات المحوِّل."
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:340
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:319
 msgid "Disallow Conversions"
 msgstr "امنع التحويلات"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:341
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:320
 msgid ""
 "If enabled, Tube Converter will download the appropriate video/audio format "
 "for the selected quality without converting to other formats. (You will be "
@@ -782,15 +792,15 @@ msgstr ""
 "إن مُكِّن هذا فلن يحوَّل المقطع\\الصوت المنزَّل من تنسيق لآخر، بل سوف يكون تنسيقه "
 "حسب الجودة المختارة. (لن تستطيع اختيار تنسيق للملف)"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:356
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:335
 msgid "Embed Metadata"
 msgstr "ضمِّن البيانات الوصفية"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:365
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:344
 msgid "Crop Audio Thumbnails"
 msgstr "قص الصور المصغرة لصوتيات"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:366
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:345
 msgid ""
 "If enabled, Tube Converter will automatically turn on the crop thumbnail "
 "advanced option for audio downloads"
@@ -798,7 +808,7 @@ msgstr ""
 "في حالة التمكين، سيقوم Tube Converter تلقائيًا بتشغيل الخِيار المتقدم للصور "
 "المصغرة لتنزيلات الصوت"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:382
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:361
 msgid "Embed Chapters"
 msgstr "الفصول المدمجة"
 
@@ -918,6 +928,9 @@ msgstr "وسائط"
 #: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.metainfo.xml.in:20
 msgid "download"
 msgstr "تحميل"
+
+#~ msgid "Authenticate (Invalid)"
+#~ msgstr "المصادقة (غير صالح)"
 
 #~ msgid ""
 #~ "Please provide credentials only if required by the website you are "
