@@ -420,12 +420,19 @@ public partial class AddDownloadDialog : Adw.Window
     private bool FinishSearchUrl()
     {
         _urlSpinner.Stop();
+        _urlRow.RemoveCssClass("error");
+        _urlRow.SetTitle(_("Media URL"));
         _validateUrlButton.SetSensitive(true);
         _validateUrlButton.SetChild(null);
         _validateUrlButton.SetLabel(_("Validate"));
         if (!_controller.HasMediaInfo)
         {
-            _toastOverlay.AddToast(Adw.Toast.New(_("No media information found. Please check URL and authentication credetials.")));
+            _urlRow.AddCssClass("error");
+            _urlRow.SetTitle(_("Media URL (Invalid)"));
+            if(_authRow.GetEnableExpansion())
+            {
+                _toastOverlay.AddToast(Adw.Toast.New(_("Ensure credentials are correct.")));
+            }
         }
         else
         {
