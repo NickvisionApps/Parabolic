@@ -48,7 +48,7 @@ public partial class Program
         _mainWindowController.AppInfo.Name = "Nickvision Tube Converter";
         _mainWindowController.AppInfo.ShortName = _("Tube Converter");
         _mainWindowController.AppInfo.Description = $"{_("Download web video and audio")}.";
-        _mainWindowController.AppInfo.Version = "2023.6.2-beta1";
+        _mainWindowController.AppInfo.Version = "2023.6.2-beta2";
         _mainWindowController.AppInfo.Changelog = "<ul><li>Recently completed downloads will be shown first in the completed group instead of being appended last</li><li>Fixed a performance issue with displaying logs when the logs were large in size</li><li>Fixed an issue where the app would crash if the authentication credentials were invalid</li><li>Updated translations (Thanks everyone on Weblate!)</li></ul>";
         _mainWindowController.AppInfo.GitHubRepo = new Uri("https://github.com/NickvisionApps/TubeConverter");
         _mainWindowController.AppInfo.IssueTracker = new Uri("https://github.com/NickvisionApps/TubeConverter/issues/new");
