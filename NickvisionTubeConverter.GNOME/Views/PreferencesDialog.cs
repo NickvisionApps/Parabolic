@@ -53,6 +53,7 @@ public partial class PreferencesDialog : Adw.PreferencesWindow
     [Gtk.Connect] private readonly Gtk.Button _cookiesFileButton;
     [Gtk.Connect] private readonly Gtk.Label _cookiesFileLabel;
     [Gtk.Connect] private readonly Gtk.Button _unsetCookiesFileButton;
+    [Gtk.Connect] private readonly Gtk.Popover _cookiesPopover;
     [Gtk.Connect] private readonly Gtk.Button _chromeCookiesButton;
     [Gtk.Connect] private readonly Gtk.Button _firefoxCookiesButton;
     [Gtk.Connect] private readonly Gtk.Switch _disallowConversionsSwitch;
@@ -228,6 +229,7 @@ public partial class PreferencesDialog : Adw.PreferencesWindow
     /// <param name="e">EventArgs</param>
     private void LaunchChromeCookiesExtension(Gtk.Button sender, EventArgs e)
     {
+        _cookiesPopover.Popdown();
         var uriLauncher = gtk_uri_launcher_new("https://chrome.google.com/webstore/detail/get-cookiestxt-locally/cclelndahbckbenkjhflpdbgdldlbecc");
         gtk_uri_launcher_launch(uriLauncher, 0, 0, (source, res, data) => { }, 0);
     }
@@ -239,6 +241,7 @@ public partial class PreferencesDialog : Adw.PreferencesWindow
     /// <param name="e">EventArgs</param>
     private void LaunchFirefoxCookiesExtension(Gtk.Button sender, EventArgs e)
     {
+        _cookiesPopover.Popdown();
         var uriLauncher = gtk_uri_launcher_new("https://addons.mozilla.org/en-US/firefox/addon/cookies-txt/");
         gtk_uri_launcher_launch(uriLauncher, 0, 0, (source, res, data) => { }, 0);
         
