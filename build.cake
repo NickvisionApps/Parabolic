@@ -260,6 +260,10 @@ private void PostPublishGNOME(string outDir, string prefix, string libDir)
     if (DirectoryExists($"{projectName}.Shared{sep}Docs"))
     {
         var docsDir = $"{shareDir}{sep}help";
+        //C for english
+        CreateDirectory($"{docsDir}{sep}C{sep}{shortName}");
+        CopyDirectory($"{projectName}.Shared{sep}Docs{sep}yelp{sep}C", $"{docsDir}{sep}C{sep}{shortName}");
+        //Other langs
         foreach (var lang in FileReadLines($"{projectName}.Shared{sep}Docs{sep}po{sep}LINGUAS"))
         {
             CreateDirectory($"{docsDir}{sep}{lang}{sep}{shortName}");
