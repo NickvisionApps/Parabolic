@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2023-06-21 12:24-0400\n"
+"POT-Creation-Date: 2023-06-21 19:17-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -50,47 +50,47 @@ msgstr ""
 msgid "If enabled, Tube Converter will download the appropriate video/audio format for the selected quality without converting to other formats. This means that you will be unable to select a file format when downloading a media. But, you will save time in downloading as the Converter will not be run."
 msgstr ""
 
-#. (itstool) path: item/p
-#: yelp/C/converter.page:27
-#: yelp/C/converter.page:37
+#. (itstool) path: note/p
+#: yelp/C/converter.page:28
 #: yelp/C/converter.page:42
-#: yelp/C/downloader.page:43
+#: yelp/C/converter.page:49
+#: yelp/C/downloader.page:50
 msgid "Default: Off"
 msgstr ""
 
 #. (itstool) path: item/title
-#: yelp/C/converter.page:30
+#: yelp/C/converter.page:32
 msgid "Embed Metadata"
 msgstr ""
 
 #. (itstool) path: item/p
-#: yelp/C/converter.page:31
+#: yelp/C/converter.page:33
 msgid "If enabled, Tube Converter will tag a media with its relevant information (title, genre, etc...) and thumbnail if available. Tube Converter will NOT embed the Comment, Description, Synopsis, and Purl fields."
 msgstr ""
 
-#. (itstool) path: item/p
-#: yelp/C/converter.page:32
-#: yelp/C/downloader.page:33
+#. (itstool) path: note/p
+#: yelp/C/converter.page:35
+#: yelp/C/downloader.page:36
 msgid "Default: On"
 msgstr ""
 
 #. (itstool) path: item/title
-#: yelp/C/converter.page:35
+#: yelp/C/converter.page:39
 msgid "Crop Audio Thumbnails"
 msgstr ""
 
 #. (itstool) path: item/p
-#: yelp/C/converter.page:36
+#: yelp/C/converter.page:40
 msgid "Only available if Embed Metadata is enabled. If enabled, Tube Converter will automatically turn on the advanced option \"Crop Thumbnail\" for audio downloads."
 msgstr ""
 
 #. (itstool) path: item/title
-#: yelp/C/converter.page:40
+#: yelp/C/converter.page:46
 msgid "Embed Chapters"
 msgstr ""
 
 #. (itstool) path: item/p
-#: yelp/C/converter.page:41
+#: yelp/C/converter.page:47
 msgid "If enabled, Tube Converter will tag a media with chapter information if available"
 msgstr ""
 
@@ -125,138 +125,138 @@ msgstr ""
 msgid "If the max number of active downloads is reached, Tube Converter will place new downloads in a queue until more downloads are able to be run."
 msgstr ""
 
-#. (itstool) path: item/p
-#: yelp/C/downloader.page:28
+#. (itstool) path: note/p
+#: yelp/C/downloader.page:29
 msgid "Default: 5"
 msgstr ""
 
 #. (itstool) path: item/title
-#: yelp/C/downloader.page:31
+#: yelp/C/downloader.page:33
 msgid "Overwrite Existing Files"
 msgstr ""
 
 #. (itstool) path: item/p
-#: yelp/C/downloader.page:32
+#: yelp/C/downloader.page:34
 msgid "If enabled, Tube Converter will overwrite existing files. For example, if a file named \"movie.mp4\" exists in the download folder, and a new download is created named \"movie\", \"movie.mp4\" will be overwritten with the new download's content."
 msgstr ""
 
 #. (itstool) path: item/title
-#: yelp/C/downloader.page:36
+#: yelp/C/downloader.page:40
 msgid "Speed Limit"
 msgstr ""
 
 #. (itstool) path: item/p
-#: yelp/C/downloader.page:37
+#: yelp/C/downloader.page:41
 msgid "A limit, in Ki/s, that is applied to downloads only if they have the advanced option \"Speed Limit\" enabled. Must be an integer value between 512 and 10240."
 msgstr ""
 
-#. (itstool) path: item/p
-#: yelp/C/downloader.page:38
+#. (itstool) path: note/p
+#: yelp/C/downloader.page:43
 msgid "Default: 1024"
 msgstr ""
 
 #. (itstool) path: item/title
-#: yelp/C/downloader.page:41
+#: yelp/C/downloader.page:47
 msgid "Use aria2"
 msgstr ""
 
 #. (itstool) path: item/p
-#: yelp/C/downloader.page:42
+#: yelp/C/downloader.page:48
 msgid "If enabled, Tube Converter will use aria2c to download media. Although using aria2c can improve download speed, download progress will not be displayed in the UI."
 msgstr ""
 
 #. (itstool) path: item/title
-#: yelp/C/downloader.page:46
+#: yelp/C/downloader.page:54
 msgid "Maximum Connections Per Server"
 msgstr ""
 
 #. (itstool) path: item/p
-#: yelp/C/downloader.page:47
+#: yelp/C/downloader.page:55
 msgid "This option only applies when using aria2 is enabled. This option is the same as the \"-x\" flag passed to aria2c."
 msgstr ""
 
 #. (itstool) path: item/p
-#: yelp/C/downloader.page:48
+#: yelp/C/downloader.page:56
 msgid "The maximum number of connection that can be used per server. Must be an integer value between 1 and 32."
 msgstr ""
 
-#. (itstool) path: item/p
-#: yelp/C/downloader.page:49
+#. (itstool) path: note/p
+#: yelp/C/downloader.page:58
 msgid "Default: 16"
 msgstr ""
 
 #. (itstool) path: item/title
-#: yelp/C/downloader.page:52
+#: yelp/C/downloader.page:62
 msgid "Minimum Split Size"
 msgstr ""
 
 #. (itstool) path: item/p
-#: yelp/C/downloader.page:53
+#: yelp/C/downloader.page:63
 msgid "This option only applies when using aria2 is enabled. This option is the same as the \"-k\" flag passed to aria2c."
 msgstr ""
 
 #. (itstool) path: item/p
-#: yelp/C/downloader.page:54
+#: yelp/C/downloader.page:64
 msgid "The minimum size, in MiB, of which to split a file. Must be an integer value between 1 and 1024."
 msgstr ""
 
-#. (itstool) path: item/p
-#: yelp/C/downloader.page:55
+#. (itstool) path: note/p
+#: yelp/C/downloader.page:66
 msgid "Default: 20"
 msgstr ""
 
 #. (itstool) path: item/title
-#: yelp/C/downloader.page:58
+#: yelp/C/downloader.page:70
 msgid "Subtitles Languages"
 msgstr ""
 
 #. (itstool) path: item/p
-#: yelp/C/downloader.page:59
+#: yelp/C/downloader.page:71
 msgid "A comma-separated list of two-letter and three-letter language codes to use when selecting languages of subtitles to download. Only applies when a valid \"Subtitle\" format is selected in a download."
 msgstr ""
 
-#. (itstool) path: item/p
-#: yelp/C/downloader.page:60
-msgid "<i>Some sites use two-letter language codes, whereas others use three-letter. For example, \"en\" and \"eng\" are both used for English. Please specify both two-letter and three-letter codes for your languages for the best results.</i>"
+#. (itstool) path: note/p
+#: yelp/C/downloader.page:73
+msgid "Some sites use two-letter language codes, whereas others use three-letter. For example, \"en\" and \"eng\" are both used for English. Please specify both two-letter and three-letter codes for your languages for the best results."
 msgstr ""
 
-#. (itstool) path: item/p
-#: yelp/C/downloader.page:61
+#. (itstool) path: note/p
+#: yelp/C/downloader.page:76
 msgid "Default: Your culture's two-letter and three-letter language code. For example, on an en-US system the default would be \"en,eng\""
 msgstr ""
 
 #. (itstool) path: item/title
-#: yelp/C/downloader.page:64
+#: yelp/C/downloader.page:80
 msgid "Cookies File"
 msgstr ""
 
 #. (itstool) path: item/p
-#: yelp/C/downloader.page:65
+#: yelp/C/downloader.page:81
 msgid "A .txt file of cookies to pass to yt-dlp when downloading. This may be useful when downloading media that requires a login, for example: private YouTube videos."
 msgstr ""
 
 #. (itstool) path: item/p
-#: yelp/C/downloader.page:66
+#: yelp/C/downloader.page:82
 msgid "Use one of the following extensions for getting a cookies file from your browser:"
 msgstr ""
 
 #. (itstool) path: item/p
-#: yelp/C/downloader.page:67
+#: yelp/C/downloader.page:83
 msgid "Chrome: https://chrome.google.com/webstore/detail/get-cookiestxt-locally/cclelndahbckbenkjhflpdbgdldlbecc"
 msgstr ""
 
 #. (itstool) path: item/p
-#: yelp/C/downloader.page:68
+#: yelp/C/downloader.page:84
 msgid "Firefox: https://addons.mozilla.org/en-US/firefox/addon/cookies-txt/"
 msgstr ""
 
-#. (itstool) path: item/p
-#: yelp/C/downloader.page:69
-msgid "<i>Use these extensions at your own risk.</i>"
+#. (itstool) path: note/p
+#: yelp/C/downloader.page:86
+msgid "Use these extensions at your own risk."
 msgstr ""
 
-#. (itstool) path: item/p
-#: yelp/C/downloader.page:70
+#. (itstool) path: note/p
+#: yelp/C/downloader.page:89
 msgid "Default: No File Selected"
 msgstr ""
 
