@@ -172,6 +172,13 @@ Task("DocsUpdateYelp")
 Task("DocsUpdateHtml")
     .Does(() =>
 {
+    //C for english
+    CreateDirectory($"{projectName}.Shared{sep}Docs{sep}html{sep}C");
+    StartProcess("yelp-build", new ProcessSettings {
+        Arguments = $"html -o html{sep}C{sep} yelp{sep}C{sep}",
+        WorkingDirectory = $"{projectName}.Shared{sep}Docs"
+    });
+    //Other langs
     foreach (var lang in FileReadLines($".{sep}{projectName}.Shared{sep}Docs{sep}po{sep}LINGUAS"))
     {
         CreateDirectory($"{projectName}.Shared{sep}Docs{sep}html{sep}{lang}");
@@ -179,10 +186,6 @@ Task("DocsUpdateHtml")
             Arguments = $"html -o html{sep}{lang}{sep} yelp{sep}{lang}{sep}",
             WorkingDirectory = $"{projectName}.Shared{sep}Docs"
         });
-        if (lang == "C")
-        {
-            continue;
-        }
         DeleteDirectory($"{projectName}.Shared{sep}Docs{sep}html{sep}{lang}{sep}figures", new DeleteDirectorySettings {
             Force = true,
             Recursive = true
