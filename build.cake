@@ -174,6 +174,8 @@ Task("DocsUpdateHtml")
 {
     //C for english
     CreateDirectory($"{projectName}.Shared{sep}Docs{sep}html{sep}C");
+    CreateDirectory($"{projectName}.Shared{sep}Docs{sep}html{sep}C{sep}figures");
+    CopyDirectory($"{projectName}.Shared{sep}Docs{sep}yelp{sep}C{sep}figures", $"{projectName}.Shared{sep}Docs{sep}html{sep}C{sep}figures");
     StartProcess("yelp-build", new ProcessSettings {
         Arguments = $"html -o html{sep}C{sep} yelp{sep}C{sep}",
         WorkingDirectory = $"{projectName}.Shared{sep}Docs"
