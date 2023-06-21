@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2023-06-21 09:36-0400\n"
+"POT-Creation-Date: 2023-06-21 12:24-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -15,6 +15,252 @@ msgid "translator-credits"
 msgstr ""
 
 #. (itstool) path: info/title
+#: yelp/C/converter.page:8
+msgctxt "link"
+msgid "Converter ⚒️"
+msgstr ""
+
+#. (itstool) path: credit/name
+#: yelp/C/converter.page:10
+#: yelp/C/converter.page:14
+#: yelp/C/downloader.page:10
+#: yelp/C/downloader.page:14
+#: yelp/C/index.page:10
+#: yelp/C/index.page:14
+msgid "Nicholas Logozzo"
+msgstr ""
+
+#. (itstool) path: page/title
+#: yelp/C/converter.page:20
+msgid "Converter"
+msgstr ""
+
+#. (itstool) path: page/p
+#: yelp/C/converter.page:21
+msgid "This page explains all options for configuring the Converter in Preferences in <app>Tube Converter</app>."
+msgstr ""
+
+#. (itstool) path: item/title
+#: yelp/C/converter.page:25
+msgid "Disallow Conversions"
+msgstr ""
+
+#. (itstool) path: item/p
+#: yelp/C/converter.page:26
+msgid "If enabled, Tube Converter will download the appropriate video/audio format for the selected quality without converting to other formats. This means that you will be unable to select a file format when downloading a media. But, you will save time in downloading as the Converter will not be run."
+msgstr ""
+
+#. (itstool) path: item/p
+#: yelp/C/converter.page:27
+#: yelp/C/converter.page:37
+#: yelp/C/converter.page:42
+#: yelp/C/downloader.page:43
+msgid "Default: Off"
+msgstr ""
+
+#. (itstool) path: item/title
+#: yelp/C/converter.page:30
+msgid "Embed Metadata"
+msgstr ""
+
+#. (itstool) path: item/p
+#: yelp/C/converter.page:31
+msgid "If enabled, Tube Converter will tag a media with its relevant information (title, genre, etc...) and thumbnail if available. Tube Converter will NOT embed the Comment, Description, Synopsis, and Purl fields."
+msgstr ""
+
+#. (itstool) path: item/p
+#: yelp/C/converter.page:32
+#: yelp/C/downloader.page:33
+msgid "Default: On"
+msgstr ""
+
+#. (itstool) path: item/title
+#: yelp/C/converter.page:35
+msgid "Crop Audio Thumbnails"
+msgstr ""
+
+#. (itstool) path: item/p
+#: yelp/C/converter.page:36
+msgid "Only available if Embed Metadata is enabled. If enabled, Tube Converter will automatically turn on the advanced option \"Crop Thumbnail\" for audio downloads."
+msgstr ""
+
+#. (itstool) path: item/title
+#: yelp/C/converter.page:40
+msgid "Embed Chapters"
+msgstr ""
+
+#. (itstool) path: item/p
+#: yelp/C/converter.page:41
+msgid "If enabled, Tube Converter will tag a media with chapter information if available"
+msgstr ""
+
+#. (itstool) path: info/title
+#: yelp/C/downloader.page:8
+msgctxt "link"
+msgid "Downloader 🌐"
+msgstr ""
+
+#. (itstool) path: page/title
+#: yelp/C/downloader.page:20
+msgid "Downloader"
+msgstr ""
+
+#. (itstool) path: page/p
+#: yelp/C/downloader.page:21
+msgid "This page explains all options for configuring the Downloader in Preferences in <app>Tube Converter</app>."
+msgstr ""
+
+#. (itstool) path: item/title
+#: yelp/C/downloader.page:25
+msgid "Maximum Number of Active Downloads"
+msgstr ""
+
+#. (itstool) path: item/p
+#: yelp/C/downloader.page:26
+msgid "The number of active downloads allowed to run at a time. Must be an integer value between 1 and 10."
+msgstr ""
+
+#. (itstool) path: item/p
+#: yelp/C/downloader.page:27
+msgid "If the max number of active downloads is reached, Tube Converter will place new downloads in a queue until more downloads are able to be run."
+msgstr ""
+
+#. (itstool) path: item/p
+#: yelp/C/downloader.page:28
+msgid "Default: 5"
+msgstr ""
+
+#. (itstool) path: item/title
+#: yelp/C/downloader.page:31
+msgid "Overwrite Existing Files"
+msgstr ""
+
+#. (itstool) path: item/p
+#: yelp/C/downloader.page:32
+msgid "If enabled, Tube Converter will overwrite existing files. For example, if a file named \"movie.mp4\" exists in the download folder, and a new download is created named \"movie\", \"movie.mp4\" will be overwritten with the new download's content."
+msgstr ""
+
+#. (itstool) path: item/title
+#: yelp/C/downloader.page:36
+msgid "Speed Limit"
+msgstr ""
+
+#. (itstool) path: item/p
+#: yelp/C/downloader.page:37
+msgid "A limit, in Ki/s, that is applied to downloads only if they have the advanced option \"Speed Limit\" enabled. Must be an integer value between 512 and 10240."
+msgstr ""
+
+#. (itstool) path: item/p
+#: yelp/C/downloader.page:38
+msgid "Default: 1024"
+msgstr ""
+
+#. (itstool) path: item/title
+#: yelp/C/downloader.page:41
+msgid "Use aria2"
+msgstr ""
+
+#. (itstool) path: item/p
+#: yelp/C/downloader.page:42
+msgid "If enabled, Tube Converter will use aria2c to download media. Although using aria2c can improve download speed, download progress will not be displayed in the UI."
+msgstr ""
+
+#. (itstool) path: item/title
+#: yelp/C/downloader.page:46
+msgid "Maximum Connections Per Server"
+msgstr ""
+
+#. (itstool) path: item/p
+#: yelp/C/downloader.page:47
+msgid "This option only applies when using aria2 is enabled. This option is the same as the \"-x\" flag passed to aria2c."
+msgstr ""
+
+#. (itstool) path: item/p
+#: yelp/C/downloader.page:48
+msgid "The maximum number of connection that can be used per server. Must be an integer value between 1 and 32."
+msgstr ""
+
+#. (itstool) path: item/p
+#: yelp/C/downloader.page:49
+msgid "Default: 16"
+msgstr ""
+
+#. (itstool) path: item/title
+#: yelp/C/downloader.page:52
+msgid "Minimum Split Size"
+msgstr ""
+
+#. (itstool) path: item/p
+#: yelp/C/downloader.page:53
+msgid "This option only applies when using aria2 is enabled. This option is the same as the \"-k\" flag passed to aria2c."
+msgstr ""
+
+#. (itstool) path: item/p
+#: yelp/C/downloader.page:54
+msgid "The minimum size, in MiB, of which to split a file. Must be an integer value between 1 and 1024."
+msgstr ""
+
+#. (itstool) path: item/p
+#: yelp/C/downloader.page:55
+msgid "Default: 20"
+msgstr ""
+
+#. (itstool) path: item/title
+#: yelp/C/downloader.page:58
+msgid "Subtitles Languages"
+msgstr ""
+
+#. (itstool) path: item/p
+#: yelp/C/downloader.page:59
+msgid "A comma-separated list of two-letter and three-letter language codes to use when selecting languages of subtitles to download. Only applies when a valid \"Subtitle\" format is selected in a download."
+msgstr ""
+
+#. (itstool) path: item/p
+#: yelp/C/downloader.page:60
+msgid "<i>Some sites use two-letter language codes, whereas others use three-letter. For example, \"en\" and \"eng\" are both used for English. Please specify both two-letter and three-letter codes for your languages for the best results.</i>"
+msgstr ""
+
+#. (itstool) path: item/p
+#: yelp/C/downloader.page:61
+msgid "Default: Your culture's two-letter and three-letter language code. For example, on an en-US system the default would be \"en,eng\""
+msgstr ""
+
+#. (itstool) path: item/title
+#: yelp/C/downloader.page:64
+msgid "Cookies File"
+msgstr ""
+
+#. (itstool) path: item/p
+#: yelp/C/downloader.page:65
+msgid "A .txt file of cookies to pass to yt-dlp when downloading. This may be useful when downloading media that requires a login, for example: private YouTube videos."
+msgstr ""
+
+#. (itstool) path: item/p
+#: yelp/C/downloader.page:66
+msgid "Use one of the following extensions for getting a cookies file from your browser:"
+msgstr ""
+
+#. (itstool) path: item/p
+#: yelp/C/downloader.page:67
+msgid "Chrome: https://chrome.google.com/webstore/detail/get-cookiestxt-locally/cclelndahbckbenkjhflpdbgdldlbecc"
+msgstr ""
+
+#. (itstool) path: item/p
+#: yelp/C/downloader.page:68
+msgid "Firefox: https://addons.mozilla.org/en-US/firefox/addon/cookies-txt/"
+msgstr ""
+
+#. (itstool) path: item/p
+#: yelp/C/downloader.page:69
+msgid "<i>Use these extensions at your own risk.</i>"
+msgstr ""
+
+#. (itstool) path: item/p
+#: yelp/C/downloader.page:70
+msgid "Default: No File Selected"
+msgstr ""
+
+#. (itstool) path: info/title
 #: yelp/C/index.page:7
 msgctxt "link"
 msgid "Tube Converter Help"
@@ -24,12 +270,6 @@ msgstr ""
 #: yelp/C/index.page:8
 msgctxt "text"
 msgid "Tube Converter Help"
-msgstr ""
-
-#. (itstool) path: credit/name
-#: yelp/C/index.page:10
-#: yelp/C/index.page:14
-msgid "Nicholas Logozzo"
 msgstr ""
 
 #. (itstool) path: page/title

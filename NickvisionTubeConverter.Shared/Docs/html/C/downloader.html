@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Downloader</title>
+<link rel="stylesheet" type="text/css" href="C.css">
+<script type="text/javascript" src="highlight.pack.js"></script><script>
+document.addEventListener('DOMContentLoaded', function() {
+  var matches = document.querySelectorAll('code.syntax')
+  for (var i = 0; i < matches.length; i++) {
+    hljs.highlightBlock(matches[i]);
+  }
+}, false);</script><script type="text/javascript" src="yelp.js"></script>
+</head>
+<body><main><div class="page">
+<header><div class="inner pagewide"><div class="trails" role="navigation"><div class="trail">
+<a class="trail" href="index.html" title="Tube Converter Help">Tube Converter Help</a> » </div></div></div></header><article><div class="hgroup pagewide"><h1 class="title"><span class="title">Downloader</span></h1></div>
+<div class="region">
+<div class="contents pagewide">
+<p class="p">This page explains all options for configuring the Downloader in Preferences in <span class="app">Tube Converter</span>.</p>
+<div class="terms"><div class="inner"><div class="region"><dl class="terms">
+<dt class="terms">Maximum Number of Active Downloads</dt>
+<dd class="terms">
+<p class="p">The number of active downloads allowed to run at a time. Must be an integer value between 1 and 10.</p>
+<p class="p">If the max number of active downloads is reached, Tube Converter will place new downloads in a queue until more downloads are able to be run.</p>
+<p class="p">Default: 5</p>
+</dd>
+<dt class="terms">Overwrite Existing Files</dt>
+<dd class="terms">
+<p class="p">If enabled, Tube Converter will overwrite existing files. For example, if a file named "movie.mp4" exists in the download folder, and a new download is created named "movie", "movie.mp4" will be overwritten with the new download's content.</p>
+<p class="p">Default: On</p>
+</dd>
+<dt class="terms">Speed Limit</dt>
+<dd class="terms">
+<p class="p">A limit, in Ki/s, that is applied to downloads only if they have the advanced option "Speed Limit" enabled. Must be an integer value between 512 and 10240.</p>
+<p class="p">Default: 1024</p>
+</dd>
+<dt class="terms">Use aria2</dt>
+<dd class="terms">
+<p class="p">If enabled, Tube Converter will use aria2c to download media. Although using aria2c can improve download speed, download progress will not be displayed in the UI.</p>
+<p class="p">Default: Off</p>
+</dd>
+<dt class="terms">Maximum Connections Per Server</dt>
+<dd class="terms">
+<p class="p">This option only applies when using aria2 is enabled. This option is the same as the "-x" flag passed to aria2c.</p>
+<p class="p">The maximum number of connection that can be used per server. Must be an integer value between 1 and 32.</p>
+<p class="p">Default: 16</p>
+</dd>
+<dt class="terms">Minimum Split Size</dt>
+<dd class="terms">
+<p class="p">This option only applies when using aria2 is enabled. This option is the same as the "-k" flag passed to aria2c.</p>
+<p class="p">The minimum size, in MiB, of which to split a file. Must be an integer value between 1 and 1024.</p>
+<p class="p">Default: 20</p>
+</dd>
+<dt class="terms">Subtitles Languages</dt>
+<dd class="terms">
+<p class="p">A comma-separated list of two-letter and three-letter language codes to use when selecting languages of subtitles to download. Only applies when a valid "Subtitle" format is selected in a download.</p>
+<p class="p">*Some sites use two-letter language codes, whereas others use three-letter. For example, "en" and "eng" are both used for English. Please specify both two-letter and three-letter codes for your languages for the best results.*</p>
+<p class="p">Default: Your culture's two-letter and three-letter language code. For example, on an en-US system the default would be "en,eng"</p>
+</dd>
+<dt class="terms">Cookies File</dt>
+<dd class="terms">
+<p class="p">A .txt file of cookies to pass to yt-dlp when downloading. This may be useful when downloading media that requires a login, for example: private YouTube videos.</p>
+<p class="p">Use one of the following extensions for getting a cookies file from your browser:</p>
+<p class="p">Chrome: https://chrome.google.com/webstore/detail/get-cookiestxt-locally/cclelndahbckbenkjhflpdbgdldlbecc</p>
+<p class="p">Firefox: https://addons.mozilla.org/en-US/firefox/addon/cookies-txt/</p>
+<p class="p">*Use these extensions at your own risk.*</p>
+<p class="p">Default: No File Selected</p>
+</dd>
+</dl></div></div></div>
+</div>
+<section class="links" role="navigation"><div class="inner">
+<div class="hgroup pagewide"></div>
+<div class="contents pagewide"><div class="links guidelinks"><div class="inner">
+<div class="title"><h2><span class="title">More Information</span></h2></div>
+<div class="region"><ul><li class="links "><a href="index.html" title="Tube Converter Help">Tube Converter Help</a></li></ul></div>
+</div></div></div>
+</div></section>
+</div>
+<div class="clear"></div></article><footer><div class="inner pagewide"><div class="about ui-expander" role="contentinfo">
+<div class="yelp-data yelp-data-ui-expander" data-yelp-expanded="false"></div>
+<div class="inner">
+<div class="hgroup"><h2><span class="title">About</span></h2></div>
+<div class="region"><div class="contents">
+<div class="copyrights">
+<div class="copyright">© 2023 Nicholas Logozzo</div>
+<div class="copyright">© 2023 Nicholas Logozzo</div>
+</div>
+<div class="credits">
+<div class="credits-authors">
+<div class="title"><span class="title">Written By</span></div>
+<ul class="credits"><li>Nicholas Logozzo</li></ul>
+</div>
+<div class="credits-publishers">
+<div class="title"><span class="title">Published By</span></div>
+<ul class="credits"><li>Nicholas Logozzo</li></ul>
+</div>
+<div class="credits-blank"></div>
+<div class="credits-blank"></div>
+</div>
+<div class="license">
+<div class="title"><span class="title">Creative Commons</span></div>
+<div class="contents"><p class="p">Creative Commons Attribution 4.0 International License</p></div>
+</div>
+</div></div>
+</div>
+</div></div></footer>
+</div></main></body>
+</html>
