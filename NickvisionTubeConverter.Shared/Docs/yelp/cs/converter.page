@@ -2,7 +2,7 @@
 <page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" id="converter" its:version="2.0" xml:lang="cs">
 <info>
 	<link type="guide" xref="index"/>
-	<title type="link">Converter ⚒️</title>
+	<title type="link">Konvertor ⚒️</title>
 	<credit type="author copyright">
 		<name>Nicholas Logozzo</name>
 		<years its:translate="no">2023</years>
@@ -12,41 +12,47 @@
 		<years its:translate="no">2023</years>
 	</credit>
 	<license href="http://creativecommons.org/licenses/by/4.0/" its:translate="no"><p>Creative Commons Attribution 4.0 International License</p></license>
-</info>
 
-<title>Converter</title>
-<p>This page explains all options for configuring the Converter in Preferences in <app>Tube Converter</app>.</p>
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Jonáš Loskot</mal:name>
+      <mal:email>jonas.loskot@pm.me</mal:email>
+      <mal:years>2023</mal:years>
+    </mal:credit>
+  </info>
+
+<title>Konvertor</title>
+<p>Na této straně najdete vysvětlení všech možností konfigurace konvertoru v předvolbách v aplikaci <app>Tube Converter</app>.</p>
 
 <terms>
 	<item>
-		<title>Disallow Conversions</title>
-		<p>If enabled, Tube Converter will download the appropriate video/audio format for the selected quality without converting to other formats.</p>
-        <p>This means that you will be unable to select a file format when downloading a media. But, you will save time in downloading as the Converter will not be run.</p>
+		<title>Zakázání konverze</title>
+		<p>Pokud je tato funkce povolena, Tube Converter stáhne příslušný formát videa/audia pro zvolenou kvalitu bez převodu do jiných formátů.</p>
+        <p>To znamená, že při stahování média nebude možné vybrat formát souboru. Ušetříte však čas při stahování, protože nebude spuštěn konvertor.</p>
 		<note style="advanced">
-			<p>Default: Off</p>
+			<p>Výchozí: vypnuto</p>
 		</note>
     </item>
 	<item>
-		<title>Embed Metadata</title>
-		<p>If enabled, Tube Converter will tag a media with its relevant information (title, genre, etc...) and thumbnail if available.</p>
-        <p>Tube Converter will NOT embed the Comment, Description, Synopsis, and Purl fields.</p>
+		<title>Vložení metadat</title>
+		<p>Pokud je tato funkce povolena, Tube Converter označí médium příslušnými informacemi (název, žánr atd.) a miniaturou, pokud je k dispozici.</p>
+        <p>Tube Converter NEvkládá pole komentářů, popisu, synopse a Purl.</p>
 		<note style="advanced">
-			<p>Default: On</p>
+			<p>Výchozí: zapnuto</p>
 		</note>
     </item>
     <item>
-		<title>Crop Audio Thumbnails</title>
-		<p>Only available if Embed Metadata is enabled.</p>
+		<title>Oříznout miniatury zvuku</title>
+		<p>Dostupné pouze při povoleném vložení metadat.</p>
 		<p>If enabled, Tube Converter will automatically turn on the advanced option <code>Crop Thumbnail</code> for audio downloads.</p>
 		<note style="advanced">
-			<p>Default: Off</p>
+			<p>Výchozí: vypnuto</p>
 		</note>
     </item>
 	<item>
 		<title>Embed Chapters</title>
 		<p>If enabled, Tube Converter will tag a media with chapter information if available</p>
 		<note style="advanced">
-			<p>Default: Off</p>
+			<p>Výchozí: vypnuto</p>
 		</note>
 	</item>
 </terms>

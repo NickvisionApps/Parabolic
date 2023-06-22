@@ -2,7 +2,7 @@
 <page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" id="converter" its:version="2.0" xml:lang="pl">
 <info>
 	<link type="guide" xref="index"/>
-	<title type="link">Converter ⚒️</title>
+	<title type="link">Konwersja ⚒️</title>
 	<credit type="author copyright">
 		<name>Nicholas Logozzo</name>
 		<years its:translate="no">2023</years>
@@ -14,39 +14,39 @@
 	<license href="http://creativecommons.org/licenses/by/4.0/" its:translate="no"><p>Creative Commons Attribution 4.0 International License</p></license>
 </info>
 
-<title>Converter</title>
-<p>This page explains all options for configuring the Converter in Preferences in <app>Tube Converter</app>.</p>
+<title>Konwersja</title>
+<p>Ta strona wyjaśnia wszystkie opcje dostępne w sekcji Konwersja w preferencjach w <app>Tube Converter</app>.</p>
 
 <terms>
 	<item>
-		<title>Disallow Conversions</title>
-		<p>If enabled, Tube Converter will download the appropriate video/audio format for the selected quality without converting to other formats.</p>
-        <p>This means that you will be unable to select a file format when downloading a media. But, you will save time in downloading as the Converter will not be run.</p>
+		<title>Nie zezwalaj na konwersję</title>
+		<p>Po włączeniu, Tube Converter pobierze wideo i audio w formacie odpowiednim dla wybranej jakości bez przeprowadzania konwersji na inne formaty.</p>
+        <p>To oznacza, że nie będzie można wybrać formatu pliku podczas pobierania, ale konwesja nie będzie musiała zostać przeprowadzona co pozwoli zaoszczędzić czas.</p>
 		<note style="advanced">
-			<p>Default: Off</p>
+			<p>Domyślnie: wyłączone</p>
 		</note>
     </item>
 	<item>
-		<title>Embed Metadata</title>
-		<p>If enabled, Tube Converter will tag a media with its relevant information (title, genre, etc...) and thumbnail if available.</p>
-        <p>Tube Converter will NOT embed the Comment, Description, Synopsis, and Purl fields.</p>
+		<title>Zapisuj metadane w plikach</title>
+		<p>Po włączeniu, Tube Converter będzie oznaczać multimedia odpowiednimi informacjami (tytułem, gatunkiem, itd.) i miniaturą, jeśli jest dostępna.</p>
+        <p>Tube Converter NIE zapisze w pliku komentarzy, opisu, podsumowania czy purl.</p>
 		<note style="advanced">
-			<p>Default: On</p>
+			<p>Domyślnie: włączone</p>
 		</note>
     </item>
     <item>
-		<title>Crop Audio Thumbnails</title>
-		<p>Only available if Embed Metadata is enabled.</p>
+		<title>Przycinaj miniatury plików audio</title>
+		<p>Dostępne wyłącznie, jeśli opcja "Zapisuj metadane w plikach" jest włączona.</p>
 		<p>If enabled, Tube Converter will automatically turn on the advanced option <code>Crop Thumbnail</code> for audio downloads.</p>
 		<note style="advanced">
-			<p>Default: Off</p>
+			<p>Domyślnie: wyłączone</p>
 		</note>
     </item>
 	<item>
-		<title>Embed Chapters</title>
-		<p>If enabled, Tube Converter will tag a media with chapter information if available</p>
+		<title>Zapisuj rozdziały w plikach</title>
+		<p>Po włączeniu, Tube Converter będzie oznaczać multimedia informacjami o rozdziałach, jeśli są dostępne</p>
 		<note style="advanced">
-			<p>Default: Off</p>
+			<p>Domyślnie: wyłączone</p>
 		</note>
 	</item>
 </terms>

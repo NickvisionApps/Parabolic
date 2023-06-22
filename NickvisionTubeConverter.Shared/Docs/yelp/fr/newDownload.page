@@ -2,7 +2,7 @@
 <page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" id="newDownload" its:version="2.0" xml:lang="fr">
 <info>
 	<link type="guide" xref="index"/>
-	<title type="link">New Download 🆕</title>
+	<title type="link">Nouveau téléchargement 🆕</title>
 	<credit type="author copyright">
 		<name>Nicholas Logozzo</name>
 		<years its:translate="no">2023</years>
@@ -14,87 +14,87 @@
 	<license href="http://creativecommons.org/licenses/by/4.0/" its:translate="no"><p>Creative Commons Attribution 4.0 International License</p></license>
 </info>
 
-<title>New Download</title>
-<p>This page explains all options for configuring a new download in <app>Tube Converter</app>.</p>
+<title>Nouveau téléchargement</title>
+<p>Cette page explique toutes les options pour configurer un nouveau téléchargement dans <app>Tube Converter</app>.</p>
 
 <terms>
     <item>
-      <title>Media URL</title>
-      <p>The URL of the media to download. Must be a valid ("valid" meaning syntactically correct) http or https link.</p>
+      <title>URL du média</title>
+      <p>L’URL du média à télécharger. Il doit s’agir d’un lien http ou https valide (i.e.e syntaxiquement correct).</p>
       <note>
-            <p>If a valid URL is found inside the clipboard upon opening the Add Download dialog, the URL will be automatically pasted in the URL entry row.</p>
+            <p>Si une URL valide est trouvée dans le presse-papiers au moment de l’ouverture de la fenêtre de dialogue Ajouter, elle sera automatiquement collée dans le champ de saisie.</p>
       </note>
     </item>
     <item>
-      <title>Authenticate</title>
-      <p>If enabled, the user will be asked to provide a username and/or password to pass to yt-dlp when downloading.</p>
-        <p>If keyring is enabled, the user will be asked to chose from a list of named credentials or can chose to enter manually a different username and/or password.</p>
+      <title>S’authentifier</title>
+      <p>Si cette option est activée, il sera demandé à l’utilisateur de fournir un nom d’utilisateur et/ou un mot de passe à yt-dlp lors du téléchargement.</p>
+        <p>Si le trousseau est activé, l’utilisateur devra choisir parmi une liste de certificats, ou entrer manuellement un nom d’utilisateur et/ou mot de passe différent.</p>
 		<note style="advanced">
-			<p>Not all websites support passing usernames and passwords to yt-dlp. For example, YouTube does NOT support this feature.</p>
-            <p>For these sites that don't support passing credentials, it is recommended to upload a Cookies file in Preferences instead.</p>
+			<p>Tous les sites web ne prennent pas en charge la fourniture de noms d’utilisateur et mots de passe à yt-dlp. Par exemple, YouTube ne prend PAS en charge cette fonctionnalité.</p>
+            <p>Pour les sites qui ne prennent pas en charge la fourniture d’identifiants, il est recommandé de téléverser un fichier de cookies dans les préférences à la place.</p>
 		</note>
     </item>
     <item>
-		<title>File Type</title>
-		<p>The file type of which to download the media as.</p>
-            <p>If <code>Disallow Conversions</code> is enabled, the only options will be <code>Video</code> (if supported) and <code>Audio</code></p>
+		<title>Type de fichier</title>
+		<p>Le type de fichier sous lequel enregistrer le média.</p>
+            <p>Si l’option <code>Empêcher les conversions</code> est activée, les seules options possibles seront <code>Vidéo</code> (si pris en charge) et <code>Audio</code></p>
         <note>
-            <p>The previously used file type will be remembered and pre-selected for the next download.</p>
+            <p>Le type de fichier sélectionné précédemment sera mémorisé et présélectionné pour le prochain téléchargement.</p>
         </note>
     </item>
     <item>
-		<title>Quality</title>
-		<p>If the file type is a video type, the listed qualities will be the resolutions of the media available.</p>
-        <p>If the file type is an audio type, the listed qualities will be simply <code>Best</code> and <code>Worst</code>.</p>
+		<title>Qualité</title>
+		<p>Si le type de fichier est une vidéo, la liste des qualités sera celle des résolutions disponibles pour le média.</p>
+        <p>Si le type de fichier est un audio, la liste des qualités sera simplement <code>Meilleure</code> et <code>Basse</code>.</p>
         <note>
-            <p>The previously used quality will be remembered and pre-selected for the next download.</p>
+            <p>La qualité utilisée précédemment sera mémorisée et présélectionnée pour le prochain téléchargement.</p>
         </note>
     </item>
     <item>
-		<title>Subtitle</title>
-		<p>The type of subtitles to download. Can be <code>None</code>, <code>VTT</code>, or <code>SRT</code>.</p>
+		<title>Sous-titres</title>
+		<p>Le type de sous-titres à télécharger. Il peut s’agir de <code>Aucuns</code>, <code>VTT</code>, ou <code>SRT</code>.</p>
         <note>
-            <p>Only available for video types.</p>
+            <p>Seulement disponibles pour les vidéos.</p>
         </note>
     </item>
     <item>
-		<title>Save Folder</title>
-		<p>The folder at which to save the download to.</p>
-        <p>If the file type is an audio type, the listed qualities will be simply <code>Best</code> and <code>Worst</code>.</p>
+		<title>Dossier d’enregistrement</title>
+		<p>Le dossier dans lequel enregistrer le téléchargement.</p>
+        <p>Si le type de fichier est un audio, la liste des qualités sera simplement <code>Meilleure</code> et <code>Basse</code>.</p>
         <note>
-            <p>The previously used folder will be remembered and pre-selected for the next download.</p>
+            <p>Le dossier sélectionné précédemment sera mémorisé et présélectionné pour le prochain téléchargement.</p>
         </note>
     </item>
     <item>
-		<title>Speed Limit</title>
-		<p>If enabled, Tube Converter will limit the download's speed with the speed configured in Preferences.</p>
+		<title>Limitation de vitesse</title>
+		<p>Si cette option est activée, Tube Converter limitera la vitesse de téléchargement selon la vitesse indiquée dans les préférences.</p>
         <note>
-            <p>Available in the <code>Advanced Options</code> section.</p>
+            <p>Disponible dans la section <code>Options avancées</code>.</p>
         </note>
     </item>
     <item>
-		<title>Crop Thumbnail</title>
-        <p>Only available if <code>Embed Metadata</code> is enabled in Preferences.</p>
-		<p>If enabled, Tube Converter will crop a download's embedded thumbnail as square. This is useful when downloading music who's album images are usually square.</p>
+		<title>Rogner la vignette</title>
+        <p>Seulement disponible si l’<code>inclusion des métadonnées</code> est activée dans les préférences.</p>
+		<p>Si cette option est activée, Tube Conveter rognera la vignette d’un téléchargement en forme de carré. Ceci est utile pour le téléchargement de musiques, puisque les illustrations d’albums ont généralement cette forme.</p>
         <note>
-            <p>Available in the <code>Advanced Options</code> section.</p>
+            <p>Disponible dans la section <code>Options avancées</code>.</p>
         </note>
     </item>
     <item>
-		<title>Download Specific Timeframe</title>
-		<p>If enabled, the user will be able to enter a start timeframe and an end timeframe for a section of the media to download.</p>
+		<title>Télécharger une séquence spécifique</title>
+		<p>Si cette option est activée, l’utilisateur pourra entrer un temps de début et un temps de fin pour une partie du média à télécharger.</p>
         <note>
-            <p>Available in the <code>Advanced Options</code> section.</p>
+            <p>Disponible dans la section <code>Options avancées</code>.</p>
         </note>
         <note style="advanced">
-            <p>Enablining this option will disable the use of aria2 as the downloader for this download if it is enabled in Preferences.</p>
+            <p>L’activation de cette option désactivera l’utilisation de aria2 comme téléchargeur pour ce téléchargement si elle est activée dans les préférences.</p>
         </note>
     </item>
     <item>
-		<title>File Name</title>
-        <p>The file name to use when saving the download.</p>
+		<title>Nom du fichier</title>
+        <p>Le nom du fichier à utiliser lors de l’enregistrement du téléchargement.</p>
 		<note style="advanced">
-			<p>Default: The title of the media</p>
+			<p>Par défaut : le titre du média</p>
 		</note>
     </item>
 </terms>
