@@ -12,7 +12,13 @@
 		<years its:translate="no">2023</years>
 	</credit>
 	<license href="http://creativecommons.org/licenses/by/4.0/" its:translate="no"><p>Creative Commons Attribution 4.0 International License</p></license>
-</info>
+
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Jonáš Loskot</mal:name>
+      <mal:email>jonas.loskot@pm.me</mal:email>
+      <mal:years>2023</mal:years>
+    </mal:credit>
+  </info>
 
 <title>Downloader</title>
 <p>This page explains all options for configuring the Downloader in Preferences in <app>Tube Converter</app>.</p>
@@ -31,7 +37,7 @@
         <p>If enabled, Tube Converter will overwrite existing files.</p>
         <p>For example, if a file named <code>movie.mp4</code> exists in the download folder, and a new download is created named <code>movie</code>, <code>movie.mp4</code> will be overwritten with the new download's content.</p>
 		<note style="advanced">
-			<p>Default: On</p>
+			<p>Výchozí: zapnuto</p>
 		</note>
     </item>
     <item>
@@ -45,7 +51,7 @@
         <title>Use aria2</title>
         <p>If enabled, Tube Converter will use aria2c to download media. Although using aria2c can improve download speed, download progress will not be displayed in the UI.</p>
 		<note style="advanced">
-			<p>Default: Off</p>
+			<p>Výchozí: vypnuto</p>
 		</note>
     </item>
     <item>

@@ -2,7 +2,7 @@
 <page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" id="keyring" its:version="2.0" xml:lang="fr">
 <info>
 	<link type="guide" xref="index"/>
-	<title type="link">Keyring 🔑</title>
+	<title type="link">Trousseau 🔑</title>
 	<credit type="author copyright">
 		<name>Nicholas Logozzo</name>
 		<years its:translate="no">2023</years>
@@ -14,37 +14,37 @@
 	<license href="http://creativecommons.org/licenses/by/4.0/" its:translate="no"><p>Creative Commons Attribution 4.0 International License</p></license>
 </info>
 
-<title>Keyring</title>
-<p>This page explains all options for using the Keyring in <app>Tube Converter</app>.</p>
+<title>Trousseau</title>
+<p>Cette page explique toutes les options pour utiliser le trousseau de <app>Tube Converter</app>.</p>
 
 <terms>
 	<item>
 		<title>Backend</title>
-        <p>The Keyring feature is backed by the <code>Nickvision.Keyring</code> library.</p>
-        <p>This library uses SQLCipher to securley store credentials in a platform independent manner.</p>
+        <p>La fonctionnalité de trousseau est fournie par la bibliothèque <code>Nickvision.Keyring</code>.</p>
+        <p>Cette bibliothèque utilise SQLCipher pour stocker vos identifiants de manière sécurisée et sans dépendance à une plateforme.</p>
     </item>
     <item>
-        <title>Enabling The Keyring</title>
-        <p>When the Keyring is enabled, the user will be asked to enter a password to encrypt the Keyring.</p>
-        <p>There is no way to recover the Keyring password if lost.</p>
-        <p>This password will be used to unlock the Keyring in the future.</p>
+        <title>Activer le trousseau</title>
+        <p>Si le trousseau est activé, l’utilisateur devra fournir un mot de passe pour le chiffrer.</p>
+        <p>Il n’y a aucun moyen de récupérer le mot de passe du trousseau s’il est perdu.</p>
+        <p>Ce mot de passe sera utilisé à l’avenir pour déverrouiller le trousseau.</p>
         <note style="advanced">
-            <p>If the Keyring password is lost, the user will be unable to use this feature unless the Keyring database file is deleted.</p>
-            <p>The Keyring file is stored in <code>$CONFIG/Nickvision/Nickvision Tube Converter/tubeconverter.nring</code></p>
+            <p>Si le mot de passe du trousseau est perdu, l’utilisateur ne pourra plus utiliser cette fonctionnalité, à mois que la base de données du trousseau soit supprimée.</p>
+            <p>Le fichier du trousseau est stocké dans <code>$CONFIG/Nickvision/Nickvision Tube Converter/tubeconverter.nring</code></p>
         </note>
     </item>
     <item>
-		<title>Disabling The Keyring</title>
-        <p>When the Keyring is disabled, the backing <code>nring</code> database is destroyed and all credentials stored are erased.</p>
-        <p>If the Keyring is re-enabled, a brand new database file will be created and the user will be prompted to enter a password again.</p>
+		<title>Désactivation du trousseau</title>
+        <p>Lorsque le trousseau est désactivé, la base de données <code>nring</code> est supprimée et tous les identifiants enregistrés sont effacés.</p>
+        <p>Si le trousseau est ré-activé, un nouveau fichier de base de données sera créé et il sera demandé à nouveau à l’utilisateur de fournir un mot de passe.</p>
     </item>
     <item>
-		<title>Storing a Credential</title>
-        <p>Here are the fields that can be stored in a credential:</p>
-        <p><code>Name</code>: The name of the credential</p>
-        <p><code>URL</code> (optional): The URL of the credential</p>
-        <p><code>Username</code> (optional if password is not empty): The username of the credential</p>
-        <p><code>Password</code> (optional if username is not empty): The password of the credential</p>
+		<title>Enregistrer un identifiant</title>
+        <p>Voici les champs pouvant être stockés dans un identifiant :</p>
+        <p><code>Nom</code> : Le nom de l’identifiant</p>
+        <p><code>URL</code> (optionnelle) : L’URL de l’identifiant</p>
+        <p><code>Nom d’utilisateur</code> (optionnel si le mot de passe n’est pas vide) : Le nom d’utilisateur de l’identifiant</p>
+        <p><code>Mot de passe</code> (optionnel si le nom d’utilisateur n’est pas vide) : Le mot de passe de l’identifiant</p>
     </item>
 </terms>
 </page>
