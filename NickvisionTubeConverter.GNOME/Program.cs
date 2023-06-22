@@ -48,7 +48,7 @@ public partial class Program
         _mainWindowController.AppInfo.Name = "Nickvision Tube Converter";
         _mainWindowController.AppInfo.ShortName = _("Tube Converter");
         _mainWindowController.AppInfo.Description = $"{_("Download web video and audio")}.";
-        _mainWindowController.AppInfo.Version = "2023.6.2-beta2";
+        _mainWindowController.AppInfo.Version = "2023.6.2-rc1";
         _mainWindowController.AppInfo.Changelog = "<ul><li>Added a \"Help\" item in the main menu to display yelp docs about Tube Converter</li><li>Recently completed downloads will be shown first in the completed group instead of being appended last</li><li>Tube Converter will now automatically select the xdg-download folder as the save folder if no previous folder is available</li><li>Fixed a performance issue with displaying logs when the logs were large in size</li><li>Fixed an issue where the app would crash if the authentication credentials were invalid</li><li>Fixed an issue where some supported URLs could not be validated</li><li>Updated translations (Thanks everyone on Weblate!)</li></ul>";
         _mainWindowController.AppInfo.GitHubRepo = new Uri("https://github.com/NickvisionApps/TubeConverter");
         _mainWindowController.AppInfo.IssueTracker = new Uri("https://github.com/NickvisionApps/TubeConverter/issues/new");
