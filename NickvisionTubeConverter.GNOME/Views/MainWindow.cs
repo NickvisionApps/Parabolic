@@ -203,11 +203,15 @@ public partial class MainWindow : Adw.ApplicationWindow
         actQuit.OnActivate += Quit;
         AddAction(actQuit);
         application.SetAccelsForAction("win.quit", new string[] { "<Ctrl>q", "<Ctrl>w" });
+        //Help Action
+        var actHelp = Gio.SimpleAction.New("help", null);
+        actHelp.OnActivate += (sender, e) => Gtk.Functions.ShowUri(this, "help:tubeconverter", 0);
+        AddAction(actHelp);
+        application.SetAccelsForAction("win.help", new string[] { "F1" });
         //About Action
         var actAbout = Gio.SimpleAction.New("about", null);
         actAbout.OnActivate += About;
         AddAction(actAbout);
-        application.SetAccelsForAction("win.about", new string[] { "F1" });
     }
 
     /// <summary>
