@@ -31,14 +31,15 @@
     </item>
     <item>
         <title>Overwrite Existing Files</title>
-        <p>If enabled, Tube Converter will overwrite existing files. For example, if a file named "movie.mp4" exists in the download folder, and a new download is created named "movie", "movie.mp4" will be overwritten with the new download's content.</p>
+        <p>If enabled, Tube Converter will overwrite existing files.</p>
+        <p>For example, if a file named <code>movie.mp4</code> exists in the download folder, and a new download is created named <code>movie</code>, <code>movie.mp4</code> will be overwritten with the new download's content.</p>
 		<note style="advanced">
 			<p>Default: On</p>
 		</note>
     </item>
     <item>
         <title>Speed Limit</title>
-        <p>A limit, in Ki/s, that is applied to downloads only if they have the advanced option "Speed Limit" enabled. Must be an integer value between 512 and 10240.</p>
+        <p>A limit, in Ki/s, that is applied to downloads only if they have the advanced option <code>Speed Limit</code> enabled. Must be an integer value between 512 and 10240.</p>
 		<note style="advanced">
 			<p>Default: 1024</p>
 		</note>
@@ -52,7 +53,7 @@
     </item>
     <item>
         <title>Maximum Connections Per Server</title>
-        <p>This option only applies when using aria2 is enabled. This option is the same as the "-x" flag passed to aria2c.</p>
+        <p>This option only applies when using aria2 is enabled. This option is the same as the <code>-x</code> flag passed to aria2c.</p>
         <p>The maximum number of connection that can be used per server. Must be an integer value between 1 and 32.</p>
 		<note style="advanced">
 			<p>Default: 16</p>
@@ -60,7 +61,7 @@
     </item>
     <item>
         <title>Minimum Split Size</title>
-        <p>This option only applies when using aria2 is enabled. This option is the same as the "-k" flag passed to aria2c.</p>
+        <p>This option only applies when using aria2 is enabled. This option is the same as the <code>-k</code> flag passed to aria2c.</p>
         <p>The minimum size, in MiB, of which to split a file. Must be an integer value between 1 and 1024.</p>
 		<note style="advanced">
 			<p>Default: 20</p>
@@ -68,20 +69,20 @@
     </item>
     <item>
         <title>Subtitles Languages</title>
-        <p>A comma-separated list of two-letter and three-letter language codes to use when selecting languages of subtitles to download. Only applies when a valid "Subtitle" format is selected in a download.</p>
+        <p>A comma-separated list of two-letter and three-letter language codes to use when selecting languages of subtitles to download. Only applies when a valid <code>Subtitle</code> format is selected in a download.</p>
         <note>
-            <p>Some sites use two-letter language codes, whereas others use three-letter. For example, "en" and "eng" are both used for English. Please specify both two-letter and three-letter codes for your languages for the best results.</p>
+            <p>Some sites use two-letter language codes, whereas others use three-letter. For example, <code>en</code> and <code>eng</code> are both used for English. Please specify both two-letter and three-letter codes for your languages for the best results.</p>
         </note>
 		<note style="advanced">
-			<p>Default: Your culture's two-letter and three-letter language code. For example, on an en-US system the default would be "en,eng"</p>
+			<p>Default: Your culture's two-letter and three-letter language code. For example, on an en-US system the default would be <code>en,eng</code></p>
 		</note>
     </item>
     <item>
         <title>Cookies File</title>
         <p>A .txt file of cookies to pass to yt-dlp when downloading. This may be useful when downloading media that requires a login, for example: private YouTube videos.</p>
         <p>Use one of the following extensions for getting a cookies file from your browser:</p>
-        <p>Chrome: https://chrome.google.com/webstore/detail/get-cookiestxt-locally/cclelndahbckbenkjhflpdbgdldlbecc</p>
-        <p>Firefox: https://addons.mozilla.org/en-US/firefox/addon/cookies-txt/</p>
+        <p>Chrome: <code>https://chrome.google.com/webstore/detail/get-cookiestxt-locally/cclelndahbckbenkjhflpdbgdldlbecc</code></p>
+        <p>Firefox: <code>https://addons.mozilla.org/en-US/firefox/addon/cookies-txt/</code></p>
         <note>
             <p>Use these extensions at your own risk.</p>
         </note>

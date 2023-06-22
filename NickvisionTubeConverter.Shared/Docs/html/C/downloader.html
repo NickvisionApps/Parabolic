@@ -43,7 +43,8 @@ document.addEventListener('DOMContentLoaded', function() {
 </dd>
 <dt class="terms">Overwrite Existing Files</dt>
 <dd class="terms">
-<p class="p">If enabled, Tube Converter will overwrite existing files. For example, if a file named "movie.mp4" exists in the download folder, and a new download is created named "movie", "movie.mp4" will be overwritten with the new download's content.</p>
+<p class="p">If enabled, Tube Converter will overwrite existing files.</p>
+<p class="p">For example, if a file named <span class="code">movie.mp4</span> exists in the download folder, and a new download is created named <span class="code">movie</span>, <span class="code">movie.mp4</span> will be overwritten with the new download's content.</p>
 <div class="note note-advanced" title="Advanced">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -63,7 +64,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </dd>
 <dt class="terms">Speed Limit</dt>
 <dd class="terms">
-<p class="p">A limit, in Ki/s, that is applied to downloads only if they have the advanced option "Speed Limit" enabled. Must be an integer value between 512 and 10240.</p>
+<p class="p">A limit, in Ki/s, that is applied to downloads only if they have the advanced option <span class="code">Speed Limit</span> enabled. Must be an integer value between 512 and 10240.</p>
 <div class="note note-advanced" title="Advanced">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -103,7 +104,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </dd>
 <dt class="terms">Maximum Connections Per Server</dt>
 <dd class="terms">
-<p class="p">This option only applies when using aria2 is enabled. This option is the same as the "-x" flag passed to aria2c.</p>
+<p class="p">This option only applies when using aria2 is enabled. This option is the same as the <span class="code">-x</span> flag passed to aria2c.</p>
 <p class="p">The maximum number of connection that can be used per server. Must be an integer value between 1 and 32.</p>
 <div class="note note-advanced" title="Advanced">
 <svg height="24" width="24" version="1.1">
@@ -124,7 +125,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </dd>
 <dt class="terms">Minimum Split Size</dt>
 <dd class="terms">
-<p class="p">This option only applies when using aria2 is enabled. This option is the same as the "-k" flag passed to aria2c.</p>
+<p class="p">This option only applies when using aria2 is enabled. This option is the same as the <span class="code">-k</span> flag passed to aria2c.</p>
 <p class="p">The minimum size, in MiB, of which to split a file. Must be an integer value between 1 and 1024.</p>
 <div class="note note-advanced" title="Advanced">
 <svg height="24" width="24" version="1.1">
@@ -145,14 +146,14 @@ document.addEventListener('DOMContentLoaded', function() {
 </dd>
 <dt class="terms">Subtitles Languages</dt>
 <dd class="terms">
-<p class="p">A comma-separated list of two-letter and three-letter language codes to use when selecting languages of subtitles to download. Only applies when a valid "Subtitle" format is selected in a download.</p>
+<p class="p">A comma-separated list of two-letter and three-letter language codes to use when selecting languages of subtitles to download. Only applies when a valid <span class="code">Subtitle</span> format is selected in a download.</p>
 <div class="note" title="Note">
 <svg height="24" width="24" version="1.1">
  <g>
   <path class="yelp-svg-fill" d="m4 3h16c0.554 0 1 0.446 1 1v11h-6v6h-11c-0.554 0-1-0.446-1-1v-16c0-0.554 0.446-1 1-1z"></path>
   <path class="yelp-svg-fill" d="m17 16h4l-5 5v-4c0-0.554 0.446-1 1-1z"></path>
  </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Some sites use two-letter language codes, whereas others use three-letter. For example, "en" and "eng" are both used for English. Please specify both two-letter and three-letter codes for your languages for the best results.</p></div></div></div>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Some sites use two-letter language codes, whereas others use three-letter. For example, <span class="code">en</span> and <span class="code">eng</span> are both used for English. Please specify both two-letter and three-letter codes for your languages for the best results.</p></div></div></div>
 </div>
 <div class="note note-advanced" title="Advanced">
 <svg height="24" width="24" version="1.1">
@@ -168,15 +169,15 @@ document.addEventListener('DOMContentLoaded', function() {
   <path class="yelp-svg-fill" d="m8.2435 7.0719-1.9004-3.3145 1.4143-1.4143 3.1596 1.7457z"></path>
   <path class="yelp-svg-fill" d="m11.072 11.757-3.3146 1.9-1.4143-1.414 1.7457-3.1602z"></path>
  </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Default: Your culture's two-letter and three-letter language code. For example, on an en-US system the default would be "en,eng"</p></div></div></div>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Default: Your culture's two-letter and three-letter language code. For example, on an en-US system the default would be <span class="code">en,eng</span></p></div></div></div>
 </div>
 </dd>
 <dt class="terms">Cookies File</dt>
 <dd class="terms">
 <p class="p">A .txt file of cookies to pass to yt-dlp when downloading. This may be useful when downloading media that requires a login, for example: private YouTube videos.</p>
 <p class="p">Use one of the following extensions for getting a cookies file from your browser:</p>
-<p class="p">Chrome: https://chrome.google.com/webstore/detail/get-cookiestxt-locally/cclelndahbckbenkjhflpdbgdldlbecc</p>
-<p class="p">Firefox: https://addons.mozilla.org/en-US/firefox/addon/cookies-txt/</p>
+<p class="p">Chrome: <span class="code">https://chrome.google.com/webstore/detail/get-cookiestxt-locally/cclelndahbckbenkjhflpdbgdldlbecc</span></p>
+<p class="p">Firefox: <span class="code">https://addons.mozilla.org/en-US/firefox/addon/cookies-txt/</span></p>
 <div class="note" title="Note">
 <svg height="24" width="24" version="1.1">
  <g>
