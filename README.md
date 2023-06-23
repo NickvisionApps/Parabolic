@@ -34,10 +34,10 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for details on how can you help the proje
 
 # Dependencies
 - [.NET 7](https://dotnet.microsoft.com/en-us/)
-- [ffmpeg (GNOME)](https://ffmpeg.org/)
-- [python (GNOME)](https://python.org/)
-- [yt-dlp as python module (GNOME)](https://github.com/yt-dlp/yt-dlp)
-- [psutil (GNOME)](https://github.com/giampaolo/psutil)
+- [ffmpeg](https://ffmpeg.org/)
+- [python](https://python.org/)
+- [yt-dlp (As python module)](https://github.com/yt-dlp/yt-dlp)
+- [psutil (As python module)](https://github.com/giampaolo/psutil)
 
 # Code of Conduct
 This project follows the [GNOME Code of Conduct](https://wiki.gnome.org/Foundation/CodeOfConduct).
