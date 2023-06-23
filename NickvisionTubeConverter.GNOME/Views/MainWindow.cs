@@ -519,9 +519,10 @@ public partial class MainWindow : Adw.ApplicationWindow
         dialog.SetDeveloperName("Nickvision");
         dialog.SetLicenseType(Gtk.License.MitX11);
         dialog.SetCopyright($"© Nickvision 2021-2023\n\n{_("The authors of Nickvision Tube Converter are not responsible/liable for any misuse of this program that may violate local copyright/DMCA laws. Users use this application at their own risk.")}");
-        dialog.SetWebsite(_controller.AppInfo.GitHubRepo.ToString());
+        dialog.SetWebsite("https://nickvision.org/");
         dialog.SetIssueUrl(_controller.AppInfo.IssueTracker.ToString());
         dialog.SetSupportUrl(_controller.AppInfo.SupportUrl.ToString());
+        dialog.AddLink(_("GitHub Repo"), _controller.AppInfo.GitHubRepo.ToString());
         dialog.AddLink(_("List of supported sites"), "https://github.com/yt-dlp/yt-dlp/blob/master/supportedsites.md");
         dialog.AddLink(_("Matrix Chat"), "https://matrix.to/#/#nickvision:matrix.org");
         dialog.SetDevelopers(_("Nicholas Logozzo {0}\nContributors on GitHub ❤️ {1}", "https://github.com/nlogozzo", "https://github.com/NickvisionApps/TubeConverter/graphs/contributors").Split("\n"));
