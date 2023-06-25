@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-06-22 23:18-0400\n"
-"PO-Revision-Date: 2023-06-18 02:58+0000\n"
+"PO-Revision-Date: 2023-06-25 23:44+0000\n"
 "Last-Translator: Gnuey56 <gnuey56@proton.me>\n"
-"Language-Team: Japanese <https://hosted.weblate.org/projects/nickvision-tube-"
-"converter/app/ja/>\n"
+"Language-Team: Japanese <https://hosted.weblate.org/projects/"
+"nickvision-tube-converter/app/ja/>\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -192,10 +192,8 @@ msgid "End Time (Invalid)"
 msgstr "終わり (無効)"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:436
-#, fuzzy
-#| msgid "Manage credentials in your keyring."
 msgid "Ensure credentials are correct."
-msgstr "あなたのキーリングで資格情報を管理します。"
+msgstr "資格情報が正しいか確認します。"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:202
 msgid "Error"
@@ -358,13 +356,11 @@ msgstr "一時停止中"
 #: ../../../../NickvisionTubeConverter.GNOME/Views/PreferencesDialog.cs:165
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:192
 msgid "Subtitle Languages (Comma-Separated)"
-msgstr ""
+msgstr "字幕の言語（カンマで区切り）"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/PreferencesDialog.cs:175
-#, fuzzy
-#| msgid "Start Time (Invalid)"
 msgid "Subtitle Languages (Invalid)"
-msgstr "開始（無効）"
+msgstr "字幕の言語（無効）"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:202
 msgid "Success"
@@ -598,8 +594,7 @@ msgstr "パスワードの確認"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/new_password_dialog.blp:44
 msgid "If the password is lost, there is no way to restore the keyring!"
-msgstr ""
-"もしパスワードを忘れてしまえば、キーリングを復元させる方法はありません！"
+msgstr "もしパスワードを忘れてしまったら、キーリングを復元させる方法はありません！"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/password_dialog.blp:50
 msgid "Unlock"
@@ -640,7 +635,7 @@ msgstr "システムに従う"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:31
 msgid "Completed Notification Trigger"
-msgstr "完了通知のタイミング"
+msgstr "完了の通知のタイミング"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:32
 msgid ""
@@ -651,12 +646,12 @@ msgstr "完了時、通知はウィンドウがフォーカス状態でないと
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:35
 msgctxt "CompletedNotification"
 msgid "For each download"
-msgstr "ダウンロード（一つ）が完了したとき"
+msgstr "1 ダウンロード完了時"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:35
 msgctxt "CompletedNotification"
 msgid "When all downloads finish"
-msgstr "すべてのダウンロードが完了したとき"
+msgstr "すべてのダウンロード時"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:35
 msgctxt "CompletedNotification"
@@ -726,7 +721,7 @@ msgstr "ファイルあたりの最小分割サイズ（MiB）。"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:205
 msgid "Language Code Information"
-msgstr ""
+msgstr "言語コードについて"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:220
 msgid ""
@@ -736,6 +731,11 @@ msgid ""
 "Please specify both two-letter and three-letter codes for your languages for "
 "the best results."
 msgstr ""
+"いくつかのサイトは二文字の言語コードを使用していますが、三文字のサイトもあり"
+"ます。例: \"en\" と \"eng\" は英語の言語コードとして使用されます。\n"
+"\n"
+"最良の結果を得るためには、言語コードを二文字と三文字の両方を指定してください"
+"。"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:231
 msgid "Cookies File"
@@ -754,10 +754,8 @@ msgid "Clear Cookies File"
 msgstr "クッキーファイルを消去"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:263
-#, fuzzy
-#| msgid "Cookies File"
 msgid "Cookies File Information"
-msgstr "クッキーファイル"
+msgstr "クッキーファイルの情報"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:278
 msgid ""
@@ -765,7 +763,7 @@ msgid ""
 "from your browser using the following extensions (use at your own risk):"
 msgstr ""
 "クッキーは TXT ファイル形式で yt-dlp に渡すことができます。ブラウザの拡張機能"
-"を使ってクッキーをエクスポートできます（自己責任で使用してください）："
+"を使ってクッキーをエクスポートできます(自己責任で使用してください):"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:315
 msgid "Converter"
@@ -844,7 +842,7 @@ msgstr "閉じる"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:10
 msgid "Help"
-msgstr ""
+msgstr "ヘルプ"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:49
 msgid "Add Download (Ctrl+N)"
