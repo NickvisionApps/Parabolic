@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-26 13:47-0400\n"
+"POT-Creation-Date: 2023-06-26 22:13+0300\n"
 "PO-Revision-Date: 2023-06-25 23:44+0000\n"
 "Last-Translator: Dan <jonweblin2205@protonmail.com>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/nickvision-"
@@ -16,8 +16,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Generator: Weblate 4.18.1\n"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:734
@@ -343,10 +343,6 @@ msgstr "Налаштування Keyring"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:301
 #, fuzzy
-#| msgid ""
-#| "Some downloads are still in progress.\n"
-#| "Are you sure you want to close Tube Converter and stop the running "
-#| "downloads?"
 msgid ""
 "Some downloads are still in progress.\n"
 "Are you sure you want to close Parabolic and stop the running downloads?"
@@ -387,10 +383,6 @@ msgstr "Успіх"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:521
 #, fuzzy
-#| msgid ""
-#| "The authors of Nickvision Tube Converter are not responsible/liable for "
-#| "any misuse of this program that may violate local copyright/DMCA laws. "
-#| "Users use this application at their own risk."
 msgid ""
 "The authors of Nickvision Parabolic are not responsible/liable for any "
 "misuse of this program that may violate local copyright/DMCA laws. Users use "
@@ -804,10 +796,6 @@ msgstr "Заборонити конвертацію"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:320
 #, fuzzy
-#| msgid ""
-#| "If enabled, Tube Converter will download the appropriate video/audio "
-#| "format for the selected quality without converting to other formats. (You "
-#| "will be unable to select a file format)"
 msgid ""
 "If enabled, Parabolic will download the appropriate video/audio format for "
 "the selected quality without converting to other formats. (You will be "
@@ -827,9 +815,6 @@ msgstr "Обрізати мініатюри аудіо"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:345
 #, fuzzy
-#| msgid ""
-#| "If enabled, Tube Converter will automatically turn on the crop thumbnail "
-#| "advanced option for audio downloads"
 msgid ""
 "If enabled, Parabolic will automatically turn on the crop thumbnail advanced "
 "option for audio downloads"
@@ -866,8 +851,9 @@ msgid "Keyboard Shortcuts"
 msgstr "Комбінації клавіш"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:56
-msgid "About Tube Converter"
-msgstr "Про Tube Converter"
+#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:11
+msgid "About Parabolic"
+msgstr ""
 
 #: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:61
 msgid "Quit"
@@ -876,10 +862,6 @@ msgstr "Вийти"
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:10
 msgid "Help"
 msgstr "Допомога"
-
-#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:11
-msgid "About Parabolic"
-msgstr ""
 
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:49
 msgid "Add Download (Ctrl+N)"
@@ -922,9 +904,12 @@ msgstr "Очистити завершені завантаження"
 
 #: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.desktop.in:11
 #, fuzzy
-#| msgid "YouTube;Downloader;ytdlp;Nickvision;"
 msgid "YouTube;Downloader;ytdlp;Nickvision;Tube;Converter;"
 msgstr "YouTube;Завантажувач;ytdlp;Nickvision;"
+
+#: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.metainfo.xml.in:7
+msgid "Nickvision"
+msgstr ""
 
 #: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.metainfo.xml.in:10
 msgid "— A basic yt-dlp frontend"
@@ -946,25 +931,23 @@ msgstr "- Запуск декількох завантажень одночас�
 msgid "— Supports downloading metadata and video subtitles"
 msgstr "- Підтримує завантаження метаданих і субтитрів до відео"
 
-#: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.metainfo.xml.in:16
-msgid "youtube"
-msgstr "youtube"
+#~ msgid "About Tube Converter"
+#~ msgstr "Про Tube Converter"
 
-#: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.metainfo.xml.in:17
-msgid "video"
-msgstr "відео"
+#~ msgid "youtube"
+#~ msgstr "youtube"
 
-#: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.metainfo.xml.in:18
-msgid "audio"
-msgstr "аудіо"
+#~ msgid "video"
+#~ msgstr "відео"
 
-#: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.metainfo.xml.in:19
-msgid "media"
-msgstr "медіа"
+#~ msgid "audio"
+#~ msgstr "аудіо"
 
-#: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.metainfo.xml.in:20
-msgid "download"
-msgstr "завантаження"
+#~ msgid "media"
+#~ msgstr "медіа"
+
+#~ msgid "download"
+#~ msgstr "завантаження"
 
 #~ msgid "Tube Converter"
 #~ msgstr "Tube Converter"
@@ -1077,11 +1060,11 @@ msgstr "завантаження"
 
 #~ msgid ""
 #~ "Nicholas Logozzo https://github.com/nlogozzo\n"
-#~ "Contributors on GitHub ❤️ https://github.com/NickvisionApps/TubeConverter/"
+#~ "Contributors on GitHub ❤️ https://github.com/NickvisionApps/Parabolic/"
 #~ "graphs/contributors"
 #~ msgstr ""
 #~ "Ніколас Лоґоццо https://github.com/nlogozzo\n"
-#~ "Співавтори на GitHub ❤️ https://github.com/NickvisionApps/TubeConverter/"
+#~ "Співавтори на GitHub ❤️ https://github.com/NickvisionApps/Parabolic/"
 #~ "graphs/contributors"
 
 #~ msgid ""

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-26 13:47-0400\n"
+"POT-Creation-Date: 2023-06-26 22:13+0300\n"
 "PO-Revision-Date: 2023-06-25 23:44+0000\n"
 "Last-Translator: rene-coty <irenee.thirion@e.email>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -340,10 +340,6 @@ msgstr "Configurer le trousseau"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:301
 #, fuzzy
-#| msgid ""
-#| "Some downloads are still in progress.\n"
-#| "Are you sure you want to close Tube Converter and stop the running "
-#| "downloads?"
 msgid ""
 "Some downloads are still in progress.\n"
 "Are you sure you want to close Parabolic and stop the running downloads?"
@@ -384,10 +380,6 @@ msgstr "Succès"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:521
 #, fuzzy
-#| msgid ""
-#| "The authors of Nickvision Tube Converter are not responsible/liable for "
-#| "any misuse of this program that may violate local copyright/DMCA laws. "
-#| "Users use this application at their own risk."
 msgid ""
 "The authors of Nickvision Parabolic are not responsible/liable for any "
 "misuse of this program that may violate local copyright/DMCA laws. Users use "
@@ -807,10 +799,6 @@ msgstr "Empêcher les conversions"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:320
 #, fuzzy
-#| msgid ""
-#| "If enabled, Tube Converter will download the appropriate video/audio "
-#| "format for the selected quality without converting to other formats. (You "
-#| "will be unable to select a file format)"
 msgid ""
 "If enabled, Parabolic will download the appropriate video/audio format for "
 "the selected quality without converting to other formats. (You will be "
@@ -830,9 +818,6 @@ msgstr "Rogner les vignettes des fichiers audio"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:345
 #, fuzzy
-#| msgid ""
-#| "If enabled, Tube Converter will automatically turn on the crop thumbnail "
-#| "advanced option for audio downloads"
 msgid ""
 "If enabled, Parabolic will automatically turn on the crop thumbnail advanced "
 "option for audio downloads"
@@ -869,8 +854,9 @@ msgid "Keyboard Shortcuts"
 msgstr "Raccourcis clavier"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:56
-msgid "About Tube Converter"
-msgstr "À propos de Tube Converter"
+#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:11
+msgid "About Parabolic"
+msgstr ""
 
 #: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:61
 msgid "Quit"
@@ -879,10 +865,6 @@ msgstr "Quitter"
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:10
 msgid "Help"
 msgstr "Aide"
-
-#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:11
-msgid "About Parabolic"
-msgstr ""
 
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:49
 msgid "Add Download (Ctrl+N)"
@@ -925,9 +907,12 @@ msgstr "Effacer les téléchargements terminés"
 
 #: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.desktop.in:11
 #, fuzzy
-#| msgid "YouTube;Downloader;ytdlp;Nickvision;"
 msgid "YouTube;Downloader;ytdlp;Nickvision;Tube;Converter;"
 msgstr "YouTube;Downloader;ytdlp;Nickvision;téléchargeur;vidéos;audio;"
+
+#: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.metainfo.xml.in:7
+msgid "Nickvision"
+msgstr ""
 
 #: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.metainfo.xml.in:10
 msgid "— A basic yt-dlp frontend"
@@ -951,25 +936,23 @@ msgstr ""
 "— Prend en charge le téléchargement des métadonnées et des sous-titres des "
 "vidéos"
 
-#: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.metainfo.xml.in:16
-msgid "youtube"
-msgstr "youtube"
+#~ msgid "About Tube Converter"
+#~ msgstr "À propos de Tube Converter"
 
-#: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.metainfo.xml.in:17
-msgid "video"
-msgstr "vidéo"
+#~ msgid "youtube"
+#~ msgstr "youtube"
 
-#: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.metainfo.xml.in:18
-msgid "audio"
-msgstr "audio"
+#~ msgid "video"
+#~ msgstr "vidéo"
 
-#: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.metainfo.xml.in:19
-msgid "media"
-msgstr "média"
+#~ msgid "audio"
+#~ msgstr "audio"
 
-#: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.metainfo.xml.in:20
-msgid "download"
-msgstr "télécharger"
+#~ msgid "media"
+#~ msgstr "média"
+
+#~ msgid "download"
+#~ msgstr "télécharger"
 
 #~ msgid "Tube Converter"
 #~ msgstr "Tube Converter"
@@ -1080,7 +1063,7 @@ msgstr "télécharger"
 
 #~ msgid ""
 #~ "Nicholas Logozzo https://github.com/nlogozzo\n"
-#~ "Contributors on GitHub ❤️ https://github.com/NickvisionApps/TubeConverter/"
+#~ "Contributors on GitHub ❤️ https://github.com/NickvisionApps/Parabolic/"
 #~ "graphs/contributors"
 #~ msgstr ""
 #~ "Nicholas Logozzo https://github.com/nlogozzo\n"
