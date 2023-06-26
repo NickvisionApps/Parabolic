@@ -197,8 +197,7 @@ public class Download
                     { "ffmpeg_location", DependencyManager.FfmpegPath },
                     { "windowsfilenames", RuntimeInformation.IsOSPlatform(OSPlatform.Windows) },
                     { "encoding", "utf_8" },
-                    { "overwrites", options.OverwriteExistingFiles },
-                    { "extractor_args", new Dictionary<string, dynamic>() { { "youtube", new Dictionary<string, dynamic>() { { "skip", "dash" } } } } }
+                    { "overwrites", options.OverwriteExistingFiles }
                 };
                 if(!FileType.GetIsGeneric())
                 {
