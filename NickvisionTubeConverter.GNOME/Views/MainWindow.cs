@@ -80,6 +80,7 @@ public partial class MainWindow : Adw.ApplicationWindow
     [Gtk.Connect] private readonly Gtk.Spinner _spinner;
     [Gtk.Connect] private readonly Gtk.Box _mainBox;
     [Gtk.Connect] private readonly Adw.HeaderBar _headerBar;
+    [Gtk.Connect] private readonly Adw.WindowTitle _title;
     [Gtk.Connect] private readonly Adw.ToastOverlay _toastOverlay;
     [Gtk.Connect] private readonly Adw.ViewStack _viewStack;
     [Gtk.Connect] private readonly Gtk.Button _addDownloadButton;
@@ -113,13 +114,14 @@ public partial class MainWindow : Adw.ApplicationWindow
             _unityLauncher = IntPtr.Zero;
         }
         //Build UI
+        builder.Connect(this);
         SetTitle(_controller.AppInfo.ShortName);
         SetIconName(_controller.AppInfo.ID);
         if (_controller.IsDevVersion)
         {
             AddCssClass("devel");
         }
-        builder.Connect(this);
+        _title.SetTitle(_controller.AppInfo.ShortName);
         //Register Events
         OnCloseRequest += OnCloseRequested;
         _controller.NotificationSent += NotificationSent;

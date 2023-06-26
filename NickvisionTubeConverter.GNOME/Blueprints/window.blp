@@ -39,9 +39,7 @@ Adw.ApplicationWindow _root {
       orientation: vertical;
 
       Adw.HeaderBar _headerBar {
-        title-widget: Adw.WindowTitle {
-          title: _("Parabolic");
-        };
+        title-widget: Adw.WindowTitle _title { };
         
         [start]
         Gtk.Button _addDownloadButton {
