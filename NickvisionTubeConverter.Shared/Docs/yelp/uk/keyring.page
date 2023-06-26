@@ -4,47 +4,47 @@
 	<link type="guide" xref="index"/>
 	<title type="link">Keyring 🔑</title>
 	<credit type="author copyright">
-		<name>Nicholas Logozzo</name>
+		<name>Ніколас Логоццо</name>
 		<years its:translate="no">2023</years>
 	</credit>
 	<credit type="publisher copyright">
-		<name>Nicholas Logozzo</name>
+		<name>Ніколас Логоццо</name>
 		<years its:translate="no">2023</years>
 	</credit>
 	<license href="http://creativecommons.org/licenses/by/4.0/" its:translate="no"><p>Creative Commons Attribution 4.0 International License</p></license>
 </info>
 
 <title>Keyring</title>
-<p>This page explains all options for using the Keyring in <app>Tube Converter</app>.</p>
+<p>На цій сторінці пояснюються всі можливості використання Keyring в <app>Tube Converter</app>.</p>
 
 <terms>
 	<item>
 		<title>Backend</title>
-        <p>The Keyring feature is backed by the <code>Nickvision.Keyring</code> library.</p>
-        <p>This library uses SQLCipher to securley store credentials in a platform independent manner.</p>
+        <p>Функція Keyring підтримується бібліотекою <code>Nickvision.Keyring</code>.</p>
+        <p>Ця бібліотека використовує SQLCipher для безпечного зберігання облікових даних у незалежний від платформи спосіб.</p>
     </item>
     <item>
-        <title>Enabling The Keyring</title>
-        <p>When the Keyring is enabled, the user will be asked to enter a password to encrypt the Keyring.</p>
-        <p>There is no way to recover the Keyring password if lost.</p>
-        <p>This password will be used to unlock the Keyring in the future.</p>
+        <title>Ввімкнення Keyring</title>
+        <p>Коли Keyring ввімкнено, користувачеві буде запропоновано ввести пароль для шифрування Keyring.</p>
+        <p>Відновити пароль від Keyring у разі його втрати неможливо.</p>
+        <p>Цей пароль буде використовуватися для розблокування Keyring в майбутньому.</p>
         <note style="advanced">
-            <p>If the Keyring password is lost, the user will be unable to use this feature unless the Keyring database file is deleted.</p>
-            <p>The Keyring file is stored in <code>$CONFIG/Nickvision/Nickvision Tube Converter/tubeconverter.nring</code></p>
+            <p>Якщо пароль до Keyring буде втрачено, користувач не зможе скористатися цією функцією, доки не видалить файл бази даних Keyring.</p>
+            <p>Файл Keyring зберігається за адресою <code>$CONFIG/Nickvision/Nickvision Tube Converter/tubeconverter.nring</code></p>
         </note>
     </item>
     <item>
-		<title>Disabling The Keyring</title>
-        <p>When the Keyring is disabled, the backing <code>nring</code> database is destroyed and all credentials stored are erased.</p>
-        <p>If the Keyring is re-enabled, a brand new database file will be created and the user will be prompted to enter a password again.</p>
+		<title>Вимкнення Keyring</title>
+        <p>Коли Keyring вимкнено, резервна база даних <code>nring</code> знищується, а всі збережені облікові дані стираються.</p>
+        <p>Якщо Keyring ввімкнути повторно, буде створено новий файл бази даних, і користувачеві буде запропоновано ввести пароль ще раз.</p>
     </item>
     <item>
-		<title>Storing a Credential</title>
-        <p>Here are the fields that can be stored in a credential:</p>
-        <p><code>Name</code>: The name of the credential</p>
-        <p><code>URL</code> (optional): The URL of the credential</p>
-        <p><code>Username</code> (optional if password is not empty): The username of the credential</p>
-        <p><code>Password</code> (optional if username is not empty): The password of the credential</p>
+		<title>Зберігання облікового запису</title>
+        <p>Ось поля, які можна зберігати в обліковому записі:</p>
+        <p><code>Ім'я</code>: Назва облікового запису</p>
+        <p><code>URL</code> (необов'язково): URL-адреса облікового запису</p>
+        <p><code>Ім'я користувача</code> (необов'язково, якщо пароль не порожній): Ім'я користувача облікового запису</p>
+        <p><code>Пароль</code> (необов'язково, якщо ім'я користувача не порожнє): Пароль облікового запису</p>
     </item>
 </terms>
 </page>

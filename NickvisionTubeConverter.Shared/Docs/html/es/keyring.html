@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>Keyring</title>
+<title>Llavero</title>
 <link rel="stylesheet" type="text/css" href="../C/C.css">
 <script type="text/javascript" src="../C/highlight.pack.js"></script><script>
 document.addEventListener('DOMContentLoaded', function() {
@@ -15,21 +15,21 @@ document.addEventListener('DOMContentLoaded', function() {
 </head>
 <body lang="es" dir="ltr"><main><div class="page">
 <header><div class="inner pagewide"><div class="trails" role="navigation"><div class="trail">
-<a class="trail" href="index.html" title="Tube Converter Help">Tube Converter Help</a> » </div></div></div></header><article><div class="hgroup pagewide"><h1 class="title"><span class="title">Keyring</span></h1></div>
+<a class="trail" href="index.html" title="Ayuda de Tube Converter">Ayuda de Tube Converter</a> » </div></div></div></header><article><div class="hgroup pagewide"><h1 class="title"><span class="title">Llavero</span></h1></div>
 <div class="region">
 <div class="contents pagewide">
-<p class="p">This page explains all options for using the Keyring in <span class="app">Tube Converter</span>.</p>
+<p class="p">En esta página se explican todas las opciones para usar el llavero en <span class="app">Tube Converter</span>.</p>
 <div class="terms"><div class="inner"><div class="region"><dl class="terms">
-<dt class="terms">Backend</dt>
+<dt class="terms">Lado del servidor</dt>
 <dd class="terms">
-<p class="p">The Keyring feature is backed by the <span class="code">Nickvision.Keyring</span> library.</p>
-<p class="p">This library uses SQLCipher to securley store credentials in a platform independent manner.</p>
+<p class="p">La función llavero está respaldada por la biblioteca <span class="code">Nickvision.Keyring</span>.</p>
+<p class="p">Esta biblioteca usa SQLCipher para almacenar credenciales de forma segura e independiente de la plataforma.</p>
 </dd>
-<dt class="terms">Enabling The Keyring</dt>
+<dt class="terms">Activación del llavero</dt>
 <dd class="terms">
-<p class="p">When the Keyring is enabled, the user will be asked to enter a password to encrypt the Keyring.</p>
-<p class="p">There is no way to recover the Keyring password if lost.</p>
-<p class="p">This password will be used to unlock the Keyring in the future.</p>
+<p class="p">Cuando el llavero esté activado, se pedirá al usuario que introduzca una contraseña para cifrar el llavero.</p>
+<p class="p">No hay forma de recuperar la contraseña del llavero si se pierde.</p>
+<p class="p">Esta contraseña se usará para desbloquear el llavero en el futuro.</p>
 <div class="note note-advanced" title="Avanzada">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -45,23 +45,23 @@ document.addEventListener('DOMContentLoaded', function() {
   <path class="yelp-svg-fill" d="m11.072 11.757-3.3146 1.9-1.4143-1.414 1.7457-3.1602z"></path>
  </g>
 </svg><div class="inner"><div class="region"><div class="contents">
-<p class="p">If the Keyring password is lost, the user will be unable to use this feature unless the Keyring database file is deleted.</p>
-<p class="p">The Keyring file is stored in <span class="code">$CONFIG/Nickvision/Nickvision Tube Converter/tubeconverter.nring</span></p>
+<p class="p">Si se pierde la contraseña del llavero, el usuario no podrá usar esta función a menos que se borre el archivo de base de datos del llavero.</p>
+<p class="p">El archivo del llavero se guarda en <span class="code">$CONFIG/Nickvision/Nickvision Tube Converter/tubeconverter.nring</span></p>
 </div></div></div>
 </div>
 </dd>
-<dt class="terms">Disabling The Keyring</dt>
+<dt class="terms">Desactivación del llavero</dt>
 <dd class="terms">
-<p class="p">When the Keyring is disabled, the backing <span class="code">nring</span> database is destroyed and all credentials stored are erased.</p>
-<p class="p">If the Keyring is re-enabled, a brand new database file will be created and the user will be prompted to enter a password again.</p>
+<p class="p">Cuando se desactiva el llavero, se destruye la base de datos de <span class="code">nring</span> de respaldo y se borran todas las credenciales almacenadas.</p>
+<p class="p">Si se vuelve a activar el llavero, se creará un nuevo archivo de base de datos y se pedirá al usuario que introduzca de nuevo una contraseña.</p>
 </dd>
-<dt class="terms">Storing a Credential</dt>
+<dt class="terms">Almacenamiento de una credencial</dt>
 <dd class="terms">
-<p class="p">Here are the fields that can be stored in a credential:</p>
-<p class="p"><span class="code">Name</span>: The name of the credential</p>
-<p class="p"><span class="code">URL</span> (optional): The URL of the credential</p>
-<p class="p"><span class="code">Username</span> (optional if password is not empty): The username of the credential</p>
-<p class="p"><span class="code">Password</span> (optional if username is not empty): The password of the credential</p>
+<p class="p">Estos son los campos que pueden almacenarse en una credencial:</p>
+<p class="p"><span class="code">Nombre</span>: El nombre de la credencial</p>
+<p class="p"><span class="code">URL</span> (opcional): La URL de la credencial</p>
+<p class="p"><span class="code">Nombre de usuario</span> (opcional si la contraseña no está vacía): El nombre de usuario de la credencial</p>
+<p class="p"><span class="code">Contraseña</span> (opcional si el nombre de usuario no está vacío): La contraseña de la credencial</p>
 </dd>
 </dl></div></div></div>
 </div>
@@ -69,7 +69,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <div class="hgroup pagewide"></div>
 <div class="contents pagewide"><div class="links guidelinks"><div class="inner">
 <div class="title"><h2><span class="title">Más información</span></h2></div>
-<div class="region"><ul><li class="links "><a href="index.html" title="Tube Converter Help">Tube Converter Help</a></li></ul></div>
+<div class="region"><ul><li class="links "><a href="index.html" title="Ayuda de Tube Converter">Ayuda de Tube Converter</a></li></ul></div>
 </div></div></div>
 </div></section>
 </div>
@@ -81,11 +81,16 @@ document.addEventListener('DOMContentLoaded', function() {
 <div class="copyrights">
 <div class="copyright">© 2023 Nicholas Logozzo</div>
 <div class="copyright">© 2023 Nicholas Logozzo</div>
+<div class="copyright">© 2023 Óscar Fernández Díaz</div>
 </div>
 <div class="credits">
 <div class="credits-authors">
 <div class="title"><span class="title">Escrito por</span></div>
 <ul class="credits"><li>Nicholas Logozzo</li></ul>
+</div>
+<div class="credits-translators">
+<div class="title"><span class="title">Traducido por</span></div>
+<ul class="credits"><li>Óscar Fernández Díaz</li></ul>
 </div>
 <div class="credits-publishers">
 <div class="title"><span class="title">Publicado por</span></div>

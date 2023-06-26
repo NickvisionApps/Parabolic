@@ -2,7 +2,7 @@
 <page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" id="downloader" its:version="2.0" xml:lang="es">
 <info>
 	<link type="guide" xref="index"/>
-	<title type="link">Downloader 🌐</title>
+	<title type="link">Descargador 🌐</title>
 	<credit type="author copyright">
 		<name>Nicholas Logozzo</name>
 		<years its:translate="no">2023</years>
@@ -12,79 +12,85 @@
 		<years its:translate="no">2023</years>
 	</credit>
 	<license href="http://creativecommons.org/licenses/by/4.0/" its:translate="no"><p>Creative Commons Attribution 4.0 International License</p></license>
-</info>
 
-<title>Downloader</title>
-<p>This page explains all options for configuring the Downloader in Preferences in <app>Tube Converter</app>.</p>
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Óscar Fernández Díaz</mal:name>
+      <mal:email>oscfdezdz@tuta.io</mal:email>
+      <mal:years>2023</mal:years>
+    </mal:credit>
+  </info>
+
+<title>Descargador</title>
+<p>Esta página explica todas las opciones para configurar el descargador en preferencias en <app>Tube Converter</app>.</p>
 
 <terms>
 	<item>
-		<title>Maximum Number of Active Downloads</title>
-		<p>The number of active downloads allowed to run at a time. Must be an integer value between 1 and 10.</p>
-        <p>If the max number of active downloads is reached, Tube Converter will place new downloads in a queue until more downloads are able to be run.</p>
+		<title>Máximo número de descargas activas</title>
+		<p>El número de descargas activas que se pueden ejecutar a la vez. Debe ser un valor entero entre 1 y 10.</p>
+        <p>Si se alcanza el número máximo de descargas activas, Tube Converter pondrá las descargas nuevas en una cola hasta que se puedan ejecutar más descargas.</p>
 		<note style="advanced">
-			<p>Default: 5</p>
+			<p>Predeterminado: 5</p>
 		</note>
     </item>
     <item>
-        <title>Overwrite Existing Files</title>
-        <p>If enabled, Tube Converter will overwrite existing files.</p>
-        <p>For example, if a file named <code>movie.mp4</code> exists in the download folder, and a new download is created named <code>movie</code>, <code>movie.mp4</code> will be overwritten with the new download's content.</p>
+        <title>Sobreescribir archivos existentes</title>
+        <p>Si se activa, Tube Converter sobrescribirá los archivos existentes.</p>
+        <p>Por ejemplo, si un archivo llamado <code>pelicula.mp4</code> existe en la carpeta de descargas, y se crea una descarga nueva llamada <code>pelicula</code>, <code>pelicula.mp4</code> se sobrescribirá con el contenido de la descarga nueva.</p>
 		<note style="advanced">
-			<p>Default: On</p>
+			<p>Predeterminado: Encendido</p>
 		</note>
     </item>
     <item>
-        <title>Speed Limit</title>
-        <p>A limit, in Ki/s, that is applied to downloads only if they have the advanced option <code>Speed Limit</code> enabled. Must be an integer value between 512 and 10240.</p>
+        <title>Límite de velocidad</title>
+        <p>Un límite, en Ki/s, que se aplica a las descargas sólo si tienen activada la opción avanzada <code>Límite de velocidad</code>. Debe ser un valor entero entre 512 y 10240.</p>
 		<note style="advanced">
-			<p>Default: 1024</p>
+			<p>Predeterminado: 1024</p>
 		</note>
     </item>
     <item>
-        <title>Use aria2</title>
-        <p>If enabled, Tube Converter will use aria2c to download media. Although using aria2c can improve download speed, download progress will not be displayed in the UI.</p>
+        <title>Usar aria2</title>
+        <p>Si se activa, Tube Converter usará aria2c para descargar archivos multimedia. Aunque el uso de aria2c puede mejorar la velocidad de descarga, el progreso de la descarga no se mostrará en la interfaz de usuario.</p>
 		<note style="advanced">
-			<p>Default: Off</p>
+			<p>Predeterminado: Apagado</p>
 		</note>
     </item>
     <item>
-        <title>Maximum Connections Per Server</title>
-        <p>This option only applies when using aria2 is enabled. This option is the same as the <code>-x</code> flag passed to aria2c.</p>
-        <p>The maximum number of connection that can be used per server. Must be an integer value between 1 and 32.</p>
+        <title>Máximo de conexiones por servidor</title>
+        <p>Esta opción sólo se aplica cuando está activado el uso de aria2. Esta opción es la misma que la opción <code>-x</code> que se pasa a aria2c.</p>
+        <p>El número máximo de conexiones que se pueden usar por servidor. Debe ser un valor entero entre 1 y 32.</p>
 		<note style="advanced">
-			<p>Default: 16</p>
+			<p>Predeterminado: 16</p>
 		</note>
     </item>
     <item>
-        <title>Minimum Split Size</title>
-        <p>This option only applies when using aria2 is enabled. This option is the same as the <code>-k</code> flag passed to aria2c.</p>
-        <p>The minimum size, in MiB, of which to split a file. Must be an integer value between 1 and 1024.</p>
+        <title>Tamaño mínimo de división</title>
+        <p>Esta opción sólo se aplica cuando está activado el uso de aria2. Esta opción es la misma que la opción <code>-k</code> que se pasa a aria2c.</p>
+        <p>El tamaño mínimo, en MiB, del que dividir un archivo. Debe ser un valor entero entre 1 y 1024.</p>
 		<note style="advanced">
-			<p>Default: 20</p>
+			<p>Predeterminado: 20</p>
 		</note>
     </item>
     <item>
-        <title>Subtitles Languages</title>
-        <p>A comma-separated list of two-letter and three-letter language codes to use when selecting languages of subtitles to download. Only applies when a valid <code>Subtitle</code> format is selected in a download.</p>
+        <title>Idiomas de los subtítulos</title>
+        <p>Una lista separada por comas de códigos de idioma de dos y tres letras para usar al seleccionar los idiomas de los subtítulos que se van a descargar. Sólo se aplica cuando se selecciona un formato <code>Subtítulo</code> válido en una descarga.</p>
         <note>
-            <p>Some sites use two-letter language codes, whereas others use three-letter. For example, <code>en</code> and <code>eng</code> are both used for English. Please specify both two-letter and three-letter codes for your languages for the best results.</p>
+            <p>Algunos sitios usan códigos lingüísticos de dos letras, mientras que otros usan de tres. Por ejemplo, <code>en</code> y <code>eng</code> se usan ambos para el inglés. Especifique los códigos de dos y tres letras de sus idiomas para obtener los mejores resultados.</p>
         </note>
 		<note style="advanced">
-			<p>Default: Your culture's two-letter and three-letter language code. For example, on an en-US system the default would be <code>en,eng</code></p>
+			<p>Predeterminado: el código lingüístico de dos y tres letras de su cultura. Por ejemplo, en un sistema en-US el valor predeterminado sería <code>en,eng</code></p>
 		</note>
     </item>
     <item>
-        <title>Cookies File</title>
-        <p>A .txt file of cookies to pass to yt-dlp when downloading. This may be useful when downloading media that requires a login, for example: private YouTube videos.</p>
-        <p>Use one of the following extensions for getting a cookies file from your browser:</p>
+        <title>Archivo de cookies</title>
+        <p>Un archivo .txt de cookies para pasar a yt-dlp al descargar. Esto puede ser útil al descargar medios que requieren un inicio de sesión, por ejemplo: vídeos privados de YouTube.</p>
+        <p>Use una de las siguientes extensiones para obtener un archivo de cookies de su navegador:</p>
         <p>Chrome: <code>https://chrome.google.com/webstore/detail/get-cookiestxt-locally/cclelndahbckbenkjhflpdbgdldlbecc</code></p>
-        <p>Firefox: <code>https://addons.mozilla.org/en-US/firefox/addon/cookies-txt/</code></p>
+        <p>Firefox: <code>https://addons.mozilla.org/es/firefox/addon/cookies-txt/</code></p>
         <note>
-            <p>Use these extensions at your own risk.</p>
+            <p>Use estas extensiones bajo su propia responsabilidad.</p>
         </note>
 		<note style="advanced">
-			<p>Default: No File Selected</p>
+			<p>Predeterminado: Ningún archivo seleccionado</p>
 		</note>
     </item>
 </terms>
