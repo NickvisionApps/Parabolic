@@ -494,11 +494,7 @@ public class Download
                 }
                 if (File.Exists(_logPath))
                 {
-                    using var fs = new FileStream(_logPath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
-                    using var sr = new StreamReader(fs);
-                    state.Log = sr.ReadToEnd();
-                    sr.Close();
-                    fs.Close();
+                    state.Log = File.ReadAllText(_logPath);
                 }
                 ProgressChanged.Invoke(this, state);
             }
