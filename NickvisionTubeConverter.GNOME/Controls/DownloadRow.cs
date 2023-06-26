@@ -40,6 +40,7 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
     [Gtk.Connect] private readonly Gtk.ProgressBar _pulsingBar;
     [Gtk.Connect] private readonly Gtk.LevelBar _levelBar;
     [Gtk.Connect] private readonly Adw.ViewStack _actionViewStack;
+    [Gtk.Connect] private readonly Gtk.ToggleButton _viewLogToggleBtn;
     [Gtk.Connect] private readonly Gtk.Button _stopButton;
     [Gtk.Connect] private readonly Gtk.Button _openFileButton;
     [Gtk.Connect] private readonly Gtk.Button _openFolderButton;
@@ -155,9 +156,12 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
     /// <param name="state">The DownloadProgressState</param>
     public void SetProgressState(DownloadProgressState state)
     {
-        _lblLog.GetBuffer().SetText(state.Log, state.Log.Length);
-        var vadjustment = _lblLog.GetVadjustment()!;
-        vadjustment.SetValue(vadjustment.GetUpper() - vadjustment.GetPageSize());
+        if(_viewLogToggleBtn.GetActive())
+        {
+            _lblLog.GetBuffer().SetText(state.Log, state.Log.Length);
+            var vadjustment = _lblLog.GetVadjustment()!;
+            vadjustment.SetValue(vadjustment.GetUpper() - vadjustment.GetPageSize());
+        }
         switch (state.Status)
         {
             case DownloadProgressStatus.Downloading:
