@@ -15,20 +15,20 @@
 </info>
 
 <title>Завантажувач</title>
-<p>На цій сторінці описано всі параметри налаштування завантажувача у параметрах <app>Tube Converter</app>.</p>
+<p>This page explains all options for configuring the Downloader in Preferences in <app>Parabolic</app>.</p>
 
 <terms>
 	<item>
 		<title>Максимальна кількість активних завантажень</title>
 		<p>Кількість активних завантажень, які дозволено виконувати одночасно. Має бути цілим числом від 1 до 10.</p>
-        <p>Якщо досягнуто максимальної кількості активних завантажень, Tube Converter ставитиме нові завантаження в чергу, доки не з'явиться більше завантажень, які можна буде запустити.</p>
+        <p>If the max number of active downloads is reached, Parabolic will place new downloads in a queue until more downloads are able to be run.</p>
 		<note style="advanced">
 			<p>За замовчуванням: 5</p>
 		</note>
     </item>
     <item>
         <title>Перезаписати наявні файли</title>
-        <p>Якщо ввімкнено, Tube Converter перезапише наявні файли.</p>
+        <p>If enabled, Parabolic will overwrite existing files.</p>
         <p>Наприклад, якщо в теці для завантаження існує файл з іменем <code>movie.mp4</code>, а в теці створюється нове завантаження з іменем <code>movie</code>, <code>movie.mp4</code> буде замінено вмістом нового завантаження.</p>
 		<note style="advanced">
 			<p>За замовчуванням: Ввімк</p>
@@ -43,7 +43,7 @@
     </item>
     <item>
         <title>Використовувати aria2</title>
-        <p>Якщо ввімкнено, Tube Converter використовуватиме aria2c для завантаження медіафайлів. Хоча використання aria2c може покращити швидкість завантаження, хід завантаження не відображатиметься у користувацькому інтерфейсі.</p>
+        <p>If enabled, Parabolic will use aria2c to download media. Although using aria2c can improve download speed, download progress will not be displayed in the UI.</p>
 		<note style="advanced">
 			<p>За замовчуванням: Вимк</p>
 		</note>
