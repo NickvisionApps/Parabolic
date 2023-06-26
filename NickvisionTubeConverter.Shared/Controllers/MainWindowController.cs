@@ -1,4 +1,5 @@
-﻿using Nickvision.Keyring;
+﻿using Nickvision.Keyring.Models;
+using Nickvision.Keyring.Controllers;
 using NickvisionTubeConverter.Shared.Events;
 using NickvisionTubeConverter.Shared.Helpers;
 using NickvisionTubeConverter.Shared.Models;

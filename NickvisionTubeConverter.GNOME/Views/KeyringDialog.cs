@@ -1,4 +1,5 @@
-using Nickvision.Keyring;
+using Nickvision.Keyring.Controllers;
+using Nickvision.Keyring.Models;
 using NickvisionTubeConverter.GNOME.Controls;
 using NickvisionTubeConverter.GNOME.Helpers;
 using NickvisionTubeConverter.Shared.Controllers;
@@ -24,6 +25,7 @@ public partial class KeyringDialog : Adw.Window
     private int? _editId;
     private readonly List<Gtk.Widget> _credentialRows;
     private readonly GSourceFunc _loadHomeCallback;
+    private readonly string _appID;
     
     [Gtk.Connect] private readonly Gtk.Button _backButton;
     [Gtk.Connect] private readonly Gtk.Label _titleLabel;
@@ -51,16 +53,17 @@ public partial class KeyringDialog : Adw.Window
     /// <param name="builder">Gtk.Builder</param>
     /// <param name="controller">KeyringDialogController</param>
     /// <param name="parent">Gtk.Window</param>
-    private KeyringDialog(Gtk.Builder builder, KeyringDialogController controller, Gtk.Window parent) : base(builder.GetPointer("_root"), false)
+    private KeyringDialog(Gtk.Builder builder, KeyringDialogController controller, string appID, Gtk.Window parent) : base(builder.GetPointer("_root"), false)
     {
         _parent = parent;
         _controller = controller;
         _handlingEnableToggle = false;
         _editId = null;
         _credentialRows = new List<Gtk.Widget>();
+        _appID = appID;
         //Dialog Settings
         SetTransientFor(parent);
-        SetIconName(_controller.AppInfo.ID);
+        SetIconName(_appID);
         //Build UI
         builder.Connect(this);
         _backButton.OnClicked += async (sender, e) => await LoadHomePageAsync();
@@ -107,7 +110,7 @@ public partial class KeyringDialog : Adw.Window
     /// </summary>
     /// <param name="controller">KeyringDialogController</param>
     /// <param name="parent">Gtk.Window</param>
-    public KeyringDialog(KeyringDialogController controller, Gtk.Window parent) : this(Builder.FromFile("keyring_dialog.ui"), controller, parent)
+    public KeyringDialog(KeyringDialogController controller, string appID, Gtk.Window parent) : this(Builder.FromFile("keyring_dialog.ui"), controller, appID, parent)
     {
     }
     
@@ -155,7 +158,7 @@ public partial class KeyringDialog : Adw.Window
             }
             else
             {
-                var disableDialog = new MessageDialog(this, _controller.AppInfo.ID, _("Disable Keyring?"), _("Disabling the keyring will delete all data currently stored inside. Are you sure you want to disable it?"), _("No"), _("Yes"));
+                var disableDialog = new MessageDialog(this, _appID, _("Disable Keyring?"), _("Disabling the keyring will delete all data currently stored inside. Are you sure you want to disable it?"), _("No"), _("Yes"));
                 disableDialog.OnResponse += (sender, e) =>
                 {
                     if(disableDialog.Response == MessageDialogResponse.Destructive)
@@ -325,7 +328,7 @@ public partial class KeyringDialog : Adw.Window
     /// <param name="e">EventArgs</param>
     private void DeleteCredential(Gtk.Button sender, EventArgs e)
     {
-        var disableDialog = new MessageDialog(this, _controller.AppInfo.ID, _("Delete Credential?"), _("This action is irreversible. Are you sure you want to delete it?"), _("No"), _("Yes"));
+        var disableDialog = new MessageDialog(this, _appID, _("Delete Credential?"), _("This action is irreversible. Are you sure you want to delete it?"), _("No"), _("Yes"));
         disableDialog.OnResponse += async (sender, e) =>
         {
             if(disableDialog.Response == MessageDialogResponse.Destructive)

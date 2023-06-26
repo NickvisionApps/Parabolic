@@ -353,7 +353,7 @@ public partial class MainWindow : Adw.ApplicationWindow
     private async void Keyring(Gio.SimpleAction sender, EventArgs e)
     {
         var keyringDialogController = _controller.CreateKeyringDialogController();
-        var keyringDialog = new KeyringDialog(keyringDialogController, this);
+        var keyringDialog = new KeyringDialog(keyringDialogController, _controller.AppInfo.ID, this);
         keyringDialog.OnCloseRequest += (sender, e) =>
         {
             _controller.UpdateKeyring(keyringDialogController);
