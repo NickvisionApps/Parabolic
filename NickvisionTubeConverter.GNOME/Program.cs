@@ -1,4 +1,4 @@
-﻿using NickvisionTubeConverter.GNOME.Views;
+using NickvisionTubeConverter.GNOME.Views;
 using NickvisionTubeConverter.Shared.Controllers;
 using NickvisionTubeConverter.Shared.Models;
 using System;
@@ -50,9 +50,9 @@ public partial class Program
         _mainWindowController.AppInfo.Description = $"{_("Download web video and audio")}.";
         _mainWindowController.AppInfo.Version = "2023.6.3-next";
         _mainWindowController.AppInfo.Changelog = "<ul><li>Tube Converter has been renamed. Introducing, Parabolic!</li><li>Fixed a large memory leak caused my not disposing logs correctly</li><li>Updated translations (Thanks everyone on Weblate!)</li></ul>";
-        _mainWindowController.AppInfo.GitHubRepo = new Uri("https://github.com/NickvisionApps/TubeConverter");
-        _mainWindowController.AppInfo.IssueTracker = new Uri("https://github.com/NickvisionApps/TubeConverter/issues/new");
-        _mainWindowController.AppInfo.SupportUrl = new Uri("https://github.com/NickvisionApps/TubeConverter/discussions");
+        _mainWindowController.AppInfo.GitHubRepo = new Uri("https://github.com/NickvisionApps/Parabolic");
+        _mainWindowController.AppInfo.IssueTracker = new Uri("https://github.com/NickvisionApps/Parabolic/issues/new");
+        _mainWindowController.AppInfo.SupportUrl = new Uri("https://github.com/NickvisionApps/Parabolic/discussions");
         _application.OnActivate += OnActivate;
         if (File.Exists(Path.GetFullPath(System.IO.Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)) + "/org.nickvision.tubeconverter.gresource"))
         {

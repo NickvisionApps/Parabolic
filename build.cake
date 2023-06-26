@@ -2,7 +2,7 @@
 
 const string appId = "org.nickvision.tubeconverter";
 const string projectName = "NickvisionTubeConverter";
-const string shortName = "tubeconverter";
+const string shortName = "parabolic";
 
 var sep = System.IO.Path.DirectorySeparatorChar;
 

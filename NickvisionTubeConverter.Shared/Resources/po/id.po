@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-26 13:47-0400\n"
+"POT-Creation-Date: 2023-06-26 22:13+0300\n"
 "PO-Revision-Date: 2023-06-12 02:55+0000\n"
 "Last-Translator: Krindog7337 <igstkrisna2006@gmail.com>\n"
 "Language-Team: Indonesian <https://hosted.weblate.org/projects/nickvision-"
@@ -156,7 +156,6 @@ msgstr "Pengunduhan menggunakan aria2 telah dimulai"
 
 #: ../../../Models/Download.cs:340
 #, fuzzy
-#| msgid "Download using aria2 has started"
 msgid "Download using ffmpeg has started"
 msgstr "Pengunduhan menggunakan aria2 telah dimulai"
 
@@ -192,13 +191,11 @@ msgstr ""
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:533
 #, fuzzy
-#| msgid "Media URL (Invalid)"
 msgid "End Time (Invalid)"
 msgstr "URL Media (tidak sah)"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:436
 #, fuzzy
-#| msgid "Manage credentials in your keyring."
 msgid "Ensure credentials are correct."
 msgstr "Atur Kredensial di keyring anda."
 
@@ -344,10 +341,6 @@ msgstr "Atur Keyring"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:301
 #, fuzzy
-#| msgid ""
-#| "Some downloads are still in progress.\n"
-#| "Are you sure you want to close Tube Converter and stop the running "
-#| "downloads?"
 msgid ""
 "Some downloads are still in progress.\n"
 "Are you sure you want to close Parabolic and stop the running downloads?"
@@ -367,7 +360,6 @@ msgstr ""
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:528
 #, fuzzy
-#| msgid "Save Folder (Invalid)"
 msgid "Start Time (Invalid)"
 msgstr "Folder Penyimpanan (tidak sah)"
 
@@ -382,7 +374,6 @@ msgstr ""
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/PreferencesDialog.cs:175
 #, fuzzy
-#| msgid "Save Folder (Invalid)"
 msgid "Subtitle Languages (Invalid)"
 msgstr "Folder Penyimpanan (tidak sah)"
 
@@ -392,10 +383,6 @@ msgstr "Sukses"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:521
 #, fuzzy
-#| msgid ""
-#| "The authors of Nickvision Tube Converter are not responsible/liable for "
-#| "any misuse of this program that may violate local copyright/DMCA laws. "
-#| "Users use this application at their own risk."
 msgid ""
 "The authors of Nickvision Parabolic are not responsible/liable for any "
 "misuse of this program that may violate local copyright/DMCA laws. Users use "
@@ -774,7 +761,6 @@ msgstr ""
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:263
 #, fuzzy
-#| msgid "Cookies File"
 msgid "Cookies File Information"
 msgstr "File Kuki"
 
@@ -849,9 +835,9 @@ msgid "Keyboard Shortcuts"
 msgstr "Pintasan Keyboard"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:56
-#, fuzzy
-msgid "About Tube Converter"
-msgstr "Konverter"
+#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:11
+msgid "About Parabolic"
+msgstr ""
 
 #: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:61
 msgid "Quit"
@@ -859,10 +845,6 @@ msgstr "Keluar"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:10
 msgid "Help"
-msgstr ""
-
-#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:11
-msgid "About Parabolic"
 msgstr ""
 
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:49
@@ -909,6 +891,10 @@ msgstr "Tutup dan Hentikan Unduhan?"
 msgid "YouTube;Downloader;ytdlp;Nickvision;Tube;Converter;"
 msgstr ""
 
+#: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.metainfo.xml.in:7
+msgid "Nickvision"
+msgstr ""
+
 #: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.metainfo.xml.in:10
 msgid "— A basic yt-dlp frontend"
 msgstr ""
@@ -927,26 +913,13 @@ msgstr ""
 msgid "— Supports downloading metadata and video subtitles"
 msgstr ""
 
-#: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.metainfo.xml.in:16
-msgid "youtube"
-msgstr ""
-
-#: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.metainfo.xml.in:17
-msgid "video"
-msgstr ""
-
-#: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.metainfo.xml.in:18
-msgid "audio"
-msgstr ""
-
-#: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.metainfo.xml.in:19
-msgid "media"
-msgstr ""
-
-#: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.metainfo.xml.in:20
 #, fuzzy
-msgid "download"
-msgstr "Unduh"
+#~ msgid "About Tube Converter"
+#~ msgstr "Konverter"
+
+#, fuzzy
+#~ msgid "download"
+#~ msgstr "Unduh"
 
 #~ msgid "Tube Converter"
 #~ msgstr "Tube Konverter"
@@ -1058,11 +1031,11 @@ msgstr "Unduh"
 
 #~ msgid ""
 #~ "Nicholas Logozzo https://github.com/nlogozzo\n"
-#~ "Contributors on GitHub ❤️ https://github.com/NickvisionApps/TubeConverter/"
+#~ "Contributors on GitHub ❤️ https://github.com/NickvisionApps/Parabolic/"
 #~ "graphs/contributors"
 #~ msgstr ""
 #~ "Nicholas Logozzo https://github.com/nlogozzo\n"
-#~ "Kontributor di GitHub ❤️ https://github.com/NickvisionApps/TubeConverter/"
+#~ "Kontributor di GitHub ❤️ https://github.com/NickvisionApps/Parabolic/"
 #~ "graphs/contributors"
 
 #~ msgid ""

@@ -21,20 +21,20 @@
   </info>
 
 <title>Descargador</title>
-<p>This page explains all options for configuring the Downloader in Preferences in <app>Parabolic</app>.</p>
+<p>Esta página explica todas las opciones para configurar el Downloader en las preferencias de <app>Parabolic</app>.</p>
 
 <terms>
 	<item>
 		<title>Máximo número de descargas activas</title>
 		<p>El número de descargas activas que se pueden ejecutar a la vez. Debe ser un valor entero entre 1 y 10.</p>
-        <p>If the max number of active downloads is reached, Parabolic will place new downloads in a queue until more downloads are able to be run.</p>
+        <p>Si se alcanza el número máximo de descargas activas, Parabolic colocará las nuevas descargas en una cola hasta que se puedan ejecutar más descargas.</p>
 		<note style="advanced">
 			<p>Predeterminado: 5</p>
 		</note>
     </item>
     <item>
         <title>Sobreescribir archivos existentes</title>
-        <p>If enabled, Parabolic will overwrite existing files.</p>
+        <p>Si se activa, Parabolic sobrescribirá los archivos existentes.</p>
         <p>Por ejemplo, si un archivo llamado <code>pelicula.mp4</code> existe en la carpeta de descargas, y se crea una descarga nueva llamada <code>pelicula</code>, <code>pelicula.mp4</code> se sobrescribirá con el contenido de la descarga nueva.</p>
 		<note style="advanced">
 			<p>Predeterminado: Encendido</p>
@@ -49,7 +49,7 @@
     </item>
     <item>
         <title>Usar aria2</title>
-        <p>If enabled, Parabolic will use aria2c to download media. Although using aria2c can improve download speed, download progress will not be displayed in the UI.</p>
+        <p>Si se activa, Parabolic utilizará aria2c para descargar los archivos multimedia. Aunque el uso de aria2c puede mejorar la velocidad de descarga, el progreso de la descarga no se mostrará en la interfaz del usuario.</p>
 		<note style="advanced">
 			<p>Predeterminado: Apagado</p>
 		</note>
