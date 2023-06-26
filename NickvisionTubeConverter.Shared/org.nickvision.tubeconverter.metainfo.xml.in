@@ -50,14 +50,9 @@
   </custom>
   
   <releases>
-    <release version="2023.6.2" date="2023-06-23">
+    <release version="2023.6.3-next" date="2023-06-23">
       <description translatable="no">
-        <p>- Added a "Help" item in the main menu to display yelp docs about Tube Converter</p>
-        <p>- Recently completed downloads will be shown first in the completed group instead of being appended last</p>
-        <p>- Tube Converter will now automatically select the xdg-download folder as the save folder if no previous folder is available</p>
-        <p>- Fixed a performance issue with displaying logs when the logs were large in size</p>
-        <p>- Fixed an issue where the app would crash if the authentication credentials were invalid</p>
-        <p>- Fixed an issue where some supported URLs could not be validated</p>
+        <p>- Fixed a large memory leak caused my not disposing logs correctly</p>
         <p>- Updated translations (Thanks everyone on Weblate!)</p>
       </description>
     </release>

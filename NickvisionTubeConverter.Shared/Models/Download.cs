@@ -477,7 +477,7 @@ public class Download
                 {
                     total = entries["total_bytes_estimate"].As<double?>() ?? 1;
                 }
-                var state = new DownloadProgressState()
+                using var state = new DownloadProgressState()
                 {
                     Status = entries["status"].As<string>() switch
                     {
