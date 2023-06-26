@@ -2,7 +2,7 @@
 <page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" id="keyring" its:version="2.0" xml:lang="es">
 <info>
 	<link type="guide" xref="index"/>
-	<title type="link">Keyring 🔑</title>
+	<title type="link">Llavero 🔑</title>
 	<credit type="author copyright">
 		<name>Nicholas Logozzo</name>
 		<years its:translate="no">2023</years>
@@ -12,39 +12,45 @@
 		<years its:translate="no">2023</years>
 	</credit>
 	<license href="http://creativecommons.org/licenses/by/4.0/" its:translate="no"><p>Creative Commons Attribution 4.0 International License</p></license>
-</info>
 
-<title>Keyring</title>
-<p>This page explains all options for using the Keyring in <app>Tube Converter</app>.</p>
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Óscar Fernández Díaz</mal:name>
+      <mal:email>oscfdezdz@tuta.io</mal:email>
+      <mal:years>2023</mal:years>
+    </mal:credit>
+  </info>
+
+<title>Llavero</title>
+<p>En esta página se explican todas las opciones para usar el llavero en <app>Tube Converter</app>.</p>
 
 <terms>
 	<item>
-		<title>Backend</title>
-        <p>The Keyring feature is backed by the <code>Nickvision.Keyring</code> library.</p>
-        <p>This library uses SQLCipher to securley store credentials in a platform independent manner.</p>
+		<title>Lado del servidor</title>
+        <p>La función llavero está respaldada por la biblioteca <code>Nickvision.Keyring</code>.</p>
+        <p>Esta biblioteca usa SQLCipher para almacenar credenciales de forma segura e independiente de la plataforma.</p>
     </item>
     <item>
-        <title>Enabling The Keyring</title>
-        <p>When the Keyring is enabled, the user will be asked to enter a password to encrypt the Keyring.</p>
-        <p>There is no way to recover the Keyring password if lost.</p>
-        <p>This password will be used to unlock the Keyring in the future.</p>
+        <title>Activación del llavero</title>
+        <p>Cuando el llavero esté activado, se pedirá al usuario que introduzca una contraseña para cifrar el llavero.</p>
+        <p>No hay forma de recuperar la contraseña del llavero si se pierde.</p>
+        <p>Esta contraseña se usará para desbloquear el llavero en el futuro.</p>
         <note style="advanced">
-            <p>If the Keyring password is lost, the user will be unable to use this feature unless the Keyring database file is deleted.</p>
-            <p>The Keyring file is stored in <code>$CONFIG/Nickvision/Nickvision Tube Converter/tubeconverter.nring</code></p>
+            <p>Si se pierde la contraseña del llavero, el usuario no podrá usar esta función a menos que se borre el archivo de base de datos del llavero.</p>
+            <p>El archivo del llavero se guarda en <code>$CONFIG/Nickvision/Nickvision Tube Converter/tubeconverter.nring</code></p>
         </note>
     </item>
     <item>
-		<title>Disabling The Keyring</title>
-        <p>When the Keyring is disabled, the backing <code>nring</code> database is destroyed and all credentials stored are erased.</p>
-        <p>If the Keyring is re-enabled, a brand new database file will be created and the user will be prompted to enter a password again.</p>
+		<title>Desactivación del llavero</title>
+        <p>Cuando se desactiva el llavero, se destruye la base de datos de <code>nring</code> de respaldo y se borran todas las credenciales almacenadas.</p>
+        <p>Si se vuelve a activar el llavero, se creará un nuevo archivo de base de datos y se pedirá al usuario que introduzca de nuevo una contraseña.</p>
     </item>
     <item>
-		<title>Storing a Credential</title>
-        <p>Here are the fields that can be stored in a credential:</p>
-        <p><code>Name</code>: The name of the credential</p>
-        <p><code>URL</code> (optional): The URL of the credential</p>
-        <p><code>Username</code> (optional if password is not empty): The username of the credential</p>
-        <p><code>Password</code> (optional if username is not empty): The password of the credential</p>
+		<title>Almacenamiento de una credencial</title>
+        <p>Estos son los campos que pueden almacenarse en una credencial:</p>
+        <p><code>Nombre</code>: El nombre de la credencial</p>
+        <p><code>URL</code> (opcional): La URL de la credencial</p>
+        <p><code>Nombre de usuario</code> (opcional si la contraseña no está vacía): El nombre de usuario de la credencial</p>
+        <p><code>Contraseña</code> (opcional si el nombre de usuario no está vacío): La contraseña de la credencial</p>
     </item>
 </terms>
 </page>

@@ -2,51 +2,51 @@
 <page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" id="converter" its:version="2.0" xml:lang="uk">
 <info>
 	<link type="guide" xref="index"/>
-	<title type="link">Converter ⚒️</title>
+	<title type="link">Конвертер ⚒️</title>
 	<credit type="author copyright">
-		<name>Nicholas Logozzo</name>
+		<name>Ніколас Логоццо</name>
 		<years its:translate="no">2023</years>
 	</credit>
 	<credit type="publisher copyright">
-		<name>Nicholas Logozzo</name>
+		<name>Ніколас Логоццо</name>
 		<years its:translate="no">2023</years>
 	</credit>
 	<license href="http://creativecommons.org/licenses/by/4.0/" its:translate="no"><p>Creative Commons Attribution 4.0 International License</p></license>
 </info>
 
-<title>Converter</title>
-<p>This page explains all options for configuring the Converter in Preferences in <app>Tube Converter</app>.</p>
+<title>Конвертер</title>
+<p>На цій сторінці пояснюються всі параметри налаштування конвертера в Параметрах <app>Tube Converter</app>.</p>
 
 <terms>
 	<item>
-		<title>Disallow Conversions</title>
-		<p>If enabled, Tube Converter will download the appropriate video/audio format for the selected quality without converting to other formats.</p>
-        <p>This means that you will be unable to select a file format when downloading a media. But, you will save time in downloading as the Converter will not be run.</p>
+		<title>Заборонити конвертацію</title>
+		<p>Якщо ввімкнено, Tube Converter завантажить відповідний формат відео/аудіо для вибраної якості без конвертації в інші формати.</p>
+        <p>Це означає, що ви не зможете вибрати формат файлу під час завантаження медіафайлу. Але ви заощадите час при завантаженні, оскільки конвертер не запускатиметься.</p>
 		<note style="advanced">
-			<p>Default: Off</p>
+			<p>За замовчуванням: Вимк</p>
 		</note>
     </item>
 	<item>
-		<title>Embed Metadata</title>
-		<p>If enabled, Tube Converter will tag a media with its relevant information (title, genre, etc...) and thumbnail if available.</p>
-        <p>Tube Converter will NOT embed the Comment, Description, Synopsis, and Purl fields.</p>
+		<title>Вставити метадані</title>
+		<p>Якщо ввімкнено, Tube Converter позначатиме медіа відповідною інформацією (назва, жанр тощо) та мініатюрою, якщо вона доступна.</p>
+        <p>Tube Converter НЕ вставляє поля Коментар, Опис, Синопсис і Виворіт.</p>
 		<note style="advanced">
-			<p>Default: On</p>
+			<p>За замовчуванням: Ввімк</p>
 		</note>
     </item>
     <item>
-		<title>Crop Audio Thumbnails</title>
-		<p>Only available if Embed Metadata is enabled.</p>
-		<p>If enabled, Tube Converter will automatically turn on the advanced option <code>Crop Thumbnail</code> for audio downloads.</p>
+		<title>Обрізати мініатюри аудіо</title>
+		<p>Доступно, якщо ввімкнено Вбудовувати метадані.</p>
+		<p>Якщо ввімкнено, Tube Converter автоматично вмикає додаткову опцію <code>Обрізати мініатюру</code> для завантаження аудіо.</p>
 		<note style="advanced">
-			<p>Default: Off</p>
+			<p>За замовчуванням: Вимк</p>
 		</note>
     </item>
 	<item>
-		<title>Embed Chapters</title>
-		<p>If enabled, Tube Converter will tag a media with chapter information if available</p>
+		<title>Вставити розділи</title>
+		<p>Якщо ввімкнено, Tube Converter позначатиме носій інформацією про розділ, якщо вона є</p>
 		<note style="advanced">
-			<p>Default: Off</p>
+			<p>За замовчуванням: Вимк</p>
 		</note>
 	</item>
 </terms>
