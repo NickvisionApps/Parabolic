@@ -46,10 +46,10 @@ public partial class Program
         _mainWindowController = new MainWindowController();
         _mainWindowController.AppInfo.ID = "org.nickvision.tubeconverter";
         _mainWindowController.AppInfo.Name = "Nickvision Tube Converter";
-        _mainWindowController.AppInfo.ShortName = _("Tube Converter");
+        _mainWindowController.AppInfo.ShortName = _("Parabolic");
         _mainWindowController.AppInfo.Description = $"{_("Download web video and audio")}.";
         _mainWindowController.AppInfo.Version = "2023.6.3-next";
-        _mainWindowController.AppInfo.Changelog = "<ul><li>Fixed a large memory leak caused my not disposing logs correctly</li><li>Updated translations (Thanks everyone on Weblate!)</li></ul>";
+        _mainWindowController.AppInfo.Changelog = "<ul><li>Tube Converter has been renamed. Introducing, Parabolic!</li><li>Fixed a large memory leak caused my not disposing logs correctly</li><li>Updated translations (Thanks everyone on Weblate!)</li></ul>";
         _mainWindowController.AppInfo.GitHubRepo = new Uri("https://github.com/NickvisionApps/TubeConverter");
         _mainWindowController.AppInfo.IssueTracker = new Uri("https://github.com/NickvisionApps/TubeConverter/issues/new");
         _mainWindowController.AppInfo.SupportUrl = new Uri("https://github.com/NickvisionApps/TubeConverter/discussions");
