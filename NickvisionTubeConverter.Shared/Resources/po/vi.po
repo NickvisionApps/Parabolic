@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-26 12:37-0400\n"
+"POT-Creation-Date: 2023-06-26 13:47-0400\n"
 "PO-Revision-Date: 2023-06-14 01:21+0000\n"
 "Last-Translator: Khải <hvksmr1996@gmail.com>\n"
 "Language-Team: Vietnamese <https://hosted.weblate.org/projects/nickvision-"
@@ -156,6 +156,7 @@ msgid "Download using ffmpeg has started"
 msgstr "Tải xuống bằng ffmpeg đã bắt đầu"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Program.cs:50
+#: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.desktop.in:5
 #: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.metainfo.xml.in:8
 msgid "Download web video and audio"
 msgstr "Tải xuống băng hình và âm thanh trên web"
@@ -276,6 +277,13 @@ msgstr "Không"
 msgid "No downloads running"
 msgstr "Không có tải xuống nào đang chạy"
 
+#: ../../../../NickvisionTubeConverter.GNOME/Program.cs:49
+#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:43
+#: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.desktop.in:4
+#: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.metainfo.xml.in:6
+msgid "Parabolic"
+msgstr ""
+
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:269
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:76
 #: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:132
@@ -323,9 +331,14 @@ msgid "Setup Keyring"
 msgstr "Thiết lập Keyring"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:301
+#, fuzzy
+#| msgid ""
+#| "Some downloads are still in progress.\n"
+#| "Are you sure you want to close Tube Converter and stop the running "
+#| "downloads?"
 msgid ""
 "Some downloads are still in progress.\n"
-"Are you sure you want to close Tube Converter and stop the running downloads?"
+"Are you sure you want to close Parabolic and stop the running downloads?"
 msgstr ""
 "Một số quá trình tải xuống chưa hoàn tất.\n"
 "Bạn có chắc bạn muốn đóng Tube Converter và hủy các quá trình đó không?"
@@ -363,8 +376,13 @@ msgid "Success"
 msgstr "Thành công"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:521
+#, fuzzy
+#| msgid ""
+#| "The authors of Nickvision Tube Converter are not responsible/liable for "
+#| "any misuse of this program that may violate local copyright/DMCA laws. "
+#| "Users use this application at their own risk."
 msgid ""
-"The authors of Nickvision Tube Converter are not responsible/liable for any "
+"The authors of Nickvision Parabolic are not responsible/liable for any "
 "misuse of this program that may violate local copyright/DMCA laws. Users use "
 "this application at their own risk."
 msgstr ""
@@ -379,13 +397,6 @@ msgstr "Hành động này không thể đảo ngược. Bạn chắc chắn mu�
 #: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:531
 msgid "translator-credits"
 msgstr ""
-
-#: ../../../../NickvisionTubeConverter.GNOME/Program.cs:49
-#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:43
-#: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.desktop.in:4
-#: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.metainfo.xml.in:6
-msgid "Tube Converter"
-msgstr "Tube Converter"
 
 #: ../../../Controllers/MainWindowController.cs:143
 #: ../../../Controllers/MainWindowController.cs:154
@@ -773,9 +784,14 @@ msgid "Disallow Conversions"
 msgstr "Không cho phép Chuyển đổi"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:320
+#, fuzzy
+#| msgid ""
+#| "If enabled, Tube Converter will download the appropriate video/audio "
+#| "format for the selected quality without converting to other formats. (You "
+#| "will be unable to select a file format)"
 msgid ""
-"If enabled, Tube Converter will download the appropriate video/audio format "
-"for the selected quality without converting to other formats. (You will be "
+"If enabled, Parabolic will download the appropriate video/audio format for "
+"the selected quality without converting to other formats. (You will be "
 "unable to select a file format)"
 msgstr ""
 "Nếu bật, Tube Converter sẽ tải xuống băng hình hoặc âm thanh thích hợp với "
@@ -791,9 +807,13 @@ msgid "Crop Audio Thumbnails"
 msgstr "Cắt Thumbnail Âm thanh"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:345
+#, fuzzy
+#| msgid ""
+#| "If enabled, Tube Converter will automatically turn on the crop thumbnail "
+#| "advanced option for audio downloads"
 msgid ""
-"If enabled, Tube Converter will automatically turn on the crop thumbnail "
-"advanced option for audio downloads"
+"If enabled, Parabolic will automatically turn on the crop thumbnail advanced "
+"option for audio downloads"
 msgstr ""
 "Nếu bật, Tube Converter sẽ tự động bật các lựa chọn cắt thumbnail nâng cao "
 "dành cho âm thanh được tải xuống"
@@ -827,7 +847,6 @@ msgid "Keyboard Shortcuts"
 msgstr "Phím tắt"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:56
-#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:11
 msgid "About Tube Converter"
 msgstr "Về Tube Converter"
 
@@ -837,6 +856,10 @@ msgstr "Thoát"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:10
 msgid "Help"
+msgstr ""
+
+#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:11
+msgid "About Parabolic"
 msgstr ""
 
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:49
@@ -878,12 +901,8 @@ msgstr "Hoàn tất"
 msgid "Clear Completed Downloads"
 msgstr "Xóa Các tải xuống Đã hoàn thành"
 
-#: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.desktop.in:5
-msgid "Get video and audio from the web"
-msgstr "Tải xuống nhưng video mà bạn yêu thích"
-
 #: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.desktop.in:11
-msgid "YouTube;Downloader;ytdlp;Nickvision;"
+msgid "YouTube;Downloader;ytdlp;Nickvision;Tube;Converter;"
 msgstr ""
 
 #: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.metainfo.xml.in:10
@@ -925,6 +944,12 @@ msgstr "phương tiện truyền thông"
 #: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.metainfo.xml.in:20
 msgid "download"
 msgstr "tải xuống"
+
+#~ msgid "Tube Converter"
+#~ msgstr "Tube Converter"
+
+#~ msgid "Get video and audio from the web"
+#~ msgstr "Tải xuống nhưng video mà bạn yêu thích"
 
 #, fuzzy
 #~| msgid "Start Time (Invalid)"
