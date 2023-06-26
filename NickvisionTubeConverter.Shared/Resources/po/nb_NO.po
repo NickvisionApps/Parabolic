@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-26 12:37-0400\n"
+"POT-Creation-Date: 2023-06-26 13:47-0400\n"
 "PO-Revision-Date: 2023-06-14 17:48+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/"
@@ -160,6 +160,7 @@ msgid "Download using ffmpeg has started"
 msgstr "Nedlasting med FFmpeg har startet"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Program.cs:50
+#: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.desktop.in:5
 #: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.metainfo.xml.in:8
 msgid "Download web video and audio"
 msgstr ""
@@ -283,6 +284,13 @@ msgstr "Nei"
 msgid "No downloads running"
 msgstr "Ingen nedlastinger kjører"
 
+#: ../../../../NickvisionTubeConverter.GNOME/Program.cs:49
+#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:43
+#: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.desktop.in:4
+#: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.metainfo.xml.in:6
+msgid "Parabolic"
+msgstr ""
+
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:269
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:76
 #: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:132
@@ -331,9 +339,14 @@ msgid "Setup Keyring"
 msgstr ""
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:301
+#, fuzzy
+#| msgid ""
+#| "Some downloads are still in progress.\n"
+#| "Are you sure you want to close Tube Converter and stop the running "
+#| "downloads?"
 msgid ""
 "Some downloads are still in progress.\n"
-"Are you sure you want to close Tube Converter and stop the running downloads?"
+"Are you sure you want to close Parabolic and stop the running downloads?"
 msgstr ""
 "Noen nedlastinger er underveis.\n"
 "Lukk Tube Converter og stopp kjørende nedlastinger?"
@@ -371,8 +384,13 @@ msgid "Success"
 msgstr "Vellykket"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:521
+#, fuzzy
+#| msgid ""
+#| "The authors of Nickvision Tube Converter are not responsible/liable for "
+#| "any misuse of this program that may violate local copyright/DMCA laws. "
+#| "Users use this application at their own risk."
 msgid ""
-"The authors of Nickvision Tube Converter are not responsible/liable for any "
+"The authors of Nickvision Parabolic are not responsible/liable for any "
 "misuse of this program that may violate local copyright/DMCA laws. Users use "
 "this application at their own risk."
 msgstr ""
@@ -387,13 +405,6 @@ msgstr ""
 #: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:531
 msgid "translator-credits"
 msgstr ""
-
-#: ../../../../NickvisionTubeConverter.GNOME/Program.cs:49
-#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:43
-#: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.desktop.in:4
-#: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.metainfo.xml.in:6
-msgid "Tube Converter"
-msgstr "Tube-konverterer"
 
 #: ../../../Controllers/MainWindowController.cs:143
 #: ../../../Controllers/MainWindowController.cs:154
@@ -796,8 +807,8 @@ msgstr ""
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:320
 msgid ""
-"If enabled, Tube Converter will download the appropriate video/audio format "
-"for the selected quality without converting to other formats. (You will be "
+"If enabled, Parabolic will download the appropriate video/audio format for "
+"the selected quality without converting to other formats. (You will be "
 "unable to select a file format)"
 msgstr ""
 
@@ -811,8 +822,8 @@ msgstr ""
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:345
 msgid ""
-"If enabled, Tube Converter will automatically turn on the crop thumbnail "
-"advanced option for audio downloads"
+"If enabled, Parabolic will automatically turn on the crop thumbnail advanced "
+"option for audio downloads"
 msgstr ""
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:361
@@ -844,7 +855,6 @@ msgid "Keyboard Shortcuts"
 msgstr "Tastatursnarveier"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:56
-#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:11
 #, fuzzy
 msgid "About Tube Converter"
 msgstr "Tube-konverterer"
@@ -856,6 +866,10 @@ msgstr "Avslutt"
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:10
 msgid "Help"
 msgstr "Hjelp"
+
+#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:11
+msgid "About Parabolic"
+msgstr ""
 
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:49
 msgid "Add Download (Ctrl+N)"
@@ -899,12 +913,8 @@ msgstr "Fullført"
 msgid "Clear Completed Downloads"
 msgstr "Tøm nedlastinger i kø"
 
-#: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.desktop.in:5
-msgid "Get video and audio from the web"
-msgstr "Last ned dine favorittvideoer"
-
 #: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.desktop.in:11
-msgid "YouTube;Downloader;ytdlp;Nickvision;"
+msgid "YouTube;Downloader;ytdlp;Nickvision;Tube;Converter;"
 msgstr ""
 
 #: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.metainfo.xml.in:10
@@ -945,6 +955,12 @@ msgstr ""
 #, fuzzy
 msgid "download"
 msgstr "Last ned"
+
+#~ msgid "Tube Converter"
+#~ msgstr "Tube-konverterer"
+
+#~ msgid "Get video and audio from the web"
+#~ msgstr "Last ned dine favorittvideoer"
 
 #, fuzzy
 #~| msgid "Application"

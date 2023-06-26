@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-26 12:37-0400\n"
+"POT-Creation-Date: 2023-06-26 13:47-0400\n"
 "PO-Revision-Date: 2023-06-15 18:28+0000\n"
 "Last-Translator: Fyodor Sobolev <fyodor-sobolev@protonmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -164,6 +164,7 @@ msgid "Download using ffmpeg has started"
 msgstr "Началась загрузка с помощью ffmpeg"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Program.cs:50
+#: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.desktop.in:5
 #: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.metainfo.xml.in:8
 msgid "Download web video and audio"
 msgstr "Загружайте веб-видео и аудио"
@@ -289,6 +290,13 @@ msgstr "Нет"
 msgid "No downloads running"
 msgstr "Ничего не загружается"
 
+#: ../../../../NickvisionTubeConverter.GNOME/Program.cs:49
+#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:43
+#: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.desktop.in:4
+#: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.metainfo.xml.in:6
+msgid "Parabolic"
+msgstr ""
+
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:269
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:76
 #: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:132
@@ -336,9 +344,14 @@ msgid "Setup Keyring"
 msgstr "Установить связку ключей"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:301
+#, fuzzy
+#| msgid ""
+#| "Some downloads are still in progress.\n"
+#| "Are you sure you want to close Tube Converter and stop the running "
+#| "downloads?"
 msgid ""
 "Some downloads are still in progress.\n"
-"Are you sure you want to close Tube Converter and stop the running downloads?"
+"Are you sure you want to close Parabolic and stop the running downloads?"
 msgstr ""
 "Некоторые загрузки ещё не завершены.\n"
 "Вы уверены, что хотите закрыть Tube Converter и остановить все загрузки?"
@@ -376,8 +389,13 @@ msgid "Success"
 msgstr "Успешно"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:521
+#, fuzzy
+#| msgid ""
+#| "The authors of Nickvision Tube Converter are not responsible/liable for "
+#| "any misuse of this program that may violate local copyright/DMCA laws. "
+#| "Users use this application at their own risk."
 msgid ""
-"The authors of Nickvision Tube Converter are not responsible/liable for any "
+"The authors of Nickvision Parabolic are not responsible/liable for any "
 "misuse of this program that may violate local copyright/DMCA laws. Users use "
 "this application at their own risk."
 msgstr ""
@@ -393,13 +411,6 @@ msgstr "Это действие необратимо. Вы уверены, чт�
 #: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:531
 msgid "translator-credits"
 msgstr "Фёдор Соболев https://github.com/fsobolev"
-
-#: ../../../../NickvisionTubeConverter.GNOME/Program.cs:49
-#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:43
-#: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.desktop.in:4
-#: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.metainfo.xml.in:6
-msgid "Tube Converter"
-msgstr "Tube Converter"
 
 #: ../../../Controllers/MainWindowController.cs:143
 #: ../../../Controllers/MainWindowController.cs:154
@@ -787,9 +798,14 @@ msgid "Disallow Conversions"
 msgstr "Отключить конвертирование"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:320
+#, fuzzy
+#| msgid ""
+#| "If enabled, Tube Converter will download the appropriate video/audio "
+#| "format for the selected quality without converting to other formats. (You "
+#| "will be unable to select a file format)"
 msgid ""
-"If enabled, Tube Converter will download the appropriate video/audio format "
-"for the selected quality without converting to other formats. (You will be "
+"If enabled, Parabolic will download the appropriate video/audio format for "
+"the selected quality without converting to other formats. (You will be "
 "unable to select a file format)"
 msgstr ""
 "Если отключить конвертирование, Tube Converter будет скачивать видео/аудио в "
@@ -805,9 +821,13 @@ msgid "Crop Audio Thumbnails"
 msgstr "Обрезать миниатюры для аудио"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:345
+#, fuzzy
+#| msgid ""
+#| "If enabled, Tube Converter will automatically turn on the crop thumbnail "
+#| "advanced option for audio downloads"
 msgid ""
-"If enabled, Tube Converter will automatically turn on the crop thumbnail "
-"advanced option for audio downloads"
+"If enabled, Parabolic will automatically turn on the crop thumbnail advanced "
+"option for audio downloads"
 msgstr ""
 "Если включено, Tube Converter будет автоматически активировать обрезку "
 "миниатюр для аудио загрузок"
@@ -841,7 +861,6 @@ msgid "Keyboard Shortcuts"
 msgstr "Комбинации клавиш"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:56
-#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:11
 msgid "About Tube Converter"
 msgstr "О приложении"
 
@@ -852,6 +871,10 @@ msgstr "Выход"
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:10
 msgid "Help"
 msgstr "Помощь"
+
+#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:11
+msgid "About Parabolic"
+msgstr ""
 
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:49
 msgid "Add Download (Ctrl+N)"
@@ -890,12 +913,10 @@ msgstr "Завершено"
 msgid "Clear Completed Downloads"
 msgstr "Очистить завершённые загрузки"
 
-#: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.desktop.in:5
-msgid "Get video and audio from the web"
-msgstr "Скачивайте видео и аудио из Интернета"
-
 #: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.desktop.in:11
-msgid "YouTube;Downloader;ytdlp;Nickvision;"
+#, fuzzy
+#| msgid "YouTube;Downloader;ytdlp;Nickvision;"
+msgid "YouTube;Downloader;ytdlp;Nickvision;Tube;Converter;"
 msgstr "YouTube;Загрузчик;ytdlp;Nickvision;"
 
 #: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.metainfo.xml.in:10
@@ -937,6 +958,12 @@ msgstr "медиа"
 #: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.metainfo.xml.in:20
 msgid "download"
 msgstr "загрузка"
+
+#~ msgid "Tube Converter"
+#~ msgstr "Tube Converter"
+
+#~ msgid "Get video and audio from the web"
+#~ msgstr "Скачивайте видео и аудио из Интернета"
 
 #, fuzzy
 #~| msgid "Authenticate"
