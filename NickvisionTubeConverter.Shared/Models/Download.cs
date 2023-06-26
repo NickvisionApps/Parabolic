@@ -477,7 +477,7 @@ public class Download
                 {
                     total = entries["total_bytes_estimate"].As<double?>() ?? 1;
                 }
-                var state = new DownloadProgressState()
+                using var state = new DownloadProgressState()
                 {
                     Status = entries["status"].As<string>() switch
                     {
@@ -494,11 +494,7 @@ public class Download
                 }
                 if (File.Exists(_logPath))
                 {
-                    using var fs = new FileStream(_logPath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
-                    using var sr = new StreamReader(fs);
-                    state.Log = sr.ReadToEnd();
-                    sr.Close();
-                    fs.Close();
+                    state.Log = File.ReadAllText(_logPath);
                 }
                 ProgressChanged.Invoke(this, state);
             }

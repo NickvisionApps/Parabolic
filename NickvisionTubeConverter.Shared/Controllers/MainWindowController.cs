@@ -78,18 +78,6 @@ public class MainWindowController : IDisposable
     ~MainWindowController() => Dispose(false);
 
     /// <summary>
-    /// Whether or not to show a sun icon on the home page
-    /// </summary>
-    public bool ShowSun
-    {
-        get
-        {
-            var timeNowHours = DateTime.Now.Hour;
-            return timeNowHours >= 6 && timeNowHours < 18;
-        }
-    }
-
-    /// <summary>
     /// Frees resources used by the MainWindowController object
     /// </summary>
     public void Dispose()
