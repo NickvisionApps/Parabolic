@@ -298,7 +298,7 @@ public partial class MainWindow : Adw.ApplicationWindow
                 SetVisible(false);
                 return true;
             }
-            var closeDialog = new MessageDialog(this, _controller.AppInfo.ID, _("Close and Stop Downloads?"), _("Some downloads are still in progress.\nAre you sure you want to close Tube Converter and stop the running downloads?"), _("No"), _("Yes"));
+            var closeDialog = new MessageDialog(this, _controller.AppInfo.ID, _("Close and Stop Downloads?"), _("Some downloads are still in progress.\nAre you sure you want to close Parabolic and stop the running downloads?"), _("No"), _("Yes"));
             if (closeDialog.Run() == MessageDialogResponse.Cancel)
             {
                 return true;
@@ -518,7 +518,7 @@ public partial class MainWindow : Adw.ApplicationWindow
         dialog.SetComments(_controller.AppInfo.Description);
         dialog.SetDeveloperName("Nickvision");
         dialog.SetLicenseType(Gtk.License.MitX11);
-        dialog.SetCopyright($"© Nickvision 2021-2023\n\n{_("The authors of Nickvision Tube Converter are not responsible/liable for any misuse of this program that may violate local copyright/DMCA laws. Users use this application at their own risk.")}");
+        dialog.SetCopyright($"© Nickvision 2021-2023\n\n{_("The authors of Nickvision Parabolic are not responsible/liable for any misuse of this program that may violate local copyright/DMCA laws. Users use this application at their own risk.")}");
         dialog.SetWebsite("https://nickvision.org/");
         dialog.SetIssueUrl(_controller.AppInfo.IssueTracker.ToString());
         dialog.SetSupportUrl(_controller.AppInfo.SupportUrl.ToString());
