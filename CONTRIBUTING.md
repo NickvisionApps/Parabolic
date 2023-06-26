@@ -1,4 +1,4 @@
-# Contributing to Nickvision Tube Converter
+# Contributing to Nickvision Parabolic
 
 First off, thanks for taking the time to contribute! ❤️
 
@@ -52,7 +52,7 @@ A good bug report shouldn't leave others needing to chase you up for more inform
 - To see if other users have experienced (and potentially already solved) the same issue you are having, check if there is not already a bug report existing for your bug or error in both the [Discussions](https://github.com/NickvisionApps/TubeConverter/discussions) and [Issues](https://github.com/NickvisionApps/TubeConverter/issues) sections.
 - Collect information about the bug:
   - Debug information provided by the application
-    - GNOME: from main menu open About Tube Converter → Troubleshooting → Debugging Information, here you can copy information to clipboard or save to a file.
+    - GNOME: from main menu open About Parabolic → Troubleshooting → Debugging Information, here you can copy information to clipboard or save to a file.
   - Stack trace (Traceback)
     - Including any error messages thrown by the application
     - You may need to start the application via the terminal/console to receive an error message for a crash.
@@ -79,7 +79,7 @@ Once it's filed:
 
 ### Suggesting Enhancements
 
-This section guides you through submitting an enhancement suggestion for Nickvision Tube Converter, **including completely new features and minor improvements to existing functionality**. Following these guidelines will help maintainers and the community to understand your suggestion and find related suggestions.
+This section guides you through submitting an enhancement suggestion for Nickvision Parabolic, **including completely new features and minor improvements to existing functionality**. Following these guidelines will help maintainers and the community to understand your suggestion and find related suggestions.
 
 #### Before Submitting an Enhancement
 
@@ -95,7 +95,7 @@ Enhancement suggestions are tracked as [GitHub issues](https://github.com/Nickvi
 - Provide a **step-by-step description of the suggested enhancement** in as many details as possible.
 - **Describe the current behavior** and **explain which behavior you expected to see instead** and why. At this point you can also tell which alternatives do not work for you.
 - You may want to **include screenshots and animated GIFs** which help you demonstrate the steps or point out the part which the suggestion is related to. You can use [this tool](https://www.cockos.com/licecap/) to record GIFs on macOS and Windows, and [this tool](https://github.com/colinkeenan/silentcast) or [this tool](https://flathub.org/apps/details/io.github.seadve.Kooha) on Linux.
-- **Explain why this enhancement would be useful** to most Nickvision Tube Converter users. You may also want to point out the other projects that solved it better and which could serve as inspiration.
+- **Explain why this enhancement would be useful** to most Nickvision Parabolic users. You may also want to point out the other projects that solved it better and which could serve as inspiration.
 
 ### Providing Translations
 
@@ -103,13 +103,13 @@ Everyone is welcome to translate this app into their native or known languages, 
 
 ##### Via Weblate
 
-Tube Converter is available to translate on [Weblate](https://hosted.weblate.org/engage/nickvision-tube-converter/)!
+Parabolic is available to translate on [Weblate](https://hosted.weblate.org/engage/nickvision-tube-converter/)!
 
 ##### Manually
 
 To start translating the app, fork the repository and clone it locally.
 
-Tube Converter uses [gettext](https://www.gnu.org/software/gettext/manual/gettext.html#PO-Files) for translations. In the `NickvisionTubeConverter.Shared/Resources/po` you will find files that can be edited in your favourite `*.po` files editor or any text editor. If you want to create a new translation, copy `tubeconverter.pot` file, name the new file `<lang_code>.po`, where `<lang_code>` is the language code for your translation (usually it's 2 letters, but it also can be a locale code to differentiate between different version of the same language, for example `pt` and `pt_BR`) and edit this file. Also add the language code to `LINGUAS` file (please keep codes sorted alphabetically there).
+Parabolic uses [gettext](https://www.gnu.org/software/gettext/manual/gettext.html#PO-Files) for translations. In the `NickvisionTubeConverter.Shared/Resources/po` you will find files that can be edited in your favourite `*.po` files editor or any text editor. If you want to create a new translation, copy `tubeconverter.pot` file, name the new file `<lang_code>.po`, where `<lang_code>` is the language code for your translation (usually it's 2 letters, but it also can be a locale code to differentiate between different version of the same language, for example `pt` and `pt_BR`) and edit this file. Also add the language code to `LINGUAS` file (please keep codes sorted alphabetically there).
 
 To check your translation file, make sure your system is in the locale of the language you are translating and run the app. You should see your translated strings!
 
@@ -125,7 +125,7 @@ Once all changes to your translated file are made, commit these changes and crea
 
 #### Structure
 
-Tube Converter is built using .NET 7 and C#. With these technologies, Tube Converter is built for GNOME (Linux).
+Parabolic is built using .NET 7 and C#. With these technologies, Parabolic is built for GNOME (Linux).
 The solution is setup into 2 projects:
  - NickvisionTubeConverter.Shared
  - NickvisionTubeConverter.GNOME
@@ -185,7 +185,7 @@ Use one of the commands to build the app:
 
 ## Styleguides
 
-Tube Converter follows [Microsoft's C# Coding Conventions](https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/coding-style/coding-conventions).
+Parabolic follows [Microsoft's C# Coding Conventions](https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/coding-style/coding-conventions).
 
 See [Microsoft's C# Identifier Names](https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/coding-style/identifier-names) as well.
 
