@@ -15,20 +15,20 @@
 </info>
 
 <title>Pobieranie</title>
-<p>Ta strona wyjaśnia wszystkie opcje dostępne w sekcji Pobieranie w preferencjach w <app>Tube Converter</app>.</p>
+<p>This page explains all options for configuring the Downloader in Preferences in <app>Parabolic</app>.</p>
 
 <terms>
 	<item>
 		<title>Maksymalna ilość aktywnych procesów pobierania</title>
 		<p>Ilość procesów pobierania, które mogą być aktywne w tym samym czasie. Musi być liczbą całkowitą od 1 do 10.</p>
-        <p>If the max number of active downloads is reached, Tube Converter will place new downloads in a queue until more downloads are able to be run.</p>
+        <p>If the max number of active downloads is reached, Parabolic will place new downloads in a queue until more downloads are able to be run.</p>
 		<note style="advanced">
 			<p>Domyślnie: 5</p>
 		</note>
     </item>
     <item>
         <title>Nadpisuj istniejące pliki</title>
-        <p>Po włączeniu, Tube Converter będzie nadpisywał istniejące pliki.</p>
+        <p>If enabled, Parabolic will overwrite existing files.</p>
         <p>For example, if a file named <code>movie.mp4</code> exists in the download folder, and a new download is created named <code>movie</code>, <code>movie.mp4</code> will be overwritten with the new download's content.</p>
 		<note style="advanced">
 			<p>Domyślnie: włączone</p>
@@ -43,7 +43,7 @@
     </item>
     <item>
         <title>Używaj aria2</title>
-        <p>Po włączeniu, Tube Converter będzie używał aria2c do pobierania multimediów. Pobieranie za pomocą aria2c może być szybsze, ale pasek postępu nie będzie widoczny.</p>
+        <p>If enabled, Parabolic will use aria2c to download media. Although using aria2c can improve download speed, download progress will not be displayed in the UI.</p>
 		<note style="advanced">
 			<p>Domyślnie: wyłączone</p>
 		</note>
