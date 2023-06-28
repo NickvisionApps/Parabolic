@@ -1,8 +1,8 @@
 on:
   push:
-    branches: [ "main", "snap" ]
+    branches: [ "snap" ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "snap" ]
     types: [ "review_requested", "ready_for_review" ]
   workflow_dispatch:
 name: CI
@@ -10,26 +10,6 @@ permissions:
   id-token: write
   contents: read
 jobs:
-  flatpak:
-    name: "GNOME on Flatpak"
-    runs-on: ubuntu-latest
-    if: ${{ github.event.pull_request.user.login != 'weblate' }}
-    container:
-      image: bilelmoussaoui/flatpak-github-actions:gnome-44
-      options: --privileged
-    strategy:
-      matrix:
-        arch: [x86_64]
-      fail-fast: false
-    steps:
-      - uses: actions/checkout@v3
-      - uses: DaPigGuy/flatpak-github-actions/flatpak-builder@master
-        with:
-          bundle: org.nickvision.tubeconverter.flatpak
-          manifest-path: flatpak/org.nickvision.tubeconverter.json
-          cache-key: flatpak-builder-${{ github.sha }}
-          arch: ${{ matrix.arch }}
-          restore-cache: true
   snap:
     name: "GNOME on Snap"
     runs-on: ubuntu-latest
@@ -49,14 +29,14 @@ jobs:
         with:
           name: org.nickvision.tubeconverter-snap-x86_64
           path: ${{ steps.snapcraft-build.outputs.snap }} 
-      #- uses: diddlesnaps/snapcraft-review-action@v1
-        #with:
+          #- uses: diddlesnaps/snapcraft-review-action@v1
+          #with:
           #snap: ${{ steps.snapcraft-build.outputs.snap }}
           #isClassic: 'false'          
-      #- name: Upload and release tube-converter Snap
-        #uses: snapcore/action-publish@v1
-        #env: 
+          #- name: Upload and release tube-converter Snap
+          #uses: snapcore/action-publish@v1
+          #env: 
           #SNAPCRAFT_STORE_CREDENTIALS: ${{ secrets.STORE_LOGIN }}
-        #with:
+          #with:
           #snap: ${{ steps.snapcraft-build.outputs.snap }}
           #release: ${{ startsWith(github.ref, 'refs/tags/') && 'candidate' || 'edge'}}
