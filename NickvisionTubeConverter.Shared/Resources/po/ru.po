@@ -8,17 +8,17 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-06-26 20:01-0400\n"
-"PO-Revision-Date: 2023-06-15 18:28+0000\n"
+"PO-Revision-Date: 2023-06-29 18:14+0000\n"
 "Last-Translator: Fyodor Sobolev <fyodor-sobolev@protonmail.com>\n"
-"Language-Team: Russian <https://hosted.weblate.org/projects/nickvision-tube-"
-"converter/app/ru/>\n"
+"Language-Team: Russian <https://hosted.weblate.org/projects/"
+"nickvision-tube-converter/app/ru/>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 4.18.1-dev\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 4.18.1\n"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:736
 #, csharp-format
@@ -198,9 +198,8 @@ msgid "End Time (Invalid)"
 msgstr "Время конца (Некорректное)"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:436
-#, fuzzy
 msgid "Ensure credentials are correct."
-msgstr "Управляйте данными в связке ключей."
+msgstr "Убедитесь, что данные корректны."
 
 #: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:202
 msgid "Error"
@@ -293,7 +292,7 @@ msgstr "Ничего не загружается"
 #: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.desktop.in:4
 #: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.metainfo.xml.in:6
 msgid "Parabolic"
-msgstr ""
+msgstr "Parabolic"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:272
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:76
@@ -342,13 +341,12 @@ msgid "Setup Keyring"
 msgstr "Установить связку ключей"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:303
-#, fuzzy
 msgid ""
 "Some downloads are still in progress.\n"
 "Are you sure you want to close Parabolic and stop the running downloads?"
 msgstr ""
 "Некоторые загрузки ещё не завершены.\n"
-"Вы уверены, что хотите закрыть Tube Converter и остановить все загрузки?"
+"Вы уверены, что хотите закрыть Parabolic и остановить все загрузки?"
 
 #: ../../../Models/DownloadManager.cs:169
 msgid "Some downloads finished with errors!"
@@ -370,28 +368,25 @@ msgstr "Остановлено"
 #: ../../../../NickvisionTubeConverter.GNOME/Views/PreferencesDialog.cs:165
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:190
 msgid "Subtitle Languages (Comma-Separated)"
-msgstr ""
+msgstr "Языки субтитров (Разделённые запятой)"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/PreferencesDialog.cs:175
-#, fuzzy
 msgid "Subtitle Languages (Invalid)"
-msgstr "Время начала (Некорректное)"
+msgstr "Языки субтитров (Некорректные)"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:202
 msgid "Success"
 msgstr "Успешно"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:523
-#, fuzzy
 msgid ""
 "The authors of Nickvision Parabolic are not responsible/liable for any "
 "misuse of this program that may violate local copyright/DMCA laws. Users use "
 "this application at their own risk."
 msgstr ""
-"Авторы Nickvision Tube Converter не несут ответственности за любое "
-"неправомерное использование программы, которое может нарушать местные законы "
-"об авторском праве или DMCA. Пользователи используют это приложение на свой "
-"страх и риск."
+"Авторы Nickvision Parabolic не несут ответственности за любое неправомерное "
+"использование программы, которое может нарушать местные законы об авторском "
+"праве или DMCA. Пользователи используют это приложение на свой страх и риск."
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:331
 msgid "This action is irreversible. Are you sure you want to delete it?"
@@ -725,7 +720,7 @@ msgstr "Минимальный размер, на который разделя�
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:203
 msgid "Language Code Information"
-msgstr ""
+msgstr "Информация о языковых кодах"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:218
 msgid ""
@@ -735,6 +730,11 @@ msgid ""
 "Please specify both two-letter and three-letter codes for your languages for "
 "the best results."
 msgstr ""
+"Некоторые сайты используют двух-символьные языковые коды, тогда как другие "
+"используют трёх-символьные. Например, \"ru\" и \"rus\" для русского языка.\n"
+"\n"
+"Пожалуйста, указывайте оба варианта для необходимых языков, для достижения "
+"наилучшего результата."
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:229
 msgid "Cookies File"
@@ -753,9 +753,8 @@ msgid "Clear Cookies File"
 msgstr "Очистить файл куки"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:261
-#, fuzzy
 msgid "Cookies File Information"
-msgstr "Файл куки"
+msgstr "Информация о файле куки"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:276
 msgid ""
@@ -774,13 +773,12 @@ msgid "Disallow Conversions"
 msgstr "Отключить конвертирование"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:317
-#, fuzzy
 msgid ""
 "If enabled, Parabolic will download the appropriate video/audio format for "
 "the selected quality without converting to other formats. (You will be "
 "unable to select a file format)"
 msgstr ""
-"Если отключить конвертирование, Tube Converter будет скачивать видео/аудио в "
+"Если отключить конвертирование, Parabolic будет скачивать видео/аудио в "
 "наиболее подходящем под заданное качество формате без конвертирования. (Вы "
 "не сможете выбрать формат файла)"
 
@@ -793,13 +791,12 @@ msgid "Crop Audio Thumbnails"
 msgstr "Обрезать миниатюры для аудио"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:342
-#, fuzzy
 msgid ""
 "If enabled, Parabolic will automatically turn on the crop thumbnail advanced "
 "option for audio downloads"
 msgstr ""
-"Если включено, Tube Converter будет автоматически активировать обрезку "
-"миниатюр для аудио загрузок"
+"Если включено, Parabolic будет автоматически активировать обрезку миниатюр "
+"для аудио загрузок"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:358
 msgid "Embed Chapters"
@@ -840,7 +837,7 @@ msgstr "Выход"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:11
 msgid "About Parabolic"
-msgstr ""
+msgstr "О приложении"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:47
 msgid "Add Download (Ctrl+N)"
@@ -880,9 +877,8 @@ msgid "Clear Completed Downloads"
 msgstr "Очистить завершённые загрузки"
 
 #: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.desktop.in:11
-#, fuzzy
 msgid "YouTube;Downloader;ytdlp;Nickvision;Tube;Converter;"
-msgstr "YouTube;Загрузчик;ytdlp;Nickvision;"
+msgstr "YouTube;Загрузчик;ytdlp;Nickvision;Tube;Converter;"
 
 #: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.metainfo.xml.in:10
 msgid "— A basic yt-dlp frontend"
