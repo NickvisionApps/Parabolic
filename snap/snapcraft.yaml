@@ -6,9 +6,12 @@ confinement: strict # use 'strict' once you have the right plugs and slots
 compression: lzo
 architectures:
   - build-on: amd64
-  - build-on: arm64
-  - build-on: armhf
+  #- build-on: arm64
+  #- build-on: armhf
 
+layouts:
+  $SNAP/usr/bin:
+    symlink: $SNAP/ffmpeg-platform/usr/bin
 parts:
   yt-dlp:
     # Missing optional dependencies atomicparsley, mpv, phantomjs and rtmpdump
@@ -46,41 +49,8 @@ parts:
       bin: usr/bin
       lib/python3.10/site-packages: usr/lib/python3.10/dist-packages
 
-  ffmpeg:
-    # WORKAROUND:
-    # Build from source because the ffmpeg package installs libraries as dependencies
-    # that conflict with the Gnome extension
-    plugin: autotools
-    source: https://git.ffmpeg.org/ffmpeg.git
-    source-tag: n6.0
-    source-depth: 1
-    autotools-configure-parameters:
-      # WORKAROUND: Install to /usr instead of /usr/local because it's not in search paths
-      - --prefix=/usr
-      - --disable-debug
-      - --disable-doc
-      - --disable-static
-      - --enable-gpl
-      - --enable-shared
-      - --disable-ffplay
-      - --disable-devices
-      - --enable-gnutls
-      - --enable-libmp3lame
-      - --enable-libvorbis
-    build-packages:
-      - nasm
-      - libgnutls28-dev
-      - libmp3lame-dev
-      - libvorbis-dev
-    prime:
-      - -usr/lib/pkgconfig
-      - -usr/lib/*/pkgconfig
-      - -usr/share/pkgconfig
-      - -usr/include
-      - -usr/share/ffmpeg
-      - -usr/share/doc
   tube-converter:
-    after: [ ffmpeg, yt-dlp ]
+    after: [ yt-dlp ]
     plugin: nil
     source: https://github.com/NickvisionApps/TubeConverter.git
     source-branch: 'snap'
@@ -120,16 +90,18 @@ parts:
       - aria2
       - libc-ares2
       - libaria2-0
-      - libmp3lame0
     prime:
       - usr/lib/$CRAFT_ARCH_TRIPLET/libaria2.so.0
       - usr/lib/$CRAFT_ARCH_TRIPLET/libaria2.so.0.0.0
-      - usr/lib/$CRAFT_ARCH_TRIPLET/libmp3lame.so.0
-      - usr/lib/$CRAFT_ARCH_TRIPLET/libmp3lame.so.0.0.0
       - usr/lib/$CRAFT_ARCH_TRIPLET/libcares.so.2
       - usr/lib/$CRAFT_ARCH_TRIPLET/libcares.so.2.5.1
       - usr/bin/aria2c
-      
+
+plugs:
+  ffmpeg-2204:
+    interface: content
+    target: ffmpeg-platform
+    default-provider: ffmpeg-2204
 slots:
   # for GtkApplication registration
   tube-converter:
@@ -146,6 +118,8 @@ apps:
     environment:
       TC_PYTHON_SO: $SNAP/gnome-platform/usr/lib/$CRAFT_ARCH_TRIPLET/libpython3.10.so.1.0
       PYTHONPATH: $SNAP/usr/lib/python3.10/dist-packages:$PYTHONPATH
+      PATH: $SNAP/ffmpeg-platform/usr/bin:$PATH
+      LD_LIBRARY_PATH: $SNAP/ffmpeg-platform/usr/lib/$CRAFT_ARCH_TRIPLET:$LD_LIBRARY_PATH
     plugs:
       - home
       - network
