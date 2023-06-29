@@ -1,8 +1,8 @@
 on:
   push:
-    branches: [ "snap" ]
+    branches: [ "main" ]
   pull_request:
-    branches: [ "snap" ]
+    branches: [ "main" ]
     types: [ "review_requested", "ready_for_review" ]
   workflow_dispatch:
 name: Snap
