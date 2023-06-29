@@ -10,8 +10,12 @@ architectures:
   #- build-on: armhf
 
 layout:
-  $SNAP/usr/bin:
-    symlink: $SNAP/ffmpeg-platform/usr/bin
+  $SNAP/usr/bin/ffmpeg:
+    symlink: $SNAP/ffmpeg-platform/usr/bin/ffmpeg
+  $SNAP/usr/bin/ffplay:
+    symlink: $SNAP/ffmpeg-platform/usr/bin/ffplay
+  $SNAP/usr/bin/ffprobe:
+    symlink: $SNAP/ffmpeg-platform/usr/bin/ffprobe
 parts:
   yt-dlp:
     # Missing optional dependencies atomicparsley, mpv, phantomjs and rtmpdump
@@ -64,7 +68,7 @@ parts:
       wget https://dot.net/v1/dotnet-install.sh -O dotnet-install.sh
       chmod +x ./dotnet-install.sh
       ./dotnet-install.sh --channel 7.0
-      patch -p1 < $CRAFT_PROJECT_DIR/snap/tube-converter.patch
+      #patch -p1 < $CRAFT_PROJECT_DIR/snap/tube-converter.patch
     override-build: |
       set -eux
       export DOTNET_ROOT=$HOME/.dotnet
