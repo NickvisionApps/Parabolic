@@ -1,8 +1,8 @@
 on:
   push:
-    branches: [ "snap" ]
+    branches: [ "main" ]
   pull_request:
-    branches: [ "snap" ]
+    branches: [ "main" ]
     types: [ "review_requested", "ready_for_review" ]
   workflow_dispatch:
 name: Snap
@@ -27,15 +27,15 @@ jobs:
           snapcraft-args: "-v"
       - uses: actions/upload-artifact@v3
         with:
-          name: org.nickvision.tubeconverter-snap-x86_64
-          path: ${{ steps.snapcraft-build.outputs.snap }} 
+          name: ${{ steps.snapcraft-build.outputs.snap | rev | cut -c 6- | rev }}
+          path: ${{ steps.snapcraft-build.outputs.snap }}
           #- uses: diddlesnaps/snapcraft-review-action@v1
           #with:
           #snap: ${{ steps.snapcraft-build.outputs.snap }}
-          #isClassic: 'false'          
+          #isClassic: 'false'
           #- name: Upload and release tube-converter Snap
           #uses: snapcore/action-publish@v1
-          #env: 
+          #env:
           #SNAPCRAFT_STORE_CREDENTIALS: ${{ secrets.STORE_LOGIN }}
           #with:
           #snap: ${{ steps.snapcraft-build.outputs.snap }}
