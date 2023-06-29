@@ -6,8 +6,8 @@ confinement: strict # use 'strict' once you have the right plugs and slots
 compression: lzo
 architectures:
   - build-on: amd64
-  #- build-on: arm64
-  #- build-on: armhf
+  - build-on: arm64
+  - build-on: armhf
 
 layout:
   $SNAP/usr/bin/ffmpeg:
@@ -68,7 +68,7 @@ parts:
       wget https://dot.net/v1/dotnet-install.sh -O dotnet-install.sh
       chmod +x ./dotnet-install.sh
       ./dotnet-install.sh --channel 7.0
-      #patch -p1 < $CRAFT_PROJECT_DIR/snap/tube-converter.patch
+      patch -p1 < $CRAFT_PROJECT_DIR/snap/tube-converter.patch
     override-build: |
       set -eux
       export DOTNET_ROOT=$HOME/.dotnet
