@@ -18,12 +18,12 @@ document.addEventListener('DOMContentLoaded', function() {
 <a class="trail" href="index.html" title="Parabolic Help">Parabolic Help</a> » </div></div></div></header><article><div class="hgroup pagewide"><h1 class="title"><span class="title">Pobieranie</span></h1></div>
 <div class="region">
 <div class="contents pagewide">
-<p class="p">This page explains all options for configuring the Downloader in Preferences in <span class="app">Parabolic</span>.</p>
+<p class="p">Ta strona wyjaśnia wszystkie opcje dostępne w sekcji Pobieranie w preferencjach w <span class="app">Parabolic</span>.</p>
 <div class="terms"><div class="inner"><div class="region"><dl class="terms">
 <dt class="terms">Maksymalna ilość aktywnych procesów pobierania</dt>
 <dd class="terms">
 <p class="p">Ilość procesów pobierania, które mogą być aktywne w tym samym czasie. Musi być liczbą całkowitą od 1 do 10.</p>
-<p class="p">If the max number of active downloads is reached, Parabolic will place new downloads in a queue until more downloads are able to be run.</p>
+<p class="p">Jeśli maksymalna ilość aktywnych procesów pobierania zostanie osiągnięta nowe procesy będą oczekiwały w kolejce.</p>
 <div class="note note-advanced" title="Zaawansowane">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -43,8 +43,8 @@ document.addEventListener('DOMContentLoaded', function() {
 </dd>
 <dt class="terms">Nadpisuj istniejące pliki</dt>
 <dd class="terms">
-<p class="p">If enabled, Parabolic will overwrite existing files.</p>
-<p class="p">For example, if a file named <span class="code">movie.mp4</span> exists in the download folder, and a new download is created named <span class="code">movie</span>, <span class="code">movie.mp4</span> will be overwritten with the new download's content.</p>
+<p class="p">Po włączeniu, Parabolic będzie nadpisywał istniejące pliki.</p>
+<p class="p">Na przykład, jeśli plik o nazwie <span class="code">film.mp4</span> istnieje w folderze docelowym i nowe pobieranie o nazwie <span class="code">film</span> zostanie rozpoczęte, to <span class="code">film.mp4</span> zostanie zastąpiony nowo pobraną treścią.</p>
 <div class="note note-advanced" title="Zaawansowane">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -84,7 +84,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </dd>
 <dt class="terms">Używaj aria2</dt>
 <dd class="terms">
-<p class="p">If enabled, Parabolic will use aria2c to download media. Although using aria2c can improve download speed, download progress will not be displayed in the UI.</p>
+<p class="p">Po włączeniu, Parabolic będzie używał aria2c do pobierania multimediów. Pobieranie za pomocą aria2c może być szybsze, ale pasek postępu nie będzie widoczny.</p>
 <div class="note note-advanced" title="Zaawansowane">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -104,7 +104,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </dd>
 <dt class="terms">Maksymalna ilość połączeń na serwer</dt>
 <dd class="terms">
-<p class="p">This option only applies when using aria2 is enabled. This option is the same as the <span class="code">-x</span> flag passed to aria2c.</p>
+<p class="p">Ta ustawienie działa jeśli opcja "Używaj aria2" jest włączona. To ustawienie działa tak samo jak flaga <span class="code">-x</span> w programie aria2c.</p>
 <p class="p">The maximum number of connection that can be used per server. Must be an integer value between 1 and 32.</p>
 <div class="note note-advanced" title="Zaawansowane">
 <svg height="24" width="24" version="1.1">

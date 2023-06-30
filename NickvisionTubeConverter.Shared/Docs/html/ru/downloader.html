@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </head>
 <body lang="ru" dir="ltr"><main><div class="page">
 <header><div class="inner pagewide"><div class="trails" role="navigation"><div class="trail">
-<a class="trail" href="index.html" title="Parabolic Help">Parabolic Help</a> » </div></div></div></header><article><div class="hgroup pagewide"><h1 class="title"><span class="title">Загрузчик</span></h1></div>
+<a class="trail" href="index.html" title="Справка Parabolic">Справка Parabolic</a> » </div></div></div></header><article><div class="hgroup pagewide"><h1 class="title"><span class="title">Загрузчик</span></h1></div>
 <div class="region">
 <div class="contents pagewide">
 <p class="p">Эта страница поясняет все опции по настройке Загрузчика в параметрах <span class="app">Parabolic</span>.</p>
@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <dt class="terms">Максимальное число активных загрузок</dt>
 <dd class="terms">
 <p class="p">Число активных загрузок, которые могут быть запущены одновременно. Целое число от 1 до 10.</p>
-<p class="p">If the max number of active downloads is reached, Parabolic will place new downloads in a queue until more downloads are able to be run.</p>
+<p class="p">Если достигнут максимум активных загрузок, новые загрузки будут помещаться в очередь, пока не появится место для запуска новых загрузок.</p>
 <div class="note note-advanced" title="Подробности">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -38,13 +38,13 @@ document.addEventListener('DOMContentLoaded', function() {
   <path class="yelp-svg-fill" d="m8.2435 7.0719-1.9004-3.3145 1.4143-1.4143 3.1596 1.7457z"></path>
   <path class="yelp-svg-fill" d="m11.072 11.757-3.3146 1.9-1.4143-1.414 1.7457-3.1602z"></path>
  </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Default: 5</p></div></div></div>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">По умолчанию: 5</p></div></div></div>
 </div>
 </dd>
-<dt class="terms">Overwrite Existing Files</dt>
+<dt class="terms">Перезаписывать существующие файлы</dt>
 <dd class="terms">
-<p class="p">If enabled, Parabolic will overwrite existing files.</p>
-<p class="p">For example, if a file named <span class="code">movie.mp4</span> exists in the download folder, and a new download is created named <span class="code">movie</span>, <span class="code">movie.mp4</span> will be overwritten with the new download's content.</p>
+<p class="p">Если включено, Parabolic будет перезаписывать существующие файлы.</p>
+<p class="p">Например, если файл с именем <span class="code">movie.mp4</span> существует в папке сохранения, а новый файл создаётся с именем <span class="code">movie</span>, в файл <span class="code">movie.mp4</span> будет записано новое содержимое.</p>
 <div class="note note-advanced" title="Подробности">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -62,9 +62,9 @@ document.addEventListener('DOMContentLoaded', function() {
 </svg><div class="inner"><div class="region"><div class="contents"><p class="p">По умолчанию: Включено</p></div></div></div>
 </div>
 </dd>
-<dt class="terms">Speed Limit</dt>
+<dt class="terms">Ограничение скорости</dt>
 <dd class="terms">
-<p class="p">A limit, in Ki/s, that is applied to downloads only if they have the advanced option <span class="code">Speed Limit</span> enabled. Must be an integer value between 512 and 10240.</p>
+<p class="p">Этот лимит (в КиБ/с) применяется к загрузкам, у которых включена опция <span class="code">Ограничения скорости</span>. Целое число от 512 до 10240.</p>
 <div class="note note-advanced" title="Подробности">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -79,12 +79,12 @@ document.addEventListener('DOMContentLoaded', function() {
   <path class="yelp-svg-fill" d="m8.2435 7.0719-1.9004-3.3145 1.4143-1.4143 3.1596 1.7457z"></path>
   <path class="yelp-svg-fill" d="m11.072 11.757-3.3146 1.9-1.4143-1.414 1.7457-3.1602z"></path>
  </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Default: 1024</p></div></div></div>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">По умолчанию: 1024</p></div></div></div>
 </div>
 </dd>
-<dt class="terms">Use aria2</dt>
+<dt class="terms">Использовать aria2</dt>
 <dd class="terms">
-<p class="p">If enabled, Parabolic will use aria2c to download media. Although using aria2c can improve download speed, download progress will not be displayed in the UI.</p>
+<p class="p">Если включено, Parabolic будет использовать aria2c для загрузки медиа. Хотя использование aria2c может увеличить скорость загрузки, в интерфейсе приложения не будет отображаться прогресс загрузки.</p>
 <div class="note note-advanced" title="Подробности">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -102,10 +102,10 @@ document.addEventListener('DOMContentLoaded', function() {
 </svg><div class="inner"><div class="region"><div class="contents"><p class="p">По умолчанию: Выключено</p></div></div></div>
 </div>
 </dd>
-<dt class="terms">Maximum Connections Per Server</dt>
+<dt class="terms">Максимум подключений к серверу</dt>
 <dd class="terms">
-<p class="p">This option only applies when using aria2 is enabled. This option is the same as the <span class="code">-x</span> flag passed to aria2c.</p>
-<p class="p">The maximum number of connection that can be used per server. Must be an integer value between 1 and 32.</p>
+<p class="p">Эта опция применяется при включении использования aria2. Эта опция эквивалентна использованию флага <span class="code">-x</span> у aria2c.</p>
+<p class="p">Максимальное число соединений с сервером. Целое число от 1 до 32.</p>
 <div class="note note-advanced" title="Подробности">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -120,13 +120,13 @@ document.addEventListener('DOMContentLoaded', function() {
   <path class="yelp-svg-fill" d="m8.2435 7.0719-1.9004-3.3145 1.4143-1.4143 3.1596 1.7457z"></path>
   <path class="yelp-svg-fill" d="m11.072 11.757-3.3146 1.9-1.4143-1.414 1.7457-3.1602z"></path>
  </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Default: 16</p></div></div></div>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">По умолчанию: 16</p></div></div></div>
 </div>
 </dd>
-<dt class="terms">Minimum Split Size</dt>
+<dt class="terms">Минимальный размер фрагмента</dt>
 <dd class="terms">
-<p class="p">This option only applies when using aria2 is enabled. This option is the same as the <span class="code">-k</span> flag passed to aria2c.</p>
-<p class="p">The minimum size, in MiB, of which to split a file. Must be an integer value between 1 and 1024.</p>
+<p class="p">Эта опция применяется при включении использования aria2. Эта опция эквивалентна использованию флага <span class="code">-k</span> у aria2c.</p>
+<p class="p">Минимальный размер, в МиБ, на который разбивать файл при загрузке. Целое число от 1 до 1024.</p>
 <div class="note note-advanced" title="Подробности">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -141,19 +141,19 @@ document.addEventListener('DOMContentLoaded', function() {
   <path class="yelp-svg-fill" d="m8.2435 7.0719-1.9004-3.3145 1.4143-1.4143 3.1596 1.7457z"></path>
   <path class="yelp-svg-fill" d="m11.072 11.757-3.3146 1.9-1.4143-1.414 1.7457-3.1602z"></path>
  </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Default: 20</p></div></div></div>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">По умолчанию: 20</p></div></div></div>
 </div>
 </dd>
-<dt class="terms">Subtitles Languages</dt>
+<dt class="terms">Языки субтитров</dt>
 <dd class="terms">
-<p class="p">A comma-separated list of two-letter and three-letter language codes to use when selecting languages of subtitles to download. Only applies when a valid <span class="code">Subtitle</span> format is selected in a download.</p>
+<p class="p">Список разделённых запятой двух- и трёх-символьных кодов языков для использования при скачивании субтитров. Применяется только при выборе формата <span class="code">Субтитров</span> при добавлении загрузки.</p>
 <div class="note" title="Примечание">
 <svg height="24" width="24" version="1.1">
  <g>
   <path class="yelp-svg-fill" d="m4 3h16c0.554 0 1 0.446 1 1v11h-6v6h-11c-0.554 0-1-0.446-1-1v-16c0-0.554 0.446-1 1-1z"></path>
   <path class="yelp-svg-fill" d="m17 16h4l-5 5v-4c0-0.554 0.446-1 1-1z"></path>
  </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Some sites use two-letter language codes, whereas others use three-letter. For example, <span class="code">en</span> and <span class="code">eng</span> are both used for English. Please specify both two-letter and three-letter codes for your languages for the best results.</p></div></div></div>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Некоторые сайты используют двух-символьные языковые коды, тогда как другие используют трёх-символьные. Например, <span class="code">ru</span> и <span class="code">rus</span> используются для русского языка. Пожалуйста. указывайте оба варианта для необходимых языков, для достижения наилучших результатов.</p></div></div></div>
 </div>
 <div class="note note-advanced" title="Подробности">
 <svg height="24" width="24" version="1.1">
@@ -169,13 +169,13 @@ document.addEventListener('DOMContentLoaded', function() {
   <path class="yelp-svg-fill" d="m8.2435 7.0719-1.9004-3.3145 1.4143-1.4143 3.1596 1.7457z"></path>
   <path class="yelp-svg-fill" d="m11.072 11.757-3.3146 1.9-1.4143-1.414 1.7457-3.1602z"></path>
  </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Default: Your culture's two-letter and three-letter language code. For example, on an en-US system the default would be <span class="code">en,eng</span></p></div></div></div>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">По умолчанию: Двух- и трёх-символьные коды для вашего языка. Например, на системе с локалью ru-RU будет указано <span class="code">ru,rus</span></p></div></div></div>
 </div>
 </dd>
-<dt class="terms">Cookies File</dt>
+<dt class="terms">Файл куки</dt>
 <dd class="terms">
-<p class="p">A .txt file of cookies to pass to yt-dlp when downloading. This may be useful when downloading media that requires a login, for example: private YouTube videos.</p>
-<p class="p">Use one of the following extensions for getting a cookies file from your browser:</p>
+<p class="p">Файл в формате .txt с данными куки для передачи yt-dlp при загрузке. Может быть полезно для скачивания медиа, которые требуют аутентификации, например приватные видео на YouTube.</p>
+<p class="p">Используйте одно из следующих расширений для получения файла куки из вашего браузера:</p>
 <p class="p">Chrome: <span class="code">https://chrome.google.com/webstore/detail/get-cookiestxt-locally/cclelndahbckbenkjhflpdbgdldlbecc</span></p>
 <p class="p">Firefox: <span class="code">https://addons.mozilla.org/en-US/firefox/addon/cookies-txt/</span></p>
 <div class="note" title="Примечание">
@@ -184,7 +184,7 @@ document.addEventListener('DOMContentLoaded', function() {
   <path class="yelp-svg-fill" d="m4 3h16c0.554 0 1 0.446 1 1v11h-6v6h-11c-0.554 0-1-0.446-1-1v-16c0-0.554 0.446-1 1-1z"></path>
   <path class="yelp-svg-fill" d="m17 16h4l-5 5v-4c0-0.554 0.446-1 1-1z"></path>
  </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Use these extensions at your own risk.</p></div></div></div>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Используйте эти расширения на свой страх и риск.</p></div></div></div>
 </div>
 <div class="note note-advanced" title="Подробности">
 <svg height="24" width="24" version="1.1">
@@ -200,7 +200,7 @@ document.addEventListener('DOMContentLoaded', function() {
   <path class="yelp-svg-fill" d="m8.2435 7.0719-1.9004-3.3145 1.4143-1.4143 3.1596 1.7457z"></path>
   <path class="yelp-svg-fill" d="m11.072 11.757-3.3146 1.9-1.4143-1.414 1.7457-3.1602z"></path>
  </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Default: No File Selected</p></div></div></div>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">По умолчанию: файл не выбран</p></div></div></div>
 </div>
 </dd>
 </dl></div></div></div>
@@ -209,7 +209,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <div class="hgroup pagewide"></div>
 <div class="contents pagewide"><div class="links guidelinks"><div class="inner">
 <div class="title"><h2><span class="title">Дополнительная информация</span></h2></div>
-<div class="region"><ul><li class="links "><a href="index.html" title="Parabolic Help">Parabolic Help</a></li></ul></div>
+<div class="region"><ul><li class="links "><a href="index.html" title="Справка Parabolic">Справка Parabolic</a></li></ul></div>
 </div></div></div>
 </div></section>
 </div>

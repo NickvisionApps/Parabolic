@@ -2,7 +2,7 @@
 <page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" id="keyring" its:version="2.0" xml:lang="ru">
 <info>
 	<link type="guide" xref="index"/>
-	<title type="link">Keyring 🔑</title>
+	<title type="link">Связка ключей 🔑</title>
 	<credit type="author copyright">
 		<name>Nicholas Logozzo</name>
 		<years its:translate="no">2023</years>
@@ -20,37 +20,37 @@
     </mal:credit>
   </info>
 
-<title>Keyring</title>
-<p>This page explains all options for using the Keyring in <app>Parabolic</app>.</p>
+<title>Связка ключей</title>
+<p>Эта страница поясняет все опции для использования Связки Ключей в <app>Parabolic</app>.</p>
 
 <terms>
 	<item>
-		<title>Backend</title>
-        <p>The Keyring feature is backed by the <code>Nickvision.Keyring</code> library.</p>
-        <p>This library uses SQLCipher to securley store credentials in a platform independent manner.</p>
+		<title>Бэкэнд</title>
+        <p>Функция Связки Ключей работает за счёт библиотеки <code>Nickvision.Keyring</code>.</p>
+        <p>Эта библиотека использует SQLCipher для безопасного кросс-платформенного хранения учётных данных.</p>
     </item>
     <item>
-        <title>Enabling The Keyring</title>
-        <p>When the Keyring is enabled, the user will be asked to enter a password to encrypt the Keyring.</p>
-        <p>There is no way to recover the Keyring password if lost.</p>
-        <p>This password will be used to unlock the Keyring in the future.</p>
+        <title>Включение связки ключей</title>
+        <p>При включении связки ключей, приложение запросит у пользователя пароль, с помощью которого связка ключей будет зашифрована.</p>
+        <p>Если пароль будет утерян, доступ к связке ключей будет невозможно восстановить.</p>
+        <p>Пароль будет использоваться для разблокировки связки ключей в будущем.</p>
         <note style="advanced">
-            <p>If the Keyring password is lost, the user will be unable to use this feature unless the Keyring database file is deleted.</p>
-            <p>The Keyring file is stored in <code>$CONFIG/Nickvision/Nickvision Parabolic/tubeconverter.nring</code></p>
+            <p>Если пароль от связки ключей будет утерян, пользователь не сможет пользоваться этой функцией, пока файл базы данных связки ключей не будет удалён.</p>
+            <p>Файл связки ключей расположен в <code>$CONFIG/Nickvision/Nickvision Parabolic/tubeconverter.nring</code></p>
         </note>
     </item>
     <item>
-		<title>Disabling The Keyring</title>
-        <p>When the Keyring is disabled, the backing <code>nring</code> database is destroyed and all credentials stored are erased.</p>
-        <p>If the Keyring is re-enabled, a brand new database file will be created and the user will be prompted to enter a password again.</p>
+		<title>Отключение связки ключей</title>
+        <p>При выключении связки ключей, <code>nring</code> файл базы данных уничтожается и все сохранённые учётные данные удаляются.</p>
+        <p>При повторном включении связки ключей, создаётся новый файл базы данных и приложение снова запросит у пользователя пароль для шифрования.</p>
     </item>
     <item>
-		<title>Storing a Credential</title>
-        <p>Here are the fields that can be stored in a credential:</p>
-        <p><code>Name</code>: The name of the credential</p>
-        <p><code>URL</code> (optional): The URL of the credential</p>
-        <p><code>Username</code> (optional if password is not empty): The username of the credential</p>
-        <p><code>Password</code> (optional if username is not empty): The password of the credential</p>
+		<title>Сохранение учётных данных</title>
+        <p>Учётные данные могут содержать следующие поля:</p>
+        <p><code>Имя</code>: Имя учётных данных</p>
+        <p><code>URL</code> (необязательно): ссылка для учётных данных</p>
+        <p><code>Имя пользователя</code> (необязательно, если указан пароль): Имя пользователя учётных данных</p>
+        <p><code>Пароль</code> (необязательно, если указано имя пользователя): пароль учётных данных</p>
     </item>
 </terms>
 </page>

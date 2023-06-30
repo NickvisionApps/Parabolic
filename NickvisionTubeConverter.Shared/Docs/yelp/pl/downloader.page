@@ -15,21 +15,21 @@
 </info>
 
 <title>Pobieranie</title>
-<p>This page explains all options for configuring the Downloader in Preferences in <app>Parabolic</app>.</p>
+<p>Ta strona wyjaśnia wszystkie opcje dostępne w sekcji Pobieranie w preferencjach w <app>Parabolic</app>.</p>
 
 <terms>
 	<item>
 		<title>Maksymalna ilość aktywnych procesów pobierania</title>
 		<p>Ilość procesów pobierania, które mogą być aktywne w tym samym czasie. Musi być liczbą całkowitą od 1 do 10.</p>
-        <p>If the max number of active downloads is reached, Parabolic will place new downloads in a queue until more downloads are able to be run.</p>
+        <p>Jeśli maksymalna ilość aktywnych procesów pobierania zostanie osiągnięta nowe procesy będą oczekiwały w kolejce.</p>
 		<note style="advanced">
 			<p>Domyślnie: 5</p>
 		</note>
     </item>
     <item>
         <title>Nadpisuj istniejące pliki</title>
-        <p>If enabled, Parabolic will overwrite existing files.</p>
-        <p>For example, if a file named <code>movie.mp4</code> exists in the download folder, and a new download is created named <code>movie</code>, <code>movie.mp4</code> will be overwritten with the new download's content.</p>
+        <p>Po włączeniu, Parabolic będzie nadpisywał istniejące pliki.</p>
+        <p>Na przykład, jeśli plik o nazwie <code>film.mp4</code> istnieje w folderze docelowym i nowe pobieranie o nazwie <code>film</code> zostanie rozpoczęte, to <code>film.mp4</code> zostanie zastąpiony nowo pobraną treścią.</p>
 		<note style="advanced">
 			<p>Domyślnie: włączone</p>
 		</note>
@@ -43,14 +43,14 @@
     </item>
     <item>
         <title>Używaj aria2</title>
-        <p>If enabled, Parabolic will use aria2c to download media. Although using aria2c can improve download speed, download progress will not be displayed in the UI.</p>
+        <p>Po włączeniu, Parabolic będzie używał aria2c do pobierania multimediów. Pobieranie za pomocą aria2c może być szybsze, ale pasek postępu nie będzie widoczny.</p>
 		<note style="advanced">
 			<p>Domyślnie: wyłączone</p>
 		</note>
     </item>
     <item>
         <title>Maksymalna ilość połączeń na serwer</title>
-        <p>This option only applies when using aria2 is enabled. This option is the same as the <code>-x</code> flag passed to aria2c.</p>
+        <p>Ta ustawienie działa jeśli opcja "Używaj aria2" jest włączona. To ustawienie działa tak samo jak flaga <code>-x</code> w programie aria2c.</p>
         <p>The maximum number of connection that can be used per server. Must be an integer value between 1 and 32.</p>
 		<note style="advanced">
 			<p>Default: 16</p>

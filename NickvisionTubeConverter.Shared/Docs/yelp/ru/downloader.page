@@ -27,70 +27,70 @@
 	<item>
 		<title>Максимальное число активных загрузок</title>
 		<p>Число активных загрузок, которые могут быть запущены одновременно. Целое число от 1 до 10.</p>
-        <p>If the max number of active downloads is reached, Parabolic will place new downloads in a queue until more downloads are able to be run.</p>
+        <p>Если достигнут максимум активных загрузок, новые загрузки будут помещаться в очередь, пока не появится место для запуска новых загрузок.</p>
 		<note style="advanced">
-			<p>Default: 5</p>
+			<p>По умолчанию: 5</p>
 		</note>
     </item>
     <item>
-        <title>Overwrite Existing Files</title>
-        <p>If enabled, Parabolic will overwrite existing files.</p>
-        <p>For example, if a file named <code>movie.mp4</code> exists in the download folder, and a new download is created named <code>movie</code>, <code>movie.mp4</code> will be overwritten with the new download's content.</p>
+        <title>Перезаписывать существующие файлы</title>
+        <p>Если включено, Parabolic будет перезаписывать существующие файлы.</p>
+        <p>Например, если файл с именем <code>movie.mp4</code> существует в папке сохранения, а новый файл создаётся с именем <code>movie</code>, в файл <code>movie.mp4</code> будет записано новое содержимое.</p>
 		<note style="advanced">
 			<p>По умолчанию: Включено</p>
 		</note>
     </item>
     <item>
-        <title>Speed Limit</title>
-        <p>A limit, in Ki/s, that is applied to downloads only if they have the advanced option <code>Speed Limit</code> enabled. Must be an integer value between 512 and 10240.</p>
+        <title>Ограничение скорости</title>
+        <p>Этот лимит (в КиБ/с) применяется к загрузкам, у которых включена опция <code>Ограничения скорости</code>. Целое число от 512 до 10240.</p>
 		<note style="advanced">
-			<p>Default: 1024</p>
+			<p>По умолчанию: 1024</p>
 		</note>
     </item>
     <item>
-        <title>Use aria2</title>
-        <p>If enabled, Parabolic will use aria2c to download media. Although using aria2c can improve download speed, download progress will not be displayed in the UI.</p>
+        <title>Использовать aria2</title>
+        <p>Если включено, Parabolic будет использовать aria2c для загрузки медиа. Хотя использование aria2c может увеличить скорость загрузки, в интерфейсе приложения не будет отображаться прогресс загрузки.</p>
 		<note style="advanced">
 			<p>По умолчанию: Выключено</p>
 		</note>
     </item>
     <item>
-        <title>Maximum Connections Per Server</title>
-        <p>This option only applies when using aria2 is enabled. This option is the same as the <code>-x</code> flag passed to aria2c.</p>
-        <p>The maximum number of connection that can be used per server. Must be an integer value between 1 and 32.</p>
+        <title>Максимум подключений к серверу</title>
+        <p>Эта опция применяется при включении использования aria2. Эта опция эквивалентна использованию флага <code>-x</code> у aria2c.</p>
+        <p>Максимальное число соединений с сервером. Целое число от 1 до 32.</p>
 		<note style="advanced">
-			<p>Default: 16</p>
+			<p>По умолчанию: 16</p>
 		</note>
     </item>
     <item>
-        <title>Minimum Split Size</title>
-        <p>This option only applies when using aria2 is enabled. This option is the same as the <code>-k</code> flag passed to aria2c.</p>
-        <p>The minimum size, in MiB, of which to split a file. Must be an integer value between 1 and 1024.</p>
+        <title>Минимальный размер фрагмента</title>
+        <p>Эта опция применяется при включении использования aria2. Эта опция эквивалентна использованию флага <code>-k</code> у aria2c.</p>
+        <p>Минимальный размер, в МиБ, на который разбивать файл при загрузке. Целое число от 1 до 1024.</p>
 		<note style="advanced">
-			<p>Default: 20</p>
+			<p>По умолчанию: 20</p>
 		</note>
     </item>
     <item>
-        <title>Subtitles Languages</title>
-        <p>A comma-separated list of two-letter and three-letter language codes to use when selecting languages of subtitles to download. Only applies when a valid <code>Subtitle</code> format is selected in a download.</p>
+        <title>Языки субтитров</title>
+        <p>Список разделённых запятой двух- и трёх-символьных кодов языков для использования при скачивании субтитров. Применяется только при выборе формата <code>Субтитров</code> при добавлении загрузки.</p>
         <note>
-            <p>Some sites use two-letter language codes, whereas others use three-letter. For example, <code>en</code> and <code>eng</code> are both used for English. Please specify both two-letter and three-letter codes for your languages for the best results.</p>
+            <p>Некоторые сайты используют двух-символьные языковые коды, тогда как другие используют трёх-символьные. Например, <code>ru</code> и <code>rus</code> используются для русского языка. Пожалуйста. указывайте оба варианта для необходимых языков, для достижения наилучших результатов.</p>
         </note>
 		<note style="advanced">
-			<p>Default: Your culture's two-letter and three-letter language code. For example, on an en-US system the default would be <code>en,eng</code></p>
+			<p>По умолчанию: Двух- и трёх-символьные коды для вашего языка. Например, на системе с локалью ru-RU будет указано <code>ru,rus</code></p>
 		</note>
     </item>
     <item>
-        <title>Cookies File</title>
-        <p>A .txt file of cookies to pass to yt-dlp when downloading. This may be useful when downloading media that requires a login, for example: private YouTube videos.</p>
-        <p>Use one of the following extensions for getting a cookies file from your browser:</p>
+        <title>Файл куки</title>
+        <p>Файл в формате .txt с данными куки для передачи yt-dlp при загрузке. Может быть полезно для скачивания медиа, которые требуют аутентификации, например приватные видео на YouTube.</p>
+        <p>Используйте одно из следующих расширений для получения файла куки из вашего браузера:</p>
         <p>Chrome: <code>https://chrome.google.com/webstore/detail/get-cookiestxt-locally/cclelndahbckbenkjhflpdbgdldlbecc</code></p>
         <p>Firefox: <code>https://addons.mozilla.org/en-US/firefox/addon/cookies-txt/</code></p>
         <note>
-            <p>Use these extensions at your own risk.</p>
+            <p>Используйте эти расширения на свой страх и риск.</p>
         </note>
 		<note style="advanced">
-			<p>Default: No File Selected</p>
+			<p>По умолчанию: файл не выбран</p>
 		</note>
     </item>
 </terms>
