@@ -2,7 +2,7 @@
 <page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" id="converter" its:version="2.0" xml:lang="ru">
 <info>
 	<link type="guide" xref="index"/>
-	<title type="link">Converter ⚒️</title>
+	<title type="link">Конвертер ⚒️</title>
 	<credit type="author copyright">
 		<name>Nicholas Logozzo</name>
 		<years its:translate="no">2023</years>
@@ -12,41 +12,47 @@
 		<years its:translate="no">2023</years>
 	</credit>
 	<license href="http://creativecommons.org/licenses/by/4.0/" its:translate="no"><p>Creative Commons Attribution 4.0 International License</p></license>
-</info>
 
-<title>Converter</title>
-<p>This page explains all options for configuring the Converter in Preferences in <app>Parabolic</app>.</p>
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Фёдор Соболев</mal:name>
+      <mal:email/>
+      <mal:years>2023</mal:years>
+    </mal:credit>
+  </info>
+
+<title>Конвертер</title>
+<p>Эта страница поясняет все опции по настройке Конвертера в параметрах <app>Parabolic</app>.</p>
 
 <terms>
 	<item>
-		<title>Disallow Conversions</title>
-		<p>If enabled, Parabolic will download the appropriate video/audio format for the selected quality without converting to other formats.</p>
-        <p>This means that you will be unable to select a file format when downloading a media. But, you will save time in downloading as the Converter will not be run.</p>
+		<title>Отключить конвертирование</title>
+		<p>Если опция включена, Parabolic будет скачивать видео/аудио в наиболее подходящем под заданное качество формате без конвертирования.</p>
+        <p>Это значит, что вы не сможете выбрать формат файла для загрузки. Но это сократит время скачивания, поскольку не будет затрачено время для работы Конвертера.</p>
 		<note style="advanced">
-			<p>Default: Off</p>
+			<p>По умолчанию: Выключено</p>
 		</note>
     </item>
 	<item>
-		<title>Embed Metadata</title>
-		<p>If enabled, Parabolic will tag a media with its relevant information (title, genre, etc...) and thumbnail if available.</p>
-        <p>Parabolic will NOT embed the Comment, Description, Synopsis, and Purl fields.</p>
+		<title>Встраивать метаданные</title>
+		<p>Если включено, Parabolic будет встраивать теги в медиа файл (заголовок, жанр, и т.д.), а также миниатюру, если она доступна.</p>
+        <p>Parabolic НЕ встраивает для тегов: Комментарий (Comment), Описание (Description), Синопсис (Synopsis) и Purl.</p>
 		<note style="advanced">
-			<p>Default: On</p>
+			<p>По умолчанию: Включено</p>
 		</note>
     </item>
     <item>
-		<title>Crop Audio Thumbnails</title>
-		<p>Only available if Embed Metadata is enabled.</p>
-		<p>If enabled, Parabolic will automatically turn on the advanced option <code>Crop Thumbnail</code> for audio downloads.</p>
+		<title>Обрезать миниатюры для аудио</title>
+		<p>Доступно только если Встраивание Метаданных включено.</p>
+		<p>Если включено, Parabolic будет автоматически активировать <code>Обрезку Миниатюр</code> для аудио загрузок.</p>
 		<note style="advanced">
-			<p>Default: Off</p>
+			<p>По умолчанию: Выключено</p>
 		</note>
     </item>
 	<item>
-		<title>Embed Chapters</title>
-		<p>If enabled, Parabolic will tag a media with chapter information if available</p>
+		<title>Встраивать главы</title>
+		<p>Если включено, Parabolic будет записывать данные о главах в медиа файл, если эта информация доступна</p>
 		<note style="advanced">
-			<p>Default: Off</p>
+			<p>По умолчанию: Выключено</p>
 		</note>
 	</item>
 </terms>
