@@ -15,7 +15,7 @@
 </info>
 
 <title>Pobieranie</title>
-<p>Ta strona wyjaśnia wszystkie opcje dostępne w sekcji Pobieranie w preferencjach w <app>Parabolic</app>.</p>
+<p>Na tej stronie wyjaśniono wszystkie opcje dostępne w sekcji Pobieranie w preferencjach w <app>Parabolic</app>.</p>
 
 <terms>
 	<item>
@@ -51,40 +51,40 @@
     <item>
         <title>Maksymalna ilość połączeń na serwer</title>
         <p>Ta ustawienie działa jeśli opcja "Używaj aria2" jest włączona. To ustawienie działa tak samo jak flaga <code>-x</code> w programie aria2c.</p>
-        <p>The maximum number of connection that can be used per server. Must be an integer value between 1 and 32.</p>
+        <p>Maksymalna ilość połączeń na serwer. Musi być liczbą całkowitą od 1 do 32.</p>
 		<note style="advanced">
-			<p>Default: 16</p>
+			<p>Domyślnie: 16</p>
 		</note>
     </item>
     <item>
-        <title>Minimum Split Size</title>
-        <p>This option only applies when using aria2 is enabled. This option is the same as the <code>-k</code> flag passed to aria2c.</p>
-        <p>The minimum size, in MiB, of which to split a file. Must be an integer value between 1 and 1024.</p>
+        <title>Minimalny rozmiar podziału</title>
+        <p>To ustawienie działa jeśli opcja "Używaj aria2" jest włączona. To ustawienie działa tak samo jak flaga <code>-k</code> w programie aria2c.</p>
+        <p>Minimalny rozmiar (w MiB), na jaki ma zostać podzielony plik. Musi być liczbą całkowitą od 1 do 1024.</p>
 		<note style="advanced">
-			<p>Default: 20</p>
+			<p>Domyślnie: 20</p>
 		</note>
     </item>
     <item>
-        <title>Subtitles Languages</title>
-        <p>A comma-separated list of two-letter and three-letter language codes to use when selecting languages of subtitles to download. Only applies when a valid <code>Subtitle</code> format is selected in a download.</p>
+        <title>Języki napisów</title>
+        <p>Lista oddzielonych przecinkami, dwuliterowych i trzyliterowych kodów języków, które mają zostać wybrane przy pobieraniu napisów. To ustawienie zadziała, jeśli poprawny format <code>napisów</code> zostanie wybrany przy pobieraniu.</p>
         <note>
-            <p>Some sites use two-letter language codes, whereas others use three-letter. For example, <code>en</code> and <code>eng</code> are both used for English. Please specify both two-letter and three-letter codes for your languages for the best results.</p>
+            <p>Strony internetowe używają zarówno dwuliterowych, jak i trzyliterowych kodów języka. Na przykład, dla języka angielskiego są to <code>en</code> i <code>eng</code>. Aby uzyskać najlepsze wyniki, należy podać zarówno dwuliterowe, jak i trzyliterowe kody wybranych języków.</p>
         </note>
 		<note style="advanced">
-			<p>Default: Your culture's two-letter and three-letter language code. For example, on an en-US system the default would be <code>en,eng</code></p>
+			<p>Domyślnie: dwuliterowy i trzyliterowy kod języka ojczystego. Na przykład, dla systemu en-US wartością domyślną byłoby <code>en,eng</code></p>
 		</note>
     </item>
     <item>
         <title>Ciasteczka</title>
-        <p>A .txt file of cookies to pass to yt-dlp when downloading. This may be useful when downloading media that requires a login, for example: private YouTube videos.</p>
-        <p>Use one of the following extensions for getting a cookies file from your browser:</p>
+        <p>Ciasteczko w pliku .txt do udostępnienia yt-dlp podczas pobierania. Może być przydatne przy pobieraniu multimediów wymagających zalogowania, na przykład: prywatnych filmów z serwisu YouTube.</p>
+        <p>Wyeksportuj ciasteczka (pliki cookie) z przeglądarki za pomocą następujących rozszerzeń:</p>
         <p>Chrome: <code>https://chrome.google.com/webstore/detail/get-cookiestxt-locally/cclelndahbckbenkjhflpdbgdldlbecc</code></p>
         <p>Firefox: <code>https://addons.mozilla.org/en-US/firefox/addon/cookies-txt/</code></p>
         <note>
-            <p>Use these extensions at your own risk.</p>
+            <p>Używasz tych rozszerzeń na własne ryzyko.</p>
         </note>
 		<note style="advanced">
-			<p>Default: No File Selected</p>
+			<p>Domyślnie: Brak wybranego pliku</p>
 		</note>
     </item>
 </terms>
