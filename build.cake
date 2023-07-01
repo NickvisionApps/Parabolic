@@ -114,7 +114,7 @@ Task("GeneratePot")
         Arguments = $"-o ./{projectName}.Shared/Resources/po/{shortName}.pot -j ./{projectName}.Shared/{appId}.desktop.in"
     });
     StartProcess("xgettext", new ProcessSettings {
-        Arguments = $"-o ./{projectName}.Shared/Resources/po/{shortName}.pot -j ./{projectName}.Shared/{appId}.metainfo.xml.in"
+        Arguments = $"-o ./{projectName}.Shared/Resources/po/{shortName}.pot -j --its ./{projectName}.Shared/Resources/po/metainfo.its ./{projectName}.Shared/{appId}.metainfo.xml.in"
     });
 });
 
