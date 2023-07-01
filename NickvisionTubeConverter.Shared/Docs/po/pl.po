@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: 2023-06-26 22:00+0300\n"
-"PO-Revision-Date: 2023-06-30 12:31+0000\n"
+"PO-Revision-Date: 2023-07-01 12:51+0000\n"
 "Last-Translator: Dominik Gęgotek <ioutora@disroot.org>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/"
 "nickvision-tube-converter/docs/pl/>\n"
@@ -44,7 +44,7 @@ msgid ""
 "This page explains all options for configuring the Converter in Preferences "
 "in <app>Parabolic</app>."
 msgstr ""
-"Ta strona wyjaśnia wszystkie opcje dostępne w sekcji Konwersja w "
+"Na tej stronie wyjaśniono wszystkie opcje dostępne w sekcji Konwersja w "
 "preferencjach w <app>Parabolic</app>."
 
 #. (itstool) path: item/title
@@ -153,7 +153,7 @@ msgid ""
 "This page explains all options for configuring the Downloader in Preferences "
 "in <app>Parabolic</app>."
 msgstr ""
-"Ta strona wyjaśnia wszystkie opcje dostępne w sekcji Pobieranie w "
+"Na tej stronie wyjaśniono wszystkie opcje dostępne w sekcji Pobieranie w "
 "preferencjach w <app>Parabolic</app>."
 
 #. (itstool) path: item/title
@@ -262,16 +262,17 @@ msgid ""
 "The maximum number of connection that can be used per server. Must be an "
 "integer value between 1 and 32."
 msgstr ""
+"Maksymalna ilość połączeń na serwer. Musi być liczbą całkowitą od 1 do 32."
 
 #. (itstool) path: note/p
 #: yelp/C/downloader.page:59
 msgid "Default: 16"
-msgstr ""
+msgstr "Domyślnie: 16"
 
 #. (itstool) path: item/title
 #: yelp/C/downloader.page:63
 msgid "Minimum Split Size"
-msgstr ""
+msgstr "Minimalny rozmiar podziału"
 
 #. (itstool) path: item/p
 #: yelp/C/downloader.page:64
@@ -279,6 +280,8 @@ msgid ""
 "This option only applies when using aria2 is enabled. This option is the "
 "same as the <code>-k</code> flag passed to aria2c."
 msgstr ""
+"To ustawienie działa jeśli opcja \"Używaj aria2\" jest włączona. To "
+"ustawienie działa tak samo jak flaga <code>-k</code> w programie aria2c."
 
 #. (itstool) path: item/p
 #: yelp/C/downloader.page:65
@@ -286,16 +289,18 @@ msgid ""
 "The minimum size, in MiB, of which to split a file. Must be an integer value "
 "between 1 and 1024."
 msgstr ""
+"Minimalny rozmiar (w MiB), na jaki ma zostać podzielony plik. Musi być "
+"liczbą całkowitą od 1 do 1024."
 
 #. (itstool) path: note/p
 #: yelp/C/downloader.page:67
 msgid "Default: 20"
-msgstr ""
+msgstr "Domyślnie: 20"
 
 #. (itstool) path: item/title
 #: yelp/C/downloader.page:71
 msgid "Subtitles Languages"
-msgstr ""
+msgstr "Języki napisów"
 
 #. (itstool) path: item/p
 #: yelp/C/downloader.page:72
@@ -304,6 +309,10 @@ msgid ""
 "when selecting languages of subtitles to download. Only applies when a valid "
 "<code>Subtitle</code> format is selected in a download."
 msgstr ""
+"Lista oddzielonych przecinkami, dwuliterowych i trzyliterowych kodów "
+"języków, które mają zostać wybrane przy pobieraniu napisów. To ustawienie "
+"zadziała, jeśli poprawny format <code>napisów</code> zostanie wybrany przy "
+"pobieraniu."
 
 #. (itstool) path: note/p
 #: yelp/C/downloader.page:74
@@ -313,6 +322,10 @@ msgid ""
 "Please specify both two-letter and three-letter codes for your languages for "
 "the best results."
 msgstr ""
+"Strony internetowe używają zarówno dwuliterowych, jak i trzyliterowych kodów "
+"języka. Na przykład, dla języka angielskiego są to <code>en</code> i "
+"<code>eng</code>. Aby uzyskać najlepsze wyniki, należy podać zarówno "
+"dwuliterowe, jak i trzyliterowe kody wybranych języków."
 
 #. (itstool) path: note/p
 #: yelp/C/downloader.page:77
@@ -320,6 +333,8 @@ msgid ""
 "Default: Your culture's two-letter and three-letter language code. For "
 "example, on an en-US system the default would be <code>en,eng</code>"
 msgstr ""
+"Domyślnie: dwuliterowy i trzyliterowy kod języka ojczystego. Na przykład, "
+"dla systemu en-US wartością domyślną byłoby <code>en,eng</code>"
 
 #. (itstool) path: item/title
 #: yelp/C/downloader.page:81
@@ -333,6 +348,9 @@ msgid ""
 "useful when downloading media that requires a login, for example: private "
 "YouTube videos."
 msgstr ""
+"Ciasteczko w pliku .txt do udostępnienia yt-dlp podczas pobierania. Może być "
+"przydatne przy pobieraniu multimediów wymagających zalogowania, na przykład: "
+"prywatnych filmów z serwisu YouTube."
 
 #. (itstool) path: item/p
 #: yelp/C/downloader.page:83
@@ -340,6 +358,8 @@ msgid ""
 "Use one of the following extensions for getting a cookies file from your "
 "browser:"
 msgstr ""
+"Wyeksportuj ciasteczka (pliki cookie) z przeglądarki za pomocą następujących "
+"rozszerzeń:"
 
 #. (itstool) path: item/p
 #: yelp/C/downloader.page:84
@@ -347,6 +367,8 @@ msgid ""
 "Chrome: <code>https://chrome.google.com/webstore/detail/get-cookiestxt-"
 "locally/cclelndahbckbenkjhflpdbgdldlbecc</code>"
 msgstr ""
+"Chrome: <code>https://chrome.google.com/webstore/detail/"
+"get-cookiestxt-locally/cclelndahbckbenkjhflpdbgdldlbecc</code>"
 
 #. (itstool) path: item/p
 #: yelp/C/downloader.page:85
@@ -354,33 +376,35 @@ msgid ""
 "Firefox: <code>https://addons.mozilla.org/en-US/firefox/addon/cookies-txt/</"
 "code>"
 msgstr ""
+"Firefox: <code>https://addons.mozilla.org/en-US/firefox/addon/cookies-txt/"
+"</code>"
 
 #. (itstool) path: note/p
 #: yelp/C/downloader.page:87
 msgid "Use these extensions at your own risk."
-msgstr ""
+msgstr "Używasz tych rozszerzeń na własne ryzyko."
 
 #. (itstool) path: note/p
 #: yelp/C/downloader.page:90
 msgid "Default: No File Selected"
-msgstr ""
+msgstr "Domyślnie: Brak wybranego pliku"
 
 #. (itstool) path: info/title
 #: yelp/C/index.page:7
 msgctxt "link"
 msgid "Parabolic Help"
-msgstr ""
+msgstr "Pomoc"
 
 #. (itstool) path: info/title
 #: yelp/C/index.page:8
 msgctxt "text"
 msgid "Parabolic Help"
-msgstr ""
+msgstr "Pomoc"
 
 #. (itstool) path: page/title
 #: yelp/C/index.page:20
 msgid "<_:media-1/> Parabolic Help"
-msgstr ""
+msgstr "<_:media-1/> Pomoc"
 
 #. (itstool) path: page/p
 #: yelp/C/index.page:21
@@ -388,6 +412,8 @@ msgid ""
 "This documentation will help you understand how to configure <app>Parabolic</"
 "app> to get the most of the application."
 msgstr ""
+"Ta dokumentacja pomoże ci zrozumieć jak skonfigurować <app>Parabolic</app>, "
+"aby w pełni wykorzystać możliwości aplikacji."
 
 #. (itstool) path: page/p
 #: yelp/C/index.page:22
@@ -397,6 +423,10 @@ msgid ""
 "Parabolic/discussions\">discussions</link> on Github, or <link href="
 "\"https://bit.ly/3GrfEid\">join our Matrix channel</link>."
 msgstr ""
+"By otrzymać pomoc użyj <link href=\"https://github.com/NickvisionApps/"
+"Parabolic/issues\">problemy</link> lub <link href=\"https://github.com/"
+"NickvisionApps/Parabolic/discussions\">dyskusje</link> na Github, lub <link "
+"href=\"https://bit.ly/3GrfEid\">dołącz do naszego kanału Matrix</link>."
 
 #. (itstool) path: page/p
 #: yelp/C/index.page:23
@@ -414,7 +444,7 @@ msgstr ""
 #: yelp/C/keyring.page:8
 msgctxt "link"
 msgid "Keyring 🔑"
-msgstr ""
+msgstr "Lista kluczy 🔑"
 
 #. (itstool) path: page/title
 #: yelp/C/keyring.page:20
@@ -423,23 +453,23 @@ msgstr "Lista kluczy"
 
 #. (itstool) path: page/p
 #: yelp/C/keyring.page:21
-#, fuzzy
 msgid ""
 "This page explains all options for using the Keyring in <app>Parabolic</app>."
 msgstr ""
-"Ta strona wyjaśnia wszystkie opcje dostępne w sekcji Konwersja w "
-"preferencjach w <app>Tube Converter</app>."
+"Na tej stronie wyjaśniono wszystkie opcje potrzebne do używania Listy kluczy "
+"w <app>Parabolic</app>."
 
 #. (itstool) path: item/title
 #: yelp/C/keyring.page:25
 msgid "Backend"
-msgstr ""
+msgstr "Backend"
 
 #. (itstool) path: item/p
 #: yelp/C/keyring.page:26
 msgid ""
 "The Keyring feature is backed by the <code>Nickvision.Keyring</code> library."
 msgstr ""
+"Lista kluczy jest wspierana przez bibliotekę <code>Nickvision.Keyring</code>."
 
 #. (itstool) path: item/p
 #: yelp/C/keyring.page:27
@@ -447,6 +477,8 @@ msgid ""
 "This library uses SQLCipher to securley store credentials in a platform "
 "independent manner."
 msgstr ""
+"Ta biblioteka wykorzystuje SQLCipher do bezpiecznego przechowywania danych "
+"logowania w sposób niezależny od systemu."
 
 #. (itstool) path: item/title
 #: yelp/C/keyring.page:30
@@ -580,7 +612,7 @@ msgstr ""
 #. (itstool) path: item/title
 #: yelp/C/newDownload.page:32
 msgid "Authenticate"
-msgstr ""
+msgstr "Uwierzytelnij"
 
 #. (itstool) path: item/p
 #: yelp/C/newDownload.page:33

@@ -8,63 +8,66 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-06-26 20:01-0400\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"PO-Revision-Date: 2023-07-01 12:51+0000\n"
+"Last-Translator: Jummit <jummit@web.de>\n"
+"Language-Team: German <https://hosted.weblate.org/projects/"
+"nickvision-tube-converter/app/de/>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.0-dev\n"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:736
-#, fuzzy, csharp-format
+#, csharp-format
 msgid "\"{0}\" has finished downloading."
-msgstr "{0} hat das Herunterladen beendet."
+msgstr "\"{0}\" wurde heruntergeladen."
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:736
-#, fuzzy, csharp-format
+#, csharp-format
 msgid "\"{0}\" has finished with an error!"
-msgstr "{0} hat das Herunterladen beendet."
+msgstr "Bei \"{0}\" ist beim herunterladen ein Fehler aufgetreten."
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:287
 msgid "(Configurable in preferences)"
-msgstr ""
+msgstr "(In Einstellungen konfigurierbar)"
 
 #: ../../../Helpers/SpeedFormatter.cs:32
 #, csharp-format
 msgid "{0:f1} B/s"
-msgstr ""
+msgstr "{0:f1} B/s"
 
 #: ../../../Helpers/SpeedFormatter.cs:20
 #, csharp-format
 msgid "{0:f1} GiB/s"
-msgstr ""
+msgstr "{0:f1} GiB/s"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:287
 #: ../../../Helpers/SpeedFormatter.cs:28
 #, csharp-format
 msgid "{0:f1} KiB/s"
-msgstr ""
+msgstr "{0:f1} KiB/s"
 
 #: ../../../Helpers/SpeedFormatter.cs:24
 #, csharp-format
 msgid "{0:f1} MiB/s"
-msgstr ""
+msgstr "{0:f1} MiB/s"
 
 #: ../../../Models/DownloadManager.cs:165
-#, fuzzy, csharp-format
+#, csharp-format
 msgid "{0} download — {1:f1}% ({2})"
 msgid_plural "{0} downloads — {1:f1}% ({2})"
-msgstr[0] "Herunterladen: {0:f2}% ({1:N0} KiB/s)"
-msgstr[1] "Herunterladen: {0:f2}% ({1:N0} KiB/s)"
+msgstr[0] "{0} Download — {1:f1}% ({2})"
+msgstr[1] "{0} Downloads — {1:f1}% ({2})"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:483
 #: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:597
 #, csharp-format
 msgid "{0} of {1} items"
 msgid_plural "{0} of {1} items"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "{0} von {1} Downloads"
+msgstr[1] "{0} von {1} Downloads"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:136
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:37
@@ -76,17 +79,16 @@ msgstr "Download hinzufügen"
 #: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:135
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:155
 msgid "Advanced Options"
-msgstr ""
+msgstr "Erweiterte Optionen"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:740
-#, fuzzy
 msgid "All downloads have finished."
-msgstr "Download Beendet"
+msgstr "Alle Downloads abgeschlossen."
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:445
 #: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:458
 msgid "Audio"
-msgstr ""
+msgstr "Audio"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:111
 msgid "Best"
@@ -98,8 +100,9 @@ msgstr "Downloads abbrechen und beenden?"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:230
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:248
+#, fuzzy
 msgid "Credential"
-msgstr ""
+msgstr "Credential"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:532
 #, csharp-format
@@ -108,24 +111,29 @@ msgid ""
 "Brage Fuglseth {1}\n"
 "marcin {2}"
 msgstr ""
+"David Lapshin {0}\n"
+"Brage Fuglseth {1}\n"
+"marcin {2}"
 
 #: ../../../Models/VideoResolution.cs:55
 msgid "Default"
-msgstr ""
+msgstr "Standard"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:331
 msgid "Delete Credential?"
-msgstr ""
+msgstr "Anmeldedaten löschen?"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:161
 msgid "Disable Keyring?"
-msgstr ""
+msgstr "Keyring deaktivieren?"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:161
 msgid ""
 "Disabling the keyring will delete all data currently stored inside. Are you "
 "sure you want to disable it?"
 msgstr ""
+"Deaktivieren des Keyrings löscht alle beinhaltete Daten. Bist du sicher das "
+"du ihn deaktivieren möchtest?"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:255
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:204
@@ -138,30 +146,26 @@ msgid "Download Finished"
 msgstr "Download Beendet"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:736
-#, fuzzy
 msgid "Download Finished With Error"
-msgstr "Download Beendet"
+msgstr "Download mit Fehler Beendet"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:102
-#, fuzzy
 msgid "Download log was copied to clipboard."
-msgstr "Download-Protokoll wurde in die Zwischenablage kopiert"
+msgstr "Download-Protokoll wurde in die Zwischenablage kopiert."
 
 #: ../../../Models/Download.cs:329
-#, fuzzy
 msgid "Download using aria2 has started"
-msgstr "Download Beendet"
+msgstr "Download mit aria2 angefangen"
 
 #: ../../../Models/Download.cs:340
-#, fuzzy
 msgid "Download using ffmpeg has started"
-msgstr "Download Beendet"
+msgstr "Download mit Ffmpeg angefangen"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Program.cs:50
 #: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.desktop.in:5
 #: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.metainfo.xml.in:8
 msgid "Download web video and audio"
-msgstr ""
+msgstr "Download Web-Video und Audio"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:176
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:114
@@ -174,28 +178,26 @@ msgid "Downloading {0:f2}% ({1})"
 msgstr "Herunterladen: {0:f2}% ({1:N0} KiB/s)"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:740
-#, fuzzy
 msgid "Downloads Finished"
-msgstr "Download Beendet"
+msgstr "Downloads Beendet"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:145
 #: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:58
 msgid "Enable"
-msgstr ""
+msgstr "Aktivieren"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:513
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:293
 msgid "End Time"
-msgstr ""
+msgstr "Endzeit"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:533
-#, fuzzy
 msgid "End Time (Invalid)"
-msgstr "Video Url (ungültig)"
+msgstr "Endzeit (Ungültig)"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:436
 msgid "Ensure credentials are correct."
-msgstr ""
+msgstr "Stelle sicher das Anmeldedaten korrekt sind."
 
 #: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:202
 msgid "Error"
@@ -206,9 +208,8 @@ msgid "File already exists, and overwriting is disallowed"
 msgstr ""
 
 #: ../../../../NickvisionTubeConverter.GNOME/Controls/MediaRow.cs:27
-#, fuzzy
 msgid "File Name"
-msgstr "Dateityp"
+msgstr "Dateiname"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:527
 msgid "GitHub Repo"
@@ -219,24 +220,23 @@ msgstr "GitHub-Repository"
 #: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:41
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:5
 msgid "Keyring"
-msgstr ""
+msgstr "Keyring"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:93
 msgid "Keyring has not been unlocked."
-msgstr ""
+msgstr "Keyring konnte nicht ensperrt werden."
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:528
 msgid "List of supported sites"
-msgstr ""
+msgstr "Liste der unterstützten Seiten"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:529
 msgid "Matrix Chat"
-msgstr ""
+msgstr "Matrix-Chat"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:484
-#, fuzzy
 msgid "Maximum Quality"
-msgstr "Qualität"
+msgstr "Höchste Qualität"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:426
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:57
@@ -249,13 +249,12 @@ msgstr "Video Url (ungültig)"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:266
 #: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:117
-#, fuzzy
 msgid "Name"
-msgstr "Dateityp"
+msgstr "Name"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:276
 msgid "Name (Empty)"
-msgstr ""
+msgstr "Name (Leer)"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:530
 #, csharp-format
@@ -263,6 +262,8 @@ msgid ""
 "Nicholas Logozzo {0}\n"
 "Contributors on GitHub ❤️ {1}"
 msgstr ""
+"Nicholas Logozzo {0}\n"
+"Beitragende auf GitHub ❤️ {1}"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:531
 #, csharp-format
@@ -271,6 +272,9 @@ msgid ""
 "Fyodor Sobolev {1}\n"
 "DaPigGuy {2}"
 msgstr ""
+"Nicholas Logozzo {0}\n"
+"Fyodor Sobolev {1}\n"
+"DaPigGuy {2}"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:161
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:331
@@ -279,30 +283,29 @@ msgid "No"
 msgstr "Nein"
 
 #: ../../../Models/DownloadManager.cs:173
-#, fuzzy
 msgid "No downloads running"
-msgstr "Wird heruntergeladen"
+msgstr "Keine laufenden Downloads"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Program.cs:49
 #: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.desktop.in:4
 #: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.metainfo.xml.in:6
 msgid "Parabolic"
-msgstr ""
+msgstr "Parabolic"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:272
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:76
 #: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:132
 #: NickvisionTubeConverter.GNOME/Blueprints/password_dialog.blp:39
 msgid "Password"
-msgstr ""
+msgstr "Passwort"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:283
 msgid "Password (Empty)"
-msgstr ""
+msgstr "Passwort (Leer)"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:134
 msgid "Playlist"
-msgstr ""
+msgstr "Wiedergabeliste"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:147
 msgid "Preparing..."
@@ -323,9 +326,8 @@ msgstr "Ordner speichern (ungültig)"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/PreferencesDialog.cs:192
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:241
-#, fuzzy
 msgid "Select Cookies File"
-msgstr "Speicherordner wählen"
+msgstr "Cookie-Datei auswählen"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:568
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:148
@@ -334,31 +336,29 @@ msgstr "Speicherordner wählen"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:145
 msgid "Setup Keyring"
-msgstr ""
+msgstr "Keyring einrichten"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:303
-#, fuzzy
 msgid ""
 "Some downloads are still in progress.\n"
 "Are you sure you want to close Parabolic and stop the running downloads?"
 msgstr ""
 "Einige Downloads sind noch im Gange.\n"
-"Sind Sie sicher, dass Sie Tube Converter schließen und die laufenden "
-"Downloads beenden möchten?"
+"Bist du sicher dass du Parabolic schließen und die laufenden Downloads "
+"beenden möchtest?"
 
 #: ../../../Models/DownloadManager.cs:169
 msgid "Some downloads finished with errors!"
-msgstr ""
+msgstr "Einige Downloads wurden mit Fehlern beendet!"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:511
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:288
 msgid "Start Time"
-msgstr ""
+msgstr "Startzeit"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:528
-#, fuzzy
 msgid "Start Time (Invalid)"
-msgstr "Ordner speichern (ungültig)"
+msgstr "Startzeit (Ungültig)"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:219
 msgid "Stopped"
@@ -367,36 +367,36 @@ msgstr "Angehalten"
 #: ../../../../NickvisionTubeConverter.GNOME/Views/PreferencesDialog.cs:165
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:190
 msgid "Subtitle Languages (Comma-Separated)"
-msgstr ""
+msgstr "Untertitelsprachen (durch Kommas getrennt)"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/PreferencesDialog.cs:175
-#, fuzzy
 msgid "Subtitle Languages (Invalid)"
-msgstr "Ordner speichern (ungültig)"
+msgstr "Untertitel-Sprachen (Ungültig)"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:202
 msgid "Success"
 msgstr "Erfolg"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:523
-#, fuzzy
 msgid ""
 "The authors of Nickvision Parabolic are not responsible/liable for any "
 "misuse of this program that may violate local copyright/DMCA laws. Users use "
 "this application at their own risk."
 msgstr ""
-"Die Autoren von Nickvision Tube Converter sind nicht verantwortlich/haftbar "
-"für jeglichen Missbrauch dieses Programms, der gegen lokale Copyright/DMCA-"
+"Die Autoren von Nickvision Parabolic sind nicht verantwortlich/haftbar für "
+"jeglichen Missbrauch dieses Programms, der gegen lokale Copyright/DMCA-"
 "Gesetze verstoßen könnte. Die Verwendung dieser Anwendung erfolgt auf eigene "
 "Gefahr."
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:331
 msgid "This action is irreversible. Are you sure you want to delete it?"
 msgstr ""
+"Diese Aktion kann nicht rückgängig gemacht werden. Bist du sicher dass du es "
+"löschen möchtest?"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:533
 msgid "translator-credits"
-msgstr ""
+msgstr "Feliks Weber <feliks@notabit.eu>"
 
 #: ../../../Controllers/MainWindowController.cs:144
 #: ../../../Controllers/MainWindowController.cs:155
@@ -406,50 +406,46 @@ msgstr ""
 "die Anwendung neu und versuchen Sie es erneut."
 
 #: ../../../Controllers/MainWindowController.cs:168
-#, fuzzy
 msgid "Unable to unlock keyring. Restart the app to try again."
 msgstr ""
-"Die Abhängigkeiten können nicht heruntergeladen werden. Bitte starten Sie "
-"die Anwendung neu und versuchen Sie es erneut."
+"Der Keyring konnte nicht entsperrt werden. Bitte starte die Anwendung neu "
+"und versuche es erneut."
 
 #: ../../../Controllers/MainWindowController.cs:162
 msgid "Unlock Keyring"
-msgstr ""
+msgstr "Keyring ensperren"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:268
 #: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:122
 msgid "URL"
-msgstr ""
+msgstr "URL"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:288
-#, fuzzy
 msgid "URL (Invalid)"
-msgstr "Video Url (ungültig)"
+msgstr "URL (Ungültig)"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:355
 msgid "Use manual credential"
-msgstr ""
+msgstr "Manuelle Anmeldedaten verwenden"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:270
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:72
 #: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:127
-#, fuzzy
 msgid "Username"
-msgstr "Benutzeroberfläche"
+msgstr "Nutzername"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:281
-#, fuzzy
 msgid "Username (Empty)"
-msgstr "Benutzeroberfläche"
+msgstr "Nutzername (Leer)"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:429
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:82
 msgid "Validate"
-msgstr ""
+msgstr "Validieren"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:458
 msgid "Video"
-msgstr ""
+msgstr "Video"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:133
 #: NickvisionTubeConverter.GNOME/Blueprints/download_row.blp:39
@@ -472,13 +468,12 @@ msgid "Back"
 msgstr "Zurück"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:63
-#, fuzzy
 msgid "Authenticate"
-msgstr "Anwendung"
+msgstr "Anmelden"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:68
 msgid "Keyring Credential"
-msgstr ""
+msgstr "Keyring-Anmeldedaten"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:115
 msgid "File Type"
@@ -493,51 +488,51 @@ msgid "Subtitle"
 msgstr "Untertitel"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:131
-#, fuzzy
 msgctxt "Subtitle"
 msgid "None"
 msgstr "Keine"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:178
 msgid "Select items to download or change file names."
-msgstr ""
+msgstr "Wähle Elemente zum heruntergeladen oder Dateinamen ändern."
 
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:190
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:229
-#, fuzzy
 msgid "Number Titles"
-msgstr "Nummer MediaList"
+msgstr "Titelnummern"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:259
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:100
 msgid "Speed Limit"
-msgstr ""
+msgstr "Geschwindigkeitsbegrenzung"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:270
 msgid "Crop Thumbnail"
-msgstr ""
+msgstr "Vorschau Beschneiden"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:271
 msgid "Make thumbnail square, useful when downloading music."
-msgstr ""
+msgstr "Vorschau quadratisch machen, nützlich bei Musik."
 
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:282
 msgid "Download Specific Timeframe"
-msgstr ""
+msgstr "Bestimmten Zeitraum herunterladen"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:283
 msgid ""
 "Enabling this option will disable the use of aria2 as the downloader if it "
 "is enabled."
 msgstr ""
+"Aktivierung dieser Option deaktiviert aria2 als Downloader falls er "
+"aktiviert ist."
 
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:289
 msgid "Leave empty to download from start."
-msgstr ""
+msgstr "Leer lassen um von Anfang an herunterzuladen."
 
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:294
 msgid "Leave empty to download to end."
-msgstr ""
+msgstr "Leer lassen um bis zum Ende herunterzuladen."
 
 #: NickvisionTubeConverter.GNOME/Blueprints/download_row.blp:51
 msgid "View Log"
@@ -548,14 +543,12 @@ msgid "Stop Download"
 msgstr "Download stoppen"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/download_row.blp:81
-#, fuzzy
 msgid "Open File"
-msgstr "Speicherordner öffnen"
+msgstr "Datei öffnen"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/download_row.blp:89
-#, fuzzy
 msgid "Open Folder"
-msgstr "Speicherordner öffnen"
+msgstr "Ordner öffnen"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/download_row.blp:101
 msgid "Retry Download"
@@ -566,17 +559,16 @@ msgid "Copy to Clipboard"
 msgstr "In die Zwischenablage kopieren"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:71
-#, fuzzy
 msgid "Credentials"
-msgstr "Credits"
+msgstr "Anmeldedaten"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:72
 msgid "Manage credentials in your keyring."
-msgstr ""
+msgstr "Anmeldedaten in deinem Keyring verwalten."
 
 #: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:77
 msgid "Add Credential"
-msgstr ""
+msgstr "Anmeldedaten hinzufügen"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:82
 #: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:144
@@ -587,35 +579,37 @@ msgstr "Hinzufügen"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:91
 msgid "No Credentials"
-msgstr ""
+msgstr "Keine Anmeldedaten"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:161
 msgid "Delete"
-msgstr ""
+msgstr "Löschen"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:168
 msgid "Apply"
-msgstr ""
+msgstr "Anwenden"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/media_row.blp:16
 msgid "Undo Title Editing"
-msgstr ""
+msgstr "Titelbearbeitung rückgängig machen"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/new_password_dialog.blp:31
 msgid "New Password"
-msgstr ""
+msgstr "Neues Passwort"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/new_password_dialog.blp:36
 msgid "Confirm Password"
-msgstr ""
+msgstr "Passwort bestätigen"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/new_password_dialog.blp:44
 msgid "If the password is lost, there is no way to restore the keyring!"
 msgstr ""
+"Wenn das Passwort verloren geht, gibt es keine Möglichkeit den Keyring "
+"wiederherzustellen!"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/password_dialog.blp:50
 msgid "Unlock"
-msgstr ""
+msgstr "Entsperren"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:11
 #: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:46
@@ -632,62 +626,58 @@ msgid "Theme"
 msgstr "Thema"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:20
-#, fuzzy
 msgctxt "Theme"
 msgid "Light"
 msgstr "Hell"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:20
-#, fuzzy
 msgctxt "Theme"
 msgid "Dark"
 msgstr "Dunkel"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:20
-#, fuzzy
 msgctxt "Theme"
 msgid "System"
 msgstr "System"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:30
 msgid "Completed Notification Trigger"
-msgstr ""
+msgstr "Benachrichtigungsauslöser abgeschlossen"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:31
 msgid ""
 "In combination with the trigger, completed notifications will only be shown "
 "if the window is not focused."
 msgstr ""
+"Zusammen mit dem Auslöser werden Abschluss-Benachichtigungen nur gezeigt "
+"wenn das Fenster nicht fokussiert ist."
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:34
-#, fuzzy
 msgctxt "CompletedNotification"
 msgid "For each download"
-msgstr "Herunterladen"
+msgstr "Für jeden Download"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:34
-#, fuzzy
 msgctxt "CompletedNotification"
 msgid "When all downloads finish"
-msgstr "Download Beendet"
+msgstr "Wenn alle Downloads fertig sind"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:34
 msgctxt "CompletedNotification"
 msgid "Never"
-msgstr ""
+msgstr "Nie"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:44
 msgid "Allow Running In Background"
-msgstr ""
+msgstr "Ausführen im Hintergrund zulassen"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:45
 msgid "Hide the window instead of quitting if there are downloads running."
-msgstr ""
+msgstr "Blenden das Fenster aus anstatt es zu beenden, wenn Downloads laufen."
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:61
-#, fuzzy
 msgid "Downloader"
-msgstr "Herunterladen"
+msgstr "Downloader"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:64
 msgid "Max Number of Active Downloads"
@@ -702,37 +692,42 @@ msgid ""
 "This limit (in KiB/s) is applied to downloads that have speed limit enabled. "
 "Changing the value doesn't affect already running downloads."
 msgstr ""
+"Dieses Limit (in KiB/s) wird auf Downloads angewendet für die "
+"Geschwindigkeitsbegrenzung aktiviert ist. Änderung des Wertes hat keine "
+"Auswirkungen auf bereits laufende Downloads."
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:122
 msgid "Use aria2"
-msgstr ""
+msgstr "Benutze aria2"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:123
 msgid ""
 "Enable to use aria2 downloader. It can be faster, but you will not see "
 "download progress."
 msgstr ""
+"Nutze den aria2 Downloader. Er kann schneller sein, aber du kannst den "
+"Download-Fortschritt nicht sehen."
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:132
 msgid "Max Connections Per Server (-x)"
-msgstr ""
+msgstr "Maximale Verbindungen pro Server (-x)"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:155
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:184
 msgid "Reset to default"
-msgstr ""
+msgstr "Auf Standardwert zurücksetzen"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:160
 msgid "Minimum Split Size (-k)"
-msgstr ""
+msgstr "Minimale Teilungsgröße (-k)"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:161
 msgid "The minimum size of which to split a file (in MiB)."
-msgstr ""
+msgstr "Die Mindestgröße, in die eine Datei geteilt werden soll (in MiB)."
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:203
 msgid "Language Code Information"
-msgstr ""
+msgstr "Informationen zum Sprachcode"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:218
 msgid ""
@@ -742,30 +737,41 @@ msgid ""
 "Please specify both two-letter and three-letter codes for your languages for "
 "the best results."
 msgstr ""
+"Einige Websites verwenden Sprachcodes mit zwei Buchstaben, andere hingegen "
+"mit drei Buchstaben. Zum Beispiel werden \"en\" und \"eng\" beide für "
+"Englisch verwendet.\n"
+"\n"
+"Gib bitte für die besten Ergebnisse sowohl Codes mit zwei als auch mit drei "
+"Buchstaben für deine Sprachen an."
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:229
 msgid "Cookies File"
-msgstr ""
+msgstr "Cookie-Datei"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:230
 msgid ""
 "A cookies file can be provided to yt-dlp to allow downloading media that "
 "requires a login."
 msgstr ""
+"Eine Cookie-Datei kann yt-dlp bereitgestellt werden um Medien "
+"herunterzuladen die einen Login benötigen."
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:251
 msgid "Clear Cookies File"
-msgstr ""
+msgstr "Cookie-Datei zurücksetzen"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:261
 msgid "Cookies File Information"
-msgstr ""
+msgstr "Informationen zur Cookie-Datei"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:276
 msgid ""
 "Cookies can be passed to yt-dlp in the form of TXT files. Export cookies "
 "from your browser using the following extensions (use at your own risk):"
 msgstr ""
+"Cookies können als TXT-Dateien an yt-dlp übergeben werden. Exportiere "
+"Cookies von deinem Browser mit den folgenden Erweiterungen (Verwendung auf "
+"eigene Gefahr):"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:313
 msgid "Converter"
@@ -773,7 +779,7 @@ msgstr "Konverter"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:316
 msgid "Disallow Conversions"
-msgstr ""
+msgstr "Umwandlungen nicht zulassen"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:317
 msgid ""
@@ -781,6 +787,9 @@ msgid ""
 "the selected quality without converting to other formats. (You will be "
 "unable to select a file format)"
 msgstr ""
+"Wenn aktiviert, lädt Parabolic das entsprechende Video-/Audioformat für die "
+"gewählte Qualität herunter, ohne es in andere Formate umzuwandeln. (Du "
+"kannst kein Dateiformat auswählen)"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:332
 msgid "Embed Metadata"
@@ -788,35 +797,34 @@ msgstr "Metadaten einbetten"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:341
 msgid "Crop Audio Thumbnails"
-msgstr ""
+msgstr "Audio-Vorschau Zuschneiden"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:342
 msgid ""
 "If enabled, Parabolic will automatically turn on the crop thumbnail advanced "
 "option for audio downloads"
 msgstr ""
+"Wenn aktiviert, schaltet Parabolic automatisch die erweiterte Option zum "
+"Zuschneiden der Vorschau für Audio-Downloads ein"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:358
 msgid "Embed Chapters"
-msgstr ""
+msgstr "Kapitel Einbetten"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:22
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:124
-#, fuzzy
 msgid "Stop All Downloads"
-msgstr "Download stoppen"
+msgstr "Alle Downloads stoppen"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:27
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:204
-#, fuzzy
 msgid "Retry Failed Downloads"
-msgstr "Download wiederholen"
+msgstr "Fehlgeschlagene Downloads wiederholen"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:32
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:164
-#, fuzzy
 msgid "Clear Queued Downloads"
-msgstr "Downloads abbrechen und beenden?"
+msgstr "Warteschlange löschen"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:38
 msgid "Application"
@@ -830,7 +838,7 @@ msgstr "Tastaturkürzel"
 #: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:56
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:10
 msgid "Help"
-msgstr ""
+msgstr "Hilfe"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:61
 msgid "Quit"
@@ -838,7 +846,7 @@ msgstr "Beenden"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:11
 msgid "About Parabolic"
-msgstr ""
+msgstr "Über Parabolic"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:47
 msgid "Add Download (Ctrl+N)"
@@ -849,18 +857,18 @@ msgid "Main Menu"
 msgstr "Hauptmenü"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:74
-#, fuzzy
 msgid "Download Media"
-msgstr "Herunterladen"
+msgstr "Medien Herunterladen"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:75
 msgid "Add a video, audio, or playlist URL to start downloading"
 msgstr ""
+"Füge eine Video, Audio oder Wiedergabenliste-URL hinzu um den Download zu "
+"starten"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:129
-#, fuzzy
 msgid "Stop All"
-msgstr "Download stoppen"
+msgstr "Alle Stoppen"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:154
 msgid "Queued"
@@ -869,59 +877,59 @@ msgstr "Warteschlange"
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:168
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:216
 msgid "Clear"
-msgstr ""
+msgstr "Leeren"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:193
 msgid "Completed"
 msgstr "Abgeschlossen"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:212
-#, fuzzy
 msgid "Clear Completed Downloads"
-msgstr "Downloads abbrechen und beenden?"
+msgstr "Abgeschlossene Downloads leeren"
 
 #: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.desktop.in:11
 msgid "YouTube;Downloader;ytdlp;Nickvision;Tube;Converter;"
-msgstr ""
+msgstr "YouTube;Downloader;ytdlp;Nickvision;Tube;Converter;"
 
 #: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.metainfo.xml.in:10
 msgid "— A basic yt-dlp frontend"
-msgstr ""
+msgstr "— Ein einfaches yt-dlp-Frontend"
 
 #: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.metainfo.xml.in:11
 msgid ""
 "— Supports downloading videos in multiple formats (mp4, webm, mp3, opus, "
 "flac, and wav)"
 msgstr ""
+"— Unterstützt herunterladen von Videos in verschiedenen Formaten (mp4, webm, "
+"mp3, opus, flac und wav)"
 
 #: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.metainfo.xml.in:12
 msgid "— Run multiple downloads at a time"
-msgstr ""
+msgstr "— Lade mehrere Medien gleichzeitig herunter"
 
 #: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.metainfo.xml.in:13
 msgid "— Supports downloading metadata and video subtitles"
-msgstr ""
+msgstr "— Unterstützt herunterladen von Metadaten und Videountertiteln"
 
 #: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.metainfo.xml.in:16
 msgid "youtube"
-msgstr ""
+msgstr "youtube"
 
 #: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.metainfo.xml.in:17
 msgid "video"
-msgstr ""
+msgstr "video"
 
 #: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.metainfo.xml.in:18
 msgid "audio"
-msgstr ""
+msgstr "audio"
 
 #: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.metainfo.xml.in:19
 msgid "media"
-msgstr ""
+msgstr "medien"
 
 #: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.metainfo.xml.in:20
-#, fuzzy
 msgid "download"
-msgstr "Herunterladen"
+msgstr "download"
 
 #~ msgid "Customize the application's user interface."
 #~ msgstr "Passen Sie die Benutzeroberfläche der Anwendung an."
