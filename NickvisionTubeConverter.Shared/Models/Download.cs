@@ -197,7 +197,8 @@ public class Download
                     { "ffmpeg_location", DependencyManager.FfmpegPath },
                     { "windowsfilenames", RuntimeInformation.IsOSPlatform(OSPlatform.Windows) },
                     { "encoding", "utf_8" },
-                    { "overwrites", options.OverwriteExistingFiles }
+                    { "overwrites", options.OverwriteExistingFiles },
+                    { "noprogress", true }
                 };
                 if(!FileType.GetIsGeneric())
                 {

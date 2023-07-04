@@ -30,6 +30,7 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
     private readonly GSourceFunc _pulsingBarCallback;
     private bool _runPulsingBar;
     private string _saveFolder;
+    private string _oldLog;
     private Action<NotificationSentEventArgs> _sendNotificationCallback;
 
     [Gtk.Connect] private readonly Gtk.Image _statusIcon;
@@ -78,6 +79,7 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
         _saveFolder = saveFolder;
         Id = id;
         Filename = filename;
+        _oldLog = "";
         _sendNotificationCallback = sendNotificationCallback;
         //Build UI
         builder.Connect(this);
@@ -155,7 +157,11 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
     /// <param name="state">The DownloadProgressState</param>
     public void SetProgressState(DownloadProgressState state)
     {
-        _lblLog.GetBuffer().SetText(state.Log, state.Log.Length);
+        if (_oldLog.Length != state.Log.Length)
+        {
+            _lblLog.GetBuffer().SetText(state.Log, state.Log.Length);
+            _oldLog = state.Log;
+        }
         var vadjustment = _lblLog.GetVadjustment()!;
         vadjustment.SetValue(vadjustment.GetUpper() - vadjustment.GetPageSize());
         switch (state.Status)
