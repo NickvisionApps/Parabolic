@@ -83,18 +83,20 @@ public class MediaUrlInfo
                     }
                     if (mediaInfo.HasKey("entries"))
                     {
+                        var i = 1u;
                         foreach (var e in mediaInfo["entries"].As<PyList>())
                         {
                             if (e.IsNone())
                             {
                                 continue;
                             }
-                            mediaUrlInfo.ParseFromPyDict(yt, e.As<PyDict>(), true, url);
+                            mediaUrlInfo.ParseFromPyDict(yt, e.As<PyDict>(), i, url);
+                            i++;
                         }
                     }
                     else
                     {
-                        mediaUrlInfo.ParseFromPyDict(yt, mediaInfo, false, url);
+                        mediaUrlInfo.ParseFromPyDict(yt, mediaInfo, 0, url);
                     }
                     outFile.close();
                 }
@@ -153,9 +155,9 @@ public class MediaUrlInfo
     /// </summary>
     /// <param name="yt">The YouttubeDL object</param>
     /// <param name="mediaInfo">Python dictionary with media info</param>
-    /// <param name="isPartOfPlaylist">Whether or not the media is part of a playlist</param>
+    /// <param name="playlistPosition">Position in playlist starting with 1, or 0 if not in playlist</param>
     /// <param name="defaultUrl">A default URL to use if none available</param>
-    private void ParseFromPyDict(dynamic yt, PyDict mediaInfo, bool isPartOfPlaylist, string defaultUrl)
+    private void ParseFromPyDict(dynamic yt, PyDict mediaInfo, uint playlistPosition, string defaultUrl)
     {
         var title = mediaInfo.HasKey("title") ? (mediaInfo["title"].As<string?>() ?? "Media") : "Media";
         foreach (var c in Path.GetInvalidFileNameChars())
@@ -195,6 +197,6 @@ public class MediaUrlInfo
         {
             url = mediaInfo["url"].As<string>();
         }
-        MediaList.Add(new MediaInfo(url, title, duration, isPartOfPlaylist));
+        MediaList.Add(new MediaInfo(url, title, duration, playlistPosition));
     }
 }

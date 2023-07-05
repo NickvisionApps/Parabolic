@@ -179,18 +179,18 @@ public class AddDownloadDialogController
         if(_mediaUrlInfo != null)
         {
             var numberedRegex = new Regex(@"[0-9]+ - ", RegexOptions.None);
-            for (var i = 0; i < _mediaUrlInfo.MediaList.Count; i++)
+            foreach (var m in _mediaUrlInfo.MediaList)
             {
                 if (toggled)
                 {
-                    _mediaUrlInfo.MediaList[i].Title = $"{i + 1} - {_mediaUrlInfo.MediaList[i].Title}";
+                    m.Title = $"{m.PlaylistPosition} - {m.Title}";
                 }
                 else
                 {
-                    var match = numberedRegex.Match(_mediaUrlInfo.MediaList[i].Title);
+                    var match = numberedRegex.Match(m.Title);
                     if (match.Success)
                     {
-                        _mediaUrlInfo.MediaList[i].Title = _mediaUrlInfo.MediaList[i].Title.Remove(_mediaUrlInfo.MediaList[i].Title.IndexOf(match.Value), match.Value.Length);
+                        m.Title = m.Title.Remove(m.Title.IndexOf(match.Value), match.Value.Length);
                     }
                 }
             }
@@ -257,7 +257,7 @@ public class AddDownloadDialogController
         {
             if (media.ToDownload)
             {
-                Downloads.Add(new Download(media.Url, mediaFileType, saveFolder, media.Title, limitSpeed, Configuration.Current.SpeedLimit, quality, resolution == null ? null : _mediaUrlInfo.VideoResolutions[resolution.Value], subtitles, cropThumbnail, timeframe, username, password));
+                Downloads.Add(new Download(media.Url, mediaFileType, saveFolder, media.Title, limitSpeed, Configuration.Current.SpeedLimit, quality, resolution == null ? null : _mediaUrlInfo.VideoResolutions[resolution.Value], subtitles, cropThumbnail, timeframe, media.PlaylistPosition, username, password));
             }
         }
         Configuration.Current.PreviousSaveFolder = saveFolder;

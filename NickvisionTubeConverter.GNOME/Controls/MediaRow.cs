@@ -24,8 +24,8 @@ public class MediaRow : Adw.EntryRow
         //Build UI
         builder.Connect(this);
         SetText(_mediaInfo.Title);
-        SetTitle(_mediaInfo.IsPartOfPlaylist ? _mediaInfo.Url : _("File Name"));
-        _downloadCheck.GetParent().SetVisible(_mediaInfo.IsPartOfPlaylist);
+        SetTitle(_mediaInfo.PlaylistPosition > 0 ? _mediaInfo.Url : _("File Name"));
+        _downloadCheck.GetParent().SetVisible(_mediaInfo.PlaylistPosition > 0);
         _downloadCheck.SetActive(_mediaInfo.ToDownload);
         _downloadCheck.OnNotify += (sender, e) =>
         {
@@ -60,15 +60,7 @@ public class MediaRow : Adw.EntryRow
     public void UpdateTitle(bool numbered)
     {
         SetText(_mediaInfo.Title);
-        if (numbered)
-        {
-            var numberedRegex = new Regex(@"[0-9]+ - ", RegexOptions.None);
-            _numberString = numberedRegex.Match(_mediaInfo.Title).Value;
-        }
-        else
-        {
-            _numberString = "";
-        }
+        _numberString = numbered ? $"{_mediaInfo.PlaylistPosition} - " : "";
     }
 
     private bool OnKeyPressed(Gtk.EventControllerKey sender, Gtk.EventControllerKey.KeyPressedSignalArgs e)
