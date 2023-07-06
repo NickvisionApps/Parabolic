@@ -25,11 +25,11 @@ document.addEventListener('DOMContentLoaded', function() {
 <p class="p">Lista kluczy jest wspierana przez bibliotekę <span class="code">Nickvision.Keyring</span>.</p>
 <p class="p">Ta biblioteka wykorzystuje SQLCipher do bezpiecznego przechowywania danych logowania w sposób niezależny od systemu.</p>
 </dd>
-<dt class="terms">Enabling The Keyring</dt>
+<dt class="terms">Włączanie listy kluczy</dt>
 <dd class="terms">
-<p class="p">When the Keyring is enabled, the user will be asked to enter a password to encrypt the Keyring.</p>
-<p class="p">There is no way to recover the Keyring password if lost.</p>
-<p class="p">This password will be used to unlock the Keyring in the future.</p>
+<p class="p">Po włączeniu listy kluczy, użytkownik zostanie poproszony o wprowadzenie hasła w celu zaszyfrowania listy.</p>
+<p class="p">Nie da się odzyskać hasła do listy kluczy w przypadku jego utraty.</p>
+<p class="p">To hasło będzie używane do odblokowania listy kluczy w przyszłości.</p>
 <div class="note note-advanced" title="Zaawansowane">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -45,23 +45,23 @@ document.addEventListener('DOMContentLoaded', function() {
   <path class="yelp-svg-fill" d="m11.072 11.757-3.3146 1.9-1.4143-1.414 1.7457-3.1602z"></path>
  </g>
 </svg><div class="inner"><div class="region"><div class="contents">
-<p class="p">If the Keyring password is lost, the user will be unable to use this feature unless the Keyring database file is deleted.</p>
-<p class="p">The Keyring file is stored in <span class="code">$CONFIG/Nickvision/Nickvision Parabolic/tubeconverter.nring</span></p>
+<p class="p">W przypadku utraty hasła do listy kluczy, użytkownik nie będzie mógł korzystać z tej funkcji, chyba że plik bazy danych listy zostanie usunięty.</p>
+<p class="p">Plik listy kluczy jest przechowywany w <span class="code">$CONFIG/Nickvision/Nickvision Parabolic/tubeconverter.nring</span></p>
 </div></div></div>
 </div>
 </dd>
-<dt class="terms">Disabling The Keyring</dt>
+<dt class="terms">Wyłączanie listy kluczy</dt>
 <dd class="terms">
-<p class="p">When the Keyring is disabled, the backing <span class="code">nring</span> database is destroyed and all credentials stored are erased.</p>
-<p class="p">If the Keyring is re-enabled, a brand new database file will be created and the user will be prompted to enter a password again.</p>
+<p class="p">Po wyłączeniu listy kluczy, wspomagająca baza danych <span class="code">nring</span> zostanie usunięta wraz ze wszystkimi przechowanymi danymi logowania.</p>
+<p class="p">Po ponownym włączeniu listy kluczy, powstanie nowy plik bazy danych a użytkownik zostanie poproszony o wprowadzenie hasła.</p>
 </dd>
-<dt class="terms">Storing a Credential</dt>
+<dt class="terms">Przechowywanie danych logowania</dt>
 <dd class="terms">
-<p class="p">Here are the fields that can be stored in a credential:</p>
-<p class="p"><span class="code">Name</span>: The name of the credential</p>
-<p class="p"><span class="code">URL</span> (optional): The URL of the credential</p>
-<p class="p"><span class="code">Username</span> (optional if password is not empty): The username of the credential</p>
-<p class="p"><span class="code">Password</span> (optional if username is not empty): The password of the credential</p>
+<p class="p">Oto pola, które mogą być przechowywane w danych logowania:</p>
+<p class="p"><span class="code">Nazwa</span>: Nazwa danych logowania</p>
+<p class="p"><span class="code">Adres URL</span> (opcjonalnie): Adres URL danych logowania</p>
+<p class="p"><span class="code">Nazwa użytkownika</span> (opcjonalnie, jeśli hasło nie jest puste): Nazwa użytkownika</p>
+<p class="p"><span class="code">Hasło</span> (opcjonalnie, jeśli nazwa użytkownika nie jest pusta): Hasło</p>
 </dd>
 </dl></div></div></div>
 </div>
@@ -81,11 +81,16 @@ document.addEventListener('DOMContentLoaded', function() {
 <div class="copyrights">
 <div class="copyright">© 2023 Nicholas Logozzo</div>
 <div class="copyright">© 2023 Nicholas Logozzo</div>
+<div class="copyright">© 2023 Dominik Gęgotek</div>
 </div>
 <div class="credits">
 <div class="credits-authors">
 <div class="title"><span class="title">Napisane przez</span></div>
 <ul class="credits"><li>Nicholas Logozzo</li></ul>
+</div>
+<div class="credits-translators">
+<div class="title"><span class="title">Przetłumaczone przez</span></div>
+<ul class="credits"><li>Dominik Gęgotek</li></ul>
 </div>
 <div class="credits-publishers">
 <div class="title"><span class="title">Opublikowane przez</span></div>
