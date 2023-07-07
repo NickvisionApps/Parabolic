@@ -397,7 +397,6 @@ public partial class AddDownloadDialog : Adw.Window
         {
             try
             {
-                _urlRow.SetText(url);
                 if(_keyringRow.GetSelected() == 0 || _keyringRow.GetSelected() == GTK_INVALID_LIST_POSITION || !_authRow.GetEnableExpansion())
                 {
                      await _controller.SearchUrlAsync(url, _usernameRow.GetText(), _passwordRow.GetText());

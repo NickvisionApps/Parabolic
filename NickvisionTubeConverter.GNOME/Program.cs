@@ -48,8 +48,8 @@ public partial class Program
         _mainWindowController.AppInfo.Name = "Nickvision Tube Converter";
         _mainWindowController.AppInfo.ShortName = _("Parabolic");
         _mainWindowController.AppInfo.Description = $"{_("Download web video and audio")}.";
-        _mainWindowController.AppInfo.Version = "2023.7.1-rc1";
-        _mainWindowController.AppInfo.Changelog = "<ul><li>Fixed an issue where CPU usage was high during download due to excessive logging</li><li>When downloading a playlist, a media's position will be written to the tag's track property</li><li>Updated translations (Thanks everyone on Weblate!)</li></ul>";
+        _mainWindowController.AppInfo.Version = "2023.7.1";
+        _mainWindowController.AppInfo.Changelog = "<ul><li>Fixed an issue where CPU usage was high during download due to excessive logging</li><li>When downloading a playlist, a media's position will be written to the tag's track property</li><li>Fixed an issue where validate URL button was sensitive during validation</li><li>Updated translations (Thanks everyone on Weblate!)</li></ul>";
         _mainWindowController.AppInfo.GitHubRepo = new Uri("https://github.com/NickvisionApps/Parabolic");
         _mainWindowController.AppInfo.IssueTracker = new Uri("https://github.com/NickvisionApps/Parabolic/issues/new");
         _mainWindowController.AppInfo.SupportUrl = new Uri("https://github.com/NickvisionApps/Parabolic/discussions");
