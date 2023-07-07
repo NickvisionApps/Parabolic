@@ -14,7 +14,7 @@
 	<license href="http://creativecommons.org/licenses/by/4.0/" its:translate="no"><p>Creative Commons Attribution 4.0 International License</p></license>
 </info>
 
-<title>Downloader</title>
+<title>Gerenciador de downloads</title>
 <p>This page explains all options for configuring the Downloader in Preferences in <app>Parabolic</app>.</p>
 
 <terms>
@@ -27,7 +27,7 @@
 		</note>
     </item>
     <item>
-        <title>Overwrite Existing Files</title>
+        <title>Sobrescrever Arquivos Existentes</title>
         <p>If enabled, Parabolic will overwrite existing files.</p>
         <p>For example, if a file named <code>movie.mp4</code> exists in the download folder, and a new download is created named <code>movie</code>, <code>movie.mp4</code> will be overwritten with the new download's content.</p>
 		<note style="advanced">
@@ -35,14 +35,14 @@
 		</note>
     </item>
     <item>
-        <title>Speed Limit</title>
+        <title>Limite de velocidade</title>
         <p>A limit, in Ki/s, that is applied to downloads only if they have the advanced option <code>Speed Limit</code> enabled. Must be an integer value between 512 and 10240.</p>
 		<note style="advanced">
 			<p>Default: 1024</p>
 		</note>
     </item>
     <item>
-        <title>Use aria2</title>
+        <title>Usar aria2</title>
         <p>If enabled, Parabolic will use aria2c to download media. Although using aria2c can improve download speed, download progress will not be displayed in the UI.</p>
 		<note style="advanced">
 			<p>Default: Off</p>
@@ -75,7 +75,7 @@
 		</note>
     </item>
     <item>
-        <title>Cookies File</title>
+        <title>Aquivo de cookies</title>
         <p>A .txt file of cookies to pass to yt-dlp when downloading. This may be useful when downloading media that requires a login, for example: private YouTube videos.</p>
         <p>Use one of the following extensions for getting a cookies file from your browser:</p>
         <p>Chrome: <code>https://chrome.google.com/webstore/detail/get-cookiestxt-locally/cclelndahbckbenkjhflpdbgdldlbecc</code></p>
