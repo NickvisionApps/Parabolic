@@ -125,6 +125,11 @@ Adw.Window _root {
                         };
                       }
 
+                      Adw.ComboRow _audioLanguageRow {
+                        title: _("Audio Language");
+                        visible: false;
+                      }
+
                       Adw.ComboRow _subtitleRow {
                         title: _("Subtitle");
                         model: Gtk.StringList {

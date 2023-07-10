@@ -59,6 +59,10 @@ public class AddDownloadDialogController
     /// </summary>
     public bool HasVideoResolutions => _mediaUrlInfo != null && _mediaUrlInfo.VideoResolutions.Count > 0;
     /// <summary>
+    /// The list of audio language codes
+    /// </summary>
+    public List<string> AudioLanguages => _mediaUrlInfo != null ? _mediaUrlInfo.AudioLanguages : new List<string>();
+    /// <summary>
     /// The previously used save folder
     /// </summary>
     public string PreviousSaveFolder => Directory.Exists(Configuration.Current.PreviousSaveFolder) ? Configuration.Current.PreviousSaveFolder : "";
@@ -243,6 +247,7 @@ public class AddDownloadDialogController
     /// <param name="mediaFileType">The media file type to download</param>
     /// <param name="quality">The quality of the downloads</param>
     /// <param name="resolution">The index of the video resolution if available</param>
+    /// <param name="audioLanguage">The audio language code</param>
     /// <param name="subtitles">The subtitle format of the downloads</param>
     /// <param name="saveFolder">The save folder of the downloads</param>
     /// <param name="limitSpeed">Whether or not to use speed limit</param>
@@ -250,14 +255,14 @@ public class AddDownloadDialogController
     /// <param name="timeframe">A Timeframe to restrict the timespan of the media download</param>
     /// <param name="username">A username for the website (if available)</param>
     /// <param name="password">A password for the website (if available)</param>
-    public void PopulateDownloads(MediaFileType mediaFileType, Quality quality, int? resolution, Subtitle subtitles, string saveFolder, bool limitSpeed, bool cropThumbnail, Timeframe? timeframe, string? username, string? password)
+    public void PopulateDownloads(MediaFileType mediaFileType, Quality quality, int? resolution, string? audioLanguage, Subtitle subtitles, string saveFolder, bool limitSpeed, bool cropThumbnail, Timeframe? timeframe, string? username, string? password)
     {
         Downloads.Clear();
         foreach (var media in _mediaUrlInfo.MediaList)
         {
             if (media.ToDownload)
             {
-                Downloads.Add(new Download(media.Url, mediaFileType, saveFolder, media.Title, limitSpeed, Configuration.Current.SpeedLimit, quality, resolution == null ? null : _mediaUrlInfo.VideoResolutions[resolution.Value], subtitles, cropThumbnail, timeframe, media.PlaylistPosition, username, password));
+                Downloads.Add(new Download(media.Url, mediaFileType, saveFolder, media.Title, limitSpeed, Configuration.Current.SpeedLimit, quality, resolution == null ? null : _mediaUrlInfo.VideoResolutions[resolution.Value], audioLanguage, subtitles, cropThumbnail, timeframe, media.PlaylistPosition, username, password));
             }
         }
         Configuration.Current.PreviousSaveFolder = saveFolder;
@@ -278,23 +283,24 @@ public class AddDownloadDialogController
     /// <param name="mediaFileType">The media file type to download</param>
     /// <param name="quality">The quality of the downloads</param>
     /// <param name="resolution">The index of the video resolution if available</param>
+    /// <param name="audioLanguage">The audio language code</param>
     /// <param name="subtitles">The subtitle format of the downloads</param>
     /// <param name="saveFolder">The save folder of the downloads</param>
     /// <param name="limitSpeed">Whether or not to use speed limit</param>
     /// <param name="cropThumbnail">Whether or not to crop the thumbnail</param>
     /// <param name="timeframe">A Timeframe to restrict the timespan of the media download</param>
     /// <param name="credentialIndex">The index of the credential to use</param>
-    public async Task PopulateDownloadsAsync(MediaFileType mediaFileType, Quality quality, int? resolution, Subtitle subtitles, string saveFolder, bool limitSpeed, bool cropThumbnail, Timeframe? timeframe, int credentialIndex)
+    public async Task PopulateDownloadsAsync(MediaFileType mediaFileType, Quality quality, int? resolution, string? audioLanguage, Subtitle subtitles, string saveFolder, bool limitSpeed, bool cropThumbnail, Timeframe? timeframe, int credentialIndex)
     {
         if(_keyring != null)
         {
             var credentials = await _keyring.GetAllCredentialsAsync();
             credentials.Sort((a, b) => a.Name.CompareTo(b.Name));
-            PopulateDownloads(mediaFileType, quality, resolution, subtitles, saveFolder, limitSpeed, cropThumbnail, timeframe, credentials[credentialIndex].Username, credentials[credentialIndex].Password);
+            PopulateDownloads(mediaFileType, quality, resolution, audioLanguage, subtitles, saveFolder, limitSpeed, cropThumbnail, timeframe, credentials[credentialIndex].Username, credentials[credentialIndex].Password);
         }
         else
         {
-            PopulateDownloads(mediaFileType, quality, resolution, subtitles, saveFolder, limitSpeed, cropThumbnail, timeframe, "", "");
+            PopulateDownloads(mediaFileType, quality, resolution, audioLanguage, subtitles, saveFolder, limitSpeed, cropThumbnail, timeframe, "", "");
         }
     }
 }
