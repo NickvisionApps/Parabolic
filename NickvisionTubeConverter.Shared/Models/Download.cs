@@ -2,6 +2,7 @@
 using Python.Runtime;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -77,6 +78,10 @@ public class Download
     /// </summary>
     public Subtitle Subtitle { get; init; }
     /// <summary>
+    /// The audio language code
+    /// </summary>
+    public string AudioLanguage { get; init; }
+    /// <summary>
     /// The filename of the download
     /// </summary>
     public string Filename { get; private set; }
@@ -115,8 +120,9 @@ public class Download
     /// <param name="saveFilename">The filename to save the download as</param>
     /// <param name="limitSpeed">Whether or not to limit the download speed</param>
     /// <param name="speedLimit">The speed at which to limit the download</param>
-    /// <param name="resolution">The video resolution if available</param>
     /// <param name="quality">The quality of the download</param>
+    /// <param name="resolution">The video resolution if available</param>
+    /// <param name="audioLanguage">The audio language code</param>
     /// <param name="subtitle">The subtitles for the download</param>
     /// <param name="cropThumbnail">Whether or not to crop the thumbnail</param>
     /// <param name="timeframe">A Timeframe to restrict the timespan of the media download</param>
@@ -124,7 +130,7 @@ public class Download
     /// <param name="username">A username for the website (if available)</param>
     /// <param name="password">A password for the website (if available)</param>
     /// <exception cref="ArgumentException">Thrown if timeframe is specified and limitSpeed is enabled</exception>
-    public Download(string mediaUrl, MediaFileType fileType, string saveFolder, string saveFilename, bool limitSpeed, uint speedLimit, Quality quality, VideoResolution? resolution, Subtitle subtitle, bool cropThumbnail, Timeframe? timeframe, uint playlistPosition, string? username, string? password)
+    public Download(string mediaUrl, MediaFileType fileType, string saveFolder, string saveFilename, bool limitSpeed, uint speedLimit, Quality quality, VideoResolution? resolution, string? audioLanguage, Subtitle subtitle, bool cropThumbnail, Timeframe? timeframe, uint playlistPosition, string? username, string? password)
     {
         Id = Guid.NewGuid();
         MediaUrl = mediaUrl;
@@ -133,6 +139,7 @@ public class Download
         Quality = quality;
         Resolution = resolution;
         Subtitle = subtitle;
+        AudioLanguage = string.IsNullOrEmpty(audioLanguage) ? CultureInfo.CurrentCulture.TwoLetterISOLanguageName : audioLanguage;
         Filename = $"{saveFilename}{(FileType.GetIsGeneric() ? "" : FileType.GetDotExtension())}";
         IsRunning = false;
         IsDone = false;
@@ -229,12 +236,12 @@ public class Download
                 {
                     if(FileType.GetIsGeneric())
                     {
-                        _ytOpt.Add("format", Quality != Quality.Worst ? "ba/b" : "wa/w");
+                        _ytOpt.Add("format", Quality != Quality.Worst ? $"ba[language={AudioLanguage}]/ba/b" : $"wa[language={AudioLanguage}]/wa/w");
                         postProcessors.Add(new Dictionary<string, dynamic>() { { "key", "FFmpegExtractAudio" } });
                     }
                     else
                     {
-                        _ytOpt.Add("format", Quality != Quality.Worst ? $"ba[ext={FileType.ToString().ToLower()}]/ba/b" : $"wa[ext={FileType.ToString().ToLower()}]/wa/w");
+                        _ytOpt.Add("format", Quality != Quality.Worst ? $@"ba[ext={FileType.ToString().ToLower()}][language={AudioLanguage}]/ba[ext={FileType.ToString().ToLower()}]/ba/b" : $"wa[ext={FileType.ToString().ToLower()}][language={AudioLanguage}]/wa[ext={FileType.ToString().ToLower()}]/wa/w");
                         postProcessors.Add(new Dictionary<string, dynamic>() { { "key", "FFmpegExtractAudio" }, { "preferredcodec", FileType.ToString().ToLower() } });
                     }
                 }
@@ -242,15 +249,25 @@ public class Download
                 {
                     if(Resolution!.Width == 0 && Resolution.Height == 0)
                     {
-                        _ytOpt.Add("format", FileType == MediaFileType.MP4 ? "bv*[ext=mp4]+ba[ext=m4a]/b[ext=mp4] / bv+ba/b" : "bv+ba/b");
+                        _ytOpt.Add("format", FileType == MediaFileType.MP4 ? $@"bv*[ext=mp4]+ba[ext=m4a][language={AudioLanguage}]/
+                            bv*[ext=mp4]+ba[ext=m4a]/b[ext=mp4]/
+                            bv+ba[language={AudioLanguage}]/
+                            bv+ba/b" : $"bv+ba[language={AudioLanguage}]/bv+ba/b");
                     }
                     else if (FileType == MediaFileType.MP4)
                     {
-                        _ytOpt.Add("format", $"bv*[ext=mp4][width<={Resolution!.Width}][height<={Resolution.Height}]+ba[ext=m4a]/b[ext=mp4][width<={Resolution.Width}][height<={Resolution.Height}] / bv*[width<={Resolution.Width}][height<={Resolution.Height}]+ba/b[width<={Resolution.Width}][height<={Resolution.Height}]");
+                        _ytOpt.Add("format", $@"bv*[ext=mp4][width<={Resolution!.Width}][height<={Resolution.Height}]+ba[ext=m4a][language={AudioLanguage}]/
+                            bv*[ext=mp4][width<={Resolution!.Width}][height<={Resolution.Height}]+ba[ext=m4a]/
+                            b[ext=mp4][width<={Resolution.Width}][height<={Resolution.Height}]/
+                            bv*[width<={Resolution.Width}][height<={Resolution.Height}]+ba[language={AudioLanguage}]/
+                            bv*[width<={Resolution.Width}][height<={Resolution.Height}]+ba/
+                            b[width<={Resolution.Width}][height<={Resolution.Height}]");
                     }
                     else
                     {
-                        _ytOpt.Add("format", $"bv*[width<={Resolution!.Width}][height<={Resolution.Height}]+ba/b[width<={Resolution.Width}][height<={Resolution.Height}]");
+                        _ytOpt.Add("format", $@"bv*[width<={Resolution!.Width}][height<={Resolution.Height}]+ba[language={AudioLanguage}]/
+                            bv*[width<={Resolution!.Width}][height<={Resolution.Height}]+ba/
+                            b[width<={Resolution.Width}][height<={Resolution.Height}]");
                     }
                     if(!FileType.GetIsGeneric())
                     {

@@ -19,7 +19,7 @@
     <Exec Command="echo Compiling extra resources..." />
     <Exec Command="blueprint-compiler batch-compile ./Blueprints ./Blueprints ./Blueprints/*.blp" />
     <Exec Command="glib-compile-resources --sourcedir ./Resources ./Resources/org.nickvision.tubeconverter.gresource.xml --target=$(OutDir)org.nickvision.tubeconverter.gresource" />
-    <Exec Command="while read lang_code; do \&#xA;mkdir -p $(OutDir)${lang_code}; \&#xA;msgfmt ../NickvisionTubeConverter.Shared/Resources/po/${lang_code}.po -o $(OutDir)${lang_code}/tubeconverter.mo; \&#xA;done %3C ../NickvisionTubeConverter.Shared/Resources/po/LINGUAS" />
+    <Exec Command="while read lang_code; do \&#xA;  mkdir -p $(OutDir)${lang_code}; \&#xA;  msgfmt ../NickvisionTubeConverter.Shared/Resources/po/${lang_code}.po -o $(OutDir)${lang_code}/tubeconverter.mo; \&#xA;done %3C ../NickvisionTubeConverter.Shared/Resources/po/LINGUAS" />
   </Target>
 
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
@@ -28,7 +28,7 @@
 
   <Target Name="PostPublish" AfterTargets="Publish">
     <Exec Command="cp $(OutDir)org.nickvision.tubeconverter.gresource $(PublishDir)org.nickvision.tubeconverter.gresource" />
-    <Exec Command="while read lang_code; do \&#xA;cp -r $(OutDir)${lang_code} $(PublishDir); \&#xA;done %3C ../NickvisionTubeConverter.Shared/Resources/po/LINGUAS" />
+    <Exec Command="while read lang_code; do \&#xA;  cp -r $(OutDir)${lang_code} $(PublishDir); \&#xA;done %3C ../NickvisionTubeConverter.Shared/Resources/po/LINGUAS" />
   </Target>
 
   <Target Name="EmbedUIFiles" BeforeTargets="BeforeResGen">

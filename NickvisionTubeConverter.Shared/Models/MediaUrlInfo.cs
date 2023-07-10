@@ -27,6 +27,10 @@ public class MediaUrlInfo
     /// The available video resolutions
     /// </summary>
     public List<VideoResolution> VideoResolutions { get; init; }
+    /// <summary>
+    /// The list of audio language codes
+    /// </summary>
+    public List<string> AudioLanguages { get; init; }
 
     /// <summary>
     /// Constructs a MediaUrlInfo
@@ -38,6 +42,7 @@ public class MediaUrlInfo
         Url = url;
         MediaList = new List<MediaInfo>();
         VideoResolutions = new List<VideoResolution>();
+        AudioLanguages = new List<string>();
     }
 
     /// <summary>
@@ -124,6 +129,13 @@ public class MediaUrlInfo
             var format = f.As<PyDict>();
             if (format.HasKey("vbr"))
             {
+                if (format.HasKey("language") && format["vcodec"].As<string>() == "none")
+                {
+                    if (!format["language"].IsNone() && !AudioLanguages.Contains(format["language"].As<string>()))
+                    {
+                        AudioLanguages.Add(format["language"].As<string>());
+                    }
+                }
                 try
                 {
                     var resolution = new VideoResolution(format["width"].As<int>(), format["height"].As<int>());
@@ -148,6 +160,7 @@ public class MediaUrlInfo
             }
         }
         VideoResolutions.Sort((a, b) => b.CompareTo(a));
+        AudioLanguages.Sort();
     }
 
     /// <summary>
