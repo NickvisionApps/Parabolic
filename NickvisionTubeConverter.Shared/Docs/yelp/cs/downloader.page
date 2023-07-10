@@ -2,7 +2,7 @@
 <page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" id="downloader" its:version="2.0" xml:lang="cs">
 <info>
 	<link type="guide" xref="index"/>
-	<title type="link">Downloader 🌐</title>
+	<title type="link">Stahování 🌐</title>
 	<credit type="author copyright">
 		<name>Nicholas Logozzo</name>
 		<years its:translate="no">2023</years>
@@ -20,46 +20,46 @@
     </mal:credit>
   </info>
 
-<title>Downloader</title>
-<p>This page explains all options for configuring the Downloader in Preferences in <app>Parabolic</app>.</p>
+<title>Stahování</title>
+<p>Na této straně najdete vysvětlení všech možností konfigurace stahování v předvolbách v aplikaci <app>Parabolic</app>.</p>
 
 <terms>
 	<item>
-		<title>Maximum Number of Active Downloads</title>
-		<p>The number of active downloads allowed to run at a time. Must be an integer value between 1 and 10.</p>
-        <p>If the max number of active downloads is reached, Parabolic will place new downloads in a queue until more downloads are able to be run.</p>
+		<title>Maximální počet aktivních stahování</title>
+		<p>Počet aktivních stahování, které mohou v jednu chvíli běžet. Musí to být celočíselná hodnota mezi 1 a 10.</p>
+        <p>Při dosažení maximálního počtu aktivních stahování, aplikace Parabolic umístí nová stahování do fronty, dokud nebude moct být spuštěno více stahování.</p>
 		<note style="advanced">
-			<p>Default: 5</p>
+			<p>Výchozí: 5</p>
 		</note>
     </item>
     <item>
-        <title>Overwrite Existing Files</title>
-        <p>If enabled, Parabolic will overwrite existing files.</p>
-        <p>For example, if a file named <code>movie.mp4</code> exists in the download folder, and a new download is created named <code>movie</code>, <code>movie.mp4</code> will be overwritten with the new download's content.</p>
+        <title>Přepsání existujících souborů</title>
+        <p>Pokud je tato funkce povolena, aplikace Parabolic přepíše existující soubory.</p>
+        <p>Pokud již například ve složce stahování existuje soubor <code>film.mp4</code> a bude vytvořeno nové stahování s názvem <code>film</code>, bude soubor <code>film.mp4</code> přepsán novým obsahem stahování.</p>
 		<note style="advanced">
 			<p>Výchozí: zapnuto</p>
 		</note>
     </item>
     <item>
-        <title>Speed Limit</title>
-        <p>A limit, in Ki/s, that is applied to downloads only if they have the advanced option <code>Speed Limit</code> enabled. Must be an integer value between 512 and 10240.</p>
+        <title>Omezení rychlosti</title>
+        <p>Limit, v Ki/s, který bude použit na stahování pouze pokud mají povolenou pokročilou možnost <code>Omezení rychlosti</code>. Musí to být celočíselná hodnota mezi 512 a 10 240.</p>
 		<note style="advanced">
-			<p>Default: 1024</p>
+			<p>Výchozí: 1024</p>
 		</note>
     </item>
     <item>
-        <title>Use aria2</title>
-        <p>If enabled, Parabolic will use aria2c to download media. Although using aria2c can improve download speed, download progress will not be displayed in the UI.</p>
+        <title>Použití aria2</title>
+        <p>Pokud je tato funkce povolena, použije aplikace Parabolic funkci aria2c pro stahování médií. Aria2c může zvýšit rychlost stahování, v rozhraní ale neuvidíte jeho průběh.</p>
 		<note style="advanced">
 			<p>Výchozí: vypnuto</p>
 		</note>
     </item>
     <item>
-        <title>Maximum Connections Per Server</title>
-        <p>This option only applies when using aria2 is enabled. This option is the same as the <code>-x</code> flag passed to aria2c.</p>
-        <p>The maximum number of connection that can be used per server. Must be an integer value between 1 and 32.</p>
+        <title>Maximální počet spojení na server</title>
+        <p>Tato funkce je použita pouze při povoleném aria2. Jedná se o stejnou možnost, jako když do aria2c zadáte vlajku <code>-x</code>.</p>
+        <p>Maximální počet spojení, které lze využít na server. Musí to být celočíselná hodnota mezi 1 a 32.</p>
 		<note style="advanced">
-			<p>Default: 16</p>
+			<p>Výchozí: 16</p>
 		</note>
     </item>
     <item>
