@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: 2023-06-26 22:00+0300\n"
-"PO-Revision-Date: 2023-06-27 14:42+0000\n"
+"PO-Revision-Date: 2023-07-10 22:33+0000\n"
 "Last-Translator: Fjuro <ifjuro@proton.me>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/"
 "nickvision-tube-converter/docs/cs/>\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Weblate 4.18.1\n"
+"X-Generator: Weblate 5.0-dev\n"
 
 #. Put one translator per line, in the form NAME <EMAIL>, YEAR1, YEAR2
 msgctxt "_"
@@ -104,7 +104,7 @@ msgstr "Výchozí: zapnuto"
 #. (itstool) path: item/title
 #: yelp/C/converter.page:41
 msgid "Crop Audio Thumbnails"
-msgstr "Oříznout miniatury zvuku"
+msgstr "Oříznutí miniatur zvuku"
 
 #. (itstool) path: item/p
 #: yelp/C/converter.page:42
@@ -117,46 +117,46 @@ msgid ""
 "If enabled, Parabolic will automatically turn on the advanced option "
 "<code>Crop Thumbnail</code> for audio downloads."
 msgstr ""
+"Pokud je tato funkce povolena, aplikace Parabolic automaticky zapne "
+"pokročilou možnost <code>Oříznout miniaturu</code> pro stahování zvuku."
 
 #. (itstool) path: item/title
 #: yelp/C/converter.page:49
 msgid "Embed Chapters"
-msgstr ""
+msgstr "Vkládání kapitol"
 
 #. (itstool) path: item/p
 #: yelp/C/converter.page:50
-#, fuzzy
 msgid ""
 "If enabled, Parabolic will tag a media with chapter information if available"
 msgstr ""
-"Pokud je tato funkce povolena, Tube Converter označí médium příslušnými "
-"informacemi (název, žánr atd.) a miniaturou, pokud je k dispozici."
+"Pokud je tato funkce povolena, aplikace Parabolic označí média informacemi o "
+"kapitolách, pokud jsou dostupné"
 
 #. (itstool) path: info/title
 #: yelp/C/downloader.page:8
 msgctxt "link"
 msgid "Downloader 🌐"
-msgstr ""
+msgstr "Stahování 🌐"
 
 #. (itstool) path: page/title
 #: yelp/C/downloader.page:20
 msgid "Downloader"
-msgstr ""
+msgstr "Stahování"
 
 #. (itstool) path: page/p
 #: yelp/C/downloader.page:21
-#, fuzzy
 msgid ""
 "This page explains all options for configuring the Downloader in Preferences "
 "in <app>Parabolic</app>."
 msgstr ""
-"Na této straně najdete vysvětlení všech možností konfigurace konvertoru v "
-"předvolbách v aplikaci <app>Tube Converter</app>."
+"Na této straně najdete vysvětlení všech možností konfigurace stahování v "
+"předvolbách v aplikaci <app>Parabolic</app>."
 
 #. (itstool) path: item/title
 #: yelp/C/downloader.page:25
 msgid "Maximum Number of Active Downloads"
-msgstr ""
+msgstr "Maximální počet aktivních stahování"
 
 #. (itstool) path: item/p
 #: yelp/C/downloader.page:26
@@ -164,6 +164,8 @@ msgid ""
 "The number of active downloads allowed to run at a time. Must be an integer "
 "value between 1 and 10."
 msgstr ""
+"Počet aktivních stahování, které mohou v jednu chvíli běžet. Musí to být "
+"celočíselná hodnota mezi 1 a 10."
 
 #. (itstool) path: item/p
 #: yelp/C/downloader.page:27
@@ -171,21 +173,25 @@ msgid ""
 "If the max number of active downloads is reached, Parabolic will place new "
 "downloads in a queue until more downloads are able to be run."
 msgstr ""
+"Při dosažení maximálního počtu aktivních stahování, aplikace Parabolic "
+"umístí nová stahování do fronty, dokud nebude moct být spuštěno více "
+"stahování."
 
 #. (itstool) path: note/p
 #: yelp/C/downloader.page:29
 msgid "Default: 5"
-msgstr ""
+msgstr "Výchozí: 5"
 
 #. (itstool) path: item/title
 #: yelp/C/downloader.page:33
 msgid "Overwrite Existing Files"
-msgstr ""
+msgstr "Přepsání existujících souborů"
 
 #. (itstool) path: item/p
 #: yelp/C/downloader.page:34
 msgid "If enabled, Parabolic will overwrite existing files."
 msgstr ""
+"Pokud je tato funkce povolena, aplikace Parabolic přepíše existující soubory."
 
 #. (itstool) path: item/p
 #: yelp/C/downloader.page:35
@@ -194,11 +200,14 @@ msgid ""
 "folder, and a new download is created named <code>movie</code>, <code>movie."
 "mp4</code> will be overwritten with the new download's content."
 msgstr ""
+"Pokud již například ve složce stahování existuje soubor <code>film.mp4</"
+"code> a bude vytvořeno nové stahování s názvem <code>film</code>, bude "
+"soubor <code>film.mp4</code> přepsán novým obsahem stahování."
 
 #. (itstool) path: item/title
 #: yelp/C/downloader.page:41 yelp/C/newDownload.page:72
 msgid "Speed Limit"
-msgstr ""
+msgstr "Omezení rychlosti"
 
 #. (itstool) path: item/p
 #: yelp/C/downloader.page:42
@@ -207,16 +216,19 @@ msgid ""
 "advanced option <code>Speed Limit</code> enabled. Must be an integer value "
 "between 512 and 10240."
 msgstr ""
+"Limit, v Ki/s, který bude použit na stahování pouze pokud mají povolenou "
+"pokročilou možnost <code>Omezení rychlosti</code>. Musí to být celočíselná "
+"hodnota mezi 512 a 10 240."
 
 #. (itstool) path: note/p
 #: yelp/C/downloader.page:44
 msgid "Default: 1024"
-msgstr ""
+msgstr "Výchozí: 1024"
 
 #. (itstool) path: item/title
 #: yelp/C/downloader.page:48
 msgid "Use aria2"
-msgstr ""
+msgstr "Použití aria2"
 
 #. (itstool) path: item/p
 #: yelp/C/downloader.page:49
@@ -225,11 +237,14 @@ msgid ""
 "aria2c can improve download speed, download progress will not be displayed "
 "in the UI."
 msgstr ""
+"Pokud je tato funkce povolena, použije aplikace Parabolic funkci aria2c pro "
+"stahování médií. Aria2c může zvýšit rychlost stahování, v rozhraní ale "
+"neuvidíte jeho průběh."
 
 #. (itstool) path: item/title
 #: yelp/C/downloader.page:55
 msgid "Maximum Connections Per Server"
-msgstr ""
+msgstr "Maximální počet spojení na server"
 
 #. (itstool) path: item/p
 #: yelp/C/downloader.page:56
@@ -237,6 +252,8 @@ msgid ""
 "This option only applies when using aria2 is enabled. This option is the "
 "same as the <code>-x</code> flag passed to aria2c."
 msgstr ""
+"Tato funkce je použita pouze při povoleném aria2. Jedná se o stejnou "
+"možnost, jako když do aria2c zadáte vlajku <code>-x</code>."
 
 #. (itstool) path: item/p
 #: yelp/C/downloader.page:57
@@ -244,11 +261,13 @@ msgid ""
 "The maximum number of connection that can be used per server. Must be an "
 "integer value between 1 and 32."
 msgstr ""
+"Maximální počet spojení, které lze využít na server. Musí to být celočíselná "
+"hodnota mezi 1 a 32."
 
 #. (itstool) path: note/p
 #: yelp/C/downloader.page:59
 msgid "Default: 16"
-msgstr ""
+msgstr "Výchozí: 16"
 
 #. (itstool) path: item/title
 #: yelp/C/downloader.page:63
@@ -351,18 +370,18 @@ msgstr ""
 #: yelp/C/index.page:7
 msgctxt "link"
 msgid "Parabolic Help"
-msgstr ""
+msgstr "Nápověda aplikace Parabolic"
 
 #. (itstool) path: info/title
 #: yelp/C/index.page:8
 msgctxt "text"
 msgid "Parabolic Help"
-msgstr ""
+msgstr "Nápověda aplikace Parabolic"
 
 #. (itstool) path: page/title
 #: yelp/C/index.page:20
 msgid "<_:media-1/> Parabolic Help"
-msgstr ""
+msgstr "<_:media-1/> Nápověda aplikace Parabolic"
 
 #. (itstool) path: page/p
 #: yelp/C/index.page:21
@@ -370,6 +389,8 @@ msgid ""
 "This documentation will help you understand how to configure <app>Parabolic</"
 "app> to get the most of the application."
 msgstr ""
+"Tato dokumentace vám pomůže pochopit, jak nastavit aplikaci <app>Parabolic</"
+"app>, abyste jí uměli používat na maximum."
 
 #. (itstool) path: page/p
 #: yelp/C/index.page:22
@@ -379,6 +400,11 @@ msgid ""
 "Parabolic/discussions\">discussions</link> on Github, or <link href="
 "\"https://bit.ly/3GrfEid\">join our Matrix channel</link>."
 msgstr ""
+"Pokud potřebujete pomoc, použijte <link href=\"https://github.com/"
+"NickvisionApps/Parabolic/issues\">problémy</link> nebo <link href=\"https"
+"://github.com/NickvisionApps/Parabolic/discussions\">diskuze</link> na "
+"GitHubu nebo se <link href=\"https://bit.ly/3GrfEid\">připojte do našeho "
+"kanálu Matrix</link>."
 
 #. (itstool) path: page/p
 #: yelp/C/index.page:23
@@ -387,20 +413,20 @@ msgid ""
 "misuse of this program that may violate local copyright/DMCA laws. Users use "
 "this application at their own risk."
 msgstr ""
-"Autoři programu Nickvision Parabolic nenesou odpovědnost za jakékoli "
-"zneužití tohoto programu, které může porušovat místní zákony o autorských "
-"právech/DMCA. Uživatelé používají tuto aplikaci na vlastní nebezpečí."
+"Autoři aplikace Nickvision Parabolic nenesou odpovědnost za jakékoli "
+"zneužití tohoto programu, které může porušovat místní zákony o autorských prá"
+"vech/DMCA. Uživatelé používají tuto aplikaci na vlastní nebezpečí."
 
 #. (itstool) path: info/title
 #: yelp/C/keyring.page:8
 msgctxt "link"
 msgid "Keyring 🔑"
-msgstr ""
+msgstr "Klíčenka 🔑"
 
 #. (itstool) path: page/title
 #: yelp/C/keyring.page:20
 msgid "Keyring"
-msgstr ""
+msgstr "Klíčenka"
 
 #. (itstool) path: page/p
 #: yelp/C/keyring.page:21
@@ -522,12 +548,12 @@ msgstr ""
 #: yelp/C/newDownload.page:8
 msgctxt "link"
 msgid "New Download 🆕"
-msgstr ""
+msgstr "Nové stahování 🆕"
 
 #. (itstool) path: page/title
 #: yelp/C/newDownload.page:20
 msgid "New Download"
-msgstr ""
+msgstr "Nové stahování"
 
 #. (itstool) path: page/p
 #: yelp/C/newDownload.page:21
