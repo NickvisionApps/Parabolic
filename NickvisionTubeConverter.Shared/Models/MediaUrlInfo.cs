@@ -173,7 +173,12 @@ public class MediaUrlInfo
     private void ParseFromPyDict(dynamic yt, PyDict mediaInfo, uint playlistPosition, string defaultUrl)
     {
         var title = mediaInfo.HasKey("title") ? (mediaInfo["title"].As<string?>() ?? "Media") : "Media";
-        foreach (var c in Path.GetInvalidFileNameChars())
+        var invalidChars = new List<char> (Path.GetInvalidFileNameChars());
+        if (Configuration.Current.LimitCharacters)
+        {
+            invalidChars.AddRange(new char[] { '"', '<', '>', ':', '\\', '/', '|', '?', '*' });
+        }
+        foreach (var c in invalidChars)
         {
             title = title.Replace(c, '_');
         }

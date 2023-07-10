@@ -44,6 +44,10 @@ public class Configuration
     /// </summary>
     public bool OverwriteExistingFiles { get; set; }
     /// <summary>
+    /// Limit characters in filenames to Windows supported
+    /// </summary>
+    public bool LimitCharacters { get; set; }
+    /// <summary>
     /// Speed limit in KiB/s (should be between 512-10240)
     /// </summary>
     public uint SpeedLimit { get; set; }
@@ -119,6 +123,7 @@ public class Configuration
         RunInBackground = RuntimeInformation.IsOSPlatform(OSPlatform.Windows);
         MaxNumberOfActiveDownloads = 5;
         OverwriteExistingFiles = true;
+        LimitCharacters = RuntimeInformation.IsOSPlatform(OSPlatform.Windows);
         SpeedLimit = 1024;
         UseAria = false;
         AriaMaxConnectionsPerServer = 16;

@@ -41,6 +41,7 @@ public partial class PreferencesDialog : Adw.PreferencesWindow
     [Gtk.Connect] private readonly Gtk.Switch _backgroundSwitch;
     [Gtk.Connect] private readonly Gtk.SpinButton _maxNumberOfActiveDownloadsSpin;
     [Gtk.Connect] private readonly Gtk.Switch _overwriteSwitch;
+    [Gtk.Connect] private readonly Gtk.Switch _limitCharactersSwitch;
     [Gtk.Connect] private readonly Gtk.SpinButton _speedLimitSpin;
     [Gtk.Connect] private readonly Adw.ExpanderRow _useAriaRow;
     [Gtk.Connect] private readonly Gtk.SpinButton _ariaMaxConnectionsPerServerSpin;
@@ -90,6 +91,7 @@ public partial class PreferencesDialog : Adw.PreferencesWindow
         _backgroundSwitch.SetActive(_controller.RunInBackground);
         _maxNumberOfActiveDownloadsSpin.SetValue(_controller.MaxNumberOfActiveDownloads);
         _overwriteSwitch.SetActive(_controller.OverwriteExistingFiles);
+        _limitCharactersSwitch.SetActive(_controller.LimitCharacters);
         _speedLimitSpin.SetValue(_controller.SpeedLimit);
         _useAriaRow.SetEnableExpansion(_controller.UseAria);
         _ariaMaxConnectionsPerServerSpin.SetValue(_controller.AriaMaxConnectionsPerServer);
@@ -128,6 +130,7 @@ public partial class PreferencesDialog : Adw.PreferencesWindow
         _controller.RunInBackground = _backgroundSwitch.GetActive();
         _controller.MaxNumberOfActiveDownloads = (int)_maxNumberOfActiveDownloadsSpin.GetValue();
         _controller.OverwriteExistingFiles = _overwriteSwitch.GetActive();
+        _controller.LimitCharacters = _limitCharactersSwitch.GetActive();
         _controller.SpeedLimit = (uint)_speedLimitSpin.GetValue();
         _controller.UseAria = _useAriaRow.GetEnableExpansion();
         _controller.AriaMaxConnectionsPerServer = (int)_ariaMaxConnectionsPerServerSpin.GetValue();
