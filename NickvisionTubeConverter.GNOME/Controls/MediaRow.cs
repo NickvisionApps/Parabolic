@@ -11,16 +11,18 @@ public class MediaRow : Adw.EntryRow
     private MediaInfo _mediaInfo;
     private string _numberString;
     private readonly Gtk.EventControllerKey _titleKeyController;
+    private readonly bool _limitChars;
 
     [Gtk.Connect] private readonly Gtk.CheckButton _downloadCheck;
     [Gtk.Connect] private readonly Gtk.Button _undoButton;
 
     public event EventHandler<EventArgs> OnSelectionChanged;
 
-    private MediaRow(Gtk.Builder builder, MediaInfo mediaInfo) : base(builder.GetPointer("_root"), false)
+    private MediaRow(Gtk.Builder builder, MediaInfo mediaInfo, bool limitChars) : base(builder.GetPointer("_root"), false)
     {
         _mediaInfo = mediaInfo;
         _numberString = "";
+        _limitChars = limitChars;
         //Build UI
         builder.Connect(this);
         SetText(_mediaInfo.Title);
@@ -52,7 +54,7 @@ public class MediaRow : Adw.EntryRow
         };
     }
 
-    public MediaRow(MediaInfo mediaInfo) : this(Builder.FromFile("media_row.ui"), mediaInfo)
+    public MediaRow(MediaInfo mediaInfo, bool limitChars) : this(Builder.FromFile("media_row.ui"), mediaInfo, limitChars)
     {
 
     }
@@ -65,6 +67,15 @@ public class MediaRow : Adw.EntryRow
 
     private bool OnKeyPressed(Gtk.EventControllerKey sender, Gtk.EventControllerKey.KeyPressedSignalArgs e)
     {
-        return e.Keyval == 47; // Disallow "/"
+        var res = e.Keyval == 0x2f; // '/'
+        if (!res && _limitChars)
+        {
+            res = e.Keyval switch
+            {
+                0x22 or 0x3c or 0x3e or 0x3a or 0x5c or 0x7c or 0x3f or 0x2a => true, // '"', '<', '>', ':', '\\', '|', '?', '*'
+                _ => false
+            };
+        }
+        return res;
     }
 }

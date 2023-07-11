@@ -81,6 +81,16 @@ public class PreferencesViewController
     }
 
     /// <summary>
+    /// Limit characters in filenames to Windows supported
+    /// </summary>
+    public bool LimitCharacters
+    {
+        get => Configuration.Current.LimitCharacters;
+
+        set => Configuration.Current.LimitCharacters = value;
+    }
+
+    /// <summary>
     /// Speed limit in KiB/s (should be between 512-10240)
     /// </summary>
     public uint SpeedLimit

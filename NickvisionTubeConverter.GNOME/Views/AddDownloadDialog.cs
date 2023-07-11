@@ -478,7 +478,7 @@ public partial class AddDownloadDialog : Adw.Window
             {
                 foreach (var mediaInfo in _controller.MediaList)
                 {
-                    var row = new MediaRow(mediaInfo);
+                    var row = new MediaRow(mediaInfo, _controller.LimitCharacters);
                     _mediaRows.Add(row);
                     row.OnSelectionChanged += PlaylistChanged;
                     _playlistGroup.Add(row);
@@ -494,7 +494,7 @@ public partial class AddDownloadDialog : Adw.Window
             }
             else
             {
-                var row = new MediaRow(_controller.MediaList[0]);
+                var row = new MediaRow(_controller.MediaList[0], _controller.LimitCharacters);
                 row.SetActivatesDefault(true);
                 _mediaRows.Add(row);
                 _mediaGroup.SetVisible(true);

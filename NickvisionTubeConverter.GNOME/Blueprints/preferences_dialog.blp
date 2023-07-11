@@ -97,6 +97,21 @@ Adw.PreferencesWindow _root {
       }
 
       Adw.ActionRow {
+        title: _("Limit characters in filenames");
+        subtitle: _("Allow only Windows supported characters.");
+
+        [prefix]
+        Gtk.Image {
+          icon-name: "insert-text-symbolic";
+        }
+
+        [suffix]
+        Gtk.Switch _limitCharactersSwitch {
+          valign: center;
+        }
+      }
+
+      Adw.ActionRow {
         title: _("Speed Limit");
         subtitle: _("This limit (in KiB/s) is applied to downloads that have speed limit enabled. Changing the value doesn't affect already running downloads.");
 
