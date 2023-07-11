@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-11 00:34+0200\n"
+"POT-Creation-Date: 2023-07-11 13:56+0200\n"
 "PO-Revision-Date: 2023-06-14 01:21+0000\n"
 "Last-Translator: Khải <hvksmr1996@gmail.com>\n"
 "Language-Team: Vietnamese <https://hosted.weblate.org/projects/nickvision-"
@@ -202,7 +202,7 @@ msgstr "Lỗi"
 msgid "File already exists, and overwriting is disallowed"
 msgstr "Tệp đã tồn tại, ghi đè không được cho phép"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Controls/MediaRow.cs:27
+#: ../../../../NickvisionTubeConverter.GNOME/Controls/MediaRow.cs:29
 msgid "File Name"
 msgstr "Tên Tệp"
 
@@ -314,8 +314,8 @@ msgstr "Thư mục Lưu"
 msgid "Save Folder (Invalid)"
 msgstr "Thư mục Lưu (Không hợp lệ)"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/PreferencesDialog.cs:192
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:241
+#: ../../../../NickvisionTubeConverter.GNOME/Views/PreferencesDialog.cs:195
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:257
 msgid "Select Cookies File"
 msgstr "Chọn Tệp Cookie"
 
@@ -354,12 +354,12 @@ msgstr "Thời điểm Bắt đầu (Không hợp lệ)"
 msgid "Stopped"
 msgstr "Đã dừng"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/PreferencesDialog.cs:165
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:190
+#: ../../../../NickvisionTubeConverter.GNOME/Views/PreferencesDialog.cs:168
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:206
 msgid "Subtitle Languages (Comma-Separated)"
 msgstr ""
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/PreferencesDialog.cs:175
+#: ../../../../NickvisionTubeConverter.GNOME/Views/PreferencesDialog.cs:178
 #, fuzzy
 msgid "Subtitle Languages (Invalid)"
 msgstr "Thời điểm Bắt đầu (Không hợp lệ)"
@@ -495,7 +495,7 @@ msgid "Number Titles"
 msgstr "Đánh số Tiêu đề"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:264
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:100
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:116
 msgid "Speed Limit"
 msgstr "Giới hạn Tốc độ"
 
@@ -674,7 +674,15 @@ msgstr "Giới hạn Số lượng Tải xuống Đồng thời"
 msgid "Overwrite Existing Files"
 msgstr "Ghi đè Tệp đã Tồn tại"
 
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:100
+msgid "Limit Filename Characters"
+msgstr ""
+
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:101
+msgid "Restricts characters in filenames to only those supported by Windows."
+msgstr ""
+
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:117
 msgid ""
 "This limit (in KiB/s) is applied to downloads that have speed limit enabled. "
 "Changing the value doesn't affect already running downloads."
@@ -683,11 +691,11 @@ msgstr ""
 "hạn tốc độ. Thay đổi giá trị này không ảnh hưởng đến những tải xuống đang "
 "chạy."
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:122
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:138
 msgid "Use aria2"
 msgstr "Sử dụng aria2"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:123
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:139
 msgid ""
 "Enable to use aria2 downloader. It can be faster, but you will not see "
 "download progress."
@@ -695,28 +703,28 @@ msgstr ""
 "Bật để sử dụng trình tải xuống aria2. Nó có thể nhanh hơn, nhưng bạn sẽ "
 "không thấy tiến trình tải xuống."
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:132
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:148
 msgid "Max Connections Per Server (-x)"
 msgstr "Số lượng Kết nối Tối đa Trên Máy chủ (-x)"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:155
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:184
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:171
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:200
 msgid "Reset to default"
 msgstr "Đặt lại về mặc định"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:160
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:176
 msgid "Minimum Split Size (-k)"
 msgstr "Kích thước Tách Tối thiểu (-k)"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:161
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:177
 msgid "The minimum size of which to split a file (in MiB)."
 msgstr "Kích thước tối thiểu để tách một tệp tin (tính bằng MiB)."
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:203
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:219
 msgid "Language Code Information"
 msgstr ""
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:218
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:234
 msgid ""
 "Some sites use two-letter language codes, whereas others use three-letter. "
 "For example, \"en\" and \"eng\" are both used for English.\n"
@@ -725,11 +733,11 @@ msgid ""
 "the best results."
 msgstr ""
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:229
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:245
 msgid "Cookies File"
 msgstr "Tệp Cookie"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:230
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:246
 msgid ""
 "A cookies file can be provided to yt-dlp to allow downloading media that "
 "requires a login."
@@ -737,16 +745,16 @@ msgstr ""
 "Một tệp cookie có thể được cung cấp cho yt-dlp để tải những phương tiện "
 "truyền thông có yêu cầu đăng nhập."
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:251
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:267
 msgid "Clear Cookies File"
 msgstr "Xóa Tệp Cookie"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:261
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:277
 #, fuzzy
 msgid "Cookies File Information"
 msgstr "Tệp Cookie"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:276
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:292
 msgid ""
 "Cookies can be passed to yt-dlp in the form of TXT files. Export cookies "
 "from your browser using the following extensions (use at your own risk):"
@@ -754,15 +762,15 @@ msgstr ""
 "Cookie có thể được chuyển cho yt-dlp dưới dạng tệp TXT. Xuất Cookie từ trình "
 "duyệt bằng những phần mở rộng sau (bạn tự chịu mọi rủi ro):"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:313
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:329
 msgid "Converter"
 msgstr "Bộ chuyển đổi"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:316
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:332
 msgid "Disallow Conversions"
 msgstr "Không cho phép Chuyển đổi"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:317
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:333
 #, fuzzy
 msgid ""
 "If enabled, Parabolic will download the appropriate video/audio format for "
@@ -773,15 +781,15 @@ msgstr ""
 "chất lượng được chọn mà không chuyển đổi sang định dạng khác. (Bạn sẽ không "
 "thể chọn định dạng của tệp)"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:332
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:348
 msgid "Embed Metadata"
 msgstr "Nhúng Siêu dữ liệu"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:341
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:357
 msgid "Crop Audio Thumbnails"
 msgstr "Cắt Thumbnail Âm thanh"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:342
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:358
 #, fuzzy
 msgid ""
 "If enabled, Parabolic will automatically turn on the crop thumbnail advanced "
@@ -790,7 +798,7 @@ msgstr ""
 "Nếu bật, Tube Converter sẽ tự động bật các lựa chọn cắt thumbnail nâng cao "
 "dành cho âm thanh được tải xuống"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:358
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:374
 msgid "Embed Chapters"
 msgstr "Nhúng Chương"
 

@@ -97,8 +97,9 @@ Adw.PreferencesWindow _root {
       }
 
       Adw.ActionRow {
-        title: _("Limit characters in filenames");
-        subtitle: _("Allow only Windows supported characters.");
+        title: _("Limit Filename Characters");
+        subtitle: _("Restricts characters in filenames to only those supported by Windows.");
+        activatable-widget: _limitCharactersSwitch;
 
         [prefix]
         Gtk.Image {

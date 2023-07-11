@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-11 00:34+0200\n"
+"POT-Creation-Date: 2023-07-11 13:56+0200\n"
 "PO-Revision-Date: 2023-07-08 00:44+0000\n"
 "Last-Translator: lune <lune@users.noreply.hosted.weblate.org>\n"
 "Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
@@ -206,7 +206,7 @@ msgstr "Erro"
 msgid "File already exists, and overwriting is disallowed"
 msgstr "O arquivo já existe e a substituição não é permitida"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Controls/MediaRow.cs:27
+#: ../../../../NickvisionTubeConverter.GNOME/Controls/MediaRow.cs:29
 msgid "File Name"
 msgstr "Nome do arquivo"
 
@@ -323,8 +323,8 @@ msgstr "Pasta de destino"
 msgid "Save Folder (Invalid)"
 msgstr "Pasta de destino (Inválida)"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/PreferencesDialog.cs:192
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:241
+#: ../../../../NickvisionTubeConverter.GNOME/Views/PreferencesDialog.cs:195
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:257
 msgid "Select Cookies File"
 msgstr "Selecione o arquivo de cookies"
 
@@ -363,12 +363,12 @@ msgstr "Início (Inválido)"
 msgid "Stopped"
 msgstr "Parado"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/PreferencesDialog.cs:165
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:190
+#: ../../../../NickvisionTubeConverter.GNOME/Views/PreferencesDialog.cs:168
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:206
 msgid "Subtitle Languages (Comma-Separated)"
 msgstr "Idiomas das legendas (separados por vírgulas)"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/PreferencesDialog.cs:175
+#: ../../../../NickvisionTubeConverter.GNOME/Views/PreferencesDialog.cs:178
 msgid "Subtitle Languages (Invalid)"
 msgstr "Idiomas das legendas (inválido)"
 
@@ -503,7 +503,7 @@ msgid "Number Titles"
 msgstr "Numerar os títulos"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:264
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:100
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:116
 msgid "Speed Limit"
 msgstr "Limite de velocidade"
 
@@ -686,7 +686,15 @@ msgstr "Número máximo de downloads ativos"
 msgid "Overwrite Existing Files"
 msgstr "Sobrescrever arquivos existentes"
 
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:100
+msgid "Limit Filename Characters"
+msgstr ""
+
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:101
+msgid "Restricts characters in filenames to only those supported by Windows."
+msgstr ""
+
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:117
 msgid ""
 "This limit (in KiB/s) is applied to downloads that have speed limit enabled. "
 "Changing the value doesn't affect already running downloads."
@@ -695,11 +703,11 @@ msgstr ""
 "velocidade ativo. A alteração do valor não afeta os downloads que já estão "
 "em execução."
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:122
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:138
 msgid "Use aria2"
 msgstr "Usar aria2"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:123
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:139
 msgid ""
 "Enable to use aria2 downloader. It can be faster, but you will not see "
 "download progress."
@@ -707,28 +715,28 @@ msgstr ""
 "Ativa o uso do gerenciador de downloads aria2. Ele pode ser mais rápido, "
 "porém você não verá o progresso do download."
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:132
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:148
 msgid "Max Connections Per Server (-x)"
 msgstr "Máximo de conexões por servidor (-x)"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:155
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:184
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:171
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:200
 msgid "Reset to default"
 msgstr "Redefinir para o padrão"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:160
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:176
 msgid "Minimum Split Size (-k)"
 msgstr "Tamanho mínimo da divisão (-k)"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:161
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:177
 msgid "The minimum size of which to split a file (in MiB)."
 msgstr "O tamanho mínimo para dividir um arquivo (em MiB)."
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:203
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:219
 msgid "Language Code Information"
 msgstr "Informações sobre o código do idioma"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:218
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:234
 msgid ""
 "Some sites use two-letter language codes, whereas others use three-letter. "
 "For example, \"en\" and \"eng\" are both used for English.\n"
@@ -743,11 +751,11 @@ msgstr ""
 "Para obter os melhores resultados, especifique códigos de duas e três letras "
 "para seus idiomas."
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:229
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:245
 msgid "Cookies File"
 msgstr "Aquivo de cookies"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:230
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:246
 msgid ""
 "A cookies file can be provided to yt-dlp to allow downloading media that "
 "requires a login."
@@ -755,15 +763,15 @@ msgstr ""
 "Um arquivo de cookies pode ser fornecido ao yt-dlp para permitir o download "
 "de arquivos de mídia que exijam um login."
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:251
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:267
 msgid "Clear Cookies File"
 msgstr "Limpar arquivo de cookies"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:261
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:277
 msgid "Cookies File Information"
 msgstr "Informações sobre arquivo de cookies"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:276
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:292
 msgid ""
 "Cookies can be passed to yt-dlp in the form of TXT files. Export cookies "
 "from your browser using the following extensions (use at your own risk):"
@@ -772,15 +780,15 @@ msgstr ""
 "Exporte os cookies de seu navegador usando as seguintes extensões (use por "
 "sua própria conta e risco):"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:313
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:329
 msgid "Converter"
 msgstr "Conversor"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:316
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:332
 msgid "Disallow Conversions"
 msgstr "Não permitir conversões"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:317
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:333
 msgid ""
 "If enabled, Parabolic will download the appropriate video/audio format for "
 "the selected quality without converting to other formats. (You will be "
@@ -790,15 +798,15 @@ msgstr ""
 "para a qualidade selecionada sem converter para outros formatos. (Não será "
 "possível selecionar um formato de arquivo)"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:332
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:348
 msgid "Embed Metadata"
 msgstr "Incorporar Metadados"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:341
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:357
 msgid "Crop Audio Thumbnails"
 msgstr "Cortar miniaturas para áudio"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:342
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:358
 msgid ""
 "If enabled, Parabolic will automatically turn on the crop thumbnail advanced "
 "option for audio downloads"
@@ -806,7 +814,7 @@ msgstr ""
 "Se ativada, o Parabolic irá automaticamente cortar as miniatura para "
 "downloads de áudio"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:358
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:374
 msgid "Embed Chapters"
 msgstr "Incorporar capítulos"
 

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-11 00:34+0200\n"
+"POT-Creation-Date: 2023-07-11 13:56+0200\n"
 "PO-Revision-Date: 2023-06-26 20:30+0000\n"
 "Last-Translator: Dan <jonweblin2205@protonmail.com>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/nickvision-"
@@ -16,8 +16,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Generator: Weblate 4.18.1\n"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:735
@@ -209,7 +209,7 @@ msgstr "Помилка"
 msgid "File already exists, and overwriting is disallowed"
 msgstr "Файл вже існує, і його перезапис заборонено"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Controls/MediaRow.cs:27
+#: ../../../../NickvisionTubeConverter.GNOME/Controls/MediaRow.cs:29
 msgid "File Name"
 msgstr "Ім'я файлу"
 
@@ -326,8 +326,8 @@ msgstr "Зберегти теку"
 msgid "Save Folder (Invalid)"
 msgstr "Зберегти папку (неправильно)"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/PreferencesDialog.cs:192
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:241
+#: ../../../../NickvisionTubeConverter.GNOME/Views/PreferencesDialog.cs:195
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:257
 msgid "Select Cookies File"
 msgstr "Виберіть файл cookies"
 
@@ -365,12 +365,12 @@ msgstr "Час початку (неправильний)"
 msgid "Stopped"
 msgstr "Зупинено"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/PreferencesDialog.cs:165
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:190
+#: ../../../../NickvisionTubeConverter.GNOME/Views/PreferencesDialog.cs:168
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:206
 msgid "Subtitle Languages (Comma-Separated)"
 msgstr "Мови субтитрів (через кому)"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/PreferencesDialog.cs:175
+#: ../../../../NickvisionTubeConverter.GNOME/Views/PreferencesDialog.cs:178
 msgid "Subtitle Languages (Invalid)"
 msgstr "Мови субтитрів (неправильні)"
 
@@ -507,7 +507,7 @@ msgid "Number Titles"
 msgstr "Пронумерувати заголовки"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:264
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:100
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:116
 msgid "Speed Limit"
 msgstr "Обмеження швидкості"
 
@@ -690,7 +690,15 @@ msgstr "Максимальна кількість активних завант�
 msgid "Overwrite Existing Files"
 msgstr "Перезаписати наявні файли"
 
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:100
+msgid "Limit Filename Characters"
+msgstr ""
+
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:101
+msgid "Restricts characters in filenames to only those supported by Windows."
+msgstr ""
+
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:117
 msgid ""
 "This limit (in KiB/s) is applied to downloads that have speed limit enabled. "
 "Changing the value doesn't affect already running downloads."
@@ -698,11 +706,11 @@ msgstr ""
 "Цей ліміт (у Кбіт/с) застосовується до завантажень, для яких увімкнено "
 "обмеження швидкості. Зміна значення не впливає на вже запущені завантаження."
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:122
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:138
 msgid "Use aria2"
 msgstr "Використовувати aria2"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:123
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:139
 msgid ""
 "Enable to use aria2 downloader. It can be faster, but you will not see "
 "download progress."
@@ -710,28 +718,28 @@ msgstr ""
 "Увімкніть використання завантажувача aria2. Це може бути швидше, але ви не "
 "побачите прогрес завантаження."
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:132
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:148
 msgid "Max Connections Per Server (-x)"
 msgstr "Максимальна кількість з'єднань на сервер (-x)"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:155
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:184
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:171
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:200
 msgid "Reset to default"
 msgstr "Скидання до налаштувань за замовчуванням"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:160
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:176
 msgid "Minimum Split Size (-k)"
 msgstr "Мінімальний розмір розділення (-k)"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:161
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:177
 msgid "The minimum size of which to split a file (in MiB)."
 msgstr "Мінімальний розмір, на який потрібно розділити файл (у MiB)."
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:203
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:219
 msgid "Language Code Information"
 msgstr "Інформація про мовний код"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:218
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:234
 msgid ""
 "Some sites use two-letter language codes, whereas others use three-letter. "
 "For example, \"en\" and \"eng\" are both used for English.\n"
@@ -745,11 +753,11 @@ msgstr ""
 "Будь ласка, вказуйте як двобуквені, так і трибуквені коди для ваших мов, щоб "
 "отримати найкращі результати."
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:229
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:245
 msgid "Cookies File"
 msgstr "Файл cookie"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:230
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:246
 msgid ""
 "A cookies file can be provided to yt-dlp to allow downloading media that "
 "requires a login."
@@ -757,15 +765,15 @@ msgstr ""
 "Файл cookies може бути наданий yt-dlp, щоб дозволити завантажувати медіа, "
 "які потребують входу."
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:251
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:267
 msgid "Clear Cookies File"
 msgstr "Очистити файл cookie"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:261
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:277
 msgid "Cookies File Information"
 msgstr "Інформація про файл cookie"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:276
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:292
 msgid ""
 "Cookies can be passed to yt-dlp in the form of TXT files. Export cookies "
 "from your browser using the following extensions (use at your own risk):"
@@ -774,15 +782,15 @@ msgstr ""
 "файли cookie з вашого браузера за допомогою наступних розширень "
 "(використовуйте на свій страх і ризик):"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:313
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:329
 msgid "Converter"
 msgstr "Конвертер"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:316
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:332
 msgid "Disallow Conversions"
 msgstr "Заборонити конвертацію"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:317
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:333
 msgid ""
 "If enabled, Parabolic will download the appropriate video/audio format for "
 "the selected quality without converting to other formats. (You will be "
@@ -792,15 +800,15 @@ msgstr ""
 "вибраної якості без конвертації в інші формати. (Ви не зможете вибрати "
 "формат файлу)"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:332
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:348
 msgid "Embed Metadata"
 msgstr "Вставити метадані"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:341
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:357
 msgid "Crop Audio Thumbnails"
 msgstr "Обрізати мініатюри аудіо"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:342
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:358
 msgid ""
 "If enabled, Parabolic will automatically turn on the crop thumbnail advanced "
 "option for audio downloads"
@@ -808,7 +816,7 @@ msgstr ""
 "Якщо ввімкнено, Parabolic автоматично вмикає розширену опцію мініатюр для "
 "завантаження аудіо"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:358
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:374
 msgid "Embed Chapters"
 msgstr "Вставити розділи"
 
