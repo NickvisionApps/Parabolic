@@ -90,6 +90,15 @@ public class AddDownloadDialogController
     /// Whether to turn on crop thumbnail for audio downloads
     /// </summary>
     public bool CropAudioThumbnails => Configuration.Current.CropAudioThumbnails;
+    /// <summary>
+    /// Limit characters in filenames to Windows supported
+    /// </summary>
+    public bool LimitCharacters
+    {
+        get => Configuration.Current.LimitCharacters;
+
+        set => Configuration.Current.LimitCharacters = value;
+    }
 
     /// <summary>
     /// Constructs a AddDownloadDialogController
