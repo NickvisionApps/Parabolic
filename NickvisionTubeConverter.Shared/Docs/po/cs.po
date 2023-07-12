@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: 2023-06-26 22:00+0300\n"
-"PO-Revision-Date: 2023-07-10 22:33+0000\n"
+"PO-Revision-Date: 2023-07-12 18:52+0000\n"
 "Last-Translator: Fjuro <ifjuro@proton.me>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/"
 "nickvision-tube-converter/docs/cs/>\n"
@@ -272,7 +272,7 @@ msgstr "Výchozí: 16"
 #. (itstool) path: item/title
 #: yelp/C/downloader.page:63
 msgid "Minimum Split Size"
-msgstr ""
+msgstr "Minimální velikost rozdělení"
 
 #. (itstool) path: item/p
 #: yelp/C/downloader.page:64
@@ -280,6 +280,8 @@ msgid ""
 "This option only applies when using aria2 is enabled. This option is the "
 "same as the <code>-k</code> flag passed to aria2c."
 msgstr ""
+"Tato funkce je použita pouze při povoleném aria2. Jedná se o stejnou "
+"možnost, jako když do aria2c zadáte vlajku <code>-k</code>."
 
 #. (itstool) path: item/p
 #: yelp/C/downloader.page:65
@@ -287,16 +289,18 @@ msgid ""
 "The minimum size, in MiB, of which to split a file. Must be an integer value "
 "between 1 and 1024."
 msgstr ""
+"Minimální velikost, v MiB, na kterou rozdělit soubor. Musí to být "
+"celočíselná hodnota mezi 1 a 1024."
 
 #. (itstool) path: note/p
 #: yelp/C/downloader.page:67
 msgid "Default: 20"
-msgstr ""
+msgstr "Výchozí: 20"
 
 #. (itstool) path: item/title
 #: yelp/C/downloader.page:71
 msgid "Subtitles Languages"
-msgstr ""
+msgstr "Jazyky titulků"
 
 #. (itstool) path: item/p
 #: yelp/C/downloader.page:72
@@ -305,6 +309,9 @@ msgid ""
 "when selecting languages of subtitles to download. Only applies when a valid "
 "<code>Subtitle</code> format is selected in a download."
 msgstr ""
+"Seznam dvoupísmenných a třípísmenných jazykových kódů oddělených čárkou, "
+"které se použijí při výběru jazyků titulků ke stažení. Použije se pouze v "
+"případě, že je při stahování vybrán platný formát <code>Subtitle</code>."
 
 #. (itstool) path: note/p
 #: yelp/C/downloader.page:74
@@ -314,6 +321,10 @@ msgid ""
 "Please specify both two-letter and three-letter codes for your languages for "
 "the best results."
 msgstr ""
+"Některé stránky používají dvoupísmenné jazykové kódy, jiné třípísmenné. "
+"Například pro angličtinu se používá <code>en</code> i <code>eng</code>. Pro "
+"dosažení nejlepších výsledků zadejte pro své jazyky dvoupísmenné i "
+"třípísmenné kódy."
 
 #. (itstool) path: note/p
 #: yelp/C/downloader.page:77
@@ -321,11 +332,13 @@ msgid ""
 "Default: Your culture's two-letter and three-letter language code. For "
 "example, on an en-US system the default would be <code>en,eng</code>"
 msgstr ""
+"Výchozí: dvoupísmenný a třípísmenný kód tvého jazyka. Například na americkém "
+"(en-US) systému budou výchozí kódy <code>en,eng</code>"
 
 #. (itstool) path: item/title
 #: yelp/C/downloader.page:81
 msgid "Cookies File"
-msgstr ""
+msgstr "Soubor cookies"
 
 #. (itstool) path: item/p
 #: yelp/C/downloader.page:82
@@ -334,6 +347,9 @@ msgid ""
 "useful when downloading media that requires a login, for example: private "
 "YouTube videos."
 msgstr ""
+"Soubor .txt se soubory cookie, který se při stahování předá programu yt-dlp. "
+"To může být užitečné při stahování médií, která vyžadují přihlášení, "
+"například soukromá videa na YouTube."
 
 #. (itstool) path: item/p
 #: yelp/C/downloader.page:83
@@ -341,6 +357,7 @@ msgid ""
 "Use one of the following extensions for getting a cookies file from your "
 "browser:"
 msgstr ""
+"Pro získání cookies použijte jeden z následujících rozšíření prohlížeče:"
 
 #. (itstool) path: item/p
 #: yelp/C/downloader.page:84
@@ -348,6 +365,8 @@ msgid ""
 "Chrome: <code>https://chrome.google.com/webstore/detail/get-cookiestxt-"
 "locally/cclelndahbckbenkjhflpdbgdldlbecc</code>"
 msgstr ""
+"Chrome: <code>https://chrome.google.com/webstore/detail/"
+"get-cookiestxt-locally/cclelndahbckbenkjhflpdbgdldlbecc</code>"
 
 #. (itstool) path: item/p
 #: yelp/C/downloader.page:85
@@ -355,16 +374,18 @@ msgid ""
 "Firefox: <code>https://addons.mozilla.org/en-US/firefox/addon/cookies-txt/</"
 "code>"
 msgstr ""
+"Firefox: <code>https://addons.mozilla.org/en-US/firefox/addon/cookies-txt/"
+"</code>"
 
 #. (itstool) path: note/p
 #: yelp/C/downloader.page:87
 msgid "Use these extensions at your own risk."
-msgstr ""
+msgstr "Tato rozšíření používáte na vlastní nebezpečí."
 
 #. (itstool) path: note/p
 #: yelp/C/downloader.page:90
 msgid "Default: No File Selected"
-msgstr ""
+msgstr "Výchozí: žádný vybraný soubor"
 
 #. (itstool) path: info/title
 #: yelp/C/index.page:7
@@ -430,23 +451,24 @@ msgstr "Klíčenka"
 
 #. (itstool) path: page/p
 #: yelp/C/keyring.page:21
-#, fuzzy
 msgid ""
 "This page explains all options for using the Keyring in <app>Parabolic</app>."
 msgstr ""
-"Na této straně najdete vysvětlení všech možností konfigurace konvertoru v "
-"předvolbách v aplikaci <app>Tube Converter</app>."
+"Na této straně najdete vysvětlení všech možností konfigurace klíčenky v "
+"předvolbách v aplikaci <app>Parabolic</app>."
 
 #. (itstool) path: item/title
 #: yelp/C/keyring.page:25
 msgid "Backend"
-msgstr ""
+msgstr "Backend"
 
 #. (itstool) path: item/p
 #: yelp/C/keyring.page:26
 msgid ""
 "The Keyring feature is backed by the <code>Nickvision.Keyring</code> library."
 msgstr ""
+"Funkce klíčenky je provozována pomocí knihovny <code>Nickvision."
+"Keyring</code>."
 
 #. (itstool) path: item/p
 #: yelp/C/keyring.page:27
@@ -454,11 +476,13 @@ msgid ""
 "This library uses SQLCipher to securley store credentials in a platform "
 "independent manner."
 msgstr ""
+"Tato knihovna používá rozšíření SQLCipher pro bezpečné ukládání údajů "
+"způsobem nezávislým na platformě."
 
 #. (itstool) path: item/title
 #: yelp/C/keyring.page:30
 msgid "Enabling The Keyring"
-msgstr ""
+msgstr "Povolení klíčenky"
 
 #. (itstool) path: item/p
 #: yelp/C/keyring.page:31
@@ -466,16 +490,19 @@ msgid ""
 "When the Keyring is enabled, the user will be asked to enter a password to "
 "encrypt the Keyring."
 msgstr ""
+"Při povolení klíčenky bude uživatel požádán o zadání hesla pro její "
+"zašifrování."
 
 #. (itstool) path: item/p
 #: yelp/C/keyring.page:32
 msgid "There is no way to recover the Keyring password if lost."
 msgstr ""
+"V případě ztracení hesla klíčenky neexistuje způsob, jak jej získat zpět."
 
 #. (itstool) path: item/p
 #: yelp/C/keyring.page:33
 msgid "This password will be used to unlock the Keyring in the future."
-msgstr ""
+msgstr "Toto heslo bude použito k odemknutí klíčenky v budoucnu."
 
 #. (itstool) path: note/p
 #: yelp/C/keyring.page:35
@@ -483,6 +510,8 @@ msgid ""
 "If the Keyring password is lost, the user will be unable to use this feature "
 "unless the Keyring database file is deleted."
 msgstr ""
+"Při ztrátě hesla ke klíčence nebude uživatel moci použít tuto funkci, pokud "
+"nebude odstraněn databázový soubor klíčenky."
 
 #. (itstool) path: note/p
 #: yelp/C/keyring.page:36
@@ -490,11 +519,13 @@ msgid ""
 "The Keyring file is stored in <code>$CONFIG/Nickvision/Nickvision Parabolic/"
 "tubeconverter.nring</code>"
 msgstr ""
+"Soubor klíčenky je uložen zde: <code>$CONFIG/Nickvision/Nickvision Parabolic/"
+"tubeconverter.nring</code>"
 
 #. (itstool) path: item/title
 #: yelp/C/keyring.page:40
 msgid "Disabling The Keyring"
-msgstr ""
+msgstr "Zakázání klíčenky"
 
 #. (itstool) path: item/p
 #: yelp/C/keyring.page:41
@@ -502,6 +533,8 @@ msgid ""
 "When the Keyring is disabled, the backing <code>nring</code> database is "
 "destroyed and all credentials stored are erased."
 msgstr ""
+"Při zakázání klíčenky bude databáze <code>nring</code> smazána a všechny "
+"uložené údaje vymazány."
 
 #. (itstool) path: item/p
 #: yelp/C/keyring.page:42
@@ -509,26 +542,28 @@ msgid ""
 "If the Keyring is re-enabled, a brand new database file will be created and "
 "the user will be prompted to enter a password again."
 msgstr ""
+"Při opětovném povolení klíčenky bude vytvořen kompletně nový soubor a "
+"uživatel bude opět požádán o zadání hesla."
 
 #. (itstool) path: item/title
 #: yelp/C/keyring.page:45
 msgid "Storing a Credential"
-msgstr ""
+msgstr "Ukládání údajů"
 
 #. (itstool) path: item/p
 #: yelp/C/keyring.page:46
 msgid "Here are the fields that can be stored in a credential:"
-msgstr ""
+msgstr "Pole, která lze uložit do údaje:"
 
 #. (itstool) path: item/p
 #: yelp/C/keyring.page:47
 msgid "<code>Name</code>: The name of the credential"
-msgstr ""
+msgstr "<code>Název</code>: název údaje"
 
 #. (itstool) path: item/p
 #: yelp/C/keyring.page:48
 msgid "<code>URL</code> (optional): The URL of the credential"
-msgstr ""
+msgstr "<code>URL</code> (volitelná): adresa URL údaje"
 
 #. (itstool) path: item/p
 #: yelp/C/keyring.page:49
@@ -536,6 +571,8 @@ msgid ""
 "<code>Username</code> (optional if password is not empty): The username of "
 "the credential"
 msgstr ""
+"<code>Uživatelské jméno</code> (volitelné, pokud heslo není prázdné): "
+"uživatelské jméno údaje"
 
 #. (itstool) path: item/p
 #: yelp/C/keyring.page:50
@@ -543,6 +580,7 @@ msgid ""
 "<code>Password</code> (optional if username is not empty): The password of "
 "the credential"
 msgstr ""
+"<code>Heslo</code> (volitelné, pokud uživ. jméno není prázdné): heslo údaje"
 
 #. (itstool) path: info/title
 #: yelp/C/newDownload.page:8
@@ -557,18 +595,17 @@ msgstr "Nové stahování"
 
 #. (itstool) path: page/p
 #: yelp/C/newDownload.page:21
-#, fuzzy
 msgid ""
 "This page explains all options for configuring a new download in "
 "<app>Parabolic</app>."
 msgstr ""
-"Na této straně najdete vysvětlení všech možností konfigurace konvertoru v "
-"předvolbách v aplikaci <app>Tube Converter</app>."
+"Na této straně najdete vysvětlení všech možností konfigurace nového "
+"stahování v předvolbách v aplikaci <app>Parabolic</app>."
 
 #. (itstool) path: item/title
 #: yelp/C/newDownload.page:25
 msgid "Media URL"
-msgstr ""
+msgstr "URL média"
 
 #. (itstool) path: item/p
 #: yelp/C/newDownload.page:26
@@ -576,6 +613,8 @@ msgid ""
 "The URL of the media to download. Must be a valid (\"valid\" meaning "
 "syntactically correct) http or https link."
 msgstr ""
+"Adresa URL média ke stažení. Musí se jednat o platný („platný“ znamená "
+"syntakticky správný) odkaz http nebo https."
 
 #. (itstool) path: note/p
 #: yelp/C/newDownload.page:28
@@ -583,6 +622,8 @@ msgid ""
 "If a valid URL is found inside the clipboard upon opening the Add Download "
 "dialog, the URL will be automatically pasted in the URL entry row."
 msgstr ""
+"Při nalezení platné adresy URL ve schránce při otevření dialogu Přidat "
+"stahování bude adresa URL automaticky vložena do pole zadávání adresy."
 
 #. (itstool) path: item/title
 #: yelp/C/newDownload.page:32
