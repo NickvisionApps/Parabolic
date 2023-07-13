@@ -8,17 +8,17 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-07-11 13:56+0200\n"
-"PO-Revision-Date: 2023-06-25 23:44+0000\n"
-"Last-Translator: Ali Aljishi <ahj696@hotmail.com>\n"
-"Language-Team: Arabic <https://hosted.weblate.org/projects/nickvision-tube-"
-"converter/app/ar/>\n"
+"PO-Revision-Date: 2023-07-13 21:27+0000\n"
+"Last-Translator: fawaz006 <fawaz27000@hotmail.com>\n"
+"Language-Team: Arabic <https://hosted.weblate.org/projects/"
+"nickvision-tube-converter/app/ar/>\n"
 "Language: ar\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
 "&& n%100<=10 ? 3 : n%100>=11 ? 4 : 5;\n"
-"X-Generator: Weblate 4.18.1\n"
+"X-Generator: Weblate 5.0-dev\n"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:735
 #, csharp-format
@@ -42,7 +42,7 @@ msgstr "{0:f1} بايت\\ث"
 #: ../../../Helpers/SpeedFormatter.cs:20
 #, csharp-format
 msgid "{0:f1} GiB/s"
-msgstr "{0:f1} ج‌بايت\\ث"
+msgstr "{0:f1} جيجابايت\\ث"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:288
 #: ../../../Helpers/SpeedFormatter.cs:28
@@ -298,7 +298,7 @@ msgstr "لا يوجد ما ينزَّل الآن"
 #: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.desktop.in:4
 #: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.metainfo.xml.in:6
 msgid "Parabolic"
-msgstr ""
+msgstr "Parabolic"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:272
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:76
@@ -326,7 +326,7 @@ msgstr "يعالج..."
 #: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:514
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:146
 msgid "Save Folder"
-msgstr "مجلد الحفظ"
+msgstr "موقع الحفظ"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:528
 msgid "Save Folder (Invalid)"
@@ -347,12 +347,11 @@ msgid "Setup Keyring"
 msgstr "إعداد حلقة مفاتيح"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:303
-#, fuzzy
 msgid ""
 "Some downloads are still in progress.\n"
 "Are you sure you want to close Parabolic and stop the running downloads?"
 msgstr ""
-"لا تزال بعض التنزيلات جاريةً.\n"
+"لا تزل بعض التنزيلات جاريةً.\n"
 "أمتأكد أنك تريد إغلاق محوِّل المقاطع وإيقاف التنزيلات الجارية؟"
 
 #: ../../../Models/DownloadManager.cs:169
@@ -386,15 +385,14 @@ msgid "Success"
 msgstr "نجاح"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:522
-#, fuzzy
 msgid ""
 "The authors of Nickvision Parabolic are not responsible/liable for any "
 "misuse of this program that may violate local copyright/DMCA laws. Users use "
 "this application at their own risk."
 msgstr ""
-"مطوِّرو محوِّل المقاطع من نكفجن ليسوا مسؤولين عن أي إساءة استخدام لهذا البرنامج "
-"تنتهك قوانين حقوق النشر المحلية أو قانون الألفية للملكية الرقمية (DMCA). "
-"يستخدم المستخدمون هذا التطبيق على مسؤوليتهم الخاصة."
+"مطوِّروا Parabolic من Nickvision ليسوا مسؤولين عن أي إساءة استخدام لهذا "
+"البرنامَج تنتهك قوانين حقوق النشر المحلية أو قانون الألفية للملكية الرقمية "
+"(DMCA). يستخدم المستخدمون هذا التطبيق على مسؤوليتهم الخاصة."
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:331
 msgid "This action is irreversible. Are you sure you want to delete it?"
@@ -479,7 +477,7 @@ msgstr "الاعتماد حلقة مفاتيح"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:115
 msgid "File Type"
-msgstr "نوع الملف"
+msgstr "نوع المِلَفّ"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:122
 msgid "Quality"
@@ -487,7 +485,7 @@ msgstr "الجودة"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:129
 msgid "Audio Language"
-msgstr ""
+msgstr "لغة الصوت"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:134
 msgid "Subtitle"
@@ -566,7 +564,7 @@ msgstr "انسخ إلى الحافظة"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:71
 msgid "Credentials"
-msgstr "أوراق اعتماد"
+msgstr "بيانات الاعتماد"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:72
 msgid "Manage credentials in your keyring."
@@ -691,11 +689,11 @@ msgstr "اكتب فوق الملفات الموجودة"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:100
 msgid "Limit Filename Characters"
-msgstr ""
+msgstr "الحد من أحرف اسم المِلَفّ"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:101
 msgid "Restricts characters in filenames to only those supported by Windows."
-msgstr ""
+msgstr "قصر الأحرف في أسماء الملفات على تلك التي يدعمها Windows فقط."
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:117
 msgid ""
@@ -751,7 +749,7 @@ msgstr ""
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:245
 msgid "Cookies File"
-msgstr "ملف تعريف الارتباط"
+msgstr "مِلَفّ تعريف الارتباط"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:246
 msgid ""
@@ -786,14 +784,13 @@ msgid "Disallow Conversions"
 msgstr "امنع التحويلات"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:333
-#, fuzzy
 msgid ""
 "If enabled, Parabolic will download the appropriate video/audio format for "
 "the selected quality without converting to other formats. (You will be "
 "unable to select a file format)"
 msgstr ""
-"إن مُكِّن هذا فلن يحوَّل المقطع\\الصوت المنزَّل من تنسيق لآخر، بل سوف يكون تنسيقه "
-"حسب الجودة المختارة. (لن تستطيع اختيار تنسيق للملف)"
+"إن مُكِّن هذا فلن يحوَّل المقطع\\الصوت المنزَّل من تنسيق لآخر، بل سوف يكون "
+"تنسيقه حسب الجودة المختارة. (لن تستطيع اختيار تنسيق للملف)"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:348
 msgid "Embed Metadata"
@@ -804,12 +801,11 @@ msgid "Crop Audio Thumbnails"
 msgstr "قص الصور المصغرة لصوتيات"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:358
-#, fuzzy
 msgid ""
 "If enabled, Parabolic will automatically turn on the crop thumbnail advanced "
 "option for audio downloads"
 msgstr ""
-"في حالة التمكين، سيقوم Tube Converter تلقائيًا بتشغيل الخِيار المتقدم للصور "
+"في حالة التمكين، سيقوم Parabolic تلقائيًا بتشغيل الخِيار المتقدم للصور "
 "المصغرة لتنزيلات الصوت"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:374
@@ -851,7 +847,7 @@ msgstr "أغلق"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:11
 msgid "About Parabolic"
-msgstr ""
+msgstr "حول Parabolic"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:47
 msgid "Add Download (Ctrl+N)"
@@ -891,9 +887,8 @@ msgid "Clear Completed Downloads"
 msgstr "امحُ التنزيلات المكتملة"
 
 #: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.desktop.in:11
-#, fuzzy
 msgid "YouTube;Downloader;ytdlp;Nickvision;Tube;Converter;"
-msgstr "يوتيوب ؛ تنزيل ؛ ytdlp ؛ Nickvision ؛"
+msgstr "يوتيوب ؛ تنزيل ؛ ytdlp ؛ Nickvision ؛Tube;Converter;"
 
 #: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.metainfo.xml.in:10
 msgid "— A basic yt-dlp frontend"
