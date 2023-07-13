@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: 2023-06-26 22:00+0300\n"
-"PO-Revision-Date: 2023-07-12 18:52+0000\n"
+"PO-Revision-Date: 2023-07-13 17:24+0000\n"
 "Last-Translator: Fjuro <ifjuro@proton.me>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/"
 "nickvision-tube-converter/docs/cs/>\n"
@@ -49,7 +49,7 @@ msgstr ""
 #. (itstool) path: item/title
 #: yelp/C/converter.page:25
 msgid "Disallow Conversions"
-msgstr "Zakázání konverze"
+msgstr "Zakázat převody"
 
 #. (itstool) path: item/p
 #: yelp/C/converter.page:26
@@ -628,7 +628,7 @@ msgstr ""
 #. (itstool) path: item/title
 #: yelp/C/newDownload.page:32
 msgid "Authenticate"
-msgstr ""
+msgstr "Přihlášení"
 
 #. (itstool) path: item/p
 #: yelp/C/newDownload.page:33
@@ -636,6 +636,8 @@ msgid ""
 "If enabled, the user will be asked to provide a username and/or password to "
 "pass to yt-dlp when downloading."
 msgstr ""
+"Pokud je tato funkce povolena, bude uživatel vyzván k zadání uživatelského "
+"jména a/nebo hesla, které bude předáno službě yt-dlp při stahování."
 
 #. (itstool) path: item/p
 #: yelp/C/newDownload.page:34
@@ -644,6 +646,9 @@ msgid ""
 "credentials or can chose to enter manually a different username and/or "
 "password."
 msgstr ""
+"Při povolení klíčenky bude uživatel vyzván k vybrání ze seznamu "
+"pojmenovaných údajů nebo si může zvolit ručně zadat jiné uživatelské jméno a/"
+"nebo heslo."
 
 #. (itstool) path: note/p
 #: yelp/C/newDownload.page:36
@@ -651,6 +656,8 @@ msgid ""
 "Not all websites support passing usernames and passwords to yt-dlp. For "
 "example, YouTube does NOT support this feature."
 msgstr ""
+"Ne všechny webové stránky podporují předávání uživatelských jmen a hesel do "
+"yt-dlp. Například YouTube tuto funkci NEpodporuje."
 
 #. (itstool) path: note/p
 #: yelp/C/newDownload.page:37
@@ -658,16 +665,18 @@ msgid ""
 "For these sites that don't support passing credentials, it is recommended to "
 "upload a Cookies file in Preferences instead."
 msgstr ""
+"U těchto webů, které nepodporují předávání přihlašovacích údajů, je "
+"doporučeno nahrát soubor cookies v předvolbách."
 
 #. (itstool) path: item/title
 #: yelp/C/newDownload.page:41
 msgid "File Type"
-msgstr ""
+msgstr "Typ souboru"
 
 #. (itstool) path: item/p
 #: yelp/C/newDownload.page:42
 msgid "The file type of which to download the media as."
-msgstr ""
+msgstr "Typ souboru, jako který se má médium stáhnout."
 
 #. (itstool) path: item/p
 #: yelp/C/newDownload.page:43
@@ -675,6 +684,8 @@ msgid ""
 "If <code>Disallow Conversions</code> is enabled, the only options will be "
 "<code>Video</code> (if supported) and <code>Audio</code>"
 msgstr ""
+"Při povolení funkce <code>Zakázat převody</code> budou jedinými možnostmi "
+"<code>video</code> (pokud je podporováno) a <code>zvuk</code>"
 
 #. (itstool) path: note/p
 #: yelp/C/newDownload.page:45
@@ -682,11 +693,12 @@ msgid ""
 "The previously used file type will be remembered and pre-selected for the "
 "next download."
 msgstr ""
+"Dříve použitý typ souboru bude zapamatován a předvolen pro další stahování."
 
 #. (itstool) path: item/title
 #: yelp/C/newDownload.page:49
 msgid "Quality"
-msgstr ""
+msgstr "Kvalita"
 
 #. (itstool) path: item/p
 #: yelp/C/newDownload.page:50
@@ -694,6 +706,8 @@ msgid ""
 "If the file type is a video type, the listed qualities will be the "
 "resolutions of the media available."
 msgstr ""
+"Pokud je typem souboru typ videa, budou uvedené kvality odpovídat rozlišení "
+"dostupných médií."
 
 #. (itstool) path: item/p
 #: yelp/C/newDownload.page:51 yelp/C/newDownload.page:66
@@ -701,6 +715,8 @@ msgid ""
 "If the file type is an audio type, the listed qualities will be simply "
 "<code>Best</code> and <code>Worst</code>."
 msgstr ""
+"Pokud je typem souboru typ zvuku, budou uvedené kvality jednoduše "
+"<code>nejlepší</code> a <code>nejhorší</code>."
 
 #. (itstool) path: note/p
 #: yelp/C/newDownload.page:53
@@ -708,11 +724,12 @@ msgid ""
 "The previously used quality will be remembered and pre-selected for the next "
 "download."
 msgstr ""
+"Dříve použitá kvalita bude zapamatována a předvolena pro další stahování."
 
 #. (itstool) path: item/title
 #: yelp/C/newDownload.page:57
 msgid "Subtitle"
-msgstr ""
+msgstr "Titulky"
 
 #. (itstool) path: item/p
 #: yelp/C/newDownload.page:58
@@ -720,21 +737,23 @@ msgid ""
 "The type of subtitles to download. Can be <code>None</code>, <code>VTT</"
 "code>, or <code>SRT</code>."
 msgstr ""
+"Typ titulků ke stažení. Může být <code>žádný</code>, <code>VTT</code> nebo "
+"<code>SRT</code>."
 
 #. (itstool) path: note/p
 #: yelp/C/newDownload.page:60
 msgid "Only available for video types."
-msgstr ""
+msgstr "Dostupné pouze pro typy videa."
 
 #. (itstool) path: item/title
 #: yelp/C/newDownload.page:64
 msgid "Save Folder"
-msgstr ""
+msgstr "Složka k uložení"
 
 #. (itstool) path: item/p
 #: yelp/C/newDownload.page:65
 msgid "The folder at which to save the download to."
-msgstr ""
+msgstr "Složka, do které budou ukládány stažené soubory."
 
 #. (itstool) path: note/p
 #: yelp/C/newDownload.page:68
@@ -742,6 +761,7 @@ msgid ""
 "The previously used folder will be remembered and pre-selected for the next "
 "download."
 msgstr ""
+"Dříve použitá složka bude zapamatována a předem vybrána pro další stahování."
 
 #. (itstool) path: item/p
 #: yelp/C/newDownload.page:73
@@ -749,23 +769,27 @@ msgid ""
 "If enabled, Parabolic will limit the download's speed with the speed "
 "configured in Preferences."
 msgstr ""
+"Pokud je tato funkce povolena, aplikace Parabolic omezí rychlost stahování "
+"na rychlost nastavenou v předvolbách."
 
 #. (itstool) path: note/p
 #: yelp/C/newDownload.page:75 yelp/C/newDownload.page:83
 #: yelp/C/newDownload.page:90
 msgid "Available in the <code>Advanced Options</code> section."
-msgstr ""
+msgstr "Dostupné v sekci <code>Pokročilé možnosti</code>."
 
 #. (itstool) path: item/title
 #: yelp/C/newDownload.page:79
 msgid "Crop Thumbnail"
-msgstr ""
+msgstr "Oříznout miniaturu"
 
 #. (itstool) path: item/p
 #: yelp/C/newDownload.page:80
 msgid ""
 "Only available if <code>Embed Metadata</code> is enabled in Preferences."
 msgstr ""
+"Dostupné pouze při povolené možnosti <code>Vložit metadata</code> v "
+"předvolbách."
 
 #. (itstool) path: item/p
 #: yelp/C/newDownload.page:81
@@ -773,11 +797,14 @@ msgid ""
 "If enabled, Parabolic will crop a download's embedded thumbnail as square. "
 "This is useful when downloading music who's album images are usually square."
 msgstr ""
+"Pokud je tato funkce povolena, aplikace Parabolic ořízne miniaturu "
+"stahovaného souboru na čtverec. Může to být užitečné při stahování hudby, "
+"kde jsou obaly alb většinou čtvercové."
 
 #. (itstool) path: item/title
 #: yelp/C/newDownload.page:87
 msgid "Download Specific Timeframe"
-msgstr ""
+msgstr "Stáhnout konkrétní časový úsek"
 
 #. (itstool) path: item/p
 #: yelp/C/newDownload.page:88
@@ -785,6 +812,8 @@ msgid ""
 "If enabled, the user will be able to enter a start timeframe and an end "
 "timeframe for a section of the media to download."
 msgstr ""
+"Pokud je tato funkce povolena, uživatel bude moci zadat počáteční čas a "
+"konečný čas pro stažení části média."
 
 #. (itstool) path: note/p
 #: yelp/C/newDownload.page:93
@@ -792,18 +821,20 @@ msgid ""
 "Enablining this option will disable the use of aria2 as the downloader for "
 "this download if it is enabled in Preferences."
 msgstr ""
+"Povolením této možnosti bude pro dané stahování zakázáno použití služby "
+"aria2, pokud je povoleno v předvolbách."
 
 #. (itstool) path: item/title
 #: yelp/C/newDownload.page:97
 msgid "File Name"
-msgstr ""
+msgstr "Název souboru"
 
 #. (itstool) path: item/p
 #: yelp/C/newDownload.page:98
 msgid "The file name to use when saving the download."
-msgstr ""
+msgstr "Název souboru, který se použije při ukládání stahování."
 
 #. (itstool) path: note/p
 #: yelp/C/newDownload.page:100
 msgid "Default: The title of the media"
-msgstr ""
+msgstr "Výchozí: název média"
