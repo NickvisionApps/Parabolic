@@ -123,10 +123,10 @@ document.addEventListener('DOMContentLoaded', function() {
 </svg><div class="inner"><div class="region"><div class="contents"><p class="p">Výchozí: 16</p></div></div></div>
 </div>
 </dd>
-<dt class="terms">Minimum Split Size</dt>
+<dt class="terms">Minimální velikost rozdělení</dt>
 <dd class="terms">
-<p class="p">This option only applies when using aria2 is enabled. This option is the same as the <span class="code">-k</span> flag passed to aria2c.</p>
-<p class="p">The minimum size, in MiB, of which to split a file. Must be an integer value between 1 and 1024.</p>
+<p class="p">Tato funkce je použita pouze při povoleném aria2. Jedná se o stejnou možnost, jako když do aria2c zadáte vlajku <span class="code">-k</span>.</p>
+<p class="p">Minimální velikost, v MiB, na kterou rozdělit soubor. Musí to být celočíselná hodnota mezi 1 a 1024.</p>
 <div class="note note-advanced" title="Pokročilé">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -141,19 +141,19 @@ document.addEventListener('DOMContentLoaded', function() {
   <path class="yelp-svg-fill" d="m8.2435 7.0719-1.9004-3.3145 1.4143-1.4143 3.1596 1.7457z"></path>
   <path class="yelp-svg-fill" d="m11.072 11.757-3.3146 1.9-1.4143-1.414 1.7457-3.1602z"></path>
  </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Default: 20</p></div></div></div>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Výchozí: 20</p></div></div></div>
 </div>
 </dd>
-<dt class="terms">Subtitles Languages</dt>
+<dt class="terms">Jazyky titulků</dt>
 <dd class="terms">
-<p class="p">A comma-separated list of two-letter and three-letter language codes to use when selecting languages of subtitles to download. Only applies when a valid <span class="code">Subtitle</span> format is selected in a download.</p>
+<p class="p">Seznam dvoupísmenných a třípísmenných jazykových kódů oddělených čárkou, které se použijí při výběru jazyků titulků ke stažení. Použije se pouze v případě, že je při stahování vybrán platný formát <span class="code">Subtitle</span>.</p>
 <div class="note" title="Upozornění">
 <svg height="24" width="24" version="1.1">
  <g>
   <path class="yelp-svg-fill" d="m4 3h16c0.554 0 1 0.446 1 1v11h-6v6h-11c-0.554 0-1-0.446-1-1v-16c0-0.554 0.446-1 1-1z"></path>
   <path class="yelp-svg-fill" d="m17 16h4l-5 5v-4c0-0.554 0.446-1 1-1z"></path>
  </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Some sites use two-letter language codes, whereas others use three-letter. For example, <span class="code">en</span> and <span class="code">eng</span> are both used for English. Please specify both two-letter and three-letter codes for your languages for the best results.</p></div></div></div>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Některé stránky používají dvoupísmenné jazykové kódy, jiné třípísmenné. Například pro angličtinu se používá <span class="code">en</span> i <span class="code">eng</span>. Pro dosažení nejlepších výsledků zadejte pro své jazyky dvoupísmenné i třípísmenné kódy.</p></div></div></div>
 </div>
 <div class="note note-advanced" title="Pokročilé">
 <svg height="24" width="24" version="1.1">
@@ -169,13 +169,13 @@ document.addEventListener('DOMContentLoaded', function() {
   <path class="yelp-svg-fill" d="m8.2435 7.0719-1.9004-3.3145 1.4143-1.4143 3.1596 1.7457z"></path>
   <path class="yelp-svg-fill" d="m11.072 11.757-3.3146 1.9-1.4143-1.414 1.7457-3.1602z"></path>
  </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Default: Your culture's two-letter and three-letter language code. For example, on an en-US system the default would be <span class="code">en,eng</span></p></div></div></div>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Výchozí: dvoupísmenný a třípísmenný kód tvého jazyka. Například na americkém (en-US) systému budou výchozí kódy <span class="code">en,eng</span></p></div></div></div>
 </div>
 </dd>
-<dt class="terms">Cookies File</dt>
+<dt class="terms">Soubor cookies</dt>
 <dd class="terms">
-<p class="p">A .txt file of cookies to pass to yt-dlp when downloading. This may be useful when downloading media that requires a login, for example: private YouTube videos.</p>
-<p class="p">Use one of the following extensions for getting a cookies file from your browser:</p>
+<p class="p">Soubor .txt se soubory cookie, který se při stahování předá programu yt-dlp. To může být užitečné při stahování médií, která vyžadují přihlášení, například soukromá videa na YouTube.</p>
+<p class="p">Pro získání cookies použijte jeden z následujících rozšíření prohlížeče:</p>
 <p class="p">Chrome: <span class="code">https://chrome.google.com/webstore/detail/get-cookiestxt-locally/cclelndahbckbenkjhflpdbgdldlbecc</span></p>
 <p class="p">Firefox: <span class="code">https://addons.mozilla.org/en-US/firefox/addon/cookies-txt/</span></p>
 <div class="note" title="Upozornění">
@@ -184,7 +184,7 @@ document.addEventListener('DOMContentLoaded', function() {
   <path class="yelp-svg-fill" d="m4 3h16c0.554 0 1 0.446 1 1v11h-6v6h-11c-0.554 0-1-0.446-1-1v-16c0-0.554 0.446-1 1-1z"></path>
   <path class="yelp-svg-fill" d="m17 16h4l-5 5v-4c0-0.554 0.446-1 1-1z"></path>
  </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Use these extensions at your own risk.</p></div></div></div>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Tato rozšíření používáte na vlastní nebezpečí.</p></div></div></div>
 </div>
 <div class="note note-advanced" title="Pokročilé">
 <svg height="24" width="24" version="1.1">
@@ -200,7 +200,7 @@ document.addEventListener('DOMContentLoaded', function() {
   <path class="yelp-svg-fill" d="m8.2435 7.0719-1.9004-3.3145 1.4143-1.4143 3.1596 1.7457z"></path>
   <path class="yelp-svg-fill" d="m11.072 11.757-3.3146 1.9-1.4143-1.414 1.7457-3.1602z"></path>
  </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Default: No File Selected</p></div></div></div>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Výchozí: žádný vybraný soubor</p></div></div></div>
 </div>
 </dd>
 </dl></div></div></div>

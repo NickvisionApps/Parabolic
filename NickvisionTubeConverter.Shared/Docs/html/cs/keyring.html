@@ -18,18 +18,18 @@ document.addEventListener('DOMContentLoaded', function() {
 <a class="trail" href="index.html" title="Nápověda aplikace Parabolic">Nápověda aplikace Parabolic</a> » </div></div></div></header><article><div class="hgroup pagewide"><h1 class="title"><span class="title">Klíčenka</span></h1></div>
 <div class="region">
 <div class="contents pagewide">
-<p class="p">This page explains all options for using the Keyring in <span class="app">Parabolic</span>.</p>
+<p class="p">Na této straně najdete vysvětlení všech možností konfigurace klíčenky v předvolbách v aplikaci <span class="app">Parabolic</span>.</p>
 <div class="terms"><div class="inner"><div class="region"><dl class="terms">
 <dt class="terms">Backend</dt>
 <dd class="terms">
-<p class="p">The Keyring feature is backed by the <span class="code">Nickvision.Keyring</span> library.</p>
-<p class="p">This library uses SQLCipher to securley store credentials in a platform independent manner.</p>
+<p class="p">Funkce klíčenky je provozována pomocí knihovny <span class="code">Nickvision.Keyring</span>.</p>
+<p class="p">Tato knihovna používá rozšíření SQLCipher pro bezpečné ukládání údajů způsobem nezávislým na platformě.</p>
 </dd>
-<dt class="terms">Enabling The Keyring</dt>
+<dt class="terms">Povolení klíčenky</dt>
 <dd class="terms">
-<p class="p">When the Keyring is enabled, the user will be asked to enter a password to encrypt the Keyring.</p>
-<p class="p">There is no way to recover the Keyring password if lost.</p>
-<p class="p">This password will be used to unlock the Keyring in the future.</p>
+<p class="p">Při povolení klíčenky bude uživatel požádán o zadání hesla pro její zašifrování.</p>
+<p class="p">V případě ztracení hesla klíčenky neexistuje způsob, jak jej získat zpět.</p>
+<p class="p">Toto heslo bude použito k odemknutí klíčenky v budoucnu.</p>
 <div class="note note-advanced" title="Pokročilé">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -45,23 +45,23 @@ document.addEventListener('DOMContentLoaded', function() {
   <path class="yelp-svg-fill" d="m11.072 11.757-3.3146 1.9-1.4143-1.414 1.7457-3.1602z"></path>
  </g>
 </svg><div class="inner"><div class="region"><div class="contents">
-<p class="p">If the Keyring password is lost, the user will be unable to use this feature unless the Keyring database file is deleted.</p>
-<p class="p">The Keyring file is stored in <span class="code">$CONFIG/Nickvision/Nickvision Parabolic/tubeconverter.nring</span></p>
+<p class="p">Při ztrátě hesla ke klíčence nebude uživatel moci použít tuto funkci, pokud nebude odstraněn databázový soubor klíčenky.</p>
+<p class="p">Soubor klíčenky je uložen zde: <span class="code">$CONFIG/Nickvision/Nickvision Parabolic/tubeconverter.nring</span></p>
 </div></div></div>
 </div>
 </dd>
-<dt class="terms">Disabling The Keyring</dt>
+<dt class="terms">Zakázání klíčenky</dt>
 <dd class="terms">
-<p class="p">When the Keyring is disabled, the backing <span class="code">nring</span> database is destroyed and all credentials stored are erased.</p>
-<p class="p">If the Keyring is re-enabled, a brand new database file will be created and the user will be prompted to enter a password again.</p>
+<p class="p">Při zakázání klíčenky bude databáze <span class="code">nring</span> smazána a všechny uložené údaje vymazány.</p>
+<p class="p">Při opětovném povolení klíčenky bude vytvořen kompletně nový soubor a uživatel bude opět požádán o zadání hesla.</p>
 </dd>
-<dt class="terms">Storing a Credential</dt>
+<dt class="terms">Ukládání údajů</dt>
 <dd class="terms">
-<p class="p">Here are the fields that can be stored in a credential:</p>
-<p class="p"><span class="code">Name</span>: The name of the credential</p>
-<p class="p"><span class="code">URL</span> (optional): The URL of the credential</p>
-<p class="p"><span class="code">Username</span> (optional if password is not empty): The username of the credential</p>
-<p class="p"><span class="code">Password</span> (optional if username is not empty): The password of the credential</p>
+<p class="p">Pole, která lze uložit do údaje:</p>
+<p class="p"><span class="code">Název</span>: název údaje</p>
+<p class="p"><span class="code">URL</span> (volitelná): adresa URL údaje</p>
+<p class="p"><span class="code">Uživatelské jméno</span> (volitelné, pokud heslo není prázdné): uživatelské jméno údaje</p>
+<p class="p"><span class="code">Heslo</span> (volitelné, pokud uživ. jméno není prázdné): heslo údaje</p>
 </dd>
 </dl></div></div></div>
 </div>
