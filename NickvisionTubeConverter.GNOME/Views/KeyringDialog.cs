@@ -31,11 +31,15 @@ public partial class KeyringDialog : Adw.Window
     [Gtk.Connect] private readonly Gtk.Label _titleLabel;
     [Gtk.Connect] private readonly Adw.ToastOverlay _toastOverlay;
     [Gtk.Connect] private readonly Adw.ViewStack _viewStack;
+    [Gtk.Connect] private readonly Gtk.Button _enableKeyringButton;
+    [Gtk.Connect] private readonly Adw.EntryRow _newPasswordEntry;
+    [Gtk.Connect] private readonly Adw.EntryRow _confirmPasswordEntry;
+    [Gtk.Connect] private readonly Gtk.Button _setPasswordButton;
     [Gtk.Connect] private readonly Gtk.Box _mainBox;
-    [Gtk.Connect] private readonly Adw.ActionRow _enableKeyringRow;
-    [Gtk.Connect] private readonly Gtk.Switch _enableKeyringSwitch;
     [Gtk.Connect] private readonly Adw.PreferencesGroup _credentialsGroup;
     [Gtk.Connect] private readonly Gtk.Button _addCredentialButton;
+    [Gtk.Connect] private readonly Gtk.Button _disableKeyringButton;
+    [Gtk.Connect] private readonly Gtk.Button _confirmDisableKeyringButton;
     [Gtk.Connect] private readonly Adw.StatusPage _noCredentialsPage;
     [Gtk.Connect] private readonly Gtk.Spinner _loadingSpinner;
     [Gtk.Connect] private readonly Adw.EntryRow _nameRow;
@@ -66,6 +70,42 @@ public partial class KeyringDialog : Adw.Window
         SetIconName(_appID);
         //Build UI
         builder.Connect(this);
+        _enableKeyringButton.OnClicked += (sender, e) =>
+        {
+            _titleLabel.SetVisible(true);
+            _titleLabel.SetLabel(_("Set Password"));
+            _viewStack.SetVisibleChildName("password");
+        };
+        _newPasswordEntry.OnNotify += (sender, e) =>
+        {
+            if (e.Pspec.GetName() == "text")
+            {
+                ValidateNewPassword();
+            }
+        };
+        _confirmPasswordEntry.OnNotify += (sender, e) =>
+        {
+            if (e.Pspec.GetName() == "text")
+            {
+                ValidateNewPassword();
+            }
+        };
+        _setPasswordButton.OnClicked += async (sender, e) =>
+        {
+            _controller.EnableKeyring(_newPasswordEntry.GetText());
+            await LoadHomePageAsync();
+        };
+        _disableKeyringButton.OnClicked += (sender, e) =>
+        {
+            _backButton.SetVisible(true);
+            _titleLabel.SetVisible(false);
+            _viewStack.SetVisibleChildName("disable");
+        };
+        _confirmDisableKeyringButton.OnClicked += (sender, e) =>
+        {
+            _controller.DisableKeyring();
+            Close();
+        };
         _backButton.OnClicked += async (sender, e) => await LoadHomePageAsync();
         _addCredentialButton.OnClicked += (sender, e) => LoadAddCredentialPage();
         _credentialAddButton.OnClicked += AddCredential;
@@ -77,6 +117,7 @@ public partial class KeyringDialog : Adw.Window
             {
                 _credentialsGroup.Add(row);
             }
+            _credentialsGroup.SetVisible(true);
             _loadingSpinner.SetVisible(false);
             _noCredentialsPage.SetVisible(_credentialRows.Count == 0);
             return false;
@@ -92,17 +133,6 @@ public partial class KeyringDialog : Adw.Window
             _mainBox.SetSensitive(false);
             _toastOverlay.AddToast(Adw.Toast.New(_("Keyring has not been unlocked.")));
         }
-        else
-        {
-            _enableKeyringSwitch.SetActive(_controller.IsEnabled);
-            _enableKeyringSwitch.OnNotify += async (sender, e) =>
-            {
-                if(e.Pspec.GetName() == "active")
-                {
-                    await ToggleEnableAsync();
-                }
-            };
-        }
     }
     
     /// <summary>
@@ -117,7 +147,10 @@ public partial class KeyringDialog : Adw.Window
     public async Task PresentAsync()
     {
         base.Present();
-        await LoadHomePageAsync();
+        if (_controller.IsEnabled)
+        {
+            await LoadHomePageAsync();
+        }
     }
 
     /// <summary>
@@ -131,57 +164,12 @@ public partial class KeyringDialog : Adw.Window
         return true;
     }
 
-    /// <summary>
-    /// Occurs when the enable switch is toggled
-    /// </summary>
-    private async Task ToggleEnableAsync()
+    private void ValidateNewPassword()
     {
-        if(!_handlingEnableToggle)
+        _setPasswordButton.SetSensitive(false);
+        if (_newPasswordEntry.GetText() == _confirmPasswordEntry.GetText() && !string.IsNullOrEmpty(_newPasswordEntry.GetText()))
         {
-            _handlingEnableToggle = true;
-            if(_enableKeyringSwitch.GetActive())
-            {
-                var tcs = new TaskCompletionSource<string?>();
-                var newPasswordDialog = new NewPasswordDialog(this, _("Setup Keyring"), tcs, _("Enable"));
-                newPasswordDialog.Present();
-                var password = await tcs.Task;
-                if(string.IsNullOrEmpty(password))
-                {
-                    _handlingEnableToggle = true;
-                    _enableKeyringSwitch.SetActive(false);
-                    _handlingEnableToggle = false;
-                }
-                else
-                {
-                    _controller.EnableKeyring(password);
-                }
-            }
-            else
-            {
-                var disableDialog = new MessageDialog(this, _appID, _("Disable Keyring?"), _("Disabling the keyring will delete all data currently stored inside. Are you sure you want to disable it?"), _("No"), _("Yes"));
-                disableDialog.OnResponse += (sender, e) =>
-                {
-                    if(disableDialog.Response == MessageDialogResponse.Destructive)
-                    {
-                        _controller.DisableKeyring();
-                        _noCredentialsPage.SetVisible(true);
-                        foreach(var row in _credentialRows)
-                        {
-                            _credentialsGroup.Remove(row);
-                        }
-                        _credentialRows.Clear();
-                    }
-                    else
-                    {
-                        _handlingEnableToggle = true;
-                        _enableKeyringSwitch.SetActive(true);
-                        _handlingEnableToggle = false;
-                    }
-                    disableDialog.Destroy();
-                };
-                disableDialog.Present();
-            }
-            _handlingEnableToggle = false;
+            _setPasswordButton.SetSensitive(true);
         }
     }
 
@@ -193,6 +181,7 @@ public partial class KeyringDialog : Adw.Window
         _editId = null;
         _viewStack.SetVisibleChildName("home");
         _backButton.SetVisible(false);
+        _titleLabel.SetVisible(true);
         _titleLabel.SetLabel(_("Keyring"));
         SetDefaultWidget(null);
         //Update Rows
@@ -202,6 +191,7 @@ public partial class KeyringDialog : Adw.Window
         }
         _credentialRows.Clear();
         _noCredentialsPage.SetVisible(false);
+        _credentialsGroup.SetVisible(false);
         _loadingSpinner.SetVisible(true);
         var credentials = new List<Credential>();
         await Task.Run(async () => credentials = await _controller.GetAllCredentialsAsync());

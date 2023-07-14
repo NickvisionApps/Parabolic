@@ -4,6 +4,7 @@ using Adw 1;
 Adw.Window _root {
   width-request: 360;
   default-width: 420;
+  default-height: 460;
   modal: true;
   resizable: false;
 
@@ -34,7 +35,7 @@ Adw.Window _root {
         spacing: 24;
 
         Gtk.Label _titleLabel {
-          label: _("Keyring");
+          visible: false;
 
           styles ["title-2"]
         }
@@ -45,6 +46,66 @@ Adw.Window _root {
 
           Adw.ViewStack _viewStack {
             Adw.ViewStackPage {
+              name: "disabled";
+              child: Adw.StatusPage {
+                icon-name: "key2-symbolic";
+                title: _("Keyring Disabled");
+                description: _("Use keyring to safely store credentials for sites that require login with username and password.");
+                child: Gtk.Button _enableKeyringButton {
+                  label: _("Enable");
+                  halign: center;
+                  valign: center;
+
+                  styles ["pill", "suggested-action"]
+                };
+              };
+            }
+
+            Adw.ViewStackPage {
+              name: "password";
+              child: Gtk.Box {
+                orientation: vertical;
+                spacing: 24;
+
+                Adw.PreferencesGroup {
+                  margin-top: 12;
+                  margin-start: 24;
+                  margin-end: 24;
+
+                  Adw.PasswordEntryRow _newPasswordEntry {
+                    title: _("New Password");
+                    activates-default: true;
+                  }
+
+                  Adw.PasswordEntryRow _confirmPasswordEntry {
+                    title: _("Confirm Password");
+                    activates-default: true;
+                  }
+                }
+
+                Gtk.Label {
+                  margin-start: 24;
+                  margin-end: 24;
+                  label: _("If the password is lost, there is no way to restore the keyring!");
+
+                  styles ["warning"]
+                }
+
+                Gtk.Button _setPasswordButton {
+                  halign: center;
+                  valign: end;
+                  vexpand: true;
+                  margin-top: 24;
+                  margin-bottom: 36;
+                  sensitive: false;
+                  label: _("Continue");
+
+                  styles ["pill", "suggested-action"]
+                }
+              };
+            }
+
+            Adw.ViewStackPage {
               name: "home";
               child: Gtk.Box _mainBox {
                 margin-start: 24;
@@ -53,42 +114,15 @@ Adw.Window _root {
                 orientation: vertical;
                 spacing: 24;
 
-                Adw.PreferencesGroup {
-                  Adw.ActionRow _enableKeyringRow {
-                    title: _("Enable");
-                    margin-top: 2;
-                    activatable-widget: _enableKeyringSwitch;
-
-                    [suffix]
-                    Gtk.Switch _enableKeyringSwitch {
-                      valign: center;
-                      active: true;
-                    }
-                  }
-                }
-
                 Adw.PreferencesGroup _credentialsGroup {
-                  title: _("Credentials");
-                  description: _("Manage credentials in your keyring.");
-                  visible: bind _enableKeyringSwitch.active;
-
-                  [header-suffix]
-                  Gtk.Button _addCredentialButton {
-                    tooltip-text: _("Add Credential");
-                    valign: center;
-
-                    Adw.ButtonContent {
-                      icon-name: "list-add-symbolic";
-                      label: _("Add");
-                    }
-
-                    styles ["flat"]
-                  }
+                  vexpand: true;
                 }
 
                 Adw.StatusPage _noCredentialsPage {
                   icon-name: "key2-symbolic";
                   title: _("No Credentials");
+                  vexpand: true;
+                  valign: start;
 
                   styles ["compact"]
                 }
@@ -96,9 +130,50 @@ Adw.Window _root {
                 Gtk.Spinner _loadingSpinner {
                   spinning: true;
                   visible: false;
-                  width-request: 24;
-                  height-request: 24;
+                  width-request: 36;
+                  height-request: 36;
+                  vexpand: true;
+                  valign: center;
                 }
+
+                Gtk.Box {
+                  spacing: 12;
+                  halign: center;
+
+                  Gtk.Button _addCredentialButton {
+                    valign: center;
+
+                    child: Adw.ButtonContent {
+                      icon-name: "list-add-symbolic";
+                      label: _("Add Login");
+                    };
+
+                    styles ["pill", "suggested-action"]
+                  }
+
+                  Gtk.Button _disableKeyringButton {
+                    valign: center;
+                    label: _("Disable Keyring");
+
+                    styles ["pill"]
+                  }
+                }
+              };
+            }
+
+            Adw.ViewStackPage {
+              name: "disable";
+              child: Adw.StatusPage {
+                icon-name: "user-trash-symbolic";
+                title: _("Disable Keyring?");
+                description: _("Disabling the keyring will delete all data currently stored inside. Are you sure you want to disable it?");
+                child: Gtk.Button _confirmDisableKeyringButton {
+                  label: _("Disable");
+                  halign: center;
+                  valign: center;
+
+                  styles ["pill", "destructive-action"]
+                };
               };
             }
 
@@ -109,6 +184,7 @@ Adw.Window _root {
                 spacing: 24;
 
                 Adw.PreferencesGroup {
+                  margin-top: 6;
                   margin-start: 24;
                   margin-end: 24;
                   vexpand: true;
