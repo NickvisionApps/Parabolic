@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" id="downloader" its:version="2.0" xml:lang="it">
+<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" id="downloader" its:version="2.0" xml:lang="he">
 <info>
 	<link type="guide" xref="index"/>
 	<title type="link">Downloader 🌐</title>
@@ -14,7 +14,7 @@
 	<license href="http://creativecommons.org/licenses/by/4.0/" its:translate="no"><p>Creative Commons Attribution 4.0 International License</p></license>
 </info>
 
-<title>Downloader</title>
+<title>מוריד</title>
 <p>This page explains all options for configuring the Downloader in Preferences in <app>Parabolic</app>.</p>
 
 <terms>
@@ -27,7 +27,7 @@
 		</note>
     </item>
     <item>
-        <title>Overwrite Existing Files</title>
+        <title>דריסת קבצים קיימים</title>
         <p>If enabled, Parabolic will overwrite existing files.</p>
         <p>For example, if a file named <code>movie.mp4</code> exists in the download folder, and a new download is created named <code>movie</code>, <code>movie.mp4</code> will be overwritten with the new download's content.</p>
 		<note style="advanced">
@@ -35,56 +35,56 @@
 		</note>
     </item>
     <item>
-        <title>Speed Limit</title>
+        <title>הגבלת מהירות</title>
         <p>A limit, in Ki/s, that is applied to downloads only if they have the advanced option <code>Speed Limit</code> enabled. Must be an integer value between 512 and 10240.</p>
 		<note style="advanced">
-			<p>Predefinito: 1024</p>
+			<p>Default: 1024</p>
 		</note>
     </item>
     <item>
-        <title>Usa aria2</title>
-        <p>Se la voce è abilitata, Parabolic userà aria2c per scaricare i file multimediali. Usando arIa2c si può migliorare la velocità in download, tuttavia l'avanzamento del download non verrà mostrato nella UI.</p>
+        <title>שימוש ב־aria2</title>
+        <p>If enabled, Parabolic will use aria2c to download media. Although using aria2c can improve download speed, download progress will not be displayed in the UI.</p>
 		<note style="advanced">
 			<p>Default: Off</p>
 		</note>
     </item>
     <item>
-        <title>Numero Massimo di Connessioni Per Server</title>
+        <title>Maximum Connections Per Server</title>
         <p>This option only applies when using aria2 is enabled. This option is the same as the <code>-x</code> flag passed to aria2c.</p>
-        <p>Il numero massimo di connessioni per server utilizzabile. Deve essere un valore intero compreso tra 1 e 32.</p>
+        <p>The maximum number of connection that can be used per server. Must be an integer value between 1 and 32.</p>
 		<note style="advanced">
-			<p>Predefinito: 16</p>
+			<p>Default: 16</p>
 		</note>
     </item>
     <item>
         <title>Minimum Split Size</title>
-        <p>Questa opzione è applicabile solo quando l'utilizzo di aria2 è abilitato. L'opzione è la stessa del flag <code>k</code> passato ad aria2c.</p>
-        <p>La taglia minima, in MiB, in cui dividere un file. Deve essere un valore intero compreso tra 1 e 1024.</p>
+        <p>This option only applies when using aria2 is enabled. This option is the same as the <code>-k</code> flag passed to aria2c.</p>
+        <p>The minimum size, in MiB, of which to split a file. Must be an integer value between 1 and 1024.</p>
 		<note style="advanced">
-			<p>Predefinito: 20</p>
+			<p>Default: 20</p>
 		</note>
     </item>
     <item>
-        <title>Lingue dei Sottotitoli</title>
-        <p>Una lista con campi separati da virgola di codici di lingua composti da due e tre caratteri da usare per selezionare le lingue dei sottotitoli da scaricare. È applicabile solo quando viene selezionato un formato valido <code>Subtitle</code> in un download.</p>
+        <title>Subtitles Languages</title>
+        <p>A comma-separated list of two-letter and three-letter language codes to use when selecting languages of subtitles to download. Only applies when a valid <code>Subtitle</code> format is selected in a download.</p>
         <note>
-            <p>Alcuni siti utilizzano codici di lingua da due caratteri, mentre altri usano tre caratteri. Per esempio, <code>en</code> e <code>eng</code> sono usati entrambi per la lingua inglese. Per ottenere risultati migliori, si prega di inserire codici da due e tre caratteri per le lingue scelte.</p>
+            <p>Some sites use two-letter language codes, whereas others use three-letter. For example, <code>en</code> and <code>eng</code> are both used for English. Please specify both two-letter and three-letter codes for your languages for the best results.</p>
         </note>
 		<note style="advanced">
 			<p>Default: Your culture's two-letter and three-letter language code. For example, on an en-US system the default would be <code>en,eng</code></p>
 		</note>
     </item>
     <item>
-        <title>File di Cookie</title>
-        <p>Un file .txt di cookie da passare a yt-dlp quando si scarica. Questo può essere utile per scaricare file multimediali che richiedono il login, per esempio: video YouTube privati.</p>
-        <p>Usa una delle seguenti estensioni per ottenere un file di cookie dal tuo browser:</p>
+        <title>קובץ עוגיות</title>
+        <p>A .txt file of cookies to pass to yt-dlp when downloading. This may be useful when downloading media that requires a login, for example: private YouTube videos.</p>
+        <p>Use one of the following extensions for getting a cookies file from your browser:</p>
         <p>Chrome: <code>https://chrome.google.com/webstore/detail/get-cookiestxt-locally/cclelndahbckbenkjhflpdbgdldlbecc</code></p>
-        <p>Firefox: <code>https://addons.mozilla.org/it/firefox/addon/cookies-txt/</code></p>
+        <p>Firefox: <code>https://addons.mozilla.org/en-US/firefox/addon/cookies-txt/</code></p>
         <note>
-            <p>Usa queste estensioni a tuo rischio.</p>
+            <p>Use these extensions at your own risk.</p>
         </note>
 		<note style="advanced">
-			<p>Predefinito: Nessun File Selezionato</p>
+			<p>Default: No File Selected</p>
 		</note>
     </item>
 </terms>
