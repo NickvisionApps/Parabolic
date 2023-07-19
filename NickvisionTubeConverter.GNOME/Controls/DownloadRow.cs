@@ -16,22 +16,14 @@ namespace NickvisionTubeConverter.GNOME.Controls;
 public partial class DownloadRow : Adw.Bin, IDownloadRowControl
 {
     private delegate void GAsyncReadyCallback(nint source, nint res, nint user_data);
-    private delegate bool GSourceFunc(nint user_data);
 
-    [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
-    private static partial nint gtk_file_launcher_new(nint file);
     [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
     private static partial void gtk_file_launcher_launch(nint fileLauncher, nint parent, nint cancellable, GAsyncReadyCallback callback, nint data);
     [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
     private static partial void gtk_file_launcher_open_containing_folder(nint fileLauncher, nint parent, nint cancellable, GAsyncReadyCallback callback, nint data);
-    [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
-    private static partial uint g_timeout_add(uint interval, GSourceFunc func, nint data);
 
-    private readonly GSourceFunc _pulsingBarCallback;
     private bool _runPulsingBar;
-    private string _saveFolder;
     private string _oldLog;
-    private Action<NotificationSentEventArgs> _sendNotificationCallback;
 
     [Gtk.Connect] private readonly Gtk.Image _statusIcon;
     [Gtk.Connect] private readonly Gtk.Label _filenameLabel;
@@ -76,11 +68,9 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
     /// <param name="sendNotificationCallback">The callback for sending a notification</param>
     private DownloadRow(Gtk.Builder builder, Guid id, string filename, string saveFolder, Action<NotificationSentEventArgs> sendNotificationCallback) : base(builder.GetPointer("_root"), false)
     {
-        _saveFolder = saveFolder;
         Id = id;
         Filename = filename;
         _oldLog = "";
-        _sendNotificationCallback = sendNotificationCallback;
         //Build UI
         builder.Connect(this);
         _filenameLabel.SetLabel(Filename);
@@ -88,27 +78,20 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
         _retryButton.OnClicked += (sender, e) => RetryRequested?.Invoke(this, Id);
         _openFileButton.OnClicked += (sender, e) =>
         {
-            var file = Gio.FileHelper.NewForPath($"{_saveFolder}{Path.DirectorySeparatorChar}{Filename}");
-            var fileLauncher = gtk_file_launcher_new(file.Handle);
-            gtk_file_launcher_launch(fileLauncher, 0, 0, (source, res, data) => { }, 0);
+            var fileLauncher = Gtk.FileLauncher.New(Gio.FileHelper.NewForPath($"{saveFolder}{Path.DirectorySeparatorChar}{Filename}"));
+            gtk_file_launcher_launch(fileLauncher.Handle, 0, 0, (source, res, data) => { }, 0);
         };
         _openFolderButton.OnClicked += (sender, e) =>
         {
-            var file = Gio.FileHelper.NewForPath($"{_saveFolder}{Path.DirectorySeparatorChar}{Filename}");
-            var fileLauncher = gtk_file_launcher_new(file.Handle);
-            gtk_file_launcher_open_containing_folder(fileLauncher, 0, 0, (source, res, data) => { }, 0);
+            var fileLauncher = Gtk.FileLauncher.New(Gio.FileHelper.NewForPath($"{saveFolder}{Path.DirectorySeparatorChar}{Filename}"));
+            gtk_file_launcher_open_containing_folder(fileLauncher.Handle, 0, 0, (source, res, data) => { }, 0);
         };
         _btnLogToClipboard.OnClicked += (sender, e) =>
         {
             _lblLog.GetClipboard().SetText(_lblLog.GetBuffer().Text ?? "");
-            _sendNotificationCallback(new NotificationSentEventArgs(_("Download log was copied to clipboard."), NotificationSeverity.Informational));
+            sendNotificationCallback(new NotificationSentEventArgs(_("Download log was copied to clipboard."), NotificationSeverity.Informational));
         };
         _runPulsingBar = false;
-        _pulsingBarCallback = (data) =>
-        {
-            _pulsingBar.Pulse();
-            return _runPulsingBar;
-        };
     }
 
     /// <summary>
@@ -120,7 +103,6 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
     /// <param name="sendNotificationCallback">The callback for sending a notification</param>
     public DownloadRow(Guid id, string filename, string saveFolder, Action<NotificationSentEventArgs> sendNotificationCallback) : this(Builder.FromFile("download_row.ui"), id, filename, saveFolder, sendNotificationCallback)
     {
-
     }
 
     /// <summary>
@@ -176,7 +158,11 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
                 if (!_runPulsingBar)
                 {
                     _runPulsingBar = true;
-                    g_timeout_add(30, _pulsingBarCallback, 0);
+                    GLib.Functions.TimeoutAdd(0, 30, () =>
+                    {
+                        _pulsingBar.Pulse();
+                        return false;
+                    });
                 }
                 _stateViewStack.SetVisibleChildName("processing");
                 _progressLabel.SetText(_("Downloading"));
@@ -185,7 +171,11 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
                 if (!_runPulsingBar)
                 {
                     _runPulsingBar = true;
-                    g_timeout_add(30, _pulsingBarCallback, 0);
+                    GLib.Functions.TimeoutAdd(0, 30, () =>
+                    {
+                        _pulsingBar.Pulse();
+                        return false;
+                    });
                 }
                 _stateViewStack.SetVisibleChildName("processing");
                 _progressLabel.SetText(_("Processing..."));

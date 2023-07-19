@@ -2,10 +2,8 @@ using Nickvision.Keyring.Controllers;
 using Nickvision.Keyring.Models;
 using NickvisionTubeConverter.GNOME.Controls;
 using NickvisionTubeConverter.GNOME.Helpers;
-using NickvisionTubeConverter.Shared.Controllers;
 using System;
 using System.Collections.Generic;
-using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using static NickvisionTubeConverter.Shared.Helpers.Gettext;
 
@@ -13,18 +11,12 @@ namespace NickvisionTubeConverter.GNOME.Views;
 
 public partial class KeyringDialog : Adw.Window
 {
-    private delegate bool GSourceFunc(nint user_data);
-
-    [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
-    private static partial void g_main_context_invoke(nint context, GSourceFunc function, nint data);
-
     private readonly Gtk.Window _parent;
     private readonly KeyringDialogController _controller;
     private readonly Gtk.ShortcutController _shortcutController;
     private bool _handlingEnableToggle;
     private int? _editId;
     private readonly List<Gtk.Widget> _credentialRows;
-    private readonly GSourceFunc _loadHomeCallback;
     private readonly string _appID;
     
     [Gtk.Connect] private readonly Gtk.Button _backButton;
@@ -111,20 +103,6 @@ public partial class KeyringDialog : Adw.Window
         _credentialAddButton.OnClicked += AddCredential;
         _credentialDeleteButton.OnClicked += DeleteCredential;
         _credentialEditButton.OnClicked += EditCredential;
-        _loadHomeCallback = (x) =>
-        {
-            if (_credentialRows.Count > 0)
-            {
-                foreach (var row in _credentialRows)
-                {
-                    _credentialsGroup.Add(row);
-                }
-                _credentialsGroup.SetVisible(true);
-            }
-            _loadingSpinner.SetVisible(false);
-            _noCredentialsPage.SetVisible(_credentialRows.Count == 0);
-            return false;
-        };
         //Shortcut Controller
         _shortcutController = Gtk.ShortcutController.New();
         _shortcutController.SetScope(Gtk.ShortcutScope.Managed);
@@ -211,7 +189,16 @@ public partial class KeyringDialog : Adw.Window
             row.OnActivated += (sender, e) => LoadEditCredentialPage(credential);
             _credentialRows.Add(row);
         }
-        g_main_context_invoke(0, _loadHomeCallback, 0);
+        if (_credentialRows.Count > 0)
+        {
+            foreach (var row in _credentialRows)
+            {
+                _credentialsGroup.Add(row);
+            }
+            _credentialsGroup.SetVisible(true);
+        }
+        _loadingSpinner.SetVisible(false);
+        _noCredentialsPage.SetVisible(_credentialRows.Count == 0);
     }
 
     /// <summary>

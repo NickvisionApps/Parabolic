@@ -16,19 +16,10 @@ namespace NickvisionTubeConverter.GNOME.Views;
 /// </summary>
 public partial class AddDownloadDialog : Adw.Window
 {
-    private delegate bool GSourceFunc(nint data);
     private delegate void GAsyncReadyCallback(nint source, nint res, nint user_data);
 
     [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
-    private static partial void g_main_context_invoke(nint context, GSourceFunc function, nint data);
-    [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
     private static partial string g_file_get_path(nint file);
-    [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
-    private static partial nint gtk_file_dialog_new();
-    [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
-    private static partial void gtk_file_dialog_set_title(nint dialog, string title);
-    [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
-    private static partial void gtk_file_dialog_set_initial_folder(nint dialog, nint folder);
     [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
     private static partial void gtk_file_dialog_select_folder(nint dialog, nint parent, nint cancellable, GAsyncReadyCallback callback, nint user_data);
     [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
@@ -37,8 +28,6 @@ public partial class AddDownloadDialog : Adw.Window
     private static partial void gdk_clipboard_read_text_async(nint clipboard, nint cancellable, GAsyncReadyCallback callback, nint user_data);
     [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
     private static partial string gdk_clipboard_read_text_finish(nint clipboard, nint result, nint error);
-    [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
-    private static partial string g_get_user_special_dir(int dir);
 
     private const uint GTK_INVALID_LIST_POSITION = 4294967295;
 
@@ -48,8 +37,6 @@ public partial class AddDownloadDialog : Adw.Window
     private readonly string[] _audioQualities;
     private string _saveFolderString;
     private GAsyncReadyCallback? _saveCallback;
-    private GSourceFunc _startSearchCallback;
-    private GSourceFunc _finishSearchCallback;
     private GAsyncReadyCallback _clipboardCallback;
 
     [Gtk.Connect] private readonly Gtk.Label _titleLabel;
@@ -110,15 +97,6 @@ public partial class AddDownloadDialog : Adw.Window
         _saveCallback = null;
         _mediaRows = new List<MediaRow>();
         _audioQualities = new string[] { _("Best"), _("Worst") };
-        _startSearchCallback = (x) =>
-        {
-            _urlSpinner = Gtk.Spinner.New();
-            _validateUrlButton.SetSensitive(false);
-            _validateUrlButton.SetChild(_urlSpinner);
-            _urlSpinner.Start();
-            return false;
-        };
-        _finishSearchCallback = (x) => FinishSearchUrl();
         //Dialog Settings
         SetTransientFor(parent);
         SetIconName(_controller.AppInfo.ID);
@@ -282,7 +260,7 @@ public partial class AddDownloadDialog : Adw.Window
         }
         else
         {
-            _saveFolderString = g_get_user_special_dir(2); //XDG_DOWNLOAD_DIR
+            _saveFolderString = GLib.Functions.GetUserSpecialDir(GLib.UserDirectory.DirectoryDownload) ?? "";
         }
         _saveFolderRow.SetText(Path.GetFileName(_saveFolderString) ?? "");
         _speedLimitRow.SetSubtitle($"{_("{0:f1} KiB/s", _controller.CurrentSpeedLimit)} {_("(Configurable in preferences)")}");
@@ -324,7 +302,7 @@ public partial class AddDownloadDialog : Adw.Window
     /// <param name="url">A url to validate at startup</param>
     public async Task PresentAsync(string? url = null)
     {
-        base.Present();
+        Present();
         //Validated from startup
         if (!string.IsNullOrEmpty(url))
         {
@@ -393,7 +371,10 @@ public partial class AddDownloadDialog : Adw.Window
     /// <param name="url">The URL to search</param>
     private async Task SearchUrlAsync(string url)
     {
-        g_main_context_invoke(0, _startSearchCallback, 0);
+        _urlSpinner = Gtk.Spinner.New();
+        _validateUrlButton.SetSensitive(false);
+        _validateUrlButton.SetChild(_urlSpinner);
+        _urlSpinner.Start();
         await Task.Run(async () =>
         {
             try
@@ -413,14 +394,6 @@ public partial class AddDownloadDialog : Adw.Window
                 Console.WriteLine(ex.StackTrace);
             }
         });
-        g_main_context_invoke(0, _finishSearchCallback, 0);
-    }
-
-    /// <summary>
-    /// Finishes a URL search
-    /// </summary>
-    private bool FinishSearchUrl()
-    {
         _urlSpinner.Stop();
         _urlRow.RemoveCssClass("error");
         _urlRow.SetTitle(_("Media URL"));
@@ -502,7 +475,6 @@ public partial class AddDownloadDialog : Adw.Window
             }
             ValidateOptions();
         }
-        return false;
     }
 
     /// <summary>
@@ -569,16 +541,16 @@ public partial class AddDownloadDialog : Adw.Window
     /// <param name="e">EventArgs</param>
     private void SelectSaveFolder(Gtk.Button sender, EventArgs e)
     {
-        var folderDialog = gtk_file_dialog_new();
-        gtk_file_dialog_set_title(folderDialog, _("Select Save Folder"));
+        var folderDialog = Gtk.FileDialog.New();
+        folderDialog.SetTitle(_("Select Save Folder"));
         if (Directory.Exists(_saveFolderString) && _saveFolderString != "/" && string.IsNullOrEmpty(Environment.GetEnvironmentVariable("SNAP")))
         {
             var folder = Gio.FileHelper.NewForPath(_saveFolderString);
-            gtk_file_dialog_set_initial_folder(folderDialog, folder.Handle);
+            folderDialog.SetInitialFolder(folder);
         }
         _saveCallback = (source, res, data) =>
         {
-            var fileHandle = gtk_file_dialog_select_folder_finish(folderDialog, res, IntPtr.Zero);
+            var fileHandle = gtk_file_dialog_select_folder_finish(source, res, IntPtr.Zero);
             if (fileHandle != IntPtr.Zero)
             {
                 _saveFolderString = g_file_get_path(fileHandle);
@@ -588,7 +560,7 @@ public partial class AddDownloadDialog : Adw.Window
             }
             ValidateOptions();
         };
-        gtk_file_dialog_select_folder(folderDialog, Handle, IntPtr.Zero, _saveCallback, IntPtr.Zero);
+        gtk_file_dialog_select_folder(folderDialog.Handle, Handle, IntPtr.Zero, _saveCallback, IntPtr.Zero);
     }
 
     /// <summary>

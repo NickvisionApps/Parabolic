@@ -18,17 +18,9 @@ public partial class PreferencesDialog : Adw.PreferencesWindow
     [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
     private static partial string g_file_get_path(nint file);
     [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
-    private static partial nint gtk_file_dialog_new();
-    [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
-    private static partial void gtk_file_dialog_set_title(nint dialog, string title);
-    [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
-    private static partial void gtk_file_dialog_set_filters(nint dialog, nint filters);
-    [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
     private static partial void gtk_file_dialog_open(nint dialog, nint parent, nint cancellable, GAsyncReadyCallback callback, nint user_data);
     [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
     private static partial nint gtk_file_dialog_open_finish(nint dialog, nint result, nint error);
-    [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
-    private static partial nint gtk_uri_launcher_new(string uri);
     [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
     private static partial void gtk_uri_launcher_launch(nint uriLauncher, nint parent, nint cancellable, GAsyncReadyCallback callback, nint data);
     
@@ -191,14 +183,14 @@ public partial class PreferencesDialog : Adw.PreferencesWindow
         filterTxt.SetName("TXT (*.txt)");
         filterTxt.AddPattern("*.txt");
         filterTxt.AddPattern("*.TXT");
-        var fileDialog = gtk_file_dialog_new();
-        gtk_file_dialog_set_title(fileDialog, _("Select Cookies File"));
+        var fileDialog = Gtk.FileDialog.New();
+        fileDialog.SetTitle(_("Select Cookies File"));
         var filters = Gio.ListStore.New(Gtk.FileFilter.GetGType());
         filters.Append(filterTxt);
-        gtk_file_dialog_set_filters(fileDialog, filters.Handle);
+        fileDialog.SetFilters(filters);
         _fileDialogCallback = (source, res, data) =>
         {
-            var fileHandle = gtk_file_dialog_open_finish(fileDialog, res, IntPtr.Zero);
+            var fileHandle = gtk_file_dialog_open_finish(source, res, IntPtr.Zero);
             if (fileHandle != IntPtr.Zero)
             {
                 var path = g_file_get_path(fileHandle);
@@ -206,7 +198,7 @@ public partial class PreferencesDialog : Adw.PreferencesWindow
                 _cookiesRow.SetText(path);
             }
         };
-        gtk_file_dialog_open(fileDialog, Handle, IntPtr.Zero, _fileDialogCallback, IntPtr.Zero);
+        gtk_file_dialog_open(fileDialog.Handle, Handle, IntPtr.Zero, _fileDialogCallback, IntPtr.Zero);
     }
 
     /// <summary>
@@ -228,8 +220,8 @@ public partial class PreferencesDialog : Adw.PreferencesWindow
     private void LaunchChromeCookiesExtension(Gtk.Button sender, EventArgs e)
     {
         _cookiesPopover.Popdown();
-        var uriLauncher = gtk_uri_launcher_new("https://chrome.google.com/webstore/detail/get-cookiestxt-locally/cclelndahbckbenkjhflpdbgdldlbecc");
-        gtk_uri_launcher_launch(uriLauncher, 0, 0, (source, res, data) => { }, 0);
+        var uriLauncher = Gtk.UriLauncher.New("https://chrome.google.com/webstore/detail/get-cookiestxt-locally/cclelndahbckbenkjhflpdbgdldlbecc");
+        gtk_uri_launcher_launch(uriLauncher.Handle, 0, 0, (source, res, data) => { }, 0);
     }
 
     /// <summary>
@@ -240,8 +232,8 @@ public partial class PreferencesDialog : Adw.PreferencesWindow
     private void LaunchFirefoxCookiesExtension(Gtk.Button sender, EventArgs e)
     {
         _cookiesPopover.Popdown();
-        var uriLauncher = gtk_uri_launcher_new("https://addons.mozilla.org/en-US/firefox/addon/cookies-txt/");
-        gtk_uri_launcher_launch(uriLauncher, 0, 0, (source, res, data) => { }, 0);
+        var uriLauncher = Gtk.UriLauncher.New("https://addons.mozilla.org/en-US/firefox/addon/cookies-txt/");
+        gtk_uri_launcher_launch(uriLauncher.Handle, 0, 0, (source, res, data) => { }, 0);
         
     }
 }
