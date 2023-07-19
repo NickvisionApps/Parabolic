@@ -18,10 +18,8 @@ public enum DownloadProgressStatus
 /// <summary>
 /// The progress state of a download
 /// </summary>
-public class DownloadProgressState : IDisposable
+public class DownloadProgressState
 {
-    private bool _disposed;
-
     /// <summary>
     /// The status of the download
     /// </summary>
@@ -38,54 +36,15 @@ public class DownloadProgressState : IDisposable
     /// The current log of the download
     /// </summary>
     public string Log { get; set; }
-    /// <summary>
-    /// GCHandle to pass to unmanaged code
-    /// </summary>
-    public GCHandle? Handle { get; init; }
 
     /// <summary>
     /// Constructs a DownloadProgressState
     /// </summary>
     public DownloadProgressState()
     {
-        _disposed = false;
         Status = DownloadProgressStatus.Processing;
         Progress = 0.0;
         Speed = 0.0;
         Log = "";
-        if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-        {
-            Handle = GCHandle.Alloc(this);
-        }
-    }
-
-    /// <summary>
-    /// Finalizes the DownloadProgressState
-    /// </summary>
-    ~DownloadProgressState() => Dispose(false);
-
-    /// <summary>
-    /// Frees resources used by the DownloadProgressState object
-    /// </summary>
-    public void Dispose()
-    {
-        Dispose(true);
-        GC.SuppressFinalize(this);
-    }
-
-    /// <summary>
-    /// Frees resources used by the DownloadProgressState object
-    /// </summary>
-    protected virtual void Dispose(bool disposing)
-    {
-        if (_disposed)
-        {
-            return;
-        }
-        if (disposing)
-        {
-            Handle?.Free();
-        }
-        _disposed = true;
     }
 }
