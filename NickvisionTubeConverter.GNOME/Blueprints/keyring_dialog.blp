@@ -122,7 +122,7 @@ Adw.Window _root {
                   icon-name: "key2-symbolic";
                   title: _("No Credentials");
                   vexpand: true;
-                  valign: start;
+                  valign: center;
 
                   styles ["compact"]
                 }
@@ -164,6 +164,8 @@ Adw.Window _root {
             Adw.ViewStackPage {
               name: "disable";
               child: Adw.StatusPage {
+                margin-start: 12;
+                margin-end: 12;
                 icon-name: "user-trash-symbolic";
                 title: _("Disable Keyring?");
                 description: _("Disabling the keyring will delete all data currently stored inside. Are you sure you want to disable it?");

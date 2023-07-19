@@ -113,11 +113,14 @@ public partial class KeyringDialog : Adw.Window
         _credentialEditButton.OnClicked += EditCredential;
         _loadHomeCallback = (x) =>
         {
-            foreach (var row in _credentialRows)
+            if (_credentialRows.Count > 0)
             {
-                _credentialsGroup.Add(row);
+                foreach (var row in _credentialRows)
+                {
+                    _credentialsGroup.Add(row);
+                }
+                _credentialsGroup.SetVisible(true);
             }
-            _credentialsGroup.SetVisible(true);
             _loadingSpinner.SetVisible(false);
             _noCredentialsPage.SetVisible(_credentialRows.Count == 0);
             return false;
@@ -132,6 +135,7 @@ public partial class KeyringDialog : Adw.Window
         {
             _mainBox.SetSensitive(false);
             _toastOverlay.AddToast(Adw.Toast.New(_("Keyring has not been unlocked.")));
+            _enableKeyringButton.SetVisible(false);
         }
     }
     
