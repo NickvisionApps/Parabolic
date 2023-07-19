@@ -41,7 +41,6 @@ public partial class KeyringDialog : Adw.Window
     [Gtk.Connect] private readonly Adw.ViewStack _buttonViewStack;
     [Gtk.Connect] private readonly Gtk.Button _credentialAddButton;
     [Gtk.Connect] private readonly Gtk.Button _credentialDeleteButton;
-    [Gtk.Connect] private readonly Gtk.Button _credentialEditButton;
 
     /// <summary>
     /// Constructs a KeyringDialog
@@ -102,7 +101,6 @@ public partial class KeyringDialog : Adw.Window
         _addCredentialButton.OnClicked += (sender, e) => LoadAddCredentialPage();
         _credentialAddButton.OnClicked += AddCredential;
         _credentialDeleteButton.OnClicked += DeleteCredential;
-        _credentialEditButton.OnClicked += EditCredential;
         //Shortcut Controller
         _shortcutController = Gtk.ShortcutController.New();
         _shortcutController.SetScope(Gtk.ShortcutScope.Managed);
@@ -160,6 +158,15 @@ public partial class KeyringDialog : Adw.Window
     /// </summary>
     private async Task LoadHomePageAsync()
     {
+        if(_editId != null)
+        {
+            var checkStatus = _controller.ValidateCredential(_nameRow.GetText(), _urlRow.GetText(), _usernameRow.GetText(), _passwordRow.GetText());
+            SetValidation(checkStatus);
+            if(checkStatus == CredentialCheckStatus.Valid)
+            {
+                await _controller.UpdateCredentialAsync(_editId!.Value, _nameRow.GetText(), _urlRow.GetText(), _usernameRow.GetText(), _passwordRow.GetText());
+            }
+        }
         _editId = null;
         _viewStack.SetVisibleChildName("home");
         _backButton.SetVisible(false);
@@ -234,7 +241,7 @@ public partial class KeyringDialog : Adw.Window
         _usernameRow.SetText(credential.Username);
         _passwordRow.SetText(credential.Password);
         SetValidation(CredentialCheckStatus.Valid);
-        SetDefaultWidget(_credentialEditButton);
+        SetDefaultWidget(_backButton);
     }
 
     /// <summary>
@@ -282,22 +289,6 @@ public partial class KeyringDialog : Adw.Window
         if(checkStatus == CredentialCheckStatus.Valid)
         {
             await _controller.AddCredentialAsync(_nameRow.GetText(), _urlRow.GetText(), _usernameRow.GetText(), _passwordRow.GetText());
-            await LoadHomePageAsync();
-        }
-    }
-
-    /// <summary>
-    /// Occurs when the apply button is clicked
-    /// </summary>
-    /// <param name="sender">Gtk.Button</param>
-    /// <param name="e">EventArgs</param>
-    private async void EditCredential(Gtk.Button sender, EventArgs e)
-    {
-        var checkStatus = _controller.ValidateCredential(_nameRow.GetText(), _urlRow.GetText(), _usernameRow.GetText(), _passwordRow.GetText());
-        SetValidation(checkStatus);
-        if(checkStatus == CredentialCheckStatus.Valid)
-        {
-            await _controller.UpdateCredentialAsync(_editId!.Value, _nameRow.GetText(), _urlRow.GetText(), _usernameRow.GetText(), _passwordRow.GetText());
             await LoadHomePageAsync();
         }
     }

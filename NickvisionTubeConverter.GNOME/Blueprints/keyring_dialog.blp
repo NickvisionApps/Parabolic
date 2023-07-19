@@ -227,26 +227,13 @@ Adw.Window _root {
 
                   Adw.ViewStackPage {
                     name: "edit";
-                    child: Gtk.Box {
-                      orientation: horizontal;
-                      spacing: 24;
+                    child: Gtk.Button _credentialDeleteButton {
+                      valign: center;
                       halign: center;
-                      homogeneous: true;
                       margin-bottom: 24;
+                      label: _("Delete");
 
-                      Gtk.Button _credentialDeleteButton {
-                        valign: center;
-                        label: _("Delete");
-
-                        styles ["pill", "destructive-action"]
-                      }
-
-                      Gtk.Button _credentialEditButton {
-                        valign: center;
-                        label: _("Apply");
-
-                        styles ["pill", "suggested-action"]
-                      }
+                      styles ["pill", "destructive-action"]
                     };
                   }
                 }
