@@ -9,11 +9,9 @@
     "build-options": {
         "append-path": "/usr/lib/sdk/dotnet7/bin",
         "append-ld-library-path": "/usr/lib/sdk/dotnet7/lib",
-        "env": {
-            "PKG_CONFIG_PATH": "/app/lib/pkgconfig:/app/share/pkgconfig:/usr/lib/pkgconfig:/usr/share/pkgconfig:/usr/lib/sdk/dotnet7/lib/pkgconfig"
-        }
+        "append-pkg-config-path": "/usr/lib/sdk/dotnet7/lib/pkgconfig"
     },
-    "command": "/app/bin/org.nickvision.tubeconverter",
+    "command": "org.nickvision.tubeconverter",
     "finish-args": [
         "--socket=fallback-x11",
         "--socket=wayland",
