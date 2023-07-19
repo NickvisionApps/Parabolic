@@ -97,15 +97,47 @@ public partial class MainWindow : Adw.ApplicationWindow
         _title.SetTitle(_controller.AppInfo.ShortName);
         //Register Events
         OnCloseRequest += OnCloseRequested;
-        _controller.NotificationSent += NotificationSent;
-        _controller.RunInBackgroundChanged += RunInBackgroundChanged;
+        _controller.NotificationSent += (sender, e) => GLib.Functions.IdleAdd(0, () =>
+        {
+            NotificationSent(sender, e);
+            return false;
+        });
+        _controller.RunInBackgroundChanged += (sender, e) => GLib.Functions.IdleAdd(0, () =>
+        {
+            RunInBackgroundChanged(sender, e);
+            return false;
+        });
         _controller.KeyringLoginAsync = KeyringLoginAsync;
-        _controller.DownloadManager.DownloadAdded += DownloadAdded;
-        _controller.DownloadManager.DownloadProgressUpdated += DownloadProgressUpdated;
-        _controller.DownloadManager.DownloadCompleted += DownloadCompleted;
-        _controller.DownloadManager.DownloadStopped += DownloadStopped;
-        _controller.DownloadManager.DownloadRetried += DownloadRetried;
-        _controller.DownloadManager.DownloadStartedFromQueue += DownloadStartedFromQueue;
+        _controller.DownloadManager.DownloadAdded += (sender, e) => GLib.Functions.IdleAdd(0, () =>
+        {
+            DownloadAdded(sender, e);
+            return false;
+        });
+        _controller.DownloadManager.DownloadProgressUpdated += (sender, e) => GLib.Functions.IdleAdd(0, () =>
+        {
+            DownloadProgressUpdated(sender, e);
+            return false;
+        });
+        _controller.DownloadManager.DownloadCompleted += (sender, e) => GLib.Functions.IdleAdd(0, () =>
+        {
+            DownloadCompleted(sender, e);
+            return false;
+        });
+        _controller.DownloadManager.DownloadStopped += (sender, e) => GLib.Functions.IdleAdd(0, () =>
+        {
+            DownloadStopped(sender, e);
+            return false;
+        });
+        _controller.DownloadManager.DownloadRetried += (sender, e) => GLib.Functions.IdleAdd(0, () =>
+        {
+            DownloadRetried(sender, e);
+            return false;
+        });
+        _controller.DownloadManager.DownloadStartedFromQueue += (sender, e) => GLib.Functions.IdleAdd(0, () =>
+        {
+            DownloadStartedFromQueue(sender, e);
+            return false;
+        });
         //Add Download Action
         var actDownload = Gio.SimpleAction.New("addDownload", null);
         actDownload.OnActivate += async (sender, e) => await AddDownloadAsync(new NotificationSentEventArgs("", NotificationSeverity.Informational));;
