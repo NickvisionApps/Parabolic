@@ -161,7 +161,7 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
                     GLib.Functions.TimeoutAdd(0, 30, () =>
                     {
                         _pulsingBar.Pulse();
-                        return false;
+                        return _runPulsingBar;
                     });
                 }
                 _stateViewStack.SetVisibleChildName("processing");
@@ -174,7 +174,7 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
                     GLib.Functions.TimeoutAdd(0, 30, () =>
                     {
                         _pulsingBar.Pulse();
-                        return false;
+                        return _runPulsingBar;
                     });
                 }
                 _stateViewStack.SetVisibleChildName("processing");
