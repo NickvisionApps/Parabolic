@@ -1,14 +1,13 @@
 ﻿using NickvisionTubeConverter.GNOME.Helpers;
 using NickvisionTubeConverter.Shared.Models;
 using System;
-using System.Text.RegularExpressions;
 using static NickvisionTubeConverter.Shared.Helpers.Gettext;
 
 namespace NickvisionTubeConverter.GNOME.Controls;
 
 public class MediaRow : Adw.EntryRow
 {
-    private MediaInfo _mediaInfo;
+    private readonly MediaInfo _mediaInfo;
     private string _numberString;
     private readonly Gtk.EventControllerKey _titleKeyController;
     private readonly bool _limitChars;
@@ -16,7 +15,7 @@ public class MediaRow : Adw.EntryRow
     [Gtk.Connect] private readonly Gtk.CheckButton _downloadCheck;
     [Gtk.Connect] private readonly Gtk.Button _undoButton;
 
-    public event EventHandler<EventArgs> OnSelectionChanged;
+    public event EventHandler<EventArgs>? OnSelectionChanged;
 
     private MediaRow(Gtk.Builder builder, MediaInfo mediaInfo, bool limitChars) : base(builder.GetPointer("_root"), false)
     {

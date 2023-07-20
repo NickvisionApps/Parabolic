@@ -18,9 +18,6 @@ public enum MessageDialogResponse
 public partial class MessageDialog
 {
     [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
-    private static partial nint g_main_context_default();
-
-    [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
     private static partial void g_main_context_iteration(nint context, [MarshalAs(UnmanagedType.I1)] bool blocking);
 
     private readonly Adw.MessageDialog _dialog;
@@ -88,7 +85,7 @@ public partial class MessageDialog
         _dialog.Present();
         while (_dialog.GetVisible())
         {
-            g_main_context_iteration(g_main_context_default(), false);
+            g_main_context_iteration(GLib.MainContext.Default().Handle.DangerousGetHandle(), false);
         }
         return Response;
     }

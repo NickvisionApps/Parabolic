@@ -7,11 +7,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-11 13:56+0200\n"
+"POT-Creation-Date: 2023-07-20 23:33+0200\n"
 "PO-Revision-Date: 2023-07-12 18:52+0000\n"
 "Last-Translator: Dan <jonweblin2205@protonmail.com>\n"
-"Language-Team: Ukrainian <https://hosted.weblate.org/projects/"
-"nickvision-tube-converter/app/uk/>\n"
+"Language-Team: Ukrainian <https://hosted.weblate.org/projects/nickvision-"
+"tube-converter/app/uk/>\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,17 +20,17 @@ msgstr ""
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Generator: Weblate 5.0-dev\n"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:735
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:704
 #, csharp-format
 msgid "\"{0}\" has finished downloading."
 msgstr "\"{0}\" завершено завантаження."
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:735
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:704
 #, csharp-format
 msgid "\"{0}\" has finished with an error!"
 msgstr "\"{0}\" завершився з помилкою!"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:288
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:266
 msgid "(Configurable in preferences)"
 msgstr "(Налаштовується в параметрах)"
 
@@ -44,7 +44,7 @@ msgstr "{0:f1} Б/с"
 msgid "{0:f1} GiB/s"
 msgstr "{0:f1} ГіБ/с"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:288
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:266
 #: ../../../Helpers/SpeedFormatter.cs:28
 #, csharp-format
 msgid "{0:f1} KiB/s"
@@ -63,8 +63,8 @@ msgstr[0] "{0} завантаження - {1:f1}% ({2})"
 msgstr[1] "{0} завантаження - {1:f1}% ({2})"
 msgstr[2] "{0} завантажень - {1:f1}% ({2})"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:488
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:602
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:461
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:574
 #, csharp-format
 msgid "{0} of {1} items"
 msgid_plural "{0} of {1} items"
@@ -72,41 +72,36 @@ msgstr[0] "{0} з {1} елемента"
 msgstr[1] "{0} з {1} елементів"
 msgstr[2] "{0} з {1} елементів"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:137
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:115
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:37
 #: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:17
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:77
 msgid "Add Download"
 msgstr "Додати завантаження"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:136
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:114
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:160
 msgid "Advanced Options"
 msgstr "Додаткові параметри"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:739
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:708
 msgid "All downloads have finished."
 msgstr "Всі завантаження завершено."
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:445
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:458
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:418
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:431
 msgid "Audio"
 msgstr "Аудіо"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:112
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:99
 msgid "Best"
 msgstr "Найкраще"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:303
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:308
 msgid "Close and Stop Downloads?"
 msgstr "Закрити та зупинити завантаження?"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:230
-#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:248
-msgid "Credential"
-msgstr "Облікові дані"
-
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:531
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:536
 #, csharp-format
 msgid ""
 "David Lapshin {0}\n"
@@ -121,37 +116,25 @@ msgstr ""
 msgid "Default"
 msgstr "За замовчуванням"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:331
+#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:303
 msgid "Delete Credential?"
 msgstr "Видалити облікові дані?"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:161
-msgid "Disable Keyring?"
-msgstr "Вимкнути Keyring?"
-
-#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:161
-msgid ""
-"Disabling the keyring will delete all data currently stored inside. Are you "
-"sure you want to disable it?"
-msgstr ""
-"Вимкнення keyring призведе до видалення всіх даних, що зберігаються в ньому. "
-"Ви впевнені, що хочете його вимкнути?"
-
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:255
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:260
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:209
 #: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:14
 msgid "Download"
 msgstr "Завантаження"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:735
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:704
 msgid "Download Finished"
 msgstr "Завантаження завершено"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:735
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:704
 msgid "Download Finished With Error"
 msgstr "Завантаження завершено з помилкою"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:104
+#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:92
 msgid "Download log was copied to clipboard."
 msgstr "Журнал завантажень скопійовано до буфера обміну."
 
@@ -169,39 +152,34 @@ msgstr "Розпочато завантаження за допомогою ffmp
 msgid "Download web video and audio"
 msgstr "Завантажити веб відео та аудіо"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:182
+#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:168
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:114
 msgid "Downloading"
 msgstr "Завантаження"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:172
+#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:154
 #, csharp-format
 msgid "Downloading {0:f2}% ({1})"
 msgstr "Завантаження {0:f2}% ({1})"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:739
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:708
 msgid "Downloads Finished"
 msgstr "Завантаження завершені"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:145
-#: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:58
-msgid "Enable"
-msgstr "Ввімкнути"
-
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:518
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:490
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:298
 msgid "End Time"
 msgstr "Час закінчення"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:538
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:510
 msgid "End Time (Invalid)"
 msgstr "Час закінчення (неправильний)"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:436
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:409
 msgid "Ensure credentials are correct."
 msgstr "Переконайтеся, що облікові дані правильні."
 
-#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:208
+#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:198
 msgid "Error"
 msgstr "Помилка"
 
@@ -209,56 +187,60 @@ msgstr "Помилка"
 msgid "File already exists, and overwriting is disallowed"
 msgstr "Файл вже існує, і його перезапис заборонено"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Controls/MediaRow.cs:29
+#: ../../../../NickvisionTubeConverter.GNOME/Controls/MediaRow.cs:28
 msgid "File Name"
 msgstr "Ім'я файлу"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:526
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:531
 msgid "GitHub Repo"
 msgstr "Репозиторій GitHub"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:196
-#: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:37
+#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:174
 #: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:41
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:5
 msgid "Keyring"
 msgstr "Keyring"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:93
+#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:113
 msgid "Keyring has not been unlocked."
 msgstr "Keyring не розблоковано."
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:527
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:532
 msgid "List of supported sites"
 msgstr "Список підтримуваних сайтів"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:528
+#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:218
+#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:236
+msgid "Login"
+msgstr ""
+
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:533
 msgid "Matrix Chat"
 msgstr "Чат Matrix"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:489
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:462
 msgid "Maximum Quality"
 msgstr "Максимальна якість"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:426
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:399
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:57
 msgid "Media URL"
 msgstr "URL-адреса медіа"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:433
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:406
 msgid "Media URL (Invalid)"
 msgstr "URL-адреса медіа (неправильна)"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:266
-#: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:117
+#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:254
+#: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:195
 msgid "Name"
 msgstr "Ім'я"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:276
+#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:264
 msgid "Name (Empty)"
 msgstr "Ім'я (Порожньо)"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:529
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:534
 #, csharp-format
 msgid ""
 "Nicholas Logozzo {0}\n"
@@ -267,7 +249,7 @@ msgstr ""
 "Nicholas Logozzo {0}\n"
 "Учасники на GitHub ❤️ {1}"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:530
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:535
 #, csharp-format
 msgid ""
 "Nicholas Logozzo {0}\n"
@@ -278,9 +260,8 @@ msgstr ""
 "Fyodor Sobolev {1}\n"
 "DaPigGuy {2}"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:161
-#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:331
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:303
+#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:303
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:308
 msgid "No"
 msgstr "Ні"
 
@@ -294,53 +275,54 @@ msgstr "Немає завантажень"
 msgid "Parabolic"
 msgstr "Parabolic"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:272
+#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:260
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:76
-#: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:132
+#: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:210
 #: NickvisionTubeConverter.GNOME/Blueprints/password_dialog.blp:39
 msgid "Password"
 msgstr "Пароль"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:283
+#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:271
 msgid "Password (Empty)"
 msgstr "Пароль (Порожньо)"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:135
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:113
 msgid "Playlist"
 msgstr "Список відтворення"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:149
+#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:131
 msgid "Preparing..."
 msgstr "Підготовка..."
 
-#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:191
+#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:181
 msgid "Processing..."
 msgstr "Обробка..."
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:514
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:486
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:146
 msgid "Save Folder"
 msgstr "Зберегти теку"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:528
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:500
 msgid "Save Folder (Invalid)"
 msgstr "Зберегти папку (неправильно)"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/PreferencesDialog.cs:195
+#: ../../../../NickvisionTubeConverter.GNOME/Views/PreferencesDialog.cs:187
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:257
 msgid "Select Cookies File"
 msgstr "Виберіть файл cookies"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:573
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:545
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:153
 msgid "Select Save Folder"
 msgstr "Натисніть \"Зберегти папку\""
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:145
-msgid "Setup Keyring"
-msgstr "Налаштування Keyring"
+#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:67
+#, fuzzy
+msgid "Set Password"
+msgstr "Новий пароль"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:303
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:308
 msgid ""
 "Some downloads are still in progress.\n"
 "Are you sure you want to close Parabolic and stop the running downloads?"
@@ -352,33 +334,33 @@ msgstr ""
 msgid "Some downloads finished with errors!"
 msgstr "Деякі завантаження завершено з помилками!"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:516
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:488
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:293
 msgid "Start Time"
 msgstr "Час початку"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:533
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:505
 msgid "Start Time (Invalid)"
 msgstr "Час початку (неправильний)"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:225
+#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:215
 msgid "Stopped"
 msgstr "Зупинено"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/PreferencesDialog.cs:168
+#: ../../../../NickvisionTubeConverter.GNOME/Views/PreferencesDialog.cs:160
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:206
 msgid "Subtitle Languages (Comma-Separated)"
 msgstr "Мови субтитрів (через кому)"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/PreferencesDialog.cs:178
+#: ../../../../NickvisionTubeConverter.GNOME/Views/PreferencesDialog.cs:170
 msgid "Subtitle Languages (Invalid)"
 msgstr "Мови субтитрів (неправильні)"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:208
+#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:198
 msgid "Success"
 msgstr "Успіх"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:522
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:527
 msgid ""
 "The authors of Nickvision Parabolic are not responsible/liable for any "
 "misuse of this program that may violate local copyright/DMCA laws. Users use "
@@ -389,11 +371,11 @@ msgstr ""
 "закони про авторське право/DMCA. Користувачі використовують цей застосунок "
 "на власний ризик."
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:331
+#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:303
 msgid "This action is irreversible. Are you sure you want to delete it?"
 msgstr "Ця дія є незворотною. Ви впевнені, що хочете його видалити?"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:532
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:537
 msgid "translator-credits"
 msgstr ""
 "kefir2105\n"
@@ -416,55 +398,54 @@ msgstr ""
 msgid "Unlock Keyring"
 msgstr "Розблокувати Keyring"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:268
-#: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:122
+#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:256
+#: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:200
 msgid "URL"
 msgstr "URL"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:288
+#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:276
 msgid "URL (Invalid)"
 msgstr "URL (Неправильна)"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:356
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:334
 msgid "Use manual credential"
 msgstr "Використання облікових даних вручну"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:270
+#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:258
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:72
-#: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:127
+#: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:205
 msgid "Username"
 msgstr "Ім'я користувача"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:281
+#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:269
 msgid "Username (Empty)"
 msgstr "Ім'я користувача (Порожнє)"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:429
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:402
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:82
 msgid "Validate"
 msgstr "Підтвердити"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:458
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:431
 msgid "Video"
 msgstr "Відео"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:135
+#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:117
 #: NickvisionTubeConverter.GNOME/Blueprints/download_row.blp:39
 msgid "Waiting..."
 msgstr "Очікування..."
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:112
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:99
 msgid "Worst"
 msgstr "Найгірше"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:161
-#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:331
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:303
+#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:303
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:308
 msgid "Yes"
 msgstr "Так"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:24
-#: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:24
+#: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:25
 msgid "Back"
 msgstr "Назад"
 
@@ -563,52 +544,79 @@ msgstr "Повторити завантаження"
 msgid "Copy to Clipboard"
 msgstr "Скопіювати в буфер обміну"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:71
-msgid "Credentials"
-msgstr "Облікові дані"
+#: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:52
+#, fuzzy
+msgid "Keyring Disabled"
+msgstr "Облікові дані Keyring"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:72
-msgid "Manage credentials in your keyring."
-msgstr "Керувати обліковими даними Keyring."
+#: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:53
+msgid ""
+"Use keyring to safely store credentials for sites that require login with "
+"username and password."
+msgstr ""
 
-#: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:77
-msgid "Add Credential"
-msgstr "Додати облікові дані"
+#: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:55
+msgid "Enable"
+msgstr "Ввімкнути"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:82
-#: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:144
-#: NickvisionTubeConverter.GNOME/Blueprints/new_password_dialog.blp:54
+#: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:76
+msgid "New Password"
+msgstr "Новий пароль"
+
+#: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:81
+msgid "Confirm Password"
+msgstr "Підтвердити пароль"
+
+#: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:89
+msgid "If the password is lost, there is no way to restore the keyring!"
+msgstr "Якщо пароль втрачено, відновити keyring неможливо!"
+
+#: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:101
+msgid "Continue"
+msgstr ""
+
+#: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:123
+msgid "No Credentials"
+msgstr "Немає облікових даних"
+
+#: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:148
+msgid "Add Login"
+msgstr ""
+
+#: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:156
+#, fuzzy
+msgid "Disable Keyring"
+msgstr "Вимкнути Keyring?"
+
+#: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:170
+msgid "Disable Keyring?"
+msgstr "Вимкнути Keyring?"
+
+#: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:171
+msgid ""
+"Disabling the keyring will delete all data currently stored inside. Are you "
+"sure you want to disable it?"
+msgstr ""
+"Вимкнення keyring призведе до видалення всіх даних, що зберігаються в ньому. "
+"Ви впевнені, що хочете його вимкнути?"
+
+#: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:173
+#, fuzzy
+msgid "Disable"
+msgstr "Ввімкнути"
+
+#: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:222
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:51
 msgid "Add"
 msgstr "Додати"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:91
-msgid "No Credentials"
-msgstr "Немає облікових даних"
-
-#: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:161
+#: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:234
 msgid "Delete"
 msgstr "Видалити"
-
-#: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:168
-msgid "Apply"
-msgstr "Застосувати"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/media_row.blp:16
 msgid "Undo Title Editing"
 msgstr "Скасувати редагування назви"
-
-#: NickvisionTubeConverter.GNOME/Blueprints/new_password_dialog.blp:31
-msgid "New Password"
-msgstr "Новий пароль"
-
-#: NickvisionTubeConverter.GNOME/Blueprints/new_password_dialog.blp:36
-msgid "Confirm Password"
-msgstr "Підтвердити пароль"
-
-#: NickvisionTubeConverter.GNOME/Blueprints/new_password_dialog.blp:44
-msgid "If the password is lost, there is no way to restore the keyring!"
-msgstr "Якщо пароль втрачено, відновити keyring неможливо!"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/password_dialog.blp:50
 msgid "Unlock"
@@ -919,6 +927,24 @@ msgstr "- Запуск декількох завантажень одночас�
 #: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.metainfo.xml.in:13
 msgid "— Supports downloading metadata and video subtitles"
 msgstr "- Підтримує завантаження метаданих і субтитрів до відео"
+
+#~ msgid "Credential"
+#~ msgstr "Облікові дані"
+
+#~ msgid "Setup Keyring"
+#~ msgstr "Налаштування Keyring"
+
+#~ msgid "Credentials"
+#~ msgstr "Облікові дані"
+
+#~ msgid "Manage credentials in your keyring."
+#~ msgstr "Керувати обліковими даними Keyring."
+
+#~ msgid "Add Credential"
+#~ msgstr "Додати облікові дані"
+
+#~ msgid "Apply"
+#~ msgstr "Застосувати"
 
 #~ msgid "youtube"
 #~ msgstr "youtube"

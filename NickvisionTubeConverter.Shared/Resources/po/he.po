@@ -7,11 +7,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-11 13:56+0200\n"
+"POT-Creation-Date: 2023-07-20 23:33+0200\n"
 "PO-Revision-Date: 2023-07-18 16:07+0000\n"
 "Last-Translator: Yosef Or Boczko <yoseforb@gnome.org>\n"
-"Language-Team: Hebrew <https://hosted.weblate.org/projects/"
-"nickvision-tube-converter/app/he/>\n"
+"Language-Team: Hebrew <https://hosted.weblate.org/projects/nickvision-tube-"
+"converter/app/he/>\n"
 "Language: he\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,17 +20,17 @@ msgstr ""
 "n % 10 == 0) ? 2 : 3));\n"
 "X-Generator: Weblate 5.0-dev\n"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:735
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:704
 #, csharp-format
 msgid "\"{0}\" has finished downloading."
 msgstr "הסתיימה הורדת „{0}”."
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:735
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:704
 #, csharp-format
 msgid "\"{0}\" has finished with an error!"
 msgstr "הורדת „{0}” הסתיימה עם שגיאה!"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:288
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:266
 msgid "(Configurable in preferences)"
 msgstr "(ניתן להתאמה בהעדפות)"
 
@@ -44,7 +44,7 @@ msgstr "‏{0:f1} בית/שנ׳"
 msgid "{0:f1} GiB/s"
 msgstr "‏{0:f1} גיב״ב/שנ׳"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:288
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:266
 #: ../../../Helpers/SpeedFormatter.cs:28
 #, csharp-format
 msgid "{0:f1} KiB/s"
@@ -64,8 +64,8 @@ msgstr[1] "‏{0} יורד — ‏‎{1:f1}% ‏‎‏({2})"
 msgstr[2] "‏{0} יורד — ‏‎{1:f1}% ‏‎‏({2})"
 msgstr[3] "‏{0} יורד — ‏‎{1:f1}% ‏‎‏({2})"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:488
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:602
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:461
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:574
 #, csharp-format
 msgid "{0} of {1} items"
 msgid_plural "{0} of {1} items"
@@ -74,41 +74,36 @@ msgstr[1] "{0} מתוך {1} פריטים"
 msgstr[2] "{0} מתוך {1} פריטים"
 msgstr[3] "{0} מתוך {1} פריטים"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:137
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:115
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:37
 #: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:17
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:77
 msgid "Add Download"
 msgstr "הוספת הורדה"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:136
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:114
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:160
 msgid "Advanced Options"
 msgstr "אפשרויות מתקדמות"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:739
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:708
 msgid "All downloads have finished."
 msgstr "הסתיימו כל ההורדות."
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:445
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:458
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:418
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:431
 msgid "Audio"
 msgstr "שמע"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:112
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:99
 msgid "Best"
 msgstr "הטוב ביותר"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:303
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:308
 msgid "Close and Stop Downloads?"
 msgstr "לסגור ולעצור את ההורדות?"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:230
-#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:248
-msgid "Credential"
-msgstr "פרטי זיהוי"
-
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:531
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:536
 #, csharp-format
 msgid ""
 "David Lapshin {0}\n"
@@ -123,37 +118,25 @@ msgstr ""
 msgid "Default"
 msgstr "ברירת מחדל"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:331
+#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:303
 msgid "Delete Credential?"
 msgstr "למחוק אישורים?"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:161
-msgid "Disable Keyring?"
-msgstr "להשבית את קבוצת המפתחות?"
-
-#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:161
-msgid ""
-"Disabling the keyring will delete all data currently stored inside. Are you "
-"sure you want to disable it?"
-msgstr ""
-"השבתת קבוצת המפתחות תגרום למחיקת כל המידע המאוחסן כרגע בתוכן. האם אכן ברצונך "
-"להשבית אותה?"
-
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:255
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:260
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:209
 #: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:14
 msgid "Download"
 msgstr "הורדה"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:735
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:704
 msgid "Download Finished"
 msgstr "הורדה הסתיימה"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:735
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:704
 msgid "Download Finished With Error"
 msgstr "הורדה הסתיימה עם שגיאה"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:104
+#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:92
 msgid "Download log was copied to clipboard."
 msgstr "יומן ההורדה הועתק ללוח הגזירים."
 
@@ -171,39 +154,34 @@ msgstr "התחילה הורדה באמצעות ffmpeg"
 msgid "Download web video and audio"
 msgstr "הורדת סרטי רשת וקובצי שמע"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:182
+#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:168
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:114
 msgid "Downloading"
 msgstr "בהורדה"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:172
+#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:154
 #, csharp-format
 msgid "Downloading {0:f2}% ({1})"
 msgstr "מוריד ‏‏{0:f2}%‎ ‏({1})‎"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:739
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:708
 msgid "Downloads Finished"
 msgstr "הסתיימות הורדות"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:145
-#: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:58
-msgid "Enable"
-msgstr "לאפשר"
-
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:518
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:490
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:298
 msgid "End Time"
 msgstr "זמן סיום"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:538
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:510
 msgid "End Time (Invalid)"
 msgstr "זמן סיום (לא תקין)"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:436
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:409
 msgid "Ensure credentials are correct."
 msgstr "יש לוודא שפרטי הזיהוי תקינים."
 
-#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:208
+#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:198
 msgid "Error"
 msgstr "שגיאה"
 
@@ -211,56 +189,60 @@ msgstr "שגיאה"
 msgid "File already exists, and overwriting is disallowed"
 msgstr "הקובץ כבר קיים, והדריסה שלו לא מתאפשרת"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Controls/MediaRow.cs:29
+#: ../../../../NickvisionTubeConverter.GNOME/Controls/MediaRow.cs:28
 msgid "File Name"
 msgstr "שם קובץ"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:526
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:531
 msgid "GitHub Repo"
 msgstr "מאגר GitHub"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:196
-#: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:37
+#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:174
 #: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:41
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:5
 msgid "Keyring"
 msgstr "קבוצת מפתחות"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:93
+#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:113
 msgid "Keyring has not been unlocked."
 msgstr "קבוצת המפתחות לא שוחררה."
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:527
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:532
 msgid "List of supported sites"
 msgstr "רשימה של קבצים נתמכים"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:528
+#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:218
+#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:236
+msgid "Login"
+msgstr ""
+
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:533
 msgid "Matrix Chat"
 msgstr "צ׳אט במטריקס"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:489
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:462
 msgid "Maximum Quality"
 msgstr "איכות מרבית"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:426
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:399
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:57
 msgid "Media URL"
 msgstr "כתובת מדיה"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:433
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:406
 msgid "Media URL (Invalid)"
 msgstr "כתובת מדיה (לא תקינה)"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:266
-#: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:117
+#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:254
+#: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:195
 msgid "Name"
 msgstr "שם"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:276
+#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:264
 msgid "Name (Empty)"
 msgstr "שם (ריק)"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:529
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:534
 #, csharp-format
 msgid ""
 "Nicholas Logozzo {0}\n"
@@ -269,7 +251,7 @@ msgstr ""
 "Nicholas Logozzo {0}\n"
 "תורמים ב־GitHub‏ ❤️ {1}"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:530
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:535
 #, csharp-format
 msgid ""
 "Nicholas Logozzo {0}\n"
@@ -280,9 +262,8 @@ msgstr ""
 "Fyodor Sobolev {1}\n"
 "DaPigGuy {2}"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:161
-#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:331
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:303
+#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:303
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:308
 msgid "No"
 msgstr "לא"
 
@@ -296,53 +277,54 @@ msgstr "אין הורדות פעילות"
 msgid "Parabolic"
 msgstr "Parabolic"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:272
+#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:260
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:76
-#: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:132
+#: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:210
 #: NickvisionTubeConverter.GNOME/Blueprints/password_dialog.blp:39
 msgid "Password"
 msgstr "ססמה"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:283
+#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:271
 msgid "Password (Empty)"
 msgstr "ססמה (ריק)"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:135
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:113
 msgid "Playlist"
 msgstr "רשימת השמעה"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:149
+#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:131
 msgid "Preparing..."
 msgstr "בהכנה…"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:191
+#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:181
 msgid "Processing..."
 msgstr "בתהליך…"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:514
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:486
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:146
 msgid "Save Folder"
 msgstr "תיקייה שמירה"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:528
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:500
 msgid "Save Folder (Invalid)"
 msgstr "תיקיית שמירה (לא תקין)"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/PreferencesDialog.cs:195
+#: ../../../../NickvisionTubeConverter.GNOME/Views/PreferencesDialog.cs:187
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:257
 msgid "Select Cookies File"
 msgstr "בחירת קובץ עוגיות"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:573
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:545
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:153
 msgid "Select Save Folder"
 msgstr "בחירת תיקיית שמירה"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:145
-msgid "Setup Keyring"
-msgstr "הגדרת קבוצת מפתחות"
+#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:67
+#, fuzzy
+msgid "Set Password"
+msgstr "ססמה חדשה"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:303
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:308
 msgid ""
 "Some downloads are still in progress.\n"
 "Are you sure you want to close Parabolic and stop the running downloads?"
@@ -354,33 +336,33 @@ msgstr ""
 msgid "Some downloads finished with errors!"
 msgstr "כמה הורדות הסתיימו עם שגיאות!"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:516
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:488
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:293
 msgid "Start Time"
 msgstr "זמן התחלה"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:533
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:505
 msgid "Start Time (Invalid)"
 msgstr "זמן התחלה (לא תקין)"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:225
+#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:215
 msgid "Stopped"
 msgstr "נעצרה"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/PreferencesDialog.cs:168
+#: ../../../../NickvisionTubeConverter.GNOME/Views/PreferencesDialog.cs:160
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:206
 msgid "Subtitle Languages (Comma-Separated)"
 msgstr "שפות לכתוביות (מופרד בפסיק)"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/PreferencesDialog.cs:178
+#: ../../../../NickvisionTubeConverter.GNOME/Views/PreferencesDialog.cs:170
 msgid "Subtitle Languages (Invalid)"
 msgstr "שפות לכתוביות (לא תקין)"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:208
+#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:198
 msgid "Success"
 msgstr "הצליחה"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:522
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:527
 msgid ""
 "The authors of Nickvision Parabolic are not responsible/liable for any "
 "misuse of this program that may violate local copyright/DMCA laws. Users use "
@@ -390,11 +372,11 @@ msgstr ""
 "זו שעשוי להפר את חוקי זכויות היוצרים המקומיים/חוקי DMCA. השימוש שמשתמשים "
 "עושים ביישום זה הוא על אחריותם הבלעדית בלבד."
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:331
+#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:303
 msgid "This action is irreversible. Are you sure you want to delete it?"
 msgstr "פעולה זו בלתי הפיכה. האם אכן ברצונך לבצע את המחיקה?"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:532
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:537
 msgid "translator-credits"
 msgstr ""
 "יוסף אור בוצ׳קו <yoseforb@gmail.com>\n"
@@ -413,55 +395,54 @@ msgstr "לא ניתן לשחרר את קבוצת המפתחות. יש להפעי
 msgid "Unlock Keyring"
 msgstr "שחרור קבוצת מפתחות"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:268
-#: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:122
+#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:256
+#: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:200
 msgid "URL"
 msgstr "כתובת"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:288
+#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:276
 msgid "URL (Invalid)"
 msgstr "כתובת (לא תקינה)"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:356
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:334
 msgid "Use manual credential"
 msgstr "שימוש מזהה גישה ידנית"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:270
+#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:258
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:72
-#: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:127
+#: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:205
 msgid "Username"
 msgstr "שם משתמש"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:281
+#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:269
 msgid "Username (Empty)"
 msgstr "שם משתמש (ריק)"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:429
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:402
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:82
 msgid "Validate"
 msgstr "תיקוף"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:458
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:431
 msgid "Video"
 msgstr "סרט"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:135
+#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:117
 #: NickvisionTubeConverter.GNOME/Blueprints/download_row.blp:39
 msgid "Waiting..."
 msgstr "בהמתנה…"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:112
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:99
 msgid "Worst"
 msgstr "גרוע ביותר"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:161
-#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:331
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:303
+#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:303
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:308
 msgid "Yes"
 msgstr "כן"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:24
-#: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:24
+#: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:25
 msgid "Back"
 msgstr "חזרה"
 
@@ -558,52 +539,79 @@ msgstr "לנסות להוריד שוב"
 msgid "Copy to Clipboard"
 msgstr "העתקה ללוח הגזירים"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:71
-msgid "Credentials"
-msgstr "אישורים"
+#: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:52
+#, fuzzy
+msgid "Keyring Disabled"
+msgstr "אישור קבוצת מפתחות"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:72
-msgid "Manage credentials in your keyring."
-msgstr "ניהול האישורים בקבוצת המפתחות שלך."
+#: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:53
+msgid ""
+"Use keyring to safely store credentials for sites that require login with "
+"username and password."
+msgstr ""
 
-#: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:77
-msgid "Add Credential"
-msgstr "הוספת אישור"
+#: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:55
+msgid "Enable"
+msgstr "לאפשר"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:82
-#: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:144
-#: NickvisionTubeConverter.GNOME/Blueprints/new_password_dialog.blp:54
+#: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:76
+msgid "New Password"
+msgstr "ססמה חדשה"
+
+#: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:81
+msgid "Confirm Password"
+msgstr "אימות ססמה"
+
+#: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:89
+msgid "If the password is lost, there is no way to restore the keyring!"
+msgstr "אם הססמה תאבד, שחזור קבוצת המפתחות לא יתאפשר!"
+
+#: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:101
+msgid "Continue"
+msgstr ""
+
+#: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:123
+msgid "No Credentials"
+msgstr "אין אישורים"
+
+#: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:148
+msgid "Add Login"
+msgstr ""
+
+#: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:156
+#, fuzzy
+msgid "Disable Keyring"
+msgstr "להשבית את קבוצת המפתחות?"
+
+#: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:170
+msgid "Disable Keyring?"
+msgstr "להשבית את קבוצת המפתחות?"
+
+#: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:171
+msgid ""
+"Disabling the keyring will delete all data currently stored inside. Are you "
+"sure you want to disable it?"
+msgstr ""
+"השבתת קבוצת המפתחות תגרום למחיקת כל המידע המאוחסן כרגע בתוכן. האם אכן ברצונך "
+"להשבית אותה?"
+
+#: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:173
+#, fuzzy
+msgid "Disable"
+msgstr "לאפשר"
+
+#: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:222
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:51
 msgid "Add"
 msgstr "הוספה"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:91
-msgid "No Credentials"
-msgstr "אין אישורים"
-
-#: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:161
+#: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:234
 msgid "Delete"
 msgstr "מחיקה"
-
-#: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:168
-msgid "Apply"
-msgstr "החלה"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/media_row.blp:16
 msgid "Undo Title Editing"
 msgstr "ביטול עריכת הכותרת"
-
-#: NickvisionTubeConverter.GNOME/Blueprints/new_password_dialog.blp:31
-msgid "New Password"
-msgstr "ססמה חדשה"
-
-#: NickvisionTubeConverter.GNOME/Blueprints/new_password_dialog.blp:36
-msgid "Confirm Password"
-msgstr "אימות ססמה"
-
-#: NickvisionTubeConverter.GNOME/Blueprints/new_password_dialog.blp:44
-msgid "If the password is lost, there is no way to restore the keyring!"
-msgstr "אם הססמה תאבד, שחזור קבוצת המפתחות לא יתאפשר!"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/password_dialog.blp:50
 msgid "Unlock"
@@ -646,7 +654,8 @@ msgstr "גורם להתרעות על השלמת הורדות"
 msgid ""
 "In combination with the trigger, completed notifications will only be shown "
 "if the window is not focused."
-msgstr "בשילוב עפ הגורם, התרעות על השלמת הורדה תופעלנה רק כאשר החלון לא במיקוד."
+msgstr ""
+"בשילוב עפ הגורם, התרעות על השלמת הורדה תופעלנה רק כאשר החלון לא במיקוד."
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:34
 msgctxt "CompletedNotification"
@@ -754,7 +763,8 @@ msgstr "קובץ עוגיות"
 msgid ""
 "A cookies file can be provided to yt-dlp to allow downloading media that "
 "requires a login."
-msgstr "ניתן לספק קובץ עוגיות ל־yt-dlp, על מנת לאפשר הורדת מדיה הדורשת התחברות."
+msgstr ""
+"ניתן לספק קובץ עוגיות ל־yt-dlp, על מנת לאפשר הורדת מדיה הדורשת התחברות."
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:267
 msgid "Clear Cookies File"
@@ -886,8 +896,8 @@ msgstr "ניקוי הורדות שהושלמו"
 #: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.desktop.in:11
 msgid "YouTube;Downloader;ytdlp;Nickvision;Tube;Converter;"
 msgstr ""
-"מוריד;מנהל הורדות;YouTube;youtube;ytdlp;Nickvision;Tube;Converter;ממיר;שמע;מו"
-"זיקה;סרטונים;סרטים;הורדה;יוטיוב;"
+"מוריד;מנהל הורדות;YouTube;youtube;ytdlp;Nickvision;Tube;Converter;ממיר;שמע;"
+"מוזיקה;סרטונים;סרטים;הורדה;יוטיוב;"
 
 #: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.metainfo.xml.in:10
 msgid "— A basic yt-dlp frontend"
@@ -908,3 +918,21 @@ msgstr "- הפעלת מספר הורדות במקביל"
 #: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.metainfo.xml.in:13
 msgid "— Supports downloading metadata and video subtitles"
 msgstr "- תמיכה בהורדת נתוני מידע וכתוביות לסרטים"
+
+#~ msgid "Credential"
+#~ msgstr "פרטי זיהוי"
+
+#~ msgid "Setup Keyring"
+#~ msgstr "הגדרת קבוצת מפתחות"
+
+#~ msgid "Credentials"
+#~ msgstr "אישורים"
+
+#~ msgid "Manage credentials in your keyring."
+#~ msgstr "ניהול האישורים בקבוצת המפתחות שלך."
+
+#~ msgid "Add Credential"
+#~ msgstr "הוספת אישור"
+
+#~ msgid "Apply"
+#~ msgstr "החלה"

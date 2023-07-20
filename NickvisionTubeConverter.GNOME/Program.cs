@@ -49,7 +49,7 @@ public partial class Program
         _mainWindowController.AppInfo.ShortName = _("Parabolic");
         _mainWindowController.AppInfo.Description = $"{_("Download web video and audio")}.";
         _mainWindowController.AppInfo.Version = "2023.7.3-next";
-        _mainWindowController.AppInfo.Changelog = "<ul><li>Updated translations (Thanks everyone on Weblate!)</li></ul>";
+        _mainWindowController.AppInfo.Changelog = "<ul><li>Improved Keyring Dialog UI</li><li>Updated translations (Thanks everyone on Weblate!)</li></ul>";
         _mainWindowController.AppInfo.GitHubRepo = new Uri("https://github.com/NickvisionApps/Parabolic");
         _mainWindowController.AppInfo.IssueTracker = new Uri("https://github.com/NickvisionApps/Parabolic/issues/new");
         _mainWindowController.AppInfo.SupportUrl = new Uri("https://github.com/NickvisionApps/Parabolic/discussions");
@@ -85,10 +85,7 @@ public partial class Program
     {
         try
         {
-            var argv = new string[args.Length + 1];
-            argv[0] = "NickvisionTubeConverter.GNOME";
-            args.CopyTo(argv, 1);
-            return _application.Run(args.Length + 1, argv);
+            return _application.RunWithSynchronizationContext();
         }
         catch (Exception ex)
         {
