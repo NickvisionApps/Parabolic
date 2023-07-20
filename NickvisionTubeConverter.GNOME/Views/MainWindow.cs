@@ -255,11 +255,6 @@ public partial class MainWindow : Adw.ApplicationWindow
     private void NotificationSent(object? sender, NotificationSentEventArgs e)
     {
         var toast = Adw.Toast.New(e.Message);
-        if (e.Action == "clipboard")
-        {
-            toast.SetButtonLabel(_("Download"));
-            toast.OnButtonClicked += async (s, ex) => await AddDownloadAsync(e);
-        }
         _toastOverlay.AddToast(toast);
     }
 
