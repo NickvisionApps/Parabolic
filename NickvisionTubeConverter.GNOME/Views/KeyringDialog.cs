@@ -215,7 +215,7 @@ public partial class KeyringDialog : Adw.Window
     {
         _viewStack.SetVisibleChildName("credential");
         _backButton.SetVisible(true);
-        _titleLabel.SetLabel(_("Credential"));
+        _titleLabel.SetLabel(_("Login"));
         _buttonViewStack.SetVisibleChildName("add");
         _nameRow.SetText("");
         _urlRow.SetText("");
@@ -233,7 +233,7 @@ public partial class KeyringDialog : Adw.Window
     {
         _viewStack.SetVisibleChildName("credential");
         _backButton.SetVisible(true);
-        _titleLabel.SetLabel(_("Credential"));
+        _titleLabel.SetLabel(_("Login"));
         _buttonViewStack.SetVisibleChildName("edit");
         _editId = credential.Id;
         _nameRow.SetText(credential.Name);
