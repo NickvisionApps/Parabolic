@@ -140,7 +140,7 @@ public partial class MainWindow : Adw.ApplicationWindow
         });
         //Add Download Action
         var actDownload = Gio.SimpleAction.New("addDownload", null);
-        actDownload.OnActivate += async (sender, e) => await AddDownloadAsync(new NotificationSentEventArgs("", NotificationSeverity.Informational));;
+        actDownload.OnActivate += async (sender, e) => await AddDownloadAsync(null);
         AddAction(actDownload);
         application.SetAccelsForAction("win.addDownload", new string[] { "<Ctrl>n" });
         //Stop All Downloads Action
@@ -332,8 +332,7 @@ public partial class MainWindow : Adw.ApplicationWindow
     /// <summary>
     /// Prompts the AddDownloadDialog
     /// </summary>
-    /// <param name="e">NotificationSentEventArgs</param>
-    private async Task AddDownloadAsync(NotificationSentEventArgs e)
+    private async Task AddDownloadAsync(string? url)
     {
         var addController = _controller.CreateAddDownloadDialogController();
         var addDialog = new AddDownloadDialog(addController, this);
@@ -348,7 +347,7 @@ public partial class MainWindow : Adw.ApplicationWindow
             }
             addDialog.Close();
         };
-        await addDialog.PresentAsync(e.ActionParam);
+        await addDialog.PresentAsync(url);
     }
 
     /// <summary>
@@ -375,9 +374,13 @@ public partial class MainWindow : Adw.ApplicationWindow
     /// <param name="e">EventArgs</param>
     private void History(Gio.SimpleAction sender, EventArgs e)
     {
-        var messageDialog = new MessageDialog(this, _controller.AppInfo.ID, "TODO", "This feature is not yet implemented", "OK");
-        messageDialog.OnResponse += (sender, e) => messageDialog.Destroy();
-        messageDialog.Present();
+        var historyDialog = new HistoryDialog(this, _controller.AppInfo.ID, _controller.DownloadHistory);
+        historyDialog.DownloadAgainRequested += async (sender, e) =>
+        {
+            await AddDownloadAsync(e);
+            historyDialog.Destroy();
+        };
+        historyDialog.Present();
     }
 
     /// <summary>

@@ -15,14 +15,14 @@ public class DownloadHistory
     /// <summary>
     /// The download history
     /// </summary>
-    public List<Uri> History { get; set; }
+    public List<string> History { get; set; }
     
     /// <summary>
     /// Constructs a DownloadHistory
     /// </summary>
     public DownloadHistory()
     {
-        History = new List<Uri>();
+        History = new List<string>();
     }
     
     /// <summary>

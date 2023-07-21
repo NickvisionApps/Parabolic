@@ -53,6 +53,10 @@ public class MainWindowController : IDisposable
     /// The DownloadOptions for a download
     /// </summary>
     public DownloadOptions DownloadOptions => new DownloadOptions(Configuration.Current.OverwriteExistingFiles, Configuration.Current.UseAria, Configuration.Current.CookiesPath, Configuration.Current.AriaMaxConnectionsPerServer, Configuration.Current.AriaMinSplitSize, Configuration.Current.SubtitleLangs, Configuration.Current.EmbedMetadata, Configuration.Current.EmbedChapters);
+    /// <summary>
+    /// Gets the DownloadHistory object
+    /// </summary>
+    public DownloadHistory DownloadHistory => DownloadHistory.Current;
 
     /// <summary>
     /// Occurs when a notification is sent
