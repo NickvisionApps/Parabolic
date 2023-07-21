@@ -59,6 +59,7 @@ public partial class HistoryDialog : Adw.Window
                 row.SetSubtitle(pair.Key);
             }
             row.SetTitleLines(1);
+            row.SetSubtitleLines(1);
             var button = Gtk.Button.New();
             button.SetIconName("view-refresh-symbolic");
             button.SetTooltipText(_("Download Again"));
