@@ -2,6 +2,7 @@ using NickvisionTubeConverter.GNOME.Helpers;
 using NickvisionTubeConverter.Shared.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using static NickvisionTubeConverter.Shared.Helpers.Gettext;
 
 namespace NickvisionTubeConverter.GNOME.Controls;
@@ -46,16 +47,16 @@ public partial class HistoryDialog : Adw.Window
             Close();
         };
         _searchEntry.OnSearchChanged += SearchChanged;
-        foreach (var pair in history.History)
+        foreach (var pair in history.History.OrderByDescending(x => x.Value.Date))
         {
             var row = Adw.ActionRow.New();
-            if(string.IsNullOrEmpty(pair.Value))
+            if(string.IsNullOrEmpty(pair.Value.Title))
             {
                 row.SetTitle(pair.Key);
             }
             else
             {
-                row.SetTitle(pair.Value);
+                row.SetTitle(pair.Value.Title);
                 row.SetSubtitle(pair.Key);
             }
             row.SetTitleLines(1);
