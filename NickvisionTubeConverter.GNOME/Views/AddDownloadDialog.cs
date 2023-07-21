@@ -306,6 +306,7 @@ public partial class AddDownloadDialog : Adw.Window
         //Validated from startup
         if (!string.IsNullOrEmpty(url))
         {
+            _urlRow.SetText(url);
             await SearchUrlAsync(url);
         }
         else

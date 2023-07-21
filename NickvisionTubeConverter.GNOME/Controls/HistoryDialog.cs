@@ -43,8 +43,15 @@ public partial class HistoryDialog : Adw.Window
         foreach (var pair in history.History)
         {
             var row = Adw.ActionRow.New();
-            row.SetTitle(pair.Value);
-            row.SetSubtitle(pair.Key);
+            if(string.IsNullOrEmpty(pair.Value))
+            {
+                row.SetTitle(pair.Key);
+            }
+            else
+            {
+                row.SetTitle(pair.Value);
+                row.SetSubtitle(pair.Key);
+            }
             row.SetTitleLines(1);
             var button = Gtk.Button.New();
             button.SetIconName("folder-download-symbolic");
