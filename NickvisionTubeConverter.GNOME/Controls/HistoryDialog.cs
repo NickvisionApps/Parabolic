@@ -40,10 +40,11 @@ public partial class HistoryDialog : Adw.Window
             history.Save();
             Close();
         };
-        foreach (var url in history.History)
+        foreach (var pair in history.History)
         {
             var row = Adw.ActionRow.New();
-            row.SetTitle(url.ToString());
+            row.SetTitle(pair.Value);
+            row.SetSubtitle(pair.Key);
             row.SetTitleLines(1);
             var button = Gtk.Button.New();
             button.SetIconName("folder-download-symbolic");
@@ -52,7 +53,7 @@ public partial class HistoryDialog : Adw.Window
             button.AddCssClass("flat");
             button.OnClicked += (sender, e) =>
             {
-                DownloadAgainRequested?.Invoke(this, url.ToString());
+                DownloadAgainRequested?.Invoke(this, pair.Key);
             };
             row.AddSuffix(button);
             row.SetActivatableWidget(button);

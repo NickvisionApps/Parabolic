@@ -200,9 +200,9 @@ public class DownloadManager
             DownloadAdded?.Invoke(this, (download.Id, download.Filename, download.SaveFolder, false));
         }
         var history = DownloadHistory.Current;
-        if(!history.History.Contains(download.MediaUrl))
+        if(!history.History.ContainsKey(download.MediaUrl))
         {
-            history.History.Add(download.MediaUrl);
+            history.History.Add(download.MediaUrl, download.Filename);
         }
         history.Save();
     }
