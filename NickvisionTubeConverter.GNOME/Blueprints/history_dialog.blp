@@ -1,0 +1,70 @@
+using Gtk 4.0;
+using Adw 1;
+
+Adw.Window _root {
+  default-width: 400;
+  modal: true;
+  resizable: false;
+
+  content: Gtk.Box {
+    orientation: vertical;
+
+    Adw.HeaderBar {
+      title-widget: Gtk.Label { };
+
+      [start]
+      Gtk.Button _clearButton {
+        icon-name: "larger-brush-symbolic";
+        tooltip-text: _("Clear History");
+
+        styles ["flat"]
+      }
+
+      styles ["flat"]
+    }
+
+    Gtk.WindowHandle {
+      Gtk.Box {
+        orientation: vertical;
+
+        Gtk.Label {
+          label: _("History");
+          styles ["title-2"]
+        }
+      
+        Gtk.Label {
+          label: _("Manage previously downloaded media.");
+          wrap: true;
+          margin-top: 24;
+          margin-start: 12;
+          margin-end: 12;
+          margin-bottom: 24;
+          justify: center;
+        }
+
+        Gtk.SearchEntry _searchEntry {
+          margin-start: 12;
+          margin-end: 12;
+          margin-bottom: 12;
+          placeholder-text: _("Search...");
+        }
+
+        Gtk.Separator {}
+      
+        Gtk.ScrolledWindow _scrolledWindow {
+          propagate-natural-height: true;
+          max-content-height: 300;
+
+          child: Adw.PreferencesGroup _urlsGroup {
+            margin-top: 12;
+            margin-start: 12;
+            margin-end: 12;
+            margin-bottom: 12;
+          };
+          
+          styles ["view"]
+        }
+      }
+    }
+  };
+}

@@ -199,6 +199,9 @@ public class DownloadManager
             _queued.Add(download.Id, (download, options));
             DownloadAdded?.Invoke(this, (download.Id, download.Filename, download.SaveFolder, false));
         }
+        var history = DownloadHistory.Current;
+        history.History[download.MediaUrl] = (download.Filename, DateTime.Now);
+        history.Save();
     }
 
     /// <summary>

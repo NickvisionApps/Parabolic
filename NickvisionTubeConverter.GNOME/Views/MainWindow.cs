@@ -140,7 +140,7 @@ public partial class MainWindow : Adw.ApplicationWindow
         });
         //Add Download Action
         var actDownload = Gio.SimpleAction.New("addDownload", null);
-        actDownload.OnActivate += async (sender, e) => await AddDownloadAsync(new NotificationSentEventArgs("", NotificationSeverity.Informational));;
+        actDownload.OnActivate += async (sender, e) => await AddDownloadAsync(null);
         AddAction(actDownload);
         application.SetAccelsForAction("win.addDownload", new string[] { "<Ctrl>n" });
         //Stop All Downloads Action
@@ -195,6 +195,11 @@ public partial class MainWindow : Adw.ApplicationWindow
         actKeyring.OnActivate += Keyring;
         AddAction(actKeyring);
         application.SetAccelsForAction("win.keyring", new string[] { "<Ctrl>k" });
+        //History Action
+        var actHistory = Gio.SimpleAction.New("history", null);
+        actHistory.OnActivate += History;
+        AddAction(actHistory);
+        application.SetAccelsForAction("win.history", new string[] { "<Ctrl>h" });
         //Preferences Action
         var actPreferences = Gio.SimpleAction.New("preferences", null);
         actPreferences.OnActivate += Preferences;
@@ -327,8 +332,7 @@ public partial class MainWindow : Adw.ApplicationWindow
     /// <summary>
     /// Prompts the AddDownloadDialog
     /// </summary>
-    /// <param name="e">NotificationSentEventArgs</param>
-    private async Task AddDownloadAsync(NotificationSentEventArgs e)
+    private async Task AddDownloadAsync(string? url)
     {
         var addController = _controller.CreateAddDownloadDialogController();
         var addDialog = new AddDownloadDialog(addController, this);
@@ -343,7 +347,7 @@ public partial class MainWindow : Adw.ApplicationWindow
             }
             addDialog.Close();
         };
-        await addDialog.PresentAsync(e.ActionParam);
+        await addDialog.PresentAsync(url);
     }
 
     /// <summary>
@@ -361,6 +365,22 @@ public partial class MainWindow : Adw.ApplicationWindow
             return false;
         };
         await keyringDialog.PresentAsync();
+    }
+
+    /// <summary>
+    /// Occurs when the history action is triggered
+    /// </summary>
+    /// <param name="sender">Gio.SimpleAction</param>
+    /// <param name="e">EventArgs</param>
+    private void History(Gio.SimpleAction sender, EventArgs e)
+    {
+        var historyDialog = new HistoryDialog(this, _controller.AppInfo.ID, _controller.DownloadHistory);
+        historyDialog.DownloadAgainRequested += async (sender, e) =>
+        {
+            await AddDownloadAsync(e);
+            historyDialog.Destroy();
+        };
+        historyDialog.Present();
     }
 
     /// <summary>
