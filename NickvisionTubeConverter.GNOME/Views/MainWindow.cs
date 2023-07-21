@@ -195,6 +195,11 @@ public partial class MainWindow : Adw.ApplicationWindow
         actKeyring.OnActivate += Keyring;
         AddAction(actKeyring);
         application.SetAccelsForAction("win.keyring", new string[] { "<Ctrl>k" });
+        //History Action
+        var actHistory = Gio.SimpleAction.New("history", null);
+        actHistory.OnActivate += History;
+        AddAction(actHistory);
+        application.SetAccelsForAction("win.history", new string[] { "<Ctrl>h" });
         //Preferences Action
         var actPreferences = Gio.SimpleAction.New("preferences", null);
         actPreferences.OnActivate += Preferences;
@@ -361,6 +366,18 @@ public partial class MainWindow : Adw.ApplicationWindow
             return false;
         };
         await keyringDialog.PresentAsync();
+    }
+
+    /// <summary>
+    /// Occurs when the history action is triggered
+    /// </summary>
+    /// <param name="sender">Gio.SimpleAction</param>
+    /// <param name="e">EventArgs</param>
+    private void History(Gio.SimpleAction sender, EventArgs e)
+    {
+        var messageDialog = new MessageDialog(this, _controller.AppInfo.ID, "TODO", "This feature is not yet implemented", "OK");
+        messageDialog.OnResponse += (sender, e) => messageDialog.Destroy();
+        messageDialog.Present();
     }
 
     /// <summary>
