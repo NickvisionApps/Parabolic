@@ -60,7 +60,7 @@ public partial class HistoryDialog : Adw.Window
             }
             row.SetTitleLines(1);
             var button = Gtk.Button.New();
-            button.SetIconName("folder-download-symbolic");
+            button.SetIconName("view-refresh-symbolic");
             button.SetTooltipText(_("Download Again"));
             button.SetValign(Gtk.Align.Center);
             button.AddCssClass("flat");
