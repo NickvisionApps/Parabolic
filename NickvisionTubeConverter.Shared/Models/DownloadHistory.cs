@@ -11,7 +11,8 @@ namespace NickvisionTubeConverter.Shared.Models;
 public class DownloadHistory
 {
     private static readonly string HistoryPath = $"{Configuration.ConfigDir}{Path.DirectorySeparatorChar}downloadHistory.json";
-    
+    private static DownloadHistory? _instance;
+
     /// <summary>
     /// The download history
     /// </summary>
@@ -28,18 +29,22 @@ public class DownloadHistory
     /// <summary>
     /// Gets a DownloadHistory object
     /// </summary>
-    public static DownloadHistory Current
+    internal static DownloadHistory Current
     {
         get
         {
-            try
+            if (_instance == null)
             {
-                return JsonSerializer.Deserialize<DownloadHistory>(File.ReadAllText(HistoryPath)) ?? new DownloadHistory();
+                try
+                {
+                    _instance = JsonSerializer.Deserialize<DownloadHistory>(File.ReadAllText(HistoryPath)) ?? new DownloadHistory();
+                }
+                catch
+                {
+                    _instance = new DownloadHistory();
+                }
             }
-            catch
-            {
-                return new DownloadHistory();
-            }
+            return _instance;
         }
     }
     
