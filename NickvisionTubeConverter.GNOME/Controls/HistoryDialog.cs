@@ -1,6 +1,7 @@
 using NickvisionTubeConverter.GNOME.Helpers;
 using NickvisionTubeConverter.Shared.Models;
 using System;
+using System.Collections.Generic;
 using static NickvisionTubeConverter.Shared.Helpers.Gettext;
 
 namespace NickvisionTubeConverter.GNOME.Controls;
@@ -10,7 +11,10 @@ namespace NickvisionTubeConverter.GNOME.Controls;
 /// </summary>
 public partial class HistoryDialog : Adw.Window
 {
+    private readonly List<Adw.ActionRow> _historyRows;
+
     [Gtk.Connect] private readonly Gtk.Button _clearButton;
+    [Gtk.Connect] private readonly Gtk.SearchEntry _searchEntry;
     [Gtk.Connect] private readonly Gtk.ScrolledWindow _scrolledWindow;
     [Gtk.Connect] private readonly Adw.PreferencesGroup _urlsGroup;
 
@@ -30,6 +34,7 @@ public partial class HistoryDialog : Adw.Window
     /// <param name="history">The DownloadHistory object</param>
     private HistoryDialog(Gtk.Builder builder, Gtk.Window parent, string iconName, DownloadHistory history) : base(builder.GetPointer("_root"), false)
     {
+        _historyRows = new List<Adw.ActionRow>();
         builder.Connect(this);
         //Dialog Settings
         SetIconName(iconName);
@@ -40,6 +45,7 @@ public partial class HistoryDialog : Adw.Window
             history.Save();
             Close();
         };
+        _searchEntry.OnSearchChanged += SearchChanged;
         foreach (var pair in history.History)
         {
             var row = Adw.ActionRow.New();
@@ -65,6 +71,7 @@ public partial class HistoryDialog : Adw.Window
             row.AddSuffix(button);
             row.SetActivatableWidget(button);
             _urlsGroup.Add(row);
+            _historyRows.Add(row);
         }
         //Shortcut Controller
         _shortcutController = Gtk.ShortcutController.New();
@@ -92,5 +99,29 @@ public partial class HistoryDialog : Adw.Window
     {
         Close();
         return true;
+    }
+
+    /// <summary>
+    /// Occurs when the search entry's text is changed
+    /// </summary>
+    /// <param name="sender">Gtk.SearchEntry</param>
+    /// <param name="e">EventArgs</param>
+    private void SearchChanged(Gtk.SearchEntry sender, EventArgs e)
+    {
+        var search = _searchEntry.GetText().ToLower();
+        if(string.IsNullOrEmpty(search))
+        {
+            foreach (var row in _historyRows)
+            {
+                row.SetVisible(true);
+            }
+        }
+        else
+        {
+            foreach(var row in _historyRows)
+            {
+                row.SetVisible(row.GetTitle().ToLower().Contains(search));
+            }
+        }
     }
 }
