@@ -51,17 +51,34 @@ Adw.Window _root {
 
         Gtk.Separator {}
       
-        Gtk.ScrolledWindow _scrolledWindow {
-          propagate-natural-height: true;
-          max-content-height: 300;
+        Adw.ViewStack _viewStack {
+          Adw.ViewStackPage {
+            name: "no-history";
+            child: Adw.StatusPage {
+              icon-name: "document-open-recent-symbolic";
+              title: _("No Previous Downloads");
 
-          child: Adw.PreferencesGroup _urlsGroup {
-            margin-top: 12;
-            margin-start: 12;
-            margin-end: 12;
-            margin-bottom: 12;
-          };
-          
+              styles ["compact"]
+            };
+          }
+
+          Adw.ViewStackPage {
+            name: "history";
+            child: Gtk.ScrolledWindow _scrolledWindow {
+              hexpand: true;
+              vexpand: true;
+              propagate-natural-height: true;
+              max-content-height: 300;
+
+              child: Adw.PreferencesGroup _urlsGroup {
+                margin-top: 12;
+                margin-start: 12;
+                margin-end: 12;
+                margin-bottom: 12;
+              };
+            };
+          }
+
           styles ["view"]
         }
       }

@@ -19,10 +19,12 @@ public partial class HistoryDialog : Adw.Window
     [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
     private static partial void gtk_file_launcher_launch(nint fileLauncher, nint parent, nint cancellable, GAsyncReadyCallback callback, nint data);
 
+    private readonly DownloadHistory _history;
     private readonly List<Adw.ActionRow> _historyRows;
 
     [Gtk.Connect] private readonly Gtk.Button _clearButton;
     [Gtk.Connect] private readonly Gtk.SearchEntry _searchEntry;
+    [Gtk.Connect] private readonly Adw.ViewStack _viewStack;
     [Gtk.Connect] private readonly Gtk.ScrolledWindow _scrolledWindow;
     [Gtk.Connect] private readonly Adw.PreferencesGroup _urlsGroup;
     
@@ -40,23 +42,17 @@ public partial class HistoryDialog : Adw.Window
     /// <param name="history">The DownloadHistory object</param>
     private HistoryDialog(Gtk.Builder builder, Gtk.Window parent, string iconName, DownloadHistory history) : base(builder.GetPointer("_root"), false)
     {
+        _history = history;
         _historyRows = new List<Adw.ActionRow>();
         builder.Connect(this);
         //Dialog Settings
         SetIconName(iconName);
         SetTransientFor(parent);
-        _clearButton.OnClicked += (sender, e) =>
-        {
-            history.History.Clear();
-            history.Save();
-            foreach(var row in _historyRows)
-            {
-                _urlsGroup.Remove(row);
-            }
-            _historyRows.Clear();
-        };
+        _clearButton.OnClicked += ClearHistory;
         _searchEntry.OnSearchChanged += SearchChanged;
-        foreach (var pair in history.History.OrderByDescending(x => x.Value.Date))
+        _searchEntry.SetVisible(_history.History.Count > 0);
+        _viewStack.SetVisibleChildName(_history.History.Count > 0 ? "history" : "no-history");
+        foreach (var pair in _history.History.OrderByDescending(x => x.Value.Date))
         {
             var row = Adw.ActionRow.New();
             if(string.IsNullOrEmpty(pair.Value.Title))
@@ -108,6 +104,25 @@ public partial class HistoryDialog : Adw.Window
     /// <param name="history">The DownloadHistory object</param>
     public HistoryDialog(Gtk.Window parent, string iconName, DownloadHistory history) : this(Builder.FromFile("history_dialog.ui"), parent, iconName, history)
     {
+    }
+
+    /// <summary>
+    /// Occurs when the clear history button is clicked
+    /// </summary>
+    /// <param name="sender">Gtk.Button</param>
+    /// <param name="e">EventArgs</param>
+    private void ClearHistory(Gtk.Button sender, EventArgs e)
+    {
+        _history.History.Clear();
+        _history.Save();
+        //Update UI
+        _searchEntry.SetVisible(false);
+        _viewStack.SetVisibleChildName("no-history");
+        foreach(var row in _historyRows)
+        {
+            _urlsGroup.Remove(row);
+        }
+        _historyRows.Clear();
     }
 
     /// <summary>
