@@ -2,7 +2,9 @@ using NickvisionTubeConverter.GNOME.Helpers;
 using NickvisionTubeConverter.Shared.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using static NickvisionTubeConverter.Shared.Helpers.Gettext;
 
 namespace NickvisionTubeConverter.GNOME.Controls;
@@ -12,6 +14,11 @@ namespace NickvisionTubeConverter.GNOME.Controls;
 /// </summary>
 public partial class HistoryDialog : Adw.Window
 {
+    private delegate void GAsyncReadyCallback(nint source, nint res, nint user_data);
+
+    [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
+    private static partial void gtk_file_launcher_launch(nint fileLauncher, nint parent, nint cancellable, GAsyncReadyCallback callback, nint data);
+
     private readonly List<Adw.ActionRow> _historyRows;
 
     [Gtk.Connect] private readonly Gtk.Button _clearButton;
@@ -42,7 +49,11 @@ public partial class HistoryDialog : Adw.Window
         {
             history.History.Clear();
             history.Save();
-            Close();
+            foreach(var row in _historyRows)
+            {
+                _urlsGroup.Remove(row);
+            }
+            _historyRows.Clear();
         };
         _searchEntry.OnSearchChanged += SearchChanged;
         foreach (var pair in history.History.OrderByDescending(x => x.Value.Date))
@@ -59,17 +70,31 @@ public partial class HistoryDialog : Adw.Window
             }
             row.SetTitleLines(1);
             row.SetSubtitleLines(1);
-            var button = Gtk.Button.New();
-            button.SetIconName("view-refresh-symbolic");
-            button.SetTooltipText(_("Download Again"));
-            button.SetValign(Gtk.Align.Center);
-            button.AddCssClass("flat");
-            button.OnClicked += (sender, e) =>
+            var downloadButton = Gtk.Button.New();
+            downloadButton.SetIconName("view-refresh-symbolic");
+            downloadButton.SetTooltipText(_("Download Again"));
+            downloadButton.SetValign(Gtk.Align.Center);
+            downloadButton.AddCssClass("flat");
+            downloadButton.OnClicked += (sender, e) =>
             {
                 DownloadAgainRequested?.Invoke(this, pair.Key);
             };
-            row.AddSuffix(button);
-            row.SetActivatableWidget(button);
+            row.AddSuffix(downloadButton);
+            if(File.Exists(pair.Value.Path))
+            {
+                var openButton = Gtk.Button.New();
+                openButton.SetIconName("document-open-symbolic");
+                openButton.SetTooltipText(_("Open in File Manager"));
+                openButton.SetValign(Gtk.Align.Center);
+                openButton.AddCssClass("flat");
+                openButton.OnClicked += (sender, e) =>
+                {
+                    var fileLauncher = Gtk.FileLauncher.New(Gio.FileHelper.NewForPath(pair.Value.Path));
+                    gtk_file_launcher_launch(fileLauncher.Handle, 0, 0, (source, res, data) => { }, 0);
+                };
+                row.AddSuffix(openButton);
+            }
+            row.SetActivatableWidget(downloadButton);
             _urlsGroup.Add(row);
             _historyRows.Add(row);
         }
