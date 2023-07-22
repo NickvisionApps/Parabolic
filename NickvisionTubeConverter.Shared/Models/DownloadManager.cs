@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.IO;
 using static NickvisionTubeConverter.Shared.Helpers.Gettext;
 
 namespace NickvisionTubeConverter.Shared.Models;
@@ -200,7 +201,7 @@ public class DownloadManager
             DownloadAdded?.Invoke(this, (download.Id, download.Filename, download.SaveFolder, false));
         }
         var history = DownloadHistory.Current;
-        history.History[download.MediaUrl] = (download.Filename, DateTime.Now);
+        history.History[download.MediaUrl] = (Path.GetFileNameWithoutExtension(download.Filename), DateTime.Now, $"{download.SaveFolder}{Path.DirectorySeparatorChar}{download.Filename}");
         history.Save();
     }
 

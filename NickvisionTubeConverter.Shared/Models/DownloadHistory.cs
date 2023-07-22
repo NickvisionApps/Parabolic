@@ -16,14 +16,14 @@ public class DownloadHistory
     /// <summary>
     /// The download history
     /// </summary>
-    public Dictionary<string, (string Title, DateTime Date)> History { get; set; }
+    public Dictionary<string, (string Title, DateTime Date, string Path)> History { get; set; }
     
     /// <summary>
     /// Constructs a DownloadHistory
     /// </summary>
     public DownloadHistory()
     {
-        History = new Dictionary<string, (string Title, DateTime Date)>();
+        History = new Dictionary<string, (string Title, DateTime Date, string Path)>();
     }
     
     /// <summary>

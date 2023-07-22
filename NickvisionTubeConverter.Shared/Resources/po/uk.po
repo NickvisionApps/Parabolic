@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-22 01:28+0200\n"
+"POT-Creation-Date: 2023-07-22 10:36+0200\n"
 "PO-Revision-Date: 2023-07-12 18:52+0000\n"
 "Last-Translator: Dan <jonweblin2205@protonmail.com>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/nickvision-"
@@ -16,8 +16,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Generator: Weblate 5.0-dev\n"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:719
@@ -55,7 +55,7 @@ msgstr "{0:f1} КіБ/с"
 msgid "{0:f1} MiB/s"
 msgstr "{0:f1} МіБ/с"
 
-#: ../../../Models/DownloadManager.cs:165
+#: ../../../Models/DownloadManager.cs:166
 #, csharp-format
 msgid "{0} download — {1:f1}% ({2})"
 msgid_plural "{0} downloads — {1:f1}% ({2})"
@@ -116,11 +116,11 @@ msgstr ""
 msgid "Default"
 msgstr "За замовчуванням"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:303
+#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:286
 msgid "Delete Credential?"
 msgstr "Видалити облікові дані?"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Controls/HistoryDialog.cs:64
+#: ../../../../NickvisionTubeConverter.GNOME/Controls/HistoryDialog.cs:85
 #, fuzzy
 msgid "Download Again"
 msgstr "Завантаження"
@@ -194,13 +194,13 @@ msgstr "Ім'я файлу"
 msgid "GitHub Repo"
 msgstr "Репозиторій GitHub"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:174
+#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:157
 #: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:41
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:5
 msgid "Keyring"
 msgstr "Keyring"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:113
+#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:107
 msgid "Keyring has not been unlocked."
 msgstr "Keyring не розблоковано."
 
@@ -208,8 +208,8 @@ msgstr "Keyring не розблоковано."
 msgid "List of supported sites"
 msgstr "Список підтримуваних сайтів"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:218
-#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:236
+#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:201
+#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:219
 msgid "Login"
 msgstr ""
 
@@ -230,12 +230,12 @@ msgstr "URL-адреса медіа"
 msgid "Media URL (Invalid)"
 msgstr "URL-адреса медіа (неправильна)"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:254
+#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:237
 #: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:195
 msgid "Name"
 msgstr "Ім'я"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:264
+#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:247
 msgid "Name (Empty)"
 msgstr "Ім'я (Порожньо)"
 
@@ -259,12 +259,12 @@ msgstr ""
 "Fyodor Sobolev {1}\n"
 "DaPigGuy {2}"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:303
 #: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:308
+#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:286
 msgid "No"
 msgstr "Ні"
 
-#: ../../../Models/DownloadManager.cs:173
+#: ../../../Models/DownloadManager.cs:174
 msgid "No downloads running"
 msgstr "Немає завантажень"
 
@@ -274,16 +274,21 @@ msgstr "Немає завантажень"
 msgid "Parabolic"
 msgstr "Parabolic"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:260
+#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:243
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:76
 #: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:210
 #: NickvisionTubeConverter.GNOME/Blueprints/password_dialog.blp:39
 msgid "Password"
 msgstr "Пароль"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:271
+#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:254
 msgid "Password (Empty)"
 msgstr "Пароль (Порожньо)"
+
+#: ../../../../NickvisionTubeConverter.GNOME/Controls/HistoryDialog.cs:73
+#, fuzzy
+msgid "Play"
+msgstr "Список відтворення"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:113
 msgid "Playlist"
@@ -316,7 +321,7 @@ msgstr "Виберіть файл cookies"
 msgid "Select Save Folder"
 msgstr "Натисніть \"Зберегти папку\""
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:67
+#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:66
 #, fuzzy
 msgid "Set Password"
 msgstr "Новий пароль"
@@ -329,7 +334,7 @@ msgstr ""
 "Деякі завантаження все ще тривають.\n"
 "Ви впевнені, що хочете закрити Parabolic і зупинити завантаження?"
 
-#: ../../../Models/DownloadManager.cs:169
+#: ../../../Models/DownloadManager.cs:170
 msgid "Some downloads finished with errors!"
 msgstr "Деякі завантаження завершено з помилками!"
 
@@ -370,7 +375,7 @@ msgstr ""
 "закони про авторське право/DMCA. Користувачі використовують цей застосунок "
 "на власний ризик."
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:303
+#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:286
 msgid "This action is irreversible. Are you sure you want to delete it?"
 msgstr "Ця дія є незворотною. Ви впевнені, що хочете його видалити?"
 
@@ -397,12 +402,12 @@ msgstr ""
 msgid "Unlock Keyring"
 msgstr "Розблокувати Keyring"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:256
+#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:239
 #: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:200
 msgid "URL"
 msgstr "URL"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:276
+#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:259
 msgid "URL (Invalid)"
 msgstr "URL (Неправильна)"
 
@@ -410,13 +415,13 @@ msgstr "URL (Неправильна)"
 msgid "Use manual credential"
 msgstr "Використання облікових даних вручну"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:258
+#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:241
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:72
 #: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:205
 msgid "Username"
 msgstr "Ім'я користувача"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:269
+#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:252
 msgid "Username (Empty)"
 msgstr "Ім'я користувача (Порожнє)"
 
@@ -438,8 +443,8 @@ msgstr "Очікування..."
 msgid "Worst"
 msgstr "Найгірше"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:303
 #: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:308
+#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:286
 msgid "Yes"
 msgstr "Так"
 
@@ -565,6 +570,11 @@ msgstr ""
 #: NickvisionTubeConverter.GNOME/Blueprints/history_dialog.blp:49
 msgid "Search..."
 msgstr ""
+
+#: NickvisionTubeConverter.GNOME/Blueprints/history_dialog.blp:59
+#, fuzzy
+msgid "No Previous Downloads"
+msgstr "Зупинити всі завантаження"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:52
 #, fuzzy
@@ -950,6 +960,9 @@ msgstr "- Запуск декількох завантажень одночас�
 msgid "— Supports downloading metadata and video subtitles"
 msgstr "- Підтримує завантаження метаданих і субтитрів до відео"
 
+#~ msgid "Open"
+#~ msgstr "Відкрити"
+
 #~ msgid "Credential"
 #~ msgstr "Облікові дані"
 
@@ -1138,9 +1151,6 @@ msgstr "- Підтримує завантаження метаданих і су
 
 #~ msgid "Home"
 #~ msgstr "Головна"
-
-#~ msgid "Open"
-#~ msgstr "Відкрити"
 
 #~ msgid "Downloads"
 #~ msgstr "Завантаження"
