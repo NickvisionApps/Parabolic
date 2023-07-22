@@ -4,7 +4,6 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace NickvisionTubeConverter.Shared.Controllers;
@@ -191,21 +190,10 @@ public class AddDownloadDialogController
     {
         if(_mediaUrlInfo != null)
         {
-            var numberedRegex = new Regex(@"[0-9]+ - ", RegexOptions.None);
             foreach (var m in _mediaUrlInfo.MediaList)
             {
-                if (toggled)
-                {
-                    m.Title = $"{m.PlaylistPosition} - {m.Title}";
-                }
-                else
-                {
-                    var match = numberedRegex.Match(m.Title);
-                    if (match.Success)
-                    {
-                        m.Title = m.Title.Remove(m.Title.IndexOf(match.Value), match.Value.Length);
-                    }
-                }
+                var numberTitle = $"{m.PlaylistPosition} - ";
+                m.Title = toggled ? numberTitle + m.Title : m.Title.Substring(numberTitle.Length);
             }
             Configuration.Current.NumberTitles = toggled;
             Configuration.Current.Save();
