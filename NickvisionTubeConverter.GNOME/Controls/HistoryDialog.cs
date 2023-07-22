@@ -84,7 +84,7 @@ public partial class HistoryDialog : Adw.Window
             {
                 var openButton = Gtk.Button.New();
                 openButton.SetIconName("document-open-symbolic");
-                openButton.SetTooltipText(_("Open in File Manager"));
+                openButton.SetTooltipText(_("Open"));
                 openButton.SetValign(Gtk.Align.Center);
                 openButton.AddCssClass("flat");
                 openButton.OnClicked += (sender, e) =>
