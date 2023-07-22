@@ -18,8 +18,6 @@ public partial class HistoryDialog : Adw.Window
     [Gtk.Connect] private readonly Gtk.SearchEntry _searchEntry;
     [Gtk.Connect] private readonly Gtk.ScrolledWindow _scrolledWindow;
     [Gtk.Connect] private readonly Adw.PreferencesGroup _urlsGroup;
-
-    private readonly Gtk.ShortcutController _shortcutController;
     
     /// <summary>
     /// Occurs when a download is requested to be downloaded again
@@ -75,11 +73,6 @@ public partial class HistoryDialog : Adw.Window
             _urlsGroup.Add(row);
             _historyRows.Add(row);
         }
-        //Shortcut Controller
-        _shortcutController = Gtk.ShortcutController.New();
-        _shortcutController.SetScope(Gtk.ShortcutScope.Managed);
-        _shortcutController.AddShortcut(Gtk.Shortcut.New(Gtk.ShortcutTrigger.ParseString("Escape"), Gtk.CallbackAction.New(OnEscapeKey)));
-        AddController(_shortcutController);
     }
 
     /// <summary>
@@ -90,17 +83,6 @@ public partial class HistoryDialog : Adw.Window
     /// <param name="history">The DownloadHistory object</param>
     public HistoryDialog(Gtk.Window parent, string iconName, DownloadHistory history) : this(Builder.FromFile("history_dialog.ui"), parent, iconName, history)
     {
-    }
-
-    /// <summary>
-    /// Occurs when the escape key is pressed on the window
-    /// </summary>
-    /// <param name="sender">Gtk.Widget</param>
-    /// <param name="e">GLib.Variant</param>
-    private bool OnEscapeKey(Gtk.Widget sender, GLib.Variant e)
-    {
-        Close();
-        return true;
     }
 
     /// <summary>
