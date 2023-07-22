@@ -66,6 +66,20 @@ public partial class HistoryDialog : Adw.Window
             }
             row.SetTitleLines(1);
             row.SetSubtitleLines(1);
+            if(File.Exists(pair.Value.Path))
+            {
+                var openButton = Gtk.Button.New();
+                openButton.SetIconName("media-playback-start-symbolic");
+                openButton.SetTooltipText(_("Play"));
+                openButton.SetValign(Gtk.Align.Center);
+                openButton.AddCssClass("flat");
+                openButton.OnClicked += (sender, e) =>
+                {
+                    var fileLauncher = Gtk.FileLauncher.New(Gio.FileHelper.NewForPath(pair.Value.Path));
+                    gtk_file_launcher_launch(fileLauncher.Handle, 0, 0, (source, res, data) => { }, 0);
+                };
+                row.AddSuffix(openButton);
+            }
             var downloadButton = Gtk.Button.New();
             downloadButton.SetIconName("view-refresh-symbolic");
             downloadButton.SetTooltipText(_("Download Again"));
@@ -76,20 +90,6 @@ public partial class HistoryDialog : Adw.Window
                 DownloadAgainRequested?.Invoke(this, pair.Key);
             };
             row.AddSuffix(downloadButton);
-            if(File.Exists(pair.Value.Path))
-            {
-                var openButton = Gtk.Button.New();
-                openButton.SetIconName("document-open-symbolic");
-                openButton.SetTooltipText(_("Open"));
-                openButton.SetValign(Gtk.Align.Center);
-                openButton.AddCssClass("flat");
-                openButton.OnClicked += (sender, e) =>
-                {
-                    var fileLauncher = Gtk.FileLauncher.New(Gio.FileHelper.NewForPath(pair.Value.Path));
-                    gtk_file_launcher_launch(fileLauncher.Handle, 0, 0, (source, res, data) => { }, 0);
-                };
-                row.AddSuffix(openButton);
-            }
             row.SetActivatableWidget(downloadButton);
             _urlsGroup.Add(row);
             _historyRows.Add(row);
