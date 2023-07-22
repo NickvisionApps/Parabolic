@@ -8,8 +8,6 @@ namespace NickvisionTubeConverter.GNOME.Controls;
 /// </summary>
 public partial class PasswordDialog : Adw.Window
 {
-    private readonly Gtk.ShortcutController _shortcutController;
-
     [Gtk.Connect] private readonly Gtk.Label _titleLabel;
     [Gtk.Connect] private readonly Adw.PasswordEntryRow _passwordEntry;
     [Gtk.Connect] private readonly Gtk.Button _unlockButton;
@@ -31,15 +29,6 @@ public partial class PasswordDialog : Adw.Window
             tcs.SetResult(unlock ? _passwordEntry.GetText() : null);
             return false;
         };
-        //Shortcut Controller
-        _shortcutController = Gtk.ShortcutController.New();
-        _shortcutController.SetScope(Gtk.ShortcutScope.Managed);
-        _shortcutController.AddShortcut(Gtk.Shortcut.New(Gtk.ShortcutTrigger.ParseString("Escape"), Gtk.CallbackAction.New((sender, e) =>
-        {
-            Close();
-            return true;
-        })));
-        AddController(_shortcutController);
     }
 
     /// <summary>

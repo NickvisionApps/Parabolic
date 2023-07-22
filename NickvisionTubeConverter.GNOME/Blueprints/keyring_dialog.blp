@@ -244,4 +244,11 @@ Adw.Window _root {
       }
     }
   };
+
+  Gtk.ShortcutController {
+    Gtk.Shortcut {
+      trigger: "Escape";
+      action: "action(window.close)";
+    }
+  }
 }

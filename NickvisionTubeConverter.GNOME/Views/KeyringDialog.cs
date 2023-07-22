@@ -13,7 +13,6 @@ public partial class KeyringDialog : Adw.Window
 {
     private readonly Gtk.Window _parent;
     private readonly KeyringDialogController _controller;
-    private readonly Gtk.ShortcutController _shortcutController;
     private bool _handlingEnableToggle;
     private int? _editId;
     private readonly List<Gtk.Widget> _credentialRows;
@@ -101,11 +100,6 @@ public partial class KeyringDialog : Adw.Window
         _addCredentialButton.OnClicked += (sender, e) => LoadAddCredentialPage();
         _credentialAddButton.OnClicked += AddCredential;
         _credentialDeleteButton.OnClicked += DeleteCredential;
-        //Shortcut Controller
-        _shortcutController = Gtk.ShortcutController.New();
-        _shortcutController.SetScope(Gtk.ShortcutScope.Managed);
-        _shortcutController.AddShortcut(Gtk.Shortcut.New(Gtk.ShortcutTrigger.ParseString("Escape"), Gtk.CallbackAction.New(OnEscapeKey)));
-        AddController(_shortcutController);
         //Load
         if(!_controller.IsValid)
         {
@@ -126,22 +120,11 @@ public partial class KeyringDialog : Adw.Window
     
     public async Task PresentAsync()
     {
-        base.Present();
+        Present();
         if (_controller.IsEnabled)
         {
             await LoadHomePageAsync();
         }
-    }
-
-    /// <summary>
-    /// Occurs when the escape key is pressed on the window
-    /// </summary>
-    /// <param name="sender">Gtk.Widget</param>
-    /// <param name="e">GLib.Variant</param>
-    private bool OnEscapeKey(Gtk.Widget sender, GLib.Variant e)
-    {
-        Close();
-        return true;
     }
 
     private void ValidateNewPassword()
