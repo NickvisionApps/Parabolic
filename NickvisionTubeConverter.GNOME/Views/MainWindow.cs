@@ -1,3 +1,4 @@
+using Nickvision.GirExt.Unity;
 using NickvisionTubeConverter.GNOME.Controls;
 using NickvisionTubeConverter.GNOME.Helpers;
 using NickvisionTubeConverter.Shared.Controllers;
@@ -9,7 +10,6 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
 using System.IO;
-using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using static NickvisionTubeConverter.Shared.Helpers.Gettext;
@@ -21,38 +21,10 @@ namespace NickvisionTubeConverter.GNOME.Views;
 /// </summary>
 public partial class MainWindow : Adw.ApplicationWindow
 {
-    private delegate void GAsyncReadyCallback(nint source, nint res, nint user_data);
-
-    [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
-    private static partial nint g_bus_get_sync(uint bus_type, nint cancellable, nint error);
-    [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
-    private static partial nint g_variant_new(string format_string, nint data);
-    [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
-    private static partial nint g_variant_new_string(string data);
-    [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
-    private static partial nint g_variant_builder_new(nint type);
-    [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
-    private static partial void g_variant_builder_add(nint builder, string format, string key, nint data);
-    [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
-    private static partial void g_variant_builder_unref(nint builder);
-    [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
-    private static partial nint g_variant_type_new(string type);
-    [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
-    private static partial void g_dbus_connection_call(nint connection, string bus_name, string object_path, string interface_name, string method_name, nint parameters, nint reply_type, uint flags, int timeout_msec, nint cancellable, nint callback, nint user_data);
-    [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
-    private static partial void g_notification_set_icon(nint notification, nint icon);
-    
-    [LibraryImport("libunity.so.9", StringMarshalling = StringMarshalling.Utf8)]
-    private static partial nint unity_launcher_entry_get_for_desktop_id(string desktop_id);
-    [LibraryImport("libunity.so.9", StringMarshalling = StringMarshalling.Utf8)]
-    private static partial void unity_launcher_entry_set_progress_visible(nint launcher, [MarshalAs(UnmanagedType.I1)] bool visibility);
-    [LibraryImport("libunity.so.9", StringMarshalling = StringMarshalling.Utf8)]
-    private static partial void unity_launcher_entry_set_progress(nint launcher, double progress);
-
     private readonly MainWindowController _controller;
     private readonly Adw.Application _application;
-    private readonly nint _bus;
-    private readonly nint _unityLauncher;
+    private readonly Gio.DBusConnection _bus;
+    private readonly LauncherEntry? _unityLauncher;
     private bool _isBackgroundStatusReported;
     private Dictionary<Guid, DownloadRow> _downloadRows;
 
@@ -76,15 +48,15 @@ public partial class MainWindow : Adw.ApplicationWindow
         _application = application;
         _isBackgroundStatusReported = false;
         _downloadRows = new Dictionary<Guid, DownloadRow>();
-        _bus = g_bus_get_sync(2, IntPtr.Zero, IntPtr.Zero); // 2 = session bus
+        _bus = Gio.DBusConnection.Get(Gio.BusType.Session);
         try
         {
-            _unityLauncher = unity_launcher_entry_get_for_desktop_id(string.IsNullOrEmpty(Environment.GetEnvironmentVariable("SNAP")) ? $"{_controller.AppInfo.ID}.desktop" : "tube-converter_tube-converter.desktop");
+            _unityLauncher = LauncherEntry.GetForDesktopID(string.IsNullOrEmpty(Environment.GetEnvironmentVariable("SNAP")) ? $"{_controller.AppInfo.ID}.desktop" : "tube-converter_tube-converter.desktop");
             GLib.Functions.TimeoutAdd(0, 1000, UpdateLibUnity);
         }
-        catch (DllNotFoundException e)
+        catch (DllNotFoundException)
         {
-            _unityLauncher = IntPtr.Zero;
+            _unityLauncher = null;
         }
         //Build UI
         builder.Connect(this);
@@ -285,7 +257,7 @@ public partial class MainWindow : Adw.ApplicationWindow
         else
         {
             var fileIcon = Gio.FileIcon.New(Gio.FileHelper.NewForPath($"{Environment.GetEnvironmentVariable("SNAP")}/usr/share/icons/hicolor/symbolic/apps/{_controller.AppInfo.ID}-symbolic.svg"));
-            g_notification_set_icon(notification.Handle, fileIcon.Handle);
+            notification.SetIcon(fileIcon);
         }
         _application.SendNotification(_controller.AppInfo.ID, notification);
     }
@@ -584,26 +556,25 @@ public partial class MainWindow : Adw.ApplicationWindow
         {
             if (_isBackgroundStatusReported)
             {
-                var builder = g_variant_builder_new(g_variant_type_new("a{sv}"));
-                g_variant_builder_add(builder, "{sv}", "message", g_variant_new_string(_controller.DownloadManager.BackgroundActivityReport));
-                g_dbus_connection_call(_bus,
+                using var typeDictEntry = GLib.Internal.VariantType.NewDictEntry(GLib.VariantType.String.Handle, GLib.VariantType.Variant.Handle);
+                using var msg = GLib.Variant.Create("message");
+                using var dataString = GLib.Variant.Create(_controller.DownloadManager.BackgroundActivityReport);
+                using var data = GLib.Internal.Variant.NewVariant(dataString.Handle);
+                using var dictEntry = GLib.Internal.Variant.NewDictEntry(msg.Handle, data);
+                using var array = GLib.Internal.Variant.NewArray(typeDictEntry, new [] { dictEntry.DangerousGetHandle() }, 1);
+                using var tuple = GLib.Internal.Variant.NewTuple(new [] { array.DangerousGetHandle() }, 1);
+                _bus.Call(
                     "org.freedesktop.portal.Desktop", // Bus name
                     "/org/freedesktop/portal/desktop", // Object path
                     "org.freedesktop.portal.Background", // Interface name
                     "SetStatus", // Method name
-                    g_variant_new("(a{sv})", builder), // Parameters
-                    IntPtr.Zero, // Reply type
-                    0, // Flags
-                    -1, // Timeout
-                    IntPtr.Zero, // Cancellable
-                    IntPtr.Zero, // Callback
-                    IntPtr.Zero); // User data
-                g_variant_builder_unref(builder);
+                    new GLib.Variant(tuple)); // Parameters
             }
             return _isBackgroundStatusReported;
         }
-        catch
+        catch (Exception e)
         {
+            Console.WriteLine(e);
             return false;
         }
     }
@@ -618,12 +589,12 @@ public partial class MainWindow : Adw.ApplicationWindow
             var progress = _controller.DownloadManager.TotalProgress;
             if (progress > 0 && progress < 1)
             {
-                unity_launcher_entry_set_progress_visible(_unityLauncher, true);
-                unity_launcher_entry_set_progress(_unityLauncher, progress);
+                _unityLauncher.SetProgressVisible(true);
+                _unityLauncher.SetProgress(progress);
             }
             else
             {
-                unity_launcher_entry_set_progress_visible(_unityLauncher, false);
+                _unityLauncher.SetProgressVisible(false);
             }
             return true;
         }
@@ -640,7 +611,7 @@ public partial class MainWindow : Adw.ApplicationWindow
     /// <param name="e">(Guid Id, string Filename, string SaveFolder, bool IsDownloading)</param>
     private void DownloadAdded(object? sender, (Guid Id, string Filename, string SaveFolder, bool IsDownloading) e)
     {
-        var downloadRow = new DownloadRow(e.Id, e.Filename, e.SaveFolder, (ex) => NotificationSent(null, ex));
+        var downloadRow = new DownloadRow(this, e.Id, e.Filename, e.SaveFolder, (ex) => NotificationSent(null, ex));
         downloadRow.StopRequested += (s, ex) => _controller.DownloadManager.RequestStop(ex);
         downloadRow.RetryRequested += (s, ex) => _controller.DownloadManager.RequestRetry(ex, _controller.DownloadOptions);
         var box = e.IsDownloading ? _downloadingBox : _queuedBox;
