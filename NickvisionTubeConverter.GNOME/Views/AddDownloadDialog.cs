@@ -5,8 +5,9 @@ using NickvisionTubeConverter.Shared.Models;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Runtime.InteropServices;
 using System.Threading.Tasks;
+using static Nickvision.GirExt.GdkExt;
+using static Nickvision.GirExt.GtkExt;
 using static NickvisionTubeConverter.Shared.Helpers.Gettext;
 
 namespace NickvisionTubeConverter.GNOME.Views;
@@ -16,19 +17,6 @@ namespace NickvisionTubeConverter.GNOME.Views;
 /// </summary>
 public partial class AddDownloadDialog : Adw.Window
 {
-    private delegate void GAsyncReadyCallback(nint source, nint res, nint user_data);
-
-    [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
-    private static partial string g_file_get_path(nint file);
-    [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
-    private static partial void gtk_file_dialog_select_folder(nint dialog, nint parent, nint cancellable, GAsyncReadyCallback callback, nint user_data);
-    [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
-    private static partial nint gtk_file_dialog_select_folder_finish(nint dialog, nint result, nint error);
-    [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
-    private static partial void gdk_clipboard_read_text_async(nint clipboard, nint cancellable, GAsyncReadyCallback callback, nint user_data);
-    [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
-    private static partial string gdk_clipboard_read_text_finish(nint clipboard, nint result, nint error);
-
     private const uint GTK_INVALID_LIST_POSITION = 4294967295;
 
     private readonly Gtk.Window _parent;
@@ -36,8 +24,6 @@ public partial class AddDownloadDialog : Adw.Window
     private readonly List<MediaRow> _mediaRows;
     private readonly string[] _audioQualities;
     private string _saveFolderString;
-    private GAsyncReadyCallback? _saveCallback;
-    private GAsyncReadyCallback _clipboardCallback;
 
     [Gtk.Connect] private readonly Gtk.Label _titleLabel;
     [Gtk.Connect] private readonly Adw.ToastOverlay _toastOverlay;
@@ -94,7 +80,6 @@ public partial class AddDownloadDialog : Adw.Window
     {
         _parent = parent;
         _controller = controller;
-        _saveCallback = null;
         _mediaRows = new List<MediaRow>();
         _audioQualities = new string[] { _("Best"), _("Worst") };
         //Dialog Settings
@@ -178,7 +163,7 @@ public partial class AddDownloadDialog : Adw.Window
                 }
             }
         };
-        _selectSaveFolderButton.OnClicked += SelectSaveFolder;
+        _selectSaveFolderButton.OnClicked += async (sender, e) => await SelectSaveFolder();
         _cropThumbnailRow.SetVisible(_controller.EmbedMetadata);
         _speedLimitSwitch.OnNotify += (sender, e) =>
         {
@@ -313,9 +298,9 @@ public partial class AddDownloadDialog : Adw.Window
         {
             //Validate Clipboard
             var clipboard = Gdk.Display.GetDefault()!.GetClipboard();
-            _clipboardCallback = (source, res, data) =>
+            try
             {
-                var clipboardText = gdk_clipboard_read_text_finish(clipboard.Handle, res, IntPtr.Zero);
+                var clipboardText = await clipboard.ReadTextAsync();
                 if(!string.IsNullOrEmpty(clipboardText))
                 {
                     var result = Uri.TryCreate(clipboardText, UriKind.Absolute, out var uriResult) && (uriResult.Scheme == Uri.UriSchemeHttp || uriResult.Scheme == Uri.UriSchemeHttps);
@@ -325,8 +310,8 @@ public partial class AddDownloadDialog : Adw.Window
                         _urlRow.SelectRegion(0, -1);
                     }
                 }
-            };
-            gdk_clipboard_read_text_async(clipboard.Handle, IntPtr.Zero, _clipboardCallback, IntPtr.Zero);
+            }
+            catch { }
         }
         //Keyring
         var names = await _controller.GetKeyringCredentialNamesAsync();
@@ -538,9 +523,7 @@ public partial class AddDownloadDialog : Adw.Window
     /// <summary>
     /// Occurs when the select save folder button is clicked
     /// </summary>
-    /// <param name="sender">Gtk.Button</param>
-    /// <param name="e">EventArgs</param>
-    private void SelectSaveFolder(Gtk.Button sender, EventArgs e)
+    private async Task SelectSaveFolder()
     {
         var folderDialog = Gtk.FileDialog.New();
         folderDialog.SetTitle(_("Select Save Folder"));
@@ -549,19 +532,16 @@ public partial class AddDownloadDialog : Adw.Window
             var folder = Gio.FileHelper.NewForPath(_saveFolderString);
             folderDialog.SetInitialFolder(folder);
         }
-        _saveCallback = (source, res, data) =>
+        try
         {
-            var fileHandle = gtk_file_dialog_select_folder_finish(source, res, IntPtr.Zero);
-            if (fileHandle != IntPtr.Zero)
-            {
-                _saveFolderString = g_file_get_path(fileHandle);
-                _saveFolderRow.SetText(Path.GetFileName(_saveFolderString));
-                _saveFolderRow.RemoveCssClass("error");
-                _addDownloadButton.SetSensitive(true);
-            }
-            ValidateOptions();
-        };
-        gtk_file_dialog_select_folder(folderDialog.Handle, Handle, IntPtr.Zero, _saveCallback, IntPtr.Zero);
+            var file = await folderDialog.SelectFolderAsync(this);
+            _saveFolderString = file.GetPath();
+            _saveFolderRow.SetText(Path.GetFileName(_saveFolderString));
+            _saveFolderRow.RemoveCssClass("error");
+            _addDownloadButton.SetSensitive(true);
+        }
+        catch { }
+        ValidateOptions();
     }
 
     /// <summary>

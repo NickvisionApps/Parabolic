@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Runtime.InteropServices;
+using static Nickvision.GirExt.GtkExt;
 using static NickvisionTubeConverter.Shared.Helpers.Gettext;
 
 namespace NickvisionTubeConverter.GNOME.Controls;
@@ -14,11 +14,6 @@ namespace NickvisionTubeConverter.GNOME.Controls;
 /// </summary>
 public partial class HistoryDialog : Adw.Window
 {
-    private delegate void GAsyncReadyCallback(nint source, nint res, nint user_data);
-
-    [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
-    private static partial void gtk_file_launcher_launch(nint fileLauncher, nint parent, nint cancellable, GAsyncReadyCallback callback, nint data);
-
     private readonly DownloadHistory _history;
     private readonly List<Adw.ActionRow> _historyRows;
 
@@ -73,10 +68,14 @@ public partial class HistoryDialog : Adw.Window
                 openButton.SetTooltipText(_("Play"));
                 openButton.SetValign(Gtk.Align.Center);
                 openButton.AddCssClass("flat");
-                openButton.OnClicked += (sender, e) =>
+                openButton.OnClicked += async (sender, e) =>
                 {
                     var fileLauncher = Gtk.FileLauncher.New(Gio.FileHelper.NewForPath(pair.Value.Path));
-                    gtk_file_launcher_launch(fileLauncher.Handle, 0, 0, (source, res, data) => { }, 0);
+                    try
+                    {
+                        await fileLauncher.LaunchAsync(this);
+                    }
+                    catch { }
                 };
                 row.AddSuffix(openButton);
             }

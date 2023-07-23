@@ -3,7 +3,8 @@ using NickvisionTubeConverter.Shared.Controllers;
 using NickvisionTubeConverter.Shared.Models;
 using System;
 using System.IO;
-using System.Runtime.InteropServices;
+using System.Threading.Tasks;
+using static Nickvision.GirExt.GtkExt;
 using static NickvisionTubeConverter.Shared.Helpers.Gettext;
 
 namespace NickvisionTubeConverter.GNOME.Views;
@@ -13,17 +14,6 @@ namespace NickvisionTubeConverter.GNOME.Views;
 /// </summary>
 public partial class PreferencesDialog : Adw.PreferencesWindow
 {
-    private delegate void GAsyncReadyCallback(nint source, nint res, nint user_data);
-    
-    [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
-    private static partial string g_file_get_path(nint file);
-    [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
-    private static partial void gtk_file_dialog_open(nint dialog, nint parent, nint cancellable, GAsyncReadyCallback callback, nint user_data);
-    [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
-    private static partial nint gtk_file_dialog_open_finish(nint dialog, nint result, nint error);
-    [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
-    private static partial void gtk_uri_launcher_launch(nint uriLauncher, nint parent, nint cancellable, GAsyncReadyCallback callback, nint data);
-    
     private readonly PreferencesViewController _controller;
     private readonly Adw.Application _application;
 
@@ -51,8 +41,6 @@ public partial class PreferencesDialog : Adw.PreferencesWindow
     [Gtk.Connect] private readonly Adw.ExpanderRow _embedMetadataRow;
     [Gtk.Connect] private readonly Gtk.Switch _cropAudioThumbnailSwitch;
     [Gtk.Connect] private readonly Gtk.Switch _embedChaptersSwitch;
-    
-    private GAsyncReadyCallback _fileDialogCallback;
 
     private PreferencesDialog(Gtk.Builder builder, PreferencesViewController controller, Adw.Application application, Gtk.Window parent) : base(builder.GetPointer("_root"), false)
     {
@@ -71,9 +59,9 @@ public partial class PreferencesDialog : Adw.PreferencesWindow
             }
         };
         _subtitleLangsRow.OnApply += SubtitleLangsChanged;
-        _chromeCookiesButton.OnClicked += LaunchChromeCookiesExtension;
-        _firefoxCookiesButton.OnClicked += LaunchFirefoxCookiesExtension;
-        _selectCookiesFileButton.OnClicked += SelectCookiesFile;
+        _chromeCookiesButton.OnClicked += async (sender, e) => await LaunchChromeCookiesExtension();
+        _firefoxCookiesButton.OnClicked += async (sender, e) => await LaunchFirefoxCookiesExtension();
+        _selectCookiesFileButton.OnClicked += async (sender, e) => await SelectCookiesFile();
         _unsetCookiesFileButton.OnClicked += UnsetCookiesFile;
         OnHide += Hide;
         //Load Config
@@ -175,9 +163,7 @@ public partial class PreferencesDialog : Adw.PreferencesWindow
     /// <summary>
     /// Occurs when a button to select cookies file is clicked
     /// </summary>
-    /// <param name="sender">Gtk.Button</param>
-    /// <param name="e">EventArgs</param>
-    private void SelectCookiesFile(Gtk.Button sender, EventArgs e)
+    private async Task SelectCookiesFile()
     {
         var filterTxt = Gtk.FileFilter.New();
         filterTxt.SetName("TXT (*.txt)");
@@ -188,17 +174,13 @@ public partial class PreferencesDialog : Adw.PreferencesWindow
         var filters = Gio.ListStore.New(Gtk.FileFilter.GetGType());
         filters.Append(filterTxt);
         fileDialog.SetFilters(filters);
-        _fileDialogCallback = (source, res, data) =>
+        try
         {
-            var fileHandle = gtk_file_dialog_open_finish(source, res, IntPtr.Zero);
-            if (fileHandle != IntPtr.Zero)
-            {
-                var path = g_file_get_path(fileHandle);
-                _controller.CookiesPath = path;
-                _cookiesRow.SetText(path);
-            }
-        };
-        gtk_file_dialog_open(fileDialog.Handle, Handle, IntPtr.Zero, _fileDialogCallback, IntPtr.Zero);
+            var file = await fileDialog.OpenAsync(this);
+            _controller.CookiesPath = file.GetPath();
+            _cookiesRow.SetText(file.GetPath());
+        }
+        catch { }
     }
 
     /// <summary>
@@ -215,25 +197,28 @@ public partial class PreferencesDialog : Adw.PreferencesWindow
     /// <summary>
     /// Occurs when a button to open chrome's cookies extension is clicked
     /// </summary>
-    /// <param name="sender">Gtk.Button</param>
-    /// <param name="e">EventArgs</param>
-    private void LaunchChromeCookiesExtension(Gtk.Button sender, EventArgs e)
+    private async Task LaunchChromeCookiesExtension()
     {
         _cookiesPopover.Popdown();
         var uriLauncher = Gtk.UriLauncher.New("https://chrome.google.com/webstore/detail/get-cookiestxt-locally/cclelndahbckbenkjhflpdbgdldlbecc");
-        gtk_uri_launcher_launch(uriLauncher.Handle, 0, 0, (source, res, data) => { }, 0);
+        try
+        {
+            await uriLauncher.LaunchAsync(this);
+        }
+        catch { }
     }
 
     /// <summary>
     /// Occurs when a button to open firefox's cookies extension is clicked
     /// </summary>
-    /// <param name="sender">Gtk.Button</param>
-    /// <param name="e">EventArgs</param>
-    private void LaunchFirefoxCookiesExtension(Gtk.Button sender, EventArgs e)
+    private async Task LaunchFirefoxCookiesExtension()
     {
         _cookiesPopover.Popdown();
         var uriLauncher = Gtk.UriLauncher.New("https://addons.mozilla.org/en-US/firefox/addon/cookies-txt/");
-        gtk_uri_launcher_launch(uriLauncher.Handle, 0, 0, (source, res, data) => { }, 0);
-        
+        try
+        {
+            await uriLauncher.LaunchAsync(this);
+        }
+        catch { }
     }
 }

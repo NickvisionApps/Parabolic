@@ -5,7 +5,7 @@ using NickvisionTubeConverter.Shared.Helpers;
 using NickvisionTubeConverter.Shared.Models;
 using System;
 using System.IO;
-using System.Runtime.InteropServices;
+using static Nickvision.GirExt.GtkExt;
 using static NickvisionTubeConverter.Shared.Helpers.Gettext;
 
 namespace NickvisionTubeConverter.GNOME.Controls;
@@ -15,13 +15,6 @@ namespace NickvisionTubeConverter.GNOME.Controls;
 /// </summary>
 public partial class DownloadRow : Adw.Bin, IDownloadRowControl
 {
-    private delegate void GAsyncReadyCallback(nint source, nint res, nint user_data);
-
-    [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
-    private static partial void gtk_file_launcher_launch(nint fileLauncher, nint parent, nint cancellable, GAsyncReadyCallback callback, nint data);
-    [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
-    private static partial void gtk_file_launcher_open_containing_folder(nint fileLauncher, nint parent, nint cancellable, GAsyncReadyCallback callback, nint data);
-
     private bool _runPulsingBar;
     private string _oldLog;
 
@@ -62,11 +55,12 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
     /// Constructs a DownloadRow
     /// </summary>
     /// <param name="builder">The Gtk builder for the row</param>
+    /// <param name="parent">Parent window</param>
     /// <param name="id">The Guid of the download</param>
     /// <param name="filename">The filename of the download</param>
     /// <param name="saveFolder">The save folder of the download</param>
     /// <param name="sendNotificationCallback">The callback for sending a notification</param>
-    private DownloadRow(Gtk.Builder builder, Guid id, string filename, string saveFolder, Action<NotificationSentEventArgs> sendNotificationCallback) : base(builder.GetPointer("_root"), false)
+    private DownloadRow(Gtk.Builder builder, Gtk.Window parent, Guid id, string filename, string saveFolder, Action<NotificationSentEventArgs> sendNotificationCallback) : base(builder.GetPointer("_root"), false)
     {
         Id = id;
         Filename = filename;
@@ -76,15 +70,23 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
         _filenameLabel.SetLabel(Filename);
         _stopButton.OnClicked += (sender, e) => StopRequested?.Invoke(this, Id);
         _retryButton.OnClicked += (sender, e) => RetryRequested?.Invoke(this, Id);
-        _openFileButton.OnClicked += (sender, e) =>
+        _openFileButton.OnClicked += async (sender, e) =>
         {
             var fileLauncher = Gtk.FileLauncher.New(Gio.FileHelper.NewForPath($"{saveFolder}{Path.DirectorySeparatorChar}{Filename}"));
-            gtk_file_launcher_launch(fileLauncher.Handle, 0, 0, (source, res, data) => { }, 0);
+            try
+            {
+                await fileLauncher.LaunchAsync(parent);
+            }
+            catch { }
         };
-        _openFolderButton.OnClicked += (sender, e) =>
+        _openFolderButton.OnClicked += async (sender, e) =>
         {
             var fileLauncher = Gtk.FileLauncher.New(Gio.FileHelper.NewForPath($"{saveFolder}{Path.DirectorySeparatorChar}{Filename}"));
-            gtk_file_launcher_open_containing_folder(fileLauncher.Handle, 0, 0, (source, res, data) => { }, 0);
+            try
+            {
+                await fileLauncher.OpenContainingFolderAsync(parent);
+            }
+            catch { }
         };
         _btnLogToClipboard.OnClicked += (sender, e) =>
         {
@@ -97,11 +99,12 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
     /// <summary>
     /// Constructs a DownloadRow
     /// </summary>
+    /// <param name="parent">Parent window</param>
     /// <param name="id">The Guid of the download</param>
     /// <param name="filename">The filename of the download</param>
     /// <param name="saveFolder">The save folder of the download</param>
     /// <param name="sendNotificationCallback">The callback for sending a notification</param>
-    public DownloadRow(Guid id, string filename, string saveFolder, Action<NotificationSentEventArgs> sendNotificationCallback) : this(Builder.FromFile("download_row.ui"), id, filename, saveFolder, sendNotificationCallback)
+    public DownloadRow(Gtk.Window parent, Guid id, string filename, string saveFolder, Action<NotificationSentEventArgs> sendNotificationCallback) : this(Builder.FromFile("download_row.ui"), parent, id, filename, saveFolder, sendNotificationCallback)
     {
     }
 
