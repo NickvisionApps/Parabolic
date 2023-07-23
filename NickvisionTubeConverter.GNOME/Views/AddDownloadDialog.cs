@@ -163,7 +163,7 @@ public partial class AddDownloadDialog : Adw.Window
                 }
             }
         };
-        _selectSaveFolderButton.OnClicked += async (sender, e) => await SelectSaveFolder();
+        _selectSaveFolderButton.OnClicked += async (sender, e) => await SelectSaveFolderAsync();
         _cropThumbnailRow.SetVisible(_controller.EmbedMetadata);
         _speedLimitSwitch.OnNotify += (sender, e) =>
         {
@@ -523,7 +523,7 @@ public partial class AddDownloadDialog : Adw.Window
     /// <summary>
     /// Occurs when the select save folder button is clicked
     /// </summary>
-    private async Task SelectSaveFolder()
+    private async Task SelectSaveFolderAsync()
     {
         var folderDialog = Gtk.FileDialog.New();
         folderDialog.SetTitle(_("Select Save Folder"));

@@ -59,9 +59,9 @@ public partial class PreferencesDialog : Adw.PreferencesWindow
             }
         };
         _subtitleLangsRow.OnApply += SubtitleLangsChanged;
-        _chromeCookiesButton.OnClicked += async (sender, e) => await LaunchChromeCookiesExtension();
-        _firefoxCookiesButton.OnClicked += async (sender, e) => await LaunchFirefoxCookiesExtension();
-        _selectCookiesFileButton.OnClicked += async (sender, e) => await SelectCookiesFile();
+        _chromeCookiesButton.OnClicked += async (sender, e) => await LaunchChromeCookiesExtensionAsync();
+        _firefoxCookiesButton.OnClicked += async (sender, e) => await LaunchFirefoxCookiesExtensionAsync();
+        _selectCookiesFileButton.OnClicked += async (sender, e) => await SelectCookiesFileAsync();
         _unsetCookiesFileButton.OnClicked += UnsetCookiesFile;
         OnHide += Hide;
         //Load Config
@@ -163,7 +163,7 @@ public partial class PreferencesDialog : Adw.PreferencesWindow
     /// <summary>
     /// Occurs when a button to select cookies file is clicked
     /// </summary>
-    private async Task SelectCookiesFile()
+    private async Task SelectCookiesFileAsync()
     {
         var filterTxt = Gtk.FileFilter.New();
         filterTxt.SetName("TXT (*.txt)");
@@ -197,7 +197,7 @@ public partial class PreferencesDialog : Adw.PreferencesWindow
     /// <summary>
     /// Occurs when a button to open chrome's cookies extension is clicked
     /// </summary>
-    private async Task LaunchChromeCookiesExtension()
+    private async Task LaunchChromeCookiesExtensionAsync()
     {
         _cookiesPopover.Popdown();
         var uriLauncher = Gtk.UriLauncher.New("https://chrome.google.com/webstore/detail/get-cookiestxt-locally/cclelndahbckbenkjhflpdbgdldlbecc");
@@ -211,7 +211,7 @@ public partial class PreferencesDialog : Adw.PreferencesWindow
     /// <summary>
     /// Occurs when a button to open firefox's cookies extension is clicked
     /// </summary>
-    private async Task LaunchFirefoxCookiesExtension()
+    private async Task LaunchFirefoxCookiesExtensionAsync()
     {
         _cookiesPopover.Popdown();
         var uriLauncher = Gtk.UriLauncher.New("https://addons.mozilla.org/en-US/firefox/addon/cookies-txt/");
