@@ -127,36 +127,30 @@ public class MediaUrlInfo
         foreach (var f in mediaInfo["formats"].As<PyList>())
         {
             var format = f.As<PyDict>();
-            if (format.HasKey("vbr"))
+            if (format.HasKey("vcodec"))
             {
-                if (format.HasKey("language") && format["vcodec"].As<string>() == "none")
+                if (format["vcodec"].As<string>() == "none")
                 {
-                    if (!format["language"].IsNone() && !AudioLanguages.Contains(format["language"].As<string>()))
+                    if (format.HasKey("language"))
                     {
-                        AudioLanguages.Add(format["language"].As<string>());
+                        if (!format["language"].IsNone() && !AudioLanguages.Contains(format["language"].As<string>()))
+                        {
+                            AudioLanguages.Add(format["language"].As<string>());
+                        }
                     }
                 }
-                try
+                else if (format.HasKey("resolution"))
                 {
-                    var resolution = new VideoResolution(format["width"].As<int>(), format["height"].As<int>());
-                    if (!VideoResolutions.Contains(resolution))
+                    try
                     {
-                        VideoResolutions.Add(resolution);
+                        var resolution = VideoResolution.Parse(format["resolution"].As<string>());
+                        if (resolution != null && !VideoResolutions.Contains(resolution))
+                        {
+                            VideoResolutions.Add(resolution);
+                        }
                     }
+                    catch { }
                 }
-                catch { }
-            }
-            else if (format.HasKey("resolution"))
-            {
-                try
-                {
-                    var resolution = VideoResolution.Parse(format["resolution"].As<string>());
-                    if (resolution != null && !VideoResolutions.Contains(resolution))
-                    {
-                        VideoResolutions.Add(resolution);
-                    }
-                }
-                catch { }
             }
         }
         VideoResolutions.Sort((a, b) => b.CompareTo(a));
