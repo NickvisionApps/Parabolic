@@ -1,0 +1,13 @@
+diff --git a/NickvisionTubeConverter.GNOME/Views/MainWindow.cs b/NickvisionTubeConverter.GNOME/Views/MainWindow.cs
+index 5047939..9c8404a 100644
+--- a/NickvisionTubeConverter.GNOME/Views/MainWindow.cs
++++ b/NickvisionTubeConverter.GNOME/Views/MainWindow.cs
+@@ -189,7 +189,7 @@ public partial class MainWindow : Adw.ApplicationWindow
+         application.SetAccelsForAction("win.quit", new string[] { "<Ctrl>q", "<Ctrl>w" });
+         //Help Action
+         var actHelp = Gio.SimpleAction.New("help", null);
+-        actHelp.OnActivate += (sender, e) => Gtk.Functions.ShowUri(this, "help:parabolic", 0);
++        actHelp.OnActivate += (sender, e) => Gtk.Functions.ShowUri(this, "https://htmlpreview.github.io/?https://github.com/NickvisionApps/Parabolic/blob/main/NickvisionTubeConverter.Shared/Docs/html/C/index.html", 0);
+         AddAction(actHelp);
+         application.SetAccelsForAction("win.help", new string[] { "F1" });
+         //About Action
