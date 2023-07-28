@@ -551,6 +551,7 @@ public partial class AddDownloadDialog : Adw.Window
     {
         var downloadsCount = _controller.MediaList.FindAll(x => x.ToDownload).Count;
         _openPlaylistRow.SetTitle(_n("{0} of {1} items", "{0} of {1} items", _controller.MediaList.Count, downloadsCount, _controller.MediaList.Count));
+        _addDownloadButton.SetSensitive(downloadsCount > 0);
     }
 
     /// <summary>
