@@ -217,14 +217,14 @@ public partial class AddDownloadDialog : Adw.Window
         {
             foreach (var row in _mediaRows)
             {
-                row.CheckActive = true;
+                row.Active = true;
             }
         };
         _deselectAllButton.OnClicked += (sender, e) =>
         {
             foreach (var row in _mediaRows)
             {
-                row.CheckActive = false;
+                row.Active = false;
             }
         };
         //Add Download Button

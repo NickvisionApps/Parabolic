@@ -15,8 +15,13 @@ public class MediaRow : Adw.EntryRow
     [Gtk.Connect] private readonly Gtk.CheckButton _downloadCheck;
     [Gtk.Connect] private readonly Gtk.Button _undoButton;
 
-    public bool CheckActive
+    /// <summary>
+    /// The active status of the row's check button
+    /// </summary>
+    public bool Active
     {
+        get => _downloadCheck.GetActive();
+
         set => _downloadCheck.SetActive(value);
     }
 
