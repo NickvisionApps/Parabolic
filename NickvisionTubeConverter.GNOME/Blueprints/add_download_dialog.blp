@@ -218,29 +218,61 @@ Adw.Window _root {
 
             Adw.ViewStackPage {
               name: "pagePlaylist";
-              child: Gtk.ScrolledWindow _playlist {
-                hexpand: true;
-                vexpand: true;
-                Gtk.Box _playlistPage {
+              child: Gtk.Box {
+                orientation: vertical;
+
+                Adw.PreferencesGroup {
+                  margin-start: 24;
+                  margin-end: 24;
+                  margin-bottom: 12;
+
+                  Adw.ActionRow _numberTitlesRow2 {
+                    title: _("Number Titles");
+                    activatable-widget: _numberTitlesSwitch;
+
+                    [suffix]
+                    Gtk.Switch _numberTitlesSwitch2 {
+                      valign: center;
+                      active: bind _numberTitlesSwitch.active bidirectional;
+                    }
+                  }
+                }
+
+                Gtk.Box {
+                  halign: center;
+                  margin-bottom: 12;
+
+                  Gtk.Button _selectAllButton {
+                    child: Adw.ButtonContent {
+                      icon-name: "edit-select-all-symbolic";
+                      label: _("Select All");
+                    };
+                  }
+
+                  Gtk.Button _deselectAllButton {
+                    child: Adw.ButtonContent {
+                      icon-name: "edit-select-none-symbolic";
+                      label: _("Deselect All");
+                    };
+                  }
+
+                  styles ["linked"]
+                }
+
+                Gtk.Separator {}
+
+                Gtk.ScrolledWindow {
+                  hexpand: true;
+                  vexpand: true;
+
+                  Adw.PreferencesGroup _playlistGroup {
                     margin-top: 12;
                     margin-start: 24;
                     margin-end: 24;
                     margin-bottom: 12;
-                    orientation: vertical;
-                    spacing: 12;
+                  }
 
-                    Adw.PreferencesGroup _playlistGroup {
-                      Adw.ActionRow _numberTitlesRow2 {
-                        title: _("Number Titles");
-                        activatable-widget: _numberTitlesSwitch;
-
-                        [suffix]
-                        Gtk.Switch _numberTitlesSwitch2 {
-                          valign: center;
-                          active: false;
-                        }
-                      }
-                    }
+                  styles ["view"]
                 }
               };
             }

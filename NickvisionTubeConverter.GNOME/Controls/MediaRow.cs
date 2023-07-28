@@ -15,6 +15,16 @@ public class MediaRow : Adw.EntryRow
     [Gtk.Connect] private readonly Gtk.CheckButton _downloadCheck;
     [Gtk.Connect] private readonly Gtk.Button _undoButton;
 
+    /// <summary>
+    /// The active status of the row's check button
+    /// </summary>
+    public bool Active
+    {
+        get => _downloadCheck.GetActive();
+
+        set => _downloadCheck.SetActive(value);
+    }
+
     public event EventHandler<EventArgs>? OnSelectionChanged;
 
     private MediaRow(Gtk.Builder builder, MediaInfo mediaInfo, bool limitChars) : base(builder.GetPointer("_root"), false)

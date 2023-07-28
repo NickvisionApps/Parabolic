@@ -50,8 +50,8 @@ public partial class AddDownloadDialog : Adw.Window
     [Gtk.Connect] private readonly Adw.ActionRow _openPlaylistRow;
     [Gtk.Connect] private readonly Adw.ActionRow _numberTitlesRow;
     [Gtk.Connect] private readonly Gtk.Switch _numberTitlesSwitch;
-    [Gtk.Connect] private readonly Gtk.Box _playlistPage;
-    [Gtk.Connect] private readonly Gtk.ScrolledWindow _playlist;
+    [Gtk.Connect] private readonly Gtk.Button _selectAllButton;
+    [Gtk.Connect] private readonly Gtk.Button _deselectAllButton;
     [Gtk.Connect] private readonly Adw.PreferencesGroup _playlistGroup;
     [Gtk.Connect] private readonly Adw.ActionRow _numberTitlesRow2;
     [Gtk.Connect] private readonly Gtk.Switch _numberTitlesSwitch2;
@@ -213,24 +213,23 @@ public partial class AddDownloadDialog : Adw.Window
                 ToggleNumberTitles();
             }
         };
-        _playlist.GetVadjustment().OnNotify += (sender, e) =>
+        _selectAllButton.OnClicked += (sender, e) =>
         {
-            if (e.Pspec.GetName() == "value")
+            foreach (var row in _mediaRows)
             {
-                if (_playlist.GetVadjustment().GetValue() > 0)
-                {
-                    _playlist.AddCssClass("playlist");
-                }
-                else
-                {
-                    _playlist.RemoveCssClass("playlist");
-                }
+                row.Active = true;
+            }
+        };
+        _deselectAllButton.OnClicked += (sender, e) =>
+        {
+            foreach (var row in _mediaRows)
+            {
+                row.Active = false;
             }
         };
         //Add Download Button
         _addDownloadButton.OnClicked += AddDownload;
         _addDownloadButton.SetSensitive(false);
-        _numberTitlesSwitch2.BindProperty("active", _numberTitlesSwitch, "active", GObject.BindingFlags.Bidirectional);
         //Shortcut Controller
         _shortcutController = Gtk.ShortcutController.New();
         _shortcutController.SetScope(Gtk.ShortcutScope.Managed);
@@ -342,7 +341,6 @@ public partial class AddDownloadDialog : Adw.Window
         if (_viewStack.GetVisibleChildName() == "pagePlaylist")
         {
             _viewStack.SetVisibleChildName("pageDownload");
-            _playlistPage.SetVisible(false);
         }
         else
         {
@@ -553,6 +551,7 @@ public partial class AddDownloadDialog : Adw.Window
     {
         var downloadsCount = _controller.MediaList.FindAll(x => x.ToDownload).Count;
         _openPlaylistRow.SetTitle(_n("{0} of {1} items", "{0} of {1} items", _controller.MediaList.Count, downloadsCount, _controller.MediaList.Count));
+        _addDownloadButton.SetSensitive(downloadsCount > 0);
     }
 
     /// <summary>
