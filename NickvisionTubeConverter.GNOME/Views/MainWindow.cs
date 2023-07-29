@@ -318,11 +318,6 @@ public partial class MainWindow : Adw.ApplicationWindow
             _headerBar.AddCssClass("flat");
             _actDownload.SetEnabled(true);
         }
-        else
-        {
-            var toast = Adw.Toast.New(_("No network connection found."));
-            _toastOverlay.AddToast(toast);
-        }
         _actCheckNetwork.SetEnabled(true);
     }
 
