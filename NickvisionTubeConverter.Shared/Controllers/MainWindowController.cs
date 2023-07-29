@@ -177,12 +177,21 @@ public class MainWindowController : IDisposable
             }
         }
         //Check Network
-        using var ping = new Ping();
-        var reply = await ping.SendPingAsync("8.8.8.8"); //google
-        if (reply.Status == IPStatus.Success)
+        if (!await CheckNetworkConnectivityAsync())
         {
             NotificationSent?.Invoke(this, new NotificationSentEventArgs(_("No active internet connection"), NotificationSeverity.Error, "no-network"));
         }
+    }
+
+    /// <summary>
+    /// Checks for an active network connection
+    /// </summary>
+    /// <returns>True if network connection active, else false</returns>
+    public async Task<bool> CheckNetworkConnectivityAsync()
+    {
+        using var ping = new Ping();
+        var reply = await ping.SendPingAsync("8.8.8.8"); //google
+        return reply.Status == IPStatus.Success;
     }
 
     /// <summary>
