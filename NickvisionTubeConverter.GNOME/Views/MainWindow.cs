@@ -26,7 +26,6 @@ public partial class MainWindow : Adw.ApplicationWindow
     private readonly Gio.DBusConnection _bus;
     private readonly LauncherEntry? _unityLauncher;
     private bool _isBackgroundStatusReported;
-    private readonly Gio.SimpleAction _actCheckNetwork;
     private readonly Gio.SimpleAction _actDownload;
     private Dictionary<Guid, DownloadRow> _downloadRows;
 
@@ -113,10 +112,6 @@ public partial class MainWindow : Adw.ApplicationWindow
             DownloadStartedFromQueue(sender, e);
             return false;
         });
-        //Check Network Action
-        _actCheckNetwork = Gio.SimpleAction.New("checkNetwork", null);
-        _actCheckNetwork.OnActivate += async (sender, e) => await CheckNetworkConnectivityAsync();
-        AddAction(_actCheckNetwork);
         //Add Download Action
         _actDownload = Gio.SimpleAction.New("addDownload", null);
         _actDownload.OnActivate += async (sender, e) => await AddDownloadAsync(null);
@@ -241,12 +236,19 @@ public partial class MainWindow : Adw.ApplicationWindow
         if (e.Action == "no-network")
         {
             _banner.SetTitle(e.Message);
-            _banner.SetButtonLabel(_("Check again"));
-            _banner.SetActionName("win.checkNetwork");
-            _banner.SetRevealed(true);
             _headerBar.RemoveCssClass("flat");
-            _actCheckNetwork.SetEnabled(true);
             _actDownload.SetEnabled(false);
+            _banner.SetRevealed(true);
+            return;
+        }
+        if (e.Action == "network-restored")
+        {
+            if (_downloadRows.Count == 0)
+            {
+                _headerBar.AddCssClass("flat");
+            }
+            _actDownload.SetEnabled(true);
+            _banner.SetRevealed(false);
             return;
         }
         var toast = Adw.Toast.New(e.Message);
@@ -304,21 +306,6 @@ public partial class MainWindow : Adw.ApplicationWindow
         _controller.DownloadManager.StopAllDownloads(false);
         _controller.Dispose();
         return false;
-    }
-
-    /// <summary>
-    /// Checks for an active network connection
-    /// </summary>
-    private async Task CheckNetworkConnectivityAsync()
-    {
-        _actCheckNetwork.SetEnabled(false);
-        if (await _controller.CheckNetworkConnectivityAsync())
-        {
-            _banner.SetRevealed(false);
-            _headerBar.AddCssClass("flat");
-            _actDownload.SetEnabled(true);
-        }
-        _actCheckNetwork.SetEnabled(true);
     }
 
     /// <summary>

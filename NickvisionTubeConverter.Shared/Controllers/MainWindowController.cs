@@ -7,6 +7,7 @@ using Python.Runtime;
 using System;
 using System.IO;
 using System.Net.NetworkInformation;
+using System.Net.Sockets;
 using System.Threading.Tasks;
 using static NickvisionTubeConverter.Shared.Helpers.Gettext;
 
@@ -181,6 +182,17 @@ public class MainWindowController : IDisposable
         {
             NotificationSent?.Invoke(this, new NotificationSentEventArgs(_("No active internet connection"), NotificationSeverity.Error, "no-network"));
         }
+        NetworkChange.NetworkAvailabilityChanged += async (sender, e) =>
+        {
+            if (await CheckNetworkConnectivityAsync())
+            {
+                NotificationSent?.Invoke(this, new NotificationSentEventArgs("", NotificationSeverity.Success, "network-restored"));
+            }
+            else
+            {
+                NotificationSent?.Invoke(this, new NotificationSentEventArgs(_("No active internet connection"), NotificationSeverity.Error, "no-network"));
+            }
+        };
     }
 
     /// <summary>
@@ -189,9 +201,23 @@ public class MainWindowController : IDisposable
     /// <returns>True if network connection active, else false</returns>
     public async Task<bool> CheckNetworkConnectivityAsync()
     {
-        using var ping = new Ping();
-        var reply = await ping.SendPingAsync("8.8.8.8"); //google
-        return reply.Status == IPStatus.Success;
+        foreach (var addr in new[] { "8.8.8.8", "http://www.baidu.com", "http://www.aparat.com" })
+        {
+            try
+            {
+                using var ping = new Ping();
+                var reply = await ping.SendPingAsync(addr);
+                if (reply.Status == IPStatus.Success)
+                {
+                    return true;
+                }
+            }
+            catch
+            {
+                return false;
+            }
+        }
+        return false;
     }
 
     /// <summary>
