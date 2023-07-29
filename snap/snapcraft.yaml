@@ -68,7 +68,6 @@ parts:
       chmod +x ./dotnet-install.sh
       ./dotnet-install.sh --channel 7.0
       patch -p1 < $CRAFT_PROJECT_DIR/snap/tube-converter.patch
-      patch -p1 < $CRAFT_PROJECT_DIR/snap/web-help.patch
     override-build: |
       set -eux
       export DOTNET_ROOT=$HOME/.dotnet

@@ -191,7 +191,7 @@ public partial class MainWindow : Adw.ApplicationWindow
         application.SetAccelsForAction("win.quit", new string[] { "<Ctrl>q", "<Ctrl>w" });
         //Help Action
         var actHelp = Gio.SimpleAction.New("help", null);
-        actHelp.OnActivate += (sender, e) => Gtk.Functions.ShowUri(this, "help:parabolic", 0);
+        actHelp.OnActivate += (sender, e) => Gtk.Functions.ShowUri(this, Help.GetHelpURL("index"), 0);
         AddAction(actHelp);
         application.SetAccelsForAction("win.help", new string[] { "F1" });
         //About Action
