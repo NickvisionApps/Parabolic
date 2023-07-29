@@ -18,6 +18,7 @@ namespace NickvisionTubeConverter.Shared.Controllers;
 /// </summary>
 public class MainWindowController : IDisposable
 {
+    private readonly string[] _networkAddresses;
     private bool _disposed;
     private nint _pythonThreadState;
     private Keyring? _keyring;
@@ -76,6 +77,7 @@ public class MainWindowController : IDisposable
     {
         _disposed = false;
         _pythonThreadState = IntPtr.Zero;
+        _networkAddresses = new []{ "8.8.8.8", "http://www.baidu.com", "http://www.aparat.com" };
         DownloadManager = new DownloadManager(5);
     }
 
@@ -201,7 +203,7 @@ public class MainWindowController : IDisposable
     /// <returns>True if network connection active, else false</returns>
     public async Task<bool> CheckNetworkConnectivityAsync()
     {
-        foreach (var addr in new[] { "8.8.8.8", "http://www.baidu.com", "http://www.aparat.com" })
+        foreach (var addr in _networkAddresses)
         {
             try
             {
