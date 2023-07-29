@@ -212,10 +212,7 @@ public class MainWindowController : IDisposable
                     return true;
                 }
             }
-            catch
-            {
-                return false;
-            }
+            catch { }
         }
         return false;
     }
