@@ -6,6 +6,8 @@ using NickvisionTubeConverter.Shared.Models;
 using Python.Runtime;
 using System;
 using System.IO;
+using System.Net.NetworkInformation;
+using System.Net.Sockets;
 using System.Threading.Tasks;
 using static NickvisionTubeConverter.Shared.Helpers.Gettext;
 
@@ -16,6 +18,7 @@ namespace NickvisionTubeConverter.Shared.Controllers;
 /// </summary>
 public class MainWindowController : IDisposable
 {
+    private readonly string[] _networkAddresses;
     private bool _disposed;
     private nint _pythonThreadState;
     private Keyring? _keyring;
@@ -74,6 +77,7 @@ public class MainWindowController : IDisposable
     {
         _disposed = false;
         _pythonThreadState = IntPtr.Zero;
+        _networkAddresses = new []{ "8.8.8.8", "http://www.baidu.com", "http://www.aparat.com" };
         DownloadManager = new DownloadManager(5);
     }
 
@@ -133,6 +137,7 @@ public class MainWindowController : IDisposable
     /// </summary>
     public async Task StartupAsync()
     {
+        //Setup Folders
         Configuration.Current.Saved += ConfigurationSaved;
         DownloadManager.MaxNumberOfActiveDownloads = Configuration.Current.MaxNumberOfActiveDownloads;
         if (Directory.Exists(Configuration.TempDir))
@@ -140,6 +145,7 @@ public class MainWindowController : IDisposable
             Directory.Delete(Configuration.TempDir, true);
         }
         Directory.CreateDirectory(Configuration.TempDir);
+        //Setup Dependencies
         try
         {
             var success = DependencyManager.SetupDependencies();
@@ -158,6 +164,7 @@ public class MainWindowController : IDisposable
         {
             NotificationSent?.Invoke(this, new NotificationSentEventArgs(_("Unable to setup dependencies. Please restart the app and try again."), NotificationSeverity.Error, "error", $"{e.Message}\n\n{e.StackTrace}"));
         }
+        //Setup Keyring
         if(Keyring.Exists(AppInfo.Current.ID))
         {
             var attempts = 0;
@@ -172,6 +179,44 @@ public class MainWindowController : IDisposable
                 NotificationSent?.Invoke(this, new NotificationSentEventArgs(_("Unable to unlock keyring. Restart the app to try again."), NotificationSeverity.Error));
             }
         }
+        //Check Network
+        if (!await CheckNetworkConnectivityAsync())
+        {
+            NotificationSent?.Invoke(this, new NotificationSentEventArgs(_("No active internet connection"), NotificationSeverity.Error, "no-network"));
+        }
+        NetworkChange.NetworkAvailabilityChanged += async (sender, e) =>
+        {
+            if (await CheckNetworkConnectivityAsync())
+            {
+                NotificationSent?.Invoke(this, new NotificationSentEventArgs("", NotificationSeverity.Success, "network-restored"));
+            }
+            else
+            {
+                NotificationSent?.Invoke(this, new NotificationSentEventArgs(_("No active internet connection"), NotificationSeverity.Error, "no-network"));
+            }
+        };
+    }
+
+    /// <summary>
+    /// Checks for an active network connection
+    /// </summary>
+    /// <returns>True if network connection active, else false</returns>
+    public async Task<bool> CheckNetworkConnectivityAsync()
+    {
+        foreach (var addr in _networkAddresses)
+        {
+            try
+            {
+                using var ping = new Ping();
+                var reply = await ping.SendPingAsync(addr);
+                if (reply.Status == IPStatus.Success)
+                {
+                    return true;
+                }
+            }
+            catch { }
+        }
+        return false;
     }
 
     /// <summary>

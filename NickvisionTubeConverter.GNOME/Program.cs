@@ -38,7 +38,7 @@ public partial class Program
         _mainWindowController.AppInfo.ShortName = _("Parabolic");
         _mainWindowController.AppInfo.Description = $"{_("Download web video and audio")}.";
         _mainWindowController.AppInfo.Version = "2023.8.0-next";
-        _mainWindowController.AppInfo.Changelog = "<ul><li>Added buttons to select or deselect all items in a playlist.</li></ul>";
+        _mainWindowController.AppInfo.Changelog = "<ul><li>Added buttons to select or deselect all items in a playlist</li><li>Parabolic will now check for an active network connection on startup</li><li>Updated translations (Thanks everyone on Weblate!)</li></ul>";
         _mainWindowController.AppInfo.GitHubRepo = new Uri("https://github.com/NickvisionApps/Parabolic");
         _mainWindowController.AppInfo.IssueTracker = new Uri("https://github.com/NickvisionApps/Parabolic/issues/new");
         _mainWindowController.AppInfo.SupportUrl = new Uri("https://github.com/NickvisionApps/Parabolic/discussions");

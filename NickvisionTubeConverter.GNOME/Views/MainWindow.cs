@@ -26,6 +26,7 @@ public partial class MainWindow : Adw.ApplicationWindow
     private readonly Gio.DBusConnection _bus;
     private readonly LauncherEntry? _unityLauncher;
     private bool _isBackgroundStatusReported;
+    private readonly Gio.SimpleAction _actDownload;
     private Dictionary<Guid, DownloadRow> _downloadRows;
 
     [Gtk.Connect] private readonly Adw.Bin _spinnerContainer;
@@ -35,6 +36,7 @@ public partial class MainWindow : Adw.ApplicationWindow
     [Gtk.Connect] private readonly Adw.WindowTitle _title;
     [Gtk.Connect] private readonly Adw.ToastOverlay _toastOverlay;
     [Gtk.Connect] private readonly Adw.ViewStack _viewStack;
+    [Gtk.Connect] private readonly Adw.Banner _banner;
     [Gtk.Connect] private readonly Gtk.Button _addDownloadButton;
     [Gtk.Connect] private readonly Gtk.Box _downloadingBox;
     [Gtk.Connect] private readonly Gtk.Button _stopAllDownloadsButton;
@@ -111,9 +113,9 @@ public partial class MainWindow : Adw.ApplicationWindow
             return false;
         });
         //Add Download Action
-        var actDownload = Gio.SimpleAction.New("addDownload", null);
-        actDownload.OnActivate += async (sender, e) => await AddDownloadAsync(null);
-        AddAction(actDownload);
+        _actDownload = Gio.SimpleAction.New("addDownload", null);
+        _actDownload.OnActivate += async (sender, e) => await AddDownloadAsync(null);
+        AddAction(_actDownload);
         application.SetAccelsForAction("win.addDownload", new string[] { "<Ctrl>n" });
         //Stop All Downloads Action
         var actStopAllDownloads = Gio.SimpleAction.New("stopAllDownloads", null);
@@ -231,6 +233,24 @@ public partial class MainWindow : Adw.ApplicationWindow
     /// <param name="e">NotificationSentEventArgs</param>
     private void NotificationSent(object? sender, NotificationSentEventArgs e)
     {
+        if (e.Action == "no-network")
+        {
+            _banner.SetTitle(e.Message);
+            _headerBar.RemoveCssClass("flat");
+            _actDownload.SetEnabled(false);
+            _banner.SetRevealed(true);
+            return;
+        }
+        if (e.Action == "network-restored")
+        {
+            if (_downloadRows.Count == 0)
+            {
+                _headerBar.AddCssClass("flat");
+            }
+            _actDownload.SetEnabled(true);
+            _banner.SetRevealed(false);
+            return;
+        }
         var toast = Adw.Toast.New(e.Message);
         _toastOverlay.AddToast(toast);
     }
@@ -292,7 +312,7 @@ public partial class MainWindow : Adw.ApplicationWindow
     /// Occurs when Keyring needs a login
     /// </summary>
     /// <param name="title">The title of the account</param>
-    public async Task<string?> KeyringLoginAsync(string title)
+    private async Task<string?> KeyringLoginAsync(string title)
     {
         var tcs = new TaskCompletionSource<string?>();
         var passwordDialog = new PasswordDialog(this, title, tcs);

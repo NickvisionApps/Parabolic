@@ -64,6 +64,8 @@ Adw.ApplicationWindow _root {
         styles ["flat"]
       }
       
+      Adw.Banner _banner { }
+
       Adw.ToastOverlay _toastOverlay {
         hexpand: true;
         vexpand: true;
@@ -74,6 +76,8 @@ Adw.ApplicationWindow _root {
               icon-name: "org.nickvision.tubeconverter";
               title: _("Download Media");
               description: _("Add a video, audio, or playlist URL to start downloading");
+              hexpand: true;
+              vexpand: true;
               child: Gtk.Button {
                 label: _("Add Download");
                 halign: center;
