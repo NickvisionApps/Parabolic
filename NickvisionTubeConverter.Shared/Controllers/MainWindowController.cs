@@ -6,6 +6,7 @@ using NickvisionTubeConverter.Shared.Models;
 using Python.Runtime;
 using System;
 using System.IO;
+using System.Net.NetworkInformation;
 using System.Threading.Tasks;
 using static NickvisionTubeConverter.Shared.Helpers.Gettext;
 
@@ -133,6 +134,7 @@ public class MainWindowController : IDisposable
     /// </summary>
     public async Task StartupAsync()
     {
+        //Setup Folders
         Configuration.Current.Saved += ConfigurationSaved;
         DownloadManager.MaxNumberOfActiveDownloads = Configuration.Current.MaxNumberOfActiveDownloads;
         if (Directory.Exists(Configuration.TempDir))
@@ -140,6 +142,7 @@ public class MainWindowController : IDisposable
             Directory.Delete(Configuration.TempDir, true);
         }
         Directory.CreateDirectory(Configuration.TempDir);
+        //Setup Dependencies
         try
         {
             var success = DependencyManager.SetupDependencies();
@@ -158,6 +161,7 @@ public class MainWindowController : IDisposable
         {
             NotificationSent?.Invoke(this, new NotificationSentEventArgs(_("Unable to setup dependencies. Please restart the app and try again."), NotificationSeverity.Error, "error", $"{e.Message}\n\n{e.StackTrace}"));
         }
+        //Setup Keyring
         if(Keyring.Exists(AppInfo.Current.ID))
         {
             var attempts = 0;
@@ -171,6 +175,13 @@ public class MainWindowController : IDisposable
             {
                 NotificationSent?.Invoke(this, new NotificationSentEventArgs(_("Unable to unlock keyring. Restart the app to try again."), NotificationSeverity.Error));
             }
+        }
+        //Check Network
+        using var ping = new Ping();
+        var reply = await ping.SendPingAsync("8.8.8.8"); //google
+        if (reply.Status == IPStatus.Success)
+        {
+            NotificationSent?.Invoke(this, new NotificationSentEventArgs(_("No active internet connection"), NotificationSeverity.Error, "no-network"));
         }
     }
 
