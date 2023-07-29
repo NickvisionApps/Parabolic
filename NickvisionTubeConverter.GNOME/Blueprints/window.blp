@@ -72,24 +72,20 @@ Adw.ApplicationWindow _root {
         Adw.ViewStack _viewStack {
           Adw.ViewStackPage {
             name: "pageNoDownloads";
-            child: Gtk.Box {
-              orientation: vertical;
-              
-              Adw.StatusPage {
-                icon-name: "org.nickvision.tubeconverter";
-                title: _("Download Media");
-                description: _("Add a video, audio, or playlist URL to start downloading");
-                hexpand: true;
-                vexpand: true;
-                child: Gtk.Button {
-                  label: _("Add Download");
-                  halign: center;
-                  action-name: "win.addDownload";
-                  styles ["pill", "suggested-action"]
-                };
-  
-                styles ["icon-dropshadow"]
-              }
+            child: Adw.StatusPage {
+              icon-name: "org.nickvision.tubeconverter";
+              title: _("Download Media");
+              description: _("Add a video, audio, or playlist URL to start downloading");
+              hexpand: true;
+              vexpand: true;
+              child: Gtk.Button {
+                label: _("Add Download");
+                halign: center;
+                action-name: "win.addDownload";
+                styles ["pill", "suggested-action"]
+              };
+
+              styles ["icon-dropshadow"]
             };
           }
           
