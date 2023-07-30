@@ -8,6 +8,10 @@ namespace NickvisionTubeConverter.Shared.Models;
 public class DownloadHistoryItem
 {
     /// <summary>
+    /// Media URL
+    /// </summary>
+    public string Url { get; set; }
+    /// <summary>
     /// Media title
     /// </summary>
     public string Title { get; set; }
@@ -19,4 +23,12 @@ public class DownloadHistoryItem
     /// Path to the downloaded file
     /// </summary>
     public string Path { get; set; }
+
+    public DownloadHistoryItem(string url)
+    {
+        Url = url;
+        Title = "";
+        Date = DateTime.Now;
+        Path = "";
+    }
 }

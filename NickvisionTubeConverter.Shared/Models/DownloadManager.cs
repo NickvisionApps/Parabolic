@@ -202,10 +202,9 @@ public class DownloadManager
             DownloadAdded?.Invoke(this, (download.Id, download.Filename, download.SaveFolder, false));
         }
         var history = (DownloadHistory)Aura.Active.ConfigFiles["downloadHistory"];
-        history.History[download.MediaUrl] = new DownloadHistoryItem
+        history.History[download.MediaUrl] = new DownloadHistoryItem(download.MediaUrl)
         {
             Title = Path.GetFileNameWithoutExtension(download.Filename),
-            Date = DateTime.Now,
             Path = $"{download.SaveFolder}{Path.DirectorySeparatorChar}{download.Filename}"
         };
         Aura.Active.SaveConfig("downloadHistory");
