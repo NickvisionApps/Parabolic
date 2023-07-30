@@ -1,3 +1,4 @@
+using Nickvision.Aura;
 using Nickvision.Keyring.Models;
 using NickvisionTubeConverter.Shared.Models;
 using System;
@@ -40,7 +41,7 @@ public class AddDownloadDialogController
     /// <summary>
     /// Gets the AppInfo object
     /// </summary>
-    public AppInfo AppInfo => AppInfo.Current;
+    public AppInfo AppInfo => Aura.Active.AppInfo;
     /// <summary>
     /// Whether or not keyring auth is available
     /// </summary>
@@ -196,7 +197,7 @@ public class AddDownloadDialogController
                 m.Title = toggled ? numberTitle + m.Title : m.Title.Substring(numberTitle.Length);
             }
             Configuration.Current.NumberTitles = toggled;
-            Configuration.Current.Save();
+            Aura.Active.SaveConfig("config");
             return true;
         }
         return false;
@@ -271,7 +272,7 @@ public class AddDownloadDialogController
         {
             Configuration.Current.PreviousVideoResolution = _mediaUrlInfo.VideoResolutions[resolution.Value].ToString();
         }
-        Configuration.Current.Save();
+        Aura.Active.SaveConfig("config");
     }
 
     /// <summary>

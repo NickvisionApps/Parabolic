@@ -1,4 +1,5 @@
-﻿using NickvisionTubeConverter.Shared.Helpers;
+﻿using Nickvision.Aura;
+using NickvisionTubeConverter.Shared.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -200,9 +201,14 @@ public class DownloadManager
             _queued.Add(download.Id, (download, options));
             DownloadAdded?.Invoke(this, (download.Id, download.Filename, download.SaveFolder, false));
         }
-        var history = DownloadHistory.Current;
-        history.History[download.MediaUrl] = (Path.GetFileNameWithoutExtension(download.Filename), DateTime.Now, $"{download.SaveFolder}{Path.DirectorySeparatorChar}{download.Filename}");
-        history.Save();
+        var history = (DownloadHistory)Aura.Active.ConfigFiles["downloadHistory"];
+        history.History[download.MediaUrl] = new DownloadHistoryItem
+        {
+            Title = Path.GetFileNameWithoutExtension(download.Filename),
+            Date = DateTime.Now,
+            Path = $"{download.SaveFolder}{Path.DirectorySeparatorChar}{download.Filename}"
+        };
+        Aura.Active.SaveConfig("downloadHistory");
     }
 
     /// <summary>

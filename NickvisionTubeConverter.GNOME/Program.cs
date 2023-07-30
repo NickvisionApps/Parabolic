@@ -23,25 +23,17 @@ public partial class Program
     /// </summary>
     /// <param name="args">string[]</param>
     /// <returns>Return code from Adw.Application.Run()</returns>
-    public static int Main(string[] args) => new Program().Run(args);
+    public static int Main(string[] args) => new Program(args).Run();
 
     /// <summary>
     /// Constructs a Program
     /// </summary>
-    public Program()
+    /// <param name="args">Command-line arguments</param>
+    public Program(string[] args)
     {
         _application = Adw.Application.New("org.nickvision.tubeconverter", Gio.ApplicationFlags.FlagsNone);
         _mainWindow = null;
-        _mainWindowController = new MainWindowController();
-        _mainWindowController.AppInfo.ID = "org.nickvision.tubeconverter";
-        _mainWindowController.AppInfo.Name = "Nickvision Tube Converter";
-        _mainWindowController.AppInfo.ShortName = _("Parabolic");
-        _mainWindowController.AppInfo.Description = $"{_("Download web video and audio")}.";
-        _mainWindowController.AppInfo.Version = "2023.8.0-next";
-        _mainWindowController.AppInfo.Changelog = "<ul><li>Added buttons to select or deselect all items in a playlist</li><li>Parabolic will now check for an active network connection on startup</li><li>Fixed an issue where docs were not available when running Parabolic via snap</li><li>Updated translations (Thanks everyone on Weblate!)</li></ul>";
-        _mainWindowController.AppInfo.GitHubRepo = new Uri("https://github.com/NickvisionApps/Parabolic");
-        _mainWindowController.AppInfo.IssueTracker = new Uri("https://github.com/NickvisionApps/Parabolic/issues/new");
-        _mainWindowController.AppInfo.SupportUrl = new Uri("https://github.com/NickvisionApps/Parabolic/discussions");
+        _mainWindowController = new MainWindowController(args);
         _application.OnActivate += OnActivate;
         if (File.Exists(Path.GetFullPath(System.IO.Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)) + "/org.nickvision.tubeconverter.gresource"))
         {
@@ -70,7 +62,7 @@ public partial class Program
     /// Runs the program
     /// </summary>
     /// <returns>Return code from Adw.Application.Run()</returns>
-    public int Run(string[] args)
+    public int Run()
     {
         try
         {

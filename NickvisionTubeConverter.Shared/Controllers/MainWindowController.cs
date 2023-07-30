@@ -1,4 +1,6 @@
-﻿using Nickvision.Keyring.Models;
+﻿using Nickvision.Aura;
+using Nickvision.Aura.Network;
+using Nickvision.Keyring.Models;
 using Nickvision.Keyring.Controllers;
 using NickvisionTubeConverter.Shared.Events;
 using NickvisionTubeConverter.Shared.Helpers;
@@ -6,8 +8,6 @@ using NickvisionTubeConverter.Shared.Models;
 using Python.Runtime;
 using System;
 using System.IO;
-using System.Net.NetworkInformation;
-using System.Net.Sockets;
 using System.Threading.Tasks;
 using static NickvisionTubeConverter.Shared.Helpers.Gettext;
 
@@ -18,11 +18,17 @@ namespace NickvisionTubeConverter.Shared.Controllers;
 /// </summary>
 public class MainWindowController : IDisposable
 {
-    private readonly string[] _networkAddresses;
     private bool _disposed;
     private nint _pythonThreadState;
     private Keyring? _keyring;
+    private NetworkMonitor? _netmon;
+    private PreferencesViewController? _preferencesViewController;
 
+    public Aura Aura { get; init; }
+    /// <summary>
+    /// Gets the AppInfo object
+    /// </summary>
+    public AppInfo AppInfo => Aura.Active.AppInfo;
     /// <summary>
     /// The manager for downloads
     /// </summary>
@@ -31,15 +37,6 @@ public class MainWindowController : IDisposable
     /// A function for getting a password for the Keyring
     /// </summary>
     public Func<string, Task<string?>>? KeyringLoginAsync { get; set; }
-
-    /// <summary>
-    /// Gets the AppInfo object
-    /// </summary>
-    public AppInfo AppInfo => AppInfo.Current;
-    /// <summary>
-    /// Whether or not the version is a development version or not
-    /// </summary>
-    public bool IsDevVersion => AppInfo.Current.Version.IndexOf('-') != -1;
     /// <summary>
     /// The preferred theme of the application
     /// </summary>
@@ -59,7 +56,7 @@ public class MainWindowController : IDisposable
     /// <summary>
     /// Gets the DownloadHistory object
     /// </summary>
-    public DownloadHistory DownloadHistory => DownloadHistory.Current;
+    public DownloadHistory DownloadHistory => (DownloadHistory)Aura.Active.ConfigFiles["downloadHistory"];
 
     /// <summary>
     /// Occurs when a notification is sent
@@ -69,16 +66,42 @@ public class MainWindowController : IDisposable
     /// Invoked to check if RunInBackground changed after settings saved
     /// </summary>
     public event EventHandler? RunInBackgroundChanged;
+    /// <summary>
+    /// Invoked to focus the window
+    /// </summary>
+    public event EventHandler? RaiseCommandReceived;
 
     /// <summary>
     /// Constructs a MainWindowController
     /// </summary>
-    public MainWindowController()
+    public MainWindowController(string[] args)
     {
         _disposed = false;
         _pythonThreadState = IntPtr.Zero;
-        _networkAddresses = new []{ "8.8.8.8", "http://www.baidu.com", "http://www.aparat.com" };
         DownloadManager = new DownloadManager(5);
+        Aura = new Aura("org.nickvision.tubeconverter", "Nickvision Tube Converter", _("Parabolic"), _("Download web video and audio"));
+        if (Directory.Exists($"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}{Path.DirectorySeparatorChar}Nickvision{Path.DirectorySeparatorChar}{AppInfo.Name}"))
+        {
+            // Move config files from older versions
+            Directory.Move($"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}{Path.DirectorySeparatorChar}Nickvision{Path.DirectorySeparatorChar}{AppInfo.Name}", ConfigLoader.ConfigDir);
+        }
+        Aura.Active.SetConfig<Configuration>("config");
+        Aura.Active.SetConfig<DownloadHistory>("downloadHistory");
+        AppInfo.Version = "2023.8.0-next";
+        AppInfo.SourceRepo = new Uri("https://github.com/NickvisionApps/Parabolic");
+        AppInfo.IssueTracker = new Uri("https://github.com/NickvisionApps/Parabolic/issues/new");
+        AppInfo.SupportUrl = new Uri("https://github.com/NickvisionApps/Parabolic/discussions");
+        AppInfo.ExtraLinks[_("List of supported sites")] = new Uri("https://github.com/yt-dlp/yt-dlp/blob/master/supportedsites.md");
+        AppInfo.ExtraLinks[_("Matrix Chat")] = new Uri("https://matrix.to/#/#nickvision:matrix.org");
+        AppInfo.Developers[_("Nicholas Logozzo")] = new Uri("https://github.com/nlogozzo");
+        AppInfo.Developers[_("Contributors on GitHub ❤️")] = new Uri("https://github.com/NickvisionApps/Cavalier/graphs/contributors");
+        AppInfo.Designers[_("Nicholas Logozzo")] = new Uri("https://github.com/nlogozzo");
+        AppInfo.Designers[_("Fyodor Sobolev")] = new Uri("https://github.com/fsobolev");
+        AppInfo.Designers[_("DaPigGuy")] = new Uri("https://github.com/DaPigGuy");
+        AppInfo.Artists[_("David Lapshin")] = new Uri("https://github.com/daudix-UFO");
+        AppInfo.TranslatorCredits = _("translator-credits");
+        var ipc = Aura.Communicate(args);
+        ipc.CommandReceived += (sender, e) => RaiseCommandReceived?.Invoke(this, EventArgs.Empty);
     }
 
     /// <summary>
@@ -111,6 +134,7 @@ public class MainWindowController : IDisposable
             Directory.Delete(Configuration.TempDir, true);
         }
         _keyring?.Dispose();
+        _netmon?.Dispose();
         _disposed = true;
     }
 
@@ -118,13 +142,24 @@ public class MainWindowController : IDisposable
     /// Creates a new KeyringDialogController
     /// </summary>
     /// <returns>The KeyringDialogController</returns>
-    public KeyringDialogController CreateKeyringDialogController() => new KeyringDialogController(AppInfo.Current.ID, _keyring);
+    public KeyringDialogController CreateKeyringDialogController() => new KeyringDialogController(AppInfo.ID, _keyring);
 
     /// <summary>
     /// Creates a new PreferencesViewController
     /// </summary>
     /// <returns>The PreferencesViewController</returns>
-    public PreferencesViewController CreatePreferencesViewController() => new PreferencesViewController();
+    public PreferencesViewController PreferencesViewController
+    {
+        get
+        {
+            if (_preferencesViewController == null)
+            {
+                _preferencesViewController = new PreferencesViewController();
+                _preferencesViewController.Saved += ConfigurationSaved;
+            }
+            return _preferencesViewController;
+        }
+    }
 
     /// <summary>
     /// Creates a new AddDownloadDialogController
@@ -138,7 +173,6 @@ public class MainWindowController : IDisposable
     public async Task StartupAsync()
     {
         //Setup Folders
-        Configuration.Current.Saved += ConfigurationSaved;
         DownloadManager.MaxNumberOfActiveDownloads = Configuration.Current.MaxNumberOfActiveDownloads;
         if (Directory.Exists(Configuration.TempDir))
         {
@@ -165,13 +199,13 @@ public class MainWindowController : IDisposable
             NotificationSent?.Invoke(this, new NotificationSentEventArgs(_("Unable to setup dependencies. Please restart the app and try again."), NotificationSeverity.Error, "error", $"{e.Message}\n\n{e.StackTrace}"));
         }
         //Setup Keyring
-        if(Keyring.Exists(AppInfo.Current.ID))
+        if(Keyring.Exists(AppInfo.ID))
         {
             var attempts = 0;
             while(_keyring == null && attempts < 3)
             {
                 var password = await KeyringLoginAsync!(_("Unlock Keyring"));
-                _keyring = Keyring.Access(AppInfo.Current.ID, password);
+                _keyring = Keyring.Access(AppInfo.ID, password);
                 attempts++;
             }
             if(_keyring == null)
@@ -180,13 +214,10 @@ public class MainWindowController : IDisposable
             }
         }
         //Check Network
-        if (!await CheckNetworkConnectivityAsync())
+        _netmon = await NetworkMonitor.NewAsync();
+        _netmon.StateChanged += (sender, state) =>
         {
-            NotificationSent?.Invoke(this, new NotificationSentEventArgs(_("No active internet connection"), NotificationSeverity.Error, "no-network"));
-        }
-        NetworkChange.NetworkAvailabilityChanged += async (sender, e) =>
-        {
-            if (await CheckNetworkConnectivityAsync())
+            if (state == NetworkState.ConnectedGlobal)
             {
                 NotificationSent?.Invoke(this, new NotificationSentEventArgs("", NotificationSeverity.Success, "network-restored"));
             }
@@ -195,28 +226,6 @@ public class MainWindowController : IDisposable
                 NotificationSent?.Invoke(this, new NotificationSentEventArgs(_("No active internet connection"), NotificationSeverity.Error, "no-network"));
             }
         };
-    }
-
-    /// <summary>
-    /// Checks for an active network connection
-    /// </summary>
-    /// <returns>True if network connection active, else false</returns>
-    public async Task<bool> CheckNetworkConnectivityAsync()
-    {
-        foreach (var addr in _networkAddresses)
-        {
-            try
-            {
-                using var ping = new Ping();
-                var reply = await ping.SendPingAsync(addr);
-                if (reply.Status == IPStatus.Success)
-                {
-                    return true;
-                }
-            }
-            catch { }
-        }
-        return false;
     }
 
     /// <summary>
