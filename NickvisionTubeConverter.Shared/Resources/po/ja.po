@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-29 22:27-0400\n"
+"POT-Creation-Date: 2023-07-30 19:24-0400\n"
 "PO-Revision-Date: 2023-07-23 06:46+0000\n"
 "Last-Translator: Gnuey56 <gnuey56@proton.me>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -19,12 +19,12 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Weblate 5.0-dev\n"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:710
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:712
 #, csharp-format
 msgid "\"{0}\" has finished downloading."
 msgstr "\"{0}\" はダウンロード完了です。"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:710
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:712
 #, csharp-format
 msgid "\"{0}\" has finished with an error!"
 msgstr "\"{0}\" のダウンロードはエラーで終了しました！"
@@ -54,7 +54,7 @@ msgstr "{0:f1} KiB/毎秒"
 msgid "{0:f1} MiB/s"
 msgstr "{0:f1} MiB/毎秒"
 
-#: ../../../Models/DownloadManager.cs:166
+#: ../../../Models/DownloadManager.cs:167
 #, csharp-format
 msgid "{0} download — {1:f1}% ({2})"
 msgid_plural "{0} downloads — {1:f1}% ({2})"
@@ -79,7 +79,7 @@ msgstr "ダウンロードを追加"
 msgid "Advanced Options"
 msgstr "詳細オプション"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:714
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:716
 msgid "All downloads have finished."
 msgstr "すべてのダウンロードが完了しました。"
 
@@ -96,16 +96,20 @@ msgstr "最高"
 msgid "Close and Stop Downloads?"
 msgstr "閉じてダウンロードを中止しますか？"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:543
-#, csharp-format
-msgid ""
-"David Lapshin {0}\n"
-"Brage Fuglseth {1}\n"
-"marcin {2}"
+#: ../../../Controllers/MainWindowController.cs:97
+#, fuzzy
+msgid "Contributors on GitHub ❤️"
 msgstr ""
-"David Lapshin {0}\n"
-"Brage Fuglseth {1}\n"
-"marcin {2}"
+"Nicholas Logozzo {0}\n"
+"GitHub での貢献者のみなさん❤️ {1}"
+
+#: ../../../Controllers/MainWindowController.cs:100
+msgid "DaPigGuy"
+msgstr ""
+
+#: ../../../Controllers/MainWindowController.cs:101
+msgid "David Lapshin"
+msgstr ""
 
 #: ../../../Models/VideoResolution.cs:55
 msgid "Default"
@@ -115,15 +119,15 @@ msgstr "デフォルト"
 msgid "Delete Credential?"
 msgstr "資格情報を削除しますか？"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Controls/HistoryDialog.cs:84
+#: ../../../../NickvisionTubeConverter.GNOME/Controls/HistoryDialog.cs:85
 msgid "Download Again"
 msgstr "もう一度ダウンロード"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:710
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:712
 msgid "Download Finished"
 msgstr "ダウンロードが完了"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:710
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:712
 msgid "Download Finished With Error"
 msgstr "ダウンロードはエラーで終了"
 
@@ -131,15 +135,15 @@ msgstr "ダウンロードはエラーで終了"
 msgid "Download log was copied to clipboard."
 msgstr "ダウンロードログがクリップボードにコピーされました。"
 
-#: ../../../Models/Download.cs:350
+#: ../../../Models/Download.cs:354
 msgid "Download using aria2 has started"
 msgstr "Aria2 を使用したダウンロードが開始"
 
-#: ../../../Models/Download.cs:361
+#: ../../../Models/Download.cs:365
 msgid "Download using ffmpeg has started"
 msgstr "ffmpeg を使用したダウンロードが開始"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Program.cs:39
+#: ../../../Controllers/MainWindowController.cs:82
 #: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.desktop.in:5
 #: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.metainfo.xml.in:8
 msgid "Download web video and audio"
@@ -155,7 +159,7 @@ msgstr "ダウンロード中"
 msgid "Downloading {0:f2}% ({1})"
 msgstr "ダウンロード中 {0:f2}% ({1})"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:714
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:716
 msgid "Downloads Finished"
 msgstr "ダウンロード完了"
 
@@ -184,6 +188,10 @@ msgstr "すでにファイルが存在しており、ファイルの上書きが
 msgid "File Name"
 msgstr "ファイル名"
 
+#: ../../../Controllers/MainWindowController.cs:99
+msgid "Fyodor Sobolev"
+msgstr ""
+
 #: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:538
 msgid "GitHub Repo"
 msgstr "GitHub リポジトリ"
@@ -198,7 +206,7 @@ msgstr "キーリング"
 msgid "Keyring has not been unlocked."
 msgstr "キーリングはロック解除されていません。"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:539
+#: ../../../Controllers/MainWindowController.cs:94
 msgid "List of supported sites"
 msgstr "サポートされているサイト"
 
@@ -207,7 +215,7 @@ msgstr "サポートされているサイト"
 msgid "Login"
 msgstr "ログイン"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:540
+#: ../../../Controllers/MainWindowController.cs:95
 msgid "Matrix Chat"
 msgstr "Matrix チャット"
 
@@ -233,41 +241,25 @@ msgstr "名前"
 msgid "Name (Empty)"
 msgstr "名前（空）"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:541
-#, csharp-format
-msgid ""
-"Nicholas Logozzo {0}\n"
-"Contributors on GitHub ❤️ {1}"
+#: ../../../Controllers/MainWindowController.cs:96
+#: ../../../Controllers/MainWindowController.cs:98
+msgid "Nicholas Logozzo"
 msgstr ""
-"Nicholas Logozzo {0}\n"
-"GitHub での貢献者のみなさん❤️ {1}"
-
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:542
-#, csharp-format
-msgid ""
-"Nicholas Logozzo {0}\n"
-"Fyodor Sobolev {1}\n"
-"DaPigGuy {2}"
-msgstr ""
-"Nicholas Logozzo {0}\n"
-"Fyodor Sobolev {1}\n"
-"DaPigGuy {2}"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:286
 #: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:300
 msgid "No"
 msgstr "いいえ"
 
-#: ../../../Controllers/MainWindowController.cs:185
-#: ../../../Controllers/MainWindowController.cs:195
+#: ../../../Controllers/MainWindowController.cs:224
 msgid "No active internet connection"
 msgstr ""
 
-#: ../../../Models/DownloadManager.cs:174
+#: ../../../Models/DownloadManager.cs:175
 msgid "No downloads running"
 msgstr "進行中のダウンロードはありません"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Program.cs:38
+#: ../../../Controllers/MainWindowController.cs:82
 #: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.desktop.in:4
 #: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.metainfo.xml.in:6
 msgid "Parabolic"
@@ -284,7 +276,7 @@ msgstr "パスワード"
 msgid "Password (Empty)"
 msgstr "パスワード（空）"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Controls/HistoryDialog.cs:68
+#: ../../../../NickvisionTubeConverter.GNOME/Controls/HistoryDialog.cs:69
 msgid "Play"
 msgstr "再生"
 
@@ -309,8 +301,8 @@ msgstr "保存フォルダー"
 msgid "Save Folder (Invalid)"
 msgstr "保存フォルダー（不可）"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/PreferencesDialog.cs:173
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:257
+#: ../../../../NickvisionTubeConverter.GNOME/Views/PreferencesDialog.cs:176
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:266
 msgid "Select Cookies File"
 msgstr "クッキーのファイルを選択"
 
@@ -331,7 +323,7 @@ msgstr ""
 "ダウンロードが続行中です。\n"
 "本当に Parabolic を閉じてダウンロードを中断しますか？"
 
-#: ../../../Models/DownloadManager.cs:170
+#: ../../../Models/DownloadManager.cs:171
 msgid "Some downloads finished with errors!"
 msgstr "一部のダウンロードはエラーで失敗しました！"
 
@@ -348,12 +340,12 @@ msgstr "開始（無効）"
 msgid "Stopped"
 msgstr "一時停止中"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/PreferencesDialog.cs:148
+#: ../../../../NickvisionTubeConverter.GNOME/Views/PreferencesDialog.cs:151
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:206
 msgid "Subtitle Languages (Comma-Separated)"
 msgstr "字幕の言語（カンマで区切り）"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/PreferencesDialog.cs:158
+#: ../../../../NickvisionTubeConverter.GNOME/Views/PreferencesDialog.cs:161
 msgid "Subtitle Languages (Invalid)"
 msgstr "字幕の言語（無効）"
 
@@ -375,22 +367,22 @@ msgstr ""
 msgid "This action is irreversible. Are you sure you want to delete it?"
 msgstr "このアクションは取り消せません。本当に削除しますか？"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:544
+#: ../../../Controllers/MainWindowController.cs:102
 msgid "translator-credits"
 msgstr "翻訳者のクレジット"
 
-#: ../../../Controllers/MainWindowController.cs:154
-#: ../../../Controllers/MainWindowController.cs:165
+#: ../../../Controllers/MainWindowController.cs:186
+#: ../../../Controllers/MainWindowController.cs:197
 msgid "Unable to setup dependencies. Please restart the app and try again."
 msgstr ""
 "依存関係をダウンロードできません。アプリを再起動して試してみてください。"
 
-#: ../../../Controllers/MainWindowController.cs:179
+#: ../../../Controllers/MainWindowController.cs:211
 msgid "Unable to unlock keyring. Restart the app to try again."
 msgstr ""
 "キーリングをロック解除できません。アプリを再起動してもう一度試してください。"
 
-#: ../../../Controllers/MainWindowController.cs:173
+#: ../../../Controllers/MainWindowController.cs:205
 msgid "Unlock Keyring"
 msgstr "キーリングをロック解除"
 
@@ -792,10 +784,14 @@ msgstr ""
 "い。"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:245
+msgid "Proxy URL"
+msgstr ""
+
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:254
 msgid "Cookies File"
 msgstr "クッキーファイル"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:246
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:255
 msgid ""
 "A cookies file can be provided to yt-dlp to allow downloading media that "
 "requires a login."
@@ -803,15 +799,15 @@ msgstr ""
 "ログインが必要なメディアをダウンロードするために yt-dlp にクッキーファイルを"
 "渡すことができます。"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:267
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:276
 msgid "Clear Cookies File"
 msgstr "クッキーファイルを消去"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:277
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:286
 msgid "Cookies File Information"
 msgstr "クッキーファイルの情報"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:292
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:301
 msgid ""
 "Cookies can be passed to yt-dlp in the form of TXT files. Export cookies "
 "from your browser using the following extensions (use at your own risk):"
@@ -819,15 +815,15 @@ msgstr ""
 "クッキーは TXT ファイル形式で yt-dlp に渡すことができます。ブラウザの拡張機能"
 "を使ってクッキーをエクスポートできます(自己責任で使用してください):"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:329
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:338
 msgid "Converter"
 msgstr "コンバーター"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:332
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:341
 msgid "Disallow Conversions"
 msgstr "フォーマット変換を無効化"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:333
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:342
 msgid ""
 "If enabled, Parabolic will download the appropriate video/audio format for "
 "the selected quality without converting to other formats. (You will be "
@@ -837,15 +833,15 @@ msgstr ""
 "した画質に適した動画フォーマットでダウンロードします。（ファイル形式は選択で"
 "きません）"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:348
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:357
 msgid "Embed Metadata"
 msgstr "メタデータを埋め込む"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:357
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:366
 msgid "Crop Audio Thumbnails"
 msgstr "オーディオサムネイルを整形"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:358
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:367
 msgid ""
 "If enabled, Parabolic will automatically turn on the crop thumbnail advanced "
 "option for audio downloads"
@@ -853,7 +849,7 @@ msgstr ""
 "有効であれば、Parabolic はオーディオのダウンロードで自動的にサムネイルを整形"
 "する詳細オプションを有効にします"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:374
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:383
 msgid "Embed Chapters"
 msgstr "チャプター（章）を埋め込む"
 
@@ -955,6 +951,26 @@ msgstr "— 同時に複数のダウンロードが可能"
 #: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.metainfo.xml.in:13
 msgid "— Supports downloading metadata and video subtitles"
 msgstr "— メタデータと字幕のダウンロードに対応"
+
+#, csharp-format
+#~ msgid ""
+#~ "David Lapshin {0}\n"
+#~ "Brage Fuglseth {1}\n"
+#~ "marcin {2}"
+#~ msgstr ""
+#~ "David Lapshin {0}\n"
+#~ "Brage Fuglseth {1}\n"
+#~ "marcin {2}"
+
+#, csharp-format
+#~ msgid ""
+#~ "Nicholas Logozzo {0}\n"
+#~ "Fyodor Sobolev {1}\n"
+#~ "DaPigGuy {2}"
+#~ msgstr ""
+#~ "Nicholas Logozzo {0}\n"
+#~ "Fyodor Sobolev {1}\n"
+#~ "DaPigGuy {2}"
 
 #~ msgid "Open"
 #~ msgstr "開く"

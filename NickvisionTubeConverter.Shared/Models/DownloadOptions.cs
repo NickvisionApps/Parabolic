@@ -14,10 +14,6 @@ public class DownloadOptions
     /// </summary>
     public bool UseAria { get; init; }
     /// <summary>
-    /// The path to the cookies file to use for yt-dlp
-    /// </summary>
-    public string? CookiesPath { get; init; }
-    /// <summary>
     /// The maximum number of connections to one server for each download (-x)
     /// </summary>
     public int AriaMaxConnectionsPerServer { get; init; }
@@ -29,6 +25,14 @@ public class DownloadOptions
     /// A comma separated list of language codes for subtitle downloads
     /// </summary>
     public string SubtitleLangs { get; init; }
+    /// <summary>
+    /// The url of the proxy server to use
+    /// </summary>
+    public string ProxyUrl { get; set; }
+    /// <summary>
+    /// The path to the cookies file to use for yt-dlp
+    /// </summary>
+    public string CookiesPath { get; init; }
     /// <summary>
     /// Whether or not to embed media metadata in the downloaded file
     /// </summary>
@@ -43,20 +47,22 @@ public class DownloadOptions
     /// </summary>
     /// <param name="overwriteExistingFiles">Whether or not to overwrite existing files</param>
     /// <param name="useAria">Whether or not to use aria2 for the download</param>
-    /// <param name="cookiesPath">The path to the cookies file to use for yt-dlp</param>
     /// <param name="ariaMaxConnectionsPerServer">The maximum number of connections to one server for each download (-x)</param>
     /// <param name="ariaMinSplitSize">The minimum size of which to split a file (-k)</param>
     /// <param name="subtitleLangs">A comma separated list of language codes for subtitle downloads</param>
+    /// <param name="proxyUrl">The url of the proxy server to use</param>
+    /// <param name="cookiesPath">The path to the cookies file to use for yt-dlp</param>
     /// <param name="embedMetadata">Whether or not to embed media metadata in the downloaded file</param>
     /// <param name="embedChapters">Whether or not to embed chapters in the downloaded file</param>
-    public DownloadOptions(bool overwriteExistingFiles, bool useAria, string? cookiesPath, int ariaMaxConnectionsPerServer, int ariaMinSplitSize, string subtitleLangs, bool embedMetadata, bool embedChapters)
+    public DownloadOptions(bool overwriteExistingFiles, bool useAria, int ariaMaxConnectionsPerServer, int ariaMinSplitSize, string subtitleLangs, string proxyUrl, string cookiesPath, bool embedMetadata, bool embedChapters)
     {
         OverwriteExistingFiles = overwriteExistingFiles;
         UseAria = useAria;
-        CookiesPath = cookiesPath;
         AriaMaxConnectionsPerServer = ariaMaxConnectionsPerServer;
         AriaMinSplitSize = ariaMinSplitSize;
         SubtitleLangs = subtitleLangs;
+        ProxyUrl = "";
+        CookiesPath = cookiesPath;
         EmbedMetadata = embedMetadata;
         EmbedChapters = embedChapters;
     }

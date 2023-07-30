@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-29 22:27-0400\n"
+"POT-Creation-Date: 2023-07-30 19:24-0400\n"
 "PO-Revision-Date: 2023-07-13 21:27+0000\n"
 "Last-Translator: fawaz006 <fawaz27000@hotmail.com>\n"
 "Language-Team: Arabic <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -20,12 +20,12 @@ msgstr ""
 "&& n%100<=10 ? 3 : n%100>=11 ? 4 : 5;\n"
 "X-Generator: Weblate 5.0-dev\n"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:710
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:712
 #, csharp-format
 msgid "\"{0}\" has finished downloading."
 msgstr "انتهى تنزيل «{0}»."
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:710
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:712
 #, csharp-format
 msgid "\"{0}\" has finished with an error!"
 msgstr "انتهى «{0}» بخطأ!"
@@ -55,7 +55,7 @@ msgstr "{0:f1} ك‌بايت\\ث"
 msgid "{0:f1} MiB/s"
 msgstr "{0:f1} م‌بايت\\ث"
 
-#: ../../../Models/DownloadManager.cs:166
+#: ../../../Models/DownloadManager.cs:167
 #, csharp-format
 msgid "{0} download — {1:f1}% ({2})"
 msgid_plural "{0} downloads — {1:f1}% ({2})"
@@ -90,7 +90,7 @@ msgstr "أضف تنزيلًا"
 msgid "Advanced Options"
 msgstr "خيارات متقدمة"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:714
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:716
 msgid "All downloads have finished."
 msgstr "انتهت كل التنزيلات."
 
@@ -107,16 +107,20 @@ msgstr "الأفضل"
 msgid "Close and Stop Downloads?"
 msgstr "أأغلق التطبيق وأوقف التنزيلات؟"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:543
-#, csharp-format
-msgid ""
-"David Lapshin {0}\n"
-"Brage Fuglseth {1}\n"
-"marcin {2}"
+#: ../../../Controllers/MainWindowController.cs:97
+#, fuzzy
+msgid "Contributors on GitHub ❤️"
 msgstr ""
-"ديفد لابشن {0}\n"
-"بريج فقلسث {1}\n"
-"مارسن {2}"
+"نيكولاس لوجوزو {0}\n"
+"مساهمو جت‌هب ❤️ {1}"
+
+#: ../../../Controllers/MainWindowController.cs:100
+msgid "DaPigGuy"
+msgstr ""
+
+#: ../../../Controllers/MainWindowController.cs:101
+msgid "David Lapshin"
+msgstr ""
 
 #: ../../../Models/VideoResolution.cs:55
 msgid "Default"
@@ -126,16 +130,16 @@ msgstr "الافتراضي"
 msgid "Delete Credential?"
 msgstr "هل تريد حذف الاعتمادات؟"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Controls/HistoryDialog.cs:84
+#: ../../../../NickvisionTubeConverter.GNOME/Controls/HistoryDialog.cs:85
 #, fuzzy
 msgid "Download Again"
 msgstr "ينزَّل"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:710
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:712
 msgid "Download Finished"
 msgstr "انتهى التنزيل"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:710
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:712
 msgid "Download Finished With Error"
 msgstr "انتهى التنزيل بخطأ"
 
@@ -143,15 +147,15 @@ msgstr "انتهى التنزيل بخطأ"
 msgid "Download log was copied to clipboard."
 msgstr "نُسخ سجل التنزيل إلى الحافظة."
 
-#: ../../../Models/Download.cs:350
+#: ../../../Models/Download.cs:354
 msgid "Download using aria2 has started"
 msgstr "بدأ التنزيل باستخدام آريا٢"
 
-#: ../../../Models/Download.cs:361
+#: ../../../Models/Download.cs:365
 msgid "Download using ffmpeg has started"
 msgstr "بدأ التنزيل باستخدام ffmpeg"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Program.cs:39
+#: ../../../Controllers/MainWindowController.cs:82
 #: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.desktop.in:5
 #: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.metainfo.xml.in:8
 msgid "Download web video and audio"
@@ -167,7 +171,7 @@ msgstr "ينزَّل"
 msgid "Downloading {0:f2}% ({1})"
 msgstr "ينزَّل {0:f2}% ({1})"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:714
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:716
 msgid "Downloads Finished"
 msgstr "انتهت التنزيلات"
 
@@ -196,6 +200,10 @@ msgstr "يوجد الملفُّ بالفعل ولا يسمح بالكتابة ف
 msgid "File Name"
 msgstr "اسم الملف"
 
+#: ../../../Controllers/MainWindowController.cs:99
+msgid "Fyodor Sobolev"
+msgstr ""
+
 #: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:538
 msgid "GitHub Repo"
 msgstr "مستودع جت‌هب"
@@ -210,7 +218,7 @@ msgstr "حلقة مفاتيح"
 msgid "Keyring has not been unlocked."
 msgstr "لم يتم فتح حلقة المفاتيح."
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:539
+#: ../../../Controllers/MainWindowController.cs:94
 msgid "List of supported sites"
 msgstr "قائمة المواقع المدعومة"
 
@@ -219,7 +227,7 @@ msgstr "قائمة المواقع المدعومة"
 msgid "Login"
 msgstr ""
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:540
+#: ../../../Controllers/MainWindowController.cs:95
 msgid "Matrix Chat"
 msgstr "دردشة ماتركس"
 
@@ -245,41 +253,25 @@ msgstr "اسم"
 msgid "Name (Empty)"
 msgstr "الاسم (فارغ)"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:541
-#, csharp-format
-msgid ""
-"Nicholas Logozzo {0}\n"
-"Contributors on GitHub ❤️ {1}"
+#: ../../../Controllers/MainWindowController.cs:96
+#: ../../../Controllers/MainWindowController.cs:98
+msgid "Nicholas Logozzo"
 msgstr ""
-"نيكولاس لوجوزو {0}\n"
-"مساهمو جت‌هب ❤️ {1}"
-
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:542
-#, csharp-format
-msgid ""
-"Nicholas Logozzo {0}\n"
-"Fyodor Sobolev {1}\n"
-"DaPigGuy {2}"
-msgstr ""
-"نيكولاس لوجوزو {0}\n"
-"فيودور سوبليف {1}\n"
-"دا‌بق‌جاي {2}"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:286
 #: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:300
 msgid "No"
 msgstr "لا"
 
-#: ../../../Controllers/MainWindowController.cs:185
-#: ../../../Controllers/MainWindowController.cs:195
+#: ../../../Controllers/MainWindowController.cs:224
 msgid "No active internet connection"
 msgstr ""
 
-#: ../../../Models/DownloadManager.cs:174
+#: ../../../Models/DownloadManager.cs:175
 msgid "No downloads running"
 msgstr "لا يوجد ما ينزَّل الآن"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Program.cs:38
+#: ../../../Controllers/MainWindowController.cs:82
 #: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.desktop.in:4
 #: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.metainfo.xml.in:6
 msgid "Parabolic"
@@ -296,7 +288,7 @@ msgstr "كلمة السر"
 msgid "Password (Empty)"
 msgstr "كلمة السر (فارغة)"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Controls/HistoryDialog.cs:68
+#: ../../../../NickvisionTubeConverter.GNOME/Controls/HistoryDialog.cs:69
 #, fuzzy
 msgid "Play"
 msgstr "قائمة التشغيل"
@@ -322,8 +314,8 @@ msgstr "موقع الحفظ"
 msgid "Save Folder (Invalid)"
 msgstr "مجلد الحفظ (غير صالح)"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/PreferencesDialog.cs:173
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:257
+#: ../../../../NickvisionTubeConverter.GNOME/Views/PreferencesDialog.cs:176
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:266
 msgid "Select Cookies File"
 msgstr "حدِّد ملف تعريف الارتباط"
 
@@ -345,7 +337,7 @@ msgstr ""
 "لا تزل بعض التنزيلات جاريةً.\n"
 "أمتأكد أنك تريد إغلاق محوِّل المقاطع وإيقاف التنزيلات الجارية؟"
 
-#: ../../../Models/DownloadManager.cs:170
+#: ../../../Models/DownloadManager.cs:171
 msgid "Some downloads finished with errors!"
 msgstr "انتهت بعض التنزيلات بخطأ!"
 
@@ -362,12 +354,12 @@ msgstr "وقت البدء (غير صالح)"
 msgid "Stopped"
 msgstr "أوقف"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/PreferencesDialog.cs:148
+#: ../../../../NickvisionTubeConverter.GNOME/Views/PreferencesDialog.cs:151
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:206
 msgid "Subtitle Languages (Comma-Separated)"
 msgstr "لغات الترجمة (مفصولة بفاصلة)"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/PreferencesDialog.cs:158
+#: ../../../../NickvisionTubeConverter.GNOME/Views/PreferencesDialog.cs:161
 msgid "Subtitle Languages (Invalid)"
 msgstr "لغات الترجمة (غير صالح)"
 
@@ -389,20 +381,20 @@ msgstr ""
 msgid "This action is irreversible. Are you sure you want to delete it?"
 msgstr "هذه الخطوة لا رجوع فيها. هل أنت متأكد أنك تريد حذفه؟"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:544
+#: ../../../Controllers/MainWindowController.cs:102
 msgid "translator-credits"
 msgstr "علي الجشي <ahj696@hotmail.com>"
 
-#: ../../../Controllers/MainWindowController.cs:154
-#: ../../../Controllers/MainWindowController.cs:165
+#: ../../../Controllers/MainWindowController.cs:186
+#: ../../../Controllers/MainWindowController.cs:197
 msgid "Unable to setup dependencies. Please restart the app and try again."
 msgstr "تعذر تثبيت التبعيات. أعد تشغيل التطبيق وحاول مرةً أخرى."
 
-#: ../../../Controllers/MainWindowController.cs:179
+#: ../../../Controllers/MainWindowController.cs:211
 msgid "Unable to unlock keyring. Restart the app to try again."
 msgstr "غير قادر على فتح حلقة المفاتيح. أعد تشغيل التطبيق للمحاولة مرة أخرى."
 
-#: ../../../Controllers/MainWindowController.cs:173
+#: ../../../Controllers/MainWindowController.cs:205
 msgid "Unlock Keyring"
 msgstr "فتح حلقة مفاتيح"
 
@@ -802,10 +794,14 @@ msgstr ""
 "عيِّن كلا الترميزين تجد أحسن النتائج."
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:245
+msgid "Proxy URL"
+msgstr ""
+
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:254
 msgid "Cookies File"
 msgstr "مِلَفّ تعريف الارتباط"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:246
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:255
 msgid ""
 "A cookies file can be provided to yt-dlp to allow downloading media that "
 "requires a login."
@@ -813,15 +809,15 @@ msgstr ""
 "لك أن تدخل ملف تعريف ارتباط في yt-dlp، وعندها تستطيع أن تنزِّل الوسائط التي "
 "تتطلب الولوج."
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:267
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:276
 msgid "Clear Cookies File"
 msgstr "امحُ ملف تعريف الارتباط"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:277
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:286
 msgid "Cookies File Information"
 msgstr "معلومات ملف تعريف الارتباط"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:292
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:301
 msgid ""
 "Cookies can be passed to yt-dlp in the form of TXT files. Export cookies "
 "from your browser using the following extensions (use at your own risk):"
@@ -829,15 +825,15 @@ msgstr ""
 "تدخل ملفات تعريف الارتباط في yt-dlp في تنسيق ملف نص. يمكنك أن تصدِّرها من "
 "متصفحك باستخدام الامتدادات التالية (استخدمها على مسؤوليتك):"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:329
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:338
 msgid "Converter"
 msgstr "المحوِّل"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:332
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:341
 msgid "Disallow Conversions"
 msgstr "امنع التحويلات"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:333
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:342
 msgid ""
 "If enabled, Parabolic will download the appropriate video/audio format for "
 "the selected quality without converting to other formats. (You will be "
@@ -846,15 +842,15 @@ msgstr ""
 "إن مُكِّن هذا فلن يحوَّل المقطع\\الصوت المنزَّل من تنسيق لآخر، بل سوف يكون تنسيقه "
 "حسب الجودة المختارة. (لن تستطيع اختيار تنسيق للملف)"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:348
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:357
 msgid "Embed Metadata"
 msgstr "ضمِّن البيانات الوصفية"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:357
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:366
 msgid "Crop Audio Thumbnails"
 msgstr "قص الصور المصغرة لصوتيات"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:358
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:367
 msgid ""
 "If enabled, Parabolic will automatically turn on the crop thumbnail advanced "
 "option for audio downloads"
@@ -862,7 +858,7 @@ msgstr ""
 "في حالة التمكين، سيقوم Parabolic تلقائيًا بتشغيل الخِيار المتقدم للصور المصغرة "
 "لتنزيلات الصوت"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:374
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:383
 msgid "Embed Chapters"
 msgstr "الفصول المدمجة"
 
@@ -962,6 +958,26 @@ msgstr "— ينزِّل أكثر من تنزيل آنًا"
 #: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.metainfo.xml.in:13
 msgid "— Supports downloading metadata and video subtitles"
 msgstr "— يدعم تنزيل بيانات الوصف وترجمات المقاطع"
+
+#, csharp-format
+#~ msgid ""
+#~ "David Lapshin {0}\n"
+#~ "Brage Fuglseth {1}\n"
+#~ "marcin {2}"
+#~ msgstr ""
+#~ "ديفد لابشن {0}\n"
+#~ "بريج فقلسث {1}\n"
+#~ "مارسن {2}"
+
+#, csharp-format
+#~ msgid ""
+#~ "Nicholas Logozzo {0}\n"
+#~ "Fyodor Sobolev {1}\n"
+#~ "DaPigGuy {2}"
+#~ msgstr ""
+#~ "نيكولاس لوجوزو {0}\n"
+#~ "فيودور سوبليف {1}\n"
+#~ "دا‌بق‌جاي {2}"
 
 #~ msgid "Open"
 #~ msgstr "افتح"

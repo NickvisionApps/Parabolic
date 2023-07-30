@@ -36,6 +36,7 @@ public partial class Program
         _mainWindowController = new MainWindowController();
         _mainWindowController.AppInfo.Changelog =
             @"* Added buttons to select or deselect all items in a playlist
+              * Added a proxy setting in Preferences
               * Parabolic will now check for an active network connection
               * Fixed an issue where docs were not available when running Parabolic via snap
               * Updated translations (Thanks everyone on Weblate!)";
