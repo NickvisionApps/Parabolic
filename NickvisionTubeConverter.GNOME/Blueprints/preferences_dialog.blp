@@ -141,7 +141,7 @@ Adw.PreferencesWindow _root {
 
         [prefix]
         Gtk.Image {
-          icon-name: "preferences-system-network-proxy-symbolic";
+          icon-name: "utilities-terminal-symbolic";
         }
 
         Adw.ActionRow {
@@ -238,6 +238,15 @@ Adw.PreferencesWindow _root {
           };
 
           styles ["flat"]
+        }
+      }
+      
+      Adw.EntryRow _proxyRow {
+        title: _("Proxy URL");
+
+        [prefix]
+        Gtk.Image {
+          icon-name: "preferences-system-network-proxy-symbolic";
         }
       }
 

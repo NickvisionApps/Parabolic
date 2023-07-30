@@ -31,6 +31,7 @@ public partial class PreferencesDialog : Adw.PreferencesWindow
     [Gtk.Connect] private readonly Gtk.SpinButton _ariaMinSplitSizeSpin;
     [Gtk.Connect] private readonly Gtk.Button _ariaMinSplitSizeResetButton;
     [Gtk.Connect] private readonly Adw.EntryRow _subtitleLangsRow;
+    [Gtk.Connect] private readonly Adw.EntryRow _proxyRow;
     [Gtk.Connect] private readonly Adw.EntryRow _cookiesRow;
     [Gtk.Connect] private readonly Gtk.Popover _cookiesPopover;
     [Gtk.Connect] private readonly Gtk.Button _chromeCookiesButton;
@@ -79,6 +80,7 @@ public partial class PreferencesDialog : Adw.PreferencesWindow
         _ariaMinSplitSizeSpin.SetValue(_controller.AriaMinSplitSize);
         _ariaMinSplitSizeResetButton.OnClicked += (sender, e) => _ariaMinSplitSizeSpin.SetValue(20);
         _subtitleLangsRow.SetText(_controller.SubtitleLangs);
+        _proxyRow.SetText(_controller.ProxyUrl);
         if (File.Exists(_controller.CookiesPath))
         {
             _cookiesRow.SetText(_controller.CookiesPath);
@@ -115,6 +117,7 @@ public partial class PreferencesDialog : Adw.PreferencesWindow
         _controller.UseAria = _useAriaRow.GetEnableExpansion();
         _controller.AriaMaxConnectionsPerServer = (int)_ariaMaxConnectionsPerServerSpin.GetValue();
         _controller.AriaMinSplitSize = (int)_ariaMinSplitSizeSpin.GetValue();
+        _controller.ProxyUrl = _proxyRow.GetText();
         _controller.DisallowConversions = _disallowConversionsSwitch.GetActive();
         _controller.EmbedMetadata = _embedMetadataRow.GetEnableExpansion();
         _controller.CropAudioThumbnails = _cropAudioThumbnailSwitch.GetActive();
