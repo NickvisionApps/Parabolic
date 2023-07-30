@@ -87,6 +87,7 @@ public partial class HistoryDialog : Adw.Window
             downloadButton.AddCssClass("flat");
             downloadButton.OnClicked += (sender, e) =>
             {
+                Close();
                 DownloadAgainRequested?.Invoke(this, pair.Key);
             };
             row.AddSuffix(downloadButton);
