@@ -87,7 +87,7 @@ public class MainWindowController : IDisposable
         }
         Aura.Active.SetConfig<Configuration>("config");
         Aura.Active.SetConfig<DownloadHistory>("downloadHistory");
-        AppInfo.Version = "2023.8.0-next";
+        AppInfo.Version = "2023.8.0-rc1";
         AppInfo.SourceRepo = new Uri("https://github.com/NickvisionApps/Parabolic");
         AppInfo.IssueTracker = new Uri("https://github.com/NickvisionApps/Parabolic/issues/new");
         AppInfo.SupportUrl = new Uri("https://github.com/NickvisionApps/Parabolic/discussions");
