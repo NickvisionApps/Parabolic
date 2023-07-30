@@ -74,7 +74,7 @@ public class MainWindowController : IDisposable
     /// <summary>
     /// Constructs a MainWindowController
     /// </summary>
-    public MainWindowController(string[] args)
+    public MainWindowController()
     {
         _disposed = false;
         _pythonThreadState = IntPtr.Zero;
@@ -100,8 +100,6 @@ public class MainWindowController : IDisposable
         AppInfo.Designers[_("DaPigGuy")] = new Uri("https://github.com/DaPigGuy");
         AppInfo.Artists[_("David Lapshin")] = new Uri("https://github.com/daudix-UFO");
         AppInfo.TranslatorCredits = _("translator-credits");
-        var ipc = Aura.Communicate(args);
-        ipc.CommandReceived += (sender, e) => RaiseCommandReceived?.Invoke(this, EventArgs.Empty);
     }
 
     /// <summary>
