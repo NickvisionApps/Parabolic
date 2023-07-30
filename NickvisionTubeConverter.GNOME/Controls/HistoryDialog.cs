@@ -1,3 +1,4 @@
+using Nickvision.Aura;
 using NickvisionTubeConverter.GNOME.Helpers;
 using NickvisionTubeConverter.Shared.Models;
 using System;
@@ -86,6 +87,7 @@ public partial class HistoryDialog : Adw.Window
             downloadButton.AddCssClass("flat");
             downloadButton.OnClicked += (sender, e) =>
             {
+                Close();
                 DownloadAgainRequested?.Invoke(this, pair.Key);
             };
             row.AddSuffix(downloadButton);
@@ -113,7 +115,7 @@ public partial class HistoryDialog : Adw.Window
     private void ClearHistory(Gtk.Button sender, EventArgs e)
     {
         _history.History.Clear();
-        _history.Save();
+        Aura.Active.SaveConfig("downloadHistory");
         //Update UI
         _searchEntry.SetVisible(false);
         _viewStack.SetVisibleChildName("no-history");

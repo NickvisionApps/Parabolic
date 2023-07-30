@@ -1,27 +1,21 @@
-﻿using System;
+﻿using Nickvision.Aura;
+using System;
 using System.Globalization;
 using System.IO;
 using System.Runtime.InteropServices;
-using System.Text.Json;
 
 namespace NickvisionTubeConverter.Shared.Models;
 
 /// <summary>
 /// A model for the configuration of the application
 /// </summary>
-public class Configuration
+public class Configuration : IConfiguration
 {
-    /// <summary>
-    /// The directory of the application configuration
-    /// </summary>
-    public static readonly string ConfigDir = $"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}{Path.DirectorySeparatorChar}Nickvision{Path.DirectorySeparatorChar}{AppInfo.Current.Name}";
-    private static readonly string ConfigPath = $"{ConfigDir}{Path.DirectorySeparatorChar}config.json";
     /// <summary>
     /// The directory to store temporary files
     /// </summary>
-    public static string TempDir = RuntimeInformation.IsOSPlatform(OSPlatform.Windows) ? $"{Environment.GetFolderPath(Environment.SpecialFolder.UserProfile)}{Path.DirectorySeparatorChar}.tc-temp" :  $"{ConfigDir}{Path.DirectorySeparatorChar}temp";
-
-    private static Configuration? _instance;
+    /// <remarks>TODO: https://github.com/NickvisionApps/Aura/issues/5</remarks>
+    public static string TempDir = RuntimeInformation.IsOSPlatform(OSPlatform.Windows) ? $"{Environment.GetFolderPath(Environment.SpecialFolder.UserProfile)}{Path.DirectorySeparatorChar}.tc-temp" :  $"{ConfigLoader.ConfigDir}{Path.DirectorySeparatorChar}temp";
 
     /// <summary>
     /// The preferred theme for the application
@@ -105,19 +99,10 @@ public class Configuration
     public bool NumberTitles { get; set; }
 
     /// <summary>
-    /// Occurs when the configuration is saved to disk
-    /// </summary>
-    public event EventHandler? Saved;
-
-    /// <summary>
     /// Constructs a Configuration
     /// </summary>
     public Configuration()
     {
-        if (!Directory.Exists(ConfigDir))
-        {
-            Directory.CreateDirectory(ConfigDir);
-        }
         Theme = Theme.System;
         CompletedNotificationPreference = NotificationPreference.ForEach;
         RunInBackground = RuntimeInformation.IsOSPlatform(OSPlatform.Windows);
@@ -143,31 +128,5 @@ public class Configuration
     /// <summary>
     /// Gets the singleton object
     /// </summary>
-    internal static Configuration Current
-    {
-        get
-        {
-            if (_instance == null)
-            {
-                try
-                {
-                    _instance = JsonSerializer.Deserialize<Configuration>(File.ReadAllText(ConfigPath)) ?? new Configuration();
-                }
-                catch
-                {
-                    _instance = new Configuration();
-                }
-            }
-            return _instance;
-        }
-    }
-
-    /// <summary>
-    /// Saves the configuration to disk
-    /// </summary>
-    public void Save()
-    {
-        File.WriteAllText(ConfigPath, JsonSerializer.Serialize(this));
-        Saved?.Invoke(this, EventArgs.Empty);
-    }
+    internal static Configuration Current => (Configuration)Aura.Active.ConfigFiles["config"];
 }

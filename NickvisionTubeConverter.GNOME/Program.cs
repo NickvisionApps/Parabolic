@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
-using static NickvisionTubeConverter.Shared.Helpers.Gettext;
+using System.Threading;
 
 namespace NickvisionTubeConverter.GNOME;
 
@@ -23,36 +23,33 @@ public partial class Program
     /// </summary>
     /// <param name="args">string[]</param>
     /// <returns>Return code from Adw.Application.Run()</returns>
-    public static int Main(string[] args) => new Program().Run(args);
+    public static int Main(string[] args) => new Program(args).Run(args);
 
     /// <summary>
     /// Constructs a Program
     /// </summary>
-    public Program()
+    /// <param name="args">Command-line arguments</param>
+    public Program(string[] args)
     {
         _application = Adw.Application.New("org.nickvision.tubeconverter", Gio.ApplicationFlags.FlagsNone);
         _mainWindow = null;
         _mainWindowController = new MainWindowController();
-        _mainWindowController.AppInfo.ID = "org.nickvision.tubeconverter";
-        _mainWindowController.AppInfo.Name = "Nickvision Tube Converter";
-        _mainWindowController.AppInfo.ShortName = _("Parabolic");
-        _mainWindowController.AppInfo.Description = $"{_("Download web video and audio")}.";
-        _mainWindowController.AppInfo.Version = "2023.8.0-next";
-        _mainWindowController.AppInfo.Changelog = "<ul><li>Added buttons to select or deselect all items in a playlist</li><li>Parabolic will now check for an active network connection on startup</li><li>Fixed an issue where docs were not available when running Parabolic via snap</li><li>Updated translations (Thanks everyone on Weblate!)</li></ul>";
-        _mainWindowController.AppInfo.GitHubRepo = new Uri("https://github.com/NickvisionApps/Parabolic");
-        _mainWindowController.AppInfo.IssueTracker = new Uri("https://github.com/NickvisionApps/Parabolic/issues/new");
-        _mainWindowController.AppInfo.SupportUrl = new Uri("https://github.com/NickvisionApps/Parabolic/discussions");
+        _mainWindowController.AppInfo.Changelog =
+            @"* Added buttons to select or deselect all items in a playlist
+              * Parabolic will now check for an active network connection
+              * Fixed an issue where docs were not available when running Parabolic via snap
+              * Updated translations (Thanks everyone on Weblate!)";
         _application.OnActivate += OnActivate;
-        if (File.Exists(Path.GetFullPath(System.IO.Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)) + "/org.nickvision.tubeconverter.gresource"))
+        if (File.Exists(Path.GetFullPath(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)) + "/org.nickvision.tubeconverter.gresource"))
         {
             //Load file from program directory, required for `dotnet run`
-            Gio.Functions.ResourcesRegister(Gio.Functions.ResourceLoad(Path.GetFullPath(System.IO.Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)) + "/org.nickvision.tubeconverter.gresource"));
+            Gio.Functions.ResourcesRegister(Gio.Functions.ResourceLoad(Path.GetFullPath(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)) + "/org.nickvision.tubeconverter.gresource"));
         }
         else
         {
             var prefixes = new List<string> {
-               Directory.GetParent(Directory.GetParent(Path.GetFullPath(System.IO.Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location))).FullName).FullName,
-               Directory.GetParent(Path.GetFullPath(System.IO.Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location))).FullName,
+               Directory.GetParent(Directory.GetParent(Path.GetFullPath(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location))).FullName).FullName,
+               Directory.GetParent(Path.GetFullPath(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location))).FullName,
                "/usr"
             };
             foreach (var prefix in prefixes)
@@ -69,12 +66,18 @@ public partial class Program
     /// <summary>
     /// Runs the program
     /// </summary>
+    /// <param name="args">Command-line arguments</param>
     /// <returns>Return code from Adw.Application.Run()</returns>
     public int Run(string[] args)
     {
         try
         {
-            return _application.RunWithSynchronizationContext();
+            SynchronizationContext.SetSynchronizationContext(new GLib.Internal.MainLoopSynchronizationContext());
+            var argc = args.Length + 1;
+            var argv = new string[argc];
+            argv[0] = "org.nickvision.tubeconverter";
+            args.CopyTo(argv, 1);
+            return _application.Run(argc, argv);
         }
         catch (Exception ex)
         {

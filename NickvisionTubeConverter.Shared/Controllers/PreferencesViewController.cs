@@ -1,4 +1,5 @@
-﻿using NickvisionTubeConverter.Shared.Models;
+﻿using Nickvision.Aura;
+using NickvisionTubeConverter.Shared.Models;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -16,7 +17,12 @@ public class PreferencesViewController
     /// <summary>
     /// Gets the AppInfo object
     /// </summary>
-    public AppInfo AppInfo => AppInfo.Current;
+    public AppInfo AppInfo => Aura.Active.AppInfo;
+
+    /// <summary>
+    /// Occurs when settings are saved
+    /// </summary>
+    public event EventHandler? Saved;
 
     /// <summary>
     /// Constructs a PreferencesViewController
@@ -226,5 +232,9 @@ public class PreferencesViewController
     /// <summary>
     /// Saves the configuration to disk
     /// </summary>
-    public void SaveConfiguration() => Configuration.Current.Save();
+    public void SaveConfiguration()
+    {
+        Aura.Active.SaveConfig("config");
+        Saved?.Invoke(this, EventArgs.Empty);
+    }
 }
