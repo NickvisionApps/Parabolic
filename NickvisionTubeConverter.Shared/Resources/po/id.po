@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-29 22:27-0400\n"
+"POT-Creation-Date: 2023-07-30 19:24-0400\n"
 "PO-Revision-Date: 2023-06-12 02:55+0000\n"
 "Last-Translator: Krindog7337 <igstkrisna2006@gmail.com>\n"
 "Language-Team: Indonesian <https://hosted.weblate.org/projects/nickvision-"
@@ -19,12 +19,12 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Weblate 4.18-dev\n"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:710
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:712
 #, csharp-format
 msgid "\"{0}\" has finished downloading."
 msgstr "\"{0}\" telah selesai diunduh."
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:710
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:712
 #, csharp-format
 msgid "\"{0}\" has finished with an error!"
 msgstr "\"{0}\" telah selesai dengan kesalahan!"
@@ -54,7 +54,7 @@ msgstr "{0:f1} KiB/dtk"
 msgid "{0:f1} MiB/s"
 msgstr "{0:f1} MiB/dtk"
 
-#: ../../../Models/DownloadManager.cs:166
+#: ../../../Models/DownloadManager.cs:167
 #, csharp-format
 msgid "{0} download — {1:f1}% ({2})"
 msgid_plural "{0} downloads — {1:f1}% ({2})"
@@ -79,7 +79,7 @@ msgstr "Tambah Unduhan"
 msgid "Advanced Options"
 msgstr "Opsi Lanjutan"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:714
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:716
 msgid "All downloads have finished."
 msgstr "Semua unduhan selesai."
 
@@ -96,16 +96,20 @@ msgstr "Terbaik"
 msgid "Close and Stop Downloads?"
 msgstr "Tutup dan Hentikan Unduhan?"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:543
-#, csharp-format
-msgid ""
-"David Lapshin {0}\n"
-"Brage Fuglseth {1}\n"
-"marcin {2}"
+#: ../../../Controllers/MainWindowController.cs:97
+#, fuzzy
+msgid "Contributors on GitHub ❤️"
 msgstr ""
-"David Lapshin {0}\n"
-"Brage Fuglseth {1}\n"
-"marcin {2}"
+"Nicholas Logozzo {0}\n"
+"Kontributor di GitHub ❤️ {1}"
+
+#: ../../../Controllers/MainWindowController.cs:100
+msgid "DaPigGuy"
+msgstr ""
+
+#: ../../../Controllers/MainWindowController.cs:101
+msgid "David Lapshin"
+msgstr ""
 
 #: ../../../Models/VideoResolution.cs:55
 msgid "Default"
@@ -115,16 +119,16 @@ msgstr "Bawaan"
 msgid "Delete Credential?"
 msgstr "Hapus Kredensial?"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Controls/HistoryDialog.cs:84
+#: ../../../../NickvisionTubeConverter.GNOME/Controls/HistoryDialog.cs:85
 #, fuzzy
 msgid "Download Again"
 msgstr "Mengunduh"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:710
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:712
 msgid "Download Finished"
 msgstr "Unduhan Selesai"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:710
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:712
 msgid "Download Finished With Error"
 msgstr "Unduh Selesai Dengan Error"
 
@@ -132,16 +136,16 @@ msgstr "Unduh Selesai Dengan Error"
 msgid "Download log was copied to clipboard."
 msgstr "Log unduhan disalin ke papan klip."
 
-#: ../../../Models/Download.cs:350
+#: ../../../Models/Download.cs:354
 msgid "Download using aria2 has started"
 msgstr "Pengunduhan menggunakan aria2 telah dimulai"
 
-#: ../../../Models/Download.cs:361
+#: ../../../Models/Download.cs:365
 #, fuzzy
 msgid "Download using ffmpeg has started"
 msgstr "Pengunduhan menggunakan aria2 telah dimulai"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Program.cs:39
+#: ../../../Controllers/MainWindowController.cs:82
 #: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.desktop.in:5
 #: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.metainfo.xml.in:8
 msgid "Download web video and audio"
@@ -157,7 +161,7 @@ msgstr "Mengunduh"
 msgid "Downloading {0:f2}% ({1})"
 msgstr "Mengunduh {0:f2}% ({1:N0} KiB/s)"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:714
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:716
 msgid "Downloads Finished"
 msgstr "Unduhan Selesai"
 
@@ -188,6 +192,10 @@ msgstr "File sudah ada, dan penimpaan tidak diperbolehkan"
 msgid "File Name"
 msgstr "Nama File"
 
+#: ../../../Controllers/MainWindowController.cs:99
+msgid "Fyodor Sobolev"
+msgstr ""
+
 #: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:538
 msgid "GitHub Repo"
 msgstr "Repo GitHub"
@@ -202,7 +210,7 @@ msgstr "Keyring"
 msgid "Keyring has not been unlocked."
 msgstr "Keyring belum dibuka."
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:539
+#: ../../../Controllers/MainWindowController.cs:94
 msgid "List of supported sites"
 msgstr "Daftar situs yang didukung"
 
@@ -211,7 +219,7 @@ msgstr "Daftar situs yang didukung"
 msgid "Login"
 msgstr ""
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:540
+#: ../../../Controllers/MainWindowController.cs:95
 msgid "Matrix Chat"
 msgstr "Obrolan Matriks"
 
@@ -237,41 +245,25 @@ msgstr "Nama"
 msgid "Name (Empty)"
 msgstr "Nama (Kosong)"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:541
-#, csharp-format
-msgid ""
-"Nicholas Logozzo {0}\n"
-"Contributors on GitHub ❤️ {1}"
+#: ../../../Controllers/MainWindowController.cs:96
+#: ../../../Controllers/MainWindowController.cs:98
+msgid "Nicholas Logozzo"
 msgstr ""
-"Nicholas Logozzo {0}\n"
-"Kontributor di GitHub ❤️ {1}"
-
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:542
-#, csharp-format
-msgid ""
-"Nicholas Logozzo {0}\n"
-"Fyodor Sobolev {1}\n"
-"DaPigGuy {2}"
-msgstr ""
-"Nicholas Logozzo {0}\n"
-"Fyodor Sobolev {1}\n"
-"DaPigGuy {2}"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:286
 #: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:300
 msgid "No"
 msgstr "Tidak"
 
-#: ../../../Controllers/MainWindowController.cs:185
-#: ../../../Controllers/MainWindowController.cs:195
+#: ../../../Controllers/MainWindowController.cs:224
 msgid "No active internet connection"
 msgstr ""
 
-#: ../../../Models/DownloadManager.cs:174
+#: ../../../Models/DownloadManager.cs:175
 msgid "No downloads running"
 msgstr "Tidak ada unduhan yang berjalan"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Program.cs:38
+#: ../../../Controllers/MainWindowController.cs:82
 #: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.desktop.in:4
 #: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.metainfo.xml.in:6
 msgid "Parabolic"
@@ -288,7 +280,7 @@ msgstr "Kata sandi"
 msgid "Password (Empty)"
 msgstr "Kata sandi (Kosong)"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Controls/HistoryDialog.cs:68
+#: ../../../../NickvisionTubeConverter.GNOME/Controls/HistoryDialog.cs:69
 #, fuzzy
 msgid "Play"
 msgstr "Daftar Putar"
@@ -314,8 +306,8 @@ msgstr "Folder Penyimpanan"
 msgid "Save Folder (Invalid)"
 msgstr "Folder Penyimpanan (tidak sah)"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/PreferencesDialog.cs:173
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:257
+#: ../../../../NickvisionTubeConverter.GNOME/Views/PreferencesDialog.cs:176
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:266
 msgid "Select Cookies File"
 msgstr "Pilih File Cookie"
 
@@ -339,7 +331,7 @@ msgstr ""
 "Apakah anda yakin ingin menutup Tube Converter dan menghentikan unduhan yang "
 "sedang berjalan?"
 
-#: ../../../Models/DownloadManager.cs:170
+#: ../../../Models/DownloadManager.cs:171
 msgid "Some downloads finished with errors!"
 msgstr "Beberapa unduhan selesai dengan error!"
 
@@ -357,12 +349,12 @@ msgstr "Folder Penyimpanan (tidak sah)"
 msgid "Stopped"
 msgstr "Dihentikan"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/PreferencesDialog.cs:148
+#: ../../../../NickvisionTubeConverter.GNOME/Views/PreferencesDialog.cs:151
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:206
 msgid "Subtitle Languages (Comma-Separated)"
 msgstr ""
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/PreferencesDialog.cs:158
+#: ../../../../NickvisionTubeConverter.GNOME/Views/PreferencesDialog.cs:161
 #, fuzzy
 msgid "Subtitle Languages (Invalid)"
 msgstr "Folder Penyimpanan (tidak sah)"
@@ -386,24 +378,24 @@ msgstr ""
 msgid "This action is irreversible. Are you sure you want to delete it?"
 msgstr "Aksi ini tidak dapat diurungkan. Apakah anda yakin untuk menghapusnya?"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:544
+#: ../../../Controllers/MainWindowController.cs:102
 msgid "translator-credits"
 msgstr "kredit penerjemah"
 
-#: ../../../Controllers/MainWindowController.cs:154
-#: ../../../Controllers/MainWindowController.cs:165
+#: ../../../Controllers/MainWindowController.cs:186
+#: ../../../Controllers/MainWindowController.cs:197
 msgid "Unable to setup dependencies. Please restart the app and try again."
 msgstr ""
 "Tidak dapat mengunduh dependensi. Silahkan mulai ulang aplikasi dan coba "
 "lagi."
 
-#: ../../../Controllers/MainWindowController.cs:179
+#: ../../../Controllers/MainWindowController.cs:211
 msgid "Unable to unlock keyring. Restart the app to try again."
 msgstr ""
 "Tidak dapat membuka keyring. Silahkan mulai ulang aplikasi untuk mencoba "
 "lagi."
 
-#: ../../../Controllers/MainWindowController.cs:173
+#: ../../../Controllers/MainWindowController.cs:205
 msgid "Unlock Keyring"
 msgstr "Buka Keyring"
 
@@ -803,60 +795,64 @@ msgid ""
 msgstr ""
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:245
+msgid "Proxy URL"
+msgstr ""
+
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:254
 msgid "Cookies File"
 msgstr "File Kuki"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:246
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:255
 msgid ""
 "A cookies file can be provided to yt-dlp to allow downloading media that "
 "requires a login."
 msgstr ""
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:267
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:276
 msgid "Clear Cookies File"
 msgstr ""
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:277
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:286
 #, fuzzy
 msgid "Cookies File Information"
 msgstr "File Kuki"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:292
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:301
 msgid ""
 "Cookies can be passed to yt-dlp in the form of TXT files. Export cookies "
 "from your browser using the following extensions (use at your own risk):"
 msgstr ""
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:329
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:338
 msgid "Converter"
 msgstr "Konverter"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:332
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:341
 msgid "Disallow Conversions"
 msgstr ""
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:333
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:342
 msgid ""
 "If enabled, Parabolic will download the appropriate video/audio format for "
 "the selected quality without converting to other formats. (You will be "
 "unable to select a file format)"
 msgstr ""
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:348
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:357
 msgid "Embed Metadata"
 msgstr "Sematkan Metadata"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:357
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:366
 msgid "Crop Audio Thumbnails"
 msgstr ""
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:358
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:367
 msgid ""
 "If enabled, Parabolic will automatically turn on the crop thumbnail advanced "
 "option for audio downloads"
 msgstr ""
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:374
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:383
 msgid "Embed Chapters"
 msgstr ""
 
@@ -961,6 +957,26 @@ msgstr ""
 #: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.metainfo.xml.in:13
 msgid "— Supports downloading metadata and video subtitles"
 msgstr ""
+
+#, csharp-format
+#~ msgid ""
+#~ "David Lapshin {0}\n"
+#~ "Brage Fuglseth {1}\n"
+#~ "marcin {2}"
+#~ msgstr ""
+#~ "David Lapshin {0}\n"
+#~ "Brage Fuglseth {1}\n"
+#~ "marcin {2}"
+
+#, csharp-format
+#~ msgid ""
+#~ "Nicholas Logozzo {0}\n"
+#~ "Fyodor Sobolev {1}\n"
+#~ "DaPigGuy {2}"
+#~ msgstr ""
+#~ "Nicholas Logozzo {0}\n"
+#~ "Fyodor Sobolev {1}\n"
+#~ "DaPigGuy {2}"
 
 #~ msgid "Open"
 #~ msgstr "Buka"

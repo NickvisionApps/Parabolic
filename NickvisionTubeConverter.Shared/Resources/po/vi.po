@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-29 22:27-0400\n"
+"POT-Creation-Date: 2023-07-30 19:24-0400\n"
 "PO-Revision-Date: 2023-06-14 01:21+0000\n"
 "Last-Translator: Khải <hvksmr1996@gmail.com>\n"
 "Language-Team: Vietnamese <https://hosted.weblate.org/projects/nickvision-"
@@ -19,12 +19,12 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Weblate 4.18-dev\n"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:710
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:712
 #, csharp-format
 msgid "\"{0}\" has finished downloading."
 msgstr "\"{0}\" đã được hoàn thành."
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:710
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:712
 #, csharp-format
 msgid "\"{0}\" has finished with an error!"
 msgstr "\"{0}\" đã kết thúc với lỗi!"
@@ -54,7 +54,7 @@ msgstr "{0:f1} KiB/s"
 msgid "{0:f1} MiB/s"
 msgstr "{0:f1} MiB/s"
 
-#: ../../../Models/DownloadManager.cs:166
+#: ../../../Models/DownloadManager.cs:167
 #, csharp-format
 msgid "{0} download — {1:f1}% ({2})"
 msgid_plural "{0} downloads — {1:f1}% ({2})"
@@ -79,7 +79,7 @@ msgstr "Thêm Tải xuống"
 msgid "Advanced Options"
 msgstr "Tùy chọn Nâng cao"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:714
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:716
 msgid "All downloads have finished."
 msgstr "Tất cả tải xuống đều đã hoàn thành."
 
@@ -96,12 +96,16 @@ msgstr "Tốt nhất"
 msgid "Close and Stop Downloads?"
 msgstr "Đóng và Dừng tất cả các quá trình tải xuống?"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:543
-#, csharp-format
-msgid ""
-"David Lapshin {0}\n"
-"Brage Fuglseth {1}\n"
-"marcin {2}"
+#: ../../../Controllers/MainWindowController.cs:97
+msgid "Contributors on GitHub ❤️"
+msgstr ""
+
+#: ../../../Controllers/MainWindowController.cs:100
+msgid "DaPigGuy"
+msgstr ""
+
+#: ../../../Controllers/MainWindowController.cs:101
+msgid "David Lapshin"
 msgstr ""
 
 #: ../../../Models/VideoResolution.cs:55
@@ -112,16 +116,16 @@ msgstr "Mặc định"
 msgid "Delete Credential?"
 msgstr "Xóa bỏ Chứng chỉ?"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Controls/HistoryDialog.cs:84
+#: ../../../../NickvisionTubeConverter.GNOME/Controls/HistoryDialog.cs:85
 #, fuzzy
 msgid "Download Again"
 msgstr "Đang tải xuống"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:710
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:712
 msgid "Download Finished"
 msgstr "Hoàn thành Tải xuống"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:710
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:712
 msgid "Download Finished With Error"
 msgstr "Tải xuống kết thúc với lỗi"
 
@@ -129,15 +133,15 @@ msgstr "Tải xuống kết thúc với lỗi"
 msgid "Download log was copied to clipboard."
 msgstr "Nhật ký tải xuống đã được lưu vào bảng ghi tạm."
 
-#: ../../../Models/Download.cs:350
+#: ../../../Models/Download.cs:354
 msgid "Download using aria2 has started"
 msgstr "Tải xuống bằng aria2 đã bắt đầu"
 
-#: ../../../Models/Download.cs:361
+#: ../../../Models/Download.cs:365
 msgid "Download using ffmpeg has started"
 msgstr "Tải xuống bằng ffmpeg đã bắt đầu"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Program.cs:39
+#: ../../../Controllers/MainWindowController.cs:82
 #: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.desktop.in:5
 #: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.metainfo.xml.in:8
 msgid "Download web video and audio"
@@ -153,7 +157,7 @@ msgstr "Đang tải xuống"
 msgid "Downloading {0:f2}% ({1})"
 msgstr "Đang tải về {0:f2}% ({1:N0} KiB/s)"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:714
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:716
 msgid "Downloads Finished"
 msgstr "Hoàn thành Tải xuống"
 
@@ -183,6 +187,10 @@ msgstr "Tệp đã tồn tại, ghi đè không được cho phép"
 msgid "File Name"
 msgstr "Tên Tệp"
 
+#: ../../../Controllers/MainWindowController.cs:99
+msgid "Fyodor Sobolev"
+msgstr ""
+
 #: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:538
 msgid "GitHub Repo"
 msgstr "GitHub Repo"
@@ -197,7 +205,7 @@ msgstr "Keyring"
 msgid "Keyring has not been unlocked."
 msgstr "Keyring chưa được mở khóa."
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:539
+#: ../../../Controllers/MainWindowController.cs:94
 msgid "List of supported sites"
 msgstr "Danh sách các trang được hỗ trợ"
 
@@ -206,7 +214,7 @@ msgstr "Danh sách các trang được hỗ trợ"
 msgid "Login"
 msgstr ""
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:540
+#: ../../../Controllers/MainWindowController.cs:95
 msgid "Matrix Chat"
 msgstr ""
 
@@ -232,19 +240,9 @@ msgstr "Tên"
 msgid "Name (Empty)"
 msgstr "Tên (Trống)"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:541
-#, csharp-format
-msgid ""
-"Nicholas Logozzo {0}\n"
-"Contributors on GitHub ❤️ {1}"
-msgstr ""
-
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:542
-#, csharp-format
-msgid ""
-"Nicholas Logozzo {0}\n"
-"Fyodor Sobolev {1}\n"
-"DaPigGuy {2}"
+#: ../../../Controllers/MainWindowController.cs:96
+#: ../../../Controllers/MainWindowController.cs:98
+msgid "Nicholas Logozzo"
 msgstr ""
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:286
@@ -252,16 +250,15 @@ msgstr ""
 msgid "No"
 msgstr "Không"
 
-#: ../../../Controllers/MainWindowController.cs:185
-#: ../../../Controllers/MainWindowController.cs:195
+#: ../../../Controllers/MainWindowController.cs:224
 msgid "No active internet connection"
 msgstr ""
 
-#: ../../../Models/DownloadManager.cs:174
+#: ../../../Models/DownloadManager.cs:175
 msgid "No downloads running"
 msgstr "Không có tải xuống nào đang chạy"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Program.cs:38
+#: ../../../Controllers/MainWindowController.cs:82
 #: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.desktop.in:4
 #: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.metainfo.xml.in:6
 msgid "Parabolic"
@@ -278,7 +275,7 @@ msgstr "Mật khẩu"
 msgid "Password (Empty)"
 msgstr "Mật khẩu (Trống)"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Controls/HistoryDialog.cs:68
+#: ../../../../NickvisionTubeConverter.GNOME/Controls/HistoryDialog.cs:69
 #, fuzzy
 msgid "Play"
 msgstr "Danh sách phát"
@@ -304,8 +301,8 @@ msgstr "Thư mục Lưu"
 msgid "Save Folder (Invalid)"
 msgstr "Thư mục Lưu (Không hợp lệ)"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/PreferencesDialog.cs:173
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:257
+#: ../../../../NickvisionTubeConverter.GNOME/Views/PreferencesDialog.cs:176
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:266
 msgid "Select Cookies File"
 msgstr "Chọn Tệp Cookie"
 
@@ -328,7 +325,7 @@ msgstr ""
 "Một số quá trình tải xuống chưa hoàn tất.\n"
 "Bạn có chắc bạn muốn đóng Tube Converter và hủy các quá trình đó không?"
 
-#: ../../../Models/DownloadManager.cs:170
+#: ../../../Models/DownloadManager.cs:171
 msgid "Some downloads finished with errors!"
 msgstr "Một số tải xuống kết thúc với lỗi!"
 
@@ -345,12 +342,12 @@ msgstr "Thời điểm Bắt đầu (Không hợp lệ)"
 msgid "Stopped"
 msgstr "Đã dừng"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/PreferencesDialog.cs:148
+#: ../../../../NickvisionTubeConverter.GNOME/Views/PreferencesDialog.cs:151
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:206
 msgid "Subtitle Languages (Comma-Separated)"
 msgstr ""
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/PreferencesDialog.cs:158
+#: ../../../../NickvisionTubeConverter.GNOME/Views/PreferencesDialog.cs:161
 #, fuzzy
 msgid "Subtitle Languages (Invalid)"
 msgstr "Thời điểm Bắt đầu (Không hợp lệ)"
@@ -374,22 +371,22 @@ msgstr ""
 msgid "This action is irreversible. Are you sure you want to delete it?"
 msgstr "Hành động này không thể đảo ngược. Bạn chắc chắn muốn xóa nó chứ?"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:544
+#: ../../../Controllers/MainWindowController.cs:102
 msgid "translator-credits"
 msgstr ""
 
-#: ../../../Controllers/MainWindowController.cs:154
-#: ../../../Controllers/MainWindowController.cs:165
+#: ../../../Controllers/MainWindowController.cs:186
+#: ../../../Controllers/MainWindowController.cs:197
 msgid "Unable to setup dependencies. Please restart the app and try again."
 msgstr ""
 "Không thể tải xuống gói phụ thuộc. Vui lòng khởi động lại ứng dụng và thử "
 "lại."
 
-#: ../../../Controllers/MainWindowController.cs:179
+#: ../../../Controllers/MainWindowController.cs:211
 msgid "Unable to unlock keyring. Restart the app to try again."
 msgstr "Không thể mở khóa keyring. Vui lòng khởi động lại ứng dụng để thử lại."
 
-#: ../../../Controllers/MainWindowController.cs:173
+#: ../../../Controllers/MainWindowController.cs:205
 msgid "Unlock Keyring"
 msgstr "Mở khóa Keyring"
 
@@ -788,10 +785,14 @@ msgid ""
 msgstr ""
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:245
+msgid "Proxy URL"
+msgstr ""
+
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:254
 msgid "Cookies File"
 msgstr "Tệp Cookie"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:246
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:255
 msgid ""
 "A cookies file can be provided to yt-dlp to allow downloading media that "
 "requires a login."
@@ -799,16 +800,16 @@ msgstr ""
 "Một tệp cookie có thể được cung cấp cho yt-dlp để tải những phương tiện "
 "truyền thông có yêu cầu đăng nhập."
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:267
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:276
 msgid "Clear Cookies File"
 msgstr "Xóa Tệp Cookie"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:277
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:286
 #, fuzzy
 msgid "Cookies File Information"
 msgstr "Tệp Cookie"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:292
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:301
 msgid ""
 "Cookies can be passed to yt-dlp in the form of TXT files. Export cookies "
 "from your browser using the following extensions (use at your own risk):"
@@ -816,15 +817,15 @@ msgstr ""
 "Cookie có thể được chuyển cho yt-dlp dưới dạng tệp TXT. Xuất Cookie từ trình "
 "duyệt bằng những phần mở rộng sau (bạn tự chịu mọi rủi ro):"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:329
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:338
 msgid "Converter"
 msgstr "Bộ chuyển đổi"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:332
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:341
 msgid "Disallow Conversions"
 msgstr "Không cho phép Chuyển đổi"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:333
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:342
 #, fuzzy
 msgid ""
 "If enabled, Parabolic will download the appropriate video/audio format for "
@@ -835,15 +836,15 @@ msgstr ""
 "chất lượng được chọn mà không chuyển đổi sang định dạng khác. (Bạn sẽ không "
 "thể chọn định dạng của tệp)"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:348
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:357
 msgid "Embed Metadata"
 msgstr "Nhúng Siêu dữ liệu"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:357
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:366
 msgid "Crop Audio Thumbnails"
 msgstr "Cắt Thumbnail Âm thanh"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:358
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:367
 #, fuzzy
 msgid ""
 "If enabled, Parabolic will automatically turn on the crop thumbnail advanced "
@@ -852,7 +853,7 @@ msgstr ""
 "Nếu bật, Tube Converter sẽ tự động bật các lựa chọn cắt thumbnail nâng cao "
 "dành cho âm thanh được tải xuống"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:374
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:383
 msgid "Embed Chapters"
 msgstr "Nhúng Chương"
 
