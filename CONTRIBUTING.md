@@ -163,7 +163,7 @@ You may also make your changes via any code editor and use [`flatpak-builder`](h
 You may also build the app manually without using flatpak. List of dependencies:
 - dotnet >=7.0
 - GTK >=4.10
-- libadwaita >=1.2
+- libadwaita >=1.3
 - python3 >=3.7
 - python3-psutil
 - yt-dlp (as python module, standalone binary won't work)
