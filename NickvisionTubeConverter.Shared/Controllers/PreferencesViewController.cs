@@ -152,6 +152,16 @@ public class PreferencesViewController
             Configuration.Current.SubtitleLangs = value;
         }
     }
+    
+    /// <summary>
+    /// The url of the proxy server to use
+    /// </summary>
+    public string ProxyUrl
+    {
+        get => Configuration.Current.ProxyUrl;
+
+        set => Configuration.Current.ProxyUrl = value;
+    }
 
     /// <summary>
     /// The path of the cookies file to use for yt-dlp

@@ -336,6 +336,10 @@ public class Download
                         paths["home"] = new PyString($"{SaveFolder}{Path.DirectorySeparatorChar}");
                         paths["temp"] = new PyString(_tempDownloadPath);
                         _ytOpt.Add("paths", paths);
+                        if (!string.IsNullOrEmpty(options.ProxyUrl))
+                        {
+                            _ytOpt.Add("proxy", new PyString(options.ProxyUrl));
+                        }
                         if (File.Exists(options.CookiesPath))
                         {
                             _ytOpt.Add("cookiefile", new PyString(options.CookiesPath));

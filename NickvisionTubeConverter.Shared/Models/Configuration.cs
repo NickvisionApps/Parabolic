@@ -62,6 +62,10 @@ public class Configuration : IConfiguration
     /// </summary>
     public string SubtitleLangs { get; set; }
     /// <summary>
+    /// The url of the proxy server to use
+    /// </summary>
+    public string ProxyUrl { get; set; }
+    /// <summary>
     /// The path of the cookies file to use for yt-dlp
     /// </summary>
     public string CookiesPath { get; set; }
@@ -114,6 +118,7 @@ public class Configuration : IConfiguration
         AriaMaxConnectionsPerServer = 16;
         AriaMinSplitSize = 20;
         SubtitleLangs = $"{CultureInfo.CurrentCulture.TwoLetterISOLanguageName},{CultureInfo.CurrentCulture.ThreeLetterISOLanguageName}";
+        ProxyUrl = "";
         CookiesPath = "";
         DisallowConversions = false;
         EmbedMetadata = true;
