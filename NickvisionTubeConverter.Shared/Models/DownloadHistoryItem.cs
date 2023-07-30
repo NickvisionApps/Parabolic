@@ -2,9 +2,21 @@ using System;
 
 namespace NickvisionTubeConverter.Shared.Models;
 
-public struct DownloadHistoryItem
+/// <summary>
+/// Item in download history
+/// </summary>
+public class DownloadHistoryItem
 {
-    public string Title;
-    public DateTime Date;
-    public string Path;
+    /// <summary>
+    /// Media title
+    /// </summary>
+    public string Title { get; set; }
+    /// <summary>
+    /// Date and time when download was added
+    /// </summary>
+    public DateTime Date { get; set; }
+    /// <summary>
+    /// Path to the downloaded file
+    /// </summary>
+    public string Path { get; set; }
 }
