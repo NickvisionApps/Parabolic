@@ -51,9 +51,9 @@ public class MediaUrlInfo
     /// <param name="url">The media url string</param>
     /// <param name="username">A username for the website (if available)</param>
     /// <param name="password">A password for the website (if available)</param>
-    /// <param name="proxyUrl">The url of the proxy server to use</param>
+    /// <param name="proxyUrl">A url of a proxy server (if available)</param>
     /// <returns>A MediaUrlInfo object. Null if url invalid</returns>
-    public static async Task<MediaUrlInfo?> GetAsync(string url, string? username, string? password, string proxyUrl)
+    public static async Task<MediaUrlInfo?> GetAsync(string url, string? username, string? password, string? proxyUrl)
     {
         var pathToOutput = $"{Configuration.TempDir}{Path.DirectorySeparatorChar}output.log";
         dynamic outFile = PythonHelpers.SetConsoleOutputFilePath(pathToOutput);
