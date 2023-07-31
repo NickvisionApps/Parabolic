@@ -61,7 +61,7 @@ public class DownloadOptions
         AriaMaxConnectionsPerServer = ariaMaxConnectionsPerServer;
         AriaMinSplitSize = ariaMinSplitSize;
         SubtitleLangs = subtitleLangs;
-        ProxyUrl = "";
+        ProxyUrl = proxyUrl;
         CookiesPath = cookiesPath;
         EmbedMetadata = embedMetadata;
         EmbedChapters = embedChapters;
