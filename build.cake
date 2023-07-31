@@ -96,8 +96,8 @@ Task("Install")
 Task("FlatpakSourcesGen")
     .Does(() =>
 {
-    StartProcess("flatpak-dotnet-generator.py", new ProcessSettings {
-        Arguments = $"{projectName}.{projectSuffix}{sep}nuget-sources.json {projectName}.{projectSuffix}{sep}{projectName}.{projectSuffix}.csproj"
+    StartProcess("flatpak-dotnet-generator", new ProcessSettings {
+        Arguments = $"{projectName}.{projectSuffix}{sep}{projectName}.{projectSuffix}.csproj -o {projectName}.{projectSuffix}{sep}nuget-sources.json -a Cake.Tool Cake.FileHelpers"
     });
 });
 
