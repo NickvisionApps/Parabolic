@@ -90,15 +90,6 @@ public class AddDownloadDialogController
     /// Whether to turn on crop thumbnail for audio downloads
     /// </summary>
     public bool CropAudioThumbnails => Configuration.Current.CropAudioThumbnails;
-    /// <summary>
-    /// Limit characters in filenames to Windows supported
-    /// </summary>
-    public bool LimitCharacters
-    {
-        get => Configuration.Current.LimitCharacters;
-
-        set => Configuration.Current.LimitCharacters = value;
-    }
 
     /// <summary>
     /// Constructs a AddDownloadDialogController
@@ -129,6 +120,16 @@ public class AddDownloadDialogController
             return -1;
         }
     }
+    
+    /// <summary>
+    /// Limit characters in filenames to Windows supported
+    /// </summary>
+    public bool LimitCharacters
+    {
+        get => Configuration.Current.LimitCharacters;
+
+        set => Configuration.Current.LimitCharacters = value;
+    }
 
     /// <summary>
     /// Gets a list of names of credentials in the keyring
@@ -154,7 +155,7 @@ public class AddDownloadDialogController
     /// <returns>Whether media info was loaded or not</returns>
     public async Task<bool> SearchUrlAsync(string mediaUrl, string? username, string? password)
     {
-        _mediaUrlInfo = await MediaUrlInfo.GetAsync(mediaUrl, username, password);
+        _mediaUrlInfo = await MediaUrlInfo.GetAsync(mediaUrl, username, password, Configuration.Current.ProxyUrl);
         if(_mediaUrlInfo != null)
         {
             foreach (var resolution in _mediaUrlInfo.VideoResolutions)
