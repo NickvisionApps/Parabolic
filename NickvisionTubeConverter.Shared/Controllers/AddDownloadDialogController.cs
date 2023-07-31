@@ -79,6 +79,10 @@ public class AddDownloadDialogController
     /// </summary>
     public uint CurrentSpeedLimit => Configuration.Current.SpeedLimit;
     /// <summary>
+    /// The url of the proxy server to use
+    /// </summary>
+    public string ProxyUrl => Configuration.Current.ProxyUrl;
+    /// <summary>
     /// Whether or not to disallow converting of formats
     /// </summary>
     public bool DisallowConversions => Configuration.Current.DisallowConversions;
@@ -154,7 +158,7 @@ public class AddDownloadDialogController
     /// <returns>Whether media info was loaded or not</returns>
     public async Task<bool> SearchUrlAsync(string mediaUrl, string? username, string? password)
     {
-        _mediaUrlInfo = await MediaUrlInfo.GetAsync(mediaUrl, username, password);
+        _mediaUrlInfo = await MediaUrlInfo.GetAsync(mediaUrl, username, password, ProxyUrl);
         if(_mediaUrlInfo != null)
         {
             foreach (var resolution in _mediaUrlInfo.VideoResolutions)

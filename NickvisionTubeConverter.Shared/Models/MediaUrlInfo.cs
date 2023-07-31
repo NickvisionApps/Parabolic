@@ -51,8 +51,9 @@ public class MediaUrlInfo
     /// <param name="url">The media url string</param>
     /// <param name="username">A username for the website (if available)</param>
     /// <param name="password">A password for the website (if available)</param>
+    /// <param name="proxyUrl">The url of the proxy server to use</param>
     /// <returns>A MediaUrlInfo object. Null if url invalid</returns>
-    public static async Task<MediaUrlInfo?> GetAsync(string url, string? username, string? password)
+    public static async Task<MediaUrlInfo?> GetAsync(string url, string? username, string? password, string proxyUrl)
     {
         var pathToOutput = $"{Configuration.TempDir}{Path.DirectorySeparatorChar}output.log";
         dynamic outFile = PythonHelpers.SetConsoleOutputFilePath(pathToOutput);
@@ -71,6 +72,10 @@ public class MediaUrlInfo
                         { "ignoreerrors", true },
                         { "extract_flat", "in_playlist" }
                     };
+                    if (!string.IsNullOrEmpty(proxyUrl))
+                    {
+                        ytOpt.Add("proxy", new PyString(proxyUrl));
+                    }
                     if(!string.IsNullOrEmpty(username))
                     {
                         ytOpt.Add("username", username);
