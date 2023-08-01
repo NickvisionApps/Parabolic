@@ -15,80 +15,80 @@
 </info>
 
 <title>Downloader</title>
-<p>This page explains all options for configuring the Downloader in Preferences in <app>Parabolic</app>.</p>
+<p>Diese Seite erklärt alle Optionen zur Konfiguration des Downloaders in den Einstellungen in <app>Parabolic</app>.</p>
 
 <terms>
 	<item>
-		<title>Maximum Number of Active Downloads</title>
-		<p>The number of active downloads allowed to run at a time. Must be an integer value between 1 and 10.</p>
-        <p>If the max number of active downloads is reached, Parabolic will place new downloads in a queue until more downloads are able to be run.</p>
+		<title>Maximale Anzahl aktiver Downloads</title>
+		<p>Die Anzahl der aktiven Downloads, die gleichzeitig ausgeführt werden dürfen. Muss ein ganzzahliger Wert zwischen 1 und 10 sein.</p>
+        <p>Wenn die maximale Anzahl aktiver Downloads erreicht ist, platziert Parabolic neue Downloads in einer Warteschlange, bis weitere Downloads ausgeführt werden können.</p>
 		<note style="advanced">
-			<p>Default: 5</p>
+			<p>Standardeinstellung: 5</p>
 		</note>
     </item>
     <item>
-        <title>Overwrite Existing Files</title>
-        <p>If enabled, Parabolic will overwrite existing files.</p>
-        <p>For example, if a file named <code>movie.mp4</code> exists in the download folder, and a new download is created named <code>movie</code>, <code>movie.mp4</code> will be overwritten with the new download's content.</p>
+        <title>Vorhandene Dateien überschreiben</title>
+        <p>Wenn diese Option aktiviert ist, überschreibt Parabolic vorhandene Dateien.</p>
+        <p>Wenn zum Beispiel eine Datei mit dem Namen <code>movie.mp4</code> im Download-Ordner vorhanden ist und ein neuer Download mit dem Namen <code>movie</code> erstellt wird, wird <code>movie.mp4</code> mit dem Inhalt des neuen Downloads überschrieben.</p>
 		<note style="advanced">
-			<p>Default: On</p>
+			<p>Standardeinstellung: Ein</p>
 		</note>
     </item>
     <item>
         <title>Geschwindigkeitsbegrenzung</title>
-        <p>A limit, in Ki/s, that is applied to downloads only if they have the advanced option <code>Speed Limit</code> enabled. Must be an integer value between 512 and 10240.</p>
+        <p>Ein Limit in Ki/s, das nur dann auf Downloads angewendet wird, wenn die erweiterte Option <code>Geschwindigkeitsbegrenzung</code> aktiviert ist. Muss ein ganzzahliger Wert zwischen 512 und 10240 sein.</p>
 		<note style="advanced">
-			<p>Default: 1024</p>
+			<p>Standardeinstellung: 1024</p>
 		</note>
     </item>
     <item>
         <title>Benutze aria2</title>
-        <p>If enabled, Parabolic will use aria2c to download media. Although using aria2c can improve download speed, download progress will not be displayed in the UI.</p>
+        <p>Wenn diese Option aktiviert ist, verwendet Parabolic aria2c zum Herunterladen von Medien. Die Verwendung von aria2c kann die Download-Geschwindigkeit verbessern, jedoch wird der Download-Fortschritt nicht in der Benutzeroberfläche angezeigt.</p>
 		<note style="advanced">
-			<p>Default: Off</p>
+			<p>Standardeinstellung: Aus</p>
 		</note>
     </item>
     <item>
-        <title>Maximum Connections Per Server</title>
-        <p>This option only applies when using aria2 is enabled. This option is the same as the <code>-x</code> flag passed to aria2c.</p>
-        <p>The maximum number of connection that can be used per server. Must be an integer value between 1 and 32.</p>
+        <title>Maximale Verbindungen pro Server</title>
+        <p>Diese Option gilt nur, wenn die Verwendung von aria2 aktiviert ist. Sie entspricht dem <code>-x</code> Flag, das an aria2c übergeben wird.</p>
+        <p>Die maximale Anzahl der Verbindungen, die pro Server verwendet werden können. Muss ein ganzzahliger Wert zwischen 1 und 32 sein.</p>
 		<note style="advanced">
-			<p>Default: 16</p>
+			<p>Standardeinstellung: 16</p>
 		</note>
     </item>
     <item>
-        <title>Minimum Split Size</title>
-        <p>This option only applies when using aria2 is enabled. This option is the same as the <code>-k</code> flag passed to aria2c.</p>
-        <p>The minimum size, in MiB, of which to split a file. Must be an integer value between 1 and 1024.</p>
+        <title>Minimale Teilungsgröße</title>
+        <p>Diese Option gilt nur, wenn die Verwendung von aria2 aktiviert ist. Sie entspricht dem <code>-k</code> Flag, das an aria2c übergeben wird.</p>
+        <p>Die Mindestgröße in MiB, ab der eine Datei geteilt werden soll. Muss ein ganzzahliger Wert zwischen 1 und 1024 sein.</p>
 		<note style="advanced">
-			<p>Default: 20</p>
+			<p>Standardeinstellung: 20</p>
 		</note>
     </item>
     <item>
-        <title>Subtitles Languages</title>
-        <p>A comma-separated list of two-letter and three-letter language codes to use when selecting languages of subtitles to download. Only applies when a valid <code>Subtitle</code> format is selected in a download.</p>
+        <title>Untertitelsprachen</title>
+        <p>Eine durch Kommata getrennte Liste von Sprachcodes mit zwei oder drei Buchstaben. Die Liste wird bei der Sprachauswahl der herunterzuladenden Untertitel verwendet. Gilt nur, wenn in einem Download ein gültiges Untertitelformat ausgewählt ist.</p>
         <note>
-            <p>Some sites use two-letter language codes, whereas others use three-letter. For example, <code>en</code> and <code>eng</code> are both used for English. Please specify both two-letter and three-letter codes for your languages for the best results.</p>
+            <p>Manche Webseiten verwenden Sprachcodes mit zwei Buchstaben, andere mit drei Buchstaben. Beispielsweise werden <code>en</code> und <code>eng</code> beide für Englisch verwendet. Um die besten Ergebnisse zu erzielen, gib bitte sowohl zweistellige als auch dreistellige Codes an.</p>
         </note>
 		<note style="advanced">
-			<p>Default: Your culture's two-letter and three-letter language code. For example, on an en-US system the default would be <code>en,eng</code></p>
+			<p>Standardeinstellung: Der zweistellige und dreistellige Sprachcode deiner Kultur. Auf einem US-amerkanischen System wäre das beispielsweise <code>en,eng</code>.</p>
 		</note>
     </item>
     <item>
-        <title>Proxy URL</title>
-        <p>The url of the proxy server to use.</p>
+        <title>Proxy-URL</title>
+        <p>Die URL des zu verwendenden Proxyservers.</p>
     </item>
     <item>
         <title>Cookie-Datei</title>
-        <p>A .txt file of cookies to pass to yt-dlp when downloading. This may be useful when downloading media that requires a login, for example: private YouTube videos.</p>
-        <p>Use one of the following extensions for getting a cookies file from your browser:</p>
+        <p>Eine .txt-Datei mit Cookies, die beim Herunterladen an yt-dlp übergeben werden. Das kann nützlich sein, wenn du Medien herunterlädst, die eine Anmeldung erfordern, z. B. private YouTube-Videos.</p>
+        <p>Du kannst eine der folgenden Erweiterungen nutzen, um von deinem Browser eine Cookie-Datei zu erhalten:</p>
         <p>Chrome: <code>https://chrome.google.com/webstore/detail/get-cookiestxt-locally/cclelndahbckbenkjhflpdbgdldlbecc</code></p>
         <p>Firefox: <code>https://addons.mozilla.org/en-US/firefox/addon/cookies-txt/</code></p>
         <note>
-            <p>Use these extensions at your own risk.</p>
+            <p>Die Nutzung dieser Erweiterungen erfolgt auf eigene Gefahr.</p>
         </note>
 		<note style="advanced">
-			<p>Default: No File Selected</p>
+			<p>Standardeinstellung: Keine Datei ausgewählt</p>
 		</note>
     </item>
 </terms>
