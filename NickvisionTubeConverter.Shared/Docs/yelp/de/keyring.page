@@ -15,36 +15,36 @@
 </info>
 
 <title>Keyring</title>
-<p>This page explains all options for using the Keyring in <app>Parabolic</app>.</p>
+<p>Diese Seite erklärt alle Optionen zur Verwendung des Keyrings in <app>Parabolic</app>.</p>
 
 <terms>
 	<item>
 		<title>Backend</title>
-        <p>The Keyring feature is backed by the <code>Nickvision.Keyring</code> library.</p>
-        <p>This library uses SQLCipher to securley store credentials in a platform independent manner.</p>
+        <p>Die Keyring-Funktion wird von der <code>Nickvision.Keyring</code> Bibliothek bereitgestellt.</p>
+        <p>Diese Bibliothek nutzt SQLCipher um Anmeldedaten sicher und plattformunabhängig zu speichern.</p>
     </item>
     <item>
-        <title>Enabling The Keyring</title>
-        <p>When the Keyring is enabled, the user will be asked to enter a password to encrypt the Keyring.</p>
-        <p>There is no way to recover the Keyring password if lost.</p>
-        <p>This password will be used to unlock the Keyring in the future.</p>
+        <title>Aktivieren des Keyrings</title>
+        <p>Wenn der Keyring aktiviert ist, wird der Benutzer nach einem Passwort gefragt, um den Keyring zu verschlüsseln.</p>
+        <p>Es gibt keine Möglichkeit, das Keyring-Passwort wiederherzustellen, wenn es verloren geht.</p>
+        <p>Das eingegebene Passwort wird in Zukunft verwendet um den Keyring zu entsperren.</p>
         <note style="advanced">
-            <p>If the Keyring password is lost, the user will be unable to use this feature unless the Keyring database file is deleted.</p>
-            <p>The Keyring file is stored in <code>$CONFIG/Nickvision/Nickvision Parabolic/tubeconverter.nring</code></p>
+            <p>Wenn das Keyring-Passwort verloren geht, kann der Benutzer diese Funktion nicht weiter verwenden, es sei denn, die Keyring-Datenbankdatei wird gelöscht.</p>
+            <p>Die Keyring-Datenbankdatei befindet sich unter <code>$CONFIG/Nickvision/Nickvision Parabolic/tubeconverter.nring</code></p>
         </note>
     </item>
     <item>
-		<title>Disabling The Keyring</title>
-        <p>When the Keyring is disabled, the backing <code>nring</code> database is destroyed and all credentials stored are erased.</p>
-        <p>If the Keyring is re-enabled, a brand new database file will be created and the user will be prompted to enter a password again.</p>
+		<title>Deaktivieren des Keyrings</title>
+        <p>Wenn der Keyring deaktiviert wird, wird die <code>nring</code>-Datenbank zerstört und alle gespeicherten Anmeldedaten werden gelöscht.</p>
+        <p>Wird der Keyring anschließend wieder aktiviert, wird eine neue Datenbankdatei erstellt und der Benutzer wird erneut aufgefordert, ein Passwort einzugeben.</p>
     </item>
     <item>
-		<title>Storing a Credential</title>
-        <p>Here are the fields that can be stored in a credential:</p>
-        <p><code>Name</code>: The name of the credential</p>
-        <p><code>URL</code> (optional): The URL of the credential</p>
-        <p><code>Username</code> (optional if password is not empty): The username of the credential</p>
-        <p><code>Password</code> (optional if username is not empty): The password of the credential</p>
+		<title>Speichern von Anmeldedaten</title>
+        <p>Die folgenden Felder können in einem Anmeldedatensatz gespeichert werden:</p>
+        <p><code>Name</code>: Der Name der Anmeldung</p>
+        <p><code>URL</code> (optional): Die URL der Anmeldung</p>
+        <p><code>Benutzername</code> (Optional wenn das Passwortfeld nicht leer ist): Der Benutzername der Anmeldung</p>
+        <p><code>Passwort</code> (Optional wenn das Benutzernamenfeld nicht leer ist): Das Passwort der Anmeldung</p>
     </item>
 </terms>
 </page>
