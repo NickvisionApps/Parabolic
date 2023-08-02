@@ -100,7 +100,7 @@ public class MainWindowController : IDisposable
         AppInfo.ExtraLinks[_("List of supported sites")] = new Uri("https://github.com/yt-dlp/yt-dlp/blob/master/supportedsites.md");
         AppInfo.ExtraLinks[_("Matrix Chat")] = new Uri("https://matrix.to/#/#nickvision:matrix.org");
         AppInfo.Developers[_("Nicholas Logozzo")] = new Uri("https://github.com/nlogozzo");
-        AppInfo.Developers[_("Contributors on GitHub ❤️")] = new Uri("https://github.com/NickvisionApps/Cavalier/graphs/contributors");
+        AppInfo.Developers[_("Contributors on GitHub ❤️")] = new Uri("https://github.com/NickvisionApps/Parabolic/graphs/contributors");
         AppInfo.Designers[_("Nicholas Logozzo")] = new Uri("https://github.com/nlogozzo");
         AppInfo.Designers[_("Fyodor Sobolev")] = new Uri("https://github.com/fsobolev");
         AppInfo.Designers[_("DaPigGuy")] = new Uri("https://github.com/DaPigGuy");
