@@ -22,8 +22,10 @@ public class MainWindowController : IDisposable
     private nint _pythonThreadState;
     private Keyring? _keyring;
     private NetworkMonitor? _netmon;
-    private PreferencesViewController? _preferencesViewController;
 
+    /// <summary>
+    /// Application's Aura
+    /// </summary>
     public Aura Aura { get; init; }
     /// <summary>
     /// Gets the AppInfo object
