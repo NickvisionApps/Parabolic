@@ -22,8 +22,10 @@ public class MainWindowController : IDisposable
     private nint _pythonThreadState;
     private Keyring? _keyring;
     private NetworkMonitor? _netmon;
-    private PreferencesViewController? _preferencesViewController;
 
+    /// <summary>
+    /// Application's Aura
+    /// </summary>
     public Aura Aura { get; init; }
     /// <summary>
     /// Gets the AppInfo object
@@ -78,10 +80,18 @@ public class MainWindowController : IDisposable
         Aura = new Aura("org.nickvision.tubeconverter", "Nickvision Tube Converter", _("Parabolic"), _("Download web video and audio"));
         if (Directory.Exists($"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}{Path.DirectorySeparatorChar}Nickvision{Path.DirectorySeparatorChar}{AppInfo.Name}"))
         {
-            // Move config files from older versions
-            Directory.Move($"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}{Path.DirectorySeparatorChar}Nickvision{Path.DirectorySeparatorChar}{AppInfo.Name}", ConfigLoader.ConfigDir);
+            // Move or delete config files from older versions
+            try
+            {
+                Directory.Move($"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}{Path.DirectorySeparatorChar}Nickvision{Path.DirectorySeparatorChar}{AppInfo.Name}", ConfigurationLoader.ConfigDir);
+            }
+            catch (IOException)
+            {
+                Directory.Delete($"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}{Path.DirectorySeparatorChar}Nickvision{Path.DirectorySeparatorChar}{AppInfo.Name}", true);
+            }
         }
         Aura.Active.SetConfig<Configuration>("config");
+        Configuration.Current.Saved += ConfigurationSaved;
         Aura.Active.SetConfig<DownloadHistory>("downloadHistory");
         AppInfo.Version = "2023.8.0-rc3";
         AppInfo.SourceRepo = new Uri("https://github.com/NickvisionApps/Parabolic");
@@ -142,18 +152,7 @@ public class MainWindowController : IDisposable
     /// Creates a new PreferencesViewController
     /// </summary>
     /// <returns>The PreferencesViewController</returns>
-    public PreferencesViewController PreferencesViewController
-    {
-        get
-        {
-            if (_preferencesViewController == null)
-            {
-                _preferencesViewController = new PreferencesViewController();
-                _preferencesViewController.Saved += ConfigurationSaved;
-            }
-            return _preferencesViewController;
-        }
-    }
+    public PreferencesViewController CreatePreferencesViewController() => new PreferencesViewController();
 
     /// <summary>
     /// Creates a new AddDownloadDialogController

@@ -8,7 +8,7 @@ namespace NickvisionTubeConverter.Shared.Models;
 /// <summary>
 /// A model for download history
 /// </summary>
-public class DownloadHistory : IConfiguration
+public class DownloadHistory : ConfigurationBase
 {
     /// <summary>
     /// The download history
