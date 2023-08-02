@@ -65,11 +65,7 @@ public class MainWindowController : IDisposable
     /// <summary>
     /// Invoked to check if RunInBackground changed after settings saved
     /// </summary>
-    public event EventHandler? RunInBackgroundChanged;
-    /// <summary>
-    /// Invoked to focus the window
-    /// </summary>
-    public event EventHandler? RaiseCommandReceived;
+    public event EventHandler<EventArgs>? RunInBackgroundChanged;
 
     /// <summary>
     /// Constructs a MainWindowController
