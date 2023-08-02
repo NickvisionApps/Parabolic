@@ -9,13 +9,13 @@ namespace NickvisionTubeConverter.Shared.Models;
 /// <summary>
 /// A model for the configuration of the application
 /// </summary>
-public class Configuration : IConfiguration
+public class Configuration : ConfigurationBase
 {
     /// <summary>
     /// The directory to store temporary files
     /// </summary>
     /// <remarks>TODO: https://github.com/NickvisionApps/Aura/issues/5</remarks>
-    public static string TempDir = RuntimeInformation.IsOSPlatform(OSPlatform.Windows) ? $"{Environment.GetFolderPath(Environment.SpecialFolder.UserProfile)}{Path.DirectorySeparatorChar}.tc-temp" :  $"{ConfigLoader.ConfigDir}{Path.DirectorySeparatorChar}temp";
+    public static string TempDir = RuntimeInformation.IsOSPlatform(OSPlatform.Windows) ? $"{Environment.GetFolderPath(Environment.SpecialFolder.UserProfile)}{Path.DirectorySeparatorChar}.tc-temp" :  $"{ConfigurationLoader.ConfigDir}{Path.DirectorySeparatorChar}temp";
 
     /// <summary>
     /// The preferred theme for the application

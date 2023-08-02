@@ -20,11 +20,6 @@ public class PreferencesViewController
     public AppInfo AppInfo => Aura.Active.AppInfo;
 
     /// <summary>
-    /// Occurs when settings are saved
-    /// </summary>
-    public event EventHandler? Saved;
-
-    /// <summary>
     /// Constructs a PreferencesViewController
     /// </summary>
     internal PreferencesViewController()
@@ -242,9 +237,5 @@ public class PreferencesViewController
     /// <summary>
     /// Saves the configuration to disk
     /// </summary>
-    public void SaveConfiguration()
-    {
-        Aura.Active.SaveConfig("config");
-        Saved?.Invoke(this, EventArgs.Empty);
-    }
+    public void SaveConfiguration() => Aura.Active.SaveConfig("config");
 }
