@@ -237,36 +237,37 @@ public class Download
                     if(FileType.GetIsGeneric())
                     {
                         _ytOpt.Add("format", Quality != Quality.Worst ? $"ba[language={AudioLanguage}]/ba/b" : $"wa[language={AudioLanguage}]/wa/w");
-                        postProcessors.Add(new Dictionary<string, dynamic>() { { "key", "FFmpegExtractAudio" } });
+                        postProcessors.Add(new Dictionary<string, dynamic> { { "key", "FFmpegExtractAudio" }, { "preferredquality", Quality != Quality.Worst ? 0 : 5 } });
                     }
                     else
                     {
-                        _ytOpt.Add("format", Quality != Quality.Worst ? $@"ba[ext={FileType.ToString().ToLower()}][language={AudioLanguage}]/ba[ext={FileType.ToString().ToLower()}]/ba/b" : $"wa[ext={FileType.ToString().ToLower()}][language={AudioLanguage}]/wa[ext={FileType.ToString().ToLower()}]/wa/w");
-                        postProcessors.Add(new Dictionary<string, dynamic>() { { "key", "FFmpegExtractAudio" }, { "preferredcodec", FileType.ToString().ToLower() } });
+                        _ytOpt.Add("format", Quality != Quality.Worst ? $"ba[ext={FileType.ToString().ToLower()}][language={AudioLanguage}]/ba[ext={FileType.ToString().ToLower()}]/ba/b" : $"wa[ext={FileType.ToString().ToLower()}][language={AudioLanguage}]/wa[ext={FileType.ToString().ToLower()}]/wa/w");
+                        postProcessors.Add(new Dictionary<string, dynamic> { { "key", "FFmpegExtractAudio" }, { "preferredcodec", FileType.ToString().ToLower() }, { "preferredquality", Quality != Quality.Worst ? 0 : 5 } });
                     }
                 }
                 else if (FileType.GetIsVideo())
                 {
+                    var proto = _timeframe != null ? "[protocol!*=m3u8]" : "";
                     if(Resolution!.Width == 0 && Resolution.Height == 0)
                     {
-                        _ytOpt.Add("format", FileType == MediaFileType.MP4 ? $@"bv*[ext=mp4]+ba[ext=m4a][language={AudioLanguage}]/
-                            bv*[ext=mp4]+ba[ext=m4a]/b[ext=mp4]/
-                            bv+ba[language={AudioLanguage}]/
-                            bv+ba/b" : $"bv+ba[language={AudioLanguage}]/bv+ba/b");
+                        _ytOpt.Add("format", FileType == MediaFileType.MP4 ? $@"bv*[ext=mp4]{proto}+ba[ext=m4a][language={AudioLanguage}]/
+                            bv*[ext=mp4]{proto}+ba[ext=m4a]/b[ext=mp4]/
+                            bv{proto}+ba[language={AudioLanguage}]/
+                            bv{proto}+ba/b" : $"bv{proto}+ba[language={AudioLanguage}]/bv{proto}+ba/b");
                     }
                     else if (FileType == MediaFileType.MP4)
                     {
-                        _ytOpt.Add("format", $@"bv*[ext=mp4][width<={Resolution!.Width}][height<={Resolution.Height}]+ba[ext=m4a][language={AudioLanguage}]/
-                            bv*[ext=mp4][width<={Resolution!.Width}][height<={Resolution.Height}]+ba[ext=m4a]/
+                        _ytOpt.Add("format", $@"bv*[ext=mp4][width<={Resolution!.Width}][height<={Resolution.Height}]{proto}+ba[ext=m4a][language={AudioLanguage}]/
+                            bv*[ext=mp4][width<={Resolution.Width}][height<={Resolution.Height}]{proto}+ba[ext=m4a]/
                             b[ext=mp4][width<={Resolution.Width}][height<={Resolution.Height}]/
-                            bv*[width<={Resolution.Width}][height<={Resolution.Height}]+ba[language={AudioLanguage}]/
-                            bv*[width<={Resolution.Width}][height<={Resolution.Height}]+ba/
+                            bv*[width<={Resolution.Width}][height<={Resolution.Height}]{proto}+ba[language={AudioLanguage}]/
+                            bv*[width<={Resolution.Width}][height<={Resolution.Height}]{proto}+ba/
                             b[width<={Resolution.Width}][height<={Resolution.Height}]");
                     }
                     else
                     {
-                        _ytOpt.Add("format", $@"bv*[width<={Resolution!.Width}][height<={Resolution.Height}]+ba[language={AudioLanguage}]/
-                            bv*[width<={Resolution!.Width}][height<={Resolution.Height}]+ba/
+                        _ytOpt.Add("format", $@"bv*[width<={Resolution!.Width}][height<={Resolution.Height}]{proto}+ba[language={AudioLanguage}]/
+                            bv*[width<={Resolution!.Width}][height<={Resolution.Height}]{proto}+ba/
                             b[width<={Resolution.Width}][height<={Resolution.Height}]");
                     }
                     if(!FileType.GetIsGeneric())
