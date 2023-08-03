@@ -35,12 +35,7 @@ public partial class Program
         _mainWindow = null;
         _mainWindowController = new MainWindowController();
         _mainWindowController.AppInfo.Changelog =
-            @"* Added buttons to select or deselect all items in a playlist
-              * Added a proxy setting in Preferences
-              * Parabolic will now check for an active network connection
-              * Fixed an issue where docs were not available when running Parabolic via snap
-              * Fixed an issue where History wasn't saved correctly in json
-              * Updated translations (Thanks everyone on Weblate!)";
+            @"* Updated translations (Thanks everyone on Weblate!)";
         _application.OnActivate += OnActivate;
         if (File.Exists(Path.GetFullPath(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)) + "/org.nickvision.tubeconverter.gresource"))
         {
