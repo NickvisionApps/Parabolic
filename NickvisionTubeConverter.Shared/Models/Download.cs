@@ -237,12 +237,12 @@ public class Download
                     if(FileType.GetIsGeneric())
                     {
                         _ytOpt.Add("format", Quality != Quality.Worst ? $"ba[language={AudioLanguage}]/ba/b" : $"wa[language={AudioLanguage}]/wa/w");
-                        postProcessors.Add(new Dictionary<string, dynamic>() { { "key", "FFmpegExtractAudio" } });
+                        postProcessors.Add(new Dictionary<string, dynamic> { { "key", "FFmpegExtractAudio" }, { "preferredquality", Quality != Quality.Worst ? 0 : 5 } });
                     }
                     else
                     {
-                        _ytOpt.Add("format", Quality != Quality.Worst ? $@"ba[ext={FileType.ToString().ToLower()}][language={AudioLanguage}]/ba[ext={FileType.ToString().ToLower()}]/ba/b" : $"wa[ext={FileType.ToString().ToLower()}][language={AudioLanguage}]/wa[ext={FileType.ToString().ToLower()}]/wa/w");
-                        postProcessors.Add(new Dictionary<string, dynamic>() { { "key", "FFmpegExtractAudio" }, { "preferredcodec", FileType.ToString().ToLower() } });
+                        _ytOpt.Add("format", Quality != Quality.Worst ? $"ba[ext={FileType.ToString().ToLower()}][language={AudioLanguage}]/ba[ext={FileType.ToString().ToLower()}]/ba/b" : $"wa[ext={FileType.ToString().ToLower()}][language={AudioLanguage}]/wa[ext={FileType.ToString().ToLower()}]/wa/w");
+                        postProcessors.Add(new Dictionary<string, dynamic> { { "key", "FFmpegExtractAudio" }, { "preferredcodec", FileType.ToString().ToLower() }, { "preferredquality", Quality != Quality.Worst ? 0 : 5 } });
                     }
                 }
                 else if (FileType.GetIsVideo())
