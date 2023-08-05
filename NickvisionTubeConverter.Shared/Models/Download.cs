@@ -250,14 +250,18 @@ public class Download
                     var proto = _timeframe != null ? "[protocol!*=m3u8]" : "";
                     if(Resolution!.Width == 0 && Resolution.Height == 0)
                     {
-                        _ytOpt.Add("format", FileType == MediaFileType.MP4 ? $@"bv*[ext=mp4]{proto}+ba[ext=m4a][language={AudioLanguage}]/
+                        _ytOpt.Add("format", FileType == MediaFileType.MP4 ? $@"bv*[ext=mp4][vcodec!*=vp]{proto}+ba[ext=m4a][language={AudioLanguage}]/
+                            bv*[ext=mp4][vcodec!*=vp]{proto}+ba[ext=m4a]/
+                            bv*[ext=mp4]{proto}+ba[ext=m4a][language={AudioLanguage}]/
                             bv*[ext=mp4]{proto}+ba[ext=m4a]/b[ext=mp4]/
                             bv{proto}+ba[language={AudioLanguage}]/
                             bv{proto}+ba/b" : $"bv{proto}+ba[language={AudioLanguage}]/bv{proto}+ba/b");
                     }
                     else if (FileType == MediaFileType.MP4)
                     {
-                        _ytOpt.Add("format", $@"bv*[ext=mp4][width<={Resolution!.Width}][height<={Resolution.Height}]{proto}+ba[ext=m4a][language={AudioLanguage}]/
+                        _ytOpt.Add("format", $@"bv*[ext=mp4][vcodec!*=vp][width<={Resolution!.Width}][height<={Resolution.Height}]{proto}+ba[ext=m4a][language={AudioLanguage}]/
+                            bv*[ext=mp4][vcodec!*=vp][width<={Resolution.Width}][height<={Resolution.Height}]{proto}+ba[ext=m4a]/
+                            bv*[ext=mp4][width<={Resolution!.Width}][height<={Resolution.Height}]{proto}+ba[ext=m4a][language={AudioLanguage}]/
                             bv*[ext=mp4][width<={Resolution.Width}][height<={Resolution.Height}]{proto}+ba[ext=m4a]/
                             b[ext=mp4][width<={Resolution.Width}][height<={Resolution.Height}]/
                             bv*[width<={Resolution.Width}][height<={Resolution.Height}]{proto}+ba[language={AudioLanguage}]/
