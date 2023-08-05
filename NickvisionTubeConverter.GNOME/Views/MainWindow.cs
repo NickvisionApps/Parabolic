@@ -28,6 +28,7 @@ public partial class MainWindow : Adw.ApplicationWindow
     private bool _isBackgroundStatusReported;
     private readonly Gio.SimpleAction _actDownload;
     private Dictionary<Guid, DownloadRow> _downloadRows;
+    private uint? _inhibitCookie;
 
     [Gtk.Connect] private readonly Adw.Bin _spinnerContainer;
     [Gtk.Connect] private readonly Gtk.Spinner _spinner;
@@ -48,9 +49,10 @@ public partial class MainWindow : Adw.ApplicationWindow
         //Window Settings
         _controller = controller;
         _application = application;
+        _bus = Gio.DBusConnection.Get(Gio.BusType.Session);
         _isBackgroundStatusReported = false;
         _downloadRows = new Dictionary<Guid, DownloadRow>();
-        _bus = Gio.DBusConnection.Get(Gio.BusType.Session);
+        _inhibitCookie = null;
         try
         {
             _unityLauncher = LauncherEntry.GetForDesktopID(string.IsNullOrEmpty(Environment.GetEnvironmentVariable("SNAP")) ? $"{_controller.AppInfo.ID}.desktop" : "tube-converter_tube-converter.desktop");
@@ -71,47 +73,16 @@ public partial class MainWindow : Adw.ApplicationWindow
         _title.SetTitle(_controller.AppInfo.ShortName);
         //Register Events
         OnCloseRequest += OnCloseRequested;
-        _controller.NotificationSent += (sender, e) => GLib.Functions.IdleAdd(0, () =>
-        {
-            NotificationSent(sender, e);
-            return false;
-        });
-        _controller.RunInBackgroundChanged += (sender, e) => GLib.Functions.IdleAdd(0, () =>
-        {
-            RunInBackgroundChanged(sender, e);
-            return false;
-        });
+        _controller.NotificationSent += (sender, e) => GLib.Functions.IdleAdd(0, () => NotificationSent(sender, e));
+        _controller.PreventSuspendWhenDownloadingChanged += (sender, e) => GLib.Functions.IdleAdd(0, PreventSuspendWhenDownloadingChanged);
+        _controller.RunInBackgroundChanged += (sender, e) => GLib.Functions.IdleAdd(0, RunInBackgroundChanged);
         _controller.KeyringLoginAsync = KeyringLoginAsync;
-        _controller.DownloadManager.DownloadAdded += (sender, e) => GLib.Functions.IdleAdd(0, () =>
-        {
-            DownloadAdded(sender, e);
-            return false;
-        });
-        _controller.DownloadManager.DownloadProgressUpdated += (sender, e) => GLib.Functions.IdleAdd(0, () =>
-        {
-            DownloadProgressUpdated(sender, e);
-            return false;
-        });
-        _controller.DownloadManager.DownloadCompleted += (sender, e) => GLib.Functions.IdleAdd(0, () =>
-        {
-            DownloadCompleted(sender, e);
-            return false;
-        });
-        _controller.DownloadManager.DownloadStopped += (sender, e) => GLib.Functions.IdleAdd(0, () =>
-        {
-            DownloadStopped(sender, e);
-            return false;
-        });
-        _controller.DownloadManager.DownloadRetried += (sender, e) => GLib.Functions.IdleAdd(0, () =>
-        {
-            DownloadRetried(sender, e);
-            return false;
-        });
-        _controller.DownloadManager.DownloadStartedFromQueue += (sender, e) => GLib.Functions.IdleAdd(0, () =>
-        {
-            DownloadStartedFromQueue(sender, e);
-            return false;
-        });
+        _controller.DownloadManager.DownloadAdded += (sender, e) => GLib.Functions.IdleAdd(0, () => DownloadAdded(e));
+        _controller.DownloadManager.DownloadProgressUpdated += (sender, e) => GLib.Functions.IdleAdd(0, () => DownloadProgressUpdated(e));
+        _controller.DownloadManager.DownloadCompleted += (sender, e) => GLib.Functions.IdleAdd(0, () => DownloadCompleted(e));
+        _controller.DownloadManager.DownloadStopped += (sender, e) => GLib.Functions.IdleAdd(0, () => DownloadStopped(e));
+        _controller.DownloadManager.DownloadRetried += (sender, e) => GLib.Functions.IdleAdd(0, () => DownloadRetried(e));
+        _controller.DownloadManager.DownloadStartedFromQueue += (sender, e) => GLib.Functions.IdleAdd(0, () => DownloadStartedFromQueue(e));
         //Add Download Action
         _actDownload = Gio.SimpleAction.New("addDownload", null);
         _actDownload.OnActivate += async (sender, e) => await AddDownloadAsync(null);
@@ -223,7 +194,8 @@ public partial class MainWindow : Adw.ApplicationWindow
         _spinner.Stop();
         _spinnerContainer.SetVisible(false);
         _mainBox.SetVisible(true);
-        RunInBackgroundChanged(this, EventArgs.Empty);
+        PreventSuspendWhenDownloadingChanged();
+        RunInBackgroundChanged();
     }
 
     /// <summary>
@@ -231,7 +203,7 @@ public partial class MainWindow : Adw.ApplicationWindow
     /// </summary>
     /// <param name="sender">object?</param>
     /// <param name="e">NotificationSentEventArgs</param>
-    private void NotificationSent(object? sender, NotificationSentEventArgs e)
+    private bool NotificationSent(object? sender, NotificationSentEventArgs e)
     {
         if (e.Action == "no-network")
         {
@@ -239,7 +211,7 @@ public partial class MainWindow : Adw.ApplicationWindow
             _headerBar.RemoveCssClass("flat");
             _actDownload.SetEnabled(false);
             _banner.SetRevealed(true);
-            return;
+            return false;
         }
         if (e.Action == "network-restored")
         {
@@ -249,10 +221,11 @@ public partial class MainWindow : Adw.ApplicationWindow
             }
             _actDownload.SetEnabled(true);
             _banner.SetRevealed(false);
-            return;
+            return false;
         }
         var toast = Adw.Toast.New(e.Message);
         _toastOverlay.AddToast(toast);
+        return false;
     }
 
     /// <summary>
@@ -549,11 +522,26 @@ public partial class MainWindow : Adw.ApplicationWindow
     }
 
     /// <summary>
+    /// Occurs when the prevent suspend option is changed
+    /// </summary>
+    private bool PreventSuspendWhenDownloadingChanged()
+    {
+        if (_inhibitCookie == null && _controller.PreventSuspendWhenDownloading)
+        {
+            _inhibitCookie = _application.Inhibit(this, Gtk.ApplicationInhibitFlags.Suspend, "user request");
+        }
+        else if (_inhibitCookie != null && !_controller.PreventSuspendWhenDownloading)
+        {
+            _application.Uninhibit(_inhibitCookie.Value);
+            _inhibitCookie = null;
+        }
+        return false;
+    }
+
+    /// <summary>
     /// Occurs when the run in background option is changed
     /// </summary>
-    /// <param name="sender">object?</param>
-    /// <param name="e">EventArgs</param>
-    private void RunInBackgroundChanged(object? sender, EventArgs e)
+    private bool RunInBackgroundChanged()
     {
         if (_controller.RunInBackground)
         {
@@ -567,6 +555,7 @@ public partial class MainWindow : Adw.ApplicationWindow
         {
             _isBackgroundStatusReported = false;
         }
+        return false;
     }
 
     /// <summary>
@@ -629,9 +618,8 @@ public partial class MainWindow : Adw.ApplicationWindow
     /// <summary>
     /// Occurs when a download is added
     /// </summary>
-    /// <param name="sender">object?</param>
     /// <param name="e">(Guid Id, string Filename, string SaveFolder, bool IsDownloading)</param>
-    private void DownloadAdded(object? sender, (Guid Id, string Filename, string SaveFolder, bool IsDownloading) e)
+    private bool DownloadAdded((Guid Id, string Filename, string SaveFolder, bool IsDownloading) e)
     {
         var downloadRow = new DownloadRow(this, e.Id, e.Filename, e.SaveFolder, (ex) => NotificationSent(null, ex));
         downloadRow.StopRequested += (s, ex) => _controller.DownloadManager.RequestStop(ex);
@@ -661,28 +649,28 @@ public partial class MainWindow : Adw.ApplicationWindow
         }
         _stopAllDownloadsButton.SetVisible(_controller.DownloadManager.RemainingDownloadsCount > 1);
         box.GetParent().SetVisible(true);
+        return false;
     }
 
     /// <summary>
     /// Occurs when a download's progress is updated
     /// </summary>
-    /// <param name="sender">object?</param>
     /// <param name="e">(Guid Id, DownloadProgressState State)</param>
-    private void DownloadProgressUpdated(object? sender, (Guid Id, DownloadProgressState State) e)
+    private bool DownloadProgressUpdated((Guid Id, DownloadProgressState State) e)
     {
         var row = _downloadRows[e.Id];
         if(row.GetParent() == _downloadingBox)
         {
             row.SetProgressState(e.State);
         }
+        return false;
     }
 
     /// <summary>
     /// Occurs when a download is completed
     /// </summary>
-    /// <param name="sender">object?</param>
     /// <param name="e">(Guid Id, bool Successful, string Filename, bool ShowNotification)</param>
-    private void DownloadCompleted(object? sender, (Guid Id, bool Successful, string Filename, bool ShowNotification) e)
+    private bool DownloadCompleted((Guid Id, bool Successful, string Filename, bool ShowNotification) e)
     {
         var row = _downloadRows[e.Id];
         if(row.GetParent() == _downloadingBox)
@@ -722,14 +710,14 @@ public partial class MainWindow : Adw.ApplicationWindow
         {
             _application.Quit();
         }
+        return false;
     }
 
     /// <summary>
     /// Occurs when a download is stopped
     /// </summary>
-    /// <param name="sender">object?</param>
     /// <param name="e">Guid</param>
-    private void DownloadStopped(object? sender, Guid e)
+    private bool DownloadStopped(Guid e)
     {
         var row = _downloadRows[e];
         if(row.GetParent() == _downloadingBox)
@@ -772,14 +760,14 @@ public partial class MainWindow : Adw.ApplicationWindow
             _completedBox.GetParent().SetVisible(true);
         }
         _stopAllDownloadsButton.SetVisible(_controller.DownloadManager.RemainingDownloadsCount > 1);
+        return false;
     }
 
     /// <summary>
     /// Occurs when a download is retried
     /// </summary>
-    /// <param name="sender">object?</param>
     /// <param name="e">Guid</param>
-    private void DownloadRetried(object? sender, Guid e)
+    private bool DownloadRetried(Guid e)
     {
         var row = _downloadRows[e];
         if(row.GetParent() == _completedBox)
@@ -794,14 +782,14 @@ public partial class MainWindow : Adw.ApplicationWindow
             _completedBox.GetParent().SetVisible(_controller.DownloadManager.AreDownloadsCompleted);
         }
         _stopAllDownloadsButton.SetVisible(_controller.DownloadManager.RemainingDownloadsCount > 1);
+        return false;
     }
 
     /// <summary>
     /// Occurs when a download is started from queue
     /// </summary>
-    /// <param name="sender">object?</param>
     /// <param name="e">Guid</param>
-    private void DownloadStartedFromQueue(object? sender, Guid e)
+    private bool DownloadStartedFromQueue(Guid e)
     {
         var row = _downloadRows[e];
         if(row.GetParent() == _queuedBox)
@@ -823,5 +811,6 @@ public partial class MainWindow : Adw.ApplicationWindow
             _downloadingBox.GetParent().SetVisible(true);
         }
         _stopAllDownloadsButton.SetVisible(_controller.DownloadManager.RemainingDownloadsCount > 1);
+        return false;
     }
 }

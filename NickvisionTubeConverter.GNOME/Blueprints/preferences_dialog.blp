@@ -39,6 +39,21 @@ Adw.PreferencesWindow _root {
           icon-name: "preferences-system-notifications-symbolic";
         }
       }
+      
+      Adw.ActionRow _suspendRow {
+        title: _("Prevent Suspend");
+        activatable-widget: _suspendSwitch;
+
+        [prefix]
+        Gtk.Image {
+          icon-name: "power-symbolic";
+        }
+
+        [suffix]
+        Gtk.Switch _suspendSwitch {
+          valign: center;
+        }
+      }
 
       Adw.ActionRow _backgroundRow {
         title: _("Allow Running In Background");

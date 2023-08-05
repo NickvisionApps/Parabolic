@@ -48,6 +48,10 @@ public class MainWindowController : IDisposable
     /// </summary>
     public NotificationPreference CompletedNotificationPreference => Configuration.Current.CompletedNotificationPreference;
     /// <summary>
+    /// Whether or not to prevent suspend when downloads are in progress
+    /// </summary>
+    public bool PreventSuspendWhenDownloading => Configuration.Current.PreventSuspendWhenDownloading;
+    /// <summary>
     /// Whether to allow running in the background
     /// </summary>
     public bool RunInBackground => Configuration.Current.RunInBackground;
@@ -65,7 +69,11 @@ public class MainWindowController : IDisposable
     /// </summary>
     public event EventHandler<NotificationSentEventArgs>? NotificationSent;
     /// <summary>
-    /// Invoked to check if RunInBackground changed after settings saved
+    /// Occurs when the configuration is saved
+    /// </summary>
+    public event EventHandler<EventArgs>? PreventSuspendWhenDownloadingChanged;
+    /// <summary>
+    /// Occurs when the configuration is saved
     /// </summary>
     public event EventHandler<EventArgs>? RunInBackgroundChanged;
 
@@ -245,6 +253,7 @@ public class MainWindowController : IDisposable
     /// <param name="e">EventArgs</param>
     private void ConfigurationSaved(object? sender, EventArgs e)
     {
+        PreventSuspendWhenDownloadingChanged?.Invoke(this, EventArgs.Empty);
         RunInBackgroundChanged?.Invoke(this, EventArgs.Empty);
         DownloadManager.MaxNumberOfActiveDownloads = Configuration.Current.MaxNumberOfActiveDownloads;
     }
