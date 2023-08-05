@@ -26,6 +26,10 @@ public class Configuration : ConfigurationBase
     /// </summary>
     public NotificationPreference CompletedNotificationPreference { get; set; }
     /// <summary>
+    /// Whether or not to prevent suspend when downloads are in progress
+    /// </summary>
+    public bool PreventSuspendWhenDownloading { get; set; }
+    /// <summary>
     /// Whether to allow running in the background
     /// </summary>
     public bool RunInBackground { get; set; }
@@ -109,6 +113,7 @@ public class Configuration : ConfigurationBase
     {
         Theme = Theme.System;
         CompletedNotificationPreference = NotificationPreference.ForEach;
+        PreventSuspendWhenDownloading = false;
         RunInBackground = RuntimeInformation.IsOSPlatform(OSPlatform.Windows);
         MaxNumberOfActiveDownloads = 5;
         OverwriteExistingFiles = true;

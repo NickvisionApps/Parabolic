@@ -50,6 +50,16 @@ public class PreferencesViewController
 
         set => Configuration.Current.CompletedNotificationPreference = value;
     }
+    
+    /// <summary>
+    /// Whether or not to prevent suspend when downloads are in progress
+    /// </summary>
+    public bool PreventSuspendWhenDownloading
+    {
+        get => Configuration.Current.PreventSuspendWhenDownloading;
+
+        set => Configuration.Current.PreventSuspendWhenDownloading = value;
+    }
 
     /// <summary>
     /// Whether to allow running in the background
