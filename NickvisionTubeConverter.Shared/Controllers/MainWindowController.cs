@@ -218,7 +218,7 @@ public class MainWindowController : IDisposable
         _netmon = await NetworkMonitor.NewAsync();
         _netmon.StateChanged += (sender, state) =>
         {
-            if (state == NetworkState.ConnectedGlobal)
+            if (state)
             {
                 NotificationSent?.Invoke(this, new NotificationSentEventArgs("", NotificationSeverity.Success, "network-restored"));
             }
