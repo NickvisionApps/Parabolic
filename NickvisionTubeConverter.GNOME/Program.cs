@@ -35,11 +35,12 @@ public partial class Program
         _mainWindow = null;
         _mainWindowController = new MainWindowController();
         _mainWindowController.AppInfo.Changelog =
-            @"* Added the option to prevent suspend while downloads are in progress
+            @"* Added the option to prevent suspend while using Parabolic
               * Improved bitrate used for audio-only downloads with the best quality
               * Parabolic will now prefer videos with the h264 codec when downloading in the mp4 format. If space is a concern, users are recommended to download in the webm format which uses the vp* codec
               * Fixed an issue where downloads with specific timeframes would download incorrectly
               * Fixed an issue where Parabolic would be unusable on systems without NetworkManager installed
+              * Fixed an issue where Parabolic would say no active internet connection even though there was a connection established
               * Updated translations (Thanks everyone on Weblate!)";
         _application.OnActivate += OnActivate;
         if (File.Exists(Path.GetFullPath(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)) + "/org.nickvision.tubeconverter.gresource"))
