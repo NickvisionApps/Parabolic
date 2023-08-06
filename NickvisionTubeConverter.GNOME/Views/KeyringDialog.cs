@@ -1,6 +1,5 @@
 using Nickvision.Keyring.Controllers;
 using Nickvision.Keyring.Models;
-using NickvisionTubeConverter.GNOME.Controls;
 using NickvisionTubeConverter.GNOME.Helpers;
 using System;
 using System.Collections.Generic;
@@ -283,10 +282,16 @@ public partial class KeyringDialog : Adw.Window
     /// <param name="e">EventArgs</param>
     private void DeleteCredential(Gtk.Button sender, EventArgs e)
     {
-        var disableDialog = new MessageDialog(this, _appID, _("Delete Credential?"), _("This action is irreversible. Are you sure you want to delete it?"), _("No"), _("Yes"));
-        disableDialog.OnResponse += async (sender, e) =>
+        var disableDialog = Adw.MessageDialog.New(this, _("Delete Credential?"), _("This action is irreversible. Are you sure you want to delete it?"));
+        disableDialog.SetIconName(_appID);
+        disableDialog.AddResponse("no", _("No"));
+        disableDialog.SetDefaultResponse("no");
+        disableDialog.SetCloseResponse("no");
+        disableDialog.AddResponse("yes", _("Yes"));
+        disableDialog.SetResponseAppearance("yes", Adw.ResponseAppearance.Destructive);
+        disableDialog.OnResponse += async (s, ex) =>
         {
-            if(disableDialog.Response == MessageDialogResponse.Destructive)
+            if(ex.Response == "yes")
             {
                 await _controller.DeleteCredentialAsync(_editId!.Value);
                 await LoadHomePageAsync();

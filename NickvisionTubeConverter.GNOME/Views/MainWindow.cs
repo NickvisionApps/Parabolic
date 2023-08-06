@@ -270,8 +270,22 @@ public partial class MainWindow : Adw.ApplicationWindow
                 SetVisible(false);
                 return true;
             }
-            var closeDialog = new MessageDialog(this, _controller.AppInfo.ID, _("Close and Stop Downloads?"), _("Some downloads are still in progress.\nAre you sure you want to close Parabolic and stop the running downloads?"), _("No"), _("Yes"));
-            if (closeDialog.Run() == MessageDialogResponse.Cancel)
+            var response = "";
+            var closeDialog = Adw.MessageDialog.New(this, _("Close and Stop Downloads?"), _("Some downloads are still in progress.\nAre you sure you want to close Parabolic and stop the running downloads?"));
+            closeDialog.SetIconName(_controller.AppInfo.ID);
+            closeDialog.AddResponse("no", _("No"));
+            closeDialog.SetDefaultResponse("no");
+            closeDialog.SetCloseResponse("no");
+            closeDialog.AddResponse("yes", _("Yes"));
+            closeDialog.SetResponseAppearance("yes", Adw.ResponseAppearance.Destructive);
+            closeDialog.OnResponse += (s, ex) => response = ex.Response;
+            closeDialog.Present();
+            while (closeDialog.GetVisible())
+            {
+                GLib.Internal.MainContext.Iteration(GLib.Internal.MainContext.Default(), false);
+            }
+            closeDialog.Destroy();
+            if (response == "no")
             {
                 return true;
             }
@@ -367,7 +381,7 @@ public partial class MainWindow : Adw.ApplicationWindow
     private void KeyboardShortcuts(Gio.SimpleAction sender, EventArgs e)
     {
         var builder = Builder.FromFile("shortcuts_dialog.ui");
-        var shortcutsWindow = (Gtk.ShortcutsWindow)builder.GetObject("_shortcuts");
+        var shortcutsWindow = (Gtk.ShortcutsWindow)builder.GetObject("_shortcuts")!;
         shortcutsWindow.SetTransientFor(this);
         shortcutsWindow.SetIconName(_controller.AppInfo.ID);
         shortcutsWindow.Present();
