@@ -40,6 +40,7 @@ public partial class Program
               * Parabolic will now prefer videos with the h264 codec when downloading in the mp4 format. If space is a concern, users are recommended to download in the webm format which uses the vp* codec
               * Fixed an issue where downloads with specific timeframes would download incorrectly
               * Fixed an issue where Parabolic would be unusable on systems without NetworkManager installed
+              * Fixed an issue where Parabolic would say no active internet connection even though there was a connection established
               * Updated translations (Thanks everyone on Weblate!)";
         _application.OnActivate += OnActivate;
         if (File.Exists(Path.GetFullPath(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)) + "/org.nickvision.tubeconverter.gresource"))
