@@ -433,14 +433,12 @@ public class Download
                     Completed?.Invoke(this, IsSuccess);
                 }
             }).FireAndForget();
-
         }
     }
 
     /// <summary>
     /// Stops the download
     /// </summary>
-
     public void Stop()
     {
         if (IsRunning)
