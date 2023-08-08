@@ -392,11 +392,12 @@ public class Download
                                             genericExtensionFound = true;
                                         }
                                     }
+                                    var baseFilename = Filename;
                                     var i = 0;
                                     while (!options.OverwriteExistingFiles && File.Exists(path.Replace(Id.ToString(), Path.GetFileNameWithoutExtension(Filename))))
                                     {
                                         i++;
-                                        Filename = $"{Path.GetFileNameWithoutExtension(Filename)} ({i}){Path.GetExtension(Filename)}";
+                                        Filename = $"{Path.GetFileNameWithoutExtension(baseFilename)} ({i}){Path.GetExtension(baseFilename)}";
                                     }
                                     try
                                     {
@@ -432,12 +433,14 @@ public class Download
                     Completed?.Invoke(this, IsSuccess);
                 }
             }).FireAndForget();
+
         }
     }
 
     /// <summary>
     /// Stops the download
     /// </summary>
+
     public void Stop()
     {
         if (IsRunning)
