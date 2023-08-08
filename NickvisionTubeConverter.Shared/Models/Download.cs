@@ -392,6 +392,12 @@ public class Download
                                             genericExtensionFound = true;
                                         }
                                     }
+                                    var i = 0;
+                                    while (!options.OverwriteExistingFiles && File.Exists(path.Replace(Id.ToString(), Path.GetFileNameWithoutExtension(Filename))))
+                                    {
+                                        i++;
+                                        Filename = $"{Path.GetFileNameWithoutExtension(Filename)} ({i}){Path.GetExtension(Filename)}";
+                                    }
                                     try
                                     {
                                         File.Move(path, path.Replace(Id.ToString(), Path.GetFileNameWithoutExtension(Filename)), options.OverwriteExistingFiles);
