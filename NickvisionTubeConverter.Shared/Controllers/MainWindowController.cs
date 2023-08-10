@@ -201,8 +201,7 @@ public class MainWindowController : IDisposable
         //Setup Keyring
         if(Keyring.Exists(AppInfo.ID))
         {
-            var attempts = 0;
-            while(_keyring == null && attempts < 3)
+            while(_keyring == null)
             {
                 var res = await KeyringLoginAsync!(_("Unlock Keyring"));
                 if (res.WasSkipped)
@@ -210,11 +209,6 @@ public class MainWindowController : IDisposable
                     break;
                 }
                 _keyring = Keyring.Access(AppInfo.ID, res.Password);
-                attempts++;
-            }
-            if(_keyring == null)
-            {
-                NotificationSent?.Invoke(this, new NotificationSentEventArgs(_("Unable to unlock keyring. Restart the app to try again."), NotificationSeverity.Error));
             }
         }
         //Check Network
