@@ -299,9 +299,9 @@ public partial class MainWindow : Adw.ApplicationWindow
     /// Occurs when Keyring needs a login
     /// </summary>
     /// <param name="title">The title of the account</param>
-    private async Task<string?> KeyringLoginAsync(string title)
+    private async Task<(bool WasSkipped, string Password)> KeyringLoginAsync(string title)
     {
-        var tcs = new TaskCompletionSource<string?>();
+        var tcs = new TaskCompletionSource<(bool WasSkipped, string Password)>();
         var passwordDialog = new PasswordDialog(this, title, tcs);
         passwordDialog.SetIconName(_controller.AppInfo.ID);
         passwordDialog.Present();
