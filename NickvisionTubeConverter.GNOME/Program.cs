@@ -37,6 +37,7 @@ public partial class Program
         _mainWindowController.AppInfo.Changelog =
             @"* Added the option to prevent suspend while using Parabolic
               * Added the ability to skip the password dialog when unlocking Keyring
+              * Added the ability to reset the Keyring when locked
               * Improved bitrate used for audio-only downloads with the best quality
               * Parabolic will now prefer videos with the h264 codec when downloading in the mp4 format. If space is a concern, users are recommended to download in the webm format which uses the vp* codec
               * If overwriting files is off and a download's file name exists, a numbered suffix will be attached to the end of the file name to prevent error
