@@ -1,5 +1,4 @@
-using Nickvision.Keyring.Controllers;
-using Nickvision.Keyring.Models;
+using Nickvision.Aura.Keyring;
 using NickvisionTubeConverter.GNOME.Helpers;
 using System;
 using System.Collections.Generic;
@@ -18,9 +17,11 @@ public partial class KeyringDialog : Adw.Window
     private readonly string _appID;
     
     [Gtk.Connect] private readonly Gtk.Button _backButton;
-    [Gtk.Connect] private readonly Gtk.Label _titleLabel;
     [Gtk.Connect] private readonly Adw.ToastOverlay _toastOverlay;
+    [Gtk.Connect] private readonly Adw.Banner _banner;
+    [Gtk.Connect] private readonly Gtk.Label _titleLabel;
     [Gtk.Connect] private readonly Adw.ViewStack _viewStack;
+    [Gtk.Connect] private readonly Adw.StatusPage _disabledPage;
     [Gtk.Connect] private readonly Gtk.Button _enableKeyringButton;
     [Gtk.Connect] private readonly Adw.EntryRow _newPasswordEntry;
     [Gtk.Connect] private readonly Adw.EntryRow _confirmPasswordEntry;
@@ -45,6 +46,7 @@ public partial class KeyringDialog : Adw.Window
     /// </summary>
     /// <param name="builder">Gtk.Builder</param>
     /// <param name="controller">KeyringDialogController</param>
+    /// <param name="appID">The application's id</param>
     /// <param name="parent">Gtk.Window</param>
     private KeyringDialog(Gtk.Builder builder, KeyringDialogController controller, string appID, Gtk.Window parent) : base(builder.GetPointer("_root"), false)
     {
@@ -55,7 +57,7 @@ public partial class KeyringDialog : Adw.Window
         _credentialRows = new List<Gtk.Widget>();
         _appID = appID;
         //Dialog Settings
-        SetTransientFor(parent);
+        SetTransientFor(_parent);
         SetIconName(_appID);
         //Build UI
         builder.Connect(this);
@@ -90,11 +92,7 @@ public partial class KeyringDialog : Adw.Window
             _titleLabel.SetVisible(false);
             _viewStack.SetVisibleChildName("disable");
         };
-        _confirmDisableKeyringButton.OnClicked += (sender, e) =>
-        {
-            _controller.DisableKeyring();
-            Close();
-        };
+        _confirmDisableKeyringButton.OnClicked += DisableKeyring;
         _backButton.OnClicked += async (sender, e) => await LoadHomePageAsync();
         _addCredentialButton.OnClicked += (sender, e) => LoadAddCredentialPage();
         _credentialAddButton.OnClicked += AddCredential;
@@ -103,7 +101,11 @@ public partial class KeyringDialog : Adw.Window
         if(!_controller.IsValid)
         {
             _mainBox.SetSensitive(false);
-            _toastOverlay.AddToast(Adw.Toast.New(_("Keyring has not been unlocked.")));
+            _banner.SetTitle(_("Keyring locked"));
+            _banner.SetButtonLabel(_("Reset"));
+            _banner.OnButtonClicked += ResetKeyring;
+            _banner.SetRevealed(true);
+            _disabledPage.SetDescription($"{_disabledPage.GetDescription()}\n\n{_("Restart the app to unlock the keyring.")}");
             _enableKeyringButton.SetVisible(false);
         }
     }
@@ -112,6 +114,7 @@ public partial class KeyringDialog : Adw.Window
     /// Constructs a KeyringDialog
     /// </summary>
     /// <param name="controller">KeyringDialogController</param>
+    /// <param name="appID">The application's id</param>
     /// <param name="parent">Gtk.Window</param>
     public KeyringDialog(KeyringDialogController controller, string appID, Gtk.Window parent) : this(Builder.FromFile("keyring_dialog.ui"), controller, appID, parent)
     {
@@ -256,6 +259,55 @@ public partial class KeyringDialog : Adw.Window
         {
             _urlRow.AddCssClass("error");
             _urlRow.SetTitle(_("URL (Invalid)"));
+        }
+    }
+
+    /// <summary>
+    /// Occurs when the reset keyring button is clicked
+    /// </summary>
+    /// <param name="sender">Adw.Banner</param>
+    /// <param name="e">EventArgs</param>
+    private void ResetKeyring(Adw.Banner sender, EventArgs e)
+    {
+        var closeDialog = Adw.MessageDialog.New(this, _("Reset Keyring?"), _("This will delete the previous keyring removing all passwords with it. This action is irreversible."));
+        closeDialog.SetIconName(_appID);
+        closeDialog.AddResponse("no", _("No"));
+        closeDialog.SetDefaultResponse("no");
+        closeDialog.SetCloseResponse("no");
+        closeDialog.AddResponse("yes", _("Yes"));
+        closeDialog.SetResponseAppearance("yes", Adw.ResponseAppearance.Destructive);
+        closeDialog.OnResponse += (s, ex) =>
+        {
+            if (ex.Response == "yes")
+            {
+                if (_controller.ResetKeyring())
+                {
+                    Close();
+                }
+                else
+                {
+                    _toastOverlay.AddToast(Adw.Toast.New(_("Unable to reset keyring.")));
+                }
+            }
+            closeDialog.Destroy();
+        };
+        closeDialog.Present();
+    }
+    
+    /// <summary>
+    /// Occurs when the disable keyring button is clicked
+    /// </summary>
+    /// <param name="sender">Gtk.Button</param>
+    /// <param name="e">EventArgs</param>
+    private void DisableKeyring(Gtk.Button sender, EventArgs e)
+    {
+        if (_controller.DisableKeyring())
+        {
+            Close();
+        }
+        else
+        {
+            _toastOverlay.AddToast(Adw.Toast.New(_("Unable to disable keyring.")));
         }
     }
 

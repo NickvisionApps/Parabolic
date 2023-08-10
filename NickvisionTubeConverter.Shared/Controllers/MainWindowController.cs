@@ -1,7 +1,6 @@
 ﻿using Nickvision.Aura;
 using Nickvision.Aura.Network;
-using Nickvision.Keyring.Models;
-using Nickvision.Keyring.Controllers;
+using Nickvision.Aura.Keyring;
 using NickvisionTubeConverter.Shared.Events;
 using NickvisionTubeConverter.Shared.Helpers;
 using NickvisionTubeConverter.Shared.Models;
@@ -38,7 +37,7 @@ public class MainWindowController : IDisposable
     /// <summary>
     /// A function for getting a password for the Keyring
     /// </summary>
-    public Func<string, Task<string?>>? KeyringLoginAsync { get; set; }
+    public Func<string, Task<(bool WasSkipped, string Password)>>? KeyringLoginAsync { get; set; }
     /// <summary>
     /// The preferred theme of the application
     /// </summary>
@@ -202,16 +201,14 @@ public class MainWindowController : IDisposable
         //Setup Keyring
         if(Keyring.Exists(AppInfo.ID))
         {
-            var attempts = 0;
-            while(_keyring == null && attempts < 3)
+            while(_keyring == null)
             {
-                var password = await KeyringLoginAsync!(_("Unlock Keyring"));
-                _keyring = Keyring.Access(AppInfo.ID, password);
-                attempts++;
-            }
-            if(_keyring == null)
-            {
-                NotificationSent?.Invoke(this, new NotificationSentEventArgs(_("Unable to unlock keyring. Restart the app to try again."), NotificationSeverity.Error));
+                var res = await KeyringLoginAsync!(_("Unlock Keyring"));
+                if (res.WasSkipped)
+                {
+                    break;
+                }
+                _keyring = Keyring.Access(AppInfo.ID, res.Password);
             }
         }
         //Check Network

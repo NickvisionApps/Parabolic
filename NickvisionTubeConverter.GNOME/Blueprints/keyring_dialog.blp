@@ -30,24 +30,28 @@ Adw.Window _root {
     }
 
     Gtk.WindowHandle {
-      Gtk.Box {
-        orientation: vertical;
-        spacing: 24;
-
-        Gtk.Label _titleLabel {
-          visible: false;
-
-          styles ["title-2"]
-        }
+      Adw.ToastOverlay _toastOverlay {
+        hexpand: true;
+        vexpand: true;
+        
+        Gtk.Box {
+          orientation: vertical;
           
-        Adw.ToastOverlay _toastOverlay {
-          hexpand: true;
-          vexpand: true;
-
+          Adw.Banner _banner {
+          
+          }
+  
+          Gtk.Label _titleLabel {
+            visible: false;
+            margin-bottom: 24;
+  
+            styles ["title-2"]
+          }
+          
           Adw.ViewStack _viewStack {
             Adw.ViewStackPage {
               name: "disabled";
-              child: Adw.StatusPage {
+              child: Adw.StatusPage _disabledPage {
                 icon-name: "key2-symbolic";
                 title: _("Keyring Disabled");
                 description: _("Use keyring to safely store credentials for sites that require login with username and password.");
@@ -140,6 +144,13 @@ Adw.Window _root {
                   spacing: 12;
                   halign: center;
 
+                  Gtk.Button _disableKeyringButton {
+                    valign: center;
+                    label: _("Disable Keyring");
+
+                    styles ["pill"]
+                  }
+                  
                   Gtk.Button _addCredentialButton {
                     valign: center;
 
@@ -149,13 +160,6 @@ Adw.Window _root {
                     };
 
                     styles ["pill", "suggested-action"]
-                  }
-
-                  Gtk.Button _disableKeyringButton {
-                    valign: center;
-                    label: _("Disable Keyring");
-
-                    styles ["pill"]
                   }
                 }
               };
