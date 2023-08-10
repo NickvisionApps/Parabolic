@@ -140,6 +140,13 @@ Adw.Window _root {
                   spacing: 12;
                   halign: center;
 
+                  Gtk.Button _disableKeyringButton {
+                    valign: center;
+                    label: _("Disable Keyring");
+
+                    styles ["pill"]
+                  }
+                  
                   Gtk.Button _addCredentialButton {
                     valign: center;
 
@@ -149,13 +156,6 @@ Adw.Window _root {
                     };
 
                     styles ["pill", "suggested-action"]
-                  }
-
-                  Gtk.Button _disableKeyringButton {
-                    valign: center;
-                    label: _("Disable Keyring");
-
-                    styles ["pill"]
                   }
                 }
               };
