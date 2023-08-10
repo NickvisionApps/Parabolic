@@ -20,8 +20,8 @@ public class Timeframe
     /// <summary>
     /// Constructs a timeframe
     /// </summary>
-    /// <param name="startTime">The start TimeSpan</param>
-    /// <param name="endTime">The end TimeSpan</param>
+    /// <param name="start">The start TimeSpan</param>
+    /// <param name="end">The end TimeSpan</param>
     public Timeframe(TimeSpan start, TimeSpan end)
     {
         Start = start;
@@ -32,7 +32,8 @@ public class Timeframe
     /// Parses a Timeframe object
     /// </summary>
     /// <param name="start">The start time</param>
-    /// <param name="start">The end time</param>
+    /// <param name="end">The end time</param>
+    /// <param name="duration">The duration of the media in seconds</param>
     /// <returns>The Timeframe object</returns>
     public static Timeframe Parse(string start, string end, double duration)
     {
