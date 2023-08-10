@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-08-09 22:54-0400\n"
-"PO-Revision-Date: 2023-08-03 17:56+0000\n"
+"PO-Revision-Date: 2023-08-10 15:58+0000\n"
 "Last-Translator: Simon Hahne <simonhahne@web.de>\n"
-"Language-Team: German <https://hosted.weblate.org/projects/nickvision-tube-"
-"converter/app/de/>\n"
+"Language-Team: German <https://hosted.weblate.org/projects/"
+"nickvision-tube-converter/app/de/>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -140,7 +140,7 @@ msgstr "Download mit aria2 angefangen"
 
 #: ../../../Models/Download.cs:370
 msgid "Download using ffmpeg has started"
-msgstr "Download mit Ffmpeg angefangen"
+msgstr "Download mit FFmpeg angefangen"
 
 #: ../../../Controllers/MainWindowController.cs:87
 #: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.desktop.in:5
@@ -202,9 +202,8 @@ msgid "Keyring"
 msgstr "Keyring"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:104
-#, fuzzy
 msgid "Keyring locked"
-msgstr "Keyring deaktiviert"
+msgstr "Keyring gesperrt"
 
 #: ../../../Controllers/MainWindowController.cs:107
 msgid "List of supported sites"
@@ -295,16 +294,15 @@ msgstr "Verarbeitung..."
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:105
 msgid "Reset"
-msgstr ""
+msgstr "Zurücksetzen"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:272
-#, fuzzy
 msgid "Reset Keyring?"
-msgstr "Keyring einrichten"
+msgstr "Keyring zurücksetzen?"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:108
 msgid "Restart the app to unlock the keyring."
-msgstr ""
+msgstr "Starte die App neu um den Keyring zu entsperren."
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:470
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:146
@@ -390,26 +388,29 @@ msgid ""
 "This will delete the previous keyring removing all passwords with it. This "
 "action is irreversible."
 msgstr ""
+"Hierdurch wird der Keyring und alle darin gespeicherten Passwörter gelöscht. "
+"Die Aktion kann nicht rückgängig gemacht werden."
 
 #: ../../../Controllers/MainWindowController.cs:115
 msgid "translator-credits"
-msgstr "Feliks Weber <feliks@notabit.eu>"
+msgstr ""
+"Feliks Weber <feliks@notabit.eu>\n"
+"Simon Hahne <simon@nicewaffel.dev>"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:310
-#, fuzzy
 msgid "Unable to disable keyring."
-msgstr "Keyring deaktivieren"
+msgstr "Keyring konnte nicht deaktiviert werden."
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:289
 msgid "Unable to reset keyring."
-msgstr ""
+msgstr "Keyring konnte nicht zurückgesetzt werden."
 
 #: ../../../Controllers/MainWindowController.cs:188
 #: ../../../Controllers/MainWindowController.cs:199
 msgid "Unable to setup dependencies. Please restart the app and try again."
 msgstr ""
-"Die Abhängigkeiten können nicht heruntergeladen werden. Bitte starten Sie "
-"die Anwendung neu und versuchen Sie es erneut."
+"Die Abhängigkeiten können nicht heruntergeladen werden. Bitte starte die "
+"Anwendung neu und versuche es erneut."
 
 #: ../../../Controllers/MainWindowController.cs:206
 msgid "Unlock Keyring"
@@ -536,12 +537,12 @@ msgid "Download Specific Timeframe"
 msgstr "Bestimmten Zeitraum herunterladen"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:320
-#, fuzzy
 msgid ""
 "Media can possibly be cut inaccurately.\n"
 "Enabling this option will disable the use of aria2 as the downloader if it "
 "is enabled."
 msgstr ""
+"Medien können möglicherweise ungenau geschnitten werden.\n"
 "Aktivierung dieser Option deaktiviert aria2 als Downloader falls er "
 "aktiviert ist."
 
@@ -596,16 +597,14 @@ msgid "Search..."
 msgstr "Suchen..."
 
 #: NickvisionTubeConverter.GNOME/Blueprints/history_dialog.blp:59
-#, fuzzy
 msgid "No Previous Downloads"
-msgstr "Keine vorherigen Downloads"
+msgstr "Keine bisherigen Downloads"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:56
 msgid "Keyring Disabled"
 msgstr "Keyring deaktiviert"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:57
-#, fuzzy
 msgid ""
 "Use keyring to safely store credentials for sites that require login with "
 "username and password."
@@ -642,7 +641,6 @@ msgid "Disable Keyring"
 msgstr "Keyring deaktivieren"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:159
-#, fuzzy
 msgid "Add Login"
 msgstr "Anmeldedaten hinzufügen"
 
@@ -655,8 +653,8 @@ msgid ""
 "Disabling the keyring will delete all data currently stored inside. Are you "
 "sure you want to disable it?"
 msgstr ""
-"Deaktivieren des Keyrings löscht alle beinhaltete Daten. Bist du sicher das "
-"du ihn deaktivieren möchtest?"
+"Deaktivieren des Keyrings löscht alle gespeicherten Anmeldedaten. Bist du "
+"sicher das du ihn deaktivieren möchtest?"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:177
 msgid "Disable"
@@ -677,7 +675,7 @@ msgstr "Titelbearbeitung rückgängig machen"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/password_dialog.blp:55
 msgid "Skip"
-msgstr ""
+msgstr "Überspringen"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/password_dialog.blp:62
 msgid "Unlock"
@@ -687,7 +685,7 @@ msgstr "Entsperren"
 #: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:51
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:9
 msgid "Preferences"
-msgstr "Präferenzen"
+msgstr "Einstellungen"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:15
 msgid "User Interface"
@@ -695,7 +693,7 @@ msgstr "Benutzeroberfläche"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:18
 msgid "Theme"
-msgstr "Thema"
+msgstr "Farbschema"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:20
 msgctxt "Theme"
@@ -741,7 +739,7 @@ msgstr "Nie"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:44
 msgid "Prevent Suspend"
-msgstr ""
+msgstr "Ruhezustand verhindern"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:59
 msgid "Allow Running In Background"
