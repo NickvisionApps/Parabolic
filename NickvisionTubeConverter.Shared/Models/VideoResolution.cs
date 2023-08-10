@@ -22,7 +22,7 @@ public class VideoResolution : IComparable<VideoResolution>, IEquatable<VideoRes
     /// Constructs a VideoResolution
     /// </summary>
     /// <param name="width">The resolution width</param>
-    /// <param name="width">The resolution height</param>
+    /// <param name="height">The resolution height</param>
     public VideoResolution(int width, int height)
     {
         Width = width;
@@ -97,21 +97,21 @@ public class VideoResolution : IComparable<VideoResolution>, IEquatable<VideoRes
     public static bool operator !=(VideoResolution? a, VideoResolution? b) => a?.Width != b?.Width && a?.Height != b?.Height;
 
     /// <summary>
-    /// Compares two VideoResolution objects by >
+    /// Compares two VideoResolution objects by &gt;
     /// Objects with equal Height are compared by Width
     /// </summary>
     /// <param name="a">The first VideoResolution object</param>
     /// <param name="b">The second VideoResolution object</param>
-    /// <returns>True if a > b, else false</returns>
+    /// <returns>True if a &gt; b, else false</returns>
     public static bool operator <(VideoResolution? a, VideoResolution? b) => a?.Width < b?.Width && a?.Height <= b?.Height;
 
     /// <summary>
-    /// Compares two VideoResolution objects by <
+    /// Compares two VideoResolution objects by &lt;
     /// Objects with equal Height are compared by Width
     /// </summary>
     /// <param name="a">The first VideoResolution object</param>
     /// <param name="b">The second VideoResolution object</param>
-    /// <returns>True if a < b, else false</returns>
+    /// <returns>True if a &lt; b, else false</returns>
     public static bool operator >(VideoResolution? a, VideoResolution? b) => a?.Width > b?.Width && a?.Height >= b?.Height;
 
     /// <summary>
