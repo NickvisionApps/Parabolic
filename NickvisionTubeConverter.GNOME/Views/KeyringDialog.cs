@@ -2,7 +2,6 @@ using Nickvision.Aura.Keyring;
 using NickvisionTubeConverter.GNOME.Helpers;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Threading.Tasks;
 using static NickvisionTubeConverter.Shared.Helpers.Gettext;
 
@@ -18,9 +17,11 @@ public partial class KeyringDialog : Adw.Window
     private readonly string _appID;
     
     [Gtk.Connect] private readonly Gtk.Button _backButton;
-    [Gtk.Connect] private readonly Gtk.Label _titleLabel;
     [Gtk.Connect] private readonly Adw.ToastOverlay _toastOverlay;
+    [Gtk.Connect] private readonly Adw.Banner _banner;
+    [Gtk.Connect] private readonly Gtk.Label _titleLabel;
     [Gtk.Connect] private readonly Adw.ViewStack _viewStack;
+    [Gtk.Connect] private readonly Adw.StatusPage _disabledPage;
     [Gtk.Connect] private readonly Gtk.Button _enableKeyringButton;
     [Gtk.Connect] private readonly Adw.EntryRow _newPasswordEntry;
     [Gtk.Connect] private readonly Adw.EntryRow _confirmPasswordEntry;
@@ -100,10 +101,11 @@ public partial class KeyringDialog : Adw.Window
         if(!_controller.IsValid)
         {
             _mainBox.SetSensitive(false);
-            var toast = Adw.Toast.New(_("Keyring has not been unlocked."));
-            toast.SetButtonLabel(_("Reset"));
-            toast.OnButtonClicked += ResetKeyring;
-            _toastOverlay.AddToast(toast);
+            _banner.SetTitle(_("Keyring locked"));
+            _banner.SetButtonLabel(_("Reset"));
+            _banner.OnButtonClicked += ResetKeyring;
+            _banner.SetRevealed(true);
+            _disabledPage.SetDescription($"{_disabledPage.GetDescription()}\n\n{_("Restart the app to unlock the keyring.")}");
             _enableKeyringButton.SetVisible(false);
         }
     }
@@ -263,9 +265,9 @@ public partial class KeyringDialog : Adw.Window
     /// <summary>
     /// Occurs when the reset keyring button is clicked
     /// </summary>
-    /// <param name="sender">Adw.Toast</param>
+    /// <param name="sender">Adw.Banner</param>
     /// <param name="e">EventArgs</param>
-    private void ResetKeyring(Adw.Toast sender, EventArgs e)
+    private void ResetKeyring(Adw.Banner sender, EventArgs e)
     {
         var closeDialog = Adw.MessageDialog.New(this, _("Reset Keyring?"), _("This will delete the previous keyring removing all passwords with it. This action is irreversible."));
         closeDialog.SetIconName(_appID);
