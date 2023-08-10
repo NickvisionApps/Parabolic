@@ -1,5 +1,4 @@
-using Nickvision.Keyring.Controllers;
-using Nickvision.Keyring.Models;
+using Nickvision.Aura.Keyring;
 using NickvisionTubeConverter.GNOME.Helpers;
 using System;
 using System.Collections.Generic;

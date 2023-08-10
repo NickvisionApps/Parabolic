@@ -1,7 +1,6 @@
 ﻿using Nickvision.Aura;
 using Nickvision.Aura.Network;
-using Nickvision.Keyring.Models;
-using Nickvision.Keyring.Controllers;
+using Nickvision.Aura.Keyring;
 using NickvisionTubeConverter.Shared.Events;
 using NickvisionTubeConverter.Shared.Helpers;
 using NickvisionTubeConverter.Shared.Models;

@@ -1,5 +1,5 @@
 using Nickvision.Aura;
-using Nickvision.Keyring.Models;
+using Nickvision.Aura.Keyring;
 using NickvisionTubeConverter.Shared.Models;
 using System;
 using System.Collections.Generic;
