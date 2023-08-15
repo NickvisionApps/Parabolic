@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-08-09 22:54-0400\n"
-"PO-Revision-Date: 2023-07-23 06:46+0000\n"
+"PO-Revision-Date: 2023-08-15 16:47+0000\n"
 "Last-Translator: Gnuey56 <gnuey56@proton.me>\n"
-"Language-Team: Japanese <https://hosted.weblate.org/projects/nickvision-tube-"
-"converter/app/ja/>\n"
+"Language-Team: Japanese <https://hosted.weblate.org/projects/"
+"nickvision-tube-converter/app/ja/>\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -97,19 +97,16 @@ msgid "Close and Stop Downloads?"
 msgstr "閉じてダウンロードを中止しますか？"
 
 #: ../../../Controllers/MainWindowController.cs:110
-#, fuzzy
 msgid "Contributors on GitHub ❤️"
-msgstr ""
-"Nicholas Logozzo {0}\n"
-"GitHub での貢献者のみなさん❤️ {1}"
+msgstr "GitHub での貢献者の皆さん❤️"
 
 #: ../../../Controllers/MainWindowController.cs:113
 msgid "DaPigGuy"
-msgstr ""
+msgstr "DaPigGuy"
 
 #: ../../../Controllers/MainWindowController.cs:114
 msgid "David Lapshin"
-msgstr ""
+msgstr "David Lapshin"
 
 #: ../../../Models/VideoResolution.cs:55
 msgid "Default"
@@ -190,7 +187,7 @@ msgstr "ファイル名"
 
 #: ../../../Controllers/MainWindowController.cs:112
 msgid "Fyodor Sobolev"
-msgstr ""
+msgstr "Fyodor Sobolev"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:525
 msgid "GitHub Repo"
@@ -203,9 +200,8 @@ msgid "Keyring"
 msgstr "キーリング"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:104
-#, fuzzy
 msgid "Keyring locked"
-msgstr "キーリングは無効"
+msgstr "キーリングはロックされています"
 
 #: ../../../Controllers/MainWindowController.cs:107
 msgid "List of supported sites"
@@ -245,7 +241,7 @@ msgstr "名前（空）"
 #: ../../../Controllers/MainWindowController.cs:109
 #: ../../../Controllers/MainWindowController.cs:111
 msgid "Nicholas Logozzo"
-msgstr ""
+msgstr "Nicholas Logozzo"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:274
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:339
@@ -255,7 +251,7 @@ msgstr "いいえ"
 
 #: ../../../Controllers/MainWindowController.cs:224
 msgid "No active internet connection"
-msgstr ""
+msgstr "有効なインターネット接続がありません"
 
 #: ../../../Models/DownloadManager.cs:175
 msgid "No downloads running"
@@ -296,16 +292,15 @@ msgstr "進行中..."
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:105
 msgid "Reset"
-msgstr ""
+msgstr "リセット"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:272
-#, fuzzy
 msgid "Reset Keyring?"
-msgstr "キーリングをセットアップ"
+msgstr "キーリングをリセットしますか？"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:108
 msgid "Restart the app to unlock the keyring."
-msgstr ""
+msgstr "キーリングを解除するにはアプリを再起動してください。"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:470
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:146
@@ -386,20 +381,20 @@ msgstr "このアクションは取り消せません。本当に削除します
 msgid ""
 "This will delete the previous keyring removing all passwords with it. This "
 "action is irreversible."
-msgstr ""
+msgstr "以前のキーリングとすべてのパスワードは削除されます。この動作は元に戻せません"
+"。"
 
 #: ../../../Controllers/MainWindowController.cs:115
 msgid "translator-credits"
 msgstr "翻訳者のクレジット"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:310
-#, fuzzy
 msgid "Unable to disable keyring."
-msgstr "キーリングを無効化"
+msgstr "キーリングを無効化できません。"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:289
 msgid "Unable to reset keyring."
-msgstr ""
+msgstr "キーリングをリセットできません。"
 
 #: ../../../Controllers/MainWindowController.cs:188
 #: ../../../Controllers/MainWindowController.cs:199
@@ -507,13 +502,12 @@ msgid "Download"
 msgstr "ダウンロード"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:248
-#, fuzzy
 msgid "Select All"
-msgstr "すべて停止"
+msgstr "すべて選択"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:255
 msgid "Deselect All"
-msgstr ""
+msgstr "すべて選択解除"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:296
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:131
@@ -533,14 +527,14 @@ msgid "Download Specific Timeframe"
 msgstr "特定の時間枠をダウンロード"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:320
-#, fuzzy
 msgid ""
 "Media can possibly be cut inaccurately.\n"
 "Enabling this option will disable the use of aria2 as the downloader if it "
 "is enabled."
 msgstr ""
-"このオプションを有効だと、aria2 を有効にしている場合、aria2 でのダウンロード"
-"は無効になります。"
+"メディアは不正確にカットされる可能性があります。\n"
+"このオプションを有効だと、aria2 を有効にしている場合、aria2 "
+"でのダウンロードは無効になります。"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:326
 msgid "Leave empty to download from start."
@@ -672,7 +666,7 @@ msgstr "タイトルの編集を取り消し"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/password_dialog.blp:55
 msgid "Skip"
-msgstr ""
+msgstr "スキップ"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/password_dialog.blp:62
 msgid "Unlock"
@@ -734,7 +728,7 @@ msgstr "通知しない"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:44
 msgid "Prevent Suspend"
-msgstr ""
+msgstr "サスペンドを防ぐ"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:59
 msgid "Allow Running In Background"
@@ -821,7 +815,7 @@ msgstr ""
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:260
 msgid "Proxy URL"
-msgstr ""
+msgstr "プロキシ URL"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:269
 msgid "Cookies File"
