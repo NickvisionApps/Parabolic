@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" id="downloader" its:version="2.0" xml:lang="ja">
+<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" id="downloader" its:version="2.0" xml:lang="gl">
 <info>
 	<link type="guide" xref="index"/>
-	<title type="link">ダウンローダー 🌐</title>
+	<title type="link">Downloader 🌐</title>
 	<credit type="author copyright">
 		<name>Nicholas Logozzo</name>
 		<years its:translate="no">2023</years>
@@ -12,21 +12,15 @@
 		<years its:translate="no">2023</years>
 	</credit>
 	<license href="http://creativecommons.org/licenses/by/4.0/" its:translate="no"><p>Creative Commons Attribution 4.0 International License</p></license>
+</info>
 
-    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
-      <mal:name>Gnuey56</mal:name>
-      <mal:email>gnuey56@proton.me</mal:email>
-      <mal:years>2023</mal:years>
-    </mal:credit>
-  </info>
-
-<title>ダウンローダー</title>
-<p>このページでは<app>Parabolic</app>の環境設定のコンバーターを設定するためのすべてオプションについて説明します。</p>
+<title>Downloader</title>
+<p>This page explains all options for configuring the Downloader in Preferences in <app>Parabolic</app>.</p>
 
 <terms>
 	<item>
-		<title>アクティブダウンロードの最大数</title>
-		<p>平行して進行できるアクティブダウンロード数。数値は1から10までの整数である必要があります。</p>
+		<title>Maximum Number of Active Downloads</title>
+		<p>The number of active downloads allowed to run at a time. Must be an integer value between 1 and 10.</p>
         <p>If the max number of active downloads is reached, Parabolic will place new downloads in a queue until more downloads are able to be run.</p>
 		<note style="advanced">
 			<p>Default: 5</p>
@@ -37,7 +31,7 @@
         <p>If enabled, Parabolic will overwrite existing files.</p>
         <p>For example, if a file named <code>movie.mp4</code> exists in the download folder, and a new download is created named <code>movie</code>, <code>movie.mp4</code> will be overwritten with the new download's content.</p>
 		<note style="advanced">
-			<p>デフォルト: オン</p>
+			<p>Default: On</p>
 		</note>
     </item>
     <item>
@@ -51,7 +45,7 @@
         <title>Use aria2</title>
         <p>If enabled, Parabolic will use aria2c to download media. Although using aria2c can improve download speed, download progress will not be displayed in the UI.</p>
 		<note style="advanced">
-			<p>デフォルト: オフ</p>
+			<p>Default: Off</p>
 		</note>
     </item>
     <item>
@@ -81,7 +75,7 @@
 		</note>
     </item>
     <item>
-        <title>プロキシ URL</title>
+        <title>Proxy URL</title>
         <p>The url of the proxy server to use.</p>
     </item>
     <item>
