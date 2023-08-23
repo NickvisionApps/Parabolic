@@ -40,6 +40,7 @@ public class Download
     private readonly string _logPath;
     private readonly bool _limitSpeed;
     private readonly uint _speedLimit;
+    private readonly bool _splitChapters;
     private readonly bool _cropThumbnail;
     private readonly Timeframe? _timeframe;
     private readonly uint _playlistPosition;
@@ -116,21 +117,22 @@ public class Download
     /// </summary>
     /// <param name="mediaUrl">The url of the media to download</param>
     /// <param name="fileType">The file type to download the media as</param>
-    /// <param name="saveFolder">The folder to save the download to</param>
-    /// <param name="saveFilename">The filename to save the download as</param>
-    /// <param name="limitSpeed">Whether or not to limit the download speed</param>
-    /// <param name="speedLimit">The speed at which to limit the download</param>
     /// <param name="quality">The quality of the download</param>
     /// <param name="resolution">The video resolution if available</param>
     /// <param name="audioLanguage">The audio language code</param>
     /// <param name="subtitle">The subtitles for the download</param>
+    /// <param name="saveFolder">The folder to save the download to</param>
+    /// <param name="saveFilename">The filename to save the download as</param>
+    /// <param name="limitSpeed">Whether or not to limit the download speed</param>
+    /// <param name="speedLimit">The speed at which to limit the download</param>
+    /// <param name="splitChapters">Whether or not to split based on chapters</param>
     /// <param name="cropThumbnail">Whether or not to crop the thumbnail</param>
     /// <param name="timeframe">A Timeframe to restrict the timespan of the media download</param>
     /// <param name="playlistPosition">Position in playlist starting with 1, or 0 if not in playlist</param>
     /// <param name="username">A username for the website (if available)</param>
     /// <param name="password">A password for the website (if available)</param>
     /// <exception cref="ArgumentException">Thrown if timeframe is specified and limitSpeed is enabled</exception>
-    public Download(string mediaUrl, MediaFileType fileType, string saveFolder, string saveFilename, bool limitSpeed, uint speedLimit, Quality quality, VideoResolution? resolution, string? audioLanguage, Subtitle subtitle, bool cropThumbnail, Timeframe? timeframe, uint playlistPosition, string? username, string? password)
+    public Download(string mediaUrl, MediaFileType fileType, Quality quality, VideoResolution? resolution, string? audioLanguage, Subtitle subtitle, string saveFolder, string saveFilename, bool limitSpeed, uint speedLimit, bool splitChapters, bool cropThumbnail, Timeframe? timeframe, uint playlistPosition, string? username, string? password)
     {
         Id = Guid.NewGuid();
         MediaUrl = mediaUrl;
@@ -149,6 +151,7 @@ public class Download
         _logPath = $"{_tempDownloadPath}log";
         _limitSpeed = limitSpeed;
         _speedLimit = speedLimit;
+        _splitChapters = splitChapters;
         _cropThumbnail = cropThumbnail;
         _timeframe = timeframe;
         _playlistPosition = playlistPosition;
@@ -292,10 +295,14 @@ public class Download
                         postProcessors.Add(new Dictionary<string, dynamic>() { { "key", "FFmpegEmbedSubtitle" } });
                     }
                 }
+                if (_splitChapters)
+                {
+                    postProcessors.Add(new Dictionary<string, dynamic>() { { "key", "FFmpegSplitChapters" } });
+                }
                 if (options.EmbedMetadata)
                 {
                     postProcessors.Add(new Dictionary<string, dynamic>() { { "key", "MetadataFromField" }, { "formats", new List<string>() { ":(?P<meta_comment>)", ":(?P<meta_description>)", ":(?P<meta_synopsis>)", ":(?P<meta_purl>)", $"{_playlistPosition}:%(meta_track)s"} } });
-                    postProcessors.Add(new Dictionary<string, dynamic>() { { "key", "TCMetadata" }, { "add_metadata", true } });
+                    postProcessors.Add(new Dictionary<string, dynamic>() { { "key", "TCMetadata" }, { "add_metadata", true }, { "add_chapters", options.EmbedChapters } });
                     if (FileType.GetSupportsThumbnails())
                     {
                         _ytOpt.Add("writethumbnail", true);
@@ -311,7 +318,7 @@ public class Download
                         }
                     }
                 }
-                if (options.EmbedChapters)
+                else if (options.EmbedChapters)
                 {
                     postProcessors.Add(new Dictionary<string, dynamic>() { { "key", "TCMetadata" }, { "add_chapters", true } });
                 }

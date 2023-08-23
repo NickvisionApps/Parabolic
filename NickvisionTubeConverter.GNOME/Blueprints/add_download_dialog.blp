@@ -302,6 +302,18 @@ Adw.Window _root {
                         active: false;
                       }
                     }
+                    
+                    Adw.ActionRow _splitChaptersRow {
+                      title: _("Split Chapters");
+                      subtitle: _("Splits the video into multiple smaller ones based on its chapters.");
+                      activatable-widget: _splitChaptersSwitch;
+
+                      [suffix]
+                      Gtk.Switch _splitChaptersSwitch {
+                        valign: center;
+                        active: false;
+                      }
+                    }
 
                     Adw.ActionRow _cropThumbnailRow {
                       title: _("Crop Thumbnail");
