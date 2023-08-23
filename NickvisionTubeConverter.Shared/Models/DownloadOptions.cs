@@ -22,6 +22,10 @@ public class DownloadOptions
     /// </summary>
     public int AriaMinSplitSize { get; init; }
     /// <summary>
+    /// Whether or not to use the SponsorBlock extension for YouTube downloads
+    /// </summary>
+    public bool YouTubeSponsorBlock { get; init; }
+    /// <summary>
     /// A comma separated list of language codes for subtitle downloads
     /// </summary>
     public string SubtitleLangs { get; init; }
@@ -49,17 +53,19 @@ public class DownloadOptions
     /// <param name="useAria">Whether or not to use aria2 for the download</param>
     /// <param name="ariaMaxConnectionsPerServer">The maximum number of connections to one server for each download (-x)</param>
     /// <param name="ariaMinSplitSize">The minimum size of which to split a file (-k)</param>
+    /// <param name="youTubeSponsorBlock">Whether or not to use the SponsorBlock extension for YouTube downloads</param>
     /// <param name="subtitleLangs">A comma separated list of language codes for subtitle downloads</param>
     /// <param name="proxyUrl">The url of the proxy server to use</param>
     /// <param name="cookiesPath">The path to the cookies file to use for yt-dlp</param>
     /// <param name="embedMetadata">Whether or not to embed media metadata in the downloaded file</param>
     /// <param name="embedChapters">Whether or not to embed chapters in the downloaded file</param>
-    public DownloadOptions(bool overwriteExistingFiles, bool useAria, int ariaMaxConnectionsPerServer, int ariaMinSplitSize, string subtitleLangs, string proxyUrl, string cookiesPath, bool embedMetadata, bool embedChapters)
+    public DownloadOptions(bool overwriteExistingFiles, bool useAria, int ariaMaxConnectionsPerServer, int ariaMinSplitSize, bool youTubeSponsorBlock, string subtitleLangs, string proxyUrl, string cookiesPath, bool embedMetadata, bool embedChapters)
     {
         OverwriteExistingFiles = overwriteExistingFiles;
         UseAria = useAria;
         AriaMaxConnectionsPerServer = ariaMaxConnectionsPerServer;
         AriaMinSplitSize = ariaMinSplitSize;
+        YouTubeSponsorBlock = youTubeSponsorBlock;
         SubtitleLangs = subtitleLangs;
         ProxyUrl = proxyUrl;
         CookiesPath = cookiesPath;
