@@ -322,6 +322,10 @@ public class Download
                 {
                     postProcessors.Add(new Dictionary<string, dynamic>() { { "key", "TCMetadata" }, { "add_chapters", true } });
                 }
+                if (options.YouTubeSponsorBlock)
+                {
+                    postProcessors.Add(new Dictionary<string, dynamic>() { { "key", "SponsorBlock" }, { "when", "after_filter" }, { "categories", new List<string>() { "sponsor", "intro", "outro", "selfpromo", "preview", "filler", "interaction", "music_offtopic" } } });
+                }
                 if (postProcessors.Count != 0)
                 {
                     _ytOpt.Add("postprocessors", postProcessors);
