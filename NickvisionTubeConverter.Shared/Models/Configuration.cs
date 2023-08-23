@@ -62,6 +62,10 @@ public class Configuration : ConfigurationBase
     /// </summary>
     public int AriaMinSplitSize { get; set; }
     /// <summary>
+    /// Whether or not to use the SponsorBlock extension for YouTube downloads
+    /// </summary>
+    public bool YouTubeSponsorBlock { get; set; }
+    /// <summary>
     /// A comma separated list of language codes for subtitle downloads
     /// </summary>
     public string SubtitleLangs { get; set; }
@@ -122,6 +126,7 @@ public class Configuration : ConfigurationBase
         UseAria = false;
         AriaMaxConnectionsPerServer = 16;
         AriaMinSplitSize = 20;
+        YouTubeSponsorBlock = false;
         SubtitleLangs = $"{CultureInfo.CurrentCulture.TwoLetterISOLanguageName},{CultureInfo.CurrentCulture.ThreeLetterISOLanguageName}";
         ProxyUrl = "";
         CookiesPath = "";

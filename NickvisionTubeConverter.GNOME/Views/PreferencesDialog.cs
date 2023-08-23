@@ -31,6 +31,8 @@ public partial class PreferencesDialog : Adw.PreferencesWindow
     [Gtk.Connect] private readonly Gtk.Button _ariaMaxConnectionsPerServerResetButton;
     [Gtk.Connect] private readonly Gtk.SpinButton _ariaMinSplitSizeSpin;
     [Gtk.Connect] private readonly Gtk.Button _ariaMinSplitSizeResetButton;
+    [Gtk.Connect] private readonly Gtk.Switch _sponsorBlockSwitch;
+    [Gtk.Connect] private readonly Gtk.Button _sponsorBlockInfoButton;
     [Gtk.Connect] private readonly Adw.EntryRow _subtitleLangsRow;
     [Gtk.Connect] private readonly Adw.EntryRow _proxyRow;
     [Gtk.Connect] private readonly Adw.EntryRow _cookiesRow;
@@ -60,6 +62,9 @@ public partial class PreferencesDialog : Adw.PreferencesWindow
                 OnThemeChanged();
             }
         };
+        _ariaMaxConnectionsPerServerResetButton.OnClicked += (sender, e) => _ariaMaxConnectionsPerServerSpin.SetValue(16);
+        _ariaMinSplitSizeResetButton.OnClicked += (sender, e) => _ariaMinSplitSizeSpin.SetValue(20);
+        _sponsorBlockInfoButton.OnClicked += async (sender, e) => await LaunchSponsorBlockInfoAsync();
         _subtitleLangsRow.OnApply += SubtitleLangsChanged;
         _chromeCookiesButton.OnClicked += async (sender, e) => await LaunchChromeCookiesExtensionAsync();
         _firefoxCookiesButton.OnClicked += async (sender, e) => await LaunchFirefoxCookiesExtensionAsync();
@@ -78,9 +83,8 @@ public partial class PreferencesDialog : Adw.PreferencesWindow
         _speedLimitSpin.SetValue(_controller.SpeedLimit);
         _useAriaRow.SetEnableExpansion(_controller.UseAria);
         _ariaMaxConnectionsPerServerSpin.SetValue(_controller.AriaMaxConnectionsPerServer);
-        _ariaMaxConnectionsPerServerResetButton.OnClicked += (sender, e) => _ariaMaxConnectionsPerServerSpin.SetValue(16);
         _ariaMinSplitSizeSpin.SetValue(_controller.AriaMinSplitSize);
-        _ariaMinSplitSizeResetButton.OnClicked += (sender, e) => _ariaMinSplitSizeSpin.SetValue(20);
+        _sponsorBlockSwitch.SetActive(_controller.YouTubeSponsorBlock);
         _subtitleLangsRow.SetText(_controller.SubtitleLangs);
         _proxyRow.SetText(_controller.ProxyUrl);
         if (File.Exists(_controller.CookiesPath))
@@ -120,6 +124,7 @@ public partial class PreferencesDialog : Adw.PreferencesWindow
         _controller.UseAria = _useAriaRow.GetEnableExpansion();
         _controller.AriaMaxConnectionsPerServer = (int)_ariaMaxConnectionsPerServerSpin.GetValue();
         _controller.AriaMinSplitSize = (int)_ariaMinSplitSizeSpin.GetValue();
+        _controller.YouTubeSponsorBlock = _sponsorBlockSwitch.GetActive();
         _controller.ProxyUrl = _proxyRow.GetText();
         _controller.DisallowConversions = _disallowConversionsSwitch.GetActive();
         _controller.EmbedMetadata = _embedMetadataRow.GetEnableExpansion();
@@ -142,6 +147,19 @@ public partial class PreferencesDialog : Adw.PreferencesWindow
             Theme.Dark => Adw.ColorScheme.ForceDark,
             _ => Adw.ColorScheme.PreferLight
         };
+    }
+    
+    /// <summary>
+    /// Occurs when a button to see SponsorBlock info is clicked
+    /// </summary>
+    private async Task LaunchSponsorBlockInfoAsync()
+    {
+        var uriLauncher = Gtk.UriLauncher.New("https://sponsor.ajay.app/");
+        try
+        {
+            await uriLauncher.LaunchAsync(this);
+        }
+        catch { }
     }
 
     /// <summary>
