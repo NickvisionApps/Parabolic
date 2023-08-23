@@ -60,7 +60,6 @@ public partial class AddDownloadDialog : Adw.Window
     [Gtk.Connect] private readonly Adw.PreferencesGroup _advancedGroup;
     [Gtk.Connect] private readonly Adw.ActionRow _speedLimitRow;
     [Gtk.Connect] private readonly Gtk.Switch _speedLimitSwitch;
-    [Gtk.Connect] private readonly Adw.ActionRow _splitChaptersRow;
     [Gtk.Connect] private readonly Gtk.Switch _splitChaptersSwitch;
     [Gtk.Connect] private readonly Adw.ActionRow _cropThumbnailRow;
     [Gtk.Connect] private readonly Gtk.Switch _cropThumbnailSwitch;
