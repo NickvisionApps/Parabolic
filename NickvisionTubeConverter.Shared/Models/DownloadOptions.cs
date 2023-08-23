@@ -1,14 +1,14 @@
 namespace NickvisionTubeConverter.Shared.Models;
 
 /// <summary>
-/// Options for a download
+/// Configurable options for a download
 /// </summary>
 public class DownloadOptions
 {
     /// <summary>
     /// Whether or not to overwrite existing files
     /// </summary>
-    public bool OverwriteExistingFiles { get; set; }
+    public bool OverwriteExistingFiles { get; init; }
     /// <summary>
     /// Whether or not to use aria2 for the download
     /// </summary>
