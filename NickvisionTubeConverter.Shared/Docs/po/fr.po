@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2023-08-22 22:00-0400\n"
+"POT-Creation-Date: 2023-08-23 17:32-0400\n"
 "PO-Revision-Date: 2023-08-08 10:00+0000\n"
 "Last-Translator: rene-coty <irenee.thirion@e.email>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -74,7 +74,7 @@ msgstr ""
 
 #. (itstool) path: note/p
 #: yelp/C/converter.page:29 yelp/C/converter.page:45 yelp/C/converter.page:52
-#: yelp/C/downloader.page:51
+#: yelp/C/downloader.page:51 yelp/C/downloader.page:77
 msgid "Default: Off"
 msgstr "Par défaut : Désactivée"
 
@@ -307,11 +307,34 @@ msgstr "Par défaut : 20"
 
 #. (itstool) path: item/title
 #: yelp/C/downloader.page:71
+msgid "Use SponsorBlock for YouTube"
+msgstr ""
+
+#. (itstool) path: item/p
+#: yelp/C/downloader.page:72
+#, fuzzy
+msgid ""
+"If enabled, Parabolic will apply the SponsorBlock extension to YouTube "
+"downloads."
+msgstr ""
+"Si cette option est activée, Parabole activera automatiquement l’option "
+"avancée <code>Rogner la vignette</code> pour les téléchargements de fichiers "
+"audio."
+
+#. (itstool) path: note/p
+#: yelp/C/downloader.page:74
+msgid ""
+"SponsorBlock only works on YouTube videos. However, leaving this setting on "
+"will not affect downloads from other sites (i.e. not cause them to fail)."
+msgstr ""
+
+#. (itstool) path: item/title
+#: yelp/C/downloader.page:81
 msgid "Subtitles Languages"
 msgstr "Langues des sous-titres"
 
 #. (itstool) path: item/p
-#: yelp/C/downloader.page:72
+#: yelp/C/downloader.page:82
 msgid ""
 "A comma-separated list of two-letter and three-letter language codes to use "
 "when selecting languages of subtitles to download. Only applies when a valid "
@@ -323,7 +346,7 @@ msgstr ""
 "code> valide est sélectionné dans un téléchargement."
 
 #. (itstool) path: note/p
-#: yelp/C/downloader.page:74
+#: yelp/C/downloader.page:84
 msgid ""
 "Some sites use two-letter language codes, whereas others use three-letter. "
 "For example, <code>en</code> and <code>eng</code> are both used for English. "
@@ -337,7 +360,7 @@ msgstr ""
 "résultats."
 
 #. (itstool) path: note/p
-#: yelp/C/downloader.page:77
+#: yelp/C/downloader.page:87
 msgid ""
 "Default: Your culture's two-letter and three-letter language code. For "
 "example, on an en-US system the default would be <code>en,eng</code>"
@@ -346,22 +369,22 @@ msgstr ""
 "exemple, <code>en,eng</code> sur un système en-US"
 
 #. (itstool) path: item/title
-#: yelp/C/downloader.page:81
+#: yelp/C/downloader.page:91
 msgid "Proxy URL"
 msgstr "URL de Proxy"
 
 #. (itstool) path: item/p
-#: yelp/C/downloader.page:82
+#: yelp/C/downloader.page:92
 msgid "The url of the proxy server to use."
 msgstr "L’url du serveur proxy à utiliser."
 
 #. (itstool) path: item/title
-#: yelp/C/downloader.page:85
+#: yelp/C/downloader.page:95
 msgid "Cookies File"
 msgstr "Fichier de cookies"
 
 #. (itstool) path: item/p
-#: yelp/C/downloader.page:86
+#: yelp/C/downloader.page:96
 msgid ""
 "A .txt file of cookies to pass to yt-dlp when downloading. This may be "
 "useful when downloading media that requires a login, for example: private "
@@ -372,7 +395,7 @@ msgstr ""
 "par exemple : les vidéos YouTube privées."
 
 #. (itstool) path: item/p
-#: yelp/C/downloader.page:87
+#: yelp/C/downloader.page:97
 msgid ""
 "Use one of the following extensions for getting a cookies file from your "
 "browser:"
@@ -381,7 +404,7 @@ msgstr ""
 "depuis votre navigateur :"
 
 #. (itstool) path: item/p
-#: yelp/C/downloader.page:88
+#: yelp/C/downloader.page:98
 msgid ""
 "Chrome: <code>https://chrome.google.com/webstore/detail/get-cookiestxt-"
 "locally/cclelndahbckbenkjhflpdbgdldlbecc</code>"
@@ -390,7 +413,7 @@ msgstr ""
 "locally/cclelndahbckbenkjhflpdbgdldlbecc</code>"
 
 #. (itstool) path: item/p
-#: yelp/C/downloader.page:89
+#: yelp/C/downloader.page:99
 msgid ""
 "Firefox: <code>https://addons.mozilla.org/en-US/firefox/addon/cookies-txt/</"
 "code>"
@@ -399,12 +422,12 @@ msgstr ""
 "code>"
 
 #. (itstool) path: note/p
-#: yelp/C/downloader.page:91
+#: yelp/C/downloader.page:101
 msgid "Use these extensions at your own risk."
 msgstr "L’utilisation de ces extensions se fait à vos propres risques."
 
 #. (itstool) path: note/p
-#: yelp/C/downloader.page:94
+#: yelp/C/downloader.page:104
 msgid "Default: No File Selected"
 msgstr "Par défaut : Aucun fichier sélectionné"
 
@@ -439,14 +462,14 @@ msgstr ""
 msgid ""
 "To get support, use <link href=\"https://github.com/NickvisionApps/Parabolic/"
 "issues\">issues</link> or <link href=\"https://github.com/NickvisionApps/"
-"Parabolic/discussions\">discussions</link> on Github, or <link href="
-"\"https://bit.ly/3GrfEid\">join our Matrix channel</link>."
+"Parabolic/discussions\">discussions</link> on Github, or <link "
+"href=\"https://bit.ly/3GrfEid\">join our Matrix channel</link>."
 msgstr ""
 "Pour obtenir de l’aide, utilisez les <link href=\"https://github.com/"
-"NickvisionApps/Parabolic/issues\">signalements</link> ou <link href="
-"\"https://github.com/NickvisionApps/Parabolic/discussions\">discussions</"
-"link> sur Github, ou <link href=\"https://bit.ly/3GrfEid\">rejoignez notre "
-"salon de discussion Matrix</link>."
+"NickvisionApps/Parabolic/issues\">signalements</link> ou <link "
+"href=\"https://github.com/NickvisionApps/Parabolic/"
+"discussions\">discussions</link> sur Github, ou <link href=\"https://bit."
+"ly/3GrfEid\">rejoignez notre salon de discussion Matrix</link>."
 
 #. (itstool) path: page/p
 #: yelp/C/index.page:23

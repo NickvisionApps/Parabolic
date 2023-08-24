@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2023-08-22 22:00-0400\n"
+"POT-Creation-Date: 2023-08-23 17:32-0400\n"
 "PO-Revision-Date: 2023-08-07 00:46+0000\n"
 "Last-Translator: ViBE <vibe@protonmail.com>\n"
 "Language-Team: Hungarian <https://hosted.weblate.org/projects/nickvision-"
@@ -66,7 +66,7 @@ msgstr ""
 
 #. (itstool) path: note/p
 #: yelp/C/converter.page:29 yelp/C/converter.page:45 yelp/C/converter.page:52
-#: yelp/C/downloader.page:51
+#: yelp/C/downloader.page:51 yelp/C/downloader.page:77
 msgid "Default: Off"
 msgstr ""
 
@@ -264,11 +264,30 @@ msgstr "Alapértelmezett: 20"
 
 #. (itstool) path: item/title
 #: yelp/C/downloader.page:71
-msgid "Subtitles Languages"
+msgid "Use SponsorBlock for YouTube"
 msgstr ""
 
 #. (itstool) path: item/p
 #: yelp/C/downloader.page:72
+msgid ""
+"If enabled, Parabolic will apply the SponsorBlock extension to YouTube "
+"downloads."
+msgstr ""
+
+#. (itstool) path: note/p
+#: yelp/C/downloader.page:74
+msgid ""
+"SponsorBlock only works on YouTube videos. However, leaving this setting on "
+"will not affect downloads from other sites (i.e. not cause them to fail)."
+msgstr ""
+
+#. (itstool) path: item/title
+#: yelp/C/downloader.page:81
+msgid "Subtitles Languages"
+msgstr ""
+
+#. (itstool) path: item/p
+#: yelp/C/downloader.page:82
 msgid ""
 "A comma-separated list of two-letter and three-letter language codes to use "
 "when selecting languages of subtitles to download. Only applies when a valid "
@@ -276,7 +295,7 @@ msgid ""
 msgstr ""
 
 #. (itstool) path: note/p
-#: yelp/C/downloader.page:74
+#: yelp/C/downloader.page:84
 msgid ""
 "Some sites use two-letter language codes, whereas others use three-letter. "
 "For example, <code>en</code> and <code>eng</code> are both used for English. "
@@ -285,29 +304,29 @@ msgid ""
 msgstr ""
 
 #. (itstool) path: note/p
-#: yelp/C/downloader.page:77
+#: yelp/C/downloader.page:87
 msgid ""
 "Default: Your culture's two-letter and three-letter language code. For "
 "example, on an en-US system the default would be <code>en,eng</code>"
 msgstr ""
 
 #. (itstool) path: item/title
-#: yelp/C/downloader.page:81
+#: yelp/C/downloader.page:91
 msgid "Proxy URL"
 msgstr "Proxy átjáró címe"
 
 #. (itstool) path: item/p
-#: yelp/C/downloader.page:82
+#: yelp/C/downloader.page:92
 msgid "The url of the proxy server to use."
 msgstr ""
 
 #. (itstool) path: item/title
-#: yelp/C/downloader.page:85
+#: yelp/C/downloader.page:95
 msgid "Cookies File"
 msgstr "Süti fájl használata"
 
 #. (itstool) path: item/p
-#: yelp/C/downloader.page:86
+#: yelp/C/downloader.page:96
 msgid ""
 "A .txt file of cookies to pass to yt-dlp when downloading. This may be "
 "useful when downloading media that requires a login, for example: private "
@@ -315,21 +334,21 @@ msgid ""
 msgstr ""
 
 #. (itstool) path: item/p
-#: yelp/C/downloader.page:87
+#: yelp/C/downloader.page:97
 msgid ""
 "Use one of the following extensions for getting a cookies file from your "
 "browser:"
 msgstr ""
 
 #. (itstool) path: item/p
-#: yelp/C/downloader.page:88
+#: yelp/C/downloader.page:98
 msgid ""
 "Chrome: <code>https://chrome.google.com/webstore/detail/get-cookiestxt-"
 "locally/cclelndahbckbenkjhflpdbgdldlbecc</code>"
 msgstr ""
 
 #. (itstool) path: item/p
-#: yelp/C/downloader.page:89
+#: yelp/C/downloader.page:99
 msgid ""
 "Firefox: <code>https://addons.mozilla.org/en-US/firefox/addon/cookies-txt/</"
 "code>"
@@ -338,12 +357,12 @@ msgstr ""
 "code>"
 
 #. (itstool) path: note/p
-#: yelp/C/downloader.page:91
+#: yelp/C/downloader.page:101
 msgid "Use these extensions at your own risk."
 msgstr ""
 
 #. (itstool) path: note/p
-#: yelp/C/downloader.page:94
+#: yelp/C/downloader.page:104
 msgid "Default: No File Selected"
 msgstr ""
 
@@ -376,8 +395,8 @@ msgstr ""
 msgid ""
 "To get support, use <link href=\"https://github.com/NickvisionApps/Parabolic/"
 "issues\">issues</link> or <link href=\"https://github.com/NickvisionApps/"
-"Parabolic/discussions\">discussions</link> on Github, or <link href="
-"\"https://bit.ly/3GrfEid\">join our Matrix channel</link>."
+"Parabolic/discussions\">discussions</link> on Github, or <link "
+"href=\"https://bit.ly/3GrfEid\">join our Matrix channel</link>."
 msgstr ""
 
 #. (itstool) path: page/p

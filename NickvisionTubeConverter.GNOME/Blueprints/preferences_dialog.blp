@@ -216,6 +216,30 @@ Adw.PreferencesWindow _root {
           }
         }
       }
+      
+      Adw.ActionRow {
+        title: _("Use SponsorBlock for YouTube");
+        activatable-widget: _sponsorBlockSwitch;
+
+        [prefix]
+        Gtk.Image {
+          icon-name: "permissions-advertising-symbolic";
+        }
+
+        [suffix]
+        Gtk.Switch _sponsorBlockSwitch {
+          valign: center;
+        }
+        
+        [suffix]
+        Gtk.Button _sponsorBlockInfoButton {
+          valign: center;
+          icon-name: "dialog-question-symbolic";
+          tooltip-text: _("SponsorBlock Information");
+        
+          styles ["flat"]
+        }
+      }
 
       Adw.EntryRow _subtitleLangsRow {
         title: _("Subtitle Languages (Comma-Separated)");

@@ -140,6 +140,16 @@ public class PreferencesViewController
 
         set => Configuration.Current.AriaMinSplitSize = value;
     }
+    
+    /// <summary>
+    /// Whether or not to use the SponsorBlock extension for YouTube downloads
+    /// </summary>
+    public bool YouTubeSponsorBlock
+    {
+        get => Configuration.Current.YouTubeSponsorBlock;
+
+        set => Configuration.Current.YouTubeSponsorBlock = value;
+    }
 
     /// <summary>
     /// A comma separated list of language codes for subtitle downloads
