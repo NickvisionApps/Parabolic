@@ -23,9 +23,6 @@ public partial class KeyringDialog : Adw.Window
     [Gtk.Connect] private readonly Adw.ViewStack _viewStack;
     [Gtk.Connect] private readonly Adw.StatusPage _disabledPage;
     [Gtk.Connect] private readonly Gtk.Button _enableKeyringButton;
-    [Gtk.Connect] private readonly Adw.EntryRow _newPasswordEntry;
-    [Gtk.Connect] private readonly Adw.EntryRow _confirmPasswordEntry;
-    [Gtk.Connect] private readonly Gtk.Button _setPasswordButton;
     [Gtk.Connect] private readonly Gtk.Box _mainBox;
     [Gtk.Connect] private readonly Adw.PreferencesGroup _credentialsGroup;
     [Gtk.Connect] private readonly Gtk.Button _addCredentialButton;
@@ -61,29 +58,9 @@ public partial class KeyringDialog : Adw.Window
         SetIconName(_appID);
         //Build UI
         builder.Connect(this);
-        _enableKeyringButton.OnClicked += (sender, e) =>
+        _enableKeyringButton.OnClicked += async (sender, e) =>
         {
-            _titleLabel.SetVisible(true);
-            _titleLabel.SetLabel(_("Set Password"));
-            _viewStack.SetVisibleChildName("password");
-        };
-        _newPasswordEntry.OnNotify += (sender, e) =>
-        {
-            if (e.Pspec.GetName() == "text")
-            {
-                ValidateNewPassword();
-            }
-        };
-        _confirmPasswordEntry.OnNotify += (sender, e) =>
-        {
-            if (e.Pspec.GetName() == "text")
-            {
-                ValidateNewPassword();
-            }
-        };
-        _setPasswordButton.OnClicked += async (sender, e) =>
-        {
-            _controller.EnableKeyring(_newPasswordEntry.GetText());
+            _controller.EnableKeyring();
             await LoadHomePageAsync();
         };
         _disableKeyringButton.OnClicked += (sender, e) =>
@@ -126,15 +103,6 @@ public partial class KeyringDialog : Adw.Window
         if (_controller.IsEnabled)
         {
             await LoadHomePageAsync();
-        }
-    }
-
-    private void ValidateNewPassword()
-    {
-        _setPasswordButton.SetSensitive(false);
-        if (_newPasswordEntry.GetText() == _confirmPasswordEntry.GetText() && !string.IsNullOrEmpty(_newPasswordEntry.GetText()))
-        {
-            _setPasswordButton.SetSensitive(true);
         }
     }
 

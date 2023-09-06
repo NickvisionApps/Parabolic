@@ -15,7 +15,7 @@ public class Configuration : ConfigurationBase
     /// The directory to store temporary files
     /// </summary>
     /// <remarks>TODO: https://github.com/NickvisionApps/Aura/issues/5</remarks>
-    public static string TempDir = RuntimeInformation.IsOSPlatform(OSPlatform.Windows) ? $"{Environment.GetFolderPath(Environment.SpecialFolder.UserProfile)}{Path.DirectorySeparatorChar}.tc-temp" :  $"{ConfigurationLoader.ConfigDir}{Path.DirectorySeparatorChar}temp";
+    public static string TempDir = RuntimeInformation.IsOSPlatform(OSPlatform.Windows) ? $"{Environment.GetFolderPath(Environment.SpecialFolder.UserProfile)}{Path.DirectorySeparatorChar}.tc-temp" : UserDirectories.ApplicationCache;
 
     /// <summary>
     /// The preferred theme for the application

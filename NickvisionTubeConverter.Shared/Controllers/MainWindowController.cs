@@ -23,10 +23,6 @@ public class MainWindowController : IDisposable
     private NetworkMonitor? _netmon;
 
     /// <summary>
-    /// Application's Aura
-    /// </summary>
-    public Aura Aura { get; init; }
-    /// <summary>
     /// Gets the AppInfo object
     /// </summary>
     public AppInfo AppInfo => Aura.Active.AppInfo;
@@ -84,23 +80,26 @@ public class MainWindowController : IDisposable
         _disposed = false;
         _pythonThreadState = IntPtr.Zero;
         DownloadManager = new DownloadManager(5);
-        Aura = new Aura("org.nickvision.tubeconverter", "Nickvision Tube Converter", _("Parabolic"), _("Download web video and audio"));
-        if (Directory.Exists($"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}{Path.DirectorySeparatorChar}Nickvision{Path.DirectorySeparatorChar}{AppInfo.Name}"))
+        Aura.Init("org.nickvision.tubeconverter", "Nickvision Tube Converter");
+        if (Directory.Exists($"{UserDirectories.Config}{Path.DirectorySeparatorChar}Nickvision{Path.DirectorySeparatorChar}{AppInfo.Name}"))
         {
-            // Move or delete config files from older versions
+            // Move config files from older versions and delete old directory
             try
             {
-                Directory.Move($"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}{Path.DirectorySeparatorChar}Nickvision{Path.DirectorySeparatorChar}{AppInfo.Name}", ConfigurationLoader.ConfigDir);
+                foreach (var file in Directory.GetFiles($"{UserDirectories.Config}{Path.DirectorySeparatorChar}Nickvision{Path.DirectorySeparatorChar}{AppInfo.Name}"))
+                {
+                    File.Move(file, $"{UserDirectories.ApplicationConfig}{Path.DirectorySeparatorChar}{Path.GetFileName(file)}");
+                }
             }
-            catch (IOException)
-            {
-                Directory.Delete($"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}{Path.DirectorySeparatorChar}Nickvision{Path.DirectorySeparatorChar}{AppInfo.Name}", true);
-            }
+            catch (IOException) { }
+            Directory.Delete($"{UserDirectories.Config}{Path.DirectorySeparatorChar}Nickvision{Path.DirectorySeparatorChar}{AppInfo.Name}", true);
         }
         Aura.Active.SetConfig<Configuration>("config");
         Configuration.Current.Saved += ConfigurationSaved;
         Aura.Active.SetConfig<DownloadHistory>("downloadHistory");
-        AppInfo.Version = "2023.9.0-next";
+        AppInfo.Version = "2023.8.3";
+        AppInfo.ShortName = _("Parabolic");
+        AppInfo.Description = _("Download web video and audio");
         AppInfo.SourceRepo = new Uri("https://github.com/NickvisionApps/Parabolic");
         AppInfo.IssueTracker = new Uri("https://github.com/NickvisionApps/Parabolic/issues/new");
         AppInfo.SupportUrl = new Uri("https://github.com/NickvisionApps/Parabolic/discussions");
@@ -201,6 +200,7 @@ public class MainWindowController : IDisposable
         //Setup Keyring
         if(Keyring.Exists(AppInfo.ID))
         {
+            await Task.Run(() => _keyring = Keyring.Access(AppInfo.ID));
             while(_keyring == null)
             {
                 var res = await KeyringLoginAsync!(_("Unlock Keyring"));
