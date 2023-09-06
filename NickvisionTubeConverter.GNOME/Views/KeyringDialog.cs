@@ -60,8 +60,15 @@ public partial class KeyringDialog : Adw.Window
         builder.Connect(this);
         _enableKeyringButton.OnClicked += async (sender, e) =>
         {
-            _controller.EnableKeyring();
-            await LoadHomePageAsync();
+            var success = _controller.EnableKeyring();
+            if (success)
+            {
+                await LoadHomePageAsync();
+            }
+            else
+            {
+                _toastOverlay.AddToast(Adw.Toast.New(_("Failed to enable keyring.")));
+            }
         };
         _disableKeyringButton.OnClicked += (sender, e) =>
         {
