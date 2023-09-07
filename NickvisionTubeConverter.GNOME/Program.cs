@@ -35,7 +35,10 @@ public partial class Program
         _mainWindow = null;
         _mainWindowController = new MainWindowController();
         _mainWindowController.AppInfo.Changelog =
-            @"* Updated translations (Thanks everyone on Weblate!)";
+            @"* Added a new advanced download option to split chapters
+              * Added a new preference to enable SponsorBlock for YouTube downloads
+              * Keyring password is now saved in system keyring using libsecret
+              * Updated translations (Thanks everyone on Weblate!)";
         _application.OnActivate += OnActivate;
         if (File.Exists(Path.GetFullPath(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)) + "/org.nickvision.tubeconverter.gresource"))
         {
