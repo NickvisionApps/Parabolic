@@ -60,7 +60,10 @@ public partial class KeyringDialog : Adw.Window
         builder.Connect(this);
         _enableKeyringButton.OnClicked += async (sender, e) =>
         {
-            var success = _controller.EnableKeyring();
+            _enableKeyringButton.SetSensitive(false);
+            var success = false;
+            await Task.Run(() => success = _controller.EnableKeyring());
+            _enableKeyringButton.SetSensitive(true);
             if (success)
             {
                 await LoadHomePageAsync();
