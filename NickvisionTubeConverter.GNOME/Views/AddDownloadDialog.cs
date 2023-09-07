@@ -37,7 +37,6 @@ public partial class AddDownloadDialog : Adw.Window
     [Gtk.Connect] private readonly Gtk.Button _addDownloadButton;
     [Gtk.Connect] private readonly Gtk.Box _downloadPage;
     [Gtk.Connect] private readonly Gtk.Button _backButton;
-    [Gtk.Connect] private readonly Gtk.ScrolledWindow _scrolledWindow;
     [Gtk.Connect] private readonly Adw.ComboRow _fileTypeRow;
     [Gtk.Connect] private readonly Adw.ComboRow _qualityRow;
     [Gtk.Connect] private readonly Adw.ComboRow _audioLanguageRow;
@@ -135,21 +134,6 @@ public partial class AddDownloadDialog : Adw.Window
                 {
                     _usernameRow.SetVisible(false);
                     _passwordRow.SetVisible(false);
-                }
-            }
-        };
-        var vadjustment = _scrolledWindow.GetVadjustment();
-        vadjustment.OnNotify += (sender, e) =>
-        {
-            if (e.Pspec.GetName() == "page-size")
-            {
-                if (vadjustment.GetPageSize() < vadjustment.GetUpper())
-                {
-                    _scrolledWindow.AddCssClass("scrolled-window");
-                }
-                else
-                {
-                    _scrolledWindow.RemoveCssClass("scrolled-window");
                 }
             }
         };
