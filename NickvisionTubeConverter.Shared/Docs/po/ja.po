@@ -1,17 +1,17 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2023-09-08 23:08-0400\n"
-"PO-Revision-Date: 2023-08-15 16:47+0000\n"
+"POT-Creation-Date: 2023-08-23 17:32-0400\n"
+"PO-Revision-Date: 2023-09-09 03:22+0000\n"
 "Last-Translator: Gnuey56 <gnuey56@proton.me>\n"
-"Language-Team: Japanese <https://hosted.weblate.org/projects/nickvision-tube-"
-"converter/docs/ja/>\n"
+"Language-Team: Japanese <https://hosted.weblate.org/projects/"
+"nickvision-tube-converter/docs/ja/>\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.0-dev\n"
+"X-Generator: Weblate 5.0.1-dev\n"
 
 #. Put one translator per line, in the form NAME <EMAIL>, YEAR1, YEAR2
 msgctxt "_"
@@ -172,22 +172,23 @@ msgstr ""
 msgid ""
 "If the max number of active downloads is reached, Parabolic will place new "
 "downloads in a queue until more downloads are able to be run."
-msgstr ""
+msgstr "アクティブダウンロードが最大数に達すると、Parabolic "
+"は新しいダウンロードをダウンロードが可能になるまでキューに入れます。"
 
 #. (itstool) path: note/p
 #: yelp/C/downloader.page:29
 msgid "Default: 5"
-msgstr ""
+msgstr "デフォルト: 5"
 
 #. (itstool) path: item/title
 #: yelp/C/downloader.page:33
 msgid "Overwrite Existing Files"
-msgstr ""
+msgstr "存在するファイルを上書きする"
 
 #. (itstool) path: item/p
 #: yelp/C/downloader.page:34
 msgid "If enabled, Parabolic will overwrite existing files."
-msgstr ""
+msgstr "有効であれば、Parabolic は存在するファイルを上書きします。"
 
 #. (itstool) path: item/p
 #: yelp/C/downloader.page:35
@@ -196,11 +197,14 @@ msgid ""
 "folder, and a new download is created named <code>movie</code>, <code>movie."
 "mp4</code> will be overwritten with the new download's content."
 msgstr ""
+"例えば、<code>movie.mp4</code>という名のファイルがダウンロードフォルダーに存"
+"在し、<code>movie</code>と名のダウンロードが作成されると、<code>movie."
+"mp4</code>は新しいダウンロードの内容で上書きされます。"
 
 #. (itstool) path: item/title
 #: yelp/C/downloader.page:41 yelp/C/newDownload.page:72
 msgid "Speed Limit"
-msgstr ""
+msgstr "スピード制限"
 
 #. (itstool) path: item/p
 #: yelp/C/downloader.page:42
@@ -209,16 +213,18 @@ msgid ""
 "advanced option <code>Speed Limit</code> enabled. Must be an integer value "
 "between 512 and 10240."
 msgstr ""
+"制限は、Ki/s 単位で、<code>スピード制限</code>の詳細オプションが有効なダウン"
+"ロードにのみ適用されます。数値は512から10240の整数である必要があります。"
 
 #. (itstool) path: note/p
 #: yelp/C/downloader.page:44
 msgid "Default: 1024"
-msgstr ""
+msgstr "デフォルト: 1024"
 
 #. (itstool) path: item/title
 #: yelp/C/downloader.page:48
 msgid "Use aria2"
-msgstr ""
+msgstr "Aria2 を使用"
 
 #. (itstool) path: item/p
 #: yelp/C/downloader.page:49
@@ -227,11 +233,14 @@ msgid ""
 "aria2c can improve download speed, download progress will not be displayed "
 "in the UI."
 msgstr ""
+"有効であれば、Parabolic は aria2c を使用してメディアをダウンロードします。"
+"aria2c を使用するとダウンロード速度は向上しますが、UIで、ダウンロード進捗は表"
+"示されません。"
 
 #. (itstool) path: item/title
 #: yelp/C/downloader.page:55
 msgid "Maximum Connections Per Server"
-msgstr ""
+msgstr "サーバーごとの最大接続数"
 
 #. (itstool) path: item/p
 #: yelp/C/downloader.page:56
@@ -279,7 +288,7 @@ msgstr ""
 #. (itstool) path: item/title
 #: yelp/C/downloader.page:71
 msgid "Use SponsorBlock for YouTube"
-msgstr ""
+msgstr "YouTube のダウンロードで SponsorBlock を使用"
 
 #. (itstool) path: item/p
 #: yelp/C/downloader.page:72
@@ -410,8 +419,8 @@ msgstr ""
 msgid ""
 "To get support, use <link href=\"https://github.com/NickvisionApps/Parabolic/"
 "issues\">issues</link> or <link href=\"https://github.com/NickvisionApps/"
-"Parabolic/discussions\">discussions</link> on Github, or <link "
-"href=\"https://bit.ly/3GrfEid\">join our Matrix channel</link>."
+"Parabolic/discussions\">discussions</link> on Github, or <link href="
+"\"https://bit.ly/3GrfEid\">join our Matrix channel</link>."
 msgstr ""
 
 #. (itstool) path: page/p
@@ -445,141 +454,111 @@ msgstr ""
 "このページでは<app>Parabolic</app>の環境設定のコンバーターを設定するためのす"
 "べてオプションについて説明します。"
 
-#. (itstool) path: section/title
-#: yelp/C/keyring.page:23
+#. (itstool) path: item/title
+#: yelp/C/keyring.page:25
 msgid "Backend"
 msgstr ""
 
-#. (itstool) path: section/p
-#: yelp/C/keyring.page:24
-msgid ""
-"The Keyring feature is backed by the <code>Nickvision.Aura</code> library."
-msgstr ""
-
-#. (itstool) path: section/p
-#: yelp/C/keyring.page:25
-msgid ""
-"This library uses SQLCipher to securely store credentials in a platform "
-"independent manner."
-msgstr ""
-
-#. (itstool) path: section/p
+#. (itstool) path: item/p
 #: yelp/C/keyring.page:26
 msgid ""
-"The library will use you system's credential manager (i.e. libsecret on "
-"Linux and Windows Credential Manager on Windows) for securing the Keyring."
-msgstr ""
-
-#. (itstool) path: section/title
-#: yelp/C/keyring.page:29
-msgid "Storing a Credential"
-msgstr ""
-
-#. (itstool) path: section/p
-#: yelp/C/keyring.page:30
-msgid "Here are the fields that can be stored in a credential:"
-msgstr ""
-
-#. (itstool) path: section/p
-#: yelp/C/keyring.page:31
-msgid "<code>Name</code>: The name of the credential"
-msgstr ""
-
-#. (itstool) path: section/p
-#: yelp/C/keyring.page:32
-msgid "<code>URL</code> (optional): The URL of the credential"
-msgstr ""
-
-#. (itstool) path: section/p
-#: yelp/C/keyring.page:33
-msgid ""
-"<code>Username</code> (optional if password is not empty): The username of "
-"the credential"
-msgstr ""
-
-#. (itstool) path: section/p
-#: yelp/C/keyring.page:34
-msgid ""
-"<code>Password</code> (optional if username is not empty): The password of "
-"the credential"
-msgstr ""
-
-#. (itstool) path: section/title
-#: yelp/C/keyring.page:37
-msgid "Migrating from Password-Secured Keyring to Secret-Secured Keyring"
-msgstr ""
-
-#. (itstool) path: section/p
-#: yelp/C/keyring.page:38
-msgid ""
-"This section applies to users who have enabled a Keyring in Parabolic (in "
-"versions before V2023.9.0) and secured it with a password. Starting with "
-"version 2023.9.0, Parabolic uses the system's credential manager to generate "
-"a random password (secret) to secure the Keyring instead of asking for a "
-"user to provide one. By using the system credential manager, Parabolic can "
-"also automatically unlock the Keyring at startup without user interaction."
-msgstr ""
-
-#. (itstool) path: section/p
-#: yelp/C/keyring.page:39
-msgid ""
-"If you have a password-secured Keyring from before version 2023.9.0, you can "
-"continue to use it in new versions of Parabolic without issue, but you will "
-"still need to provide the password everytime the application starts."
-msgstr ""
-
-#. (itstool) path: section/p
-#: yelp/C/keyring.page:40
-msgid ""
-"Follow the rest of this section if you'd like to migrate your existing "
-"credentials and take advantage of the new Keyring where a password is not "
-"required every time."
-msgstr ""
-
-#. (itstool) path: note/p
-#: yelp/C/keyring.page:42
-msgid ""
-"You can simply disable the old password-secured Keyring when you update "
-"Parabolic to 2023.9.0 and re-enable the Keyring to get a secret-secured one. "
-"However, this will erase all data from the old Keyring and require you to re-"
-"enter all credentials."
+"The Keyring feature is backed by the <code>Nickvision.Keyring</code> library."
 msgstr ""
 
 #. (itstool) path: item/p
-#: yelp/C/keyring.page:45
+#: yelp/C/keyring.page:27
 msgid ""
-"Install <link href=\"https://flathub.org/apps/org.gnome.seahorse."
-"Application\">Passwords and Keys</link>."
+"This library uses SQLCipher to securley store credentials in a platform "
+"independent manner."
+msgstr ""
+
+#. (itstool) path: item/title
+#: yelp/C/keyring.page:30
+msgid "Enabling The Keyring"
+msgstr ""
+
+#. (itstool) path: item/p
+#: yelp/C/keyring.page:31
+msgid ""
+"When the Keyring is enabled, the user will be asked to enter a password to "
+"encrypt the Keyring."
+msgstr ""
+
+#. (itstool) path: item/p
+#: yelp/C/keyring.page:32
+msgid "There is no way to recover the Keyring password if lost."
+msgstr ""
+
+#. (itstool) path: item/p
+#: yelp/C/keyring.page:33
+msgid "This password will be used to unlock the Keyring in the future."
+msgstr ""
+
+#. (itstool) path: note/p
+#: yelp/C/keyring.page:35
+msgid ""
+"If the Keyring password is lost, the user will be unable to use this feature "
+"unless the Keyring database file is deleted."
+msgstr ""
+
+#. (itstool) path: note/p
+#: yelp/C/keyring.page:36
+msgid ""
+"The Keyring file is stored in <code>$CONFIG/Nickvision/Nickvision Parabolic/"
+"tubeconverter.nring</code>"
+msgstr ""
+
+#. (itstool) path: item/title
+#: yelp/C/keyring.page:40
+msgid "Disabling The Keyring"
+msgstr ""
+
+#. (itstool) path: item/p
+#: yelp/C/keyring.page:41
+msgid ""
+"When the Keyring is disabled, the backing <code>nring</code> database is "
+"destroyed and all credentials stored are erased."
+msgstr ""
+
+#. (itstool) path: item/p
+#: yelp/C/keyring.page:42
+msgid ""
+"If the Keyring is re-enabled, a brand new database file will be created and "
+"the user will be prompted to enter a password again."
+msgstr ""
+
+#. (itstool) path: item/title
+#: yelp/C/keyring.page:45
+msgid "Storing a Credential"
 msgstr ""
 
 #. (itstool) path: item/p
 #: yelp/C/keyring.page:46
-msgid ""
-"Open Parabolic V2023.9.0 or newer at least once. (This will ensure that the "
-"app registers with your system's credential manager)"
+msgid "Here are the fields that can be stored in a credential:"
 msgstr ""
 
 #. (itstool) path: item/p
 #: yelp/C/keyring.page:47
-msgid ""
-"Open <code>Passwords and Keys</code> and locate the <code>org.nickvision."
-"tubeconverter</code> entry in the <code>Default Keyring</code>."
+msgid "<code>Name</code>: The name of the credential"
 msgstr ""
 
 #. (itstool) path: item/p
 #: yelp/C/keyring.page:48
-msgid ""
-"Double click the <code>org.nickvision.tubeconverter</code> entry and edit "
-"the <code>Password</code> field. Replace the password in the entry with the "
-"password that you created and used for your Keyring in Parabolic."
+msgid "<code>URL</code> (optional): The URL of the credential"
 msgstr ""
 
 #. (itstool) path: item/p
 #: yelp/C/keyring.page:49
 msgid ""
-"You can now close <code>Passwords and Keys</code> and restart Parabolic. You "
-"will see that upon application startup, the Keyring will now be "
-"automatically unlocked!"
+"<code>Username</code> (optional if password is not empty): The username of "
+"the credential"
+msgstr ""
+
+#. (itstool) path: item/p
+#: yelp/C/keyring.page:50
+msgid ""
+"<code>Password</code> (optional if username is not empty): The password of "
+"the credential"
 msgstr ""
 
 #. (itstool) path: info/title
@@ -755,9 +734,8 @@ msgstr ""
 
 #. (itstool) path: item/title
 #: yelp/C/newDownload.page:79
-#, fuzzy
 msgid "Split Chapters"
-msgstr "チャプター（章）を埋め込む"
+msgstr "チャプター（章）で分ける"
 
 #. (itstool) path: item/p
 #: yelp/C/newDownload.page:80
