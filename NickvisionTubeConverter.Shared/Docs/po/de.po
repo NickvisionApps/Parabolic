@@ -1,11 +1,11 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2023-08-23 17:32-0400\n"
+"POT-Creation-Date: 2023-09-08 23:08-0400\n"
 "PO-Revision-Date: 2023-08-26 16:10+0000\n"
 "Last-Translator: Jummit <jummit@web.de>\n"
-"Language-Team: German <https://hosted.weblate.org/projects/"
-"nickvision-tube-converter/docs/de/>\n"
+"Language-Team: German <https://hosted.weblate.org/projects/nickvision-tube-"
+"converter/docs/de/>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -459,8 +459,8 @@ msgstr ""
 msgid ""
 "To get support, use <link href=\"https://github.com/NickvisionApps/Parabolic/"
 "issues\">issues</link> or <link href=\"https://github.com/NickvisionApps/"
-"Parabolic/discussions\">discussions</link> on Github, or <link href="
-"\"https://bit.ly/3GrfEid\">join our Matrix channel</link>."
+"Parabolic/discussions\">discussions</link> on Github, or <link "
+"href=\"https://bit.ly/3GrfEid\">join our Matrix channel</link>."
 msgstr ""
 "Unterstützung erhältst du in GitHub <link href=\"https://github.com/"
 "NickvisionApps/Parabolic/issues\">Issues</link> oder <link href=\"https://"
@@ -499,122 +499,60 @@ msgstr ""
 "Diese Seite erklärt alle Optionen zur Verwendung des Keyrings in "
 "<app>Parabolic</app>."
 
-#. (itstool) path: item/title
-#: yelp/C/keyring.page:25
+#. (itstool) path: section/title
+#: yelp/C/keyring.page:23
 msgid "Backend"
 msgstr "Backend"
 
-#. (itstool) path: item/p
-#: yelp/C/keyring.page:26
+#. (itstool) path: section/p
+#: yelp/C/keyring.page:24
+#, fuzzy
 msgid ""
-"The Keyring feature is backed by the <code>Nickvision.Keyring</code> library."
+"The Keyring feature is backed by the <code>Nickvision.Aura</code> library."
 msgstr ""
 "Die Keyring-Funktion wird von der <code>Nickvision.Keyring</code> Bibliothek "
 "bereitgestellt."
 
-#. (itstool) path: item/p
-#: yelp/C/keyring.page:27
+#. (itstool) path: section/p
+#: yelp/C/keyring.page:25
+#, fuzzy
 msgid ""
-"This library uses SQLCipher to securley store credentials in a platform "
+"This library uses SQLCipher to securely store credentials in a platform "
 "independent manner."
 msgstr ""
 "Diese Bibliothek nutzt SQLCipher um Anmeldedaten sicher und "
 "plattformunabhängig zu speichern."
 
-#. (itstool) path: item/title
-#: yelp/C/keyring.page:30
-msgid "Enabling The Keyring"
-msgstr "Aktivieren des Keyrings"
-
-#. (itstool) path: item/p
-#: yelp/C/keyring.page:31
+#. (itstool) path: section/p
+#: yelp/C/keyring.page:26
 msgid ""
-"When the Keyring is enabled, the user will be asked to enter a password to "
-"encrypt the Keyring."
+"The library will use you system's credential manager (i.e. libsecret on "
+"Linux and Windows Credential Manager on Windows) for securing the Keyring."
 msgstr ""
-"Wenn der Keyring aktiviert ist, wird der Benutzer nach einem Passwort "
-"gefragt, um den Keyring zu verschlüsseln."
 
-#. (itstool) path: item/p
-#: yelp/C/keyring.page:32
-msgid "There is no way to recover the Keyring password if lost."
-msgstr ""
-"Es gibt keine Möglichkeit, das Keyring-Passwort wiederherzustellen, wenn es "
-"verloren geht."
-
-#. (itstool) path: item/p
-#: yelp/C/keyring.page:33
-msgid "This password will be used to unlock the Keyring in the future."
-msgstr ""
-"Das eingegebene Passwort wird in Zukunft verwendet um den Keyring zu "
-"entsperren."
-
-#. (itstool) path: note/p
-#: yelp/C/keyring.page:35
-msgid ""
-"If the Keyring password is lost, the user will be unable to use this feature "
-"unless the Keyring database file is deleted."
-msgstr ""
-"Wenn das Keyring-Passwort verloren geht, kann der Benutzer diese Funktion "
-"nicht weiter verwenden, es sei denn, die Keyring-Datenbankdatei wird "
-"gelöscht."
-
-#. (itstool) path: note/p
-#: yelp/C/keyring.page:36
-msgid ""
-"The Keyring file is stored in <code>$CONFIG/Nickvision/Nickvision Parabolic/"
-"tubeconverter.nring</code>"
-msgstr ""
-"Die Keyring-Datenbankdatei befindet sich unter <code>$CONFIG/Nickvision/"
-"Nickvision Parabolic/tubeconverter.nring</code>"
-
-#. (itstool) path: item/title
-#: yelp/C/keyring.page:40
-msgid "Disabling The Keyring"
-msgstr "Deaktivieren des Keyrings"
-
-#. (itstool) path: item/p
-#: yelp/C/keyring.page:41
-msgid ""
-"When the Keyring is disabled, the backing <code>nring</code> database is "
-"destroyed and all credentials stored are erased."
-msgstr ""
-"Wenn der Keyring deaktiviert wird, wird die <code>nring</code>-Datenbank "
-"zerstört und alle gespeicherten Anmeldedaten werden gelöscht."
-
-#. (itstool) path: item/p
-#: yelp/C/keyring.page:42
-msgid ""
-"If the Keyring is re-enabled, a brand new database file will be created and "
-"the user will be prompted to enter a password again."
-msgstr ""
-"Wird der Keyring anschließend wieder aktiviert, wird eine neue "
-"Datenbankdatei erstellt und der Benutzer wird erneut aufgefordert, ein "
-"Passwort einzugeben."
-
-#. (itstool) path: item/title
-#: yelp/C/keyring.page:45
+#. (itstool) path: section/title
+#: yelp/C/keyring.page:29
 msgid "Storing a Credential"
 msgstr "Speichern von Anmeldedaten"
 
-#. (itstool) path: item/p
-#: yelp/C/keyring.page:46
+#. (itstool) path: section/p
+#: yelp/C/keyring.page:30
 msgid "Here are the fields that can be stored in a credential:"
 msgstr ""
 "Die folgenden Felder können in einem Anmeldedatensatz gespeichert werden:"
 
-#. (itstool) path: item/p
-#: yelp/C/keyring.page:47
+#. (itstool) path: section/p
+#: yelp/C/keyring.page:31
 msgid "<code>Name</code>: The name of the credential"
 msgstr "<code>Name</code>: Der Name der Anmeldung"
 
-#. (itstool) path: item/p
-#: yelp/C/keyring.page:48
+#. (itstool) path: section/p
+#: yelp/C/keyring.page:32
 msgid "<code>URL</code> (optional): The URL of the credential"
 msgstr "<code>URL</code> (optional): Die URL der Anmeldung"
 
-#. (itstool) path: item/p
-#: yelp/C/keyring.page:49
+#. (itstool) path: section/p
+#: yelp/C/keyring.page:33
 msgid ""
 "<code>Username</code> (optional if password is not empty): The username of "
 "the credential"
@@ -622,14 +560,92 @@ msgstr ""
 "<code>Benutzername</code> (Optional wenn das Passwortfeld nicht leer ist): "
 "Der Benutzername der Anmeldung"
 
-#. (itstool) path: item/p
-#: yelp/C/keyring.page:50
+#. (itstool) path: section/p
+#: yelp/C/keyring.page:34
 msgid ""
 "<code>Password</code> (optional if username is not empty): The password of "
 "the credential"
 msgstr ""
 "<code>Passwort</code> (Optional wenn das Benutzernamenfeld nicht leer ist): "
 "Das Passwort der Anmeldung"
+
+#. (itstool) path: section/title
+#: yelp/C/keyring.page:37
+msgid "Migrating from Password-Secured Keyring to Secret-Secured Keyring"
+msgstr ""
+
+#. (itstool) path: section/p
+#: yelp/C/keyring.page:38
+msgid ""
+"This section applies to users who have enabled a Keyring in Parabolic (in "
+"versions before V2023.9.0) and secured it with a password. Starting with "
+"version 2023.9.0, Parabolic uses the system's credential manager to generate "
+"a random password (secret) to secure the Keyring instead of asking for a "
+"user to provide one. By using the system credential manager, Parabolic can "
+"also automatically unlock the Keyring at startup without user interaction."
+msgstr ""
+
+#. (itstool) path: section/p
+#: yelp/C/keyring.page:39
+msgid ""
+"If you have a password-secured Keyring from before version 2023.9.0, you can "
+"continue to use it in new versions of Parabolic without issue, but you will "
+"still need to provide the password everytime the application starts."
+msgstr ""
+
+#. (itstool) path: section/p
+#: yelp/C/keyring.page:40
+msgid ""
+"Follow the rest of this section if you'd like to migrate your existing "
+"credentials and take advantage of the new Keyring where a password is not "
+"required every time."
+msgstr ""
+
+#. (itstool) path: note/p
+#: yelp/C/keyring.page:42
+msgid ""
+"You can simply disable the old password-secured Keyring when you update "
+"Parabolic to 2023.9.0 and re-enable the Keyring to get a secret-secured one. "
+"However, this will erase all data from the old Keyring and require you to re-"
+"enter all credentials."
+msgstr ""
+
+#. (itstool) path: item/p
+#: yelp/C/keyring.page:45
+msgid ""
+"Install <link href=\"https://flathub.org/apps/org.gnome.seahorse."
+"Application\">Passwords and Keys</link>."
+msgstr ""
+
+#. (itstool) path: item/p
+#: yelp/C/keyring.page:46
+msgid ""
+"Open Parabolic V2023.9.0 or newer at least once. (This will ensure that the "
+"app registers with your system's credential manager)"
+msgstr ""
+
+#. (itstool) path: item/p
+#: yelp/C/keyring.page:47
+msgid ""
+"Open <code>Passwords and Keys</code> and locate the <code>org.nickvision."
+"tubeconverter</code> entry in the <code>Default Keyring</code>."
+msgstr ""
+
+#. (itstool) path: item/p
+#: yelp/C/keyring.page:48
+msgid ""
+"Double click the <code>org.nickvision.tubeconverter</code> entry and edit "
+"the <code>Password</code> field. Replace the password in the entry with the "
+"password that you created and used for your Keyring in Parabolic."
+msgstr ""
+
+#. (itstool) path: item/p
+#: yelp/C/keyring.page:49
+msgid ""
+"You can now close <code>Passwords and Keys</code> and restart Parabolic. You "
+"will see that upon application startup, the Keyring will now be "
+"automatically unlocked!"
+msgstr ""
 
 #. (itstool) path: info/title
 #: yelp/C/newDownload.page:8
@@ -909,3 +925,56 @@ msgstr "Der Dateiname, der beim Speichern des Downloads verwendet werden soll."
 #: yelp/C/newDownload.page:107
 msgid "Default: The title of the media"
 msgstr "Standardeinstellung: Der Titel des Mediums"
+
+#~ msgid "Enabling The Keyring"
+#~ msgstr "Aktivieren des Keyrings"
+
+#~ msgid ""
+#~ "When the Keyring is enabled, the user will be asked to enter a password "
+#~ "to encrypt the Keyring."
+#~ msgstr ""
+#~ "Wenn der Keyring aktiviert ist, wird der Benutzer nach einem Passwort "
+#~ "gefragt, um den Keyring zu verschlüsseln."
+
+#~ msgid "There is no way to recover the Keyring password if lost."
+#~ msgstr ""
+#~ "Es gibt keine Möglichkeit, das Keyring-Passwort wiederherzustellen, wenn "
+#~ "es verloren geht."
+
+#~ msgid "This password will be used to unlock the Keyring in the future."
+#~ msgstr ""
+#~ "Das eingegebene Passwort wird in Zukunft verwendet um den Keyring zu "
+#~ "entsperren."
+
+#~ msgid ""
+#~ "If the Keyring password is lost, the user will be unable to use this "
+#~ "feature unless the Keyring database file is deleted."
+#~ msgstr ""
+#~ "Wenn das Keyring-Passwort verloren geht, kann der Benutzer diese Funktion "
+#~ "nicht weiter verwenden, es sei denn, die Keyring-Datenbankdatei wird "
+#~ "gelöscht."
+
+#~ msgid ""
+#~ "The Keyring file is stored in <code>$CONFIG/Nickvision/Nickvision "
+#~ "Parabolic/tubeconverter.nring</code>"
+#~ msgstr ""
+#~ "Die Keyring-Datenbankdatei befindet sich unter <code>$CONFIG/Nickvision/"
+#~ "Nickvision Parabolic/tubeconverter.nring</code>"
+
+#~ msgid "Disabling The Keyring"
+#~ msgstr "Deaktivieren des Keyrings"
+
+#~ msgid ""
+#~ "When the Keyring is disabled, the backing <code>nring</code> database is "
+#~ "destroyed and all credentials stored are erased."
+#~ msgstr ""
+#~ "Wenn der Keyring deaktiviert wird, wird die <code>nring</code>-Datenbank "
+#~ "zerstört und alle gespeicherten Anmeldedaten werden gelöscht."
+
+#~ msgid ""
+#~ "If the Keyring is re-enabled, a brand new database file will be created "
+#~ "and the user will be prompted to enter a password again."
+#~ msgstr ""
+#~ "Wird der Keyring anschließend wieder aktiviert, wird eine neue "
+#~ "Datenbankdatei erstellt und der Benutzer wird erneut aufgefordert, ein "
+#~ "Passwort einzugeben."

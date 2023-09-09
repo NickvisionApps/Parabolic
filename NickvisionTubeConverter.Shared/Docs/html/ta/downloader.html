@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>Downloader</title>
+<title>பதிவிறக்குபவர்</title>
 <link rel="stylesheet" type="text/css" href="../C/C.css">
 <script type="text/javascript" src="../C/highlight.pack.js"></script><script>
 document.addEventListener('DOMContentLoaded', function() {
@@ -15,15 +15,15 @@ document.addEventListener('DOMContentLoaded', function() {
 </head>
 <body lang="ta" dir="ltr"><main><div class="page">
 <header><div class="inner pagewide"><div class="trails" role="navigation"><div class="trail">
-<a class="trail" href="index.html" title="Parabolic Help">Parabolic Help</a> » </div></div></div></header><article><div class="hgroup pagewide"><h1 class="title"><span class="title">Downloader</span></h1></div>
+<a class="trail" href="index.html" title="பரபோலிக் உதவி">பரபோலிக் உதவி</a> » </div></div></div></header><article><div class="hgroup pagewide"><h1 class="title"><span class="title">பதிவிறக்குபவர்</span></h1></div>
 <div class="region">
 <div class="contents pagewide">
 <p class="p"><span class="app">பரபோலிக்</span> இல் உள்ள விருப்பங்களில் பதிவிறக்குபவரை உள்ளமைப்பதற்கான அனைத்து விருப்பங்களையும் இந்தப் பக்கம் விளக்குகிறது.</p>
 <div class="terms"><div class="inner"><div class="region"><dl class="terms">
-<dt class="terms">Maximum Number of Active Downloads</dt>
+<dt class="terms">செயலில் உள்ள பதிவிறக்கங்களின் அதிகபட்ச எண்ணிக்கை</dt>
 <dd class="terms">
-<p class="p">The number of active downloads allowed to run at a time. Must be an integer value between 1 and 10.</p>
-<p class="p">If the max number of active downloads is reached, Parabolic will place new downloads in a queue until more downloads are able to be run.</p>
+<p class="p">ஒரே நேரத்தில் இயக்க அனுமதிக்கப்பட்ட செயலில் உள்ள பதிவிறக்கங்களின் எண்ணிக்கை. 1 மற்றும் 10 க்கு இடையில் ஒரு முழு எண் மதிப்பு இருக்க வேண்டும்.</p>
+<p class="p">செயலில் உள்ள பதிவிறக்கங்களின் அதிகபட்ச எண்ணிக்கையை அடைந்தால், அதிகமான பதிவிறக்கங்களை இயக்க முடியும் வரை, பரபோலிக் புதிய பதிவிறக்கங்களை வரிசையில் வைக்கும்.</p>
 <div class="note note-advanced" title="மேம்பட்ட">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -38,13 +38,13 @@ document.addEventListener('DOMContentLoaded', function() {
   <path class="yelp-svg-fill" d="m8.2435 7.0719-1.9004-3.3145 1.4143-1.4143 3.1596 1.7457z"></path>
   <path class="yelp-svg-fill" d="m11.072 11.757-3.3146 1.9-1.4143-1.414 1.7457-3.1602z"></path>
  </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Default: 5</p></div></div></div>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">இயல்புநிலை: 5</p></div></div></div>
 </div>
 </dd>
 <dt class="terms">ஏற்கனவே உள்ள கோப்புகளை மேலெழுதவும்</dt>
 <dd class="terms">
-<p class="p">If enabled, Parabolic will overwrite existing files.</p>
-<p class="p">For example, if a file named <span class="code">movie.mp4</span> exists in the download folder, and a new download is created named <span class="code">movie</span>, <span class="code">movie.mp4</span> will be overwritten with the new download's content.</p>
+<p class="p">இயக்கப்பட்டால், பாரபோலிக் ஏற்கனவே உள்ள கோப்புகளை மேலெழுதும்.</p>
+<p class="p">எடுத்துக்காட்டாக, பதிவிறக்கக் கோப்புறையில் <span class="code">movie.mp4</span> என்ற கோப்பு இருந்தால், <span class="code">movie</span> என்ற பெயரில் புதிய பதிவிறக்கம் உருவாக்கப்பட்டால், <span class="code">movie.mp4</span> புதிய பதிவிறக்கத்தின் உள்ளடக்கத்துடன் மேலெழுதப்படும்.</p>
 <div class="note note-advanced" title="மேம்பட்ட">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -59,12 +59,12 @@ document.addEventListener('DOMContentLoaded', function() {
   <path class="yelp-svg-fill" d="m8.2435 7.0719-1.9004-3.3145 1.4143-1.4143 3.1596 1.7457z"></path>
   <path class="yelp-svg-fill" d="m11.072 11.757-3.3146 1.9-1.4143-1.414 1.7457-3.1602z"></path>
  </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Default: On</p></div></div></div>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">இயல்புநிலை: ஆன்</p></div></div></div>
 </div>
 </dd>
-<dt class="terms">Speed Limit</dt>
+<dt class="terms">வேக வரம்பு</dt>
 <dd class="terms">
-<p class="p">A limit, in Ki/s, that is applied to downloads only if they have the advanced option <span class="code">Speed Limit</span> enabled. Must be an integer value between 512 and 10240.</p>
+<p class="p">Ki/s இல், மேம்பட்ட விருப்பம் <span class="code">Speed Limit</span> இயக்கப்பட்டிருந்தால் மட்டுமே பதிவிறக்கங்களுக்கு ஒரு வரம்பு பொருந்தும். 512 மற்றும் 10240 க்கு இடையில் ஒரு முழு எண்ணாக இருக்க வேண்டும்.</p>
 <div class="note note-advanced" title="மேம்பட்ட">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -79,12 +79,12 @@ document.addEventListener('DOMContentLoaded', function() {
   <path class="yelp-svg-fill" d="m8.2435 7.0719-1.9004-3.3145 1.4143-1.4143 3.1596 1.7457z"></path>
   <path class="yelp-svg-fill" d="m11.072 11.757-3.3146 1.9-1.4143-1.414 1.7457-3.1602z"></path>
  </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Default: 1024</p></div></div></div>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">இயல்புநிலை: 1024</p></div></div></div>
 </div>
 </dd>
-<dt class="terms">Use aria2</dt>
+<dt class="terms">aria2 ஐப் பயன்படுத்தவும்</dt>
 <dd class="terms">
-<p class="p">If enabled, Parabolic will use aria2c to download media. Although using aria2c can improve download speed, download progress will not be displayed in the UI.</p>
+<p class="p">இயக்கப்பட்டால், மீடியாவைப் பதிவிறக்க, பரபோலிக் aria2c ஐப் பயன்படுத்தும். aria2c ஐப் பயன்படுத்துவது பதிவிறக்க வேகத்தை மேம்படுத்தலாம் என்றாலும், பதிவிறக்க முன்னேற்றம் UI இல் காட்டப்படாது.</p>
 <div class="note note-advanced" title="மேம்பட்ட">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -99,13 +99,13 @@ document.addEventListener('DOMContentLoaded', function() {
   <path class="yelp-svg-fill" d="m8.2435 7.0719-1.9004-3.3145 1.4143-1.4143 3.1596 1.7457z"></path>
   <path class="yelp-svg-fill" d="m11.072 11.757-3.3146 1.9-1.4143-1.414 1.7457-3.1602z"></path>
  </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Default: Off</p></div></div></div>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">இயல்புநிலை: ஆஃப்</p></div></div></div>
 </div>
 </dd>
-<dt class="terms">Maximum Connections Per Server</dt>
+<dt class="terms">ஒரு சேவையகத்திற்கு அதிகபட்ச இணைப்புகள்</dt>
 <dd class="terms">
-<p class="p">This option only applies when using aria2 is enabled. This option is the same as the <span class="code">-x</span> flag passed to aria2c.</p>
-<p class="p">The maximum number of connection that can be used per server. Must be an integer value between 1 and 32.</p>
+<p class="p">aria2 ஐப் பயன்படுத்தும் போது மட்டுமே இந்த விருப்பம் பொருந்தும். இந்த விருப்பம், aria2c க்கு அனுப்பப்பட்ட <span class="code">-x</span> கொடி போன்றதே.</p>
+<p class="p">ஒரு சேவையகத்திற்கு பயன்படுத்தக்கூடிய அதிகபட்ச இணைப்பு எண்ணிக்கை. 1க்கும் 32க்கும் இடைப்பட்ட முழு எண் மதிப்பு இருக்க வேண்டும்.</p>
 <div class="note note-advanced" title="மேம்பட்ட">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -120,13 +120,13 @@ document.addEventListener('DOMContentLoaded', function() {
   <path class="yelp-svg-fill" d="m8.2435 7.0719-1.9004-3.3145 1.4143-1.4143 3.1596 1.7457z"></path>
   <path class="yelp-svg-fill" d="m11.072 11.757-3.3146 1.9-1.4143-1.414 1.7457-3.1602z"></path>
  </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Default: 16</p></div></div></div>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">இயல்புநிலை: 16</p></div></div></div>
 </div>
 </dd>
-<dt class="terms">Minimum Split Size</dt>
+<dt class="terms">குறைந்தபட்ச பிளவு அளவு</dt>
 <dd class="terms">
-<p class="p">This option only applies when using aria2 is enabled. This option is the same as the <span class="code">-k</span> flag passed to aria2c.</p>
-<p class="p">The minimum size, in MiB, of which to split a file. Must be an integer value between 1 and 1024.</p>
+<p class="p">aria2 ஐப் பயன்படுத்தும் போது மட்டுமே இந்த விருப்பம் பொருந்தும். இந்த விருப்பம், aria2c க்கு அனுப்பப்பட்ட <span class="code">-k</span> கொடி போன்றதே.</p>
+<p class="p">ஒரு கோப்பைப் பிரிப்பதற்கான குறைந்தபட்ச அளவு, MiB இல். 1 மற்றும் 1024 க்கு இடையில் ஒரு முழு எண் மதிப்பு இருக்க வேண்டும்.</p>
 <div class="note note-advanced" title="மேம்பட்ட">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -141,19 +141,19 @@ document.addEventListener('DOMContentLoaded', function() {
   <path class="yelp-svg-fill" d="m8.2435 7.0719-1.9004-3.3145 1.4143-1.4143 3.1596 1.7457z"></path>
   <path class="yelp-svg-fill" d="m11.072 11.757-3.3146 1.9-1.4143-1.414 1.7457-3.1602z"></path>
  </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Default: 20</p></div></div></div>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">இயல்புநிலை: 20</p></div></div></div>
 </div>
 </dd>
 <dt class="terms">YouTubeக்கு SponsorBlock ஐப் பயன்படுத்தவும்</dt>
 <dd class="terms">
-<p class="p">If enabled, Parabolic will apply the SponsorBlock extension to YouTube downloads.</p>
+<p class="p">இயக்கப்பட்டால், YouTube பதிவிறக்கங்களுக்கு பரபோலிக் SponsorBlock நீட்டிப்பைப் பயன்படுத்தும்.</p>
 <div class="note" title="குறிப்பு">
 <svg height="24" width="24" version="1.1">
  <g>
   <path class="yelp-svg-fill" d="m4 3h16c0.554 0 1 0.446 1 1v11h-6v6h-11c-0.554 0-1-0.446-1-1v-16c0-0.554 0.446-1 1-1z"></path>
   <path class="yelp-svg-fill" d="m17 16h4l-5 5v-4c0-0.554 0.446-1 1-1z"></path>
  </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">SponsorBlock only works on YouTube videos. However, leaving this setting on will not affect downloads from other sites (i.e. not cause them to fail).</p></div></div></div>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">YouTube வீடியோக்களில் மட்டுமே SponsorBlock வேலை செய்யும். இருப்பினும், இந்த அமைப்பை ஆன் செய்வதால் பிற தளங்களில் இருந்து பதிவிறக்கம் பாதிக்கப்படாது (அதாவது அவை தோல்வியடையாது).</p></div></div></div>
 </div>
 <div class="note note-advanced" title="மேம்பட்ட">
 <svg height="24" width="24" version="1.1">
@@ -169,19 +169,19 @@ document.addEventListener('DOMContentLoaded', function() {
   <path class="yelp-svg-fill" d="m8.2435 7.0719-1.9004-3.3145 1.4143-1.4143 3.1596 1.7457z"></path>
   <path class="yelp-svg-fill" d="m11.072 11.757-3.3146 1.9-1.4143-1.414 1.7457-3.1602z"></path>
  </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Default: Off</p></div></div></div>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">இயல்புநிலை: ஆஃப்</p></div></div></div>
 </div>
 </dd>
-<dt class="terms">Subtitles Languages</dt>
+<dt class="terms">வசன மொழிகள்</dt>
 <dd class="terms">
-<p class="p">A comma-separated list of two-letter and three-letter language codes to use when selecting languages of subtitles to download. Only applies when a valid <span class="code">Subtitle</span> format is selected in a download.</p>
+<p class="p">பதிவிறக்கம் செய்ய வசனம் மொழிகளைத் தேர்ந்தெடுக்கும்போது பயன்படுத்த வேண்டிய இரண்டு எழுத்து மற்றும் மூன்றெழுத்து மொழிக் குறியீடுகளின் கமாவால் பிரிக்கப்பட்ட பட்டியல். பதிவிறக்கத்தில் சரியான <span class="code">Subtitle</span> வடிவம் தேர்ந்தெடுக்கப்பட்டால் மட்டுமே பொருந்தும்.</p>
 <div class="note" title="குறிப்பு">
 <svg height="24" width="24" version="1.1">
  <g>
   <path class="yelp-svg-fill" d="m4 3h16c0.554 0 1 0.446 1 1v11h-6v6h-11c-0.554 0-1-0.446-1-1v-16c0-0.554 0.446-1 1-1z"></path>
   <path class="yelp-svg-fill" d="m17 16h4l-5 5v-4c0-0.554 0.446-1 1-1z"></path>
  </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Some sites use two-letter language codes, whereas others use three-letter. For example, <span class="code">en</span> and <span class="code">eng</span> are both used for English. Please specify both two-letter and three-letter codes for your languages for the best results.</p></div></div></div>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">சில தளங்கள் இரண்டெழுத்து மொழிக் குறியீடுகளைப் பயன்படுத்துகின்றன, மற்றவை மூன்றெழுத்துகளைப் பயன்படுத்துகின்றன. எடுத்துக்காட்டாக, <span class="code">en</span> மற்றும் <span class="code">eng</span> இரண்டும் ஆங்கிலத்திற்குப் பயன்படுத்தப்படுகின்றன. சிறந்த முடிவுகளுக்கு உங்கள் மொழிகளுக்கான இரண்டு எழுத்து மற்றும் மூன்றெழுத்து குறியீடுகள் இரண்டையும் குறிப்பிடவும்.</p></div></div></div>
 </div>
 <div class="note note-advanced" title="மேம்பட்ட">
 <svg height="24" width="24" version="1.1">
@@ -197,24 +197,24 @@ document.addEventListener('DOMContentLoaded', function() {
   <path class="yelp-svg-fill" d="m8.2435 7.0719-1.9004-3.3145 1.4143-1.4143 3.1596 1.7457z"></path>
   <path class="yelp-svg-fill" d="m11.072 11.757-3.3146 1.9-1.4143-1.414 1.7457-3.1602z"></path>
  </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Default: Your culture's two-letter and three-letter language code. For example, on an en-US system the default would be <span class="code">en,eng</span></p></div></div></div>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">இயல்புநிலை: உங்கள் கலாச்சாரத்தின் இரண்டெழுத்து மற்றும் மூன்றெழுத்து மொழிக் குறியீடு. எடுத்துக்காட்டாக, en-US கணினியில் இயல்புநிலையாக <span class="code">en,eng</span> இருக்கும்</p></div></div></div>
 </div>
 </dd>
 <dt class="terms">ப்ராக்ஸி URL</dt>
-<dd class="terms"><p class="p">The url of the proxy server to use.</p></dd>
+<dd class="terms"><p class="p">பயன்படுத்த வேண்டிய ப்ராக்ஸி சேவையகத்தின் url.</p></dd>
 <dt class="terms">குக்கீகள் கோப்பு</dt>
 <dd class="terms">
-<p class="p">A .txt file of cookies to pass to yt-dlp when downloading. This may be useful when downloading media that requires a login, for example: private YouTube videos.</p>
-<p class="p">Use one of the following extensions for getting a cookies file from your browser:</p>
-<p class="p">Chrome: <span class="code">https://chrome.google.com/webstore/detail/get-cookiestxt-locally/cclelndahbckbenkjhflpdbgdldlbecc</span></p>
-<p class="p">Firefox: <span class="code">https://addons.mozilla.org/en-US/firefox/addon/cookies-txt/</span></p>
+<p class="p">குக்கீகளின் .txt கோப்பு பதிவிறக்கும் போது yt-dlp க்கு அனுப்பப்படும். உள்நுழைவு தேவைப்படும் மீடியாவைப் பதிவிறக்கும் போது இது பயனுள்ளதாக இருக்கும், எடுத்துக்காட்டாக: தனிப்பட்ட YouTube வீடியோக்கள்.</p>
+<p class="p">உங்கள் உலாவியில் இருந்து குக்கீகள் கோப்பைப் பெற, பின்வரும் நீட்டிப்புகளில் ஒன்றைப் பயன்படுத்தவும்:</p>
+<p class="p">குரோம்: <span class="code">https://chrome.google.com/webstore/detail/get-cookiestxt-locally/cclelndahbckbenkjhflpdbgdldlbecc</span></p>
+<p class="p">பயர்பாக்ஸ்: <span class="code">https://addons.mozilla.org/en-US/firefox/addon/cookies-txt/</span></p>
 <div class="note" title="குறிப்பு">
 <svg height="24" width="24" version="1.1">
  <g>
   <path class="yelp-svg-fill" d="m4 3h16c0.554 0 1 0.446 1 1v11h-6v6h-11c-0.554 0-1-0.446-1-1v-16c0-0.554 0.446-1 1-1z"></path>
   <path class="yelp-svg-fill" d="m17 16h4l-5 5v-4c0-0.554 0.446-1 1-1z"></path>
  </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Use these extensions at your own risk.</p></div></div></div>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">இந்த நீட்டிப்புகளை உங்கள் சொந்த ஆபத்தில் பயன்படுத்தவும்.</p></div></div></div>
 </div>
 <div class="note note-advanced" title="மேம்பட்ட">
 <svg height="24" width="24" version="1.1">
@@ -230,7 +230,7 @@ document.addEventListener('DOMContentLoaded', function() {
   <path class="yelp-svg-fill" d="m8.2435 7.0719-1.9004-3.3145 1.4143-1.4143 3.1596 1.7457z"></path>
   <path class="yelp-svg-fill" d="m11.072 11.757-3.3146 1.9-1.4143-1.414 1.7457-3.1602z"></path>
  </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Default: No File Selected</p></div></div></div>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">இயல்புநிலை: கோப்பு எதுவும் தேர்ந்தெடுக்கப்படவில்லை</p></div></div></div>
 </div>
 </dd>
 </dl></div></div></div>
@@ -239,7 +239,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <div class="hgroup pagewide"></div>
 <div class="contents pagewide"><div class="links guidelinks"><div class="inner">
 <div class="title"><h2><span class="title">மேலும் தகவல்கள்</span></h2></div>
-<div class="region"><ul><li class="links "><a href="index.html" title="Parabolic Help">Parabolic Help</a></li></ul></div>
+<div class="region"><ul><li class="links "><a href="index.html" title="பரபோலிக் உதவி">பரபோலிக் உதவி</a></li></ul></div>
 </div></div></div>
 </div></section>
 </div>
