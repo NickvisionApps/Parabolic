@@ -35,9 +35,7 @@ public partial class Program
         _mainWindow = null;
         _mainWindowController = new MainWindowController();
         _mainWindowController.AppInfo.Changelog =
-            @"* Added a new advanced download option to split chapters
-              * Added a new preference to enable SponsorBlock for YouTube downloads
-              * Keyring password is now saved in system keyring using libsecret
+            @"* Parabolic will now use the system's credential manager (i.e. libsecret) for securing the Keyring. Please read the Keyring page in Help for information on migrating the old password-secured Keyring to the new secret-secured Keyring
               * Updated translations (Thanks everyone on Weblate!)";
         _application.OnActivate += OnActivate;
         if (File.Exists(Path.GetFullPath(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)) + "/org.nickvision.tubeconverter.gresource"))
