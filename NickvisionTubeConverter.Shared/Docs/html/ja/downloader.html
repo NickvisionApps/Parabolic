@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <dt class="terms">アクティブダウンロードの最大数</dt>
 <dd class="terms">
 <p class="p">平行して進行できるアクティブダウンロード数。数値は1から10までの整数である必要があります。</p>
-<p class="p">If the max number of active downloads is reached, Parabolic will place new downloads in a queue until more downloads are able to be run.</p>
+<p class="p">アクティブダウンロードが最大数に達すると、Parabolic は新しいダウンロードをダウンロードが可能になるまでキューに入れます。</p>
 <div class="note note-advanced" title="高度">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -38,13 +38,13 @@ document.addEventListener('DOMContentLoaded', function() {
   <path class="yelp-svg-fill" d="m8.2435 7.0719-1.9004-3.3145 1.4143-1.4143 3.1596 1.7457z"></path>
   <path class="yelp-svg-fill" d="m11.072 11.757-3.3146 1.9-1.4143-1.414 1.7457-3.1602z"></path>
  </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Default: 5</p></div></div></div>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">デフォルト: 5</p></div></div></div>
 </div>
 </dd>
-<dt class="terms">Overwrite Existing Files</dt>
+<dt class="terms">存在するファイルを上書きする</dt>
 <dd class="terms">
-<p class="p">If enabled, Parabolic will overwrite existing files.</p>
-<p class="p">For example, if a file named <span class="code">movie.mp4</span> exists in the download folder, and a new download is created named <span class="code">movie</span>, <span class="code">movie.mp4</span> will be overwritten with the new download's content.</p>
+<p class="p">有効であれば、Parabolic は存在するファイルを上書きします。</p>
+<p class="p">例えば、<span class="code">movie.mp4</span>という名のファイルがダウンロードフォルダーに存在し、<span class="code">movie</span>と名のダウンロードが作成されると、<span class="code">movie.mp4</span>は新しいダウンロードの内容で上書きされます。</p>
 <div class="note note-advanced" title="高度">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -62,9 +62,9 @@ document.addEventListener('DOMContentLoaded', function() {
 </svg><div class="inner"><div class="region"><div class="contents"><p class="p">デフォルト: オン</p></div></div></div>
 </div>
 </dd>
-<dt class="terms">Speed Limit</dt>
+<dt class="terms">スピード制限</dt>
 <dd class="terms">
-<p class="p">A limit, in Ki/s, that is applied to downloads only if they have the advanced option <span class="code">Speed Limit</span> enabled. Must be an integer value between 512 and 10240.</p>
+<p class="p">制限は、Ki/s 単位で、<span class="code">スピード制限</span>の詳細オプションが有効なダウンロードにのみ適用されます。数値は512から10240の整数である必要があります。</p>
 <div class="note note-advanced" title="高度">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -79,12 +79,12 @@ document.addEventListener('DOMContentLoaded', function() {
   <path class="yelp-svg-fill" d="m8.2435 7.0719-1.9004-3.3145 1.4143-1.4143 3.1596 1.7457z"></path>
   <path class="yelp-svg-fill" d="m11.072 11.757-3.3146 1.9-1.4143-1.414 1.7457-3.1602z"></path>
  </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Default: 1024</p></div></div></div>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">デフォルト: 1024</p></div></div></div>
 </div>
 </dd>
-<dt class="terms">Use aria2</dt>
+<dt class="terms">Aria2 を使用</dt>
 <dd class="terms">
-<p class="p">If enabled, Parabolic will use aria2c to download media. Although using aria2c can improve download speed, download progress will not be displayed in the UI.</p>
+<p class="p">有効であれば、Parabolic は aria2c を使用してメディアをダウンロードします。aria2c を使用するとダウンロード速度は向上しますが、UIで、ダウンロード進捗は表示されません。</p>
 <div class="note note-advanced" title="高度">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -102,7 +102,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </svg><div class="inner"><div class="region"><div class="contents"><p class="p">デフォルト: オフ</p></div></div></div>
 </div>
 </dd>
-<dt class="terms">Maximum Connections Per Server</dt>
+<dt class="terms">サーバーごとの最大接続数</dt>
 <dd class="terms">
 <p class="p">This option only applies when using aria2 is enabled. This option is the same as the <span class="code">-x</span> flag passed to aria2c.</p>
 <p class="p">The maximum number of connection that can be used per server. Must be an integer value between 1 and 32.</p>
@@ -144,7 +144,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </svg><div class="inner"><div class="region"><div class="contents"><p class="p">Default: 20</p></div></div></div>
 </div>
 </dd>
-<dt class="terms">Use SponsorBlock for YouTube</dt>
+<dt class="terms">YouTube のダウンロードで SponsorBlock を使用</dt>
 <dd class="terms">
 <p class="p">If enabled, Parabolic will apply the SponsorBlock extension to YouTube downloads.</p>
 <div class="note" title="注記">
