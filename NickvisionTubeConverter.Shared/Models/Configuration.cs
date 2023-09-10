@@ -136,7 +136,7 @@ public class Configuration : ConfigurationBase
         AriaMaxConnectionsPerServer = 16;
         AriaMinSplitSize = 20;
         YouTubeSponsorBlock = false;
-        SubtitleLangs = $"{CultureInfo.CurrentCulture.TwoLetterISOLanguageName},{CultureInfo.CurrentCulture.ThreeLetterISOLanguageName}";
+        SubtitleLangs = $"{CultureInfo.CurrentCulture.TwoLetterISOLanguageName},{CultureInfo.CurrentCulture.Name},{CultureInfo.CurrentCulture.ThreeLetterISOLanguageName}";
         ProxyUrl = "";
         CookiesPath = "";
         DisallowConversions = false;

@@ -26,7 +26,7 @@ public class PreferencesViewController
     {
         var cultures = CultureInfo.GetCultures(CultureTypes.AllCultures).Where(x => !string.IsNullOrEmpty(x.Name)).ToArray();
         var codes = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
-        codes.UnionWith(cultures.Select(x => x.TwoLetterISOLanguageName));
+        codes.UnionWith(cultures.Select(x => x.Name));
         codes.UnionWith(cultures.Select(x => x.ThreeLetterISOLanguageName));
         _supportedLangCodes = codes.ToList();
     }
