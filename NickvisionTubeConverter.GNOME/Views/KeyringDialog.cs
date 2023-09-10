@@ -61,8 +61,7 @@ public partial class KeyringDialog : Adw.Window
         _enableKeyringButton.OnClicked += async (sender, e) =>
         {
             _enableKeyringButton.SetSensitive(false);
-            var success = false;
-            await Task.Run(() => success = _controller.EnableKeyring());
+            var success = await _controller.EnableKeyringAsync();
             _enableKeyringButton.SetSensitive(true);
             if (success)
             {
@@ -79,7 +78,7 @@ public partial class KeyringDialog : Adw.Window
             _titleLabel.SetVisible(false);
             _viewStack.SetVisibleChildName("disable");
         };
-        _confirmDisableKeyringButton.OnClicked += DisableKeyring;
+        _confirmDisableKeyringButton.OnClicked += async (sender, e) => await DisableKeyringAsync();
         _backButton.OnClicked += async (sender, e) => await LoadHomePageAsync();
         _addCredentialButton.OnClicked += (sender, e) => LoadAddCredentialPage();
         _credentialAddButton.OnClicked += AddCredential;
@@ -254,11 +253,11 @@ public partial class KeyringDialog : Adw.Window
         closeDialog.SetCloseResponse("no");
         closeDialog.AddResponse("yes", _("Yes"));
         closeDialog.SetResponseAppearance("yes", Adw.ResponseAppearance.Destructive);
-        closeDialog.OnResponse += (s, ex) =>
+        closeDialog.OnResponse += async (s, ex) =>
         {
             if (ex.Response == "yes")
             {
-                if (_controller.ResetKeyring())
+                if (await _controller.ResetKeyringAsync())
                 {
                     Close();
                 }
@@ -275,11 +274,9 @@ public partial class KeyringDialog : Adw.Window
     /// <summary>
     /// Occurs when the disable keyring button is clicked
     /// </summary>
-    /// <param name="sender">Gtk.Button</param>
-    /// <param name="e">EventArgs</param>
-    private void DisableKeyring(Gtk.Button sender, EventArgs e)
+    private async Task DisableKeyringAsync()
     {
-        if (_controller.DisableKeyring())
+        if (await _controller.DisableKeyringAsync())
         {
             Close();
         }
