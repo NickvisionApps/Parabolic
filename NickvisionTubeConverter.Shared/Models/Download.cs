@@ -67,7 +67,7 @@ public class Download
     /// </summary>
     public VideoResolution? Resolution { get; init; }
     /// <summary>
-    /// Whether ot not to download the subtitles
+    /// Whether or not to download the subtitles
     /// </summary>
     public bool Subtitle { get; init; }
     /// <summary>

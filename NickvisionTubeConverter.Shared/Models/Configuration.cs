@@ -90,7 +90,7 @@ public class Configuration : ConfigurationBase
     /// </summary>
     public bool CropAudioThumbnails { get; set; }
     /// <summary>
-    /// Whether ot not to remove data about media source from metadata
+    /// Whether or not to remove data about media source from metadata
     /// </summary>
     /// <remarks>This includes comment, description, synopsis and purl fields</remarks>
     public bool RemoveSourceData { get; set; }
