@@ -48,6 +48,15 @@
 			<p>По умолчанию: Выключено</p>
 		</note>
     </item>
+    <item>
+		<title>Remove Source Data</title>
+		<p>Доступно только если Встраивание Метаданных включено.</p>
+		<p>If enabled, Parabolic will clear metadata fields containing the URL and other identifying information of the media source.</p>
+        <p>Fields that are cleared: <code>comment</code>, <code>description</code>, <code>synopsis</code>, <code>purl</code> and <code>handler_name</code> in each stream.</p>
+		<note style="advanced">
+			<p>По умолчанию: Выключено</p>
+		</note>
+    </item>
 	<item>
 		<title>Встраивать главы</title>
 		<p>Если включено, Parabolic будет записывать данные о главах в медиа файл, если эта информация доступна</p>
