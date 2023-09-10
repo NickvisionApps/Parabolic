@@ -90,6 +90,11 @@ public class Configuration : ConfigurationBase
     /// </summary>
     public bool CropAudioThumbnails { get; set; }
     /// <summary>
+    /// Whether ot not to remove data about media source from metadata
+    /// </summary>
+    /// <remarks>This includes comment, description, synopsis and purl fields</remarks>
+    public bool RemoveSourceData { get; set; }
+    /// <summary>
     /// Whether or not to embed chapters in a download
     /// </summary>
     public bool EmbedChapters { get; set; }
@@ -133,6 +138,7 @@ public class Configuration : ConfigurationBase
         DisallowConversions = false;
         EmbedMetadata = true;
         CropAudioThumbnails = false;
+        RemoveSourceData = false;
         EmbedChapters = false;
         PreviousSaveFolder = "";
         PreviousMediaFileType = MediaFileType.MP4;

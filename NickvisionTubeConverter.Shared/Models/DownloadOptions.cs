@@ -42,6 +42,11 @@ public class DownloadOptions
     /// </summary>
     public bool EmbedMetadata { get; init; }
     /// <summary>
+    /// Whether ot not to remove data about media source from metadata
+    /// </summary>
+    /// <remarks>This includes comment, description, synopsis and purl fields</remarks>
+    public bool RemoveSourceData { get; init; }
+    /// <summary>
     /// Whether or not to embed chapters in the downloaded file
     /// </summary>
     public bool EmbedChapters { get; init; }
@@ -58,8 +63,9 @@ public class DownloadOptions
     /// <param name="proxyUrl">The url of the proxy server to use</param>
     /// <param name="cookiesPath">The path to the cookies file to use for yt-dlp</param>
     /// <param name="embedMetadata">Whether or not to embed media metadata in the downloaded file</param>
+    /// <param name="removeSourceData">Whether ot not to remove data about media source from metadata</param>
     /// <param name="embedChapters">Whether or not to embed chapters in the downloaded file</param>
-    public DownloadOptions(bool overwriteExistingFiles, bool useAria, int ariaMaxConnectionsPerServer, int ariaMinSplitSize, bool youTubeSponsorBlock, string subtitleLangs, string proxyUrl, string cookiesPath, bool embedMetadata, bool embedChapters)
+    public DownloadOptions(bool overwriteExistingFiles, bool useAria, int ariaMaxConnectionsPerServer, int ariaMinSplitSize, bool youTubeSponsorBlock, string subtitleLangs, string proxyUrl, string cookiesPath, bool embedMetadata, bool removeSourceData, bool embedChapters)
     {
         OverwriteExistingFiles = overwriteExistingFiles;
         UseAria = useAria;
@@ -70,6 +76,7 @@ public class DownloadOptions
         ProxyUrl = proxyUrl;
         CookiesPath = cookiesPath;
         EmbedMetadata = embedMetadata;
+        RemoveSourceData = removeSourceData;
         EmbedChapters = embedChapters;
     }
 }

@@ -211,7 +211,8 @@ public class Download
                     { "windowsfilenames", RuntimeInformation.IsOSPlatform(OSPlatform.Windows) },
                     { "encoding", "utf_8" },
                     { "overwrites", options.OverwriteExistingFiles },
-                    { "noprogress", true }
+                    { "noprogress", true },
+                    { "verbose", true }
                 };
                 if(!FileType.GetIsGeneric())
                 {
@@ -301,7 +302,16 @@ public class Download
                 }
                 if (options.EmbedMetadata)
                 {
-                    postProcessors.Add(new Dictionary<string, dynamic>() { { "key", "MetadataFromField" }, { "formats", new List<string>() { ":(?P<meta_comment>)", ":(?P<meta_description>)", ":(?P<meta_synopsis>)", ":(?P<meta_purl>)", $"{_playlistPosition}:%(meta_track)s"} } });
+                    dynamic ppDict = new PyDict();
+                    if (options.RemoveSourceData)
+                    {
+                        postProcessors.Add(new Dictionary<string, dynamic>() { { "key", "MetadataFromField" }, { "formats", new List<string>() { ":(?P<meta_comment>)", ":(?P<meta_description>)", ":(?P<meta_synopsis>)", ":(?P<meta_purl>)", $"{_playlistPosition}:%(meta_track)s"} } });
+                        dynamic rsdParams = new PyList();
+                        rsdParams.Append(new PyString("-metadata:s"));
+                        rsdParams.Append(new PyString("handler_name="));
+                        ppDict["tcmetadata"] = rsdParams;
+                    }
+                    // TCMetadata should be added after MetadataFromField
                     postProcessors.Add(new Dictionary<string, dynamic>() { { "key", "TCMetadata" }, { "add_metadata", true }, { "add_chapters", options.EmbedChapters } });
                     if (FileType.GetSupportsThumbnails())
                     {
@@ -309,14 +319,13 @@ public class Download
                         postProcessors.Add(new Dictionary<string, dynamic>() { { "key", "TCEmbedThumbnail" } });
                         if (_cropThumbnail)
                         {
-                            dynamic cropDict = new PyDict();
                             dynamic cropParams = new PyList();
                             cropParams.Append(new PyString("-vf"));
                             cropParams.Append(new PyString("crop=\'if(gt(ih,iw),iw,ih)\':\'if(gt(iw,ih),ih,iw)\'"));
-                            cropDict["thumbnailsconvertor"] = cropParams;
-                            _ytOpt.Add("postprocessor_args", cropDict);
+                            ppDict["thumbnailsconvertor"] = cropParams;
                         }
                     }
+                    _ytOpt.Add("postprocessor_args", ppDict);
                 }
                 else if (options.EmbedChapters)
                 {

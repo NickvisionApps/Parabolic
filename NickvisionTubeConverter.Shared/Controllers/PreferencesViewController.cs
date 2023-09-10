@@ -219,6 +219,17 @@ public class PreferencesViewController
     }
 
     /// <summary>
+    /// Whether ot not to remove data about media source from metadata
+    /// </summary>
+    /// <remarks>This includes comment, description, synopsis and purl fields</remarks>
+    public bool RemoveSourceData
+    {
+        get => Configuration.Current.RemoveSourceData;
+
+        set => Configuration.Current.RemoveSourceData = value;
+    }
+
+    /// <summary>
     /// Whether or not to embed chapters in a download
     /// </summary>
     public bool EmbedChapters
