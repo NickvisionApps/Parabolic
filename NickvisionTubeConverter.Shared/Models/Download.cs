@@ -26,6 +26,8 @@ public enum Quality
 /// </summary>
 public class Download
 {
+    private static string[] _youtubeLangCodes = { "af", "az", "id", "ms", "bs", "ca", "cs", "da", "de", "et", "en-IN", "en-GB", "en", "es", "es-419", "es-US", "eu", "fil", "fr", "fr-CA", "gl", "hr", "zu", "is", "it", "sw", "lv", "lt", "hu", "nl", "no", "uz", "pl", "pt-PT", "pt", "ro", "sq", "sk", "sl", "sr-Latn", "fi", "sv", "vi", "tr", "be", "bg", "ky", "kk", "mk", "mn", "ru", "sr", "uk", "el", "hy", "iw", "ur", "ar", "fa", "ne", "mr", "hi", "as", "bn", "pa", "gu", "or", "ta", "te", "kn", "ml", "si", "th", "lo", "my", "ka", "am", "km", "zh-CN", "zh-TW", "zh-HK", "ja", "ko" };
+
     private readonly string _tempDownloadPath;
     private readonly string _logPath;
     private readonly bool _limitSpeed;
@@ -188,8 +190,7 @@ public class Download
                 Directory.CreateDirectory(_tempDownloadPath);
                 _outFile = PythonHelpers.SetConsoleOutputFilePath(_logPath);
                 //Setup download params
-                var hooks = new List<Action<PyDict>>();
-                hooks.Add(ProgressHook);
+                var hooks = new List<Action<PyDict>> { ProgressHook };
                 _ytOpt = new Dictionary<string, dynamic> {
                     { "quiet", false },
                     { "ignoreerrors", "downloadonly" },
@@ -201,9 +202,27 @@ public class Download
                     { "windowsfilenames", RuntimeInformation.IsOSPlatform(OSPlatform.Windows) },
                     { "encoding", "utf_8" },
                     { "overwrites", options.OverwriteExistingFiles },
-                    { "noprogress", true },
-                    { "verbose", true }
+                    { "noprogress", true }
                 };
+                string? lang = null;
+                if (_youtubeLangCodes.Contains(CultureInfo.CurrentCulture.Name))
+                {
+                    lang = CultureInfo.CurrentCulture.Name;
+                }
+                else if (_youtubeLangCodes.Contains(CultureInfo.CurrentCulture.TwoLetterISOLanguageName))
+                {
+                    lang = CultureInfo.CurrentCulture.TwoLetterISOLanguageName;
+                }
+                if (!string.IsNullOrEmpty(lang))
+                {
+                    var youtubeLang = new PyList();
+                    youtubeLang.Append(new PyString(lang));
+                    var youtubeExtractorOpt = new PyDict();
+                    youtubeExtractorOpt["lang"] = youtubeLang;
+                    var extractorArgs = new PyDict();
+                    extractorArgs["youtube"] = youtubeExtractorOpt;
+                    _ytOpt.Add("extractor_args", extractorArgs);
+                }
                 if(!FileType.GetIsGeneric())
                 {
                     _ytOpt.Add("final_ext", FileType.ToString().ToLower());

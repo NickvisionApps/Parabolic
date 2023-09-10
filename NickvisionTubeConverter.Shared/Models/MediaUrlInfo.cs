@@ -2,7 +2,9 @@
 using Python.Runtime;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
+using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 
@@ -13,6 +15,7 @@ namespace NickvisionTubeConverter.Shared.Models;
 /// </summary>
 public class MediaUrlInfo
 {
+    private static string[] _youtubeLangCodes = { "af", "az", "id", "ms", "bs", "ca", "cs", "da", "de", "et", "en-IN", "en-GB", "en", "es", "es-419", "es-US", "eu", "fil", "fr", "fr-CA", "gl", "hr", "zu", "is", "it", "sw", "lv", "lt", "hu", "nl", "no", "uz", "pl", "pt-PT", "pt", "ro", "sq", "sk", "sl", "sr-Latn", "fi", "sv", "vi", "tr", "be", "bg", "ky", "kk", "mk", "mn", "ru", "sr", "uk", "el", "hy", "iw", "ur", "ar", "fa", "ne", "mr", "hi", "as", "bn", "pa", "gu", "or", "ta", "te", "kn", "ml", "si", "th", "lo", "my", "ka", "am", "km", "zh-CN", "zh-TW", "zh-HK", "ja", "ko" };
     private bool _tryVideo;
 
     /// <summary>
@@ -72,6 +75,25 @@ public class MediaUrlInfo
                         { "ignoreerrors", true },
                         { "extract_flat", "in_playlist" }
                     };
+                    string? lang = null;
+                    if (_youtubeLangCodes.Contains(CultureInfo.CurrentCulture.Name))
+                    {
+                        lang = CultureInfo.CurrentCulture.Name;
+                    }
+                    else if (_youtubeLangCodes.Contains(CultureInfo.CurrentCulture.TwoLetterISOLanguageName))
+                    {
+                        lang = CultureInfo.CurrentCulture.TwoLetterISOLanguageName;
+                    }
+                    if (!string.IsNullOrEmpty(lang))
+                    {
+                        var youtubeLang = new PyList();
+                        youtubeLang.Append(new PyString(lang));
+                        var youtubeExtractorOpt = new PyDict();
+                        youtubeExtractorOpt["lang"] = youtubeLang;
+                        var extractorArgs = new PyDict();
+                        extractorArgs["youtube"] = youtubeExtractorOpt;
+                        ytOpt.Add("extractor_args", extractorArgs);
+                    }
                     if (!string.IsNullOrEmpty(proxyUrl))
                     {
                         ytOpt.Add("proxy", new PyString(proxyUrl));
