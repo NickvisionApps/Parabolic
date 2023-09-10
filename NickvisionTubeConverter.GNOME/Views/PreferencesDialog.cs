@@ -43,6 +43,7 @@ public partial class PreferencesDialog : Adw.PreferencesWindow
     [Gtk.Connect] private readonly Gtk.Button _unsetCookiesFileButton;
     [Gtk.Connect] private readonly Gtk.Switch _disallowConversionsSwitch;
     [Gtk.Connect] private readonly Adw.ExpanderRow _embedMetadataRow;
+    [Gtk.Connect] private readonly Gtk.Switch _removeSourceDataSwitch;
     [Gtk.Connect] private readonly Gtk.Switch _cropAudioThumbnailSwitch;
     [Gtk.Connect] private readonly Gtk.Switch _embedChaptersSwitch;
 
@@ -93,6 +94,7 @@ public partial class PreferencesDialog : Adw.PreferencesWindow
         }
         _disallowConversionsSwitch.SetActive(_controller.DisallowConversions);
         _embedMetadataRow.SetEnableExpansion(_controller.EmbedMetadata);
+        _removeSourceDataSwitch.SetActive(_controller.RemoveSourceData);
         _cropAudioThumbnailSwitch.SetActive(_controller.CropAudioThumbnails);
         _embedChaptersSwitch.SetActive(_controller.EmbedChapters);
     }
@@ -128,6 +130,7 @@ public partial class PreferencesDialog : Adw.PreferencesWindow
         _controller.ProxyUrl = _proxyRow.GetText();
         _controller.DisallowConversions = _disallowConversionsSwitch.GetActive();
         _controller.EmbedMetadata = _embedMetadataRow.GetEnableExpansion();
+        _controller.RemoveSourceData = _removeSourceDataSwitch.GetActive();
         _controller.CropAudioThumbnails = _cropAudioThumbnailSwitch.GetActive();
         _controller.EmbedChapters = _embedChaptersSwitch.GetActive();
         _controller.SaveConfiguration();

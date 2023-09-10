@@ -416,6 +416,22 @@ Adw.PreferencesWindow _root {
             valign: center;
           }
         }
+
+        Adw.ActionRow {
+          title: _("Remove data about media source");
+          subtitle: _("Clear metadata fields containing URL and another data that can lead to the media source");
+          activatable-widget: _removeSourceDataSwitch;
+
+          [prefix]
+          Gtk.Image {
+            icon-name: "larger-brush-symbolic";
+          }
+
+          [suffix]
+          Gtk.Switch _removeSourceDataSwitch {
+            valign: center;
+          }
+        }
       }
 
       Adw.ActionRow {
