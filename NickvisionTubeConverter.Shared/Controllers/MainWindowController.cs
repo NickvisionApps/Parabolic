@@ -200,7 +200,7 @@ public class MainWindowController : IDisposable
         //Setup Keyring
         if(Keyring.Exists(AppInfo.ID))
         {
-            await Task.Run(() => _keyring = Keyring.Access(AppInfo.ID));
+            _keyring = await Keyring.AccessAsync(AppInfo.ID);
             while(_keyring == null)
             {
                 var res = await KeyringLoginAsync!(_("Unlock Keyring"));
@@ -208,7 +208,7 @@ public class MainWindowController : IDisposable
                 {
                     break;
                 }
-                _keyring = Keyring.Access(AppInfo.ID, res.Password);
+                _keyring = await Keyring.AccessAsync(AppInfo.ID, res.Password);
             }
         }
         //Check Network
