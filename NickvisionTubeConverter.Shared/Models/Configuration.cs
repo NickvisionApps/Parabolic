@@ -111,6 +111,10 @@ public class Configuration : ConfigurationBase
     /// </summary>
     public string PreviousVideoResolution { get; set; }
     /// <summary>
+    /// The previously used subtitle downloading state
+    /// </summary>
+    public bool PreviousSubtitleState { get; set; }
+    /// <summary>
     /// Whether or not to number titles
     /// </summary>
     public bool NumberTitles { get; set; }
@@ -143,6 +147,7 @@ public class Configuration : ConfigurationBase
         PreviousSaveFolder = "";
         PreviousMediaFileType = MediaFileType.MP4;
         PreviousVideoResolution = "";
+        PreviousSubtitleState = false;
         NumberTitles = false;
     }
 

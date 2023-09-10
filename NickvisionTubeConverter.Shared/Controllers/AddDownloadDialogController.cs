@@ -71,6 +71,10 @@ public class AddDownloadDialogController
     /// </summary>
     public MediaFileType PreviousMediaFileType => Configuration.Current.PreviousMediaFileType;
     /// <summary>
+    /// The previously used subtitle downloading state
+    /// </summary>
+    public bool PreviousSubtitleState => Configuration.Current.PreviousSubtitleState;
+    /// <summary>
     /// Whether or not to number titles
     /// </summary>
     public bool NumberTitles => Configuration.Current.NumberTitles;
@@ -274,6 +278,7 @@ public class AddDownloadDialogController
         {
             Configuration.Current.PreviousVideoResolution = _mediaUrlInfo.VideoResolutions[resolution.Value].ToString();
         }
+        Configuration.Current.PreviousSubtitleState = subtitles;
         Aura.Active.SaveConfig("config");
     }
 

@@ -233,6 +233,7 @@ public partial class AddDownloadDialog : Adw.Window
             _saveFolderString = GLib.Functions.GetUserSpecialDir(GLib.UserDirectory.DirectoryDownload) ?? "";
         }
         _saveFolderRow.SetText(Path.GetFileName(_saveFolderString) ?? "");
+        _subtitleSwitch.SetActive(_controller.PreviousSubtitleState);
         _speedLimitRow.SetSubtitle($"{_("{0:f1} KiB/s", _controller.CurrentSpeedLimit)} {_("(Configurable in preferences)")}");
     }
 
