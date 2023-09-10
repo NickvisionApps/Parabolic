@@ -15,28 +15,28 @@
 </info>
 
 <title>Downloader</title>
-<p>This page explains all options for configuring the Downloader in Preferences in <app>Parabolic</app>.</p>
+<p>Questa pagina spiega tutte le opzioni per configurare il Downloader nelle Preferenze in <app>Parabolic</app>.</p>
 
 <terms>
 	<item>
-		<title>Maximum Number of Active Downloads</title>
-		<p>The number of active downloads allowed to run at a time. Must be an integer value between 1 and 10.</p>
-        <p>If the max number of active downloads is reached, Parabolic will place new downloads in a queue until more downloads are able to be run.</p>
+		<title>Numero massimo di download attivi</title>
+		<p>Il numero di download attivi che è possibile eseguire contemporaneamente. Deve essere un valore intero compreso tra 1 e 10.</p>
+        <p>Se viene raggiunto il numero massimo di download attivi, Parabolic metterà i nuovi download in coda finché non sarà possibile eseguirne altri.</p>
 		<note style="advanced">
-			<p>Default: 5</p>
+			<p>Predefinito: 5</p>
 		</note>
     </item>
     <item>
         <title>Sovrascrivi file esistenti</title>
-        <p>If enabled, Parabolic will overwrite existing files.</p>
-        <p>For example, if a file named <code>movie.mp4</code> exists in the download folder, and a new download is created named <code>movie</code>, <code>movie.mp4</code> will be overwritten with the new download's content.</p>
+        <p>Se abilitato, Parabolic sovrascriverà i file esistenti.</p>
+        <p>Ad esempio, se nella cartella dei download esiste un file denominato <code>movie.mp4</code> e viene creato un nuovo download denominato <code>movie</code>, <code>movie.mp4</code> verrà sovrascritto con il contenuto del nuovo download.</p>
 		<note style="advanced">
-			<p>Default: On</p>
+			<p>Predefinito: attivato</p>
 		</note>
     </item>
     <item>
         <title>Limite di velocità</title>
-        <p>A limit, in Ki/s, that is applied to downloads only if they have the advanced option <code>Speed Limit</code> enabled. Must be an integer value between 512 and 10240.</p>
+        <p>Un limite, in Ki/s, che viene applicato ai download solo se hanno l'opzione avanzata <code>Limite di velocità</code> abilitata. Deve essere un valore intero compreso tra 512 e 10240.</p>
 		<note style="advanced">
 			<p>Predefinito: 1024</p>
 		</note>
@@ -45,7 +45,7 @@
         <title>Usa aria2</title>
         <p>Se la voce è abilitata, Parabolic userà aria2c per scaricare i file multimediali. Usando arIa2c si può migliorare la velocità in download, tuttavia l'avanzamento del download non verrà mostrato nella UI.</p>
 		<note style="advanced">
-			<p>Default: Off</p>
+			<p>Predefinito: Disattivato</p>
 		</note>
     </item>
     <item>
@@ -71,7 +71,7 @@
             <p>SponsorBlock only works on YouTube videos. However, leaving this setting on will not affect downloads from other sites (i.e. not cause them to fail).</p>
         </note>
         <note style="advanced">
-            <p>Default: Off</p>
+            <p>Predefinito: Disattivato</p>
         </note>
     </item>
     <item>
@@ -86,7 +86,7 @@
     </item>
     <item>
         <title>URL proxy</title>
-        <p>The url of the proxy server to use.</p>
+        <p>L'URL del server proxy da utilizzare.</p>
     </item>
     <item>
         <title>File di Cookie</title>
