@@ -35,7 +35,7 @@ public partial class Program
         _mainWindow = null;
         _mainWindowController = new MainWindowController();
         _mainWindowController.AppInfo.Changelog =
-            @"* Parabolic will now use the system's credential manager (i.e. libsecret) for securing the Keyring. Please read the Keyring page in Help for information on migrating the old password-secured Keyring to the new secret-secured Keyring
+            @"* Parabolic will now use the system's credential manager (i.e. DBus Secret Service) for securing the Keyring. Please read the Keyring page in Help for information on migrating the old password-secured Keyring to the new secret-secured Keyring
               * Updated translations (Thanks everyone on Weblate!)";
         _application.OnActivate += OnActivate;
         if (File.Exists(Path.GetFullPath(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)) + "/org.nickvision.tubeconverter.gresource"))
