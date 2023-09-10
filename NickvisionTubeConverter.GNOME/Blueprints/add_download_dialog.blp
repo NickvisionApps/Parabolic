@@ -127,11 +127,14 @@ Adw.Window _root {
                       visible: false;
                     }
 
-                    Adw.ComboRow _subtitleRow {
-                      title: _("Subtitle");
-                      model: Gtk.StringList {
-                        strings [C_("Subtitle", "None"), "VTT", "SRT"]
-                      };
+                    Adw.ActionRow _subtitleRow {
+                      title: _("Download Subtitle");
+                      activatable-widget: _subtitleSwitch;
+
+                      [suffix]
+                        Gtk.Switch _subtitleSwitch {
+                        valign: center;
+                      }
                     }
                   }
 

@@ -22,16 +22,6 @@ public enum Quality
 }
 
 /// <summary>
-/// Subtitle types for a download
-/// </summary>
-public enum Subtitle
-{
-    None = 0,
-    VTT,
-    SRT
-}
-
-/// <summary>
 /// A model of a media download
 /// </summary>
 public class Download
@@ -75,9 +65,9 @@ public class Download
     /// </summary>
     public VideoResolution? Resolution { get; init; }
     /// <summary>
-    /// The subtitles for the download
+    /// Whether ot not to download the subtitles
     /// </summary>
-    public Subtitle Subtitle { get; init; }
+    public bool Subtitle { get; init; }
     /// <summary>
     /// The audio language code
     /// </summary>
@@ -120,7 +110,7 @@ public class Download
     /// <param name="quality">The quality of the download</param>
     /// <param name="resolution">The video resolution if available</param>
     /// <param name="audioLanguage">The audio language code</param>
-    /// <param name="subtitle">The subtitles for the download</param>
+    /// <param name="subtitle">Whether or not to download the subtitles</param>
     /// <param name="saveFolder">The folder to save the download to</param>
     /// <param name="saveFilename">The filename to save the download as</param>
     /// <param name="limitSpeed">Whether or not to limit the download speed</param>
@@ -132,7 +122,7 @@ public class Download
     /// <param name="username">A username for the website (if available)</param>
     /// <param name="password">A password for the website (if available)</param>
     /// <exception cref="ArgumentException">Thrown if timeframe is specified and limitSpeed is enabled</exception>
-    public Download(string mediaUrl, MediaFileType fileType, Quality quality, VideoResolution? resolution, string? audioLanguage, Subtitle subtitle, string saveFolder, string saveFilename, bool limitSpeed, uint speedLimit, bool splitChapters, bool cropThumbnail, Timeframe? timeframe, uint playlistPosition, string? username, string? password)
+    public Download(string mediaUrl, MediaFileType fileType, Quality quality, VideoResolution? resolution, string? audioLanguage, bool subtitle, string saveFolder, string saveFilename, bool limitSpeed, uint speedLimit, bool splitChapters, bool cropThumbnail, Timeframe? timeframe, uint playlistPosition, string? username, string? password)
     {
         Id = Guid.NewGuid();
         MediaUrl = mediaUrl;
@@ -282,17 +272,17 @@ public class Download
                     {
                         postProcessors.Add(new Dictionary<string, dynamic>() { { "key", "FFmpegVideoConvertor" }, { "preferedformat", FileType.ToString().ToLower() } });
                     }
-                    if (Subtitle != Subtitle.None)
+                    if (Subtitle)
                     {
                         var subtitleLangs = options.SubtitleLangs;
-                        if(subtitleLangs[subtitleLangs.Length - 1] == ',')
+                        if(subtitleLangs[^1] == ',')
                         {
                             subtitleLangs = subtitleLangs.Remove(subtitleLangs.Length - 1);
                         }
                         _ytOpt.Add("writesubtitles", true);
                         _ytOpt.Add("writeautomaticsub", true);
                         _ytOpt.Add("subtitleslangs", subtitleLangs.Split(",").Select(x => x.Trim()).ToList());
-                        postProcessors.Add(new Dictionary<string, dynamic>() { { "key", "FFmpegSubtitlesConvertor" }, { "format", Subtitle.ToString().ToLower() } });
+                        postProcessors.Add(new Dictionary<string, dynamic>() { { "key", "FFmpegSubtitlesConvertor" }, { "format", FileType == MediaFileType.MP4 ? "srt" : "vtt" } });
                         postProcessors.Add(new Dictionary<string, dynamic>() { { "key", "FFmpegEmbedSubtitle" } });
                     }
                 }
