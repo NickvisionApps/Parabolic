@@ -22,35 +22,34 @@
 
 <title>Lista kluczy</title>
 <p>Na tej stronie wyjaśniono wszystkie opcje potrzebne do używania Listy kluczy w <app>Parabolic</app>.</p>
-
-<terms>
-	<item>
-		<title>Backend</title>
-        <p>Lista kluczy jest wspierana przez bibliotekę <code>Nickvision.Keyring</code>.</p>
-        <p>Ta biblioteka wykorzystuje SQLCipher do bezpiecznego przechowywania danych logowania w sposób niezależny od systemu.</p>
-    </item>
-    <item>
-        <title>Włączanie listy kluczy</title>
-        <p>Po włączeniu listy kluczy, użytkownik zostanie poproszony o wprowadzenie hasła w celu zaszyfrowania listy.</p>
-        <p>Nie da się odzyskać hasła do listy kluczy w przypadku jego utraty.</p>
-        <p>To hasło będzie używane do odblokowania listy kluczy w przyszłości.</p>
-        <note style="advanced">
-            <p>W przypadku utraty hasła do listy kluczy, użytkownik nie będzie mógł korzystać z tej funkcji, chyba że plik bazy danych listy zostanie usunięty.</p>
-            <p>Plik listy kluczy jest przechowywany w <code>$CONFIG/Nickvision/Nickvision Parabolic/tubeconverter.nring</code></p>
-        </note>
-    </item>
-    <item>
-		<title>Wyłączanie listy kluczy</title>
-        <p>Po wyłączeniu listy kluczy, wspomagająca baza danych <code>nring</code> zostanie usunięta wraz ze wszystkimi przechowanymi danymi logowania.</p>
-        <p>Po ponownym włączeniu listy kluczy, powstanie nowy plik bazy danych a użytkownik zostanie poproszony o wprowadzenie hasła.</p>
-    </item>
-    <item>
-		<title>Przechowywanie danych logowania</title>
-        <p>Oto pola, które mogą być przechowywane w danych logowania:</p>
-        <p><code>Nazwa</code>: Nazwa danych logowania</p>
-        <p><code>Adres URL</code> (opcjonalnie): Adres URL danych logowania</p>
-        <p><code>Nazwa użytkownika</code> (opcjonalnie, jeśli hasło nie jest puste): Nazwa użytkownika</p>
-        <p><code>Hasło</code> (opcjonalnie, jeśli nazwa użytkownika nie jest pusta): Hasło</p>
-    </item>
-</terms>
+<section>
+    <title>Backend</title>
+    <p>The Keyring feature is backed by the <code>Nickvision.Aura</code> library.</p>
+    <p>This library uses SQLCipher to securely store credentials in a platform independent manner.</p>
+    <p>The library will use you system's credential manager (i.e. libsecret on Linux and Windows Credential Manager on Windows) for securing the Keyring.</p>
+</section>
+<section>
+    <title>Przechowywanie danych logowania</title>
+    <p>Oto pola, które mogą być przechowywane w danych logowania:</p>
+    <p><code>Nazwa</code>: Nazwa danych logowania</p>
+    <p><code>Adres URL</code> (opcjonalnie): Adres URL danych logowania</p>
+    <p><code>Nazwa użytkownika</code> (opcjonalnie, jeśli hasło nie jest puste): Nazwa użytkownika</p>
+    <p><code>Hasło</code> (opcjonalnie, jeśli nazwa użytkownika nie jest pusta): Hasło</p>
+</section>
+<section>
+    <title>Migrating from Password-Secured Keyring to Secret-Secured Keyring</title>
+    <p>This section applies to users who have enabled a Keyring in Parabolic (in versions before V2023.9.0) and secured it with a password. Starting with version 2023.9.0, Parabolic uses the system's credential manager to generate a random password (secret) to secure the Keyring instead of asking for a user to provide one. By using the system credential manager, Parabolic can also automatically unlock the Keyring at startup without user interaction.</p>
+    <p>If you have a password-secured Keyring from before version 2023.9.0, you can continue to use it in new versions of Parabolic without issue, but you will still need to provide the password everytime the application starts.</p>
+    <p>Follow the rest of this section if you'd like to migrate your existing credentials and take advantage of the new Keyring where a password is not required every time.</p>
+    <note>
+        <p>You can simply disable the old password-secured Keyring when you update Parabolic to 2023.9.0 and re-enable the Keyring to get a secret-secured one. However, this will erase all data from the old Keyring and require you to re-enter all credentials.</p>
+    </note>
+    <steps>
+        <item><p>Install <link href="https://flathub.org/apps/org.gnome.seahorse.Application">Passwords and Keys</link>.</p></item>
+        <item><p>Open Parabolic V2023.9.0 or newer at least once. (This will ensure that the app registers with your system's credential manager)</p></item>
+        <item><p>Open <code>Passwords and Keys</code> and locate the <code>org.nickvision.tubeconverter</code> entry in the <code>Default Keyring</code>.</p></item>
+        <item><p>Double click the <code>org.nickvision.tubeconverter</code> entry and edit the <code>Password</code> field. Enter the password that you created and used for your Keyring in Parabolic.</p></item>
+        <item><p>You can now close <code>Passwords and Keys</code> and restart Parabolic. You will see that upon application startup, the Keyring will now be automatically unlocked!</p></item>
+    </steps>
+</section>
 </page>

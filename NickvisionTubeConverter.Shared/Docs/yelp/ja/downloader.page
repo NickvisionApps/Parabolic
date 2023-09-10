@@ -27,35 +27,35 @@
 	<item>
 		<title>アクティブダウンロードの最大数</title>
 		<p>平行して進行できるアクティブダウンロード数。数値は1から10までの整数である必要があります。</p>
-        <p>If the max number of active downloads is reached, Parabolic will place new downloads in a queue until more downloads are able to be run.</p>
+        <p>アクティブダウンロードが最大数に達すると、Parabolic は新しいダウンロードをダウンロードが可能になるまでキューに入れます。</p>
 		<note style="advanced">
-			<p>Default: 5</p>
+			<p>デフォルト: 5</p>
 		</note>
     </item>
     <item>
-        <title>Overwrite Existing Files</title>
-        <p>If enabled, Parabolic will overwrite existing files.</p>
-        <p>For example, if a file named <code>movie.mp4</code> exists in the download folder, and a new download is created named <code>movie</code>, <code>movie.mp4</code> will be overwritten with the new download's content.</p>
+        <title>存在するファイルを上書きする</title>
+        <p>有効であれば、Parabolic は存在するファイルを上書きします。</p>
+        <p>例えば、<code>movie.mp4</code>という名のファイルがダウンロードフォルダーに存在し、<code>movie</code>と名のダウンロードが作成されると、<code>movie.mp4</code>は新しいダウンロードの内容で上書きされます。</p>
 		<note style="advanced">
 			<p>デフォルト: オン</p>
 		</note>
     </item>
     <item>
-        <title>Speed Limit</title>
-        <p>A limit, in Ki/s, that is applied to downloads only if they have the advanced option <code>Speed Limit</code> enabled. Must be an integer value between 512 and 10240.</p>
+        <title>スピード制限</title>
+        <p>制限は、Ki/s 単位で、<code>スピード制限</code>の詳細オプションが有効なダウンロードにのみ適用されます。数値は512から10240の整数である必要があります。</p>
 		<note style="advanced">
-			<p>Default: 1024</p>
+			<p>デフォルト: 1024</p>
 		</note>
     </item>
     <item>
-        <title>Use aria2</title>
-        <p>If enabled, Parabolic will use aria2c to download media. Although using aria2c can improve download speed, download progress will not be displayed in the UI.</p>
+        <title>Aria2 を使用</title>
+        <p>有効であれば、Parabolic は aria2c を使用してメディアをダウンロードします。aria2c を使用するとダウンロード速度は向上しますが、UIで、ダウンロード進捗は表示されません。</p>
 		<note style="advanced">
 			<p>デフォルト: オフ</p>
 		</note>
     </item>
     <item>
-        <title>Maximum Connections Per Server</title>
+        <title>サーバーごとの最大接続数</title>
         <p>This option only applies when using aria2 is enabled. This option is the same as the <code>-x</code> flag passed to aria2c.</p>
         <p>The maximum number of connection that can be used per server. Must be an integer value between 1 and 32.</p>
 		<note style="advanced">
@@ -71,7 +71,7 @@
 		</note>
     </item>
     <item>
-        <title>Use SponsorBlock for YouTube</title>
+        <title>YouTube のダウンロードで SponsorBlock を使用</title>
         <p>If enabled, Parabolic will apply the SponsorBlock extension to YouTube downloads.</p>
         <note>
             <p>SponsorBlock only works on YouTube videos. However, leaving this setting on will not affect downloads from other sites (i.e. not cause them to fail).</p>

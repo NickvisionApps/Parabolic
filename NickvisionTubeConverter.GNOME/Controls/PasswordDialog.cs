@@ -9,7 +9,8 @@ namespace NickvisionTubeConverter.GNOME.Controls;
 public partial class PasswordDialog : Adw.Window
 {
     private bool _unlocked;
-    
+
+    [Gtk.Connect] private readonly Gtk.Button _migrateButton;
     [Gtk.Connect] private readonly Gtk.Label _titleLabel;
     [Gtk.Connect] private readonly Adw.PasswordEntryRow _passwordEntry;
     [Gtk.Connect] private readonly Gtk.Button _skipButton;
@@ -34,6 +35,7 @@ public partial class PasswordDialog : Adw.Window
         builder.Connect(this);
         //Dialog Settings
         SetTransientFor(parent);
+        _migrateButton.OnClicked += (sender, e) => Gtk.Functions.ShowUri(this, Help.GetHelpURL("keyring"), 0);
         _titleLabel.SetLabel(title);
         _skipButton.OnClicked += (sender, e) =>
         {

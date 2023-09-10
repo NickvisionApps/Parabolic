@@ -1,11 +1,11 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2023-08-23 17:32-0400\n"
+"POT-Creation-Date: 2023-09-10 03:30+0300\n"
 "PO-Revision-Date: 2023-08-24 10:19+0000\n"
 "Last-Translator: rene-coty <irenee.thirion@e.email>\n"
-"Language-Team: French <https://hosted.weblate.org/projects/"
-"nickvision-tube-converter/docs/fr/>\n"
+"Language-Team: French <https://hosted.weblate.org/projects/nickvision-tube-"
+"converter/docs/fr/>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -463,14 +463,14 @@ msgstr ""
 msgid ""
 "To get support, use <link href=\"https://github.com/NickvisionApps/Parabolic/"
 "issues\">issues</link> or <link href=\"https://github.com/NickvisionApps/"
-"Parabolic/discussions\">discussions</link> on Github, or <link href="
-"\"https://bit.ly/3GrfEid\">join our Matrix channel</link>."
+"Parabolic/discussions\">discussions</link> on Github, or <link "
+"href=\"https://bit.ly/3GrfEid\">join our Matrix channel</link>."
 msgstr ""
 "Pour obtenir de l’aide, utilisez les <link href=\"https://github.com/"
-"NickvisionApps/Parabolic/issues\">signalements</link> ou <link href="
-"\"https://github.com/NickvisionApps/Parabolic/discussions\">discussions</"
-"link> sur Github, ou <link href=\"https://bit.ly/3GrfEid\">rejoignez notre "
-"salon de discussion Matrix</link>."
+"NickvisionApps/Parabolic/issues\">signalements</link> ou <link "
+"href=\"https://github.com/NickvisionApps/Parabolic/"
+"discussions\">discussions</link> sur Github, ou <link href=\"https://bit."
+"ly/3GrfEid\">rejoignez notre salon de discussion Matrix</link>."
 
 #. (itstool) path: page/p
 #: yelp/C/index.page:23
@@ -503,119 +503,59 @@ msgstr ""
 "Cette page explique toutes les options pour utiliser le trousseau de "
 "<app>Parabole</app>."
 
-#. (itstool) path: item/title
-#: yelp/C/keyring.page:25
+#. (itstool) path: section/title
+#: yelp/C/keyring.page:23
 msgid "Backend"
 msgstr "Backend"
 
-#. (itstool) path: item/p
-#: yelp/C/keyring.page:26
+#. (itstool) path: section/p
+#: yelp/C/keyring.page:24
+#, fuzzy
 msgid ""
-"The Keyring feature is backed by the <code>Nickvision.Keyring</code> library."
+"The Keyring feature is backed by the <code>Nickvision.Aura</code> library."
 msgstr ""
 "La fonctionnalité de trousseau est fournie par la bibliothèque "
 "<code>Nickvision.Keyring</code>."
 
-#. (itstool) path: item/p
-#: yelp/C/keyring.page:27
+#. (itstool) path: section/p
+#: yelp/C/keyring.page:25
+#, fuzzy
 msgid ""
-"This library uses SQLCipher to securley store credentials in a platform "
+"This library uses SQLCipher to securely store credentials in a platform "
 "independent manner."
 msgstr ""
 "Cette bibliothèque utilise SQLCipher pour stocker vos identifiants de "
 "manière sécurisée et sans dépendance à une plateforme."
 
-#. (itstool) path: item/title
-#: yelp/C/keyring.page:30
-msgid "Enabling The Keyring"
-msgstr "Activer le trousseau"
-
-#. (itstool) path: item/p
-#: yelp/C/keyring.page:31
+#. (itstool) path: section/p
+#: yelp/C/keyring.page:26
 msgid ""
-"When the Keyring is enabled, the user will be asked to enter a password to "
-"encrypt the Keyring."
+"The library will use you system's credential manager (i.e. libsecret on "
+"Linux and Windows Credential Manager on Windows) for securing the Keyring."
 msgstr ""
-"Si le trousseau est activé, l’utilisateur devra fournir un mot de passe pour "
-"le chiffrer."
 
-#. (itstool) path: item/p
-#: yelp/C/keyring.page:32
-msgid "There is no way to recover the Keyring password if lost."
-msgstr ""
-"Il n’y a aucun moyen de récupérer le mot de passe du trousseau s’il est "
-"perdu."
-
-#. (itstool) path: item/p
-#: yelp/C/keyring.page:33
-msgid "This password will be used to unlock the Keyring in the future."
-msgstr ""
-"Ce mot de passe sera utilisé à l’avenir pour déverrouiller le trousseau."
-
-#. (itstool) path: note/p
-#: yelp/C/keyring.page:35
-msgid ""
-"If the Keyring password is lost, the user will be unable to use this feature "
-"unless the Keyring database file is deleted."
-msgstr ""
-"Si le mot de passe du trousseau est perdu, l’utilisateur ne pourra plus "
-"utiliser cette fonctionnalité, à mois que la base de données du trousseau "
-"soit supprimée."
-
-#. (itstool) path: note/p
-#: yelp/C/keyring.page:36
-msgid ""
-"The Keyring file is stored in <code>$CONFIG/Nickvision/Nickvision Parabolic/"
-"tubeconverter.nring</code>"
-msgstr ""
-"Le fichier du trousseau est stocké dans <code>$CONFIG/Nickvision/Nickvision "
-"Parabolic/tubeconverter.nring</code>"
-
-#. (itstool) path: item/title
-#: yelp/C/keyring.page:40
-msgid "Disabling The Keyring"
-msgstr "Désactivation du trousseau"
-
-#. (itstool) path: item/p
-#: yelp/C/keyring.page:41
-msgid ""
-"When the Keyring is disabled, the backing <code>nring</code> database is "
-"destroyed and all credentials stored are erased."
-msgstr ""
-"Lorsque le trousseau est désactivé, la base de données <code>nring</code> "
-"est supprimée et tous les identifiants enregistrés sont effacés."
-
-#. (itstool) path: item/p
-#: yelp/C/keyring.page:42
-msgid ""
-"If the Keyring is re-enabled, a brand new database file will be created and "
-"the user will be prompted to enter a password again."
-msgstr ""
-"Si le trousseau est ré-activé, un nouveau fichier de base de données sera "
-"créé et il sera demandé à nouveau à l’utilisateur de fournir un mot de passe."
-
-#. (itstool) path: item/title
-#: yelp/C/keyring.page:45
+#. (itstool) path: section/title
+#: yelp/C/keyring.page:29
 msgid "Storing a Credential"
 msgstr "Enregistrer un identifiant"
 
-#. (itstool) path: item/p
-#: yelp/C/keyring.page:46
+#. (itstool) path: section/p
+#: yelp/C/keyring.page:30
 msgid "Here are the fields that can be stored in a credential:"
 msgstr "Voici les champs pouvant être stockés dans un identifiant :"
 
-#. (itstool) path: item/p
-#: yelp/C/keyring.page:47
+#. (itstool) path: section/p
+#: yelp/C/keyring.page:31
 msgid "<code>Name</code>: The name of the credential"
 msgstr "<code>Nom</code> : Le nom de l’identifiant"
 
-#. (itstool) path: item/p
-#: yelp/C/keyring.page:48
+#. (itstool) path: section/p
+#: yelp/C/keyring.page:32
 msgid "<code>URL</code> (optional): The URL of the credential"
 msgstr "<code>URL</code> (optionnelle) : L’URL de l’identifiant"
 
-#. (itstool) path: item/p
-#: yelp/C/keyring.page:49
+#. (itstool) path: section/p
+#: yelp/C/keyring.page:33
 msgid ""
 "<code>Username</code> (optional if password is not empty): The username of "
 "the credential"
@@ -623,14 +563,92 @@ msgstr ""
 "<code>Nom d’utilisateur</code> (optionnel si le mot de passe n’est pas "
 "vide) : Le nom d’utilisateur de l’identifiant"
 
-#. (itstool) path: item/p
-#: yelp/C/keyring.page:50
+#. (itstool) path: section/p
+#: yelp/C/keyring.page:34
 msgid ""
 "<code>Password</code> (optional if username is not empty): The password of "
 "the credential"
 msgstr ""
 "<code>Mot de passe</code> (optionnel si le nom d’utilisateur n’est pas "
 "vide) : Le mot de passe de l’identifiant"
+
+#. (itstool) path: section/title
+#: yelp/C/keyring.page:37
+msgid "Migrating from Password-Secured Keyring to Secret-Secured Keyring"
+msgstr ""
+
+#. (itstool) path: section/p
+#: yelp/C/keyring.page:38
+msgid ""
+"This section applies to users who have enabled a Keyring in Parabolic (in "
+"versions before V2023.9.0) and secured it with a password. Starting with "
+"version 2023.9.0, Parabolic uses the system's credential manager to generate "
+"a random password (secret) to secure the Keyring instead of asking for a "
+"user to provide one. By using the system credential manager, Parabolic can "
+"also automatically unlock the Keyring at startup without user interaction."
+msgstr ""
+
+#. (itstool) path: section/p
+#: yelp/C/keyring.page:39
+msgid ""
+"If you have a password-secured Keyring from before version 2023.9.0, you can "
+"continue to use it in new versions of Parabolic without issue, but you will "
+"still need to provide the password everytime the application starts."
+msgstr ""
+
+#. (itstool) path: section/p
+#: yelp/C/keyring.page:40
+msgid ""
+"Follow the rest of this section if you'd like to migrate your existing "
+"credentials and take advantage of the new Keyring where a password is not "
+"required every time."
+msgstr ""
+
+#. (itstool) path: note/p
+#: yelp/C/keyring.page:42
+msgid ""
+"You can simply disable the old password-secured Keyring when you update "
+"Parabolic to 2023.9.0 and re-enable the Keyring to get a secret-secured one. "
+"However, this will erase all data from the old Keyring and require you to re-"
+"enter all credentials."
+msgstr ""
+
+#. (itstool) path: item/p
+#: yelp/C/keyring.page:45
+msgid ""
+"Install <link href=\"https://flathub.org/apps/org.gnome.seahorse."
+"Application\">Passwords and Keys</link>."
+msgstr ""
+
+#. (itstool) path: item/p
+#: yelp/C/keyring.page:46
+msgid ""
+"Open Parabolic V2023.9.0 or newer at least once. (This will ensure that the "
+"app registers with your system's credential manager)"
+msgstr ""
+
+#. (itstool) path: item/p
+#: yelp/C/keyring.page:47
+msgid ""
+"Open <code>Passwords and Keys</code> and locate the <code>org.nickvision."
+"tubeconverter</code> entry in the <code>Default Keyring</code>."
+msgstr ""
+
+#. (itstool) path: item/p
+#: yelp/C/keyring.page:48
+msgid ""
+"Double click the <code>org.nickvision.tubeconverter</code> entry and edit "
+"the <code>Password</code> field. Enter the password that you created and "
+"used for your Keyring in Parabolic."
+msgstr ""
+
+#. (itstool) path: item/p
+#: yelp/C/keyring.page:49
+msgid ""
+"You can now close <code>Passwords and Keys</code> and restart Parabolic. You "
+"will see that upon application startup, the Keyring will now be "
+"automatically unlocked!"
+msgstr ""
 
 #. (itstool) path: info/title
 #: yelp/C/newDownload.page:8
@@ -910,6 +928,58 @@ msgstr ""
 #: yelp/C/newDownload.page:107
 msgid "Default: The title of the media"
 msgstr "Par défaut : le titre du média"
+
+#~ msgid "Enabling The Keyring"
+#~ msgstr "Activer le trousseau"
+
+#~ msgid ""
+#~ "When the Keyring is enabled, the user will be asked to enter a password "
+#~ "to encrypt the Keyring."
+#~ msgstr ""
+#~ "Si le trousseau est activé, l’utilisateur devra fournir un mot de passe "
+#~ "pour le chiffrer."
+
+#~ msgid "There is no way to recover the Keyring password if lost."
+#~ msgstr ""
+#~ "Il n’y a aucun moyen de récupérer le mot de passe du trousseau s’il est "
+#~ "perdu."
+
+#~ msgid "This password will be used to unlock the Keyring in the future."
+#~ msgstr ""
+#~ "Ce mot de passe sera utilisé à l’avenir pour déverrouiller le trousseau."
+
+#~ msgid ""
+#~ "If the Keyring password is lost, the user will be unable to use this "
+#~ "feature unless the Keyring database file is deleted."
+#~ msgstr ""
+#~ "Si le mot de passe du trousseau est perdu, l’utilisateur ne pourra plus "
+#~ "utiliser cette fonctionnalité, à mois que la base de données du trousseau "
+#~ "soit supprimée."
+
+#~ msgid ""
+#~ "The Keyring file is stored in <code>$CONFIG/Nickvision/Nickvision "
+#~ "Parabolic/tubeconverter.nring</code>"
+#~ msgstr ""
+#~ "Le fichier du trousseau est stocké dans <code>$CONFIG/Nickvision/"
+#~ "Nickvision Parabolic/tubeconverter.nring</code>"
+
+#~ msgid "Disabling The Keyring"
+#~ msgstr "Désactivation du trousseau"
+
+#~ msgid ""
+#~ "When the Keyring is disabled, the backing <code>nring</code> database is "
+#~ "destroyed and all credentials stored are erased."
+#~ msgstr ""
+#~ "Lorsque le trousseau est désactivé, la base de données <code>nring</code> "
+#~ "est supprimée et tous les identifiants enregistrés sont effacés."
+
+#~ msgid ""
+#~ "If the Keyring is re-enabled, a brand new database file will be created "
+#~ "and the user will be prompted to enter a password again."
+#~ msgstr ""
+#~ "Si le trousseau est ré-activé, un nouveau fichier de base de données sera "
+#~ "créé et il sera demandé à nouveau à l’utilisateur de fournir un mot de "
+#~ "passe."
 
 #~ msgctxt "link"
 #~ msgid "Tube Converter Help"

@@ -66,50 +66,6 @@ Adw.Window _root {
             }
 
             Adw.ViewStackPage {
-              name: "password";
-              child: Gtk.Box {
-                orientation: vertical;
-                spacing: 24;
-
-                Adw.PreferencesGroup {
-                  margin-top: 12;
-                  margin-start: 24;
-                  margin-end: 24;
-
-                  Adw.PasswordEntryRow _newPasswordEntry {
-                    title: _("New Password");
-                    activates-default: true;
-                  }
-
-                  Adw.PasswordEntryRow _confirmPasswordEntry {
-                    title: _("Confirm Password");
-                    activates-default: true;
-                  }
-                }
-
-                Gtk.Label {
-                  margin-start: 24;
-                  margin-end: 24;
-                  label: _("If the password is lost, there is no way to restore the keyring!");
-
-                  styles ["warning"]
-                }
-
-                Gtk.Button _setPasswordButton {
-                  halign: center;
-                  valign: end;
-                  vexpand: true;
-                  margin-top: 24;
-                  margin-bottom: 36;
-                  sensitive: false;
-                  label: _("Continue");
-
-                  styles ["pill", "suggested-action"]
-                }
-              };
-            }
-
-            Adw.ViewStackPage {
               name: "home";
               child: Gtk.Box _mainBox {
                 margin-start: 24;
