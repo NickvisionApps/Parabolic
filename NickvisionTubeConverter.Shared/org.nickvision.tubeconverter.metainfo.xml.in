@@ -50,9 +50,13 @@
   </custom>
   
   <releases>
-    <release version="2023.9.0-next" date="2023-09-01">
+    <release version="2023.9.0-rc1" date="2023-09-01">
       <description translatable="no">
+        <p>- Added support for two letter language with region codes</p>
+        <p>- Added a preference for removing media source data from embedded metadata (previously it was automatically removed)</p>
         <p>- Parabolic will now use the system's credential manager (i.e. DBus Secret Service) for securing the Keyring. Please read the Keyring page in Help for information on migrating the old password-secured Keyring to the new secret-secured Keyring</p>
+        <p>- Parabolic will no longer ask for a subtitle format but instead use the format supported by the file type</p>
+        <p>- Fixed an issue where translated metadata was embedded instead of original media metadata</p>
         <p>- Updated translations (Thanks everyone on Weblate!)</p>
       </description>
     </release>
