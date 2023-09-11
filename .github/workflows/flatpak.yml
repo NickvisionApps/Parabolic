@@ -23,7 +23,7 @@ jobs:
       fail-fast: false
     steps:
       - uses: actions/checkout@v3
-      - uses: DaPigGuy/flatpak-github-actions/flatpak-builder@master
+      - uses: flatpak/flatpak-github-actions/flatpak-builder@v6.2
         with:
           bundle: org.nickvision.tubeconverter.flatpak
           manifest-path: flatpak/org.nickvision.tubeconverter.json

@@ -26,7 +26,7 @@ public class PreferencesViewController
     {
         var cultures = CultureInfo.GetCultures(CultureTypes.AllCultures).Where(x => !string.IsNullOrEmpty(x.Name)).ToArray();
         var codes = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
-        codes.UnionWith(cultures.Select(x => x.TwoLetterISOLanguageName));
+        codes.UnionWith(cultures.Select(x => x.Name));
         codes.UnionWith(cultures.Select(x => x.ThreeLetterISOLanguageName));
         _supportedLangCodes = codes.ToList();
     }
@@ -216,6 +216,17 @@ public class PreferencesViewController
         get => Configuration.Current.CropAudioThumbnails;
 
         set => Configuration.Current.CropAudioThumbnails = value;
+    }
+
+    /// <summary>
+    /// Whether or not to remove data about media source from metadata
+    /// </summary>
+    /// <remarks>This includes comment, description, synopsis and purl fields</remarks>
+    public bool RemoveSourceData
+    {
+        get => Configuration.Current.RemoveSourceData;
+
+        set => Configuration.Current.RemoveSourceData = value;
     }
 
     /// <summary>

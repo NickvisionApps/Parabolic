@@ -43,6 +43,7 @@ public partial class PreferencesDialog : Adw.PreferencesWindow
     [Gtk.Connect] private readonly Gtk.Button _unsetCookiesFileButton;
     [Gtk.Connect] private readonly Gtk.Switch _disallowConversionsSwitch;
     [Gtk.Connect] private readonly Adw.ExpanderRow _embedMetadataRow;
+    [Gtk.Connect] private readonly Gtk.Switch _removeSourceDataSwitch;
     [Gtk.Connect] private readonly Gtk.Switch _cropAudioThumbnailSwitch;
     [Gtk.Connect] private readonly Gtk.Switch _embedChaptersSwitch;
 
@@ -65,7 +66,13 @@ public partial class PreferencesDialog : Adw.PreferencesWindow
         _ariaMaxConnectionsPerServerResetButton.OnClicked += (sender, e) => _ariaMaxConnectionsPerServerSpin.SetValue(16);
         _ariaMinSplitSizeResetButton.OnClicked += (sender, e) => _ariaMinSplitSizeSpin.SetValue(20);
         _sponsorBlockInfoButton.OnClicked += async (sender, e) => await LaunchSponsorBlockInfoAsync();
-        _subtitleLangsRow.OnApply += SubtitleLangsChanged;
+        _subtitleLangsRow.OnNotify += (sender, e) =>
+        {
+            if (e.Pspec.GetName() == "text")
+            {
+                SubtitleLangsChanged();
+            }
+        };
         _chromeCookiesButton.OnClicked += async (sender, e) => await LaunchChromeCookiesExtensionAsync();
         _firefoxCookiesButton.OnClicked += async (sender, e) => await LaunchFirefoxCookiesExtensionAsync();
         _selectCookiesFileButton.OnClicked += async (sender, e) => await SelectCookiesFileAsync();
@@ -93,6 +100,7 @@ public partial class PreferencesDialog : Adw.PreferencesWindow
         }
         _disallowConversionsSwitch.SetActive(_controller.DisallowConversions);
         _embedMetadataRow.SetEnableExpansion(_controller.EmbedMetadata);
+        _removeSourceDataSwitch.SetActive(_controller.RemoveSourceData);
         _cropAudioThumbnailSwitch.SetActive(_controller.CropAudioThumbnails);
         _embedChaptersSwitch.SetActive(_controller.EmbedChapters);
     }
@@ -128,6 +136,7 @@ public partial class PreferencesDialog : Adw.PreferencesWindow
         _controller.ProxyUrl = _proxyRow.GetText();
         _controller.DisallowConversions = _disallowConversionsSwitch.GetActive();
         _controller.EmbedMetadata = _embedMetadataRow.GetEnableExpansion();
+        _controller.RemoveSourceData = _removeSourceDataSwitch.GetActive();
         _controller.CropAudioThumbnails = _cropAudioThumbnailSwitch.GetActive();
         _controller.EmbedChapters = _embedChaptersSwitch.GetActive();
         _controller.SaveConfiguration();
@@ -165,9 +174,7 @@ public partial class PreferencesDialog : Adw.PreferencesWindow
     /// <summary>
     /// Occurs when the subtitle langs row is applied
     /// </summary>
-    /// <param name="sender">Adw.EntryRow</param>
-    /// <param name="e">EventArgs</param>
-    private void SubtitleLangsChanged(Adw.EntryRow sender, EventArgs e)
+    private void SubtitleLangsChanged()
     {
         _subtitleLangsRow.SetTitle(_("Subtitle Languages (Comma-Separated)"));
         _subtitleLangsRow.RemoveCssClass("error");
@@ -175,7 +182,6 @@ public partial class PreferencesDialog : Adw.PreferencesWindow
         if(valid)
         {
             _controller.SubtitleLangs = _subtitleLangsRow.GetText();
-            _controller.SaveConfiguration();
         }
         else
         {

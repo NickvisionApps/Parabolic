@@ -71,6 +71,10 @@ public class AddDownloadDialogController
     /// </summary>
     public MediaFileType PreviousMediaFileType => Configuration.Current.PreviousMediaFileType;
     /// <summary>
+    /// The previously used subtitle downloading state
+    /// </summary>
+    public bool PreviousSubtitleState => Configuration.Current.PreviousSubtitleState;
+    /// <summary>
     /// Whether or not to number titles
     /// </summary>
     public bool NumberTitles => Configuration.Current.NumberTitles;
@@ -247,7 +251,7 @@ public class AddDownloadDialogController
     /// <param name="quality">The quality of the downloads</param>
     /// <param name="resolution">The index of the video resolution if available</param>
     /// <param name="audioLanguage">The audio language code</param>
-    /// <param name="subtitles">The subtitle format of the downloads</param>
+    /// <param name="subtitles">Whether or not to download the subtitles</param>
     /// <param name="saveFolder">The save folder of the downloads</param>
     /// <param name="limitSpeed">Whether or not to use speed limit</param>
     /// <param name="splitChapters">Whether or not to split based on chapters</param>
@@ -255,7 +259,7 @@ public class AddDownloadDialogController
     /// <param name="timeframe">A Timeframe to restrict the timespan of the media download</param>
     /// <param name="username">A username for the website (if available)</param>
     /// <param name="password">A password for the website (if available)</param>
-    public void PopulateDownloads(MediaFileType mediaFileType, Quality quality, int? resolution, string? audioLanguage, Subtitle subtitles, string saveFolder, bool limitSpeed, bool splitChapters, bool cropThumbnail, Timeframe? timeframe, string? username, string? password)
+    public void PopulateDownloads(MediaFileType mediaFileType, Quality quality, int? resolution, string? audioLanguage, bool subtitles, string saveFolder, bool limitSpeed, bool splitChapters, bool cropThumbnail, Timeframe? timeframe, string? username, string? password)
     {
         Downloads.Clear();
         foreach (var media in _mediaUrlInfo.MediaList)
@@ -274,6 +278,7 @@ public class AddDownloadDialogController
         {
             Configuration.Current.PreviousVideoResolution = _mediaUrlInfo.VideoResolutions[resolution.Value].ToString();
         }
+        Configuration.Current.PreviousSubtitleState = subtitles;
         Aura.Active.SaveConfig("config");
     }
 
@@ -284,14 +289,14 @@ public class AddDownloadDialogController
     /// <param name="quality">The quality of the downloads</param>
     /// <param name="resolution">The index of the video resolution if available</param>
     /// <param name="audioLanguage">The audio language code</param>
-    /// <param name="subtitles">The subtitle format of the downloads</param>
+    /// <param name="subtitles">Whether or not to download the subtitles</param>
     /// <param name="saveFolder">The save folder of the downloads</param>
     /// <param name="limitSpeed">Whether or not to use speed limit</param>
     /// <param name="splitChapters">Whether or not to split based on chapters</param>
     /// <param name="cropThumbnail">Whether or not to crop the thumbnail</param>
     /// <param name="timeframe">A Timeframe to restrict the timespan of the media download</param>
     /// <param name="credentialIndex">The index of the credential to use</param>
-    public async Task PopulateDownloadsAsync(MediaFileType mediaFileType, Quality quality, int? resolution, string? audioLanguage, Subtitle subtitles, string saveFolder, bool limitSpeed, bool splitChapters, bool cropThumbnail, Timeframe? timeframe, int credentialIndex)
+    public async Task PopulateDownloadsAsync(MediaFileType mediaFileType, Quality quality, int? resolution, string? audioLanguage, bool subtitles, string saveFolder, bool limitSpeed, bool splitChapters, bool cropThumbnail, Timeframe? timeframe, int credentialIndex)
     {
         if(_keyring != null)
         {

@@ -40,7 +40,8 @@ public partial class AddDownloadDialog : Adw.Window
     [Gtk.Connect] private readonly Adw.ComboRow _fileTypeRow;
     [Gtk.Connect] private readonly Adw.ComboRow _qualityRow;
     [Gtk.Connect] private readonly Adw.ComboRow _audioLanguageRow;
-    [Gtk.Connect] private readonly Adw.ComboRow _subtitleRow;
+    [Gtk.Connect] private readonly Adw.ActionRow _subtitleRow;
+    [Gtk.Connect] private readonly Gtk.Switch _subtitleSwitch;
     [Gtk.Connect] private readonly Adw.EntryRow _saveFolderRow;
     [Gtk.Connect] private readonly Gtk.Button _selectSaveFolderButton;
     [Gtk.Connect] private readonly Adw.ActionRow _openAdvancedRow;
@@ -232,6 +233,7 @@ public partial class AddDownloadDialog : Adw.Window
             _saveFolderString = GLib.Functions.GetUserSpecialDir(GLib.UserDirectory.DirectoryDownload) ?? "";
         }
         _saveFolderRow.SetText(Path.GetFileName(_saveFolderString) ?? "");
+        _subtitleSwitch.SetActive(_controller.PreviousSubtitleState);
         _speedLimitRow.SetSubtitle($"{_("{0:f1} KiB/s", _controller.CurrentSpeedLimit)} {_("(Configurable in preferences)")}");
     }
 
@@ -588,11 +590,11 @@ public partial class AddDownloadDialog : Adw.Window
         }
         if(_keyringRow.GetSelected() == 0 || _keyringRow.GetSelected() == GTK_INVALID_LIST_POSITION || !_authRow.GetEnableExpansion())
         {
-            _controller.PopulateDownloads(SelectedMediaFileType, quality, resolutionIndex, audioLanguage, (Subtitle)_subtitleRow.GetSelected(), _saveFolderString, _speedLimitSwitch.GetActive(), _splitChaptersSwitch.GetActive(), _cropThumbnailSwitch.GetActive(), timeframe, _usernameRow.GetText(), _passwordRow.GetText());
+            _controller.PopulateDownloads(SelectedMediaFileType, quality, resolutionIndex, audioLanguage, _subtitleSwitch.GetActive(), _saveFolderString, _speedLimitSwitch.GetActive(), _splitChaptersSwitch.GetActive(), _cropThumbnailSwitch.GetActive(), timeframe, _usernameRow.GetText(), _passwordRow.GetText());
         }
         else
         {
-            await _controller.PopulateDownloadsAsync(SelectedMediaFileType, quality, resolutionIndex, audioLanguage, (Subtitle)_subtitleRow.GetSelected(), _saveFolderString, _speedLimitSwitch.GetActive(), _splitChaptersSwitch.GetActive(), _cropThumbnailSwitch.GetActive(), timeframe, ((int)_keyringRow.GetSelected()) - 1);
+            await _controller.PopulateDownloadsAsync(SelectedMediaFileType, quality, resolutionIndex, audioLanguage, _subtitleSwitch.GetActive(), _saveFolderString, _speedLimitSwitch.GetActive(), _splitChaptersSwitch.GetActive(), _cropThumbnailSwitch.GetActive(), timeframe, ((int)_keyringRow.GetSelected()) - 1);
         }
         OnDownload?.Invoke(this, EventArgs.Empty);
     }

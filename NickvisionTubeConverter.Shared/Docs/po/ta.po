@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2023-09-10 03:30+0300\n"
+"POT-Creation-Date: 2023-09-11 02:20+0300\n"
 "PO-Revision-Date: 2023-08-30 20:42+0000\n"
 "Last-Translator: \"K.B.Dharun Krishna\" <kbdharunkrishna@gmail.com>\n"
 "Language-Team: Tamil <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -71,8 +71,8 @@ msgstr ""
 "மாற்றி இயக்கப்படாமல் இருப்பதால், பதிவிறக்குவதில் நேரத்தை மிச்சப்படுத்துவீர்கள்."
 
 #. (itstool) path: note/p
-#: yelp/C/converter.page:29 yelp/C/converter.page:45 yelp/C/converter.page:52
-#: yelp/C/downloader.page:51 yelp/C/downloader.page:77
+#: yelp/C/converter.page:29 yelp/C/converter.page:45 yelp/C/converter.page:54
+#: yelp/C/converter.page:61 yelp/C/downloader.page:51 yelp/C/downloader.page:77
 msgid "Default: Off"
 msgstr "இயல்புநிலை: ஆஃப்"
 
@@ -107,7 +107,7 @@ msgid "Crop Audio Thumbnails"
 msgstr "ஒலி அமைப்பு சிறுபடங்களை செதுக்கு"
 
 #. (itstool) path: item/p
-#: yelp/C/converter.page:42
+#: yelp/C/converter.page:42 yelp/C/converter.page:50
 msgid "Only available if Embed Metadata is enabled."
 msgstr "உட்பொதிவு மெட்டாடேட்டா இயக்கப்பட்டால் மட்டுமே கிடைக்கும்."
 
@@ -122,11 +122,32 @@ msgstr ""
 
 #. (itstool) path: item/title
 #: yelp/C/converter.page:49
+msgid "Remove Source Data"
+msgstr ""
+
+#. (itstool) path: item/p
+#: yelp/C/converter.page:51
+#, fuzzy
+msgid ""
+"If enabled, Parabolic will clear metadata fields containing the URL and "
+"other identifying information of the media source."
+msgstr "இயக்கப்பட்டால், பாரபோலிக் மீடியாவை அத்தியாயத் தகவலுடன் குறியிடும்"
+
+#. (itstool) path: item/p
+#: yelp/C/converter.page:52
+msgid ""
+"Fields that are cleared: <code>comment</code>, <code>description</code>, "
+"<code>synopsis</code>, <code>purl</code> and <code>handler_name</code> in "
+"each stream."
+msgstr ""
+
+#. (itstool) path: item/title
+#: yelp/C/converter.page:58
 msgid "Embed Chapters"
 msgstr "அத்தியாயங்களை உட்பொதிக்கவும்"
 
 #. (itstool) path: item/p
-#: yelp/C/converter.page:50
+#: yelp/C/converter.page:59
 msgid ""
 "If enabled, Parabolic will tag a media with chapter information if available"
 msgstr "இயக்கப்பட்டால், பாரபோலிக் மீடியாவை அத்தியாயத் தகவலுடன் குறியிடும்"
@@ -322,10 +343,11 @@ msgstr "வசன மொழிகள்"
 
 #. (itstool) path: item/p
 #: yelp/C/downloader.page:82
+#, fuzzy
 msgid ""
-"A comma-separated list of two-letter and three-letter language codes to use "
-"when selecting languages of subtitles to download. Only applies when a valid "
-"<code>Subtitle</code> format is selected in a download."
+"A comma-separated list of two-letter, two-letter with region, and three-"
+"letter language codes to use when selecting languages of subtitles to "
+"download. Only applies when downloading a video with subtitles."
 msgstr ""
 "பதிவிறக்கம் செய்ய வசனம் மொழிகளைத் தேர்ந்தெடுக்கும்போது பயன்படுத்த வேண்டிய இரண்டு எழுத்து "
 "மற்றும் மூன்றெழுத்து மொழிக் குறியீடுகளின் கமாவால் பிரிக்கப்பட்ட பட்டியல். பதிவிறக்கத்தில் "
@@ -333,11 +355,13 @@ msgstr ""
 
 #. (itstool) path: note/p
 #: yelp/C/downloader.page:84
+#, fuzzy
 msgid ""
-"Some sites use two-letter language codes, whereas others use three-letter. "
-"For example, <code>en</code> and <code>eng</code> are both used for English. "
-"Please specify both two-letter and three-letter codes for your languages for "
-"the best results."
+"Different sites can use different language code formats for the same "
+"language. You may encounter one of the following three types: two-letter, "
+"two-letter with region, or three-letter. For example, \"en\", \"en-US\" and "
+"\"eng\" are all used for English. Please specify all valid codes for your "
+"languages for the best results."
 msgstr ""
 "சில தளங்கள் இரண்டெழுத்து மொழிக் குறியீடுகளைப் பயன்படுத்துகின்றன, மற்றவை மூன்றெழுத்துகளைப் "
 "பயன்படுத்துகின்றன. எடுத்துக்காட்டாக, <code>en</code> மற்றும் <code>eng</code> இரண்டும் "
@@ -346,9 +370,10 @@ msgstr ""
 
 #. (itstool) path: note/p
 #: yelp/C/downloader.page:87
+#, fuzzy
 msgid ""
-"Default: Your culture's two-letter and three-letter language code. For "
-"example, on an en-US system the default would be <code>en,eng</code>"
+"Default: Your culture's language codes. For example, on an en-US system the "
+"default would be <code>en,en-US,eng</code>"
 msgstr ""
 "இயல்புநிலை: உங்கள் கலாச்சாரத்தின் இரண்டெழுத்து மற்றும் மூன்றெழுத்து மொழிக் குறியீடு. "
 "எடுத்துக்காட்டாக, en-US கணினியில் இயல்புநிலையாக <code>en,eng</code> இருக்கும்"

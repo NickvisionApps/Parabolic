@@ -243,7 +243,6 @@ Adw.PreferencesWindow _root {
 
       Adw.EntryRow _subtitleLangsRow {
         title: _("Subtitle Languages (Comma-Separated)");
-        show-apply-button: true;
 
         [prefix]
         Gtk.Image {
@@ -270,7 +269,7 @@ Adw.PreferencesWindow _root {
                   maximum-size: 300;
                   child: Gtk.Label {
                     wrap: true;
-                    label: _("Some sites use two-letter language codes, whereas others use three-letter. For example, \"en\" and \"eng\" are both used for English.\n\nPlease specify both two-letter and three-letter codes for your languages for the best results.");
+                    label: _("Different sites can use different language code formats for the same language. You may encounter one of the following three types: two-letter, two-letter with region, or three-letter. For example, \"en\", \"en-US\" and \"eng\" are all used for English.\n\nPlease specify all valid codes for your languages for the best results.");
                   };
                 }
             };
@@ -413,6 +412,22 @@ Adw.PreferencesWindow _root {
 
           [suffix]
           Gtk.Switch _cropAudioThumbnailSwitch {
+            valign: center;
+          }
+        }
+
+        Adw.ActionRow {
+          title: _("Remove Source Data");
+          subtitle: _("Clear metadata fields containing the URL and other identifying information of the media source");
+          activatable-widget: _removeSourceDataSwitch;
+
+          [prefix]
+          Gtk.Image {
+            icon-name: "larger-brush-symbolic";
+          }
+
+          [suffix]
+          Gtk.Switch _removeSourceDataSwitch {
             valign: center;
           }
         }

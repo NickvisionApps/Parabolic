@@ -22,20 +22,12 @@ public enum Quality
 }
 
 /// <summary>
-/// Subtitle types for a download
-/// </summary>
-public enum Subtitle
-{
-    None = 0,
-    VTT,
-    SRT
-}
-
-/// <summary>
 /// A model of a media download
 /// </summary>
 public class Download
 {
+    internal static string[] YoutubeLangCodes = { "af", "az", "id", "ms", "bs", "ca", "cs", "da", "de", "et", "en-IN", "en-GB", "en", "es", "es-419", "es-US", "eu", "fil", "fr", "fr-CA", "gl", "hr", "zu", "is", "it", "sw", "lv", "lt", "hu", "nl", "no", "uz", "pl", "pt-PT", "pt", "ro", "sq", "sk", "sl", "sr-Latn", "fi", "sv", "vi", "tr", "be", "bg", "ky", "kk", "mk", "mn", "ru", "sr", "uk", "el", "hy", "iw", "ur", "ar", "fa", "ne", "mr", "hi", "as", "bn", "pa", "gu", "or", "ta", "te", "kn", "ml", "si", "th", "lo", "my", "ka", "am", "km", "zh-CN", "zh-TW", "zh-HK", "ja", "ko" };
+
     private readonly string _tempDownloadPath;
     private readonly string _logPath;
     private readonly bool _limitSpeed;
@@ -75,9 +67,9 @@ public class Download
     /// </summary>
     public VideoResolution? Resolution { get; init; }
     /// <summary>
-    /// The subtitles for the download
+    /// Whether or not to download the subtitles
     /// </summary>
-    public Subtitle Subtitle { get; init; }
+    public bool Subtitle { get; init; }
     /// <summary>
     /// The audio language code
     /// </summary>
@@ -120,7 +112,7 @@ public class Download
     /// <param name="quality">The quality of the download</param>
     /// <param name="resolution">The video resolution if available</param>
     /// <param name="audioLanguage">The audio language code</param>
-    /// <param name="subtitle">The subtitles for the download</param>
+    /// <param name="subtitle">Whether or not to download the subtitles</param>
     /// <param name="saveFolder">The folder to save the download to</param>
     /// <param name="saveFilename">The filename to save the download as</param>
     /// <param name="limitSpeed">Whether or not to limit the download speed</param>
@@ -132,7 +124,7 @@ public class Download
     /// <param name="username">A username for the website (if available)</param>
     /// <param name="password">A password for the website (if available)</param>
     /// <exception cref="ArgumentException">Thrown if timeframe is specified and limitSpeed is enabled</exception>
-    public Download(string mediaUrl, MediaFileType fileType, Quality quality, VideoResolution? resolution, string? audioLanguage, Subtitle subtitle, string saveFolder, string saveFilename, bool limitSpeed, uint speedLimit, bool splitChapters, bool cropThumbnail, Timeframe? timeframe, uint playlistPosition, string? username, string? password)
+    public Download(string mediaUrl, MediaFileType fileType, Quality quality, VideoResolution? resolution, string? audioLanguage, bool subtitle, string saveFolder, string saveFilename, bool limitSpeed, uint speedLimit, bool splitChapters, bool cropThumbnail, Timeframe? timeframe, uint playlistPosition, string? username, string? password)
     {
         Id = Guid.NewGuid();
         MediaUrl = mediaUrl;
@@ -198,8 +190,7 @@ public class Download
                 Directory.CreateDirectory(_tempDownloadPath);
                 _outFile = PythonHelpers.SetConsoleOutputFilePath(_logPath);
                 //Setup download params
-                var hooks = new List<Action<PyDict>>();
-                hooks.Add(ProgressHook);
+                var hooks = new List<Action<PyDict>> { ProgressHook };
                 _ytOpt = new Dictionary<string, dynamic> {
                     { "quiet", false },
                     { "ignoreerrors", "downloadonly" },
@@ -213,6 +204,25 @@ public class Download
                     { "overwrites", options.OverwriteExistingFiles },
                     { "noprogress", true }
                 };
+                string? lang = null;
+                if (YoutubeLangCodes.Contains(CultureInfo.CurrentCulture.Name))
+                {
+                    lang = CultureInfo.CurrentCulture.Name;
+                }
+                else if (YoutubeLangCodes.Contains(CultureInfo.CurrentCulture.TwoLetterISOLanguageName))
+                {
+                    lang = CultureInfo.CurrentCulture.TwoLetterISOLanguageName;
+                }
+                if (!string.IsNullOrEmpty(lang))
+                {
+                    var youtubeLang = new PyList();
+                    youtubeLang.Append(new PyString(lang));
+                    var youtubeExtractorOpt = new PyDict();
+                    youtubeExtractorOpt["lang"] = youtubeLang;
+                    var extractorArgs = new PyDict();
+                    extractorArgs["youtube"] = youtubeExtractorOpt;
+                    _ytOpt.Add("extractor_args", extractorArgs);
+                }
                 if(!FileType.GetIsGeneric())
                 {
                     _ytOpt.Add("final_ext", FileType.ToString().ToLower());
@@ -281,17 +291,17 @@ public class Download
                     {
                         postProcessors.Add(new Dictionary<string, dynamic>() { { "key", "FFmpegVideoConvertor" }, { "preferedformat", FileType.ToString().ToLower() } });
                     }
-                    if (Subtitle != Subtitle.None)
+                    if (Subtitle)
                     {
                         var subtitleLangs = options.SubtitleLangs;
-                        if(subtitleLangs[subtitleLangs.Length - 1] == ',')
+                        if(subtitleLangs[^1] == ',')
                         {
                             subtitleLangs = subtitleLangs.Remove(subtitleLangs.Length - 1);
                         }
                         _ytOpt.Add("writesubtitles", true);
                         _ytOpt.Add("writeautomaticsub", true);
                         _ytOpt.Add("subtitleslangs", subtitleLangs.Split(",").Select(x => x.Trim()).ToList());
-                        postProcessors.Add(new Dictionary<string, dynamic>() { { "key", "FFmpegSubtitlesConvertor" }, { "format", Subtitle.ToString().ToLower() } });
+                        postProcessors.Add(new Dictionary<string, dynamic>() { { "key", "FFmpegSubtitlesConvertor" }, { "format", FileType == MediaFileType.MP4 ? "srt" : "vtt" } });
                         postProcessors.Add(new Dictionary<string, dynamic>() { { "key", "FFmpegEmbedSubtitle" } });
                     }
                 }
@@ -301,7 +311,16 @@ public class Download
                 }
                 if (options.EmbedMetadata)
                 {
-                    postProcessors.Add(new Dictionary<string, dynamic>() { { "key", "MetadataFromField" }, { "formats", new List<string>() { ":(?P<meta_comment>)", ":(?P<meta_description>)", ":(?P<meta_synopsis>)", ":(?P<meta_purl>)", $"{_playlistPosition}:%(meta_track)s"} } });
+                    dynamic ppDict = new PyDict();
+                    if (options.RemoveSourceData)
+                    {
+                        postProcessors.Add(new Dictionary<string, dynamic>() { { "key", "MetadataFromField" }, { "formats", new List<string>() { ":(?P<meta_comment>)", ":(?P<meta_description>)", ":(?P<meta_synopsis>)", ":(?P<meta_purl>)", $"{_playlistPosition}:%(meta_track)s"} } });
+                        dynamic rsdParams = new PyList();
+                        rsdParams.Append(new PyString("-metadata:s"));
+                        rsdParams.Append(new PyString("handler_name="));
+                        ppDict["tcmetadata"] = rsdParams;
+                    }
+                    // TCMetadata should be added after MetadataFromField
                     postProcessors.Add(new Dictionary<string, dynamic>() { { "key", "TCMetadata" }, { "add_metadata", true }, { "add_chapters", options.EmbedChapters } });
                     if (FileType.GetSupportsThumbnails())
                     {
@@ -309,14 +328,13 @@ public class Download
                         postProcessors.Add(new Dictionary<string, dynamic>() { { "key", "TCEmbedThumbnail" } });
                         if (_cropThumbnail)
                         {
-                            dynamic cropDict = new PyDict();
                             dynamic cropParams = new PyList();
                             cropParams.Append(new PyString("-vf"));
                             cropParams.Append(new PyString("crop=\'if(gt(ih,iw),iw,ih)\':\'if(gt(iw,ih),ih,iw)\'"));
-                            cropDict["thumbnailsconvertor"] = cropParams;
-                            _ytOpt.Add("postprocessor_args", cropDict);
+                            ppDict["thumbnailsconvertor"] = cropParams;
                         }
                     }
+                    _ytOpt.Add("postprocessor_args", ppDict);
                 }
                 else if (options.EmbedChapters)
                 {

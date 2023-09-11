@@ -48,6 +48,15 @@
 			<p>デフォルト: オフ</p>
 		</note>
     </item>
+    <item>
+		<title>Remove Source Data</title>
+		<p>メタデータを埋め込む設定が有効な時のみ利用可能です。</p>
+		<p>If enabled, Parabolic will clear metadata fields containing the URL and other identifying information of the media source.</p>
+        <p>Fields that are cleared: <code>comment</code>, <code>description</code>, <code>synopsis</code>, <code>purl</code> and <code>handler_name</code> in each stream.</p>
+		<note style="advanced">
+			<p>デフォルト: オフ</p>
+		</note>
+    </item>
 	<item>
 		<title>チャプター（章）を埋め込む</title>
 		<p>有効であれば、Parabolic はメディアにチャプター（章）を利用可能であれば埋め込みます</p>

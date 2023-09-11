@@ -2,7 +2,9 @@
 using Python.Runtime;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
+using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 
@@ -72,6 +74,25 @@ public class MediaUrlInfo
                         { "ignoreerrors", true },
                         { "extract_flat", "in_playlist" }
                     };
+                    string? lang = null;
+                    if (Download.YoutubeLangCodes.Contains(CultureInfo.CurrentCulture.Name))
+                    {
+                        lang = CultureInfo.CurrentCulture.Name;
+                    }
+                    else if (Download.YoutubeLangCodes.Contains(CultureInfo.CurrentCulture.TwoLetterISOLanguageName))
+                    {
+                        lang = CultureInfo.CurrentCulture.TwoLetterISOLanguageName;
+                    }
+                    if (!string.IsNullOrEmpty(lang))
+                    {
+                        var youtubeLang = new PyList();
+                        youtubeLang.Append(new PyString(lang));
+                        var youtubeExtractorOpt = new PyDict();
+                        youtubeExtractorOpt["lang"] = youtubeLang;
+                        var extractorArgs = new PyDict();
+                        extractorArgs["youtube"] = youtubeExtractorOpt;
+                        ytOpt.Add("extractor_args", extractorArgs);
+                    }
                     if (!string.IsNullOrEmpty(proxyUrl))
                     {
                         ytOpt.Add("proxy", new PyString(proxyUrl));

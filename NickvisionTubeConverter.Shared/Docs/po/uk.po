@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2023-09-10 03:30+0300\n"
+"POT-Creation-Date: 2023-09-11 02:20+0300\n"
 "PO-Revision-Date: 2023-08-24 10:19+0000\n"
 "Last-Translator: Dan <jonweblin2205@protonmail.com>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/nickvision-"
@@ -75,8 +75,8 @@ msgstr ""
 "запускатиметься."
 
 #. (itstool) path: note/p
-#: yelp/C/converter.page:29 yelp/C/converter.page:45 yelp/C/converter.page:52
-#: yelp/C/downloader.page:51 yelp/C/downloader.page:77
+#: yelp/C/converter.page:29 yelp/C/converter.page:45 yelp/C/converter.page:54
+#: yelp/C/converter.page:61 yelp/C/downloader.page:51 yelp/C/downloader.page:77
 msgid "Default: Off"
 msgstr "За замовчуванням: Вимк"
 
@@ -111,7 +111,7 @@ msgid "Crop Audio Thumbnails"
 msgstr "Обрізати мініатюри аудіо"
 
 #. (itstool) path: item/p
-#: yelp/C/converter.page:42
+#: yelp/C/converter.page:42 yelp/C/converter.page:50
 msgid "Only available if Embed Metadata is enabled."
 msgstr "Доступно, якщо ввімкнено Вбудовувати метадані."
 
@@ -126,11 +126,34 @@ msgstr ""
 
 #. (itstool) path: item/title
 #: yelp/C/converter.page:49
+msgid "Remove Source Data"
+msgstr ""
+
+#. (itstool) path: item/p
+#: yelp/C/converter.page:51
+#, fuzzy
+msgid ""
+"If enabled, Parabolic will clear metadata fields containing the URL and "
+"other identifying information of the media source."
+msgstr ""
+"Якщо ввімкнено, Parabolic позначатиме носій інформацією про розділ, якщо "
+"вона є"
+
+#. (itstool) path: item/p
+#: yelp/C/converter.page:52
+msgid ""
+"Fields that are cleared: <code>comment</code>, <code>description</code>, "
+"<code>synopsis</code>, <code>purl</code> and <code>handler_name</code> in "
+"each stream."
+msgstr ""
+
+#. (itstool) path: item/title
+#: yelp/C/converter.page:58
 msgid "Embed Chapters"
 msgstr "Вставити розділи"
 
 #. (itstool) path: item/p
-#: yelp/C/converter.page:50
+#: yelp/C/converter.page:59
 msgid ""
 "If enabled, Parabolic will tag a media with chapter information if available"
 msgstr ""
@@ -331,10 +354,11 @@ msgstr "Мови субтитрів"
 
 #. (itstool) path: item/p
 #: yelp/C/downloader.page:82
+#, fuzzy
 msgid ""
-"A comma-separated list of two-letter and three-letter language codes to use "
-"when selecting languages of subtitles to download. Only applies when a valid "
-"<code>Subtitle</code> format is selected in a download."
+"A comma-separated list of two-letter, two-letter with region, and three-"
+"letter language codes to use when selecting languages of subtitles to "
+"download. Only applies when downloading a video with subtitles."
 msgstr ""
 "Список розділених комами двобуквених та трибуквених мовних кодів для вибору "
 "мови субтитрів для завантаження. Застосовується лише тоді, коли під час "
@@ -342,11 +366,13 @@ msgstr ""
 
 #. (itstool) path: note/p
 #: yelp/C/downloader.page:84
+#, fuzzy
 msgid ""
-"Some sites use two-letter language codes, whereas others use three-letter. "
-"For example, <code>en</code> and <code>eng</code> are both used for English. "
-"Please specify both two-letter and three-letter codes for your languages for "
-"the best results."
+"Different sites can use different language code formats for the same "
+"language. You may encounter one of the following three types: two-letter, "
+"two-letter with region, or three-letter. For example, \"en\", \"en-US\" and "
+"\"eng\" are all used for English. Please specify all valid codes for your "
+"languages for the best results."
 msgstr ""
 "Деякі сайти використовують дволітерні мовні коди, тоді як інші - трилітерні. "
 "Наприклад, <code>en</code> та <code>eng</code> використовуються для "
@@ -355,9 +381,10 @@ msgstr ""
 
 #. (itstool) path: note/p
 #: yelp/C/downloader.page:87
+#, fuzzy
 msgid ""
-"Default: Your culture's two-letter and three-letter language code. For "
-"example, on an en-US system the default would be <code>en,eng</code>"
+"Default: Your culture's language codes. For example, on an en-US system the "
+"default would be <code>en,en-US,eng</code>"
 msgstr ""
 "За замовчуванням: дво- та трилітерний мовний код вашої культури. Наприклад, "
 "в англо-американській системі за замовчуванням буде <code>en,eng</code>"

@@ -90,6 +90,11 @@ public class Configuration : ConfigurationBase
     /// </summary>
     public bool CropAudioThumbnails { get; set; }
     /// <summary>
+    /// Whether or not to remove data about media source from metadata
+    /// </summary>
+    /// <remarks>This includes comment, description, synopsis and purl fields</remarks>
+    public bool RemoveSourceData { get; set; }
+    /// <summary>
     /// Whether or not to embed chapters in a download
     /// </summary>
     public bool EmbedChapters { get; set; }
@@ -105,6 +110,10 @@ public class Configuration : ConfigurationBase
     /// The previously used video resolution
     /// </summary>
     public string PreviousVideoResolution { get; set; }
+    /// <summary>
+    /// The previously used subtitle downloading state
+    /// </summary>
+    public bool PreviousSubtitleState { get; set; }
     /// <summary>
     /// Whether or not to number titles
     /// </summary>
@@ -127,16 +136,18 @@ public class Configuration : ConfigurationBase
         AriaMaxConnectionsPerServer = 16;
         AriaMinSplitSize = 20;
         YouTubeSponsorBlock = false;
-        SubtitleLangs = $"{CultureInfo.CurrentCulture.TwoLetterISOLanguageName},{CultureInfo.CurrentCulture.ThreeLetterISOLanguageName}";
+        SubtitleLangs = $"{CultureInfo.CurrentCulture.TwoLetterISOLanguageName},{CultureInfo.CurrentCulture.Name},{CultureInfo.CurrentCulture.ThreeLetterISOLanguageName}";
         ProxyUrl = "";
         CookiesPath = "";
         DisallowConversions = false;
         EmbedMetadata = true;
         CropAudioThumbnails = false;
+        RemoveSourceData = false;
         EmbedChapters = false;
         PreviousSaveFolder = "";
         PreviousMediaFileType = MediaFileType.MP4;
         PreviousVideoResolution = "";
+        PreviousSubtitleState = false;
         NumberTitles = false;
     }
 
