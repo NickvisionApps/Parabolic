@@ -26,7 +26,7 @@ public enum Quality
 /// </summary>
 public class Download
 {
-    private static string[] _youtubeLangCodes = { "af", "az", "id", "ms", "bs", "ca", "cs", "da", "de", "et", "en-IN", "en-GB", "en", "es", "es-419", "es-US", "eu", "fil", "fr", "fr-CA", "gl", "hr", "zu", "is", "it", "sw", "lv", "lt", "hu", "nl", "no", "uz", "pl", "pt-PT", "pt", "ro", "sq", "sk", "sl", "sr-Latn", "fi", "sv", "vi", "tr", "be", "bg", "ky", "kk", "mk", "mn", "ru", "sr", "uk", "el", "hy", "iw", "ur", "ar", "fa", "ne", "mr", "hi", "as", "bn", "pa", "gu", "or", "ta", "te", "kn", "ml", "si", "th", "lo", "my", "ka", "am", "km", "zh-CN", "zh-TW", "zh-HK", "ja", "ko" };
+    internal static string[] YoutubeLangCodes = { "af", "az", "id", "ms", "bs", "ca", "cs", "da", "de", "et", "en-IN", "en-GB", "en", "es", "es-419", "es-US", "eu", "fil", "fr", "fr-CA", "gl", "hr", "zu", "is", "it", "sw", "lv", "lt", "hu", "nl", "no", "uz", "pl", "pt-PT", "pt", "ro", "sq", "sk", "sl", "sr-Latn", "fi", "sv", "vi", "tr", "be", "bg", "ky", "kk", "mk", "mn", "ru", "sr", "uk", "el", "hy", "iw", "ur", "ar", "fa", "ne", "mr", "hi", "as", "bn", "pa", "gu", "or", "ta", "te", "kn", "ml", "si", "th", "lo", "my", "ka", "am", "km", "zh-CN", "zh-TW", "zh-HK", "ja", "ko" };
 
     private readonly string _tempDownloadPath;
     private readonly string _logPath;
@@ -205,11 +205,11 @@ public class Download
                     { "noprogress", true }
                 };
                 string? lang = null;
-                if (_youtubeLangCodes.Contains(CultureInfo.CurrentCulture.Name))
+                if (YoutubeLangCodes.Contains(CultureInfo.CurrentCulture.Name))
                 {
                     lang = CultureInfo.CurrentCulture.Name;
                 }
-                else if (_youtubeLangCodes.Contains(CultureInfo.CurrentCulture.TwoLetterISOLanguageName))
+                else if (YoutubeLangCodes.Contains(CultureInfo.CurrentCulture.TwoLetterISOLanguageName))
                 {
                     lang = CultureInfo.CurrentCulture.TwoLetterISOLanguageName;
                 }
