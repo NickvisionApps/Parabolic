@@ -24,9 +24,9 @@
 <p>En esta página se explican todas las opciones de uso del llavero en <app>Parabolic</app>.</p>
 <section>
     <title>Lado del servidor</title>
-    <p>The Keyring feature is backed by the <code>Nickvision.Aura</code> library.</p>
-    <p>This library uses SQLCipher to securely store credentials in a platform independent manner.</p>
-    <p>The library will use you system's credential manager (i.e. libsecret on Linux and Windows Credential Manager on Windows) for securing the Keyring.</p>
+    <p>La función Llavero está respaldada por la biblioteca <code>Nickvision.Aura</code>.</p>
+    <p>Esta biblioteca utiliza SQLCipher para almacenar las credenciales de forma segura e independiente de la plataforma.</p>
+    <p>La biblioteca utilizará el gestor de credenciales de tu sistema (es decir, libsecret en Linux y Windows Credential Manager en Windows) para proteger el llavero.</p>
 </section>
 <section>
     <title>Almacenamiento de una credencial</title>
@@ -37,19 +37,19 @@
     <p><code>Contraseña</code> (opcional si el nombre de usuario no está vacío): La contraseña de la credencial</p>
 </section>
 <section>
-    <title>Migrating from Password-Secured Keyring to Secret-Secured Keyring</title>
-    <p>This section applies to users who have enabled a Keyring in Parabolic (in versions before V2023.9.0) and secured it with a password. Starting with version 2023.9.0, Parabolic uses the system's credential manager to generate a random password (secret) to secure the Keyring instead of asking for a user to provide one. By using the system credential manager, Parabolic can also automatically unlock the Keyring at startup without user interaction.</p>
-    <p>If you have a password-secured Keyring from before version 2023.9.0, you can continue to use it in new versions of Parabolic without issue, but you will still need to provide the password everytime the application starts.</p>
-    <p>Follow the rest of this section if you'd like to migrate your existing credentials and take advantage of the new Keyring where a password is not required every time.</p>
+    <title>Migración del llavero protegido por contraseña al llavero secreto</title>
+    <p>Esta sección se aplica a los usuarios que han activado un Llavero en Parabolic (en versiones anteriores a la V2023.9.0) y lo han asegurado con una contraseña. A partir de la versión 2023.9.0, Parabolic utiliza el gestor de credenciales del sistema para generar una contraseña aleatoria (secreta) para asegurar el Llavero en lugar de pedir al usuario que proporcione una. Usando el gestor de credenciales del sistema, Parabolic también puede desbloquear automáticamente el Llavero al iniciarse sin interacción del usuario.</p>
+    <p>Si tienes un llavero protegido con una contraseña anterior a la versión 2023.9.0, puedes seguir usándolo en las nuevas versiones de Parabolic sin problemas, pero tendrás que introducir la contraseña cada vez que se inicia la aplicación.</p>
+    <p>Sigue el resto de esta sección si deseas migrar tus credenciales y aprovechar las ventajas del nuevo Llavero, en el que no es necesario introducir una contraseña de cada vez.</p>
     <note>
-        <p>You can simply disable the old password-secured Keyring when you update Parabolic to 2023.9.0 and re-enable the Keyring to get a secret-secured one. However, this will erase all data from the old Keyring and require you to re-enter all credentials.</p>
+        <p>Puedes simplemente desactivar el antiguo Llavero protegido por una contraseña cuando actualices Parabolic a 2023.9.0 y volver a activar el Llavero para obtener uno protegido por secreto. Sin embargo, esto borrará todos los datos del antiguo Llavero y requerirá que vuelvas a introducir todas las credenciales.</p>
     </note>
     <steps>
-        <item><p>Install <link href="https://flathub.org/apps/org.gnome.seahorse.Application">Passwords and Keys</link>.</p></item>
-        <item><p>Open Parabolic V2023.9.0 or newer at least once. (This will ensure that the app registers with your system's credential manager)</p></item>
-        <item><p>Open <code>Passwords and Keys</code> and locate the <code>org.nickvision.tubeconverter</code> entry in the <code>Default Keyring</code>.</p></item>
-        <item><p>Double click the <code>org.nickvision.tubeconverter</code> entry and edit the <code>Password</code> field. Enter the password that you created and used for your Keyring in Parabolic.</p></item>
-        <item><p>You can now close <code>Passwords and Keys</code> and restart Parabolic. You will see that upon application startup, the Keyring will now be automatically unlocked!</p></item>
+        <item><p>Instala <link href="https://flathub.org/apps/org.gnome.seahorse.Application">Contraseñas y claves</link>.</p></item>
+        <item><p>Abre Parabolic V2023.9.0 o posterior al menos una vez. (Esto garantizará que la aplicación se registre en el gestor de credenciales de tu sistema)</p></item>
+        <item><p>Abre <code>Contraseñas y claves</code> y busca la entrada <code>org.nickvision.tubeconverter</code> en el <code>Llavero predeterminado</code>.</p></item>
+        <item><p>Haz doble clic en la entrada <code>org.nickvision.tubeconverter</code> y edita el campo <code>Contraseña</code>. Ingresa la contraseña que creaste y usaste para tu Llavero en Parabolic.</p></item>
+        <item><p>Ahora puedes cerrar <code>Contraseñas y Llaves</code> y reiniciar Parabolic. Verás que al iniciar la aplicación, ¡el Llavero ahora se desbloqueará automáticamente!</p></item>
     </steps>
 </section>
 </page>
