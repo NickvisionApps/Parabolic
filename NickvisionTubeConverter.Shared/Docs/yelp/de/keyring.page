@@ -14,13 +14,13 @@
 	<license href="http://creativecommons.org/licenses/by/4.0/" its:translate="no"><p>Creative Commons Attribution 4.0 International License</p></license>
 </info>
 
-<title>Keyring</title>
+<title>Schlüsselring</title>
 <p>Diese Seite erklärt alle Optionen zur Verwendung des Keyrings in <app>Parabolic</app>.</p>
 <section>
     <title>Backend</title>
-    <p>The Keyring feature is backed by the <code>Nickvision.Aura</code> library.</p>
-    <p>This library uses SQLCipher to securely store credentials in a platform independent manner.</p>
-    <p>The library will use you system's credential manager (i.e. libsecret on Linux and Windows Credential Manager on Windows) for securing the Keyring.</p>
+    <p>Die Schlüsselring-Funktion wird von der <code>Nickvision.Aura</code>-Bibliothek bereitgestellt.</p>
+    <p>Diese Bibliothek verwendet SQLCipher, um Anmeldedaten sicher und plattformunabhängig zu speichern.</p>
+    <p>Die Bibliothek verwendet die Anmeldedatenverwaltung Ihres Systems (d. h. libsecret unter Linux und Windows Credential Manager unter Windows) zur Sicherung des Schlüsselrings.</p>
 </section>
 <section>
     <title>Speichern von Anmeldedaten</title>
@@ -31,10 +31,10 @@
     <p><code>Passwort</code> (Optional wenn das Benutzernamenfeld nicht leer ist): Das Passwort der Anmeldung</p>
 </section>
 <section>
-    <title>Migrating from Password-Secured Keyring to Secret-Secured Keyring</title>
-    <p>This section applies to users who have enabled a Keyring in Parabolic (in versions before V2023.9.0) and secured it with a password. Starting with version 2023.9.0, Parabolic uses the system's credential manager to generate a random password (secret) to secure the Keyring instead of asking for a user to provide one. By using the system credential manager, Parabolic can also automatically unlock the Keyring at startup without user interaction.</p>
+    <title>Migration von einem passwortgeschützten Schlüsselring zu einem mit einem Geheimnis gesicherten Schlüsselring</title>
+    <p>Dieser Abschnitt gilt für Benutzer, die einen Schlüsselring in Parabolic (in Versionen vor V2023.9.0) aktiviert und mit einem Passwort gesichert haben. Ab Version 2023.9.0 verwendet Parabolic die Anmeldedatenverwaltung des Systems, um ein zufälliges Passwort (Geheimnis) zu generieren, um den Schlüsselring zu sichern, anstatt den Benutzer zu bitten, ein Passwort anzugeben. Durch die Verwendung der Anmeldedatenverwaltung des Systems kann Parabolic den Schlüsselring auch automatisch beim Start entsperren, ohne dass der Benutzer eingreifen muss.</p>
     <p>If you have a password-secured Keyring from before version 2023.9.0, you can continue to use it in new versions of Parabolic without issue, but you will still need to provide the password everytime the application starts.</p>
-    <p>Follow the rest of this section if you'd like to migrate your existing credentials and take advantage of the new Keyring where a password is not required every time.</p>
+    <p>Folge dem Rest dieses Abschnitts, wenn du deine bestehenden Anmeldedaten migrieren und die Vorteile des neuen Schlüsselrings nutzen möchten, bei dem nicht jedes Mal ein Passwort erforderlich ist.</p>
     <note>
         <p>You can simply disable the old password-secured Keyring when you update Parabolic to 2023.9.0 and re-enable the Keyring to get a secret-secured one. However, this will erase all data from the old Keyring and require you to re-enter all credentials.</p>
     </note>

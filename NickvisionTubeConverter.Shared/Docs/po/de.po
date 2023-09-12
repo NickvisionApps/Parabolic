@@ -2,10 +2,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: 2023-09-11 02:20+0300\n"
-"PO-Revision-Date: 2023-08-26 16:10+0000\n"
-"Last-Translator: Jummit <jummit@web.de>\n"
-"Language-Team: German <https://hosted.weblate.org/projects/nickvision-tube-"
-"converter/docs/de/>\n"
+"PO-Revision-Date: 2023-09-12 17:35+0000\n"
+"Last-Translator: Ettore Atalan <atalanttore@googlemail.com>\n"
+"Language-Team: German <https://hosted.weblate.org/projects/"
+"nickvision-tube-converter/docs/de/>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -127,17 +127,16 @@ msgstr ""
 #. (itstool) path: item/title
 #: yelp/C/converter.page:49
 msgid "Remove Source Data"
-msgstr ""
+msgstr "Quelldaten entfernen"
 
 #. (itstool) path: item/p
 #: yelp/C/converter.page:51
-#, fuzzy
 msgid ""
 "If enabled, Parabolic will clear metadata fields containing the URL and "
 "other identifying information of the media source."
 msgstr ""
-"Wenn diese Option aktiviert ist, markiert Parabolic Medien mit "
-"Kapitelinformationen, falls vorhanden."
+"Wenn aktiviert, löscht Parabolic Metadatenfelder, die die URL und andere "
+"identifizierende Informationen der Medienquelle enthalten."
 
 #. (itstool) path: item/p
 #: yelp/C/converter.page:52
@@ -146,11 +145,14 @@ msgid ""
 "<code>synopsis</code>, <code>purl</code> and <code>handler_name</code> in "
 "each stream."
 msgstr ""
+"Felder, die gelöscht werden: <code>Kommentar</code>, <code>Beschreibung</"
+"code>, <code>Synopse</code>, <code>Purl</code> und <code>handler_name</code> "
+"in jedem Stream."
 
 #. (itstool) path: item/title
 #: yelp/C/converter.page:58
 msgid "Embed Chapters"
-msgstr "Kapitel Einbetten"
+msgstr "Kapitel einbetten"
 
 #. (itstool) path: item/p
 #: yelp/C/converter.page:59
@@ -329,17 +331,16 @@ msgstr "Standardeinstellung: 20"
 #. (itstool) path: item/title
 #: yelp/C/downloader.page:71
 msgid "Use SponsorBlock for YouTube"
-msgstr "Benutze SponsorBlock für YouTube"
+msgstr "SponsorBlock für YouTube verwenden"
 
 #. (itstool) path: item/p
 #: yelp/C/downloader.page:72
-#, fuzzy
 msgid ""
 "If enabled, Parabolic will apply the SponsorBlock extension to YouTube "
 "downloads."
 msgstr ""
-"Wenn diese Option aktiviert ist, schaltet Parabolic automatisch die "
-"erweiterte Option <code>Vorschau zuschneiden</code> für Audio-Downloads ein."
+"Wenn aktiviert, wird Parabolic die SponsorBlock-Erweiterung auf YouTube-"
+"Downloads anwenden."
 
 #. (itstool) path: note/p
 #: yelp/C/downloader.page:74
@@ -347,6 +348,9 @@ msgid ""
 "SponsorBlock only works on YouTube videos. However, leaving this setting on "
 "will not affect downloads from other sites (i.e. not cause them to fail)."
 msgstr ""
+"SponsorBlock funktioniert nur bei YouTube-Videos. Wenn du diese Einstellung "
+"jedoch aktiviert lässt, hat dies keine Auswirkungen auf Downloads von "
+"anderen Webseiten (d. h. sie werden nicht fehlschlagen)."
 
 #. (itstool) path: item/title
 #: yelp/C/downloader.page:81
@@ -516,7 +520,7 @@ msgstr "Keyring 🔑"
 #. (itstool) path: page/title
 #: yelp/C/keyring.page:20
 msgid "Keyring"
-msgstr "Keyring"
+msgstr "Schlüsselring"
 
 #. (itstool) path: page/p
 #: yelp/C/keyring.page:21
@@ -533,21 +537,19 @@ msgstr "Backend"
 
 #. (itstool) path: section/p
 #: yelp/C/keyring.page:24
-#, fuzzy
 msgid ""
 "The Keyring feature is backed by the <code>Nickvision.Aura</code> library."
 msgstr ""
-"Die Keyring-Funktion wird von der <code>Nickvision.Keyring</code> Bibliothek "
-"bereitgestellt."
+"Die Schlüsselring-Funktion wird von der <code>Nickvision.Aura</code>-"
+"Bibliothek bereitgestellt."
 
 #. (itstool) path: section/p
 #: yelp/C/keyring.page:25
-#, fuzzy
 msgid ""
 "This library uses SQLCipher to securely store credentials in a platform "
 "independent manner."
 msgstr ""
-"Diese Bibliothek nutzt SQLCipher um Anmeldedaten sicher und "
+"Diese Bibliothek verwendet SQLCipher, um Anmeldedaten sicher und "
 "plattformunabhängig zu speichern."
 
 #. (itstool) path: section/p
@@ -556,6 +558,9 @@ msgid ""
 "The library will use you system's credential manager (i.e. libsecret on "
 "Linux and Windows Credential Manager on Windows) for securing the Keyring."
 msgstr ""
+"Die Bibliothek verwendet die Anmeldedatenverwaltung Ihres Systems (d. h. "
+"libsecret unter Linux und Windows Credential Manager unter Windows) zur "
+"Sicherung des Schlüsselrings."
 
 #. (itstool) path: section/title
 #: yelp/C/keyring.page:29
@@ -600,6 +605,8 @@ msgstr ""
 #: yelp/C/keyring.page:37
 msgid "Migrating from Password-Secured Keyring to Secret-Secured Keyring"
 msgstr ""
+"Migration von einem passwortgeschützten Schlüsselring zu einem mit einem "
+"Geheimnis gesicherten Schlüsselring"
 
 #. (itstool) path: section/p
 #: yelp/C/keyring.page:38
@@ -611,6 +618,14 @@ msgid ""
 "user to provide one. By using the system credential manager, Parabolic can "
 "also automatically unlock the Keyring at startup without user interaction."
 msgstr ""
+"Dieser Abschnitt gilt für Benutzer, die einen Schlüsselring in Parabolic (in "
+"Versionen vor V2023.9.0) aktiviert und mit einem Passwort gesichert haben. "
+"Ab Version 2023.9.0 verwendet Parabolic die Anmeldedatenverwaltung des "
+"Systems, um ein zufälliges Passwort (Geheimnis) zu generieren, um den "
+"Schlüsselring zu sichern, anstatt den Benutzer zu bitten, ein Passwort "
+"anzugeben. Durch die Verwendung der Anmeldedatenverwaltung des Systems kann "
+"Parabolic den Schlüsselring auch automatisch beim Start entsperren, ohne "
+"dass der Benutzer eingreifen muss."
 
 #. (itstool) path: section/p
 #: yelp/C/keyring.page:39
@@ -627,6 +642,9 @@ msgid ""
 "credentials and take advantage of the new Keyring where a password is not "
 "required every time."
 msgstr ""
+"Folge dem Rest dieses Abschnitts, wenn du deine bestehenden Anmeldedaten "
+"migrieren und die Vorteile des neuen Schlüsselrings nutzen möchten, bei dem "
+"nicht jedes Mal ein Passwort erforderlich ist."
 
 #. (itstool) path: note/p
 #: yelp/C/keyring.page:42

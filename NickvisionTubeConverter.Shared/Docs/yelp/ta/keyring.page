@@ -24,9 +24,9 @@
 <p><app>பரபோலிக்</app> இல் சாவி வளையத்தைப் பயன்படுத்துவதற்கான அனைத்து விருப்பங்களையும் இந்தப் பக்கம் விளக்குகிறது.</p>
 <section>
     <title>பின்தளம்</title>
-    <p>The Keyring feature is backed by the <code>Nickvision.Aura</code> library.</p>
-    <p>This library uses SQLCipher to securely store credentials in a platform independent manner.</p>
-    <p>The library will use you system's credential manager (i.e. libsecret on Linux and Windows Credential Manager on Windows) for securing the Keyring.</p>
+    <p>சாவி வளையம்அம்சம் <code>Nickvision.Aura</code> நூலகத்தால் ஆதரிக்கப்படுகிறது.</p>
+    <p>இந்த நூலகம் SQLCipher ஐப் பயன்படுத்தி, நடைமேடை சார்பற்ற முறையில் நற்சான்றிதழ்களைப் பாதுகாப்பாகச் சேமிக்கிறது.</p>
+    <p>சாவி வளையத்தைப் பாதுகாக்க, நூலகம் உங்கள் கணினியின் நற்சான்றிதழ் மேலாளரை (அதாவது லினக்ஸில் libsecret மற்றும் விண்டோவ்சில் இல் Windows Credential Manager) பயன்படுத்தும்.</p>
 </section>
 <section>
     <title>ஒரு நற்சான்றிதழை சேமித்தல்</title>
@@ -37,16 +37,16 @@
     <p><code>கடவுச்சொல்</code> (பயனர் பெயர் காலியாக இல்லாவிட்டால் விருப்பமானது): நற்சான்றிதழின் கடவுச்சொல்</p>
 </section>
 <section>
-    <title>Migrating from Password-Secured Keyring to Secret-Secured Keyring</title>
-    <p>This section applies to users who have enabled a Keyring in Parabolic (in versions before V2023.9.0) and secured it with a password. Starting with version 2023.9.0, Parabolic uses the system's credential manager to generate a random password (secret) to secure the Keyring instead of asking for a user to provide one. By using the system credential manager, Parabolic can also automatically unlock the Keyring at startup without user interaction.</p>
-    <p>If you have a password-secured Keyring from before version 2023.9.0, you can continue to use it in new versions of Parabolic without issue, but you will still need to provide the password everytime the application starts.</p>
-    <p>Follow the rest of this section if you'd like to migrate your existing credentials and take advantage of the new Keyring where a password is not required every time.</p>
+    <title>கடவுச்சொல்-பாதுகாக்கப்பட்ட சாவிவளையத்திலிருந்து ரகசிய-பாதுகாக்கப்பட்ட சாவி வளையத்திற்கு மாற்றப்படுகிறது</title>
+    <p>பரபோலிக் (V2023.9.0 க்கு முந்தைய பதிப்புகளில்) சாவி வளையத்தை இயக்கி, கடவுச்சொல்லுடன் பாதுகாத்த பயனர்களுக்கு இந்தப் பிரிவு பொருந்தும். பதிப்பு 2023.9.0 இல் தொடங்கி, பாரபோலிக் கணினியின் நற்சான்றிதழ் மேலாளரைப் பயன்படுத்தி, ஒரு பயனரை வழங்குமாறு கேட்பதற்குப் பதிலாக, ஒரு சீரற்ற கடவுச்சொல்லை (ரகசியம்) உருவாக்க, சாவி வளையத்தைப் பாதுகாக்கிறது. கணினி நற்சான்றிதழ் மேலாளரைப் பயன்படுத்துவதன் மூலம், பயனர் தொடர்பு இல்லாமலேயே தொடக்கத்தில் பாரபோலிக் தானாகவே சாவி வளையத்தை திறக்க முடியும்.</p>
+    <p>2023.9.0 பதிப்புக்கு முன் கடவுச்சொல்-பாதுகாக்கப்பட்ட சாவி வளையம் உங்களிடம் இருந்தால், அதைப் பிரச்சனையின்றி பரபோலிகின் புதிய பதிப்புகளில் தொடர்ந்து பயன்படுத்தலாம், ஆனால் பயன்பாடு தொடங்கும் ஒவ்வொரு முறையும் கடவுச்சொல்லை வழங்க வேண்டும்.</p>
+    <p>உங்கள் தற்போதைய நற்சான்றிதழ்களை நகர்த்தவும், ஒவ்வொரு முறையும் கடவுச்சொல் தேவைப்படாத புதிய சாவி வளையத்தை பயன்படுத்தவும் விரும்பினால், இந்தப் பிரிவின் மீதமுள்ளவற்றைப் பின்தொடரவும்.</p>
     <note>
-        <p>You can simply disable the old password-secured Keyring when you update Parabolic to 2023.9.0 and re-enable the Keyring to get a secret-secured one. However, this will erase all data from the old Keyring and require you to re-enter all credentials.</p>
+        <p>நீங்கள் பரபோலிக் 2023.9.0 க்கு புதுப்பிக்கும் போது பழைய கடவுச்சொல்-பாதுகாக்கப்பட்ட சாவி வளையத்தை முடக்கலாம் மற்றும் ரகசிய-பாதுகாப்பான ஒன்றைப் பெற சாவி வளையத்தை மீண்டும் இயக்கலாம். இருப்பினும், இது பழைய சாவி வளையத்தில் உள்ள எல்லா தரவையும் அழித்து, அனைத்து நற்சான்றிதழ்களையும் மீண்டும் உள்ளிட வேண்டும்.</p>
     </note>
     <steps>
-        <item><p>Install <link href="https://flathub.org/apps/org.gnome.seahorse.Application">Passwords and Keys</link>.</p></item>
-        <item><p>Open Parabolic V2023.9.0 or newer at least once. (This will ensure that the app registers with your system's credential manager)</p></item>
+        <item><p><link href="https://flathub.org/apps/org.gnome.seahorse.Application">கடவுச்சொற்கள் மற்றும் விசைகளை</link> நிறுவவும்.</p></item>
+        <item><p>பரபோலிக் V2023.9.0 அல்லது புதியதை ஒருமுறையாவது திறக்கவும். (இது உங்கள் கணினியின் நற்சான்றிதழ் மேலாளருடன் பயன்பாடு பதிவு செய்யப்படுவதை உறுதி செய்யும்)</p></item>
         <item><p>Open <code>Passwords and Keys</code> and locate the <code>org.nickvision.tubeconverter</code> entry in the <code>Default Keyring</code>.</p></item>
         <item><p>Double click the <code>org.nickvision.tubeconverter</code> entry and edit the <code>Password</code> field. Enter the password that you created and used for your Keyring in Parabolic.</p></item>
         <item><p>You can now close <code>Passwords and Keys</code> and restart Parabolic. You will see that upon application startup, the Keyring will now be automatically unlocked!</p></item>

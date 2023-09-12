@@ -8,10 +8,10 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-09-11 01:21+0300\n"
-"PO-Revision-Date: 2023-09-09 03:22+0000\n"
+"PO-Revision-Date: 2023-09-12 17:35+0000\n"
 "Last-Translator: Gnuey56 <gnuey56@proton.me>\n"
-"Language-Team: Japanese <https://hosted.weblate.org/projects/nickvision-tube-"
-"converter/app/ja/>\n"
+"Language-Team: Japanese <https://hosted.weblate.org/projects/"
+"nickvision-tube-converter/app/ja/>\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -178,9 +178,8 @@ msgid "Error"
 msgstr "エラー"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:72
-#, fuzzy
 msgid "Failed to enable keyring."
-msgstr "キーリングを無効化できません。"
+msgstr "キーリングの有効化に失敗しました。"
 
 #: ../../../Models/Download.cs:181
 msgid "File already exists, and overwriting is disallowed"
@@ -481,9 +480,8 @@ msgid "Audio Language"
 msgstr "音声の言語"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:131
-#, fuzzy
 msgid "Download Subtitle"
-msgstr "ダウンローダー"
+msgstr "字幕をダウンロード"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:183
 msgid "Select items to download or change file names."
@@ -655,12 +653,11 @@ msgstr "タイトルの編集を取り消し"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/password_dialog.blp:17
 msgid "Migrate to Secret-Secured Keyring"
-msgstr ""
+msgstr "秘密保護のキーリングへ以降"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/password_dialog.blp:21
-#, fuzzy
 msgid "Migrate Keyring"
-msgstr "キーリングを無効化"
+msgstr "キーリングを移行"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/password_dialog.blp:68
 msgid "Skip"
@@ -806,7 +803,6 @@ msgid "Language Code Information"
 msgstr "言語コードについて"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:272
-#, fuzzy
 msgid ""
 "Different sites can use different language code formats for the same "
 "language. You may encounter one of the following three types: two-letter, "
@@ -815,11 +811,12 @@ msgid ""
 "\n"
 "Please specify all valid codes for your languages for the best results."
 msgstr ""
-"いくつかのサイトは二文字の言語コードを使用していますが、三文字のサイトもあり"
-"ます。例: \"en\" と \"eng\" は英語の言語コードとして使用されます。\n"
+"同じ言語であっても、異なるサイトでは違った言語コードを使用しているかもしれま"
+"せん。次の3タイプの言語コードのいずれかが必要になるでしょう: "
+"二文字、二文字と地域、三文字。例: \"en\"、\"en-US\"、\"eng\" "
+"は英語の言語コードとして使用されます。\n"
 "\n"
-"最良の結果を得るためには、言語コードを二文字と三文字の両方を指定してくださ"
-"い。"
+"最良の結果を得るためには、有効な言語コードすべてを指定してください。"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:283
 msgid "Proxy URL"
@@ -889,13 +886,13 @@ msgstr ""
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:420
 msgid "Remove data about media source"
-msgstr ""
+msgstr "メディアソースのデータを削除"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:421
 msgid ""
 "Clear metadata fields containing URL and another data that can lead to the "
 "media source"
-msgstr ""
+msgstr "メディアソースを特定できる、URL や他のデータのメタデータを削除します"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:437
 msgid "Embed Chapters"
