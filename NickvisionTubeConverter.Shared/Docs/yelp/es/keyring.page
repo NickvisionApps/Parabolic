@@ -26,7 +26,7 @@
     <title>Lado del servidor</title>
     <p>La función Llavero está respaldada por la biblioteca <code>Nickvision.Aura</code>.</p>
     <p>Esta biblioteca utiliza SQLCipher para almacenar las credenciales de forma segura e independiente de la plataforma.</p>
-    <p>La biblioteca utilizará el gestor de credenciales de tu sistema (es decir, libsecret en Linux y Windows Credential Manager en Windows) para proteger el llavero.</p>
+    <p>The library will use you system's credential manager (i.e. DBus secret service on Linux and Windows Credential Manager on Windows) for securing the Keyring.</p>
 </section>
 <section>
     <title>Almacenamiento de una credencial</title>
