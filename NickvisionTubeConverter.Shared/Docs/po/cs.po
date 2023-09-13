@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: 2023-09-11 02:20+0300\n"
-"PO-Revision-Date: 2023-09-12 10:22+0000\n"
-"Last-Translator: knedl1k <knedl1k@duck.com>\n"
+"PO-Revision-Date: 2023-09-13 02:42+0000\n"
+"Last-Translator: Fjuro <ifjuro@proton.me>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/"
 "nickvision-tube-converter/docs/cs/>\n"
 "Language: cs\n"
@@ -127,13 +127,12 @@ msgstr "Odebrat zdrojové data"
 
 #. (itstool) path: item/p
 #: yelp/C/converter.page:51
-#, fuzzy
 msgid ""
 "If enabled, Parabolic will clear metadata fields containing the URL and "
 "other identifying information of the media source."
 msgstr ""
-"Pokud je tato funkce povolena, aplikace Parabolic označí média informacemi o "
-"kapitolách, pokud jsou dostupné"
+"Pokud je tato funkce povolena, aplikace Parabolic vymaže pole s metadaty "
+"obsahující URL a další identifikující informace o zdroji média."
 
 #. (itstool) path: item/p
 #: yelp/C/converter.page:52
@@ -142,6 +141,9 @@ msgid ""
 "<code>synopsis</code>, <code>purl</code> and <code>handler_name</code> in "
 "each stream."
 msgstr ""
+"Pole, která budou vymazána: <code>comment</code>, <code>description</code>, "
+"<code>synopsis</code>, <code>purl</code> a <code>handler_name</code> v "
+"každém streamu."
 
 #. (itstool) path: item/title
 #: yelp/C/converter.page:58
@@ -351,19 +353,17 @@ msgstr "Jazyky titulků"
 
 #. (itstool) path: item/p
 #: yelp/C/downloader.page:82
-#, fuzzy
 msgid ""
 "A comma-separated list of two-letter, two-letter with region, and three-"
 "letter language codes to use when selecting languages of subtitles to "
 "download. Only applies when downloading a video with subtitles."
 msgstr ""
-"Seznam dvoupísmenných a třípísmenných jazykových kódů oddělených čárkou, "
-"které se použijí při výběru jazyků titulků ke stažení. Použije se pouze v "
-"případě, že je při stahování vybrán platný formát <code>Subtitle</code>."
+"Seznam dvoupísmenných, dvoupísmenných s čárkou a třípísmenných jazykových "
+"kódů oddělených čárkou, které se použijí při výběru jazyků titulků ke "
+"stažení. Použije se pouze při stahování videa s titulky."
 
 #. (itstool) path: note/p
 #: yelp/C/downloader.page:84
-#, fuzzy
 msgid ""
 "Different sites can use different language code formats for the same "
 "language. You may encounter one of the following three types: two-letter, "
@@ -371,20 +371,20 @@ msgid ""
 "\"eng\" are all used for English. Please specify all valid codes for your "
 "languages for the best results."
 msgstr ""
-"Některé stránky používají dvoupísmenné jazykové kódy, jiné třípísmenné. "
-"Například pro angličtinu se používá <code>en</code> i <code>eng</code>. Pro "
-"dosažení nejlepších výsledků zadejte pro své jazyky dvoupísmenné i "
-"třípísmenné kódy."
+"Různé stránky používají různé jazykové kódy pro stejný jazyk. Můžete se "
+"setkat s jedním z následujících tří typů: dvoupísmenný, dvoupísmenný s "
+"oblastí nebo třípísmenný. Pro angličtinu může být například použito „en“, "
+"„en-US“ a „eng“. Pro nejlepší výsledky zadejte všechny platné kódy vašich "
+"jazyků."
 
 #. (itstool) path: note/p
 #: yelp/C/downloader.page:87
-#, fuzzy
 msgid ""
 "Default: Your culture's language codes. For example, on an en-US system the "
 "default would be <code>en,en-US,eng</code>"
 msgstr ""
-"Výchozí: dvoupísmenný a třípísmenný kód tvého jazyka. Například na americkém "
-"(en-US) systému budou výchozí kódy <code>en,eng</code>"
+"Výchozí: jazykové kódy vaší kultury. Například na americkém (en-US) systému "
+"budou výchozí kódy <code>en,en-US,eng</code>"
 
 #. (itstool) path: item/title
 #: yelp/C/downloader.page:91
@@ -525,22 +525,19 @@ msgstr "Backend"
 
 #. (itstool) path: section/p
 #: yelp/C/keyring.page:24
-#, fuzzy
 msgid ""
 "The Keyring feature is backed by the <code>Nickvision.Aura</code> library."
 msgstr ""
-"Funkce klíčenky je provozována pomocí knihovny <code>Nickvision.Keyring</"
-"code>."
+"Funkce klíčenky je provozována pomocí knihovny <code>Nickvision.Aura</code>."
 
 #. (itstool) path: section/p
 #: yelp/C/keyring.page:25
-#, fuzzy
 msgid ""
 "This library uses SQLCipher to securely store credentials in a platform "
 "independent manner."
 msgstr ""
-"Tato knihovna používá rozšíření SQLCipher pro bezpečné ukládání údajů "
-"způsobem nezávislým na platformě."
+"Tato knihovna používá SQLCipher pro bezpečné ukládání údajů způsobem "
+"nezávislým na platformě."
 
 #. (itstool) path: section/p
 #: yelp/C/keyring.page:26
@@ -548,6 +545,9 @@ msgid ""
 "The library will use you system's credential manager (i.e. libsecret on "
 "Linux and Windows Credential Manager on Windows) for securing the Keyring."
 msgstr ""
+"Knihovna použije pro zabezpečení klíčenky správce údajů vašeho systému ("
+"např. libsecret na systému Linux a Správce přihlašovacích údajů Windows na "
+"systému Windows)."
 
 #. (itstool) path: section/title
 #: yelp/C/keyring.page:29
@@ -590,6 +590,7 @@ msgstr ""
 #: yelp/C/keyring.page:37
 msgid "Migrating from Password-Secured Keyring to Secret-Secured Keyring"
 msgstr ""
+"Přesun z klíčenky zabezpečené heslem na klíčenku zabezpečenou tajným kódem"
 
 #. (itstool) path: section/p
 #: yelp/C/keyring.page:38
@@ -601,6 +602,12 @@ msgid ""
 "user to provide one. By using the system credential manager, Parabolic can "
 "also automatically unlock the Keyring at startup without user interaction."
 msgstr ""
+"Tato část se týká uživatelů, kteří v aplikaci Parabolic (ve verzích před "
+"V2023.9.0) aktivovali klíčenku a zabezpečili ji heslem. Počínaje verzí "
+"2023.9.0 používá Parabolic správce pověření systému k vygenerování náhodného "
+"hesla (tajného kódu) k zabezpečení klíčenky, místo aby žádal uživatele o "
+"jeho zadání. Pomocí systémového správce pověření může Parabolic také "
+"automaticky odemknout klíčenku při spuštění bez interakce uživatele."
 
 #. (itstool) path: section/p
 #: yelp/C/keyring.page:39
@@ -609,6 +616,9 @@ msgid ""
 "continue to use it in new versions of Parabolic without issue, but you will "
 "still need to provide the password everytime the application starts."
 msgstr ""
+"Pokud máte klíčenku zabezpečenou heslem z doby před verzí 2023.9.0, můžete "
+"ji bez problémů používat i v nových verzích aplikace Parabolic, ale při "
+"každém spuštění aplikace budete muset zadat heslo."
 
 #. (itstool) path: section/p
 #: yelp/C/keyring.page:40
@@ -617,6 +627,9 @@ msgid ""
 "credentials and take advantage of the new Keyring where a password is not "
 "required every time."
 msgstr ""
+"Pokud chcete přenést stávající přihlašovací údaje a využít výhod nové "
+"klíčenky, kde není nutné pokaždé zadávat heslo, postupujte podle zbytku této "
+"části."
 
 #. (itstool) path: note/p
 #: yelp/C/keyring.page:42
@@ -626,6 +639,10 @@ msgid ""
 "However, this will erase all data from the old Keyring and require you to re-"
 "enter all credentials."
 msgstr ""
+"Při aktualizaci aplikace Parabolic na verzi 2023.9.0 můžete jednoduše "
+"vypnout starý svazek klíčů zabezpečený heslem a znovu jej aktivovat, abyste "
+"získali svazek klíčů zabezpečený tajným kódem. Tím se však vymažou všechna "
+"data ze starého svazku klíčů a bude nutné znovu zadat všechna pověření."
 
 #. (itstool) path: item/p
 #: yelp/C/keyring.page:45
@@ -633,6 +650,8 @@ msgid ""
 "Install <link href=\"https://flathub.org/apps/org.gnome.seahorse.Application"
 "\">Passwords and Keys</link>."
 msgstr ""
+"Nainstalujte si <link href=\"https://flathub.org/apps/org.gnome.seahorse."
+"Application\">Hesla a klíče</link>."
 
 #. (itstool) path: item/p
 #: yelp/C/keyring.page:46
@@ -640,6 +659,8 @@ msgid ""
 "Open Parabolic V2023.9.0 or newer at least once. (This will ensure that the "
 "app registers with your system's credential manager)"
 msgstr ""
+"Otevřete alespoň jednou aplikaci Parabolic V2023.9.0 nebo novější. (Tím "
+"zajistíte, že se aplikace zaregistruje ve správci pověření vašeho systému)"
 
 #. (itstool) path: item/p
 #: yelp/C/keyring.page:47
@@ -647,6 +668,8 @@ msgid ""
 "Open <code>Passwords and Keys</code> and locate the <code>org.nickvision."
 "tubeconverter</code> entry in the <code>Default Keyring</code>."
 msgstr ""
+"Otevřete <code>Hesla a klíče</code> a nejděte záznam <code>org.nickvision."
+"tubeconverter</code> ve <code>Výchozí klíčence</code>."
 
 #. (itstool) path: item/p
 #: yelp/C/keyring.page:48
@@ -655,6 +678,9 @@ msgid ""
 "the <code>Password</code> field. Enter the password that you created and "
 "used for your Keyring in Parabolic."
 msgstr ""
+"Dvakrát klikněte na záznam <code>org.nickvision.tubeconverter</code> a "
+"upravte pole <code>Heslo</code>. Zadejte heslo, které jste vytvořili a "
+"použili pro vaši klíčenku v aplikaci Parabolic."
 
 #. (itstool) path: item/p
 #: yelp/C/keyring.page:49
@@ -663,6 +689,9 @@ msgid ""
 "will see that upon application startup, the Keyring will now be "
 "automatically unlocked!"
 msgstr ""
+"Nyní můžete zavřít <code>Hesla a klíče</code> a restartovat aplikaci "
+"Parabolic. Po spuštění aplikace uvidíte, že bude klíčenka automaticky "
+"odemčena!"
 
 #. (itstool) path: info/title
 #: yelp/C/newDownload.page:8
