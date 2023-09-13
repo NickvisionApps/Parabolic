@@ -20,7 +20,7 @@
     <title>Backend</title>
     <p>Die Schlüsselring-Funktion wird von der <code>Nickvision.Aura</code>-Bibliothek bereitgestellt.</p>
     <p>Diese Bibliothek verwendet SQLCipher, um Anmeldedaten sicher und plattformunabhängig zu speichern.</p>
-    <p>Die Bibliothek verwendet die Anmeldedatenverwaltung Ihres Systems (d. h. libsecret unter Linux und Windows Credential Manager unter Windows) zur Sicherung des Schlüsselrings.</p>
+    <p>The library will use you system's credential manager (i.e. DBus secret service on Linux and Windows Credential Manager on Windows) for securing the Keyring.</p>
 </section>
 <section>
     <title>Speichern von Anmeldedaten</title>
