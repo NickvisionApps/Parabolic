@@ -8,17 +8,17 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-09-11 01:21+0300\n"
-"PO-Revision-Date: 2023-08-24 10:19+0000\n"
-"Last-Translator: Fyodor Sobolev <fyodor-sobolev@protonmail.com>\n"
-"Language-Team: Russian <https://hosted.weblate.org/projects/nickvision-tube-"
-"converter/app/ru/>\n"
+"PO-Revision-Date: 2023-09-13 14:43+0000\n"
+"Last-Translator: 0que <0que@users.noreply.hosted.weblate.org>\n"
+"Language-Team: Russian <https://hosted.weblate.org/projects/"
+"nickvision-tube-converter/app/ru/>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 5.0-dev\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 5.0.1-dev\n"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:714
 #, csharp-format
@@ -183,9 +183,8 @@ msgid "Error"
 msgstr "Ошибка"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:72
-#, fuzzy
 msgid "Failed to enable keyring."
-msgstr "Невозможно отключить связку ключей."
+msgstr "Не удалось включить связку ключей."
 
 #: ../../../Models/Download.cs:181
 msgid "File already exists, and overwriting is disallowed"
@@ -487,9 +486,8 @@ msgid "Audio Language"
 msgstr "Язык аудио"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:131
-#, fuzzy
 msgid "Download Subtitle"
-msgstr "Загрузчик"
+msgstr "Скачать субтитры"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:183
 msgid "Select items to download or change file names."
@@ -660,12 +658,11 @@ msgstr "Отменить изменение заголовка"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/password_dialog.blp:17
 msgid "Migrate to Secret-Secured Keyring"
-msgstr ""
+msgstr "Перенести в защищённую связку ключей"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/password_dialog.blp:21
-#, fuzzy
 msgid "Migrate Keyring"
-msgstr "Отключить связку ключей"
+msgstr "Перенести в связку ключей"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/password_dialog.blp:68
 msgid "Skip"
@@ -813,7 +810,6 @@ msgid "Language Code Information"
 msgstr "Информация о языковых кодах"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:272
-#, fuzzy
 msgid ""
 "Different sites can use different language code formats for the same "
 "language. You may encounter one of the following three types: two-letter, "
@@ -822,11 +818,12 @@ msgid ""
 "\n"
 "Please specify all valid codes for your languages for the best results."
 msgstr ""
-"Некоторые сайты используют двух-символьные языковые коды, тогда как другие "
-"используют трёх-символьные. Например, \"ru\" и \"rus\" для русского языка.\n"
+"Разные сайты используют разные коды для обозначения языков. Они могут быть "
+"двухбуквенными, трёхбуквенными и четырёхбуквенными через тире. Например, \"ru"
+"\", \"ru-RU\" и \"rus\" для русского языка.\n"
 "\n"
-"Пожалуйста, указывайте оба варианта для необходимых языков, для достижения "
-"наилучшего результата."
+"Для достижения наилучшего результата указывайте все варианты для необходимых "
+"языков."
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:283
 msgid "Proxy URL"
@@ -896,13 +893,15 @@ msgstr ""
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:420
 msgid "Remove data about media source"
-msgstr ""
+msgstr "Удалить метаданные об источнике"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:421
 msgid ""
 "Clear metadata fields containing URL and another data that can lead to the "
 "media source"
 msgstr ""
+"Очистить поля с URL и прочей информацией, по которой можно было бы "
+"определить источник содержимого"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:437
 msgid "Embed Chapters"
