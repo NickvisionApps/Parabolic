@@ -24,9 +24,9 @@
 <p>Na této straně najdete vysvětlení všech možností konfigurace klíčenky v předvolbách v aplikaci <app>Parabolic</app>.</p>
 <section>
     <title>Backend</title>
-    <p>The Keyring feature is backed by the <code>Nickvision.Aura</code> library.</p>
-    <p>This library uses SQLCipher to securely store credentials in a platform independent manner.</p>
-    <p>The library will use you system's credential manager (i.e. libsecret on Linux and Windows Credential Manager on Windows) for securing the Keyring.</p>
+    <p>Funkce klíčenky je provozována pomocí knihovny <code>Nickvision.Aura</code>.</p>
+    <p>Tato knihovna používá SQLCipher pro bezpečné ukládání údajů způsobem nezávislým na platformě.</p>
+    <p>Knihovna použije pro zabezpečení klíčenky správce údajů vašeho systému (např. libsecret na systému Linux a Správce přihlašovacích údajů Windows na systému Windows).</p>
 </section>
 <section>
     <title>Ukládání údajů</title>
@@ -37,19 +37,19 @@
     <p><code>Heslo</code> (volitelné, pokud uživ. jméno není prázdné): heslo údaje</p>
 </section>
 <section>
-    <title>Migrating from Password-Secured Keyring to Secret-Secured Keyring</title>
-    <p>This section applies to users who have enabled a Keyring in Parabolic (in versions before V2023.9.0) and secured it with a password. Starting with version 2023.9.0, Parabolic uses the system's credential manager to generate a random password (secret) to secure the Keyring instead of asking for a user to provide one. By using the system credential manager, Parabolic can also automatically unlock the Keyring at startup without user interaction.</p>
-    <p>If you have a password-secured Keyring from before version 2023.9.0, you can continue to use it in new versions of Parabolic without issue, but you will still need to provide the password everytime the application starts.</p>
-    <p>Follow the rest of this section if you'd like to migrate your existing credentials and take advantage of the new Keyring where a password is not required every time.</p>
+    <title>Přesun z klíčenky zabezpečené heslem na klíčenku zabezpečenou tajným kódem</title>
+    <p>Tato část se týká uživatelů, kteří v aplikaci Parabolic (ve verzích před V2023.9.0) aktivovali klíčenku a zabezpečili ji heslem. Počínaje verzí 2023.9.0 používá Parabolic správce pověření systému k vygenerování náhodného hesla (tajného kódu) k zabezpečení klíčenky, místo aby žádal uživatele o jeho zadání. Pomocí systémového správce pověření může Parabolic také automaticky odemknout klíčenku při spuštění bez interakce uživatele.</p>
+    <p>Pokud máte klíčenku zabezpečenou heslem z doby před verzí 2023.9.0, můžete ji bez problémů používat i v nových verzích aplikace Parabolic, ale při každém spuštění aplikace budete muset zadat heslo.</p>
+    <p>Pokud chcete přenést stávající přihlašovací údaje a využít výhod nové klíčenky, kde není nutné pokaždé zadávat heslo, postupujte podle zbytku této části.</p>
     <note>
-        <p>You can simply disable the old password-secured Keyring when you update Parabolic to 2023.9.0 and re-enable the Keyring to get a secret-secured one. However, this will erase all data from the old Keyring and require you to re-enter all credentials.</p>
+        <p>Při aktualizaci aplikace Parabolic na verzi 2023.9.0 můžete jednoduše vypnout starý svazek klíčů zabezpečený heslem a znovu jej aktivovat, abyste získali svazek klíčů zabezpečený tajným kódem. Tím se však vymažou všechna data ze starého svazku klíčů a bude nutné znovu zadat všechna pověření.</p>
     </note>
     <steps>
-        <item><p>Install <link href="https://flathub.org/apps/org.gnome.seahorse.Application">Passwords and Keys</link>.</p></item>
-        <item><p>Open Parabolic V2023.9.0 or newer at least once. (This will ensure that the app registers with your system's credential manager)</p></item>
-        <item><p>Open <code>Passwords and Keys</code> and locate the <code>org.nickvision.tubeconverter</code> entry in the <code>Default Keyring</code>.</p></item>
-        <item><p>Double click the <code>org.nickvision.tubeconverter</code> entry and edit the <code>Password</code> field. Enter the password that you created and used for your Keyring in Parabolic.</p></item>
-        <item><p>You can now close <code>Passwords and Keys</code> and restart Parabolic. You will see that upon application startup, the Keyring will now be automatically unlocked!</p></item>
+        <item><p>Nainstalujte si <link href="https://flathub.org/apps/org.gnome.seahorse.Application">Hesla a klíče</link>.</p></item>
+        <item><p>Otevřete alespoň jednou aplikaci Parabolic V2023.9.0 nebo novější. (Tím zajistíte, že se aplikace zaregistruje ve správci pověření vašeho systému)</p></item>
+        <item><p>Otevřete <code>Hesla a klíče</code> a nejděte záznam <code>org.nickvision.tubeconverter</code> ve <code>Výchozí klíčence</code>.</p></item>
+        <item><p>Dvakrát klikněte na záznam <code>org.nickvision.tubeconverter</code> a upravte pole <code>Heslo</code>. Zadejte heslo, které jste vytvořili a použili pro vaši klíčenku v aplikaci Parabolic.</p></item>
+        <item><p>Nyní můžete zavřít <code>Hesla a klíče</code> a restartovat aplikaci Parabolic. Po spuštění aplikace uvidíte, že bude klíčenka automaticky odemčena!</p></item>
     </steps>
 </section>
 </page>
