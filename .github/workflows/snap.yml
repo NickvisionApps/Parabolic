@@ -20,6 +20,8 @@ jobs:
     steps:
       - name: Checkout Git repository
         uses: actions/checkout@v3
+        with:
+          submodules: recursive
       - name: Build Snap
         uses: snapcore/action-build@v1
         id: snapcraft-build

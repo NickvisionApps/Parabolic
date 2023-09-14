@@ -23,6 +23,8 @@ jobs:
       fail-fast: false
     steps:
       - uses: actions/checkout@v3
+        with:
+          submodules: recursive
       - uses: flatpak/flatpak-github-actions/flatpak-builder@v6.2
         with:
           bundle: org.nickvision.tubeconverter.flatpak
