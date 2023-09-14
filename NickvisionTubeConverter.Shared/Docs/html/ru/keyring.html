@@ -21,9 +21,9 @@ document.addEventListener('DOMContentLoaded', function() {
 <section id=""><div class="inner">
 <div class="hgroup pagewide"><h2 class="title"><span class="title">Бэкэнд</span></h2></div>
 <div class="region"><div class="contents pagewide">
-<p class="p">The Keyring feature is backed by the <span class="code">Nickvision.Aura</span> library.</p>
-<p class="p">This library uses SQLCipher to securely store credentials in a platform independent manner.</p>
-<p class="p">The library will use you system's credential manager (i.e. DBus secret service on Linux and Windows Credential Manager on Windows) for securing the Keyring.</p>
+<p class="p">Функция Связки Ключей работает за счёт библиотеки <span class="code">Nickvision.Aura</span>.</p>
+<p class="p">Эта библиотека использует SQLCipher для безопасного кросс-платформенного хранения учётных данных.</p>
+<p class="p">Библиотека будет использовать системный менеджер учётных данных для безопасного хранения связки ключей: DBus Secret Service в Linux или Диспетчер учетных данных в Windows.</p>
 </div></div>
 </div></section><section id=""><div class="inner">
 <div class="hgroup pagewide"><h2 class="title"><span class="title">Сохранение учётных данных</span></h2></div>
@@ -49,11 +49,11 @@ document.addEventListener('DOMContentLoaded', function() {
 </svg><div class="inner"><div class="region"><div class="contents"><p class="p">Вы можете просто выключить старую связку ключей при обновлении Parabolic до 2023.9.0 и затем включить заново, чтобы получить новую (системную). Но таким образом все ваши данные из старой связки будут удалены, и вам потребуется вводить их по-новой.</p></div></div></div>
 </div>
 <div class="steps"><div class="inner"><div class="region"><ol class="steps">
-<li class="steps"><p class="p">Install <span class="link"><a href="https://flathub.org/apps/org.gnome.seahorse.Application" title="https://flathub.org/apps/org.gnome.seahorse.Application">Passwords and Keys</a></span>.</p></li>
+<li class="steps"><p class="p">Установите <span class="link"><a href="https://flathub.org/apps/org.gnome.seahorse.Application" title="https://flathub.org/apps/org.gnome.seahorse.Application">Пароли и ключи</a></span>.</p></li>
 <li class="steps"><p class="p">Запустите Parabolic V2023.9.0 или новее хотя бы раз. (Чтобы приложение могло зарегистрироваться в системном менеджере учётных данных)</p></li>
-<li class="steps"><p class="p">Open <span class="code">Passwords and Keys</span> and locate the <span class="code">org.nickvision.tubeconverter</span> entry in the <span class="code">Default Keyring</span>.</p></li>
+<li class="steps"><p class="p">Откройте <span class="code">Пароли и ключи</span>, найдите в <span class="code">Default keyring</span> (связка ключей по умолчанию) запись <span class="code">org.nickvision.tubeconverter</span>.</p></li>
 <li class="steps"><p class="p">Нажмите два раза по записи <span class="code">org.nickvision.tubeconverter</span> и заполните поле <span class="code">Пароль</span>. Введите пароль, который вы использовали для свой связки ключей в Parabolic.</p></li>
-<li class="steps"><p class="p">You can now close <span class="code">Passwords and Keys</span> and restart Parabolic. You will see that upon application startup, the Keyring will now be automatically unlocked!</p></li>
+<li class="steps"><p class="p">Можете закрыть <span class="code">Пароли и ключи</span> и перезапустить Parabolic. Теперь при запуске приложения связка ключей будет разблокирована автоматически!</p></li>
 </ol></div></div></div>
 </div></div>
 </div></section><section class="links" role="navigation"><div class="inner">
