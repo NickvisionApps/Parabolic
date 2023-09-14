@@ -24,9 +24,9 @@
 <p>Эта страница поясняет все опции для использования Связки Ключей в <app>Parabolic</app>.</p>
 <section>
     <title>Бэкэнд</title>
-    <p>The Keyring feature is backed by the <code>Nickvision.Aura</code> library.</p>
-    <p>This library uses SQLCipher to securely store credentials in a platform independent manner.</p>
-    <p>The library will use you system's credential manager (i.e. DBus secret service on Linux and Windows Credential Manager on Windows) for securing the Keyring.</p>
+    <p>Функция Связки Ключей работает за счёт библиотеки <code>Nickvision.Aura</code>.</p>
+    <p>Эта библиотека использует SQLCipher для безопасного кросс-платформенного хранения учётных данных.</p>
+    <p>Библиотека будет использовать системный менеджер учётных данных для безопасного хранения связки ключей: DBus Secret Service в Linux или Диспетчер учетных данных в Windows.</p>
 </section>
 <section>
     <title>Сохранение учётных данных</title>
@@ -45,11 +45,11 @@
         <p>Вы можете просто выключить старую связку ключей при обновлении Parabolic до 2023.9.0 и затем включить заново, чтобы получить новую (системную). Но таким образом все ваши данные из старой связки будут удалены, и вам потребуется вводить их по-новой.</p>
     </note>
     <steps>
-        <item><p>Install <link href="https://flathub.org/apps/org.gnome.seahorse.Application">Passwords and Keys</link>.</p></item>
+        <item><p>Установите <link href="https://flathub.org/apps/org.gnome.seahorse.Application">Пароли и ключи</link>.</p></item>
         <item><p>Запустите Parabolic V2023.9.0 или новее хотя бы раз. (Чтобы приложение могло зарегистрироваться в системном менеджере учётных данных)</p></item>
-        <item><p>Open <code>Passwords and Keys</code> and locate the <code>org.nickvision.tubeconverter</code> entry in the <code>Default Keyring</code>.</p></item>
+        <item><p>Откройте <code>Пароли и ключи</code>, найдите в <code>Default keyring</code> (связка ключей по умолчанию) запись <code>org.nickvision.tubeconverter</code>.</p></item>
         <item><p>Нажмите два раза по записи <code>org.nickvision.tubeconverter</code> и заполните поле <code>Пароль</code>. Введите пароль, который вы использовали для свой связки ключей в Parabolic.</p></item>
-        <item><p>You can now close <code>Passwords and Keys</code> and restart Parabolic. You will see that upon application startup, the Keyring will now be automatically unlocked!</p></item>
+        <item><p>Можете закрыть <code>Пароли и ключи</code> и перезапустить Parabolic. Теперь при запуске приложения связка ключей будет разблокирована автоматически!</p></item>
     </steps>
 </section>
 </page>
