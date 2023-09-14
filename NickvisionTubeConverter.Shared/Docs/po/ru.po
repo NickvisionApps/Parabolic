@@ -2,16 +2,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: 2023-09-13 19:48+0300\n"
-"PO-Revision-Date: 2023-09-13 14:43+0000\n"
+"PO-Revision-Date: 2023-09-14 13:06+0000\n"
 "Last-Translator: Fyodor Sobolev <fyodor-sobolev@protonmail.com>\n"
-"Language-Team: Russian <https://hosted.weblate.org/projects/nickvision-tube-"
-"converter/docs/ru/>\n"
+"Language-Team: Russian <https://hosted.weblate.org/projects/"
+"nickvision-tube-converter/docs/ru/>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Generator: Weblate 5.0.1-dev\n"
 
 #. Put one translator per line, in the form NAME <EMAIL>, YEAR1, YEAR2
@@ -352,19 +352,17 @@ msgstr "Языки субтитров"
 
 #. (itstool) path: item/p
 #: yelp/C/downloader.page:82
-#, fuzzy
 msgid ""
 "A comma-separated list of two-letter, two-letter with region, and three-"
 "letter language codes to use when selecting languages of subtitles to "
 "download. Only applies when downloading a video with subtitles."
 msgstr ""
-"Список разделённых запятой двух- и трёх-символьных кодов языков для "
-"использования при скачивании субтитров. Применяется только при выборе "
-"формата <code>Субтитров</code> при добавлении загрузки."
+"Список разделённых запятой двух-символьных, двух-символьных с регионом и "
+"трёх-символьных кодов языков для использования при скачивании субтитров. "
+"Применяется только при скачивании видео с субтитрами."
 
 #. (itstool) path: note/p
 #: yelp/C/downloader.page:84
-#, fuzzy
 msgid ""
 "Different sites can use different language code formats for the same "
 "language. You may encounter one of the following three types: two-letter, "
@@ -372,20 +370,20 @@ msgid ""
 "\"eng\" are all used for English. Please specify all valid codes for your "
 "languages for the best results."
 msgstr ""
-"Некоторые сайты используют двух-символьные языковые коды, тогда как другие "
-"используют трёх-символьные. Например, <code>ru</code> и <code>rus</code> "
-"используются для русского языка. Пожалуйста. указывайте оба варианта для "
-"необходимых языков, для достижения наилучших результатов."
+"Разные сайты используют различные форматы кодов для того же языка. Вы можете "
+"столкнуться с одним из трёх типов: двух-символьный, двух-символьный с "
+"регионом, либо трёх-символьный. Например, \"ru\", \"ru-RU\" и \"rus\" "
+"используются для русского языка. Пожалуйста. указывайте все варианты для "
+"необходимых языков, чтобы достичь наилучших результатов."
 
 #. (itstool) path: note/p
 #: yelp/C/downloader.page:87
-#, fuzzy
 msgid ""
 "Default: Your culture's language codes. For example, on an en-US system the "
 "default would be <code>en,en-US,eng</code>"
 msgstr ""
-"По умолчанию: Двух- и трёх-символьные коды для вашего языка. Например, на "
-"системе с локалью ru-RU будет указано <code>ru,rus</code>"
+"По умолчанию: коды для вашего языка. Например, на системе с локалью ru-RU "
+"будет указано <code>ru,ru-RU,rus</code>"
 
 #. (itstool) path: item/title
 #: yelp/C/downloader.page:91
@@ -527,16 +525,14 @@ msgstr "Бэкэнд"
 
 #. (itstool) path: section/p
 #: yelp/C/keyring.page:24
-#, fuzzy
 msgid ""
 "The Keyring feature is backed by the <code>Nickvision.Aura</code> library."
 msgstr ""
-"Функция Связки Ключей работает за счёт библиотеки <code>Nickvision.Keyring</"
-"code>."
+"Функция Связки Ключей работает за счёт библиотеки <code>Nickvision."
+"Aura</code>."
 
 #. (itstool) path: section/p
 #: yelp/C/keyring.page:25
-#, fuzzy
 msgid ""
 "This library uses SQLCipher to securely store credentials in a platform "
 "independent manner."
@@ -546,14 +542,13 @@ msgstr ""
 
 #. (itstool) path: section/p
 #: yelp/C/keyring.page:26
-#, fuzzy
 msgid ""
 "The library will use you system's credential manager (i.e. DBus secret "
 "service on Linux and Windows Credential Manager on Windows) for securing the "
 "Keyring."
 msgstr ""
 "Библиотека будет использовать системный менеджер учётных данных для "
-"безопасного хранения связки ключей. Например, libsecret в Linux или "
+"безопасного хранения связки ключей: DBus Secret Service в Linux или "
 "Диспетчер учетных данных в Windows."
 
 #. (itstool) path: section/title
@@ -653,13 +648,12 @@ msgstr ""
 
 #. (itstool) path: item/p
 #: yelp/C/keyring.page:45
-#, fuzzy
 msgid ""
 "Install <link href=\"https://flathub.org/apps/org.gnome.seahorse.Application"
 "\">Passwords and Keys</link>."
 msgstr ""
 "Установите <link href=\"https://flathub.org/apps/org.gnome.seahorse."
-"Application\">Пароли и Ключи</link>."
+"Application\">Пароли и ключи</link>."
 
 #. (itstool) path: item/p
 #: yelp/C/keyring.page:46
@@ -672,13 +666,13 @@ msgstr ""
 
 #. (itstool) path: item/p
 #: yelp/C/keyring.page:47
-#, fuzzy
 msgid ""
 "Open <code>Passwords and Keys</code> and locate the <code>org.nickvision."
 "tubeconverter</code> entry in the <code>Default Keyring</code>."
 msgstr ""
-"Откройте <code>Ключи и Пароли</code>, найдите в <code>Связке по-умолчанию</"
-"code> запись <code>org.nickvision.tubeconverter</code>"
+"Откройте <code>Пароли и ключи</code>, найдите в <code>Default keyring</code> "
+"(связка ключей по умолчанию) запись <code>org.nickvision."
+"tubeconverter</code>."
 
 #. (itstool) path: item/p
 #: yelp/C/keyring.page:48
@@ -693,14 +687,13 @@ msgstr ""
 
 #. (itstool) path: item/p
 #: yelp/C/keyring.page:49
-#, fuzzy
 msgid ""
 "You can now close <code>Passwords and Keys</code> and restart Parabolic. You "
 "will see that upon application startup, the Keyring will now be "
 "automatically unlocked!"
 msgstr ""
-"Закройте <code>Пароли и Ключи</code> и перезапустите Parabolic. Теперь при "
-"запуске приложения связка ключей будет разблокироваться автоматически!"
+"Можете закрыть <code>Пароли и ключи</code> и перезапустить Parabolic. Теперь "
+"при запуске приложения связка ключей будет разблокирована автоматически!"
 
 #. (itstool) path: info/title
 #: yelp/C/newDownload.page:8
@@ -848,9 +841,8 @@ msgstr ""
 
 #. (itstool) path: item/title
 #: yelp/C/newDownload.page:57
-#, fuzzy
 msgid "Download Subtitle"
-msgstr "Загрузчик"
+msgstr "Загрузить субтитры"
 
 #. (itstool) path: item/p
 #: yelp/C/newDownload.page:58
@@ -858,15 +850,17 @@ msgid ""
 "Whether to download and embed subtitle when downloading a video. Languages "
 "for subtitles can be defined in <link xref=\"downloader\">preferences</link>."
 msgstr ""
+"Должны ли бы загружены и встроены субтитры при скачивании видео. Языки "
+"субтитров могут быть указаны в <link xref=\"downloader\">настройках</link>."
 
 #. (itstool) path: note/p
 #: yelp/C/newDownload.page:60
-#, fuzzy
 msgid ""
 "The previously used state will be remembered and pre-selected for the next "
 "download."
 msgstr ""
-"Выбранное качество будет сохранено и автоматически выбрано в следующий раз."
+"Выбранное состояние переключателя будет сохранено и автоматически выбрано в "
+"следующий раз."
 
 #. (itstool) path: item/title
 #: yelp/C/newDownload.page:64
