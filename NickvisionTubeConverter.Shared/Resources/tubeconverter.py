@@ -15,10 +15,10 @@ class TCEmbedSubtitlesPP(FFmpegEmbedSubtitlePP):
     def run(self, info):
         try:
             raise Exception('TEST')
-        # except Exception as e:
-        # self.to_screen(e)
-        # self.to_screen('WARNING: Failed to embed subtitles')
-        # return [], info
+        except Exception as e:
+          self.to_screen(e)
+          self.to_screen('WARNING: Failed to embed subtitles')
+          return [], info
 class TCEmbedThumbnailPP(EmbedThumbnailPP):
     def run(self, info):
         try:
