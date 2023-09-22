@@ -14,7 +14,8 @@ class TCMetadataPP(FFmpegMetadataPP):
 class TCEmbedSubtitlesPP(FFmpegEmbedSubtitlePP):
     def run(self, info):
         try:
-            raise Exception('TEST')
+            success = super().run(info)
+            return success
         except Exception as e:
           self.to_screen(e)
           self.to_screen('WARNING: Failed to embed subtitles')
