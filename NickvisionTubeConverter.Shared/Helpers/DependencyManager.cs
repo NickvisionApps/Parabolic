@@ -79,7 +79,7 @@ internal static class DependencyManager
                     StartInfo = new ProcessStartInfo
                     {
                         FileName = "python3",
-                        Arguments = "-c \"import sysconfig; print('/'.join(sysconfig.get_config_vars('LIBDIR', 'INSTSONAME')))\"",
+                        Arguments = "-c \"import sysconfig; import os; print(('/snap/tube-converter/current/gnome-platform' if os.environ.get('SNAP') else '') + ('/'.join(sysconfig.get_config_vars('LIBDIR', 'INSTSONAME'))))\"",
                         UseShellExecute = false,
                         RedirectStandardOutput = true
                     }
