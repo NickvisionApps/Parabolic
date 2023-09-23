@@ -9,13 +9,6 @@ architectures:
   - build-on: arm64
   - build-on: armhf
 
-layout:
-  $SNAP/usr/bin/ffmpeg:
-    symlink: $SNAP/ffmpeg-platform/usr/bin/ffmpeg
-  $SNAP/usr/bin/ffplay:
-    symlink: $SNAP/ffmpeg-platform/usr/bin/ffplay
-  $SNAP/usr/bin/ffprobe:
-    symlink: $SNAP/ffmpeg-platform/usr/bin/ffprobe
 parts:
   yt-dlp:
     # Missing optional dependencies atomicparsley, mpv, phantomjs and rtmpdump
@@ -28,6 +21,9 @@ parts:
       - PYTHONPATH: ""
     python-packages:
       - psutil==5.9.5
+    override-pull: |
+      craftctl default
+      patch -p1 < $CRAFT_PROJECT_DIR/snap/arte-tv.patch
     prime:
       # WORKAROUND: Skip venv from python plugin
       - -usr/bin/activate
@@ -56,8 +52,7 @@ parts:
   tube-converter:
     after: [ yt-dlp ]
     plugin: nil
-    source: https://github.com/NickvisionApps/Parabolic.git
-    source-depth: 1
+    source: .
     build-packages:
       - brotli
       - blueprint-compiler
@@ -76,7 +71,6 @@ parts:
       dotnet tool restore
       dotnet cake --target=Publish --prefix=/snap/tube-converter/current/usr --ui=gnome --self-contained
       dotnet cake --target=Install --destdir=$CRAFT_PART_INSTALL
-      sed -i "2 i export TC_PYTHON_SO=\$SNAP/gnome-platform/usr/lib/$CRAFT_ARCH_TRIPLET/libpython3.10.so.1.0" $CRAFT_PART_INSTALL/snap/tube-converter/current/usr/bin/org.nickvision.tubeconverter
       mkdir -p $CRAFT_PART_INSTALL/meta/gui
       cp -r $CRAFT_PART_INSTALL/snap/tube-converter/current/usr/share/icons $CRAFT_PART_INSTALL/meta/gui/
       for i in `find $CRAFT_PART_INSTALL/meta/gui/icons -name "*.svg" -o -name "*.png"`; do
@@ -119,7 +113,6 @@ apps:
       - gnome
     common-id: org.nickvision.tubeconverter
     environment:
-      TC_PYTHON_SO: $SNAP/gnome-platform/usr/lib/$CRAFT_ARCH_TRIPLET/libpython3.10.so.1.0
       PYTHONPATH: $SNAP/usr/lib/python3.10/dist-packages:$PYTHONPATH
       PATH: $SNAP/ffmpeg-platform/usr/bin:$PATH
       LD_LIBRARY_PATH: $SNAP/ffmpeg-platform/usr/lib/$CRAFT_ARCH_TRIPLET:$LD_LIBRARY_PATH

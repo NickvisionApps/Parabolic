@@ -13,10 +13,6 @@ jobs:
   snap:
     name: "GNOME on Snap"
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        arch: [x86_64]
-      fail-fast: false
     steps:
       - name: Checkout Git repository
         uses: actions/checkout@v3
