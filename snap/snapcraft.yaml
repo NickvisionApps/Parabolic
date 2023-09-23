@@ -9,13 +9,6 @@ architectures:
   - build-on: arm64
   - build-on: armhf
 
-layout:
-  $SNAP/usr/bin/ffmpeg:
-    symlink: $SNAP/ffmpeg-platform/usr/bin/ffmpeg
-  $SNAP/usr/bin/ffplay:
-    symlink: $SNAP/ffmpeg-platform/usr/bin/ffplay
-  $SNAP/usr/bin/ffprobe:
-    symlink: $SNAP/ffmpeg-platform/usr/bin/ffprobe
 parts:
   yt-dlp:
     # Missing optional dependencies atomicparsley, mpv, phantomjs and rtmpdump
