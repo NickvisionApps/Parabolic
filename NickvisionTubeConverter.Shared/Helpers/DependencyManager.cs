@@ -18,7 +18,8 @@ internal static class DependencyManager
             var prefixes = new List<string>() {
                 Directory.GetParent(Directory.GetParent(Path.GetFullPath(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)!))!.FullName)!.FullName,
                 Directory.GetParent(Path.GetFullPath(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)!))!.FullName,
-                "/usr"
+                "/usr",
+                "snap/tube-converter/current/usr"
             };
             foreach (var prefix in prefixes)
             {
