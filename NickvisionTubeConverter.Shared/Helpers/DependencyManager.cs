@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Reflection;
+using Nickvision.Aura;
 namespace NickvisionTubeConverter.Shared.Helpers;
 
 internal static class DependencyManager
@@ -14,22 +15,16 @@ internal static class DependencyManager
     public static string PythonPath
     {
         get
-        {
-            var prefixes = new List<string>() {
-                Directory.GetParent(Directory.GetParent(Path.GetFullPath(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)!))!.FullName)!.FullName,
-                Directory.GetParent(Path.GetFullPath(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)!))!.FullName,
-                "/usr",
-                "snap/tube-converter/current/usr"
-            };
-            foreach (var prefix in prefixes)
+        { 
+            foreach (var dir in SystemDirectories.Path)
             {
-                var path = $"{prefix}/bin/python3";
+                var path = $"{dir}{Path.DirectorySeparatorChar}python3";
                 if (File.Exists(path))
                 {
                     return path;
                 }
             }
-            return "python3";
+            throw new Exception("python3 not in path");
         }
     }
 
@@ -39,23 +34,16 @@ internal static class DependencyManager
     public static string FfmpegPath
     {
         get
-        {
-
-            var prefixes = new List<string>() {
-                Directory.GetParent(Directory.GetParent(Path.GetFullPath(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)!))!.FullName)!.FullName,
-                Directory.GetParent(Path.GetFullPath(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)!))!.FullName,
-                "/usr",
-                "snap/tube-converter/current/usr"
-            };
-            foreach (var prefix in prefixes)
+        { 
+            foreach (var dir in SystemDirectories.Path)
             {
-                var path = $"{prefix}/bin/ffmpeg";
+                var path = $"{dir}{Path.DirectorySeparatorChar}ffmpeg";
                 if (File.Exists(path))
                 {
                     return path;
                 }
             }
-            return "ffmpeg";
+            throw new Exception("ffmpeg not found in path");
         }
     }
 
@@ -66,20 +54,15 @@ internal static class DependencyManager
     {
         get
         {
-            var prefixes = new List<string>() {
-                Directory.GetParent(Directory.GetParent(Path.GetFullPath(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)!))!.FullName)!.FullName,
-                Directory.GetParent(Path.GetFullPath(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)!))!.FullName,
-                "/usr"
-            };
-            foreach (var prefix in prefixes)
+            foreach (var dir in SystemDirectories.Path)
             {
-                var path = $"{prefix}/bin/aria2c";
+                var path = $"{dir}{Path.DirectorySeparatorChar}aria2c";
                 if (File.Exists(path))
                 {
                     return path;
                 }
             }
-            return "aria2c";
+            throw new Exception("aria2c not found in path");
         }
     }
 
@@ -91,12 +74,6 @@ internal static class DependencyManager
     {
         try
         {
-            if (File.Exists(Environment.GetEnvironmentVariable("TC_PYTHON_SO")))
-            {
-                Runtime.PythonDLL = Environment.GetEnvironmentVariable("TC_PYTHON_SO");
-            }
-            else
-            {
                 var process = new Process
                 {
                     StartInfo = new ProcessStartInfo
@@ -110,7 +87,6 @@ internal static class DependencyManager
                 process.Start();
                 Runtime.PythonDLL = process.StandardOutput.ReadToEnd().Trim();
                 process.WaitForExit();
-            }
             // Install yt-dlp plugin
             var pluginPath = $"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}{Path.DirectorySeparatorChar}yt-dlp{Path.DirectorySeparatorChar}plugins{Path.DirectorySeparatorChar}tubeconverter{Path.DirectorySeparatorChar}yt_dlp_plugins{Path.DirectorySeparatorChar}postprocessor{Path.DirectorySeparatorChar}tubeconverter.py";
             Directory.CreateDirectory(pluginPath.Substring(0, pluginPath.LastIndexOf(Path.DirectorySeparatorChar)));
