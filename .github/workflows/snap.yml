@@ -1,6 +1,6 @@
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "main", "aura" ]
   pull_request:
     branches: [ "main" ]
     types: [ "review_requested", "ready_for_review" ]
@@ -13,10 +13,6 @@ jobs:
   snap:
     name: "GNOME on Snap"
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        arch: [x86_64]
-      fail-fast: false
     steps:
       - name: Checkout Git repository
         uses: actions/checkout@v3
