@@ -69,7 +69,6 @@ parts:
       dotnet tool restore
       dotnet cake --target=Publish --prefix=/snap/tube-converter/current/usr --ui=gnome --self-contained
       dotnet cake --target=Install --destdir=$CRAFT_PART_INSTALL
-      sed -i "2 i export TC_PYTHON_SO=\$SNAP/gnome-platform/usr/lib/$CRAFT_ARCH_TRIPLET/libpython3.10.so.1.0" $CRAFT_PART_INSTALL/snap/tube-converter/current/usr/bin/org.nickvision.tubeconverter
       mkdir -p $CRAFT_PART_INSTALL/meta/gui
       cp -r $CRAFT_PART_INSTALL/snap/tube-converter/current/usr/share/icons $CRAFT_PART_INSTALL/meta/gui/
       for i in `find $CRAFT_PART_INSTALL/meta/gui/icons -name "*.svg" -o -name "*.png"`; do
