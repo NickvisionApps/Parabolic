@@ -21,6 +21,9 @@ parts:
       - PYTHONPATH: ""
     python-packages:
       - psutil==5.9.5
+    override-pull: |
+      craftctl default
+      patch -p1 < $CRAFT_PROJECT_DIR/snap/arte-tv.patch
     prime:
       # WORKAROUND: Skip venv from python plugin
       - -usr/bin/activate
