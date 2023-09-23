@@ -49,8 +49,7 @@ parts:
   tube-converter:
     after: [ yt-dlp ]
     plugin: nil
-    source: https://github.com/NickvisionApps/Parabolic.git
-    source-depth: 1
+    source: .
     build-packages:
       - brotli
       - blueprint-compiler
