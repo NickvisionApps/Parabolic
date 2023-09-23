@@ -111,7 +111,6 @@ apps:
       - gnome
     common-id: org.nickvision.tubeconverter
     environment:
-      TC_PYTHON_SO: $SNAP/gnome-platform/usr/lib/$CRAFT_ARCH_TRIPLET/libpython3.10.so.1.0
       PYTHONPATH: $SNAP/usr/lib/python3.10/dist-packages:$PYTHONPATH
       PATH: $SNAP/ffmpeg-platform/usr/bin:$PATH
       LD_LIBRARY_PATH: $SNAP/ffmpeg-platform/usr/lib/$CRAFT_ARCH_TRIPLET:$LD_LIBRARY_PATH
