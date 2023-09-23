@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-from yt_dlp.postprocessor.ffmpeg import FFmpegMetadataPP
+from yt_dlp.postprocessor.ffmpeg import FFmpegMetadataPP, FFmpegEmbedSubtitlePP
 from yt_dlp.postprocessor.embedthumbnail import EmbedThumbnailPP
 
 class TCMetadataPP(FFmpegMetadataPP):
@@ -11,7 +11,15 @@ class TCMetadataPP(FFmpegMetadataPP):
             self.to_screen(e)
             self.to_screen('WARNING: Failed to embed metadata')
             return [], info
-
+class TCEmbedSubtitlesPP(FFmpegEmbedSubtitlePP):
+    def run(self, info):
+        try:
+            success = super().run(info)
+            return success
+        except Exception as e:
+          self.to_screen(e)
+          self.to_screen('WARNING: Failed to embed subtitles')
+          return [], info
 class TCEmbedThumbnailPP(EmbedThumbnailPP):
     def run(self, info):
         try:
