@@ -74,19 +74,19 @@ internal static class DependencyManager
     {
         try
         {
-                var process = new Process
+            var process = new Process
+            {
+                StartInfo = new ProcessStartInfo
                 {
-                    StartInfo = new ProcessStartInfo
-                    {
-                        FileName = "python3",
-                        Arguments = "-c \"import sysconfig; import os; print(('/snap/tube-converter/current/gnome-platform' if os.environ.get('SNAP') else '') + ('/'.join(sysconfig.get_config_vars('LIBDIR', 'INSTSONAME'))))\"",
-                        UseShellExecute = false,
-                        RedirectStandardOutput = true
-                    }
-                };
-                process.Start();
-                Runtime.PythonDLL = process.StandardOutput.ReadToEnd().Trim();
-                process.WaitForExit();
+                    FileName = "python3",
+                    Arguments = "-c \"import sysconfig; import os; print(('/snap/tube-converter/current/gnome-platform' if os.environ.get('SNAP') else '') + ('/'.join(sysconfig.get_config_vars('LIBDIR', 'INSTSONAME'))))\"",
+                    UseShellExecute = false,
+                    RedirectStandardOutput = true
+                }
+            };
+            process.Start();
+            Runtime.PythonDLL = process.StandardOutput.ReadToEnd().Trim();
+            process.WaitForExit();
             // Install yt-dlp plugin
             var pluginPath = $"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}{Path.DirectorySeparatorChar}yt-dlp{Path.DirectorySeparatorChar}plugins{Path.DirectorySeparatorChar}tubeconverter{Path.DirectorySeparatorChar}yt_dlp_plugins{Path.DirectorySeparatorChar}postprocessor{Path.DirectorySeparatorChar}tubeconverter.py";
             Directory.CreateDirectory(pluginPath.Substring(0, pluginPath.LastIndexOf(Path.DirectorySeparatorChar)));
