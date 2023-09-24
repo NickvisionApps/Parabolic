@@ -257,11 +257,15 @@ public class PreferencesViewController
     /// <returns>True if valid, else false</returns>
     public bool ValidateSubtitleLangs(string s)
     {
-        if(string.IsNullOrEmpty(s))
+        if (string.IsNullOrEmpty(s))
         {
             return false;
         }
-        if(s[s.Length - 1] == ',')
+        if (s == "all" || s == _p("subtitle", "all"))
+        {
+            return true;
+        }
+        if (s[s.Length - 1] == ',')
         {
             s = s.Remove(s.Length - 1);
         }
