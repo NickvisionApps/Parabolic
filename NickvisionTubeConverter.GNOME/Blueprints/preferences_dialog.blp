@@ -235,7 +235,7 @@ Adw.PreferencesWindow _root {
         Gtk.Button _sponsorBlockInfoButton {
           valign: center;
           icon-name: "dialog-question-symbolic";
-          tooltip-text: _("SponsorBlock Information");
+          tooltip-text: _("SponsorBlock Information (opens in a web browser)");
         
           styles ["flat"]
         }
@@ -444,6 +444,21 @@ Adw.PreferencesWindow _root {
 
         [suffix]
         Gtk.Switch _embedChaptersSwitch {
+          valign: center;
+        }
+      }
+
+      Adw.ActionRow {
+        title: _("Embed Subtitle");
+        activatable-widget: _embedSubtitleSwitch;
+
+        [prefix]
+        Gtk.Image {
+          icon-name: "subtitles-symbolic";
+        }
+
+        [suffix]
+        Gtk.Switch _embedSubtitleSwitch {
           valign: center;
         }
       }
