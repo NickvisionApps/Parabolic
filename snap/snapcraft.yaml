@@ -14,7 +14,7 @@ parts:
     # Missing optional dependencies atomicparsley, mpv, phantomjs and rtmpdump
     plugin: python
     source: https://github.com/yt-dlp/yt-dlp.git
-    source-tag: '2023.07.06'
+    source-tag: '2023.09.24'
     build-environment:
       # WORKAROUND: The python plugin is broken with gnome extension
       - PATH: ${CRAFT_PART_INSTALL}/bin:${PATH}
