@@ -53,7 +53,7 @@ public class MainWindowController : IDisposable
     /// <summary>
     /// The DownloadOptions for a download
     /// </summary>
-    public DownloadOptions DownloadOptions => new DownloadOptions(Configuration.Current.OverwriteExistingFiles, Configuration.Current.UseAria, Configuration.Current.AriaMaxConnectionsPerServer, Configuration.Current.AriaMinSplitSize, Configuration.Current.YouTubeSponsorBlock, Configuration.Current.SubtitleLangs, Configuration.Current.ProxyUrl, Configuration.Current.CookiesPath, Configuration.Current.EmbedMetadata, Configuration.Current.RemoveSourceData, Configuration.Current.EmbedChapters);
+    public DownloadOptions DownloadOptions => new DownloadOptions(Configuration.Current.OverwriteExistingFiles, Configuration.Current.UseAria, Configuration.Current.AriaMaxConnectionsPerServer, Configuration.Current.AriaMinSplitSize, Configuration.Current.YouTubeSponsorBlock, Configuration.Current.SubtitleLangs, Configuration.Current.ProxyUrl, Configuration.Current.CookiesPath, Configuration.Current.EmbedMetadata, Configuration.Current.RemoveSourceData, Configuration.Current.EmbedChapters, Configuration.Current.EmbedSubtitle);
     /// <summary>
     /// Gets the DownloadHistory object
     /// </summary>

@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using static NickvisionTubeConverter.Shared.Helpers.Gettext;
 
 namespace NickvisionTubeConverter.Shared.Controllers;
 
@@ -237,6 +238,16 @@ public class PreferencesViewController
         get => Configuration.Current.EmbedChapters;
 
         set => Configuration.Current.EmbedChapters = value;
+    }
+
+    /// <summary>
+    /// Whether or not to embed subtitle in a download
+    /// </summary>
+    public bool EmbedSubtitle
+    {
+        get => Configuration.Current.EmbedSubtitle;
+
+        set => Configuration.Current.EmbedSubtitle = value;
     }
 
     /// <summary>

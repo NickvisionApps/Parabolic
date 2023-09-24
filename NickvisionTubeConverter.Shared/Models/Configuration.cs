@@ -99,6 +99,10 @@ public class Configuration : ConfigurationBase
     /// </summary>
     public bool EmbedChapters { get; set; }
     /// <summary>
+    /// Whether or not to embed subtitle in a download
+    /// </summary>
+    public bool EmbedSubtitle { get; set; }
+    /// <summary>
     /// The previously used download save folder
     /// </summary>
     public string PreviousSaveFolder { get; set; }
@@ -144,6 +148,7 @@ public class Configuration : ConfigurationBase
         CropAudioThumbnails = false;
         RemoveSourceData = false;
         EmbedChapters = false;
+        EmbedSubtitle = true;
         PreviousSaveFolder = "";
         PreviousMediaFileType = MediaFileType.MP4;
         PreviousVideoResolution = "";
