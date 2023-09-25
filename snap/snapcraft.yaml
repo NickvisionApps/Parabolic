@@ -14,16 +14,13 @@ parts:
     # Missing optional dependencies atomicparsley, mpv, phantomjs and rtmpdump
     plugin: python
     source: https://github.com/yt-dlp/yt-dlp.git
-    source-tag: '2023.07.06'
+    source-tag: '2023.09.24'
     build-environment:
       # WORKAROUND: The python plugin is broken with gnome extension
       - PATH: ${CRAFT_PART_INSTALL}/bin:${PATH}
       - PYTHONPATH: ""
     python-packages:
       - psutil==5.9.5
-    override-pull: |
-      craftctl default
-      patch -p1 < $CRAFT_PROJECT_DIR/snap/arte-tv.patch
     prime:
       # WORKAROUND: Skip venv from python plugin
       - -usr/bin/activate
