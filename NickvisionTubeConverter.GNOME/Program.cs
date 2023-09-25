@@ -38,7 +38,7 @@ public partial class Program
             @"* Added an option to disable embedding subtitles in a file and instead download them in a separate file
               * Added the ability to specify ""all"" in the subtitle languages list to download all available languages
               * Fixed an issue where empty subtitles were sometimes embedded
-              * Fixed an issue where arte.tv links were not validating
+              * Fixed an issue where arte.tv links were not validating thanks to a yt-dlp update
               * If embedding subtitles fails, Parabolic will automatically save them to separate files instead
               * Updated translations (Thanks everyone on Weblate!)";
         _application.OnActivate += OnActivate;
