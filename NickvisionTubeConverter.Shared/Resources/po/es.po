@@ -7,11 +7,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-11 01:21+0300\n"
+"POT-Creation-Date: 2023-09-25 15:30+0300\n"
 "PO-Revision-Date: 2023-09-12 10:22+0000\n"
 "Last-Translator: gallegonovato <fran-carro@hotmail.es>\n"
-"Language-Team: Spanish <https://hosted.weblate.org/projects/"
-"nickvision-tube-converter/app/es/>\n"
+"Language-Team: Spanish <https://hosted.weblate.org/projects/nickvision-tube-"
+"converter/app/es/>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -43,8 +43,8 @@ msgstr "{0:f1} B/s"
 msgid "{0:f1} GiB/s"
 msgstr "{0:f1} GiB/s"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:237
 #: ../../../Helpers/SpeedFormatter.cs:28
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:237
 #, csharp-format
 msgid "{0:f1} KiB/s"
 msgstr "{0:f1} KiB/s"
@@ -71,7 +71,7 @@ msgstr[1] "{0} de {1} elementos"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:101
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:37
-#: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:17
+#: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:16
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:82
 msgid "Add Download"
 msgstr "Añadir descarga"
@@ -134,11 +134,11 @@ msgstr "Descarga finalizada con error"
 msgid "Download log was copied to clipboard."
 msgstr "El registro de descargas se ha copiado al portapapeles."
 
-#: ../../../Models/Download.cs:388
+#: ../../../Models/Download.cs:395
 msgid "Download using aria2 has started"
 msgstr "La descarga usando aria2 ha comenzado"
 
-#: ../../../Models/Download.cs:399
+#: ../../../Models/Download.cs:406
 msgid "Download using ffmpeg has started"
 msgstr "La descarga usando ffmpeg ha comenzado"
 
@@ -200,7 +200,7 @@ msgid "GitHub Repo"
 msgstr "Repo de GitHub"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:136
-#: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:41
+#: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:40
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:5
 msgid "Keyring"
 msgstr "Llavero"
@@ -249,9 +249,9 @@ msgstr "Nombre (vacío)"
 msgid "Nicholas Logozzo"
 msgstr "Nicholas Logozzo"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:276
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:251
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:314
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:276
 msgid "No"
 msgstr "No"
 
@@ -317,7 +317,7 @@ msgstr "Guardar carpeta"
 msgid "Save Folder (Invalid)"
 msgstr "Guardar carpeta (no válida)"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/PreferencesDialog.cs:203
+#: ../../../../NickvisionTubeConverter.GNOME/Views/PreferencesDialog.cs:206
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:304
 msgid "Select Cookies File"
 msgstr "Selecciona archivo de cookies"
@@ -352,12 +352,12 @@ msgstr "Hora de inicio (no válida)"
 msgid "Stopped"
 msgstr "Detenida"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/PreferencesDialog.cs:179
+#: ../../../../NickvisionTubeConverter.GNOME/Views/PreferencesDialog.cs:182
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:245
 msgid "Subtitle Languages (Comma-Separated)"
 msgstr "Idiomas de los subtítulos (separados por comas)"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/PreferencesDialog.cs:188
+#: ../../../../NickvisionTubeConverter.GNOME/Views/PreferencesDialog.cs:191
 msgid "Subtitle Languages (Invalid)"
 msgstr "Idiomas de los subtítulos (no válido)"
 
@@ -453,11 +453,17 @@ msgstr "Esperando..."
 msgid "Worst"
 msgstr "Peor"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:279
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:254
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:317
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:279
 msgid "Yes"
 msgstr "Sí"
+
+#: ../../../Controllers/PreferencesViewController.cs:264
+#: ../../../Models/Download.cs:301
+msgctxt "subtitle"
+msgid "all"
+msgstr ""
 
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:24
 #: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:25
@@ -500,7 +506,7 @@ msgid "Number Titles"
 msgstr "Número de los títulos"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:208
-#: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:14
+#: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:13
 msgid "Download"
 msgstr "Descargar"
 
@@ -584,7 +590,7 @@ msgid "Clear History"
 msgstr "Borrar historial"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/history_dialog.blp:31
-#: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:46
+#: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:45
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:6
 msgid "History"
 msgstr "Historial"
@@ -675,7 +681,7 @@ msgid "Unlock"
 msgstr "Desbloquear"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:11
-#: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:51
+#: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:50
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:9
 msgid "Preferences"
 msgstr "Preferencias"
@@ -807,7 +813,8 @@ msgid "Use SponsorBlock for YouTube"
 msgstr "Usar SponsorBlock para YouTube"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:238
-msgid "SponsorBlock Information"
+#, fuzzy
+msgid "SponsorBlock Information (opens in a web browser)"
 msgstr "Información sobre SponsorBlock"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:257
@@ -815,18 +822,22 @@ msgid "Language Code Information"
 msgstr "Información del código del idioma"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:272
+#, fuzzy
 msgid ""
 "Different sites can use different language code formats for the same "
 "language. You may encounter one of the following three types: two-letter, "
 "two-letter with region, or three-letter. For example, \"en\", \"en-US\" and "
 "\"eng\" are all used for English.\n"
+"Please specify all valid codes for your languages for the best results. Auto-"
+"generated subtitles will also be downloaded if available.\n"
 "\n"
-"Please specify all valid codes for your languages for the best results."
+"You can specify \"all\" instead to download all subtitles, but without auto-"
+"generated ones."
 msgstr ""
 "Diferentes sitios pueden utilizar diferentes formatos de código para el "
 "mismo idioma. Puedes encontrar uno de los tres tipos siguientes: dos letras, "
-"dos letras con región o tres letras. Por ejemplo, \"en\", \"en-US\" y \"eng\""
-" se utilizan para inglés.\n"
+"dos letras con región o tres letras. Por ejemplo, \"en\", \"en-US\" y "
+"\"eng\" se utilizan para inglés.\n"
 "\n"
 "Especifica todos los códigos válidos para tus idiomas para obtener los "
 "mejores resultados."
@@ -899,13 +910,14 @@ msgstr ""
 "recortar miniaturas para las descargas de audio"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:420
-msgid "Remove data about media source"
-msgstr "Eliminar los datos sobre la fuente multimedia"
+msgid "Remove Source Data"
+msgstr ""
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:421
+#, fuzzy
 msgid ""
-"Clear metadata fields containing URL and another data that can lead to the "
-"media source"
+"Clear metadata fields containing the URL and other identifying information "
+"of the media source"
 msgstr ""
 "Borrar los campos de los metadatos que contengan una dirección URL y otros "
 "datos que puedan conducir a la fuente multimedia"
@@ -914,36 +926,47 @@ msgstr ""
 msgid "Embed Chapters"
 msgstr "Incrustar capítulos"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:22
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:452
+#, fuzzy
+msgid "Embed Subtitle"
+msgstr "Subtítulo"
+
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:453
+msgid ""
+"If disabled or if embedding fails, downloaded subtitle will be saved to a "
+"separate file instead"
+msgstr ""
+
+#: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:21
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:129
 msgid "Stop All Downloads"
 msgstr "Detener toda las descargas"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:27
+#: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:26
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:209
 msgid "Retry Failed Downloads"
 msgstr "Reintentar descargas fallidas"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:32
+#: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:31
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:169
 msgid "Clear Queued Downloads"
 msgstr "Borrar descargas en cola"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:38
+#: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:37
 msgid "Application"
 msgstr "Aplicación"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:56
+#: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:55
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:10
 msgid "Keyboard Shortcuts"
 msgstr "Atajos del teclado"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:61
+#: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:60
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:11
 msgid "Help"
 msgstr "Ayuda"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:66
+#: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:65
 msgid "Quit"
 msgstr "Salir"
 
@@ -1015,8 +1038,8 @@ msgstr "— Ejecutar múltiples descargas a la vez"
 msgid "— Supports downloading metadata and video subtitles"
 msgstr "— Admite la descarga de los metadatos y subtítulos del video"
 
-#~ msgid "Subtitle"
-#~ msgstr "Subtítulo"
+#~ msgid "Remove data about media source"
+#~ msgstr "Eliminar los datos sobre la fuente multimedia"
 
 #~ msgctxt "Subtitle"
 #~ msgid "None"

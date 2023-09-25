@@ -35,11 +35,11 @@ public partial class Program
         _mainWindow = null;
         _mainWindowController = new MainWindowController();
         _mainWindowController.AppInfo.Changelog =
-            @"* Added support for two letter language with region codes
-              * Added a preference for removing media source data from embedded metadata (previously it was automatically removed)
-              * Parabolic will now use the system's credential manager (i.e. DBus Secret Service) for securing the Keyring. Please read the Keyring page in Help for information on migrating the old password-secured Keyring to the new secret-secured Keyring
-              * Parabolic will no longer ask for a subtitle format but instead use the format supported by the file type
-              * Fixed an issue where translated metadata was embedded instead of original media metadata
+            @"* Added an option to disable embedding subtitles in a file and instead download them in a separate file
+              * Added the ability to specify ""all"" in the subtitle languages list to download all available languages
+              * Fixed an issue where empty subtitles were sometimes embedded
+              * Fixed an issue where arte.tv links were not validating thanks to a yt-dlp update
+              * If embedding subtitles fails, Parabolic will automatically save them to separate files instead
               * Updated translations (Thanks everyone on Weblate!)";
         _application.OnActivate += OnActivate;
         if (File.Exists(Path.GetFullPath(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)) + "/org.nickvision.tubeconverter.gresource"))

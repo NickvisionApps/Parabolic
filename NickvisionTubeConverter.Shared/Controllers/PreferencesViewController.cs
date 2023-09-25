@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using static NickvisionTubeConverter.Shared.Helpers.Gettext;
 
 namespace NickvisionTubeConverter.Shared.Controllers;
 
@@ -240,17 +241,31 @@ public class PreferencesViewController
     }
 
     /// <summary>
+    /// Whether or not to embed subtitle in a download
+    /// </summary>
+    public bool EmbedSubtitle
+    {
+        get => Configuration.Current.EmbedSubtitle;
+
+        set => Configuration.Current.EmbedSubtitle = value;
+    }
+
+    /// <summary>
     /// Validates a subtitles langs string
     /// </summary>
     /// <param name="s">The comma-separated list of lang codes</param>
     /// <returns>True if valid, else false</returns>
     public bool ValidateSubtitleLangs(string s)
     {
-        if(string.IsNullOrEmpty(s))
+        if (string.IsNullOrEmpty(s))
         {
             return false;
         }
-        if(s[s.Length - 1] == ',')
+        if (s == "all" || s == _p("subtitle", "all"))
+        {
+            return true;
+        }
+        if (s[s.Length - 1] == ',')
         {
             s = s.Remove(s.Length - 1);
         }

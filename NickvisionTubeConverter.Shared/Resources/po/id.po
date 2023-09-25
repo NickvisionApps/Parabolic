@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-11 01:21+0300\n"
+"POT-Creation-Date: 2023-09-25 15:30+0300\n"
 "PO-Revision-Date: 2023-06-12 02:55+0000\n"
 "Last-Translator: Krindog7337 <igstkrisna2006@gmail.com>\n"
 "Language-Team: Indonesian <https://hosted.weblate.org/projects/nickvision-"
@@ -43,8 +43,8 @@ msgstr "{0:f1} B/s"
 msgid "{0:f1} GiB/s"
 msgstr "{0:f1} GiB/dtk"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:237
 #: ../../../Helpers/SpeedFormatter.cs:28
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:237
 #, csharp-format
 msgid "{0:f1} KiB/s"
 msgstr "{0:f1} KiB/dtk"
@@ -69,7 +69,7 @@ msgstr[0] "{0} dari {1} item"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:101
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:37
-#: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:17
+#: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:16
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:82
 msgid "Add Download"
 msgstr "Tambah Unduhan"
@@ -136,11 +136,11 @@ msgstr "Unduh Selesai Dengan Error"
 msgid "Download log was copied to clipboard."
 msgstr "Log unduhan disalin ke papan klip."
 
-#: ../../../Models/Download.cs:388
+#: ../../../Models/Download.cs:395
 msgid "Download using aria2 has started"
 msgstr "Pengunduhan menggunakan aria2 telah dimulai"
 
-#: ../../../Models/Download.cs:399
+#: ../../../Models/Download.cs:406
 #, fuzzy
 msgid "Download using ffmpeg has started"
 msgstr "Pengunduhan menggunakan aria2 telah dimulai"
@@ -206,7 +206,7 @@ msgid "GitHub Repo"
 msgstr "Repo GitHub"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:136
-#: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:41
+#: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:40
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:5
 msgid "Keyring"
 msgstr "Keyring"
@@ -256,9 +256,9 @@ msgstr "Nama (Kosong)"
 msgid "Nicholas Logozzo"
 msgstr ""
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:276
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:251
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:314
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:276
 msgid "No"
 msgstr "Tidak"
 
@@ -326,7 +326,7 @@ msgstr "Folder Penyimpanan"
 msgid "Save Folder (Invalid)"
 msgstr "Folder Penyimpanan (tidak sah)"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/PreferencesDialog.cs:203
+#: ../../../../NickvisionTubeConverter.GNOME/Views/PreferencesDialog.cs:206
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:304
 msgid "Select Cookies File"
 msgstr "Pilih File Cookie"
@@ -364,12 +364,12 @@ msgstr "Folder Penyimpanan (tidak sah)"
 msgid "Stopped"
 msgstr "Dihentikan"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/PreferencesDialog.cs:179
+#: ../../../../NickvisionTubeConverter.GNOME/Views/PreferencesDialog.cs:182
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:245
 msgid "Subtitle Languages (Comma-Separated)"
 msgstr ""
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/PreferencesDialog.cs:188
+#: ../../../../NickvisionTubeConverter.GNOME/Views/PreferencesDialog.cs:191
 #, fuzzy
 msgid "Subtitle Languages (Invalid)"
 msgstr "Folder Penyimpanan (tidak sah)"
@@ -464,11 +464,17 @@ msgstr "Menunggu..."
 msgid "Worst"
 msgstr "Terburuk"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:279
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:254
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:317
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:279
 msgid "Yes"
 msgstr "Iya"
+
+#: ../../../Controllers/PreferencesViewController.cs:264
+#: ../../../Models/Download.cs:301
+msgctxt "subtitle"
+msgid "all"
+msgstr ""
 
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:24
 #: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:25
@@ -510,7 +516,7 @@ msgid "Number Titles"
 msgstr "Hitung Video"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:208
-#: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:14
+#: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:13
 msgid "Download"
 msgstr "Unduh"
 
@@ -592,7 +598,7 @@ msgid "Clear History"
 msgstr ""
 
 #: NickvisionTubeConverter.GNOME/Blueprints/history_dialog.blp:31
-#: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:46
+#: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:45
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:6
 msgid "History"
 msgstr ""
@@ -686,7 +692,7 @@ msgid "Unlock"
 msgstr "Buka"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:11
-#: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:51
+#: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:50
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:9
 msgid "Preferences"
 msgstr "Preferensi"
@@ -818,7 +824,7 @@ msgstr ""
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:238
 #, fuzzy
-msgid "SponsorBlock Information"
+msgid "SponsorBlock Information (opens in a web browser)"
 msgstr "File Kuki"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:257
@@ -831,8 +837,11 @@ msgid ""
 "language. You may encounter one of the following three types: two-letter, "
 "two-letter with region, or three-letter. For example, \"en\", \"en-US\" and "
 "\"eng\" are all used for English.\n"
+"Please specify all valid codes for your languages for the best results. Auto-"
+"generated subtitles will also be downloaded if available.\n"
 "\n"
-"Please specify all valid codes for your languages for the best results."
+"You can specify \"all\" instead to download all subtitles, but without auto-"
+"generated ones."
 msgstr ""
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:283
@@ -894,52 +903,63 @@ msgid ""
 msgstr ""
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:420
-msgid "Remove data about media source"
+msgid "Remove Source Data"
 msgstr ""
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:421
 msgid ""
-"Clear metadata fields containing URL and another data that can lead to the "
-"media source"
+"Clear metadata fields containing the URL and other identifying information "
+"of the media source"
 msgstr ""
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:437
 msgid "Embed Chapters"
 msgstr ""
 
-#: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:22
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:452
+#, fuzzy
+msgid "Embed Subtitle"
+msgstr "Subtitel"
+
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:453
+msgid ""
+"If disabled or if embedding fails, downloaded subtitle will be saved to a "
+"separate file instead"
+msgstr ""
+
+#: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:21
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:129
 #, fuzzy
 msgid "Stop All Downloads"
 msgstr "Hentikan Unduhan"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:27
+#: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:26
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:209
 #, fuzzy
 msgid "Retry Failed Downloads"
 msgstr "Ulangi Unduhan"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:32
+#: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:31
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:169
 #, fuzzy
 msgid "Clear Queued Downloads"
 msgstr "Tutup dan Hentikan Unduhan?"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:38
+#: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:37
 msgid "Application"
 msgstr "Aplikasi"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:56
+#: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:55
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:10
 msgid "Keyboard Shortcuts"
 msgstr "Pintasan Keyboard"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:61
+#: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:60
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:11
 msgid "Help"
 msgstr ""
 
-#: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:66
+#: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:65
 msgid "Quit"
 msgstr "Keluar"
 
@@ -1008,9 +1028,6 @@ msgstr ""
 #: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.metainfo.xml.in:13
 msgid "— Supports downloading metadata and video subtitles"
 msgstr ""
-
-#~ msgid "Subtitle"
-#~ msgstr "Subtitel"
 
 #~ msgctxt "Subtitle"
 #~ msgid "None"

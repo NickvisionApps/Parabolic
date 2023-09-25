@@ -46,6 +46,7 @@ public partial class PreferencesDialog : Adw.PreferencesWindow
     [Gtk.Connect] private readonly Gtk.Switch _removeSourceDataSwitch;
     [Gtk.Connect] private readonly Gtk.Switch _cropAudioThumbnailSwitch;
     [Gtk.Connect] private readonly Gtk.Switch _embedChaptersSwitch;
+    [Gtk.Connect] private readonly Gtk.Switch _embedSubtitleSwitch;
 
     private PreferencesDialog(Gtk.Builder builder, PreferencesViewController controller, Adw.Application application, Gtk.Window parent) : base(builder.GetPointer("_root"), false)
     {
@@ -103,6 +104,7 @@ public partial class PreferencesDialog : Adw.PreferencesWindow
         _removeSourceDataSwitch.SetActive(_controller.RemoveSourceData);
         _cropAudioThumbnailSwitch.SetActive(_controller.CropAudioThumbnails);
         _embedChaptersSwitch.SetActive(_controller.EmbedChapters);
+        _embedSubtitleSwitch.SetActive(_controller.EmbedSubtitle);
     }
 
     /// <summary>
@@ -139,6 +141,7 @@ public partial class PreferencesDialog : Adw.PreferencesWindow
         _controller.RemoveSourceData = _removeSourceDataSwitch.GetActive();
         _controller.CropAudioThumbnails = _cropAudioThumbnailSwitch.GetActive();
         _controller.EmbedChapters = _embedChaptersSwitch.GetActive();
+        _controller.EmbedSubtitle = _embedSubtitleSwitch.GetActive();
         _controller.SaveConfiguration();
         Destroy();
     }

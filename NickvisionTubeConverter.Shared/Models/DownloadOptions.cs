@@ -50,6 +50,10 @@ public class DownloadOptions
     /// Whether or not to embed chapters in the downloaded file
     /// </summary>
     public bool EmbedChapters { get; init; }
+    /// <summary>
+    /// Whether or not to embed subtitle in the downloaded file
+    /// </summary>
+    public bool EmbedSubtitle { get; init; }
     
     /// <summary>
     /// Constructs a DownloadOptions
@@ -65,7 +69,8 @@ public class DownloadOptions
     /// <param name="embedMetadata">Whether or not to embed media metadata in the downloaded file</param>
     /// <param name="removeSourceData">Whether or not to remove data about media source from metadata</param>
     /// <param name="embedChapters">Whether or not to embed chapters in the downloaded file</param>
-    public DownloadOptions(bool overwriteExistingFiles, bool useAria, int ariaMaxConnectionsPerServer, int ariaMinSplitSize, bool youTubeSponsorBlock, string subtitleLangs, string proxyUrl, string cookiesPath, bool embedMetadata, bool removeSourceData, bool embedChapters)
+    /// <param name="embedSubtitle">Whether or not to embed subtitle in the downloaded file</param>
+    public DownloadOptions(bool overwriteExistingFiles, bool useAria, int ariaMaxConnectionsPerServer, int ariaMinSplitSize, bool youTubeSponsorBlock, string subtitleLangs, string proxyUrl, string cookiesPath, bool embedMetadata, bool removeSourceData, bool embedChapters, bool embedSubtitle)
     {
         OverwriteExistingFiles = overwriteExistingFiles;
         UseAria = useAria;
@@ -78,5 +83,6 @@ public class DownloadOptions
         EmbedMetadata = embedMetadata;
         RemoveSourceData = removeSourceData;
         EmbedChapters = embedChapters;
+        EmbedSubtitle = embedSubtitle;
     }
 }

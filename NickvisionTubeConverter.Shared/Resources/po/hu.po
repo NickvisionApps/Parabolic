@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-11 01:21+0300\n"
+"POT-Creation-Date: 2023-09-25 15:30+0300\n"
 "PO-Revision-Date: 2023-08-10 15:58+0000\n"
 "Last-Translator: ViBE <vibe@protonmail.com>\n"
 "Language-Team: Hungarian <https://hosted.weblate.org/projects/nickvision-"
@@ -43,8 +43,8 @@ msgstr "{0:f1} B/mp"
 msgid "{0:f1} GiB/s"
 msgstr "{0:f1} GiB/mp"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:237
 #: ../../../Helpers/SpeedFormatter.cs:28
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:237
 #, csharp-format
 msgid "{0:f1} KiB/s"
 msgstr "{0:f1} KiB/mp"
@@ -71,7 +71,7 @@ msgstr[1] "{0} / {1} elem"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:101
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:37
-#: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:17
+#: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:16
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:82
 msgid "Add Download"
 msgstr "Hozzáadás"
@@ -134,11 +134,11 @@ msgstr "Hiba történt letöltés közben"
 msgid "Download log was copied to clipboard."
 msgstr "Letöltés napló vágólapra másolva."
 
-#: ../../../Models/Download.cs:388
+#: ../../../Models/Download.cs:395
 msgid "Download using aria2 has started"
 msgstr "Letöltés aria2 kódoló használatával megkezdődött"
 
-#: ../../../Models/Download.cs:399
+#: ../../../Models/Download.cs:406
 msgid "Download using ffmpeg has started"
 msgstr "Letöltés ffmpeg kódoló használatával megkezdődött"
 
@@ -201,7 +201,7 @@ msgid "GitHub Repo"
 msgstr "GitHub tároló"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:136
-#: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:41
+#: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:40
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:5
 msgid "Keyring"
 msgstr "Jelszókezelő"
@@ -250,9 +250,9 @@ msgstr "Megnevezés (üres)"
 msgid "Nicholas Logozzo"
 msgstr "Nicholas Logozzo"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:276
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:251
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:314
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:276
 msgid "No"
 msgstr "Nem"
 
@@ -318,7 +318,7 @@ msgstr "Letöltés helye"
 msgid "Save Folder (Invalid)"
 msgstr "Letöltés helye (hibás)"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/PreferencesDialog.cs:203
+#: ../../../../NickvisionTubeConverter.GNOME/Views/PreferencesDialog.cs:206
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:304
 msgid "Select Cookies File"
 msgstr "Süti fájl betöltése"
@@ -353,12 +353,12 @@ msgstr "Részlet kezdete (hibás)"
 msgid "Stopped"
 msgstr "Letöltés megszakítva"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/PreferencesDialog.cs:179
+#: ../../../../NickvisionTubeConverter.GNOME/Views/PreferencesDialog.cs:182
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:245
 msgid "Subtitle Languages (Comma-Separated)"
 msgstr "Feliratok (vesszővel elválasztva)"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/PreferencesDialog.cs:188
+#: ../../../../NickvisionTubeConverter.GNOME/Views/PreferencesDialog.cs:191
 msgid "Subtitle Languages (Invalid)"
 msgstr "Feliratok (hibás)"
 
@@ -453,11 +453,17 @@ msgstr "Várakozik..."
 msgid "Worst"
 msgstr "Rossz"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:279
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:254
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:317
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:279
 msgid "Yes"
 msgstr "Igen"
+
+#: ../../../Controllers/PreferencesViewController.cs:264
+#: ../../../Models/Download.cs:301
+msgctxt "subtitle"
+msgid "all"
+msgstr ""
 
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:24
 #: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:25
@@ -499,7 +505,7 @@ msgid "Number Titles"
 msgstr ""
 
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:208
-#: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:14
+#: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:13
 msgid "Download"
 msgstr "Letöltés"
 
@@ -584,7 +590,7 @@ msgid "Clear History"
 msgstr "Előzmények törlése"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/history_dialog.blp:31
-#: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:46
+#: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:45
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:6
 msgid "History"
 msgstr "Előzmények"
@@ -676,7 +682,7 @@ msgid "Unlock"
 msgstr "Feloldás"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:11
-#: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:51
+#: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:50
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:9
 msgid "Preferences"
 msgstr "Beállítások"
@@ -809,7 +815,7 @@ msgstr ""
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:238
 #, fuzzy
-msgid "SponsorBlock Information"
+msgid "SponsorBlock Information (opens in a web browser)"
 msgstr "Információ a süti fájlról"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:257
@@ -823,8 +829,11 @@ msgid ""
 "language. You may encounter one of the following three types: two-letter, "
 "two-letter with region, or three-letter. For example, \"en\", \"en-US\" and "
 "\"eng\" are all used for English.\n"
+"Please specify all valid codes for your languages for the best results. Auto-"
+"generated subtitles will also be downloaded if available.\n"
 "\n"
-"Please specify all valid codes for your languages for the best results."
+"You can specify \"all\" instead to download all subtitles, but without auto-"
+"generated ones."
 msgstr ""
 "Egyes oldalak kétbetűs ISO-szabvány szerinti nyelvkódokat használnak, míg "
 "más oldalak hárombetűs nyelvkódokat alkalmaznak. Például a „hu” és „hun” "
@@ -898,49 +907,60 @@ msgid ""
 msgstr "Automatikusan igazítja a zenei tartalmak borítóképeit."
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:420
-msgid "Remove data about media source"
+msgid "Remove Source Data"
 msgstr ""
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:421
 msgid ""
-"Clear metadata fields containing URL and another data that can lead to the "
-"media source"
+"Clear metadata fields containing the URL and other identifying information "
+"of the media source"
 msgstr ""
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:437
 msgid "Embed Chapters"
 msgstr "Fejezetek beágyazása"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:22
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:452
+#, fuzzy
+msgid "Embed Subtitle"
+msgstr "Felirat"
+
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:453
+msgid ""
+"If disabled or if embedding fails, downloaded subtitle will be saved to a "
+"separate file instead"
+msgstr ""
+
+#: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:21
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:129
 msgid "Stop All Downloads"
 msgstr "Minden letöltés megszakítása"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:27
+#: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:26
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:209
 msgid "Retry Failed Downloads"
 msgstr "Sikertelen letöltések újrakezdése"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:32
+#: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:31
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:169
 msgid "Clear Queued Downloads"
 msgstr "Sorban álló letöltések törlése"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:38
+#: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:37
 msgid "Application"
 msgstr "Alkalmazás"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:56
+#: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:55
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:10
 msgid "Keyboard Shortcuts"
 msgstr "Gyorsbillentyűk"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:61
+#: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:60
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:11
 msgid "Help"
 msgstr "Súgó"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:66
+#: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:65
 msgid "Quit"
 msgstr "Kilépés"
 
@@ -1009,9 +1029,6 @@ msgstr "— Párhuzamos letöltési lehetőség"
 #: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.metainfo.xml.in:13
 msgid "— Supports downloading metadata and video subtitles"
 msgstr "— Támogatott a feliratok és egyebek beágyazása"
-
-#~ msgid "Subtitle"
-#~ msgstr "Felirat"
 
 #~ msgctxt "Subtitle"
 #~ msgid "None"
