@@ -2,16 +2,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: 2023-09-24 09:32+0300\n"
-"PO-Revision-Date: 2023-09-17 18:00+0000\n"
-"Last-Translator: Ettore Atalan <atalanttore@googlemail.com>\n"
-"Language-Team: German <https://hosted.weblate.org/projects/nickvision-tube-"
-"converter/docs/de/>\n"
+"PO-Revision-Date: 2023-09-26 13:20+0000\n"
+"Last-Translator: Simon Hahne <simonhahne@web.de>\n"
+"Language-Team: German <https://hosted.weblate.org/projects/"
+"nickvision-tube-converter/docs/de/>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.0.2\n"
+"X-Generator: Weblate 5.1-dev\n"
 
 #. Put one translator per line, in the form NAME <EMAIL>, YEAR1, YEAR2
 msgctxt "_"
@@ -127,7 +127,7 @@ msgstr ""
 #. (itstool) path: item/title
 #: yelp/C/converter.page:49
 msgid "Remove Source Data"
-msgstr "Quelldaten entfernen"
+msgstr "Daten zur Quelle entfernen"
 
 #. (itstool) path: item/p
 #: yelp/C/converter.page:51
@@ -359,20 +359,18 @@ msgstr "Untertitelsprachen"
 
 #. (itstool) path: item/p
 #: yelp/C/downloader.page:82
-#, fuzzy
 msgid ""
 "A comma-separated list of two-letter, two-letter with region, and three-"
 "letter language codes to use when selecting languages of subtitles to "
 "download. Only applies when downloading a video with subtitles."
 msgstr ""
-"Eine durch Kommata getrennte Liste von Sprachcodes mit zwei oder drei "
-"Buchstaben. Die Liste wird bei der Sprachauswahl der herunterzuladenden "
-"Untertitel verwendet. Gilt nur, wenn in einem Download ein gültiges "
-"Untertitelformat ausgewählt ist."
+"Eine durch Kommata getrennte Liste von Sprachcodes mit zwei Buchstaben, zwei "
+"Buchstaben mit Region oder drei Buchstaben. Die Liste wird bei der "
+"Sprachauswahl der herunterzuladenden Untertitel verwendet. Findet nur "
+"Anwendung, wenn ein Video mit Untertiteln heruntergeladen wird."
 
 #. (itstool) path: note/p
 #: yelp/C/downloader.page:84
-#, fuzzy
 msgid ""
 "Different sites can use different language code formats for the same "
 "language. You may encounter one of the following three types: two-letter, "
@@ -381,10 +379,13 @@ msgid ""
 "languages for the best results. Auto-generated subtitles will also be "
 "downloaded if available."
 msgstr ""
-"Manche Webseiten verwenden Sprachcodes mit zwei Buchstaben, andere mit drei "
-"Buchstaben. Beispielsweise werden <code>en</code> und <code>eng</code> beide "
-"für Englisch verwendet. Um die besten Ergebnisse zu erzielen, gib bitte "
-"sowohl zweistellige als auch dreistellige Codes an."
+"Unterschiedliche Webseiten nutzen unterschiedliche Sprachcodeformate für "
+"dieselbe Sprache. Verwendet werden beispielsweise Sprachcodes mit zwei "
+"Buchstaben, mit zwei Buchstaben und einer Region oder mit drei Buchstaben. "
+"Beispielsweise werden \"en\", \"en-US\" und \"eng\" alle für Englisch "
+"verwendet. Um die besten Ergebnisse zu erzielen, gib bitte alle gültigen "
+"Codes an. Autogenerierte Untertitel werden auch heruntergeladen, wenn diese "
+"verfügbar sind."
 
 #. (itstool) path: note/p
 #: yelp/C/downloader.page:85
@@ -392,17 +393,17 @@ msgid ""
 "You can specify \"all\" instead to download all subtitles, but without auto-"
 "generated ones."
 msgstr ""
+"Du kannst \"all\" angeben um alle nicht-autogenerierten Untertitel "
+"herunterzuladen."
 
 #. (itstool) path: note/p
 #: yelp/C/downloader.page:88
-#, fuzzy
 msgid ""
 "Default: Your culture's language codes. For example, on an en-US system the "
 "default would be <code>en,en-US,eng</code>"
 msgstr ""
-"Standardeinstellung: Der zweistellige und dreistellige Sprachcode deiner "
-"Kultur. Auf einem US-amerkanischen System wäre das beispielsweise <code>en,"
-"eng</code>."
+"Standardeinstellung: Die Sprachcodes deiner Kultur. Auf einem US-"
+"amerkanischen System wäre das beispielsweise <code>en,en-US,eng</code>"
 
 #. (itstool) path: item/title
 #: yelp/C/downloader.page:92
@@ -562,15 +563,14 @@ msgstr ""
 
 #. (itstool) path: section/p
 #: yelp/C/keyring.page:26
-#, fuzzy
 msgid ""
 "The library will use you system's credential manager (i.e. DBus secret "
 "service on Linux and Windows Credential Manager on Windows) for securing the "
 "Keyring."
 msgstr ""
-"Die Bibliothek verwendet die Anmeldedatenverwaltung Ihres Systems (d. h. "
-"libsecret unter Linux und Windows Credential Manager unter Windows) zur "
-"Sicherung des Schlüsselrings."
+"Die Bibliothek verwendet die Anmeldedatenverwaltung deines Systems (d.h. "
+"DBus secret service unter Linux und Windows Credential Manager unter Windows)"
+" zur Sicherung des Schlüsselrings."
 
 #. (itstool) path: section/title
 #: yelp/C/keyring.page:29
