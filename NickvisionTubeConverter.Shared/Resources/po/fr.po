@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-09-25 15:30+0300\n"
-"PO-Revision-Date: 2023-09-12 10:22+0000\n"
+"PO-Revision-Date: 2023-09-26 13:20+0000\n"
 "Last-Translator: rene-coty <irenee.thirion@e.email>\n"
-"Language-Team: French <https://hosted.weblate.org/projects/nickvision-tube-"
-"converter/app/fr/>\n"
+"Language-Team: French <https://hosted.weblate.org/projects/"
+"nickvision-tube-converter/app/fr/>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 5.0.1-dev\n"
+"X-Generator: Weblate 5.1-dev\n"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:714
 #, csharp-format
@@ -464,7 +464,7 @@ msgstr "Oui"
 #: ../../../Models/Download.cs:301
 msgctxt "subtitle"
 msgid "all"
-msgstr ""
+msgstr "tous"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:24
 #: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:25
@@ -816,16 +816,14 @@ msgid "Use SponsorBlock for YouTube"
 msgstr "Utiliser SponsorBlock pour YouTube"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:238
-#, fuzzy
 msgid "SponsorBlock Information (opens in a web browser)"
-msgstr "Informations sur SponsorBlock"
+msgstr "Informations sur SponsorBlock (ouvrira votre navigateur web)"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:257
 msgid "Language Code Information"
 msgstr "Informations sur les abréviations de langage"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:272
-#, fuzzy
 msgid ""
 "Different sites can use different language code formats for the same "
 "language. You may encounter one of the following three types: two-letter, "
@@ -839,11 +837,13 @@ msgid ""
 msgstr ""
 "Différents sites peuvent utiliser différents formats de code linguistique "
 "pour la même langue. Vous pouvez rencontrer l’un des trois types suivants : "
-"deux lettres, deux lettres avec région ou trois lettres. Par exemple, "
-"\"en\", \"en-US\" et \"eng\" sont tous utilisés pour l’anglais.\n"
-"\n"
+"deux lettres, deux lettres avec région ou trois lettres. Par exemple, \"en\""
+", \"en-US\" et \"eng\" sont tous utilisés pour l’anglais.\n"
 "Veuillez spécifier toutes les abréviations valides pour vos langages pour "
-"avoir de meilleurs résultats."
+"avoir de meilleurs résultats.\n"
+"\n"
+"Autrement vous pouvez spécifiez « tous » pour télécharger tous les sous-"
+"titres, mais ils ne seront pas générés automatiquement."
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:283
 msgid "Proxy URL"
@@ -914,31 +914,31 @@ msgstr ""
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:420
 msgid "Remove Source Data"
-msgstr ""
+msgstr "Retirer les données sur la source"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:421
-#, fuzzy
 msgid ""
 "Clear metadata fields containing the URL and other identifying information "
 "of the media source"
 msgstr ""
-"Effacer les champs des métadonnées contenant l’URL et d’autres données "
-"pouvant mener à la source du média"
+"Effacer les champs des métadonnées contenant l’URL et d’autres donnée d’"
+"identification pouvant mener à la source du média"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:437
 msgid "Embed Chapters"
 msgstr "Inclure les chapitres"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:452
-#, fuzzy
 msgid "Embed Subtitle"
-msgstr "Sous-titres"
+msgstr "Inclure les sous-titres"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:453
 msgid ""
 "If disabled or if embedding fails, downloaded subtitle will be saved to a "
 "separate file instead"
 msgstr ""
+"Si cette option est désactivée ou si l’inclusion dans le fichier échoue, les "
+"sous-titres téléchargés seront enregistrés dans un fichier séparé"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:21
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:129

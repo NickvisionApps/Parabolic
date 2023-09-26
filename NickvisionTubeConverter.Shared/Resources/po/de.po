@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-09-25 15:30+0300\n"
-"PO-Revision-Date: 2023-09-17 18:00+0000\n"
-"Last-Translator: Ettore Atalan <atalanttore@googlemail.com>\n"
-"Language-Team: German <https://hosted.weblate.org/projects/nickvision-tube-"
-"converter/app/de/>\n"
+"PO-Revision-Date: 2023-09-26 13:20+0000\n"
+"Last-Translator: Simon Hahne <simonhahne@web.de>\n"
+"Language-Team: German <https://hosted.weblate.org/projects/"
+"nickvision-tube-converter/app/de/>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.0.2\n"
+"X-Generator: Weblate 5.1-dev\n"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:714
 #, csharp-format
@@ -467,7 +467,7 @@ msgstr "Ja"
 #: ../../../Models/Download.cs:301
 msgctxt "subtitle"
 msgid "all"
-msgstr ""
+msgstr "Alle"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:24
 #: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:25
@@ -815,16 +815,14 @@ msgid "Use SponsorBlock for YouTube"
 msgstr "SponsorBlock für YouTube verwenden"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:238
-#, fuzzy
 msgid "SponsorBlock Information (opens in a web browser)"
-msgstr "SponsorBlock-Information"
+msgstr "SponsorBlock-Information (öffnet im Web-Browser)"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:257
 msgid "Language Code Information"
 msgstr "Informationen zum Sprachcode"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:272
-#, fuzzy
 msgid ""
 "Different sites can use different language code formats for the same "
 "language. You may encounter one of the following three types: two-letter, "
@@ -841,9 +839,12 @@ msgstr ""
 "vorfinden: mit zwei Buchstaben, mit zwei Buchstaben und der Region oder mit "
 "drei Buchstaben. Zum Beispiel werden „en“, „en-US“ und „eng“ alle für "
 "Englisch verwendet.\n"
-"\n"
 "Bitte gib alle gültigen Codes für deine Sprachen an, um die besten "
-"Ergebnisse zu erzielen."
+"Ergebnisse zu erzielen. Autogenerierte Untertitel werden heruntergeladen, "
+"wenn sie verfügbar sind.\n"
+"\n"
+"Du kannst \"all\" angeben um alle Untertitel herunterzuladen, die nicht "
+"autogeneriert wurden."
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:283
 msgid "Proxy URL"
@@ -914,31 +915,31 @@ msgstr ""
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:420
 msgid "Remove Source Data"
-msgstr ""
+msgstr "Daten zur Quelle entfernen"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:421
-#, fuzzy
 msgid ""
 "Clear metadata fields containing the URL and other identifying information "
 "of the media source"
 msgstr ""
-"Metadatenfelder, die URL und andere Daten enthalten, die zur Medienquelle "
-"führen können, löschen"
+"Metadatenfelder, die die URL oder andere identifizierende Informationen zur "
+"Medienquelle enthalten, löschen"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:437
 msgid "Embed Chapters"
 msgstr "Kapitel einbetten"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:452
-#, fuzzy
 msgid "Embed Subtitle"
-msgstr "Untertitel"
+msgstr "Untertitel einbetten"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:453
 msgid ""
 "If disabled or if embedding fails, downloaded subtitle will be saved to a "
 "separate file instead"
 msgstr ""
+"Wenn die Option deaktiviert ist oder das Einbetten fehlschlägt, werden die "
+"heruntergeladenen Untertitel in einer separaten Datei gespeichert"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:21
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:129
