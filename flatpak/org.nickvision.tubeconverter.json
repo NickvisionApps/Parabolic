@@ -18,9 +18,7 @@
         "--device=dri",
         "--share=ipc",
         "--share=network",
-        "--talk-name=com.canonical.Unity",
         "--talk-name=org.freedesktop.secrets",
-        "--system-talk-name=org.freedesktop.NetworkManager",
         "--filesystem=xdg-download"
     ],
     "cleanup": [
@@ -86,89 +84,6 @@
                     "url": "https://gitlab.gnome.org/jwestman/blueprint-compiler",
                     "tag": "v0.10.0",
                     "commit": "2a39a16391122af2f3d812e478c1c1398c98b972"
-                }
-            ]
-        },
-        "intltool/intltool-0.51.json",
-        {
-            "name": "dee",
-            "buildsystem": "simple",
-            "build-options": {
-                "cflags": "-Wno-error=maybe-uninitialized -Wno-error=unused-result"
-            },
-            "build-commands": [
-                "autoreconf -fi",
-                "./configure --prefix=/app --disable-{static,tests} --with-pygi-overrides-dir=/app/lib/python3.10/site-packages/gi/overrides",
-                "make",
-                "make install"
-            ],
-            "sources": [
-                {
-                    "type": "archive",
-                    "url": "http://launchpad.net/dee/1.0/1.2.7/+download/dee-1.2.7.tar.gz",
-                    "sha256": "1bf0336ce684aa0f48d6eae2469628c1a9b43695a77443bc31a5790aa673bf8a"
-                },
-                {
-                    "type": "patch",
-                    "path": "dee-1.2.7-gcc6-fixes.patch"
-                },
-                {
-                    "type": "patch",
-                    "path": "dee-1.2.7-deprecated-g_type_class_add_private.patch"
-                },
-                {
-                    "type": "patch",
-                    "path": "vapi-skip-properties.patch"
-                },
-                {
-                    "type": "patch",
-                    "path": "dee-1.2.7-fix-duplicates-vala-0.5X.patch"
-                }
-            ]
-        },
-        {
-            "name": "gnome-common",
-            "cleanup": [ "*" ],
-            "sources": [
-                {
-                    "type": "archive",
-                    "url": "https://download.gnome.org/sources/gnome-common/3.18/gnome-common-3.18.0.tar.xz",
-                    "sha256": "22569e370ae755e04527b76328befc4c73b62bfd4a572499fde116b8318af8cf"
-                }
-            ]
-        },
-        {
-            "name": "libdbusmenu",
-            "config-opts": [ "--with-gtk=3", "--disable-dumper", "--prefix=/app" ],
-            "make-install-args": [ "INTROSPECTION_TYPELIBDIR=/app/lib/girepository-1.0" ],
-            "sources": [
-                {
-                    "type": "archive",
-                    "url": "https://launchpad.net/libdbusmenu/16.04/16.04.0/+download/libdbusmenu-16.04.0.tar.gz",
-                    "sha512": "ee9654ac4ed94bdebc94a6db83b126784273a417a645b2881b2ba676a5f67d7fc95dd2bb37bfb0890aa47299ed73cb21ed7de8b75f3fed6b69bfd39065062241"
-                },
-                {
-                    "type": "patch",
-                    "path": "libdbusmenu-no-werror.patch"
-                }
-            ]
-        },
-        {
-            "name": "libunity",
-            "config-opts": [ "--with-pygi-overrides-dir=/app/lib/python3.10/site-packages/gi/overrides" ],
-            "sources": [
-                {
-                    "type": "archive",
-                    "url": "https://launchpad.net/ubuntu/+archive/primary/+files/libunity_7.1.4+19.04.20190319.orig.tar.gz",
-                    "sha256": "56ecb380d74bf74caba193d9e8ad6b0c85ccf9eeb461bc9731c2b8636e1f1492"
-                },
-                {
-                    "type": "patch",
-                    "path": "0001-Fix-FTB-with-recent-vala-requiring-non-public-abstra.patch"
-                },
-                {
-                    "type": "patch",
-                    "path": "libunity-7.1.4-vala-053.patch"
                 }
             ]
         },
