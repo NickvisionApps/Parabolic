@@ -64,23 +64,6 @@ public class MainWindowController : IDisposable
     /// Gets the DownloadHistory object
     /// </summary>
     public DownloadHistory DownloadHistory => (DownloadHistory)Aura.Active.ConfigFiles["downloadHistory"];
-    /// <summary>
-    /// The TaskbarItem to show progress
-    /// </summary>
-    public TaskbarItem? TaskbarItem
-    {
-        set
-        {
-            if (value == null)
-            {
-                return;
-            }
-            _taskbarItem = value;
-            DownloadManager.DownloadProgressUpdated += (_, _) => UpdateTaskbar();
-            DownloadManager.DownloadCompleted += (_, _) => UpdateTaskbar(true);
-            DownloadManager.DownloadStopped += (_, _) => UpdateTaskbar(true);
-        }
-    }
 
     /// <summary>
     /// Occurs when a notification is sent
@@ -142,6 +125,24 @@ public class MainWindowController : IDisposable
     /// Finalizes the MainWindowController
     /// </summary>
     ~MainWindowController() => Dispose(false);
+
+    /// <summary>
+    /// The TaskbarItem to show progress
+    /// </summary>
+    public TaskbarItem? TaskbarItem
+    {
+        set
+        {
+            if (value == null)
+            {
+                return;
+            }
+            _taskbarItem = value;
+            DownloadManager.DownloadProgressUpdated += (_, _) => UpdateTaskbar();
+            DownloadManager.DownloadCompleted += (_, _) => UpdateTaskbar(true);
+            DownloadManager.DownloadStopped += (_, _) => UpdateTaskbar(true);
+        }
+    }
 
     /// <summary>
     /// Frees resources used by the MainWindowController object
