@@ -26,7 +26,7 @@ public class MainWindowController : IDisposable
     private TaskbarItem? _taskbarItem;
     private readonly Stopwatch _taskbarStopwatch;
 
-    private const int _taskbarStopwatchThreshold = 500;
+    private const int TASKBAR_STOPWATCH_THRESHOLD = 500;
 
     /// <summary>
     /// Gets the AppInfo object
@@ -64,6 +64,23 @@ public class MainWindowController : IDisposable
     /// Gets the DownloadHistory object
     /// </summary>
     public DownloadHistory DownloadHistory => (DownloadHistory)Aura.Active.ConfigFiles["downloadHistory"];
+    /// <summary>
+    /// The TaskbarItem to show progress
+    /// </summary>
+    public TaskbarItem? TaskbarItem
+    {
+        set
+        {
+            if (value == null)
+            {
+                return;
+            }
+            _taskbarItem = value;
+            DownloadManager.DownloadProgressUpdated += (_, _) => UpdateTaskbar();
+            DownloadManager.DownloadCompleted += (_, _) => UpdateTaskbar(true);
+            DownloadManager.DownloadStopped += (_, _) => UpdateTaskbar(true);
+        }
+    }
 
     /// <summary>
     /// Occurs when a notification is sent
@@ -251,25 +268,13 @@ public class MainWindowController : IDisposable
         _keyring = controller.Keyring;
     }
 
-    public void SetTaskbarItem(TaskbarItem? taskbarItem)
-    {
-        if (taskbarItem == null)
-        {
-            return;
-        }
-        _taskbarItem = taskbarItem;
-        DownloadManager.DownloadProgressUpdated += (_, _) => UpdateTaskbar();
-        DownloadManager.DownloadCompleted += (_, _) => UpdateTaskbar(true);
-        DownloadManager.DownloadStopped += (_, _) => UpdateTaskbar(true);
-    }
-
     /// <summary>
     /// Updates taskbar item to show current total progress
     /// </summary>
     /// <param name="ignoreStopwatch">Whether to ignore stopwatch that limits update frequency</param>
     public void UpdateTaskbar(bool ignoreStopwatch = false)
     {
-        if (_taskbarStopwatch.IsRunning && _taskbarStopwatch.Elapsed.TotalMilliseconds < _taskbarStopwatchThreshold && !ignoreStopwatch)
+        if (_taskbarStopwatch.IsRunning && _taskbarStopwatch.Elapsed.TotalMilliseconds < TASKBAR_STOPWATCH_THRESHOLD && !ignoreStopwatch)
         {
             return;
         }

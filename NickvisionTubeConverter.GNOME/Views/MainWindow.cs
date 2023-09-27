@@ -181,7 +181,7 @@ public partial class MainWindow : Adw.ApplicationWindow
         _mainBox.SetVisible(false);
         _spinner.Start();
         await _controller.StartupAsync();
-        _controller.SetTaskbarItem(await TaskbarItem.ConnectLinuxAsync(string.IsNullOrEmpty(Environment.GetEnvironmentVariable("SNAP")) ? $"{_controller.AppInfo.ID}.desktop" : "tube-converter_tube-converter.desktop"));
+        _controller.TaskbarItem = await TaskbarItem.ConnectLinuxAsync(string.IsNullOrEmpty(Environment.GetEnvironmentVariable("SNAP")) ? $"{_controller.AppInfo.ID}.desktop" : "tube-converter_tube-converter.desktop");
         _spinner.Stop();
         _spinnerContainer.SetVisible(false);
         _mainBox.SetVisible(true);
