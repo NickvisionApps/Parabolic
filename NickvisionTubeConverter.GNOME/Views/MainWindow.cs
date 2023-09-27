@@ -1,4 +1,4 @@
-using Nickvision.GirExt.Unity;
+using Nickvision.Aura.Taskbar;
 using NickvisionTubeConverter.GNOME.Controls;
 using NickvisionTubeConverter.GNOME.Helpers;
 using NickvisionTubeConverter.Shared.Controllers;
@@ -24,7 +24,6 @@ public partial class MainWindow : Adw.ApplicationWindow
     private readonly MainWindowController _controller;
     private readonly Adw.Application _application;
     private readonly Gio.DBusConnection _bus;
-    private readonly LauncherEntry? _unityLauncher;
     private bool _isBackgroundStatusReported;
     private readonly Gio.SimpleAction _actDownload;
     private Dictionary<Guid, DownloadRow> _downloadRows;
@@ -53,15 +52,6 @@ public partial class MainWindow : Adw.ApplicationWindow
         _isBackgroundStatusReported = false;
         _downloadRows = new Dictionary<Guid, DownloadRow>();
         _inhibitCookie = null;
-        try
-        {
-            _unityLauncher = LauncherEntry.GetForDesktopID(string.IsNullOrEmpty(Environment.GetEnvironmentVariable("SNAP")) ? $"{_controller.AppInfo.ID}.desktop" : "tube-converter_tube-converter.desktop");
-            GLib.Functions.TimeoutAdd(0, 1000, UpdateLibUnity);
-        }
-        catch (DllNotFoundException)
-        {
-            _unityLauncher = null;
-        }
         //Build UI
         builder.Connect(this);
         SetTitle(_controller.AppInfo.ShortName);
@@ -191,6 +181,7 @@ public partial class MainWindow : Adw.ApplicationWindow
         _mainBox.SetVisible(false);
         _spinner.Start();
         await _controller.StartupAsync();
+        _controller.TaskbarItem = await TaskbarItem.ConnectLinuxAsync(string.IsNullOrEmpty(Environment.GetEnvironmentVariable("SNAP")) ? $"{_controller.AppInfo.ID}.desktop" : "tube-converter_tube-converter.desktop");
         _spinner.Stop();
         _spinnerContainer.SetVisible(false);
         _mainBox.SetVisible(true);
@@ -600,31 +591,6 @@ public partial class MainWindow : Adw.ApplicationWindow
         catch (Exception e)
         {
             Console.WriteLine(e);
-            return false;
-        }
-    }
-
-    /// <summary>
-    /// Updates libunity
-    /// </summary>
-    private bool UpdateLibUnity()
-    {
-        try
-        {
-            var progress = _controller.DownloadManager.TotalProgress;
-            if (progress > 0 && progress < 1)
-            {
-                _unityLauncher.SetProgressVisible(true);
-                _unityLauncher.SetProgress(progress);
-            }
-            else
-            {
-                _unityLauncher.SetProgressVisible(false);
-            }
-            return true;
-        }
-        catch
-        {
             return false;
         }
     }

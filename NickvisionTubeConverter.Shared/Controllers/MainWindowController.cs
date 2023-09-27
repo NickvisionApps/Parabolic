@@ -1,11 +1,13 @@
 ﻿using Nickvision.Aura;
 using Nickvision.Aura.Network;
 using Nickvision.Aura.Keyring;
+using Nickvision.Aura.Taskbar;
 using NickvisionTubeConverter.Shared.Events;
 using NickvisionTubeConverter.Shared.Helpers;
 using NickvisionTubeConverter.Shared.Models;
 using Python.Runtime;
 using System;
+using System.Diagnostics;
 using System.IO;
 using System.Threading.Tasks;
 using static NickvisionTubeConverter.Shared.Helpers.Gettext;
@@ -21,6 +23,10 @@ public class MainWindowController : IDisposable
     private nint _pythonThreadState;
     private Keyring? _keyring;
     private NetworkMonitor? _netmon;
+    private TaskbarItem? _taskbarItem;
+    private readonly Stopwatch _taskbarStopwatch;
+
+    private const int TASKBAR_STOPWATCH_THRESHOLD = 500;
 
     /// <summary>
     /// Gets the AppInfo object
@@ -79,6 +85,7 @@ public class MainWindowController : IDisposable
     {
         _disposed = false;
         _pythonThreadState = IntPtr.Zero;
+        _taskbarStopwatch = new Stopwatch();
         DownloadManager = new DownloadManager(5);
         Aura.Init("org.nickvision.tubeconverter", "Nickvision Tube Converter");
         if (Directory.Exists($"{UserDirectories.Config}{Path.DirectorySeparatorChar}Nickvision{Path.DirectorySeparatorChar}{AppInfo.Name}"))
@@ -120,6 +127,24 @@ public class MainWindowController : IDisposable
     ~MainWindowController() => Dispose(false);
 
     /// <summary>
+    /// The TaskbarItem to show progress
+    /// </summary>
+    public TaskbarItem? TaskbarItem
+    {
+        set
+        {
+            if (value == null)
+            {
+                return;
+            }
+            _taskbarItem = value;
+            DownloadManager.DownloadProgressUpdated += (_, _) => UpdateTaskbar();
+            DownloadManager.DownloadCompleted += (_, _) => UpdateTaskbar(true);
+            DownloadManager.DownloadStopped += (_, _) => UpdateTaskbar(true);
+        }
+    }
+
+    /// <summary>
     /// Frees resources used by the MainWindowController object
     /// </summary>
     public void Dispose()
@@ -137,6 +162,7 @@ public class MainWindowController : IDisposable
         {
             return;
         }
+        _taskbarItem?.Dispose();
         PythonEngine.EndAllowThreads(_pythonThreadState);
         PythonEngine.Shutdown();
         if (Directory.Exists(Configuration.TempDir))
@@ -241,6 +267,31 @@ public class MainWindowController : IDisposable
             }
         }
         _keyring = controller.Keyring;
+    }
+
+    /// <summary>
+    /// Updates taskbar item to show current total progress
+    /// </summary>
+    /// <param name="ignoreStopwatch">Whether to ignore stopwatch that limits update frequency</param>
+    public void UpdateTaskbar(bool ignoreStopwatch = false)
+    {
+        if (_taskbarStopwatch.IsRunning && _taskbarStopwatch.Elapsed.TotalMilliseconds < TASKBAR_STOPWATCH_THRESHOLD && !ignoreStopwatch)
+        {
+            return;
+        }
+        _taskbarStopwatch.Restart();
+        var progress = DownloadManager.TotalProgress;
+        if (progress > 0 && progress < 1)
+        {
+            _taskbarItem.SetProgressValue(progress);
+            _taskbarItem.SetCountValue(DownloadManager.RemainingDownloadsCount);
+        }
+        else
+        {
+            _taskbarItem.SetProgressState(ProgressFlags.NoProgress);
+            _taskbarItem.SetCountState(false);
+            _taskbarStopwatch.Stop();
+        }
     }
 
     /// <summary>
