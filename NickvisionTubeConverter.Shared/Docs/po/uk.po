@@ -2,17 +2,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: 2023-09-24 09:32+0300\n"
-"PO-Revision-Date: 2023-08-24 10:19+0000\n"
+"PO-Revision-Date: 2023-09-28 01:23+0000\n"
 "Last-Translator: Dan <jonweblin2205@protonmail.com>\n"
-"Language-Team: Ukrainian <https://hosted.weblate.org/projects/nickvision-"
-"tube-converter/docs/uk/>\n"
+"Language-Team: Ukrainian <https://hosted.weblate.org/projects/"
+"nickvision-tube-converter/docs/uk/>\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 5.0-dev\n"
+"X-Generator: Weblate 5.1-dev\n"
 
 #. Put one translator per line, in the form NAME <EMAIL>, YEAR1, YEAR2
 msgctxt "_"
@@ -127,17 +127,16 @@ msgstr ""
 #. (itstool) path: item/title
 #: yelp/C/converter.page:49
 msgid "Remove Source Data"
-msgstr ""
+msgstr "Вилучити вихідні дані"
 
 #. (itstool) path: item/p
 #: yelp/C/converter.page:51
-#, fuzzy
 msgid ""
 "If enabled, Parabolic will clear metadata fields containing the URL and "
 "other identifying information of the media source."
 msgstr ""
-"Якщо ввімкнено, Parabolic позначатиме носій інформацією про розділ, якщо "
-"вона є"
+"Якщо ввімкнено, Parabolic очистить поля метаданих, що містять URL та іншу "
+"ідентифікаційну інформацію джерела медіа."
 
 #. (itstool) path: item/p
 #: yelp/C/converter.page:52
@@ -146,6 +145,8 @@ msgid ""
 "<code>synopsis</code>, <code>purl</code> and <code>handler_name</code> in "
 "each stream."
 msgstr ""
+"Очищені поля: <code> коментар</code>, <code>опис</code>, <code>синопсис</"
+"code>, <code>purl</code> і <code>handler_name</code> в кожному стримі."
 
 #. (itstool) path: item/title
 #: yelp/C/converter.page:58
@@ -354,19 +355,17 @@ msgstr "Мови субтитрів"
 
 #. (itstool) path: item/p
 #: yelp/C/downloader.page:82
-#, fuzzy
 msgid ""
 "A comma-separated list of two-letter, two-letter with region, and three-"
 "letter language codes to use when selecting languages of subtitles to "
 "download. Only applies when downloading a video with subtitles."
 msgstr ""
-"Список розділених комами двобуквених та трибуквених мовних кодів для вибору "
-"мови субтитрів для завантаження. Застосовується лише тоді, коли під час "
-"завантаження вибрано правильний формат <code>Субтитрів</code>."
+"Список розділених комами з двох літер, двох літер з регіоном та трилітерних "
+"кодів мови, які слід використовувати при виборі мов субтитрів для "
+"завантаження. Застосовується тільки при завантаженні відео з субтитрами."
 
 #. (itstool) path: note/p
 #: yelp/C/downloader.page:84
-#, fuzzy
 msgid ""
 "Different sites can use different language code formats for the same "
 "language. You may encounter one of the following three types: two-letter, "
@@ -375,10 +374,12 @@ msgid ""
 "languages for the best results. Auto-generated subtitles will also be "
 "downloaded if available."
 msgstr ""
-"Деякі сайти використовують дволітерні мовні коди, тоді як інші - трилітерні. "
-"Наприклад, <code>en</code> та <code>eng</code> використовуються для "
-"англійської мови. Будь ласка, вказуйте як двобуквені, так і трибуквені коди "
-"для ваших мов, щоб отримати найкращі результати."
+"Різні сайти можуть використовувати різні формати коду мови для однієї мови. "
+"Ви можете зіткнутися з одним з наступних трьох типів: дволітерний, "
+"дволітерний з регіоном або трилітерний. Наприклад, «en», «en-US» і «eng» всі "
+"використовуються для англійської мови. Будь ласка, вкажіть всі дійсні коди "
+"для ваших мов для найкращих результатів. Якщо є, автоматично створені "
+"субтитри також будуть завантажені."
 
 #. (itstool) path: note/p
 #: yelp/C/downloader.page:85
@@ -386,16 +387,17 @@ msgid ""
 "You can specify \"all\" instead to download all subtitles, but without auto-"
 "generated ones."
 msgstr ""
+"Ви можете вказати «всі» замість завантаження всіх субтитрів, але без "
+"автоматично згенерованих."
 
 #. (itstool) path: note/p
 #: yelp/C/downloader.page:88
-#, fuzzy
 msgid ""
 "Default: Your culture's language codes. For example, on an en-US system the "
 "default would be <code>en,en-US,eng</code>"
 msgstr ""
-"За замовчуванням: дво- та трилітерний мовний код вашої культури. Наприклад, "
-"в англо-американській системі за замовчуванням буде <code>en,eng</code>"
+"За замовчуванням: коди мови вашої культури. Наприклад, в системі en-US за "
+"замовчуванням буде <code>en,en-US,eng</code>"
 
 #. (itstool) path: item/title
 #: yelp/C/downloader.page:92
@@ -538,21 +540,18 @@ msgstr "Backend"
 
 #. (itstool) path: section/p
 #: yelp/C/keyring.page:24
-#, fuzzy
 msgid ""
 "The Keyring feature is backed by the <code>Nickvision.Aura</code> library."
-msgstr ""
-"Функція Keyring підтримується бібліотекою <code>Nickvision.Keyring</code>."
+msgstr "Функція Keyring підтримується бібліотекою <code>Nickvision.Aura</code>."
 
 #. (itstool) path: section/p
 #: yelp/C/keyring.page:25
-#, fuzzy
 msgid ""
 "This library uses SQLCipher to securely store credentials in a platform "
 "independent manner."
 msgstr ""
 "Ця бібліотека використовує SQLCipher для безпечного зберігання облікових "
-"даних у незалежний від платформи спосіб."
+"даних незалежним способом."
 
 #. (itstool) path: section/p
 #: yelp/C/keyring.page:26
@@ -561,6 +560,9 @@ msgid ""
 "service on Linux and Windows Credential Manager on Windows) for securing the "
 "Keyring."
 msgstr ""
+"Бібліотека використовуватиме обліковий менеджер системи (тобто секретну "
+"службу DBus на Linux та Windows Credential Manager на Windows) для "
+"забезпечення захисту Keyring."
 
 #. (itstool) path: section/title
 #: yelp/C/keyring.page:29
@@ -603,7 +605,7 @@ msgstr ""
 #. (itstool) path: section/title
 #: yelp/C/keyring.page:37
 msgid "Migrating from Password-Secured Keyring to Secret-Secured Keyring"
-msgstr ""
+msgstr "Перехід від захищеного паролем Keyring до захищеного секретом Keyring"
 
 #. (itstool) path: section/p
 #: yelp/C/keyring.page:38
@@ -615,6 +617,13 @@ msgid ""
 "user to provide one. By using the system credential manager, Parabolic can "
 "also automatically unlock the Keyring at startup without user interaction."
 msgstr ""
+"Цей розділ стосується користувачів, які ввімкнули Keyring в Parabolic (у "
+"версіях до V2023.9.0) і закріпили його паролем. Починаючи з версії 2023.9.0, "
+"Parabolic використовує обліковий менеджер системи для генерації випадкового "
+"пароля (секрету), щоб забезпечити Keyring замість того, щоб просити "
+"користувача надати його. Використовуючи системний менеджер облікових даних, "
+"Parabolic також може автоматично розблокувати Keyring при запуску без "
+"взаємодії з користувачем."
 
 #. (itstool) path: section/p
 #: yelp/C/keyring.page:39
@@ -623,6 +632,10 @@ msgid ""
 "continue to use it in new versions of Parabolic without issue, but you will "
 "still need to provide the password everytime the application starts."
 msgstr ""
+"Якщо у вас є захищений паролем Keyring до версії 2023.9.0, ви можете "
+"продовжувати використовувати його в нових версіях Parabolic без проблем, але "
+"вам все одно потрібно буде надавати пароль кожного разу, коли застосунок "
+"запускається."
 
 #. (itstool) path: section/p
 #: yelp/C/keyring.page:40
@@ -631,6 +644,8 @@ msgid ""
 "credentials and take advantage of the new Keyring where a password is not "
 "required every time."
 msgstr ""
+"Дотримуйтесь решти цього розділу, якщо ви хочете перенести свої існуючі "
+"облікові дані та скористатися новим Keyring, де пароль щоразу не потрібен."
 
 #. (itstool) path: note/p
 #: yelp/C/keyring.page:42
@@ -640,6 +655,10 @@ msgid ""
 "However, this will erase all data from the old Keyring and require you to re-"
 "enter all credentials."
 msgstr ""
+"Ви можете просто вимкнути старий ключ, захищений паролем, коли ви оновлюєте "
+"Parabolic до 2023.9.0 і знову включити Keyring, щоб отримати секретний "
+"захищений. Однак це видалить всі дані зі старого ключа і вимагатиме від вас "
+"повторного введення всіх облікових даних."
 
 #. (itstool) path: item/p
 #: yelp/C/keyring.page:45
@@ -647,6 +666,8 @@ msgid ""
 "Install <link href=\"https://flathub.org/apps/org.gnome.seahorse."
 "Application\">Passwords and Keys</link>."
 msgstr ""
+"Встановити <link href=\"https://flathub.org/apps/org.gnome.seahorse."
+"Application\"> паролі і ключі</link>."
 
 #. (itstool) path: item/p
 #: yelp/C/keyring.page:46
@@ -654,6 +675,8 @@ msgid ""
 "Open Parabolic V2023.9.0 or newer at least once. (This will ensure that the "
 "app registers with your system's credential manager)"
 msgstr ""
+"Відкрийте Parabolic V2023.9.0 або новіший принаймні один раз. (Це гарантує, "
+"що застосунок зареєструється в диспетчері облікових даних вашої системи)"
 
 #. (itstool) path: item/p
 #: yelp/C/keyring.page:47
@@ -661,6 +684,8 @@ msgid ""
 "Open <code>Passwords and Keys</code> and locate the <code>org.nickvision."
 "tubeconverter</code> entry in the <code>Default Keyring</code>."
 msgstr ""
+"Відкрийте <code> Паролі та ключі </code> і знайдіть <code>org.nickvision."
+"tubeconverter</code> запис в <code> Keyring за замовчуванням</code>."
 
 #. (itstool) path: item/p
 #: yelp/C/keyring.page:48
@@ -669,6 +694,9 @@ msgid ""
 "the <code>Password</code> field. Enter the password that you created and "
 "used for your Keyring in Parabolic."
 msgstr ""
+"Двічі клацніть запис <code>org.nickvision.tubeconverter</code> і "
+"відредагуйте поле <code>Пароль</code>. Введіть пароль, який ви створили та "
+"використовували для свого Keyring в Parabolic."
 
 #. (itstool) path: item/p
 #: yelp/C/keyring.page:49
@@ -677,6 +705,8 @@ msgid ""
 "will see that upon application startup, the Keyring will now be "
 "automatically unlocked!"
 msgstr ""
+"Тепер ви можете закрити <code> Паролі та ключі </code> і перезапустити "
+"Parabolic. Після запуску застосунку Keyring буде автоматично розблоковано!"
 
 #. (itstool) path: info/title
 #: yelp/C/newDownload.page:8
@@ -827,9 +857,8 @@ msgstr ""
 
 #. (itstool) path: item/title
 #: yelp/C/newDownload.page:57
-#, fuzzy
 msgid "Download Subtitle"
-msgstr "Завантажувач"
+msgstr "Завантажити субтитри"
 
 #. (itstool) path: item/p
 #: yelp/C/newDownload.page:58
@@ -837,16 +866,18 @@ msgid ""
 "Whether to download and embed subtitle when downloading a video. Languages "
 "for subtitles can be defined in <link xref=\"downloader\">preferences</link>."
 msgstr ""
+"Чи потрібно завантажувати та вставляти субтитри під час завантаження відео. "
+"Мови для субтитрів можна визначити в <link xref=\"downloader\""
+">параметрах</link>."
 
 #. (itstool) path: note/p
 #: yelp/C/newDownload.page:60
-#, fuzzy
 msgid ""
 "The previously used state will be remembered and pre-selected for the next "
 "download."
 msgstr ""
-"Раніше використана якість буде запам'ятовуватися і попередньо вибиратися для "
-"наступного завантаження."
+"Раніше використаний стан запам'ятовуватиметься та попередньо вибиратиметься "
+"для наступного завантаження."
 
 #. (itstool) path: item/title
 #: yelp/C/newDownload.page:64
