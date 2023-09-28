@@ -8,17 +8,17 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-09-25 15:30+0300\n"
-"PO-Revision-Date: 2023-08-24 10:19+0000\n"
+"PO-Revision-Date: 2023-09-28 01:23+0000\n"
 "Last-Translator: Dan <jonweblin2205@protonmail.com>\n"
-"Language-Team: Ukrainian <https://hosted.weblate.org/projects/nickvision-"
-"tube-converter/app/uk/>\n"
+"Language-Team: Ukrainian <https://hosted.weblate.org/projects/"
+"nickvision-tube-converter/app/uk/>\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 5.0-dev\n"
+"X-Generator: Weblate 5.1-dev\n"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:714
 #, csharp-format
@@ -185,9 +185,8 @@ msgid "Error"
 msgstr "Помилка"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:72
-#, fuzzy
 msgid "Failed to enable keyring."
-msgstr "Неможливо вимкнути keyring."
+msgstr "Не вдалося ввімкнути keyring."
 
 #: ../../../Models/Download.cs:181
 msgid "File already exists, and overwriting is disallowed"
@@ -470,7 +469,7 @@ msgstr "Так"
 #: ../../../Models/Download.cs:301
 msgctxt "subtitle"
 msgid "all"
-msgstr ""
+msgstr "всі"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:24
 #: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:25
@@ -498,9 +497,8 @@ msgid "Audio Language"
 msgstr "Мова аудіо"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:131
-#, fuzzy
 msgid "Download Subtitle"
-msgstr "Завантажувач"
+msgstr "Завантажити субтитри"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:183
 msgid "Select items to download or change file names."
@@ -672,12 +670,11 @@ msgstr "Скасувати редагування назви"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/password_dialog.blp:17
 msgid "Migrate to Secret-Secured Keyring"
-msgstr ""
+msgstr "Перехід до захищеного секретом Keyring"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/password_dialog.blp:21
-#, fuzzy
 msgid "Migrate Keyring"
-msgstr "Вимкнути Keyring"
+msgstr "Перейти Keyring"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/password_dialog.blp:68
 msgid "Skip"
@@ -817,16 +814,14 @@ msgid "Use SponsorBlock for YouTube"
 msgstr "Використовувати SponsorBlock для YouTube"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:238
-#, fuzzy
 msgid "SponsorBlock Information (opens in a web browser)"
-msgstr "Інформація про SponsorBlock"
+msgstr "Інформація про SponsorBlock (відкривається у веббраузері)"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:257
 msgid "Language Code Information"
 msgstr "Інформація про мовний код"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:272
-#, fuzzy
 msgid ""
 "Different sites can use different language code formats for the same "
 "language. You may encounter one of the following three types: two-letter, "
@@ -838,11 +833,15 @@ msgid ""
 "You can specify \"all\" instead to download all subtitles, but without auto-"
 "generated ones."
 msgstr ""
-"Деякі сайти використовують двобуквені мовні коди, тоді як інші - трибуквені. "
-"Наприклад, \"en\" та \"eng\" використовуються для англійської мови.\n"
+"Різні сайти можуть використовувати різні формати коду мови для однієї мови. "
+"Ви можете зіткнутися з одним з наступних трьох типів: дволітерний, "
+"дволітерний з регіоном або трилітерний. Наприклад, «en», «en-US» і «eng» всі "
+"використовуються для англійської мови.\n"
+"Будь ласка, вкажіть всі дійсні коди для ваших мов для найкращих результатів. "
+"Якщо є, автоматично створені субтитри також будуть завантажені.\n"
 "\n"
-"Будь ласка, вказуйте як двобуквені, так і трибуквені коди для ваших мов, щоб "
-"отримати найкращі результати."
+"Ви можете вказати «всі» замість завантаження всіх субтитрів, але без "
+"автоматично згенерованих."
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:283
 msgid "Proxy URL"
@@ -913,28 +912,31 @@ msgstr ""
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:420
 msgid "Remove Source Data"
-msgstr ""
+msgstr "Вилучити вихідні дані"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:421
 msgid ""
 "Clear metadata fields containing the URL and other identifying information "
 "of the media source"
 msgstr ""
+"Очистити поля метаданих, що містять URL та іншу ідентифікаційну інформацію "
+"джерела медіа"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:437
 msgid "Embed Chapters"
 msgstr "Вставити розділи"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:452
-#, fuzzy
 msgid "Embed Subtitle"
-msgstr "Субтитри"
+msgstr "Вбудувати субтитри"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:453
 msgid ""
 "If disabled or if embedding fails, downloaded subtitle will be saved to a "
 "separate file instead"
 msgstr ""
+"Якщо вимкнено або якщо вбудовування не вдалося, завантажені субтитри будуть "
+"збережені в окремий файл"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:21
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:129
