@@ -18,9 +18,9 @@
 <p>На цій сторінці пояснюються всі можливості використання Keyring в <app>Parabolic</app>.</p>
 <section>
     <title>Backend</title>
-    <p>The Keyring feature is backed by the <code>Nickvision.Aura</code> library.</p>
-    <p>This library uses SQLCipher to securely store credentials in a platform independent manner.</p>
-    <p>The library will use you system's credential manager (i.e. DBus secret service on Linux and Windows Credential Manager on Windows) for securing the Keyring.</p>
+    <p>Функція Keyring підтримується бібліотекою <code>Nickvision.Aura</code>.</p>
+    <p>Ця бібліотека використовує SQLCipher для безпечного зберігання облікових даних незалежним способом.</p>
+    <p>Бібліотека використовуватиме обліковий менеджер системи (тобто секретну службу DBus на Linux та Windows Credential Manager на Windows) для забезпечення захисту Keyring.</p>
 </section>
 <section>
     <title>Зберігання облікового запису</title>
@@ -31,19 +31,19 @@
     <p><code>Пароль</code> (необов'язково, якщо ім'я користувача не порожнє): Пароль облікового запису</p>
 </section>
 <section>
-    <title>Migrating from Password-Secured Keyring to Secret-Secured Keyring</title>
-    <p>This section applies to users who have enabled a Keyring in Parabolic (in versions before V2023.9.0) and secured it with a password. Starting with version 2023.9.0, Parabolic uses the system's credential manager to generate a random password (secret) to secure the Keyring instead of asking for a user to provide one. By using the system credential manager, Parabolic can also automatically unlock the Keyring at startup without user interaction.</p>
-    <p>If you have a password-secured Keyring from before version 2023.9.0, you can continue to use it in new versions of Parabolic without issue, but you will still need to provide the password everytime the application starts.</p>
-    <p>Follow the rest of this section if you'd like to migrate your existing credentials and take advantage of the new Keyring where a password is not required every time.</p>
+    <title>Перехід від захищеного паролем Keyring до захищеного секретом Keyring</title>
+    <p>Цей розділ стосується користувачів, які ввімкнули Keyring в Parabolic (у версіях до V2023.9.0) і закріпили його паролем. Починаючи з версії 2023.9.0, Parabolic використовує обліковий менеджер системи для генерації випадкового пароля (секрету), щоб забезпечити Keyring замість того, щоб просити користувача надати його. Використовуючи системний менеджер облікових даних, Parabolic також може автоматично розблокувати Keyring при запуску без взаємодії з користувачем.</p>
+    <p>Якщо у вас є захищений паролем Keyring до версії 2023.9.0, ви можете продовжувати використовувати його в нових версіях Parabolic без проблем, але вам все одно потрібно буде надавати пароль кожного разу, коли застосунок запускається.</p>
+    <p>Дотримуйтесь решти цього розділу, якщо ви хочете перенести свої існуючі облікові дані та скористатися новим Keyring, де пароль щоразу не потрібен.</p>
     <note>
-        <p>You can simply disable the old password-secured Keyring when you update Parabolic to 2023.9.0 and re-enable the Keyring to get a secret-secured one. However, this will erase all data from the old Keyring and require you to re-enter all credentials.</p>
+        <p>Ви можете просто вимкнути старий ключ, захищений паролем, коли ви оновлюєте Parabolic до 2023.9.0 і знову включити Keyring, щоб отримати секретний захищений. Однак це видалить всі дані зі старого ключа і вимагатиме від вас повторного введення всіх облікових даних.</p>
     </note>
     <steps>
-        <item><p>Install <link href="https://flathub.org/apps/org.gnome.seahorse.Application">Passwords and Keys</link>.</p></item>
-        <item><p>Open Parabolic V2023.9.0 or newer at least once. (This will ensure that the app registers with your system's credential manager)</p></item>
-        <item><p>Open <code>Passwords and Keys</code> and locate the <code>org.nickvision.tubeconverter</code> entry in the <code>Default Keyring</code>.</p></item>
-        <item><p>Double click the <code>org.nickvision.tubeconverter</code> entry and edit the <code>Password</code> field. Enter the password that you created and used for your Keyring in Parabolic.</p></item>
-        <item><p>You can now close <code>Passwords and Keys</code> and restart Parabolic. You will see that upon application startup, the Keyring will now be automatically unlocked!</p></item>
+        <item><p>Встановити <link href="https://flathub.org/apps/org.gnome.seahorse.Application"> паролі і ключі</link>.</p></item>
+        <item><p>Відкрийте Parabolic V2023.9.0 або новіший принаймні один раз. (Це гарантує, що застосунок зареєструється в диспетчері облікових даних вашої системи)</p></item>
+        <item><p>Відкрийте <code> Паролі та ключі </code> і знайдіть <code>org.nickvision.tubeconverter</code> запис в <code> Keyring за замовчуванням</code>.</p></item>
+        <item><p>Двічі клацніть запис <code>org.nickvision.tubeconverter</code> і відредагуйте поле <code>Пароль</code>. Введіть пароль, який ви створили та використовували для свого Keyring в Parabolic.</p></item>
+        <item><p>Тепер ви можете закрити <code> Паролі та ключі </code> і перезапустити Parabolic. Після запуску застосунку Keyring буде автоматично розблоковано!</p></item>
     </steps>
 </section>
 </page>

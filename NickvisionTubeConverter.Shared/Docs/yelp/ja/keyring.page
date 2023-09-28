@@ -20,16 +20,16 @@
     </mal:credit>
   </info>
 
-<title>Keyring</title>
-<p>This page explains all options for using the Keyring in <app>Parabolic</app>.</p>
+<title>キーリング</title>
+<p>このページでは<app>Parabolic</app>でキーリングを使う際のすべてのオプションについて説明します。</p>
 <section>
-    <title>Backend</title>
-    <p>The Keyring feature is backed by the <code>Nickvision.Aura</code> library.</p>
-    <p>This library uses SQLCipher to securely store credentials in a platform independent manner.</p>
-    <p>The library will use you system's credential manager (i.e. DBus secret service on Linux and Windows Credential Manager on Windows) for securing the Keyring.</p>
+    <title>バックエンド</title>
+    <p>キーリング機能には、<code>Nickvision.Aura</code>ライブラリが使用されています。</p>
+    <p>このライブラリには、認証情報を安全に保管するために隔離されたSQLCipherデータベースを使っています。</p>
+    <p>このライブラリではシステムの認証情報管理機能(LinuxはDBus secret service、WindowsではWindows Credential Manager等)を使ってキーリングを保護しています。</p>
 </section>
 <section>
-    <title>Storing a Credential</title>
+    <title>認証情報を保管する</title>
     <p>Here are the fields that can be stored in a credential:</p>
     <p><code>Name</code>: The name of the credential</p>
     <p><code>URL</code> (optional): The URL of the credential</p>

@@ -25,14 +25,14 @@
 
 <terms>
     <item>
-      <title>Media URL</title>
+      <title>メディアのURL</title>
       <p>The URL of the media to download. Must be a valid ("valid" meaning syntactically correct) http or https link.</p>
       <note>
             <p>If a valid URL is found inside the clipboard upon opening the Add Download dialog, the URL will be automatically pasted in the URL entry row.</p>
       </note>
     </item>
     <item>
-      <title>Authenticate</title>
+      <title>認証</title>
       <p>If enabled, the user will be asked to provide a username and/or password to pass to yt-dlp when downloading.</p>
         <p>If keyring is enabled, the user will be asked to chose from a list of named credentials or can chose to enter manually a different username and/or password.</p>
 		<note style="advanced">
@@ -41,7 +41,7 @@
 		</note>
     </item>
     <item>
-		<title>File Type</title>
+		<title>ファイルの種類</title>
 		<p>The file type of which to download the media as.</p>
             <p>If <code>Disallow Conversions</code> is enabled, the only options will be <code>Video</code> (if supported) and <code>Audio</code></p>
         <note>
@@ -49,7 +49,7 @@
         </note>
     </item>
     <item>
-		<title>Quality</title>
+		<title>品質</title>
 		<p>If the file type is a video type, the listed qualities will be the resolutions of the media available.</p>
         <p>If the file type is an audio type, the listed qualities will be simply <code>Best</code> and <code>Worst</code>.</p>
         <note>
@@ -57,14 +57,14 @@
         </note>
     </item>
     <item>
-		<title>Download Subtitle</title>
+		<title>字幕をダウンロードする</title>
 		<p>Whether to download and embed subtitle when downloading a video. Languages for subtitles can be defined in <link xref="downloader">preferences</link>.</p>
         <note>
             <p>The previously used state will be remembered and pre-selected for the next download.</p>
         </note>
     </item>
     <item>
-		<title>Save Folder</title>
+		<title>保存フォルダー</title>
 		<p>The folder at which to save the download to.</p>
         <p>If the file type is an audio type, the listed qualities will be simply <code>Best</code> and <code>Worst</code>.</p>
         <note>
@@ -94,7 +94,7 @@
         </note>
     </item>
     <item>
-		<title>Download Specific Timeframe</title>
+		<title>特定の時間枠をダウンロードする</title>
 		<p>If enabled, the user will be able to enter a start timeframe and an end timeframe for a section of the media to download.</p>
         <note>
             <p>Available in the <code>Advanced Options</code> section.</p>
