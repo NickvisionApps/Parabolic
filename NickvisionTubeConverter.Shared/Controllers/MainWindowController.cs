@@ -283,13 +283,13 @@ public class MainWindowController : IDisposable
         var progress = DownloadManager.TotalProgress;
         if (progress > 0 && progress < 1)
         {
-            _taskbarItem.SetProgressValue(progress);
-            _taskbarItem.SetCountValue(DownloadManager.RemainingDownloadsCount);
+            _taskbarItem.Progress = progress;
+            _taskbarItem.Count = DownloadManager.RemainingDownloadsCount;
         }
         else
         {
-            _taskbarItem.SetProgressState(ProgressFlags.NoProgress);
-            _taskbarItem.SetCountState(false);
+            _taskbarItem.ProgressState = ProgressFlags.NoProgress;
+            _taskbarItem.Count = -1;
             _taskbarStopwatch.Stop();
         }
     }
