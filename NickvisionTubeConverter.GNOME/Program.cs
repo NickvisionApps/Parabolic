@@ -40,6 +40,7 @@ public partial class Program
               * Fixed an issue where empty subtitles were sometimes embedded
               * Fixed an issue where arte.tv links were not validating thanks to a yt-dlp update
               * If embedding subtitles fails, Parabolic will automatically save them to separate files instead
+              * Improved Parabolic's display of progress in the taskbar (dock)
               * Updated translations (Thanks everyone on Weblate!)";
         _application.OnActivate += OnActivate;
         if (File.Exists(Path.GetFullPath(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)!) + "/org.nickvision.tubeconverter.gresource"))
