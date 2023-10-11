@@ -272,9 +272,8 @@ public class MainWindowController : IDisposable
                     using (Py.GIL())
                     {
                         dynamic subprocess = Py.Import("subprocess");
-                        dynamic sys = Py.Import("sys");
-                        subprocess.check_call(new List<dynamic>() { DependencyLocator.Find("pythonw")!, "-m", "pip", "install", "psutil" });
-                        subprocess.check_call(new List<dynamic>() { DependencyLocator.Find("pythonw")!, "-m", "pip", "install", "yt-dlp" });
+                        subprocess.check_call(new List<dynamic>() { DependencyLocator.Find("pythonw")!, "-m", "pip", "install", "-U", "psutil" });
+                        subprocess.check_call(new List<dynamic>() { DependencyLocator.Find("pythonw")!, "-m", "pip", "install", "-U", "yt-dlp" });
                     }
                 });
             }
