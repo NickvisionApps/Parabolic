@@ -8,6 +8,7 @@ using NickvisionTubeConverter.Shared.Helpers;
 using NickvisionTubeConverter.Shared.Models;
 using Python.Runtime;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Reflection;
@@ -238,22 +239,10 @@ public class MainWindowController : IDisposable
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
                 Runtime.PythonDLL = DependencyLocator.Find("python")!.Replace("python.exe", "python311.dll");
-                var process = new Process
-                {
-                    StartInfo = new ProcessStartInfo
-                    {
-                        FileName = DependencyLocator.Find("python")!,
-                        Arguments = "-m pip install -U yt-dlp",
-                        UseShellExecute = false,
-                        CreateNoWindow = true
-                    }
-                };
-                process.Start();
-                await process.WaitForExitAsync();
             }
             else
             {
-                var process = new Process
+                using var process = new Process
                 {
                     StartInfo = new ProcessStartInfo
                     {
@@ -276,6 +265,19 @@ public class MainWindowController : IDisposable
             RuntimeData.FormatterType = typeof(NoopFormatter);
             PythonEngine.Initialize();
             _pythonThreadState = PythonEngine.BeginAllowThreads();
+            if(RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                await Task.Run(() =>
+                {
+                    using (Py.GIL())
+                    {
+                        dynamic subprocess = Py.Import("subprocess");
+                        dynamic sys = Py.Import("sys");
+                        subprocess.check_call(new List<dynamic>() { DependencyLocator.Find("pythonw")!, "-m", "pip", "install", "psutil" });
+                        subprocess.check_call(new List<dynamic>() { DependencyLocator.Find("pythonw")!, "-m", "pip", "install", "yt-dlp" });
+                    }
+                });
+            }
         }
         catch(Exception ex)
         {
