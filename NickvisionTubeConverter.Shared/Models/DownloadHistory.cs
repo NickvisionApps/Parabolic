@@ -1,8 +1,5 @@
-using Nickvision.Aura;
 using Nickvision.Aura.Configuration;
-using System;
 using System.Collections.Generic;
-using System.Text.Json.Serialization;
 
 namespace NickvisionTubeConverter.Shared.Models;
 
@@ -15,7 +12,7 @@ public class DownloadHistory : ConfigurationBase
     /// The download history
     /// </summary>
     public Dictionary<string, DownloadHistoryItem> History { get; set; }
-    
+
     /// <summary>
     /// Constructs a DownloadHistory
     /// </summary>

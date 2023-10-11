@@ -2,7 +2,6 @@
 using NickvisionTubeConverter.Shared.Controllers;
 using NickvisionTubeConverter.Shared.Models;
 using NickvisionTubeConverter.WinUI.Views;
-using System;
 
 namespace NickvisionTubeConverter.WinUI;
 

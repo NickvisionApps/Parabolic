@@ -15,7 +15,7 @@ public partial class KeyringDialog : Adw.Window
     private int? _editId;
     private readonly List<Gtk.Widget> _credentialRows;
     private readonly string _appID;
-    
+
     [Gtk.Connect] private readonly Gtk.Button _backButton;
     [Gtk.Connect] private readonly Adw.ToastOverlay _toastOverlay;
     [Gtk.Connect] private readonly Adw.Banner _banner;
@@ -84,7 +84,7 @@ public partial class KeyringDialog : Adw.Window
         _credentialAddButton.OnClicked += AddCredential;
         _credentialDeleteButton.OnClicked += DeleteCredential;
         //Load
-        if(!_controller.IsValid)
+        if (!_controller.IsValid)
         {
             _mainBox.SetSensitive(false);
             _banner.SetTitle(_("Keyring locked"));
@@ -95,7 +95,7 @@ public partial class KeyringDialog : Adw.Window
             _enableKeyringButton.SetVisible(false);
         }
     }
-    
+
     /// <summary>
     /// Constructs a KeyringDialog
     /// </summary>
@@ -105,7 +105,7 @@ public partial class KeyringDialog : Adw.Window
     public KeyringDialog(KeyringDialogController controller, string appID, Gtk.Window parent) : this(Builder.FromFile("keyring_dialog.ui"), controller, appID, parent)
     {
     }
-    
+
     public async Task PresentAsync()
     {
         Present();
@@ -120,11 +120,11 @@ public partial class KeyringDialog : Adw.Window
     /// </summary>
     private async Task LoadHomePageAsync()
     {
-        if(_editId != null)
+        if (_editId != null)
         {
             var checkStatus = _controller.ValidateCredential(_nameRow.GetText(), _urlRow.GetText(), _usernameRow.GetText(), _passwordRow.GetText());
             SetValidation(checkStatus);
-            if(checkStatus == CredentialCheckStatus.Valid)
+            if (checkStatus == CredentialCheckStatus.Valid)
             {
                 await _controller.UpdateCredentialAsync(_editId!.Value, _nameRow.GetText(), _urlRow.GetText(), _usernameRow.GetText(), _passwordRow.GetText());
             }
@@ -136,7 +136,7 @@ public partial class KeyringDialog : Adw.Window
         _titleLabel.SetLabel(_("Keyring"));
         SetDefaultWidget(null);
         //Update Rows
-        foreach(var row in _credentialRows)
+        foreach (var row in _credentialRows)
         {
             _credentialsGroup.Remove(row);
         }
@@ -146,7 +146,7 @@ public partial class KeyringDialog : Adw.Window
         _loadingSpinner.SetVisible(true);
         var credentials = new List<Credential>();
         await Task.Run(async () => credentials = await _controller.GetAllCredentialsAsync());
-        foreach(var credential in credentials)
+        foreach (var credential in credentials)
         {
             var row = Adw.ActionRow.New();
             row.SetTitle(credential.Name);
@@ -220,19 +220,19 @@ public partial class KeyringDialog : Adw.Window
         _usernameRow.SetTitle(_("Username"));
         _passwordRow.RemoveCssClass("error");
         _passwordRow.SetTitle(_("Password"));
-        if(checkStatus.HasFlag(CredentialCheckStatus.EmptyName))
+        if (checkStatus.HasFlag(CredentialCheckStatus.EmptyName))
         {
             _nameRow.AddCssClass("error");
             _nameRow.SetTitle(_("Name (Empty)"));
         }
-        if(checkStatus.HasFlag(CredentialCheckStatus.EmptyUsernamePassword))
+        if (checkStatus.HasFlag(CredentialCheckStatus.EmptyUsernamePassword))
         {
             _usernameRow.AddCssClass("error");
             _usernameRow.SetTitle(_("Username (Empty)"));
             _passwordRow.AddCssClass("error");
             _passwordRow.SetTitle(_("Password (Empty)"));
         }
-        if(checkStatus.HasFlag(CredentialCheckStatus.InvalidUri))
+        if (checkStatus.HasFlag(CredentialCheckStatus.InvalidUri))
         {
             _urlRow.AddCssClass("error");
             _urlRow.SetTitle(_("URL (Invalid)"));
@@ -270,7 +270,7 @@ public partial class KeyringDialog : Adw.Window
         };
         closeDialog.Present();
     }
-    
+
     /// <summary>
     /// Occurs when the disable keyring button is clicked
     /// </summary>
@@ -295,7 +295,7 @@ public partial class KeyringDialog : Adw.Window
     {
         var checkStatus = _controller.ValidateCredential(_nameRow.GetText(), _urlRow.GetText(), _usernameRow.GetText(), _passwordRow.GetText());
         SetValidation(checkStatus);
-        if(checkStatus == CredentialCheckStatus.Valid)
+        if (checkStatus == CredentialCheckStatus.Valid)
         {
             await _controller.AddCredentialAsync(_nameRow.GetText(), _urlRow.GetText(), _usernameRow.GetText(), _passwordRow.GetText());
             await LoadHomePageAsync();
@@ -318,7 +318,7 @@ public partial class KeyringDialog : Adw.Window
         disableDialog.SetResponseAppearance("yes", Adw.ResponseAppearance.Destructive);
         disableDialog.OnResponse += async (s, ex) =>
         {
-            if(ex.Response == "yes")
+            if (ex.Response == "yes")
             {
                 await _controller.DeleteCredentialAsync(_editId!.Value);
                 await LoadHomePageAsync();

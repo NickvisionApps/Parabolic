@@ -4,8 +4,8 @@ using NickvisionTubeConverter.Shared.Models;
 using System;
 using System.IO;
 using System.Threading.Tasks;
-using static Nickvision.GirExt.GtkExt;
 using static Nickvision.Aura.Localization.Gettext;
+using static Nickvision.GirExt.GtkExt;
 
 namespace NickvisionTubeConverter.GNOME.Views;
 
@@ -160,7 +160,7 @@ public partial class PreferencesDialog : Adw.PreferencesWindow
             _ => Adw.ColorScheme.PreferLight
         };
     }
-    
+
     /// <summary>
     /// Occurs when a button to see SponsorBlock info is clicked
     /// </summary>
@@ -182,7 +182,7 @@ public partial class PreferencesDialog : Adw.PreferencesWindow
         _subtitleLangsRow.SetTitle(_("Subtitle Languages (Comma-Separated)"));
         _subtitleLangsRow.RemoveCssClass("error");
         var valid = _controller.ValidateSubtitleLangs(_subtitleLangsRow.GetText());
-        if(valid)
+        if (valid)
         {
             _controller.SubtitleLangs = _subtitleLangsRow.GetText();
         }

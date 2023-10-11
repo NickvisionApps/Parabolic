@@ -54,7 +54,7 @@ public class DownloadOptions
     /// Whether or not to embed subtitle in the downloaded file
     /// </summary>
     public bool EmbedSubtitle { get; init; }
-    
+
     /// <summary>
     /// Constructs a DownloadOptions
     /// </summary>

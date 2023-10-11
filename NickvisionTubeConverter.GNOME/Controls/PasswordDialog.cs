@@ -19,8 +19,8 @@ public partial class PasswordDialog : Adw.Window
     /// <summary>
     /// Whether or not the dialog was skipped
     /// </summary>
-    public bool WasSkipped { get; private set;  }
-    
+    public bool WasSkipped { get; private set; }
+
     /// <summary>
     /// Constructs a PasswordDialog
     /// </summary>

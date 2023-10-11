@@ -6,9 +6,9 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
+using static Nickvision.Aura.Localization.Gettext;
 using static Nickvision.GirExt.GdkExt;
 using static Nickvision.GirExt.GtkExt;
-using static Nickvision.Aura.Localization.Gettext;
 
 namespace NickvisionTubeConverter.GNOME.Views;
 
@@ -103,11 +103,11 @@ public partial class AddDownloadDialog : Adw.Window
             }
         };
         _backButton.OnClicked += (sender, e) => _viewStack.SetVisibleChildName("pageDownload");
-        _urlRow.OnNotify += (sender, e) => 
+        _urlRow.OnNotify += (sender, e) =>
         {
-            if(e.Pspec.GetName() == "text")
+            if (e.Pspec.GetName() == "text")
             {
-                if(!string.IsNullOrEmpty(_urlRow.GetText()))
+                if (!string.IsNullOrEmpty(_urlRow.GetText()))
                 {
                     var result = Uri.TryCreate(_urlRow.GetText(), UriKind.Absolute, out var uriResult) && (uriResult.Scheme == Uri.UriSchemeHttp || uriResult.Scheme == Uri.UriSchemeHttps);
                     _validateUrlButton.SetSensitive(result);
@@ -116,7 +116,7 @@ public partial class AddDownloadDialog : Adw.Window
         };
         _authRow.OnNotify += (sender, e) =>
         {
-            if(e.Pspec.GetName() == "enable-expansion")
+            if (e.Pspec.GetName() == "enable-expansion")
             {
                 _usernameRow.SetText("");
                 _passwordRow.SetText("");
@@ -124,9 +124,9 @@ public partial class AddDownloadDialog : Adw.Window
         };
         _keyringRow.OnNotify += (sender, e) =>
         {
-            if(e.Pspec.GetName() == "selected")
+            if (e.Pspec.GetName() == "selected")
             {
-                if(_keyringRow.GetSelected() == 0)
+                if (_keyringRow.GetSelected() == 0)
                 {
                     _usernameRow.SetVisible(true);
                     _passwordRow.SetVisible(true);
@@ -143,7 +143,7 @@ public partial class AddDownloadDialog : Adw.Window
             if (e.Pspec.GetName() == "selected-item")
             {
                 SetQualityRowModel();
-                if(_controller.CropAudioThumbnails)
+                if (_controller.CropAudioThumbnails)
                 {
                     _cropThumbnailSwitch.SetActive(SelectedMediaFileType.GetIsAudio());
                 }
@@ -194,7 +194,7 @@ public partial class AddDownloadDialog : Adw.Window
         _openPlaylistRow.OnActivated += (sender, e) => _viewStack.SetVisibleChildName("pagePlaylist");
         _numberTitlesSwitch.OnNotify += (sender, e) =>
         {
-            if(e.Pspec.GetName() == "active")
+            if (e.Pspec.GetName() == "active")
             {
                 ToggleNumberTitles();
             }
@@ -287,7 +287,7 @@ public partial class AddDownloadDialog : Adw.Window
             try
             {
                 var clipboardText = await clipboard.ReadTextAsync();
-                if(!string.IsNullOrEmpty(clipboardText))
+                if (!string.IsNullOrEmpty(clipboardText))
                 {
                     var result = Uri.TryCreate(clipboardText, UriKind.Absolute, out var uriResult) && (uriResult.Scheme == Uri.UriSchemeHttp || uriResult.Scheme == Uri.UriSchemeHttps);
                     if (result)
@@ -301,11 +301,11 @@ public partial class AddDownloadDialog : Adw.Window
         }
         //Keyring
         var names = await _controller.GetKeyringCredentialNamesAsync();
-        if(_controller.KeyringAuthAvailable)
+        if (_controller.KeyringAuthAvailable)
         {
             names.Insert(0, _("Use manual credential"));
         }
-        if(names.Count > 0)
+        if (names.Count > 0)
         {
             _keyringRow.SetModel(Gtk.StringList.New(names.ToArray()));
             _keyringRow.SetSelected(names.Count > 1 ? 1u : 0u);
@@ -350,13 +350,13 @@ public partial class AddDownloadDialog : Adw.Window
         {
             try
             {
-                if(_keyringRow.GetSelected() == 0 || _keyringRow.GetSelected() == GTK_INVALID_LIST_POSITION || !_authRow.GetEnableExpansion())
+                if (_keyringRow.GetSelected() == 0 || _keyringRow.GetSelected() == GTK_INVALID_LIST_POSITION || !_authRow.GetEnableExpansion())
                 {
-                     await _controller.SearchUrlAsync(url, _usernameRow.GetText(), _passwordRow.GetText());
+                    await _controller.SearchUrlAsync(url, _usernameRow.GetText(), _passwordRow.GetText());
                 }
                 else
                 {
-                     await _controller.SearchUrlAsync(url, ((int)_keyringRow.GetSelected()) - 1);
+                    await _controller.SearchUrlAsync(url, ((int)_keyringRow.GetSelected()) - 1);
                 }
             }
             catch (Exception ex)
@@ -375,7 +375,7 @@ public partial class AddDownloadDialog : Adw.Window
         {
             _urlRow.AddCssClass("error");
             _urlRow.SetTitle(_("Media URL (Invalid)"));
-            if(_authRow.GetEnableExpansion())
+            if (_authRow.GetEnableExpansion())
             {
                 _toastOverlay.AddToast(Adw.Toast.New(_("Ensure credentials are correct.")));
             }
@@ -391,13 +391,13 @@ public partial class AddDownloadDialog : Adw.Window
                 }
                 else
                 {
-                    _fileTypeRow.SetModel(Gtk.StringList.New(new string[] {"MP3", "OPUS", "FLAC", "WAV"}));
+                    _fileTypeRow.SetModel(Gtk.StringList.New(new string[] { "MP3", "OPUS", "FLAC", "WAV" }));
                     _fileTypeRow.SetSelected((uint)Math.Max((int)_controller.PreviousMediaFileType - 2, 0));
                 }
             }
             else
             {
-                if(_controller.DisallowConversions)
+                if (_controller.DisallowConversions)
                 {
                     _fileTypeRow.SetModel(Gtk.StringList.New(new string[] { _("Video"), _("Audio") }));
                     _fileTypeRow.SetSelected(0);
@@ -431,7 +431,7 @@ public partial class AddDownloadDialog : Adw.Window
                 _openPlaylistGroup.SetVisible(true);
                 _openPlaylistRow.SetTitle(_n("{0} of {1} items", "{0} of {1} items", _controller.MediaList.Count, _controller.MediaList.Count, _controller.MediaList.Count));
                 _qualityRow.SetTitle(_("Maximum Quality"));
-                if(_controller.NumberTitles)
+                if (_controller.NumberTitles)
                 {
                     _numberTitlesSwitch.SetActive(true);
                 }
@@ -492,7 +492,7 @@ public partial class AddDownloadDialog : Adw.Window
         {
             _qualityRow.SetModel(Gtk.StringList.New(_controller.VideoResolutions.ToArray()));
             var findPrevious = _controller.PreviousVideoResolutionIndex;
-            if(findPrevious != -1)
+            if (findPrevious != -1)
             {
                 _qualityRow.SetSelected((uint)findPrevious);
             }
@@ -546,7 +546,7 @@ public partial class AddDownloadDialog : Adw.Window
     /// </summary>
     private void ToggleNumberTitles()
     {
-        if(_controller.ToggleNumberTitles(_numberTitlesSwitch.GetActive()))
+        if (_controller.ToggleNumberTitles(_numberTitlesSwitch.GetActive()))
         {
             foreach (var row in _mediaRows)
             {
@@ -580,7 +580,7 @@ public partial class AddDownloadDialog : Adw.Window
             audioLanguage = _controller.AudioLanguages[(int)_audioLanguageRow.GetSelected()];
         }
         Timeframe? timeframe = null;
-        if(_downloadTimeframeRow.GetExpanded())
+        if (_downloadTimeframeRow.GetExpanded())
         {
             try
             {
@@ -588,7 +588,7 @@ public partial class AddDownloadDialog : Adw.Window
             }
             catch { }
         }
-        if(_keyringRow.GetSelected() == 0 || _keyringRow.GetSelected() == GTK_INVALID_LIST_POSITION || !_authRow.GetEnableExpansion())
+        if (_keyringRow.GetSelected() == 0 || _keyringRow.GetSelected() == GTK_INVALID_LIST_POSITION || !_authRow.GetEnableExpansion())
         {
             _controller.PopulateDownloads(SelectedMediaFileType, quality, resolutionIndex, audioLanguage, _subtitleSwitch.GetActive(), _saveFolderString, _speedLimitSwitch.GetActive(), _splitChaptersSwitch.GetActive(), _cropThumbnailSwitch.GetActive(), timeframe, _usernameRow.GetText(), _passwordRow.GetText());
         }

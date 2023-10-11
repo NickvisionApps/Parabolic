@@ -1,6 +1,6 @@
 ﻿using Nickvision.Aura;
-using Nickvision.Aura.Network;
 using Nickvision.Aura.Keyring;
+using Nickvision.Aura.Network;
 using Nickvision.Aura.Taskbar;
 using Nickvision.Aura.Update;
 using NickvisionTubeConverter.Shared.Events;
@@ -235,7 +235,7 @@ public class MainWindowController : IDisposable
         //Setup Dependencies
         try
         {
-            if(RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
                 Runtime.PythonDLL = DependencyLocator.Find("python")!.Replace("python.exe", "python311.dll");
             }
@@ -265,15 +265,15 @@ public class MainWindowController : IDisposable
             PythonEngine.Initialize();
             _pythonThreadState = PythonEngine.BeginAllowThreads();
         }
-        catch(Exception ex)
+        catch
         {
             NotificationSent?.Invoke(this, new NotificationSentEventArgs(_("Unable to setup dependencies. Please restart the app and try again."), NotificationSeverity.Error));
         }
         //Setup Keyring
-        if(Keyring.Exists(AppInfo.ID))
+        if (Keyring.Exists(AppInfo.ID))
         {
             _keyring = await Keyring.AccessAsync(AppInfo.ID);
-            while(_keyring == null)
+            while (_keyring == null)
             {
                 var res = await KeyringLoginAsync!(_("Unlock Keyring"));
                 if (res.WasSkipped)
@@ -343,9 +343,9 @@ public class MainWindowController : IDisposable
     /// <exception cref="ArgumentException">Thrown if the Keyring does not belong</exception>
     public void UpdateKeyring(KeyringDialogController controller)
     {
-        if(controller.Keyring != null && _keyring != null)
+        if (controller.Keyring != null && _keyring != null)
         {
-            if(controller.Keyring.Name != _keyring.Name)
+            if (controller.Keyring.Name != _keyring.Name)
             {
                 throw new ArgumentException($"Keyring is not {_keyring.Name}");
             }

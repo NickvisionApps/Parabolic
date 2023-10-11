@@ -1,8 +1,6 @@
 ﻿using Nickvision.Aura;
 using Nickvision.Aura.Configuration;
-using System;
 using System.Globalization;
-using System.IO;
 using System.Runtime.InteropServices;
 
 namespace NickvisionTubeConverter.Shared.Models;

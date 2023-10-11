@@ -98,7 +98,7 @@ public partial class MainWindow : Adw.ApplicationWindow
                 _queuedBox.Remove(_queuedBox.GetFirstChild());
             }
             _queuedBox.GetParent().SetVisible(false);
-            if(!_controller.DownloadManager.AreDownloadsQueued && !_controller.DownloadManager.AreDownloadsRunning && !_controller.DownloadManager.AreDownloadsCompleted)
+            if (!_controller.DownloadManager.AreDownloadsQueued && !_controller.DownloadManager.AreDownloadsRunning && !_controller.DownloadManager.AreDownloadsCompleted)
             {
                 _headerBar.AddCssClass("flat");
                 _addDownloadButton.SetVisible(false);
@@ -117,7 +117,7 @@ public partial class MainWindow : Adw.ApplicationWindow
                 _completedBox.Remove(_completedBox.GetFirstChild());
             }
             _completedBox.GetParent().SetVisible(false);
-            if(!_controller.DownloadManager.AreDownloadsQueued && !_controller.DownloadManager.AreDownloadsRunning && !_controller.DownloadManager.AreDownloadsCompleted)
+            if (!_controller.DownloadManager.AreDownloadsQueued && !_controller.DownloadManager.AreDownloadsRunning && !_controller.DownloadManager.AreDownloadsCompleted)
             {
                 _headerBar.AddCssClass("flat");
                 _addDownloadButton.SetVisible(false);
@@ -577,8 +577,8 @@ public partial class MainWindow : Adw.ApplicationWindow
                 using var dataString = GLib.Variant.Create(_controller.DownloadManager.BackgroundActivityReport);
                 using var data = GLib.Internal.Variant.NewVariant(dataString.Handle);
                 using var dictEntry = GLib.Internal.Variant.NewDictEntry(msg.Handle, data);
-                using var array = GLib.Internal.Variant.NewArray(typeDictEntry, new [] { dictEntry.DangerousGetHandle() }, 1);
-                using var tuple = GLib.Internal.Variant.NewTuple(new [] { array.DangerousGetHandle() }, 1);
+                using var array = GLib.Internal.Variant.NewArray(typeDictEntry, new[] { dictEntry.DangerousGetHandle() }, 1);
+                using var tuple = GLib.Internal.Variant.NewTuple(new[] { array.DangerousGetHandle() }, 1);
                 _bus.Call(
                     "org.freedesktop.portal.Desktop", // Bus name
                     "/org/freedesktop/portal/desktop", // Object path
@@ -605,7 +605,7 @@ public partial class MainWindow : Adw.ApplicationWindow
         downloadRow.StopRequested += (s, ex) => _controller.DownloadManager.RequestStop(ex);
         downloadRow.RetryRequested += (s, ex) => _controller.DownloadManager.RequestRetry(ex, _controller.DownloadOptions);
         var box = e.IsDownloading ? _downloadingBox : _queuedBox;
-        if(e.IsDownloading)
+        if (e.IsDownloading)
         {
             downloadRow.SetPreparingState();
         }
@@ -639,7 +639,7 @@ public partial class MainWindow : Adw.ApplicationWindow
     private bool DownloadProgressUpdated((Guid Id, DownloadProgressState State) e)
     {
         var row = _downloadRows[e.Id];
-        if(row.GetParent() == _downloadingBox)
+        if (row.GetParent() == _downloadingBox)
         {
             row.SetProgressState(e.State);
         }
@@ -653,7 +653,7 @@ public partial class MainWindow : Adw.ApplicationWindow
     private bool DownloadCompleted((Guid Id, bool Successful, string Filename, bool ShowNotification) e)
     {
         var row = _downloadRows[e.Id];
-        if(row.GetParent() == _downloadingBox)
+        if (row.GetParent() == _downloadingBox)
         {
             row.SetCompletedState(e.Successful, e.Filename);
             var oldSeparator = row.GetPrevSibling() ?? row.GetNextSibling();
@@ -675,11 +675,11 @@ public partial class MainWindow : Adw.ApplicationWindow
             _completedBox.GetParent().SetVisible(true);
             if (e.ShowNotification && ((GetFocus() != null && !GetFocus()!.GetHasFocus()) || !GetVisible()))
             {
-                if(_controller.CompletedNotificationPreference == NotificationPreference.ForEach)
+                if (_controller.CompletedNotificationPreference == NotificationPreference.ForEach)
                 {
                     SendShellNotification(new ShellNotificationSentEventArgs(!e.Successful ? _("Download Finished With Error") : _("Download Finished"), !e.Successful ? _("\"{0}\" has finished with an error!", row.Filename) : _("\"{0}\" has finished downloading.", row.Filename), !e.Successful ? NotificationSeverity.Error : NotificationSeverity.Success));
                 }
-                else if(_controller.CompletedNotificationPreference == NotificationPreference.AllCompleted && !_controller.DownloadManager.AreDownloadsRunning && !_controller.DownloadManager.AreDownloadsQueued)
+                else if (_controller.CompletedNotificationPreference == NotificationPreference.AllCompleted && !_controller.DownloadManager.AreDownloadsRunning && !_controller.DownloadManager.AreDownloadsQueued)
                 {
                     SendShellNotification(new ShellNotificationSentEventArgs(_("Downloads Finished"), _("All downloads have finished."), NotificationSeverity.Informational));
                 }
@@ -700,7 +700,7 @@ public partial class MainWindow : Adw.ApplicationWindow
     private bool DownloadStopped(Guid e)
     {
         var row = _downloadRows[e];
-        if(row.GetParent() == _downloadingBox)
+        if (row.GetParent() == _downloadingBox)
         {
             row.SetStopState();
             var oldSeparator = row.GetPrevSibling() ?? row.GetNextSibling();
@@ -721,7 +721,7 @@ public partial class MainWindow : Adw.ApplicationWindow
             _downloadingBox.GetParent().SetVisible(_controller.DownloadManager.AreDownloadsRunning);
             _completedBox.GetParent().SetVisible(true);
         }
-        else if(row.GetParent() == _queuedBox)
+        else if (row.GetParent() == _queuedBox)
         {
             row.SetStopState();
             var oldSeparator = row.GetPrevSibling() ?? row.GetNextSibling();
@@ -750,7 +750,7 @@ public partial class MainWindow : Adw.ApplicationWindow
     private bool DownloadRetried(Guid e)
     {
         var row = _downloadRows[e];
-        if(row.GetParent() == _completedBox)
+        if (row.GetParent() == _completedBox)
         {
             row.SetWaitingState();
             var oldSeparator = row.GetPrevSibling() ?? row.GetNextSibling();
@@ -772,7 +772,7 @@ public partial class MainWindow : Adw.ApplicationWindow
     private bool DownloadStartedFromQueue(Guid e)
     {
         var row = _downloadRows[e];
-        if(row.GetParent() == _queuedBox)
+        if (row.GetParent() == _queuedBox)
         {
             row.SetPreparingState();
             var oldSeparator = row.GetPrevSibling() ?? row.GetNextSibling();

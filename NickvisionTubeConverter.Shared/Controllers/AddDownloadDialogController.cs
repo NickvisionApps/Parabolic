@@ -114,9 +114,9 @@ public class AddDownloadDialogController
         get
         {
             var videoResolution = VideoResolution.Parse(Configuration.Current.PreviousVideoResolution);
-            if(videoResolution != null)
+            if (videoResolution != null)
             {
-                if(_mediaUrlInfo != null)
+                if (_mediaUrlInfo != null)
                 {
                     return _mediaUrlInfo.VideoResolutions.IndexOf(videoResolution);
                 }
@@ -124,7 +124,7 @@ public class AddDownloadDialogController
             return -1;
         }
     }
-    
+
     /// <summary>
     /// Limit characters in filenames to Windows supported
     /// </summary>
@@ -141,7 +141,7 @@ public class AddDownloadDialogController
     /// <returns>The list of names of credentials</returns>
     public async Task<List<string>> GetKeyringCredentialNamesAsync()
     {
-        if(_keyring != null)
+        if (_keyring != null)
         {
             var names = (await _keyring.GetAllCredentialsAsync()).Select(x => x.Name).ToList();
             names.Sort();
@@ -160,7 +160,7 @@ public class AddDownloadDialogController
     public async Task<bool> SearchUrlAsync(string mediaUrl, string? username, string? password)
     {
         _mediaUrlInfo = await MediaUrlInfo.GetAsync(mediaUrl, username, password, Configuration.Current.ProxyUrl);
-        if(_mediaUrlInfo != null)
+        if (_mediaUrlInfo != null)
         {
             foreach (var resolution in _mediaUrlInfo.VideoResolutions)
             {
@@ -178,7 +178,7 @@ public class AddDownloadDialogController
     /// <returns>Whether media info was loaded or not</returns>
     public async Task<bool> SearchUrlAsync(string mediaUrl, int credentialIndex)
     {
-        if(_keyring != null)
+        if (_keyring != null)
         {
             var credentials = await _keyring.GetAllCredentialsAsync();
             credentials.Sort((a, b) => a.Name.CompareTo(b.Name));
@@ -194,7 +194,7 @@ public class AddDownloadDialogController
     /// <returns>True if successful, else false</returns>
     public bool ToggleNumberTitles(bool toggled)
     {
-        if(_mediaUrlInfo != null)
+        if (_mediaUrlInfo != null)
         {
             foreach (var m in _mediaUrlInfo.MediaList)
             {
@@ -229,13 +229,13 @@ public class AddDownloadDialogController
             {
                 var timeframe = Timeframe.Parse(timeframeStart, timeframeEnd, duration);
             }
-            catch(ArgumentException e)
+            catch (ArgumentException e)
             {
-                if(e.Message.Contains("start time"))
+                if (e.Message.Contains("start time"))
                 {
                     result |= DownloadOptionsCheckStatus.InvalidTimeframeStart;
                 }
-                else if(e.Message.Contains("end time"))
+                else if (e.Message.Contains("end time"))
                 {
                     result |= DownloadOptionsCheckStatus.InvalidTimeframeEnd;
                 }
@@ -274,7 +274,7 @@ public class AddDownloadDialogController
         {
             Configuration.Current.PreviousMediaFileType = mediaFileType;
         }
-        if(resolution != null)
+        if (resolution != null)
         {
             Configuration.Current.PreviousVideoResolution = _mediaUrlInfo.VideoResolutions[resolution.Value].ToString();
         }
@@ -298,7 +298,7 @@ public class AddDownloadDialogController
     /// <param name="credentialIndex">The index of the credential to use</param>
     public async Task PopulateDownloadsAsync(MediaFileType mediaFileType, Quality quality, int? resolution, string? audioLanguage, bool subtitles, string saveFolder, bool limitSpeed, bool splitChapters, bool cropThumbnail, Timeframe? timeframe, int credentialIndex)
     {
-        if(_keyring != null)
+        if (_keyring != null)
         {
             var credentials = await _keyring.GetAllCredentialsAsync();
             credentials.Sort((a, b) => a.Name.CompareTo(b.Name));

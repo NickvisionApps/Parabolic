@@ -152,7 +152,7 @@ public class Download
         _username = username;
         _password = password;
         _pid = null;
-        if(_timeframe != null && _limitSpeed)
+        if (_timeframe != null && _limitSpeed)
         {
             throw new ArgumentException("A timeframe can only be specified if limit speed is disabled");
         }
@@ -225,7 +225,7 @@ public class Download
                     extractorArgs["youtube"] = youtubeExtractorOpt;
                     _ytOpt.Add("extractor_args", extractorArgs);
                 }
-                if(!FileType.GetIsGeneric())
+                if (!FileType.GetIsGeneric())
                 {
                     _ytOpt.Add("final_ext", FileType.ToString().ToLower());
                 }
@@ -249,7 +249,7 @@ public class Download
                 var postProcessors = new List<Dictionary<string, dynamic>>();
                 if (FileType.GetIsAudio())
                 {
-                    if(FileType.GetIsGeneric())
+                    if (FileType.GetIsGeneric())
                     {
                         _ytOpt.Add("format", Quality != Quality.Worst ? $"ba[language={AudioLanguage}]/ba/b" : $"wa[language={AudioLanguage}]/wa/w");
                         postProcessors.Add(new Dictionary<string, dynamic> { { "key", "FFmpegExtractAudio" }, { "preferredquality", Quality != Quality.Worst ? 0 : 5 } });
@@ -263,7 +263,7 @@ public class Download
                 else if (FileType.GetIsVideo())
                 {
                     var proto = _timeframe != null ? "[protocol!*=m3u8]" : "";
-                    if(Resolution!.Width == 0 && Resolution.Height == 0)
+                    if (Resolution!.Width == 0 && Resolution.Height == 0)
                     {
                         _ytOpt.Add("format", FileType == MediaFileType.MP4 ? $@"bv*[ext=mp4][vcodec!*=vp]{proto}+ba[ext=m4a][language={AudioLanguage}]/
                             bv*[ext=mp4][vcodec!*=vp]{proto}+ba[ext=m4a]/
@@ -289,7 +289,7 @@ public class Download
                             bv*[width<={Resolution!.Width}][height<={Resolution.Height}]{proto}+ba/
                             b[width<={Resolution.Width}][height<={Resolution.Height}]");
                     }
-                    if(!FileType.GetIsGeneric())
+                    if (!FileType.GetIsGeneric())
                     {
                         postProcessors.Add(new Dictionary<string, dynamic>() { { "key", "FFmpegVideoConvertor" }, { "preferedformat", FileType.ToString().ToLower() } });
                     }
@@ -323,7 +323,7 @@ public class Download
                     dynamic ppDict = new PyDict();
                     if (options.RemoveSourceData)
                     {
-                        postProcessors.Add(new Dictionary<string, dynamic>() { { "key", "MetadataFromField" }, { "formats", new List<string>() { ":(?P<meta_comment>)", ":(?P<meta_description>)", ":(?P<meta_synopsis>)", ":(?P<meta_purl>)", $"{_playlistPosition}:%(meta_track)s"} } });
+                        postProcessors.Add(new Dictionary<string, dynamic>() { { "key", "MetadataFromField" }, { "formats", new List<string>() { ":(?P<meta_comment>)", ":(?P<meta_description>)", ":(?P<meta_synopsis>)", ":(?P<meta_purl>)", $"{_playlistPosition}:%(meta_track)s" } } });
                         dynamic rsdParams = new PyList();
                         rsdParams.Append(new PyString("-metadata:s"));
                         rsdParams.Append(new PyString("handler_name="));
@@ -357,11 +357,11 @@ public class Download
                 {
                     _ytOpt.Add("postprocessors", postProcessors);
                 }
-                if(!string.IsNullOrEmpty(_username))
+                if (!string.IsNullOrEmpty(_username))
                 {
                     _ytOpt.Add("username", _username);
                 }
-                if(!string.IsNullOrEmpty(_password))
+                if (!string.IsNullOrEmpty(_password))
                 {
                     _ytOpt.Add("password", _password);
                 }
@@ -397,7 +397,7 @@ public class Download
                                 Log = _("Download using aria2 has started")
                             });
                         }
-                        if(_timeframe != null)
+                        if (_timeframe != null)
                         {
                             _ytOpt.Add("download_ranges", ytdlp.utils.download_range_func(null, new List<List<double>>() { new List<double>() { _timeframe.Start.TotalSeconds, _timeframe.End.TotalSeconds } }));
                             ProgressChanged?.Invoke(this, new DownloadProgressState()
@@ -414,17 +414,17 @@ public class Download
                         IsRunning = false;
                         _outFile.close();
                         IsSuccess = (success_code.As<int?>() ?? 1) == 0;
-                        if(IsSuccess)
+                        if (IsSuccess)
                         {
                             var genericExtensionFound = false;
                             foreach (var path in Directory.EnumerateFiles(SaveFolder))
                             {
-                                if(path.Contains(Id.ToString()))
+                                if (path.Contains(Id.ToString()))
                                 {
-                                    if(FileType.GetIsGeneric() && !genericExtensionFound)
+                                    if (FileType.GetIsGeneric() && !genericExtensionFound)
                                     {
                                         var extension = Path.GetExtension(path).ToLower();
-                                        if(extension != ".srt" && extension != ".vtt")
+                                        if (extension != ".srt" && extension != ".vtt")
                                         {
                                             Filename += extension;
                                             genericExtensionFound = true;
@@ -444,7 +444,7 @@ public class Download
                                     catch
                                     {
                                         var chars = new char[] { '"', '*', '/', ':', '<', '>', '?', '\\' };
-                                        foreach(var c in chars.Where(x => Filename.Contains(x)))
+                                        foreach (var c in chars.Where(x => Filename.Contains(x)))
                                         {
                                             Filename = Filename.Replace(c, '_');
                                         }
@@ -488,10 +488,10 @@ public class Download
                     // Kill ffmpeg and aria
                     dynamic psutil = Py.Import("psutil");
                     var pythonProcessChildren = psutil.Process().children(recursive: true);
-                    foreach(PyObject child in pythonProcessChildren)
+                    foreach (PyObject child in pythonProcessChildren)
                     {
                         var processName = child.GetAttr(new PyString("name")).Invoke().As<string?>() ?? "";
-                        if(processName == "ffmpeg" || processName == "aria2c")
+                        if (processName == "ffmpeg" || processName == "aria2c")
                         {
                             child.InvokeMethod("kill");
                         }

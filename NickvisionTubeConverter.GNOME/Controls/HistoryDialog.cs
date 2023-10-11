@@ -5,8 +5,8 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using static Nickvision.GirExt.GtkExt;
 using static Nickvision.Aura.Localization.Gettext;
+using static Nickvision.GirExt.GtkExt;
 
 namespace NickvisionTubeConverter.GNOME.Controls;
 
@@ -23,7 +23,7 @@ public partial class HistoryDialog : Adw.Window
     [Gtk.Connect] private readonly Adw.ViewStack _viewStack;
     [Gtk.Connect] private readonly Gtk.ScrolledWindow _scrolledWindow;
     [Gtk.Connect] private readonly Adw.PreferencesGroup _urlsGroup;
-    
+
     /// <summary>
     /// Occurs when a download is requested to be downloaded again
     /// </summary>
@@ -51,7 +51,7 @@ public partial class HistoryDialog : Adw.Window
         foreach (var pair in _history.History.OrderByDescending(x => x.Value.Date))
         {
             var row = Adw.ActionRow.New();
-            if(string.IsNullOrEmpty(pair.Value.Title))
+            if (string.IsNullOrEmpty(pair.Value.Title))
             {
                 row.SetTitle(pair.Key);
             }
@@ -62,7 +62,7 @@ public partial class HistoryDialog : Adw.Window
             }
             row.SetTitleLines(1);
             row.SetSubtitleLines(1);
-            if(File.Exists(pair.Value.Path))
+            if (File.Exists(pair.Value.Path))
             {
                 var openButton = Gtk.Button.New();
                 openButton.SetIconName("media-playback-start-symbolic");
@@ -119,7 +119,7 @@ public partial class HistoryDialog : Adw.Window
         //Update UI
         _searchEntry.SetVisible(false);
         _viewStack.SetVisibleChildName("no-history");
-        foreach(var row in _historyRows)
+        foreach (var row in _historyRows)
         {
             _urlsGroup.Remove(row);
         }
@@ -134,7 +134,7 @@ public partial class HistoryDialog : Adw.Window
     private void SearchChanged(Gtk.SearchEntry sender, EventArgs e)
     {
         var search = _searchEntry.GetText().ToLower();
-        if(string.IsNullOrEmpty(search))
+        if (string.IsNullOrEmpty(search))
         {
             foreach (var row in _historyRows)
             {
@@ -143,7 +143,7 @@ public partial class HistoryDialog : Adw.Window
         }
         else
         {
-            foreach(var row in _historyRows)
+            foreach (var row in _historyRows)
             {
                 row.SetVisible(row.GetTitle().ToLower().Contains(search));
             }

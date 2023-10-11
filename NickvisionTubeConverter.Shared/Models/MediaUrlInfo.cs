@@ -98,11 +98,11 @@ public class MediaUrlInfo
                     {
                         ytOpt.Add("proxy", new PyString(proxyUrl));
                     }
-                    if(!string.IsNullOrEmpty(username))
+                    if (!string.IsNullOrEmpty(username))
                     {
                         ytOpt.Add("username", username);
                     }
-                    if(!string.IsNullOrEmpty(password))
+                    if (!string.IsNullOrEmpty(password))
                     {
                         ytOpt.Add("password", password);
                     }
@@ -194,7 +194,7 @@ public class MediaUrlInfo
     private void ParseFromPyDict(dynamic yt, PyDict mediaInfo, uint playlistPosition, string defaultUrl)
     {
         var title = mediaInfo.HasKey("title") ? (mediaInfo["title"].As<string?>() ?? "Media") : "Media";
-        var invalidChars = new List<char> (Path.GetInvalidFileNameChars());
+        var invalidChars = new List<char>(Path.GetInvalidFileNameChars());
         if (Configuration.Current.LimitCharacters)
         {
             invalidChars.AddRange(new char[] { '"', '<', '>', ':', '\\', '/', '|', '?', '*' });
@@ -203,21 +203,21 @@ public class MediaUrlInfo
         {
             title = title.Replace(c, '_');
         }
-        if(mediaInfo.HasKey("formats"))
+        if (mediaInfo.HasKey("formats"))
         {
             ParseFormats(mediaInfo);
         }
-        else if(VideoResolutions.Count == 0 && mediaInfo.HasKey("url") && !_tryVideo)
+        else if (VideoResolutions.Count == 0 && mediaInfo.HasKey("url") && !_tryVideo)
         {
             var tempUrl = mediaInfo["url"].As<string>();
             PyDict? tempInfo = yt.extract_info(tempUrl, download: false);
-            if(tempInfo != null)
+            if (tempInfo != null)
             {
                 ParseFormats(tempInfo);
                 _tryVideo = true;
             }
         }
-        if(VideoResolutions.Count == 0 && mediaInfo.HasKey("video_ext") && mediaInfo["video_ext"].As<string>() != "none")
+        if (VideoResolutions.Count == 0 && mediaInfo.HasKey("video_ext") && mediaInfo["video_ext"].As<string>() != "none")
         {
             VideoResolutions.Add(new VideoResolution(0, 0));
         }
@@ -226,9 +226,9 @@ public class MediaUrlInfo
         {
             duration = mediaInfo["duration"].As<double>();
         }
-        catch {  }
+        catch { }
         var url = defaultUrl;
-        if(mediaInfo.HasKey("webpage_url"))
+        if (mediaInfo.HasKey("webpage_url"))
         {
             url = mediaInfo["webpage_url"].As<string>();
         }
