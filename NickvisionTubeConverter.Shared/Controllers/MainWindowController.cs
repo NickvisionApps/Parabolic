@@ -235,19 +235,26 @@ public class MainWindowController : IDisposable
         //Setup Dependencies
         try
         {
-            var process = new Process
+            if(RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
-                StartInfo = new ProcessStartInfo
+                Runtime.PythonDLL = DependencyLocator.Find("python")!.Replace("python.exe", "python311.dll");
+            }
+            else
+            {
+                var process = new Process
                 {
-                    FileName = DependencyLocator.Find(RuntimeInformation.IsOSPlatform(OSPlatform.Windows) ? "python" : "python3"),
-                    Arguments = "-c \"import sysconfig; import os; print(('/snap/tube-converter/current/gnome-platform' if os.environ.get('SNAP') else '') + ('/'.join(sysconfig.get_config_vars('LIBDIR', 'INSTSONAME'))))\"",
-                    UseShellExecute = false,
-                    RedirectStandardOutput = true
-                }
-            };
-            process.Start();
-            Runtime.PythonDLL = process.StandardOutput.ReadToEnd().Trim();
-            process.WaitForExit();
+                    StartInfo = new ProcessStartInfo
+                    {
+                        FileName = DependencyLocator.Find("python3"),
+                        Arguments = "-c \"import sysconfig; import os; print(('/snap/tube-converter/current/gnome-platform' if os.environ.get('SNAP') else '') + ('/'.join(sysconfig.get_config_vars('LIBDIR', 'INSTSONAME'))))\"",
+                        UseShellExecute = false,
+                        RedirectStandardOutput = true
+                    }
+                };
+                process.Start();
+                Runtime.PythonDLL = process.StandardOutput.ReadToEnd().Trim();
+                process.WaitForExit();
+            }
             // Install yt-dlp plugin
             var pluginPath = $"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}{Path.DirectorySeparatorChar}yt-dlp{Path.DirectorySeparatorChar}plugins{Path.DirectorySeparatorChar}tubeconverter{Path.DirectorySeparatorChar}yt_dlp_plugins{Path.DirectorySeparatorChar}postprocessor{Path.DirectorySeparatorChar}tubeconverter.py";
             Directory.CreateDirectory(pluginPath.Substring(0, pluginPath.LastIndexOf(Path.DirectorySeparatorChar)));
@@ -258,7 +265,7 @@ public class MainWindowController : IDisposable
             PythonEngine.Initialize();
             _pythonThreadState = PythonEngine.BeginAllowThreads();
         }
-        catch
+        catch(Exception ex)
         {
             NotificationSent?.Invoke(this, new NotificationSentEventArgs(_("Unable to setup dependencies. Please restart the app and try again."), NotificationSeverity.Error));
         }
