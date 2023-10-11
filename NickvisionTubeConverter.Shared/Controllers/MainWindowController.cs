@@ -238,6 +238,18 @@ public class MainWindowController : IDisposable
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
                 Runtime.PythonDLL = DependencyLocator.Find("python")!.Replace("python.exe", "python311.dll");
+                var process = new Process
+                {
+                    StartInfo = new ProcessStartInfo
+                    {
+                        FileName = DependencyLocator.Find("python")!,
+                        Arguments = "-m pip install -U yt-dlp",
+                        UseShellExecute = false,
+                        CreateNoWindow = true
+                    }
+                };
+                process.Start();
+                await process.WaitForExitAsync();
             }
             else
             {
@@ -253,7 +265,7 @@ public class MainWindowController : IDisposable
                 };
                 process.Start();
                 Runtime.PythonDLL = process.StandardOutput.ReadToEnd().Trim();
-                process.WaitForExit();
+                await process.WaitForExitAsync();
             }
             // Install yt-dlp plugin
             var pluginPath = $"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}{Path.DirectorySeparatorChar}yt-dlp{Path.DirectorySeparatorChar}plugins{Path.DirectorySeparatorChar}tubeconverter{Path.DirectorySeparatorChar}yt_dlp_plugins{Path.DirectorySeparatorChar}postprocessor{Path.DirectorySeparatorChar}tubeconverter.py";
@@ -265,7 +277,7 @@ public class MainWindowController : IDisposable
             PythonEngine.Initialize();
             _pythonThreadState = PythonEngine.BeginAllowThreads();
         }
-        catch
+        catch(Exception ex)
         {
             NotificationSent?.Invoke(this, new NotificationSentEventArgs(_("Unable to setup dependencies. Please restart the app and try again."), NotificationSeverity.Error));
         }

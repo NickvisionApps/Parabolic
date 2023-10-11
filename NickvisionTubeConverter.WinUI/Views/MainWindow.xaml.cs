@@ -207,6 +207,11 @@ public sealed partial class MainWindow : Window
     /// <param name="e">NotificationSentEventArgs</param>
     private void NotificationSent(object? sender, NotificationSentEventArgs e)
     {
+        if (e.Action == "network-restored")
+        {
+            //TODO: Add Download Enabled
+            return;
+        }
         //InfoBar
         InfoBar.Message = e.Message;
         InfoBar.Severity = e.Severity switch
@@ -233,11 +238,6 @@ public sealed partial class MainWindow : Window
             //TODO: Add Download Disabled
             InfoBar.IsClosable = false;
             BtnInfoBar.Visibility = Visibility.Collapsed;
-            return;
-        }
-        else if (e.Action == "network-restored")
-        {
-            //TODO: Add Download Enabled
             return;
         }
         BtnInfoBar.Visibility = !string.IsNullOrEmpty(e.Action) ? Visibility.Visible : Visibility.Collapsed;
