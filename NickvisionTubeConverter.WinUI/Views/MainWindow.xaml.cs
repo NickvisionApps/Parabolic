@@ -217,6 +217,7 @@ public sealed partial class MainWindow : Window
             NotificationSeverity.Error => InfoBarSeverity.Error,
             _ => InfoBarSeverity.Informational
         };
+        InfoBar.IsClosable = true;
         if (_notificationButtonClickEvent != null)
         {
             BtnInfoBar.Click -= _notificationButtonClickEvent;
@@ -226,6 +227,18 @@ public sealed partial class MainWindow : Window
             _notificationButtonClickEvent = WindowsUpdate;
             BtnInfoBar.Content = _("Update");
             BtnInfoBar.Click += _notificationButtonClickEvent;
+        }
+        else if (e.Action == "no-network")
+        {
+            //TODO: Add Download Disabled
+            InfoBar.IsClosable = false;
+            BtnInfoBar.Visibility = Visibility.Collapsed;
+            return;
+        }
+        else if (e.Action == "network-restored")
+        {
+            //TODO: Add Download Enabled
+            return;
         }
         BtnInfoBar.Visibility = !string.IsNullOrEmpty(e.Action) ? Visibility.Visible : Visibility.Collapsed;
         InfoBar.IsOpen = true;
