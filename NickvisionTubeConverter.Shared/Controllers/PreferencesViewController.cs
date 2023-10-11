@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
-using static NickvisionTubeConverter.Shared.Helpers.Gettext;
+using static Nickvision.Aura.Localization.Gettext;
 
 namespace NickvisionTubeConverter.Shared.Controllers;
 
@@ -40,6 +40,16 @@ public class PreferencesViewController
         get => Configuration.Current.Theme;
 
         set => Configuration.Current.Theme = value;
+    }
+
+    /// <summary>
+    /// Whether or not to automatically check for updates
+    /// </summary>
+    public bool AutomaticallyCheckForUpdates
+    {
+        get => Configuration.Current.AutomaticallyCheckForUpdates;
+
+        set => Configuration.Current.AutomaticallyCheckForUpdates = value;
     }
 
     /// <summary>

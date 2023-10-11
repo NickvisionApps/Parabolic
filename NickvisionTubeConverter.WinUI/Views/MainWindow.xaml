@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window
+    x:Class="NickvisionTubeConverter.WinUI.Views.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:NickvisionTubeConverter.WinUI.Views"
+    xmlns:nickvision="using:NickvisionTubeConverter.WinUI.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:wct="using:CommunityToolkit.WinUI.Controls"
+    mc:Ignorable="d" Activated="Window_Activated">
+
+    <Window.SystemBackdrop>
+        <MicaBackdrop />
+    </Window.SystemBackdrop>
+
+    <Grid x:Name="MainGrid" AllowDrop="True" ActualThemeChanged="Window_ActualThemeChanged" Loaded="Window_Loaded">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Grid x:Name="TitleBar" Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="48">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition x:Name="LeftPaddingColumn" Width="0"/>
+                <ColumnDefinition x:Name="IconColumn" Width="Auto"/>
+                <ColumnDefinition x:Name="TitleColumn" Width="Auto"/>
+                <ColumnDefinition x:Name="LeftDragColumn" Width="0"/>
+                <ColumnDefinition x:Name="MenuColumn" Width="Auto"/>
+                <ColumnDefinition x:Name="RightDragColumn" Width="*"/>
+                <ColumnDefinition x:Name="RightPaddingColumn" Width="0"/>
+            </Grid.ColumnDefinitions>
+
+            <Image x:Name="TitleBarIcon" Grid.Column="1" Margin="8,0,0,0" Width="16" Height="16" Source="../Resources/org.nickvision.tubeconverter.ico"/>
+
+            <TextBlock x:Name="TitleBarTitle" Grid.Column="2" VerticalAlignment="Center" Margin="4,0,0,0" Style="{ThemeResource CaptionTextBlockStyle}"/>
+
+            <StackPanel Grid.Column="4" Margin="4,0,4,0" Orientation="Horizontal" Spacing="4">
+                <MenuBar x:Name="MainMenu" IsEnabled="False">
+                    <MenuBarItem x:Name="MenuFile">
+                        <MenuFlyoutSeparator/>
+
+                        <MenuFlyoutItem x:Name="MenuExit" Click="Exit">
+                            <MenuFlyoutItem.Icon>
+                                <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE106;"/>
+                            </MenuFlyoutItem.Icon>
+
+                            <MenuFlyoutItem.KeyboardAccelerators>
+                                <KeyboardAccelerator Modifiers="Menu" Key="F4"/>
+                            </MenuFlyoutItem.KeyboardAccelerators>
+                        </MenuFlyoutItem>
+                    </MenuBarItem>
+
+                    <MenuBarItem x:Name="MenuEdit">
+                        <MenuFlyoutItem x:Name="MenuSettings" Click="Settings">
+                            <MenuFlyoutItem.Icon>
+                                <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE713;"/>
+                            </MenuFlyoutItem.Icon>
+
+                            <MenuFlyoutItem.KeyboardAccelerators>
+                                <KeyboardAccelerator Modifiers="Control" Key="K"/>
+                            </MenuFlyoutItem.KeyboardAccelerators>
+                        </MenuFlyoutItem>
+                    </MenuBarItem>
+
+                    <MenuBarItem x:Name="MenuHelp">
+                        <MenuFlyoutItem x:Name="MenuCheckForUpdates" Click="CheckForUpdates">
+                            <MenuFlyoutItem.Icon>
+                                <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE117;"/>
+                            </MenuFlyoutItem.Icon>
+                        </MenuFlyoutItem>
+
+                        <MenuFlyoutSeparator />
+
+                        <MenuFlyoutItem x:Name="MenuGitHubRepo" Click="GitHubRepo">
+                            <MenuFlyoutItem.Icon>
+                                <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE8F1;"/>
+                            </MenuFlyoutItem.Icon>
+                        </MenuFlyoutItem>
+
+                        <MenuFlyoutItem x:Name="MenuReportABug" Click="ReportABug">
+                            <MenuFlyoutItem.Icon>
+                                <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xEBE8;"/>
+                            </MenuFlyoutItem.Icon>
+                        </MenuFlyoutItem>
+
+                        <MenuFlyoutItem x:Name="MenuDiscussions" Click="Discussions">
+                            <MenuFlyoutItem.Icon>
+                                <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE8F2;"/>
+                            </MenuFlyoutItem.Icon>
+                        </MenuFlyoutItem>
+
+                        <MenuFlyoutSeparator />
+
+                        <MenuFlyoutItem x:Name="MenuAbout" Click="About">
+                            <MenuFlyoutItem.Icon>
+                                <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE946;"/>
+                            </MenuFlyoutItem.Icon>
+
+                            <MenuFlyoutItem.KeyboardAccelerators>
+                                <KeyboardAccelerator Modifiers="None" Key="F1"/>
+                            </MenuFlyoutItem.KeyboardAccelerators>
+                        </MenuFlyoutItem>
+                    </MenuBarItem>
+                </MenuBar>
+
+                <TextBlock x:Name="TitlePreview" VerticalAlignment="Center" Margin="10,0,0,0" Style="{ThemeResource NavigationViewItemHeaderTextStyle}" Foreground="Gray" FontSize="12"/>
+            </StackPanel>
+        </Grid>
+
+        <Grid Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <nickvision:ViewStack x:Name="ViewStack" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                <nickvision:ViewStack.Pages>
+                    <nickvision:ViewStackPage PageName="Startup">
+                        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical" Spacing="64">
+                            <Image Width="128" Height="128" Source="../Resources/org.nickvision.tubeconverter.ico"/>
+
+                            <ProgressRing />
+                        </StackPanel>
+                    </nickvision:ViewStackPage>
+
+                    <nickvision:ViewStackPage PageName="Home">
+                        <ScrollView>
+                            <Grid Margin="12,0,12,0" RowSpacing="12">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="200"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                
+                                <Border x:Name="HomeBanner" Grid.Row="0" HorizontalAlignment="Stretch" BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}" BorderThickness="1" CornerRadius="8">
+                                    <Grid Margin="32,32,32,32">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <StackPanel Grid.Column="0" Orientation="Vertical" Spacing="12" VerticalAlignment="Center">
+                                            <TextBlock x:Name="HomeBannerTitle" TextWrapping="WrapWholeWords" Style="{ThemeResource NavigationViewItemHeaderTextStyle}" FontSize="22"/>
+                                            
+                                            <TextBlock x:Name="HomeBannerDescription" TextWrapping="WrapWholeWords"/>
+                                        </StackPanel>
+
+                                        <Image Grid.Column="1" VerticalAlignment="Center" Width="128" Height="128" Source="../Resources/org.nickvision.tubeconverter.ico"/>
+                                    </Grid>
+                                </Border>
+
+                                <Border Grid.Row="1" Background="{ThemeResource CardBackgroundFillColorDefaultBrush}" BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}" BorderThickness="1" CornerRadius="8">
+                                    <StackPanel Margin="12,12,12,12" Orientation="Vertical" Spacing="12">
+                                        <TextBlock x:Name="HomeGettingStartedTitle" TextWrapping="WrapWholeWords" Style="{ThemeResource NavigationViewItemHeaderTextStyle}"/>
+
+                                        <TextBlock x:Name="HomeGettingStartedDescription" TextWrapping="WrapWholeWords"/>
+                                    </StackPanel>
+                                </Border>
+
+                                <StackPanel Grid.Row="2" Orientation="Horizontal" Spacing="12">
+                                    <Button Width="200" Height="220" Click="ReportABug" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch">
+                                        <Button.Content>
+                                            <Grid Margin="12,12,6,12" RowSpacing="24">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="*"/>
+                                                    <RowDefinition Height="Auto"/>
+                                                </Grid.RowDefinitions>
+
+                                                <FontIcon Grid.Row="0" HorizontalAlignment="Left" FontFamily="{StaticResource SymbolThemeFontFamily}" FontSize="24" Glyph="&#xEBE8;"/>
+
+                                                <StackPanel Grid.Row="1" Orientation="Vertical" Spacing="6">
+                                                    <TextBlock x:Name="HomeReportABugTitle" FontSize="18" TextWrapping="WrapWholeWords"/>
+
+                                                    <TextBlock x:Name="HomeReportABugDescription" Foreground="Gray" TextWrapping="WrapWholeWords"/>
+                                                </StackPanel>
+
+                                                <FontIcon Grid.Row="2" HorizontalAlignment="Right" FontFamily="{StaticResource SymbolThemeFontFamily}" FontSize="16" Glyph="&#xE8A7;"/>
+                                            </Grid>
+                                        </Button.Content>
+                                    </Button>
+
+                                    <Button Width="200" Height="220" Click="Discussions" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch">
+                                        <Button.Content>
+                                            <Grid Margin="12,12,6,12" RowSpacing="24">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="*"/>
+                                                    <RowDefinition Height="Auto"/>
+                                                </Grid.RowDefinitions>
+
+                                                <FontIcon Grid.Row="0" HorizontalAlignment="Left" FontFamily="{StaticResource SymbolThemeFontFamily}" FontSize="24" Glyph="&#xE8F2;"/>
+
+                                                <StackPanel Grid.Row="1" Orientation="Vertical" Spacing="6">
+                                                    <TextBlock x:Name="HomeDiscussionsTitle" FontSize="18" TextWrapping="WrapWholeWords"/>
+
+                                                    <TextBlock x:Name="HomeDiscussionsDescription" Foreground="Gray" TextWrapping="WrapWholeWords"/>
+                                                </StackPanel>
+
+                                                <FontIcon Grid.Row="2" HorizontalAlignment="Right" FontFamily="{StaticResource SymbolThemeFontFamily}" FontSize="16" Glyph="&#xE8A7;"/>
+                                            </Grid>
+                                        </Button.Content>
+                                    </Button>
+                                </StackPanel>
+                            </Grid>
+                        </ScrollView>
+                    </nickvision:ViewStackPage>
+
+                    <nickvision:ViewStackPage PageName="Folder">
+                        <ScrollView>
+                            <Grid Margin="6,0,6,0" RowSpacing="6">
+                               
+                            </Grid>
+                        </ScrollView>
+                    </nickvision:ViewStackPage>
+                </nickvision:ViewStack.Pages>
+            </nickvision:ViewStack>
+
+            <InfoBar x:Name="InfoBar" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,6" CornerRadius="12">
+                <InfoBar.ActionButton>
+                    <Button x:Name="BtnInfoBar" HorizontalAlignment="Right"/>
+                </InfoBar.ActionButton>
+            </InfoBar>
+        </Grid>
+
+        <Border x:Name="StatusBar" Grid.Row="2" HorizontalAlignment="Stretch" Margin="0,6,0,0" Height="36" Visibility="Collapsed" Background="{ThemeResource CardBackgroundFillColorDefaultBrush}" BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}" BorderThickness="1">
+            <wct:DockPanel LastChildFill="False">
+                <FontIcon x:Name="StatusIcon" wct:DockPanel.Dock="Left" VerticalAlignment="Center" Margin="6,0,10,0" FontFamily="{StaticResource SymbolThemeFontFamily}" FontSize="16" Glyph="&#xE73E;"/>
+
+                <TextBlock x:Name="StatusLabel" wct:DockPanel.Dock="Left" VerticalAlignment="Center"/>
+            </wct:DockPanel>
+        </Border>
+    </Grid>
+</Window>

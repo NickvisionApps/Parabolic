@@ -3,7 +3,7 @@ using NickvisionTubeConverter.GNOME.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using static NickvisionTubeConverter.Shared.Helpers.Gettext;
+using static Nickvision.Aura.Localization.Gettext;
 
 namespace NickvisionTubeConverter.GNOME.Views;
 

@@ -1,4 +1,5 @@
 ﻿using Nickvision.Aura;
+using Nickvision.Aura.Configuration;
 using System;
 using System.Globalization;
 using System.IO;
@@ -21,6 +22,10 @@ public class Configuration : ConfigurationBase
     /// The preferred theme for the application
     /// </summary>
     public Theme Theme { get; set; }
+    /// <summary>
+    /// Whether or not to automatically check for updates
+    /// </summary>
+    public bool AutomaticallyCheckForUpdates { get; set; }
     /// <summary>
     /// The preference of how often to show completed notifications
     /// </summary>
@@ -129,6 +134,7 @@ public class Configuration : ConfigurationBase
     public Configuration()
     {
         Theme = Theme.System;
+        AutomaticallyCheckForUpdates = true;
         CompletedNotificationPreference = NotificationPreference.ForEach;
         PreventSuspendWhenDownloading = false;
         RunInBackground = RuntimeInformation.IsOSPlatform(OSPlatform.Windows);

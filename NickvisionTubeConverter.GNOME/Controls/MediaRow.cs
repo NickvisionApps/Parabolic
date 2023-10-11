@@ -1,7 +1,7 @@
 ﻿using NickvisionTubeConverter.GNOME.Helpers;
 using NickvisionTubeConverter.Shared.Models;
 using System;
-using static NickvisionTubeConverter.Shared.Helpers.Gettext;
+using static Nickvision.Aura.Localization.Gettext;
 
 namespace NickvisionTubeConverter.GNOME.Controls;
 

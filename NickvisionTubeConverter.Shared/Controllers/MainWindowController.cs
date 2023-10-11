@@ -2,6 +2,7 @@
 using Nickvision.Aura.Network;
 using Nickvision.Aura.Keyring;
 using Nickvision.Aura.Taskbar;
+using Nickvision.Aura.Update;
 using NickvisionTubeConverter.Shared.Events;
 using NickvisionTubeConverter.Shared.Helpers;
 using NickvisionTubeConverter.Shared.Models;
@@ -9,8 +10,10 @@ using Python.Runtime;
 using System;
 using System.Diagnostics;
 using System.IO;
+using System.Reflection;
+using System.Runtime.InteropServices;
 using System.Threading.Tasks;
-using static NickvisionTubeConverter.Shared.Helpers.Gettext;
+using static Nickvision.Aura.Localization.Gettext;
 
 namespace NickvisionTubeConverter.Shared.Controllers;
 
@@ -24,6 +27,7 @@ public class MainWindowController : IDisposable
     private Keyring? _keyring;
     private NetworkMonitor? _netmon;
     private TaskbarItem? _taskbarItem;
+    private Updater? _updater;
     private readonly Stopwatch _taskbarStopwatch;
 
     private const int TASKBAR_STOPWATCH_THRESHOLD = 500;
@@ -88,6 +92,7 @@ public class MainWindowController : IDisposable
         _taskbarStopwatch = new Stopwatch();
         DownloadManager = new DownloadManager(5);
         Aura.Init("org.nickvision.tubeconverter", "Nickvision Tube Converter");
+        AppInfo.EnglishShortName = "Parabolic";
         if (Directory.Exists($"{UserDirectories.Config}{Path.DirectorySeparatorChar}Nickvision{Path.DirectorySeparatorChar}{AppInfo.Name}"))
         {
             // Move config files from older versions and delete old directory
@@ -104,7 +109,7 @@ public class MainWindowController : IDisposable
         Aura.Active.SetConfig<Configuration>("config");
         Configuration.Current.Saved += ConfigurationSaved;
         Aura.Active.SetConfig<DownloadHistory>("downloadHistory");
-        AppInfo.Version = "2023.9.1";
+        AppInfo.Version = "2023.10.0-next";
         AppInfo.ShortName = _("Parabolic");
         AppInfo.Description = _("Download web video and audio");
         AppInfo.SourceRepo = new Uri("https://github.com/NickvisionApps/Parabolic");
@@ -141,6 +146,24 @@ public class MainWindowController : IDisposable
             DownloadManager.DownloadProgressUpdated += (_, _) => UpdateTaskbar();
             DownloadManager.DownloadCompleted += (_, _) => UpdateTaskbar(true);
             DownloadManager.DownloadStopped += (_, _) => UpdateTaskbar(true);
+        }
+    }
+
+    /// <summary>
+    /// The string for greeting on the home page
+    /// </summary>
+    public string Greeting
+    {
+        get
+        {
+            return DateTime.Now.Hour switch
+            {
+                >= 0 and < 6 => _p("Night", "Good Morning!"),
+                < 12 => _p("Morning", "Good Morning!"),
+                < 18 => _("Good Afternoon!"),
+                < 24 => _("Good Evening!"),
+                _ => _("Good Day!")
+            };
         }
     }
 
@@ -197,6 +220,11 @@ public class MainWindowController : IDisposable
     /// </summary>
     public async Task StartupAsync()
     {
+        //Update app
+        if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows) && Configuration.Current.AutomaticallyCheckForUpdates)
+        {
+            await CheckForUpdatesAsync();
+        }
         //Setup Folders
         DownloadManager.MaxNumberOfActiveDownloads = Configuration.Current.MaxNumberOfActiveDownloads;
         if (Directory.Exists(Configuration.TempDir))
@@ -207,21 +235,32 @@ public class MainWindowController : IDisposable
         //Setup Dependencies
         try
         {
-            var success = DependencyManager.SetupDependencies();
-            if (!success)
+            var process = new Process
             {
-                NotificationSent?.Invoke(this, new NotificationSentEventArgs(_("Unable to setup dependencies. Please restart the app and try again."), NotificationSeverity.Error));
-            }
-            else
-            {
-                RuntimeData.FormatterType = typeof(NoopFormatter);
-                PythonEngine.Initialize();
-                _pythonThreadState = PythonEngine.BeginAllowThreads();
-            }
+                StartInfo = new ProcessStartInfo
+                {
+                    FileName = DependencyLocator.Find(RuntimeInformation.IsOSPlatform(OSPlatform.Windows) ? "python" : "python3"),
+                    Arguments = "-c \"import sysconfig; import os; print(('/snap/tube-converter/current/gnome-platform' if os.environ.get('SNAP') else '') + ('/'.join(sysconfig.get_config_vars('LIBDIR', 'INSTSONAME'))))\"",
+                    UseShellExecute = false,
+                    RedirectStandardOutput = true
+                }
+            };
+            process.Start();
+            Runtime.PythonDLL = process.StandardOutput.ReadToEnd().Trim();
+            process.WaitForExit();
+            // Install yt-dlp plugin
+            var pluginPath = $"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}{Path.DirectorySeparatorChar}yt-dlp{Path.DirectorySeparatorChar}plugins{Path.DirectorySeparatorChar}tubeconverter{Path.DirectorySeparatorChar}yt_dlp_plugins{Path.DirectorySeparatorChar}postprocessor{Path.DirectorySeparatorChar}tubeconverter.py";
+            Directory.CreateDirectory(pluginPath.Substring(0, pluginPath.LastIndexOf(Path.DirectorySeparatorChar)));
+            using var pluginResource = Assembly.GetExecutingAssembly().GetManifestResourceStream("NickvisionTubeConverter.Shared.Resources.tubeconverter.py")!;
+            using var pluginFile = new FileStream(pluginPath, FileMode.Create, FileAccess.Write);
+            pluginResource.CopyTo(pluginFile);
+            RuntimeData.FormatterType = typeof(NoopFormatter);
+            PythonEngine.Initialize();
+            _pythonThreadState = PythonEngine.BeginAllowThreads();
         }
-        catch (Exception e)
+        catch
         {
-            NotificationSent?.Invoke(this, new NotificationSentEventArgs(_("Unable to setup dependencies. Please restart the app and try again."), NotificationSeverity.Error, "error", $"{e.Message}\n\n{e.StackTrace}"));
+            NotificationSent?.Invoke(this, new NotificationSentEventArgs(_("Unable to setup dependencies. Please restart the app and try again."), NotificationSeverity.Error));
         }
         //Setup Keyring
         if(Keyring.Exists(AppInfo.ID))
@@ -250,6 +289,44 @@ public class MainWindowController : IDisposable
                 NotificationSent?.Invoke(this, new NotificationSentEventArgs(_("No active internet connection"), NotificationSeverity.Error, "no-network"));
             }
         };
+    }
+
+    /// <summary>
+    /// Checks for an application update and notifies the user if one is available
+    /// </summary>
+    public async Task CheckForUpdatesAsync()
+    {
+        if (!AppInfo.IsDevVersion)
+        {
+            if (_updater == null)
+            {
+                _updater = await Updater.NewAsync();
+            }
+            var version = await _updater!.GetCurrentStableVersionAsync();
+            if (version != null && version > new Version(AppInfo.Version))
+            {
+                NotificationSent?.Invoke(this, new NotificationSentEventArgs(_("New update available."), NotificationSeverity.Success, "update"));
+            }
+        }
+    }
+
+    /// <summary>
+    /// Downloads and installs the latest application update for Windows systems
+    /// </summary>
+    /// <returns>True if successful, else false</returns>
+    /// <remarks>CheckForUpdatesAsync must be called before this method</remarks>
+    public async Task<bool> WindowsUpdateAsync()
+    {
+        if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows) && _updater != null)
+        {
+            var res = await _updater.WindowsUpdateAsync(VersionType.Stable);
+            if (!res)
+            {
+                NotificationSent?.Invoke(this, new NotificationSentEventArgs(_("Unable to download and install update."), NotificationSeverity.Error));
+            }
+            return res;
+        }
+        return false;
     }
 
     /// <summary>

@@ -5,7 +5,7 @@ using System;
 using System.IO;
 using System.Threading.Tasks;
 using static Nickvision.GirExt.GtkExt;
-using static NickvisionTubeConverter.Shared.Helpers.Gettext;
+using static Nickvision.Aura.Localization.Gettext;
 
 namespace NickvisionTubeConverter.GNOME.Views;
 

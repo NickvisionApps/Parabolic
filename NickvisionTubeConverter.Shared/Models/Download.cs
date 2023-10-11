@@ -1,4 +1,6 @@
-﻿using NickvisionTubeConverter.Shared.Helpers;
+﻿using Nickvision.Aura;
+using Nickvision.Aura.Helpers;
+using NickvisionTubeConverter.Shared.Helpers;
 using Python.Runtime;
 using System;
 using System.Collections.Generic;
@@ -7,7 +9,7 @@ using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
-using static NickvisionTubeConverter.Shared.Helpers.Gettext;
+using static Nickvision.Aura.Localization.Gettext;
 
 namespace NickvisionTubeConverter.Shared.Models;
 
@@ -198,7 +200,7 @@ public class Download
                     { "postprocessor_hooks", hooks },
                     { "merge_output_format", null },
                     { "outtmpl", $"{Id.ToString()}.%(ext)s" },
-                    { "ffmpeg_location", DependencyManager.FfmpegPath },
+                    { "ffmpeg_location", DependencyLocator.Find("ffmpeg")! },
                     { "windowsfilenames", RuntimeInformation.IsOSPlatform(OSPlatform.Windows) },
                     { "encoding", "utf_8" },
                     { "overwrites", options.OverwriteExistingFiles },
@@ -229,7 +231,7 @@ public class Download
                 }
                 if (options.UseAria && _timeframe == null)
                 {
-                    _ytOpt.Add("external_downloader", new Dictionary<string, dynamic>() { { "default", DependencyManager.Aria2Path } });
+                    _ytOpt.Add("external_downloader", new Dictionary<string, dynamic>() { { "default", DependencyLocator.Find("aria2c") } });
                     dynamic ariaDict = new PyDict();
                     dynamic ariaParams = new PyList();
                     ariaParams.Append(new PyString($"--max-overall-download-limit={(_limitSpeed ? _speedLimit : 0)}K"));
