@@ -188,9 +188,9 @@ public class MainWindowController : IDisposable
         _taskbarItem?.Dispose();
         PythonEngine.EndAllowThreads(_pythonThreadState);
         PythonEngine.Shutdown();
-        if (Directory.Exists(Configuration.TempDir))
+        if (Directory.Exists(UserDirectories.ApplicationCache))
         {
-            Directory.Delete(Configuration.TempDir, true);
+            Directory.Delete(UserDirectories.ApplicationCache, true);
         }
         _keyring?.Dispose();
         _netmon?.Dispose();
@@ -225,8 +225,14 @@ public class MainWindowController : IDisposable
         {
             await CheckForUpdatesAsync();
         }
-        //Setup Dependencies
+        //Setup folders
         DownloadManager.MaxNumberOfActiveDownloads = Configuration.Current.MaxNumberOfActiveDownloads;
+        if (Directory.Exists(UserDirectories.ApplicationCache))
+        {
+            Directory.Delete(UserDirectories.ApplicationCache, true);
+        }
+        Directory.CreateDirectory(UserDirectories.ApplicationCache);
+        //Setup Dependencies
         try
         {
             var process = new Process

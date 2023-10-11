@@ -1,4 +1,5 @@
-﻿using NickvisionTubeConverter.Shared.Helpers;
+﻿using Nickvision.Aura;
+using NickvisionTubeConverter.Shared.Helpers;
 using Python.Runtime;
 using System;
 using System.Collections.Generic;
@@ -57,7 +58,7 @@ public class MediaUrlInfo
     /// <returns>A MediaUrlInfo object. Null if url invalid</returns>
     public static async Task<MediaUrlInfo?> GetAsync(string url, string? username, string? password, string? proxyUrl)
     {
-        var pathToOutput = $"{Configuration.TempDir}{Path.DirectorySeparatorChar}output.log";
+        var pathToOutput = $"{UserDirectories.ApplicationCache}{Path.DirectorySeparatorChar}output.log";
         dynamic outFile = PythonHelpers.SetConsoleOutputFilePath(pathToOutput);
         return await Task.Run(() =>
         {
