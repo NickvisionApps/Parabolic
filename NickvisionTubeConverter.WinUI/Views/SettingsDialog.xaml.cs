@@ -37,9 +37,46 @@ public sealed partial class SettingsDialog : ContentDialog
         CardAutomaticallyCheckForUpdates.Header = _("Automatically Check for Updates");
         TglAutomaticallyCheckForUpdates.OnContent = _("On");
         TglAutomaticallyCheckForUpdates.OffContent = _("Off");
+        CardCompletedNotification.Header = _("Completed Notification Trigger");
+        CardCompletedNotification.Description = _("In combination with the trigger, completed notifications will only be shown if the window is not focused.");
+        CmbCompletedNotification.Items.Add(_p("CompletedNotification", "For each download"));
+        CmbCompletedNotification.Items.Add(_p("CompletedNotification", "When all downloads finish"));
+        CmbCompletedNotification.Items.Add(_p("CompletedNotification", "Never"));
+        CardSuspend.Header = _("Prevent Suspend");
+        TglSuspend.OnContent = _("On");
+        TglSuspend.OffContent = _("Off");
+        CardBackground.Header = _("Allow Running In Background");
+        CardBackground.Description = _("Hide the window instead of quitting if there are downloads running.");
+        TglBackground.OnContent = _("On");
+        TglBackground.OffContent = _("Off");
+        LblDownloader.Text = _("Downloader");
+        CardMaxNumberOfActiveDownloads.Header = _("Max Number of Active Downloads");
+        CardOverwrite.Header = _("Overwrite Existing Files");
+        TglOverwrite.OnContent = _("On");
+        TglOverwrite.OffContent = _("Off");
+        CardSpeedLimit.Header = _("Speed Limit");
+        CardSpeedLimit.Description = _("This limit (in KiB/s) is applied to downloads that have speed limit enabled. Changing the value doesn't affect already running downloads.");
+        CardUseAria.Header = _("Use aria2");
+        CardUseAria.Description = _("Enable to use aria2 downloader. It can be faster, but you will not see download progress.");
+        TglUseAria.OnContent = _("On");
+        TglUseAria.OffContent = _("Off");
+        CardAriaMaxConnectionsPerServer.Header = _("Max Connections Per Server (-x)");
+        ToolTipService.SetToolTip(BtnAriaMaxConnectionsPerServerReset, _("Reset to default"));
+        CardAriaMinSplitSize.Header = _("Minimum Split Size (-k)");
+        CardAriaMinSplitSize.Description = _("The minimum size of which to split a file (in MiB).");
+        ToolTipService.SetToolTip(BtnAriaMinSplitSizeReset, _("Reset to default"));
         //Load Config
         CmbTheme.SelectedIndex = (int)_controller.Theme;
         TglAutomaticallyCheckForUpdates.IsOn = _controller.AutomaticallyCheckForUpdates;
+        CmbCompletedNotification.SelectedIndex = (int)_controller.CompletedNotificationPreference;
+        TglSuspend.IsOn = _controller.PreventSuspendWhenDownloading;
+        TglBackground.IsOn = _controller.RunInBackground;
+        TxtMaxNumberOfActiveDownloads.Value = _controller.MaxNumberOfActiveDownloads;
+        TglOverwrite.IsOn = _controller.OverwriteExistingFiles;
+        TxtSpeedLimit.Value = _controller.SpeedLimit;
+        TglUseAria.IsOn = _controller.UseAria;
+        TxtAriaMaxConnectionsPerServer.Value = _controller.AriaMaxConnectionsPerServer;
+        TxtAriaMinSplitSize.Value = _controller.AriaMinSplitSize;
     }
 
     /// <summary>
@@ -58,6 +95,15 @@ public sealed partial class SettingsDialog : ContentDialog
                 needsRestart = true;
             }
             _controller.AutomaticallyCheckForUpdates = TglAutomaticallyCheckForUpdates.IsOn;
+            _controller.CompletedNotificationPreference = (NotificationPreference)CmbCompletedNotification.SelectedIndex;
+            _controller.PreventSuspendWhenDownloading = TglSuspend.IsOn;
+            _controller.RunInBackground = TglBackground.IsOn;
+            _controller.MaxNumberOfActiveDownloads = (int)TxtMaxNumberOfActiveDownloads.Value;
+            _controller.OverwriteExistingFiles = TglOverwrite.IsOn;
+            _controller.SpeedLimit = (uint)TxtSpeedLimit.Value;
+            _controller.UseAria = TglUseAria.IsOn;
+            _controller.AriaMaxConnectionsPerServer = (int)TxtAriaMaxConnectionsPerServer.Value;
+            _controller.AriaMinSplitSize = (int)TxtAriaMinSplitSize.Value;
             _controller.SaveConfiguration();
             if (needsRestart)
             {
@@ -86,4 +132,18 @@ public sealed partial class SettingsDialog : ContentDialog
     /// <param name="sender">object</param>
     /// <param name="e">SizeChangedEventArgs</param>
     private void ScrollViewer_SizeChanged(object sender, SizeChangedEventArgs e) => StackPanel.Margin = new Thickness(0, 0, ScrollViewer.ComputedVerticalScrollBarVisibility == Visibility.Visible ? 14 : 0, 0);
+
+    /// <summary>
+    /// Occurs when the AriaMaxConnectionsPerServerReset button is clicked
+    /// </summary>
+    /// <param name="sender">object</param>
+    /// <param name="e">RoutedEventArgs</param>
+    private void AriaMaxConnectionsPerServerReset(object sender, RoutedEventArgs e) => TxtAriaMaxConnectionsPerServer.Value = 16;
+
+    /// <summary>
+    /// Occurs when the AriaMinSplitSizeReset button is clicked
+    /// </summary>
+    /// <param name="sender">object</param>
+    /// <param name="e">RoutedEventArgs</param>
+    private void AriaMinSplitSizeReset(object sender, RoutedEventArgs e) => TxtAriaMinSplitSize.Value = 20;
 }

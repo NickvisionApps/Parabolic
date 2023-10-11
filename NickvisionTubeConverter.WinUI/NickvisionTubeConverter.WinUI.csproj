@@ -37,7 +37,7 @@
   </ItemGroup>
 
   <Target Name="PreBuild" BeforeTargets="PreBuildEvent" Condition="'$(GITHUB_ACTIONS)' == ''">
-    <Exec Command="for /F &quot;tokens=*&quot; %%l in (..\NickvisionTubeConverter.Shared\Resources\po\LINGUAS) do @mkdir $(OutDir)\%%l &amp; msgfmt ..\NickvisionTubeConverter.Shared\Resources\po\%%l.po -o $(OutDir)\%%l\application.mo" />
+    <Exec Command="for /F &quot;tokens=*&quot; %%l in (..\NickvisionTubeConverter.Shared\Resources\po\LINGUAS) do @mkdir $(OutDir)\%%l &amp; msgfmt ..\NickvisionTubeConverter.Shared\Resources\po\%%l.po -o $(OutDir)\%%l\parabolic.mo" />
     <Exec Command="copy Dependencies\* $(OutDir)" />
   </Target>
   

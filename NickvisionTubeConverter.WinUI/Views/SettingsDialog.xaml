@@ -30,6 +30,98 @@
 
                 <ToggleSwitch x:Name="TglAutomaticallyCheckForUpdates"/>
             </wct:SettingsCard>
+
+            <wct:SettingsCard x:Name="CardCompletedNotification">
+                <wct:SettingsCard.HeaderIcon>
+                    <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xEA8F;"/>
+                </wct:SettingsCard.HeaderIcon>
+
+                <ComboBox x:Name="CmbCompletedNotification"/>
+            </wct:SettingsCard>
+
+            <wct:SettingsCard x:Name="CardSuspend">
+                <wct:SettingsCard.HeaderIcon>
+                    <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE7E8;"/>
+                </wct:SettingsCard.HeaderIcon>
+
+                <ToggleSwitch x:Name="TglSuspend"/>
+            </wct:SettingsCard>
+
+            <wct:SettingsCard x:Name="CardBackground">
+                <wct:SettingsCard.HeaderIcon>
+                    <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE9F5;"/>
+                </wct:SettingsCard.HeaderIcon>
+
+                <ToggleSwitch x:Name="TglBackground"/>
+            </wct:SettingsCard>
+
+            <TextBlock x:Name="LblDownloader" Style="{StaticResource NavigationViewItemHeaderTextStyle}"/>
+
+            <wct:SettingsCard x:Name="CardMaxNumberOfActiveDownloads">
+                <wct:SettingsCard.HeaderIcon>
+                    <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE118;"/>
+                </wct:SettingsCard.HeaderIcon>
+
+                <NumberBox x:Name="TxtMaxNumberOfActiveDownloads" SpinButtonPlacementMode="Inline" Minimum="1" Maximum="10" SmallChange="1" LargeChange="2"/>
+            </wct:SettingsCard>
+
+            <wct:SettingsCard x:Name="CardOverwrite">
+                <wct:SettingsCard.HeaderIcon>
+                    <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE8A5;"/>
+                </wct:SettingsCard.HeaderIcon>
+
+                <ToggleSwitch x:Name="TglOverwrite"/>
+            </wct:SettingsCard>
+
+            <wct:SettingsCard x:Name="CardSpeedLimit">
+                <wct:SettingsCard.HeaderIcon>
+                    <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xEC4A;"/>
+                </wct:SettingsCard.HeaderIcon>
+
+                <NumberBox x:Name="TxtSpeedLimit" SpinButtonPlacementMode="Inline" Minimum="512" Maximum="10240" SmallChange="512" LargeChange="1024"/>
+            </wct:SettingsCard>
+
+            <wct:SettingsExpander x:Name="CardUseAria" IsExpanded="{x:Bind TglUseAria.IsOn, Mode=TwoWay}">
+                <wct:SettingsExpander.HeaderIcon>
+                    <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE15E;"/>
+                </wct:SettingsExpander.HeaderIcon>
+
+                <ToggleSwitch x:Name="TglUseAria"/>
+                
+                <wct:SettingsExpander.Items>
+                    <wct:SettingsCard x:Name="CardAriaMaxConnectionsPerServer">
+                        <wct:SettingsCard.HeaderIcon>
+                            <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE12B;"/>
+                        </wct:SettingsCard.HeaderIcon>
+
+                        <StackPanel Orientation="Horizontal" Spacing="6">
+                            <NumberBox x:Name="TxtAriaMaxConnectionsPerServer" SpinButtonPlacementMode="Inline" Minimum="1" Maximum="32" SmallChange="1" LargeChange="2"/>
+
+                            <Button x:Name="BtnAriaMaxConnectionsPerServerReset" Click="AriaMaxConnectionsPerServerReset">
+                                <Button.Content>
+                                    <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE10E;"/>
+                                </Button.Content>
+                            </Button>
+                        </StackPanel>
+                    </wct:SettingsCard>
+
+                    <wct:SettingsCard x:Name="CardAriaMinSplitSize">
+                        <wct:SettingsCard.HeaderIcon>
+                            <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE16B;"/>
+                        </wct:SettingsCard.HeaderIcon>
+
+                        <StackPanel Orientation="Horizontal" Spacing="6">
+                            <NumberBox x:Name="TxtAriaMinSplitSize" SpinButtonPlacementMode="Inline" Minimum="1" Maximum="1024" SmallChange="1" LargeChange="128"/>
+
+                            <Button x:Name="BtnAriaMinSplitSizeReset" Click="AriaMinSplitSizeReset">
+                                <Button.Content>
+                                    <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE10E;"/>
+                                </Button.Content>
+                            </Button>
+                        </StackPanel>
+                    </wct:SettingsCard>
+                </wct:SettingsExpander.Items>
+            </wct:SettingsExpander>
         </StackPanel>
     </ScrollViewer>
 </ContentDialog>
