@@ -4,20 +4,6 @@
     "build-commands": [],
     "modules": [
         {
-            "name": "python3-psutil",
-            "buildsystem": "simple",
-            "build-commands": [
-                "pip3 install --verbose --exists-action=i --no-index --find-links=\"file://${PWD}\" --prefix=${FLATPAK_DEST} \"psutil\" --no-build-isolation"
-            ],
-            "sources": [
-                {
-                    "type": "file",
-                    "url": "https://files.pythonhosted.org/packages/d6/0f/96b7309212a926c1448366e9ce69b081ea79d63265bde33f11cc9cfc2c07/psutil-5.9.5.tar.gz",
-                    "sha256": "5410638e4df39c54d957fc51ce03048acd8e6d60abc0f5107af51e5fb566eb3c"
-                }
-            ]
-        },
-        {
             "name": "python3-yt-dlp",
             "buildsystem": "simple",
             "build-commands": [
@@ -51,8 +37,22 @@
                 },
                 {
                     "type": "file",
-                    "url": "https://files.pythonhosted.org/packages/70/b4/94e72fd0e1541ab50f8efe224ead550a367da3df1b8aa733bd2d9bde9aed/yt_dlp-2023.9.24-py2.py3-none-any.whl",
-                    "sha256": "61792482647faac6207b1795b52d73714803414d8c090cd9721dfe8b16b12605"
+                    "url": "https://files.pythonhosted.org/packages/9a/24/9ba3bbcc12a059dbb484e16309926cf2676212efe9320dd35592322b5b97/yt_dlp-2023.10.7-py2.py3-none-any.whl",
+                    "sha256": "5f5253aec0a7e18c991d7412ee293eee99f73249b360f4adb9a3f529b769d9d9"
+                }
+            ]
+        },
+        {
+            "name": "python3-psutil",
+            "buildsystem": "simple",
+            "build-commands": [
+                "pip3 install --verbose --exists-action=i --no-index --find-links=\"file://${PWD}\" --prefix=${FLATPAK_DEST} \"psutil\" --no-build-isolation"
+            ],
+            "sources": [
+                {
+                    "type": "file",
+                    "url": "https://files.pythonhosted.org/packages/d6/0f/96b7309212a926c1448366e9ce69b081ea79d63265bde33f11cc9cfc2c07/psutil-5.9.5.tar.gz",
+                    "sha256": "5410638e4df39c54d957fc51ce03048acd8e6d60abc0f5107af51e5fb566eb3c"
                 }
             ]
         }
