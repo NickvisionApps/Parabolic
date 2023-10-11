@@ -80,6 +80,8 @@ public sealed partial class MainWindow : Window
         MenuReportABug.Text = _("Report a Bug");
         MenuDiscussions.Text = _("Discussions");
         MenuAbout.Text = _("About {0}", _controller.AppInfo.ShortName);
+        LblStartup.Text = _("Preparing required tools...");
+        LblStartup2.Text = _("This may take a while");
         StatusLabel.Text = _("Ready");
         HomeBannerTitle.Text = _controller.Greeting;
         HomeBannerDescription.Text = _controller.AppInfo.Description;
@@ -265,7 +267,7 @@ public sealed partial class MainWindow : Window
     /// <param name="e">RoutedEventArgs</param>
     private async void Settings(object sender, RoutedEventArgs e)
     {
-        var settingsDialog = new SettingsDialog(_controller.CreatePreferencesViewController())
+        var settingsDialog = new SettingsDialog(_controller.CreatePreferencesViewController(), InitializeWithWindow)
         {
             XamlRoot = MainGrid.XamlRoot
         };

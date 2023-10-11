@@ -123,6 +123,12 @@
                             <Image Width="128" Height="128" Source="../Resources/org.nickvision.tubeconverter.ico"/>
 
                             <ProgressRing />
+
+                            <StackPanel Orientation="Vertical" Spacing="12">
+                                <TextBlock x:Name="LblStartup" HorizontalAlignment="Center" Style="{ThemeResource NavigationViewItemHeaderTextStyle}"/>
+
+                                <TextBlock x:Name="LblStartup2" HorizontalAlignment="Center" Foreground="Gray"/>
+                            </StackPanel>
                         </StackPanel>
                     </nickvision:ViewStackPage>
 

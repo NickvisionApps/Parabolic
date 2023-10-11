@@ -265,7 +265,7 @@ public class MainWindowController : IDisposable
             RuntimeData.FormatterType = typeof(NoopFormatter);
             PythonEngine.Initialize();
             _pythonThreadState = PythonEngine.BeginAllowThreads();
-            if(RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
                 await Task.Run(() =>
                 {
@@ -278,7 +278,7 @@ public class MainWindowController : IDisposable
                 });
             }
         }
-        catch(Exception ex)
+        catch (Exception ex)
         {
             NotificationSent?.Invoke(this, new NotificationSentEventArgs(_("Unable to setup dependencies. Please restart the app and try again."), NotificationSeverity.Error));
         }

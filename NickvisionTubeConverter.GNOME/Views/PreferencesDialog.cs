@@ -166,7 +166,7 @@ public partial class PreferencesDialog : Adw.PreferencesWindow
     /// </summary>
     private async Task LaunchSponsorBlockInfoAsync()
     {
-        var uriLauncher = Gtk.UriLauncher.New("https://sponsor.ajay.app/");
+        var uriLauncher = Gtk.UriLauncher.New(_controller.SponsorBlockInfoUrl);
         try
         {
             await uriLauncher.LaunchAsync(this);
@@ -233,7 +233,7 @@ public partial class PreferencesDialog : Adw.PreferencesWindow
     private async Task LaunchChromeCookiesExtensionAsync()
     {
         _cookiesPopover.Popdown();
-        var uriLauncher = Gtk.UriLauncher.New("https://chrome.google.com/webstore/detail/get-cookiestxt-locally/cclelndahbckbenkjhflpdbgdldlbecc");
+        var uriLauncher = Gtk.UriLauncher.New(_controller.ChromeCookiesExtensionUrl);
         try
         {
             await uriLauncher.LaunchAsync(this);
@@ -247,7 +247,7 @@ public partial class PreferencesDialog : Adw.PreferencesWindow
     private async Task LaunchFirefoxCookiesExtensionAsync()
     {
         _cookiesPopover.Popdown();
-        var uriLauncher = Gtk.UriLauncher.New("https://addons.mozilla.org/en-US/firefox/addon/cookies-txt/");
+        var uriLauncher = Gtk.UriLauncher.New(_controller.FirefoxCookiesExtensionUrl);
         try
         {
             await uriLauncher.LaunchAsync(this);

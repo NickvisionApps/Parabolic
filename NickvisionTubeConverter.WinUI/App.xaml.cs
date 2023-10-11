@@ -21,7 +21,8 @@ public partial class App : Application
     {
         InitializeComponent();
         _controller = new MainWindowController();
-        _controller.AppInfo.Changelog = @"- Updated translations (Thanks everyone on Weblate!)";
+        _controller.AppInfo.Changelog = @"Parabolic is now available for Windows using Windows App SDK and WinUI 3
+- Updated translations (Thanks everyone on Weblate!)";
         if (_controller.Theme != Theme.System)
         {
             RequestedTheme = _controller.Theme switch

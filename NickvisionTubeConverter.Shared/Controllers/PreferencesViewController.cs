@@ -19,6 +19,18 @@ public class PreferencesViewController
     /// Gets the AppInfo object
     /// </summary>
     public AppInfo AppInfo => Aura.Active.AppInfo;
+    /// <summary>
+    /// The URL for SponsorBlock information
+    /// </summary>
+    public string SponsorBlockInfoUrl => "https://sponsor.ajay.app/";
+    /// <summary>
+    /// The URL for the chrome cookies extension
+    /// </summary>
+    public string ChromeCookiesExtensionUrl => "https://chrome.google.com/webstore/detail/get-cookiestxt-locally/cclelndahbckbenkjhflpdbgdldlbecc";
+    /// <summary>
+    /// The URL for the firefox cookies extension
+    /// </summary>
+    public string FirefoxCookiesExtensionUrl => "https://addons.mozilla.org/en-US/firefox/addon/cookies-txt/";
 
     /// <summary>
     /// Constructs a PreferencesViewController
