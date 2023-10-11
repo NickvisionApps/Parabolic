@@ -225,14 +225,8 @@ public class MainWindowController : IDisposable
         {
             await CheckForUpdatesAsync();
         }
-        //Setup Folders
-        DownloadManager.MaxNumberOfActiveDownloads = Configuration.Current.MaxNumberOfActiveDownloads;
-        if (Directory.Exists(Configuration.TempDir))
-        {
-            Directory.Delete(Configuration.TempDir, true);
-        }
-        Directory.CreateDirectory(Configuration.TempDir);
         //Setup Dependencies
+        DownloadManager.MaxNumberOfActiveDownloads = Configuration.Current.MaxNumberOfActiveDownloads;
         try
         {
             var process = new Process

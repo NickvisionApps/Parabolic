@@ -141,7 +141,7 @@ public class Download
         IsDone = false;
         IsSuccess = false;
         WasStopped = false;
-        _tempDownloadPath = $"{Configuration.TempDir}{Path.DirectorySeparatorChar}{Id}{Path.DirectorySeparatorChar}";
+        _tempDownloadPath = $"{UserDirectories.ApplicationCache}{Path.DirectorySeparatorChar}{Id}{Path.DirectorySeparatorChar}";
         _logPath = $"{_tempDownloadPath}log";
         _limitSpeed = limitSpeed;
         _speedLimit = speedLimit;
