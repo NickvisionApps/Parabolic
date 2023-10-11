@@ -73,6 +73,12 @@
 
                         <MenuFlyoutSeparator />
 
+                        <MenuFlyoutItem x:Name="MenuDocumentation" Click="Documentation">
+                            <MenuFlyoutItem.Icon>
+                                <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE11B;"/>
+                            </MenuFlyoutItem.Icon>
+                        </MenuFlyoutItem>
+
                         <MenuFlyoutItem x:Name="MenuGitHubRepo" Click="GitHubRepo">
                             <MenuFlyoutItem.Icon>
                                 <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE8F1;"/>
@@ -155,6 +161,28 @@
                                 </Border>
 
                                 <StackPanel Grid.Row="2" Orientation="Horizontal" Spacing="12">
+                                    <Button Width="200" Height="220" Click="Documentation" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch">
+                                        <Button.Content>
+                                            <Grid Margin="12,12,6,12" RowSpacing="24">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="*"/>
+                                                    <RowDefinition Height="Auto"/>
+                                                </Grid.RowDefinitions>
+
+                                                <FontIcon Grid.Row="0" HorizontalAlignment="Left" FontFamily="{StaticResource SymbolThemeFontFamily}" FontSize="24" Glyph="&#xE11B;"/>
+
+                                                <StackPanel Grid.Row="1" Orientation="Vertical" Spacing="6">
+                                                    <TextBlock x:Name="HomeDocumentationTitle" FontSize="18" TextWrapping="WrapWholeWords"/>
+
+                                                    <TextBlock x:Name="HomeDocumentationDescription" Foreground="Gray" TextWrapping="WrapWholeWords"/>
+                                                </StackPanel>
+
+                                                <FontIcon Grid.Row="2" HorizontalAlignment="Right" FontFamily="{StaticResource SymbolThemeFontFamily}" FontSize="16" Glyph="&#xE8A7;"/>
+                                            </Grid>
+                                        </Button.Content>
+                                    </Button>
+
                                     <Button Width="200" Height="220" Click="ReportABug" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch">
                                         <Button.Content>
                                             <Grid Margin="12,12,6,12" RowSpacing="24">

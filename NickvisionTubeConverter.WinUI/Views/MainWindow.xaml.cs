@@ -7,6 +7,7 @@ using Microsoft.UI.Xaml.Media;
 using Nickvision.Aura.Taskbar;
 using NickvisionTubeConverter.Shared.Controllers;
 using NickvisionTubeConverter.Shared.Events;
+using NickvisionTubeConverter.Shared.Helpers;
 using NickvisionTubeConverter.WinUI.Controls;
 using System;
 using System.Collections.Generic;
@@ -65,7 +66,7 @@ public sealed partial class MainWindow : Window
         HomeBanner.Background = new AcrylicBrush()
         {
             TintOpacity = 0.9,
-            TintColor = MainGrid.ActualTheme == ElementTheme.Light ? ColorHelper.FromArgb(255, 19, 204, 202) : ColorHelper.FromArgb(255, 7, 127, 137)
+            TintColor = MainGrid.ActualTheme == ElementTheme.Light ? ColorHelper.FromArgb(255, 255, 123, 99) : ColorHelper.FromArgb(255, 192, 28, 40)
         };
         //Localize Strings
         MenuFile.Title = _("File");
@@ -74,6 +75,7 @@ public sealed partial class MainWindow : Window
         MenuSettings.Text = _("Settings");
         MenuHelp.Title = _("Help");
         MenuCheckForUpdates.Text = _("Check for Updates");
+        MenuDocumentation.Text = _("Documentation");
         MenuGitHubRepo.Text = _("GitHub Repo");
         MenuReportABug.Text = _("Report a Bug");
         MenuDiscussions.Text = _("Discussions");
@@ -82,7 +84,9 @@ public sealed partial class MainWindow : Window
         HomeBannerTitle.Text = _controller.Greeting;
         HomeBannerDescription.Text = _controller.AppInfo.Description;
         HomeGettingStartedTitle.Text = _("Getting Started");
-        HomeGettingStartedDescription.Text = _("Open a folder (or drag one into the app) to get started.");
+        HomeGettingStartedDescription.Text = _("Add a video, audio, or playlist URL to start downloading.");
+        HomeDocumentationTitle.Text = _("Documentation");
+        HomeDocumentationDescription.Text = _("Read more about Parabolic's inner workings.");
         HomeReportABugTitle.Text = _("Report a Bug");
         HomeReportABugDescription.Text = _("Let us fix whatever issue you are having.");
         HomeDiscussionsTitle.Text = _("Discussions");
@@ -153,7 +157,7 @@ public sealed partial class MainWindow : Window
         HomeBanner.Background = HomeBanner.Background = new AcrylicBrush()
         {
             TintOpacity = 0.9,
-            TintColor = MainGrid.ActualTheme == ElementTheme.Light ? ColorHelper.FromArgb(255, 19, 204, 202) : ColorHelper.FromArgb(255, 7, 127, 137)
+            TintColor = MainGrid.ActualTheme == ElementTheme.Light ? ColorHelper.FromArgb(255, 255, 123, 99) : ColorHelper.FromArgb(255, 192, 28, 40)
         };
     }
 
@@ -277,6 +281,13 @@ public sealed partial class MainWindow : Window
             ViewStack.CurrentPageName = page;
         }
     }
+
+    /// <summary>
+    /// Occurs when the documentation menu item is clicked
+    /// </summary>
+    /// <param name="sender">object</param>
+    /// <param name="e">RoutedEventArgs</param>
+    private async void Documentation(object sender, RoutedEventArgs e) => await Launcher.LaunchUriAsync(new Uri(DocumentationHelpers.GetHelpURL("index")));
 
     /// <summary>
     /// Occurs when the github repo menu item is clicked

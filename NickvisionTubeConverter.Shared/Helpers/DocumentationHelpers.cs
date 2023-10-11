@@ -1,15 +1,16 @@
-using System;
+﻿using System;
 using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.InteropServices;
 
-namespace NickvisionTubeConverter.GNOME.Helpers;
+namespace NickvisionTubeConverter.Shared.Helpers;
 
 /// <summary>
-/// Helper class for help docs
+/// Helper methods for working with help documentation
 /// </summary>
-public static class Help
+public static class DocumentationHelpers
 {
     /// <summary>
     /// Get URL for given help page
@@ -18,14 +19,14 @@ public static class Help
     /// <returns>URL to either yelp or web page</returns>
     public static string GetHelpURL(string pageName)
     {
-        if (string.IsNullOrEmpty(Environment.GetEnvironmentVariable("SNAP")))
+        if (string.IsNullOrEmpty(Environment.GetEnvironmentVariable("SNAP")) && RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
         {
             return $"help:parabolic/{pageName}";
         }
         var lang = "C";
         if (!CultureInfo.CurrentCulture.Equals(CultureInfo.InvariantCulture) && CultureInfo.CurrentCulture.Name != "en-US")
         {
-            using var linguasStream = Assembly.GetCallingAssembly().GetManifestResourceStream("NickvisionTubeConverter.GNOME.LINGUAS");
+            using var linguasStream = Assembly.GetCallingAssembly().GetManifestResourceStream("NickvisionTubeConverter.Shared.Docs.po.LINGUAS");
             using var reader = new StreamReader(linguasStream!);
             var linguas = reader.ReadToEnd().Split(Environment.NewLine);
             if (linguas.Contains(CultureInfo.CurrentCulture.Name.Replace("-", "_")))
