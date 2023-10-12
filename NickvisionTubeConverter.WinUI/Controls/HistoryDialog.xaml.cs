@@ -6,7 +6,6 @@ using NickvisionTubeConverter.Shared.Models;
 using System;
 using System.IO;
 using System.Linq;
-using Vanara.Extensions.Reflection;
 using Windows.Storage;
 using Windows.System;
 using static Nickvision.Aura.Localization.Gettext;
@@ -39,7 +38,7 @@ public sealed partial class HistoryDialog : ContentDialog
         foreach (var pair in _history.History.OrderByDescending(x => x.Value.Date))
         {
             var row = new SettingsCard();
-            if(string.IsNullOrEmpty(pair.Value.Title))
+            if (string.IsNullOrEmpty(pair.Value.Title))
             {
                 row.Header = pair.Key;
             }
@@ -53,7 +52,7 @@ public sealed partial class HistoryDialog : ContentDialog
                 Orientation = Orientation.Horizontal,
                 Spacing = 6
             };
-            if(File.Exists(pair.Value.Path))
+            if (File.Exists(pair.Value.Path))
             {
                 var openButton = new Button()
                 {

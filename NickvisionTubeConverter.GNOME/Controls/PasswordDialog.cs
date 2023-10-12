@@ -1,4 +1,5 @@
 using NickvisionTubeConverter.GNOME.Helpers;
+using NickvisionTubeConverter.Shared.Helpers;
 using System.Threading.Tasks;
 
 namespace NickvisionTubeConverter.GNOME.Controls;
@@ -35,7 +36,7 @@ public partial class PasswordDialog : Adw.Window
         builder.Connect(this);
         //Dialog Settings
         SetTransientFor(parent);
-        _migrateButton.OnClicked += (sender, e) => Gtk.Functions.ShowUri(this, Help.GetHelpURL("keyring"), 0);
+        _migrateButton.OnClicked += (sender, e) => Gtk.Functions.ShowUri(this, DocumentationHelpers.GetHelpURL("keyring"), 0);
         _titleLabel.SetLabel(title);
         _skipButton.OnClicked += (sender, e) =>
         {

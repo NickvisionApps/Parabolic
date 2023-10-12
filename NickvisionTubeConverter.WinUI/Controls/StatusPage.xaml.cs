@@ -105,6 +105,9 @@ public sealed partial class StatusPage : UserControl, INotifyPropertyChanged
         }
     }
 
+    /// <summary>
+    /// Whether or not the page is styled in a compact fashion
+    /// </summary>
     public bool IsCompact
     {
         get => (bool)GetValue(IsCompactProperty);

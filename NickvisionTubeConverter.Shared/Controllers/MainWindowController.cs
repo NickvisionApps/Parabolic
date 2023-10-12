@@ -310,7 +310,7 @@ public class MainWindowController : IDisposable
             }
         };
         //Fix Aria Max Connections Per Server
-        if(Configuration.Current.AriaMaxConnectionsPerServer > 16)
+        if (Configuration.Current.AriaMaxConnectionsPerServer > 16)
         {
             Configuration.Current.AriaMaxConnectionsPerServer = 16;
             Aura.Active.SaveConfig("config");

@@ -1,3 +1,4 @@
+using Nickvision.Aura;
 using Nickvision.Aura.Taskbar;
 using NickvisionTubeConverter.GNOME.Controls;
 using NickvisionTubeConverter.GNOME.Helpers;
@@ -397,7 +398,7 @@ public partial class MainWindow : Adw.ApplicationWindow
     /// </summary>
     /// <param name="sender">Gio.SimpleAction</param>
     /// <param name="e">EventArgs</param>
-    private void About(Gio.SimpleAction sender, EventArgs e)
+    private async void About(Gio.SimpleAction sender, EventArgs e)
     {
         var debugInfo = new StringBuilder();
         debugInfo.AppendLine(_controller.AppInfo.ID);
@@ -412,75 +413,87 @@ public partial class MainWindow : Adw.ApplicationWindow
         {
             debugInfo.AppendLine("Snap");
         }
-        using (Py.GIL())
+        var py = Task.Run(() =>
         {
+            using (Py.GIL())
+            {
+                try
+                {
+                    dynamic yt_dlp = Py.Import("yt_dlp");
+                    debugInfo.AppendLine($"yt-dlp {yt_dlp.version.__version__.As<string>()}");
+                }
+                catch
+                {
+                    debugInfo.AppendLine("yt-dlp not found");
+                }
+                try
+                {
+                    dynamic psutil = Py.Import("psutil");
+                    debugInfo.AppendLine($"psutil {psutil.__version__.As<string>()}");
+                }
+                catch
+                {
+                    debugInfo.AppendLine("psutil not found");
+                }
+            }
+        });
+        var ffmpeg = Task.Run(() =>
+        {
+            using var ffmpegProcess = new Process
+            {
+                StartInfo = new ProcessStartInfo
+                {
+                    FileName = DependencyLocator.Find("ffmpeg"),
+                    Arguments = "-version",
+                    UseShellExecute = false,
+                    RedirectStandardOutput = true
+                }
+            };
             try
             {
-                dynamic yt_dlp = Py.Import("yt_dlp");
-                debugInfo.AppendLine($"yt-dlp {yt_dlp.version.__version__.As<string>()}");
+                ffmpegProcess.Start();
+                var ffmpegVersion = ffmpegProcess.StandardOutput.ReadToEnd();
+                ffmpegProcess.WaitForExit();
+                ffmpegVersion = ffmpegVersion.Remove(ffmpegVersion.IndexOf(Environment.NewLine))
+                                             .Remove(ffmpegVersion.IndexOf("Copyright"))
+                                             .Trim();
+                debugInfo.AppendLine(ffmpegVersion);
             }
             catch
             {
-                debugInfo.AppendLine("yt-dlp not found");
+                debugInfo.AppendLine("ffmpeg not found");
             }
+        });
+        var aria = Task.Run(() =>
+        {
+            using var ariaProcess = new Process
+            {
+                StartInfo = new ProcessStartInfo
+                {
+                    FileName = DependencyLocator.Find("aria2c"),
+                    Arguments = "--version",
+                    UseShellExecute = false,
+                    RedirectStandardOutput = true
+                }
+            };
             try
             {
-                dynamic psutil = Py.Import("psutil");
-                debugInfo.AppendLine($"psutil {psutil.__version__.As<string>()}");
+                ariaProcess.Start();
+                var ariaVersion = ariaProcess.StandardOutput.ReadToEnd();
+                ariaProcess.WaitForExit();
+                ariaVersion = ariaVersion.Remove(ariaVersion.IndexOf(Environment.NewLine)).Trim();
+                debugInfo.AppendLine(ariaVersion);
             }
             catch
             {
-                debugInfo.AppendLine("psutil not found");
+                debugInfo.AppendLine("aria2c not found");
             }
-        }
-        var ffmpegProcess = new Process
-        {
-            StartInfo = new ProcessStartInfo
-            {
-                FileName = "ffmpeg",
-                Arguments = "-version",
-                UseShellExecute = false,
-                RedirectStandardOutput = true
-            }
-        };
-        try
-        {
-            ffmpegProcess.Start();
-            var ffmpegVersion = ffmpegProcess.StandardOutput.ReadToEnd();
-            ffmpegProcess.WaitForExit();
-            ffmpegVersion = ffmpegVersion.Remove(ffmpegVersion.IndexOf(Environment.NewLine))
-                                         .Remove(ffmpegVersion.IndexOf("Copyright"))
-                                         .Trim();
-            debugInfo.AppendLine(ffmpegVersion);
-        }
-        catch
-        {
-            debugInfo.AppendLine("ffmpeg not found");
-        }
-        var ariaProcess = new Process
-        {
-            StartInfo = new ProcessStartInfo
-            {
-                FileName = "aria2c",
-                Arguments = "--version",
-                UseShellExecute = false,
-                RedirectStandardOutput = true
-            }
-        };
-        try
-        {
-            ariaProcess.Start();
-            var ariaVersion = ariaProcess.StandardOutput.ReadToEnd();
-            ariaProcess.WaitForExit();
-            ariaVersion = ariaVersion.Remove(ariaVersion.IndexOf(Environment.NewLine)).Trim();
-            debugInfo.AppendLine(ariaVersion);
-        }
-        catch
-        {
-            debugInfo.AppendLine("aria2c not found");
-        }
+        });
+        await py;
+        await ffmpeg;
+        await aria;
         debugInfo.AppendLine(CultureInfo.CurrentCulture.ToString());
-        var localeProcess = new Process
+        using var localeProcess = new Process
         {
             StartInfo = new ProcessStartInfo
             {
