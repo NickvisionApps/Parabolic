@@ -309,6 +309,12 @@ public class MainWindowController : IDisposable
                 NotificationSent?.Invoke(this, new NotificationSentEventArgs(_("No active internet connection"), NotificationSeverity.Error, "no-network"));
             }
         };
+        //Fix Aria Max Connections Per Server
+        if(Configuration.Current.AriaMaxConnectionsPerServer > 16)
+        {
+            Configuration.Current.AriaMaxConnectionsPerServer = 16;
+            Aura.Active.SaveConfig("config");
+        }
     }
 
     /// <summary>

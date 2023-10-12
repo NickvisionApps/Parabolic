@@ -95,7 +95,7 @@
                         </wct:SettingsCard.HeaderIcon>
 
                         <StackPanel Orientation="Horizontal" Spacing="6">
-                            <NumberBox x:Name="TxtAriaMaxConnectionsPerServer" SpinButtonPlacementMode="Inline" Minimum="1" Maximum="32" SmallChange="1" LargeChange="2"/>
+                            <NumberBox x:Name="TxtAriaMaxConnectionsPerServer" SpinButtonPlacementMode="Inline" Minimum="1" Maximum="16" SmallChange="1" LargeChange="2"/>
 
                             <Button x:Name="BtnAriaMaxConnectionsPerServerReset" Click="AriaMaxConnectionsPerServerReset">
                                 <Button.Content>
