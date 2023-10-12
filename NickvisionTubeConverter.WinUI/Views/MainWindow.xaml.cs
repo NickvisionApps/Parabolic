@@ -70,9 +70,16 @@ public sealed partial class MainWindow : Window
         };
         //Localize Strings
         MenuFile.Title = _("File");
+        MenuAddDownload.Text = _("Add Download");
         MenuExit.Text = _("Exit");
         MenuEdit.Title = _("Edit");
+        MenuKeyring.Text = _("Keyring");
+        MenuHistory.Text = _("History");
         MenuSettings.Text = _("Settings");
+        MenuDownloader.Title = _("Downloader");
+        MenuStopAllDownloads.Text = _("Stop All Downloads");
+        MenuRetryFailedDownloads.Text = _("Retry Failed Downloads");
+        MenuClearQueuedDownloads.Text = _("Clear Queued Downloads");
         MenuHelp.Title = _("Help");
         MenuCheckForUpdates.Text = _("Check for Updates");
         MenuDocumentation.Text = _("Documentation");
@@ -87,6 +94,7 @@ public sealed partial class MainWindow : Window
         HomeBannerDescription.Text = _controller.AppInfo.Description;
         HomeGettingStartedTitle.Text = _("Getting Started");
         HomeGettingStartedDescription.Text = _("Add a video, audio, or playlist URL to start downloading.");
+        HomeAddDownlaodButtonLabel.Text = _("Add Download");
         HomeDocumentationTitle.Text = _("Documentation");
         HomeDocumentationDescription.Text = _("Read more about Parabolic's inner workings.");
         HomeReportABugTitle.Text = _("Report a Bug");
@@ -254,11 +262,41 @@ public sealed partial class MainWindow : Window
     private void ShellNotificationSent(object? sender, ShellNotificationSentEventArgs e) => new ToastContentBuilder().AddText(e.Title).AddText(e.Message).Show();
 
     /// <summary>
+    /// Occurs when the add download menu item is clicked
+    /// </summary>
+    /// <param name="sender">object</param>
+    /// <param name="e">RoutedEventArgs</param>
+    private void AddDownload(object sender, RoutedEventArgs e)
+    {
+
+    }
+
+    /// <summary>
     /// Occurs when the exit menu item is clicked
     /// </summary>
     /// <param name="sender">object</param>
     /// <param name="e">RoutedEventArgs</param>
     private void Exit(object sender, RoutedEventArgs e) => Close();
+
+    /// <summary>
+    /// Occurs when the keyring menu item is clicked
+    /// </summary>
+    /// <param name="sender">object</param>
+    /// <param name="e">RoutedEventArgs</param>
+    private void Keyring(object sender, RoutedEventArgs e)
+    {
+
+    }
+
+    /// <summary>
+    /// Occurs when the history menu item is clicked
+    /// </summary>
+    /// <param name="sender">object</param>
+    /// <param name="e">RoutedEventArgs</param>
+    private void History(object sender, RoutedEventArgs e)
+    {
+
+    }
 
     /// <summary>
     /// Occurs when the settings menu item is clicked
@@ -272,6 +310,36 @@ public sealed partial class MainWindow : Window
             XamlRoot = MainGrid.XamlRoot
         };
         await settingsDialog.ShowAsync();
+    }
+
+    /// <summary>
+    /// Occurs when the stop all downloads menu item is clicked
+    /// </summary>
+    /// <param name="sender">object</param>
+    /// <param name="e">RoutedEventArgs</param>
+    private void StopAllDownloads(object sender, RoutedEventArgs e)
+    {
+
+    }
+
+    /// <summary>
+    /// Occurs when the retry failed downloads menu item is clicked
+    /// </summary>
+    /// <param name="sender">object</param>
+    /// <param name="e">RoutedEventArgs</param>
+    private void RetryFailedDownloads(object sender, RoutedEventArgs e)
+    {
+
+    }
+
+    /// <summary>
+    /// Occurs when the clear queued downloads menu item is clicked
+    /// </summary>
+    /// <param name="sender">object</param>
+    /// <param name="e">RoutedEventArgs</param>
+    private void ClearQueuedDownloads(object sender, RoutedEventArgs e)
+    {
+
     }
 
     /// <summary>

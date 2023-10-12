@@ -39,6 +39,16 @@
             <StackPanel Grid.Column="4" Margin="4,0,4,0" Orientation="Horizontal" Spacing="4">
                 <MenuBar x:Name="MainMenu" IsEnabled="False">
                     <MenuBarItem x:Name="MenuFile">
+                        <MenuFlyoutItem x:Name="MenuAddDownload" Click="AddDownload">
+                            <MenuFlyoutItem.Icon>
+                                <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE109;"/>
+                            </MenuFlyoutItem.Icon>
+
+                            <MenuFlyoutItem.KeyboardAccelerators>
+                                <KeyboardAccelerator Modifiers="Control" Key="N"/>
+                            </MenuFlyoutItem.KeyboardAccelerators>
+                        </MenuFlyoutItem>
+                        
                         <MenuFlyoutSeparator/>
 
                         <MenuFlyoutItem x:Name="MenuExit" Click="Exit">
@@ -53,6 +63,28 @@
                     </MenuBarItem>
 
                     <MenuBarItem x:Name="MenuEdit">
+                        <MenuFlyoutItem x:Name="MenuKeyring" Click="Keyring">
+                            <MenuFlyoutItem.Icon>
+                                <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE72E;"/>
+                            </MenuFlyoutItem.Icon>
+
+                            <MenuFlyoutItem.KeyboardAccelerators>
+                                <KeyboardAccelerator Modifiers="Control,Shift" Key="K"/>
+                            </MenuFlyoutItem.KeyboardAccelerators>
+                        </MenuFlyoutItem>
+
+                        <MenuFlyoutItem x:Name="MenuHistory" Click="History">
+                            <MenuFlyoutItem.Icon>
+                                <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE81C;"/>
+                            </MenuFlyoutItem.Icon>
+
+                            <MenuFlyoutItem.KeyboardAccelerators>
+                                <KeyboardAccelerator Modifiers="Control" Key="H"/>
+                            </MenuFlyoutItem.KeyboardAccelerators>
+                        </MenuFlyoutItem>
+
+                        <MenuFlyoutSeparator/>
+                        
                         <MenuFlyoutItem x:Name="MenuSettings" Click="Settings">
                             <MenuFlyoutItem.Icon>
                                 <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE713;"/>
@@ -60,6 +92,38 @@
 
                             <MenuFlyoutItem.KeyboardAccelerators>
                                 <KeyboardAccelerator Modifiers="Control" Key="K"/>
+                            </MenuFlyoutItem.KeyboardAccelerators>
+                        </MenuFlyoutItem>
+                    </MenuBarItem>
+
+                    <MenuBarItem x:Name="MenuDownloader">
+                        <MenuFlyoutItem x:Name="MenuStopAllDownloads" IsEnabled="False" Click="StopAllDownloads">
+                            <MenuFlyoutItem.Icon>
+                                <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE15B;"/>
+                            </MenuFlyoutItem.Icon>
+
+                            <MenuFlyoutItem.KeyboardAccelerators>
+                                <KeyboardAccelerator Modifiers="Control,Shift" Key="C"/>
+                            </MenuFlyoutItem.KeyboardAccelerators>
+                        </MenuFlyoutItem>
+
+                        <MenuFlyoutItem x:Name="MenuRetryFailedDownloads" IsEnabled="False" Click="RetryFailedDownloads">
+                            <MenuFlyoutItem.Icon>
+                                <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE149;"/>
+                            </MenuFlyoutItem.Icon>
+
+                            <MenuFlyoutItem.KeyboardAccelerators>
+                                <KeyboardAccelerator Modifiers="Control,Shift" Key="R"/>
+                            </MenuFlyoutItem.KeyboardAccelerators>
+                        </MenuFlyoutItem>
+
+                        <MenuFlyoutItem x:Name="MenuClearQueuedDownloads" IsEnabled="False" Click="ClearQueuedDownloads">
+                            <MenuFlyoutItem.Icon>
+                                <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE107;"/>
+                            </MenuFlyoutItem.Icon>
+
+                            <MenuFlyoutItem.KeyboardAccelerators>
+                                <KeyboardAccelerator Modifiers="Control" Key="Delete"/>
                             </MenuFlyoutItem.KeyboardAccelerators>
                         </MenuFlyoutItem>
                     </MenuBarItem>
@@ -163,6 +227,16 @@
                                         <TextBlock x:Name="HomeGettingStartedTitle" TextWrapping="WrapWholeWords" Style="{ThemeResource NavigationViewItemHeaderTextStyle}"/>
 
                                         <TextBlock x:Name="HomeGettingStartedDescription" TextWrapping="WrapWholeWords"/>
+
+                                        <Button Height="40" Style="{ThemeResource AccentButtonStyle}" Click="AddDownload">
+                                            <Button.Content>
+                                                <StackPanel Orientation="Horizontal" Spacing="6">
+                                                    <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" FontSize="16" Glyph="&#xE109;"/>
+
+                                                    <TextBlock x:Name="HomeAddDownlaodButtonLabel" TextWrapping="WrapWholeWords"/>
+                                                </StackPanel>
+                                            </Button.Content>
+                                        </Button>
                                     </StackPanel>
                                 </Border>
 
