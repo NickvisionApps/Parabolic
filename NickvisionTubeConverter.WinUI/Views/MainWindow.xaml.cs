@@ -293,9 +293,14 @@ public sealed partial class MainWindow : Window
     /// </summary>
     /// <param name="sender">object</param>
     /// <param name="e">RoutedEventArgs</param>
-    private void History(object sender, RoutedEventArgs e)
+    private async void History(object sender, RoutedEventArgs e)
     {
-
+        var historyDialog = new HistoryDialog(_controller.DownloadHistory)
+        {
+            XamlRoot = MainGrid.XamlRoot
+        };
+        historyDialog.DownloadAgainRequested += (s, ea) => AddDownload(sender, new RoutedEventArgs());
+        await historyDialog.ShowAsync();
     }
 
     /// <summary>

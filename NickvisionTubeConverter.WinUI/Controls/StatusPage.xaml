@@ -8,12 +8,12 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <StackPanel Spacing="12">
-        <FontIcon x:Name="GlyphIcon" HorizontalAlignment="Center" FontFamily="{StaticResource SymbolThemeFontFamily}" FontSize="60" Glyph="{x:Bind Glyph, Mode=OneWay}" Visibility="Collapsed"/>
+    <StackPanel x:Name="StackPanel">
+        <FontIcon x:Name="GlyphIcon" HorizontalAlignment="Center" FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="{x:Bind Glyph, Mode=OneWay}" Visibility="Collapsed"/>
 
-        <Image x:Name="AppIcon" HorizontalAlignment="Center" Visibility="Collapsed" Width="128" Height="128" Source="../Resources/org.nickvision.tubeconverter.ico"/>
+        <Image x:Name="AppIcon" HorizontalAlignment="Center" Visibility="Collapsed" Source="../Resources/org.nickvision.tubeconverter.ico"/>
 
-        <TextBlock HorizontalAlignment="Center" Style="{ThemeResource TitleTextBlockStyle}" TextWrapping="WrapWholeWords" Text="{x:Bind Title, Mode=OneWay}"/>
+        <TextBlock x:Name="LblTitle" HorizontalAlignment="Center" TextWrapping="WrapWholeWords" Text="{x:Bind Title, Mode=OneWay}"/>
 
         <TextBlock HorizontalAlignment="Center" Text="{x:Bind Description, Mode=OneWay}" TextWrapping="WrapWholeWords"/>
 

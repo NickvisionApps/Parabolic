@@ -21,7 +21,6 @@ public partial class HistoryDialog : Adw.Window
     [Gtk.Connect] private readonly Gtk.Button _clearButton;
     [Gtk.Connect] private readonly Gtk.SearchEntry _searchEntry;
     [Gtk.Connect] private readonly Adw.ViewStack _viewStack;
-    [Gtk.Connect] private readonly Gtk.ScrolledWindow _scrolledWindow;
     [Gtk.Connect] private readonly Adw.PreferencesGroup _urlsGroup;
 
     /// <summary>
@@ -134,19 +133,9 @@ public partial class HistoryDialog : Adw.Window
     private void SearchChanged(Gtk.SearchEntry sender, EventArgs e)
     {
         var search = _searchEntry.GetText().ToLower();
-        if (string.IsNullOrEmpty(search))
+        foreach (var row in _historyRows)
         {
-            foreach (var row in _historyRows)
-            {
-                row.SetVisible(true);
-            }
-        }
-        else
-        {
-            foreach (var row in _historyRows)
-            {
-                row.SetVisible(row.GetTitle().ToLower().Contains(search));
-            }
+            row.SetVisible(string.IsNullOrEmpty(search) || row.GetTitle().ToLower().Contains(search));
         }
     }
 }

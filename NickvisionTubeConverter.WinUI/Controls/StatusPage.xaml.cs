@@ -15,12 +15,14 @@ public sealed partial class StatusPage : UserControl, INotifyPropertyChanged
     public static DependencyProperty TitleProperty { get; } = DependencyProperty.Register("Title", typeof(string), typeof(StatusPage), new PropertyMetadata("", (sender, e) => (sender as StatusPage)?.NotifyPropertyChanged(nameof(Title))));
     public static DependencyProperty DescriptionProperty { get; } = DependencyProperty.Register("Description", typeof(string), typeof(StatusPage), new PropertyMetadata("", (sender, e) => (sender as StatusPage)?.NotifyPropertyChanged(nameof(Description))));
     public static DependencyProperty ChildProperty { get; } = DependencyProperty.Register("Child", typeof(UIElement), typeof(StatusPage), new PropertyMetadata(null, (sender, e) => (sender as StatusPage)?.NotifyPropertyChanged(nameof(Child))));
+    public static DependencyProperty IsCompactProperty { get; } = DependencyProperty.Register("IsCompact", typeof(bool), typeof(StatusPage), new PropertyMetadata(false, (sender, e) => (sender as StatusPage)?.NotifyPropertyChanged(nameof(IsCompact))));
 
     public event PropertyChangedEventHandler? PropertyChanged;
 
     public StatusPage()
     {
         InitializeComponent();
+        IsCompact = false;
     }
 
     /// <summary>
@@ -99,6 +101,33 @@ public sealed partial class StatusPage : UserControl, INotifyPropertyChanged
         set
         {
             SetValue(ChildProperty, value);
+            NotifyPropertyChanged();
+        }
+    }
+
+    public bool IsCompact
+    {
+        get => (bool)GetValue(IsCompactProperty);
+
+        set
+        {
+            SetValue(IsCompactProperty, value);
+            if (value)
+            {
+                StackPanel.Spacing = 6;
+                GlyphIcon.FontSize = 30;
+                AppIcon.Width = 64;
+                AppIcon.Height = 64;
+                LblTitle.Style = (Style)Application.Current.Resources["SubtitleTextBlockStyle"];
+            }
+            else
+            {
+                StackPanel.Spacing = 12;
+                GlyphIcon.FontSize = 60;
+                AppIcon.Width = 128;
+                AppIcon.Height = 128;
+                LblTitle.Style = (Style)Application.Current.Resources["TitleTextBlockStyle"];
+            }
             NotifyPropertyChanged();
         }
     }
