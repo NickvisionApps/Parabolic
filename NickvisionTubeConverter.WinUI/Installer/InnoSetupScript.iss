@@ -32,7 +32,9 @@ SolidCompression=yes
 WizardStyle=modern
 PrivilegesRequired=admin
 DirExistsWarning=no
-AlwaysRestart = yes
+AlwaysRestart=yes
+; Incase a user chooses to not restart
+ChangesEnvironment=yes 
 
 [Code]
 procedure SetupDotnet();
