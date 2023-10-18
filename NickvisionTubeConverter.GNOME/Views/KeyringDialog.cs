@@ -11,7 +11,6 @@ public partial class KeyringDialog : Adw.Window
 {
     private readonly Gtk.Window _parent;
     private readonly KeyringDialogController _controller;
-    private bool _handlingEnableToggle;
     private int? _editId;
     private readonly List<Gtk.Widget> _credentialRows;
     private readonly string _appID;
@@ -49,7 +48,6 @@ public partial class KeyringDialog : Adw.Window
     {
         _parent = parent;
         _controller = controller;
-        _handlingEnableToggle = false;
         _editId = null;
         _credentialRows = new List<Gtk.Widget>();
         _appID = appID;

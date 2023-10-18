@@ -54,7 +54,7 @@ Adw.Window _root {
               child: Adw.StatusPage _disabledPage {
                 icon-name: "key2-symbolic";
                 title: _("Keyring Disabled");
-                description: _("Use keyring to safely store credentials for sites that require login with username and password.");
+                description: _("Use keyring to safely store credentials for sites that require a user name and password to login.");
                 child: Gtk.Button _enableKeyringButton {
                   label: _("Enable");
                   halign: center;
@@ -162,7 +162,7 @@ Adw.Window _root {
                   }
 
                   Adw.EntryRow _usernameRow {
-                    title: _("Username");
+                    title: _("User Name");
                     activates-default: true;
                   }
 
