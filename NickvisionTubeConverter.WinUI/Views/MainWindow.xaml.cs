@@ -283,9 +283,15 @@ public sealed partial class MainWindow : Window
     /// </summary>
     /// <param name="sender">object</param>
     /// <param name="e">RoutedEventArgs</param>
-    private void Keyring(object sender, RoutedEventArgs e)
+    private async void Keyring(object sender, RoutedEventArgs e)
     {
-
+        var keyringDialogController = _controller.CreateKeyringDialogController();
+        var keyringDialog = new KeyringDialog(keyringDialogController)
+        {
+            XamlRoot = MainGrid.XamlRoot
+        };
+        await keyringDialog.ShowAsync();
+        _controller.UpdateKeyring(keyringDialogController);
     }
 
     /// <summary>

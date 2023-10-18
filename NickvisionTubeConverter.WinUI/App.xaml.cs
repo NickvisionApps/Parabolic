@@ -21,7 +21,7 @@ public partial class App : Application
     {
         InitializeComponent();
         _controller = new MainWindowController();
-        _controller.AppInfo.Changelog = @"Parabolic is now available for Windows using Windows App SDK and WinUI 3
+        _controller.AppInfo.Changelog = @"- Parabolic is now available for Windows using Windows App SDK and WinUI 3
 - Fixed an issue where aria's max connections per server preference was allowed to be greater than 16
 - Updated translations (Thanks everyone on Weblate!)";
         if (_controller.Theme != Theme.System)

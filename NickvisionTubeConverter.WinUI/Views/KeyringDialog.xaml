@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ContentDialog
+    x:Class="NickvisionTubeConverter.WinUI.Views.KeyringDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:NickvisionTubeConverter.WinUI.Views"
+    xmlns:nickvision="using:NickvisionTubeConverter.WinUI.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:wct="using:CommunityToolkit.WinUI.Controls"
+    mc:Ignorable="d" Style="{StaticResource DefaultContentDialogStyle}">
+
+    <ScrollViewer x:Name="ScrollViewer" VerticalScrollBarVisibility="Auto" MinWidth="500" SizeChanged="ScrollViewer_SizeChanged">
+        <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" RowSpacing="12">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Button x:Name="BtnBack" Visibility="Collapsed" Click="Back">
+                <Button.Content>
+                    <StackPanel Orientation="Horizontal" Spacing="6">
+                        <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" FontSize="16" Glyph="&#xE112;"/>
+
+                        <TextBlock x:Name="LblBtnBack" TextWrapping="WrapWholeWords"/>
+                    </StackPanel>
+                </Button.Content>
+            </Button>
+                
+            <nickvision:ViewStack x:Name="ViewStack" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                <nickvision:ViewStack.Pages>
+                    <nickvision:ViewStackPage PageName="Disabled">
+                        <nickvision:StatusPage x:Name="StatusPageDisabled" Glyph="&#xE72E;">
+                            <nickvision:StatusPage.Child>
+                                <Button x:Name="BtnEnable" HorizontalAlignment="Center" Style="{ThemeResource AccentButtonStyle}" Click="Enable"/>
+                            </nickvision:StatusPage.Child>
+                        </nickvision:StatusPage>
+                    </nickvision:ViewStackPage>
+
+                    <nickvision:ViewStackPage PageName="Disable">
+                        <nickvision:StatusPage x:Name="StatusPageDisable" Glyph="&#xE72E;">
+                            <nickvision:StatusPage.Child>
+                                <Button x:Name="BtnDisable" HorizontalAlignment="Center" Style="{ThemeResource AccentButtonStyle}" Click="ConfirmDisable"/>
+                            </nickvision:StatusPage.Child>
+                        </nickvision:StatusPage>
+                    </nickvision:ViewStackPage>
+
+                    <nickvision:ViewStackPage PageName="Loading">
+                        <ProgressRing HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </nickvision:ViewStackPage>
+
+                    <nickvision:ViewStackPage PageName="NoCredentials">
+                        <nickvision:StatusPage x:Name="StatusPageNoCredentials" Glyph="&#xE14C;">
+                            <nickvision:StatusPage.Child>
+                                <Grid ColumnSpacing="6">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Button x:Name="BtnNoCredentialsAddLogin" Grid.Column="0" HorizontalAlignment="Stretch" Style="{ThemeResource AccentButtonStyle}" Click="AddCredential"/>
+
+                                    <Button x:Name="BtnNoCrednetialsDisable" Grid.Column="1" HorizontalAlignment="Stretch" Click="Disable"/>
+                                </Grid>
+                            </nickvision:StatusPage.Child>
+                        </nickvision:StatusPage>
+                    </nickvision:ViewStackPage>
+
+                    <nickvision:ViewStackPage PageName="Credentials">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+
+                            <StackPanel x:Name="ListCredentials" Grid.Row="0" Orientation="Vertical" Spacing="6">
+                                
+                            </StackPanel>
+
+                            <Grid Grid.Row="1" ColumnSpacing="6">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Button x:Name="BtnCredentialsAddLogin" Grid.Column="0" HorizontalAlignment="Stretch" Style="{ThemeResource AccentButtonStyle}" Click="AddCredential"/>
+
+                                <Button x:Name="BtnCrednetialsDisable" Grid.Column="1" HorizontalAlignment="Stretch" Click="Disable"/>
+                            </Grid>
+                        </Grid>
+                    </nickvision:ViewStackPage>
+                    
+                    <nickvision:ViewStackPage PageName="Credential">
+                        <StackPanel Orientation="Vertical" Spacing="6">
+                            <wct:SettingsCard x:Name="CardName">
+                                <wct:SettingsCard.HeaderIcon>
+                                    <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE13E;"/>
+                                </wct:SettingsCard.HeaderIcon>
+
+                                <TextBox x:Name="TxtName" MinWidth="300"/>
+                            </wct:SettingsCard>
+
+                            <wct:SettingsCard x:Name="CardUrl">
+                                <wct:SettingsCard.HeaderIcon>
+                                    <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE12B;"/>
+                                </wct:SettingsCard.HeaderIcon>
+
+                                <TextBox x:Name="TxtUrl" MinWidth="300"/>
+                            </wct:SettingsCard>
+
+                            <wct:SettingsCard x:Name="CardUsername">
+                                <wct:SettingsCard.HeaderIcon>
+                                    <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xEE57;"/>
+                                </wct:SettingsCard.HeaderIcon>
+
+                                <TextBox x:Name="TxtUsername" MinWidth="300"/>
+                            </wct:SettingsCard>
+
+                            <wct:SettingsCard x:Name="CardPassword">
+                                <wct:SettingsCard.HeaderIcon>
+                                    <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE72E;"/>
+                                </wct:SettingsCard.HeaderIcon>
+
+                                <TextBox x:Name="TxtPassword" MinWidth="300"/>
+                            </wct:SettingsCard>
+
+                            <Grid ColumnSpacing="6">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Button x:Name="BtnAddCredential" Grid.Column="0" HorizontalAlignment="Stretch" Style="{ThemeResource AccentButtonStyle}" Click="ConfirmAddCredential">
+                                    <Button.Content>
+                                        <StackPanel Orientation="Horizontal" Spacing="6">
+                                            <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" FontSize="16" Glyph="&#xE710;"/>
+
+                                            <TextBlock x:Name="LblBtnAddCredential" TextWrapping="WrapWholeWords"/>
+                                        </StackPanel>
+                                    </Button.Content>
+                                </Button>
+
+                                <Button x:Name="BtnDeleteCredential" Grid.Column="1" HorizontalAlignment="Stretch" Click="ConfirmDeleteCredential">
+                                    <Button.Content>
+                                        <StackPanel Orientation="Horizontal" Spacing="6">
+                                            <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" FontSize="16" Glyph="&#xE107;"/>
+
+                                            <TextBlock x:Name="LblBtnDeleteCredential" TextWrapping="WrapWholeWords"/>
+                                        </StackPanel>
+                                    </Button.Content>
+                                </Button>
+                            </Grid>
+                        </StackPanel>
+                    </nickvision:ViewStackPage>
+                </nickvision:ViewStack.Pages>
+            </nickvision:ViewStack>
+
+            <InfoBar x:Name="InfoBar" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,6" CornerRadius="12"/>
+        </Grid>
+    </ScrollViewer>
+</ContentDialog>
