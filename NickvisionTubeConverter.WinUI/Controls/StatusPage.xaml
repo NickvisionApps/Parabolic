@@ -15,8 +15,8 @@
 
         <TextBlock x:Name="LblTitle" HorizontalAlignment="Center" TextWrapping="WrapWholeWords" Text="{x:Bind Title, Mode=OneWay}"/>
 
-        <TextBlock HorizontalAlignment="Center" Text="{x:Bind Description, Mode=OneWay}" TextWrapping="WrapWholeWords"/>
+        <TextBlock x:Name="LblDescription" HorizontalAlignment="Center" Text="{x:Bind Description, Mode=OneWay}" TextWrapping="WrapWholeWords"/>
 
-        <Frame HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Content="{x:Bind Child, Mode=OneWay}"/>
+        <Frame x:Name="FrameChild" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Content="{x:Bind Child, Mode=OneWay}"/>
     </StackPanel>
 </UserControl>

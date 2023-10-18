@@ -22,6 +22,9 @@ public sealed partial class StatusPage : UserControl, INotifyPropertyChanged
     public StatusPage()
     {
         InitializeComponent();
+        Title = "";
+        Description = "";
+        Child = null;
         IsCompact = false;
     }
 
@@ -73,6 +76,7 @@ public sealed partial class StatusPage : UserControl, INotifyPropertyChanged
         set
         {
             SetValue(TitleProperty, value);
+            LblTitle.Visibility = !string.IsNullOrEmpty(value) ? Visibility.Visible : Visibility.Collapsed;
             NotifyPropertyChanged();
         }
     }
@@ -87,6 +91,7 @@ public sealed partial class StatusPage : UserControl, INotifyPropertyChanged
         set
         {
             SetValue(DescriptionProperty, value);
+            LblDescription.Visibility = !string.IsNullOrEmpty(value) ? Visibility.Visible : Visibility.Collapsed;
             NotifyPropertyChanged();
         }
     }
@@ -101,6 +106,7 @@ public sealed partial class StatusPage : UserControl, INotifyPropertyChanged
         set
         {
             SetValue(ChildProperty, value);
+            FrameChild.Visibility = value != null ? Visibility.Visible : Visibility.Collapsed;
             NotifyPropertyChanged();
         }
     }
