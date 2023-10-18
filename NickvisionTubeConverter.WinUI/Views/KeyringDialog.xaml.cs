@@ -212,7 +212,7 @@ public sealed partial class KeyringDialog : ContentDialog
         TxtName.Text = "";
         TxtUrl.Text = "";
         TxtUsername.Text = "";
-        TxtPassword.Text = "";
+        TxtPassword.Password = "";
         SetValidation(CredentialCheckStatus.Valid);
     }
 
@@ -223,11 +223,11 @@ public sealed partial class KeyringDialog : ContentDialog
     /// <param name="e">RoutedEventArgs</param>
     private async void ConfirmAddCredential(object sender, RoutedEventArgs e)
     {
-        var checkStatus = _controller.ValidateCredential(TxtName.Text, TxtUrl.Text, TxtUsername.Text, TxtPassword.Text);
+        var checkStatus = _controller.ValidateCredential(TxtName.Text, TxtUrl.Text, TxtUsername.Text, TxtPassword.Password);
         SetValidation(checkStatus);
         if (checkStatus == CredentialCheckStatus.Valid)
         {
-            await _controller.AddCredentialAsync(TxtName.Text, TxtUrl.Text, TxtUsername.Text, TxtPassword.Text);
+            await _controller.AddCredentialAsync(TxtName.Text, TxtUrl.Text, TxtUsername.Text, TxtPassword.Password);
             await LoadHomePageAsync();
         }
     }
@@ -288,11 +288,11 @@ public sealed partial class KeyringDialog : ContentDialog
     {
         if (_editId != null)
         {
-            var checkStatus = _controller.ValidateCredential(TxtName.Text, TxtUrl.Text, TxtUsername.Text, TxtPassword.Text);
+            var checkStatus = _controller.ValidateCredential(TxtName.Text, TxtUrl.Text, TxtUsername.Text, TxtPassword.Password);
             SetValidation(checkStatus);
             if (checkStatus == CredentialCheckStatus.Valid)
             {
-                await _controller.UpdateCredentialAsync(_editId.Value, TxtName.Text, TxtUrl.Text, TxtUsername.Text, TxtPassword.Text);
+                await _controller.UpdateCredentialAsync(_editId.Value, TxtName.Text, TxtUrl.Text, TxtUsername.Text, TxtPassword.Password);
             }
             else
             {
@@ -334,7 +334,7 @@ public sealed partial class KeyringDialog : ContentDialog
         TxtName.Text = credential.Name;
         TxtUrl.Text = credential.Uri?.ToString() ?? "";
         TxtUsername.Text = credential.Username;
-        TxtPassword.Text = credential.Password;
+        TxtPassword.Password = credential.Password;
         SetValidation(CredentialCheckStatus.Valid);
     }
 }

@@ -32,7 +32,7 @@
                     <nickvision:ViewStackPage PageName="Disabled">
                         <nickvision:StatusPage x:Name="StatusPageDisabled" Glyph="&#xE72E;">
                             <nickvision:StatusPage.Child>
-                                <Button x:Name="BtnEnable" HorizontalAlignment="Center" Style="{ThemeResource AccentButtonStyle}" Click="Enable"/>
+                                <Button x:Name="BtnEnable" HorizontalAlignment="Stretch" Height="40" Style="{ThemeResource AccentButtonStyle}" Click="Enable"/>
                             </nickvision:StatusPage.Child>
                         </nickvision:StatusPage>
                     </nickvision:ViewStackPage>
@@ -40,7 +40,7 @@
                     <nickvision:ViewStackPage PageName="Disable">
                         <nickvision:StatusPage x:Name="StatusPageDisable" Glyph="&#xE72E;">
                             <nickvision:StatusPage.Child>
-                                <Button x:Name="BtnDisable" HorizontalAlignment="Center" Style="{ThemeResource AccentButtonStyle}" Click="ConfirmDisable"/>
+                                <Button x:Name="BtnDisable" HorizontalAlignment="Stretch" Height="40" Style="{ThemeResource AccentButtonStyle}" Click="ConfirmDisable"/>
                             </nickvision:StatusPage.Child>
                         </nickvision:StatusPage>
                     </nickvision:ViewStackPage>
@@ -67,7 +67,7 @@
                     </nickvision:ViewStackPage>
 
                     <nickvision:ViewStackPage PageName="Credentials">
-                        <Grid>
+                        <Grid RowSpacing="6">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="*"/>
                                 <RowDefinition Height="Auto"/>
@@ -119,13 +119,13 @@
                                     <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE72E;"/>
                                 </wct:SettingsCard.HeaderIcon>
 
-                                <TextBox x:Name="TxtPassword" MinWidth="300"/>
+                                <PasswordBox x:Name="TxtPassword" MinWidth="300"/>
                             </wct:SettingsCard>
 
                             <nickvision:ViewStack x:Name="CredentialViewStack">
                                 <nickvision:ViewStack.Pages>
                                     <nickvision:ViewStackPage PageName="Add">
-                                        <Button x:Name="BtnAddCredential" HorizontalAlignment="Center" Style="{ThemeResource AccentButtonStyle}" Click="ConfirmAddCredential">
+                                        <Button x:Name="BtnAddCredential" HorizontalAlignment="Stretch" Height="40" Style="{ThemeResource AccentButtonStyle}" Click="ConfirmAddCredential">
                                             <Button.Content>
                                                 <StackPanel Orientation="Horizontal" Spacing="6">
                                                     <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" FontSize="16" Glyph="&#xE710;"/>
@@ -137,7 +137,7 @@
                                     </nickvision:ViewStackPage>
 
                                     <nickvision:ViewStackPage PageName="Edit">
-                                        <Button x:Name="BtnDeleteCredential" HorizontalAlignment="Center" Style="{ThemeResource AccentButtonStyle}" Click="DeleteCredential">
+                                        <Button x:Name="BtnDeleteCredential" HorizontalAlignment="Stretch" Height="40" Style="{ThemeResource AccentButtonStyle}" Click="DeleteCredential">
                                             <Button.Content>
                                                 <StackPanel Orientation="Horizontal" Spacing="6">
                                                     <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" FontSize="16" Glyph="&#xE107;"/>
