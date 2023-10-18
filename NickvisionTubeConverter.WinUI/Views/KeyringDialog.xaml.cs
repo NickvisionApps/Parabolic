@@ -3,11 +3,15 @@ using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Nickvision.Aura.Keyring;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using static Nickvision.Aura.Localization.Gettext;
 
 namespace NickvisionTubeConverter.WinUI.Views;
 
+/// <summary>
+/// A dialog for managing credentials
+/// </summary>
 public sealed partial class KeyringDialog : ContentDialog
 {
     private readonly KeyringDialogController _controller;
@@ -15,6 +19,10 @@ public sealed partial class KeyringDialog : ContentDialog
     private bool _opened;
     private int? _editId;
 
+    /// <summary>
+    /// Constructs a KeyringDialog
+    /// </summary>
+    /// <param name="controller">KeyringDialogController</param>
     public KeyringDialog(KeyringDialogController controller)
     {
         InitializeComponent();
@@ -304,8 +312,9 @@ public sealed partial class KeyringDialog : ContentDialog
         Title = _("Keyring");
         ViewStack.CurrentPageName = "Loading";
         ListCredentials.Children.Clear();
-        var credentials = await _controller.GetAllCredentialsAsync();
-        foreach (var credential in credentials)
+        List<Credential>? credentials = null;
+        await Task.Run(async () => credentials = await _controller.GetAllCredentialsAsync());
+        foreach (var credential in credentials!)
         {
             var row = new SettingsCard()
             {

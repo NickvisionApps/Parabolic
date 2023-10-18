@@ -7,6 +7,9 @@ using static Nickvision.Aura.Localization.Gettext;
 
 namespace NickvisionTubeConverter.GNOME.Views;
 
+/// <summary>
+/// A dialog for managing credentials
+/// </summary>
 public partial class KeyringDialog : Adw.Window
 {
     private readonly Gtk.Window _parent;
@@ -146,9 +149,9 @@ public partial class KeyringDialog : Adw.Window
         _noCredentialsPage.SetVisible(false);
         _credentialsGroup.SetVisible(false);
         _loadingSpinner.SetVisible(true);
-        var credentials = new List<Credential>();
+        List<Credential>? credentials = null;
         await Task.Run(async () => credentials = await _controller.GetAllCredentialsAsync());
-        foreach (var credential in credentials)
+        foreach (var credential in credentials!)
         {
             var row = Adw.ActionRow.New();
             row.SetTitle(credential.Name);

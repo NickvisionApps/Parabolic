@@ -12,6 +12,9 @@ using static Nickvision.Aura.Localization.Gettext;
 
 namespace NickvisionTubeConverter.WinUI.Controls;
 
+/// <summary>
+/// A dialog to manage history
+/// </summary>
 public sealed partial class HistoryDialog : ContentDialog
 {
     private readonly DownloadHistory _history;
@@ -21,6 +24,10 @@ public sealed partial class HistoryDialog : ContentDialog
     /// </summary>
     public event EventHandler<string>? DownloadAgainRequested;
 
+    /// <summary>
+    /// Constructs a HistoryDialog
+    /// </summary>
+    /// <param name="history">DownloadHistory</param>
     public HistoryDialog(DownloadHistory history)
     {
         InitializeComponent();

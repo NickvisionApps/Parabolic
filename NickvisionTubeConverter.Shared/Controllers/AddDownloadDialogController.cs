@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using static Nickvision.Aura.Localization.Gettext;
 
 namespace NickvisionTubeConverter.Shared.Controllers;
 
@@ -145,6 +146,7 @@ public class AddDownloadDialogController
         {
             var names = (await _keyring.GetAllCredentialsAsync()).Select(x => x.Name).ToList();
             names.Sort();
+            names.Insert(0, _("Use manual credential"));
             return names;
         }
         return new List<string>();

@@ -1,3 +1,4 @@
+using Nickvision.Aura;
 using NickvisionTubeConverter.GNOME.Controls;
 using NickvisionTubeConverter.GNOME.Helpers;
 using NickvisionTubeConverter.Shared.Controllers;
@@ -53,11 +54,6 @@ public partial class AddDownloadDialog : Adw.Window
     [Gtk.Connect] private readonly Gtk.Button _selectAllButton;
     [Gtk.Connect] private readonly Gtk.Button _deselectAllButton;
     [Gtk.Connect] private readonly Adw.PreferencesGroup _playlistGroup;
-    [Gtk.Connect] private readonly Adw.ActionRow _numberTitlesRow2;
-    [Gtk.Connect] private readonly Gtk.Switch _numberTitlesSwitch2;
-    [Gtk.Connect] private readonly Gtk.Box _advancedPage;
-    [Gtk.Connect] private readonly Gtk.ScrolledWindow _advanced;
-    [Gtk.Connect] private readonly Adw.PreferencesGroup _advancedGroup;
     [Gtk.Connect] private readonly Adw.ActionRow _speedLimitRow;
     [Gtk.Connect] private readonly Gtk.Switch _speedLimitSwitch;
     [Gtk.Connect] private readonly Gtk.Switch _splitChaptersSwitch;
@@ -230,7 +226,7 @@ public partial class AddDownloadDialog : Adw.Window
         }
         else
         {
-            _saveFolderString = GLib.Functions.GetUserSpecialDir(GLib.UserDirectory.DirectoryDownload) ?? "";
+            _saveFolderString = UserDirectories.Downloads;
         }
         _saveFolderRow.SetText(Path.GetFileName(_saveFolderString) ?? "");
         _subtitleSwitch.SetActive(_controller.PreviousSubtitleState);
@@ -301,10 +297,6 @@ public partial class AddDownloadDialog : Adw.Window
         }
         //Keyring
         var names = await _controller.GetKeyringCredentialNamesAsync();
-        if (_controller.KeyringAuthAvailable)
-        {
-            names.Insert(0, _("Use manual credential"));
-        }
         if (names.Count > 0)
         {
             _keyringRow.SetModel(Gtk.StringList.New(names.ToArray()));
