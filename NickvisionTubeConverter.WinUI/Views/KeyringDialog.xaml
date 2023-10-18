@@ -8,7 +8,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:wct="using:CommunityToolkit.WinUI.Controls"
-    mc:Ignorable="d" Style="{StaticResource DefaultContentDialogStyle}">
+    mc:Ignorable="d" Style="{StaticResource DefaultContentDialogStyle}" Loaded="Dialog_Loaded">
 
     <ScrollViewer x:Name="ScrollViewer" VerticalScrollBarVisibility="Auto" MinWidth="500" SizeChanged="ScrollViewer_SizeChanged">
         <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" RowSpacing="12">
@@ -17,7 +17,7 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
-            <Button x:Name="BtnBack" Visibility="Collapsed" Click="Back">
+            <Button x:Name="BtnBack" Visibility="Collapsed" Click="LoadHomePage">
                 <Button.Content>
                     <StackPanel Orientation="Horizontal" Spacing="6">
                         <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" FontSize="16" Glyph="&#xE112;"/>
@@ -73,9 +73,7 @@
                                 <RowDefinition Height="Auto"/>
                             </Grid.RowDefinitions>
 
-                            <StackPanel x:Name="ListCredentials" Grid.Row="0" Orientation="Vertical" Spacing="6">
-                                
-                            </StackPanel>
+                            <StackPanel x:Name="ListCredentials" Grid.Row="0" Orientation="Vertical" Spacing="6"/>
 
                             <Grid Grid.Row="1" ColumnSpacing="6">
                                 <Grid.ColumnDefinitions>
@@ -124,38 +122,43 @@
                                 <TextBox x:Name="TxtPassword" MinWidth="300"/>
                             </wct:SettingsCard>
 
-                            <Grid ColumnSpacing="6">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
+                            <nickvision:ViewStack x:Name="CredentialViewStack">
+                                <nickvision:ViewStack.Pages>
+                                    <nickvision:ViewStackPage PageName="Add">
+                                        <Button x:Name="BtnAddCredential" HorizontalAlignment="Center" Style="{ThemeResource AccentButtonStyle}" Click="ConfirmAddCredential">
+                                            <Button.Content>
+                                                <StackPanel Orientation="Horizontal" Spacing="6">
+                                                    <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" FontSize="16" Glyph="&#xE710;"/>
 
-                                <Button x:Name="BtnAddCredential" Grid.Column="0" HorizontalAlignment="Stretch" Style="{ThemeResource AccentButtonStyle}" Click="ConfirmAddCredential">
-                                    <Button.Content>
-                                        <StackPanel Orientation="Horizontal" Spacing="6">
-                                            <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" FontSize="16" Glyph="&#xE710;"/>
+                                                    <TextBlock x:Name="LblBtnAddCredential" TextWrapping="WrapWholeWords"/>
+                                                </StackPanel>
+                                            </Button.Content>
+                                        </Button>
+                                    </nickvision:ViewStackPage>
 
-                                            <TextBlock x:Name="LblBtnAddCredential" TextWrapping="WrapWholeWords"/>
-                                        </StackPanel>
-                                    </Button.Content>
-                                </Button>
+                                    <nickvision:ViewStackPage PageName="Edit">
+                                        <Button x:Name="BtnDeleteCredential" HorizontalAlignment="Center" Style="{ThemeResource AccentButtonStyle}" Click="DeleteCredential">
+                                            <Button.Content>
+                                                <StackPanel Orientation="Horizontal" Spacing="6">
+                                                    <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" FontSize="16" Glyph="&#xE107;"/>
 
-                                <Button x:Name="BtnDeleteCredential" Grid.Column="1" HorizontalAlignment="Stretch" Click="ConfirmDeleteCredential">
-                                    <Button.Content>
-                                        <StackPanel Orientation="Horizontal" Spacing="6">
-                                            <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" FontSize="16" Glyph="&#xE107;"/>
-
-                                            <TextBlock x:Name="LblBtnDeleteCredential" TextWrapping="WrapWholeWords"/>
-                                        </StackPanel>
-                                    </Button.Content>
-                                </Button>
-                            </Grid>
+                                                    <TextBlock x:Name="LblBtnDeleteCredential" TextWrapping="WrapWholeWords"/>
+                                                </StackPanel>
+                                            </Button.Content>
+                                        </Button>
+                                    </nickvision:ViewStackPage>
+                                </nickvision:ViewStack.Pages>
+                            </nickvision:ViewStack>
                         </StackPanel>
                     </nickvision:ViewStackPage>
                 </nickvision:ViewStack.Pages>
             </nickvision:ViewStack>
 
-            <InfoBar x:Name="InfoBar" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,6" CornerRadius="12"/>
+            <InfoBar x:Name="InfoBar" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,6" CornerRadius="12">
+                <InfoBar.ActionButton>
+                    <Button x:Name="BtnInfoBarReset" HorizontalAlignment="Right" Visibility="Collapsed" Click="Reset"/>
+                </InfoBar.ActionButton>
+            </InfoBar>
         </Grid>
     </ScrollViewer>
 </ContentDialog>

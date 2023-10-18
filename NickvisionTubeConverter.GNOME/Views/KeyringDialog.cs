@@ -124,7 +124,11 @@ public partial class KeyringDialog : Adw.Window
             SetValidation(checkStatus);
             if (checkStatus == CredentialCheckStatus.Valid)
             {
-                await _controller.UpdateCredentialAsync(_editId!.Value, _nameRow.GetText(), _urlRow.GetText(), _usernameRow.GetText(), _passwordRow.GetText());
+                await _controller.UpdateCredentialAsync(_editId.Value, _nameRow.GetText(), _urlRow.GetText(), _usernameRow.GetText(), _passwordRow.GetText());
+            }
+            else
+            {
+                return;
             }
         }
         _editId = null;
@@ -154,14 +158,11 @@ public partial class KeyringDialog : Adw.Window
             row.AddSuffix(img);
             row.SetActivatableWidget(img);
             row.OnActivated += (sender, e) => LoadEditCredentialPage(credential);
+            _credentialsGroup.Add(row);
             _credentialRows.Add(row);
         }
         if (_credentialRows.Count > 0)
         {
-            foreach (var row in _credentialRows)
-            {
-                _credentialsGroup.Add(row);
-            }
             _credentialsGroup.SetVisible(true);
         }
         _loadingSpinner.SetVisible(false);
@@ -177,6 +178,7 @@ public partial class KeyringDialog : Adw.Window
         _backButton.SetVisible(true);
         _titleLabel.SetLabel(_("Login"));
         _buttonViewStack.SetVisibleChildName("add");
+        _editId = null;
         _nameRow.SetText("");
         _urlRow.SetText("");
         _usernameRow.SetText("");
@@ -215,7 +217,7 @@ public partial class KeyringDialog : Adw.Window
         _urlRow.RemoveCssClass("error");
         _urlRow.SetTitle(_("URL"));
         _usernameRow.RemoveCssClass("error");
-        _usernameRow.SetTitle(_("Username"));
+        _usernameRow.SetTitle(_("User Name"));
         _passwordRow.RemoveCssClass("error");
         _passwordRow.SetTitle(_("Password"));
         if (checkStatus.HasFlag(CredentialCheckStatus.EmptyName))
@@ -226,7 +228,7 @@ public partial class KeyringDialog : Adw.Window
         if (checkStatus.HasFlag(CredentialCheckStatus.EmptyUsernamePassword))
         {
             _usernameRow.AddCssClass("error");
-            _usernameRow.SetTitle(_("Username (Empty)"));
+            _usernameRow.SetTitle(_("User Name (Empty)"));
             _passwordRow.AddCssClass("error");
             _passwordRow.SetTitle(_("Password (Empty)"));
         }
