@@ -11,8 +11,23 @@
     mc:Ignorable="d" Style="{StaticResource DefaultContentDialogStyle}">
 
     <ScrollViewer x:Name="ScrollViewer" VerticalScrollBarVisibility="Auto" MinWidth="520" SizeChanged="ScrollViewer_SizeChanged">
-        <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-            <nickvision:ViewStack x:Name="ViewStack" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+        <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" RowSpacing="12">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Button x:Name="BtnBack" Visibility="Collapsed" Click="Back">
+                <Button.Content>
+                    <StackPanel Orientation="Horizontal" Spacing="6">
+                        <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" FontSize="16" Glyph="&#xE112;"/>
+
+                        <TextBlock x:Name="LblBtnBack" TextWrapping="WrapWholeWords"/>
+                    </StackPanel>
+                </Button.Content>
+            </Button>
+
+            <nickvision:ViewStack x:Name="ViewStack" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" PageChanged="ViewStack_PageChanged">
                 <nickvision:ViewStack.Pages>
                     <nickvision:ViewStackPage PageName="Url">
                         <StackPanel Orientation="Vertical" Spacing="6">
@@ -21,7 +36,7 @@
                                     <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE12B;"/>
                                 </wct:SettingsCard.HeaderIcon>
 
-                                <TextBox x:Name="TxtUrl" MinWidth="300"/>
+                                <TextBox x:Name="TxtUrl" MinWidth="300" MaxWidth="400" TextChanged="TxtUrl_TextChanged"/>
                             </wct:SettingsCard>
 
                             <wct:SettingsExpander x:Name="CardAuthenticate" IsExpanded="{x:Bind TglAuthenticate.IsOn, Mode=TwoWay}">
@@ -29,7 +44,7 @@
                                     <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE72E;"/>
                                 </wct:SettingsExpander.HeaderIcon>
 
-                                <ToggleSwitch x:Name="TglAuthenticate"/>
+                                <ToggleSwitch x:Name="TglAuthenticate" Toggled="TglAuthenticate_Toggled"/>
 
                                 <wct:SettingsExpander.Items>
                                     <wct:SettingsCard x:Name="CardKeyringCredentials">
@@ -37,7 +52,7 @@
                                             <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE14C;"/>
                                         </wct:SettingsCard.HeaderIcon>
 
-                                        <ComboBox x:Name="CmbKeyringCredentials"/>
+                                        <ComboBox x:Name="CmbKeyringCredentials" SelectionChanged="CmbKeyringCredentials_SelectionChanged"/>
                                     </wct:SettingsCard>
 
                                     <wct:SettingsCard x:Name="CardUsername">
@@ -58,15 +73,29 @@
                                 </wct:SettingsExpander.Items>
                             </wct:SettingsExpander>
 
-                            <ProgressRing x:Name="ProgRing" Margin="0,6,0,6" Visibility="Collapsed"/>
+                            <ProgressRing x:Name="ProgRingUrl" Margin="0,6,0,6" Visibility="Collapsed"/>
 
                             <Button x:Name="BtnValidate" HorizontalAlignment="Stretch" Style="{ThemeResource AccentButtonStyle}" Click="Validate"/>
                         </StackPanel>
                     </nickvision:ViewStackPage>
+
+                    <nickvision:ViewStackPage PageName="Download">
+                        <StackPanel Orientation="Vertical" Spacing="6">
+                            
+                        </StackPanel>
+                    </nickvision:ViewStackPage>
+
+                    <nickvision:ViewStackPage PageName="Playlist">
+
+                    </nickvision:ViewStackPage>
+
+                    <nickvision:ViewStackPage PageName="Advanced">
+
+                    </nickvision:ViewStackPage>
                 </nickvision:ViewStack.Pages>
             </nickvision:ViewStack>
 
-            <InfoBar x:Name="InfoBar" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,6" CornerRadius="12"/>
+            <InfoBar x:Name="InfoBar" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,6" CornerRadius="12"/>
         </Grid>
     </ScrollViewer>
 </ContentDialog>

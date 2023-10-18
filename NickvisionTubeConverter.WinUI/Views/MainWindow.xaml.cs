@@ -427,7 +427,7 @@ public sealed partial class MainWindow : Window
         {
             XamlRoot = MainGrid.XamlRoot
         };
-        var res = await addDialog.ShowAsync();
+        var res = await addDialog.ShowAsync(url);
         if (res == ContentDialogResult.Primary)
         {
             ViewStack.CurrentPageName = "Downloads";
