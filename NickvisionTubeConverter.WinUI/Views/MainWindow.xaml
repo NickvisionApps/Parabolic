@@ -197,118 +197,19 @@
                     </nickvision:ViewStackPage>
 
                     <nickvision:ViewStackPage PageName="Home">
-                        <ScrollView>
-                            <Grid Margin="12,0,12,0" RowSpacing="12">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="200"/>
-                                    <RowDefinition Height="Auto"/>
-                                    <RowDefinition Height="Auto"/>
-                                </Grid.RowDefinitions>
+                        <nickvision:StatusPage x:Name="StatusPageHome" HorizontalAlignment="Center" VerticalAlignment="Center" UseAppIcon="True">
+                            <nickvision:StatusPage.Child>
+                                <Button HorizontalAlignment="Center" Style="{ThemeResource AccentButtonStyle}" Click="AddDownload">
+                                    <Button.Content>
+                                        <StackPanel Orientation="Horizontal" Spacing="6">
+                                            <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" FontSize="16" Glyph="&#xE109;"/>
 
-                                <Border x:Name="HomeBanner" Grid.Row="0" HorizontalAlignment="Stretch" BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}" BorderThickness="1" CornerRadius="8">
-                                    <Grid Margin="32,32,32,32">
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="*"/>
-                                            <ColumnDefinition Width="Auto"/>
-                                        </Grid.ColumnDefinitions>
-
-                                        <StackPanel Grid.Column="0" Orientation="Vertical" Spacing="12" VerticalAlignment="Center">
-                                            <TextBlock x:Name="HomeBannerTitle" TextWrapping="WrapWholeWords" Style="{ThemeResource NavigationViewItemHeaderTextStyle}" FontSize="22"/>
-
-                                            <TextBlock x:Name="HomeBannerDescription" TextWrapping="WrapWholeWords"/>
+                                            <TextBlock x:Name="HomeAddDownlaodButtonLabel" TextWrapping="WrapWholeWords"/>
                                         </StackPanel>
-
-                                        <Image Grid.Column="1" VerticalAlignment="Center" Width="128" Height="128" Source="../Resources/org.nickvision.tubeconverter.ico"/>
-                                    </Grid>
-                                </Border>
-
-                                <Border Grid.Row="1" Background="{ThemeResource CardBackgroundFillColorDefaultBrush}" BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}" BorderThickness="1" CornerRadius="8">
-                                    <StackPanel Margin="12,12,12,12" Orientation="Vertical" Spacing="12">
-                                        <TextBlock x:Name="HomeGettingStartedTitle" TextWrapping="WrapWholeWords" Style="{ThemeResource NavigationViewItemHeaderTextStyle}"/>
-
-                                        <TextBlock x:Name="HomeGettingStartedDescription" TextWrapping="WrapWholeWords"/>
-
-                                        <Button Height="40" Style="{ThemeResource AccentButtonStyle}" Click="AddDownload">
-                                            <Button.Content>
-                                                <StackPanel Orientation="Horizontal" Spacing="6">
-                                                    <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" FontSize="16" Glyph="&#xE109;"/>
-
-                                                    <TextBlock x:Name="HomeAddDownlaodButtonLabel" TextWrapping="WrapWholeWords"/>
-                                                </StackPanel>
-                                            </Button.Content>
-                                        </Button>
-                                    </StackPanel>
-                                </Border>
-
-                                <StackPanel Grid.Row="2" Orientation="Horizontal" Spacing="12">
-                                    <Button Width="200" Height="220" Click="Documentation" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch">
-                                        <Button.Content>
-                                            <Grid Margin="12,12,6,12" RowSpacing="24">
-                                                <Grid.RowDefinitions>
-                                                    <RowDefinition Height="Auto"/>
-                                                    <RowDefinition Height="*"/>
-                                                    <RowDefinition Height="Auto"/>
-                                                </Grid.RowDefinitions>
-
-                                                <FontIcon Grid.Row="0" HorizontalAlignment="Left" FontFamily="{StaticResource SymbolThemeFontFamily}" FontSize="24" Glyph="&#xE11B;"/>
-
-                                                <StackPanel Grid.Row="1" Orientation="Vertical" Spacing="6">
-                                                    <TextBlock x:Name="HomeDocumentationTitle" FontSize="18" TextWrapping="WrapWholeWords"/>
-
-                                                    <TextBlock x:Name="HomeDocumentationDescription" Foreground="Gray" TextWrapping="WrapWholeWords"/>
-                                                </StackPanel>
-
-                                                <FontIcon Grid.Row="2" HorizontalAlignment="Right" FontFamily="{StaticResource SymbolThemeFontFamily}" FontSize="16" Glyph="&#xE8A7;"/>
-                                            </Grid>
-                                        </Button.Content>
-                                    </Button>
-
-                                    <Button Width="200" Height="220" Click="ReportABug" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch">
-                                        <Button.Content>
-                                            <Grid Margin="12,12,6,12" RowSpacing="24">
-                                                <Grid.RowDefinitions>
-                                                    <RowDefinition Height="Auto"/>
-                                                    <RowDefinition Height="*"/>
-                                                    <RowDefinition Height="Auto"/>
-                                                </Grid.RowDefinitions>
-
-                                                <FontIcon Grid.Row="0" HorizontalAlignment="Left" FontFamily="{StaticResource SymbolThemeFontFamily}" FontSize="24" Glyph="&#xEBE8;"/>
-
-                                                <StackPanel Grid.Row="1" Orientation="Vertical" Spacing="6">
-                                                    <TextBlock x:Name="HomeReportABugTitle" FontSize="18" TextWrapping="WrapWholeWords"/>
-
-                                                    <TextBlock x:Name="HomeReportABugDescription" Foreground="Gray" TextWrapping="WrapWholeWords"/>
-                                                </StackPanel>
-
-                                                <FontIcon Grid.Row="2" HorizontalAlignment="Right" FontFamily="{StaticResource SymbolThemeFontFamily}" FontSize="16" Glyph="&#xE8A7;"/>
-                                            </Grid>
-                                        </Button.Content>
-                                    </Button>
-
-                                    <Button Width="200" Height="220" Click="Discussions" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch">
-                                        <Button.Content>
-                                            <Grid Margin="12,12,6,12" RowSpacing="24">
-                                                <Grid.RowDefinitions>
-                                                    <RowDefinition Height="Auto"/>
-                                                    <RowDefinition Height="*"/>
-                                                    <RowDefinition Height="Auto"/>
-                                                </Grid.RowDefinitions>
-
-                                                <FontIcon Grid.Row="0" HorizontalAlignment="Left" FontFamily="{StaticResource SymbolThemeFontFamily}" FontSize="24" Glyph="&#xE8F2;"/>
-
-                                                <StackPanel Grid.Row="1" Orientation="Vertical" Spacing="6">
-                                                    <TextBlock x:Name="HomeDiscussionsTitle" FontSize="18" TextWrapping="WrapWholeWords"/>
-
-                                                    <TextBlock x:Name="HomeDiscussionsDescription" Foreground="Gray" TextWrapping="WrapWholeWords"/>
-                                                </StackPanel>
-
-                                                <FontIcon Grid.Row="2" HorizontalAlignment="Right" FontFamily="{StaticResource SymbolThemeFontFamily}" FontSize="16" Glyph="&#xE8A7;"/>
-                                            </Grid>
-                                        </Button.Content>
-                                    </Button>
-                                </StackPanel>
-                            </Grid>
-                        </ScrollView>
+                                    </Button.Content>
+                                </Button>
+                            </nickvision:StatusPage.Child>
+                        </nickvision:StatusPage>
                     </nickvision:ViewStackPage>
 
                     <nickvision:ViewStackPage PageName="Downloads">

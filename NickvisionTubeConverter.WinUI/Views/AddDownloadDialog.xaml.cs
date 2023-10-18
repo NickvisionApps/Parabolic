@@ -47,7 +47,7 @@ public sealed partial class AddDownloadDialog : ContentDialog
         BtnValidate.Content = _("Validate");
         //Load
         ViewStack.CurrentPageName = "Url";
-        if(Directory.Exists(_controller.PreviousSaveFolder))
+        if (Directory.Exists(_controller.PreviousSaveFolder))
         {
             _saveFolderString = _controller.PreviousSaveFolder;
         }
@@ -71,7 +71,7 @@ public sealed partial class AddDownloadDialog : ContentDialog
     public async Task<ContentDialogResult> ShowAsync(string? url)
     {
         //Validated from startup
-        if(!string.IsNullOrEmpty(url))
+        if (!string.IsNullOrEmpty(url))
         {
             TxtUrl.Text = url;
             await SearchUrlAsync(url);
@@ -82,10 +82,10 @@ public sealed partial class AddDownloadDialog : ContentDialog
             try
             {
                 var clipboardText = await Clipboard.GetContent().GetTextAsync();
-                if(!string.IsNullOrEmpty(clipboardText))
+                if (!string.IsNullOrEmpty(clipboardText))
                 {
                     var result = Uri.TryCreate(clipboardText, UriKind.Absolute, out var uriResult) && (uriResult.Scheme == Uri.UriSchemeHttp || uriResult.Scheme == Uri.UriSchemeHttps);
-                    if(result)
+                    if (result)
                     {
                         TxtUrl.Text = clipboardText;
                         TxtUrl.Select(clipboardText.Length, 0);
@@ -96,7 +96,7 @@ public sealed partial class AddDownloadDialog : ContentDialog
         }
         //Keyring
         var names = await _controller.GetKeyringCredentialNamesAsync();
-        if(names.Count > 0)
+        if (names.Count > 0)
         {
             CmbKeyringCredentials.ItemsSource = names;
             CmbKeyringCredentials.SelectedIndex = names.Count > 1 ? 1 : 0;
@@ -107,7 +107,12 @@ public sealed partial class AddDownloadDialog : ContentDialog
             CardUsername.Visibility = Visibility.Visible;
             CardPassword.Visibility = Visibility.Visible;
         }
-        return await base.ShowAsync();
+        var res = await base.ShowAsync();
+        if (res == ContentDialogResult.Primary)
+        {
+            //TODO: Populate downloads
+        }
+        return res;
     }
 
     /// <summary>
@@ -147,7 +152,7 @@ public sealed partial class AddDownloadDialog : ContentDialog
     /// <param name="e">TextChangedEventArgs</param>
     private void TxtUrl_TextChanged(object sender, TextChangedEventArgs e)
     {
-        if(!string.IsNullOrEmpty(TxtUrl.Text))
+        if (!string.IsNullOrEmpty(TxtUrl.Text))
         {
             var result = Uri.TryCreate(TxtUrl.Text, UriKind.Absolute, out var uriResult) && (uriResult.Scheme == Uri.UriSchemeHttp || uriResult.Scheme == Uri.UriSchemeHttps);
             BtnValidate.IsEnabled = result;
@@ -172,7 +177,7 @@ public sealed partial class AddDownloadDialog : ContentDialog
     /// <param name="e">SelectionChangedEventArgs</param>
     private void CmbKeyringCredentials_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
-        if(CmbKeyringCredentials.SelectedIndex == 0)
+        if (CmbKeyringCredentials.SelectedIndex == 0)
         {
             TxtUsername.Visibility = Visibility.Visible;
             TxtPassword.Visibility = Visibility.Visible;
@@ -218,10 +223,10 @@ public sealed partial class AddDownloadDialog : ContentDialog
         }
         ProgRingUrl.Visibility = Visibility.Collapsed;
         BtnValidate.IsEnabled = true;
-        if(!_controller.HasMediaInfo)
+        if (!_controller.HasMediaInfo)
         {
             CardUrl.Header = _("Media URL (Invalid)");
-            if(TglAuthenticate.IsOn)
+            if (TglAuthenticate.IsOn)
             {
                 InfoBar.Content = _("Ensure credentials are correct.");
                 InfoBar.Severity = InfoBarSeverity.Warning;
