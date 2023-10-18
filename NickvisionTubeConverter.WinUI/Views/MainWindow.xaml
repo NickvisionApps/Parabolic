@@ -204,7 +204,7 @@
                                     <RowDefinition Height="Auto"/>
                                     <RowDefinition Height="Auto"/>
                                 </Grid.RowDefinitions>
-                                
+
                                 <Border x:Name="HomeBanner" Grid.Row="0" HorizontalAlignment="Stretch" BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}" BorderThickness="1" CornerRadius="8">
                                     <Grid Margin="32,32,32,32">
                                         <Grid.ColumnDefinitions>
@@ -214,7 +214,7 @@
 
                                         <StackPanel Grid.Column="0" Orientation="Vertical" Spacing="12" VerticalAlignment="Center">
                                             <TextBlock x:Name="HomeBannerTitle" TextWrapping="WrapWholeWords" Style="{ThemeResource NavigationViewItemHeaderTextStyle}" FontSize="22"/>
-                                            
+
                                             <TextBlock x:Name="HomeBannerDescription" TextWrapping="WrapWholeWords"/>
                                         </StackPanel>
 
@@ -311,10 +311,10 @@
                         </ScrollView>
                     </nickvision:ViewStackPage>
 
-                    <nickvision:ViewStackPage PageName="Folder">
+                    <nickvision:ViewStackPage PageName="Downloads">
                         <ScrollView>
                             <Grid Margin="6,0,6,0" RowSpacing="6">
-                               
+
                             </Grid>
                         </ScrollView>
                     </nickvision:ViewStackPage>

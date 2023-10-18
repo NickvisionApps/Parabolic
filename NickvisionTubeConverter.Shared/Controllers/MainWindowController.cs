@@ -398,6 +398,18 @@ public class MainWindowController : IDisposable
     }
 
     /// <summary>
+    /// Adds downloads to the download manager
+    /// </summary>
+    /// <param name="controller">AddDownloadDialogController</param>
+    public void AddDownloads(AddDownloadDialogController controller)
+    {
+        foreach (var download in controller.Downloads)
+        {
+            DownloadManager.AddDownload(download, DownloadOptions);
+        }
+    }
+
+    /// <summary>
     /// Occurs when the configuration is saved
     /// </summary>
     /// <param name="sender">object?</param>

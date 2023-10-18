@@ -12,6 +12,7 @@ using NickvisionTubeConverter.WinUI.Controls;
 using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
+using System.Threading.Tasks;
 using Windows.Graphics;
 using Windows.System;
 using WinRT.Interop;
@@ -266,10 +267,7 @@ public sealed partial class MainWindow : Window
     /// </summary>
     /// <param name="sender">object</param>
     /// <param name="e">RoutedEventArgs</param>
-    private void AddDownload(object sender, RoutedEventArgs e)
-    {
-
-    }
+    private async void AddDownload(object sender, RoutedEventArgs e) => await AddDownloadAsync(null);
 
     /// <summary>
     /// Occurs when the exit menu item is clicked
@@ -305,7 +303,7 @@ public sealed partial class MainWindow : Window
         {
             XamlRoot = MainGrid.XamlRoot
         };
-        historyDialog.DownloadAgainRequested += (s, ea) => AddDownload(sender, new RoutedEventArgs());
+        historyDialog.DownloadAgainRequested += async (s, ea) => await AddDownloadAsync(ea);
         await historyDialog.ShowAsync();
     }
 
@@ -416,5 +414,24 @@ public sealed partial class MainWindow : Window
             XamlRoot = MainGrid.XamlRoot
         };
         await aboutDialog.ShowAsync();
+    }
+
+    /// <summary>
+    /// Prompts the AddDownloadDialog
+    /// </summary>
+    /// <param name="url">A url to pass to the dialog</param>
+    private async Task AddDownloadAsync(string? url)
+    {
+        var addController = _controller.CreateAddDownloadDialogController();
+        var addDialog = new AddDownloadDialog(addController)
+        {
+            XamlRoot = MainGrid.XamlRoot
+        };
+        var res = await addDialog.ShowAsync();
+        if (res == ContentDialogResult.Primary)
+        {
+            ViewStack.CurrentPageName = "Downloads";
+            _controller.AddDownloads(addController);
+        }
     }
 }

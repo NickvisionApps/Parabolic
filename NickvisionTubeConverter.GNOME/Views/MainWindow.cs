@@ -304,6 +304,7 @@ public partial class MainWindow : Adw.ApplicationWindow
     /// <summary>
     /// Prompts the AddDownloadDialog
     /// </summary>
+    /// <param name="url">A url to pass to the dialog</param>
     private async Task AddDownloadAsync(string? url)
     {
         var addController = _controller.CreateAddDownloadDialogController();
@@ -313,10 +314,7 @@ public partial class MainWindow : Adw.ApplicationWindow
             _headerBar.RemoveCssClass("flat");
             _addDownloadButton.SetVisible(true);
             _viewStack.SetVisibleChildName("pageDownloads");
-            foreach (var download in addController.Downloads)
-            {
-                _controller.DownloadManager.AddDownload(download, _controller.DownloadOptions);
-            }
+            _controller.AddDownloads(addController);
             addDialog.Close();
         };
         await addDialog.PresentAsync(url);
@@ -347,9 +345,9 @@ public partial class MainWindow : Adw.ApplicationWindow
     private void History(Gio.SimpleAction sender, EventArgs e)
     {
         var historyDialog = new HistoryDialog(this, _controller.AppInfo.ID, _controller.DownloadHistory);
-        historyDialog.DownloadAgainRequested += async (sender, e) =>
+        historyDialog.DownloadAgainRequested += async (s, ea) =>
         {
-            await AddDownloadAsync(e);
+            await AddDownloadAsync(ea);
             historyDialog.Destroy();
         };
         historyDialog.Present();

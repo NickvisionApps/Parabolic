@@ -41,7 +41,7 @@ public sealed partial class KeyringDialog : ContentDialog
         TxtName.PlaceholderText = _("Enter name here");
         CardUrl.Header = _("URL");
         TxtUrl.PlaceholderText = _("Enter url here");
-        CardUsername.Header = _("User Name");
+        CardUsername.Header = _("Username");
         TxtUsername.PlaceholderText = _("Enter user name here");
         CardPassword.Header = _("Password");
         TxtPassword.PlaceholderText = _("Enter password here");
@@ -267,7 +267,7 @@ public sealed partial class KeyringDialog : ContentDialog
     {
         CardName.Header = _("Name");
         CardUrl.Header = _("URL");
-        CardUsername.Header = _("User Name");
+        CardUsername.Header = _("Username");
         CardPassword.Header = _("Password");
         if (checkStatus.HasFlag(CredentialCheckStatus.EmptyName))
         {

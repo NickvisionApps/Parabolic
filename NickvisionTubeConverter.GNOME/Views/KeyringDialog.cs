@@ -217,7 +217,7 @@ public partial class KeyringDialog : Adw.Window
         _urlRow.RemoveCssClass("error");
         _urlRow.SetTitle(_("URL"));
         _usernameRow.RemoveCssClass("error");
-        _usernameRow.SetTitle(_("User Name"));
+        _usernameRow.SetTitle(_("Username"));
         _passwordRow.RemoveCssClass("error");
         _passwordRow.SetTitle(_("Password"));
         if (checkStatus.HasFlag(CredentialCheckStatus.EmptyName))

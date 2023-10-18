@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ContentDialog
+    x:Class="NickvisionTubeConverter.WinUI.Views.AddDownloadDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:NickvisionTubeConverter.WinUI.Views"
+    xmlns:nickvision="using:NickvisionTubeConverter.WinUI.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:wct="using:CommunityToolkit.WinUI.Controls"
+    mc:Ignorable="d" Style="{StaticResource DefaultContentDialogStyle}">
+
+    <ScrollViewer x:Name="ScrollViewer" VerticalScrollBarVisibility="Auto" MinWidth="520" SizeChanged="ScrollViewer_SizeChanged">
+        <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <nickvision:ViewStack x:Name="ViewStack" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                <nickvision:ViewStack.Pages>
+                    <nickvision:ViewStackPage PageName="Url">
+                        <StackPanel Orientation="Vertical" Spacing="6">
+                            <wct:SettingsCard x:Name="CardUrl">
+                                <wct:SettingsCard.HeaderIcon>
+                                    <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE12B;"/>
+                                </wct:SettingsCard.HeaderIcon>
+
+                                <TextBox x:Name="TxtUrl" MinWidth="300"/>
+                            </wct:SettingsCard>
+
+                            <wct:SettingsExpander x:Name="CardAuthenticate" IsExpanded="{x:Bind TglAuthenticate.IsOn, Mode=TwoWay}">
+                                <wct:SettingsExpander.HeaderIcon>
+                                    <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE72E;"/>
+                                </wct:SettingsExpander.HeaderIcon>
+
+                                <ToggleSwitch x:Name="TglAuthenticate"/>
+
+                                <wct:SettingsExpander.Items>
+                                    <wct:SettingsCard x:Name="CardKeyringCredentials">
+                                        <wct:SettingsCard.HeaderIcon>
+                                            <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE14C;"/>
+                                        </wct:SettingsCard.HeaderIcon>
+
+                                        <ComboBox x:Name="CmbKeyringCredentials"/>
+                                    </wct:SettingsCard>
+
+                                    <wct:SettingsCard x:Name="CardUsername">
+                                        <wct:SettingsCard.HeaderIcon>
+                                            <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xEE57;"/>
+                                        </wct:SettingsCard.HeaderIcon>
+
+                                        <TextBox x:Name="TxtUsername" MinWidth="300"/>
+                                    </wct:SettingsCard>
+
+                                    <wct:SettingsCard x:Name="CardPassword">
+                                        <wct:SettingsCard.HeaderIcon>
+                                            <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE72E;"/>
+                                        </wct:SettingsCard.HeaderIcon>
+
+                                        <PasswordBox x:Name="TxtPassword" MinWidth="300"/>
+                                    </wct:SettingsCard>
+                                </wct:SettingsExpander.Items>
+                            </wct:SettingsExpander>
+
+                            <ProgressRing x:Name="ProgRing" Margin="0,6,0,6" Visibility="Collapsed"/>
+
+                            <Button x:Name="BtnValidate" HorizontalAlignment="Stretch" Style="{ThemeResource AccentButtonStyle}" Click="Validate"/>
+                        </StackPanel>
+                    </nickvision:ViewStackPage>
+                </nickvision:ViewStack.Pages>
+            </nickvision:ViewStack>
+
+            <InfoBar x:Name="InfoBar" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,6" CornerRadius="12"/>
+        </Grid>
+    </ScrollViewer>
+</ContentDialog>
