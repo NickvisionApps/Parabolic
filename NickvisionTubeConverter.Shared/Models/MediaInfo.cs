@@ -1,15 +1,11 @@
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
-
 namespace NickvisionTubeConverter.Shared.Models;
 
 /// <summary>
 /// A model of information about a media
 /// </summary>
-public class MediaInfo : INotifyPropertyChanged
+public class MediaInfo
 {
     private string _title;
-    private bool _toDownload;
 
     /// <summary>
     /// The media url
@@ -27,8 +23,10 @@ public class MediaInfo : INotifyPropertyChanged
     /// Position of media in playlist, starting with 1 (0 means it's not part of playlist)
     /// </summary>
     public uint PlaylistPosition { get; init; }
-
-    public event PropertyChangedEventHandler? PropertyChanged;
+    /// <summary>
+    /// Whether or not to download the media
+    /// </summary>
+    public bool ToDownload { get; set; }
 
     /// <summary>
     /// Constructs a MediaInfo
@@ -40,11 +38,11 @@ public class MediaInfo : INotifyPropertyChanged
     public MediaInfo(string url, string title, double duration, uint playlistPosition)
     {
         _title = title;
-        _toDownload = true;
         Url = url;
         OriginalTitle = title;
         Duration = duration;
         PlaylistPosition = playlistPosition;
+        ToDownload = true;
     }
 
     /// <summary>
@@ -54,26 +52,6 @@ public class MediaInfo : INotifyPropertyChanged
     {
         get => _title;
 
-        set
-        {
-            _title = !string.IsNullOrEmpty(value) ? value : OriginalTitle;
-            NotifyPropertyChanged();
-        }
+        set => _title = !string.IsNullOrEmpty(value) ? value : OriginalTitle;
     }
-
-    /// <summary>
-    /// Whether or not to download the media
-    /// </summary>
-    public bool ToDownload
-    {
-        get => _toDownload;
-
-        set
-        {
-            _toDownload = value;
-            NotifyPropertyChanged();
-        }
-    }
-
-    private void NotifyPropertyChanged([CallerMemberName] string propertyName = "") => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 }

@@ -522,11 +522,18 @@ public class Download
             };
             if (File.Exists(_logPath))
             {
-                using var fs = new FileStream(_logPath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
-                using var sr = new StreamReader(fs);
-                state.Log = sr.ReadToEnd();
-                sr.Close();
-                fs.Close();
+                try
+                {
+                    using var fs = new FileStream(_logPath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
+                    using var sr = new StreamReader(fs);
+                    state.Log = sr.ReadToEnd();
+                    sr.Close();
+                    fs.Close();
+                }
+                catch
+                {
+                    state.Log = "";
+                }
             }
             ProgressChanged.Invoke(this, state);
         }
@@ -569,7 +576,14 @@ public class Download
                 }
                 if (File.Exists(_logPath))
                 {
-                    state.Log = File.ReadAllText(_logPath);
+                    try
+                    {
+                        state.Log = File.ReadAllText(_logPath);
+                    }
+                    catch
+                    {
+                        state.Log = "";
+                    }
                 }
                 ProgressChanged.Invoke(this, state);
             }
