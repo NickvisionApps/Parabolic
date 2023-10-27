@@ -518,7 +518,6 @@ public partial class AddDownloadDialog : Adw.Window
             _saveFolderString = file.GetPath();
             _saveFolderRow.SetText(Path.GetFileName(_saveFolderString));
             _saveFolderRow.RemoveCssClass("error");
-            _addDownloadButton.SetSensitive(true);
         }
         catch { }
         ValidateOptions();
@@ -533,7 +532,7 @@ public partial class AddDownloadDialog : Adw.Window
     {
         var downloadsCount = _controller.MediaList.FindAll(x => x.ToDownload).Count;
         _openPlaylistRow.SetTitle(_n("{0} of {1} items", "{0} of {1} items", _controller.MediaList.Count, downloadsCount, _controller.MediaList.Count));
-        _addDownloadButton.SetSensitive(downloadsCount > 0 && Directory.Exists(_saveFolderString));
+        _addDownloadButton.SetSensitive(downloadsCount > 0);
     }
 
     /// <summary>
