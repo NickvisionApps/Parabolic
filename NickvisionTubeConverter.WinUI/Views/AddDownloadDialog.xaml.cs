@@ -2,12 +2,14 @@ using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Nickvision.Aura;
 using NickvisionTubeConverter.Shared.Controllers;
+using NickvisionTubeConverter.Shared.Models;
 using NickvisionTubeConverter.WinUI.Controls;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 using Windows.ApplicationModel.DataTransfer;
+using Windows.Storage.Pickers;
 using static Nickvision.Aura.Localization.Gettext;
 
 namespace NickvisionTubeConverter.WinUI.Views;
@@ -18,6 +20,7 @@ namespace NickvisionTubeConverter.WinUI.Views;
 public sealed partial class AddDownloadDialog : ContentDialog
 {
     private readonly AddDownloadDialogController _controller;
+    private readonly Action<object> _initializeWithWindow;
     private readonly List<string> _audioQualities;
     private string _saveFolderString;
 
@@ -25,10 +28,12 @@ public sealed partial class AddDownloadDialog : ContentDialog
     /// Constructs an AddDownloadDialog
     /// </summary>
     /// <param name="controller">AddDownloadDialogController</param>
-    public AddDownloadDialog(AddDownloadDialogController controller)
+    /// <param name="initializeWithWindow">Action</param>
+    public AddDownloadDialog(AddDownloadDialogController controller, Action<object> initializeWithWindow)
     {
         InitializeComponent();
         _controller = controller;
+        _initializeWithWindow = initializeWithWindow;
         _audioQualities = new List<string>() { _("Best"), _("Worst") };
         //Localize Strings
         Title = _("Add Download");
@@ -45,6 +50,45 @@ public sealed partial class AddDownloadDialog : ContentDialog
         CardPassword.Header = _("Password");
         TxtPassword.PlaceholderText = _("Enter password here");
         BtnValidate.Content = _("Validate");
+        CardFileType.Header = _("File Type");
+        CardQuality.Header = _("Quality");
+        CardAudioLanguage.Header = _("Audio Language");
+        CardSubtitle.Header = _("Download Subtitle");
+        TglSubtitle.OnContent = _("On");
+        TglSubtitle.OffContent = _("Off");
+        CardSaveFolder.Header = _("Save Folder");
+        ToolTipService.SetToolTip(BtnSelectSaveFolder, _("Select Save Folder"));
+        CardAdvancedOptions.Header = _("Advanced Options");
+        CardOpenPlaylist.Description = _("Select items to download or change file names.");
+        CardNumberTitles.Header = _("Number Titles");
+        TglNumberTitles.OnContent = _("On");
+        TglNumberTitles.OffContent = _("Off");
+        CardNumberTitles2.Header = _("Number Titles");
+        TglNumberTitles2.OnContent = _("On");
+        TglNumberTitles2.OffContent = _("Off");
+        LblBtnSelectAll.Text = _("Select All");
+        LblBtnDeselectAll.Text = _("Deselect All");
+        CardSpeedLimit.Header = _("Speed Limit");
+        TglSpeedLimit.OnContent = _("On");
+        TglSpeedLimit.OffContent = _("Off");
+        CardSplitChapters.Header = _("Split Chapters");
+        CardSplitChapters.Description = _("Splits the video into multiple smaller ones based on its chapters.");
+        TglSplitChapters.OnContent = _("On");
+        TglSplitChapters.OffContent = _("Off");
+        CardCropThumbnail.Header = _("Crop Thumbnail");
+        CardCropThumbnail.Description = _("Make thumbnail square, useful when downloading music.");
+        TglCropThumbnail.OnContent = _("On");
+        TglCropThumbnail.OffContent = _("Off");
+        CardDownloadTimeframe.Header = _("Download Specific Timeframe");
+        CardDownloadTimeframe.Description = _("Media can possibly be cut inaccurately.\nEnabling this option will disable the use of aria2 as the downloader if it is enabled.");
+        TglDownloadTimeframe.OnContent = _("On");
+        TglDownloadTimeframe.OffContent = _("Off");
+        CardTimeframeStart.Header = _("Start Time");
+        CardTimeframeStart.Description = _("Leave empty to download from start.");
+        TxtTimeframeStart.PlaceholderText = _("Enter start timeframe here");
+        CardTimeframeEnd.Header = _("End Time");
+        CardTimeframeEnd.Description = _("Leave empty to download from start.");
+        TxtTimeframeEnd.PlaceholderText = _("Enter end timeframe here");
         //Load
         ViewStack.CurrentPageName = "Url";
         if (Directory.Exists(_controller.PreviousSaveFolder))
@@ -54,6 +98,34 @@ public sealed partial class AddDownloadDialog : ContentDialog
         else
         {
             _saveFolderString = UserDirectories.Downloads;
+        }
+        LblSaveFolder.Text = Path.GetFileName(_saveFolderString);
+        TglSubtitle.IsOn = _controller.PreviousSubtitleState;
+        CardSpeedLimit.Description = $"{_("{0:f1} KiB/s", _controller.CurrentSpeedLimit)} {_("(Configurable in preferences)")}";
+        CardCropThumbnail.IsEnabled = _controller.EmbedMetadata;
+    }
+
+    /// <summary>
+    /// The MediaFileType object representing the selected file type
+    /// </summary>
+    private MediaFileType SelectedMediaFileType
+    {
+        get
+        {
+            MediaFileType fileType;
+            if (_controller.DisallowConversions)
+            {
+                fileType = (CmbFileType.SelectedIndex == 0 && _controller.HasVideoResolutions) ? MediaFileType.Video : MediaFileType.Audio;
+            }
+            else
+            {
+                fileType = (MediaFileType)CmbFileType.SelectedIndex;
+                if (!_controller.HasVideoResolutions)
+                {
+                    fileType += 2;
+                }
+            }
+            return fileType;
         }
     }
 
@@ -89,6 +161,7 @@ public sealed partial class AddDownloadDialog : ContentDialog
                     {
                         TxtUrl.Text = clipboardText;
                         TxtUrl.Select(clipboardText.Length, 0);
+                        BtnValidate.IsEnabled = true;
                     }
                 }
             }
@@ -110,7 +183,44 @@ public sealed partial class AddDownloadDialog : ContentDialog
         var res = await base.ShowAsync();
         if (res == ContentDialogResult.Primary)
         {
-            //TODO: Populate downloads
+            Quality quality;
+            int? resolutionIndex;
+            if (SelectedMediaFileType.GetIsAudio())
+            {
+                quality = (Quality)CmbQuality.SelectedIndex;
+                resolutionIndex = null;
+            }
+            else
+            {
+                quality = Quality.Resolution;
+                resolutionIndex = (int)CmbQuality.SelectedIndex;
+            }
+            string? audioLanguage = null;
+            if (_controller.AudioLanguages.Count > 1)
+            {
+                audioLanguage = _controller.AudioLanguages[CmbAudioLanguage.SelectedIndex];
+            }
+            Timeframe? timeframe = null;
+            if (TglDownloadTimeframe.IsOn)
+            {
+                try
+                {
+                    timeframe = Timeframe.Parse(TxtTimeframeStart.Text, TxtTimeframeEnd.Text, _controller.MediaList[0].Duration);
+                }
+                catch { }
+            }
+            if (CmbKeyringCredentials.SelectedIndex == 0 || !TglAuthenticate.IsOn)
+            {
+                _controller.PopulateDownloads(SelectedMediaFileType, quality, resolutionIndex, audioLanguage,
+                    TglSubtitle.IsOn, _saveFolderString, TglSpeedLimit.IsOn, TglSplitChapters.IsOn,
+                    TglCropThumbnail.IsOn, timeframe, TxtUsername.Text, TxtPassword.Password);
+            }
+            else
+            {
+                await _controller.PopulateDownloadsAsync(SelectedMediaFileType, quality, resolutionIndex, audioLanguage,
+                    TglSubtitle.IsOn, _saveFolderString, TglSpeedLimit.IsOn, TglSplitChapters.IsOn,
+                    TglCropThumbnail.IsOn, timeframe, CmbKeyringCredentials.SelectedIndex - 1);
+            }
         }
         return res;
     }
@@ -127,7 +237,7 @@ public sealed partial class AddDownloadDialog : ContentDialog
     /// </summary>
     /// <param name="sender">object</param>
     /// <param name="e">RoutedEventArgs</param>
-    private void Back(object sender, RoutedEventArgs e) => ViewStack.CurrentPageName = "Downloads";
+    private void Back(object sender, RoutedEventArgs e) => ViewStack.CurrentPageName = "Download";
 
     /// <summary>
     /// Occurs when the ViewStack's page is changed
@@ -179,13 +289,13 @@ public sealed partial class AddDownloadDialog : ContentDialog
     {
         if (CmbKeyringCredentials.SelectedIndex == 0)
         {
-            TxtUsername.Visibility = Visibility.Visible;
-            TxtPassword.Visibility = Visibility.Visible;
+            CardUsername.Visibility = Visibility.Visible;
+            CardPassword.Visibility = Visibility.Visible;
         }
         else
         {
-            TxtUsername.Visibility = Visibility.Collapsed;
-            TxtPassword.Visibility = Visibility.Collapsed;
+            CardUsername.Visibility = Visibility.Collapsed;
+            CardPassword.Visibility = Visibility.Collapsed;
         }
     }
 
@@ -195,6 +305,153 @@ public sealed partial class AddDownloadDialog : ContentDialog
     /// <param name="sender">object</param>
     /// <param name="e">RoutedEventArgs</param>
     private async void Validate(object sender, RoutedEventArgs e) => await SearchUrlAsync(TxtUrl.Text);
+
+    /// <summary>
+    /// Occurs when CmbFileType's selection is changed
+    /// </summary>
+    /// <param name="sender">object</param>
+    /// <param name="e">SelectionChangedEventArgs</param>
+    private void CmbFileType_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        if (SelectedMediaFileType.GetIsVideo())
+        {
+            CmbQuality.ItemsSource = _controller.VideoResolutions;
+            var findPrevious = _controller.PreviousVideoResolutionIndex;
+            CmbQuality.SelectedIndex = findPrevious != -1 ? findPrevious : 0;
+            CardSubtitle.IsEnabled = true;
+        }
+        else
+        {
+            CmbQuality.ItemsSource = _audioQualities;
+            CmbQuality.SelectedIndex = 0;
+            CardSubtitle.IsEnabled = false;
+        }
+        if (_controller.CropAudioThumbnails)
+        {
+            TglCropThumbnail.IsOn = SelectedMediaFileType.GetIsAudio();
+        }
+    }
+
+    /// <summary>
+    /// Occurs when the SelectSaveFolder button is clicked
+    /// </summary>
+    /// <param name="sender">object</param>
+    /// <param name="e">RoutedEventArgs</param>
+    private async void SelectSaveFolder(object sender, RoutedEventArgs e)
+    {
+        var folderPicker = new FolderPicker();
+        _initializeWithWindow(folderPicker);
+        folderPicker.SuggestedStartLocation = PickerLocationId.Downloads;
+        folderPicker.FileTypeFilter.Add("*");
+        var folder = await folderPicker.PickSingleFolderAsync();
+        if (folder != null)
+        {
+            _saveFolderString = folder.Path;
+            LblSaveFolder.Text = folder.Name;
+        }
+        ValidateOptions();
+    }
+
+    /// <summary>
+    /// Occurs when the OpenAdvancedOptions card is clicked
+    /// </summary>
+    /// <param name="sender">object</param>
+    /// <param name="e">RoutedEventArgs</param>
+    private void OpenAdvancedOptions(object sender, RoutedEventArgs e) => ViewStack.CurrentPageName = "Advanced";
+
+    /// <summary>
+    /// Occurs when the OpenPlaylist card is clicked
+    /// </summary>
+    /// <param name="sender">object</param>
+    /// <param name="e">RoutedEventArgs</param>
+    private void OpenPlaylist(object sender, RoutedEventArgs e) => ViewStack.CurrentPageName = "Playlist";
+
+    /// <summary>
+    /// Occurs when the TglNumberTitles is toggled
+    /// </summary>
+    /// <param name="sender">object</param>
+    /// <param name="e">RoutedEventArgs</param>
+    private void TglNumberTitles_Toggled(object sender, RoutedEventArgs e)
+    {
+        if (_controller.ToggleNumberTitles(TglNumberTitles.IsOn))
+        {
+            foreach (MediaRow row in ListPlaylist.Children)
+            {
+                row.UpdateTitle(TglNumberTitles.IsOn);
+            }
+        }
+    }
+
+    /// <summary>
+    /// Occurs when the SelectAll button is clicked
+    /// </summary>
+    /// <param name="sender">object</param>
+    /// <param name="e">RoutedEventArgs</param>
+    private void SelectAll(object sender, RoutedEventArgs e)
+    {
+        foreach (MediaRow row in ListPlaylist.Children)
+        {
+            row.IsChecked = true;
+        }
+    }
+
+    /// <summary>
+    /// Occurs when the DeselectAll button is clicked
+    /// </summary>
+    /// <param name="sender">object</param>
+    /// <param name="e">RoutedEventArgs</param>
+    private void DeselectAll(object sender, RoutedEventArgs e)
+    {
+        foreach (MediaRow row in ListPlaylist.Children)
+        {
+            row.IsChecked = false;
+        }
+    }
+
+    /// <summary>
+    /// Occurs when the TglSpeedLimit is toggled
+    /// </summary>
+    /// <param name="sender">object</param>
+    /// <param name="e">RoutedEventArgs</param>
+    private void TglSpeedLimit_Toggled(object sender, RoutedEventArgs e)
+    {
+        if (TglSpeedLimit.IsOn)
+        {
+            CardDownloadTimeframe.IsExpanded = false;
+        }
+        CardDownloadTimeframe.IsEnabled = !TglSpeedLimit.IsOn && _controller.MediaList.Count == 1;
+    }
+
+    /// <summary>
+    /// Occurs when the TglDownloadTimeframe is toggled
+    /// </summary>
+    /// <param name="sender">object</param>
+    /// <param name="e">RoutedEventArgs</param>
+    private void TglDownloadTimeframe_Toggled(object sender, RoutedEventArgs e)
+    {
+        if (TglDownloadTimeframe.IsOn)
+        {
+            TglSpeedLimit.IsOn = false;
+            TxtTimeframeStart.Text = TimeSpan.FromSeconds(0).ToString(@"hh\:mm\:ss");
+            TxtTimeframeEnd.Text = TimeSpan.FromSeconds(_controller.MediaList[0].Duration).ToString(@"hh\:mm\:ss");
+        }
+        CardSpeedLimit.IsEnabled = !TglDownloadTimeframe.IsOn;
+        ValidateOptions();
+    }
+
+    private void TxtTimeframe_TextChanged(object sender, TextChangedEventArgs e) => ValidateOptions();
+
+    /// <summary>
+    /// Occurs when the number of items selected to download has changed
+    /// </summary>
+    /// <param name="sender">object?</param>
+    /// <param name="e">EventArgs</param>
+    private void PlaylistChanged(object? sender, EventArgs e)
+    {
+        var downloadsCount = _controller.MediaList.FindAll(x => x.ToDownload).Count;
+        CardOpenPlaylist.Header = _n("{0} of {1} items", "{0} of {1} items", _controller.MediaList.Count, downloadsCount, _controller.MediaList.Count);
+        IsPrimaryButtonEnabled = downloadsCount > 0;
+    }
 
     /// <summary>
     /// Searches for information about a URL in the dialog
@@ -228,16 +485,101 @@ public sealed partial class AddDownloadDialog : ContentDialog
             CardUrl.Header = _("Media URL (Invalid)");
             if (TglAuthenticate.IsOn)
             {
-                InfoBar.Content = _("Ensure credentials are correct.");
+                InfoBar.Message = _("Ensure credentials are correct.");
                 InfoBar.Severity = InfoBarSeverity.Warning;
                 InfoBar.IsOpen = true;
             }
         }
         else
         {
+            if (!_controller.HasVideoResolutions)
+            {
+                if (_controller.DisallowConversions)
+                {
+                    CmbFileType.ItemsSource = new string[] { _("Audio") };
+                    CmbFileType.SelectedIndex = 0;
+                }
+                else
+                {
+                    CmbFileType.ItemsSource = new string[] { "MP3", "OPUS", "FLAC", "WAV" };
+                    CmbFileType.SelectedIndex = Math.Max((int)_controller.PreviousMediaFileType - 2, 0);
+                }
+            }
+            else
+            {
+                if (_controller.DisallowConversions)
+                {
+                    CmbFileType.ItemsSource = new string[] { _("Video"), _("Audio") };
+                    CmbFileType.SelectedIndex = 0;
+                }
+                else
+                {
+                    CmbFileType.SelectedIndex = (int)_controller.PreviousMediaFileType;
+                }
+            }
+            if (_controller.AudioLanguages.Count > 1)
+            {
+                CardAudioLanguage.IsEnabled = true;
+                CmbAudioLanguage.ItemsSource = _controller.AudioLanguages;
+            }
             ViewStack.CurrentPageName = "Download";
             PrimaryButtonText = _("Download");
+            IsPrimaryButtonEnabled = Directory.Exists(_saveFolderString);
             DefaultButton = ContentDialogButton.Primary;
+            if (_controller.MediaList.Count > 1)
+            {
+                CardQuality.Header = _("Maximum Quality");
+                OpenPlaylistGroup.Visibility = Visibility.Visible;
+                CardOpenPlaylist.Header = _n("{0} of {1} items", "{0} of {1} items", _controller.MediaList.Count, _controller.MediaList.Count, _controller.MediaList.Count);
+                CardDownloadTimeframe.IsEnabled = false;
+                if (_controller.NumberTitles)
+                {
+                    TglNumberTitles.IsOn = true;
+                }
+                foreach (var mediaInfo in _controller.MediaList)
+                {
+                    var row = new MediaRow(mediaInfo);
+                    row.OnSelectionChanged += PlaylistChanged;
+                    ListPlaylist.Children.Add(row);
+                }
+            }
+            else
+            {
+                StackDownload.Children.Insert(StackDownload.Children.IndexOf(CardAdvancedOptions) + 1, new MediaRow(_controller.MediaList[0])
+                {
+                    Margin = new Thickness(0, 12, 0, 0)
+                });
+            }
+            ValidateOptions();
+        }
+    }
+
+    /// <summary>
+    /// Validate download options
+    /// </summary>
+    private void ValidateOptions()
+    {
+        CardSaveFolder.Header = _("Save Folder");
+        CardTimeframeStart.Header = _("Start Time");
+        CardTimeframeEnd.Header = _("End Time");
+        IsPrimaryButtonEnabled = false;
+        var status = _controller.ValidateDownloadOptions(_saveFolderString, TglDownloadTimeframe.IsOn, TxtTimeframeStart.Text, TxtTimeframeEnd.Text, _controller.MediaList[0].Duration);
+        if(status == DownloadOptionsCheckStatus.Valid)
+        {
+            IsPrimaryButtonEnabled = true;
+            return;
+        }
+        if (status.HasFlag(DownloadOptionsCheckStatus.InvalidSaveFolder))
+        {
+            CardSaveFolder.Header = _("Save Folder (Invalid)");
+        }
+        if (status.HasFlag(DownloadOptionsCheckStatus.InvalidTimeframeStart))
+        {
+            CardTimeframeStart.Header = _("Start Time (Invalid)");
+        }
+        if (status.HasFlag(DownloadOptionsCheckStatus.InvalidTimeframeEnd))
+        {
+            CardTimeframeEnd.Header = _("End Time (Invalid)");
         }
     }
 }

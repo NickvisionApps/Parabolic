@@ -404,7 +404,7 @@ public sealed partial class MainWindow : Window
     private async Task AddDownloadAsync(string? url)
     {
         var addController = _controller.CreateAddDownloadDialogController();
-        var addDialog = new AddDownloadDialog(addController)
+        var addDialog = new AddDownloadDialog(addController, InitializeWithWindow)
         {
             XamlRoot = MainGrid.XamlRoot
         };
