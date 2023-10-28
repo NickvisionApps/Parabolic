@@ -564,7 +564,7 @@ public sealed partial class AddDownloadDialog : ContentDialog
         CardTimeframeEnd.Header = _("End Time");
         IsPrimaryButtonEnabled = false;
         var status = _controller.ValidateDownloadOptions(_saveFolderString, TglDownloadTimeframe.IsOn, TxtTimeframeStart.Text, TxtTimeframeEnd.Text, _controller.MediaList[0].Duration);
-        if(status == DownloadOptionsCheckStatus.Valid)
+        if (status == DownloadOptionsCheckStatus.Valid)
         {
             IsPrimaryButtonEnabled = true;
             return;

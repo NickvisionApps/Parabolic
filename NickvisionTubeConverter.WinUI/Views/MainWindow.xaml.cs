@@ -8,11 +8,13 @@ using Nickvision.Aura.Taskbar;
 using NickvisionTubeConverter.Shared.Controllers;
 using NickvisionTubeConverter.Shared.Events;
 using NickvisionTubeConverter.Shared.Helpers;
+using NickvisionTubeConverter.Shared.Models;
 using NickvisionTubeConverter.WinUI.Controls;
 using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
+using Vanara.PInvoke;
 using Windows.Graphics;
 using Windows.System;
 using WinRT.Interop;
@@ -30,6 +32,7 @@ public sealed partial class MainWindow : Window
     private bool _isOpened;
     private bool _isActived;
     private RoutedEventHandler? _notificationButtonClickEvent;
+    private Kernel32.SafePowerRequestObject? _powerRequest;
 
     private enum Monitor_DPI_Type : int
     {
@@ -49,9 +52,18 @@ public sealed partial class MainWindow : Window
         _hwnd = WindowNative.GetWindowHandle(this);
         _isOpened = false;
         _isActived = true;
+        _powerRequest = null;
         //Register Events
         AppWindow.Closing += Window_Closing;
         _controller.NotificationSent += (sender, e) => DispatcherQueue.TryEnqueue(() => NotificationSent(sender, e));
+        _controller.PreventSuspendWhenDownloadingChanged += (sender, e) => DispatcherQueue.TryEnqueue(PreventSuspendWhenDownloadingChanged);
+        _controller.RunInBackgroundChanged += (sender, e) => DispatcherQueue.TryEnqueue(RunInBackgroundChanged);
+        _controller.DownloadManager.DownloadAdded += (sender, e) => DispatcherQueue.TryEnqueue(() => DownloadAdded(e));
+        _controller.DownloadManager.DownloadProgressUpdated += (sender, e) => DispatcherQueue.TryEnqueue(() => DownloadProgressUpdated(e));
+        _controller.DownloadManager.DownloadCompleted += (sender, e) => DispatcherQueue.TryEnqueue(() => DownloadCompleted(e));
+        _controller.DownloadManager.DownloadStopped += (sender, e) => DispatcherQueue.TryEnqueue(() => DownloadStopped(e));
+        _controller.DownloadManager.DownloadRetried += (sender, e) => DispatcherQueue.TryEnqueue(() => DownloadRetried(e));
+        _controller.DownloadManager.DownloadStartedFromQueue += (sender, e) => DispatcherQueue.TryEnqueue(() => DownloadStartedFromQueue(e));
         //Set TitleBar
         TitleBarTitle.Text = _controller.AppInfo.ShortName;
         AppWindow.TitleBar.ExtendsContentIntoTitleBar = true;
@@ -74,6 +86,7 @@ public sealed partial class MainWindow : Window
         MenuDownloader.Title = _("Downloader");
         MenuStopAllDownloads.Text = _("Stop All Downloads");
         MenuRetryFailedDownloads.Text = _("Retry Failed Downloads");
+        MenuClearCompletedDownloads.Text = _("Clear Completed Downloads");
         MenuClearQueuedDownloads.Text = _("Clear Queued Downloads");
         MenuHelp.Title = _("Help");
         MenuCheckForUpdates.Text = _("Check for Updates");
@@ -124,6 +137,8 @@ public sealed partial class MainWindow : Window
             await _controller.StartupAsync();
             MainMenu.IsEnabled = true;
             ViewStack.CurrentPageName = "Home";
+            PreventSuspendWhenDownloadingChanged();
+            RunInBackgroundChanged();
             _isOpened = true;
         }
     }
@@ -133,8 +148,34 @@ public sealed partial class MainWindow : Window
     /// </summary>
     /// <param name="sender">AppWindow</param>
     /// <param name="e">AppWindowClosingEventArgs</param>
-    private void Window_Closing(AppWindow sender, AppWindowClosingEventArgs e)
+    private async void Window_Closing(AppWindow sender, AppWindowClosingEventArgs e)
     {
+        if (!_controller.DownloadManager.AreDownloadsRunning)
+        {
+            if (_controller.RunInBackground)
+            {
+                return;
+            }
+            e.Cancel = true;
+            var dialog = new ContentDialog()
+            {
+                Title = _("Close and Stop Downloads?"),
+                Content = _("Some downloads are still in progress.\nAre you sure you want to close Parabolic and stop the running downloads?"),
+                PrimaryButtonText = _("Yes"),
+                CloseButtonText = _("No"),
+                DefaultButton = ContentDialogButton.Primary,
+                XamlRoot = MainGrid.XamlRoot
+            };
+            var res = await dialog.ShowAsync();
+            if (res == ContentDialogResult.Primary)
+            {
+                _controller.DownloadManager.StopAllDownloads(false);
+                Close();
+            }
+        }
+        _powerRequest?.Close();
+        _powerRequest?.Dispose();
+        _controller.DownloadManager.StopAllDownloads(false);
         _controller.Dispose();
     }
 
@@ -307,17 +348,21 @@ public sealed partial class MainWindow : Window
     /// </summary>
     /// <param name="sender">object</param>
     /// <param name="e">RoutedEventArgs</param>
-    private void StopAllDownloads(object sender, RoutedEventArgs e)
-    {
-
-    }
+    private void StopAllDownloads(object sender, RoutedEventArgs e) => _controller.DownloadManager.StopAllDownloads(true);
 
     /// <summary>
     /// Occurs when the retry failed downloads menu item is clicked
     /// </summary>
     /// <param name="sender">object</param>
     /// <param name="e">RoutedEventArgs</param>
-    private void RetryFailedDownloads(object sender, RoutedEventArgs e)
+    private void RetryFailedDownloads(object sender, RoutedEventArgs e) => _controller.DownloadManager.RetryFailedDownloads(_controller.DownloadOptions);
+
+    /// <summary>
+    /// Occurs when the clear completed downloads menu item is clicked
+    /// </summary>
+    /// <param name="sender">object</param>
+    /// <param name="e">RoutedEventArgs</param>
+    private void ClearCompletedDownloads(object sender, RoutedEventArgs e)
     {
 
     }
@@ -414,5 +459,88 @@ public sealed partial class MainWindow : Window
             ViewStack.CurrentPageName = "Downloads";
             _controller.AddDownloads(addController);
         }
+    }
+
+    /// <summary>
+    /// Occurs when the prevent suspend option is changed
+    /// </summary>
+    private void PreventSuspendWhenDownloadingChanged()
+    {
+        if (_powerRequest == null && _controller.PreventSuspendWhenDownloading)
+        {
+            _powerRequest = Kernel32.PowerCreateRequest(new Kernel32.REASON_CONTEXT("Parabolic downloading"));
+            Kernel32.PowerSetRequest(_powerRequest, Kernel32.POWER_REQUEST_TYPE.PowerRequestSystemRequired);
+            Kernel32.PowerSetRequest(_powerRequest, Kernel32.POWER_REQUEST_TYPE.PowerRequestDisplayRequired);
+        }
+        else if (_powerRequest != null && !_controller.PreventSuspendWhenDownloading)
+        {
+            Kernel32.PowerClearRequest(_powerRequest, Kernel32.POWER_REQUEST_TYPE.PowerRequestSystemRequired);
+            Kernel32.PowerClearRequest(_powerRequest, Kernel32.POWER_REQUEST_TYPE.PowerRequestDisplayRequired);
+            _powerRequest.Close();
+            _powerRequest.Dispose();
+            _powerRequest = null;
+        }
+    }
+
+    /// <summary>
+    /// Occurs when the run in background option is changed
+    /// </summary>
+    private void RunInBackgroundChanged()
+    {
+
+    }
+
+    /// <summary>
+    /// Occurs when a download is added
+    /// </summary>
+    /// <param name="e">(Guid Id, string Filename, string SaveFolder, bool IsDownloading)</param>
+    private void DownloadAdded((Guid Id, string Filename, string SaveFolder, bool IsDownloading) e)
+    {
+
+    }
+
+    /// <summary>
+    /// Occurs when a download's progress is updated
+    /// </summary>
+    /// <param name="e">(Guid Id, DownloadProgressState State)</param>
+    private void DownloadProgressUpdated((Guid Id, DownloadProgressState State) e)
+    {
+
+    }
+
+    /// <summary>
+    /// Occurs when a download is completed
+    /// </summary>
+    /// <param name="e">(Guid Id, bool Successful, string Filename, bool ShowNotification)</param>
+    private void DownloadCompleted((Guid Id, bool Successful, string Filename, bool ShowNotification) e)
+    {
+
+    }
+
+    /// <summary>
+    /// Occurs when a download is stopped
+    /// </summary>
+    /// <param name="e">Guid</param>
+    private void DownloadStopped(Guid e)
+    {
+
+    }
+
+    /// <summary>
+    /// Occurs when a download is retried
+    /// </summary>
+    /// <param name="e">Guid</param>
+    private void DownloadRetried(Guid e)
+    {
+
+    }
+
+    /// <summary>
+    /// Occurs when a download is started from queue
+    /// </summary>
+    /// <param name="e">Guid</param>
+    private void DownloadStartedFromQueue(Guid e)
+    {
+
     }
 }

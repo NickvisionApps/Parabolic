@@ -117,13 +117,23 @@
                             </MenuFlyoutItem.KeyboardAccelerators>
                         </MenuFlyoutItem>
 
-                        <MenuFlyoutItem x:Name="MenuClearQueuedDownloads" IsEnabled="False" Click="ClearQueuedDownloads">
+                        <MenuFlyoutItem x:Name="MenuClearCompletedDownloads" IsEnabled="False" Click="ClearCompletedDownloads">
                             <MenuFlyoutItem.Icon>
                                 <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE107;"/>
                             </MenuFlyoutItem.Icon>
 
                             <MenuFlyoutItem.KeyboardAccelerators>
                                 <KeyboardAccelerator Modifiers="Control" Key="Delete"/>
+                            </MenuFlyoutItem.KeyboardAccelerators>
+                        </MenuFlyoutItem>
+
+                        <MenuFlyoutItem x:Name="MenuClearQueuedDownloads" IsEnabled="False" Click="ClearQueuedDownloads">
+                            <MenuFlyoutItem.Icon>
+                                <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE107;"/>
+                            </MenuFlyoutItem.Icon>
+
+                            <MenuFlyoutItem.KeyboardAccelerators>
+                                <KeyboardAccelerator Modifiers="Control,Shift" Key="Delete"/>
                             </MenuFlyoutItem.KeyboardAccelerators>
                         </MenuFlyoutItem>
                     </MenuBarItem>

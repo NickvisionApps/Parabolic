@@ -52,7 +52,7 @@ public sealed partial class SettingsDialog : ContentDialog
         TglSuspend.OnContent = _("On");
         TglSuspend.OffContent = _("Off");
         CardBackground.Header = _("Allow Running In Background");
-        CardBackground.Description = _("Hide the window instead of quitting if there are downloads running.");
+        CardBackground.Description = _("Minimize to the system tray instead of quitting the application when the window is closed.");
         TglBackground.OnContent = _("On");
         TglBackground.OffContent = _("Off");
         LblDownloader.Text = _("Downloader");
