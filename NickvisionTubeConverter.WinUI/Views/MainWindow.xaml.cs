@@ -364,7 +364,14 @@ public sealed partial class MainWindow : Window
     /// <param name="e">RoutedEventArgs</param>
     private void ClearQueuedDownloads(object sender, RoutedEventArgs e)
     {
-
+        _controller.DownloadManager.ClearQueuedDownloads();
+        ListQueued.Children.Clear();
+        GroupQueued.Visibility = Visibility.Collapsed;
+        if(!_controller.DownloadManager.AreDownloadsQueued && !_controller.DownloadManager.AreDownloadsRunning && !_controller.DownloadManager.AreDownloadsCompleted)
+        {
+            ViewStack.CurrentPageName = "Home";
+            StatusBar.Visibility = Visibility.Collapsed;
+        }
     }
 
     /// <summary>
@@ -381,7 +388,14 @@ public sealed partial class MainWindow : Window
     /// <param name="e">RoutedEventArgs</param>
     private void ClearCompletedDownloads(object sender, RoutedEventArgs e)
     {
-
+        _controller.DownloadManager.ClearCompletedDownloads();
+        ListCompleted.Children.Clear();
+        GroupCompleted.Visibility = Visibility.Collapsed;
+        if (!_controller.DownloadManager.AreDownloadsQueued && !_controller.DownloadManager.AreDownloadsRunning && !_controller.DownloadManager.AreDownloadsCompleted)
+        {
+            ViewStack.CurrentPageName = "Home";
+            StatusBar.Visibility = Visibility.Collapsed;
+        }
     }
 
     /// <summary>
