@@ -15,23 +15,29 @@
         </wct:SettingsExpander.HeaderIcon>
 
         <wct:SettingsExpander.Header>
-            <StackPanel Orientation="Vertical" Spacing="6">
-                <TextBlock x:Name="LblFilename"/>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
 
-                <TextBlock x:Name="LblProgress" Foreground="Gray"/>
+                <StackPanel Orientation="Vertical" Spacing="6">
+                    <TextBlock x:Name="LblFilename"/>
 
-                <local:ViewStack x:Name="StateViewStack">
-                    <local:ViewStack.Pages>
-                        <local:ViewStackPage PageName="Downloading">
-                            <ProgressBar x:Name="ProgressBar"/>
-                        </local:ViewStackPage>
+                    <TextBlock x:Name="LblProgress" Foreground="Gray"/>
 
-                        <local:ViewStackPage PageName="Processing">
-                            <ProgressBar IsIndeterminate="True"/>
-                        </local:ViewStackPage>
-                    </local:ViewStack.Pages>
-                </local:ViewStack>
-            </StackPanel>
+                    <local:ViewStack x:Name="StateViewStack">
+                        <local:ViewStack.Pages>
+                            <local:ViewStackPage PageName="Downloading">
+                                <ProgressBar x:Name="ProgressBar"/>
+                            </local:ViewStackPage>
+
+                            <local:ViewStackPage PageName="Processing">
+                                <ProgressBar IsIndeterminate="True"/>
+                            </local:ViewStackPage>
+                        </local:ViewStack.Pages>
+                    </local:ViewStack>
+                </StackPanel>
+            </Grid>
         </wct:SettingsExpander.Header>
 
         <local:ViewStack x:Name="ActionViewStack">
@@ -71,7 +77,7 @@
         </local:ViewStack>
 
         <wct:SettingsExpander.Items>
-            <StackPanel Orientation="Vertical" Spacing="6">
+            <StackPanel Margin="6,6,6,0" Orientation="Vertical" Spacing="6">
                 <Button x:Name="BtnLogToClipboard" Click="CopyLogToClipboard">
                     <Button.Content>
                         <StackPanel Orientation="Horizontal" Spacing="6">
@@ -83,7 +89,7 @@
                 </Button>
 
                 <ScrollViewer MaxHeight="100">
-                    <TextBlock x:Name="LblLog" Margin="12,0,12,0"/>
+                    <TextBlock x:Name="LblLog" Margin="0,0,14,0"/>
                 </ScrollViewer>
             </StackPanel>
         </wct:SettingsExpander.Items>

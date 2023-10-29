@@ -33,6 +33,7 @@ public sealed partial class MainWindow : Window
     private bool _isActived;
     private RoutedEventHandler? _notificationButtonClickEvent;
     private Kernel32.SafePowerRequestObject? _powerRequest;
+    private readonly Dictionary<Guid, DownloadRow> _downloadRows;
 
     private enum Monitor_DPI_Type : int
     {
@@ -53,6 +54,7 @@ public sealed partial class MainWindow : Window
         _isOpened = false;
         _isActived = true;
         _powerRequest = null;
+        _downloadRows = new Dictionary<Guid, DownloadRow>();
         //Register Events
         AppWindow.Closing += Window_Closing;
         _controller.NotificationSent += (sender, e) => DispatcherQueue.TryEnqueue(() => NotificationSent(sender, e));
@@ -99,7 +101,8 @@ public sealed partial class MainWindow : Window
         LblStartup2.Text = _("This may take a while");
         StatusPageHome.Title = _("Download Media");
         StatusPageHome.Description = _("Add a video, audio, or playlist URL to start downloading");
-        HomeAddDownlaodButtonLabel.Text = _("Add Download");
+        LblBtnHomeAddDownload.Text = _("Add Download");
+        BtnAddDownload.Label = _("Add");
         BtnStopAllDownloads.Label = _("Stop All");
         BtnClearQueuedDownloads.Label = _("Clear Queued");
         BtnRetryFailedDownloads.Label = _("Retry Failed");
@@ -107,6 +110,7 @@ public sealed partial class MainWindow : Window
         LblDownloading.Text = _("Downloading");
         LblQueued.Text = _("Queued");
         LblCompleted.Text = _("Completed");
+        StatusIcon.Glyph = "\uE118";
         StatusLabel.Text = _("Remaining Downloads: {0}", 0);
     }
 
@@ -249,7 +253,9 @@ public sealed partial class MainWindow : Window
     {
         if (e.Action == "network-restored")
         {
-            //TODO: Add Download Enabled
+            MenuAddDownload.IsEnabled = true;
+            BtnHomeAddDownload.IsEnabled = true;
+            BtnAddDownload.IsEnabled = true;
             return;
         }
         //InfoBar
@@ -275,7 +281,9 @@ public sealed partial class MainWindow : Window
         }
         else if (e.Action == "no-network")
         {
-            //TODO: Add Download Disabled
+            MenuAddDownload.IsEnabled = false;
+            BtnHomeAddDownload.IsEnabled = false;
+            BtnAddDownload.IsEnabled = false;
             InfoBar.IsClosable = false;
             BtnInfoBar.Visibility = Visibility.Collapsed;
             return;
@@ -507,7 +515,7 @@ public sealed partial class MainWindow : Window
     /// </summary>
     private void RunInBackgroundChanged()
     {
-
+        //TODO
     }
 
     /// <summary>
@@ -516,7 +524,26 @@ public sealed partial class MainWindow : Window
     /// <param name="e">(Guid Id, string Filename, string SaveFolder, bool IsDownloading)</param>
     private void DownloadAdded((Guid Id, string Filename, string SaveFolder, bool IsDownloading) e)
     {
-
+        ViewStack.CurrentPageName = "Downloads";
+        StatusBar.Visibility = Visibility.Visible;
+        var downloadRow = new DownloadRow(e.Id, e.Filename, e.SaveFolder, (ea) => NotificationSent(null, ea));
+        downloadRow.StopRequested += (s, ea) => _controller.DownloadManager.RequestStop(ea);
+        downloadRow.RetryRequested += (s, ea) => _controller.DownloadManager.RequestRetry(ea, _controller.DownloadOptions);
+        var list = e.IsDownloading ? ListDownloading : ListQueued;
+        if(e.IsDownloading)
+        {
+            downloadRow.SetPreparingState();
+        }
+        else
+        {
+            downloadRow.SetWaitingState();
+        }
+        list.Children.Add(downloadRow);
+        _downloadRows[e.Id] = downloadRow;
+        MenuStopAllDownloads.IsEnabled = _controller.DownloadManager.RemainingDownloadsCount > 0;
+        BtnStopAllDownloads.IsEnabled = _controller.DownloadManager.RemainingDownloadsCount > 0;
+        StatusLabel.Text = _("Remaining Downloads: {0}", _controller.DownloadManager.RemainingDownloadsCount);
+        (ReferenceEquals(list, ListDownloading) ? GroupDownloading : GroupQueued).Visibility = Visibility.Visible;
     }
 
     /// <summary>
@@ -525,7 +552,11 @@ public sealed partial class MainWindow : Window
     /// <param name="e">(Guid Id, DownloadProgressState State)</param>
     private void DownloadProgressUpdated((Guid Id, DownloadProgressState State) e)
     {
-
+        var row = _downloadRows[e.Id];
+        if(ReferenceEquals(row.Parent, ListDownloading))
+        {
+            row.SetProgressState(e.State);
+        }
     }
 
     /// <summary>
@@ -534,7 +565,33 @@ public sealed partial class MainWindow : Window
     /// <param name="e">(Guid Id, bool Successful, string Filename, bool ShowNotification)</param>
     private void DownloadCompleted((Guid Id, bool Successful, string Filename, bool ShowNotification) e)
     {
-
+        var row = _downloadRows[e.Id];
+        if(ReferenceEquals(row.Parent, ListDownloading))
+        {
+            row.SetCompletedState(e.Successful, e.Filename);
+            ListDownloading.Children.Remove(row);
+            ListCompleted.Children.Add(row);
+            GroupDownloading.Visibility = _controller.DownloadManager.RemainingDownloadsCount > 0 ? Visibility.Visible : Visibility.Collapsed;
+            GroupCompleted.Visibility = Visibility.Visible;
+            if(e.ShowNotification && (!_isActived || !Visible))
+            {
+                if(_controller.CompletedNotificationPreference == NotificationPreference.ForEach)
+                {
+                    ShellNotificationSent(this, new ShellNotificationSentEventArgs(!e.Successful ? _("Download Finished With Error") : _("Download Finished"), !e.Successful ? _("\"{0}\" has finished with an error!", row.Filename) : _("\"{0}\" has finished downloading.", row.Filename), !e.Successful ? NotificationSeverity.Error : NotificationSeverity.Success));
+                }
+                else if(_controller.CompletedNotificationPreference == NotificationPreference.AllCompleted && !_controller.DownloadManager.AreDownloadsRunning && !_controller.DownloadManager.AreDownloadsQueued)
+                {
+                    ShellNotificationSent(this, new ShellNotificationSentEventArgs(_("Downloads Finished"), _("All downloads have finished."), NotificationSeverity.Informational));
+                }
+            }
+        }
+        MenuStopAllDownloads.IsEnabled = _controller.DownloadManager.RemainingDownloadsCount > 0;
+        BtnStopAllDownloads.IsEnabled = _controller.DownloadManager.RemainingDownloadsCount > 0;
+        StatusLabel.Text = _("Remaining Downloads: {0}", _controller.DownloadManager.RemainingDownloadsCount);
+        if (!Visible && _controller.DownloadManager.RemainingDownloadsCount == 0 && _controller.DownloadManager.ErrorsCount == 0)
+        {
+            Environment.Exit(0);
+        }
     }
 
     /// <summary>
@@ -543,7 +600,26 @@ public sealed partial class MainWindow : Window
     /// <param name="e">Guid</param>
     private void DownloadStopped(Guid e)
     {
-
+        var row = _downloadRows[e];
+        if(ReferenceEquals(row.Parent, ListDownloading))
+        {
+            row.SetStopState();
+            ListDownloading.Children.Remove(row);
+            ListCompleted.Children.Add(row);
+            GroupDownloading.Visibility = _controller.DownloadManager.AreDownloadsRunning ? Visibility.Visible : Visibility.Collapsed;
+            GroupCompleted.Visibility = Visibility.Visible;
+        }
+        else if(ReferenceEquals(row.Parent, ListQueued))
+        {
+            row.SetStopState();
+            ListQueued.Children.Remove(row);
+            ListCompleted.Children.Add(row);
+            GroupQueued.Visibility = _controller.DownloadManager.AreDownloadsQueued ? Visibility.Visible : Visibility.Collapsed;
+            GroupCompleted.Visibility = Visibility.Visible;
+        }
+        MenuStopAllDownloads.IsEnabled = _controller.DownloadManager.RemainingDownloadsCount > 0;
+        BtnStopAllDownloads.IsEnabled = _controller.DownloadManager.RemainingDownloadsCount > 0;
+        StatusLabel.Text = _("Remaining Downloads: {0}", _controller.DownloadManager.RemainingDownloadsCount);
     }
 
     /// <summary>
@@ -552,7 +628,16 @@ public sealed partial class MainWindow : Window
     /// <param name="e">Guid</param>
     private void DownloadRetried(Guid e)
     {
-
+        var row = _downloadRows[e];
+        if(ReferenceEquals(row.Parent, ListCompleted))
+        {
+            row.SetWaitingState();
+            ListCompleted.Children.Remove(row);
+            GroupCompleted.Visibility = _controller.DownloadManager.AreDownloadsCompleted ? Visibility.Visible : Visibility.Collapsed;
+        }
+        MenuStopAllDownloads.IsEnabled = _controller.DownloadManager.RemainingDownloadsCount > 0;
+        BtnStopAllDownloads.IsEnabled = _controller.DownloadManager.RemainingDownloadsCount > 0;
+        StatusLabel.Text = _("Remaining Downloads: {0}", _controller.DownloadManager.RemainingDownloadsCount);
     }
 
     /// <summary>
@@ -561,6 +646,17 @@ public sealed partial class MainWindow : Window
     /// <param name="e">Guid</param>
     private void DownloadStartedFromQueue(Guid e)
     {
-
+        var row = _downloadRows[e];
+        if(ReferenceEquals(row.Parent, ListQueued))
+        {
+            row.SetPreparingState();
+            ListQueued.Children.Remove(row);
+            ListDownloading.Children.Add(row);
+            GroupQueued.Visibility = _controller.DownloadManager.AreDownloadsQueued ? Visibility.Visible : Visibility.Collapsed;
+            GroupDownloading.Visibility = Visibility.Visible;
+        }
+        MenuStopAllDownloads.IsEnabled = _controller.DownloadManager.RemainingDownloadsCount > 0;
+        BtnStopAllDownloads.IsEnabled = _controller.DownloadManager.RemainingDownloadsCount > 0;
+        StatusLabel.Text = _("Remaining Downloads: {0}", _controller.DownloadManager.RemainingDownloadsCount);
     }
 }
