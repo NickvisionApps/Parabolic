@@ -107,6 +107,20 @@
                             </MenuFlyoutItem.KeyboardAccelerators>
                         </MenuFlyoutItem>
 
+                        <MenuFlyoutSeparator/>
+
+                        <MenuFlyoutItem x:Name="MenuClearQueuedDownloads" IsEnabled="False" Click="ClearQueuedDownloads">
+                            <MenuFlyoutItem.Icon>
+                                <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE107;"/>
+                            </MenuFlyoutItem.Icon>
+
+                            <MenuFlyoutItem.KeyboardAccelerators>
+                                <KeyboardAccelerator Modifiers="Control,Shift" Key="Delete"/>
+                            </MenuFlyoutItem.KeyboardAccelerators>
+                        </MenuFlyoutItem>
+
+                        <MenuFlyoutSeparator/>
+
                         <MenuFlyoutItem x:Name="MenuRetryFailedDownloads" IsEnabled="False" Click="RetryFailedDownloads">
                             <MenuFlyoutItem.Icon>
                                 <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE149;"/>
@@ -124,16 +138,6 @@
 
                             <MenuFlyoutItem.KeyboardAccelerators>
                                 <KeyboardAccelerator Modifiers="Control" Key="Delete"/>
-                            </MenuFlyoutItem.KeyboardAccelerators>
-                        </MenuFlyoutItem>
-
-                        <MenuFlyoutItem x:Name="MenuClearQueuedDownloads" IsEnabled="False" Click="ClearQueuedDownloads">
-                            <MenuFlyoutItem.Icon>
-                                <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE107;"/>
-                            </MenuFlyoutItem.Icon>
-
-                            <MenuFlyoutItem.KeyboardAccelerators>
-                                <KeyboardAccelerator Modifiers="Control,Shift" Key="Delete"/>
                             </MenuFlyoutItem.KeyboardAccelerators>
                         </MenuFlyoutItem>
                     </MenuBarItem>
@@ -223,11 +227,54 @@
                     </nickvision:ViewStackPage>
 
                     <nickvision:ViewStackPage PageName="Downloads">
-                        <ScrollView>
-                            <Grid Margin="6,0,6,0" RowSpacing="6">
+                        <Grid Margin="6,0,6,0" RowSpacing="12">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
 
-                            </Grid>
-                        </ScrollView>
+                            <Border Grid.Row="0" HorizontalAlignment="Stretch" Background="{ThemeResource CardBackgroundFillColorDefaultBrush}" BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}" BorderThickness="1" CornerRadius="8">
+                                <CommandBar HorizontalAlignment="Left" DefaultLabelPosition="Right">
+                                    <AppBarButton x:Name="BtnStopAllDownloads" Icon="Stop" Click="StopAllDownloads"/>
+
+                                    <AppBarSeparator/>
+
+                                    <AppBarButton x:Name="BtnClearQueuedDownloads" Icon="Delete" Click="ClearQueuedDownloads"/>
+
+                                    <AppBarSeparator/>
+
+                                    <AppBarButton x:Name="BtnRetryFailedDownloads" Icon="Refresh" Click="RetryFailedDownloads"/>
+
+                                    <AppBarButton x:Name="BtnClearCompletedDownloads" Icon="Delete" Click="ClearCompletedDownloads"/>
+                                </CommandBar>
+                            </Border>
+
+                            <ScrollViewer Grid.Row="1">
+                                <StackPanel Margin="6,0,6,0" Orientation="Vertical" Spacing="12">
+                                    <StackPanel x:Name="GroupDownloading" Visibility="Collapsed" Orientation="Vertical" Spacing="6">
+                                        <TextBlock x:Name="LblDownloading" Style="{ThemeResource NavigationViewItemHeaderTextStyle}"/>
+
+                                        <StackPanel x:Name="ListDownloading" Orientation="Vertical" Spacing="6"/>
+
+                                        <MenuFlyoutSeparator HorizontalAlignment="Stretch" Margin="6,0,6,0"/>
+                                    </StackPanel>
+
+                                    <StackPanel x:Name="GroupQueued" Visibility="Collapsed" Orientation="Vertical" Spacing="6">
+                                        <TextBlock x:Name="LblQueued" Style="{ThemeResource NavigationViewItemHeaderTextStyle}"/>
+
+                                        <StackPanel x:Name="ListQueued" Orientation="Vertical" Spacing="6"/>
+
+                                        <MenuFlyoutSeparator HorizontalAlignment="Stretch" Margin="6,0,6,0"/>
+                                    </StackPanel>
+
+                                    <StackPanel x:Name="GroupCompleted" Visibility="Collapsed" Orientation="Vertical" Spacing="6">
+                                        <TextBlock x:Name="LblCompleted" Style="{ThemeResource NavigationViewItemHeaderTextStyle}"/>
+
+                                        <StackPanel x:Name="ListCompleted" Orientation="Vertical" Spacing="6"/>
+                                    </StackPanel>
+                                </StackPanel>
+                            </ScrollViewer>
+                        </Grid>
                     </nickvision:ViewStackPage>
                 </nickvision:ViewStack.Pages>
             </nickvision:ViewStack>

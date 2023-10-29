@@ -85,9 +85,9 @@ public sealed partial class MainWindow : Window
         MenuSettings.Text = _("Settings");
         MenuDownloader.Title = _("Downloader");
         MenuStopAllDownloads.Text = _("Stop All Downloads");
+        MenuClearQueuedDownloads.Text = _("Clear Queued Downloads");
         MenuRetryFailedDownloads.Text = _("Retry Failed Downloads");
         MenuClearCompletedDownloads.Text = _("Clear Completed Downloads");
-        MenuClearQueuedDownloads.Text = _("Clear Queued Downloads");
         MenuHelp.Title = _("Help");
         MenuCheckForUpdates.Text = _("Check for Updates");
         MenuDocumentation.Text = _("Documentation");
@@ -100,7 +100,14 @@ public sealed partial class MainWindow : Window
         StatusPageHome.Title = _("Download Media");
         StatusPageHome.Description = _("Add a video, audio, or playlist URL to start downloading");
         HomeAddDownlaodButtonLabel.Text = _("Add Download");
-        StatusLabel.Text = _("Ready");
+        BtnStopAllDownloads.Label = _("Stop All");
+        BtnClearQueuedDownloads.Label = _("Clear Queued");
+        BtnRetryFailedDownloads.Label = _("Retry Failed");
+        BtnClearCompletedDownloads.Label = _("Clear Completed");
+        LblDownloading.Text = _("Downloading");
+        LblQueued.Text = _("Queued");
+        LblCompleted.Text = _("Completed");
+        StatusLabel.Text = _("Remaining Downloads: {0}", 0);
     }
 
     /// <summary>
@@ -351,6 +358,16 @@ public sealed partial class MainWindow : Window
     private void StopAllDownloads(object sender, RoutedEventArgs e) => _controller.DownloadManager.StopAllDownloads(true);
 
     /// <summary>
+    /// Occurs when the clear queued downloads menu item is clicked
+    /// </summary>
+    /// <param name="sender">object</param>
+    /// <param name="e">RoutedEventArgs</param>
+    private void ClearQueuedDownloads(object sender, RoutedEventArgs e)
+    {
+
+    }
+
+    /// <summary>
     /// Occurs when the retry failed downloads menu item is clicked
     /// </summary>
     /// <param name="sender">object</param>
@@ -363,16 +380,6 @@ public sealed partial class MainWindow : Window
     /// <param name="sender">object</param>
     /// <param name="e">RoutedEventArgs</param>
     private void ClearCompletedDownloads(object sender, RoutedEventArgs e)
-    {
-
-    }
-
-    /// <summary>
-    /// Occurs when the clear queued downloads menu item is clicked
-    /// </summary>
-    /// <param name="sender">object</param>
-    /// <param name="e">RoutedEventArgs</param>
-    private void ClearQueuedDownloads(object sender, RoutedEventArgs e)
     {
 
     }
@@ -456,7 +463,6 @@ public sealed partial class MainWindow : Window
         var res = await addDialog.ShowAsync(url);
         if (res == ContentDialogResult.Primary)
         {
-            ViewStack.CurrentPageName = "Downloads";
             _controller.AddDownloads(addController);
         }
     }
