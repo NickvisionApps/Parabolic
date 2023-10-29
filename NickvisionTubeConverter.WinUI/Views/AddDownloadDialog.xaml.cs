@@ -1,5 +1,6 @@
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Input;
 using Nickvision.Aura;
 using NickvisionTubeConverter.Shared.Controllers;
 using NickvisionTubeConverter.Shared.Models;
@@ -10,6 +11,7 @@ using System.IO;
 using System.Threading.Tasks;
 using Windows.ApplicationModel.DataTransfer;
 using Windows.Storage.Pickers;
+using Windows.System;
 using static Nickvision.Aura.Localization.Gettext;
 
 namespace NickvisionTubeConverter.WinUI.Views;
@@ -266,6 +268,19 @@ public sealed partial class AddDownloadDialog : ContentDialog
         {
             var result = Uri.TryCreate(TxtUrl.Text, UriKind.Absolute, out var uriResult) && (uriResult.Scheme == Uri.UriSchemeHttp || uriResult.Scheme == Uri.UriSchemeHttps);
             BtnValidate.IsEnabled = result;
+        }
+    }
+
+    /// <summary>
+    /// Occurs when TxtUrl's key is pressed
+    /// </summary>
+    /// <param name="sender">object</param>
+    /// <param name="e">KeyRoutedEventArgs</param>
+    private async void TxtUrl_KeyDown(object sender, KeyRoutedEventArgs e)
+    {
+        if(e.Key == VirtualKey.Enter)
+        {
+            await SearchUrlAsync(TxtUrl.Text);
         }
     }
 

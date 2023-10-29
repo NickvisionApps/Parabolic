@@ -36,7 +36,7 @@
                                     <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE12B;"/>
                                 </wct:SettingsCard.HeaderIcon>
 
-                                <TextBox x:Name="TxtUrl" MinWidth="300" MaxWidth="400" TextChanged="TxtUrl_TextChanged"/>
+                                <TextBox x:Name="TxtUrl" MinWidth="300" MaxWidth="400" TextChanged="TxtUrl_TextChanged" KeyDown="TxtUrl_KeyDown"/>
                             </wct:SettingsCard>
 
                             <wct:SettingsExpander x:Name="CardAuthenticate" IsExpanded="{x:Bind TglAuthenticate.IsOn, Mode=TwoWay}">
