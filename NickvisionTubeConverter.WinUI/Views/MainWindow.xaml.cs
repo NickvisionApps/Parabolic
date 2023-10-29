@@ -375,7 +375,7 @@ public sealed partial class MainWindow : Window
         _controller.DownloadManager.ClearQueuedDownloads();
         ListQueued.Children.Clear();
         GroupQueued.Visibility = Visibility.Collapsed;
-        if(!_controller.DownloadManager.AreDownloadsQueued && !_controller.DownloadManager.AreDownloadsRunning && !_controller.DownloadManager.AreDownloadsCompleted)
+        if (!_controller.DownloadManager.AreDownloadsQueued && !_controller.DownloadManager.AreDownloadsRunning && !_controller.DownloadManager.AreDownloadsCompleted)
         {
             ViewStack.CurrentPageName = "Home";
             StatusBar.Visibility = Visibility.Collapsed;
@@ -530,7 +530,7 @@ public sealed partial class MainWindow : Window
         downloadRow.StopRequested += (s, ea) => _controller.DownloadManager.RequestStop(ea);
         downloadRow.RetryRequested += (s, ea) => _controller.DownloadManager.RequestRetry(ea, _controller.DownloadOptions);
         var list = e.IsDownloading ? ListDownloading : ListQueued;
-        if(e.IsDownloading)
+        if (e.IsDownloading)
         {
             downloadRow.SetPreparingState();
         }
@@ -553,7 +553,7 @@ public sealed partial class MainWindow : Window
     private void DownloadProgressUpdated((Guid Id, DownloadProgressState State) e)
     {
         var row = _downloadRows[e.Id];
-        if(ReferenceEquals(row.Parent, ListDownloading))
+        if (ReferenceEquals(row.Parent, ListDownloading))
         {
             row.SetProgressState(e.State);
         }
@@ -566,20 +566,20 @@ public sealed partial class MainWindow : Window
     private void DownloadCompleted((Guid Id, bool Successful, string Filename, bool ShowNotification) e)
     {
         var row = _downloadRows[e.Id];
-        if(ReferenceEquals(row.Parent, ListDownloading))
+        if (ReferenceEquals(row.Parent, ListDownloading))
         {
             row.SetCompletedState(e.Successful, e.Filename);
             ListDownloading.Children.Remove(row);
             ListCompleted.Children.Add(row);
             GroupDownloading.Visibility = _controller.DownloadManager.RemainingDownloadsCount > 0 ? Visibility.Visible : Visibility.Collapsed;
             GroupCompleted.Visibility = Visibility.Visible;
-            if(e.ShowNotification && (!_isActived || !Visible))
+            if (e.ShowNotification && (!_isActived || !Visible))
             {
-                if(_controller.CompletedNotificationPreference == NotificationPreference.ForEach)
+                if (_controller.CompletedNotificationPreference == NotificationPreference.ForEach)
                 {
                     ShellNotificationSent(this, new ShellNotificationSentEventArgs(!e.Successful ? _("Download Finished With Error") : _("Download Finished"), !e.Successful ? _("\"{0}\" has finished with an error!", row.Filename) : _("\"{0}\" has finished downloading.", row.Filename), !e.Successful ? NotificationSeverity.Error : NotificationSeverity.Success));
                 }
-                else if(_controller.CompletedNotificationPreference == NotificationPreference.AllCompleted && !_controller.DownloadManager.AreDownloadsRunning && !_controller.DownloadManager.AreDownloadsQueued)
+                else if (_controller.CompletedNotificationPreference == NotificationPreference.AllCompleted && !_controller.DownloadManager.AreDownloadsRunning && !_controller.DownloadManager.AreDownloadsQueued)
                 {
                     ShellNotificationSent(this, new ShellNotificationSentEventArgs(_("Downloads Finished"), _("All downloads have finished."), NotificationSeverity.Informational));
                 }
@@ -601,7 +601,7 @@ public sealed partial class MainWindow : Window
     private void DownloadStopped(Guid e)
     {
         var row = _downloadRows[e];
-        if(ReferenceEquals(row.Parent, ListDownloading))
+        if (ReferenceEquals(row.Parent, ListDownloading))
         {
             row.SetStopState();
             ListDownloading.Children.Remove(row);
@@ -609,7 +609,7 @@ public sealed partial class MainWindow : Window
             GroupDownloading.Visibility = _controller.DownloadManager.AreDownloadsRunning ? Visibility.Visible : Visibility.Collapsed;
             GroupCompleted.Visibility = Visibility.Visible;
         }
-        else if(ReferenceEquals(row.Parent, ListQueued))
+        else if (ReferenceEquals(row.Parent, ListQueued))
         {
             row.SetStopState();
             ListQueued.Children.Remove(row);
@@ -629,7 +629,7 @@ public sealed partial class MainWindow : Window
     private void DownloadRetried(Guid e)
     {
         var row = _downloadRows[e];
-        if(ReferenceEquals(row.Parent, ListCompleted))
+        if (ReferenceEquals(row.Parent, ListCompleted))
         {
             row.SetWaitingState();
             ListCompleted.Children.Remove(row);
@@ -647,7 +647,7 @@ public sealed partial class MainWindow : Window
     private void DownloadStartedFromQueue(Guid e)
     {
         var row = _downloadRows[e];
-        if(ReferenceEquals(row.Parent, ListQueued))
+        if (ReferenceEquals(row.Parent, ListQueued))
         {
             row.SetPreparingState();
             ListQueued.Children.Remove(row);

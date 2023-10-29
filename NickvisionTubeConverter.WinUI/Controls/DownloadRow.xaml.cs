@@ -1,7 +1,5 @@
-using Microsoft.UI;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
-using Microsoft.UI.Xaml.Media;
 using NickvisionTubeConverter.Shared.Controls;
 using NickvisionTubeConverter.Shared.Events;
 using NickvisionTubeConverter.Shared.Helpers;
@@ -109,7 +107,7 @@ public sealed partial class DownloadRow : UserControl, IDownloadRowControl
         StatusIcon.Glyph = "\uE118";
         ActionViewStack.CurrentPageName = "Cancel";
         Log = state.Log;
-        switch(state.Status)
+        switch (state.Status)
         {
             case DownloadProgressStatus.Downloading:
                 StateViewStack.CurrentPageName = "Downloading";
