@@ -631,14 +631,7 @@ public partial class MainWindow : Adw.ApplicationWindow
             box.Append(separator);
         }
         box.Append(downloadRow);
-        if (_downloadRows.ContainsKey(e.Id))
-        {
-            _downloadRows[e.Id] = downloadRow;
-        }
-        else
-        {
-            _downloadRows.Add(e.Id, downloadRow);
-        }
+        _downloadRows[e.Id] = downloadRow;
         _stopAllDownloadsButton.SetVisible(_controller.DownloadManager.RemainingDownloadsCount > 1);
         box.GetParent().SetVisible(true);
         return false;
