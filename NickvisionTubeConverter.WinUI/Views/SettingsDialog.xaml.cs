@@ -51,6 +51,10 @@ public sealed partial class SettingsDialog : ContentDialog
         CardSuspend.Header = _("Prevent Suspend");
         TglSuspend.OnContent = _("On");
         TglSuspend.OffContent = _("Off");
+        CardBackground.Header = _("Allow Running In Background");
+        CardBackground.Description = _("Minimize to the system tray instead of quitting the application when the window is closed.");
+        TglBackground.OnContent = _("On");
+        TglBackground.OffContent = _("Off");
         LblDownloader.Text = _("Downloader");
         CardMaxNumberOfActiveDownloads.Header = _("Max Number of Active Downloads");
         CardOverwrite.Header = _("Overwrite Existing Files");
@@ -113,6 +117,7 @@ public sealed partial class SettingsDialog : ContentDialog
         TglAutomaticallyCheckForUpdates.IsOn = _controller.AutomaticallyCheckForUpdates;
         CmbCompletedNotification.SelectedIndex = (int)_controller.CompletedNotificationPreference;
         TglSuspend.IsOn = _controller.PreventSuspendWhenDownloading;
+        TglBackground.IsOn = _controller.RunInBackground;
         TxtMaxNumberOfActiveDownloads.Value = _controller.MaxNumberOfActiveDownloads;
         TglOverwrite.IsOn = _controller.OverwriteExistingFiles;
         TxtSpeedLimit.Value = _controller.SpeedLimit;
@@ -149,6 +154,7 @@ public sealed partial class SettingsDialog : ContentDialog
             _controller.AutomaticallyCheckForUpdates = TglAutomaticallyCheckForUpdates.IsOn;
             _controller.CompletedNotificationPreference = (NotificationPreference)CmbCompletedNotification.SelectedIndex;
             _controller.PreventSuspendWhenDownloading = TglSuspend.IsOn;
+            _controller.RunInBackground = TglBackground.IsOn;
             _controller.MaxNumberOfActiveDownloads = (int)TxtMaxNumberOfActiveDownloads.Value;
             _controller.OverwriteExistingFiles = TglOverwrite.IsOn;
             _controller.SpeedLimit = (uint)TxtSpeedLimit.Value;

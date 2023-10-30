@@ -47,6 +47,14 @@
                 <ToggleSwitch x:Name="TglSuspend"/>
             </wct:SettingsCard>
 
+            <wct:SettingsCard x:Name="CardBackground">
+                <wct:SettingsCard.HeaderIcon>
+                    <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE9F5;"/>
+                </wct:SettingsCard.HeaderIcon>
+
+                <ToggleSwitch x:Name="TglBackground"/>
+            </wct:SettingsCard>
+
             <TextBlock x:Name="LblDownloader" Style="{StaticResource NavigationViewItemHeaderTextStyle}"/>
 
             <wct:SettingsCard x:Name="CardMaxNumberOfActiveDownloads">

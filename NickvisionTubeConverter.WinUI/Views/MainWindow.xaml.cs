@@ -1,4 +1,5 @@
 using CommunityToolkit.WinUI.Notifications;
+using H.NotifyIcon;
 using Microsoft.UI;
 using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml;
@@ -112,6 +113,11 @@ public sealed partial class MainWindow : Window
         LblCompleted.Text = _("Completed");
         StatusIcon.Glyph = "\uE118";
         StatusLabel.Text = _("Remaining Downloads: {0}", 0);
+        TrayIcon.ToolTipText = _("Parabolic");
+        TrayMenuAddDownload.Text = _("Add Download");
+        TrayMenuShowWindow.Text = _("Show Window");
+        TrayMenuSettings.Text = _("Settings");
+        TrayMenuExit.Text = _("Exit");
     }
 
     /// <summary>
@@ -160,7 +166,12 @@ public sealed partial class MainWindow : Window
     /// <param name="e">AppWindowClosingEventArgs</param>
     private async void Window_Closing(AppWindow sender, AppWindowClosingEventArgs e)
     {
-        if (_controller.DownloadManager.AreDownloadsRunning)
+        if (_controller.RunInBackground)
+        {
+            e.Cancel = true;
+            User32.ShowWindow(_hwnd, ShowWindowCommand.SW_HIDE);
+        }
+        else if (_controller.DownloadManager.AreDownloadsRunning)
         {
             e.Cancel = true;
             var dialog = new ContentDialog()
@@ -183,6 +194,7 @@ public sealed partial class MainWindow : Window
         {
             _powerRequest?.Close();
             _powerRequest?.Dispose();
+            TrayIcon.Dispose();
             _controller.Dispose();
         }
     }
@@ -297,11 +309,22 @@ public sealed partial class MainWindow : Window
     private void ShellNotificationSent(object? sender, ShellNotificationSentEventArgs e) => new ToastContentBuilder().AddText(e.Title).AddText(e.Message).Show();
 
     /// <summary>
+    /// Occurs when the show window tray menu item is clicked
+    /// </summary>
+    /// <param name="sender">object</param>
+    /// <param name="e">RoutedEventArgs</param>
+    private void ShowWindow(object sender, RoutedEventArgs e) => User32.ShowWindow(_hwnd, ShowWindowCommand.SW_SHOW);
+
+    /// <summary>
     /// Occurs when the add download menu item is clicked
     /// </summary>
     /// <param name="sender">object</param>
     /// <param name="e">RoutedEventArgs</param>
-    private async void AddDownload(object sender, RoutedEventArgs e) => await AddDownloadAsync(null);
+    private async void AddDownload(object sender, RoutedEventArgs e)
+    {
+        User32.ShowWindow(_hwnd, ShowWindowCommand.SW_SHOW);
+        await AddDownloadAsync(null);
+    }
 
     /// <summary>
     /// Occurs when the exit menu item is clicked
@@ -309,6 +332,20 @@ public sealed partial class MainWindow : Window
     /// <param name="sender">object</param>
     /// <param name="e">RoutedEventArgs</param>
     private void Exit(object sender, RoutedEventArgs e) => Close();
+
+    /// <summary>
+    /// Occurs when the exit tray menu item is clicked
+    /// </summary>
+    /// <param name="sender">object</param>
+    /// <param name="e">RoutedEventArgs</param>
+    private void ForceExit(object sender, RoutedEventArgs e)
+    {
+        _powerRequest?.Close();
+        _powerRequest?.Dispose();
+        TrayIcon.Dispose();
+        _controller.Dispose();
+        Environment.Exit(0);
+    }
 
     /// <summary>
     /// Occurs when the keyring menu item is clicked
@@ -348,6 +385,7 @@ public sealed partial class MainWindow : Window
     /// <param name="e">RoutedEventArgs</param>
     private async void Settings(object sender, RoutedEventArgs e)
     {
+        User32.ShowWindow(_hwnd, ShowWindowCommand.SW_SHOW);
         var settingsDialog = new SettingsDialog(_controller.CreatePreferencesViewController(), InitializeWithWindow)
         {
             XamlRoot = MainGrid.XamlRoot
@@ -535,6 +573,7 @@ public sealed partial class MainWindow : Window
         BtnStopAllDownloads.IsEnabled = _controller.DownloadManager.RemainingDownloadsCount > 0;
         StatusLabel.Text = _("Remaining Downloads: {0}", _controller.DownloadManager.RemainingDownloadsCount);
         (ReferenceEquals(list, ListDownloading) ? GroupDownloading : GroupQueued).Visibility = Visibility.Visible;
+        TrayIcon.ToolTipText = _controller.DownloadManager.BackgroundActivityReport;
     }
 
     /// <summary>
@@ -548,6 +587,7 @@ public sealed partial class MainWindow : Window
         {
             row.SetProgressState(e.State);
         }
+        TrayIcon.ToolTipText = _controller.DownloadManager.BackgroundActivityReport;
     }
 
     /// <summary>
@@ -568,6 +608,7 @@ public sealed partial class MainWindow : Window
         MenuStopAllDownloads.IsEnabled = _controller.DownloadManager.RemainingDownloadsCount > 0;
         BtnStopAllDownloads.IsEnabled = _controller.DownloadManager.RemainingDownloadsCount > 0;
         StatusLabel.Text = _("Remaining Downloads: {0}", _controller.DownloadManager.RemainingDownloadsCount);
+        TrayIcon.ToolTipText = _controller.DownloadManager.BackgroundActivityReport;
         if (e.ShowNotification && (!_isActived || !AppWindow.IsVisible))
         {
             if (_controller.CompletedNotificationPreference == NotificationPreference.ForEach)
@@ -607,6 +648,7 @@ public sealed partial class MainWindow : Window
         MenuStopAllDownloads.IsEnabled = _controller.DownloadManager.RemainingDownloadsCount > 0;
         BtnStopAllDownloads.IsEnabled = _controller.DownloadManager.RemainingDownloadsCount > 0;
         StatusLabel.Text = _("Remaining Downloads: {0}", _controller.DownloadManager.RemainingDownloadsCount);
+        TrayIcon.ToolTipText = _controller.DownloadManager.BackgroundActivityReport;
     }
 
     /// <summary>
@@ -625,6 +667,7 @@ public sealed partial class MainWindow : Window
         MenuStopAllDownloads.IsEnabled = _controller.DownloadManager.RemainingDownloadsCount > 0;
         BtnStopAllDownloads.IsEnabled = _controller.DownloadManager.RemainingDownloadsCount > 0;
         StatusLabel.Text = _("Remaining Downloads: {0}", _controller.DownloadManager.RemainingDownloadsCount);
+        TrayIcon.ToolTipText = _controller.DownloadManager.BackgroundActivityReport;
     }
 
     /// <summary>
@@ -645,5 +688,6 @@ public sealed partial class MainWindow : Window
         MenuStopAllDownloads.IsEnabled = _controller.DownloadManager.RemainingDownloadsCount > 0;
         BtnStopAllDownloads.IsEnabled = _controller.DownloadManager.RemainingDownloadsCount > 0;
         StatusLabel.Text = _("Remaining Downloads: {0}", _controller.DownloadManager.RemainingDownloadsCount);
+        TrayIcon.ToolTipText = _controller.DownloadManager.BackgroundActivityReport;
     }
 }

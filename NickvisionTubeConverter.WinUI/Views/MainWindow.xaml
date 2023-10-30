@@ -8,6 +8,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:wct="using:CommunityToolkit.WinUI.Controls"
+    xmlns:tb="using:H.NotifyIcon"
     mc:Ignorable="d" Activated="Window_Activated">
 
     <Window.SystemBackdrop>
@@ -20,6 +21,22 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
+
+        <tb:TaskbarIcon x:Name="TrayIcon" IconSource="../Resources/org.nickvision.tubeconverter.ico" MenuActivation="LeftOrRightClick" ContextMenuMode="SecondWindow">
+            <tb:TaskbarIcon.ContextFlyout>
+                <MenuFlyout>
+                    <MenuFlyoutItem x:Name="TrayMenuAddDownload" Click="AddDownload"/>
+                    
+                    <MenuFlyoutItem x:Name="TrayMenuShowWindow" Click="ShowWindow"/>
+
+                    <MenuFlyoutSeparator/>
+
+                    <MenuFlyoutItem x:Name="TrayMenuSettings" Click="Settings"/>
+                    
+                    <MenuFlyoutItem x:Name="TrayMenuExit" Click="ForceExit"/>
+                </MenuFlyout>
+            </tb:TaskbarIcon.ContextFlyout>
+        </tb:TaskbarIcon>
 
         <Grid x:Name="TitleBar" Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="48">
             <Grid.ColumnDefinitions>
