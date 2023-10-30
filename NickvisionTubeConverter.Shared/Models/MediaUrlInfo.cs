@@ -221,7 +221,7 @@ public class MediaUrlInfo
         {
             VideoResolutions.Add(new VideoResolution(0, 0));
         }
-        var duration = Double.NaN;
+        var duration = 0.0;
         try
         {
             duration = mediaInfo["duration"].As<double>();

@@ -23,6 +23,7 @@ public partial class App : Application
         _controller = new MainWindowController();
         _controller.AppInfo.Changelog = @"- Parabolic is now available for Windows using Windows App SDK and WinUI 3
 - Fixed an issue where aria's max connections per server preference was allowed to be greater than 16
+- Fixed an issue where enabling the ""Download Specific Timeframe"" advanced option would cause a crash for certain media downloads
 - Updated translations (Thanks everyone on Weblate!)";
         if (_controller.Theme != Theme.System)
         {

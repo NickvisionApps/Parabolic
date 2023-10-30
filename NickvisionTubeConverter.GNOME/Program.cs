@@ -36,6 +36,7 @@ public partial class Program
         _mainWindowController = new MainWindowController();
         _mainWindowController.AppInfo.Changelog =
             @"* Fixed an issue where aria's max connections per server preference was allowed to be greater than 16
+              * Fixed an issue where enabling the ""Download Specific Timeframe"" advanced option would cause a crash for certain media downloads
               * Updated translations (Thanks everyone on Weblate!)";
         _application.OnActivate += OnActivate;
         if (File.Exists(Path.GetFullPath(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)!) + "/org.nickvision.tubeconverter.gresource"))
