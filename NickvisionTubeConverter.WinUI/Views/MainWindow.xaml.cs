@@ -1,5 +1,4 @@
 using CommunityToolkit.WinUI.Notifications;
-using H.NotifyIcon;
 using Microsoft.UI;
 using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml;
@@ -313,7 +312,7 @@ public sealed partial class MainWindow : Window
     /// </summary>
     /// <param name="sender">object</param>
     /// <param name="e">RoutedEventArgs</param>
-    private void ShowWindow(object sender, RoutedEventArgs e) => User32.ShowWindow(_hwnd, ShowWindowCommand.SW_SHOW);
+    public void ShowWindow(object sender, RoutedEventArgs e) => User32.ShowWindow(_hwnd, ShowWindowCommand.SW_SHOW);
 
     /// <summary>
     /// Occurs when the add download menu item is clicked

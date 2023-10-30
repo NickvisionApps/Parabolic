@@ -278,7 +278,7 @@ public sealed partial class AddDownloadDialog : ContentDialog
     /// <param name="e">KeyRoutedEventArgs</param>
     private async void TxtUrl_KeyDown(object sender, KeyRoutedEventArgs e)
     {
-        if(e.Key == VirtualKey.Enter)
+        if (e.Key == VirtualKey.Enter)
         {
             await SearchUrlAsync(TxtUrl.Text);
         }

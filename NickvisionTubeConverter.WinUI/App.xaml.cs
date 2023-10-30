@@ -36,6 +36,20 @@ public partial class App : Application
     }
 
     /// <summary>
+    /// Shows the main window of the app (if there is one)
+    /// </summary>
+    public void ShowMainWindow()
+    {
+        if (_mainWindow != null)
+        {
+            _mainWindow.DispatcherQueue.TryEnqueue(() =>
+            {
+                _mainWindow.ShowWindow(null, new RoutedEventArgs());
+            });
+        }
+    }
+
+    /// <summary>
     /// Invoked when the application is launched.
     /// </summary>
     /// <param name="args">Details about the launch request and process.</param>
