@@ -283,7 +283,6 @@ public partial class MainWindow : Adw.ApplicationWindow
                 return true;
             }
         }
-        _controller.DownloadManager.StopAllDownloads(false);
         _controller.Dispose();
         return false;
     }

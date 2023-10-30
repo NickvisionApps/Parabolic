@@ -168,6 +168,7 @@ public class MainWindowController : IDisposable
         {
             return;
         }
+        DownloadManager.StopAllDownloads(false);
         _taskbarItem?.Dispose();
         PythonEngine.EndAllowThreads(_pythonThreadState);
         PythonEngine.Shutdown();

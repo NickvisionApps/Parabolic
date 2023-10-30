@@ -57,9 +57,8 @@ public sealed partial class MainWindow : Window
         _downloadRows = new Dictionary<Guid, DownloadRow>();
         //Register Events
         AppWindow.Closing += Window_Closing;
-        _controller.NotificationSent += (sender, e) => DispatcherQueue.TryEnqueue(() => NotificationSent(sender, e));
-        _controller.PreventSuspendWhenDownloadingChanged += (sender, e) => DispatcherQueue.TryEnqueue(PreventSuspendWhenDownloadingChanged);
-        _controller.RunInBackgroundChanged += (sender, e) => DispatcherQueue.TryEnqueue(RunInBackgroundChanged);
+        _controller.NotificationSent += (sender, e) => DispatcherQueue?.TryEnqueue(() => NotificationSent(sender, e));
+        _controller.PreventSuspendWhenDownloadingChanged += PreventSuspendWhenDownloadingChanged;
         _controller.DownloadManager.DownloadAdded += (sender, e) => DispatcherQueue.TryEnqueue(() => DownloadAdded(e));
         _controller.DownloadManager.DownloadProgressUpdated += (sender, e) => DispatcherQueue.TryEnqueue(() => DownloadProgressUpdated(e));
         _controller.DownloadManager.DownloadCompleted += (sender, e) => DispatcherQueue.TryEnqueue(() => DownloadCompleted(e));
@@ -148,8 +147,7 @@ public sealed partial class MainWindow : Window
             await _controller.StartupAsync();
             MainMenu.IsEnabled = true;
             ViewStack.CurrentPageName = "Home";
-            PreventSuspendWhenDownloadingChanged();
-            RunInBackgroundChanged();
+            PreventSuspendWhenDownloadingChanged(null, EventArgs.Empty);
             _isOpened = true;
         }
     }
@@ -163,10 +161,6 @@ public sealed partial class MainWindow : Window
     {
         if (_controller.DownloadManager.AreDownloadsRunning)
         {
-            if (_controller.RunInBackground)
-            {
-                return;
-            }
             e.Cancel = true;
             var dialog = new ContentDialog()
             {
@@ -183,12 +177,13 @@ public sealed partial class MainWindow : Window
                 _controller.DownloadManager.StopAllDownloads(true);
                 Close();
             }
-            return;
         }
-        _powerRequest?.Close();
-        _powerRequest?.Dispose();
-        _controller.DownloadManager.StopAllDownloads(false);
-        _controller.Dispose();
+        else
+        {
+            _powerRequest?.Close();
+            _powerRequest?.Dispose();
+            _controller.Dispose();
+        }
     }
 
     /// <summary>
@@ -493,7 +488,9 @@ public sealed partial class MainWindow : Window
     /// <summary>
     /// Occurs when the prevent suspend option is changed
     /// </summary>
-    private void PreventSuspendWhenDownloadingChanged()
+    /// <param name="sender">object?</param>
+    /// <param name="e">EventArgs</param>
+    private void PreventSuspendWhenDownloadingChanged(object? sender, EventArgs e)
     {
         if (_powerRequest == null && _controller.PreventSuspendWhenDownloading)
         {
@@ -509,14 +506,6 @@ public sealed partial class MainWindow : Window
             _powerRequest.Dispose();
             _powerRequest = null;
         }
-    }
-
-    /// <summary>
-    /// Occurs when the run in background option is changed
-    /// </summary>
-    private void RunInBackgroundChanged()
-    {
-        //TODO
     }
 
     /// <summary>
@@ -574,24 +563,20 @@ public sealed partial class MainWindow : Window
             ListCompleted.Children.Add(row);
             GroupDownloading.Visibility = _controller.DownloadManager.RemainingDownloadsCount > 0 ? Visibility.Visible : Visibility.Collapsed;
             GroupCompleted.Visibility = Visibility.Visible;
-            if (e.ShowNotification && (!_isActived || !Visible))
-            {
-                if (_controller.CompletedNotificationPreference == NotificationPreference.ForEach)
-                {
-                    ShellNotificationSent(this, new ShellNotificationSentEventArgs(!e.Successful ? _("Download Finished With Error") : _("Download Finished"), !e.Successful ? _("\"{0}\" has finished with an error!", row.Filename) : _("\"{0}\" has finished downloading.", row.Filename), !e.Successful ? NotificationSeverity.Error : NotificationSeverity.Success));
-                }
-                else if (_controller.CompletedNotificationPreference == NotificationPreference.AllCompleted && !_controller.DownloadManager.AreDownloadsRunning && !_controller.DownloadManager.AreDownloadsQueued)
-                {
-                    ShellNotificationSent(this, new ShellNotificationSentEventArgs(_("Downloads Finished"), _("All downloads have finished."), NotificationSeverity.Informational));
-                }
-            }
         }
         MenuStopAllDownloads.IsEnabled = _controller.DownloadManager.RemainingDownloadsCount > 0;
         BtnStopAllDownloads.IsEnabled = _controller.DownloadManager.RemainingDownloadsCount > 0;
         StatusLabel.Text = _("Remaining Downloads: {0}", _controller.DownloadManager.RemainingDownloadsCount);
-        if (!Visible && _controller.DownloadManager.RemainingDownloadsCount == 0 && _controller.DownloadManager.ErrorsCount == 0)
+        if (e.ShowNotification && (!_isActived || !AppWindow.IsVisible))
         {
-            Environment.Exit(0);
+            if (_controller.CompletedNotificationPreference == NotificationPreference.ForEach)
+            {
+                ShellNotificationSent(this, new ShellNotificationSentEventArgs(!e.Successful ? _("Download Finished With Error") : _("Download Finished"), !e.Successful ? _("\"{0}\" has finished with an error!", e.Filename) : _("\"{0}\" has finished downloading.", e.Filename), !e.Successful ? NotificationSeverity.Error : NotificationSeverity.Success));
+            }
+            else if (_controller.CompletedNotificationPreference == NotificationPreference.AllCompleted && !_controller.DownloadManager.AreDownloadsRunning && !_controller.DownloadManager.AreDownloadsQueued)
+            {
+                ShellNotificationSent(this, new ShellNotificationSentEventArgs(_("Downloads Finished"), _("All downloads have finished."), NotificationSeverity.Informational));
+            }
         }
     }
 
