@@ -110,7 +110,7 @@ public class MainWindowController : IDisposable
         Aura.Active.SetConfig<Configuration>("config");
         Configuration.Current.Saved += ConfigurationSaved;
         Aura.Active.SetConfig<DownloadHistory>("downloadHistory");
-        AppInfo.Version = "2023.10.0-next";
+        AppInfo.Version = "2023.11.0-next";
         AppInfo.ShortName = _("Parabolic");
         AppInfo.Description = _("Download web video and audio");
         AppInfo.SourceRepo = new Uri("https://github.com/NickvisionApps/Parabolic");
