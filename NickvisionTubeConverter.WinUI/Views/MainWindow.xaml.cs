@@ -101,6 +101,7 @@ public sealed partial class MainWindow : Window
         StatusPageHome.Title = _("Download Media");
         StatusPageHome.Description = _("Add a video, audio, or playlist URL to start downloading");
         LblBtnHomeAddDownload.Text = _("Add Download");
+        LblHomeHelp.Text = _("Parabolic's documentation and support channels are accessible via the Help menu.");
         BtnAddDownload.Label = _("Add");
         BtnStopAllDownloads.Label = _("Stop All");
         BtnClearQueuedDownloads.Label = _("Clear Queued");

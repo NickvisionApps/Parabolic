@@ -211,19 +211,23 @@
                     </nickvision:ViewStackPage>
 
                     <nickvision:ViewStackPage PageName="Home">
-                        <nickvision:StatusPage x:Name="StatusPageHome" HorizontalAlignment="Center" VerticalAlignment="Center" UseAppIcon="True">
-                            <nickvision:StatusPage.Child>
-                                <Button x:Name="BtnHomeAddDownload" HorizontalAlignment="Center" Style="{ThemeResource AccentButtonStyle}" Click="AddDownload">
-                                    <Button.Content>
-                                        <StackPanel Orientation="Horizontal" Spacing="6">
-                                            <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" FontSize="16" Glyph="&#xE109;"/>
+                        <Grid>
+                            <nickvision:StatusPage x:Name="StatusPageHome" HorizontalAlignment="Center" VerticalAlignment="Center" UseAppIcon="True">
+                                <nickvision:StatusPage.Child>
+                                    <Button x:Name="BtnHomeAddDownload" HorizontalAlignment="Center" Style="{ThemeResource AccentButtonStyle}" Click="AddDownload">
+                                        <Button.Content>
+                                            <StackPanel Orientation="Horizontal" Spacing="6">
+                                                <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" FontSize="16" Glyph="&#xE109;"/>
 
-                                            <TextBlock x:Name="LblBtnHomeAddDownload" TextWrapping="WrapWholeWords"/>
-                                        </StackPanel>
-                                    </Button.Content>
-                                </Button>
-                            </nickvision:StatusPage.Child>
-                        </nickvision:StatusPage>
+                                                <TextBlock x:Name="LblBtnHomeAddDownload" TextWrapping="WrapWholeWords"/>
+                                            </StackPanel>
+                                        </Button.Content>
+                                    </Button>
+                                </nickvision:StatusPage.Child>
+                            </nickvision:StatusPage>
+
+                            <TextBlock x:Name="LblHomeHelp" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,12" Foreground="Gray" TextWrapping="WrapWholeWords"/>
+                        </Grid>
                     </nickvision:ViewStackPage>
 
                     <nickvision:ViewStackPage PageName="Downloads">
