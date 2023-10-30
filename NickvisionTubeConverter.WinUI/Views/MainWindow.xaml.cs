@@ -161,7 +161,7 @@ public sealed partial class MainWindow : Window
     /// <param name="e">AppWindowClosingEventArgs</param>
     private async void Window_Closing(AppWindow sender, AppWindowClosingEventArgs e)
     {
-        if (!_controller.DownloadManager.AreDownloadsRunning)
+        if (_controller.DownloadManager.AreDownloadsRunning)
         {
             if (_controller.RunInBackground)
             {
@@ -180,9 +180,10 @@ public sealed partial class MainWindow : Window
             var res = await dialog.ShowAsync();
             if (res == ContentDialogResult.Primary)
             {
-                _controller.DownloadManager.StopAllDownloads(false);
+                _controller.DownloadManager.StopAllDownloads(true);
                 Close();
             }
+            return;
         }
         _powerRequest?.Close();
         _powerRequest?.Dispose();

@@ -173,7 +173,11 @@ public class MainWindowController : IDisposable
         PythonEngine.Shutdown();
         if (Directory.Exists(UserDirectories.ApplicationCache))
         {
-            Directory.Delete(UserDirectories.ApplicationCache, true);
+            try
+            {
+                Directory.Delete(UserDirectories.ApplicationCache, true);
+            }
+            catch { }
         }
         _keyring?.Dispose();
         _netmon?.Dispose();
@@ -210,11 +214,15 @@ public class MainWindowController : IDisposable
         }
         //Setup folders
         DownloadManager.MaxNumberOfActiveDownloads = Configuration.Current.MaxNumberOfActiveDownloads;
-        if (Directory.Exists(UserDirectories.ApplicationCache))
+        try
         {
-            Directory.Delete(UserDirectories.ApplicationCache, true);
+            if (Directory.Exists(UserDirectories.ApplicationCache))
+            {
+                Directory.Delete(UserDirectories.ApplicationCache, true);
+            }
+            Directory.CreateDirectory(UserDirectories.ApplicationCache);
         }
-        Directory.CreateDirectory(UserDirectories.ApplicationCache);
+        catch { }
         //Setup Dependencies
         try
         {
