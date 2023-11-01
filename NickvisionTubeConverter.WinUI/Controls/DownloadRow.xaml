@@ -25,7 +25,7 @@
 
                     <TextBlock x:Name="LblProgress" Foreground="Gray"/>
 
-                    <local:ViewStack x:Name="StateViewStack">
+                    <local:ViewStack x:Name="StateViewStack" Margin="0,6,0,0">
                         <local:ViewStack.Pages>
                             <local:ViewStackPage PageName="Downloading">
                                 <ProgressBar x:Name="ProgressBar" MinWidth="300" Minimum="0" Maximum="1"/>

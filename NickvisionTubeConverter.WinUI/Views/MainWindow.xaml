@@ -249,9 +249,19 @@
 
                     <nickvision:ViewStackPage PageName="Downloads">
                         <NavigationView x:Name="NavViewDownloads" PaneDisplayMode="Left" IsBackButtonVisible="Collapsed" IsSettingsVisible="False" IsPaneToggleButtonVisible="False" SelectionChanged="NavViewDownloads_SelectionChanged">
-                            <NavigationView.MenuItems>
-                                <NavigationViewItem x:Name="NavItemAddDownload" Icon="Add" SelectsOnInvoked="False" Tapped="AddDownload"/>
+                            <NavigationView.PaneHeader>
+                                <Button x:Name="BtnAddDownload" HorizontalAlignment="Stretch" Margin="6,0,6,6" Style="{ThemeResource AccentButtonStyle}" Click="AddDownload">
+                                    <Button.Content>
+                                        <StackPanel Orientation="Horizontal" Spacing="6">
+                                            <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" FontSize="16" Glyph="&#xE109;"/>
 
+                                            <TextBlock x:Name="LblBtnAddDownload" TextWrapping="WrapWholeWords"/>
+                                        </StackPanel>
+                                    </Button.Content>
+                                </Button>
+                            </NavigationView.PaneHeader>
+                            
+                            <NavigationView.MenuItems>
                                 <NavigationViewItemSeparator/>
 
                                 <NavigationViewItem x:Name="NavItemDownloading" Icon="Download" Tag="Downloading"/>
@@ -268,14 +278,14 @@
                             <nickvision:ViewStack x:Name="ViewStackDownloads">
                                 <nickvision:ViewStack.Pages>
                                     <nickvision:ViewStackPage PageName="Downloading">
-                                        <Grid Margin="20,20,20,10" RowSpacing="6">
+                                        <Grid Margin="20,20,20,10" RowSpacing="12">
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="Auto"/>
                                                 <RowDefinition Height="Auto"/>
                                                 <RowDefinition Height="*"/>
                                             </Grid.RowDefinitions>
 
-                                            <TextBlock x:Name="LblDownloading" Grid.Row="0" Margin="0,0,0,20" Style="{ThemeResource NavigationViewItemHeaderTextStyle}"/>
+                                            <TextBlock x:Name="LblDownloading" Margin="6,0,0,0" Grid.Row="0" FontSize="22" Style="{ThemeResource NavigationViewItemHeaderTextStyle}"/>
                                             
                                             <Border Grid.Row="1" HorizontalAlignment="Stretch" Background="{ThemeResource CardBackgroundFillColorDefaultBrush}" BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}" BorderThickness="1" CornerRadius="8">
                                                 <CommandBar HorizontalAlignment="Left" DefaultLabelPosition="Right">
@@ -283,21 +293,21 @@
                                                 </CommandBar>
                                             </Border>
 
-                                            <ScrollViewer Grid.Row="2">
-                                                <StackPanel x:Name="ListDownloading"  Orientation="Vertical" Spacing="6"/>
+                                            <ScrollViewer Grid.Row="2" Margin="0,0,-20,0">
+                                                <StackPanel x:Name="ListDownloading" Margin="0,0,20,0" Orientation="Vertical" Spacing="6"/>
                                             </ScrollViewer>
                                         </Grid>
                                     </nickvision:ViewStackPage>
 
                                     <nickvision:ViewStackPage PageName="Queued">
-                                        <Grid Margin="20,20,20,10" RowSpacing="6">
+                                        <Grid Margin="20,20,20,10" RowSpacing="12">
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="Auto"/>
                                                 <RowDefinition Height="Auto"/>
                                                 <RowDefinition Height="*"/>
                                             </Grid.RowDefinitions>
 
-                                            <TextBlock x:Name="LblQueued" Grid.Row="0" Margin="0,0,0,20" Style="{ThemeResource NavigationViewItemHeaderTextStyle}"/>
+                                            <TextBlock x:Name="LblQueued" Margin="6,0,0,0" Grid.Row="0" FontSize="22" Style="{ThemeResource NavigationViewItemHeaderTextStyle}"/>
 
                                             <Border Grid.Row="1" HorizontalAlignment="Stretch" Background="{ThemeResource CardBackgroundFillColorDefaultBrush}" BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}" BorderThickness="1" CornerRadius="8">
                                                 <CommandBar HorizontalAlignment="Left" DefaultLabelPosition="Right">
@@ -305,21 +315,21 @@
                                                 </CommandBar>
                                             </Border>
 
-                                            <ScrollViewer Grid.Row="2">
-                                                <StackPanel x:Name="ListQueued" Orientation="Vertical" Spacing="6"/>
+                                            <ScrollViewer Grid.Row="2" Margin="0,0,-20,0">
+                                                <StackPanel x:Name="ListQueued" Margin="0,0,20,0" Orientation="Vertical" Spacing="6"/>
                                             </ScrollViewer>
                                         </Grid>
                                     </nickvision:ViewStackPage>
 
                                     <nickvision:ViewStackPage PageName="Completed">
-                                        <Grid Margin="20,20,20,10" RowSpacing="6">
+                                        <Grid Margin="20,20,20,10" RowSpacing="12">
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="Auto"/>
                                                 <RowDefinition Height="Auto"/>
                                                 <RowDefinition Height="*"/>
                                             </Grid.RowDefinitions>
 
-                                            <TextBlock x:Name="LblCompleted" Grid.Row="0" Margin="0,0,0,20" Style="{ThemeResource NavigationViewItemHeaderTextStyle}"/>
+                                            <TextBlock x:Name="LblCompleted" Margin="6,0,0,0" Grid.Row="0" FontSize="22" Style="{ThemeResource NavigationViewItemHeaderTextStyle}"/>
                                             
                                             <Border Grid.Row="1" HorizontalAlignment="Stretch" Background="{ThemeResource CardBackgroundFillColorDefaultBrush}" BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}" BorderThickness="1" CornerRadius="8">
                                                 <CommandBar HorizontalAlignment="Left" DefaultLabelPosition="Right">
@@ -329,8 +339,8 @@
                                                 </CommandBar>
                                             </Border>
 
-                                            <ScrollViewer Grid.Row="2">
-                                                <StackPanel x:Name="ListCompleted" Orientation="Vertical" Spacing="6"/>
+                                            <ScrollViewer Grid.Row="2" Margin="0,0,-20,0">
+                                                <StackPanel x:Name="ListCompleted" Margin="0,0,20,0" Orientation="Vertical" Spacing="6"/>
                                             </ScrollViewer>
                                         </Grid>
                                     </nickvision:ViewStackPage>

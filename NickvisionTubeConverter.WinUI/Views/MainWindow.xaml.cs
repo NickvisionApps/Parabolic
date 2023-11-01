@@ -105,17 +105,17 @@ public sealed partial class MainWindow : Window
         StatusPageHome.Description = _("Add a video, audio, or playlist URL to start downloading");
         LblBtnHomeAddDownload.Text = _("Add Download");
         LblHomeHelp.Text = _("Parabolic's documentation and support channels are accessible via the Help menu.");
-        NavItemAddDownload.Content = _("Add Download");
+        LblBtnAddDownload.Text = _("Add Download");
         NavItemDownloading.Content = _("Downloading");
         LblDownloading.Text = _("Downloading");
-        BtnStopAllDownloads.Label = _("Stop All");
+        BtnStopAllDownloads.Label = _("Stop All Downloads");
         NavItemQueued.Content = _("Queued");
         LblQueued.Text = _("Queued");
-        BtnClearQueuedDownloads.Label = _("Clear Queued");
+        BtnClearQueuedDownloads.Label = _("Clear Queued Downloads");
         NavItemCompleted.Content = _("Completed");
         LblCompleted.Text = _("Completed");
-        BtnRetryFailedDownloads.Label = _("Retry Failed");
-        BtnClearCompletedDownloads.Label = _("Clear Completed");
+        BtnRetryFailedDownloads.Label = _("Retry Failed Downloads");
+        BtnClearCompletedDownloads.Label = _("Clear Completed Downloads");
         StatusIcon.Glyph = "\uE118";
         StatusLabel.Text = _("Remaining Downloads: {0}", 0);
         TrayIcon.ToolTipText = _("Parabolic");
@@ -269,7 +269,7 @@ public sealed partial class MainWindow : Window
         {
             MenuAddDownload.IsEnabled = true;
             BtnHomeAddDownload.IsEnabled = true;
-            NavItemAddDownload.IsEnabled = true;
+            BtnAddDownload.IsEnabled = true;
             return;
         }
         //InfoBar
@@ -297,7 +297,7 @@ public sealed partial class MainWindow : Window
         {
             MenuAddDownload.IsEnabled = false;
             BtnHomeAddDownload.IsEnabled = false;
-            NavItemAddDownload.IsEnabled = false;
+            BtnAddDownload.IsEnabled = false;
             InfoBar.IsClosable = false;
             BtnInfoBar.Visibility = Visibility.Collapsed;
             return;
