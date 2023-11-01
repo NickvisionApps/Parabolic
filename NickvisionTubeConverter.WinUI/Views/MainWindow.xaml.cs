@@ -375,7 +375,7 @@ public sealed partial class MainWindow : Window
         {
             XamlRoot = MainGrid.XamlRoot
         };
-        if(!_isContentDialogShowing)
+        if (!_isContentDialogShowing)
         {
             _isContentDialogShowing = true;
             await keyringDialog.ShowAsync();
@@ -396,7 +396,7 @@ public sealed partial class MainWindow : Window
             XamlRoot = MainGrid.XamlRoot
         };
         historyDialog.DownloadAgainRequested += async (s, ea) => await AddDownloadAsync(ea);
-        if(!_isContentDialogShowing)
+        if (!_isContentDialogShowing)
         {
             _isContentDialogShowing = true;
             await historyDialog.ShowAsync();
@@ -416,7 +416,7 @@ public sealed partial class MainWindow : Window
         {
             XamlRoot = MainGrid.XamlRoot
         };
-        if(!_isContentDialogShowing)
+        if (!_isContentDialogShowing)
         {
             _isContentDialogShowing = true;
             await settingsDialog.ShowAsync();
@@ -532,7 +532,7 @@ public sealed partial class MainWindow : Window
         {
             XamlRoot = MainGrid.XamlRoot
         };
-        if(!_isContentDialogShowing)
+        if (!_isContentDialogShowing)
         {
             _isContentDialogShowing = true;
             await aboutDialog.ShowAsync();

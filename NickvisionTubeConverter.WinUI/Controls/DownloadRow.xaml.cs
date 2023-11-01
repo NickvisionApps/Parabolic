@@ -1,6 +1,5 @@
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
-using Microsoft.UI.Xaml.Media;
 using NickvisionTubeConverter.Shared.Controls;
 using NickvisionTubeConverter.Shared.Events;
 using NickvisionTubeConverter.Shared.Helpers;
@@ -209,7 +208,7 @@ public sealed partial class DownloadRow : UserControl, IDownloadRowControl
             XamlRoot = _xamlRoot
         };
         var res = await logDialog.ShowAsync();
-        if(res == ContentDialogResult.Primary)
+        if (res == ContentDialogResult.Primary)
         {
             var package = new DataPackage();
             package.SetText(_log);

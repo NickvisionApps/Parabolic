@@ -41,7 +41,7 @@ public class MediaInfo
         Url = url;
         OriginalTitle = title;
         Duration = duration;
-        if(Duration == double.NaN)
+        if (Duration == double.NaN)
         {
             Duration = 0;
         }
