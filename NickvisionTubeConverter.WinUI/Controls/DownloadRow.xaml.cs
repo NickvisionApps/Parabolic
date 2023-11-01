@@ -1,5 +1,6 @@
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Media;
 using NickvisionTubeConverter.Shared.Controls;
 using NickvisionTubeConverter.Shared.Events;
 using NickvisionTubeConverter.Shared.Helpers;
@@ -20,6 +21,8 @@ public sealed partial class DownloadRow : UserControl, IDownloadRowControl
 {
     private readonly string _saveFolder;
     private readonly Action<NotificationSentEventArgs> _sendNotificationCallback;
+    private readonly XamlRoot _xamlRoot;
+    private string _log;
 
     /// <summary>
     /// The Id of the download
@@ -46,30 +49,28 @@ public sealed partial class DownloadRow : UserControl, IDownloadRowControl
     /// <param name="filename">The filename of the download</param>
     /// <param name="saveFolder">The save folder of the download</param>
     /// <param name="sendNotificationCallback">The callback for sending a notification</param>
-    public DownloadRow(Guid id, string filename, string saveFolder, Action<NotificationSentEventArgs> sendNotificationCallback)
+    /// <param name="xamlRoot">The XamlRoot object for showing ContentDialogs</param>
+    public DownloadRow(Guid id, string filename, string saveFolder, Action<NotificationSentEventArgs> sendNotificationCallback, XamlRoot xamlRoot)
     {
         InitializeComponent();
         Id = id;
         Filename = filename;
         _saveFolder = saveFolder;
         _sendNotificationCallback = sendNotificationCallback;
+        _xamlRoot = xamlRoot;
+        _log = "";
         //Localize strings
         LblProgress.Text = _("Waiting...");
         ToolTipService.SetToolTip(BtnStop, _("Stop Download"));
+        ToolTipService.SetToolTip(BtnViewLog, _("View Log"));
         ToolTipService.SetToolTip(BtnOpenFile, _("Open File"));
         ToolTipService.SetToolTip(BtnOpenFolder, _("Open Folder"));
+        ToolTipService.SetToolTip(BtnViewLog2, _("View Log"));
         ToolTipService.SetToolTip(BtnRetry, _("Retry Download"));
-        LblBtnLogToClipboard.Text = _("Copy to Clipboard");
         //Load
         LblFilename.Text = Filename;
-    }
+        _xamlRoot = xamlRoot;
 
-    /// <summary>
-    /// The log of the download
-    /// </summary>
-    private string Log
-    {
-        set => LblLog.Text = string.IsNullOrEmpty(value) ? _("The log will be available once the download completes.") : value;
     }
 
     /// <summary>
@@ -82,7 +83,7 @@ public sealed partial class DownloadRow : UserControl, IDownloadRowControl
         LblProgress.Text = _("Waiting...");
         ActionViewStack.CurrentPageName = "Cancel";
         ProgressBar.Value = 0;
-        Log = "";
+        _log = "";
     }
 
     /// <summary>
@@ -95,7 +96,7 @@ public sealed partial class DownloadRow : UserControl, IDownloadRowControl
         LblProgress.Text = _("Preparing...");
         ActionViewStack.CurrentPageName = "Cancel";
         ProgressBar.Value = 0;
-        Log = "";
+        _log = "";
     }
 
     /// <summary>
@@ -106,7 +107,7 @@ public sealed partial class DownloadRow : UserControl, IDownloadRowControl
     {
         StatusIcon.Glyph = "\uE118";
         ActionViewStack.CurrentPageName = "Cancel";
-        Log = state.Log;
+        _log = state.Log;
         switch (state.Status)
         {
             case DownloadProgressStatus.Downloading:
@@ -183,15 +184,44 @@ public sealed partial class DownloadRow : UserControl, IDownloadRowControl
     private void Retry(object sender, RoutedEventArgs e) => RetryRequested?.Invoke(this, Id);
 
     /// <summary>
-    /// Occurs when the copy log to clipboard button is clicked
+    /// Occurs when the view log button is clicked
     /// </summary>
-    /// <param name="sender">object</param>
+    /// <param name="sender">sender</param>
     /// <param name="e">RoutedEventArgs</param>
-    private void CopyLogToClipboard(object sender, RoutedEventArgs e)
+    private async void ViewLog(object sender, RoutedEventArgs e)
     {
-        var package = new DataPackage();
-        package.SetText(LblLog.Text);
-        Clipboard.SetContent(package);
-        _sendNotificationCallback(new NotificationSentEventArgs(_("Download log was copied to clipboard."), NotificationSeverity.Success));
+        var logDialog = new ContentDialog()
+        {
+            Title = _("Log"),
+            Content = new ScrollViewer()
+            {
+                MaxHeight = 300,
+                Content = new TextBlock()
+                {
+                    Margin = new Thickness(0, 0, 14, 0),
+                    Text = _log,
+                    TextWrapping = TextWrapping.WrapWholeWords
+                }
+            },
+            PrimaryButtonText = _("Copy to Clipboard"),
+            CloseButtonText = _("OK"),
+            DefaultButton = ContentDialogButton.Close,
+            XamlRoot = _xamlRoot
+        };
+        var res = await logDialog.ShowAsync();
+        if(res == ContentDialogResult.Primary)
+        {
+            try
+            {
+                var package = new DataPackage();
+                package.SetText(_log);
+                Clipboard.SetContent(package);
+                _sendNotificationCallback(new NotificationSentEventArgs(_("Download log was copied to clipboard."), NotificationSeverity.Success));
+            }
+            catch
+            {
+                _sendNotificationCallback(new NotificationSentEventArgs(_("Unable to copy log to clipboard."), NotificationSeverity.Error));
+            }
+        }
     }
 }

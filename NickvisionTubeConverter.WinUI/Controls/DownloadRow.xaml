@@ -9,12 +9,12 @@
     xmlns:wct="using:CommunityToolkit.WinUI.Controls"
     mc:Ignorable="d">
 
-    <wct:SettingsExpander>
-        <wct:SettingsExpander.HeaderIcon>
+    <wct:SettingsCard>
+        <wct:SettingsCard.HeaderIcon>
             <FontIcon x:Name="StatusIcon" FontFamily="{StaticResource SymbolThemeFontFamily}"/>
-        </wct:SettingsExpander.HeaderIcon>
+        </wct:SettingsCard.HeaderIcon>
 
-        <wct:SettingsExpander.Header>
+        <wct:SettingsCard.Header>
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
@@ -28,17 +28,17 @@
                     <local:ViewStack x:Name="StateViewStack">
                         <local:ViewStack.Pages>
                             <local:ViewStackPage PageName="Downloading">
-                                <ProgressBar x:Name="ProgressBar"/>
+                                <ProgressBar x:Name="ProgressBar" MinWidth="300" Minimum="0" Maximum="1"/>
                             </local:ViewStackPage>
 
                             <local:ViewStackPage PageName="Processing">
-                                <ProgressBar IsIndeterminate="True"/>
+                                <ProgressBar IsIndeterminate="True" MinHeight="300"/>
                             </local:ViewStackPage>
                         </local:ViewStack.Pages>
                     </local:ViewStack>
                 </StackPanel>
             </Grid>
-        </wct:SettingsExpander.Header>
+        </wct:SettingsCard.Header>
 
         <local:ViewStack x:Name="ActionViewStack">
             <local:ViewStack.Pages>
@@ -52,6 +52,12 @@
 
                 <local:ViewStackPage PageName="Open">
                     <StackPanel Orientation="Horizontal" Spacing="6">
+                        <Button x:Name="BtnViewLog" Click="ViewLog">
+                            <Button.Content>
+                                <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" FontSize="16" Glyph="&#xF0E3;"/>
+                            </Button.Content>
+                        </Button>
+
                         <Button x:Name="BtnOpenFile" VerticalAlignment="Center" Click="OpenFile">
                             <Button.Content>
                                 <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" FontSize="16" Glyph="&#xE102;"/>
@@ -67,31 +73,21 @@
                 </local:ViewStackPage>
 
                 <local:ViewStackPage PageName="Retry">
-                    <Button x:Name="BtnRetry" VerticalAlignment="Center" Click="Retry">
-                        <Button.Content>
-                            <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" FontSize="16" Glyph="&#xE149;"/>
-                        </Button.Content>
-                    </Button>
+                    <StackPanel Orientation="Horizontal" Spacing="6">
+                        <Button x:Name="BtnViewLog2" Click="ViewLog">
+                            <Button.Content>
+                                <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" FontSize="16" Glyph="&#xF0E3;"/>
+                            </Button.Content>
+                        </Button>
+
+                        <Button x:Name="BtnRetry" VerticalAlignment="Center" Click="Retry">
+                            <Button.Content>
+                                <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" FontSize="16" Glyph="&#xE149;"/>
+                            </Button.Content>
+                        </Button>
+                    </StackPanel>
                 </local:ViewStackPage>
             </local:ViewStack.Pages>
         </local:ViewStack>
-
-        <wct:SettingsExpander.Items>
-            <StackPanel Margin="6,6,6,6" Orientation="Vertical" Spacing="6">
-                <Button x:Name="BtnLogToClipboard" Click="CopyLogToClipboard">
-                    <Button.Content>
-                        <StackPanel Orientation="Horizontal" Spacing="6">
-                            <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" FontSize="16" Glyph="&#xE16F;"/>
-
-                            <TextBlock x:Name="LblBtnLogToClipboard" TextWrapping="WrapWholeWords"/>
-                        </StackPanel>
-                    </Button.Content>
-                </Button>
-
-                <ScrollViewer MaxHeight="100">
-                    <TextBlock x:Name="LblLog" Margin="0,0,14,0"/>
-                </ScrollViewer>
-            </StackPanel>
-        </wct:SettingsExpander.Items>
-    </wct:SettingsExpander>
+    </wct:SettingsCard>
 </UserControl>

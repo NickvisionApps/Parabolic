@@ -585,7 +585,7 @@ public sealed partial class MainWindow : Window
     {
         ViewStack.CurrentPageName = "Downloads";
         StatusBar.Visibility = Visibility.Visible;
-        var downloadRow = new DownloadRow(e.Id, e.Filename, e.SaveFolder, (ea) => NotificationSent(null, ea));
+        var downloadRow = new DownloadRow(e.Id, e.Filename, e.SaveFolder, (ea) => NotificationSent(null, ea), MainGrid.XamlRoot);
         downloadRow.StopRequested += (s, ea) => _controller.DownloadManager.RequestStop(ea);
         downloadRow.RetryRequested += (s, ea) => _controller.DownloadManager.RequestRetry(ea, _controller.DownloadOptions);
         var list = e.IsDownloading ? ListDownloading : ListQueued;
