@@ -16,7 +16,7 @@ public class Program
     /// </summary>
     /// <param name="args">string[]</param>
     [STAThread]
-    static async Task Main(string[] args)
+    public static void Main(string[] args)
     {
         WinRT.ComWrappersSupport.InitializeComWrappers();
         var isFirstInstance = false;
@@ -28,7 +28,14 @@ public class Program
         }
         else
         {
-            await keyInstance.RedirectActivationToAsync(AppInstance.GetCurrent().GetActivatedEventArgs());
+            var redirectSemaphore = new Semaphore(0, 1);
+            var activatedArgs = AppInstance.GetCurrent().GetActivatedEventArgs();
+            Task.Run(() =>
+            {
+                keyInstance.RedirectActivationToAsync(activatedArgs).AsTask().Wait();
+                redirectSemaphore.Release();
+            });
+            redirectSemaphore.WaitOne();
         }
         if (isFirstInstance)
         {
