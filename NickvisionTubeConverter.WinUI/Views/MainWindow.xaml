@@ -248,64 +248,95 @@
                     </nickvision:ViewStackPage>
 
                     <nickvision:ViewStackPage PageName="Downloads">
-                        <Grid Margin="6,0,6,0" RowSpacing="12">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="*"/>
-                            </Grid.RowDefinitions>
+                        <NavigationView x:Name="NavViewDownloads" PaneDisplayMode="Left" IsBackButtonVisible="Collapsed" IsSettingsVisible="False" IsPaneToggleButtonVisible="False" SelectionChanged="NavViewDownloads_SelectionChanged">
+                            <NavigationView.MenuItems>
+                                <NavigationViewItem x:Name="NavItemAddDownload" Icon="Add" SelectsOnInvoked="False" Tapped="AddDownload"/>
 
-                            <Border Grid.Row="0" HorizontalAlignment="Stretch" Background="{ThemeResource CardBackgroundFillColorDefaultBrush}" BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}" BorderThickness="1" CornerRadius="8">
-                                <CommandBar HorizontalAlignment="Left" DefaultLabelPosition="Right">
-                                    <AppBarButton x:Name="BtnAddDownload" Icon="Add" Click="AddDownload"/>
+                                <NavigationViewItemSeparator/>
 
-                                    <AppBarSeparator/>
+                                <NavigationViewItem x:Name="NavItemDownloading" Icon="Download" Tag="Downloading"/>
 
-                                    <AppBarButton x:Name="BtnStopAllDownloads" Icon="Stop" IsEnabled="False" Click="StopAllDownloads"/>
+                                <NavigationViewItem x:Name="NavItemQueued" Icon="Clock" Tag="Queued"/>
 
-                                    <AppBarSeparator/>
+                                <NavigationViewItem x:Name="NavItemCompleted" Tag="Completed">
+                                    <NavigationViewItem.Icon>
+                                        <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE73E;"/>
+                                    </NavigationViewItem.Icon>
+                                </NavigationViewItem>
+                            </NavigationView.MenuItems>
 
-                                    <AppBarButton x:Name="BtnClearQueuedDownloads" Icon="Delete" Click="ClearQueuedDownloads"/>
+                            <nickvision:ViewStack x:Name="ViewStackDownloads">
+                                <nickvision:ViewStack.Pages>
+                                    <nickvision:ViewStackPage PageName="Downloading">
+                                        <Grid Margin="20,20,20,10" RowSpacing="6">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto"/>
+                                                <RowDefinition Height="Auto"/>
+                                                <RowDefinition Height="*"/>
+                                            </Grid.RowDefinitions>
 
-                                    <AppBarSeparator/>
+                                            <TextBlock x:Name="LblDownloading" Grid.Row="0" Margin="0,0,0,20" Style="{ThemeResource NavigationViewItemHeaderTextStyle}"/>
+                                            
+                                            <Border Grid.Row="1" HorizontalAlignment="Stretch" Background="{ThemeResource CardBackgroundFillColorDefaultBrush}" BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}" BorderThickness="1" CornerRadius="8">
+                                                <CommandBar HorizontalAlignment="Left" DefaultLabelPosition="Right">
+                                                    <AppBarButton x:Name="BtnStopAllDownloads" Icon="Stop" IsEnabled="False" Click="StopAllDownloads"/>
+                                                </CommandBar>
+                                            </Border>
 
-                                    <AppBarButton x:Name="BtnRetryFailedDownloads" Icon="Refresh" Click="RetryFailedDownloads"/>
+                                            <ScrollViewer Grid.Row="2">
+                                                <StackPanel x:Name="ListDownloading"  Orientation="Vertical" Spacing="6"/>
+                                            </ScrollViewer>
+                                        </Grid>
+                                    </nickvision:ViewStackPage>
 
-                                    <AppBarButton x:Name="BtnClearCompletedDownloads" Icon="Delete" Click="ClearCompletedDownloads"/>
-                                </CommandBar>
-                            </Border>
+                                    <nickvision:ViewStackPage PageName="Queued">
+                                        <Grid Margin="20,20,20,10" RowSpacing="6">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto"/>
+                                                <RowDefinition Height="Auto"/>
+                                                <RowDefinition Height="*"/>
+                                            </Grid.RowDefinitions>
 
-                            <ScrollViewer Grid.Row="1">
-                                <Grid Margin="6,0,6,0" RowSpacing="12">
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="Auto"/>
-                                        <RowDefinition Height="Auto"/>
-                                        <RowDefinition Height="Auto"/>
-                                    </Grid.RowDefinitions>
+                                            <TextBlock x:Name="LblQueued" Grid.Row="0" Margin="0,0,0,20" Style="{ThemeResource NavigationViewItemHeaderTextStyle}"/>
 
-                                    <StackPanel x:Name="GroupDownloading" Grid.Row="0" Visibility="Collapsed" Orientation="Vertical" Spacing="6">
-                                        <TextBlock x:Name="LblDownloading" Style="{ThemeResource NavigationViewItemHeaderTextStyle}"/>
+                                            <Border Grid.Row="1" HorizontalAlignment="Stretch" Background="{ThemeResource CardBackgroundFillColorDefaultBrush}" BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}" BorderThickness="1" CornerRadius="8">
+                                                <CommandBar HorizontalAlignment="Left" DefaultLabelPosition="Right">
+                                                    <AppBarButton x:Name="BtnClearQueuedDownloads" Icon="Delete" Click="ClearQueuedDownloads"/>
+                                                </CommandBar>
+                                            </Border>
 
-                                        <StackPanel x:Name="ListDownloading" Orientation="Vertical" Spacing="6"/>
+                                            <ScrollViewer Grid.Row="2">
+                                                <StackPanel x:Name="ListQueued" Orientation="Vertical" Spacing="6"/>
+                                            </ScrollViewer>
+                                        </Grid>
+                                    </nickvision:ViewStackPage>
 
-                                        <MenuFlyoutSeparator HorizontalAlignment="Stretch" Margin="6,6,6,0"/>
-                                    </StackPanel>
+                                    <nickvision:ViewStackPage PageName="Completed">
+                                        <Grid Margin="20,20,20,10" RowSpacing="6">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto"/>
+                                                <RowDefinition Height="Auto"/>
+                                                <RowDefinition Height="*"/>
+                                            </Grid.RowDefinitions>
 
-                                    <StackPanel x:Name="GroupQueued" Grid.Row="1" Visibility="Collapsed" Orientation="Vertical" Spacing="6">
-                                        <TextBlock x:Name="LblQueued" Style="{ThemeResource NavigationViewItemHeaderTextStyle}"/>
+                                            <TextBlock x:Name="LblCompleted" Grid.Row="0" Margin="0,0,0,20" Style="{ThemeResource NavigationViewItemHeaderTextStyle}"/>
+                                            
+                                            <Border Grid.Row="1" HorizontalAlignment="Stretch" Background="{ThemeResource CardBackgroundFillColorDefaultBrush}" BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}" BorderThickness="1" CornerRadius="8">
+                                                <CommandBar HorizontalAlignment="Left" DefaultLabelPosition="Right">
+                                                    <AppBarButton x:Name="BtnRetryFailedDownloads" Icon="Refresh" Click="RetryFailedDownloads"/>
 
-                                        <StackPanel x:Name="ListQueued" Orientation="Vertical" Spacing="6"/>
+                                                    <AppBarButton x:Name="BtnClearCompletedDownloads" Icon="Delete" Click="ClearCompletedDownloads"/>
+                                                </CommandBar>
+                                            </Border>
 
-                                        <MenuFlyoutSeparator HorizontalAlignment="Stretch" Margin="6,6,6,0"/>
-                                    </StackPanel>
-
-                                    <StackPanel x:Name="GroupCompleted" Grid.Row="2" Visibility="Collapsed" Orientation="Vertical" Spacing="6">
-                                        <TextBlock x:Name="LblCompleted" Style="{ThemeResource NavigationViewItemHeaderTextStyle}"/>
-
-                                        <StackPanel x:Name="ListCompleted" Orientation="Vertical" Spacing="6"/>
-                                    </StackPanel>
-                                </Grid>
-                            </ScrollViewer>
-                        </Grid>
+                                            <ScrollViewer Grid.Row="2">
+                                                <StackPanel x:Name="ListCompleted" Orientation="Vertical" Spacing="6"/>
+                                            </ScrollViewer>
+                                        </Grid>
+                                    </nickvision:ViewStackPage>
+                                </nickvision:ViewStack.Pages>
+                            </nickvision:ViewStack>
+                        </NavigationView>
                     </nickvision:ViewStackPage>
                 </nickvision:ViewStack.Pages>
             </nickvision:ViewStack>
