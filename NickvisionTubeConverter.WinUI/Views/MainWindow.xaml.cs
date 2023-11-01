@@ -31,6 +31,7 @@ public sealed partial class MainWindow : Window
     private readonly IntPtr _hwnd;
     private bool _isOpened;
     private bool _isActived;
+    private bool _isContentDialogShowing;
     private RoutedEventHandler? _notificationButtonClickEvent;
     private Kernel32.SafePowerRequestObject? _powerRequest;
     private readonly Dictionary<Guid, DownloadRow> _downloadRows;
@@ -53,6 +54,7 @@ public sealed partial class MainWindow : Window
         _hwnd = WindowNative.GetWindowHandle(this);
         _isOpened = false;
         _isActived = true;
+        _isContentDialogShowing = false;
         _powerRequest = null;
         _downloadRows = new Dictionary<Guid, DownloadRow>();
         //Register Events
@@ -312,7 +314,11 @@ public sealed partial class MainWindow : Window
     /// </summary>
     /// <param name="sender">object</param>
     /// <param name="e">RoutedEventArgs</param>
-    public void ShowWindow(object sender, RoutedEventArgs e) => User32.ShowWindow(_hwnd, ShowWindowCommand.SW_SHOW);
+    public void ShowWindow(object sender, RoutedEventArgs e)
+    {
+        User32.ShowWindow(_hwnd, ShowWindowCommand.SW_SHOW);
+        Activate();
+    }
 
     /// <summary>
     /// Occurs when the add download menu item is clicked
@@ -321,7 +327,7 @@ public sealed partial class MainWindow : Window
     /// <param name="e">RoutedEventArgs</param>
     private async void AddDownload(object sender, RoutedEventArgs e)
     {
-        User32.ShowWindow(_hwnd, ShowWindowCommand.SW_SHOW);
+        ShowWindow(sender, e);
         await AddDownloadAsync(null);
     }
 
@@ -358,8 +364,13 @@ public sealed partial class MainWindow : Window
         {
             XamlRoot = MainGrid.XamlRoot
         };
-        await keyringDialog.ShowAsync();
-        _controller.UpdateKeyring(keyringDialogController);
+        if(!_isContentDialogShowing)
+        {
+            _isContentDialogShowing = true;
+            await keyringDialog.ShowAsync();
+            _isContentDialogShowing = false;
+            _controller.UpdateKeyring(keyringDialogController);
+        }
     }
 
     /// <summary>
@@ -374,7 +385,12 @@ public sealed partial class MainWindow : Window
             XamlRoot = MainGrid.XamlRoot
         };
         historyDialog.DownloadAgainRequested += async (s, ea) => await AddDownloadAsync(ea);
-        await historyDialog.ShowAsync();
+        if(!_isContentDialogShowing)
+        {
+            _isContentDialogShowing = true;
+            await historyDialog.ShowAsync();
+            _isContentDialogShowing = false;
+        }
     }
 
     /// <summary>
@@ -384,12 +400,17 @@ public sealed partial class MainWindow : Window
     /// <param name="e">RoutedEventArgs</param>
     private async void Settings(object sender, RoutedEventArgs e)
     {
-        User32.ShowWindow(_hwnd, ShowWindowCommand.SW_SHOW);
+        ShowWindow(sender, e);
         var settingsDialog = new SettingsDialog(_controller.CreatePreferencesViewController(), InitializeWithWindow)
         {
             XamlRoot = MainGrid.XamlRoot
         };
-        await settingsDialog.ShowAsync();
+        if(!_isContentDialogShowing)
+        {
+            _isContentDialogShowing = true;
+            await settingsDialog.ShowAsync();
+            _isContentDialogShowing = false;
+        }
     }
 
     /// <summary>
@@ -502,7 +523,12 @@ public sealed partial class MainWindow : Window
         {
             XamlRoot = MainGrid.XamlRoot
         };
-        await aboutDialog.ShowAsync();
+        if(!_isContentDialogShowing)
+        {
+            _isContentDialogShowing = true;
+            await aboutDialog.ShowAsync();
+            _isContentDialogShowing = false;
+        }
     }
 
     /// <summary>
@@ -516,10 +542,15 @@ public sealed partial class MainWindow : Window
         {
             XamlRoot = MainGrid.XamlRoot
         };
-        var res = await addDialog.ShowAsync(url);
-        if (res == ContentDialogResult.Primary)
+        if (!_isContentDialogShowing)
         {
-            _controller.AddDownloads(addController);
+            _isContentDialogShowing = true;
+            var res = await addDialog.ShowAsync(url);
+            _isContentDialogShowing = false;
+            if (res == ContentDialogResult.Primary)
+            {
+                _controller.AddDownloads(addController);
+            }
         }
     }
 
