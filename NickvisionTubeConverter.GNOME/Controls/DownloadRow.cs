@@ -168,7 +168,7 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
                     });
                 }
                 _stateViewStack.SetVisibleChildName("processing");
-                _progressLabel.SetText(_("Downloading"));
+                _progressLabel.SetText(_("Downloading..."));
                 break;
             case DownloadProgressStatus.Processing:
                 if (!_runPulsingBar)

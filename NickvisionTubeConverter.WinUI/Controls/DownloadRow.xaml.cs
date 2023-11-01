@@ -122,7 +122,7 @@ public sealed partial class DownloadRow : UserControl, IDownloadRowControl
                 break;
             case DownloadProgressStatus.Processing:
                 StateViewStack.CurrentPageName = "Processing";
-                LblProgress.Text = _("Processing");
+                LblProgress.Text = _("Processing...");
                 break;
         }
     }
@@ -211,17 +211,10 @@ public sealed partial class DownloadRow : UserControl, IDownloadRowControl
         var res = await logDialog.ShowAsync();
         if(res == ContentDialogResult.Primary)
         {
-            try
-            {
-                var package = new DataPackage();
-                package.SetText(_log);
-                Clipboard.SetContent(package);
-                _sendNotificationCallback(new NotificationSentEventArgs(_("Download log was copied to clipboard."), NotificationSeverity.Success));
-            }
-            catch
-            {
-                _sendNotificationCallback(new NotificationSentEventArgs(_("Unable to copy log to clipboard."), NotificationSeverity.Error));
-            }
+            var package = new DataPackage();
+            package.SetText(_log);
+            Clipboard.SetContent(package);
+            _sendNotificationCallback(new NotificationSentEventArgs(_("Download log was copied to clipboard."), NotificationSeverity.Success));
         }
     }
 }
