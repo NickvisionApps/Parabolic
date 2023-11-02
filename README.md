@@ -32,6 +32,15 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for details on how can you help the proje
  ![GNOMEAddDownload](NickvisionTubeConverter.GNOME/Screenshots/AddDownload.png)
 </details>
 
+<details>
+ <summary>WinUI</summary>
+
+ ![WinUIStartScreen](NickvisionTubeConverter.WinUI/Screenshots/StartScreen.png)
+ ![WinUILight](NickvisionTubeConverter.WinUI/Screenshots/Light.png)
+ ![WinUIDark](NickvisionTubeConverter.WinUI/Screenshots/Dark.png)
+ ![WinUIAddDownload](NickvisionTubeConverter.WinUI/Screenshots/AddDownload.png)
+</details>
+
 # Dependencies
 - [.NET 7](https://dotnet.microsoft.com/en-us/)
 - [ffmpeg](https://ffmpeg.org/)
