@@ -248,7 +248,7 @@
                     </nickvision:ViewStackPage>
 
                     <nickvision:ViewStackPage PageName="Downloads">
-                        <NavigationView x:Name="NavViewDownloads" PaneDisplayMode="Left" IsBackButtonVisible="Collapsed" IsSettingsVisible="False" IsPaneToggleButtonVisible="False" SelectionChanged="NavViewDownloads_SelectionChanged">
+                        <NavigationView x:Name="NavViewDownloads" IsBackButtonVisible="Collapsed" IsSettingsVisible="False" SelectionChanged="NavViewDownloads_SelectionChanged">
                             <NavigationView.PaneHeader>
                                 <Button x:Name="BtnAddDownload" HorizontalAlignment="Stretch" Margin="6,0,6,6" Style="{ThemeResource AccentButtonStyle}" Click="AddDownload">
                                     <Button.Content>
@@ -260,10 +260,8 @@
                                     </Button.Content>
                                 </Button>
                             </NavigationView.PaneHeader>
-                            
-                            <NavigationView.MenuItems>
-                                <NavigationViewItemSeparator/>
 
+                            <NavigationView.MenuItems>
                                 <NavigationViewItem x:Name="NavItemDownloading" Icon="Download" Tag="Downloading"/>
 
                                 <NavigationViewItem x:Name="NavItemQueued" Icon="Clock" Tag="Queued"/>
@@ -293,9 +291,19 @@
                                                 </CommandBar>
                                             </Border>
 
-                                            <ScrollViewer Grid.Row="2" Margin="0,0,-20,0">
-                                                <StackPanel x:Name="ListDownloading" Margin="0,0,20,0" Orientation="Vertical" Spacing="6"/>
-                                            </ScrollViewer>
+                                            <nickvision:ViewStack x:Name="ViewStackDownloading" Grid.Row="2">
+                                                <nickvision:ViewStack.Pages>
+                                                    <nickvision:ViewStackPage PageName="No">
+                                                        <nickvision:StatusPage x:Name="StatusPageDownloading" HorizontalAlignment="Center" VerticalAlignment="Center" Glyph="&#xE118;"/>
+                                                    </nickvision:ViewStackPage>
+
+                                                    <nickvision:ViewStackPage PageName="Has">
+                                                        <ScrollViewer Margin="0,0,-20,0">
+                                                            <StackPanel x:Name="ListDownloading" Margin="0,0,20,0" Orientation="Vertical" Spacing="6"/>
+                                                        </ScrollViewer>
+                                                    </nickvision:ViewStackPage>
+                                                </nickvision:ViewStack.Pages>
+                                            </nickvision:ViewStack>
                                         </Grid>
                                     </nickvision:ViewStackPage>
 
@@ -315,9 +323,19 @@
                                                 </CommandBar>
                                             </Border>
 
-                                            <ScrollViewer Grid.Row="2" Margin="0,0,-20,0">
-                                                <StackPanel x:Name="ListQueued" Margin="0,0,20,0" Orientation="Vertical" Spacing="6"/>
-                                            </ScrollViewer>
+                                            <nickvision:ViewStack x:Name="ViewStackQueued" Grid.Row="2">
+                                                <nickvision:ViewStack.Pages>
+                                                    <nickvision:ViewStackPage PageName="No">
+                                                        <nickvision:StatusPage x:Name="StatusPageQueued" HorizontalAlignment="Center" VerticalAlignment="Center" Glyph="&#xE121;"/>
+                                                    </nickvision:ViewStackPage>
+
+                                                    <nickvision:ViewStackPage PageName="Has">
+                                                        <ScrollViewer Margin="0,0,-20,0">
+                                                            <StackPanel x:Name="ListQueued" Margin="0,0,20,0" Orientation="Vertical" Spacing="6"/>
+                                                        </ScrollViewer>
+                                                    </nickvision:ViewStackPage>
+                                                </nickvision:ViewStack.Pages>
+                                            </nickvision:ViewStack>
                                         </Grid>
                                     </nickvision:ViewStackPage>
 
@@ -339,9 +357,19 @@
                                                 </CommandBar>
                                             </Border>
 
-                                            <ScrollViewer Grid.Row="2" Margin="0,0,-20,0">
-                                                <StackPanel x:Name="ListCompleted" Margin="0,0,20,0" Orientation="Vertical" Spacing="6"/>
-                                            </ScrollViewer>
+                                            <nickvision:ViewStack x:Name="ViewStackCompleted" Grid.Row="2">
+                                                <nickvision:ViewStack.Pages>
+                                                    <nickvision:ViewStackPage PageName="No">
+                                                        <nickvision:StatusPage x:Name="StatusPageCompleted" HorizontalAlignment="Center" VerticalAlignment="Center" Glyph="&#xE73E;"/>
+                                                    </nickvision:ViewStackPage>
+
+                                                    <nickvision:ViewStackPage PageName="Has">
+                                                        <ScrollViewer Margin="0,0,-20,0">
+                                                            <StackPanel x:Name="ListCompleted" Margin="0,0,20,0" Orientation="Vertical" Spacing="6"/>
+                                                        </ScrollViewer>
+                                                    </nickvision:ViewStackPage>
+                                                </nickvision:ViewStack.Pages>
+                                            </nickvision:ViewStack>
                                         </Grid>
                                     </nickvision:ViewStackPage>
                                 </nickvision:ViewStack.Pages>

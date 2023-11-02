@@ -109,6 +109,9 @@ public sealed partial class MainWindow : Window
         NavItemDownloading.Content = _("Downloading");
         LblDownloading.Text = _("Downloading");
         BtnStopAllDownloads.Label = _("Stop All Downloads");
+        StatusPageDownloading.Title = _("No Downloads Running");
+        StatusPageQueued.Title = _("No Queued Downloads");
+        StatusPageCompleted.Title = _("No Completed Downloads");
         NavItemQueued.Content = _("Queued");
         LblQueued.Text = _("Queued");
         BtnClearQueuedDownloads.Label = _("Clear Queued Downloads");
@@ -336,13 +339,6 @@ public sealed partial class MainWindow : Window
     }
 
     /// <summary>
-    /// Occurs when the add download item is tapped
-    /// </summary>
-    /// <param name="sender">object</param>
-    /// <param name="e">TappedEventArgs</param>
-    private async void AddDownload(object sender, TappedEventArgs e) => await AddDownloadAsync(null);
-
-    /// <summary>
     /// Occurs when the exit menu item is clicked
     /// </summary>
     /// <param name="sender">object</param>
@@ -440,11 +436,7 @@ public sealed partial class MainWindow : Window
     {
         _controller.DownloadManager.ClearQueuedDownloads();
         ListQueued.Children.Clear();
-        if (!_controller.DownloadManager.AreDownloadsQueued && !_controller.DownloadManager.AreDownloadsRunning && !_controller.DownloadManager.AreDownloadsCompleted)
-        {
-            ViewStack.CurrentPageName = "Home";
-            StatusBar.Visibility = Visibility.Collapsed;
-        }
+        DownloadUIUpdate();
     }
 
     /// <summary>
@@ -463,11 +455,7 @@ public sealed partial class MainWindow : Window
     {
         _controller.DownloadManager.ClearCompletedDownloads();
         ListCompleted.Children.Clear();
-        if (!_controller.DownloadManager.AreDownloadsQueued && !_controller.DownloadManager.AreDownloadsRunning && !_controller.DownloadManager.AreDownloadsCompleted)
-        {
-            ViewStack.CurrentPageName = "Home";
-            StatusBar.Visibility = Visibility.Collapsed;
-        }
+        DownloadUIUpdate();
     }
 
     /// <summary>
@@ -598,6 +586,20 @@ public sealed partial class MainWindow : Window
     }
 
     /// <summary>
+    /// Updates the UI based on the current DownloadManager state
+    /// </summary>
+    private void DownloadUIUpdate()
+    {
+        MenuStopAllDownloads.IsEnabled = _controller.DownloadManager.RemainingDownloadsCount > 0;
+        BtnStopAllDownloads.IsEnabled = _controller.DownloadManager.RemainingDownloadsCount > 0;
+        ViewStackDownloading.CurrentPageName = ListDownloading.Children.Count > 0 ? "Has" : "No";
+        ViewStackQueued.CurrentPageName = ListQueued.Children.Count > 0 ? "Has" : "No";
+        ViewStackCompleted.CurrentPageName = ListCompleted.Children.Count > 0 ? "Has" : "No";
+        StatusLabel.Text = _("Remaining Downloads: {0}", _controller.DownloadManager.RemainingDownloadsCount);
+        TrayIcon.ToolTipText = _controller.DownloadManager.BackgroundActivityReport;
+    }
+
+    /// <summary>
     /// Occurs when a download is added
     /// </summary>
     /// <param name="e">(Guid Id, string Filename, string SaveFolder, bool IsDownloading)</param>
@@ -621,10 +623,7 @@ public sealed partial class MainWindow : Window
         }
         list.Children.Add(downloadRow);
         _downloadRows[e.Id] = downloadRow;
-        MenuStopAllDownloads.IsEnabled = _controller.DownloadManager.RemainingDownloadsCount > 0;
-        BtnStopAllDownloads.IsEnabled = _controller.DownloadManager.RemainingDownloadsCount > 0;
-        StatusLabel.Text = _("Remaining Downloads: {0}", _controller.DownloadManager.RemainingDownloadsCount);
-        TrayIcon.ToolTipText = _controller.DownloadManager.BackgroundActivityReport;
+        DownloadUIUpdate();
     }
 
     /// <summary>
@@ -648,10 +647,7 @@ public sealed partial class MainWindow : Window
         row.SetCompletedState(e.Successful, e.Filename);
         ListDownloading.Children.Remove(row);
         ListCompleted.Children.Add(row);
-        MenuStopAllDownloads.IsEnabled = _controller.DownloadManager.RemainingDownloadsCount > 0;
-        BtnStopAllDownloads.IsEnabled = _controller.DownloadManager.RemainingDownloadsCount > 0;
-        StatusLabel.Text = _("Remaining Downloads: {0}", _controller.DownloadManager.RemainingDownloadsCount);
-        TrayIcon.ToolTipText = _controller.DownloadManager.BackgroundActivityReport;
+        DownloadUIUpdate();
         if (e.ShowNotification && (!_isActived || !AppWindow.IsVisible))
         {
             if (_controller.CompletedNotificationPreference == NotificationPreference.ForEach)
@@ -676,10 +672,7 @@ public sealed partial class MainWindow : Window
         ListDownloading.Children.Remove(row);
         ListQueued.Children.Remove(row);
         ListCompleted.Children.Add(row);
-        MenuStopAllDownloads.IsEnabled = _controller.DownloadManager.RemainingDownloadsCount > 0;
-        BtnStopAllDownloads.IsEnabled = _controller.DownloadManager.RemainingDownloadsCount > 0;
-        StatusLabel.Text = _("Remaining Downloads: {0}", _controller.DownloadManager.RemainingDownloadsCount);
-        TrayIcon.ToolTipText = _controller.DownloadManager.BackgroundActivityReport;
+        DownloadUIUpdate();
     }
 
     /// <summary>
@@ -691,10 +684,7 @@ public sealed partial class MainWindow : Window
         var row = _downloadRows[e];
         row.SetWaitingState();
         ListCompleted.Children.Remove(row);
-        MenuStopAllDownloads.IsEnabled = _controller.DownloadManager.RemainingDownloadsCount > 0;
-        BtnStopAllDownloads.IsEnabled = _controller.DownloadManager.RemainingDownloadsCount > 0;
-        StatusLabel.Text = _("Remaining Downloads: {0}", _controller.DownloadManager.RemainingDownloadsCount);
-        TrayIcon.ToolTipText = _controller.DownloadManager.BackgroundActivityReport;
+        DownloadUIUpdate();
     }
 
     /// <summary>
@@ -707,9 +697,6 @@ public sealed partial class MainWindow : Window
         row.SetPreparingState();
         ListQueued.Children.Remove(row);
         ListDownloading.Children.Add(row);
-        MenuStopAllDownloads.IsEnabled = _controller.DownloadManager.RemainingDownloadsCount > 0;
-        BtnStopAllDownloads.IsEnabled = _controller.DownloadManager.RemainingDownloadsCount > 0;
-        StatusLabel.Text = _("Remaining Downloads: {0}", _controller.DownloadManager.RemainingDownloadsCount);
-        TrayIcon.ToolTipText = _controller.DownloadManager.BackgroundActivityReport;
+        DownloadUIUpdate();
     }
 }
