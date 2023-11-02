@@ -34,7 +34,7 @@ WizardStyle=modern
 PrivilegesRequired=admin
 DirExistsWarning=no
 AlwaysRestart=yes
-; Incase a user chooses to not restart
+; In case a user chooses to not restart
 ChangesEnvironment=yes 
 
 [Code]
