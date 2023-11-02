@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-25 15:30+0300\n"
+"POT-Creation-Date: 2023-11-01 20:56-0400\n"
 "PO-Revision-Date: 2023-09-12 17:35+0000\n"
 "Last-Translator: \"K.B.Dharun Krishna\" <kbdharunkrishna@gmail.com>\n"
 "Language-Team: Tamil <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -19,17 +19,20 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Weblate 5.0.1-dev\n"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:714
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:684
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:655
 #, csharp-format
 msgid "\"{0}\" has finished downloading."
 msgstr "\"{0}\" வின் பதிவிறக்கம் முடிந்தது."
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:714
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:684
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:655
 #, csharp-format
 msgid "\"{0}\" has finished with an error!"
 msgstr "\"{0}\" பிழையுடன் முடிந்தது!"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:237
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:233
+#: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:106
 msgid "(Configurable in preferences)"
 msgstr "(விருப்பங்களில் கட்டமைக்கக்கூடியது)"
 
@@ -44,7 +47,8 @@ msgid "{0:f1} GiB/s"
 msgstr "{0:f1} ஜிபிபைட்/வினாடி (GiB/s)"
 
 #: ../../../Helpers/SpeedFormatter.cs:28
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:237
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:233
+#: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:106
 #, csharp-format
 msgid "{0:f1} KiB/s"
 msgstr "{0:f1} கிலோபிட்/வினாடி (KiB/s)"
@@ -61,52 +65,253 @@ msgid_plural "{0} downloads — {1:f1}% ({2})"
 msgstr[0] "{0} பதிவிறக்கம் — {1:f1}% ({2})"
 msgstr[1] "{0} பதிவிறக்கங்கள் — {1:f1}% ({2})"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:432
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:540
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:427
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:535
+#: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:467
+#: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:548
 #, csharp-format
 msgid "{0} of {1} items"
 msgid_plural "{0} of {1} items"
 msgstr[0] "{1} இல் {0} உருப்படிகள்"
 msgstr[1] "{1} இல் {0} உருப்படிகள்"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:101
+#: ../../../../NickvisionTubeConverter.WinUI/Controls/MediaRow.xaml.cs:84
+#, csharp-format
+msgid "{0}{1}"
+msgstr ""
+
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:85
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:293
+msgid ""
+"A cookies file can be provided to yt-dlp to allow downloading media that "
+"requires a login."
+msgstr ""
+"உள்நுழைவு தேவைப்படும் மீடியாவைப் பதிவிறக்க அனுமதிக்க குக்கீகள் கோப்பு yt-dlp க்கு "
+"வழங்கப்படலாம்."
+
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:101
+#, csharp-format
+msgid "About {0}"
+msgstr ""
+
+#: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringDialog.xaml.cs:56
+#: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:182
+#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:52
+msgid "Add"
+msgstr "சேர்"
+
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:105
+#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:78
+msgid "Add a video, audio, or playlist URL to start downloading"
+msgstr "பதிவிறக்கம் செய்ய, காணொளி, ஒலி அமைவு அல்லது பாடல் பட்டியல் URL ஐச் சேர்க்கவும்"
+
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:97
+#: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:41
+#: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:256
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:84
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:106
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:108
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:125
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:37
 #: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:16
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:82
 msgid "Add Download"
 msgstr "பதிவிறக்கத்தைச் சேர்க்கவும்"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:100
+#: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringDialog.xaml.cs:44
+#: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringDialog.xaml.cs:46
+#: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:115
+msgid "Add Login"
+msgstr "உள்நுழைவைச் சேர்க்கவும்"
+
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:96
+#: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:63
+#: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:255
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:160
 msgid "Advanced Options"
 msgstr "மேம்பட்ட விருப்பங்கள்"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:718
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:688
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:659
 msgid "All downloads have finished."
 msgstr "அனைத்து பதிவிறக்கங்களும் முடிந்துவிட்டன."
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:389
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:402
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:54
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:59
+msgid "Allow Running In Background"
+msgstr "பின்னணியில் இயங்குவதை அனுமதிக்கவும்"
+
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:39
+msgid "An application restart is required to change the theme."
+msgstr ""
+
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:35
+msgid "Apply"
+msgstr "விண்ணப்பிக்கவும்"
+
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:384
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:397
+#: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:514
+#: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:527
 msgid "Audio"
 msgstr "ஒலி அமைவு"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:85
+#: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:57
+#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:126
+msgid "Audio Language"
+msgstr "ஒலி மொழி"
+
+#: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:46
+#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:63
+msgid "Authenticate"
+msgstr "அங்கீகரிக்கவும்"
+
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:43
+msgid "Automatically Check for Updates"
+msgstr ""
+
+#: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:43
+#: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringDialog.xaml.cs:36
+#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:24
+#: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:25
+msgid "Back"
+msgstr "திரும்பவும்"
+
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:81
+#: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:39
 msgid "Best"
 msgstr "சிறந்த"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:274
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:36
+msgid "Cancel"
+msgstr ""
+
+#: ../../../../NickvisionTubeConverter.WinUI/Controls/AboutDialog.xaml.cs:31
+msgid "Changelog"
+msgstr ""
+
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:96
+msgid "Check for Updates"
+msgstr ""
+
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:90
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:351
+msgid "Chrome/Edge"
+msgstr ""
+
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:94
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:121
+#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:217
+msgid "Clear Completed Downloads"
+msgstr "முடிக்கப்பட்ட பதிவிறக்கங்களை அழிக்கவும்"
+
+#: ../../../../NickvisionTubeConverter.WinUI/Controls/HistoryDialog.xaml.cs:39
+#: NickvisionTubeConverter.GNOME/Blueprints/history_dialog.blp:18
+msgid "Clear History"
+msgstr "வரலாற்றை அழிக்கவும்"
+
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:105
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:421
+#, fuzzy
+msgid ""
+"Clear metadata fields containing the URL and other identifying information "
+"of the media source"
+msgstr ""
+"ஊடகம் மூலத்திற்கு வழிவகுக்கும் URL மற்றும் மற்றொரு தரவைக் கொண்ட மெட்டாடேட்டா புலங்களை "
+"அழிக்கவும்"
+
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:92
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:117
+#: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:31
+#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:169
+msgid "Clear Queued Downloads"
+msgstr "வரிசைப்படுத்தப்பட்ட பதிவிறக்கங்களை அழிக்கவும்"
+
+#: ../../../../NickvisionTubeConverter.WinUI/Controls/HistoryDialog.xaml.cs:37
+#: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:42
+#: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringDialog.xaml.cs:35
+msgid "Close"
+msgstr ""
+
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:267
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:187
 msgid "Close and Stop Downloads?"
 msgstr "பதிவிறக்கங்களை மூடிவிட்டு நிறுத்தவா?"
 
-#: ../../../Controllers/MainWindowController.cs:109
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:79
+msgid "Comma separated list"
+msgstr ""
+
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:118
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:119
+#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:198
+msgid "Completed"
+msgstr "முடிக்கப்பட்டது"
+
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:46
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:30
+msgid "Completed Notification Trigger"
+msgstr "நிறைவு செய்யப்பட்ட அறிவிப்பு தூண்டுதல்"
+
+#: ../../../Controllers/MainWindowController.cs:122
 msgid "Contributors on GitHub ❤️"
 msgstr "GitHub இல் பங்களிப்பாளர்கள் ❤️"
 
-#: ../../../Controllers/MainWindowController.cs:112
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:92
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:376
+msgid "Converter"
+msgstr "மாற்றி"
+
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:89
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:339
+msgid ""
+"Cookies can be passed to yt-dlp in the form of TXT files. Export cookies "
+"from your browser using the following extensions (use at your own risk):"
+msgstr ""
+"TXT கோப்புகளின் வடிவத்தில் குக்கீகளை yt-dlp க்கு அனுப்பலாம். பின்வரும் நீட்டிப்புகளைப் "
+"பயன்படுத்தி உங்கள் உலாவியில் இருந்து குக்கீகளை ஏற்றுமதி செய்யவும் (உங்கள் சொந்த ஆபத்தில் "
+"பயன்படுத்தவும்):"
+
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:84
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:292
+msgid "Cookies File"
+msgstr "குக்கீகள் கோப்பு"
+
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:88
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:324
+msgid "Cookies File Information"
+msgstr "குக்கீகள் கோப்பு தகவல்"
+
+#: ../../../../NickvisionTubeConverter.WinUI/Controls/AboutDialog.xaml.cs:33
+#, fuzzy
+msgid "Copied debug info to clipboard."
+msgstr "கிளிப்போர்டுக்கு நகலெடுக்கவும்"
+
+#: ../../../../NickvisionTubeConverter.WinUI/Controls/DownloadRow.xaml.cs:205
+#: NickvisionTubeConverter.GNOME/Blueprints/download_row.blp:145
+msgid "Copy to Clipboard"
+msgstr "கிளிப்போர்டுக்கு நகலெடுக்கவும்"
+
+#: ../../../../NickvisionTubeConverter.WinUI/Controls/AboutDialog.xaml.cs:32
+#, fuzzy
+msgid "Credits"
+msgstr "சான்றுகள்"
+
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:100
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:404
+msgid "Crop Audio Thumbnails"
+msgstr "ஒலி அமைப்பு சிறுபடங்களை செதுக்கு"
+
+#: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:80
+#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:318
+msgid "Crop Thumbnail"
+msgstr "சிறுபடத்தை வெட்டவும்"
+
+#: ../../../Controllers/MainWindowController.cs:125
 msgid "DaPigGuy"
 msgstr "DaPigGuy"
 
-#: ../../../Controllers/MainWindowController.cs:113
+#: ../../../Controllers/MainWindowController.cs:126
 msgid "David Lapshin"
 msgstr "டேவிட் லாப்ஷின்"
 
@@ -114,220 +319,803 @@ msgstr "டேவிட் லாப்ஷின்"
 msgid "Default"
 msgstr "இயல்புநிலை"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:312
+#: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringDialog.xaml.cs:57
+#: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:194
+msgid "Delete"
+msgstr "நீக்கு"
+
+#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:315
+#: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringDialog.xaml.cs:252
 msgid "Delete Credential?"
 msgstr "நற்சான்றிதழை நீக்கவா?"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Controls/HistoryDialog.cs:85
+#: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:72
+#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:254
+msgid "Deselect All"
+msgstr "அனைத்து தெரிவுகளையும் நிராகரி"
+
+#: ../../../../NickvisionTubeConverter.WinUI/Controls/AboutDialog.xaml.cs:38
+#, csharp-format
+msgid ""
+"Developers:\n"
+"{0}\n"
+"\n"
+"Designers:\n"
+"{1}\n"
+"\n"
+"Artists:\n"
+"{2}\n"
+"\n"
+"Translators:\n"
+"{3}"
+msgstr ""
+
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:81
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:272
+#, fuzzy
+msgid ""
+"Different sites can use different language code formats for the same "
+"language. You may encounter one of the following three types: two-letter, "
+"two-letter with region, or three-letter. For example, \"en\", \"en-US\" and "
+"\"eng\" are all used for English.\n"
+"Please specify all valid codes for your languages for the best results. Auto-"
+"generated subtitles will also be downloaded if available.\n"
+"\n"
+"You can specify \"all\" instead to download all subtitles, but without auto-"
+"generated ones."
+msgstr ""
+"வெவ்வேறு தளங்கள் ஒரே மொழிக்கு வெவ்வேறு மொழி குறியீடு வடிவங்களைப் பயன்படுத்தலாம். "
+"பின்வரும் மூன்று வகைகளில் ஒன்றை நீங்கள் சந்திக்கலாம்: இரண்டு எழுத்து, பகுதியுடன் கூடிய "
+"இரண்டு எழுத்து அல்லது மூன்றெழுத்து. எடுத்துக்காட்டாக, \"en\", \"en-US\" மற்றும் "
+"\"eng\" அனைத்தும் ஆங்கிலத்திற்குப் பயன்படுத்தப்படுகின்றன.\n"
+"\n"
+"சிறந்த முடிவுகளுக்கு உங்கள் மொழிகளுக்கான அனைத்து சரியான குறியீடுகளையும் குறிப்பிடவும்."
+
+#: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringDialog.xaml.cs:42
+#: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:133
+msgid "Disable"
+msgstr "முடக்கு"
+
+#: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringDialog.xaml.cs:45
+#: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringDialog.xaml.cs:47
+#: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:105
+msgid "Disable Keyring"
+msgstr "சாவி வளையத்தை முடக்கு"
+
+#: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringDialog.xaml.cs:40
+#: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:130
+msgid "Disable Keyring?"
+msgstr "சாவி வளையத்தை முடக்கவா?"
+
+#: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringDialog.xaml.cs:41
+#: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:131
+msgid ""
+"Disabling the keyring will delete all data currently stored inside. Are you "
+"sure you want to disable it?"
+msgstr ""
+"சாவி வளையத்தை முடக்குவது, தற்போது உள்ளே சேமிக்கப்பட்டுள்ள எல்லா தரவையும் நீக்கிவிடும். "
+"நிச்சயமாக அதை முடக்க விரும்புகிறீர்களா?"
+
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:93
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:379
+msgid "Disallow Conversions"
+msgstr "மாற்றங்களை அனுமதிக்காதே"
+
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:100
+msgid "Discussions"
+msgstr ""
+
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:97
+msgid "Documentation"
+msgstr ""
+
+#: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:541
+#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:208
+#: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:13
+msgid "Download"
+msgstr "பதிவிறக்கு"
+
+#: ../../../../NickvisionTubeConverter.GNOME/Controls/HistoryDialog.cs:84
+#: ../../../../NickvisionTubeConverter.WinUI/Controls/HistoryDialog.xaml.cs:78
 msgid "Download Again"
 msgstr "மீண்டும் பதிவிறக்கவும்"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:714
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:684
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:655
 msgid "Download Finished"
 msgstr "பதிவிறக்கம் முடிந்தது"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:714
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:684
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:655
 msgid "Download Finished With Error"
 msgstr "பதிவிறக்கம் பிழையுடன் முடிந்தது"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:94
+#: ../../../../NickvisionTubeConverter.WinUI/Controls/DownloadRow.xaml.cs:216
 msgid "Download log was copied to clipboard."
 msgstr "பதிவிறக்கப் பதிவு கிளிப்போர்டுக்கு நகலெடுக்கப்பட்டது."
 
-#: ../../../Models/Download.cs:395
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:104
+#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:77
+msgid "Download Media"
+msgstr "ஊடகத்தைப் பதிவிறக்கவும்"
+
+#: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:84
+#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:330
+msgid "Download Specific Timeframe"
+msgstr "குறிப்பிட்ட காலக்கெடுவைப் பதிவிறக்கவும்"
+
+#: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:58
+#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:131
+msgid "Download Subtitle"
+msgstr "வசனத்தைப் பதிவிறக்கவும்"
+
+#: ../../../Models/Download.cs:397
 msgid "Download using aria2 has started"
 msgstr "aria2 ஐப் பயன்படுத்தி பதிவிறக்கம் தொடங்கப்பட்டது"
 
-#: ../../../Models/Download.cs:406
+#: ../../../Models/Download.cs:408
 msgid "Download using ffmpeg has started"
 msgstr "ffmpeg ஐப் பயன்படுத்தி பதிவிறக்கம் தொடங்கப்பட்டது"
 
-#: ../../../Controllers/MainWindowController.cs:102
+#: ../../../Controllers/MainWindowController.cs:115
 #: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.desktop.in:5
 #: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.metainfo.xml.in:8
 msgid "Download web video and audio"
 msgstr "இணைய காணொளி மற்றும் ஒலி அமைவைப் பதிவிறக்கவும்"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:171
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:90
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:58
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:76
+msgid "Downloader"
+msgstr "பதிவிறக்குபவர்"
+
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:109
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:110
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:119
 msgid "Downloading"
 msgstr "பதிவிறக்குகிறது"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:157
+#: ../../../../NickvisionTubeConverter.WinUI/Controls/DownloadRow.xaml.cs:115
 #, csharp-format
 msgid "Downloading {0:f2}% ({1})"
 msgstr "பதிவிறக்குகிறது {0:f2}% ({1})"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:718
+#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:171
+#: ../../../../NickvisionTubeConverter.WinUI/Controls/DownloadRow.xaml.cs:120
+#, fuzzy
+msgid "Downloading..."
+msgstr "பதிவிறக்குகிறது"
+
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:688
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:659
 msgid "Downloads Finished"
 msgstr "பதிவிறக்கங்கள் முடிந்தது"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:461
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:86
+msgid "Edit"
+msgstr ""
+
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:108
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:437
+msgid "Embed Chapters"
+msgstr "அத்தியாயங்களை உட்பொதிக்கவும்"
+
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:97
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:395
+msgid "Embed Metadata"
+msgstr "மெட்டாடேட்டாவை உட்பொதிக்கவும்"
+
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:111
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:452
+#, fuzzy
+msgid "Embed Subtitle"
+msgstr "வசனம்"
+
+#: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringDialog.xaml.cs:39
+#: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:59
+msgid "Enable"
+msgstr "இயக்கு"
+
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:66
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:154
+msgid ""
+"Enable to use aria2 downloader. It can be faster, but you will not see "
+"download progress."
+msgstr ""
+"aria2 பதிவிறக்குபவரைப் பயன்படுத்த இயக்கு. இது வேகமாக இருக்கலாம், ஆனால் நீங்கள் பதிவிறக்க "
+"முன்னேற்றத்தைக் காண மாட்டீர்கள்."
+
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:457
+#: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:91
+#: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:580
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:341
 msgid "End Time"
 msgstr "முடிவு நேரம்"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:481
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:477
+#: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:598
 msgid "End Time (Invalid)"
 msgstr "முடிவு நேரம் (செல்லாதது)"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:380
+#: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:45
+msgid "Ender media url here"
+msgstr ""
+
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:375
+#: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:503
 msgid "Ensure credentials are correct."
 msgstr "சான்றுகள் சரியானவை என்பதை உறுதிப்படுத்தவும்."
 
+#: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:93
+msgid "Enter end timeframe here"
+msgstr ""
+
+#: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringDialog.xaml.cs:49
+msgid "Enter name here"
+msgstr ""
+
+#: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:53
+#: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringDialog.xaml.cs:55
+msgid "Enter password here"
+msgstr ""
+
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:83
+msgid "Enter proxy url here"
+msgstr ""
+
+#: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:90
+msgid "Enter start timeframe here"
+msgstr ""
+
+#: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringDialog.xaml.cs:51
+msgid "Enter url here"
+msgstr ""
+
+#: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:51
+#: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringDialog.xaml.cs:53
+msgid "Enter user name here"
+msgstr ""
+
 #: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:201
+#: ../../../../NickvisionTubeConverter.WinUI/Controls/DownloadRow.xaml.cs:139
 msgid "Error"
 msgstr "பிழை"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:72
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:85
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:128
+msgid "Exit"
+msgstr ""
+
+#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:73
+#: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringDialog.xaml.cs:130
 msgid "Failed to enable keyring."
 msgstr "சாவி வலயத்தை இயக்குவதில் தோல்வி."
 
-#: ../../../Models/Download.cs:181
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:83
+#, fuzzy
+msgid "File"
+msgstr "கோப்பு பெயர்"
+
+#: ../../../Models/Download.cs:183
 msgid "File already exists, and overwriting is disallowed"
 msgstr "கோப்பு ஏற்கனவே உள்ளது, மேலெழுத அனுமதிக்கப்படவில்லை"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Controls/MediaRow.cs:38
+#: ../../../../NickvisionTubeConverter.GNOME/Controls/MediaRow.cs:40
+#: ../../../../NickvisionTubeConverter.WinUI/Controls/MediaRow.xaml.cs:35
 msgid "File Name"
 msgstr "கோப்பு பெயர்"
 
-#: ../../../Controllers/MainWindowController.cs:111
+#: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:55
+#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:112
+msgid "File Type"
+msgstr "கோப்பு வகை"
+
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:91
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:360
+msgid "Firefox"
+msgstr ""
+
+#: ../../../Controllers/MainWindowController.cs:124
 msgid "Fyodor Sobolev"
 msgstr "ஃபியோடர் சோபோலேவ்"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:525
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:527
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:98
 msgid "GitHub Repo"
 msgstr "GitHub களஞ்சியம்"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:136
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:95
+#: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:60
+#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:11
+msgid "Help"
+msgstr "உதவி"
+
+#: ../../../../NickvisionTubeConverter.WinUI/Controls/HistoryDialog.xaml.cs:36
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:88
+#: NickvisionTubeConverter.GNOME/Blueprints/history_dialog.blp:31
+#: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:45
+#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:6
+msgid "History"
+msgstr "வரலாறு"
+
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:112
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:453
+msgid ""
+"If disabled or if embedding fails, downloaded subtitle will be saved to a "
+"separate file instead"
+msgstr ""
+
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:101
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:405
+msgid ""
+"If enabled, Parabolic will automatically turn on the crop thumbnail advanced "
+"option for audio downloads"
+msgstr ""
+"இயக்கப்பட்டால், பரபோலிக் ஒலி அமைப்பு பதிவிறக்கங்களுக்கான செதுக்கப்பட்ட சிறுபட மேம்பட்ட "
+"விருப்பத்தை தானாகவே இயக்கும்"
+
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:94
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:380
+msgid ""
+"If enabled, Parabolic will download the appropriate video/audio format for "
+"the selected quality without converting to other formats. (You will be "
+"unable to select a file format)"
+msgstr ""
+"இயக்கப்பட்டால், மற்ற வடிவங்களுக்கு மாற்றாமல், தேர்ந்தெடுக்கப்பட்ட தரத்திற்கு பொருத்தமான வீடியோ/"
+"ஆடியோ வடிவமைப்பை பரபோலிக் பதிவிறக்கும். (நீங்கள் ஒரு கோப்பு வடிவமைப்பைத் தேர்ந்தெடுக்க "
+"முடியாது)"
+
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:47
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:31
+msgid ""
+"In combination with the trigger, completed notifications will only be shown "
+"if the window is not focused."
+msgstr ""
+"தூண்டுதலுடன் இணைந்து, சாளரம் கவனம் செலுத்தவில்லை என்றால் மட்டுமே நிறைவு செய்யப்பட்ட "
+"அறிவிப்புகள் காண்பிக்கப்படும்."
+
+#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:141
+#: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringDialog.xaml.cs:34
+#: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringDialog.xaml.cs:312
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:87
 #: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:40
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:5
 msgid "Keyring"
 msgstr "சாவி வளையம்"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:90
+#: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:49
+#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:68
+msgid "Keyring Credential"
+msgstr "சாவி வளைய நற்சான்றிதழ்"
+
+#: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringDialog.xaml.cs:37
+#: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:56
+msgid "Keyring Disabled"
+msgstr "சாவி வளையம் முடக்கப்பட்டது"
+
+#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:91
+#: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringDialog.xaml.cs:92
 msgid "Keyring locked"
 msgstr "சாவி வளையம் பூட்டப்பட்டது"
 
-#: ../../../Controllers/MainWindowController.cs:106
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:80
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:257
+msgid "Language Code Information"
+msgstr "மொழி குறியீடு தகவல்"
+
+#: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:89
+#: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:92
+#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:337
+msgid "Leave empty to download from start."
+msgstr "தொடக்கத்தில் இருந்து பதிவிறக்கம் செய்ய காலியாக விடவும்."
+
+#: ../../../Controllers/MainWindowController.cs:119
 msgid "List of supported sites"
 msgstr "ஆதரிக்கப்படும் தளங்களின் பட்டியல்"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:180
-#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:198
+#: ../../../../NickvisionTubeConverter.WinUI/Controls/DownloadRow.xaml.cs:194
+#, fuzzy
+msgid "Log"
+msgstr "உள்நுழை"
+
+#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:182
+#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:201
+#: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringDialog.xaml.cs:217
+#: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringDialog.xaml.cs:340
 msgid "Login"
 msgstr "உள்நுழை"
 
-#: ../../../Controllers/MainWindowController.cs:107
+#: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:81
+#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:319
+msgid "Make thumbnail square, useful when downloading music."
+msgstr "இசை பதிவிறக்கம் செய்யும் போது உபயோகமான சிறுபடவுரு சதுரத்தை உருவாக்கவும்."
+
+#: ../../../../NickvisionTubeConverter.WinUI/Controls/HistoryDialog.xaml.cs:38
+#: NickvisionTubeConverter.GNOME/Blueprints/history_dialog.blp:36
+msgid "Manage previously downloaded media."
+msgstr "முன்பு பதிவிறக்கம் செய்யப்பட்ட மீடியாவை நிர்வகிக்கவும்."
+
+#: ../../../Controllers/MainWindowController.cs:120
 msgid "Matrix Chat"
 msgstr "மேட்ரிக்ஸ் மன்றம்"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:433
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:69
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:163
+msgid "Max Connections Per Server (-x)"
+msgstr "ஒரு சேவையகத்திற்கு அதிகபட்ச இணைப்புகள் (-x)"
+
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:59
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:79
+msgid "Max Number of Active Downloads"
+msgstr "செயலில் உள்ள பதிவிறக்கங்களின் அதிகபட்ச எண்ணிக்கை"
+
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:428
+#: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:546
 msgid "Maximum Quality"
 msgstr "அதிகபட்ச தரம்"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:370
+#: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:85
+#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:331
+msgid ""
+"Media can possibly be cut inaccurately.\n"
+"Enabling this option will disable the use of aria2 as the downloader if it "
+"is enabled."
+msgstr ""
+"ஊடகங்கள் துல்லியமாக வெட்டப்படலாம்.\n"
+"இந்த விருப்பத்தை இயக்குவது, அது இயக்கப்பட்டிருந்தால், பதிவிறக்கியாக aria2 ஐப் "
+"பயன்படுத்துவது முடக்கப்படும்."
+
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:365
+#: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:44
+#: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:477
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:57
 msgid "Media URL"
 msgstr "ஊடகத்தின் URL"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:377
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:372
+#: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:500
 msgid "Media URL (Invalid)"
 msgstr "ஊடகத்தின் URL (செல்லாதது)"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:216
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:55
+msgid ""
+"Minimize to the system tray instead of quitting the application when the "
+"window is closed."
+msgstr ""
+
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:71
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:191
+msgid "Minimum Split Size (-k)"
+msgstr "குறைந்தபட்ச பிளவு அளவு (-k)"
+
+#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:219
+#: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringDialog.xaml.cs:48
+#: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringDialog.xaml.cs:276
 #: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:155
 msgid "Name"
 msgstr "பெயர்"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:226
+#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:229
+#: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringDialog.xaml.cs:282
 msgid "Name (Empty)"
 msgstr "பெயர் (காலி)"
 
-#: ../../../Controllers/MainWindowController.cs:108
-#: ../../../Controllers/MainWindowController.cs:110
+#: ../../../Controllers/MainWindowController.cs:325
+msgid "New update available."
+msgstr ""
+
+#: ../../../Controllers/MainWindowController.cs:121
+#: ../../../Controllers/MainWindowController.cs:123
 msgid "Nicholas Logozzo"
 msgstr "நிக்கோலஸ் லோகோசோ"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:251
-#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:314
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:276
+#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:254
+#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:317
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:269
+#: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringDialog.xaml.cs:178
+#: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringDialog.xaml.cs:255
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:190
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:180
 msgid "No"
 msgstr "இல்லை"
 
-#: ../../../Controllers/MainWindowController.cs:224
+#: ../../../Controllers/MainWindowController.cs:300
 msgid "No active internet connection"
 msgstr "செயலில் இணைய இணைப்பு இல்லை"
+
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:114
+#, fuzzy
+msgid "No Completed Downloads"
+msgstr "முடிக்கப்பட்ட பதிவிறக்கங்களை அழிக்கவும்"
+
+#: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringDialog.xaml.cs:43
+#: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:83
+msgid "No Credentials"
+msgstr "நற்சான்றிதழ்கள் இல்லை"
 
 #: ../../../Models/DownloadManager.cs:175
 msgid "No downloads running"
 msgstr "பதிவிறக்கங்கள் எதுவும் இயங்கவில்லை"
 
-#: ../../../Controllers/MainWindowController.cs:101
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:112
+#, fuzzy
+msgid "No Downloads Running"
+msgstr "பதிவிறக்கங்கள் எதுவும் இயங்கவில்லை"
+
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:130
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:271
+msgid "No File Selected"
+msgstr ""
+
+#: ../../../../NickvisionTubeConverter.WinUI/Controls/HistoryDialog.xaml.cs:41
+#: NickvisionTubeConverter.GNOME/Blueprints/history_dialog.blp:59
+msgid "No Previous Downloads"
+msgstr "முந்தைய பதிவிறக்கங்கள் இல்லை"
+
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:113
+#, fuzzy
+msgid "No Queued Downloads"
+msgstr "வரிசைப்படுத்தப்பட்ட பதிவிறக்கங்களை அழிக்கவும்"
+
+#: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:65
+#: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:68
+#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:195
+#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:229
+msgid "Number Titles"
+msgstr "எண் தலைப்புகள்"
+
+#: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:48
+#: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:60
+#: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:67
+#: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:70
+#: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:75
+#: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:79
+#: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:83
+#: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:87
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:45
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:53
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:57
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:62
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:68
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:76
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:96
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:99
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:103
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:107
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:110
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:114
+msgid "Off"
+msgstr ""
+
+#: ../../../../NickvisionTubeConverter.WinUI/Controls/AboutDialog.xaml.cs:30
+#: ../../../../NickvisionTubeConverter.WinUI/Controls/DownloadRow.xaml.cs:206
+msgid "OK"
+msgstr ""
+
+#: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:47
+#: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:59
+#: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:66
+#: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:69
+#: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:74
+#: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:78
+#: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:82
+#: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:86
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:44
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:52
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:56
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:61
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:67
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:75
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:95
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:98
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:102
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:106
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:109
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:113
+#, fuzzy
+msgid "On"
+msgstr "கோப்பைத் திறக்கவும்"
+
+#: ../../../../NickvisionTubeConverter.WinUI/Controls/DownloadRow.xaml.cs:65
+#: NickvisionTubeConverter.GNOME/Blueprints/download_row.blp:81
+msgid "Open File"
+msgstr "கோப்பைத் திறக்கவும்"
+
+#: ../../../../NickvisionTubeConverter.WinUI/Controls/DownloadRow.xaml.cs:66
+#: NickvisionTubeConverter.GNOME/Blueprints/download_row.blp:89
+msgid "Open Folder"
+msgstr "கோப்புறையைத் திறக்கவும்"
+
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:60
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:100
+msgid "Overwrite Existing Files"
+msgstr "ஏற்கனவே உள்ள கோப்புகளை மேலெழுதவும்"
+
+#: ../../../Controllers/MainWindowController.cs:114
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:124
 #: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.desktop.in:4
 #: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.metainfo.xml.in:6
 msgid "Parabolic"
 msgstr "பரபோலிக்"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:222
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:107
+msgid ""
+"Parabolic's documentation and support channels are accessible via the Help "
+"menu."
+msgstr ""
+
+#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:225
+#: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:52
+#: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringDialog.xaml.cs:54
+#: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringDialog.xaml.cs:279
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:76
 #: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:170
 #: NickvisionTubeConverter.GNOME/Blueprints/password_dialog.blp:52
 msgid "Password"
 msgstr "கடவுச்சொல்"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:233
+#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:236
+#: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringDialog.xaml.cs:287
 msgid "Password (Empty)"
 msgstr "கடவுச்சொல் (காலி)"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Controls/HistoryDialog.cs:69
+#: ../../../../NickvisionTubeConverter.GNOME/Controls/HistoryDialog.cs:68
+#: ../../../../NickvisionTubeConverter.WinUI/Controls/HistoryDialog.xaml.cs:69
 msgid "Play"
 msgstr "தொடங்கு"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:99
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:95
+#: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:254
 msgid "Playlist"
 msgstr "பாடல் பட்டியல்"
 
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:102
+#, fuzzy
+msgid "Preparing required tools..."
+msgstr "தயாராகிறது..."
+
 #: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:134
+#: ../../../../NickvisionTubeConverter.WinUI/Controls/DownloadRow.xaml.cs:95
 msgid "Preparing..."
 msgstr "தயாராகிறது..."
 
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:51
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:44
+msgid "Prevent Suspend"
+msgstr "இடைநிறுத்தத்தைத் தடுக்கவும்"
+
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:77
+msgid "PREVIEW"
+msgstr ""
+
 #: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:184
+#: ../../../../NickvisionTubeConverter.WinUI/Controls/DownloadRow.xaml.cs:124
 msgid "Processing..."
 msgstr "செயலாக்குகிறது..."
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:91
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:82
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:283
+msgid "Proxy URL"
+msgstr "ப்ராக்ஸி URL"
+
+#: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:56
+#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:119
+msgid "Quality"
+msgstr "தரம்"
+
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:115
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:116
+#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:159
+msgid "Queued"
+msgstr "வரிசையில் நிற்கிறது"
+
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:123
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:598
+#, fuzzy, csharp-format
+msgid "Remaining Downloads: {0}"
+msgstr "தோல்வியடைந்த பதிவிறக்கங்களை மீண்டும் முயற்சிக்கவும்"
+
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:104
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:420
+msgid "Remove Source Data"
+msgstr ""
+
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:99
+msgid "Report a Bug"
+msgstr ""
+
+#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:92
+#: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringDialog.xaml.cs:58
 msgid "Reset"
 msgstr "மீட்டமைக்கவும்"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:249
+#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:252
+#: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringDialog.xaml.cs:175
 msgid "Reset Keyring?"
 msgstr "சாவி வளையத்தை மீட்டமைக்கவா?"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:94
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:70
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:73
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:186
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:215
+msgid "Reset to default"
+msgstr "இயல்புநிலைக்கு மீட்டமைக்கவும்"
+
+#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:95
+#: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringDialog.xaml.cs:91
 msgid "Restart the app to unlock the keyring."
 msgstr "சாவி வலயத்தை திறக்க, பயன்பாட்டை மறுதொடக்கம் செய்யவும்."
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:457
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:177
+msgid "Restart To Apply Theme?"
+msgstr ""
+
+#: ../../../../NickvisionTubeConverter.WinUI/Controls/DownloadRow.xaml.cs:68
+#: NickvisionTubeConverter.GNOME/Blueprints/download_row.blp:101
+msgid "Retry Download"
+msgstr "பதிவிறக்க மீண்டும் முயற்சிக்கவும்"
+
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:93
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:120
+#: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:26
+#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:209
+msgid "Retry Failed Downloads"
+msgstr "தோல்வியடைந்த பதிவிறக்கங்களை மீண்டும் முயற்சிக்கவும்"
+
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:453
+#: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:61
+#: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:578
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:146
 msgid "Save Folder"
 msgstr "கோப்புறையை சேமி"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:471
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:467
+#: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:590
 msgid "Save Folder (Invalid)"
 msgstr "கோப்புறையைச் சேமி (செல்லாதது)"
 
+#: ../../../../NickvisionTubeConverter.WinUI/Controls/HistoryDialog.xaml.cs:40
+#: NickvisionTubeConverter.GNOME/Blueprints/history_dialog.blp:49
+#, fuzzy
+msgid "Search history"
+msgstr "வரலாற்றை அழிக்கவும்"
+
+#: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:71
+#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:247
+msgid "Select All"
+msgstr "அனைத்தையும் தெரிவுசெய்"
+
 #: ../../../../NickvisionTubeConverter.GNOME/Views/PreferencesDialog.cs:206
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:86
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:304
 msgid "Select Cookies File"
 msgstr "குக்கீகள் கோப்பைத் தேர்ந்தெடுக்கவும்"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:514
+#: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:64
+#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:183
+msgid "Select items to download or change file names."
+msgstr "கோப்புப் பெயர்களைப் பதிவிறக்க அல்லது மாற்ற உருப்படிகளைத் தேர்ந்தெடுக்கவும்."
+
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:510
+#: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:62
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:153
 msgid "Select Save Folder"
 msgstr "சேமி கோப்புறையை தேர்ந்தெடுக்கவும்"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:274
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:89
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:127
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:34
+msgid "Settings"
+msgstr ""
+
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:126
+msgid "Show Window"
+msgstr ""
+
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:267
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:188
 msgid ""
 "Some downloads are still in progress.\n"
 "Are you sure you want to close Parabolic and stop the running downloads?"
@@ -339,18 +1127,63 @@ msgstr ""
 msgid "Some downloads finished with errors!"
 msgstr "சில பதிவிறக்கங்கள் பிழைகளுடன் முடிந்தது!"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:459
+#: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:73
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:63
+#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:295
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:131
+msgid "Speed Limit"
+msgstr "வேக வரம்பு"
+
+#: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:76
+#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:306
+msgid "Split Chapters"
+msgstr "அத்தியாயங்களைப் பிரிக்கவும்"
+
+#: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:77
+#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:307
+msgid "Splits the video into multiple smaller ones based on its chapters."
+msgstr "காணொளியை அதன் அத்தியாயங்களின் அடிப்படையில் பல சிறியதாகப் பிரிக்கிறது."
+
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:77
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:238
+#, fuzzy
+msgid "SponsorBlock Information (opens in a web browser)"
+msgstr "SponsorBlock தகவல்"
+
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:455
+#: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:88
+#: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:579
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:336
 msgid "Start Time"
 msgstr "ஆரம்பிக்கும் நேரம்"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:476
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:472
+#: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:594
 msgid "Start Time (Invalid)"
 msgstr "தொடக்க நேரம் (செல்லாதது)"
 
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:91
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:111
+#: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:21
+#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:129
+msgid "Stop All Downloads"
+msgstr "அனைத்து பதிவிறக்கங்களையும் நிறுத்து"
+
+#: ../../../../NickvisionTubeConverter.WinUI/Controls/DownloadRow.xaml.cs:63
+#: NickvisionTubeConverter.GNOME/Blueprints/download_row.blp:66
+msgid "Stop Download"
+msgstr "பதிவிறக்கத்தை நிறுத்து"
+
 #: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:218
+#: ../../../../NickvisionTubeConverter.WinUI/Controls/DownloadRow.xaml.cs:153
 msgid "Stopped"
 msgstr "நிறுத்தப்பட்டது"
+
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:78
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:229
+#, fuzzy
+msgid "Subtitle Languages"
+msgstr "வசன மொழிகள் (செல்லாதது)"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/PreferencesDialog.cs:182
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:245
@@ -358,14 +1191,16 @@ msgid "Subtitle Languages (Comma-Separated)"
 msgstr "வசன மொழிகள் (கமாவால் பிரிக்கப்பட்டவை)"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/PreferencesDialog.cs:191
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:238
 msgid "Subtitle Languages (Invalid)"
 msgstr "வசன மொழிகள் (செல்லாதது)"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:201
+#: ../../../../NickvisionTubeConverter.WinUI/Controls/DownloadRow.xaml.cs:139
 msgid "Success"
 msgstr "வெற்றி"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:521
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:523
 msgid ""
 "The authors of Nickvision Parabolic are not responsible/liable for any "
 "misuse of this program that may violate local copyright/DMCA laws. Users use "
@@ -375,11 +1210,36 @@ msgstr ""
 "நிக்விஷன் பரபோலிக் இன் ஆசிரியர்கள் பொறுப்பல்ல/பொறுப்பேற்க மாட்டார்கள். பயனர்கள் இந்த "
 "பயன்பாட்டை தங்கள் சொந்த ஆபத்தில் பயன்படுத்துகின்றனர்."
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:312
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:72
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:192
+msgid "The minimum size of which to split a file (in MiB)."
+msgstr "கோப்பைப் பிரிப்பதற்கான குறைந்தபட்ச அளவு (MiB - மெபிபைட்/வினாடி இல்)."
+
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:38
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:18
+msgid "Theme"
+msgstr "தீம்"
+
+#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:315
+#: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringDialog.xaml.cs:253
 msgid "This action is irreversible. Are you sure you want to delete it?"
 msgstr "இந்த நடவடிக்கை மீள முடியாதது. நிச்சயமாக அதை நீக்க வேண்டுமா?"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:249
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:64
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:132
+msgid ""
+"This limit (in KiB/s) is applied to downloads that have speed limit enabled. "
+"Changing the value doesn't affect already running downloads."
+msgstr ""
+"வேக வரம்பு இயக்கப்பட்ட பதிவிறக்கங்களுக்கு இந்த வரம்பு (KiB/s - கிலோபிட்/வினாடி இல்) "
+"பயன்படுத்தப்படும். மதிப்பை மாற்றுவது ஏற்கனவே இயங்கும் பதிவிறக்கங்களைப் பாதிக்காது."
+
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:103
+msgid "This may take a while"
+msgstr ""
+
+#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:252
+#: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringDialog.xaml.cs:176
 msgid ""
 "This will delete the previous keyring removing all passwords with it. This "
 "action is irreversible."
@@ -387,276 +1247,193 @@ msgstr ""
 "இது அனைத்து கடவுச்சொற்களையும் அகற்றும் முந்தைய சாவி வலயத்தை நீக்கும். இந்த நடவடிக்கை மீள "
 "முடியாதது."
 
-#: ../../../Controllers/MainWindowController.cs:114
+#: ../../../Controllers/MainWindowController.cs:127
 msgid "translator-credits"
 msgstr "K.B.Dharun Krishna <kbdharunkrishna@gmail.com>, 2023"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:285
+#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:288
+#: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringDialog.xaml.cs:160
 msgid "Unable to disable keyring."
 msgstr "சாவி வலயத்தை முடக்க முடியவில்லை."
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:266
+#: ../../../Controllers/MainWindowController.cs:342
+msgid "Unable to download and install update."
+msgstr ""
+
+#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:269
+#: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringDialog.xaml.cs:194
 msgid "Unable to reset keyring."
 msgstr "சாவி வலயத்தை மீட்டமைக்க முடியவில்லை."
 
-#: ../../../Controllers/MainWindowController.cs:187
-#: ../../../Controllers/MainWindowController.cs:198
+#: ../../../Controllers/MainWindowController.cs:274
 msgid "Unable to setup dependencies. Please restart the app and try again."
 msgstr "சார்புகளை அமைக்க முடியவில்லை. பயன்பாட்டை மறுதொடக்கம் செய்து மீண்டும் முயற்சிக்கவும்."
 
-#: ../../../Controllers/MainWindowController.cs:206
+#: ../../../../NickvisionTubeConverter.WinUI/Controls/MediaRow.xaml.cs:32
+#: NickvisionTubeConverter.GNOME/Blueprints/media_row.blp:16
+msgid "Undo Title Editing"
+msgstr "தலைப்பு திருத்தத்தை செயல்தவிர்க்கவும்"
+
+#: ../../../Controllers/MainWindowController.cs:282
 msgid "Unlock Keyring"
 msgstr "சாவி வளையத்தைத் திறக்கவும்"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:218
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:87
+#, fuzzy
+msgid "Unset Cookies File"
+msgstr "குக்கீகள் கோப்பைத் தேர்ந்தெடுக்கவும்"
+
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:296
+msgid "Update"
+msgstr ""
+
+#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:221
+#: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringDialog.xaml.cs:50
+#: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringDialog.xaml.cs:277
 #: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:160
 msgid "URL"
 msgstr "URL"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:238
+#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:241
+#: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringDialog.xaml.cs:291
 msgid "URL (Invalid)"
 msgstr "URL (செல்லாதது)"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:306
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:65
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:153
+msgid "Use aria2"
+msgstr "aria2 ஐப் பயன்படுத்தவும்"
+
+#: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringDialog.xaml.cs:38
+#: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:57
+#, fuzzy
+msgid ""
+"Use keyring to safely store credentials for sites that require a user name "
+"and password to login."
+msgstr ""
+"பயனர்பெயர் மற்றும் கடவுச்சொல்லுடன் உள்நுழைய வேண்டிய தளங்களுக்கான சான்றுகளை பாதுகாப்பாகச் "
+"சேமிக்க சாவி வளையத்தைப் பயன்படுத்தவும்."
+
+#: ../../../Controllers/AddDownloadDialogController.cs:149
 msgid "Use manual credential"
 msgstr "கைமுறை நற்சான்றிதழைப் பயன்படுத்தவும்"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:220
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:74
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:221
+msgid "Use SponsorBlock for YouTube"
+msgstr "YouTubeக்கு SponsorBlock ஐப் பயன்படுத்தவும்"
+
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:37
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:15
+msgid "User Interface"
+msgstr "பயனர் இடைமுகம்"
+
+#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:234
+#: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringDialog.xaml.cs:286
+#, fuzzy
+msgid "User Name (Empty)"
+msgstr "பயனர் பெயர் (காலி)"
+
+#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:223
+#: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:50
+#: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringDialog.xaml.cs:52
+#: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringDialog.xaml.cs:278
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:72
 #: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:165
 msgid "Username"
 msgstr "பயனர் பெயர்"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:231
-msgid "Username (Empty)"
-msgstr "பயனர் பெயர் (காலி)"
-
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:373
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:368
+#: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:54
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:82
 msgid "Validate"
 msgstr "சரிபார்க்கவும்"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:402
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:397
+#: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:527
 msgid "Video"
 msgstr "காணொளி"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:120
-#: NickvisionTubeConverter.GNOME/Blueprints/download_row.blp:39
-msgid "Waiting..."
-msgstr "காத்திருக்கிறது..."
-
-#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:85
-msgid "Worst"
-msgstr "மோசமான"
-
-#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:254
-#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:317
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:279
-msgid "Yes"
-msgstr "ஆம்"
-
-#: ../../../Controllers/PreferencesViewController.cs:264
-#: ../../../Models/Download.cs:301
-msgctxt "subtitle"
-msgid "all"
-msgstr ""
-
-#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:24
-#: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:25
-msgid "Back"
-msgstr "திரும்பவும்"
-
-#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:63
-msgid "Authenticate"
-msgstr "அங்கீகரிக்கவும்"
-
-#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:68
-msgid "Keyring Credential"
-msgstr "சாவி வளைய நற்சான்றிதழ்"
-
-#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:112
-msgid "File Type"
-msgstr "கோப்பு வகை"
-
-#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:119
-msgid "Quality"
-msgstr "தரம்"
-
-#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:126
-msgid "Audio Language"
-msgstr "ஒலி மொழி"
-
-#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:131
-msgid "Download Subtitle"
-msgstr "வசனத்தைப் பதிவிறக்கவும்"
-
-#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:183
-msgid "Select items to download or change file names."
-msgstr "கோப்புப் பெயர்களைப் பதிவிறக்க அல்லது மாற்ற உருப்படிகளைத் தேர்ந்தெடுக்கவும்."
-
-#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:195
-#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:229
-msgid "Number Titles"
-msgstr "எண் தலைப்புகள்"
-
-#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:208
-#: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:13
-msgid "Download"
-msgstr "பதிவிறக்கு"
-
-#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:247
-msgid "Select All"
-msgstr "அனைத்தையும் தெரிவுசெய்"
-
-#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:254
-msgid "Deselect All"
-msgstr "அனைத்து தெரிவுகளையும் நிராகரி"
-
-#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:295
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:131
-msgid "Speed Limit"
-msgstr "வேக வரம்பு"
-
-#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:306
-msgid "Split Chapters"
-msgstr "அத்தியாயங்களைப் பிரிக்கவும்"
-
-#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:307
-msgid "Splits the video into multiple smaller ones based on its chapters."
-msgstr "காணொளியை அதன் அத்தியாயங்களின் அடிப்படையில் பல சிறியதாகப் பிரிக்கிறது."
-
-#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:318
-msgid "Crop Thumbnail"
-msgstr "சிறுபடத்தை வெட்டவும்"
-
-#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:319
-msgid "Make thumbnail square, useful when downloading music."
-msgstr "இசை பதிவிறக்கம் செய்யும் போது உபயோகமான சிறுபடவுரு சதுரத்தை உருவாக்கவும்."
-
-#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:330
-msgid "Download Specific Timeframe"
-msgstr "குறிப்பிட்ட காலக்கெடுவைப் பதிவிறக்கவும்"
-
-#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:331
-msgid ""
-"Media can possibly be cut inaccurately.\n"
-"Enabling this option will disable the use of aria2 as the downloader if it "
-"is enabled."
-msgstr ""
-"ஊடகங்கள் துல்லியமாக வெட்டப்படலாம்.\n"
-"இந்த விருப்பத்தை இயக்குவது, அது இயக்கப்பட்டிருந்தால், பதிவிறக்கியாக aria2 ஐப் "
-"பயன்படுத்துவது முடக்கப்படும்."
-
-#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:337
-msgid "Leave empty to download from start."
-msgstr "தொடக்கத்தில் இருந்து பதிவிறக்கம் செய்ய காலியாக விடவும்."
-
-#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:342
-msgid "Leave empty to download to end."
-msgstr "இறுதிவரை பதிவிறக்கம் செய்ய காலியாக விடவும்."
-
+#: ../../../../NickvisionTubeConverter.WinUI/Controls/DownloadRow.xaml.cs:64
+#: ../../../../NickvisionTubeConverter.WinUI/Controls/DownloadRow.xaml.cs:67
 #: NickvisionTubeConverter.GNOME/Blueprints/download_row.blp:51
 msgid "View Log"
 msgstr "பதிவை பார்க்கவும்"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/download_row.blp:66
-msgid "Stop Download"
-msgstr "பதிவிறக்கத்தை நிறுத்து"
+#: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:120
+#: ../../../../NickvisionTubeConverter.WinUI/Controls/DownloadRow.xaml.cs:62
+#: ../../../../NickvisionTubeConverter.WinUI/Controls/DownloadRow.xaml.cs:82
+#: NickvisionTubeConverter.GNOME/Blueprints/download_row.blp:39
+msgid "Waiting..."
+msgstr "காத்திருக்கிறது..."
 
-#: NickvisionTubeConverter.GNOME/Blueprints/download_row.blp:81
-msgid "Open File"
-msgstr "கோப்பைத் திறக்கவும்"
+#: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:81
+#: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:39
+msgid "Worst"
+msgstr "மோசமான"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/download_row.blp:89
-msgid "Open Folder"
-msgstr "கோப்புறையைத் திறக்கவும்"
-
-#: NickvisionTubeConverter.GNOME/Blueprints/download_row.blp:101
-msgid "Retry Download"
-msgstr "பதிவிறக்க மீண்டும் முயற்சிக்கவும்"
-
-#: NickvisionTubeConverter.GNOME/Blueprints/download_row.blp:145
-msgid "Copy to Clipboard"
-msgstr "கிளிப்போர்டுக்கு நகலெடுக்கவும்"
-
-#: NickvisionTubeConverter.GNOME/Blueprints/history_dialog.blp:18
-msgid "Clear History"
-msgstr "வரலாற்றை அழிக்கவும்"
-
-#: NickvisionTubeConverter.GNOME/Blueprints/history_dialog.blp:31
-#: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:45
-#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:6
-msgid "History"
-msgstr "வரலாறு"
-
-#: NickvisionTubeConverter.GNOME/Blueprints/history_dialog.blp:36
-msgid "Manage previously downloaded media."
-msgstr "முன்பு பதிவிறக்கம் செய்யப்பட்ட மீடியாவை நிர்வகிக்கவும்."
-
-#: NickvisionTubeConverter.GNOME/Blueprints/history_dialog.blp:49
-msgid "Search..."
-msgstr "தேடுங்கள்..."
-
-#: NickvisionTubeConverter.GNOME/Blueprints/history_dialog.blp:59
-msgid "No Previous Downloads"
-msgstr "முந்தைய பதிவிறக்கங்கள் இல்லை"
-
-#: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:56
-msgid "Keyring Disabled"
-msgstr "சாவி வளையம் முடக்கப்பட்டது"
-
-#: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:57
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:178
+#, csharp-format
 msgid ""
-"Use keyring to safely store credentials for sites that require login with "
-"username and password."
+"Would you like to restart {0} to apply the new theme?\n"
+"Any unsaved work will be lost."
 msgstr ""
-"பயனர்பெயர் மற்றும் கடவுச்சொல்லுடன் உள்நுழைய வேண்டிய தளங்களுக்கான சான்றுகளை பாதுகாப்பாகச் "
-"சேமிக்க சாவி வளையத்தைப் பயன்படுத்தவும்."
 
-#: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:59
-msgid "Enable"
-msgstr "இயக்கு"
+#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:257
+#: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:320
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:272
+#: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringDialog.xaml.cs:177
+#: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringDialog.xaml.cs:254
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:189
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:179
+msgid "Yes"
+msgstr "ஆம்"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:83
-msgid "No Credentials"
-msgstr "நற்சான்றிதழ்கள் இல்லை"
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:48
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:34
+msgctxt "CompletedNotification"
+msgid "For each download"
+msgstr "ஒவ்வொரு பதிவிறக்கத்திற்கும்"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:105
-msgid "Disable Keyring"
-msgstr "சாவி வளையத்தை முடக்கு"
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:50
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:34
+msgctxt "CompletedNotification"
+msgid "Never"
+msgstr "ஒருபோதும் இல்லை"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:115
-msgid "Add Login"
-msgstr "உள்நுழைவைச் சேர்க்கவும்"
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:49
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:34
+msgctxt "CompletedNotification"
+msgid "When all downloads finish"
+msgstr "அனைத்து பதிவிறக்கங்களும் முடிந்ததும்"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:130
-msgid "Disable Keyring?"
-msgstr "சாவி வளையத்தை முடக்கவா?"
-
-#: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:131
-msgid ""
-"Disabling the keyring will delete all data currently stored inside. Are you "
-"sure you want to disable it?"
+#: ../../../Controllers/PreferencesViewController.cs:286
+#: ../../../Models/Download.cs:303
+msgctxt "subtitle"
+msgid "all"
 msgstr ""
-"சாவி வளையத்தை முடக்குவது, தற்போது உள்ளே சேமிக்கப்பட்டுள்ள எல்லா தரவையும் நீக்கிவிடும். "
-"நிச்சயமாக அதை முடக்க விரும்புகிறீர்களா?"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:133
-msgid "Disable"
-msgstr "முடக்கு"
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:41
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:20
+msgctxt "Theme"
+msgid "Dark"
+msgstr "இருள்"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:182
-#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:52
-msgid "Add"
-msgstr "சேர்"
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:40
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:20
+msgctxt "Theme"
+msgid "Light"
+msgstr "ஒளி"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:194
-msgid "Delete"
-msgstr "நீக்கு"
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:42
+#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:20
+msgctxt "Theme"
+msgid "System"
+msgstr "அமைப்பு"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/media_row.blp:16
-msgid "Undo Title Editing"
-msgstr "தலைப்பு திருத்தத்தை செயல்தவிர்க்கவும்"
+#: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:342
+msgid "Leave empty to download to end."
+msgstr "இறுதிவரை பதிவிறக்கம் செய்ய காலியாக விடவும்."
 
 #: NickvisionTubeConverter.GNOME/Blueprints/password_dialog.blp:17
 msgid "Migrate to Secret-Secured Keyring"
@@ -680,79 +1457,9 @@ msgstr "திறக்கவும்"
 msgid "Preferences"
 msgstr "விருப்பங்கள்"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:15
-msgid "User Interface"
-msgstr "பயனர் இடைமுகம்"
-
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:18
-msgid "Theme"
-msgstr "தீம்"
-
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:20
-msgctxt "Theme"
-msgid "Light"
-msgstr "ஒளி"
-
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:20
-msgctxt "Theme"
-msgid "Dark"
-msgstr "இருள்"
-
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:20
-msgctxt "Theme"
-msgid "System"
-msgstr "அமைப்பு"
-
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:30
-msgid "Completed Notification Trigger"
-msgstr "நிறைவு செய்யப்பட்ட அறிவிப்பு தூண்டுதல்"
-
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:31
-msgid ""
-"In combination with the trigger, completed notifications will only be shown "
-"if the window is not focused."
-msgstr ""
-"தூண்டுதலுடன் இணைந்து, சாளரம் கவனம் செலுத்தவில்லை என்றால் மட்டுமே நிறைவு செய்யப்பட்ட "
-"அறிவிப்புகள் காண்பிக்கப்படும்."
-
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:34
-msgctxt "CompletedNotification"
-msgid "For each download"
-msgstr "ஒவ்வொரு பதிவிறக்கத்திற்கும்"
-
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:34
-msgctxt "CompletedNotification"
-msgid "When all downloads finish"
-msgstr "அனைத்து பதிவிறக்கங்களும் முடிந்ததும்"
-
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:34
-msgctxt "CompletedNotification"
-msgid "Never"
-msgstr "ஒருபோதும் இல்லை"
-
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:44
-msgid "Prevent Suspend"
-msgstr "இடைநிறுத்தத்தைத் தடுக்கவும்"
-
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:59
-msgid "Allow Running In Background"
-msgstr "பின்னணியில் இயங்குவதை அனுமதிக்கவும்"
-
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:60
 msgid "Hide the window instead of quitting if there are downloads running."
 msgstr "பதிவிறக்கங்கள் இயங்கினால் வெளியேறுவதற்குப் பதிலாக சாளரத்தை மறைக்கவும்."
-
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:76
-msgid "Downloader"
-msgstr "பதிவிறக்குபவர்"
-
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:79
-msgid "Max Number of Active Downloads"
-msgstr "செயலில் உள்ள பதிவிறக்கங்களின் அதிகபட்ச எண்ணிக்கை"
-
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:100
-msgid "Overwrite Existing Files"
-msgstr "ஏற்கனவே உள்ள கோப்புகளை மேலெழுதவும்"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:115
 msgid "Limit Filename Characters"
@@ -763,185 +1470,9 @@ msgid "Restricts characters in filenames to only those supported by Windows."
 msgstr ""
 "விண்டோஸால் ஆதரிக்கப்படும் கோப்புப் பெயர்களில் உள்ள எழுத்துக்களை மட்டும் கட்டுப்படுத்துகிறது."
 
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:132
-msgid ""
-"This limit (in KiB/s) is applied to downloads that have speed limit enabled. "
-"Changing the value doesn't affect already running downloads."
-msgstr ""
-"வேக வரம்பு இயக்கப்பட்ட பதிவிறக்கங்களுக்கு இந்த வரம்பு (KiB/s - கிலோபிட்/வினாடி இல்) "
-"பயன்படுத்தப்படும். மதிப்பை மாற்றுவது ஏற்கனவே இயங்கும் பதிவிறக்கங்களைப் பாதிக்காது."
-
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:153
-msgid "Use aria2"
-msgstr "aria2 ஐப் பயன்படுத்தவும்"
-
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:154
-msgid ""
-"Enable to use aria2 downloader. It can be faster, but you will not see "
-"download progress."
-msgstr ""
-"aria2 பதிவிறக்குபவரைப் பயன்படுத்த இயக்கு. இது வேகமாக இருக்கலாம், ஆனால் நீங்கள் பதிவிறக்க "
-"முன்னேற்றத்தைக் காண மாட்டீர்கள்."
-
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:163
-msgid "Max Connections Per Server (-x)"
-msgstr "ஒரு சேவையகத்திற்கு அதிகபட்ச இணைப்புகள் (-x)"
-
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:186
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:215
-msgid "Reset to default"
-msgstr "இயல்புநிலைக்கு மீட்டமைக்கவும்"
-
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:191
-msgid "Minimum Split Size (-k)"
-msgstr "குறைந்தபட்ச பிளவு அளவு (-k)"
-
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:192
-msgid "The minimum size of which to split a file (in MiB)."
-msgstr "கோப்பைப் பிரிப்பதற்கான குறைந்தபட்ச அளவு (MiB - மெபிபைட்/வினாடி இல்)."
-
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:221
-msgid "Use SponsorBlock for YouTube"
-msgstr "YouTubeக்கு SponsorBlock ஐப் பயன்படுத்தவும்"
-
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:238
-#, fuzzy
-msgid "SponsorBlock Information (opens in a web browser)"
-msgstr "SponsorBlock தகவல்"
-
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:257
-msgid "Language Code Information"
-msgstr "மொழி குறியீடு தகவல்"
-
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:272
-#, fuzzy
-msgid ""
-"Different sites can use different language code formats for the same "
-"language. You may encounter one of the following three types: two-letter, "
-"two-letter with region, or three-letter. For example, \"en\", \"en-US\" and "
-"\"eng\" are all used for English.\n"
-"Please specify all valid codes for your languages for the best results. Auto-"
-"generated subtitles will also be downloaded if available.\n"
-"\n"
-"You can specify \"all\" instead to download all subtitles, but without auto-"
-"generated ones."
-msgstr ""
-"வெவ்வேறு தளங்கள் ஒரே மொழிக்கு வெவ்வேறு மொழி குறியீடு வடிவங்களைப் பயன்படுத்தலாம். "
-"பின்வரும் மூன்று வகைகளில் ஒன்றை நீங்கள் சந்திக்கலாம்: இரண்டு எழுத்து, பகுதியுடன் கூடிய "
-"இரண்டு எழுத்து அல்லது மூன்றெழுத்து. எடுத்துக்காட்டாக, \"en\", \"en-US\" மற்றும் "
-"\"eng\" அனைத்தும் ஆங்கிலத்திற்குப் பயன்படுத்தப்படுகின்றன.\n"
-"\n"
-"சிறந்த முடிவுகளுக்கு உங்கள் மொழிகளுக்கான அனைத்து சரியான குறியீடுகளையும் குறிப்பிடவும்."
-
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:283
-msgid "Proxy URL"
-msgstr "ப்ராக்ஸி URL"
-
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:292
-msgid "Cookies File"
-msgstr "குக்கீகள் கோப்பு"
-
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:293
-msgid ""
-"A cookies file can be provided to yt-dlp to allow downloading media that "
-"requires a login."
-msgstr ""
-"உள்நுழைவு தேவைப்படும் மீடியாவைப் பதிவிறக்க அனுமதிக்க குக்கீகள் கோப்பு yt-dlp க்கு "
-"வழங்கப்படலாம்."
-
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:314
 msgid "Clear Cookies File"
 msgstr "குக்கீகள் கோப்பை அழிக்கவும்"
-
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:324
-msgid "Cookies File Information"
-msgstr "குக்கீகள் கோப்பு தகவல்"
-
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:339
-msgid ""
-"Cookies can be passed to yt-dlp in the form of TXT files. Export cookies "
-"from your browser using the following extensions (use at your own risk):"
-msgstr ""
-"TXT கோப்புகளின் வடிவத்தில் குக்கீகளை yt-dlp க்கு அனுப்பலாம். பின்வரும் நீட்டிப்புகளைப் "
-"பயன்படுத்தி உங்கள் உலாவியில் இருந்து குக்கீகளை ஏற்றுமதி செய்யவும் (உங்கள் சொந்த ஆபத்தில் "
-"பயன்படுத்தவும்):"
-
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:376
-msgid "Converter"
-msgstr "மாற்றி"
-
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:379
-msgid "Disallow Conversions"
-msgstr "மாற்றங்களை அனுமதிக்காதே"
-
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:380
-msgid ""
-"If enabled, Parabolic will download the appropriate video/audio format for "
-"the selected quality without converting to other formats. (You will be "
-"unable to select a file format)"
-msgstr ""
-"இயக்கப்பட்டால், மற்ற வடிவங்களுக்கு மாற்றாமல், தேர்ந்தெடுக்கப்பட்ட தரத்திற்கு பொருத்தமான வீடியோ/"
-"ஆடியோ வடிவமைப்பை பரபோலிக் பதிவிறக்கும். (நீங்கள் ஒரு கோப்பு வடிவமைப்பைத் தேர்ந்தெடுக்க "
-"முடியாது)"
-
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:395
-msgid "Embed Metadata"
-msgstr "மெட்டாடேட்டாவை உட்பொதிக்கவும்"
-
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:404
-msgid "Crop Audio Thumbnails"
-msgstr "ஒலி அமைப்பு சிறுபடங்களை செதுக்கு"
-
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:405
-msgid ""
-"If enabled, Parabolic will automatically turn on the crop thumbnail advanced "
-"option for audio downloads"
-msgstr ""
-"இயக்கப்பட்டால், பரபோலிக் ஒலி அமைப்பு பதிவிறக்கங்களுக்கான செதுக்கப்பட்ட சிறுபட மேம்பட்ட "
-"விருப்பத்தை தானாகவே இயக்கும்"
-
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:420
-msgid "Remove Source Data"
-msgstr ""
-
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:421
-#, fuzzy
-msgid ""
-"Clear metadata fields containing the URL and other identifying information "
-"of the media source"
-msgstr ""
-"ஊடகம் மூலத்திற்கு வழிவகுக்கும் URL மற்றும் மற்றொரு தரவைக் கொண்ட மெட்டாடேட்டா புலங்களை "
-"அழிக்கவும்"
-
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:437
-msgid "Embed Chapters"
-msgstr "அத்தியாயங்களை உட்பொதிக்கவும்"
-
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:452
-#, fuzzy
-msgid "Embed Subtitle"
-msgstr "வசனம்"
-
-#: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:453
-msgid ""
-"If disabled or if embedding fails, downloaded subtitle will be saved to a "
-"separate file instead"
-msgstr ""
-
-#: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:21
-#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:129
-msgid "Stop All Downloads"
-msgstr "அனைத்து பதிவிறக்கங்களையும் நிறுத்து"
-
-#: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:26
-#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:209
-msgid "Retry Failed Downloads"
-msgstr "தோல்வியடைந்த பதிவிறக்கங்களை மீண்டும் முயற்சிக்கவும்"
-
-#: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:31
-#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:169
-msgid "Clear Queued Downloads"
-msgstr "வரிசைப்படுத்தப்பட்ட பதிவிறக்கங்களை அழிக்கவும்"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:37
 msgid "Application"
@@ -951,11 +1482,6 @@ msgstr "பயன்பாடு"
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:10
 msgid "Keyboard Shortcuts"
 msgstr "விசைப்பலகை குறுக்குவழிகள்"
-
-#: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:60
-#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:11
-msgid "Help"
-msgstr "உதவி"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:65
 msgid "Quit"
@@ -973,34 +1499,14 @@ msgstr "பதிவிறக்கத்தைச் சேர் (Ctrl+N)"
 msgid "Main Menu"
 msgstr "முதன்மை பட்டியல்"
 
-#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:77
-msgid "Download Media"
-msgstr "ஊடகத்தைப் பதிவிறக்கவும்"
-
-#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:78
-msgid "Add a video, audio, or playlist URL to start downloading"
-msgstr "பதிவிறக்கம் செய்ய, காணொளி, ஒலி அமைவு அல்லது பாடல் பட்டியல் URL ஐச் சேர்க்கவும்"
-
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:134
 msgid "Stop All"
 msgstr "அனைத்தையும் நிறுத்து"
-
-#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:159
-msgid "Queued"
-msgstr "வரிசையில் நிற்கிறது"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:173
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:221
 msgid "Clear"
 msgstr "தெளிவாக்கு"
-
-#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:198
-msgid "Completed"
-msgstr "முடிக்கப்பட்டது"
-
-#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:217
-msgid "Clear Completed Downloads"
-msgstr "முடிக்கப்பட்ட பதிவிறக்கங்களை அழிக்கவும்"
 
 #: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.desktop.in:11
 msgid "YouTube;Downloader;ytdlp;Nickvision;Tube;Converter;"
@@ -1025,6 +1531,9 @@ msgstr "- ஒரே நேரத்தில் பல பதிவிறக்�
 #: NickvisionTubeConverter.Shared/org.nickvision.tubeconverter.metainfo.xml.in:13
 msgid "— Supports downloading metadata and video subtitles"
 msgstr "— மெட்டாடேட்டா மற்றும் காணொளி வசனங்களைப் பதிவிறக்குவதை ஆதரிக்கிறது"
+
+#~ msgid "Search..."
+#~ msgstr "தேடுங்கள்..."
 
 #~ msgid "Remove data about media source"
 #~ msgstr "ஊடக மூலத்தை பற்றிய தரவை அகற்று"
@@ -1076,24 +1585,14 @@ msgstr "— மெட்டாடேட்டா மற்றும் காண
 #~ "ஃபியோடர் சோபோலெவ் {1}\n"
 #~ "DaPigGuy {2}"
 
-#, fuzzy
-#~ msgid "Open"
-#~ msgstr "கோப்பைத் திறக்கவும்"
-
 #~ msgid "Credential"
 #~ msgstr "நற்சான்றிதழ்"
-
-#~ msgid "Credentials"
-#~ msgstr "சான்றுகள்"
 
 #~ msgid "Manage credentials in your keyring."
 #~ msgstr "உங்கள் சாவி வளையத்தில் நற்சான்றிதழ்களை நிர்வகிக்கவும்."
 
 #~ msgid "Add Credential"
 #~ msgstr "நற்சான்றிதழ் சேர்க்கவும்"
-
-#~ msgid "Apply"
-#~ msgstr "விண்ணப்பிக்கவும்"
 
 #~ msgid "youtube"
 #~ msgstr "யூடியூப் (YouTube)"
