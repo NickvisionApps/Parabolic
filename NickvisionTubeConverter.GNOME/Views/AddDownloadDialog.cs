@@ -433,6 +433,7 @@ public partial class AddDownloadDialog : Adw.Window
             }
             else
             {
+                _downloadTimeframeRow.SetVisible(_controller.MediaList[0].Duration > 0);
                 var row = new MediaRow(_controller.MediaList[0], _controller.LimitCharacters);
                 row.SetActivatesDefault(true);
                 _mediaRows.Add(row);

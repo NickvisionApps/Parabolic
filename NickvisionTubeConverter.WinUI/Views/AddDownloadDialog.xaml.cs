@@ -434,7 +434,7 @@ public sealed partial class AddDownloadDialog : ContentDialog
         {
             CardDownloadTimeframe.IsExpanded = false;
         }
-        CardDownloadTimeframe.IsEnabled = !TglSpeedLimit.IsOn && _controller.MediaList.Count == 1;
+        CardDownloadTimeframe.IsEnabled = !TglSpeedLimit.IsOn && _controller.MediaList.Count == 1 && _controller.MediaList[0].Duration > 0;
     }
 
     /// <summary>
@@ -560,6 +560,7 @@ public sealed partial class AddDownloadDialog : ContentDialog
             }
             else
             {
+                CardDownloadTimeframe.IsEnabled = _controller.MediaList[0].Duration > 0;
                 StackDownload.Children.Insert(StackDownload.Children.IndexOf(CardAdvancedOptions) + 1, new MediaRow(_controller.MediaList[0])
                 {
                     Margin = new Thickness(0, 12, 0, 0)
