@@ -248,7 +248,7 @@
                     </nickvision:ViewStackPage>
 
                     <nickvision:ViewStackPage PageName="Downloads">
-                        <NavigationView x:Name="NavViewDownloads" IsBackButtonVisible="Collapsed" IsSettingsVisible="False" SelectionChanged="NavViewDownloads_SelectionChanged">
+                        <NavigationView x:Name="NavViewDownloads" IsBackButtonVisible="Collapsed" IsSettingsVisible="False" IsPaneToggleButtonVisible="False" SelectionChanged="NavViewDownloads_SelectionChanged">
                             <NavigationView.PaneHeader>
                                 <Button x:Name="BtnAddDownload" HorizontalAlignment="Stretch" Margin="6,0,6,6" Style="{ThemeResource AccentButtonStyle}" Click="AddDownload">
                                     <Button.Content>
