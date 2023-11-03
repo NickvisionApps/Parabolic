@@ -4,6 +4,20 @@
     "build-commands": [],
     "modules": [
         {
+            "name": "python3-psutil",
+            "buildsystem": "simple",
+            "build-commands": [
+                "pip3 install --verbose --exists-action=i --no-index --find-links=\"file://${PWD}\" --prefix=${FLATPAK_DEST} \"psutil\" --no-build-isolation"
+            ],
+            "sources": [
+                {
+                    "type": "file",
+                    "url": "https://files.pythonhosted.org/packages/2d/01/beb7331fc6c8d1c49dd051e3611379bfe379e915c808e1301506027fce9d/psutil-5.9.6.tar.gz",
+                    "sha256": "e4b92ddcd7dd4cdd3f900180ea1e104932c7bce234fb88976e2a3b296441225a"
+                }
+            ]
+        },
+        {
             "name": "python3-yt-dlp",
             "buildsystem": "simple",
             "build-commands": [
@@ -32,27 +46,13 @@
                 },
                 {
                     "type": "file",
-                    "url": "https://files.pythonhosted.org/packages/d8/3b/2ed38e52eed4cf277f9df5f0463a99199a04d9e29c9e227cfafa57bd3993/websockets-11.0.3.tar.gz",
-                    "sha256": "88fc51d9a26b10fc331be344f1781224a375b78488fc343620184e95a4b27016"
+                    "url": "https://files.pythonhosted.org/packages/2e/62/7a7874b7285413c954a4cca3c11fd851f11b2fe5b4ae2d9bee4f6d9bdb10/websockets-12.0.tar.gz",
+                    "sha256": "81df9cbcbb6c260de1e007e58c011bfebe2dafc8435107b0537f393dd38c8b1b"
                 },
                 {
                     "type": "file",
                     "url": "https://files.pythonhosted.org/packages/3f/b0/75194851f0b86dd6c207d8e1cb5625b62ae5ec254edda42bc2cb86306ba7/yt_dlp-2023.10.13-py2.py3-none-any.whl",
                     "sha256": "2b069f22675532eebacdfd6372b1825651a751fef848de9ae6efe6491b2dc38a"
-                }
-            ]
-        },
-        {
-            "name": "python3-psutil",
-            "buildsystem": "simple",
-            "build-commands": [
-                "pip3 install --verbose --exists-action=i --no-index --find-links=\"file://${PWD}\" --prefix=${FLATPAK_DEST} \"psutil\" --no-build-isolation"
-            ],
-            "sources": [
-                {
-                    "type": "file",
-                    "url": "https://files.pythonhosted.org/packages/d6/0f/96b7309212a926c1448366e9ce69b081ea79d63265bde33f11cc9cfc2c07/psutil-5.9.5.tar.gz",
-                    "sha256": "5410638e4df39c54d957fc51ce03048acd8e6d60abc0f5107af51e5fb566eb3c"
                 }
             ]
         }
