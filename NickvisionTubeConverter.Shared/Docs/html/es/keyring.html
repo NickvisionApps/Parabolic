@@ -21,9 +21,9 @@ document.addEventListener('DOMContentLoaded', function() {
 <section id=""><div class="inner">
 <div class="hgroup pagewide"><h2 class="title"><span class="title">Lado del servidor</span></h2></div>
 <div class="region"><div class="contents pagewide">
-<p class="p">La función Llavero está respaldada por la biblioteca <span class="code">Nickvision.Aura</span>.</p>
-<p class="p">Esta biblioteca utiliza SQLCipher para almacenar las credenciales de forma segura e independiente de la plataforma.</p>
-<p class="p">La biblioteca utilizará el gestor de credenciales de tu sistema (es decir, libsecret en Linux y Windows Credential Manager en Windows) para proteger el llavero.</p>
+<p class="p">La función llavero está respaldada por la biblioteca <span class="code">Nickvision.Aura</span>.</p>
+<p class="p">Esta biblioteca usa SQLCipher para almacenar las credenciales de forma segura e independiente de la plataforma.</p>
+<p class="p">La biblioteca usará el gestor de credenciales de su sistema (es decir, libsecret en Linux y Windows Credential Manager en Windows) para proteger el llavero.</p>
 </div></div>
 </div></section><section id=""><div class="inner">
 <div class="hgroup pagewide"><h2 class="title"><span class="title">Almacenamiento de una credencial</span></h2></div>
@@ -37,23 +37,23 @@ document.addEventListener('DOMContentLoaded', function() {
 </div></section><section id=""><div class="inner">
 <div class="hgroup pagewide"><h2 class="title"><span class="title">Migración del llavero protegido por contraseña al llavero secreto</span></h2></div>
 <div class="region"><div class="contents pagewide">
-<p class="p">Esta sección se aplica a los usuarios que han activado un Llavero en Parabolic (en versiones anteriores a la V2023.9.0) y lo han asegurado con una contraseña. A partir de la versión 2023.9.0, Parabolic utiliza el gestor de credenciales del sistema para generar una contraseña aleatoria (secreta) para asegurar el Llavero en lugar de pedir al usuario que proporcione una. Usando el gestor de credenciales del sistema, Parabolic también puede desbloquear automáticamente el Llavero al iniciarse sin interacción del usuario.</p>
-<p class="p">Si tienes un llavero protegido con una contraseña anterior a la versión 2023.9.0, puedes seguir usándolo en las nuevas versiones de Parabolic sin problemas, pero tendrás que introducir la contraseña cada vez que se inicia la aplicación.</p>
-<p class="p">Sigue el resto de esta sección si deseas migrar tus credenciales y aprovechar las ventajas del nuevo Llavero, en el que no es necesario introducir una contraseña de cada vez.</p>
+<p class="p">Esta sección se aplica a los usuarios que han activado un llavero en Parabolic (en versiones anteriores a la V2023.9.0) y lo han asegurado con una contraseña. A partir de la versión 2023.9.0, Parabolic usa el gestor de credenciales del sistema para generar una contraseña aleatoria (secreta) para asegurar el llavero en lugar de pedir al usuario que proporcione una. Usando el gestor de credenciales del sistema, Parabolic también puede desbloquear automáticamente el llavero al iniciarse sin interacción del usuario.</p>
+<p class="p">Si tiene un llavero protegido con una contraseña anterior a la versión 2023.9.0, puede seguir usándolo en las nuevas versiones de Parabolic sin problemas, pero tendrá que introducir la contraseña cada vez que se inicia la aplicación.</p>
+<p class="p">Siga el resto de esta sección si desea migrar sus credenciales y aprovechar las ventajas del nuevo llavero, en el que no es necesario introducir una contraseña cada vez.</p>
 <div class="note" title="Nota">
 <svg height="24" width="24" version="1.1">
  <g>
   <path class="yelp-svg-fill" d="m4 3h16c0.554 0 1 0.446 1 1v11h-6v6h-11c-0.554 0-1-0.446-1-1v-16c0-0.554 0.446-1 1-1z"></path>
   <path class="yelp-svg-fill" d="m17 16h4l-5 5v-4c0-0.554 0.446-1 1-1z"></path>
  </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Puedes simplemente desactivar el antiguo Llavero protegido por una contraseña cuando actualices Parabolic a 2023.9.0 y volver a activar el Llavero para obtener uno protegido por secreto. Sin embargo, esto borrará todos los datos del antiguo Llavero y requerirá que vuelvas a introducir todas las credenciales.</p></div></div></div>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Puede simplemente desactivar el antiguo llavero protegido por una contraseña cuando actualice Parabolic a 2023.9.0 y volver a activar el llavero para obtener uno protegido por secreto. Sin embargo, esto borrará todos los datos del antiguo llavero y requerirá que vuelva a introducir todas las credenciales.</p></div></div></div>
 </div>
 <div class="steps"><div class="inner"><div class="region"><ol class="steps">
-<li class="steps"><p class="p">Instala <span class="link"><a href="https://flathub.org/apps/org.gnome.seahorse.Application" title="https://flathub.org/apps/org.gnome.seahorse.Application">Contraseñas y claves</a></span>.</p></li>
-<li class="steps"><p class="p">Abre Parabolic V2023.9.0 o posterior al menos una vez. (Esto garantizará que la aplicación se registre en el gestor de credenciales de tu sistema)</p></li>
-<li class="steps"><p class="p">Abre <span class="code">Contraseñas y claves</span> y busca la entrada <span class="code">org.nickvision.tubeconverter</span> en el <span class="code">Llavero predeterminado</span>.</p></li>
-<li class="steps"><p class="p">Haz doble clic en la entrada <span class="code">org.nickvision.tubeconverter</span> y edita el campo <span class="code">Contraseña</span>. Ingresa la contraseña que creaste y usaste para tu Llavero en Parabolic.</p></li>
-<li class="steps"><p class="p">Ahora puedes cerrar <span class="code">Contraseñas y Llaves</span> y reiniciar Parabolic. Verás que al iniciar la aplicación, ¡el Llavero ahora se desbloqueará automáticamente!</p></li>
+<li class="steps"><p class="p">Instale <span class="link"><a href="https://flathub.org/apps/org.gnome.seahorse.Application" title="https://flathub.org/apps/org.gnome.seahorse.Application">Contraseñas y claves</a></span>.</p></li>
+<li class="steps"><p class="p">Abra Parabolic V2023.9.0 o posterior al menos una vez. (Esto garantizará que la aplicación se registre en el gestor de credenciales de su sistema)</p></li>
+<li class="steps"><p class="p">Abra <span class="code">Contraseñas y claves</span> y localice la entrada <span class="code">org.nickvision.tubeconverter</span> en el <span class="code">llavero predeterminado</span>.</p></li>
+<li class="steps"><p class="p">Haga doble clic en la entrada <span class="code">org.nickvision.tubeconverter</span> y edite el campo <span class="code">Contraseña</span>. Introduzca la contraseña que creó y usó para su llavero en Parabolic.</p></li>
+<li class="steps"><p class="p">Ahora puede cerrar <span class="code">Contraseñas y claves</span> y reiniciar Parabolic. Verá que al iniciar la aplicación, ¡el llavero ahora se desbloqueará automáticamente!</p></li>
 </ol></div></div></div>
 </div></div>
 </div></section><section class="links" role="navigation"><div class="inner">

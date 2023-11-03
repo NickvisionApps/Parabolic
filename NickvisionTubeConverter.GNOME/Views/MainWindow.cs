@@ -1,8 +1,10 @@
+using Nickvision.Aura;
 using Nickvision.Aura.Taskbar;
 using NickvisionTubeConverter.GNOME.Controls;
 using NickvisionTubeConverter.GNOME.Helpers;
 using NickvisionTubeConverter.Shared.Controllers;
 using NickvisionTubeConverter.Shared.Events;
+using NickvisionTubeConverter.Shared.Helpers;
 using NickvisionTubeConverter.Shared.Models;
 using Python.Runtime;
 using System;
@@ -12,7 +14,7 @@ using System.Globalization;
 using System.IO;
 using System.Text;
 using System.Threading.Tasks;
-using static NickvisionTubeConverter.Shared.Helpers.Gettext;
+using static Nickvision.Aura.Localization.Gettext;
 
 namespace NickvisionTubeConverter.GNOME.Views;
 
@@ -98,7 +100,7 @@ public partial class MainWindow : Adw.ApplicationWindow
                 _queuedBox.Remove(_queuedBox.GetFirstChild());
             }
             _queuedBox.GetParent().SetVisible(false);
-            if(!_controller.DownloadManager.AreDownloadsQueued && !_controller.DownloadManager.AreDownloadsRunning && !_controller.DownloadManager.AreDownloadsCompleted)
+            if (!_controller.DownloadManager.AreDownloadsQueued && !_controller.DownloadManager.AreDownloadsRunning && !_controller.DownloadManager.AreDownloadsCompleted)
             {
                 _headerBar.AddCssClass("flat");
                 _addDownloadButton.SetVisible(false);
@@ -117,7 +119,7 @@ public partial class MainWindow : Adw.ApplicationWindow
                 _completedBox.Remove(_completedBox.GetFirstChild());
             }
             _completedBox.GetParent().SetVisible(false);
-            if(!_controller.DownloadManager.AreDownloadsQueued && !_controller.DownloadManager.AreDownloadsRunning && !_controller.DownloadManager.AreDownloadsCompleted)
+            if (!_controller.DownloadManager.AreDownloadsQueued && !_controller.DownloadManager.AreDownloadsRunning && !_controller.DownloadManager.AreDownloadsCompleted)
             {
                 _headerBar.AddCssClass("flat");
                 _addDownloadButton.SetVisible(false);
@@ -152,7 +154,7 @@ public partial class MainWindow : Adw.ApplicationWindow
         application.SetAccelsForAction("win.quit", new string[] { "<Ctrl>q", "<Ctrl>w" });
         //Help Action
         var actHelp = Gio.SimpleAction.New("help", null);
-        actHelp.OnActivate += (sender, e) => Gtk.Functions.ShowUri(this, Help.GetHelpURL("index"), 0);
+        actHelp.OnActivate += (sender, e) => Gtk.Functions.ShowUri(this, DocumentationHelpers.GetHelpURL("index"), 0);
         AddAction(actHelp);
         application.SetAccelsForAction("win.help", new string[] { "F1" });
         //About Action
@@ -281,7 +283,6 @@ public partial class MainWindow : Adw.ApplicationWindow
                 return true;
             }
         }
-        _controller.DownloadManager.StopAllDownloads(false);
         _controller.Dispose();
         return false;
     }
@@ -302,6 +303,7 @@ public partial class MainWindow : Adw.ApplicationWindow
     /// <summary>
     /// Prompts the AddDownloadDialog
     /// </summary>
+    /// <param name="url">A url to pass to the dialog</param>
     private async Task AddDownloadAsync(string? url)
     {
         var addController = _controller.CreateAddDownloadDialogController();
@@ -311,10 +313,7 @@ public partial class MainWindow : Adw.ApplicationWindow
             _headerBar.RemoveCssClass("flat");
             _addDownloadButton.SetVisible(true);
             _viewStack.SetVisibleChildName("pageDownloads");
-            foreach (var download in addController.Downloads)
-            {
-                _controller.DownloadManager.AddDownload(download, _controller.DownloadOptions);
-            }
+            _controller.AddDownloads(addController);
             addDialog.Close();
         };
         await addDialog.PresentAsync(url);
@@ -345,9 +344,9 @@ public partial class MainWindow : Adw.ApplicationWindow
     private void History(Gio.SimpleAction sender, EventArgs e)
     {
         var historyDialog = new HistoryDialog(this, _controller.AppInfo.ID, _controller.DownloadHistory);
-        historyDialog.DownloadAgainRequested += async (sender, e) =>
+        historyDialog.DownloadAgainRequested += async (s, ea) =>
         {
-            await AddDownloadAsync(e);
+            await AddDownloadAsync(ea);
             historyDialog.Destroy();
         };
         historyDialog.Present();
@@ -396,7 +395,7 @@ public partial class MainWindow : Adw.ApplicationWindow
     /// </summary>
     /// <param name="sender">Gio.SimpleAction</param>
     /// <param name="e">EventArgs</param>
-    private void About(Gio.SimpleAction sender, EventArgs e)
+    private async void About(Gio.SimpleAction sender, EventArgs e)
     {
         var debugInfo = new StringBuilder();
         debugInfo.AppendLine(_controller.AppInfo.ID);
@@ -411,75 +410,87 @@ public partial class MainWindow : Adw.ApplicationWindow
         {
             debugInfo.AppendLine("Snap");
         }
-        using (Py.GIL())
+        var py = Task.Run(() =>
         {
+            using (Py.GIL())
+            {
+                try
+                {
+                    dynamic yt_dlp = Py.Import("yt_dlp");
+                    debugInfo.AppendLine($"yt-dlp {yt_dlp.version.__version__.As<string>()}");
+                }
+                catch
+                {
+                    debugInfo.AppendLine("yt-dlp not found");
+                }
+                try
+                {
+                    dynamic psutil = Py.Import("psutil");
+                    debugInfo.AppendLine($"psutil {psutil.__version__.As<string>()}");
+                }
+                catch
+                {
+                    debugInfo.AppendLine("psutil not found");
+                }
+            }
+        });
+        var ffmpeg = Task.Run(() =>
+        {
+            using var ffmpegProcess = new Process
+            {
+                StartInfo = new ProcessStartInfo
+                {
+                    FileName = DependencyLocator.Find("ffmpeg"),
+                    Arguments = "-version",
+                    UseShellExecute = false,
+                    RedirectStandardOutput = true
+                }
+            };
             try
             {
-                dynamic yt_dlp = Py.Import("yt_dlp");
-                debugInfo.AppendLine($"yt-dlp {yt_dlp.version.__version__.As<string>()}");
+                ffmpegProcess.Start();
+                var ffmpegVersion = ffmpegProcess.StandardOutput.ReadToEnd();
+                ffmpegProcess.WaitForExit();
+                ffmpegVersion = ffmpegVersion.Remove(ffmpegVersion.IndexOf(Environment.NewLine))
+                                             .Remove(ffmpegVersion.IndexOf("Copyright"))
+                                             .Trim();
+                debugInfo.AppendLine(ffmpegVersion);
             }
             catch
             {
-                debugInfo.AppendLine("yt-dlp not found");
+                debugInfo.AppendLine("ffmpeg not found");
             }
+        });
+        var aria = Task.Run(() =>
+        {
+            using var ariaProcess = new Process
+            {
+                StartInfo = new ProcessStartInfo
+                {
+                    FileName = DependencyLocator.Find("aria2c"),
+                    Arguments = "--version",
+                    UseShellExecute = false,
+                    RedirectStandardOutput = true
+                }
+            };
             try
             {
-                dynamic psutil = Py.Import("psutil");
-                debugInfo.AppendLine($"psutil {psutil.__version__.As<string>()}");
+                ariaProcess.Start();
+                var ariaVersion = ariaProcess.StandardOutput.ReadToEnd();
+                ariaProcess.WaitForExit();
+                ariaVersion = ariaVersion.Remove(ariaVersion.IndexOf(Environment.NewLine)).Trim();
+                debugInfo.AppendLine(ariaVersion);
             }
             catch
             {
-                debugInfo.AppendLine("psutil not found");
+                debugInfo.AppendLine("aria2c not found");
             }
-        }
-        var ffmpegProcess = new Process
-        {
-            StartInfo = new ProcessStartInfo
-            {
-                FileName = "ffmpeg",
-                Arguments = "-version",
-                UseShellExecute = false,
-                RedirectStandardOutput = true
-            }
-        };
-        try
-        {
-            ffmpegProcess.Start();
-            var ffmpegVersion = ffmpegProcess.StandardOutput.ReadToEnd();
-            ffmpegProcess.WaitForExit();
-            ffmpegVersion = ffmpegVersion.Remove(ffmpegVersion.IndexOf(Environment.NewLine))
-                                         .Remove(ffmpegVersion.IndexOf("Copyright"))
-                                         .Trim();
-            debugInfo.AppendLine(ffmpegVersion);
-        }
-        catch
-        {
-            debugInfo.AppendLine("ffmpeg not found");
-        }
-        var ariaProcess = new Process
-        {
-            StartInfo = new ProcessStartInfo
-            {
-                FileName = "aria2c",
-                Arguments = "--version",
-                UseShellExecute = false,
-                RedirectStandardOutput = true
-            }
-        };
-        try
-        {
-            ariaProcess.Start();
-            var ariaVersion = ariaProcess.StandardOutput.ReadToEnd();
-            ariaProcess.WaitForExit();
-            ariaVersion = ariaVersion.Remove(ariaVersion.IndexOf(Environment.NewLine)).Trim();
-            debugInfo.AppendLine(ariaVersion);
-        }
-        catch
-        {
-            debugInfo.AppendLine("aria2c not found");
-        }
+        });
+        await py;
+        await ffmpeg;
+        await aria;
         debugInfo.AppendLine(CultureInfo.CurrentCulture.ToString());
-        var localeProcess = new Process
+        using var localeProcess = new Process
         {
             StartInfo = new ProcessStartInfo
             {
@@ -577,8 +588,8 @@ public partial class MainWindow : Adw.ApplicationWindow
                 using var dataString = GLib.Variant.Create(_controller.DownloadManager.BackgroundActivityReport);
                 using var data = GLib.Internal.Variant.NewVariant(dataString.Handle);
                 using var dictEntry = GLib.Internal.Variant.NewDictEntry(msg.Handle, data);
-                using var array = GLib.Internal.Variant.NewArray(typeDictEntry, new [] { dictEntry.DangerousGetHandle() }, 1);
-                using var tuple = GLib.Internal.Variant.NewTuple(new [] { array.DangerousGetHandle() }, 1);
+                using var array = GLib.Internal.Variant.NewArray(typeDictEntry, new[] { dictEntry.DangerousGetHandle() }, 1);
+                using var tuple = GLib.Internal.Variant.NewTuple(new[] { array.DangerousGetHandle() }, 1);
                 _bus.Call(
                     "org.freedesktop.portal.Desktop", // Bus name
                     "/org/freedesktop/portal/desktop", // Object path
@@ -605,7 +616,7 @@ public partial class MainWindow : Adw.ApplicationWindow
         downloadRow.StopRequested += (s, ex) => _controller.DownloadManager.RequestStop(ex);
         downloadRow.RetryRequested += (s, ex) => _controller.DownloadManager.RequestRetry(ex, _controller.DownloadOptions);
         var box = e.IsDownloading ? _downloadingBox : _queuedBox;
-        if(e.IsDownloading)
+        if (e.IsDownloading)
         {
             downloadRow.SetPreparingState();
         }
@@ -619,14 +630,7 @@ public partial class MainWindow : Adw.ApplicationWindow
             box.Append(separator);
         }
         box.Append(downloadRow);
-        if (_downloadRows.ContainsKey(e.Id))
-        {
-            _downloadRows[e.Id] = downloadRow;
-        }
-        else
-        {
-            _downloadRows.Add(e.Id, downloadRow);
-        }
+        _downloadRows[e.Id] = downloadRow;
         _stopAllDownloadsButton.SetVisible(_controller.DownloadManager.RemainingDownloadsCount > 1);
         box.GetParent().SetVisible(true);
         return false;
@@ -639,7 +643,7 @@ public partial class MainWindow : Adw.ApplicationWindow
     private bool DownloadProgressUpdated((Guid Id, DownloadProgressState State) e)
     {
         var row = _downloadRows[e.Id];
-        if(row.GetParent() == _downloadingBox)
+        if (row.GetParent() == _downloadingBox)
         {
             row.SetProgressState(e.State);
         }
@@ -653,7 +657,7 @@ public partial class MainWindow : Adw.ApplicationWindow
     private bool DownloadCompleted((Guid Id, bool Successful, string Filename, bool ShowNotification) e)
     {
         var row = _downloadRows[e.Id];
-        if(row.GetParent() == _downloadingBox)
+        if (row.GetParent() == _downloadingBox)
         {
             row.SetCompletedState(e.Successful, e.Filename);
             var oldSeparator = row.GetPrevSibling() ?? row.GetNextSibling();
@@ -675,11 +679,11 @@ public partial class MainWindow : Adw.ApplicationWindow
             _completedBox.GetParent().SetVisible(true);
             if (e.ShowNotification && ((GetFocus() != null && !GetFocus()!.GetHasFocus()) || !GetVisible()))
             {
-                if(_controller.CompletedNotificationPreference == NotificationPreference.ForEach)
+                if (_controller.CompletedNotificationPreference == NotificationPreference.ForEach)
                 {
                     SendShellNotification(new ShellNotificationSentEventArgs(!e.Successful ? _("Download Finished With Error") : _("Download Finished"), !e.Successful ? _("\"{0}\" has finished with an error!", row.Filename) : _("\"{0}\" has finished downloading.", row.Filename), !e.Successful ? NotificationSeverity.Error : NotificationSeverity.Success));
                 }
-                else if(_controller.CompletedNotificationPreference == NotificationPreference.AllCompleted && !_controller.DownloadManager.AreDownloadsRunning && !_controller.DownloadManager.AreDownloadsQueued)
+                else if (_controller.CompletedNotificationPreference == NotificationPreference.AllCompleted && !_controller.DownloadManager.AreDownloadsRunning && !_controller.DownloadManager.AreDownloadsQueued)
                 {
                     SendShellNotification(new ShellNotificationSentEventArgs(_("Downloads Finished"), _("All downloads have finished."), NotificationSeverity.Informational));
                 }
@@ -700,7 +704,7 @@ public partial class MainWindow : Adw.ApplicationWindow
     private bool DownloadStopped(Guid e)
     {
         var row = _downloadRows[e];
-        if(row.GetParent() == _downloadingBox)
+        if (row.GetParent() == _downloadingBox)
         {
             row.SetStopState();
             var oldSeparator = row.GetPrevSibling() ?? row.GetNextSibling();
@@ -721,7 +725,7 @@ public partial class MainWindow : Adw.ApplicationWindow
             _downloadingBox.GetParent().SetVisible(_controller.DownloadManager.AreDownloadsRunning);
             _completedBox.GetParent().SetVisible(true);
         }
-        else if(row.GetParent() == _queuedBox)
+        else if (row.GetParent() == _queuedBox)
         {
             row.SetStopState();
             var oldSeparator = row.GetPrevSibling() ?? row.GetNextSibling();
@@ -750,7 +754,7 @@ public partial class MainWindow : Adw.ApplicationWindow
     private bool DownloadRetried(Guid e)
     {
         var row = _downloadRows[e];
-        if(row.GetParent() == _completedBox)
+        if (row.GetParent() == _completedBox)
         {
             row.SetWaitingState();
             var oldSeparator = row.GetPrevSibling() ?? row.GetNextSibling();
@@ -772,7 +776,7 @@ public partial class MainWindow : Adw.ApplicationWindow
     private bool DownloadStartedFromQueue(Guid e)
     {
         var row = _downloadRows[e];
-        if(row.GetParent() == _queuedBox)
+        if (row.GetParent() == _queuedBox)
         {
             row.SetPreparingState();
             var oldSeparator = row.GetPrevSibling() ?? row.GetNextSibling();

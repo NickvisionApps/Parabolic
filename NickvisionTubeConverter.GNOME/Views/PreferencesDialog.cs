@@ -4,8 +4,8 @@ using NickvisionTubeConverter.Shared.Models;
 using System;
 using System.IO;
 using System.Threading.Tasks;
+using static Nickvision.Aura.Localization.Gettext;
 using static Nickvision.GirExt.GtkExt;
-using static NickvisionTubeConverter.Shared.Helpers.Gettext;
 
 namespace NickvisionTubeConverter.GNOME.Views;
 
@@ -160,13 +160,13 @@ public partial class PreferencesDialog : Adw.PreferencesWindow
             _ => Adw.ColorScheme.PreferLight
         };
     }
-    
+
     /// <summary>
     /// Occurs when a button to see SponsorBlock info is clicked
     /// </summary>
     private async Task LaunchSponsorBlockInfoAsync()
     {
-        var uriLauncher = Gtk.UriLauncher.New("https://sponsor.ajay.app/");
+        var uriLauncher = Gtk.UriLauncher.New(_controller.SponsorBlockInfoUrl);
         try
         {
             await uriLauncher.LaunchAsync(this);
@@ -182,7 +182,7 @@ public partial class PreferencesDialog : Adw.PreferencesWindow
         _subtitleLangsRow.SetTitle(_("Subtitle Languages (Comma-Separated)"));
         _subtitleLangsRow.RemoveCssClass("error");
         var valid = _controller.ValidateSubtitleLangs(_subtitleLangsRow.GetText());
-        if(valid)
+        if (valid)
         {
             _controller.SubtitleLangs = _subtitleLangsRow.GetText();
         }
@@ -233,7 +233,7 @@ public partial class PreferencesDialog : Adw.PreferencesWindow
     private async Task LaunchChromeCookiesExtensionAsync()
     {
         _cookiesPopover.Popdown();
-        var uriLauncher = Gtk.UriLauncher.New("https://chrome.google.com/webstore/detail/get-cookiestxt-locally/cclelndahbckbenkjhflpdbgdldlbecc");
+        var uriLauncher = Gtk.UriLauncher.New(_controller.ChromeCookiesExtensionUrl);
         try
         {
             await uriLauncher.LaunchAsync(this);
@@ -247,7 +247,7 @@ public partial class PreferencesDialog : Adw.PreferencesWindow
     private async Task LaunchFirefoxCookiesExtensionAsync()
     {
         _cookiesPopover.Popdown();
-        var uriLauncher = Gtk.UriLauncher.New("https://addons.mozilla.org/en-US/firefox/addon/cookies-txt/");
+        var uriLauncher = Gtk.UriLauncher.New(_controller.FirefoxCookiesExtensionUrl);
         try
         {
             await uriLauncher.LaunchAsync(this);

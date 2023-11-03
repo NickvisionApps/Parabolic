@@ -2,9 +2,9 @@
 using NickvisionTubeConverter.Shared.Helpers;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.IO;
-using static NickvisionTubeConverter.Shared.Helpers.Gettext;
+using System.Linq;
+using static Nickvision.Aura.Localization.Gettext;
 
 namespace NickvisionTubeConverter.Shared.Models;
 
@@ -186,7 +186,7 @@ public class DownloadManager
     {
         download.ProgressChanged += Download_ProgressChanged;
         download.Completed += Download_Completed;
-        if(!_autoRetry.ContainsKey(download.Id))
+        if (!_autoRetry.ContainsKey(download.Id))
         {
             _autoRetry.Add(download.Id, (false, options));
         }
@@ -322,10 +322,10 @@ public class DownloadManager
             _completed.Add(download.Id, _downloading[download.Id]);
             _downloading.Remove(download.Id);
             DownloadCompleted?.Invoke(this, (download.Id, successful, download.Filename, _autoRetry[download.Id].WasRetried || successful));
-            if(!successful && !_autoRetry[download.Id].WasRetried)
+            if (!successful && !_autoRetry[download.Id].WasRetried)
             {
                 var autoRetry = _autoRetry[download.Id];
-                if(!autoRetry.WasRetried)
+                if (!autoRetry.WasRetried)
                 {
                     autoRetry.WasRetried = true;
                     _autoRetry[download.Id] = autoRetry;

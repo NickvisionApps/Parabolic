@@ -1,7 +1,7 @@
 using System.IO;
 using System.Reflection;
 using System.Xml;
-using static NickvisionTubeConverter.Shared.Helpers.Gettext;
+using static Nickvision.Aura.Localization.Gettext;
 
 namespace NickvisionTubeConverter.GNOME.Helpers;
 

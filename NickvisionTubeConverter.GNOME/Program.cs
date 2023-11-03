@@ -35,12 +35,8 @@ public partial class Program
         _mainWindow = null;
         _mainWindowController = new MainWindowController();
         _mainWindowController.AppInfo.Changelog =
-            @"* Added an option to disable embedding subtitles in a file and instead download them in a separate file
-              * Added the ability to specify ""all"" in the subtitle languages list to download all available languages
-              * Fixed an issue where empty subtitles were sometimes embedded
-              * Fixed an issue where arte.tv links were not validating thanks to a yt-dlp update
-              * If embedding subtitles fails, Parabolic will automatically save them to separate files instead
-              * Improved Parabolic's display of progress in the taskbar (dock)
+            @"* Fixed an issue where aria's max connections per server preference was allowed to be greater than 16
+              * Fixed an issue where enabling the ""Download Specific Timeframe"" advanced option would cause a crash for certain media downloads
               * Updated translations (Thanks everyone on Weblate!)";
         _application.OnActivate += OnActivate;
         if (File.Exists(Path.GetFullPath(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)!) + "/org.nickvision.tubeconverter.gresource"))

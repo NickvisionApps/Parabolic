@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
-using static NickvisionTubeConverter.Shared.Helpers.Gettext;
+using static Nickvision.Aura.Localization.Gettext;
 
 namespace NickvisionTubeConverter.Shared.Controllers;
 
@@ -19,6 +19,18 @@ public class PreferencesViewController
     /// Gets the AppInfo object
     /// </summary>
     public AppInfo AppInfo => Aura.Active.AppInfo;
+    /// <summary>
+    /// The URL for SponsorBlock information
+    /// </summary>
+    public string SponsorBlockInfoUrl => "https://sponsor.ajay.app/";
+    /// <summary>
+    /// The URL for the chrome cookies extension
+    /// </summary>
+    public string ChromeCookiesExtensionUrl => "https://chrome.google.com/webstore/detail/get-cookiestxt-locally/cclelndahbckbenkjhflpdbgdldlbecc";
+    /// <summary>
+    /// The URL for the firefox cookies extension
+    /// </summary>
+    public string FirefoxCookiesExtensionUrl => "https://addons.mozilla.org/en-US/firefox/addon/cookies-txt/";
 
     /// <summary>
     /// Constructs a PreferencesViewController
@@ -43,6 +55,16 @@ public class PreferencesViewController
     }
 
     /// <summary>
+    /// Whether or not to automatically check for updates
+    /// </summary>
+    public bool AutomaticallyCheckForUpdates
+    {
+        get => Configuration.Current.AutomaticallyCheckForUpdates;
+
+        set => Configuration.Current.AutomaticallyCheckForUpdates = value;
+    }
+
+    /// <summary>
     /// The preference of how often to show completed notifications
     /// </summary>
     public NotificationPreference CompletedNotificationPreference
@@ -51,7 +73,7 @@ public class PreferencesViewController
 
         set => Configuration.Current.CompletedNotificationPreference = value;
     }
-    
+
     /// <summary>
     /// Whether or not to prevent suspend when downloads are in progress
     /// </summary>
@@ -127,9 +149,9 @@ public class PreferencesViewController
     /// </summary>
     public int AriaMaxConnectionsPerServer
     {
-         get => Configuration.Current.AriaMaxConnectionsPerServer;
+        get => Configuration.Current.AriaMaxConnectionsPerServer;
 
-         set => Configuration.Current.AriaMaxConnectionsPerServer = value;
+        set => Configuration.Current.AriaMaxConnectionsPerServer = value;
     }
 
     /// <summary>
@@ -141,7 +163,7 @@ public class PreferencesViewController
 
         set => Configuration.Current.AriaMinSplitSize = value;
     }
-    
+
     /// <summary>
     /// Whether or not to use the SponsorBlock extension for YouTube downloads
     /// </summary>
@@ -161,14 +183,14 @@ public class PreferencesViewController
 
         set
         {
-            if(value[value.Length - 1] == ',')
+            if (value[value.Length - 1] == ',')
             {
                 value = value.Remove(value.Length - 1);
             }
             Configuration.Current.SubtitleLangs = value;
         }
     }
-    
+
     /// <summary>
     /// The url of the proxy server to use
     /// </summary>
@@ -270,9 +292,9 @@ public class PreferencesViewController
             s = s.Remove(s.Length - 1);
         }
         var codes = s.Split(",").Select(x => x.Trim());
-        foreach(var code in codes)
+        foreach (var code in codes)
         {
-            if(!_supportedLangCodes.Contains(code))
+            if (!_supportedLangCodes.Contains(code))
             {
                 return false;
             }

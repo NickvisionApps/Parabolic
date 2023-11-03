@@ -5,8 +5,8 @@ using NickvisionTubeConverter.Shared.Helpers;
 using NickvisionTubeConverter.Shared.Models;
 using System;
 using System.IO;
+using static Nickvision.Aura.Localization.Gettext;
 using static Nickvision.GirExt.GtkExt;
-using static NickvisionTubeConverter.Shared.Helpers.Gettext;
 
 namespace NickvisionTubeConverter.GNOME.Controls;
 
@@ -168,7 +168,7 @@ public partial class DownloadRow : Adw.Bin, IDownloadRowControl
                     });
                 }
                 _stateViewStack.SetVisibleChildName("processing");
-                _progressLabel.SetText(_("Downloading"));
+                _progressLabel.SetText(_("Downloading..."));
                 break;
             case DownloadProgressStatus.Processing:
                 if (!_runPulsingBar)

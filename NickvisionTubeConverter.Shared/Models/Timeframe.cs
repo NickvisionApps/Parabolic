@@ -16,7 +16,7 @@ public class Timeframe
     /// The end of the timeframe
     /// </summary>
     public TimeSpan End { get; init; }
-    
+
     /// <summary>
     /// Constructs a timeframe
     /// </summary>
@@ -27,7 +27,7 @@ public class Timeframe
         Start = start;
         End = end;
     }
-    
+
     /// <summary>
     /// Parses a Timeframe object
     /// </summary>
@@ -55,11 +55,11 @@ public class Timeframe
         {
             throw new ArgumentException("Unable to parse emd time.");
         }
-        if(startSpan < TimeSpan.FromSeconds(0))
+        if (startSpan < TimeSpan.FromSeconds(0))
         {
             throw new ArgumentException("Invalid start time.");
         }
-        if(endSpan <= startSpan || endSpan > TimeSpan.FromSeconds(duration))
+        if (endSpan <= startSpan || endSpan > TimeSpan.FromSeconds(duration))
         {
             throw new ArgumentException("Invalid end time");
         }

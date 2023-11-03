@@ -1,16 +1,20 @@
 ﻿using Nickvision.Aura;
-using Nickvision.Aura.Network;
 using Nickvision.Aura.Keyring;
+using Nickvision.Aura.Network;
 using Nickvision.Aura.Taskbar;
+using Nickvision.Aura.Update;
 using NickvisionTubeConverter.Shared.Events;
 using NickvisionTubeConverter.Shared.Helpers;
 using NickvisionTubeConverter.Shared.Models;
 using Python.Runtime;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Reflection;
+using System.Runtime.InteropServices;
 using System.Threading.Tasks;
-using static NickvisionTubeConverter.Shared.Helpers.Gettext;
+using static Nickvision.Aura.Localization.Gettext;
 
 namespace NickvisionTubeConverter.Shared.Controllers;
 
@@ -24,6 +28,7 @@ public class MainWindowController : IDisposable
     private Keyring? _keyring;
     private NetworkMonitor? _netmon;
     private TaskbarItem? _taskbarItem;
+    private Updater? _updater;
     private readonly Stopwatch _taskbarStopwatch;
 
     private const int TASKBAR_STOPWATCH_THRESHOLD = 500;
@@ -88,6 +93,7 @@ public class MainWindowController : IDisposable
         _taskbarStopwatch = new Stopwatch();
         DownloadManager = new DownloadManager(5);
         Aura.Init("org.nickvision.tubeconverter", "Nickvision Tube Converter");
+        AppInfo.EnglishShortName = "Parabolic";
         if (Directory.Exists($"{UserDirectories.Config}{Path.DirectorySeparatorChar}Nickvision{Path.DirectorySeparatorChar}{AppInfo.Name}"))
         {
             // Move config files from older versions and delete old directory
@@ -104,7 +110,7 @@ public class MainWindowController : IDisposable
         Aura.Active.SetConfig<Configuration>("config");
         Configuration.Current.Saved += ConfigurationSaved;
         Aura.Active.SetConfig<DownloadHistory>("downloadHistory");
-        AppInfo.Version = "2023.9.1";
+        AppInfo.Version = "2023.11.0-next";
         AppInfo.ShortName = _("Parabolic");
         AppInfo.Description = _("Download web video and audio");
         AppInfo.SourceRepo = new Uri("https://github.com/NickvisionApps/Parabolic");
@@ -162,12 +168,17 @@ public class MainWindowController : IDisposable
         {
             return;
         }
+        DownloadManager.StopAllDownloads(false);
         _taskbarItem?.Dispose();
         PythonEngine.EndAllowThreads(_pythonThreadState);
         PythonEngine.Shutdown();
-        if (Directory.Exists(Configuration.TempDir))
+        if (Directory.Exists(UserDirectories.ApplicationCache))
         {
-            Directory.Delete(Configuration.TempDir, true);
+            try
+            {
+                Directory.Delete(UserDirectories.ApplicationCache, true);
+            }
+            catch { }
         }
         _keyring?.Dispose();
         _netmon?.Dispose();
@@ -197,37 +208,76 @@ public class MainWindowController : IDisposable
     /// </summary>
     public async Task StartupAsync()
     {
-        //Setup Folders
-        DownloadManager.MaxNumberOfActiveDownloads = Configuration.Current.MaxNumberOfActiveDownloads;
-        if (Directory.Exists(Configuration.TempDir))
+        //Update app
+        if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows) && Configuration.Current.AutomaticallyCheckForUpdates)
         {
-            Directory.Delete(Configuration.TempDir, true);
+            await CheckForUpdatesAsync();
         }
-        Directory.CreateDirectory(Configuration.TempDir);
+        //Setup folders
+        DownloadManager.MaxNumberOfActiveDownloads = Configuration.Current.MaxNumberOfActiveDownloads;
+        try
+        {
+            if (Directory.Exists(UserDirectories.ApplicationCache))
+            {
+                Directory.Delete(UserDirectories.ApplicationCache, true);
+            }
+            Directory.CreateDirectory(UserDirectories.ApplicationCache);
+        }
+        catch { }
         //Setup Dependencies
         try
         {
-            var success = DependencyManager.SetupDependencies();
-            if (!success)
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
-                NotificationSent?.Invoke(this, new NotificationSentEventArgs(_("Unable to setup dependencies. Please restart the app and try again."), NotificationSeverity.Error));
+                Runtime.PythonDLL = DependencyLocator.Find("python")!.Replace("python.exe", "python311.dll");
             }
             else
             {
-                RuntimeData.FormatterType = typeof(NoopFormatter);
-                PythonEngine.Initialize();
-                _pythonThreadState = PythonEngine.BeginAllowThreads();
+                using var process = new Process
+                {
+                    StartInfo = new ProcessStartInfo
+                    {
+                        FileName = DependencyLocator.Find("python3"),
+                        Arguments = "-c \"import sysconfig; import os; print(('/snap/tube-converter/current/gnome-platform' if os.environ.get('SNAP') else '') + ('/'.join(sysconfig.get_config_vars('LIBDIR', 'INSTSONAME'))))\"",
+                        UseShellExecute = false,
+                        RedirectStandardOutput = true
+                    }
+                };
+                process.Start();
+                Runtime.PythonDLL = process.StandardOutput.ReadToEnd().Trim();
+                await process.WaitForExitAsync();
+            }
+            // Install yt-dlp plugin
+            var pluginPath = $"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}{Path.DirectorySeparatorChar}yt-dlp{Path.DirectorySeparatorChar}plugins{Path.DirectorySeparatorChar}tubeconverter{Path.DirectorySeparatorChar}yt_dlp_plugins{Path.DirectorySeparatorChar}postprocessor{Path.DirectorySeparatorChar}tubeconverter.py";
+            Directory.CreateDirectory(pluginPath.Substring(0, pluginPath.LastIndexOf(Path.DirectorySeparatorChar)));
+            using var pluginResource = Assembly.GetExecutingAssembly().GetManifestResourceStream("NickvisionTubeConverter.Shared.Resources.tubeconverter.py")!;
+            using var pluginFile = new FileStream(pluginPath, FileMode.Create, FileAccess.Write);
+            pluginResource.CopyTo(pluginFile);
+            RuntimeData.FormatterType = typeof(NoopFormatter);
+            PythonEngine.Initialize();
+            _pythonThreadState = PythonEngine.BeginAllowThreads();
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                await Task.Run(() =>
+                {
+                    using (Py.GIL())
+                    {
+                        dynamic subprocess = Py.Import("subprocess");
+                        subprocess.check_call(new List<dynamic>() { DependencyLocator.Find("pythonw")!, "-m", "pip", "install", "-U", "psutil" });
+                        subprocess.check_call(new List<dynamic>() { DependencyLocator.Find("pythonw")!, "-m", "pip", "install", "-U", "yt-dlp" });
+                    }
+                });
             }
         }
-        catch (Exception e)
+        catch (Exception ex)
         {
-            NotificationSent?.Invoke(this, new NotificationSentEventArgs(_("Unable to setup dependencies. Please restart the app and try again."), NotificationSeverity.Error, "error", $"{e.Message}\n\n{e.StackTrace}"));
+            NotificationSent?.Invoke(this, new NotificationSentEventArgs(_("Unable to setup dependencies. Please restart the app and try again."), NotificationSeverity.Error));
         }
         //Setup Keyring
-        if(Keyring.Exists(AppInfo.ID))
+        if (Keyring.Exists(AppInfo.ID))
         {
             _keyring = await Keyring.AccessAsync(AppInfo.ID);
-            while(_keyring == null)
+            while (_keyring == null)
             {
                 var res = await KeyringLoginAsync!(_("Unlock Keyring"));
                 if (res.WasSkipped)
@@ -250,6 +300,50 @@ public class MainWindowController : IDisposable
                 NotificationSent?.Invoke(this, new NotificationSentEventArgs(_("No active internet connection"), NotificationSeverity.Error, "no-network"));
             }
         };
+        //Fix Aria Max Connections Per Server
+        if (Configuration.Current.AriaMaxConnectionsPerServer > 16)
+        {
+            Configuration.Current.AriaMaxConnectionsPerServer = 16;
+            Aura.Active.SaveConfig("config");
+        }
+    }
+
+    /// <summary>
+    /// Checks for an application update and notifies the user if one is available
+    /// </summary>
+    public async Task CheckForUpdatesAsync()
+    {
+        if (!AppInfo.IsDevVersion)
+        {
+            if (_updater == null)
+            {
+                _updater = await Updater.NewAsync();
+            }
+            var version = await _updater!.GetCurrentStableVersionAsync();
+            if (version != null && version > new Version(AppInfo.Version))
+            {
+                NotificationSent?.Invoke(this, new NotificationSentEventArgs(_("New update available."), NotificationSeverity.Success, "update"));
+            }
+        }
+    }
+
+    /// <summary>
+    /// Downloads and installs the latest application update for Windows systems
+    /// </summary>
+    /// <returns>True if successful, else false</returns>
+    /// <remarks>CheckForUpdatesAsync must be called before this method</remarks>
+    public async Task<bool> WindowsUpdateAsync()
+    {
+        if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows) && _updater != null)
+        {
+            var res = await _updater.WindowsUpdateAsync(VersionType.Stable);
+            if (!res)
+            {
+                NotificationSent?.Invoke(this, new NotificationSentEventArgs(_("Unable to download and install update."), NotificationSeverity.Error));
+            }
+            return res;
+        }
+        return false;
     }
 
     /// <summary>
@@ -259,9 +353,9 @@ public class MainWindowController : IDisposable
     /// <exception cref="ArgumentException">Thrown if the Keyring does not belong</exception>
     public void UpdateKeyring(KeyringDialogController controller)
     {
-        if(controller.Keyring != null && _keyring != null)
+        if (controller.Keyring != null && _keyring != null)
         {
-            if(controller.Keyring.Name != _keyring.Name)
+            if (controller.Keyring.Name != _keyring.Name)
             {
                 throw new ArgumentException($"Keyring is not {_keyring.Name}");
             }
@@ -291,6 +385,18 @@ public class MainWindowController : IDisposable
             _taskbarItem.ProgressState = ProgressFlags.NoProgress;
             _taskbarItem.Count = -1;
             _taskbarStopwatch.Stop();
+        }
+    }
+
+    /// <summary>
+    /// Adds downloads to the download manager
+    /// </summary>
+    /// <param name="controller">AddDownloadDialogController</param>
+    public void AddDownloads(AddDownloadDialogController controller)
+    {
+        foreach (var download in controller.Downloads)
+        {
+            DownloadManager.AddDownload(download, DownloadOptions);
         }
     }
 

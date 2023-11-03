@@ -1,10 +1,13 @@
 ﻿using NickvisionTubeConverter.GNOME.Helpers;
 using NickvisionTubeConverter.Shared.Models;
 using System;
-using static NickvisionTubeConverter.Shared.Helpers.Gettext;
+using static Nickvision.Aura.Localization.Gettext;
 
 namespace NickvisionTubeConverter.GNOME.Controls;
 
+/// <summary>
+/// A row for a media in the AddDownloadDialog
+/// </summary>
 public class MediaRow : Adw.EntryRow
 {
     private readonly MediaInfo _mediaInfo;
@@ -16,17 +19,16 @@ public class MediaRow : Adw.EntryRow
     [Gtk.Connect] private readonly Gtk.Button _undoButton;
 
     /// <summary>
-    /// The active status of the row's check button
+    /// Occurs when the check to select the download is changed
     /// </summary>
-    public bool Active
-    {
-        get => _downloadCheck.GetActive();
-
-        set => _downloadCheck.SetActive(value);
-    }
-
     public event EventHandler<EventArgs>? OnSelectionChanged;
 
+    /// <summary>
+    /// Constructs a MediaRow
+    /// </summary>
+    /// <param name="builder">Gtk.Builder</param>
+    /// <param name="mediaInfo">MediaInfo</param>
+    /// <param name="limitChars">Whether or not to limit characters to those only supported by Windows</param>
     private MediaRow(Gtk.Builder builder, MediaInfo mediaInfo, bool limitChars) : base(builder.GetPointer("_root"), false)
     {
         _mediaInfo = mediaInfo;
@@ -59,21 +61,45 @@ public class MediaRow : Adw.EntryRow
         AddController(_titleKeyController);
         _undoButton.OnClicked += (sender, e) =>
         {
-            SetText(_numberString + _mediaInfo.OriginalTitle);
+            SetText($"{_numberString}{_mediaInfo.OriginalTitle}");
         };
     }
 
+    /// <summary>
+    /// Constructs a MediaRow
+    /// </summary>
+    /// <param name="mediaInfo">MediaInfo</param>
+    /// <param name="limitChars">Whether or not to limit characters to those only supported by Windows</param>
     public MediaRow(MediaInfo mediaInfo, bool limitChars) : this(Builder.FromFile("media_row.ui"), mediaInfo, limitChars)
     {
 
     }
 
+    /// <summary>
+    /// The active status of the row's check button
+    /// </summary>
+    public bool Active
+    {
+        get => _downloadCheck.GetActive();
+
+        set => _downloadCheck.SetActive(value);
+    }
+
+    /// <summary>
+    /// Updates the title of the row
+    /// </summary>
+    /// <param name="numbered"></param>
     public void UpdateTitle(bool numbered)
     {
         SetText(_mediaInfo.Title);
         _numberString = numbered ? $"{_mediaInfo.PlaylistPosition} - " : "";
     }
 
+    /// <summary>
+    /// Occurs when the row's text is changed
+    /// </summary>
+    /// <param name="sender">Gtk.EventControllerKey</param>
+    /// <param name="e">Gtk.EventControllerKey.KeyPressedSignalArgs</param>
     private bool OnKeyPressed(Gtk.EventControllerKey sender, Gtk.EventControllerKey.KeyPressedSignalArgs e)
     {
         var res = e.Keyval == 0x2f; // '/'

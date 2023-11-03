@@ -173,7 +173,7 @@ Adw.PreferencesWindow _root {
             numeric: true;
             adjustment: Gtk.Adjustment {
               lower: 1;
-              upper: 32;
+              upper: 16;
               step-increment: 1;
               page-increment: 2;
             };
@@ -348,7 +348,7 @@ Adw.PreferencesWindow _root {
                   hexpand: true;
 
                   child: Adw.ButtonContent {
-                    label: "Chrome";
+                    label: _("Chrome/Edge");
                     icon-name: "google-chrome-symbolic";
                   };
                 }
@@ -357,7 +357,7 @@ Adw.PreferencesWindow _root {
                   hexpand: true;
 
                   child: Adw.ButtonContent {
-                    label: "Firefox";
+                    label: _("Firefox");
                     icon-name: "firefox-symbolic";
                   };
                 }

@@ -1,7 +1,6 @@
 ﻿using Nickvision.Aura;
-using System;
+using Nickvision.Aura.Configuration;
 using System.Globalization;
-using System.IO;
 using System.Runtime.InteropServices;
 
 namespace NickvisionTubeConverter.Shared.Models;
@@ -12,15 +11,13 @@ namespace NickvisionTubeConverter.Shared.Models;
 public class Configuration : ConfigurationBase
 {
     /// <summary>
-    /// The directory to store temporary files
-    /// </summary>
-    /// <remarks>TODO: https://github.com/NickvisionApps/Aura/issues/5</remarks>
-    public static string TempDir = RuntimeInformation.IsOSPlatform(OSPlatform.Windows) ? $"{Environment.GetFolderPath(Environment.SpecialFolder.UserProfile)}{Path.DirectorySeparatorChar}.tc-temp" : UserDirectories.ApplicationCache;
-
-    /// <summary>
     /// The preferred theme for the application
     /// </summary>
     public Theme Theme { get; set; }
+    /// <summary>
+    /// Whether or not to automatically check for updates
+    /// </summary>
+    public bool AutomaticallyCheckForUpdates { get; set; }
     /// <summary>
     /// The preference of how often to show completed notifications
     /// </summary>
@@ -129,6 +126,7 @@ public class Configuration : ConfigurationBase
     public Configuration()
     {
         Theme = Theme.System;
+        AutomaticallyCheckForUpdates = true;
         CompletedNotificationPreference = NotificationPreference.ForEach;
         PreventSuspendWhenDownloading = false;
         RunInBackground = RuntimeInformation.IsOSPlatform(OSPlatform.Windows);

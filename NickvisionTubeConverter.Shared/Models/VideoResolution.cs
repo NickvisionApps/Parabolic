@@ -1,5 +1,5 @@
 using System;
-using static NickvisionTubeConverter.Shared.Helpers.Gettext;
+using static Nickvision.Aura.Localization.Gettext;
 
 namespace NickvisionTubeConverter.Shared.Models;
 
@@ -37,7 +37,7 @@ public class VideoResolution : IComparable<VideoResolution>, IEquatable<VideoRes
     public static VideoResolution? Parse(string s)
     {
         var split = s.Split("x");
-        if(split.Length == 2)
+        if (split.Length == 2)
         {
             try
             {

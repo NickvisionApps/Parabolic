@@ -1,7 +1,4 @@
-﻿using System;
-using System.Runtime.InteropServices;
-
-namespace NickvisionTubeConverter.Shared.Models;
+﻿namespace NickvisionTubeConverter.Shared.Models;
 
 /// <summary>
 /// Progress statuses for a download

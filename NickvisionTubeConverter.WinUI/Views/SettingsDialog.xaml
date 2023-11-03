@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ContentDialog
+    x:Class="NickvisionTubeConverter.WinUI.Views.SettingsDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:NickvisionTubeConverter.WinUI.Views"
+    xmlns:nickvision="using:NickvisionTubeConverter.WinUI.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:wct="using:CommunityToolkit.WinUI.Controls"
+    mc:Ignorable="d" Style="{StaticResource DefaultContentDialogStyle}"
+    DefaultButton="Primary">
+
+    <ScrollViewer x:Name="ScrollViewer" VerticalScrollBarVisibility="Auto" MinWidth="500" SizeChanged="ScrollViewer_SizeChanged">
+        <StackPanel x:Name="StackPanel" Orientation="Vertical" Spacing="6">
+            <TextBlock x:Name="LblUserInterface" Style="{StaticResource NavigationViewItemHeaderTextStyle}"/>
+
+            <wct:SettingsCard x:Name="CardTheme">
+                <wct:SettingsCard.HeaderIcon>
+                    <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE790;"/>
+                </wct:SettingsCard.HeaderIcon>
+
+                <ComboBox x:Name="CmbTheme"/>
+            </wct:SettingsCard>
+
+            <wct:SettingsCard x:Name="CardAutomaticallyCheckForUpdates">
+                <wct:SettingsCard.HeaderIcon>
+                    <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE117;"/>
+                </wct:SettingsCard.HeaderIcon>
+
+                <ToggleSwitch x:Name="TglAutomaticallyCheckForUpdates"/>
+            </wct:SettingsCard>
+
+            <wct:SettingsCard x:Name="CardCompletedNotification">
+                <wct:SettingsCard.HeaderIcon>
+                    <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xEA8F;"/>
+                </wct:SettingsCard.HeaderIcon>
+
+                <ComboBox x:Name="CmbCompletedNotification"/>
+            </wct:SettingsCard>
+
+            <wct:SettingsCard x:Name="CardSuspend">
+                <wct:SettingsCard.HeaderIcon>
+                    <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE7E8;"/>
+                </wct:SettingsCard.HeaderIcon>
+
+                <ToggleSwitch x:Name="TglSuspend"/>
+            </wct:SettingsCard>
+
+            <wct:SettingsCard x:Name="CardBackground">
+                <wct:SettingsCard.HeaderIcon>
+                    <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE9F5;"/>
+                </wct:SettingsCard.HeaderIcon>
+
+                <ToggleSwitch x:Name="TglBackground"/>
+            </wct:SettingsCard>
+
+            <TextBlock x:Name="LblDownloader" Style="{StaticResource NavigationViewItemHeaderTextStyle}"/>
+
+            <wct:SettingsCard x:Name="CardMaxNumberOfActiveDownloads">
+                <wct:SettingsCard.HeaderIcon>
+                    <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE118;"/>
+                </wct:SettingsCard.HeaderIcon>
+
+                <NumberBox x:Name="TxtMaxNumberOfActiveDownloads" SpinButtonPlacementMode="Inline" Minimum="1" Maximum="10" SmallChange="1" LargeChange="2"/>
+            </wct:SettingsCard>
+
+            <wct:SettingsCard x:Name="CardOverwrite">
+                <wct:SettingsCard.HeaderIcon>
+                    <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE8A5;"/>
+                </wct:SettingsCard.HeaderIcon>
+
+                <ToggleSwitch x:Name="TglOverwrite"/>
+            </wct:SettingsCard>
+
+            <wct:SettingsCard x:Name="CardSpeedLimit">
+                <wct:SettingsCard.HeaderIcon>
+                    <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xEC4A;"/>
+                </wct:SettingsCard.HeaderIcon>
+
+                <NumberBox x:Name="TxtSpeedLimit" SpinButtonPlacementMode="Inline" Minimum="512" Maximum="10240" SmallChange="512" LargeChange="1024"/>
+            </wct:SettingsCard>
+
+            <wct:SettingsExpander x:Name="CardUseAria" IsExpanded="{x:Bind TglUseAria.IsOn, Mode=TwoWay}">
+                <wct:SettingsExpander.HeaderIcon>
+                    <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE15E;"/>
+                </wct:SettingsExpander.HeaderIcon>
+
+                <ToggleSwitch x:Name="TglUseAria"/>
+                
+                <wct:SettingsExpander.Items>
+                    <wct:SettingsCard x:Name="CardAriaMaxConnectionsPerServer">
+                        <wct:SettingsCard.HeaderIcon>
+                            <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE12B;"/>
+                        </wct:SettingsCard.HeaderIcon>
+
+                        <StackPanel Orientation="Horizontal" Spacing="6">
+                            <NumberBox x:Name="TxtAriaMaxConnectionsPerServer" SpinButtonPlacementMode="Inline" Minimum="1" Maximum="16" SmallChange="1" LargeChange="2"/>
+
+                            <Button x:Name="BtnAriaMaxConnectionsPerServerReset" Click="AriaMaxConnectionsPerServerReset">
+                                <Button.Content>
+                                    <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE10E;"/>
+                                </Button.Content>
+                            </Button>
+                        </StackPanel>
+                    </wct:SettingsCard>
+
+                    <wct:SettingsCard x:Name="CardAriaMinSplitSize">
+                        <wct:SettingsCard.HeaderIcon>
+                            <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE16B;"/>
+                        </wct:SettingsCard.HeaderIcon>
+
+                        <StackPanel Orientation="Horizontal" Spacing="6">
+                            <NumberBox x:Name="TxtAriaMinSplitSize" SpinButtonPlacementMode="Inline" Minimum="1" Maximum="1024" SmallChange="1" LargeChange="128"/>
+
+                            <Button x:Name="BtnAriaMinSplitSizeReset" Click="AriaMinSplitSizeReset">
+                                <Button.Content>
+                                    <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE10E;"/>
+                                </Button.Content>
+                            </Button>
+                        </StackPanel>
+                    </wct:SettingsCard>
+                </wct:SettingsExpander.Items>
+            </wct:SettingsExpander>
+
+            <wct:SettingsCard x:Name="CardSponsorBlock">
+                <wct:SettingsCard.HeaderIcon>
+                    <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE14D;"/>
+                </wct:SettingsCard.HeaderIcon>
+
+                <StackPanel Orientation="Horizontal" Spacing="6">
+                    <ToggleSwitch x:Name="TglSponsorBlock"/>
+
+                    <Button x:Name="BtnSponsorBlockInfo" Click="SponsorBlockInfo">
+                        <Button.Content>
+                            <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE11B;"/>
+                        </Button.Content>
+                    </Button>
+                </StackPanel>
+            </wct:SettingsCard>
+
+            <wct:SettingsCard x:Name="CardSubtitleLangs">
+                <wct:SettingsCard.HeaderIcon>
+                    <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xED1E;"/>
+                </wct:SettingsCard.HeaderIcon>
+
+                <StackPanel Orientation="Horizontal" Spacing="6">
+                    <TextBox x:Name="TxtSubtitleLangs" MinWidth="200" TextChanged="TxtSubtitleLangs_TextChanged"/>
+
+                    <Button x:Name="BtnSubtitleLangs">
+                        <Button.Content>
+                            <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE11B;"/>
+                        </Button.Content>
+
+                        <Button.Flyout>
+                            <Flyout>
+                                <StackPanel Orientation="Vertical" Spacing="6" MaxWidth="300">
+                                    <TextBlock x:Name="LblSubtitleLangs" TextWrapping="WrapWholeWords"/>
+                                </StackPanel>
+                            </Flyout>
+                        </Button.Flyout>
+                    </Button>
+                </StackPanel>
+            </wct:SettingsCard>
+
+            <wct:SettingsCard x:Name="CardProxy">
+                <wct:SettingsCard.HeaderIcon>
+                    <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xF6FA;"/>
+                </wct:SettingsCard.HeaderIcon>
+
+                <TextBox x:Name="TxtProxy" MinWidth="200"/>
+            </wct:SettingsCard>
+
+            <wct:SettingsCard x:Name="CardCookiesFile">
+                <wct:SettingsCard.HeaderIcon>
+                    <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE9F9;"/>
+                </wct:SettingsCard.HeaderIcon>
+
+                <StackPanel Orientation="Horizontal" Spacing="6">
+                    <TextBlock x:Name="LblCookiesFile" VerticalAlignment="Center"/>
+
+                    <Button x:Name="BtnSelectCookiesFile" Click="SelectCookiesFile">
+                        <Button.Content>
+                            <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE1A5;"/>
+                        </Button.Content>
+                    </Button>
+
+                    <Button x:Name="BtnUnsetCookiesFile" Click="UnsetCookiesFile">
+                        <Button.Content>
+                            <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE106;"/>
+                        </Button.Content>
+                    </Button>
+
+                    <Button x:Name="BtnCookiesInformation">
+                        <Button.Content>
+                            <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE11B;"/>
+                        </Button.Content>
+
+                        <Button.Flyout>
+                            <Flyout>
+                                <StackPanel Orientation="Vertical" Spacing="6" MaxWidth="300">
+                                    <TextBlock x:Name="LblCookiesInformation" TextWrapping="WrapWholeWords"/>
+
+                                    <Grid ColumnSpacing="6">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <Button x:Name="BtnCookiesChrome" Grid.Column="0" HorizontalAlignment="Stretch" Click="CookiesChrome"/>
+
+                                        <Button x:Name="BtnCookiesFirefox" Grid.Column="1" HorizontalAlignment="Stretch" Click="CookiesFirefox"/>
+                                    </Grid>
+                                </StackPanel>
+                            </Flyout>
+                        </Button.Flyout>
+                    </Button>
+                </StackPanel>
+            </wct:SettingsCard>
+
+            <TextBlock x:Name="LblConverter" Style="{StaticResource NavigationViewItemHeaderTextStyle}"/>
+
+            <wct:SettingsCard x:Name="CardDisallowConversions">
+                <wct:SettingsCard.HeaderIcon>
+                    <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE9F5;"/>
+                </wct:SettingsCard.HeaderIcon>
+
+                <ToggleSwitch x:Name="TglDisallowConversions"/>
+            </wct:SettingsCard>
+
+            <wct:SettingsExpander x:Name="CardEmbedMetadata" IsExpanded="{x:Bind TglEmbedMetadata.IsOn, Mode=TwoWay}">
+                <wct:SettingsExpander.HeaderIcon>
+                    <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE1CB;"/>
+                </wct:SettingsExpander.HeaderIcon>
+
+                <ToggleSwitch x:Name="TglEmbedMetadata"/>
+
+                <wct:SettingsExpander.Items>
+                    <wct:SettingsCard x:Name="CardCropAudioThumbnail">
+                        <wct:SettingsCard.HeaderIcon>
+                            <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE158;"/>
+                        </wct:SettingsCard.HeaderIcon>
+
+                        <ToggleSwitch x:Name="TglCropAudioThumbnail"/>
+                    </wct:SettingsCard>
+
+                    <wct:SettingsCard x:Name="CardRemoveSourceData">
+                        <wct:SettingsCard.HeaderIcon>
+                            <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE107;"/>
+                        </wct:SettingsCard.HeaderIcon>
+
+                        <ToggleSwitch x:Name="TglRemoveSourceData"/>
+                    </wct:SettingsCard>
+                </wct:SettingsExpander.Items>
+            </wct:SettingsExpander>
+
+            <wct:SettingsCard x:Name="CardEmbedChapters">
+                <wct:SettingsCard.HeaderIcon>
+                    <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE142;"/>
+                </wct:SettingsCard.HeaderIcon>
+
+                <ToggleSwitch x:Name="TglEmbedChapters"/>
+            </wct:SettingsCard>
+
+            <wct:SettingsCard x:Name="CardEmbedSubtitle">
+                <wct:SettingsCard.HeaderIcon>
+                    <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xED1F;"/>
+                </wct:SettingsCard.HeaderIcon>
+
+                <ToggleSwitch x:Name="TglEmbedSubtitle"/>
+            </wct:SettingsCard>
+        </StackPanel>
+    </ScrollViewer>
+</ContentDialog>
