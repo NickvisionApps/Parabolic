@@ -534,7 +534,7 @@ public sealed partial class MainWindow : Window
         {
             XamlRoot = MainGrid.XamlRoot
         };
-        if (!_isContentDialogShowing)
+        if (!_isContentDialogShowing || !string.IsNullOrEmpty(url))
         {
             _isContentDialogShowing = true;
             var res = await addDialog.ShowAsync(url);
