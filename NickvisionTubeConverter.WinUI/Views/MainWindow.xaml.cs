@@ -321,11 +321,7 @@ public sealed partial class MainWindow : Window
     /// </summary>
     /// <param name="sender">object</param>
     /// <param name="e">RoutedEventArgs</param>
-    public void ShowWindow(object sender, RoutedEventArgs e)
-    {
-        User32.ShowWindow(_hwnd, ShowWindowCommand.SW_SHOW);
-        Activate();
-    }
+    public void ShowWindow(object sender, RoutedEventArgs e) => User32.ShowWindow(_hwnd, ShowWindowCommand.SW_SHOW);
 
     /// <summary>
     /// Occurs when the add download menu item is clicked
