@@ -1,6 +1,5 @@
 using CommunityToolkit.WinUI.Notifications;
 using Microsoft.UI;
-using Microsoft.UI.Input;
 using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
