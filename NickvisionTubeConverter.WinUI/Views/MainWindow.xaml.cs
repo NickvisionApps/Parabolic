@@ -193,8 +193,7 @@ public sealed partial class MainWindow : Window
             var res = await dialog.ShowAsync();
             if (res == ContentDialogResult.Primary)
             {
-                _controller.DownloadManager.StopAllDownloads(true);
-                Close();
+                ForceExit(sender, new RoutedEventArgs());
             }
         }
         else
