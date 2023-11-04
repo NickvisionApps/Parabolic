@@ -23,7 +23,7 @@ public partial class Program
     /// </summary>
     /// <param name="args">string[]</param>
     /// <returns>Return code from Adw.Application.Run()</returns>
-    public static int Main(string[] args) => new Program(args).Run(args);
+    public static int Main(string[] args) => new Program(args).Run();
 
     /// <summary>
     /// Constructs a Program
@@ -33,9 +33,10 @@ public partial class Program
     {
         _application = Adw.Application.New("org.nickvision.tubeconverter", Gio.ApplicationFlags.FlagsNone);
         _mainWindow = null;
-        _mainWindowController = new MainWindowController();
+        _mainWindowController = new MainWindowController(args);
         _mainWindowController.AppInfo.Changelog =
-            @"* Fixed an issue where aria's max connections per server preference was allowed to be greater than 16
+            @"* A URL can now be passed to Parabolic via the command-line or the freedesktop application open protocol to trigger its validation of startup
+              * Fixed an issue where aria's max connections per server preference was allowed to be greater than 16
               * Fixed an issue where enabling the ""Download Specific Timeframe"" advanced option would cause a crash for certain media downloads
               * Updated translations (Thanks everyone on Weblate!)";
         _application.OnActivate += OnActivate;
@@ -60,17 +61,15 @@ public partial class Program
     /// <summary>
     /// Runs the program
     /// </summary>
-    /// <param name="args">Command-line arguments</param>
     /// <returns>Return code from Adw.Application.Run()</returns>
-    public int Run(string[] args)
+    public int Run()
     {
         try
         {
             SynchronizationContext.SetSynchronizationContext(new GLib.Internal.MainLoopSynchronizationContext());
-            var argc = args.Length + 1;
+            var argc = 1;
             var argv = new string[argc];
             argv[0] = "org.nickvision.tubeconverter";
-            args.CopyTo(argv, 1);
             return _application.Run(argc, argv);
         }
         catch (Exception ex)
