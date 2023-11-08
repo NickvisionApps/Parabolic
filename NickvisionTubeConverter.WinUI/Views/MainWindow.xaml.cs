@@ -160,7 +160,7 @@ public sealed partial class MainWindow : Window
             MainMenu.IsEnabled = true;
             ViewStack.CurrentPageName = "Home";
             PreventSuspendWhenDownloadingChanged(null, EventArgs.Empty);
-            if(_controller.ShowDisclaimerOnStartup)
+            if (_controller.ShowDisclaimerOnStartup)
             {
                 var chkShow = new CheckBox()
                 {
