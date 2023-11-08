@@ -150,6 +150,10 @@ public class MainWindowController : IDisposable
             {
                 _urlToLaunch = value;
             }
+            else
+            {
+                _urlToLaunch = null;
+            }
         }
     }
 

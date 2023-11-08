@@ -192,6 +192,7 @@ public partial class MainWindow : Adw.ApplicationWindow
         if (!string.IsNullOrEmpty(urlToLaunch))
         {
             await AddDownloadAsync(urlToLaunch);
+            _controller.UrlToLaunch = null;
         }
     }
 
@@ -308,7 +309,7 @@ public partial class MainWindow : Adw.ApplicationWindow
     /// Prompts the AddDownloadDialog
     /// </summary>
     /// <param name="url">A url to pass to the dialog</param>
-    private async Task AddDownloadAsync(string? url)
+    public async Task AddDownloadAsync(string? url)
     {
         var addController = _controller.CreateAddDownloadDialogController();
         var addDialog = new AddDownloadDialog(addController, this);

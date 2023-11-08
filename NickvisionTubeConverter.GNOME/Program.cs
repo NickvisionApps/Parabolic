@@ -67,11 +67,7 @@ public partial class Program
     {
         try
         {
-            SynchronizationContext.SetSynchronizationContext(new GLib.Internal.MainLoopSynchronizationContext());
-            var argc = 1;
-            var argv = new string[argc];
-            argv[0] = "org.nickvision.tubeconverter";
-            return _application.Run(argc, argv);
+            return _application.RunWithSynchronizationContext();
         }
         catch (Exception ex)
         {
@@ -101,6 +97,11 @@ public partial class Program
         {
             _mainWindow!.SetVisible(true);
             _mainWindow!.Present();
+            if (!string.IsNullOrEmpty(_mainWindowController.UrlToLaunch))
+            {
+                await _mainWindow.AddDownloadAsync(_mainWindowController.UrlToLaunch);
+                _mainWindowController.UrlToLaunch = null;
+            }
         }
         else
         {
