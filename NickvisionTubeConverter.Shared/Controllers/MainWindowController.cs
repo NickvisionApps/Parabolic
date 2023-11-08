@@ -23,6 +23,7 @@ namespace NickvisionTubeConverter.Shared.Controllers;
 public class MainWindowController : IDisposable
 {
     private bool _disposed;
+    private bool _noNetCheck;
     private string? _urlToLaunch;
     private nint _pythonThreadState;
     private Keyring? _keyring;
@@ -89,9 +90,17 @@ public class MainWindowController : IDisposable
     public MainWindowController(string[] args)
     {
         _disposed = false;
+        _noNetCheck = false;
         if (args.Length > 0)
         {
-            UrlToLaunch = args[0];
+            if (args[0] == "--no-net-check")
+            {
+                _noNetCheck = true;
+            }
+            else
+            {
+                UrlToLaunch = args[0];
+            }
         }
         _pythonThreadState = IntPtr.Zero;
         _taskbarStopwatch = new Stopwatch();
@@ -305,18 +314,25 @@ public class MainWindowController : IDisposable
             }
         }
         //Check Network
-        _netmon = await NetworkMonitor.NewAsync();
-        _netmon.StateChanged += (sender, state) =>
+        if(_noNetCheck)
         {
-            if (state)
+            NotificationSent?.Invoke(this, new NotificationSentEventArgs("", NotificationSeverity.Success, "network-restored"));
+        }
+        else
+        {
+            _netmon = await NetworkMonitor.NewAsync();
+            _netmon.StateChanged += (sender, state) =>
             {
-                NotificationSent?.Invoke(this, new NotificationSentEventArgs("", NotificationSeverity.Success, "network-restored"));
-            }
-            else
-            {
-                NotificationSent?.Invoke(this, new NotificationSentEventArgs(_("No active internet connection"), NotificationSeverity.Error, "no-network"));
-            }
-        };
+                if (state)
+                {
+                    NotificationSent?.Invoke(this, new NotificationSentEventArgs("", NotificationSeverity.Success, "network-restored"));
+                }
+                else
+                {
+                    NotificationSent?.Invoke(this, new NotificationSentEventArgs(_("No active internet connection"), NotificationSeverity.Error, "no-network"));
+                }
+            };
+        }
         //Fix Aria Max Connections Per Server
         if (Configuration.Current.AriaMaxConnectionsPerServer > 16)
         {
