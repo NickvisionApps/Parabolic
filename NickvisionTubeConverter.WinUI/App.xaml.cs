@@ -2,6 +2,7 @@
 using NickvisionTubeConverter.Shared.Controllers;
 using NickvisionTubeConverter.Shared.Models;
 using NickvisionTubeConverter.WinUI.Views;
+using System;
 
 namespace NickvisionTubeConverter.WinUI;
 
@@ -20,7 +21,7 @@ public partial class App : Application
     public App()
     {
         InitializeComponent();
-        _controller = new MainWindowController();
+        _controller = new MainWindowController(Array.Empty<string>());
         _controller.AppInfo.Changelog = @"- Parabolic is now available for Windows using Windows App SDK and WinUI 3
 - Fixed an issue where aria's max connections per server preference was allowed to be greater than 16
 - Fixed an issue where enabling the ""Download Specific Timeframe"" advanced option would cause a crash for certain media downloads

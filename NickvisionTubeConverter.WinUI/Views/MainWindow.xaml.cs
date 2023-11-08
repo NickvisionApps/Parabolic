@@ -1,6 +1,5 @@
 using CommunityToolkit.WinUI.Notifications;
 using Microsoft.UI;
-using Microsoft.UI.Input;
 using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
@@ -99,8 +98,6 @@ public sealed partial class MainWindow : Window
         MenuReportABug.Text = _("Report a Bug");
         MenuDiscussions.Text = _("Discussions");
         MenuAbout.Text = _("About {0}", _controller.AppInfo.ShortName);
-        LblStartup.Text = _("Preparing required tools...");
-        LblStartup2.Text = _("This may take a while");
         StatusPageHome.Title = _("Download Media");
         StatusPageHome.Description = _("Add a video, audio, or playlist URL to start downloading");
         LblBtnHomeAddDownload.Text = _("Add Download");
@@ -163,6 +160,40 @@ public sealed partial class MainWindow : Window
             MainMenu.IsEnabled = true;
             ViewStack.CurrentPageName = "Home";
             PreventSuspendWhenDownloadingChanged(null, EventArgs.Empty);
+            if(_controller.ShowDisclaimerOnStartup)
+            {
+                var chkShow = new CheckBox()
+                {
+                    Content = _("Don't show this message again")
+                };
+                var disclaimerDialog = new ContentDialog()
+                {
+                    Title = _("Disclaimer"),
+                    Content = new StackPanel()
+                    {
+                        Orientation = Orientation.Vertical,
+                        Spacing = 6,
+                        Children =
+                        {
+                            new TextBlock()
+                            {
+                                MaxWidth = 400,
+                                TextWrapping = TextWrapping.WrapWholeWords,
+                                Text = _("The authors of Nickvision Parabolic are not responsible/liable for any misuse of this program that may violate local copyright/DMCA laws. Users use this application at their own risk."),
+                            },
+                            chkShow
+                        }
+                    },
+                    CloseButtonText = _("OK"),
+                    DefaultButton = ContentDialogButton.Close,
+                    XamlRoot = MainGrid.XamlRoot
+                };
+                _isContentDialogShowing = true;
+                await disclaimerDialog.ShowAsync();
+                _isContentDialogShowing = false;
+                _controller.ShowDisclaimerOnStartup = !chkShow.IsChecked ?? true;
+                _controller.SaveConfig();
+            }
             _isOpened = true;
         }
     }
@@ -194,8 +225,7 @@ public sealed partial class MainWindow : Window
             var res = await dialog.ShowAsync();
             if (res == ContentDialogResult.Primary)
             {
-                _controller.DownloadManager.StopAllDownloads(true);
-                Close();
+                ForceExit(sender, new RoutedEventArgs());
             }
         }
         else
@@ -535,7 +565,7 @@ public sealed partial class MainWindow : Window
         {
             XamlRoot = MainGrid.XamlRoot
         };
-        if (!_isContentDialogShowing)
+        if (!_isContentDialogShowing || !string.IsNullOrEmpty(url))
         {
             _isContentDialogShowing = true;
             var res = await addDialog.ShowAsync(url);

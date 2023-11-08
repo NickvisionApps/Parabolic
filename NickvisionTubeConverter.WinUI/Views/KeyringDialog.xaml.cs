@@ -55,7 +55,7 @@ public sealed partial class KeyringDialog : ContentDialog
         TxtPassword.PlaceholderText = _("Enter password here");
         LblBtnAddCredential.Text = _("Add");
         LblBtnDeleteCredential.Text = _("Delete");
-        BtnInfoBarReset.Content = _("Reset");
+        BtnReset.Content = _("Reset");
     }
 
     /// <summary>
@@ -93,7 +93,7 @@ public sealed partial class KeyringDialog : ContentDialog
                 InfoBar.Severity = InfoBarSeverity.Warning;
                 InfoBar.IsClosable = false;
                 InfoBar.IsOpen = true;
-                BtnInfoBarReset.Visibility = Visibility.Visible;
+                BtnReset.Visibility = Visibility.Visible;
                 BtnEnable.IsEnabled = false;
             }
             else if (_controller.IsEnabled)
@@ -130,6 +130,7 @@ public sealed partial class KeyringDialog : ContentDialog
             InfoBar.Content = _("Failed to enable keyring.");
             InfoBar.Severity = InfoBarSeverity.Error;
             InfoBar.IsOpen = true;
+            BtnReset.Visibility = Visibility.Collapsed;
         }
     }
 
@@ -160,6 +161,7 @@ public sealed partial class KeyringDialog : ContentDialog
             InfoBar.Content = _("Unable to disable keyring.");
             InfoBar.Severity = InfoBarSeverity.Error;
             InfoBar.IsOpen = true;
+            BtnReset.Visibility = Visibility.Collapsed;
         }
     }
 
@@ -194,6 +196,7 @@ public sealed partial class KeyringDialog : ContentDialog
                 InfoBar.Content = _("Unable to reset keyring.");
                 InfoBar.Severity = InfoBarSeverity.Error;
                 InfoBar.IsOpen = true;
+                BtnReset.Visibility = Visibility.Collapsed;
             }
         }
     }

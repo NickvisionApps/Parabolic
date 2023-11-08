@@ -8,7 +8,6 @@ using NickvisionTubeConverter.Shared.Helpers;
 using NickvisionTubeConverter.Shared.Models;
 using Python.Runtime;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Reflection;
@@ -24,6 +23,7 @@ namespace NickvisionTubeConverter.Shared.Controllers;
 public class MainWindowController : IDisposable
 {
     private bool _disposed;
+    private string? _urlToLaunch;
     private nint _pythonThreadState;
     private Keyring? _keyring;
     private NetworkMonitor? _netmon;
@@ -86,9 +86,13 @@ public class MainWindowController : IDisposable
     /// <summary>
     /// Constructs a MainWindowController
     /// </summary>
-    public MainWindowController()
+    public MainWindowController(string[] args)
     {
         _disposed = false;
+        if (args.Length > 0)
+        {
+            UrlToLaunch = args[0];
+        }
         _pythonThreadState = IntPtr.Zero;
         _taskbarStopwatch = new Stopwatch();
         DownloadManager = new DownloadManager(5);
@@ -131,6 +135,37 @@ public class MainWindowController : IDisposable
     /// Finalizes the MainWindowController
     /// </summary>
     ~MainWindowController() => Dispose(false);
+
+    /// <summary>
+    /// Whether or not to show the disclaimer on startup
+    /// </summary>
+    public bool ShowDisclaimerOnStartup
+    {
+        get => Configuration.Current.ShowDisclaimerOnStartup;
+
+        set => Configuration.Current.ShowDisclaimerOnStartup = value;
+    }
+
+    /// <summary>
+    /// A url to set to launch on startup
+    /// </summary>
+    public string? UrlToLaunch
+    {
+        get => _urlToLaunch;
+
+        set
+        {
+            var result = Uri.TryCreate(value, UriKind.Absolute, out var uriResult) && (uriResult.Scheme == Uri.UriSchemeHttp || uriResult.Scheme == Uri.UriSchemeHttps);
+            if (result)
+            {
+                _urlToLaunch = value;
+            }
+            else
+            {
+                _urlToLaunch = null;
+            }
+        }
+    }
 
     /// <summary>
     /// The TaskbarItem to show progress
@@ -206,7 +241,8 @@ public class MainWindowController : IDisposable
     /// <summary>
     /// Starts the application
     /// </summary>
-    public async Task StartupAsync()
+    /// <returns>A URL to validate on startup</returns>
+    public async Task<string?> StartupAsync()
     {
         //Update app
         if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows) && Configuration.Current.AutomaticallyCheckForUpdates)
@@ -225,54 +261,35 @@ public class MainWindowController : IDisposable
         }
         catch { }
         //Setup Dependencies
-        try
+        if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
         {
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-            {
-                Runtime.PythonDLL = DependencyLocator.Find("python")!.Replace("python.exe", "python311.dll");
-            }
-            else
-            {
-                using var process = new Process
-                {
-                    StartInfo = new ProcessStartInfo
-                    {
-                        FileName = DependencyLocator.Find("python3"),
-                        Arguments = "-c \"import sysconfig; import os; print(('/snap/tube-converter/current/gnome-platform' if os.environ.get('SNAP') else '') + ('/'.join(sysconfig.get_config_vars('LIBDIR', 'INSTSONAME'))))\"",
-                        UseShellExecute = false,
-                        RedirectStandardOutput = true
-                    }
-                };
-                process.Start();
-                Runtime.PythonDLL = process.StandardOutput.ReadToEnd().Trim();
-                await process.WaitForExitAsync();
-            }
-            // Install yt-dlp plugin
-            var pluginPath = $"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}{Path.DirectorySeparatorChar}yt-dlp{Path.DirectorySeparatorChar}plugins{Path.DirectorySeparatorChar}tubeconverter{Path.DirectorySeparatorChar}yt_dlp_plugins{Path.DirectorySeparatorChar}postprocessor{Path.DirectorySeparatorChar}tubeconverter.py";
-            Directory.CreateDirectory(pluginPath.Substring(0, pluginPath.LastIndexOf(Path.DirectorySeparatorChar)));
-            using var pluginResource = Assembly.GetExecutingAssembly().GetManifestResourceStream("NickvisionTubeConverter.Shared.Resources.tubeconverter.py")!;
-            using var pluginFile = new FileStream(pluginPath, FileMode.Create, FileAccess.Write);
-            pluginResource.CopyTo(pluginFile);
-            RuntimeData.FormatterType = typeof(NoopFormatter);
-            PythonEngine.Initialize();
-            _pythonThreadState = PythonEngine.BeginAllowThreads();
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-            {
-                await Task.Run(() =>
-                {
-                    using (Py.GIL())
-                    {
-                        dynamic subprocess = Py.Import("subprocess");
-                        subprocess.check_call(new List<dynamic>() { DependencyLocator.Find("pythonw")!, "-m", "pip", "install", "-U", "psutil" });
-                        subprocess.check_call(new List<dynamic>() { DependencyLocator.Find("pythonw")!, "-m", "pip", "install", "-U", "yt-dlp" });
-                    }
-                });
-            }
+            Runtime.PythonDLL = DependencyLocator.Find("python311.dll")!;
         }
-        catch (Exception ex)
+        else
         {
-            NotificationSent?.Invoke(this, new NotificationSentEventArgs(_("Unable to setup dependencies. Please restart the app and try again."), NotificationSeverity.Error));
+            using var process = new Process
+            {
+                StartInfo = new ProcessStartInfo
+                {
+                    FileName = DependencyLocator.Find("python3"),
+                    Arguments = "-c \"import sysconfig; import os; print(('/snap/tube-converter/current/gnome-platform' if os.environ.get('SNAP') else '') + ('/'.join(sysconfig.get_config_vars('LIBDIR', 'INSTSONAME'))))\"",
+                    UseShellExecute = false,
+                    RedirectStandardOutput = true
+                }
+            };
+            process.Start();
+            Runtime.PythonDLL = process.StandardOutput.ReadToEnd().Trim();
+            await process.WaitForExitAsync();
         }
+        // Install yt-dlp plugin
+        var pluginPath = $"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}{Path.DirectorySeparatorChar}yt-dlp{Path.DirectorySeparatorChar}plugins{Path.DirectorySeparatorChar}tubeconverter{Path.DirectorySeparatorChar}yt_dlp_plugins{Path.DirectorySeparatorChar}postprocessor{Path.DirectorySeparatorChar}tubeconverter.py";
+        Directory.CreateDirectory(pluginPath.Substring(0, pluginPath.LastIndexOf(Path.DirectorySeparatorChar)));
+        using var pluginResource = Assembly.GetExecutingAssembly().GetManifestResourceStream("NickvisionTubeConverter.Shared.Resources.tubeconverter.py")!;
+        using var pluginFile = new FileStream(pluginPath, FileMode.Create, FileAccess.Write);
+        pluginResource.CopyTo(pluginFile);
+        RuntimeData.FormatterType = typeof(NoopFormatter);
+        PythonEngine.Initialize();
+        _pythonThreadState = PythonEngine.BeginAllowThreads();
         //Setup Keyring
         if (Keyring.Exists(AppInfo.ID))
         {
@@ -306,24 +323,27 @@ public class MainWindowController : IDisposable
             Configuration.Current.AriaMaxConnectionsPerServer = 16;
             Aura.Active.SaveConfig("config");
         }
+        return UrlToLaunch;
     }
+
+    /// <summary>
+    /// Saves the app's configuration file to disk
+    /// </summary>
+    public void SaveConfig() => Aura.Active.SaveConfig("config");
 
     /// <summary>
     /// Checks for an application update and notifies the user if one is available
     /// </summary>
     public async Task CheckForUpdatesAsync()
     {
-        if (!AppInfo.IsDevVersion)
+        if (_updater == null)
         {
-            if (_updater == null)
-            {
-                _updater = await Updater.NewAsync();
-            }
-            var version = await _updater!.GetCurrentStableVersionAsync();
-            if (version != null && version > new Version(AppInfo.Version))
-            {
-                NotificationSent?.Invoke(this, new NotificationSentEventArgs(_("New update available."), NotificationSeverity.Success, "update"));
-            }
+            _updater = await Updater.NewAsync();
+        }
+        var version = await _updater!.GetCurrentStableVersionAsync();
+        if (version != null && (!AppInfo.IsDevVersion ? version > new Version(AppInfo.Version) : version >= new Version(AppInfo.Version.Remove(AppInfo.Version.IndexOf('-')))))
+        {
+            NotificationSent?.Invoke(this, new NotificationSentEventArgs(_("New update available."), NotificationSeverity.Success, "update"));
         }
     }
 

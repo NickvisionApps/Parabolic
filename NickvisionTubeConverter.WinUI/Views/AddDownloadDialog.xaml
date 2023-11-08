@@ -36,7 +36,7 @@
                                     <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE12B;"/>
                                 </wct:SettingsCard.HeaderIcon>
 
-                                <TextBox x:Name="TxtUrl" MinWidth="300" MaxWidth="400" TextChanged="TxtUrl_TextChanged" KeyDown="TxtUrl_KeyDown"/>
+                                <TextBox x:Name="TxtUrl" MinWidth="300" MaxWidth="400" TextChanged="TxtUrl_TextChanged"/>
                             </wct:SettingsCard>
 
                             <wct:SettingsExpander x:Name="CardAuthenticate" IsExpanded="{x:Bind TglAuthenticate.IsOn, Mode=TwoWay}">
@@ -72,10 +72,6 @@
                                     </wct:SettingsCard>
                                 </wct:SettingsExpander.Items>
                             </wct:SettingsExpander>
-
-                            <ProgressRing x:Name="ProgRingUrl" Margin="0,6,0,6" Visibility="Collapsed"/>
-
-                            <Button x:Name="BtnValidate" HorizontalAlignment="Stretch" IsEnabled="False" Style="{ThemeResource AccentButtonStyle}" Click="Validate"/>
                         </StackPanel>
                     </nickvision:ViewStackPage>
 

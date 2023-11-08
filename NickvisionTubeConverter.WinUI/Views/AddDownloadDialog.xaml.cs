@@ -1,7 +1,7 @@
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
-using Microsoft.UI.Xaml.Input;
 using Nickvision.Aura;
+using Nickvision.Aura.Helpers;
 using NickvisionTubeConverter.Shared.Controllers;
 using NickvisionTubeConverter.Shared.Models;
 using NickvisionTubeConverter.WinUI.Controls;
@@ -11,7 +11,6 @@ using System.IO;
 using System.Threading.Tasks;
 using Windows.ApplicationModel.DataTransfer;
 using Windows.Storage.Pickers;
-using Windows.System;
 using static Nickvision.Aura.Localization.Gettext;
 
 namespace NickvisionTubeConverter.WinUI.Views;
@@ -39,6 +38,9 @@ public sealed partial class AddDownloadDialog : ContentDialog
         _audioQualities = new List<string>() { _("Best"), _("Worst") };
         //Localize Strings
         Title = _("Add Download");
+        SecondaryButtonText = _("Validate");
+        IsSecondaryButtonEnabled = false;
+        DefaultButton = ContentDialogButton.Secondary;
         CloseButtonText = _("Close");
         LblBtnBack.Text = _("Back");
         CardUrl.Header = _("Media URL");
@@ -51,7 +53,6 @@ public sealed partial class AddDownloadDialog : ContentDialog
         TxtUsername.PlaceholderText = _("Enter user name here");
         CardPassword.Header = _("Password");
         TxtPassword.PlaceholderText = _("Enter password here");
-        BtnValidate.Content = _("Validate");
         CardFileType.Header = _("File Type");
         CardQuality.Header = _("Quality");
         CardAudioLanguage.Header = _("Audio Language");
@@ -163,7 +164,7 @@ public sealed partial class AddDownloadDialog : ContentDialog
                     {
                         TxtUrl.Text = clipboardText;
                         TxtUrl.Select(clipboardText.Length, 0);
-                        BtnValidate.IsEnabled = true;
+                        IsSecondaryButtonEnabled = true;
                     }
                 }
             }
@@ -183,6 +184,11 @@ public sealed partial class AddDownloadDialog : ContentDialog
             CardPassword.Visibility = Visibility.Visible;
         }
         var res = await base.ShowAsync();
+        while (res == ContentDialogResult.Secondary)
+        {
+            await SearchUrlAsync(TxtUrl.Text);
+            res = await base.ShowAsync();
+        }
         if (res == ContentDialogResult.Primary)
         {
             Quality quality;
@@ -267,20 +273,7 @@ public sealed partial class AddDownloadDialog : ContentDialog
         if (!string.IsNullOrEmpty(TxtUrl.Text))
         {
             var result = Uri.TryCreate(TxtUrl.Text, UriKind.Absolute, out var uriResult) && (uriResult.Scheme == Uri.UriSchemeHttp || uriResult.Scheme == Uri.UriSchemeHttps);
-            BtnValidate.IsEnabled = result;
-        }
-    }
-
-    /// <summary>
-    /// Occurs when TxtUrl's key is pressed
-    /// </summary>
-    /// <param name="sender">object</param>
-    /// <param name="e">KeyRoutedEventArgs</param>
-    private async void TxtUrl_KeyDown(object sender, KeyRoutedEventArgs e)
-    {
-        if (e.Key == VirtualKey.Enter)
-        {
-            await SearchUrlAsync(TxtUrl.Text);
+            IsSecondaryButtonEnabled = result;
         }
     }
 
@@ -313,13 +306,6 @@ public sealed partial class AddDownloadDialog : ContentDialog
             CardPassword.Visibility = Visibility.Collapsed;
         }
     }
-
-    /// <summary>
-    /// Occurs when the validate button is clicked
-    /// </summary>
-    /// <param name="sender">object</param>
-    /// <param name="e">RoutedEventArgs</param>
-    private async void Validate(object sender, RoutedEventArgs e) => await SearchUrlAsync(TxtUrl.Text);
 
     /// <summary>
     /// Occurs when CmbFileType's selection is changed
@@ -474,9 +460,18 @@ public sealed partial class AddDownloadDialog : ContentDialog
     /// <param name="url">The URL to search</param>
     private async Task SearchUrlAsync(string url)
     {
-        CardUrl.Header = _("Media URL");
-        ProgRingUrl.Visibility = Visibility.Visible;
-        BtnValidate.IsEnabled = false;
+        var progressDialog = new ContentDialog()
+        {
+            Title = _("Validating"),
+            Content = new TextBlock()
+            {
+                HorizontalAlignment = HorizontalAlignment.Center,
+                VerticalAlignment = VerticalAlignment.Center,
+                Text = _("Please wait...")
+            },
+            XamlRoot = XamlRoot
+        };
+        progressDialog.ShowAsync().AsTask().FireAndForget();
         try
         {
             if (CmbKeyringCredentials.SelectedIndex == 0 || CmbKeyringCredentials.SelectedIndex == -1 || !TglAuthenticate.IsOn)
@@ -493,8 +488,7 @@ public sealed partial class AddDownloadDialog : ContentDialog
             Console.WriteLine(ex.Message);
             Console.WriteLine(ex.StackTrace);
         }
-        ProgRingUrl.Visibility = Visibility.Collapsed;
-        BtnValidate.IsEnabled = true;
+        progressDialog.Hide();
         if (!_controller.HasMediaInfo)
         {
             CardUrl.Header = _("Media URL (Invalid)");
@@ -539,6 +533,7 @@ public sealed partial class AddDownloadDialog : ContentDialog
             }
             ViewStack.CurrentPageName = "Download";
             PrimaryButtonText = _("Download");
+            SecondaryButtonText = null;
             IsPrimaryButtonEnabled = Directory.Exists(_saveFolderString);
             DefaultButton = ContentDialogButton.Primary;
             if (_controller.MediaList.Count > 1)

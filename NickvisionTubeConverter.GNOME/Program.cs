@@ -23,7 +23,7 @@ public partial class Program
     /// </summary>
     /// <param name="args">string[]</param>
     /// <returns>Return code from Adw.Application.Run()</returns>
-    public static int Main(string[] args) => new Program(args).Run(args);
+    public static int Main(string[] args) => new Program(args).Run();
 
     /// <summary>
     /// Constructs a Program
@@ -31,14 +31,16 @@ public partial class Program
     /// <param name="args">Command-line arguments</param>
     public Program(string[] args)
     {
-        _application = Adw.Application.New("org.nickvision.tubeconverter", Gio.ApplicationFlags.FlagsNone);
+        _application = Adw.Application.New("org.nickvision.tubeconverter", Gio.ApplicationFlags.HandlesOpen);
         _mainWindow = null;
-        _mainWindowController = new MainWindowController();
+        _mainWindowController = new MainWindowController(args);
         _mainWindowController.AppInfo.Changelog =
-            @"* Fixed an issue where aria's max connections per server preference was allowed to be greater than 16
+            @"* A URL can now be passed to Parabolic via the command-line or the freedesktop application open protocol to trigger its validation of startup
+              * Fixed an issue where aria's max connections per server preference was allowed to be greater than 16
               * Fixed an issue where enabling the ""Download Specific Timeframe"" advanced option would cause a crash for certain media downloads
               * Updated translations (Thanks everyone on Weblate!)";
         _application.OnActivate += OnActivate;
+        _application.OnOpen += OnOpen;
         if (File.Exists(Path.GetFullPath(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)!) + "/org.nickvision.tubeconverter.gresource"))
         {
             //Load file from program directory, required for `dotnet run`
@@ -60,18 +62,12 @@ public partial class Program
     /// <summary>
     /// Runs the program
     /// </summary>
-    /// <param name="args">Command-line arguments</param>
     /// <returns>Return code from Adw.Application.Run()</returns>
-    public int Run(string[] args)
+    public int Run()
     {
         try
         {
-            SynchronizationContext.SetSynchronizationContext(new GLib.Internal.MainLoopSynchronizationContext());
-            var argc = args.Length + 1;
-            var argv = new string[argc];
-            argv[0] = "org.nickvision.tubeconverter";
-            args.CopyTo(argv, 1);
-            return _application.Run(argc, argv);
+            return _application.RunWithSynchronizationContext();
         }
         catch (Exception ex)
         {
@@ -101,11 +97,27 @@ public partial class Program
         {
             _mainWindow!.SetVisible(true);
             _mainWindow!.Present();
+            if (!string.IsNullOrEmpty(_mainWindowController.UrlToLaunch))
+            {
+                await _mainWindow.AddDownloadAsync(_mainWindowController.UrlToLaunch);
+                _mainWindowController.UrlToLaunch = null;
+            }
         }
         else
         {
             _mainWindow = new MainWindow(_mainWindowController, _application);
             await _mainWindow.StartAsync();
         }
+    }
+
+    /// <summary>
+    /// Occurs when the application is opened
+    /// </summary>
+    /// <param name="sender">Gio.Application</param>
+    /// <param name="e">Gio.Application.OpenSignalArgs</param>
+    private void OnOpen(Gio.Application sender, Gio.Application.OpenSignalArgs e)
+    {
+        _mainWindowController.UrlToLaunch = e.Files[0].GetUri();
+        _application.Activate();
     }
 }

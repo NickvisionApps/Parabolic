@@ -182,13 +182,18 @@ public partial class MainWindow : Adw.ApplicationWindow
         _spinnerContainer.SetVisible(true);
         _mainBox.SetVisible(false);
         _spinner.Start();
-        await _controller.StartupAsync();
+        var urlToLaunch = await _controller.StartupAsync();
         _controller.TaskbarItem = await TaskbarItem.ConnectLinuxAsync(string.IsNullOrEmpty(Environment.GetEnvironmentVariable("SNAP")) ? $"{_controller.AppInfo.ID}.desktop" : "tube-converter_tube-converter.desktop");
         _spinner.Stop();
         _spinnerContainer.SetVisible(false);
         _mainBox.SetVisible(true);
         PreventSuspendWhenDownloadingChanged();
         RunInBackgroundChanged();
+        if (!string.IsNullOrEmpty(urlToLaunch))
+        {
+            await AddDownloadAsync(urlToLaunch);
+            _controller.UrlToLaunch = null;
+        }
     }
 
     /// <summary>
@@ -304,7 +309,7 @@ public partial class MainWindow : Adw.ApplicationWindow
     /// Prompts the AddDownloadDialog
     /// </summary>
     /// <param name="url">A url to pass to the dialog</param>
-    private async Task AddDownloadAsync(string? url)
+    public async Task AddDownloadAsync(string? url)
     {
         var addController = _controller.CreateAddDownloadDialogController();
         var addDialog = new AddDownloadDialog(addController, this);

@@ -119,6 +119,11 @@ public class Configuration : ConfigurationBase
     /// Whether or not to number titles
     /// </summary>
     public bool NumberTitles { get; set; }
+    /// <summary>
+    /// Whether or not to show the disclaimer on startup
+    /// </summary>
+    /// <remarks>Used on WinUI only</remarks>
+    public bool ShowDisclaimerOnStartup { get; set; }
 
     /// <summary>
     /// Constructs a Configuration
@@ -152,6 +157,7 @@ public class Configuration : ConfigurationBase
         PreviousVideoResolution = "";
         PreviousSubtitleState = false;
         NumberTitles = false;
+        ShowDisclaimerOnStartup = true;
     }
 
     /// <summary>

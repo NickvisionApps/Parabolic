@@ -33,16 +33,16 @@ SolidCompression=yes
 WizardStyle=modern
 PrivilegesRequired=admin
 DirExistsWarning=no
+CloseApplications=force
+ChangesEnvironment=yes
 AlwaysRestart=yes
-; In case a user chooses to not restart
-ChangesEnvironment=yes 
 
 [Code]
 procedure SetupDotnet();
 var
   ResultCode: Integer;
 begin
-  if not Exec(ExpandConstant('{app}\deps\dotnet-runtime-7.0.11-win-x64.exe'), '/install /quiet /norestart', '', SW_SHOWNORMAL, ewWaitUntilTerminated, ResultCode)
+  if not Exec(ExpandConstant('{app}\deps\dotnet-runtime-7.0.11-win-x64.exe'), '/install /quiet /norestart', '', SW_HIDE, ewWaitUntilTerminated, ResultCode)
   then
     MsgBox('Unable to install .NET . Please try again', mbError, MB_OK);
 end;
@@ -51,7 +51,7 @@ procedure SetupWinAppSDK();
 var
   ResultCode: Integer;
 begin
-  if not Exec(ExpandConstant('{app}\deps\WindowsAppRuntimeInstall-x64.exe'), '--quiet', '', SW_SHOWNORMAL, ewWaitUntilTerminated, ResultCode)
+  if not Exec(ExpandConstant('{app}\deps\WindowsAppRuntimeInstall-x64.exe'), '--quiet', '', SW_HIDE, ewWaitUntilTerminated, ResultCode)
   then
     MsgBox('Unable to install Windows App SDK. Please try again', mbError, MB_OK);
 end;
@@ -60,9 +60,19 @@ procedure SetupPython();
 var
   ResultCode: Integer;
 begin
-  if not Exec(ExpandConstant('{app}\deps\python-3.11.6-amd64.exe'), '/quiet InstallAllUsers=1 AppendPath=1 Include_test=0', '', SW_SHOWNORMAL, ewWaitUntilTerminated, ResultCode)
+  if not Exec(ExpandConstant('{app}\deps\python-3.11.6-amd64.exe'), '/quiet InstallAllUsers=1 AppendPath=1 Include_test=0', '', SW_HIDE, ewWaitUntilTerminated, ResultCode)
   then
-    MsgBox('Unable to install Python. Please try again', mbError, MB_OK);
+    MsgBox('Unable to install Python. Please try again. THE APP WILL NOT FUNCTION CORRECTLY.', mbError, MB_OK)
+  else begin
+    if not Exec(ExpandConstant('C:\Program Files\Python311\pythonw.exe'), '-m pip install -U psutil', '', SW_HIDE, ewWaitUntilTerminated, ResultCode)
+    then
+      MsgBox('Unable to install psutil. Please try again. THE APP WILL NOT FUNCTION CORRECTLY.', mbError, MB_OK)
+    else begin
+      if not Exec(ExpandConstant('C:\Program Files\Python311\pythonw.exe'), '-m pip install -U yt-dlp', '', SW_HIDE, ewWaitUntilTerminated, ResultCode)
+      then
+        MsgBox('Unable to install yt-dlp. Please try again. THE APP WILL NOT FUNCTION CORRECTLY.', mbError, MB_OK);
+    end;
+  end;
 end;
 
 [Languages]
