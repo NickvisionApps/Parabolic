@@ -31,7 +31,7 @@ public partial class Program
     /// <param name="args">Command-line arguments</param>
     public Program(string[] args)
     {
-        _application = Adw.Application.New("org.nickvision.tubeconverter", Gio.ApplicationFlags.FlagsNone);
+        _application = Adw.Application.New("org.nickvision.tubeconverter", Gio.ApplicationFlags.HandlesOpen);
         _mainWindow = null;
         _mainWindowController = new MainWindowController(args);
         _mainWindowController.AppInfo.Changelog =
@@ -40,6 +40,7 @@ public partial class Program
               * Fixed an issue where enabling the ""Download Specific Timeframe"" advanced option would cause a crash for certain media downloads
               * Updated translations (Thanks everyone on Weblate!)";
         _application.OnActivate += OnActivate;
+        _application.OnOpen += OnOpen;
         if (File.Exists(Path.GetFullPath(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)!) + "/org.nickvision.tubeconverter.gresource"))
         {
             //Load file from program directory, required for `dotnet run`
@@ -106,5 +107,16 @@ public partial class Program
             _mainWindow = new MainWindow(_mainWindowController, _application);
             await _mainWindow.StartAsync();
         }
+    }
+
+    /// <summary>
+    /// Occurs when the application is opened
+    /// </summary>
+    /// <param name="sender">Gio.Application</param>
+    /// <param name="e">Gio.Application.OpenSignalArgs</param>
+    private void OnOpen(Gio.Application sender, Gio.Application.OpenSignalArgs e)
+    {
+        _mainWindowController.UrlToLaunch = e.Files[0].GetUri();
+        _application.Activate();
     }
 }

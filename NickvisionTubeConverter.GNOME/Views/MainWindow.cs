@@ -182,16 +182,16 @@ public partial class MainWindow : Adw.ApplicationWindow
         _spinnerContainer.SetVisible(true);
         _mainBox.SetVisible(false);
         _spinner.Start();
-        var urlToValidate = await _controller.StartupAsync();
+        var urlToLaunch = await _controller.StartupAsync();
         _controller.TaskbarItem = await TaskbarItem.ConnectLinuxAsync(string.IsNullOrEmpty(Environment.GetEnvironmentVariable("SNAP")) ? $"{_controller.AppInfo.ID}.desktop" : "tube-converter_tube-converter.desktop");
         _spinner.Stop();
         _spinnerContainer.SetVisible(false);
         _mainBox.SetVisible(true);
         PreventSuspendWhenDownloadingChanged();
         RunInBackgroundChanged();
-        if (!string.IsNullOrEmpty(urlToValidate))
+        if (!string.IsNullOrEmpty(urlToLaunch))
         {
-            await AddDownloadAsync(urlToValidate);
+            await AddDownloadAsync(urlToLaunch);
         }
     }
 

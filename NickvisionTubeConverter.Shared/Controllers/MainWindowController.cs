@@ -91,11 +91,7 @@ public class MainWindowController : IDisposable
         _disposed = false;
         if (args.Length > 0)
         {
-            var result = Uri.TryCreate(args[0], UriKind.Absolute, out var uriResult) && (uriResult.Scheme == Uri.UriSchemeHttp || uriResult.Scheme == Uri.UriSchemeHttps);
-            if (result)
-            {
-                _urlToLaunch = args[0];
-            }
+            UrlToLaunch = args[0];
         }
         _pythonThreadState = IntPtr.Zero;
         _taskbarStopwatch = new Stopwatch();
@@ -139,6 +135,23 @@ public class MainWindowController : IDisposable
     /// Finalizes the MainWindowController
     /// </summary>
     ~MainWindowController() => Dispose(false);
+
+    /// <summary>
+    /// A url to set to launch on startup
+    /// </summary>
+    public string? UrlToLaunch
+    {
+        get => _urlToLaunch;
+
+        set
+        {
+            var result = Uri.TryCreate(value, UriKind.Absolute, out var uriResult) && (uriResult.Scheme == Uri.UriSchemeHttp || uriResult.Scheme == Uri.UriSchemeHttps);
+            if (result)
+            {
+                _urlToLaunch = value;
+            }
+        }
+    }
 
     /// <summary>
     /// The TaskbarItem to show progress
@@ -296,7 +309,7 @@ public class MainWindowController : IDisposable
             Configuration.Current.AriaMaxConnectionsPerServer = 16;
             Aura.Active.SaveConfig("config");
         }
-        return _urlToLaunch;
+        return UrlToLaunch;
     }
 
     /// <summary>
