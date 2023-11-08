@@ -237,7 +237,7 @@ public class MainWindowController : IDisposable
         //Setup Dependencies
         if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
         {
-            Runtime.PythonDLL = DependencyLocator.Find("python")!.Replace("python.exe", "python311.dll");
+            Runtime.PythonDLL = DependencyLocator.Find("python311.dll")!;
         }
         else
         {
@@ -305,17 +305,14 @@ public class MainWindowController : IDisposable
     /// </summary>
     public async Task CheckForUpdatesAsync()
     {
-        if (!AppInfo.IsDevVersion)
+        if (_updater == null)
         {
-            if (_updater == null)
-            {
-                _updater = await Updater.NewAsync();
-            }
-            var version = await _updater!.GetCurrentStableVersionAsync();
-            if (version != null && version > new Version(AppInfo.Version))
-            {
-                NotificationSent?.Invoke(this, new NotificationSentEventArgs(_("New update available."), NotificationSeverity.Success, "update"));
-            }
+            _updater = await Updater.NewAsync();
+        }
+        var version = await _updater!.GetCurrentStableVersionAsync();
+        if (version != null && (!AppInfo.IsDevVersion ? version > new Version(AppInfo.Version) : version >= new Version(AppInfo.Version.Remove(AppInfo.Version.IndexOf('-')))))
+        {
+            NotificationSent?.Invoke(this, new NotificationSentEventArgs(_("New update available."), NotificationSeverity.Success, "update"));
         }
     }
 
