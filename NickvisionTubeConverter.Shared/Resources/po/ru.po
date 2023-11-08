@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-11-07 21:58-0500\n"
+"POT-Creation-Date: 2023-11-08 10:56-0500\n"
 "PO-Revision-Date: 2023-11-07 16:35+0000\n"
 "Last-Translator: Fyodor Sobolev <fyodor-sobolev@protonmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -20,14 +20,14 @@ msgstr ""
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Generator: Weblate 5.2-dev\n"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:688
-#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:647
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:689
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:681
 #, csharp-format
 msgid "\"{0}\" has finished downloading."
 msgstr "\"{0}\" загружено."
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:688
-#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:647
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:689
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:681
 #, csharp-format
 msgid "\"{0}\" has finished with an error!"
 msgstr "\"{0}\" завершилось с ошибкой!"
@@ -134,8 +134,8 @@ msgstr "Добавить учётные данные"
 msgid "Advanced Options"
 msgstr "Дополнительные опции"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:692
-#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:651
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:693
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:685
 msgid "All downloads have finished."
 msgstr "Все загрузки завершены."
 
@@ -235,8 +235,8 @@ msgstr "Очистить очередь"
 msgid "Close"
 msgstr "Закрыть"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:271
-#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:184
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:272
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:218
 msgid "Close and Stop Downloads?"
 msgstr "Закрыть и остановить загрузки?"
 
@@ -413,6 +413,10 @@ msgstr ""
 msgid "Disallow Conversions"
 msgstr "Отключить конвертирование"
 
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:171
+msgid "Disclaimer"
+msgstr ""
+
 #: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:99
 msgid "Discussions"
 msgstr "Обсуждения"
@@ -420,6 +424,10 @@ msgstr "Обсуждения"
 #: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:96
 msgid "Documentation"
 msgstr "Документация"
+
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:167
+msgid "Don't show this message again"
+msgstr ""
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:535
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:208
@@ -432,13 +440,13 @@ msgstr "Загрузка"
 msgid "Download Again"
 msgstr "Скачать снова"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:688
-#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:647
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:689
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:681
 msgid "Download Finished"
 msgstr "Загрузка завершена"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:688
-#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:647
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:689
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:681
 msgid "Download Finished With Error"
 msgstr "Загрузка завершилась с ошибкой"
 
@@ -499,8 +507,8 @@ msgstr "Загрузка {0:f2}% ({1})"
 msgid "Downloading..."
 msgstr "Скачивание..."
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:692
-#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:651
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:693
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:685
 msgid "Downloads Finished"
 msgstr "Загрузки завершены"
 
@@ -630,7 +638,7 @@ msgstr "Firefox"
 msgid "Fyodor Sobolev"
 msgstr "Фёдор Соболев"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:531
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:532
 #: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:97
 msgid "GitHub Repo"
 msgstr "Репозиторий GitHub"
@@ -811,7 +819,7 @@ msgstr "Имя"
 msgid "Name (Empty)"
 msgstr "Имя (пустое)"
 
-#: ../../../Controllers/MainWindowController.cs:327
+#: ../../../Controllers/MainWindowController.cs:346
 msgid "New update available."
 msgstr "Доступно новое обновление."
 
@@ -822,15 +830,15 @@ msgstr "Nicholas Logozzo"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:254
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:317
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:273
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:274
 #: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringDialog.xaml.cs:180
 #: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringDialog.xaml.cs:258
-#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:187
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:221
 #: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:180
 msgid "No"
 msgstr "Нет"
 
-#: ../../../Controllers/MainWindowController.cs:303
+#: ../../../Controllers/MainWindowController.cs:317
 msgid "No active internet connection"
 msgstr "Отсутствует подключение к интернету"
 
@@ -897,6 +905,7 @@ msgstr "Выкл"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Controls/AboutDialog.xaml.cs:30
 #: ../../../../NickvisionTubeConverter.WinUI/Controls/DownloadRow.xaml.cs:206
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:187
 msgid "OK"
 msgstr "ОК"
 
@@ -1016,7 +1025,7 @@ msgid "Queued"
 msgstr "В очереди"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:120
-#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:590
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:624
 #, csharp-format
 msgid "Remaining Downloads: {0}"
 msgstr "Осталось загрузок: {0}"
@@ -1117,8 +1126,8 @@ msgstr "Настройки"
 msgid "Show Window"
 msgstr "Показать окно"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:271
-#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:185
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:272
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:219
 msgid ""
 "Some downloads are still in progress.\n"
 "Are you sure you want to close Parabolic and stop the running downloads?"
@@ -1201,7 +1210,8 @@ msgstr "Языки субтитров (Некорректные)"
 msgid "Success"
 msgstr "Успешно"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:527
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:528
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:182
 msgid ""
 "The authors of Nickvision Parabolic are not responsible/liable for any "
 "misuse of this program that may violate local copyright/DMCA laws. Users use "
@@ -1254,7 +1264,7 @@ msgstr "Фёдор Соболев https://github.com/fsobolev"
 msgid "Unable to disable keyring."
 msgstr "Невозможно отключить связку ключей."
 
-#: ../../../Controllers/MainWindowController.cs:343
+#: ../../../Controllers/MainWindowController.cs:362
 msgid "Unable to download and install update."
 msgstr "Не удалось скачать и установить обновление."
 
@@ -1268,7 +1278,7 @@ msgstr "Невозможно сбросить связку ключей."
 msgid "Undo Title Editing"
 msgstr "Отменить изменение заголовка"
 
-#: ../../../Controllers/MainWindowController.cs:285
+#: ../../../Controllers/MainWindowController.cs:299
 msgid "Unlock Keyring"
 msgstr "Разблокировать связку ключей"
 
@@ -1276,7 +1286,7 @@ msgstr "Разблокировать связку ключей"
 msgid "Unset Cookies File"
 msgstr "Сбросить файл куки"
 
-#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:292
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:326
 msgid "Update"
 msgstr "Обновить"
 
@@ -1379,10 +1389,10 @@ msgstr ""
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:257
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:320
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:276
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:277
 #: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringDialog.xaml.cs:179
 #: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringDialog.xaml.cs:257
-#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:186
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:220
 #: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:179
 msgid "Yes"
 msgstr "Да"

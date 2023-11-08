@@ -137,6 +137,16 @@ public class MainWindowController : IDisposable
     ~MainWindowController() => Dispose(false);
 
     /// <summary>
+    /// Whether or not to show the disclaimer on startup
+    /// </summary>
+    public bool ShowDisclaimerOnStartup
+    {
+        get => Configuration.Current.ShowDisclaimerOnStartup;
+
+        set => Configuration.Current.ShowDisclaimerOnStartup = value;
+    }
+
+    /// <summary>
     /// A url to set to launch on startup
     /// </summary>
     public string? UrlToLaunch
@@ -315,6 +325,11 @@ public class MainWindowController : IDisposable
         }
         return UrlToLaunch;
     }
+
+    /// <summary>
+    /// Saves the app's configuration file to disk
+    /// </summary>
+    public void SaveConfig() => Aura.Active.SaveConfig("config");
 
     /// <summary>
     /// Checks for an application update and notifies the user if one is available

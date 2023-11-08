@@ -160,6 +160,40 @@ public sealed partial class MainWindow : Window
             MainMenu.IsEnabled = true;
             ViewStack.CurrentPageName = "Home";
             PreventSuspendWhenDownloadingChanged(null, EventArgs.Empty);
+            if(_controller.ShowDisclaimerOnStartup)
+            {
+                var chkShow = new CheckBox()
+                {
+                    Content = _("Don't show this message again")
+                };
+                var disclaimerDialog = new ContentDialog()
+                {
+                    Title = _("Disclaimer"),
+                    Content = new StackPanel()
+                    {
+                        Orientation = Orientation.Vertical,
+                        Spacing = 6,
+                        Children =
+                        {
+                            new TextBlock()
+                            {
+                                MaxWidth = 400,
+                                TextWrapping = TextWrapping.WrapWholeWords,
+                                Text = _("The authors of Nickvision Parabolic are not responsible/liable for any misuse of this program that may violate local copyright/DMCA laws. Users use this application at their own risk."),
+                            },
+                            chkShow
+                        }
+                    },
+                    CloseButtonText = _("OK"),
+                    DefaultButton = ContentDialogButton.Close,
+                    XamlRoot = MainGrid.XamlRoot
+                };
+                _isContentDialogShowing = true;
+                await disclaimerDialog.ShowAsync();
+                _isContentDialogShowing = false;
+                _controller.ShowDisclaimerOnStartup = !chkShow.IsChecked ?? true;
+                _controller.SaveConfig();
+            }
             _isOpened = true;
         }
     }
