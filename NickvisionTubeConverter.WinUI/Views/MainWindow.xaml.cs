@@ -98,8 +98,6 @@ public sealed partial class MainWindow : Window
         MenuReportABug.Text = _("Report a Bug");
         MenuDiscussions.Text = _("Discussions");
         MenuAbout.Text = _("About {0}", _controller.AppInfo.ShortName);
-        LblStartup.Text = _("Preparing required tools...");
-        LblStartup2.Text = _("This may take a while");
         StatusPageHome.Title = _("Download Media");
         StatusPageHome.Description = _("Add a video, audio, or playlist URL to start downloading");
         LblBtnHomeAddDownload.Text = _("Add Download");
@@ -158,6 +156,7 @@ public sealed partial class MainWindow : Window
             ViewStack.CurrentPageName = "Startup";
             var accent = (SolidColorBrush)Application.Current.Resources["AccentFillColorDefaultBrush"];
             _controller.TaskbarItem = TaskbarItem.ConnectWindows(_hwnd, new System.Drawing.SolidBrush(System.Drawing.Color.FromArgb(accent.Color.A, accent.Color.R, accent.Color.G, accent.Color.B)), MainGrid.ActualTheme == ElementTheme.Dark ? System.Drawing.Brushes.Black : System.Drawing.Brushes.White);
+            await Task.Delay(1); //Crash without this
             await _controller.StartupAsync();
             MainMenu.IsEnabled = true;
             ViewStack.CurrentPageName = "Home";

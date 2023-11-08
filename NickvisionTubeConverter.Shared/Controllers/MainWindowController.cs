@@ -216,7 +216,7 @@ public class MainWindowController : IDisposable
     /// Starts the application
     /// </summary>
     /// <returns>A URL to validate on startup</returns>
-    public async Task<string> StartupAsync()
+    public async Task<string?> StartupAsync()
     {
         //Update app
         if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows) && Configuration.Current.AutomaticallyCheckForUpdates)
@@ -235,54 +235,35 @@ public class MainWindowController : IDisposable
         }
         catch { }
         //Setup Dependencies
-        try
+        if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
         {
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-            {
-                Runtime.PythonDLL = DependencyLocator.Find("python")!.Replace("python.exe", "python311.dll");
-            }
-            else
-            {
-                using var process = new Process
-                {
-                    StartInfo = new ProcessStartInfo
-                    {
-                        FileName = DependencyLocator.Find("python3"),
-                        Arguments = "-c \"import sysconfig; import os; print(('/snap/tube-converter/current/gnome-platform' if os.environ.get('SNAP') else '') + ('/'.join(sysconfig.get_config_vars('LIBDIR', 'INSTSONAME'))))\"",
-                        UseShellExecute = false,
-                        RedirectStandardOutput = true
-                    }
-                };
-                process.Start();
-                Runtime.PythonDLL = process.StandardOutput.ReadToEnd().Trim();
-                await process.WaitForExitAsync();
-            }
-            // Install yt-dlp plugin
-            var pluginPath = $"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}{Path.DirectorySeparatorChar}yt-dlp{Path.DirectorySeparatorChar}plugins{Path.DirectorySeparatorChar}tubeconverter{Path.DirectorySeparatorChar}yt_dlp_plugins{Path.DirectorySeparatorChar}postprocessor{Path.DirectorySeparatorChar}tubeconverter.py";
-            Directory.CreateDirectory(pluginPath.Substring(0, pluginPath.LastIndexOf(Path.DirectorySeparatorChar)));
-            using var pluginResource = Assembly.GetExecutingAssembly().GetManifestResourceStream("NickvisionTubeConverter.Shared.Resources.tubeconverter.py")!;
-            using var pluginFile = new FileStream(pluginPath, FileMode.Create, FileAccess.Write);
-            pluginResource.CopyTo(pluginFile);
-            RuntimeData.FormatterType = typeof(NoopFormatter);
-            PythonEngine.Initialize();
-            _pythonThreadState = PythonEngine.BeginAllowThreads();
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-            {
-                await Task.Run(() =>
-                {
-                    using (Py.GIL())
-                    {
-                        dynamic subprocess = Py.Import("subprocess");
-                        subprocess.check_call(new List<dynamic>() { DependencyLocator.Find("pythonw")!, "-m", "pip", "install", "-U", "psutil" });
-                        subprocess.check_call(new List<dynamic>() { DependencyLocator.Find("pythonw")!, "-m", "pip", "install", "-U", "yt-dlp" });
-                    }
-                });
-            }
+            Runtime.PythonDLL = DependencyLocator.Find("python")!.Replace("python.exe", "python311.dll");
         }
-        catch (Exception ex)
+        else
         {
-            NotificationSent?.Invoke(this, new NotificationSentEventArgs(_("Unable to setup dependencies. Please restart the app and try again."), NotificationSeverity.Error));
+            using var process = new Process
+            {
+                StartInfo = new ProcessStartInfo
+                {
+                    FileName = DependencyLocator.Find("python3"),
+                    Arguments = "-c \"import sysconfig; import os; print(('/snap/tube-converter/current/gnome-platform' if os.environ.get('SNAP') else '') + ('/'.join(sysconfig.get_config_vars('LIBDIR', 'INSTSONAME'))))\"",
+                    UseShellExecute = false,
+                    RedirectStandardOutput = true
+                }
+            };
+            process.Start();
+            Runtime.PythonDLL = process.StandardOutput.ReadToEnd().Trim();
+            await process.WaitForExitAsync();
         }
+        // Install yt-dlp plugin
+        var pluginPath = $"{Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)}{Path.DirectorySeparatorChar}yt-dlp{Path.DirectorySeparatorChar}plugins{Path.DirectorySeparatorChar}tubeconverter{Path.DirectorySeparatorChar}yt_dlp_plugins{Path.DirectorySeparatorChar}postprocessor{Path.DirectorySeparatorChar}tubeconverter.py";
+        Directory.CreateDirectory(pluginPath.Substring(0, pluginPath.LastIndexOf(Path.DirectorySeparatorChar)));
+        using var pluginResource = Assembly.GetExecutingAssembly().GetManifestResourceStream("NickvisionTubeConverter.Shared.Resources.tubeconverter.py")!;
+        using var pluginFile = new FileStream(pluginPath, FileMode.Create, FileAccess.Write);
+        pluginResource.CopyTo(pluginFile);
+        RuntimeData.FormatterType = typeof(NoopFormatter);
+        PythonEngine.Initialize();
+        _pythonThreadState = PythonEngine.BeginAllowThreads();
         //Setup Keyring
         if (Keyring.Exists(AppInfo.ID))
         {
