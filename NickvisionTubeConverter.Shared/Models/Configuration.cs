@@ -29,6 +29,7 @@ public class Configuration : ConfigurationBase
     /// <summary>
     /// Whether to allow running in the background
     /// </summary>
+    /// <remarks>Only used on GNOME running via Flatpak</remarks>
     public bool RunInBackground { get; set; }
     /// <summary>
     /// The maximum number of active downloads (should be between 1-10)
