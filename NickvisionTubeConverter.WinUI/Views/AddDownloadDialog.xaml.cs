@@ -105,7 +105,7 @@ public sealed partial class AddDownloadDialog : ContentDialog
         LblSaveFolder.Text = Path.GetFileName(_saveFolderString);
         TglSubtitle.IsOn = _controller.PreviousSubtitleState;
         CardSpeedLimit.Description = $"{_("{0:f1} KiB/s", _controller.CurrentSpeedLimit)} {_("(Configurable in preferences)")}";
-        CardCropThumbnail.IsEnabled = _controller.EmbedMetadata;
+        CardCropThumbnail.Visibility = _controller.EmbedMetadata ? Visibility.Visible : Visibility.Collapsed;
     }
 
     /// <summary>
@@ -319,13 +319,13 @@ public sealed partial class AddDownloadDialog : ContentDialog
             CmbQuality.ItemsSource = _controller.VideoResolutions;
             var findPrevious = _controller.PreviousVideoResolutionIndex;
             CmbQuality.SelectedIndex = findPrevious != -1 ? findPrevious : 0;
-            CardSubtitle.IsEnabled = true;
+            CardSubtitle.Visibility = Visibility.Visible;
         }
         else
         {
             CmbQuality.ItemsSource = _audioQualities;
             CmbQuality.SelectedIndex = 0;
-            CardSubtitle.IsEnabled = false;
+            CardSubtitle.Visibility = Visibility.Collapsed;
         }
         if (_controller.CropAudioThumbnails)
         {
@@ -420,7 +420,7 @@ public sealed partial class AddDownloadDialog : ContentDialog
         {
             CardDownloadTimeframe.IsExpanded = false;
         }
-        CardDownloadTimeframe.IsEnabled = !TglSpeedLimit.IsOn && _controller.MediaList.Count == 1 && _controller.MediaList[0].Duration > 0;
+        CardDownloadTimeframe.Visibility = (!TglSpeedLimit.IsOn && _controller.MediaList.Count == 1 && _controller.MediaList[0].Duration > 0) ? Visibility.Visible : Visibility.Collapsed;
     }
 
     /// <summary>
@@ -436,7 +436,7 @@ public sealed partial class AddDownloadDialog : ContentDialog
             TxtTimeframeStart.Text = TimeSpan.FromSeconds(0).ToString(@"hh\:mm\:ss");
             TxtTimeframeEnd.Text = TimeSpan.FromSeconds(_controller.MediaList[0].Duration).ToString(@"hh\:mm\:ss");
         }
-        CardSpeedLimit.IsEnabled = !TglDownloadTimeframe.IsOn;
+        CardSpeedLimit.Visibility = !TglDownloadTimeframe.IsOn ? Visibility.Visible : Visibility.Collapsed;
         ValidateOptions();
     }
 
@@ -528,7 +528,7 @@ public sealed partial class AddDownloadDialog : ContentDialog
             }
             if (_controller.AudioLanguages.Count > 1)
             {
-                CardAudioLanguage.IsEnabled = true;
+                CardAudioLanguage.Visibility = Visibility.Visible;
                 CmbAudioLanguage.ItemsSource = _controller.AudioLanguages;
             }
             ViewStack.CurrentPageName = "Download";
@@ -541,7 +541,7 @@ public sealed partial class AddDownloadDialog : ContentDialog
                 CardQuality.Header = _("Maximum Quality");
                 OpenPlaylistGroup.Visibility = Visibility.Visible;
                 CardOpenPlaylist.Header = _n("{0} of {1} items", "{0} of {1} items", _controller.MediaList.Count, _controller.MediaList.Count, _controller.MediaList.Count);
-                CardDownloadTimeframe.IsEnabled = false;
+                CardDownloadTimeframe.Visibility = Visibility.Collapsed;
                 if (_controller.NumberTitles)
                 {
                     TglNumberTitles.IsOn = true;
@@ -555,7 +555,7 @@ public sealed partial class AddDownloadDialog : ContentDialog
             }
             else
             {
-                CardDownloadTimeframe.IsEnabled = _controller.MediaList[0].Duration > 0;
+                CardDownloadTimeframe.Visibility = _controller.MediaList[0].Duration > 0 ? Visibility.Visible : Visibility.Collapsed;
                 StackDownload.Children.Insert(StackDownload.Children.IndexOf(CardAdvancedOptions) + 1, new MediaRow(_controller.MediaList[0])
                 {
                     Margin = new Thickness(0, 12, 0, 0)

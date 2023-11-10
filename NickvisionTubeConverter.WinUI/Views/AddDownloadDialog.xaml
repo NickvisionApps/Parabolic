@@ -76,7 +76,7 @@
                     </nickvision:ViewStackPage>
 
                     <nickvision:ViewStackPage PageName="Download">
-                        <StackPanel x:Name="StackDownload" Orientation="Vertical" Spacing="6">
+                        <StackPanel x:Name="StackDownload" Orientation="Vertical">
                             <wct:SettingsCard x:Name="CardFileType">
                                 <wct:SettingsCard.HeaderIcon>
                                     <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE130;"/>
@@ -95,7 +95,7 @@
                                 </ComboBox>
                             </wct:SettingsCard>
 
-                            <wct:SettingsCard x:Name="CardQuality">
+                            <wct:SettingsCard x:Name="CardQuality" Margin="0,6,0,0">
                                 <wct:SettingsCard.HeaderIcon>
                                     <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE9F5;"/>
                                 </wct:SettingsCard.HeaderIcon>
@@ -103,7 +103,7 @@
                                 <ComboBox x:Name="CmbQuality"/>
                             </wct:SettingsCard>
 
-                            <wct:SettingsCard x:Name="CardAudioLanguage" IsEnabled="False">
+                            <wct:SettingsCard x:Name="CardAudioLanguage" Margin="0,6,0,0" Visibility="Collapsed">
                                 <wct:SettingsCard.HeaderIcon>
                                     <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE189;"/>
                                 </wct:SettingsCard.HeaderIcon>
@@ -111,7 +111,7 @@
                                 <ComboBox x:Name="CmbAudioLanguage"/>
                             </wct:SettingsCard>
 
-                            <wct:SettingsCard x:Name="CardSubtitle" IsEnabled="False">
+                            <wct:SettingsCard x:Name="CardSubtitle" Margin="0,6,0,0" Visibility="Collapsed">
                                 <wct:SettingsCard.HeaderIcon>
                                     <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xED1E;"/>
                                 </wct:SettingsCard.HeaderIcon>
@@ -135,7 +135,7 @@
                                 </StackPanel>
                             </wct:SettingsCard>
 
-                            <wct:SettingsCard x:Name="CardAdvancedOptions" IsClickEnabled="True" IsActionIconVisible="True" Click="OpenAdvancedOptions">
+                            <wct:SettingsCard x:Name="CardAdvancedOptions" Margin="0,6,0,0" IsClickEnabled="True" IsActionIconVisible="True" Click="OpenAdvancedOptions">
                                 <wct:SettingsCard.HeaderIcon>
                                     <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE15E;"/>
                                 </wct:SettingsCard.HeaderIcon>
@@ -206,7 +206,7 @@
                     </nickvision:ViewStackPage>
 
                     <nickvision:ViewStackPage PageName="Advanced">
-                        <StackPanel Orientation="Vertical" Spacing="6">
+                        <StackPanel Orientation="Vertical">
                             <wct:SettingsCard x:Name="CardSpeedLimit">
                                 <wct:SettingsCard.HeaderIcon>
                                     <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xEC4A;"/>
@@ -215,7 +215,7 @@
                                 <ToggleSwitch x:Name="TglSpeedLimit" Toggled="TglSpeedLimit_Toggled"/>
                             </wct:SettingsCard>
 
-                            <wct:SettingsCard x:Name="CardSplitChapters">
+                            <wct:SettingsCard x:Name="CardSplitChapters" Margin="0,6,0,0">
                                 <wct:SettingsCard.HeaderIcon>
                                     <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE16B;"/>
                                 </wct:SettingsCard.HeaderIcon>
@@ -223,7 +223,7 @@
                                 <ToggleSwitch x:Name="TglSplitChapters"/>
                             </wct:SettingsCard>
 
-                            <wct:SettingsCard x:Name="CardCropThumbnail">
+                            <wct:SettingsCard x:Name="CardCropThumbnail" Margin="0,6,0,0">
                                 <wct:SettingsCard.HeaderIcon>
                                     <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE158;"/>
                                 </wct:SettingsCard.HeaderIcon>
@@ -231,7 +231,7 @@
                                 <ToggleSwitch x:Name="TglCropThumbnail"/>
                             </wct:SettingsCard>
 
-                            <wct:SettingsExpander x:Name="CardDownloadTimeframe" IsExpanded="{x:Bind TglDownloadTimeframe.IsOn, Mode=TwoWay}">
+                            <wct:SettingsExpander x:Name="CardDownloadTimeframe" Margin="0,6,0,0" IsExpanded="{x:Bind TglDownloadTimeframe.IsOn, Mode=TwoWay}">
                                 <wct:SettingsExpander.HeaderIcon>
                                     <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xF182;"/>
                                 </wct:SettingsExpander.HeaderIcon>
