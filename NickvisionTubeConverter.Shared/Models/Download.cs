@@ -298,13 +298,13 @@ public class Download
                         {
                             subtitleLangsString = subtitleLangsString.Remove(subtitleLangsString.Length - 1);
                         }
+                        var subtitleLangs = subtitleLangsString.Split(',').Select(x => x.Trim());
                         if (subtitleLangsString == _p("subtitle", "all") || subtitleLangsString == "all")
                         {
                             _ytOpt.Add("subtitleslangs", new List<string>() { "all" });
                         }
-                        else
+                        else if(options.IncludeAutoGenertedSubtitles)
                         {
-                            var subtitleLangs = subtitleLangsString.Split(',').Select(x => x.Trim());
                             var subtitleFromEnglishLangs = new List<string>();
                             foreach(var l in subtitleLangs)
                             {
@@ -318,6 +318,10 @@ public class Download
                                 }
                             }
                             _ytOpt.Add("subtitleslangs", subtitleLangs.Union(subtitleFromEnglishLangs).ToList());
+                        }
+                        else
+                        {
+                            _ytOpt.Add("subtitleslangs", subtitleLangs.ToList());
                         }
                         postProcessors.Add(new Dictionary<string, dynamic>() { { "key", "TCSubtitlesConvertor" }, { "format", "vtt" } });
                         if (options.EmbedSubtitle)
