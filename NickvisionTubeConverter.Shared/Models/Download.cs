@@ -291,18 +291,34 @@ public class Download
                     }
                     if (Subtitle)
                     {
-                        var subtitleLangs = options.SubtitleLangs;
-                        if (subtitleLangs[^1] == ',')
-                        {
-                            subtitleLangs = subtitleLangs.Remove(subtitleLangs.Length - 1);
-                        }
-                        if (subtitleLangs == _p("subtitle", "all") || subtitleLangs == "all")
-                        {
-                            subtitleLangs = "all";
-                        }
                         _ytOpt.Add("writesubtitles", true);
                         _ytOpt.Add("writeautomaticsub", options.IncludeAutoGenertedSubtitles);
-                        _ytOpt.Add("subtitleslangs", subtitleLangs.Split(",").Select(x => x.Trim()).ToList());
+                        var subtitleLangsString = options.SubtitleLangs;
+                        if (subtitleLangsString[^1] == ',')
+                        {
+                            subtitleLangsString = subtitleLangsString.Remove(subtitleLangsString.Length - 1);
+                        }
+                        if (subtitleLangsString == _p("subtitle", "all") || subtitleLangsString == "all")
+                        {
+                            _ytOpt.Add("subtitleslangs", new List<string>() { "all" });
+                        }
+                        else
+                        {
+                            var subtitleLangs = subtitleLangsString.Split(',').Select(x => x.Trim());
+                            var subtitleFromEnglishLangs = new List<string>();
+                            foreach(var l in subtitleLangs)
+                            {
+                                if(l.Length == 2 || l.Length == 3)
+                                {
+                                    var fromEnglish = $"{l}-en";
+                                    if(!subtitleFromEnglishLangs.Contains(fromEnglish))
+                                    {
+                                        subtitleFromEnglishLangs.Add(fromEnglish);
+                                    }
+                                }
+                            }
+                            _ytOpt.Add("subtitleslangs", subtitleLangs.Union(subtitleFromEnglishLangs).ToList());
+                        }
                         postProcessors.Add(new Dictionary<string, dynamic>() { { "key", "TCSubtitlesConvertor" }, { "format", "vtt" } });
                         if (options.EmbedSubtitle)
                         {
