@@ -107,6 +107,7 @@ public sealed partial class MainWindow : Window
         LblDownloading.Text = _("Downloading");
         BtnStopAllDownloads.Label = _("Stop All Downloads");
         StatusPageDownloading.Title = _("No Downloads Running");
+        LblBtnShowCompleted.Text = _("Show Completed");
         StatusPageQueued.Title = _("No Queued Downloads");
         StatusPageCompleted.Title = _("No Completed Downloads");
         NavItemQueued.Content = _("Queued");
@@ -610,6 +611,13 @@ public sealed partial class MainWindow : Window
         var tag = (string)((NavViewDownloads.SelectedItem as NavigationViewItem)!.Tag);
         ViewStackDownloads.CurrentPageName = tag;
     }
+
+    /// <summary>
+    /// Occurs when BtnShowCompleted is clicked
+    /// </summary>
+    /// <param name="sender">object</param>
+    /// <param name="e">RoutedEventArgs</param>
+    private void ShowCompleted(object sender, RoutedEventArgs e) => NavItemCompleted.IsSelected = true;
 
     /// <summary>
     /// Updates the UI based on the current DownloadManager state

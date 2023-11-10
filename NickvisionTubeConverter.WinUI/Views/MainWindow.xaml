@@ -288,7 +288,19 @@
                                             <nickvision:ViewStack x:Name="ViewStackDownloading" Grid.Row="2">
                                                 <nickvision:ViewStack.Pages>
                                                     <nickvision:ViewStackPage PageName="No">
-                                                        <nickvision:StatusPage x:Name="StatusPageDownloading" HorizontalAlignment="Center" VerticalAlignment="Center" Glyph="&#xE118;"/>
+                                                        <nickvision:StatusPage x:Name="StatusPageDownloading" HorizontalAlignment="Center" VerticalAlignment="Center" Glyph="&#xE118;">
+                                                            <nickvision:StatusPage.Child>
+                                                                <Button x:Name="BtnShowCompleted" HorizontalAlignment="Center" Click="ShowCompleted">
+                                                                    <Button.Content>
+                                                                        <StackPanel Orientation="Horizontal" Spacing="6">
+                                                                            <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" FontSize="16" Glyph="&#xE73E;"/>
+
+                                                                            <TextBlock x:Name="LblBtnShowCompleted" TextWrapping="WrapWholeWords"/>
+                                                                        </StackPanel>
+                                                                    </Button.Content>
+                                                                </Button>
+                                                            </nickvision:StatusPage.Child>
+                                                        </nickvision:StatusPage>
                                                     </nickvision:ViewStackPage>
 
                                                     <nickvision:ViewStackPage PageName="Has">
