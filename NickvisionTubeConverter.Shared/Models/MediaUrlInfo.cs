@@ -74,19 +74,19 @@ public class MediaUrlInfo
                         { "ignoreerrors", true },
                         { "extract_flat", "in_playlist" }
                     };
-                    string? lang = null;
+                    string? metadataLang = null;
                     if (Download.YoutubeLangCodes.Contains(CultureInfo.CurrentCulture.Name))
                     {
-                        lang = CultureInfo.CurrentCulture.Name;
+                        metadataLang = CultureInfo.CurrentCulture.Name;
                     }
                     else if (Download.YoutubeLangCodes.Contains(CultureInfo.CurrentCulture.TwoLetterISOLanguageName))
                     {
-                        lang = CultureInfo.CurrentCulture.TwoLetterISOLanguageName;
+                        metadataLang = CultureInfo.CurrentCulture.TwoLetterISOLanguageName;
                     }
-                    if (!string.IsNullOrEmpty(lang))
+                    if (!string.IsNullOrEmpty(metadataLang))
                     {
                         var youtubeLang = new PyList();
-                        youtubeLang.Append(new PyString(lang));
+                        youtubeLang.Append(new PyString(metadataLang));
                         var youtubeExtractorOpt = new PyDict();
                         youtubeExtractorOpt["lang"] = youtubeLang;
                         var extractorArgs = new PyDict();

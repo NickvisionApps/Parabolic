@@ -27,7 +27,7 @@ public enum Quality
 /// </summary>
 public class Download
 {
-    internal static string[] YoutubeLangCodes = { "af", "az", "id", "ms", "bs", "ca", "cs", "da", "de", "et", "en-IN", "en-GB", "en", "es", "es-419", "es-US", "eu", "fil", "fr", "fr-CA", "gl", "hr", "zu", "is", "it", "sw", "lv", "lt", "hu", "nl", "no", "uz", "pl", "pt-PT", "pt", "ro", "sq", "sk", "sl", "sr-Latn", "fi", "sv", "vi", "tr", "be", "bg", "ky", "kk", "mk", "mn", "ru", "sr", "uk", "el", "hy", "iw", "ur", "ar", "fa", "ne", "mr", "hi", "as", "bn", "pa", "gu", "or", "ta", "te", "kn", "ml", "si", "th", "lo", "my", "ka", "am", "km", "zh-CN", "zh-TW", "zh-HK", "ja", "ko" };
+    internal static readonly string[] YoutubeLangCodes = { "af", "az", "id", "ms", "bs", "ca", "cs", "da", "de", "et", "en-IN", "en-GB", "en", "es", "es-419", "es-US", "eu", "fil", "fr", "fr-CA", "gl", "hr", "zu", "is", "it", "sw", "lv", "lt", "hu", "nl", "no", "uz", "pl", "pt-PT", "pt", "ro", "sq", "sk", "sl", "sr-Latn", "fi", "sv", "vi", "tr", "be", "bg", "ky", "kk", "mk", "mn", "ru", "sr", "uk", "el", "hy", "iw", "ur", "ar", "fa", "ne", "mr", "hi", "as", "bn", "pa", "gu", "or", "ta", "te", "kn", "ml", "si", "th", "lo", "my", "ka", "am", "km", "zh-CN", "zh-TW", "zh-HK", "ja", "ko" };
 
     private readonly string _tempDownloadPath;
     private readonly string _logPath;
@@ -202,19 +202,19 @@ public class Download
                     { "overwrites", options.OverwriteExistingFiles },
                     { "noprogress", true }
                 };
-                string? lang = null;
+                string? metadataLang = null;
                 if (YoutubeLangCodes.Contains(CultureInfo.CurrentCulture.Name))
                 {
-                    lang = CultureInfo.CurrentCulture.Name;
+                    metadataLang = CultureInfo.CurrentCulture.Name;
                 }
                 else if (YoutubeLangCodes.Contains(CultureInfo.CurrentCulture.TwoLetterISOLanguageName))
                 {
-                    lang = CultureInfo.CurrentCulture.TwoLetterISOLanguageName;
+                    metadataLang = CultureInfo.CurrentCulture.TwoLetterISOLanguageName;
                 }
-                if (!string.IsNullOrEmpty(lang))
+                if (!string.IsNullOrEmpty(metadataLang))
                 {
                     var youtubeLang = new PyList();
-                    youtubeLang.Append(new PyString(lang));
+                    youtubeLang.Append(new PyString(metadataLang));
                     var youtubeExtractorOpt = new PyDict();
                     youtubeExtractorOpt["lang"] = youtubeLang;
                     var extractorArgs = new PyDict();
