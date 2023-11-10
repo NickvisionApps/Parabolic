@@ -10,6 +10,18 @@ public class DownloadOptions
     /// </summary>
     public bool OverwriteExistingFiles { get; init; }
     /// <summary>
+    /// Limit characters in filenames to Windows supported
+    /// </summary>
+    public bool LimitCharacters { get; init; }
+    /// <summary>
+    /// A comma separated list of language codes for subtitle downloads
+    /// </summary>
+    public string SubtitleLangs { get; init; }
+    /// <summary>
+    /// Whether or not to include and download auto-generated subtitles
+    /// </summary>
+    public bool IncludeAutoGenertedSubtitles { get; init; }
+    /// <summary>
     /// Whether or not to use aria2 for the download
     /// </summary>
     public bool UseAria { get; init; }
@@ -22,21 +34,21 @@ public class DownloadOptions
     /// </summary>
     public int AriaMinSplitSize { get; init; }
     /// <summary>
-    /// Whether or not to use the SponsorBlock extension for YouTube downloads
+    /// Speed limit in KiB/s (should be between 512-10240)
     /// </summary>
-    public bool YouTubeSponsorBlock { get; init; }
-    /// <summary>
-    /// A comma separated list of language codes for subtitle downloads
-    /// </summary>
-    public string SubtitleLangs { get; init; }
+    public uint SpeedLimit { get; init; }
     /// <summary>
     /// The url of the proxy server to use
     /// </summary>
-    public string ProxyUrl { get; set; }
+    public string ProxyUrl { get; init; }
     /// <summary>
     /// The path to the cookies file to use for yt-dlp
     /// </summary>
     public string CookiesPath { get; init; }
+    /// <summary>
+    /// Whether or not to use the SponsorBlock extension for YouTube downloads
+    /// </summary>
+    public bool YouTubeSponsorBlock { get; init; }
     /// <summary>
     /// Whether or not to embed media metadata in the downloaded file
     /// </summary>
@@ -51,38 +63,51 @@ public class DownloadOptions
     /// </summary>
     public bool EmbedChapters { get; init; }
     /// <summary>
-    /// Whether or not to embed subtitle in the downloaded file
+    /// Whether or not to embed subtitles in the downloaded file
     /// </summary>
     public bool EmbedSubtitle { get; init; }
 
     /// <summary>
     /// Constructs a DownloadOptions
     /// </summary>
-    /// <param name="overwriteExistingFiles">Whether or not to overwrite existing files</param>
-    /// <param name="useAria">Whether or not to use aria2 for the download</param>
-    /// <param name="ariaMaxConnectionsPerServer">The maximum number of connections to one server for each download (-x)</param>
-    /// <param name="ariaMinSplitSize">The minimum size of which to split a file (-k)</param>
-    /// <param name="youTubeSponsorBlock">Whether or not to use the SponsorBlock extension for YouTube downloads</param>
-    /// <param name="subtitleLangs">A comma separated list of language codes for subtitle downloads</param>
-    /// <param name="proxyUrl">The url of the proxy server to use</param>
-    /// <param name="cookiesPath">The path to the cookies file to use for yt-dlp</param>
-    /// <param name="embedMetadata">Whether or not to embed media metadata in the downloaded file</param>
-    /// <param name="removeSourceData">Whether or not to remove data about media source from metadata</param>
-    /// <param name="embedChapters">Whether or not to embed chapters in the downloaded file</param>
-    /// <param name="embedSubtitle">Whether or not to embed subtitle in the downloaded file</param>
-    public DownloadOptions(bool overwriteExistingFiles, bool useAria, int ariaMaxConnectionsPerServer, int ariaMinSplitSize, bool youTubeSponsorBlock, string subtitleLangs, string proxyUrl, string cookiesPath, bool embedMetadata, bool removeSourceData, bool embedChapters, bool embedSubtitle)
+    public DownloadOptions()
     {
-        OverwriteExistingFiles = overwriteExistingFiles;
-        UseAria = useAria;
-        AriaMaxConnectionsPerServer = ariaMaxConnectionsPerServer;
-        AriaMinSplitSize = ariaMinSplitSize;
-        YouTubeSponsorBlock = youTubeSponsorBlock;
-        SubtitleLangs = subtitleLangs;
-        ProxyUrl = proxyUrl;
-        CookiesPath = cookiesPath;
-        EmbedMetadata = embedMetadata;
-        RemoveSourceData = removeSourceData;
-        EmbedChapters = embedChapters;
-        EmbedSubtitle = embedSubtitle;
+        OverwriteExistingFiles = true;
+        LimitCharacters = false;
+        SubtitleLangs = "";
+        IncludeAutoGenertedSubtitles = true;
+        UseAria = false;
+        AriaMaxConnectionsPerServer = 16;
+        AriaMinSplitSize = 20;
+        SpeedLimit = 1024;
+        ProxyUrl = "";
+        CookiesPath = "";
+        YouTubeSponsorBlock = false;
+        EmbedMetadata = true;
+        RemoveSourceData = false;
+        EmbedChapters = false;
+        EmbedSubtitle = true;
     }
+
+    /// <summary>
+    /// A DownloadOptions object based on the current Configuration
+    /// </summary>
+    public static DownloadOptions Current => new DownloadOptions()
+    {
+        OverwriteExistingFiles = Configuration.Current.OverwriteExistingFiles,
+        LimitCharacters = Configuration.Current.LimitCharacters,
+        SubtitleLangs = Configuration.Current.SubtitleLangs,
+        IncludeAutoGenertedSubtitles = Configuration.Current.IncludeAutoGenertedSubtitles,
+        UseAria = Configuration.Current.UseAria,
+        AriaMaxConnectionsPerServer = Configuration.Current.AriaMaxConnectionsPerServer,
+        AriaMinSplitSize = Configuration.Current.AriaMinSplitSize,
+        SpeedLimit = Configuration.Current.SpeedLimit,
+        ProxyUrl = Configuration.Current.ProxyUrl,
+        CookiesPath = Configuration.Current.CookiesPath,
+        YouTubeSponsorBlock = Configuration.Current.YouTubeSponsorBlock,
+        EmbedMetadata = Configuration.Current.EmbedMetadata,
+        RemoveSourceData = Configuration.Current.RemoveSourceData,
+        EmbedChapters = Configuration.Current.EmbedChapters,
+        EmbedSubtitle = Configuration.Current.EmbedSubtitle
+    };
 }

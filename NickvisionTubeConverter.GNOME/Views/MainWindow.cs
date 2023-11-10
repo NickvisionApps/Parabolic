@@ -87,7 +87,7 @@ public partial class MainWindow : Adw.ApplicationWindow
         application.SetAccelsForAction("win.stopAllDownloads", new string[] { "<Ctrl><Shift>c" });
         //Retry Failed Downloads Action
         var actRetryFailedDownloads = Gio.SimpleAction.New("retryFailedDownloads", null);
-        actRetryFailedDownloads.OnActivate += (sender, e) => _controller.DownloadManager.RetryFailedDownloads(_controller.DownloadOptions);
+        actRetryFailedDownloads.OnActivate += (sender, e) => _controller.DownloadManager.RetryFailedDownloads(DownloadOptions.Current);
         AddAction(actRetryFailedDownloads);
         application.SetAccelsForAction("win.retryFailedDownloads", new string[] { "<Ctrl><Shift>r" });
         //Clear Queued Downloads Action
@@ -348,7 +348,7 @@ public partial class MainWindow : Adw.ApplicationWindow
     /// <param name="e">EventArgs</param>
     private void History(Gio.SimpleAction sender, EventArgs e)
     {
-        var historyDialog = new HistoryDialog(this, _controller.AppInfo.ID, _controller.DownloadHistory);
+        var historyDialog = new HistoryDialog(this, _controller.AppInfo.ID, DownloadHistory.Current);
         historyDialog.DownloadAgainRequested += async (s, ea) =>
         {
             await AddDownloadAsync(ea);
@@ -619,7 +619,7 @@ public partial class MainWindow : Adw.ApplicationWindow
     {
         var downloadRow = new DownloadRow(this, e.Id, e.Filename, e.SaveFolder, (ex) => NotificationSent(null, ex));
         downloadRow.StopRequested += (s, ex) => _controller.DownloadManager.RequestStop(ex);
-        downloadRow.RetryRequested += (s, ex) => _controller.DownloadManager.RequestRetry(ex, _controller.DownloadOptions);
+        downloadRow.RetryRequested += (s, ex) => _controller.DownloadManager.RequestRetry(ex, DownloadOptions.Current);
         var box = e.IsDownloading ? _downloadingBox : _queuedBox;
         if (e.IsDownloading)
         {

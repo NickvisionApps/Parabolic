@@ -413,7 +413,7 @@ public sealed partial class MainWindow : Window
     /// <param name="e">RoutedEventArgs</param>
     private async void History(object sender, RoutedEventArgs e)
     {
-        var historyDialog = new HistoryDialog(_controller.DownloadHistory)
+        var historyDialog = new HistoryDialog(DownloadHistory.Current)
         {
             XamlRoot = MainGrid.XamlRoot
         };
@@ -470,7 +470,7 @@ public sealed partial class MainWindow : Window
     /// </summary>
     /// <param name="sender">object</param>
     /// <param name="e">RoutedEventArgs</param>
-    private void RetryFailedDownloads(object sender, RoutedEventArgs e) => _controller.DownloadManager.RetryFailedDownloads(_controller.DownloadOptions);
+    private void RetryFailedDownloads(object sender, RoutedEventArgs e) => _controller.DownloadManager.RetryFailedDownloads(DownloadOptions.Current);
 
     /// <summary>
     /// Occurs when the clear completed downloads menu item is clicked
@@ -635,7 +635,7 @@ public sealed partial class MainWindow : Window
         StatusBar.Visibility = Visibility.Visible;
         var downloadRow = new DownloadRow(e.Id, e.Filename, e.SaveFolder, (ea) => NotificationSent(null, ea), MainGrid.XamlRoot);
         downloadRow.StopRequested += (s, ea) => _controller.DownloadManager.RequestStop(ea);
-        downloadRow.RetryRequested += (s, ea) => _controller.DownloadManager.RequestRetry(ea, _controller.DownloadOptions);
+        downloadRow.RetryRequested += (s, ea) => _controller.DownloadManager.RequestRetry(ea, DownloadOptions.Current);
         var list = e.IsDownloading ? ListDownloading : ListQueued;
         if (e.IsDownloading)
         {

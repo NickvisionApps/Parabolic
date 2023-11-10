@@ -161,7 +161,7 @@ public class AddDownloadDialogController
     /// <returns>Whether media info was loaded or not</returns>
     public async Task<bool> SearchUrlAsync(string mediaUrl, string? username, string? password)
     {
-        _mediaUrlInfo = await MediaUrlInfo.GetAsync(mediaUrl, username, password, Configuration.Current.ProxyUrl);
+        _mediaUrlInfo = await MediaUrlInfo.GetAsync(mediaUrl, username, password, DownloadOptions.Current);
         if (_mediaUrlInfo != null)
         {
             foreach (var resolution in _mediaUrlInfo.VideoResolutions)
@@ -268,7 +268,7 @@ public class AddDownloadDialogController
         {
             if (media.ToDownload)
             {
-                Downloads.Add(new Download(media.Url, mediaFileType, quality, resolution == null ? null : _mediaUrlInfo.VideoResolutions[resolution.Value], audioLanguage, subtitles, saveFolder, media.Title, limitSpeed, Configuration.Current.SpeedLimit, splitChapters, cropThumbnail, timeframe, media.PlaylistPosition, username, password));
+                Downloads.Add(new Download(media.Url, mediaFileType, quality, resolution == null ? null : _mediaUrlInfo.VideoResolutions[resolution.Value], audioLanguage, subtitles, saveFolder, media.Title, limitSpeed, splitChapters, cropThumbnail, timeframe, media.PlaylistPosition, username, password));
             }
         }
         Configuration.Current.PreviousSaveFolder = saveFolder;

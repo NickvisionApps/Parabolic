@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
-using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 
 namespace NickvisionTubeConverter.Shared.Models;
@@ -54,9 +53,9 @@ public class MediaUrlInfo
     /// <param name="url">The media url string</param>
     /// <param name="username">A username for the website (if available)</param>
     /// <param name="password">A password for the website (if available)</param>
-    /// <param name="proxyUrl">A url of a proxy server (if available)</param>
+    /// <param name="options">DownloadOptions</param>
     /// <returns>A MediaUrlInfo object. Null if url invalid</returns>
-    public static async Task<MediaUrlInfo?> GetAsync(string url, string? username, string? password, string? proxyUrl)
+    public static async Task<MediaUrlInfo?> GetAsync(string url, string? username, string? password, DownloadOptions options)
     {
         var pathToOutput = $"{UserDirectories.ApplicationCache}{Path.DirectorySeparatorChar}output.log";
         dynamic outFile = PythonHelpers.SetConsoleOutputFilePath(pathToOutput);
@@ -71,7 +70,7 @@ public class MediaUrlInfo
                     var ytOpt = new Dictionary<string, dynamic>() {
                         { "quiet", true },
                         { "merge_output_format", null },
-                        { "windowsfilenames", RuntimeInformation.IsOSPlatform(OSPlatform.Windows) },
+                        { "windowsfilenames", options.LimitCharacters },
                         { "ignoreerrors", true },
                         { "extract_flat", "in_playlist" }
                     };
@@ -94,9 +93,9 @@ public class MediaUrlInfo
                         extractorArgs["youtube"] = youtubeExtractorOpt;
                         ytOpt.Add("extractor_args", extractorArgs);
                     }
-                    if (!string.IsNullOrEmpty(proxyUrl))
+                    if (!string.IsNullOrEmpty(options.ProxyUrl))
                     {
-                        ytOpt.Add("proxy", new PyString(proxyUrl));
+                        ytOpt.Add("proxy", new PyString(options.ProxyUrl));
                     }
                     if (!string.IsNullOrEmpty(username))
                     {
@@ -122,13 +121,13 @@ public class MediaUrlInfo
                             {
                                 continue;
                             }
-                            mediaUrlInfo.ParseFromPyDict(yt, e.As<PyDict>(), i, url);
+                            mediaUrlInfo.ParseFromPyDict(yt, e.As<PyDict>(), i, url, options.LimitCharacters);
                             i++;
                         }
                     }
                     else
                     {
-                        mediaUrlInfo.ParseFromPyDict(yt, mediaInfo, 0, url);
+                        mediaUrlInfo.ParseFromPyDict(yt, mediaInfo, 0, url, options.LimitCharacters);
                     }
                     outFile.close();
                 }
@@ -191,13 +190,14 @@ public class MediaUrlInfo
     /// <param name="mediaInfo">Python dictionary with media info</param>
     /// <param name="playlistPosition">Position in playlist starting with 1, or 0 if not in playlist</param>
     /// <param name="defaultUrl">A default URL to use if none available</param>
-    private void ParseFromPyDict(dynamic yt, PyDict mediaInfo, uint playlistPosition, string defaultUrl)
+    /// <param name="limitChars">Whether or not to limit characters to those only supported by Windows</param>
+    private void ParseFromPyDict(dynamic yt, PyDict mediaInfo, uint playlistPosition, string defaultUrl, bool limitChars)
     {
         var title = mediaInfo.HasKey("title") ? (mediaInfo["title"].As<string?>() ?? "Media") : "Media";
-        var invalidChars = new List<char>(Path.GetInvalidFileNameChars());
-        if (Configuration.Current.LimitCharacters)
+        IEnumerable<char> invalidChars = Path.GetInvalidFileNameChars();
+        if (limitChars)
         {
-            invalidChars.AddRange(new char[] { '"', '<', '>', ':', '\\', '/', '|', '?', '*' });
+            invalidChars = invalidChars.Union(new char[] { '"', '<', '>', ':', '\\', '/', '|', '?', '*' });
         }
         foreach (var c in invalidChars)
         {
