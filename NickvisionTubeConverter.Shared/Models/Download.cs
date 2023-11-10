@@ -296,12 +296,12 @@ public class Download
                         {
                             subtitleLangs = subtitleLangs.Remove(subtitleLangs.Length - 1);
                         }
-                        if (subtitleLangs == _p("subtitle", "all"))
+                        if (subtitleLangs == _p("subtitle", "all") || subtitleLangs == "all")
                         {
                             subtitleLangs = "all";
                         }
                         _ytOpt.Add("writesubtitles", true);
-                        _ytOpt.Add("writeautomaticsub", subtitleLangs != "all");
+                        _ytOpt.Add("writeautomaticsub", options.IncludeAutoGenertedSubtitles);
                         _ytOpt.Add("subtitleslangs", subtitleLangs.Split(",").Select(x => x.Trim()).ToList());
                         postProcessors.Add(new Dictionary<string, dynamic>() { { "key", "TCSubtitlesConvertor" }, { "format", "vtt" } });
                         if (options.EmbedSubtitle)

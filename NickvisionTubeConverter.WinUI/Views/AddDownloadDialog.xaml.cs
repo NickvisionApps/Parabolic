@@ -56,7 +56,7 @@ public sealed partial class AddDownloadDialog : ContentDialog
         CardFileType.Header = _("File Type");
         CardQuality.Header = _("Quality");
         CardAudioLanguage.Header = _("Audio Language");
-        CardSubtitle.Header = _("Download Subtitle");
+        CardSubtitle.Header = _("Download Subtitles");
         TglSubtitle.OnContent = _("On");
         TglSubtitle.OffContent = _("Off");
         CardSaveFolder.Header = _("Save Folder");
