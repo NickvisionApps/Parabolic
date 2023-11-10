@@ -95,16 +95,6 @@ public class PreferencesViewController
     }
 
     /// <summary>
-    /// The maximum number of active downloads (should be between 1-10)
-    /// </summary>
-    public int MaxNumberOfActiveDownloads
-    {
-        get => Configuration.Current.MaxNumberOfActiveDownloads;
-
-        set => Configuration.Current.MaxNumberOfActiveDownloads = value;
-    }
-
-    /// <summary>
     /// Whether or not to overwrite existing files
     /// </summary>
     public bool OverwriteExistingFiles
@@ -112,6 +102,16 @@ public class PreferencesViewController
         get => Configuration.Current.OverwriteExistingFiles;
 
         set => Configuration.Current.OverwriteExistingFiles = value;
+    }
+
+    /// <summary>
+    /// The maximum number of active downloads (should be between 1-10)
+    /// </summary>
+    public int MaxNumberOfActiveDownloads
+    {
+        get => Configuration.Current.MaxNumberOfActiveDownloads;
+
+        set => Configuration.Current.MaxNumberOfActiveDownloads = value;
     }
 
     /// <summary>
@@ -125,13 +125,30 @@ public class PreferencesViewController
     }
 
     /// <summary>
-    /// Speed limit in KiB/s (should be between 512-10240)
+    /// A comma separated list of language codes for subtitle downloads
     /// </summary>
-    public uint SpeedLimit
+    public string SubtitleLangs
     {
-        get => Configuration.Current.SpeedLimit;
+        get => Configuration.Current.SubtitleLangs;
 
-        set => Configuration.Current.SpeedLimit = value;
+        set
+        {
+            if (value[value.Length - 1] == ',')
+            {
+                value = value.Remove(value.Length - 1);
+            }
+            Configuration.Current.SubtitleLangs = value;
+        }
+    }
+
+    /// <summary>
+    /// Whether or not to include and download auto-generated subtitles
+    /// </summary>
+    public bool IncludeAutoGenertedSubtitles
+    {
+        get => Configuration.Current.IncludeAutoGenertedSubtitles;
+
+        set => Configuration.Current.IncludeAutoGenertedSubtitles = value;
     }
 
     /// <summary>
@@ -165,30 +182,13 @@ public class PreferencesViewController
     }
 
     /// <summary>
-    /// Whether or not to use the SponsorBlock extension for YouTube downloads
+    /// Speed limit in KiB/s (should be between 512-10240)
     /// </summary>
-    public bool YouTubeSponsorBlock
+    public uint SpeedLimit
     {
-        get => Configuration.Current.YouTubeSponsorBlock;
+        get => Configuration.Current.SpeedLimit;
 
-        set => Configuration.Current.YouTubeSponsorBlock = value;
-    }
-
-    /// <summary>
-    /// A comma separated list of language codes for subtitle downloads
-    /// </summary>
-    public string SubtitleLangs
-    {
-        get => Configuration.Current.SubtitleLangs;
-
-        set
-        {
-            if (value[value.Length - 1] == ',')
-            {
-                value = value.Remove(value.Length - 1);
-            }
-            Configuration.Current.SubtitleLangs = value;
-        }
+        set => Configuration.Current.SpeedLimit = value;
     }
 
     /// <summary>
@@ -209,6 +209,16 @@ public class PreferencesViewController
         get => Configuration.Current.CookiesPath;
 
         set => Configuration.Current.CookiesPath = value;
+    }
+
+    /// <summary>
+    /// Whether or not to use the SponsorBlock extension for YouTube downloads
+    /// </summary>
+    public bool YouTubeSponsorBlock
+    {
+        get => Configuration.Current.YouTubeSponsorBlock;
+
+        set => Configuration.Current.YouTubeSponsorBlock = value;
     }
 
     /// <summary>
@@ -263,7 +273,7 @@ public class PreferencesViewController
     }
 
     /// <summary>
-    /// Whether or not to embed subtitle in a download
+    /// Whether or not to embed subtitles in a download
     /// </summary>
     public bool EmbedSubtitle
     {

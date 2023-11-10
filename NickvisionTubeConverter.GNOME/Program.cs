@@ -37,6 +37,7 @@ public partial class Program
             @"* Added support for auto-generated subtitles from English
               * Added the ability to turn off downloading auto-generated subtitles
               * A URL can now be passed to Parabolic via the command-line or the freedesktop application open protocol to trigger its validation of startup
+              * Improved the design of the Preferences dialog to allow for better searching of options
               * Fixed an issue where aria's max connections per server preference was allowed to be greater than 16
               * Fixed an issue where enabling the ""Download Specific Timeframe"" advanced option would cause a crash for certain media downloads
               * Updated translations (Thanks everyone on Weblate!)";
