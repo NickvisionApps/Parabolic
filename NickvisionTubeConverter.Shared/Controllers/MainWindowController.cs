@@ -34,10 +34,6 @@ public class MainWindowController : IDisposable
     private const int TASKBAR_STOPWATCH_THRESHOLD = 500;
 
     /// <summary>
-    /// Gets the AppInfo object
-    /// </summary>
-    public AppInfo AppInfo => Aura.Active.AppInfo;
-    /// <summary>
     /// The manager for downloads
     /// </summary>
     public DownloadManager DownloadManager { get; init; }
@@ -45,6 +41,11 @@ public class MainWindowController : IDisposable
     /// A function for getting a password for the Keyring
     /// </summary>
     public Func<string, Task<(bool WasSkipped, string Password)>>? KeyringLoginAsync { get; set; }
+
+    /// <summary>
+    /// Gets the AppInfo object
+    /// </summary>
+    public AppInfo AppInfo => Aura.Active.AppInfo;
     /// <summary>
     /// The preferred theme of the application
     /// </summary>
@@ -61,14 +62,6 @@ public class MainWindowController : IDisposable
     /// Whether to allow running in the background
     /// </summary>
     public bool RunInBackground => Configuration.Current.RunInBackground;
-    /// <summary>
-    /// The DownloadOptions for a download
-    /// </summary>
-    public DownloadOptions DownloadOptions => new DownloadOptions(Configuration.Current.OverwriteExistingFiles, Configuration.Current.UseAria, Configuration.Current.AriaMaxConnectionsPerServer, Configuration.Current.AriaMinSplitSize, Configuration.Current.YouTubeSponsorBlock, Configuration.Current.SubtitleLangs, Configuration.Current.ProxyUrl, Configuration.Current.CookiesPath, Configuration.Current.EmbedMetadata, Configuration.Current.RemoveSourceData, Configuration.Current.EmbedChapters, Configuration.Current.EmbedSubtitle);
-    /// <summary>
-    /// Gets the DownloadHistory object
-    /// </summary>
-    public DownloadHistory DownloadHistory => (DownloadHistory)Aura.Active.ConfigFiles["downloadHistory"];
 
     /// <summary>
     /// Occurs when a notification is sent
@@ -416,7 +409,7 @@ public class MainWindowController : IDisposable
     {
         foreach (var download in controller.Downloads)
         {
-            DownloadManager.AddDownload(download, DownloadOptions);
+            DownloadManager.AddDownload(download, DownloadOptions.Current);
         }
     }
 

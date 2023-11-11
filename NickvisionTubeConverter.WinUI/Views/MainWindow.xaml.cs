@@ -107,6 +107,7 @@ public sealed partial class MainWindow : Window
         LblDownloading.Text = _("Downloading");
         BtnStopAllDownloads.Label = _("Stop All Downloads");
         StatusPageDownloading.Title = _("No Downloads Running");
+        LblBtnShowCompleted.Text = _("Show Completed");
         StatusPageQueued.Title = _("No Queued Downloads");
         StatusPageCompleted.Title = _("No Completed Downloads");
         NavItemQueued.Content = _("Queued");
@@ -160,7 +161,7 @@ public sealed partial class MainWindow : Window
             MainMenu.IsEnabled = true;
             ViewStack.CurrentPageName = "Home";
             PreventSuspendWhenDownloadingChanged(null, EventArgs.Empty);
-            if(_controller.ShowDisclaimerOnStartup)
+            if (_controller.ShowDisclaimerOnStartup)
             {
                 var chkShow = new CheckBox()
                 {
@@ -413,7 +414,7 @@ public sealed partial class MainWindow : Window
     /// <param name="e">RoutedEventArgs</param>
     private async void History(object sender, RoutedEventArgs e)
     {
-        var historyDialog = new HistoryDialog(_controller.DownloadHistory)
+        var historyDialog = new HistoryDialog(DownloadHistory.Current)
         {
             XamlRoot = MainGrid.XamlRoot
         };
@@ -470,7 +471,7 @@ public sealed partial class MainWindow : Window
     /// </summary>
     /// <param name="sender">object</param>
     /// <param name="e">RoutedEventArgs</param>
-    private void RetryFailedDownloads(object sender, RoutedEventArgs e) => _controller.DownloadManager.RetryFailedDownloads(_controller.DownloadOptions);
+    private void RetryFailedDownloads(object sender, RoutedEventArgs e) => _controller.DownloadManager.RetryFailedDownloads(DownloadOptions.Current);
 
     /// <summary>
     /// Occurs when the clear completed downloads menu item is clicked
@@ -612,6 +613,13 @@ public sealed partial class MainWindow : Window
     }
 
     /// <summary>
+    /// Occurs when BtnShowCompleted is clicked
+    /// </summary>
+    /// <param name="sender">object</param>
+    /// <param name="e">RoutedEventArgs</param>
+    private void ShowCompleted(object sender, RoutedEventArgs e) => NavItemCompleted.IsSelected = true;
+
+    /// <summary>
     /// Updates the UI based on the current DownloadManager state
     /// </summary>
     private void DownloadUIUpdate()
@@ -635,7 +643,7 @@ public sealed partial class MainWindow : Window
         StatusBar.Visibility = Visibility.Visible;
         var downloadRow = new DownloadRow(e.Id, e.Filename, e.SaveFolder, (ea) => NotificationSent(null, ea), MainGrid.XamlRoot);
         downloadRow.StopRequested += (s, ea) => _controller.DownloadManager.RequestStop(ea);
-        downloadRow.RetryRequested += (s, ea) => _controller.DownloadManager.RequestRetry(ea, _controller.DownloadOptions);
+        downloadRow.RetryRequested += (s, ea) => _controller.DownloadManager.RequestRetry(ea, DownloadOptions.Current);
         var list = e.IsDownloading ? ListDownloading : ListQueued;
         if (e.IsDownloading)
         {

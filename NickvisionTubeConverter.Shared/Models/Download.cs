@@ -7,7 +7,6 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
-using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using static Nickvision.Aura.Localization.Gettext;
 
@@ -28,12 +27,11 @@ public enum Quality
 /// </summary>
 public class Download
 {
-    internal static string[] YoutubeLangCodes = { "af", "az", "id", "ms", "bs", "ca", "cs", "da", "de", "et", "en-IN", "en-GB", "en", "es", "es-419", "es-US", "eu", "fil", "fr", "fr-CA", "gl", "hr", "zu", "is", "it", "sw", "lv", "lt", "hu", "nl", "no", "uz", "pl", "pt-PT", "pt", "ro", "sq", "sk", "sl", "sr-Latn", "fi", "sv", "vi", "tr", "be", "bg", "ky", "kk", "mk", "mn", "ru", "sr", "uk", "el", "hy", "iw", "ur", "ar", "fa", "ne", "mr", "hi", "as", "bn", "pa", "gu", "or", "ta", "te", "kn", "ml", "si", "th", "lo", "my", "ka", "am", "km", "zh-CN", "zh-TW", "zh-HK", "ja", "ko" };
+    internal static readonly string[] YoutubeLangCodes = { "af", "az", "id", "ms", "bs", "ca", "cs", "da", "de", "et", "en-IN", "en-GB", "en", "es", "es-419", "es-US", "eu", "fil", "fr", "fr-CA", "gl", "hr", "zu", "is", "it", "sw", "lv", "lt", "hu", "nl", "no", "uz", "pl", "pt-PT", "pt", "ro", "sq", "sk", "sl", "sr-Latn", "fi", "sv", "vi", "tr", "be", "bg", "ky", "kk", "mk", "mn", "ru", "sr", "uk", "el", "hy", "iw", "ur", "ar", "fa", "ne", "mr", "hi", "as", "bn", "pa", "gu", "or", "ta", "te", "kn", "ml", "si", "th", "lo", "my", "ka", "am", "km", "zh-CN", "zh-TW", "zh-HK", "ja", "ko" };
 
     private readonly string _tempDownloadPath;
     private readonly string _logPath;
     private readonly bool _limitSpeed;
-    private readonly uint _speedLimit;
     private readonly bool _splitChapters;
     private readonly bool _cropThumbnail;
     private readonly Timeframe? _timeframe;
@@ -118,7 +116,6 @@ public class Download
     /// <param name="saveFolder">The folder to save the download to</param>
     /// <param name="saveFilename">The filename to save the download as</param>
     /// <param name="limitSpeed">Whether or not to limit the download speed</param>
-    /// <param name="speedLimit">The speed at which to limit the download</param>
     /// <param name="splitChapters">Whether or not to split based on chapters</param>
     /// <param name="cropThumbnail">Whether or not to crop the thumbnail</param>
     /// <param name="timeframe">A Timeframe to restrict the timespan of the media download</param>
@@ -126,7 +123,7 @@ public class Download
     /// <param name="username">A username for the website (if available)</param>
     /// <param name="password">A password for the website (if available)</param>
     /// <exception cref="ArgumentException">Thrown if timeframe is specified and limitSpeed is enabled</exception>
-    public Download(string mediaUrl, MediaFileType fileType, Quality quality, VideoResolution? resolution, string? audioLanguage, bool subtitle, string saveFolder, string saveFilename, bool limitSpeed, uint speedLimit, bool splitChapters, bool cropThumbnail, Timeframe? timeframe, uint playlistPosition, string? username, string? password)
+    public Download(string mediaUrl, MediaFileType fileType, Quality quality, VideoResolution? resolution, string? audioLanguage, bool subtitle, string saveFolder, string saveFilename, bool limitSpeed, bool splitChapters, bool cropThumbnail, Timeframe? timeframe, uint playlistPosition, string? username, string? password)
     {
         Id = Guid.NewGuid();
         MediaUrl = mediaUrl;
@@ -144,7 +141,6 @@ public class Download
         _tempDownloadPath = $"{UserDirectories.ApplicationCache}{Path.DirectorySeparatorChar}{Id}{Path.DirectorySeparatorChar}";
         _logPath = $"{_tempDownloadPath}log";
         _limitSpeed = limitSpeed;
-        _speedLimit = speedLimit;
         _splitChapters = splitChapters;
         _cropThumbnail = cropThumbnail;
         _timeframe = timeframe;
@@ -201,24 +197,24 @@ public class Download
                     { "merge_output_format", null },
                     { "outtmpl", $"{Id.ToString()}.%(ext)s" },
                     { "ffmpeg_location", DependencyLocator.Find("ffmpeg")! },
-                    { "windowsfilenames", RuntimeInformation.IsOSPlatform(OSPlatform.Windows) },
+                    { "windowsfilenames", options.LimitCharacters },
                     { "encoding", "utf_8" },
                     { "overwrites", options.OverwriteExistingFiles },
                     { "noprogress", true }
                 };
-                string? lang = null;
+                string? metadataLang = null;
                 if (YoutubeLangCodes.Contains(CultureInfo.CurrentCulture.Name))
                 {
-                    lang = CultureInfo.CurrentCulture.Name;
+                    metadataLang = CultureInfo.CurrentCulture.Name;
                 }
                 else if (YoutubeLangCodes.Contains(CultureInfo.CurrentCulture.TwoLetterISOLanguageName))
                 {
-                    lang = CultureInfo.CurrentCulture.TwoLetterISOLanguageName;
+                    metadataLang = CultureInfo.CurrentCulture.TwoLetterISOLanguageName;
                 }
-                if (!string.IsNullOrEmpty(lang))
+                if (!string.IsNullOrEmpty(metadataLang))
                 {
                     var youtubeLang = new PyList();
-                    youtubeLang.Append(new PyString(lang));
+                    youtubeLang.Append(new PyString(metadataLang));
                     var youtubeExtractorOpt = new PyDict();
                     youtubeExtractorOpt["lang"] = youtubeLang;
                     var extractorArgs = new PyDict();
@@ -234,7 +230,7 @@ public class Download
                     _ytOpt.Add("external_downloader", new Dictionary<string, dynamic>() { { "default", DependencyLocator.Find("aria2c") } });
                     dynamic ariaDict = new PyDict();
                     dynamic ariaParams = new PyList();
-                    ariaParams.Append(new PyString($"--max-overall-download-limit={(_limitSpeed ? _speedLimit : 0)}K"));
+                    ariaParams.Append(new PyString($"--max-overall-download-limit={(_limitSpeed ? options.SpeedLimit : 0)}K"));
                     ariaParams.Append(new PyString("--allow-overwrite=true"));
                     ariaParams.Append(new PyString("--show-console-readout=false"));
                     ariaParams.Append(new PyString($"--max-connection-per-server={options.AriaMaxConnectionsPerServer}"));
@@ -244,7 +240,7 @@ public class Download
                 }
                 else if (_limitSpeed)
                 {
-                    _ytOpt.Add("ratelimit", _speedLimit * 1024);
+                    _ytOpt.Add("ratelimit", options.SpeedLimit * 1024);
                 }
                 var postProcessors = new List<Dictionary<string, dynamic>>();
                 if (FileType.GetIsAudio())
@@ -295,18 +291,38 @@ public class Download
                     }
                     if (Subtitle)
                     {
-                        var subtitleLangs = options.SubtitleLangs;
-                        if (subtitleLangs[^1] == ',')
-                        {
-                            subtitleLangs = subtitleLangs.Remove(subtitleLangs.Length - 1);
-                        }
-                        if (subtitleLangs == _p("subtitle", "all"))
-                        {
-                            subtitleLangs = "all";
-                        }
                         _ytOpt.Add("writesubtitles", true);
-                        _ytOpt.Add("writeautomaticsub", subtitleLangs != "all");
-                        _ytOpt.Add("subtitleslangs", subtitleLangs.Split(",").Select(x => x.Trim()).ToList());
+                        _ytOpt.Add("writeautomaticsub", options.IncludeAutoGenertedSubtitles);
+                        var subtitleLangsString = options.SubtitleLangs;
+                        if (subtitleLangsString[^1] == ',')
+                        {
+                            subtitleLangsString = subtitleLangsString.Remove(subtitleLangsString.Length - 1);
+                        }
+                        var subtitleLangs = subtitleLangsString.Split(',').Select(x => x.Trim());
+                        if (subtitleLangsString == _p("subtitle", "all") || subtitleLangsString == "all")
+                        {
+                            _ytOpt.Add("subtitleslangs", new List<string>() { "all" });
+                        }
+                        else if(options.IncludeAutoGenertedSubtitles)
+                        {
+                            var subtitleFromEnglishLangs = new List<string>();
+                            foreach(var l in subtitleLangs)
+                            {
+                                if(l.Length == 2 || l.Length == 3)
+                                {
+                                    var fromEnglish = $"{l}-en";
+                                    if(!subtitleFromEnglishLangs.Contains(fromEnglish))
+                                    {
+                                        subtitleFromEnglishLangs.Add(fromEnglish);
+                                    }
+                                }
+                            }
+                            _ytOpt.Add("subtitleslangs", subtitleLangs.Union(subtitleFromEnglishLangs).ToList());
+                        }
+                        else
+                        {
+                            _ytOpt.Add("subtitleslangs", subtitleLangs.ToList());
+                        }
                         postProcessors.Add(new Dictionary<string, dynamic>() { { "key", "TCSubtitlesConvertor" }, { "format", "vtt" } });
                         if (options.EmbedSubtitle)
                         {
@@ -430,26 +446,24 @@ public class Download
                                             genericExtensionFound = true;
                                         }
                                     }
-                                    var baseFilename = Filename;
+                                    var baseFilename = Path.GetFileNameWithoutExtension(Filename);
+                                    var baseExtension = Path.GetExtension(baseFilename).ToLower();
                                     var i = 0;
                                     while (!options.OverwriteExistingFiles && File.Exists(path.Replace(Id.ToString(), Path.GetFileNameWithoutExtension(Filename))))
                                     {
                                         i++;
-                                        Filename = $"{Path.GetFileNameWithoutExtension(baseFilename)} ({i}){Path.GetExtension(baseFilename)}";
+                                        Filename = $"{baseFilename} ({i}){baseExtension}";
                                     }
-                                    try
+                                    IEnumerable<char> invalidChars = Path.GetInvalidFileNameChars();
+                                    if (options.LimitCharacters)
                                     {
-                                        File.Move(path, path.Replace(Id.ToString(), Path.GetFileNameWithoutExtension(Filename)), options.OverwriteExistingFiles);
+                                        invalidChars = invalidChars.Union(new char[] { '"', '<', '>', ':', '\\', '/', '|', '?', '*' });
                                     }
-                                    catch
+                                    foreach (var c in invalidChars)
                                     {
-                                        var chars = new char[] { '"', '*', '/', ':', '<', '>', '?', '\\' };
-                                        foreach (var c in chars.Where(x => Filename.Contains(x)))
-                                        {
-                                            Filename = Filename.Replace(c, '_');
-                                        }
-                                        File.Move(path, path.Replace(Id.ToString(), Path.GetFileNameWithoutExtension(Filename)), options.OverwriteExistingFiles);
+                                        Filename = Filename.Replace(c, '_');
                                     }
+                                    File.Move(path, path.Replace(Id.ToString(), Path.GetFileNameWithoutExtension(Filename)), options.OverwriteExistingFiles);
                                 }
                             }
                         }

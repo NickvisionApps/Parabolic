@@ -10,6 +10,10 @@ namespace NickvisionTubeConverter.Shared.Models;
 /// </summary>
 public class Configuration : ConfigurationBase
 {
+    //////////////////////
+    /// User Interface ///
+    //////////////////////
+
     /// <summary>
     /// The preferred theme for the application
     /// </summary>
@@ -29,23 +33,38 @@ public class Configuration : ConfigurationBase
     /// <summary>
     /// Whether to allow running in the background
     /// </summary>
+    /// <remarks>Only used on GNOME running via Flatpak</remarks>
     public bool RunInBackground { get; set; }
-    /// <summary>
-    /// The maximum number of active downloads (should be between 1-10)
-    /// </summary>
-    public int MaxNumberOfActiveDownloads { get; set; }
+
+    //////////////////////
+    ///    Downloads   ///
+    //////////////////////
+
     /// <summary>
     /// Whether or not to overwrite existing files
     /// </summary>
     public bool OverwriteExistingFiles { get; set; }
     /// <summary>
+    /// The maximum number of active downloads (should be between 1-10)
+    /// </summary>
+    public int MaxNumberOfActiveDownloads { get; set; }
+    /// <summary>
     /// Limit characters in filenames to Windows supported
     /// </summary>
     public bool LimitCharacters { get; set; }
     /// <summary>
-    /// Speed limit in KiB/s (should be between 512-10240)
+    /// A comma separated list of language codes for subtitle downloads
     /// </summary>
-    public uint SpeedLimit { get; set; }
+    public string SubtitleLangs { get; set; }
+    /// <summary>
+    /// Whether or not to include and download auto-generated subtitles
+    /// </summary>
+    public bool IncludeAutoGenertedSubtitles { get; set; }
+
+    //////////////////////
+    ///   Downloader   ///
+    //////////////////////
+
     /// <summary>
     /// Whether or not to use aria2
     /// </summary>
@@ -59,13 +78,9 @@ public class Configuration : ConfigurationBase
     /// </summary>
     public int AriaMinSplitSize { get; set; }
     /// <summary>
-    /// Whether or not to use the SponsorBlock extension for YouTube downloads
+    /// Speed limit in KiB/s (should be between 512-10240)
     /// </summary>
-    public bool YouTubeSponsorBlock { get; set; }
-    /// <summary>
-    /// A comma separated list of language codes for subtitle downloads
-    /// </summary>
-    public string SubtitleLangs { get; set; }
+    public uint SpeedLimit { get; set; }
     /// <summary>
     /// The url of the proxy server to use
     /// </summary>
@@ -74,6 +89,16 @@ public class Configuration : ConfigurationBase
     /// The path of the cookies file to use for yt-dlp
     /// </summary>
     public string CookiesPath { get; set; }
+    /// <summary>
+    /// Whether or not to use the SponsorBlock extension for YouTube downloads
+    /// </summary>
+    public bool YouTubeSponsorBlock { get; set; }
+
+
+    //////////////////////
+    ///    Converter   ///
+    //////////////////////
+
     /// <summary>
     /// Whether or not to disallow converting of formats
     /// </summary>
@@ -96,9 +121,14 @@ public class Configuration : ConfigurationBase
     /// </summary>
     public bool EmbedChapters { get; set; }
     /// <summary>
-    /// Whether or not to embed subtitle in a download
+    /// Whether or not to embed subtitles in a download
     /// </summary>
     public bool EmbedSubtitle { get; set; }
+
+    //////////////////////
+    ///    Remember    ///
+    //////////////////////
+
     /// <summary>
     /// The previously used download save folder
     /// </summary>
@@ -130,28 +160,34 @@ public class Configuration : ConfigurationBase
     /// </summary>
     public Configuration()
     {
+        //User Interface
         Theme = Theme.System;
         AutomaticallyCheckForUpdates = true;
         CompletedNotificationPreference = NotificationPreference.ForEach;
         PreventSuspendWhenDownloading = false;
         RunInBackground = RuntimeInformation.IsOSPlatform(OSPlatform.Windows);
-        MaxNumberOfActiveDownloads = 5;
+        //Downloads
         OverwriteExistingFiles = true;
+        MaxNumberOfActiveDownloads = 5;
         LimitCharacters = RuntimeInformation.IsOSPlatform(OSPlatform.Windows);
-        SpeedLimit = 1024;
+        SubtitleLangs = $"{CultureInfo.CurrentCulture.TwoLetterISOLanguageName},{CultureInfo.CurrentCulture.Name},{CultureInfo.CurrentCulture.ThreeLetterISOLanguageName}";
+        IncludeAutoGenertedSubtitles = true;
+        //Downloader
         UseAria = false;
         AriaMaxConnectionsPerServer = 16;
         AriaMinSplitSize = 20;
-        YouTubeSponsorBlock = false;
-        SubtitleLangs = $"{CultureInfo.CurrentCulture.TwoLetterISOLanguageName},{CultureInfo.CurrentCulture.Name},{CultureInfo.CurrentCulture.ThreeLetterISOLanguageName}";
+        SpeedLimit = 1024;
         ProxyUrl = "";
         CookiesPath = "";
+        YouTubeSponsorBlock = false;
+        //Converter
         DisallowConversions = false;
         EmbedMetadata = true;
         CropAudioThumbnails = false;
         RemoveSourceData = false;
         EmbedChapters = false;
         EmbedSubtitle = true;
+        //Remember
         PreviousSaveFolder = "";
         PreviousMediaFileType = MediaFileType.MP4;
         PreviousVideoResolution = "";
