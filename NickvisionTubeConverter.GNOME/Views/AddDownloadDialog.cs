@@ -39,24 +39,20 @@ public partial class AddDownloadDialog : Adw.Window
     [Gtk.Connect] private readonly Adw.ComboRow _fileTypeRow;
     [Gtk.Connect] private readonly Adw.ComboRow _qualityRow;
     [Gtk.Connect] private readonly Adw.ComboRow _audioLanguageRow;
-    [Gtk.Connect] private readonly Adw.ActionRow _subtitleRow;
-    [Gtk.Connect] private readonly Gtk.Switch _subtitleSwitch;
+    [Gtk.Connect] private readonly Adw.SwitchRow _subtitleRow;
     [Gtk.Connect] private readonly Adw.EntryRow _saveFolderRow;
     [Gtk.Connect] private readonly Gtk.Button _selectSaveFolderButton;
     [Gtk.Connect] private readonly Adw.ActionRow _openAdvancedRow;
     [Gtk.Connect] private readonly Adw.PreferencesGroup _mediaGroup;
     [Gtk.Connect] private readonly Adw.PreferencesGroup _openPlaylistGroup;
     [Gtk.Connect] private readonly Adw.ActionRow _openPlaylistRow;
-    [Gtk.Connect] private readonly Adw.ActionRow _numberTitlesRow;
-    [Gtk.Connect] private readonly Gtk.Switch _numberTitlesSwitch;
+    [Gtk.Connect] private readonly Adw.SwitchRow _numberTitlesRow;
     [Gtk.Connect] private readonly Gtk.Button _selectAllButton;
     [Gtk.Connect] private readonly Gtk.Button _deselectAllButton;
     [Gtk.Connect] private readonly Adw.PreferencesGroup _playlistGroup;
-    [Gtk.Connect] private readonly Adw.ActionRow _speedLimitRow;
-    [Gtk.Connect] private readonly Gtk.Switch _speedLimitSwitch;
-    [Gtk.Connect] private readonly Gtk.Switch _splitChaptersSwitch;
-    [Gtk.Connect] private readonly Adw.ActionRow _cropThumbnailRow;
-    [Gtk.Connect] private readonly Gtk.Switch _cropThumbnailSwitch;
+    [Gtk.Connect] private readonly Adw.SwitchRow _speedLimitRow;
+    [Gtk.Connect] private readonly Adw.SwitchRow _splitChaptersRow;
+    [Gtk.Connect] private readonly Adw.SwitchRow _cropThumbnailRow;
     [Gtk.Connect] private readonly Adw.ExpanderRow _downloadTimeframeRow;
     [Gtk.Connect] private readonly Adw.EntryRow _timeframeStartRow;
     [Gtk.Connect] private readonly Adw.EntryRow _timeframeEndRow;
@@ -139,21 +135,21 @@ public partial class AddDownloadDialog : Adw.Window
                 SetQualityRowModel();
                 if (_controller.CropAudioThumbnails)
                 {
-                    _cropThumbnailSwitch.SetActive(SelectedMediaFileType.GetIsAudio());
+                    _cropThumbnailRow.SetActive(SelectedMediaFileType.GetIsAudio());
                 }
             }
         };
         _selectSaveFolderButton.OnClicked += async (sender, e) => await SelectSaveFolderAsync();
         _cropThumbnailRow.SetVisible(_controller.EmbedMetadata);
-        _speedLimitSwitch.OnNotify += (sender, e) =>
+        _speedLimitRow.OnNotify += (sender, e) =>
         {
             if (e.Pspec.GetName() == "active")
             {
-                if (_speedLimitSwitch.GetActive())
+                if (_speedLimitRow.GetActive())
                 {
                     _downloadTimeframeRow.SetExpanded(false);
                 }
-                _downloadTimeframeRow.SetSensitive(!_speedLimitSwitch.GetActive());
+                _downloadTimeframeRow.SetSensitive(!_speedLimitRow.GetActive());
             }
         };
         _downloadTimeframeRow.OnNotify += (sender, e) =>
@@ -162,7 +158,7 @@ public partial class AddDownloadDialog : Adw.Window
             {
                 if (_downloadTimeframeRow.GetExpanded())
                 {
-                    _speedLimitSwitch.SetActive(false);
+                    _speedLimitRow.SetActive(false);
                     _timeframeStartRow.SetText(TimeSpan.FromSeconds(0).ToString(@"hh\:mm\:ss"));
                     _timeframeEndRow.SetText(TimeSpan.FromSeconds(_controller.MediaList[0].Duration).ToString(@"hh\:mm\:ss"));
                 }
@@ -186,7 +182,7 @@ public partial class AddDownloadDialog : Adw.Window
         };
         _openAdvancedRow.OnActivated += (sender, e) => _viewStack.SetVisibleChildName("pageAdvanced");
         _openPlaylistRow.OnActivated += (sender, e) => _viewStack.SetVisibleChildName("pagePlaylist");
-        _numberTitlesSwitch.OnNotify += (sender, e) =>
+        _numberTitlesRow.OnNotify += (sender, e) =>
         {
             if (e.Pspec.GetName() == "active")
             {
@@ -227,7 +223,7 @@ public partial class AddDownloadDialog : Adw.Window
             _saveFolderString = UserDirectories.Downloads;
         }
         _saveFolderRow.SetText(Path.GetFileName(_saveFolderString) ?? "");
-        _subtitleSwitch.SetActive(_controller.PreviousSubtitleState);
+        _subtitleRow.SetActive(_controller.PreviousSubtitleState);
         _speedLimitRow.SetSubtitle($"{_("{0:f1} KiB/s", _controller.CurrentSpeedLimit)} {_("(Configurable in preferences)")}");
     }
 
@@ -426,7 +422,7 @@ public partial class AddDownloadDialog : Adw.Window
                 _qualityRow.SetTitle(_("Maximum Quality"));
                 if (_controller.NumberTitles)
                 {
-                    _numberTitlesSwitch.SetActive(true);
+                    _numberTitlesRow.SetActive(true);
                 }
             }
             else
@@ -539,11 +535,11 @@ public partial class AddDownloadDialog : Adw.Window
     /// </summary>
     private void ToggleNumberTitles()
     {
-        if (_controller.ToggleNumberTitles(_numberTitlesSwitch.GetActive()))
+        if (_controller.ToggleNumberTitles(_numberTitlesRow.GetActive()))
         {
             foreach (var row in _mediaRows)
             {
-                row.UpdateTitle(_numberTitlesSwitch.GetActive());
+                row.UpdateTitle(_numberTitlesRow.GetActive());
             }
         }
     }
@@ -584,14 +580,14 @@ public partial class AddDownloadDialog : Adw.Window
         if (_keyringRow.GetSelected() == 0 || _keyringRow.GetSelected() == GTK_INVALID_LIST_POSITION || !_authRow.GetEnableExpansion())
         {
             _controller.PopulateDownloads(SelectedMediaFileType, quality, resolutionIndex, audioLanguage,
-                _subtitleSwitch.GetActive(), _saveFolderString, _speedLimitSwitch.GetActive(), _splitChaptersSwitch.GetActive(),
-                _cropThumbnailSwitch.GetActive(), timeframe, _usernameRow.GetText(), _passwordRow.GetText());
+                _subtitleRow.GetActive(), _saveFolderString, _speedLimitRow.GetActive(), _splitChaptersRow.GetActive(),
+                _cropThumbnailRow.GetActive(), timeframe, _usernameRow.GetText(), _passwordRow.GetText());
         }
         else
         {
             await _controller.PopulateDownloadsAsync(SelectedMediaFileType, quality, resolutionIndex, audioLanguage,
-                _subtitleSwitch.GetActive(), _saveFolderString, _speedLimitSwitch.GetActive(), _splitChaptersSwitch.GetActive(),
-                _cropThumbnailSwitch.GetActive(), timeframe, ((int)_keyringRow.GetSelected()) - 1);
+                _subtitleRow.GetActive(), _saveFolderString, _speedLimitRow.GetActive(), _splitChaptersRow.GetActive(),
+                _cropThumbnailRow.GetActive(), timeframe, ((int)_keyringRow.GetSelected()) - 1);
         }
         OnDownload?.Invoke(this, EventArgs.Empty);
     }
