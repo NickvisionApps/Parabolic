@@ -35,10 +35,9 @@ Adw.ApplicationWindow _root {
         vexpand: true;
       }
     }
-    
-    Gtk.Box _mainBox {
-      orientation: vertical;
 
+    Adw.ToolbarView {
+      [top]
       Adw.HeaderBar _headerBar {
         title-widget: Adw.WindowTitle _title { };
         
@@ -63,181 +62,185 @@ Adw.ApplicationWindow _root {
 
         styles ["flat"]
       }
-      
-      Adw.Banner _banner { }
 
-      Adw.ToastOverlay _toastOverlay {
-        hexpand: true;
-        vexpand: true;
-        Adw.ViewStack _viewStack {
-          Adw.ViewStackPage {
-            name: "pageNoDownloads";
-            child: Adw.StatusPage {
-              icon-name: "org.nickvision.tubeconverter";
-              title: _("Download Media");
-              description: _("Add a video, audio, or playlist URL to start downloading");
-              hexpand: true;
-              vexpand: true;
-              child: Gtk.Button {
-                label: _("Add Download");
-                halign: center;
-                action-name: "win.addDownload";
-                styles ["pill", "suggested-action"]
+      content: Gtk.Box {
+        orientation: vertical;
+
+        Adw.Banner _banner { }
+
+        Adw.ToastOverlay _toastOverlay {
+          hexpand: true;
+          vexpand: true;
+          Adw.ViewStack _viewStack {
+            Adw.ViewStackPage {
+              name: "pageNoDownloads";
+              child: Adw.StatusPage {
+                icon-name: "org.nickvision.tubeconverter";
+                title: _("Download Media");
+                description: _("Add a video, audio, or playlist URL to start downloading");
+                hexpand: true;
+                vexpand: true;
+                child: Gtk.Button {
+                  label: _("Add Download");
+                  halign: center;
+                  action-name: "win.addDownload";
+                  styles ["pill", "suggested-action"]
+                };
+
+                styles ["icon-dropshadow"]
               };
-
-              styles ["icon-dropshadow"]
-            };
-          }
+            }
           
-          Adw.ViewStackPage {
-            name: "pageDownloads";
-            child: Gtk.ScrolledWindow {
-              Adw.Clamp {
-                maximum-size: 800;
-                margin-start: 12;
-                margin-end: 12;
-                margin-top: 12;
-                margin-bottom: 12;
+            Adw.ViewStackPage {
+              name: "pageDownloads";
+              child: Gtk.ScrolledWindow {
+                Adw.Clamp {
+                  maximum-size: 800;
+                  margin-start: 12;
+                  margin-end: 12;
+                  margin-top: 12;
+                  margin-bottom: 12;
                 
-                Gtk.Box {
-                  orientation: vertical;
-                  spacing: 20;
-                  hexpand: true;
-                  valign: start;
+                  Gtk.Box {
+                    orientation: vertical;
+                    spacing: 20;
+                    hexpand: true;
+                    valign: start;
                       
 
-                  Gtk.Box {
-                    orientation: vertical;
-                    spacing: 10;
-                    visible: false;
-
                     Gtk.Box {
-                      hexpand: true;
-                      orientation: horizontal;
+                      orientation: vertical;
+                      spacing: 10;
+                      visible: false;
 
-                      Gtk.Label {
-                        label: _("Downloading");
-                        halign: start;
-                        margin-start: 5;
+                      Gtk.Box {
                         hexpand: true;
-                        styles ["heading"]
-                      }
+                        orientation: horizontal;
 
-                      Gtk.Button _stopAllDownloadsButton {
-                        halign: end;
-                        action-name: "win.stopAllDownloads";
-                        tooltip-text: _("Stop All Downloads");
-                        visible: false;
-
-                        Adw.ButtonContent {
-                          icon-name: "media-playback-stop-symbolic";
-                          label: _("Stop All");
+                        Gtk.Label {
+                          label: _("Downloading");
+                          halign: start;
+                          margin-start: 5;
+                          hexpand: true;
+                          styles ["heading"]
                         }
 
-                        styles ["flat"]
+                        Gtk.Button _stopAllDownloadsButton {
+                          halign: end;
+                          action-name: "win.stopAllDownloads";
+                          tooltip-text: _("Stop All Downloads");
+                          visible: false;
+
+                          Adw.ButtonContent {
+                            icon-name: "media-playback-stop-symbolic";
+                            label: _("Stop All");
+                          }
+
+                          styles ["flat"]
+                        }
                       }
-                    }
                   
-                    Gtk.Box _downloadingBox {
-                      orientation: vertical;
-                      hexpand: true;
-                      valign: start;
-                      styles ["card"]
+                      Gtk.Box _downloadingBox {
+                        orientation: vertical;
+                        hexpand: true;
+                        valign: start;
+                        styles ["card"]
+                      }
                     }
-                  }
-
-                  Gtk.Box {
-                    orientation: vertical;
-                    spacing: 10;
-                    visible: false;
 
                     Gtk.Box {
-                      hexpand: true;
-                      orientation: horizontal;
+                      orientation: vertical;
+                      spacing: 10;
+                      visible: false;
 
-                      Gtk.Label {
-                        label: _("Queued");
-                        halign: start;
-                        margin-start: 5;
+                      Gtk.Box {
                         hexpand: true;
-                        styles ["heading"]
-                      }
+                        orientation: horizontal;
 
-                      Gtk.Button {
-                        halign: end;
-                        action-name: "win.clearQueuedDownloads";
-                        tooltip-text: _("Clear Queued Downloads");
-
-                        Adw.ButtonContent {
-                          icon-name: "user-trash-symbolic";
-                          label: _("Clear");
+                        Gtk.Label {
+                          label: _("Queued");
+                          halign: start;
+                          margin-start: 5;
+                          hexpand: true;
+                          styles ["heading"]
                         }
 
-                        styles ["flat"]
+                        Gtk.Button {
+                          halign: end;
+                          action-name: "win.clearQueuedDownloads";
+                          tooltip-text: _("Clear Queued Downloads");
+
+                          Adw.ButtonContent {
+                            icon-name: "user-trash-symbolic";
+                            label: _("Clear");
+                          }
+
+                          styles ["flat"]
+                        }
                       }
-                    }
                   
-                    Gtk.Box _queuedBox {
-                      orientation: vertical;
-                      hexpand: true;
-                      valign: start;
-                      styles ["card"]
+                      Gtk.Box _queuedBox {
+                        orientation: vertical;
+                        hexpand: true;
+                        valign: start;
+                        styles ["card"]
+                      }
                     }
-                  }
-
-                  Gtk.Box {
-                    orientation: vertical;
-                    spacing: 10;
-                    visible: false;
 
                     Gtk.Box {
-                      hexpand: true;
-                      orientation: horizontal;
+                      orientation: vertical;
+                      spacing: 10;
+                      visible: false;
 
-                      Gtk.Label {
-                        label: _("Completed");
-                        halign: start;
-                        margin-start: 5;
+                      Gtk.Box {
                         hexpand: true;
-                        styles ["heading"]
-                      }
+                        orientation: horizontal;
 
-                      Gtk.Button {
-                        halign: end;
-                        icon-name: "view-refresh-symbolic";
-                        action-name: "win.retryFailedDownloads";
-                        tooltip-text: _("Retry Failed Downloads");
-
-                        styles ["flat"]
-                      }
-
-                      Gtk.Button {
-                        halign: end;
-                        action-name: "win.clearCompletedDownloads";
-                        tooltip-text: _("Clear Completed Downloads");
-
-                        Adw.ButtonContent {
-                          icon-name: "user-trash-symbolic";
-                          label: _("Clear");
+                        Gtk.Label {
+                          label: _("Completed");
+                          halign: start;
+                          margin-start: 5;
+                          hexpand: true;
+                          styles ["heading"]
                         }
 
-                        styles ["flat"]
-                      }
-                    }
+                        Gtk.Button {
+                          halign: end;
+                          icon-name: "view-refresh-symbolic";
+                          action-name: "win.retryFailedDownloads";
+                          tooltip-text: _("Retry Failed Downloads");
 
-                    Gtk.Box _completedBox {
-                      orientation: vertical;
-                      hexpand: true;
-                      valign: start;
-                      styles ["card"]
+                          styles ["flat"]
+                        }
+
+                        Gtk.Button {
+                          halign: end;
+                          action-name: "win.clearCompletedDownloads";
+                          tooltip-text: _("Clear Completed Downloads");
+
+                          Adw.ButtonContent {
+                            icon-name: "user-trash-symbolic";
+                            label: _("Clear");
+                          }
+
+                          styles ["flat"]
+                        }
+                      }
+
+                      Gtk.Box _completedBox {
+                        orientation: vertical;
+                        hexpand: true;
+                        valign: start;
+                        styles ["card"]
+                      }
                     }
                   }
                 }
-              }
-            };
+              };
+            }
           }
         }
-      }
+      };
     }
   }
 }
