@@ -125,7 +125,11 @@ public partial class Program
     /// <param name="e">Gio.Application.OpenSignalArgs</param>
     private void OnOpen(Gio.Application sender, Gio.Application.OpenSignalArgs e)
     {
-        _mainWindowController.UrlToLaunch = e.Files[0].GetUri();
+        try
+        {
+            _mainWindowController.UrlToLaunch = e.Files[0].GetUri();
+        }
+        catch { }
         _application.Activate();
     }
 }
