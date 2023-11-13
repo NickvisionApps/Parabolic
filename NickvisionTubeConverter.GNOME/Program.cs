@@ -40,6 +40,7 @@ public partial class Program
               * Improved the design of the Preferences dialog to allow for better searching of options
               * Fixed an issue where aria's max connections per server preference was allowed to be greater than 16
               * Fixed an issue where enabling the ""Download Specific Timeframe"" advanced option would cause a crash for certain media downloads
+              * Fixed an issue where stopping all downloads would cause the app to crash
               * Updated to GNOME 45 runtime with latest libadwaita design
               * Updated translations (Thanks everyone on Weblate!)";
         _application.OnActivate += OnActivate;

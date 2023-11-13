@@ -259,13 +259,13 @@ public class DownloadManager
     /// <param name="updateUI">Whether or not to update the UI when downloads are stopped</param>
     public void StopAllDownloads(bool updateUI)
     {
-        foreach (var pair in _queued)
+        foreach (var id in _queued.Keys.ToList())
         {
-            RequestStop(pair.Key, updateUI);
+            RequestStop(id, updateUI);
         }
-        foreach (var pair in _downloading)
+        foreach (var id in _downloading.Keys.ToList())
         {
-            RequestStop(pair.Key, updateUI);
+            RequestStop(id, updateUI);
         }
     }
 
