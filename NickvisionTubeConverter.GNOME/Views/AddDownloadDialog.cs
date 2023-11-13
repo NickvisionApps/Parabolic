@@ -57,7 +57,6 @@ public partial class AddDownloadDialog : Adw.Window
     [Gtk.Connect] private readonly Adw.EntryRow _timeframeStartRow;
     [Gtk.Connect] private readonly Adw.EntryRow _timeframeEndRow;
     private Gtk.Spinner? _urlSpinner;
-    private readonly Gtk.ShortcutController _shortcutController;
 
     public event EventHandler? OnDownload;
 
@@ -206,11 +205,6 @@ public partial class AddDownloadDialog : Adw.Window
         //Add Download Button
         _addDownloadButton.OnClicked += AddDownload;
         _addDownloadButton.SetSensitive(false);
-        //Shortcut Controller
-        _shortcutController = Gtk.ShortcutController.New();
-        _shortcutController.SetScope(Gtk.ShortcutScope.Managed);
-        _shortcutController.AddShortcut(Gtk.Shortcut.New(Gtk.ShortcutTrigger.ParseString("Escape"), Gtk.CallbackAction.New(OnEscapeKey)));
-        AddController(_shortcutController);
         //Load
         _viewStack.SetVisibleChildName("pageUrl");
         SetDefaultWidget(_validateUrlButton);
@@ -305,24 +299,6 @@ public partial class AddDownloadDialog : Adw.Window
             _usernameRow.SetVisible(true);
             _passwordRow.SetVisible(true);
         }
-    }
-
-    /// <summary>
-    /// Occurs when the escape key is pressed on the window
-    /// </summary>
-    /// <param name="sender">Gtk.Widget</param>
-    /// <param name="e">GLib.Variant</param>
-    private bool OnEscapeKey(Gtk.Widget sender, GLib.Variant e)
-    {
-        if (_viewStack.GetVisibleChildName() == "pagePlaylist")
-        {
-            _viewStack.SetVisibleChildName("pageDownload");
-        }
-        else
-        {
-            Close();
-        }
-        return true;
     }
 
     /// <summary>

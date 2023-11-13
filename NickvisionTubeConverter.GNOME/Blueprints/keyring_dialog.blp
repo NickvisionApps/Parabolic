@@ -8,9 +8,8 @@ Adw.Window _root {
   modal: true;
   resizable: false;
 
-  content: Gtk.Box {
-    orientation: vertical;
-
+  content: Adw.ToolbarView {
+    [top]
     Adw.HeaderBar {
       title-widget: Gtk.Label {};
 
@@ -29,7 +28,7 @@ Adw.Window _root {
       styles ["flat"]
     }
 
-    Gtk.WindowHandle {
+    content: Gtk.WindowHandle {
       Adw.ToastOverlay _toastOverlay {
         hexpand: true;
         vexpand: true;
@@ -202,7 +201,7 @@ Adw.Window _root {
           }
         }
       }
-    }
+    };
   };
 
   Gtk.ShortcutController {
