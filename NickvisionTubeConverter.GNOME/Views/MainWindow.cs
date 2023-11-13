@@ -588,19 +588,19 @@ public partial class MainWindow : Adw.ApplicationWindow
         {
             if (_isBackgroundStatusReported)
             {
-                using var typeDictEntry = GLib.Internal.VariantType.NewDictEntry(GLib.VariantType.String.Handle, GLib.VariantType.Variant.Handle);
-                using var msg = GLib.Variant.Create("message");
-                using var dataString = GLib.Variant.Create(_controller.DownloadManager.BackgroundActivityReport);
-                using var data = GLib.Internal.Variant.NewVariant(dataString.Handle);
-                using var dictEntry = GLib.Internal.Variant.NewDictEntry(msg.Handle, data);
-                using var array = GLib.Internal.Variant.NewArray(typeDictEntry, new[] { dictEntry.DangerousGetHandle() }, 1);
-                using var tuple = GLib.Internal.Variant.NewTuple(new[] { array.DangerousGetHandle() }, 1);
-                _bus.Call(
+                using var typeDictEntry = GLib.VariantType.NewDictEntry(GLib.VariantType.String, GLib.VariantType.Variant);
+                using var msg = GLib.Variant.NewString("message");
+                using var dataString = GLib.Variant.NewString(_controller.DownloadManager.BackgroundActivityReport);
+                using var data = GLib.Variant.NewVariant(dataString);
+                using var dictEntry = GLib.Variant.NewDictEntry(msg, data);
+                using var array = GLib.Variant.NewArray(typeDictEntry, new[] { dictEntry });
+                using var tuple = GLib.Variant.NewTuple(new[] { array });
+                Task.Run(async () => await _bus.CallAsync(
                     "org.freedesktop.portal.Desktop", // Bus name
                     "/org/freedesktop/portal/desktop", // Object path
                     "org.freedesktop.portal.Background", // Interface name
                     "SetStatus", // Method name
-                    new GLib.Variant(tuple)); // Parameters
+                    tuple)); // Parameters 
             }
             return _isBackgroundStatusReported;
         }

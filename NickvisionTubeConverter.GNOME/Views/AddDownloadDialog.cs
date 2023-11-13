@@ -8,8 +8,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 using static Nickvision.Aura.Localization.Gettext;
-using static Nickvision.GirExt.GdkExt;
-using static Nickvision.GirExt.GtkExt;
 
 namespace NickvisionTubeConverter.GNOME.Views;
 

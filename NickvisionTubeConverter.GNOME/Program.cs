@@ -22,7 +22,7 @@ public partial class Program
     /// </summary>
     /// <param name="args">string[]</param>
     /// <returns>Return code from Adw.Application.Run()</returns>
-    public static int Main(string[] args) => new Program(args).Run();
+    public static int Main(string[] args) => new Program(args).Run(args);
 
     /// <summary>
     /// Constructs a Program
@@ -64,12 +64,16 @@ public partial class Program
     /// <summary>
     /// Runs the program
     /// </summary>
+    /// <param name="args">Command-line arguments</param>
     /// <returns>Return code from Adw.Application.Run()</returns>
-    public int Run()
+    public int Run(string[] args)
     {
         try
         {
-            return _application.RunWithSynchronizationContext();
+            var argv = new string[args.Length + 1];
+            argv[0] = "org.nickvision.tubeconverter";
+            args.CopyTo(argv, 1);
+            return _application.RunWithSynchronizationContext(argv);
         }
         catch (Exception ex)
         {

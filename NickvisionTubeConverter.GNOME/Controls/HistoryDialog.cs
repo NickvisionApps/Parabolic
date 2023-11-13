@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using static Nickvision.Aura.Localization.Gettext;
-using static Nickvision.GirExt.GtkExt;
 
 namespace NickvisionTubeConverter.GNOME.Controls;
 
