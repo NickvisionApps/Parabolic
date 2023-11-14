@@ -6,9 +6,8 @@ Adw.Window _root {
   modal: true;
   resizable: false;
 
-  content: Gtk.Box {
-    orientation: vertical;
-
+  content: Adw.ToolbarView {
+    [top]
     Adw.HeaderBar {
       title-widget: Gtk.Label { };
 
@@ -23,7 +22,7 @@ Adw.Window _root {
       styles ["flat"]
     }
 
-    Gtk.WindowHandle {
+    content: Gtk.WindowHandle {
       Gtk.Box {
         orientation: vertical;
 
@@ -82,7 +81,7 @@ Adw.Window _root {
           styles ["view"]
         }
       }
-    }
+    };
   };
 
   Gtk.ShortcutController {

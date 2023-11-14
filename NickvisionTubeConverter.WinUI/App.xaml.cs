@@ -27,6 +27,7 @@ public partial class App : Application
 - Added the ability to turn off downloading auto-generated subtitles
 - Fixed an issue where aria's max connections per server preference was allowed to be greater than 16
 - Fixed an issue where enabling the ""Download Specific Timeframe"" advanced option would cause a crash for certain media downloads
+- Fixed an issue where stopping all downloads would cause the app to crash
 - Updated translations (Thanks everyone on Weblate!)";
         if (_controller.Theme != Theme.System)
         {

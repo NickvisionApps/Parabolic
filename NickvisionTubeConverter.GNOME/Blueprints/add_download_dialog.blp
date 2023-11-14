@@ -7,9 +7,8 @@ Adw.Window _root {
   modal: true;
   resizable: true;
 
-  content: Gtk.Box {
-    orientation: vertical;
-
+  content: Adw.ToolbarView {
+    [top]
     Adw.HeaderBar {
       title-widget: Gtk.Label {};
 
@@ -28,7 +27,7 @@ Adw.Window _root {
       styles ["flat"]
     }
 
-    Gtk.WindowHandle {
+    content: Gtk.WindowHandle {
       Gtk.Box {
         orientation: vertical;
         spacing: 24;
@@ -127,14 +126,8 @@ Adw.Window _root {
                       visible: false;
                     }
 
-                    Adw.ActionRow _subtitleRow {
+                    Adw.SwitchRow _subtitleRow {
                       title: _("Download Subtitles");
-                      activatable-widget: _subtitleSwitch;
-
-                      [suffix]
-                      Gtk.Switch _subtitleSwitch {
-                        valign: center;
-                      }
                     }
                   }
 
@@ -191,15 +184,8 @@ Adw.Window _root {
                       }
                     }
 
-                    Adw.ActionRow _numberTitlesRow {
+                    Adw.SwitchRow _numberTitlesRow {
                       title: _("Number Titles");
-                      activatable-widget: _numberTitlesSwitch;
-
-                      [suffix]
-                      Gtk.Switch _numberTitlesSwitch {
-                        valign: center;
-                        active: false;
-                      }
                     }
                   }
                 }
@@ -225,15 +211,9 @@ Adw.Window _root {
                   margin-end: 24;
                   margin-bottom: 12;
 
-                  Adw.ActionRow _numberTitlesRow2 {
+                  Adw.SwitchRow {
                     title: _("Number Titles");
-                    activatable-widget: _numberTitlesSwitch;
-
-                    [suffix]
-                    Gtk.Switch _numberTitlesSwitch2 {
-                      valign: center;
-                      active: bind _numberTitlesSwitch.active bidirectional;
-                    }
+                    active: bind _numberTitlesRow.active bidirectional;
                   }
                 }
 
@@ -291,39 +271,18 @@ Adw.Window _root {
                   margin-bottom: 12;
 
                   Adw.PreferencesGroup _advancedGroup {
-                    Adw.ActionRow _speedLimitRow {
+                    Adw.SwitchRow _speedLimitRow {
                       title: _("Speed Limit");
-                      activatable-widget: _speedLimitSwitch;
-
-                      [suffix]
-                      Gtk.Switch _speedLimitSwitch {
-                        valign: center;
-                        active: false;
-                      }
                     }
                     
-                    Adw.ActionRow {
+                    Adw.SwitchRow _splitChaptersRow {
                       title: _("Split Chapters");
                       subtitle: _("Splits the video into multiple smaller ones based on its chapters.");
-                      activatable-widget: _splitChaptersSwitch;
-
-                      [suffix]
-                      Gtk.Switch _splitChaptersSwitch {
-                        valign: center;
-                        active: false;
-                      }
                     }
 
-                    Adw.ActionRow _cropThumbnailRow {
+                    Adw.SwitchRow _cropThumbnailRow {
                       title: _("Crop Thumbnail");
                       subtitle: _("Make thumbnail square, useful when downloading music.");
-                      activatable-widget: _cropThumbnailSwitch;
-
-                      [suffix]
-                      Gtk.Switch _cropThumbnailSwitch {
-                        valign: center;
-                        active: false;
-                      }
                     }
 
                     Adw.ExpanderRow _downloadTimeframeRow {
@@ -349,6 +308,13 @@ Adw.Window _root {
           }
         }
       }
-    }
+    };
   };
+
+  Gtk.ShortcutController {
+    Gtk.Shortcut {
+      trigger: "Escape";
+      action: "action(window.close)";
+    }
+  }
 }
