@@ -303,15 +303,15 @@ public class Download
                         {
                             _ytOpt.Add("subtitleslangs", new List<string>() { "all" });
                         }
-                        else if(options.IncludeAutoGenertedSubtitles)
+                        else if (options.IncludeAutoGenertedSubtitles)
                         {
                             var subtitleFromEnglishLangs = new List<string>();
-                            foreach(var l in subtitleLangs)
+                            foreach (var l in subtitleLangs)
                             {
-                                if(l.Length == 2 || l.Length == 3)
+                                if (l.Length == 2 || l.Length == 3)
                                 {
                                     var fromEnglish = $"{l}-en";
-                                    if(!subtitleFromEnglishLangs.Contains(fromEnglish))
+                                    if (!subtitleFromEnglishLangs.Contains(fromEnglish))
                                     {
                                         subtitleFromEnglishLangs.Add(fromEnglish);
                                     }
