@@ -76,6 +76,10 @@ public class AddDownloadDialogController
     /// </summary>
     public bool PreviousSubtitleState => Configuration.Current.PreviousSubtitleState;
     /// <summary>
+    /// The previously used prefer av1 state
+    /// </summary>
+    public bool PreviousPreferAV1State => Configuration.Current.PreviousPreferAV1State;
+    /// <summary>
     /// Whether or not to number titles
     /// </summary>
     public bool NumberTitles => Configuration.Current.NumberTitles;
@@ -276,6 +280,7 @@ public class AddDownloadDialogController
             Configuration.Current.PreviousVideoResolution = _mediaUrlInfo.VideoResolutions[resolution.Value].ToString();
         }
         Configuration.Current.PreviousSubtitleState = subtitles;
+        Configuration.Current.PreviousPreferAV1State = options.PreferAV1;
         Aura.Active.SaveConfig("config");
     }
 

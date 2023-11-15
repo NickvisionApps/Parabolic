@@ -215,6 +215,7 @@ public partial class AddDownloadDialog : Adw.Window
         }
         _saveFolderRow.SetText(Path.GetFileName(_saveFolderString) ?? "");
         _subtitleRow.SetActive(_controller.PreviousSubtitleState);
+        _preferAV1Row.SetActive(_controller.PreviousPreferAV1State);
         _speedLimitRow.SetSubtitle($"{_("{0:f1} KiB/s", _controller.CurrentSpeedLimit)} {_("(Configurable in preferences)")}");
     }
 

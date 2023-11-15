@@ -75,6 +75,7 @@ public sealed partial class AddDownloadDialog : ContentDialog
         TglSpeedLimit.OnContent = _("On");
         TglSpeedLimit.OffContent = _("Off");
         CardPreferAV1.Header = _("Prefer AV1 Codec");
+        CardPreferAV1.Description = _("This option's state will be remembered and restored for future downloads.");
         TglPreferAV1.OnContent = _("On");
         TglPreferAV1.OffContent = _("Off");
         CardSplitChapters.Header = _("Split Chapters");
@@ -107,6 +108,7 @@ public sealed partial class AddDownloadDialog : ContentDialog
         }
         LblSaveFolder.Text = Path.GetFileName(_saveFolderString);
         TglSubtitle.IsOn = _controller.PreviousSubtitleState;
+        TglPreferAV1.IsOn = _controller.PreviousPreferAV1State;
         CardSpeedLimit.Description = $"{_("{0:f1} KiB/s", _controller.CurrentSpeedLimit)} {_("(Configurable in preferences)")}";
         CardCropThumbnail.Visibility = _controller.EmbedMetadata ? Visibility.Visible : Visibility.Collapsed;
     }

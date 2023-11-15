@@ -146,6 +146,10 @@ public class Configuration : ConfigurationBase
     /// </summary>
     public bool PreviousSubtitleState { get; set; }
     /// <summary>
+    /// The previously used prefer av1 state
+    /// </summary>
+    public bool PreviousPreferAV1State { get; set; }
+    /// <summary>
     /// Whether or not to number titles
     /// </summary>
     public bool NumberTitles { get; set; }
@@ -192,6 +196,7 @@ public class Configuration : ConfigurationBase
         PreviousMediaFileType = MediaFileType.MP4;
         PreviousVideoResolution = "";
         PreviousSubtitleState = false;
+        PreviousPreferAV1State = false;
         NumberTitles = false;
         ShowDisclaimerOnStartup = true;
     }
