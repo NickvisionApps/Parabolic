@@ -243,34 +243,25 @@ public class Download
                 }
                 else if (FileType.GetIsVideo())
                 {
+                    var ext = FileType == MediaFileType.MP4 ? "[ext=mp4]" : "";
                     var proto = _advancedOptions.Timeframe != null ? "[protocol!*=m3u8]" : "";
                     var vcodec = _advancedOptions.PreferAV1 ? "[vcodec=vp9.2]" : "[vcodec!*=vp]";
-                    if (Resolution!.Width == 0 && Resolution.Height == 0)
+                    var resolution = Resolution! == VideoResolution.Best ? "" : $"[width<={Resolution!.Width}][height<={Resolution!.Height}]";
+                    var formats = new HashSet<string>() //using a HashSet ensures no duplicates, for example if ext == ""
                     {
-                        _ytOpt.Add("format", FileType == MediaFileType.MP4 ? $@"bv*[ext=mp4]{vcodec}{proto}+ba[ext=m4a][language={AudioLanguage}]/
-                            bv*[ext=mp4]{vcodec}{proto}+ba[ext=m4a]/
-                            bv*[ext=mp4]{proto}+ba[ext=m4a][language={AudioLanguage}]/
-                            bv*[ext=mp4]{proto}+ba[ext=m4a]/b[ext=mp4]/
-                            bv{proto}+ba[language={AudioLanguage}]/
-                            bv{proto}+ba/b" : $"bv{proto}+ba[language={AudioLanguage}]/bv{proto}+ba/b");
-                    }
-                    else if (FileType == MediaFileType.MP4)
-                    {
-                        _ytOpt.Add("format", $@"bv*[ext=mp4]{vcodec}[width<={Resolution!.Width}][height<={Resolution.Height}]{proto}+ba[ext=m4a][language={AudioLanguage}]/
-                            bv*[ext=mp4]{vcodec}[width<={Resolution.Width}][height<={Resolution.Height}]{proto}+ba[ext=m4a]/
-                            bv*[ext=mp4][width<={Resolution!.Width}][height<={Resolution.Height}]{proto}+ba[ext=m4a][language={AudioLanguage}]/
-                            bv*[ext=mp4][width<={Resolution.Width}][height<={Resolution.Height}]{proto}+ba[ext=m4a]/
-                            b[ext=mp4][width<={Resolution.Width}][height<={Resolution.Height}]/
-                            bv*[width<={Resolution.Width}][height<={Resolution.Height}]{proto}+ba[language={AudioLanguage}]/
-                            bv*[width<={Resolution.Width}][height<={Resolution.Height}]{proto}+ba/
-                            b[width<={Resolution.Width}][height<={Resolution.Height}]");
-                    }
-                    else
-                    {
-                        _ytOpt.Add("format", $@"bv*[width<={Resolution!.Width}][height<={Resolution.Height}]{proto}+ba[language={AudioLanguage}]/
-                            bv*[width<={Resolution!.Width}][height<={Resolution.Height}]{proto}+ba/
-                            b[width<={Resolution.Width}][height<={Resolution.Height}]");
-                    }
+                        $"bv*{ext}{vcodec}{resolution}{proto}+ba{ext}[language={AudioLanguage}]",
+                        $"bv*{ext}{vcodec}{resolution}{proto}+ba{ext}",
+                        $"bv*{ext}{resolution}{proto}+ba{ext}[language={AudioLanguage}]",
+                        $"bv*{ext}{resolution}{proto}+ba{ext}",
+                        $"b{ext}{resolution}",
+                        $"bv*{vcodec}{resolution}{proto}+ba[language={AudioLanguage}]",
+                        $"bv*{vcodec}{resolution}{proto}+ba",
+                        $"bv*{vcodec}{resolution}{proto}+ba",
+                        $"bv*{resolution}{proto}+ba[language={AudioLanguage}]",
+                        $"bv*{resolution}{proto}+ba",
+                        $"b{resolution}"
+                    };
+                    _ytOpt.Add("format", $"{string.Join('/', formats)}/");
                     if (!FileType.GetIsGeneric())
                     {
                         postProcessors.Add(new Dictionary<string, dynamic>() { { "key", "FFmpegVideoConvertor" }, { "preferedformat", FileType.ToString().ToLower() } });
