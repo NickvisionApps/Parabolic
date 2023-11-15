@@ -31,13 +31,8 @@ public class Download
 
     private readonly string _tempDownloadPath;
     private readonly string _logPath;
-    private readonly bool _limitSpeed;
-    private readonly bool _splitChapters;
-    private readonly bool _cropThumbnail;
-    private readonly Timeframe? _timeframe;
     private readonly uint _playlistPosition;
-    private readonly string? _username;
-    private readonly string? _password;
+    private readonly AdvancedDownloadOptions _advancedOptions;
     private ulong? _pid;
     private Dictionary<string, dynamic>? _ytOpt;
     private dynamic? _outFile;
@@ -115,15 +110,10 @@ public class Download
     /// <param name="subtitle">Whether or not to download the subtitles</param>
     /// <param name="saveFolder">The folder to save the download to</param>
     /// <param name="saveFilename">The filename to save the download as</param>
-    /// <param name="limitSpeed">Whether or not to limit the download speed</param>
-    /// <param name="splitChapters">Whether or not to split based on chapters</param>
-    /// <param name="cropThumbnail">Whether or not to crop the thumbnail</param>
-    /// <param name="timeframe">A Timeframe to restrict the timespan of the media download</param>
     /// <param name="playlistPosition">Position in playlist starting with 1, or 0 if not in playlist</param>
-    /// <param name="username">A username for the website (if available)</param>
-    /// <param name="password">A password for the website (if available)</param>
+    /// <param name="options">AdvancedDownloadOptions</param>
     /// <exception cref="ArgumentException">Thrown if timeframe is specified and limitSpeed is enabled</exception>
-    public Download(string mediaUrl, MediaFileType fileType, Quality quality, VideoResolution? resolution, string? audioLanguage, bool subtitle, string saveFolder, string saveFilename, bool limitSpeed, bool splitChapters, bool cropThumbnail, Timeframe? timeframe, uint playlistPosition, string? username, string? password)
+    public Download(string mediaUrl, MediaFileType fileType, Quality quality, VideoResolution? resolution, string? audioLanguage, bool subtitle, string saveFolder, string saveFilename, uint playlistPosition, AdvancedDownloadOptions options)
     {
         Id = Guid.NewGuid();
         MediaUrl = mediaUrl;
@@ -140,15 +130,10 @@ public class Download
         WasStopped = false;
         _tempDownloadPath = $"{UserDirectories.ApplicationCache}{Path.DirectorySeparatorChar}{Id}{Path.DirectorySeparatorChar}";
         _logPath = $"{_tempDownloadPath}log";
-        _limitSpeed = limitSpeed;
-        _splitChapters = splitChapters;
-        _cropThumbnail = cropThumbnail;
-        _timeframe = timeframe;
         _playlistPosition = playlistPosition;
-        _username = username;
-        _password = password;
+        _advancedOptions = options;
         _pid = null;
-        if (_timeframe != null && _limitSpeed)
+        if (_advancedOptions.Timeframe != null && _advancedOptions.LimitSpeed)
         {
             throw new ArgumentException("A timeframe can only be specified if limit speed is disabled");
         }
@@ -225,12 +210,12 @@ public class Download
                 {
                     _ytOpt.Add("final_ext", FileType.ToString().ToLower());
                 }
-                if (options.UseAria && _timeframe == null)
+                if (options.UseAria && _advancedOptions.Timeframe == null)
                 {
                     _ytOpt.Add("external_downloader", new Dictionary<string, dynamic>() { { "default", DependencyLocator.Find("aria2c") } });
                     dynamic ariaDict = new PyDict();
                     dynamic ariaParams = new PyList();
-                    ariaParams.Append(new PyString($"--max-overall-download-limit={(_limitSpeed ? options.SpeedLimit : 0)}K"));
+                    ariaParams.Append(new PyString($"--max-overall-download-limit={(_advancedOptions.LimitSpeed ? options.SpeedLimit : 0)}K"));
                     ariaParams.Append(new PyString("--allow-overwrite=true"));
                     ariaParams.Append(new PyString("--show-console-readout=false"));
                     ariaParams.Append(new PyString($"--max-connection-per-server={options.AriaMaxConnectionsPerServer}"));
@@ -238,7 +223,7 @@ public class Download
                     ariaDict["default"] = ariaParams;
                     _ytOpt.Add("external_downloader_args", ariaDict);
                 }
-                else if (_limitSpeed)
+                else if (_advancedOptions.LimitSpeed)
                 {
                     _ytOpt.Add("ratelimit", options.SpeedLimit * 1024);
                 }
@@ -258,11 +243,12 @@ public class Download
                 }
                 else if (FileType.GetIsVideo())
                 {
-                    var proto = _timeframe != null ? "[protocol!*=m3u8]" : "";
+                    var proto = _advancedOptions.Timeframe != null ? "[protocol!*=m3u8]" : "";
+                    var vcodec = _advancedOptions.PreferAV1 ? "[vcodec=vp9.2]" : "[vcodec!*=vp]";
                     if (Resolution!.Width == 0 && Resolution.Height == 0)
                     {
-                        _ytOpt.Add("format", FileType == MediaFileType.MP4 ? $@"bv*[ext=mp4][vcodec!*=vp]{proto}+ba[ext=m4a][language={AudioLanguage}]/
-                            bv*[ext=mp4][vcodec!*=vp]{proto}+ba[ext=m4a]/
+                        _ytOpt.Add("format", FileType == MediaFileType.MP4 ? $@"bv*[ext=mp4]{vcodec}{proto}+ba[ext=m4a][language={AudioLanguage}]/
+                            bv*[ext=mp4]{vcodec}{proto}+ba[ext=m4a]/
                             bv*[ext=mp4]{proto}+ba[ext=m4a][language={AudioLanguage}]/
                             bv*[ext=mp4]{proto}+ba[ext=m4a]/b[ext=mp4]/
                             bv{proto}+ba[language={AudioLanguage}]/
@@ -270,8 +256,8 @@ public class Download
                     }
                     else if (FileType == MediaFileType.MP4)
                     {
-                        _ytOpt.Add("format", $@"bv*[ext=mp4][vcodec!*=vp][width<={Resolution!.Width}][height<={Resolution.Height}]{proto}+ba[ext=m4a][language={AudioLanguage}]/
-                            bv*[ext=mp4][vcodec!*=vp][width<={Resolution.Width}][height<={Resolution.Height}]{proto}+ba[ext=m4a]/
+                        _ytOpt.Add("format", $@"bv*[ext=mp4]{vcodec}[width<={Resolution!.Width}][height<={Resolution.Height}]{proto}+ba[ext=m4a][language={AudioLanguage}]/
+                            bv*[ext=mp4]{vcodec}[width<={Resolution.Width}][height<={Resolution.Height}]{proto}+ba[ext=m4a]/
                             bv*[ext=mp4][width<={Resolution!.Width}][height<={Resolution.Height}]{proto}+ba[ext=m4a][language={AudioLanguage}]/
                             bv*[ext=mp4][width<={Resolution.Width}][height<={Resolution.Height}]{proto}+ba[ext=m4a]/
                             b[ext=mp4][width<={Resolution.Width}][height<={Resolution.Height}]/
@@ -303,15 +289,15 @@ public class Download
                         {
                             _ytOpt.Add("subtitleslangs", new List<string>() { "all" });
                         }
-                        else if(options.IncludeAutoGenertedSubtitles)
+                        else if (options.IncludeAutoGenertedSubtitles)
                         {
                             var subtitleFromEnglishLangs = new List<string>();
-                            foreach(var l in subtitleLangs)
+                            foreach (var l in subtitleLangs)
                             {
-                                if(l.Length == 2 || l.Length == 3)
+                                if (l.Length == 2 || l.Length == 3)
                                 {
                                     var fromEnglish = $"{l}-en";
-                                    if(!subtitleFromEnglishLangs.Contains(fromEnglish))
+                                    if (!subtitleFromEnglishLangs.Contains(fromEnglish))
                                     {
                                         subtitleFromEnglishLangs.Add(fromEnglish);
                                     }
@@ -330,7 +316,7 @@ public class Download
                         }
                     }
                 }
-                if (_splitChapters)
+                if (_advancedOptions.SplitChapters)
                 {
                     postProcessors.Add(new Dictionary<string, dynamic>() { { "key", "FFmpegSplitChapters" } });
                 }
@@ -351,7 +337,7 @@ public class Download
                     {
                         _ytOpt.Add("writethumbnail", true);
                         postProcessors.Add(new Dictionary<string, dynamic>() { { "key", "TCEmbedThumbnail" } });
-                        if (_cropThumbnail)
+                        if (_advancedOptions.CropThumbnail)
                         {
                             dynamic cropParams = new PyList();
                             cropParams.Append(new PyString("-vf"));
@@ -373,13 +359,13 @@ public class Download
                 {
                     _ytOpt.Add("postprocessors", postProcessors);
                 }
-                if (!string.IsNullOrEmpty(_username))
+                if (!string.IsNullOrEmpty(_advancedOptions.Username))
                 {
-                    _ytOpt.Add("username", _username);
+                    _ytOpt.Add("username", _advancedOptions.Username);
                 }
-                if (!string.IsNullOrEmpty(_password))
+                if (!string.IsNullOrEmpty(_advancedOptions.Password))
                 {
-                    _ytOpt.Add("password", _password);
+                    _ytOpt.Add("password", _advancedOptions.Password);
                 }
             }
             //Run download
@@ -413,9 +399,9 @@ public class Download
                                 Log = _("Download using aria2 has started")
                             });
                         }
-                        if (_timeframe != null)
+                        if (_advancedOptions.Timeframe != null)
                         {
-                            _ytOpt.Add("download_ranges", ytdlp.utils.download_range_func(null, new List<List<double>>() { new List<double>() { _timeframe.Start.TotalSeconds, _timeframe.End.TotalSeconds } }));
+                            _ytOpt.Add("download_ranges", ytdlp.utils.download_range_func(null, new List<List<double>>() { new List<double>() { _advancedOptions.Timeframe.Start.TotalSeconds, _advancedOptions.Timeframe.End.TotalSeconds } }));
                             ProgressChanged?.Invoke(this, new DownloadProgressState()
                             {
                                 Status = DownloadProgressStatus.DownloadingFfmpeg,

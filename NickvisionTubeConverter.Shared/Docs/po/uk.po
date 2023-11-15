@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2023-11-01 20:56-0400\n"
+"POT-Creation-Date: 2023-11-14 23:25-0500\n"
 "PO-Revision-Date: 2023-09-28 01:23+0000\n"
 "Last-Translator: Dan <jonweblin2205@protonmail.com>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/nickvision-"
@@ -909,18 +909,48 @@ msgstr ""
 "заданою у Параметрах."
 
 #. (itstool) path: note/p
-#: yelp/C/newDownload.page:75 yelp/C/newDownload.page:82
-#: yelp/C/newDownload.page:90 yelp/C/newDownload.page:97
+#: yelp/C/newDownload.page:75 yelp/C/newDownload.page:83
+#: yelp/C/newDownload.page:93 yelp/C/newDownload.page:101
+#: yelp/C/newDownload.page:108
 msgid "Available in the <code>Advanced Options</code> section."
 msgstr "Доступно в розділі <code>Додаткові параметри</code>."
 
 #. (itstool) path: item/title
 #: yelp/C/newDownload.page:79
+msgid "Prefer AV1 Codec"
+msgstr ""
+
+#. (itstool) path: item/p
+#: yelp/C/newDownload.page:80
+#, fuzzy
+msgid "Only available for video (mp4, webm) downloads"
+msgstr "Доступно лише для відео."
+
+#. (itstool) path: item/p
+#: yelp/C/newDownload.page:81
+#, fuzzy
+msgid ""
+"If enabled, Parabolic will prefer videos with the av1 codec when downloading."
+msgstr ""
+"Якщо ввімкнено, Parabolic розділить відео на кілька менших на основі його "
+"розділів."
+
+#. (itstool) path: note/p
+#: yelp/C/newDownload.page:86
+#, fuzzy
+msgid ""
+"This option's state will be remembered and restored for future downloads."
+msgstr ""
+"Раніше використаний стан запам'ятовуватиметься та попередньо вибиратиметься "
+"для наступного завантаження."
+
+#. (itstool) path: item/title
+#: yelp/C/newDownload.page:90
 msgid "Split Chapters"
 msgstr "Розділити розділи"
 
 #. (itstool) path: item/p
-#: yelp/C/newDownload.page:80
+#: yelp/C/newDownload.page:91
 msgid ""
 "If enabled, Parabolic will split the video into multiple smaller ones based "
 "on its chapters."
@@ -929,19 +959,19 @@ msgstr ""
 "розділів."
 
 #. (itstool) path: item/title
-#: yelp/C/newDownload.page:86
+#: yelp/C/newDownload.page:97
 msgid "Crop Thumbnail"
 msgstr "Обрізати мініатюру"
 
 #. (itstool) path: item/p
-#: yelp/C/newDownload.page:87
+#: yelp/C/newDownload.page:98
 msgid ""
 "Only available if <code>Embed Metadata</code> is enabled in Preferences."
 msgstr ""
 "Доступно, якщо у Параметрах ввімкнено опцію <code>Вставити метадані</code>."
 
 #. (itstool) path: item/p
-#: yelp/C/newDownload.page:88
+#: yelp/C/newDownload.page:99
 msgid ""
 "If enabled, Parabolic will crop a download's embedded thumbnail as square. "
 "This is useful when downloading music who's album images are usually square."
@@ -951,12 +981,12 @@ msgstr ""
 "альбомів якої зазвичай мають квадратну форму."
 
 #. (itstool) path: item/title
-#: yelp/C/newDownload.page:94
+#: yelp/C/newDownload.page:105
 msgid "Download Specific Timeframe"
 msgstr "Завантажити конкретний часовий проміжок"
 
 #. (itstool) path: item/p
-#: yelp/C/newDownload.page:95
+#: yelp/C/newDownload.page:106
 msgid ""
 "If enabled, the user will be able to enter a start timeframe and an end "
 "timeframe for a section of the media to download."
@@ -965,26 +995,27 @@ msgstr ""
 "часовий проміжок для завантаження частини медіафайлу."
 
 #. (itstool) path: note/p
-#: yelp/C/newDownload.page:100
+#: yelp/C/newDownload.page:111
+#, fuzzy
 msgid ""
-"Enablining this option will disable the use of aria2 as the downloader for "
+"Enabling this option will disable the use of aria2 as the downloader for "
 "this download if it is enabled in Preferences."
 msgstr ""
 "Ваімкнення цього параметру вимкне використання aria2 як завантажувача для "
 "цього завантаження, якщо його ввімкнено у Параметрах."
 
 #. (itstool) path: item/title
-#: yelp/C/newDownload.page:104
+#: yelp/C/newDownload.page:115
 msgid "File Name"
 msgstr "Ім'я файлу"
 
 #. (itstool) path: item/p
-#: yelp/C/newDownload.page:105
+#: yelp/C/newDownload.page:116
 msgid "The file name to use when saving the download."
 msgstr "Ім'я файлу, яке буде використано при збереженні завантаження."
 
 #. (itstool) path: note/p
-#: yelp/C/newDownload.page:107
+#: yelp/C/newDownload.page:118
 msgid "Default: The title of the media"
 msgstr "За замовчуванням: назва медіа"
 
@@ -997,9 +1028,6 @@ msgstr "За замовчуванням: назва медіа"
 #~ msgstr ""
 #~ "Тип субтитрів для завантаження. Може бути <code>Немає</code>, <code>VTT</"
 #~ "code>, або <code>SRT</code>."
-
-#~ msgid "Only available for video types."
-#~ msgstr "Доступно лише для відео."
 
 #~ msgid "Enabling The Keyring"
 #~ msgstr "Ввімкнення Keyring"

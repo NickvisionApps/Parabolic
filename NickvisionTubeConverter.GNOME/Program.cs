@@ -5,6 +5,7 @@ using NickvisionTubeConverter.Shared.Models;
 using System;
 using System.IO;
 using System.Reflection;
+using System.Runtime.InteropServices;
 
 namespace NickvisionTubeConverter.GNOME;
 
@@ -13,6 +14,13 @@ namespace NickvisionTubeConverter.GNOME;
 /// </summary>
 public partial class Program
 {
+    public delegate void OpenCallback(nint application, nint[] files, int n_files, nint hint, nint data);
+
+    [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
+    private static partial ulong g_signal_connect_data(nint instance, string signal, OpenCallback callback, nint data, nint destroy_data, int flags);
+    [LibraryImport("libadwaita-1.so.0", StringMarshalling = StringMarshalling.Utf8)]
+    private static partial string g_file_get_uri(nint file);
+
     private readonly Adw.Application _application;
     private MainWindow? _mainWindow;
     private MainWindowController _mainWindowController;
@@ -36,6 +44,7 @@ public partial class Program
         _mainWindowController.AppInfo.Changelog =
             @"* Added support for auto-generated subtitles from English
               * Added the ability to turn off downloading auto-generated subtitles
+              * Added the advanced option to prefer the adv1 codec for video downloads
               * A URL can now be passed to Parabolic via the command-line or the freedesktop application open protocol to trigger its validation of startup
               * Improved the design of the Preferences dialog to allow for better searching of options
               * Fixed an issue where aria's max connections per server preference was allowed to be greater than 16
@@ -44,7 +53,7 @@ public partial class Program
               * Updated to GNOME 45 runtime with latest libadwaita design
               * Updated translations (Thanks everyone on Weblate!)";
         _application.OnActivate += OnActivate;
-        _application.OnOpen += OnOpen;
+        g_signal_connect_data(_application.Handle, "open", OnOpen, IntPtr.Zero, IntPtr.Zero, 0);
         if (File.Exists(Path.GetFullPath(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)!) + "/org.nickvision.tubeconverter.gresource"))
         {
             //Load file from program directory, required for `dotnet run`
@@ -123,9 +132,16 @@ public partial class Program
     /// </summary>
     /// <param name="sender">Gio.Application</param>
     /// <param name="e">Gio.Application.OpenSignalArgs</param>
-    private void OnOpen(Gio.Application sender, Gio.Application.OpenSignalArgs e)
+    private void OnOpen(nint application, nint[] files, int n_files, nint hint, nint data)
     {
-        _mainWindowController.UrlToLaunch = e.Files[0].GetUri();
+        if(n_files > 0)
+        {
+            try
+            {
+                _mainWindowController.UrlToLaunch = g_file_get_uri(files[0]);
+            }
+            catch { }
+        }
         _application.Activate();
     }
 }

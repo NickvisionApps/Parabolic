@@ -74,6 +74,10 @@ public sealed partial class AddDownloadDialog : ContentDialog
         CardSpeedLimit.Header = _("Speed Limit");
         TglSpeedLimit.OnContent = _("On");
         TglSpeedLimit.OffContent = _("Off");
+        CardPreferAV1.Header = _("Prefer AV1 Codec");
+        CardPreferAV1.Description = _("This option's state will be remembered and restored for future downloads.");
+        TglPreferAV1.OnContent = _("On");
+        TglPreferAV1.OffContent = _("Off");
         CardSplitChapters.Header = _("Split Chapters");
         CardSplitChapters.Description = _("Splits the video into multiple smaller ones based on its chapters.");
         TglSplitChapters.OnContent = _("On");
@@ -104,6 +108,7 @@ public sealed partial class AddDownloadDialog : ContentDialog
         }
         LblSaveFolder.Text = Path.GetFileName(_saveFolderString);
         TglSubtitle.IsOn = _controller.PreviousSubtitleState;
+        TglPreferAV1.IsOn = _controller.PreviousPreferAV1State;
         CardSpeedLimit.Description = $"{_("{0:f1} KiB/s", _controller.CurrentSpeedLimit)} {_("(Configurable in preferences)")}";
         CardCropThumbnail.Visibility = _controller.EmbedMetadata ? Visibility.Visible : Visibility.Collapsed;
     }
@@ -217,17 +222,24 @@ public sealed partial class AddDownloadDialog : ContentDialog
                 }
                 catch { }
             }
+            var options = new AdvancedDownloadOptions()
+            {
+                LimitSpeed = TglSpeedLimit.IsOn,
+                PreferAV1 = TglPreferAV1.IsOn,
+                SplitChapters = TglSplitChapters.IsOn,
+                CropThumbnail = TglCropThumbnail.IsOn,
+                Timeframe = timeframe
+            };
             if (CmbKeyringCredentials.SelectedIndex == 0 || !TglAuthenticate.IsOn)
             {
-                _controller.PopulateDownloads(SelectedMediaFileType, quality, resolutionIndex, audioLanguage,
-                    TglSubtitle.IsOn, _saveFolderString, TglSpeedLimit.IsOn, TglSplitChapters.IsOn,
-                    TglCropThumbnail.IsOn, timeframe, TxtUsername.Text, TxtPassword.Password);
+                options.Username = TxtUsername.Text;
+                options.Password = TxtPassword.Password;
+                _controller.PopulateDownloads(SelectedMediaFileType, quality, resolutionIndex, audioLanguage, TglSubtitle.IsOn, _saveFolderString, options);
             }
             else
             {
-                await _controller.PopulateDownloadsAsync(SelectedMediaFileType, quality, resolutionIndex, audioLanguage,
-                    TglSubtitle.IsOn, _saveFolderString, TglSpeedLimit.IsOn, TglSplitChapters.IsOn,
-                    TglCropThumbnail.IsOn, timeframe, CmbKeyringCredentials.SelectedIndex - 1);
+
+                await _controller.PopulateDownloadsAsync(SelectedMediaFileType, quality, resolutionIndex, audioLanguage, TglSubtitle.IsOn, _saveFolderString, options, CmbKeyringCredentials.SelectedIndex - 1);
             }
         }
         return res;
@@ -320,12 +332,14 @@ public sealed partial class AddDownloadDialog : ContentDialog
             var findPrevious = _controller.PreviousVideoResolutionIndex;
             CmbQuality.SelectedIndex = findPrevious != -1 ? findPrevious : 0;
             CardSubtitle.Visibility = Visibility.Visible;
+            CardPreferAV1.Visibility = Visibility.Visible;
         }
         else
         {
             CmbQuality.ItemsSource = _audioQualities;
             CmbQuality.SelectedIndex = 0;
             CardSubtitle.Visibility = Visibility.Collapsed;
+            CardPreferAV1.Visibility = Visibility.Collapsed;
         }
         if (_controller.CropAudioThumbnails)
         {

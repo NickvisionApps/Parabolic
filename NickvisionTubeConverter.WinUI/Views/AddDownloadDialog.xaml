@@ -215,6 +215,14 @@
                                 <ToggleSwitch x:Name="TglSpeedLimit" Toggled="TglSpeedLimit_Toggled"/>
                             </wct:SettingsCard>
 
+                            <wct:SettingsCard x:Name="CardPreferAV1" Margin="0,6,0,0">
+                                <wct:SettingsCard.HeaderIcon>
+                                    <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE8B2;"/>
+                                </wct:SettingsCard.HeaderIcon>
+
+                                <ToggleSwitch x:Name="TglPreferAV1"/>
+                            </wct:SettingsCard>
+
                             <wct:SettingsCard x:Name="CardSplitChapters" Margin="0,6,0,0">
                                 <wct:SettingsCard.HeaderIcon>
                                     <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE16B;"/>
