@@ -132,11 +132,7 @@ public partial class AddDownloadDialog : Adw.Window
         {
             if (e.Pspec.GetName() == "selected-item")
             {
-                SetQualityRowModel();
-                if (_controller.CropAudioThumbnails)
-                {
-                    _cropThumbnailRow.SetActive(SelectedMediaFileType.GetIsAudio());
-                }
+                OnFileTypeChanged();
             }
         };
         _selectSaveFolderButton.OnClicked += async (sender, e) => await SelectSaveFolderAsync();
@@ -378,7 +374,7 @@ public partial class AddDownloadDialog : Adw.Window
                 _audioLanguageRow.SetVisible(true);
                 _audioLanguageRow.SetModel(Gtk.StringList.New(_controller.AudioLanguages.ToArray()));
             }
-            SetQualityRowModel(); // in case _fileTypeRow.SetSelected didn't invoke OnNotify
+            OnFileTypeChanged(); // in case _fileTypeRow.SetSelected didn't invoke OnNotify
             _downloadPage.SetVisible(true);
             _viewStack.SetVisibleChildName("pageDownload");
             SetDefaultWidget(_addDownloadButton);
@@ -451,9 +447,9 @@ public partial class AddDownloadDialog : Adw.Window
     }
 
     /// <summary>
-    /// Sets _qualityRow model depending on file type
+    /// Occurs when the file type was changed
     /// </summary>
-    private void SetQualityRowModel()
+    private void OnFileTypeChanged()
     {
         if (SelectedMediaFileType.GetIsVideo())
         {
@@ -463,12 +459,18 @@ public partial class AddDownloadDialog : Adw.Window
             {
                 _qualityRow.SetSelected((uint)findPrevious);
             }
-            _subtitleRow.SetSensitive(true);
+            _subtitleRow.SetVisible(true);
+            _preferAV1Row.SetVisible(true);
         }
         else
         {
             _qualityRow.SetModel(Gtk.StringList.New(_audioQualities));
-            _subtitleRow.SetSensitive(false);
+            _subtitleRow.SetVisible(false);
+            _preferAV1Row.SetVisible(false);
+        }
+        if (_controller.CropAudioThumbnails)
+        {
+            _cropThumbnailRow.SetActive(SelectedMediaFileType.GetIsAudio());
         }
     }
 

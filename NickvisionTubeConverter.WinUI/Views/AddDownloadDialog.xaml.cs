@@ -330,12 +330,14 @@ public sealed partial class AddDownloadDialog : ContentDialog
             var findPrevious = _controller.PreviousVideoResolutionIndex;
             CmbQuality.SelectedIndex = findPrevious != -1 ? findPrevious : 0;
             CardSubtitle.Visibility = Visibility.Visible;
+            CardPreferAV1.Visibility = Visibility.Visible;
         }
         else
         {
             CmbQuality.ItemsSource = _audioQualities;
             CmbQuality.SelectedIndex = 0;
             CardSubtitle.Visibility = Visibility.Collapsed;
+            CardPreferAV1.Visibility = Visibility.Collapsed;
         }
         if (_controller.CropAudioThumbnails)
         {
