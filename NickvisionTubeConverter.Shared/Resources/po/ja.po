@@ -7,11 +7,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-11-14 23:25-0500\n"
+"POT-Creation-Date: 2023-11-15 08:29-0500\n"
 "PO-Revision-Date: 2023-11-15 13:25+0000\n"
 "Last-Translator: Gnuey56 <gnuey56@proton.me>\n"
-"Language-Team: Japanese <https://hosted.weblate.org/projects/"
-"nickvision-tube-converter/app/ja/>\n"
+"Language-Team: Japanese <https://hosted.weblate.org/projects/nickvision-tube-"
+"converter/app/ja/>\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -175,6 +175,7 @@ msgstr ""
 msgid "Back"
 msgstr "戻る"
 
+#: ../../../Models/VideoResolution.cs:51 ../../../Models/VideoResolution.cs:75
 #: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:75
 #: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:38
 msgid "Best"
@@ -307,10 +308,6 @@ msgstr "DaPigGuy"
 msgid "David Lapshin"
 msgstr "David Lapshin"
 
-#: ../../../Models/VideoResolution.cs:55
-msgid "Default"
-msgstr "デフォルト"
-
 #: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringDialog.xaml.cs:57
 #: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:193
 msgid "Delete"
@@ -367,14 +364,14 @@ msgid ""
 "generated ones. To exclude auto-generated ones, turn off the option below."
 msgstr ""
 "同じ言語であっても、サイトによって違った言語コードを使用しているかもしれませ"
-"ん。2文字、2文字+地域、3文字の３つのパターンが考えられます。例えば、\"en\""
-"、\"en-US\"、\"eng\" は英語の言語コードとして使用されます。\n"
+"ん。2文字、2文字+地域、3文字の３つのパターンが考えられます。例え"
+"ば、\"en\"、\"en-US\"、\"eng\" は英語の言語コードとして使用されます。\n"
 "より良い結果を得るために、有効な言語コードを全て指定してください。自動生成さ"
 "れた字幕が利用可能な場合は、それらもダウンロードされます。\n"
 "\n"
-"\"all\"に設定することによって、自動生成された字幕を含めた全ての字幕をダウンロ"
-"ード出来ます。自動生成された字幕を除く場合は、以下のオプションをオフにしてく"
-"ださい。"
+"\"all\"に設定することによって、自動生成された字幕を含めた全ての字幕をダウン"
+"ロード出来ます。自動生成された字幕を除く場合は、以下のオプションをオフにして"
+"ください。"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringDialog.xaml.cs:42
 #: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:132
@@ -464,11 +461,11 @@ msgstr "特定の時間枠をダウンロードする"
 msgid "Download Subtitles"
 msgstr "字幕をダウンロードする"
 
-#: ../../../Models/Download.cs:399
+#: ../../../Models/Download.cs:390
 msgid "Download using aria2 has started"
 msgstr "Aria2 を使用したダウンロードが開始"
 
-#: ../../../Models/Download.cs:410
+#: ../../../Models/Download.cs:401
 msgid "Download using ffmpeg has started"
 msgstr "ffmpeg を使用したダウンロードが開始"
 
@@ -1454,7 +1451,7 @@ msgid "When all downloads finish"
 msgstr "すべてのダウンロード時"
 
 #: ../../../Controllers/PreferencesViewController.cs:296
-#: ../../../Models/Download.cs:288
+#: ../../../Models/Download.cs:279
 msgctxt "subtitle"
 msgid "all"
 msgstr "全て"
@@ -1552,6 +1549,9 @@ msgstr "すべて停止"
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:223
 msgid "Clear"
 msgstr "クリア"
+
+#~ msgid "Default"
+#~ msgstr "デフォルト"
 
 #~ msgid "YouTube;Downloader;ytdlp;Nickvision;Tube;Converter;"
 #~ msgstr ""
