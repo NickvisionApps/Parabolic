@@ -244,10 +244,11 @@ public class Download
                 else if (FileType.GetIsVideo())
                 {
                     var proto = _advancedOptions.Timeframe != null ? "[protocol!*=m3u8]" : "";
+                    var vcodec = _advancedOptions.PreferAV1 ? "[vcodec=vp9.2]" : "[vcodec!*=vp]";
                     if (Resolution!.Width == 0 && Resolution.Height == 0)
                     {
-                        _ytOpt.Add("format", FileType == MediaFileType.MP4 ? $@"bv*[ext=mp4][vcodec!*=vp]{proto}+ba[ext=m4a][language={AudioLanguage}]/
-                            bv*[ext=mp4][vcodec!*=vp]{proto}+ba[ext=m4a]/
+                        _ytOpt.Add("format", FileType == MediaFileType.MP4 ? $@"bv*[ext=mp4]{vcodec}{proto}+ba[ext=m4a][language={AudioLanguage}]/
+                            bv*[ext=mp4]{vcodec}{proto}+ba[ext=m4a]/
                             bv*[ext=mp4]{proto}+ba[ext=m4a][language={AudioLanguage}]/
                             bv*[ext=mp4]{proto}+ba[ext=m4a]/b[ext=mp4]/
                             bv{proto}+ba[language={AudioLanguage}]/
@@ -255,8 +256,8 @@ public class Download
                     }
                     else if (FileType == MediaFileType.MP4)
                     {
-                        _ytOpt.Add("format", $@"bv*[ext=mp4][vcodec!*=vp][width<={Resolution!.Width}][height<={Resolution.Height}]{proto}+ba[ext=m4a][language={AudioLanguage}]/
-                            bv*[ext=mp4][vcodec!*=vp][width<={Resolution.Width}][height<={Resolution.Height}]{proto}+ba[ext=m4a]/
+                        _ytOpt.Add("format", $@"bv*[ext=mp4]{vcodec}[width<={Resolution!.Width}][height<={Resolution.Height}]{proto}+ba[ext=m4a][language={AudioLanguage}]/
+                            bv*[ext=mp4]{vcodec}[width<={Resolution.Width}][height<={Resolution.Height}]{proto}+ba[ext=m4a]/
                             bv*[ext=mp4][width<={Resolution!.Width}][height<={Resolution.Height}]{proto}+ba[ext=m4a][language={AudioLanguage}]/
                             bv*[ext=mp4][width<={Resolution.Width}][height<={Resolution.Height}]{proto}+ba[ext=m4a]/
                             b[ext=mp4][width<={Resolution.Width}][height<={Resolution.Height}]/
