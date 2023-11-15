@@ -74,6 +74,9 @@ public sealed partial class AddDownloadDialog : ContentDialog
         CardSpeedLimit.Header = _("Speed Limit");
         TglSpeedLimit.OnContent = _("On");
         TglSpeedLimit.OffContent = _("Off");
+        CardPreferAV1.Header = _("Prefer AV1 Codec");
+        TglPreferAV1.OnContent = _("On");
+        TglPreferAV1.OffContent = _("Off");
         CardSplitChapters.Header = _("Split Chapters");
         CardSplitChapters.Description = _("Splits the video into multiple smaller ones based on its chapters.");
         TglSplitChapters.OnContent = _("On");
@@ -220,6 +223,7 @@ public sealed partial class AddDownloadDialog : ContentDialog
             var options = new AdvancedDownloadOptions()
             {
                 LimitSpeed = TglSpeedLimit.IsOn,
+                PreferAV1 = TglPreferAV1.IsOn,
                 SplitChapters = TglSplitChapters.IsOn,
                 CropThumbnail = TglCropThumbnail.IsOn,
                 Timeframe = timeframe

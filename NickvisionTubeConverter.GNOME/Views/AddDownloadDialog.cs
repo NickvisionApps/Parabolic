@@ -51,6 +51,7 @@ public partial class AddDownloadDialog : Adw.Window
     [Gtk.Connect] private readonly Gtk.Button _deselectAllButton;
     [Gtk.Connect] private readonly Adw.PreferencesGroup _playlistGroup;
     [Gtk.Connect] private readonly Adw.SwitchRow _speedLimitRow;
+    [Gtk.Connect] private readonly Adw.SwitchRow _preferAV1Row;
     [Gtk.Connect] private readonly Adw.SwitchRow _splitChaptersRow;
     [Gtk.Connect] private readonly Adw.SwitchRow _cropThumbnailRow;
     [Gtk.Connect] private readonly Adw.ExpanderRow _downloadTimeframeRow;
@@ -556,6 +557,7 @@ public partial class AddDownloadDialog : Adw.Window
         var options = new AdvancedDownloadOptions()
         {
             LimitSpeed = _speedLimitRow.GetActive(),
+            PreferAV1 = _preferAV1Row.GetActive(),
             SplitChapters = _splitChaptersRow.GetActive(),
             CropThumbnail = _cropThumbnailRow.GetActive(),
             Timeframe = timeframe
