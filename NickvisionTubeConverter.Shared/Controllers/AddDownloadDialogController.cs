@@ -255,20 +255,15 @@ public class AddDownloadDialogController
     /// <param name="audioLanguage">The audio language code</param>
     /// <param name="subtitles">Whether or not to download the subtitles</param>
     /// <param name="saveFolder">The save folder of the downloads</param>
-    /// <param name="limitSpeed">Whether or not to use speed limit</param>
-    /// <param name="splitChapters">Whether or not to split based on chapters</param>
-    /// <param name="cropThumbnail">Whether or not to crop the thumbnail</param>
-    /// <param name="timeframe">A Timeframe to restrict the timespan of the media download</param>
-    /// <param name="username">A username for the website (if available)</param>
-    /// <param name="password">A password for the website (if available)</param>
-    public void PopulateDownloads(MediaFileType mediaFileType, Quality quality, int? resolution, string? audioLanguage, bool subtitles, string saveFolder, bool limitSpeed, bool splitChapters, bool cropThumbnail, Timeframe? timeframe, string? username, string? password)
+    /// <param name="options">AdvancedDownloadOptions</param>
+    public void PopulateDownloads(MediaFileType mediaFileType, Quality quality, int? resolution, string? audioLanguage, bool subtitles, string saveFolder, AdvancedDownloadOptions options)
     {
         Downloads.Clear();
         foreach (var media in _mediaUrlInfo.MediaList)
         {
             if (media.ToDownload)
             {
-                Downloads.Add(new Download(media.Url, mediaFileType, quality, resolution == null ? null : _mediaUrlInfo.VideoResolutions[resolution.Value], audioLanguage, subtitles, saveFolder, media.Title, limitSpeed, splitChapters, cropThumbnail, timeframe, media.PlaylistPosition, username, password));
+                Downloads.Add(new Download(media.Url, mediaFileType, quality, resolution == null ? null : _mediaUrlInfo.VideoResolutions[resolution.Value], audioLanguage, subtitles, saveFolder, media.Title, media.PlaylistPosition, options));
             }
         }
         Configuration.Current.PreviousSaveFolder = saveFolder;
@@ -293,22 +288,21 @@ public class AddDownloadDialogController
     /// <param name="audioLanguage">The audio language code</param>
     /// <param name="subtitles">Whether or not to download the subtitles</param>
     /// <param name="saveFolder">The save folder of the downloads</param>
-    /// <param name="limitSpeed">Whether or not to use speed limit</param>
-    /// <param name="splitChapters">Whether or not to split based on chapters</param>
-    /// <param name="cropThumbnail">Whether or not to crop the thumbnail</param>
-    /// <param name="timeframe">A Timeframe to restrict the timespan of the media download</param>
-    /// <param name="credentialIndex">The index of the credential to use</param>
-    public async Task PopulateDownloadsAsync(MediaFileType mediaFileType, Quality quality, int? resolution, string? audioLanguage, bool subtitles, string saveFolder, bool limitSpeed, bool splitChapters, bool cropThumbnail, Timeframe? timeframe, int credentialIndex)
+    /// <param name="options">AdvancedDownloadOptions</param>
+    public async Task PopulateDownloadsAsync(MediaFileType mediaFileType, Quality quality, int? resolution, string? audioLanguage, bool subtitles, string saveFolder, AdvancedDownloadOptions options, int credentialIndex)
     {
         if (_keyring != null)
         {
             var credentials = await _keyring.GetAllCredentialsAsync();
             credentials.Sort((a, b) => a.Name.CompareTo(b.Name));
-            PopulateDownloads(mediaFileType, quality, resolution, audioLanguage, subtitles, saveFolder, limitSpeed, splitChapters, cropThumbnail, timeframe, credentials[credentialIndex].Username, credentials[credentialIndex].Password);
+            options.Username = credentials[credentialIndex].Username;
+            options.Password = credentials[credentialIndex].Password;
         }
         else
         {
-            PopulateDownloads(mediaFileType, quality, resolution, audioLanguage, subtitles, saveFolder, limitSpeed, splitChapters, cropThumbnail, timeframe, "", "");
+            options.Username = null;
+            options.Password = null;
         }
+        PopulateDownloads(mediaFileType, quality, resolution, audioLanguage, subtitles, saveFolder, options);
     }
 }

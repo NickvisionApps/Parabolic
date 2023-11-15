@@ -553,17 +553,22 @@ public partial class AddDownloadDialog : Adw.Window
             }
             catch { }
         }
+        var options = new AdvancedDownloadOptions()
+        {
+            LimitSpeed = _speedLimitRow.GetActive(),
+            SplitChapters = _splitChaptersRow.GetActive(),
+            CropThumbnail = _cropThumbnailRow.GetActive(),
+            Timeframe = timeframe
+        };
         if (_keyringRow.GetSelected() == 0 || _keyringRow.GetSelected() == GTK_INVALID_LIST_POSITION || !_authRow.GetEnableExpansion())
         {
-            _controller.PopulateDownloads(SelectedMediaFileType, quality, resolutionIndex, audioLanguage,
-                _subtitleRow.GetActive(), _saveFolderString, _speedLimitRow.GetActive(), _splitChaptersRow.GetActive(),
-                _cropThumbnailRow.GetActive(), timeframe, _usernameRow.GetText(), _passwordRow.GetText());
+            options.Username = _usernameRow.GetText();
+            options.Password = _passwordRow.GetText();
+            _controller.PopulateDownloads(SelectedMediaFileType, quality, resolutionIndex, audioLanguage, _subtitleRow.GetActive(), _saveFolderString, options);
         }
         else
         {
-            await _controller.PopulateDownloadsAsync(SelectedMediaFileType, quality, resolutionIndex, audioLanguage,
-                _subtitleRow.GetActive(), _saveFolderString, _speedLimitRow.GetActive(), _splitChaptersRow.GetActive(),
-                _cropThumbnailRow.GetActive(), timeframe, ((int)_keyringRow.GetSelected()) - 1);
+            await _controller.PopulateDownloadsAsync(SelectedMediaFileType, quality, resolutionIndex, audioLanguage, _subtitleRow.GetActive(), _saveFolderString, options, ((int)_keyringRow.GetSelected()) - 1);
         }
         OnDownload?.Invoke(this, EventArgs.Empty);
     }

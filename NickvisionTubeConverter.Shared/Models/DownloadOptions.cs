@@ -1,7 +1,7 @@
 namespace NickvisionTubeConverter.Shared.Models;
 
 /// <summary>
-/// Configurable options for a download
+/// Configurable options for all downloads
 /// </summary>
 public class DownloadOptions
 {

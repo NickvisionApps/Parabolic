@@ -217,17 +217,23 @@ public sealed partial class AddDownloadDialog : ContentDialog
                 }
                 catch { }
             }
+            var options = new AdvancedDownloadOptions()
+            {
+                LimitSpeed = TglSpeedLimit.IsOn,
+                SplitChapters = TglSplitChapters.IsOn,
+                CropThumbnail = TglCropThumbnail.IsOn,
+                Timeframe = timeframe
+            };
             if (CmbKeyringCredentials.SelectedIndex == 0 || !TglAuthenticate.IsOn)
             {
-                _controller.PopulateDownloads(SelectedMediaFileType, quality, resolutionIndex, audioLanguage,
-                    TglSubtitle.IsOn, _saveFolderString, TglSpeedLimit.IsOn, TglSplitChapters.IsOn,
-                    TglCropThumbnail.IsOn, timeframe, TxtUsername.Text, TxtPassword.Password);
+                options.Username = TxtUsername.Text;
+                options.Password = TxtPassword.Password;
+                _controller.PopulateDownloads(SelectedMediaFileType, quality, resolutionIndex, audioLanguage, TglSubtitle.IsOn, _saveFolderString, options);
             }
             else
             {
-                await _controller.PopulateDownloadsAsync(SelectedMediaFileType, quality, resolutionIndex, audioLanguage,
-                    TglSubtitle.IsOn, _saveFolderString, TglSpeedLimit.IsOn, TglSplitChapters.IsOn,
-                    TglCropThumbnail.IsOn, timeframe, CmbKeyringCredentials.SelectedIndex - 1);
+
+                await _controller.PopulateDownloadsAsync(SelectedMediaFileType, quality, resolutionIndex, audioLanguage, TglSubtitle.IsOn, _saveFolderString, options, CmbKeyringCredentials.SelectedIndex - 1);
             }
         }
         return res;
