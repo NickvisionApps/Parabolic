@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2023-11-01 20:56-0400\n"
+"POT-Creation-Date: 2023-11-14 23:25-0500\n"
 "PO-Revision-Date: 2023-09-26 13:20+0000\n"
 "Last-Translator: rene-coty <irenee.thirion@e.email>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -929,18 +929,48 @@ msgstr ""
 "selon la vitesse indiquée dans les préférences."
 
 #. (itstool) path: note/p
-#: yelp/C/newDownload.page:75 yelp/C/newDownload.page:82
-#: yelp/C/newDownload.page:90 yelp/C/newDownload.page:97
+#: yelp/C/newDownload.page:75 yelp/C/newDownload.page:83
+#: yelp/C/newDownload.page:93 yelp/C/newDownload.page:101
+#: yelp/C/newDownload.page:108
 msgid "Available in the <code>Advanced Options</code> section."
 msgstr "Disponible dans la section <code>Options avancées</code>."
 
 #. (itstool) path: item/title
 #: yelp/C/newDownload.page:79
+msgid "Prefer AV1 Codec"
+msgstr ""
+
+#. (itstool) path: item/p
+#: yelp/C/newDownload.page:80
+#, fuzzy
+msgid "Only available for video (mp4, webm) downloads"
+msgstr "Seulement disponibles pour les vidéos."
+
+#. (itstool) path: item/p
+#: yelp/C/newDownload.page:81
+#, fuzzy
+msgid ""
+"If enabled, Parabolic will prefer videos with the av1 codec when downloading."
+msgstr ""
+"Si cette option est activée, Parabole séparera la vidéo en plusieurs "
+"morceaux correspondant aux chapitres qu’elles contient."
+
+#. (itstool) path: note/p
+#: yelp/C/newDownload.page:86
+#, fuzzy
+msgid ""
+"This option's state will be remembered and restored for future downloads."
+msgstr ""
+"Les paramètres utilisés précédemment seront mémorisés et présélectionnés "
+"pour le prochain téléchargement."
+
+#. (itstool) path: item/title
+#: yelp/C/newDownload.page:90
 msgid "Split Chapters"
 msgstr "Diviser en chapitres"
 
 #. (itstool) path: item/p
-#: yelp/C/newDownload.page:80
+#: yelp/C/newDownload.page:91
 msgid ""
 "If enabled, Parabolic will split the video into multiple smaller ones based "
 "on its chapters."
@@ -949,12 +979,12 @@ msgstr ""
 "morceaux correspondant aux chapitres qu’elles contient."
 
 #. (itstool) path: item/title
-#: yelp/C/newDownload.page:86
+#: yelp/C/newDownload.page:97
 msgid "Crop Thumbnail"
 msgstr "Rogner la vignette"
 
 #. (itstool) path: item/p
-#: yelp/C/newDownload.page:87
+#: yelp/C/newDownload.page:98
 msgid ""
 "Only available if <code>Embed Metadata</code> is enabled in Preferences."
 msgstr ""
@@ -962,7 +992,7 @@ msgstr ""
 "dans les préférences."
 
 #. (itstool) path: item/p
-#: yelp/C/newDownload.page:88
+#: yelp/C/newDownload.page:99
 msgid ""
 "If enabled, Parabolic will crop a download's embedded thumbnail as square. "
 "This is useful when downloading music who's album images are usually square."
@@ -972,12 +1002,12 @@ msgstr ""
 "musiques, puisque les illustrations d’albums ont généralement cette forme."
 
 #. (itstool) path: item/title
-#: yelp/C/newDownload.page:94
+#: yelp/C/newDownload.page:105
 msgid "Download Specific Timeframe"
 msgstr "Télécharger une séquence spécifique"
 
 #. (itstool) path: item/p
-#: yelp/C/newDownload.page:95
+#: yelp/C/newDownload.page:106
 msgid ""
 "If enabled, the user will be able to enter a start timeframe and an end "
 "timeframe for a section of the media to download."
@@ -986,27 +1016,28 @@ msgstr ""
 "et un temps de fin pour une partie du média à télécharger."
 
 #. (itstool) path: note/p
-#: yelp/C/newDownload.page:100
+#: yelp/C/newDownload.page:111
+#, fuzzy
 msgid ""
-"Enablining this option will disable the use of aria2 as the downloader for "
+"Enabling this option will disable the use of aria2 as the downloader for "
 "this download if it is enabled in Preferences."
 msgstr ""
 "L’activation de cette option désactivera l’utilisation de aria2 comme "
 "téléchargeur pour ce téléchargement si elle est activée dans les préférences."
 
 #. (itstool) path: item/title
-#: yelp/C/newDownload.page:104
+#: yelp/C/newDownload.page:115
 msgid "File Name"
 msgstr "Nom du fichier"
 
 #. (itstool) path: item/p
-#: yelp/C/newDownload.page:105
+#: yelp/C/newDownload.page:116
 msgid "The file name to use when saving the download."
 msgstr ""
 "Le nom du fichier à utiliser lors de l’enregistrement du téléchargement."
 
 #. (itstool) path: note/p
-#: yelp/C/newDownload.page:107
+#: yelp/C/newDownload.page:118
 msgid "Default: The title of the media"
 msgstr "Par défaut : le titre du média"
 
@@ -1019,9 +1050,6 @@ msgstr "Par défaut : le titre du média"
 #~ msgstr ""
 #~ "Le type de sous-titres à télécharger. Il peut s’agir de <code>Aucuns</"
 #~ "code>, <code>VTT</code>, ou <code>SRT</code>."
-
-#~ msgid "Only available for video types."
-#~ msgstr "Seulement disponibles pour les vidéos."
 
 #~ msgid "Enabling The Keyring"
 #~ msgstr "Activer le trousseau"
