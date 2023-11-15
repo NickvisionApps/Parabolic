@@ -1,11 +1,11 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2023-11-01 20:56-0400\n"
+"POT-Creation-Date: 2023-11-14 23:25-0500\n"
 "PO-Revision-Date: 2023-11-15 12:11+0000\n"
 "Last-Translator: Fjuro <ifjuro@proton.me>\n"
-"Language-Team: Czech <https://hosted.weblate.org/projects/"
-"nickvision-tube-converter/docs/cs/>\n"
+"Language-Team: Czech <https://hosted.weblate.org/projects/nickvision-tube-"
+"converter/docs/cs/>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -898,18 +898,46 @@ msgstr ""
 "na rychlost nastavenou v předvolbách."
 
 #. (itstool) path: note/p
-#: yelp/C/newDownload.page:75 yelp/C/newDownload.page:82
-#: yelp/C/newDownload.page:90 yelp/C/newDownload.page:97
+#: yelp/C/newDownload.page:75 yelp/C/newDownload.page:83
+#: yelp/C/newDownload.page:93 yelp/C/newDownload.page:101
+#: yelp/C/newDownload.page:108
 msgid "Available in the <code>Advanced Options</code> section."
 msgstr "Dostupné v sekci <code>Pokročilé možnosti</code>."
 
 #. (itstool) path: item/title
 #: yelp/C/newDownload.page:79
+msgid "Prefer AV1 Codec"
+msgstr ""
+
+#. (itstool) path: item/p
+#: yelp/C/newDownload.page:80
+#, fuzzy
+msgid "Only available for video (mp4, webm) downloads"
+msgstr "Dostupné pouze pro typy videa."
+
+#. (itstool) path: item/p
+#: yelp/C/newDownload.page:81
+#, fuzzy
+msgid ""
+"If enabled, Parabolic will prefer videos with the av1 codec when downloading."
+msgstr ""
+"Pokud je tato funkce povolena, aplikace Parabolic rozdělí video na několik "
+"malých podle jeho kapitol."
+
+#. (itstool) path: note/p
+#: yelp/C/newDownload.page:86
+#, fuzzy
+msgid ""
+"This option's state will be remembered and restored for future downloads."
+msgstr "Dříve použitý stav bude zapamatován a předvolen pro další stahování."
+
+#. (itstool) path: item/title
+#: yelp/C/newDownload.page:90
 msgid "Split Chapters"
 msgstr "Rozdělit kapitoly"
 
 #. (itstool) path: item/p
-#: yelp/C/newDownload.page:80
+#: yelp/C/newDownload.page:91
 msgid ""
 "If enabled, Parabolic will split the video into multiple smaller ones based "
 "on its chapters."
@@ -918,12 +946,12 @@ msgstr ""
 "malých podle jeho kapitol."
 
 #. (itstool) path: item/title
-#: yelp/C/newDownload.page:86
+#: yelp/C/newDownload.page:97
 msgid "Crop Thumbnail"
 msgstr "Oříznout miniaturu"
 
 #. (itstool) path: item/p
-#: yelp/C/newDownload.page:87
+#: yelp/C/newDownload.page:98
 msgid ""
 "Only available if <code>Embed Metadata</code> is enabled in Preferences."
 msgstr ""
@@ -931,7 +959,7 @@ msgstr ""
 "předvolbách."
 
 #. (itstool) path: item/p
-#: yelp/C/newDownload.page:88
+#: yelp/C/newDownload.page:99
 msgid ""
 "If enabled, Parabolic will crop a download's embedded thumbnail as square. "
 "This is useful when downloading music who's album images are usually square."
@@ -941,12 +969,12 @@ msgstr ""
 "kde jsou obaly alb většinou čtvercové."
 
 #. (itstool) path: item/title
-#: yelp/C/newDownload.page:94
+#: yelp/C/newDownload.page:105
 msgid "Download Specific Timeframe"
 msgstr "Stáhnout konkrétní časový úsek"
 
 #. (itstool) path: item/p
-#: yelp/C/newDownload.page:95
+#: yelp/C/newDownload.page:106
 msgid ""
 "If enabled, the user will be able to enter a start timeframe and an end "
 "timeframe for a section of the media to download."
@@ -955,26 +983,27 @@ msgstr ""
 "konečný čas pro stažení části média."
 
 #. (itstool) path: note/p
-#: yelp/C/newDownload.page:100
+#: yelp/C/newDownload.page:111
+#, fuzzy
 msgid ""
-"Enablining this option will disable the use of aria2 as the downloader for "
+"Enabling this option will disable the use of aria2 as the downloader for "
 "this download if it is enabled in Preferences."
 msgstr ""
 "Povolením této možnosti bude pro dané stahování zakázáno použití služby "
 "aria2, pokud je povoleno v předvolbách."
 
 #. (itstool) path: item/title
-#: yelp/C/newDownload.page:104
+#: yelp/C/newDownload.page:115
 msgid "File Name"
 msgstr "Název souboru"
 
 #. (itstool) path: item/p
-#: yelp/C/newDownload.page:105
+#: yelp/C/newDownload.page:116
 msgid "The file name to use when saving the download."
 msgstr "Název souboru, který se použije při ukládání stahování."
 
 #. (itstool) path: note/p
-#: yelp/C/newDownload.page:107
+#: yelp/C/newDownload.page:118
 msgid "Default: The title of the media"
 msgstr "Výchozí: název média"
 
@@ -987,9 +1016,6 @@ msgstr "Výchozí: název média"
 #~ msgstr ""
 #~ "Typ titulků ke stažení. Může být <code>žádný</code>, <code>VTT</code> "
 #~ "nebo <code>SRT</code>."
-
-#~ msgid "Only available for video types."
-#~ msgstr "Dostupné pouze pro typy videa."
 
 #~ msgid "Enabling The Keyring"
 #~ msgstr "Povolení klíčenky"
