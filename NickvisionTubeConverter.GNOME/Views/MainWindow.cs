@@ -244,7 +244,7 @@ public partial class MainWindow : Adw.ApplicationWindow
     }
 
     /// <summary>
-    /// Occurs when a shell notfication is sent from the controller
+    /// Occurs when a shell notification is sent from the controller
     /// </summary>
     /// <param name="sender">object?</param>
     /// <param name="e">ShellNotificationSentEventArgs</param>
