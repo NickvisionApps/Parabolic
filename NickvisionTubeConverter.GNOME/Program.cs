@@ -48,6 +48,7 @@ public partial class Program
               * Added the ""Best"" resolution when downloading videos to allow Parabolic to pick the highest resolution for each video download
               * A URL can now be passed to Parabolic via the command-line or the freedesktop application open protocol to trigger its validation of startup
               * Improved the design of the Preferences dialog to allow for better searching of options
+              * The shell notification when a download completes now contains an ""Open File"" button to open the download directly
               * Fixed an issue where aria's max connections per server preference was allowed to be greater than 16
               * Fixed an issue where enabling the ""Download Specific Timeframe"" advanced option would cause a crash for certain media downloads
               * Fixed an issue where stopping all downloads would cause the app to crash
