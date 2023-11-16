@@ -30,7 +30,6 @@ public sealed partial class MainWindow : Window
     private readonly MainWindowController _controller;
     private readonly IntPtr _hwnd;
     private bool _isOpened;
-    private bool _isActived;
     private bool _isContentDialogShowing;
     private RoutedEventHandler? _notificationButtonClickEvent;
     private Kernel32.SafePowerRequestObject? _powerRequest;
@@ -53,7 +52,6 @@ public sealed partial class MainWindow : Window
         _controller = controller;
         _hwnd = WindowNative.GetWindowHandle(this);
         _isOpened = false;
-        _isActived = true;
         _isContentDialogShowing = false;
         _powerRequest = null;
         _downloadRows = new Dictionary<Guid, DownloadRow>();
@@ -140,10 +138,10 @@ public sealed partial class MainWindow : Window
     /// <param name="e">WindowActivatedEventArgs</param>
     private void Window_Activated(object sender, WindowActivatedEventArgs e)
     {
-        _isActived = e.WindowActivationState != WindowActivationState.Deactivated;
+        _controller.IsWindowActive = e.WindowActivationState != WindowActivationState.Deactivated;
         //Update TitleBar
-        TitleBarTitle.Foreground = (SolidColorBrush)Application.Current.Resources[_isActived ? "WindowCaptionForeground" : "WindowCaptionForegroundDisabled"];
-        AppWindow.TitleBar.ButtonForegroundColor = ((SolidColorBrush)Application.Current.Resources[_isActived ? "WindowCaptionForeground" : "WindowCaptionForegroundDisabled"]).Color;
+        TitleBarTitle.Foreground = (SolidColorBrush)Application.Current.Resources[_controller.IsWindowActive ? "WindowCaptionForeground" : "WindowCaptionForegroundDisabled"];
+        AppWindow.TitleBar.ButtonForegroundColor = ((SolidColorBrush)Application.Current.Resources[_controller.IsWindowActive ? "WindowCaptionForeground" : "WindowCaptionForegroundDisabled"]).Color;
     }
 
     /// <summary>
@@ -247,11 +245,11 @@ public sealed partial class MainWindow : Window
     private void Window_ActualThemeChanged(FrameworkElement sender, object e)
     {
         //Update TitleBar
-        TitleBarTitle.Foreground = (SolidColorBrush)Application.Current.Resources[_isActived ? "WindowCaptionForeground" : "WindowCaptionForegroundDisabled"];
-        MenuFile.Foreground = (SolidColorBrush)Application.Current.Resources[_isActived ? "WindowCaptionForeground" : "WindowCaptionForegroundDisabled"];
-        MenuEdit.Foreground = (SolidColorBrush)Application.Current.Resources[_isActived ? "WindowCaptionForeground" : "WindowCaptionForegroundDisabled"];
-        MenuHelp.Foreground = (SolidColorBrush)Application.Current.Resources[_isActived ? "WindowCaptionForeground" : "WindowCaptionForegroundDisabled"];
-        AppWindow.TitleBar.ButtonForegroundColor = ((SolidColorBrush)Application.Current.Resources[_isActived ? "WindowCaptionForeground" : "WindowCaptionForegroundDisabled"]).Color;
+        TitleBarTitle.Foreground = (SolidColorBrush)Application.Current.Resources[_controller.IsWindowActive ? "WindowCaptionForeground" : "WindowCaptionForegroundDisabled"];
+        MenuFile.Foreground = (SolidColorBrush)Application.Current.Resources[_controller.IsWindowActive ? "WindowCaptionForeground" : "WindowCaptionForegroundDisabled"];
+        MenuEdit.Foreground = (SolidColorBrush)Application.Current.Resources[_controller.IsWindowActive ? "WindowCaptionForeground" : "WindowCaptionForegroundDisabled"];
+        MenuHelp.Foreground = (SolidColorBrush)Application.Current.Resources[_controller.IsWindowActive ? "WindowCaptionForeground" : "WindowCaptionForegroundDisabled"];
+        AppWindow.TitleBar.ButtonForegroundColor = ((SolidColorBrush)Application.Current.Resources[_controller.IsWindowActive ? "WindowCaptionForeground" : "WindowCaptionForegroundDisabled"]).Color;
     }
 
     /// <summary>
@@ -346,7 +344,15 @@ public sealed partial class MainWindow : Window
     /// </summary>
     /// <param name="sender">object?</param>
     /// <param name="e">ShellNotificationSentEventArgs</param>
-    private void ShellNotificationSent(object? sender, ShellNotificationSentEventArgs e) => new ToastContentBuilder().AddText(e.Title).AddText(e.Message).Show();
+    private void ShellNotificationSent(object? sender, ShellNotificationSentEventArgs e)
+    {
+        var toast = new ToastContentBuilder().AddText(e.Title).AddText(e.Message);
+        if(e.Action == "open-file")
+        {
+            toast.SetProtocolActivation(new Uri($"file:///{e.ActionParam}"));
+        }
+        toast.Show();
+    }
 
     /// <summary>
     /// Occurs when the show window tray menu item is clicked
