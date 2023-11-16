@@ -175,7 +175,7 @@ You may also build the app manually without using flatpak. List of dependencies:
 - dotnet >=7.0
 - GTK >=4.12
 - libadwaita >=1.4
-- python3 >=3.7
+- python3 >=3.11
 - python3-psutil
 - yt-dlp (as python module, standalone binary won't work)
 - ffmpeg

@@ -68,7 +68,7 @@ begin
     then
       MsgBox('Unable to install psutil. Please try again. THE APP WILL NOT FUNCTION CORRECTLY.', mbError, MB_OK)
     else begin
-      if not Exec(ExpandConstant('C:\Program Files\Python311\pythonw.exe'), '-m pip install --force-reinstall "yt-dlp==2023.10.13"', '', SW_HIDE, ewWaitUntilTerminated, ResultCode)
+      if not Exec(ExpandConstant('C:\Program Files\Python311\pythonw.exe'), '-m pip install --force-reinstall "yt-dlp==2023.11.16"', '', SW_HIDE, ewWaitUntilTerminated, ResultCode)
       then
         MsgBox('Unable to install yt-dlp. Please try again. THE APP WILL NOT FUNCTION CORRECTLY.', mbError, MB_OK);
     end;
