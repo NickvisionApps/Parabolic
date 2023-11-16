@@ -60,6 +60,7 @@ public sealed partial class MainWindow : Window
         //Register Events
         AppWindow.Closing += Window_Closing;
         _controller.NotificationSent += (sender, e) => DispatcherQueue?.TryEnqueue(() => NotificationSent(sender, e));
+        _controller.ShellNotificationSent += (sender, e) => DispatcherQueue?.TryEnqueue(() => ShellNotificationSent(sender, e));
         _controller.PreventSuspendWhenDownloadingChanged += PreventSuspendWhenDownloadingChanged;
         _controller.DownloadManager.DownloadAdded += (sender, e) => DispatcherQueue.TryEnqueue(() => DownloadAdded(e));
         _controller.DownloadManager.DownloadProgressUpdated += (sender, e) => DispatcherQueue.TryEnqueue(() => DownloadProgressUpdated(e));
@@ -682,17 +683,6 @@ public sealed partial class MainWindow : Window
         ListDownloading.Children.Remove(row);
         ListCompleted.Children.Add(row);
         DownloadUIUpdate();
-        if (e.ShowNotification && (!_isActived || !AppWindow.IsVisible))
-        {
-            if (_controller.CompletedNotificationPreference == NotificationPreference.ForEach)
-            {
-                ShellNotificationSent(this, new ShellNotificationSentEventArgs(!e.Successful ? _("Download Finished With Error") : _("Download Finished"), !e.Successful ? _("\"{0}\" has finished with an error!", e.Filename) : _("\"{0}\" has finished downloading.", e.Filename), !e.Successful ? NotificationSeverity.Error : NotificationSeverity.Success));
-            }
-            else if (_controller.CompletedNotificationPreference == NotificationPreference.AllCompleted && !_controller.DownloadManager.AreDownloadsRunning && !_controller.DownloadManager.AreDownloadsQueued)
-            {
-                ShellNotificationSent(this, new ShellNotificationSentEventArgs(_("Downloads Finished"), _("All downloads have finished."), NotificationSeverity.Informational));
-            }
-        }
     }
 
     /// <summary>

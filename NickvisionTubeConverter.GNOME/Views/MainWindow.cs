@@ -65,6 +65,7 @@ public partial class MainWindow : Adw.ApplicationWindow
         //Register Events
         OnCloseRequest += OnCloseRequested;
         _controller.NotificationSent += (sender, e) => GLib.Functions.IdleAdd(0, () => NotificationSent(sender, e));
+        _controller.ShellNotificationSent += (sender, e) => GLib.Functions.IdleAdd(0, () => ShellNotificationSent(sender, e));
         _controller.PreventSuspendWhenDownloadingChanged += (sender, e) => GLib.Functions.IdleAdd(0, PreventSuspendWhenDownloadingChanged);
         _controller.RunInBackgroundChanged += (sender, e) => GLib.Functions.IdleAdd(0, RunInBackgroundChanged);
         _controller.KeyringLoginAsync = KeyringLoginAsync;
@@ -224,10 +225,11 @@ public partial class MainWindow : Adw.ApplicationWindow
     }
 
     /// <summary>
-    /// Sends a shell notification
+    /// Occurs when a shell notfication is sent from the controller
     /// </summary>
+    /// <param name="sender">object?</param>
     /// <param name="e">ShellNotificationSentEventArgs</param>
-    private void SendShellNotification(ShellNotificationSentEventArgs e)
+    private void ShellNotificationSent(object? sender, ShellNotificationSentEventArgs e)
     {
         var notification = Gio.Notification.New(e.Title);
         notification.SetBody(e.Message);
@@ -679,17 +681,6 @@ public partial class MainWindow : Adw.ApplicationWindow
             }
             _downloadingBox.GetParent().SetVisible(_controller.DownloadManager.RemainingDownloadsCount > 0);
             _completedBox.GetParent().SetVisible(true);
-            if (e.ShowNotification && ((GetFocus() != null && !GetFocus()!.GetHasFocus()) || !GetVisible()))
-            {
-                if (_controller.CompletedNotificationPreference == NotificationPreference.ForEach)
-                {
-                    SendShellNotification(new ShellNotificationSentEventArgs(!e.Successful ? _("Download Finished With Error") : _("Download Finished"), !e.Successful ? _("\"{0}\" has finished with an error!", row.Filename) : _("\"{0}\" has finished downloading.", row.Filename), !e.Successful ? NotificationSeverity.Error : NotificationSeverity.Success));
-                }
-                else if (_controller.CompletedNotificationPreference == NotificationPreference.AllCompleted && !_controller.DownloadManager.AreDownloadsRunning && !_controller.DownloadManager.AreDownloadsQueued)
-                {
-                    SendShellNotification(new ShellNotificationSentEventArgs(_("Downloads Finished"), _("All downloads have finished."), NotificationSeverity.Informational));
-                }
-            }
         }
         _stopAllDownloadsButton.SetVisible(_controller.DownloadManager.RemainingDownloadsCount > 1);
         if (!GetVisible() && _controller.DownloadManager.RemainingDownloadsCount == 0 && _controller.DownloadManager.ErrorsCount == 0)

@@ -41,6 +41,10 @@ public class MainWindowController : IDisposable
     /// A function for getting a password for the Keyring
     /// </summary>
     public Func<string, Task<(bool WasSkipped, string Password)>>? KeyringLoginAsync { get; set; }
+    /// <summary>
+    /// Whether or not the window is active
+    /// </summary>
+    public bool IsWindowActive { get; set; }
 
     /// <summary>
     /// Gets the AppInfo object
@@ -50,10 +54,6 @@ public class MainWindowController : IDisposable
     /// The preferred theme of the application
     /// </summary>
     public Theme Theme => Configuration.Current.Theme;
-    /// <summary>
-    /// The preferred theme of the application
-    /// </summary>
-    public NotificationPreference CompletedNotificationPreference => Configuration.Current.CompletedNotificationPreference;
     /// <summary>
     /// Whether or not to prevent suspend when downloads are in progress
     /// </summary>
@@ -67,6 +67,10 @@ public class MainWindowController : IDisposable
     /// Occurs when a notification is sent
     /// </summary>
     public event EventHandler<NotificationSentEventArgs>? NotificationSent;
+    /// <summary>
+    /// Occurs when a shell notification is sent
+    /// </summary>
+    public event EventHandler<ShellNotificationSentEventArgs>? ShellNotificationSent;
     /// <summary>
     /// Occurs when the configuration is saved
     /// </summary>
@@ -89,6 +93,7 @@ public class MainWindowController : IDisposable
         _pythonThreadState = IntPtr.Zero;
         _taskbarStopwatch = new Stopwatch();
         DownloadManager = new DownloadManager(5);
+        IsWindowActive = false;
         Aura.Init("org.nickvision.tubeconverter", "Nickvision Tube Converter");
         AppInfo.EnglishShortName = "Parabolic";
         if (Directory.Exists($"{UserDirectories.Config}{Path.DirectorySeparatorChar}Nickvision{Path.DirectorySeparatorChar}{AppInfo.Name}"))
@@ -122,6 +127,7 @@ public class MainWindowController : IDisposable
         AppInfo.Designers[_("DaPigGuy")] = new Uri("https://github.com/DaPigGuy");
         AppInfo.Artists[_("David Lapshin")] = new Uri("https://github.com/daudix-UFO");
         AppInfo.TranslatorCredits = _("translator-credits");
+        DownloadManager.DownloadCompleted += DownloadCompleted;
     }
 
     /// <summary>
@@ -377,10 +383,22 @@ public class MainWindowController : IDisposable
     }
 
     /// <summary>
+    /// Adds downloads to the download manager
+    /// </summary>
+    /// <param name="controller">AddDownloadDialogController</param>
+    public void AddDownloads(AddDownloadDialogController controller)
+    {
+        foreach (var download in controller.Downloads)
+        {
+            DownloadManager.AddDownload(download, DownloadOptions.Current);
+        }
+    }
+
+    /// <summary>
     /// Updates taskbar item to show current total progress
     /// </summary>
     /// <param name="ignoreStopwatch">Whether to ignore stopwatch that limits update frequency</param>
-    public void UpdateTaskbar(bool ignoreStopwatch = false)
+    private void UpdateTaskbar(bool ignoreStopwatch = false)
     {
         if (_taskbarStopwatch.IsRunning && _taskbarStopwatch.Elapsed.TotalMilliseconds < TASKBAR_STOPWATCH_THRESHOLD && !ignoreStopwatch)
         {
@@ -402,14 +420,22 @@ public class MainWindowController : IDisposable
     }
 
     /// <summary>
-    /// Adds downloads to the download manager
+    /// Occurs when a download is completed
     /// </summary>
-    /// <param name="controller">AddDownloadDialogController</param>
-    public void AddDownloads(AddDownloadDialogController controller)
+    /// <param name="sender">object?</param>
+    /// <param name="e">(Guid Id, bool Successful, string Filename, bool ShowNotification)</param>
+    private void DownloadCompleted(object? sender, (Guid Id, bool Successful, string Filename, bool ShowNotification) e)
     {
-        foreach (var download in controller.Downloads)
+        if(e.ShowNotification && !IsWindowActive)
         {
-            DownloadManager.AddDownload(download, DownloadOptions.Current);
+            if (Configuration.Current.CompletedNotificationPreference == NotificationPreference.ForEach)
+            {
+                ShellNotificationSent?.Invoke(this, new ShellNotificationSentEventArgs(!e.Successful ? _("Download Finished With Error") : _("Download Finished"), !e.Successful ? _("\"{0}\" has finished with an error!", e.Filename) : _("\"{0}\" has finished downloading.", e.Filename), !e.Successful ? NotificationSeverity.Error : NotificationSeverity.Success));
+            }
+            else if (Configuration.Current.CompletedNotificationPreference == NotificationPreference.AllCompleted && !DownloadManager.AreDownloadsRunning && !DownloadManager.AreDownloadsQueued)
+            {
+                ShellNotificationSent?.Invoke(this, new ShellNotificationSentEventArgs(_("Downloads Finished"), _("All downloads have finished."), NotificationSeverity.Informational));
+            }
         }
     }
 
