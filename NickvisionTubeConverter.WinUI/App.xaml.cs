@@ -30,6 +30,7 @@ public partial class App : Application
 - Fixed an issue where aria's max connections per server preference was allowed to be greater than 16
 - Fixed an issue where enabling the ""Download Specific Timeframe"" advanced option would cause a crash for certain media downloads
 - Fixed an issue where stopping all downloads would cause the app to crash
+- Fixed an issue where some videos were not validated correctly
 - Updated translations (Thanks everyone on Weblate!)";
         if (_controller.Theme != Theme.System)
         {
