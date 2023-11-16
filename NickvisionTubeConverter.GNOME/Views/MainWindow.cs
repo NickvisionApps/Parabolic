@@ -77,9 +77,9 @@ public partial class MainWindow : Adw.ApplicationWindow
         OnCloseRequest += OnCloseRequested;
         OnNotify += (sender, e) =>
         {
-            if(e.Pspec.GetName() == "focus" || e.Pspec.GetName() == "visible")
+            if(e.Pspec.GetName() == "is-active" || e.Pspec.GetName() == "visible")
             {
-                _controller.IsWindowActive = !((GetFocus() != null && !GetFocus()!.GetHasFocus()) || !GetVisible());
+                _controller.IsWindowActive = GetIsActive() && GetVisible();
             }
         };
         //Add Download Action
