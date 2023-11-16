@@ -295,6 +295,21 @@ public class DownloadManager
     public void ClearCompletedDownloads() => _completed.Clear();
 
     /// <summary>
+    /// Gets the file path of a completed download
+    /// </summary>
+    /// <param name="id">The id of the completed download</param>
+    /// <returns>The path of the completed download. Null if id is not of a completed download</returns>
+    public string? GetCompletedDownloadPath(Guid id)
+    {
+        if(_completed.ContainsKey(id))
+        {
+            var completed = _completed[id];
+            return $"{completed.SaveFolder}{Path.DirectorySeparatorChar}{completed.Filename}";
+        }
+        return null;
+    }
+
+    /// <summary>
     /// Occurs when a download's progress is changed
     /// </summary>
     /// <param name="sender">object?</param>

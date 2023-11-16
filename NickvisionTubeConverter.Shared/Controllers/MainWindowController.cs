@@ -430,7 +430,7 @@ public class MainWindowController : IDisposable
         {
             if (Configuration.Current.CompletedNotificationPreference == NotificationPreference.ForEach)
             {
-                ShellNotificationSent?.Invoke(this, new ShellNotificationSentEventArgs(!e.Successful ? _("Download Finished With Error") : _("Download Finished"), !e.Successful ? _("\"{0}\" has finished with an error!", e.Filename) : _("\"{0}\" has finished downloading.", e.Filename), !e.Successful ? NotificationSeverity.Error : NotificationSeverity.Success));
+                ShellNotificationSent?.Invoke(this, new ShellNotificationSentEventArgs(!e.Successful ? _("Download Finished With Error") : _("Download Finished"), !e.Successful ? _("\"{0}\" has finished with an error!", e.Filename) : _("\"{0}\" has finished downloading.", e.Filename), !e.Successful ? NotificationSeverity.Error : NotificationSeverity.Success, "open-file", DownloadManager.GetCompletedDownloadPath(e.Id)!));
             }
             else if (Configuration.Current.CompletedNotificationPreference == NotificationPreference.AllCompleted && !DownloadManager.AreDownloadsRunning && !DownloadManager.AreDownloadsQueued)
             {
