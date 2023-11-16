@@ -26,6 +26,7 @@ public partial class App : Application
 - Added support for auto-generated subtitles from English
 - Added the ability to turn off downloading auto-generated subtitles
 - Added the advanced option to prefer the adv1 codec for video downloads
+- Added the ""Best"" resolution when downloading videos to allow Parabolic to pick the highest resolution for each video download
 - Fixed an issue where aria's max connections per server preference was allowed to be greater than 16
 - Fixed an issue where enabling the ""Download Specific Timeframe"" advanced option would cause a crash for certain media downloads
 - Fixed an issue where stopping all downloads would cause the app to crash

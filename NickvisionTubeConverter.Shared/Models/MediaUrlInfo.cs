@@ -179,7 +179,11 @@ public class MediaUrlInfo
                 }
             }
         }
-        VideoResolutions.Sort((a, b) => b.CompareTo(a));
+        if(VideoResolutions.Count > 0)
+        {
+            VideoResolutions.Add(VideoResolution.Best);
+            VideoResolutions.Sort((a, b) => b.CompareTo(a));
+        }
         AudioLanguages.Sort();
     }
 
@@ -219,7 +223,7 @@ public class MediaUrlInfo
         }
         if (VideoResolutions.Count == 0 && mediaInfo.HasKey("video_ext") && mediaInfo["video_ext"].As<string>() != "none")
         {
-            VideoResolutions.Add(new VideoResolution(0, 0));
+            VideoResolutions.Add(VideoResolution.Best);
         }
         var duration = 0.0;
         try

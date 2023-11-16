@@ -17,6 +17,10 @@ public class VideoResolution : IComparable<VideoResolution>, IEquatable<VideoRes
     /// </summary>
     public int Height { get; init; }
 
+    /// <summary>
+    /// The best video resolution
+    /// </summary>
+    public static VideoResolution Best { get; }
 
     /// <summary>
     /// Constructs a VideoResolution
@@ -30,12 +34,24 @@ public class VideoResolution : IComparable<VideoResolution>, IEquatable<VideoRes
     }
 
     /// <summary>
+    /// Constructs VideoResolution statically
+    /// </summary>
+    static VideoResolution()
+    {
+        Best = new VideoResolution(int.MaxValue, int.MaxValue);
+    }
+
+    /// <summary>
     /// Parses a VideoResolution from a string
     /// </summary>
     /// <param name="s">The string to parse (Format: WidthxHeight)</param>
     /// <returns>The parsed VideoResolution, null if error</returns>
     public static VideoResolution? Parse(string s)
     {
+        if(s == "Best" || s == _("Best"))
+        {
+            return Best;
+        }
         var split = s.Split("x");
         if (split.Length == 2)
         {
@@ -52,7 +68,14 @@ public class VideoResolution : IComparable<VideoResolution>, IEquatable<VideoRes
     /// Gets a string representation of a VideoResolution
     /// </summary>
     /// <returns>The string representation of the VideoResolution</returns>
-    public override string ToString() => Width == 0 && Height == 0 ? _("Default") : $"{Width}x{Height}";
+    public override string ToString()
+    {
+        if (Width == int.MaxValue && Height == int.MaxValue)
+        {
+            return _("Best");
+        }
+        return $"{Width}x{Height}";
+    }
 
     /// <summary>
     /// Compares this with other

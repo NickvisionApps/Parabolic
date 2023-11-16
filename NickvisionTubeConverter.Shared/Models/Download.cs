@@ -174,6 +174,7 @@ public class Download
                 _outFile = PythonHelpers.SetConsoleOutputFilePath(_logPath);
                 //Setup download params
                 var hooks = new List<Action<PyDict>> { ProgressHook };
+                var postProcessors = new List<Dictionary<string, dynamic>>();
                 _ytOpt = new Dictionary<string, dynamic> {
                     { "quiet", false },
                     { "ignoreerrors", "downloadonly" },
@@ -187,6 +188,16 @@ public class Download
                     { "overwrites", options.OverwriteExistingFiles },
                     { "noprogress", true }
                 };
+                //Authentication
+                if (!string.IsNullOrEmpty(_advancedOptions.Username))
+                {
+                    _ytOpt.Add("username", _advancedOptions.Username);
+                }
+                if (!string.IsNullOrEmpty(_advancedOptions.Password))
+                {
+                    _ytOpt.Add("password", _advancedOptions.Password);
+                }
+                //Translated Metadata 
                 string? metadataLang = null;
                 if (YoutubeLangCodes.Contains(CultureInfo.CurrentCulture.Name))
                 {
@@ -206,10 +217,7 @@ public class Download
                     extractorArgs["youtube"] = youtubeExtractorOpt;
                     _ytOpt.Add("extractor_args", extractorArgs);
                 }
-                if (!FileType.GetIsGeneric())
-                {
-                    _ytOpt.Add("final_ext", FileType.ToString().ToLower());
-                }
+                //Aria2
                 if (options.UseAria && _advancedOptions.Timeframe == null)
                 {
                     _ytOpt.Add("external_downloader", new Dictionary<string, dynamic>() { { "default", DependencyLocator.Find("aria2c") } });
@@ -223,11 +231,26 @@ public class Download
                     ariaDict["default"] = ariaParams;
                     _ytOpt.Add("external_downloader_args", ariaDict);
                 }
+                //Speed limit (Cannot be applied with Aria2 enabled)
                 else if (_advancedOptions.LimitSpeed)
                 {
                     _ytOpt.Add("ratelimit", options.SpeedLimit * 1024);
                 }
-                var postProcessors = new List<Dictionary<string, dynamic>>();
+                //Proxy Url
+                if (!string.IsNullOrEmpty(options.ProxyUrl))
+                {
+                    _ytOpt.Add("proxy", new PyString(options.ProxyUrl));
+                }
+                //Cookies File
+                if (File.Exists(options.CookiesPath))
+                {
+                    _ytOpt.Add("cookiefile", new PyString(options.CookiesPath));
+                }
+                //File Format
+                if (!FileType.GetIsGeneric())
+                {
+                    _ytOpt.Add("final_ext", FileType.ToString().ToLower());
+                }
                 if (FileType.GetIsAudio())
                 {
                     if (FileType.GetIsGeneric())
@@ -243,38 +266,35 @@ public class Download
                 }
                 else if (FileType.GetIsVideo())
                 {
+                    var ext = FileType switch
+                    {
+                        MediaFileType.MP4 => "[ext=mp4]",
+                        MediaFileType.WEBM => "[ext=webm]",
+                        _ => ""
+                    };
                     var proto = _advancedOptions.Timeframe != null ? "[protocol!*=m3u8]" : "";
                     var vcodec = _advancedOptions.PreferAV1 ? "[vcodec=vp9.2]" : "[vcodec!*=vp]";
-                    if (Resolution!.Width == 0 && Resolution.Height == 0)
+                    var resolution = Resolution! == VideoResolution.Best ? "" : $"[width<={Resolution!.Width}][height<={Resolution!.Height}]";
+                    var formats = new HashSet<string>() //using a HashSet ensures no duplicates, for example if ext == ""
                     {
-                        _ytOpt.Add("format", FileType == MediaFileType.MP4 ? $@"bv*[ext=mp4]{vcodec}{proto}+ba[ext=m4a][language={AudioLanguage}]/
-                            bv*[ext=mp4]{vcodec}{proto}+ba[ext=m4a]/
-                            bv*[ext=mp4]{proto}+ba[ext=m4a][language={AudioLanguage}]/
-                            bv*[ext=mp4]{proto}+ba[ext=m4a]/b[ext=mp4]/
-                            bv{proto}+ba[language={AudioLanguage}]/
-                            bv{proto}+ba/b" : $"bv{proto}+ba[language={AudioLanguage}]/bv{proto}+ba/b");
-                    }
-                    else if (FileType == MediaFileType.MP4)
-                    {
-                        _ytOpt.Add("format", $@"bv*[ext=mp4]{vcodec}[width<={Resolution!.Width}][height<={Resolution.Height}]{proto}+ba[ext=m4a][language={AudioLanguage}]/
-                            bv*[ext=mp4]{vcodec}[width<={Resolution.Width}][height<={Resolution.Height}]{proto}+ba[ext=m4a]/
-                            bv*[ext=mp4][width<={Resolution!.Width}][height<={Resolution.Height}]{proto}+ba[ext=m4a][language={AudioLanguage}]/
-                            bv*[ext=mp4][width<={Resolution.Width}][height<={Resolution.Height}]{proto}+ba[ext=m4a]/
-                            b[ext=mp4][width<={Resolution.Width}][height<={Resolution.Height}]/
-                            bv*[width<={Resolution.Width}][height<={Resolution.Height}]{proto}+ba[language={AudioLanguage}]/
-                            bv*[width<={Resolution.Width}][height<={Resolution.Height}]{proto}+ba/
-                            b[width<={Resolution.Width}][height<={Resolution.Height}]");
-                    }
-                    else
-                    {
-                        _ytOpt.Add("format", $@"bv*[width<={Resolution!.Width}][height<={Resolution.Height}]{proto}+ba[language={AudioLanguage}]/
-                            bv*[width<={Resolution!.Width}][height<={Resolution.Height}]{proto}+ba/
-                            b[width<={Resolution.Width}][height<={Resolution.Height}]");
-                    }
+                        $"bv*{ext}{vcodec}{resolution}{proto}+ba{ext}[language={AudioLanguage}]",
+                        $"bv*{ext}{vcodec}{resolution}{proto}+ba{ext}",
+                        $"bv*{ext}{resolution}{proto}+ba{ext}[language={AudioLanguage}]",
+                        $"bv*{ext}{resolution}{proto}+ba{ext}",
+                        $"b{ext}{resolution}",
+                        $"bv*{vcodec}{resolution}{proto}+ba[language={AudioLanguage}]",
+                        $"bv*{vcodec}{resolution}{proto}+ba",
+                        $"bv*{vcodec}{resolution}{proto}+ba",
+                        $"bv*{resolution}{proto}+ba[language={AudioLanguage}]",
+                        $"bv*{resolution}{proto}+ba",
+                        $"b{resolution}"
+                    };
+                    _ytOpt.Add("format", $"{string.Join('/', formats)}/");
                     if (!FileType.GetIsGeneric())
                     {
                         postProcessors.Add(new Dictionary<string, dynamic>() { { "key", "FFmpegVideoConvertor" }, { "preferedformat", FileType.ToString().ToLower() } });
                     }
+                    //Subtitles
                     if (Subtitle)
                     {
                         _ytOpt.Add("writesubtitles", true);
@@ -316,10 +336,12 @@ public class Download
                         }
                     }
                 }
+                //Split Chapters
                 if (_advancedOptions.SplitChapters)
                 {
                     postProcessors.Add(new Dictionary<string, dynamic>() { { "key", "FFmpegSplitChapters" } });
                 }
+                //Metadata & Chapters
                 if (options.EmbedMetadata)
                 {
                     dynamic ppDict = new PyDict();
@@ -351,21 +373,15 @@ public class Download
                 {
                     postProcessors.Add(new Dictionary<string, dynamic>() { { "key", "TCMetadata" }, { "add_chapters", true } });
                 }
+                //SponsorBlock for Youtube
                 if (options.YouTubeSponsorBlock)
                 {
                     postProcessors.Add(new Dictionary<string, dynamic>() { { "key", "SponsorBlock" }, { "when", "after_filter" }, { "categories", new List<string>() { "sponsor", "intro", "outro", "selfpromo", "preview", "filler", "interaction", "music_offtopic" } } });
                 }
+                //Postprocessors
                 if (postProcessors.Count != 0)
                 {
                     _ytOpt.Add("postprocessors", postProcessors);
-                }
-                if (!string.IsNullOrEmpty(_advancedOptions.Username))
-                {
-                    _ytOpt.Add("username", _advancedOptions.Username);
-                }
-                if (!string.IsNullOrEmpty(_advancedOptions.Password))
-                {
-                    _ytOpt.Add("password", _advancedOptions.Password);
                 }
             }
             //Run download
@@ -381,14 +397,6 @@ public class Download
                         paths["home"] = new PyString($"{SaveFolder}{Path.DirectorySeparatorChar}");
                         paths["temp"] = new PyString(_tempDownloadPath);
                         _ytOpt.Add("paths", paths);
-                        if (!string.IsNullOrEmpty(options.ProxyUrl))
-                        {
-                            _ytOpt.Add("proxy", new PyString(options.ProxyUrl));
-                        }
-                        if (File.Exists(options.CookiesPath))
-                        {
-                            _ytOpt.Add("cookiefile", new PyString(options.CookiesPath));
-                        }
                         if (options.UseAria)
                         {
                             ProgressChanged?.Invoke(this, new DownloadProgressState()
