@@ -30,7 +30,6 @@ public sealed partial class MainWindow : Window
     private readonly MainWindowController _controller;
     private readonly IntPtr _hwnd;
     private bool _isOpened;
-    private bool _isActived;
     private bool _isContentDialogShowing;
     private RoutedEventHandler? _notificationButtonClickEvent;
     private Kernel32.SafePowerRequestObject? _powerRequest;
@@ -53,13 +52,13 @@ public sealed partial class MainWindow : Window
         _controller = controller;
         _hwnd = WindowNative.GetWindowHandle(this);
         _isOpened = false;
-        _isActived = true;
         _isContentDialogShowing = false;
         _powerRequest = null;
         _downloadRows = new Dictionary<Guid, DownloadRow>();
         //Register Events
         AppWindow.Closing += Window_Closing;
         _controller.NotificationSent += (sender, e) => DispatcherQueue?.TryEnqueue(() => NotificationSent(sender, e));
+        _controller.ShellNotificationSent += (sender, e) => DispatcherQueue?.TryEnqueue(() => ShellNotificationSent(sender, e));
         _controller.PreventSuspendWhenDownloadingChanged += PreventSuspendWhenDownloadingChanged;
         _controller.DownloadManager.DownloadAdded += (sender, e) => DispatcherQueue.TryEnqueue(() => DownloadAdded(e));
         _controller.DownloadManager.DownloadProgressUpdated += (sender, e) => DispatcherQueue.TryEnqueue(() => DownloadProgressUpdated(e));
@@ -139,10 +138,10 @@ public sealed partial class MainWindow : Window
     /// <param name="e">WindowActivatedEventArgs</param>
     private void Window_Activated(object sender, WindowActivatedEventArgs e)
     {
-        _isActived = e.WindowActivationState != WindowActivationState.Deactivated;
+        _controller.IsWindowActive = e.WindowActivationState != WindowActivationState.Deactivated;
         //Update TitleBar
-        TitleBarTitle.Foreground = (SolidColorBrush)Application.Current.Resources[_isActived ? "WindowCaptionForeground" : "WindowCaptionForegroundDisabled"];
-        AppWindow.TitleBar.ButtonForegroundColor = ((SolidColorBrush)Application.Current.Resources[_isActived ? "WindowCaptionForeground" : "WindowCaptionForegroundDisabled"]).Color;
+        TitleBarTitle.Foreground = (SolidColorBrush)Application.Current.Resources[_controller.IsWindowActive ? "WindowCaptionForeground" : "WindowCaptionForegroundDisabled"];
+        AppWindow.TitleBar.ButtonForegroundColor = ((SolidColorBrush)Application.Current.Resources[_controller.IsWindowActive ? "WindowCaptionForeground" : "WindowCaptionForegroundDisabled"]).Color;
     }
 
     /// <summary>
@@ -246,11 +245,11 @@ public sealed partial class MainWindow : Window
     private void Window_ActualThemeChanged(FrameworkElement sender, object e)
     {
         //Update TitleBar
-        TitleBarTitle.Foreground = (SolidColorBrush)Application.Current.Resources[_isActived ? "WindowCaptionForeground" : "WindowCaptionForegroundDisabled"];
-        MenuFile.Foreground = (SolidColorBrush)Application.Current.Resources[_isActived ? "WindowCaptionForeground" : "WindowCaptionForegroundDisabled"];
-        MenuEdit.Foreground = (SolidColorBrush)Application.Current.Resources[_isActived ? "WindowCaptionForeground" : "WindowCaptionForegroundDisabled"];
-        MenuHelp.Foreground = (SolidColorBrush)Application.Current.Resources[_isActived ? "WindowCaptionForeground" : "WindowCaptionForegroundDisabled"];
-        AppWindow.TitleBar.ButtonForegroundColor = ((SolidColorBrush)Application.Current.Resources[_isActived ? "WindowCaptionForeground" : "WindowCaptionForegroundDisabled"]).Color;
+        TitleBarTitle.Foreground = (SolidColorBrush)Application.Current.Resources[_controller.IsWindowActive ? "WindowCaptionForeground" : "WindowCaptionForegroundDisabled"];
+        MenuFile.Foreground = (SolidColorBrush)Application.Current.Resources[_controller.IsWindowActive ? "WindowCaptionForeground" : "WindowCaptionForegroundDisabled"];
+        MenuEdit.Foreground = (SolidColorBrush)Application.Current.Resources[_controller.IsWindowActive ? "WindowCaptionForeground" : "WindowCaptionForegroundDisabled"];
+        MenuHelp.Foreground = (SolidColorBrush)Application.Current.Resources[_controller.IsWindowActive ? "WindowCaptionForeground" : "WindowCaptionForegroundDisabled"];
+        AppWindow.TitleBar.ButtonForegroundColor = ((SolidColorBrush)Application.Current.Resources[_controller.IsWindowActive ? "WindowCaptionForeground" : "WindowCaptionForegroundDisabled"]).Color;
     }
 
     /// <summary>
@@ -345,7 +344,15 @@ public sealed partial class MainWindow : Window
     /// </summary>
     /// <param name="sender">object?</param>
     /// <param name="e">ShellNotificationSentEventArgs</param>
-    private void ShellNotificationSent(object? sender, ShellNotificationSentEventArgs e) => new ToastContentBuilder().AddText(e.Title).AddText(e.Message).Show();
+    private void ShellNotificationSent(object? sender, ShellNotificationSentEventArgs e)
+    {
+        var toast = new ToastContentBuilder().AddText(e.Title).AddText(e.Message);
+        if(e.Action == "open-file")
+        {
+            toast.SetProtocolActivation(new Uri($"file:///{e.ActionParam}"));
+        }
+        toast.Show();
+    }
 
     /// <summary>
     /// Occurs when the show window tray menu item is clicked
@@ -682,17 +689,6 @@ public sealed partial class MainWindow : Window
         ListDownloading.Children.Remove(row);
         ListCompleted.Children.Add(row);
         DownloadUIUpdate();
-        if (e.ShowNotification && (!_isActived || !AppWindow.IsVisible))
-        {
-            if (_controller.CompletedNotificationPreference == NotificationPreference.ForEach)
-            {
-                ShellNotificationSent(this, new ShellNotificationSentEventArgs(!e.Successful ? _("Download Finished With Error") : _("Download Finished"), !e.Successful ? _("\"{0}\" has finished with an error!", e.Filename) : _("\"{0}\" has finished downloading.", e.Filename), !e.Successful ? NotificationSeverity.Error : NotificationSeverity.Success));
-            }
-            else if (_controller.CompletedNotificationPreference == NotificationPreference.AllCompleted && !_controller.DownloadManager.AreDownloadsRunning && !_controller.DownloadManager.AreDownloadsQueued)
-            {
-                ShellNotificationSent(this, new ShellNotificationSentEventArgs(_("Downloads Finished"), _("All downloads have finished."), NotificationSeverity.Informational));
-            }
-        }
     }
 
     /// <summary>

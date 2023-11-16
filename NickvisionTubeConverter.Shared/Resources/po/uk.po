@@ -7,11 +7,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-11-15 08:29-0500\n"
+"POT-Creation-Date: 2023-11-16 11:58-0500\n"
 "PO-Revision-Date: 2023-11-16 14:44+0000\n"
 "Last-Translator: volkov <d2oo1dle2x@gmail.com>\n"
-"Language-Team: Ukrainian <https://hosted.weblate.org/projects/"
-"nickvision-tube-converter/app/uk/>\n"
+"Language-Team: Ukrainian <https://hosted.weblate.org/projects/nickvision-"
+"tube-converter/app/uk/>\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,14 +20,12 @@ msgstr ""
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Generator: Weblate 5.2\n"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:686
-#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:689
+#: ../../../Controllers/MainWindowController.cs:433
 #, csharp-format
 msgid "\"{0}\" has finished downloading."
 msgstr "\"{0}\" завершено завантаження."
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:686
-#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:689
+#: ../../../Controllers/MainWindowController.cs:433
 #, csharp-format
 msgid "\"{0}\" has finished with an error!"
 msgstr "\"{0}\" завершився з помилкою!"
@@ -92,7 +90,7 @@ msgstr ""
 "Файл cookies може бути наданий yt-dlp, щоб дозволити завантажувати медіа, "
 "які потребують входу."
 
-#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:100
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:99
 #, csharp-format
 msgid "About {0}"
 msgstr "Про додаток {0}"
@@ -103,7 +101,7 @@ msgstr "Про додаток {0}"
 msgid "Add"
 msgstr "Додати"
 
-#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:102
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:101
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:80
 msgid "Add a video, audio, or playlist URL to start downloading"
 msgstr ""
@@ -113,10 +111,10 @@ msgstr ""
 #: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:91
 #: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:40
 #: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:274
-#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:83
-#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:103
-#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:105
-#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:123
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:82
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:102
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:104
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:122
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:36
 #: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:16
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:84
@@ -136,8 +134,7 @@ msgstr "Додати логін"
 msgid "Advanced Options"
 msgstr "Розширені налаштування"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:690
-#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:693
+#: ../../../Controllers/MainWindowController.cs:437
 msgid "All downloads have finished."
 msgstr "Всі завантаження завершено."
 
@@ -182,7 +179,7 @@ msgstr "Автоматично перевіряти оновлення"
 msgid "Back"
 msgstr "Назад"
 
-#: ../../../Models/VideoResolution.cs:51 ../../../Models/VideoResolution.cs:75
+#: ../../../Models/VideoResolution.cs:51 ../../../Models/VideoResolution.cs:79
 #: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:75
 #: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:38
 msgid "Best"
@@ -196,7 +193,7 @@ msgstr "Скасувати"
 msgid "Changelog"
 msgstr "Список змін"
 
-#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:95
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:94
 msgid "Check for Updates"
 msgstr "Перевірити наявність оновлень"
 
@@ -205,8 +202,8 @@ msgstr "Перевірити наявність оновлень"
 msgid "Chrome/Edge"
 msgstr "Chrome/Edge"
 
-#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:93
-#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:119
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:92
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:118
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:219
 msgid "Clear Completed Downloads"
 msgstr "Очистити завершені завантаження"
@@ -225,8 +222,8 @@ msgstr ""
 "Очистити поля метаданих, що містять URL та іншу ідентифікаційну інформацію "
 "джерела медіа"
 
-#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:91
-#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:115
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:90
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:114
 #: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:31
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:171
 msgid "Clear Queued Downloads"
@@ -238,8 +235,8 @@ msgstr "Очистити завантаження в черзі"
 msgid "Close"
 msgstr "Закрити"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:269
-#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:219
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:294
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:218
 msgid "Close and Stop Downloads?"
 msgstr "Закрити та зупинити завантаження?"
 
@@ -247,8 +244,8 @@ msgstr "Закрити та зупинити завантаження?"
 msgid "Comma separated list"
 msgstr "Список, розділений комами"
 
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:115
 #: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:116
-#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:117
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:200
 msgid "Completed"
 msgstr "Завершено"
@@ -258,7 +255,7 @@ msgstr "Завершено"
 msgid "Completed Notification Trigger"
 msgstr "Показувати сповіщення про завершення"
 
-#: ../../../Controllers/MainWindowController.cs:119
+#: ../../../Controllers/MainWindowController.cs:124
 msgid "Contributors on GitHub ❤️"
 msgstr ""
 "Nicholas Logozzo {0}\n"
@@ -312,11 +309,11 @@ msgstr "Обрізати мініатюри аудіо"
 msgid "Crop Thumbnail"
 msgstr "Обрізати мініатюру"
 
-#: ../../../Controllers/MainWindowController.cs:122
+#: ../../../Controllers/MainWindowController.cs:127
 msgid "DaPigGuy"
 msgstr "DaPigGuy"
 
-#: ../../../Controllers/MainWindowController.cs:123
+#: ../../../Controllers/MainWindowController.cs:128
 msgid "David Lapshin"
 msgstr "David Lapshin"
 
@@ -416,19 +413,19 @@ msgstr ""
 msgid "Disallow Conversions"
 msgstr "Заборонити конвертацію"
 
-#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:172
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:171
 msgid "Disclaimer"
 msgstr "Попередження"
 
-#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:99
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:98
 msgid "Discussions"
 msgstr "Обговорення"
 
-#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:96
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:95
 msgid "Documentation"
 msgstr "Документація"
 
-#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:168
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:167
 msgid "Don't show this message again"
 msgstr "Більше не показувати це повідомлення"
 
@@ -443,13 +440,11 @@ msgstr "Завантаження"
 msgid "Download Again"
 msgstr "Завантажити знову"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:686
-#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:689
+#: ../../../Controllers/MainWindowController.cs:433
 msgid "Download Finished"
 msgstr "Завантаження завершено"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:686
-#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:689
+#: ../../../Controllers/MainWindowController.cs:433
 msgid "Download Finished With Error"
 msgstr "Завантаження завершено з помилкою"
 
@@ -458,7 +453,7 @@ msgstr "Завантаження завершено з помилкою"
 msgid "Download log was copied to clipboard."
 msgstr "Журнал завантажень скопійовано до буфера обміну."
 
-#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:101
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:100
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:79
 msgid "Download Media"
 msgstr "Завантажити медіа"
@@ -473,26 +468,26 @@ msgstr "Завантажити конкретний часовий проміж�
 msgid "Download Subtitles"
 msgstr "Завантажити субтитри"
 
-#: ../../../Models/Download.cs:390
+#: ../../../Models/Download.cs:407
 msgid "Download using aria2 has started"
 msgstr "Розпочато завантаження за допомогою aria2"
 
-#: ../../../Models/Download.cs:401
+#: ../../../Models/Download.cs:418
 msgid "Download using ffmpeg has started"
 msgstr "Розпочато завантаження за допомогою ffmpeg"
 
-#: ../../../Controllers/MainWindowController.cs:112
+#: ../../../Controllers/MainWindowController.cs:117
 msgid "Download web video and audio"
 msgstr "Завантажити веб відео та аудіо"
 
-#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:89
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:88
 #: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:70
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:150
 msgid "Downloader"
 msgstr "Завантажувач"
 
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:105
 #: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:106
-#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:107
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:121
 msgid "Downloading"
 msgstr "Завантаження"
@@ -513,12 +508,11 @@ msgstr "Завантаження..."
 msgid "Downloads"
 msgstr "Завантаження"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:690
-#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:693
+#: ../../../Controllers/MainWindowController.cs:437
 msgid "Downloads Finished"
 msgstr "Завантаження завершені"
 
-#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:85
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:84
 msgid "Edit"
 msgstr "Редагувати"
 
@@ -607,8 +601,8 @@ msgstr "Введіть ім'я користувача тут"
 msgid "Error"
 msgstr "Помилка"
 
-#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:84
-#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:126
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:83
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:125
 msgid "Exit"
 msgstr "Вийти"
 
@@ -617,7 +611,7 @@ msgstr "Вийти"
 msgid "Failed to enable keyring."
 msgstr "Не вдалося ввімкнути keyring."
 
-#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:82
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:81
 msgid "File"
 msgstr "Файл"
 
@@ -640,23 +634,23 @@ msgstr "Тип файлу"
 msgid "Firefox"
 msgstr "Firefox"
 
-#: ../../../Controllers/MainWindowController.cs:121
+#: ../../../Controllers/MainWindowController.cs:126
 msgid "Fyodor Sobolev"
 msgstr "Fyodor Sobolev"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:529
-#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:97
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:554
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:96
 msgid "GitHub Repo"
 msgstr "Репозиторій GitHub"
 
-#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:94
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:93
 #: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:60
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:11
 msgid "Help"
 msgstr "Допомога"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Controls/HistoryDialog.xaml.cs:36
-#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:87
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:86
 #: NickvisionTubeConverter.GNOME/Blueprints/history_dialog.blp:30
 #: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:45
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:6
@@ -709,7 +703,7 @@ msgstr "Включати автоматично сгенеровані субт�
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:141
 #: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringDialog.xaml.cs:34
 #: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringDialog.xaml.cs:315
-#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:86
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:85
 #: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:40
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:5
 msgid "Keyring"
@@ -741,7 +735,7 @@ msgstr "Інформація про мовний код"
 msgid "Leave empty to download from start."
 msgstr "Залиште порожнім, щоб завантажити з самого початку."
 
-#: ../../../Controllers/MainWindowController.cs:116
+#: ../../../Controllers/MainWindowController.cs:121
 msgid "List of supported sites"
 msgstr "Список підтримуваних сайтів"
 
@@ -766,7 +760,7 @@ msgstr "Зробіть мініатюру квадратною, корисно �
 msgid "Manage previously downloaded media."
 msgstr "Керуйте раніше завантаженими медіа."
 
-#: ../../../Controllers/MainWindowController.cs:117
+#: ../../../Controllers/MainWindowController.cs:122
 msgid "Matrix Chat"
 msgstr "Чат Matrix"
 
@@ -832,30 +826,30 @@ msgstr "Ім'я"
 msgid "Name (Empty)"
 msgstr "Ім'я (Порожньо)"
 
-#: ../../../Controllers/MainWindowController.cs:339
+#: ../../../Controllers/MainWindowController.cs:345
 msgid "New update available."
 msgstr "Доступне нове оновлення."
 
-#: ../../../Controllers/MainWindowController.cs:118
-#: ../../../Controllers/MainWindowController.cs:120
+#: ../../../Controllers/MainWindowController.cs:123
+#: ../../../Controllers/MainWindowController.cs:125
 msgid "Nicholas Logozzo"
 msgstr "Nicholas Logozzo"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:254
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:317
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:271
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:296
 #: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringDialog.xaml.cs:180
 #: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringDialog.xaml.cs:258
-#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:222
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:221
 #: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:186
 msgid "No"
 msgstr "Ні"
 
-#: ../../../Controllers/MainWindowController.cs:310
+#: ../../../Controllers/MainWindowController.cs:316
 msgid "No active internet connection"
 msgstr "Немає активного з'єднання з Інтернетом"
 
-#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:112
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:111
 msgid "No Completed Downloads"
 msgstr "Немає завершених завантажень"
 
@@ -868,7 +862,7 @@ msgstr "Немає облікових даних"
 msgid "No downloads running"
 msgstr "Немає завантажень"
 
-#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:109
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:108
 msgid "No Downloads Running"
 msgstr "Немає активних завантажень"
 
@@ -882,7 +876,7 @@ msgstr "Файл не вибрано"
 msgid "No Previous Downloads"
 msgstr "Немає попередніх завантажень"
 
-#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:111
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:110
 msgid "No Queued Downloads"
 msgstr "Немає завантажень у черзі"
 
@@ -920,7 +914,7 @@ msgstr "Вимкнено"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Controls/AboutDialog.xaml.cs:30
 #: ../../../../NickvisionTubeConverter.WinUI/Controls/DownloadRow.xaml.cs:206
-#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:188
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:187
 msgid "OK"
 msgstr "ОК"
 
@@ -949,6 +943,7 @@ msgstr "ОК"
 msgid "On"
 msgstr "Увімкнено"
 
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:273
 #: ../../../../NickvisionTubeConverter.WinUI/Controls/DownloadRow.xaml.cs:65
 #: NickvisionTubeConverter.GNOME/Blueprints/download_row.blp:81
 msgid "Open File"
@@ -964,12 +959,12 @@ msgstr "Відкрити папку"
 msgid "Overwrite Existing Files"
 msgstr "Перезаписати наявні файли"
 
-#: ../../../Controllers/MainWindowController.cs:111
-#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:122
+#: ../../../Controllers/MainWindowController.cs:116
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:121
 msgid "Parabolic"
 msgstr "Parabolic"
 
-#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:104
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:103
 msgid ""
 "Parabolic's documentation and support channels are accessible via the Help "
 "menu."
@@ -1019,7 +1014,7 @@ msgstr "Підготовка..."
 msgid "Prevent Suspend"
 msgstr "Запобігти призупиненню системи"
 
-#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:76
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:75
 msgid "PREVIEW"
 msgstr "ПОПЕРЕДНІЙ ПЕРЕГЛЯД"
 
@@ -1038,14 +1033,14 @@ msgstr "Проксі URL"
 msgid "Quality"
 msgstr "Якість"
 
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:112
 #: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:113
-#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:114
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:161
 msgid "Queued"
 msgstr "У черзі"
 
-#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:121
-#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:632
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:120
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:639
 #, csharp-format
 msgid "Remaining Downloads: {0}"
 msgstr "Залишилося завантажити: {0}"
@@ -1055,7 +1050,7 @@ msgstr "Залишилося завантажити: {0}"
 msgid "Remove Source Data"
 msgstr "Вилучити вихідні дані"
 
-#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:98
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:97
 msgid "Report a Bug"
 msgstr "Повідомити про помилку"
 
@@ -1090,8 +1085,8 @@ msgstr "Перезапуститись, щоб застосувати стиль
 msgid "Retry Download"
 msgstr "Повторити завантаження"
 
-#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:92
-#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:118
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:91
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:117
 #: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:26
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:211
 msgid "Retry Failed Downloads"
@@ -1136,22 +1131,22 @@ msgstr "Виберіть елементи для завантаження або
 msgid "Select Save Folder"
 msgstr "Обрати теку для збереження"
 
-#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:88
-#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:125
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:87
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:124
 #: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:34
 msgid "Settings"
 msgstr "Налаштування"
 
-#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:110
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:109
 msgid "Show Completed"
 msgstr "Показати завершені"
 
-#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:124
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:123
 msgid "Show Window"
 msgstr "Показати вікно"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:269
-#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:220
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:294
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:219
 msgid ""
 "Some downloads are still in progress.\n"
 "Are you sure you want to close Parabolic and stop the running downloads?"
@@ -1197,8 +1192,8 @@ msgstr "Час початку"
 msgid "Start Time (Invalid)"
 msgstr "Час початку (неправильний)"
 
-#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:90
-#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:108
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:89
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:107
 #: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:21
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:131
 msgid "Stop All Downloads"
@@ -1234,8 +1229,8 @@ msgstr "Мови субтитрів (неправильні)"
 msgid "Success"
 msgstr "Успіх"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:525
-#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:183
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:550
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:182
 msgid ""
 "The authors of Nickvision Parabolic are not responsible/liable for any "
 "misuse of this program that may violate local copyright/DMCA laws. Users use "
@@ -1286,7 +1281,7 @@ msgstr ""
 "Це видалить попередній keyring, видаливши всі паролі з ним. Ця дія "
 "незворотна."
 
-#: ../../../Controllers/MainWindowController.cs:124
+#: ../../../Controllers/MainWindowController.cs:129
 msgid "translator-credits"
 msgstr ""
 "kefir2105\n"
@@ -1298,7 +1293,7 @@ msgstr ""
 msgid "Unable to disable keyring."
 msgstr "Неможливо вимкнути keyring."
 
-#: ../../../Controllers/MainWindowController.cs:355
+#: ../../../Controllers/MainWindowController.cs:361
 msgid "Unable to download and install update."
 msgstr "Не вдалося завантажити і встановити оновлення."
 
@@ -1312,7 +1307,7 @@ msgstr "Не вдалося скинути keyring."
 msgid "Undo Title Editing"
 msgstr "Скасувати редагування назви"
 
-#: ../../../Controllers/MainWindowController.cs:292
+#: ../../../Controllers/MainWindowController.cs:298
 msgid "Unlock Keyring"
 msgstr "Розблокувати Keyring"
 
@@ -1320,7 +1315,7 @@ msgstr "Розблокувати Keyring"
 msgid "Unset Cookies File"
 msgstr "Скинути файл cookies"
 
-#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:327
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:326
 msgid "Update"
 msgstr "Оновити"
 
@@ -1422,10 +1417,10 @@ msgstr ""
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:257
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:320
-#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:274
+#: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:299
 #: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringDialog.xaml.cs:179
 #: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringDialog.xaml.cs:257
-#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:221
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:220
 #: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:185
 msgid "Yes"
 msgstr "Так"
@@ -1449,7 +1444,7 @@ msgid "When all downloads finish"
 msgstr "Коли всі завантаження завершаться"
 
 #: ../../../Controllers/PreferencesViewController.cs:296
-#: ../../../Models/Download.cs:279
+#: ../../../Models/Download.cs:308
 msgctxt "subtitle"
 msgid "all"
 msgstr "всі"

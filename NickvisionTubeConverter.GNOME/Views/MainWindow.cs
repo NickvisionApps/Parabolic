@@ -63,8 +63,8 @@ public partial class MainWindow : Adw.ApplicationWindow
         }
         _title.SetTitle(_controller.AppInfo.ShortName);
         //Register Events
-        OnCloseRequest += OnCloseRequested;
         _controller.NotificationSent += (sender, e) => GLib.Functions.IdleAdd(0, () => NotificationSent(sender, e));
+        _controller.ShellNotificationSent += (sender, e) => GLib.Functions.IdleAdd(0, () => ShellNotificationSent(sender, e));
         _controller.PreventSuspendWhenDownloadingChanged += (sender, e) => GLib.Functions.IdleAdd(0, PreventSuspendWhenDownloadingChanged);
         _controller.RunInBackgroundChanged += (sender, e) => GLib.Functions.IdleAdd(0, RunInBackgroundChanged);
         _controller.KeyringLoginAsync = KeyringLoginAsync;
@@ -74,6 +74,14 @@ public partial class MainWindow : Adw.ApplicationWindow
         _controller.DownloadManager.DownloadStopped += (sender, e) => GLib.Functions.IdleAdd(0, () => DownloadStopped(e));
         _controller.DownloadManager.DownloadRetried += (sender, e) => GLib.Functions.IdleAdd(0, () => DownloadRetried(e));
         _controller.DownloadManager.DownloadStartedFromQueue += (sender, e) => GLib.Functions.IdleAdd(0, () => DownloadStartedFromQueue(e));
+        OnCloseRequest += OnCloseRequested;
+        OnNotify += (sender, e) =>
+        {
+            if(e.Pspec.GetName() == "is-active" || e.Pspec.GetName() == "visible")
+            {
+                _controller.IsWindowActive = GetIsActive() && GetVisible();
+            }
+        };
         //Add Download Action
         _actDownload = Gio.SimpleAction.New("addDownload", null);
         _actDownload.OnActivate += async (sender, e) => await AddDownloadAsync(null);
@@ -160,6 +168,18 @@ public partial class MainWindow : Adw.ApplicationWindow
         var actAbout = Gio.SimpleAction.New("about", null);
         actAbout.OnActivate += About;
         AddAction(actAbout);
+        //Open File Action
+        var openFile = Gio.SimpleAction.New("openFile", GLib.VariantType.String);
+        openFile.OnActivate += async (sender, e) =>
+        {
+            var launcher = Gtk.FileLauncher.New(Gio.FileHelper.NewForPath(e.Parameter!.GetString(out var _)));
+            try
+            {
+                await launcher.LaunchAsync(this);
+            }
+            catch { }
+        };
+        application.AddAction(openFile);
     }
 
     /// <summary>
@@ -224,10 +244,11 @@ public partial class MainWindow : Adw.ApplicationWindow
     }
 
     /// <summary>
-    /// Sends a shell notification
+    /// Occurs when a shell notification is sent from the controller
     /// </summary>
+    /// <param name="sender">object?</param>
     /// <param name="e">ShellNotificationSentEventArgs</param>
-    private void SendShellNotification(ShellNotificationSentEventArgs e)
+    private bool ShellNotificationSent(object? sender, ShellNotificationSentEventArgs e)
     {
         var notification = Gio.Notification.New(e.Title);
         notification.SetBody(e.Message);
@@ -247,7 +268,12 @@ public partial class MainWindow : Adw.ApplicationWindow
             var fileIcon = Gio.FileIcon.New(Gio.FileHelper.NewForPath($"{Environment.GetEnvironmentVariable("SNAP")}/usr/share/icons/hicolor/symbolic/apps/{_controller.AppInfo.ID}-symbolic.svg"));
             notification.SetIcon(fileIcon);
         }
+        if(e.Action == "open-file")
+        {
+            notification.AddButtonWithTarget(_("Open File"), "app.openFile", GLib.Variant.NewString(e.ActionParam));
+        }
         _application.SendNotification(_controller.AppInfo.ID, notification);
+        return false;
     }
 
     /// <summary>
@@ -679,17 +705,6 @@ public partial class MainWindow : Adw.ApplicationWindow
             }
             _downloadingBox.GetParent().SetVisible(_controller.DownloadManager.RemainingDownloadsCount > 0);
             _completedBox.GetParent().SetVisible(true);
-            if (e.ShowNotification && ((GetFocus() != null && !GetFocus()!.GetHasFocus()) || !GetVisible()))
-            {
-                if (_controller.CompletedNotificationPreference == NotificationPreference.ForEach)
-                {
-                    SendShellNotification(new ShellNotificationSentEventArgs(!e.Successful ? _("Download Finished With Error") : _("Download Finished"), !e.Successful ? _("\"{0}\" has finished with an error!", row.Filename) : _("\"{0}\" has finished downloading.", row.Filename), !e.Successful ? NotificationSeverity.Error : NotificationSeverity.Success));
-                }
-                else if (_controller.CompletedNotificationPreference == NotificationPreference.AllCompleted && !_controller.DownloadManager.AreDownloadsRunning && !_controller.DownloadManager.AreDownloadsQueued)
-                {
-                    SendShellNotification(new ShellNotificationSentEventArgs(_("Downloads Finished"), _("All downloads have finished."), NotificationSeverity.Informational));
-                }
-            }
         }
         _stopAllDownloadsButton.SetVisible(_controller.DownloadManager.RemainingDownloadsCount > 1);
         if (!GetVisible() && _controller.DownloadManager.RemainingDownloadsCount == 0 && _controller.DownloadManager.ErrorsCount == 0)

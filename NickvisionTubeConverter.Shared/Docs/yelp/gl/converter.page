@@ -2,7 +2,7 @@
 <page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" id="converter" its:version="2.0" xml:lang="gl">
 <info>
 	<link type="guide" xref="index"/>
-	<title type="link">Converter ⚒️</title>
+	<title type="link">Conversor ⚒️</title>
 	<credit type="author copyright">
 		<name>Nicholas Logozzo</name>
 		<years its:translate="no">2023</years>
@@ -14,48 +14,48 @@
 	<license href="http://creativecommons.org/licenses/by/4.0/" its:translate="no"><p>Creative Commons Attribution 4.0 International License</p></license>
 </info>
 
-<title>Converter</title>
-<p>This page explains all options for configuring the Converter in Preferences in <app>Parabolic</app>.</p>
+<title>Conversor</title>
+<p>Esta páxina explica todas as opcións para configurar o conversor nas Preferencias de <app>Parabolic</app>.</p>
 
 <terms>
 	<item>
-		<title>Disallow Conversions</title>
-		<p>If enabled, Parabolic will download the appropriate video/audio format for the selected quality without converting to other formats.</p>
-        <p>This means that you will be unable to select a file format when downloading a media. But, you will save time in downloading as the Converter will not be run.</p>
+		<title>Non permitir conversións</title>
+		<p>Se está activado, Parabólico descarga o formato de vídeo ou son axeitado para a calidade seleccionada sen converter a outros formatos.</p>
+        <p>Isto significa que non se pode seleccionar un formato de ficheiro ao descargar un recurso. Porén, afórrase tempo ao descargar, xa que non se executa o conversor.</p>
 		<note style="advanced">
-			<p>Default: Off</p>
+			<p>Predeterminado: Desactivado</p>
 		</note>
     </item>
 	<item>
-		<title>Embed Metadata</title>
-		<p>If enabled, Parabolic will tag a media with its relevant information (title, genre, etc...) and thumbnail if available.</p>
-        <p>Parabolic will NOT embed the Comment, Description, Synopsis, and Purl fields.</p>
+		<title>Incorporar metadatos</title>
+		<p>Se está activado, Parabolic etiqueta un recurso con información relevante (título, xénero, etc.), así como unha miniatura se a houber.</p>
+        <p>Parabolic NON incorpora os campos Comentario, Descrición, Sinopse e PURL.</p>
 		<note style="advanced">
-			<p>Default: On</p>
+			<p>Predeterminado: Activado</p>
 		</note>
     </item>
     <item>
-		<title>Crop Audio Thumbnails</title>
-		<p>Only available if Embed Metadata is enabled.</p>
-		<p>If enabled, Parabolic will automatically turn on the advanced option <code>Crop Thumbnail</code> for audio downloads.</p>
+		<title>Recortar miniaturas de son</title>
+		<p>Só dispoñíbel se Incorporar metadatos está activado.</p>
+		<p>Se está activado, Parabolica activa automaticamente a opción avanzada <code>Recortar miniatura</code> nas descargas de son.</p>
 		<note style="advanced">
-			<p>Default: Off</p>
+			<p>Predeterminado: Desactivado</p>
 		</note>
     </item>
     <item>
-		<title>Remove Source Data</title>
-		<p>Only available if Embed Metadata is enabled.</p>
-		<p>If enabled, Parabolic will clear metadata fields containing the URL and other identifying information of the media source.</p>
-        <p>Fields that are cleared: <code>comment</code>, <code>description</code>, <code>synopsis</code>, <code>purl</code> and <code>handler_name</code> in each stream.</p>
+		<title>Retirar datos da fonte</title>
+		<p>Só dispoñíbel se Incorporar metadatos está activado.</p>
+		<p>Se está activado, Parabolic limpa os campos de metadatos que conteñen o URL e outra información identificativa do recurso multimedia.</p>
+        <p>Campos que se limpan: <code>comentario</code>, <code>descrición</code>, <code>sinopse</code>, <code>purl</code> e <code>nome_do_xestor</code> de cada fluxo.</p>
 		<note style="advanced">
-			<p>Default: Off</p>
+			<p>Predeterminado: Desactivado</p>
 		</note>
     </item>
 	<item>
-		<title>Embed Chapters</title>
-		<p>If enabled, Parabolic will tag a media with chapter information if available</p>
+		<title>Incoporar capítulos</title>
+		<p>Se está activado, Parabolic etiqueta un recurso con información sobre o capítulo, se a houber</p>
 		<note style="advanced">
-			<p>Default: Off</p>
+			<p>Predeterminado: Desactivado</p>
 		</note>
 	</item>
 </terms>
