@@ -211,7 +211,7 @@ public class MediaUrlInfo
         {
             ParseFormats(mediaInfo);
         }
-        else if (VideoResolutions.Count == 0 && mediaInfo.HasKey("url") && !_tryVideo)
+        if (VideoResolutions.Count == 0 && mediaInfo.HasKey("url") && !_tryVideo)
         {
             var tempUrl = mediaInfo["url"].As<string>();
             PyDict? tempInfo = yt.extract_info(tempUrl, download: false);
@@ -219,6 +219,15 @@ public class MediaUrlInfo
             {
                 ParseFormats(tempInfo);
                 _tryVideo = true;
+            }
+        }
+        if (VideoResolutions.Count == 0 && mediaInfo.HasKey("width") && mediaInfo.HasKey("height"))
+        {
+            VideoResolutions.Add(VideoResolution.Best);
+            var res = VideoResolution.Parse($"{mediaInfo["width"].As<int>}x{mediaInfo["height"].As<int>()}");
+            if(res != null)
+            {
+                VideoResolutions.Add(res);
             }
         }
         if (VideoResolutions.Count == 0 && mediaInfo.HasKey("video_ext") && mediaInfo["video_ext"].As<string>() != "none")
@@ -232,13 +241,13 @@ public class MediaUrlInfo
         }
         catch { }
         var url = defaultUrl;
-        if (mediaInfo.HasKey("webpage_url"))
-        {
-            url = mediaInfo["webpage_url"].As<string>();
-        }
-        else if (mediaInfo.HasKey("url"))
+        if (mediaInfo.HasKey("url"))
         {
             url = mediaInfo["url"].As<string>();
+        }
+        else if (mediaInfo.HasKey("webpage_url"))
+        {
+            url = mediaInfo["webpage_url"].As<string>();
         }
         MediaList.Add(new MediaInfo(url, title, duration, playlistPosition));
     }

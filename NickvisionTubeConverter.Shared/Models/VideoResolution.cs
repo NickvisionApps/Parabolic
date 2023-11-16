@@ -46,11 +46,15 @@ public class VideoResolution : IComparable<VideoResolution>, IEquatable<VideoRes
     /// </summary>
     /// <param name="s">The string to parse (Format: WidthxHeight)</param>
     /// <returns>The parsed VideoResolution, null if error</returns>
-    public static VideoResolution? Parse(string s)
+    public static VideoResolution? Parse(string? s)
     {
         if(s == "Best" || s == _("Best"))
         {
             return Best;
+        }
+        if(string.IsNullOrWhiteSpace(s))
+        {
+            return null;
         }
         var split = s.Split("x");
         if (split.Length == 2)
