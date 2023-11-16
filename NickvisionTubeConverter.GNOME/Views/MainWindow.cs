@@ -63,7 +63,6 @@ public partial class MainWindow : Adw.ApplicationWindow
         }
         _title.SetTitle(_controller.AppInfo.ShortName);
         //Register Events
-        OnCloseRequest += OnCloseRequested;
         _controller.NotificationSent += (sender, e) => GLib.Functions.IdleAdd(0, () => NotificationSent(sender, e));
         _controller.ShellNotificationSent += (sender, e) => GLib.Functions.IdleAdd(0, () => ShellNotificationSent(sender, e));
         _controller.PreventSuspendWhenDownloadingChanged += (sender, e) => GLib.Functions.IdleAdd(0, PreventSuspendWhenDownloadingChanged);
@@ -75,6 +74,14 @@ public partial class MainWindow : Adw.ApplicationWindow
         _controller.DownloadManager.DownloadStopped += (sender, e) => GLib.Functions.IdleAdd(0, () => DownloadStopped(e));
         _controller.DownloadManager.DownloadRetried += (sender, e) => GLib.Functions.IdleAdd(0, () => DownloadRetried(e));
         _controller.DownloadManager.DownloadStartedFromQueue += (sender, e) => GLib.Functions.IdleAdd(0, () => DownloadStartedFromQueue(e));
+        OnCloseRequest += OnCloseRequested;
+        OnNotify += (sender, e) =>
+        {
+            if(e.Pspec.GetName() == "focus" || e.Pspec.GetName() == "visible")
+            {
+                _controller.IsWindowActive = !((GetFocus() != null && !GetFocus()!.GetHasFocus()) || !GetVisible());
+            }
+        };
         //Add Download Action
         _actDownload = Gio.SimpleAction.New("addDownload", null);
         _actDownload.OnActivate += async (sender, e) => await AddDownloadAsync(null);
@@ -161,6 +168,18 @@ public partial class MainWindow : Adw.ApplicationWindow
         var actAbout = Gio.SimpleAction.New("about", null);
         actAbout.OnActivate += About;
         AddAction(actAbout);
+        //Open File Action
+        var openFile = Gio.SimpleAction.New("openFile", GLib.VariantType.String);
+        openFile.OnActivate += async (sender, e) =>
+        {
+            var launcher = Gtk.FileLauncher.New(Gio.FileHelper.NewForPath(e.Parameter!.GetString(out var _)));
+            try
+            {
+                await launcher.LaunchAsync(this);
+            }
+            catch { }
+        };
+        application.AddAction(openFile);
     }
 
     /// <summary>
@@ -248,6 +267,10 @@ public partial class MainWindow : Adw.ApplicationWindow
         {
             var fileIcon = Gio.FileIcon.New(Gio.FileHelper.NewForPath($"{Environment.GetEnvironmentVariable("SNAP")}/usr/share/icons/hicolor/symbolic/apps/{_controller.AppInfo.ID}-symbolic.svg"));
             notification.SetIcon(fileIcon);
+        }
+        if(e.Action == "open-file")
+        {
+            notification.AddButtonWithTarget(_("Open File"), "app.openFile", GLib.Variant.NewString(e.ActionParam));
         }
         _application.SendNotification(_controller.AppInfo.ID, notification);
     }
