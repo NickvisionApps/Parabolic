@@ -248,7 +248,7 @@ public partial class MainWindow : Adw.ApplicationWindow
     /// </summary>
     /// <param name="sender">object?</param>
     /// <param name="e">ShellNotificationSentEventArgs</param>
-    private void ShellNotificationSent(object? sender, ShellNotificationSentEventArgs e)
+    private bool ShellNotificationSent(object? sender, ShellNotificationSentEventArgs e)
     {
         var notification = Gio.Notification.New(e.Title);
         notification.SetBody(e.Message);
@@ -273,6 +273,7 @@ public partial class MainWindow : Adw.ApplicationWindow
             notification.AddButtonWithTarget(_("Open File"), "app.openFile", GLib.Variant.NewString(e.ActionParam));
         }
         _application.SendNotification(_controller.AppInfo.ID, notification);
+        return false;
     }
 
     /// <summary>
