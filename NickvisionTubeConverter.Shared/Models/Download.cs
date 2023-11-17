@@ -311,19 +311,19 @@ public class Download
                         }
                         else if (options.IncludeAutoGenertedSubtitles)
                         {
-                            var subtitleFromEnglishLangs = new List<string>();
+                            var subtitleFromOtherLangs = new List<string>();
                             foreach (var l in subtitleLangs)
                             {
                                 if (l.Length == 2 || l.Length == 3)
                                 {
-                                    var fromEnglish = $"{l}-en";
-                                    if (!subtitleFromEnglishLangs.Contains(fromEnglish))
+                                    var fromOther = $"{l}-*";
+                                    if (!subtitleFromOtherLangs.Contains(fromOther))
                                     {
-                                        subtitleFromEnglishLangs.Add(fromEnglish);
+                                        subtitleFromOtherLangs.Add(fromOther);
                                     }
                                 }
                             }
-                            _ytOpt.Add("subtitleslangs", subtitleLangs.Union(subtitleFromEnglishLangs).ToList());
+                            _ytOpt.Add("subtitleslangs", subtitleLangs.Union(subtitleFromOtherLangs).ToList());
                         }
                         else
                         {
