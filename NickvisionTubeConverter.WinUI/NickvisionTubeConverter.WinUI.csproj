@@ -1,20 +1,25 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net7.0-windows10.0.19041.0</TargetFramework>
+    <TargetFramework>net8.0-windows10.0.19041.0</TargetFramework>
     <Nullable>enable</Nullable>
     <TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion>
     <RootNamespace>NickvisionTubeConverter.WinUI</RootNamespace>
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <Platforms>x86;x64;ARM64</Platforms>
-    <RuntimeIdentifiers>win10-x86;win10-x64;win10-arm64</RuntimeIdentifiers>
-    <PublishProfile>win10-$(Platform).pubxml</PublishProfile>
+    <RuntimeIdentifiers>win-x86;win-x64;win-arm64</RuntimeIdentifiers>
+    <PublishProfile>win-$(Platform).pubxml</PublishProfile>
     <UseWinUI>true</UseWinUI>
     <AppxPackage>false</AppxPackage>
     <WindowsPackageType>None</WindowsPackageType>
     <ApplicationIcon>Resources\org.nickvision.tubeconverter.ico</ApplicationIcon>
     <EnableCoreMrtTooling Condition=" '$(BuildingInsideVisualStudio)' != 'true' ">false</EnableCoreMrtTooling>
   </PropertyGroup>
+
+  <ItemGroup>
+    <RuntimeHostConfigurationOption Include="System.Runtime.Loader.UseRidGraph" Value="true" />
+  </ItemGroup>
+
   <ItemGroup>
     <None Remove="Controls\*" />
     <None Remove="Views\*" />
@@ -23,7 +28,7 @@
   <ItemGroup>
     <Content Include="Resources\org.nickvision.tubeconverter.ico" />
   </ItemGroup>
-
+  
   <ItemGroup>
     <PackageReference Include="CommunityToolkit.WinUI.Controls.Primitives" Version="8.0.230907" />
     <PackageReference Include="CommunityToolkit.WinUI.Controls.Segmented" Version="8.0.230907" />
@@ -34,7 +39,7 @@
     <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.22621.2428" />
     <PackageReference Include="Vanara.PInvoke.Kernel32" Version="3.4.17" />
     <PackageReference Include="Vanara.PInvoke.User32" Version="3.4.17" />
-    <PackageReference Include="Nickvision.Aura" Version="2023.11.2" />
+    <PackageReference Include="Nickvision.Aura" Version="2023.11.3" />
     <Manifest Include="$(ApplicationManifest)" />
   </ItemGroup>
 

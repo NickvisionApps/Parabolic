@@ -43,7 +43,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for details on how can you help the proje
 </details>
 
 # Dependencies
-- [.NET 7](https://dotnet.microsoft.com/en-us/)
+- [.NET 8](https://dotnet.microsoft.com/en-us/)
 - [ffmpeg](https://ffmpeg.org/)
 - [python](https://python.org/)
 - [yt-dlp (As python module)](https://github.com/yt-dlp/yt-dlp)
