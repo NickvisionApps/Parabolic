@@ -4,6 +4,7 @@
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>MIT</project_license>
   <name>Parabolic</name>
+  <project_group>Nickvision</project_group>
   <developer_name translatable="no">Nickvision</developer_name>
   <summary>Download web video and audio</summary>
   <description>
@@ -38,19 +39,11 @@
   <url type="bugtracker">https://github.com/NickvisionApps/Parabolic/issues</url>
   <url type="donation">https://github.com/sponsors/nlogozzo</url>
   <url type="translate">https://github.com/NickvisionApps/Parabolic/blob/master/CONTRIBUTING.md#providing-translations</url>
-  <project_group>Nickvision</project_group>
   <provides>
     <binary>org.nickvision.tubeconverter</binary>
-    <binary>NickvisionTubeConverter.GNOME</binary>
-  </provides>
-
-  <custom>
-    <value key="Purism::form_factor">workstation</value>
-    <value key="Purism::form_factor">mobile</value>
-  </custom>
-  
+  </provides>  
   <releases>
-    <release version="2023.11.0-rc2" date="2023-11-16">
+    <release version="2023.11.0" date="2023-11-17">
       <description translatable="no">
         <p>- Parabolic is now available for Windows using Windows App SDK and WinUI 3</p>
         <p>- Added support for auto-generated subtitles from English</p>
@@ -71,4 +64,16 @@
     </release>
   </releases>
   <content_rating type="oars-1.1" />
+  <supports>
+    <control>pointing</control>
+    <control>keyboard</control>
+    <control>touch</control>
+  </supports>
+  <requires>
+    <display_length compare="ge">360</display_length>
+  </requires>
+  <custom>
+    <value key="Purism::form_factor">workstation</value>
+    <value key="Purism::form_factor">mobile</value>
+  </custom>
 </component>
