@@ -42,7 +42,7 @@ procedure SetupDotnet();
 var
   ResultCode: Integer;
 begin
-  if not Exec(ExpandConstant('{app}\deps\dotnet-runtime-7.0.11-win-x64.exe'), '/install /quiet /norestart', '', SW_HIDE, ewWaitUntilTerminated, ResultCode)
+  if not Exec(ExpandConstant('{app}\deps\dotnet-runtime-8-win-x64.exe'), '/install /quiet /norestart', '', SW_HIDE, ewWaitUntilTerminated, ResultCode)
   then
     MsgBox('Unable to install .NET . Please try again', mbError, MB_OK);
 end;
@@ -82,11 +82,11 @@ Name: "english"; MessagesFile: "compiler:Default.isl"
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 
 [Files]
-Source: "..\..\..\dotnet-runtime-7.0.11-win-x64.exe"; DestDir: "{app}\deps"; AfterInstall: SetupDotnet  
+Source: "..\..\..\dotnet-runtime-8-win-x64.exe"; DestDir: "{app}\deps"; AfterInstall: SetupDotnet  
 Source: "..\..\..\WindowsAppRuntimeInstall-x64.exe"; DestDir: "{app}\deps"; AfterInstall: SetupWinAppSDK
 Source: "..\..\..\python-3.11.6-amd64.exe"; DestDir: "{app}\deps"; AfterInstall: SetupPython  
-Source: "..\bin\x64\Debug\net7.0-windows10.0.19041.0\win10-x64\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion 
-Source: "..\bin\x64\Debug\net7.0-windows10.0.19041.0\win10-x64\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "..\bin\x64\Debug\net8.0-windows10.0.19041.0\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion 
+Source: "..\bin\x64\Debug\net8.0-windows10.0.19041.0\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]

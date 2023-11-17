@@ -1,9 +1,9 @@
 ﻿using Nickvision.Aura;
+using Nickvision.Aura.Events;
 using Nickvision.Aura.Keyring;
 using Nickvision.Aura.Network;
 using Nickvision.Aura.Taskbar;
 using Nickvision.Aura.Update;
-using NickvisionTubeConverter.Shared.Events;
 using NickvisionTubeConverter.Shared.Helpers;
 using NickvisionTubeConverter.Shared.Models;
 using Python.Runtime;

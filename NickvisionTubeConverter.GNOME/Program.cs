@@ -54,6 +54,7 @@ public partial class Program
               * Fixed an issue where stopping all downloads would cause the app to crash
               * Fixed an issue where some videos were not validated correctly
               * Updated to GNOME 45 runtime with latest libadwaita design
+              * Updated to .NET 8.0
               * Updated translations (Thanks everyone on Weblate!)";
         _application.OnActivate += OnActivate;
         g_signal_connect_data(_application.Handle, "open", OnOpen, IntPtr.Zero, IntPtr.Zero, 0);
