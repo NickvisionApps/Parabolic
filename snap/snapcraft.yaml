@@ -1,8 +1,8 @@
-name: tube-converter # you probably want to 'snapcraft register <name>'
-base: core22 # the base snap is the execution environment for this snap
+name: tube-converter 
+base: core22 
 adopt-info: tube-converter
-grade: stable # must be 'stable' to release into candidate/stable channels
-confinement: strict # use 'strict' once you have the right plugs and slots
+grade: stable 
+confinement: strict 
 compression: lzo
 architectures:
   - build-on: amd64
@@ -11,9 +11,9 @@ architectures:
 
 parts:
   yt-dlp:
-    # Missing optional dependencies atomicparsley, mpv, phantomjs and rtmpdump
     plugin: python
     source: https://github.com/yt-dlp/yt-dlp.git
+    source-depth: 1
     source-tag: '2023.11.16'
     build-environment:
       # WORKAROUND: The python plugin is broken with gnome extension
@@ -54,6 +54,10 @@ parts:
       - brotli
       - blueprint-compiler
       - wget
+    build-environment:
+      - DOTNET_CLI_TELEMETRY_OPTOUT: '1'
+      - PATH: $PATH:$HOME/.dotnet:$HOME/.dotnet/tools
+      - DOTNET_ROOT: $HOME/.dotnet
     override-pull: |
       craftctl default
       wget https://dot.net/v1/dotnet-install.sh -O dotnet-install.sh
@@ -61,9 +65,7 @@ parts:
       ./dotnet-install.sh --channel 8.0
       patch -p1 < $CRAFT_PROJECT_DIR/snap/tube-converter.patch
     override-build: |
-      set -eux
-      export DOTNET_ROOT=$HOME/.dotnet
-      export PATH=$PATH:$HOME/.dotnet:$HOME/.dotnet/tools
+      craftctl default
       cd $CRAFT_PART_SRC
       dotnet tool restore
       dotnet cake --target=Publish --prefix=/snap/tube-converter/current/usr --ui=gnome --self-contained
