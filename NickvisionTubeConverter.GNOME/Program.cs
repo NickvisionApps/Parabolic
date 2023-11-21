@@ -42,7 +42,8 @@ public partial class Program
         _mainWindow = null;
         _mainWindowController = new MainWindowController(args);
         _mainWindowController.AppInfo.Changelog =
-            @"* Fixed an issue where some downloads' metadata was no longer downloaded correctly
+            @"* Fixed an issue where some downloads' metadata was not downloaded correctly
+              * Fixed an issue where audio only downloads did not respect the selected format
               * Updated translations (Thanks everyone on Weblate!)";
         _application.OnActivate += OnActivate;
         g_signal_connect_data(_application.Handle, "open", OnOpen, IntPtr.Zero, IntPtr.Zero, 0);

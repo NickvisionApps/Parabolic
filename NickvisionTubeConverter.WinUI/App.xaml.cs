@@ -23,6 +23,7 @@ public partial class App : Application
         InitializeComponent();
         _controller = new MainWindowController(Array.Empty<string>());
         _controller.AppInfo.Changelog = @"- Fixed an issue where some downloads' metadata was no longer downloaded correctly
+- Fixed an issue where audio only downloads did not respect the selected format
 - Updated translations (Thanks everyone on Weblate!)";
         if (_controller.Theme != Theme.System)
         {
