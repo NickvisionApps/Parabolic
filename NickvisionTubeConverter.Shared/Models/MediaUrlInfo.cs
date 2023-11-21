@@ -241,13 +241,13 @@ public class MediaUrlInfo
         }
         catch { }
         var url = defaultUrl;
-        if (mediaInfo.HasKey("url"))
-        {
-            url = mediaInfo["url"].As<string>();
-        }
-        else if (mediaInfo.HasKey("webpage_url"))
+        if (mediaInfo.HasKey("webpage_url"))
         {
             url = mediaInfo["webpage_url"].As<string>();
+        }
+        if ((!mediaInfo.HasKey("webpage_url") || url.StartsWith("https://www.instagram.com")) && mediaInfo.HasKey("url"))
+        {
+            url = mediaInfo["url"].As<string>();
         }
         MediaList.Add(new MediaInfo(url, title, duration, playlistPosition));
     }

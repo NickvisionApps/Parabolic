@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2023-11-14 23:25-0500\n"
+"POT-Creation-Date: 2023-11-20 21:58-0500\n"
 "PO-Revision-Date: 2023-09-26 13:20+0000\n"
 "Last-Translator: Simon Hahne <simonhahne@web.de>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -74,7 +74,8 @@ msgstr ""
 
 #. (itstool) path: note/p
 #: yelp/C/converter.page:29 yelp/C/converter.page:45 yelp/C/converter.page:54
-#: yelp/C/converter.page:61 yelp/C/downloader.page:51 yelp/C/downloader.page:77
+#: yelp/C/converter.page:61 yelp/C/downloader.page:66
+#: yelp/C/downloader.page:120
 msgid "Default: Off"
 msgstr "Standardeinstellung: Aus"
 
@@ -101,7 +102,8 @@ msgstr ""
 "und \"Purl\" NICHT ein."
 
 #. (itstool) path: note/p
-#: yelp/C/converter.page:37 yelp/C/downloader.page:37
+#: yelp/C/converter.page:37 yelp/C/converter.page:68 yelp/C/downloader.page:31
+#: yelp/C/downloader.page:59
 msgid "Default: On"
 msgstr "Standardeinstellung: Ein"
 
@@ -156,11 +158,25 @@ msgstr "Kapitel einbetten"
 
 #. (itstool) path: item/p
 #: yelp/C/converter.page:59
+#, fuzzy
 msgid ""
-"If enabled, Parabolic will tag a media with chapter information if available"
+"If enabled, Parabolic will tag a media with chapter information if available."
 msgstr ""
 "Wenn diese Option aktiviert ist, markiert Parabolic Medien mit "
 "Kapitelinformationen, falls vorhanden."
+
+#. (itstool) path: item/title
+#: yelp/C/converter.page:65
+#, fuzzy
+msgid "Embed Subtitles"
+msgstr "Untertitel"
+
+#. (itstool) path: item/p
+#: yelp/C/converter.page:66
+msgid ""
+"If disabled or if embedding fails, downloaded subtitles will be saved to a "
+"separate file."
+msgstr ""
 
 #. (itstool) path: info/title
 #: yelp/C/downloader.page:8
@@ -184,46 +200,17 @@ msgstr ""
 
 #. (itstool) path: item/title
 #: yelp/C/downloader.page:25
-msgid "Maximum Number of Active Downloads"
-msgstr "Maximale Anzahl aktiver Downloads"
-
-#. (itstool) path: item/p
-#: yelp/C/downloader.page:26
-msgid ""
-"The number of active downloads allowed to run at a time. Must be an integer "
-"value between 1 and 10."
-msgstr ""
-"Die Anzahl der aktiven Downloads, die gleichzeitig ausgeführt werden dürfen. "
-"Muss ein ganzzahliger Wert zwischen 1 und 10 sein."
-
-#. (itstool) path: item/p
-#: yelp/C/downloader.page:27
-msgid ""
-"If the max number of active downloads is reached, Parabolic will place new "
-"downloads in a queue until more downloads are able to be run."
-msgstr ""
-"Wenn die maximale Anzahl aktiver Downloads erreicht ist, platziert Parabolic "
-"neue Downloads in einer Warteschlange, bis weitere Downloads ausgeführt "
-"werden können."
-
-#. (itstool) path: note/p
-#: yelp/C/downloader.page:29
-msgid "Default: 5"
-msgstr "Standardeinstellung: 5"
-
-#. (itstool) path: item/title
-#: yelp/C/downloader.page:33
 msgid "Overwrite Existing Files"
 msgstr "Vorhandene Dateien überschreiben"
 
 #. (itstool) path: item/p
-#: yelp/C/downloader.page:34
+#: yelp/C/downloader.page:26
 msgid "If enabled, Parabolic will overwrite existing files."
 msgstr ""
 "Wenn diese Option aktiviert ist, überschreibt Parabolic vorhandene Dateien."
 
 #. (itstool) path: item/p
-#: yelp/C/downloader.page:35
+#: yelp/C/downloader.page:27
 msgid ""
 "For example, if a file named <code>movie.mp4</code> exists in the download "
 "folder, and a new download is created named <code>movie</code>, <code>movie."
@@ -235,130 +222,41 @@ msgstr ""
 "des neuen Downloads überschrieben."
 
 #. (itstool) path: item/title
-#: yelp/C/downloader.page:41 yelp/C/newDownload.page:72
-msgid "Speed Limit"
-msgstr "Geschwindigkeitsbegrenzung"
+#: yelp/C/downloader.page:35
+msgid "Maximum Number of Active Downloads"
+msgstr "Maximale Anzahl aktiver Downloads"
 
 #. (itstool) path: item/p
-#: yelp/C/downloader.page:42
+#: yelp/C/downloader.page:36
 msgid ""
-"A limit, in Ki/s, that is applied to downloads only if they have the "
-"advanced option <code>Speed Limit</code> enabled. Must be an integer value "
-"between 512 and 10240."
+"The number of active downloads allowed to run at a time. Must be an integer "
+"value between 1 and 10."
 msgstr ""
-"Ein Limit in Ki/s, das nur dann auf Downloads angewendet wird, wenn die "
-"erweiterte Option <code>Geschwindigkeitsbegrenzung</code> aktiviert ist. "
-"Muss ein ganzzahliger Wert zwischen 512 und 10240 sein."
+"Die Anzahl der aktiven Downloads, die gleichzeitig ausgeführt werden dürfen. "
+"Muss ein ganzzahliger Wert zwischen 1 und 10 sein."
+
+#. (itstool) path: item/p
+#: yelp/C/downloader.page:37
+msgid ""
+"If the max number of active downloads is reached, Parabolic will place new "
+"downloads in a queue until more downloads are able to be run."
+msgstr ""
+"Wenn die maximale Anzahl aktiver Downloads erreicht ist, platziert Parabolic "
+"neue Downloads in einer Warteschlange, bis weitere Downloads ausgeführt "
+"werden können."
 
 #. (itstool) path: note/p
-#: yelp/C/downloader.page:44
-msgid "Default: 1024"
-msgstr "Standardeinstellung: 1024"
+#: yelp/C/downloader.page:39
+msgid "Default: 5"
+msgstr "Standardeinstellung: 5"
 
 #. (itstool) path: item/title
-#: yelp/C/downloader.page:48
-msgid "Use aria2"
-msgstr "Benutze aria2"
-
-#. (itstool) path: item/p
-#: yelp/C/downloader.page:49
-msgid ""
-"If enabled, Parabolic will use aria2c to download media. Although using "
-"aria2c can improve download speed, download progress will not be displayed "
-"in the UI."
-msgstr ""
-"Wenn diese Option aktiviert ist, verwendet Parabolic aria2c zum "
-"Herunterladen von Medien. Die Verwendung von aria2c kann die Download-"
-"Geschwindigkeit verbessern, jedoch wird der Download-Fortschritt nicht in "
-"der Benutzeroberfläche angezeigt."
-
-#. (itstool) path: item/title
-#: yelp/C/downloader.page:55
-msgid "Maximum Connections Per Server"
-msgstr "Maximale Verbindungen pro Server"
-
-#. (itstool) path: item/p
-#: yelp/C/downloader.page:56
-msgid ""
-"This option only applies when using aria2 is enabled. This option is the "
-"same as the <code>-x</code> flag passed to aria2c."
-msgstr ""
-"Diese Option gilt nur, wenn die Verwendung von aria2 aktiviert ist. Sie "
-"entspricht dem <code>-x</code> Flag, das an aria2c übergeben wird."
-
-#. (itstool) path: item/p
-#: yelp/C/downloader.page:57
-msgid ""
-"The maximum number of connection that can be used per server. Must be an "
-"integer value between 1 and 32."
-msgstr ""
-"Die maximale Anzahl der Verbindungen, die pro Server verwendet werden "
-"können. Muss ein ganzzahliger Wert zwischen 1 und 32 sein."
-
-#. (itstool) path: note/p
-#: yelp/C/downloader.page:59
-msgid "Default: 16"
-msgstr "Standardeinstellung: 16"
-
-#. (itstool) path: item/title
-#: yelp/C/downloader.page:63
-msgid "Minimum Split Size"
-msgstr "Minimale Teilungsgröße"
-
-#. (itstool) path: item/p
-#: yelp/C/downloader.page:64
-msgid ""
-"This option only applies when using aria2 is enabled. This option is the "
-"same as the <code>-k</code> flag passed to aria2c."
-msgstr ""
-"Diese Option gilt nur, wenn die Verwendung von aria2 aktiviert ist. Sie "
-"entspricht dem <code>-k</code> Flag, das an aria2c übergeben wird."
-
-#. (itstool) path: item/p
-#: yelp/C/downloader.page:65
-msgid ""
-"The minimum size, in MiB, of which to split a file. Must be an integer value "
-"between 1 and 1024."
-msgstr ""
-"Die Mindestgröße in MiB, ab der eine Datei geteilt werden soll. Muss ein "
-"ganzzahliger Wert zwischen 1 und 1024 sein."
-
-#. (itstool) path: note/p
-#: yelp/C/downloader.page:67
-msgid "Default: 20"
-msgstr "Standardeinstellung: 20"
-
-#. (itstool) path: item/title
-#: yelp/C/downloader.page:71
-msgid "Use SponsorBlock for YouTube"
-msgstr "SponsorBlock für YouTube verwenden"
-
-#. (itstool) path: item/p
-#: yelp/C/downloader.page:72
-msgid ""
-"If enabled, Parabolic will apply the SponsorBlock extension to YouTube "
-"downloads."
-msgstr ""
-"Wenn aktiviert, wird Parabolic die SponsorBlock-Erweiterung auf YouTube-"
-"Downloads anwenden."
-
-#. (itstool) path: note/p
-#: yelp/C/downloader.page:74
-msgid ""
-"SponsorBlock only works on YouTube videos. However, leaving this setting on "
-"will not affect downloads from other sites (i.e. not cause them to fail)."
-msgstr ""
-"SponsorBlock funktioniert nur bei YouTube-Videos. Wenn du diese Einstellung "
-"jedoch aktiviert lässt, hat dies keine Auswirkungen auf Downloads von "
-"anderen Webseiten (d. h. sie werden nicht fehlschlagen)."
-
-#. (itstool) path: item/title
-#: yelp/C/downloader.page:81
+#: yelp/C/downloader.page:43
 msgid "Subtitles Languages"
 msgstr "Untertitelsprachen"
 
 #. (itstool) path: item/p
-#: yelp/C/downloader.page:82
+#: yelp/C/downloader.page:44
 msgid ""
 "A comma-separated list of two-letter, two-letter with region, and three-"
 "letter language codes to use when selecting languages of subtitles to "
@@ -370,7 +268,7 @@ msgstr ""
 "Anwendung, wenn ein Video mit Untertiteln heruntergeladen wird."
 
 #. (itstool) path: note/p
-#: yelp/C/downloader.page:84
+#: yelp/C/downloader.page:46
 msgid ""
 "Different sites can use different language code formats for the same "
 "language. You may encounter one of the following three types: two-letter, "
@@ -388,7 +286,7 @@ msgstr ""
 "verfügbar sind."
 
 #. (itstool) path: note/p
-#: yelp/C/downloader.page:85
+#: yelp/C/downloader.page:47
 msgid ""
 "You can specify \"all\" instead to download all subtitles, but without auto-"
 "generated ones."
@@ -397,7 +295,7 @@ msgstr ""
 "herunterzuladen."
 
 #. (itstool) path: note/p
-#: yelp/C/downloader.page:88
+#: yelp/C/downloader.page:50
 msgid ""
 "Default: Your culture's language codes. For example, on an en-US system the "
 "default would be <code>en,en-US,eng</code>"
@@ -406,22 +304,128 @@ msgstr ""
 "amerkanischen System wäre das beispielsweise <code>en,en-US,eng</code>"
 
 #. (itstool) path: item/title
-#: yelp/C/downloader.page:92
+#: yelp/C/downloader.page:56
+msgid "Included Auto-Generated Subtitles"
+msgstr ""
+
+#. (itstool) path: item/p
+#: yelp/C/downloader.page:57
+msgid ""
+"Whether or not to included subtitles that are auto-translated to fit the "
+"requested subtitle languages."
+msgstr ""
+
+#. (itstool) path: item/title
+#: yelp/C/downloader.page:63
+msgid "Use aria2"
+msgstr "Benutze aria2"
+
+#. (itstool) path: item/p
+#: yelp/C/downloader.page:64
+msgid ""
+"If enabled, Parabolic will use aria2c to download media. Although using "
+"aria2c can improve download speed, download progress will not be displayed "
+"in the UI."
+msgstr ""
+"Wenn diese Option aktiviert ist, verwendet Parabolic aria2c zum "
+"Herunterladen von Medien. Die Verwendung von aria2c kann die Download-"
+"Geschwindigkeit verbessern, jedoch wird der Download-Fortschritt nicht in "
+"der Benutzeroberfläche angezeigt."
+
+#. (itstool) path: item/title
+#: yelp/C/downloader.page:70
+msgid "Maximum Connections Per Server"
+msgstr "Maximale Verbindungen pro Server"
+
+#. (itstool) path: item/p
+#: yelp/C/downloader.page:71
+msgid ""
+"This option only applies when using aria2 is enabled. This option is the "
+"same as the <code>-x</code> flag passed to aria2c."
+msgstr ""
+"Diese Option gilt nur, wenn die Verwendung von aria2 aktiviert ist. Sie "
+"entspricht dem <code>-x</code> Flag, das an aria2c übergeben wird."
+
+#. (itstool) path: item/p
+#: yelp/C/downloader.page:74
+msgid ""
+"The maximum number of connection that can be used per server. Must be an "
+"integer value between 1 and 32."
+msgstr ""
+"Die maximale Anzahl der Verbindungen, die pro Server verwendet werden "
+"können. Muss ein ganzzahliger Wert zwischen 1 und 32 sein."
+
+#. (itstool) path: note/p
+#: yelp/C/downloader.page:76
+msgid "Default: 16"
+msgstr "Standardeinstellung: 16"
+
+#. (itstool) path: item/title
+#: yelp/C/downloader.page:80
+msgid "Minimum Split Size"
+msgstr "Minimale Teilungsgröße"
+
+#. (itstool) path: item/p
+#: yelp/C/downloader.page:81
+msgid ""
+"This option only applies when using aria2 is enabled. This option is the "
+"same as the <code>-k</code> flag passed to aria2c."
+msgstr ""
+"Diese Option gilt nur, wenn die Verwendung von aria2 aktiviert ist. Sie "
+"entspricht dem <code>-k</code> Flag, das an aria2c übergeben wird."
+
+#. (itstool) path: item/p
+#: yelp/C/downloader.page:84
+msgid ""
+"The minimum size, in MiB, of which to split a file. Must be an integer value "
+"between 1 and 1024."
+msgstr ""
+"Die Mindestgröße in MiB, ab der eine Datei geteilt werden soll. Muss ein "
+"ganzzahliger Wert zwischen 1 und 1024 sein."
+
+#. (itstool) path: note/p
+#: yelp/C/downloader.page:86
+msgid "Default: 20"
+msgstr "Standardeinstellung: 20"
+
+#. (itstool) path: item/title
+#: yelp/C/downloader.page:90 yelp/C/newDownload.page:72
+msgid "Speed Limit"
+msgstr "Geschwindigkeitsbegrenzung"
+
+#. (itstool) path: item/p
+#: yelp/C/downloader.page:91
+msgid ""
+"A limit, in Ki/s, that is applied to downloads only if they have the "
+"advanced option <code>Speed Limit</code> enabled. Must be an integer value "
+"between 512 and 10240."
+msgstr ""
+"Ein Limit in Ki/s, das nur dann auf Downloads angewendet wird, wenn die "
+"erweiterte Option <code>Geschwindigkeitsbegrenzung</code> aktiviert ist. "
+"Muss ein ganzzahliger Wert zwischen 512 und 10240 sein."
+
+#. (itstool) path: note/p
+#: yelp/C/downloader.page:93
+msgid "Default: 1024"
+msgstr "Standardeinstellung: 1024"
+
+#. (itstool) path: item/title
+#: yelp/C/downloader.page:97
 msgid "Proxy URL"
 msgstr "Proxy-URL"
 
 #. (itstool) path: item/p
-#: yelp/C/downloader.page:93
+#: yelp/C/downloader.page:98
 msgid "The url of the proxy server to use."
 msgstr "Die URL des zu verwendenden Proxyservers."
 
 #. (itstool) path: item/title
-#: yelp/C/downloader.page:96
+#: yelp/C/downloader.page:101
 msgid "Cookies File"
 msgstr "Cookie-Datei"
 
 #. (itstool) path: item/p
-#: yelp/C/downloader.page:97
+#: yelp/C/downloader.page:102
 msgid ""
 "A .txt file of cookies to pass to yt-dlp when downloading. This may be "
 "useful when downloading media that requires a login, for example: private "
@@ -432,7 +436,7 @@ msgstr ""
 "Anmeldung erfordern, z. B. private YouTube-Videos."
 
 #. (itstool) path: item/p
-#: yelp/C/downloader.page:98
+#: yelp/C/downloader.page:103
 msgid ""
 "Use one of the following extensions for getting a cookies file from your "
 "browser:"
@@ -441,7 +445,7 @@ msgstr ""
 "eine Cookie-Datei zu erhalten:"
 
 #. (itstool) path: item/p
-#: yelp/C/downloader.page:99
+#: yelp/C/downloader.page:104
 msgid ""
 "Chrome: <code>https://chrome.google.com/webstore/detail/get-cookiestxt-"
 "locally/cclelndahbckbenkjhflpdbgdldlbecc</code>"
@@ -450,7 +454,7 @@ msgstr ""
 "locally/cclelndahbckbenkjhflpdbgdldlbecc</code>"
 
 #. (itstool) path: item/p
-#: yelp/C/downloader.page:100
+#: yelp/C/downloader.page:105
 msgid ""
 "Firefox: <code>https://addons.mozilla.org/en-US/firefox/addon/cookies-txt/</"
 "code>"
@@ -459,14 +463,38 @@ msgstr ""
 "code>"
 
 #. (itstool) path: note/p
-#: yelp/C/downloader.page:102
+#: yelp/C/downloader.page:107
 msgid "Use these extensions at your own risk."
 msgstr "Die Nutzung dieser Erweiterungen erfolgt auf eigene Gefahr."
 
 #. (itstool) path: note/p
-#: yelp/C/downloader.page:105
+#: yelp/C/downloader.page:110
 msgid "Default: No File Selected"
 msgstr "Standardeinstellung: Keine Datei ausgewählt"
+
+#. (itstool) path: item/title
+#: yelp/C/downloader.page:114
+msgid "Use SponsorBlock for YouTube"
+msgstr "SponsorBlock für YouTube verwenden"
+
+#. (itstool) path: item/p
+#: yelp/C/downloader.page:115
+msgid ""
+"If enabled, Parabolic will apply the SponsorBlock extension to YouTube "
+"downloads."
+msgstr ""
+"Wenn aktiviert, wird Parabolic die SponsorBlock-Erweiterung auf YouTube-"
+"Downloads anwenden."
+
+#. (itstool) path: note/p
+#: yelp/C/downloader.page:117
+msgid ""
+"SponsorBlock only works on YouTube videos. However, leaving this setting on "
+"will not affect downloads from other sites (i.e. not cause them to fail)."
+msgstr ""
+"SponsorBlock funktioniert nur bei YouTube-Videos. Wenn du diese Einstellung "
+"jedoch aktiviert lässt, hat dies keine Auswirkungen auf Downloads von "
+"anderen Webseiten (d. h. sie werden nicht fehlschlagen)."
 
 #. (itstool) path: info/title
 #: yelp/C/index.page:7
@@ -1037,9 +1065,6 @@ msgstr "Der Dateiname, der beim Speichern des Downloads verwendet werden soll."
 #: yelp/C/newDownload.page:118
 msgid "Default: The title of the media"
 msgstr "Standardeinstellung: Der Titel des Mediums"
-
-#~ msgid "Subtitle"
-#~ msgstr "Untertitel"
 
 #~ msgid ""
 #~ "The type of subtitles to download. Can be <code>None</code>, <code>VTT</"

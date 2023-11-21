@@ -524,7 +524,7 @@ public sealed partial class AddDownloadDialog : ContentDialog
                 }
                 else
                 {
-                    CmbFileType.ItemsSource = new string[] { "MP3", "OPUS", "FLAC", "WAV" };
+                    CmbFileType.ItemsSource = new string[] { "MP3", "M4A", "OPUS", "FLAC", "WAV" };
                     CmbFileType.SelectedIndex = Math.Max((int)_controller.PreviousMediaFileType - 2, 0);
                 }
             }

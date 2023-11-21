@@ -354,7 +354,7 @@ public partial class AddDownloadDialog : Adw.Window
                 }
                 else
                 {
-                    _fileTypeRow.SetModel(Gtk.StringList.New(new string[] { "MP3", "OPUS", "FLAC", "WAV" }));
+                    _fileTypeRow.SetModel(Gtk.StringList.New(new string[] { "MP3", "M4A", "OPUS", "FLAC", "WAV" }));
                     _fileTypeRow.SetSelected((uint)Math.Max((int)_controller.PreviousMediaFileType - 2, 0));
                 }
             }

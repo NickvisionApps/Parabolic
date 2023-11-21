@@ -18,6 +18,14 @@
 <p>Diese Seite erklärt alle Optionen zur Konfiguration des Downloaders in den Einstellungen in <app>Parabolic</app>.</p>
 
 <terms>
+    <item>
+        <title>Vorhandene Dateien überschreiben</title>
+        <p>Wenn diese Option aktiviert ist, überschreibt Parabolic vorhandene Dateien.</p>
+        <p>Wenn zum Beispiel eine Datei mit dem Namen <code>movie.mp4</code> im Download-Ordner vorhanden ist und ein neuer Download mit dem Namen <code>movie</code> erstellt wird, wird <code>movie.mp4</code> mit dem Inhalt des neuen Downloads überschrieben.</p>
+        <note style="advanced">
+            <p>Standardeinstellung: Ein</p>
+        </note>
+    </item>
 	<item>
 		<title>Maximale Anzahl aktiver Downloads</title>
 		<p>Die Anzahl der aktiven Downloads, die gleichzeitig ausgeführt werden dürfen. Muss ein ganzzahliger Wert zwischen 1 und 10 sein.</p>
@@ -27,62 +35,51 @@
 		</note>
     </item>
     <item>
-        <title>Vorhandene Dateien überschreiben</title>
-        <p>Wenn diese Option aktiviert ist, überschreibt Parabolic vorhandene Dateien.</p>
-        <p>Wenn zum Beispiel eine Datei mit dem Namen <code>movie.mp4</code> im Download-Ordner vorhanden ist und ein neuer Download mit dem Namen <code>movie</code> erstellt wird, wird <code>movie.mp4</code> mit dem Inhalt des neuen Downloads überschrieben.</p>
-		<note style="advanced">
-			<p>Standardeinstellung: Ein</p>
-		</note>
-    </item>
-    <item>
-        <title>Geschwindigkeitsbegrenzung</title>
-        <p>Ein Limit in Ki/s, das nur dann auf Downloads angewendet wird, wenn die erweiterte Option <code>Geschwindigkeitsbegrenzung</code> aktiviert ist. Muss ein ganzzahliger Wert zwischen 512 und 10240 sein.</p>
-		<note style="advanced">
-			<p>Standardeinstellung: 1024</p>
-		</note>
-    </item>
-    <item>
-        <title>Benutze aria2</title>
-        <p>Wenn diese Option aktiviert ist, verwendet Parabolic aria2c zum Herunterladen von Medien. Die Verwendung von aria2c kann die Download-Geschwindigkeit verbessern, jedoch wird der Download-Fortschritt nicht in der Benutzeroberfläche angezeigt.</p>
-		<note style="advanced">
-			<p>Standardeinstellung: Aus</p>
-		</note>
-    </item>
-    <item>
-        <title>Maximale Verbindungen pro Server</title>
-        <p>Diese Option gilt nur, wenn die Verwendung von aria2 aktiviert ist. Sie entspricht dem <code>-x</code> Flag, das an aria2c übergeben wird.</p>
-        <p>Die maximale Anzahl der Verbindungen, die pro Server verwendet werden können. Muss ein ganzzahliger Wert zwischen 1 und 32 sein.</p>
-		<note style="advanced">
-			<p>Standardeinstellung: 16</p>
-		</note>
-    </item>
-    <item>
-        <title>Minimale Teilungsgröße</title>
-        <p>Diese Option gilt nur, wenn die Verwendung von aria2 aktiviert ist. Sie entspricht dem <code>-k</code> Flag, das an aria2c übergeben wird.</p>
-        <p>Die Mindestgröße in MiB, ab der eine Datei geteilt werden soll. Muss ein ganzzahliger Wert zwischen 1 und 1024 sein.</p>
-		<note style="advanced">
-			<p>Standardeinstellung: 20</p>
-		</note>
-    </item>
-    <item>
-        <title>SponsorBlock für YouTube verwenden</title>
-        <p>Wenn aktiviert, wird Parabolic die SponsorBlock-Erweiterung auf YouTube-Downloads anwenden.</p>
-        <note>
-            <p>SponsorBlock funktioniert nur bei YouTube-Videos. Wenn du diese Einstellung jedoch aktiviert lässt, hat dies keine Auswirkungen auf Downloads von anderen Webseiten (d. h. sie werden nicht fehlschlagen).</p>
-        </note>
-        <note style="advanced">
-            <p>Standardeinstellung: Aus</p>
-        </note>
-    </item>
-    <item>
         <title>Untertitelsprachen</title>
         <p>Eine durch Kommata getrennte Liste von Sprachcodes mit zwei Buchstaben, zwei Buchstaben mit Region oder drei Buchstaben. Die Liste wird bei der Sprachauswahl der herunterzuladenden Untertitel verwendet. Findet nur Anwendung, wenn ein Video mit Untertiteln heruntergeladen wird.</p>
         <note>
             <p>Unterschiedliche Webseiten nutzen unterschiedliche Sprachcodeformate für dieselbe Sprache. Verwendet werden beispielsweise Sprachcodes mit zwei Buchstaben, mit zwei Buchstaben und einer Region oder mit drei Buchstaben. Beispielsweise werden "en", "en-US" und "eng" alle für Englisch verwendet. Um die besten Ergebnisse zu erzielen, gib bitte alle gültigen Codes an. Autogenerierte Untertitel werden auch heruntergeladen, wenn diese verfügbar sind.</p>
             <p>Du kannst "all" angeben um alle nicht-autogenerierten Untertitel herunterzuladen.</p>
         </note>
+        <note style="advanced">
+            <p>Standardeinstellung: Die Sprachcodes deiner Kultur. Auf einem US-amerkanischen System wäre das beispielsweise <code>en,en-US,eng</code></p>
+        </note>
+    </item>
+    <item>
+        <title>Included Auto-Generated Subtitles</title>
+        <p>Whether or not to included subtitles that are auto-translated to fit the requested subtitle languages.</p>
+        <note style="advanced">
+            <p>Standardeinstellung: Ein</p>
+        </note>
+    </item>
+    <item>
+        <title>Benutze aria2</title>
+        <p>Wenn diese Option aktiviert ist, verwendet Parabolic aria2c zum Herunterladen von Medien. Die Verwendung von aria2c kann die Download-Geschwindigkeit verbessern, jedoch wird der Download-Fortschritt nicht in der Benutzeroberfläche angezeigt.</p>
+        <note style="advanced">
+            <p>Standardeinstellung: Aus</p>
+        </note>
+    </item>
+    <item>
+        <title>Maximale Verbindungen pro Server</title>
+        <p>Diese Option gilt nur, wenn die Verwendung von aria2 aktiviert ist. Sie entspricht dem <code>-x</code> Flag, das an aria2c übergeben wird.</p>
+        <p>Die maximale Anzahl der Verbindungen, die pro Server verwendet werden können. Muss ein ganzzahliger Wert zwischen 1 und 32 sein.</p>
+        <note style="advanced">
+            <p>Standardeinstellung: 16</p>
+        </note>
+    </item>
+    <item>
+        <title>Minimale Teilungsgröße</title>
+        <p>Diese Option gilt nur, wenn die Verwendung von aria2 aktiviert ist. Sie entspricht dem <code>-k</code> Flag, das an aria2c übergeben wird.</p>
+        <p>Die Mindestgröße in MiB, ab der eine Datei geteilt werden soll. Muss ein ganzzahliger Wert zwischen 1 und 1024 sein.</p>
+        <note style="advanced">
+            <p>Standardeinstellung: 20</p>
+        </note>
+    </item>
+    <item>
+        <title>Geschwindigkeitsbegrenzung</title>
+        <p>Ein Limit in Ki/s, das nur dann auf Downloads angewendet wird, wenn die erweiterte Option <code>Geschwindigkeitsbegrenzung</code> aktiviert ist. Muss ein ganzzahliger Wert zwischen 512 und 10240 sein.</p>
 		<note style="advanced">
-			<p>Standardeinstellung: Die Sprachcodes deiner Kultur. Auf einem US-amerkanischen System wäre das beispielsweise <code>en,en-US,eng</code></p>
+			<p>Standardeinstellung: 1024</p>
 		</note>
     </item>
     <item>
@@ -101,6 +98,16 @@
 		<note style="advanced">
 			<p>Standardeinstellung: Keine Datei ausgewählt</p>
 		</note>
+    </item>
+    <item>
+        <title>SponsorBlock für YouTube verwenden</title>
+        <p>Wenn aktiviert, wird Parabolic die SponsorBlock-Erweiterung auf YouTube-Downloads anwenden.</p>
+        <note>
+            <p>SponsorBlock funktioniert nur bei YouTube-Videos. Wenn du diese Einstellung jedoch aktiviert lässt, hat dies keine Auswirkungen auf Downloads von anderen Webseiten (d. h. sie werden nicht fehlschlagen).</p>
+        </note>
+        <note style="advanced">
+            <p>Standardeinstellung: Aus</p>
+        </note>
     </item>
 </terms>
 </page>
