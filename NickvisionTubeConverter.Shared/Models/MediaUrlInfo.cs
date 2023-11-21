@@ -179,7 +179,7 @@ public class MediaUrlInfo
                 }
             }
         }
-        if(VideoResolutions.Count > 0)
+        if (VideoResolutions.Count > 0)
         {
             VideoResolutions.Add(VideoResolution.Best);
             VideoResolutions.Sort((a, b) => b.CompareTo(a));
@@ -225,7 +225,7 @@ public class MediaUrlInfo
         {
             VideoResolutions.Add(VideoResolution.Best);
             var res = VideoResolution.Parse($"{mediaInfo["width"].As<int>}x{mediaInfo["height"].As<int>()}");
-            if(res != null)
+            if (res != null)
             {
                 VideoResolutions.Add(res);
             }

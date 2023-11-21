@@ -37,11 +37,11 @@ public class AdvancedDownloadOptions
     /// <summary>
     /// Constructs an AdvancedDownloadOptions
     /// </summary>
-    public AdvancedDownloadOptions() 
+    public AdvancedDownloadOptions()
     {
         Username = null;
         Password = null;
-        LimitSpeed = false;    
+        LimitSpeed = false;
         PreferAV1 = false;
         SplitChapters = false;
         CropThumbnail = false;

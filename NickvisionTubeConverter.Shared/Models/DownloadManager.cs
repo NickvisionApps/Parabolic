@@ -301,7 +301,7 @@ public class DownloadManager
     /// <returns>The path of the completed download. Null if id is not of a completed download</returns>
     internal string? GetCompletedDownloadPath(Guid id)
     {
-        if(_completed.ContainsKey(id))
+        if (_completed.ContainsKey(id))
         {
             var completed = _completed[id];
             return $"{completed.SaveFolder}{Path.DirectorySeparatorChar}{completed.Filename}";

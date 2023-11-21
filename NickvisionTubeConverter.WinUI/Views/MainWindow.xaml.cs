@@ -347,7 +347,7 @@ public sealed partial class MainWindow : Window
     private void ShellNotificationSent(object? sender, ShellNotificationSentEventArgs e)
     {
         var toast = new ToastContentBuilder().AddText(e.Title).AddText(e.Message);
-        if(e.Action == "open-file")
+        if (e.Action == "open-file")
         {
             toast.SetProtocolActivation(new Uri($"file:///{e.ActionParam}"));
         }

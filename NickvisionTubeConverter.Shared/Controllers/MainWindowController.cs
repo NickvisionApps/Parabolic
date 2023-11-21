@@ -245,7 +245,7 @@ public class MainWindowController : IDisposable
     /// <returns>A URL to validate on startup</returns>
     public async Task<string?> StartupAsync()
     {
-        if(_started)
+        if (_started)
         {
             return UrlToLaunch;
         }
@@ -433,7 +433,7 @@ public class MainWindowController : IDisposable
     /// <param name="e">(Guid Id, bool Successful, string Filename, bool ShowNotification)</param>
     private void DownloadCompleted(object? sender, (Guid Id, bool Successful, string Filename, bool ShowNotification) e)
     {
-        if(e.ShowNotification && !IsWindowActive)
+        if (e.ShowNotification && !IsWindowActive)
         {
             if (Configuration.Current.CompletedNotificationPreference == NotificationPreference.ForEach)
             {
