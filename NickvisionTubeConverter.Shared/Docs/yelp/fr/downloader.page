@@ -18,6 +18,14 @@
 <p>Cette page explique toutes les options pour configurer le téléchargeur dans les préférences de <app>Parabole</app>.</p>
 
 <terms>
+    <item>
+        <title>Remplacer les fichiers existants</title>
+        <p>Si cette option est activée, Parabole écrasera les fichiers existants.</p>
+        <p>Par exemple, si un fichier intitulé <code>film.mp4</code> existe dans le dossier de téléchargement et qu’un nouveau téléchargement est créé avec le titre <code>film</code>, <code>film.mp4</code> sera remplacé par le contenu du nouveau téléchargement.</p>
+        <note style="advanced">
+            <p>Par défaut : Activée</p>
+        </note>
+    </item>
 	<item>
 		<title>Nombre maximum de téléchargements actifs</title>
 		<p>Indique le nombre de téléchargements actifs autorisés à s’exécuter en même temps. Il doit s’agir d’un nombre entier compris entre 1 et 10.</p>
@@ -27,62 +35,51 @@
 		</note>
     </item>
     <item>
-        <title>Remplacer les fichiers existants</title>
-        <p>Si cette option est activée, Parabole écrasera les fichiers existants.</p>
-        <p>Par exemple, si un fichier intitulé <code>film.mp4</code> existe dans le dossier de téléchargement et qu’un nouveau téléchargement est créé avec le titre <code>film</code>, <code>film.mp4</code> sera remplacé par le contenu du nouveau téléchargement.</p>
-		<note style="advanced">
-			<p>Par défaut : Activée</p>
-		</note>
-    </item>
-    <item>
-        <title>Limitation de vitesse</title>
-        <p>Une limite en KiB/s qui est appliquée aux téléchargements, uniquement s’ils ont l’option avancée <code>Limitation de vitesse</code> activée. Il doit s’agit d’un nombre entier compris en 512 et 10240.</p>
-		<note style="advanced">
-			<p>Par défaut : 1024</p>
-		</note>
-    </item>
-    <item>
-        <title>Utiliser aria2</title>
-        <p>Si cette option est activée, Parabole utilisera aria2c pour télécharger les médias. Bien que l’utilisation de aria2c puisse améliorer la vitesse de votre téléchargement, la progression de celui-ci ne sera pas affichée dans l’interface.</p>
-		<note style="advanced">
-			<p>Par défaut : Désactivée</p>
-		</note>
-    </item>
-    <item>
-        <title>Nombre maximal de connexions par serveur</title>
-        <p>Cette option est disponible uniquement quand l’utilisation de aria2 est activée. Cette option est la même que la balise <code>-x</code> passée à aria2c.</p>
-        <p>Le nombre maximal de connexions qui peuvent être utilisées par serveur. Il doit s’agir d’un nombre entier entre 1 et 32.</p>
-		<note style="advanced">
-			<p>Par défaut : 16</p>
-		</note>
-    </item>
-    <item>
-        <title>Taille minimale de division</title>
-        <p>Cette option s’applique uniquement lorsque l’utilisation de aria2 est activée. Cette option est la même que la balise <code>-k</code> passée à aria2c.</p>
-        <p>La taille minimale, en MiB, dans laquelle diviser un fichier. Il doit s’agir d’un nombre entier compris entre 1 et 1024.</p>
-		<note style="advanced">
-			<p>Par défaut : 20</p>
-		</note>
-    </item>
-    <item>
-        <title>Utiliser SponsorBlock pour YouTube</title>
-        <p>Si cette option est activée, Parabole appliquera l’extension SponsorBlock pour les téléchargements YouTube.</p>
-        <note>
-            <p>SponsorBlock ne fonctionne que pour les vidéos YouTube. Cependant, garder ce paramètre activé n’affectera pas les téléchargements depuis les autres sites (i.e. ils ne seront pas perturbés).</p>
-        </note>
-        <note style="advanced">
-            <p>Par défaut : Désactivée</p>
-        </note>
-    </item>
-    <item>
         <title>Langues des sous-titres</title>
         <p>Une liste de codes de langages de deux lettres, deux lettre avec une région, ou trois lettres, séparés par une virgule, à utiliser pour sélectionner les langages des sous-titres à télécharger. S’applique uniquement pour télécharger une vidéo avec des sous-titres.</p>
         <note>
             <p>Différents sites peuvent utiliser différents formats de code linguistique pour la même langue. Vous pouvez rencontrer l’un des trois types suivants : deux lettres, deux lettres avec région ou trois lettres. Par exemple, « en », « en-US » et « eng » sont tous trois utilisés pour l’anglais. Pour obtenir les meilleurs résultats, veuillez spécifier tous les codes valables pour vos langues. Les sous-titres générés automatiquement seront également téléchargés si disponibles.</p>
             <p>Sinon vous pouvez spécifier « tous » pour télécharger tous les sous-titres, mais sans ceux générés automatiquement.</p>
         </note>
+        <note style="advanced">
+            <p>Par défaut : les codes à deux et trois lettres de votre langue locale. Par exemple, <code>en,en-US,eng</code> sur un système en anglais américain</p>
+        </note>
+    </item>
+    <item>
+        <title>Included Auto-Generated Subtitles</title>
+        <p>Whether or not to included subtitles that are auto-translated to fit the requested subtitle languages.</p>
+        <note style="advanced">
+            <p>Par défaut : Activée</p>
+        </note>
+    </item>
+    <item>
+        <title>Utiliser aria2</title>
+        <p>Si cette option est activée, Parabole utilisera aria2c pour télécharger les médias. Bien que l’utilisation de aria2c puisse améliorer la vitesse de votre téléchargement, la progression de celui-ci ne sera pas affichée dans l’interface.</p>
+        <note style="advanced">
+            <p>Par défaut : Désactivée</p>
+        </note>
+    </item>
+    <item>
+        <title>Nombre maximal de connexions par serveur</title>
+        <p>Cette option est disponible uniquement quand l’utilisation de aria2 est activée. Cette option est la même que la balise <code>-x</code> passée à aria2c.</p>
+        <p>Le nombre maximal de connexions qui peuvent être utilisées par serveur. Il doit s’agir d’un nombre entier entre 1 et 32.</p>
+        <note style="advanced">
+            <p>Par défaut : 16</p>
+        </note>
+    </item>
+    <item>
+        <title>Taille minimale de division</title>
+        <p>Cette option s’applique uniquement lorsque l’utilisation de aria2 est activée. Cette option est la même que la balise <code>-k</code> passée à aria2c.</p>
+        <p>La taille minimale, en MiB, dans laquelle diviser un fichier. Il doit s’agir d’un nombre entier compris entre 1 et 1024.</p>
+        <note style="advanced">
+            <p>Par défaut : 20</p>
+        </note>
+    </item>
+    <item>
+        <title>Limitation de vitesse</title>
+        <p>Une limite en KiB/s qui est appliquée aux téléchargements, uniquement s’ils ont l’option avancée <code>Limitation de vitesse</code> activée. Il doit s’agit d’un nombre entier compris en 512 et 10240.</p>
 		<note style="advanced">
-			<p>Par défaut : les codes à deux et trois lettres de votre langue locale. Par exemple, <code>en,en-US,eng</code> sur un système en anglais américain</p>
+			<p>Par défaut : 1024</p>
 		</note>
     </item>
     <item>
@@ -101,6 +98,16 @@
 		<note style="advanced">
 			<p>Par défaut : Aucun fichier sélectionné</p>
 		</note>
+    </item>
+    <item>
+        <title>Utiliser SponsorBlock pour YouTube</title>
+        <p>Si cette option est activée, Parabole appliquera l’extension SponsorBlock pour les téléchargements YouTube.</p>
+        <note>
+            <p>SponsorBlock ne fonctionne que pour les vidéos YouTube. Cependant, garder ce paramètre activé n’affectera pas les téléchargements depuis les autres sites (i.e. ils ne seront pas perturbés).</p>
+        </note>
+        <note style="advanced">
+            <p>Par défaut : Désactivée</p>
+        </note>
     </item>
 </terms>
 </page>

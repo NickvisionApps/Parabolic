@@ -24,6 +24,14 @@
 <p>Na této straně najdete vysvětlení všech možností konfigurace stahování v předvolbách v aplikaci <app>Parabolic</app>.</p>
 
 <terms>
+    <item>
+        <title>Přepsat existující soubory</title>
+        <p>Pokud je tato funkce povolena, aplikace Parabolic přepíše existující soubory.</p>
+        <p>Pokud již například ve složce stahování existuje soubor <code>film.mp4</code> a bude vytvořeno nové stahování s názvem <code>film</code>, bude soubor <code>film.mp4</code> přepsán novým obsahem stahování.</p>
+        <note style="advanced">
+            <p>Výchozí: zapnuto</p>
+        </note>
+    </item>
 	<item>
 		<title>Maximální počet aktivních stahování</title>
 		<p>Počet aktivních stahování, které mohou v jednu chvíli běžet. Musí to být celočíselná hodnota mezi 1 a 10.</p>
@@ -33,62 +41,51 @@
 		</note>
     </item>
     <item>
-        <title>Přepsat existující soubory</title>
-        <p>Pokud je tato funkce povolena, aplikace Parabolic přepíše existující soubory.</p>
-        <p>Pokud již například ve složce stahování existuje soubor <code>film.mp4</code> a bude vytvořeno nové stahování s názvem <code>film</code>, bude soubor <code>film.mp4</code> přepsán novým obsahem stahování.</p>
-		<note style="advanced">
-			<p>Výchozí: zapnuto</p>
-		</note>
-    </item>
-    <item>
-        <title>Omezení rychlosti</title>
-        <p>Limit, v Ki/s, který bude použit na stahování pouze pokud mají povolenou pokročilou možnost <code>Omezení rychlosti</code>. Musí to být celočíselná hodnota mezi 512 a 10 240.</p>
-		<note style="advanced">
-			<p>Výchozí: 1024</p>
-		</note>
-    </item>
-    <item>
-        <title>Použít aria2</title>
-        <p>Pokud je tato funkce povolena, použije aplikace Parabolic funkci aria2c pro stahování médií. Aria2c může zvýšit rychlost stahování, v rozhraní ale neuvidíte jeho průběh.</p>
-		<note style="advanced">
-			<p>Výchozí: vypnuto</p>
-		</note>
-    </item>
-    <item>
-        <title>Maximální počet spojení na server</title>
-        <p>Tato funkce je použita pouze při povoleném aria2. Jedná se o stejnou možnost, jako když do aria2c zadáte vlajku <code>-x</code>.</p>
-        <p>Maximální počet spojení, které lze využít na server. Musí to být celočíselná hodnota mezi 1 a 32.</p>
-		<note style="advanced">
-			<p>Výchozí: 16</p>
-		</note>
-    </item>
-    <item>
-        <title>Minimální velikost rozdělení</title>
-        <p>Tato funkce je použita pouze při povoleném aria2. Jedná se o stejnou možnost, jako když do aria2c zadáte vlajku <code>-k</code>.</p>
-        <p>Minimální velikost, v MiB, na kterou rozdělit soubor. Musí to být celočíselná hodnota mezi 1 a 1024.</p>
-		<note style="advanced">
-			<p>Výchozí: 20</p>
-		</note>
-    </item>
-    <item>
-        <title>Použít SponsorBlock pro YouTube</title>
-        <p>Pokud je tato funkce povolena, aplikace Parabolic automaticky zapne rozšíření SponsorBlock pro stahování z YouTube.</p>
-        <note>
-            <p>SponsorBlock funguje pouze s videi na YouTube. Zapnutí tohoto nastavení nicméně neovlivní stahování z ostatních webů (např. se nestane, že by se kvůli tomu nestáhly).</p>
-        </note>
-        <note style="advanced">
-            <p>Výchozí: vypnuto</p>
-        </note>
-    </item>
-    <item>
         <title>Jazyky titulků</title>
         <p>Seznam dvoupísmenných, dvoupísmenných s čárkou a třípísmenných jazykových kódů oddělených čárkou, které se použijí při výběru jazyků titulků ke stažení. Použije se pouze při stahování videa s titulky.</p>
         <note>
             <p>Různé stránky používají různé formáty jazykových kódů pro stejný jazyk. Můžete se setkat s jedním z následujících tří typů: dvoupísmenný, dvoupísmenný s oblastí nebo třípísmenný. Pro angličtinu může být například použito „en“, „en-US“ a „eng“. Pro nejlepší výsledky zadejte všechny platné kódy vašich jazyků. Pokud jsou dostupné, budou staženy i automaticky vygenerované titulky.</p>
             <p>Pro stažení všech titulků (mimo automaticky generovaných) můžete také zadat „all“.</p>
         </note>
+        <note style="advanced">
+            <p>Výchozí: jazykové kódy vaší kultury. Například na americkém (en-US) systému budou výchozí kódy <code>en,en-US,eng</code></p>
+        </note>
+    </item>
+    <item>
+        <title>Included Auto-Generated Subtitles</title>
+        <p>Whether or not to included subtitles that are auto-translated to fit the requested subtitle languages.</p>
+        <note style="advanced">
+            <p>Výchozí: zapnuto</p>
+        </note>
+    </item>
+    <item>
+        <title>Použít aria2</title>
+        <p>Pokud je tato funkce povolena, použije aplikace Parabolic funkci aria2c pro stahování médií. Aria2c může zvýšit rychlost stahování, v rozhraní ale neuvidíte jeho průběh.</p>
+        <note style="advanced">
+            <p>Výchozí: vypnuto</p>
+        </note>
+    </item>
+    <item>
+        <title>Maximální počet spojení na server</title>
+        <p>Tato funkce je použita pouze při povoleném aria2. Jedná se o stejnou možnost, jako když do aria2c zadáte vlajku <code>-x</code>.</p>
+        <p>Maximální počet spojení, které lze využít na server. Musí to být celočíselná hodnota mezi 1 a 32.</p>
+        <note style="advanced">
+            <p>Výchozí: 16</p>
+        </note>
+    </item>
+    <item>
+        <title>Minimální velikost rozdělení</title>
+        <p>Tato funkce je použita pouze při povoleném aria2. Jedná se o stejnou možnost, jako když do aria2c zadáte vlajku <code>-k</code>.</p>
+        <p>Minimální velikost, v MiB, na kterou rozdělit soubor. Musí to být celočíselná hodnota mezi 1 a 1024.</p>
+        <note style="advanced">
+            <p>Výchozí: 20</p>
+        </note>
+    </item>
+    <item>
+        <title>Omezení rychlosti</title>
+        <p>Limit, v Ki/s, který bude použit na stahování pouze pokud mají povolenou pokročilou možnost <code>Omezení rychlosti</code>. Musí to být celočíselná hodnota mezi 512 a 10 240.</p>
 		<note style="advanced">
-			<p>Výchozí: jazykové kódy vaší kultury. Například na americkém (en-US) systému budou výchozí kódy <code>en,en-US,eng</code></p>
+			<p>Výchozí: 1024</p>
 		</note>
     </item>
     <item>
@@ -107,6 +104,16 @@
 		<note style="advanced">
 			<p>Výchozí: žádný vybraný soubor</p>
 		</note>
+    </item>
+    <item>
+        <title>Použít SponsorBlock pro YouTube</title>
+        <p>Pokud je tato funkce povolena, aplikace Parabolic automaticky zapne rozšíření SponsorBlock pro stahování z YouTube.</p>
+        <note>
+            <p>SponsorBlock funguje pouze s videi na YouTube. Zapnutí tohoto nastavení nicméně neovlivní stahování z ostatních webů (např. se nestane, že by se kvůli tomu nestáhly).</p>
+        </note>
+        <note style="advanced">
+            <p>Výchozí: vypnuto</p>
+        </note>
     </item>
 </terms>
 </page>

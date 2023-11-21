@@ -18,6 +18,14 @@
 <p>Esta páxina explica todas as opcións de configuración do Xestor de descargas nas Preferencias do <app>Parabolic</app>.</p>
 
 <terms>
+    <item>
+        <title>Substituír ficheiros existentes</title>
+        <p>Se está activado, o Parabolic substitúe os ficheiros existentes.</p>
+        <p>Por exemplo, se existe un ficheiro chamado <code>película.mp4</code> no cartafol de descargas, e se crea unha descarga nova chamada <code>película</code>, <code>película.mp4</code> substitúese co contido da nova descarga.</p>
+        <note style="advanced">
+            <p>Predeterminado: Activado</p>
+        </note>
+    </item>
 	<item>
 		<title>Número máximo de descargas activas</title>
 		<p>O número de descargas activas permitidas á vez. Ten que ser un valor enteiro entre 1 e 10.</p>
@@ -27,62 +35,57 @@
 		</note>
     </item>
     <item>
-        <title>Substituír ficheiros existentes</title>
-        <p>Se está activado, o Parabolic substitúe os ficheiros existentes.</p>
-        <p>Por exemplo, se existe un ficheiro chamado <code>película.mp4</code> no cartafol de descargas, e se crea unha descarga nova chamada <code>película</code>, <code>película.mp4</code> substitúese co contido da nova descarga.</p>
-		<note style="advanced">
-			<p>Predeterminado: Activado</p>
-		</note>
-    </item>
-    <item>
-        <title>Límite de velocidade</title>
-        <p>A limit, in Ki/s, that is applied to downloads only if they have the advanced option <code>Speed Limit</code> enabled. Must be an integer value between 512 and 10240.</p>
-		<note style="advanced">
-			<p>Default: 1024</p>
-		</note>
-    </item>
-    <item>
-        <title>Use aria2</title>
-        <p>If enabled, Parabolic will use aria2c to download media. Although using aria2c can improve download speed, download progress will not be displayed in the UI.</p>
-		<note style="advanced">
-			<p>Predeterminado: Desactivado</p>
-		</note>
-    </item>
-    <item>
-        <title>Maximum Connections Per Server</title>
-        <p>This option only applies when using aria2 is enabled. This option is the same as the <code>-x</code> flag passed to aria2c.</p>
-        <p>The maximum number of connection that can be used per server. Must be an integer value between 1 and 32.</p>
-		<note style="advanced">
-			<p>Default: 16</p>
-		</note>
-    </item>
-    <item>
-        <title>Minimum Split Size</title>
-        <p>This option only applies when using aria2 is enabled. This option is the same as the <code>-k</code> flag passed to aria2c.</p>
-        <p>The minimum size, in MiB, of which to split a file. Must be an integer value between 1 and 1024.</p>
-		<note style="advanced">
-			<p>Default: 20</p>
-		</note>
-    </item>
-    <item>
-        <title>Use SponsorBlock for YouTube</title>
-        <p>If enabled, Parabolic will apply the SponsorBlock extension to YouTube downloads.</p>
-        <note>
-            <p>SponsorBlock only works on YouTube videos. However, leaving this setting on will not affect downloads from other sites (i.e. not cause them to fail).</p>
-        </note>
-        <note style="advanced">
-            <p>Predeterminado: Desactivado</p>
-        </note>
-    </item>
-    <item>
         <title>Subtitles Languages</title>
         <p>A comma-separated list of two-letter, two-letter with region, and three-letter language codes to use when selecting languages of subtitles to download. Only applies when downloading a video with subtitles.</p>
         <note>
             <p>Different sites can use different language code formats for the same language. You may encounter one of the following three types: two-letter, two-letter with region, or three-letter. For example, "en", "en-US" and "eng" are all used for English. Please specify all valid codes for your languages for the best results. Auto-generated subtitles will also be downloaded if available.</p>
             <p>You can specify "all" instead to download all subtitles, but without auto-generated ones.</p>
         </note>
+        <note style="advanced">
+            <p>
+                Default: Your culture's language codes. For example, on an en-US system the default would be <code>en,en-US,eng</code>
+            </p>
+        </note>
+    </item>
+    <item>
+        <title>Included Auto-Generated Subtitles</title>
+        <p>Whether or not to included subtitles that are auto-translated to fit the requested subtitle languages.</p>
+        <note style="advanced">
+            <p>Predeterminado: Activado</p>
+        </note>
+    </item>
+    <item>
+        <title>Use aria2</title>
+        <p>If enabled, Parabolic will use aria2c to download media. Although using aria2c can improve download speed, download progress will not be displayed in the UI.</p>
+        <note style="advanced">
+            <p>Predeterminado: Desactivado</p>
+        </note>
+    </item>
+    <item>
+        <title>Maximum Connections Per Server</title>
+        <p>
+            This option only applies when using aria2 is enabled. This option is the same as the <code>-x</code> flag passed to aria2c.
+        </p>
+        <p>The maximum number of connection that can be used per server. Must be an integer value between 1 and 32.</p>
+        <note style="advanced">
+            <p>Default: 16</p>
+        </note>
+    </item>
+    <item>
+        <title>Minimum Split Size</title>
+        <p>
+            This option only applies when using aria2 is enabled. This option is the same as the <code>-k</code> flag passed to aria2c.
+        </p>
+        <p>The minimum size, in MiB, of which to split a file. Must be an integer value between 1 and 1024.</p>
+        <note style="advanced">
+            <p>Default: 20</p>
+        </note>
+    </item>
+    <item>
+        <title>Límite de velocidade</title>
+        <p>A limit, in Ki/s, that is applied to downloads only if they have the advanced option <code>Speed Limit</code> enabled. Must be an integer value between 512 and 10240.</p>
 		<note style="advanced">
-			<p>Default: Your culture's language codes. For example, on an en-US system the default would be <code>en,en-US,eng</code></p>
+			<p>Default: 1024</p>
 		</note>
     </item>
     <item>
@@ -101,6 +104,16 @@
 		<note style="advanced">
 			<p>Predeterminado: Ningún ficheiro seleccionado</p>
 		</note>
+    </item>
+    <item>
+        <title>Use SponsorBlock for YouTube</title>
+        <p>If enabled, Parabolic will apply the SponsorBlock extension to YouTube downloads.</p>
+        <note>
+            <p>SponsorBlock only works on YouTube videos. However, leaving this setting on will not affect downloads from other sites (i.e. not cause them to fail).</p>
+        </note>
+        <note style="advanced">
+            <p>Predeterminado: Desactivado</p>
+        </note>
     </item>
 </terms>
 </page>

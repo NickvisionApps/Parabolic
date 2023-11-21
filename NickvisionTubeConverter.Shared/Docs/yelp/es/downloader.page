@@ -24,6 +24,14 @@
 <p>Esta página explica todas las opciones para configurar el Downloader en las preferencias de <app>Parabolic</app>.</p>
 
 <terms>
+    <item>
+        <title>Sobreescribir archivos existentes</title>
+        <p>Si se activa, Parabolic sobrescribirá los archivos existentes.</p>
+        <p>Por ejemplo, si un archivo llamado <code>pelicula.mp4</code> existe en la carpeta de descargas, y se crea una descarga nueva llamada <code>pelicula</code>, <code>pelicula.mp4</code> se sobrescribirá con el contenido de la descarga nueva.</p>
+        <note style="advanced">
+            <p>Predeterminado: Encendido</p>
+        </note>
+    </item>
 	<item>
 		<title>Máximo número de descargas activas</title>
 		<p>El número de descargas activas que se pueden ejecutar a la vez. Debe ser un valor entero entre 1 y 10.</p>
@@ -33,62 +41,51 @@
 		</note>
     </item>
     <item>
-        <title>Sobreescribir archivos existentes</title>
-        <p>Si se activa, Parabolic sobrescribirá los archivos existentes.</p>
-        <p>Por ejemplo, si un archivo llamado <code>pelicula.mp4</code> existe en la carpeta de descargas, y se crea una descarga nueva llamada <code>pelicula</code>, <code>pelicula.mp4</code> se sobrescribirá con el contenido de la descarga nueva.</p>
-		<note style="advanced">
-			<p>Predeterminado: Encendido</p>
-		</note>
-    </item>
-    <item>
-        <title>Límite de velocidad</title>
-        <p>Un límite, en Ki/s, que se aplica a las descargas sólo si tienen activada la opción avanzada <code>Límite de velocidad</code>. Debe ser un valor entero entre 512 y 10240.</p>
-		<note style="advanced">
-			<p>Predeterminado: 1024</p>
-		</note>
-    </item>
-    <item>
-        <title>Usar aria2</title>
-        <p>Si se activa, Parabolic usará aria2c para descargar los archivos multimedia. Aunque el uso de aria2c puede mejorar la velocidad de descarga, el progreso de la descarga no se mostrará en la interfaz del usuario.</p>
-		<note style="advanced">
-			<p>Predeterminado: Apagado</p>
-		</note>
-    </item>
-    <item>
-        <title>Máximo de conexiones por servidor</title>
-        <p>Esta opción sólo se aplica cuando está activado el uso de aria2. Esta opción es la misma que la opción <code>-x</code> que se pasa a aria2c.</p>
-        <p>El número máximo de conexiones que se pueden usar por servidor. Debe ser un valor entero entre 1 y 32.</p>
-		<note style="advanced">
-			<p>Predeterminado: 16</p>
-		</note>
-    </item>
-    <item>
-        <title>Tamaño mínimo de división</title>
-        <p>Esta opción sólo se aplica cuando está activado el uso de aria2. Esta opción es la misma que la opción <code>-k</code> que se pasa a aria2c.</p>
-        <p>El tamaño mínimo, en MiB, del que dividir un archivo. Debe ser un valor entero entre 1 y 1024.</p>
-		<note style="advanced">
-			<p>Predeterminado: 20</p>
-		</note>
-    </item>
-    <item>
-        <title>Usar SponsorBlock para YouTube</title>
-        <p>Si se activa, Parabolic aplicará la extensión SponsorBlock a las descargas de YouTube.</p>
-        <note>
-            <p>SponsorBlock solo funciona en vídeos de YouTube. Sin embargo, dejar esta opción activada no afectará a las descargas de otros sitios (es decir, no hará que fallen).</p>
-        </note>
-        <note style="advanced">
-            <p>Predeterminado: Apagado</p>
-        </note>
-    </item>
-    <item>
         <title>Idiomas de los subtítulos</title>
         <p>Una lista separada por comas en los códigos de los idioma con dos letras, dos letras para la región y tres letras para seleccionar los idiomas de los subtítulos que se van a descargar. Sólo se aplica al descargar un vídeo con subtítulos.</p>
         <note>
             <p>Diferentes sitios pueden usar diferentes formatos de código de idioma para el mismo idioma. Puede encontrar uno de los tres tipos siguientes: de dos letras, de dos letras con región o de tres letras. Por ejemplo, "en", "en-US" y "eng" se usan para el inglés. Por favor, especifique todos los códigos válidos para sus idiomas para obtener los mejores resultados. También se descargarán los subtítulos generados automáticamente si están disponibles.</p>
             <p>Puede especificar "todos" en su lugar para descargar todos los subtítulos, pero sin los generados automáticamente.</p>
         </note>
+        <note style="advanced">
+            <p>Valor predeterminado: los códigos de idioma de su país. Por ejemplo, en un sistema en-US, el valor predeterminado sería <code>en,en-US,eng</code></p>
+        </note>
+    </item>
+    <item>
+        <title>Included Auto-Generated Subtitles</title>
+        <p>Whether or not to included subtitles that are auto-translated to fit the requested subtitle languages.</p>
+        <note style="advanced">
+            <p>Predeterminado: Encendido</p>
+        </note>
+    </item>
+    <item>
+        <title>Usar aria2</title>
+        <p>Si se activa, Parabolic usará aria2c para descargar los archivos multimedia. Aunque el uso de aria2c puede mejorar la velocidad de descarga, el progreso de la descarga no se mostrará en la interfaz del usuario.</p>
+        <note style="advanced">
+            <p>Predeterminado: Apagado</p>
+        </note>
+    </item>
+    <item>
+        <title>Máximo de conexiones por servidor</title>
+        <p>Esta opción sólo se aplica cuando está activado el uso de aria2. Esta opción es la misma que la opción <code>-x</code> que se pasa a aria2c.</p>
+        <p>El número máximo de conexiones que se pueden usar por servidor. Debe ser un valor entero entre 1 y 32.</p>
+        <note style="advanced">
+            <p>Predeterminado: 16</p>
+        </note>
+    </item>
+    <item>
+        <title>Tamaño mínimo de división</title>
+        <p>Esta opción sólo se aplica cuando está activado el uso de aria2. Esta opción es la misma que la opción <code>-k</code> que se pasa a aria2c.</p>
+        <p>El tamaño mínimo, en MiB, del que dividir un archivo. Debe ser un valor entero entre 1 y 1024.</p>
+        <note style="advanced">
+            <p>Predeterminado: 20</p>
+        </note>
+    </item>
+    <item>
+        <title>Límite de velocidad</title>
+        <p>Un límite, en Ki/s, que se aplica a las descargas sólo si tienen activada la opción avanzada <code>Límite de velocidad</code>. Debe ser un valor entero entre 512 y 10240.</p>
 		<note style="advanced">
-			<p>Valor predeterminado: los códigos de idioma de su país. Por ejemplo, en un sistema en-US, el valor predeterminado sería <code>en,en-US,eng</code></p>
+			<p>Predeterminado: 1024</p>
 		</note>
     </item>
     <item>
@@ -107,6 +104,16 @@
 		<note style="advanced">
 			<p>Predeterminado: Ningún archivo seleccionado</p>
 		</note>
+    </item>
+    <item>
+        <title>Usar SponsorBlock para YouTube</title>
+        <p>Si se activa, Parabolic aplicará la extensión SponsorBlock a las descargas de YouTube.</p>
+        <note>
+            <p>SponsorBlock solo funciona en vídeos de YouTube. Sin embargo, dejar esta opción activada no afectará a las descargas de otros sitios (es decir, no hará que fallen).</p>
+        </note>
+        <note style="advanced">
+            <p>Predeterminado: Apagado</p>
+        </note>
     </item>
 </terms>
 </page>

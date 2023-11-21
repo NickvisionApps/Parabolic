@@ -20,27 +20,6 @@ document.addEventListener('DOMContentLoaded', function() {
 <div class="contents pagewide">
 <p class="p">Na tej stronie wyjaśniono wszystkie opcje dostępne w sekcji Pobieranie w preferencjach w <span class="app">Parabolic</span>.</p>
 <div class="terms"><div class="inner"><div class="region"><dl class="terms">
-<dt class="terms">Maksymalna ilość aktywnych procesów pobierania</dt>
-<dd class="terms">
-<p class="p">Ilość procesów pobierania, które mogą być aktywne w tym samym czasie. Musi być liczbą całkowitą od 1 do 10.</p>
-<p class="p">Jeśli maksymalna ilość aktywnych procesów pobierania zostanie osiągnięta nowe procesy będą oczekiwały w kolejce.</p>
-<div class="note note-advanced" title="Zaawansowane">
-<svg height="24" width="24" version="1.1">
- <g>
-  <path class="yelp-svg-fill" d="m5.4473 12.572c-2.039 0.957-3.4473 3.019-3.4473 5.428v4h20v-4c0-2.406-1.406-4.466-3.441-5.424a8 8 0 0 1 -6.559 3.424 8 8 0 0 1 -6.5527 -3.428z"></path>
-  <path class="yelp-svg-fill" d="m12 3a5 5 0 0 0 -5 5 5 5 0 0 0 5 5 5 5 0 0 0 5 -5 5 5 0 0 0 -5 -5zm0 3a2 2 0 0 1 2 2 2 2 0 0 1 -2 2 2 2 0 0 1 -2 -2 2 2 0 0 1 2 -2z"></path>
-  <path class="yelp-svg-fill" d="m15.312 6 3.688 1v2l-3.4688 1z"></path>
-  <path class="yelp-svg-fill" d="m14 11.312-1 3.688h-2l-1-3.469z"></path>
-  <path class="yelp-svg-fill" d="m10 4.6875 1-3.6875h2l1 3.4688z"></path>
-  <path class="yelp-svg-fill" d="m8.6875 10-3.6875-1v-2l3.4688-1z"></path>
-  <path class="yelp-svg-fill" d="m12.928 4.2435 3.3146-1.9003 1.4142 1.4142-1.7457 3.1599z"></path>
-  <path class="yelp-svg-fill" d="m15.757 8.9281 1.9003 3.3146-1.4142 1.4142-3.1599-1.7457z"></path>
-  <path class="yelp-svg-fill" d="m8.2435 7.0719-1.9004-3.3145 1.4143-1.4143 3.1596 1.7457z"></path>
-  <path class="yelp-svg-fill" d="m11.072 11.757-3.3146 1.9-1.4143-1.414 1.7457-3.1602z"></path>
- </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Domyślnie: 5</p></div></div></div>
-</div>
-</dd>
 <dt class="terms">Nadpisuj istniejące pliki</dt>
 <dd class="terms">
 <p class="p">Po włączeniu, Parabolic będzie nadpisywał istniejące pliki.</p>
@@ -62,9 +41,10 @@ document.addEventListener('DOMContentLoaded', function() {
 </svg><div class="inner"><div class="region"><div class="contents"><p class="p">Domyślnie: włączone</p></div></div></div>
 </div>
 </dd>
-<dt class="terms">Limit prędkości pobierania</dt>
+<dt class="terms">Maksymalna ilość aktywnych procesów pobierania</dt>
 <dd class="terms">
-<p class="p">Limit prędkości w KiB/s, który dotyczy tylko procesów pobierania z włączoną opcją zaawansowaną <span class="code">Limit prędkości pobierania</span> . Musi być liczbą całkowitą od 512 do 10240.</p>
+<p class="p">Ilość procesów pobierania, które mogą być aktywne w tym samym czasie. Musi być liczbą całkowitą od 1 do 10.</p>
+<p class="p">Jeśli maksymalna ilość aktywnych procesów pobierania zostanie osiągnięta nowe procesy będą oczekiwały w kolejce.</p>
 <div class="note note-advanced" title="Zaawansowane">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -79,7 +59,60 @@ document.addEventListener('DOMContentLoaded', function() {
   <path class="yelp-svg-fill" d="m8.2435 7.0719-1.9004-3.3145 1.4143-1.4143 3.1596 1.7457z"></path>
   <path class="yelp-svg-fill" d="m11.072 11.757-3.3146 1.9-1.4143-1.414 1.7457-3.1602z"></path>
  </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Domyślnie: 1024</p></div></div></div>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Domyślnie: 5</p></div></div></div>
+</div>
+</dd>
+<dt class="terms">Języki napisów</dt>
+<dd class="terms">
+<p class="p">A comma-separated list of two-letter, two-letter with region, and three-letter language codes to use when selecting languages of subtitles to download. Only applies when downloading a video with subtitles.</p>
+<div class="note" title="Uwaga">
+<svg height="24" width="24" version="1.1">
+ <g>
+  <path class="yelp-svg-fill" d="m4 3h16c0.554 0 1 0.446 1 1v11h-6v6h-11c-0.554 0-1-0.446-1-1v-16c0-0.554 0.446-1 1-1z"></path>
+  <path class="yelp-svg-fill" d="m17 16h4l-5 5v-4c0-0.554 0.446-1 1-1z"></path>
+ </g>
+</svg><div class="inner"><div class="region"><div class="contents">
+<p class="p">Different sites can use different language code formats for the same language. You may encounter one of the following three types: two-letter, two-letter with region, or three-letter. For example, "en", "en-US" and "eng" are all used for English. Please specify all valid codes for your languages for the best results. Auto-generated subtitles will also be downloaded if available.</p>
+<p class="p">You can specify "all" instead to download all subtitles, but without auto-generated ones.</p>
+</div></div></div>
+</div>
+<div class="note note-advanced" title="Zaawansowane">
+<svg height="24" width="24" version="1.1">
+ <g>
+  <path class="yelp-svg-fill" d="m5.4473 12.572c-2.039 0.957-3.4473 3.019-3.4473 5.428v4h20v-4c0-2.406-1.406-4.466-3.441-5.424a8 8 0 0 1 -6.559 3.424 8 8 0 0 1 -6.5527 -3.428z"></path>
+  <path class="yelp-svg-fill" d="m12 3a5 5 0 0 0 -5 5 5 5 0 0 0 5 5 5 5 0 0 0 5 -5 5 5 0 0 0 -5 -5zm0 3a2 2 0 0 1 2 2 2 2 0 0 1 -2 2 2 2 0 0 1 -2 -2 2 2 0 0 1 2 -2z"></path>
+  <path class="yelp-svg-fill" d="m15.312 6 3.688 1v2l-3.4688 1z"></path>
+  <path class="yelp-svg-fill" d="m14 11.312-1 3.688h-2l-1-3.469z"></path>
+  <path class="yelp-svg-fill" d="m10 4.6875 1-3.6875h2l1 3.4688z"></path>
+  <path class="yelp-svg-fill" d="m8.6875 10-3.6875-1v-2l3.4688-1z"></path>
+  <path class="yelp-svg-fill" d="m12.928 4.2435 3.3146-1.9003 1.4142 1.4142-1.7457 3.1599z"></path>
+  <path class="yelp-svg-fill" d="m15.757 8.9281 1.9003 3.3146-1.4142 1.4142-3.1599-1.7457z"></path>
+  <path class="yelp-svg-fill" d="m8.2435 7.0719-1.9004-3.3145 1.4143-1.4143 3.1596 1.7457z"></path>
+  <path class="yelp-svg-fill" d="m11.072 11.757-3.3146 1.9-1.4143-1.414 1.7457-3.1602z"></path>
+ </g>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">
+                Default: Your culture's language codes. For example, on an en-US system the default would be <span class="code">en,en-US,eng</span>
+            </p></div></div></div>
+</div>
+</dd>
+<dt class="terms">Included Auto-Generated Subtitles</dt>
+<dd class="terms">
+<p class="p">Whether or not to included subtitles that are auto-translated to fit the requested subtitle languages.</p>
+<div class="note note-advanced" title="Zaawansowane">
+<svg height="24" width="24" version="1.1">
+ <g>
+  <path class="yelp-svg-fill" d="m5.4473 12.572c-2.039 0.957-3.4473 3.019-3.4473 5.428v4h20v-4c0-2.406-1.406-4.466-3.441-5.424a8 8 0 0 1 -6.559 3.424 8 8 0 0 1 -6.5527 -3.428z"></path>
+  <path class="yelp-svg-fill" d="m12 3a5 5 0 0 0 -5 5 5 5 0 0 0 5 5 5 5 0 0 0 5 -5 5 5 0 0 0 -5 -5zm0 3a2 2 0 0 1 2 2 2 2 0 0 1 -2 2 2 2 0 0 1 -2 -2 2 2 0 0 1 2 -2z"></path>
+  <path class="yelp-svg-fill" d="m15.312 6 3.688 1v2l-3.4688 1z"></path>
+  <path class="yelp-svg-fill" d="m14 11.312-1 3.688h-2l-1-3.469z"></path>
+  <path class="yelp-svg-fill" d="m10 4.6875 1-3.6875h2l1 3.4688z"></path>
+  <path class="yelp-svg-fill" d="m8.6875 10-3.6875-1v-2l3.4688-1z"></path>
+  <path class="yelp-svg-fill" d="m12.928 4.2435 3.3146-1.9003 1.4142 1.4142-1.7457 3.1599z"></path>
+  <path class="yelp-svg-fill" d="m15.757 8.9281 1.9003 3.3146-1.4142 1.4142-3.1599-1.7457z"></path>
+  <path class="yelp-svg-fill" d="m8.2435 7.0719-1.9004-3.3145 1.4143-1.4143 3.1596 1.7457z"></path>
+  <path class="yelp-svg-fill" d="m11.072 11.757-3.3146 1.9-1.4143-1.414 1.7457-3.1602z"></path>
+ </g>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Domyślnie: włączone</p></div></div></div>
 </div>
 </dd>
 <dt class="terms">Używaj aria2</dt>
@@ -144,17 +177,9 @@ document.addEventListener('DOMContentLoaded', function() {
 </svg><div class="inner"><div class="region"><div class="contents"><p class="p">Domyślnie: 20</p></div></div></div>
 </div>
 </dd>
-<dt class="terms">Użyj SponsorBlock dla YouTube</dt>
+<dt class="terms">Limit prędkości pobierania</dt>
 <dd class="terms">
-<p class="p">If enabled, Parabolic will apply the SponsorBlock extension to YouTube downloads.</p>
-<div class="note" title="Uwaga">
-<svg height="24" width="24" version="1.1">
- <g>
-  <path class="yelp-svg-fill" d="m4 3h16c0.554 0 1 0.446 1 1v11h-6v6h-11c-0.554 0-1-0.446-1-1v-16c0-0.554 0.446-1 1-1z"></path>
-  <path class="yelp-svg-fill" d="m17 16h4l-5 5v-4c0-0.554 0.446-1 1-1z"></path>
- </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">SponsorBlock only works on YouTube videos. However, leaving this setting on will not affect downloads from other sites (i.e. not cause them to fail).</p></div></div></div>
-</div>
+<p class="p">Limit prędkości w KiB/s, który dotyczy tylko procesów pobierania z włączoną opcją zaawansowaną <span class="code">Limit prędkości pobierania</span> . Musi być liczbą całkowitą od 512 do 10240.</p>
 <div class="note note-advanced" title="Zaawansowane">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -169,38 +194,7 @@ document.addEventListener('DOMContentLoaded', function() {
   <path class="yelp-svg-fill" d="m8.2435 7.0719-1.9004-3.3145 1.4143-1.4143 3.1596 1.7457z"></path>
   <path class="yelp-svg-fill" d="m11.072 11.757-3.3146 1.9-1.4143-1.414 1.7457-3.1602z"></path>
  </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Domyślnie: wyłączone</p></div></div></div>
-</div>
-</dd>
-<dt class="terms">Języki napisów</dt>
-<dd class="terms">
-<p class="p">A comma-separated list of two-letter, two-letter with region, and three-letter language codes to use when selecting languages of subtitles to download. Only applies when downloading a video with subtitles.</p>
-<div class="note" title="Uwaga">
-<svg height="24" width="24" version="1.1">
- <g>
-  <path class="yelp-svg-fill" d="m4 3h16c0.554 0 1 0.446 1 1v11h-6v6h-11c-0.554 0-1-0.446-1-1v-16c0-0.554 0.446-1 1-1z"></path>
-  <path class="yelp-svg-fill" d="m17 16h4l-5 5v-4c0-0.554 0.446-1 1-1z"></path>
- </g>
-</svg><div class="inner"><div class="region"><div class="contents">
-<p class="p">Different sites can use different language code formats for the same language. You may encounter one of the following three types: two-letter, two-letter with region, or three-letter. For example, "en", "en-US" and "eng" are all used for English. Please specify all valid codes for your languages for the best results. Auto-generated subtitles will also be downloaded if available.</p>
-<p class="p">You can specify "all" instead to download all subtitles, but without auto-generated ones.</p>
-</div></div></div>
-</div>
-<div class="note note-advanced" title="Zaawansowane">
-<svg height="24" width="24" version="1.1">
- <g>
-  <path class="yelp-svg-fill" d="m5.4473 12.572c-2.039 0.957-3.4473 3.019-3.4473 5.428v4h20v-4c0-2.406-1.406-4.466-3.441-5.424a8 8 0 0 1 -6.559 3.424 8 8 0 0 1 -6.5527 -3.428z"></path>
-  <path class="yelp-svg-fill" d="m12 3a5 5 0 0 0 -5 5 5 5 0 0 0 5 5 5 5 0 0 0 5 -5 5 5 0 0 0 -5 -5zm0 3a2 2 0 0 1 2 2 2 2 0 0 1 -2 2 2 2 0 0 1 -2 -2 2 2 0 0 1 2 -2z"></path>
-  <path class="yelp-svg-fill" d="m15.312 6 3.688 1v2l-3.4688 1z"></path>
-  <path class="yelp-svg-fill" d="m14 11.312-1 3.688h-2l-1-3.469z"></path>
-  <path class="yelp-svg-fill" d="m10 4.6875 1-3.6875h2l1 3.4688z"></path>
-  <path class="yelp-svg-fill" d="m8.6875 10-3.6875-1v-2l3.4688-1z"></path>
-  <path class="yelp-svg-fill" d="m12.928 4.2435 3.3146-1.9003 1.4142 1.4142-1.7457 3.1599z"></path>
-  <path class="yelp-svg-fill" d="m15.757 8.9281 1.9003 3.3146-1.4142 1.4142-3.1599-1.7457z"></path>
-  <path class="yelp-svg-fill" d="m8.2435 7.0719-1.9004-3.3145 1.4143-1.4143 3.1596 1.7457z"></path>
-  <path class="yelp-svg-fill" d="m11.072 11.757-3.3146 1.9-1.4143-1.414 1.7457-3.1602z"></path>
- </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Default: Your culture's language codes. For example, on an en-US system the default would be <span class="code">en,en-US,eng</span></p></div></div></div>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Domyślnie: 1024</p></div></div></div>
 </div>
 </dd>
 <dt class="terms">Adres URL serwera proxy</dt>
@@ -234,6 +228,34 @@ document.addEventListener('DOMContentLoaded', function() {
   <path class="yelp-svg-fill" d="m11.072 11.757-3.3146 1.9-1.4143-1.414 1.7457-3.1602z"></path>
  </g>
 </svg><div class="inner"><div class="region"><div class="contents"><p class="p">Domyślnie: Brak wybranego pliku</p></div></div></div>
+</div>
+</dd>
+<dt class="terms">Użyj SponsorBlock dla YouTube</dt>
+<dd class="terms">
+<p class="p">If enabled, Parabolic will apply the SponsorBlock extension to YouTube downloads.</p>
+<div class="note" title="Uwaga">
+<svg height="24" width="24" version="1.1">
+ <g>
+  <path class="yelp-svg-fill" d="m4 3h16c0.554 0 1 0.446 1 1v11h-6v6h-11c-0.554 0-1-0.446-1-1v-16c0-0.554 0.446-1 1-1z"></path>
+  <path class="yelp-svg-fill" d="m17 16h4l-5 5v-4c0-0.554 0.446-1 1-1z"></path>
+ </g>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">SponsorBlock only works on YouTube videos. However, leaving this setting on will not affect downloads from other sites (i.e. not cause them to fail).</p></div></div></div>
+</div>
+<div class="note note-advanced" title="Zaawansowane">
+<svg height="24" width="24" version="1.1">
+ <g>
+  <path class="yelp-svg-fill" d="m5.4473 12.572c-2.039 0.957-3.4473 3.019-3.4473 5.428v4h20v-4c0-2.406-1.406-4.466-3.441-5.424a8 8 0 0 1 -6.559 3.424 8 8 0 0 1 -6.5527 -3.428z"></path>
+  <path class="yelp-svg-fill" d="m12 3a5 5 0 0 0 -5 5 5 5 0 0 0 5 5 5 5 0 0 0 5 -5 5 5 0 0 0 -5 -5zm0 3a2 2 0 0 1 2 2 2 2 0 0 1 -2 2 2 2 0 0 1 -2 -2 2 2 0 0 1 2 -2z"></path>
+  <path class="yelp-svg-fill" d="m15.312 6 3.688 1v2l-3.4688 1z"></path>
+  <path class="yelp-svg-fill" d="m14 11.312-1 3.688h-2l-1-3.469z"></path>
+  <path class="yelp-svg-fill" d="m10 4.6875 1-3.6875h2l1 3.4688z"></path>
+  <path class="yelp-svg-fill" d="m8.6875 10-3.6875-1v-2l3.4688-1z"></path>
+  <path class="yelp-svg-fill" d="m12.928 4.2435 3.3146-1.9003 1.4142 1.4142-1.7457 3.1599z"></path>
+  <path class="yelp-svg-fill" d="m15.757 8.9281 1.9003 3.3146-1.4142 1.4142-3.1599-1.7457z"></path>
+  <path class="yelp-svg-fill" d="m8.2435 7.0719-1.9004-3.3145 1.4143-1.4143 3.1596 1.7457z"></path>
+  <path class="yelp-svg-fill" d="m11.072 11.757-3.3146 1.9-1.4143-1.414 1.7457-3.1602z"></path>
+ </g>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Domyślnie: wyłączone</p></div></div></div>
 </div>
 </dd>
 </dl></div></div></div>
