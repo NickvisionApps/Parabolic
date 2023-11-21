@@ -42,19 +42,7 @@ public partial class Program
         _mainWindow = null;
         _mainWindowController = new MainWindowController(args);
         _mainWindowController.AppInfo.Changelog =
-            @"* Added support for auto-generated subtitles from English
-              * Added the ability to turn off downloading auto-generated subtitles
-              * Added the advanced option to prefer the adv1 codec for video downloads
-              * Added the ""Best"" resolution when downloading videos to allow Parabolic to pick the highest resolution for each video download
-              * A URL can now be passed to Parabolic via the command-line or the freedesktop application open protocol to trigger its validation of startup
-              * Improved the design of the Preferences dialog to allow for better searching of options
-              * The shell notification when a download completes now contains an ""Open File"" button to open the download directly
-              * Fixed an issue where aria's max connections per server preference was allowed to be greater than 16
-              * Fixed an issue where enabling the ""Download Specific Timeframe"" advanced option would cause a crash for certain media downloads
-              * Fixed an issue where stopping all downloads would cause the app to crash
-              * Fixed an issue where some videos were not validated correctly
-              * Updated to GNOME 45 runtime with latest libadwaita design
-              * Updated to .NET 8.0
+            @"* Fixed an issue where some downloads' metadata was no longer downloaded correctly
               * Updated translations (Thanks everyone on Weblate!)";
         _application.OnActivate += OnActivate;
         g_signal_connect_data(_application.Handle, "open", OnOpen, IntPtr.Zero, IntPtr.Zero, 0);
