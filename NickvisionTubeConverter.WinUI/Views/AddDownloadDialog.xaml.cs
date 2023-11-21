@@ -544,6 +544,7 @@ public sealed partial class AddDownloadDialog : ContentDialog
             {
                 CardAudioLanguage.Visibility = Visibility.Visible;
                 CmbAudioLanguage.ItemsSource = _controller.AudioLanguages;
+                CmbAudioLanguage.SelectedIndex = 0;
             }
             ViewStack.CurrentPageName = "Download";
             PrimaryButtonText = _("Download");
