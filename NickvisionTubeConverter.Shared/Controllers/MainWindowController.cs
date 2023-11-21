@@ -23,6 +23,7 @@ namespace NickvisionTubeConverter.Shared.Controllers;
 public class MainWindowController : IDisposable
 {
     private bool _disposed;
+    private bool _started;
     private string? _urlToLaunch;
     private nint _pythonThreadState;
     private Keyring? _keyring;
@@ -86,6 +87,7 @@ public class MainWindowController : IDisposable
     public MainWindowController(string[] args)
     {
         _disposed = false;
+        _started = false;
         if (args.Length > 0)
         {
             UrlToLaunch = args[0];
@@ -243,6 +245,10 @@ public class MainWindowController : IDisposable
     /// <returns>A URL to validate on startup</returns>
     public async Task<string?> StartupAsync()
     {
+        if(_started)
+        {
+            return UrlToLaunch;
+        }
         //Update app
         if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows) && Configuration.Current.AutomaticallyCheckForUpdates)
         {
@@ -322,6 +328,7 @@ public class MainWindowController : IDisposable
             Configuration.Current.AriaMaxConnectionsPerServer = 16;
             Aura.Active.SaveConfig("config");
         }
+        _started = true;
         return UrlToLaunch;
     }
 

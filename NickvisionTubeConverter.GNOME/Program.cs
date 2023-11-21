@@ -22,6 +22,7 @@ public partial class Program
     private static partial string g_file_get_uri(nint file);
 
     private readonly Adw.Application _application;
+    private readonly OpenCallback _openCallback;
     private MainWindow? _mainWindow;
     private MainWindowController _mainWindowController;
 
@@ -39,14 +40,16 @@ public partial class Program
     public Program(string[] args)
     {
         _application = Adw.Application.New("org.nickvision.tubeconverter", Gio.ApplicationFlags.HandlesOpen);
+        _openCallback = OnOpen;
         _mainWindow = null;
         _mainWindowController = new MainWindowController(args);
         _mainWindowController.AppInfo.Changelog =
             @"* Fixed an issue where some downloads' metadata was not downloaded correctly
               * Fixed an issue where audio only downloads did not respect the selected format
+              * Fixed an issue where adding a URL via CLI caused the application to crash
               * Updated translations (Thanks everyone on Weblate!)";
         _application.OnActivate += OnActivate;
-        g_signal_connect_data(_application.Handle, "open", OnOpen, IntPtr.Zero, IntPtr.Zero, 0);
+        g_signal_connect_data(_application.Handle, "open", _openCallback, IntPtr.Zero, IntPtr.Zero, 0);
         if (File.Exists(Path.GetFullPath(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)!) + "/org.nickvision.tubeconverter.gresource"))
         {
             //Load file from program directory, required for `dotnet run`
