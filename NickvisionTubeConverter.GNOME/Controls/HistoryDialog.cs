@@ -112,8 +112,7 @@ public partial class HistoryDialog : Adw.Window
     /// <param name="e">EventArgs</param>
     private void ClearHistory(Gtk.Button sender, EventArgs e)
     {
-        _history.History.Clear();
-        Aura.Active.SaveConfig("downloadHistory");
+        _history.ClearAndSave();
         //Update UI
         _searchEntry.SetVisible(false);
         _viewStack.SetVisibleChildName("no-history");

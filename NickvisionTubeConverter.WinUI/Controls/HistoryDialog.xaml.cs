@@ -101,8 +101,7 @@ public sealed partial class HistoryDialog : ContentDialog
     /// <param name="e">RoutedEventArgs</param>
     private void Clear(object sender, RoutedEventArgs e)
     {
-        _history.History.Clear();
-        Aura.Active.SaveConfig("downloadHistory");
+        _history.ClearAndSave();
         TxtSearch.Visibility = Visibility.Collapsed;
         ViewStack.CurrentPageName = "NoHistory";
         ListHistory.Children.Clear();
