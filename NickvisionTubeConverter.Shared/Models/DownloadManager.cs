@@ -79,7 +79,7 @@ public class DownloadManager
     /// <summary>
     /// The maximum number of active downloads
     /// </summary>
-    public int MaxNumberOfActiveDownloads
+    internal int MaxNumberOfActiveDownloads
     {
         get => _maxNumberOfActiveDownloads;
 
@@ -119,7 +119,7 @@ public class DownloadManager
     /// <summary>
     /// The total download progress
     /// </summary>
-    public double TotalProgress
+    internal double TotalProgress
     {
         get
         {
@@ -139,7 +139,7 @@ public class DownloadManager
     /// <summary>
     /// The total download speed string
     /// </summary>
-    public string TotalSpeedString
+    private string TotalSpeedString
     {
         get
         {
@@ -182,7 +182,7 @@ public class DownloadManager
     /// </summary>
     /// <param name="download">The Download model</param>
     /// <param name="options">The DownloadOptions</param>
-    public void AddDownload(Download download, DownloadOptions options)
+    internal void AddDownload(Download download, DownloadOptions options)
     {
         download.ProgressChanged += Download_ProgressChanged;
         download.Completed += Download_Completed;
@@ -299,7 +299,7 @@ public class DownloadManager
     /// </summary>
     /// <param name="id">The id of the completed download</param>
     /// <returns>The path of the completed download. Null if id is not of a completed download</returns>
-    public string? GetCompletedDownloadPath(Guid id)
+    internal string? GetCompletedDownloadPath(Guid id)
     {
         if(_completed.ContainsKey(id))
         {
