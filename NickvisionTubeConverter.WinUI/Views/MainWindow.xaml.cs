@@ -192,7 +192,7 @@ public sealed partial class MainWindow : Window
                 await disclaimerDialog.ShowAsync();
                 _isContentDialogShowing = false;
                 _controller.ShowDisclaimerOnStartup = !chkShow.IsChecked ?? true;
-                _controller.SaveConfig();
+                _controller.SaveConfiguration();
             }
             _isOpened = true;
         }

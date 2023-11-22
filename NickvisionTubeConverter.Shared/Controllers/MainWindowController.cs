@@ -87,7 +87,7 @@ public class MainWindowController : IDisposable
     public MainWindowController(string[] args)
     {
         Aura.Init("org.nickvision.tubeconverter", "Nickvision Tube Converter");
-        Aura.Active.SetConfig<Configuration>("config");
+        AppInfo.EnglishShortName = "Parabolic";
         //Vars
         _disposed = false;
         _started = false;
@@ -100,20 +100,6 @@ public class MainWindowController : IDisposable
         DownloadManager = new DownloadManager(5);
         IsWindowActive = false;
         //AppInfo
-        AppInfo.EnglishShortName = "Parabolic";
-        if (Directory.Exists($"{UserDirectories.Config}{Path.DirectorySeparatorChar}Nickvision{Path.DirectorySeparatorChar}{AppInfo.Name}"))
-        {
-            // Move config files from older versions and delete old directory
-            try
-            {
-                foreach (var file in Directory.GetFiles($"{UserDirectories.Config}{Path.DirectorySeparatorChar}Nickvision{Path.DirectorySeparatorChar}{AppInfo.Name}"))
-                {
-                    File.Move(file, $"{UserDirectories.ApplicationConfig}{Path.DirectorySeparatorChar}{Path.GetFileName(file)}");
-                }
-            }
-            catch (IOException) { }
-            Directory.Delete($"{UserDirectories.Config}{Path.DirectorySeparatorChar}Nickvision{Path.DirectorySeparatorChar}{AppInfo.Name}", true);
-        }
         AppInfo.Version = "2023.11.1-next";
         AppInfo.ShortName = _("Parabolic");
         AppInfo.Description = _("Download web video and audio");
@@ -328,7 +314,7 @@ public class MainWindowController : IDisposable
         if (Configuration.Current.AriaMaxConnectionsPerServer > 16)
         {
             Configuration.Current.AriaMaxConnectionsPerServer = 16;
-            Aura.Active.SaveConfig("config");
+            Configuration.Current.Save();
         }
         _started = true;
         return UrlToLaunch;
@@ -337,7 +323,7 @@ public class MainWindowController : IDisposable
     /// <summary>
     /// Saves the app's configuration file to disk
     /// </summary>
-    public void SaveConfig() => Aura.Active.SaveConfig("config");
+    public void SaveConfiguration() => Configuration.Current.Save();
 
     /// <summary>
     /// Checks for an application update and notifies the user if one is available

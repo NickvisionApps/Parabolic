@@ -73,7 +73,6 @@ public class DownloadManager
     /// <param name="maxNumberOfActiveDownloads">The maximum number of active downloads</param>
     public DownloadManager(int maxNumberOfActiveDownloads)
     {
-        Aura.Active.SetConfig<DownloadHistory>("downloadHistory");
         _maxNumberOfActiveDownloads = maxNumberOfActiveDownloads;
         _downloading = new Dictionary<Guid, Download>();
         _queued = new Dictionary<Guid, (Download Download, DownloadOptions Options)>();
