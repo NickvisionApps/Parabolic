@@ -208,7 +208,7 @@ public class AddDownloadDialogController
                 m.Title = toggled ? numberTitle + m.Title : m.Title.Substring(numberTitle.Length);
             }
             Configuration.Current.NumberTitles = toggled;
-            Aura.Active.SaveConfig("config");
+            Configuration.Current.Save();
             return true;
         }
         return false;
@@ -281,7 +281,7 @@ public class AddDownloadDialogController
         }
         Configuration.Current.PreviousSubtitleState = subtitles;
         Configuration.Current.PreviousPreferAV1State = options.PreferAV1;
-        Aura.Active.SaveConfig("config");
+        Configuration.Current.Save();
     }
 
     /// <summary>

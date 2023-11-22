@@ -1,5 +1,4 @@
 using Nickvision.Aura;
-using Nickvision.Aura.Configuration;
 using System;
 using System.Collections.Generic;
 
@@ -44,7 +43,7 @@ public class DownloadHistory : ConfigurationBase
     /// <summary>
     /// The download history
     /// </summary>
-    public Dictionary<string, DownloadHistoryItem> History { get; set; }
+    public Dictionary<string, DownloadHistoryItem> History { get; init; }
 
     /// <summary>
     /// Constructs a DownloadHistory
@@ -52,19 +51,5 @@ public class DownloadHistory : ConfigurationBase
     public DownloadHistory()
     {
         History = new Dictionary<string, DownloadHistoryItem>();
-    }
-
-    /// <summary>
-    /// Gets the singleton object
-    /// </summary>
-    public static DownloadHistory Current => (DownloadHistory)Aura.Active.ConfigFiles["downloadHistory"];
-
-    /// <summary>
-    /// Clears the history and saves it to disk
-    /// </summary>
-    public void ClearAndSave()
-    {
-        History.Clear();
-        Aura.Active.SaveConfig("downloadHistory");
     }
 }

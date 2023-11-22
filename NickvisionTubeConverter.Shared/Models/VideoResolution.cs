@@ -48,11 +48,11 @@ public class VideoResolution : IComparable<VideoResolution>, IEquatable<VideoRes
     /// <returns>The parsed VideoResolution, null if error</returns>
     public static VideoResolution? Parse(string? s)
     {
-        if(s == "Best" || s == _("Best"))
+        if (s == "Best" || s == _("Best"))
         {
             return Best;
         }
-        if(string.IsNullOrWhiteSpace(s))
+        if (string.IsNullOrWhiteSpace(s))
         {
             return null;
         }

@@ -192,7 +192,7 @@ public sealed partial class MainWindow : Window
                 await disclaimerDialog.ShowAsync();
                 _isContentDialogShowing = false;
                 _controller.ShowDisclaimerOnStartup = !chkShow.IsChecked ?? true;
-                _controller.SaveConfig();
+                _controller.SaveConfiguration();
             }
             _isOpened = true;
         }
@@ -347,7 +347,7 @@ public sealed partial class MainWindow : Window
     private void ShellNotificationSent(object? sender, ShellNotificationSentEventArgs e)
     {
         var toast = new ToastContentBuilder().AddText(e.Title).AddText(e.Message);
-        if(e.Action == "open-file")
+        if (e.Action == "open-file")
         {
             toast.SetProtocolActivation(new Uri($"file:///{e.ActionParam}"));
         }
@@ -421,7 +421,7 @@ public sealed partial class MainWindow : Window
     /// <param name="e">RoutedEventArgs</param>
     private async void History(object sender, RoutedEventArgs e)
     {
-        var historyDialog = new HistoryDialog(DownloadHistory.Current)
+        var historyDialog = new HistoryDialog(_controller.DownloadManager.History)
         {
             XamlRoot = MainGrid.XamlRoot
         };

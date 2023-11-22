@@ -371,7 +371,7 @@ public partial class MainWindow : Adw.ApplicationWindow
     /// <param name="e">EventArgs</param>
     private void History(Gio.SimpleAction sender, EventArgs e)
     {
-        var historyDialog = new HistoryDialog(this, _controller.AppInfo.ID, DownloadHistory.Current);
+        var historyDialog = new HistoryDialog(this, _controller.AppInfo.ID, _controller.DownloadManager.History);
         historyDialog.DownloadAgainRequested += async (s, ea) =>
         {
             await AddDownloadAsync(ea);

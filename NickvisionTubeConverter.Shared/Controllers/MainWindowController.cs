@@ -86,6 +86,9 @@ public class MainWindowController : IDisposable
     /// </summary>
     public MainWindowController(string[] args)
     {
+        Aura.Init("org.nickvision.tubeconverter", "Nickvision Tube Converter");
+        AppInfo.EnglishShortName = "Parabolic";
+        //Vars
         _disposed = false;
         _started = false;
         if (args.Length > 0)
@@ -96,24 +99,7 @@ public class MainWindowController : IDisposable
         _taskbarStopwatch = new Stopwatch();
         DownloadManager = new DownloadManager(5);
         IsWindowActive = false;
-        Aura.Init("org.nickvision.tubeconverter", "Nickvision Tube Converter");
-        AppInfo.EnglishShortName = "Parabolic";
-        if (Directory.Exists($"{UserDirectories.Config}{Path.DirectorySeparatorChar}Nickvision{Path.DirectorySeparatorChar}{AppInfo.Name}"))
-        {
-            // Move config files from older versions and delete old directory
-            try
-            {
-                foreach (var file in Directory.GetFiles($"{UserDirectories.Config}{Path.DirectorySeparatorChar}Nickvision{Path.DirectorySeparatorChar}{AppInfo.Name}"))
-                {
-                    File.Move(file, $"{UserDirectories.ApplicationConfig}{Path.DirectorySeparatorChar}{Path.GetFileName(file)}");
-                }
-            }
-            catch (IOException) { }
-            Directory.Delete($"{UserDirectories.Config}{Path.DirectorySeparatorChar}Nickvision{Path.DirectorySeparatorChar}{AppInfo.Name}", true);
-        }
-        Aura.Active.SetConfig<Configuration>("config");
-        Configuration.Current.Saved += ConfigurationSaved;
-        Aura.Active.SetConfig<DownloadHistory>("downloadHistory");
+        //AppInfo
         AppInfo.Version = "2023.11.1-next";
         AppInfo.ShortName = _("Parabolic");
         AppInfo.Description = _("Download web video and audio");
@@ -129,6 +115,8 @@ public class MainWindowController : IDisposable
         AppInfo.Designers[_("DaPigGuy")] = new Uri("https://github.com/DaPigGuy");
         AppInfo.Artists[_("David Lapshin")] = new Uri("https://github.com/daudix-UFO");
         AppInfo.TranslatorCredits = _("translator-credits");
+        //Events
+        Configuration.Current.Saved += ConfigurationSaved;
         DownloadManager.DownloadCompleted += DownloadCompleted;
     }
 
@@ -245,7 +233,7 @@ public class MainWindowController : IDisposable
     /// <returns>A URL to validate on startup</returns>
     public async Task<string?> StartupAsync()
     {
-        if(_started)
+        if (_started)
         {
             return UrlToLaunch;
         }
@@ -326,7 +314,7 @@ public class MainWindowController : IDisposable
         if (Configuration.Current.AriaMaxConnectionsPerServer > 16)
         {
             Configuration.Current.AriaMaxConnectionsPerServer = 16;
-            Aura.Active.SaveConfig("config");
+            Configuration.Current.Save();
         }
         _started = true;
         return UrlToLaunch;
@@ -335,7 +323,7 @@ public class MainWindowController : IDisposable
     /// <summary>
     /// Saves the app's configuration file to disk
     /// </summary>
-    public void SaveConfig() => Aura.Active.SaveConfig("config");
+    public void SaveConfiguration() => Configuration.Current.Save();
 
     /// <summary>
     /// Checks for an application update and notifies the user if one is available
@@ -433,7 +421,7 @@ public class MainWindowController : IDisposable
     /// <param name="e">(Guid Id, bool Successful, string Filename, bool ShowNotification)</param>
     private void DownloadCompleted(object? sender, (Guid Id, bool Successful, string Filename, bool ShowNotification) e)
     {
-        if(e.ShowNotification && !IsWindowActive)
+        if (e.ShowNotification && !IsWindowActive)
         {
             if (Configuration.Current.CompletedNotificationPreference == NotificationPreference.ForEach)
             {
