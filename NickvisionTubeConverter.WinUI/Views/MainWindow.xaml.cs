@@ -421,7 +421,7 @@ public sealed partial class MainWindow : Window
     /// <param name="e">RoutedEventArgs</param>
     private async void History(object sender, RoutedEventArgs e)
     {
-        var historyDialog = new HistoryDialog(DownloadHistory.Current)
+        var historyDialog = new HistoryDialog(_controller.DownloadManager.History)
         {
             XamlRoot = MainGrid.XamlRoot
         };

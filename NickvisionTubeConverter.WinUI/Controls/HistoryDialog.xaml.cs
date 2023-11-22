@@ -1,7 +1,6 @@
 using CommunityToolkit.WinUI.Controls;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
-using Nickvision.Aura;
 using NickvisionTubeConverter.Shared.Models;
 using System;
 using System.IO;
@@ -101,7 +100,8 @@ public sealed partial class HistoryDialog : ContentDialog
     /// <param name="e">RoutedEventArgs</param>
     private void Clear(object sender, RoutedEventArgs e)
     {
-        _history.ClearAndSave();
+        _history.Clear();
+        _history.Save();
         TxtSearch.Visibility = Visibility.Collapsed;
         ViewStack.CurrentPageName = "NoHistory";
         ListHistory.Children.Clear();

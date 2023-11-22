@@ -86,6 +86,9 @@ public class MainWindowController : IDisposable
     /// </summary>
     public MainWindowController(string[] args)
     {
+        Aura.Init("org.nickvision.tubeconverter", "Nickvision Tube Converter");
+        Aura.Active.SetConfig<Configuration>("config");
+        //Vars
         _disposed = false;
         _started = false;
         if (args.Length > 0)
@@ -96,7 +99,7 @@ public class MainWindowController : IDisposable
         _taskbarStopwatch = new Stopwatch();
         DownloadManager = new DownloadManager(5);
         IsWindowActive = false;
-        Aura.Init("org.nickvision.tubeconverter", "Nickvision Tube Converter");
+        //AppInfo
         AppInfo.EnglishShortName = "Parabolic";
         if (Directory.Exists($"{UserDirectories.Config}{Path.DirectorySeparatorChar}Nickvision{Path.DirectorySeparatorChar}{AppInfo.Name}"))
         {
@@ -111,9 +114,6 @@ public class MainWindowController : IDisposable
             catch (IOException) { }
             Directory.Delete($"{UserDirectories.Config}{Path.DirectorySeparatorChar}Nickvision{Path.DirectorySeparatorChar}{AppInfo.Name}", true);
         }
-        Aura.Active.SetConfig<Configuration>("config");
-        Configuration.Current.Saved += ConfigurationSaved;
-        Aura.Active.SetConfig<DownloadHistory>("downloadHistory");
         AppInfo.Version = "2023.11.1-next";
         AppInfo.ShortName = _("Parabolic");
         AppInfo.Description = _("Download web video and audio");
@@ -129,6 +129,8 @@ public class MainWindowController : IDisposable
         AppInfo.Designers[_("DaPigGuy")] = new Uri("https://github.com/DaPigGuy");
         AppInfo.Artists[_("David Lapshin")] = new Uri("https://github.com/daudix-UFO");
         AppInfo.TranslatorCredits = _("translator-credits");
+        //Events
+        Configuration.Current.Saved += ConfigurationSaved;
         DownloadManager.DownloadCompleted += DownloadCompleted;
     }
 

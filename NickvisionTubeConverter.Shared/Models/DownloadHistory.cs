@@ -57,14 +57,15 @@ public class DownloadHistory : ConfigurationBase
     /// <summary>
     /// Gets the singleton object
     /// </summary>
-    public static DownloadHistory Current => (DownloadHistory)Aura.Active.ConfigFiles["downloadHistory"];
+    internal static DownloadHistory Current => (DownloadHistory)Aura.Active.ConfigFiles["downloadHistory"];
 
     /// <summary>
-    /// Clears the history and saves it to disk
+    /// Clears the history
     /// </summary>
-    public void ClearAndSave()
-    {
-        History.Clear();
-        Aura.Active.SaveConfig("downloadHistory");
-    }
+    public void Clear() => History.Clear();
+
+    /// <summary>
+    /// Saves the history to disk
+    /// </summary>
+    public void Save() => Aura.Active.SaveConfig("downloadHistory");
 }

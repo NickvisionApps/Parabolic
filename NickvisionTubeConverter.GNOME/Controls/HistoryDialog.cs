@@ -1,4 +1,3 @@
-using Nickvision.Aura;
 using NickvisionTubeConverter.GNOME.Helpers;
 using NickvisionTubeConverter.Shared.Models;
 using System;
@@ -112,7 +111,8 @@ public partial class HistoryDialog : Adw.Window
     /// <param name="e">EventArgs</param>
     private void ClearHistory(Gtk.Button sender, EventArgs e)
     {
-        _history.ClearAndSave();
+        _history.Clear();
+        _history.Save();
         //Update UI
         _searchEntry.SetVisible(false);
         _viewStack.SetVisibleChildName("no-history");

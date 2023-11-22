@@ -21,6 +21,11 @@ public class DownloadManager
     private Dictionary<Guid, (bool WasRetried, DownloadOptions Options)> _autoRetry;
 
     /// <summary>
+    /// The DownloadHistory
+    /// </summary>
+    public DownloadHistory History { get; init; }
+
+    /// <summary>
     /// Whether or not any downloads are running
     /// </summary>
     public bool AreDownloadsRunning => _downloading.Count > 0;
@@ -68,12 +73,14 @@ public class DownloadManager
     /// <param name="maxNumberOfActiveDownloads">The maximum number of active downloads</param>
     public DownloadManager(int maxNumberOfActiveDownloads)
     {
+        Aura.Active.SetConfig<DownloadHistory>("downloadHistory");
         _maxNumberOfActiveDownloads = maxNumberOfActiveDownloads;
         _downloading = new Dictionary<Guid, Download>();
         _queued = new Dictionary<Guid, (Download Download, DownloadOptions Options)>();
         _completed = new Dictionary<Guid, Download>();
         _progressStates = new Dictionary<Guid, DownloadProgressState>();
         _autoRetry = new Dictionary<Guid, (bool WasRetried, DownloadOptions options)>();
+        History = DownloadHistory.Current;
     }
 
     /// <summary>
@@ -201,13 +208,12 @@ public class DownloadManager
             _queued.Add(download.Id, (download, options));
             DownloadAdded?.Invoke(this, (download.Id, download.Filename, download.SaveFolder, false));
         }
-        var history = (DownloadHistory)Aura.Active.ConfigFiles["downloadHistory"];
-        history.History[download.MediaUrl] = new DownloadHistoryItem(download.MediaUrl)
+        History.History[download.MediaUrl] = new DownloadHistoryItem(download.MediaUrl)
         {
             Title = Path.GetFileNameWithoutExtension(download.Filename),
             Path = $"{download.SaveFolder}{Path.DirectorySeparatorChar}{download.Filename}"
         };
-        Aura.Active.SaveConfig("downloadHistory");
+        History.Save();
     }
 
     /// <summary>
