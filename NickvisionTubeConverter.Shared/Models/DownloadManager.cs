@@ -79,7 +79,7 @@ public class DownloadManager
         _completed = new Dictionary<Guid, Download>();
         _progressStates = new Dictionary<Guid, DownloadProgressState>();
         _autoRetry = new Dictionary<Guid, (bool WasRetried, DownloadOptions options)>();
-        History = DownloadHistory.Current;
+        History = Aura.Active.GetConfig<DownloadHistory>("downloadHistory");
     }
 
     /// <summary>

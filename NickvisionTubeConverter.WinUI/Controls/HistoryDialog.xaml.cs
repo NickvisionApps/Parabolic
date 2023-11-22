@@ -100,7 +100,7 @@ public sealed partial class HistoryDialog : ContentDialog
     /// <param name="e">RoutedEventArgs</param>
     private void Clear(object sender, RoutedEventArgs e)
     {
-        _history.Clear();
+        _history.History.Clear();
         _history.Save();
         TxtSearch.Visibility = Visibility.Collapsed;
         ViewStack.CurrentPageName = "NoHistory";

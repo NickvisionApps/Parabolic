@@ -43,7 +43,7 @@ public class DownloadHistory : ConfigurationBase
     /// <summary>
     /// The download history
     /// </summary>
-    public Dictionary<string, DownloadHistoryItem> History { get; set; }
+    public Dictionary<string, DownloadHistoryItem> History { get; init; }
 
     /// <summary>
     /// Constructs a DownloadHistory
@@ -52,14 +52,4 @@ public class DownloadHistory : ConfigurationBase
     {
         History = new Dictionary<string, DownloadHistoryItem>();
     }
-
-    /// <summary>
-    /// Gets the singleton object
-    /// </summary>
-    internal static DownloadHistory Current => Aura.Active.GetConfig<DownloadHistory>("downloadHistory");
-
-    /// <summary>
-    /// Clears the history
-    /// </summary>
-    public void Clear() => History.Clear();
 }
