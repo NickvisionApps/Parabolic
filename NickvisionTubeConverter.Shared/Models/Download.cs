@@ -336,6 +336,12 @@ public class Download
                         }
                     }
                 }
+                //SponsorBlock for Youtube
+                if (options.YouTubeSponsorBlock)
+                {
+                    postProcessors.Add(new Dictionary<string, dynamic>() { { "key", "SponsorBlock" }, { "when", "after_filter" }, { "categories", new List<string>() { "sponsor", "intro", "outro", "selfpromo", "preview", "filler", "interaction", "music_offtopic" } } });
+                    postProcessors.Add(new Dictionary<string, dynamic>() { { "key", "ModifyChapters" }, { "remove_sponsor_segments", new List<string>() { "sponsor", "intro", "outro", "selfpromo", "preview", "filler", "interaction", "music_offtopic" } } });
+                }
                 //Split Chapters
                 if (_advancedOptions.SplitChapters)
                 {
@@ -372,11 +378,6 @@ public class Download
                 else if (options.EmbedChapters)
                 {
                     postProcessors.Add(new Dictionary<string, dynamic>() { { "key", "TCMetadata" }, { "add_chapters", true } });
-                }
-                //SponsorBlock for Youtube
-                if (options.YouTubeSponsorBlock)
-                {
-                    postProcessors.Add(new Dictionary<string, dynamic>() { { "key", "SponsorBlock" }, { "when", "after_filter" }, { "categories", new List<string>() { "sponsor", "intro", "outro", "selfpromo", "preview", "filler", "interaction", "music_offtopic" } } });
                 }
                 //Postprocessors
                 if (postProcessors.Count != 0)

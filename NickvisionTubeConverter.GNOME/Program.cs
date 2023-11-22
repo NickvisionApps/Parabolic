@@ -44,7 +44,8 @@ public partial class Program
         _mainWindow = null;
         _mainWindowController = new MainWindowController(args);
         _mainWindowController.AppInfo.Changelog =
-            @"* Fixed an issue where some downloads' metadata was not downloaded correctly
+            @"* Fixed an issue where SponsorBlock was not working
+              * Fixed an issue where some downloads' metadata was not downloaded correctly
               * Fixed an issue where audio only downloads did not respect the selected format
               * Fixed an issue where adding a URL via CLI caused the application to crash
               * Updated translations (Thanks everyone on Weblate!)";
