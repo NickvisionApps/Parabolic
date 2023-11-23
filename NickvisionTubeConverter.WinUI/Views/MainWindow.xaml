@@ -114,7 +114,7 @@
                     </MenuBarItem>
 
                     <MenuBarItem x:Name="MenuDownloader">
-                        <MenuFlyoutItem x:Name="MenuStopAllDownloads" IsEnabled="False" Click="StopAllDownloads">
+                        <MenuFlyoutItem x:Name="MenuStopAllDownloads" Click="StopAllDownloads">
                             <MenuFlyoutItem.Icon>
                                 <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE15B;"/>
                             </MenuFlyoutItem.Icon>
@@ -126,7 +126,7 @@
 
                         <MenuFlyoutSeparator/>
 
-                        <MenuFlyoutItem x:Name="MenuClearQueuedDownloads" IsEnabled="False" Click="ClearQueuedDownloads">
+                        <MenuFlyoutItem x:Name="MenuClearQueuedDownloads" Click="ClearQueuedDownloads">
                             <MenuFlyoutItem.Icon>
                                 <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE107;"/>
                             </MenuFlyoutItem.Icon>
@@ -138,7 +138,7 @@
 
                         <MenuFlyoutSeparator/>
 
-                        <MenuFlyoutItem x:Name="MenuRetryFailedDownloads" IsEnabled="False" Click="RetryFailedDownloads">
+                        <MenuFlyoutItem x:Name="MenuRetryFailedDownloads" Click="RetryFailedDownloads">
                             <MenuFlyoutItem.Icon>
                                 <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE149;"/>
                             </MenuFlyoutItem.Icon>
@@ -148,7 +148,7 @@
                             </MenuFlyoutItem.KeyboardAccelerators>
                         </MenuFlyoutItem>
 
-                        <MenuFlyoutItem x:Name="MenuClearCompletedDownloads" IsEnabled="False" Click="ClearCompletedDownloads">
+                        <MenuFlyoutItem x:Name="MenuClearCompletedDownloads" Click="ClearCompletedDownloads">
                             <MenuFlyoutItem.Icon>
                                 <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE107;"/>
                             </MenuFlyoutItem.Icon>
@@ -281,7 +281,7 @@
                                             
                                             <Border Grid.Row="1" HorizontalAlignment="Stretch" Background="{ThemeResource CardBackgroundFillColorDefaultBrush}" BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}" BorderThickness="1" CornerRadius="8">
                                                 <CommandBar HorizontalAlignment="Left" DefaultLabelPosition="Right">
-                                                    <AppBarButton x:Name="BtnStopAllDownloads" Icon="Stop" IsEnabled="False" Click="StopAllDownloads"/>
+                                                    <AppBarButton x:Name="BtnStopAllDownloads" Icon="Stop" Click="StopAllDownloads"/>
                                                 </CommandBar>
                                             </Border>
 

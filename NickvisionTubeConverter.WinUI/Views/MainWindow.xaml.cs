@@ -232,6 +232,7 @@ public sealed partial class MainWindow : Window
         {
             _powerRequest?.Close();
             _powerRequest?.Dispose();
+            TrayIcon.ContextFlyout.Hide();
             TrayIcon.Dispose();
             _controller.Dispose();
         }
@@ -632,8 +633,6 @@ public sealed partial class MainWindow : Window
     /// </summary>
     private void DownloadUIUpdate()
     {
-        MenuStopAllDownloads.IsEnabled = _controller.DownloadManager.RemainingDownloadsCount > 0;
-        BtnStopAllDownloads.IsEnabled = _controller.DownloadManager.RemainingDownloadsCount > 0;
         ViewStackDownloading.CurrentPageName = ListDownloading.Children.Count > 0 ? "Has" : "No";
         ViewStackQueued.CurrentPageName = ListQueued.Children.Count > 0 ? "Has" : "No";
         ViewStackCompleted.CurrentPageName = ListCompleted.Children.Count > 0 ? "Has" : "No";
