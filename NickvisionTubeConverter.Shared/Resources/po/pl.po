@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-11-20 21:58-0500\n"
-"PO-Revision-Date: 2023-11-21 17:08+0000\n"
+"PO-Revision-Date: 2023-11-24 16:24+0000\n"
 "Last-Translator: Dominik Gęgotek <ioutora@disroot.org>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/"
 "nickvision-tube-converter/app/pl/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 5.2\n"
+"X-Generator: Weblate 5.2.1-rc\n"
 
 #: ../../../Controllers/MainWindowController.cs:433
 #, csharp-format
@@ -292,9 +292,8 @@ msgid "Copy to Clipboard"
 msgstr "Skopiuj do schowka"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Controls/AboutDialog.xaml.cs:32
-#, fuzzy
 msgid "Credits"
-msgstr "Dane logowania"
+msgstr "Zasługi"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:104
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:361
@@ -344,10 +343,20 @@ msgid ""
 "Translators:\n"
 "{3}"
 msgstr ""
+"Programiści:\n"
+"{0}\n"
+"\n"
+"Projektanci:\n"
+"{1}\n"
+"\n"
+"Artyści:\n"
+"{2}\n"
+"\n"
+"Tłumacze:\n"
+"{3}"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:66
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:129
-#, fuzzy
 msgid ""
 "Different sites can use different language code formats for the same "
 "language. You may encounter one of the following three types: two-letter, "
@@ -359,14 +368,15 @@ msgid ""
 "You can specify \"all\" instead to download all subtitles, including auto-"
 "generated ones. To exclude auto-generated ones, turn off the option below."
 msgstr ""
-"Strony internetowe używają dwuliterowych kodów języka, dwuliterowych kodów "
-"języka z regionem i trzyliterowych kodów języka. Na przykład, dla języka "
-"angielskiego są to \"en\", \"en-US\" i \"eng\".\n"
+"Różne strony używają różnych formatów kodów języka. Można spotkać się z "
+"trzema typami: dwuliterowymi, dwuliterowymi z regionem i trzyliterowymi. Na "
+"przykład, dla języka angielskiego są to \"en\", \"en-US\" i \"eng\".\n"
 "Aby uzyskać najlepsze wyniki, należy podać wszystkie poprawne kody wybranych "
 "języków. Napisy generowane automatycznie również zostaną pobrane.\n"
 "\n"
-"Można wpisać \"all\" zamiast kodów, żeby pobrać wszystkie napisy bez napisów "
-"generowanych automatycznie."
+"Można wpisać \"all\" zamiast kodów, żeby pobrać wszystkie napisy razem z "
+"tymi wygenerowanymi automatycznie. Aby wykluczyć napisy generowane "
+"automatycznie, wyłącz opcję poniżej."
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringDialog.xaml.cs:42
 #: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:132
@@ -400,19 +410,19 @@ msgstr "Nie zezwalaj na konwersję"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:171
 msgid "Disclaimer"
-msgstr ""
+msgstr "Zastrzeżenie"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:98
 msgid "Discussions"
-msgstr ""
+msgstr "Dyskusje"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:95
 msgid "Documentation"
-msgstr ""
+msgstr "Dokumentacja"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:167
 msgid "Don't show this message again"
-msgstr ""
+msgstr "Nie pokazuj tej wiadomości ponownie"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:549
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:194
@@ -450,7 +460,6 @@ msgstr "Pobierz określony fragment"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:59
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:130
-#, fuzzy
 msgid "Download Subtitles"
 msgstr "Pobierz napisy"
 
@@ -486,15 +495,13 @@ msgstr "Pobieranie {0:f2}% ({1})"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:170
 #: ../../../../NickvisionTubeConverter.WinUI/Controls/DownloadRow.xaml.cs:120
-#, fuzzy
 msgid "Downloading..."
-msgstr "Pobierane"
+msgstr "Pobieranie..."
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:58
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:64
-#, fuzzy
 msgid "Downloads"
-msgstr "Pobierz"
+msgstr "Pobrane"
 
 #: ../../../Controllers/MainWindowController.cs:437
 msgid "Downloads Finished"
