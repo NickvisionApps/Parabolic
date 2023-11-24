@@ -100,7 +100,7 @@ public class MainWindowController : IDisposable
         DownloadManager = new DownloadManager(5);
         IsWindowActive = false;
         //AppInfo
-        AppInfo.Version = "2023.11.1-next";
+        AppInfo.Version = "2023.11.1";
         AppInfo.ShortName = _("Parabolic");
         AppInfo.Description = _("Download web video and audio");
         AppInfo.SourceRepo = new Uri("https://github.com/NickvisionApps/Parabolic");
