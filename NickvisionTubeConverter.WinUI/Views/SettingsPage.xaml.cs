@@ -1,11 +1,17 @@
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.Windows.AppLifecycle;
+using Nickvision.Aura;
 using NickvisionTubeConverter.Shared.Controllers;
 using NickvisionTubeConverter.Shared.Models;
+using Python.Runtime;
 using System;
+using System.Diagnostics;
+using System.Globalization;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
+using Windows.ApplicationModel.DataTransfer;
 using Windows.Storage.Pickers;
 using Windows.System;
 using static Nickvision.Aura.Localization.Gettext;
@@ -13,27 +19,27 @@ using static Nickvision.Aura.Localization.Gettext;
 namespace NickvisionTubeConverter.WinUI.Views;
 
 /// <summary>
-/// A dialog for managing application settings
+/// A page for managing application settings
 /// </summary>
-public sealed partial class SettingsDialog : ContentDialog
+public sealed partial class SettingsPage : UserControl
 {
     private readonly PreferencesViewController _controller;
     private readonly Action<object> _initializeWithWindow;
+    private bool _constructing;
 
     /// <summary>
-    /// Constructs a SettingsDialog
+    /// Constructs a SettingsPage
     /// </summary>
     /// <param name="controller">PreferencesViewController</param>
     /// <param name="initializeWithWindow">Action</param>
-    public SettingsDialog(PreferencesViewController controller, Action<object> initializeWithWindow)
+    public SettingsPage(PreferencesViewController controller, Action<object> initializeWithWindow)
     {
         InitializeComponent();
         _controller = controller;
         _initializeWithWindow = initializeWithWindow;
+        _constructing = true;
         //Localize Strings
-        Title = _("Settings");
-        PrimaryButtonText = _("Apply");
-        CloseButtonText = _("Cancel");
+        LblTitle.Text = _("Settings");
         LblUserInterface.Text = _("User Interface");
         CardTheme.Header = _("Theme");
         CardTheme.Description = _("An application restart is required to change the theme.");
@@ -116,6 +122,10 @@ public sealed partial class SettingsDialog : ContentDialog
         CardEmbedSubtitle.Description = _("If disabled or if embedding fails, downloaded subtitles will be saved to a separate file instead");
         TglEmbedSubtitle.OnContent = _("On");
         TglEmbedSubtitle.OffContent = _("Off");
+        LblAbout.Text = _("About");
+        BtnCopyDebugInformation.Content = _("Copy Debug Information");
+        CardChangelog.Header = _("Changelog");
+        CardCredits.Header = _("Credits");
         //Load Config
         CmbTheme.SelectedIndex = (int)_controller.Theme;
         TglAutomaticallyCheckForUpdates.IsOn = _controller.AutomaticallyCheckForUpdates;
@@ -139,89 +149,86 @@ public sealed partial class SettingsDialog : ContentDialog
         TglRemoveSourceData.IsOn = _controller.RemoveSourceData;
         TglEmbedChapters.IsOn = _controller.EmbedChapters;
         TglEmbedSubtitle.IsOn = _controller.EmbedSubtitle;
+        //Load About
+        CardAbout.Header = _controller.AppInfo.ShortName;
+        CardAbout.Description = _controller.AppInfo.Description;
+        LblVersion.Text = _controller.AppInfo.Version;
+        CardChangelog.Description = _controller.AppInfo.Changelog;
+        CardCredits.Description = _("Developers:\n{0}\n\nDesigners:\n{1}\n\nArtists:\n{2}\n\nTranslators:\n{3}", string.Join("\n", _controller.AppInfo.Developers.Keys), string.Join("\n", _controller.AppInfo.Designers.Keys), string.Join("\n", _controller.AppInfo.Artists.Keys), string.Join("\n", _controller.AppInfo.TranslatorNames.Where(x => x != "translator-credits")));
+        _constructing = false;
     }
 
     /// <summary>
-    /// Shows the dialog
+    /// Applies the changes to the app's configuration
     /// </summary>
-    /// <returns>ContentDialogResult</returns>
-    public new async Task<ContentDialogResult> ShowAsync()
+    private async Task ApplyChangesAsync()
     {
-        var result = await base.ShowAsync();
-        if (result == ContentDialogResult.Primary)
+        if (_constructing)
         {
-            var needsRestart = false;
-            if (_controller.Theme != (Theme)CmbTheme.SelectedIndex)
+            return;
+        }
+        var needsRestart = false;
+        if (_controller.Theme != (Theme)CmbTheme.SelectedIndex)
+        {
+            _controller.Theme = (Theme)CmbTheme.SelectedIndex;
+            needsRestart = true;
+        }
+        _controller.AutomaticallyCheckForUpdates = TglAutomaticallyCheckForUpdates.IsOn;
+        _controller.CompletedNotificationPreference = (NotificationPreference)CmbCompletedNotification.SelectedIndex;
+        _controller.PreventSuspendWhenDownloading = TglSuspend.IsOn;
+        _controller.RunInBackground = TglBackground.IsOn;
+        _controller.OverwriteExistingFiles = TglOverwrite.IsOn;
+        _controller.MaxNumberOfActiveDownloads = (int)TxtMaxNumberOfActiveDownloads.Value;
+        _controller.IncludeAutoGenertedSubtitles = TglAutoGenerated.IsOn;
+        _controller.UseAria = TglUseAria.IsOn;
+        _controller.AriaMaxConnectionsPerServer = (int)TxtAriaMaxConnectionsPerServer.Value;
+        _controller.AriaMinSplitSize = (int)TxtAriaMinSplitSize.Value;
+        _controller.SpeedLimit = (uint)TxtSpeedLimit.Value;
+        _controller.ProxyUrl = TxtProxy.Text;
+        _controller.YouTubeSponsorBlock = TglSponsorBlock.IsOn;
+        _controller.DisallowConversions = TglDisallowConversions.IsOn;
+        _controller.EmbedMetadata = TglEmbedMetadata.IsOn;
+        _controller.CropAudioThumbnails = TglCropAudioThumbnail.IsOn;
+        _controller.RemoveSourceData = TglRemoveSourceData.IsOn;
+        _controller.EmbedChapters = TglEmbedChapters.IsOn;
+        _controller.EmbedSubtitle = TglEmbedSubtitle.IsOn;
+        _controller.SaveConfiguration();
+        if (needsRestart)
+        {
+            var restartDialog = new ContentDialog()
             {
-                _controller.Theme = (Theme)CmbTheme.SelectedIndex;
-                needsRestart = true;
-            }
-            _controller.AutomaticallyCheckForUpdates = TglAutomaticallyCheckForUpdates.IsOn;
-            _controller.CompletedNotificationPreference = (NotificationPreference)CmbCompletedNotification.SelectedIndex;
-            _controller.PreventSuspendWhenDownloading = TglSuspend.IsOn;
-            _controller.RunInBackground = TglBackground.IsOn;
-            _controller.OverwriteExistingFiles = TglOverwrite.IsOn;
-            _controller.MaxNumberOfActiveDownloads = (int)TxtMaxNumberOfActiveDownloads.Value;
-            _controller.IncludeAutoGenertedSubtitles = TglAutoGenerated.IsOn;
-            _controller.UseAria = TglUseAria.IsOn;
-            _controller.AriaMaxConnectionsPerServer = (int)TxtAriaMaxConnectionsPerServer.Value;
-            _controller.AriaMinSplitSize = (int)TxtAriaMinSplitSize.Value;
-            _controller.SpeedLimit = (uint)TxtSpeedLimit.Value;
-            _controller.ProxyUrl = TxtProxy.Text;
-            _controller.YouTubeSponsorBlock = TglSponsorBlock.IsOn;
-            _controller.DisallowConversions = TglDisallowConversions.IsOn;
-            _controller.EmbedMetadata = TglEmbedMetadata.IsOn;
-            _controller.CropAudioThumbnails = TglCropAudioThumbnail.IsOn;
-            _controller.RemoveSourceData = TglRemoveSourceData.IsOn;
-            _controller.EmbedChapters = TglEmbedChapters.IsOn;
-            _controller.EmbedSubtitle = TglEmbedSubtitle.IsOn;
-            _controller.SaveConfiguration();
-            if (needsRestart)
+                Title = _("Restart To Apply Theme?"),
+                Content = _("Would you like to restart {0} to apply the new theme?\nAny unsaved work will be lost.", _controller.AppInfo.ShortName),
+                PrimaryButtonText = _("Yes"),
+                CloseButtonText = _("No"),
+                DefaultButton = ContentDialogButton.Primary,
+                XamlRoot = XamlRoot
+            };
+            var resultRestart = await restartDialog.ShowAsync();
+            if (resultRestart == ContentDialogResult.Primary)
             {
-                var restartDialog = new ContentDialog()
-                {
-                    Title = _("Restart To Apply Theme?"),
-                    Content = _("Would you like to restart {0} to apply the new theme?\nAny unsaved work will be lost.", _controller.AppInfo.ShortName),
-                    PrimaryButtonText = _("Yes"),
-                    CloseButtonText = _("No"),
-                    DefaultButton = ContentDialogButton.Primary,
-                    XamlRoot = XamlRoot
-                };
-                var resultRestart = await restartDialog.ShowAsync();
-                if (resultRestart == ContentDialogResult.Primary)
-                {
-                    AppInstance.Restart("Apply new theme");
-                }
+                AppInstance.Restart("Apply new theme");
             }
         }
-        return result;
     }
-
-    /// <summary>
-    /// Occurs when the ScrollViewer's size is changed
-    /// </summary>
-    /// <param name="sender">object</param>
-    /// <param name="e">SizeChangedEventArgs</param>
-    private void ScrollViewer_SizeChanged(object sender, SizeChangedEventArgs e) => StackPanel.Margin = new Thickness(0, 0, ScrollViewer.ComputedVerticalScrollBarVisibility == Visibility.Visible ? 14 : 0, 0);
 
     /// <summary>
     /// Occurs when the TxtSubtitleLangs' text is changed
     /// </summary>
     /// <param name="sender">object</param>
     /// <param name="e">TextChangedEventArgs</param>
-    private void TxtSubtitleLangs_TextChanged(object sender, TextChangedEventArgs e)
+    private async void TxtSubtitleLangs_TextChanged(object sender, TextChangedEventArgs e)
     {
         CardSubtitleLangs.Header = _("Subtitle Languages");
         var valid = _controller.ValidateSubtitleLangs(TxtSubtitleLangs.Text);
         if (valid)
         {
             _controller.SubtitleLangs = TxtSubtitleLangs.Text;
-            IsPrimaryButtonEnabled = true;
+            await ApplyChangesAsync();
         }
         else
         {
             CardSubtitleLangs.Header = _("Subtitle Languages (Invalid)");
-            IsPrimaryButtonEnabled = false;
         }
     }
 
@@ -255,6 +262,7 @@ public sealed partial class SettingsDialog : ContentDialog
         if (file != null)
         {
             _controller.CookiesPath = file.Path;
+            _controller.SaveConfiguration();
             LblCookiesFile.Text = file.Path;
         }
     }
@@ -267,6 +275,7 @@ public sealed partial class SettingsDialog : ContentDialog
     private void UnsetCookiesFile(object sender, RoutedEventArgs e)
     {
         _controller.CookiesPath = "";
+        _controller.SaveConfiguration();
         LblCookiesFile.Text = _("No File Selected");
     }
 
@@ -290,4 +299,126 @@ public sealed partial class SettingsDialog : ContentDialog
     /// <param name="sender">object</param>
     /// <param name="e">RoutedEventArgs</param>
     private async void SponsorBlockInfo(object sender, RoutedEventArgs e) => await Launcher.LaunchUriAsync(new Uri(_controller.SponsorBlockInfoUrl));
+
+    /// <summary>
+    /// Occurs when a selection is changed and saves the configuration
+    /// </summary>
+    /// <param name="sender">object</param>
+    /// <param name="e">SelectionChangedEventArgs</param>
+    private async void SaveSelectionChanged(object sender, SelectionChangedEventArgs e) => await ApplyChangesAsync();
+
+    /// <summary>
+    /// Occurs when a routed is changed and saves the configuration
+    /// </summary>
+    /// <param name="sender">object</param>
+    /// <param name="e">RoutedEventArgs</param>
+    private async void SaveRoutedChanged(object sender, RoutedEventArgs e) => await ApplyChangesAsync();
+
+    /// <summary>
+    /// Occurs when a number value is changed and saves the configuration
+    /// </summary>
+    /// <param name="sender">object</param>
+    /// <param name="e">SelectionChangedEventArgs</param>
+    private async void SaveNumberValueChanged(NumberBox sender, NumberBoxValueChangedEventArgs args) => await ApplyChangesAsync();
+
+    /// <summary>
+    /// Occurs when text is changed and saves the configuration
+    /// </summary>
+    /// <param name="sender">object</param>
+    /// <param name="e">SelectionChangedEventArgs</param>
+    private async void SaveTextChanged(object sender, TextChangedEventArgs e) => await ApplyChangesAsync();
+
+    /// <summary>
+    /// Occurs when the BtnCopyDebugInformation is clicked
+    /// </summary>
+    /// <param name="sender">object</param>
+    /// <param name="e">RoutedEventArgs</param>
+    private async void CopyDebugInformation(object sender, RoutedEventArgs e)
+    {
+        var info = $"{_controller.AppInfo.ID}\n{_controller.AppInfo.Version}\n\n{Environment.OSVersion}\n{CultureInfo.CurrentCulture.Name}";
+        var py = Task.Run(() =>
+        {
+            using (Py.GIL())
+            {
+                try
+                {
+                    dynamic yt_dlp = Py.Import("yt_dlp");
+                    info += $"\nyt-dlp {yt_dlp.version.__version__.As<string>()}";
+                }
+                catch
+                {
+                    info += "\nyt-dlp not found";
+                }
+                try
+                {
+                    dynamic psutil = Py.Import("psutil");
+                    info += $"\npsutil {psutil.__version__.As<string>()}";
+                }
+                catch
+                {
+                    info += "\npsutil not found";
+                }
+            }
+        });
+        var ffmpeg = Task.Run(() =>
+        {
+            using var ffmpegProcess = new Process()
+            {
+                StartInfo = new ProcessStartInfo
+                {
+                    FileName = DependencyLocator.Find("ffmpeg"),
+                    Arguments = "-version",
+                    UseShellExecute = false,
+                    CreateNoWindow = true,
+                    RedirectStandardOutput = true
+                }
+            };
+            try
+            {
+                ffmpegProcess.Start();
+                var ffmpegVersion = ffmpegProcess.StandardOutput.ReadToEnd();
+                ffmpegProcess.WaitForExit();
+                ffmpegVersion = ffmpegVersion.Remove(ffmpegVersion.IndexOf("\n"))
+                                             .Remove(ffmpegVersion.IndexOf("Copyright"))
+                                             .Trim();
+                info += $"\n{ffmpegVersion}";
+            }
+            catch
+            {
+                info += "\nffmpeg not found";
+            }
+        });
+        var aria = Task.Run(() =>
+        {
+            using var ariaProcess = new Process()
+            {
+                StartInfo = new ProcessStartInfo
+                {
+                    FileName = DependencyLocator.Find("aria2c"),
+                    Arguments = "--version",
+                    UseShellExecute = false,
+                    CreateNoWindow = true,
+                    RedirectStandardOutput = true
+                }
+            };
+            try
+            {
+                ariaProcess.Start();
+                var ariaVersion = ariaProcess.StandardOutput.ReadToEnd();
+                ariaProcess.WaitForExit();
+                ariaVersion = ariaVersion.Remove(ariaVersion.IndexOf("\n")).Trim();
+                info += $"\n{ariaVersion}";
+            }
+            catch
+            {
+                info += "\naria2c not found";
+            }
+        });
+        await py;
+        await ffmpeg;
+        await aria;
+        var dataPackage = new DataPackage();
+        dataPackage.SetText(info);
+        Clipboard.SetContent(dataPackage);
+    }
 }

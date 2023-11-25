@@ -1,5 +1,6 @@
 using CommunityToolkit.WinUI.Notifications;
 using Microsoft.UI;
+using Microsoft.UI.Input;
 using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
@@ -15,6 +16,7 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using Vanara.PInvoke;
+using Windows.Foundation;
 using Windows.Graphics;
 using Windows.System;
 using WinRT.Interop;
@@ -72,35 +74,25 @@ public sealed partial class MainWindow : Window
         AppWindow.TitleBar.PreferredHeightOption = TitleBarHeightOption.Tall;
         AppWindow.TitleBar.ButtonBackgroundColor = Colors.Transparent;
         AppWindow.TitleBar.ButtonInactiveBackgroundColor = Colors.Transparent;
-        TitlePreview.Text = _controller.AppInfo.IsDevVersion ? _("PREVIEW") : "";
         AppWindow.Title = TitleBarTitle.Text;
         AppWindow.SetIcon(@"Resources\org.nickvision.tubeconverter.ico");
         TitleBar.Loaded += (sender, e) => SetDragRegionForCustomTitleBar();
         TitleBar.SizeChanged += (sender, e) => SetDragRegionForCustomTitleBar();
         //Localize Strings
-        MenuFile.Title = _("File");
-        MenuAddDownload.Text = _("Add Download");
-        MenuExit.Text = _("Exit");
-        MenuEdit.Title = _("Edit");
-        MenuKeyring.Text = _("Keyring");
-        MenuHistory.Text = _("History");
-        MenuSettings.Text = _("Settings");
-        MenuDownloader.Title = _("Downloader");
-        MenuStopAllDownloads.Text = _("Stop All Downloads");
-        MenuClearQueuedDownloads.Text = _("Clear Queued Downloads");
-        MenuRetryFailedDownloads.Text = _("Retry Failed Downloads");
-        MenuClearCompletedDownloads.Text = _("Clear Completed Downloads");
-        MenuHelp.Title = _("Help");
+        TitleBarSearchBox.PlaceholderText = _("Search for downloads");
+        TitleBarPreview.Text = _controller.AppInfo.IsDevVersion ? _("PREVIEW") : "";
+        NavViewHome.PageName = _("Home");
+        NavViewDownloads.PageName = _("Downloads");
+        NavViewHelp.PageName = _("Help");
         MenuCheckForUpdates.Text = _("Check for Updates");
         MenuDocumentation.Text = _("Documentation");
         MenuGitHubRepo.Text = _("GitHub Repo");
         MenuReportABug.Text = _("Report a Bug");
         MenuDiscussions.Text = _("Discussions");
-        MenuAbout.Text = _("About {0}", _controller.AppInfo.ShortName);
+        NavViewSettings.PageName = _("Settings");
         StatusPageHome.Title = _("Download Media");
         StatusPageHome.Description = _("Add a video, audio, or playlist URL to start downloading");
         LblBtnHomeAddDownload.Text = _("Add Download");
-        LblHomeHelp.Text = _("Parabolic's documentation and support channels are accessible via the Help menu.");
         LblBtnAddDownload.Text = _("Add Download");
         NavItemDownloading.Content = _("Downloading");
         LblDownloading.Text = _("Downloading");
@@ -116,8 +108,6 @@ public sealed partial class MainWindow : Window
         LblCompleted.Text = _("Completed");
         BtnRetryFailedDownloads.Label = _("Retry Failed Downloads");
         BtnClearCompletedDownloads.Label = _("Clear Completed Downloads");
-        StatusIcon.Glyph = "\uE118";
-        StatusLabel.Text = _("Remaining Downloads: {0}", 0);
         TrayIcon.ToolTipText = _("Parabolic");
         TrayMenuAddDownload.Text = _("Add Download");
         TrayMenuShowWindow.Text = _("Show Window");
@@ -153,12 +143,11 @@ public sealed partial class MainWindow : Window
     {
         if (!_isOpened)
         {
-            ViewStack.CurrentPageName = "Startup";
+            NavView.IsEnabled = false;
+            ViewStack.CurrentPageName = "Spinner";
             var accent = (SolidColorBrush)Application.Current.Resources["AccentFillColorDefaultBrush"];
             _controller.TaskbarItem = TaskbarItem.ConnectWindows(_hwnd, new System.Drawing.SolidBrush(System.Drawing.Color.FromArgb(accent.Color.A, accent.Color.R, accent.Color.G, accent.Color.B)), MainGrid.ActualTheme == ElementTheme.Dark ? System.Drawing.Brushes.Black : System.Drawing.Brushes.White);
             await _controller.StartupAsync();
-            MainMenu.IsEnabled = true;
-            ViewStack.CurrentPageName = "Home";
             PreventSuspendWhenDownloadingChanged(null, EventArgs.Empty);
             if (_controller.ShowDisclaimerOnStartup)
             {
@@ -194,6 +183,9 @@ public sealed partial class MainWindow : Window
                 _controller.ShowDisclaimerOnStartup = !chkShow.IsChecked ?? true;
                 _controller.SaveConfiguration();
             }
+            TitleBarSearchBox.Visibility = Visibility.Visible;
+            NavView.IsEnabled = true;
+            NavViewHome.IsSelected = true;
             _isOpened = true;
         }
     }
@@ -222,7 +214,9 @@ public sealed partial class MainWindow : Window
                 DefaultButton = ContentDialogButton.Primary,
                 XamlRoot = MainGrid.XamlRoot
             };
+            _isContentDialogShowing = true;
             var res = await dialog.ShowAsync();
+            _isContentDialogShowing = false;
             if (res == ContentDialogResult.Primary)
             {
                 ForceExit(sender, new RoutedEventArgs());
@@ -247,49 +241,31 @@ public sealed partial class MainWindow : Window
     {
         //Update TitleBar
         TitleBarTitle.Foreground = (SolidColorBrush)Application.Current.Resources[_controller.IsWindowActive ? "WindowCaptionForeground" : "WindowCaptionForegroundDisabled"];
-        MenuFile.Foreground = (SolidColorBrush)Application.Current.Resources[_controller.IsWindowActive ? "WindowCaptionForeground" : "WindowCaptionForegroundDisabled"];
-        MenuEdit.Foreground = (SolidColorBrush)Application.Current.Resources[_controller.IsWindowActive ? "WindowCaptionForeground" : "WindowCaptionForegroundDisabled"];
-        MenuHelp.Foreground = (SolidColorBrush)Application.Current.Resources[_controller.IsWindowActive ? "WindowCaptionForeground" : "WindowCaptionForegroundDisabled"];
         AppWindow.TitleBar.ButtonForegroundColor = ((SolidColorBrush)Application.Current.Resources[_controller.IsWindowActive ? "WindowCaptionForeground" : "WindowCaptionForegroundDisabled"]).Color;
     }
 
     /// <summary>
-    /// Sets the drag region for the TitleBar
+    /// Occurs when the NavView's selection has changed
     /// </summary>
-    /// <exception cref="Exception"></exception>
-    private void SetDragRegionForCustomTitleBar()
+    /// <param name="sender">NavigationView</param>
+    /// <param name="args">NavigationViewSelectionChangedEventArgs</param>
+    private void NavView_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
     {
-        var hMonitor = Win32Interop.GetMonitorFromDisplayId(DisplayArea.GetFromWindowId(Win32Interop.GetWindowIdFromWindow(_hwnd), DisplayAreaFallback.Primary).DisplayId);
-        var result = GetDpiForMonitor(hMonitor, Monitor_DPI_Type.MDT_Default, out uint dpiX, out uint _);
-        if (result != 0)
+        var tag = (NavView.SelectedItem as NavigationViewItem)!.Tag as string;
+        if (tag == "Home")
         {
-            throw new Exception("Could not get DPI for monitor.");
+            ViewStack.CurrentPageName = "Home";
         }
-        var scaleFactorPercent = (uint)(((long)dpiX * 100 + (96 >> 1)) / 96);
-        var scaleAdjustment = scaleFactorPercent / 100.0;
-        RightPaddingColumn.Width = new GridLength(AppWindow.TitleBar.RightInset / scaleAdjustment);
-        LeftPaddingColumn.Width = new GridLength(AppWindow.TitleBar.LeftInset / scaleAdjustment);
-        var dragRectsList = new List<RectInt32>();
-        RectInt32 dragRectL;
-        dragRectL.X = (int)((LeftPaddingColumn.ActualWidth) * scaleAdjustment);
-        dragRectL.Y = 0;
-        dragRectL.Height = (int)(TitleBar.ActualHeight * scaleAdjustment);
-        dragRectL.Width = (int)((IconColumn.ActualWidth
-                                + TitleColumn.ActualWidth
-                                + LeftDragColumn.ActualWidth) * scaleAdjustment);
-        dragRectsList.Add(dragRectL);
-        RectInt32 dragRectR;
-        dragRectR.X = (int)((LeftPaddingColumn.ActualWidth
-                            + IconColumn.ActualWidth
-                            + TitleBarTitle.ActualWidth
-                            + LeftDragColumn.ActualWidth
-                            + MainMenu.ActualWidth) * scaleAdjustment);
-        dragRectR.Y = 0;
-        dragRectR.Height = (int)(TitleBar.ActualHeight * scaleAdjustment);
-        dragRectR.Width = (int)(RightDragColumn.ActualWidth * scaleAdjustment);
-        dragRectsList.Add(dragRectR);
-        RectInt32[] dragRects = dragRectsList.ToArray();
-        AppWindow.TitleBar.SetDragRectangles(dragRects);
+        else if (tag == "Downloads")
+        {
+            ViewStack.CurrentPageName = "Downloads";
+        }
+        else if (tag == "Settings")
+        {
+            ViewStack.CurrentPageName = "Custom";
+            FrameCustom.Content = new SettingsPage(_controller.CreatePreferencesViewController(), InitializeWithWindow);
+        }
+        SetDragRegionForCustomTitleBar();
     }
 
     /// <summary>
@@ -301,7 +277,6 @@ public sealed partial class MainWindow : Window
     {
         if (e.Action == "network-restored")
         {
-            MenuAddDownload.IsEnabled = true;
             BtnHomeAddDownload.IsEnabled = true;
             BtnAddDownload.IsEnabled = true;
             return;
@@ -329,7 +304,6 @@ public sealed partial class MainWindow : Window
         }
         else if (e.Action == "no-network")
         {
-            MenuAddDownload.IsEnabled = false;
             BtnHomeAddDownload.IsEnabled = false;
             BtnAddDownload.IsEnabled = false;
             InfoBar.IsClosable = false;
@@ -440,19 +414,10 @@ public sealed partial class MainWindow : Window
     /// </summary>
     /// <param name="sender">object</param>
     /// <param name="e">RoutedEventArgs</param>
-    private async void Settings(object sender, RoutedEventArgs e)
+    private void Settings(object sender, RoutedEventArgs e)
     {
         ShowWindow(sender, e);
-        var settingsDialog = new SettingsDialog(_controller.CreatePreferencesViewController(), InitializeWithWindow)
-        {
-            XamlRoot = MainGrid.XamlRoot
-        };
-        if (!_isContentDialogShowing)
-        {
-            _isContentDialogShowing = true;
-            await settingsDialog.ShowAsync();
-            _isContentDialogShowing = false;
-        }
+        NavViewSettings.IsSelected = true;
     }
 
     /// <summary>
@@ -507,13 +472,18 @@ public sealed partial class MainWindow : Window
     /// <param name="e">RoutedEventArgs</param>
     private async void WindowsUpdate(object sender, RoutedEventArgs e)
     {
-        MainMenu.IsEnabled = false;
-        InfoBar.IsOpen = false;
+        NavView.IsEnabled = false;
+        var searchVisibility = TitleBarSearchBox.Visibility;
         var page = ViewStack.CurrentPageName;
-        ViewStack.CurrentPageName = "Startup";
+        TitleBarSearchBox.Visibility = Visibility.Collapsed;
+        ViewStack.CurrentPageName = "Spinner";
+        SetDragRegionForCustomTitleBar();
         if (!(await _controller.WindowsUpdateAsync()))
         {
+            NavView.IsEnabled = true;
+            TitleBarSearchBox.Visibility = searchVisibility;
             ViewStack.CurrentPageName = page;
+            SetDragRegionForCustomTitleBar();
         }
     }
 
@@ -544,25 +514,6 @@ public sealed partial class MainWindow : Window
     /// <param name="sender">object</param>
     /// <param name="e">RoutedEventArgs</param>
     private async void Discussions(object sender, RoutedEventArgs e) => await Launcher.LaunchUriAsync(_controller.AppInfo.SupportUrl);
-
-    /// <summary>
-    /// Occurs when the about menu item is clicked
-    /// </summary>
-    /// <param name="sender">object</param>
-    /// <param name="e">RoutedEventArgs</param>
-    private async void About(object sender, RoutedEventArgs e)
-    {
-        var aboutDialog = new AboutDialog(_controller.AppInfo)
-        {
-            XamlRoot = MainGrid.XamlRoot
-        };
-        if (!_isContentDialogShowing)
-        {
-            _isContentDialogShowing = true;
-            await aboutDialog.ShowAsync();
-            _isContentDialogShowing = false;
-        }
-    }
 
     /// <summary>
     /// Prompts the AddDownloadDialog
@@ -611,13 +562,13 @@ public sealed partial class MainWindow : Window
     }
 
     /// <summary>
-    /// Occurs when the NavViewDownload's selection is changed
+    /// Occurs when the NavViewDownload2's selection is changed
     /// </summary>
     /// <param name="sender">NavigationView</param>
     /// <param name="args">NavigationViewSelectionChangedEventArgs</param>
-    private void NavViewDownloads_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
+    private void NavViewDownloads2_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
     {
-        var tag = (string)((NavViewDownloads.SelectedItem as NavigationViewItem)!.Tag);
+        var tag = (string)((NavViewDownloads2.SelectedItem as NavigationViewItem)!.Tag);
         ViewStackDownloads.CurrentPageName = tag;
     }
 
@@ -636,7 +587,6 @@ public sealed partial class MainWindow : Window
         ViewStackDownloading.CurrentPageName = ListDownloading.Children.Count > 0 ? "Has" : "No";
         ViewStackQueued.CurrentPageName = ListQueued.Children.Count > 0 ? "Has" : "No";
         ViewStackCompleted.CurrentPageName = ListCompleted.Children.Count > 0 ? "Has" : "No";
-        StatusLabel.Text = _("Remaining Downloads: {0}", _controller.DownloadManager.RemainingDownloadsCount);
         TrayIcon.ToolTipText = _controller.DownloadManager.BackgroundActivityReport;
     }
 
@@ -646,8 +596,7 @@ public sealed partial class MainWindow : Window
     /// <param name="e">(Guid Id, string Filename, string SaveFolder, bool IsDownloading)</param>
     private void DownloadAdded((Guid Id, string Filename, string SaveFolder, bool IsDownloading) e)
     {
-        ViewStack.CurrentPageName = "Downloads";
-        StatusBar.Visibility = Visibility.Visible;
+        NavViewDownloads.IsSelected = true;
         var downloadRow = new DownloadRow(e.Id, e.Filename, e.SaveFolder, (ea) => NotificationSent(null, ea), MainGrid.XamlRoot);
         downloadRow.StopRequested += (s, ea) => _controller.DownloadManager.RequestStop(ea);
         downloadRow.RetryRequested += (s, ea) => _controller.DownloadManager.RequestRetry(ea, DownloadOptions.Current);
@@ -728,5 +677,24 @@ public sealed partial class MainWindow : Window
         ListQueued.Children.Remove(row);
         ListDownloading.Children.Add(row);
         DownloadUIUpdate();
+    }
+
+    /// <summary>
+    /// Sets the drag region for the TitleBar
+    /// </summary>
+    private void SetDragRegionForCustomTitleBar()
+    {
+        double scaleAdjustment = TitleBar.XamlRoot.RasterizationScale;
+        RightPaddingColumn.Width = new GridLength(AppWindow.TitleBar.RightInset / scaleAdjustment);
+        LeftPaddingColumn.Width = new GridLength(AppWindow.TitleBar.LeftInset / scaleAdjustment);
+        var transform = TitleBarSearchBox.TransformToVisual(null);
+        var bounds = transform.TransformBounds(new Rect(0, 0, TitleBarSearchBox.ActualWidth, TitleBarSearchBox.ActualHeight));
+        var searchBoxRect = new RectInt32((int)Math.Round(bounds.X * scaleAdjustment), (int)Math.Round(bounds.Y * scaleAdjustment), (int)Math.Round(bounds.Width * scaleAdjustment), (int)Math.Round(bounds.Height * scaleAdjustment));
+        transform = TitleBarPreview.TransformToVisual(null);
+        bounds = transform.TransformBounds(new Rect(0, 0, TitleBarPreview.ActualWidth, TitleBarPreview.ActualHeight));
+        var previewRect = new RectInt32((int)Math.Round(bounds.X * scaleAdjustment), (int)Math.Round(bounds.Y * scaleAdjustment), (int)Math.Round(bounds.Width * scaleAdjustment), (int)Math.Round(bounds.Height * scaleAdjustment));
+        var rectArray = new RectInt32[] { searchBoxRect, previewRect };
+        var nonClientInputSrc = InputNonClientPointerSource.GetForWindowId(AppWindow.Id);
+        nonClientInputSrc.SetRegionRects(NonClientRegionKind.Passthrough, rectArray);
     }
 }
