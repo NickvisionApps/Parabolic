@@ -490,13 +490,8 @@ public sealed partial class MainWindow : Window
             //Check history for URL or title
             foreach(var history in _controller.DownloadManager.History.History)
             {
-                //Match via title
-                if(!string.IsNullOrWhiteSpace(history.Value.Title) && history.Value.Title.ToLower().Contains(TitleBarSearchBox.Text.ToLower()))
-                {
-                    items.Add(new ActionRow(history.Value.Title, _("History"), "\uE81C", history.Value.Url));
-                }
                 //Match via URL
-                else if(history.Value.Url.Contains(TitleBarSearchBox.Text))
+                if(history.Value.Url == TitleBarSearchBox.Text)
                 {
                     //Add row with title if available, else with URL
                     if(!string.IsNullOrEmpty(history.Value.Title))
@@ -507,6 +502,11 @@ public sealed partial class MainWindow : Window
                     {
                         items.Add(new ActionRow(history.Value.Url, _("History"), "\uE81C", history.Value.Url));
                     }
+                }
+                //Match via title
+                else if (!string.IsNullOrWhiteSpace(history.Value.Title) && history.Value.Title.ToLower().Contains(TitleBarSearchBox.Text.ToLower()))
+                {
+                    items.Add(new ActionRow(history.Value.Title, _("History"), "\uE81C", history.Value.Url));
                 }
             }
             TitleBarSearchBox.ItemsSource = items;
