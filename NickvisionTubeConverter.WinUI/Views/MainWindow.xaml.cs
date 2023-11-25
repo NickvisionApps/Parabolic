@@ -322,6 +322,7 @@ public sealed partial class MainWindow : Window
             BtnHomeAddDownload.IsEnabled = false;
             BtnAddDownload.IsEnabled = false;
             InfoBar.IsClosable = false;
+            InfoBar.IsOpen = true;
             BtnInfoBar.Visibility = Visibility.Collapsed;
             return;
         }
