@@ -538,6 +538,7 @@ public sealed partial class MainWindow : Window
         }
         else if (tag == "Completed")
         {
+            ViewStackDownloads.CurrentPageName = _controller.DownloadManager.CompletedCount > 0 ? "Completed" : "NoCompleted";
         }
     }
 
