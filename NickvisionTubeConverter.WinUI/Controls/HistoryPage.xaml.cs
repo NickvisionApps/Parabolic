@@ -33,7 +33,6 @@ public sealed partial class HistoryPage : UserControl
         _history = history;
         //Localize Strings
         LblTitle.Text = _("History");
-        LblMessage.Text = _("Manage previously downloaded media.");
         LblBtnClear.Text = _("Clear");
         StatusNoHistory.Title = _("No Previous Downloads");
         //Load

@@ -97,7 +97,7 @@ public sealed partial class MainWindow : Window
         StatusPageHome.Description = _("Add a video, audio, or playlist URL to start downloading");
         LblBtnHomeAddDownload.Text = _("Add Download");
         LblDownloads.Text = _("Downloads");
-        LblBtnAddDownload.Text = _("Add Download");
+        LblBtnAddDownload.Text = _("Add");
         LblSegmentedDownloading.Text = _("Downloading");
         LblSegmentedQueued.Text = _("Queued");
         LblSegmentedCompleted.Text = _("Completed");

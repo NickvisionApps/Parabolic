@@ -9,33 +9,40 @@
     xmlns:wct="using:CommunityToolkit.WinUI.Controls"
     mc:Ignorable="d">
 
-    <ScrollViewer x:Name="ScrollViewer" VerticalScrollBarVisibility="Auto">
-        <StackPanel x:Name="StackPanel" Margin="24,24,24,24" Orientation="Vertical" Spacing="12">
-            <TextBlock x:Name="LblTitle" Margin="0,0,0,0" Style="{ThemeResource NavigationViewItemHeaderTextStyle}" FontSize="22"/>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
 
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="Auto"/>
-                </Grid.ColumnDefinitions>
+        <Grid Grid.Row="0" Margin="24,24,24,24" ColumnSpacing="12">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
 
-                <TextBlock x:Name="LblMessage" Grid.Column="0" VerticalAlignment="Center" Foreground="Gray"/>
+            <TextBlock x:Name="LblTitle" Grid.Column="0" Margin="0,0,0,0" Style="{ThemeResource NavigationViewItemHeaderTextStyle}" FontSize="22"/>
 
-                <Button x:Name="BtnClear" Grid.Column="1" Style="{ThemeResource AccentButtonStyle}" Click="Clear">
-                    <Button.Content>
-                        <StackPanel Orientation="Horizontal" Spacing="6">
-                            <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" FontSize="16" Glyph="&#xE107;"/>
+            <Button x:Name="BtnClear" Grid.Column="2" Style="{ThemeResource AccentButtonStyle}" Click="Clear">
+                <Button.Content>
+                    <StackPanel Orientation="Horizontal" Spacing="6">
+                        <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" FontSize="16" Glyph="&#xE107;"/>
 
-                            <TextBlock x:Name="LblBtnClear" TextWrapping="WrapWholeWords"/>
-                        </StackPanel>
-                    </Button.Content>
-                </Button>
-            </Grid>
-            
-            <local:ViewStack x:Name="ViewStack">
+                        <TextBlock x:Name="LblBtnClear" TextWrapping="WrapWholeWords"/>
+                    </StackPanel>
+                </Button.Content>
+            </Button>
+        </Grid>
+
+        <MenuFlyoutSeparator Grid.Row="1"/>
+
+        <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Auto">
+            <local:ViewStack x:Name="ViewStack" Margin="12,12,12,12">
                 <local:ViewStack.Pages>
                     <local:ViewStackPage PageName="NoHistory">
-                        <local:StatusPage x:Name="StatusNoHistory" Margin="0,100,0,0" IsCompact="True" Glyph="&#xE81C;"/>
+                        <local:StatusPage x:Name="StatusNoHistory" HorizontalAlignment="Center" VerticalAlignment="Center" Glyph="&#xE81C;"/>
                     </local:ViewStackPage>
 
                     <local:ViewStackPage PageName="History">
@@ -43,6 +50,6 @@
                     </local:ViewStackPage>
                 </local:ViewStack.Pages>
             </local:ViewStack>
-        </StackPanel>
-    </ScrollViewer>
+        </ScrollViewer>
+    </Grid>
 </UserControl>
