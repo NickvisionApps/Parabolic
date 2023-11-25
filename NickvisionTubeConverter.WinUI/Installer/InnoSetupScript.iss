@@ -38,15 +38,6 @@ ChangesEnvironment=yes
 AlwaysRestart=yes
 
 [Code]
-procedure SetupVsBuildTools();
-var
-  ResultCode: Integer;
-begin
-  if not Exec(ExpandConstant('{app}\deps\vs_BuildTools.exe'), '', '', SW_HIDE, ewWaitUntilTerminated, ResultCode)
-  then
-    MsgBox('Unable to install VS Build Tools. Please try again', mbError, MB_OK);
-end;
-
 procedure SetupDotnet();
 var
   ResultCode: Integer;
@@ -91,7 +82,6 @@ Name: "english"; MessagesFile: "compiler:Default.isl"
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 
 [Files]
-Source: "..\..\..\vs_BuildTools.exe"; DestDir: "{app}\deps"; AfterInstall: SetupVsBuildTools 
 Source: "..\..\..\dotnet-runtime-8-win-x64.exe"; DestDir: "{app}\deps"; AfterInstall: SetupDotnet  
 Source: "..\..\..\WindowsAppRuntimeInstall-x64.exe"; DestDir: "{app}\deps"; AfterInstall: SetupWinAppSDK
 Source: "..\..\..\python-3.11.6-amd64.exe"; DestDir: "{app}\deps"; AfterInstall: SetupPython  
