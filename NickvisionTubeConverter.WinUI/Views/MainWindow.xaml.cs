@@ -80,10 +80,12 @@ public sealed partial class MainWindow : Window
         TitleBar.Loaded += (sender, e) => SetDragRegionForCustomTitleBar();
         TitleBar.SizeChanged += (sender, e) => SetDragRegionForCustomTitleBar();
         //Localize Strings
-        TitleBarSearchBox.PlaceholderText = _("Search for downloads");
+        TitleBarSearchBox.PlaceholderText = _("Search for downloads, history, and more");
         TitleBarPreview.Text = _controller.AppInfo.IsDevVersion ? _("PREVIEW") : "";
         NavViewHome.PageName = _("Home");
         NavViewDownloads.PageName = _("Downloads");
+        NavViewKeyring.PageName = _("Keyring");
+        NavViewHistory.PageName = _("History");
         NavViewHelp.PageName = _("Help");
         MenuCheckForUpdates.Text = _("Check for Updates");
         MenuDocumentation.Text = _("Documentation");
@@ -259,6 +261,16 @@ public sealed partial class MainWindow : Window
         else if (tag == "Downloads")
         {
             ViewStack.CurrentPageName = "Downloads";
+        }
+        else if (tag == "Keyring")
+        {
+            ViewStack.CurrentPageName = "Custom";
+            FrameCustom.Content = null;
+        }
+        else if (tag == "History")
+        {
+            ViewStack.CurrentPageName = "Custom";
+            FrameCustom.Content = null;
         }
         else if (tag == "Settings")
         {
