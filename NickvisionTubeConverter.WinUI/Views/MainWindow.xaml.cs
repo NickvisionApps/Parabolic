@@ -1,3 +1,4 @@
+using CommunityToolkit.WinUI.Controls;
 using CommunityToolkit.WinUI.Notifications;
 using Microsoft.UI;
 using Microsoft.UI.Input;
@@ -93,21 +94,15 @@ public sealed partial class MainWindow : Window
         StatusPageHome.Title = _("Download Media");
         StatusPageHome.Description = _("Add a video, audio, or playlist URL to start downloading");
         LblBtnHomeAddDownload.Text = _("Add Download");
+        LblDownloads.Text = _("Downloads");
         LblBtnAddDownload.Text = _("Add Download");
-        NavItemDownloading.Content = _("Downloading");
-        LblDownloading.Text = _("Downloading");
-        BtnStopAllDownloads.Label = _("Stop All Downloads");
-        StatusPageDownloading.Title = _("No Downloads Running");
-        LblBtnShowCompleted.Text = _("Show Completed");
-        StatusPageQueued.Title = _("No Queued Downloads");
-        StatusPageCompleted.Title = _("No Completed Downloads");
-        NavItemQueued.Content = _("Queued");
-        LblQueued.Text = _("Queued");
-        BtnClearQueuedDownloads.Label = _("Clear Queued Downloads");
-        NavItemCompleted.Content = _("Completed");
-        LblCompleted.Text = _("Completed");
-        BtnRetryFailedDownloads.Label = _("Retry Failed Downloads");
-        BtnClearCompletedDownloads.Label = _("Clear Completed Downloads");
+        LblSegmentedDownloading.Text = _("Downloading");
+        LblSegmentedQueued.Text = _("Queued");
+        LblSegmentedCompleted.Text = _("Completed");
+        BtnStopAllDownloads.Label = _("Stop All");
+        BtnRetryFailedDownloads.Label = _("Retry Failed");
+        BtnClearQueuedDownloads.Label = _("Clear Queued");
+        BtnClearCompletedDownloads.Label = _("Clear Completed");
         TrayIcon.ToolTipText = _("Parabolic");
         TrayMenuAddDownload.Text = _("Add Download");
         TrayMenuShowWindow.Text = _("Show Window");
@@ -186,6 +181,7 @@ public sealed partial class MainWindow : Window
             TitleBarSearchBox.Visibility = Visibility.Visible;
             NavView.IsEnabled = true;
             NavViewHome.IsSelected = true;
+            SegmentedDownloads.SelectedIndex = 0;
             _isOpened = true;
         }
     }
@@ -330,11 +326,38 @@ public sealed partial class MainWindow : Window
     }
 
     /// <summary>
+    /// Occurs when the prevent suspend option is changed
+    /// </summary>
+    /// <param name="sender">object?</param>
+    /// <param name="e">EventArgs</param>
+    private void PreventSuspendWhenDownloadingChanged(object? sender, EventArgs e)
+    {
+        if (_powerRequest == null && _controller.PreventSuspendWhenDownloading)
+        {
+            _powerRequest = Kernel32.PowerCreateRequest(new Kernel32.REASON_CONTEXT("Parabolic downloading"));
+            Kernel32.PowerSetRequest(_powerRequest, Kernel32.POWER_REQUEST_TYPE.PowerRequestSystemRequired);
+            Kernel32.PowerSetRequest(_powerRequest, Kernel32.POWER_REQUEST_TYPE.PowerRequestDisplayRequired);
+        }
+        else if (_powerRequest != null && !_controller.PreventSuspendWhenDownloading)
+        {
+            Kernel32.PowerClearRequest(_powerRequest, Kernel32.POWER_REQUEST_TYPE.PowerRequestSystemRequired);
+            Kernel32.PowerClearRequest(_powerRequest, Kernel32.POWER_REQUEST_TYPE.PowerRequestDisplayRequired);
+            _powerRequest.Close();
+            _powerRequest.Dispose();
+            _powerRequest = null;
+        }
+    }
+
+    /// <summary>
     /// Occurs when the show window tray menu item is clicked
     /// </summary>
     /// <param name="sender">object</param>
     /// <param name="e">RoutedEventArgs</param>
-    public void ShowWindow(object sender, RoutedEventArgs e) => User32.ShowWindow(_hwnd, ShowWindowCommand.SW_SHOW);
+    public void ShowWindow(object sender, RoutedEventArgs e)
+    {
+        User32.ShowWindow(_hwnd, ShowWindowCommand.SW_SHOW);
+        TrayIcon.CloseTrayPopup();
+    }
 
     /// <summary>
     /// Occurs when the add download menu item is clicked
@@ -348,11 +371,15 @@ public sealed partial class MainWindow : Window
     }
 
     /// <summary>
-    /// Occurs when the exit menu item is clicked
+    /// Occurs when the settings menu item is clicked
     /// </summary>
     /// <param name="sender">object</param>
     /// <param name="e">RoutedEventArgs</param>
-    private void Exit(object sender, RoutedEventArgs e) => Close();
+    private void Settings(object sender, RoutedEventArgs e)
+    {
+        ShowWindow(sender, e);
+        NavViewSettings.IsSelected = true;
+    }
 
     /// <summary>
     /// Occurs when the exit tray menu item is clicked
@@ -407,55 +434,6 @@ public sealed partial class MainWindow : Window
             await historyDialog.ShowAsync();
             _isContentDialogShowing = false;
         }
-    }
-
-    /// <summary>
-    /// Occurs when the settings menu item is clicked
-    /// </summary>
-    /// <param name="sender">object</param>
-    /// <param name="e">RoutedEventArgs</param>
-    private void Settings(object sender, RoutedEventArgs e)
-    {
-        ShowWindow(sender, e);
-        NavViewSettings.IsSelected = true;
-    }
-
-    /// <summary>
-    /// Occurs when the stop all downloads menu item is clicked
-    /// </summary>
-    /// <param name="sender">object</param>
-    /// <param name="e">RoutedEventArgs</param>
-    private void StopAllDownloads(object sender, RoutedEventArgs e) => _controller.DownloadManager.StopAllDownloads(true);
-
-    /// <summary>
-    /// Occurs when the clear queued downloads menu item is clicked
-    /// </summary>
-    /// <param name="sender">object</param>
-    /// <param name="e">RoutedEventArgs</param>
-    private void ClearQueuedDownloads(object sender, RoutedEventArgs e)
-    {
-        _controller.DownloadManager.ClearQueuedDownloads();
-        ListQueued.Children.Clear();
-        DownloadUIUpdate();
-    }
-
-    /// <summary>
-    /// Occurs when the retry failed downloads menu item is clicked
-    /// </summary>
-    /// <param name="sender">object</param>
-    /// <param name="e">RoutedEventArgs</param>
-    private void RetryFailedDownloads(object sender, RoutedEventArgs e) => _controller.DownloadManager.RetryFailedDownloads(DownloadOptions.Current);
-
-    /// <summary>
-    /// Occurs when the clear completed downloads menu item is clicked
-    /// </summary>
-    /// <param name="sender">object</param>
-    /// <param name="e">RoutedEventArgs</param>
-    private void ClearCompletedDownloads(object sender, RoutedEventArgs e)
-    {
-        _controller.DownloadManager.ClearCompletedDownloads();
-        ListCompleted.Children.Clear();
-        DownloadUIUpdate();
     }
 
     /// <summary>
@@ -539,54 +517,62 @@ public sealed partial class MainWindow : Window
     }
 
     /// <summary>
-    /// Occurs when the prevent suspend option is changed
+    /// Occurs when the SegmentedDownloads's selection is changed
     /// </summary>
-    /// <param name="sender">object?</param>
-    /// <param name="e">EventArgs</param>
-    private void PreventSuspendWhenDownloadingChanged(object? sender, EventArgs e)
+    /// <param name="sender">object</param>
+    /// <param name="args">SelectionChangedEventArgs</param>
+    private void SegmentedDownloads_SelectionChanged(object sender, SelectionChangedEventArgs args)
     {
-        if (_powerRequest == null && _controller.PreventSuspendWhenDownloading)
-        {
-            _powerRequest = Kernel32.PowerCreateRequest(new Kernel32.REASON_CONTEXT("Parabolic downloading"));
-            Kernel32.PowerSetRequest(_powerRequest, Kernel32.POWER_REQUEST_TYPE.PowerRequestSystemRequired);
-            Kernel32.PowerSetRequest(_powerRequest, Kernel32.POWER_REQUEST_TYPE.PowerRequestDisplayRequired);
-        }
-        else if (_powerRequest != null && !_controller.PreventSuspendWhenDownloading)
-        {
-            Kernel32.PowerClearRequest(_powerRequest, Kernel32.POWER_REQUEST_TYPE.PowerRequestSystemRequired);
-            Kernel32.PowerClearRequest(_powerRequest, Kernel32.POWER_REQUEST_TYPE.PowerRequestDisplayRequired);
-            _powerRequest.Close();
-            _powerRequest.Dispose();
-            _powerRequest = null;
-        }
-    }
-
-    /// <summary>
-    /// Occurs when the NavViewDownload2's selection is changed
-    /// </summary>
-    /// <param name="sender">NavigationView</param>
-    /// <param name="args">NavigationViewSelectionChangedEventArgs</param>
-    private void NavViewDownloads2_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
-    {
-        var tag = (string)((NavViewDownloads2.SelectedItem as NavigationViewItem)!.Tag);
+        var tag = (string)((SegmentedDownloads.SelectedItem as SegmentedItem)!.Tag);
         ViewStackDownloads.CurrentPageName = tag;
     }
 
     /// <summary>
-    /// Occurs when BtnShowCompleted is clicked
+    /// Occurs when the stop all downloads menu item is clicked
     /// </summary>
     /// <param name="sender">object</param>
     /// <param name="e">RoutedEventArgs</param>
-    private void ShowCompleted(object sender, RoutedEventArgs e) => NavItemCompleted.IsSelected = true;
+    private void StopAllDownloads(object sender, RoutedEventArgs e) => _controller.DownloadManager.StopAllDownloads(true);
+
+    /// <summary>
+    /// Occurs when the clear queued downloads menu item is clicked
+    /// </summary>
+    /// <param name="sender">object</param>
+    /// <param name="e">RoutedEventArgs</param>
+    private void ClearQueuedDownloads(object sender, RoutedEventArgs e)
+    {
+        _controller.DownloadManager.ClearQueuedDownloads();
+        ListQueued.Children.Clear();
+        DownloadUIUpdate();
+    }
+
+    /// <summary>
+    /// Occurs when the retry failed downloads menu item is clicked
+    /// </summary>
+    /// <param name="sender">object</param>
+    /// <param name="e">RoutedEventArgs</param>
+    private void RetryFailedDownloads(object sender, RoutedEventArgs e) => _controller.DownloadManager.RetryFailedDownloads(DownloadOptions.Current);
+
+    /// <summary>
+    /// Occurs when the clear completed downloads menu item is clicked
+    /// </summary>
+    /// <param name="sender">object</param>
+    /// <param name="e">RoutedEventArgs</param>
+    private void ClearCompletedDownloads(object sender, RoutedEventArgs e)
+    {
+        _controller.DownloadManager.ClearCompletedDownloads();
+        ListCompleted.Children.Clear();
+        DownloadUIUpdate();
+    }
 
     /// <summary>
     /// Updates the UI based on the current DownloadManager state
     /// </summary>
     private void DownloadUIUpdate()
     {
-        ViewStackDownloading.CurrentPageName = ListDownloading.Children.Count > 0 ? "Has" : "No";
-        ViewStackQueued.CurrentPageName = ListQueued.Children.Count > 0 ? "Has" : "No";
-        ViewStackCompleted.CurrentPageName = ListCompleted.Children.Count > 0 ? "Has" : "No";
+        BdgSegmentedDownloading.Value = _controller.DownloadManager.DownloadingCount;
+        BdgSegmentedQueued.Value = _controller.DownloadManager.QueuedCount;
+        BdgSegmentedCompleted.Value = _controller.DownloadManager.CompletedCount;
         TrayIcon.ToolTipText = _controller.DownloadManager.BackgroundActivityReport;
     }
 
@@ -604,12 +590,12 @@ public sealed partial class MainWindow : Window
         if (e.IsDownloading)
         {
             downloadRow.SetPreparingState();
-            NavItemDownloading.IsSelected = true;
+            SegmentedDownloads.SelectedIndex = 0;
         }
         else
         {
             downloadRow.SetWaitingState();
-            NavItemQueued.IsSelected = true;
+            SegmentedDownloads.SelectedIndex = 1;
         }
         list.Children.Add(downloadRow);
         _downloadRows[e.Id] = downloadRow;

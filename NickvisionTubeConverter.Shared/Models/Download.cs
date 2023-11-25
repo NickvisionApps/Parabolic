@@ -470,14 +470,17 @@ public class Download
                     try
                     {
                         Console.WriteLine(e);
+                        ForceUpdateLog();
+                        _outFile.close();
                     }
                     catch { }
-                    ForceUpdateLog();
-                    IsDone = true;
-                    IsRunning = false;
-                    _outFile.close();
-                    IsSuccess = false;
-                    Completed?.Invoke(this, IsSuccess);
+                    finally
+                    {
+                        IsDone = true;
+                        IsRunning = false;
+                        IsSuccess = false;
+                        Completed?.Invoke(this, IsSuccess);
+                    }
                 }
             }).FireAndForget();
         }
