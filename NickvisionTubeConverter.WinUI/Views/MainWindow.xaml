@@ -54,7 +54,8 @@
 
             <TextBlock x:Name="TitleBarTitle" Grid.Column="2" VerticalAlignment="Center" Style="{ThemeResource CaptionTextBlockStyle}"/>
 
-            <AutoSuggestBox x:Name="TitleBarSearchBox" Grid.Column="4" QueryIcon="Find" VerticalAlignment="Center" MaxWidth="600" Visibility="Collapsed"/>
+            <AutoSuggestBox x:Name="TitleBarSearchBox" Grid.Column="4" QueryIcon="Find" VerticalAlignment="Center" MaxWidth="600" Visibility="Collapsed"
+                            UpdateTextOnSelect="False" TextChanged="TitleBarSearchBox_TextChanged" SuggestionChosen="TitleBarSearchBox_SuggestionChoosen"/>
 
             <TextBlock x:Name="TitleBarPreview" Grid.Column="6" VerticalAlignment="Center" Margin="0,0,16,0" Style="{ThemeResource NavigationViewItemHeaderTextStyle}" Foreground="Gray" FontSize="12"/>
         </Grid>

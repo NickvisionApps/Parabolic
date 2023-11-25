@@ -188,6 +188,7 @@ public sealed partial class MainWindow : Window
             NavView.IsEnabled = true;
             NavViewHome.IsSelected = true;
             SegmentedDownloads.SelectedIndex = 0;
+            SetDragRegionForCustomTitleBar();
             _isOpened = true;
         }
     }
@@ -414,27 +415,6 @@ public sealed partial class MainWindow : Window
     }
 
     /// <summary>
-    /// Occurs when the keyring menu item is clicked
-    /// </summary>
-    /// <param name="sender">object</param>
-    /// <param name="e">RoutedEventArgs</param>
-    private async void Keyring(object sender, RoutedEventArgs e)
-    {
-        var keyringDialogController = _controller.CreateKeyringDialogController();
-        var keyringDialog = new KeyringDialog(keyringDialogController)
-        {
-            XamlRoot = MainGrid.XamlRoot
-        };
-        if (!_isContentDialogShowing)
-        {
-            _isContentDialogShowing = true;
-            await keyringDialog.ShowAsync();
-            _isContentDialogShowing = false;
-            _controller.UpdateKeyring(keyringDialogController);
-        }
-    }
-
-    /// <summary>
     /// Occurs when the check for updates menu item is clicked
     /// </summary>
     /// <param name="sender">object</param>
@@ -490,6 +470,60 @@ public sealed partial class MainWindow : Window
     /// <param name="sender">object</param>
     /// <param name="e">RoutedEventArgs</param>
     private async void Discussions(object sender, RoutedEventArgs e) => await Launcher.LaunchUriAsync(_controller.AppInfo.SupportUrl);
+
+    /// <summary>
+    /// Occurs when the TitleBarSearchBox's text is changed
+    /// </summary>
+    /// <param name="sender">AutoSuggestBox</param>
+    /// <param name="e">AutoSuggestBoxTextChangedEventArgs</param>
+    private void TitleBarSearchBox_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs e)
+    {
+        TitleBarSearchBox.ItemsSource = null;
+        if(e.Reason == AutoSuggestionBoxTextChangeReason.UserInput)
+        {
+            var items = new List<ActionRow>();
+            //Add row for adding URL if valid
+            if(Uri.TryCreate(TitleBarSearchBox.Text, UriKind.Absolute, out var uriResult) && (uriResult.Scheme == Uri.UriSchemeHttp || uriResult.Scheme == Uri.UriSchemeHttps))
+            {
+                items.Add(new ActionRow(_("Add Download"), _("Validate"), "\uE710", TitleBarSearchBox.Text));
+            }
+            //Check history for URL or title
+            foreach(var history in _controller.DownloadManager.History.History)
+            {
+                //Match via title
+                if(!string.IsNullOrWhiteSpace(history.Value.Title) && history.Value.Title.ToLower().Contains(TitleBarSearchBox.Text.ToLower()))
+                {
+                    items.Add(new ActionRow(history.Value.Title, _("History"), "\uE81C", history.Value.Url));
+                }
+                //Match via URL
+                else if(history.Value.Url.Contains(TitleBarSearchBox.Text))
+                {
+                    //Add row with title if available, else with URL
+                    if(!string.IsNullOrEmpty(history.Value.Title))
+                    {
+                        items.Add(new ActionRow(history.Value.Title, _("History"), "\uE81C", history.Value.Url));
+                    }
+                    else
+                    {
+                        items.Add(new ActionRow(history.Value.Url, _("History"), "\uE81C", history.Value.Url));
+                    }
+                }
+            }
+            TitleBarSearchBox.ItemsSource = items;
+        }
+    }
+
+    /// <summary>
+    /// Occurs when the TitleBarSearchBox's suggestion is choosen
+    /// </summary>
+    /// <param name="sender">AutoSuggestBox</param>
+    /// <param name="e">AutoSuggestBoxSuggestionChosenEventArgs </param>
+    private async void TitleBarSearchBox_SuggestionChoosen(AutoSuggestBox sender, AutoSuggestBoxSuggestionChosenEventArgs e)
+    {
+        var item = (ActionRow)e.SelectedItem;
+        TitleBarSearchBox.Text = "";
+        await AddDownloadAsync(item.Tag);
+    }
 
     /// <summary>
     /// Prompts the AddDownloadDialog
