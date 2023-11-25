@@ -12,9 +12,9 @@ using static Nickvision.Aura.Localization.Gettext;
 namespace NickvisionTubeConverter.WinUI.Controls;
 
 /// <summary>
-/// A dialog to manage history
+/// A page to manage history
 /// </summary>
-public sealed partial class HistoryDialog : ContentDialog
+public sealed partial class HistoryPage : UserControl
 {
     private readonly DownloadHistory _history;
 
@@ -24,22 +24,19 @@ public sealed partial class HistoryDialog : ContentDialog
     public event EventHandler<string>? DownloadAgainRequested;
 
     /// <summary>
-    /// Constructs a HistoryDialog
+    /// Constructs a HistoryPage
     /// </summary>
     /// <param name="history">DownloadHistory</param>
-    public HistoryDialog(DownloadHistory history)
+    public HistoryPage(DownloadHistory history)
     {
         InitializeComponent();
         _history = history;
         //Localize Strings
-        Title = _("History");
-        CloseButtonText = _("Close");
+        LblTitle.Text = _("History");
         LblMessage.Text = _("Manage previously downloaded media.");
-        ToolTipService.SetToolTip(BtnClear, _("Clear History"));
-        TxtSearch.PlaceholderText = _("Search history");
+        LblBtnClear.Text = _("Clear");
         StatusNoHistory.Title = _("No Previous Downloads");
         //Load
-        TxtSearch.Visibility = _history.History.Count > 0 ? Visibility.Visible : Visibility.Collapsed;
         ViewStack.CurrentPageName = _history.History.Count > 0 ? "History" : "NoHistory";
         foreach (var pair in _history.History.OrderByDescending(x => x.Value.Date))
         {
@@ -77,7 +74,6 @@ public sealed partial class HistoryDialog : ContentDialog
             ToolTipService.SetToolTip(downloadButton, _("Download Again"));
             downloadButton.Click += (sender, e) =>
             {
-                Hide();
                 DownloadAgainRequested?.Invoke(this, pair.Key);
             };
             btnStack.Children.Add(downloadButton);
@@ -85,13 +81,6 @@ public sealed partial class HistoryDialog : ContentDialog
             ListHistory.Children.Add(row);
         }
     }
-
-    /// <summary>
-    /// Occurs when the ScrollViewer's size is changed
-    /// </summary>
-    /// <param name="sender">object</param>
-    /// <param name="e">SizeChangedEventArgs</param>
-    private void ScrollViewer_SizeChanged(object sender, SizeChangedEventArgs e) => StackPanel.Margin = new Thickness(0, 0, ScrollViewer.ComputedVerticalScrollBarVisibility == Visibility.Visible ? 14 : 0, 0);
 
     /// <summary>
     /// Occurs when the clear history button is clicked
@@ -102,22 +91,7 @@ public sealed partial class HistoryDialog : ContentDialog
     {
         _history.History.Clear();
         _history.Save();
-        TxtSearch.Visibility = Visibility.Collapsed;
         ViewStack.CurrentPageName = "NoHistory";
         ListHistory.Children.Clear();
-    }
-
-    /// <summary>
-    /// Occurs when the TxtSearch's text is changed
-    /// </summary>
-    /// <param name="sender">AutoSuggestBox</param>
-    /// <param name="args">AutoSuggestBoxTextChangedEventArgs</param>
-    private void TxtSearch_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
-    {
-        var search = TxtSearch.Text.ToLower();
-        foreach (SettingsCard row in ListHistory.Children)
-        {
-            ListHistory.Visibility = string.IsNullOrEmpty(search) || row.Header.ToString()!.ToLower().Contains(search) ? Visibility.Visible : Visibility.Collapsed;
-        }
     }
 }

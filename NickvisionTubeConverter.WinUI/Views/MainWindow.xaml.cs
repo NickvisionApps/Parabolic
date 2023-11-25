@@ -269,8 +269,10 @@ public sealed partial class MainWindow : Window
         }
         else if (tag == "History")
         {
+            var historyPage = new HistoryPage(_controller.DownloadManager.History);
+            historyPage.DownloadAgainRequested += async (s, ea) => await AddDownloadAsync(ea);
             ViewStack.CurrentPageName = "Custom";
-            FrameCustom.Content = null;
+            FrameCustom.Content = historyPage;
         }
         else if (tag == "Settings")
         {
@@ -433,26 +435,6 @@ public sealed partial class MainWindow : Window
     }
 
     /// <summary>
-    /// Occurs when the history menu item is clicked
-    /// </summary>
-    /// <param name="sender">object</param>
-    /// <param name="e">RoutedEventArgs</param>
-    private async void History(object sender, RoutedEventArgs e)
-    {
-        var historyDialog = new HistoryDialog(_controller.DownloadManager.History)
-        {
-            XamlRoot = MainGrid.XamlRoot
-        };
-        historyDialog.DownloadAgainRequested += async (s, ea) => await AddDownloadAsync(ea);
-        if (!_isContentDialogShowing)
-        {
-            _isContentDialogShowing = true;
-            await historyDialog.ShowAsync();
-            _isContentDialogShowing = false;
-        }
-    }
-
-    /// <summary>
     /// Occurs when the check for updates menu item is clicked
     /// </summary>
     /// <param name="sender">object</param>
@@ -600,15 +582,15 @@ public sealed partial class MainWindow : Window
         BdgSegmentedDownloading.Value = _controller.DownloadManager.DownloadingCount;
         BdgSegmentedQueued.Value = _controller.DownloadManager.QueuedCount;
         BdgSegmentedCompleted.Value = _controller.DownloadManager.CompletedCount;
-        if (ViewStackDownloads.CurrentPageName == "Downloading")
+        if (ViewStackDownloads.CurrentPageName == "Downloading" || ViewStackDownloads.CurrentPageName == "NoDownloading")
         {
             ViewStackDownloads.CurrentPageName = _controller.DownloadManager.DownloadingCount > 0 ? "Downloading" : "NoDownloading";
         }
-        else if (ViewStackDownloads.CurrentPageName == "Queued")
+        else if (ViewStackDownloads.CurrentPageName == "Queued" || ViewStackDownloads.CurrentPageName == "NoQueued")
         {
             ViewStackDownloads.CurrentPageName = _controller.DownloadManager.QueuedCount > 0 ? "Queued" : "NoQueued";
         }
-        else if (ViewStackDownloads.CurrentPageName == "Completed")
+        else if (ViewStackDownloads.CurrentPageName == "Completed" || ViewStackDownloads.CurrentPageName == "NoCompleted")
         {
             ViewStackDownloads.CurrentPageName = _controller.DownloadManager.CompletedCount > 0 ? "Completed" : "NoCompleted";
         }

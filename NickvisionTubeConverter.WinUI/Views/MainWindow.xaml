@@ -130,6 +130,10 @@
                                                 <TextBlock x:Name="LblBtnHomeAddDownload" TextWrapping="WrapWholeWords"/>
                                             </StackPanel>
                                         </Button.Content>
+
+                                        <Button.KeyboardAccelerators>
+                                            <KeyboardAccelerator Modifiers="Control" Key="N"/>
+                                        </Button.KeyboardAccelerators>
                                     </Button>
                                 </nickvision:StatusPage.Child>
                             </nickvision:StatusPage>
@@ -156,9 +160,14 @@
                                         <Button.Content>
                                             <StackPanel Orientation="Horizontal" Spacing="6">
                                                 <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" FontSize="16" Glyph="&#xE109;"/>
+                                                
                                                 <TextBlock x:Name="LblBtnAddDownload" TextWrapping="WrapWholeWords"/>
                                             </StackPanel>
                                         </Button.Content>
+
+                                        <Button.KeyboardAccelerators>
+                                            <KeyboardAccelerator Modifiers="Control" Key="N"/>
+                                        </Button.KeyboardAccelerators>
                                     </Button>
                                 </Grid>
 
