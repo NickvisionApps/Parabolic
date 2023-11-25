@@ -103,6 +103,10 @@ public sealed partial class MainWindow : Window
         BtnRetryFailedDownloads.Label = _("Retry Failed");
         BtnClearQueuedDownloads.Label = _("Clear Queued");
         BtnClearCompletedDownloads.Label = _("Clear Completed");
+        StatusPageNoDownloading.Title = _("No Running Downloads");
+        StatusPageNoDownloading.Description = _("Add a video, audio, or playlist URL to start downloading");
+        StatusPageNoQueued.Title = _("No Queued Downloads");
+        StatusPageNoCompleted.Title = _("No Completed Downloads");
         TrayIcon.ToolTipText = _("Parabolic");
         TrayMenuAddDownload.Text = _("Add Download");
         TrayMenuShowWindow.Text = _("Show Window");
@@ -524,7 +528,17 @@ public sealed partial class MainWindow : Window
     private void SegmentedDownloads_SelectionChanged(object sender, SelectionChangedEventArgs args)
     {
         var tag = (string)((SegmentedDownloads.SelectedItem as SegmentedItem)!.Tag);
-        ViewStackDownloads.CurrentPageName = tag;
+        if(tag == "Downloading")
+        {
+            ViewStackDownloads.CurrentPageName = _controller.DownloadManager.DownloadingCount > 0 ? "Downloading" : "NoDownloading";
+        }
+        else if (tag == "Queued")
+        {
+            ViewStackDownloads.CurrentPageName = _controller.DownloadManager.QueuedCount > 0 ? "Queued" : "NoQueued";
+        }
+        else if (tag == "Completed")
+        {
+        }
     }
 
     /// <summary>
@@ -573,6 +587,18 @@ public sealed partial class MainWindow : Window
         BdgSegmentedDownloading.Value = _controller.DownloadManager.DownloadingCount;
         BdgSegmentedQueued.Value = _controller.DownloadManager.QueuedCount;
         BdgSegmentedCompleted.Value = _controller.DownloadManager.CompletedCount;
+        if (ViewStackDownloads.CurrentPageName == "Downloading")
+        {
+            ViewStackDownloads.CurrentPageName = _controller.DownloadManager.DownloadingCount > 0 ? "Downloading" : "NoDownloading";
+        }
+        else if (ViewStackDownloads.CurrentPageName == "Queued")
+        {
+            ViewStackDownloads.CurrentPageName = _controller.DownloadManager.QueuedCount > 0 ? "Queued" : "NoQueued";
+        }
+        else if (ViewStackDownloads.CurrentPageName == "Completed")
+        {
+            ViewStackDownloads.CurrentPageName = _controller.DownloadManager.CompletedCount > 0 ? "Completed" : "NoCompleted";
+        }
         TrayIcon.ToolTipText = _controller.DownloadManager.BackgroundActivityReport;
     }
 

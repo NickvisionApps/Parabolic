@@ -139,7 +139,7 @@
                                     <RowDefinition Height="*"/>
                                 </Grid.RowDefinitions>
 
-                                <Grid Grid.Row="0" Margin="12,12,12,12" ColumnSpacing="12">
+                                <Grid Grid.Row="0" Margin="24,24,24,24" ColumnSpacing="12">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="Auto"/>
                                         <ColumnDefinition Width="*"/>
@@ -237,12 +237,24 @@
                                                     <StackPanel x:Name="ListDownloading" Margin="0,0,0,0" Orientation="Vertical" Spacing="6"/>
                                                 </nickvision:ViewStackPage>
 
+                                                <nickvision:ViewStackPage PageName="NoDownloading">
+                                                    <nickvision:StatusPage x:Name="StatusPageNoDownloading" HorizontalAlignment="Center" VerticalAlignment="Center" Glyph="&#xE896;"/>
+                                                </nickvision:ViewStackPage>
+
                                                 <nickvision:ViewStackPage PageName="Queued">
                                                     <StackPanel x:Name="ListQueued" Margin="0,0,0,0" Orientation="Vertical" Spacing="6"/>
                                                 </nickvision:ViewStackPage>
 
+                                                <nickvision:ViewStackPage PageName="NoQueued">
+                                                    <nickvision:StatusPage x:Name="StatusPageNoQueued" HorizontalAlignment="Center" VerticalAlignment="Center" Glyph="&#xE121;"/>
+                                                </nickvision:ViewStackPage>
+
                                                 <nickvision:ViewStackPage PageName="Completed">
                                                     <StackPanel x:Name="ListCompleted" Margin="0,0,0,0" Orientation="Vertical" Spacing="6"/>
+                                                </nickvision:ViewStackPage>
+
+                                                <nickvision:ViewStackPage PageName="NoCompleted">
+                                                    <nickvision:StatusPage x:Name="StatusPageNoCompleted" HorizontalAlignment="Center" VerticalAlignment="Center" Glyph="&#xE73E;"/>
                                                 </nickvision:ViewStackPage>
                                             </nickvision:ViewStack.Pages>
                                         </nickvision:ViewStack>
