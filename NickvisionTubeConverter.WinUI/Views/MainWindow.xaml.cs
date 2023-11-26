@@ -376,7 +376,8 @@ public sealed partial class MainWindow : Window
     public void ShowWindow(object sender, RoutedEventArgs e)
     {
         User32.ShowWindow(_hwnd, ShowWindowCommand.SW_SHOW);
-        TrayIcon.CloseTrayPopup();
+        Activate();
+        NavViewHome.IsSelected = true;
     }
 
     /// <summary>
