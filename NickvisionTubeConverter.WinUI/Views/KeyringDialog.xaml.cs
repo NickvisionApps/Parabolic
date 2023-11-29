@@ -48,7 +48,7 @@ public sealed partial class KeyringDialog : ContentDialog
         CardName.Header = _("Name");
         TxtName.PlaceholderText = _("Enter name here");
         CardUrl.Header = _("URL");
-        TxtUrl.PlaceholderText = _("Enter url here");
+        TxtUrl.PlaceholderText = _("Enter URL here");
         CardUsername.Header = _("Username");
         TxtUsername.PlaceholderText = _("Enter user name here");
         CardPassword.Header = _("Password");
