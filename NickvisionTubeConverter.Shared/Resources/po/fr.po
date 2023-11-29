@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-11-20 21:58-0500\n"
+"POT-Creation-Date: 2023-11-29 13:59-0500\n"
 "PO-Revision-Date: 2023-11-19 17:52+0000\n"
 "Last-Translator: rene-coty <irenee.thirion@e.email>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -19,12 +19,12 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
 "X-Generator: Weblate 5.2\n"
 
-#: ../../../Controllers/MainWindowController.cs:433
+#: ../../../Controllers/MainWindowController.cs:428
 #, csharp-format
 msgid "\"{0}\" has finished downloading."
 msgstr "« {0} » a été téléchargé."
 
-#: ../../../Controllers/MainWindowController.cs:433
+#: ../../../Controllers/MainWindowController.cs:428
 #, csharp-format
 msgid "\"{0}\" has finished with an error!"
 msgstr "« {0} » s’est terminé avec une erreur !"
@@ -56,7 +56,7 @@ msgstr "{0:f1} Kb/s"
 msgid "{0:f1} MiB/s"
 msgstr "{0:f1} Mb/s"
 
-#: ../../../Models/DownloadManager.cs:167
+#: ../../../Models/DownloadManager.cs:173
 #, csharp-format
 msgid "{0} download — {1:f1}% ({2})"
 msgid_plural "{0} downloads — {1:f1}% ({2})"
@@ -66,7 +66,7 @@ msgstr[1] "{0} téléchargements — {1:f1}% ({2})"
 #: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:395
 #: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:509
 #: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:467
-#: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:557
+#: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:558
 #, csharp-format
 msgid "{0} of {1} items"
 msgid_plural "{0} of {1} items"
@@ -131,7 +131,7 @@ msgstr "Ajouter un identifiant"
 msgid "Advanced Options"
 msgstr "Options avancées"
 
-#: ../../../Controllers/MainWindowController.cs:437
+#: ../../../Controllers/MainWindowController.cs:432
 msgid "All downloads have finished."
 msgstr "Tous les téléchargements sont terminés."
 
@@ -205,7 +205,7 @@ msgstr "Chrome/Edge"
 msgid "Clear Completed Downloads"
 msgstr "Effacer les téléchargements terminés"
 
-#: ../../../../NickvisionTubeConverter.WinUI/Controls/HistoryDialog.xaml.cs:39
+#: ../../../../NickvisionTubeConverter.WinUI/Controls/HistoryDialog.xaml.cs:38
 #: NickvisionTubeConverter.GNOME/Blueprints/history_dialog.blp:17
 msgid "Clear History"
 msgstr "Effacer l’historique"
@@ -226,7 +226,7 @@ msgstr ""
 msgid "Clear Queued Downloads"
 msgstr "Effacer les téléchargements en attente"
 
-#: ../../../../NickvisionTubeConverter.WinUI/Controls/HistoryDialog.xaml.cs:37
+#: ../../../../NickvisionTubeConverter.WinUI/Controls/HistoryDialog.xaml.cs:36
 #: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:44
 #: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringDialog.xaml.cs:35
 msgid "Close"
@@ -252,7 +252,7 @@ msgstr "Terminé"
 msgid "Completed Notification Trigger"
 msgstr "Notifications de fin de téléchargement"
 
-#: ../../../Controllers/MainWindowController.cs:124
+#: ../../../Controllers/MainWindowController.cs:112
 msgid "Contributors on GitHub ❤️"
 msgstr "Contributeurs sur GitHub ❤️"
 
@@ -304,11 +304,11 @@ msgstr "Rogner les vignettes des fichiers audio"
 msgid "Crop Thumbnail"
 msgstr "Rogner la vignette"
 
-#: ../../../Controllers/MainWindowController.cs:127
+#: ../../../Controllers/MainWindowController.cs:115
 msgid "DaPigGuy"
 msgstr "DaPigGuy"
 
-#: ../../../Controllers/MainWindowController.cs:128
+#: ../../../Controllers/MainWindowController.cs:116
 msgid "David Lapshin"
 msgstr "David Lapshin"
 
@@ -424,22 +424,22 @@ msgstr "Documentation"
 msgid "Don't show this message again"
 msgstr "Ne plus afficher ce message"
 
-#: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:549
+#: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:550
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:194
 #: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:13
 msgid "Download"
 msgstr "Télécharger"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Controls/HistoryDialog.cs:83
-#: ../../../../NickvisionTubeConverter.WinUI/Controls/HistoryDialog.xaml.cs:78
+#: ../../../../NickvisionTubeConverter.GNOME/Controls/HistoryDialog.cs:82
+#: ../../../../NickvisionTubeConverter.WinUI/Controls/HistoryDialog.xaml.cs:77
 msgid "Download Again"
 msgstr "Télécharger à nouveau"
 
-#: ../../../Controllers/MainWindowController.cs:433
+#: ../../../Controllers/MainWindowController.cs:428
 msgid "Download Finished"
 msgstr "Téléchargement terminé"
 
-#: ../../../Controllers/MainWindowController.cs:433
+#: ../../../Controllers/MainWindowController.cs:428
 msgid "Download Finished With Error"
 msgstr "Téléchargement terminé avec une erreur"
 
@@ -463,15 +463,15 @@ msgstr "Télécharger une séquence spécifique"
 msgid "Download Subtitles"
 msgstr "Télécharger les sous-titres"
 
-#: ../../../Models/Download.cs:407
+#: ../../../Models/Download.cs:408
 msgid "Download using aria2 has started"
 msgstr "Le téléchargement via aria2 a débuté"
 
-#: ../../../Models/Download.cs:418
+#: ../../../Models/Download.cs:419
 msgid "Download using ffmpeg has started"
 msgstr "Le téléchargement via ffmpeg a débuté"
 
-#: ../../../Controllers/MainWindowController.cs:117
+#: ../../../Controllers/MainWindowController.cs:105
 msgid "Download web video and audio"
 msgstr "Téléchargez des vidéos et de l’audio en ligne"
 
@@ -503,7 +503,7 @@ msgstr "Téléchargement…"
 msgid "Downloads"
 msgstr "Téléchargements"
 
-#: ../../../Controllers/MainWindowController.cs:437
+#: ../../../Controllers/MainWindowController.cs:432
 msgid "Downloads Finished"
 msgstr "Téléchargements terminés"
 
@@ -542,19 +542,15 @@ msgstr ""
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:425
 #: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:96
-#: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:589
+#: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:590
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:305
 msgid "End Time"
 msgstr "Fin"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:445
-#: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:607
+#: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:608
 msgid "End Time (Invalid)"
 msgstr "Fin (invalide)"
-
-#: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:47
-msgid "Ender media url here"
-msgstr "Entrez l’URL d’un média ici"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:343
 #: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:511
@@ -564,6 +560,11 @@ msgstr "Assurez-vous que les identifiants soient corrects."
 #: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:98
 msgid "Enter end timeframe here"
 msgstr "Entrez l’horodatage de fin ici"
+
+#: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:47
+#, fuzzy
+msgid "Enter media URL here"
+msgstr "Entrez l’URL d’un média ici"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringDialog.xaml.cs:49
 msgid "Enter name here"
@@ -575,7 +576,8 @@ msgid "Enter password here"
 msgstr "Entrez le mot de passe ici"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:83
-msgid "Enter proxy url here"
+#, fuzzy
+msgid "Enter proxy URL here"
 msgstr "Entrez l’URL du proxy ici"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:95
@@ -583,7 +585,8 @@ msgid "Enter start timeframe here"
 msgstr "Entrez l’horodatage de début ici"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringDialog.xaml.cs:51
-msgid "Enter url here"
+#, fuzzy
+msgid "Enter URL here"
 msgstr "Entrez l’URL ici"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:53
@@ -629,7 +632,7 @@ msgstr "Type de fichier"
 msgid "Firefox"
 msgstr "Firefox"
 
-#: ../../../Controllers/MainWindowController.cs:126
+#: ../../../Controllers/MainWindowController.cs:114
 msgid "Fyodor Sobolev"
 msgstr "Fyodor Sobolev"
 
@@ -644,7 +647,7 @@ msgstr "Dépôt GitHub"
 msgid "Help"
 msgstr "Aide"
 
-#: ../../../../NickvisionTubeConverter.WinUI/Controls/HistoryDialog.xaml.cs:36
+#: ../../../../NickvisionTubeConverter.WinUI/Controls/HistoryDialog.xaml.cs:35
 #: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:86
 #: NickvisionTubeConverter.GNOME/Blueprints/history_dialog.blp:30
 #: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:45
@@ -731,7 +734,7 @@ msgstr "Informations sur les abréviations de langage"
 msgid "Leave empty to download from start."
 msgstr "Laisser vide pour télécharger à partir du début."
 
-#: ../../../Controllers/MainWindowController.cs:121
+#: ../../../Controllers/MainWindowController.cs:109
 msgid "List of supported sites"
 msgstr "Liste des sites pris en charge"
 
@@ -751,12 +754,12 @@ msgstr "S’identifier"
 msgid "Make thumbnail square, useful when downloading music."
 msgstr "Rend les vignettes carrées, utile pour le téléchargement de musiques."
 
-#: ../../../../NickvisionTubeConverter.WinUI/Controls/HistoryDialog.xaml.cs:38
+#: ../../../../NickvisionTubeConverter.WinUI/Controls/HistoryDialog.xaml.cs:37
 #: NickvisionTubeConverter.GNOME/Blueprints/history_dialog.blp:35
 msgid "Manage previously downloaded media."
 msgstr "Gérer les médias téléchargés précédemment."
 
-#: ../../../Controllers/MainWindowController.cs:122
+#: ../../../Controllers/MainWindowController.cs:110
 msgid "Matrix Chat"
 msgstr "Discussion Matrix"
 
@@ -771,7 +774,7 @@ msgid "Max Number of Active Downloads"
 msgstr "Nombre maximum de téléchargements actifs"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:396
-#: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:555
+#: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:556
 msgid "Maximum Quality"
 msgstr "Qualité maximale"
 
@@ -822,12 +825,12 @@ msgstr "Nom"
 msgid "Name (Empty)"
 msgstr "Nom (vide)"
 
-#: ../../../Controllers/MainWindowController.cs:345
+#: ../../../Controllers/MainWindowController.cs:340
 msgid "New update available."
 msgstr "Nouvelle mise à jour disponible."
 
-#: ../../../Controllers/MainWindowController.cs:123
-#: ../../../Controllers/MainWindowController.cs:125
+#: ../../../Controllers/MainWindowController.cs:111
+#: ../../../Controllers/MainWindowController.cs:113
 msgid "Nicholas Logozzo"
 msgstr "Nicholas Logozzo"
 
@@ -841,7 +844,7 @@ msgstr "Nicholas Logozzo"
 msgid "No"
 msgstr "Non"
 
-#: ../../../Controllers/MainWindowController.cs:316
+#: ../../../Controllers/MainWindowController.cs:310
 msgid "No active internet connection"
 msgstr "Pas de connexion internet active"
 
@@ -854,7 +857,7 @@ msgstr "Aucun téléchargement terminé"
 msgid "No Credentials"
 msgstr "Aucun identifiant"
 
-#: ../../../Models/DownloadManager.cs:175
+#: ../../../Models/DownloadManager.cs:181
 msgid "No downloads running"
 msgstr "Aucun téléchargement en cours"
 
@@ -867,7 +870,7 @@ msgstr "Aucun téléchargement en cours"
 msgid "No File Selected"
 msgstr "Aucun fichier sélectionné"
 
-#: ../../../../NickvisionTubeConverter.WinUI/Controls/HistoryDialog.xaml.cs:41
+#: ../../../../NickvisionTubeConverter.WinUI/Controls/HistoryDialog.xaml.cs:40
 #: NickvisionTubeConverter.GNOME/Blueprints/history_dialog.blp:58
 msgid "No Previous Downloads"
 msgstr "Aucun téléchargement précédent"
@@ -955,7 +958,7 @@ msgstr "Ouvrir le dossier"
 msgid "Overwrite Existing Files"
 msgstr "Remplacer les fichiers existants"
 
-#: ../../../Controllers/MainWindowController.cs:116
+#: ../../../Controllers/MainWindowController.cs:104
 #: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:121
 msgid "Parabolic"
 msgstr "Parabole"
@@ -983,8 +986,8 @@ msgstr "Mot de passe"
 msgid "Password (Empty)"
 msgstr "Mot de passe (vide)"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Controls/HistoryDialog.cs:67
-#: ../../../../NickvisionTubeConverter.WinUI/Controls/HistoryDialog.xaml.cs:69
+#: ../../../../NickvisionTubeConverter.GNOME/Controls/HistoryDialog.cs:66
+#: ../../../../NickvisionTubeConverter.WinUI/Controls/HistoryDialog.xaml.cs:68
 msgid "Play"
 msgstr "Lire"
 
@@ -1092,17 +1095,17 @@ msgstr "Relancer les téléchargements échoués"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:421
 #: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:62
-#: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:587
+#: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:588
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:139
 msgid "Save Folder"
 msgstr "Dossier d’enregistrement"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:435
-#: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:599
+#: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:600
 msgid "Save Folder (Invalid)"
 msgstr "Dossier de sauvegarde (invalide)"
 
-#: ../../../../NickvisionTubeConverter.WinUI/Controls/HistoryDialog.xaml.cs:40
+#: ../../../../NickvisionTubeConverter.WinUI/Controls/HistoryDialog.xaml.cs:39
 #: NickvisionTubeConverter.GNOME/Blueprints/history_dialog.blp:48
 msgid "Search history"
 msgstr "Rechercher dans l’historique"
@@ -1154,7 +1157,7 @@ msgstr ""
 "Êtes-vous sûr⋅e de vouloir fermer Parabole et arrêter les téléchargement en "
 "cours ?"
 
-#: ../../../Models/DownloadManager.cs:171
+#: ../../../Models/DownloadManager.cs:177
 msgid "Some downloads finished with errors!"
 msgstr "Certains téléchargements se sont terminés avec des erreurs !"
 
@@ -1182,13 +1185,13 @@ msgstr "Informations sur SponsorBlock (ouvrira votre navigateur web)"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:423
 #: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:93
-#: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:588
+#: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:589
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:300
 msgid "Start Time"
 msgstr "Point de départ"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:440
-#: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:603
+#: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:604
 msgid "Start Time (Invalid)"
 msgstr "Point de départ (invalide)"
 
@@ -1284,7 +1287,7 @@ msgstr ""
 "Cette opération supprimera le trousseau précédent et tous les mots de passe "
 "qu’il contenait. Cette action est irréversible."
 
-#: ../../../Controllers/MainWindowController.cs:129
+#: ../../../Controllers/MainWindowController.cs:117
 msgid "translator-credits"
 msgstr "Irénée Thirion"
 
@@ -1293,7 +1296,7 @@ msgstr "Irénée Thirion"
 msgid "Unable to disable keyring."
 msgstr "Impossible de désactiver le trousseau."
 
-#: ../../../Controllers/MainWindowController.cs:361
+#: ../../../Controllers/MainWindowController.cs:356
 msgid "Unable to download and install update."
 msgstr "Impossible de télécharger et installer la mise à jour."
 
@@ -1307,7 +1310,7 @@ msgstr "Impossible de réinitialiser le trousseau."
 msgid "Undo Title Editing"
 msgstr "Annuler la modification du titre"
 
-#: ../../../Controllers/MainWindowController.cs:298
+#: ../../../Controllers/MainWindowController.cs:292
 msgid "Unlock Keyring"
 msgstr "Déverrouiller le trousseau"
 
@@ -1315,7 +1318,7 @@ msgstr "Déverrouiller le trousseau"
 msgid "Unset Cookies File"
 msgstr "Retirer le fichier de cookies"
 
-#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:326
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:327
 msgid "Update"
 msgstr "Mettre à jour"
 

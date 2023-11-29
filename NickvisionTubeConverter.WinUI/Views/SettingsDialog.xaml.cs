@@ -80,7 +80,7 @@ public sealed partial class SettingsDialog : ContentDialog
         CardSpeedLimit.Header = _("Speed Limit");
         CardSpeedLimit.Description = _("This limit (in KiB/s) is applied to downloads that have speed limit enabled. Changing the value doesn't affect already running downloads.");
         CardProxy.Header = _("Proxy URL");
-        TxtProxy.PlaceholderText = _("Enter proxy url here");
+        TxtProxy.PlaceholderText = _("Enter proxy URL here");
         CardCookiesFile.Header = _("Cookies File");
         CardCookiesFile.Description = _("A cookies file can be provided to yt-dlp to allow downloading media that requires a login.");
         ToolTipService.SetToolTip(BtnSelectCookiesFile, _("Select Cookies File"));
