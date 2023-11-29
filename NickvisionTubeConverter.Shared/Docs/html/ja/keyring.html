@@ -15,52 +15,52 @@ document.addEventListener('DOMContentLoaded', function() {
 </head>
 <body lang="ja" dir="ltr"><main><div class="page">
 <header><div class="inner pagewide"><div class="trails" role="navigation"><div class="trail">
-<a class="trail" href="index.html" title="Parabolic Help">Parabolic Help</a> » </div></div></div></header><article><div class="hgroup pagewide"><h1 class="title"><span class="title">キーリング</span></h1></div>
+<a class="trail" href="index.html" title="Parabolic のヘルプ">Parabolic のヘルプ</a> » </div></div></div></header><article><div class="hgroup pagewide"><h1 class="title"><span class="title">キーリング</span></h1></div>
 <div class="region">
-<div class="contents pagewide"><p class="p">このページでは<span class="app">Parabolic</span>でキーリングを使う際のすべてのオプションについて説明します。</p></div>
+<div class="contents pagewide"><p class="p">このページでは <span class="app">Parabolic</span> でキーリングを使う際のすべてのオプションについて説明します。</p></div>
 <section id=""><div class="inner">
 <div class="hgroup pagewide"><h2 class="title"><span class="title">バックエンド</span></h2></div>
 <div class="region"><div class="contents pagewide">
 <p class="p">キーリング機能には、<span class="code">Nickvision.Aura</span>ライブラリが使用されています。</p>
-<p class="p">このライブラリには、認証情報を安全に保管するために隔離されたSQLCipherデータベースを使っています。</p>
-<p class="p">このライブラリではシステムの認証情報管理機能(LinuxはDBus secret service、WindowsではWindows Credential Manager等)を使ってキーリングを保護しています。</p>
+<p class="p">このライブラリには、資格情報を安全に保管するために隔離されたSQLCipherデータベースを使っています。</p>
+<p class="p">このライブラリではシステムの資格情報管理機能(LinuxはDBus secret service、WindowsではWindows Credential Manager等)を使ってキーリングを保護しています。</p>
 </div></div>
 </div></section><section id=""><div class="inner">
-<div class="hgroup pagewide"><h2 class="title"><span class="title">認証情報を保管する</span></h2></div>
+<div class="hgroup pagewide"><h2 class="title"><span class="title">資格情報を保管する</span></h2></div>
 <div class="region"><div class="contents pagewide">
-<p class="p">Here are the fields that can be stored in a credential:</p>
-<p class="p"><span class="code">Name</span>: The name of the credential</p>
-<p class="p"><span class="code">URL</span> (optional): The URL of the credential</p>
-<p class="p"><span class="code">Username</span> (optional if password is not empty): The username of the credential</p>
-<p class="p"><span class="code">Password</span> (optional if username is not empty): The password of the credential</p>
+<p class="p">これらの情報が資格情報の中に保存されます：</p>
+<p class="p"><span class="code">名前</span>: 資格情報の名前</p>
+<p class="p"><span class="code">URL</span>(オプション): 資格情報の URL</p>
+<p class="p"><span class="code">ユーザー名</span>(ユーザー名が空でない場合はオプション): 資格情報のユーザー名</p>
+<p class="p"><span class="code">パスワード</span>(ユーザー名が空でない場合はオプション): 資格情報のパスワード</p>
 </div></div>
 </div></section><section id=""><div class="inner">
-<div class="hgroup pagewide"><h2 class="title"><span class="title">Migrating from Password-Secured Keyring to Secret-Secured Keyring</span></h2></div>
+<div class="hgroup pagewide"><h2 class="title"><span class="title">パスワード保護キーリングから秘密鍵保護キーリングへの移行</span></h2></div>
 <div class="region"><div class="contents pagewide">
-<p class="p">This section applies to users who have enabled a Keyring in Parabolic (in versions before V2023.9.0) and secured it with a password. Starting with version 2023.9.0, Parabolic uses the system's credential manager to generate a random password (secret) to secure the Keyring instead of asking for a user to provide one. By using the system credential manager, Parabolic can also automatically unlock the Keyring at startup without user interaction.</p>
-<p class="p">If you have a password-secured Keyring from before version 2023.9.0, you can continue to use it in new versions of Parabolic without issue, but you will still need to provide the password everytime the application starts.</p>
-<p class="p">Follow the rest of this section if you'd like to migrate your existing credentials and take advantage of the new Keyring where a password is not required every time.</p>
+<p class="p">この章は、Parabolic（V2023.9.0より前のバージョン）でパスワード保護を使用したキーリングを有効にしていた方を対象としています。バージョン2023.9.0から Parabolic は、パスワード要求の代わりとなるキーリング保護のために、システムの資格情報管理がランダムなパスワード（秘密鍵）を生成するようになりました。システムの資格情報管理を使用することで、Parabolic はユーザーの入力なしで、起動時にキーリングのロックを解除できるようになりました。</p>
+<p class="p">バージョン2023.9.0 以前のパスワード保護されたキーリングがある場合は、問題なく新しいバージョンの Parabolic でも引き続き使用できますが、アプリケーションが起動する度にパスワードを入力する必要があります。</p>
+<p class="p">依存の資格情報を移行し、毎回パスワード入力する必要がない新しいキーリングを利用したい場合は、下の章に従ってください。</p>
 <div class="note" title="注記">
 <svg height="24" width="24" version="1.1">
  <g>
   <path class="yelp-svg-fill" d="m4 3h16c0.554 0 1 0.446 1 1v11h-6v6h-11c-0.554 0-1-0.446-1-1v-16c0-0.554 0.446-1 1-1z"></path>
   <path class="yelp-svg-fill" d="m17 16h4l-5 5v-4c0-0.554 0.446-1 1-1z"></path>
  </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">You can simply disable the old password-secured Keyring when you update Parabolic to 2023.9.0 and re-enable the Keyring to get a secret-secured one. However, this will erase all data from the old Keyring and require you to re-enter all credentials.</p></div></div></div>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">新しい秘密鍵保護のキーリングを使うために、Parabolic を2023.9.0にアップデートし、キーリングを再度有効にして、古いパスワード保護のキーリングにすることも無効化できます。しかし、古いキーリングのデータは全て削除され、全ての資格情報を再度入力する必要があります。</p></div></div></div>
 </div>
 <div class="steps"><div class="inner"><div class="region"><ol class="steps">
-<li class="steps"><p class="p">Install <span class="link"><a href="https://flathub.org/apps/org.gnome.seahorse.Application" title="https://flathub.org/apps/org.gnome.seahorse.Application">Passwords and Keys</a></span>.</p></li>
-<li class="steps"><p class="p">Open Parabolic V2023.9.0 or newer at least once. (This will ensure that the app registers with your system's credential manager)</p></li>
-<li class="steps"><p class="p">Open <span class="code">Passwords and Keys</span> and locate the <span class="code">org.nickvision.tubeconverter</span> entry in the <span class="code">Default Keyring</span>.</p></li>
-<li class="steps"><p class="p">Double click the <span class="code">org.nickvision.tubeconverter</span> entry and edit the <span class="code">Password</span> field. Enter the password that you created and used for your Keyring in Parabolic.</p></li>
-<li class="steps"><p class="p">You can now close <span class="code">Passwords and Keys</span> and restart Parabolic. You will see that upon application startup, the Keyring will now be automatically unlocked!</p></li>
+<li class="steps"><p class="p"><span class="link"><a href="https://flathub.org/apps/org.gnome.seahorse.Application" title="https://flathub.org/apps/org.gnome.seahorse.Application">パスワードと鍵</a></span>をインストール。</p></li>
+<li class="steps"><p class="p">V2023.9.0またはそれ以降のバージョンの Parabolic を開く。（これにより、アプリがシステムの資格情報管理に登録することを確実にします）</p></li>
+<li class="steps"><p class="p"><span class="code">パスワードと鍵</span>を開き、<span class="code">デフォルトのキーリング</span>の<span class="code">org.nickvision.tubeconverter</span>のエントリをさがす。</p></li>
+<li class="steps"><p class="p"><span class="code">org.nickvision.tubeconverter</span> のエントリをダブルクリックし、<span class="code">パスワード</span>のフィールドを編集する。Parabolic で作成し、使用していたキーリングのパスワードを入力する。</p></li>
+<li class="steps"><p class="p"><span class="code">パスワードと鍵</span>を閉じ、Parabolic を再起動する。これで、アプリを起動した時、キーリングのロックが自動的に解除されるはずです！</p></li>
 </ol></div></div></div>
 </div></div>
 </div></section><section class="links" role="navigation"><div class="inner">
 <div class="hgroup pagewide"></div>
 <div class="contents pagewide"><div class="links guidelinks"><div class="inner">
 <div class="title"><h2><span class="title">詳細</span></h2></div>
-<div class="region"><ul><li class="links "><a href="index.html" title="Parabolic Help">Parabolic Help</a></li></ul></div>
+<div class="region"><ul><li class="links "><a href="index.html" title="Parabolic のヘルプ">Parabolic のヘルプ</a></li></ul></div>
 </div></div></div>
 </div></section>
 </div>

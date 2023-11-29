@@ -2,7 +2,7 @@
 <page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" id="newDownload" its:version="2.0" xml:lang="ja">
 <info>
 	<link type="guide" xref="index"/>
-	<title type="link">New Download 🆕</title>
+	<title type="link">新規ダウンロード 🆕</title>
 	<credit type="author copyright">
 		<name>Nicholas Logozzo</name>
 		<years its:translate="no">2023</years>
@@ -20,70 +20,70 @@
     </mal:credit>
   </info>
 
-<title>New Download</title>
-<p>This page explains all options for configuring a new download in <app>Parabolic</app>.</p>
+<title>新規ダウンロード</title>
+<p>このページでは <app>Parabolic</app> の新規ダウンロードを設定するためのすべてのオプションを解説します。</p>
 
 <terms>
     <item>
-      <title>メディアのURL</title>
-      <p>The URL of the media to download. Must be a valid ("valid" meaning syntactically correct) http or https link.</p>
+      <title>メディアの URL</title>
+      <p>メディアのダウンロード元の URL。有効な（正しい URL の構文である）http または https リンクである必要があります。</p>
       <note>
-            <p>If a valid URL is found inside the clipboard upon opening the Add Download dialog, the URL will be automatically pasted in the URL entry row.</p>
+            <p>"ダウンロードを追加"のダイアログが開いた際に、クリップボードに有効な URL が見つかると、URL は自動的に URL 入力欄にペーストされます。</p>
       </note>
     </item>
     <item>
       <title>認証</title>
-      <p>If enabled, the user will be asked to provide a username and/or password to pass to yt-dlp when downloading.</p>
-        <p>If keyring is enabled, the user will be asked to chose from a list of named credentials or can chose to enter manually a different username and/or password.</p>
+      <p>有効であれば、ダウンロード時に、 yt-dlp に渡す、ユーザー名と（または）パスワードが要求されます。</p>
+        <p>キーリングが有効であれば、保存された資格情報の選択を要求されますが、別のユーザー名と（または）パスワードを手動で入力することもできます。</p>
 		<note style="advanced">
-			<p>Not all websites support passing usernames and passwords to yt-dlp. For example, YouTube does NOT support this feature.</p>
-            <p>For these sites that don't support passing credentials, it is recommended to upload a Cookies file in Preferences instead.</p>
+			<p>すべてのウェブサイトで yt-dlp がユーザー名とパスワードの入力に対応しているわけではありません。例えば、YouTube はこの機能にサポートしていません。</p>
+            <p>これらのサイトに資格情報は対応していない、設定でクッキーファイルをアップロードすることをお勧めします。</p>
 		</note>
     </item>
     <item>
 		<title>ファイルの種類</title>
-		<p>The file type of which to download the media as.</p>
-            <p>If <code>Disallow Conversions</code> is enabled, the only options will be <code>Video</code> (if supported) and <code>Audio</code></p>
+		<p>ダウンロードするメディアのファイルのタイプ。</p>
+            <p><code>フォーマット変換を無効化</code>が有効であれば、（サポートされていれば）<code>動画</code>もしくは<code>音声</code>の二択になります</p>
         <note>
-            <p>The previously used file type will be remembered and pre-selected for the next download.</p>
+            <p>最後に使用したファイルの種類は、次回のダウンロードのために記憶・事前選択されます。</p>
         </note>
     </item>
     <item>
 		<title>品質</title>
-		<p>If the file type is a video type, the listed qualities will be the resolutions of the media available.</p>
-        <p>If the file type is an audio type, the listed qualities will be simply <code>Best</code> and <code>Worst</code>.</p>
+		<p>ファイルの種類が動画の場合、表示される品質はメディアが利用できる解像度です。</p>
+        <p>ファイルの種類が音声の場合、表示される品質は単純に<code>最高</code>もしくは<code>最低</code>になります。</p>
         <note>
-            <p>The previously used quality will be remembered and pre-selected for the next download.</p>
+            <p>最後に使用した品質は、次回のダウンロードのために記憶・事前選択されます。</p>
         </note>
     </item>
     <item>
 		<title>字幕をダウンロードする</title>
-		<p>Whether to download and embed subtitle when downloading a video. Languages for subtitles can be defined in <link xref="downloader">preferences</link>.</p>
+		<p>動画のダウンロード時に字幕をダウンロードしてメディアに埋め込むかどうか。字幕の言語は<link xref="downloader">設定</link>にて指定できます。</p>
         <note>
-            <p>The previously used state will be remembered and pre-selected for the next download.</p>
+            <p>最後に使用した状態は、今後のダウンロードのために記憶・事前選択されます。</p>
         </note>
     </item>
     <item>
 		<title>保存フォルダー</title>
-		<p>The folder at which to save the download to.</p>
-        <p>If the file type is an audio type, the listed qualities will be simply <code>Best</code> and <code>Worst</code>.</p>
+		<p>ダウンロードを保存フォルダー。</p>
+        <p>ファイルの種類が音声の場合、表示される品質は単純に<code>最高</code>もしくは<code>最低</code>になります。</p>
         <note>
-            <p>The previously used folder will be remembered and pre-selected for the next download.</p>
+            <p>最後に使用したフォルダーは、次回のダウンロードのために記憶・事前選択されます。</p>
         </note>
     </item>
     <item>
 		<title>スピード制限</title>
-		<p>If enabled, Parabolic will limit the download's speed with the speed configured in Preferences.</p>
+		<p>有効であれば、Parabolic は、設定された速度でダウンロードの速度を制限します。</p>
         <note>
-            <p>Available in the <code>Advanced Options</code> section.</p>
+            <p><code>詳細オプション</code>で選択可能です。</p>
         </note>
     </item>
     <item>
         <title>AV1 コーデックを優先する</title>
-        <p>Only available for video (mp4, webm) downloads</p>
-        <p>If enabled, Parabolic will prefer videos with the av1 codec when downloading.</p>
+        <p>動画（mp4、webm）のダウンロードのみ利用可能です</p>
+        <p>有効であれば、Parabolic は動画のダウンロード時に av1 コーデックを使用します。</p>
         <note>
-            <p>Available in the <code>Advanced Options</code> section.</p>
+            <p><code>詳細オプション</code>で選択可能です。</p>
         </note>
         <note>
             <p>このオプションの状態は、今後のダウンロードのために記憶・復元されます。</p>
@@ -91,34 +91,34 @@
     </item>
     <item>
         <title>チャプター（章）で分ける</title>
-        <p>If enabled, Parabolic will split the video into multiple smaller ones based on its chapters.</p>
+        <p>有効であれば、Parabolic は動画を複数の小さなチャプターごとに分割します。</p>
         <note>
-            <p>Available in the <code>Advanced Options</code> section.</p>
+            <p><code>詳細オプション</code>で選択可能です。</p>
         </note>
     </item>
     <item>
-		<title>Crop Thumbnail</title>
-        <p>Only available if <code>Embed Metadata</code> is enabled in Preferences.</p>
-		<p>If enabled, Parabolic will crop a download's embedded thumbnail as square. This is useful when downloading music who's album images are usually square.</p>
+		<title>サムネイルを整形</title>
+        <p><code>メタデータを埋め込む</code>が有効な場合のみ利用可能です。</p>
+		<p>有効であれば、Parabolic はダウンロードに埋め込まれたサムネイルを正方形に整えます。アルバムイメージの音楽をダウンロードするときに便利です。</p>
         <note>
-            <p>Available in the <code>Advanced Options</code> section.</p>
+            <p><code>詳細オプション</code>で選択可能です。</p>
         </note>
     </item>
     <item>
 		<title>特定の時間枠をダウンロードする</title>
-		<p>If enabled, the user will be able to enter a start timeframe and an end timeframe for a section of the media to download.</p>
+		<p>有効であれば、ダウンロードするメディアの開始と終わりのタイムフレームを入力できるようになります。</p>
         <note>
-            <p>Available in the <code>Advanced Options</code> section.</p>
+            <p><code>詳細オプション</code>で選択可能です。</p>
         </note>
         <note style="advanced">
-            <p>Enabling this option will disable the use of aria2 as the downloader for this download if it is enabled in Preferences.</p>
+            <p>このオプションを有効にすると、aria2 を使用したダウンロードが無効になります。</p>
         </note>
     </item>
     <item>
-		<title>File Name</title>
-        <p>The file name to use when saving the download.</p>
+		<title>ファイル名</title>
+        <p>ダウンロードを保存する際に使用するファイル名。</p>
 		<note style="advanced">
-			<p>Default: The title of the media</p>
+			<p>デフォルト: メディアのタイトル</p>
 		</note>
     </item>
 </terms>
