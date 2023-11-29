@@ -44,7 +44,7 @@ public sealed partial class AddDownloadDialog : ContentDialog
         CloseButtonText = _("Close");
         LblBtnBack.Text = _("Back");
         CardUrl.Header = _("Media URL");
-        TxtUrl.PlaceholderText = _("Ender media url here");
+        TxtUrl.PlaceholderText = _("Enter media URL here");
         CardAuthenticate.Header = _("Authenticate");
         TglAuthenticate.OnContent = _("On");
         TglAuthenticate.OffContent = _("Off");
@@ -97,7 +97,7 @@ public sealed partial class AddDownloadDialog : ContentDialog
         CardTimeframeEnd.Description = _("Leave empty to download from start.");
         TxtTimeframeEnd.PlaceholderText = _("Enter end timeframe here");
         //Load
-        ViewStack.CurrentPageName = "Url";
+        ViewStack.CurrentPageName = "URL";
         if (Directory.Exists(_controller.PreviousSaveFolder))
         {
             _saveFolderString = _controller.PreviousSaveFolder;

@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-11-20 21:58-0500\n"
-"PO-Revision-Date: 2023-09-26 13:20+0000\n"
+"POT-Creation-Date: 2023-11-29 13:59-0500\n"
+"PO-Revision-Date: 2023-11-29 18:56+0000\n"
 "Last-Translator: Sabri Ünal <libreajans@gmail.com>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/nickvision-tube-"
 "converter/app/tr/>\n"
@@ -17,14 +17,14 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.1-dev\n"
+"X-Generator: Weblate 5.3-dev\n"
 
-#: ../../../Controllers/MainWindowController.cs:433
+#: ../../../Controllers/MainWindowController.cs:428
 #, csharp-format
 msgid "\"{0}\" has finished downloading."
 msgstr "\"{0}\" indirmeyi tamamladı."
 
-#: ../../../Controllers/MainWindowController.cs:433
+#: ../../../Controllers/MainWindowController.cs:428
 #, csharp-format
 msgid "\"{0}\" has finished with an error!"
 msgstr "\"{0}\" bir hatayla tamamlandı!"
@@ -56,7 +56,7 @@ msgstr "{0:f1} KiB/s"
 msgid "{0:f1} MiB/s"
 msgstr "{0:f1} MiB/s"
 
-#: ../../../Models/DownloadManager.cs:167
+#: ../../../Models/DownloadManager.cs:173
 #, csharp-format
 msgid "{0} download — {1:f1}% ({2})"
 msgid_plural "{0} downloads — {1:f1}% ({2})"
@@ -66,7 +66,7 @@ msgstr[1] "İndirmeler: {0} — %{1:f1} ({2})"
 #: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:395
 #: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:509
 #: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:467
-#: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:557
+#: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:558
 #, csharp-format
 msgid "{0} of {1} items"
 msgid_plural "{0} of {1} items"
@@ -76,7 +76,7 @@ msgstr[1] "{0} / {1} öge"
 #: ../../../../NickvisionTubeConverter.WinUI/Controls/MediaRow.xaml.cs:84
 #, csharp-format
 msgid "{0}{1}"
-msgstr ""
+msgstr "{0}{1}"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:85
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:238
@@ -130,7 +130,7 @@ msgstr "Giriş Ekle"
 msgid "Advanced Options"
 msgstr "Gelişmiş Seçenekler"
 
-#: ../../../Controllers/MainWindowController.cs:437
+#: ../../../Controllers/MainWindowController.cs:432
 msgid "All downloads have finished."
 msgstr "Tüm indirmeler tamamlandı."
 
@@ -141,7 +141,7 @@ msgstr "Arka Planda Çalışmaya İzin Ver"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:39
 msgid "An application restart is required to change the theme."
-msgstr ""
+msgstr "Temayı değiştirmek için uygulamanın yeniden başlatılması gerekir."
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:35
 msgid "Apply"
@@ -166,7 +166,7 @@ msgstr "Kimlik Doğrula"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:43
 msgid "Automatically Check for Updates"
-msgstr ""
+msgstr "Güncellemeleri Kendiliğinden Denetle"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:45
 #: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringDialog.xaml.cs:36
@@ -183,7 +183,7 @@ msgstr "En İyi"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:36
 msgid "Cancel"
-msgstr "İptal Et"
+msgstr "İptal"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Controls/AboutDialog.xaml.cs:31
 msgid "Changelog"
@@ -191,12 +191,12 @@ msgstr "Değişiklik Günlüğü"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:94
 msgid "Check for Updates"
-msgstr ""
+msgstr "Güncellemeleri Denetle"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:90
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:296
 msgid "Chrome/Edge"
-msgstr ""
+msgstr "Chrome/Edge"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:92
 #: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:118
@@ -204,7 +204,7 @@ msgstr ""
 msgid "Clear Completed Downloads"
 msgstr "Tamamlanan İndirmeleri Temizle"
 
-#: ../../../../NickvisionTubeConverter.WinUI/Controls/HistoryDialog.xaml.cs:39
+#: ../../../../NickvisionTubeConverter.WinUI/Controls/HistoryDialog.xaml.cs:38
 #: NickvisionTubeConverter.GNOME/Blueprints/history_dialog.blp:17
 msgid "Clear History"
 msgstr "Geçmişi Temizle"
@@ -225,7 +225,7 @@ msgstr ""
 msgid "Clear Queued Downloads"
 msgstr "Kuyruktaki İndirmeleri Temizle"
 
-#: ../../../../NickvisionTubeConverter.WinUI/Controls/HistoryDialog.xaml.cs:37
+#: ../../../../NickvisionTubeConverter.WinUI/Controls/HistoryDialog.xaml.cs:36
 #: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:44
 #: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringDialog.xaml.cs:35
 msgid "Close"
@@ -238,7 +238,7 @@ msgstr "İndirmeler Kapatılsın ve Durdurulsun mu?"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:64
 msgid "Comma separated list"
-msgstr ""
+msgstr "Virgülle ayrılmış liste"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:115
 #: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:116
@@ -251,7 +251,7 @@ msgstr "Tamamlandı"
 msgid "Completed Notification Trigger"
 msgstr "Tamamlandı Bildirim Tetikleyicisi"
 
-#: ../../../Controllers/MainWindowController.cs:124
+#: ../../../Controllers/MainWindowController.cs:112
 msgid "Contributors on GitHub ❤️"
 msgstr "GitHub Katkıcıları ❤️"
 
@@ -281,9 +281,8 @@ msgid "Cookies File Information"
 msgstr "Çerez Dosyası Bilgileri"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Controls/AboutDialog.xaml.cs:33
-#, fuzzy
 msgid "Copied debug info to clipboard."
-msgstr "Panoya Kopyala"
+msgstr "Hata ayıklama bilgisi panoya kopyalandı."
 
 #: ../../../../NickvisionTubeConverter.WinUI/Controls/DownloadRow.xaml.cs:205
 #: NickvisionTubeConverter.GNOME/Blueprints/download_row.blp:145
@@ -291,9 +290,8 @@ msgid "Copy to Clipboard"
 msgstr "Panoya Kopyala"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Controls/AboutDialog.xaml.cs:32
-#, fuzzy
 msgid "Credits"
-msgstr "Kimlik Bilgileri"
+msgstr "Hazırlayanlar"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:104
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:361
@@ -305,11 +303,11 @@ msgstr "Ses Küçük Resimlerini Kırp"
 msgid "Crop Thumbnail"
 msgstr "Küçük Resmi Kırp"
 
-#: ../../../Controllers/MainWindowController.cs:127
+#: ../../../Controllers/MainWindowController.cs:115
 msgid "DaPigGuy"
 msgstr "DaPigGuy"
 
-#: ../../../Controllers/MainWindowController.cs:128
+#: ../../../Controllers/MainWindowController.cs:116
 msgid "David Lapshin"
 msgstr "David Lapshin"
 
@@ -343,10 +341,20 @@ msgid ""
 "Translators:\n"
 "{3}"
 msgstr ""
+"Geliştiriciler:\n"
+"{0}\n"
+"\n"
+"Tasarımcılar:\n"
+"{1}\n"
+"\n"
+"Sanatçılar:\n"
+"{2}\n"
+"\n"
+"Çevirmenler:\n"
+"{3}"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:66
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:129
-#, fuzzy
 msgid ""
 "Different sites can use different language code formats for the same "
 "language. You may encounter one of the following three types: two-letter, "
@@ -360,12 +368,12 @@ msgid ""
 msgstr ""
 "Farklı siteler aynı dil için farklı dil kodu biçimini kullanabilir. "
 "Aşağıdaki üç türden biriyle karşılaşabilirsiniz: iki harfli, bölgeli iki "
-"harfli veya üç harfli. Örneğin İngilizce için \"en\", \"en-US\" ve \"eng\" "
+"harfli ya da üç harfli. Örneğin İngilizce için \"en\", \"en-US\" ve \"eng\" "
 "kelimelerinin tümü kullanılır.\n"
 "En iyi sonuçları elde etmek için lütfen dilleriniz için geçerli tüm kodları "
-"belirtin. Varsa, otomatik oluşturulan altyazılar da indirilecektir.\n"
+"belirtin. Varsa, otomatik oluşturulan alt yazılar da indirilecektir.\n"
 "\n"
-"Otomatik oluşturulan altyazılar olmadan tüm altyazıları indirmek için "
+"Otomatik oluşturulan alt yazılar olmadan tüm alt yazıları indirmek için "
 "\"tümü\" seçeneğini kullanabilirsiniz."
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringDialog.xaml.cs:42
@@ -400,7 +408,7 @@ msgstr "Dönüşümlere İzin Verme"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:171
 msgid "Disclaimer"
-msgstr ""
+msgstr "Feragatname"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:98
 msgid "Discussions"
@@ -408,28 +416,28 @@ msgstr "Tartışmalar"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:95
 msgid "Documentation"
-msgstr ""
+msgstr "Belgelendirme"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:167
 msgid "Don't show this message again"
-msgstr ""
+msgstr "Bu iletiyi tekrar gösterme"
 
-#: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:549
+#: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:550
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:194
 #: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:13
 msgid "Download"
 msgstr "İndir"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Controls/HistoryDialog.cs:83
-#: ../../../../NickvisionTubeConverter.WinUI/Controls/HistoryDialog.xaml.cs:78
+#: ../../../../NickvisionTubeConverter.GNOME/Controls/HistoryDialog.cs:82
+#: ../../../../NickvisionTubeConverter.WinUI/Controls/HistoryDialog.xaml.cs:77
 msgid "Download Again"
 msgstr "Tekrar İndir"
 
-#: ../../../Controllers/MainWindowController.cs:433
+#: ../../../Controllers/MainWindowController.cs:428
 msgid "Download Finished"
 msgstr "İndirme Tamamlandı"
 
-#: ../../../Controllers/MainWindowController.cs:433
+#: ../../../Controllers/MainWindowController.cs:428
 msgid "Download Finished With Error"
 msgstr "İndirme Hata İle Tamamlandı"
 
@@ -450,19 +458,18 @@ msgstr "Belirli Zaman Dilimini İndir"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:59
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:130
-#, fuzzy
 msgid "Download Subtitles"
-msgstr "Alt Yazı İndir"
+msgstr "Alt Yazıları İndir"
 
-#: ../../../Models/Download.cs:407
+#: ../../../Models/Download.cs:408
 msgid "Download using aria2 has started"
 msgstr "Aria2 kullanarak indirme işlemi başladı"
 
-#: ../../../Models/Download.cs:418
+#: ../../../Models/Download.cs:419
 msgid "Download using ffmpeg has started"
 msgstr "ffmpeg kullanarak indirme işlemi başladı"
 
-#: ../../../Controllers/MainWindowController.cs:117
+#: ../../../Controllers/MainWindowController.cs:105
 msgid "Download web video and audio"
 msgstr "Web video ve seslerini indir"
 
@@ -486,16 +493,15 @@ msgstr "İndiriliyor %{0:f2} ({1})"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:170
 #: ../../../../NickvisionTubeConverter.WinUI/Controls/DownloadRow.xaml.cs:120
-#, fuzzy
 msgid "Downloading..."
-msgstr "İndiriliyor"
+msgstr "İndiriliyor..."
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:58
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:64
 msgid "Downloads"
 msgstr "İndirilenler"
 
-#: ../../../Controllers/MainWindowController.cs:437
+#: ../../../Controllers/MainWindowController.cs:432
 msgid "Downloads Finished"
 msgstr "İndirmeler Tamamlandı"
 
@@ -515,7 +521,6 @@ msgstr "Üst Verileri Göm"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:115
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:391
-#, fuzzy
 msgid "Embed Subtitles"
 msgstr "Alt Yazıları Göm"
 
@@ -535,20 +540,15 @@ msgstr ""
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:425
 #: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:96
-#: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:589
+#: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:590
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:305
 msgid "End Time"
 msgstr "Bitiş Zamanı"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:445
-#: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:607
+#: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:608
 msgid "End Time (Invalid)"
 msgstr "Bitiş Zamanı (Geçersiz)"
-
-#: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:47
-#, fuzzy
-msgid "Ender media url here"
-msgstr "Ortam URLʼsini buraya giriniz"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:343
 #: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:511
@@ -556,41 +556,41 @@ msgid "Ensure credentials are correct."
 msgstr "Kimlik bilgilerinin doğru olduğundan emin olun."
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:98
-#, fuzzy
 msgid "Enter end timeframe here"
+msgstr "Bitiş zaman karesini buraya giriniz"
+
+#: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:47
+#, fuzzy
+msgid "Enter media URL here"
 msgstr "Ortam URLʼsini buraya giriniz"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringDialog.xaml.cs:49
-#, fuzzy
 msgid "Enter name here"
-msgstr "Ortam URLʼsini buraya giriniz"
+msgstr "Adı buraya giriniz"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:55
 #: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringDialog.xaml.cs:55
-#, fuzzy
 msgid "Enter password here"
-msgstr "Ortam URLʼsini buraya giriniz"
+msgstr "Parolayı buraya giriniz"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:83
 #, fuzzy
-msgid "Enter proxy url here"
-msgstr "Ortam URLʼsini buraya giriniz"
+msgid "Enter proxy URL here"
+msgstr "Ağ vekili URLʼsini buraya giriniz"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:95
-#, fuzzy
 msgid "Enter start timeframe here"
-msgstr "Ortam URLʼsini buraya giriniz"
+msgstr "Başlangıç zaman çerçevesini buraya giriniz"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringDialog.xaml.cs:51
 #, fuzzy
-msgid "Enter url here"
-msgstr "Ortam URLʼsini buraya giriniz"
+msgid "Enter URL here"
+msgstr "URLʼyi buraya giriniz"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:53
 #: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringDialog.xaml.cs:53
-#, fuzzy
 msgid "Enter user name here"
-msgstr "Ortam URLʼsini buraya giriniz"
+msgstr "Kullanıcı adını buraya giriniz"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:200
 #: ../../../../NickvisionTubeConverter.WinUI/Controls/DownloadRow.xaml.cs:139
@@ -628,9 +628,9 @@ msgstr "Dosya Türü"
 #: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:91
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:305
 msgid "Firefox"
-msgstr ""
+msgstr "Firefox"
 
-#: ../../../Controllers/MainWindowController.cs:126
+#: ../../../Controllers/MainWindowController.cs:114
 msgid "Fyodor Sobolev"
 msgstr "Fyodor Sobolev"
 
@@ -645,7 +645,7 @@ msgstr "GitHub Deposu"
 msgid "Help"
 msgstr "Yardım"
 
-#: ../../../../NickvisionTubeConverter.WinUI/Controls/HistoryDialog.xaml.cs:36
+#: ../../../../NickvisionTubeConverter.WinUI/Controls/HistoryDialog.xaml.cs:35
 #: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:86
 #: NickvisionTubeConverter.GNOME/Blueprints/history_dialog.blp:30
 #: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:45
@@ -655,13 +655,12 @@ msgstr "Geçmiş"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:116
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:392
-#, fuzzy
 msgid ""
 "If disabled or if embedding fails, downloaded subtitles will be saved to a "
 "separate file instead"
 msgstr ""
-"Devre dışı bırakılırsa ya da gömme başarısız olursa, indirilen altyazı bunun "
-"yerine ayrı bir dosyaya kaydedilir"
+"Devre dışı bırakılırsa ya da gömme başarısız olursa, indirilen alt yazı "
+"bunun yerine ayrı bir dosyaya kaydedilir"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:105
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:362
@@ -694,7 +693,7 @@ msgstr ""
 #: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:67
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:140
 msgid "Include Auto-Generated Subtitles"
-msgstr ""
+msgstr "Kendiliğinden Oluşturulan Alt Yazıları Dahil Et"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:141
 #: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringDialog.xaml.cs:34
@@ -731,14 +730,13 @@ msgstr "Dil Kodu Bilgisi"
 msgid "Leave empty to download from start."
 msgstr "Başlangıçtan indirmek için boş bırakın."
 
-#: ../../../Controllers/MainWindowController.cs:121
+#: ../../../Controllers/MainWindowController.cs:109
 msgid "List of supported sites"
 msgstr "Desteklenen sitelerin listesi"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Controls/DownloadRow.xaml.cs:194
-#, fuzzy
 msgid "Log"
-msgstr "Giriş"
+msgstr "Günlük"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:182
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:201
@@ -752,12 +750,12 @@ msgstr "Giriş"
 msgid "Make thumbnail square, useful when downloading music."
 msgstr "Küçük resmi kare yap, müzik indirirken kullanışlıdır."
 
-#: ../../../../NickvisionTubeConverter.WinUI/Controls/HistoryDialog.xaml.cs:38
+#: ../../../../NickvisionTubeConverter.WinUI/Controls/HistoryDialog.xaml.cs:37
 #: NickvisionTubeConverter.GNOME/Blueprints/history_dialog.blp:35
 msgid "Manage previously downloaded media."
 msgstr "Önceden indirilmiş ortamı yönet."
 
-#: ../../../Controllers/MainWindowController.cs:122
+#: ../../../Controllers/MainWindowController.cs:110
 msgid "Matrix Chat"
 msgstr "Matrix Sohbet"
 
@@ -772,7 +770,7 @@ msgid "Max Number of Active Downloads"
 msgstr "Azami Etkin İndirme Sayısı"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:396
-#: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:555
+#: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:556
 msgid "Maximum Quality"
 msgstr "Azami Kalite"
 
@@ -803,6 +801,7 @@ msgid ""
 "Minimize to the system tray instead of quitting the application when the "
 "window is closed."
 msgstr ""
+"Pencere kapatıldığında uygulamadan çıkmak yerine sistem tepsisine küçült."
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:77
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:186
@@ -821,12 +820,12 @@ msgstr "Ad"
 msgid "Name (Empty)"
 msgstr "Ad (Boş)"
 
-#: ../../../Controllers/MainWindowController.cs:345
+#: ../../../Controllers/MainWindowController.cs:340
 msgid "New update available."
-msgstr ""
+msgstr "Yeni güncelleme var."
 
-#: ../../../Controllers/MainWindowController.cs:123
-#: ../../../Controllers/MainWindowController.cs:125
+#: ../../../Controllers/MainWindowController.cs:111
+#: ../../../Controllers/MainWindowController.cs:113
 msgid "Nicholas Logozzo"
 msgstr "Nicholas Logozzo"
 
@@ -840,43 +839,40 @@ msgstr "Nicholas Logozzo"
 msgid "No"
 msgstr "Hayır"
 
-#: ../../../Controllers/MainWindowController.cs:316
+#: ../../../Controllers/MainWindowController.cs:310
 msgid "No active internet connection"
 msgstr "Aktif internet bağlantısı yok"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:111
-#, fuzzy
 msgid "No Completed Downloads"
-msgstr "Tamamlanan İndirmeleri Temizle"
+msgstr "Tamamlanan İndirme Yok"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringDialog.xaml.cs:43
 #: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:82
 msgid "No Credentials"
 msgstr "Kimlik Bilgisi Yok"
 
-#: ../../../Models/DownloadManager.cs:175
+#: ../../../Models/DownloadManager.cs:181
 msgid "No downloads running"
 msgstr "Çalışan indirme yok"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:108
-#, fuzzy
 msgid "No Downloads Running"
-msgstr "Çalışan indirme yok"
+msgstr "Çalışan İndirme Yok"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:134
 #: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:270
 msgid "No File Selected"
-msgstr ""
+msgstr "Dosya Seçilmedi"
 
-#: ../../../../NickvisionTubeConverter.WinUI/Controls/HistoryDialog.xaml.cs:41
+#: ../../../../NickvisionTubeConverter.WinUI/Controls/HistoryDialog.xaml.cs:40
 #: NickvisionTubeConverter.GNOME/Blueprints/history_dialog.blp:58
 msgid "No Previous Downloads"
 msgstr "Önceki İndirme Yok"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:110
-#, fuzzy
 msgid "No Queued Downloads"
-msgstr "Kuyruktaki İndirmeleri Temizle"
+msgstr "Sıraya Alınmış İndirme Yok"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:66
 #: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:69
@@ -908,7 +904,7 @@ msgstr "Başlıkları Numaralandır"
 #: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:114
 #: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:118
 msgid "Off"
-msgstr ""
+msgstr "Kapalı"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Controls/AboutDialog.xaml.cs:30
 #: ../../../../NickvisionTubeConverter.WinUI/Controls/DownloadRow.xaml.cs:206
@@ -938,9 +934,8 @@ msgstr "Tamam"
 #: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:110
 #: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:113
 #: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:117
-#, fuzzy
 msgid "On"
-msgstr "Aç"
+msgstr "Açık"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:273
 #: ../../../../NickvisionTubeConverter.WinUI/Controls/DownloadRow.xaml.cs:65
@@ -958,7 +953,7 @@ msgstr "Klasörü Aç"
 msgid "Overwrite Existing Files"
 msgstr "Varolan Dosyaların Üzerine Yaz"
 
-#: ../../../Controllers/MainWindowController.cs:116
+#: ../../../Controllers/MainWindowController.cs:104
 #: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:121
 msgid "Parabolic"
 msgstr "Parabolic"
@@ -968,6 +963,8 @@ msgid ""
 "Parabolic's documentation and support channels are accessible via the Help "
 "menu."
 msgstr ""
+"Parabolic'in belgelendirmesine ve destek kanallarına Yardım menüsünden "
+"erişilebilir."
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:225
 #: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:54
@@ -984,8 +981,8 @@ msgstr "Parola"
 msgid "Password (Empty)"
 msgstr "Parola (Boş)"
 
-#: ../../../../NickvisionTubeConverter.GNOME/Controls/HistoryDialog.cs:67
-#: ../../../../NickvisionTubeConverter.WinUI/Controls/HistoryDialog.xaml.cs:69
+#: ../../../../NickvisionTubeConverter.GNOME/Controls/HistoryDialog.cs:66
+#: ../../../../NickvisionTubeConverter.WinUI/Controls/HistoryDialog.xaml.cs:68
 msgid "Play"
 msgstr "Oynat"
 
@@ -996,12 +993,12 @@ msgstr "Çalma Listesi"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:484
 msgid "Please wait..."
-msgstr ""
+msgstr "Lütfen bekleyin..."
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:77
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:279
 msgid "Prefer AV1 Codec"
-msgstr ""
+msgstr "AV1 Kod Çözücüyü Yeğle"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:133
 #: ../../../../NickvisionTubeConverter.WinUI/Controls/DownloadRow.xaml.cs:95
@@ -1015,7 +1012,7 @@ msgstr "Askıya Almayı Engelle"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:75
 msgid "PREVIEW"
-msgstr ""
+msgstr "ÖN İZLEME"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:183
 #: ../../../../NickvisionTubeConverter.WinUI/Controls/DownloadRow.xaml.cs:124
@@ -1077,7 +1074,7 @@ msgstr "Anahtarlığı sıfırlamak için uygulamayı yeniden başlatın."
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:183
 msgid "Restart To Apply Theme?"
-msgstr ""
+msgstr "Temayı Uygulamak İçin Yeniden Başlatılsın Mı?"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Controls/DownloadRow.xaml.cs:68
 #: NickvisionTubeConverter.GNOME/Blueprints/download_row.blp:101
@@ -1093,21 +1090,20 @@ msgstr "Başarısız İndirmeleri Yeniden Dene"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:421
 #: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:62
-#: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:587
+#: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:588
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:139
 msgid "Save Folder"
 msgstr "Kayıt Klasörü"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:435
-#: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:599
+#: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:600
 msgid "Save Folder (Invalid)"
 msgstr "Kayıt Klasörü (Geçersiz)"
 
-#: ../../../../NickvisionTubeConverter.WinUI/Controls/HistoryDialog.xaml.cs:40
+#: ../../../../NickvisionTubeConverter.WinUI/Controls/HistoryDialog.xaml.cs:39
 #: NickvisionTubeConverter.GNOME/Blueprints/history_dialog.blp:48
-#, fuzzy
 msgid "Search history"
-msgstr "Geçmişi Temizle"
+msgstr "Geçmişi göster"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:72
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:227
@@ -1134,18 +1130,16 @@ msgstr "Kayıt Klasörünü Seçin"
 #: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:87
 #: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:124
 #: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:34
-#, fuzzy
 msgid "Settings"
 msgstr "Ayarlar"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:109
-#, fuzzy
 msgid "Show Completed"
-msgstr "Tamamlandı"
+msgstr "Tamamlananları Göster"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:123
 msgid "Show Window"
-msgstr ""
+msgstr "Pencereyi Göster"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:295
 #: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:219
@@ -1157,7 +1151,7 @@ msgstr ""
 "Parabolicʼi kapatmak ve devam eden indirmeleri durdurmak istediğinizden emin "
 "misiniz?"
 
-#: ../../../Models/DownloadManager.cs:171
+#: ../../../Models/DownloadManager.cs:177
 msgid "Some downloads finished with errors!"
 msgstr "Bazı indirmeler hatalarla tamamlandı!"
 
@@ -1185,13 +1179,13 @@ msgstr "SponsorBlock Bilgisi (web tarayıcısında açılır)"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:423
 #: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:93
-#: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:588
+#: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:589
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:300
 msgid "Start Time"
 msgstr "Başlangıç Zamanı"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:440
-#: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:603
+#: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:604
 msgid "Start Time (Invalid)"
 msgstr "Başlangıç Zamanı (Geçersiz)"
 
@@ -1214,19 +1208,18 @@ msgstr "Durduruldu"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:63
 #: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:214
-#, fuzzy
 msgid "Subtitle Languages"
-msgstr "Altyazı Dilleri (Geçersiz)"
+msgstr "Alt Yazı Dilleri"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/PreferencesDialog.cs:170
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:102
 msgid "Subtitle Languages (Comma-Separated)"
-msgstr "Altyazı Dilleri (Virgülle Ayrılmış)"
+msgstr "Alt Yazı Dilleri (Virgülle Ayrılmış)"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/PreferencesDialog.cs:179
 #: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:223
 msgid "Subtitle Languages (Invalid)"
-msgstr "Altyazı Dilleri (Geçersiz)"
+msgstr "Alt Yazı Dilleri (Geçersiz)"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:200
 #: ../../../../NickvisionTubeConverter.WinUI/Controls/DownloadRow.xaml.cs:139
@@ -1275,6 +1268,8 @@ msgstr ""
 msgid ""
 "This option's state will be remembered and restored for future downloads."
 msgstr ""
+"Bu seçeneğin durumu hatırlanacak ve gelecekteki indirmeler için geri "
+"yüklenecek."
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:252
 #: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringDialog.xaml.cs:178
@@ -1285,7 +1280,7 @@ msgstr ""
 "Bu, tüm şifreleri kaldırarak önceki anahtarlığı silecektir. Bu işlem geri "
 "alınamaz."
 
-#: ../../../Controllers/MainWindowController.cs:129
+#: ../../../Controllers/MainWindowController.cs:117
 msgid "translator-credits"
 msgstr ""
 "Sabri Ünal <libreajans@gmail.com>\n"
@@ -1296,9 +1291,9 @@ msgstr ""
 msgid "Unable to disable keyring."
 msgstr "Anahtarlık devre dışı bırakılamadı."
 
-#: ../../../Controllers/MainWindowController.cs:361
+#: ../../../Controllers/MainWindowController.cs:356
 msgid "Unable to download and install update."
-msgstr ""
+msgstr "Güncelleme indirilemiyor ve kurulamıyor."
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:269
 #: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringDialog.xaml.cs:196
@@ -1310,18 +1305,17 @@ msgstr "Anahtarlık sıfırlanamadı."
 msgid "Undo Title Editing"
 msgstr "Başlık Düzenlemesini Geri Al"
 
-#: ../../../Controllers/MainWindowController.cs:298
+#: ../../../Controllers/MainWindowController.cs:292
 msgid "Unlock Keyring"
 msgstr "Anahtarlık Kilidini Aç"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:87
-#, fuzzy
 msgid "Unset Cookies File"
-msgstr "Çerez Dosyasını Seç"
+msgstr "Çerez Dosyasını Kaldır"
 
-#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:326
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:327
 msgid "Update"
-msgstr ""
+msgstr "Güncelle"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:221
 #: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringDialog.xaml.cs:50
@@ -1342,13 +1336,12 @@ msgstr "Aria2 kullan"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringDialog.xaml.cs:38
 #: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:56
-#, fuzzy
 msgid ""
 "Use keyring to safely store credentials for sites that require a user name "
 "and password to login."
 msgstr ""
 "Kullanıcı adı ve parola ile giriş gerektiren sitelerde kimlik bilgilerini "
-"güvenli bir şekilde saklamak için anahtarlık kullan."
+"güvenli şekilde saklamak için anahtarlık kullan."
 
 #: ../../../Controllers/AddDownloadDialogController.cs:153
 msgid "Use manual credential"
@@ -1366,9 +1359,8 @@ msgstr "Kullanıcı Arayüzü"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:234
 #: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringDialog.xaml.cs:289
-#, fuzzy
 msgid "User Name (Empty)"
-msgstr "Kullanıcı adı (Boş)"
+msgstr "Kullanıcı Adı (Boş)"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:223
 #: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:52
@@ -1386,9 +1378,8 @@ msgid "Validate"
 msgstr "Doğrula"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:479
-#, fuzzy
 msgid "Validating"
-msgstr "Doğrula"
+msgstr "Doğrulanıyor"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:365
 #: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:535
@@ -1419,6 +1410,8 @@ msgid ""
 "Would you like to restart {0} to apply the new theme?\n"
 "Any unsaved work will be lost."
 msgstr ""
+"Yeni temayı uygulamak için {0} yeniden başlatılsın mı?\n"
+"Kaydedilmemiş tüm çalışmalar yitirilecek."
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:257
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:320
