@@ -21,41 +21,39 @@
   </info>
 
 <title>ダウンローダー</title>
-<p>このページでは<app>Parabolic</app>の環境設定のコンバーターを設定するためのすべてオプションについて説明します。</p>
+<p>このページでは <app>Parabolic</app> でダウンローダーを設定するためのすべてオプションについて説明します。</p>
 
 <terms>
     <item>
         <title>存在するファイルを上書きする</title>
         <p>有効であれば、Parabolic は存在するファイルを上書きします。</p>
-        <p>例えば、<code>movie.mp4</code>という名のファイルがダウンロードフォルダーに存在し、<code>movie</code>と名のダウンロードが作成されると、<code>movie.mp4</code>は新しいダウンロードの内容で上書きされます。</p>
+        <p>例えば、<code>movie.mp4</code>という名前のファイルがダウンロードフォルダーに存在し、<code>movie</code>という名前のダウンロードが作成されると、<code>movie.mp4</code>は新しいダウンロードの内容で上書きされます。</p>
         <note style="advanced">
             <p>デフォルト: オン</p>
         </note>
     </item>
 	<item>
 		<title>アクティブダウンロードの最大数</title>
-		<p>平行して進行できるアクティブダウンロード数。数値は1から10までの整数である必要があります。</p>
+		<p>平行して進行できるアクティブダウンロード数。数値は1から10の整数である必要があります。</p>
         <p>アクティブダウンロードが最大数に達すると、Parabolic は新しいダウンロードをダウンロードが可能になるまでキューに入れます。</p>
 		<note style="advanced">
 			<p>デフォルト: 5</p>
 		</note>
     </item>
     <item>
-        <title>Subtitles Languages</title>
-        <p>A comma-separated list of two-letter, two-letter with region, and three-letter language codes to use when selecting languages of subtitles to download. Only applies when downloading a video with subtitles.</p>
+        <title>字幕の言語</title>
+        <p>ダウンロードする字幕の言語を選択するときに使用できる、二文字、二文字+地域、三文字の言語コードの、カンマ区切りのリスト。動画と字幕をダウンロードするときのみ適用されます。</p>
         <note>
-            <p>Different sites can use different language code formats for the same language. You may encounter one of the following three types: two-letter, two-letter with region, or three-letter. For example, "en", "en-US" and "eng" are all used for English. Please specify all valid codes for your languages for the best results. Auto-generated subtitles will also be downloaded if available.</p>
-            <p>You can specify "all" instead to download all subtitles, but without auto-generated ones.</p>
+            <p>同じ言語であっても、サイトによって違った言語コードを使用しているかもしれません。2文字、2文字+地域、3文字の３つのパターンが考えられます。例えば、"en"、"en-US"、"eng" は英語の言語コードとして使用されます。より良い結果を得るために、有効な言語コードを全て指定してください。自動生成された字幕が利用可能な場合は、それらもダウンロードされます。</p>
+            <p>"all"を指定することで、すべての字幕がダウンロードできますが、自動生成の字幕はダウンロードされません。</p>
         </note>
         <note style="advanced">
-            <p>
-                Default: Your culture's language codes. For example, on an en-US system the default would be <code>en,en-US,eng</code>
-            </p>
+            <p>デフォルト: お住まいの地域の文化の言語コードが指定されています。例えば、en-US のシステムでは <code>en,en-US,eng</code> の言語コードがデフォルトになります</p>
         </note>
     </item>
     <item>
-        <title>Included Auto-Generated Subtitles</title>
-        <p>Whether or not to included subtitles that are auto-translated to fit the requested subtitle languages.</p>
+        <title>自動生成された字幕を含める</title>
+        <p>要求された字幕の言語の、自動翻訳された字幕を含むかどうか。</p>
         <note style="advanced">
             <p>デフォルト: オン</p>
         </note>
@@ -69,22 +67,18 @@
     </item>
     <item>
         <title>サーバーごとの最大接続数</title>
-        <p>
-            This option only applies when using aria2 is enabled. This option is the same as the <code>-x</code> flag passed to aria2c.
-        </p>
-        <p>The maximum number of connection that can be used per server. Must be an integer value between 1 and 32.</p>
+        <p>このオプションは、aria2 の使用が有効な場合のみ適用されます。このオプションは、aria2c に <code>-x</code>のフラグを指定するのと同じです。</p>
+        <p>サーバーごとに使用できる最大接続数。1から32の整数値である必要があります。</p>
         <note style="advanced">
-            <p>Default: 16</p>
+            <p>デフォルト: 16</p>
         </note>
     </item>
     <item>
-        <title>Minimum Split Size</title>
-        <p>
-            This option only applies when using aria2 is enabled. This option is the same as the <code>-k</code> flag passed to aria2c.
-        </p>
-        <p>The minimum size, in MiB, of which to split a file. Must be an integer value between 1 and 1024.</p>
+        <title>最小分割サイズ</title>
+        <p>このオプションは、aria2 が有効な場合のみ適用されます。このオプションは、aria2c に <code>-k</code>のフラグを指定するのと同じです。</p>
+        <p>1ファイルを分割する最小サイズ（MiB 単位）。1から1024の整数である必要があります。</p>
         <note style="advanced">
-            <p>Default: 20</p>
+            <p>デフォルト: 20</p>
         </note>
     </item>
     <item>
@@ -96,26 +90,26 @@
     </item>
     <item>
         <title>プロキシ URL</title>
-        <p>The url of the proxy server to use.</p>
+        <p>使用するプロキシサーバーの URL。</p>
     </item>
     <item>
         <title>クッキーのファイル</title>
-        <p>A .txt file of cookies to pass to yt-dlp when downloading. This may be useful when downloading media that requires a login, for example: private YouTube videos.</p>
-        <p>Use one of the following extensions for getting a cookies file from your browser:</p>
+        <p>ダウンロード時に yt-dlp に渡す、クッキーの .txt ファイル。非公開の YouTube 動画のような、ログインが必要なメディアのダウンロードに役立ちます。</p>
+        <p>拡張機能を使って、ブラウザーからクッキーファイルを入手できます：</p>
         <p>Chrome: <code>https://chrome.google.com/webstore/detail/get-cookiestxt-locally/cclelndahbckbenkjhflpdbgdldlbecc</code></p>
-        <p>Firefox: <code>https://addons.mozilla.org/en-US/firefox/addon/cookies-txt/</code></p>
+        <p>Firefox: <code>https://addons.mozilla.org/ja/firefox/addon/cookies-txt/</code></p>
         <note>
-            <p>Use these extensions at your own risk.</p>
+            <p>これらの拡張機能は、自己責任で使用してください。</p>
         </note>
 		<note style="advanced">
-			<p>Default: No File Selected</p>
+			<p>デフォルト: ファイル選択なし</p>
 		</note>
     </item>
     <item>
         <title>YouTube のダウンロードで SponsorBlock を使用</title>
-        <p>If enabled, Parabolic will apply the SponsorBlock extension to YouTube downloads.</p>
+        <p>有効であれば、Parabolic は SponsorBlock の拡張機能を YouTube のダウンロードで有効にします。</p>
         <note>
-            <p>SponsorBlock only works on YouTube videos. However, leaving this setting on will not affect downloads from other sites (i.e. not cause them to fail).</p>
+            <p>SponsorBlock は、YouTube の動画でのみ動作します。しかし、この設定をオンにしても、他のサイトからのダウンロードには影響しません（つまり、このオプションが原因で失敗することはありません）。</p>
         </note>
         <note style="advanced">
             <p>デフォルト: オフ</p>
