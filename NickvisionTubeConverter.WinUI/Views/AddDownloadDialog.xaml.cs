@@ -97,7 +97,7 @@ public sealed partial class AddDownloadDialog : ContentDialog
         CardTimeframeEnd.Description = _("Leave empty to download from start.");
         TxtTimeframeEnd.PlaceholderText = _("Enter end timeframe here");
         //Load
-        ViewStack.CurrentPageName = "URL";
+        ViewStack.CurrentPageName = "Url";
         if (Directory.Exists(_controller.PreviousSaveFolder))
         {
             _saveFolderString = _controller.PreviousSaveFolder;
