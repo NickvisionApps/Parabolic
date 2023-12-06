@@ -265,9 +265,9 @@ public sealed partial class MainWindow : Window
         }
         else if (tag == "Keyring")
         {
-            var controller = _controller.CreateKeyringDialogController();
-            var keyringPage = new KeyringPage(controller);
+            var keyringPage = new KeyringPage(_controller.CreateKeyringDialogController());
             keyringPage.NotificationSent += NotificationSent;
+            keyringPage.KeyringUpdated += (_, e) => _controller.UpdateKeyring(e);
             ViewStack.CurrentPageName = "Custom";
             FrameCustom.Content = keyringPage;
         }

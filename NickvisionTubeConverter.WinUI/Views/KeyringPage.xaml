@@ -8,7 +8,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:wct="using:CommunityToolkit.WinUI.Controls"
-    mc:Ignorable="d">
+    mc:Ignorable="d" Loaded="Page_Loaded">
 
     <Grid>
         <Grid.RowDefinitions>
@@ -26,7 +26,7 @@
 
             <TextBlock x:Name="LblTitle" Grid.Column="0" Margin="0,0,0,0" Style="{ThemeResource NavigationViewItemHeaderTextStyle}" FontSize="22"/>
 
-            <Button x:Name="BtnEnableDisable" Grid.Column="2" VerticalAlignment="Center" Style="{ThemeResource AccentButtonStyle}">
+            <Button x:Name="BtnEnableDisable" Grid.Column="2" VerticalAlignment="Center" Style="{ThemeResource AccentButtonStyle}" Click="EnableDisable">
                 <Button.Content>
                     <StackPanel Orientation="Horizontal" Spacing="6">
                         <FontIcon x:Name="IconBtnEnableDisable" FontFamily="{StaticResource SymbolThemeFontFamily}" FontSize="16"/>
@@ -39,12 +39,53 @@
 
         <MenuFlyoutSeparator Grid.Row="1"/>
 
-        <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Auto">
-            <nickvision:ViewStack>
-                <nickvision:ViewStack.Pages>
-                    
-                </nickvision:ViewStack.Pages>
-            </nickvision:ViewStack>
-        </ScrollViewer>
+        <nickvision:ViewStack Grid.Row="2" x:Name="ViewStack">
+            <nickvision:ViewStack.Pages>
+                <nickvision:ViewStackPage PageName="Loading">
+                    <ProgressRing HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </nickvision:ViewStackPage>
+
+                <nickvision:ViewStackPage PageName="Disabled">
+                    <nickvision:StatusPage x:Name="StatusPageDisabled" HorizontalAlignment="Center" VerticalAlignment="Center" Glyph="&#xE72E;"/>
+                </nickvision:ViewStackPage>
+
+                <nickvision:ViewStackPage PageName="Enabled">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <Grid Grid.Row="0" Margin="12,12,12,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+
+                            <CommandBar Grid.Column="0" DefaultLabelPosition="Right">
+                                <AppBarButton x:Name="BtnAddCredential" Icon="Add" Click="AddLogin"/>
+                            </CommandBar>
+                        </Grid>
+
+                        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+                            <nickvision:ViewStack x:Name="ViewStackCredentials" Margin="24,12,24,12">
+                                <nickvision:ViewStack.Pages>
+                                    <nickvision:ViewStackPage PageName="NoCredentials">
+                                        <nickvision:StatusPage x:Name="StatusPageNoCredentials" HorizontalAlignment="Center" VerticalAlignment="Center" Glyph="&#xE896;"/>
+                                    </nickvision:ViewStackPage>
+
+                                    <nickvision:ViewStackPage PageName="Credentials">
+                                        <StackPanel x:Name="ListCredentials" Orientation="Vertical" Spacing="6"/>
+                                    </nickvision:ViewStackPage>
+                                </nickvision:ViewStack.Pages>
+                            </nickvision:ViewStack>
+                        </ScrollViewer>
+                    </Grid>
+                </nickvision:ViewStackPage>
+            </nickvision:ViewStack.Pages>
+        </nickvision:ViewStack>
+
+
     </Grid>
 </UserControl>

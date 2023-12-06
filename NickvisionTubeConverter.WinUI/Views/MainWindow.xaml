@@ -244,11 +244,11 @@
                                         </CommandBar>
                                     </Grid>
 
-                                    <ScrollViewer Grid.Row="1">
+                                    <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
                                         <nickvision:ViewStack x:Name="ViewStackDownloads" Margin="24,12,24,12">
                                             <nickvision:ViewStack.Pages>
                                                 <nickvision:ViewStackPage PageName="Downloading">
-                                                    <StackPanel x:Name="ListDownloading" Margin="0,0,0,0" Orientation="Vertical" Spacing="6"/>
+                                                    <StackPanel x:Name="ListDownloading" Orientation="Vertical" Spacing="6"/>
                                                 </nickvision:ViewStackPage>
 
                                                 <nickvision:ViewStackPage PageName="NoDownloading">
@@ -256,7 +256,7 @@
                                                 </nickvision:ViewStackPage>
 
                                                 <nickvision:ViewStackPage PageName="Queued">
-                                                    <StackPanel x:Name="ListQueued" Margin="0,0,0,0" Orientation="Vertical" Spacing="6"/>
+                                                    <StackPanel x:Name="ListQueued" Orientation="Vertical" Spacing="6"/>
                                                 </nickvision:ViewStackPage>
 
                                                 <nickvision:ViewStackPage PageName="NoQueued">
@@ -264,7 +264,7 @@
                                                 </nickvision:ViewStackPage>
 
                                                 <nickvision:ViewStackPage PageName="Completed">
-                                                    <StackPanel x:Name="ListCompleted" Margin="0,0,0,0" Orientation="Vertical" Spacing="6"/>
+                                                    <StackPanel x:Name="ListCompleted" Orientation="Vertical" Spacing="6"/>
                                                 </nickvision:ViewStackPage>
 
                                                 <nickvision:ViewStackPage PageName="NoCompleted">
