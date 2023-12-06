@@ -60,7 +60,7 @@ procedure SetupPython();
 var
   ResultCode: Integer;
 begin
-  if not Exec(ExpandConstant('{app}\deps\python-3.11.6-amd64.exe'), '/quiet InstallAllUsers=1 AppendPath=1 Include_test=0', '', SW_HIDE, ewWaitUntilTerminated, ResultCode)
+  if not Exec(ExpandConstant('{app}\deps\python-3.11.7-amd64.exe'), '/quiet InstallAllUsers=1 AppendPath=1 Include_test=0', '', SW_HIDE, ewWaitUntilTerminated, ResultCode)
   then
     MsgBox('Unable to install Python. Please try again. THE APP WILL NOT FUNCTION CORRECTLY.', mbError, MB_OK)
   else begin
@@ -84,7 +84,7 @@ Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{
 [Files]
 Source: "..\..\..\dotnet-runtime-8-win-x64.exe"; DestDir: "{app}\deps"; AfterInstall: SetupDotnet  
 Source: "..\..\..\WindowsAppRuntimeInstall-x64.exe"; DestDir: "{app}\deps"; AfterInstall: SetupWinAppSDK
-Source: "..\..\..\python-3.11.6-amd64.exe"; DestDir: "{app}\deps"; AfterInstall: SetupPython  
+Source: "..\..\..\python-3.11.7-amd64.exe"; DestDir: "{app}\deps"; AfterInstall: SetupPython  
 Source: "..\bin\x64\Debug\net8.0-windows10.0.19041.0\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion 
 Source: "..\bin\x64\Debug\net8.0-windows10.0.19041.0\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
