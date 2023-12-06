@@ -44,11 +44,7 @@ public partial class Program
         _mainWindow = null;
         _mainWindowController = new MainWindowController(args);
         _mainWindowController.AppInfo.Changelog =
-            @"* Fixed an issue where SponsorBlock was not working
-              * Fixed an issue where some downloads' metadata was not downloaded correctly
-              * Fixed an issue where audio only downloads did not respect the selected format
-              * Fixed an issue where adding a URL via CLI caused the application to crash
-              * Updated translations (Thanks everyone on Weblate!)";
+            @"* Updated translations (Thanks everyone on Weblate!)";
         _application.OnActivate += OnActivate;
         g_signal_connect_data(_application.Handle, "open", _openCallback, IntPtr.Zero, IntPtr.Zero, 0);
         if (File.Exists(Path.GetFullPath(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)!) + "/org.nickvision.tubeconverter.gresource"))

@@ -2,7 +2,7 @@
 <page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" id="converter" its:version="2.0" xml:lang="sv">
 <info>
 	<link type="guide" xref="index"/>
-	<title type="link">Converter ⚒️</title>
+	<title type="link">Konverter ⚒️</title>
 	<credit type="author copyright">
 		<name>Nicholas Logozzo</name>
 		<years its:translate="no">2023</years>
@@ -15,54 +15,54 @@
 </info>
 
 <title>Konverter</title>
-<p>This page explains all options for configuring the Converter in Preferences in <app>Parabolic</app>.</p>
+<p>Den här sidan förklarar alla alternativ för att konfigurera Konverteraren i Inställningar i <app>Parabolic</app>.</p>
 
 <terms>
 	<item>
 		<title>Tillåt inte konverteringar</title>
-		<p>If enabled, Parabolic will download the appropriate video/audio format for the selected quality without converting to other formats.</p>
-        <p>This means that you will be unable to select a file format when downloading a media. But, you will save time in downloading as the Converter will not be run.</p>
+		<p>Om aktiverat kommer Parabolic att ladda ner lämpligt video-/ljudformat för den valda kvaliteten utan att konvertera till andra format.</p>
+        <p>Det betyder att du inte kommer att kunna välja ett filformat när du laddar ner ett media. Men du kommer att spara tid vid nedladdningen eftersom Konverteraren inte kommer att köras.</p>
 		<note style="advanced">
-			<p>Default: Off</p>
+			<p>Standard: Av</p>
 		</note>
     </item>
 	<item>
 		<title>Bädda in metadata</title>
-		<p>If enabled, Parabolic will tag a media with its relevant information (title, genre, etc...) and thumbnail if available.</p>
-        <p>Parabolic will NOT embed the Comment, Description, Synopsis, and Purl fields.</p>
+		<p>Om aktiverat kommer Parabolic att tagga ett media med dess relevanta information (titel, genre, etc...) och miniatyrbild om tillgänglig.</p>
+        <p>Parabolic kommer INTE att bädda in fälten Kommentar, Beskrivning, Synopsis och Purl.</p>
 		<note style="advanced">
-			<p>Default: On</p>
+			<p>Standard: På</p>
 		</note>
     </item>
     <item>
 		<title>Beskär ljudminiatyrbilder</title>
-		<p>Only available if Embed Metadata is enabled.</p>
-		<p>If enabled, Parabolic will automatically turn on the advanced option <code>Crop Thumbnail</code> for audio downloads.</p>
+		<p>Endast tillgängligt om "Bädda in metadata" är aktiverat.</p>
+		<p>Om aktiverat kommer Parabolic automatiskt att aktivera det avancerade alternativet <code>Beskär miniatyrbild</code> för ljudnedladdningar.</p>
 		<note style="advanced">
-			<p>Default: Off</p>
+			<p>Standard: Av</p>
 		</note>
     </item>
     <item>
 		<title>Ta bort källinformation</title>
-		<p>Only available if Embed Metadata is enabled.</p>
-		<p>If enabled, Parabolic will clear metadata fields containing the URL and other identifying information of the media source.</p>
-        <p>Fields that are cleared: <code>comment</code>, <code>description</code>, <code>synopsis</code>, <code>purl</code> and <code>handler_name</code> in each stream.</p>
+		<p>Endast tillgängligt om "Bädda in metadata" är aktiverat.</p>
+		<p>Om aktiverat kommer Parabolic att rensa metadatafält som innehåller URL och annan identifierande information om mediekällan.</p>
+        <p>Fält som rensas: <code>comment</code>, <code>description</code>, <code>synopsis</code>, <code>purl</code> och <code>handler_name</code> i varje stream.</p>
 		<note style="advanced">
-			<p>Default: Off</p>
+			<p>Standard: Av</p>
 		</note>
     </item>
 	<item>
 		<title>Bädda in kapitel</title>
-		<p>If enabled, Parabolic will tag a media with chapter information if available.</p>
+		<p>Om aktiverat kommer Parabolic att tagga ett media med kapitelinformation om tillgängligt.</p>
 		<note style="advanced">
-			<p>Default: Off</p>
+			<p>Standard: Av</p>
 		</note>
 	</item>
     <item>
-        <title>Embed Subtitles</title>
-        <p>If disabled or if embedding fails, downloaded subtitles will be saved to a separate file.</p>
+        <title>Bädda in undertexter</title>
+        <p>Om den inaktiveras eller om inbäddningen misslyckas, kommer nedladdade undertexter att sparas i separata filer.</p>
         <note style="advanced">
-            <p>Default: On</p>
+            <p>Standard: På</p>
         </note>
     </item>
 </terms>

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-11-29 13:59-0500\n"
+"POT-Creation-Date: 2023-12-06 13:46-0500\n"
 "PO-Revision-Date: 2023-11-16 15:39+0000\n"
 "Last-Translator: Xosé Calvo <xosecalvo@gmail.com>\n"
 "Language-Team: Galician <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -56,7 +56,7 @@ msgstr "{0:f1} KiB/s"
 msgid "{0:f1} MiB/s"
 msgstr "{0:f1} MiB/s"
 
-#: ../../../Models/DownloadManager.cs:173
+#: ../../../Models/DownloadManager.cs:185
 #, csharp-format
 msgid "{0} download — {1:f1}% ({2})"
 msgid_plural "{0} downloads — {1:f1}% ({2})"
@@ -78,7 +78,7 @@ msgstr[1] "{0} elementos de {1}"
 msgid "{0}{1}"
 msgstr "{0}{1}"
 
-#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:85
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:91
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:238
 msgid ""
 "A cookies file can be provided to yt-dlp to allow downloading media that "
@@ -87,18 +87,24 @@ msgstr ""
 "Pódese fornecer un ficheiro de cookies a yt-dlp para permitir descargar "
 "recursos que requiran permiso de acceso."
 
-#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:99
-#, csharp-format
-msgid "About {0}"
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:125
+#, fuzzy
+msgid "About"
 msgstr "Sobre {0}"
 
-#: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringDialog.xaml.cs:56
+#: ../../../../NickvisionTubeConverter.WinUI/Views/CredentialDialog.xaml.cs:46
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:100
 #: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:181
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:51
 msgid "Add"
 msgstr "Engadir"
 
-#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:101
+#: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringPage.xaml.cs:52
+msgid "Add a login to get started."
+msgstr ""
+
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:97
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:109
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:80
 msgid "Add a video, audio, or playlist URL to start downloading"
 msgstr ""
@@ -108,18 +114,16 @@ msgstr ""
 #: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:91
 #: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:40
 #: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:274
-#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:82
-#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:102
-#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:104
-#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:122
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:98
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:113
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:497
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:36
 #: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:16
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:84
 msgid "Add Download"
 msgstr "Engadir descarga"
 
-#: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringDialog.xaml.cs:44
-#: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringDialog.xaml.cs:46
+#: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringPage.xaml.cs:50
 #: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:114
 msgid "Add Login"
 msgstr "Engadir acceso"
@@ -135,18 +139,14 @@ msgstr "Opcións avanzadas"
 msgid "All downloads have finished."
 msgstr "Remataron todas as descargas."
 
-#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:54
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:60
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:53
 msgid "Allow Running In Background"
 msgstr "Permitir executar en segundo plano"
 
-#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:39
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:45
 msgid "An application restart is required to change the theme."
 msgstr "Requírese reiniciar a aplicación para cambiar o tema."
-
-#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:35
-msgid "Apply"
-msgstr "Aplicar"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:352
 #: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:365
@@ -165,12 +165,11 @@ msgstr "Idioma do son"
 msgid "Authenticate"
 msgstr "Autenticar"
 
-#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:43
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:49
 msgid "Automatically Check for Updates"
 msgstr "Comprobar automaticamente se existen actualizacións"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:45
-#: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringDialog.xaml.cs:36
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:23
 #: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:24
 msgid "Back"
@@ -182,70 +181,65 @@ msgstr "Atrás"
 msgid "Best"
 msgstr "Mellor"
 
-#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:36
+#: ../../../../NickvisionTubeConverter.WinUI/Views/CredentialDialog.xaml.cs:34
 msgid "Cancel"
 msgstr "Cancelar"
 
-#: ../../../../NickvisionTubeConverter.WinUI/Controls/AboutDialog.xaml.cs:31
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:127
 msgid "Changelog"
 msgstr "Rexistro de cambios"
 
-#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:94
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:90
 msgid "Check for Updates"
 msgstr "Comprobar se hai actualizacións"
 
-#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:90
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:96
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:296
 msgid "Chrome/Edge"
 msgstr ""
 
-#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:92
-#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:118
-#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:219
-msgid "Clear Completed Downloads"
+#: ../../../../NickvisionTubeConverter.WinUI/Controls/HistoryPage.xaml.cs:36
+#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:175
+#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:223
+msgid "Clear"
 msgstr ""
 
-#: ../../../../NickvisionTubeConverter.WinUI/Controls/HistoryDialog.xaml.cs:38
-#: NickvisionTubeConverter.GNOME/Blueprints/history_dialog.blp:17
-msgid "Clear History"
-msgstr "Limpar historial"
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:107
+#, fuzzy
+msgid "Clear Completed"
+msgstr "Mostrar completadas"
 
-#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:109
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:115
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:372
 msgid ""
 "Clear metadata fields containing the URL and other identifying information "
 "of the media source"
 msgstr ""
 
-#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:90
-#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:114
-#: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:31
-#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:171
-msgid "Clear Queued Downloads"
-msgstr ""
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:106
+#, fuzzy
+msgid "Clear Queued"
+msgstr "Na fila"
 
-#: ../../../../NickvisionTubeConverter.WinUI/Controls/HistoryDialog.xaml.cs:36
 #: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:44
-#: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringDialog.xaml.cs:35
 msgid "Close"
 msgstr ""
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:295
-#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:218
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:213
 msgid "Close and Stop Downloads?"
 msgstr "Pechar e parar as descargas?"
 
-#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:64
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:70
 msgid "Comma separated list"
 msgstr ""
 
-#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:115
-#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:116
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:103
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:200
 msgid "Completed"
 msgstr ""
 
-#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:46
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:52
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:30
 msgid "Completed Notification Trigger"
 msgstr ""
@@ -254,42 +248,42 @@ msgstr ""
 msgid "Contributors on GitHub ❤️"
 msgstr "Colaboradores/as no GitHub ❤️"
 
-#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:96
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:102
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:339
 msgid "Converter"
 msgstr "Conversor"
 
-#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:89
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:95
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:284
 msgid ""
 "Cookies can be passed to yt-dlp in the form of TXT files. Export cookies "
 "from your browser using the following extensions (use at your own risk):"
 msgstr ""
 
-#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:84
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:90
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:237
 msgid "Cookies File"
 msgstr ""
 
-#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:88
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:94
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:269
 msgid "Cookies File Information"
 msgstr ""
 
-#: ../../../../NickvisionTubeConverter.WinUI/Controls/AboutDialog.xaml.cs:33
-msgid "Copied debug info to clipboard."
-msgstr "Copiar información de depuración no portapapeis."
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:126
+msgid "Copy Debug Information"
+msgstr ""
 
 #: ../../../../NickvisionTubeConverter.WinUI/Controls/DownloadRow.xaml.cs:205
 #: NickvisionTubeConverter.GNOME/Blueprints/download_row.blp:145
 msgid "Copy to Clipboard"
 msgstr "Copiar no portapapeis"
 
-#: ../../../../NickvisionTubeConverter.WinUI/Controls/AboutDialog.xaml.cs:32
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:128
 msgid "Credits"
 msgstr ""
 
-#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:104
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:110
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:361
 msgid "Crop Audio Thumbnails"
 msgstr "Recortar miniaturas de son"
@@ -307,13 +301,13 @@ msgstr "DaPigGuy"
 msgid "David Lapshin"
 msgstr "David Lapshin"
 
-#: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringDialog.xaml.cs:57
+#: ../../../../NickvisionTubeConverter.WinUI/Views/CredentialDialog.xaml.cs:54
 #: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:193
 msgid "Delete"
 msgstr ""
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:315
-#: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringDialog.xaml.cs:255
+#: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringPage.xaml.cs:229
 msgid "Delete Credential?"
 msgstr "Eliminar credencial?"
 
@@ -322,7 +316,7 @@ msgstr "Eliminar credencial?"
 msgid "Deselect All"
 msgstr "Deseleccionar todo"
 
-#: ../../../../NickvisionTubeConverter.WinUI/Controls/AboutDialog.xaml.cs:38
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:157
 #, csharp-format
 msgid ""
 "Developers:\n"
@@ -338,7 +332,7 @@ msgid ""
 "{3}"
 msgstr ""
 
-#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:66
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:72
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:129
 msgid ""
 "Different sites can use different language code formats for the same "
@@ -352,23 +346,18 @@ msgid ""
 "generated ones. To exclude auto-generated ones, turn off the option below."
 msgstr ""
 
-#: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringDialog.xaml.cs:42
+#: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringPage.xaml.cs:56
+#: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringPage.xaml.cs:270
 #: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:132
 msgid "Disable"
 msgstr "Desactivar"
 
-#: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringDialog.xaml.cs:45
-#: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringDialog.xaml.cs:47
-#: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:104
-msgid "Disable Keyring"
-msgstr "Desactivar chaveiro"
-
-#: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringDialog.xaml.cs:40
+#: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringPage.xaml.cs:73
 #: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:129
 msgid "Disable Keyring?"
 msgstr "Desactivar chaveiro?"
 
-#: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringDialog.xaml.cs:41
+#: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringPage.xaml.cs:78
 #: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:130
 msgid ""
 "Disabling the keyring will delete all data currently stored inside. Are you "
@@ -377,24 +366,24 @@ msgstr ""
 "Desactivar o chaveiro eliminará todos os datos almacenados nel. Confirma que "
 "desexa desactivalo?"
 
-#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:97
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:103
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:342
 msgid "Disallow Conversions"
 msgstr "Non permitir conversións"
 
-#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:171
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:161
 msgid "Disclaimer"
 msgstr ""
 
-#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:98
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:94
 msgid "Discussions"
 msgstr "Discusións"
 
-#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:95
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:91
 msgid "Documentation"
 msgstr "Documentación"
 
-#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:167
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:157
 msgid "Don't show this message again"
 msgstr ""
 
@@ -405,7 +394,7 @@ msgid "Download"
 msgstr "Descargar"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Controls/HistoryDialog.cs:82
-#: ../../../../NickvisionTubeConverter.WinUI/Controls/HistoryDialog.xaml.cs:77
+#: ../../../../NickvisionTubeConverter.WinUI/Controls/HistoryPage.xaml.cs:73
 msgid "Download Again"
 msgstr "Descargar de novo"
 
@@ -422,7 +411,7 @@ msgstr "Descarga rematada con erros"
 msgid "Download log was copied to clipboard."
 msgstr "O rexistro de descarga foi copiado ao portapapeis."
 
-#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:100
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:96
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:79
 msgid "Download Media"
 msgstr ""
@@ -449,14 +438,12 @@ msgstr "Comezou a descarga empregando ffmpeg"
 msgid "Download web video and audio"
 msgstr "Descargar vídeo e son da web"
 
-#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:88
-#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:70
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:76
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:150
 msgid "Downloader"
 msgstr "Xestor de descargas"
 
-#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:105
-#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:106
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:101
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:121
 msgid "Downloading"
 msgstr "A descargar"
@@ -472,7 +459,9 @@ msgstr "A descargar {0:f2}% ({1})"
 msgid "Downloading..."
 msgstr "A descargar..."
 
-#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:58
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:86
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:99
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:64
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:64
 msgid "Downloads"
 msgstr "Descargas"
@@ -481,31 +470,30 @@ msgstr "Descargas"
 msgid "Downloads Finished"
 msgstr "Descargas rematadas"
 
-#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:84
-msgid "Edit"
-msgstr "Editar"
-
-#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:112
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:118
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:382
 msgid "Embed Chapters"
 msgstr "Incoporar capítulos"
 
-#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:101
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:107
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:352
 msgid "Embed Metadata"
 msgstr "Incorporar metadatos"
 
-#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:115
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:121
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:391
 msgid "Embed Subtitles"
 msgstr "Incorporar subtítulos"
 
-#: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringDialog.xaml.cs:39
+#: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringPage.xaml.cs:46
+#: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringPage.xaml.cs:119
+#: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringPage.xaml.cs:146
+#: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringPage.xaml.cs:180
 #: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:58
 msgid "Enable"
 msgstr "Activar"
 
-#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:72
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:78
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:154
 msgid ""
 "Enable to use aria2 downloader. It can be faster, but you will not see "
@@ -538,16 +526,16 @@ msgstr ""
 msgid "Enter media URL here"
 msgstr "Introduza o nome aquí"
 
-#: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringDialog.xaml.cs:49
+#: ../../../../NickvisionTubeConverter.WinUI/Views/CredentialDialog.xaml.cs:36
 msgid "Enter name here"
 msgstr "Introduza o nome aquí"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:55
-#: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringDialog.xaml.cs:55
+#: ../../../../NickvisionTubeConverter.WinUI/Views/CredentialDialog.xaml.cs:42
 msgid "Enter password here"
 msgstr "Introduza o contrasinal aquí"
 
-#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:83
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:89
 #, fuzzy
 msgid "Enter proxy URL here"
 msgstr "Introduza o contrasinal aquí"
@@ -556,13 +544,13 @@ msgstr "Introduza o contrasinal aquí"
 msgid "Enter start timeframe here"
 msgstr ""
 
-#: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringDialog.xaml.cs:51
+#: ../../../../NickvisionTubeConverter.WinUI/Views/CredentialDialog.xaml.cs:38
 #, fuzzy
 msgid "Enter URL here"
 msgstr "Introduza o nome aquí"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:53
-#: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringDialog.xaml.cs:53
+#: ../../../../NickvisionTubeConverter.WinUI/Views/CredentialDialog.xaml.cs:40
 msgid "Enter user name here"
 msgstr ""
 
@@ -571,19 +559,14 @@ msgstr ""
 msgid "Error"
 msgstr "Erro"
 
-#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:83
-#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:125
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:116
 msgid "Exit"
 msgstr "Saír"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:73
-#: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringDialog.xaml.cs:130
+#: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringPage.xaml.cs:128
 msgid "Failed to enable keyring."
 msgstr "Non foi posíbel activar o chaveiro."
-
-#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:81
-msgid "File"
-msgstr "Ficheiro"
 
 #: ../../../Models/Download.cs:164
 msgid "File already exists, and overwriting is disallowed"
@@ -599,7 +582,7 @@ msgstr "Nome do ficheiro"
 msgid "File Type"
 msgstr "Tipo de ficheiro"
 
-#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:91
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:97
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:305
 msgid "Firefox"
 msgstr "Firefox"
@@ -609,39 +592,46 @@ msgid "Fyodor Sobolev"
 msgstr "Fyodor Sobolev"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:555
-#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:96
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:92
 msgid "GitHub Repo"
 msgstr "Repositorio do GitHub"
 
-#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:93
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:89
 #: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:60
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:11
 msgid "Help"
 msgstr "Axuda"
 
-#: ../../../../NickvisionTubeConverter.WinUI/Controls/HistoryDialog.xaml.cs:35
-#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:86
+#: ../../../../NickvisionTubeConverter.WinUI/Controls/HistoryPage.xaml.cs:35
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:88
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:508
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:512
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:518
 #: NickvisionTubeConverter.GNOME/Blueprints/history_dialog.blp:30
 #: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:45
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:6
 msgid "History"
 msgstr "Historial"
 
-#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:116
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:85
+msgid "Home"
+msgstr ""
+
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:122
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:392
 msgid ""
 "If disabled or if embedding fails, downloaded subtitles will be saved to a "
 "separate file instead"
 msgstr ""
 
-#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:105
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:111
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:362
 msgid ""
 "If enabled, Parabolic will automatically turn on the crop thumbnail advanced "
 "option for audio downloads"
 msgstr ""
 
-#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:98
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:104
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:343
 msgid ""
 "If enabled, Parabolic will download the appropriate video/audio format for "
@@ -649,22 +639,21 @@ msgid ""
 "unable to select a file format)"
 msgstr ""
 
-#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:47
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:53
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:31
 msgid ""
 "In combination with the trigger, completed notifications will only be shown "
 "if the window is not focused."
 msgstr ""
 
-#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:67
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:73
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:140
 msgid "Include Auto-Generated Subtitles"
 msgstr ""
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:141
-#: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringDialog.xaml.cs:34
-#: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringDialog.xaml.cs:315
-#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:85
+#: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringPage.xaml.cs:44
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:87
 #: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:40
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:5
 msgid "Keyring"
@@ -675,17 +664,21 @@ msgstr "Chaviero"
 msgid "Keyring Credential"
 msgstr "Credencial do chaveiro"
 
-#: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringDialog.xaml.cs:37
+#: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringPage.xaml.cs:47
 #: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:55
 msgid "Keyring Disabled"
 msgstr "Chaveiro desactivado"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:91
-#: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringDialog.xaml.cs:92
 msgid "Keyring locked"
 msgstr "Chaveiro bloqueado"
 
-#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:65
+#: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringPage.xaml.cs:102
+#, fuzzy
+msgid "Keyring locked."
+msgstr "Chaveiro bloqueado"
+
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:71
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:114
 msgid "Language Code Information"
 msgstr ""
@@ -706,8 +699,7 @@ msgstr "Rexistro"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:182
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:201
-#: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringDialog.xaml.cs:220
-#: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringDialog.xaml.cs:343
+#: ../../../../NickvisionTubeConverter.WinUI/Views/CredentialDialog.xaml.cs:33
 msgid "Login"
 msgstr "Rexistro"
 
@@ -716,21 +708,16 @@ msgstr "Rexistro"
 msgid "Make thumbnail square, useful when downloading music."
 msgstr "Crear miniatura cadrada, útil ao descargar música."
 
-#: ../../../../NickvisionTubeConverter.WinUI/Controls/HistoryDialog.xaml.cs:37
-#: NickvisionTubeConverter.GNOME/Blueprints/history_dialog.blp:35
-msgid "Manage previously downloaded media."
-msgstr "Xestionar recursos descargados anteriormente."
-
 #: ../../../Controllers/MainWindowController.cs:110
 msgid "Matrix Chat"
 msgstr "Conversa en Matrix"
 
-#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:75
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:81
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:163
 msgid "Max Connections Per Server (-x)"
 msgstr "Máximo de conexións por servidor (-x)"
 
-#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:62
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:68
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:76
 msgid "Max Number of Active Downloads"
 msgstr "Número máximo de descargas activas"
@@ -762,26 +749,26 @@ msgstr "URL do recurso"
 msgid "Media URL (Invalid)"
 msgstr "URL do recurso (incorrecto)"
 
-#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:55
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:61
 msgid ""
 "Minimize to the system tray instead of quitting the application when the "
 "window is closed."
 msgstr ""
 
-#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:77
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:83
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:186
 msgid "Minimum Split Size (-k)"
 msgstr ""
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:219
-#: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringDialog.xaml.cs:48
-#: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringDialog.xaml.cs:279
+#: ../../../../NickvisionTubeConverter.WinUI/Views/CredentialDialog.xaml.cs:35
+#: ../../../../NickvisionTubeConverter.WinUI/Views/CredentialDialog.xaml.cs:111
 #: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:154
 msgid "Name"
 msgstr "Nome"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:229
-#: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringDialog.xaml.cs:285
+#: ../../../../NickvisionTubeConverter.WinUI/Views/CredentialDialog.xaml.cs:119
 msgid "Name (Empty)"
 msgstr "Nome (Baleiro)"
 
@@ -797,10 +784,10 @@ msgstr "Nicholas Logozzo"
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:254
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:317
 #: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:297
-#: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringDialog.xaml.cs:180
-#: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringDialog.xaml.cs:258
-#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:221
-#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:186
+#: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringPage.xaml.cs:166
+#: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringPage.xaml.cs:232
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:216
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:203
 msgid "No"
 msgstr "Non"
 
@@ -812,31 +799,32 @@ msgstr "Sen conexión activa coa Internet"
 msgid "No Completed Downloads"
 msgstr "Non hai descargas completadas"
 
-#: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringDialog.xaml.cs:43
+#: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringPage.xaml.cs:51
 #: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:82
 msgid "No Credentials"
 msgstr "Sen credenciais"
 
-#: ../../../Models/DownloadManager.cs:181
+#: ../../../Models/DownloadManager.cs:193
 msgid "No downloads running"
 msgstr "Non hai descargas en execución"
 
-#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:108
-msgid "No Downloads Running"
-msgstr "Non hai descargas en execución"
-
-#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:134
-#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:270
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:144
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:279
 msgid "No File Selected"
 msgstr ""
 
-#: ../../../../NickvisionTubeConverter.WinUI/Controls/HistoryDialog.xaml.cs:40
+#: ../../../../NickvisionTubeConverter.WinUI/Controls/HistoryPage.xaml.cs:37
 #: NickvisionTubeConverter.GNOME/Blueprints/history_dialog.blp:58
 msgid "No Previous Downloads"
 msgstr "Non hai descargas anteriores"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:110
 msgid "No Queued Downloads"
+msgstr "Non hai descargas na fila"
+
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:108
+#, fuzzy
+msgid "No Running Downloads"
 msgstr "Non hai descargas na fila"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:66
@@ -855,25 +843,24 @@ msgstr "Numerar títulos"
 #: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:84
 #: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:88
 #: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:92
-#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:45
-#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:53
-#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:57
-#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:61
-#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:69
-#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:74
-#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:94
-#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:100
-#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:103
-#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:107
-#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:111
-#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:114
-#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:118
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:51
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:59
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:63
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:67
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:75
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:80
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:100
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:106
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:109
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:113
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:117
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:120
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:124
 msgid "Off"
 msgstr "Desactivado"
 
-#: ../../../../NickvisionTubeConverter.WinUI/Controls/AboutDialog.xaml.cs:30
 #: ../../../../NickvisionTubeConverter.WinUI/Controls/DownloadRow.xaml.cs:206
-#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:187
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:177
 msgid "OK"
 msgstr "Aceptar"
 
@@ -886,19 +873,19 @@ msgstr "Aceptar"
 #: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:83
 #: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:87
 #: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:91
-#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:44
-#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:52
-#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:56
-#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:60
-#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:68
-#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:73
-#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:93
-#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:99
-#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:102
-#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:106
-#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:110
-#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:113
-#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:117
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:50
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:58
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:62
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:66
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:74
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:79
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:99
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:105
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:108
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:112
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:116
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:119
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:123
 msgid "On"
 msgstr "Activado"
 
@@ -913,26 +900,20 @@ msgstr "Abrir ficheiro"
 msgid "Open Folder"
 msgstr "Abrir cartafol"
 
-#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:59
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:65
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:67
 msgid "Overwrite Existing Files"
 msgstr "Substituír ficheiros existentes"
 
 #: ../../../Controllers/MainWindowController.cs:104
-#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:121
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:112
 msgid "Parabolic"
 msgstr "Parabolic"
 
-#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:103
-msgid ""
-"Parabolic's documentation and support channels are accessible via the Help "
-"menu."
-msgstr ""
-
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:225
 #: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:54
-#: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringDialog.xaml.cs:54
-#: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringDialog.xaml.cs:282
+#: ../../../../NickvisionTubeConverter.WinUI/Views/CredentialDialog.xaml.cs:41
+#: ../../../../NickvisionTubeConverter.WinUI/Views/CredentialDialog.xaml.cs:114
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:75
 #: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:169
 #: NickvisionTubeConverter.GNOME/Blueprints/password_dialog.blp:52
@@ -940,12 +921,12 @@ msgid "Password"
 msgstr "Contrasinal"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:236
-#: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringDialog.xaml.cs:290
+#: ../../../../NickvisionTubeConverter.WinUI/Views/CredentialDialog.xaml.cs:124
 msgid "Password (Empty)"
 msgstr "Contrasinal (Baleiro)"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Controls/HistoryDialog.cs:66
-#: ../../../../NickvisionTubeConverter.WinUI/Controls/HistoryDialog.xaml.cs:68
+#: ../../../../NickvisionTubeConverter.WinUI/Controls/HistoryPage.xaml.cs:64
 msgid "Play"
 msgstr "Reproducir"
 
@@ -968,12 +949,12 @@ msgstr "Preferir o codec AV1"
 msgid "Preparing..."
 msgstr "A preparar..."
 
-#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:51
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:57
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:44
 msgid "Prevent Suspend"
 msgstr "Evitar a suspensión"
 
-#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:75
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:84
 msgid "PREVIEW"
 msgstr "VISTA PREVIA"
 
@@ -982,7 +963,7 @@ msgstr "VISTA PREVIA"
 msgid "Processing..."
 msgstr "A procesar..."
 
-#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:82
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:88
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:228
 msgid "Proxy URL"
 msgstr "URL do proxy"
@@ -992,50 +973,43 @@ msgstr "URL do proxy"
 msgid "Quality"
 msgstr "Calidade"
 
-#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:112
-#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:113
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:102
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:161
 msgid "Queued"
 msgstr "Na fila"
 
-#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:120
-#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:639
-#, csharp-format
-msgid "Remaining Downloads: {0}"
-msgstr ""
-
-#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:108
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:114
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:371
 msgid "Remove Source Data"
 msgstr "Retirar datos da fonte"
 
-#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:97
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:93
 msgid "Report a Bug"
 msgstr "Informar dun erro"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:92
-#: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringDialog.xaml.cs:58
+#: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringPage.xaml.cs:49
 msgid "Reset"
 msgstr "Restaurar"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:252
-#: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringDialog.xaml.cs:177
+#: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringPage.xaml.cs:163
 msgid "Reset Keyring?"
 msgstr "Restaurar chaveiro?"
 
-#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:76
-#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:79
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:82
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:85
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:181
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:205
 msgid "Reset to default"
 msgstr ""
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:95
-#: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringDialog.xaml.cs:91
+#: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringPage.xaml.cs:99
 msgid "Restart the app to unlock the keyring."
 msgstr "Reiniciar o aplicativo para desbloquear o chaveiro."
 
-#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:183
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:200
 msgid "Restart To Apply Theme?"
 msgstr ""
 
@@ -1044,12 +1018,10 @@ msgstr ""
 msgid "Retry Download"
 msgstr "Tentar descarga de novo"
 
-#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:91
-#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:117
-#: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:26
-#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:211
-msgid "Retry Failed Downloads"
-msgstr ""
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:105
+#, fuzzy
+msgid "Retry Failed"
+msgstr "Tentar descarga de novo"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:421
 #: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:62
@@ -1063,10 +1035,9 @@ msgstr "Cartafol de destino"
 msgid "Save Folder (Invalid)"
 msgstr "Cartafol de destino (Incorrecto)"
 
-#: ../../../../NickvisionTubeConverter.WinUI/Controls/HistoryDialog.xaml.cs:39
-#: NickvisionTubeConverter.GNOME/Blueprints/history_dialog.blp:48
-msgid "Search history"
-msgstr "Buscar no historial"
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:83
+msgid "Search for downloads, history, and more"
+msgstr ""
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:72
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:227
@@ -1074,7 +1045,7 @@ msgid "Select All"
 msgstr "Seleccionar todo"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/PreferencesDialog.cs:194
-#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:86
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:92
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:249
 msgid "Select Cookies File"
 msgstr "Seleccionar ficheiro de cookies"
@@ -1090,22 +1061,18 @@ msgstr "Seleccione elementos para descargar ou cambie os nomes dos ficheiros."
 msgid "Select Save Folder"
 msgstr "Seleccionar cartafol de destino"
 
-#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:87
-#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:124
-#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:34
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:95
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:115
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:42
 msgid "Settings"
 msgstr ""
 
-#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:109
-msgid "Show Completed"
-msgstr "Mostrar completadas"
-
-#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:123
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:114
 msgid "Show Window"
 msgstr "Mostrar xanela"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:295
-#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:219
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:214
 msgid ""
 "Some downloads are still in progress.\n"
 "Are you sure you want to close Parabolic and stop the running downloads?"
@@ -1113,12 +1080,12 @@ msgstr ""
 "Algunhas descargas están aínda en proceso.\n"
 "Confirma que desexa pechar o Parabolic e parar as descargas en execución?"
 
-#: ../../../Models/DownloadManager.cs:177
+#: ../../../Models/DownloadManager.cs:189
 msgid "Some downloads finished with errors!"
 msgstr "Algunhas descargas remataron con erros!"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:74
-#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:80
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:86
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:275
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:211
 msgid "Speed Limit"
@@ -1134,7 +1101,7 @@ msgstr "Dividir capítulos"
 msgid "Splits the video into multiple smaller ones based on its chapters."
 msgstr "Divide o vídeo en varios menores en función dos seus capítulos."
 
-#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:95
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:101
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:331
 msgid "SponsorBlock Information (opens in a web browser)"
 msgstr ""
@@ -1151,11 +1118,9 @@ msgstr "Inicio"
 msgid "Start Time (Invalid)"
 msgstr "Inicio (Incorrecto)"
 
-#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:89
-#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:107
-#: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:21
-#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:131
-msgid "Stop All Downloads"
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:104
+#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:136
+msgid "Stop All"
 msgstr ""
 
 #: ../../../../NickvisionTubeConverter.WinUI/Controls/DownloadRow.xaml.cs:63
@@ -1168,8 +1133,8 @@ msgstr "Parar descarga"
 msgid "Stopped"
 msgstr "Parado"
 
-#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:63
-#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:214
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:69
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:222
 msgid "Subtitle Languages"
 msgstr "Idiomas dos subtítulos"
 
@@ -1179,7 +1144,7 @@ msgid "Subtitle Languages (Comma-Separated)"
 msgstr "Idiomas dos subtítulos (separados por vírgulas)"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/PreferencesDialog.cs:179
-#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:223
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:231
 msgid "Subtitle Languages (Invalid)"
 msgstr "Idiomas dos subtítulos (Incorrecto)"
 
@@ -1189,7 +1154,7 @@ msgid "Success"
 msgstr "Éxito"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:551
-#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:182
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:172
 msgid ""
 "The authors of Nickvision Parabolic are not responsible/liable for any "
 "misuse of this program that may violate local copyright/DMCA laws. Users use "
@@ -1199,22 +1164,22 @@ msgstr ""
 "deste programa que poida violar as leis locais de dereitos de autor/DMCA. Os "
 "usuarios empregan esta aplicación pola súa propia conta e risco."
 
-#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:78
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:84
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:187
 msgid "The minimum size of which to split a file (in MiB)."
 msgstr ""
 
-#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:38
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:44
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:18
 msgid "Theme"
 msgstr ""
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:315
-#: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringDialog.xaml.cs:256
+#: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringPage.xaml.cs:230
 msgid "This action is irreversible. Are you sure you want to delete it?"
 msgstr "Esta acción é irreversíbel. Confirma que desexa eliminalo?"
 
-#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:81
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:87
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:212
 msgid ""
 "This limit (in KiB/s) is applied to downloads that have speed limit enabled. "
@@ -1228,7 +1193,7 @@ msgid ""
 msgstr ""
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:252
-#: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringDialog.xaml.cs:178
+#: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringPage.xaml.cs:164
 msgid ""
 "This will delete the previous keyring removing all passwords with it. This "
 "action is irreversible."
@@ -1241,7 +1206,7 @@ msgid "translator-credits"
 msgstr "Xosé <xosecalvo@gmail.com; proxecto@trasno.gal>"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:288
-#: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringDialog.xaml.cs:161
+#: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringPage.xaml.cs:150
 msgid "Unable to disable keyring."
 msgstr "Non foi posíbel desactivar o chaveiro."
 
@@ -1250,7 +1215,7 @@ msgid "Unable to download and install update."
 msgstr ""
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:269
-#: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringDialog.xaml.cs:196
+#: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringPage.xaml.cs:185
 msgid "Unable to reset keyring."
 msgstr "Non foi posíbel restaurar o chaveiro."
 
@@ -1263,32 +1228,34 @@ msgstr ""
 msgid "Unlock Keyring"
 msgstr "Desbloquear chaveiro"
 
-#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:87
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:93
 msgid "Unset Cookies File"
 msgstr "Anular selección de ficheiro de cookies"
 
-#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:327
+#: ../../../../NickvisionTubeConverter.WinUI/Views/CredentialDialog.xaml.cs:53
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:320
 msgid "Update"
 msgstr ""
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:221
-#: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringDialog.xaml.cs:50
-#: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringDialog.xaml.cs:280
+#: ../../../../NickvisionTubeConverter.WinUI/Views/CredentialDialog.xaml.cs:37
+#: ../../../../NickvisionTubeConverter.WinUI/Views/CredentialDialog.xaml.cs:112
 #: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:159
 msgid "URL"
 msgstr "URL"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:241
-#: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringDialog.xaml.cs:294
+#: ../../../../NickvisionTubeConverter.WinUI/Views/CredentialDialog.xaml.cs:128
 msgid "URL (Invalid)"
 msgstr "URL (Incorrecto)"
 
-#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:71
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:77
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:153
 msgid "Use aria2"
 msgstr ""
 
-#: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringDialog.xaml.cs:38
+#: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringPage.xaml.cs:48
+#: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringPage.xaml.cs:176
 #: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:56
 msgid ""
 "Use keyring to safely store credentials for sites that require a user name "
@@ -1301,25 +1268,29 @@ msgstr ""
 msgid "Use manual credential"
 msgstr "Empregar credencial manual"
 
-#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:92
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:98
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:320
 msgid "Use SponsorBlock for YouTube"
 msgstr ""
 
-#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:37
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:43
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:15
 msgid "User Interface"
 msgstr ""
 
+#: ../../../../NickvisionTubeConverter.WinUI/Views/CredentialDialog.xaml.cs:39
+#: ../../../../NickvisionTubeConverter.WinUI/Views/CredentialDialog.xaml.cs:113
+#, fuzzy
+msgid "User Name"
+msgstr "Nome de usuario"
+
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:234
-#: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringDialog.xaml.cs:289
+#: ../../../../NickvisionTubeConverter.WinUI/Views/CredentialDialog.xaml.cs:123
 msgid "User Name (Empty)"
 msgstr "Nome de usuario (Baleiro)"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:223
 #: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:52
-#: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringDialog.xaml.cs:52
-#: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringDialog.xaml.cs:281
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:71
 #: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:164
 msgid "Username"
@@ -1327,6 +1298,7 @@ msgstr "Nome de usuario"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:336
 #: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:41
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:497
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:81
 msgid "Validate"
 msgstr "Validar"
@@ -1358,7 +1330,7 @@ msgstr "Á espera..."
 msgid "Worst"
 msgstr "Peor"
 
-#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:184
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:201
 #, csharp-format
 msgid ""
 "Would you like to restart {0} to apply the new theme?\n"
@@ -1368,26 +1340,26 @@ msgstr ""
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:257
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:320
 #: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:300
-#: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringDialog.xaml.cs:179
-#: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringDialog.xaml.cs:257
-#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:220
-#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:185
+#: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringPage.xaml.cs:165
+#: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringPage.xaml.cs:231
+#: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:215
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:202
 msgid "Yes"
 msgstr "Si"
 
-#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:48
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:54
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:34
 msgctxt "CompletedNotification"
 msgid "For each download"
 msgstr ""
 
-#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:50
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:56
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:34
 msgctxt "CompletedNotification"
 msgid "Never"
 msgstr ""
 
-#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:49
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:55
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:34
 msgctxt "CompletedNotification"
 msgid "When all downloads finish"
@@ -1399,19 +1371,19 @@ msgctxt "subtitle"
 msgid "all"
 msgstr ""
 
-#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:41
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:47
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:20
 msgctxt "Theme"
 msgid "Dark"
 msgstr ""
 
-#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:40
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:46
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:20
 msgctxt "Theme"
 msgid "Light"
 msgstr ""
 
-#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsDialog.xaml.cs:42
+#: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:48
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:20
 msgctxt "Theme"
 msgid "System"
@@ -1420,6 +1392,22 @@ msgstr ""
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:306
 msgid "Leave empty to download to end."
 msgstr "Deixe en branco para descargar até o fin."
+
+#: NickvisionTubeConverter.GNOME/Blueprints/history_dialog.blp:17
+msgid "Clear History"
+msgstr "Limpar historial"
+
+#: NickvisionTubeConverter.GNOME/Blueprints/history_dialog.blp:35
+msgid "Manage previously downloaded media."
+msgstr "Xestionar recursos descargados anteriormente."
+
+#: NickvisionTubeConverter.GNOME/Blueprints/history_dialog.blp:48
+msgid "Search history"
+msgstr "Buscar no historial"
+
+#: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:104
+msgid "Disable Keyring"
+msgstr "Desactivar chaveiro"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/password_dialog.blp:17
 msgid "Migrate to Secret-Secured Keyring"
@@ -1459,6 +1447,21 @@ msgstr ""
 msgid "Clear Cookies File"
 msgstr ""
 
+#: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:21
+#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:131
+msgid "Stop All Downloads"
+msgstr ""
+
+#: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:26
+#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:211
+msgid "Retry Failed Downloads"
+msgstr ""
+
+#: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:31
+#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:171
+msgid "Clear Queued Downloads"
+msgstr ""
+
 #: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:37
 msgid "Application"
 msgstr ""
@@ -1484,14 +1487,24 @@ msgstr ""
 msgid "Main Menu"
 msgstr ""
 
-#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:136
-msgid "Stop All"
+#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:219
+msgid "Clear Completed Downloads"
 msgstr ""
 
-#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:175
-#: NickvisionTubeConverter.GNOME/Blueprints/window.blp:223
-msgid "Clear"
-msgstr ""
+#~ msgid "Apply"
+#~ msgstr "Aplicar"
+
+#~ msgid "Copied debug info to clipboard."
+#~ msgstr "Copiar información de depuración no portapapeis."
+
+#~ msgid "Edit"
+#~ msgstr "Editar"
+
+#~ msgid "File"
+#~ msgstr "Ficheiro"
+
+#~ msgid "No Downloads Running"
+#~ msgstr "Non hai descargas en execución"
 
 #~ msgid "Default"
 #~ msgstr "Predeterminado"

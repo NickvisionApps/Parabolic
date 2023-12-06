@@ -41,6 +41,18 @@ public class DownloadManager
     /// The number of remaining downloads
     /// </summary>
     public int RemainingDownloadsCount => _downloading.Count + _queued.Count;
+    /// <summary>
+    /// The number of downloading downloads
+    /// </summary>
+    public int DownloadingCount => _downloading.Count;
+    /// <summary>
+    /// The number of queued downloads
+    /// </summary>
+    public int QueuedCount => _queued.Count;
+    /// <summary>
+    /// The number of completed downloads
+    /// </summary>
+    public int CompletedCount => _completed.Count;
 
     /// <summary>
     /// Occurs when a download is added
