@@ -2,7 +2,7 @@
 <page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" id="downloader" its:version="2.0" xml:lang="sv">
 <info>
 	<link type="guide" xref="index"/>
-	<title type="link">Downloader 🌐</title>
+	<title type="link">Nedladdare 🌐</title>
 	<credit type="author copyright">
 		<name>Nicholas Logozzo</name>
 		<years its:translate="no">2023</years>
@@ -15,106 +15,98 @@
 </info>
 
 <title>Nedladdare</title>
-<p>This page explains all options for configuring the Downloader in Preferences in <app>Parabolic</app>.</p>
+<p>Den här sidan förklarar alla alternativ för att konfigurera Nedladdaren i Inställningar i <app>Parabolic</app>.</p>
 
 <terms>
     <item>
         <title>Skriv över existerande filer</title>
-        <p>If enabled, Parabolic will overwrite existing files.</p>
-        <p>
-            For example, if a file named <code>movie.mp4</code> exists in the download folder, and a new download is created named <code>movie</code>, <code>movie.mp4</code> will be overwritten with the new download's content.
-        </p>
+        <p>Om aktiverat kommer Parabolic att skriva över befintliga filer.</p>
+        <p>Till exempel, om en fil med namnet <code>movie.mp4</code> finns i nedladdningsmappen, och en ny nedladdning skapas med namnet <code>movie</code>, kommer <code>movie.mp4</code> skrivas över med den nya nedladdningens innehåll.</p>
         <note style="advanced">
-            <p>Default: On</p>
+            <p>Standard: På</p>
         </note>
     </item>
 	<item>
-		<title>Maximum Number of Active Downloads</title>
-		<p>The number of active downloads allowed to run at a time. Must be an integer value between 1 and 10.</p>
-        <p>If the max number of active downloads is reached, Parabolic will place new downloads in a queue until more downloads are able to be run.</p>
+		<title>Maximalt antal aktiva nedladdningar</title>
+		<p>Antalet aktiva nedladdningar som får köras åt gången. Måste vara ett heltalsvärde mellan 1 och 10.</p>
+        <p>Om det maximala antalet aktiva nedladdningar uppnås kommer Parabolic att placera nya nedladdningar i en kö tills fler nedladdningar kan köras.</p>
 		<note style="advanced">
-			<p>Default: 5</p>
+			<p>Standard: 5</p>
 		</note>
     </item>
     <item>
-        <title>Subtitles Languages</title>
-        <p>A comma-separated list of two-letter, two-letter with region, and three-letter language codes to use when selecting languages of subtitles to download. Only applies when downloading a video with subtitles.</p>
+        <title>Undertexter Språk</title>
+        <p>En kommaseparerad lista med språkkoder på två bokstäver, två bokstäver med region och tre bokstäver som ska användas när du väljer språk för undertexter att ladda ner. Gäller endast vid nedladdning av en video med undertexter.</p>
         <note>
-            <p>Different sites can use different language code formats for the same language. You may encounter one of the following three types: two-letter, two-letter with region, or three-letter. For example, "en", "en-US" and "eng" are all used for English. Please specify all valid codes for your languages for the best results. Auto-generated subtitles will also be downloaded if available.</p>
-            <p>You can specify "all" instead to download all subtitles, but without auto-generated ones.</p>
+            <p>Olika webbplatser kan använda olika språkkodformat för samma språk. Du kan stöta på en av följande tre typer: två bokstäver, två bokstäver med region eller tre bokstäver. Till exempel, "en", "en-US" och "eng" används alla för engelska. Vänligen ange alla giltiga koder för dina språk för bästa resultat. Auto genererade undertexter kommer också att laddas ner om de är tillgängliga.</p>
+            <p>Du kan ange "alla" istället för att ladda ner alla undertexter, men utan automatiskt genererade.</p>
         </note>
         <note style="advanced">
-            <p>
-                Default: Your culture's language codes. For example, on an en-US system the default would be <code>en,en-US,eng</code>
-            </p>
+            <p>Standard: Ditt lands språkkoder. Till exempel, på ett en-US-system skulle standarden vara <code>en,en-US,eng</code></p>
         </note>
     </item>
     <item>
-        <title>Included Auto-Generated Subtitles</title>
-        <p>Whether or not to included subtitles that are auto-translated to fit the requested subtitle languages.</p>
+        <title>Inkluderade automatiskt genererade undertexter</title>
+        <p>Oavsett om du vill inkludera undertexter eller inte, som är automatiskt översatta för att passa de begärda undertextspråken.</p>
         <note style="advanced">
-            <p>Default: On</p>
+            <p>Standard: På</p>
         </note>
     </item>
     <item>
         <title>Använd aria2</title>
-        <p>If enabled, Parabolic will use aria2c to download media. Although using aria2c can improve download speed, download progress will not be displayed in the UI.</p>
+        <p>Om aktiverat kommer Parabolic att använda aria2c för att ladda ner media. Även om användning av aria2c kan förbättra nedladdningshastigheten, kommer inte nedladdningsförloppet att visas i användargränssnittet.</p>
         <note style="advanced">
-            <p>Default: Off</p>
+            <p>Standard: Av</p>
         </note>
     </item>
     <item>
-        <title>Maximum Connections Per Server</title>
-        <p>
-            This option only applies when using aria2 is enabled. This option is the same as the <code>-x</code> flag passed to aria2c.
-        </p>
-        <p>The maximum number of connection that can be used per server. Must be an integer value between 1 and 32.</p>
+        <title>Maximalt antal anslutningar per server</title>
+        <p>Det här alternativet gäller endast när aria2 är aktiverat. Detta alternativ är detsamma som flaggan <code>-x</code> som skickas till aria2c.</p>
+        <p>Det maximala antalet anslutningar som kan användas per server. Måste vara ett heltalsvärde mellan 1 och 32.</p>
         <note style="advanced">
-            <p>Default: 16</p>
+            <p>Standard: 16</p>
         </note>
     </item>
     <item>
-        <title>Minimum Split Size</title>
-        <p>
-            This option only applies when using aria2 is enabled. This option is the same as the <code>-k</code> flag passed to aria2c.
-        </p>
-        <p>The minimum size, in MiB, of which to split a file. Must be an integer value between 1 and 1024.</p>
+        <title>Minsta splitstorlek</title>
+        <p>Det här alternativet gäller endast när aria2 är aktiverat. Detta alternativ är detsamma som flaggan <code>-k</code> som skickas till aria2c.</p>
+        <p>Minsta storlek, i MiB, för att dela en fil. Måste vara ett heltalsvärde mellan 1 och 1024.</p>
         <note style="advanced">
-            <p>Default: 20</p>
+            <p>Standard: 20</p>
         </note>
     </item>
     <item>
         <title>Hastighetsgräns</title>
-        <p>A limit, in Ki/s, that is applied to downloads only if they have the advanced option <code>Speed Limit</code> enabled. Must be an integer value between 512 and 10240.</p>
+        <p>En gräns, i Ki/s, som endast tillämpas på nedladdningar om de har det avancerade alternativet <code>Hastighetsgräns</code> aktiverat. Måste vara ett heltalsvärde mellan 512 och 10240.</p>
 		<note style="advanced">
-			<p>Default: 1024</p>
+			<p>Standard: 1024</p>
 		</note>
     </item>
     <item>
         <title>Proxy URL</title>
-        <p>The url of the proxy server to use.</p>
+        <p>URL till proxyservern som ska användas.</p>
     </item>
     <item>
         <title>Cookies fil</title>
-        <p>A .txt file of cookies to pass to yt-dlp when downloading. This may be useful when downloading media that requires a login, for example: private YouTube videos.</p>
-        <p>Use one of the following extensions for getting a cookies file from your browser:</p>
+        <p>En .txt-fil med cookies som ska skickas till yt-dlp vid nedladdning. Detta kan vara användbart när du laddar ner media som kräver inloggning, till exempel: privata YouTube-videor.</p>
+        <p>Använd ett av följande tillägg för att hämta en cookies fil från din webbläsare:</p>
         <p>Chrome: <code>https://chrome.google.com/webstore/detail/get-cookiestxt-locally/cclelndahbckbenkjhflpdbgdldlbecc</code></p>
-        <p>Firefox: <code>https://addons.mozilla.org/en-US/firefox/addon/cookies-txt/</code></p>
+        <p>Firefox: <code>https://addons.mozilla.org/sv-SE/firefox/addon/cookies-txt/</code></p>
         <note>
-            <p>Use these extensions at your own risk.</p>
+            <p>Använd dessa tillägg på egen risk.</p>
         </note>
 		<note style="advanced">
-			<p>Default: No File Selected</p>
+			<p>Standard: Ingen fil har valts</p>
 		</note>
     </item>
     <item>
         <title>Använd SponsorBlock för YouTube</title>
-        <p>If enabled, Parabolic will apply the SponsorBlock extension to YouTube downloads.</p>
+        <p>Om det är aktiverat kommer Parabolic att tillämpa SponsorBlock-tillägget på YouTube-nedladdningar.</p>
         <note>
-            <p>SponsorBlock only works on YouTube videos. However, leaving this setting on will not affect downloads from other sites (i.e. not cause them to fail).</p>
+            <p>SponsorBlock fungerar bara på YouTube-videor. Om du låter den här inställningen vara aktiverad kommer det dock inte att påverka nedladdningar från andra webbplatser (dvs. att de inte misslyckas).</p>
         </note>
         <note style="advanced">
-            <p>Default: Off</p>
+            <p>Standard: Av</p>
         </note>
     </item>
 </terms>
