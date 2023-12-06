@@ -329,6 +329,10 @@ public sealed partial class MainWindow : Window
             BtnInfoBar.Visibility = Visibility.Collapsed;
             return;
         }
+        else if (e.Action == "no-close")
+        {
+            InfoBar.IsClosable = false;
+        }
         BtnInfoBar.Visibility = !string.IsNullOrEmpty(e.Action) ? Visibility.Visible : Visibility.Collapsed;
         InfoBar.IsOpen = true;
     }

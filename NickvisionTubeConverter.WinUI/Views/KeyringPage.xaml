@@ -46,7 +46,11 @@
                 </nickvision:ViewStackPage>
 
                 <nickvision:ViewStackPage PageName="Disabled">
-                    <nickvision:StatusPage x:Name="StatusPageDisabled" HorizontalAlignment="Center" VerticalAlignment="Center" Glyph="&#xE72E;"/>
+                    <nickvision:StatusPage x:Name="StatusPageDisabled" HorizontalAlignment="Center" VerticalAlignment="Center" Glyph="&#xE72E;">
+                        <nickvision:StatusPage.Child>
+                            <Button x:Name="BtnReset" Visibility="Collapsed" Click="Reset"/>
+                        </nickvision:StatusPage.Child>
+                    </nickvision:StatusPage>
                 </nickvision:ViewStackPage>
 
                 <nickvision:ViewStackPage PageName="Enabled">
@@ -64,7 +68,7 @@
                             </Grid.ColumnDefinitions>
 
                             <CommandBar Grid.Column="0" DefaultLabelPosition="Right">
-                                <AppBarButton x:Name="BtnAddCredential" Icon="Add" Click="AddLogin"/>
+                                <AppBarButton x:Name="BtnAddCredential" Icon="Add" Click="AddCredential"/>
                             </CommandBar>
                         </Grid>
 
@@ -85,7 +89,5 @@
                 </nickvision:ViewStackPage>
             </nickvision:ViewStack.Pages>
         </nickvision:ViewStack>
-
-
     </Grid>
 </UserControl>
