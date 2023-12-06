@@ -523,7 +523,7 @@ public sealed partial class MainWindow : Window
     }
 
     /// <summary>
-    /// Occurs when the TitleBarSearchBox's suggestion is choosen
+    /// Occurs when the TitleBarSearchBox's suggestion is chosen
     /// </summary>
     /// <param name="sender">AutoSuggestBox</param>
     /// <param name="e">AutoSuggestBoxSuggestionChosenEventArgs </param>

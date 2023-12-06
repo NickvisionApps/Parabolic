@@ -3,7 +3,7 @@ using Microsoft.UI.Xaml.Controls;
 namespace NickvisionTubeConverter.WinUI.Controls;
 
 /// <summary>
-/// A NavigationView control mimicing that of the Microsoft Store
+/// A NavigationView control mimicking that of the Microsoft Store
 /// </summary>
 public sealed partial class StoreNavigationView : NavigationView
 {
