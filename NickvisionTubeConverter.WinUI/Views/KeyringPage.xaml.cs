@@ -120,6 +120,7 @@ public sealed partial class KeyringPage : UserControl
         {
             if(await _controller.EnableKeyringAsync())
             {
+                KeyringUpdated?.Invoke(this, _controller);
                 await LoadCredentialsAsync();
             }
             else
@@ -140,6 +141,7 @@ public sealed partial class KeyringPage : UserControl
         _disableFlyout.Hide();
         if(await _controller.DisableKeyringAsync())
         {
+            KeyringUpdated?.Invoke(this, _controller);
             ViewStack.CurrentPageName = "Disabled";
             BtnEnableDisable.Flyout = null;
             IconBtnEnableDisable.Glyph = "\uE785";
@@ -172,6 +174,7 @@ public sealed partial class KeyringPage : UserControl
         {
             if (await _controller.ResetKeyringAsync())
             {
+                KeyringUpdated?.Invoke(this, _controller);
                 ViewStack.CurrentPageName = "Disabled";
                 StatusPageDisabled.Description = _("Use keyring to safely store credentials for sites that require a user name and password to login.");
                 BtnEnableDisable.IsEnabled = true;
@@ -202,6 +205,7 @@ public sealed partial class KeyringPage : UserControl
         if(result == ContentDialogResult.Primary)
         {
             await _controller.AddCredentialAsync(addDialog.Credential.Name, addDialog.Credential.Uri?.ToString(), addDialog.Credential.Username, addDialog.Credential.Password);
+            KeyringUpdated?.Invoke(this, _controller);
             await LoadCredentialsAsync();
         }
     }
@@ -220,6 +224,7 @@ public sealed partial class KeyringPage : UserControl
         if (result == ContentDialogResult.Primary)
         {
             await _controller.UpdateCredentialAsync(editDialog.Credential.Id, editDialog.Credential.Name, editDialog.Credential.Uri?.ToString(), editDialog.Credential.Username, editDialog.Credential.Password);
+            KeyringUpdated?.Invoke(this, _controller);
             await LoadCredentialsAsync();
         }
         else if (result == ContentDialogResult.Secondary)
@@ -237,6 +242,7 @@ public sealed partial class KeyringPage : UserControl
             if (result == ContentDialogResult.Primary)
             {
                 await _controller.DeleteCredentialAsync(editDialog.Credential.Id);
+                KeyringUpdated?.Invoke(this, _controller);
                 await LoadCredentialsAsync();
             }
         }
