@@ -8,31 +8,31 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-12-06 13:46-0500\n"
-"PO-Revision-Date: 2023-11-19 17:52+0000\n"
-"Last-Translator: Kingproone <PlayerGuy@protonmail.com>\n"
-"Language-Team: Hungarian <https://hosted.weblate.org/projects/nickvision-"
-"tube-converter/app/hu/>\n"
+"PO-Revision-Date: 2023-12-17 22:20+0000\n"
+"Last-Translator: ViBE <vibe@protonmail.com>\n"
+"Language-Team: Hungarian <https://hosted.weblate.org/projects/"
+"nickvision-tube-converter/app/hu/>\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.2\n"
+"X-Generator: Weblate 5.3\n"
 
 #: ../../../Controllers/MainWindowController.cs:428
 #, csharp-format
 msgid "\"{0}\" has finished downloading."
-msgstr "\"{0}\" letöltése befejeződött."
+msgstr "„{0}” letöltése befejeződött."
 
 #: ../../../Controllers/MainWindowController.cs:428
 #, csharp-format
 msgid "\"{0}\" has finished with an error!"
-msgstr "\"{0}\" letöltése közben hiba történt."
+msgstr "„{0}” letöltése közben hiba történt."
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:219
 #: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:112
 msgid "(Configurable in preferences)"
-msgstr "(Módosítható a preferenciákban)"
+msgstr "(Beállításokban módosítható)"
 
 #: ../../../Helpers/SpeedFormatter.cs:32
 #, csharp-format
@@ -88,9 +88,8 @@ msgstr ""
 "igénylő oldalakhoz."
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:125
-#, fuzzy
 msgid "About"
-msgstr "{0}-ról"
+msgstr "Névjegy"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/CredentialDialog.xaml.cs:46
 #: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:100
@@ -101,7 +100,7 @@ msgstr "Hozzáadás"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringPage.xaml.cs:52
 msgid "Add a login to get started."
-msgstr ""
+msgstr "Kezdéshez adjon hozzá egy fiókot"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:97
 #: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:109
@@ -144,7 +143,7 @@ msgstr "Futtatás a háttérben"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:45
 msgid "An application restart is required to change the theme."
-msgstr "Egy alkalmazás újraindítás szükséges a téma megváltoztatásához."
+msgstr "A téma beállításához az alkalmazás újraindítása szükséges."
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:352
 #: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:365
@@ -177,7 +176,7 @@ msgstr "Vissza"
 #: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:75
 #: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:38
 msgid "Best"
-msgstr "Jó"
+msgstr "Legmagasabb"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/CredentialDialog.xaml.cs:34
 msgid "Cancel"
@@ -185,7 +184,7 @@ msgstr "Mégse"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:127
 msgid "Changelog"
-msgstr "Változáslista"
+msgstr "Kiadási jegyzék"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:90
 msgid "Check for Updates"
@@ -203,7 +202,6 @@ msgid "Clear"
 msgstr "Törlés"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:107
-#, fuzzy
 msgid "Clear Completed"
 msgstr "Befejezett letöltések törlése"
 
@@ -213,11 +211,10 @@ msgid ""
 "Clear metadata fields containing the URL and other identifying information "
 "of the media source"
 msgstr ""
-"Törölje a metaadatmezőket, amelyek az URL-t és a médiaforrás egyéb azonosító "
-"adatait tartalmazzák"
+"Eltávolítja a feltöltő és/vagy a forrás beazonosítására alkalmas beágyazott "
+"adatokat a letöltött fájlokból"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:106
-#, fuzzy
 msgid "Clear Queued"
 msgstr "Sorban álló letöltések törlése"
 
@@ -232,7 +229,7 @@ msgstr "Megszakítás és kilépés"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:70
 msgid "Comma separated list"
-msgstr "Vessző elválasztott lista"
+msgstr "(vesszővel elválasztva)"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:103
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:200
@@ -259,7 +256,7 @@ msgid ""
 "Cookies can be passed to yt-dlp in the form of TXT files. Export cookies "
 "from your browser using the following extensions (use at your own risk):"
 msgstr ""
-"Lehetőség van arra, hogy a yt-dlp böngészőből kiolvasott bejelentkezési "
+"Lehetőség van arra, hogy a yt-dlp a böngészőkben tárolt bejelentkezési "
 "adatokat használja. Ehhez egy bővítmény telepítése szükséges (saját "
 "felelősségre):"
 
@@ -274,9 +271,8 @@ msgid "Cookies File Information"
 msgstr "Információ a süti fájlról"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:126
-#, fuzzy
 msgid "Copy Debug Information"
-msgstr "Információ a süti fájlról"
+msgstr "Hibakeresési napló másolása"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Controls/DownloadRow.xaml.cs:205
 #: NickvisionTubeConverter.GNOME/Blueprints/download_row.blp:145
@@ -285,17 +281,17 @@ msgstr "Másolás vágólapra"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:128
 msgid "Credits"
-msgstr "Kreditek"
+msgstr "Készítők"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:110
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:361
 msgid "Crop Audio Thumbnails"
-msgstr "Hangfájl borítókép levágása"
+msgstr "Borítókép igazítása"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:85
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:289
 msgid "Crop Thumbnail"
-msgstr "Borítókép javítása"
+msgstr "Borítókép igazítása"
 
 #: ../../../Controllers/MainWindowController.cs:115
 msgid "DaPigGuy"
@@ -335,16 +331,16 @@ msgid ""
 "Translators:\n"
 "{3}"
 msgstr ""
-"Fejlesztők:\n"
+"Kód:\n"
 "{0}\n"
 "\n"
-"Tervezők:\n"
+"Tervezés:\n"
 "{1}\n"
 "\n"
-"Művészek:\n"
+"Dokumentáció:\n"
 "{2}\n"
 "\n"
-"Fordítók:\n"
+"Fordította:\n"
 "{3}"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:72
@@ -360,17 +356,16 @@ msgid ""
 "You can specify \"all\" instead to download all subtitles, including auto-"
 "generated ones. To exclude auto-generated ones, turn off the option below."
 msgstr ""
-"A különböző webhelyek különböző nyelvi kódformátumokat használhatnak "
-"ugyanahhoz a nyelvhez. A következő három típus valamelyikével találkozhat: "
-"kétbetűs, kétbetűs régióval vagy hárombetűs. Például az \"en\", az \"en-US\" "
-"és az \"eng\" mind angol nyelven használatos.\n"
-"A legjobb eredmény érdekében adja meg az összes érvényes kódot az Ön "
-"nyelvéhez. Az automatikusan generált feliratok is letöltődnek, ha "
-"rendelkezésre állnak.\n"
+"A különböző oldalak eltérő nyelvkódokat használnak. Leggyakoribb az ISO-"
+"szabvány szerinti kétbetűs és hárombetűs, amik a nyelvet jelölik. Valamint "
+"gyakori még az IETF-szabvány használata is, ami jelöli a nyelvet és a nyelvi "
+"területet egyaránt. Példák: „hu” „hun” és „hu-HU”.\n"
+"A jobb eredmény érdekében javasolt az összes formátum beállítása. A "
+"beállítás az automatikus feliratozásra is hatással van.\n"
 "\n"
-"Ehelyett megadhatja az „összes” lehetőséget az összes felirat letöltéséhez, "
-"beleértve az automatikusan generált feliratokat is. Az automatikusan "
-"generált elemek kizárásához kapcsolja ki az alábbi lehetőséget."
+"Az „összes” paraméter használatával pedig letöltésre kerül minden felirat, "
+"beleértve az automatikusan létrehozottak is. Ezek kizárása az alábbi "
+"beállítással lehetséges."
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringPage.xaml.cs:56
 #: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringPage.xaml.cs:270
@@ -399,11 +394,11 @@ msgstr "Átkódolás tiltása"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:161
 msgid "Disclaimer"
-msgstr "Felhívás"
+msgstr "Jogi nyilatkozat"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:94
 msgid "Discussions"
-msgstr "Beszélgetések"
+msgstr "Kibeszélés"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:91
 msgid "Documentation"
@@ -411,7 +406,7 @@ msgstr "Dokumentáció"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:157
 msgid "Don't show this message again"
-msgstr "Ne mutassa meg újra ezt az üzenetet"
+msgstr "Ne mutassa újra"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:550
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:194
@@ -454,7 +449,7 @@ msgstr "Feliratok letöltése"
 
 #: ../../../Models/Download.cs:408
 msgid "Download using aria2 has started"
-msgstr "Letöltés aria2 kódoló használatával megkezdődött"
+msgstr "Letöltés aria2 letöltő használatával megkezdődött"
 
 #: ../../../Models/Download.cs:419
 msgid "Download using ffmpeg has started"
@@ -483,7 +478,7 @@ msgstr "Letöltés folyamatban {0:f2}% ({1})"
 #: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:170
 #: ../../../../NickvisionTubeConverter.WinUI/Controls/DownloadRow.xaml.cs:120
 msgid "Downloading..."
-msgstr "Letöltés folyamatban..."
+msgstr "Letöltés..."
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:86
 #: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:99
@@ -525,7 +520,7 @@ msgid ""
 "Enable to use aria2 downloader. It can be faster, but you will not see "
 "download progress."
 msgstr ""
-"aira2 kódoló engedélyezése. Gyorsabb, de nem jelzi a feldolgozás állapotát."
+"aira2 letöltő engedélyezése. Gyorsabb, de nem jelzi a feldolgozás állapotát."
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:425
 #: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:96
@@ -546,40 +541,37 @@ msgstr "Győződjön meg arról, hogy az adatok helyesek!"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:98
 msgid "Enter end timeframe here"
-msgstr "Ide írja be a befejezési időkeretet"
+msgstr "Részlet vége"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:47
-#, fuzzy
 msgid "Enter media URL here"
-msgstr "Ide írja be a média URL-jét"
+msgstr "Hivatkozás beillesztése"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/CredentialDialog.xaml.cs:36
 msgid "Enter name here"
-msgstr "Ide írja be a nevet"
+msgstr "Felhasználónév megadása"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:55
 #: ../../../../NickvisionTubeConverter.WinUI/Views/CredentialDialog.xaml.cs:42
 msgid "Enter password here"
-msgstr "Ide írja be a jelszót"
+msgstr "Jelszó megadása"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:89
-#, fuzzy
 msgid "Enter proxy URL here"
-msgstr "Ide írja be a proxy URL-jét"
+msgstr "Proxy átjáró megadása"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:95
 msgid "Enter start timeframe here"
-msgstr "Ide írja be a kezdési időpontot"
+msgstr "Részlet kezdete"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/CredentialDialog.xaml.cs:38
-#, fuzzy
 msgid "Enter URL here"
-msgstr "Ide írja be az URL-t"
+msgstr "Hivatkozás beillesztése"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:53
 #: ../../../../NickvisionTubeConverter.WinUI/Views/CredentialDialog.xaml.cs:40
 msgid "Enter user name here"
-msgstr "Ide írja be a felhasználó nevet"
+msgstr "Felhasználónév megadása"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:200
 #: ../../../../NickvisionTubeConverter.WinUI/Controls/DownloadRow.xaml.cs:139
@@ -593,7 +585,7 @@ msgstr "Kilépés"
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:73
 #: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringPage.xaml.cs:128
 msgid "Failed to enable keyring."
-msgstr "Nem sikerült engedélyezni a jelszókezelőt."
+msgstr "Jelszókezelő engedélyezése nem lehetséges."
 
 #: ../../../Models/Download.cs:164
 msgid "File already exists, and overwriting is disallowed"
@@ -642,7 +634,7 @@ msgstr "Előzmények"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:85
 msgid "Home"
-msgstr ""
+msgstr "Kezdőlap"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:122
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:392
@@ -650,15 +642,16 @@ msgid ""
 "If disabled or if embedding fails, downloaded subtitles will be saved to a "
 "separate file instead"
 msgstr ""
-"Ha le van tiltva, vagy a beágyazás sikertelen, a letöltött feliratok külön "
-"fájlba lesznek mentve"
+"Ha a beágyazás nem lehetséges a feliratok külön fájlokként lesznek letöltve"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:111
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:362
 msgid ""
 "If enabled, Parabolic will automatically turn on the crop thumbnail advanced "
 "option for audio downloads"
-msgstr "Automatikusan igazítja a zenei tartalmak borítóképeit."
+msgstr ""
+"Négyzetessé alakítja a videó borítóképét. Főleg zenei tartalmak esetében "
+"lehet hasznos"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:104
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:343
@@ -676,13 +669,13 @@ msgid ""
 "In combination with the trigger, completed notifications will only be shown "
 "if the window is not focused."
 msgstr ""
-"Értesítések megjelenítése a letöltési folyamatokról, ha a program háttérben "
-"van."
+"Értesítések megjelenítése a letöltési folyamatokról, ha az alkalmazás "
+"háttérben van."
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:73
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:140
 msgid "Include Auto-Generated Subtitles"
-msgstr "Tartalmazza at automatikusan generált feliratokat"
+msgstr "Automatikusan létrehozott feliratok letöltése"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:141
 #: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringPage.xaml.cs:44
@@ -707,9 +700,8 @@ msgid "Keyring locked"
 msgstr "Jelszókezelő zárolva"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringPage.xaml.cs:102
-#, fuzzy
 msgid "Keyring locked."
-msgstr "Jelszókezelő zárolva"
+msgstr "Jelszókezelő zárolva."
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:71
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:114
@@ -739,7 +731,9 @@ msgstr "Bejelentkezés"
 #: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:86
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:290
 msgid "Make thumbnail square, useful when downloading music."
-msgstr "Javítja a zenei tartalmak elnyújtott borítóképeit."
+msgstr ""
+"Négyzetessé alakítja a videó borítóképét. Főleg zenei tartalmak esetében "
+"lehet hasznos"
 
 #: ../../../Controllers/MainWindowController.cs:110
 msgid "Matrix Chat"
@@ -768,7 +762,7 @@ msgid ""
 "is enabled."
 msgstr ""
 "Egyes esetekben pontatlan lehet a kivágott részlet hossza.\n"
-"A beállítás aria2 kódolóval nem lehetséges, így az átmenetileg letiltásra "
+"A beállítás aria2 letöltővel nem kompatibilis, így az átmenetileg letiltásra "
 "kerül."
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:333
@@ -787,8 +781,8 @@ msgid ""
 "Minimize to the system tray instead of quitting the application when the "
 "window is closed."
 msgstr ""
-"Minimalizálja a tálcára ahelyett, hogy az ablak bezárásakor kilépne az "
-"alkalmazásból."
+"Alkalmazás értesítési területre küldése bezáráskor a háttérben történő "
+"futtatáshoz."
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:83
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:186
@@ -809,7 +803,7 @@ msgstr "Megnevezés (üres)"
 
 #: ../../../Controllers/MainWindowController.cs:340
 msgid "New update available."
-msgstr "Új frissítés érhető el."
+msgstr "Frissítés érhető el."
 
 #: ../../../Controllers/MainWindowController.cs:111
 #: ../../../Controllers/MainWindowController.cs:113
@@ -832,7 +826,7 @@ msgstr "Nincs internetkapcsolat"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:111
 msgid "No Completed Downloads"
-msgstr "Nincsenek befejezett letöltések"
+msgstr "Nincs befejezett letöltés"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringPage.xaml.cs:51
 #: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:82
@@ -846,7 +840,7 @@ msgstr "Nincs folyamatban letöltés"
 #: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:144
 #: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:279
 msgid "No File Selected"
-msgstr "Nincs kiválasztott fájl"
+msgstr "Nincs fájl kiválasztva"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Controls/HistoryPage.xaml.cs:37
 #: NickvisionTubeConverter.GNOME/Blueprints/history_dialog.blp:58
@@ -855,12 +849,11 @@ msgstr "Nincsenek előzmények"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:110
 msgid "No Queued Downloads"
-msgstr "Nnincsenek sorban álló letöltések"
+msgstr "Nincs sorban álló letöltés"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:108
-#, fuzzy
 msgid "No Running Downloads"
-msgstr "Nnincsenek sorban álló letöltések"
+msgstr "Nincs folyamatban letöltés"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:66
 #: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:69
@@ -897,7 +890,7 @@ msgstr "Ki"
 #: ../../../../NickvisionTubeConverter.WinUI/Controls/DownloadRow.xaml.cs:206
 #: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:177
 msgid "OK"
-msgstr "OK"
+msgstr "Rendben"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:49
 #: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:60
@@ -972,12 +965,12 @@ msgstr "Lejátszási lista"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:484
 msgid "Please wait..."
-msgstr "Kérjük várjon..."
+msgstr "Kérem, várjon..."
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:77
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:279
 msgid "Prefer AV1 Codec"
-msgstr "AV1 Codec előnyben részesítése"
+msgstr "AV1 kódoló előnyben részesítése"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:133
 #: ../../../../NickvisionTubeConverter.WinUI/Controls/DownloadRow.xaml.cs:95
@@ -1011,16 +1004,16 @@ msgstr "Felbontás/minőség"
 #: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:102
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:161
 msgid "Queued"
-msgstr "Ütemezve"
+msgstr "Sorban áll"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:114
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:371
 msgid "Remove Source Data"
-msgstr "Forrásadatok eltávolítása"
+msgstr "Metaadatok törlése"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:93
 msgid "Report a Bug"
-msgstr "Hiba jelentése"
+msgstr "Hibajelentés"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:92
 #: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringPage.xaml.cs:49
@@ -1037,7 +1030,7 @@ msgstr "Jelszókezelő visszaállítása"
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:181
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:205
 msgid "Reset to default"
-msgstr "Alapértelmezett beállítások"
+msgstr "Alapértelmezett beállítás"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:95
 #: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringPage.xaml.cs:99
@@ -1046,17 +1039,16 @@ msgstr "Indítsa újra az alkalmazást a jelszókezelő feloldásához!"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:200
 msgid "Restart To Apply Theme?"
-msgstr "Újraindítja a téma alkalmazásához?"
+msgstr "Újraindítás és alkalmazás"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Controls/DownloadRow.xaml.cs:68
 #: NickvisionTubeConverter.GNOME/Blueprints/download_row.blp:101
 msgid "Retry Download"
-msgstr "Letöltés újra"
+msgstr "Letöltés újrakezdése"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:105
-#, fuzzy
 msgid "Retry Failed"
-msgstr "Sikertelen letöltések újrakezdése"
+msgstr "Újrakezdés sikertelen"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:421
 #: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:62
@@ -1104,7 +1096,7 @@ msgstr "Beállítások"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:114
 msgid "Show Window"
-msgstr "Ablak megjelenítése"
+msgstr "Megnyitás"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:295
 #: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:214
@@ -1129,17 +1121,18 @@ msgstr "Sávszélesség korlátozása"
 #: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:81
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:284
 msgid "Split Chapters"
-msgstr "Fejezetek felosztása"
+msgstr "Fejezetek darabolása"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:82
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:285
 msgid "Splits the video into multiple smaller ones based on its chapters."
-msgstr "A videót több kisebbre osztja a fejezetei alapján."
+msgstr "A videó fejezetei külön fájlokként lesznek letöltve."
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:101
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:331
 msgid "SponsorBlock Information (opens in a web browser)"
-msgstr "SponsorBlock Információ (webböngészőben nyílik meg)"
+msgstr ""
+"Szponzoráció eltávolítása SponsorBlock használatával (megnyitás böngészőben)"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:423
 #: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:93
@@ -1156,7 +1149,7 @@ msgstr "Részlet kezdete (hibás)"
 #: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:104
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:136
 msgid "Stop All"
-msgstr "Minden megszakítása"
+msgstr "Minden folyamat megszakítása"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Controls/DownloadRow.xaml.cs:63
 #: NickvisionTubeConverter.GNOME/Blueprints/download_row.blp:66
@@ -1171,7 +1164,7 @@ msgstr "Letöltés megszakítva"
 #: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:69
 #: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:222
 msgid "Subtitle Languages"
-msgstr "Feliratnyelvek"
+msgstr "Feliratok"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/PreferencesDialog.cs:170
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:102
@@ -1195,9 +1188,9 @@ msgid ""
 "misuse of this program that may violate local copyright/DMCA laws. Users use "
 "this application at their own risk."
 msgstr ""
-"A Nickvision Parabolic fejlesztője nem vállal felelősséget a program "
-"használata során esetlegesen felmerülő jogsértésekért. A felhasználó saját "
-"felelősségére használja a programot."
+"A Nickvision Parabolic fejlesztője nem vállal felelősséget az alkalmazás "
+"használatából fakadó esetleges jogsértésekért. A felhasználó saját "
+"felelősségére használja az alkalmazást."
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:84
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:187
@@ -1228,9 +1221,7 @@ msgstr ""
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:280
 msgid ""
 "This option's state will be remembered and restored for future downloads."
-msgstr ""
-"Ennek a beállításnak az állapota meg lesz jegyezve és visszaállítva a "
-"jövőbeni letöltésekhez."
+msgstr "A beállítás minden letöltésre hatással lesz, visszavonásig érvényes."
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:252
 #: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringPage.xaml.cs:164
@@ -1243,7 +1234,7 @@ msgstr ""
 
 #: ../../../Controllers/MainWindowController.cs:117
 msgid "translator-credits"
-msgstr "ViBE"
+msgstr "ViBE <vibe@protonmail.com>"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:288
 #: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringPage.xaml.cs:150
@@ -1252,7 +1243,7 @@ msgstr "Jelszókezelő letiltása nem lehetséges."
 
 #: ../../../Controllers/MainWindowController.cs:356
 msgid "Unable to download and install update."
-msgstr "Nem lehet letölteni és telepíteni a frissítést."
+msgstr "A frissítés letöltése és telepítése nem sikerült."
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:269
 #: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringPage.xaml.cs:185
@@ -1270,7 +1261,7 @@ msgstr "Jelszókezelő feloldása"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:93
 msgid "Unset Cookies File"
-msgstr "Süti-fájl visszavonása"
+msgstr "Süti fájl eltávolítása"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/CredentialDialog.xaml.cs:53
 #: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:320
@@ -1292,7 +1283,7 @@ msgstr "Hivatkozás (hibás)"
 #: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:77
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:153
 msgid "Use aria2"
-msgstr "aria2 kódoló használata"
+msgstr "aria2 letöltő használata"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringPage.xaml.cs:48
 #: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringPage.xaml.cs:176
@@ -1302,7 +1293,7 @@ msgid ""
 "and password to login."
 msgstr ""
 "Használjon jelszókezelőt az egyes oldalakhoz való bejelentkezési adatok "
-"biztonságos tárolásához."
+"biztonságos tárolásához!"
 
 #: ../../../Controllers/AddDownloadDialogController.cs:153
 msgid "Use manual credential"
@@ -1311,7 +1302,7 @@ msgstr "Bejelentkezés másként"
 #: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:98
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:320
 msgid "Use SponsorBlock for YouTube"
-msgstr "A SponsorBlock használata a YouTube-hoz"
+msgstr "Szponzoráció eltávolítása YouTube videókból"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:43
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:15
@@ -1320,7 +1311,6 @@ msgstr "Kezelőfelület"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/CredentialDialog.xaml.cs:39
 #: ../../../../NickvisionTubeConverter.WinUI/Views/CredentialDialog.xaml.cs:113
-#, fuzzy
 msgid "User Name"
 msgstr "Felhasználónév"
 
@@ -1345,7 +1335,7 @@ msgstr "Elemzés"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:479
 msgid "Validating"
-msgstr "Érvényesítés"
+msgstr "Elemzés folyamatban"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:365
 #: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:535
@@ -1368,7 +1358,7 @@ msgstr "Várakozik..."
 #: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:75
 #: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:38
 msgid "Worst"
-msgstr "Rossz"
+msgstr "Legalacsonyabb"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:201
 #, csharp-format
@@ -1376,8 +1366,8 @@ msgid ""
 "Would you like to restart {0} to apply the new theme?\n"
 "Any unsaved work will be lost."
 msgstr ""
-"Szeretné újraindítani {0} az új téma alkalmazásához?\n"
-"Minden nem mentett munka elvész."
+"Valóban módosítja a témát és újraindítja a(z) {0} alkalmazást?\n"
+"Minden folyamatban lévő letöltés megszakad."
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:257
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:320
@@ -1411,7 +1401,7 @@ msgstr "Minden letöltés végén"
 #: ../../../Models/Download.cs:308
 msgctxt "subtitle"
 msgid "all"
-msgstr "mind"
+msgstr "összes"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:47
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:20
@@ -1423,7 +1413,7 @@ msgstr "Sötét"
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:20
 msgctxt "Theme"
 msgid "Light"
-msgstr "VIlágos"
+msgstr "Világos"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:48
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:20
@@ -1445,7 +1435,7 @@ msgstr "Korábbi letöltések kezelése."
 
 #: NickvisionTubeConverter.GNOME/Blueprints/history_dialog.blp:48
 msgid "Search history"
-msgstr "Keresési előzmények"
+msgstr "Keresés előzményekben"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:104
 msgid "Disable Keyring"
@@ -1471,7 +1461,7 @@ msgstr "Feloldás"
 #: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:50
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:9
 msgid "Preferences"
-msgstr "Preferenciák"
+msgstr "Beállítások"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:54
 msgid "Hide the window instead of quitting if there are downloads running."
@@ -1486,8 +1476,8 @@ msgstr "Nem támogatott karakterek konvertálása"
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:93
 msgid "Restricts characters in filenames to only those supported by Windows."
 msgstr ""
-"A címekben szereplő nem támogatott karaktereket a program konvertálni fogja "
-"a Windows számára."
+"A címekben szereplő nem támogatott karaktereket az alkalmazás konvertálni "
+"fogja a Windows számára."
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:259
 msgid "Clear Cookies File"
