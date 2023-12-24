@@ -73,7 +73,7 @@ begin
   then
     MsgBox('Unable to install Python. Please try again. THE APP WILL NOT FUNCTION CORRECTLY.', mbError, MB_OK)
   else begin
-    if not Exec(ExpandConstant('C:\Program Files\Python311\pythonw.exe'), '-m pip install --force-reinstall "psutil==5.9.6"', '', SW_HIDE, ewWaitUntilTerminated, ResultCode)
+    if not Exec(ExpandConstant('C:\Program Files\Python311\pythonw.exe'), '-m pip install --force-reinstall "psutil==5.9.7"', '', SW_HIDE, ewWaitUntilTerminated, ResultCode)
     then
       MsgBox('Unable to install psutil. Please try again. THE APP WILL NOT FUNCTION CORRECTLY.', mbError, MB_OK)
     else begin
