@@ -20,7 +20,7 @@ parts:
       - PATH: ${CRAFT_PART_INSTALL}/bin:${PATH}
       - PYTHONPATH: ""
     python-packages:
-      - psutil==5.9.5
+      - psutil==5.9.7
     prime:
       # WORKAROUND: Skip venv from python plugin
       - -usr/bin/activate
