@@ -137,6 +137,10 @@ public class Configuration : ConfigurationBase
     /// </summary>
     public MediaFileType PreviousMediaFileType { get; set; }
     /// <summary>
+    /// The previously used generic media file type
+    /// </summary>
+    public MediaFileType PreviousGenericMediaFileType { get; set; }
+    /// <summary>
     /// The previously used video resolution
     /// </summary>
     public string PreviousVideoResolution { get; set; }
@@ -193,6 +197,7 @@ public class Configuration : ConfigurationBase
         //Remember
         PreviousSaveFolder = "";
         PreviousMediaFileType = MediaFileType.MP4;
+        PreviousGenericMediaFileType = MediaFileType.Video;
         PreviousVideoResolution = "";
         PreviousSubtitleState = false;
         PreviousPreferAV1State = false;

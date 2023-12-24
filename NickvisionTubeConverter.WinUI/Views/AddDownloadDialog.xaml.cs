@@ -533,7 +533,11 @@ public sealed partial class AddDownloadDialog : ContentDialog
                 if (_controller.DisallowConversions)
                 {
                     CmbFileType.ItemsSource = new string[] { _("Video"), _("Audio") };
-                    CmbFileType.SelectedIndex = 0;
+                    CmbFileType.SelectedIndex = _controller.PreviousGenericMediaFileType switch
+                    {
+                        MediaFileType.Audio => 1,
+                        _ => 0
+                    };
                 }
                 else
                 {

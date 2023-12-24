@@ -72,6 +72,10 @@ public class AddDownloadDialogController
     /// </summary>
     public MediaFileType PreviousMediaFileType => Configuration.Current.PreviousMediaFileType;
     /// <summary>
+    /// The previously used generic MediaFileType
+    /// </summary>
+    public MediaFileType PreviousGenericMediaFileType => Configuration.Current.PreviousGenericMediaFileType;
+    /// <summary>
     /// The previously used subtitle downloading state
     /// </summary>
     public bool PreviousSubtitleState => Configuration.Current.PreviousSubtitleState;
@@ -271,7 +275,11 @@ public class AddDownloadDialogController
             }
         }
         Configuration.Current.PreviousSaveFolder = saveFolder;
-        if (!mediaFileType.GetIsGeneric())
+        if (mediaFileType.GetIsGeneric())
+        {
+            Configuration.Current.PreviousGenericMediaFileType = mediaFileType;
+        }
+        else
         {
             Configuration.Current.PreviousMediaFileType = mediaFileType;
         }

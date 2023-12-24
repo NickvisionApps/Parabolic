@@ -46,6 +46,7 @@ public partial class Program
         _mainWindowController.AppInfo.Changelog =
             @"* Fixed an issue where split chapters were not renamed correctly
               * Fixed an issue where videos would not download greater than 1080p resolution
+              * Parabolic will now remember the chosen file type for generic downloads
               * Updated translations (Thanks everyone on Weblate!)";
         _application.OnActivate += OnActivate;
         g_signal_connect_data(_application.Handle, "open", _openCallback, IntPtr.Zero, IntPtr.Zero, 0);

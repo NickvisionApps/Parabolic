@@ -363,7 +363,11 @@ public partial class AddDownloadDialog : Adw.Window
                 if (_controller.DisallowConversions)
                 {
                     _fileTypeRow.SetModel(Gtk.StringList.New(new string[] { _("Video"), _("Audio") }));
-                    _fileTypeRow.SetSelected(0);
+                    _fileTypeRow.SetSelected(_controller.PreviousGenericMediaFileType switch
+                    {
+                        MediaFileType.Audio => 1,
+                        _ => 0
+                    });
                 }
                 else
                 {
