@@ -175,13 +175,16 @@ public class Download
                 //Setup download params
                 var hooks = new List<Action<PyDict>> { ProgressHook };
                 var postProcessors = new List<Dictionary<string, dynamic>>();
+                var outtmpl = new PyDict();
+                outtmpl["default"] = new PyString($"{Id}.%(ext)s");
+                outtmpl["chapter"] = new PyString($"%(section_number)03d - {Id}.%(ext)s");
                 _ytOpt = new Dictionary<string, dynamic> {
                     { "quiet", false },
                     { "ignoreerrors", "downloadonly" },
                     { "progress_hooks", hooks },
                     { "postprocessor_hooks", hooks },
-                    { "merge_output_format", null },
-                    { "outtmpl", $"{Id.ToString()}.%(ext)s" },
+                    { "merge_output_format", PyObject.None },
+                    { "outtmpl", outtmpl },
                     { "ffmpeg_location", DependencyLocator.Find("ffmpeg")! },
                     { "windowsfilenames", options.LimitCharacters },
                     { "encoding", "utf_8" },

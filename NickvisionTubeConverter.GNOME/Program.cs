@@ -44,7 +44,8 @@ public partial class Program
         _mainWindow = null;
         _mainWindowController = new MainWindowController(args);
         _mainWindowController.AppInfo.Changelog =
-            @"* Updated translations (Thanks everyone on Weblate!)";
+            @"* Fixed an issue where split chapters were not renamed correctly
+              * Updated translations (Thanks everyone on Weblate!)";
         _application.OnActivate += OnActivate;
         g_signal_connect_data(_application.Handle, "open", _openCallback, IntPtr.Zero, IntPtr.Zero, 0);
         if (File.Exists(Path.GetFullPath(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)!) + "/org.nickvision.tubeconverter.gresource"))

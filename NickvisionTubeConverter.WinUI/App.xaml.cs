@@ -22,7 +22,8 @@ public partial class App : Application
     {
         InitializeComponent();
         _controller = new MainWindowController(Array.Empty<string>());
-        _controller.AppInfo.Changelog = @"- Redesigned the app's UI
+        _controller.AppInfo.Changelog = @"- Fixed an issue where split chapters were not renamed correctly
+- Redesigned the app's UI
 - Updated translations (Thanks everyone on Weblate!)";
         if (_controller.Theme != Theme.System)
         {
