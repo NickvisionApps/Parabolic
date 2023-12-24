@@ -23,6 +23,7 @@ public partial class App : Application
         InitializeComponent();
         _controller = new MainWindowController(Array.Empty<string>());
         _controller.AppInfo.Changelog = @"- Fixed an issue where split chapters were not renamed correctly
+- Fixed an issue where videos would not download greater than 1080p resolution
 - Redesigned the app's UI
 - Updated translations (Thanks everyone on Weblate!)";
         if (_controller.Theme != Theme.System)
