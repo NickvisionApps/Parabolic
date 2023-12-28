@@ -276,7 +276,7 @@ public class Download
                         _ => ""
                     };
                     var proto = _advancedOptions.Timeframe != null ? "[protocol!*=m3u8]" : "";
-                    var vcodec = (_advancedOptions.PreferAV1 || Resolution! > new VideoResolution(1920, 1080)) ? "[vcodec=vp9.2]" : "[vcodec!*=vp]";
+                    var vcodec = _advancedOptions.PreferAV1 ? "[vcodec=av01]" : (Resolution! > new VideoResolution(1920, 1080) ? "[vcodec=vp9.2]" : "[vcodec!*=vp]");
                     var resolution = Resolution! == VideoResolution.Best ? "" : $"[width<={Resolution!.Width}][height<={Resolution!.Height}]";
                     var formats = new HashSet<string>() //using a HashSet ensures no duplicates, for example if ext == ""
                     {
