@@ -48,6 +48,7 @@ public partial class Program
               * Fixed an issue where videos would not download greater than 1080p resolution
               * Fixed an issue where preferring AV1 codec would not properly select av1 videos 
               * Parabolic will now remember the chosen file type for generic downloads
+              * Parabolic no longer depends on psutil
               * Updated translations (Thanks everyone on Weblate!)";
         _application.OnActivate += OnActivate;
         g_signal_connect_data(_application.Handle, "open", _openCallback, IntPtr.Zero, IntPtr.Zero, 0);
