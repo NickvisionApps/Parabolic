@@ -56,15 +56,6 @@ begin
     MsgBox('Unable to install Windows App SDK. Please try again', mbError, MB_OK);
 end;
 
-procedure SetupVCRedist();
-var
-  ResultCode: Integer;
-begin
-  if not Exec(ExpandConstant('{app}\deps\VC_redist.x64.exe'), '/Q', '', SW_HIDE, ewWaitUntilTerminated, ResultCode)
-  then
-    MsgBox('Unable to install VC Redist. Please try again', mbError, MB_OK);
-end;
-
 procedure SetupPython();
 var
   ResultCode: Integer;
@@ -73,14 +64,9 @@ begin
   then
     MsgBox('Unable to install Python. Please try again. THE APP WILL NOT FUNCTION CORRECTLY.', mbError, MB_OK)
   else begin
-    if not Exec(ExpandConstant('C:\Program Files\Python311\pythonw.exe'), '-m pip install --force-reinstall "psutil==5.9.7"', '', SW_HIDE, ewWaitUntilTerminated, ResultCode)
+    if not Exec(ExpandConstant('C:\Program Files\Python311\pythonw.exe'), '-m pip install --force-reinstall "yt-dlp==2023.11.16"', '', SW_HIDE, ewWaitUntilTerminated, ResultCode)
     then
-      MsgBox('Unable to install psutil. Please try again. THE APP WILL NOT FUNCTION CORRECTLY.', mbError, MB_OK)
-    else begin
-      if not Exec(ExpandConstant('C:\Program Files\Python311\pythonw.exe'), '-m pip install --force-reinstall "yt-dlp==2023.11.16"', '', SW_HIDE, ewWaitUntilTerminated, ResultCode)
-      then
-        MsgBox('Unable to install yt-dlp. Please try again. THE APP WILL NOT FUNCTION CORRECTLY.', mbError, MB_OK);
-    end;
+      MsgBox('Unable to install yt-dlp. Please try again. THE APP WILL NOT FUNCTION CORRECTLY.', mbError, MB_OK)
   end;
 end;
 
@@ -93,7 +79,6 @@ Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{
 [Files]
 Source: "..\..\..\dotnet-runtime-8-win-x64.exe"; DestDir: "{app}\deps"; AfterInstall: SetupDotnet  
 Source: "..\..\..\WindowsAppRuntimeInstall-x64.exe"; DestDir: "{app}\deps"; AfterInstall: SetupWinAppSDK
-Source: "..\..\..\VC_redist.x64.exe"; DestDir: "{app}\deps"; AfterInstall: SetupVCRedist  
 Source: "..\..\..\python-3.11.7-amd64.exe"; DestDir: "{app}\deps"; AfterInstall: SetupPython  
 Source: "..\bin\x64\Debug\net8.0-windows10.0.19041.0\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion 
 Source: "..\bin\x64\Debug\net8.0-windows10.0.19041.0\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs

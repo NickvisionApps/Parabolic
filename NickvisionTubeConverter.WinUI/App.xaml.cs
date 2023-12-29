@@ -26,6 +26,7 @@ public partial class App : Application
 - Fixed an issue where videos would not download greater than 1080p resolution
 - Fixed an issue where preferring AV1 codec would not properly select av1 videos 
 - Parabolic will now remember the chosen file type for generic downloads
+- Parabolic no longer depends on psutil
 - Redesigned the app's UI
 - Updated translations (Thanks everyone on Weblate!)";
         if (_controller.Theme != Theme.System)

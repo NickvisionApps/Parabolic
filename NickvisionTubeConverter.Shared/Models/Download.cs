@@ -500,16 +500,11 @@ public class Download
             {
                 using (Py.GIL())
                 {
-                    // Kill ffmpeg and aria
-                    dynamic psutil = Py.Import("psutil");
-                    var pythonProcessChildren = psutil.Process().children(recursive: true);
-                    foreach (PyObject child in pythonProcessChildren)
+                    // Kill children processes (ffmpeg, aria2, etc...)
+                    var children = ProcessHelpers.GetChildProcesses((int)_pid);
+                    foreach (var child in children)
                     {
-                        var processName = child.GetAttr(new PyString("name")).Invoke().As<string?>() ?? "";
-                        if (processName == "ffmpeg" || processName == "aria2c")
-                        {
-                            child.InvokeMethod("kill");
-                        }
+                        child.Kill(true);
                     }
                     // Kill Python
                     PythonEngine.Interrupt(_pid.Value);
