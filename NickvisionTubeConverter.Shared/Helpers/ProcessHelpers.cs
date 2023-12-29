@@ -49,4 +49,11 @@ public static class ProcessHelpers
         }
         return new List<Process>();
     }
+
+    /// <summary>
+    /// Gets all of the child processes belonging to a parent process
+    /// </summary>
+    /// <param name="process">The parent process</param>
+    /// <returns>The list of found child processes</returns>
+    public static IEnumerable<Process> GetChildProcesses(this Process process) => GetChildProcesses(process.Id);
 }
