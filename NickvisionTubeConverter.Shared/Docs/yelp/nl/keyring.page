@@ -23,7 +23,7 @@
     <p>The library will use you system's credential manager (i.e. DBus secret service on Linux and Windows Credential Manager on Windows) for securing the Keyring.</p>
 </section>
 <section>
-    <title>Storing a Credential</title>
+    <title>Inloggegevens opslaan</title>
     <p>Here are the fields that can be stored in a credential:</p>
     <p><code>Name</code>: The name of the credential</p>
     <p><code>URL</code> (optional): The URL of the credential</p>
@@ -39,7 +39,7 @@
         <p>You can simply disable the old password-secured Keyring when you update Parabolic to 2023.9.0 and re-enable the Keyring to get a secret-secured one. However, this will erase all data from the old Keyring and require you to re-enter all credentials.</p>
     </note>
     <steps>
-        <item><p>Install <link href="https://flathub.org/apps/org.gnome.seahorse.Application">Passwords and Keys</link>.</p></item>
+        <item><p>Installeer <link href="https://flathub.org/nl/apps/org.gnome.seahorse.Application">Wachtwoorden en sleutels</link>.</p></item>
         <item><p>Open Parabolic V2023.9.0 or newer at least once. (This will ensure that the app registers with your system's credential manager)</p></item>
         <item><p>Open <code>Passwords and Keys</code> and locate the <code>org.nickvision.tubeconverter</code> entry in the <code>Default Keyring</code>.</p></item>
         <item><p>Double click the <code>org.nickvision.tubeconverter</code> entry and edit the <code>Password</code> field. Enter the password that you created and used for your Keyring in Parabolic.</p></item>
