@@ -2,17 +2,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: 2023-12-06 13:46-0500\n"
-"PO-Revision-Date: 2023-11-15 13:08+0000\n"
+"PO-Revision-Date: 2024-01-11 20:05+0000\n"
 "Last-Translator: 0que <0que@users.noreply.hosted.weblate.org>\n"
-"Language-Team: Russian <https://hosted.weblate.org/projects/nickvision-tube-"
-"converter/docs/ru/>\n"
+"Language-Team: Russian <https://hosted.weblate.org/projects/"
+"nickvision-tube-converter/docs/ru/>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 5.2-dev\n"
+"X-Generator: Weblate 5.4-dev\n"
 
 #. Put one translator per line, in the form NAME <EMAIL>, YEAR1, YEAR2
 msgctxt "_"
@@ -158,18 +158,16 @@ msgstr "Встраивать главы"
 
 #. (itstool) path: item/p
 #: yelp/C/converter.page:59
-#, fuzzy
 msgid ""
 "If enabled, Parabolic will tag a media with chapter information if available."
 msgstr ""
-"Если включено, Parabolic будет записывать данные о главах в медиа файл, если "
-"эта информация доступна"
+"Если включено и доступны данные о метках глав, Parabolic будет добавлять их "
+"в файл."
 
 #. (itstool) path: item/title
 #: yelp/C/converter.page:65
-#, fuzzy
 msgid "Embed Subtitles"
-msgstr "Субтитры"
+msgstr "Встраивать субтитры"
 
 #. (itstool) path: item/p
 #: yelp/C/converter.page:66
@@ -177,6 +175,8 @@ msgid ""
 "If disabled or if embedding fails, downloaded subtitles will be saved to a "
 "separate file."
 msgstr ""
+"Если выключено, или если встраивание не удастся, загруженные субтитры будут "
+"сохранены отдельными файлами."
 
 #. (itstool) path: info/title
 #: yelp/C/downloader.page:8
@@ -301,7 +301,7 @@ msgstr ""
 #. (itstool) path: item/title
 #: yelp/C/downloader.page:56
 msgid "Included Auto-Generated Subtitles"
-msgstr ""
+msgstr "Включать автоматически сгенерированные субтитры"
 
 #. (itstool) path: item/p
 #: yelp/C/downloader.page:57
@@ -309,6 +309,8 @@ msgid ""
 "Whether or not to included subtitles that are auto-translated to fit the "
 "requested subtitle languages."
 msgstr ""
+"Надо ли включать субтитры, созданные YouTube автоматически, для покрытия "
+"выбранных языков субтитров."
 
 #. (itstool) path: item/title
 #: yelp/C/downloader.page:63
@@ -938,31 +940,26 @@ msgstr "Доступно в <code>Дополнительных опциях</cod
 #. (itstool) path: item/title
 #: yelp/C/newDownload.page:79
 msgid "Prefer AV1 Codec"
-msgstr ""
+msgstr "Загружать в AV1"
 
 #. (itstool) path: item/p
 #: yelp/C/newDownload.page:80
-#, fuzzy
 msgid "Only available for video (mp4, webm) downloads"
-msgstr "Доступно только при загрузке видео."
+msgstr "Доступно только при скачивании видео (в mp4, webm)"
 
 #. (itstool) path: item/p
 #: yelp/C/newDownload.page:81
-#, fuzzy
 msgid ""
 "If enabled, Parabolic will prefer videos with the av1 codec when downloading."
 msgstr ""
-"Если включено, Parabolic разделит видео на части в соответствии с его "
-"оглавлением."
+"Если включено, Parabolic будет скачивать видео в кодеке av1, когда он "
+"доступен."
 
 #. (itstool) path: note/p
 #: yelp/C/newDownload.page:86
-#, fuzzy
 msgid ""
 "This option's state will be remembered and restored for future downloads."
-msgstr ""
-"Выбранное состояние переключателя будет сохранено и автоматически выбрано в "
-"следующий раз."
+msgstr "Выбор будет сохранён и поставлен автоматически в следующий раз."
 
 #. (itstool) path: item/title
 #: yelp/C/newDownload.page:90
