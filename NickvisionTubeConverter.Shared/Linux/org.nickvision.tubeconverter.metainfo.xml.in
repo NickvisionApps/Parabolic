@@ -13,13 +13,6 @@
     <p>— Run multiple downloads at a time</p>
     <p>— Supports downloading metadata and video subtitles</p>
   </description>
-  <keywords>
-    <keyword>youtube</keyword>
-    <keyword>video</keyword>
-    <keyword>audio</keyword>
-    <keyword>media</keyword>
-    <keyword>download</keyword>
-  </keywords>
   <launchable type="desktop-id">org.nickvision.tubeconverter.desktop</launchable>
   <screenshots>
     <screenshot type="default">
@@ -38,6 +31,7 @@
   <url type="homepage">https://github.com/NickvisionApps/Parabolic</url>
   <url type="bugtracker">https://github.com/NickvisionApps/Parabolic/issues</url>
   <url type="donation">https://github.com/sponsors/nlogozzo</url>
+  <url type="vcs-browser">https://github.com/NickvisionApps/Parabolic/</url>
   <url type="translate">https://github.com/NickvisionApps/Parabolic/blob/master/CONTRIBUTING.md#providing-translations</url>
   <provides>
     <binary>org.nickvision.tubeconverter</binary>
@@ -64,7 +58,6 @@
     <display_length compare="ge">360</display_length>
   </requires>
   <custom>
-    <value key="Purism::form_factor">workstation</value>
     <value key="Purism::form_factor">mobile</value>
   </custom>
 </component>
