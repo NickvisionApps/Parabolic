@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" id="converter" its:version="2.0" xml:lang="fa">
+<info>
+	<link type="guide" xref="index"/>
+	<title type="link">مبدل ⚒️</title>
+	<credit type="author copyright">
+		<name>Nicholas Logozzo</name>
+		<years its:translate="no">2023</years>
+	</credit>
+	<credit type="publisher copyright">
+		<name>Nicholas Logozzo</name>
+		<years its:translate="no">2023</years>
+	</credit>
+	<license href="http://creativecommons.org/licenses/by/4.0/" its:translate="no"><p>Creative Commons Attribution 4.0 International License</p></license>
+</info>
+
+<title>مبدل</title>
+<p>This page explains all options for configuring the Converter in Preferences in <app>Parabolic</app>.</p>
+
+<terms>
+	<item>
+		<title>Disallow Conversions</title>
+		<p>در صورت فعال بودن، Parabolic فرمت ویدیویی/صوتی مناسب را برای کیفیت انتخابی بدون تبدیل به فرمت‌های دیگر بارگیری می‌کند.</p>
+        <p>این به این معنی است که هنگام بارگیری یک رسانه قادر به انتخاب فرمت فایل نخواهید بود. اما، شما در زمان دانلود صرفه جویی خواهید کرد زیرا مبدل اجرا نمی شود.</p>
+		<note style="advanced">
+			<p>پیش فرض: خاموش</p>
+		</note>
+    </item>
+	<item>
+		<title>تعبیه فراداده</title>
+		<p>اگر فعال باشد، Parabolic یک رسانه را با اطلاعات مرتبط آن (عنوان، ژانر، و غیره...) و در صورت وجود تصویر کوچک برچسب گذاری می کند.</p>
+        <p>Parabolic will NOT embed the Comment, Description, Synopsis, and Purl fields.</p>
+		<note style="advanced">
+			<p>پیش فرض: روشن</p>
+		</note>
+    </item>
+    <item>
+		<title>Crop Audio Thumbnails</title>
+		<p>Only available if Embed Metadata is enabled.</p>
+		<p>If enabled, Parabolic will automatically turn on the advanced option <code>Crop Thumbnail</code> for audio downloads.</p>
+		<note style="advanced">
+			<p>پیش فرض: خاموش</p>
+		</note>
+    </item>
+    <item>
+		<title>اطلاعات منبع را حذف کنید</title>
+		<p>Only available if Embed Metadata is enabled.</p>
+		<p>اگر فعال باشد، Parabolic فیلدهای فراداده حاوی URL و سایر اطلاعات شناسایی منبع رسانه را پاک می کند.</p>
+        <p>Fields that are cleared: <code>comment</code>, <code>description</code>, <code>synopsis</code>, <code>purl</code> and <code>handler_name</code> in each stream.</p>
+		<note style="advanced">
+			<p>پیش فرض: خاموش</p>
+		</note>
+    </item>
+	<item>
+		<title>Embed Chapters</title>
+		<p>اگر فعال باشد، Parabolic یک رسانه را با اطلاعات فصل در صورت وجود برچسب گذاری می کند.</p>
+		<note style="advanced">
+			<p>پیش فرض: خاموش</p>
+		</note>
+	</item>
+    <item>
+        <title>تعبیه زیرنویس</title>
+        <p>اگر غیرفعال باشد یا اگر جاسازی نشد، زیرنویس‌های دانلود شده در یک فایل جداگانه ذخیره می‌شوند.</p>
+        <note style="advanced">
+            <p>پیش فرض: روشن</p>
+        </note>
+    </item>
+</terms>
+</page>
