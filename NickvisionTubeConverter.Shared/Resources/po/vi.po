@@ -8,31 +8,31 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-12-06 13:46-0500\n"
-"PO-Revision-Date: 2023-06-14 01:21+0000\n"
-"Last-Translator: Khải <hvksmr1996@gmail.com>\n"
-"Language-Team: Vietnamese <https://hosted.weblate.org/projects/nickvision-"
-"tube-converter/app/vi/>\n"
+"PO-Revision-Date: 2024-02-09 17:02+0000\n"
+"Last-Translator: Kinten Le <kinten108101@protonmail.com>\n"
+"Language-Team: Vietnamese <https://hosted.weblate.org/projects/"
+"nickvision-tube-converter/app/vi/>\n"
 "Language: vi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.18-dev\n"
+"X-Generator: Weblate 5.4-dev\n"
 
 #: ../../../Controllers/MainWindowController.cs:428
 #, csharp-format
 msgid "\"{0}\" has finished downloading."
-msgstr "\"{0}\" đã được hoàn thành."
+msgstr "\"{0}\" đã tải xong."
 
 #: ../../../Controllers/MainWindowController.cs:428
 #, csharp-format
 msgid "\"{0}\" has finished with an error!"
-msgstr "\"{0}\" đã kết thúc với lỗi!"
+msgstr "\"{0}\" đã tải xong kèm lỗi!"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:219
 #: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:112
 msgid "(Configurable in preferences)"
-msgstr "(Có thể thay đổi trong tùy thích)"
+msgstr "(có thể thay đổi trong tùy thích)"
 
 #: ../../../Helpers/SpeedFormatter.cs:32
 #, csharp-format
@@ -60,7 +60,7 @@ msgstr "{0:f1} MiB/s"
 #, csharp-format
 msgid "{0} download — {1:f1}% ({2})"
 msgid_plural "{0} downloads — {1:f1}% ({2})"
-msgstr[0] "{0} tải xuống — {1:f1}% ({2})"
+msgstr[0] "{0} lượt tải — {1:f1}% ({2})"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:395
 #: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:509
@@ -69,7 +69,7 @@ msgstr[0] "{0} tải xuống — {1:f1}% ({2})"
 #, csharp-format
 msgid "{0} of {1} items"
 msgid_plural "{0} of {1} items"
-msgstr[0] "{0} trên {1} mục"
+msgstr[0] "{0} trên {1} lượt"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Controls/MediaRow.xaml.cs:84
 #, csharp-format
@@ -82,13 +82,12 @@ msgid ""
 "A cookies file can be provided to yt-dlp to allow downloading media that "
 "requires a login."
 msgstr ""
-"Một tệp cookie có thể được cung cấp cho yt-dlp để tải những phương tiện "
-"truyền thông có yêu cầu đăng nhập."
+"Bạn có thể cấp cho yt-dlp một tệp cookie để tải những tệp có yêu cầu đăng "
+"nhập."
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:125
-#, fuzzy
 msgid "About"
-msgstr "Về {0}"
+msgstr "Giới thiệu"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/CredentialDialog.xaml.cs:46
 #: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:100
@@ -98,17 +97,14 @@ msgid "Add"
 msgstr "Thêm"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringPage.xaml.cs:52
-#, fuzzy
 msgid "Add a login to get started."
-msgstr "Thêm một tải xuống để bắt đầu."
+msgstr "Thêm một tài khoản để bắt đầu."
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:97
 #: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:109
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:80
 msgid "Add a video, audio, or playlist URL to start downloading"
-msgstr ""
-"Thêm một liên kết đến một băng hình, âm thanh, hoặc danh sách phát để bắt "
-"đầu tải xuống"
+msgstr "Thêm một liên kết đến video, audio, hoặc playlist để bắt đầu tải"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:91
 #: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:40
@@ -120,23 +116,23 @@ msgstr ""
 #: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:16
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:84
 msgid "Add Download"
-msgstr "Thêm Tải xuống"
+msgstr "Thêm lượt tải"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringPage.xaml.cs:50
 #: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:114
 msgid "Add Login"
-msgstr ""
+msgstr "Thêm tài khoản"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:90
 #: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:64
 #: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:273
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:153
 msgid "Advanced Options"
-msgstr "Tùy chọn Nâng cao"
+msgstr "Tùy chọn nâng cao"
 
 #: ../../../Controllers/MainWindowController.cs:432
 msgid "All downloads have finished."
-msgstr "Tất cả tải xuống đều đã hoàn thành."
+msgstr "Tất cả các lượt tải đều đã hoàn tất."
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:60
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:53
@@ -145,28 +141,28 @@ msgstr "Cho phép chạy nền"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:45
 msgid "An application restart is required to change the theme."
-msgstr ""
+msgstr "Bạn cần phải khởi động lại ứng dụng để thay đổi chủ đề."
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:352
 #: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:365
 #: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:522
 #: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:535
 msgid "Audio"
-msgstr "Âm thanh"
+msgstr "Audio"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:58
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:125
 msgid "Audio Language"
-msgstr ""
+msgstr "Ngôn ngữ của audio"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:48
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:62
 msgid "Authenticate"
-msgstr ""
+msgstr "Xác thực"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:49
 msgid "Automatically Check for Updates"
-msgstr ""
+msgstr "Tự động kiểm tra bản cập nhật"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:45
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:23
@@ -178,7 +174,7 @@ msgstr "Quay lại"
 #: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:75
 #: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:38
 msgid "Best"
-msgstr "Tốt nhất"
+msgstr "Cao nhất"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/CredentialDialog.xaml.cs:34
 msgid "Cancel"
@@ -186,11 +182,11 @@ msgstr "Hủy"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:127
 msgid "Changelog"
-msgstr "Lịch sử Thay đổi"
+msgstr "Changelog"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:90
 msgid "Check for Updates"
-msgstr ""
+msgstr "Kiểm tra bản cập nhật"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:96
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:296
@@ -204,21 +200,22 @@ msgid "Clear"
 msgstr "Xóa"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:107
-#, fuzzy
 msgid "Clear Completed"
-msgstr "Xóa Các tải xuống Đã hoàn thành"
+msgstr "Xóa các lượt tải đã hoàn tất"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:115
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:372
+#, fuzzy
 msgid ""
 "Clear metadata fields containing the URL and other identifying information "
 "of the media source"
 msgstr ""
+"Xóa các trường trong metadata chứa URL và các thông tin định danh khác trong "
+"nguồn của media"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:106
-#, fuzzy
 msgid "Clear Queued"
-msgstr "Xóa Tải xuống Đang đợi"
+msgstr "Xóa các lượt tải trong hàng đợi"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:44
 msgid "Close"
@@ -227,11 +224,11 @@ msgstr "Đóng"
 #: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:295
 #: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:213
 msgid "Close and Stop Downloads?"
-msgstr "Đóng và Dừng tất cả các quá trình tải xuống?"
+msgstr "Đóng và dừng tất cả các lượt tải?"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:70
 msgid "Comma separated list"
-msgstr ""
+msgstr "Danh sách được phân tách bởi dấu phẩy"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:103
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:200
@@ -241,11 +238,11 @@ msgstr "Hoàn tất"
 #: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:52
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:30
 msgid "Completed Notification Trigger"
-msgstr ""
+msgstr "Điều kiện phát thông báo hoàn tất"
 
 #: ../../../Controllers/MainWindowController.cs:112
 msgid "Contributors on GitHub ❤️"
-msgstr ""
+msgstr "Các bạn đóng góp viên trên GitHub ❤️"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:102
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:339
@@ -258,43 +255,42 @@ msgid ""
 "Cookies can be passed to yt-dlp in the form of TXT files. Export cookies "
 "from your browser using the following extensions (use at your own risk):"
 msgstr ""
-"Cookie có thể được chuyển cho yt-dlp dưới dạng tệp TXT. Xuất Cookie từ trình "
-"duyệt bằng những phần mở rộng sau (bạn tự chịu mọi rủi ro):"
+"Cookie có thể được truyền vào yt-dlp dưới dạng tệp TXT. Bạn có thể xuất "
+"cookie từ trình duyệt thông qua các extension sau (không đảm bảo an toàn):"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:90
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:237
 msgid "Cookies File"
-msgstr "Tệp Cookie"
+msgstr "Tệp cookie"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:94
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:269
-#, fuzzy
 msgid "Cookies File Information"
-msgstr "Tệp Cookie"
+msgstr "Thông tin tệp cookie"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:126
-#, fuzzy
 msgid "Copy Debug Information"
-msgstr "Tệp Cookie"
+msgstr "Chép thông tin debug"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Controls/DownloadRow.xaml.cs:205
 #: NickvisionTubeConverter.GNOME/Blueprints/download_row.blp:145
 msgid "Copy to Clipboard"
-msgstr "Chép vào Clipboard"
+msgstr "Chép vào clipboard"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:128
+#, fuzzy
 msgid "Credits"
-msgstr ""
+msgstr "Danh đề"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:110
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:361
 msgid "Crop Audio Thumbnails"
-msgstr "Cắt Thumbnail Âm thanh"
+msgstr "Cắt thumbnail của audio"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:85
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:289
 msgid "Crop Thumbnail"
-msgstr "Cắt Thumbnail"
+msgstr "Cắt thumbnail"
 
 #: ../../../Controllers/MainWindowController.cs:115
 msgid "DaPigGuy"
@@ -307,17 +303,17 @@ msgstr ""
 #: ../../../../NickvisionTubeConverter.WinUI/Views/CredentialDialog.xaml.cs:54
 #: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:193
 msgid "Delete"
-msgstr "Xóa bỏ"
+msgstr "Xóa"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:315
 #: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringPage.xaml.cs:229
 msgid "Delete Credential?"
-msgstr "Xóa bỏ Chứng chỉ?"
+msgstr "Xóa chứng chỉ?"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:73
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:234
 msgid "Deselect All"
-msgstr ""
+msgstr "Bỏ chọn tất cả"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:157
 #, csharp-format
@@ -337,6 +333,7 @@ msgstr ""
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:72
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:129
+#, fuzzy
 msgid ""
 "Different sites can use different language code formats for the same "
 "language. You may encounter one of the following three types: two-letter, "
@@ -348,18 +345,27 @@ msgid ""
 "You can specify \"all\" instead to download all subtitles, including auto-"
 "generated ones. To exclude auto-generated ones, turn off the option below."
 msgstr ""
+"Trong cùng một ngôn ngữ, các trang có thể dùng định dạng khác nhau để viết "
+"mã ngôn ngữ để xác định ngôn ngữ ấy. Thường thì bạn sẽ bắt gặp một trong ba "
+"loại sau: loại 2 ký tự, loại 2 ký tự kèm vùng, hoặc loại 3 ký tự. Ví dụ: để "
+"xác định tiếng Anh, người ta viết \"en\", \"en-US\" hoặc \"eng\".\n"
+"\n"
+"Tốt nhất là bạn ghi ra tất cả các mã ngôn ngữ dùng được cho các ngôn ngữ bạn "
+"cần. Nếu có, phụ đề tự động cũng sẽ được tải.\n"
+"\n"
+"Hoặc bạn có thể ghi \"all\" để tải tất cả tiêu đề, bao gồm cả phụ đề tự "
+"động. Để bỏ qua tiêu đề tự động, hãy tắt lựa chọn ở dưới."
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringPage.xaml.cs:56
 #: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringPage.xaml.cs:270
 #: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:132
-#, fuzzy
 msgid "Disable"
-msgstr "Bật"
+msgstr "Vô hiệu hóa"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringPage.xaml.cs:73
 #: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:129
 msgid "Disable Keyring?"
-msgstr "Vô hiệu hóa Keyring?"
+msgstr "Vô hiệu hóa keyring?"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringPage.xaml.cs:78
 #: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:130
@@ -367,59 +373,58 @@ msgid ""
 "Disabling the keyring will delete all data currently stored inside. Are you "
 "sure you want to disable it?"
 msgstr ""
-"Việc tắt keyring sẽ xóa tất cả dữ liệu hiện được lưu trữ trong đó. Bạn có "
-"chắc chắn bạn muốn tắt nó đi không?"
+"Khi vô hiệu hóa keyring, bạn sẽ đồng thời mất dữ liệu được lưu trữ trong đó. "
+"Bạn có chắc chắn bạn muốn vô hiệu hóa?"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:103
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:342
 msgid "Disallow Conversions"
-msgstr "Không cho phép Chuyển đổi"
+msgstr "Không cho phép chuyển đổi"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:161
 msgid "Disclaimer"
-msgstr ""
+msgstr "Lưu ý"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:94
 msgid "Discussions"
-msgstr "Thảo Luận"
+msgstr "Thảo luận"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:91
 msgid "Documentation"
-msgstr ""
+msgstr "Tài liệu"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:157
 msgid "Don't show this message again"
-msgstr ""
+msgstr "Đừng hiển thị thông báo này nữa"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:550
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:194
 #: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:13
 msgid "Download"
-msgstr "Tải xuống"
+msgstr "Tải"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Controls/HistoryDialog.cs:82
 #: ../../../../NickvisionTubeConverter.WinUI/Controls/HistoryPage.xaml.cs:73
-#, fuzzy
 msgid "Download Again"
-msgstr "Đang tải xuống"
+msgstr "Tải lại"
 
 #: ../../../Controllers/MainWindowController.cs:428
 msgid "Download Finished"
-msgstr "Hoàn thành Tải xuống"
+msgstr "Đã tải xong"
 
 #: ../../../Controllers/MainWindowController.cs:428
 msgid "Download Finished With Error"
-msgstr "Tải xuống kết thúc với lỗi"
+msgstr "Đã tải xong kèm lỗi"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:93
 #: ../../../../NickvisionTubeConverter.WinUI/Controls/DownloadRow.xaml.cs:216
 msgid "Download log was copied to clipboard."
-msgstr "Nhật ký tải xuống đã được lưu vào bảng ghi tạm."
+msgstr "Đã chép log tải vào clipboard."
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:96
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:79
 msgid "Download Media"
-msgstr "Tải xuống Phương tiện truyền thông"
+msgstr "Tải media"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:89
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:294
@@ -428,70 +433,68 @@ msgstr "Tải Khung thời gian Cụ thể"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:59
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:130
-#, fuzzy
 msgid "Download Subtitles"
-msgstr "Trình tải xuống"
+msgstr "Tải phụ đề"
 
 #: ../../../Models/Download.cs:408
 msgid "Download using aria2 has started"
-msgstr "Tải xuống bằng aria2 đã bắt đầu"
+msgstr "Bắt đầu tải bằng aria2"
 
 #: ../../../Models/Download.cs:419
 msgid "Download using ffmpeg has started"
-msgstr "Tải xuống bằng ffmpeg đã bắt đầu"
+msgstr "Bắt đầu tải bằng ffmpeg"
 
 #: ../../../Controllers/MainWindowController.cs:105
 msgid "Download web video and audio"
-msgstr "Tải xuống băng hình và âm thanh trên web"
+msgstr "Tải video và audio web"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:76
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:150
 msgid "Downloader"
-msgstr "Trình tải xuống"
+msgstr "Trình tải"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:101
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:121
 msgid "Downloading"
-msgstr "Đang tải xuống"
+msgstr "Đang tải"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:156
 #: ../../../../NickvisionTubeConverter.WinUI/Controls/DownloadRow.xaml.cs:115
 #, csharp-format
 msgid "Downloading {0:f2}% ({1})"
-msgstr "Đang tải về {0:f2}% ({1:N0} KiB/s)"
+msgstr "Đang tải {0:f2}% ({1})"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:170
 #: ../../../../NickvisionTubeConverter.WinUI/Controls/DownloadRow.xaml.cs:120
-#, fuzzy
 msgid "Downloading..."
-msgstr "Đang tải xuống"
+msgstr "Đang tải..."
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:86
 #: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:99
 #: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:64
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:64
+#, fuzzy
 msgid "Downloads"
 msgstr "Downloads"
 
 #: ../../../Controllers/MainWindowController.cs:432
 msgid "Downloads Finished"
-msgstr "Hoàn thành Tải xuống"
+msgstr "Các mục tải xuống đã xong"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:118
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:382
 msgid "Embed Chapters"
-msgstr "Nhúng Chương"
+msgstr "Nhúng chương"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:107
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:352
 msgid "Embed Metadata"
-msgstr "Nhúng Siêu dữ liệu"
+msgstr "Nhúng siêu dữ liệu"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:121
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:391
-#, fuzzy
 msgid "Embed Subtitles"
-msgstr "Phụ đề"
+msgstr "Nhúng phụ đề"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringPage.xaml.cs:46
 #: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringPage.xaml.cs:119
@@ -507,68 +510,59 @@ msgid ""
 "Enable to use aria2 downloader. It can be faster, but you will not see "
 "download progress."
 msgstr ""
-"Bật để sử dụng trình tải xuống aria2. Nó có thể nhanh hơn, nhưng bạn sẽ "
-"không thấy tiến trình tải xuống."
+"Bật để sử dụng trình tải aria2. Trình tải này có thể nhanh hơn, nhưng bạn sẽ "
+"không thấy tiến trình tải."
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:425
 #: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:96
 #: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:590
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:305
 msgid "End Time"
-msgstr "Thời điểm Kết thúc"
+msgstr "Thời điểm kết thúc"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:445
 #: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:608
 msgid "End Time (Invalid)"
-msgstr "Thời điểm Kết thúc (Không hợp lệ)"
+msgstr "Thời điểm kết thúc (không hợp lệ)"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:343
 #: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:511
-#, fuzzy
 msgid "Ensure credentials are correct."
-msgstr "Quản lý credentials trong keyring của bạn."
+msgstr "Đảm bảo tất cả chứng chỉ đều đúng."
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:98
-#, fuzzy
 msgid "Enter end timeframe here"
-msgstr "Nhập địa chỉ video vào đây"
+msgstr "Nhập thời gian kết thúc vào đây"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:47
-#, fuzzy
 msgid "Enter media URL here"
-msgstr "Nhập địa chỉ video vào đây"
+msgstr "Nhập URL của media vào đây"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/CredentialDialog.xaml.cs:36
-#, fuzzy
 msgid "Enter name here"
-msgstr "Nhập địa chỉ video vào đây"
+msgstr "Nhập tên vào đây"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:55
 #: ../../../../NickvisionTubeConverter.WinUI/Views/CredentialDialog.xaml.cs:42
-#, fuzzy
 msgid "Enter password here"
-msgstr "Nhập địa chỉ video vào đây"
+msgstr "Nhập mật khẩu vào đây"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:89
-#, fuzzy
 msgid "Enter proxy URL here"
-msgstr "Nhập địa chỉ video vào đây"
+msgstr "Nhập URL của proxy vào đây"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:95
-#, fuzzy
 msgid "Enter start timeframe here"
-msgstr "Nhập địa chỉ video vào đây"
+msgstr "Nhập thời điểm bắt đầu vào đây"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/CredentialDialog.xaml.cs:38
-#, fuzzy
 msgid "Enter URL here"
-msgstr "Nhập địa chỉ video vào đây"
+msgstr "Nhập URL vào đây"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:53
 #: ../../../../NickvisionTubeConverter.WinUI/Views/CredentialDialog.xaml.cs:40
-#, fuzzy
 msgid "Enter user name here"
-msgstr "Nhập địa chỉ video vào đây"
+msgstr "Nhập tên đăng nhập vào đây"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:200
 #: ../../../../NickvisionTubeConverter.WinUI/Controls/DownloadRow.xaml.cs:139
@@ -577,13 +571,12 @@ msgstr "Lỗi"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:116
 msgid "Exit"
-msgstr ""
+msgstr "Thoát"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:73
 #: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringPage.xaml.cs:128
-#, fuzzy
 msgid "Failed to enable keyring."
-msgstr "Vô hiệu hóa Keyring?"
+msgstr "Bật keyring thất bại."
 
 #: ../../../Models/Download.cs:164
 msgid "File already exists, and overwriting is disallowed"
@@ -592,12 +585,12 @@ msgstr "Tệp đã tồn tại, ghi đè không được cho phép"
 #: ../../../../NickvisionTubeConverter.GNOME/Controls/MediaRow.cs:40
 #: ../../../../NickvisionTubeConverter.WinUI/Controls/MediaRow.xaml.cs:35
 msgid "File Name"
-msgstr "Tên Tệp"
+msgstr "Tên tệp"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:56
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:111
 msgid "File Type"
-msgstr "Loại Tệp"
+msgstr "Loại tệp"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:97
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:305
@@ -617,7 +610,7 @@ msgstr "GitHub Repo"
 #: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:60
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:11
 msgid "Help"
-msgstr ""
+msgstr "Trợ giúp"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Controls/HistoryPage.xaml.cs:35
 #: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:88
@@ -628,7 +621,7 @@ msgstr ""
 #: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:45
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:6
 msgid "History"
-msgstr ""
+msgstr "Lịch sử"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:85
 msgid "Home"
@@ -640,27 +633,27 @@ msgid ""
 "If disabled or if embedding fails, downloaded subtitles will be saved to a "
 "separate file instead"
 msgstr ""
+"Nếu tắt hoặc nếu việc nhúng thất bại, các phụ đề được tải xuống sẽ được lưu "
+"trong một tệp riêng"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:111
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:362
-#, fuzzy
 msgid ""
 "If enabled, Parabolic will automatically turn on the crop thumbnail advanced "
 "option for audio downloads"
 msgstr ""
-"Nếu bật, Tube Converter sẽ tự động bật các lựa chọn cắt thumbnail nâng cao "
-"dành cho âm thanh được tải xuống"
+"Nếu bật, Parabolic sẽ tự động bật tính năng cắt thumbnail dành cho mục tải "
+"âm thanh"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:104
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:343
-#, fuzzy
 msgid ""
 "If enabled, Parabolic will download the appropriate video/audio format for "
 "the selected quality without converting to other formats. (You will be "
 "unable to select a file format)"
 msgstr ""
-"Nếu bật, Tube Converter sẽ tải xuống băng hình hoặc âm thanh thích hợp với "
-"chất lượng được chọn mà không chuyển đổi sang định dạng khác. (Bạn sẽ không "
+"Nếu bật, Parabolic sẽ tự tải định dạng video/audio thích hợp đối với mức "
+"chất lượng đã chọn mà không chuyển đổi sang định dạng khác. (Bạn sẽ không "
 "thể chọn định dạng của tệp)"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:53
@@ -669,11 +662,13 @@ msgid ""
 "In combination with the trigger, completed notifications will only be shown "
 "if the window is not focused."
 msgstr ""
+"Với điều kiện này, thông báo hoàn tất chỉ hiển thị khi cửa sổ đang không "
+"được tập trung vào."
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:73
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:140
 msgid "Include Auto-Generated Subtitles"
-msgstr ""
+msgstr "Bao gồm phụ đề tự động"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:141
 #: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringPage.xaml.cs:44
@@ -686,34 +681,31 @@ msgstr "Keyring"
 #: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:51
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:67
 msgid "Keyring Credential"
-msgstr "Chứng chỉ Keyring"
+msgstr "Chứng chỉ trong keyring"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringPage.xaml.cs:47
 #: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:55
-#, fuzzy
 msgid "Keyring Disabled"
-msgstr "Chứng chỉ Keyring"
+msgstr "Đã vô hiệu hóa keyring"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:91
-#, fuzzy
 msgid "Keyring locked"
-msgstr "Chứng chỉ Keyring"
+msgstr "Đã khóa keyring"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringPage.xaml.cs:102
-#, fuzzy
 msgid "Keyring locked."
-msgstr "Chứng chỉ Keyring"
+msgstr "Đã khóa keyring."
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:71
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:114
 msgid "Language Code Information"
-msgstr ""
+msgstr "Thông tin về mã ngôn ngữ"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:94
 #: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:97
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:301
 msgid "Leave empty to download from start."
-msgstr "Để trống để tải xuống từ đầu."
+msgstr "Để trống để tải từ đầu."
 
 #: ../../../Controllers/MainWindowController.cs:109
 msgid "List of supported sites"
@@ -727,12 +719,12 @@ msgstr ""
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:201
 #: ../../../../NickvisionTubeConverter.WinUI/Views/CredentialDialog.xaml.cs:33
 msgid "Login"
-msgstr ""
+msgstr "Đăng nhập"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:86
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:290
 msgid "Make thumbnail square, useful when downloading music."
-msgstr "Làm thumbnail vuông, hữu ích khi tải nhạc."
+msgstr "Cắt thumbnail thành hình vuông, hữu ích khi tải nhạc."
 
 #: ../../../Controllers/MainWindowController.cs:110
 msgid "Matrix Chat"
@@ -741,17 +733,17 @@ msgstr ""
 #: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:81
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:163
 msgid "Max Connections Per Server (-x)"
-msgstr "Số lượng Kết nối Tối đa Trên Máy chủ (-x)"
+msgstr "Số kết nối tối đa đối với mỗi máy chủ (-x)"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:68
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:76
 msgid "Max Number of Active Downloads"
-msgstr "Giới hạn Số lượng Tải xuống Đồng thời"
+msgstr "Số lượt tải tối đa dược chạy cùng một lúc"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:396
 #: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:556
 msgid "Maximum Quality"
-msgstr "Chất lượng Tối đa"
+msgstr "Mức chất lượng tối đa"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:90
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:295
@@ -760,28 +752,30 @@ msgid ""
 "Enabling this option will disable the use of aria2 as the downloader if it "
 "is enabled."
 msgstr ""
+"Media có khả năng bị cắt lệch.\n"
+"Bật lựa chọn này để tắt aria2 nếu trình tải này đang được bật."
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:333
 #: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:46
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:56
 msgid "Media URL"
-msgstr "Địa chỉ"
+msgstr "URL của media"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:340
 #: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:508
 msgid "Media URL (Invalid)"
-msgstr "Địa chỉ (Không hợp lệ)"
+msgstr "URL của media (không hợp lệ)"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:61
 msgid ""
 "Minimize to the system tray instead of quitting the application when the "
 "window is closed."
-msgstr ""
+msgstr "Thu nhỏ thay vì thoát ứng dụng khi đóng cửa sổ."
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:83
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:186
 msgid "Minimum Split Size (-k)"
-msgstr "Kích thước Tách Tối thiểu (-k)"
+msgstr "Kích thước tách tối thiểu (-k)"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:219
 #: ../../../../NickvisionTubeConverter.WinUI/Views/CredentialDialog.xaml.cs:35
@@ -793,11 +787,11 @@ msgstr "Tên"
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:229
 #: ../../../../NickvisionTubeConverter.WinUI/Views/CredentialDialog.xaml.cs:119
 msgid "Name (Empty)"
-msgstr "Tên (Trống)"
+msgstr "Tên (trống)"
 
 #: ../../../Controllers/MainWindowController.cs:340
 msgid "New update available."
-msgstr ""
+msgstr "Đã ra bản cập nhật mới."
 
 #: ../../../Controllers/MainWindowController.cs:111
 #: ../../../Controllers/MainWindowController.cs:113
@@ -816,49 +810,45 @@ msgstr "Không"
 
 #: ../../../Controllers/MainWindowController.cs:310
 msgid "No active internet connection"
-msgstr ""
+msgstr "Không có kết nối internet"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:111
-#, fuzzy
 msgid "No Completed Downloads"
-msgstr "Xóa Các tải xuống Đã hoàn thành"
+msgstr "Không có mục tải xuống hoàn tất"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringPage.xaml.cs:51
 #: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:82
 msgid "No Credentials"
-msgstr "Không có Credentials"
+msgstr "Không có chứng chỉ"
 
 #: ../../../Models/DownloadManager.cs:193
 msgid "No downloads running"
-msgstr "Không có tải xuống nào đang chạy"
+msgstr "Không có mục tải xuống nào đang chạy"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:144
 #: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:279
 msgid "No File Selected"
-msgstr ""
+msgstr "Chưa chọn tệp nào"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Controls/HistoryPage.xaml.cs:37
 #: NickvisionTubeConverter.GNOME/Blueprints/history_dialog.blp:58
-#, fuzzy
 msgid "No Previous Downloads"
-msgstr "Dừng Tất cả Tải xuống"
+msgstr "Không có mục tải xuống trước đây"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:110
-#, fuzzy
 msgid "No Queued Downloads"
-msgstr "Xóa Tải xuống Đang đợi"
+msgstr "Không có mục tải xuống trong hàng đợi"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:108
-#, fuzzy
 msgid "No Running Downloads"
-msgstr "Xóa Tải xuống Đang đợi"
+msgstr "Không có mục tải xuống đang chạy"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:66
 #: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:69
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:188
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:215
 msgid "Number Titles"
-msgstr "Đánh số Tiêu đề"
+msgstr "Đánh số tiêu đề"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:50
 #: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:61
@@ -883,7 +873,7 @@ msgstr "Đánh số Tiêu đề"
 #: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:120
 #: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:124
 msgid "Off"
-msgstr ""
+msgstr "Tắt"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Controls/DownloadRow.xaml.cs:206
 #: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:177
@@ -912,25 +902,24 @@ msgstr "Đồng ý"
 #: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:116
 #: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:119
 #: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:123
-#, fuzzy
 msgid "On"
-msgstr "Mở"
+msgstr "Bật"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:273
 #: ../../../../NickvisionTubeConverter.WinUI/Controls/DownloadRow.xaml.cs:65
 #: NickvisionTubeConverter.GNOME/Blueprints/download_row.blp:81
 msgid "Open File"
-msgstr "Mở Tệp"
+msgstr "Mở tệp"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Controls/DownloadRow.xaml.cs:66
 #: NickvisionTubeConverter.GNOME/Blueprints/download_row.blp:89
 msgid "Open Folder"
-msgstr "Mở Thư mục"
+msgstr "Mở thư mục"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:65
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:67
 msgid "Overwrite Existing Files"
-msgstr "Ghi đè Tệp đã Tồn tại"
+msgstr "Ghi đè tệp đã tồn tại"
 
 #: ../../../Controllers/MainWindowController.cs:104
 #: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:112
@@ -954,23 +943,22 @@ msgstr "Mật khẩu (Trống)"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Controls/HistoryDialog.cs:66
 #: ../../../../NickvisionTubeConverter.WinUI/Controls/HistoryPage.xaml.cs:64
-#, fuzzy
 msgid "Play"
-msgstr "Danh sách phát"
+msgstr "Phát"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:89
 #: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:272
 msgid "Playlist"
-msgstr "Danh sách phát"
+msgstr "Playlist"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:484
 msgid "Please wait..."
-msgstr ""
+msgstr "Vui lòng đợi..."
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:77
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:279
 msgid "Prefer AV1 Codec"
-msgstr ""
+msgstr "Ưu tiên codec AV1"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:133
 #: ../../../../NickvisionTubeConverter.WinUI/Controls/DownloadRow.xaml.cs:95
@@ -980,11 +968,11 @@ msgstr "Đang chuẩn bị..."
 #: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:57
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:44
 msgid "Prevent Suspend"
-msgstr ""
+msgstr "Chống máy rơi vào chế độ tạm dừng"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:84
 msgid "PREVIEW"
-msgstr ""
+msgstr "XEM TRƯỚC"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:183
 #: ../../../../NickvisionTubeConverter.WinUI/Controls/DownloadRow.xaml.cs:124
@@ -994,37 +982,36 @@ msgstr "Đang xử lý..."
 #: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:88
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:228
 msgid "Proxy URL"
-msgstr ""
+msgstr "URL của proxy"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:57
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:118
 msgid "Quality"
-msgstr "Chất lượng"
+msgstr "Mức chất lượng"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:102
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:161
 msgid "Queued"
-msgstr "Đã xếp hàng"
+msgstr "Đã đem vào hàng đợi"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:114
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:371
 msgid "Remove Source Data"
-msgstr ""
+msgstr "Xóa dữ liệu nguồn"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:93
 msgid "Report a Bug"
-msgstr "Báo Lỗi"
+msgstr "Báo lỗi"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:92
 #: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringPage.xaml.cs:49
 msgid "Reset"
-msgstr ""
+msgstr "Đặt lại"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:252
 #: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringPage.xaml.cs:163
-#, fuzzy
 msgid "Reset Keyring?"
-msgstr "Thiết lập Keyring"
+msgstr "Đặt lại keyring?"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:82
 #: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:85
@@ -1036,11 +1023,11 @@ msgstr "Đặt lại về mặc định"
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:95
 #: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringPage.xaml.cs:99
 msgid "Restart the app to unlock the keyring."
-msgstr ""
+msgstr "Khởi động lại ứng dụng để mở khóa keyring."
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:200
 msgid "Restart To Apply Theme?"
-msgstr ""
+msgstr "Khởi động lại để áp dụng chủ đề?"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Controls/DownloadRow.xaml.cs:68
 #: NickvisionTubeConverter.GNOME/Blueprints/download_row.blp:101
@@ -1048,48 +1035,46 @@ msgid "Retry Download"
 msgstr "Thử tải lại"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:105
-#, fuzzy
 msgid "Retry Failed"
-msgstr "Thử lại Các Tải xuống Thất bại"
+msgstr "Thử lại thất bại"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:421
 #: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:62
 #: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:588
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:139
 msgid "Save Folder"
-msgstr "Thư mục Lưu"
+msgstr "Thư mục lưu"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:435
 #: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:600
 msgid "Save Folder (Invalid)"
-msgstr "Thư mục Lưu (Không hợp lệ)"
+msgstr "Thư mục lưu (không hợp lệ)"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:83
 msgid "Search for downloads, history, and more"
-msgstr ""
+msgstr "Tìm các mục tải xuống, mục lịch sử, ..."
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:72
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:227
-#, fuzzy
 msgid "Select All"
-msgstr "Dừng Tất cả"
+msgstr "Chọn tất cả"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/PreferencesDialog.cs:194
 #: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:92
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:249
 msgid "Select Cookies File"
-msgstr "Chọn Tệp Cookie"
+msgstr "Chọn tệp cookie"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:65
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:176
 msgid "Select items to download or change file names."
-msgstr "Chọn mục để tải xuống hoặc đổi tên tệp."
+msgstr "Chọn mục để tải hoặc để đổi tên tệp."
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:484
 #: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:63
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:146
 msgid "Select Save Folder"
-msgstr "Chọn Thư mục Lưu"
+msgstr "Chọn thư mục lưu"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:95
 #: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:115
@@ -1100,67 +1085,64 @@ msgstr "Cài đặt"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:114
 msgid "Show Window"
-msgstr ""
+msgstr "Hiển thị cửa sổ"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:295
 #: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:214
-#, fuzzy
 msgid ""
 "Some downloads are still in progress.\n"
 "Are you sure you want to close Parabolic and stop the running downloads?"
 msgstr ""
-"Một số quá trình tải xuống chưa hoàn tất.\n"
-"Bạn có chắc bạn muốn đóng Tube Converter và hủy các quá trình đó không?"
+"Parabolic còn đang tải chưa xong.\n"
+"Bạn có chắc muốn đóng Parabolic và hủy các mục đó?"
 
 #: ../../../Models/DownloadManager.cs:189
 msgid "Some downloads finished with errors!"
-msgstr "Một số tải xuống kết thúc với lỗi!"
+msgstr "Một số lượt tải đã hoàn tất kèm lỗi!"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:74
 #: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:86
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:275
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:211
 msgid "Speed Limit"
-msgstr "Giới hạn Tốc độ"
+msgstr "Giới hạn tốc độ"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:81
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:284
-#, fuzzy
 msgid "Split Chapters"
-msgstr "Nhúng Chương"
+msgstr "Tách chương"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:82
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:285
 msgid "Splits the video into multiple smaller ones based on its chapters."
-msgstr ""
+msgstr "Tách video thành nhiều phần dựa vào chương."
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:101
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:331
-#, fuzzy
 msgid "SponsorBlock Information (opens in a web browser)"
-msgstr "Tệp Cookie"
+msgstr "Thông tin về SponsorBlock (mở trong trình duyệt)"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:423
 #: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:93
 #: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:589
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:300
 msgid "Start Time"
-msgstr "Thời điểm Bắt đầu"
+msgstr "Thời điểm bắt đầu"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:440
 #: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:604
 msgid "Start Time (Invalid)"
-msgstr "Thời điểm Bắt đầu (Không hợp lệ)"
+msgstr "Thời điểm bắt đầu (không hợp lệ)"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:104
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:136
 msgid "Stop All"
-msgstr "Dừng Tất cả"
+msgstr "Dừng tất cả"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Controls/DownloadRow.xaml.cs:63
 #: NickvisionTubeConverter.GNOME/Blueprints/download_row.blp:66
 msgid "Stop Download"
-msgstr "Dừng Tải xuống"
+msgstr "Dừng tải"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:217
 #: ../../../../NickvisionTubeConverter.WinUI/Controls/DownloadRow.xaml.cs:153
@@ -1169,20 +1151,18 @@ msgstr "Đã dừng"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:69
 #: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:222
-#, fuzzy
 msgid "Subtitle Languages"
-msgstr "Thời điểm Bắt đầu (Không hợp lệ)"
+msgstr "Ngôn ngữ của phụ đề"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/PreferencesDialog.cs:170
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:102
 msgid "Subtitle Languages (Comma-Separated)"
-msgstr ""
+msgstr "Ngôn ngữ của phụ đề (cách nhau bởi dấu phẩy)"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/PreferencesDialog.cs:179
 #: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:231
-#, fuzzy
 msgid "Subtitle Languages (Invalid)"
-msgstr "Thời điểm Bắt đầu (Không hợp lệ)"
+msgstr "Ngôn ngữ của phụ đề (không hợp lệ)"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:200
 #: ../../../../NickvisionTubeConverter.WinUI/Controls/DownloadRow.xaml.cs:139
@@ -1191,15 +1171,14 @@ msgstr "Thành công"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/MainWindow.cs:551
 #: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:172
-#, fuzzy
 msgid ""
 "The authors of Nickvision Parabolic are not responsible/liable for any "
 "misuse of this program that may violate local copyright/DMCA laws. Users use "
 "this application at their own risk."
 msgstr ""
-"Các tác giả của Nickvision Tube Converter không chịu trách nhiệm pháp lý đối "
-"với mọi hành vi lạm dụng chương trình này mà có thể vi phạm luật bản quyền "
-"hoặc luật DMCA sở tại. Người dùng tự chịu rủi ro khi sử dụng ứng dụng này."
+"Các tác giả của Nickvision Parabolic không chịu trách nhiệm pháp lý đối với "
+"mọi hành vi lạm dụng chương trình này mà vi phạm luật bản quyền hoặc luật "
+"DMCA sở tại. Người dùng tự chịu rủi ro khi sử dụng ứng dụng này."
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:84
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:187
@@ -1214,7 +1193,7 @@ msgstr "Chủ đề"
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:315
 #: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringPage.xaml.cs:230
 msgid "This action is irreversible. Are you sure you want to delete it?"
-msgstr "Hành động này không thể đảo ngược. Bạn chắc chắn muốn xóa nó chứ?"
+msgstr "Sau khi xóa, bạn sẽ không thể khôi phục. Bạn có chắc chắn muốn xóa?"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:87
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:212
@@ -1222,15 +1201,17 @@ msgid ""
 "This limit (in KiB/s) is applied to downloads that have speed limit enabled. "
 "Changing the value doesn't affect already running downloads."
 msgstr ""
-"Giới hạn này (tính băng KiB/s) được áp dụng vào các tải xuống đã bật giới "
-"hạn tốc độ. Thay đổi giá trị này không ảnh hưởng đến những tải xuống đang "
-"chạy."
+"Giới hạn này (tính bằng KiB/s) được áp dụng đối với các mục tải xuống có bật "
+"giới hạn tốc độ. Thay đổi giá trị này không ảnh hưởng đến những mục tải "
+"xuống đang chạy."
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:78
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:280
 msgid ""
 "This option's state will be remembered and restored for future downloads."
 msgstr ""
+"Lựa chọn này sẽ được ghi nhớ và khôi phục lại trong các lần tải trong tương "
+"lai."
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:252
 #: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringPage.xaml.cs:164
@@ -1238,57 +1219,56 @@ msgid ""
 "This will delete the previous keyring removing all passwords with it. This "
 "action is irreversible."
 msgstr ""
+"Tác vụ này sẽ xóa keyring trước đó và mọi mật khẩu trong đó. Bạn sẽ không "
+"thể khôi phục lại keyring."
 
 #: ../../../Controllers/MainWindowController.cs:117
 msgid "translator-credits"
-msgstr ""
+msgstr "Kinten Le <kinten108101@protonmail.com>"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:288
 #: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringPage.xaml.cs:150
-#, fuzzy
 msgid "Unable to disable keyring."
-msgstr "Vô hiệu hóa Keyring?"
+msgstr "Không thể vô hiệu hóa keyring."
 
 #: ../../../Controllers/MainWindowController.cs:356
 msgid "Unable to download and install update."
-msgstr ""
+msgstr "Không thể tải và cài bản cập nhật."
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:269
 #: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringPage.xaml.cs:185
 msgid "Unable to reset keyring."
-msgstr ""
+msgstr "Không thể đặt lại keyring."
 
 #: ../../../../NickvisionTubeConverter.WinUI/Controls/MediaRow.xaml.cs:32
 #: NickvisionTubeConverter.GNOME/Blueprints/media_row.blp:16
 msgid "Undo Title Editing"
-msgstr "Hoàn tác Chỉnh sửa Tiêu đề"
+msgstr "Hoàn lại các chỉnh sửa trong tiêu đề"
 
 #: ../../../Controllers/MainWindowController.cs:292
 msgid "Unlock Keyring"
-msgstr "Mở khóa Keyring"
+msgstr "Mở khóa keyring"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:93
-#, fuzzy
 msgid "Unset Cookies File"
-msgstr "Chọn Tệp Cookie"
+msgstr "Bỏ đặt tệp cookie"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/CredentialDialog.xaml.cs:53
 #: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:320
 msgid "Update"
-msgstr ""
+msgstr "Cập nhật"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:221
 #: ../../../../NickvisionTubeConverter.WinUI/Views/CredentialDialog.xaml.cs:37
 #: ../../../../NickvisionTubeConverter.WinUI/Views/CredentialDialog.xaml.cs:112
 #: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:159
 msgid "URL"
-msgstr "Địa chỉ"
+msgstr "URL"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:241
 #: ../../../../NickvisionTubeConverter.WinUI/Views/CredentialDialog.xaml.cs:128
-#, fuzzy
 msgid "URL (Invalid)"
-msgstr "Địa chỉ (Không hợp lệ)"
+msgstr "URL (không hợp lệ)"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:77
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:153
@@ -1302,6 +1282,8 @@ msgid ""
 "Use keyring to safely store credentials for sites that require a user name "
 "and password to login."
 msgstr ""
+"Sửa dụng keyring để an toàn lưu chứng chỉ cho các trang có yêu cầu tên và "
+"mật khẩu để đăng nhập."
 
 #: ../../../Controllers/AddDownloadDialogController.cs:153
 msgid "Use manual credential"
@@ -1310,7 +1292,7 @@ msgstr "Dùng chứng chỉ thủ công"
 #: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:98
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:320
 msgid "Use SponsorBlock for YouTube"
-msgstr ""
+msgstr "Dùng SponsorBlock đối với YouTube"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:43
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:15
@@ -1319,22 +1301,20 @@ msgstr "Giao diện"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/CredentialDialog.xaml.cs:39
 #: ../../../../NickvisionTubeConverter.WinUI/Views/CredentialDialog.xaml.cs:113
-#, fuzzy
 msgid "User Name"
-msgstr "Tên tài khoản"
+msgstr "Tên đăng nhập"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:234
 #: ../../../../NickvisionTubeConverter.WinUI/Views/CredentialDialog.xaml.cs:123
-#, fuzzy
 msgid "User Name (Empty)"
-msgstr "Tên tài khoản (Trống)"
+msgstr "Tên đăng nhập (trống)"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:223
 #: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:52
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:71
 #: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:164
 msgid "Username"
-msgstr "Tên tài khoản"
+msgstr "Tên đăng nhập"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:336
 #: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:41
@@ -1344,20 +1324,19 @@ msgid "Validate"
 msgstr "Xác thực"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:479
-#, fuzzy
 msgid "Validating"
-msgstr "Xác thực"
+msgstr "Đang xác thực"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:365
 #: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:535
 msgid "Video"
-msgstr "Băng hình"
+msgstr "Video"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Controls/DownloadRow.xaml.cs:64
 #: ../../../../NickvisionTubeConverter.WinUI/Controls/DownloadRow.xaml.cs:67
 #: NickvisionTubeConverter.GNOME/Blueprints/download_row.blp:51
 msgid "View Log"
-msgstr "Xem Nhật ký"
+msgstr "Xem Log"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:119
 #: ../../../../NickvisionTubeConverter.WinUI/Controls/DownloadRow.xaml.cs:62
@@ -1369,7 +1348,7 @@ msgstr "Đang chờ..."
 #: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:75
 #: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:38
 msgid "Worst"
-msgstr "Tệ nhất"
+msgstr "Thấp nhất"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:201
 #, csharp-format
@@ -1377,6 +1356,8 @@ msgid ""
 "Would you like to restart {0} to apply the new theme?\n"
 "Any unsaved work will be lost."
 msgstr ""
+"Bạn có muốn khởi động lại {0} để áp dụng chủ đề mới?\n"
+"Mọi tác vụ chưa lưu sẽ bị mất."
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:257
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:320
@@ -1392,7 +1373,7 @@ msgstr "Có"
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:34
 msgctxt "CompletedNotification"
 msgid "For each download"
-msgstr "Cho mỗi tải xuống"
+msgstr "Cho mỗi mục tải xuống"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:56
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:34
@@ -1404,13 +1385,13 @@ msgstr "Không bao giờ"
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:34
 msgctxt "CompletedNotification"
 msgid "When all downloads finish"
-msgstr "Khi tất cả tải xuống hoàn thành"
+msgstr "Khi đã tải xong tất cả"
 
 #: ../../../Controllers/PreferencesViewController.cs:296
 #: ../../../Models/Download.cs:308
 msgctxt "subtitle"
 msgid "all"
-msgstr ""
+msgstr "tất cả"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:47
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:20
@@ -1432,37 +1413,35 @@ msgstr "Hệ thống"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/add_download_dialog.blp:306
 msgid "Leave empty to download to end."
-msgstr "Để trống để tải xuống đến cuối."
+msgstr "Để trống để tải đến cuối."
 
 #: NickvisionTubeConverter.GNOME/Blueprints/history_dialog.blp:17
 msgid "Clear History"
-msgstr ""
+msgstr "Xóa lịch sử"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/history_dialog.blp:35
 msgid "Manage previously downloaded media."
-msgstr ""
+msgstr "Quản lý các media đã tải."
 
 #: NickvisionTubeConverter.GNOME/Blueprints/history_dialog.blp:48
 msgid "Search history"
-msgstr ""
+msgstr "Tìm trong lịch sử"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/keyring_dialog.blp:104
-#, fuzzy
 msgid "Disable Keyring"
-msgstr "Vô hiệu hóa Keyring?"
+msgstr "Vô hiệu hóa keyring?"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/password_dialog.blp:17
 msgid "Migrate to Secret-Secured Keyring"
-msgstr ""
+msgstr "Migrate sang keyring bảo mật bằng mã"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/password_dialog.blp:21
-#, fuzzy
 msgid "Migrate Keyring"
-msgstr "Vô hiệu hóa Keyring?"
+msgstr "Migrate keyring"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/password_dialog.blp:68
 msgid "Skip"
-msgstr ""
+msgstr "Lướt qua"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/password_dialog.blp:75
 msgid "Unlock"
@@ -1476,34 +1455,34 @@ msgstr "Tùy thích"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:54
 msgid "Hide the window instead of quitting if there are downloads running."
-msgstr "Ẩn cửa sổ thay vì thoát nếu như còn tải xuống đang chạy."
+msgstr "Ẩn cửa sổ thay vì thoát nếu Parabolic còn đang tải."
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:92
 msgid "Limit Filename Characters"
-msgstr ""
+msgstr "Giới hạn ký tự khi đặt tên tệp tin"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:93
 msgid "Restricts characters in filenames to only those supported by Windows."
-msgstr ""
+msgstr "Chỉ sử dụng các ký tự dành cho tên tệp tin trong Windows."
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:259
 msgid "Clear Cookies File"
-msgstr "Xóa Tệp Cookie"
+msgstr "Xóa tệp cookie"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:21
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:131
 msgid "Stop All Downloads"
-msgstr "Dừng Tất cả Tải xuống"
+msgstr "Dừng tất cả mục tải xuống"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:26
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:211
 msgid "Retry Failed Downloads"
-msgstr "Thử lại Các Tải xuống Thất bại"
+msgstr "Thử lại các lượt tải xuống thất bại"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:31
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:171
 msgid "Clear Queued Downloads"
-msgstr "Xóa Tải xuống Đang đợi"
+msgstr "Xóa tất cả lượt tải xuống trong hàng đợi"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/shortcuts_dialog.blp:37
 msgid "Application"
@@ -1520,19 +1499,19 @@ msgstr "Thoát"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:12
 msgid "About Parabolic"
-msgstr ""
+msgstr "Thông tin về Parabolic"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:47
 msgid "Add Download (Ctrl+N)"
-msgstr "Thêm Tải xuống (Ctrl+N)"
+msgstr "Thêm lượt tải (Ctrl+N)"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:59
 msgid "Main Menu"
-msgstr "Trình đơn Chính"
+msgstr "Menu chính"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/window.blp:219
 msgid "Clear Completed Downloads"
-msgstr "Xóa Các tải xuống Đã hoàn thành"
+msgstr "Xóa các lượt tải đã hoàn tất"
 
 #~ msgid "Apply"
 #~ msgstr "Áp dụng"
