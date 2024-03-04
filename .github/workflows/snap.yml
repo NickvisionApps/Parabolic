@@ -29,6 +29,7 @@ jobs:
           path: ${{ steps.snapcraft-build.outputs.snap }}
       - name: Upload and release Parabolic Snap
         uses: snapcore/action-publish@v1
+        if: ${{ github.event_name != 'pull_request' }}
         env:
           SNAPCRAFT_STORE_CREDENTIALS: ${{ secrets.STORE_LOGIN }}
         with:
