@@ -14,7 +14,7 @@ parts:
     plugin: python
     source: https://github.com/yt-dlp/yt-dlp.git
     source-depth: 1
-    source-tag: '2023.12.30'
+    source-tag: '2024.03.10'
     build-environment:
       # WORKAROUND: The python plugin is broken with gnome extension
       - PATH: ${CRAFT_PART_INSTALL}/bin:${PATH}
