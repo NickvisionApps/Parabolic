@@ -2,6 +2,7 @@ using Nickvision.Aura.Keyring;
 using NickvisionTubeConverter.GNOME.Helpers;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Threading.Tasks;
 using static Nickvision.Aura.Localization.Gettext;
 
@@ -17,6 +18,8 @@ public partial class KeyringDialog : Adw.Window
     private int? _editId;
     private readonly List<Gtk.Widget> _credentialRows;
     private readonly string _appID;
+    private readonly bool _snap;
+    private readonly string? _snapCommand;
 
     [Gtk.Connect] private readonly Gtk.Button _backButton;
     [Gtk.Connect] private readonly Adw.ToastOverlay _toastOverlay;
@@ -54,6 +57,8 @@ public partial class KeyringDialog : Adw.Window
         _editId = null;
         _credentialRows = new List<Gtk.Widget>();
         _appID = appID;
+        _snap = !string.IsNullOrEmpty(Environment.GetEnvironmentVariable("SNAP"));
+        _snapCommand = _snap ? "sudo snap connect tube-converter:password-manager-service" : null;
         //Dialog Settings
         SetTransientFor(_parent);
         SetIconName(_appID);
@@ -61,6 +66,14 @@ public partial class KeyringDialog : Adw.Window
         builder.Connect(this);
         _enableKeyringButton.OnClicked += async (sender, e) =>
         {
+            if (_snap)
+            {
+                var res = await SnapSlotCheckAsync();
+                if (!res)
+                {
+                    return;
+                }
+            }
             _enableKeyringButton.SetSensitive(false);
             var success = await _controller.EnableKeyringAsync();
             _enableKeyringButton.SetSensitive(true);
@@ -329,5 +342,43 @@ public partial class KeyringDialog : Adw.Window
             disableDialog.Destroy();
         };
         disableDialog.Present();
+    }
+
+    /// <summary>
+    /// Occurs when the enable button is clicked under a snap
+    /// </summary>
+    /// <returns>True if slot is connected and False if not</returns>
+    public async Task<bool> SnapSlotCheckAsync()
+    {
+        var process = new Process();
+        process.StartInfo.FileName = "snapctl";
+        process.StartInfo.Arguments = "is-connected password-manager-service";
+        process.StartInfo.CreateNoWindow = true;
+        process.Start();
+        await process.WaitForExitAsync();
+        int connected = process.ExitCode;
+        if (connected == 1)
+        {
+            var snapDialog = Adw.MessageDialog.New(this, _("Necessary slot not connected"), _("To enable keyring, the app needs to connect to the password-manager-service slot. To connect it please copy the command and run in the terminal."));
+            snapDialog.SetIconName(_appID);
+            snapDialog.AddResponse("copy", _("Copy"));
+            snapDialog.SetDefaultResponse("copy");
+            snapDialog.AddResponse("close", _("Close"));
+            snapDialog.SetCloseResponse("close");
+            snapDialog.SetResponseAppearance("close", Adw.ResponseAppearance.Destructive);
+            snapDialog.Show();
+            snapDialog.OnResponse += (s, ex) =>
+            {
+                if (ex.Response == "copy")
+                {
+                    GetClipboard().SetText(_snapCommand);
+                    _toastOverlay.AddToast(Adw.Toast.New(_("Command copied to clipboard.")));
+
+                }
+                snapDialog.Destroy();
+            };
+            return false;
+        }
+        return true;
     }
 }
