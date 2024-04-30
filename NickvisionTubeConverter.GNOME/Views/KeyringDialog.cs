@@ -356,10 +356,9 @@ public partial class KeyringDialog : Adw.Window
         process.StartInfo.CreateNoWindow = true;
         process.Start();
         await process.WaitForExitAsync();
-        int connected = process.ExitCode;
-        if (connected == 1)
+        if (process.ExitCode == 1)
         {
-            var snapDialog = Adw.MessageDialog.New(this, _("Necessary slot not connected"), _("To enable keyring, the app needs to connect to the password-manager-service slot. To connect it please copy the command and run in the terminal."));
+            var snapDialog = Adw.MessageDialog.New(this, _("Missing Slot"), _("To enable keyring, the app needs to connect to the password-manager-service slot. To connect to it, please copy the command and run it in the terminal."));
             snapDialog.SetIconName(_appID);
             snapDialog.AddResponse("copy", _("Copy"));
             snapDialog.SetDefaultResponse("copy");
