@@ -451,15 +451,6 @@ public partial class MainWindow : Adw.ApplicationWindow
                 {
                     debugInfo.AppendLine("yt-dlp not found");
                 }
-                try
-                {
-                    dynamic psutil = Py.Import("psutil");
-                    debugInfo.AppendLine($"psutil {psutil.__version__.As<string>()}");
-                }
-                catch
-                {
-                    debugInfo.AppendLine("psutil not found");
-                }
             }
         });
         var ffmpeg = Task.Run(() =>
