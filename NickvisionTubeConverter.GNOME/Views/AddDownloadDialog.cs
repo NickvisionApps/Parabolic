@@ -5,6 +5,7 @@ using NickvisionTubeConverter.Shared.Controllers;
 using NickvisionTubeConverter.Shared.Models;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Threading.Tasks;
 using static Nickvision.Aura.Localization.Gettext;
@@ -378,6 +379,10 @@ public partial class AddDownloadDialog : Adw.Window
             {
                 _audioLanguageRow.SetVisible(true);
                 _audioLanguageRow.SetModel(Gtk.StringList.New(_controller.AudioLanguages.ToArray()));
+                if(_controller.AudioLanguages.Contains(CultureInfo.CurrentCulture.TwoLetterISOLanguageName))
+                {
+                    _audioLanguageRow.SetSelected((uint)_controller.AudioLanguages.IndexOf(CultureInfo.CurrentCulture.TwoLetterISOLanguageName));
+                }
             }
             OnFileTypeChanged(); // in case _fileTypeRow.SetSelected didn't invoke OnNotify
             _downloadPage.SetVisible(true);
