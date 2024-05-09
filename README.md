@@ -47,7 +47,6 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for details on how can you help the proje
 - [ffmpeg](https://ffmpeg.org/)
 - [python](https://python.org/)
 - [yt-dlp (As python module)](https://github.com/yt-dlp/yt-dlp)
-- [psutil (As python module)](https://github.com/giampaolo/psutil)
 
 # Code of Conduct
 This project follows the [GNOME Code of Conduct](https://wiki.gnome.org/Foundation/CodeOfConduct).
