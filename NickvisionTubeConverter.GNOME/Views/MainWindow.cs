@@ -77,7 +77,7 @@ public partial class MainWindow : Adw.ApplicationWindow
         OnCloseRequest += OnCloseRequested;
         OnNotify += (sender, e) =>
         {
-            if(e.Pspec.GetName() == "is-active" || e.Pspec.GetName() == "visible")
+            if (e.Pspec.GetName() == "is-active" || e.Pspec.GetName() == "visible")
             {
                 _controller.IsWindowActive = GetIsActive() && GetVisible();
             }
@@ -268,7 +268,7 @@ public partial class MainWindow : Adw.ApplicationWindow
             var fileIcon = Gio.FileIcon.New(Gio.FileHelper.NewForPath($"{Environment.GetEnvironmentVariable("SNAP")}/usr/share/icons/hicolor/symbolic/apps/{_controller.AppInfo.ID}-symbolic.svg"));
             notification.SetIcon(fileIcon);
         }
-        if(e.Action == "open-file")
+        if (e.Action == "open-file")
         {
             notification.AddButtonWithTarget(_("Open File"), "app.openFile", GLib.Variant.NewString(e.ActionParam));
         }
@@ -450,15 +450,6 @@ public partial class MainWindow : Adw.ApplicationWindow
                 catch
                 {
                     debugInfo.AppendLine("yt-dlp not found");
-                }
-                try
-                {
-                    dynamic psutil = Py.Import("psutil");
-                    debugInfo.AppendLine($"psutil {psutil.__version__.As<string>()}");
-                }
-                catch
-                {
-                    debugInfo.AppendLine("psutil not found");
                 }
             }
         });
