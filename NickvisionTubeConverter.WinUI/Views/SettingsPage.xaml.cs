@@ -349,15 +349,6 @@ public sealed partial class SettingsPage : UserControl
                 {
                     info += "\nyt-dlp not found";
                 }
-                try
-                {
-                    dynamic psutil = Py.Import("psutil");
-                    info += $"\npsutil {psutil.__version__.As<string>()}";
-                }
-                catch
-                {
-                    info += "\npsutil not found";
-                }
             }
         });
         var ffmpeg = Task.Run(() =>

@@ -7,6 +7,7 @@ using NickvisionTubeConverter.Shared.Models;
 using NickvisionTubeConverter.WinUI.Controls;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Threading.Tasks;
 using Windows.ApplicationModel.DataTransfer;
@@ -548,7 +549,14 @@ public sealed partial class AddDownloadDialog : ContentDialog
             {
                 CardAudioLanguage.Visibility = Visibility.Visible;
                 CmbAudioLanguage.ItemsSource = _controller.AudioLanguages;
-                CmbAudioLanguage.SelectedIndex = 0;
+                if (_controller.AudioLanguages.Contains(CultureInfo.CurrentCulture.TwoLetterISOLanguageName))
+                {
+                    CmbAudioLanguage.SelectedIndex = _controller.AudioLanguages.IndexOf(CultureInfo.CurrentCulture.TwoLetterISOLanguageName);
+                }
+                else
+                {
+                    CmbAudioLanguage.SelectedIndex = 0;
+                }
             }
             ViewStack.CurrentPageName = "Download";
             PrimaryButtonText = _("Download");
