@@ -12,14 +12,20 @@
 		<years its:translate="no">2023</years>
 	</credit>
 	<license href="http://creativecommons.org/licenses/by/4.0/" its:translate="no"><p>Creative Commons Attribution 4.0 International License</p></license>
-</info>
+
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Kinten Le</mal:name>
+      <mal:email>kinten108101@protonmail.com</mal:email>
+      <mal:years>2024</mal:years>
+    </mal:credit>
+  </info>
 
 <title>Converter</title>
 <p>This page explains all options for configuring the Converter in Preferences in <app>Parabolic</app>.</p>
 
 <terms>
 	<item>
-		<title>Disallow Conversions</title>
+		<title>Không cho phép chuyển đổi</title>
 		<p>If enabled, Parabolic will download the appropriate video/audio format for the selected quality without converting to other formats.</p>
         <p>This means that you will be unable to select a file format when downloading a media. But, you will save time in downloading as the Converter will not be run.</p>
 		<note style="advanced">
@@ -27,7 +33,7 @@
 		</note>
     </item>
 	<item>
-		<title>Embed Metadata</title>
+		<title>Nhúng siêu dữ liệu</title>
 		<p>If enabled, Parabolic will tag a media with its relevant information (title, genre, etc...) and thumbnail if available.</p>
         <p>Parabolic will NOT embed the Comment, Description, Synopsis, and Purl fields.</p>
 		<note style="advanced">
@@ -35,16 +41,16 @@
 		</note>
     </item>
     <item>
-		<title>Crop Audio Thumbnails</title>
-		<p>Only available if Embed Metadata is enabled.</p>
-		<p>If enabled, Parabolic will automatically turn on the advanced option <code>Crop Thumbnail</code> for audio downloads.</p>
+		<title>Cắt thumbnail của audio</title>
+		<p>Chỉ khả dụng nếu lựa chọn "nhúng siêu dữ liệu" được bật.</p>
+		<p>Nếu bật, Parabolic sẽ tự động bật lựa chọn <code>cắt thumbnail</code> khi tải audio.</p>
 		<note style="advanced">
 			<p>Default: Off</p>
 		</note>
     </item>
     <item>
-		<title>Remove Source Data</title>
-		<p>Only available if Embed Metadata is enabled.</p>
+		<title>Xóa dữ liệu nguồn</title>
+		<p>Chỉ khả dụng nếu lựa chọn "nhúng siêu dữ liệu" được bật.</p>
 		<p>If enabled, Parabolic will clear metadata fields containing the URL and other identifying information of the media source.</p>
         <p>Fields that are cleared: <code>comment</code>, <code>description</code>, <code>synopsis</code>, <code>purl</code> and <code>handler_name</code> in each stream.</p>
 		<note style="advanced">
@@ -52,14 +58,14 @@
 		</note>
     </item>
 	<item>
-		<title>Embed Chapters</title>
+		<title>Nhúng chương</title>
 		<p>If enabled, Parabolic will tag a media with chapter information if available.</p>
 		<note style="advanced">
 			<p>Default: Off</p>
 		</note>
 	</item>
     <item>
-        <title>Embed Subtitles</title>
+        <title>Nhúng phụ đề</title>
         <p>If disabled or if embedding fails, downloaded subtitles will be saved to a separate file.</p>
         <note style="advanced">
             <p>Default: On</p>

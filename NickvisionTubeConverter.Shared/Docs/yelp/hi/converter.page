@@ -2,67 +2,67 @@
 <page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" id="converter" its:version="2.0" xml:lang="hi">
 <info>
 	<link type="guide" xref="index"/>
-	<title type="link">Converter ⚒️</title>
+	<title type="link">परिवर्तक ⚒️</title>
 	<credit type="author copyright">
-		<name>Nicholas Logozzo</name>
+		<name>निकोलस लोगोज़ो</name>
 		<years its:translate="no">2023</years>
 	</credit>
 	<credit type="publisher copyright">
-		<name>Nicholas Logozzo</name>
+		<name>निकोलस लोगोज़ो</name>
 		<years its:translate="no">2023</years>
 	</credit>
 	<license href="http://creativecommons.org/licenses/by/4.0/" its:translate="no"><p>Creative Commons Attribution 4.0 International License</p></license>
 </info>
 
-<title>Converter</title>
-<p>This page explains all options for configuring the Converter in Preferences in <app>Parabolic</app>.</p>
+<title>परिवर्तक</title>
+<p>यह पृष्ठ <app>Parabolic</app> में प्राथमिकताओं में परिवर्तक को कॉन्फ़िगर करने के लिए सभी विकल्पों की व्याख्या करता है।</p>
 
 <terms>
 	<item>
-		<title>Disallow Conversions</title>
-		<p>If enabled, Parabolic will download the appropriate video/audio format for the selected quality without converting to other formats.</p>
-        <p>This means that you will be unable to select a file format when downloading a media. But, you will save time in downloading as the Converter will not be run.</p>
+		<title>परिवर्तनों को अस्वीकार करें</title>
+		<p>यदि सक्षम किया गया है, तो Parabolic अन्य प्रारूपों में परिवर्तित किए बिना चयनित गुणवत्ता के लिए उपयुक्त वीडियो/ऑडियो प्रारूप डाउनलोड करेगा।</p>
+        <p>इसका मतलब यह है कि मीडिया डाउनलोड करते समय आप फाइल प्रारूप का चयन करने में असमर्थ होंगे। लेकिन, डाउनलोड करने में आपका समय बचेगा क्योंकि परिवर्तक नहीं चलेगा।</p>
 		<note style="advanced">
-			<p>Default: Off</p>
+			<p>डिफ़ॉल्ट: बंद</p>
 		</note>
     </item>
 	<item>
-		<title>Embed Metadata</title>
-		<p>If enabled, Parabolic will tag a media with its relevant information (title, genre, etc...) and thumbnail if available.</p>
-        <p>Parabolic will NOT embed the Comment, Description, Synopsis, and Purl fields.</p>
+		<title>मेटाडेटा एम्बेड करें</title>
+		<p>यदि सक्षम किया गया है, तो Parabolic किसी मीडिया को उसकी प्रासंगिक जानकारी (शीर्षक, शैली, आदि...) और यदि उपलब्ध हो तो थंबनेल के साथ टैग करेगा।</p>
+        <p>Parabolic टिप्पणी, विवरण, सारांश और पर्ल फ़ील्ड को एम्बेड नहीं करेगा।</p>
 		<note style="advanced">
-			<p>Default: On</p>
+			<p>डिफ़ॉल्ट: चालू</p>
 		</note>
     </item>
     <item>
-		<title>Crop Audio Thumbnails</title>
-		<p>Only available if Embed Metadata is enabled.</p>
-		<p>If enabled, Parabolic will automatically turn on the advanced option <code>Crop Thumbnail</code> for audio downloads.</p>
+		<title>ऑडियो थंबनेल काटें</title>
+		<p>केवल तभी उपलब्ध है जब एंबेड मेटाडेटा सक्षम हो।</p>
+		<p>सक्षम होने पर, Parabolic ऑडियो डाउनलोड के लिए स्वचालित रूप से उन्नत विकल्प <code>थंबनेल काटें</code> चालू कर देगा।</p>
 		<note style="advanced">
-			<p>Default: Off</p>
+			<p>डिफ़ॉल्ट: बंद</p>
 		</note>
     </item>
     <item>
-		<title>Remove Source Data</title>
-		<p>Only available if Embed Metadata is enabled.</p>
-		<p>If enabled, Parabolic will clear metadata fields containing the URL and other identifying information of the media source.</p>
-        <p>Fields that are cleared: <code>comment</code>, <code>description</code>, <code>synopsis</code>, <code>purl</code> and <code>handler_name</code> in each stream.</p>
+		<title>स्रोत डेटा हटाएँ</title>
+		<p>केवल तभी उपलब्ध है जब एंबेड मेटाडेटा सक्षम हो।</p>
+		<p>यदि सक्षम किया गया है, तो Parabolic URL और मीडिया स्रोत की अन्य पहचान संबंधी जानकारी वाले मेटाडेटा फ़ील्ड को साफ़ कर देगा।</p>
+        <p>साफ़ किए गए फ़ील्ड: <code>टिप्पणी</code>, <code>विवरण</code>, <code>सारांश</code>, <code>पर्ल</code> और <code>हैंडलर_नाम</code> प्रत्येक धारा।</p>
 		<note style="advanced">
-			<p>Default: Off</p>
+			<p>डिफ़ॉल्ट: बंद</p>
 		</note>
     </item>
 	<item>
-		<title>Embed Chapters</title>
-		<p>If enabled, Parabolic will tag a media with chapter information if available.</p>
+		<title>अध्याय एम्बेड करें</title>
+		<p>यदि सक्षम किया गया है, तो Parabolic उपलब्ध होने पर अध्याय की जानकारी के साथ मीडिया को टैग करेगा।</p>
 		<note style="advanced">
-			<p>Default: Off</p>
+			<p>डिफ़ॉल्ट: बंद</p>
 		</note>
 	</item>
     <item>
-        <title>Embed Subtitles</title>
-        <p>If disabled or if embedding fails, downloaded subtitles will be saved to a separate file.</p>
+        <title>उपशीर्षक एम्बेड करें</title>
+        <p>यदि अक्षम किया गया है या यदि एम्बेडिंग विफल हो जाती है, तो डाउनलोड किए गए उपशीर्षक एक अलग फाइल में सहेजे जाएंगे।</p>
         <note style="advanced">
-            <p>Default: On</p>
+            <p>डिफ़ॉल्ट: चालू</p>
         </note>
     </item>
 </terms>

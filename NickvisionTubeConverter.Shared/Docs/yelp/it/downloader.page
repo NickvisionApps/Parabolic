@@ -39,17 +39,15 @@
         <p>A comma-separated list of two-letter, two-letter with region, and three-letter language codes to use when selecting languages of subtitles to download. Only applies when downloading a video with subtitles.</p>
         <note>
             <p>Different sites can use different language code formats for the same language. You may encounter one of the following three types: two-letter, two-letter with region, or three-letter. For example, "en", "en-US" and "eng" are all used for English. Please specify all valid codes for your languages for the best results. Auto-generated subtitles will also be downloaded if available.</p>
-            <p>You can specify "all" instead to download all subtitles, but without auto-generated ones.</p>
+            <p>Puoi invece specificare "tutti" per scaricare tutti i sottotitoli, ma senza quelli generati automaticamente.</p>
         </note>
         <note style="advanced">
-            <p>
-                Default: Your culture's language codes. For example, on an en-US system the default would be <code>en,en-US,eng</code>
-            </p>
+            <p>Predefinito: i codici della lingua della tua cultura. Ad esempio, su un sistema en-US il valore predefinito sarebbe <code>en,en-US,eng</code></p>
         </note>
     </item>
     <item>
-        <title>Included Auto-Generated Subtitles</title>
-        <p>Whether or not to included subtitles that are auto-translated to fit the requested subtitle languages.</p>
+        <title>Sottotitoli generati automaticamente inclusi</title>
+        <p>Se includere o meno i sottotitoli tradotti automaticamente per adattarsi alle lingue dei sottotitoli richieste.</p>
         <note style="advanced">
             <p>Predefinito: attivato</p>
         </note>
@@ -63,16 +61,14 @@
     </item>
     <item>
         <title>Numero Massimo di Connessioni Per Server</title>
-        <p>
-            This option only applies when using aria2 is enabled. This option is the same as the <code>-x</code> flag passed to aria2c.
-        </p>
+        <p>Questa opzione si applica solo quando è abilitato l'utilizzo di aria2. Questa opzione è la stessa del flag <code>-x</code> passato ad aria2c.</p>
         <p>Il numero massimo di connessioni per server utilizzabile. Deve essere un valore intero compreso tra 1 e 32.</p>
         <note style="advanced">
             <p>Predefinito: 16</p>
         </note>
     </item>
     <item>
-        <title>Minimum Split Size</title>
+        <title>Dimensione minima divisa</title>
         <p>Questa opzione è applicabile solo quando l'utilizzo di aria2 è abilitato. L'opzione è la stessa del flag <code>k</code> passato ad aria2c.</p>
         <p>La taglia minima, in MiB, in cui dividere un file. Deve essere un valore intero compreso tra 1 e 1024.</p>
         <note style="advanced">
@@ -105,9 +101,9 @@
     </item>
     <item>
         <title>Usa SponsorBlock per YouTube</title>
-        <p>If enabled, Parabolic will apply the SponsorBlock extension to YouTube downloads.</p>
+        <p>Se abilitato, Parabolic applicherà l'estensione SponsorBlock ai download di YouTube.</p>
         <note>
-            <p>SponsorBlock only works on YouTube videos. However, leaving this setting on will not affect downloads from other sites (i.e. not cause them to fail).</p>
+            <p>SponsorBlock funziona solo sui video di YouTube. Tuttavia, lasciare attiva questa impostazione non influirà sui download da altri siti (ovvero non ne causerà il fallimento).</p>
         </note>
         <note style="advanced">
             <p>Predefinito: Disattivato</p>

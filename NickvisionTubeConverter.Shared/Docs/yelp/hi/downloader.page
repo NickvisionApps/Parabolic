@@ -2,119 +2,111 @@
 <page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" id="downloader" its:version="2.0" xml:lang="hi">
 <info>
 	<link type="guide" xref="index"/>
-	<title type="link">Downloader 🌐</title>
+	<title type="link">डाउनलोडर 🌐</title>
 	<credit type="author copyright">
-		<name>Nicholas Logozzo</name>
+		<name>निकोलस लोगोज़ो</name>
 		<years its:translate="no">2023</years>
 	</credit>
 	<credit type="publisher copyright">
-		<name>Nicholas Logozzo</name>
+		<name>निकोलस लोगोज़ो</name>
 		<years its:translate="no">2023</years>
 	</credit>
 	<license href="http://creativecommons.org/licenses/by/4.0/" its:translate="no"><p>Creative Commons Attribution 4.0 International License</p></license>
 </info>
 
-<title>Downloader</title>
-<p>This page explains all options for configuring the Downloader in Preferences in <app>Parabolic</app>.</p>
+<title>डाउनलोडर</title>
+<p>यह पृष्ठ <app>Parabolic</app> में प्राथमिकता में डाउनलोडर को कॉन्फ़िगर करने के सभी विकल्पों की व्याख्या करता है।</p>
 
 <terms>
     <item>
-        <title>Overwrite Existing Files</title>
-        <p>If enabled, Parabolic will overwrite existing files.</p>
-        <p>
-            For example, if a file named <code>movie.mp4</code> exists in the download folder, and a new download is created named <code>movie</code>, <code>movie.mp4</code> will be overwritten with the new download's content.
-        </p>
+        <title>मौजूदा फाइलें अधिलेखित करें</title>
+        <p>यदि सक्षम किया गया है, तो Parabolic मौजूदा फाइलों को अधिलेखित कर देगा।</p>
+        <p>उदाहरण के लिए, यदि <code>movie.mp4</code> नामक फाइल डाउनलोड फोल्डर में मौजूद है, और <code>movie</code> नामक एक नया डाउनलोड बनाया जाता है, तो <code>movie.mp4</code> होगा नए डाउनलोड की सामग्री के साथ अधिलेखित किया जाए।</p>
         <note style="advanced">
-            <p>Default: On</p>
+            <p>डिफ़ॉल्ट: चालू</p>
         </note>
     </item>
 	<item>
-		<title>Maximum Number of Active Downloads</title>
-		<p>The number of active downloads allowed to run at a time. Must be an integer value between 1 and 10.</p>
-        <p>If the max number of active downloads is reached, Parabolic will place new downloads in a queue until more downloads are able to be run.</p>
+		<title>सक्रिय डाउनलोड की अधिकतम संख्या</title>
+		<p>एक समय में चलने की अनुमति वाले सक्रिय डाउनलोड की संख्या। 1 और 10 के बीच पूर्णांक मान होना चाहिए।</p>
+        <p>यदि सक्रिय डाउनलोड की अधिकतम संख्या पहुंच जाती है, तो Parabolic नए डाउनलोड को एक कतार में रखेगा जब तक कि अधिक डाउनलोड चलाने में सक्षम न हो जाएं।</p>
 		<note style="advanced">
-			<p>Default: 5</p>
+			<p>डिफ़ॉल्ट: 5</p>
 		</note>
     </item>
     <item>
-        <title>Subtitles Languages</title>
-        <p>A comma-separated list of two-letter, two-letter with region, and three-letter language codes to use when selecting languages of subtitles to download. Only applies when downloading a video with subtitles.</p>
+        <title>उपशीर्षक भाषाएँ</title>
+        <p>डाउनलोड करने के लिए उपशीर्षक की भाषाओं का चयन करते समय उपयोग करने के लिए दो-अक्षर, क्षेत्र के साथ दो-अक्षर और तीन-अक्षर भाषा कोड की अल्पविराम से अलग की गई सूची। यह केवल उपशीर्षक के साथ वीडियो डाउनलोड करते समय लागू होता है।</p>
         <note>
-            <p>Different sites can use different language code formats for the same language. You may encounter one of the following three types: two-letter, two-letter with region, or three-letter. For example, "en", "en-US" and "eng" are all used for English. Please specify all valid codes for your languages for the best results. Auto-generated subtitles will also be downloaded if available.</p>
-            <p>You can specify "all" instead to download all subtitles, but without auto-generated ones.</p>
+            <p>अलग-अलग साइटें एक ही भाषा के लिए अलग-अलग भाषा कोड प्रारूपों का उपयोग कर सकती हैं। आपको निम्नलिखित तीन प्रकारों में से एक का सामना करना पड़ सकता है: दो-अक्षर, क्षेत्र के साथ दो-अक्षर, या तीन-अक्षर। उदाहरण के लिए, "en", "en-US" और "eng" सभी अंग्रेजी के लिए उपयोग किए जाते हैं। सर्वोत्तम परिणामों के लिए कृपया अपनी भाषाओं के लिए सभी मान्य कोड निर्दिष्ट करें। यदि उपलब्ध हो तो ऑटो-निर्मित उपशीर्षक भी डाउनलोड किए जाएंगे।</p>
+            <p>आप सभी उपशीर्षक डाउनलोड करने के लिए "सभी" निर्दिष्ट कर सकते हैं, लेकिन ऑटो-जनित उपशीर्षक के बिना।</p>
         </note>
         <note style="advanced">
-            <p>
-                Default: Your culture's language codes. For example, on an en-US system the default would be <code>en,en-US,eng</code>
-            </p>
+            <p>डिफ़ॉल्ट: आपकी संस्कृति के भाषा कोड। उदाहरण के लिए, en-US सिस्टम पर डिफ़ॉल्ट <code>en,en-US,eng</code> होगा</p>
         </note>
     </item>
     <item>
-        <title>Included Auto-Generated Subtitles</title>
-        <p>Whether or not to included subtitles that are auto-translated to fit the requested subtitle languages.</p>
+        <title>ऑटो-निर्मित उपशीर्षक शामिल हैं</title>
+        <p>क्या उन उपशीर्षकों को शामिल किया जाना चाहिए जो अनुरोधित उपशीर्षक भाषाओं में फिट होने के लिए स्वचालित रूप से अनुवादित हैं।</p>
         <note style="advanced">
-            <p>Default: On</p>
+            <p>डिफ़ॉल्ट: चालू</p>
         </note>
     </item>
     <item>
-        <title>Use aria2</title>
-        <p>If enabled, Parabolic will use aria2c to download media. Although using aria2c can improve download speed, download progress will not be displayed in the UI.</p>
+        <title>aria2 का प्रयोग करें</title>
+        <p>यदि सक्षम किया गया है, तो मीडिया डाउनलोड करने के लिए Parabolic aria2c का उपयोग करेगा। हालाँकि aria2c का उपयोग करने से डाउनलोड गति में सुधार हो सकता है, डाउनलोड प्रगति UI में प्रदर्शित नहीं होगी।</p>
         <note style="advanced">
-            <p>Default: Off</p>
+            <p>डिफ़ॉल्ट: बंद</p>
         </note>
     </item>
     <item>
-        <title>Maximum Connections Per Server</title>
-        <p>
-            This option only applies when using aria2 is enabled. This option is the same as the <code>-x</code> flag passed to aria2c.
-        </p>
-        <p>The maximum number of connection that can be used per server. Must be an integer value between 1 and 32.</p>
+        <title>प्रति सर्वर अधिकतम कनेक्शन</title>
+        <p>यह विकल्प केवल तभी लागू होता है जब aria2 का उपयोग सक्षम हो। यह विकल्प aria2c को दिए गए <code>-x</code> ध्वज के समान है।</p>
+        <p>प्रति सर्वर उपयोग किए जा सकने वाले कनेक्शन की अधिकतम संख्या. 1 और 32 के बीच एक पूर्णांक मान होना चाहिए।</p>
         <note style="advanced">
-            <p>Default: 16</p>
+            <p>डिफ़ॉल्ट: 16</p>
         </note>
     </item>
     <item>
-        <title>Minimum Split Size</title>
-        <p>
-            This option only applies when using aria2 is enabled. This option is the same as the <code>-k</code> flag passed to aria2c.
-        </p>
-        <p>The minimum size, in MiB, of which to split a file. Must be an integer value between 1 and 1024.</p>
+        <title>न्यूनतम विभाजन आकार</title>
+        <p>यह विकल्प केवल तभी लागू होता है जब aria2 का उपयोग सक्षम हो। यह विकल्प aria2c को दिए गए <code>-k</code> ध्वज के समान है।</p>
+        <p>किसी फाइल को विभाजित करने के लिए MiB में न्यूनतम आकार। 1 और 1024 के बीच एक पूर्णांक मान होना चाहिए।</p>
         <note style="advanced">
-            <p>Default: 20</p>
+            <p>डिफ़ॉल्ट: 20</p>
         </note>
     </item>
     <item>
-        <title>Speed Limit</title>
-        <p>A limit, in Ki/s, that is applied to downloads only if they have the advanced option <code>Speed Limit</code> enabled. Must be an integer value between 512 and 10240.</p>
+        <title>गति सीमा</title>
+        <p>Ki/s में एक सीमा, जो डाउनलोड पर केवल तभी लागू होती है जब उनके पास उन्नत विकल्प <code>स्पीड लिमिट</code> सक्षम हो। 512 और 10240 के बीच एक पूर्णांक मान होना चाहिए।</p>
 		<note style="advanced">
-			<p>Default: 1024</p>
+			<p>डिफ़ॉल्ट: 1024</p>
 		</note>
     </item>
     <item>
-        <title>Proxy URL</title>
-        <p>The url of the proxy server to use.</p>
+        <title>प्रॉक्सी URL</title>
+        <p>उपयोग करने के लिए प्रॉक्सी सर्वर का URL।</p>
     </item>
     <item>
-        <title>Cookies File</title>
-        <p>A .txt file of cookies to pass to yt-dlp when downloading. This may be useful when downloading media that requires a login, for example: private YouTube videos.</p>
-        <p>Use one of the following extensions for getting a cookies file from your browser:</p>
+        <title>कुकीज़ फाइल</title>
+        <p>डाउनलोड करते समय yt-dlp को पास करने के लिए कुकीज़ की एक .txt फाइल। यह उस मीडिया को डाउनलोड करते समय उपयोगी हो सकता है जिसके लिए लॉगिन की आवश्यकता होती है, उदाहरण के लिए: निजी YouTube वीडियो।</p>
+        <p>अपने ब्राउज़र से कुकीज़ फाइल प्राप्त करने के लिए निम्नलिखित एक्सटेंशन में से किसी एक का उपयोग करें:</p>
         <p>Chrome: <code>https://chrome.google.com/webstore/detail/get-cookiestxt-locally/cclelndahbckbenkjhflpdbgdldlbecc</code></p>
         <p>Firefox: <code>https://addons.mozilla.org/en-US/firefox/addon/cookies-txt/</code></p>
         <note>
-            <p>Use these extensions at your own risk.</p>
+            <p>इन एक्सटेंशन का उपयोग अपने जोखिम पर करें।</p>
         </note>
 		<note style="advanced">
-			<p>Default: No File Selected</p>
+			<p>डिफ़ॉल्ट: कोई फाइल चयनित नहीं</p>
 		</note>
     </item>
     <item>
-        <title>Use SponsorBlock for YouTube</title>
-        <p>If enabled, Parabolic will apply the SponsorBlock extension to YouTube downloads.</p>
+        <title>YouTube के लिए स्पॉन्सरब्लॉक का उपयोग करें</title>
+        <p>सक्षम होने पर, Parabolic YouTube डाउनलोड पर स्पॉन्सरब्लॉक एक्सटेंशन लागू करेगा।</p>
         <note>
-            <p>SponsorBlock only works on YouTube videos. However, leaving this setting on will not affect downloads from other sites (i.e. not cause them to fail).</p>
+            <p>स्पॉन्सरब्लॉक केवल YouTube वीडियो पर काम करता है। हालाँकि, इस सेटिंग को चालू रखने से अन्य साइटों से डाउनलोड प्रभावित नहीं होंगे (अर्थात वे विफल नहीं होंगे)।</p>
         </note>
         <note style="advanced">
-            <p>Default: Off</p>
+            <p>डिफ़ॉल्ट: बंद</p>
         </note>
     </item>
 </terms>
