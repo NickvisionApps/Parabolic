@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-12-06 13:46-0500\n"
-"PO-Revision-Date: 2023-11-30 20:03+0000\n"
-"Last-Translator: Tiago Lucas Flach <tiagolucas9830@gmail.com>\n"
+"PO-Revision-Date: 2024-04-28 01:07+0000\n"
+"Last-Translator: Murilo Monte <murillomonte086@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
 "nickvision-tube-converter/app/pt_BR/>\n"
 "Language: pt_BR\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 5.3-dev\n"
+"X-Generator: Weblate 5.5.1\n"
 
 #: ../../../Controllers/MainWindowController.cs:428
 #, csharp-format
@@ -214,8 +214,8 @@ msgid ""
 "Clear metadata fields containing the URL and other identifying information "
 "of the media source"
 msgstr ""
-"Limpe os campos de metadados que contêm a URL e outras informações de "
-"identificação da fonte de mídia"
+"Limpa os metadados que contêm URL e outras informações que identificam a "
+"fonte da mídia"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/MainWindow.xaml.cs:106
 #, fuzzy
@@ -455,7 +455,7 @@ msgstr "Baixar Legendas"
 
 #: ../../../Models/Download.cs:408
 msgid "Download using aria2 has started"
-msgstr "O download utilizando aria2 foi inciado"
+msgstr "Download utilizando aria2 em execução"
 
 #: ../../../Models/Download.cs:419
 msgid "Download using ffmpeg has started"
@@ -505,7 +505,7 @@ msgstr "Incorporar capítulos"
 #: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:107
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:352
 msgid "Embed Metadata"
-msgstr "Incorporar Metadados"
+msgstr "Incorporar metadados"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:121
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:391
@@ -650,8 +650,8 @@ msgid ""
 "If disabled or if embedding fails, downloaded subtitles will be saved to a "
 "separate file instead"
 msgstr ""
-"Se desativado ou se a incorporação falhar, as legendas baixadas serão salvas "
-"em um arquivo separado"
+"As legendas serão salvas em um arquivo separado caso não seja possível "
+"incorporar."
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:111
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:362
@@ -669,9 +669,9 @@ msgid ""
 "the selected quality without converting to other formats. (You will be "
 "unable to select a file format)"
 msgstr ""
-"Se ativado, o Parabolic fará o download do formato de vídeo/áudio apropriado "
-"para a qualidade selecionada. (Não será possível selecionar um formato do "
-"arquivo)"
+"O Parabolic fará o download do formato de vídeo/áudio apropriado para a "
+"qualidade selecionada. (Não será possível selecionar o formato do arquivo "
+"manualmente)"
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:53
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:31
@@ -685,7 +685,7 @@ msgstr ""
 #: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:73
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:140
 msgid "Include Auto-Generated Subtitles"
-msgstr "Incluir Legendas Geradas Automaticamente"
+msgstr "Incluir legendas geradas automaticamente"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:141
 #: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringPage.xaml.cs:44
@@ -770,9 +770,8 @@ msgid ""
 "Enabling this option will disable the use of aria2 as the downloader if it "
 "is enabled."
 msgstr ""
-"(É possível que a mídia seja cortada de forma incorreta)\n"
-"Ao habilitar essa opção, você desabilitará o uso do aria2 como gerenciador "
-"de downloads, se ele estiver habilitado."
+"É possível que a mídia seja cortada de forma incorreta.\n"
+"Habilitar essa opção irá desativar o aria2 caso esteja em uso."
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/AddDownloadDialog.cs:333
 #: ../../../../NickvisionTubeConverter.WinUI/Views/AddDownloadDialog.xaml.cs:46
@@ -1251,7 +1250,8 @@ msgstr ""
 msgid "translator-credits"
 msgstr ""
 "Lun3wi <lun3witch@gmail.com>\n"
-"Tiago Lucas Flach <tiagolucas9830@gmail.com>"
+"Tiago Lucas Flach <tiagolucas9830@gmail.com>\n"
+"Murilo Monte <murilomonte086@gmail.com>"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Views/KeyringDialog.cs:288
 #: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringPage.xaml.cs:150
@@ -1483,7 +1483,7 @@ msgstr "Preferências"
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:54
 msgid "Hide the window instead of quitting if there are downloads running."
-msgstr "Oculte a janela em vez de sair, se houver downloads em execução."
+msgstr "Minimiza a janela caso tenha downloads em execução."
 
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:92
 msgid "Limit Filename Characters"
