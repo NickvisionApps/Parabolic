@@ -22,12 +22,9 @@ public partial class App : Application
     {
         InitializeComponent();
         _controller = new MainWindowController(Array.Empty<string>());
-        _controller.AppInfo.Changelog = @"- Fixed an issue where split chapters were not renamed correctly
-- Fixed an issue where videos would not download greater than 1080p resolution
-- Fixed an issue where preferring AV1 codec would not properly select av1 videos 
-- Parabolic will now remember the chosen file type for generic downloads
-- Parabolic no longer depends on psutil
-- Redesigned the app's UI
+        _controller.AppInfo.Changelog = @"- Fixed an issue where the debug page showed psutil errors
+- Fixed an issue where an error notification would show the open file button
+- Updated yt-dlp to 2024.04.09
 - Updated translations (Thanks everyone on Weblate!)";
         if (_controller.Theme != Theme.System)
         {
