@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-12-06 13:46-0500\n"
-"PO-Revision-Date: 2024-04-16 11:48+0000\n"
-"Last-Translator: Michael McClurg <michael.mcclurg@outlook.com>\n"
+"PO-Revision-Date: 2024-06-13 13:09+0000\n"
+"Last-Translator: Simon Hahne <simonhahne@web.de>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/"
 "nickvision-tube-converter/app/de/>\n"
 "Language: de\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.5-dev\n"
+"X-Generator: Weblate 5.6-dev\n"
 
 #: ../../../Controllers/MainWindowController.cs:428
 #, csharp-format
@@ -351,7 +351,6 @@ msgstr ""
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/SettingsPage.xaml.cs:72
 #: NickvisionTubeConverter.GNOME/Blueprints/preferences_dialog.blp:129
-#, fuzzy
 msgid ""
 "Different sites can use different language code formats for the same "
 "language. You may encounter one of the following three types: two-letter, "
@@ -372,8 +371,9 @@ msgstr ""
 "Ergebnisse zu erzielen. Autogenerierte Untertitel werden heruntergeladen, "
 "wenn sie verfügbar sind.\n"
 "\n"
-"Du kannst \"all\" angeben um alle Untertitel herunterzuladen, die nicht "
-"autogeneriert wurden."
+"Du kannst \"all\" angeben um alle Untertitel, inklusive autogenerierten, "
+"herunterzuladen. Um keine autogenerierten Untertitel herunterzuladen, "
+"deaktiviere die Option unten."
 
 #: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringPage.xaml.cs:56
 #: ../../../../NickvisionTubeConverter.WinUI/Views/KeyringPage.xaml.cs:270
@@ -479,9 +479,9 @@ msgstr "Wird heruntergeladen"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:156
 #: ../../../../NickvisionTubeConverter.WinUI/Controls/DownloadRow.xaml.cs:115
-#, csharp-format, fuzzy
+#, csharp-format
 msgid "Downloading {0:f2}% ({1})"
-msgstr "Herunterladen: {0:f2}% ({1:N0} KiB/s)"
+msgstr "Wird heruntergeladen {0:f2}% ({1})"
 
 #: ../../../../NickvisionTubeConverter.GNOME/Controls/DownloadRow.cs:170
 #: ../../../../NickvisionTubeConverter.WinUI/Controls/DownloadRow.xaml.cs:120
