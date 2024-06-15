@@ -48,5 +48,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for details on how can you help the proje
 - [python](https://python.org/)
 - [yt-dlp (As python module)](https://github.com/yt-dlp/yt-dlp)
 
+Check out [developing on Linux](https://github.com/NickvisionApps/Parabolic/blob/main/CONTRIBUTING.md#developing-on-linux) and [Windows](https://github.com/NickvisionApps/Parabolic/blob/main/CONTRIBUTING.md#developing-on-windows).
+
 # Code of Conduct
 This project follows the [GNOME Code of Conduct](https://wiki.gnome.org/Foundation/CodeOfConduct).
