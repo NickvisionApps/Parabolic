@@ -1,0 +1,150 @@
+<Window
+	x:Class="Nickvision.TubeConverter.WinUI.MainWindow"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:local="using:Nickvision.TubeConverter.WinUI"
+    xmlns:nickvision="using:Nickvision.TubeConverter.WinUI.Controls"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	mc:Ignorable="d" Activated="OnActivated">
+    <Window.SystemBackdrop>
+        <MicaBackdrop/>
+    </Window.SystemBackdrop>
+
+	<Grid x:Name="MainGrid" AllowDrop="True" Loaded="OnLoaded">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <nickvision:TitleBar x:Name="TitleBar" Grid.Row="0"/>
+
+        <NavigationView x:Name="NavView" Grid.Row="1" IsBackButtonVisible="Collapsed" IsSettingsVisible="False" SelectionChanged="OnNavSelectionChanged">
+            <NavigationView.MenuItems>
+                <NavigationViewItem x:Name="NavViewHome" Tag="Home">
+                    <NavigationViewItem.Icon>
+                        <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE80F;"/>
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+            </NavigationView.MenuItems>
+
+            <NavigationView.FooterMenuItems>
+                <NavigationViewItem x:Name="NavViewHelp" SelectsOnInvoked="False" Tapped="OnNavViewItemTapped">
+                    <NavigationViewItem.Icon>
+                        <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE897;"/>
+                    </NavigationViewItem.Icon>
+
+                    <FlyoutBase.AttachedFlyout>
+                        <Flyout>
+                            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                                <StackPanel Orientation="Vertical" Spacing="12">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <StackPanel Grid.Column="0" Orientation="Vertical" Spacing="12">
+                                            <TextBlock x:Name="LblAppName" Style="{ThemeResource NavigationViewItemHeaderTextStyle}" FontSize="18"/>
+
+                                            <TextBlock x:Name="LblAppDescription" Foreground="Gray"/>
+                                        </StackPanel>
+
+                                        <StackPanel Grid.Column="2" VerticalAlignment="Top" Orientation="Horizontal" Spacing="6">
+                                            <Button x:Name="BtnCheckForUpdates" Style="{ThemeResource AccentButtonStyle}" Click="CheckForUpdates">
+                                                <Button.Content>
+                                                    <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" FontSize="14" Glyph="&#xE895;"/>
+                                                </Button.Content>
+                                            </Button>
+                                            
+                                            <Button x:Name="BtnCredits" Click="Credits">
+                                                <Button.Content>
+                                                    <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" FontSize="14" Glyph="&#xE716;"/>
+                                                </Button.Content>
+                                            </Button>
+
+                                            <Button x:Name="BtnCopyDebugInfo" Click="CopyDebugInformation">
+                                                <Button.Content>
+                                                    <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" FontSize="14" Glyph="&#xE90F;"/>
+                                                </Button.Content>
+                                            </Button>
+                                        </StackPanel>
+                                    </Grid>
+
+                                    <TextBlock x:Name="LblAppVersion"/>
+
+                                    <TextBlock x:Name="LblChangelog" Style="{ThemeResource NavigationViewItemHeaderTextStyle}"/>
+
+                                    <TextBlock x:Name="LblAppChangelog" TextWrapping="WrapWholeWords"/>
+
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <HyperlinkButton x:Name="BtnGitHubRepo" Grid.Column="0" Click="GitHubRepo"/>
+
+                                        <HyperlinkButton x:Name="BtnReportABug" Grid.Column="1" Click="ReportABug"/>
+
+                                        <HyperlinkButton x:Name="BtnDiscussions" Grid.Column="2" Click="Discussions"/>
+                                    </Grid>
+
+                                    <TextBlock x:Name="LblAppCopyright" Text="© Nickvision 2021-2024" Foreground="Gray"/>
+                                </StackPanel>
+                            </ScrollViewer>
+                        </Flyout>
+                    </FlyoutBase.AttachedFlyout>
+                </NavigationViewItem>
+
+                <NavigationViewItem x:Name="NavViewSettings" Tag="Settings">
+                    <NavigationViewItem.Icon>
+                        <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" Glyph="&#xE713;"/>
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+            </NavigationView.FooterMenuItems>
+
+            <Grid>
+                <nickvision:ViewStack x:Name="ViewStack">
+                    <nickvision:ViewStack.Pages>
+                        <nickvision:ViewStackPage PageName="Spinner">
+                            <ProgressRing HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </nickvision:ViewStackPage>
+
+                        <nickvision:ViewStackPage PageName="Custom">
+                            <Frame x:Name="FrameCustom"/>
+                        </nickvision:ViewStackPage>
+
+                        <nickvision:ViewStackPage PageName="Home">
+                            <nickvision:StatusPage x:Name="StatusPageHome" UseAppIcon="True">
+                                <nickvision:StatusPage.Child>
+                                    <Button HorizontalAlignment="Center" Style="{ThemeResource AccentButtonStyle}">
+                                        <Button.Content>
+                                            <StackPanel Orientation="Horizontal" Spacing="6">
+                                                <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" FontSize="16" Glyph="&#xE838;"/>
+
+                                                <TextBlock x:Name="HomeOpenFolderButtonLabel" TextWrapping="WrapWholeWords"/>
+                                            </StackPanel>
+                                        </Button.Content>
+
+                                        <Button.KeyboardAccelerators>
+                                            <KeyboardAccelerator Modifiers="Control" Key="O"/>
+                                        </Button.KeyboardAccelerators>
+                                    </Button>
+                                </nickvision:StatusPage.Child>
+                            </nickvision:StatusPage>
+                        </nickvision:ViewStackPage>
+                    </nickvision:ViewStack.Pages>
+                </nickvision:ViewStack>
+
+                <InfoBar x:Name="InfoBar" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,6" CornerRadius="12">
+                    <InfoBar.ActionButton>
+                        <Button x:Name="BtnInfoBar" HorizontalAlignment="Right"/>
+                    </InfoBar.ActionButton>
+                </InfoBar>
+            </Grid>
+        </NavigationView>
+    </Grid>
+</Window>

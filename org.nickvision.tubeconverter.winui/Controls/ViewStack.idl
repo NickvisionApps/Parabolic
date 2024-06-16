@@ -1,0 +1,12 @@
+namespace Nickvision.TubeConverter.WinUI.Controls
+{
+    [default_interface]
+    runtimeclass ViewStack : Microsoft.UI.Xaml.Controls.Frame
+    {
+        ViewStack();
+        static Microsoft.UI.Xaml.DependencyProperty PagesProperty{ get; };
+        String CurrentPage;
+        IObservableVector<Object> Pages{ get; };
+        event Windows.Foundation.EventHandler<String> PageChanged;
+    }
+}

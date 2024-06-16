@@ -1,0 +1,36 @@
+<UserControl
+    x:Class="Nickvision.TubeConverter.WinUI.SettingsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Nickvision.TubeConverter.WinUI"
+    xmlns:nickvision="using:Nickvision.TubeConverter.WinUI.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <Grid RowSpacing="12">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock x:Name="LblTitle" Grid.Row="0" Margin="40,24,40,0" Style="{ThemeResource NavigationViewItemHeaderTextStyle}" FontSize="26"/>
+
+        <ScrollView Grid.Row="1" VerticalScrollBarVisibility="Auto">
+            <StackPanel Margin="40,0,40,0" Orientation="Vertical" Spacing="6">
+                <TextBlock x:Name="LblAppearanceBehavior" Margin="0,12,0,0" Style="{StaticResource NavigationViewItemHeaderTextStyle}"/>
+
+                <nickvision:SettingsRow x:Name="RowTheme" Glyph="&#xE793;">
+                    <nickvision:SettingsRow.Child>
+                        <ComboBox x:Name="CmbTheme" SelectionChanged="OnCmbChanged"/>
+                    </nickvision:SettingsRow.Child>
+                </nickvision:SettingsRow>
+
+                <nickvision:SettingsRow x:Name="RowAutomaticallyCheckForUpdates" Glyph="&#xE117;">
+                    <nickvision:SettingsRow.Child>
+                        <ToggleSwitch x:Name="TglAutomaticallyCheckForUpdates" Toggled="OnSwitchToggled"/>
+                    </nickvision:SettingsRow.Child>
+                </nickvision:SettingsRow>
+            </StackPanel>
+        </ScrollView>
+    </Grid>
+</UserControl>

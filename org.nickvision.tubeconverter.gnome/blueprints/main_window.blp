@@ -1,0 +1,80 @@
+using Gtk 4.0;
+using Adw 1;
+
+menu mainMenu {
+  item(_("Preferences"), "win.preferences")
+  item(_("Keyboard Shortcuts"), "win.keyboardShortcuts")
+  item(_("About Parabolic"), "win.about")
+}
+
+Adw.ApplicationWindow root {
+  width-request: 360;
+  height-request: 200;
+
+  Adw.ToolbarView toolbarView {
+    [top]
+    Adw.HeaderBar headerBar {
+      title-widget: Adw.WindowTitle title {};
+      
+      [start]
+      Gtk.Button btnOpenFolder {
+        tooltip-text: _("Open Folder (Ctrl+O)");
+        visible: false;
+        action-name: "win.openFolder";
+        
+        Adw.ButtonContent {
+          label: _("Open");
+          icon-name: "folder-open-symbolic";
+        }
+      }
+      
+      [start]
+      Gtk.Button btnCloseFolder {
+        icon-name: "window-close-symbolic";
+        tooltip-text: _("Close Folder (Ctrl+W)");
+        action-name: "win.closeFolder";
+        visible: false;
+      }
+      
+      [end]
+      Gtk.MenuButton {
+        direction: none;
+        menu-model: mainMenu;
+        tooltip-text: _("Main Menu");
+        primary: true;
+      }
+    }
+
+    content: Adw.ToastOverlay toastOverlay {
+      hexpand: true;
+      vexpand: true;
+      
+      Adw.ViewStack viewStack {
+        Adw.ViewStackPage {
+          name: "NoFolder";
+          child: Adw.StatusPage pageGreeting {
+            icon-name: "org.nickvision.tubeconverter";
+            description: _("Open a folder (or drag one into the app) to get started");
+            child: Gtk.Button {
+              label: _("Open");
+              halign: center;
+              action-name: "win.openFolder";
+              styles ["pill", "suggested-action"]
+            };
+            
+            styles ["icon-dropshadow"]
+          };
+        }
+
+        Adw.ViewStackPage {
+          name: "Folder";
+          child: Adw.StatusPage pageFiles {
+            icon-name: "folder-documents-symbolic";
+
+            styles ["compact"]
+          };
+        }
+      }
+    };
+  }
+}

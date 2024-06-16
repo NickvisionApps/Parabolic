@@ -1,0 +1,10 @@
+namespace Nickvision.TubeConverter.WinUI.Controls
+{
+    [default_interface]
+    runtimeclass ViewStackPage : Microsoft.UI.Xaml.Controls.Frame
+    {
+        ViewStackPage();
+        static Microsoft.UI.Xaml.DependencyProperty PageNameProperty{ get; };
+        String PageName;
+    }
+}

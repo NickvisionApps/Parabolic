@@ -10,7 +10,7 @@ permissions:
   id-token: write
   contents: read
 jobs:
-  flatpak:
+  gnome-flatpak:
     name: "GNOME on Flatpak"
     runs-on: ubuntu-latest
     if: ${{ github.event.pull_request.user.login != 'weblate' }}
@@ -22,9 +22,7 @@ jobs:
         arch: [x86_64]
       fail-fast: false
     steps:
-      - uses: actions/checkout@v3
-        with:
-          submodules: recursive
+      - uses: actions/checkout@v4
       - uses: flatpak/flatpak-github-actions/flatpak-builder@v6.3
         with:
           bundle: org.nickvision.tubeconverter.flatpak

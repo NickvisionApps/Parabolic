@@ -1,77 +1,68 @@
 {
-    "app-id": "org.nickvision.tubeconverter",
-    "runtime": "org.gnome.Platform",
-    "runtime-version": "46",
-    "sdk": "org.gnome.Sdk",
-    "sdk-extensions": [
-        "org.freedesktop.Sdk.Extension.dotnet8"
-    ],
-    "build-options": {
-        "append-path": "/usr/lib/sdk/dotnet8/bin",
-        "append-ld-library-path": "/usr/lib/sdk/dotnet8/lib",
-        "append-pkg-config-path": "/usr/lib/sdk/dotnet8/lib/pkgconfig"
-    },
-    "command": "org.nickvision.tubeconverter",
-    "finish-args": [
+    "app-id" : "org.nickvision.tubeconverter",
+    "runtime" : "org.gnome.Platform",
+    "runtime-version" : "46",
+    "sdk" : "org.gnome.Sdk",
+    "command" : "org.nickvision.tubeconverter",
+    "finish-args":[
         "--socket=fallback-x11",
         "--socket=wayland",
         "--device=dri",
         "--share=ipc",
-        "--share=network",
-        "--talk-name=org.freedesktop.secrets",
-        "--filesystem=xdg-download"
+        "--talk-name=com.canonical.Unity"
     ],
-    "cleanup": [
-    	"/include",
-    	"/lib/pkgconfig",
-    	"*.a"
+    "cleanup":[
+        "/include",
+        "/lib/pkgconfig",
+        "*.a"
     ],
-    "modules": [
+    "modules" : [
         {
-            "name": "ffmpeg",
+            "name": "jsoncpp",
+            "buildsystem": "cmake-ninja",
+            "builddir": true,
             "config-opts": [
-                "--disable-debug",
-                "--disable-doc",
-                "--disable-static",
-                "--enable-gpl",
-                "--enable-shared",
-                "--disable-ffplay",
-                "--disable-devices",
-                "--enable-gnutls",
-                "--enable-libmp3lame",
-                "--enable-libopus",
-                "--enable-libvorbis"
-            ],
-            "cleanup": [
-                "/share/ffmpeg"
+                "-DCMAKE_BUILD_TYPE=Release"
             ],
             "sources": [
                 {
-                    "type": "archive",
-                    "url": "https://ffmpeg.org/releases/ffmpeg-7.0.tar.xz",
-                    "sha256": "4426a94dd2c814945456600c8adfc402bee65ec14a70e8c531ec9a2cd651da7b",
-                    "x-checker-data": {
-                        "type": "html",
-                        "url": "https://ffmpeg.org/releases/",
-                        "pattern": ">(ffmpeg-([\\d.]+)\\.tar\\.xz)<"
-                    }
+                    "type": "git",
+                    "url": "https://github.com/open-source-parsers/jsoncpp",
+                    "tag": "1.9.5"
                 }
             ]
         },
         {
-            "name": "aria2",
-            "config-opts": [
-                "--with-ca-bundle=/etc/ssl/certs/ca-certificates.crt"
+            "name": "maddy",
+            "buildsystem": "simple",
+            "build-commands": [
+                "mkdir -p /app/include/maddy",
+                "mv include/maddy/* /app/include/maddy"
             ],
             "sources": [
                 {
-                    "type": "archive",
-                    "url": "https://github.com/aria2/aria2/releases/download/release-1.37.0/aria2-1.37.0.tar.xz",
-                    "sha256": "60a420ad7085eb616cb6e2bdf0a7206d68ff3d37fb5a956dc44242eb2f79b66b"
+                    "type": "git",
+                    "url": "https://github.com/progsource/maddy",
+                    "tag": "1.3.0"
                 }
             ]
         },
-        "python3-modules.json",
+        {
+            "name": "libnick",
+            "buildsystem": "cmake-ninja",
+            "builddir": true,
+            "config-opts": [
+                "-DBUILD_TESTING=OFF",
+                "-DCMAKE_BUILD_TYPE=Release"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/nickvisionapps/libnick",
+                    "tag": "2024.6.6"
+                }
+            ]
+        },
         {
             "name": "blueprint-compiler",
             "buildsystem": "meson",
@@ -87,18 +78,31 @@
             ]
         },
         {
+            "name": "libxmlplusplus",
+            "buildsystem": "meson",
+            "config-opts": [
+                "-Dmaintainer-mode=false"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/libxmlplusplus/libxmlplusplus",
+                    "tag": "5.2.0"
+                }
+            ]
+        },
+        {
             "name": "org.nickvision.tubeconverter",
-            "buildsystem": "simple",
-            "build-commands": [
-                "chmod +x ./flatpak/build.sh",
-                "./flatpak/build.sh gnome"
+            "buildsystem": "cmake-ninja",
+            "builddir": true,
+            "config-opts": [
+                "-DCMAKE_BUILD_TYPE=Release"
             ],
             "sources": [
                 {
                     "type": "dir",
                     "path": ".."
-                },
-                "../NickvisionTubeConverter.GNOME/nuget-sources.json"
+                }
             ]
         }
     ]
