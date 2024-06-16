@@ -16,26 +16,6 @@ Adw.ApplicationWindow root {
     Adw.HeaderBar headerBar {
       title-widget: Adw.WindowTitle title {};
       
-      [start]
-      Gtk.Button btnOpenFolder {
-        tooltip-text: _("Open Folder (Ctrl+O)");
-        visible: false;
-        action-name: "win.openFolder";
-        
-        Adw.ButtonContent {
-          label: _("Open");
-          icon-name: "folder-open-symbolic";
-        }
-      }
-      
-      [start]
-      Gtk.Button btnCloseFolder {
-        icon-name: "window-close-symbolic";
-        tooltip-text: _("Close Folder (Ctrl+W)");
-        action-name: "win.closeFolder";
-        visible: false;
-      }
-      
       [end]
       Gtk.MenuButton {
         direction: none;
@@ -63,15 +43,6 @@ Adw.ApplicationWindow root {
             };
             
             styles ["icon-dropshadow"]
-          };
-        }
-
-        Adw.ViewStackPage {
-          name: "Folder";
-          child: Adw.StatusPage pageFiles {
-            icon-name: "folder-documents-symbolic";
-
-            styles ["compact"]
           };
         }
       }

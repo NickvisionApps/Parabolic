@@ -45,12 +45,6 @@ namespace Nickvision::TubeConverter::GNOME::Views
          */
         bool onCloseRequested();
         /**
-         * @brief Handles when a file is dropped on the window.
-         * @param value The GValue dropped on the window
-         * @return True if drop was accepted, else false
-         */
-        bool onDrop(const GValue* value);
-        /**
          * @brief Handles when a notification is sent to the window.
          * @param args Nickvision::Notifications::NotificationSentEventArgs 
          */
@@ -61,22 +55,9 @@ namespace Nickvision::TubeConverter::GNOME::Views
          */
         void onShellNotificationSent(const Nickvision::Notifications::ShellNotificationSentEventArgs& args);
         /**
-         * @brief Handles when the open folder is changed (including closed).
-         * @param args Nickvision::Events::EventArgs 
-         */
-        void onFolderChanged(const Nickvision::Events::EventArgs& args);
-        /**
          * @brief Quits the application. 
          */
         void quit();
-        /**
-         * @brief Opens a folder. 
-         */
-        void openFolder();
-        /**
-         * @brief Closes the folder if one is open. 
-         */
-        void closeFolder();
         /**
          * @brief Opens the application's preferences dialog. 
          */

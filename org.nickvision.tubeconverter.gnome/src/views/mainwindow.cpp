@@ -34,31 +34,15 @@ namespace Nickvision::TubeConverter::GNOME::Views
             gtk_widget_add_css_class(GTK_WIDGET(m_window), "devel");
         }
         adw_window_title_set_title(ADW_WINDOW_TITLE(gtk_builder_get_object(m_builder, "title")), m_controller->getAppInfo().getShortName().c_str());
-        adw_status_page_set_title(ADW_STATUS_PAGE(gtk_builder_get_object(m_builder, "pageGreeting")), m_controller->getGreeting().c_str());
         //Register Events
         g_signal_connect(m_window, "close_request", G_CALLBACK(+[](GtkWindow*, gpointer data) -> bool { return reinterpret_cast<MainWindow*>(data)->onCloseRequested(); }), this);
         m_controller->notificationSent() += [&](const NotificationSentEventArgs& args) { onNotificationSent(args); };
         m_controller->shellNotificationSent() += [&](const ShellNotificationSentEventArgs& args) { onShellNotificationSent(args); };
-        m_controller->folderChanged() += [&](const EventArgs& args) { onFolderChanged(args); };
-        //Drop Target
-        GtkDropTarget* dropTarget{ gtk_drop_target_new(G_TYPE_FILE, GDK_ACTION_COPY) };
-        g_signal_connect(dropTarget, "drop", G_CALLBACK(+[](GtkDropTarget*, const GValue* value, double, double, gpointer data) -> bool { return reinterpret_cast<MainWindow*>(data)->onDrop(value); }), this);
-        gtk_widget_add_controller(GTK_WIDGET(m_window), GTK_EVENT_CONTROLLER(dropTarget));
         //Quit Action
         GSimpleAction* actQuit{ g_simple_action_new("quit", nullptr) };
         g_signal_connect(actQuit, "activate", G_CALLBACK(+[](GSimpleAction*, GVariant*, gpointer data){ reinterpret_cast<MainWindow*>(data)->quit(); }), this);
         g_action_map_add_action(G_ACTION_MAP(m_window), G_ACTION(actQuit));
         SET_ACCEL_FOR_ACTION(m_app, "win.quit", "<Ctrl>Q");
-        //Open Folder Action
-        GSimpleAction* actOpenFolder{ g_simple_action_new("openFolder", nullptr) };
-        g_signal_connect(actOpenFolder, "activate", G_CALLBACK(+[](GSimpleAction*, GVariant*, gpointer data){ reinterpret_cast<MainWindow*>(data)->openFolder(); }), this);
-        g_action_map_add_action(G_ACTION_MAP(m_window), G_ACTION(actOpenFolder));
-        SET_ACCEL_FOR_ACTION(m_app, "win.openFolder", "<Ctrl>O");
-        //Close Folder Action
-        GSimpleAction* actCloseFolder{ g_simple_action_new("closeFolder", nullptr) };
-        g_signal_connect(actCloseFolder, "activate", G_CALLBACK(+[](GSimpleAction*, GVariant*, gpointer data){ reinterpret_cast<MainWindow*>(data)->closeFolder(); }), this);
-        g_action_map_add_action(G_ACTION_MAP(m_window), G_ACTION(actCloseFolder));
-        SET_ACCEL_FOR_ACTION(m_app, "win.closeFolder", "<Ctrl>W");
         //Preferences Action
         GSimpleAction* actPreferences{ g_simple_action_new("preferences", nullptr) };
         g_signal_connect(actPreferences, "activate", G_CALLBACK(+[](GSimpleAction*, GVariant*, gpointer data){ reinterpret_cast<MainWindow*>(data)->preferences(); }), this);
@@ -109,16 +93,6 @@ namespace Nickvision::TubeConverter::GNOME::Views
         return false;
     }
 
-    bool MainWindow::onDrop(const GValue* value)
-    {
-        if(G_VALUE_HOLDS(value, G_TYPE_FILE))
-        {
-            m_controller->openFolder(g_file_get_path(G_FILE(g_value_get_object(value))));
-            return true;
-        }
-        return false;
-    }
-
     void MainWindow::onNotificationSent(const NotificationSentEventArgs& args)
     {
         AdwToast* toast{ adw_toast_new(args.getMessage().c_str()) };
@@ -136,40 +110,12 @@ namespace Nickvision::TubeConverter::GNOME::Views
         ShellNotification::send(args, _("Open"));
     }
 
-    void MainWindow::onFolderChanged(const EventArgs& args)
-    {
-        adw_window_title_set_subtitle(ADW_WINDOW_TITLE(gtk_builder_get_object(m_builder, "title")), m_controller->isFolderOpened() ? m_controller->getFolderPath().c_str() : "");
-        gtk_widget_set_visible(GTK_WIDGET(gtk_builder_get_object(m_builder, "btnOpenFolder")), m_controller->isFolderOpened());
-        gtk_widget_set_visible(GTK_WIDGET(gtk_builder_get_object(m_builder, "btnCloseFolder")), m_controller->isFolderOpened());
-        adw_view_stack_set_visible_child_name(ADW_VIEW_STACK(gtk_builder_get_object(m_builder, "viewStack")), m_controller->isFolderOpened() ? "Folder" : "NoFolder");
-        adw_status_page_set_description(ADW_STATUS_PAGE(gtk_builder_get_object(m_builder, "pageFiles")), std::vformat(_n("There is {} file in the folder.", "There are {} files in the folder.", m_controller->getFiles().size()), std::make_format_args(CodeHelpers::unmove(m_controller->getFiles().size()))).c_str());
-    }
-
     void MainWindow::quit()
     {
         if(!onCloseRequested())
         {
             g_application_quit(G_APPLICATION(m_app));
         }
-    }
-
-    void MainWindow::openFolder()
-    {
-        GtkFileDialog* folderDialog{ gtk_file_dialog_new() };
-        gtk_file_dialog_set_title(folderDialog, _("Open Folder"));
-        gtk_file_dialog_select_folder(folderDialog, GTK_WINDOW(m_window), nullptr, GAsyncReadyCallback(+[](GObject* self, GAsyncResult* res, gpointer data)
-        {
-            GFile* folder{ gtk_file_dialog_select_folder_finish(GTK_FILE_DIALOG(self), res, nullptr) };
-            if(folder)
-            {
-                reinterpret_cast<MainWindow*>(data)->m_controller->openFolder(g_file_get_path(folder));
-            }
-        }), this);
-    }
-
-    void MainWindow::closeFolder()
-    {
-        m_controller->closeFolder();
     }
 
     void MainWindow::preferences()
