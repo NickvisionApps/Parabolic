@@ -96,11 +96,6 @@ namespace Nickvision::TubeConverter::GNOME::Views
     void MainWindow::onNotificationSent(const NotificationSentEventArgs& args)
     {
         AdwToast* toast{ adw_toast_new(args.getMessage().c_str()) };
-        if(args.getAction() == "close")
-        {
-            adw_toast_set_button_label(toast, _("Close"));
-            g_signal_connect(toast, "button-clicked", G_CALLBACK(+[](AdwToast*, gpointer data){ reinterpret_cast<MainWindow*>(data)->closeFolder(); }), this);
-        }
         adw_toast_overlay_add_toast(ADW_TOAST_OVERLAY(gtk_builder_get_object(m_builder, "toastOverlay")), toast);
     }
 
