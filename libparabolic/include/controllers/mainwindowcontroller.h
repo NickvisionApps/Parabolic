@@ -12,6 +12,7 @@
 #include <libnick/app/appinfo.h>
 #include <libnick/app/windowgeometry.h>
 #include <libnick/events/event.h>
+#include <libnick/events/parameventargs.h>
 #include <libnick/notifications/notificationsenteventargs.h>
 #include <libnick/notifications/shellnotificationsenteventargs.h>
 #include <libnick/taskbar/taskbaritem.h>
@@ -53,6 +54,11 @@ namespace Nickvision::TubeConverter::Shared::Controllers
          */
         Nickvision::App::WindowGeometry getWindowGeometry() const;
         /**
+         * @brief Sets whether or not to show the disclaimer on startup.
+         * @param showDisclaimerOnStartup True to show the disclaimer, else false
+         */
+        void setShowDisclaimerOnStartup(bool showDisclaimerOnStartup);
+        /**
          * @brief Gets the Saved event for the application's configuration.
          * @return The configuration Saved event
          */
@@ -67,6 +73,11 @@ namespace Nickvision::TubeConverter::Shared::Controllers
          * @return The shell notification sent event
          */
         Nickvision::Events::Event<Nickvision::Notifications::ShellNotificationSentEventArgs>& shellNotificationSent();
+        /**
+         * @brief Gets the event for when the disclaimer is triggered.
+         * @return The disclaimer triggered event
+         */
+        Nickvision::Events::Event<Nickvision::Events::ParamEventArgs<std::string>>& disclaimerTriggered();
         /**
          * @brief Gets the debugging information for the application.
          * @param extraInformation Extra, ui-specific, information to include in the debug info statement
@@ -125,6 +136,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         Nickvision::Taskbar::TaskbarItem m_taskbar;
         Nickvision::Events::Event<Nickvision::Notifications::NotificationSentEventArgs> m_notificationSent;
         Nickvision::Events::Event<Nickvision::Notifications::ShellNotificationSentEventArgs> m_shellNotificationSent;
+        Nickvision::Events::Event<Nickvision::Events::ParamEventArgs<std::string>> m_disclaimerTriggered;
     };
 }
 

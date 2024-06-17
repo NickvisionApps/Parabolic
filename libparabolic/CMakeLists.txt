@@ -5,7 +5,9 @@ endif()
 add_library(libparabolic
     "src/controllers/mainwindowcontroller.cpp"
     "src/controllers/preferencesviewcontroller.cpp"
-    "src/models/configuration.cpp")
+    "src/models/configuration.cpp"
+    "src/models/mediafiletype.cpp"
+    "src/models/videoresolution.cpp")
 target_include_directories(libparabolic PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/include")
 set_target_properties(libparabolic PROPERTIES VERSION "${PROJECT_VERSION}" SOVERSION "${PROJECT_VERSION}")
 if(MSVC)

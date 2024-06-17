@@ -53,6 +53,11 @@ namespace winrt::Nickvision::TubeConverter::WinUI::implementation
         TitleBar().AppWindow(AppWindow());
         //Localize Strings
         NavViewHome().Content(winrt::box_value(winrt::to_hstring(_("Home"))));
+        NavViewKeyring().Content(winrt::box_value(winrt::to_hstring(_("Keyring"))));
+        NavViewDownloads().Content(winrt::box_value(winrt::to_hstring(_("Downloads"))));
+        NavViewDownloading().Content(winrt::box_value(winrt::to_hstring(_("Downloading"))));
+        NavViewQueued().Content(winrt::box_value(winrt::to_hstring(_("Queued"))));
+        NavViewCompleted().Content(winrt::box_value(winrt::to_hstring(_("Completed"))));
         NavViewHelp().Content(winrt::box_value(winrt::to_hstring(_("Help"))));
         ToolTipService::SetToolTip(BtnCheckForUpdates(), winrt::box_value(winrt::to_hstring(_("Check for Updates"))));
         ToolTipService::SetToolTip(BtnCredits(), winrt::box_value(winrt::to_hstring(_("Credits"))));
@@ -61,9 +66,11 @@ namespace winrt::Nickvision::TubeConverter::WinUI::implementation
         BtnGitHubRepo().Content(winrt::box_value(winrt::to_hstring(_("GitHub Repo"))));
         BtnReportABug().Content(winrt::box_value(winrt::to_hstring(_("Report a Bug"))));
         BtnDiscussions().Content(winrt::box_value(winrt::to_hstring(_("Discussions"))));
+        NavViewHistory().Content(winrt::box_value(winrt::to_hstring(_("History"))));
         NavViewSettings().Content(winrt::box_value(winrt::to_hstring(_("Settings"))));
-        StatusPageHome().Description(winrt::to_hstring(_("Open a folder (or drag one into the app) to get started")));
-        HomeOpenFolderButtonLabel().Text(winrt::to_hstring(_("Open Folder")));
+        StatusPageHome().Title(winrt::to_hstring(_("Download Media")));
+        StatusPageHome().Description(winrt::to_hstring(_("Add a video, audio, or playlist URL to start downloading")));
+        HomeAddDownloadButtonLabel().Text(winrt::to_hstring(_("Add Download")));
     }
 
     void MainWindow::SetController(const std::shared_ptr<MainWindowController>& controller, ElementTheme systemTheme)
@@ -75,6 +82,7 @@ namespace winrt::Nickvision::TubeConverter::WinUI::implementation
         m_controller->configurationSaved() += [&](const EventArgs& args) { OnConfigurationSaved(args); };
         m_controller->notificationSent() += [&](const NotificationSentEventArgs& args) { OnNotificationSent(args); };
         m_controller->shellNotificationSent() += [&](const ShellNotificationSentEventArgs& args) { OnShellNotificationSent(args); };
+        m_controller->disclaimerTriggered() += [&](const ParamEventArgs<std::string>& args) { OnDisclaimerTriggered(args); };
         //Localize Strings
         TitleBar().Title(winrt::to_hstring(m_controller->getAppInfo().getShortName()));
         TitleBar().Subtitle(m_controller->isDevVersion() ? winrt::to_hstring(_("Preview")) : L"");
@@ -187,6 +195,30 @@ namespace winrt::Nickvision::TubeConverter::WinUI::implementation
     {
         Aura::getActive().getLogger().log(Logging::LogLevel::Debug, "ShellNotification sent. (" + args.getMessage() + ")");
         ShellNotification::send(args, m_hwnd);
+    }
+
+    Windows::Foundation::IAsyncAction MainWindow::OnDisclaimerTriggered(const ParamEventArgs<std::string>& args)
+    {
+        CheckBox chkShow;
+        chkShow.Content(winrt::box_value(winrt::to_hstring(_("Don't show this message again"))));
+        TextBlock txtContent;
+        txtContent.MaxWidth(400);
+        txtContent.TextWrapping(TextWrapping::WrapWholeWords);
+        txtContent.Text(winrt::to_hstring(args.getParam()));
+        StackPanel panel;
+        panel.Orientation(Orientation::Vertical);
+        panel.Spacing(6);
+        panel.Children().Append(txtContent);
+        panel.Children().Append(chkShow);
+        ContentDialog dialog;
+        dialog.Title(winrt::box_value(winrt::to_hstring(_("Disclaimer"))));
+        dialog.Content(panel);
+        dialog.CloseButtonText(winrt::to_hstring(_("Close")));
+        dialog.DefaultButton(ContentDialogButton::Close);
+        dialog.RequestedTheme(MainGrid().ActualTheme());
+        dialog.XamlRoot(MainGrid().XamlRoot());
+        co_await dialog.ShowAsync();
+        m_controller->setShowDisclaimerOnStartup(!chkShow.IsChecked().Value());
     }
 
     void MainWindow::OnNavSelectionChanged(const NavigationView& sender, const NavigationViewSelectionChangedEventArgs& args)

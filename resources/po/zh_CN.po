@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-06-16 12:21-0400\n"
+"POT-Creation-Date: 2024-06-17 12:53-0400\n"
 "PO-Revision-Date: 2024-02-15 17:02+0000\n"
 "Last-Translator: valigarmanda <valigarmanda55@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
@@ -49,15 +49,29 @@ msgstr "David Lapshin"
 msgid "translator-credits"
 msgstr "感谢翻译者"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:182
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:168
+msgid ""
+"The authors of Nickvision Parabolic are not responsible/liable for any "
+"misuse of this program that may violate local copyright/DMCA laws. Users use "
+"this application at their own risk."
+msgstr ""
+"Nickvision Parabolic 的作者不对任何可能违反当地版权/DMCA法律的滥用本程序的行"
+"为负责. 用户使用此应用程序的风险自负."
+
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:197
 #, fuzzy
 msgid "New update available"
 msgstr "有新的版本可更新"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:214
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:229
 #, fuzzy
 msgid "Unable to download and install update"
 msgstr "无法下载和安装更新."
+
+#: libparabolic/src/models/videoresolution.cpp:19
+#: libparabolic/src/models/videoresolution.cpp:57
+msgid "Best"
+msgstr "最好"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:5
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:8
@@ -74,30 +88,24 @@ msgstr "快捷键"
 msgid "About Parabolic"
 msgstr "关于 Parabolic"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:21
-#, fuzzy
-msgid "Open Folder (Ctrl+O)"
-msgstr "打开文件夹"
-
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:26
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:59
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:136
-#, fuzzy
-msgid "Open"
-msgstr "打开文件"
-
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:34
-msgid "Close Folder (Ctrl+W)"
-msgstr ""
-
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:43
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:23
 msgid "Main Menu"
 msgstr "主菜单"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:57
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:65
-msgid "Open a folder (or drag one into the app) to get started"
-msgstr ""
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:37
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:71
+msgid "Download Media"
+msgstr "下载媒体"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:38
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:72
+msgid "Add a video, audio, or playlist URL to start downloading"
+msgstr "添加视频, 音频或播放列表 URL 以开始下载"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:40
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:73
+msgid "Add Download"
+msgstr "添加下载"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:12
 msgid "User Interface"
@@ -133,8 +141,6 @@ msgid "Folder"
 msgstr "打开文件夹"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/shortcuts_dialog.blp:16
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:159
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:66
 msgid "Open Folder"
 msgstr "打开文件夹"
 
@@ -158,19 +164,29 @@ msgstr "应用程序"
 msgid "Quit"
 msgstr "退出"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:127
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:266
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:106
+#, fuzzy
+msgid "Open"
+msgstr "打开文件"
+
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:111
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:214
+msgid "Disclaimer"
+msgstr "免责声明"
+
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:112
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:203
+msgid "Don't show this message again"
+msgstr "不再显示此消息"
+
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:113
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:216
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:298
 msgid "Close"
 msgstr "关闭"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:145
-msgid "There is {} file in the folder."
-msgid_plural "There are {} files in the folder."
-msgstr[0] ""
-msgstr[1] ""
-
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:209
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:61
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:166
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:66
 msgid "GitHub Repo"
 msgstr "GitHub 仓库"
 
@@ -185,55 +201,79 @@ msgid "Home"
 msgstr "主页"
 
 #: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:56
+msgid "Keyring"
+msgstr "密钥环"
+
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:57
+msgid "Downloads"
+msgstr "下载"
+
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:58
+msgid "Downloading"
+msgstr "下载中"
+
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:59
+msgid "Queued"
+msgstr "已加入队列"
+
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:60
+msgid "Completed"
+msgstr "已完成"
+
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:61
 msgid "Help"
 msgstr "帮助"
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:57
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:62
 msgid "Check for Updates"
 msgstr "检查更新"
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:58
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:257
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:63
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:289
 msgid "Credits"
 msgstr "感谢"
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:59
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:64
 msgid "Copy Debug Information"
 msgstr "复制调试信息"
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:60
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:65
 msgid "Changelog"
 msgstr "更新日志"
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:62
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:67
 msgid "Report a Bug"
 msgstr "报告问题"
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:63
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:68
 msgid "Discussions"
 msgstr "讨论"
 
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:69
+msgid "History"
+msgstr "历史"
+
 #. Localize Strings
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:64
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:70
 #: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:19
 msgid "Settings"
 msgstr "设置"
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:80
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:88
 msgid "Preview"
 msgstr ""
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:178
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:186
 msgid "Update"
 msgstr "更新"
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:235
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:267
 #, fuzzy
 msgid "Debug information copied to clipboard."
 msgstr "下载日志已复制到剪贴板."
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:260
-#, fuzzy
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:292
+#, fuzzy, c++-format
 msgid ""
 "Developers:\n"
 "{}\n"
@@ -254,8 +294,8 @@ msgstr ""
 "翻译者:\n"
 "{3}"
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:264
-#, fuzzy
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:296
+#, fuzzy, c++-format
 msgid ""
 "Developers:\n"
 "{}\n"
@@ -293,6 +333,10 @@ msgstr "开启"
 #: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:27
 msgid "Off"
 msgstr "关闭"
+
+#, fuzzy
+#~ msgid "Open Folder (Ctrl+O)"
+#~ msgstr "打开文件夹"
 
 #, fuzzy
 #~ msgid "Folder"
@@ -355,12 +399,6 @@ msgstr "关闭"
 #~ msgid "Add a login to get started."
 #~ msgstr "添加登录即可开始."
 
-#~ msgid "Add a video, audio, or playlist URL to start downloading"
-#~ msgstr "添加视频, 音频或播放列表 URL 以开始下载"
-
-#~ msgid "Add Download"
-#~ msgstr "添加下载"
-
 #~ msgid "Add Login"
 #~ msgstr "添加登录"
 
@@ -388,9 +426,6 @@ msgstr "关闭"
 #~ msgid "Back"
 #~ msgstr "后退"
 
-#~ msgid "Best"
-#~ msgstr "最好"
-
 #~ msgid "Cancel"
 #~ msgstr "取消"
 
@@ -416,9 +451,6 @@ msgstr "关闭"
 
 #~ msgid "Comma separated list"
 #~ msgstr "用逗号分隔"
-
-#~ msgid "Completed"
-#~ msgstr "已完成"
 
 #~ msgid "Completed Notification Trigger"
 #~ msgstr "已完成通知触发器"
@@ -494,14 +526,8 @@ msgstr "关闭"
 #~ msgid "Disallow Conversions"
 #~ msgstr "禁用转换"
 
-#~ msgid "Disclaimer"
-#~ msgstr "免责声明"
-
 #~ msgid "Documentation"
 #~ msgstr "文档"
-
-#~ msgid "Don't show this message again"
-#~ msgstr "不再显示此消息"
 
 #~ msgid "Download"
 #~ msgstr "下载"
@@ -514,9 +540,6 @@ msgstr "关闭"
 
 #~ msgid "Download Finished With Error"
 #~ msgstr "下载完成, 但有错误"
-
-#~ msgid "Download Media"
-#~ msgstr "下载媒体"
 
 #~ msgid "Download Specific Timeframe"
 #~ msgstr "下载特定时间段"
@@ -533,18 +556,12 @@ msgstr "关闭"
 #~ msgid "Downloader"
 #~ msgstr "下载器"
 
-#~ msgid "Downloading"
-#~ msgstr "下载中"
-
 #, csharp-format
 #~ msgid "Downloading {0:f2}% ({1})"
 #~ msgstr "下载中 {0:f2}% ({1})"
 
 #~ msgid "Downloading..."
 #~ msgstr "下载中..."
-
-#~ msgid "Downloads"
-#~ msgstr "下载"
 
 #~ msgid "Downloads Finished"
 #~ msgstr "下载完成"
@@ -620,9 +637,6 @@ msgstr "关闭"
 #~ msgid "Firefox"
 #~ msgstr "Firefox"
 
-#~ msgid "History"
-#~ msgstr "历史"
-
 #~ msgid ""
 #~ "If disabled or if embedding fails, downloaded subtitles will be saved to "
 #~ "a separate file instead"
@@ -648,9 +662,6 @@ msgstr "关闭"
 
 #~ msgid "Include Auto-Generated Subtitles"
 #~ msgstr "包括自动生成的字幕"
-
-#~ msgid "Keyring"
-#~ msgstr "密钥环"
 
 #~ msgid "Keyring Credential"
 #~ msgstr "密钥环凭证"
@@ -794,9 +805,6 @@ msgstr "关闭"
 #~ msgid "Quality"
 #~ msgstr "质量"
 
-#~ msgid "Queued"
-#~ msgstr "已加入队列"
-
 #~ msgid "Remove Source Data"
 #~ msgstr "删除源数据"
 
@@ -890,14 +898,6 @@ msgstr "关闭"
 
 #~ msgid "Success"
 #~ msgstr "成功"
-
-#~ msgid ""
-#~ "The authors of Nickvision Parabolic are not responsible/liable for any "
-#~ "misuse of this program that may violate local copyright/DMCA laws. Users "
-#~ "use this application at their own risk."
-#~ msgstr ""
-#~ "Nickvision Parabolic 的作者不对任何可能违反当地版权/DMCA法律的滥用本程序的"
-#~ "行为负责. 用户使用此应用程序的风险自负."
 
 #~ msgid "The minimum size of which to split a file (in MiB)."
 #~ msgstr "要拆分文件的最小大小 (以MiB为单位)."

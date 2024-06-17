@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-06-16 12:21-0400\n"
+"POT-Creation-Date: 2024-06-17 12:53-0400\n"
 "PO-Revision-Date: 2023-12-07 03:34+0000\n"
 "Last-Translator: Fjuro <ifjuro@proton.me>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -48,15 +48,30 @@ msgstr "David Lapshin"
 msgid "translator-credits"
 msgstr "Jonáš Loskot <jonas.loskot@pm.me>, 2023"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:182
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:168
+msgid ""
+"The authors of Nickvision Parabolic are not responsible/liable for any "
+"misuse of this program that may violate local copyright/DMCA laws. Users use "
+"this application at their own risk."
+msgstr ""
+"Autoři aplikace Nickvision Parabolic nenesou odpovědnost za jakékoli "
+"zneužití tohoto programu, které může porušovat místní zákony o autorských "
+"právech/DMCA. Uživatelé používají tuto aplikaci na vlastní nebezpečí."
+
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:197
 #, fuzzy
 msgid "New update available"
 msgstr "Je dostupná nová aktualizace."
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:214
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:229
 #, fuzzy
 msgid "Unable to download and install update"
 msgstr "Nepodařilo se stáhnout a nainstalovat aktualizaci."
+
+#: libparabolic/src/models/videoresolution.cpp:19
+#: libparabolic/src/models/videoresolution.cpp:57
+msgid "Best"
+msgstr "Nejlepší"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:5
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:8
@@ -73,30 +88,24 @@ msgstr "Klávesové zkratky"
 msgid "About Parabolic"
 msgstr "O aplikaci Parabolic"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:21
-#, fuzzy
-msgid "Open Folder (Ctrl+O)"
-msgstr "Otevřít složku"
-
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:26
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:59
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:136
-#, fuzzy
-msgid "Open"
-msgstr "Otevřít soubor"
-
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:34
-msgid "Close Folder (Ctrl+W)"
-msgstr ""
-
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:43
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:23
 msgid "Main Menu"
 msgstr "Hlavní nabídka"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:57
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:65
-msgid "Open a folder (or drag one into the app) to get started"
-msgstr ""
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:37
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:71
+msgid "Download Media"
+msgstr "Stáhnout média"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:38
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:72
+msgid "Add a video, audio, or playlist URL to start downloading"
+msgstr "Pro spuštění stahování přidejte adresu URL videa, zvuku nebo playlistu"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:40
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:73
+msgid "Add Download"
+msgstr "Přidat stahování"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:12
 msgid "User Interface"
@@ -132,8 +141,6 @@ msgid "Folder"
 msgstr "Otevřít složku"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/shortcuts_dialog.blp:16
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:159
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:66
 msgid "Open Folder"
 msgstr "Otevřít složku"
 
@@ -157,20 +164,29 @@ msgstr "Aplikace"
 msgid "Quit"
 msgstr "Opustit"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:127
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:266
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:106
+#, fuzzy
+msgid "Open"
+msgstr "Otevřít soubor"
+
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:111
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:214
+msgid "Disclaimer"
+msgstr "Upozornění"
+
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:112
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:203
+msgid "Don't show this message again"
+msgstr "Tuto zprávu již nezobrazovat"
+
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:113
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:216
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:298
 msgid "Close"
 msgstr "Zavřít"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:145
-msgid "There is {} file in the folder."
-msgid_plural "There are {} files in the folder."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:209
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:61
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:166
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:66
 msgid "GitHub Repo"
 msgstr "Repozitář GitHub"
 
@@ -185,55 +201,79 @@ msgid "Home"
 msgstr "Domů"
 
 #: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:56
+msgid "Keyring"
+msgstr "Klíčenka"
+
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:57
+msgid "Downloads"
+msgstr "Stažené"
+
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:58
+msgid "Downloading"
+msgstr "Stahování"
+
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:59
+msgid "Queued"
+msgstr "Ve frontě"
+
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:60
+msgid "Completed"
+msgstr "Dokončeno"
+
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:61
 msgid "Help"
 msgstr "Nápověda"
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:57
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:62
 msgid "Check for Updates"
 msgstr "Zkontrolovat aktualizace"
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:58
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:257
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:63
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:289
 msgid "Credits"
 msgstr "Zásluhy"
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:59
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:64
 msgid "Copy Debug Information"
 msgstr "Kopírovat informace o ladění"
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:60
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:65
 msgid "Changelog"
 msgstr "Seznam změn"
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:62
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:67
 msgid "Report a Bug"
 msgstr "Nahlásit chybu"
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:63
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:68
 msgid "Discussions"
 msgstr "Diskuze"
 
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:69
+msgid "History"
+msgstr "Historie"
+
 #. Localize Strings
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:64
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:70
 #: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:19
 msgid "Settings"
 msgstr "Nastavení"
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:80
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:88
 msgid "Preview"
 msgstr ""
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:178
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:186
 msgid "Update"
 msgstr "Aktualizovat"
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:235
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:267
 #, fuzzy
 msgid "Debug information copied to clipboard."
 msgstr "Protokol stahování byl zkopírován do schránky."
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:260
-#, fuzzy
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:292
+#, fuzzy, c++-format
 msgid ""
 "Developers:\n"
 "{}\n"
@@ -254,8 +294,8 @@ msgstr ""
 "Přeložili:\n"
 "{3}"
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:264
-#, fuzzy
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:296
+#, fuzzy, c++-format
 msgid ""
 "Developers:\n"
 "{}\n"
@@ -293,6 +333,10 @@ msgstr "Zapnuto"
 #: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:27
 msgid "Off"
 msgstr "Vypnuto"
+
+#, fuzzy
+#~ msgid "Open Folder (Ctrl+O)"
+#~ msgstr "Otevřít složku"
 
 #~ msgctxt "Night"
 #~ msgid "Good Morning!"
@@ -380,13 +424,6 @@ msgstr "Vypnuto"
 #~ msgid "Add a login to get started."
 #~ msgstr "Začněte tím, že se přihlásíte."
 
-#~ msgid "Add a video, audio, or playlist URL to start downloading"
-#~ msgstr ""
-#~ "Pro spuštění stahování přidejte adresu URL videa, zvuku nebo playlistu"
-
-#~ msgid "Add Download"
-#~ msgstr "Přidat stahování"
-
 #~ msgid "Add Login"
 #~ msgstr "Přidat přihlášení"
 
@@ -413,9 +450,6 @@ msgstr "Vypnuto"
 
 #~ msgid "Back"
 #~ msgstr "Zpět"
-
-#~ msgid "Best"
-#~ msgstr "Nejlepší"
 
 #~ msgid "Cancel"
 #~ msgstr "Zrušit"
@@ -444,9 +478,6 @@ msgstr "Vypnuto"
 
 #~ msgid "Comma separated list"
 #~ msgstr "Seznam oddělený čárkami"
-
-#~ msgid "Completed"
-#~ msgstr "Dokončeno"
 
 #~ msgid "Completed Notification Trigger"
 #~ msgstr "Oznámení o dokončení"
@@ -528,14 +559,8 @@ msgstr "Vypnuto"
 #~ msgid "Disallow Conversions"
 #~ msgstr "Zakázat převody"
 
-#~ msgid "Disclaimer"
-#~ msgstr "Upozornění"
-
 #~ msgid "Documentation"
 #~ msgstr "Dokumentace"
-
-#~ msgid "Don't show this message again"
-#~ msgstr "Tuto zprávu již nezobrazovat"
 
 #~ msgid "Download"
 #~ msgstr "Stáhnout"
@@ -548,9 +573,6 @@ msgstr "Vypnuto"
 
 #~ msgid "Download Finished With Error"
 #~ msgstr "Stahování dokončeno s chybou"
-
-#~ msgid "Download Media"
-#~ msgstr "Stáhnout média"
 
 #~ msgid "Download Specific Timeframe"
 #~ msgstr "Stáhnout konkrétní časový úsek"
@@ -567,18 +589,12 @@ msgstr "Vypnuto"
 #~ msgid "Downloader"
 #~ msgstr "Stahování"
 
-#~ msgid "Downloading"
-#~ msgstr "Stahování"
-
 #, csharp-format
 #~ msgid "Downloading {0:f2}% ({1})"
 #~ msgstr "Stahování {0:f2}% ({1})"
 
 #~ msgid "Downloading..."
 #~ msgstr "Stahování..."
-
-#~ msgid "Downloads"
-#~ msgstr "Stažené"
 
 #~ msgid "Downloads Finished"
 #~ msgstr "Stahování dokončena"
@@ -656,9 +672,6 @@ msgstr "Vypnuto"
 #~ msgid "Firefox"
 #~ msgstr "Firefox"
 
-#~ msgid "History"
-#~ msgstr "Historie"
-
 #~ msgid ""
 #~ "If disabled or if embedding fails, downloaded subtitles will be saved to "
 #~ "a separate file instead"
@@ -691,9 +704,6 @@ msgstr "Vypnuto"
 
 #~ msgid "Include Auto-Generated Subtitles"
 #~ msgstr "Zahrnout automaticky generované titulky"
-
-#~ msgid "Keyring"
-#~ msgstr "Klíčenka"
 
 #~ msgid "Keyring Credential"
 #~ msgstr "Údaj klíčenky"
@@ -840,9 +850,6 @@ msgstr "Vypnuto"
 #~ msgid "Quality"
 #~ msgstr "Kvalita"
 
-#~ msgid "Queued"
-#~ msgstr "Ve frontě"
-
 #~ msgid "Remove Source Data"
 #~ msgstr "Odebrat zdrojová data"
 
@@ -936,15 +943,6 @@ msgstr "Vypnuto"
 
 #~ msgid "Success"
 #~ msgstr "Úspěch"
-
-#~ msgid ""
-#~ "The authors of Nickvision Parabolic are not responsible/liable for any "
-#~ "misuse of this program that may violate local copyright/DMCA laws. Users "
-#~ "use this application at their own risk."
-#~ msgstr ""
-#~ "Autoři aplikace Nickvision Parabolic nenesou odpovědnost za jakékoli "
-#~ "zneužití tohoto programu, které může porušovat místní zákony o autorských "
-#~ "právech/DMCA. Uživatelé používají tuto aplikaci na vlastní nebezpečí."
 
 #~ msgid "The minimum size of which to split a file (in MiB)."
 #~ msgstr "Minimální velikost, na kterou má být soubor rozdělen (v MiB)."

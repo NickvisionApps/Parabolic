@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-06-16 12:22-0400\n"
+"POT-Creation-Date: 2024-06-17 12:53-0400\n"
 "PO-Revision-Date: 2024-06-12 11:11+0000\n"
 "Last-Translator: Philip Goto <philip.goto@gmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -48,14 +48,29 @@ msgstr "David Lapshin"
 msgid "translator-credits"
 msgstr "Philip Goto https://philipgoto.nl/"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:182
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:168
+msgid ""
+"The authors of Nickvision Parabolic are not responsible/liable for any "
+"misuse of this program that may violate local copyright/DMCA laws. Users use "
+"this application at their own risk."
+msgstr ""
+"De auteurs van Nickvision Parabolic zijn niet verantwoordelijk/aansprakelijk "
+"voor enig misbruik van deze app dat lokale auteursrecht-/DMCA-wetgeving kan "
+"schenden. Gebruikers gebruiken deze app op eigen risico."
+
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:197
 #, fuzzy
 msgid "New update available"
 msgstr "Updates beschikbaar"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:214
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:229
 msgid "Unable to download and install update"
 msgstr ""
+
+#: libparabolic/src/models/videoresolution.cpp:19
+#: libparabolic/src/models/videoresolution.cpp:57
+msgid "Best"
+msgstr "Best"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:5
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:8
@@ -72,30 +87,25 @@ msgstr "Sneltoetsen"
 msgid "About Parabolic"
 msgstr "Over Parabolic"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:21
-#, fuzzy
-msgid "Open Folder (Ctrl+O)"
-msgstr "Map openen"
-
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:26
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:59
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:136
-#, fuzzy
-msgid "Open"
-msgstr "Bestand openen"
-
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:34
-msgid "Close Folder (Ctrl+W)"
-msgstr ""
-
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:43
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:23
 msgid "Main Menu"
 msgstr "Hoofdmenu"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:57
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:65
-msgid "Open a folder (or drag one into the app) to get started"
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:37
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:71
+msgid "Download Media"
+msgstr "Media downloaden"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:38
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:72
+msgid "Add a video, audio, or playlist URL to start downloading"
 msgstr ""
+"Voeg een URL van een video, audio, of een playlist toe om te downloaden"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:40
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:73
+msgid "Add Download"
+msgstr "Download toevoegen"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:12
 msgid "User Interface"
@@ -131,8 +141,6 @@ msgid "Folder"
 msgstr "Map openen"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/shortcuts_dialog.blp:16
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:159
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:66
 msgid "Open Folder"
 msgstr "Map openen"
 
@@ -156,19 +164,29 @@ msgstr "App"
 msgid "Quit"
 msgstr "Afsluiten"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:127
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:266
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:106
+#, fuzzy
+msgid "Open"
+msgstr "Bestand openen"
+
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:111
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:214
+msgid "Disclaimer"
+msgstr "Vrij­waring"
+
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:112
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:203
+msgid "Don't show this message again"
+msgstr ""
+
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:113
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:216
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:298
 msgid "Close"
 msgstr "Sluiten"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:145
-msgid "There is {} file in the folder."
-msgid_plural "There are {} files in the folder."
-msgstr[0] ""
-msgstr[1] ""
-
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:209
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:61
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:166
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:66
 msgid "GitHub Repo"
 msgstr "GitHub-repo"
 
@@ -183,55 +201,80 @@ msgid "Home"
 msgstr "Start"
 
 #: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:56
+msgid "Keyring"
+msgstr "Sleutelbos"
+
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:57
+msgid "Downloads"
+msgstr "Downloads"
+
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:58
+msgid "Downloading"
+msgstr "Downloaden"
+
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:59
+msgid "Queued"
+msgstr "In wachtrij"
+
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:60
+msgid "Completed"
+msgstr "Voltooid"
+
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:61
 msgid "Help"
 msgstr "Hulp"
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:57
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:62
 msgid "Check for Updates"
 msgstr "Controleren op updates"
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:58
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:257
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:63
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:289
 msgid "Credits"
 msgstr "Dank­betuigingen"
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:59
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:64
 #, fuzzy
 msgid "Copy Debug Information"
 msgstr "Cookies-bestand-informatie"
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:60
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:65
 msgid "Changelog"
 msgstr "Wijzigingslogboek"
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:62
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:67
 msgid "Report a Bug"
 msgstr "Fout melden"
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:63
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:68
 msgid "Discussions"
 msgstr "Discussies"
 
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:69
+msgid "History"
+msgstr "Geschiedenis"
+
 #. Localize Strings
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:64
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:70
 #: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:19
 msgid "Settings"
 msgstr "Instellingen"
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:80
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:88
 msgid "Preview"
 msgstr ""
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:178
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:186
 msgid "Update"
 msgstr "Bij­werken"
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:235
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:267
 #, fuzzy
 msgid "Debug information copied to clipboard."
 msgstr "Downloadlogboek gekopieerd naar klembord"
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:260
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:292
+#, c++-format
 msgid ""
 "Developers:\n"
 "{}\n"
@@ -241,7 +284,8 @@ msgid ""
 "{}"
 msgstr ""
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:264
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:296
+#, c++-format
 msgid ""
 "Developers:\n"
 "{}\n"
@@ -268,6 +312,10 @@ msgstr "Aan"
 #: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:27
 msgid "Off"
 msgstr "Uit"
+
+#, fuzzy
+#~ msgid "Open Folder (Ctrl+O)"
+#~ msgstr "Map openen"
 
 #, csharp-format
 #~ msgid "\"{0}\" has finished downloading."
@@ -322,13 +370,6 @@ msgstr "Uit"
 #~ msgid "Add a login to get started."
 #~ msgstr "Voeg een download toe om te beginnen"
 
-#~ msgid "Add a video, audio, or playlist URL to start downloading"
-#~ msgstr ""
-#~ "Voeg een URL van een video, audio, of een playlist toe om te downloaden"
-
-#~ msgid "Add Download"
-#~ msgstr "Download toevoegen"
-
 #~ msgid "Add Login"
 #~ msgstr "Login toevoegen"
 
@@ -353,9 +394,6 @@ msgstr "Uit"
 #~ msgid "Back"
 #~ msgstr "Terug"
 
-#~ msgid "Best"
-#~ msgstr "Best"
-
 #~ msgid "Cancel"
 #~ msgstr "Annuleren"
 
@@ -376,9 +414,6 @@ msgstr "Uit"
 
 #~ msgid "Comma separated list"
 #~ msgstr "Door komma's gescheiden likst"
-
-#~ msgid "Completed"
-#~ msgstr "Voltooid"
 
 #~ msgid "Completed Notification Trigger"
 #~ msgstr "Meldingen bij voltooide downloads"
@@ -422,9 +457,6 @@ msgstr "Uit"
 #~ msgid "Disallow Conversions"
 #~ msgstr "Conversie uitschakelen"
 
-#~ msgid "Disclaimer"
-#~ msgstr "Vrij­waring"
-
 #~ msgid "Documentation"
 #~ msgstr "Documentatie"
 
@@ -439,9 +471,6 @@ msgstr "Uit"
 
 #~ msgid "Download Finished With Error"
 #~ msgstr "Download voltooid met fouten"
-
-#~ msgid "Download Media"
-#~ msgstr "Media downloaden"
 
 #~ msgid "Download Specific Timeframe"
 #~ msgstr "Specifiek tijdsbestek downloaden"
@@ -458,18 +487,12 @@ msgstr "Uit"
 #~ msgid "Downloader"
 #~ msgstr "Downloader"
 
-#~ msgid "Downloading"
-#~ msgstr "Downloaden"
-
 #, csharp-format
 #~ msgid "Downloading {0:f2}% ({1})"
 #~ msgstr "Downloaden — {0:f2}% ({1})"
 
 #~ msgid "Downloading..."
 #~ msgstr "Down­loaden…"
-
-#~ msgid "Downloads"
-#~ msgstr "Downloads"
 
 #~ msgid "Downloads Finished"
 #~ msgstr "Downloads voltooid"
@@ -553,12 +576,6 @@ msgstr "Uit"
 
 #~ msgid "Firefox"
 #~ msgstr "Firefox"
-
-#~ msgid "History"
-#~ msgstr "Geschiedenis"
-
-#~ msgid "Keyring"
-#~ msgstr "Sleutelbos"
 
 #~ msgid "Keyring Credential"
 #~ msgstr "Inloggegevens van sleutelbos"
@@ -690,9 +707,6 @@ msgstr "Uit"
 #~ msgid "Quality"
 #~ msgstr "Kwaliteit"
 
-#~ msgid "Queued"
-#~ msgstr "In wachtrij"
-
 #~ msgid "Remove Source Data"
 #~ msgstr "Bron­gegevens verwijderen"
 
@@ -777,16 +791,6 @@ msgstr "Uit"
 
 #~ msgid "Success"
 #~ msgstr "Voltooid"
-
-#~ msgid ""
-#~ "The authors of Nickvision Parabolic are not responsible/liable for any "
-#~ "misuse of this program that may violate local copyright/DMCA laws. Users "
-#~ "use this application at their own risk."
-#~ msgstr ""
-#~ "De auteurs van Nickvision Parabolic zijn niet verantwoordelijk/"
-#~ "aansprakelijk voor enig misbruik van deze app dat lokale auteursrecht-/"
-#~ "DMCA-wetgeving kan schenden. Gebruikers gebruiken deze app op eigen "
-#~ "risico."
 
 #~ msgid "This action is irreversible. Are you sure you want to delete it?"
 #~ msgstr ""

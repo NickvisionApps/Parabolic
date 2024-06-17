@@ -55,6 +55,11 @@ namespace Nickvision::TubeConverter::GNOME::Views
          */
         void onShellNotificationSent(const Nickvision::Notifications::ShellNotificationSentEventArgs& args);
         /**
+         * @brief Handles when the disclaimer is triggered.
+         * @param args Nickvision::Events::ParamEventArgs<std::string>
+         */
+        void onDisclaimerTriggered(const Nickvision::Events::ParamEventArgs<std::string>& args);
+        /**
          * @brief Quits the application. 
          */
         void quit();

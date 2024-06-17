@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-06-16 12:21-0400\n"
+"POT-Creation-Date: 2024-06-17 12:53-0400\n"
 "PO-Revision-Date: 2023-11-03 03:31+0000\n"
 "Last-Translator: \"K.B.Dharun Krishna\" <kbdharunkrishna@gmail.com>\n"
 "Language-Team: Tamil <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -48,13 +48,28 @@ msgstr "டேவிட் லாப்ஷின்"
 msgid "translator-credits"
 msgstr "K.B.Dharun Krishna <kbdharunkrishna@gmail.com>, 2023"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:182
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:168
+msgid ""
+"The authors of Nickvision Parabolic are not responsible/liable for any "
+"misuse of this program that may violate local copyright/DMCA laws. Users use "
+"this application at their own risk."
+msgstr ""
+"உள்ளூர் பதிப்புரிமை/DMCA சட்டங்களை மீறும் இந்தத் திட்டத்தை தவறாகப் பயன்படுத்துவதற்கு "
+"நிக்விஷன் பரபோலிக் இன் ஆசிரியர்கள் பொறுப்பல்ல/பொறுப்பேற்க மாட்டார்கள். பயனர்கள் இந்த "
+"பயன்பாட்டை தங்கள் சொந்த ஆபத்தில் பயன்படுத்துகின்றனர்."
+
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:197
 msgid "New update available"
 msgstr ""
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:214
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:229
 msgid "Unable to download and install update"
 msgstr ""
+
+#: libparabolic/src/models/videoresolution.cpp:19
+#: libparabolic/src/models/videoresolution.cpp:57
+msgid "Best"
+msgstr "சிறந்த"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:5
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:8
@@ -71,30 +86,24 @@ msgstr "விசைப்பலகை குறுக்குவழிகள�
 msgid "About Parabolic"
 msgstr "பரபோலிக் பற்றி"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:21
-#, fuzzy
-msgid "Open Folder (Ctrl+O)"
-msgstr "கோப்புறையைத் திறக்கவும்"
-
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:26
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:59
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:136
-#, fuzzy
-msgid "Open"
-msgstr "கோப்பைத் திறக்கவும்"
-
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:34
-msgid "Close Folder (Ctrl+W)"
-msgstr ""
-
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:43
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:23
 msgid "Main Menu"
 msgstr "முதன்மை பட்டியல்"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:57
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:65
-msgid "Open a folder (or drag one into the app) to get started"
-msgstr ""
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:37
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:71
+msgid "Download Media"
+msgstr "ஊடகத்தைப் பதிவிறக்கவும்"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:38
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:72
+msgid "Add a video, audio, or playlist URL to start downloading"
+msgstr "பதிவிறக்கம் செய்ய, காணொளி, ஒலி அமைவு அல்லது பாடல் பட்டியல் URL ஐச் சேர்க்கவும்"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:40
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:73
+msgid "Add Download"
+msgstr "பதிவிறக்கத்தைச் சேர்க்கவும்"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:12
 msgid "User Interface"
@@ -130,8 +139,6 @@ msgid "Folder"
 msgstr "கோப்புறையைத் திறக்கவும்"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/shortcuts_dialog.blp:16
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:159
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:66
 msgid "Open Folder"
 msgstr "கோப்புறையைத் திறக்கவும்"
 
@@ -155,19 +162,29 @@ msgstr "பயன்பாடு"
 msgid "Quit"
 msgstr "வெளியேறு"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:127
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:266
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:106
+#, fuzzy
+msgid "Open"
+msgstr "கோப்பைத் திறக்கவும்"
+
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:111
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:214
+msgid "Disclaimer"
+msgstr ""
+
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:112
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:203
+msgid "Don't show this message again"
+msgstr ""
+
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:113
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:216
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:298
 msgid "Close"
 msgstr ""
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:145
-msgid "There is {} file in the folder."
-msgid_plural "There are {} files in the folder."
-msgstr[0] ""
-msgstr[1] ""
-
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:209
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:61
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:166
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:66
 msgid "GitHub Repo"
 msgstr "GitHub களஞ்சியம்"
 
@@ -182,56 +199,82 @@ msgid "Home"
 msgstr ""
 
 #: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:56
+msgid "Keyring"
+msgstr "சாவி வளையம்"
+
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:57
+#, fuzzy
+msgid "Downloads"
+msgstr "பதிவிறக்கு"
+
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:58
+msgid "Downloading"
+msgstr "பதிவிறக்குகிறது"
+
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:59
+msgid "Queued"
+msgstr "வரிசையில் நிற்கிறது"
+
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:60
+msgid "Completed"
+msgstr "முடிக்கப்பட்டது"
+
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:61
 msgid "Help"
 msgstr "உதவி"
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:57
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:62
 msgid "Check for Updates"
 msgstr ""
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:58
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:257
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:63
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:289
 #, fuzzy
 msgid "Credits"
 msgstr "சான்றுகள்"
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:59
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:64
 #, fuzzy
 msgid "Copy Debug Information"
 msgstr "குக்கீகள் கோப்பு தகவல்"
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:60
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:65
 msgid "Changelog"
 msgstr ""
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:62
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:67
 msgid "Report a Bug"
 msgstr ""
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:63
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:68
 msgid "Discussions"
 msgstr ""
 
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:69
+msgid "History"
+msgstr "வரலாறு"
+
 #. Localize Strings
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:64
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:70
 #: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:19
 msgid "Settings"
 msgstr ""
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:80
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:88
 msgid "Preview"
 msgstr ""
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:178
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:186
 msgid "Update"
 msgstr ""
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:235
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:267
 #, fuzzy
 msgid "Debug information copied to clipboard."
 msgstr "பதிவிறக்கப் பதிவு கிளிப்போர்டுக்கு நகலெடுக்கப்பட்டது."
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:260
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:292
+#, c++-format
 msgid ""
 "Developers:\n"
 "{}\n"
@@ -241,7 +284,8 @@ msgid ""
 "{}"
 msgstr ""
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:264
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:296
+#, c++-format
 msgid ""
 "Developers:\n"
 "{}\n"
@@ -269,6 +313,10 @@ msgstr "கோப்பைத் திறக்கவும்"
 #: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:27
 msgid "Off"
 msgstr ""
+
+#, fuzzy
+#~ msgid "Open Folder (Ctrl+O)"
+#~ msgstr "கோப்புறையைத் திறக்கவும்"
 
 #, fuzzy
 #~ msgid "Folder"
@@ -323,13 +371,6 @@ msgstr ""
 #~ msgid "Add"
 #~ msgstr "சேர்"
 
-#~ msgid "Add a video, audio, or playlist URL to start downloading"
-#~ msgstr ""
-#~ "பதிவிறக்கம் செய்ய, காணொளி, ஒலி அமைவு அல்லது பாடல் பட்டியல் URL ஐச் சேர்க்கவும்"
-
-#~ msgid "Add Download"
-#~ msgstr "பதிவிறக்கத்தைச் சேர்க்கவும்"
-
 #~ msgid "Add Login"
 #~ msgstr "உள்நுழைவைச் சேர்க்கவும்"
 
@@ -354,9 +395,6 @@ msgstr ""
 #~ msgid "Back"
 #~ msgstr "திரும்பவும்"
 
-#~ msgid "Best"
-#~ msgstr "சிறந்த"
-
 #~ msgid "Clear"
 #~ msgstr "தெளிவாக்கு"
 
@@ -378,9 +416,6 @@ msgstr ""
 
 #~ msgid "Close and Stop Downloads?"
 #~ msgstr "பதிவிறக்கங்களை மூடிவிட்டு நிறுத்தவா?"
-
-#~ msgid "Completed"
-#~ msgstr "முடிக்கப்பட்டது"
 
 #~ msgid "Completed Notification Trigger"
 #~ msgstr "நிறைவு செய்யப்பட்ட அறிவிப்பு தூண்டுதல்"
@@ -471,9 +506,6 @@ msgstr ""
 #~ msgid "Download Finished With Error"
 #~ msgstr "பதிவிறக்கம் பிழையுடன் முடிந்தது"
 
-#~ msgid "Download Media"
-#~ msgstr "ஊடகத்தைப் பதிவிறக்கவும்"
-
 #~ msgid "Download Specific Timeframe"
 #~ msgstr "குறிப்பிட்ட காலக்கெடுவைப் பதிவிறக்கவும்"
 
@@ -490,9 +522,6 @@ msgstr ""
 #~ msgid "Downloader"
 #~ msgstr "பதிவிறக்குபவர்"
 
-#~ msgid "Downloading"
-#~ msgstr "பதிவிறக்குகிறது"
-
 #, csharp-format
 #~ msgid "Downloading {0:f2}% ({1})"
 #~ msgstr "பதிவிறக்குகிறது {0:f2}% ({1})"
@@ -500,10 +529,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "Downloading..."
 #~ msgstr "பதிவிறக்குகிறது"
-
-#, fuzzy
-#~ msgid "Downloads"
-#~ msgstr "பதிவிறக்கு"
 
 #~ msgid "Downloads Finished"
 #~ msgstr "பதிவிறக்கங்கள் முடிந்தது"
@@ -552,9 +577,6 @@ msgstr ""
 #~ msgid "File Type"
 #~ msgstr "கோப்பு வகை"
 
-#~ msgid "History"
-#~ msgstr "வரலாறு"
-
 #~ msgid ""
 #~ "If enabled, Parabolic will automatically turn on the crop thumbnail "
 #~ "advanced option for audio downloads"
@@ -577,9 +599,6 @@ msgstr ""
 #~ msgstr ""
 #~ "தூண்டுதலுடன் இணைந்து, சாளரம் கவனம் செலுத்தவில்லை என்றால் மட்டுமே நிறைவு செய்யப்பட்ட "
 #~ "அறிவிப்புகள் காண்பிக்கப்படும்."
-
-#~ msgid "Keyring"
-#~ msgstr "சாவி வளையம்"
 
 #~ msgid "Keyring Credential"
 #~ msgstr "சாவி வளைய நற்சான்றிதழ்"
@@ -709,9 +728,6 @@ msgstr ""
 #~ msgid "Quality"
 #~ msgstr "தரம்"
 
-#~ msgid "Queued"
-#~ msgstr "வரிசையில் நிற்கிறது"
-
 #~ msgid "Reset"
 #~ msgstr "மீட்டமைக்கவும்"
 
@@ -795,15 +811,6 @@ msgstr ""
 
 #~ msgid "Success"
 #~ msgstr "வெற்றி"
-
-#~ msgid ""
-#~ "The authors of Nickvision Parabolic are not responsible/liable for any "
-#~ "misuse of this program that may violate local copyright/DMCA laws. Users "
-#~ "use this application at their own risk."
-#~ msgstr ""
-#~ "உள்ளூர் பதிப்புரிமை/DMCA சட்டங்களை மீறும் இந்தத் திட்டத்தை தவறாகப் பயன்படுத்துவதற்கு "
-#~ "நிக்விஷன் பரபோலிக் இன் ஆசிரியர்கள் பொறுப்பல்ல/பொறுப்பேற்க மாட்டார்கள். பயனர்கள் இந்த "
-#~ "பயன்பாட்டை தங்கள் சொந்த ஆபத்தில் பயன்படுத்துகின்றனர்."
 
 #~ msgid "The minimum size of which to split a file (in MiB)."
 #~ msgstr "கோப்பைப் பிரிப்பதற்கான குறைந்தபட்ச அளவு (MiB - மெபிபைட்/வினாடி இல்)."

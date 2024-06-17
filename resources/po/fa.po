@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-06-16 12:21-0400\n"
+"POT-Creation-Date: 2024-06-17 12:53-0400\n"
 "PO-Revision-Date: 2024-01-11 20:05+0000\n"
 "Last-Translator: behrooz ramezani <b3hrooz.ram3zani@gmail.com>\n"
 "Language-Team: Persian <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -48,14 +48,26 @@ msgstr ""
 msgid "translator-credits"
 msgstr ""
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:182
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:168
+msgid ""
+"The authors of Nickvision Parabolic are not responsible/liable for any "
+"misuse of this program that may violate local copyright/DMCA laws. Users use "
+"this application at their own risk."
+msgstr ""
+
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:197
 #, fuzzy
 msgid "New update available"
 msgstr "بروز رسانی جدیدی در دسترس قرار گرفته است."
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:214
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:229
 msgid "Unable to download and install update"
 msgstr ""
+
+#: libparabolic/src/models/videoresolution.cpp:19
+#: libparabolic/src/models/videoresolution.cpp:57
+msgid "Best"
+msgstr "بهترین"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:5
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:8
@@ -72,30 +84,24 @@ msgstr ""
 msgid "About Parabolic"
 msgstr ""
 
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:21
-#, fuzzy
-msgid "Open Folder (Ctrl+O)"
-msgstr "پوشه را باز کنید"
-
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:26
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:59
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:136
-#, fuzzy
-msgid "Open"
-msgstr "فایل را باز کنید"
-
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:34
-msgid "Close Folder (Ctrl+W)"
-msgstr ""
-
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:43
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:23
 msgid "Main Menu"
 msgstr ""
 
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:57
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:65
-msgid "Open a folder (or drag one into the app) to get started"
-msgstr ""
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:37
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:71
+msgid "Download Media"
+msgstr "بارگیری رسانه"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:38
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:72
+msgid "Add a video, audio, or playlist URL to start downloading"
+msgstr "برای شروع دانلود، یک URL ویدیو، صدا یا فهرست پخش اضافه کنید"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:40
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:73
+msgid "Add Download"
+msgstr "اضافه کردن دانلود"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:12
 msgid "User Interface"
@@ -131,8 +137,6 @@ msgid "Folder"
 msgstr "پوشه را باز کنید"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/shortcuts_dialog.blp:16
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:159
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:66
 msgid "Open Folder"
 msgstr "پوشه را باز کنید"
 
@@ -154,19 +158,29 @@ msgstr ""
 msgid "Quit"
 msgstr ""
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:127
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:266
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:106
+#, fuzzy
+msgid "Open"
+msgstr "فایل را باز کنید"
+
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:111
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:214
+msgid "Disclaimer"
+msgstr "سلب مسئولیت"
+
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:112
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:203
+msgid "Don't show this message again"
+msgstr "این پیام را دیگر نشان ندهید"
+
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:113
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:216
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:298
 msgid "Close"
 msgstr "بستن"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:145
-msgid "There is {} file in the folder."
-msgid_plural "There are {} files in the folder."
-msgstr[0] ""
-msgstr[1] ""
-
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:209
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:61
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:166
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:66
 msgid "GitHub Repo"
 msgstr "مخزن گیت هاب"
 
@@ -180,54 +194,81 @@ msgid "Home"
 msgstr "خانه"
 
 #: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:56
+#, fuzzy
+msgid "Keyring"
+msgstr "کلید را غیرفعال می کنید؟"
+
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:57
+#, fuzzy
+msgid "Downloads"
+msgstr "بارگیری"
+
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:58
+msgid "Downloading"
+msgstr "در حال بارگیری"
+
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:59
+msgid "Queued"
+msgstr "در صف"
+
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:60
+msgid "Completed"
+msgstr "تکمیل شد"
+
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:61
 msgid "Help"
 msgstr "کمک"
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:57
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:62
 msgid "Check for Updates"
 msgstr "به روز رسانی ها را بررسی کنید"
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:58
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:257
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:63
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:289
 msgid "Credits"
 msgstr ""
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:59
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:64
 msgid "Copy Debug Information"
 msgstr "کپی اطلاعات اشکال زدایی"
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:60
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:65
 msgid "Changelog"
 msgstr "تغییرات"
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:62
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:67
 msgid "Report a Bug"
 msgstr "گزارش یک اشکال"
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:63
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:68
 msgid "Discussions"
 msgstr "بحث ها"
 
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:69
+msgid "History"
+msgstr "تاریخچه"
+
 #. Localize Strings
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:64
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:70
 #: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:19
 msgid "Settings"
 msgstr ""
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:80
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:88
 msgid "Preview"
 msgstr ""
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:178
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:186
 msgid "Update"
 msgstr ""
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:235
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:267
 #, fuzzy
 msgid "Debug information copied to clipboard."
 msgstr "گزارش بارگیری در کلیپ بورد کپی شد."
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:260
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:292
+#, c++-format
 msgid ""
 "Developers:\n"
 "{}\n"
@@ -237,7 +278,8 @@ msgid ""
 "{}"
 msgstr ""
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:264
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:296
+#, c++-format
 msgid ""
 "Developers:\n"
 "{}\n"
@@ -264,6 +306,10 @@ msgstr "روی"
 #: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:27
 msgid "Off"
 msgstr "خاموش"
+
+#, fuzzy
+#~ msgid "Open Folder (Ctrl+O)"
+#~ msgstr "پوشه را باز کنید"
 
 #, fuzzy
 #~ msgid "Folder"
@@ -322,12 +368,6 @@ msgstr "خاموش"
 #~ msgid "Add a login to get started."
 #~ msgstr "برای شروع یک لاگین اضافه کنید."
 
-#~ msgid "Add a video, audio, or playlist URL to start downloading"
-#~ msgstr "برای شروع دانلود، یک URL ویدیو، صدا یا فهرست پخش اضافه کنید"
-
-#~ msgid "Add Download"
-#~ msgstr "اضافه کردن دانلود"
-
 #~ msgid "Add Login"
 #~ msgstr "ورود به سیستم را اضافه کنید"
 
@@ -355,9 +395,6 @@ msgstr "خاموش"
 #~ msgid "Back"
 #~ msgstr "بارگشت"
 
-#~ msgid "Best"
-#~ msgstr "بهترین"
-
 #~ msgid "Cancel"
 #~ msgstr "لغو"
 
@@ -384,9 +421,6 @@ msgstr "خاموش"
 
 #~ msgid "Comma separated list"
 #~ msgstr "لیست جدا شده با کاما"
-
-#~ msgid "Completed"
-#~ msgstr "تکمیل شد"
 
 #~ msgid "Converter"
 #~ msgstr "مبدل"
@@ -420,10 +454,6 @@ msgstr "خاموش"
 #~ msgid "Disable"
 #~ msgstr "غیر فعال کردن"
 
-#, fuzzy
-#~ msgid "Disable Keyring?"
-#~ msgstr "کلید را غیرفعال می کنید؟"
-
 #~ msgid ""
 #~ "Disabling the keyring will delete all data currently stored inside. Are "
 #~ "you sure you want to disable it?"
@@ -435,17 +465,8 @@ msgstr "خاموش"
 #~ msgid "Disallow Conversions"
 #~ msgstr "غیرمجاز کردن تبدیل"
 
-#~ msgid "Disclaimer"
-#~ msgstr "سلب مسئولیت"
-
 #~ msgid "Documentation"
 #~ msgstr "مستندات"
-
-#~ msgid "Don't show this message again"
-#~ msgstr "این پیام را دیگر نشان ندهید"
-
-#~ msgid "Download"
-#~ msgstr "بارگیری"
 
 #~ msgid "Download Again"
 #~ msgstr "بارگیری مجدد"
@@ -455,9 +476,6 @@ msgstr "خاموش"
 
 #~ msgid "Download Finished With Error"
 #~ msgstr "بارگیری با خطا تمام شد"
-
-#~ msgid "Download Media"
-#~ msgstr "بارگیری رسانه"
 
 #~ msgid "Download Specific Timeframe"
 #~ msgstr "بازه زمانی خاص را بارگیری کنید"
@@ -473,9 +491,6 @@ msgstr "خاموش"
 
 #~ msgid "Downloader"
 #~ msgstr "بارگیری کننده"
-
-#~ msgid "Downloading"
-#~ msgstr "در حال بارگیری"
 
 #~ msgid "Downloading..."
 #~ msgstr "در حال بارگیری..."
@@ -498,9 +513,6 @@ msgstr "خاموش"
 
 #~ msgid "Firefox"
 #~ msgstr "فایرفاکس"
-
-#~ msgid "History"
-#~ msgstr "تاریخچه"
 
 #~ msgid ""
 #~ "If disabled or if embedding fails, downloaded subtitles will be saved to "
@@ -632,9 +644,6 @@ msgstr "خاموش"
 
 #~ msgid "Quality"
 #~ msgstr "کیفیت"
-
-#~ msgid "Queued"
-#~ msgstr "در صف"
 
 #~ msgid "Remove Source Data"
 #~ msgstr "اطلاعات منبع را حذف کنید"

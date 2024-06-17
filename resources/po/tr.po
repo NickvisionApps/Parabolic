@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-06-16 12:21-0400\n"
+"POT-Creation-Date: 2024-06-17 12:53-0400\n"
 "PO-Revision-Date: 2023-12-17 08:08+0000\n"
 "Last-Translator: Sabri Ünal <libreajans@gmail.com>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -50,15 +50,31 @@ msgstr ""
 "Sabri Ünal <libreajans@gmail.com>\n"
 "Anonim Weblate Çevirmenleri"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:182
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:168
+msgid ""
+"The authors of Nickvision Parabolic are not responsible/liable for any "
+"misuse of this program that may violate local copyright/DMCA laws. Users use "
+"this application at their own risk."
+msgstr ""
+"Parabolicʼin yazarları, bu programın yerel telif hakkı / DMCA yasalarını "
+"ihlal edebilecek herhangi bir yanlış kullanımından sorumlu veya yükümlü "
+"değildir. Kullanıcılar bu uygulamayı riski kendilerine ait olmak üzere "
+"kullanırlar."
+
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:197
 #, fuzzy
 msgid "New update available"
 msgstr "Yeni güncelleme var."
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:214
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:229
 #, fuzzy
 msgid "Unable to download and install update"
 msgstr "Güncelleme indirilemiyor ve kurulamıyor."
+
+#: libparabolic/src/models/videoresolution.cpp:19
+#: libparabolic/src/models/videoresolution.cpp:57
+msgid "Best"
+msgstr "En İyi"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:5
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:8
@@ -75,30 +91,25 @@ msgstr "Klavye Kısayolları"
 msgid "About Parabolic"
 msgstr "Parabolic Hakkında"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:21
-#, fuzzy
-msgid "Open Folder (Ctrl+O)"
-msgstr "Klasörü Aç"
-
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:26
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:59
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:136
-#, fuzzy
-msgid "Open"
-msgstr "Dosya Aç"
-
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:34
-msgid "Close Folder (Ctrl+W)"
-msgstr ""
-
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:43
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:23
 msgid "Main Menu"
 msgstr "Ana Menü"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:57
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:65
-msgid "Open a folder (or drag one into the app) to get started"
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:37
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:71
+msgid "Download Media"
+msgstr "Ortam İndirici"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:38
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:72
+msgid "Add a video, audio, or playlist URL to start downloading"
 msgstr ""
+"İndirmeye başlamak için video, ses ya da oynatma listesi URLʼsi ekleyin"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:40
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:73
+msgid "Add Download"
+msgstr "İndirme Ekle"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:12
 msgid "User Interface"
@@ -134,8 +145,6 @@ msgid "Folder"
 msgstr "Klasörü Aç"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/shortcuts_dialog.blp:16
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:159
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:66
 msgid "Open Folder"
 msgstr "Klasörü Aç"
 
@@ -159,19 +168,29 @@ msgstr "Uygulama"
 msgid "Quit"
 msgstr "Çık"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:127
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:266
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:106
+#, fuzzy
+msgid "Open"
+msgstr "Dosya Aç"
+
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:111
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:214
+msgid "Disclaimer"
+msgstr "Feragatname"
+
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:112
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:203
+msgid "Don't show this message again"
+msgstr "Bu iletiyi tekrar gösterme"
+
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:113
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:216
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:298
 msgid "Close"
 msgstr "Kapat"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:145
-msgid "There is {} file in the folder."
-msgid_plural "There are {} files in the folder."
-msgstr[0] ""
-msgstr[1] ""
-
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:209
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:61
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:166
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:66
 msgid "GitHub Repo"
 msgstr "GitHub Deposu"
 
@@ -186,55 +205,79 @@ msgid "Home"
 msgstr "Ev"
 
 #: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:56
+msgid "Keyring"
+msgstr "Anahtarlık"
+
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:57
+msgid "Downloads"
+msgstr "İndirilenler"
+
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:58
+msgid "Downloading"
+msgstr "İndiriliyor"
+
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:59
+msgid "Queued"
+msgstr "Kuyrukta"
+
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:60
+msgid "Completed"
+msgstr "Tamamlandı"
+
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:61
 msgid "Help"
 msgstr "Yardım"
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:57
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:62
 msgid "Check for Updates"
 msgstr "Güncellemeleri Denetle"
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:58
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:257
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:63
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:289
 msgid "Credits"
 msgstr "Hazırlayanlar"
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:59
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:64
 msgid "Copy Debug Information"
 msgstr "Hata Ayıklama Bilgisini Kopyala"
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:60
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:65
 msgid "Changelog"
 msgstr "Değişiklik Günlüğü"
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:62
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:67
 msgid "Report a Bug"
 msgstr "Hata Raporla"
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:63
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:68
 msgid "Discussions"
 msgstr "Tartışmalar"
 
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:69
+msgid "History"
+msgstr "Geçmiş"
+
 #. Localize Strings
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:64
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:70
 #: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:19
 msgid "Settings"
 msgstr "Ayarlar"
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:80
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:88
 msgid "Preview"
 msgstr ""
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:178
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:186
 msgid "Update"
 msgstr "Güncelle"
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:235
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:267
 #, fuzzy
 msgid "Debug information copied to clipboard."
 msgstr "İndirme günlüğü panoya kopyalandı."
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:260
-#, fuzzy
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:292
+#, fuzzy, c++-format
 msgid ""
 "Developers:\n"
 "{}\n"
@@ -255,8 +298,8 @@ msgstr ""
 "Çevirmenler:\n"
 "{3}"
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:264
-#, fuzzy
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:296
+#, fuzzy, c++-format
 msgid ""
 "Developers:\n"
 "{}\n"
@@ -294,6 +337,10 @@ msgstr "Açık"
 #: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:27
 msgid "Off"
 msgstr "Kapalı"
+
+#, fuzzy
+#~ msgid "Open Folder (Ctrl+O)"
+#~ msgstr "Klasörü Aç"
 
 #~ msgctxt "Night"
 #~ msgid "Good Morning!"
@@ -379,13 +426,6 @@ msgstr "Kapalı"
 #~ msgid "Add a login to get started."
 #~ msgstr "Başlamak için bir giriş ekleyin."
 
-#~ msgid "Add a video, audio, or playlist URL to start downloading"
-#~ msgstr ""
-#~ "İndirmeye başlamak için video, ses ya da oynatma listesi URLʼsi ekleyin"
-
-#~ msgid "Add Download"
-#~ msgstr "İndirme Ekle"
-
 #~ msgid "Add Login"
 #~ msgstr "Giriş Ekle"
 
@@ -412,9 +452,6 @@ msgstr "Kapalı"
 
 #~ msgid "Back"
 #~ msgstr "Geri"
-
-#~ msgid "Best"
-#~ msgstr "En İyi"
 
 #~ msgid "Cancel"
 #~ msgstr "İptal"
@@ -443,9 +480,6 @@ msgstr "Kapalı"
 
 #~ msgid "Comma separated list"
 #~ msgstr "Virgülle ayrılmış liste"
-
-#~ msgid "Completed"
-#~ msgstr "Tamamlandı"
 
 #~ msgid "Completed Notification Trigger"
 #~ msgstr "Tamamlandı Bildirim Tetikleyicisi"
@@ -501,8 +535,8 @@ msgstr "Kapalı"
 #~ msgstr ""
 #~ "Farklı siteler aynı dil için farklı dil kodu biçimini kullanabilir. "
 #~ "Aşağıdaki üç türden biriyle karşılaşabilirsiniz: iki harfli, bölgeli iki "
-#~ "harfli ya da üç harfli. Örneğin İngilizce için \"en\", \"en-US\" ve \"eng"
-#~ "\" kelimelerinin tümü kullanılır.\n"
+#~ "harfli ya da üç harfli. Örneğin İngilizce için \"en\", \"en-US\" ve "
+#~ "\"eng\" kelimelerinin tümü kullanılır.\n"
 #~ "En iyi sonuçları elde etmek için lütfen dilleriniz için geçerli tüm "
 #~ "kodları belirtin. Varsa, otomatik oluşturulan alt yazılar da "
 #~ "indirilecektir.\n"
@@ -526,14 +560,8 @@ msgstr "Kapalı"
 #~ msgid "Disallow Conversions"
 #~ msgstr "Dönüşümlere İzin Verme"
 
-#~ msgid "Disclaimer"
-#~ msgstr "Feragatname"
-
 #~ msgid "Documentation"
 #~ msgstr "Belgelendirme"
-
-#~ msgid "Don't show this message again"
-#~ msgstr "Bu iletiyi tekrar gösterme"
 
 #~ msgid "Download"
 #~ msgstr "İndir"
@@ -546,9 +574,6 @@ msgstr "Kapalı"
 
 #~ msgid "Download Finished With Error"
 #~ msgstr "İndirme Hata İle Tamamlandı"
-
-#~ msgid "Download Media"
-#~ msgstr "Ortam İndirici"
 
 #~ msgid "Download Specific Timeframe"
 #~ msgstr "Belirli Zaman Dilimini İndir"
@@ -565,18 +590,12 @@ msgstr "Kapalı"
 #~ msgid "Downloader"
 #~ msgstr "İndirici"
 
-#~ msgid "Downloading"
-#~ msgstr "İndiriliyor"
-
 #, csharp-format
 #~ msgid "Downloading {0:f2}% ({1})"
 #~ msgstr "İndiriliyor %{0:f2} ({1})"
 
 #~ msgid "Downloading..."
 #~ msgstr "İndiriliyor..."
-
-#~ msgid "Downloads"
-#~ msgstr "İndirilenler"
 
 #~ msgid "Downloads Finished"
 #~ msgstr "İndirmeler Tamamlandı"
@@ -654,9 +673,6 @@ msgstr "Kapalı"
 #~ msgid "Firefox"
 #~ msgstr "Firefox"
 
-#~ msgid "History"
-#~ msgstr "Geçmiş"
-
 #~ msgid ""
 #~ "If disabled or if embedding fails, downloaded subtitles will be saved to "
 #~ "a separate file instead"
@@ -689,9 +705,6 @@ msgstr "Kapalı"
 
 #~ msgid "Include Auto-Generated Subtitles"
 #~ msgstr "Kendiliğinden Oluşturulan Alt Yazıları Dahil Et"
-
-#~ msgid "Keyring"
-#~ msgstr "Anahtarlık"
 
 #~ msgid "Keyring Credential"
 #~ msgstr "Anahtarlık Kimlik Bilgisi"
@@ -837,9 +850,6 @@ msgstr "Kapalı"
 #~ msgid "Quality"
 #~ msgstr "Kalite"
 
-#~ msgid "Queued"
-#~ msgstr "Kuyrukta"
-
 #~ msgid "Remove Source Data"
 #~ msgstr "Kaynak Verileri Kaldır"
 
@@ -934,16 +944,6 @@ msgstr "Kapalı"
 
 #~ msgid "Success"
 #~ msgstr "Başarılı"
-
-#~ msgid ""
-#~ "The authors of Nickvision Parabolic are not responsible/liable for any "
-#~ "misuse of this program that may violate local copyright/DMCA laws. Users "
-#~ "use this application at their own risk."
-#~ msgstr ""
-#~ "Parabolicʼin yazarları, bu programın yerel telif hakkı / DMCA yasalarını "
-#~ "ihlal edebilecek herhangi bir yanlış kullanımından sorumlu veya yükümlü "
-#~ "değildir. Kullanıcılar bu uygulamayı riski kendilerine ait olmak üzere "
-#~ "kullanırlar."
 
 #~ msgid "The minimum size of which to split a file (in MiB)."
 #~ msgstr "Bir dosyanın bölüneceği asgari boyut (MiB cinsinden)."

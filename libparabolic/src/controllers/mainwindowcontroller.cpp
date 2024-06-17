@@ -65,6 +65,12 @@ namespace Nickvision::TubeConverter::Shared::Controllers
     {
         return Aura::getActive().getConfig<Configuration>("config").getWindowGeometry();
     }
+    void MainWindowController::setShowDisclaimerOnStartup(bool showDisclaimerOnStartup)
+    {
+        Configuration& config{ Aura::getActive().getConfig<Configuration>("config") };
+        config.setShowDisclaimerOnStartup(showDisclaimerOnStartup);
+        config.save();
+    }
 
     Event<EventArgs>& MainWindowController::configurationSaved()
     {
@@ -79,6 +85,11 @@ namespace Nickvision::TubeConverter::Shared::Controllers
     Event<ShellNotificationSentEventArgs>& MainWindowController::shellNotificationSent()
     {
         return m_shellNotificationSent;
+    }
+
+    Event<ParamEventArgs<std::string>>& MainWindowController::disclaimerTriggered()
+    {
+        return m_disclaimerTriggered;
     }
 
     std::string MainWindowController::getDebugInformation(const std::string& extraInformation) const
@@ -152,6 +163,10 @@ namespace Nickvision::TubeConverter::Shared::Controllers
             checkForUpdates();
         }
 #endif
+        if(Aura::getActive().getConfig<Configuration>("config").getShowDisclaimerOnStartup())
+        {
+            m_disclaimerTriggered.invoke({ _("The authors of Nickvision Parabolic are not responsible/liable for any misuse of this program that may violate local copyright/DMCA laws. Users use this application at their own risk.") });
+        }
         m_started = true;
         Aura::getActive().getLogger().log(Logging::LogLevel::Debug, "MainWindow started.");
     }

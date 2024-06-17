@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-06-16 12:21-0400\n"
+"POT-Creation-Date: 2024-06-17 12:53-0400\n"
 "PO-Revision-Date: 2024-02-02 15:04+0000\n"
 "Last-Translator: Yosef Or Boczko <yoseforb@gnome.org>\n"
 "Language-Team: Hebrew <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -51,15 +51,30 @@ msgstr ""
 "יוסף אור בוצ׳קו <yoseforb@gmail.com>\n"
 "מיזם תרגום GNOME לעברית https://l10n.gnome.org/teams/he/"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:182
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:168
+msgid ""
+"The authors of Nickvision Parabolic are not responsible/liable for any "
+"misuse of this program that may violate local copyright/DMCA laws. Users use "
+"this application at their own risk."
+msgstr ""
+"היוצרים של Nickvision Parabolic אינם מחויבים או אחראים לכל שימוש לרעה בתכנה "
+"זו שעשוי להפר את חוקי זכויות היוצרים המקומיים/חוקי DMCA. השימוש שמשתמשים "
+"עושים ביישום זה הוא על אחריותם הבלעדית בלבד."
+
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:197
 #, fuzzy
 msgid "New update available"
 msgstr "עדכון חדש זמין."
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:214
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:229
 #, fuzzy
 msgid "Unable to download and install update"
 msgstr "לא ניתן להוריד ולהתקין את העדכון."
+
+#: libparabolic/src/models/videoresolution.cpp:19
+#: libparabolic/src/models/videoresolution.cpp:57
+msgid "Best"
+msgstr "הטוב ביותר"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:5
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:8
@@ -76,30 +91,24 @@ msgstr "צירופי מקשים"
 msgid "About Parabolic"
 msgstr "על אודות Parabolic"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:21
-#, fuzzy
-msgid "Open Folder (Ctrl+O)"
-msgstr "פתיחת תיקייה"
-
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:26
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:59
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:136
-#, fuzzy
-msgid "Open"
-msgstr "פתיחת קובץ"
-
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:34
-msgid "Close Folder (Ctrl+W)"
-msgstr ""
-
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:43
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:23
 msgid "Main Menu"
 msgstr "תפריט ראשי"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:57
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:65
-msgid "Open a folder (or drag one into the app) to get started"
-msgstr ""
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:37
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:71
+msgid "Download Media"
+msgstr "הורדת מדיה"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:38
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:72
+msgid "Add a video, audio, or playlist URL to start downloading"
+msgstr "על מנת להתחיל הורדה יש להוסיף כתובת של סרט, שמע, או רשימת השמעה"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:40
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:73
+msgid "Add Download"
+msgstr "הוספת הורדה"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:12
 msgid "User Interface"
@@ -135,8 +144,6 @@ msgid "Folder"
 msgstr "פתיחת תיקייה"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/shortcuts_dialog.blp:16
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:159
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:66
 msgid "Open Folder"
 msgstr "פתיחת תיקייה"
 
@@ -160,21 +167,30 @@ msgstr "יישום"
 msgid "Quit"
 msgstr "יציאה"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:127
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:266
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:106
+#, fuzzy
+msgid "Open"
+msgstr "פתיחת קובץ"
+
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:111
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:214
+#, fuzzy
+msgid "Disclaimer"
+msgstr "תניית פטור"
+
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:112
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:203
+msgid "Don't show this message again"
+msgstr "אין להציג הודעה זו שוב"
+
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:113
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:216
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:298
 msgid "Close"
 msgstr "סגירה"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:145
-msgid "There is {} file in the folder."
-msgid_plural "There are {} files in the folder."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
-
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:209
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:61
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:166
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:66
 msgid "GitHub Repo"
 msgstr "מאגר GitHub"
 
@@ -189,55 +205,79 @@ msgid "Home"
 msgstr "בית"
 
 #: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:56
+msgid "Keyring"
+msgstr "קבוצת מפתחות"
+
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:57
+msgid "Downloads"
+msgstr "הורדות"
+
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:58
+msgid "Downloading"
+msgstr "בהורדה"
+
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:59
+msgid "Queued"
+msgstr "בתור"
+
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:60
+msgid "Completed"
+msgstr "הושלמו"
+
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:61
 msgid "Help"
 msgstr "עזרה"
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:57
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:62
 msgid "Check for Updates"
 msgstr "בדיקת עדכונים"
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:58
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:257
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:63
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:289
 msgid "Credits"
 msgstr "תודות"
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:59
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:64
 msgid "Copy Debug Information"
 msgstr "העתקת מידע לניפוי שגיאות"
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:60
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:65
 msgid "Changelog"
 msgstr "יומן שינויים"
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:62
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:67
 msgid "Report a Bug"
 msgstr "דיווח על תקלה"
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:63
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:68
 msgid "Discussions"
 msgstr "דיונים"
 
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:69
+msgid "History"
+msgstr "היסטוריה"
+
 #. Localize Strings
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:64
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:70
 #: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:19
 msgid "Settings"
 msgstr "הגדרות"
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:80
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:88
 msgid "Preview"
 msgstr ""
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:178
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:186
 msgid "Update"
 msgstr "עדכון"
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:235
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:267
 #, fuzzy
 msgid "Debug information copied to clipboard."
 msgstr "יומן ההורדה הועתק ללוח הגזירים."
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:260
-#, fuzzy
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:292
+#, fuzzy, c++-format
 msgid ""
 "Developers:\n"
 "{}\n"
@@ -258,8 +298,8 @@ msgstr ""
 "תרגום:\n"
 "{3}"
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:264
-#, fuzzy
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:296
+#, fuzzy, c++-format
 msgid ""
 "Developers:\n"
 "{}\n"
@@ -297,6 +337,10 @@ msgstr "פעיל"
 #: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:27
 msgid "Off"
 msgstr "כבוי"
+
+#, fuzzy
+#~ msgid "Open Folder (Ctrl+O)"
+#~ msgstr "פתיחת תיקייה"
 
 #, fuzzy
 #~ msgid "Folder"
@@ -360,12 +404,6 @@ msgstr "כבוי"
 #~ msgid "Add a login to get started."
 #~ msgstr "יש להוסיף התחברות על מנת להתחיל."
 
-#~ msgid "Add a video, audio, or playlist URL to start downloading"
-#~ msgstr "על מנת להתחיל הורדה יש להוסיף כתובת של סרט, שמע, או רשימת השמעה"
-
-#~ msgid "Add Download"
-#~ msgstr "הוספת הורדה"
-
 #~ msgid "Add Login"
 #~ msgstr "הוספת התחברות"
 
@@ -393,9 +431,6 @@ msgstr "כבוי"
 #~ msgid "Back"
 #~ msgstr "חזרה"
 
-#~ msgid "Best"
-#~ msgstr "הטוב ביותר"
-
 #~ msgid "Cancel"
 #~ msgstr "ביטול"
 
@@ -421,9 +456,6 @@ msgstr "כבוי"
 
 #~ msgid "Comma separated list"
 #~ msgstr "רשימה מופרדת בפסיק"
-
-#~ msgid "Completed"
-#~ msgstr "הושלמו"
 
 #~ msgid "Completed Notification Trigger"
 #~ msgstr "גורם להתרעות על השלמת הורדות"
@@ -502,15 +534,8 @@ msgstr "כבוי"
 #~ msgid "Disallow Conversions"
 #~ msgstr "מניעת המרות"
 
-#, fuzzy
-#~ msgid "Disclaimer"
-#~ msgstr "תניית פטור"
-
 #~ msgid "Documentation"
 #~ msgstr "תיעוד"
-
-#~ msgid "Don't show this message again"
-#~ msgstr "אין להציג הודעה זו שוב"
 
 #~ msgid "Download"
 #~ msgstr "הורדה"
@@ -523,9 +548,6 @@ msgstr "כבוי"
 
 #~ msgid "Download Finished With Error"
 #~ msgstr "הורדה הסתיימה עם שגיאה"
-
-#~ msgid "Download Media"
-#~ msgstr "הורדת מדיה"
 
 #~ msgid "Download Specific Timeframe"
 #~ msgstr "הורדת פרק זמן מוגדר"
@@ -542,18 +564,12 @@ msgstr "כבוי"
 #~ msgid "Downloader"
 #~ msgstr "מוריד"
 
-#~ msgid "Downloading"
-#~ msgstr "בהורדה"
-
 #, csharp-format
 #~ msgid "Downloading {0:f2}% ({1})"
 #~ msgstr "מוריד ‏‏{0:f2}%‎ ‏({1})‎"
 
 #~ msgid "Downloading..."
 #~ msgstr "בהורדה…"
-
-#~ msgid "Downloads"
-#~ msgstr "הורדות"
 
 #~ msgid "Downloads Finished"
 #~ msgstr "הסתיימות הורדות"
@@ -631,9 +647,6 @@ msgstr "כבוי"
 #~ msgid "Firefox"
 #~ msgstr "Firefox"
 
-#~ msgid "History"
-#~ msgstr "היסטוריה"
-
 #~ msgid ""
 #~ "If disabled or if embedding fails, downloaded subtitles will be saved to "
 #~ "a separate file instead"
@@ -664,9 +677,6 @@ msgstr "כבוי"
 
 #~ msgid "Include Auto-Generated Subtitles"
 #~ msgstr "לכלול כתוביות שנוצרו אוטומטית"
-
-#~ msgid "Keyring"
-#~ msgstr "קבוצת מפתחות"
 
 #~ msgid "Keyring Credential"
 #~ msgstr "אישור קבוצת מפתחות"
@@ -805,9 +815,6 @@ msgstr "כבוי"
 #~ msgid "Quality"
 #~ msgstr "איכות"
 
-#~ msgid "Queued"
-#~ msgstr "בתור"
-
 #~ msgid "Remove Source Data"
 #~ msgstr "הסרת נתוני מקור"
 
@@ -901,15 +908,6 @@ msgstr "כבוי"
 
 #~ msgid "Success"
 #~ msgstr "הצליחה"
-
-#~ msgid ""
-#~ "The authors of Nickvision Parabolic are not responsible/liable for any "
-#~ "misuse of this program that may violate local copyright/DMCA laws. Users "
-#~ "use this application at their own risk."
-#~ msgstr ""
-#~ "היוצרים של Nickvision Parabolic אינם מחויבים או אחראים לכל שימוש לרעה "
-#~ "בתכנה זו שעשוי להפר את חוקי זכויות היוצרים המקומיים/חוקי DMCA. השימוש "
-#~ "שמשתמשים עושים ביישום זה הוא על אחריותם הבלעדית בלבד."
 
 #~ msgid "The minimum size of which to split a file (in MiB)."
 #~ msgstr "הגודל המזערי לפיצול קובץ (במב״ב)."

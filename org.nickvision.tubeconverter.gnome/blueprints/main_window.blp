@@ -34,11 +34,11 @@ Adw.ApplicationWindow root {
           name: "NoFolder";
           child: Adw.StatusPage pageGreeting {
             icon-name: "org.nickvision.tubeconverter";
-            description: _("Open a folder (or drag one into the app) to get started");
+            title: _("Download Media");
+            description: _("Add a video, audio, or playlist URL to start downloading");
             child: Gtk.Button {
-              label: _("Open");
+              label: _("Add Download");
               halign: center;
-              action-name: "win.openFolder";
               styles ["pill", "suggested-action"]
             };
             

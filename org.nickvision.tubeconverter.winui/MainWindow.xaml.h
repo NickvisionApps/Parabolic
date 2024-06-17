@@ -62,6 +62,11 @@ namespace winrt::Nickvision::TubeConverter::WinUI::implementation
          */
         void OnShellNotificationSent(const ::Nickvision::Notifications::ShellNotificationSentEventArgs& args);
         /**
+         * @brief Handles when the disclaimer is triggered.
+         * @param args Nickvision::Events::ParamEventArgs<std::string>
+         */
+        Windows::Foundation::IAsyncAction OnDisclaimerTriggered(const ::Nickvision::Events::ParamEventArgs<std::string>& args);
+        /**
          * @brief Handles when a change in the window's navigation occurs.
          * @param sender Microsoft::UI::Xaml::Controls::NavigationView
          * @param args Microsoft::UI::Xaml::Controls::NavigationViewSelectionChangedEventArgs

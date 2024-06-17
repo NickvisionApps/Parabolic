@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-06-16 12:21-0400\n"
+"POT-Creation-Date: 2024-06-17 12:53-0400\n"
 "PO-Revision-Date: 2024-05-08 04:07+0000\n"
 "Last-Translator: Scrambled777 <weblate.scrambled777@simplelogin.com>\n"
 "Language-Team: Hindi <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -48,15 +48,30 @@ msgstr "डेविड लापशिन"
 msgid "translator-credits"
 msgstr "Scrambled777 <weblate.scrambled777@simplelogin.com>"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:182
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:168
+msgid ""
+"The authors of Nickvision Parabolic are not responsible/liable for any "
+"misuse of this program that may violate local copyright/DMCA laws. Users use "
+"this application at their own risk."
+msgstr ""
+"Nickvision Parabolic के लेखक इस कार्यक्रम के किसी भी दुरुपयोग के लिए जिम्मेदार/"
+"उत्तरदायी नहीं हैं जो स्थानीय कॉपीराइट/DMCA कानूनों का उल्लंघन कर सकता है। उपयोगकर्ता "
+"इस एप्लिकेशन का उपयोग अपने जोखिम पर करते हैं।"
+
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:197
 #, fuzzy
 msgid "New update available"
 msgstr "नया अपडेट उपलब्ध है।"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:214
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:229
 #, fuzzy
 msgid "Unable to download and install update"
 msgstr "अपडेट डाउनलोड और इंस्टॉल करने में असमर्थ।"
+
+#: libparabolic/src/models/videoresolution.cpp:19
+#: libparabolic/src/models/videoresolution.cpp:57
+msgid "Best"
+msgstr "श्रेष्ठ"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:5
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:8
@@ -73,30 +88,24 @@ msgstr "कुंजीपटल शॉर्टकट्स"
 msgid "About Parabolic"
 msgstr "Parabolic के बारे में"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:21
-#, fuzzy
-msgid "Open Folder (Ctrl+O)"
-msgstr "फोल्डर खोलें"
-
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:26
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:59
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:136
-#, fuzzy
-msgid "Open"
-msgstr "फाइल खोलें"
-
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:34
-msgid "Close Folder (Ctrl+W)"
-msgstr ""
-
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:43
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:23
 msgid "Main Menu"
 msgstr "मुख्य मेन्यू"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:57
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:65
-msgid "Open a folder (or drag one into the app) to get started"
-msgstr ""
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:37
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:71
+msgid "Download Media"
+msgstr "मीडिया डाउनलोड करें"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:38
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:72
+msgid "Add a video, audio, or playlist URL to start downloading"
+msgstr "डाउनलोड करना शुरू करने के लिए एक वीडियो, ऑडियो या प्लेलिस्ट URL जोड़ें"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:40
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:73
+msgid "Add Download"
+msgstr "डाउनलोड जोड़ें"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:12
 msgid "User Interface"
@@ -132,8 +141,6 @@ msgid "Folder"
 msgstr "फोल्डर खोलें"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/shortcuts_dialog.blp:16
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:159
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:66
 msgid "Open Folder"
 msgstr "फोल्डर खोलें"
 
@@ -157,19 +164,29 @@ msgstr "एप्लिकेशन"
 msgid "Quit"
 msgstr "बाहर निकलें"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:127
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:266
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:106
+#, fuzzy
+msgid "Open"
+msgstr "फाइल खोलें"
+
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:111
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:214
+msgid "Disclaimer"
+msgstr "अस्वीकरण"
+
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:112
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:203
+msgid "Don't show this message again"
+msgstr "यह संदेश दोबारा न दिखाएं"
+
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:113
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:216
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:298
 msgid "Close"
 msgstr "बंद करे"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:145
-msgid "There is {} file in the folder."
-msgid_plural "There are {} files in the folder."
-msgstr[0] ""
-msgstr[1] ""
-
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:209
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:61
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:166
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:66
 msgid "GitHub Repo"
 msgstr "GitHub रेपो"
 
@@ -184,55 +201,79 @@ msgid "Home"
 msgstr "होम"
 
 #: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:56
+msgid "Keyring"
+msgstr "कीरिंग"
+
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:57
+msgid "Downloads"
+msgstr "डाउनलोड्स"
+
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:58
+msgid "Downloading"
+msgstr "डाउनलोड हो रहा है"
+
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:59
+msgid "Queued"
+msgstr "कतारबद्ध"
+
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:60
+msgid "Completed"
+msgstr "पूरा हुआ"
+
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:61
 msgid "Help"
 msgstr "सहायता"
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:57
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:62
 msgid "Check for Updates"
 msgstr "अपडेट के लिए जांचें"
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:58
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:257
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:63
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:289
 msgid "Credits"
 msgstr "श्रेय"
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:59
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:64
 msgid "Copy Debug Information"
 msgstr "डिबग जानकारी कॉपी करें"
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:60
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:65
 msgid "Changelog"
 msgstr "चेंजलॉग"
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:62
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:67
 msgid "Report a Bug"
 msgstr "खराबी की जानकारी दें"
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:63
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:68
 msgid "Discussions"
 msgstr "चर्चाएँ"
 
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:69
+msgid "History"
+msgstr "इतिहास"
+
 #. Localize Strings
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:64
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:70
 #: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:19
 msgid "Settings"
 msgstr "सेटिंग्स"
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:80
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:88
 msgid "Preview"
 msgstr ""
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:178
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:186
 msgid "Update"
 msgstr "अपडेट"
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:235
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:267
 #, fuzzy
 msgid "Debug information copied to clipboard."
 msgstr "डाउनलोड लॉग को क्लिपबोर्ड पर कॉपी किया गया था।"
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:260
-#, fuzzy
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:292
+#, fuzzy, c++-format
 msgid ""
 "Developers:\n"
 "{}\n"
@@ -253,8 +294,8 @@ msgstr ""
 "अनुवादक:\n"
 "{3}"
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:264
-#, fuzzy
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:296
+#, fuzzy, c++-format
 msgid ""
 "Developers:\n"
 "{}\n"
@@ -292,6 +333,10 @@ msgstr "चालू"
 #: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:27
 msgid "Off"
 msgstr "बंद"
+
+#, fuzzy
+#~ msgid "Open Folder (Ctrl+O)"
+#~ msgstr "फोल्डर खोलें"
 
 #, fuzzy
 #~ msgid "Folder"
@@ -356,12 +401,6 @@ msgstr "बंद"
 #~ msgid "Add a login to get started."
 #~ msgstr "आरंभ करने के लिए एक लॉगिन जोड़ें।"
 
-#~ msgid "Add a video, audio, or playlist URL to start downloading"
-#~ msgstr "डाउनलोड करना शुरू करने के लिए एक वीडियो, ऑडियो या प्लेलिस्ट URL जोड़ें"
-
-#~ msgid "Add Download"
-#~ msgstr "डाउनलोड जोड़ें"
-
 #~ msgid "Add Login"
 #~ msgstr "लॉगिन जोड़ें"
 
@@ -389,9 +428,6 @@ msgstr "बंद"
 #~ msgid "Back"
 #~ msgstr "वापस"
 
-#~ msgid "Best"
-#~ msgstr "श्रेष्ठ"
-
 #~ msgid "Cancel"
 #~ msgstr "रद्द"
 
@@ -417,9 +453,6 @@ msgstr "बंद"
 
 #~ msgid "Comma separated list"
 #~ msgstr "अल्पविराम से अलग की गई सूची"
-
-#~ msgid "Completed"
-#~ msgstr "पूरा हुआ"
 
 #~ msgid "Completed Notification Trigger"
 #~ msgstr "पूर्ण अधिसूचना ट्रिगर"
@@ -498,14 +531,8 @@ msgstr "बंद"
 #~ msgid "Disallow Conversions"
 #~ msgstr "परिवर्तनों को अस्वीकार करें"
 
-#~ msgid "Disclaimer"
-#~ msgstr "अस्वीकरण"
-
 #~ msgid "Documentation"
 #~ msgstr "दस्तावेज़ीकरण"
-
-#~ msgid "Don't show this message again"
-#~ msgstr "यह संदेश दोबारा न दिखाएं"
 
 #~ msgid "Download"
 #~ msgstr "डाउनलोड"
@@ -518,9 +545,6 @@ msgstr "बंद"
 
 #~ msgid "Download Finished With Error"
 #~ msgstr "डाउनलोड त्रुटि के साथ समाप्त हुआ"
-
-#~ msgid "Download Media"
-#~ msgstr "मीडिया डाउनलोड करें"
 
 #~ msgid "Download Specific Timeframe"
 #~ msgstr "विशिष्ट समय सीमा में डाउनलोड करें"
@@ -537,18 +561,12 @@ msgstr "बंद"
 #~ msgid "Downloader"
 #~ msgstr "डाउनलोडर"
 
-#~ msgid "Downloading"
-#~ msgstr "डाउनलोड हो रहा है"
-
 #, csharp-format
 #~ msgid "Downloading {0:f2}% ({1})"
 #~ msgstr "डाउनलोड हो रहा है {0:f2}% ({1})"
 
 #~ msgid "Downloading..."
 #~ msgstr "डाउनलोड हो रहा है…"
-
-#~ msgid "Downloads"
-#~ msgstr "डाउनलोड्स"
 
 #~ msgid "Downloads Finished"
 #~ msgstr "डाउनलोड्स समाप्त"
@@ -626,9 +644,6 @@ msgstr "बंद"
 #~ msgid "Firefox"
 #~ msgstr "Firefox"
 
-#~ msgid "History"
-#~ msgstr "इतिहास"
-
 #~ msgid ""
 #~ "If disabled or if embedding fails, downloaded subtitles will be saved to "
 #~ "a separate file instead"
@@ -660,9 +675,6 @@ msgstr "बंद"
 
 #~ msgid "Include Auto-Generated Subtitles"
 #~ msgstr "ऑटो-निर्मित उपशीर्षक शामिल करें"
-
-#~ msgid "Keyring"
-#~ msgstr "कीरिंग"
 
 #~ msgid "Keyring Credential"
 #~ msgstr "कीरिंग क्रेडेंशियल्स"
@@ -806,9 +818,6 @@ msgstr "बंद"
 #~ msgid "Quality"
 #~ msgstr "गुणवत्ता"
 
-#~ msgid "Queued"
-#~ msgstr "कतारबद्ध"
-
 #~ msgid "Remove Source Data"
 #~ msgstr "स्रोत डेटा हटाएँ"
 
@@ -902,15 +911,6 @@ msgstr "बंद"
 
 #~ msgid "Success"
 #~ msgstr "सफलता"
-
-#~ msgid ""
-#~ "The authors of Nickvision Parabolic are not responsible/liable for any "
-#~ "misuse of this program that may violate local copyright/DMCA laws. Users "
-#~ "use this application at their own risk."
-#~ msgstr ""
-#~ "Nickvision Parabolic के लेखक इस कार्यक्रम के किसी भी दुरुपयोग के लिए जिम्मेदार/"
-#~ "उत्तरदायी नहीं हैं जो स्थानीय कॉपीराइट/DMCA कानूनों का उल्लंघन कर सकता है। "
-#~ "उपयोगकर्ता इस एप्लिकेशन का उपयोग अपने जोखिम पर करते हैं।"
 
 #~ msgid "The minimum size of which to split a file (in MiB)."
 #~ msgstr "किसी फाइल को विभाजित करने के लिए न्यूनतम आकार (MiB में)।"

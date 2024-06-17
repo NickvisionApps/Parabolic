@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-06-16 12:21-0400\n"
+"POT-Creation-Date: 2024-06-17 12:53-0400\n"
 "PO-Revision-Date: 2024-04-08 20:37+0000\n"
 "Last-Translator: twlvnn <kraft_werk@tutanota.com>\n"
 "Language-Team: Bulgarian <https://hosted.weblate.org/projects/nickvision-"
@@ -48,15 +48,30 @@ msgstr "David Lapshin"
 msgid "translator-credits"
 msgstr "twlvnn <kraft_werk@tutanota.com>"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:182
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:168
+msgid ""
+"The authors of Nickvision Parabolic are not responsible/liable for any "
+"misuse of this program that may violate local copyright/DMCA laws. Users use "
+"this application at their own risk."
+msgstr ""
+"Авторите на „Nickvision Parabolic“ не носят отговорност за злоупотреба с "
+"тази програма, която може да наруши местните закони за авторското право/"
+"DMCA. Потребителите използват това приложение на свой собствен риск."
+
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:197
 #, fuzzy
 msgid "New update available"
 msgstr "Налично е ново обновление."
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:214
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:229
 #, fuzzy
 msgid "Unable to download and install update"
 msgstr "Неуспешно изтегляне и инсталиране на обновленията."
+
+#: libparabolic/src/models/videoresolution.cpp:19
+#: libparabolic/src/models/videoresolution.cpp:57
+msgid "Best"
+msgstr "Най-добро"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:5
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:8
@@ -73,30 +88,26 @@ msgstr "Клавишни комбинации"
 msgid "About Parabolic"
 msgstr "Относно „Parabolic“"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:21
-#, fuzzy
-msgid "Open Folder (Ctrl+O)"
-msgstr "Отваряне на папка"
-
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:26
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:59
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:136
-#, fuzzy
-msgid "Open"
-msgstr "Отваряне на файл"
-
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:34
-msgid "Close Folder (Ctrl+W)"
-msgstr ""
-
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:43
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:23
 msgid "Main Menu"
 msgstr "Основно меню"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:57
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:65
-msgid "Open a folder (or drag one into the app) to get started"
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:37
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:71
+msgid "Download Media"
+msgstr "Изтегляне на медия"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:38
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:72
+msgid "Add a video, audio, or playlist URL to start downloading"
 msgstr ""
+"Добавете видео клип, звук, или адрес към списък с песни за да започнете "
+"изтеглянето"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:40
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:73
+msgid "Add Download"
+msgstr "Добавяне на ново изтегляне"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:12
 msgid "User Interface"
@@ -132,8 +143,6 @@ msgid "Folder"
 msgstr "Отваряне на папка"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/shortcuts_dialog.blp:16
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:159
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:66
 msgid "Open Folder"
 msgstr "Отваряне на папка"
 
@@ -157,19 +166,29 @@ msgstr "Приложение"
 msgid "Quit"
 msgstr "Спиране на програмата"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:127
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:266
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:106
+#, fuzzy
+msgid "Open"
+msgstr "Отваряне на файл"
+
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:111
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:214
+msgid "Disclaimer"
+msgstr "Отказване от права"
+
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:112
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:203
+msgid "Don't show this message again"
+msgstr "Това съобщение да не се показва повече"
+
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:113
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:216
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:298
 msgid "Close"
 msgstr "Затваряне"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:145
-msgid "There is {} file in the folder."
-msgid_plural "There are {} files in the folder."
-msgstr[0] ""
-msgstr[1] ""
-
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:209
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:61
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:166
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:66
 msgid "GitHub Repo"
 msgstr "GitHub проект"
 
@@ -184,55 +203,79 @@ msgid "Home"
 msgstr "Начало"
 
 #: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:56
+msgid "Keyring"
+msgstr "Ключодържател"
+
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:57
+msgid "Downloads"
+msgstr "Изтегляния"
+
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:58
+msgid "Downloading"
+msgstr "Изтегляне"
+
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:59
+msgid "Queued"
+msgstr "В опашката"
+
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:60
+msgid "Completed"
+msgstr "Завършено"
+
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:61
 msgid "Help"
 msgstr "Помощ"
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:57
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:62
 msgid "Check for Updates"
 msgstr "Проверка за обновления"
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:58
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:257
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:63
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:289
 msgid "Credits"
 msgstr "Сътрудници"
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:59
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:64
 msgid "Copy Debug Information"
 msgstr "Копиране на информация за тестваща програма"
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:60
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:65
 msgid "Changelog"
 msgstr "Дневник на промените"
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:62
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:67
 msgid "Report a Bug"
 msgstr "Докладване на грешка"
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:63
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:68
 msgid "Discussions"
 msgstr "Дискусии"
 
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:69
+msgid "History"
+msgstr "История"
+
 #. Localize Strings
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:64
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:70
 #: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:19
 msgid "Settings"
 msgstr "Настройки"
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:80
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:88
 msgid "Preview"
 msgstr ""
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:178
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:186
 msgid "Update"
 msgstr "Обновяване"
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:235
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:267
 #, fuzzy
 msgid "Debug information copied to clipboard."
 msgstr "Журнал за изтегляне е копиран в буфера за обмен."
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:260
-#, fuzzy
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:292
+#, fuzzy, c++-format
 msgid ""
 "Developers:\n"
 "{}\n"
@@ -253,8 +296,8 @@ msgstr ""
 "Преводачите:\n"
 "{3}"
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:264
-#, fuzzy
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:296
+#, fuzzy, c++-format
 msgid ""
 "Developers:\n"
 "{}\n"
@@ -292,6 +335,10 @@ msgstr "Вкл."
 #: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:27
 msgid "Off"
 msgstr "Изкл."
+
+#, fuzzy
+#~ msgid "Open Folder (Ctrl+O)"
+#~ msgstr "Отваряне на папка"
 
 #, fuzzy
 #~ msgid "Folder"
@@ -356,14 +403,6 @@ msgstr "Изкл."
 #~ msgid "Add a login to get started."
 #~ msgstr "Добавете профил, за да започнете."
 
-#~ msgid "Add a video, audio, or playlist URL to start downloading"
-#~ msgstr ""
-#~ "Добавете видео клип, звук, или адрес към списък с песни за да започнете "
-#~ "изтеглянето"
-
-#~ msgid "Add Download"
-#~ msgstr "Добавяне на ново изтегляне"
-
 #~ msgid "Add Login"
 #~ msgstr "Добавяне на профил"
 
@@ -390,9 +429,6 @@ msgstr "Изкл."
 
 #~ msgid "Back"
 #~ msgstr "Назад"
-
-#~ msgid "Best"
-#~ msgstr "Най-добро"
 
 #~ msgid "Cancel"
 #~ msgstr "Отказване"
@@ -421,9 +457,6 @@ msgstr "Изкл."
 
 #~ msgid "Comma separated list"
 #~ msgstr "Списък, разделен със запетая"
-
-#~ msgid "Completed"
-#~ msgstr "Завършено"
 
 #~ msgid "Completed Notification Trigger"
 #~ msgstr "Превключване на известието при завършено изтегляне"
@@ -505,14 +538,8 @@ msgstr "Изкл."
 #~ msgid "Disallow Conversions"
 #~ msgstr "Без преобразувания"
 
-#~ msgid "Disclaimer"
-#~ msgstr "Отказване от права"
-
 #~ msgid "Documentation"
 #~ msgstr "Документация"
-
-#~ msgid "Don't show this message again"
-#~ msgstr "Това съобщение да не се показва повече"
 
 #~ msgid "Download"
 #~ msgstr "Изтегляне"
@@ -525,9 +552,6 @@ msgstr "Изкл."
 
 #~ msgid "Download Finished With Error"
 #~ msgstr "Изтеглянето приключи с грешка"
-
-#~ msgid "Download Media"
-#~ msgstr "Изтегляне на медия"
 
 #~ msgid "Download Specific Timeframe"
 #~ msgstr "Изтегляне на конкретна времева рамка"
@@ -544,18 +568,12 @@ msgstr "Изкл."
 #~ msgid "Downloader"
 #~ msgstr "Изтегляне"
 
-#~ msgid "Downloading"
-#~ msgstr "Изтегляне"
-
 #, csharp-format
 #~ msgid "Downloading {0:f2}% ({1})"
 #~ msgstr "Изтегляне {0:f2}% ({1})"
 
 #~ msgid "Downloading..."
 #~ msgstr "Изтегляне..."
-
-#~ msgid "Downloads"
-#~ msgstr "Изтегляния"
 
 #~ msgid "Downloads Finished"
 #~ msgstr "Изтеглянията приключиха"
@@ -633,9 +651,6 @@ msgstr "Изкл."
 #~ msgid "Firefox"
 #~ msgstr "Firefox"
 
-#~ msgid "History"
-#~ msgstr "История"
-
 #~ msgid ""
 #~ "If disabled or if embedding fails, downloaded subtitles will be saved to "
 #~ "a separate file instead"
@@ -668,9 +683,6 @@ msgstr "Изкл."
 
 #~ msgid "Include Auto-Generated Subtitles"
 #~ msgstr "Включване на автоматично генерирани субтитри"
-
-#~ msgid "Keyring"
-#~ msgstr "Ключодържател"
 
 #~ msgid "Keyring Credential"
 #~ msgstr "Данни за идентификация на ключодържателят"
@@ -817,9 +829,6 @@ msgstr "Изкл."
 #~ msgid "Quality"
 #~ msgstr "Качество"
 
-#~ msgid "Queued"
-#~ msgstr "В опашката"
-
 #~ msgid "Remove Source Data"
 #~ msgstr "Премахване на данните от източника"
 
@@ -913,15 +922,6 @@ msgstr "Изкл."
 
 #~ msgid "Success"
 #~ msgstr "Успех"
-
-#~ msgid ""
-#~ "The authors of Nickvision Parabolic are not responsible/liable for any "
-#~ "misuse of this program that may violate local copyright/DMCA laws. Users "
-#~ "use this application at their own risk."
-#~ msgstr ""
-#~ "Авторите на „Nickvision Parabolic“ не носят отговорност за злоупотреба с "
-#~ "тази програма, която може да наруши местните закони за авторското право/"
-#~ "DMCA. Потребителите използват това приложение на свой собствен риск."
 
 #~ msgid "The minimum size of which to split a file (in MiB)."
 #~ msgstr "Минималният размер, с който се разделя даден файл (в МБ)."
