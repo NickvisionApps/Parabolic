@@ -28,7 +28,7 @@ jobs:
         uses: johnwason/vcpkg-action@v6
         id: vcpkg
         with:
-          pkgs: libnick
+          pkgs: boost-date-time libnick
           triplet: x64-windows
           revision: 104d435187f499323cf9aab78e3f10fced5635d1
           token: ${{ secrets.GITHUB_TOKEN }}

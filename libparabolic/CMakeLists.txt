@@ -6,6 +6,8 @@ add_library(libparabolic
     "src/controllers/mainwindowcontroller.cpp"
     "src/controllers/preferencesviewcontroller.cpp"
     "src/models/configuration.cpp"
+    "src/models/downloadhistory.cpp"
+    "src/models/historicdownload.cpp"
     "src/models/mediafiletype.cpp"
     "src/models/videoresolution.cpp")
 target_include_directories(libparabolic PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/include")
@@ -17,7 +19,8 @@ else()
 endif()
 
 find_package(libnick CONFIG REQUIRED)
-target_link_libraries(libparabolic PUBLIC libnick::libnick)
+find_package(Boost REQUIRED COMPONENTS date_time)
+target_link_libraries(libparabolic PUBLIC libnick::libnick Boost::boost Boost::date_time)
 
 add_custom_target(shared_commands ALL DEPENDS "${CMAKE_CURRENT_BINARY_DIR}/__shared.h")
 add_custom_command(OUTPUT "${CMAKE_CURRENT_BINARY_DIR}/__shared.h" "${CMAKE_CURRENT_BINARY_DIR}/shared.h" COMMAND "${CMAKE_COMMAND}" -E touch "${CMAKE_CURRENT_BINARY_DIR}/shared.h")

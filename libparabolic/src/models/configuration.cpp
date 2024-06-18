@@ -7,6 +7,7 @@ namespace Nickvision::TubeConverter::Shared::Models
     Configuration::Configuration(const std::string& key)
         : ConfigurationBase{ key }
     {
+        
     }
 
     Theme Configuration::getTheme() const

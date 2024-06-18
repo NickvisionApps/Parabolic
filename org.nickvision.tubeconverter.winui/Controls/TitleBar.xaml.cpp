@@ -171,7 +171,7 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Controls::implementation
         Windows::Foundation::Rect boundsSearch{ transformSearch.TransformBounds({ 0, 0, static_cast<float>(AsbSearch().ActualWidth()), static_cast<float>(AsbSearch().ActualHeight()) }) };
         RectInt32 searchBoxRect{ static_cast<int>(std::round(boundsSearch.X * scaleAdjustment)), static_cast<int>(std::round(boundsSearch.Y * scaleAdjustment)), static_cast<int>(std::round(boundsSearch.Width * scaleAdjustment)), static_cast<int>(std::round(boundsSearch.Height * scaleAdjustment)) };
         std::vector<RectInt32> rects;
-        if(AsbSearch().Visibility() == Visibility::Visible)
+        if(SearchVisibility() == Visibility::Visible)
         {
             rects.push_back(searchBoxRect);
         }

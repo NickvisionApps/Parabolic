@@ -3,8 +3,8 @@
 
 #include "includes.h"
 #include <memory>
-#include "Controls/TitleBar.g.h"
 #include "Controls/StatusPage.g.h"
+#include "Controls/TitleBar.g.h"
 #include "Controls/ViewStack.g.h"
 #include "Controls/ViewStackPage.g.h"
 #include "MainWindow.g.h"
@@ -79,6 +79,11 @@ namespace winrt::Nickvision::TubeConverter::WinUI::implementation
          */
         void OnNavViewItemTapped(const IInspectable& sender, const Microsoft::UI::Xaml::Input::TappedRoutedEventArgs& args);
         /**
+         * @brief Handles when the history is changed.
+         * @param args Nickvision::Events::ParamEventArgs<std::vector<Models::HistoricDownload>>
+         */
+        void OnHistoryChanged(const ::Nickvision::Events::ParamEventArgs<std::vector<::Nickvision::TubeConverter::Shared::Models::HistoricDownload>>& args);
+        /**
          * @brief Checks for an update to the application.
          * @param sender IInspectable
          * @param args Microsoft::UI::Xaml::RoutedEventArgs
@@ -120,6 +125,12 @@ namespace winrt::Nickvision::TubeConverter::WinUI::implementation
          * @param args Microsoft::UI::Xaml::RoutedEventArgs
          */
         Windows::Foundation::IAsyncAction Discussions(const IInspectable& sender, const Microsoft::UI::Xaml::RoutedEventArgs& args);
+        /**
+         * @brief Clears the download history.
+         * @param sender IInspectable
+         * @param args Microsoft::UI::Xaml::RoutedEventArgs
+         */
+        void ClearHistory(const IInspectable& sender, const Microsoft::UI::Xaml::RoutedEventArgs& args);
 
     private:
         std::shared_ptr<::Nickvision::TubeConverter::Shared::Controllers::MainWindowController> m_controller;

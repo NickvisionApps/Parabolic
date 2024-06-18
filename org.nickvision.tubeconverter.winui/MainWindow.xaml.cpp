@@ -9,6 +9,7 @@
 #include <libnick/notifications/shellnotification.h>
 #include <libnick/localization/gettext.h>
 #include "SettingsPage.xaml.h"
+#include "Controls/SettingsRow.xaml.h"
 
 using namespace ::Nickvision;
 using namespace ::Nickvision::App;
@@ -71,6 +72,8 @@ namespace winrt::Nickvision::TubeConverter::WinUI::implementation
         StatusPageHome().Title(winrt::to_hstring(_("Download Media")));
         StatusPageHome().Description(winrt::to_hstring(_("Add a video, audio, or playlist URL to start downloading")));
         HomeAddDownloadButtonLabel().Text(winrt::to_hstring(_("Add Download")));
+        LblHistoryTitle().Text(winrt::to_hstring(_("History")));
+        LblClearHistory().Text(winrt::to_hstring(_("Clear History")));
     }
 
     void MainWindow::SetController(const std::shared_ptr<MainWindowController>& controller, ElementTheme systemTheme)
@@ -83,6 +86,7 @@ namespace winrt::Nickvision::TubeConverter::WinUI::implementation
         m_controller->notificationSent() += [&](const NotificationSentEventArgs& args) { OnNotificationSent(args); };
         m_controller->shellNotificationSent() += [&](const ShellNotificationSentEventArgs& args) { OnShellNotificationSent(args); };
         m_controller->disclaimerTriggered() += [&](const ParamEventArgs<std::string>& args) { OnDisclaimerTriggered(args); };
+        m_controller->historyChanged() += [&](const ParamEventArgs<std::vector<HistoricDownload>>& args) { OnHistoryChanged(args); };
         //Localize Strings
         TitleBar().Title(winrt::to_hstring(m_controller->getAppInfo().getShortName()));
         TitleBar().Subtitle(m_controller->isDevVersion() ? winrt::to_hstring(_("Preview")) : L"");
@@ -235,12 +239,62 @@ namespace winrt::Nickvision::TubeConverter::WinUI::implementation
         {
             ViewStack().CurrentPage(tag);
         }
-        TitleBar().SearchVisibility(tag == L"Folder" ? Visibility::Visible : Visibility::Collapsed);
     }
 
     void MainWindow::OnNavViewItemTapped(const IInspectable& sender, const TappedRoutedEventArgs& args)
     {
         FlyoutBase::ShowAttachedFlyout(sender.as<FrameworkElement>());
+    }
+
+    void MainWindow::OnHistoryChanged(const ParamEventArgs<std::vector<HistoricDownload>>& args)
+    {
+        ListHistory().Children().Clear();
+        for(const HistoricDownload& download : args.getParam())
+        {
+            //Delete button
+            FontIcon iconDelete;
+            iconDelete.FontFamily(FontFamily{ L"Segoe Fluent Icons" });
+            iconDelete.FontSize(16);
+            iconDelete.Glyph(L"\uE74D");
+            Button btnDelete;
+            ToolTipService::SetToolTip(btnDelete, winrt::box_value(winrt::to_hstring(_("Delete"))));
+            btnDelete.Content(iconDelete);
+            btnDelete.Click([this, download](const IInspectable& sender, const RoutedEventArgs& args)
+            {
+                m_controller->removeHistoricDownload(download);
+            });
+            //Download button
+            FontIcon iconDownload;
+            iconDownload.FontFamily(FontFamily{ L"Segoe Fluent Icons" });
+            iconDownload.FontSize(16);
+            iconDownload.Glyph(L"\uE896");
+            Button btnDownload;
+            ToolTipService::SetToolTip(btnDownload, winrt::box_value(winrt::to_hstring(_("Download Again"))));
+            btnDownload.Content(iconDownload);
+            btnDownload.Click([this, download](const IInspectable& sender, const RoutedEventArgs& args)
+            {
+                //TODO
+            });
+            //Button panel
+            StackPanel panel;
+            panel.Orientation(Orientation::Horizontal);
+            panel.Spacing(6);
+            panel.Children().Append(btnDownload);
+            panel.Children().Append(btnDelete);
+            //Row
+            Controls::SettingsRow row{ winrt::make<Controls::implementation::SettingsRow>() };
+            row.Title(winrt::to_hstring(download.getTitle()));
+            row.Description(winrt::to_hstring(download.getUrl()));
+            row.Child(panel);
+            ListHistory().Children().Append(row);
+        }
+        if(args.getParam().empty())
+        {
+            Controls::SettingsRow row{ winrt::make<Controls::implementation::SettingsRow>() };
+            row.Title(winrt::to_hstring(_("No history available")));
+            row.Glyph(L"\uE81C");
+            ListHistory().Children().Append(row);
+        }
     }
 
     void MainWindow::CheckForUpdates(const IInspectable& sender, const RoutedEventArgs& args)
@@ -300,5 +354,10 @@ namespace winrt::Nickvision::TubeConverter::WinUI::implementation
         dialog.RequestedTheme(MainGrid().ActualTheme());
         dialog.XamlRoot(MainGrid().XamlRoot());
         co_await dialog.ShowAsync();
+    }
+
+    void MainWindow::ClearHistory(const IInspectable& sender, const RoutedEventArgs& args)
+    {
+        m_controller->clearHistory();
     }
 }

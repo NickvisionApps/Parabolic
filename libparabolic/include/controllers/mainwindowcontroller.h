@@ -19,6 +19,7 @@
 #include <libnick/update/updater.h>
 #include "controllers/preferencesviewcontroller.h"
 #include "models/theme.h"
+#include "models/historicdownload.h"
 
 namespace Nickvision::TubeConverter::Shared::Controllers
 {
@@ -79,6 +80,11 @@ namespace Nickvision::TubeConverter::Shared::Controllers
          */
         Nickvision::Events::Event<Nickvision::Events::ParamEventArgs<std::string>>& disclaimerTriggered();
         /**
+         * @brief Gets the event for when the history is changed.
+         * @return The history changed event
+         */
+        Nickvision::Events::Event<Nickvision::Events::ParamEventArgs<std::vector<Models::HistoricDownload>>>& historyChanged();
+        /**
          * @brief Gets the debugging information for the application.
          * @param extraInformation Extra, ui-specific, information to include in the debug info statement
          * @return The application's debug information
@@ -122,6 +128,15 @@ namespace Nickvision::TubeConverter::Shared::Controllers
          */
         void connectTaskbar(const std::string& desktopFile);
 #endif
+        /**
+         * @brief Clears all historic downloads from the history.
+         */
+        void clearHistory();
+        /**
+         * @brief Removes a historic download from the history.
+         * @param download The download to remove
+         */
+        void removeHistoricDownload(const Models::HistoricDownload& download);
 
     private:
         /**
@@ -137,6 +152,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         Nickvision::Events::Event<Nickvision::Notifications::NotificationSentEventArgs> m_notificationSent;
         Nickvision::Events::Event<Nickvision::Notifications::ShellNotificationSentEventArgs> m_shellNotificationSent;
         Nickvision::Events::Event<Nickvision::Events::ParamEventArgs<std::string>> m_disclaimerTriggered;
+        Nickvision::Events::Event<Nickvision::Events::ParamEventArgs<std::vector<Models::HistoricDownload>>> m_historyChanged;
     };
 }
 

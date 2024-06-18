@@ -68,10 +68,13 @@ parts:
     plugin: nil
     stage-packages:
       - libjsoncpp25
+      - libboost-date-time1.74.0
       - libstdc++6
     prime:
       - usr/lib/${CRAFT_ARCH_TRIPLET_BUILD_FOR}/libstdc++*.so*
       - usr/lib/${CRAFT_ARCH_TRIPLET_BUILD_FOR}/libjsoncpp*
+      - usr/lib/${CRAFT_ARCH_TRIPLET_BUILD_FOR}/libboost_date_time.so.1.74.0
+      - usr/lib/${CRAFT_ARCH_TRIPLET_BUILD_FOR}/libboost_thread.so.1.74.0
 
   maddy:
     after: [build-deps]

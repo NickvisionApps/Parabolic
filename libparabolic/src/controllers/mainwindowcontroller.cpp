@@ -10,6 +10,7 @@
 #include <libnick/helpers/stringhelpers.h>
 #include <libnick/localization/gettext.h>
 #include "models/configuration.h"
+#include "models/downloadhistory.h"
 #ifdef _WIN32
 #include <windows.h>
 #endif
@@ -92,6 +93,11 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         return m_disclaimerTriggered;
     }
 
+    Event<ParamEventArgs<std::vector<HistoricDownload>>>& MainWindowController::historyChanged()
+    {
+        return m_historyChanged;
+    }
+
     std::string MainWindowController::getDebugInformation(const std::string& extraInformation) const
     {
         std::stringstream builder;
@@ -163,10 +169,16 @@ namespace Nickvision::TubeConverter::Shared::Controllers
             checkForUpdates();
         }
 #endif
+        //Check if disclaimer should be shown
         if(Aura::getActive().getConfig<Configuration>("config").getShowDisclaimerOnStartup())
         {
             m_disclaimerTriggered.invoke({ _("The authors of Nickvision Parabolic are not responsible/liable for any misuse of this program that may violate local copyright/DMCA laws. Users use this application at their own risk.") });
         }
+        //Load history
+        Aura::getActive().getLogger().log(Logging::LogLevel::Debug, "Loading historic downloads...");
+        DownloadHistory& history{ Aura::getActive().getConfig<DownloadHistory>("history") };
+        Aura::getActive().getLogger().log(Logging::LogLevel::Info, "Loaded " + std::to_string(history.getHistory().size()) + " historic downloads.");
+        m_historyChanged.invoke(history.getHistory());
         m_started = true;
         Aura::getActive().getLogger().log(Logging::LogLevel::Debug, "MainWindow started.");
     }
@@ -256,4 +268,22 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         }
     }
 #endif
+
+    void MainWindowController::clearHistory()
+    {
+        DownloadHistory& history{ Aura::getActive().getConfig<DownloadHistory>("history") };
+        if(history.clear())
+        {
+            m_historyChanged.invoke(history.getHistory());
+        }
+    }
+
+    void MainWindowController::removeHistoricDownload(const HistoricDownload& download)
+    {
+        DownloadHistory& history{ Aura::getActive().getConfig<DownloadHistory>("history") };
+        if(history.removeDownload(download))
+        {
+            m_historyChanged.invoke(history.getHistory());
+        }
+    }
 }

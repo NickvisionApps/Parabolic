@@ -186,6 +186,34 @@
 
                             </Grid>
                         </nickvision:ViewStackPage>
+
+                        <nickvision:ViewStackPage PageName="History">
+                            <Grid RowSpacing="12">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+
+                                <TextBlock x:Name="LblHistoryTitle" Grid.Row="0" Margin="40,24,40,0" Style="{ThemeResource NavigationViewItemHeaderTextStyle}" FontSize="26"/>
+
+                                <StackPanel Grid.Row="1" Margin="40,12,40,0" Orientation="Horizontal" Spacing="6">
+                                    <Button x:Name="BtnClearHistory" Style="{ThemeResource AccentButtonStyle}" Click="ClearHistory">
+                                        <Button.Content>
+                                            <StackPanel Orientation="Horizontal" Spacing="6">
+                                                <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" FontSize="16" Glyph="&#xE74D;"/>
+
+                                                <TextBlock x:Name="LblClearHistory"/>
+                                            </StackPanel>
+                                        </Button.Content>
+                                    </Button>
+                                </StackPanel>
+
+                                <ScrollView Grid.Row="2" VerticalScrollBarVisibility="Auto">
+                                    <StackPanel x:Name="ListHistory" Margin="40,0,40,12" Orientation="Vertical" Spacing="6"/>
+                                </ScrollView>
+                            </Grid>
+                        </nickvision:ViewStackPage>
                     </nickvision:ViewStack.Pages>
                 </nickvision:ViewStack>
 
