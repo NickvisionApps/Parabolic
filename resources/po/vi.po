@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-06-17 12:53-0400\n"
+"POT-Creation-Date: 2024-06-17 22:52-0400\n"
 "PO-Revision-Date: 2024-02-15 17:02+0000\n"
 "Last-Translator: Kinten Le <kinten108101@protonmail.com>\n"
 "Language-Team: Vietnamese <https://hosted.weblate.org/projects/nickvision-"
@@ -112,27 +112,265 @@ msgid "User Interface"
 msgstr "Giao diện"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:15
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:21
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:24
 msgid "Theme"
 msgstr "Chủ đề"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:17
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:22
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:25
 msgctxt "Theme"
 msgid "Light"
 msgstr "Sáng"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:17
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:23
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:26
 msgctxt "Theme"
 msgid "Dark"
 msgstr "Tối"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:17
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:24
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:27
 msgctxt "Theme"
 msgid "System"
 msgstr "Hệ thống"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:27
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:31
+msgid "Completed Notification Trigger"
+msgstr "Điều kiện phát thông báo hoàn tất"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:29
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:32
+#, fuzzy
+msgid "For each download"
+msgstr "Cho từng lượt tải"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:29
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:33
+#, fuzzy
+msgid "When all downloads finish"
+msgstr "Khi đã tải xong tất cả"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:29
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:34
+#, fuzzy
+msgid "Never"
+msgstr "Không bao giờ"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:39
+#, fuzzy
+msgid "Prevent Suspend"
+msgstr "Chống máy rơi vào chế độ tạm dừng"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:49
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:57
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:38
+#, fuzzy
+msgid "Downloads"
+msgstr "Downloads"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:52
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:39
+msgid "Overwrite Existing Files"
+msgstr "Ghi đè tệp đã tồn tại"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:61
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:40
+msgid "Max Number of Active Downloads"
+msgstr "Số lượt tải tối đa dược chạy cùng một lúc"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:77
+msgid "Limit Filename Characters"
+msgstr "Giới hạn ký tự khi đặt tên tệp tin"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:78
+msgid "Restricts characters in filenames to only those supported by Windows."
+msgstr "Chỉ sử dụng các ký tự dành cho tên tệp tin trong Windows."
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:87
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:45
+msgid "Include Auto-Generated Subtitles"
+msgstr "Bao gồm phụ đề tự động"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:97
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:48
+msgid "Downloader"
+msgstr "Trình tải"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:100
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:49
+msgid "Speed Limit"
+msgstr "Giới hạn tốc độ"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:101
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:50
+msgid ""
+"This limit (in KiB/s) is applied to downloads that have speed limit enabled. "
+"Changing the value doesn't affect already running downloads."
+msgstr ""
+"Giới hạn này (tính bằng KiB/s) được áp dụng đối với các mục tải xuống có bật "
+"giới hạn tốc độ. Thay đổi giá trị này không ảnh hưởng đến những mục tải "
+"xuống đang chạy."
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:117
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:51
+msgid "Use SponsorBlock for YouTube"
+msgstr "Sử dụng SponsorBlock đối với YouTube"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:126
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:54
+msgid "Proxy URL"
+msgstr "URL của proxy"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:135
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:56
+msgid "Cookies File"
+msgstr "Tệp cookie"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:136
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:57
+#, fuzzy
+msgid ""
+"A cookies file can be provided to Parabolic to allow downloading media that "
+"requires a login."
+msgstr ""
+"Bạn có thể cấp cho yt-dlp một tệp cookie để tải những tệp có yêu cầu đăng "
+"nhập."
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:146
+#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:87
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:58
+msgid "Select Cookies File"
+msgstr "Chọn tệp cookie"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:156
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:59
+msgid "Clear Cookies File"
+msgstr "Xóa tệp cookie"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:166
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:60
+msgid "Cookies File Information"
+msgstr "Thông tin tệp cookie"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:181
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:61
+msgid ""
+"Cookies can be passed to yt-dlp in the form of TXT files. Export cookies "
+"from your browser using the following extensions (use at your own risk):"
+msgstr ""
+"Cookie có thể được truyền vào yt-dlp dưới dạng tệp TXT. Bạn có thể xuất "
+"cookie từ trình duyệt thông qua các extension sau (không đảm bảo an toàn):"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:193
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:62
+msgid "Chrome/Edge"
+msgstr ""
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:202
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:63
+msgid "Firefox"
+msgstr ""
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:220
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:64
+msgid "Converter"
+msgstr "Bộ chuyển đổi"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:223
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:65
+msgid "Disallow Conversions"
+msgstr "Không cho phép chuyển đổi"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:224
+#, fuzzy
+msgid ""
+"If enabled, Parabolic will download the appropriate video/audio format for "
+"the selected quality without converting to other formats. (You will be "
+"unable to select a file format)"
+msgstr ""
+"Nếu bật, Parabolic sẽ tự tải định dạng video/audio thích hợp đối với mức "
+"chất lượng đã chọn mà không chuyển đổi sang định dạng khác. (Bạn sẽ không "
+"thể chọn định dạng của tệp)"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:233
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:69
+msgid "Embed Metadata"
+msgstr "Nhúng siêu dữ liệu"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:242
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:75
+msgid "Embed Chapters"
+msgstr "Nhúng chương"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:251
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:72
+msgid "Embed Subtitles"
+msgstr "Nhúng phụ đề"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:260
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:78
+msgid "Crop Audio Thumbnails"
+msgstr "Cắt thumbnail của audio"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:261
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:79
+#, fuzzy
+msgid ""
+"If enabled, Parabolic will crop the thumbnails of audio files to squares."
+msgstr ""
+"Nếu bật, Parabolic sẽ tự động bật tính năng cắt thumbnail dành cho mục tải "
+"âm thanh"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:271
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:82
+msgid "Remove Source Data"
+msgstr "Xóa dữ liệu nguồn"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:272
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:83
+#, fuzzy
+msgid ""
+"If enabled, Parabolic will clear metadata fields containing the URL and "
+"other identifying information of a download."
+msgstr ""
+"Xóa các trường siêu dữ liệu có ghi URL và các thông tin định danh khác liên "
+"quan đến nguồn gốc của media"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:283
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:86
+#, fuzzy
+msgid "aria2"
+msgstr "Sử dụng aria2"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:286
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:87
+msgid "Use aria2"
+msgstr "Sử dụng aria2"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:287
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:88
+msgid ""
+"Enable to use aria2 downloader. It can be faster, but you will not see "
+"download progress."
+msgstr ""
+"Bật để sử dụng trình tải aria2. Trình tải này có thể nhanh hơn, nhưng bạn sẽ "
+"không thấy tiến trình tải."
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:296
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:91
+msgid "Max Connections Per Server (-x)"
+msgstr "Số kết nối tối đa đối với mỗi máy chủ (-x)"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:313
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:92
+msgid "Minimum Split Size (-k)"
+msgstr "Kích thước tách tối thiểu (-k)"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:314
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:93
+msgid "The minimum size of which to split a file (in MiB)."
+msgstr "Kích thước tối thiểu để tách một tệp tin (tính bằng MiB)."
 
 #: org.nickvision.tubeconverter.gnome/blueprints/shortcuts_dialog.blp:13
 #, fuzzy
@@ -190,6 +428,18 @@ msgstr "Đóng"
 msgid "GitHub Repo"
 msgstr "GitHub Repo"
 
+#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:25
+#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:109
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:112
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:165
+#, fuzzy
+msgid "No file selected"
+msgstr "Chưa chọn tệp nào"
+
+#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:89
+msgid "Text File (*.txt)"
+msgstr ""
+
 #: org.nickvision.tubeconverter.winui/Controls/TitleBar.xaml.cpp:132
 #, fuzzy
 msgid "Search"
@@ -203,11 +453,6 @@ msgstr "Trang chủ"
 #: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:56
 msgid "Keyring"
 msgstr "Keyring"
-
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:57
-#, fuzzy
-msgid "Downloads"
-msgstr "Downloads"
 
 #: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:58
 msgid "Downloading"
@@ -257,7 +502,7 @@ msgstr "Lịch sử"
 
 #. Localize Strings
 #: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:70
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:19
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:22
 #, fuzzy
 msgid "Settings"
 msgstr "Cài đặt"
@@ -299,21 +544,60 @@ msgid ""
 "{}"
 msgstr ""
 
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:20
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:23
 msgid "Appearance & behavior"
 msgstr ""
 
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:25
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:28
 msgid "Automatically Check for Updates"
 msgstr "Tự động kiểm tra bản cập nhật"
 
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:26
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:29
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:36
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:46
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:52
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:67
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:70
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:73
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:76
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:80
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:84
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:89
 msgid "On"
 msgstr "Bật"
 
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:27
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:30
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:37
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:47
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:53
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:68
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:71
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:74
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:77
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:81
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:85
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:90
 msgid "Off"
 msgstr "Tắt"
+
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:35
+#, fuzzy
+msgid "Prevent Suspend When Downloading"
+msgstr "Chống máy rơi vào chế độ tạm dừng"
+
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:55
+msgid "Enter proxy URL here"
+msgstr "Nhập URL của proxy vào đây"
+
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:66
+#, fuzzy
+msgid ""
+"If enabled, Parabolic will download the appropriate video/audio format for "
+"the selected quality without converting to other formats."
+msgstr ""
+"Nếu bật, Parabolic sẽ tự tải định dạng video/audio thích hợp đối với mức "
+"chất lượng đã chọn mà không chuyển đổi sang định dạng khác. (Bạn sẽ không "
+"thể chọn định dạng của tệp)"
 
 #, fuzzy
 #~ msgid "Open Folder (Ctrl+O)"
@@ -377,13 +661,6 @@ msgstr "Tắt"
 #~ msgid_plural "{0} of {1} items"
 #~ msgstr[0] "{0} trên {1} lượt"
 
-#~ msgid ""
-#~ "A cookies file can be provided to yt-dlp to allow downloading media that "
-#~ "requires a login."
-#~ msgstr ""
-#~ "Bạn có thể cấp cho yt-dlp một tệp cookie để tải những tệp có yêu cầu đăng "
-#~ "nhập."
-
 #~ msgid "About"
 #~ msgstr "Thông tin"
 
@@ -429,13 +706,6 @@ msgstr "Tắt"
 #~ msgid "Clear Completed"
 #~ msgstr "Xóa các lượt tải đã hoàn tất"
 
-#~ msgid ""
-#~ "Clear metadata fields containing the URL and other identifying "
-#~ "information of the media source"
-#~ msgstr ""
-#~ "Xóa các trường siêu dữ liệu có ghi URL và các thông tin định danh khác "
-#~ "liên quan đến nguồn gốc của media"
-
 #~ msgid "Clear Queued"
 #~ msgstr "Xóa các lượt tải trong hàng đợi"
 
@@ -445,30 +715,8 @@ msgstr "Tắt"
 #~ msgid "Comma separated list"
 #~ msgstr "Danh sách được phân tách bởi dấu phẩy"
 
-#~ msgid "Completed Notification Trigger"
-#~ msgstr "Điều kiện phát thông báo hoàn tất"
-
-#~ msgid "Converter"
-#~ msgstr "Bộ chuyển đổi"
-
-#~ msgid ""
-#~ "Cookies can be passed to yt-dlp in the form of TXT files. Export cookies "
-#~ "from your browser using the following extensions (use at your own risk):"
-#~ msgstr ""
-#~ "Cookie có thể được truyền vào yt-dlp dưới dạng tệp TXT. Bạn có thể xuất "
-#~ "cookie từ trình duyệt thông qua các extension sau (không đảm bảo an toàn):"
-
-#~ msgid "Cookies File"
-#~ msgstr "Tệp cookie"
-
-#~ msgid "Cookies File Information"
-#~ msgstr "Thông tin tệp cookie"
-
 #~ msgid "Copy to Clipboard"
 #~ msgstr "Chép vào clipboard"
-
-#~ msgid "Crop Audio Thumbnails"
-#~ msgstr "Cắt thumbnail của audio"
 
 #~ msgid "Crop Thumbnail"
 #~ msgstr "Cắt thumbnail"
@@ -519,9 +767,6 @@ msgstr "Tắt"
 #~ "Khi vô hiệu hóa keyring, bạn sẽ đồng thời mất dữ liệu được lưu trữ trong "
 #~ "đó. Bạn có chắc chắn bạn muốn vô hiệu hóa?"
 
-#~ msgid "Disallow Conversions"
-#~ msgstr "Không cho phép chuyển đổi"
-
 #~ msgid "Documentation"
 #~ msgstr "Tài liệu"
 
@@ -549,9 +794,6 @@ msgstr "Tắt"
 #~ msgid "Download using ffmpeg has started"
 #~ msgstr "Bắt đầu tải bằng ffmpeg"
 
-#~ msgid "Downloader"
-#~ msgstr "Trình tải"
-
 #, csharp-format
 #~ msgid "Downloading {0:f2}% ({1})"
 #~ msgstr "Đang tải {0:f2}% ({1})"
@@ -562,24 +804,8 @@ msgstr "Tắt"
 #~ msgid "Downloads Finished"
 #~ msgstr "Các mục tải xuống đã xong"
 
-#~ msgid "Embed Chapters"
-#~ msgstr "Nhúng chương"
-
-#~ msgid "Embed Metadata"
-#~ msgstr "Nhúng siêu dữ liệu"
-
-#~ msgid "Embed Subtitles"
-#~ msgstr "Nhúng phụ đề"
-
 #~ msgid "Enable"
 #~ msgstr "Bật"
-
-#~ msgid ""
-#~ "Enable to use aria2 downloader. It can be faster, but you will not see "
-#~ "download progress."
-#~ msgstr ""
-#~ "Bật để sử dụng trình tải aria2. Trình tải này có thể nhanh hơn, nhưng bạn "
-#~ "sẽ không thấy tiến trình tải."
 
 #~ msgid "End Time"
 #~ msgstr "Thời điểm kết thúc"
@@ -601,9 +827,6 @@ msgstr "Tắt"
 
 #~ msgid "Enter password here"
 #~ msgstr "Nhập mật khẩu vào đây"
-
-#~ msgid "Enter proxy URL here"
-#~ msgstr "Nhập URL của proxy vào đây"
 
 #~ msgid "Enter start timeframe here"
 #~ msgstr "Nhập thời điểm bắt đầu vào đây"
@@ -640,30 +863,11 @@ msgstr "Tắt"
 #~ "lưu trong một tệp riêng"
 
 #~ msgid ""
-#~ "If enabled, Parabolic will automatically turn on the crop thumbnail "
-#~ "advanced option for audio downloads"
-#~ msgstr ""
-#~ "Nếu bật, Parabolic sẽ tự động bật tính năng cắt thumbnail dành cho mục "
-#~ "tải âm thanh"
-
-#~ msgid ""
-#~ "If enabled, Parabolic will download the appropriate video/audio format "
-#~ "for the selected quality without converting to other formats. (You will "
-#~ "be unable to select a file format)"
-#~ msgstr ""
-#~ "Nếu bật, Parabolic sẽ tự tải định dạng video/audio thích hợp đối với mức "
-#~ "chất lượng đã chọn mà không chuyển đổi sang định dạng khác. (Bạn sẽ không "
-#~ "thể chọn định dạng của tệp)"
-
-#~ msgid ""
 #~ "In combination with the trigger, completed notifications will only be "
 #~ "shown if the window is not focused."
 #~ msgstr ""
 #~ "Với điều kiện này, thông báo hoàn tất chỉ hiển thị khi cửa sổ đang không "
 #~ "được tập trung vào."
-
-#~ msgid "Include Auto-Generated Subtitles"
-#~ msgstr "Bao gồm phụ đề tự động"
 
 #~ msgid "Keyring Credential"
 #~ msgstr "Chứng chỉ trong keyring"
@@ -692,12 +896,6 @@ msgstr "Tắt"
 #~ msgid "Make thumbnail square, useful when downloading music."
 #~ msgstr "Cắt thumbnail thành hình vuông, hữu ích khi tải nhạc."
 
-#~ msgid "Max Connections Per Server (-x)"
-#~ msgstr "Số kết nối tối đa đối với mỗi máy chủ (-x)"
-
-#~ msgid "Max Number of Active Downloads"
-#~ msgstr "Số lượt tải tối đa dược chạy cùng một lúc"
-
 #~ msgid "Maximum Quality"
 #~ msgstr "Mức chất lượng tối đa"
 
@@ -720,9 +918,6 @@ msgstr "Tắt"
 #~ "window is closed."
 #~ msgstr "Thu nhỏ thay vì thoát ứng dụng khi đóng cửa sổ."
 
-#~ msgid "Minimum Split Size (-k)"
-#~ msgstr "Kích thước tách tối thiểu (-k)"
-
 #~ msgid "Name"
 #~ msgstr "Tên"
 
@@ -744,9 +939,6 @@ msgstr "Tắt"
 #~ msgid "No downloads running"
 #~ msgstr "Không có mục tải xuống nào đang chạy"
 
-#~ msgid "No File Selected"
-#~ msgstr "Chưa chọn tệp nào"
-
 #~ msgid "No Previous Downloads"
 #~ msgstr "Không có mục tải xuống trước đây"
 
@@ -761,9 +953,6 @@ msgstr "Tắt"
 
 #~ msgid "OK"
 #~ msgstr "Đồng ý"
-
-#~ msgid "Overwrite Existing Files"
-#~ msgstr "Ghi đè tệp đã tồn tại"
 
 #~ msgid "Password"
 #~ msgstr "Mật khẩu"
@@ -786,23 +975,14 @@ msgstr "Tắt"
 #~ msgid "Preparing..."
 #~ msgstr "Đang chuẩn bị..."
 
-#~ msgid "Prevent Suspend"
-#~ msgstr "Chống máy rơi vào chế độ tạm dừng"
-
 #~ msgid "PREVIEW"
 #~ msgstr "XEM TRƯỚC"
 
 #~ msgid "Processing..."
 #~ msgstr "Đang xử lý..."
 
-#~ msgid "Proxy URL"
-#~ msgstr "URL của proxy"
-
 #~ msgid "Quality"
 #~ msgstr "Mức chất lượng"
-
-#~ msgid "Remove Source Data"
-#~ msgstr "Xóa dữ liệu nguồn"
 
 #~ msgid "Reset"
 #~ msgstr "Đặt lại"
@@ -834,9 +1014,6 @@ msgstr "Tắt"
 #~ msgid "Select All"
 #~ msgstr "Chọn tất cả"
 
-#~ msgid "Select Cookies File"
-#~ msgstr "Chọn tệp cookie"
-
 #~ msgid "Select items to download or change file names."
 #~ msgstr "Chọn mục để tải hoặc để đổi tên tệp."
 
@@ -855,9 +1032,6 @@ msgstr "Tắt"
 
 #~ msgid "Some downloads finished with errors!"
 #~ msgstr "Một số lượt tải đã hoàn tất kèm lỗi!"
-
-#~ msgid "Speed Limit"
-#~ msgstr "Giới hạn tốc độ"
 
 #~ msgid "Split Chapters"
 #~ msgstr "Tách chương"
@@ -895,19 +1069,8 @@ msgstr "Tắt"
 #~ msgid "Success"
 #~ msgstr "Thành công"
 
-#~ msgid "The minimum size of which to split a file (in MiB)."
-#~ msgstr "Kích thước tối thiểu để tách một tệp tin (tính bằng MiB)."
-
 #~ msgid "This action is irreversible. Are you sure you want to delete it?"
 #~ msgstr "Sau khi xóa, bạn sẽ không thể khôi phục. Bạn có chắc chắn muốn xóa?"
-
-#~ msgid ""
-#~ "This limit (in KiB/s) is applied to downloads that have speed limit "
-#~ "enabled. Changing the value doesn't affect already running downloads."
-#~ msgstr ""
-#~ "Giới hạn này (tính bằng KiB/s) được áp dụng đối với các mục tải xuống có "
-#~ "bật giới hạn tốc độ. Thay đổi giá trị này không ảnh hưởng đến những mục "
-#~ "tải xuống đang chạy."
 
 #~ msgid ""
 #~ "This option's state will be remembered and restored for future downloads."
@@ -943,9 +1106,6 @@ msgstr "Tắt"
 #~ msgid "URL (Invalid)"
 #~ msgstr "URL (không hợp lệ)"
 
-#~ msgid "Use aria2"
-#~ msgstr "Sử dụng aria2"
-
 #~ msgid ""
 #~ "Use keyring to safely store credentials for sites that require a user "
 #~ "name and password to login."
@@ -955,9 +1115,6 @@ msgstr "Tắt"
 
 #~ msgid "Use manual credential"
 #~ msgstr "Sử dụng chứng chỉ thủ công"
-
-#~ msgid "Use SponsorBlock for YouTube"
-#~ msgstr "Sử dụng SponsorBlock đối với YouTube"
 
 #~ msgid "User Name"
 #~ msgstr "Tên đăng nhập"
@@ -997,18 +1154,6 @@ msgstr "Tắt"
 #~ msgid "Yes"
 #~ msgstr "Có"
 
-#~ msgctxt "CompletedNotification"
-#~ msgid "For each download"
-#~ msgstr "Cho từng lượt tải"
-
-#~ msgctxt "CompletedNotification"
-#~ msgid "Never"
-#~ msgstr "Không bao giờ"
-
-#~ msgctxt "CompletedNotification"
-#~ msgid "When all downloads finish"
-#~ msgstr "Khi đã tải xong tất cả"
-
 #~ msgctxt "subtitle"
 #~ msgid "all"
 #~ msgstr "tất cả"
@@ -1039,16 +1184,6 @@ msgstr "Tắt"
 
 #~ msgid "Hide the window instead of quitting if there are downloads running."
 #~ msgstr "Ẩn cửa sổ thay vì thoát nếu Parabolic còn đang tải."
-
-#~ msgid "Limit Filename Characters"
-#~ msgstr "Giới hạn ký tự khi đặt tên tệp tin"
-
-#~ msgid ""
-#~ "Restricts characters in filenames to only those supported by Windows."
-#~ msgstr "Chỉ sử dụng các ký tự dành cho tên tệp tin trong Windows."
-
-#~ msgid "Clear Cookies File"
-#~ msgstr "Xóa tệp cookie"
 
 #~ msgid "Stop All Downloads"
 #~ msgstr "Dừng tất cả mục tải xuống"

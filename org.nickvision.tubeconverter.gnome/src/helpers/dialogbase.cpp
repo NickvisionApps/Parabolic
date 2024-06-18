@@ -15,9 +15,9 @@ namespace Nickvision::TubeConverter::GNOME::Helpers
 
     DialogBase::~DialogBase()
     {
+        m_closed.invoke({});
         adw_dialog_force_close(m_dialog);
         g_object_unref(m_builder);
-        m_closed.invoke({});
     }
 
     AdwDialog* DialogBase::get()

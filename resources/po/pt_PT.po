@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-06-17 12:53-0400\n"
+"POT-Creation-Date: 2024-06-17 22:52-0400\n"
 "PO-Revision-Date: 2023-05-30 20:10+0100\n"
 "Last-Translator: Ricardo Simões xmcorporation.com <simplelogin-"
 "newsletter.635e2@aleeas.com>\n"
@@ -114,27 +114,263 @@ msgid "User Interface"
 msgstr "Interface do Utilizador"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:15
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:21
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:24
 msgid "Theme"
 msgstr "Tema"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:17
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:22
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:25
 msgctxt "Theme"
 msgid "Light"
 msgstr "Claro"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:17
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:23
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:26
 msgctxt "Theme"
 msgid "Dark"
 msgstr "Escuro"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:17
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:24
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:27
 msgctxt "Theme"
 msgid "System"
 msgstr "Sistema"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:27
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:31
+msgid "Completed Notification Trigger"
+msgstr "Acionador de Notificação de Conclusão"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:29
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:32
+#, fuzzy
+msgid "For each download"
+msgstr "Para cada transferência"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:29
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:33
+#, fuzzy
+msgid "When all downloads finish"
+msgstr "Quando todas as transferências terminarem"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:29
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:34
+#, fuzzy
+msgid "Never"
+msgstr "Nunca"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:39
+msgid "Prevent Suspend"
+msgstr ""
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:49
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:57
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:38
+#, fuzzy
+msgid "Downloads"
+msgstr "Transferência"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:52
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:39
+msgid "Overwrite Existing Files"
+msgstr "Sobrescrever Ficheiros Existentes"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:61
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:40
+msgid "Max Number of Active Downloads"
+msgstr "Número Máx de Transferências Ativas"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:77
+msgid "Limit Filename Characters"
+msgstr ""
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:78
+msgid "Restricts characters in filenames to only those supported by Windows."
+msgstr ""
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:87
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:45
+#, fuzzy
+msgid "Include Auto-Generated Subtitles"
+msgstr "Descarregador"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:97
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:48
+msgid "Downloader"
+msgstr "Descarregador"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:100
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:49
+msgid "Speed Limit"
+msgstr "Limite de Velocidade"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:101
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:50
+msgid ""
+"This limit (in KiB/s) is applied to downloads that have speed limit enabled. "
+"Changing the value doesn't affect already running downloads."
+msgstr ""
+"Este limite (em KiB/s) é aplicado às transferências que tiverem o limite de "
+"velocidade ativado. Alterar o valor não afeta as transferências já em curso."
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:117
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:51
+msgid "Use SponsorBlock for YouTube"
+msgstr ""
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:126
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:54
+msgid "Proxy URL"
+msgstr ""
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:135
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:56
+msgid "Cookies File"
+msgstr "Ficheiros de Cookies"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:136
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:57
+#, fuzzy
+msgid ""
+"A cookies file can be provided to Parabolic to allow downloading media that "
+"requires a login."
+msgstr ""
+"Um ficheiro de cookies pode ser fornecido ao yt-dlp para permitir "
+"descarregar media que requer um login."
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:146
+#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:87
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:58
+msgid "Select Cookies File"
+msgstr "Selecione Ficheiro de Cookies"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:156
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:59
+msgid "Clear Cookies File"
+msgstr "Limpar Ficheiro de Cookies"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:166
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:60
+#, fuzzy
+msgid "Cookies File Information"
+msgstr "Ficheiros de Cookies"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:181
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:61
+msgid ""
+"Cookies can be passed to yt-dlp in the form of TXT files. Export cookies "
+"from your browser using the following extensions (use at your own risk):"
+msgstr ""
+"Os cookies podem ser passados ​​para o yt-dlp na forma de ficheiro TXT. "
+"Exporte os cookies do seu navegador usando as seguintes extensões (use por "
+"sua própria conta e risco):"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:193
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:62
+msgid "Chrome/Edge"
+msgstr ""
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:202
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:63
+msgid "Firefox"
+msgstr ""
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:220
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:64
+msgid "Converter"
+msgstr "Converter"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:223
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:65
+msgid "Disallow Conversions"
+msgstr "Não Permitir Conversões"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:224
+#, fuzzy
+msgid ""
+"If enabled, Parabolic will download the appropriate video/audio format for "
+"the selected quality without converting to other formats. (You will be "
+"unable to select a file format)"
+msgstr ""
+"Se ativado, o Tube Converter descarregará o formato de vídeo/áudio "
+"apropriado para a qualidade selecionada sem converter para outros formatos. "
+"(Não poderá selecionar um formato de ficheiro)"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:233
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:69
+msgid "Embed Metadata"
+msgstr "Incorporar Metadados"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:242
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:75
+#, fuzzy
+msgid "Embed Chapters"
+msgstr "Legenda"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:251
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:72
+#, fuzzy
+msgid "Embed Subtitles"
+msgstr "Legenda"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:260
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:78
+#, fuzzy
+msgid "Crop Audio Thumbnails"
+msgstr "Cortar Miniatura"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:261
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:79
+msgid ""
+"If enabled, Parabolic will crop the thumbnails of audio files to squares."
+msgstr ""
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:271
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:82
+msgid "Remove Source Data"
+msgstr ""
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:272
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:83
+msgid ""
+"If enabled, Parabolic will clear metadata fields containing the URL and "
+"other identifying information of a download."
+msgstr ""
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:283
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:86
+#, fuzzy
+msgid "aria2"
+msgstr "Usar aria2"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:286
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:87
+msgid "Use aria2"
+msgstr "Usar aria2"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:287
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:88
+msgid ""
+"Enable to use aria2 downloader. It can be faster, but you will not see "
+"download progress."
+msgstr ""
+"Ative para usar o descarregador aria2. Pode ser mais rápido, mas não verá o "
+"progresso da transferência."
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:296
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:91
+msgid "Max Connections Per Server (-x)"
+msgstr "Máx de Conexões por Servidor (-x)"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:313
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:92
+msgid "Minimum Split Size (-k)"
+msgstr "Tamanho mínimo da divisão (-k)"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:314
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:93
+msgid "The minimum size of which to split a file (in MiB)."
+msgstr "O tamanho mínimo do qual dividir um ficheiro (em MiB)."
 
 #: org.nickvision.tubeconverter.gnome/blueprints/shortcuts_dialog.blp:13
 #, fuzzy
@@ -193,6 +429,17 @@ msgstr ""
 msgid "GitHub Repo"
 msgstr ""
 
+#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:25
+#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:109
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:112
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:165
+msgid "No file selected"
+msgstr ""
+
+#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:89
+msgid "Text File (*.txt)"
+msgstr ""
+
 #: org.nickvision.tubeconverter.winui/Controls/TitleBar.xaml.cpp:132
 msgid "Search"
 msgstr ""
@@ -205,11 +452,6 @@ msgstr ""
 #: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:56
 msgid "Keyring"
 msgstr ""
-
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:57
-#, fuzzy
-msgid "Downloads"
-msgstr "Transferência"
 
 #: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:58
 msgid "Downloading"
@@ -259,7 +501,7 @@ msgstr ""
 
 #. Localize Strings
 #: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:70
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:19
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:22
 msgid "Settings"
 msgstr ""
 
@@ -300,22 +542,60 @@ msgid ""
 "{}"
 msgstr ""
 
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:20
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:23
 msgid "Appearance & behavior"
 msgstr ""
 
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:25
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:28
 msgid "Automatically Check for Updates"
 msgstr ""
 
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:26
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:29
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:36
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:46
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:52
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:67
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:70
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:73
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:76
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:80
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:84
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:89
 #, fuzzy
 msgid "On"
 msgstr "Abrir Ficheiro"
 
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:27
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:30
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:37
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:47
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:53
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:68
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:71
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:74
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:77
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:81
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:85
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:90
 msgid "Off"
 msgstr ""
+
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:35
+msgid "Prevent Suspend When Downloading"
+msgstr ""
+
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:55
+msgid "Enter proxy URL here"
+msgstr ""
+
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:66
+#, fuzzy
+msgid ""
+"If enabled, Parabolic will download the appropriate video/audio format for "
+"the selected quality without converting to other formats."
+msgstr ""
+"Se ativado, o Tube Converter descarregará o formato de vídeo/áudio "
+"apropriado para a qualidade selecionada sem converter para outros formatos. "
+"(Não poderá selecionar um formato de ficheiro)"
 
 #, fuzzy
 #~ msgid "Open Folder (Ctrl+O)"
@@ -364,13 +644,6 @@ msgstr ""
 #~ msgstr[0] "{0} de {1} itens"
 #~ msgstr[1] "{0} de {1} itens"
 
-#~ msgid ""
-#~ "A cookies file can be provided to yt-dlp to allow downloading media that "
-#~ "requires a login."
-#~ msgstr ""
-#~ "Um ficheiro de cookies pode ser fornecido ao yt-dlp para permitir "
-#~ "descarregar media que requer um login."
-
 #~ msgid "Add"
 #~ msgstr "Adicionar"
 
@@ -407,39 +680,11 @@ msgstr ""
 #~ msgid "Close and Stop Downloads?"
 #~ msgstr "Fechar e Parar Transferências?"
 
-#~ msgid "Completed Notification Trigger"
-#~ msgstr "Acionador de Notificação de Conclusão"
-
-#~ msgid "Converter"
-#~ msgstr "Converter"
-
-#~ msgid ""
-#~ "Cookies can be passed to yt-dlp in the form of TXT files. Export cookies "
-#~ "from your browser using the following extensions (use at your own risk):"
-#~ msgstr ""
-#~ "Os cookies podem ser passados ​​para o yt-dlp na forma de ficheiro TXT. "
-#~ "Exporte os cookies do seu navegador usando as seguintes extensões (use "
-#~ "por sua própria conta e risco):"
-
-#~ msgid "Cookies File"
-#~ msgstr "Ficheiros de Cookies"
-
-#, fuzzy
-#~ msgid "Cookies File Information"
-#~ msgstr "Ficheiros de Cookies"
-
 #~ msgid "Copy to Clipboard"
 #~ msgstr "Copiar para o Clipboard"
 
-#, fuzzy
-#~ msgid "Crop Audio Thumbnails"
-#~ msgstr "Cortar Miniatura"
-
 #~ msgid "Crop Thumbnail"
 #~ msgstr "Cortar Miniatura"
-
-#~ msgid "Disallow Conversions"
-#~ msgstr "Não Permitir Conversões"
 
 #~ msgid "Download"
 #~ msgstr "Transferência"
@@ -454,19 +699,12 @@ msgstr ""
 #~ msgid "Download Finished With Error"
 #~ msgstr "Transferência Terminada com Erro"
 
-#, fuzzy
-#~ msgid "Download Subtitles"
-#~ msgstr "Descarregador"
-
 #~ msgid "Download using aria2 has started"
 #~ msgstr "Transferência a usar aria2 iniciou-se"
 
 #, fuzzy
 #~ msgid "Download using ffmpeg has started"
 #~ msgstr "Transferência a usar aria2 iniciou-se"
-
-#~ msgid "Downloader"
-#~ msgstr "Descarregador"
 
 #, csharp-format
 #~ msgid "Downloading {0:f2}% ({1})"
@@ -478,20 +716,6 @@ msgstr ""
 
 #~ msgid "Downloads Finished"
 #~ msgstr "Transferências Terminadas"
-
-#~ msgid "Embed Metadata"
-#~ msgstr "Incorporar Metadados"
-
-#, fuzzy
-#~ msgid "Embed Subtitles"
-#~ msgstr "Legenda"
-
-#~ msgid ""
-#~ "Enable to use aria2 downloader. It can be faster, but you will not see "
-#~ "download progress."
-#~ msgstr ""
-#~ "Ative para usar o descarregador aria2. Pode ser mais rápido, mas não verá "
-#~ "o progresso da transferência."
 
 #, fuzzy
 #~ msgid "End Time (Invalid)"
@@ -509,16 +733,6 @@ msgstr ""
 #~ msgid "File Type"
 #~ msgstr "Tipo de Ficheiro"
 
-#, fuzzy
-#~ msgid ""
-#~ "If enabled, Parabolic will download the appropriate video/audio format "
-#~ "for the selected quality without converting to other formats. (You will "
-#~ "be unable to select a file format)"
-#~ msgstr ""
-#~ "Se ativado, o Tube Converter descarregará o formato de vídeo/áudio "
-#~ "apropriado para a qualidade selecionada sem converter para outros "
-#~ "formatos. (Não poderá selecionar um formato de ficheiro)"
-
 #~ msgid ""
 #~ "In combination with the trigger, completed notifications will only be "
 #~ "shown if the window is not focused."
@@ -532,12 +746,6 @@ msgstr ""
 #~ msgid "Make thumbnail square, useful when downloading music."
 #~ msgstr "Tornar miniatura quadrada, útil ao transferir músicas."
 
-#~ msgid "Max Connections Per Server (-x)"
-#~ msgstr "Máx de Conexões por Servidor (-x)"
-
-#~ msgid "Max Number of Active Downloads"
-#~ msgstr "Número Máx de Transferências Ativas"
-
 #~ msgid "Maximum Quality"
 #~ msgstr "Qualidade Máxima"
 
@@ -546,9 +754,6 @@ msgstr ""
 
 #~ msgid "Media URL (Invalid)"
 #~ msgstr "URL da Media (Inválido)"
-
-#~ msgid "Minimum Split Size (-k)"
-#~ msgstr "Tamanho mínimo da divisão (-k)"
 
 #, fuzzy
 #~ msgid "Name"
@@ -579,9 +784,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "Number Titles"
 #~ msgstr "Títulos de Números"
-
-#~ msgid "Overwrite Existing Files"
-#~ msgstr "Sobrescrever Ficheiros Existentes"
 
 #, fuzzy
 #~ msgid "Play"
@@ -616,9 +818,6 @@ msgstr ""
 #~ msgid "Select All"
 #~ msgstr "Parar Tudo"
 
-#~ msgid "Select Cookies File"
-#~ msgstr "Selecione Ficheiro de Cookies"
-
 #~ msgid "Select items to download or change file names."
 #~ msgstr "Selecione itens para transferir ou altere os nomes dos ficheiros."
 
@@ -636,9 +835,6 @@ msgstr ""
 
 #~ msgid "Some downloads finished with errors!"
 #~ msgstr "Algumas transferências terminaram com erros!"
-
-#~ msgid "Speed Limit"
-#~ msgstr "Limite de Velocidade"
 
 #, fuzzy
 #~ msgid "SponsorBlock Information (opens in a web browser)"
@@ -668,17 +864,6 @@ msgstr ""
 #~ msgid "Success"
 #~ msgstr "Sucesso"
 
-#~ msgid "The minimum size of which to split a file (in MiB)."
-#~ msgstr "O tamanho mínimo do qual dividir um ficheiro (em MiB)."
-
-#~ msgid ""
-#~ "This limit (in KiB/s) is applied to downloads that have speed limit "
-#~ "enabled. Changing the value doesn't affect already running downloads."
-#~ msgstr ""
-#~ "Este limite (em KiB/s) é aplicado às transferências que tiverem o limite "
-#~ "de velocidade ativado. Alterar o valor não afeta as transferências já em "
-#~ "curso."
-
 #~ msgid "Undo Title Editing"
 #~ msgstr "Desfazer Edição de Título"
 
@@ -689,9 +874,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "URL (Invalid)"
 #~ msgstr "URL da Media (Inválido)"
-
-#~ msgid "Use aria2"
-#~ msgstr "Usar aria2"
 
 #, fuzzy
 #~ msgid "User Name"
@@ -727,24 +909,9 @@ msgstr ""
 #~ msgid "Yes"
 #~ msgstr "Sim"
 
-#~ msgctxt "CompletedNotification"
-#~ msgid "For each download"
-#~ msgstr "Para cada transferência"
-
-#~ msgctxt "CompletedNotification"
-#~ msgid "Never"
-#~ msgstr "Nunca"
-
-#~ msgctxt "CompletedNotification"
-#~ msgid "When all downloads finish"
-#~ msgstr "Quando todas as transferências terminarem"
-
 #~ msgid "Hide the window instead of quitting if there are downloads running."
 #~ msgstr ""
 #~ "Esconde a janela em vez de fichar se estiverem transferências a decorrer."
-
-#~ msgid "Clear Cookies File"
-#~ msgstr "Limpar Ficheiro de Cookies"
 
 #~ msgid "Stop All Downloads"
 #~ msgstr "Parar Todas as Transferências"

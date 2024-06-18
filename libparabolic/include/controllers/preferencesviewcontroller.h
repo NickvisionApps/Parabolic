@@ -3,6 +3,7 @@
 
 #include <filesystem>
 #include <string>
+#include "models/browsers.h"
 #include "models/completednotificationpreference.h"
 #include "models/theme.h"
 
@@ -23,6 +24,12 @@ namespace Nickvision::TubeConverter::Shared::Controllers
          * @return The app id
          */
         const std::string& getId() const;
+        /**
+         * @brief Gets the cookies extension url for a browser.
+         * @param browser The browser
+         * @return The cookies extension url
+         */
+        const std::string& getCookiesExtensionUrl(Models::Browsers browser) const;
         /**
          * @brief Gets the preferred theme for the application.
          * @return The preferred theme
@@ -117,24 +124,30 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         /**
          * @brief Gets the maximum number of connections per server for each aria2 download.
          * @brief This is equivalent to the -x flag in aria2.
+         * @brief Should be between 1 and 16.
          * @return The maximum number of connections per server
          */
         int getAriaMaxConnectionsPerServer() const;
         /**
          * @brief Sets the maximum number of connections per server for each aria2 download.
          * @brief This is equivalent to the -x flag in aria2.
+         * @brief Should be between 1 and 16.
          * @param maxConnections The new maximum number of connections per server
          */
         void setAriaMaxConnectionsPerServer(int maxConnections);
         /**
          * @brief Gets the minimum split size for each aria2 download.
          * @brief This is equivalent to the -k flag in aria2.
+         * @brief Should be in MiB/s.
+         * @brief Should be between 1 and 1024.
          * @return The minimum split size
          */
         int getAriaMinSplitSize() const;
         /**
          * @brief Sets the minimum split size for each aria2 download.
          * @brief This is equivalent to the -k flag in aria2.
+         * @brief Should be in MiB/s.
+         * @brief Should be between 1 and 1024.
          * @param minSplitSize The new minimum split size
          */
         void setAriaMinSplitSize(int minSplitSize);
@@ -236,12 +249,12 @@ namespace Nickvision::TubeConverter::Shared::Controllers
          * @brief Gets whether or not to embed subtitles.
          * @return True to embed subtitles, else false
          */
-        bool getEmbedSubtitle() const;
+        bool getEmbedSubtitles() const;
         /**
          * @brief Sets whether or not to embed subtitles.
-         * @param embedSubtitle True to embed subtitles, else false
+         * @param embedSubtitles True to embed subtitles, else false
          */
-        void setEmbedSubtitle(bool embedSubtitle);
+        void setEmbedSubtitles(bool embedSubtitles);
         /**
          * @brief Saves the current configuration to disk.
          */

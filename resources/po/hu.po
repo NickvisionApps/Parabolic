@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-06-17 12:53-0400\n"
+"POT-Creation-Date: 2024-06-17 22:52-0400\n"
 "PO-Revision-Date: 2024-01-06 02:07+0000\n"
 "Last-Translator: Kingproone <PlayerGuy@protonmail.com>\n"
 "Language-Team: Hungarian <https://hosted.weblate.org/projects/nickvision-"
@@ -112,27 +112,264 @@ msgid "User Interface"
 msgstr "Kezelőfelület"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:15
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:21
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:24
 msgid "Theme"
 msgstr "Téma"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:17
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:22
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:25
 msgctxt "Theme"
 msgid "Light"
 msgstr "Világos"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:17
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:23
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:26
 msgctxt "Theme"
 msgid "Dark"
 msgstr "Sötét"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:17
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:24
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:27
 msgctxt "Theme"
 msgid "System"
 msgstr "Rendszer"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:27
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:31
+msgid "Completed Notification Trigger"
+msgstr "Értesítések"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:29
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:32
+#, fuzzy
+msgid "For each download"
+msgstr "Letöltésenként"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:29
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:33
+#, fuzzy
+msgid "When all downloads finish"
+msgstr "Minden letöltés végén"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:29
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:34
+#, fuzzy
+msgid "Never"
+msgstr "Soha"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:39
+#, fuzzy
+msgid "Prevent Suspend"
+msgstr "Készenlét/felfüggesztés tiltása"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:49
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:57
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:38
+msgid "Downloads"
+msgstr "Letöltések"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:52
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:39
+msgid "Overwrite Existing Files"
+msgstr "Azonos nevű fájl felülírása"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:61
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:40
+msgid "Max Number of Active Downloads"
+msgstr "Párhuzamos letöltések száma"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:77
+msgid "Limit Filename Characters"
+msgstr "Nem támogatott karakterek konvertálása"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:78
+msgid "Restricts characters in filenames to only those supported by Windows."
+msgstr ""
+"A címekben szereplő nem támogatott karaktereket az alkalmazás konvertálni "
+"fogja a Windows számára."
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:87
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:45
+msgid "Include Auto-Generated Subtitles"
+msgstr "Automatikusan létrehozott feliratok letöltése"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:97
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:48
+msgid "Downloader"
+msgstr "Letöltő"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:100
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:49
+msgid "Speed Limit"
+msgstr "Sávszélesség korlátozása"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:101
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:50
+msgid ""
+"This limit (in KiB/s) is applied to downloads that have speed limit enabled. "
+"Changing the value doesn't affect already running downloads."
+msgstr ""
+"Ez a beállítás csak a korlátozott letöltésekre van hatással. Valamint a "
+"módosítása a már futó letöltéseket nem érinti. Értéke KiB/mp-ben értendő."
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:117
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:51
+msgid "Use SponsorBlock for YouTube"
+msgstr "Szponzoráció eltávolítása YouTube videókból"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:126
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:54
+msgid "Proxy URL"
+msgstr "Proxy átjáró címe"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:135
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:56
+msgid "Cookies File"
+msgstr "Süti fájl használata"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:136
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:57
+#, fuzzy
+msgid ""
+"A cookies file can be provided to Parabolic to allow downloading media that "
+"requires a login."
+msgstr ""
+"A yt-dlp képes külső fájlban tárolt bejelentkezési adatok betöltésére az azt "
+"igénylő oldalakhoz."
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:146
+#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:87
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:58
+msgid "Select Cookies File"
+msgstr "Süti fájl betöltése"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:156
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:59
+msgid "Clear Cookies File"
+msgstr "Süti fájl törlése"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:166
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:60
+msgid "Cookies File Information"
+msgstr "Információ a süti fájlról"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:181
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:61
+msgid ""
+"Cookies can be passed to yt-dlp in the form of TXT files. Export cookies "
+"from your browser using the following extensions (use at your own risk):"
+msgstr ""
+"Lehetőség van arra, hogy a yt-dlp a böngészőkben tárolt bejelentkezési "
+"adatokat használja. Ehhez egy bővítmény telepítése szükséges (saját "
+"felelősségre):"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:193
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:62
+msgid "Chrome/Edge"
+msgstr "Chrome/Edge"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:202
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:63
+msgid "Firefox"
+msgstr "Firefox"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:220
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:64
+msgid "Converter"
+msgstr "Kódoló"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:223
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:65
+msgid "Disallow Conversions"
+msgstr "Átkódolás tiltása"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:224
+#, fuzzy
+msgid ""
+"If enabled, Parabolic will download the appropriate video/audio format for "
+"the selected quality without converting to other formats. (You will be "
+"unable to select a file format)"
+msgstr ""
+"Átkódolás tiltása esetén a Parabolic az eredeti formátumban tölti le a "
+"tartalmakat. A kódolási beállítások nem lesznek elérhetőek."
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:233
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:69
+msgid "Embed Metadata"
+msgstr "Címke/adatok beágyazása"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:242
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:75
+msgid "Embed Chapters"
+msgstr "Fejezetek beágyazása"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:251
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:72
+msgid "Embed Subtitles"
+msgstr "Feliratok beágyazása"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:260
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:78
+msgid "Crop Audio Thumbnails"
+msgstr "Borítókép igazítása"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:261
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:79
+#, fuzzy
+msgid ""
+"If enabled, Parabolic will crop the thumbnails of audio files to squares."
+msgstr ""
+"Négyzetessé alakítja a videó borítóképét. Főleg zenei tartalmak esetében "
+"lehet hasznos"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:271
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:82
+msgid "Remove Source Data"
+msgstr "Metaadatok törlése"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:272
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:83
+#, fuzzy
+msgid ""
+"If enabled, Parabolic will clear metadata fields containing the URL and "
+"other identifying information of a download."
+msgstr ""
+"Eltávolítja a feltöltő és/vagy a forrás beazonosítására alkalmas beágyazott "
+"adatokat a letöltött fájlokból"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:283
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:86
+#, fuzzy
+msgid "aria2"
+msgstr "aria2 letöltő használata"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:286
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:87
+msgid "Use aria2"
+msgstr "aria2 letöltő használata"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:287
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:88
+msgid ""
+"Enable to use aria2 downloader. It can be faster, but you will not see "
+"download progress."
+msgstr ""
+"aira2 letöltő engedélyezése. Gyorsabb, de nem jelzi a feldolgozás állapotát."
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:296
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:91
+msgid "Max Connections Per Server (-x)"
+msgstr "Párhuzamos kapcsolatok száma a kiszolgálóval (-x)"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:313
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:92
+msgid "Minimum Split Size (-k)"
+msgstr "Tartalmak darabolása (-k)"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:314
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:93
+msgid "The minimum size of which to split a file (in MiB)."
+msgstr "Meghatározza a darabok méretét. Értéke MiB-ban értendő."
 
 #: org.nickvision.tubeconverter.gnome/blueprints/shortcuts_dialog.blp:13
 #, fuzzy
@@ -190,6 +427,18 @@ msgstr "Bezárás"
 msgid "GitHub Repo"
 msgstr "GitHub tároló"
 
+#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:25
+#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:109
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:112
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:165
+#, fuzzy
+msgid "No file selected"
+msgstr "Nincs fájl kiválasztva"
+
+#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:89
+msgid "Text File (*.txt)"
+msgstr ""
+
 #: org.nickvision.tubeconverter.winui/Controls/TitleBar.xaml.cpp:132
 #, fuzzy
 msgid "Search"
@@ -203,10 +452,6 @@ msgstr "Kezdőlap"
 #: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:56
 msgid "Keyring"
 msgstr "Jelszókezelő"
-
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:57
-msgid "Downloads"
-msgstr "Letöltések"
 
 #: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:58
 msgid "Downloading"
@@ -255,7 +500,7 @@ msgstr "Előzmények"
 
 #. Localize Strings
 #: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:70
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:19
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:22
 msgid "Settings"
 msgstr "Beállítások"
 
@@ -318,21 +563,59 @@ msgstr ""
 "Fordította:\n"
 "{3}"
 
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:20
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:23
 msgid "Appearance & behavior"
 msgstr ""
 
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:25
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:28
 msgid "Automatically Check for Updates"
 msgstr "Frissítések automatikus keresése"
 
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:26
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:29
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:36
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:46
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:52
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:67
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:70
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:73
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:76
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:80
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:84
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:89
 msgid "On"
 msgstr "Be"
 
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:27
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:30
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:37
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:47
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:53
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:68
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:71
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:74
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:77
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:81
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:85
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:90
 msgid "Off"
 msgstr "Ki"
+
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:35
+#, fuzzy
+msgid "Prevent Suspend When Downloading"
+msgstr "Készenlét/felfüggesztés tiltása"
+
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:55
+msgid "Enter proxy URL here"
+msgstr "Proxy átjáró megadása"
+
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:66
+#, fuzzy
+msgid ""
+"If enabled, Parabolic will download the appropriate video/audio format for "
+"the selected quality without converting to other formats."
+msgstr ""
+"Átkódolás tiltása esetén a Parabolic az eredeti formátumban tölti le a "
+"tartalmakat. A kódolási beállítások nem lesznek elérhetőek."
 
 #, fuzzy
 #~ msgid "Open Folder (Ctrl+O)"
@@ -385,13 +668,6 @@ msgstr "Ki"
 #~ msgid "{0}{1}"
 #~ msgstr "{0}{1}"
 
-#~ msgid ""
-#~ "A cookies file can be provided to yt-dlp to allow downloading media that "
-#~ "requires a login."
-#~ msgstr ""
-#~ "A yt-dlp képes külső fájlban tárolt bejelentkezési adatok betöltésére az "
-#~ "azt igénylő oldalakhoz."
-
 #~ msgid "About"
 #~ msgstr "Névjegy"
 
@@ -431,21 +707,11 @@ msgstr "Ki"
 #~ msgid "Cancel"
 #~ msgstr "Mégse"
 
-#~ msgid "Chrome/Edge"
-#~ msgstr "Chrome/Edge"
-
 #~ msgid "Clear"
 #~ msgstr "Törlés"
 
 #~ msgid "Clear Completed"
 #~ msgstr "Befejezett letöltések törlése"
-
-#~ msgid ""
-#~ "Clear metadata fields containing the URL and other identifying "
-#~ "information of the media source"
-#~ msgstr ""
-#~ "Eltávolítja a feltöltő és/vagy a forrás beazonosítására alkalmas "
-#~ "beágyazott adatokat a letöltött fájlokból"
 
 #~ msgid "Clear Queued"
 #~ msgstr "Sorban álló letöltések törlése"
@@ -456,31 +722,8 @@ msgstr "Ki"
 #~ msgid "Comma separated list"
 #~ msgstr "(vesszővel elválasztva)"
 
-#~ msgid "Completed Notification Trigger"
-#~ msgstr "Értesítések"
-
-#~ msgid "Converter"
-#~ msgstr "Kódoló"
-
-#~ msgid ""
-#~ "Cookies can be passed to yt-dlp in the form of TXT files. Export cookies "
-#~ "from your browser using the following extensions (use at your own risk):"
-#~ msgstr ""
-#~ "Lehetőség van arra, hogy a yt-dlp a böngészőkben tárolt bejelentkezési "
-#~ "adatokat használja. Ehhez egy bővítmény telepítése szükséges (saját "
-#~ "felelősségre):"
-
-#~ msgid "Cookies File"
-#~ msgstr "Süti fájl használata"
-
-#~ msgid "Cookies File Information"
-#~ msgstr "Információ a süti fájlról"
-
 #~ msgid "Copy to Clipboard"
 #~ msgstr "Másolás vágólapra"
-
-#~ msgid "Crop Audio Thumbnails"
-#~ msgstr "Borítókép igazítása"
 
 #~ msgid "Crop Thumbnail"
 #~ msgstr "Borítókép igazítása"
@@ -532,9 +775,6 @@ msgstr "Ki"
 #~ "A jelszókezelő letiltása a tárolt bejelentkezési adatok törlését "
 #~ "eredményezi. Valóban letiltja a jelszókezelőt?"
 
-#~ msgid "Disallow Conversions"
-#~ msgstr "Átkódolás tiltása"
-
 #~ msgid "Documentation"
 #~ msgstr "Dokumentáció"
 
@@ -562,9 +802,6 @@ msgstr "Ki"
 #~ msgid "Download using ffmpeg has started"
 #~ msgstr "Letöltés ffmpeg kódoló használatával megkezdődött"
 
-#~ msgid "Downloader"
-#~ msgstr "Letöltő"
-
 #, csharp-format
 #~ msgid "Downloading {0:f2}% ({1})"
 #~ msgstr "Letöltés folyamatban {0:f2}% ({1})"
@@ -575,24 +812,8 @@ msgstr "Ki"
 #~ msgid "Downloads Finished"
 #~ msgstr "Letöltés befejeződött"
 
-#~ msgid "Embed Chapters"
-#~ msgstr "Fejezetek beágyazása"
-
-#~ msgid "Embed Metadata"
-#~ msgstr "Címke/adatok beágyazása"
-
-#~ msgid "Embed Subtitles"
-#~ msgstr "Feliratok beágyazása"
-
 #~ msgid "Enable"
 #~ msgstr "Jelszókezelő engedélyezése"
-
-#~ msgid ""
-#~ "Enable to use aria2 downloader. It can be faster, but you will not see "
-#~ "download progress."
-#~ msgstr ""
-#~ "aira2 letöltő engedélyezése. Gyorsabb, de nem jelzi a feldolgozás "
-#~ "állapotát."
 
 #~ msgid "End Time"
 #~ msgstr "Részlet vége"
@@ -614,9 +835,6 @@ msgstr "Ki"
 
 #~ msgid "Enter password here"
 #~ msgstr "Jelszó megadása"
-
-#~ msgid "Enter proxy URL here"
-#~ msgstr "Proxy átjáró megadása"
 
 #~ msgid "Enter start timeframe here"
 #~ msgstr "Részlet kezdete"
@@ -645,9 +863,6 @@ msgstr "Ki"
 #~ msgid "File Type"
 #~ msgstr "Fájltípus"
 
-#~ msgid "Firefox"
-#~ msgstr "Firefox"
-
 #~ msgid ""
 #~ "If disabled or if embedding fails, downloaded subtitles will be saved to "
 #~ "a separate file instead"
@@ -656,29 +871,11 @@ msgstr "Ki"
 #~ "letöltve"
 
 #~ msgid ""
-#~ "If enabled, Parabolic will automatically turn on the crop thumbnail "
-#~ "advanced option for audio downloads"
-#~ msgstr ""
-#~ "Négyzetessé alakítja a videó borítóképét. Főleg zenei tartalmak esetében "
-#~ "lehet hasznos"
-
-#~ msgid ""
-#~ "If enabled, Parabolic will download the appropriate video/audio format "
-#~ "for the selected quality without converting to other formats. (You will "
-#~ "be unable to select a file format)"
-#~ msgstr ""
-#~ "Átkódolás tiltása esetén a Parabolic az eredeti formátumban tölti le a "
-#~ "tartalmakat. A kódolási beállítások nem lesznek elérhetőek."
-
-#~ msgid ""
 #~ "In combination with the trigger, completed notifications will only be "
 #~ "shown if the window is not focused."
 #~ msgstr ""
 #~ "Értesítések megjelenítése a letöltési folyamatokról, ha az alkalmazás "
 #~ "háttérben van."
-
-#~ msgid "Include Auto-Generated Subtitles"
-#~ msgstr "Automatikusan létrehozott feliratok letöltése"
 
 #~ msgid "Keyring Credential"
 #~ msgstr "Bejelentkezés:"
@@ -712,12 +909,6 @@ msgstr "Ki"
 #~ "Négyzetessé alakítja a videó borítóképét. Főleg zenei tartalmak esetében "
 #~ "lehet hasznos"
 
-#~ msgid "Max Connections Per Server (-x)"
-#~ msgstr "Párhuzamos kapcsolatok száma a kiszolgálóval (-x)"
-
-#~ msgid "Max Number of Active Downloads"
-#~ msgstr "Párhuzamos letöltések száma"
-
 #~ msgid "Maximum Quality"
 #~ msgstr "Legjobb minőség"
 
@@ -743,9 +934,6 @@ msgstr "Ki"
 #~ "Alkalmazás értesítési területre küldése bezáráskor a háttérben történő "
 #~ "futtatáshoz."
 
-#~ msgid "Minimum Split Size (-k)"
-#~ msgstr "Tartalmak darabolása (-k)"
-
 #~ msgid "Name"
 #~ msgstr "Megnevezés"
 
@@ -770,9 +958,6 @@ msgstr "Ki"
 #~ msgid "No downloads running"
 #~ msgstr "Nincs folyamatban letöltés"
 
-#~ msgid "No File Selected"
-#~ msgstr "Nincs fájl kiválasztva"
-
 #~ msgid "No Previous Downloads"
 #~ msgstr "Nincsenek előzmények"
 
@@ -787,9 +972,6 @@ msgstr "Ki"
 
 #~ msgid "OK"
 #~ msgstr "Rendben"
-
-#~ msgid "Overwrite Existing Files"
-#~ msgstr "Azonos nevű fájl felülírása"
 
 #~ msgid "Password"
 #~ msgstr "Jelszó"
@@ -812,23 +994,14 @@ msgstr "Ki"
 #~ msgid "Preparing..."
 #~ msgstr "Előkészítés..."
 
-#~ msgid "Prevent Suspend"
-#~ msgstr "Készenlét/felfüggesztés tiltása"
-
 #~ msgid "PREVIEW"
 #~ msgstr "ELŐNÉZET"
 
 #~ msgid "Processing..."
 #~ msgstr "Feldolgozás..."
 
-#~ msgid "Proxy URL"
-#~ msgstr "Proxy átjáró címe"
-
 #~ msgid "Quality"
 #~ msgstr "Felbontás/minőség"
-
-#~ msgid "Remove Source Data"
-#~ msgstr "Metaadatok törlése"
 
 #~ msgid "Reset"
 #~ msgstr "Visszaállítás"
@@ -860,9 +1033,6 @@ msgstr "Ki"
 #~ msgid "Select All"
 #~ msgstr "Összes kijelölése"
 
-#~ msgid "Select Cookies File"
-#~ msgstr "Süti fájl betöltése"
-
 #~ msgid "Select items to download or change file names."
 #~ msgstr "Elemek kijelölése letöltéshez vagy átnevezéshez."
 
@@ -881,9 +1051,6 @@ msgstr "Ki"
 
 #~ msgid "Some downloads finished with errors!"
 #~ msgstr "Egyes letöltések közben hiba történt."
-
-#~ msgid "Speed Limit"
-#~ msgstr "Sávszélesség korlátozása"
 
 #~ msgid "Split Chapters"
 #~ msgstr "Fejezetek darabolása"
@@ -923,19 +1090,9 @@ msgstr "Ki"
 #~ msgid "Success"
 #~ msgstr "Letöltés befejeződött"
 
-#~ msgid "The minimum size of which to split a file (in MiB)."
-#~ msgstr "Meghatározza a darabok méretét. Értéke MiB-ban értendő."
-
 #~ msgid "This action is irreversible. Are you sure you want to delete it?"
 #~ msgstr ""
 #~ "A művelet nem visszafordítható. Valóban törli a bejelentkezési adatokat?"
-
-#~ msgid ""
-#~ "This limit (in KiB/s) is applied to downloads that have speed limit "
-#~ "enabled. Changing the value doesn't affect already running downloads."
-#~ msgstr ""
-#~ "Ez a beállítás csak a korlátozott letöltésekre van hatással. Valamint a "
-#~ "módosítása a már futó letöltéseket nem érinti. Értéke KiB/mp-ben értendő."
 
 #~ msgid ""
 #~ "This option's state will be remembered and restored for future downloads."
@@ -970,9 +1127,6 @@ msgstr "Ki"
 #~ msgid "URL (Invalid)"
 #~ msgstr "Hivatkozás (hibás)"
 
-#~ msgid "Use aria2"
-#~ msgstr "aria2 letöltő használata"
-
 #~ msgid ""
 #~ "Use keyring to safely store credentials for sites that require a user "
 #~ "name and password to login."
@@ -982,9 +1136,6 @@ msgstr "Ki"
 
 #~ msgid "Use manual credential"
 #~ msgstr "Bejelentkezés másként"
-
-#~ msgid "Use SponsorBlock for YouTube"
-#~ msgstr "Szponzoráció eltávolítása YouTube videókból"
 
 #~ msgid "User Name"
 #~ msgstr "Felhasználónév"
@@ -1024,18 +1175,6 @@ msgstr "Ki"
 #~ msgid "Yes"
 #~ msgstr "Igen"
 
-#~ msgctxt "CompletedNotification"
-#~ msgid "For each download"
-#~ msgstr "Letöltésenként"
-
-#~ msgctxt "CompletedNotification"
-#~ msgid "Never"
-#~ msgstr "Soha"
-
-#~ msgctxt "CompletedNotification"
-#~ msgid "When all downloads finish"
-#~ msgstr "Minden letöltés végén"
-
 #~ msgctxt "subtitle"
 #~ msgid "all"
 #~ msgstr "összes"
@@ -1071,18 +1210,6 @@ msgstr "Ki"
 #~ msgstr ""
 #~ "Az alkalmazás bezárást követően tovább fut a háttérben míg minden "
 #~ "letöltés befejeződik."
-
-#~ msgid "Limit Filename Characters"
-#~ msgstr "Nem támogatott karakterek konvertálása"
-
-#~ msgid ""
-#~ "Restricts characters in filenames to only those supported by Windows."
-#~ msgstr ""
-#~ "A címekben szereplő nem támogatott karaktereket az alkalmazás konvertálni "
-#~ "fogja a Windows számára."
-
-#~ msgid "Clear Cookies File"
-#~ msgstr "Süti fájl törlése"
 
 #~ msgid "Stop All Downloads"
 #~ msgstr "Minden letöltés megszakítása"

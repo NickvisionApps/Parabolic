@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-06-17 12:53-0400\n"
+"POT-Creation-Date: 2024-06-17 22:52-0400\n"
 "PO-Revision-Date: 2023-11-03 03:31+0000\n"
 "Last-Translator: \"K.B.Dharun Krishna\" <kbdharunkrishna@gmail.com>\n"
 "Language-Team: Tamil <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -110,27 +110,268 @@ msgid "User Interface"
 msgstr "பயனர் இடைமுகம்"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:15
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:21
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:24
 msgid "Theme"
 msgstr "தீம்"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:17
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:22
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:25
 msgctxt "Theme"
 msgid "Light"
 msgstr "ஒளி"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:17
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:23
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:26
 msgctxt "Theme"
 msgid "Dark"
 msgstr "இருள்"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:17
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:24
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:27
 msgctxt "Theme"
 msgid "System"
 msgstr "அமைப்பு"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:27
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:31
+msgid "Completed Notification Trigger"
+msgstr "நிறைவு செய்யப்பட்ட அறிவிப்பு தூண்டுதல்"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:29
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:32
+#, fuzzy
+msgid "For each download"
+msgstr "ஒவ்வொரு பதிவிறக்கத்திற்கும்"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:29
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:33
+#, fuzzy
+msgid "When all downloads finish"
+msgstr "அனைத்து பதிவிறக்கங்களும் முடிந்ததும்"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:29
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:34
+#, fuzzy
+msgid "Never"
+msgstr "ஒருபோதும் இல்லை"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:39
+#, fuzzy
+msgid "Prevent Suspend"
+msgstr "இடைநிறுத்தத்தைத் தடுக்கவும்"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:49
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:57
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:38
+#, fuzzy
+msgid "Downloads"
+msgstr "பதிவிறக்கு"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:52
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:39
+msgid "Overwrite Existing Files"
+msgstr "ஏற்கனவே உள்ள கோப்புகளை மேலெழுதவும்"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:61
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:40
+msgid "Max Number of Active Downloads"
+msgstr "செயலில் உள்ள பதிவிறக்கங்களின் அதிகபட்ச எண்ணிக்கை"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:77
+msgid "Limit Filename Characters"
+msgstr "கோப்பு பெயர் எழுத்துக்களை வரம்பிடவும்"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:78
+msgid "Restricts characters in filenames to only those supported by Windows."
+msgstr ""
+"விண்டோஸால் ஆதரிக்கப்படும் கோப்புப் பெயர்களில் உள்ள எழுத்துக்களை மட்டும் கட்டுப்படுத்துகிறது."
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:87
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:45
+#, fuzzy
+msgid "Include Auto-Generated Subtitles"
+msgstr "வசனத்தைப் பதிவிறக்கவும்"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:97
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:48
+msgid "Downloader"
+msgstr "பதிவிறக்குபவர்"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:100
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:49
+msgid "Speed Limit"
+msgstr "வேக வரம்பு"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:101
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:50
+msgid ""
+"This limit (in KiB/s) is applied to downloads that have speed limit enabled. "
+"Changing the value doesn't affect already running downloads."
+msgstr ""
+"வேக வரம்பு இயக்கப்பட்ட பதிவிறக்கங்களுக்கு இந்த வரம்பு (KiB/s - கிலோபிட்/வினாடி இல்) "
+"பயன்படுத்தப்படும். மதிப்பை மாற்றுவது ஏற்கனவே இயங்கும் பதிவிறக்கங்களைப் பாதிக்காது."
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:117
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:51
+msgid "Use SponsorBlock for YouTube"
+msgstr "YouTubeக்கு SponsorBlock ஐப் பயன்படுத்தவும்"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:126
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:54
+msgid "Proxy URL"
+msgstr "ப்ராக்ஸி URL"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:135
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:56
+msgid "Cookies File"
+msgstr "குக்கீகள் கோப்பு"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:136
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:57
+#, fuzzy
+msgid ""
+"A cookies file can be provided to Parabolic to allow downloading media that "
+"requires a login."
+msgstr ""
+"உள்நுழைவு தேவைப்படும் மீடியாவைப் பதிவிறக்க அனுமதிக்க குக்கீகள் கோப்பு yt-dlp க்கு "
+"வழங்கப்படலாம்."
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:146
+#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:87
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:58
+msgid "Select Cookies File"
+msgstr "குக்கீகள் கோப்பைத் தேர்ந்தெடுக்கவும்"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:156
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:59
+msgid "Clear Cookies File"
+msgstr "குக்கீகள் கோப்பை அழிக்கவும்"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:166
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:60
+msgid "Cookies File Information"
+msgstr "குக்கீகள் கோப்பு தகவல்"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:181
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:61
+msgid ""
+"Cookies can be passed to yt-dlp in the form of TXT files. Export cookies "
+"from your browser using the following extensions (use at your own risk):"
+msgstr ""
+"TXT கோப்புகளின் வடிவத்தில் குக்கீகளை yt-dlp க்கு அனுப்பலாம். பின்வரும் நீட்டிப்புகளைப் "
+"பயன்படுத்தி உங்கள் உலாவியில் இருந்து குக்கீகளை ஏற்றுமதி செய்யவும் (உங்கள் சொந்த ஆபத்தில் "
+"பயன்படுத்தவும்):"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:193
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:62
+msgid "Chrome/Edge"
+msgstr ""
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:202
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:63
+msgid "Firefox"
+msgstr ""
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:220
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:64
+msgid "Converter"
+msgstr "மாற்றி"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:223
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:65
+msgid "Disallow Conversions"
+msgstr "மாற்றங்களை அனுமதிக்காதே"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:224
+#, fuzzy
+msgid ""
+"If enabled, Parabolic will download the appropriate video/audio format for "
+"the selected quality without converting to other formats. (You will be "
+"unable to select a file format)"
+msgstr ""
+"இயக்கப்பட்டால், மற்ற வடிவங்களுக்கு மாற்றாமல், தேர்ந்தெடுக்கப்பட்ட தரத்திற்கு பொருத்தமான வீடியோ/"
+"ஆடியோ வடிவமைப்பை பரபோலிக் பதிவிறக்கும். (நீங்கள் ஒரு கோப்பு வடிவமைப்பைத் தேர்ந்தெடுக்க "
+"முடியாது)"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:233
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:69
+msgid "Embed Metadata"
+msgstr "மெட்டாடேட்டாவை உட்பொதிக்கவும்"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:242
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:75
+msgid "Embed Chapters"
+msgstr "அத்தியாயங்களை உட்பொதிக்கவும்"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:251
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:72
+#, fuzzy
+msgid "Embed Subtitles"
+msgstr "வசனம்"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:260
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:78
+msgid "Crop Audio Thumbnails"
+msgstr "ஒலி அமைப்பு சிறுபடங்களை செதுக்கு"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:261
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:79
+#, fuzzy
+msgid ""
+"If enabled, Parabolic will crop the thumbnails of audio files to squares."
+msgstr ""
+"இயக்கப்பட்டால், பரபோலிக் ஒலி அமைப்பு பதிவிறக்கங்களுக்கான செதுக்கப்பட்ட சிறுபட மேம்பட்ட "
+"விருப்பத்தை தானாகவே இயக்கும்"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:271
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:82
+msgid "Remove Source Data"
+msgstr ""
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:272
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:83
+#, fuzzy
+msgid ""
+"If enabled, Parabolic will clear metadata fields containing the URL and "
+"other identifying information of a download."
+msgstr ""
+"ஊடகம் மூலத்திற்கு வழிவகுக்கும் URL மற்றும் மற்றொரு தரவைக் கொண்ட மெட்டாடேட்டா புலங்களை "
+"அழிக்கவும்"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:283
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:86
+#, fuzzy
+msgid "aria2"
+msgstr "aria2 ஐப் பயன்படுத்தவும்"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:286
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:87
+msgid "Use aria2"
+msgstr "aria2 ஐப் பயன்படுத்தவும்"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:287
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:88
+msgid ""
+"Enable to use aria2 downloader. It can be faster, but you will not see "
+"download progress."
+msgstr ""
+"aria2 பதிவிறக்குபவரைப் பயன்படுத்த இயக்கு. இது வேகமாக இருக்கலாம், ஆனால் நீங்கள் பதிவிறக்க "
+"முன்னேற்றத்தைக் காண மாட்டீர்கள்."
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:296
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:91
+msgid "Max Connections Per Server (-x)"
+msgstr "ஒரு சேவையகத்திற்கு அதிகபட்ச இணைப்புகள் (-x)"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:313
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:92
+msgid "Minimum Split Size (-k)"
+msgstr "குறைந்தபட்ச பிளவு அளவு (-k)"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:314
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:93
+msgid "The minimum size of which to split a file (in MiB)."
+msgstr "கோப்பைப் பிரிப்பதற்கான குறைந்தபட்ச அளவு (MiB - மெபிபைட்/வினாடி இல்)."
 
 #: org.nickvision.tubeconverter.gnome/blueprints/shortcuts_dialog.blp:13
 #, fuzzy
@@ -188,6 +429,17 @@ msgstr ""
 msgid "GitHub Repo"
 msgstr "GitHub களஞ்சியம்"
 
+#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:25
+#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:109
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:112
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:165
+msgid "No file selected"
+msgstr ""
+
+#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:89
+msgid "Text File (*.txt)"
+msgstr ""
+
 #: org.nickvision.tubeconverter.winui/Controls/TitleBar.xaml.cpp:132
 #, fuzzy
 msgid "Search"
@@ -201,11 +453,6 @@ msgstr ""
 #: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:56
 msgid "Keyring"
 msgstr "சாவி வளையம்"
-
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:57
-#, fuzzy
-msgid "Downloads"
-msgstr "பதிவிறக்கு"
 
 #: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:58
 msgid "Downloading"
@@ -256,7 +503,7 @@ msgstr "வரலாறு"
 
 #. Localize Strings
 #: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:70
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:19
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:22
 msgid "Settings"
 msgstr ""
 
@@ -297,22 +544,61 @@ msgid ""
 "{}"
 msgstr ""
 
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:20
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:23
 msgid "Appearance & behavior"
 msgstr ""
 
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:25
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:28
 msgid "Automatically Check for Updates"
 msgstr ""
 
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:26
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:29
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:36
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:46
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:52
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:67
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:70
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:73
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:76
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:80
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:84
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:89
 #, fuzzy
 msgid "On"
 msgstr "கோப்பைத் திறக்கவும்"
 
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:27
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:30
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:37
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:47
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:53
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:68
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:71
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:74
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:77
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:81
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:85
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:90
 msgid "Off"
 msgstr ""
+
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:35
+#, fuzzy
+msgid "Prevent Suspend When Downloading"
+msgstr "இடைநிறுத்தத்தைத் தடுக்கவும்"
+
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:55
+msgid "Enter proxy URL here"
+msgstr ""
+
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:66
+#, fuzzy
+msgid ""
+"If enabled, Parabolic will download the appropriate video/audio format for "
+"the selected quality without converting to other formats."
+msgstr ""
+"இயக்கப்பட்டால், மற்ற வடிவங்களுக்கு மாற்றாமல், தேர்ந்தெடுக்கப்பட்ட தரத்திற்கு பொருத்தமான வீடியோ/"
+"ஆடியோ வடிவமைப்பை பரபோலிக் பதிவிறக்கும். (நீங்கள் ஒரு கோப்பு வடிவமைப்பைத் தேர்ந்தெடுக்க "
+"முடியாது)"
 
 #, fuzzy
 #~ msgid "Open Folder (Ctrl+O)"
@@ -361,13 +647,6 @@ msgstr ""
 #~ msgstr[0] "{1} இல் {0} உருப்படிகள்"
 #~ msgstr[1] "{1} இல் {0} உருப்படிகள்"
 
-#~ msgid ""
-#~ "A cookies file can be provided to yt-dlp to allow downloading media that "
-#~ "requires a login."
-#~ msgstr ""
-#~ "உள்நுழைவு தேவைப்படும் மீடியாவைப் பதிவிறக்க அனுமதிக்க குக்கீகள் கோப்பு yt-dlp க்கு "
-#~ "வழங்கப்படலாம்."
-
 #~ msgid "Add"
 #~ msgstr "சேர்"
 
@@ -403,45 +682,14 @@ msgstr ""
 #~ msgstr "முடிக்கப்பட்ட பதிவிறக்கங்களை அழிக்கவும்"
 
 #, fuzzy
-#~ msgid ""
-#~ "Clear metadata fields containing the URL and other identifying "
-#~ "information of the media source"
-#~ msgstr ""
-#~ "ஊடகம் மூலத்திற்கு வழிவகுக்கும் URL மற்றும் மற்றொரு தரவைக் கொண்ட மெட்டாடேட்டா புலங்களை "
-#~ "அழிக்கவும்"
-
-#, fuzzy
 #~ msgid "Clear Queued"
 #~ msgstr "வரிசைப்படுத்தப்பட்ட பதிவிறக்கங்களை அழிக்கவும்"
 
 #~ msgid "Close and Stop Downloads?"
 #~ msgstr "பதிவிறக்கங்களை மூடிவிட்டு நிறுத்தவா?"
 
-#~ msgid "Completed Notification Trigger"
-#~ msgstr "நிறைவு செய்யப்பட்ட அறிவிப்பு தூண்டுதல்"
-
-#~ msgid "Converter"
-#~ msgstr "மாற்றி"
-
-#~ msgid ""
-#~ "Cookies can be passed to yt-dlp in the form of TXT files. Export cookies "
-#~ "from your browser using the following extensions (use at your own risk):"
-#~ msgstr ""
-#~ "TXT கோப்புகளின் வடிவத்தில் குக்கீகளை yt-dlp க்கு அனுப்பலாம். பின்வரும் நீட்டிப்புகளைப் "
-#~ "பயன்படுத்தி உங்கள் உலாவியில் இருந்து குக்கீகளை ஏற்றுமதி செய்யவும் (உங்கள் சொந்த ஆபத்தில் "
-#~ "பயன்படுத்தவும்):"
-
-#~ msgid "Cookies File"
-#~ msgstr "குக்கீகள் கோப்பு"
-
-#~ msgid "Cookies File Information"
-#~ msgstr "குக்கீகள் கோப்பு தகவல்"
-
 #~ msgid "Copy to Clipboard"
 #~ msgstr "கிளிப்போர்டுக்கு நகலெடுக்கவும்"
-
-#~ msgid "Crop Audio Thumbnails"
-#~ msgstr "ஒலி அமைப்பு சிறுபடங்களை செதுக்கு"
 
 #~ msgid "Crop Thumbnail"
 #~ msgstr "சிறுபடத்தை வெட்டவும்"
@@ -491,9 +739,6 @@ msgstr ""
 #~ "சாவி வளையத்தை முடக்குவது, தற்போது உள்ளே சேமிக்கப்பட்டுள்ள எல்லா தரவையும் நீக்கிவிடும். "
 #~ "நிச்சயமாக அதை முடக்க விரும்புகிறீர்களா?"
 
-#~ msgid "Disallow Conversions"
-#~ msgstr "மாற்றங்களை அனுமதிக்காதே"
-
 #~ msgid "Download"
 #~ msgstr "பதிவிறக்கு"
 
@@ -509,18 +754,11 @@ msgstr ""
 #~ msgid "Download Specific Timeframe"
 #~ msgstr "குறிப்பிட்ட காலக்கெடுவைப் பதிவிறக்கவும்"
 
-#, fuzzy
-#~ msgid "Download Subtitles"
-#~ msgstr "வசனத்தைப் பதிவிறக்கவும்"
-
 #~ msgid "Download using aria2 has started"
 #~ msgstr "aria2 ஐப் பயன்படுத்தி பதிவிறக்கம் தொடங்கப்பட்டது"
 
 #~ msgid "Download using ffmpeg has started"
 #~ msgstr "ffmpeg ஐப் பயன்படுத்தி பதிவிறக்கம் தொடங்கப்பட்டது"
-
-#~ msgid "Downloader"
-#~ msgstr "பதிவிறக்குபவர்"
 
 #, csharp-format
 #~ msgid "Downloading {0:f2}% ({1})"
@@ -533,25 +771,8 @@ msgstr ""
 #~ msgid "Downloads Finished"
 #~ msgstr "பதிவிறக்கங்கள் முடிந்தது"
 
-#~ msgid "Embed Chapters"
-#~ msgstr "அத்தியாயங்களை உட்பொதிக்கவும்"
-
-#~ msgid "Embed Metadata"
-#~ msgstr "மெட்டாடேட்டாவை உட்பொதிக்கவும்"
-
-#, fuzzy
-#~ msgid "Embed Subtitles"
-#~ msgstr "வசனம்"
-
 #~ msgid "Enable"
 #~ msgstr "இயக்கு"
-
-#~ msgid ""
-#~ "Enable to use aria2 downloader. It can be faster, but you will not see "
-#~ "download progress."
-#~ msgstr ""
-#~ "aria2 பதிவிறக்குபவரைப் பயன்படுத்த இயக்கு. இது வேகமாக இருக்கலாம், ஆனால் நீங்கள் "
-#~ "பதிவிறக்க முன்னேற்றத்தைக் காண மாட்டீர்கள்."
 
 #~ msgid "End Time"
 #~ msgstr "முடிவு நேரம்"
@@ -576,22 +797,6 @@ msgstr ""
 
 #~ msgid "File Type"
 #~ msgstr "கோப்பு வகை"
-
-#~ msgid ""
-#~ "If enabled, Parabolic will automatically turn on the crop thumbnail "
-#~ "advanced option for audio downloads"
-#~ msgstr ""
-#~ "இயக்கப்பட்டால், பரபோலிக் ஒலி அமைப்பு பதிவிறக்கங்களுக்கான செதுக்கப்பட்ட சிறுபட மேம்பட்ட "
-#~ "விருப்பத்தை தானாகவே இயக்கும்"
-
-#~ msgid ""
-#~ "If enabled, Parabolic will download the appropriate video/audio format "
-#~ "for the selected quality without converting to other formats. (You will "
-#~ "be unable to select a file format)"
-#~ msgstr ""
-#~ "இயக்கப்பட்டால், மற்ற வடிவங்களுக்கு மாற்றாமல், தேர்ந்தெடுக்கப்பட்ட தரத்திற்கு பொருத்தமான "
-#~ "வீடியோ/ஆடியோ வடிவமைப்பை பரபோலிக் பதிவிறக்கும். (நீங்கள் ஒரு கோப்பு வடிவமைப்பைத் "
-#~ "தேர்ந்தெடுக்க முடியாது)"
 
 #~ msgid ""
 #~ "In combination with the trigger, completed notifications will only be "
@@ -632,12 +837,6 @@ msgstr ""
 #~ msgid "Make thumbnail square, useful when downloading music."
 #~ msgstr "இசை பதிவிறக்கம் செய்யும் போது உபயோகமான சிறுபடவுரு சதுரத்தை உருவாக்கவும்."
 
-#~ msgid "Max Connections Per Server (-x)"
-#~ msgstr "ஒரு சேவையகத்திற்கு அதிகபட்ச இணைப்புகள் (-x)"
-
-#~ msgid "Max Number of Active Downloads"
-#~ msgstr "செயலில் உள்ள பதிவிறக்கங்களின் அதிகபட்ச எண்ணிக்கை"
-
 #~ msgid "Maximum Quality"
 #~ msgstr "அதிகபட்ச தரம்"
 
@@ -655,9 +854,6 @@ msgstr ""
 
 #~ msgid "Media URL (Invalid)"
 #~ msgstr "ஊடகத்தின் URL (செல்லாதது)"
-
-#~ msgid "Minimum Split Size (-k)"
-#~ msgstr "குறைந்தபட்ச பிளவு அளவு (-k)"
 
 #~ msgid "Name"
 #~ msgstr "பெயர்"
@@ -698,9 +894,6 @@ msgstr ""
 #~ msgid "Number Titles"
 #~ msgstr "எண் தலைப்புகள்"
 
-#~ msgid "Overwrite Existing Files"
-#~ msgstr "ஏற்கனவே உள்ள கோப்புகளை மேலெழுதவும்"
-
 #~ msgid "Password"
 #~ msgstr "கடவுச்சொல்"
 
@@ -716,14 +909,8 @@ msgstr ""
 #~ msgid "Preparing..."
 #~ msgstr "தயாராகிறது..."
 
-#~ msgid "Prevent Suspend"
-#~ msgstr "இடைநிறுத்தத்தைத் தடுக்கவும்"
-
 #~ msgid "Processing..."
 #~ msgstr "செயலாக்குகிறது..."
-
-#~ msgid "Proxy URL"
-#~ msgstr "ப்ராக்ஸி URL"
 
 #~ msgid "Quality"
 #~ msgstr "தரம்"
@@ -753,9 +940,6 @@ msgstr ""
 #~ msgid "Select All"
 #~ msgstr "அனைத்தையும் தெரிவுசெய்"
 
-#~ msgid "Select Cookies File"
-#~ msgstr "குக்கீகள் கோப்பைத் தேர்ந்தெடுக்கவும்"
-
 #~ msgid "Select items to download or change file names."
 #~ msgstr "கோப்புப் பெயர்களைப் பதிவிறக்க அல்லது மாற்ற உருப்படிகளைத் தேர்ந்தெடுக்கவும்."
 
@@ -771,9 +955,6 @@ msgstr ""
 
 #~ msgid "Some downloads finished with errors!"
 #~ msgstr "சில பதிவிறக்கங்கள் பிழைகளுடன் முடிந்தது!"
-
-#~ msgid "Speed Limit"
-#~ msgstr "வேக வரம்பு"
 
 #~ msgid "Split Chapters"
 #~ msgstr "அத்தியாயங்களைப் பிரிக்கவும்"
@@ -812,18 +993,8 @@ msgstr ""
 #~ msgid "Success"
 #~ msgstr "வெற்றி"
 
-#~ msgid "The minimum size of which to split a file (in MiB)."
-#~ msgstr "கோப்பைப் பிரிப்பதற்கான குறைந்தபட்ச அளவு (MiB - மெபிபைட்/வினாடி இல்)."
-
 #~ msgid "This action is irreversible. Are you sure you want to delete it?"
 #~ msgstr "இந்த நடவடிக்கை மீள முடியாதது. நிச்சயமாக அதை நீக்க வேண்டுமா?"
-
-#~ msgid ""
-#~ "This limit (in KiB/s) is applied to downloads that have speed limit "
-#~ "enabled. Changing the value doesn't affect already running downloads."
-#~ msgstr ""
-#~ "வேக வரம்பு இயக்கப்பட்ட பதிவிறக்கங்களுக்கு இந்த வரம்பு (KiB/s - கிலோபிட்/வினாடி இல்) "
-#~ "பயன்படுத்தப்படும். மதிப்பை மாற்றுவது ஏற்கனவே இயங்கும் பதிவிறக்கங்களைப் பாதிக்காது."
 
 #~ msgid ""
 #~ "This will delete the previous keyring removing all passwords with it. "
@@ -854,9 +1025,6 @@ msgstr ""
 #~ msgid "URL (Invalid)"
 #~ msgstr "URL (செல்லாதது)"
 
-#~ msgid "Use aria2"
-#~ msgstr "aria2 ஐப் பயன்படுத்தவும்"
-
 #, fuzzy
 #~ msgid ""
 #~ "Use keyring to safely store credentials for sites that require a user "
@@ -867,9 +1035,6 @@ msgstr ""
 
 #~ msgid "Use manual credential"
 #~ msgstr "கைமுறை நற்சான்றிதழைப் பயன்படுத்தவும்"
-
-#~ msgid "Use SponsorBlock for YouTube"
-#~ msgstr "YouTubeக்கு SponsorBlock ஐப் பயன்படுத்தவும்"
 
 #, fuzzy
 #~ msgid "User Name"
@@ -903,18 +1068,6 @@ msgstr ""
 
 #~ msgid "Yes"
 #~ msgstr "ஆம்"
-
-#~ msgctxt "CompletedNotification"
-#~ msgid "For each download"
-#~ msgstr "ஒவ்வொரு பதிவிறக்கத்திற்கும்"
-
-#~ msgctxt "CompletedNotification"
-#~ msgid "Never"
-#~ msgstr "ஒருபோதும் இல்லை"
-
-#~ msgctxt "CompletedNotification"
-#~ msgid "When all downloads finish"
-#~ msgstr "அனைத்து பதிவிறக்கங்களும் முடிந்ததும்"
 
 #~ msgctxt "subtitle"
 #~ msgid "all"
@@ -950,18 +1103,6 @@ msgstr ""
 
 #~ msgid "Hide the window instead of quitting if there are downloads running."
 #~ msgstr "பதிவிறக்கங்கள் இயங்கினால் வெளியேறுவதற்குப் பதிலாக சாளரத்தை மறைக்கவும்."
-
-#~ msgid "Limit Filename Characters"
-#~ msgstr "கோப்பு பெயர் எழுத்துக்களை வரம்பிடவும்"
-
-#~ msgid ""
-#~ "Restricts characters in filenames to only those supported by Windows."
-#~ msgstr ""
-#~ "விண்டோஸால் ஆதரிக்கப்படும் கோப்புப் பெயர்களில் உள்ள எழுத்துக்களை மட்டும் "
-#~ "கட்டுப்படுத்துகிறது."
-
-#~ msgid "Clear Cookies File"
-#~ msgstr "குக்கீகள் கோப்பை அழிக்கவும்"
 
 #~ msgid "Stop All Downloads"
 #~ msgstr "அனைத்து பதிவிறக்கங்களையும் நிறுத்து"

@@ -22,8 +22,9 @@ namespace winrt::Nickvision::TubeConverter::WinUI::implementation
         /**
          * @brief Sets the controller for the page.
          * @param controller The PreferencesViewController 
+         * @param hwnd The window handle
          */
-        void SetController(const std::shared_ptr<::Nickvision::TubeConverter::Shared::Controllers::PreferencesViewController>& controller);
+        void SetController(const std::shared_ptr<::Nickvision::TubeConverter::Shared::Controllers::PreferencesViewController>& controller, HWND hwnd);
         /**
          * @brief Handles when a combo preference is changed. 
          */
@@ -32,6 +33,38 @@ namespace winrt::Nickvision::TubeConverter::WinUI::implementation
          * @brief Handles when a switch preference is changed. 
          */
         void OnSwitchToggled(const IInspectable& sender, const Microsoft::UI::Xaml::RoutedEventArgs& args);
+        /**
+         * @brief Handles when a number preference is changed. 
+         */
+        void OnNumChanged(const Microsoft::UI::Xaml::Controls::NumberBox& sender, const Microsoft::UI::Xaml::Controls::NumberBoxValueChangedEventArgs& args);
+        /**
+         * @brief Handles when a text preference is changed. 
+         */
+        void OnTextChanged(const IInspectable& sender, const Microsoft::UI::Xaml::Controls::TextChangedEventArgs& args);
+        /**
+         * @brief Prompts the user to open a cookies file.
+         * @param sender IInspectable
+         * @param args Microsoft::UI::Xaml::RoutedEventArgs
+         */
+        Windows::Foundation::IAsyncAction SelectCookiesFile(const IInspectable& sender, const Microsoft::UI::Xaml::RoutedEventArgs& args);
+        /**
+         * @brief Clears the cookies file.
+         * @param sender IInspectable
+         * @param args Microsoft::UI::Xaml::RoutedEventArgs
+         */
+        void ClearCookiesFile(const IInspectable& sender, const Microsoft::UI::Xaml::RoutedEventArgs& args);
+        /**
+         * @brief Opens the link to the cookies extension for chrome-based browsers.
+         * @param sender IInspectable
+         * @param args Microsoft::UI::Xaml::RoutedEventArgs
+         */
+        Windows::Foundation::IAsyncAction CookiesChrome(const IInspectable& sender, const Microsoft::UI::Xaml::RoutedEventArgs& args);
+        /**
+         * @brief Opens the link to the cookies extension for firefox.
+         * @param sender IInspectable
+         * @param args Microsoft::UI::Xaml::RoutedEventArgs
+         */
+        Windows::Foundation::IAsyncAction CookiesFirefox(const IInspectable& sender, const Microsoft::UI::Xaml::RoutedEventArgs& args);
 
     private:
         /**
@@ -40,6 +73,7 @@ namespace winrt::Nickvision::TubeConverter::WinUI::implementation
         void ApplyChanges();
         std::shared_ptr<::Nickvision::TubeConverter::Shared::Controllers::PreferencesViewController> m_controller;
         bool m_constructing;
+        HWND m_hwnd;
     };
 }
 

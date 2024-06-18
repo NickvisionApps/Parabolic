@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-06-17 12:53-0400\n"
+"POT-Creation-Date: 2024-06-17 22:52-0400\n"
 "PO-Revision-Date: 2024-05-08 04:07+0000\n"
 "Last-Translator: Scrambled777 <weblate.scrambled777@simplelogin.com>\n"
 "Language-Team: Hindi <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -112,27 +112,261 @@ msgid "User Interface"
 msgstr "प्रयोक्ता इंटरफ़ेस"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:15
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:21
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:24
 msgid "Theme"
 msgstr "थीम"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:17
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:22
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:25
 msgctxt "Theme"
 msgid "Light"
 msgstr "हल्का"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:17
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:23
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:26
 msgctxt "Theme"
 msgid "Dark"
 msgstr "गहरा"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:17
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:24
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:27
 msgctxt "Theme"
 msgid "System"
 msgstr "सिस्टम"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:27
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:31
+msgid "Completed Notification Trigger"
+msgstr "पूर्ण अधिसूचना ट्रिगर"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:29
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:32
+#, fuzzy
+msgid "For each download"
+msgstr "प्रत्येक डाउनलोड के लिए"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:29
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:33
+#, fuzzy
+msgid "When all downloads finish"
+msgstr "जब सभी डाउनलोड समाप्त हो जाएं"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:29
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:34
+#, fuzzy
+msgid "Never"
+msgstr "कभी नहीं"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:39
+#, fuzzy
+msgid "Prevent Suspend"
+msgstr "निलंबन रोकें"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:49
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:57
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:38
+msgid "Downloads"
+msgstr "डाउनलोड्स"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:52
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:39
+msgid "Overwrite Existing Files"
+msgstr "मौजूदा फाइलें अधिलेखित करें"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:61
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:40
+msgid "Max Number of Active Downloads"
+msgstr "सक्रिय डाउनलोड की अधिकतम संख्या"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:77
+msgid "Limit Filename Characters"
+msgstr "फाइलनाम वर्ण सीमित करें"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:78
+msgid "Restricts characters in filenames to only those supported by Windows."
+msgstr "फाइल नामों में वर्णों को केवल विंडोज़ द्वारा समर्थित वर्णों तक सीमित करता है।"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:87
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:45
+msgid "Include Auto-Generated Subtitles"
+msgstr "ऑटो-निर्मित उपशीर्षक शामिल करें"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:97
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:48
+msgid "Downloader"
+msgstr "डाउनलोडर"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:100
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:49
+msgid "Speed Limit"
+msgstr "गति सीमा"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:101
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:50
+msgid ""
+"This limit (in KiB/s) is applied to downloads that have speed limit enabled. "
+"Changing the value doesn't affect already running downloads."
+msgstr ""
+"यह सीमा (KiB/s में) उन डाउनलोड पर लागू होती है जिनमें गति सीमा सक्षम है। मान बदलने से "
+"पहले से चल रहे डाउनलोड प्रभावित नहीं होते हैं।"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:117
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:51
+msgid "Use SponsorBlock for YouTube"
+msgstr "YouTube के लिए स्पॉन्सरब्लॉक का उपयोग करें"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:126
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:54
+msgid "Proxy URL"
+msgstr "प्रॉक्सी URL"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:135
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:56
+msgid "Cookies File"
+msgstr "कुकीज़ फाइल"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:136
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:57
+#, fuzzy
+msgid ""
+"A cookies file can be provided to Parabolic to allow downloading media that "
+"requires a login."
+msgstr ""
+"मीडिया को डाउनलोड करने की अनुमति देने के लिए yt-dlp को एक कुकीज़ फाइल प्रदान की जा "
+"सकती है जिसके लिए लॉगिन की आवश्यकता होती है।"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:146
+#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:87
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:58
+msgid "Select Cookies File"
+msgstr "कुकीज़ फाइल का चयन करें"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:156
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:59
+msgid "Clear Cookies File"
+msgstr "कुकीज़ फाइल साफ़ करें"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:166
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:60
+msgid "Cookies File Information"
+msgstr "कुकीज़ फाइल जानकारी"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:181
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:61
+msgid ""
+"Cookies can be passed to yt-dlp in the form of TXT files. Export cookies "
+"from your browser using the following extensions (use at your own risk):"
+msgstr ""
+"कुकीज़ को TXT फाइलों के रूप में yt-dlp में भेजा जा सकता है। निम्नलिखित एक्सटेंशन का उपयोग "
+"करके अपने ब्राउज़र से कुकीज़ निर्यात करें (अपने जोखिम पर उपयोग करें):"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:193
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:62
+msgid "Chrome/Edge"
+msgstr "Chrome/Edge"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:202
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:63
+msgid "Firefox"
+msgstr "Firefox"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:220
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:64
+msgid "Converter"
+msgstr "परिवर्तक"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:223
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:65
+msgid "Disallow Conversions"
+msgstr "परिवर्तनों को अस्वीकार करें"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:224
+#, fuzzy
+msgid ""
+"If enabled, Parabolic will download the appropriate video/audio format for "
+"the selected quality without converting to other formats. (You will be "
+"unable to select a file format)"
+msgstr ""
+"यदि सक्षम किया गया है, तो Parabolic अन्य प्रारूपों में परिवर्तित किए बिना चयनित "
+"गुणवत्ता के लिए उपयुक्त वीडियो/ऑडियो प्रारूप डाउनलोड करेगा। (आप फाइल स्वरूप का चयन करने "
+"में असमर्थ होंगे)"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:233
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:69
+msgid "Embed Metadata"
+msgstr "मेटाडेटा एम्बेड करें"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:242
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:75
+msgid "Embed Chapters"
+msgstr "अध्याय एम्बेड करें"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:251
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:72
+msgid "Embed Subtitles"
+msgstr "उपशीर्षक एम्बेड करें"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:260
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:78
+msgid "Crop Audio Thumbnails"
+msgstr "ऑडियो थंबनेल काटें"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:261
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:79
+#, fuzzy
+msgid ""
+"If enabled, Parabolic will crop the thumbnails of audio files to squares."
+msgstr ""
+"यदि सक्षम किया गया है, तो Parabolic स्वचालित रूप से ऑडियो डाउनलोड के लिए क्रॉप थंबनेल "
+"उन्नत विकल्प चालू कर देगा"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:271
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:82
+msgid "Remove Source Data"
+msgstr "स्रोत डेटा हटाएँ"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:272
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:83
+#, fuzzy
+msgid ""
+"If enabled, Parabolic will clear metadata fields containing the URL and "
+"other identifying information of a download."
+msgstr "URL और मीडिया स्रोत की अन्य पहचान संबंधी जानकारी वाले मेटाडेटा फ़ील्ड साफ़ करें"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:283
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:86
+#, fuzzy
+msgid "aria2"
+msgstr "aria2 का प्रयोग करें"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:286
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:87
+msgid "Use aria2"
+msgstr "aria2 का प्रयोग करें"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:287
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:88
+msgid ""
+"Enable to use aria2 downloader. It can be faster, but you will not see "
+"download progress."
+msgstr ""
+"Aria2 डाउनलोडर का उपयोग सक्षम करें. यह तेज़ हो सकता है, लेकिन आपको डाउनलोड प्रगति "
+"नहीं दिखेगी।"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:296
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:91
+msgid "Max Connections Per Server (-x)"
+msgstr "प्रति सर्वर अधिकतम कनेक्शन (-x)"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:313
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:92
+msgid "Minimum Split Size (-k)"
+msgstr "न्यूनतम विभाजन आकार (-k)"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:314
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:93
+msgid "The minimum size of which to split a file (in MiB)."
+msgstr "किसी फाइल को विभाजित करने के लिए न्यूनतम आकार (MiB में)।"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/shortcuts_dialog.blp:13
 #, fuzzy
@@ -190,6 +424,18 @@ msgstr "बंद करे"
 msgid "GitHub Repo"
 msgstr "GitHub रेपो"
 
+#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:25
+#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:109
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:112
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:165
+#, fuzzy
+msgid "No file selected"
+msgstr "कोई फाइल चयनित नहीं"
+
+#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:89
+msgid "Text File (*.txt)"
+msgstr ""
+
 #: org.nickvision.tubeconverter.winui/Controls/TitleBar.xaml.cpp:132
 #, fuzzy
 msgid "Search"
@@ -203,10 +449,6 @@ msgstr "होम"
 #: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:56
 msgid "Keyring"
 msgstr "कीरिंग"
-
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:57
-msgid "Downloads"
-msgstr "डाउनलोड्स"
 
 #: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:58
 msgid "Downloading"
@@ -255,7 +497,7 @@ msgstr "इतिहास"
 
 #. Localize Strings
 #: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:70
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:19
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:22
 msgid "Settings"
 msgstr "सेटिंग्स"
 
@@ -318,21 +560,60 @@ msgstr ""
 "अनुवादक:\n"
 "{3}"
 
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:20
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:23
 msgid "Appearance & behavior"
 msgstr ""
 
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:25
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:28
 msgid "Automatically Check for Updates"
 msgstr "अपडेट के लिए स्वचालित रूप से जाँच करें"
 
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:26
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:29
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:36
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:46
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:52
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:67
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:70
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:73
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:76
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:80
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:84
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:89
 msgid "On"
 msgstr "चालू"
 
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:27
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:30
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:37
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:47
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:53
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:68
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:71
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:74
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:77
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:81
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:85
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:90
 msgid "Off"
 msgstr "बंद"
+
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:35
+#, fuzzy
+msgid "Prevent Suspend When Downloading"
+msgstr "निलंबन रोकें"
+
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:55
+msgid "Enter proxy URL here"
+msgstr "यहां प्रॉक्सी URL दर्ज करें"
+
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:66
+#, fuzzy
+msgid ""
+"If enabled, Parabolic will download the appropriate video/audio format for "
+"the selected quality without converting to other formats."
+msgstr ""
+"यदि सक्षम किया गया है, तो Parabolic अन्य प्रारूपों में परिवर्तित किए बिना चयनित "
+"गुणवत्ता के लिए उपयुक्त वीडियो/ऑडियो प्रारूप डाउनलोड करेगा। (आप फाइल स्वरूप का चयन करने "
+"में असमर्थ होंगे)"
 
 #, fuzzy
 #~ msgid "Open Folder (Ctrl+O)"
@@ -385,13 +666,6 @@ msgstr "बंद"
 #~ msgid "{0}{1}"
 #~ msgstr "{0}{1}"
 
-#~ msgid ""
-#~ "A cookies file can be provided to yt-dlp to allow downloading media that "
-#~ "requires a login."
-#~ msgstr ""
-#~ "मीडिया को डाउनलोड करने की अनुमति देने के लिए yt-dlp को एक कुकीज़ फाइल प्रदान की "
-#~ "जा सकती है जिसके लिए लॉगिन की आवश्यकता होती है।"
-
 #~ msgid "About"
 #~ msgstr "बारे में"
 
@@ -431,19 +705,11 @@ msgstr "बंद"
 #~ msgid "Cancel"
 #~ msgstr "रद्द"
 
-#~ msgid "Chrome/Edge"
-#~ msgstr "Chrome/Edge"
-
 #~ msgid "Clear"
 #~ msgstr "साफ़"
 
 #~ msgid "Clear Completed"
 #~ msgstr "पूर्ण साफ़ करें"
-
-#~ msgid ""
-#~ "Clear metadata fields containing the URL and other identifying "
-#~ "information of the media source"
-#~ msgstr "URL और मीडिया स्रोत की अन्य पहचान संबंधी जानकारी वाले मेटाडेटा फ़ील्ड साफ़ करें"
 
 #~ msgid "Clear Queued"
 #~ msgstr "स्पष्ट कतारबद्ध"
@@ -454,30 +720,8 @@ msgstr "बंद"
 #~ msgid "Comma separated list"
 #~ msgstr "अल्पविराम से अलग की गई सूची"
 
-#~ msgid "Completed Notification Trigger"
-#~ msgstr "पूर्ण अधिसूचना ट्रिगर"
-
-#~ msgid "Converter"
-#~ msgstr "परिवर्तक"
-
-#~ msgid ""
-#~ "Cookies can be passed to yt-dlp in the form of TXT files. Export cookies "
-#~ "from your browser using the following extensions (use at your own risk):"
-#~ msgstr ""
-#~ "कुकीज़ को TXT फाइलों के रूप में yt-dlp में भेजा जा सकता है। निम्नलिखित एक्सटेंशन का "
-#~ "उपयोग करके अपने ब्राउज़र से कुकीज़ निर्यात करें (अपने जोखिम पर उपयोग करें):"
-
-#~ msgid "Cookies File"
-#~ msgstr "कुकीज़ फाइल"
-
-#~ msgid "Cookies File Information"
-#~ msgstr "कुकीज़ फाइल जानकारी"
-
 #~ msgid "Copy to Clipboard"
 #~ msgstr "क्लिपबोर्ड पर कॉपी करें"
-
-#~ msgid "Crop Audio Thumbnails"
-#~ msgstr "ऑडियो थंबनेल काटें"
 
 #~ msgid "Crop Thumbnail"
 #~ msgstr "थंबनेल काटें"
@@ -528,9 +772,6 @@ msgstr "बंद"
 #~ "कीरिंग को अक्षम करने से वर्तमान में संग्रहीत सभी डेटा नष्ट हो जाएगा। क्या आप वाकई इसे "
 #~ "अक्षम करना चाहते हैं?"
 
-#~ msgid "Disallow Conversions"
-#~ msgstr "परिवर्तनों को अस्वीकार करें"
-
 #~ msgid "Documentation"
 #~ msgstr "दस्तावेज़ीकरण"
 
@@ -558,9 +799,6 @@ msgstr "बंद"
 #~ msgid "Download using ffmpeg has started"
 #~ msgstr "ffmpeg का उपयोग करके डाउनलोड प्रारंभ हो गया है"
 
-#~ msgid "Downloader"
-#~ msgstr "डाउनलोडर"
-
 #, csharp-format
 #~ msgid "Downloading {0:f2}% ({1})"
 #~ msgstr "डाउनलोड हो रहा है {0:f2}% ({1})"
@@ -571,24 +809,8 @@ msgstr "बंद"
 #~ msgid "Downloads Finished"
 #~ msgstr "डाउनलोड्स समाप्त"
 
-#~ msgid "Embed Chapters"
-#~ msgstr "अध्याय एम्बेड करें"
-
-#~ msgid "Embed Metadata"
-#~ msgstr "मेटाडेटा एम्बेड करें"
-
-#~ msgid "Embed Subtitles"
-#~ msgstr "उपशीर्षक एम्बेड करें"
-
 #~ msgid "Enable"
 #~ msgstr "सक्षम"
-
-#~ msgid ""
-#~ "Enable to use aria2 downloader. It can be faster, but you will not see "
-#~ "download progress."
-#~ msgstr ""
-#~ "Aria2 डाउनलोडर का उपयोग सक्षम करें. यह तेज़ हो सकता है, लेकिन आपको डाउनलोड प्रगति "
-#~ "नहीं दिखेगी।"
 
 #~ msgid "End Time"
 #~ msgstr "समाप्ति समय"
@@ -610,9 +832,6 @@ msgstr "बंद"
 
 #~ msgid "Enter password here"
 #~ msgstr "यहां पासवर्ड डालें"
-
-#~ msgid "Enter proxy URL here"
-#~ msgstr "यहां प्रॉक्सी URL दर्ज करें"
 
 #~ msgid "Enter start timeframe here"
 #~ msgstr "यहां प्रारंभ समय-सीमा दर्ज करें"
@@ -641,9 +860,6 @@ msgstr "बंद"
 #~ msgid "File Type"
 #~ msgstr "फाइल का प्रकार"
 
-#~ msgid "Firefox"
-#~ msgstr "Firefox"
-
 #~ msgid ""
 #~ "If disabled or if embedding fails, downloaded subtitles will be saved to "
 #~ "a separate file instead"
@@ -652,29 +868,10 @@ msgstr "बंद"
 #~ "उपशीर्षक को इसके बजाय एक अलग फाइल में सहेजा जाएगा"
 
 #~ msgid ""
-#~ "If enabled, Parabolic will automatically turn on the crop thumbnail "
-#~ "advanced option for audio downloads"
-#~ msgstr ""
-#~ "यदि सक्षम किया गया है, तो Parabolic स्वचालित रूप से ऑडियो डाउनलोड के लिए क्रॉप "
-#~ "थंबनेल उन्नत विकल्प चालू कर देगा"
-
-#~ msgid ""
-#~ "If enabled, Parabolic will download the appropriate video/audio format "
-#~ "for the selected quality without converting to other formats. (You will "
-#~ "be unable to select a file format)"
-#~ msgstr ""
-#~ "यदि सक्षम किया गया है, तो Parabolic अन्य प्रारूपों में परिवर्तित किए बिना चयनित "
-#~ "गुणवत्ता के लिए उपयुक्त वीडियो/ऑडियो प्रारूप डाउनलोड करेगा। (आप फाइल स्वरूप का चयन "
-#~ "करने में असमर्थ होंगे)"
-
-#~ msgid ""
 #~ "In combination with the trigger, completed notifications will only be "
 #~ "shown if the window is not focused."
 #~ msgstr ""
 #~ "ट्रिगर के साथ संयोजन में, पूर्ण सूचनाएं केवल तभी दिखाई जाएंगी यदि विंडो केंद्रित नहीं है।"
-
-#~ msgid "Include Auto-Generated Subtitles"
-#~ msgstr "ऑटो-निर्मित उपशीर्षक शामिल करें"
 
 #~ msgid "Keyring Credential"
 #~ msgstr "कीरिंग क्रेडेंशियल्स"
@@ -706,12 +903,6 @@ msgstr "बंद"
 #~ msgid "Make thumbnail square, useful when downloading music."
 #~ msgstr "थंबनेल को चौकोर बनाएं, जो संगीत डाउनलोड करते समय उपयोगी हो।"
 
-#~ msgid "Max Connections Per Server (-x)"
-#~ msgstr "प्रति सर्वर अधिकतम कनेक्शन (-x)"
-
-#~ msgid "Max Number of Active Downloads"
-#~ msgstr "सक्रिय डाउनलोड की अधिकतम संख्या"
-
 #~ msgid "Maximum Quality"
 #~ msgstr "अधिकतम गुणवत्ता"
 
@@ -733,9 +924,6 @@ msgstr "बंद"
 #~ "Minimize to the system tray instead of quitting the application when the "
 #~ "window is closed."
 #~ msgstr "विंडो बंद होने पर एप्लिकेशन को छोड़ने के बजाय सिस्टम ट्रे में छोटा करें।"
-
-#~ msgid "Minimum Split Size (-k)"
-#~ msgstr "न्यूनतम विभाजन आकार (-k)"
 
 #~ msgid "Name"
 #~ msgstr "नाम"
@@ -761,9 +949,6 @@ msgstr "बंद"
 #~ msgid "No downloads running"
 #~ msgstr "कोई डाउनलोड नहीं चल रहा"
 
-#~ msgid "No File Selected"
-#~ msgstr "कोई फाइल चयनित नहीं"
-
 #~ msgid "No Previous Downloads"
 #~ msgstr "कोई पिछला डाउनलोड नहीं"
 
@@ -778,9 +963,6 @@ msgstr "बंद"
 
 #~ msgid "OK"
 #~ msgstr "ठीक है"
-
-#~ msgid "Overwrite Existing Files"
-#~ msgstr "मौजूदा फाइलें अधिलेखित करें"
 
 #~ msgid "Password"
 #~ msgstr "पासवर्ड"
@@ -803,23 +985,14 @@ msgstr "बंद"
 #~ msgid "Preparing..."
 #~ msgstr "तैयार कर रहे हैं…"
 
-#~ msgid "Prevent Suspend"
-#~ msgstr "निलंबन रोकें"
-
 #~ msgid "PREVIEW"
 #~ msgstr "पूर्वावलोकन"
 
 #~ msgid "Processing..."
 #~ msgstr "प्रसंस्करण…"
 
-#~ msgid "Proxy URL"
-#~ msgstr "प्रॉक्सी URL"
-
 #~ msgid "Quality"
 #~ msgstr "गुणवत्ता"
-
-#~ msgid "Remove Source Data"
-#~ msgstr "स्रोत डेटा हटाएँ"
 
 #~ msgid "Reset"
 #~ msgstr "रीसेट"
@@ -851,9 +1024,6 @@ msgstr "बंद"
 #~ msgid "Select All"
 #~ msgstr "सबका चयन करें"
 
-#~ msgid "Select Cookies File"
-#~ msgstr "कुकीज़ फाइल का चयन करें"
-
 #~ msgid "Select items to download or change file names."
 #~ msgstr "फाइल नाम डाउनलोड करने या बदलने के लिए आइटम चुनें।"
 
@@ -872,9 +1042,6 @@ msgstr "बंद"
 
 #~ msgid "Some downloads finished with errors!"
 #~ msgstr "कुछ डाउनलोड त्रुटियों के साथ समाप्त हो गए!"
-
-#~ msgid "Speed Limit"
-#~ msgstr "गति सीमा"
 
 #~ msgid "Split Chapters"
 #~ msgstr "अध्याय विभाजित करें"
@@ -912,18 +1079,8 @@ msgstr "बंद"
 #~ msgid "Success"
 #~ msgstr "सफलता"
 
-#~ msgid "The minimum size of which to split a file (in MiB)."
-#~ msgstr "किसी फाइल को विभाजित करने के लिए न्यूनतम आकार (MiB में)।"
-
 #~ msgid "This action is irreversible. Are you sure you want to delete it?"
 #~ msgstr "यह क्रिया अपरिवर्तनीय है. क्या आप इसे मिटाना चाहते हैं?"
-
-#~ msgid ""
-#~ "This limit (in KiB/s) is applied to downloads that have speed limit "
-#~ "enabled. Changing the value doesn't affect already running downloads."
-#~ msgstr ""
-#~ "यह सीमा (KiB/s में) उन डाउनलोड पर लागू होती है जिनमें गति सीमा सक्षम है। मान बदलने "
-#~ "से पहले से चल रहे डाउनलोड प्रभावित नहीं होते हैं।"
 
 #~ msgid ""
 #~ "This option's state will be remembered and restored for future downloads."
@@ -958,9 +1115,6 @@ msgstr "बंद"
 #~ msgid "URL (Invalid)"
 #~ msgstr "URL (अमान्य)"
 
-#~ msgid "Use aria2"
-#~ msgstr "aria2 का प्रयोग करें"
-
 #~ msgid ""
 #~ "Use keyring to safely store credentials for sites that require a user "
 #~ "name and password to login."
@@ -970,9 +1124,6 @@ msgstr "बंद"
 
 #~ msgid "Use manual credential"
 #~ msgstr "मैन्युअल क्रेडेंशियल का उपयोग करें"
-
-#~ msgid "Use SponsorBlock for YouTube"
-#~ msgstr "YouTube के लिए स्पॉन्सरब्लॉक का उपयोग करें"
 
 #~ msgid "User Name"
 #~ msgstr "उपयोगकर्ता का नाम"
@@ -1012,18 +1163,6 @@ msgstr "बंद"
 #~ msgid "Yes"
 #~ msgstr "हाँ"
 
-#~ msgctxt "CompletedNotification"
-#~ msgid "For each download"
-#~ msgstr "प्रत्येक डाउनलोड के लिए"
-
-#~ msgctxt "CompletedNotification"
-#~ msgid "Never"
-#~ msgstr "कभी नहीं"
-
-#~ msgctxt "CompletedNotification"
-#~ msgid "When all downloads finish"
-#~ msgstr "जब सभी डाउनलोड समाप्त हो जाएं"
-
 #~ msgctxt "subtitle"
 #~ msgid "all"
 #~ msgstr "सभी"
@@ -1054,16 +1193,6 @@ msgstr "बंद"
 
 #~ msgid "Hide the window instead of quitting if there are downloads running."
 #~ msgstr "यदि डाउनलोड चल रहे हों तो विंडो छोड़ने के बजाय उसे छिपा दें।"
-
-#~ msgid "Limit Filename Characters"
-#~ msgstr "फाइलनाम वर्ण सीमित करें"
-
-#~ msgid ""
-#~ "Restricts characters in filenames to only those supported by Windows."
-#~ msgstr "फाइल नामों में वर्णों को केवल विंडोज़ द्वारा समर्थित वर्णों तक सीमित करता है।"
-
-#~ msgid "Clear Cookies File"
-#~ msgstr "कुकीज़ फाइल साफ़ करें"
 
 #~ msgid "Stop All Downloads"
 #~ msgstr "सभी डाउनलोड बंद करें"

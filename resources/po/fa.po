@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-06-17 12:53-0400\n"
+"POT-Creation-Date: 2024-06-17 22:52-0400\n"
 "PO-Revision-Date: 2024-01-11 20:05+0000\n"
 "Last-Translator: behrooz ramezani <b3hrooz.ram3zani@gmail.com>\n"
 "Language-Team: Persian <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -108,26 +108,255 @@ msgid "User Interface"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:15
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:21
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:24
 msgid "Theme"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:17
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:22
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:25
 msgctxt "Theme"
 msgid "Light"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:17
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:23
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:26
 msgctxt "Theme"
 msgid "Dark"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:17
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:24
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:27
 msgctxt "Theme"
 msgid "System"
+msgstr ""
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:27
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:31
+msgid "Completed Notification Trigger"
+msgstr ""
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:29
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:32
+#, fuzzy
+msgid "For each download"
+msgstr "بدون بارگیری در صف"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:29
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:33
+#, fuzzy
+msgid "When all downloads finish"
+msgstr "همه دانلودها به پایان رسیده است."
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:29
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:34
+msgid "Never"
+msgstr ""
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:39
+#, fuzzy
+msgid "Prevent Suspend"
+msgstr "جلوگیری از تعلیق"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:49
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:57
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:38
+#, fuzzy
+msgid "Downloads"
+msgstr "بارگیری"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:52
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:39
+msgid "Overwrite Existing Files"
+msgstr "بازنویسی فایل های موجود"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:61
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:40
+msgid "Max Number of Active Downloads"
+msgstr "حداکثر تعداد دانلودهای فعال"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:77
+msgid "Limit Filename Characters"
+msgstr ""
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:78
+msgid "Restricts characters in filenames to only those supported by Windows."
+msgstr ""
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:87
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:45
+#, fuzzy
+msgid "Include Auto-Generated Subtitles"
+msgstr "بارگیری زیرنویس"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:97
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:48
+msgid "Downloader"
+msgstr "بارگیری کننده"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:100
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:49
+msgid "Speed Limit"
+msgstr "محدودیت سرعت"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:101
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:50
+msgid ""
+"This limit (in KiB/s) is applied to downloads that have speed limit enabled. "
+"Changing the value doesn't affect already running downloads."
+msgstr ""
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:117
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:51
+msgid "Use SponsorBlock for YouTube"
+msgstr "از SponsorBlock برای YouTube استفاده کنید"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:126
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:54
+msgid "Proxy URL"
+msgstr "URL پروکسی"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:135
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:56
+msgid "Cookies File"
+msgstr "فایل کوکی ها"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:136
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:57
+#, fuzzy
+msgid ""
+"A cookies file can be provided to Parabolic to allow downloading media that "
+"requires a login."
+msgstr ""
+"یک فایل کوکی می تواند به yt-dlp ارائه شود تا امکان دانلود رسانه ای که نیاز "
+"به ورود به سیستم دارد را فراهم کند."
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:146
+#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:87
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:58
+#, fuzzy
+msgid "Select Cookies File"
+msgstr "فایل کوکی ها"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:156
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:59
+#, fuzzy
+msgid "Clear Cookies File"
+msgstr "فایل کوکی ها"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:166
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:60
+msgid "Cookies File Information"
+msgstr "اطلاعات فایل کوکی ها"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:181
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:61
+msgid ""
+"Cookies can be passed to yt-dlp in the form of TXT files. Export cookies "
+"from your browser using the following extensions (use at your own risk):"
+msgstr ""
+"کوکی ها را می توان در قالب فایل های TXT به yt-dlp منتقل کرد. کوکی ها را از "
+"مرورگر خود با استفاده از پسوندهای زیر صادر کنید (با مسئولیت خود استفاده "
+"کنید):"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:193
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:62
+msgid "Chrome/Edge"
+msgstr "کروم/ادج"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:202
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:63
+msgid "Firefox"
+msgstr "فایرفاکس"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:220
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:64
+msgid "Converter"
+msgstr "مبدل"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:223
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:65
+#, fuzzy
+msgid "Disallow Conversions"
+msgstr "غیرمجاز کردن تبدیل"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:224
+msgid ""
+"If enabled, Parabolic will download the appropriate video/audio format for "
+"the selected quality without converting to other formats. (You will be "
+"unable to select a file format)"
+msgstr ""
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:233
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:69
+msgid "Embed Metadata"
+msgstr "تعبیه فراداده"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:242
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:75
+#, fuzzy
+msgid "Embed Chapters"
+msgstr "جاسازی فصل ها"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:251
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:72
+msgid "Embed Subtitles"
+msgstr "تعبیه زیرنویس"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:260
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:78
+msgid "Crop Audio Thumbnails"
+msgstr ""
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:261
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:79
+msgid ""
+"If enabled, Parabolic will crop the thumbnails of audio files to squares."
+msgstr ""
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:271
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:82
+msgid "Remove Source Data"
+msgstr "اطلاعات منبع را حذف کنید"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:272
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:83
+#, fuzzy
+msgid ""
+"If enabled, Parabolic will clear metadata fields containing the URL and "
+"other identifying information of a download."
+msgstr "فیلدهای فراداده حاوی URL و سایر اطلاعات شناسایی منبع رسانه را پاک کنید"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:283
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:86
+#, fuzzy
+msgid "aria2"
+msgstr "از aria2 استفاده کنید"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:286
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:87
+msgid "Use aria2"
+msgstr "از aria2 استفاده کنید"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:287
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:88
+msgid ""
+"Enable to use aria2 downloader. It can be faster, but you will not see "
+"download progress."
+msgstr ""
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:296
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:91
+msgid "Max Connections Per Server (-x)"
+msgstr "حداکثر اتصال در هر سرور (-x)"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:313
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:92
+msgid "Minimum Split Size (-k)"
+msgstr "حداقل اندازه تقسیم (-k)"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:314
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:93
+msgid "The minimum size of which to split a file (in MiB)."
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/shortcuts_dialog.blp:13
@@ -184,6 +413,18 @@ msgstr "بستن"
 msgid "GitHub Repo"
 msgstr "مخزن گیت هاب"
 
+#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:25
+#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:109
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:112
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:165
+#, fuzzy
+msgid "No file selected"
+msgstr "هیچ فایلی انتخاب نشده است"
+
+#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:89
+msgid "Text File (*.txt)"
+msgstr ""
+
 #: org.nickvision.tubeconverter.winui/Controls/TitleBar.xaml.cpp:132
 msgid "Search"
 msgstr ""
@@ -197,11 +438,6 @@ msgstr "خانه"
 #, fuzzy
 msgid "Keyring"
 msgstr "کلید را غیرفعال می کنید؟"
-
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:57
-#, fuzzy
-msgid "Downloads"
-msgstr "بارگیری"
 
 #: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:58
 msgid "Downloading"
@@ -250,7 +486,7 @@ msgstr "تاریخچه"
 
 #. Localize Strings
 #: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:70
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:19
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:22
 msgid "Settings"
 msgstr ""
 
@@ -291,21 +527,56 @@ msgid ""
 "{}"
 msgstr ""
 
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:20
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:23
 msgid "Appearance & behavior"
 msgstr ""
 
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:25
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:28
 msgid "Automatically Check for Updates"
 msgstr "به‌روزرسانی‌ها را به‌طور خودکار بررسی کنید"
 
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:26
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:29
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:36
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:46
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:52
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:67
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:70
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:73
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:76
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:80
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:84
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:89
 msgid "On"
 msgstr "روی"
 
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:27
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:30
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:37
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:47
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:53
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:68
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:71
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:74
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:77
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:81
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:85
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:90
 msgid "Off"
 msgstr "خاموش"
+
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:35
+#, fuzzy
+msgid "Prevent Suspend When Downloading"
+msgstr "جلوگیری از تعلیق"
+
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:55
+msgid "Enter proxy URL here"
+msgstr ""
+
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:66
+msgid ""
+"If enabled, Parabolic will download the appropriate video/audio format for "
+"the selected quality without converting to other formats."
+msgstr ""
 
 #, fuzzy
 #~ msgid "Open Folder (Ctrl+O)"
@@ -352,13 +623,6 @@ msgstr "خاموش"
 #~ msgid "{0}{1}"
 #~ msgstr "{0}{1}"
 
-#~ msgid ""
-#~ "A cookies file can be provided to yt-dlp to allow downloading media that "
-#~ "requires a login."
-#~ msgstr ""
-#~ "یک فایل کوکی می تواند به yt-dlp ارائه شود تا امکان دانلود رسانه ای که "
-#~ "نیاز به ورود به سیستم دارد را فراهم کند."
-
 #~ msgid "About"
 #~ msgstr "درباره"
 
@@ -373,9 +637,6 @@ msgstr "خاموش"
 
 #~ msgid "Advanced Options"
 #~ msgstr "گزینه های پیشرفته"
-
-#~ msgid "All downloads have finished."
-#~ msgstr "همه دانلودها به پایان رسیده است."
 
 #~ msgid "Allow Running In Background"
 #~ msgstr "اجازه اجرای در پس‌زمینه"
@@ -398,20 +659,11 @@ msgstr "خاموش"
 #~ msgid "Cancel"
 #~ msgstr "لغو"
 
-#~ msgid "Chrome/Edge"
-#~ msgstr "کروم/ادج"
-
 #~ msgid "Clear"
 #~ msgstr "پاک کردن"
 
 #~ msgid "Clear Completed"
 #~ msgstr "پاک کردن کامل شد"
-
-#~ msgid ""
-#~ "Clear metadata fields containing the URL and other identifying "
-#~ "information of the media source"
-#~ msgstr ""
-#~ "فیلدهای فراداده حاوی URL و سایر اطلاعات شناسایی منبع رسانه را پاک کنید"
 
 #~ msgid "Clear Queued"
 #~ msgstr "صف را پاک کنید"
@@ -421,23 +673,6 @@ msgstr "خاموش"
 
 #~ msgid "Comma separated list"
 #~ msgstr "لیست جدا شده با کاما"
-
-#~ msgid "Converter"
-#~ msgstr "مبدل"
-
-#~ msgid ""
-#~ "Cookies can be passed to yt-dlp in the form of TXT files. Export cookies "
-#~ "from your browser using the following extensions (use at your own risk):"
-#~ msgstr ""
-#~ "کوکی ها را می توان در قالب فایل های TXT به yt-dlp منتقل کرد. کوکی ها را "
-#~ "از مرورگر خود با استفاده از پسوندهای زیر صادر کنید (با مسئولیت خود "
-#~ "استفاده کنید):"
-
-#~ msgid "Cookies File"
-#~ msgstr "فایل کوکی ها"
-
-#~ msgid "Cookies File Information"
-#~ msgstr "اطلاعات فایل کوکی ها"
 
 #~ msgid "Copy to Clipboard"
 #~ msgstr "کپی به کلیپ بورد"
@@ -461,10 +696,6 @@ msgstr "خاموش"
 #~ "غیرفعال کردن کلید ، تمام داده های موجود در داخل را حذف می کند. آیا مطمئن "
 #~ "هستید که می خواهید آن را غیرفعال کنید؟"
 
-#, fuzzy
-#~ msgid "Disallow Conversions"
-#~ msgstr "غیرمجاز کردن تبدیل"
-
 #~ msgid "Documentation"
 #~ msgstr "مستندات"
 
@@ -480,39 +711,20 @@ msgstr "خاموش"
 #~ msgid "Download Specific Timeframe"
 #~ msgstr "بازه زمانی خاص را بارگیری کنید"
 
-#~ msgid "Download Subtitles"
-#~ msgstr "بارگیری زیرنویس"
-
 #~ msgid "Download using aria2 has started"
 #~ msgstr "بارگیری با استفاده از aria2 شروع شد"
 
 #~ msgid "Download using ffmpeg has started"
 #~ msgstr "بارگیری با استفاده از ffmpeg شروع شده است"
 
-#~ msgid "Downloader"
-#~ msgstr "بارگیری کننده"
-
 #~ msgid "Downloading..."
 #~ msgstr "در حال بارگیری..."
-
-#, fuzzy
-#~ msgid "Embed Chapters"
-#~ msgstr "جاسازی فصل ها"
-
-#~ msgid "Embed Metadata"
-#~ msgstr "تعبیه فراداده"
-
-#~ msgid "Embed Subtitles"
-#~ msgstr "تعبیه زیرنویس"
 
 #~ msgid "File Name"
 #~ msgstr "نام فایل"
 
 #~ msgid "File Type"
 #~ msgstr "نوع فایل"
-
-#~ msgid "Firefox"
-#~ msgstr "فایرفاکس"
 
 #~ msgid ""
 #~ "If disabled or if embedding fails, downloaded subtitles will be saved to "
@@ -535,12 +747,6 @@ msgstr "خاموش"
 
 #~ msgid "Login"
 #~ msgstr "وارد شدن"
-
-#~ msgid "Max Connections Per Server (-x)"
-#~ msgstr "حداکثر اتصال در هر سرور (-x)"
-
-#~ msgid "Max Number of Active Downloads"
-#~ msgstr "حداکثر تعداد دانلودهای فعال"
 
 #~ msgid "Maximum Quality"
 #~ msgstr "حداکثر کیفیت"
@@ -567,9 +773,6 @@ msgstr "خاموش"
 #~ "به جای خروج از برنامه زمانی که پنجره بسته است، آن را به سینی سیستم کوچک "
 #~ "کنید."
 
-#~ msgid "Minimum Split Size (-k)"
-#~ msgstr "حداقل اندازه تقسیم (-k)"
-
 #~ msgid "Name"
 #~ msgstr "نام"
 
@@ -588,14 +791,8 @@ msgstr "خاموش"
 #~ msgid "No downloads running"
 #~ msgstr "هیچ بارگیری در حال اجرا نیست"
 
-#~ msgid "No File Selected"
-#~ msgstr "هیچ فایلی انتخاب نشده است"
-
 #~ msgid "No Previous Downloads"
 #~ msgstr "بدون بارگیری قبلی"
-
-#~ msgid "No Queued Downloads"
-#~ msgstr "بدون بارگیری در صف"
 
 #~ msgid "No Running Downloads"
 #~ msgstr "بدون بارگیری در حال اجرا"
@@ -605,9 +802,6 @@ msgstr "خاموش"
 
 #~ msgid "OK"
 #~ msgstr "بسیار خوب"
-
-#~ msgid "Overwrite Existing Files"
-#~ msgstr "بازنویسی فایل های موجود"
 
 #~ msgid "Password"
 #~ msgstr "کلمه عبور"
@@ -630,23 +824,14 @@ msgstr "خاموش"
 #~ msgid "Preparing..."
 #~ msgstr "آماده كردن..."
 
-#~ msgid "Prevent Suspend"
-#~ msgstr "جلوگیری از تعلیق"
-
 #~ msgid "PREVIEW"
 #~ msgstr "پیش نمایش"
 
 #~ msgid "Processing..."
 #~ msgstr "در حال پردازش..."
 
-#~ msgid "Proxy URL"
-#~ msgstr "URL پروکسی"
-
 #~ msgid "Quality"
 #~ msgstr "کیفیت"
-
-#~ msgid "Remove Source Data"
-#~ msgstr "اطلاعات منبع را حذف کنید"
 
 #~ msgid "Reset"
 #~ msgstr "بازنشانی کنید"
@@ -662,15 +847,6 @@ msgstr "خاموش"
 
 #~ msgid "Retry Failed"
 #~ msgstr "تلاش مجدد ناموفق بود"
-
-#~ msgid "Speed Limit"
-#~ msgstr "محدودیت سرعت"
-
-#~ msgid "Use aria2"
-#~ msgstr "از aria2 استفاده کنید"
-
-#~ msgid "Use SponsorBlock for YouTube"
-#~ msgstr "از SponsorBlock برای YouTube استفاده کنید"
 
 #~ msgid "Clear Completed Downloads"
 #~ msgstr "دانلودهای تکمیل شده را پاک کنید"

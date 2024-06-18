@@ -73,7 +73,7 @@ namespace Nickvision::TubeConverter::Shared::Models
 
     bool Configuration::getOverwriteExistingFiles() const
     {
-        return m_json.get("OverwriteExistingFiles", false).asBool();
+        return m_json.get("OverwriteExistingFiles", true).asBool();
     }
 
     void Configuration::setOverwriteExistingFiles(bool overwrite)
@@ -97,7 +97,11 @@ namespace Nickvision::TubeConverter::Shared::Models
 
     bool Configuration::getLimitCharacters() const
     {
+#ifdef _WIN32
+        return m_json.get("LimitCharacters", true).asBool();
+#else
         return m_json.get("LimitCharacters", false).asBool();
+#endif
     }
 
     void Configuration::setLimitCharacters(bool limit)
@@ -132,6 +136,10 @@ namespace Nickvision::TubeConverter::Shared::Models
 
     void Configuration::setAriaMaxConnectionsPerServer(int maxConnections)
     {
+        if(maxConnections < 1 || maxConnections > 16)
+        {
+            maxConnections = 16;
+        }
         m_json["AriaMaxConnectionsPerServer"] = maxConnections;
     }
 
@@ -142,6 +150,10 @@ namespace Nickvision::TubeConverter::Shared::Models
 
     void Configuration::setAriaMinSplitSize(int minSplitSize)
     {
+        if(minSplitSize < 1 || minSplitSize > 1024)
+        {
+            minSplitSize = 20;
+        }
         m_json["AriaMinSplitSize"] = minSplitSize;
     }
 
@@ -172,7 +184,12 @@ namespace Nickvision::TubeConverter::Shared::Models
 
     std::filesystem::path Configuration::getCookiesPath() const
     {
-        return { m_json.get("CookiesPath", "").asString() };
+        std::filesystem::path path{ m_json.get("CookiesPath", "").asString() };
+        if(std::filesystem::exists(path))
+        {
+            return path;
+        }
+        return {};
     }
 
     void Configuration::setCookiesPath(const std::filesystem::path& cookiesPath)
@@ -247,19 +264,24 @@ namespace Nickvision::TubeConverter::Shared::Models
         m_json["EmbedChapters"] = embedChapters;
     }
 
-    bool Configuration::getEmbedSubtitle() const
+    bool Configuration::getEmbedSubtitles() const
     {
         return m_json.get("EmbedSubtitle", true).asBool();
     }
 
-    void Configuration::setEmbedSubtitle(bool embedSubtitle)
+    void Configuration::setEmbedSubtitles(bool embedSubtitle)
     {
         m_json["EmbedSubtitle"] = embedSubtitle;
     }
 
     std::filesystem::path Configuration::getPreviousSaveFolder() const
     {
-        return { m_json.get("PreviousSaveFolder", "").asString() };
+        std::filesystem::path path{ m_json.get("PreviousSaveFolder", "").asString() };
+        if(std::filesystem::exists(path))
+        {
+            return path;
+        }
+        return {};
     }
 
     void Configuration::setPreviousSaveFolder(const std::filesystem::path& previousSaveFolder)

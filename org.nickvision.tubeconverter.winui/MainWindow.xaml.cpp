@@ -227,7 +227,7 @@ namespace winrt::Nickvision::TubeConverter::WinUI::implementation
         if(tag == L"Settings")
         {
             WinUI::SettingsPage page{ winrt::make<SettingsPage>() };
-            page.as<SettingsPage>()->SetController(m_controller->createPreferencesViewController());
+            page.as<SettingsPage>()->SetController(m_controller->createPreferencesViewController(), m_hwnd);
             ViewStack().CurrentPage(L"Custom");
             FrameCustom().Content(winrt::box_value(page));
         }

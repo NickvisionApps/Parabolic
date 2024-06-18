@@ -12,6 +12,22 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         return Aura::getActive().getAppInfo().getId();
     }
 
+    const std::string& PreferencesViewController::getCookiesExtensionUrl(Browsers browser) const
+    {
+        static std::string none{ "" };
+        static std::string chrome{ "https://chrome.google.com/webstore/detail/get-cookiestxt-locally/cclelndahbckbenkjhflpdbgdldlbecc" };
+        static std::string firefox{ "https://addons.mozilla.org/en-US/firefox/addon/cookies-txt/" };
+        switch(browser)
+        {
+        case Browsers::Chrome:
+            return chrome;
+        case Browsers::Firefox:
+            return firefox;
+        default:
+            return none;
+        }
+    }
+
     Theme PreferencesViewController::getTheme() const
     {
         return Aura::getActive().getConfig<Configuration>("config").getTheme();
@@ -212,14 +228,14 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         Aura::getActive().getConfig<Configuration>("config").setEmbedChapters(embedChapters);
     }
 
-    bool PreferencesViewController::getEmbedSubtitle() const
+    bool PreferencesViewController::getEmbedSubtitles() const
     {
-        return Aura::getActive().getConfig<Configuration>("config").getEmbedSubtitle();
+        return Aura::getActive().getConfig<Configuration>("config").getEmbedSubtitles();
     }
 
-    void PreferencesViewController::setEmbedSubtitle(bool embedSubtitle)
+    void PreferencesViewController::setEmbedSubtitles(bool embedSubtitle)
     {
-        Aura::getActive().getConfig<Configuration>("config").setEmbedSubtitle(embedSubtitle);
+        Aura::getActive().getConfig<Configuration>("config").setEmbedSubtitles(embedSubtitle);
     }
 
     void PreferencesViewController::saveConfiguration()
