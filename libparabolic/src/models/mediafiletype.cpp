@@ -169,7 +169,7 @@ namespace Nickvision::TubeConverter::Shared::Models
 
     bool MediaFileType::operator!=(const MediaFileType& other) const
     {
-        return m_value != other.m_value;
+        return !operator==(other);
     }
 
     bool MediaFileType::operator==(MediaFileTypeValue other) const
@@ -179,6 +179,6 @@ namespace Nickvision::TubeConverter::Shared::Models
 
     bool MediaFileType::operator!=(MediaFileTypeValue other) const
     {
-        return m_value != other;
+        return !operator==(other);
     }
 }

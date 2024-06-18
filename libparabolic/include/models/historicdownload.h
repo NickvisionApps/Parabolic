@@ -79,6 +79,24 @@ namespace Nickvision::TubeConverter::Shared::Models
          * @return True if this == other, false otherwise
          */
         bool operator==(const HistoricDownload& other) const;
+        /**
+         * @brief Compares two HistoricDownloads via !=.
+         * @param other The other HistoricDownload to compare
+         * @return True if this != other, false otherwise
+         */
+        bool operator!=(const HistoricDownload& other) const;
+        /**
+         * @brief Compares two HistoricDownloads via <.
+         * @param other The other HistoricDownload to compare
+         * @return True if this < other, false otherwise
+         */
+        bool operator<(const HistoricDownload& other) const;
+        /**
+         * @brief Compares two HistoricDownloads via >.
+         * @param other The other HistoricDownload to compare
+         * @return True if this > other, false otherwise
+         */
+        bool operator>(const HistoricDownload& other) const;
 
     private:
         std::string m_url;

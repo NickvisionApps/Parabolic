@@ -66,7 +66,7 @@ namespace Nickvision::TubeConverter::Shared::Models
 
     bool VideoResolution::operator!=(const VideoResolution& other) const
     {
-        return !(*this == other);
+        return !operator==(other);
     }
 
     bool VideoResolution::operator<(const VideoResolution& other) const

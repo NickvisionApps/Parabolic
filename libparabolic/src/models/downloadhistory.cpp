@@ -5,11 +5,6 @@ using namespace Nickvision::App;
 
 namespace Nickvision::TubeConverter::Shared::Models
 {
-    static bool compare(const HistoricDownload& a, const HistoricDownload& b)
-    {
-        return a.getDateTime() > b.getDateTime();
-    }
-
     DownloadHistory::DownloadHistory(const std::string& key)
         : ConfigurationBase{ key }
     {
@@ -30,7 +25,7 @@ namespace Nickvision::TubeConverter::Shared::Models
             catch(...) { }
             m_history.push_back(download);
         }
-        std::sort(m_history.begin(), m_history.end(), compare);
+        std::sort(m_history.begin(), m_history.end());
     }
 
     const std::vector<HistoricDownload>& DownloadHistory::getHistory() const
@@ -83,7 +78,7 @@ namespace Nickvision::TubeConverter::Shared::Models
 
     void DownloadHistory::updateDisk()
     {
-        std::sort(m_history.begin(), m_history.end(), compare);
+        std::sort(m_history.begin(), m_history.end());
         m_json.clear();
         unsigned int i = 0;
         for(const HistoricDownload& download : m_history)

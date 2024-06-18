@@ -1,11 +1,10 @@
 #include "models/historicdownload.h"
-#include <boost/date_time/gregorian/gregorian.hpp>
 
 namespace Nickvision::TubeConverter::Shared::Models
 {
     HistoricDownload::HistoricDownload(const std::string& url)
         : m_url{ url },
-        m_dateTime{ boost::gregorian::day_clock::universal_day(), boost::posix_time::second_clock::universal_time().time_of_day() }
+        m_dateTime{ boost::posix_time::second_clock::universal_time() }
     {
 
     }
@@ -14,7 +13,7 @@ namespace Nickvision::TubeConverter::Shared::Models
         : m_url{ url },
         m_title{ title },
         m_path{ path },
-        m_dateTime{ boost::gregorian::day_clock::universal_day(), boost::posix_time::second_clock::universal_time().time_of_day() }
+        m_dateTime{ boost::posix_time::second_clock::universal_time() }
     {
 
     }
@@ -83,5 +82,20 @@ namespace Nickvision::TubeConverter::Shared::Models
     bool HistoricDownload::operator==(const HistoricDownload& other) const
     {
         return m_url == other.m_url;
+    }
+
+    bool HistoricDownload::operator!=(const HistoricDownload& other) const
+    {
+        return !operator==(other);
+    }
+
+    bool HistoricDownload::operator<(const HistoricDownload& other) const
+    {
+        return m_dateTime < other.m_dateTime;
+    }
+
+    bool HistoricDownload::operator>(const HistoricDownload& other) const
+    {
+        return m_dateTime > other.m_dateTime;
     }
 }
