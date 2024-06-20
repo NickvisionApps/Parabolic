@@ -15,6 +15,7 @@
 #include <libnick/events/parameventargs.h>
 #include <libnick/notifications/notificationsenteventargs.h>
 #include <libnick/notifications/shellnotificationsenteventargs.h>
+#include <libnick/system/suspendinhibitor.h>
 #include <libnick/taskbar/taskbaritem.h>
 #include <libnick/update/updater.h>
 #include "controllers/preferencesviewcontroller.h"
@@ -149,6 +150,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         std::vector<std::string> m_args;
         std::shared_ptr<Nickvision::Update::Updater> m_updater;
         Nickvision::Taskbar::TaskbarItem m_taskbar;
+        Nickvision::System::SuspendInhibitor m_suspendInhibitor;
         Nickvision::Events::Event<Nickvision::Notifications::NotificationSentEventArgs> m_notificationSent;
         Nickvision::Events::Event<Nickvision::Notifications::ShellNotificationSentEventArgs> m_shellNotificationSent;
         Nickvision::Events::Event<Nickvision::Events::ParamEventArgs<std::string>> m_disclaimerTriggered;

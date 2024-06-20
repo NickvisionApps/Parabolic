@@ -30,7 +30,7 @@ jobs:
         with:
           pkgs: boost-date-time libnick
           triplet: x64-windows
-          revision: 104d435187f499323cf9aab78e3f10fced5635d1
+          revision: e36532d3130abf79ef8898cf6439b7629ed0e5ae
           token: ${{ secrets.GITHUB_TOKEN }}
           github-binarycache: true
       - name: "Build"
