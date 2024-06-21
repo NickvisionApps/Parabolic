@@ -11,8 +11,10 @@ add_library(libparabolic
     "src/models/downloadoptions.cpp"
     "src/models/downloadprogressstate.cpp"
     "src/models/historicdownload.cpp"
+    "src/models/media.cpp"
     "src/models/mediafiletype.cpp"
     "src/models/timeframe.cpp"
+    "src/models/urlinfo.cpp"
     "src/models/videoresolution.cpp")
 target_include_directories(libparabolic PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/include")
 set_target_properties(libparabolic PROPERTIES VERSION "${PROJECT_VERSION}" SOVERSION "${PROJECT_VERSION}")
