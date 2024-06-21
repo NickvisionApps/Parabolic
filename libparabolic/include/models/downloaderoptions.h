@@ -7,7 +7,7 @@
 namespace Nickvision::TubeConverter::Shared::Models
 {
     /**
-     * @brief A model of options for the Downloader.
+     * @brief A model of options for a Downloader.
      */
     class DownloaderOptions
     {

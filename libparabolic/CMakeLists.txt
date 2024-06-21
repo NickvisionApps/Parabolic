@@ -8,6 +8,8 @@ add_library(libparabolic
     "src/models/configuration.cpp"
     "src/models/downloaderoptions.cpp"
     "src/models/downloadhistory.cpp"
+    "src/models/downloadoptions.cpp"
+    "src/models/downloadprogressstate.cpp"
     "src/models/historicdownload.cpp"
     "src/models/mediafiletype.cpp"
     "src/models/timeframe.cpp"
