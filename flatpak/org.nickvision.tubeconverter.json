@@ -10,7 +10,9 @@
         "--device=dri",
         "--share=ipc",
         "--share=network",
-        "--talk-name=com.canonical.Unity"
+        "--talk-name=com.canonical.Unity",
+        "--talk-name=org.freedesktop.secrets",
+        "--filesystem=xdg-download"
     ],
     "cleanup":[
         "/include",
@@ -79,6 +81,51 @@
                 }
             ]
         },
+        {
+            "name": "ffmpeg",
+            "config-opts": [
+                "--disable-debug",
+                "--disable-doc",
+                "--disable-static",
+                "--enable-gpl",
+                "--enable-shared",
+                "--disable-ffplay",
+                "--disable-devices",
+                "--enable-gnutls",
+                "--enable-libmp3lame",
+                "--enable-libopus",
+                "--enable-libvorbis"
+            ],
+            "cleanup": [
+                "/share/ffmpeg"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://ffmpeg.org/releases/ffmpeg-7.0.tar.xz",
+                    "sha256": "4426a94dd2c814945456600c8adfc402bee65ec14a70e8c531ec9a2cd651da7b",
+                    "x-checker-data": {
+                        "type": "html",
+                        "url": "https://ffmpeg.org/releases/",
+                        "pattern": ">(ffmpeg-([\\d.]+)\\.tar\\.xz)<"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "aria2",
+            "config-opts": [
+                "--with-ca-bundle=/etc/ssl/certs/ca-certificates.crt"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://github.com/aria2/aria2/releases/download/release-1.37.0/aria2-1.37.0.tar.xz",
+                    "sha256": "60a420ad7085eb616cb6e2bdf0a7206d68ff3d37fb5a956dc44242eb2f79b66b"
+                }
+            ]
+        },
+        "python3-modules.json",
         {
             "name": "blueprint-compiler",
             "buildsystem": "meson",

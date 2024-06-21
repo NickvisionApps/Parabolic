@@ -43,10 +43,10 @@ A C++20 compiler is also required to build Parabolic.
 1. Set the `VCPKG_ROOT` environment variable to the path of your vcpkg installation's root directory.
 #### Windows
 1. Set the `VCPKG_DEFAULT_TRIPLET` environment variable to `x64-windows`
-1. Run `vcpkg install boost-date-time libnick`
+1. Run `vcpkg install boost-date-time libnick pybind11 python3`
 #### Linux
 1. Set the `VCPKG_DEFAULT_TRIPLET` environment variable to `x64-linux`
-1. Run `vcpkg install boost-date-time libnick libxmlpp`
+1. Run `vcpkg install boost-date-time libnick libxmlpp pybind11 python3`
 
 ### Building
 1. First, clone/download the repo.

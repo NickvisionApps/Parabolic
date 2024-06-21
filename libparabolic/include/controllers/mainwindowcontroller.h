@@ -13,6 +13,7 @@
 #include <libnick/app/windowgeometry.h>
 #include <libnick/events/event.h>
 #include <libnick/events/parameventargs.h>
+#include <libnick/network/networkmonitor.h>
 #include <libnick/notifications/notificationsenteventargs.h>
 #include <libnick/notifications/shellnotificationsenteventargs.h>
 #include <libnick/system/suspendinhibitor.h>
@@ -141,15 +142,14 @@ namespace Nickvision::TubeConverter::Shared::Controllers
 
     private:
         /**
-         * @brief Obtains the paths of files in an open folder for the files list.
-         * @brief This method only scans the top-level directory for files.
-         * @brief Other sub-directory paths are not added to the files list.
+         * @brief Handles when the network state is changed.
          */
-        void loadFiles();
+        void onNetworkChanged(const Network::NetworkStateChangedEventArgs& args);
         bool m_started;
         std::vector<std::string> m_args;
         std::shared_ptr<Nickvision::Update::Updater> m_updater;
         Nickvision::Taskbar::TaskbarItem m_taskbar;
+        Nickvision::Network::NetworkMonitor m_networkMonitor;
         Nickvision::System::SuspendInhibitor m_suspendInhibitor;
         Nickvision::Events::Event<Nickvision::Notifications::NotificationSentEventArgs> m_notificationSent;
         Nickvision::Events::Event<Nickvision::Notifications::ShellNotificationSentEventArgs> m_shellNotificationSent;

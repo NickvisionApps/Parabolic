@@ -9,6 +9,7 @@
 #include <libnick/helpers/codehelpers.h>
 #include <libnick/helpers/stringhelpers.h>
 #include <libnick/localization/gettext.h>
+#include <pybind11/embed.h>
 #include "models/configuration.h"
 #include "models/downloadhistory.h"
 #ifdef _WIN32
@@ -18,9 +19,11 @@
 using namespace Nickvision::App;
 using namespace Nickvision::Events;
 using namespace Nickvision::Helpers;
+using namespace Nickvision::Network;
 using namespace Nickvision::Notifications;
 using namespace Nickvision::TubeConverter::Shared::Models;
 using namespace Nickvision::Update;
+namespace py = pybind11;
 
 namespace Nickvision::TubeConverter::Shared::Controllers
 {
@@ -45,6 +48,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         appInfo.getDesigners()["DaPigGuy"] = "https://github.com/DaPigGuy";
         appInfo.getArtists()[_("David Lapshin")] = "https://github.com/daudix";
         appInfo.setTranslatorCredits(_("translator-credits"));
+        m_networkMonitor.stateChanged() += [&](const NetworkStateChangedEventArgs& args){ onNetworkChanged(args); };
     }
 
     AppInfo& MainWindowController::getAppInfo() const
@@ -179,15 +183,34 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         DownloadHistory& history{ Aura::getActive().getConfig<DownloadHistory>("history") };
         Aura::getActive().getLogger().log(Logging::LogLevel::Info, "Loaded " + std::to_string(history.getHistory().size()) + " historic downloads.");
         m_historyChanged.invoke(history.getHistory());
+        //Check network
+        onNetworkChanged({ m_networkMonitor.getConnectionState() });
+        //Load python
+        try
+        {
+            Aura::getActive().getLogger().log(Logging::LogLevel::Info, "Loading python...");
+            py::initialize_interpreter();
+            Aura::getActive().getLogger().log(Logging::LogLevel::Info, "Loading yt-dlp...");
+            py::module_ ytdlp{ py::module_::import("yt_dlp") };
+            Aura::getActive().getLogger().log(Logging::LogLevel::Info, "Python loaded.");
+        }
+        catch(const std::exception& e)
+        {
+            Aura::getActive().getLogger().log(Logging::LogLevel::Error, "Unable to load python: " + std::string(e.what()));
+            m_notificationSent.invoke({ _("Unable to load python"), NotificationSeverity::Error, "nopython" });
+        }
         m_started = true;
         Aura::getActive().getLogger().log(Logging::LogLevel::Debug, "MainWindow started.");
     }
 
     void MainWindowController::shutdown(const WindowGeometry& geometry)
     {
+        //Save config
         Configuration& config{ Aura::getActive().getConfig<Configuration>("config") };
         config.setWindowGeometry(geometry);
         config.save();
+        //Shutdown python
+        py::finalize_interpreter();
         Aura::getActive().getLogger().log(Logging::LogLevel::Debug, "MainWindow shutdown.");
     }
 
@@ -284,6 +307,20 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         if(history.removeDownload(download))
         {
             m_historyChanged.invoke(history.getHistory());
+        }
+    }
+
+    void MainWindowController::onNetworkChanged(const NetworkStateChangedEventArgs& args)
+    {
+        if(args.getState() == NetworkState::ConnectedGlobal)
+        {
+            Aura::getActive().getLogger().log(Logging::LogLevel::Info, "Network connected.");
+            m_notificationSent.invoke({ "", NotificationSeverity::Informational, "network" });
+        }
+        else
+        {
+            Aura::getActive().getLogger().log(Logging::LogLevel::Info, "Network disconnected.");
+            m_notificationSent.invoke({ _("No network connection"), NotificationSeverity::Error, "nonetwork" });
         }
     }
 }

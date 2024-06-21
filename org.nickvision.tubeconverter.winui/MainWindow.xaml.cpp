@@ -160,7 +160,13 @@ namespace winrt::Nickvision::TubeConverter::WinUI::implementation
     {
         DispatcherQueue().TryEnqueue([this, args]()
         {
+            if(args.getAction() == "network")
+            {
+                HomeAddDownloadButton().IsEnabled(true);
+                return;
+            }
             InfoBar().Message(winrt::to_hstring(args.getMessage()));
+            BtnInfoBar().Visibility(Visibility::Collapsed);
             switch(args.getSeverity())
             {
             case NotificationSeverity::Success:
@@ -188,9 +194,13 @@ namespace winrt::Nickvision::TubeConverter::WinUI::implementation
             else if(args.getAction() == "update")
             {
                 BtnInfoBar().Content(winrt::box_value(winrt::to_hstring(_("Update"))));
+                BtnInfoBar().Visibility(Visibility::Visible);
                 m_notificationClickToken = BtnInfoBar().Click({ this, &MainWindow::WindowsUpdate });
             }
-            BtnInfoBar().Visibility(!args.getAction().empty() ? Visibility::Visible : Visibility::Collapsed);
+            else if(args.getAction() == "nonetwork" || args.getAction() == "nopython")
+            {
+                HomeAddDownloadButton().IsEnabled(false);
+            }
             InfoBar().IsOpen(true);
         });
     }

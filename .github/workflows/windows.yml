@@ -28,7 +28,7 @@ jobs:
         uses: johnwason/vcpkg-action@v6
         id: vcpkg
         with:
-          pkgs: boost-date-time libnick
+          pkgs: boost-date-time libnick pybind11 python3
           triplet: x64-windows
           revision: e36532d3130abf79ef8898cf6439b7629ed0e5ae
           token: ${{ secrets.GITHUB_TOKEN }}

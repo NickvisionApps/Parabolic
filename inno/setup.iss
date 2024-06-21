@@ -34,6 +34,8 @@ WizardStyle=modern
 PrivilegesRequired=admin
 DirExistsWarning=no
 CloseApplications=yes
+ChangesEnvironment=yes
+AlwaysRestart=yes
 
 [Code]
 procedure SetupVC();
@@ -54,6 +56,20 @@ begin
     MsgBox('Unable to install Windows App SDK. Please try again', mbError, MB_OK);
 end;
 
+procedure SetupPython();
+var
+  ResultCode: Integer;
+begin
+  if not Exec(ExpandConstant('{app}\deps\python-3.11.8-amd64.exe'), '/quiet InstallAllUsers=1 PrependPath=1 Include_test=0 Include_symbols=1', '', SW_HIDE, ewWaitUntilTerminated, ResultCode)
+  then
+    MsgBox('Unable to install Python. Please try again. THE APP WILL NOT FUNCTION CORRECTLY.', mbError, MB_OK)
+  else begin
+    if not Exec(ExpandConstant('C:\Program Files\Python311\pythonw.exe'), '-m pip install --force-reinstall "yt-dlp==2024.05.27"', '', SW_HIDE, ewWaitUntilTerminated, ResultCode)
+    then
+      MsgBox('Unable to install yt-dlp. Please try again. THE APP WILL NOT FUNCTION CORRECTLY.', mbError, MB_OK)
+  end;
+end;
+
 [Languages]
 Name: "english"; MessagesFile: "compiler:Default.isl"
 
@@ -63,6 +79,7 @@ Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{
 [Files]
 Source: "..\..\VC_redist.x64.exe"; DestDir: "{app}\deps"; AfterInstall: SetupVC  
 Source: "..\..\WindowsAppRuntimeInstall-x64.exe"; DestDir: "{app}\deps"; AfterInstall: SetupWinAppSDK  
+Source: "..\..\python-3.11.8-amd64.exe"; DestDir: "{app}\deps"; AfterInstall: SetupPython  
 Source: "..\build\org.nickvision.tubeconverter.winui\Release\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion 
 Source: "..\build\org.nickvision.tubeconverter.winui\Release\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files

@@ -111,6 +111,41 @@ parts:
       - uuid-dev
     override-prime: ""
 
+  yt-dlp:
+    after: [build-deps]
+    plugin: python
+    source: https://github.com/yt-dlp/yt-dlp.git
+    source-depth: 1
+    source-tag: '2024.04.09'
+    build-environment:
+      # WORKAROUND: The python plugin is broken with gnome extension
+      - PATH: ${CRAFT_PART_INSTALL}/bin:${PATH}
+      - PYTHONPATH: ""
+    prime:
+      # WORKAROUND: Skip venv from python plugin
+      - -usr/bin/activate
+      - -usr/bin/activate.csh
+      - -usr/bin/activate.fish
+      - -usr/bin/Activate.ps1
+      - -usr/bin/python
+      - -usr/bin/python3
+      - -usr/bin/python3.10
+      - -usr/bin/pip
+      - -usr/bin/pip3
+      - -usr/bin/pip3.10
+      - -usr/bin/wheel
+      - -usr/lib/python3.10/dist-packages/pip*
+      - -usr/lib/python3.10/dist-packages/pkg_resources
+      - -usr/lib/python3.10/dist-packages/setuptools*
+      - -pyvenv.cfg
+      - -lib
+      - -lib64
+      - -include
+      - -share
+    organize:
+      bin: usr/bin
+      lib/python3.10/site-packages: usr/lib/python3.10/dist-packages
+
   libxmlplusplus:
     after: [build-deps]
     source: https://github.com/libxmlplusplus/libxmlplusplus.git
@@ -137,7 +172,7 @@ parts:
       - usr/lib/${CRAFT_ARCH_TRIPLET_BUILD_FOR}/libxml++-5.0*.so*
 
   tube-converter:
-    after: [build-deps, maddy, libnick, libxmlplusplus, blueprint-compiler]
+    after: [build-deps, maddy, libnick, yt-dlp, libxmlplusplus, blueprint-compiler]
     plugin: cmake
     source: .
     build-snaps:
@@ -170,6 +205,12 @@ parts:
     organize:
       snap/tube-converter/current: .
 
+plugs:
+  ffmpeg-2204:
+    interface: content
+    target: ffmpeg-platform
+    default-provider: ffmpeg-2204
+
 slots:
   tube-converter:
     interface: dbus
@@ -189,8 +230,16 @@ apps:
       - wayland
       - x11
       - unity7
+      - screen-inhibit-control
+      - password-manager-service
+      - network
+      - network-status
     command-chain:
       - snap/command-chain/desktop-launch
+    environment:
+      PYTHONPATH: $SNAP/usr/lib/python3.10/dist-packages:$PYTHONPATH
+      PATH: $SNAP/ffmpeg-platform/usr/bin:$PATH
+      LD_LIBRARY_PATH: $SNAP/ffmpeg-platform/usr/lib/$CRAFT_ARCH_TRIPLET:$LD_LIBRARY_PATH
 
 assumes:
   - snapd2.43
