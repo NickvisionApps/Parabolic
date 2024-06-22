@@ -26,9 +26,9 @@ endif()
 
 find_package(libnick CONFIG REQUIRED)
 find_package(Boost REQUIRED COMPONENTS date_time)
-find_package(Python3 COMPONENTS Interpreter Development REQUIRED)
+find_package(Python COMPONENTS Interpreter Development REQUIRED)
 find_package(pybind11 CONFIG REQUIRED)
-target_link_libraries(libparabolic PUBLIC libnick::libnick Boost::boost Boost::date_time Python3::Python pybind11::embed)
+target_link_libraries(libparabolic PUBLIC libnick::libnick Boost::boost Boost::date_time pybind11::embed)
 
 add_custom_target(shared_commands ALL DEPENDS "${CMAKE_CURRENT_BINARY_DIR}/__shared.h")
 add_custom_command(OUTPUT "${CMAKE_CURRENT_BINARY_DIR}/__shared.h" "${CMAKE_CURRENT_BINARY_DIR}/shared.h" COMMAND "${CMAKE_COMMAND}" -E touch "${CMAKE_CURRENT_BINARY_DIR}/shared.h")

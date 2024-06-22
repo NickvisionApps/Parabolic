@@ -33,6 +33,13 @@ if(LINUX)
         endforeach()
     endif()
 
+    if(USING_VCPKG)
+        add_custom_command(TARGET org.nickvision.tubeconverter.gnome POST_BUILD 
+            COMMAND ${Python_EXECUTABLE} -m venv "$<TARGET_FILE_DIR:org.nickvision.tubeconverter.gnome>/.."
+            COMMAND $<TARGET_FILE_DIR:org.nickvision.tubeconverter.gnome>/../Scripts/activate
+            COMMAND python -m pip install --force-reinstall "yt-dlp==2024.05.27" > pip_install.log)
+    endif()
+
     configure_file("${CMAKE_CURRENT_SOURCE_DIR}/resources/${PROJECT_NAME}.desktop.in" "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}.desktop" @ONLY)
     configure_file("${CMAKE_CURRENT_SOURCE_DIR}/resources/${PROJECT_NAME}.in" "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}" @ONLY)
     configure_file("${CMAKE_CURRENT_SOURCE_DIR}/resources/${PROJECT_NAME}.metainfo.xml.in" "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}.metainfo.xml" @ONLY)
