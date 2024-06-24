@@ -41,7 +41,7 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Controls::implementation
         void UseAppIcon(bool useAppIcon);
         /**
          * @brief Gets the status title for the page.
-         * @returns The status title 
+         * @return The status title 
          */
         winrt::hstring Title() const;
         /**
@@ -51,7 +51,7 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Controls::implementation
         void Title(const winrt::hstring& title);
         /**
          * @brief Gets the status description for the page.
-         * @returns The status description 
+         * @return The status description 
          */
         winrt::hstring Description() const;
         /**
@@ -61,7 +61,7 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Controls::implementation
         void Description(const winrt::hstring& description);
         /**
          * @brief Gets the extra child for the page.
-         * @returns The extra child
+         * @return The extra child
          */
         IInspectable Child() const;
         /**

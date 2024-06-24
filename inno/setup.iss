@@ -35,7 +35,6 @@ PrivilegesRequired=admin
 DirExistsWarning=no
 CloseApplications=yes
 ChangesEnvironment=yes
-AlwaysRestart=yes
 
 [Code]
 procedure SetupVC();
@@ -60,14 +59,19 @@ procedure SetupPython();
 var
   ResultCode: Integer;
 begin
-  if not Exec(ExpandConstant('{app}\deps\python-3.11.8-amd64.exe'), '/quiet InstallAllUsers=1 PrependPath=1 Include_test=0 Include_symbols=1', '', SW_HIDE, ewWaitUntilTerminated, ResultCode)
+  if not Exec(ExpandConstant('{app}\deps\python-3.11.9-amd64.exe'), ExpandConstant('/quiet InstallAllUsers=1 TargetDir="{app}" DefaultAllUsersTargetDir="{app}" Shortcuts=0 Include_launcher=0 Include_test=0 Include_symbols=1'), '', SW_HIDE, ewWaitUntilTerminated, ResultCode)
   then
     MsgBox('Unable to install Python. Please try again. THE APP WILL NOT FUNCTION CORRECTLY.', mbError, MB_OK)
   else begin
-    if not Exec(ExpandConstant('C:\Program Files\Python311\pythonw.exe'), '-m pip install --force-reinstall "yt-dlp==2024.05.27"', '', SW_HIDE, ewWaitUntilTerminated, ResultCode)
+    if not Exec(ExpandConstant('{app}\pythonw.exe'), '-m pip install --force-reinstall "yt-dlp==2024.05.27"', '', SW_HIDE, ewWaitUntilTerminated, ResultCode)
     then
       MsgBox('Unable to install yt-dlp. Please try again. THE APP WILL NOT FUNCTION CORRECTLY.', mbError, MB_OK)
   end;
+end;
+
+procedure Cleanup();
+begin
+  DelTree(ExpandConstant('{app}\deps'), True, True, True);
 end;
 
 [Languages]
@@ -79,15 +83,15 @@ Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{
 [Files]
 Source: "..\..\VC_redist.x64.exe"; DestDir: "{app}\deps"; AfterInstall: SetupVC  
 Source: "..\..\WindowsAppRuntimeInstall-x64.exe"; DestDir: "{app}\deps"; AfterInstall: SetupWinAppSDK  
-Source: "..\..\python-3.11.8-amd64.exe"; DestDir: "{app}\deps"; AfterInstall: SetupPython  
-Source: "..\build\org.nickvision.tubeconverter.winui\Release\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion 
-Source: "..\build\org.nickvision.tubeconverter.winui\Release\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "..\..\python-3.11.9-amd64.exe"; DestDir: "{app}\deps"; AfterInstall: SetupPython  
+Source: "..\build\org.nickvision.tubeconverter.winui\Release\{#MyAppExeName}"; DestDir: "{app}\Release"; Flags: ignoreversion 
+Source: "..\build\org.nickvision.tubeconverter.winui\Release\*"; DestDir: "{app}\Release"; Flags: ignoreversion recursesubdirs createallsubdirs; AfterInstall: Cleanup
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]
-Name: "{autoprograms}\{#MyAppShortName}"; Filename: "{app}\{#MyAppExeName}"
-Name: "{autodesktop}\{#MyAppShortName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: desktopicon
+Name: "{autoprograms}\{#MyAppShortName}"; Filename: "{app}\Release\{#MyAppExeName}"
+Name: "{autodesktop}\{#MyAppShortName}"; Filename: "{app}\Release\{#MyAppExeName}"; Tasks: desktopicon
 
 [Run]
-Filename: "{app}\{#MyAppExeName}"; Description: "{cm:LaunchProgram,{#StringChange(MyAppName, '&', '&&')}}"; Flags: nowait postinstall skipifsilent
+Filename: "{app}\Release\{#MyAppExeName}"; Description: "{cm:LaunchProgram,{#StringChange(MyAppName, '&', '&&')}}"; Flags: nowait postinstall skipifsilent
 

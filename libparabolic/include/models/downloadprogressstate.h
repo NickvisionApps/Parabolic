@@ -37,15 +37,20 @@ namespace Nickvision::TubeConverter::Shared::Models
          */
         void setProgress(double progress);
         /**
-         * @brief Gets the speed of the download.
-         * @return The speed of the download
+         * @brief Gets the speed of the download (in byes per second).
+         * @return The speed of the download (in byes per second)
          */
         double getSpeed() const;
         /**
-         * @brief Sets the speed of the download.
-         * @param speed The speed of the download
+         * @brief Sets the speed of the download (in byes per second).
+         * @param speed The speed of the download (in byes per second)
          */
         void setSpeed(double speed);
+        /**
+         * @brief Gets the string representation of the speed.
+         * @return The speed string representation
+         */
+        std::string getSpeedStr() const;
         /**
          * @brief Gets the log of the download.
          * @return The log of the download

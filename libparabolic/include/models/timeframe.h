@@ -23,12 +23,12 @@ namespace Nickvision::TubeConverter::Shared::Models
          * @param start The start time string in the format "HH:MM:SS"
          * @param end The end time string in the format "HH:MM:SS"
          * @param duration The total duration in seconds
-         * @returns A TimeFrame if successful, else std::nullopt
+         * @return A TimeFrame if successful, else std::nullopt
          */
         static std::optional<TimeFrame> parse(const std::string& start, const std::string& end, const std::chrono::seconds& duration);
         /**
          * @brief Gets the start time in total seconds.
-         * @returns The start time in total seconds
+         * @return The start time in total seconds
          */
         const std::chrono::seconds& getStart() const;
         /**
@@ -38,7 +38,7 @@ namespace Nickvision::TubeConverter::Shared::Models
         void setStart(const std::chrono::seconds& start);
         /**
          * @brief Gets the end time in total seconds.
-         * @returns The end time in total seconds
+         * @return The end time in total seconds
          */
         const std::chrono::seconds& getEnd() const;
         /**
@@ -48,25 +48,25 @@ namespace Nickvision::TubeConverter::Shared::Models
         void setEnd(const std::chrono::seconds& end);
         /**
          * @brief Gets the duration in total seconds.
-         * @returns The duration in total seconds
+         * @return The duration in total seconds
          */
         std::chrono::seconds getDuration() const;
         /**
          * @brief Gets a string representation of the TimeFrame.
          * @brief The string will be in the format "HH:MM:SS-HH:MM:SS".
-         * @returns The string representation of the TimeFrame
+         * @return The string representation of the TimeFrame
          */
         std::string str() const;
         /**
          * @brief Gets a string representation of the start time.
          * @brief The string will be in the format "HH:MM:SS".
-         * @returns The string representation of the start time
+         * @return The string representation of the start time
          */
         std::string startStr() const;
         /**
          * @brief Gets a string representation of the end time.
          * @brief The string will be in the format "HH:MM:SS".
-         * @returns The string representation of the end time
+         * @return The string representation of the end time
          */
         std::string endStr() const;
 

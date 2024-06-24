@@ -18,7 +18,7 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Controls::implementation
         SettingsRow();
         /**
          * @brief Gets the icon glyph for the row.
-         * @returns The row icon glyph
+         * @return The row icon glyph
          */
         winrt::hstring Glyph() const;
         /**
@@ -48,7 +48,7 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Controls::implementation
         void Description(const winrt::hstring& description);
         /**
          * @brief Gets the child for the row.
-         * @returns The row child
+         * @return The row child
          */
         IInspectable Child() const;
         /**

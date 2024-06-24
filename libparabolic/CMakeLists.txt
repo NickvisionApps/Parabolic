@@ -5,6 +5,7 @@ endif()
 add_library(libparabolic
     "src/controllers/mainwindowcontroller.cpp"
     "src/controllers/preferencesviewcontroller.cpp"
+    "src/helpers/pythonhelpers.cpp"
     "src/models/configuration.cpp"
     "src/models/downloaderoptions.cpp"
     "src/models/downloadhistory.cpp"

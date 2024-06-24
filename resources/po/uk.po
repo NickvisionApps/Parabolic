@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-06-21 11:08-0400\n"
+"POT-Creation-Date: 2024-06-22 16:26-0400\n"
 "PO-Revision-Date: 2024-05-14 18:01+0000\n"
 "Last-Translator: Bezruchenko Simon <worcposj44@gmail.com>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/nickvision-"
@@ -83,6 +83,26 @@ msgstr "Не вдалося завантажити і встановити он�
 #, fuzzy
 msgid "No network connection"
 msgstr "Немає активного з'єднання з Інтернетом"
+
+#: libparabolic/src/models/downloadprogressstate.cpp:55
+#, fuzzy, c-format
+msgid "%.1f GiB/s"
+msgstr "{0:f1} ГіБ/с"
+
+#: libparabolic/src/models/downloadprogressstate.cpp:59
+#, fuzzy, c-format
+msgid "%.1f MiB/s"
+msgstr "{0:f1} МіБ/с"
+
+#: libparabolic/src/models/downloadprogressstate.cpp:63
+#, fuzzy, c-format
+msgid "%.1f KiB/s"
+msgstr "{0:f1} КіБ/с"
+
+#: libparabolic/src/models/downloadprogressstate.cpp:67
+#, c-format
+msgid "%.1f B/s"
+msgstr ""
 
 #: libparabolic/src/models/videoresolution.cpp:19
 #: libparabolic/src/models/videoresolution.cpp:57
@@ -699,18 +719,6 @@ msgstr ""
 #, csharp-format
 #~ msgid "{0:f1} B/s"
 #~ msgstr "{0:f1} Б/с"
-
-#, csharp-format
-#~ msgid "{0:f1} GiB/s"
-#~ msgstr "{0:f1} ГіБ/с"
-
-#, csharp-format
-#~ msgid "{0:f1} KiB/s"
-#~ msgstr "{0:f1} КіБ/с"
-
-#, csharp-format
-#~ msgid "{0:f1} MiB/s"
-#~ msgstr "{0:f1} МіБ/с"
 
 #, csharp-format
 #~ msgid "{0} download — {1:f1}% ({2})"

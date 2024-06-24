@@ -24,7 +24,7 @@ namespace Nickvision::TubeConverter::GNOME
         /**
          * @brief Runs the application.
          * @brief This runs the gtk application loop.
-         * @returns The return code from the gtk application 
+         * @return The return code from the gtk application 
          */
         int run();
 

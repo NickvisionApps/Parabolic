@@ -18,7 +18,7 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Controls::implementation
         ViewStackPage();
         /**
          * @brief Gets the name of this page.
-         * @returns The page's name 
+         * @return The page's name 
          */
         winrt::hstring PageName() const;
         /**
