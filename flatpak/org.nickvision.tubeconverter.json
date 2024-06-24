@@ -77,7 +77,23 @@
                 {
                     "type": "git",
                     "url": "https://github.com/nickvisionapps/libnick",
-                    "tag": "2024.6.7"
+                    "tag": "2024.6.8"
+                }
+            ]
+        },
+        "python3-modules.json",
+        {
+            "name": "pybind11",
+            "buildsystem": "cmake-ninja",
+            "builddir": true,
+            "config-opts": [
+                "-DCMAKE_BUILD_TYPE=Release"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/pybind/pybind11",
+                    "tag": "v2.12.0"
                 }
             ]
         },
@@ -102,8 +118,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://ffmpeg.org/releases/ffmpeg-7.0.tar.xz",
-                    "sha256": "4426a94dd2c814945456600c8adfc402bee65ec14a70e8c531ec9a2cd651da7b",
+                    "url": "https://ffmpeg.org/releases/ffmpeg-7.0.1.tar.xz",
+                    "sha256": "bce9eeb0f17ef8982390b1f37711a61b4290dc8c2a0c1a37b5857e85bfb0e4ff",
                     "x-checker-data": {
                         "type": "html",
                         "url": "https://ffmpeg.org/releases/",
@@ -125,7 +141,6 @@
                 }
             ]
         },
-        "python3-modules.json",
         {
             "name": "blueprint-compiler",
             "buildsystem": "meson",

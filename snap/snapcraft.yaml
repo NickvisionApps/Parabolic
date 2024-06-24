@@ -87,7 +87,7 @@ parts:
   libnick:
     after: [maddy, build-deps]
     source: https://github.com/nickvisionapps/libnick.git
-    source-tag: "2024.6.7"
+    source-tag: "2024.6.8"
     source-depth: 1
     plugin: cmake
     cmake-parameters:
@@ -218,7 +218,7 @@ slots:
     name: org.nickvision.tubeconverter
 
 apps:
-  application:
+  tube-converter:
     command: usr/lib/org.nickvision.tubeconverter/org.nickvision.tubeconverter.gnome
     desktop: usr/share/applications/org.nickvision.tubeconverter.desktop
     common-id: org.nickvision.tubeconverter
