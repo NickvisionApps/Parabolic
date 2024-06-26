@@ -1,7 +1,6 @@
 #include "views/mainwindow.h"
 #include <filesystem>
 #include <format>
-#include <libnick/app/aura.h>
 #include <libnick/app/appinfo.h>
 #include <libnick/helpers/codehelpers.h>
 #include <libnick/notifications/shellnotification.h>
@@ -14,8 +13,9 @@ using namespace Nickvision::App;
 using namespace Nickvision::Events;
 using namespace Nickvision::Helpers;
 using namespace Nickvision::Notifications;
-using namespace Nickvision::TubeConverter::Shared::Controllers;
 using namespace Nickvision::TubeConverter::GNOME::Helpers;
+using namespace Nickvision::TubeConverter::Shared::Controllers;
+using namespace Nickvision::Update;
 
 namespace Nickvision::TubeConverter::GNOME::Views
 {
@@ -29,7 +29,7 @@ namespace Nickvision::TubeConverter::GNOME::Views
         gtk_application_add_window(GTK_APPLICATION(app), GTK_WINDOW(m_window));
         gtk_window_set_title(GTK_WINDOW(m_window), m_controller->getAppInfo().getShortName().c_str());
         gtk_window_set_icon_name(GTK_WINDOW(m_window), m_controller->getAppInfo().getId().c_str());
-        if(m_controller->isDevVersion())
+        if(m_controller->getAppInfo().getVersion().getVersionType() == VersionType::Preview)
         {
             gtk_widget_add_css_class(GTK_WIDGET(m_window), "devel");
         }
@@ -74,9 +74,7 @@ namespace Nickvision::TubeConverter::GNOME::Views
 
     void MainWindow::show()
     {
-        m_controller->startup();
-        m_controller->connectTaskbar(m_controller->getAppInfo().getId() + ".desktop");
-        WindowGeometry geometry{ m_controller->getWindowGeometry() };
+        WindowGeometry geometry{ m_controller->startup(m_controller->getAppInfo().getId() + ".desktop") };
         gtk_window_set_default_size(GTK_WINDOW(m_window), static_cast<int>(geometry.getWidth()), static_cast<int>(geometry.getHeight()));
         if(geometry.isMaximized())
         {
@@ -87,6 +85,10 @@ namespace Nickvision::TubeConverter::GNOME::Views
 
     bool MainWindow::onCloseRequested()
     {
+        if(!m_controller->canShutdown())
+        {
+            return true;
+        }
         int width;
         int height;
         gtk_window_get_default_size(GTK_WINDOW(m_window), &width, &height);
@@ -102,8 +104,8 @@ namespace Nickvision::TubeConverter::GNOME::Views
 
     void MainWindow::onShellNotificationSent(const ShellNotificationSentEventArgs& args)
     {
-        Aura::getActive().getLogger().log(Logging::LogLevel::Debug, "ShellNotification sent. (" + args.getMessage() + ")");
-        ShellNotification::send(args, _("Open"));
+        m_controller->log(Logging::LogLevel::Debug, "ShellNotification sent. (" + args.getMessage() + ")");
+        ShellNotification::send(args, m_controller->getAppInfo().getId(), _("Open"));
     }
 
     void MainWindow::onDisclaimerTriggered(const ParamEventArgs<std::string>& args)
@@ -152,7 +154,7 @@ namespace Nickvision::TubeConverter::GNOME::Views
         extraDebug += "libadwaita " + std::to_string(adw_get_major_version()) + "." + std::to_string(adw_get_minor_version()) + "." + std::to_string(adw_get_micro_version());
         AdwAboutDialog* dialog{ ADW_ABOUT_DIALOG(adw_about_dialog_new()) };
         adw_about_dialog_set_application_name(dialog, m_controller->getAppInfo().getShortName().c_str());
-        adw_about_dialog_set_application_icon(dialog, std::string(m_controller->getAppInfo().getId() + (m_controller->isDevVersion() ? "-devel" : "")).c_str());
+        adw_about_dialog_set_application_icon(dialog, std::string(m_controller->getAppInfo().getId() + (m_controller->getAppInfo().getVersion().getVersionType() == VersionType::Preview  ? "-devel" : "")).c_str());
         adw_about_dialog_set_developer_name(dialog, "Nickvision");
         adw_about_dialog_set_version(dialog, m_controller->getAppInfo().getVersion().str().c_str());
         adw_about_dialog_set_release_notes(dialog, m_controller->getAppInfo().getHtmlChangelog().c_str());

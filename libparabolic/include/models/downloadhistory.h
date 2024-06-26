@@ -3,7 +3,7 @@
 
 #include <string>
 #include <vector>
-#include <libnick/app/configurationbase.h>
+#include <libnick/app/datafilebase.h>
 #include "historicdownload.h"
 
 namespace Nickvision::TubeConverter::Shared::Models
@@ -11,14 +11,15 @@ namespace Nickvision::TubeConverter::Shared::Models
     /**
      * @brief A model for the download history of the application.
      */
-    class DownloadHistory : public Nickvision::App::ConfigurationBase
+    class DownloadHistory : public Nickvision::App::DataFileBase
     {
     public:
         /**
          * @brief Constructs a DownloadHistory.
-         * @param key The key to pass to the ConfigurationBase
+         * @param key The key to pass to the DataFileBase
+         * @param appName The application name to pass to the DataFileBase
          */
-        DownloadHistory(const std::string& key);
+        DownloadHistory(const std::string& key, const std::string& appName);
         /**
          * @brief Gets the download history.
          * @return The download history

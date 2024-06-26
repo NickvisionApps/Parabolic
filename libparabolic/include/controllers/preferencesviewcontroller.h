@@ -4,6 +4,7 @@
 #include <filesystem>
 #include <string>
 #include "models/browsers.h"
+#include "models/configuration.h"
 #include "models/completednotificationpreference.h"
 #include "models/downloaderoptions.h"
 #include "models/theme.h"
@@ -18,13 +19,9 @@ namespace Nickvision::TubeConverter::Shared::Controllers
     public:
         /**
          * @brief Constructs a PreferencesViewController.
+         * @param configuration The application configuration
          */
-        PreferencesViewController() = default;
-        /**
-         * @brief Gets the application's id.
-         * @return The app id
-         */
-        const std::string& getId() const;
+        PreferencesViewController(Models::Configuration& configuration);
         /**
          * @brief Gets the cookies extension url for a browser.
          * @param browser The browser
@@ -95,6 +92,9 @@ namespace Nickvision::TubeConverter::Shared::Controllers
          * @brief Saves the current configuration to disk.
          */
         void saveConfiguration();
+
+    private:
+        Models::Configuration& m_configuration;
     };
 }
 

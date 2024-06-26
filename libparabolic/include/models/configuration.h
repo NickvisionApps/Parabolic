@@ -3,7 +3,7 @@
 
 #include <filesystem>
 #include <string>
-#include <libnick/app/configurationbase.h>
+#include <libnick/app/datafilebase.h>
 #include <libnick/app/windowgeometry.h>
 #include "completednotificationpreference.h"
 #include "downloaderoptions.h"
@@ -16,14 +16,15 @@ namespace Nickvision::TubeConverter::Shared::Models
     /**
      * @brief A model for the configuration of the application.
      */
-    class Configuration : public Nickvision::App::ConfigurationBase
+    class Configuration : public Nickvision::App::DataFileBase
     {
     public:
         /**
          * @brief Constructs a Configuration.
-         * @param key The key to pass to the ConfigurationBase
+         * @param key The key to pass to the DataFileBase
+         * @param appName The name of the application to pass to the DataFileBase
          */
-        Configuration(const std::string& key);
+        Configuration(const std::string& key, const std::string& appName);
         /**
          * @brief Gets the preferred theme for the application.
          * @return The preferred theme

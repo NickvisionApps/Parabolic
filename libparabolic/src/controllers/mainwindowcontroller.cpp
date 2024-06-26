@@ -2,13 +2,12 @@
 #include <algorithm>
 #include <ctime>
 #include <format>
-#include <locale>
-#include <sstream>
 #include <thread>
-#include <libnick/app/aura.h>
+#include <libnick/filesystem/userdirectories.h>
 #include <libnick/helpers/codehelpers.h>
 #include <libnick/helpers/stringhelpers.h>
 #include <libnick/localization/gettext.h>
+#include <libnick/system/environment.h>
 #include <pybind11/embed.h>
 #include "models/configuration.h"
 #include "models/downloadhistory.h"
@@ -18,9 +17,11 @@
 
 using namespace Nickvision::App;
 using namespace Nickvision::Events;
+using namespace Nickvision::Filesystem;
 using namespace Nickvision::Helpers;
 using namespace Nickvision::Network;
 using namespace Nickvision::Notifications;
+using namespace Nickvision::System;
 using namespace Nickvision::TubeConverter::Shared::Models;
 using namespace Nickvision::Update;
 namespace py = pybind11;
@@ -29,57 +30,57 @@ namespace Nickvision::TubeConverter::Shared::Controllers
 {
     MainWindowController::MainWindowController(const std::vector<std::string>& args)
         : m_started{ false },
-        m_args{ args }
+        m_args{ args },
+        m_appInfo{ "org.nickvision.tubeconverter", "Nickvision Parabolic", "Parabolic" },
+        m_dataFileManager{ m_appInfo.getName() },
+        m_logger{ UserDirectories::get(UserDirectory::ApplicationLocalData, m_appInfo.getName()), std::find(m_args.begin(), m_args.end(), "--debug") != m_args.end() ? Logging::LogLevel::Debug : Logging::LogLevel::Info, false }
     {
-        Logging::LogLevel logLevel{ std::find(m_args.begin(), m_args.end(), "--debug") != m_args.end() ? Logging::LogLevel::Debug : Logging::LogLevel::Info };
-        Aura::getActive().init("org.nickvision.tubeconverter", "Nickvision Parabolic", "Parabolic", logLevel);
-        AppInfo& appInfo{ Aura::getActive().getAppInfo() };
-        appInfo.setVersion({ "2024.6.0-next" });
-        appInfo.setShortName(_("Parabolic"));
-        appInfo.setDescription(_("Download web video and audio"));
-        appInfo.setSourceRepo("https://github.com/NickvisionApps/Parabolic");
-        appInfo.setIssueTracker("https://github.com/NickvisionApps/Parabolic/issues/new");
-        appInfo.setSupportUrl("https://github.com/NickvisionApps/Parabolic/discussions");
-        appInfo.getExtraLinks()[_("Matrix Chat")] = "https://matrix.to/#/#nickvision:matrix.org";
-        appInfo.getDevelopers()["Nicholas Logozzo"] = "https://github.com/nlogozzo";
-        appInfo.getDevelopers()[_("Contributors on GitHub")] = "https://github.com/NickvisionApps/Parabolic/graphs/contributors";
-        appInfo.getDesigners()["Nicholas Logozzo"] = "https://github.com/nlogozzo";
-        appInfo.getDesigners()[_("Fyodor Sobolev")] = "https://github.com/fsobolev";
-        appInfo.getDesigners()["DaPigGuy"] = "https://github.com/DaPigGuy";
-        appInfo.getArtists()[_("David Lapshin")] = "https://github.com/daudix";
-        appInfo.setTranslatorCredits(_("translator-credits"));
+        m_appInfo.setVersion({ "2024.6.0-next" });
+        m_appInfo.setShortName(_("Parabolic"));
+        m_appInfo.setDescription(_("Download web video and audio"));
+        m_appInfo.setChangelog("- Initial Release");
+        m_appInfo.setSourceRepo("https://github.com/NickvisionApps/Parabolic");
+        m_appInfo.setIssueTracker("https://github.com/NickvisionApps/Parabolic/issues/new");
+        m_appInfo.setSupportUrl("https://github.com/NickvisionApps/Parabolic/discussions");
+        m_appInfo.getExtraLinks()[_("Matrix Chat")] = "https://matrix.to/#/#nickvision:matrix.org";
+        m_appInfo.getDevelopers()["Nicholas Logozzo"] = "https://github.com/nlogozzo";
+        m_appInfo.getDevelopers()[_("Contributors on GitHub")] = "https://github.com/NickvisionApps/Parabolic/graphs/contributors";
+        m_appInfo.getDesigners()["Nicholas Logozzo"] = "https://github.com/nlogozzo";
+        m_appInfo.getDesigners()[_("Fyodor Sobolev")] = "https://github.com/fsobolev";
+        m_appInfo.getDesigners()["DaPigGuy"] = "https://github.com/DaPigGuy";
+        m_appInfo.getArtists()[_("David Lapshin")] = "https://github.com/daudix";
+        m_appInfo.setTranslatorCredits(_("translator-credits"));
+        Localization::Gettext::init(m_appInfo.getEnglishShortName());
+#ifdef _WIN32
+        m_updater = std::make_shared<Updater>(m_appInfo.getSourceRepo());
+#endif
+        m_dataFileManager.get<Configuration>("config").saved() += [this](const EventArgs&)
+        {
+            m_logger.log(Logging::LogLevel::Debug, "Configuration saved.");
+        };
         m_networkMonitor.stateChanged() += [&](const NetworkStateChangedEventArgs& args){ onNetworkChanged(args); };
     }
 
-    AppInfo& MainWindowController::getAppInfo() const
+    const AppInfo& MainWindowController::getAppInfo() const
     {
-        return Aura::getActive().getAppInfo();
+        return m_appInfo;
     }
 
-    bool MainWindowController::isDevVersion() const
+    Theme MainWindowController::getTheme()
     {
-        return Aura::getActive().getAppInfo().getVersion().getVersionType() == VersionType::Preview;
+        return m_dataFileManager.get<Configuration>("config").getTheme();
     }
 
-    Theme MainWindowController::getTheme() const
-    {
-        return Aura::getActive().getConfig<Configuration>("config").getTheme();
-    }
-
-    WindowGeometry MainWindowController::getWindowGeometry() const
-    {
-        return Aura::getActive().getConfig<Configuration>("config").getWindowGeometry();
-    }
     void MainWindowController::setShowDisclaimerOnStartup(bool showDisclaimerOnStartup)
     {
-        Configuration& config{ Aura::getActive().getConfig<Configuration>("config") };
+        Configuration& config{ m_dataFileManager.get<Configuration>("config") };
         config.setShowDisclaimerOnStartup(showDisclaimerOnStartup);
         config.save();
     }
 
     Event<EventArgs>& MainWindowController::configurationSaved()
     {
-        return Aura::getActive().getConfig<Configuration>("config").saved();
+        return m_dataFileManager.get<Configuration>("config").saved();
     }
 
     Event<NotificationSentEventArgs>& MainWindowController::notificationSent()
@@ -104,114 +105,95 @@ namespace Nickvision::TubeConverter::Shared::Controllers
 
     std::string MainWindowController::getDebugInformation(const std::string& extraInformation) const
     {
-        std::stringstream builder;
-        builder << Aura::getActive().getAppInfo().getId();
-#ifdef _WIN32
-        builder << ".winui" << std::endl;
-#elif defined(__linux__)
-        builder << ".gnome" << std::endl;
-#endif
-        builder << Aura::getActive().getAppInfo().getVersion().str() << std::endl << std::endl;
-        if(Aura::getActive().isRunningViaFlatpak())
-        {
-            builder << "Running under Flatpak" << std::endl;
-        }
-        else if(Aura::getActive().isRunningViaSnap())
-        {
-            builder << "Running under Snap" << std::endl;
-        }
-        else
-        {
-            builder << "Running locally" << std::endl;
-        }
-#ifdef _WIN32
-        LCID lcid = GetThreadLocale();
-        wchar_t name[LOCALE_NAME_MAX_LENGTH];
-        if(LCIDToLocaleName(lcid, name, LOCALE_NAME_MAX_LENGTH, 0) > 0)
-        {
-            builder << StringHelpers::str(name) << std::endl;
-        }
-#elif defined(__linux__)
-        try
-        {
-            builder << std::locale("").name() << std::endl;
-        }
-        catch(...)
-        {
-            builder << "Locale not set" << std::endl;
-        }
-#endif
-        if (!extraInformation.empty())
-        {
-            builder << extraInformation << std::endl;
-        }
-        return builder.str();
+        return Environment::getDebugInformation(m_appInfo, extraInformation);
     }
 
-    std::shared_ptr<PreferencesViewController> MainWindowController::createPreferencesViewController() const
+    bool MainWindowController::canShutdown() const
     {
-        return std::make_shared<PreferencesViewController>();
+        return true;
     }
 
-    void MainWindowController::startup()
+    std::shared_ptr<PreferencesViewController> MainWindowController::createPreferencesViewController()
+    {
+        return std::make_shared<PreferencesViewController>(m_dataFileManager.get<Configuration>("config"));
+    }
+
+#ifdef _WIN32
+    Nickvision::App::WindowGeometry MainWindowController::startup(HWND hwnd)
+#elif defined(__linux__)
+    Nickvision::App::WindowGeometry MainWindowController::startup(const std::string& desktopFile)
+#else
+    Nickvision::App::WindowGeometry MainWindowController::startup()
+#endif
     {
         if (m_started)
         {
-            return;
+            return m_dataFileManager.get<Configuration>("config").getWindowGeometry();
         }
 #ifdef _WIN32
-        try
+        if(m_taskbar.connect(hwnd))
         {
-            m_updater = std::make_shared<Updater>(Aura::getActive().getAppInfo().getSourceRepo());
+            m_logger.log(Logging::LogLevel::Debug, "Connected to Windows taskbar.");
         }
-        catch(...)
+        else
         {
-            m_updater = nullptr;
+            m_logger.log(Logging::LogLevel::Error, "Unable to connect to Windows taskbar.");
         }
-        if (Aura::getActive().getConfig<Configuration>("config").getAutomaticallyCheckForUpdates())
+        if (m_dataFileManager.get<Configuration>("config").getAutomaticallyCheckForUpdates())
         {
             checkForUpdates();
         }
-#endif
-        //Check if disclaimer should be shown
-        if(Aura::getActive().getConfig<Configuration>("config").getShowDisclaimerOnStartup())
+#elif defined(__linux__)
+        if(m_taskbar.connect(desktopFile))
         {
-            m_disclaimerTriggered.invoke({ _("The authors of Nickvision Parabolic are not responsible/liable for any misuse of this program that may violate local copyright/DMCA laws. Users use this application at their own risk.") });
+            m_logger.log(Logging::LogLevel::Debug, "Connected to Linux taskbar.");
         }
+        else
+        {
+            m_logger.log(Logging::LogLevel::Error, "Unable to connect to Linux taskbar.");
+        }
+#endif
         //Load history
-        Aura::getActive().getLogger().log(Logging::LogLevel::Debug, "Loading historic downloads...");
-        DownloadHistory& history{ Aura::getActive().getConfig<DownloadHistory>("history") };
-        Aura::getActive().getLogger().log(Logging::LogLevel::Info, "Loaded " + std::to_string(history.getHistory().size()) + " historic downloads.");
+        m_logger.log(Logging::LogLevel::Debug, "Loading historic downloads...");
+        DownloadHistory& history{ m_dataFileManager.get<DownloadHistory>("history") };
+        m_logger.log(Logging::LogLevel::Info, "Loaded " + std::to_string(history.getHistory().size()) + " historic downloads.");
         m_historyChanged.invoke(history.getHistory());
         //Check network
         onNetworkChanged({ m_networkMonitor.getConnectionState() });
         //Load python
         try
         {
-            Aura::getActive().getLogger().log(Logging::LogLevel::Info, "Loading python...");
+            m_logger.log(Logging::LogLevel::Info, "Loading python interpreter...");
             py::initialize_interpreter();
-            Aura::getActive().getLogger().log(Logging::LogLevel::Info, "Loading yt-dlp...");
+            m_logger.log(Logging::LogLevel::Info, "Python interpreter loaded.");
+            m_logger.log(Logging::LogLevel::Info, "Loading yt-dlp python module...");
             py::module_ ytdlp{ py::module_::import("yt_dlp") };
-            Aura::getActive().getLogger().log(Logging::LogLevel::Info, "Python loaded.");
+            m_logger.log(Logging::LogLevel::Info, "yt-dlp python module loaded.");
         }
         catch(const std::exception& e)
         {
-            Aura::getActive().getLogger().log(Logging::LogLevel::Error, "Unable to load python: " + std::string(e.what()));
+            m_logger.log(Logging::LogLevel::Error, "Unable to load python: " + std::string(e.what()));
             m_notificationSent.invoke({ _("Unable to load python"), NotificationSeverity::Error, "nopython" });
         }
+        //Check if disclaimer should be shown
+        if(m_dataFileManager.get<Configuration>("config").getShowDisclaimerOnStartup())
+        {
+            m_disclaimerTriggered.invoke({ _("The authors of Nickvision Parabolic are not responsible/liable for any misuse of this program that may violate local copyright/DMCA laws. Users use this application at their own risk.") });
+        }
         m_started = true;
-        Aura::getActive().getLogger().log(Logging::LogLevel::Debug, "MainWindow started.");
+        m_logger.log(Logging::LogLevel::Debug, "MainWindow started.");
+        return m_dataFileManager.get<Configuration>("config").getWindowGeometry();
     }
 
     void MainWindowController::shutdown(const WindowGeometry& geometry)
     {
         //Save config
-        Configuration& config{ Aura::getActive().getConfig<Configuration>("config") };
+        Configuration& config{ m_dataFileManager.get<Configuration>("config") };
         config.setWindowGeometry(geometry);
         config.save();
         //Shutdown python
         py::finalize_interpreter();
-        Aura::getActive().getLogger().log(Logging::LogLevel::Debug, "MainWindow shutdown.");
+        m_logger.log(Logging::LogLevel::Debug, "MainWindow shutdown.");
     }
 
     void MainWindowController::checkForUpdates()
@@ -220,25 +202,25 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         {
             return;
         }
-        Aura::getActive().getLogger().log(Logging::LogLevel::Debug, "Checking for updates...");
+        m_logger.log(Logging::LogLevel::Debug, "Checking for updates...");
         std::thread worker{ [this]()
         {
             Version latest{ m_updater->fetchCurrentVersion(VersionType::Stable) };
             if (!latest.empty())
             {
-                if (latest > Aura::getActive().getAppInfo().getVersion())
+                if (latest > m_appInfo.getVersion())
                 {
-                    Aura::getActive().getLogger().log(Logging::LogLevel::Info, "Update found: " + latest.str());
+                    m_logger.log(Logging::LogLevel::Info, "Update found: " + latest.str());
                     m_notificationSent.invoke({ _("New update available"), NotificationSeverity::Success, "update" });
                 }
                 else
                 {
-                    Aura::getActive().getLogger().log(Logging::LogLevel::Debug, "No updates found.");
+                    m_logger.log(Logging::LogLevel::Debug, "No updates found.");
                 }
             }
             else
             {
-                Aura::getActive().getLogger().log(Logging::LogLevel::Warning, "Unable to fetch latest app version.");
+                m_logger.log(Logging::LogLevel::Warning, "Unable to fetch latest app version.");
             }
         } };
         worker.detach();
@@ -251,50 +233,31 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         {
             return;
         }
-        Aura::getActive().getLogger().log(Logging::LogLevel::Debug, "Fetching Windows app update...");
+        m_logger.log(Logging::LogLevel::Debug, "Fetching Windows app update...");
         std::thread worker{ [this]()
         {
             if (m_updater->windowsUpdate(VersionType::Stable))
             {
-                Aura::getActive().getLogger().log(Logging::LogLevel::Info, "Windows app update started.");
+                m_logger.log(Logging::LogLevel::Info, "Windows app update started.");
             }
             else
             {
-                Aura::getActive().getLogger().log(Logging::LogLevel::Error, "Unable to fetch Windows app update.");
+                m_logger.log(Logging::LogLevel::Error, "Unable to fetch Windows app update.");
                 m_notificationSent.invoke({ _("Unable to download and install update"), NotificationSeverity::Error, "error" });
             }
         } };
         worker.detach();
     }
-
-    void MainWindowController::connectTaskbar(HWND hwnd)
-    {
-        if(m_taskbar.connect(hwnd))
-        {
-            Aura::getActive().getLogger().log(Logging::LogLevel::Debug, "Connected to Windows taskbar.");
-        }
-        else
-        {
-            Aura::getActive().getLogger().log(Logging::LogLevel::Error, "Unable to connect to Windows taskbar.");
-        }
-    }
-#elif defined(__linux__)
-    void MainWindowController::connectTaskbar(const std::string& desktopFile)
-    {
-        if(m_taskbar.connect(desktopFile))
-        {
-            Aura::getActive().getLogger().log(Logging::LogLevel::Debug, "Connected to Linux taskbar.");
-        }
-        else
-        {
-            Aura::getActive().getLogger().log(Logging::LogLevel::Error, "Unable to connect to Linux taskbar.");
-        }
-    }
 #endif
+
+    void MainWindowController::log(Logging::LogLevel level, const std::string& message, const std::source_location& source)
+    {
+        m_logger.log(level, message, source);
+    }
 
     void MainWindowController::clearHistory()
     {
-        DownloadHistory& history{ Aura::getActive().getConfig<DownloadHistory>("history") };
+        DownloadHistory& history{ m_dataFileManager.get<DownloadHistory>("history") };
         if(history.clear())
         {
             m_historyChanged.invoke(history.getHistory());
@@ -303,7 +266,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
 
     void MainWindowController::removeHistoricDownload(const HistoricDownload& download)
     {
-        DownloadHistory& history{ Aura::getActive().getConfig<DownloadHistory>("history") };
+        DownloadHistory& history{ m_dataFileManager.get<DownloadHistory>("history") };
         if(history.removeDownload(download))
         {
             m_historyChanged.invoke(history.getHistory());
@@ -314,12 +277,15 @@ namespace Nickvision::TubeConverter::Shared::Controllers
     {
         if(args.getState() == NetworkState::ConnectedGlobal)
         {
-            Aura::getActive().getLogger().log(Logging::LogLevel::Info, "Network connected.");
-            m_notificationSent.invoke({ "", NotificationSeverity::Informational, "network" });
+            m_logger.log(Logging::LogLevel::Info, "Network connected.");
+            if(m_started)
+            {
+                m_notificationSent.invoke({ _("Network connection restored"), NotificationSeverity::Informational, "network" });
+            }
         }
         else
         {
-            Aura::getActive().getLogger().log(Logging::LogLevel::Info, "Network disconnected.");
+            m_logger.log(Logging::LogLevel::Info, "Network disconnected.");
             m_notificationSent.invoke({ _("No network connection"), NotificationSeverity::Error, "nonetwork" });
         }
     }

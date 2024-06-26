@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-06-24 15:53-0400\n"
+"POT-Creation-Date: 2024-06-26 18:53-0400\n"
 "PO-Revision-Date: 2024-02-02 15:04+0000\n"
 "Last-Translator: Yosef Or Boczko <yoseforb@gnome.org>\n"
 "Language-Team: Hebrew <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -20,38 +20,42 @@ msgstr ""
 "n % 10 == 0) ? 2 : 3));\n"
 "X-Generator: Weblate 5.4-dev\n"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:38
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:39
 msgid "Parabolic"
 msgstr "Parabolic"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:39
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:40
 msgid "Download web video and audio"
 msgstr "הורדת סרטי רשת וקובצי שמע"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:43
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:45
 msgid "Matrix Chat"
 msgstr "צ׳אט במטריקס"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:45
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:47
 #, fuzzy
 msgid "Contributors on GitHub"
 msgstr "תורמים ב־GitHub‏ ❤️ {0}"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:47
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:49
 msgid "Fyodor Sobolev"
 msgstr "Fyodor Sobolev"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:49
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:51
 msgid "David Lapshin"
 msgstr "David Lapshin"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:50
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:52
 msgid "translator-credits"
 msgstr ""
 "יוסף אור בוצ׳קו <yoseforb@gmail.com>\n"
 "מיזם תרגום GNOME לעברית https://l10n.gnome.org/teams/he/"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:179
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:176
+msgid "Unable to load python"
+msgstr ""
+
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:181
 msgid ""
 "The authors of Nickvision Parabolic are not responsible/liable for any "
 "misuse of this program that may violate local copyright/DMCA laws. Users use "
@@ -61,21 +65,22 @@ msgstr ""
 "זו שעשוי להפר את חוקי זכויות היוצרים המקומיים/חוקי DMCA. השימוש שמשתמשים "
 "עושים ביישום זה הוא על אחריותם הבלעדית בלבד."
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:200
-msgid "Unable to load python"
-msgstr ""
-
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:232
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:214
 #, fuzzy
 msgid "New update available"
 msgstr "עדכון חדש זמין."
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:264
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:246
 #, fuzzy
 msgid "Unable to download and install update"
 msgstr "לא ניתן להוריד ולהתקין את העדכון."
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:323
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:283
+#, fuzzy
+msgid "Network connection restored"
+msgstr "אין חיבור פעיל לרשת האינטרנט"
+
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:289
 #, fuzzy
 msgid "No network connection"
 msgstr "אין חיבור פעיל לרשת האינטרנט"
@@ -125,17 +130,17 @@ msgid "Main Menu"
 msgstr "תפריט ראשי"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:37
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:72
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:71
 msgid "Download Media"
 msgstr "הורדת מדיה"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:38
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:73
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:72
 msgid "Add a video, audio, or playlist URL to start downloading"
 msgstr "על מנת להתחיל הורדה יש להוסיף כתובת של סרט, שמע, או רשימת השמעה"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:40
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:74
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:73
 msgid "Add Download"
 msgstr "הוספת הורדה"
 
@@ -195,7 +200,7 @@ msgid "Prevent Suspend"
 msgstr "למנוע השהיה"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:49
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:58
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:57
 #: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:38
 msgid "Downloads"
 msgstr "הורדות"
@@ -428,30 +433,30 @@ msgstr "יישום"
 msgid "Quit"
 msgstr "יציאה"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:106
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:108
 #, fuzzy
 msgid "Open"
 msgstr "פתיחת קובץ"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:111
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:228
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:113
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:221
 #, fuzzy
 msgid "Disclaimer"
 msgstr "תניית פטור"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:112
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:217
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:114
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:210
 msgid "Don't show this message again"
 msgstr "אין להציג הודעה זו שוב"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:113
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:230
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:362
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:115
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:223
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:355
 msgid "Close"
 msgstr "סגירה"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:166
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:67
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:168
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:66
 msgid "GitHub Repo"
 msgstr "מאגר GitHub"
 
@@ -473,98 +478,98 @@ msgid "Search"
 msgstr "חיפוש…"
 
 #. Localize Strings
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:56
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:55
 msgid "Home"
 msgstr "בית"
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:57
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:56
 msgid "Keyring"
 msgstr "קבוצת מפתחות"
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:59
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:58
 msgid "Downloading"
 msgstr "בהורדה"
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:60
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:59
 msgid "Queued"
 msgstr "בתור"
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:61
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:60
 msgid "Completed"
 msgstr "הושלמו"
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:62
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:61
 msgid "Help"
 msgstr "עזרה"
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:63
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:62
 msgid "Check for Updates"
 msgstr "בדיקת עדכונים"
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:64
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:353
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:63
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:346
 msgid "Credits"
 msgstr "תודות"
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:65
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:64
 msgid "Copy Debug Information"
 msgstr "העתקת מידע לניפוי שגיאות"
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:66
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:65
 msgid "Changelog"
 msgstr "יומן שינויים"
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:68
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:67
 msgid "Report a Bug"
 msgstr "דיווח על תקלה"
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:69
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:68
 msgid "Discussions"
 msgstr "דיונים"
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:70
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:75
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:69
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:74
 msgid "History"
 msgstr "היסטוריה"
 
 #. Localize Strings
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:71
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:70
 #: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:22
 msgid "Settings"
 msgstr "הגדרות"
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:76
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:75
 msgid "Clear History"
 msgstr "ניקוי היסטוריה"
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:92
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:91
 msgid "Preview"
 msgstr ""
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:196
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:193
 msgid "Update"
 msgstr "עדכון"
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:270
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:263
 msgid "Delete"
 msgstr "מחיקה"
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:282
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:275
 msgid "Download Again"
 msgstr "להוריד שוב"
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:304
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:297
 #, fuzzy
 msgid "No history available"
 msgstr "עדכון חדש זמין."
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:331
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:324
 #, fuzzy
 msgid "Debug information copied to clipboard."
 msgstr "יומן ההורדה הועתק ללוח הגזירים."
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:356
-#, fuzzy
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:349
+#, fuzzy, c++-format
 msgid ""
 "Developers:\n"
 "{}\n"
@@ -585,8 +590,8 @@ msgstr ""
 "תרגום:\n"
 "{3}"
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:360
-#, fuzzy
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:353
+#, fuzzy, c++-format
 msgid ""
 "Developers:\n"
 "{}\n"

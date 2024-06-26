@@ -4,8 +4,8 @@ using namespace Nickvision::App;
 
 namespace Nickvision::TubeConverter::Shared::Models
 {
-    Configuration::Configuration(const std::string& key)
-        : ConfigurationBase{ key }
+    Configuration::Configuration(const std::string& key, const std::string& appName)
+        : DataFileBase{ key, appName }
     {
         
     }

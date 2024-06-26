@@ -1,15 +1,13 @@
 #include "controllers/preferencesviewcontroller.h"
-#include <libnick/app/aura.h>
-#include "models/configuration.h"
 
-using namespace Nickvision::App;
 using namespace Nickvision::TubeConverter::Shared::Models;
 
 namespace Nickvision::TubeConverter::Shared::Controllers
 {
-    const std::string& PreferencesViewController::getId() const
+    PreferencesViewController::PreferencesViewController(Configuration& configuration)
+        : m_configuration{ configuration }
     {
-        return Aura::getActive().getAppInfo().getId();
+
     }
 
     const std::string& PreferencesViewController::getCookiesExtensionUrl(Browsers browser) const
@@ -30,67 +28,66 @@ namespace Nickvision::TubeConverter::Shared::Controllers
 
     Theme PreferencesViewController::getTheme() const
     {
-        return Aura::getActive().getConfig<Configuration>("config").getTheme();
+        return m_configuration.getTheme();
     }
 
     void PreferencesViewController::setTheme(Theme theme)
     {
-        Aura::getActive().getConfig<Configuration>("config").setTheme(theme);
+        m_configuration.setTheme(theme);
     }
 
     bool PreferencesViewController::getAutomaticallyCheckForUpdates() const
     {
-        return Aura::getActive().getConfig<Configuration>("config").getAutomaticallyCheckForUpdates();
+        return m_configuration.getAutomaticallyCheckForUpdates();
     }
 
     void PreferencesViewController::setAutomaticallyCheckForUpdates(bool check)
     {
-        Aura::getActive().getConfig<Configuration>("config").setAutomaticallyCheckForUpdates(check);
+        m_configuration.setAutomaticallyCheckForUpdates(check);
     }
 
     CompletedNotificationPreference PreferencesViewController::getCompletedNotificationPreference() const
     {
-        return Aura::getActive().getConfig<Configuration>("config").getCompletedNotificationPreference();
+        return m_configuration.getCompletedNotificationPreference();
     }
 
     void PreferencesViewController::setCompletedNotificationPreference(CompletedNotificationPreference preference)
     {
-        Aura::getActive().getConfig<Configuration>("config").setCompletedNotificationPreference(preference);
+        m_configuration.setCompletedNotificationPreference(preference);
     }
 
     bool PreferencesViewController::getPreventSuspendWhenDownloading() const
     {
-        return Aura::getActive().getConfig<Configuration>("config").getPreventSuspendWhenDownloading();
+        return m_configuration.getPreventSuspendWhenDownloading();
     }
 
     void PreferencesViewController::setPreventSuspendWhenDownloading(bool prevent)
     {
-        Aura::getActive().getConfig<Configuration>("config").setPreventSuspendWhenDownloading(prevent);
+        m_configuration.setPreventSuspendWhenDownloading(prevent);
     }
 
     bool PreferencesViewController::getDisallowConversions() const
     {
-        return Aura::getActive().getConfig<Configuration>("config").getDisallowConversions();
+        return m_configuration.getDisallowConversions();
     }
 
     void PreferencesViewController::setDisallowConversions(bool disallowConversions)
     {
-        Aura::getActive().getConfig<Configuration>("config").setDisallowConversions(disallowConversions);
+        m_configuration.setDisallowConversions(disallowConversions);
     }
 
     DownloaderOptions PreferencesViewController::getDownloaderOptions() const
     {
-        return Aura::getActive().getConfig<Configuration>("config").getDownloaderOptions();
+        return m_configuration.getDownloaderOptions();
     }
 
     void PreferencesViewController::setDownloaderOptions(const DownloaderOptions& options)
     {
-        Aura::getActive().getConfig<Configuration>("config").setDownloaderOptions(options);
+        m_configuration.setDownloaderOptions(options);
     }
 
     void PreferencesViewController::saveConfiguration()
     {
-        Aura::getActive().getLogger().log(Logging::LogLevel::Debug, "Config saved.");
-        Aura::getActive().getConfig<Configuration>("config").save();
+        m_configuration.save();
     }
 }

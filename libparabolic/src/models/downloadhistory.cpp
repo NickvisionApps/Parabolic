@@ -5,8 +5,8 @@ using namespace Nickvision::App;
 
 namespace Nickvision::TubeConverter::Shared::Models
 {
-    DownloadHistory::DownloadHistory(const std::string& key)
-        : ConfigurationBase{ key }
+    DownloadHistory::DownloadHistory(const std::string& key, const std::string& appName)
+        : DataFileBase{ key, appName }
     {
         const Json::Value historyJson{ m_json["History"] };
         for(unsigned int i = 0; i < historyJson.size(); i++)
