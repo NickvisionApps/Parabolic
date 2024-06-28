@@ -41,7 +41,7 @@ procedure SetupVC();
 var
   ResultCode: Integer;
 begin
-  if not Exec(ExpandConstant('{app}\deps\VC_redist.x64.exe'), '/install /quiet /norestart', '', SW_HIDE, ewWaitUntilTerminated, ResultCode)
+  if not Exec(ExpandConstant('{app}\deps\vc_redist.x64.exe'), '/install /quiet /norestart', '', SW_HIDE, ewWaitUntilTerminated, ResultCode)
   then
     MsgBox('Unable to install VC . Please try again', mbError, MB_OK);
 end;
@@ -50,7 +50,7 @@ procedure SetupWinAppSDK();
 var
   ResultCode: Integer;
 begin
-  if not Exec(ExpandConstant('{app}\deps\WindowsAppRuntimeInstall-x64.exe'), '--quiet', '', SW_HIDE, ewWaitUntilTerminated, ResultCode)
+  if not Exec(ExpandConstant('{app}\deps\windowsappruntimeinstall-x64.exe'), '--quiet', '', SW_HIDE, ewWaitUntilTerminated, ResultCode)
   then
     MsgBox('Unable to install Windows App SDK. Please try again', mbError, MB_OK);
 end;
@@ -81,9 +81,9 @@ Name: "english"; MessagesFile: "compiler:Default.isl"
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 
 [Files]
-Source: "..\..\VC_redist.x64.exe"; DestDir: "{app}\deps"; AfterInstall: SetupVC  
-Source: "..\..\WindowsAppRuntimeInstall-x64.exe"; DestDir: "{app}\deps"; AfterInstall: SetupWinAppSDK  
-Source: "..\..\python-3.11.9-amd64.exe"; DestDir: "{app}\deps"; AfterInstall: SetupPython  
+Source: "..\vc_redist.x64.exe"; DestDir: "{app}\deps"; AfterInstall: SetupVC  
+Source: "..\windowsappruntimeinstall-x64.exe"; DestDir: "{app}\deps"; AfterInstall: SetupWinAppSDK  
+Source: "..\python-3.11.9-amd64.exe"; DestDir: "{app}\deps"; AfterInstall: SetupPython  
 Source: "..\build\org.nickvision.tubeconverter.winui\Release\{#MyAppExeName}"; DestDir: "{app}\Release"; Flags: ignoreversion 
 Source: "..\build\org.nickvision.tubeconverter.winui\Release\*"; DestDir: "{app}\Release"; Flags: ignoreversion recursesubdirs createallsubdirs; AfterInstall: Cleanup
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files

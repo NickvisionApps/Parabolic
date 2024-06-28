@@ -38,8 +38,17 @@ jobs:
         run: |
           cmake -G "Visual Studio 17 2022" ..
           cmake --build . --config Release
+      - name: "Create Installer"
+        working-directory: ${{github.workspace}}
+        run: |
+          choco install wget
+          choco install innosetup
+          wget https://aka.ms/vs/17/release/vc_redist.x64.exe -O vc_redist.x64.exe
+          wget https://aka.ms/windowsappsdk/1.5/1.5.240607001/windowsappruntimeinstall-x64.exe -O windowsappruntimeinstall-x64.exe
+          wget https://www.python.org/ftp/python/3.11.9/python-3.11.9-amd64.exe -O python-3.11.9-amd64.exe
+          iscc inno/setup.iss
       - name: Upload
         uses: actions/upload-artifact@v4
         with:
-          path: ${{github.workspace}}/build/org.nickvision.tubeconverter.winui/Release
+          path: ${{github.workspace}}/inno/NickvisionParabolicSetup.exe
           name: Windows-x64-Release
