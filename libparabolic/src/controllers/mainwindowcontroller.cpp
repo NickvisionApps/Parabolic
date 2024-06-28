@@ -1,0 +1,292 @@
+﻿#include "controllers/mainwindowcontroller.h"
+#include <algorithm>
+#include <ctime>
+#include <format>
+#include <thread>
+#include <libnick/filesystem/userdirectories.h>
+#include <libnick/helpers/codehelpers.h>
+#include <libnick/helpers/stringhelpers.h>
+#include <libnick/localization/gettext.h>
+#include <libnick/system/environment.h>
+#include <pybind11/embed.h>
+#include "models/configuration.h"
+#include "models/downloadhistory.h"
+#ifdef _WIN32
+#include <windows.h>
+#endif
+
+using namespace Nickvision::App;
+using namespace Nickvision::Events;
+using namespace Nickvision::Filesystem;
+using namespace Nickvision::Helpers;
+using namespace Nickvision::Network;
+using namespace Nickvision::Notifications;
+using namespace Nickvision::System;
+using namespace Nickvision::TubeConverter::Shared::Models;
+using namespace Nickvision::Update;
+namespace py = pybind11;
+
+namespace Nickvision::TubeConverter::Shared::Controllers
+{
+    MainWindowController::MainWindowController(const std::vector<std::string>& args)
+        : m_started{ false },
+        m_args{ args },
+        m_appInfo{ "org.nickvision.tubeconverter", "Nickvision Parabolic", "Parabolic" },
+        m_dataFileManager{ m_appInfo.getName() },
+        m_logger{ UserDirectories::get(UserDirectory::ApplicationLocalData, m_appInfo.getName()) / "log.txt", std::find(m_args.begin(), m_args.end(), "--debug") != m_args.end() ? Logging::LogLevel::Debug : Logging::LogLevel::Info, false }
+    {
+        m_appInfo.setVersion({ "2024.6.0-next" });
+        m_appInfo.setShortName(_("Parabolic"));
+        m_appInfo.setDescription(_("Download web video and audio"));
+        m_appInfo.setChangelog("- Initial Release");
+        m_appInfo.setSourceRepo("https://github.com/NickvisionApps/Parabolic");
+        m_appInfo.setIssueTracker("https://github.com/NickvisionApps/Parabolic/issues/new");
+        m_appInfo.setSupportUrl("https://github.com/NickvisionApps/Parabolic/discussions");
+        m_appInfo.getExtraLinks()[_("Matrix Chat")] = "https://matrix.to/#/#nickvision:matrix.org";
+        m_appInfo.getDevelopers()["Nicholas Logozzo"] = "https://github.com/nlogozzo";
+        m_appInfo.getDevelopers()[_("Contributors on GitHub")] = "https://github.com/NickvisionApps/Parabolic/graphs/contributors";
+        m_appInfo.getDesigners()["Nicholas Logozzo"] = "https://github.com/nlogozzo";
+        m_appInfo.getDesigners()[_("Fyodor Sobolev")] = "https://github.com/fsobolev";
+        m_appInfo.getDesigners()["DaPigGuy"] = "https://github.com/DaPigGuy";
+        m_appInfo.getArtists()[_("David Lapshin")] = "https://github.com/daudix";
+        m_appInfo.setTranslatorCredits(_("translator-credits"));
+        Localization::Gettext::init(m_appInfo.getEnglishShortName());
+#ifdef _WIN32
+        m_updater = std::make_shared<Updater>(m_appInfo.getSourceRepo());
+#endif
+        m_dataFileManager.get<Configuration>("config").saved() += [this](const EventArgs&)
+        {
+            m_logger.log(Logging::LogLevel::Debug, "Configuration saved.");
+        };
+        m_networkMonitor.stateChanged() += [&](const NetworkStateChangedEventArgs& args){ onNetworkChanged(args); };
+    }
+
+    const AppInfo& MainWindowController::getAppInfo() const
+    {
+        return m_appInfo;
+    }
+
+    Theme MainWindowController::getTheme()
+    {
+        return m_dataFileManager.get<Configuration>("config").getTheme();
+    }
+
+    void MainWindowController::setShowDisclaimerOnStartup(bool showDisclaimerOnStartup)
+    {
+        Configuration& config{ m_dataFileManager.get<Configuration>("config") };
+        config.setShowDisclaimerOnStartup(showDisclaimerOnStartup);
+        config.save();
+    }
+
+    Event<EventArgs>& MainWindowController::configurationSaved()
+    {
+        return m_dataFileManager.get<Configuration>("config").saved();
+    }
+
+    Event<NotificationSentEventArgs>& MainWindowController::notificationSent()
+    {
+        return m_notificationSent;
+    }
+
+    Event<ShellNotificationSentEventArgs>& MainWindowController::shellNotificationSent()
+    {
+        return m_shellNotificationSent;
+    }
+
+    Event<ParamEventArgs<std::string>>& MainWindowController::disclaimerTriggered()
+    {
+        return m_disclaimerTriggered;
+    }
+
+    Event<ParamEventArgs<std::vector<HistoricDownload>>>& MainWindowController::historyChanged()
+    {
+        return m_historyChanged;
+    }
+
+    std::string MainWindowController::getDebugInformation(const std::string& extraInformation) const
+    {
+        return Environment::getDebugInformation(m_appInfo, extraInformation);
+    }
+
+    bool MainWindowController::canShutdown() const
+    {
+        return true;
+    }
+
+    std::shared_ptr<PreferencesViewController> MainWindowController::createPreferencesViewController()
+    {
+        return std::make_shared<PreferencesViewController>(m_dataFileManager.get<Configuration>("config"));
+    }
+
+#ifdef _WIN32
+    Nickvision::App::WindowGeometry MainWindowController::startup(HWND hwnd)
+#elif defined(__linux__)
+    Nickvision::App::WindowGeometry MainWindowController::startup(const std::string& desktopFile)
+#else
+    Nickvision::App::WindowGeometry MainWindowController::startup()
+#endif
+    {
+        if (m_started)
+        {
+            return m_dataFileManager.get<Configuration>("config").getWindowGeometry();
+        }
+#ifdef _WIN32
+        if(m_taskbar.connect(hwnd))
+        {
+            m_logger.log(Logging::LogLevel::Debug, "Connected to Windows taskbar.");
+        }
+        else
+        {
+            m_logger.log(Logging::LogLevel::Error, "Unable to connect to Windows taskbar.");
+        }
+        if (m_dataFileManager.get<Configuration>("config").getAutomaticallyCheckForUpdates())
+        {
+            checkForUpdates();
+        }
+#elif defined(__linux__)
+        if(m_taskbar.connect(desktopFile))
+        {
+            m_logger.log(Logging::LogLevel::Debug, "Connected to Linux taskbar.");
+        }
+        else
+        {
+            m_logger.log(Logging::LogLevel::Error, "Unable to connect to Linux taskbar.");
+        }
+#endif
+        //Load history
+        m_logger.log(Logging::LogLevel::Debug, "Loading historic downloads...");
+        DownloadHistory& history{ m_dataFileManager.get<DownloadHistory>("history") };
+        m_logger.log(Logging::LogLevel::Info, "Loaded " + std::to_string(history.getHistory().size()) + " historic downloads.");
+        m_historyChanged.invoke(history.getHistory());
+        //Check network
+        onNetworkChanged({ m_networkMonitor.getConnectionState() });
+        //Load python
+        try
+        {
+            m_logger.log(Logging::LogLevel::Info, "Loading python interpreter...");
+            py::initialize_interpreter();
+            m_logger.log(Logging::LogLevel::Info, "Python interpreter loaded.");
+            m_logger.log(Logging::LogLevel::Info, "Loading yt-dlp python module...");
+            py::module_ ytdlp{ py::module_::import("yt_dlp") };
+            m_logger.log(Logging::LogLevel::Info, "yt-dlp python module loaded.");
+        }
+        catch(const std::exception& e)
+        {
+            m_logger.log(Logging::LogLevel::Error, "Unable to load python: " + std::string(e.what()));
+            m_notificationSent.invoke({ _("Unable to load python"), NotificationSeverity::Error, "nopython" });
+        }
+        //Check if disclaimer should be shown
+        if(m_dataFileManager.get<Configuration>("config").getShowDisclaimerOnStartup())
+        {
+            m_disclaimerTriggered.invoke({ _("The authors of Nickvision Parabolic are not responsible/liable for any misuse of this program that may violate local copyright/DMCA laws. Users use this application at their own risk.") });
+        }
+        m_started = true;
+        m_logger.log(Logging::LogLevel::Debug, "MainWindow started.");
+        return m_dataFileManager.get<Configuration>("config").getWindowGeometry();
+    }
+
+    void MainWindowController::shutdown(const WindowGeometry& geometry)
+    {
+        //Save config
+        Configuration& config{ m_dataFileManager.get<Configuration>("config") };
+        config.setWindowGeometry(geometry);
+        config.save();
+        //Shutdown python
+        py::finalize_interpreter();
+        m_logger.log(Logging::LogLevel::Debug, "MainWindow shutdown.");
+    }
+
+    void MainWindowController::checkForUpdates()
+    {
+        if(!m_updater)
+        {
+            return;
+        }
+        m_logger.log(Logging::LogLevel::Debug, "Checking for updates...");
+        std::thread worker{ [this]()
+        {
+            Version latest{ m_updater->fetchCurrentVersion(VersionType::Stable) };
+            if (!latest.empty())
+            {
+                if (latest > m_appInfo.getVersion())
+                {
+                    m_logger.log(Logging::LogLevel::Info, "Update found: " + latest.str());
+                    m_notificationSent.invoke({ _("New update available"), NotificationSeverity::Success, "update" });
+                }
+                else
+                {
+                    m_logger.log(Logging::LogLevel::Debug, "No updates found.");
+                }
+            }
+            else
+            {
+                m_logger.log(Logging::LogLevel::Warning, "Unable to fetch latest app version.");
+            }
+        } };
+        worker.detach();
+    }
+
+#ifdef _WIN32
+    void MainWindowController::windowsUpdate()
+    {
+        if(m_updater)
+        {
+            return;
+        }
+        m_logger.log(Logging::LogLevel::Debug, "Fetching Windows app update...");
+        std::thread worker{ [this]()
+        {
+            if (m_updater->windowsUpdate(VersionType::Stable))
+            {
+                m_logger.log(Logging::LogLevel::Info, "Windows app update started.");
+            }
+            else
+            {
+                m_logger.log(Logging::LogLevel::Error, "Unable to fetch Windows app update.");
+                m_notificationSent.invoke({ _("Unable to download and install update"), NotificationSeverity::Error, "error" });
+            }
+        } };
+        worker.detach();
+    }
+#endif
+
+    void MainWindowController::log(Logging::LogLevel level, const std::string& message, const std::source_location& source)
+    {
+        m_logger.log(level, message, source);
+    }
+
+    void MainWindowController::clearHistory()
+    {
+        DownloadHistory& history{ m_dataFileManager.get<DownloadHistory>("history") };
+        if(history.clear())
+        {
+            m_historyChanged.invoke(history.getHistory());
+        }
+    }
+
+    void MainWindowController::removeHistoricDownload(const HistoricDownload& download)
+    {
+        DownloadHistory& history{ m_dataFileManager.get<DownloadHistory>("history") };
+        if(history.removeDownload(download))
+        {
+            m_historyChanged.invoke(history.getHistory());
+        }
+    }
+
+    void MainWindowController::onNetworkChanged(const NetworkStateChangedEventArgs& args)
+    {
+        if(args.getState() == NetworkState::ConnectedGlobal)
+        {
+            m_logger.log(Logging::LogLevel::Info, "Network connected.");
+            if(m_started)
+            {
+                m_notificationSent.invoke({ _("Network connection restored"), NotificationSeverity::Informational, "network" });
+            }
+        }
+        else
+        {
+            m_logger.log(Logging::LogLevel::Info, "Network disconnected.");
+            m_notificationSent.invoke({ _("No network connection"), NotificationSeverity::Error, "nonetwork" });
+        }
+    }
+}

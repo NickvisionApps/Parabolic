@@ -1,0 +1,50 @@
+using Gtk 4.0;
+using Adw 1;
+
+Gtk.ShortcutsWindow root {
+  default-width: 600;
+  default-height: 500;
+  modal: true;
+  resizable: true;
+  destroy-with-parent: false;
+
+  Gtk.ShortcutsSection {
+    Gtk.ShortcutsGroup {
+      title: C_("Shortcut", "Folder");
+
+      Gtk.ShortcutsShortcut {
+        title: _("Open Folder");
+        accelerator: "<Control>O";
+      }
+
+      Gtk.ShortcutsShortcut {
+        title: _("Close Folder");
+        accelerator: "<Control>W";
+      }
+    }
+
+    Gtk.ShortcutsGroup {
+      title: C_("Shortcut", "Application");
+
+      Gtk.ShortcutsShortcut {
+        title: _("Preferences");
+        accelerator: "<Control>comma";
+      }
+
+      Gtk.ShortcutsShortcut {
+        title: _("Keyboard Shortcuts");
+        accelerator: "<Control>question";
+      }
+
+      Gtk.ShortcutsShortcut _aboutShortcut {
+        title: _("About Application");
+        accelerator: "F1";
+      }
+
+      Gtk.ShortcutsShortcut {
+        title: _("Quit");
+        accelerator: "<Control>Q";
+      }
+    }
+  }
+}
