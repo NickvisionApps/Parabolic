@@ -2,6 +2,7 @@
 #include <algorithm>
 #include <ctime>
 #include <format>
+#include <sstream>
 #include <thread>
 #include <libnick/filesystem/userdirectories.h>
 #include <libnick/helpers/codehelpers.h>
@@ -105,7 +106,16 @@ namespace Nickvision::TubeConverter::Shared::Controllers
 
     std::string MainWindowController::getDebugInformation(const std::string& extraInformation) const
     {
-        return Environment::getDebugInformation(m_appInfo, extraInformation);
+        std::stringstream builder;
+        //Get yt-dlp version
+        py::module_ ytdlp{ py::module_::import("yt_dlp") };
+        builder << "yt-dlp: " << ytdlp.attr("version").attr("__version__").cast<std::string>();
+        //Update extra information
+        if(!extraInformation.empty())
+        {
+            builder << std::endl << extraInformation << std::endl;
+        }
+        return Environment::getDebugInformation(m_appInfo, builder.str());
     }
 
     bool MainWindowController::canShutdown() const

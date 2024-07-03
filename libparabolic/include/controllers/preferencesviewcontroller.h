@@ -19,7 +19,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
     public:
         /**
          * @brief Constructs a PreferencesViewController.
-         * @param configuration The application configuration
+         * @param configuration The reference to the configuration to use
          */
         PreferencesViewController(Models::Configuration& configuration);
         /**
