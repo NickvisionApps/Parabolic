@@ -5,7 +5,7 @@ on:
     branches: [ "main" ]
     types: [ "review_requested", "ready_for_review" ]
   workflow_dispatch:
-name: Windows
+name: Test
 permissions:
   id-token: write
   contents: read
@@ -13,12 +13,12 @@ env:
   GITHUB_ACTIONS: true
   VCPKG_ROOT: ${{github.workspace}}/vcpkg
 jobs:
-  build:
-    name: "Build on x64"
+  windows:
+    name: "Test on Windows"
     runs-on: windows-latest
     if: ${{ github.event.pull_request.user.login != 'weblate' }}
     steps:
-      - name: "Checkout"  
+      - name: "Checkout"
         uses: actions/checkout@v4
         with:
           submodules: recursive
@@ -36,19 +36,7 @@ jobs:
       - name: "Build"
         working-directory: ${{github.workspace}}/build
         run: |
-          cmake -G "Visual Studio 17 2022" .. -DBUILD_TESTING=OFF
+          cmake -G "Visual Studio 17 2022" .. -DBUILD_TESTING=ON -DBACKEND_ONLY=ON
           cmake --build . --config Release
-      - name: "Create Installer"
-        working-directory: ${{github.workspace}}
-        run: |
-          choco install wget
-          choco install innosetup
-          wget https://aka.ms/vs/17/release/vc_redist.x64.exe -O vc_redist.x64.exe
-          wget https://aka.ms/windowsappsdk/1.5/1.5.240607001/windowsappruntimeinstall-x64.exe -O windowsappruntimeinstall-x64.exe
-          wget https://www.python.org/ftp/python/3.11.9/python-3.11.9-amd64.exe -O python-3.11.9-amd64.exe
-          iscc inno/setup.iss
-      - name: Upload
-        uses: actions/upload-artifact@v4
-        with:
-          path: ${{github.workspace}}/inno/NickvisionParabolicSetup.exe
-          name: Windows-x64-Release
+      - name: Test
+        run: ${{github.workspace}}/build/libparabolic/Release/libparabolic_test.exe

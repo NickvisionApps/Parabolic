@@ -182,6 +182,7 @@ parts:
     cmake-parameters:
       - -DCMAKE_INSTALL_PREFIX=/snap/tube-converter/current/usr
       - -DCMAKE_BUILD_TYPE=Release
+      - -DBUILD_TESTING=OFF
     build-packages:
       - libvulkan-dev
       - libxkbcommon-dev

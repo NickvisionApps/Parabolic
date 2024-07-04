@@ -14,7 +14,7 @@ using namespace ::Nickvision;
 using namespace ::Nickvision::Events;
 using namespace ::Nickvision::Helpers;
 using namespace ::Nickvision::Notifications;
-using namespace Nickvision::Update;
+using namespace ::Nickvision::Update;
 using namespace ::Nickvision::TubeConverter::Shared::Controllers;
 using namespace ::Nickvision::TubeConverter::Shared::Models;
 using namespace winrt::Microsoft::UI;

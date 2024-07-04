@@ -3,7 +3,7 @@
 
 #define MyAppName "Nickvision Parabolic"
 #define MyAppShortName "Parabolic"
-#define MyAppVersion "2024.6.0"
+#define MyAppVersion "2024.7.0"
 #define MyAppPublisher "Nickvision"
 #define MyAppURL "https://nickvision.org"
 #define MyAppExeName "org.nickvision.tubeconverter.winui.exe"

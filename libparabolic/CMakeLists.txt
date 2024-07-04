@@ -2,6 +2,7 @@
 	set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)
 endif()
 
+include(CTest)
 add_library(libparabolic
     "src/controllers/mainwindowcontroller.cpp"
     "src/controllers/preferencesviewcontroller.cpp"
@@ -63,4 +64,18 @@ if(HAS_GETTEXT AND ITSTOOL_EXECUTABLE AND YELP_BUILD_EXECUTABLE)
     add_custom_command(TARGET shared_commands PRE_BUILD COMMAND "${CMAKE_COMMAND}" -E make_directory "${CMAKE_SOURCE_DIR}/docs/html/C/figures")
     add_custom_command(TARGET shared_commands PRE_BUILD COMMAND "${CMAKE_COMMAND}" -E copy_directory "${CMAKE_SOURCE_DIR}/docs/yelp/C/figures" "${CMAKE_SOURCE_DIR}/docs/html/C/figures")
     add_custom_command(TARGET shared_commands PRE_BUILD COMMAND "${YELP_BUILD_EXECUTABLE}" html -o "${CMAKE_SOURCE_DIR}/docs/html/C/" "${CMAKE_SOURCE_DIR}/docs/yelp/C/")
+endif()
+
+if (BUILD_TESTING)
+    add_executable(libparabolic_test
+        "tests/main.cpp"
+        "tests/urlinfotests.cpp")
+    find_package(GTest CONFIG REQUIRED)
+    target_link_libraries(libparabolic_test PRIVATE GTest::gtest GTest::gtest_main GTest::gmock GTest::gmock_main libparabolic)
+    if(USING_VCPKG)
+        add_custom_command(TARGET libparabolic_test POST_BUILD 
+            COMMAND ${Python_EXECUTABLE} -m venv "$<TARGET_FILE_DIR:libparabolic_test>/.."
+            COMMAND $<TARGET_FILE_DIR:libparabolic_test>/../Scripts/activate.bat
+            COMMAND python -m pip install --force-reinstall "yt-dlp==2024.07.02" > pip_install.log)
+    endif()
 endif()

@@ -34,9 +34,9 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         m_args{ args },
         m_appInfo{ "org.nickvision.tubeconverter", "Nickvision Parabolic", "Parabolic" },
         m_dataFileManager{ m_appInfo.getName() },
-        m_logger{ UserDirectories::get(UserDirectory::ApplicationLocalData, m_appInfo.getName()) / "log.txt", std::find(m_args.begin(), m_args.end(), "--debug") != m_args.end() ? Logging::LogLevel::Debug : Logging::LogLevel::Info, false }
+        m_logger{ UserDirectories::get(ApplicationUserDirectory::LocalData, m_appInfo.getName()) / "log.txt", std::find(m_args.begin(), m_args.end(), "--debug") != m_args.end() ? Logging::LogLevel::Debug : Logging::LogLevel::Info, false }
     {
-        m_appInfo.setVersion({ "2024.6.0-next" });
+        m_appInfo.setVersion({ "2024.7.0-next" });
         m_appInfo.setShortName(_("Parabolic"));
         m_appInfo.setDescription(_("Download web video and audio"));
         m_appInfo.setChangelog("- Initial Release");
@@ -203,6 +203,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         config.save();
         //Shutdown python
         py::finalize_interpreter();
+        m_logger.log(Logging::LogLevel::Info, "Python interpreter shutdown.");
         m_logger.log(Logging::LogLevel::Debug, "MainWindow shutdown.");
     }
 

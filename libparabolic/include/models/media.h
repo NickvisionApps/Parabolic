@@ -3,9 +3,10 @@
 
 #include <chrono>
 #include <optional>
+#include <ostream>
 #include <string>
 #include <vector>
-#include "mediatype.h"
+#include <pybind11/embed.h>
 #include "videoresolution.h"
 
 namespace Nickvision::TubeConverter::Shared::Models
@@ -19,21 +20,21 @@ namespace Nickvision::TubeConverter::Shared::Models
         /**
          * @brief Constructs a Media.
          * @param url The URL of the media
-         * @param type The type of the media
          * @param title The title of the media
          * @param duration The duration of the media
          */
-        Media(const std::string& url, MediaType type, const std::string& title, const std::chrono::seconds& duration);
+        Media(const std::string& url, const std::string& title, const std::chrono::seconds& duration);
+        /**
+         * @brief Constructs a Media from a Python dictionary.
+         * @param info The Python dictionary to construct the Media from
+         * @throw std::invalid_argument If the info is None
+         */
+        Media(const pybind11::dict& info);
         /**
          * @brief Gets the URL of the media.
          * @return The URL of the media
          */
         const std::string& getUrl() const;
-        /**
-         * @brief Gets the type of the media.
-         * @return The type of the media
-         */
-        MediaType getType() const;
         /**
          * @brief Gets the title of the media.
          * @return The title of the media
@@ -74,15 +75,32 @@ namespace Nickvision::TubeConverter::Shared::Models
          * @param position The playlist position to set
          */
         void setPlaylistPosition(const std::optional<unsigned int>& position);
+        /**
+         * @brief Gets whether the media has subtitles.
+         * @return True if has subtitles, else false
+         */
+        bool hasSubtitles() const;
+        /**
+         * @brief Sets whether the media has subtitles.
+         * @param hasSubtitles True if has subtitles, else false
+         */
+        void setHasSubtitles(bool hasSubtitles);
+        /**
+         * @brief Outputs the Media to an output stream.
+         * @param os The output stream
+         * @param media The Media
+         * @return The output stream
+         */
+        friend std::ostream& operator<<(std::ostream& os, const Media& media);
 
     private:
         std::string m_url;
-        MediaType m_type;
         std::string m_title;
         std::chrono::seconds m_duration;
         std::vector<std::string> m_audioLanguages;
         std::vector<VideoResolution> m_videoResolutions;
         std::optional<unsigned int> m_playlistPosition;
+        bool m_hasSubtitles;
     };
 }
 

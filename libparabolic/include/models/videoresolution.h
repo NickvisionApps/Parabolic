@@ -2,6 +2,7 @@
 #define VIDEORESOLUTION_H
 
 #include <optional>
+#include <ostream>
 #include <string>
 
 namespace Nickvision::TubeConverter::Shared::Models
@@ -73,6 +74,13 @@ namespace Nickvision::TubeConverter::Shared::Models
          * @return True if valid, else false
          */
         operator bool() const;
+        /**
+         * @brief Outputs the VideoResolution to an output stream.
+         * @param os The output stream
+         * @param resolution The VideoResolution
+         * @return The output stream
+         */
+        friend std::ostream& operator<<(std::ostream& os, const VideoResolution& resolution);
 
     private:
         int m_width;
