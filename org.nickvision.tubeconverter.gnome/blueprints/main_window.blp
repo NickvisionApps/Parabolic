@@ -4,48 +4,232 @@ using Adw 1;
 menu mainMenu {
   item(_("Preferences"), "win.preferences")
   item(_("Keyboard Shortcuts"), "win.keyboardShortcuts")
+  item(_("Help"), "win.help")
   item(_("About Parabolic"), "win.about")
 }
 
 Adw.ApplicationWindow root {
   width-request: 360;
   height-request: 200;
+  default-width: 900;
+  default-height: 700;
 
-  Adw.ToolbarView toolbarView {
-    [top]
-    Adw.HeaderBar headerBar {
-      title-widget: Adw.WindowTitle title {};
-      
-      [end]
-      Gtk.MenuButton {
-        direction: none;
-        menu-model: mainMenu;
-        tooltip-text: _("Main Menu");
-        primary: true;
-      }
+  Adw.Breakpoint breakpoint {
+    condition ("max-width: 400sp")
+    
+    setters {
+      navView.collapsed: true;
     }
-
-    content: Adw.ToastOverlay toastOverlay {
-      hexpand: true;
-      vexpand: true;
-      
-      Adw.ViewStack viewStack {
-        Adw.ViewStackPage {
-          name: "NoFolder";
-          child: Adw.StatusPage pageGreeting {
-            icon-name: "org.nickvision.tubeconverter";
-            title: _("Download Media");
-            description: _("Add a video, audio, or playlist URL to start downloading");
-            child: Gtk.Button {
-              label: _("Add Download");
-              halign: center;
-              styles ["pill", "suggested-action"]
-            };
-            
-            styles ["icon-dropshadow"]
-          };
-        }
-      }
-    };
   }
+
+  content: Adw.NavigationSplitView navView {
+    show-content: true;
+
+    sidebar: Adw.NavigationPage navPageSidebar {
+      tag: "sidebar";
+
+      child: Adw.ToolbarView {
+        [top]
+        Adw.HeaderBar {
+          title-widget: Adw.WindowTitle title {};
+      
+          [end]
+          Gtk.MenuButton {
+            direction: none;
+            menu-model: mainMenu;
+            tooltip-text: _("Main Menu");
+            primary: true;
+          }
+        }
+
+        content: Gtk.ScrolledWindow {
+          hscrollbar-policy: never;
+          vscrollbar-policy: automatic;
+
+          Gtk.ListBox listNavItems {
+            Gtk.Box {
+              margin-start: 6;
+              margin-top: 6;
+              margin-end: 6;
+              margin-bottom: 6;
+              orientation: horizontal;
+              spacing: 12;
+
+              Gtk.Image {
+                icon-name: "user-home-symbolic";
+              }
+
+              Gtk.Label {
+                label: _("Home");
+              }
+            }
+
+            Gtk.Box {
+              margin-start: 6;
+              margin-top: 6;
+              margin-end: 6;
+              margin-bottom: 6;
+              orientation: horizontal;
+              spacing: 12;
+
+              Gtk.Image {
+                icon-name: "user-home-symbolic";
+              }
+
+              Gtk.Label {
+                label: _("Keyring");
+              }
+            }
+
+            Gtk.Box {
+              margin-start: 6;
+              margin-top: 6;
+              margin-end: 6;
+              margin-bottom: 6;
+              orientation: horizontal;
+              spacing: 12;
+
+              Gtk.Image {
+                icon-name: "user-home-symbolic";
+              }
+
+              Gtk.Label {
+                label: _("History");
+              }
+            }
+
+            Gtk.ListBoxRow {
+              selectable: false;
+              activatable: false;
+
+              Gtk.Label {
+                halign: start;
+                label: _("Downloads");
+
+                styles ["heading"]
+              }
+            }
+
+            Gtk.Box {
+              margin-start: 6;
+              margin-top: 6;
+              margin-end: 6;
+              margin-bottom: 6;
+              orientation: horizontal;
+              spacing: 12;
+
+              Gtk.Image {
+                icon-name: "user-home-symbolic";
+              }
+
+              Gtk.Label {
+                label: _("Downloading");
+              }
+            }
+
+            Gtk.Box {
+              margin-start: 6;
+              margin-top: 6;
+              margin-end: 6;
+              margin-bottom: 6;
+              orientation: horizontal;
+              spacing: 12;
+
+              Gtk.Image {
+                icon-name: "user-home-symbolic";
+              }
+
+              Gtk.Label {
+                label: _("Queued");
+              }
+            }
+
+            Gtk.Box {
+              margin-start: 6;
+              margin-top: 6;
+              margin-end: 6;
+              margin-bottom: 6;
+              orientation: horizontal;
+              spacing: 12;
+
+              Gtk.Image {
+                icon-name: "user-home-symbolic";
+              }
+
+              Gtk.Label {
+                label: _("Completed");
+              }
+            }
+
+            styles ["navigation-sidebar"]
+          }
+        };
+      };
+    };
+
+    content: Adw.NavigationPage navPageContent {
+      tag: "content";
+
+      child: Adw.ToolbarView {
+        [top]
+        Adw.HeaderBar {}
+
+        content: Adw.ToastOverlay toastOverlay {
+          child: Gtk.ScrolledWindow {
+            hscrollbar-policy: automatic;
+            vscrollbar-policy: automatic;
+
+            child: Adw.ViewStack viewStack {
+              hexpand: true;
+              vexpand: true;
+
+              Adw.ViewStackPage {
+                name: "home";
+                child: Adw.StatusPage pageGreeting {
+                  icon-name: "org.nickvision.tubeconverter";
+                  title: _("Download Media");
+                  description: _("Add a video, audio, or playlist URL to start downloading");
+                  child: Gtk.Button {
+                    label: _("Add Download");
+                    halign: center;
+                    styles ["pill", "suggested-action"]
+                  };
+                  
+                  styles ["icon-dropshadow"]
+                };
+              }
+
+              Adw.ViewStackPage {
+                name: "history";
+                child: Gtk.Box {
+
+                };
+              }
+
+              Adw.ViewStackPage {
+                name: "downloading";
+                child: Gtk.Box {
+
+                };
+              }
+
+              Adw.ViewStackPage {
+                name: "queued";
+                child: Gtk.Box {
+
+                };
+              }
+
+              Adw.ViewStackPage {
+                name: "completed";
+                child: Gtk.Box {
+
+                };
+              }
+            };
+          };
+        };
+      };
+    };
+  };
 }

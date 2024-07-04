@@ -90,6 +90,12 @@ namespace Nickvision::TubeConverter::Shared::Controllers
          */
         bool canShutdown() const;
         /**
+         * @brief Gets the help url for a specific page.
+         * @param pageName The name of the page to get the help url for
+         * @return The help url for the page
+         */
+        std::string getHelpUrl(const std::string& pageName);
+        /**
          * @brief Gets a PreferencesViewController.
          * @return The PreferencesViewController
          */

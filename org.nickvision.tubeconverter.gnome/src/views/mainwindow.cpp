@@ -19,6 +19,16 @@ using namespace Nickvision::Update;
 
 namespace Nickvision::TubeConverter::GNOME::Views
 {
+    enum Pages
+    {
+        Home = 0,
+        Keyring = 1,
+        History = 2,
+        Downloading = 4,
+        Queued = 5,
+        Completed = 6
+    };
+
     MainWindow::MainWindow(const std::shared_ptr<MainWindowController>& controller, GtkApplication* app)
         : m_controller{ controller },
         m_app{ app },
@@ -36,6 +46,8 @@ namespace Nickvision::TubeConverter::GNOME::Views
         adw_window_title_set_title(ADW_WINDOW_TITLE(gtk_builder_get_object(m_builder, "title")), m_controller->getAppInfo().getShortName().c_str());
         //Register Events
         g_signal_connect(m_window, "close_request", G_CALLBACK(+[](GtkWindow*, gpointer data) -> bool { return reinterpret_cast<MainWindow*>(data)->onCloseRequested(); }), this);
+        g_signal_connect(gtk_builder_get_object(m_builder, "listNavItems"), "row-activated", G_CALLBACK(+[](GtkListBox*, GtkListBoxRow*, gpointer data) { adw_navigation_split_view_set_show_content(ADW_NAVIGATION_SPLIT_VIEW(gtk_builder_get_object(reinterpret_cast<MainWindow*>(data)->m_builder, "navView")), true); }), this);
+        g_signal_connect(gtk_builder_get_object(m_builder, "listNavItems"), "row-selected", G_CALLBACK(+[](GtkListBox* self, GtkListBoxRow* row, gpointer data) { reinterpret_cast<MainWindow*>(data)->onNavItemSelected(self, row); }), this);
         m_controller->notificationSent() += [&](const NotificationSentEventArgs& args) { onNotificationSent(args); };
         m_controller->shellNotificationSent() += [&](const ShellNotificationSentEventArgs& args) { onShellNotificationSent(args); };
         m_controller->disclaimerTriggered() += [&](const ParamEventArgs<std::string>& args) { onDisclaimerTriggered(args); };
@@ -54,11 +66,15 @@ namespace Nickvision::TubeConverter::GNOME::Views
         g_signal_connect(actKeyboardShortcuts, "activate", G_CALLBACK(+[](GSimpleAction*, GVariant*, gpointer data){ reinterpret_cast<MainWindow*>(data)->keyboardShortcuts(); }), this);
         g_action_map_add_action(G_ACTION_MAP(m_window), G_ACTION(actKeyboardShortcuts));
         SET_ACCEL_FOR_ACTION(m_app, "win.keyboardShortcuts", "<Ctrl>question");
+        //Help Action
+        GSimpleAction* actHelp{ g_simple_action_new("help", nullptr) };
+        g_signal_connect(actHelp, "activate", G_CALLBACK(+[](GSimpleAction*, GVariant*, gpointer data){ reinterpret_cast<MainWindow*>(data)->help(); }), this);
+        g_action_map_add_action(G_ACTION_MAP(m_window), G_ACTION(actHelp));
+        SET_ACCEL_FOR_ACTION(m_app, "win.help", "F1");
         //About Action
         GSimpleAction* actAbout{ g_simple_action_new("about", nullptr) };
         g_signal_connect(actAbout, "activate", G_CALLBACK(+[](GSimpleAction*, GVariant*, gpointer data){ reinterpret_cast<MainWindow*>(data)->about(); }), this);
         g_action_map_add_action(G_ACTION_MAP(m_window), G_ACTION(actAbout));
-        SET_ACCEL_FOR_ACTION(m_app, "win.about", "F1");
     }
 
     MainWindow::~MainWindow()
@@ -80,6 +96,7 @@ namespace Nickvision::TubeConverter::GNOME::Views
         {
             gtk_window_maximize(GTK_WINDOW(m_window));
         }
+        gtk_list_box_select_row(GTK_LIST_BOX(gtk_builder_get_object(m_builder, "listNavItems")), gtk_list_box_get_row_at_index(GTK_LIST_BOX(gtk_builder_get_object(m_builder, "listNavItems")), 0));
         gtk_window_present(GTK_WINDOW(m_window));
     }
 
@@ -106,6 +123,36 @@ namespace Nickvision::TubeConverter::GNOME::Views
     {
         m_controller->log(Logging::LogLevel::Debug, "ShellNotification sent. (" + args.getMessage() + ")");
         ShellNotification::send(args, m_controller->getAppInfo().getId(), _("Open"));
+    }
+
+    void MainWindow::onNavItemSelected(GtkListBox* box, GtkListBoxRow* row)
+    {
+        adw_navigation_split_view_set_show_content(ADW_NAVIGATION_SPLIT_VIEW(gtk_builder_get_object(m_builder, "navView")), true);
+        if(row == gtk_list_box_get_row_at_index(box, Pages::Home))
+        {
+            adw_navigation_page_set_title(ADW_NAVIGATION_PAGE(gtk_builder_get_object(m_builder, "navPageContent")), _("Home"));
+            adw_view_stack_set_visible_child_name(ADW_VIEW_STACK(gtk_builder_get_object(m_builder, "viewStack")), "home");
+        }
+        else if(row == gtk_list_box_get_row_at_index(box, Pages::History))
+        {
+            adw_navigation_page_set_title(ADW_NAVIGATION_PAGE(gtk_builder_get_object(m_builder, "navPageContent")), _("History"));
+            adw_view_stack_set_visible_child_name(ADW_VIEW_STACK(gtk_builder_get_object(m_builder, "viewStack")), "history");
+        }
+        else if(row == gtk_list_box_get_row_at_index(box, Pages::Downloading))
+        {
+            adw_navigation_page_set_title(ADW_NAVIGATION_PAGE(gtk_builder_get_object(m_builder, "navPageContent")), _("Downloading"));
+            adw_view_stack_set_visible_child_name(ADW_VIEW_STACK(gtk_builder_get_object(m_builder, "viewStack")), "downloading");
+        }
+        else if(row == gtk_list_box_get_row_at_index(box, Pages::Queued))
+        {
+            adw_navigation_page_set_title(ADW_NAVIGATION_PAGE(gtk_builder_get_object(m_builder, "navPageContent")), _("Queued"));
+            adw_view_stack_set_visible_child_name(ADW_VIEW_STACK(gtk_builder_get_object(m_builder, "viewStack")), "queued");
+        }
+        else if(row == gtk_list_box_get_row_at_index(box, Pages::Completed))
+        {
+            adw_navigation_page_set_title(ADW_NAVIGATION_PAGE(gtk_builder_get_object(m_builder, "navPageContent")), _("Completed"));
+            adw_view_stack_set_visible_child_name(ADW_VIEW_STACK(gtk_builder_get_object(m_builder, "viewStack")), "completed");
+        }
     }
 
     void MainWindow::onDisclaimerTriggered(const ParamEventArgs<std::string>& args)
@@ -145,6 +192,17 @@ namespace Nickvision::TubeConverter::GNOME::Views
         gtk_window_set_icon_name(GTK_WINDOW(shortcuts), m_controller->getAppInfo().getId().c_str());
         g_signal_connect(shortcuts, "close-request", G_CALLBACK(+[](GtkWindow*, gpointer data){ g_object_unref(reinterpret_cast<GtkBuilder*>(data)); }), builderHelp);
         gtk_window_present(GTK_WINDOW(shortcuts));
+    }
+
+    void MainWindow::help()
+    {
+        std::string helpUrl{ m_controller->getHelpUrl("index") };
+        GtkUriLauncher* launcher{ gtk_uri_launcher_new(helpUrl.c_str()) };
+        gtk_uri_launcher_launch(launcher, GTK_WINDOW(m_window), nullptr, GAsyncReadyCallback(+[](GObject* source, GAsyncResult* res, gpointer)
+        { 
+            gtk_uri_launcher_launch_finish(GTK_URI_LAUNCHER(source), res, nullptr); 
+            g_object_unref(source);
+        }), nullptr);
     }
 
     void MainWindow::about()

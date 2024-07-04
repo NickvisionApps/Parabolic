@@ -7,6 +7,7 @@
 #include <libnick/filesystem/userdirectories.h>
 #include <libnick/helpers/codehelpers.h>
 #include <libnick/helpers/stringhelpers.h>
+#include <libnick/localization/documentation.h>
 #include <libnick/localization/gettext.h>
 #include <libnick/system/environment.h>
 #include <pybind11/embed.h>
@@ -21,6 +22,7 @@ using namespace Nickvision::Events;
 using namespace Nickvision::Filesystem;
 using namespace Nickvision::Helpers;
 using namespace Nickvision::Network;
+using namespace Nickvision::Localization;
 using namespace Nickvision::Notifications;
 using namespace Nickvision::System;
 using namespace Nickvision::TubeConverter::Shared::Models;
@@ -39,7 +41,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         m_appInfo.setVersion({ "2024.7.0-next" });
         m_appInfo.setShortName(_("Parabolic"));
         m_appInfo.setDescription(_("Download web video and audio"));
-        m_appInfo.setChangelog("- Initial Release");
+        m_appInfo.setChangelog("- Parabolic has been rewritten in C++ for faster performance\n- Redesigned user interface\n- Updated yt-dlp");
         m_appInfo.setSourceRepo("https://github.com/NickvisionApps/Parabolic");
         m_appInfo.setIssueTracker("https://github.com/NickvisionApps/Parabolic/issues/new");
         m_appInfo.setSupportUrl("https://github.com/NickvisionApps/Parabolic/discussions");
@@ -109,7 +111,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         std::stringstream builder;
         //Get yt-dlp version
         py::module_ ytdlp{ py::module_::import("yt_dlp") };
-        builder << "yt-dlp: " << ytdlp.attr("version").attr("__version__").cast<std::string>();
+        builder << "yt-dlp: " << ytdlp.attr("version").attr("__version__").cast<std::string>() << std::endl;
         //Update extra information
         if(!extraInformation.empty())
         {
@@ -121,6 +123,11 @@ namespace Nickvision::TubeConverter::Shared::Controllers
     bool MainWindowController::canShutdown() const
     {
         return true;
+    }
+
+    std::string MainWindowController::getHelpUrl(const std::string& pageName)
+    {
+        return Documentation::getHelpUrl(m_appInfo.getEnglishShortName(), m_appInfo.getHtmlDocsStore(), pageName);
     }
 
     std::shared_ptr<PreferencesViewController> MainWindowController::createPreferencesViewController()

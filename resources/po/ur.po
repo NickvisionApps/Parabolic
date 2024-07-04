@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-07-03 08:58-0400\n"
+"POT-Creation-Date: 2024-07-04 11:25-0400\n"
 "PO-Revision-Date: 2023-10-09 05:02+0000\n"
 "Last-Translator: Abdur Rehman Imran <arehmanimran4@gmail.com>\n"
 "Language-Team: Urdu <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -19,40 +19,40 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Weblate 5.1-dev\n"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:40
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:42
 msgid "Parabolic"
 msgstr "پیرابولک"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:41
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:43
 msgid "Download web video and audio"
 msgstr "وئیب آڈیو اور ویدیو ڈاؤن لوڈ کریں"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:46
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:48
 msgid "Matrix Chat"
 msgstr "میٹرکس چیٹ"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:48
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:50
 #, fuzzy
 msgid "Contributors on GitHub"
 msgstr "GitHub پر تعاون کرنے والے ❤️"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:50
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:52
 msgid "Fyodor Sobolev"
 msgstr "فیوڈور سوبولیف"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:52
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:54
 msgid "David Lapshin"
 msgstr "David Lapshin"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:53
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:55
 msgid "translator-credits"
 msgstr "مترجم کی خدمات کا اعتراف"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:186
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:193
 msgid "Unable to load python"
 msgstr ""
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:191
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:198
 msgid ""
 "The authors of Nickvision Parabolic are not responsible/liable for any "
 "misuse of this program that may violate local copyright/DMCA laws. Users use "
@@ -62,20 +62,20 @@ msgstr ""
 "دار نہیں ہیں جو مقامی کاپی رائٹ/DMCA قوانین کی خلاف ورزی کر سکتا ہے۔ صارفین "
 "اس ایپلی کیشن کو اپنی ذمہ داری پر استعمال کرتے ہیں۔"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:225
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:232
 msgid "New update available"
 msgstr ""
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:257
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:264
 msgid "Unable to download and install update"
 msgstr ""
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:294
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:301
 #, fuzzy
 msgid "Network connection restored"
 msgstr "درست نیٹ موجود نہیں ہے"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:300
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:307
 #, fuzzy
 msgid "No network connection"
 msgstr "درست نیٹ موجود نہیں ہے"
@@ -117,24 +117,73 @@ msgid "Keyboard Shortcuts"
 msgstr "کی بورڈ شارٹ کٹس"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:7
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:61
+msgid "Help"
+msgstr "مدد"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:8
 msgid "About Parabolic"
 msgstr "پیرابولک کے بارے میں"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:23
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:40
 msgid "Main Menu"
 msgstr "مرکزی فہرست"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:37
+#. Localize Strings
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:63
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:133
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:55
+msgid "Home"
+msgstr "ھوم"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:80
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:56
+msgid "Keyring"
+msgstr "کیڑیگ"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:97
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:138
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:69
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:74
+msgid "History"
+msgstr "تاریخ"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:107
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:49
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:57
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:38
+msgid "Downloads"
+msgstr "ڈاؤن لوڈ شدہ"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:126
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:143
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:58
+msgid "Downloading"
+msgstr "ڈاؤن لوڈینگ ہو رہی ہے"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:143
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:148
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:59
+msgid "Queued"
+msgstr "قطار میں لگے ہوئے"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:160
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:153
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:60
+msgid "Completed"
+msgstr "مکمل"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:190
 #: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:71
 msgid "Download Media"
 msgstr "میڈیا ڈاؤن لوڈ کریں"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:38
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:191
 #: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:72
 msgid "Add a video, audio, or playlist URL to start downloading"
 msgstr "ڈاؤن لوڈ شروع کرنے کے لیے ویڈیو، آڈیو یا پلے لسٹ یو-آر-ایل شامل کریں"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:40
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:193
 #: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:73
 msgid "Add Download"
 msgstr "نئی ڈاؤن لوڈ کریں"
@@ -193,12 +242,6 @@ msgstr "کبھی نہیں"
 #, fuzzy
 msgid "Prevent Suspend"
 msgstr "معطلی کو روکیں"
-
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:49
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:57
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:38
-msgid "Downloads"
-msgstr "ڈاؤن لوڈ شدہ"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:52
 #: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:39
@@ -435,28 +478,28 @@ msgstr "ایپلی کیشنز"
 msgid "Quit"
 msgstr "بند کریں"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:108
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:125
 #, fuzzy
 msgid "Open"
 msgstr "فائل کھولیں"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:113
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:160
 #: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:221
 msgid "Disclaimer"
 msgstr ""
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:114
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:161
 #: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:210
 msgid "Don't show this message again"
 msgstr ""
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:115
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:162
 #: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:223
 #: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:355
 msgid "Close"
 msgstr "بند کریں"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:168
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:226
 #: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:66
 msgid "GitHub Repo"
 msgstr "گٹ ہب رجسٹر(ریپوسٹری)"
@@ -476,31 +519,6 @@ msgstr ""
 #, fuzzy
 msgid "Search"
 msgstr "تلاش کریں۔۔۔"
-
-#. Localize Strings
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:55
-msgid "Home"
-msgstr "ھوم"
-
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:56
-msgid "Keyring"
-msgstr "کیڑیگ"
-
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:58
-msgid "Downloading"
-msgstr "ڈاؤن لوڈینگ ہو رہی ہے"
-
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:59
-msgid "Queued"
-msgstr "قطار میں لگے ہوئے"
-
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:60
-msgid "Completed"
-msgstr "مکمل"
-
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:61
-msgid "Help"
-msgstr "مدد"
 
 #: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:62
 msgid "Check for Updates"
@@ -528,11 +546,6 @@ msgstr "خرابی کی اطلاع کریں"
 #: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:68
 msgid "Discussions"
 msgstr "بات چیت"
-
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:69
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:74
-msgid "History"
-msgstr "تاریخ"
 
 #. Localize Strings
 #: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:70
@@ -571,6 +584,7 @@ msgid "Debug information copied to clipboard."
 msgstr "ڈاؤن لوڈ لاگ کو کلپ بورڈ پر کاپی کرلیاگیا۔"
 
 #: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:349
+#, c++-format
 msgid ""
 "Developers:\n"
 "{}\n"
@@ -581,6 +595,7 @@ msgid ""
 msgstr ""
 
 #: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:353
+#, c++-format
 msgid ""
 "Developers:\n"
 "{}\n"

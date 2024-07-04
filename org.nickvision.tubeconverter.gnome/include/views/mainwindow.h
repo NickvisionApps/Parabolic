@@ -55,6 +55,12 @@ namespace Nickvision::TubeConverter::GNOME::Views
          */
         void onShellNotificationSent(const Nickvision::Notifications::ShellNotificationSentEventArgs& args);
         /**
+         * @brief Handles when a navigation item is selected.
+         * @param box The listNavItems box
+         * @param row The selected row
+         */
+        void onNavItemSelected(GtkListBox* box, GtkListBoxRow* row);
+        /**
          * @brief Handles when the disclaimer is triggered.
          * @param args Nickvision::Events::ParamEventArgs<std::string>
          */
@@ -71,6 +77,10 @@ namespace Nickvision::TubeConverter::GNOME::Views
          * @brief Opens the application's keyboard shortcut dialog.
          */
         void keyboardShortcuts();
+        /**
+         * @brief Opens the application's help documentation. 
+         */
+        void help();
         /**
          * @brief Opens the application's about dialog. 
          */
