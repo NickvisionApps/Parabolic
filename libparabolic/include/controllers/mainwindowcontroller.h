@@ -7,6 +7,7 @@
 
 #include <filesystem>
 #include <memory>
+#include <optional>
 #include <string>
 #include <vector>
 #include <libnick/app/appinfo.h>
@@ -14,6 +15,7 @@
 #include <libnick/app/windowgeometry.h>
 #include <libnick/events/event.h>
 #include <libnick/events/parameventargs.h>
+#include <libnick/keyring/keyring.h>
 #include <libnick/logging/logger.h>
 #include <libnick/network/networkmonitor.h>
 #include <libnick/notifications/notificationsenteventargs.h>
@@ -59,6 +61,11 @@ namespace Nickvision::TubeConverter::Shared::Controllers
          */
         Nickvision::Events::Event<Nickvision::Events::ParamEventArgs<std::string>>& disclaimerTriggered();
         /**
+         * @brief Gets the event for when the ability to download is changed.
+         * @return The download ability changed event
+         */
+        Nickvision::Events::Event<Nickvision::Events::ParamEventArgs<bool>>& downloadAbilityChanged();
+        /**
          * @brief Gets the event for when the history is changed.
          * @return The history changed event
          */
@@ -96,6 +103,11 @@ namespace Nickvision::TubeConverter::Shared::Controllers
          */
         std::string getHelpUrl(const std::string& pageName);
         /**
+         * @brief Gets whether or not a download can be started.
+         * @return True if can download, else false
+         */
+        bool canDownload() const;
+        /**
          * @brief Gets a PreferencesViewController.
          * @return The PreferencesViewController
          */
@@ -109,8 +121,6 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         Nickvision::App::WindowGeometry startup(HWND hwnd);
 #elif defined(__linux__)
         Nickvision::App::WindowGeometry startup(const std::string& desktopFile);
-#else     
-        Nickvision::App::WindowGeometry startup();
 #endif
         /**
          * @brief Shuts down the application.
@@ -147,10 +157,6 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         void removeHistoricDownload(const Models::HistoricDownload& download);
 
     private:
-        /**
-         * @brief Handles when the network state is changed.
-         */
-        void onNetworkChanged(const Network::NetworkStateChangedEventArgs& args);
         bool m_started;
         std::vector<std::string> m_args;
         Nickvision::App::AppInfo m_appInfo;
@@ -160,9 +166,11 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         Nickvision::Taskbar::TaskbarItem m_taskbar;
         Nickvision::Network::NetworkMonitor m_networkMonitor;
         Nickvision::System::SuspendInhibitor m_suspendInhibitor;
+        std::optional<Nickvision::Keyring::Keyring> m_keyring;
         Nickvision::Events::Event<Nickvision::Notifications::NotificationSentEventArgs> m_notificationSent;
         Nickvision::Events::Event<Nickvision::Notifications::ShellNotificationSentEventArgs> m_shellNotificationSent;
         Nickvision::Events::Event<Nickvision::Events::ParamEventArgs<std::string>> m_disclaimerTriggered;
+        Nickvision::Events::Event<Nickvision::Events::ParamEventArgs<bool>> m_downloadAbilityChanged;
         Nickvision::Events::Event<Nickvision::Events::ParamEventArgs<std::vector<Models::HistoricDownload>>> m_historyChanged;
     };
 }

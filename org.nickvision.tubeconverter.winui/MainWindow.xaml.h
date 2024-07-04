@@ -62,11 +62,6 @@ namespace winrt::Nickvision::TubeConverter::WinUI::implementation
          */
         void OnShellNotificationSent(const ::Nickvision::Notifications::ShellNotificationSentEventArgs& args);
         /**
-         * @brief Handles when the disclaimer is triggered.
-         * @param args Nickvision::Events::ParamEventArgs<std::string>
-         */
-        Windows::Foundation::IAsyncAction OnDisclaimerTriggered(const ::Nickvision::Events::ParamEventArgs<std::string>& args);
-        /**
          * @brief Handles when a change in the window's navigation occurs.
          * @param sender Microsoft::UI::Xaml::Controls::NavigationView
          * @param args Microsoft::UI::Xaml::Controls::NavigationViewSelectionChangedEventArgs
@@ -78,6 +73,16 @@ namespace winrt::Nickvision::TubeConverter::WinUI::implementation
          * @param args Microsoft::UI::Xaml::Input::TappedRoutedEventArgs
          */
         void OnNavViewItemTapped(const IInspectable& sender, const Microsoft::UI::Xaml::Input::TappedRoutedEventArgs& args);
+        /**
+         * @brief Handles when the disclaimer is triggered.
+         * @param args Nickvision::Events::ParamEventArgs<std::string>
+         */
+        Windows::Foundation::IAsyncAction OnDisclaimerTriggered(const ::Nickvision::Events::ParamEventArgs<std::string>& args);
+        /**
+         * @brief Handles when the ability to download is changed.
+         * @param args Nickvision::Events::ParamEventArgs<bool>
+         */
+        void OnDownloadAbilityChanged(const ::Nickvision::Events::ParamEventArgs<bool>& args);
         /**
          * @brief Handles when the history is changed.
          * @param args Nickvision::Events::ParamEventArgs<std::vector<Models::HistoricDownload>>
@@ -125,6 +130,12 @@ namespace winrt::Nickvision::TubeConverter::WinUI::implementation
          * @param args Microsoft::UI::Xaml::RoutedEventArgs
          */
         Windows::Foundation::IAsyncAction Discussions(const IInspectable& sender, const Microsoft::UI::Xaml::RoutedEventArgs& args);
+        /**
+         * @brief Opens the application's documentation page.
+         * @param sender IInspectable
+         * @param args Microsoft::UI::Xaml::RoutedEventArgs
+         */
+        Windows::Foundation::IAsyncAction Documentation(const IInspectable& sender, const Microsoft::UI::Xaml::RoutedEventArgs& args);
         /**
          * @brief Clears the download history.
          * @param sender IInspectable

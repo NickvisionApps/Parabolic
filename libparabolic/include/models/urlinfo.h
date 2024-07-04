@@ -17,6 +17,7 @@ namespace Nickvision::TubeConverter::Shared::Models
     public:
         /**
          * @brief Fetches media information for a URL.
+         * @brief Python must first be started via PythonHelpers::start().
          * @param url The URL to fetch media information for
          * @param options The DownloaderOptions
          * @param credential The credential to use for authentication

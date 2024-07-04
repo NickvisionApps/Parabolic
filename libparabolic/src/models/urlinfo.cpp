@@ -2,7 +2,7 @@
 #include "helpers/pythonhelpers.h"
 
 using namespace Nickvision::Keyring;
-using namespace Nickvision::TubeConverter::Helpers;
+using namespace Nickvision::TubeConverter::Shared::Helpers;
 using namespace pybind11::literals;
 namespace py = pybind11;
 
@@ -40,6 +40,10 @@ namespace Nickvision::TubeConverter::Shared::Models
 
     std::optional<UrlInfo> UrlInfo::fetch(const std::string& url, const DownloaderOptions& options, const std::optional<Credential>& credential)
     {
+        if(!PythonHelpers::started())
+        {   
+            return std::nullopt;
+        }
         py::module_ ytdlp{ py::module_::import("yt_dlp") };
         py::dict ytdlpOpt;
         ytdlpOpt["quiet"] = true;

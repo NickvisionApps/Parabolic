@@ -66,6 +66,7 @@ namespace winrt::Nickvision::TubeConverter::WinUI::implementation
         BtnGitHubRepo().Content(winrt::box_value(winrt::to_hstring(_("GitHub Repo"))));
         BtnReportABug().Content(winrt::box_value(winrt::to_hstring(_("Report a Bug"))));
         BtnDiscussions().Content(winrt::box_value(winrt::to_hstring(_("Discussions"))));
+        BtnDocumentation().Content(winrt::box_value(winrt::to_hstring(_("Documentation"))));
         NavViewHistory().Content(winrt::box_value(winrt::to_hstring(_("History"))));
         NavViewSettings().Content(winrt::box_value(winrt::to_hstring(_("Settings"))));
         StatusPageHome().Title(winrt::to_hstring(_("Download Media")));
@@ -85,6 +86,7 @@ namespace winrt::Nickvision::TubeConverter::WinUI::implementation
         m_controller->notificationSent() += [&](const NotificationSentEventArgs& args) { OnNotificationSent(args); };
         m_controller->shellNotificationSent() += [&](const ShellNotificationSentEventArgs& args) { OnShellNotificationSent(args); };
         m_controller->disclaimerTriggered() += [&](const ParamEventArgs<std::string>& args) { OnDisclaimerTriggered(args); };
+        m_controller->downloadAbilityChanged() += [&](const ParamEventArgs<bool>& args) { OnDownloadAbilityChanged(args); };
         m_controller->historyChanged() += [&](const ParamEventArgs<std::vector<HistoricDownload>>& args) { OnHistoryChanged(args); };
         //Localize Strings
         TitleBar().Title(winrt::to_hstring(m_controller->getAppInfo().getShortName()));
@@ -204,6 +206,27 @@ namespace winrt::Nickvision::TubeConverter::WinUI::implementation
         ShellNotification::send(args, m_hwnd);
     }
 
+    void MainWindow::OnNavSelectionChanged(const NavigationView& sender, const NavigationViewSelectionChangedEventArgs& args)
+    {
+        winrt::hstring tag{ NavView().SelectedItem().as<NavigationViewItem>().Tag().as<winrt::hstring>() };
+        if(tag == L"Settings")
+        {
+            WinUI::SettingsPage page{ winrt::make<SettingsPage>() };
+            page.as<SettingsPage>()->SetController(m_controller->createPreferencesViewController(), m_hwnd);
+            ViewStack().CurrentPage(L"Custom");
+            FrameCustom().Content(winrt::box_value(page));
+        }
+        else
+        {
+            ViewStack().CurrentPage(tag);
+        }
+    }
+
+    void MainWindow::OnNavViewItemTapped(const IInspectable& sender, const TappedRoutedEventArgs& args)
+    {
+        FlyoutBase::ShowAttachedFlyout(sender.as<FrameworkElement>());
+    }
+
     Windows::Foundation::IAsyncAction MainWindow::OnDisclaimerTriggered(const ParamEventArgs<std::string>& args)
     {
         CheckBox chkShow;
@@ -228,25 +251,16 @@ namespace winrt::Nickvision::TubeConverter::WinUI::implementation
         m_controller->setShowDisclaimerOnStartup(!chkShow.IsChecked().Value());
     }
 
-    void MainWindow::OnNavSelectionChanged(const NavigationView& sender, const NavigationViewSelectionChangedEventArgs& args)
+    void MainWindow::OnDownloadAbilityChanged(const ParamEventArgs<bool>& args)
     {
-        winrt::hstring tag{ NavView().SelectedItem().as<NavigationViewItem>().Tag().as<winrt::hstring>() };
-        if(tag == L"Settings")
+        if(args.getParam())
         {
-            WinUI::SettingsPage page{ winrt::make<SettingsPage>() };
-            page.as<SettingsPage>()->SetController(m_controller->createPreferencesViewController(), m_hwnd);
-            ViewStack().CurrentPage(L"Custom");
-            FrameCustom().Content(winrt::box_value(page));
+            HomeAddDownloadButton().IsEnabled(true);
         }
         else
         {
-            ViewStack().CurrentPage(tag);
+            HomeAddDownloadButton().IsEnabled(false);
         }
-    }
-
-    void MainWindow::OnNavViewItemTapped(const IInspectable& sender, const TappedRoutedEventArgs& args)
-    {
-        FlyoutBase::ShowAttachedFlyout(sender.as<FrameworkElement>());
     }
 
     void MainWindow::OnHistoryChanged(const ParamEventArgs<std::vector<HistoricDownload>>& args)
@@ -308,7 +322,6 @@ namespace winrt::Nickvision::TubeConverter::WinUI::implementation
 
     void MainWindow::WindowsUpdate(const IInspectable& sender, const RoutedEventArgs& args)
     {
-        TitleBar().SearchVisibility(Visibility::Collapsed);
         InfoBar().IsOpen(false);
         NavView().IsEnabled(false);
         ViewStack().CurrentPage(L"Spinner");
@@ -337,6 +350,11 @@ namespace winrt::Nickvision::TubeConverter::WinUI::implementation
     Windows::Foundation::IAsyncAction MainWindow::Discussions(const IInspectable& sender, const RoutedEventArgs& args)
     {
         co_await Launcher::LaunchUriAsync(Windows::Foundation::Uri{ winrt::to_hstring(m_controller->getAppInfo().getSupportUrl()) });
+    }
+
+    Windows::Foundation::IAsyncAction MainWindow::Documentation(const IInspectable& sender, const RoutedEventArgs& args)
+    {
+        co_await Launcher::LaunchUriAsync(Windows::Foundation::Uri{ winrt::to_hstring(m_controller->getHelpUrl("index")) });
     }
 
     Windows::Foundation::IAsyncAction MainWindow::Credits(const IInspectable& sender, const RoutedEventArgs& args)

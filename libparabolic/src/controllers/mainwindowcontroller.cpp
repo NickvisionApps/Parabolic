@@ -10,7 +10,7 @@
 #include <libnick/localization/documentation.h>
 #include <libnick/localization/gettext.h>
 #include <libnick/system/environment.h>
-#include <pybind11/embed.h>
+#include "helpers/pythonhelpers.h"
 #include "models/configuration.h"
 #include "models/downloadhistory.h"
 #ifdef _WIN32
@@ -21,13 +21,14 @@ using namespace Nickvision::App;
 using namespace Nickvision::Events;
 using namespace Nickvision::Filesystem;
 using namespace Nickvision::Helpers;
+using namespace Nickvision::Keyring;
 using namespace Nickvision::Network;
 using namespace Nickvision::Localization;
 using namespace Nickvision::Notifications;
 using namespace Nickvision::System;
+using namespace Nickvision::TubeConverter::Shared::Helpers;
 using namespace Nickvision::TubeConverter::Shared::Models;
 using namespace Nickvision::Update;
-namespace py = pybind11;
 
 namespace Nickvision::TubeConverter::Shared::Controllers
 {
@@ -36,7 +37,8 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         m_args{ args },
         m_appInfo{ "org.nickvision.tubeconverter", "Nickvision Parabolic", "Parabolic" },
         m_dataFileManager{ m_appInfo.getName() },
-        m_logger{ UserDirectories::get(ApplicationUserDirectory::LocalData, m_appInfo.getName()) / "log.txt", std::find(m_args.begin(), m_args.end(), "--debug") != m_args.end() ? Logging::LogLevel::Debug : Logging::LogLevel::Info, false }
+        m_logger{ UserDirectories::get(ApplicationUserDirectory::LocalData, m_appInfo.getName()) / "log.txt", std::find(m_args.begin(), m_args.end(), "--debug") != m_args.end() ? Logging::LogLevel::Debug : Logging::LogLevel::Info, false },
+        m_keyring{ Keyring::Keyring::access(m_appInfo.getId()) }
     {
         m_appInfo.setVersion({ "2024.7.0-next" });
         m_appInfo.setShortName(_("Parabolic"));
@@ -45,6 +47,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         m_appInfo.setSourceRepo("https://github.com/NickvisionApps/Parabolic");
         m_appInfo.setIssueTracker("https://github.com/NickvisionApps/Parabolic/issues/new");
         m_appInfo.setSupportUrl("https://github.com/NickvisionApps/Parabolic/discussions");
+        m_appInfo.setHtmlDocsStore("https://github.com/NickvisionApps/Parabolic/blob/main/NickvisionTubeConverter.Shared/Docs/html");
         m_appInfo.getExtraLinks()[_("Matrix Chat")] = "https://matrix.to/#/#nickvision:matrix.org";
         m_appInfo.getDevelopers()["Nicholas Logozzo"] = "https://github.com/nlogozzo";
         m_appInfo.getDevelopers()[_("Contributors on GitHub")] = "https://github.com/NickvisionApps/Parabolic/graphs/contributors";
@@ -61,7 +64,22 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         {
             m_logger.log(Logging::LogLevel::Debug, "Configuration saved.");
         };
-        m_networkMonitor.stateChanged() += [&](const NetworkStateChangedEventArgs& args){ onNetworkChanged(args); };
+        m_networkMonitor.stateChanged() += [this](const NetworkStateChangedEventArgs& args)
+        { 
+            if(args.getState() == NetworkState::ConnectedGlobal)
+            {
+                m_logger.log(Logging::LogLevel::Info, "Network connected.");
+            }
+            else
+            {
+                m_logger.log(Logging::LogLevel::Info, "Network disconnected.");
+            }
+            m_downloadAbilityChanged.invoke(canDownload());
+        };
+        if(m_keyring)
+        {
+            m_logger.log(Logging::LogLevel::Info, "Keyring unlocked.");
+        }
     }
 
     const AppInfo& MainWindowController::getAppInfo() const
@@ -101,6 +119,11 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         return m_disclaimerTriggered;
     }
 
+    Event<ParamEventArgs<bool>>& MainWindowController::downloadAbilityChanged()
+    {
+        return m_downloadAbilityChanged;
+    }
+
     Event<ParamEventArgs<std::vector<HistoricDownload>>>& MainWindowController::historyChanged()
     {
         return m_historyChanged;
@@ -109,13 +132,10 @@ namespace Nickvision::TubeConverter::Shared::Controllers
     std::string MainWindowController::getDebugInformation(const std::string& extraInformation) const
     {
         std::stringstream builder;
-        //Get yt-dlp version
-        py::module_ ytdlp{ py::module_::import("yt_dlp") };
-        builder << "yt-dlp: " << ytdlp.attr("version").attr("__version__").cast<std::string>() << std::endl;
-        //Update extra information
+        builder << PythonHelpers::getDebugInformation() << std::endl;
         if(!extraInformation.empty())
         {
-            builder << std::endl << extraInformation << std::endl;
+            builder << std::endl << extraInformation;
         }
         return Environment::getDebugInformation(m_appInfo, builder.str());
     }
@@ -130,6 +150,11 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         return Documentation::getHelpUrl(m_appInfo.getEnglishShortName(), m_appInfo.getHtmlDocsStore(), pageName);
     }
 
+    bool MainWindowController::canDownload() const
+    {
+        return m_networkMonitor.getConnectionState() == NetworkState::ConnectedGlobal && PythonHelpers::started();
+    }
+
     std::shared_ptr<PreferencesViewController> MainWindowController::createPreferencesViewController()
     {
         return std::make_shared<PreferencesViewController>(m_dataFileManager.get<Configuration>("config"));
@@ -139,14 +164,13 @@ namespace Nickvision::TubeConverter::Shared::Controllers
     Nickvision::App::WindowGeometry MainWindowController::startup(HWND hwnd)
 #elif defined(__linux__)
     Nickvision::App::WindowGeometry MainWindowController::startup(const std::string& desktopFile)
-#else
-    Nickvision::App::WindowGeometry MainWindowController::startup()
 #endif
     {
         if (m_started)
         {
             return m_dataFileManager.get<Configuration>("config").getWindowGeometry();
         }
+        //Load taskbar item
 #ifdef _WIN32
         if(m_taskbar.connect(hwnd))
         {
@@ -170,33 +194,20 @@ namespace Nickvision::TubeConverter::Shared::Controllers
             m_logger.log(Logging::LogLevel::Error, "Unable to connect to Linux taskbar.");
         }
 #endif
+        //Start python
+        PythonHelpers::start(m_logger);
         //Load history
         m_logger.log(Logging::LogLevel::Debug, "Loading historic downloads...");
         DownloadHistory& history{ m_dataFileManager.get<DownloadHistory>("history") };
         m_logger.log(Logging::LogLevel::Info, "Loaded " + std::to_string(history.getHistory().size()) + " historic downloads.");
         m_historyChanged.invoke(history.getHistory());
-        //Check network
-        onNetworkChanged({ m_networkMonitor.getConnectionState() });
-        //Load python
-        try
-        {
-            m_logger.log(Logging::LogLevel::Info, "Loading python interpreter...");
-            py::initialize_interpreter();
-            m_logger.log(Logging::LogLevel::Info, "Python interpreter loaded.");
-            m_logger.log(Logging::LogLevel::Info, "Loading yt-dlp python module...");
-            py::module_ ytdlp{ py::module_::import("yt_dlp") };
-            m_logger.log(Logging::LogLevel::Info, "yt-dlp python module loaded.");
-        }
-        catch(const std::exception& e)
-        {
-            m_logger.log(Logging::LogLevel::Error, "Unable to load python: " + std::string(e.what()));
-            m_notificationSent.invoke({ _("Unable to load python"), NotificationSeverity::Error, "nopython" });
-        }
         //Check if disclaimer should be shown
         if(m_dataFileManager.get<Configuration>("config").getShowDisclaimerOnStartup())
         {
             m_disclaimerTriggered.invoke({ _("The authors of Nickvision Parabolic are not responsible/liable for any misuse of this program that may violate local copyright/DMCA laws. Users use this application at their own risk.") });
         }
+        //Check if downloads can be started
+        m_downloadAbilityChanged.invoke(canDownload());
         m_started = true;
         m_logger.log(Logging::LogLevel::Debug, "MainWindow started.");
         return m_dataFileManager.get<Configuration>("config").getWindowGeometry();
@@ -204,13 +215,12 @@ namespace Nickvision::TubeConverter::Shared::Controllers
 
     void MainWindowController::shutdown(const WindowGeometry& geometry)
     {
+        //Shutdown python
+        PythonHelpers::shutdown(m_logger);
         //Save config
         Configuration& config{ m_dataFileManager.get<Configuration>("config") };
         config.setWindowGeometry(geometry);
         config.save();
-        //Shutdown python
-        py::finalize_interpreter();
-        m_logger.log(Logging::LogLevel::Info, "Python interpreter shutdown.");
         m_logger.log(Logging::LogLevel::Debug, "MainWindow shutdown.");
     }
 
@@ -288,23 +298,6 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         if(history.removeDownload(download))
         {
             m_historyChanged.invoke(history.getHistory());
-        }
-    }
-
-    void MainWindowController::onNetworkChanged(const NetworkStateChangedEventArgs& args)
-    {
-        if(args.getState() == NetworkState::ConnectedGlobal)
-        {
-            m_logger.log(Logging::LogLevel::Info, "Network connected.");
-            if(m_started)
-            {
-                m_notificationSent.invoke({ _("Network connection restored"), NotificationSeverity::Informational, "network" });
-            }
-        }
-        else
-        {
-            m_logger.log(Logging::LogLevel::Info, "Network disconnected.");
-            m_notificationSent.invoke({ _("No network connection"), NotificationSeverity::Error, "nonetwork" });
         }
     }
 }

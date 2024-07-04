@@ -118,6 +118,14 @@
                                         <HyperlinkButton x:Name="BtnDiscussions" Grid.Column="2" Click="Discussions"/>
                                     </Grid>
 
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <HyperlinkButton x:Name="BtnDocumentation" Grid.Column="0" Click="Documentation"/>
+                                    </Grid>
+
                                     <TextBlock x:Name="LblAppCopyright" Text="© Nickvision 2021-2024" Foreground="Gray"/>
                                 </StackPanel>
                             </ScrollViewer>
