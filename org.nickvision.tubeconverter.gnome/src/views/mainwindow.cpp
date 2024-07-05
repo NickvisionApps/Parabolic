@@ -15,6 +15,7 @@ using namespace Nickvision::Helpers;
 using namespace Nickvision::Notifications;
 using namespace Nickvision::TubeConverter::GNOME::Helpers;
 using namespace Nickvision::TubeConverter::Shared::Controllers;
+using namespace Nickvision::TubeConverter::Shared::Models;
 using namespace Nickvision::Update;
 
 namespace Nickvision::TubeConverter::GNOME::Views
@@ -51,6 +52,8 @@ namespace Nickvision::TubeConverter::GNOME::Views
         m_controller->notificationSent() += [&](const NotificationSentEventArgs& args) { onNotificationSent(args); };
         m_controller->shellNotificationSent() += [&](const ShellNotificationSentEventArgs& args) { onShellNotificationSent(args); };
         m_controller->disclaimerTriggered() += [&](const ParamEventArgs<std::string>& args) { onDisclaimerTriggered(args); };
+        m_controller->downloadAbilityChanged() += [&](const ParamEventArgs<bool>& args) { onDownloadAbilityChanged(args); };
+        m_controller->historyChanged() += [&](const ParamEventArgs<std::vector<HistoricDownload>>& args) { onHistoryChanged(args); };
         //Quit Action
         GSimpleAction* actQuit{ g_simple_action_new("quit", nullptr) };
         g_signal_connect(actQuit, "activate", G_CALLBACK(+[](GSimpleAction*, GVariant*, gpointer data){ reinterpret_cast<MainWindow*>(data)->quit(); }), this);
@@ -75,6 +78,10 @@ namespace Nickvision::TubeConverter::GNOME::Views
         GSimpleAction* actAbout{ g_simple_action_new("about", nullptr) };
         g_signal_connect(actAbout, "activate", G_CALLBACK(+[](GSimpleAction*, GVariant*, gpointer data){ reinterpret_cast<MainWindow*>(data)->about(); }), this);
         g_action_map_add_action(G_ACTION_MAP(m_window), G_ACTION(actAbout));
+        //Clear History Action
+        GSimpleAction* actClearHistory{ g_simple_action_new("clearHistory", nullptr) };
+        g_signal_connect(actClearHistory, "activate", G_CALLBACK(+[](GSimpleAction*, GVariant*, gpointer data){ reinterpret_cast<MainWindow*>(data)->clearHistory(); }), this);
+        g_action_map_add_action(G_ACTION_MAP(m_window), G_ACTION(actClearHistory));
     }
 
     MainWindow::~MainWindow()
@@ -170,6 +177,83 @@ namespace Nickvision::TubeConverter::GNOME::Views
         adw_dialog_present(ADW_DIALOG(dialog), GTK_WIDGET(m_window));
     }
 
+    void MainWindow::onDownloadAbilityChanged(const ParamEventArgs<bool>& args)
+    {
+        if(args.getParam())
+        {
+
+        }
+        else
+        {
+
+        }
+    }
+
+    void MainWindow::onHistoryChanged(const ParamEventArgs<std::vector<HistoricDownload>>& args)
+    {
+        for(AdwActionRow* row : m_historyRows)
+        {
+            adw_preferences_group_remove(ADW_PREFERENCES_GROUP(gtk_builder_get_object(m_builder, "historyGroup")), GTK_WIDGET(row));
+        }
+        m_historyRows.clear();
+        adw_view_stack_set_visible_child_name(ADW_VIEW_STACK(gtk_builder_get_object(m_builder, "historyViewStack")), args.getParam().size() > 0 ? "history" : "no-history");
+        for(const HistoricDownload& download : args.getParam())
+        {
+            //Row
+            AdwActionRow* row{ ADW_ACTION_ROW(adw_action_row_new()) };
+            adw_preferences_row_set_use_markup(ADW_PREFERENCES_ROW(row), false);
+            adw_preferences_row_set_title(ADW_PREFERENCES_ROW(row), download.getTitle().c_str());
+            adw_action_row_set_subtitle(row, download.getUrl().c_str());
+            adw_preferences_group_add(ADW_PREFERENCES_GROUP(gtk_builder_get_object(m_builder, "historyGroup")), GTK_WIDGET(row));
+            m_historyRows.push_back(row);
+            //Play button
+            if(std::filesystem::exists(download.getPath()))
+            {
+                GtkButton* playButton{ GTK_BUTTON(gtk_button_new_from_icon_name("media-playback-start-symbolic")) };
+                gtk_widget_set_valign(GTK_WIDGET(playButton), GTK_ALIGN_CENTER);
+                gtk_widget_set_tooltip_text(GTK_WIDGET(playButton), _("Play"));
+                gtk_widget_add_css_class(GTK_WIDGET(playButton), "flat");
+                g_signal_connect(playButton, "clicked", G_CALLBACK(+[](GtkButton*, gpointer data)
+                {
+                    std::filesystem::path* path{ reinterpret_cast<std::filesystem::path*>(data) };
+                    GtkFileLauncher* launcher{ gtk_file_launcher_new(g_file_new_for_path(path->string().c_str())) };
+                    gtk_file_launcher_launch(launcher, nullptr, nullptr, GAsyncReadyCallback(+[](GObject* source, GAsyncResult* res, gpointer)
+                    { 
+                        gtk_file_launcher_launch_finish(GTK_FILE_LAUNCHER(source), res, nullptr); 
+                        g_object_unref(source);
+                    }), nullptr);
+                    delete path;
+                }), new std::filesystem::path(download.getPath()));
+                adw_action_row_add_suffix(row, GTK_WIDGET(playButton));
+            }
+            //Download button
+            GtkButton* downloadButton{ GTK_BUTTON(gtk_button_new_from_icon_name("document-save-symbolic")) };
+            std::pair<MainWindow*, HistoricDownload>* downloadPair{ new std::pair<MainWindow*, HistoricDownload>(this, download) };
+            gtk_widget_set_valign(GTK_WIDGET(downloadButton), GTK_ALIGN_CENTER);
+            gtk_widget_set_tooltip_text(GTK_WIDGET(downloadButton), _("Download Again"));
+            gtk_widget_add_css_class(GTK_WIDGET(downloadButton), "flat");
+            g_signal_connect(downloadButton, "clicked", GCallback(+[](GtkButton*, gpointer data)
+            {
+                std::pair<MainWindow*, HistoricDownload>* pair{ reinterpret_cast<std::pair<MainWindow*, HistoricDownload>*>(data) };
+                delete pair;
+            }), downloadPair);
+            adw_action_row_add_suffix(row, GTK_WIDGET(downloadButton));
+            //Delete button
+            GtkButton* deleteButton{ GTK_BUTTON(gtk_button_new_from_icon_name("user-trash-symbolic")) };
+            std::pair<MainWindow*, HistoricDownload>* deletePair{ new std::pair<MainWindow*, HistoricDownload>(this, download) };
+            gtk_widget_set_valign(GTK_WIDGET(deleteButton), GTK_ALIGN_CENTER);
+            gtk_widget_set_tooltip_text(GTK_WIDGET(deleteButton), _("Delete"));
+            gtk_widget_add_css_class(GTK_WIDGET(deleteButton), "flat");
+            g_signal_connect(deleteButton, "clicked", GCallback(+[](GtkButton*, gpointer data)
+            {
+                std::pair<MainWindow*, HistoricDownload>* pair{ reinterpret_cast<std::pair<MainWindow*, HistoricDownload>*>(data) };
+                pair->first->m_controller->removeHistoricDownload(pair->second);
+                delete pair;
+            }), deletePair);
+            adw_action_row_add_suffix(row, GTK_WIDGET(deleteButton));
+        }
+    }
+
     void MainWindow::quit()
     {
         if(!onCloseRequested())
@@ -254,5 +338,10 @@ namespace Nickvision::TubeConverter::GNOME::Views
         adw_about_dialog_set_artists(dialog, &urls[0]);
         adw_about_dialog_set_translator_credits(dialog, m_controller->getAppInfo().getTranslatorCredits().c_str());
         adw_dialog_present(ADW_DIALOG(dialog), GTK_WIDGET(m_window));
+    }
+
+    void MainWindow::clearHistory()
+    {
+        m_controller->clearHistory();
     }
 }

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-07-04 13:24-0400\n"
+"POT-Creation-Date: 2024-07-05 15:53-0400\n"
 "PO-Revision-Date: 2024-03-27 08:01+0000\n"
 "Last-Translator: Gnuey56 <gnuey56@proton.me>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -48,7 +48,7 @@ msgstr "David Lapshin"
 msgid "translator-credits"
 msgstr "Gnuey56 <gnuey56@proton.me>"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:207
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:211
 msgid ""
 "The authors of Nickvision Parabolic are not responsible/liable for any "
 "misuse of this program that may violate local copyright/DMCA laws. Users use "
@@ -58,12 +58,12 @@ msgstr ""
 "ニアム著作権法）に反する可能性のある、このプログラムの誤用について責任を負い"
 "ません。ユーザーによる、このアプリケーションの使用は自己責任です。"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:242
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:246
 #, fuzzy
 msgid "New update available"
 msgstr "新しいアップデートが利用可能です。"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:274
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:278
 #, fuzzy
 msgid "Unable to download and install update"
 msgstr "アップデートをダウンロードしてインストールできません。"
@@ -113,68 +113,88 @@ msgstr "ヘルプ"
 msgid "About Parabolic"
 msgstr "Parabolic について"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:40
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:38
 msgid "Main Menu"
 msgstr "メインメニュー"
 
 #. Localize Strings
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:63
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:133
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:61
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:140
 #: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:55
 msgid "Home"
 msgstr "ホーム"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:80
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:78
 #: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:56
 msgid "Keyring"
 msgstr "キーリング"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:97
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:138
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:95
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:145
 #: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:70
 #: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:75
 msgid "History"
 msgstr "履歴"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:107
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:105
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:49
 #: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:57
 #: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:38
 msgid "Downloads"
 msgstr "ダウンロード"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:126
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:143
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:124
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:150
 #: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:58
 msgid "Downloading"
 msgstr "ダウンロード中"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:143
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:148
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:141
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:155
 #: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:59
 msgid "Queued"
 msgstr "停止中"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:160
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:153
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:158
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:160
 #: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:60
 msgid "Completed"
 msgstr "完了済"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:190
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:188
 #: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:72
 msgid "Download Media"
 msgstr "メディアをダウンロード"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:191
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:189
 #: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:73
 msgid "Add a video, audio, or playlist URL to start downloading"
 msgstr "動画、音声、再生リストの URL を追加してダウンロードを始めます"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:193
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:191
 #: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:74
 msgid "Add Download"
 msgstr "ダウンロードを追加"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:207
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:327
+#, fuzzy
+msgid "No history available"
+msgstr "新しいアップデートが利用可能です。"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:218
+#, fuzzy
+msgid "Past Downloads"
+msgstr "ダウンロード"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:222
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:76
+msgid "Clear History"
+msgstr "履歴をクリア"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:226
+msgid "Clear"
+msgstr "クリア"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:12
 msgid "User Interface"
@@ -461,28 +481,43 @@ msgstr "アプリケーション"
 msgid "Quit"
 msgstr "閉じる"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:125
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:132
 #, fuzzy
 msgid "Open"
 msgstr "ファイルを開く"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:160
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:167
 #: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:244
 msgid "Disclaimer"
 msgstr "免責事項"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:161
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:168
 #: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:233
 msgid "Don't show this message again"
 msgstr "このメッセージを表示しない"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:162
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:169
 #: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:246
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:373
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:389
 msgid "Close"
 msgstr "閉じる"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:226
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:214
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:283
+msgid "Play"
+msgstr "再生"
+
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:233
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:297
+msgid "Download Again"
+msgstr "もう一度ダウンロード"
+
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:245
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:310
+msgid "Delete"
+msgstr "削除"
+
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:310
 #: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:66
 msgid "GitHub Repo"
 msgstr "GitHub リポジトリ"
@@ -509,7 +544,7 @@ msgid "Check for Updates"
 msgstr "アップデートをチェック"
 
 #: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:63
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:364
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:380
 msgid "Credits"
 msgstr "クレジット"
 
@@ -539,10 +574,6 @@ msgstr "ドキュメント"
 msgid "Settings"
 msgstr "設定"
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:76
-msgid "Clear History"
-msgstr "履歴をクリア"
-
 #: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:93
 msgid "Preview"
 msgstr ""
@@ -551,26 +582,13 @@ msgstr ""
 msgid "Update"
 msgstr "アップデート"
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:277
-msgid "Delete"
-msgstr "削除"
-
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:289
-msgid "Download Again"
-msgstr "もう一度ダウンロード"
-
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:311
-#, fuzzy
-msgid "No history available"
-msgstr "新しいアップデートが利用可能です。"
-
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:337
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:353
 #, fuzzy
 msgid "Debug information copied to clipboard."
 msgstr "ダウンロードログがクリップボードにコピーされました。"
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:367
-#, fuzzy
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:383
+#, fuzzy, c++-format
 msgid ""
 "Developers:\n"
 "{}\n"
@@ -591,8 +609,8 @@ msgstr ""
 "翻訳者:\n"
 "{3}"
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:371
-#, fuzzy
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:387
+#, fuzzy, c++-format
 msgid ""
 "Developers:\n"
 "{}\n"
@@ -669,6 +687,10 @@ msgstr ""
 "有効であれば、Parabolic は他のフォーマットにファイルを変換することなく、選択"
 "した画質に適した動画フォーマットでダウンロードします。（ファイル形式は選択で"
 "きません）"
+
+#, fuzzy
+#~ msgid "No History"
+#~ msgstr "履歴"
 
 #, fuzzy
 #~ msgid "Network connection restored"
@@ -771,9 +793,6 @@ msgstr ""
 #~ msgid "Cancel"
 #~ msgstr "キャンセル"
 
-#~ msgid "Clear"
-#~ msgstr "クリア"
-
 #~ msgid "Clear Completed"
 #~ msgstr "完了したダウンロードをクリア"
 
@@ -813,8 +832,8 @@ msgstr ""
 #~ "generated ones. To exclude auto-generated ones, turn off the option below."
 #~ msgstr ""
 #~ "同じ言語であっても、サイトによって違った言語コードを使用しているかもしれま"
-#~ "せん。2文字、2文字+地域、3文字の３つのパターンが考えられます。例えば、\"en"
-#~ "\"、\"en-US\"、\"eng\" は英語の言語コードとして使用されます。\n"
+#~ "せん。2文字、2文字+地域、3文字の３つのパターンが考えられます。例え"
+#~ "ば、\"en\"、\"en-US\"、\"eng\" は英語の言語コードとして使用されます。\n"
 #~ "より良い結果を得るために、有効な言語コードを全て指定してください。自動生成"
 #~ "された字幕が利用可能な場合は、それらもダウンロードされます。\n"
 #~ "\n"
@@ -1025,9 +1044,6 @@ msgstr ""
 
 #~ msgid "Password (Empty)"
 #~ msgstr "パスワード（空）"
-
-#~ msgid "Play"
-#~ msgstr "再生"
 
 #~ msgid "Playlist"
 #~ msgstr "再生リスト"

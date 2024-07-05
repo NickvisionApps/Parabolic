@@ -268,18 +268,26 @@ namespace winrt::Nickvision::TubeConverter::WinUI::implementation
         ListHistory().Children().Clear();
         for(const HistoricDownload& download : args.getParam())
         {
-            //Delete button
-            FontIcon iconDelete;
-            iconDelete.FontFamily(FontFamily{ L"Segoe Fluent Icons" });
-            iconDelete.FontSize(16);
-            iconDelete.Glyph(L"\uE74D");
-            Button btnDelete;
-            ToolTipService::SetToolTip(btnDelete, winrt::box_value(winrt::to_hstring(_("Delete"))));
-            btnDelete.Content(iconDelete);
-            btnDelete.Click([this, download](const IInspectable& sender, const RoutedEventArgs& args)
+            //Button panel
+            StackPanel panel;
+            panel.Orientation(Orientation::Horizontal);
+            panel.Spacing(6);
+            //Play button
+            if(std::filesystem::exists(download.getPath()))
             {
-                m_controller->removeHistoricDownload(download);
-            });
+                FontIcon iconPlay;
+                iconPlay.FontFamily(FontFamily{ L"Segoe Fluent Icons" });
+                iconPlay.FontSize(16);
+                iconPlay.Glyph(L"\uE768");
+                Button btnPlay;
+                ToolTipService::SetToolTip(btnPlay, winrt::box_value(winrt::to_hstring(_("Play"))));
+                btnPlay.Content(iconPlay);
+                btnPlay.Click([this, download](const IInspectable& sender, const RoutedEventArgs& args) -> Windows::Foundation::IAsyncAction
+                {
+                    co_await Launcher::LaunchFileAsync(co_await Windows::Storage::StorageFile::GetFileFromPathAsync(winrt::to_hstring(download.getPath().string())));
+                });
+                panel.Children().Append(btnPlay);
+            }
             //Download button
             FontIcon iconDownload;
             iconDownload.FontFamily(FontFamily{ L"Segoe Fluent Icons" });
@@ -292,11 +300,19 @@ namespace winrt::Nickvision::TubeConverter::WinUI::implementation
             {
                 //TODO
             });
-            //Button panel
-            StackPanel panel;
-            panel.Orientation(Orientation::Horizontal);
-            panel.Spacing(6);
             panel.Children().Append(btnDownload);
+            //Delete button
+            FontIcon iconDelete;
+            iconDelete.FontFamily(FontFamily{ L"Segoe Fluent Icons" });
+            iconDelete.FontSize(16);
+            iconDelete.Glyph(L"\uE74D");
+            Button btnDelete;
+            ToolTipService::SetToolTip(btnDelete, winrt::box_value(winrt::to_hstring(_("Delete"))));
+            btnDelete.Content(iconDelete);
+            btnDelete.Click([this, download](const IInspectable& sender, const RoutedEventArgs& args)
+            {
+                m_controller->removeHistoricDownload(download);
+            });
             panel.Children().Append(btnDelete);
             //Row
             Controls::SettingsRow row{ winrt::make<Controls::implementation::SettingsRow>() };

@@ -15,10 +15,10 @@ namespace Nickvision::TubeConverter::Shared::Helpers
         }
         try
         {
-            logger.log(Logging::LogLevel::Info, "Starting python interpreter...");
+            logger.log(Logging::LogLevel::Debug, "Starting python interpreter...");
             py::initialize_interpreter();
             logger.log(Logging::LogLevel::Info, "Python interpreter started.");
-            logger.log(Logging::LogLevel::Info, "Loading yt-dlp python module...");
+            logger.log(Logging::LogLevel::Debug, "Loading yt-dlp python module...");
             py::module_ ytdlp{ py::module_::import("yt_dlp") };
             logger.log(Logging::LogLevel::Info, "yt-dlp python module loaded.");
             pythonStarted = true;
@@ -38,7 +38,7 @@ namespace Nickvision::TubeConverter::Shared::Helpers
         }
         try
         {
-            logger.log(Logging::LogLevel::Info, "Shutting down python interpreter...");
+            logger.log(Logging::LogLevel::Debug, "Shutting down python interpreter...");
             py::finalize_interpreter();
             logger.log(Logging::LogLevel::Info, "Python interpreter shut down.");
             pythonStarted = false;

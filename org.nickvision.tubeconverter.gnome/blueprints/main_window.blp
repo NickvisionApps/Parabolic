@@ -11,8 +11,6 @@ menu mainMenu {
 Adw.ApplicationWindow root {
   width-request: 360;
   height-request: 200;
-  default-width: 900;
-  default-height: 700;
 
   Adw.Breakpoint breakpoint {
     condition ("max-width: 400sp")
@@ -73,7 +71,7 @@ Adw.ApplicationWindow root {
               spacing: 12;
 
               Gtk.Image {
-                icon-name: "user-home-symbolic";
+                icon-name: "dialog-password-symbolic";
               }
 
               Gtk.Label {
@@ -90,7 +88,7 @@ Adw.ApplicationWindow root {
               spacing: 12;
 
               Gtk.Image {
-                icon-name: "user-home-symbolic";
+                icon-name: "emoji-recent-symbolic";
               }
 
               Gtk.Label {
@@ -119,7 +117,7 @@ Adw.ApplicationWindow root {
               spacing: 12;
 
               Gtk.Image {
-                icon-name: "user-home-symbolic";
+                icon-name: "folder-download-symbolic";
               }
 
               Gtk.Label {
@@ -136,7 +134,7 @@ Adw.ApplicationWindow root {
               spacing: 12;
 
               Gtk.Image {
-                icon-name: "user-home-symbolic";
+                icon-name: "hourglass-symbolic";
               }
 
               Gtk.Label {
@@ -153,7 +151,7 @@ Adw.ApplicationWindow root {
               spacing: 12;
 
               Gtk.Image {
-                icon-name: "user-home-symbolic";
+                icon-name: "check-round-outline-symbolic";
               }
 
               Gtk.Label {
@@ -185,7 +183,7 @@ Adw.ApplicationWindow root {
 
               Adw.ViewStackPage {
                 name: "home";
-                child: Adw.StatusPage pageGreeting {
+                child: Adw.StatusPage {
                   icon-name: "org.nickvision.tubeconverter";
                   title: _("Download Media");
                   description: _("Add a video, audio, or playlist URL to start downloading");
@@ -201,8 +199,38 @@ Adw.ApplicationWindow root {
 
               Adw.ViewStackPage {
                 name: "history";
-                child: Gtk.Box {
+                child: Adw.ViewStack historyViewStack {
+                  Adw.ViewStackPage {
+                    name: "no-history";
+                    child: Adw.StatusPage {
+                       icon-name: "snapshots-alt-symbolic";
+                       title: _("No history available");
 
+                       styles ["compact"]
+                    };
+                  }
+
+                  Adw.ViewStackPage {
+                    name: "history";
+                    child: Adw.Clamp {
+                      maximum-size: 600;
+                      child: Adw.PreferencesGroup historyGroup {
+                        title: _("Past Downloads");
+                        header-suffix: Gtk.Button {
+                          valign: center;
+                          action-name: "win.clearHistory";
+                          tooltip-text: _("Clear History");
+    
+                          Adw.ButtonContent {
+                            icon-name: "larger-brush-symbolic";
+                            label: _("Clear");
+                          }
+
+                          styles ["flat"]
+                        };
+                      };
+                    };
+                  }
                 };
               }
 
