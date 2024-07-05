@@ -1,7 +1,7 @@
-name: tube-converter
+name: tube-converter 
 base: core24
 adopt-info: tube-converter
-grade: devel
+grade: stable
 confinement: strict
 compression: lzo
 
@@ -11,81 +11,54 @@ lint:
     - library
 
 parts:
-  gnome/sdk:
-    source: /snap/snapcraft/current/share/snapcraft/extensions/desktop/command-chain
-    plugin: make
-  blueprint-compiler:
-    source-depth: 1
-    source: https://gitlab.gnome.org/jwestman/blueprint-compiler.git
-    source-tag: "v0.12.0"
-    plugin: meson
-    build-environment:
-      - &id001
-        PATH: /snap/gnome-46-2404-sdk/current/usr/bin${PATH:+:$PATH}
-      - &id002
-        XDG_DATA_DIRS: $SNAPCRAFT_STAGE/usr/share:/snap/gnome-46-2404-sdk/current/usr/share:/usr/share${XDG_DATA_DIRS:+:$XDG_DATA_DIRS}
-      - &id003
-        LD_LIBRARY_PATH: /snap/gnome-46-2404-sdk/current/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR:/snap/gnome-46-2404-sdk/current/usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR:/snap/gnome-46-2404-sdk/current/usr/lib:/snap/gnome-46-2404-sdk/current/usr/lib/vala-current:/snap/gnome-46-2404-sdk/current/usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR/pulseaudio${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}
-      - &id004
-        PKG_CONFIG_PATH: /snap/gnome-46-2404-sdk/current/usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR/pkgconfig:/snap/gnome-46-2404-sdk/current/usr/lib/pkgconfig:/snap/gnome-46-2404-sdk/current/usr/share/pkgconfig${PKG_CONFIG_PATH:+:$PKG_CONFIG_PATH}
-      - &id005
-        GETTEXTDATADIRS: /snap/gnome-46-2404-sdk/current/usr/share/gettext-current${GETTEXTDATADIRS:+:$GETTEXTDATADIRS}
-      - &id006
-        GDK_PIXBUF_MODULE_FILE: /snap/gnome-46-2404-sdk/current/usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR/gdk-pixbuf-current/loaders.cache
-      - &id007
-        ACLOCAL_PATH: /snap/gnome-46-2404-sdk/current/usr/share/aclocal${ACLOCAL_PATH:+:$ACLOCAL_PATH}
-      - &id008
-        PYTHONPATH: $CRAFT_STAGE/usr/lib/python3/dist-packages:/snap/gnome-46-2404-sdk/current/usr/lib/python3.10:/snap/gnome-46-2404-sdk/current/usr/lib/python3/dist-packages:/snap/gnome-46-2404-sdk/current/usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR/gobject-introspection${PYTHONPATH:+:$PYTHONPATH}
-      - &id009
-        GI_TYPELIB_PATH: /snap/gnome-46-2404-sdk/current/usr/lib/girepository-1.0:/snap/gnome-46-2404-sdk/usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR/girepository-1.0${GI_TYPELIB_PATH:+:$GI_TYPELIB_PATH}
-      - &id010
-        CMAKE_PREFIX_PATH: ${CRAFT_STAGE}/usr/lib/${CRAFT_ARCH_TRIPLET_BUILD_FOR}/cmake${CMAKE_PREFIX_PATH:+:$CMAKE_PREFIX_PATH}
-    meson-parameters:
-      - --prefix=/usr
-    override-prime: ""
-
-  build-deps:
-    plugin: nil
-    build-environment:
-      - *id001
-      - *id002
-      - *id003
-      - *id004
-      - *id005
-      - *id006
-      - *id007
-      - *id008
-      - *id009
-      - *id010
-    build-packages:
-      - g++-13
-      - gcc-13
-      - libjsoncpp-dev
-      - libstdc++6
-
   deps:
-    after: [build-deps]
     plugin: nil
     stage-packages:
       - libjsoncpp25
-      - libboost-date-time1.74.0
       - libstdc++6
+      - aria2
+      - libcares2
+      - libaria2-0
+      - libboost-system1.83.0
+      - libboost-date-time1.83.0
     prime:
       - usr/lib/${CRAFT_ARCH_TRIPLET_BUILD_FOR}/libstdc++*.so*
       - usr/lib/${CRAFT_ARCH_TRIPLET_BUILD_FOR}/libjsoncpp*
-      - usr/lib/${CRAFT_ARCH_TRIPLET_BUILD_FOR}/libboost_date_time.so.1.74.0
-      - usr/lib/${CRAFT_ARCH_TRIPLET_BUILD_FOR}/libboost_thread.so.1.74.0
+      - usr/lib/${CRAFT_ARCH_TRIPLET_BUILD_FOR}/libaria2.so*
+      - usr/lib/${CRAFT_ARCH_TRIPLET_BUILD_FOR}/libcares.so*
+      - usr/lib/${CRAFT_ARCH_TRIPLET_BUILD_FOR}/libboost_system.so*
+      - usr/lib/${CRAFT_ARCH_TRIPLET_BUILD_FOR}/libboost_date_time.so*
+      - usr/bin/aria2c
+
+  python-deps:
+    plugin: python
+    source: .
+    python-packages:
+      - yt-dlp==2024.7.2
+    stage:
+      - -bin/activate*
+      - -bin/Activate.ps1
+      - -bin/python*
+      - -bin/pip*
+      - -pyvenv.cfg
+      - -lib/*/*/setup*
+      - -lib/*/*/pkg*
+      - -lib/*/*/pip*
+      - -lib/*/*/_dist*
+      - -share
+      - -include
+    organize:
+      lib/python3.12/site-packages: usr/lib/python3/dist-packages
 
   maddy:
-    after: [build-deps]
     source: https://github.com/progsource/maddy.git
-    source-tag: "1.3.0"
+    source-tag: '1.3.0'
     plugin: dump
     source-depth: 1
-    override-prime: ""
+    override-prime: '' 
 
   libnick:
-    after: [maddy, build-deps]
+    after: [maddy]
     source: https://github.com/nickvisionapps/libnick.git
     source-tag: "2024.7.0"
     source-depth: 1
@@ -96,73 +69,17 @@ parts:
       - -DCMAKE_BUILD_TYPE=Release
     build-environment:
       - CPLUS_INCLUDE_PATH: ${CRAFT_STAGE}/include
-      - *id001
-      - *id002
-      - *id003
-      - *id004
-      - *id005
-      - *id006
-      - *id007
-      - *id008
-      - *id009
-      - *id010
     build-packages:
       - libssl-dev
       - uuid-dev
-    override-prime: ""
-
-  yt-dlp:
-    after: [build-deps]
-    plugin: python
-    source: https://github.com/yt-dlp/yt-dlp.git
-    source-depth: 1
-    source-tag: '2024.07.02'
-    build-environment:
-      # WORKAROUND: The python plugin is broken with gnome extension
-      - PATH: ${CRAFT_PART_INSTALL}/bin:${PATH}
-      - PYTHONPATH: ""
-    prime:
-      # WORKAROUND: Skip venv from python plugin
-      - -usr/bin/activate
-      - -usr/bin/activate.csh
-      - -usr/bin/activate.fish
-      - -usr/bin/Activate.ps1
-      - -usr/bin/python
-      - -usr/bin/python3
-      - -usr/bin/python3.10
-      - -usr/bin/pip
-      - -usr/bin/pip3
-      - -usr/bin/pip3.10
-      - -usr/bin/wheel
-      - -usr/lib/python3.10/dist-packages/pip*
-      - -usr/lib/python3.10/dist-packages/pkg_resources
-      - -usr/lib/python3.10/dist-packages/setuptools*
-      - -pyvenv.cfg
-      - -lib
-      - -lib64
-      - -include
-      - -share
-    organize:
-      bin: usr/bin
-      lib/python3.10/site-packages: usr/lib/python3.10/dist-packages
+      - libjsoncpp-dev
+    override-prime: ''
 
   libxmlplusplus:
-    after: [build-deps]
     source: https://github.com/libxmlplusplus/libxmlplusplus.git
-    source-tag: "5.2.0"
+    source-tag: '5.2.0'
     source-depth: 1
     plugin: meson
-    build-environment:
-      - *id001
-      - *id002
-      - *id003
-      - *id004
-      - *id005
-      - *id006
-      - *id007
-      - *id008
-      - *id009
-      - *id010
     build-packages:
       - libicu-dev
     meson-parameters:
@@ -172,45 +89,33 @@ parts:
       - usr/lib/${CRAFT_ARCH_TRIPLET_BUILD_FOR}/libxml++-5.0*.so*
 
   tube-converter:
-    after: [build-deps, maddy, libnick, yt-dlp, libxmlplusplus, blueprint-compiler]
+    after: [maddy, libnick, libxmlplusplus]
     plugin: cmake
     source: .
     build-snaps:
       - cmake
-      - gnome-46-2404-sdk/latest/edge
-      - gnome-46-2404/latest/edge
+      - blueprint-compiler/latest/edge
+      - ffmpeg-2404/latest/candidate
     cmake-parameters:
       - -DCMAKE_INSTALL_PREFIX=/snap/tube-converter/current/usr
       - -DCMAKE_BUILD_TYPE=Release
       - -DBUILD_TESTING=OFF
     build-packages:
-      - libvulkan-dev
-      - libxkbcommon-dev
-    stage-packages:
-      - libstdc++6
-      - libxkbcommon0
+      - python3-pybind11
+      - libboost-dev
+      - libboost-date-time1.83-dev
+      - libboost-system1.83-dev
     build-environment:
-      - *id001
-      - *id002
-      - *id003
-      - *id004
-      - *id005
-      - *id006
-      - *id007
-      - *id008
-      - *id009
-      - *id010
       - CMAKE_PREFIX_PATH: ${CRAFT_STAGE}/usr/lib/${CRAFT_ARCH_TRIPLET_BUILD_FOR}/cmake${CMAKE_PREFIX_PATH:+:$CMAKE_PREFIX_PATH}
-      - GI_TYPELIB_PATH: /snap/gnome-46-2404-sdk/current/usr/lib/$CRAFT_ARCH_TRIPLET/girepository-1.0:/snap/gnome-46-2404-sdk/current/usr/lib/girepository-1.0
     parse-info: [usr/share/metainfo/org.nickvision.tubeconverter.metainfo.xml]
     organize:
       snap/tube-converter/current: .
 
 plugs:
-  ffmpeg-2204:
+  ffmpeg-2404:
     interface: content
     target: ffmpeg-platform
-    default-provider: ffmpeg-2204
+    default-provider: ffmpeg-2404
 
 slots:
   tube-converter:
@@ -220,61 +125,19 @@ slots:
 
 apps:
   tube-converter:
-    command: usr/lib/org.nickvision.tubeconverter/org.nickvision.tubeconverter.gnome
-    desktop: usr/share/applications/org.nickvision.tubeconverter.desktop
+    command: usr/bin/org.nickvision.tubeconverter
+    extensions:
+      - gnome
     common-id: org.nickvision.tubeconverter
+    environment:
+      PYTHONPATH: $SNAP/usr/lib/python3/dist-packages:$PYTHONPATH
+      PATH: $SNAP/ffmpeg-platform/usr/bin:$PATH
+      LD_LIBRARY_PATH: $SNAP/ffmpeg-platform/usr/lib/$CRAFT_ARCH_TRIPLET:$LD_LIBRARY_PATH
     plugs:
-      - desktop
-      - desktop-legacy
-      - gsettings
-      - opengl
-      - wayland
-      - x11
+      - home
+      - network
+      - network-status
+      - mount-observe
       - unity7
       - screen-inhibit-control
       - password-manager-service
-      - network
-      - network-status
-    command-chain:
-      - snap/command-chain/desktop-launch
-    environment:
-      PYTHONPATH: $SNAP/usr/lib/python3.10/dist-packages:$PYTHONPATH
-      PATH: $SNAP/ffmpeg-platform/usr/bin:$PATH
-      LD_LIBRARY_PATH: $SNAP/ffmpeg-platform/usr/lib/$CRAFT_ARCH_TRIPLET:$LD_LIBRARY_PATH
-
-assumes:
-  - snapd2.43
-plugs:
-  desktop:
-    mount-host-font-cache: false
-  gtk-3-themes:
-    interface: content
-    target: $SNAP/data-dir/themes
-    default-provider: gtk-common-themes
-  icon-themes:
-    interface: content
-    target: $SNAP/data-dir/icons
-    default-provider: gtk-common-themes
-  sound-themes:
-    interface: content
-    target: $SNAP/data-dir/sounds
-    default-provider: gtk-common-themes
-  gnome-46-2404:
-    interface: content
-    target: $SNAP/gnome-platform
-    default-provider: gnome-46-2404
-environment:
-  SNAP_DESKTOP_RUNTIME: $SNAP/gnome-platform
-  GTK_USE_PORTAL: "1"
-hooks:
-  configure:
-    plugs:
-      - desktop
-    command-chain:
-      - snap/command-chain/hooks-configure-fonts
-
-layout:
-  /usr/share/xml/iso-codes:
-    bind: $SNAP/gnome-platform/usr/share/xml/iso-codes
-  /usr/share/libdrm:
-    bind: $SNAP/gnome-platform/usr/share/libdrm
