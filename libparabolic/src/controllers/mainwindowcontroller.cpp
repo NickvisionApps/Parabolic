@@ -80,6 +80,10 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         {
             m_logger.log(Logging::LogLevel::Info, "Keyring unlocked.");
         }
+        else
+        {
+            m_logger.log(Logging::LogLevel::Error, "Unable to unlock keyring.");
+        }
     }
 
     const AppInfo& MainWindowController::getAppInfo() const

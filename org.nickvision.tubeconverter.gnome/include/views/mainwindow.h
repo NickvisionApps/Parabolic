@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <memory>
+#include <vector>
 #include <adwaita.h>
 #include "controllers/mainwindowcontroller.h"
 
@@ -66,6 +67,16 @@ namespace Nickvision::TubeConverter::GNOME::Views
          */
         void onDisclaimerTriggered(const Nickvision::Events::ParamEventArgs<std::string>& args);
         /**
+         * @brief Handles when the ability to download is changed.
+         * @param args Nickvision::Events::ParamEventArgs<bool>
+         */
+        void onDownloadAbilityChanged(const Nickvision::Events::ParamEventArgs<bool>& args);
+        /**
+         * @brief Handles when the history is changed.
+         * @param args Nickvision::Events::ParamEventArgs<std::vector<Models::HistoricDownload>>
+         */
+        void onHistoryChanged(const ::Nickvision::Events::ParamEventArgs<std::vector<::Nickvision::TubeConverter::Shared::Models::HistoricDownload>>& args);
+        /**
          * @brief Quits the application. 
          */
         void quit();
@@ -85,10 +96,15 @@ namespace Nickvision::TubeConverter::GNOME::Views
          * @brief Opens the application's about dialog. 
          */
         void about();
+        /**
+         * @brief Clears the download history.
+         */
+        void clearHistory();
         std::shared_ptr<Shared::Controllers::MainWindowController> m_controller;
         GtkApplication* m_app;
         GtkBuilder* m_builder;
         AdwApplicationWindow* m_window;
+        std::vector<AdwActionRow*> m_historyRows;
     };
 }
 
