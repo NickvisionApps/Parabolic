@@ -69,6 +69,7 @@ endif()
 
 if (BUILD_TESTING)
     add_executable(libparabolic_test
+        "tests/historytests.cpp"
         "tests/main.cpp"
         "tests/urlinfotests.cpp")
     find_package(GTest CONFIG REQUIRED)

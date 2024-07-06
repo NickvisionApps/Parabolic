@@ -5,6 +5,7 @@
 #include <vector>
 #include <libnick/app/datafilebase.h>
 #include "historicdownload.h"
+#include "historylength.h"
 
 namespace Nickvision::TubeConverter::Shared::Models
 {
@@ -25,6 +26,16 @@ namespace Nickvision::TubeConverter::Shared::Models
          * @return The download history
          */
         const std::vector<HistoricDownload>& getHistory() const;
+        /**
+         * @brief Gets the maximum length to keep a historic download.
+         * @return The maximum length to keep a historic download
+         */
+        HistoryLength getLength() const;
+        /**
+         * @brief Sets the maximum length to keep a historic download.
+         * @param length The maximum length to keep a historic download
+         */
+        void setLength(HistoryLength length);
         /**
          * @brief Adds a download to the history.
          * @param download The download to add
@@ -55,6 +66,7 @@ namespace Nickvision::TubeConverter::Shared::Models
          */
         void updateDisk();
         std::vector<HistoricDownload> m_history;
+        HistoryLength m_length;
     };
 }
 

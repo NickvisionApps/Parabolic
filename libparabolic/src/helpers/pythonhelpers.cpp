@@ -1,13 +1,14 @@
 #include "helpers/pythonhelpers.h"
 #include <sstream>
 
+using namespace Nickvision::Logging;
 namespace py = pybind11;
 
 namespace Nickvision::TubeConverter::Shared::Helpers
 {
     static bool pythonStarted{ false };
 
-    bool PythonHelpers::start(const Logging::Logger& logger)
+    bool PythonHelpers::start(const Logger& logger)
     {
         if(pythonStarted)
         {
@@ -15,22 +16,22 @@ namespace Nickvision::TubeConverter::Shared::Helpers
         }
         try
         {
-            logger.log(Logging::LogLevel::Debug, "Starting python interpreter...");
+            logger.log(LogLevel::Debug, "Starting python interpreter...");
             py::initialize_interpreter();
-            logger.log(Logging::LogLevel::Info, "Python interpreter started.");
-            logger.log(Logging::LogLevel::Debug, "Loading yt-dlp python module...");
+            logger.log(LogLevel::Info, "Python interpreter started.");
+            logger.log(LogLevel::Debug, "Loading yt-dlp python module...");
             py::module_ ytdlp{ py::module_::import("yt_dlp") };
-            logger.log(Logging::LogLevel::Info, "yt-dlp python module loaded.");
+            logger.log(LogLevel::Debug, "yt-dlp python module loaded.");
             pythonStarted = true;
         }
         catch(const std::exception& e)
         {
-            logger.log(Logging::LogLevel::Error, "Unable to start python: " + std::string(e.what()));
+            logger.log(LogLevel::Error, "Unable to start python: " + std::string(e.what()));
         }
         return pythonStarted;
     }
 
-    bool PythonHelpers::shutdown(const Logging::Logger& logger)
+    bool PythonHelpers::shutdown(const Logger& logger)
     {
         if(!pythonStarted)
         {
@@ -38,14 +39,14 @@ namespace Nickvision::TubeConverter::Shared::Helpers
         }
         try
         {
-            logger.log(Logging::LogLevel::Debug, "Shutting down python interpreter...");
+            logger.log(LogLevel::Debug, "Shutting down python interpreter...");
             py::finalize_interpreter();
-            logger.log(Logging::LogLevel::Info, "Python interpreter shut down.");
+            logger.log(LogLevel::Debug, "Python interpreter shut down.");
             pythonStarted = false;
         }
         catch(const std::exception& e)
         {
-            logger.log(Logging::LogLevel::Error, "Unable to shut down python: " + std::string(e.what()));
+            logger.log(LogLevel::Error, "Unable to shut down python: " + std::string(e.what()));
         }
         return !pythonStarted;
     }
