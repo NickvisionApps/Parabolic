@@ -97,6 +97,7 @@ namespace Nickvision::TubeConverter::GNOME::Views
 
     void MainWindow::show()
     {
+        gtk_window_present(GTK_WINDOW(m_window));
         WindowGeometry geometry{ m_controller->startup(m_controller->getAppInfo().getId() + ".desktop") };
         gtk_window_set_default_size(GTK_WINDOW(m_window), static_cast<int>(geometry.getWidth()), static_cast<int>(geometry.getHeight()));
         if(geometry.isMaximized())
@@ -104,7 +105,6 @@ namespace Nickvision::TubeConverter::GNOME::Views
             gtk_window_maximize(GTK_WINDOW(m_window));
         }
         gtk_list_box_select_row(GTK_LIST_BOX(gtk_builder_get_object(m_builder, "listNavItems")), gtk_list_box_get_row_at_index(GTK_LIST_BOX(gtk_builder_get_object(m_builder, "listNavItems")), 0));
-        gtk_window_present(GTK_WINDOW(m_window));
     }
 
     bool MainWindow::onCloseRequested()

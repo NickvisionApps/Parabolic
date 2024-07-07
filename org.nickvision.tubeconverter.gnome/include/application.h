@@ -34,8 +34,6 @@ namespace Nickvision::TubeConverter::GNOME
          * @param app The GtkApplication for the running app 
          */
         void onActivate(GtkApplication* app);
-        int m_argc;
-        char** m_argv;
         std::shared_ptr<Shared::Controllers::MainWindowController> m_controller;
         AdwApplication* m_adw;
         std::shared_ptr<Views::MainWindow> m_mainWindow;
