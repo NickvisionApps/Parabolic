@@ -3,6 +3,7 @@
 #include "MainWindow.xaml.h"
 
 using namespace ::Nickvision::Helpers;
+using namespace ::Nickvision::Logging;
 using namespace ::Nickvision::TubeConverter::Shared::Controllers;
 using namespace ::Nickvision::TubeConverter::Shared::Models;
 using namespace winrt::Microsoft::UI::Xaml;
@@ -46,7 +47,7 @@ namespace winrt::Nickvision::TubeConverter::WinUI::implementation
             m_mainWindow = winrt::make<MainWindow>();
             m_mainWindow.as<MainWindow>()->SetController(m_controller, m_systemTheme);
         }
-        m_controller->log(Logging::LogLevel::Debug, "Started WinUI application.");
+        m_controller->log(LogLevel::Debug, "Started WinUI application.");
         m_mainWindow.Activate();
     }
 }

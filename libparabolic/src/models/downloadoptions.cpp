@@ -14,6 +14,17 @@ namespace Nickvision::TubeConverter::Shared::Models
 
     }
 
+    DownloadOptions::DownloadOptions(const std::string& url)
+        : m_url{ url },
+        m_fileType{ MediaFileType::MP4 },
+        m_downloadSubtitles{ false },
+        m_limitSpeed{ false },
+        m_preferAV1{ false },
+        m_splitChapters{ false }
+    {
+
+    }
+
     const std::string& DownloadOptions::getUrl() const
     {
         return m_url;
@@ -111,6 +122,10 @@ namespace Nickvision::TubeConverter::Shared::Models
 
     void DownloadOptions::setLimitSpeed(bool limitSpeed)
     {
+        if(limitSpeed && m_timeFrame.has_value())
+        {
+            return;
+        }
         m_limitSpeed = limitSpeed;
     }
 
@@ -141,6 +156,10 @@ namespace Nickvision::TubeConverter::Shared::Models
 
     void DownloadOptions::setTimeFrame(const std::optional<TimeFrame>& timeFrame)
     {
+        if(timeFrame && m_limitSpeed)
+        {
+            return;
+        }
         m_timeFrame = timeFrame;
     }
 }

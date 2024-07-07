@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-07-05 22:43-0400\n"
+"POT-Creation-Date: 2024-07-07 14:45-0400\n"
 "PO-Revision-Date: 2024-04-08 16:01+0000\n"
 "Last-Translator: Jiri Grönroos <jiri.gronroos@iki.fi>\n"
 "Language-Team: Finnish <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -65,22 +65,27 @@ msgstr "Uusi päivitys saatavilla."
 msgid "Unable to download and install update"
 msgstr "Päivityksen lataaminen ja asentaminen ei onnistu."
 
-#: libparabolic/src/models/downloadprogressstate.cpp:55
+#: libparabolic/src/models/download.cpp:63
+#, fuzzy
+msgid "File already exists and overwriting is disabled."
+msgstr "Tiedosto on jo olemassa, ja korvaaminen ei ole sallittua"
+
+#: libparabolic/src/models/downloadprogresschangedeventargs.cpp:21
 #, fuzzy, c-format
 msgid "%.1f GiB/s"
 msgstr "{0:f1} GiB/s"
 
-#: libparabolic/src/models/downloadprogressstate.cpp:59
+#: libparabolic/src/models/downloadprogresschangedeventargs.cpp:25
 #, fuzzy, c-format
 msgid "%.1f MiB/s"
 msgstr "{0:f1} MiB/s"
 
-#: libparabolic/src/models/downloadprogressstate.cpp:63
+#: libparabolic/src/models/downloadprogresschangedeventargs.cpp:29
 #, fuzzy, c-format
 msgid "%.1f KiB/s"
 msgstr "{0:f1} KiB/s"
 
-#: libparabolic/src/models/downloadprogressstate.cpp:67
+#: libparabolic/src/models/downloadprogresschangedeventargs.cpp:33
 #, c-format
 msgid "%.1f B/s"
 msgstr ""
@@ -798,9 +803,6 @@ msgstr ""
 
 #~ msgid "Failed to enable keyring."
 #~ msgstr "Avainnipun käyttöönotto epäonnistui."
-
-#~ msgid "File already exists, and overwriting is disallowed"
-#~ msgstr "Tiedosto on jo olemassa, ja korvaaminen ei ole sallittua"
 
 #~ msgid "File Name"
 #~ msgstr "Tiedoston nimi"

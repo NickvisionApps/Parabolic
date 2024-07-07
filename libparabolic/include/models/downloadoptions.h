@@ -24,6 +24,11 @@ namespace Nickvision::TubeConverter::Shared::Models
          */
         DownloadOptions();
         /**
+         * @brief Construct a DownloadOptions.
+         * @param url The URL of the download
+         */
+        DownloadOptions(const std::string& url);
+        /**
          * @brief Gets the URL of the download.
          * @return The URL of the download
          */
@@ -120,6 +125,7 @@ namespace Nickvision::TubeConverter::Shared::Models
         bool getLimitSpeed() const;
         /**
          * @brief Sets whether or not to limit the download speed.
+         * @brief Can only be set to true if no time frame was specified.
          * @param limitSpeed True if limiting the download speed, else false
          */
         void setLimitSpeed(bool limitSpeed);
@@ -150,6 +156,7 @@ namespace Nickvision::TubeConverter::Shared::Models
         const std::optional<TimeFrame>& getTimeFrame() const;
         /**
          * @brief Sets the time frame of the download.
+         * @brief Can only be set to a value if limit speed is false.
          * @param timeFrame The time frame of the download
          */
         void setTimeFrame(const std::optional<TimeFrame>& timeFrame);

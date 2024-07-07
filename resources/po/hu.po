@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-07-05 22:43-0400\n"
+"POT-Creation-Date: 2024-07-07 14:45-0400\n"
 "PO-Revision-Date: 2024-01-06 02:07+0000\n"
 "Last-Translator: Kingproone <PlayerGuy@protonmail.com>\n"
 "Language-Team: Hungarian <https://hosted.weblate.org/projects/nickvision-"
@@ -68,22 +68,27 @@ msgstr "Frissítés érhető el."
 msgid "Unable to download and install update"
 msgstr "A frissítés letöltése és telepítése nem sikerült."
 
-#: libparabolic/src/models/downloadprogressstate.cpp:55
+#: libparabolic/src/models/download.cpp:63
+#, fuzzy
+msgid "File already exists and overwriting is disabled."
+msgstr "A fájl már létezik, de felülírás nem engedélyezett"
+
+#: libparabolic/src/models/downloadprogresschangedeventargs.cpp:21
 #, fuzzy, c-format
 msgid "%.1f GiB/s"
 msgstr "{0:f1} GiB/mp"
 
-#: libparabolic/src/models/downloadprogressstate.cpp:59
+#: libparabolic/src/models/downloadprogresschangedeventargs.cpp:25
 #, fuzzy, c-format
 msgid "%.1f MiB/s"
 msgstr "{0:f1} MiB/mp"
 
-#: libparabolic/src/models/downloadprogressstate.cpp:63
+#: libparabolic/src/models/downloadprogresschangedeventargs.cpp:29
 #, fuzzy, c-format
 msgid "%.1f KiB/s"
 msgstr "{0:f1} KiB/mp"
 
-#: libparabolic/src/models/downloadprogressstate.cpp:67
+#: libparabolic/src/models/downloadprogresschangedeventargs.cpp:33
 #, c-format
 msgid "%.1f B/s"
 msgstr ""
@@ -914,9 +919,6 @@ msgstr ""
 
 #~ msgid "Failed to enable keyring."
 #~ msgstr "Jelszókezelő engedélyezése nem lehetséges."
-
-#~ msgid "File already exists, and overwriting is disallowed"
-#~ msgstr "A fájl már létezik, de felülírás nem engedélyezett"
 
 #~ msgid "File Name"
 #~ msgstr "Fájlnév"

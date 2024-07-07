@@ -9,10 +9,11 @@ add_library(libparabolic
     "src/controllers/preferencesviewcontroller.cpp"
     "src/helpers/pythonhelpers.cpp"
     "src/models/configuration.cpp"
+    "src/models/download.cpp"
     "src/models/downloaderoptions.cpp"
     "src/models/downloadhistory.cpp"
     "src/models/downloadoptions.cpp"
-    "src/models/downloadprogressstate.cpp"
+    "src/models/downloadprogresschangedeventargs.cpp"
     "src/models/historicdownload.cpp"
     "src/models/media.cpp"
     "src/models/mediafiletype.cpp"
@@ -69,6 +70,7 @@ endif()
 
 if (BUILD_TESTING)
     add_executable(libparabolic_test
+        "tests/downloadtests.cpp"
         "tests/historytests.cpp"
         "tests/main.cpp"
         "tests/urlinfotests.cpp")
