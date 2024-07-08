@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-07-07 14:45-0400\n"
+"POT-Creation-Date: 2024-07-08 09:24-0400\n"
 "PO-Revision-Date: 2023-10-09 05:02+0000\n"
 "Last-Translator: Abdur Rehman Imran <arehmanimran4@gmail.com>\n"
 "Language-Team: Urdu <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -66,10 +66,20 @@ msgstr ""
 msgid "Unable to download and install update"
 msgstr ""
 
-#: libparabolic/src/models/download.cpp:63
+#: libparabolic/src/models/download.cpp:57
 #, fuzzy
 msgid "File already exists and overwriting is disabled."
 msgstr "فائل پہلے سے موجود ہے، اور دوبارہ لکھنے کی اجازت نہیں ہے"
+
+#: libparabolic/src/models/download.cpp:239
+#, fuzzy
+msgid "Download using aria2 has started."
+msgstr "aria2 کا استعمال کرتے ہوئے ڈاؤن لوڈ شروع ہو گیا ہے"
+
+#: libparabolic/src/models/download.cpp:243
+#, fuzzy
+msgid "Download using ffmpeg has started."
+msgstr "ffmpeg کا استعمال کرتے ہوئے ڈاؤن لوڈ شروع ہو گیا ہے"
 
 #: libparabolic/src/models/downloadprogresschangedeventargs.cpp:21
 #, fuzzy, c-format
@@ -91,8 +101,8 @@ msgstr "{0:f1} KiB/s"
 msgid "%.1f B/s"
 msgstr ""
 
-#: libparabolic/src/models/videoresolution.cpp:19
-#: libparabolic/src/models/videoresolution.cpp:57
+#: libparabolic/src/models/videoresolution.cpp:21
+#: libparabolic/src/models/videoresolution.cpp:63
 msgid "Best"
 msgstr "بہترین"
 
@@ -850,12 +860,6 @@ msgstr ""
 
 #~ msgid "Download Specific Timeframe"
 #~ msgstr "مخصوص ٹائم فریم ڈاؤن لوڈ کریں"
-
-#~ msgid "Download using aria2 has started"
-#~ msgstr "aria2 کا استعمال کرتے ہوئے ڈاؤن لوڈ شروع ہو گیا ہے"
-
-#~ msgid "Download using ffmpeg has started"
-#~ msgstr "ffmpeg کا استعمال کرتے ہوئے ڈاؤن لوڈ شروع ہو گیا ہے"
 
 #, csharp-format
 #~ msgid "Downloading {0:f2}% ({1})"

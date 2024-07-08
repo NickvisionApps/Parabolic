@@ -63,7 +63,7 @@ begin
   then
     MsgBox('Unable to install Python. Please try again. THE APP WILL NOT FUNCTION CORRECTLY.', mbError, MB_OK)
   else begin
-    if not Exec(ExpandConstant('{app}\pythonw.exe'), '-m pip install --force-reinstall "yt-dlp==2024.07.02"', '', SW_HIDE, ewWaitUntilTerminated, ResultCode)
+    if not Exec(ExpandConstant('{app}\pythonw.exe'), '-m pip install --force-reinstall "yt-dlp==2024.07.07"', '', SW_HIDE, ewWaitUntilTerminated, ResultCode)
     then
       MsgBox('Unable to install yt-dlp. Please try again. THE APP WILL NOT FUNCTION CORRECTLY.', mbError, MB_OK)
   end;

@@ -18,9 +18,15 @@ namespace Nickvision::TubeConverter::Shared::Helpers
             return true;
         }
         //Write yt-dlp plugin
+        logger.log(LogLevel::Debug, "Writing yt-dlp plugin...");
         std::filesystem::path pluginPath{ UserDirectories::get(UserDirectory::Config) / "yt-dlp" / "plugins" / "tubeconverter" / "yt_dlp_plugins" / "postprocessor" / "tubeconverter.py" };
         std::filesystem::create_directories(pluginPath.parent_path());
         std::ofstream pluginFile{pluginPath, std::ios::trunc };
+        if(!pluginFile)
+        {
+            logger.log(LogLevel::Error, "Unable to write yt-dlp plugin.");
+            return false;
+        }
         pluginFile << R"(#!/usr/bin/env python3
 from yt_dlp.postprocessor.ffmpeg import FFmpegMetadataPP, FFmpegSubtitlesConvertorPP, FFmpegEmbedSubtitlePP
 from yt_dlp.postprocessor.embedthumbnail import EmbedThumbnailPP
@@ -79,6 +85,7 @@ class TCEmbedThumbnailPP(EmbedThumbnailPP):
             return [], info
 )";
         pluginFile << std::endl;
+        logger.log(LogLevel::Info, "yt-dlp plugin written.");
         //Start python
         try
         {

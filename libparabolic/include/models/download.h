@@ -3,12 +3,14 @@
 
 #include <filesystem>
 #include <string>
+#include <thread>
 #include <libnick/events/event.h>
 #include <libnick/events/parameventargs.h>
 #include <pybind11/embed.h>
 #include "downloadoptions.h"
 #include "downloaderoptions.h"
 #include "downloadprogresschangedeventargs.h"
+#include "downloadstatus.h"
 
 namespace Nickvision::TubeConverter::Shared::Models
 {
@@ -35,23 +37,20 @@ namespace Nickvision::TubeConverter::Shared::Models
         Events::Event<DownloadProgressChangedEventArgs>& progressChanged();
         /**
          * @brief Gets the event for when the download is completed.
-         * @brief The event's parameter is a boolean indicating whether or not the download was successful.
          * @return The completed event
          */
-        Events::Event<Events::ParamEventArgs<bool>>& completed();
+        Events::Event<Events::ParamEventArgs<DownloadStatus>>& completed();
         /**
          * @brief Starts the download.
          * @brief Python must first be started via PythonHelpers::start().
          * @brief downloaderOptions The DownloaderOptions
-         * @return True if started, else false
          */
-        bool start(const DownloaderOptions& downloaderOptions);
+        void start(const DownloaderOptions& downloaderOptions);
         /**
          * @brief Stops the download.
          * @brief Python must first be started via PythonHelpers::start().
-         * @return True if stopped, else false
          */
-        bool stop();
+        void stop();
 
     private:
         /**
@@ -60,20 +59,19 @@ namespace Nickvision::TubeConverter::Shared::Models
         void invokeLogUpdate();
         /**
          * @brief Invokes the progress changed event with the updated progress.
+         * @param data The dictionary passed by yt-dlp progress hook
          */
-        void progressHook();
+        void progressHook(const pybind11::dict& data);
         DownloadOptions m_options;
         std::string m_id;
+        DownloadStatus m_status;
+        std::string m_filename;
         std::filesystem::path m_tempDirPath;
         std::filesystem::path m_logFilePath;
-        pybind11::object m_logFileHandle;
-        bool m_isRunning;
-        bool m_isDone;
-        bool m_isSuccess;
-        bool m_wasStopped;
-        std::string m_filename;
         Events::Event<DownloadProgressChangedEventArgs> m_progressChanged;
-        Events::Event<Events::ParamEventArgs<bool>> m_completed;
+        Events::Event<Events::ParamEventArgs<DownloadStatus>> m_completed;
+        pybind11::object m_logFileHandle;
+        std::thread m_downloadThread;
     };
 }
 

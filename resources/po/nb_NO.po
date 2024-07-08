@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-07-07 14:45-0400\n"
+"POT-Creation-Date: 2024-07-08 09:24-0400\n"
 "PO-Revision-Date: 2023-06-14 17:48+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/"
@@ -66,10 +66,20 @@ msgstr ""
 msgid "Unable to download and install update"
 msgstr ""
 
-#: libparabolic/src/models/download.cpp:63
+#: libparabolic/src/models/download.cpp:57
 #, fuzzy
 msgid "File already exists and overwriting is disabled."
 msgstr "Filen finnes allerede, og overskriving er ikke tillatt"
+
+#: libparabolic/src/models/download.cpp:239
+#, fuzzy
+msgid "Download using aria2 has started."
+msgstr "Nedlasting med aria2 har startet"
+
+#: libparabolic/src/models/download.cpp:243
+#, fuzzy
+msgid "Download using ffmpeg has started."
+msgstr "Nedlasting med FFmpeg har startet"
 
 #: libparabolic/src/models/downloadprogresschangedeventargs.cpp:21
 #, fuzzy, c-format
@@ -91,8 +101,8 @@ msgstr "{0:f1} KiB/s"
 msgid "%.1f B/s"
 msgstr ""
 
-#: libparabolic/src/models/videoresolution.cpp:19
-#: libparabolic/src/models/videoresolution.cpp:57
+#: libparabolic/src/models/videoresolution.cpp:21
+#: libparabolic/src/models/videoresolution.cpp:63
 msgid "Best"
 msgstr "Best"
 
@@ -763,12 +773,6 @@ msgstr ""
 
 #~ msgid "Download Finished With Error"
 #~ msgstr "Nedlasting fullført med feil"
-
-#~ msgid "Download using aria2 has started"
-#~ msgstr "Nedlasting med aria2 har startet"
-
-#~ msgid "Download using ffmpeg has started"
-#~ msgstr "Nedlasting med FFmpeg har startet"
 
 #, csharp-format
 #~ msgid "Downloading {0:f2}% ({1})"

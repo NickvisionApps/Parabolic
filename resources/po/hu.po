@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-07-07 14:45-0400\n"
+"POT-Creation-Date: 2024-07-08 09:24-0400\n"
 "PO-Revision-Date: 2024-01-06 02:07+0000\n"
 "Last-Translator: Kingproone <PlayerGuy@protonmail.com>\n"
 "Language-Team: Hungarian <https://hosted.weblate.org/projects/nickvision-"
@@ -68,10 +68,20 @@ msgstr "Frissítés érhető el."
 msgid "Unable to download and install update"
 msgstr "A frissítés letöltése és telepítése nem sikerült."
 
-#: libparabolic/src/models/download.cpp:63
+#: libparabolic/src/models/download.cpp:57
 #, fuzzy
 msgid "File already exists and overwriting is disabled."
 msgstr "A fájl már létezik, de felülírás nem engedélyezett"
+
+#: libparabolic/src/models/download.cpp:239
+#, fuzzy
+msgid "Download using aria2 has started."
+msgstr "Letöltés aria2 letöltő használatával megkezdődött"
+
+#: libparabolic/src/models/download.cpp:243
+#, fuzzy
+msgid "Download using ffmpeg has started."
+msgstr "Letöltés ffmpeg kódoló használatával megkezdődött"
 
 #: libparabolic/src/models/downloadprogresschangedeventargs.cpp:21
 #, fuzzy, c-format
@@ -93,8 +103,8 @@ msgstr "{0:f1} KiB/mp"
 msgid "%.1f B/s"
 msgstr ""
 
-#: libparabolic/src/models/videoresolution.cpp:19
-#: libparabolic/src/models/videoresolution.cpp:57
+#: libparabolic/src/models/videoresolution.cpp:21
+#: libparabolic/src/models/videoresolution.cpp:63
 msgid "Best"
 msgstr "Legmagasabb"
 
@@ -861,12 +871,6 @@ msgstr ""
 
 #~ msgid "Download Subtitles"
 #~ msgstr "Feliratok letöltése"
-
-#~ msgid "Download using aria2 has started"
-#~ msgstr "Letöltés aria2 letöltő használatával megkezdődött"
-
-#~ msgid "Download using ffmpeg has started"
-#~ msgstr "Letöltés ffmpeg kódoló használatával megkezdődött"
 
 #, csharp-format
 #~ msgid "Downloading {0:f2}% ({1})"

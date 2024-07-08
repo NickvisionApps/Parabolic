@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-07-07 14:45-0400\n"
+"POT-Creation-Date: 2024-07-08 09:24-0400\n"
 "PO-Revision-Date: 2023-11-17 11:26+0000\n"
 "Last-Translator: Roger VC <rogervilarasau@gmail.com>\n"
 "Language-Team: Catalan <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -68,10 +68,20 @@ msgstr "Actualització nova disponible."
 msgid "Unable to download and install update"
 msgstr "No es pot descarregar i instal·lar actualització."
 
-#: libparabolic/src/models/download.cpp:63
+#: libparabolic/src/models/download.cpp:57
 #, fuzzy
 msgid "File already exists and overwriting is disabled."
 msgstr "El fitxer ja existeix, i la sobreescriptura no es permet"
+
+#: libparabolic/src/models/download.cpp:239
+#, fuzzy
+msgid "Download using aria2 has started."
+msgstr "La descàrrega utilitzant aria2 ha iniciat"
+
+#: libparabolic/src/models/download.cpp:243
+#, fuzzy
+msgid "Download using ffmpeg has started."
+msgstr "La descàrrega utilitzant ffmpeg ha iniciat"
 
 #: libparabolic/src/models/downloadprogresschangedeventargs.cpp:21
 #, fuzzy, c-format
@@ -93,8 +103,8 @@ msgstr "{0:f1} KiB/s"
 msgid "%.1f B/s"
 msgstr ""
 
-#: libparabolic/src/models/videoresolution.cpp:19
-#: libparabolic/src/models/videoresolution.cpp:57
+#: libparabolic/src/models/videoresolution.cpp:21
+#: libparabolic/src/models/videoresolution.cpp:63
 msgid "Best"
 msgstr "Millor"
 
@@ -869,12 +879,6 @@ msgstr ""
 
 #~ msgid "Download Subtitles"
 #~ msgstr "Descàrrega els subtítols"
-
-#~ msgid "Download using aria2 has started"
-#~ msgstr "La descàrrega utilitzant aria2 ha iniciat"
-
-#~ msgid "Download using ffmpeg has started"
-#~ msgstr "La descàrrega utilitzant ffmpeg ha iniciat"
 
 #, csharp-format
 #~ msgid "Downloading {0:f2}% ({1})"

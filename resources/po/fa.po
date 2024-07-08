@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-07-07 14:45-0400\n"
+"POT-Creation-Date: 2024-07-08 09:24-0400\n"
 "PO-Revision-Date: 2024-01-11 20:05+0000\n"
 "Last-Translator: behrooz ramezani <b3hrooz.ram3zani@gmail.com>\n"
 "Language-Team: Persian <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -64,9 +64,19 @@ msgstr "بروز رسانی جدیدی در دسترس قرار گرفته اس�
 msgid "Unable to download and install update"
 msgstr ""
 
-#: libparabolic/src/models/download.cpp:63
+#: libparabolic/src/models/download.cpp:57
 msgid "File already exists and overwriting is disabled."
 msgstr ""
+
+#: libparabolic/src/models/download.cpp:239
+#, fuzzy
+msgid "Download using aria2 has started."
+msgstr "بارگیری با استفاده از aria2 شروع شد"
+
+#: libparabolic/src/models/download.cpp:243
+#, fuzzy
+msgid "Download using ffmpeg has started."
+msgstr "بارگیری با استفاده از ffmpeg شروع شده است"
 
 #: libparabolic/src/models/downloadprogresschangedeventargs.cpp:21
 #, fuzzy, c-format
@@ -88,8 +98,8 @@ msgstr "{0:f1} KiB/s"
 msgid "%.1f B/s"
 msgstr ""
 
-#: libparabolic/src/models/videoresolution.cpp:19
-#: libparabolic/src/models/videoresolution.cpp:57
+#: libparabolic/src/models/videoresolution.cpp:21
+#: libparabolic/src/models/videoresolution.cpp:63
 msgid "Best"
 msgstr "بهترین"
 
@@ -774,12 +784,6 @@ msgstr ""
 
 #~ msgid "Download Specific Timeframe"
 #~ msgstr "بازه زمانی خاص را بارگیری کنید"
-
-#~ msgid "Download using aria2 has started"
-#~ msgstr "بارگیری با استفاده از aria2 شروع شد"
-
-#~ msgid "Download using ffmpeg has started"
-#~ msgstr "بارگیری با استفاده از ffmpeg شروع شده است"
 
 #~ msgid "Downloading..."
 #~ msgstr "در حال بارگیری..."

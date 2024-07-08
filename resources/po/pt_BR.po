@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-07-07 14:45-0400\n"
+"POT-Creation-Date: 2024-07-08 09:24-0400\n"
 "PO-Revision-Date: 2024-04-28 01:07+0000\n"
 "Last-Translator: Murilo Monte <murillomonte086@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
@@ -71,10 +71,20 @@ msgstr "Nova atualização disponível."
 msgid "Unable to download and install update"
 msgstr "Não foi possível baixar e instalar a atualização."
 
-#: libparabolic/src/models/download.cpp:63
+#: libparabolic/src/models/download.cpp:57
 #, fuzzy
 msgid "File already exists and overwriting is disabled."
 msgstr "O arquivo já existe e a substituição não é permitida"
+
+#: libparabolic/src/models/download.cpp:239
+#, fuzzy
+msgid "Download using aria2 has started."
+msgstr "Download utilizando aria2 em execução"
+
+#: libparabolic/src/models/download.cpp:243
+#, fuzzy
+msgid "Download using ffmpeg has started."
+msgstr "O download utilizando FFmpeg foi inciado"
 
 #: libparabolic/src/models/downloadprogresschangedeventargs.cpp:21
 #, fuzzy, c-format
@@ -96,8 +106,8 @@ msgstr "{0:f1} KiB/s"
 msgid "%.1f B/s"
 msgstr ""
 
-#: libparabolic/src/models/videoresolution.cpp:19
-#: libparabolic/src/models/videoresolution.cpp:57
+#: libparabolic/src/models/videoresolution.cpp:21
+#: libparabolic/src/models/videoresolution.cpp:63
 msgid "Best"
 msgstr "Melhor"
 
@@ -892,12 +902,6 @@ msgstr ""
 
 #~ msgid "Download Subtitles"
 #~ msgstr "Baixar Legendas"
-
-#~ msgid "Download using aria2 has started"
-#~ msgstr "Download utilizando aria2 em execução"
-
-#~ msgid "Download using ffmpeg has started"
-#~ msgstr "O download utilizando FFmpeg foi inciado"
 
 #, csharp-format
 #~ msgid "Downloading {0:f2}% ({1})"
