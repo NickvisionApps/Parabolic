@@ -31,6 +31,11 @@ namespace Nickvision::TubeConverter::Shared::Models
          */
         bool isValid() const;
         /**
+         * @brief Gets whether or not the resolution is the best.
+         * @return True if the resolution is the best, else false
+         */
+        bool isBest() const;
+        /**
          * @brief Gets the width of the resolution.
          * @return The width of the resolution
          */

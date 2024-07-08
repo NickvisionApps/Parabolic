@@ -1,6 +1,9 @@
 #include "helpers/pythonhelpers.h"
+#include <fstream>
 #include <sstream>
+#include <libnick/filesystem/userdirectories.h>
 
+using namespace Nickvision::Filesystem;
 using namespace Nickvision::Logging;
 namespace py = pybind11;
 
@@ -14,6 +17,69 @@ namespace Nickvision::TubeConverter::Shared::Helpers
         {
             return true;
         }
+        //Write yt-dlp plugin
+        std::filesystem::path pluginPath{ UserDirectories::get(UserDirectory::Config) / "yt-dlp" / "plugins" / "tubeconverter" / "yt_dlp_plugins" / "postprocessor" / "tubeconverter.py" };
+        std::filesystem::create_directories(pluginPath.parent_path());
+        std::ofstream pluginFile{pluginPath, std::ios::trunc };
+        pluginFile << R"(#!/usr/bin/env python3
+from yt_dlp.postprocessor.ffmpeg import FFmpegMetadataPP, FFmpegSubtitlesConvertorPP, FFmpegEmbedSubtitlePP
+from yt_dlp.postprocessor.embedthumbnail import EmbedThumbnailPP
+import os, re
+
+
+class TCMetadataPP(FFmpegMetadataPP):
+    def run(self, info):
+        try:
+            success = super().run(info)
+            return success
+        except Exception as e:
+            self.to_screen(e)
+            self.to_screen('WARNING: Failed to embed metadata')
+            return [], info
+
+
+class TCSubtitlesConvertorPP(FFmpegSubtitlesConvertorPP):
+    def run(self, info):
+        # Remove styling from VTT files before processing
+        # https://trac.ffmpeg.org/ticket/8684
+        subs = info.get('requested_subtitles')
+        if subs is not None:
+            for _, sub in subs.items():
+                if os.path.exists(sub.get('filepath', '')):
+                    with open(sub.get('filepath', ''), 'r') as f:
+                        data = f.read()
+                    data = re.sub(r'^STYLE\n(::cue.*\{\n*[^}]*\}\n+)+', '', data, flags=re.MULTILINE)
+                    with open(sub.get('filepath', ''), 'w') as f:
+                        f.write(data)
+        return super().run(info)
+
+
+class TCEmbedSubtitlePP(FFmpegEmbedSubtitlePP):
+    def run(self, info):
+        try:
+            success = super().run(info)
+            return success
+        except Exception as e:
+          self.to_screen(e)
+          self.to_screen('WARNING: Failed to embed subtitles')
+          return [], info
+
+
+class TCEmbedThumbnailPP(EmbedThumbnailPP):
+    def run(self, info):
+        try:
+            success = super().run(info)
+            return success
+        except Exception as e:
+            self.to_screen(e)
+            self.to_screen('WARNING: Failed to embed thumbnail')
+            idx = next((-i for i, t in enumerate(info['thumbnails'][::-1], 1) if t.get('filepath')), None)
+            thumbnail_filename = info['thumbnails'][idx]['filepath']
+            self._delete_downloaded_files(thumbnail_filename, info=info)
+            return [], info
+)";
+        pluginFile << std::endl;
+        //Start python
         try
         {
             logger.log(LogLevel::Debug, "Starting python interpreter...");
