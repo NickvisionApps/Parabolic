@@ -46,6 +46,13 @@ jobs:
           wget https://aka.ms/vs/17/release/vc_redist.x64.exe -O vc_redist.x64.exe
           wget https://aka.ms/windowsappsdk/1.5/1.5.240607001/windowsappruntimeinstall-x64.exe -O windowsappruntimeinstall-x64.exe
           wget https://www.python.org/ftp/python/3.11.9/python-3.11.9-amd64.exe -O python-3.11.9-amd64.exe
+          wget https://github.com/aria2/aria2/releases/download/release-1.37.0/aria2-1.37.0-win-64bit-build1.zip -o aria2.zip
+          wget https://github.com/GyanD/codexffmpeg/releases/download/2024-07-07-git-0619138639/ffmpeg-2024-07-07-git-0619138639-full_build.zip -o ffmpeg.zip
+          powershell -command "Expand-Archive -Force 'aria2.zip'"
+          mv aria2/aria2-1.37.0-win-64bit-build1/aria2c.exe aria2c.exe
+          mv ffmpeg/ffmpeg-2024-07-07-git-0619138639-full_build/bin/ffmpeg.exe ffmpeg.exe
+          mv ffmpeg/ffmpeg-2024-07-07-git-0619138639-full_build/bin/ffprobe.exe ffprobe.exe
+          mv ffmpeg/ffmpeg-2024-07-07-git-0619138639-full_build/bin/ffplay.exe ffplay.exe
           iscc inno/setup.iss
       - name: Upload
         uses: actions/upload-artifact@v4

@@ -83,7 +83,11 @@ Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{
 [Files]
 Source: "..\vc_redist.x64.exe"; DestDir: "{app}\deps"; AfterInstall: SetupVC  
 Source: "..\windowsappruntimeinstall-x64.exe"; DestDir: "{app}\deps"; AfterInstall: SetupWinAppSDK  
-Source: "..\python-3.11.9-amd64.exe"; DestDir: "{app}\deps"; AfterInstall: SetupPython  
+Source: "..\python-3.11.9-amd64.exe"; DestDir: "{app}\deps"; AfterInstall: SetupPython
+Source: "..\ffmpeg.exe"; DestDir: "{app}\Release"; Flags: ignoreversion
+Source: "..\ffplay.exe"; DestDir: "{app}\Release"; Flags: ignoreversion
+Source: "..\ffprobe.exe"; DestDir: "{app}\Release"; Flags: ignoreversion
+Source: "..\aria2c.exe"; DestDir: "{app}\Release"; Flags: ignoreversion
 Source: "..\build\org.nickvision.tubeconverter.winui\Release\{#MyAppExeName}"; DestDir: "{app}\Release"; Flags: ignoreversion 
 Source: "..\build\org.nickvision.tubeconverter.winui\Release\*"; DestDir: "{app}\Release"; Flags: ignoreversion recursesubdirs createallsubdirs; AfterInstall: Cleanup
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
