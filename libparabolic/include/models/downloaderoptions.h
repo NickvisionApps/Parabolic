@@ -17,10 +17,6 @@ namespace Nickvision::TubeConverter::Shared::Models
          */
         DownloaderOptions();
         /**
-         * @brief Resets all options to their default values.
-         */
-        void reset();
-        /**
          * @brief Gets whether or not to overwrite existing files.
          * @return True to overwrite existing files, else false
          */
