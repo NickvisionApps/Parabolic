@@ -33,7 +33,7 @@ jobs:
         with:
           pkgs: boost-date-time libnick pybind11 python3
           triplet: x64-windows
-          revision: 8554be218e854c163c5a93ff03c788f7c8ff5bff
+          revision: 5f502b165027bbede86ff2c5316334e3398bc519
           token: ${{ secrets.GITHUB_TOKEN }}
           github-binarycache: true
       - name: "Build"
