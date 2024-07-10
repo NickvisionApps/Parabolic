@@ -5,8 +5,8 @@
 #include <ostream>
 #include <string>
 #include <vector>
+#include <json/json.h>
 #include <libnick/keyring/credential.h>
-#include <pybind11/embed.h>
 #include "downloaderoptions.h"
 #include "media.h"
 
@@ -17,7 +17,6 @@ namespace Nickvision::TubeConverter::Shared::Models
     public:
         /**
          * @brief Fetches media information for a URL.
-         * @brief Python must first be started via PythonHelpers::start().
          * @param url The URL to fetch media information for
          * @param options The DownloaderOptions
          * @param credential The credential to use for authentication
@@ -71,9 +70,9 @@ namespace Nickvision::TubeConverter::Shared::Models
         /**
          * @brief Constructs a UrlInfo.
          * @param url The URL
-         * @param info The media information dictionary from yt-dlp
+         * @param info The media information json object from yt-dlp
          */
-        UrlInfo(const std::string& url, const pybind11::dict& info);
+        UrlInfo(const std::string& url, const Json::Value& info);
         std::string m_url;
         bool m_isPlaylist;
         std::vector<Media> m_media;

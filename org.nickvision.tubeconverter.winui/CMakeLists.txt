@@ -77,11 +77,4 @@ if(WIN32)
             add_custom_command(TARGET winui_commands PRE_BUILD COMMAND "${GETTEXT_MSGFMT_EXECUTABLE}" "${CMAKE_SOURCE_DIR}/resources/po/${LINGUA}.po" --output-file="${CMAKE_CURRENT_BINARY_DIR}/$<CONFIG>/${LINGUA}/${SHORT_NAME}.mo")
         endforeach()
     endif()
-
-    if(USING_VCPKG)
-        add_custom_command(TARGET org.nickvision.tubeconverter.winui POST_BUILD 
-            COMMAND ${Python_EXECUTABLE} -m venv "$<TARGET_FILE_DIR:org.nickvision.tubeconverter.winui>/.."
-            COMMAND $<TARGET_FILE_DIR:org.nickvision.tubeconverter.winui>/../Scripts/activate.bat
-            COMMAND python -m pip install --force-reinstall "yt-dlp==2024.07.09" > pip_install.log)
-    endif()
 endif()

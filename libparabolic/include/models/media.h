@@ -6,7 +6,7 @@
 #include <ostream>
 #include <string>
 #include <vector>
-#include <pybind11/embed.h>
+#include <json/json.h>
 #include "videoresolution.h"
 
 namespace Nickvision::TubeConverter::Shared::Models
@@ -25,11 +25,11 @@ namespace Nickvision::TubeConverter::Shared::Models
          */
         Media(const std::string& url, const std::string& title, const std::chrono::seconds& duration);
         /**
-         * @brief Constructs a Media from a Python dictionary.
-         * @param info The Python dictionary to construct the Media from
+         * @brief Constructs a Media from a json object.
+         * @param info The json object to construct the Media from
          * @throw std::invalid_argument If the info is None
          */
-        Media(const pybind11::dict& info);
+        Media(const Json::Value& info);
         /**
          * @brief Gets the URL of the media.
          * @return The URL of the media

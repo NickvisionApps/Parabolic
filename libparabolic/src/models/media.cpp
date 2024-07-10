@@ -4,7 +4,6 @@
 #include <libnick/helpers/stringhelpers.h>
 
 using namespace Nickvision::Helpers;
-namespace py = pybind11;
 
 namespace Nickvision::TubeConverter::Shared::Models
 {
@@ -18,73 +17,91 @@ namespace Nickvision::TubeConverter::Shared::Models
 
     }
 
-    Media::Media(const py::dict& info)
+    Media::Media(const Json::Value& info)
         : m_duration{ 0 },
         m_playlistPosition{ std::nullopt },
         m_hasSubtitles{ false }
     {
-        if(info.is_none())
+        if(info.isNull() || info.empty())
         {
-            throw std::invalid_argument("The info dictionary is None");
+            throw std::invalid_argument("The info object is empty");
         }
         //Parse base information
-        m_url = info.contains("url") ? info["url"].cast<std::string>() : info["webpage_url"].cast<std::string>();
-        m_title = info.contains("title") ? info["title"].cast<std::string>() : "Media";
-        m_title = StringHelpers::normalizeForFilename(m_title, info["limit_characters"].cast<bool>());
-        if(info.contains("duration"))
+        m_url = info.isMember("url") ? info.get("url", "").asString() : info.get("webpage_url", "").asString();
+        m_title = info.get("title", "Media").asString();
+        m_title = StringHelpers::normalizeForFilename(m_title, info.get("limit_characters", false).asBool());
+        if(info.isMember("duration"))
         {
-            m_duration = std::chrono::seconds{ static_cast<int>(info["duration"].cast<double>()) };
+            m_duration = std::chrono::seconds{ static_cast<int>(info.get("duration", 0.0).asDouble()) };
         }
-        if(info.contains("language") && !info["language"].is_none())
+        if(info.isMember("language"))
         {
-            m_audioLanguages.push_back(info["language"].cast<std::string>());
-        }
-        if(info.contains("width") && info.contains("height"))
-        {
-            m_videoResolutions.push_back({ info["width"].cast<int>(), info["height"].cast<int>() });
-        }
-        else if(info.contains("resolution") && info["resolution"].cast<std::string>() != "audio only")
-        {
-            std::optional<VideoResolution> res{ VideoResolution::parse(info["resolution"].cast<std::string>()) };
-            if(res)
+            std::string language{ info.get("language", "").asString() };
+            if(!language.empty() && language != "none")
             {
-                m_videoResolutions.push_back(*res);
+                m_audioLanguages.push_back(language);
             }
         }
-        if(info.contains("subtitles"))
+        if(info.isMember("width") && info.isMember("height"))
         {
-            py::dict subtitles{ info["subtitles"].cast<py::dict>() };
-            if(!subtitles.empty())
+            m_videoResolutions.push_back({ info.get("width", 0).asInt(), info.get("height", 0).asInt() });
+        }
+        else if(info.isMember("resolution"))
+        {
+            std::string resolution{ info.get("resolution", "").asString() };
+            if(!resolution.empty() && resolution != "audio only")
             {
-                m_hasSubtitles = !(subtitles.size() == 1 && subtitles.contains("live_chat"));
+                std::optional<VideoResolution> res{ VideoResolution::parse(resolution) };
+                if(res)
+                {
+                    m_videoResolutions.push_back(*res);
+                }
+            }
+        }
+        if(info.isMember("subtitles"))
+        {
+            Json::Value subtitles{ info.get("subtitles", Json::Value()) };
+            if(!subtitles.isNull() && !subtitles.empty())
+            {
+                m_hasSubtitles = !(subtitles.size() == 1 && subtitles.isMember("live_chat"));
             }
         }
         //Parse formats
-        if(info.contains("formats"))
+        if(info.isMember("formats"))
         {
-            for(const py::handle& entry : info["formats"])
+            for(const Json::Value& format : info["formats"])
             {
-                if(entry.is_none())
+                if(format.isNull() || format.empty())
                 {
                     continue;
                 }
-                py::dict format{ entry.cast<py::dict>() };
-                if(format.contains("language") && !format["language"].is_none())
+                if(format.isMember("language"))
                 {
-                    std::string language{ format["language"].cast<std::string>() };
-                    if(std::find(m_audioLanguages.begin(), m_audioLanguages.end(), language) == m_audioLanguages.end())
+                    std::string language{ format.get("language", "").asString() };
+                    if(!language.empty() && language != "none")
                     {
-                        m_audioLanguages.push_back(language);
+                        if(std::find(m_audioLanguages.begin(), m_audioLanguages.end(), language) == m_audioLanguages.end())
+                        {
+                            m_audioLanguages.push_back(language);
+                        }
                     }
                 }
-                if(format.contains("vcodec") && format["vcodec"].cast<std::string>() != "none")
+                if(format.isMember("vcodec"))
                 {
-                    if(format.contains("resolution") && !format["resolution"].is_none() && format["resolution"].cast<std::string>() != "audio only")
+                    std::string vcodec{ format.get("vcodec", "").asString() };
+                    if(!vcodec.empty() && vcodec != "none")
                     {
-                        std::optional<VideoResolution> res{ VideoResolution::parse(format["resolution"].cast<std::string>()) };
-                        if(res && std::find(m_videoResolutions.begin(), m_videoResolutions.end(), *res) == m_videoResolutions.end())
+                        if(format.isMember("resolution"))
                         {
-                            m_videoResolutions.push_back(*res);
+                            std::string resolution{ format.get("resolution", "").asString() };
+                            if(!resolution.empty() && resolution != "none" && resolution != "audio only")
+                            {
+                                std::optional<VideoResolution> res{ VideoResolution::parse(resolution) };
+                                if(res && std::find(m_videoResolutions.begin(), m_videoResolutions.end(), *res) == m_videoResolutions.end())
+                                {
+                                    m_videoResolutions.push_back(*res);
+                                }
+                            }
                         }
                     }
                 }
@@ -93,9 +110,13 @@ namespace Nickvision::TubeConverter::Shared::Models
         //Sort
         std::sort(m_audioLanguages.begin(), m_audioLanguages.end());
         std::sort(m_videoResolutions.begin(), m_videoResolutions.end(), std::greater{});
-        if(info.contains("video_ext") && info["video_ext"].cast<std::string>() != "none")
+        if(info.isMember("video_ext"))
         {
-            m_videoResolutions.insert(m_videoResolutions.begin(), *VideoResolution::parse("Best"));
+            std::string videoExt{ info.get("video_ext", "").asString() };
+            if(!videoExt.empty() && videoExt != "none")
+            {
+                m_videoResolutions.insert(m_videoResolutions.begin(), *VideoResolution::parse("Best"));
+            }
         }
     }
 

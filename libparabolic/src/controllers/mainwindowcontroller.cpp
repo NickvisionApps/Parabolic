@@ -10,7 +10,6 @@
 #include <libnick/localization/documentation.h>
 #include <libnick/localization/gettext.h>
 #include <libnick/system/environment.h>
-#include "helpers/pythonhelpers.h"
 #include "models/configuration.h"
 #include "models/downloadhistory.h"
 #ifdef _WIN32
@@ -26,7 +25,6 @@ using namespace Nickvision::Network;
 using namespace Nickvision::Localization;
 using namespace Nickvision::Notifications;
 using namespace Nickvision::System;
-using namespace Nickvision::TubeConverter::Shared::Helpers;
 using namespace Nickvision::TubeConverter::Shared::Models;
 using namespace Nickvision::Update;
 
@@ -84,6 +82,30 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         {
             m_logger.log(Logging::LogLevel::Error, "Unable to unlock keyring.");
         }
+        if(!Environment::findDependency("yt-dlp").empty())
+        {
+            m_logger.log(Logging::LogLevel::Info, "yt-dlp found.");
+        }
+        else
+        {
+            m_logger.log(Logging::LogLevel::Error, "yt-dlp not found.");
+        }
+        if(!Environment::findDependency("ffmpeg").empty())
+        {
+            m_logger.log(Logging::LogLevel::Info, "ffmpeg found.");
+        }
+        else
+        {
+            m_logger.log(Logging::LogLevel::Error, "ffmpeg not found.");
+        }
+        if(!Environment::findDependency("aria2c").empty())
+        {
+            m_logger.log(Logging::LogLevel::Info, "aria2c found.");
+        }
+        else
+        {
+            m_logger.log(Logging::LogLevel::Error, "aria2c not found.");
+        }
     }
 
     const AppInfo& MainWindowController::getAppInfo() const
@@ -136,16 +158,15 @@ namespace Nickvision::TubeConverter::Shared::Controllers
     std::string MainWindowController::getDebugInformation(const std::string& extraInformation) const
     {
         std::stringstream builder;
-        //Python
-        builder << PythonHelpers::getDebugInformation() << std::endl;
+        //yt-dlp
+        std::string ytdlpVersion{ Environment::exec(Environment::findDependency("yt-dlp").string() + " --version") };
+        builder << ytdlpVersion;
         //Ffmpeg
         std::string ffmpegVersion{ Environment::exec(Environment::findDependency("ffmpeg").string() + " -version") };
-        ffmpegVersion = ffmpegVersion.substr(0, ffmpegVersion.find("Copyright"));
-        builder << ffmpegVersion << std::endl;
+        builder << ffmpegVersion.substr(0, ffmpegVersion.find("Copyright")) << std::endl;
         //Aria2c
         std::string aria2cVersion{ Environment::exec(Environment::findDependency("aria2c").string() + " --version") };
-        aria2cVersion = aria2cVersion.substr(0, aria2cVersion.find('\n'));
-        builder << aria2cVersion << std::endl;
+        builder << aria2cVersion.substr(0, aria2cVersion.find('\n')) << std::endl;
         //Extra
         if(!extraInformation.empty())
         {
@@ -166,7 +187,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
 
     bool MainWindowController::canDownload() const
     {
-        return m_networkMonitor.getConnectionState() == NetworkState::ConnectedGlobal && PythonHelpers::started();
+        return m_networkMonitor.getConnectionState() == NetworkState::ConnectedGlobal && !Environment::findDependency("yt-dlp").empty() && !Environment::findDependency("ffmpeg").empty() && !Environment::findDependency("aria2c").empty();
     }
 
     std::shared_ptr<PreferencesViewController> MainWindowController::createPreferencesViewController()
@@ -208,8 +229,6 @@ namespace Nickvision::TubeConverter::Shared::Controllers
             m_logger.log(Logging::LogLevel::Error, "Unable to connect to Linux taskbar.");
         }
 #endif
-        //Start python
-        PythonHelpers::start(m_logger);
         //Load history
         m_logger.log(Logging::LogLevel::Debug, "Loading historic downloads...");
         DownloadHistory& history{ m_dataFileManager.get<DownloadHistory>("history") };
@@ -229,8 +248,6 @@ namespace Nickvision::TubeConverter::Shared::Controllers
 
     void MainWindowController::shutdown(const WindowGeometry& geometry)
     {
-        //Shutdown python
-        PythonHelpers::shutdown(m_logger);
         //Save config
         Configuration& config{ m_dataFileManager.get<Configuration>("config") };
         config.setWindowGeometry(geometry);

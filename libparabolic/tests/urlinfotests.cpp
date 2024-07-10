@@ -1,36 +1,24 @@
 #include <gtest/gtest.h>
 #include <iostream>
 #include <optional>
-#include <libnick/logging/logger.h>
 #include <libnick/system/environment.h>
-#include "helpers/pythonhelpers.h"
 #include "models/downloaderoptions.h"
 #include "models/urlinfo.h"
 
-using namespace Nickvision::Logging;
 using namespace Nickvision::System;
-using namespace Nickvision::TubeConverter::Shared::Helpers;
 using namespace Nickvision::TubeConverter::Shared::Models;
 
 class UrlInfoTest : public testing::Test
 {
 public:
-    static Logger m_logger;
     static DownloaderOptions m_options;
 
     static void SetUpTestCase()
     {
-        PythonHelpers::start(m_logger);
         m_options.setLimitCharacters(Environment::getOperatingSystem() == OperatingSystem::Windows);
-    }
-
-    static void TearDownTestCase()
-    {
-        PythonHelpers::shutdown(m_logger);
     }
 };
 
-Logger UrlInfoTest::m_logger;
 DownloaderOptions UrlInfoTest::m_options;
 
 TEST_F(UrlInfoTest, YouTube1)
