@@ -136,7 +136,17 @@ namespace Nickvision::TubeConverter::Shared::Controllers
     std::string MainWindowController::getDebugInformation(const std::string& extraInformation) const
     {
         std::stringstream builder;
+        //Python
         builder << PythonHelpers::getDebugInformation() << std::endl;
+        //Ffmpeg
+        std::string ffmpegVersion{ Environment::exec(Environment::findDependency("ffmpeg").string() + " -version") };
+        ffmpegVersion = ffmpegVersion.substr(0, ffmpegVersion.find("Copyright"));
+        builder << ffmpegVersion << std::endl;
+        //Aria2c
+        std::string aria2cVersion{ Environment::exec(Environment::findDependency("aria2c").string() + " --version") };
+        aria2cVersion = aria2cVersion.substr(0, aria2cVersion.find('\n'));
+        builder << aria2cVersion << std::endl;
+        //Extra
         if(!extraInformation.empty())
         {
             builder << std::endl << extraInformation;

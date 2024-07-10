@@ -26,7 +26,7 @@ if(WIN32)
     set_property(SOURCE "App.xaml" PROPERTY VS_XAML_TYPE "ApplicationDefinition")
     set_property(TARGET org.nickvision.tubeconverter.winui PROPERTY VS_PACKAGE_REFERENCES
         "Microsoft.Windows.CppWinRT_2.0.240405.15"
-        "Microsoft.WindowsAppSDK_1.5.240607001"
+        "Microsoft.WindowsAppSDK_1.5.240627000"
         "Microsoft.Windows.SDK.BuildTools_10.0.26100.1"
         "Microsoft.Windows.ImplementationLibrary_1.0.240122.1")
     target_include_directories(org.nickvision.tubeconverter.winui PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}")

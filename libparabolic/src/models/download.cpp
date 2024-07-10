@@ -24,7 +24,7 @@ namespace Nickvision::TubeConverter::Shared::Models
         m_tempDirPath{ UserDirectories::get(UserDirectory::Cache) / m_id },
         m_logFilePath{ m_tempDirPath / "log.log" }
     {
-
+        std::filesystem::create_directories(m_tempDirPath);
     }
 
     Download::~Download()
@@ -43,24 +43,114 @@ namespace Nickvision::TubeConverter::Shared::Models
         return m_completed;
     }
 
+    std::filesystem::path Download::getPath() const
+    {
+        std::lock_guard<std::mutex> lock{ m_mutex };
+        return m_options.getSaveFolder() / m_filename;
+    }
+
+    DownloadStatus Download::getStatus() const
+    {
+        std::lock_guard<std::mutex> lock{ m_mutex };
+        return m_status;
+    }
+
     void Download::start(const DownloaderOptions& downloaderOptions)
     {
+        std::unique_lock<std::mutex> lock{ m_mutex };
         if(!PythonHelpers::started() || m_status == DownloadStatus::Running)
         {
             return;
         }
         m_status = DownloadStatus::Running;
+        lock.unlock();
+        m_downloadThread = std::thread{ &Download::runDownload, this, downloaderOptions };
+    }
+
+    void Download::stop()
+    {
+        if(!PythonHelpers::started() || m_status != DownloadStatus::Running)
+        {
+            return;
+        }
+        //TODO
+    }
+
+    void Download::invokeLogUpdate()
+    {
+        std::string log;
+        if(std::filesystem::exists(m_logFilePath))
+        {
+            std::ifstream logFile{ m_logFilePath };
+            log = { std::istreambuf_iterator<char>(logFile), std::istreambuf_iterator<char>() };
+        }
+        m_progressChanged.invoke({ DownloadProgressStatus::Other, 0.0, 0.0, log });
+    }
+
+    void Download::progressHook(const pybind11::dict& data)
+    {
+        //Get downloaded bytes
+        double downloadedBytes{ 0.0 };
+        double totalBytes{ 1.0 };
+        if(data.contains("downloaded_bytes") && !data["downloaded_bytes"].is_none())
+        {
+            downloadedBytes = data["downloaded_bytes"].cast<double>();
+        }
+        if(data.contains("total_bytes") && !data["total_bytes"].is_none())
+        {
+            totalBytes = data["total_bytes"].cast<double>();
+        }
+        else if(data.contains("total_bytes_estimate") && !data["total_bytes_estimate"].is_none())
+        {
+            totalBytes = data["total_bytes_estimate"].cast<double>();
+        }
+        //Get download status
+        DownloadProgressStatus status{ DownloadProgressStatus::Other };
+        if(data.contains("status") && !data["status"].is_none())
+        {
+            std::string statusStr{ data["status"].cast<std::string>() };
+            if(statusStr == "started" || statusStr == "finished" || statusStr == "processing")
+            {
+                status = DownloadProgressStatus::Processing;
+            }
+            else if(statusStr == "downloading")
+            {
+                status = DownloadProgressStatus::Downloading;
+            }
+        }
+        //Calculate download progress
+        double progress{ status == DownloadProgressStatus::Processing ? 1.0 : downloadedBytes / totalBytes };
+        //Calculate download speed
+        double speed{ 0.0 };
+        if(data.contains("speed") && !data["speed"].is_none())
+        {
+            speed = data["speed"].cast<double>();
+        }
+        //Get download log
+        std::string log;
+        if(std::filesystem::exists(m_logFilePath))
+        {
+            std::ifstream logFile{ m_logFilePath };
+            log = { std::istreambuf_iterator<char>(logFile), std::istreambuf_iterator<char>() };
+        }
+        //Invoke progress changed event
+        m_progressChanged.invoke({ status, progress, speed, log });
+    }
+
+    void Download::runDownload(const DownloaderOptions& downloaderOptions)
+    {
         //Check if can overwrite
         if(std::filesystem::exists(m_options.getSaveFolder() / m_filename) && !downloaderOptions.getOverwriteExistingFiles())
         {
+            std::unique_lock<std::mutex> lock{ m_mutex };
             m_status = DownloadStatus::Error;
+            lock.unlock();
             m_progressChanged.invoke({ DownloadProgressStatus::Other, 0.0, 0.0, _("File already exists and overwriting is disabled.") });
             m_completed.invoke(m_status);
             return;
         }
         //Setup logs
-        std::filesystem::create_directories(m_tempDirPath);
-        m_logFileHandle = PythonHelpers::setConsoleOutputFile(m_logFilePath);
+        py::object logFileHandle{ PythonHelpers::setConsoleOutputFile(m_logFilePath) };
         //Setup download params
         py::list postProcessors;
         std::vector<std::function<void(const py::dict&)>> hooks;
@@ -231,44 +321,50 @@ namespace Nickvision::TubeConverter::Shared::Models
             ytdlpOptions["postprocessors"] = postProcessors;
         }
         //Run Download
-        m_downloadThread = std::thread{ [this, downloaderOptions, ytdlpOptions]()
+        py::module_ ytdlp{ py::module_::import("yt_dlp") };
+        if(downloaderOptions.getUseAria())
         {
-            py::module_ ytdlp{ py::module_::import("yt_dlp") };
-            if(downloaderOptions.getUseAria())
-            {
-                m_progressChanged.invoke({ DownloadProgressStatus::DownloadingAria, 0.0, 0.0, _("Download using aria2 has started.") });
-            }
-            if(m_options.getTimeFrame())
-            {
-                m_progressChanged.invoke({ DownloadProgressStatus::DownloadingFFmpeg, 0.0, 0.0, _("Download using ffmpeg has started.") });
-            }
-            py::object successCode{ ytdlp.attr("YoutubeDL")(ytdlpOptions).attr("download")(m_options.getUrl()) };
-            
-        } };
-    }
-
-    void Download::stop()
-    {
-        if(!PythonHelpers::started() || m_status != DownloadStatus::Running)
-        {
-            return;
+            m_progressChanged.invoke({ DownloadProgressStatus::DownloadingAria, 0.0, 0.0, _("Download using aria2 has started.") });
         }
-        //TODO
-    }
-
-    void Download::invokeLogUpdate()
-    {
-        std::string log;
-        if(std::filesystem::exists(m_logFilePath))
+        if(m_options.getTimeFrame())
         {
-            std::ifstream logFile{ m_logFilePath };
-            log = { std::istreambuf_iterator<char>(logFile), std::istreambuf_iterator<char>() };
+            m_progressChanged.invoke({ DownloadProgressStatus::DownloadingFFmpeg, 0.0, 0.0, _("Download using ffmpeg has started.") });
         }
-        m_progressChanged.invoke({ DownloadProgressStatus::Other, 0.0, 0.0, log });
-    }
-
-    void Download::progressHook(const pybind11::dict& data)
-    {
-        //TODO
+        py::object successCode{ ytdlp.attr("YoutubeDL")(ytdlpOptions).attr("download")(m_options.getUrl()) };
+        invokeLogUpdate();
+        std::unique_lock<std::mutex> lock{ m_mutex };
+        if(!successCode.is_none())
+        {
+            m_status = successCode.cast<int>() == 0 ? DownloadStatus::Success : DownloadStatus::Error;
+        }
+        else
+        {
+            m_status = DownloadStatus::Error;
+        }
+        lock.unlock();
+        logFileHandle.attr("close")();
+        if(m_status == DownloadStatus::Success)
+        {
+            bool genericExtensionFound{ false };
+            for(const std::filesystem::directory_entry& e : std::filesystem::directory_iterator(m_options.getSaveFolder()))
+            {
+                if(e.path().filename().string().find(m_id) != std::string::npos)
+                {
+                    if(m_options.getFileType().isGeneric() && !genericExtensionFound)
+                    {
+                        std::string extension{ StringHelpers::lower(e.path().extension().string()) };
+                        if(extension != ".srt" && extension != ".vtt")
+                        {
+                            lock.lock();
+                            m_filename += extension;
+                            lock.unlock();
+                            genericExtensionFound = true;
+                        }
+                    }
+                    std::filesystem::rename(e.path(), m_options.getSaveFolder() / m_filename);
+                }
+            }
+        }
+        m_completed.invoke(m_status);
     }
 }
