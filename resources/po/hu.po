@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-07-10 17:45-0400\n"
+"POT-Creation-Date: 2024-07-11 21:45-0400\n"
 "PO-Revision-Date: 2024-01-06 02:07+0000\n"
 "Last-Translator: Kingproone <PlayerGuy@protonmail.com>\n"
 "Language-Team: Hungarian <https://hosted.weblate.org/projects/nickvision-"
@@ -68,22 +68,27 @@ msgstr "Frissítés érhető el."
 msgid "Unable to download and install update"
 msgstr "A frissítés letöltése és telepítése nem sikerült."
 
-#: libparabolic/src/models/downloadprogresschangedeventargs.cpp:21
+#: libparabolic/src/models/download.cpp:57
+#, fuzzy
+msgid "The file already exists and overwriting is disabled."
+msgstr "A fájl már létezik, de felülírás nem engedélyezett"
+
+#: libparabolic/src/models/downloadprogresschangedeventargs.cpp:20
 #, fuzzy, c-format
 msgid "%.1f GiB/s"
 msgstr "{0:f1} GiB/mp"
 
-#: libparabolic/src/models/downloadprogresschangedeventargs.cpp:25
+#: libparabolic/src/models/downloadprogresschangedeventargs.cpp:24
 #, fuzzy, c-format
 msgid "%.1f MiB/s"
 msgstr "{0:f1} MiB/mp"
 
-#: libparabolic/src/models/downloadprogresschangedeventargs.cpp:29
+#: libparabolic/src/models/downloadprogresschangedeventargs.cpp:28
 #, fuzzy, c-format
 msgid "%.1f KiB/s"
 msgstr "{0:f1} KiB/mp"
 
-#: libparabolic/src/models/downloadprogresschangedeventargs.cpp:33
+#: libparabolic/src/models/downloadprogresschangedeventargs.cpp:32
 #, c-format
 msgid "%.1f B/s"
 msgstr ""
@@ -321,7 +326,7 @@ msgstr ""
 "igénylő oldalakhoz."
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:146
-#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:90
+#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:88
 #: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:58
 msgid "Select Cookies File"
 msgstr "Süti fájl betöltése"
@@ -363,41 +368,26 @@ msgstr "Kódoló"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:223
 #: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:65
-msgid "Disallow Conversions"
-msgstr "Átkódolás tiltása"
-
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:224
-#, fuzzy
-msgid ""
-"If enabled, Parabolic will download the appropriate video/audio format for "
-"the selected quality without converting to other formats. (You will be "
-"unable to select a file format)"
-msgstr ""
-"Átkódolás tiltása esetén a Parabolic az eredeti formátumban tölti le a "
-"tartalmakat. A kódolási beállítások nem lesznek elérhetőek."
-
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:233
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:69
 msgid "Embed Metadata"
 msgstr "Címke/adatok beágyazása"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:242
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:75
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:232
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:71
 msgid "Embed Chapters"
 msgstr "Fejezetek beágyazása"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:251
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:72
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:241
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:68
 msgid "Embed Subtitles"
 msgstr "Feliratok beágyazása"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:260
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:78
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:250
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:74
 msgid "Crop Audio Thumbnails"
 msgstr "Borítókép igazítása"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:261
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:79
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:251
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:75
 #, fuzzy
 msgid ""
 "If enabled, Parabolic will crop the thumbnails of audio files to squares."
@@ -405,13 +395,13 @@ msgstr ""
 "Négyzetessé alakítja a videó borítóképét. Főleg zenei tartalmak esetében "
 "lehet hasznos"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:271
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:82
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:261
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:78
 msgid "Remove Source Data"
 msgstr "Metaadatok törlése"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:272
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:83
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:262
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:79
 #, fuzzy
 msgid ""
 "If enabled, Parabolic will clear metadata fields containing the URL and "
@@ -420,37 +410,37 @@ msgstr ""
 "Eltávolítja a feltöltő és/vagy a forrás beazonosítására alkalmas beágyazott "
 "adatokat a letöltött fájlokból"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:283
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:86
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:273
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:82
 #, fuzzy
 msgid "aria2"
 msgstr "aria2 letöltő használata"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:286
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:87
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:276
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:83
 msgid "Use aria2"
 msgstr "aria2 letöltő használata"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:287
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:88
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:277
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:84
 msgid ""
 "Enable to use aria2 downloader. It can be faster, but you will not see "
 "download progress."
 msgstr ""
 "aira2 letöltő engedélyezése. Gyorsabb, de nem jelzi a feldolgozás állapotát."
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:296
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:91
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:286
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:87
 msgid "Max Connections Per Server (-x)"
 msgstr "Párhuzamos kapcsolatok száma a kiszolgálóval (-x)"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:313
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:92
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:303
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:88
 msgid "Minimum Split Size (-k)"
 msgstr "Tartalmak darabolása (-k)"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:314
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:93
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:304
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:89
 msgid "The minimum size of which to split a file (in MiB)."
 msgstr "Meghatározza a darabok méretét. Értéke MiB-ban értendő."
 
@@ -526,14 +516,14 @@ msgid "GitHub Repo"
 msgstr "GitHub tároló"
 
 #: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:26
-#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:117
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:113
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:170
+#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:115
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:109
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:165
 #, fuzzy
 msgid "No file selected"
 msgstr "Nincs fájl kiválasztva"
 
-#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:92
+#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:90
 msgid "Text File (*.txt)"
 msgstr ""
 
@@ -648,13 +638,12 @@ msgstr "Frissítések automatikus keresése"
 #: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:36
 #: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:46
 #: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:52
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:67
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:70
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:73
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:66
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:69
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:72
 #: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:76
 #: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:80
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:84
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:89
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:85
 msgid "On"
 msgstr "Be"
 
@@ -662,13 +651,12 @@ msgstr "Be"
 #: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:37
 #: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:47
 #: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:53
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:68
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:71
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:74
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:67
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:70
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:73
 #: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:77
 #: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:81
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:85
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:90
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:86
 msgid "Off"
 msgstr "Ki"
 
@@ -681,18 +669,25 @@ msgstr "Készenlét/felfüggesztés tiltása"
 msgid "Enter proxy URL here"
 msgstr "Proxy átjáró megadása"
 
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:66
-#, fuzzy
-msgid ""
-"If enabled, Parabolic will download the appropriate video/audio format for "
-"the selected quality without converting to other formats."
-msgstr ""
-"Átkódolás tiltása esetén a Parabolic az eredeti formátumban tölti le a "
-"tartalmakat. A kódolási beállítások nem lesznek elérhetőek."
+#~ msgid "Disallow Conversions"
+#~ msgstr "Átkódolás tiltása"
 
 #, fuzzy
-#~ msgid "File already exists and overwriting is disabled."
-#~ msgstr "A fájl már létezik, de felülírás nem engedélyezett"
+#~ msgid ""
+#~ "If enabled, Parabolic will download the appropriate video/audio format "
+#~ "for the selected quality without converting to other formats. (You will "
+#~ "be unable to select a file format)"
+#~ msgstr ""
+#~ "Átkódolás tiltása esetén a Parabolic az eredeti formátumban tölti le a "
+#~ "tartalmakat. A kódolási beállítások nem lesznek elérhetőek."
+
+#, fuzzy
+#~ msgid ""
+#~ "If enabled, Parabolic will download the appropriate video/audio format "
+#~ "for the selected quality without converting to other formats."
+#~ msgstr ""
+#~ "Átkódolás tiltása esetén a Parabolic az eredeti formátumban tölti le a "
+#~ "tartalmakat. A kódolási beállítások nem lesznek elérhetőek."
 
 #, fuzzy
 #~ msgid "Download using aria2 has started."

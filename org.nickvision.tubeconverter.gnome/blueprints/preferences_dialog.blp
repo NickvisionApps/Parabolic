@@ -219,16 +219,6 @@ Adw.PreferencesDialog root {
     Adw.PreferencesGroup {
       title: _("Converter");
 
-      Adw.SwitchRow disallowConversionsRow {
-        title: _("Disallow Conversions");
-        subtitle: _("If enabled, Parabolic will download the appropriate video/audio format for the selected quality without converting to other formats. (You will be unable to select a file format)");
-
-        [prefix]
-        Gtk.Image {
-          icon-name: "encode-symbolic";
-        }
-      }
-
       Adw.SwitchRow embedMetadataRow {
         title: _("Embed Metadata");
 

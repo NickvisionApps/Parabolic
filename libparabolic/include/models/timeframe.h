@@ -3,6 +3,7 @@
 
 #include <chrono>
 #include <optional>
+#include <string>
 
 namespace Nickvision::TubeConverter::Shared::Models
 {
@@ -16,6 +17,7 @@ namespace Nickvision::TubeConverter::Shared::Models
          * @brief Constructs a TimeFrame.
          * @param start The start time in total seconds
          * @param end The end time in total seconds
+         * @throw std::invalid_argument Thrown if the end time is before the start time
          */
         TimeFrame(const std::chrono::seconds& start, const std::chrono::seconds& end);
         /**

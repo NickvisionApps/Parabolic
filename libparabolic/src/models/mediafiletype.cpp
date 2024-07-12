@@ -43,23 +43,11 @@ namespace Nickvision::TubeConverter::Shared::Models
         {
             return { MediaFileTypeValue::WAV };
         }
-        else if (value == "video")
-        {
-            return { MediaFileTypeValue::Video };
-        }
-        else if (value == "audio")
-        {
-            return { MediaFileTypeValue::Audio };
-        }
         return std::nullopt;
     }
 
     std::string MediaFileType::getDotExtension() const
     {
-        if(isGeneric())
-        {
-            return "";
-        }
         return "." + StringHelpers::lower(str());
     }
 
@@ -72,11 +60,9 @@ namespace Nickvision::TubeConverter::Shared::Models
         case MediaFileTypeValue::OPUS:
         case MediaFileTypeValue::FLAC:
         case MediaFileTypeValue::WAV:
-        case MediaFileTypeValue::Audio:
             return true;
         case MediaFileTypeValue::MP4:
         case MediaFileTypeValue::WEBM:
-        case MediaFileTypeValue::Video:
         default:
             return false;
         }
@@ -88,14 +74,12 @@ namespace Nickvision::TubeConverter::Shared::Models
         {
         case MediaFileTypeValue::MP4:
         case MediaFileTypeValue::WEBM:
-        case MediaFileTypeValue::Video:
             return true;
         case MediaFileTypeValue::MP3:
         case MediaFileTypeValue::M4A:
         case MediaFileTypeValue::OPUS:
         case MediaFileTypeValue::FLAC:
         case MediaFileTypeValue::WAV:
-        case MediaFileTypeValue::Audio:
         default:
             return false;
         }
@@ -110,19 +94,12 @@ namespace Nickvision::TubeConverter::Shared::Models
         case MediaFileTypeValue::M4A:
         case MediaFileTypeValue::OPUS:
         case MediaFileTypeValue::FLAC:
-        case MediaFileTypeValue::Video:
-        case MediaFileTypeValue::Audio:
             return true;
         case MediaFileTypeValue::WEBM:
         case MediaFileTypeValue::WAV:
         default:
             return false;
         }
-    }
-
-    bool MediaFileType::isGeneric() const
-    {
-        return m_value == MediaFileTypeValue::Video || m_value == MediaFileTypeValue::Audio;
     }
 
     std::string MediaFileType::str() const
@@ -143,10 +120,6 @@ namespace Nickvision::TubeConverter::Shared::Models
             return "FLAC";
         case MediaFileTypeValue::WAV:
             return "WAV";
-        case MediaFileTypeValue::Video:
-            return "Video";
-        case MediaFileTypeValue::Audio:
-            return "Audio";
         default:
             return "";
         }

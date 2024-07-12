@@ -5,7 +5,9 @@
 #include <optional>
 #include <string>
 #include <variant>
+#include <vector>
 #include <libnick/keyring/credential.h>
+#include "downloaderoptions.h"
 #include "mediafiletype.h"
 #include "quality.h"
 #include "timeframe.h"
@@ -109,16 +111,6 @@ namespace Nickvision::TubeConverter::Shared::Models
          */
         void setDownloadSubtitles(bool downloadSubtitles);
         /**
-         * @brief Gets the playlist position of the download.
-         * @return The playlist position of the download
-         */
-        const std::optional<unsigned int>& getPlaylistPosition() const;
-        /**
-         * @brief Sets the playlist position of the download.
-         * @param playlistPosition The playlist position of the download
-         */
-        void setPlaylistPosition(const std::optional<unsigned int>& playlistPosition);
-        /**
          * @brief Gets whether or not to limit the download speed.
          * @return True if limiting the download speed, else false
          */
@@ -160,6 +152,12 @@ namespace Nickvision::TubeConverter::Shared::Models
          * @param timeFrame The time frame of the download
          */
         void setTimeFrame(const std::optional<TimeFrame>& timeFrame);
+        /**
+         * @brief Converts the DownloadOptions to a vector of yt-dlp arguments.
+         * @param downloaderOptions The DownloaderOptions to include in the arguments
+         * @return The vector of yt-dlp arguments
+         */
+        std::vector<std::string> toArgumentVector(const DownloaderOptions& downloaderOptions) const;
 
     private:
         std::string m_url;
@@ -170,7 +168,6 @@ namespace Nickvision::TubeConverter::Shared::Models
         std::string m_saveFilename;
         std::string m_audioLanguage;
         bool m_downloadSubtitles;
-        std::optional<unsigned int> m_playlistPosition;
         bool m_limitSpeed;
         bool m_preferAV1;
         bool m_splitChapters;

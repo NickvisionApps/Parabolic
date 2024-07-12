@@ -24,7 +24,6 @@ namespace Nickvision::TubeConverter::GNOME::Views
         adw_switch_row_set_active(ADW_SWITCH_ROW(gtk_builder_get_object(m_builder, "sponsorBlockRow")), options.getYouTubeSponsorBlock());
         gtk_editable_set_text(GTK_EDITABLE(gtk_builder_get_object(m_builder, "proxyUrlRow")), options.getProxyUrl().c_str());
         adw_action_row_set_subtitle(ADW_ACTION_ROW(gtk_builder_get_object(m_builder, "cookiesFileRow")), options.getCookiesPath().empty() ? _("No file selected") : options.getCookiesPath().string().c_str());
-        adw_switch_row_set_active(ADW_SWITCH_ROW(gtk_builder_get_object(m_builder, "disallowConversionsRow")), m_controller->getDisallowConversions());
         adw_switch_row_set_active(ADW_SWITCH_ROW(gtk_builder_get_object(m_builder, "embedMetadataRow")), options.getEmbedMetadata());
         adw_switch_row_set_active(ADW_SWITCH_ROW(gtk_builder_get_object(m_builder, "embedChaptersRow")), options.getEmbedChapters());
         adw_switch_row_set_active(ADW_SWITCH_ROW(gtk_builder_get_object(m_builder, "embedSubtitlesRow")), options.getEmbedSubtitles());
@@ -54,7 +53,6 @@ namespace Nickvision::TubeConverter::GNOME::Views
         options.setSpeedLimit(static_cast<int>(adw_spin_row_get_value(ADW_SPIN_ROW(gtk_builder_get_object(m_builder, "speedLimitRow")))));
         options.setYouTubeSponsorBlock(adw_switch_row_get_active(ADW_SWITCH_ROW(gtk_builder_get_object(m_builder, "sponsorBlockRow"))));
         options.setProxyUrl(gtk_editable_get_text(GTK_EDITABLE(gtk_builder_get_object(m_builder, "proxyUrlRow"))));
-        m_controller->setDisallowConversions(adw_switch_row_get_active(ADW_SWITCH_ROW(gtk_builder_get_object(m_builder, "disallowConversionsRow"))));
         options.setEmbedMetadata(adw_switch_row_get_active(ADW_SWITCH_ROW(gtk_builder_get_object(m_builder, "embedMetadataRow"))));
         options.setEmbedChapters(adw_switch_row_get_active(ADW_SWITCH_ROW(gtk_builder_get_object(m_builder, "embedChaptersRow"))));
         options.setEmbedSubtitles(adw_switch_row_get_active(ADW_SWITCH_ROW(gtk_builder_get_object(m_builder, "embedSubtitlesRow"))));

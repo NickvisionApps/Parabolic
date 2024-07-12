@@ -8,9 +8,8 @@ using namespace Nickvision::Helpers;
 
 namespace Nickvision::TubeConverter::Shared::Models
 {
-    DownloadProgressChangedEventArgs::DownloadProgressChangedEventArgs(DownloadProgressStatus status, double progress, double speed, const std::string& log)
-        : m_status{ status },
-        m_progress{ progress },
+    DownloadProgressChangedEventArgs::DownloadProgressChangedEventArgs(double progress, double speed, const std::string& log)
+        : m_progress{ progress > 1 ? 1 : progress},
         m_speed{ speed },
         m_log{ log }
     {
@@ -32,11 +31,6 @@ namespace Nickvision::TubeConverter::Shared::Models
         {
             m_speedStr = std::vformat(_("%.1f B/s"), std::make_format_args(m_speed));
         }
-    }
-
-    DownloadProgressStatus DownloadProgressChangedEventArgs::getStatus() const
-    {
-        return m_status;
     }
 
     double DownloadProgressChangedEventArgs::getProgress() const
@@ -62,7 +56,6 @@ namespace Nickvision::TubeConverter::Shared::Models
     std::ostream& operator<<(std::ostream& os, const DownloadProgressChangedEventArgs& args)
     {
         os << "===DownloadProgress===" << std::endl;
-        os << "Status: " << static_cast<int>(args.m_status) << std::endl;
         os << "Progress: " << args.m_progress << std::endl;
         os << "Speed: " << args.getSpeedStr() << std::endl;
         os << "Log: " << args.m_log;

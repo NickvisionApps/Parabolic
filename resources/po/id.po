@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-07-10 17:45-0400\n"
+"POT-Creation-Date: 2024-07-11 21:45-0400\n"
 "PO-Revision-Date: 2023-06-12 02:55+0000\n"
 "Last-Translator: Krindog7337 <igstkrisna2006@gmail.com>\n"
 "Language-Team: Indonesian <https://hosted.weblate.org/projects/nickvision-"
@@ -69,22 +69,27 @@ msgstr ""
 msgid "Unable to download and install update"
 msgstr ""
 
-#: libparabolic/src/models/downloadprogresschangedeventargs.cpp:21
+#: libparabolic/src/models/download.cpp:57
+#, fuzzy
+msgid "The file already exists and overwriting is disabled."
+msgstr "File sudah ada, dan penimpaan tidak diperbolehkan"
+
+#: libparabolic/src/models/downloadprogresschangedeventargs.cpp:20
 #, fuzzy, c-format
 msgid "%.1f GiB/s"
 msgstr "{0:f1} GiB/dtk"
 
-#: libparabolic/src/models/downloadprogresschangedeventargs.cpp:25
+#: libparabolic/src/models/downloadprogresschangedeventargs.cpp:24
 #, fuzzy, c-format
 msgid "%.1f MiB/s"
 msgstr "{0:f1} MiB/dtk"
 
-#: libparabolic/src/models/downloadprogresschangedeventargs.cpp:29
+#: libparabolic/src/models/downloadprogresschangedeventargs.cpp:28
 #, fuzzy, c-format
 msgid "%.1f KiB/s"
 msgstr "{0:f1} KiB/dtk"
 
-#: libparabolic/src/models/downloadprogresschangedeventargs.cpp:33
+#: libparabolic/src/models/downloadprogresschangedeventargs.cpp:32
 #, c-format
 msgid "%.1f B/s"
 msgstr ""
@@ -317,7 +322,7 @@ msgid ""
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:146
-#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:90
+#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:88
 #: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:58
 msgid "Select Cookies File"
 msgstr "Pilih File Cookie"
@@ -358,70 +363,58 @@ msgstr "Konverter"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:223
 #: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:65
-msgid "Disallow Conversions"
-msgstr ""
-
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:224
-msgid ""
-"If enabled, Parabolic will download the appropriate video/audio format for "
-"the selected quality without converting to other formats. (You will be "
-"unable to select a file format)"
-msgstr ""
-
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:233
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:69
 msgid "Embed Metadata"
 msgstr "Sematkan Metadata"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:242
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:75
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:232
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:71
 #, fuzzy
 msgid "Embed Chapters"
 msgstr "Subtitel"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:251
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:72
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:241
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:68
 #, fuzzy
 msgid "Embed Subtitles"
 msgstr "Subtitel"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:260
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:78
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:250
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:74
 #, fuzzy
 msgid "Crop Audio Thumbnails"
 msgstr "Potong Keluku (Thumbnail)"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:261
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:79
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:251
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:75
 msgid ""
 "If enabled, Parabolic will crop the thumbnails of audio files to squares."
 msgstr ""
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:271
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:82
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:261
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:78
 msgid "Remove Source Data"
 msgstr ""
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:272
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:83
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:262
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:79
 msgid ""
 "If enabled, Parabolic will clear metadata fields containing the URL and "
 "other identifying information of a download."
 msgstr ""
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:283
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:86
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:273
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:82
 #, fuzzy
 msgid "aria2"
 msgstr "Gunakan aria2"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:286
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:87
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:276
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:83
 msgid "Use aria2"
 msgstr "Gunakan aria2"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:287
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:88
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:277
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:84
 msgid ""
 "Enable to use aria2 downloader. It can be faster, but you will not see "
 "download progress."
@@ -429,18 +422,18 @@ msgstr ""
 "Memungkinkan menggunakan aria2 sebagai pengunduh. Ini bisa lebih cepat, "
 "namun anda tidak akan melihat proses unduhan."
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:296
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:91
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:286
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:87
 msgid "Max Connections Per Server (-x)"
 msgstr "Koneksi Maksimal Per Server (-x)"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:313
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:92
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:303
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:88
 msgid "Minimum Split Size (-k)"
 msgstr "Ukuran pemisahan minimum (-k)"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:314
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:93
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:304
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:89
 msgid "The minimum size of which to split a file (in MiB)."
 msgstr "Ukuran minimum untuk membagi file (dalam MiB)."
 
@@ -518,13 +511,13 @@ msgid "GitHub Repo"
 msgstr "Repo GitHub"
 
 #: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:26
-#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:117
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:113
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:170
+#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:115
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:109
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:165
 msgid "No file selected"
 msgstr ""
 
-#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:92
+#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:90
 msgid "Text File (*.txt)"
 msgstr ""
 
@@ -617,13 +610,12 @@ msgstr ""
 #: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:36
 #: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:46
 #: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:52
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:67
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:70
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:73
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:66
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:69
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:72
 #: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:76
 #: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:80
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:84
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:89
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:85
 #, fuzzy
 msgid "On"
 msgstr "Buka"
@@ -632,13 +624,12 @@ msgstr "Buka"
 #: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:37
 #: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:47
 #: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:53
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:68
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:71
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:74
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:67
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:70
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:73
 #: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:77
 #: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:81
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:85
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:90
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:86
 msgid "Off"
 msgstr ""
 
@@ -650,16 +641,6 @@ msgstr ""
 #, fuzzy
 msgid "Enter proxy URL here"
 msgstr "Masukkan URL media disini"
-
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:66
-msgid ""
-"If enabled, Parabolic will download the appropriate video/audio format for "
-"the selected quality without converting to other formats."
-msgstr ""
-
-#, fuzzy
-#~ msgid "File already exists and overwriting is disabled."
-#~ msgstr "File sudah ada, dan penimpaan tidak diperbolehkan"
 
 #, fuzzy
 #~ msgid "Download using aria2 has started."

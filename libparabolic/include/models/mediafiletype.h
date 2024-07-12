@@ -23,9 +23,7 @@ namespace Nickvision::TubeConverter::Shared::Models
             M4A,
             OPUS,
             FLAC,
-            WAV,
-            Video,
-            Audio
+            WAV
         };
         /**
          * @brief Constructs a MediaFileType.
@@ -58,11 +56,6 @@ namespace Nickvision::TubeConverter::Shared::Models
          * @return True if supports thumbnails, else false
          */
         bool supportsThumbnails() const;
-        /**
-         * @brief Gets whether or not the file type is generic.
-         * @return True if generic file type, else false
-         */
-        bool isGeneric() const;
         /**
          * @brief Gets the string representation of the media file type.
          * @return The string representation of the media file type

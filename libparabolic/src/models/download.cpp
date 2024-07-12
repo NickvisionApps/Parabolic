@@ -1,31 +1,24 @@
 #include "models/download.h"
-#include <libnick/filesystem/userdirectories.h>
-#include <fstream>
-#include <libnick/helpers/stringhelpers.h>
 #include <libnick/localization/gettext.h>
+#include <libnick/system/environment.h>
 
 using namespace Nickvision::Events;
-using namespace Nickvision::Filesystem;
-using namespace Nickvision::Helpers;
 using namespace Nickvision::System;
 
 namespace Nickvision::TubeConverter::Shared::Models
 {
     Download::Download(const DownloadOptions& options)
         : m_options{ options },
-        m_id{ StringHelpers::newGuid() },
         m_status{ DownloadStatus::NotStarted },
-        m_filename{ m_options.getSaveFilename() + (m_options.getFileType().isGeneric() ? "" : m_options.getFileType().getDotExtension()) },
-        m_tempDirPath{ UserDirectories::get(UserDirectory::Cache) / m_id },
-        m_logFilePath{ m_tempDirPath / "log.log" }
+        m_process{ nullptr },
+        m_path{ options.getSaveFolder() / (options.getSaveFilename() + options.getFileType().getDotExtension()) }
     {
-        std::filesystem::create_directories(m_tempDirPath);
+        
     }
 
     Download::~Download()
     {
         stop();
-        std::filesystem::remove_all(m_tempDirPath);
     }
 
     Event<DownloadProgressChangedEventArgs>& Download::progressChanged()
@@ -40,29 +33,59 @@ namespace Nickvision::TubeConverter::Shared::Models
 
     std::filesystem::path Download::getPath() const
     {
-        return m_options.getSaveFolder() / m_filename;
+        std::lock_guard<std::mutex> lock{ m_mutex };
+        return m_path;
     }
 
     DownloadStatus Download::getStatus() const
     {
+        std::lock_guard<std::mutex> lock{ m_mutex };
         return m_status;
     }
 
     void Download::start(const DownloaderOptions& downloaderOptions)
     {
+        std::unique_lock<std::mutex> lock{ m_mutex };
         if(m_status == DownloadStatus::Running)
         {
             return;
         }
-        //TODO
+        if(std::filesystem::exists(m_path) && !downloaderOptions.getOverwriteExistingFiles())
+        {
+            m_status = DownloadStatus::Error;
+            lock.unlock();
+            m_progressChanged.invoke({ 1.0, 0.0, _("The file already exists and overwriting is disabled.") });
+            m_completed.invoke({ m_status });
+            return;
+        }
+        m_process = std::make_shared<Process>(Environment::findDependency("yt-dlp"), m_options.toArgumentVector(downloaderOptions));
+        m_process->exited() += [this](const ProcessExitedEventArgs& args) { onProcessExit(args); };
+        m_process->start();
+        m_status = DownloadStatus::Running;
     }
 
     void Download::stop()
     {
+        std::lock_guard<std::mutex> lock{ m_mutex };
         if(m_status != DownloadStatus::Running)
         {
             return;
         }
-        //TODO
+        if(m_process->kill())
+        {
+            m_status = DownloadStatus::Stopped;
+        }
+    }
+
+    void Download::onProcessExit(const ProcessExitedEventArgs& args)
+    {
+        std::unique_lock<std::mutex> lock{ m_mutex };
+        if(m_status != DownloadStatus::Stopped)
+        {
+            m_status = std::filesystem::exists(m_path) ? DownloadStatus::Success : DownloadStatus::Error;
+        }
+        lock.unlock();
+        m_progressChanged.invoke({ 1.0, 0.0, args.getOutput() });
+        m_completed.invoke({ m_status });
     }
 }

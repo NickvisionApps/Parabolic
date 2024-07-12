@@ -4,7 +4,6 @@
 #include <ostream>
 #include <string>
 #include <libnick/events/eventargs.h>
-#include "downloadprogressstatus.h"
 
 namespace Nickvision::TubeConverter::Shared::Models
 {
@@ -16,17 +15,11 @@ namespace Nickvision::TubeConverter::Shared::Models
     public:
         /**
          * @brief Constructs a DownloadProgressChangedEventArgs.
-         * @param status The DownloadProgressStatus
-         * @param progress The progress of the download
+         * @param progress The progress of the download (between 0 and 1)
          * @param speed The speed of the download (in byes per second)
          * @param log The log of the download
          */
-        DownloadProgressChangedEventArgs(DownloadProgressStatus status, double progress, double speed, const std::string& log);
-        /**
-         * @brief Gets the status of the download.
-         * @return The status of the download
-         */
-        DownloadProgressStatus getStatus() const;
+        DownloadProgressChangedEventArgs(double progress, double speed, const std::string& log);
         /**
          * @brief Gets the progress of the download.
          * @return The progress of the download
@@ -56,7 +49,6 @@ namespace Nickvision::TubeConverter::Shared::Models
         friend std::ostream& operator<<(std::ostream& os, const DownloadProgressChangedEventArgs& args);
 
     private:
-        DownloadProgressStatus m_status;
         double m_progress;
         double m_speed;
         std::string m_speedStr;

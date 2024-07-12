@@ -1,6 +1,7 @@
 #include "models/timeframe.h"
 #include <iomanip>
 #include <sstream>
+#include <stdexcept>
 #include <libnick/helpers/stringhelpers.h>
 
 using namespace Nickvision::Helpers;
@@ -23,7 +24,10 @@ namespace Nickvision::TubeConverter::Shared::Models
         : m_start(start), 
         m_end(end)
     {
-
+        if(m_end < m_start)
+        {
+            throw std::invalid_argument("The end time must be after the start time");
+        }
     }
 
     std::optional<TimeFrame> TimeFrame::parse(const std::string& start, const std::string& end, const std::chrono::seconds& duration)

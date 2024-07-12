@@ -2,6 +2,8 @@
 #define DOWNLOAD_H
 
 #include <filesystem>
+#include <memory>
+#include <mutex>
 #include <string>
 #include <libnick/events/event.h>
 #include <libnick/events/parameventargs.h>
@@ -62,12 +64,16 @@ namespace Nickvision::TubeConverter::Shared::Models
         void stop();
 
     private:
+        /**
+         * @brief Handles when the underlying process exits.
+         * @brief args The ProcessExitedEventArgs
+         */
+        void onProcessExit(const System::ProcessExitedEventArgs& args);
+        mutable std::mutex m_mutex;
         DownloadOptions m_options;
-        std::string m_id;
         DownloadStatus m_status;
-        std::string m_filename;
-        std::filesystem::path m_tempDirPath;
-        std::filesystem::path m_logFilePath;
+        std::filesystem::path m_path;
+        std::shared_ptr<System::Process> m_process;
         Events::Event<DownloadProgressChangedEventArgs> m_progressChanged;
         Events::Event<Events::ParamEventArgs<DownloadStatus>> m_completed;
     };

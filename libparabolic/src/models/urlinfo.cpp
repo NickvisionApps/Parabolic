@@ -23,7 +23,9 @@ namespace Nickvision::TubeConverter::Shared::Models
                     continue;
                 }
                 entry["limit_characters"] = info["limit_characters"];
-                m_media.push_back({ entry });
+                Media media{ entry };
+                media.setPlaylistPosition(i);
+                m_media.push_back(media);
                 i++;
             }
         }
@@ -35,7 +37,7 @@ namespace Nickvision::TubeConverter::Shared::Models
 
     std::optional<UrlInfo> UrlInfo::fetch(const std::string& url, const DownloaderOptions& options, const std::optional<Credential>& credential)
     {
-        std::vector<std::string> args{ "--dump-single-json", "--skip-download", "--ignore-errors", "--flat-playlist", "--no-warnings" };
+        std::vector<std::string> args{ "--xff", "default", "--dump-single-json", "--skip-download", "--ignore-errors", "--flat-playlist", "--no-warnings" };
         if(options.getLimitCharacters())
         {
             args.push_back("--windows-filenames");
@@ -52,7 +54,7 @@ namespace Nickvision::TubeConverter::Shared::Models
             args.push_back("--password");
             args.push_back(credential->getPassword());
         }
-        args.push_back("\"" + url + "\"");
+        args.push_back(url);
         Process process{ Environment::findDependency("yt-dlp"), args };
         process.start();
         if(process.waitForExit() != 0)

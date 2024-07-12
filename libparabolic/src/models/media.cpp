@@ -7,10 +7,11 @@ using namespace Nickvision::Helpers;
 
 namespace Nickvision::TubeConverter::Shared::Models
 {
-    Media::Media(const std::string& url, const std::string& title, const std::chrono::seconds& duration)
+    Media::Media(const std::string& url, const std::string& title, const std::chrono::seconds& duration, MediaType type)
         : m_url{ url },
         m_title{ title },
         m_duration{ duration },
+        m_type{ type },
         m_playlistPosition{ std::nullopt },
         m_hasSubtitles{ false }
     {
@@ -118,6 +119,7 @@ namespace Nickvision::TubeConverter::Shared::Models
                 m_videoResolutions.insert(m_videoResolutions.begin(), *VideoResolution::parse("Best"));
             }
         }
+        m_type = m_videoResolutions.empty() ? MediaType::Audio : MediaType::Video;
     }
 
     const std::string& Media::getUrl() const
@@ -133,6 +135,11 @@ namespace Nickvision::TubeConverter::Shared::Models
     const std::chrono::seconds& Media::getDuration() const
     {
         return m_duration;
+    }
+
+    MediaType Media::getType() const
+    {
+        return m_type;
     }
 
     const std::vector<std::string>& Media::getAudioLanguages() const
@@ -181,6 +188,7 @@ namespace Nickvision::TubeConverter::Shared::Models
         os << "URL: " << media.m_url << std::endl;
         os << "Title: " << media.m_title << std::endl;
         os << "Duration: " << media.m_duration.count() << " seconds" << std::endl;
+        os << "Type: " << (media.m_type == MediaType::Audio ? "Audio" : "Video") << std::endl;
         os << "Audio Languages: ";
         for(const std::string& language : media.m_audioLanguages)
         {

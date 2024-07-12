@@ -69,16 +69,6 @@ namespace Nickvision::TubeConverter::Shared::Controllers
          */
         void setPreventSuspendWhenDownloading(bool prevent);
         /**
-         * @brief Gets whether or not to disallow conversions.
-         * @return True to disallow conversions, else false
-         */
-        bool getDisallowConversions() const;
-        /**
-         * @brief Sets whether or not to disallow conversions.
-         * @param disallowConversions True to disallow conversions, else false
-         */
-        void setDisallowConversions(bool disallowConversions);
-        /**
          * @brief Gets the downloader options.
          * @return The downloader options
          */

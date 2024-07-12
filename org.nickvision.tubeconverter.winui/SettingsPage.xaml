@@ -131,12 +131,6 @@
 
                 <TextBlock x:Name="LblConverter" Margin="0,12,0,0" Style="{StaticResource NavigationViewItemHeaderTextStyle}"/>
 
-                <nickvision:SettingsRow x:Name="RowDisallowConversions" Glyph="&#xE90F;">
-                    <nickvision:SettingsRow.Child>
-                        <ToggleSwitch x:Name="TglDisallowConversions" Toggled="OnSwitchToggled"/>
-                    </nickvision:SettingsRow.Child>
-                </nickvision:SettingsRow>
-
                 <nickvision:SettingsRow x:Name="RowEmbedMetadata" Glyph="&#xE8EC;">
                     <nickvision:SettingsRow.Child>
                         <ToggleSwitch x:Name="TglEmbedMetadata" Toggled="OnSwitchToggled"/>
