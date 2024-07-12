@@ -7,7 +7,6 @@ add_library(libparabolic
     "src/controllers/adddownloaddialogcontroller.cpp"
     "src/controllers/mainwindowcontroller.cpp"
     "src/controllers/preferencesviewcontroller.cpp"
-    "src/helpers/pythonhelpers.cpp"
     "src/models/configuration.cpp"
     "src/models/download.cpp"
     "src/models/downloaderoptions.cpp"
@@ -30,9 +29,7 @@ endif()
 
 find_package(libnick CONFIG REQUIRED)
 find_package(Boost REQUIRED COMPONENTS date_time)
-find_package(Python COMPONENTS Interpreter Development REQUIRED)
-find_package(pybind11 CONFIG REQUIRED)
-target_link_libraries(libparabolic PUBLIC libnick::libnick Boost::boost Boost::date_time pybind11::embed)
+target_link_libraries(libparabolic PUBLIC libnick::libnick Boost::boost Boost::date_time)
 
 add_custom_target(shared_commands ALL DEPENDS "${CMAKE_CURRENT_BINARY_DIR}/__shared.h")
 add_custom_command(OUTPUT "${CMAKE_CURRENT_BINARY_DIR}/__shared.h" "${CMAKE_CURRENT_BINARY_DIR}/shared.h" COMMAND "${CMAKE_COMMAND}" -E touch "${CMAKE_CURRENT_BINARY_DIR}/shared.h")
@@ -76,10 +73,4 @@ if (BUILD_TESTING)
         "tests/urlinfotests.cpp")
     find_package(GTest CONFIG REQUIRED)
     target_link_libraries(libparabolic_test PRIVATE GTest::gtest GTest::gtest_main GTest::gmock GTest::gmock_main libparabolic)
-    if(USING_VCPKG)
-        add_custom_command(TARGET libparabolic_test POST_BUILD 
-            COMMAND ${Python_EXECUTABLE} -m venv "$<TARGET_FILE_DIR:libparabolic_test>/.."
-            COMMAND $<TARGET_FILE_DIR:libparabolic_test>/../Scripts/activate.bat
-            COMMAND python -m pip install --force-reinstall "yt-dlp==2024.07.09" > pip_install.log)
-    endif()
 endif()

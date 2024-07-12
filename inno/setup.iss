@@ -55,20 +55,6 @@ begin
     MsgBox('Unable to install Windows App SDK. Please try again', mbError, MB_OK);
 end;
 
-procedure SetupPython();
-var
-  ResultCode: Integer;
-begin
-  if not Exec(ExpandConstant('{app}\deps\python-3.11.9-amd64.exe'), ExpandConstant('/quiet InstallAllUsers=1 TargetDir="{app}" DefaultAllUsersTargetDir="{app}" Shortcuts=0 Include_launcher=0 Include_test=0 Include_symbols=1'), '', SW_HIDE, ewWaitUntilTerminated, ResultCode)
-  then
-    MsgBox('Unable to install Python. Please try again. THE APP WILL NOT FUNCTION CORRECTLY.', mbError, MB_OK)
-  else begin
-    if not Exec(ExpandConstant('{app}\pythonw.exe'), '-m pip install --force-reinstall "yt-dlp==2024.07.09"', '', SW_HIDE, ewWaitUntilTerminated, ResultCode)
-    then
-      MsgBox('Unable to install yt-dlp. Please try again. THE APP WILL NOT FUNCTION CORRECTLY.', mbError, MB_OK)
-  end;
-end;
-
 procedure Cleanup();
 begin
   DelTree(ExpandConstant('{app}\deps'), True, True, True);
@@ -83,7 +69,7 @@ Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{
 [Files]
 Source: "..\vc_redist.x64.exe"; DestDir: "{app}\deps"; AfterInstall: SetupVC  
 Source: "..\windowsappruntimeinstall-x64.exe"; DestDir: "{app}\deps"; AfterInstall: SetupWinAppSDK  
-Source: "..\python-3.11.9-amd64.exe"; DestDir: "{app}\deps"; AfterInstall: SetupPython
+Source: "..\yt-dlp.exe"; DestDir: "{app}\Release"; Flags: ignoreversion
 Source: "..\ffmpeg.exe"; DestDir: "{app}\Release"; Flags: ignoreversion
 Source: "..\ffplay.exe"; DestDir: "{app}\Release"; Flags: ignoreversion
 Source: "..\ffprobe.exe"; DestDir: "{app}\Release"; Flags: ignoreversion

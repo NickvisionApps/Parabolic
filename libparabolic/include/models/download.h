@@ -2,12 +2,12 @@
 #define DOWNLOAD_H
 
 #include <filesystem>
+#include <memory>
 #include <mutex>
 #include <string>
-#include <thread>
 #include <libnick/events/event.h>
 #include <libnick/events/parameventargs.h>
-#include <pybind11/embed.h>
+#include <libnick/system/process.h>
 #include "downloadoptions.h"
 #include "downloaderoptions.h"
 #include "downloadprogresschangedeventargs.h"
@@ -65,30 +65,21 @@ namespace Nickvision::TubeConverter::Shared::Models
 
     private:
         /**
-         * @brief Invokes the progress changed event with the updated log.
+         * @brief Watches the download process for progress.
          */
-        void invokeLogUpdate();
+        void watch();
         /**
-         * @brief Invokes the progress changed event with the updated progress.
-         * @param data The dictionary passed by yt-dlp progress hook
+         * @brief Handles when the underlying process exits.
+         * @brief args The ProcessExitedEventArgs
          */
-        void progressHook(const pybind11::dict& data);
-        /**
-         * @brief Runs the download.
-         * @brief Python must first be started via PythonHelpers::start().
-         * @param downloaderOptions The DownloaderOptions
-         */
-        void runDownload(const DownloaderOptions& downloaderOptions);
+        void onProcessExit(const System::ProcessExitedEventArgs& args);
         mutable std::mutex m_mutex;
         DownloadOptions m_options;
-        std::string m_id;
         DownloadStatus m_status;
-        std::string m_filename;
-        std::filesystem::path m_tempDirPath;
-        std::filesystem::path m_logFilePath;
+        std::filesystem::path m_path;
+        std::shared_ptr<System::Process> m_process;
         Events::Event<DownloadProgressChangedEventArgs> m_progressChanged;
         Events::Event<Events::ParamEventArgs<DownloadStatus>> m_completed;
-        std::thread m_downloadThread;
     };
 }
 

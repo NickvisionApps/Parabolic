@@ -1,36 +1,24 @@
 #include <gtest/gtest.h>
 #include <iostream>
 #include <optional>
-#include <libnick/logging/logger.h>
 #include <libnick/system/environment.h>
-#include "helpers/pythonhelpers.h"
 #include "models/downloaderoptions.h"
 #include "models/urlinfo.h"
 
-using namespace Nickvision::Logging;
 using namespace Nickvision::System;
-using namespace Nickvision::TubeConverter::Shared::Helpers;
 using namespace Nickvision::TubeConverter::Shared::Models;
 
 class UrlInfoTest : public testing::Test
 {
 public:
-    static Logger m_logger;
     static DownloaderOptions m_options;
 
     static void SetUpTestCase()
     {
-        PythonHelpers::start(m_logger);
         m_options.setLimitCharacters(Environment::getOperatingSystem() == OperatingSystem::Windows);
-    }
-
-    static void TearDownTestCase()
-    {
-        PythonHelpers::shutdown(m_logger);
     }
 };
 
-Logger UrlInfoTest::m_logger;
 DownloaderOptions UrlInfoTest::m_options;
 
 TEST_F(UrlInfoTest, YouTube1)
@@ -47,6 +35,7 @@ TEST_F(UrlInfoTest, YouTube2)
     ASSERT_EQ(info->count(), 1);
     const Media& media{ info->get(0) };
     ASSERT_EQ(media.getTitle(), "NEFFEX - Take Off [Copyright-Free] No.225");
+    ASSERT_EQ(media.getType(), MediaType::Video);
     ASSERT_FALSE(media.hasSubtitles());
     std::cout << *info << std::endl;
 }
@@ -68,6 +57,7 @@ TEST_F(UrlInfoTest, YouTube4)
     ASSERT_EQ(info->count(), 1);
     const Media& media{ info->get(0) };
     ASSERT_EQ(media.getTitle(), "My Wifi is Better than Yours");
+    ASSERT_EQ(media.getType(), MediaType::Video);
     ASSERT_FALSE(media.hasSubtitles());
     std::cout << *info << std::endl;
 }
@@ -80,6 +70,7 @@ TEST_F(UrlInfoTest, YouTube5)
     ASSERT_EQ(info->count(), 1);
     const Media& media{ info->get(0) };
     ASSERT_EQ(media.getTitle(), "I Tried Gaming On The New Snapdragon X Windows ARM Laptop...");
+    ASSERT_EQ(media.getType(), MediaType::Video);
     ASSERT_TRUE(media.hasSubtitles());
     std::cout << *info << std::endl;
 }
@@ -98,6 +89,7 @@ TEST_F(UrlInfoTest, YouTubeMusic2)
     ASSERT_EQ(info->count(), 1);
     const Media& media{ info->get(0) };
     ASSERT_EQ(media.getTitle(), "Epic Emotional");
+    ASSERT_EQ(media.getType(), MediaType::Video);
     ASSERT_FALSE(media.hasSubtitles());
     std::cout << *info << std::endl;
 }
@@ -110,6 +102,7 @@ TEST_F(UrlInfoTest, SoundCloud1)
     ASSERT_EQ(info->count(), 1);
     const Media& media{ info->get(0) };
     ASSERT_EQ(media.getTitle(), "Take Control [Copyright-Free]");
+    ASSERT_EQ(media.getType(), MediaType::Audio);
     ASSERT_FALSE(media.hasSubtitles());
     std::cout << *info << std::endl;
 }

@@ -6,7 +6,8 @@
 #include <ostream>
 #include <string>
 #include <vector>
-#include <pybind11/embed.h>
+#include <json/json.h>
+#include "mediatype.h"
 #include "videoresolution.h"
 
 namespace Nickvision::TubeConverter::Shared::Models
@@ -22,14 +23,15 @@ namespace Nickvision::TubeConverter::Shared::Models
          * @param url The URL of the media
          * @param title The title of the media
          * @param duration The duration of the media
+         * @param type The type of the media
          */
-        Media(const std::string& url, const std::string& title, const std::chrono::seconds& duration);
+        Media(const std::string& url, const std::string& title, const std::chrono::seconds& duration, MediaType type);
         /**
-         * @brief Constructs a Media from a Python dictionary.
-         * @param info The Python dictionary to construct the Media from
+         * @brief Constructs a Media from a json object.
+         * @param info The json object to construct the Media from
          * @throw std::invalid_argument If the info is None
          */
-        Media(const pybind11::dict& info);
+        Media(const Json::Value& info);
         /**
          * @brief Gets the URL of the media.
          * @return The URL of the media
@@ -45,6 +47,11 @@ namespace Nickvision::TubeConverter::Shared::Models
          * @return The duration of the media
          */
         const std::chrono::seconds& getDuration() const;
+        /**
+         * @brief Gets the type of the media.
+         * @return The type of the media
+         */
+        MediaType getType() const;
         /**
          * @brief Gets the audio languages of the media.
          * @return The audio languages of the media
@@ -97,6 +104,7 @@ namespace Nickvision::TubeConverter::Shared::Models
         std::string m_url;
         std::string m_title;
         std::chrono::seconds m_duration;
+        MediaType m_type;
         std::vector<std::string> m_audioLanguages;
         std::vector<VideoResolution> m_videoResolutions;
         std::optional<unsigned int> m_playlistPosition;

@@ -76,16 +76,6 @@ namespace Nickvision::TubeConverter::Shared::Models
          */
         void setPreventSuspendWhenDownloading(bool prevent);
         /**
-         * @brief Gets whether or not to disallow conversions.
-         * @return True to disallow conversions, else false
-         */
-        bool getDisallowConversions() const;
-        /**
-         * @brief Sets whether or not to disallow conversions.
-         * @param disallowConversions True to disallow conversions, else false
-         */
-        void setDisallowConversions(bool disallowConversions);
-        /**
          * @brief Gets the downloader options.
          * @return The downloader options
          */
@@ -115,16 +105,6 @@ namespace Nickvision::TubeConverter::Shared::Models
          * @param previousMediaFileType The new previous media file type
          */
         void setPreviousMediaFileType(const MediaFileType& previousMediaFileType);
-        /**
-         * @brief Gets the previous generic media file type.
-         * @return The previous generic media file type
-         */
-        MediaFileType getPreviousGenericMediaFileType() const;
-        /**
-         * @brief Sets the previous generic media file type.
-         * @param previousGenericMediaFileType The new previous generic media file type
-         */
-        void setPreviousGenericMediaFileType(const MediaFileType& previousGenericMediaFileType);
         /**
          * @brief Gets the previous video resolution.
          * @return The previous video resolution

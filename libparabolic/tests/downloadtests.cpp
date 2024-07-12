@@ -1,57 +1,60 @@
 #include <gtest/gtest.h>
 #include <libnick/filesystem/userdirectories.h>
-#include "helpers/pythonhelpers.h"
+#include <thread>
 #include "models/download.h"
 #include "models/downloadoptions.h"
 #include "models/downloaderoptions.h"
 
 using namespace Nickvision::Events;
 using namespace Nickvision::Filesystem;
-using namespace Nickvision::Logging;
-using namespace Nickvision::TubeConverter::Shared::Helpers;
 using namespace Nickvision::TubeConverter::Shared::Models;
 
-class DownloadTest : public ::testing::Test
+class DownloadTest : public testing::Test
 {
 public:
-    static Logger m_logger;
     static DownloaderOptions m_downloaderOptions;
-
-    static void SetUpTestSuite()
-    {
-        PythonHelpers::start(m_logger);
-    }
-
-    static void TearDownTestSuite()
-    {
-        PythonHelpers::shutdown(m_logger);
-    }
 };
 
-Logger DownloadTest::m_logger;
 DownloaderOptions DownloadTest::m_downloaderOptions;
 
-TEST_F(DownloadTest, Download1)
+TEST_F(DownloadTest, YouTubeAudio1)
 {
-    GTEST_SKIP();
+    bool downloadFinished{ false };
     DownloadOptions options{ "https://www.youtube.com/watch?v=CvUxi35IdWM&pp=ygUTY29weXJpZ2h0IGZyZWUgc29uZw%3D%3D" };
     options.setFileType(MediaFileType::MP3);
     options.setSaveFolder(UserDirectories::get(UserDirectory::Downloads));
     options.setSaveFilename("Test1");
     Download download{ options };
-    ASSERT_EQ(download.getStatus(), DownloadStatus::NotStarted);
-    download.progressChanged() += [](const DownloadProgressChangedEventArgs& args)
+    download.progressChanged() += [](const DownloadProgressChangedEventArgs& e) { std::cout << e << std::endl; };
+    download.completed() += [&downloadFinished](const ParamEventArgs<DownloadStatus>&) { downloadFinished = true; };
+    ASSERT_NO_THROW(download.start(m_downloaderOptions));
+    ASSERT_EQ(download.getStatus(), DownloadStatus::Running);
+    while(!downloadFinished)
     {
-        std::cout << args << std::endl;
-    };
-    download.completed() += [](const ParamEventArgs<DownloadStatus>& args)
-    {
-        std::cout << "Done!" << std::endl;
-    };
-    download.start(m_downloaderOptions);
-    while(download.getStatus() == DownloadStatus::Running)
-    {
-        std::this_thread::sleep_for(std::chrono::seconds(1));
+        std::this_thread::sleep_for(std::chrono::milliseconds(100));
     }
     ASSERT_EQ(download.getStatus(), DownloadStatus::Success);
+    ASSERT_TRUE(std::filesystem::exists(download.getPath()));
+    std::filesystem::remove(download.getPath());
+}
+
+TEST_F(DownloadTest, YouTubeVideo1)
+{
+    bool downloadFinished{ false };
+    DownloadOptions options{ "https://www.youtube.com/watch?v=K4DyBUG242c&pp=ygUUY29weXJpZ2h0IG11c2ljIHNvbmc%3D" };
+    options.setFileType(MediaFileType::MP4);
+    options.setSaveFolder(UserDirectories::get(UserDirectory::Downloads));
+    options.setSaveFilename("Test2");
+    Download download{ options };
+    download.progressChanged() += [](const DownloadProgressChangedEventArgs& e) { std::cout << e << std::endl; };
+    download.completed() += [&downloadFinished](const ParamEventArgs<DownloadStatus>&) { downloadFinished = true; };
+    ASSERT_NO_THROW(download.start(m_downloaderOptions));
+    ASSERT_EQ(download.getStatus(), DownloadStatus::Running);
+    while(!downloadFinished)
+    {
+        std::this_thread::sleep_for(std::chrono::milliseconds(100));
+    }
+    ASSERT_EQ(download.getStatus(), DownloadStatus::Success);
+    ASSERT_TRUE(std::filesystem::exists(download.getPath()));
+    std::filesystem::remove(download.getPath());
 }

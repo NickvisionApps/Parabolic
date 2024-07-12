@@ -84,21 +84,6 @@
         },
         "python3-modules.json",
         {
-            "name": "pybind11",
-            "buildsystem": "cmake-ninja",
-            "builddir": true,
-            "config-opts": [
-                "-DCMAKE_BUILD_TYPE=Release"
-            ],
-            "sources": [
-                {
-                    "type": "git",
-                    "url": "https://github.com/pybind/pybind11",
-                    "tag": "v2.13.1"
-                }
-            ]
-        },
-        {
             "name": "ffmpeg",
             "config-opts": [
                 "--disable-debug",

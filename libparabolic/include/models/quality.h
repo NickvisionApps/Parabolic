@@ -9,8 +9,8 @@ namespace Nickvision::TubeConverter::Shared::Models
     enum class Quality
     {
         Best = 0,
+        Good,
         Worst,
-        Resolution
     };
 }
 

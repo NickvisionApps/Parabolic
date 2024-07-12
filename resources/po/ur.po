@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-07-10 16:18-0400\n"
+"POT-Creation-Date: 2024-07-11 22:56-0400\n"
 "PO-Revision-Date: 2023-10-09 05:02+0000\n"
 "Last-Translator: Abdur Rehman Imran <arehmanimran4@gmail.com>\n"
 "Language-Team: Urdu <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -19,36 +19,36 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Weblate 5.1-dev\n"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:44
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:42
 msgid "Parabolic"
 msgstr "پیرابولک"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:45
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:43
 msgid "Download web video and audio"
 msgstr "وئیب آڈیو اور ویدیو ڈاؤن لوڈ کریں"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:51
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:49
 msgid "Matrix Chat"
 msgstr "میٹرکس چیٹ"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:53
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:51
 #, fuzzy
 msgid "Contributors on GitHub"
 msgstr "GitHub پر تعاون کرنے والے ❤️"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:55
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:53
 msgid "Fyodor Sobolev"
 msgstr "فیوڈور سوبولیف"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:57
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:55
 msgid "David Lapshin"
 msgstr "David Lapshin"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:58
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:56
 msgid "translator-credits"
 msgstr "مترجم کی خدمات کا اعتراف"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:221
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:240
 msgid ""
 "The authors of Nickvision Parabolic are not responsible/liable for any "
 "misuse of this program that may violate local copyright/DMCA laws. Users use "
@@ -58,48 +58,38 @@ msgstr ""
 "دار نہیں ہیں جو مقامی کاپی رائٹ/DMCA قوانین کی خلاف ورزی کر سکتا ہے۔ صارفین "
 "اس ایپلی کیشن کو اپنی ذمہ داری پر استعمال کرتے ہیں۔"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:256
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:273
 msgid "New update available"
 msgstr ""
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:288
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:305
 msgid "Unable to download and install update"
 msgstr ""
 
-#: libparabolic/src/models/download.cpp:148
+#: libparabolic/src/models/download.cpp:60
 #, fuzzy
-msgid "File already exists and overwriting is disabled."
+msgid "The file already exists and overwriting is disabled."
 msgstr "فائل پہلے سے موجود ہے، اور دوبارہ لکھنے کی اجازت نہیں ہے"
 
-#: libparabolic/src/models/download.cpp:327
+#: libparabolic/src/models/downloadprogresschangedeventargs.cpp:20
 #, fuzzy
-msgid "Download using aria2 has started."
-msgstr "aria2 کا استعمال کرتے ہوئے ڈاؤن لوڈ شروع ہو گیا ہے"
-
-#: libparabolic/src/models/download.cpp:331
-#, fuzzy
-msgid "Download using ffmpeg has started."
-msgstr "ffmpeg کا استعمال کرتے ہوئے ڈاؤن لوڈ شروع ہو گیا ہے"
-
-#: libparabolic/src/models/downloadprogresschangedeventargs.cpp:21
-#, fuzzy, c-format
-msgid "%.1f GiB/s"
+msgid "{:.2f} GiB/s"
 msgstr "{0:f1} GiB/s"
 
-#: libparabolic/src/models/downloadprogresschangedeventargs.cpp:25
-#, fuzzy, c-format
-msgid "%.1f MiB/s"
+#: libparabolic/src/models/downloadprogresschangedeventargs.cpp:24
+#, fuzzy
+msgid "{:.2f} MiB/s"
 msgstr "{0:f1} MiB/s"
 
-#: libparabolic/src/models/downloadprogresschangedeventargs.cpp:29
-#, fuzzy, c-format
-msgid "%.1f KiB/s"
+#: libparabolic/src/models/downloadprogresschangedeventargs.cpp:28
+#, fuzzy
+msgid "{:.2f} KiB/s"
 msgstr "{0:f1} KiB/s"
 
-#: libparabolic/src/models/downloadprogresschangedeventargs.cpp:33
-#, c-format
-msgid "%.1f B/s"
-msgstr ""
+#: libparabolic/src/models/downloadprogresschangedeventargs.cpp:32
+#, fuzzy
+msgid "{:.2f} B/s"
+msgstr "{0:f1} B/s"
 
 #: libparabolic/src/models/videoresolution.cpp:21
 #: libparabolic/src/models/videoresolution.cpp:63
@@ -332,7 +322,7 @@ msgstr ""
 "اجازت دی جا سکے جس کے لیے لاگ ان کی ضرورت ہوتی ہے۔"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:146
-#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:90
+#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:88
 #: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:58
 msgid "Select Cookies File"
 msgstr "کوکیز فائل کو منتخب کریں"
@@ -374,43 +364,27 @@ msgstr "تبدیل کرنے والے"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:223
 #: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:65
-msgid "Disallow Conversions"
-msgstr "تبادلوں کی اجازت نہ دیں"
-
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:224
-#, fuzzy
-msgid ""
-"If enabled, Parabolic will download the appropriate video/audio format for "
-"the selected quality without converting to other formats. (You will be "
-"unable to select a file format)"
-msgstr ""
-"اگر فعال ہو تو، Parabolic دوسرے فارمیٹس میں تبدیل کیے بغیر منتخب معیار کے "
-"لیے مناسب ویڈیو/آڈیو فارمیٹ ڈاؤن لوڈ کرے گا۔ (آپ فائل فارمیٹ کو منتخب کرنے "
-"سے قاصر ہوں گے)"
-
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:233
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:69
 msgid "Embed Metadata"
 msgstr "میٹا ڈیٹا شامل کریں"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:242
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:75
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:232
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:71
 msgid "Embed Chapters"
 msgstr "ابواب کو شامل کریں"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:251
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:72
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:241
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:68
 #, fuzzy
 msgid "Embed Subtitles"
 msgstr "سب ٹائٹل"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:260
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:78
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:250
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:74
 msgid "Crop Audio Thumbnails"
 msgstr "آڈیو تھمب نیلز کو تراشیں"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:261
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:79
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:251
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:75
 #, fuzzy
 msgid ""
 "If enabled, Parabolic will crop the thumbnails of audio files to squares."
@@ -418,13 +392,13 @@ msgstr ""
 "اگر فعال ہو تو، پیرابولک آڈیو ڈاؤن لوڈز کے لیے کراپ تھمب نیل ایڈوانس آپشن کو "
 "خود بخود آن کر دے گا"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:271
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:82
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:261
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:78
 msgid "Remove Source Data"
 msgstr ""
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:272
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:83
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:262
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:79
 #, fuzzy
 msgid ""
 "If enabled, Parabolic will clear metadata fields containing the URL and "
@@ -433,19 +407,19 @@ msgstr ""
 "اگر فعال ہو تو، پیرابولک آڈیو ڈاؤن لوڈز کے لیے کراپ تھمب نیل ایڈوانس آپشن کو "
 "خود بخود آن کر دے گا"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:283
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:86
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:273
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:82
 #, fuzzy
 msgid "aria2"
 msgstr "aria2 کا استعمال کریں"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:286
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:87
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:276
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:83
 msgid "Use aria2"
 msgstr "aria2 کا استعمال کریں"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:287
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:88
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:277
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:84
 msgid ""
 "Enable to use aria2 downloader. It can be faster, but you will not see "
 "download progress."
@@ -453,18 +427,18 @@ msgstr ""
 "aria2 ڈاؤنلوڈر استعمال کرنے کے لیے فعال کریں۔ یہ تیز تر ہو سکتا ہے، لیکن آپ "
 "کو ڈاؤن لوڈ کی پیشرفت نظر نہیں آئے گی۔"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:296
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:91
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:286
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:87
 msgid "Max Connections Per Server (-x)"
 msgstr "فی سرور زیادہ سے زیادہ کنکشنز (-x)"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:313
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:92
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:303
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:88
 msgid "Minimum Split Size (-k)"
 msgstr "کم از کم تقسیم کا سائز (-k)"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:314
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:93
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:304
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:89
 msgid "The minimum size of which to split a file (in MiB)."
 msgstr "فائل کو تقسیم کرنے کے لیے کم از کم سائز (MiB میں)۔"
 
@@ -540,13 +514,13 @@ msgid "GitHub Repo"
 msgstr "گٹ ہب رجسٹر(ریپوسٹری)"
 
 #: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:26
-#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:117
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:113
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:170
+#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:115
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:109
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:165
 msgid "No file selected"
 msgstr ""
 
-#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:92
+#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:90
 msgid "Text File (*.txt)"
 msgstr ""
 
@@ -640,13 +614,12 @@ msgstr ""
 #: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:36
 #: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:46
 #: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:52
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:67
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:70
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:73
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:66
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:69
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:72
 #: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:76
 #: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:80
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:84
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:89
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:85
 #, fuzzy
 msgid "On"
 msgstr "کھولیں۔"
@@ -655,13 +628,12 @@ msgstr "کھولیں۔"
 #: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:37
 #: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:47
 #: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:53
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:68
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:71
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:74
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:67
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:70
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:73
 #: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:77
 #: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:81
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:85
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:90
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:86
 msgid "Off"
 msgstr ""
 
@@ -675,15 +647,35 @@ msgstr "معطلی کو روکیں"
 msgid "Enter proxy URL here"
 msgstr "میڈیا URL یہاں درج کریں"
 
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:66
+#~ msgid "Disallow Conversions"
+#~ msgstr "تبادلوں کی اجازت نہ دیں"
+
 #, fuzzy
-msgid ""
-"If enabled, Parabolic will download the appropriate video/audio format for "
-"the selected quality without converting to other formats."
-msgstr ""
-"اگر فعال ہو تو، Parabolic دوسرے فارمیٹس میں تبدیل کیے بغیر منتخب معیار کے "
-"لیے مناسب ویڈیو/آڈیو فارمیٹ ڈاؤن لوڈ کرے گا۔ (آپ فائل فارمیٹ کو منتخب کرنے "
-"سے قاصر ہوں گے)"
+#~ msgid ""
+#~ "If enabled, Parabolic will download the appropriate video/audio format "
+#~ "for the selected quality without converting to other formats. (You will "
+#~ "be unable to select a file format)"
+#~ msgstr ""
+#~ "اگر فعال ہو تو، Parabolic دوسرے فارمیٹس میں تبدیل کیے بغیر منتخب معیار کے "
+#~ "لیے مناسب ویڈیو/آڈیو فارمیٹ ڈاؤن لوڈ کرے گا۔ (آپ فائل فارمیٹ کو منتخب "
+#~ "کرنے سے قاصر ہوں گے)"
+
+#, fuzzy
+#~ msgid ""
+#~ "If enabled, Parabolic will download the appropriate video/audio format "
+#~ "for the selected quality without converting to other formats."
+#~ msgstr ""
+#~ "اگر فعال ہو تو، Parabolic دوسرے فارمیٹس میں تبدیل کیے بغیر منتخب معیار کے "
+#~ "لیے مناسب ویڈیو/آڈیو فارمیٹ ڈاؤن لوڈ کرے گا۔ (آپ فائل فارمیٹ کو منتخب "
+#~ "کرنے سے قاصر ہوں گے)"
+
+#, fuzzy
+#~ msgid "Download using aria2 has started."
+#~ msgstr "aria2 کا استعمال کرتے ہوئے ڈاؤن لوڈ شروع ہو گیا ہے"
+
+#, fuzzy
+#~ msgid "Download using ffmpeg has started."
+#~ msgstr "ffmpeg کا استعمال کرتے ہوئے ڈاؤن لوڈ شروع ہو گیا ہے"
 
 #, fuzzy
 #~ msgid "No History"
@@ -736,10 +728,6 @@ msgstr ""
 
 #~ msgid "(Configurable in preferences)"
 #~ msgstr "ترجیحات میں قابل ترتیب"
-
-#, csharp-format
-#~ msgid "{0:f1} B/s"
-#~ msgstr "{0:f1} B/s"
 
 #, csharp-format
 #~ msgid "{0} download — {1:f1}% ({2})"

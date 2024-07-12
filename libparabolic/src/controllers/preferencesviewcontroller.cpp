@@ -66,16 +66,6 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         m_configuration.setPreventSuspendWhenDownloading(prevent);
     }
 
-    bool PreferencesViewController::getDisallowConversions() const
-    {
-        return m_configuration.getDisallowConversions();
-    }
-
-    void PreferencesViewController::setDisallowConversions(bool disallowConversions)
-    {
-        m_configuration.setDisallowConversions(disallowConversions);
-    }
-
     DownloaderOptions PreferencesViewController::getDownloaderOptions() const
     {
         return m_configuration.getDownloaderOptions();

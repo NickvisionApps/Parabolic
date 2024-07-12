@@ -72,16 +72,6 @@ namespace Nickvision::TubeConverter::Shared::Models
         m_json["PreventSuspendWhenDownloading"] = prevent;
     }
 
-    bool Configuration::getDisallowConversions() const
-    {
-        return m_json.get("DisallowConversions", false).asBool();
-    }
-
-    void Configuration::setDisallowConversions(bool disallowConversions)
-    {
-        m_json["DisallowConversions"] = disallowConversions;
-    }
-
     DownloaderOptions Configuration::getDownloaderOptions() const
     {
         DownloaderOptions options;
@@ -158,23 +148,6 @@ namespace Nickvision::TubeConverter::Shared::Models
     void Configuration::setPreviousMediaFileType(const MediaFileType& previousMediaFileType)
     {
         m_json["PreviousMediaFileType"] = static_cast<int>(previousMediaFileType);
-    }
-
-    MediaFileType Configuration::getPreviousGenericMediaFileType() const
-    {
-        return { static_cast<MediaFileType::MediaFileTypeValue>(m_json.get("PreviousGenericMediaFileType", static_cast<int>(MediaFileType::Video)).asInt()) };
-    }
-
-    void Configuration::setPreviousGenericMediaFileType(const MediaFileType& previousGenericMediaFileType)
-    {
-        if(previousGenericMediaFileType.isGeneric())
-        {
-            m_json["PreviousGenericMediaFileType"] = static_cast<int>(previousGenericMediaFileType);
-        }
-        else
-        {
-            m_json["PreviousGenericMediaFileType"] = static_cast<int>(MediaFileType::Video);
-        }
     }
 
     VideoResolution Configuration::getPreviousVideoResolution() const
