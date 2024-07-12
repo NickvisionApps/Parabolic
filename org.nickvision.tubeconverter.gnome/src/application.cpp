@@ -27,7 +27,7 @@ namespace Nickvision::TubeConverter::GNOME
 
     int Application::run()
     {
-        m_controller->log(Logging::LogLevel::Debug, "Started GTK application.");
+        m_controller->log(Logging::LogLevel::Info, "Started GTK application.");
         return g_application_run(G_APPLICATION(m_adw), 0, nullptr);
     }
 

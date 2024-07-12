@@ -5,21 +5,27 @@
 #include <string>
 #include <libnick/events/eventargs.h>
 
-namespace Nickvision::TubeConverter::Shared::Models
+namespace Nickvision::TubeConverter::Shared::Events
 {
     /**
      * @brief Event arguments for when a download's progress changes.
      */
-    class DownloadProgressChangedEventArgs : public Events::EventArgs
+    class DownloadProgressChangedEventArgs : public Nickvision::Events::EventArgs
     {
     public:
         /**
          * @brief Constructs a DownloadProgressChangedEventArgs.
+         * @param id The Id of the download
          * @param progress The progress of the download (between 0 and 1, or nan for indeterminate)
          * @param speed The speed of the download (in byes per second)
          * @param log The log of the download
          */
-        DownloadProgressChangedEventArgs(double progress, double speed, const std::string& log);
+        DownloadProgressChangedEventArgs(const std::string& id, double progress, double speed, const std::string& log);
+        /**
+         * @brief Gets the Id of the download.
+         * @return The Id of the download
+         */
+        const std::string& getId() const;
         /**
          * @brief Gets the progress of the download.
          * @brief The progress either be between 0 and 1, or nan for indeterminate.
@@ -50,6 +56,7 @@ namespace Nickvision::TubeConverter::Shared::Models
         friend std::ostream& operator<<(std::ostream& os, const DownloadProgressChangedEventArgs& args);
 
     private:
+        std::string m_id;
         double m_progress;
         double m_speed;
         std::string m_speedStr;

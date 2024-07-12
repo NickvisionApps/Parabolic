@@ -8,7 +8,7 @@ namespace Nickvision::TubeConverter::Shared::Models
      */
     enum class DownloadStatus
     {
-        NotStarted,
+        Queued,
         Running,
         Stopped,
         Error,

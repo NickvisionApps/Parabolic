@@ -47,7 +47,7 @@ namespace winrt::Nickvision::TubeConverter::WinUI::implementation
             m_mainWindow = winrt::make<MainWindow>();
             m_mainWindow.as<MainWindow>()->SetController(m_controller, m_systemTheme);
         }
-        m_controller->log(LogLevel::Debug, "Started WinUI application.");
+        m_controller->log(LogLevel::Info, "Started WinUI application.");
         m_mainWindow.Activate();
     }
 }

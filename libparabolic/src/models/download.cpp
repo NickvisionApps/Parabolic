@@ -1,5 +1,5 @@
 #include "models/download.h"
-#inculde <cmath>
+#include <cmath>
 #include <thread>
 #include <libnick/helpers/stringhelpers.h>
 #include <libnick/localization/gettext.h>
@@ -8,12 +8,14 @@
 using namespace Nickvision::Events;
 using namespace Nickvision::Helpers;
 using namespace Nickvision::System;
+using namespace Nickvision::TubeConverter::Shared::Events;
 
 namespace Nickvision::TubeConverter::Shared::Models
 {
     Download::Download(const DownloadOptions& options)
-        : m_options{ options },
-        m_status{ DownloadStatus::NotStarted },
+        : m_id{ StringHelpers::newGuid() }, 
+        m_options{ options },
+        m_status{ DownloadStatus::Queued },
         m_path{ options.getSaveFolder() / (options.getSaveFilename() + options.getFileType().getDotExtension()) },
         m_process{ nullptr }
     {
@@ -30,21 +32,27 @@ namespace Nickvision::TubeConverter::Shared::Models
         return m_progressChanged;
     }
 
-    Event<ParamEventArgs<DownloadStatus>>& Download::completed()
+    Event<DownloadCompletedEventArgs>& Download::completed()
     {
         return m_completed;
     }
 
-    std::filesystem::path Download::getPath() const
+    const std::string& Download::getId()
     {
         std::lock_guard<std::mutex> lock{ m_mutex };
-        return m_path;
+        return m_id;
     }
 
     DownloadStatus Download::getStatus() const
     {
         std::lock_guard<std::mutex> lock{ m_mutex };
         return m_status;
+    }
+
+    std::filesystem::path Download::getPath() const
+    {
+        std::lock_guard<std::mutex> lock{ m_mutex };
+        return m_path;
     }
 
     void Download::start(const DownloaderOptions& downloaderOptions)
@@ -58,8 +66,8 @@ namespace Nickvision::TubeConverter::Shared::Models
         {
             m_status = DownloadStatus::Error;
             lock.unlock();
-            m_progressChanged.invoke({ 1.0, 0.0, _("The file already exists and overwriting is disabled.") });
-            m_completed.invoke({ m_status });
+            m_progressChanged.invoke({ m_id, 1.0, 0.0, _("The file already exists and overwriting is disabled.") });
+            m_completed.invoke({ m_id, m_path, m_status, false });
             return;
         }
         m_process = std::make_shared<Process>(Environment::findDependency("yt-dlp"), m_options.toArgumentVector(downloaderOptions));
@@ -108,13 +116,13 @@ namespace Nickvision::TubeConverter::Shared::Models
                 }
                 if(progress[1] == "finished" || progress[1] == "processing")
                 {
-                    m_progressChanged.invoke({ std::nan(""), 0.0, log });
+                    m_progressChanged.invoke({ m_id, std::nan(""), 0.0, log });
                     return;
                 }
                 if(log != oldLog)
                 {
                     oldLog = log;
-                    m_progressChanged.invoke({ (progress[2] != "NA" ? std::stod(progress[2]) : 0) / (progress[3] != "NA" ? std::stod(progress[3]) : 1), (progress[4] != "NA" ? std::stod(progress[4]) : 0), log });
+                    m_progressChanged.invoke({ m_id, (progress[2] != "NA" ? std::stod(progress[2]) : 0) / (progress[3] != "NA" ? std::stod(progress[3]) : 1), (progress[4] != "NA" ? std::stod(progress[4]) : 0), log });
                 }
                 break;
             }
@@ -130,7 +138,7 @@ namespace Nickvision::TubeConverter::Shared::Models
             m_status = std::filesystem::exists(m_path) ? DownloadStatus::Success : DownloadStatus::Error;
         }
         lock.unlock();
-        m_progressChanged.invoke({ 1.0, 0.0, args.getOutput() });
-        m_completed.invoke({ m_status });
+        m_progressChanged.invoke({ m_id, 1.0, 0.0, args.getOutput() });
+        m_completed.invoke({ m_id, m_path, m_status, true });
     }
 }

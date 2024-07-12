@@ -1,4 +1,4 @@
-#include "models/downloadprogresschangedeventargs.h"
+#include "events/downloadprogresschangedeventargs.h"
 #include <cmath>
 #include <format>
 #include <libnick/helpers/codehelpers.h>
@@ -6,10 +6,11 @@
 
 using namespace Nickvision::Helpers;
 
-namespace Nickvision::TubeConverter::Shared::Models
+namespace Nickvision::TubeConverter::Shared::Events
 {
-    DownloadProgressChangedEventArgs::DownloadProgressChangedEventArgs(double progress, double speed, const std::string& log)
-        : m_progress{ progress > 1 ? 1 : progress},
+    DownloadProgressChangedEventArgs::DownloadProgressChangedEventArgs(const std::string& id, double progress, double speed, const std::string& log)
+        : m_id{ id },
+        m_progress{ progress > 1 ? 1 : progress},
         m_speed{ speed },
         m_log{ log }
     {
@@ -31,6 +32,11 @@ namespace Nickvision::TubeConverter::Shared::Models
         {
             m_speedStr = std::vformat(_("{:.2f} B/s"), std::make_format_args(m_speed));
         }
+    }
+
+    const std::string& DownloadProgressChangedEventArgs::getId() const
+    {
+        return m_id;
     }
 
     double DownloadProgressChangedEventArgs::getProgress() const

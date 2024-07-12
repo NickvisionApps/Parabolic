@@ -24,8 +24,9 @@
 #include <libnick/taskbar/taskbaritem.h>
 #include <libnick/update/updater.h>
 #include "controllers/preferencesviewcontroller.h"
-#include "models/theme.h"
+#include "models/downloadmanager.h"
 #include "models/historicdownload.h"
+#include "models/theme.h"
 
 namespace Nickvision::TubeConverter::Shared::Controllers
 {
@@ -167,11 +168,11 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         Nickvision::Network::NetworkMonitor m_networkMonitor;
         Nickvision::System::SuspendInhibitor m_suspendInhibitor;
         std::optional<Nickvision::Keyring::Keyring> m_keyring;
+        Models::DownloadManager m_downloadManager;
         Nickvision::Events::Event<Nickvision::Notifications::NotificationSentEventArgs> m_notificationSent;
         Nickvision::Events::Event<Nickvision::Notifications::ShellNotificationSentEventArgs> m_shellNotificationSent;
         Nickvision::Events::Event<Nickvision::Events::ParamEventArgs<std::string>> m_disclaimerTriggered;
         Nickvision::Events::Event<Nickvision::Events::ParamEventArgs<bool>> m_downloadAbilityChanged;
-        Nickvision::Events::Event<Nickvision::Events::ParamEventArgs<std::vector<Models::HistoricDownload>>> m_historyChanged;
     };
 }
 

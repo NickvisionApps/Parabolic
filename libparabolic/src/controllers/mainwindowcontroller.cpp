@@ -1,6 +1,4 @@
 ﻿#include "controllers/mainwindowcontroller.h"
-#include <algorithm>
-#include <ctime>
 #include <format>
 #include <sstream>
 #include <thread>
@@ -35,8 +33,9 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         m_args{ args },
         m_appInfo{ "org.nickvision.tubeconverter", "Nickvision Parabolic", "Parabolic" },
         m_dataFileManager{ m_appInfo.getName() },
-        m_logger{ UserDirectories::get(ApplicationUserDirectory::LocalData, m_appInfo.getName()) / "log.txt", std::find(m_args.begin(), m_args.end(), "--debug") != m_args.end() ? Logging::LogLevel::Debug : Logging::LogLevel::Info, false },
-        m_keyring{ Keyring::Keyring::access(m_appInfo.getId()) }
+        m_logger{ UserDirectories::get(ApplicationUserDirectory::LocalData, m_appInfo.getName()) / "log.txt", Logging::LogLevel::Info, false },
+        m_keyring{ Keyring::Keyring::access(m_appInfo.getId()) },
+        m_downloadManager{ m_dataFileManager.get<Configuration>("config").getDownloaderOptions(), m_dataFileManager.get<DownloadHistory>("history"), m_logger }
     {
         m_appInfo.setVersion({ "2024.7.0-next" });
         m_appInfo.setShortName(_("Parabolic"));
@@ -60,7 +59,8 @@ namespace Nickvision::TubeConverter::Shared::Controllers
 #endif
         m_dataFileManager.get<Configuration>("config").saved() += [this](const EventArgs&)
         {
-            m_logger.log(Logging::LogLevel::Debug, "Configuration saved.");
+            m_logger.log(Logging::LogLevel::Info, "Configuration saved.");
+            m_downloadManager.setDownloaderOptions(m_dataFileManager.get<Configuration>("config").getDownloaderOptions());
         };
         m_networkMonitor.stateChanged() += [this](const NetworkStateChangedEventArgs& args)
         { 
@@ -74,35 +74,19 @@ namespace Nickvision::TubeConverter::Shared::Controllers
             }
             m_downloadAbilityChanged.invoke(canDownload());
         };
-        if(m_keyring)
-        {
-            m_logger.log(Logging::LogLevel::Info, "Keyring unlocked.");
-        }
-        else
+        if(!m_keyring)
         {
             m_logger.log(Logging::LogLevel::Error, "Unable to unlock keyring.");
         }
-        if(!Environment::findDependency("yt-dlp").empty())
-        {
-            m_logger.log(Logging::LogLevel::Info, "yt-dlp found.");
-        }
-        else
+        if(Environment::findDependency("yt-dlp").empty())
         {
             m_logger.log(Logging::LogLevel::Error, "yt-dlp not found.");
         }
-        if(!Environment::findDependency("ffmpeg").empty())
-        {
-            m_logger.log(Logging::LogLevel::Info, "ffmpeg found.");
-        }
-        else
+        if(Environment::findDependency("ffmpeg").empty())
         {
             m_logger.log(Logging::LogLevel::Error, "ffmpeg not found.");
         }
-        if(!Environment::findDependency("aria2c").empty())
-        {
-            m_logger.log(Logging::LogLevel::Info, "aria2c found.");
-        }
-        else
+        if(Environment::findDependency("aria2c").empty())
         {
             m_logger.log(Logging::LogLevel::Error, "aria2c not found.");
         }
@@ -152,21 +136,42 @@ namespace Nickvision::TubeConverter::Shared::Controllers
 
     Event<ParamEventArgs<std::vector<HistoricDownload>>>& MainWindowController::historyChanged()
     {
-        return m_historyChanged;
+        return m_downloadManager.historyChanged();
     }
 
     std::string MainWindowController::getDebugInformation(const std::string& extraInformation) const
     {
         std::stringstream builder;
         //yt-dlp
-        std::string ytdlpVersion{ Environment::exec(Environment::findDependency("yt-dlp").string() + " --version") };
-        builder << "yt-dlp version " << ytdlpVersion;
+        if(Environment::findDependency("yt-dlp").empty())
+        {
+            builder << "yt-dlp not found" << std::endl;
+        }
+        else
+        {
+            std::string ytdlpVersion{ Environment::exec(Environment::findDependency("yt-dlp").string() + " --version") };
+            builder << "yt-dlp version " << ytdlpVersion;
+        }
         //Ffmpeg
-        std::string ffmpegVersion{ Environment::exec(Environment::findDependency("ffmpeg").string() + " -version") };
-        builder << ffmpegVersion.substr(0, ffmpegVersion.find("Copyright")) << std::endl;
+        if(Environment::findDependency("ffmpeg").empty())
+        {
+            builder << "ffmpeg not found" << std::endl;
+        }
+        else
+        {
+            std::string ffmpegVersion{ Environment::exec(Environment::findDependency("ffmpeg").string() + " -version") };
+            builder << ffmpegVersion.substr(0, ffmpegVersion.find("Copyright")) << std::endl;
+        }
         //Aria2c
-        std::string aria2cVersion{ Environment::exec(Environment::findDependency("aria2c").string() + " --version") };
-        builder << aria2cVersion.substr(0, aria2cVersion.find('\n')) << std::endl;
+        if(Environment::findDependency("aria2c").empty())
+        {
+            builder << "aria2c not found" << std::endl;
+        }
+        else
+        {
+            std::string aria2cVersion{ Environment::exec(Environment::findDependency("aria2c").string() + " --version") };
+            builder << aria2cVersion.substr(0, aria2cVersion.find('\n')) << std::endl;
+        }
         //Extra
         if(!extraInformation.empty())
         {
@@ -209,7 +214,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
 #ifdef _WIN32
         if(m_taskbar.connect(hwnd))
         {
-            m_logger.log(Logging::LogLevel::Debug, "Connected to Windows taskbar.");
+            m_logger.log(Logging::LogLevel::Info, "Connected to Windows taskbar.");
         }
         else
         {
@@ -222,7 +227,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
 #elif defined(__linux__)
         if(m_taskbar.connect(desktopFile))
         {
-            m_logger.log(Logging::LogLevel::Debug, "Connected to Linux taskbar.");
+            m_logger.log(Logging::LogLevel::Info, "Connected to Linux taskbar.");
         }
         else
         {
@@ -230,10 +235,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         }
 #endif
         //Load history
-        m_logger.log(Logging::LogLevel::Debug, "Loading historic downloads...");
-        DownloadHistory& history{ m_dataFileManager.get<DownloadHistory>("history") };
-        m_logger.log(Logging::LogLevel::Info, "Loaded " + std::to_string(history.getHistory().size()) + " historic downloads.");
-        m_historyChanged.invoke(history.getHistory());
+        m_downloadManager.loadHistory();
         //Check if disclaimer should be shown
         if(m_dataFileManager.get<Configuration>("config").getShowDisclaimerOnStartup())
         {
@@ -242,7 +244,6 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         //Check if downloads can be started
         m_downloadAbilityChanged.invoke(canDownload());
         m_started = true;
-        m_logger.log(Logging::LogLevel::Debug, "MainWindow started.");
         return m_dataFileManager.get<Configuration>("config").getWindowGeometry();
     }
 
@@ -252,7 +253,6 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         Configuration& config{ m_dataFileManager.get<Configuration>("config") };
         config.setWindowGeometry(geometry);
         config.save();
-        m_logger.log(Logging::LogLevel::Debug, "MainWindow shutdown.");
     }
 
     void MainWindowController::checkForUpdates()
@@ -261,7 +261,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         {
             return;
         }
-        m_logger.log(Logging::LogLevel::Debug, "Checking for updates...");
+        m_logger.log(Logging::LogLevel::Info, "Checking for updates...");
         std::thread worker{ [this]()
         {
             Version latest{ m_updater->fetchCurrentVersion(VersionType::Stable) };
@@ -274,7 +274,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
                 }
                 else
                 {
-                    m_logger.log(Logging::LogLevel::Debug, "No updates found.");
+                    m_logger.log(Logging::LogLevel::Info, "No updates found.");
                 }
             }
             else
@@ -292,7 +292,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         {
             return;
         }
-        m_logger.log(Logging::LogLevel::Debug, "Fetching Windows app update...");
+        m_logger.log(Logging::LogLevel::Info, "Fetching Windows app update...");
         std::thread worker{ [this]()
         {
             if (m_updater->windowsUpdate(VersionType::Stable))
@@ -316,19 +316,11 @@ namespace Nickvision::TubeConverter::Shared::Controllers
 
     void MainWindowController::clearHistory()
     {
-        DownloadHistory& history{ m_dataFileManager.get<DownloadHistory>("history") };
-        if(history.clear())
-        {
-            m_historyChanged.invoke(history.getHistory());
-        }
+        m_downloadManager.clearHistory();
     }
 
     void MainWindowController::removeHistoricDownload(const HistoricDownload& download)
     {
-        DownloadHistory& history{ m_dataFileManager.get<DownloadHistory>("history") };
-        if(history.removeDownload(download))
-        {
-            m_historyChanged.invoke(history.getHistory());
-        }
+        m_downloadManager.removeHistoricDownload(download);
     }
 }

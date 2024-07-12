@@ -6,12 +6,12 @@
 #include <mutex>
 #include <string>
 #include <libnick/events/event.h>
-#include <libnick/events/parameventargs.h>
 #include <libnick/system/process.h>
 #include "downloadoptions.h"
 #include "downloaderoptions.h"
-#include "downloadprogresschangedeventargs.h"
 #include "downloadstatus.h"
+#include "events/downloadcompletedeventargs.h"
+#include "events/downloadprogresschangedeventargs.h"
 
 namespace Nickvision::TubeConverter::Shared::Models
 {
@@ -35,22 +35,27 @@ namespace Nickvision::TubeConverter::Shared::Models
          * @brief Gets the event for when the download's progress is changed.
          * @return The progress changed event
          */
-        Events::Event<DownloadProgressChangedEventArgs>& progressChanged();
+        Nickvision::Events::Event<Events::DownloadProgressChangedEventArgs>& progressChanged();
         /**
          * @brief Gets the event for when the download is completed.
          * @return The completed event
          */
-        Events::Event<Events::ParamEventArgs<DownloadStatus>>& completed();
+        Nickvision::Events::Event<Events::DownloadCompletedEventArgs>& completed();
         /**
-         * @brief Gets the path of the download.
-         * @return The path of the download
+         * @brief Gets the Id of the download.
+         * @return The Id of the download
          */
-        std::filesystem::path getPath() const;
+        const std::string& getId();
         /**
          * @brief Gets the status of the download.
          * @return The status of the download
          */
         DownloadStatus getStatus() const;
+        /**
+         * @brief Gets the path of the download.
+         * @return The path of the download
+         */
+        std::filesystem::path getPath() const;
         /**
          * @brief Starts the download.
          * @brief Python must first be started via PythonHelpers::start().
@@ -74,12 +79,13 @@ namespace Nickvision::TubeConverter::Shared::Models
          */
         void onProcessExit(const System::ProcessExitedEventArgs& args);
         mutable std::mutex m_mutex;
+        std::string m_id;
         DownloadOptions m_options;
         DownloadStatus m_status;
         std::filesystem::path m_path;
         std::shared_ptr<System::Process> m_process;
-        Events::Event<DownloadProgressChangedEventArgs> m_progressChanged;
-        Events::Event<Events::ParamEventArgs<DownloadStatus>> m_completed;
+        Nickvision::Events::Event<Events::DownloadProgressChangedEventArgs> m_progressChanged;
+        Nickvision::Events::Event<Events::DownloadCompletedEventArgs> m_completed;
     };
 }
 

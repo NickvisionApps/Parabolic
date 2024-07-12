@@ -5,8 +5,8 @@
 #include "models/downloadoptions.h"
 #include "models/downloaderoptions.h"
 
-using namespace Nickvision::Events;
 using namespace Nickvision::Filesystem;
+using namespace Nickvision::TubeConverter::Shared::Events;
 using namespace Nickvision::TubeConverter::Shared::Models;
 
 class DownloadTest : public testing::Test
@@ -26,7 +26,7 @@ TEST_F(DownloadTest, YouTubeAudio1)
     options.setSaveFilename("Test1");
     Download download{ options };
     download.progressChanged() += [](const DownloadProgressChangedEventArgs& e) { std::cout << e << std::endl; };
-    download.completed() += [&downloadFinished](const ParamEventArgs<DownloadStatus>&) { downloadFinished = true; };
+    download.completed() += [&downloadFinished](const DownloadCompletedEventArgs&) { downloadFinished = true; };
     ASSERT_NO_THROW(download.start(m_downloaderOptions));
     ASSERT_EQ(download.getStatus(), DownloadStatus::Running);
     while(!downloadFinished)
@@ -47,7 +47,7 @@ TEST_F(DownloadTest, YouTubeVideo1)
     options.setSaveFilename("Test2");
     Download download{ options };
     download.progressChanged() += [](const DownloadProgressChangedEventArgs& e) { std::cout << e << std::endl; };
-    download.completed() += [&downloadFinished](const ParamEventArgs<DownloadStatus>&) { downloadFinished = true; };
+    download.completed() += [&downloadFinished](const DownloadCompletedEventArgs&) { downloadFinished = true; };
     ASSERT_NO_THROW(download.start(m_downloaderOptions));
     ASSERT_EQ(download.getStatus(), DownloadStatus::Running);
     while(!downloadFinished)
