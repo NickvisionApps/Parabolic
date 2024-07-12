@@ -1,4 +1,5 @@
 #include "models/download.h"
+#inculde <cmath>
 #include <thread>
 #include <libnick/helpers/stringhelpers.h>
 #include <libnick/localization/gettext.h>
@@ -13,8 +14,8 @@ namespace Nickvision::TubeConverter::Shared::Models
     Download::Download(const DownloadOptions& options)
         : m_options{ options },
         m_status{ DownloadStatus::NotStarted },
-        m_process{ nullptr },
-        m_path{ options.getSaveFolder() / (options.getSaveFilename() + options.getFileType().getDotExtension()) }
+        m_path{ options.getSaveFolder() / (options.getSaveFilename() + options.getFileType().getDotExtension()) },
+        m_process{ nullptr }
     {
         
     }

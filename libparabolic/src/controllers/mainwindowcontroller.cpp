@@ -160,7 +160,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         std::stringstream builder;
         //yt-dlp
         std::string ytdlpVersion{ Environment::exec(Environment::findDependency("yt-dlp").string() + " --version") };
-        builder << ytdlpVersion;
+        builder << "yt-dlp version " << ytdlpVersion;
         //Ffmpeg
         std::string ffmpegVersion{ Environment::exec(Environment::findDependency("ffmpeg").string() + " -version") };
         builder << ffmpegVersion.substr(0, ffmpegVersion.find("Copyright")) << std::endl;
