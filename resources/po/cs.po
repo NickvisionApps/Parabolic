@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-07-11 21:45-0400\n"
+"POT-Creation-Date: 2024-07-11 22:56-0400\n"
 "PO-Revision-Date: 2023-12-07 03:34+0000\n"
 "Last-Translator: Fjuro <ifjuro@proton.me>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -68,30 +68,30 @@ msgstr "Je dostupná nová aktualizace."
 msgid "Unable to download and install update"
 msgstr "Nepodařilo se stáhnout a nainstalovat aktualizaci."
 
-#: libparabolic/src/models/download.cpp:57
+#: libparabolic/src/models/download.cpp:60
 #, fuzzy
 msgid "The file already exists and overwriting is disabled."
 msgstr "Soubor již existuje a přepisování je zakázáno"
 
 #: libparabolic/src/models/downloadprogresschangedeventargs.cpp:20
-#, fuzzy, c-format
-msgid "%.1f GiB/s"
+#, fuzzy
+msgid "{:.2f} GiB/s"
 msgstr "{0:f1} GiB/s"
 
 #: libparabolic/src/models/downloadprogresschangedeventargs.cpp:24
-#, fuzzy, c-format
-msgid "%.1f MiB/s"
+#, fuzzy
+msgid "{:.2f} MiB/s"
 msgstr "{0:f1} MiB/s"
 
 #: libparabolic/src/models/downloadprogresschangedeventargs.cpp:28
-#, fuzzy, c-format
-msgid "%.1f KiB/s"
+#, fuzzy
+msgid "{:.2f} KiB/s"
 msgstr "{0:f1} KiB/s"
 
 #: libparabolic/src/models/downloadprogresschangedeventargs.cpp:32
-#, c-format
-msgid "%.1f B/s"
-msgstr ""
+#, fuzzy
+msgid "{:.2f} B/s"
+msgstr "{0:f1} B/s"
 
 #: libparabolic/src/models/videoresolution.cpp:21
 #: libparabolic/src/models/videoresolution.cpp:63
@@ -750,10 +750,6 @@ msgstr "Zde zadejte adresu URL proxy"
 
 #~ msgid "(Configurable in preferences)"
 #~ msgstr "(Lze upravit v předvolbách)"
-
-#, csharp-format
-#~ msgid "{0:f1} B/s"
-#~ msgstr "{0:f1} B/s"
 
 #, csharp-format
 #~ msgid "{0} download — {1:f1}% ({2})"

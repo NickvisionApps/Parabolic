@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-07-11 21:45-0400\n"
+"POT-Creation-Date: 2024-07-11 22:56-0400\n"
 "PO-Revision-Date: 2024-01-06 02:07+0000\n"
 "Last-Translator: Kingproone <PlayerGuy@protonmail.com>\n"
 "Language-Team: Hungarian <https://hosted.weblate.org/projects/nickvision-"
@@ -68,30 +68,30 @@ msgstr "Frissítés érhető el."
 msgid "Unable to download and install update"
 msgstr "A frissítés letöltése és telepítése nem sikerült."
 
-#: libparabolic/src/models/download.cpp:57
+#: libparabolic/src/models/download.cpp:60
 #, fuzzy
 msgid "The file already exists and overwriting is disabled."
 msgstr "A fájl már létezik, de felülírás nem engedélyezett"
 
 #: libparabolic/src/models/downloadprogresschangedeventargs.cpp:20
-#, fuzzy, c-format
-msgid "%.1f GiB/s"
+#, fuzzy
+msgid "{:.2f} GiB/s"
 msgstr "{0:f1} GiB/mp"
 
 #: libparabolic/src/models/downloadprogresschangedeventargs.cpp:24
-#, fuzzy, c-format
-msgid "%.1f MiB/s"
+#, fuzzy
+msgid "{:.2f} MiB/s"
 msgstr "{0:f1} MiB/mp"
 
 #: libparabolic/src/models/downloadprogresschangedeventargs.cpp:28
-#, fuzzy, c-format
-msgid "%.1f KiB/s"
+#, fuzzy
+msgid "{:.2f} KiB/s"
 msgstr "{0:f1} KiB/mp"
 
 #: libparabolic/src/models/downloadprogresschangedeventargs.cpp:32
-#, c-format
-msgid "%.1f B/s"
-msgstr ""
+#, fuzzy
+msgid "{:.2f} B/s"
+msgstr "{0:f1} B/mp"
 
 #: libparabolic/src/models/videoresolution.cpp:21
 #: libparabolic/src/models/videoresolution.cpp:63
@@ -727,10 +727,6 @@ msgstr "Proxy átjáró megadása"
 
 #~ msgid "(Configurable in preferences)"
 #~ msgstr "(Beállításokban módosítható)"
-
-#, csharp-format
-#~ msgid "{0:f1} B/s"
-#~ msgstr "{0:f1} B/mp"
 
 #, csharp-format
 #~ msgid "{0} download — {1:f1}% ({2})"

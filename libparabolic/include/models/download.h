@@ -65,6 +65,10 @@ namespace Nickvision::TubeConverter::Shared::Models
 
     private:
         /**
+         * @brief Watches the download process for progress.
+         */
+        void watch();
+        /**
          * @brief Handles when the underlying process exits.
          * @brief args The ProcessExitedEventArgs
          */

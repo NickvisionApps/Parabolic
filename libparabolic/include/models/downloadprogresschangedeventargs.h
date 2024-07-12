@@ -15,13 +15,14 @@ namespace Nickvision::TubeConverter::Shared::Models
     public:
         /**
          * @brief Constructs a DownloadProgressChangedEventArgs.
-         * @param progress The progress of the download (between 0 and 1)
+         * @param progress The progress of the download (between 0 and 1, or nan for indeterminate)
          * @param speed The speed of the download (in byes per second)
          * @param log The log of the download
          */
         DownloadProgressChangedEventArgs(double progress, double speed, const std::string& log);
         /**
          * @brief Gets the progress of the download.
+         * @brief The progress either be between 0 and 1, or nan for indeterminate.
          * @return The progress of the download
          */
         double getProgress() const;

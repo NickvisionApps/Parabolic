@@ -17,19 +17,19 @@ namespace Nickvision::TubeConverter::Shared::Models
         static constexpr double pow3{ 1024 * 1024 * 1024 };
         if(m_speed > pow3)
         {
-            m_speedStr = std::vformat(_("%.1f GiB/s"), std::make_format_args(CodeHelpers::unmove(m_speed / pow3)));
+            m_speedStr = std::vformat(_("{:.2f} GiB/s"), std::make_format_args(CodeHelpers::unmove(m_speed / pow3)));
         }
         else if(m_speed > pow2)
         {
-            m_speedStr = std::vformat(_("%.1f MiB/s"), std::make_format_args(CodeHelpers::unmove(m_speed / pow2)));
+            m_speedStr = std::vformat(_("{:.2f} MiB/s"), std::make_format_args(CodeHelpers::unmove(m_speed / pow2)));
         }
         else if(m_speed > 1024)
         {
-            m_speedStr = std::vformat(_("%.1f KiB/s"), std::make_format_args(CodeHelpers::unmove(m_speed / 1024)));
+            m_speedStr = std::vformat(_("{:.2f} KiB/s"), std::make_format_args(CodeHelpers::unmove(m_speed / 1024)));
         }
         else
         {
-            m_speedStr = std::vformat(_("%.1f B/s"), std::make_format_args(m_speed));
+            m_speedStr = std::vformat(_("{:.2f} B/s"), std::make_format_args(m_speed));
         }
     }
 

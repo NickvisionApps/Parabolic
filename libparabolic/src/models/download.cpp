@@ -1,8 +1,11 @@
 #include "models/download.h"
+#include <thread>
+#include <libnick/helpers/stringhelpers.h>
 #include <libnick/localization/gettext.h>
 #include <libnick/system/environment.h>
 
 using namespace Nickvision::Events;
+using namespace Nickvision::Helpers;
 using namespace Nickvision::System;
 
 namespace Nickvision::TubeConverter::Shared::Models
@@ -62,6 +65,8 @@ namespace Nickvision::TubeConverter::Shared::Models
         m_process->exited() += [this](const ProcessExitedEventArgs& args) { onProcessExit(args); };
         m_process->start();
         m_status = DownloadStatus::Running;
+        std::thread watcher{ &Download::watch, this };
+        watcher.detach();
     }
 
     void Download::stop()
@@ -74,6 +79,45 @@ namespace Nickvision::TubeConverter::Shared::Models
         if(m_process->kill())
         {
             m_status = DownloadStatus::Stopped;
+        }
+    }
+
+    void Download::watch()
+    {
+        if(!m_process)
+        {
+            return;
+        }
+        std::string oldLog;
+        while(m_process->isRunning())
+        {
+            std::string log{ m_process->getOutput() };
+            std::vector<std::string> logLines{ StringHelpers::split(log, "\n") };
+            for(size_t i = logLines.size(); i > 0; i--)
+            {
+                const std::string& line{ logLines[i - 1] };
+                if(line.find("PROGRESS;") == std::string::npos)
+                {
+                    continue;
+                }
+                std::vector<std::string> progress{ StringHelpers::split(line, ";") };
+                if(progress.size() != 5 || progress[1] == "NA")
+                {
+                    continue;
+                }
+                if(progress[1] == "finished" || progress[1] == "processing")
+                {
+                    m_progressChanged.invoke({ std::nan(""), 0.0, log });
+                    return;
+                }
+                if(log != oldLog)
+                {
+                    oldLog = log;
+                    m_progressChanged.invoke({ (progress[2] != "NA" ? std::stod(progress[2]) : 0) / (progress[3] != "NA" ? std::stod(progress[3]) : 1), (progress[4] != "NA" ? std::stod(progress[4]) : 0), log });
+                }
+                break;
+            }
+            std::this_thread::sleep_for(std::chrono::milliseconds(10));
         }
     }
 

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-07-11 21:45-0400\n"
+"POT-Creation-Date: 2024-07-11 22:56-0400\n"
 "PO-Revision-Date: 2024-02-02 15:04+0000\n"
 "Last-Translator: Yosef Or Boczko <yoseforb@gnome.org>\n"
 "Language-Team: Hebrew <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -71,30 +71,30 @@ msgstr "עדכון חדש זמין."
 msgid "Unable to download and install update"
 msgstr "לא ניתן להוריד ולהתקין את העדכון."
 
-#: libparabolic/src/models/download.cpp:57
+#: libparabolic/src/models/download.cpp:60
 #, fuzzy
 msgid "The file already exists and overwriting is disabled."
 msgstr "הקובץ כבר קיים, והדריסה שלו לא מתאפשרת"
 
 #: libparabolic/src/models/downloadprogresschangedeventargs.cpp:20
-#, fuzzy, c-format
-msgid "%.1f GiB/s"
+#, fuzzy
+msgid "{:.2f} GiB/s"
 msgstr "‏{0:f1} גיב״ב/שנ׳"
 
 #: libparabolic/src/models/downloadprogresschangedeventargs.cpp:24
-#, fuzzy, c-format
-msgid "%.1f MiB/s"
+#, fuzzy
+msgid "{:.2f} MiB/s"
 msgstr "‏{0:f1} מבי״ב/שנ׳"
 
 #: libparabolic/src/models/downloadprogresschangedeventargs.cpp:28
-#, fuzzy, c-format
-msgid "%.1f KiB/s"
+#, fuzzy
+msgid "{:.2f} KiB/s"
 msgstr "‏{0:f1} קי״ב/שנ׳"
 
 #: libparabolic/src/models/downloadprogresschangedeventargs.cpp:32
-#, c-format
-msgid "%.1f B/s"
-msgstr ""
+#, fuzzy
+msgid "{:.2f} B/s"
+msgstr "‏{0:f1} בית/שנ׳"
 
 #: libparabolic/src/models/videoresolution.cpp:21
 #: libparabolic/src/models/videoresolution.cpp:63
@@ -726,10 +726,6 @@ msgstr "יש להזין כאן כתובת מתווך"
 
 #~ msgid "(Configurable in preferences)"
 #~ msgstr "(ניתן להתאמה בהעדפות)"
-
-#, csharp-format
-#~ msgid "{0:f1} B/s"
-#~ msgstr "‏{0:f1} בית/שנ׳"
 
 #, csharp-format
 #~ msgid "{0} download — {1:f1}% ({2})"

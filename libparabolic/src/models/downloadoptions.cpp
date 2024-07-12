@@ -165,6 +165,10 @@ namespace Nickvision::TubeConverter::Shared::Models
         arguments.push_back("default");
         arguments.push_back("--ignore-errors");
         arguments.push_back("--no-warnings");
+        arguments.push_back("--progress");
+        arguments.push_back("--newline");
+        arguments.push_back("--progress-template");
+        arguments.push_back("download:PROGRESS;%(progress.status)s;%(progress.downloaded_bytes)s;%(progress.total_bytes)s;%(progress.speed)s");
         arguments.push_back("--ffmpeg-location");
         arguments.push_back(Environment::findDependency("ffmpeg").string());
         if(downloaderOptions.getOverwriteExistingFiles())
