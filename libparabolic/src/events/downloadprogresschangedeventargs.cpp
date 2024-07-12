@@ -8,7 +8,7 @@ using namespace Nickvision::Helpers;
 
 namespace Nickvision::TubeConverter::Shared::Events
 {
-    DownloadProgressChangedEventArgs::DownloadProgressChangedEventArgs(const std::string& id, double progress, double speed, const std::string& log)
+    DownloadProgressChangedEventArgs::DownloadProgressChangedEventArgs(int id, double progress, double speed, const std::string& log)
         : m_id{ id },
         m_progress{ progress > 1 ? 1 : progress},
         m_speed{ speed },
@@ -34,7 +34,7 @@ namespace Nickvision::TubeConverter::Shared::Events
         }
     }
 
-    const std::string& DownloadProgressChangedEventArgs::getId() const
+    int DownloadProgressChangedEventArgs::getId() const
     {
         return m_id;
     }

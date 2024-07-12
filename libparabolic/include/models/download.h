@@ -45,7 +45,12 @@ namespace Nickvision::TubeConverter::Shared::Models
          * @brief Gets the Id of the download.
          * @return The Id of the download
          */
-        const std::string& getId();
+        int getId();
+        /**
+         * @brief Gets the url of the download.
+         * @return The url of the download
+         */
+        const std::string& getUrl() const;
         /**
          * @brief Gets the status of the download.
          * @return The status of the download
@@ -79,7 +84,7 @@ namespace Nickvision::TubeConverter::Shared::Models
          */
         void onProcessExit(const System::ProcessExitedEventArgs& args);
         mutable std::mutex m_mutex;
-        std::string m_id;
+        int m_id;
         DownloadOptions m_options;
         DownloadStatus m_status;
         std::filesystem::path m_path;

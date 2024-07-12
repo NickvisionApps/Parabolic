@@ -21,12 +21,12 @@ namespace Nickvision::TubeConverter::Shared::Events
          * @param status The status of the download
          * @param showNotification Whether or not to show a notification
          */
-        DownloadCompletedEventArgs(const std::string& id, const std::filesystem::path& path, Models::DownloadStatus status, bool showNotification);
+        DownloadCompletedEventArgs(int id, const std::filesystem::path& path, Models::DownloadStatus status, bool showNotification);
         /**
          * @brief Gets the Id of the download.
          * @return The Id of the download
          */
-        const std::string& getId() const;
+        int getId() const;
         /**
          * @brief Gets the expected path of the download.
          * @return The expected path of the download
@@ -44,7 +44,7 @@ namespace Nickvision::TubeConverter::Shared::Events
         bool getShowNotification() const;
 
     private:
-        std::string m_id;
+        int m_id;
         std::filesystem::path m_path;
         Models::DownloadStatus m_status;
         bool m_showNotification;

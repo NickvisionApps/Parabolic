@@ -20,12 +20,12 @@ namespace Nickvision::TubeConverter::Shared::Events
          * @param speed The speed of the download (in byes per second)
          * @param log The log of the download
          */
-        DownloadProgressChangedEventArgs(const std::string& id, double progress, double speed, const std::string& log);
+        DownloadProgressChangedEventArgs(int id, double progress, double speed, const std::string& log);
         /**
          * @brief Gets the Id of the download.
          * @return The Id of the download
          */
-        const std::string& getId() const;
+        int getId() const;
         /**
          * @brief Gets the progress of the download.
          * @brief The progress either be between 0 and 1, or nan for indeterminate.
@@ -56,7 +56,7 @@ namespace Nickvision::TubeConverter::Shared::Events
         friend std::ostream& operator<<(std::ostream& os, const DownloadProgressChangedEventArgs& args);
 
     private:
-        std::string m_id;
+        int m_id;
         double m_progress;
         double m_speed;
         std::string m_speedStr;

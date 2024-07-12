@@ -54,17 +54,17 @@ namespace Nickvision::TubeConverter::Shared::Models
          * @brief Gets the event for when a download is stopped.
          * @return The download stopped event
          */
-        Nickvision::Events::Event<Nickvision::Events::ParamEventArgs<std::string>>& downloadStopped();
+        Nickvision::Events::Event<Nickvision::Events::ParamEventArgs<int>>& downloadStopped();
         /**
          * @brief Gets the event for when a download is retried.
          * @return The download retried event
          */
-        Nickvision::Events::Event<Nickvision::Events::ParamEventArgs<std::string>>& downloadRetried();
+        Nickvision::Events::Event<Nickvision::Events::ParamEventArgs<int>>& downloadRetried();
         /**
          * @brief Gets the event for when a download is started from the queue.
          * @return The download started from queue event
          */
-        Nickvision::Events::Event<Nickvision::Events::ParamEventArgs<std::string>>& downloadStartedFromQueue();
+        Nickvision::Events::Event<Nickvision::Events::ParamEventArgs<int>>& downloadStartedFromQueue();
         /**
          * @brief Gets the remaining downloads count.
          * @return The remaining downloads count
@@ -117,13 +117,13 @@ namespace Nickvision::TubeConverter::Shared::Models
          * @brief This will invoke the downloadStopped event if stopped successfully.
          * @param id The id of the download to stop
          */
-        void stopDownload(const std::string& id);
+        void stopDownload(int id);
         /**
          * @brief Requests that a download be retried.
          * @brief This will invoke the downloadRetried event if retried successfully.
          * @param id The id of the download to retry
          */
-        void retryDownload(const std::string& id);
+        void retryDownload(int id);
         /**
          * @brief Requests that all downloads be stopped.
          * @brief This will invoke the downloadStopped event for each download stopped.
@@ -162,16 +162,16 @@ namespace Nickvision::TubeConverter::Shared::Models
         DownloaderOptions m_options;
         DownloadHistory& m_history;
         Logging::Logger& m_logger;
-        std::unordered_map<std::string, std::shared_ptr<Download>> m_downloading;
-        std::unordered_map<std::string, std::shared_ptr<Download>> m_queued;
-        std::unordered_map<std::string, std::shared_ptr<Download>> m_completed;
+        std::unordered_map<int, std::shared_ptr<Download>> m_downloading;
+        std::unordered_map<int, std::shared_ptr<Download>> m_queued;
+        std::unordered_map<int, std::shared_ptr<Download>> m_completed;
         Nickvision::Events::Event<Nickvision::Events::ParamEventArgs<std::vector<HistoricDownload>>> m_historyChanged;
         Nickvision::Events::Event<Events::DownloadAddedEventArgs> m_downloadAdded;
         Nickvision::Events::Event<Events::DownloadCompletedEventArgs> m_downloadCompleted;
         Nickvision::Events::Event<Events::DownloadProgressChangedEventArgs> m_downloadProgressChanged;
-        Nickvision::Events::Event<Nickvision::Events::ParamEventArgs<std::string>> m_downloadStopped;
-        Nickvision::Events::Event<Nickvision::Events::ParamEventArgs<std::string>> m_downloadRetried;
-        Nickvision::Events::Event<Nickvision::Events::ParamEventArgs<std::string>> m_downloadStartedFromQueue;
+        Nickvision::Events::Event<Nickvision::Events::ParamEventArgs<int>> m_downloadStopped;
+        Nickvision::Events::Event<Nickvision::Events::ParamEventArgs<int>> m_downloadRetried;
+        Nickvision::Events::Event<Nickvision::Events::ParamEventArgs<int>> m_downloadStartedFromQueue;
     };
 }
 

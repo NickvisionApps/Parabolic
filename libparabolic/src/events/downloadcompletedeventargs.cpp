@@ -4,7 +4,7 @@ using namespace Nickvision::TubeConverter::Shared::Models;
 
 namespace Nickvision::TubeConverter::Shared::Events
 {
-    DownloadCompletedEventArgs::DownloadCompletedEventArgs(const std::string& id, const std::filesystem::path& path, DownloadStatus status, bool showNotification)
+    DownloadCompletedEventArgs::DownloadCompletedEventArgs(int id, const std::filesystem::path& path, DownloadStatus status, bool showNotification)
         : m_id{ id },
         m_path{ path },
         m_status{ status },
@@ -13,7 +13,7 @@ namespace Nickvision::TubeConverter::Shared::Events
         
     }
 
-    const std::string& DownloadCompletedEventArgs::getId() const
+    int DownloadCompletedEventArgs::getId() const
     {
         return m_id;
     }

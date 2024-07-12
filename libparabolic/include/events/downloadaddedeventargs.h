@@ -20,12 +20,12 @@ namespace Nickvision::TubeConverter::Shared::Events
          * @param path The expected path of the download
          * @param status The status of the download
          */
-        DownloadAddedEventArgs(const std::string& id, const std::filesystem::path& path, Models::DownloadStatus status);
+        DownloadAddedEventArgs(int id, const std::filesystem::path& path, Models::DownloadStatus status);
         /**
          * @brief Gets the Id of the download.
          * @return The Id of the download
          */
-        const std::string& getId() const;
+        int getId() const;
         /**
          * @brief Gets the expected path of the download.
          * @return The expected path of the download
@@ -38,7 +38,7 @@ namespace Nickvision::TubeConverter::Shared::Events
         Models::DownloadStatus getStatus() const;
 
     private:
-        std::string m_id;
+        int m_id;
         std::filesystem::path m_path;
         Models::DownloadStatus m_status;
     };

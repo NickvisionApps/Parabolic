@@ -12,8 +12,10 @@ using namespace Nickvision::TubeConverter::Shared::Events;
 
 namespace Nickvision::TubeConverter::Shared::Models
 {
+    static int downloadIdCounter{ 0 };
+
     Download::Download(const DownloadOptions& options)
-        : m_id{ StringHelpers::newGuid() }, 
+        : m_id{ ++downloadIdCounter }, 
         m_options{ options },
         m_status{ DownloadStatus::Queued },
         m_path{ options.getSaveFolder() / (options.getSaveFilename() + options.getFileType().getDotExtension()) },
@@ -37,10 +39,16 @@ namespace Nickvision::TubeConverter::Shared::Models
         return m_completed;
     }
 
-    const std::string& Download::getId()
+    int Download::getId()
     {
         std::lock_guard<std::mutex> lock{ m_mutex };
         return m_id;
+    }
+
+    const std::string& Download::getUrl() const
+    {
+        std::lock_guard<std::mutex> lock{ m_mutex };
+        return m_options.getUrl();
     }
 
     DownloadStatus Download::getStatus() const
