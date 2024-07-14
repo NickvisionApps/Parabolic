@@ -42,6 +42,11 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Controls::implementation
         return winrt::unbox_value<IObservableVector<IInspectable>>(GetValue(m_pagesProperty));
     }
 
+    void ViewStack::Pages(const IObservableVector<IInspectable>& value)
+    {
+        SetValue(m_pagesProperty, winrt::box_value(value));
+    }
+
     winrt::event_token ViewStack::PageChanged(const Windows::Foundation::EventHandler<winrt::hstring>& handler)
     {
         return m_pageChangedEvent.add(handler);

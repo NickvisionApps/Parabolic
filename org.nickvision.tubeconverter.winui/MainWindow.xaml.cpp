@@ -73,6 +73,7 @@ namespace winrt::Nickvision::TubeConverter::WinUI::implementation
         StatusPageHome().Description(winrt::to_hstring(_("Add a video, audio, or playlist URL to start downloading")));
         HomeAddDownloadButtonLabel().Text(winrt::to_hstring(_("Add Download")));
         LblHistoryTitle().Text(winrt::to_hstring(_("History")));
+        StatusPageNoHistory().Title(winrt::to_hstring(_("No history available")));
         LblClearHistory().Text(winrt::to_hstring(_("Clear History")));
     }
 
@@ -266,6 +267,7 @@ namespace winrt::Nickvision::TubeConverter::WinUI::implementation
     void MainWindow::OnHistoryChanged(const ParamEventArgs<std::vector<HistoricDownload>>& args)
     {
         ListHistory().Children().Clear();
+        ViewStackHistory().CurrentPage(args.getParam().empty() ? L"NoHistory" : L"HasHistory");
         for(const HistoricDownload& download : args.getParam())
         {
             //Button panel
@@ -319,13 +321,6 @@ namespace winrt::Nickvision::TubeConverter::WinUI::implementation
             row.Title(winrt::to_hstring(download.getTitle()));
             row.Description(winrt::to_hstring(download.getUrl()));
             row.Child(panel);
-            ListHistory().Children().Append(row);
-        }
-        if(args.getParam().empty())
-        {
-            Controls::SettingsRow row{ winrt::make<Controls::implementation::SettingsRow>() };
-            row.Title(winrt::to_hstring(_("No history available")));
-            row.Glyph(L"\uE81C");
             ListHistory().Children().Append(row);
         }
     }

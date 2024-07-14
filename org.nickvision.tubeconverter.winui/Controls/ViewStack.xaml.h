@@ -32,6 +32,11 @@ namespace winrt::Nickvision::TubeConverter::WinUI::Controls::implementation
          */
         Windows::Foundation::Collections::IObservableVector<IInspectable> Pages() const;
         /**
+         * @brief Sets the list of pages to store in the view stack.
+         * @param value The list of pages to store
+         */
+        void Pages(const Windows::Foundation::Collections::IObservableVector<IInspectable>& value);
+        /**
          * @brief Subscribes a handler to the page changed event.
          * @return The token for the newly subscribed handler.
          */
