@@ -1,15 +1,12 @@
 #ifndef CONFIGURATION_H
 #define CONFIGURATION_H
 
-#include <filesystem>
 #include <string>
 #include <libnick/app/datafilebase.h>
 #include <libnick/app/windowgeometry.h>
 #include "completednotificationpreference.h"
 #include "downloaderoptions.h"
-#include "mediafiletype.h"
 #include "theme.h"
-#include "videoresolution.h"
 
 namespace Nickvision::TubeConverter::Shared::Models
 {
@@ -85,66 +82,6 @@ namespace Nickvision::TubeConverter::Shared::Models
          * @param downloaderOptions The new downloader options
          */
         void setDownloaderOptions(const DownloaderOptions& downloaderOptions);
-        /**
-         * @brief Gets the previous save folder.
-         * @return The previous save folder
-         */
-        std::filesystem::path getPreviousSaveFolder() const;
-        /**
-         * @brief Sets the previous save folder.
-         * @param previousSaveFolder The new previous save folder
-         */
-        void setPreviousSaveFolder(const std::filesystem::path& previousSaveFolder);
-        /**
-         * @brief Gets the previous media file type.
-         * @return The previous media file type
-         */
-        MediaFileType getPreviousMediaFileType() const;
-        /**
-         * @brief Sets the previous media file type.
-         * @param previousMediaFileType The new previous media file type
-         */
-        void setPreviousMediaFileType(const MediaFileType& previousMediaFileType);
-        /**
-         * @brief Gets the previous video resolution.
-         * @return The previous video resolution
-         */
-        VideoResolution getPreviousVideoResolution() const;
-        /**
-         * @brief Sets the previous video resolution.
-         * @param previousVideoResolution The new previous video resolution
-         */
-        void setPreviousVideoResolution(const VideoResolution& previousVideoResolution);
-        /**
-         * @brief Gets the previous subtitle state.
-         * @return The previous subtitle state
-         */
-        bool getPreviousSubtitleState() const;
-        /**
-         * @brief Sets the previous subtitle state.
-         * @param previousSubtitleState The new previous subtitle state
-         */
-        void setPreviousSubtitleState(bool previousSubtitleState);
-        /**
-         * @brief Gets the previous prefer AV1 state.
-         * @return The previous prefer AV1 state
-         */
-        bool getPreviousPreferAV1State() const;
-        /**
-         * @brief Sets the previous prefer AV1 state.
-         * @param previousPreferAV1State The new previous prefer AV1 state
-         */
-        void setPreviousPreferAV1State(bool previousPreferAV1State);
-        /**
-         * @brief Gets whether or not to number titles in playlists.
-         * @return True to number titles, else false
-         */
-        bool getNumberTitles() const;
-        /**
-         * @brief Sets whether or not to number titles in playlists.
-         * @param numberTitles True to number titles, else false
-         */
-        void setNumberTitles(bool numberTitles);
         /**
          * @brief Gets whether or not to show the disclaimer on startup.
          * @return True to show the disclaimer, else false

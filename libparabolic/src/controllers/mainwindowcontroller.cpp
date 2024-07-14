@@ -10,6 +10,7 @@
 #include <libnick/system/environment.h>
 #include "models/configuration.h"
 #include "models/downloadhistory.h"
+#include "models/previousdownloadoptions.h"
 #ifdef _WIN32
 #include <windows.h>
 #endif
@@ -193,6 +194,11 @@ namespace Nickvision::TubeConverter::Shared::Controllers
     bool MainWindowController::canDownload() const
     {
         return m_networkMonitor.getConnectionState() == NetworkState::ConnectedGlobal && !Environment::findDependency("yt-dlp").empty() && !Environment::findDependency("ffmpeg").empty() && !Environment::findDependency("aria2c").empty();
+    }
+
+    std::shared_ptr<AddDownloadDialogController> MainWindowController::createAddDownloadDialogController()
+    {
+        return std::make_shared<AddDownloadDialogController>(m_dataFileManager.get<Configuration>("config").getDownloaderOptions(), m_dataFileManager.get<PreviousDownloadOptions>("prev"), m_keyring);
     }
 
     std::shared_ptr<PreferencesViewController> MainWindowController::createPreferencesViewController()

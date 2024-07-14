@@ -23,6 +23,7 @@
 #include <libnick/system/suspendinhibitor.h>
 #include <libnick/taskbar/taskbaritem.h>
 #include <libnick/update/updater.h>
+#include "controllers/adddownloaddialogcontroller.h"
 #include "controllers/preferencesviewcontroller.h"
 #include "models/downloadmanager.h"
 #include "models/historicdownload.h"
@@ -108,6 +109,11 @@ namespace Nickvision::TubeConverter::Shared::Controllers
          * @return True if can download, else false
          */
         bool canDownload() const;
+        /**
+         * @brief Gets an AddDownloadDialogController.
+         * @return The AddDownloadDialogController
+         */
+        std::shared_ptr<AddDownloadDialogController> createAddDownloadDialogController();
         /**
          * @brief Gets a PreferencesViewController.
          * @return The PreferencesViewController

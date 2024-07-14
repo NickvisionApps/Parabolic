@@ -5,6 +5,7 @@
 #include <libnick/helpers/codehelpers.h>
 #include <libnick/notifications/shellnotification.h>
 #include <libnick/localization/gettext.h>
+#include <libnick/system/environment.h>
 #include "helpers/builder.h"
 #include "helpers/dialogptr.h"
 #include "views/preferencesdialog.h"
@@ -13,6 +14,7 @@ using namespace Nickvision::App;
 using namespace Nickvision::Events;
 using namespace Nickvision::Helpers;
 using namespace Nickvision::Notifications;
+using namespace Nickvision::System;
 using namespace Nickvision::TubeConverter::GNOME::Helpers;
 using namespace Nickvision::TubeConverter::Shared::Controllers;
 using namespace Nickvision::TubeConverter::Shared::Models;
@@ -293,7 +295,8 @@ namespace Nickvision::TubeConverter::GNOME::Views
     {
         std::string extraDebug;
         extraDebug += "GTK " + std::to_string(gtk_get_major_version()) + "." + std::to_string(gtk_get_minor_version()) + "." + std::to_string(gtk_get_micro_version()) + "\n";
-        extraDebug += "libadwaita " + std::to_string(adw_get_major_version()) + "." + std::to_string(adw_get_minor_version()) + "." + std::to_string(adw_get_micro_version());
+        extraDebug += "libadwaita " + std::to_string(adw_get_major_version()) + "." + std::to_string(adw_get_minor_version()) + "." + std::to_string(adw_get_micro_version()) + "\n\n";
+        extraDebug += Environment::exec("locale");
         AdwAboutDialog* dialog{ ADW_ABOUT_DIALOG(adw_about_dialog_new()) };
         adw_about_dialog_set_application_name(dialog, m_controller->getAppInfo().getShortName().c_str());
         adw_about_dialog_set_application_icon(dialog, std::string(m_controller->getAppInfo().getId() + (m_controller->getAppInfo().getVersion().getVersionType() == VersionType::Preview  ? "-devel" : "")).c_str());

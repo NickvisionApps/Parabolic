@@ -19,6 +19,7 @@ add_library(libparabolic
     "src/models/historicdownload.cpp"
     "src/models/media.cpp"
     "src/models/mediafiletype.cpp"
+    "src/models/previousdownloadoptions.cpp"
     "src/models/timeframe.cpp"
     "src/models/urlinfo.cpp"
     "src/models/videoresolution.cpp")
