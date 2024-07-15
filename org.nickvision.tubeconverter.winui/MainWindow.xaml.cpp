@@ -395,7 +395,7 @@ namespace winrt::Nickvision::TubeConverter::WinUI::implementation
         dialog.RequestedTheme(MainGrid().ActualTheme());
         dialog.XamlRoot(MainGrid().XamlRoot());
         dialog.as<AddDownloadDialog>()->SetController(m_controller->createAddDownloadDialogController(), m_hwnd);
-        co_await dialog.ShowAsync();
+        co_await dialog.as<AddDownloadDialog>()->ShowAsync();
     }
 
     void MainWindow::ClearHistory(const IInspectable& sender, const RoutedEventArgs& args)

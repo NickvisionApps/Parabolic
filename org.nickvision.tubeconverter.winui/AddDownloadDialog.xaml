@@ -6,15 +6,21 @@
     xmlns:nickvision="using:Nickvision.TubeConverter.WinUI.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d" Style="{StaticResource DefaultContentDialogStyle}">
-    <nickvision:ViewStack x:Name="ViewStack" Margin="12,12,12,12">
+    mc:Ignorable="d" Style="{StaticResource DefaultContentDialogStyle}" Closing="OnClosing">
+    <nickvision:ViewStack x:Name="ViewStack">
         <nickvision:ViewStack.Pages>
             <nickvision:ViewStackPage PageName="Spinner">
                 <ProgressRing HorizontalAlignment="Center" VerticalAlignment="Center"/>
             </nickvision:ViewStackPage>
 
             <nickvision:ViewStackPage PageName="Validate">
-
+                <StackPanel Orientation="Vertical" Spacing="6">
+                    <nickvision:SettingsRow x:Name="RowUrl" Glyph="&#xF6FA;">
+                        <nickvision:SettingsRow.Child>
+                            <TextBox x:Name="TxtUrl" MinWidth="240"/>
+                        </nickvision:SettingsRow.Child>
+                    </nickvision:SettingsRow>
+                </StackPanel>
             </nickvision:ViewStackPage>
 
             <nickvision:ViewStackPage PageName="Download">

@@ -27,6 +27,17 @@ namespace winrt::Nickvision::TubeConverter::WinUI::implementation
          * @param hwnd The window handle
          */
         void SetController(const std::shared_ptr<::Nickvision::TubeConverter::Shared::Controllers::AddDownloadDialogController>& controller, HWND hwnd);
+        /**
+         * @brief Shows the dialog.
+         * @return ContentDialogResult
+         */
+        Windows::Foundation::IAsyncOperation<Microsoft::UI::Xaml::Controls::ContentDialogResult> ShowAsync();
+        /**
+         * @brief Handles when the dialog is closing.
+         * @param sender ContentDialog
+         * @param args ContentDialogClosingEventArgs
+         */
+        void OnClosing(const Microsoft::UI::Xaml::Controls::ContentDialog& sender, const Microsoft::UI::Xaml::Controls::ContentDialogClosingEventArgs& args);
         
     private:
         std::shared_ptr<::Nickvision::TubeConverter::Shared::Controllers::AddDownloadDialogController> m_controller;
