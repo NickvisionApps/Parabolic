@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-07-14 11:16-0400\n"
+"POT-Creation-Date: 2024-07-14 21:25-0400\n"
 "PO-Revision-Date: 2024-04-28 01:07+0000\n"
 "Last-Translator: Murilo Monte <murillomonte086@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
@@ -18,6 +18,10 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
 "X-Generator: Weblate 5.5.1\n"
+
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:40
+msgid "Use manual credential"
+msgstr "Utilizar outra credencial manualmente"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:42
 msgid "Parabolic"
@@ -51,7 +55,7 @@ msgstr ""
 "Tiago Lucas Flach <tiagolucas9830@gmail.com>\n"
 "Murilo Monte <murilomonte086@gmail.com>"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:248
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:244
 msgid ""
 "The authors of Nickvision Parabolic are not responsible/liable for any "
 "misuse of this program that may violate local copyright/DMCA laws. Users use "
@@ -61,12 +65,12 @@ msgstr ""
 "indevido deste programa que possa violar as leis locais de direitos autorais/"
 "DMCA. Os usuários usam este aplicativo por sua própria conta e risco."
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:279
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:275
 #, fuzzy
 msgid "New update available"
 msgstr "Nova atualização disponível."
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:311
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:307
 #, fuzzy
 msgid "Unable to download and install update"
 msgstr "Não foi possível baixar e instalar a atualização."
@@ -101,6 +105,39 @@ msgstr "O arquivo já existe e a substituição não é permitida"
 msgid "Best"
 msgstr "Melhor"
 
+#. Localize Strings
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:9
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:199
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:17
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:75
+msgid "Add Download"
+msgstr "Adicionar Download"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:39
+msgid "Media URL"
+msgstr "URL da mídia"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:44
+msgid "Authenticate"
+msgstr "Autenticar"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:49
+msgid "Keyring Credential"
+msgstr "Credencial do chaveiro"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:53
+msgid "Username"
+msgstr "Nome de usuário"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:57
+msgid "Password"
+msgstr "Senha"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:63
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:18
+msgid "Validate"
+msgstr "Validar"
+
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:5
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:8
 #: org.nickvision.tubeconverter.gnome/blueprints/shortcuts_dialog.blp:30
@@ -113,7 +150,7 @@ msgid "Keyboard Shortcuts"
 msgstr "Atalhos do teclado"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:7
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:61
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:62
 msgid "Help"
 msgstr "Ajuda"
 
@@ -121,86 +158,86 @@ msgstr "Ajuda"
 msgid "About Parabolic"
 msgstr "Sobre o Parabolic"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:38
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:37
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:200
+msgid "Add Download (Ctrl+N)"
+msgstr "Adicionar download (Ctrl+N)"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:45
 msgid "Main Menu"
 msgstr "Menu principal"
 
 #. Localize Strings
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:61
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:142
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:55
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:68
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:148
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:56
 msgid "Home"
 msgstr "Início"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:78
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:56
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:85
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:57
 msgid "Keyring"
 msgstr "Chaveiro"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:95
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:147
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:70
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:75
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:102
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:153
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:71
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:76
 msgid "History"
 msgstr "Histórico"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:105
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:112
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:49
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:57
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:58
 #: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:38
 msgid "Downloads"
 msgstr "Downloads"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:124
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:152
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:58
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:131
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:158
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:59
 msgid "Downloading"
 msgstr "Baixando"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:141
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:157
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:59
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:148
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:163
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:60
 msgid "Queued"
 msgstr "Em fila"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:158
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:162
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:60
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:165
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:168
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:61
 msgid "Completed"
 msgstr "Concluído"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:188
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:72
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:195
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:73
 msgid "Download Media"
 msgstr "Download de mídia"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:189
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:73
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:196
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:74
 msgid "Add a video, audio, or playlist URL to start downloading"
 msgstr "Adicione a URL de um áudio, vídeo ou playlist para iniciar o download"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:191
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:74
-msgid "Add Download"
-msgstr "Adicionar Download"
-
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:207
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:76
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:217
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:77
 #, fuzzy
 msgid "No history available"
 msgstr "Nova atualização disponível."
 
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:218
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:228
 #, fuzzy
 msgid "Past Downloads"
 msgstr "Downloads"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:222
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:77
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:232
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:78
 msgid "Clear History"
 msgstr "Apagar histórico"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:226
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:236
 msgid "Clear"
 msgstr "Limpar"
 
@@ -255,6 +292,7 @@ msgid "Never"
 msgstr "Nunca"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:39
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:35
 #, fuzzy
 msgid "Prevent Suspend"
 msgstr "Impedir suspensão da tela"
@@ -479,44 +517,44 @@ msgstr "Programa"
 msgid "Quit"
 msgstr "Sair"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:134
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:140
 #, fuzzy
 msgid "Open"
 msgstr "Abrir arquivo"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:169
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:245
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:175
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:246
 msgid "Disclaimer"
 msgstr "Aviso Legal"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:170
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:234
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:176
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:235
 msgid "Don't show this message again"
 msgstr "Não mostrar esta mensagem novamente"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:171
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:247
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:384
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:177
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:248
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:385
 msgid "Close"
 msgstr "Fechar"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:216
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:285
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:210
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:286
 msgid "Play"
 msgstr "Reproduzir"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:235
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:299
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:229
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:300
 msgid "Download Again"
 msgstr "Baixar novamente"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:247
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:312
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:241
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:313
 msgid "Delete"
 msgstr "Excluir"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:313
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:66
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:307
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:67
 msgid "GitHub Repo"
 msgstr "Repositório do GitHub"
 
@@ -537,56 +575,60 @@ msgstr ""
 msgid "Search"
 msgstr "Pesquisar..."
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:62
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:19
+msgid "Cancel"
+msgstr "Cancelar"
+
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:63
 msgid "Check for Updates"
 msgstr "Verifique se há atualizações"
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:63
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:375
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:64
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:376
 msgid "Credits"
 msgstr "Créditos"
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:64
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:65
 #, fuzzy
 msgid "Copy Debug Information"
 msgstr "Informações sobre arquivo de cookies"
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:65
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:66
 msgid "Changelog"
 msgstr "Histório de mudanças"
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:67
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:68
 msgid "Report a Bug"
 msgstr "Reportar um Bug"
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:68
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:69
 msgid "Discussions"
 msgstr "Discussões"
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:69
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:70
 msgid "Documentation"
 msgstr "Documentação"
 
 #. Localize Strings
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:71
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:72
 #: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:22
 msgid "Settings"
 msgstr "Configurações"
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:94
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:95
 msgid "Preview"
 msgstr ""
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:196
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:197
 msgid "Update"
 msgstr "Atualizar"
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:348
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:349
 #, fuzzy
 msgid "Debug information copied to clipboard."
 msgstr "O registro de download foi copiado para a área de transferência."
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:378
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:379
 #, fuzzy
 msgid ""
 "Developers:\n"
@@ -608,7 +650,7 @@ msgstr ""
 "Tradutores:\n"
 "{3}"
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:382
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:383
 #, fuzzy
 msgid ""
 "Developers:\n"
@@ -667,14 +709,13 @@ msgstr "Ligar"
 msgid "Off"
 msgstr "Desligado"
 
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:35
-#, fuzzy
-msgid "Prevent Suspend When Downloading"
-msgstr "Impedir suspensão da tela"
-
 #: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:55
 msgid "Enter proxy URL here"
 msgstr "Insira o URL do proxy aqui"
+
+#, fuzzy
+#~ msgid "Prevent Suspend When Downloading"
+#~ msgstr "Impedir suspensão da tela"
 
 #~ msgid "Disallow Conversions"
 #~ msgstr "Não permitir conversões"
@@ -802,14 +843,8 @@ msgstr "Insira o URL do proxy aqui"
 #~ msgid "Audio Language"
 #~ msgstr "Idioma do áudio"
 
-#~ msgid "Authenticate"
-#~ msgstr "Autenticar"
-
 #~ msgid "Back"
 #~ msgstr "Voltar"
-
-#~ msgid "Cancel"
-#~ msgstr "Cancelar"
 
 #, fuzzy
 #~ msgid "Clear Completed"
@@ -964,9 +999,6 @@ msgstr "Insira o URL do proxy aqui"
 #~ "As notificações de conclusão só serão exibidas se a janela não estiver em "
 #~ "foco."
 
-#~ msgid "Keyring Credential"
-#~ msgstr "Credencial do chaveiro"
-
 #~ msgid "Keyring Disabled"
 #~ msgstr "Chaveiro desativado"
 
@@ -1005,9 +1037,6 @@ msgstr "Insira o URL do proxy aqui"
 #~ msgstr ""
 #~ "É possível que a mídia seja cortada de forma incorreta.\n"
 #~ "Habilitar essa opção irá desativar o aria2 caso esteja em uso."
-
-#~ msgid "Media URL"
-#~ msgstr "URL da mídia"
 
 #~ msgid "Media URL (Invalid)"
 #~ msgstr "URL de vídeo (inválida)"
@@ -1055,9 +1084,6 @@ msgstr "Insira o URL do proxy aqui"
 
 #~ msgid "OK"
 #~ msgstr "OK"
-
-#~ msgid "Password"
-#~ msgstr "Senha"
 
 #~ msgid "Password (Empty)"
 #~ msgstr "Senha (vazia)"
@@ -1213,21 +1239,12 @@ msgstr "Insira o URL do proxy aqui"
 #~ "Use o chaveiro para armazenar com segurança as credenciais de sites que "
 #~ "exigem login com nome de usuário e senha."
 
-#~ msgid "Use manual credential"
-#~ msgstr "Utilizar outra credencial manualmente"
-
 #, fuzzy
 #~ msgid "User Name"
 #~ msgstr "Nome de usuário"
 
 #~ msgid "User Name (Empty)"
 #~ msgstr "Nome de Usuário (Vazio)"
-
-#~ msgid "Username"
-#~ msgstr "Nome de usuário"
-
-#~ msgid "Validate"
-#~ msgstr "Validar"
 
 #~ msgid "Validating"
 #~ msgstr "Validando"
@@ -1294,9 +1311,6 @@ msgstr "Insira o URL do proxy aqui"
 
 #~ msgid "Clear Queued Downloads"
 #~ msgstr "Limpar downloads em fila"
-
-#~ msgid "Add Download (Ctrl+N)"
-#~ msgstr "Adicionar download (Ctrl+N)"
 
 #~ msgid "Clear Completed Downloads"
 #~ msgstr "Limpar downloads concluídos"

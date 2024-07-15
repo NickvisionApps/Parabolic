@@ -58,23 +58,8 @@ namespace Nickvision::TubeConverter::Shared::Controllers
 #ifdef _WIN32
         m_updater = std::make_shared<Updater>(m_appInfo.getSourceRepo());
 #endif
-        m_dataFileManager.get<Configuration>("config").saved() += [this](const EventArgs&)
-        {
-            m_logger.log(Logging::LogLevel::Info, "Configuration saved.");
-            m_downloadManager.setDownloaderOptions(m_dataFileManager.get<Configuration>("config").getDownloaderOptions());
-        };
-        m_networkMonitor.stateChanged() += [this](const NetworkStateChangedEventArgs& args)
-        { 
-            if(args.getState() == NetworkState::ConnectedGlobal)
-            {
-                m_logger.log(Logging::LogLevel::Info, "Network connected.");
-            }
-            else
-            {
-                m_logger.log(Logging::LogLevel::Info, "Network disconnected.");
-            }
-            m_downloadAbilityChanged.invoke(canDownload());
-        };
+        m_dataFileManager.get<Configuration>("config").saved() += [this](const EventArgs&){ onConfigurationSaved(); };
+        m_networkMonitor.stateChanged() += [this](const NetworkStateChangedEventArgs& args){ onNetworkStateChanged(args); };
         if(!m_keyring)
         {
             m_logger.log(Logging::LogLevel::Error, "Unable to unlock keyring.");
@@ -90,6 +75,17 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         if(Environment::findDependency("aria2c").empty())
         {
             m_logger.log(Logging::LogLevel::Error, "aria2c not found.");
+        }
+        if(m_dataFileManager.get<Configuration>("config").getPreventSuspend())
+        {
+            if(m_suspendInhibitor.inhibit())
+            {
+                m_logger.log(Logging::LogLevel::Info, "Inhibited system suspend.");
+            }
+            else
+            {
+                m_logger.log(Logging::LogLevel::Error, "Unable to inhibit system suspend.");
+            }
         }
     }
 
@@ -328,5 +324,46 @@ namespace Nickvision::TubeConverter::Shared::Controllers
     void MainWindowController::removeHistoricDownload(const HistoricDownload& download)
     {
         m_downloadManager.removeHistoricDownload(download);
+    }
+
+    void MainWindowController::onConfigurationSaved()
+    {
+        m_logger.log(Logging::LogLevel::Info, "Configuration saved.");
+        if(m_dataFileManager.get<Configuration>("config").getPreventSuspend())
+        {
+            if(m_suspendInhibitor.inhibit())
+            {
+                m_logger.log(Logging::LogLevel::Info, "Inhibited system suspend.");
+            }
+            else
+            {
+                m_logger.log(Logging::LogLevel::Error, "Unable to inhibit system suspend.");
+            }
+        }
+        else
+        {
+            if(m_suspendInhibitor.uninhibit())
+            {
+                m_logger.log(Logging::LogLevel::Info, "Uninhibited system suspend.");
+            }
+            else
+            {
+                m_logger.log(Logging::LogLevel::Error, "Unable to uninhibit system suspend.");
+            }
+        }
+        m_downloadManager.setDownloaderOptions(m_dataFileManager.get<Configuration>("config").getDownloaderOptions());
+    }
+
+    void MainWindowController::onNetworkStateChanged(const NetworkStateChangedEventArgs& args)
+    {
+        if(args.getState() == NetworkState::ConnectedGlobal)
+        {
+            m_logger.log(Logging::LogLevel::Info, "Network connected.");
+        }
+        else
+        {
+            m_logger.log(Logging::LogLevel::Info, "Network disconnected.");
+        }
+        m_downloadAbilityChanged.invoke(canDownload());
     }
 }

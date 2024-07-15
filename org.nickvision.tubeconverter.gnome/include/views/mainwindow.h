@@ -67,11 +67,6 @@ namespace Nickvision::TubeConverter::GNOME::Views
          */
         void onDisclaimerTriggered(const Nickvision::Events::ParamEventArgs<std::string>& args);
         /**
-         * @brief Handles when the ability to download is changed.
-         * @param args Nickvision::Events::ParamEventArgs<bool>
-         */
-        void onDownloadAbilityChanged(const Nickvision::Events::ParamEventArgs<bool>& args);
-        /**
          * @brief Handles when the history is changed.
          * @param args Nickvision::Events::ParamEventArgs<std::vector<Models::HistoricDownload>>
          */
@@ -97,6 +92,10 @@ namespace Nickvision::TubeConverter::GNOME::Views
          */
         void about();
         /**
+         * @brief Opens the application's add download dialog.
+         */
+        void addDownload();
+        /**
          * @brief Clears the download history.
          */
         void clearHistory();
@@ -104,6 +103,7 @@ namespace Nickvision::TubeConverter::GNOME::Views
         GtkApplication* m_app;
         GtkBuilder* m_builder;
         AdwApplicationWindow* m_window;
+        GSimpleAction* m_actAddDownload;
         std::vector<AdwActionRow*> m_historyRows;
     };
 }

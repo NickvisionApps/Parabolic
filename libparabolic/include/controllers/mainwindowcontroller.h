@@ -164,6 +164,14 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         void removeHistoricDownload(const Models::HistoricDownload& download);
 
     private:
+        /**
+         * @brief Handles when the configuration is saved.
+         */
+        void onConfigurationSaved();
+        /**
+         * @brief Handles when the network connection state is changed.
+         */
+        void onNetworkStateChanged(const Network::NetworkStateChangedEventArgs& args);
         bool m_started;
         std::vector<std::string> m_args;
         Nickvision::App::AppInfo m_appInfo;

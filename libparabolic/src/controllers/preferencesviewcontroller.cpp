@@ -56,14 +56,14 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         m_configuration.setCompletedNotificationPreference(preference);
     }
 
-    bool PreferencesViewController::getPreventSuspendWhenDownloading() const
+    bool PreferencesViewController::getPreventSuspend() const
     {
-        return m_configuration.getPreventSuspendWhenDownloading();
+        return m_configuration.getPreventSuspend();
     }
 
-    void PreferencesViewController::setPreventSuspendWhenDownloading(bool prevent)
+    void PreferencesViewController::setPreventSuspend(bool prevent)
     {
-        m_configuration.setPreventSuspendWhenDownloading(prevent);
+        m_configuration.setPreventSuspend(prevent);
     }
 
     DownloaderOptions PreferencesViewController::getDownloaderOptions() const

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-07-14 11:16-0400\n"
+"POT-Creation-Date: 2024-07-14 21:25-0400\n"
 "PO-Revision-Date: 2024-02-15 17:02+0000\n"
 "Last-Translator: Kinten Le <kinten108101@protonmail.com>\n"
 "Language-Team: Vietnamese <https://hosted.weblate.org/projects/nickvision-"
@@ -18,6 +18,10 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Weblate 5.4-dev\n"
+
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:40
+msgid "Use manual credential"
+msgstr "Sử dụng chứng chỉ thủ công"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:42
 msgid "Parabolic"
@@ -48,7 +52,7 @@ msgstr ""
 msgid "translator-credits"
 msgstr "Kinten Le <kinten108101@protonmail.com>"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:248
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:244
 msgid ""
 "The authors of Nickvision Parabolic are not responsible/liable for any "
 "misuse of this program that may violate local copyright/DMCA laws. Users use "
@@ -58,12 +62,12 @@ msgstr ""
 "mọi hành vi lạm dụng chương trình này mà vi phạm luật bản quyền hoặc luật "
 "DMCA sở tại. Người dùng tự chịu rủi ro khi sử dụng ứng dụng này."
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:279
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:275
 #, fuzzy
 msgid "New update available"
 msgstr "Đã ra bản cập nhật mới."
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:311
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:307
 #, fuzzy
 msgid "Unable to download and install update"
 msgstr "Không thể tải và cài bản cập nhật."
@@ -98,6 +102,39 @@ msgstr "Tệp đã tồn tại, ghi đè không được cho phép"
 msgid "Best"
 msgstr "Cao nhất"
 
+#. Localize Strings
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:9
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:199
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:17
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:75
+msgid "Add Download"
+msgstr "Thêm lượt tải"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:39
+msgid "Media URL"
+msgstr "URL của media"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:44
+msgid "Authenticate"
+msgstr "Xác thực"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:49
+msgid "Keyring Credential"
+msgstr "Chứng chỉ trong keyring"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:53
+msgid "Username"
+msgstr "Tên đăng nhập"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:57
+msgid "Password"
+msgstr "Mật khẩu"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:63
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:18
+msgid "Validate"
+msgstr "Xác thực"
+
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:5
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:8
 #: org.nickvision.tubeconverter.gnome/blueprints/shortcuts_dialog.blp:30
@@ -110,7 +147,7 @@ msgid "Keyboard Shortcuts"
 msgstr "Phím tắt"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:7
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:61
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:62
 msgid "Help"
 msgstr "Trợ giúp"
 
@@ -118,87 +155,87 @@ msgstr "Trợ giúp"
 msgid "About Parabolic"
 msgstr "Giới thiệu Parabolic"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:38
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:37
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:200
+msgid "Add Download (Ctrl+N)"
+msgstr "Thêm lượt tải (Ctrl+N)"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:45
 msgid "Main Menu"
 msgstr "Menu chính"
 
 #. Localize Strings
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:61
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:142
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:55
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:68
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:148
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:56
 msgid "Home"
 msgstr "Trang chủ"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:78
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:56
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:85
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:57
 msgid "Keyring"
 msgstr "Keyring"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:95
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:147
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:70
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:75
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:102
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:153
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:71
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:76
 msgid "History"
 msgstr "Lịch sử"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:105
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:112
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:49
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:57
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:58
 #: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:38
 #, fuzzy
 msgid "Downloads"
 msgstr "Downloads"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:124
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:152
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:58
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:131
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:158
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:59
 msgid "Downloading"
 msgstr "Đang tải"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:141
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:157
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:59
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:148
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:163
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:60
 msgid "Queued"
 msgstr "Đã đem vào hàng đợi"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:158
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:162
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:60
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:165
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:168
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:61
 msgid "Completed"
 msgstr "Hoàn tất"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:188
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:72
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:195
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:73
 msgid "Download Media"
 msgstr "Tải media"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:189
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:73
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:196
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:74
 msgid "Add a video, audio, or playlist URL to start downloading"
 msgstr "Thêm một liên kết đến video, audio, hoặc playlist để bắt đầu tải"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:191
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:74
-msgid "Add Download"
-msgstr "Thêm lượt tải"
-
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:207
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:76
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:217
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:77
 #, fuzzy
 msgid "No history available"
 msgstr "Đã ra bản cập nhật mới."
 
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:218
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:228
 #, fuzzy
 msgid "Past Downloads"
 msgstr "Downloads"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:222
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:77
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:232
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:78
 msgid "Clear History"
 msgstr "Xóa lịch sử"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:226
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:236
 msgid "Clear"
 msgstr "Xóa"
 
@@ -253,6 +290,7 @@ msgid "Never"
 msgstr "Không bao giờ"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:39
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:35
 #, fuzzy
 msgid "Prevent Suspend"
 msgstr "Chống máy rơi vào chế độ tạm dừng"
@@ -474,44 +512,44 @@ msgstr "Ứng dụng"
 msgid "Quit"
 msgstr "Thoát"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:134
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:140
 #, fuzzy
 msgid "Open"
 msgstr "Mở tệp"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:169
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:245
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:175
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:246
 msgid "Disclaimer"
 msgstr "Lưu ý"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:170
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:234
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:176
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:235
 msgid "Don't show this message again"
 msgstr "Đừng hiển thị thông báo này nữa"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:171
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:247
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:384
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:177
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:248
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:385
 msgid "Close"
 msgstr "Đóng"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:216
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:285
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:210
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:286
 msgid "Play"
 msgstr "Phát"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:235
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:299
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:229
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:300
 msgid "Download Again"
 msgstr "Tải lại"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:247
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:312
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:241
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:313
 msgid "Delete"
 msgstr "Xóa"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:313
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:66
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:307
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:67
 msgid "GitHub Repo"
 msgstr "GitHub Repo"
 
@@ -532,57 +570,61 @@ msgstr ""
 msgid "Search"
 msgstr "Tìm trong lịch sử"
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:62
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:19
+msgid "Cancel"
+msgstr "Hủy"
+
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:63
 msgid "Check for Updates"
 msgstr "Kiểm tra bản cập nhật"
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:63
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:375
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:64
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:376
 #, fuzzy
 msgid "Credits"
 msgstr "Danh đề"
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:64
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:65
 msgid "Copy Debug Information"
 msgstr "Chép thông tin debug"
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:65
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:66
 msgid "Changelog"
 msgstr "Changelog"
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:67
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:68
 msgid "Report a Bug"
 msgstr "Báo lỗi"
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:68
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:69
 msgid "Discussions"
 msgstr "Thảo luận"
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:69
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:70
 msgid "Documentation"
 msgstr "Tài liệu"
 
 #. Localize Strings
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:71
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:72
 #: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:22
 #, fuzzy
 msgid "Settings"
 msgstr "Cài đặt"
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:94
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:95
 msgid "Preview"
 msgstr ""
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:196
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:197
 msgid "Update"
 msgstr "Cập nhật"
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:348
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:349
 #, fuzzy
 msgid "Debug information copied to clipboard."
 msgstr "Đã chép log tải vào clipboard."
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:378
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:379
 msgid ""
 "Developers:\n"
 "{}\n"
@@ -592,7 +634,7 @@ msgid ""
 "{}"
 msgstr ""
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:382
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:383
 msgid ""
 "Developers:\n"
 "{}\n"
@@ -638,14 +680,13 @@ msgstr "Bật"
 msgid "Off"
 msgstr "Tắt"
 
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:35
-#, fuzzy
-msgid "Prevent Suspend When Downloading"
-msgstr "Chống máy rơi vào chế độ tạm dừng"
-
 #: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:55
 msgid "Enter proxy URL here"
 msgstr "Nhập URL của proxy vào đây"
+
+#, fuzzy
+#~ msgid "Prevent Suspend When Downloading"
+#~ msgstr "Chống máy rơi vào chế độ tạm dừng"
 
 #~ msgid "Disallow Conversions"
 #~ msgstr "Không cho phép chuyển đổi"
@@ -765,14 +806,8 @@ msgstr "Nhập URL của proxy vào đây"
 #~ msgid "Audio Language"
 #~ msgstr "Ngôn ngữ của audio"
 
-#~ msgid "Authenticate"
-#~ msgstr "Xác thực"
-
 #~ msgid "Back"
 #~ msgstr "Quay lại"
-
-#~ msgid "Cancel"
-#~ msgstr "Hủy"
 
 #~ msgid "Clear Completed"
 #~ msgstr "Xóa các lượt tải đã hoàn tất"
@@ -922,9 +957,6 @@ msgstr "Nhập URL của proxy vào đây"
 #~ "Với điều kiện này, thông báo hoàn tất chỉ hiển thị khi cửa sổ đang không "
 #~ "được tập trung vào."
 
-#~ msgid "Keyring Credential"
-#~ msgstr "Chứng chỉ trong keyring"
-
 #~ msgid "Keyring Disabled"
 #~ msgstr "Đã vô hiệu hóa keyring"
 
@@ -959,9 +991,6 @@ msgstr "Nhập URL của proxy vào đây"
 #~ msgstr ""
 #~ "Media có khả năng bị cắt lệch.\n"
 #~ "Bật lựa chọn này để tắt aria2 nếu trình tải này đang được bật."
-
-#~ msgid "Media URL"
-#~ msgstr "URL của media"
 
 #~ msgid "Media URL (Invalid)"
 #~ msgstr "URL của media (không hợp lệ)"
@@ -1003,9 +1032,6 @@ msgstr "Nhập URL của proxy vào đây"
 
 #~ msgid "OK"
 #~ msgstr "Đồng ý"
-
-#~ msgid "Password"
-#~ msgstr "Mật khẩu"
 
 #~ msgid "Password (Empty)"
 #~ msgstr "Mật khẩu (Trống)"
@@ -1160,20 +1186,11 @@ msgstr "Nhập URL của proxy vào đây"
 #~ "Sửa dụng keyring để an toàn lưu chứng chỉ cho các trang có yêu cầu tên và "
 #~ "mật khẩu để đăng nhập."
 
-#~ msgid "Use manual credential"
-#~ msgstr "Sử dụng chứng chỉ thủ công"
-
 #~ msgid "User Name"
 #~ msgstr "Tên đăng nhập"
 
 #~ msgid "User Name (Empty)"
 #~ msgstr "Tên đăng nhập (trống)"
-
-#~ msgid "Username"
-#~ msgstr "Tên đăng nhập"
-
-#~ msgid "Validate"
-#~ msgstr "Xác thực"
 
 #~ msgid "Validating"
 #~ msgstr "Đang xác thực"
@@ -1237,9 +1254,6 @@ msgstr "Nhập URL của proxy vào đây"
 
 #~ msgid "Clear Queued Downloads"
 #~ msgstr "Xóa tất cả lượt tải xuống trong hàng đợi"
-
-#~ msgid "Add Download (Ctrl+N)"
-#~ msgstr "Thêm lượt tải (Ctrl+N)"
 
 #~ msgid "Clear Completed Downloads"
 #~ msgstr "Xóa các lượt tải đã hoàn tất"

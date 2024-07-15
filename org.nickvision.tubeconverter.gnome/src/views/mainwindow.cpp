@@ -8,6 +8,7 @@
 #include <libnick/system/environment.h>
 #include "helpers/builder.h"
 #include "helpers/dialogptr.h"
+#include "views/adddownloaddialog.h"
 #include "views/preferencesdialog.h"
 
 using namespace Nickvision::App;
@@ -54,7 +55,7 @@ namespace Nickvision::TubeConverter::GNOME::Views
         m_controller->notificationSent() += [&](const NotificationSentEventArgs& args) { onNotificationSent(args); };
         m_controller->shellNotificationSent() += [&](const ShellNotificationSentEventArgs& args) { onShellNotificationSent(args); };
         m_controller->disclaimerTriggered() += [&](const ParamEventArgs<std::string>& args) { onDisclaimerTriggered(args); };
-        m_controller->downloadAbilityChanged() += [&](const ParamEventArgs<bool>& args) { onDownloadAbilityChanged(args); };
+        m_controller->downloadAbilityChanged() += [&](const ParamEventArgs<bool>& args) { g_simple_action_set_enabled(m_actAddDownload, args.getParam()); };
         m_controller->historyChanged() += [&](const ParamEventArgs<std::vector<HistoricDownload>>& args) { onHistoryChanged(args); };
         //Quit Action
         GSimpleAction* actQuit{ g_simple_action_new("quit", nullptr) };
@@ -80,6 +81,11 @@ namespace Nickvision::TubeConverter::GNOME::Views
         GSimpleAction* actAbout{ g_simple_action_new("about", nullptr) };
         g_signal_connect(actAbout, "activate", G_CALLBACK(+[](GSimpleAction*, GVariant*, gpointer data){ reinterpret_cast<MainWindow*>(data)->about(); }), this);
         g_action_map_add_action(G_ACTION_MAP(m_window), G_ACTION(actAbout));
+        //Add Download Action
+        m_actAddDownload = g_simple_action_new("addDownload", nullptr);
+        g_signal_connect(m_actAddDownload, "activate", G_CALLBACK(+[](GSimpleAction*, GVariant*, gpointer data){ reinterpret_cast<MainWindow*>(data)->addDownload(); }), this);
+        g_action_map_add_action(G_ACTION_MAP(m_window), G_ACTION(m_actAddDownload));
+        SET_ACCEL_FOR_ACTION(m_app, "win.addDownload", "<Ctrl>N");
         //Clear History Action
         GSimpleAction* actClearHistory{ g_simple_action_new("clearHistory", nullptr) };
         g_signal_connect(actClearHistory, "activate", G_CALLBACK(+[](GSimpleAction*, GVariant*, gpointer data){ reinterpret_cast<MainWindow*>(data)->clearHistory(); }), this);
@@ -177,18 +183,6 @@ namespace Nickvision::TubeConverter::GNOME::Views
             mainWindow->m_controller->setShowDisclaimerOnStartup(!gtk_check_button_get_active(GTK_CHECK_BUTTON(adw_alert_dialog_get_extra_child(self))));
         }), this);
         adw_dialog_present(ADW_DIALOG(dialog), GTK_WIDGET(m_window));
-    }
-
-    void MainWindow::onDownloadAbilityChanged(const ParamEventArgs<bool>& args)
-    {
-        if(args.getParam())
-        {
-
-        }
-        else
-        {
-
-        }
     }
 
     void MainWindow::onHistoryChanged(const ParamEventArgs<std::vector<HistoricDownload>>& args)
@@ -341,6 +335,12 @@ namespace Nickvision::TubeConverter::GNOME::Views
         adw_about_dialog_set_artists(dialog, &urls[0]);
         adw_about_dialog_set_translator_credits(dialog, m_controller->getAppInfo().getTranslatorCredits().c_str());
         adw_dialog_present(ADW_DIALOG(dialog), GTK_WIDGET(m_window));
+    }
+
+    void MainWindow::addDownload()
+    {
+        DialogPtr<AddDownloadDialog> dialog{ m_controller->createAddDownloadDialogController(), GTK_WINDOW(m_window) };
+        dialog->present();
     }
 
     void MainWindow::clearHistory()

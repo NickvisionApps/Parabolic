@@ -72,7 +72,7 @@ namespace Nickvision::TubeConverter::Shared::Models
     void DownloadManager::setDownloaderOptions(const DownloaderOptions& options)
     {
         m_options = options;
-        while(m_downloading.size() < m_options.getMaxNumberOfActiveDownloads() && !m_queued.empty())
+        while(m_downloading.size() < static_cast<size_t>(m_options.getMaxNumberOfActiveDownloads()) && !m_queued.empty())
         {
             std::shared_ptr<Download> firstQueuedDownload{ (*m_queued.begin()).second };
             m_downloading.emplace(firstQueuedDownload->getId(), firstQueuedDownload);
@@ -186,7 +186,7 @@ namespace Nickvision::TubeConverter::Shared::Models
 
     void DownloadManager::addDownload(const std::shared_ptr<Download>& download)
     {
-        if(m_downloading.size() < m_options.getMaxNumberOfActiveDownloads())
+        if(m_downloading.size() < static_cast<size_t>(m_options.getMaxNumberOfActiveDownloads()))
         {
             m_downloading.emplace(download->getId(), download);
             m_downloadAdded.invoke({ download->getId(), download->getPath(), DownloadStatus::Running });
@@ -231,7 +231,7 @@ namespace Nickvision::TubeConverter::Shared::Models
         m_completed.emplace(download->getId(), download);
         m_downloading.erase(download->getId());
         m_downloadCompleted.invoke(args);
-        if(m_downloading.size() < m_options.getMaxNumberOfActiveDownloads() && !m_queued.empty())
+        if(m_downloading.size() < static_cast<size_t>(m_options.getMaxNumberOfActiveDownloads()) && !m_queued.empty())
         {
             std::shared_ptr<Download> firstQueuedDownload{ (*m_queued.begin()).second };
             m_downloading.emplace(firstQueuedDownload->getId(), firstQueuedDownload);

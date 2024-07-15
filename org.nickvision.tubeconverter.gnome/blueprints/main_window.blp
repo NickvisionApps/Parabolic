@@ -31,6 +31,13 @@ Adw.ApplicationWindow root {
         Adw.HeaderBar {
           title-widget: Adw.WindowTitle title {};
       
+          [start]
+          Gtk.Button {
+            icon-name: "list-add-symbolic";
+            tooltip-text: _("Add Download (Ctrl+N)");
+            action-name: "win.addDownload";
+          }
+
           [end]
           Gtk.MenuButton {
             direction: none;
@@ -188,8 +195,11 @@ Adw.ApplicationWindow root {
                   title: _("Download Media");
                   description: _("Add a video, audio, or playlist URL to start downloading");
                   child: Gtk.Button {
-                    label: _("Add Download");
                     halign: center;
+                    label: _("Add Download");
+                    tooltip-text: _("Add Download (Ctrl+N)");
+                    action-name: "win.addDownload";
+
                     styles ["pill", "suggested-action"]
                   };
                   

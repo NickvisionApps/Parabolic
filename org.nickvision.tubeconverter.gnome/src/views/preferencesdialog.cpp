@@ -15,7 +15,7 @@ namespace Nickvision::TubeConverter::GNOME::Views
         DownloaderOptions options{ m_controller->getDownloaderOptions() };
         adw_combo_row_set_selected(ADW_COMBO_ROW(gtk_builder_get_object(m_builder, "themeRow")), static_cast<unsigned int>(m_controller->getTheme()));
         adw_combo_row_set_selected(ADW_COMBO_ROW(gtk_builder_get_object(m_builder, "completedNotificationTriggerRow")), static_cast<unsigned int>(m_controller->getCompletedNotificationPreference()));
-        adw_switch_row_set_active(ADW_SWITCH_ROW(gtk_builder_get_object(m_builder, "preventSuspendRow")), m_controller->getPreventSuspendWhenDownloading());
+        adw_switch_row_set_active(ADW_SWITCH_ROW(gtk_builder_get_object(m_builder, "preventSuspendRow")), m_controller->getPreventSuspend());
         adw_switch_row_set_active(ADW_SWITCH_ROW(gtk_builder_get_object(m_builder, "overwriteExistingFilesRow")), options.getOverwriteExistingFiles());
         adw_spin_row_set_value(ADW_SPIN_ROW(gtk_builder_get_object(m_builder, "maxNumberOfActiveDownloadsRow")), static_cast<double>(options.getMaxNumberOfActiveDownloads()));
         adw_switch_row_set_active(ADW_SWITCH_ROW(gtk_builder_get_object(m_builder, "limitCharactersRow")), options.getLimitCharacters());
@@ -45,7 +45,7 @@ namespace Nickvision::TubeConverter::GNOME::Views
     {
         DownloaderOptions options{ m_controller->getDownloaderOptions() };
         m_controller->setCompletedNotificationPreference(static_cast<CompletedNotificationPreference>(adw_combo_row_get_selected(ADW_COMBO_ROW(gtk_builder_get_object(m_builder, "completedNotificationTriggerRow")))));
-        m_controller->setPreventSuspendWhenDownloading(adw_switch_row_get_active(ADW_SWITCH_ROW(gtk_builder_get_object(m_builder, "preventSuspendRow"))));
+        m_controller->setPreventSuspend(adw_switch_row_get_active(ADW_SWITCH_ROW(gtk_builder_get_object(m_builder, "preventSuspendRow"))));
         options.setOverwriteExistingFiles(adw_switch_row_get_active(ADW_SWITCH_ROW(gtk_builder_get_object(m_builder, "overwriteExistingFilesRow"))));
         options.setMaxNumberOfActiveDownloads(static_cast<int>(adw_spin_row_get_value(ADW_SPIN_ROW(gtk_builder_get_object(m_builder, "maxNumberOfActiveDownloadsRow")))));
         options.setLimitCharacters(adw_switch_row_get_active(ADW_SWITCH_ROW(gtk_builder_get_object(m_builder, "limitCharactersRow"))));

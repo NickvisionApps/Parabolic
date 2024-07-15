@@ -59,15 +59,15 @@ namespace Nickvision::TubeConverter::Shared::Controllers
          */
         void setCompletedNotificationPreference(Models::CompletedNotificationPreference preference);
         /**
-         * @brief Gets whether or not to prevent the system from suspending when downloading.
+         * @brief Gets whether or not to prevent the system from suspending while Parabolic is running.
          * @return True to prevent the system from suspending, else false
          */
-        bool getPreventSuspendWhenDownloading() const;
+        bool getPreventSuspend() const;
         /**
-         * @brief Sets whether or not to prevent the system from suspending when downloading.
+         * @brief Sets whether or not to prevent the system from suspending while Parabolic is running.
          * @param prevent True to prevent the system from suspending, else false
          */
-        void setPreventSuspendWhenDownloading(bool prevent);
+        void setPreventSuspend(bool prevent);
         /**
          * @brief Gets the downloader options.
          * @return The downloader options

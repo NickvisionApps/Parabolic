@@ -137,6 +137,12 @@ namespace winrt::Nickvision::TubeConverter::WinUI::implementation
          */
         Windows::Foundation::IAsyncAction Documentation(const IInspectable& sender, const Microsoft::UI::Xaml::RoutedEventArgs& args);
         /**
+         * @brief Opens the application's add download dialog.
+         * @param sender IInspectable
+         * @param args Microsoft::UI::Xaml::RoutedEventArgs
+         */
+        Windows::Foundation::IAsyncAction AddDownload(const IInspectable& sender, const Microsoft::UI::Xaml::RoutedEventArgs& args);
+        /**
          * @brief Clears the download history.
          * @param sender IInspectable
          * @param args Microsoft::UI::Xaml::RoutedEventArgs

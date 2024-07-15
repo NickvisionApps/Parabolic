@@ -1,0 +1,78 @@
+using Gtk 4.0;
+using Adw 1;
+
+Adw.Dialog root {
+  child: Adw.ToolbarView {
+    [top]
+    Adw.HeaderBar {
+      title-widget: Adw.WindowTitle {
+        title: _("Add Download");
+      };
+    }
+
+    content: Adw.ViewStack viewStack {
+      Adw.ViewStackPage {
+        name: "Spinner";
+        child: Gtk.Spinner {
+          margin-start: 12;
+          margin-top: 12;
+          margin-end: 12;
+          margin-bottom: 12;
+          halign: center;
+          valign: center;
+          spinning: true;
+        };
+      }
+      
+      Adw.ViewStackPage {
+        name: "Validate";
+        child: Gtk.Box {
+          margin-start: 24;
+          margin-top: 24;
+          margin-end: 24;
+          margin-bottom: 24;
+          orientation: vertical;
+          spacing: 24;
+
+          Adw.PreferencesGroup {
+            Adw.EntryRow urlRow {
+              title: _("Media URL");
+              activates-default: true;
+            }
+
+            Adw.ExpanderRow authRow {
+              title: _("Authenticate");
+              enable-expansion: false;
+              show-enable-switch: true;
+
+              Adw.ComboRow _keyringRow {
+                title: _("Keyring Credential");
+              }
+
+              Adw.EntryRow _usernameRow {
+                title: _("Username");
+              }
+
+              Adw.PasswordEntryRow _passwordRow {
+                title: _("Password");
+              }
+            }
+          }
+
+          Gtk.Button validateUrlButton {
+            label: _("Validate");
+            halign: center;
+
+            styles ["pill", "suggested-action"]
+          }
+        };
+      }
+
+      Adw.ViewStackPage {
+        name: "Download";
+      }
+
+      visible-child-name: "Validate";
+    };
+  };
+}

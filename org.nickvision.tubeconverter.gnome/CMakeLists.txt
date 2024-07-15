@@ -2,6 +2,7 @@ if(LINUX)
     add_executable(org.nickvision.tubeconverter.gnome
         "src/helpers/builder.cpp"
         "src/helpers/dialogbase.cpp"
+        "src/views/adddownloaddialog.cpp"
         "src/views/mainwindow.cpp"
         "src/views/preferencesdialog.cpp"
         "src/application.cpp"

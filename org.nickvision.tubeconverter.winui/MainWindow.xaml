@@ -160,7 +160,7 @@
                         <nickvision:ViewStackPage PageName="Home">
                             <nickvision:StatusPage x:Name="StatusPageHome" UseAppIcon="True">
                                 <nickvision:StatusPage.Child>
-                                    <Button x:Name="HomeAddDownloadButton" HorizontalAlignment="Center" Style="{ThemeResource AccentButtonStyle}">
+                                    <Button x:Name="HomeAddDownloadButton" HorizontalAlignment="Center" Style="{ThemeResource AccentButtonStyle}" Click="AddDownload">
                                         <Button.Content>
                                             <StackPanel Orientation="Horizontal" Spacing="6">
                                                 <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" FontSize="16" Glyph="&#xE710;"/>

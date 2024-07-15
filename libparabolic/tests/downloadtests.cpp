@@ -81,7 +81,7 @@ TEST_F(DownloadTest, AddDownload3)
 
 TEST_F(DownloadTest, EnsureDownloadsComplete)
 {
-    while (m_downloadManager->getCompletedCount() != 3)
+    while (m_downloadManager->getRemainingDownloadsCount() > 0)
     {
         std::this_thread::sleep_for(std::chrono::seconds(1));
     }

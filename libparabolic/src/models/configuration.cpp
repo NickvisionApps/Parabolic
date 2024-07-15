@@ -62,14 +62,14 @@ namespace Nickvision::TubeConverter::Shared::Models
         m_json["CompletedNotificationPreference"] = static_cast<int>(preference);
     }
 
-    bool Configuration::getPreventSuspendWhenDownloading() const
+    bool Configuration::getPreventSuspend() const
     {
-        return m_json.get("PreventSuspendWhenDownloading", false).asBool();
+        return m_json.get("PreventSuspend", false).asBool();
     }
 
-    void Configuration::setPreventSuspendWhenDownloading(bool prevent)
+    void Configuration::setPreventSuspend(bool prevent)
     {
-        m_json["PreventSuspendWhenDownloading"] = prevent;
+        m_json["PreventSuspend"] = prevent;
     }
 
     DownloaderOptions Configuration::getDownloaderOptions() const

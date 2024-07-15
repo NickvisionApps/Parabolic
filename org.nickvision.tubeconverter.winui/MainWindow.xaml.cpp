@@ -7,6 +7,7 @@
 #include <libnick/helpers/stringhelpers.h>
 #include <libnick/notifications/shellnotification.h>
 #include <libnick/localization/gettext.h>
+#include "AddDownloadDialog.xaml.h"
 #include "SettingsPage.xaml.h"
 #include "Controls/SettingsRow.xaml.h"
 
@@ -385,6 +386,15 @@ namespace winrt::Nickvision::TubeConverter::WinUI::implementation
         dialog.DefaultButton(ContentDialogButton::Close);
         dialog.RequestedTheme(MainGrid().ActualTheme());
         dialog.XamlRoot(MainGrid().XamlRoot());
+        co_await dialog.ShowAsync();
+    }
+    
+    Windows::Foundation::IAsyncAction MainWindow::AddDownload(const IInspectable& sender, const RoutedEventArgs& args)
+    {
+        WinUI::AddDownloadDialog dialog{ winrt::make<AddDownloadDialog>() };
+        dialog.RequestedTheme(MainGrid().ActualTheme());
+        dialog.XamlRoot(MainGrid().XamlRoot());
+        dialog.as<AddDownloadDialog>()->SetController(m_controller->createAddDownloadDialogController(), m_hwnd);
         co_await dialog.ShowAsync();
     }
 

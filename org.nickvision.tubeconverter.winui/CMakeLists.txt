@@ -13,6 +13,7 @@ if(WIN32)
 
     add_executable(org.nickvision.tubeconverter.winui WIN32 
         "org.nickvision.tubeconverter.winui.manifest" "org.nickvision.tubeconverter.winui.rc"
+        "AddDownloadDialog.xaml.cpp" "AddDownloadDialog.xaml.h" "AddDownloadDialog.xaml" "AddDownloadDialog.idl"
         "App.xaml.cpp" "App.xaml.h" "App.xaml" "App.idl"
         "Controls/ClickableSettingsRow.xaml.cpp" "Controls/ClickableSettingsRow.xaml.h" "Controls/ClickableSettingsRow.xaml" "Controls/ClickableSettingsRow.idl"
         "Controls/SettingsRow.xaml.cpp" "Controls/SettingsRow.xaml.h" "Controls/SettingsRow.xaml" "Controls/SettingsRow.idl"
