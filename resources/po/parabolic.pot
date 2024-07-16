@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-07-15 14:38-0400\n"
+"POT-Creation-Date: 2024-07-15 22:45-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,10 +16,6 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
-
-#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:40
-msgid "Use manual credential"
-msgstr ""
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:42
 msgid "Parabolic"
@@ -65,18 +61,22 @@ msgid "Unable to download and install update"
 msgstr ""
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:21
+#, c++-format
 msgid "{:.2f} GiB/s"
 msgstr ""
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:25
+#, c++-format
 msgid "{:.2f} MiB/s"
 msgstr ""
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:29
+#, c++-format
 msgid "{:.2f} KiB/s"
 msgstr ""
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:33
+#, c++-format
 msgid "{:.2f} B/s"
 msgstr ""
 
@@ -92,35 +92,36 @@ msgstr ""
 #. Localize Strings
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:9
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:199
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:17
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:23
 #: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:75
 msgid "Add Download"
 msgstr ""
 
-#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:39
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:21
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:41
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:27
 msgid "Media URL"
 msgstr ""
 
-#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:44
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:46
 msgid "Authenticate"
 msgstr ""
 
-#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:49
-msgid "Keyring Credential"
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:51
+msgid "Credential"
 msgstr ""
 
-#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:53
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:55
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:30
 msgid "Username"
 msgstr ""
 
-#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:57
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:60
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:32
 msgid "Password"
 msgstr ""
 
-#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:63
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:18
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:37
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:67
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:24
 msgid "Validate"
 msgstr ""
 
@@ -478,33 +479,34 @@ msgid "Open"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:175
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:246
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:243
 msgid "Disclaimer"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:176
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:235
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:232
 msgid "Don't show this message again"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:177
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:248
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:385
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:116
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:245
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:382
 msgid "Close"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:210
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:286
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:283
 msgid "Play"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:229
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:300
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:297
 msgid "Download Again"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:241
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:313
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:310
 msgid "Delete"
 msgstr ""
 
@@ -528,11 +530,46 @@ msgstr ""
 msgid "Search"
 msgstr ""
 
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:19
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:25
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:121
 msgid "Cancel"
 msgstr ""
 
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:41
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:28
+msgid "Enter media url here"
+msgstr ""
+
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:29
+msgid "Authentication"
+msgstr ""
+
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:31
+msgid "Enter username here"
+msgstr ""
+
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:33
+msgid "Enter password here"
+msgstr ""
+
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:56
+msgid "None"
+msgstr ""
+
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:57
+msgid "Use manual credential"
+msgstr ""
+
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:114
+msgid "Error"
+msgstr ""
+
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:115
+msgid ""
+"The url provided is invalid or unable to be reached. Check both the url and "
+"authentication used."
+msgstr ""
+
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:120
 msgid "Download"
 msgstr ""
 
@@ -541,7 +578,7 @@ msgid "Check for Updates"
 msgstr ""
 
 #: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:64
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:376
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:373
 msgid "Credits"
 msgstr ""
 
@@ -575,15 +612,16 @@ msgstr ""
 msgid "Preview"
 msgstr ""
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:197
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:195
 msgid "Update"
 msgstr ""
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:349
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:346
 msgid "Debug information copied to clipboard."
 msgstr ""
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:379
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:376
+#, c++-format
 msgid ""
 "Developers:\n"
 "{}\n"
@@ -593,7 +631,8 @@ msgid ""
 "{}"
 msgstr ""
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:383
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:380
+#, c++-format
 msgid ""
 "Developers:\n"
 "{}\n"

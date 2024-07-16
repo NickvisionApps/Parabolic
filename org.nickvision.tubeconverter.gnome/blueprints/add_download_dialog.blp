@@ -12,7 +12,7 @@ Adw.Dialog root {
 
     content: Adw.ViewStack viewStack {
       Adw.ViewStackPage {
-        name: "Spinner";
+        name: "spinner";
         child: Gtk.Spinner {
           margin-start: 12;
           margin-top: 12;
@@ -20,12 +20,14 @@ Adw.Dialog root {
           margin-bottom: 12;
           halign: center;
           valign: center;
+          width-request: 32;
+          height-request: 32;
           spinning: true;
         };
       }
       
       Adw.ViewStackPage {
-        name: "Validate";
+        name: "validate";
         child: Gtk.Box {
           margin-start: 24;
           margin-top: 24;
@@ -40,20 +42,20 @@ Adw.Dialog root {
               activates-default: true;
             }
 
-            Adw.ExpanderRow authRow {
+            Adw.ExpanderRow authenticateRow {
               title: _("Authenticate");
               enable-expansion: false;
               show-enable-switch: true;
 
-              Adw.ComboRow _keyringRow {
-                title: _("Keyring Credential");
+              Adw.ComboRow credentialRow {
+                title: _("Credential");
               }
 
-              Adw.EntryRow _usernameRow {
+              Adw.EntryRow usernameRow {
                 title: _("Username");
               }
 
-              Adw.PasswordEntryRow _passwordRow {
+              Adw.PasswordEntryRow passwordRow {
                 title: _("Password");
               }
             }
@@ -69,10 +71,11 @@ Adw.Dialog root {
       }
 
       Adw.ViewStackPage {
-        name: "Download";
-      }
+        name: "download";
+        child: Gtk.Box {
 
-      visible-child-name: "Validate";
+        };
+      }
     };
   };
 }

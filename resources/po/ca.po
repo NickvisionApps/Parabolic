@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-07-15 14:38-0400\n"
+"POT-Creation-Date: 2024-07-15 22:30-0400\n"
 "PO-Revision-Date: 2023-11-17 11:26+0000\n"
 "Last-Translator: Roger VC <rogervilarasau@gmail.com>\n"
 "Language-Team: Catalan <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -18,10 +18,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Weblate 5.2\n"
-
-#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:40
-msgid "Use manual credential"
-msgstr "Utilitza credencials manuals"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:42
 msgid "Parabolic"
@@ -73,22 +69,22 @@ msgid "Unable to download and install update"
 msgstr "No es pot descarregar i instal·lar actualització."
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:21
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} GiB/s"
 msgstr "{0:f1} GiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:25
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} MiB/s"
 msgstr "{0:f1} MiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:29
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} KiB/s"
 msgstr "{0:f1} KiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:33
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} B/s"
 msgstr "{0:f1} B/s"
 
@@ -105,35 +101,37 @@ msgstr "Millor"
 #. Localize Strings
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:9
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:199
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:17
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:23
 #: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:75
 msgid "Add Download"
 msgstr "Afegir Descàrrega"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:39
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:21
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:41
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:27
 msgid "Media URL"
 msgstr "URL dels mitjans"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:44
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:46
 msgid "Authenticate"
 msgstr "Autentica"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:49
-msgid "Keyring Credential"
-msgstr "Credencial del clauer"
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:51
+#, fuzzy
+msgid "Credential"
+msgstr "No hi ha Credencials"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:53
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:55
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:30
 msgid "Username"
 msgstr "Nom d'usuari"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:57
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:60
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:32
 msgid "Password"
 msgstr "Contrasenya"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:63
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:18
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:37
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:67
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:24
 msgid "Validate"
 msgstr "Valida"
 
@@ -523,33 +521,34 @@ msgid "Open"
 msgstr "Obrir Fitxer"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:175
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:246
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:243
 msgid "Disclaimer"
 msgstr "Avís legal"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:176
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:235
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:232
 msgid "Don't show this message again"
 msgstr "No mostris aquest missatge de nou"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:177
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:248
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:385
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:116
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:245
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:382
 msgid "Close"
 msgstr "Tancar"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:210
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:286
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:283
 msgid "Play"
 msgstr "Reproduir"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:229
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:300
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:297
 msgid "Download Again"
 msgstr "Descarregar de nou"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:241
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:313
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:310
 msgid "Delete"
 msgstr "Suprimir"
 
@@ -575,11 +574,49 @@ msgstr ""
 msgid "Search"
 msgstr "Història de cerca"
 
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:19
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:25
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:121
 msgid "Cancel"
 msgstr "Cancel·lar"
 
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:41
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:28
+#, fuzzy
+msgid "Enter media url here"
+msgstr "Introduïu l'adreça url dels mitjans aquí"
+
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:29
+#, fuzzy
+msgid "Authentication"
+msgstr "Autentica"
+
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:31
+#, fuzzy
+msgid "Enter username here"
+msgstr "Introduïu el nom d'usuari aquí"
+
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:33
+msgid "Enter password here"
+msgstr "Introduïu la contrasenya aquí"
+
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:56
+msgid "None"
+msgstr ""
+
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:57
+msgid "Use manual credential"
+msgstr "Utilitza credencials manuals"
+
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:114
+msgid "Error"
+msgstr "Error"
+
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:115
+msgid ""
+"The url provided is invalid or unable to be reached. Check both the url and "
+"authentication used."
+msgstr ""
+
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:120
 msgid "Download"
 msgstr "Descarregar"
 
@@ -588,7 +625,7 @@ msgid "Check for Updates"
 msgstr "Comprova les actualitzacions"
 
 #: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:64
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:376
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:373
 msgid "Credits"
 msgstr "Crèdits"
 
@@ -623,17 +660,17 @@ msgstr "Configuració"
 msgid "Preview"
 msgstr ""
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:197
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:195
 msgid "Update"
 msgstr "Actualitzar"
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:349
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:346
 #, fuzzy
 msgid "Debug information copied to clipboard."
 msgstr "El registre de descàrrega s'ha copiat al porta-retalls."
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:379
-#, fuzzy
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:376
+#, fuzzy, c++-format
 msgid ""
 "Developers:\n"
 "{}\n"
@@ -654,8 +691,8 @@ msgstr ""
 "Traductors:\n"
 "{3}"
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:383
-#, fuzzy
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:380
+#, fuzzy, c++-format
 msgid ""
 "Developers:\n"
 "{}\n"
@@ -716,6 +753,12 @@ msgstr "Desactivat"
 #, fuzzy
 msgid "Enter proxy URL here"
 msgstr "Introduïu la URL del servidor intermediari aquí"
+
+#~ msgid "OK"
+#~ msgstr "D'ACORD"
+
+#~ msgid "Keyring Credential"
+#~ msgstr "Credencial del clauer"
 
 #, fuzzy
 #~ msgid "Prevent Suspend When Downloading"
@@ -871,8 +914,8 @@ msgstr "Introduïu la URL del servidor intermediari aquí"
 #~ msgstr ""
 #~ "Llocs diferents poden utilitzar formats de codi de llengua diferents per "
 #~ "la mateixa llengua. Podeu trobar un dels següents tres tipus: de dues "
-#~ "lletres, de dues lletres amb regió, o de tres lletres. Per exemple, \"en"
-#~ "\", \"en-EUA\" i \"eng\" son tot usats per a l'anglès.\n"
+#~ "lletres, de dues lletres amb regió, o de tres lletres. Per exemple, "
+#~ "\"en\", \"en-EUA\" i \"eng\" son tot usats per a l'anglès.\n"
 #~ "Si us plau, especifiqueu tot codis vàlids per a les vostres llengües per "
 #~ "a obtenir els millors resultats. Cotxe-els subtítols generats també seran "
 #~ "descarregats si disponible.\n"
@@ -931,15 +974,8 @@ msgstr "Introduïu la URL del servidor intermediari aquí"
 #~ msgid "Enter end timeframe here"
 #~ msgstr "Introduïu el període de temps de final aquí"
 
-#, fuzzy
-#~ msgid "Enter media URL here"
-#~ msgstr "Introduïu l'adreça url dels mitjans aquí"
-
 #~ msgid "Enter name here"
 #~ msgstr "Introduïu el nom aquí"
-
-#~ msgid "Enter password here"
-#~ msgstr "Introduïu la contrasenya aquí"
 
 #~ msgid "Enter start timeframe here"
 #~ msgstr "Introduïu el període de temps d'inici aquí"
@@ -947,12 +983,6 @@ msgstr "Introduïu la URL del servidor intermediari aquí"
 #, fuzzy
 #~ msgid "Enter URL here"
 #~ msgstr "Introduïu l'adreça URL aquí"
-
-#~ msgid "Enter user name here"
-#~ msgstr "Introduïu el nom d'usuari aquí"
-
-#~ msgid "Error"
-#~ msgstr "Error"
 
 #~ msgid "Exit"
 #~ msgstr "Sortir"
@@ -1045,9 +1075,6 @@ msgstr "Introduïu la URL del servidor intermediari aquí"
 #~ msgid "No Completed Downloads"
 #~ msgstr "Sense Descàrregues Finalitzades"
 
-#~ msgid "No Credentials"
-#~ msgstr "No hi ha Credencials"
-
 #~ msgid "No downloads running"
 #~ msgstr "No hi ha descàrregues en procés"
 
@@ -1063,9 +1090,6 @@ msgstr "Introduïu la URL del servidor intermediari aquí"
 
 #~ msgid "Number Titles"
 #~ msgstr "Nombre de títols"
-
-#~ msgid "OK"
-#~ msgstr "D'ACORD"
 
 #~ msgid "Password (Empty)"
 #~ msgstr "Contrasenya (Buida)"

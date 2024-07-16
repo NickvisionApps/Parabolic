@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-07-15 14:38-0400\n"
+"POT-Creation-Date: 2024-07-15 22:30-0400\n"
 "PO-Revision-Date: 2024-02-15 17:02+0000\n"
 "Last-Translator: valigarmanda <valigarmanda55@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
@@ -19,10 +19,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Weblate 5.4-dev\n"
-
-#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:40
-msgid "Use manual credential"
-msgstr "使用手动凭据"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:42
 msgid "Parabolic"
@@ -73,22 +69,22 @@ msgid "Unable to download and install update"
 msgstr "无法下载和安装更新."
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:21
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} GiB/s"
 msgstr "{0:f1} GiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:25
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} MiB/s"
 msgstr "{0:f1} MiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:29
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} KiB/s"
 msgstr "{0:f1} KiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:33
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} B/s"
 msgstr "{0:f1} B/s"
 
@@ -105,35 +101,37 @@ msgstr "最好"
 #. Localize Strings
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:9
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:199
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:17
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:23
 #: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:75
 msgid "Add Download"
 msgstr "添加下载"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:39
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:21
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:41
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:27
 msgid "Media URL"
 msgstr "媒体 URL"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:44
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:46
 msgid "Authenticate"
 msgstr "认证"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:49
-msgid "Keyring Credential"
-msgstr "密钥环凭证"
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:51
+#, fuzzy
+msgid "Credential"
+msgstr "没有凭据"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:53
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:55
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:30
 msgid "Username"
 msgstr "用户名"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:57
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:60
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:32
 msgid "Password"
 msgstr "密码"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:63
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:18
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:37
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:67
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:24
 msgid "Validate"
 msgstr "验证"
 
@@ -510,33 +508,34 @@ msgid "Open"
 msgstr "打开文件"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:175
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:246
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:243
 msgid "Disclaimer"
 msgstr "免责声明"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:176
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:235
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:232
 msgid "Don't show this message again"
 msgstr "不再显示此消息"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:177
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:248
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:385
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:116
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:245
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:382
 msgid "Close"
 msgstr "关闭"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:210
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:286
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:283
 msgid "Play"
 msgstr "播放"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:229
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:300
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:297
 msgid "Download Again"
 msgstr "重新下载"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:241
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:313
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:310
 msgid "Delete"
 msgstr "删除"
 
@@ -562,11 +561,49 @@ msgstr ""
 msgid "Search"
 msgstr "搜索历史记录"
 
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:19
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:25
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:121
 msgid "Cancel"
 msgstr "取消"
 
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:41
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:28
+#, fuzzy
+msgid "Enter media url here"
+msgstr "在此处输入媒体URL"
+
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:29
+#, fuzzy
+msgid "Authentication"
+msgstr "认证"
+
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:31
+#, fuzzy
+msgid "Enter username here"
+msgstr "在此处输入用户名"
+
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:33
+msgid "Enter password here"
+msgstr "在此处输入密码"
+
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:56
+msgid "None"
+msgstr ""
+
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:57
+msgid "Use manual credential"
+msgstr "使用手动凭据"
+
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:114
+msgid "Error"
+msgstr "错误"
+
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:115
+msgid ""
+"The url provided is invalid or unable to be reached. Check both the url and "
+"authentication used."
+msgstr ""
+
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:120
 msgid "Download"
 msgstr "下载"
 
@@ -575,7 +612,7 @@ msgid "Check for Updates"
 msgstr "检查更新"
 
 #: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:64
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:376
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:373
 msgid "Credits"
 msgstr "感谢"
 
@@ -609,17 +646,17 @@ msgstr "设置"
 msgid "Preview"
 msgstr ""
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:197
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:195
 msgid "Update"
 msgstr "更新"
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:349
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:346
 #, fuzzy
 msgid "Debug information copied to clipboard."
 msgstr "下载日志已复制到剪贴板."
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:379
-#, fuzzy
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:376
+#, fuzzy, c++-format
 msgid ""
 "Developers:\n"
 "{}\n"
@@ -640,8 +677,8 @@ msgstr ""
 "翻译者:\n"
 "{3}"
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:383
-#, fuzzy
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:380
+#, fuzzy, c++-format
 msgid ""
 "Developers:\n"
 "{}\n"
@@ -701,6 +738,12 @@ msgstr "关闭"
 #: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:55
 msgid "Enter proxy URL here"
 msgstr "在此处输入代理 URL"
+
+#~ msgid "OK"
+#~ msgstr "OK"
+
+#~ msgid "Keyring Credential"
+#~ msgstr "密钥环凭证"
 
 #, fuzzy
 #~ msgid "Prevent Suspend When Downloading"
@@ -909,26 +952,14 @@ msgstr "在此处输入代理 URL"
 #~ msgid "Enter end timeframe here"
 #~ msgstr "在此处输入结束时间"
 
-#~ msgid "Enter media URL here"
-#~ msgstr "在此处输入媒体URL"
-
 #~ msgid "Enter name here"
 #~ msgstr "在此处输入名称"
-
-#~ msgid "Enter password here"
-#~ msgstr "在此处输入密码"
 
 #~ msgid "Enter start timeframe here"
 #~ msgstr "在此处输入开始时间"
 
 #~ msgid "Enter URL here"
 #~ msgstr "在此处输入 URL"
-
-#~ msgid "Enter user name here"
-#~ msgstr "在此处输入用户名"
-
-#~ msgid "Error"
-#~ msgstr "错误"
 
 #~ msgid "Exit"
 #~ msgstr "退出"
@@ -1013,9 +1044,6 @@ msgstr "在此处输入代理 URL"
 #~ msgid "No Completed Downloads"
 #~ msgstr "没有已完成的下载"
 
-#~ msgid "No Credentials"
-#~ msgstr "没有凭据"
-
 #~ msgid "No downloads running"
 #~ msgstr "没有正在运行的下载"
 
@@ -1030,9 +1058,6 @@ msgstr "在此处输入代理 URL"
 
 #~ msgid "Number Titles"
 #~ msgstr "数字标题"
-
-#~ msgid "OK"
-#~ msgstr "OK"
 
 #~ msgid "Password (Empty)"
 #~ msgstr "密码 (空)"

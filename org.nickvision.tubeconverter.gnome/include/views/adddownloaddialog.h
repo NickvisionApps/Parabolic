@@ -26,6 +26,22 @@ namespace Nickvision::TubeConverter::GNOME::Views
          * @brief Handles when the dialog is closed.
          */
         void onClosed();
+        /**
+         * @brief Handles when the url text is changed.
+         */
+        void onTxtUrlChanged();
+        /**
+         * @brief Handles when the credential combobox is changed.
+         */
+        void onCmbCredentialChanged();
+        /**
+         * @brief Handles when the validate url button is clicked.
+         */
+        void onValidateUrl();
+        /**
+         * @brief Handles when a url is validated.
+         */
+        void onUrlValidated(const Events::ParamEventArgs<std::vector<Shared::Models::Media>>& args);
         std::shared_ptr<Shared::Controllers::AddDownloadDialogController> m_controller;
     };
 }

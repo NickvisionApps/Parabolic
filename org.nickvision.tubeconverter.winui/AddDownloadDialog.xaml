@@ -14,12 +14,14 @@
             </nickvision:ViewStackPage>
 
             <nickvision:ViewStackPage PageName="Validate">
-                <StackPanel Orientation="Vertical" Spacing="6">
-                    <nickvision:SettingsRow x:Name="RowUrl" Glyph="&#xF6FA;">
-                        <nickvision:SettingsRow.Child>
-                            <TextBox x:Name="TxtUrl" MinWidth="240"/>
-                        </nickvision:SettingsRow.Child>
-                    </nickvision:SettingsRow>
+                <StackPanel Orientation="Vertical" Spacing="6" Width="340">
+                    <TextBox x:Name="TxtUrl" HorizontalAlignment="Stretch" TextChanged="OnTxtUrlChanged"/>
+
+                    <ComboBox x:Name="CmbAuthenticate" HorizontalAlignment="Stretch" SelectionChanged="OnCmbAuthenticateChanged"/>
+
+                    <TextBox x:Name="TxtUsername" HorizontalAlignment="Stretch"/>
+
+                    <PasswordBox x:Name="TxtPassword" HorizontalAlignment="Stretch"/>
                 </StackPanel>
             </nickvision:ViewStackPage>
 

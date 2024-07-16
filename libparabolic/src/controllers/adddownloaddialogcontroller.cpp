@@ -37,7 +37,6 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         std::vector<std::string> names;
         if (m_keyring)
         {
-            names.push_back(_("Use manual credential"));
             for(const Credential& credential : m_keyring->getAllCredentials())
             {
                 names.push_back(credential.getName());
@@ -48,7 +47,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
 
     void AddDownloadDialogController::validateUrl(const std::string& url, const std::optional<Credential>& credential)
     {
-        std::thread worker{ [&]()
+        std::thread worker{ [this, url, credential]()
         {
             std::vector<Media> media;
             std::optional<UrlInfo> urlInfo{ UrlInfo::fetch(url, m_downloaderOptions, credential) };

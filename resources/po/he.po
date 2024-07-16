@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-07-15 14:38-0400\n"
+"POT-Creation-Date: 2024-07-15 22:30-0400\n"
 "PO-Revision-Date: 2024-02-02 15:04+0000\n"
 "Last-Translator: Yosef Or Boczko <yoseforb@gnome.org>\n"
 "Language-Team: Hebrew <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -19,10 +19,6 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n == 1) ? 0 : ((n == 2) ? 1 : ((n > 10 && "
 "n % 10 == 0) ? 2 : 3));\n"
 "X-Generator: Weblate 5.4-dev\n"
-
-#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:40
-msgid "Use manual credential"
-msgstr "שימוש מזהה גישה ידנית"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:42
 msgid "Parabolic"
@@ -76,22 +72,22 @@ msgid "Unable to download and install update"
 msgstr "לא ניתן להוריד ולהתקין את העדכון."
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:21
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} GiB/s"
 msgstr "‏{0:f1} גיב״ב/שנ׳"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:25
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} MiB/s"
 msgstr "‏{0:f1} מבי״ב/שנ׳"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:29
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} KiB/s"
 msgstr "‏{0:f1} קי״ב/שנ׳"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:33
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} B/s"
 msgstr "‏{0:f1} בית/שנ׳"
 
@@ -108,35 +104,36 @@ msgstr "הטוב ביותר"
 #. Localize Strings
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:9
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:199
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:17
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:23
 #: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:75
 msgid "Add Download"
 msgstr "הוספת הורדה"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:39
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:21
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:41
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:27
 msgid "Media URL"
 msgstr "כתובת מדיה"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:44
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:46
 msgid "Authenticate"
 msgstr "אימות"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:49
-msgid "Keyring Credential"
-msgstr "אישור קבוצת מפתחות"
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:51
+msgid "Credential"
+msgstr "פרטי זיהוי"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:53
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:55
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:30
 msgid "Username"
 msgstr "שם משתמש"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:57
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:60
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:32
 msgid "Password"
 msgstr "ססמה"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:63
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:18
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:37
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:67
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:24
 msgid "Validate"
 msgstr "תיקוף"
 
@@ -518,34 +515,35 @@ msgid "Open"
 msgstr "פתיחת קובץ"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:175
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:246
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:243
 #, fuzzy
 msgid "Disclaimer"
 msgstr "תניית פטור"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:176
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:235
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:232
 msgid "Don't show this message again"
 msgstr "אין להציג הודעה זו שוב"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:177
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:248
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:385
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:116
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:245
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:382
 msgid "Close"
 msgstr "סגירה"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:210
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:286
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:283
 msgid "Play"
 msgstr "ניגון"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:229
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:300
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:297
 msgid "Download Again"
 msgstr "להוריד שוב"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:241
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:313
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:310
 msgid "Delete"
 msgstr "מחיקה"
 
@@ -571,11 +569,50 @@ msgstr ""
 msgid "Search"
 msgstr "חיפוש…"
 
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:19
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:25
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:121
 msgid "Cancel"
 msgstr "ביטול"
 
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:41
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:28
+#, fuzzy
+msgid "Enter media url here"
+msgstr "יש להזין כאן כתובת מדיה"
+
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:29
+#, fuzzy
+msgid "Authentication"
+msgstr "אימות"
+
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:31
+#, fuzzy
+msgid "Enter username here"
+msgstr "יש להזין כאן את שם המשתמש"
+
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:33
+msgid "Enter password here"
+msgstr "יש להזין כאן ססמה"
+
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:56
+#, fuzzy
+msgid "None"
+msgstr "אין"
+
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:57
+msgid "Use manual credential"
+msgstr "שימוש מזהה גישה ידנית"
+
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:114
+msgid "Error"
+msgstr "שגיאה"
+
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:115
+msgid ""
+"The url provided is invalid or unable to be reached. Check both the url and "
+"authentication used."
+msgstr ""
+
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:120
 msgid "Download"
 msgstr "הורדה"
 
@@ -584,7 +621,7 @@ msgid "Check for Updates"
 msgstr "בדיקת עדכונים"
 
 #: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:64
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:376
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:373
 msgid "Credits"
 msgstr "תודות"
 
@@ -618,17 +655,17 @@ msgstr "הגדרות"
 msgid "Preview"
 msgstr ""
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:197
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:195
 msgid "Update"
 msgstr "עדכון"
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:349
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:346
 #, fuzzy
 msgid "Debug information copied to clipboard."
 msgstr "יומן ההורדה הועתק ללוח הגזירים."
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:379
-#, fuzzy
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:376
+#, fuzzy, c++-format
 msgid ""
 "Developers:\n"
 "{}\n"
@@ -649,8 +686,8 @@ msgstr ""
 "תרגום:\n"
 "{3}"
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:383
-#, fuzzy
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:380
+#, fuzzy, c++-format
 msgid ""
 "Developers:\n"
 "{}\n"
@@ -710,6 +747,12 @@ msgstr "כבוי"
 #: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:55
 msgid "Enter proxy URL here"
 msgstr "יש להזין כאן כתובת מתווך"
+
+#~ msgid "OK"
+#~ msgstr "אישור"
+
+#~ msgid "Keyring Credential"
+#~ msgstr "אישור קבוצת מפתחות"
 
 #, fuzzy
 #~ msgid "Prevent Suspend When Downloading"
@@ -921,26 +964,14 @@ msgstr "יש להזין כאן כתובת מתווך"
 #~ msgid "Enter end timeframe here"
 #~ msgstr "יש להזין כאן מסגרת זמן סיום"
 
-#~ msgid "Enter media URL here"
-#~ msgstr "יש להזין כאן כתובת מדיה"
-
 #~ msgid "Enter name here"
 #~ msgstr "יש להזין כאן שם"
-
-#~ msgid "Enter password here"
-#~ msgstr "יש להזין כאן ססמה"
 
 #~ msgid "Enter start timeframe here"
 #~ msgstr "יש להזין כאן מסגרת זמן התחלה"
 
 #~ msgid "Enter URL here"
 #~ msgstr "יש להזין כאן כתובת"
-
-#~ msgid "Enter user name here"
-#~ msgstr "יש להזין כאן את שם המשתמש"
-
-#~ msgid "Error"
-#~ msgstr "שגיאה"
 
 #~ msgid "Exit"
 #~ msgstr "יציאה"
@@ -1040,9 +1071,6 @@ msgstr "יש להזין כאן כתובת מתווך"
 
 #~ msgid "Number Titles"
 #~ msgstr "מספר בכותרות"
-
-#~ msgid "OK"
-#~ msgstr "אישור"
 
 #~ msgid "Password (Empty)"
 #~ msgstr "ססמה (ריק)"
@@ -1323,10 +1351,6 @@ msgstr "יש להזין כאן כתובת מתווך"
 #~ msgid "Unable to setup dependencies. Please restart the app and try again."
 #~ msgstr "לא ניתן להגדיר תלויות. יש להפעיל מחדש את היישום ולנסות שוב."
 
-#~ msgctxt "Subtitle"
-#~ msgid "None"
-#~ msgstr "אין"
-
 #~ msgid "Set Password"
 #~ msgstr "הגדרת ססמה"
 
@@ -1368,9 +1392,6 @@ msgstr "יש להזין כאן כתובת מתווך"
 #~ "Nicholas Logozzo {0}\n"
 #~ "Fyodor Sobolev {1}\n"
 #~ "DaPigGuy {2}"
-
-#~ msgid "Credential"
-#~ msgstr "פרטי זיהוי"
 
 #~ msgid "Manage credentials in your keyring."
 #~ msgstr "ניהול האישורים בקבוצת המפתחות שלך."

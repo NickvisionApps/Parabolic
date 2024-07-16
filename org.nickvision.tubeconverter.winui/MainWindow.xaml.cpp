@@ -85,7 +85,7 @@ namespace winrt::Nickvision::TubeConverter::WinUI::implementation
         //Register Events
         AppWindow().Closing({ this, &MainWindow::OnClosing });
         m_controller->configurationSaved() += [&](const EventArgs& args) { OnConfigurationSaved(args); };
-        m_controller->notificationSent() += [&](const NotificationSentEventArgs& args) { OnNotificationSent(args); };
+        m_controller->notificationSent() += [&](const NotificationSentEventArgs& args) { DispatcherQueue().TryEnqueue([this, args](){ OnNotificationSent(args); }); };
         m_controller->shellNotificationSent() += [&](const ShellNotificationSentEventArgs& args) { OnShellNotificationSent(args); };
         m_controller->disclaimerTriggered() += [&](const ParamEventArgs<std::string>& args) { OnDisclaimerTriggered(args); };
         m_controller->downloadAbilityChanged() += [&](const ParamEventArgs<bool>& args) { OnDownloadAbilityChanged(args); };
@@ -164,42 +164,39 @@ namespace winrt::Nickvision::TubeConverter::WinUI::implementation
 
     void MainWindow::OnNotificationSent(const NotificationSentEventArgs& args)
     {
-        DispatcherQueue().TryEnqueue([this, args]()
+        InfoBar().Message(winrt::to_hstring(args.getMessage()));
+        BtnInfoBar().Visibility(Visibility::Collapsed);
+        switch(args.getSeverity())
         {
-            InfoBar().Message(winrt::to_hstring(args.getMessage()));
-            BtnInfoBar().Visibility(Visibility::Collapsed);
-            switch(args.getSeverity())
-            {
-            case NotificationSeverity::Success:
-                InfoBar().Severity(InfoBarSeverity::Success);
-                break;
-            case NotificationSeverity::Warning:
-                InfoBar().Severity(InfoBarSeverity::Warning);
-                break;
-            case NotificationSeverity::Error:
-                InfoBar().Severity(InfoBarSeverity::Error);
-                break;
-            default:
-                InfoBar().Severity(InfoBarSeverity::Informational);
-                break;
-            }
-            if(m_notificationClickToken)
-            {
-                BtnInfoBar().Click(m_notificationClickToken);
-            }
-            if(args.getAction() == "error")
-            {
-                NavView().SelectedItem(nullptr);
-                NavViewHome().IsSelected(true);
-            }
-            else if(args.getAction() == "update")
-            {
-                BtnInfoBar().Content(winrt::box_value(winrt::to_hstring(_("Update"))));
-                BtnInfoBar().Visibility(Visibility::Visible);
-                m_notificationClickToken = BtnInfoBar().Click({ this, &MainWindow::WindowsUpdate });
-            }
-            InfoBar().IsOpen(true);
-        });
+        case NotificationSeverity::Success:
+            InfoBar().Severity(InfoBarSeverity::Success);
+            break;
+        case NotificationSeverity::Warning:
+            InfoBar().Severity(InfoBarSeverity::Warning);
+            break;
+        case NotificationSeverity::Error:
+            InfoBar().Severity(InfoBarSeverity::Error);
+            break;
+        default:
+            InfoBar().Severity(InfoBarSeverity::Informational);
+            break;
+        }
+        if(m_notificationClickToken)
+        {
+            BtnInfoBar().Click(m_notificationClickToken);
+        }
+        if(args.getAction() == "error")
+        {
+            NavView().SelectedItem(nullptr);
+            NavViewHome().IsSelected(true);
+        }
+        else if(args.getAction() == "update")
+        {
+            BtnInfoBar().Content(winrt::box_value(winrt::to_hstring(_("Update"))));
+            BtnInfoBar().Visibility(Visibility::Visible);
+            m_notificationClickToken = BtnInfoBar().Click({ this, &MainWindow::WindowsUpdate });
+        }
+        InfoBar().IsOpen(true);
     }
 
     void MainWindow::OnShellNotificationSent(const ShellNotificationSentEventArgs& args)
