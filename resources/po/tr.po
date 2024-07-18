@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-07-15 22:30-0400\n"
+"POT-Creation-Date: 2024-07-17 21:21-0400\n"
 "PO-Revision-Date: 2023-12-17 08:08+0000\n"
 "Last-Translator: Sabri Ünal <libreajans@gmail.com>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -18,6 +18,70 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Weblate 5.3\n"
+
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:71
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:82
+#, fuzzy
+msgid "MP4 (Video)"
+msgstr "Video"
+
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:72
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:83
+msgid "WEBM (Video)"
+msgstr ""
+
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:74
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:84
+#, fuzzy
+msgid "MP3 (Audio)"
+msgstr "Ses"
+
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:75
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:85
+#, fuzzy
+msgid "M4A (Audio)"
+msgstr "Ses"
+
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:76
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:86
+msgid "OPUS (Audio)"
+msgstr ""
+
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:77
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:87
+msgid "FLAC (Audio)"
+msgstr ""
+
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:78
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:88
+#, fuzzy
+msgid "WAV (Audio)"
+msgstr "Ses"
+
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:111
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:117
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:128
+#: libparabolic/src/models/videoresolution.cpp:21
+#: libparabolic/src/models/videoresolution.cpp:63
+msgid "Best"
+msgstr "En İyi"
+
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:112
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:129
+#, fuzzy
+msgid "Good"
+msgstr "İyi Günler!"
+
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:113
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:130
+msgid "Worst"
+msgstr "En Kötü"
+
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:134
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:152
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:164
+msgid "Default"
+msgstr "Öntanımlı"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:42
 msgid "Parabolic"
@@ -72,22 +136,22 @@ msgid "Unable to download and install update"
 msgstr "Güncelleme indirilemiyor ve kurulamıyor."
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:21
-#, fuzzy, c++-format
+#, fuzzy
 msgid "{:.2f} GiB/s"
 msgstr "{0:f1} GiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:25
-#, fuzzy, c++-format
+#, fuzzy
 msgid "{:.2f} MiB/s"
 msgstr "{0:f1} MiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:29
-#, fuzzy, c++-format
+#, fuzzy
 msgid "{:.2f} KiB/s"
 msgstr "{0:f1} KiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:33
-#, fuzzy, c++-format
+#, fuzzy
 msgid "{:.2f} B/s"
 msgstr "{0:f1} B/s"
 
@@ -95,11 +159,6 @@ msgstr "{0:f1} B/s"
 #, fuzzy
 msgid "The file already exists and overwriting is disabled."
 msgstr "Dosya zaten var ve üzerine yazılmasına izin verilmiyor"
-
-#: libparabolic/src/models/videoresolution.cpp:21
-#: libparabolic/src/models/videoresolution.cpp:63
-msgid "Best"
-msgstr "En İyi"
 
 #. Localize Strings
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:9
@@ -127,12 +186,12 @@ msgstr "Kimlik Bilgileri"
 msgid "Username"
 msgstr "Kullanıcı adı"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:60
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:59
 #: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:32
 msgid "Password"
 msgstr "Parola"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:67
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:65
 #: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:24
 msgid "Validate"
 msgstr "Doğrula"
@@ -533,7 +592,7 @@ msgid "Don't show this message again"
 msgstr "Bu iletiyi tekrar gösterme"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:177
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:116
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:129
 #: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:245
 #: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:382
 msgid "Close"
@@ -577,7 +636,7 @@ msgid "Search"
 msgstr "Ara..."
 
 #: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:25
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:121
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:134
 msgid "Cancel"
 msgstr "İptal"
 
@@ -600,26 +659,87 @@ msgstr "Kullanıcı adını buraya giriniz"
 msgid "Enter password here"
 msgstr "Parolayı buraya giriniz"
 
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:56
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:34
+msgid "File Type"
+msgstr "Dosya Türü"
+
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:35
+msgid "Quality"
+msgstr "Kalite"
+
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:36
+msgid "Audio Language"
+msgstr "Ses Dili"
+
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:37
+msgid "Download Subtitles"
+msgstr "Alt Yazıları İndir"
+
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:38
+msgid "Prefer AV1 Codec"
+msgstr "AV1 Kod Çözücüyü Yeğle"
+
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:39
+#, fuzzy
+msgid "Split Video by Chapters"
+msgstr "Bölümleri Ayır"
+
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:40
+#, fuzzy
+msgid "Save Folder"
+msgstr "Kayıt Klasörünü Seçin"
+
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:41
+msgid "Select Save Folder"
+msgstr "Kayıt Klasörünü Seçin"
+
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:42
+#, fuzzy
+msgid "Filename"
+msgstr "Dosya Adı"
+
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:43
+#, fuzzy
+msgid "Enter filename here"
+msgstr "Adı buraya giriniz"
+
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:44
+msgid "Revert to Title"
+msgstr ""
+
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:45
+msgid "Start Time"
+msgstr "Başlangıç Zamanı"
+
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:46
+msgid "End Time"
+msgstr "Bitiş Zamanı"
+
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:47
+#, fuzzy
+msgid "Limit Download Speed"
+msgstr "Ortam İndirici"
+
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:70
 #, fuzzy
 msgid "None"
 msgstr "Hiçbiri"
 
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:57
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:71
 msgid "Use manual credential"
 msgstr "El ile kimlik bilgisi kullan"
 
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:114
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:127
 msgid "Error"
 msgstr "Hata"
 
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:115
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:128
 msgid ""
 "The url provided is invalid or unable to be reached. Check both the url and "
 "authentication used."
 msgstr ""
 
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:120
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:133
 msgid "Download"
 msgstr "İndir"
 
@@ -672,7 +792,7 @@ msgid "Debug information copied to clipboard."
 msgstr "İndirme günlüğü panoya kopyalandı."
 
 #: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:376
-#, fuzzy, c++-format
+#, fuzzy
 msgid ""
 "Developers:\n"
 "{}\n"
@@ -694,7 +814,7 @@ msgstr ""
 "{3}"
 
 #: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:380
-#, fuzzy, c++-format
+#, fuzzy
 msgid ""
 "Developers:\n"
 "{}\n"
@@ -754,6 +874,14 @@ msgstr "Kapalı"
 #: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:55
 msgid "Enter proxy URL here"
 msgstr "Ağ vekili URLʼsini buraya giriniz"
+
+#, fuzzy
+#~ msgid "Enter start time here"
+#~ msgstr "Başlangıç zaman çerçevesini buraya giriniz"
+
+#, fuzzy
+#~ msgid "Enter end time here"
+#~ msgstr "Bitiş zaman karesini buraya giriniz"
 
 #~ msgid "OK"
 #~ msgstr "Tamam"
@@ -825,9 +953,6 @@ msgstr "Ağ vekili URLʼsini buraya giriniz"
 #~ msgid "Good Evening!"
 #~ msgstr "İyi Akşamlar!"
 
-#~ msgid "Good Day!"
-#~ msgstr "İyi Günler!"
-
 #, fuzzy
 #~ msgid "Folder Opened: {}"
 #~ msgstr "Toplam Hız: {0}"
@@ -887,12 +1012,6 @@ msgstr "Ağ vekili URLʼsini buraya giriniz"
 #~ msgid "An application restart is required to change the theme."
 #~ msgstr "Temayı değiştirmek için uygulamanın yeniden başlatılması gerekir."
 
-#~ msgid "Audio"
-#~ msgstr "Ses"
-
-#~ msgid "Audio Language"
-#~ msgstr "Ses Dili"
-
 #~ msgid "Back"
 #~ msgstr "Geri"
 
@@ -936,8 +1055,8 @@ msgstr "Ağ vekili URLʼsini buraya giriniz"
 #~ msgstr ""
 #~ "Farklı siteler aynı dil için farklı dil kodu biçimini kullanabilir. "
 #~ "Aşağıdaki üç türden biriyle karşılaşabilirsiniz: iki harfli, bölgeli iki "
-#~ "harfli ya da üç harfli. Örneğin İngilizce için \"en\", \"en-US\" ve "
-#~ "\"eng\" kelimelerinin tümü kullanılır.\n"
+#~ "harfli ya da üç harfli. Örneğin İngilizce için \"en\", \"en-US\" ve \"eng"
+#~ "\" kelimelerinin tümü kullanılır.\n"
 #~ "En iyi sonuçları elde etmek için lütfen dilleriniz için geçerli tüm "
 #~ "kodları belirtin. Varsa, otomatik oluşturulan alt yazılar da "
 #~ "indirilecektir.\n"
@@ -967,9 +1086,6 @@ msgstr "Ağ vekili URLʼsini buraya giriniz"
 #~ msgid "Download Specific Timeframe"
 #~ msgstr "Belirli Zaman Dilimini İndir"
 
-#~ msgid "Download Subtitles"
-#~ msgstr "Alt Yazıları İndir"
-
 #, csharp-format
 #~ msgid "Downloading {0:f2}% ({1})"
 #~ msgstr "İndiriliyor %{0:f2} ({1})"
@@ -983,26 +1099,14 @@ msgstr "Ağ vekili URLʼsini buraya giriniz"
 #~ msgid "Enable"
 #~ msgstr "Etkinleştir"
 
-#~ msgid "End Time"
-#~ msgstr "Bitiş Zamanı"
-
 #~ msgid "End Time (Invalid)"
 #~ msgstr "Bitiş Zamanı (Geçersiz)"
 
 #~ msgid "Ensure credentials are correct."
 #~ msgstr "Kimlik bilgilerinin doğru olduğundan emin olun."
 
-#~ msgid "Enter end timeframe here"
-#~ msgstr "Bitiş zaman karesini buraya giriniz"
-
 #~ msgid "Enter media URL here"
 #~ msgstr "Ortam URLʼsini buraya giriniz"
-
-#~ msgid "Enter name here"
-#~ msgstr "Adı buraya giriniz"
-
-#~ msgid "Enter start timeframe here"
-#~ msgstr "Başlangıç zaman çerçevesini buraya giriniz"
 
 #~ msgid "Enter URL here"
 #~ msgstr "URLʼyi buraya giriniz"
@@ -1012,12 +1116,6 @@ msgstr "Ağ vekili URLʼsini buraya giriniz"
 
 #~ msgid "Failed to enable keyring."
 #~ msgstr "Anahtarlık etkinleştirilemedi."
-
-#~ msgid "File Name"
-#~ msgstr "Dosya Adı"
-
-#~ msgid "File Type"
-#~ msgstr "Dosya Türü"
 
 #~ msgid ""
 #~ "If disabled or if embedding fails, downloaded subtitles will be saved to "
@@ -1123,9 +1221,6 @@ msgstr "Ağ vekili URLʼsini buraya giriniz"
 #~ msgid "Please wait..."
 #~ msgstr "Lütfen bekleyin..."
 
-#~ msgid "Prefer AV1 Codec"
-#~ msgstr "AV1 Kod Çözücüyü Yeğle"
-
 #~ msgid "Preparing..."
 #~ msgstr "Hazırlanıyor..."
 
@@ -1134,9 +1229,6 @@ msgstr "Ağ vekili URLʼsini buraya giriniz"
 
 #~ msgid "Processing..."
 #~ msgstr "İşleniyor..."
-
-#~ msgid "Quality"
-#~ msgstr "Kalite"
 
 #~ msgid "Reset"
 #~ msgstr "Sıfırla"
@@ -1171,9 +1263,6 @@ msgstr "Ağ vekili URLʼsini buraya giriniz"
 #~ msgid "Select items to download or change file names."
 #~ msgstr "İndirmek veya dosya adlarını değiştirmek için ögeleri seçin."
 
-#~ msgid "Select Save Folder"
-#~ msgstr "Kayıt Klasörünü Seçin"
-
 #~ msgid "Show Window"
 #~ msgstr "Pencereyi Göster"
 
@@ -1188,17 +1277,11 @@ msgstr "Ağ vekili URLʼsini buraya giriniz"
 #~ msgid "Some downloads finished with errors!"
 #~ msgstr "Bazı indirmeler hatalarla tamamlandı!"
 
-#~ msgid "Split Chapters"
-#~ msgstr "Bölümleri Ayır"
-
 #~ msgid "Splits the video into multiple smaller ones based on its chapters."
 #~ msgstr "Videoyu bölümlerine göre birden çok küçük parçaya böler."
 
 #~ msgid "SponsorBlock Information (opens in a web browser)"
 #~ msgstr "SponsorBlock Bilgisi (web tarayıcısında açılır)"
-
-#~ msgid "Start Time"
-#~ msgstr "Başlangıç Zamanı"
 
 #~ msgid "Start Time (Invalid)"
 #~ msgstr "Başlangıç Zamanı (Geçersiz)"
@@ -1277,17 +1360,11 @@ msgstr "Ağ vekili URLʼsini buraya giriniz"
 #~ msgid "Validating"
 #~ msgstr "Doğrulanıyor"
 
-#~ msgid "Video"
-#~ msgstr "Video"
-
 #~ msgid "View Log"
 #~ msgstr "Günlüğü Görüntüle"
 
 #~ msgid "Waiting..."
 #~ msgstr "Bekliyor..."
-
-#~ msgid "Worst"
-#~ msgstr "En Kötü"
 
 #, csharp-format
 #~ msgid ""
@@ -1377,9 +1454,6 @@ msgstr "Ağ vekili URLʼsini buraya giriniz"
 
 #~ msgid "Enter url here"
 #~ msgstr "URLʼyi buraya giriniz"
-
-#~ msgid "Default"
-#~ msgstr "Öntanımlı"
 
 #~ msgid "YouTube;Downloader;ytdlp;Nickvision;Tube;Converter;"
 #~ msgstr ""

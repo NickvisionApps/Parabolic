@@ -51,9 +51,15 @@ namespace winrt::Nickvision::TubeConverter::WinUI::implementation
         void OnCmbAuthenticateChanged(const IInspectable& sender, const Microsoft::UI::Xaml::Controls::SelectionChangedEventArgs& args);
         /**
          * @brief Handles when the url is validated.
-         * @param args ParamEventArgs<std::vector<Media>>
+         * @param args ParamEventArgs<bool>
          */
-        void OnUrlValidated(const ::Nickvision::Events::ParamEventArgs<std::vector<::Nickvision::TubeConverter::Shared::Models::Media>>& args);
+        void OnUrlValidated(const ::Nickvision::Events::ParamEventArgs<bool>& args);
+        /**
+         * @brief Reverts the single download's filename back to its original title.
+         * @param sender IInspectable
+         * @param args RoutedEventArgs
+         */
+        void RevertFilenameSingle(const IInspectable& sender, const Microsoft::UI::Xaml::RoutedEventArgs& args);
 
     private:
         std::shared_ptr<::Nickvision::TubeConverter::Shared::Controllers::AddDownloadDialogController> m_controller;

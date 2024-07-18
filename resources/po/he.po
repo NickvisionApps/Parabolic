@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-07-15 22:30-0400\n"
+"POT-Creation-Date: 2024-07-17 21:21-0400\n"
 "PO-Revision-Date: 2024-02-02 15:04+0000\n"
 "Last-Translator: Yosef Or Boczko <yoseforb@gnome.org>\n"
 "Language-Team: Hebrew <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -19,6 +19,69 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n == 1) ? 0 : ((n == 2) ? 1 : ((n > 10 && "
 "n % 10 == 0) ? 2 : 3));\n"
 "X-Generator: Weblate 5.4-dev\n"
+
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:71
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:82
+#, fuzzy
+msgid "MP4 (Video)"
+msgstr "סרט"
+
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:72
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:83
+msgid "WEBM (Video)"
+msgstr ""
+
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:74
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:84
+#, fuzzy
+msgid "MP3 (Audio)"
+msgstr "שמע"
+
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:75
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:85
+#, fuzzy
+msgid "M4A (Audio)"
+msgstr "שמע"
+
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:76
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:86
+msgid "OPUS (Audio)"
+msgstr ""
+
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:77
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:87
+msgid "FLAC (Audio)"
+msgstr ""
+
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:78
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:88
+#, fuzzy
+msgid "WAV (Audio)"
+msgstr "שמע"
+
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:111
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:117
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:128
+#: libparabolic/src/models/videoresolution.cpp:21
+#: libparabolic/src/models/videoresolution.cpp:63
+msgid "Best"
+msgstr "הטוב ביותר"
+
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:112
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:129
+msgid "Good"
+msgstr ""
+
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:113
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:130
+msgid "Worst"
+msgstr "גרוע ביותר"
+
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:134
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:152
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:164
+msgid "Default"
+msgstr "ברירת מחדל"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:42
 msgid "Parabolic"
@@ -72,22 +135,22 @@ msgid "Unable to download and install update"
 msgstr "לא ניתן להוריד ולהתקין את העדכון."
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:21
-#, fuzzy, c++-format
+#, fuzzy
 msgid "{:.2f} GiB/s"
 msgstr "‏{0:f1} גיב״ב/שנ׳"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:25
-#, fuzzy, c++-format
+#, fuzzy
 msgid "{:.2f} MiB/s"
 msgstr "‏{0:f1} מבי״ב/שנ׳"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:29
-#, fuzzy, c++-format
+#, fuzzy
 msgid "{:.2f} KiB/s"
 msgstr "‏{0:f1} קי״ב/שנ׳"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:33
-#, fuzzy, c++-format
+#, fuzzy
 msgid "{:.2f} B/s"
 msgstr "‏{0:f1} בית/שנ׳"
 
@@ -95,11 +158,6 @@ msgstr "‏{0:f1} בית/שנ׳"
 #, fuzzy
 msgid "The file already exists and overwriting is disabled."
 msgstr "הקובץ כבר קיים, והדריסה שלו לא מתאפשרת"
-
-#: libparabolic/src/models/videoresolution.cpp:21
-#: libparabolic/src/models/videoresolution.cpp:63
-msgid "Best"
-msgstr "הטוב ביותר"
 
 #. Localize Strings
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:9
@@ -127,12 +185,12 @@ msgstr "פרטי זיהוי"
 msgid "Username"
 msgstr "שם משתמש"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:60
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:59
 #: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:32
 msgid "Password"
 msgstr "ססמה"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:67
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:65
 #: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:24
 msgid "Validate"
 msgstr "תיקוף"
@@ -526,7 +584,7 @@ msgid "Don't show this message again"
 msgstr "אין להציג הודעה זו שוב"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:177
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:116
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:129
 #: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:245
 #: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:382
 msgid "Close"
@@ -570,7 +628,7 @@ msgid "Search"
 msgstr "חיפוש…"
 
 #: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:25
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:121
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:134
 msgid "Cancel"
 msgstr "ביטול"
 
@@ -593,26 +651,87 @@ msgstr "יש להזין כאן את שם המשתמש"
 msgid "Enter password here"
 msgstr "יש להזין כאן ססמה"
 
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:56
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:34
+msgid "File Type"
+msgstr "סוג קובץ"
+
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:35
+msgid "Quality"
+msgstr "איכות"
+
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:36
+msgid "Audio Language"
+msgstr "שפת שמע"
+
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:37
+msgid "Download Subtitles"
+msgstr "הורדת כתוביות"
+
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:38
+msgid "Prefer AV1 Codec"
+msgstr "העדפת מקודד AV1"
+
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:39
+#, fuzzy
+msgid "Split Video by Chapters"
+msgstr "פיצול פרקים"
+
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:40
+#, fuzzy
+msgid "Save Folder"
+msgstr "בחירת תיקיית שמירה"
+
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:41
+msgid "Select Save Folder"
+msgstr "בחירת תיקיית שמירה"
+
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:42
+#, fuzzy
+msgid "Filename"
+msgstr "שם קובץ"
+
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:43
+#, fuzzy
+msgid "Enter filename here"
+msgstr "יש להזין כאן שם"
+
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:44
+msgid "Revert to Title"
+msgstr ""
+
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:45
+msgid "Start Time"
+msgstr "זמן התחלה"
+
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:46
+msgid "End Time"
+msgstr "זמן סיום"
+
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:47
+#, fuzzy
+msgid "Limit Download Speed"
+msgstr "הורדת מדיה"
+
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:70
 #, fuzzy
 msgid "None"
 msgstr "אין"
 
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:57
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:71
 msgid "Use manual credential"
 msgstr "שימוש מזהה גישה ידנית"
 
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:114
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:127
 msgid "Error"
 msgstr "שגיאה"
 
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:115
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:128
 msgid ""
 "The url provided is invalid or unable to be reached. Check both the url and "
 "authentication used."
 msgstr ""
 
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:120
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:133
 msgid "Download"
 msgstr "הורדה"
 
@@ -665,7 +784,7 @@ msgid "Debug information copied to clipboard."
 msgstr "יומן ההורדה הועתק ללוח הגזירים."
 
 #: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:376
-#, fuzzy, c++-format
+#, fuzzy
 msgid ""
 "Developers:\n"
 "{}\n"
@@ -687,7 +806,7 @@ msgstr ""
 "{3}"
 
 #: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:380
-#, fuzzy, c++-format
+#, fuzzy
 msgid ""
 "Developers:\n"
 "{}\n"
@@ -747,6 +866,14 @@ msgstr "כבוי"
 #: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:55
 msgid "Enter proxy URL here"
 msgstr "יש להזין כאן כתובת מתווך"
+
+#, fuzzy
+#~ msgid "Enter start time here"
+#~ msgstr "יש להזין כאן מסגרת זמן התחלה"
+
+#, fuzzy
+#~ msgid "Enter end time here"
+#~ msgstr "יש להזין כאן מסגרת זמן סיום"
 
 #~ msgid "OK"
 #~ msgstr "אישור"
@@ -857,12 +984,6 @@ msgstr "יש להזין כאן כתובת מתווך"
 #~ msgid "An application restart is required to change the theme."
 #~ msgstr "יש להפעיל מחדש את היישום על מנת לשנות את ערכת הנושא."
 
-#~ msgid "Audio"
-#~ msgstr "שמע"
-
-#~ msgid "Audio Language"
-#~ msgstr "שפת שמע"
-
 #~ msgid "Back"
 #~ msgstr "חזרה"
 
@@ -936,9 +1057,6 @@ msgstr "יש להזין כאן כתובת מתווך"
 #~ msgid "Download Specific Timeframe"
 #~ msgstr "הורדת פרק זמן מוגדר"
 
-#~ msgid "Download Subtitles"
-#~ msgstr "הורדת כתוביות"
-
 #, csharp-format
 #~ msgid "Downloading {0:f2}% ({1})"
 #~ msgstr "מוריד ‏‏{0:f2}%‎ ‏({1})‎"
@@ -952,23 +1070,11 @@ msgstr "יש להזין כאן כתובת מתווך"
 #~ msgid "Enable"
 #~ msgstr "לאפשר"
 
-#~ msgid "End Time"
-#~ msgstr "זמן סיום"
-
 #~ msgid "End Time (Invalid)"
 #~ msgstr "זמן סיום (לא תקין)"
 
 #~ msgid "Ensure credentials are correct."
 #~ msgstr "יש לוודא שפרטי הזיהוי תקינים."
-
-#~ msgid "Enter end timeframe here"
-#~ msgstr "יש להזין כאן מסגרת זמן סיום"
-
-#~ msgid "Enter name here"
-#~ msgstr "יש להזין כאן שם"
-
-#~ msgid "Enter start timeframe here"
-#~ msgstr "יש להזין כאן מסגרת זמן התחלה"
 
 #~ msgid "Enter URL here"
 #~ msgstr "יש להזין כאן כתובת"
@@ -978,12 +1084,6 @@ msgstr "יש להזין כאן כתובת מתווך"
 
 #~ msgid "Failed to enable keyring."
 #~ msgstr "אירע כשל באפשור קבוצת המפתחות."
-
-#~ msgid "File Name"
-#~ msgstr "שם קובץ"
-
-#~ msgid "File Type"
-#~ msgstr "סוג קובץ"
 
 #~ msgid ""
 #~ "If disabled or if embedding fails, downloaded subtitles will be saved to "
@@ -1081,9 +1181,6 @@ msgstr "יש להזין כאן כתובת מתווך"
 #~ msgid "Please wait..."
 #~ msgstr "נא להמתין…"
 
-#~ msgid "Prefer AV1 Codec"
-#~ msgstr "העדפת מקודד AV1"
-
 #~ msgid "Preparing..."
 #~ msgstr "בהכנה…"
 
@@ -1092,9 +1189,6 @@ msgstr "יש להזין כאן כתובת מתווך"
 
 #~ msgid "Processing..."
 #~ msgstr "בתהליך…"
-
-#~ msgid "Quality"
-#~ msgstr "איכות"
 
 #~ msgid "Reset"
 #~ msgstr "איפוס"
@@ -1129,9 +1223,6 @@ msgstr "יש להזין כאן כתובת מתווך"
 #~ msgid "Select items to download or change file names."
 #~ msgstr "בחירת פריטים להורדה או שינוי שמות הקבצים."
 
-#~ msgid "Select Save Folder"
-#~ msgstr "בחירת תיקיית שמירה"
-
 #~ msgid "Show Window"
 #~ msgstr "הצגת חלון"
 
@@ -1145,17 +1236,11 @@ msgstr "יש להזין כאן כתובת מתווך"
 #~ msgid "Some downloads finished with errors!"
 #~ msgstr "כמה הורדות הסתיימו עם שגיאות!"
 
-#~ msgid "Split Chapters"
-#~ msgstr "פיצול פרקים"
-
 #~ msgid "Splits the video into multiple smaller ones based on its chapters."
 #~ msgstr "פיצול הסרט למספר חלקים קטנים המבוססים על הפרקים שבו."
 
 #~ msgid "SponsorBlock Information (opens in a web browser)"
 #~ msgstr "מידע על SponsorBlock (נפתח בדפדפן)"
-
-#~ msgid "Start Time"
-#~ msgstr "זמן התחלה"
 
 #~ msgid "Start Time (Invalid)"
 #~ msgstr "זמן התחלה (לא תקין)"
@@ -1233,17 +1318,11 @@ msgstr "יש להזין כאן כתובת מתווך"
 #~ msgid "Validating"
 #~ msgstr "מתקף"
 
-#~ msgid "Video"
-#~ msgstr "סרט"
-
 #~ msgid "View Log"
 #~ msgstr "הצגת יומן"
 
 #~ msgid "Waiting..."
 #~ msgstr "בהמתנה…"
-
-#~ msgid "Worst"
-#~ msgstr "גרוע ביותר"
 
 #, csharp-format
 #~ msgid ""
@@ -1319,9 +1398,6 @@ msgstr "יש להזין כאן כתובת מתווך"
 #, fuzzy
 #~ msgid "Show Completed"
 #~ msgstr "הושלמו"
-
-#~ msgid "Default"
-#~ msgstr "ברירת מחדל"
 
 #~ msgid "YouTube;Downloader;ytdlp;Nickvision;Tube;Converter;"
 #~ msgstr ""

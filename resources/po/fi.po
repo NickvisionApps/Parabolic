@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-07-15 22:30-0400\n"
+"POT-Creation-Date: 2024-07-17 21:21-0400\n"
 "PO-Revision-Date: 2024-04-08 16:01+0000\n"
 "Last-Translator: Jiri Grönroos <jiri.gronroos@iki.fi>\n"
 "Language-Team: Finnish <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -18,6 +18,69 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Weblate 5.5-dev\n"
+
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:71
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:82
+#, fuzzy
+msgid "MP4 (Video)"
+msgstr "Video"
+
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:72
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:83
+msgid "WEBM (Video)"
+msgstr ""
+
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:74
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:84
+#, fuzzy
+msgid "MP3 (Audio)"
+msgstr "Ääni"
+
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:75
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:85
+#, fuzzy
+msgid "M4A (Audio)"
+msgstr "Ääni"
+
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:76
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:86
+msgid "OPUS (Audio)"
+msgstr ""
+
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:77
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:87
+msgid "FLAC (Audio)"
+msgstr ""
+
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:78
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:88
+#, fuzzy
+msgid "WAV (Audio)"
+msgstr "Ääni"
+
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:111
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:117
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:128
+#: libparabolic/src/models/videoresolution.cpp:21
+#: libparabolic/src/models/videoresolution.cpp:63
+msgid "Best"
+msgstr "Paras"
+
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:112
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:129
+msgid "Good"
+msgstr ""
+
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:113
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:130
+msgid "Worst"
+msgstr "Huonoin"
+
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:134
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:152
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:164
+msgid "Default"
+msgstr "Oletus"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:42
 msgid "Parabolic"
@@ -66,22 +129,22 @@ msgid "Unable to download and install update"
 msgstr "Päivityksen lataaminen ja asentaminen ei onnistu."
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:21
-#, fuzzy, c++-format
+#, fuzzy
 msgid "{:.2f} GiB/s"
 msgstr "{0:f1} GiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:25
-#, fuzzy, c++-format
+#, fuzzy
 msgid "{:.2f} MiB/s"
 msgstr "{0:f1} MiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:29
-#, fuzzy, c++-format
+#, fuzzy
 msgid "{:.2f} KiB/s"
 msgstr "{0:f1} KiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:33
-#, fuzzy, c++-format
+#, fuzzy
 msgid "{:.2f} B/s"
 msgstr "{0:f1} t/s"
 
@@ -89,11 +152,6 @@ msgstr "{0:f1} t/s"
 #, fuzzy
 msgid "The file already exists and overwriting is disabled."
 msgstr "Tiedosto on jo olemassa, ja korvaaminen ei ole sallittua"
-
-#: libparabolic/src/models/videoresolution.cpp:21
-#: libparabolic/src/models/videoresolution.cpp:63
-msgid "Best"
-msgstr "Paras"
 
 #. Localize Strings
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:9
@@ -122,12 +180,12 @@ msgstr "Ei kirjautumistietoja"
 msgid "Username"
 msgstr "Käyttäjätunnus"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:60
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:59
 #: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:32
 msgid "Password"
 msgstr "Salasana"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:67
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:65
 #: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:24
 msgid "Validate"
 msgstr "Validoi"
@@ -510,7 +568,7 @@ msgid "Don't show this message again"
 msgstr "Älä näytä tätä viesti uudelleen"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:177
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:116
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:129
 #: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:245
 #: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:382
 msgid "Close"
@@ -554,7 +612,7 @@ msgid "Search"
 msgstr "Etsi..."
 
 #: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:25
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:121
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:134
 msgid "Cancel"
 msgstr "Peru"
 
@@ -575,27 +633,88 @@ msgstr ""
 msgid "Enter password here"
 msgstr ""
 
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:56
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:34
+msgid "File Type"
+msgstr "Tiedoston tyyppi"
+
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:35
+msgid "Quality"
+msgstr "Laatu"
+
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:36
+msgid "Audio Language"
+msgstr "Äänen kieli"
+
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:37
+#, fuzzy
+msgid "Download Subtitles"
+msgstr "Upota tekstitykset"
+
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:38
+msgid "Prefer AV1 Codec"
+msgstr "Suosi AV1-koodekkia"
+
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:39
+#, fuzzy
+msgid "Split Video by Chapters"
+msgstr "Jaa kappaleisiin"
+
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:40
+#, fuzzy
+msgid "Save Folder"
+msgstr "Valitse tallennuskansio"
+
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:41
+msgid "Select Save Folder"
+msgstr "Valitse tallennuskansio"
+
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:42
+#, fuzzy
+msgid "Filename"
+msgstr "Tiedoston nimi"
+
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:43
+msgid "Enter filename here"
+msgstr ""
+
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:44
+msgid "Revert to Title"
+msgstr ""
+
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:45
+msgid "Start Time"
+msgstr "Alkuaika"
+
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:46
+msgid "End Time"
+msgstr "Loppuaika"
+
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:47
+#, fuzzy
+msgid "Limit Download Speed"
+msgstr "Lataa mediaa"
+
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:70
 #, fuzzy
 msgid "None"
 msgstr "Ei mitään"
 
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:57
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:71
 #, fuzzy
 msgid "Use manual credential"
 msgstr "Poistetaanko kirjautumistieto?"
 
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:114
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:127
 msgid "Error"
 msgstr "Virhe"
 
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:115
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:128
 msgid ""
 "The url provided is invalid or unable to be reached. Check both the url and "
 "authentication used."
 msgstr ""
 
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:120
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:133
 msgid "Download"
 msgstr "Lataa"
 
@@ -649,7 +768,6 @@ msgid "Debug information copied to clipboard."
 msgstr "Latausloki kopioitiin leikepöydälle."
 
 #: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:376
-#, c++-format
 msgid ""
 "Developers:\n"
 "{}\n"
@@ -660,7 +778,6 @@ msgid ""
 msgstr ""
 
 #: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:380
-#, c++-format
 msgid ""
 "Developers:\n"
 "{}\n"
@@ -795,12 +912,6 @@ msgstr ""
 #~ msgid "An application restart is required to change the theme."
 #~ msgstr "Teeman vaihtaminen vaatii sovelluksen käynnistämisen uudelleen."
 
-#~ msgid "Audio"
-#~ msgstr "Ääni"
-
-#~ msgid "Audio Language"
-#~ msgstr "Äänen kieli"
-
 #~ msgid "Back"
 #~ msgstr "Takaisin"
 
@@ -847,9 +958,6 @@ msgstr ""
 #~ msgid "Enable"
 #~ msgstr "Ota käyttöön"
 
-#~ msgid "End Time"
-#~ msgstr "Loppuaika"
-
 #~ msgid "End Time (Invalid)"
 #~ msgstr "Loppuaika (virheellinen)"
 
@@ -858,12 +966,6 @@ msgstr ""
 
 #~ msgid "Failed to enable keyring."
 #~ msgstr "Avainnipun käyttöönotto epäonnistui."
-
-#~ msgid "File Name"
-#~ msgstr "Tiedoston nimi"
-
-#~ msgid "File Type"
-#~ msgstr "Tiedoston tyyppi"
 
 #, fuzzy
 #~ msgid ""
@@ -943,9 +1045,6 @@ msgstr ""
 #~ msgid "Please wait..."
 #~ msgstr "Odota..."
 
-#~ msgid "Prefer AV1 Codec"
-#~ msgstr "Suosi AV1-koodekkia"
-
 #~ msgid "Preparing..."
 #~ msgstr "Valmistellaan..."
 
@@ -954,9 +1053,6 @@ msgstr ""
 
 #~ msgid "Processing..."
 #~ msgstr "Käsitellään..."
-
-#~ msgid "Quality"
-#~ msgstr "Laatu"
 
 #~ msgid "Reset"
 #~ msgstr "Nollaa"
@@ -983,14 +1079,8 @@ msgstr ""
 #~ msgid "Select All"
 #~ msgstr "Valitse kaikki"
 
-#~ msgid "Select Save Folder"
-#~ msgstr "Valitse tallennuskansio"
-
 #~ msgid "Show Window"
 #~ msgstr "Näytä ikkuna"
-
-#~ msgid "Split Chapters"
-#~ msgstr "Jaa kappaleisiin"
 
 #~ msgid "Splits the video into multiple smaller ones based on its chapters."
 #~ msgstr "Jakaa videon useisiin pienempiin videoihin kappaleisiin perustuen."
@@ -998,9 +1088,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "SponsorBlock Information (opens in a web browser)"
 #~ msgstr "Evästetiedoston tiedot"
-
-#~ msgid "Start Time"
-#~ msgstr "Alkuaika"
 
 #~ msgid "Start Time (Invalid)"
 #~ msgstr "Alkuaika (virheellinen)"
@@ -1056,17 +1143,11 @@ msgstr ""
 #~ msgid "Validating"
 #~ msgstr "Validoi"
 
-#~ msgid "Video"
-#~ msgstr "Video"
-
 #~ msgid "View Log"
 #~ msgstr "Näytä loki"
 
 #~ msgid "Waiting..."
 #~ msgstr "Odotetaan..."
-
-#~ msgid "Worst"
-#~ msgstr "Huonoin"
 
 #~ msgid "Yes"
 #~ msgstr "Kyllä"
@@ -1132,9 +1213,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "Show Completed"
 #~ msgstr "Valmistunut"
-
-#~ msgid "Default"
-#~ msgstr "Oletus"
 
 #, fuzzy
 #~ msgid "Preparing required tools..."

@@ -14,7 +14,7 @@
             </nickvision:ViewStackPage>
 
             <nickvision:ViewStackPage PageName="Validate">
-                <StackPanel Orientation="Vertical" Spacing="6" Width="340">
+                <StackPanel Orientation="Vertical" Spacing="12" Width="340">
                     <TextBox x:Name="TxtUrl" HorizontalAlignment="Stretch" TextChanged="OnTxtUrlChanged"/>
 
                     <ComboBox x:Name="CmbAuthenticate" HorizontalAlignment="Stretch" SelectionChanged="OnCmbAuthenticateChanged"/>
@@ -25,8 +25,142 @@
                 </StackPanel>
             </nickvision:ViewStackPage>
 
-            <nickvision:ViewStackPage PageName="Download">
+            <nickvision:ViewStackPage PageName="DownloadSingle">
+                <Grid RowSpacing="12" ColumnSpacing="12">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+       
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
 
+                    <ComboBox x:Name="CmbFileTypeSingle" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Stretch"/>
+
+                    <ComboBox x:Name="CmbQualitySingle" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Stretch"/>
+
+                    <ComboBox x:Name="CmbAudioLanguageSingle" Grid.Row="0" Grid.Column="2" HorizontalAlignment="Stretch"/>
+
+                    <ToggleSwitch x:Name="TglDownloadSubtitlesSingle" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Stretch"/>
+
+                    <ToggleSwitch x:Name="TglPreferAV1Single" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch"/>
+
+                    <ToggleSwitch x:Name="TglSplitChaptersSingle" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Stretch"/>
+
+                    <Grid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" HorizontalAlignment="Stretch" ColumnSpacing="6">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBox x:Name="TxtSaveFolderSingle" Grid.Column="0" IsReadOnly="True"/>
+
+                        <Button x:Name="BtnSelectSaveFolderSingle" Grid.Column="1" Margin="0,26,0,0" Style="{ThemeResource AccentButtonStyle}">
+                            <Button.Content>
+                                <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" FontSize="16" Glyph="&#xE838;"/>
+                            </Button.Content>
+                        </Button>
+                    </Grid>
+
+                    <Grid Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" HorizontalAlignment="Stretch" ColumnSpacing="6">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBox x:Name="TxtFilenameSingle" Grid.Column="0"/>
+
+                        <Button x:Name="BtnRevertFilenameSingle" Grid.Column="1" Margin="0,26,0,0" Click="RevertFilenameSingle">
+                            <Button.Content>
+                                <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" FontSize="16" Glyph="&#xE7A7;"/>
+                            </Button.Content>
+                        </Button>
+                    </Grid>
+
+                    <TextBox x:Name="TxtTimeFrameStartSingle" Grid.Row="4" Grid.Column="0" HorizontalAlignment="Stretch"/>
+
+                    <TextBox x:Name="TxtTimeFrameEndSingle" Grid.Row="4" Grid.Column="1" HorizontalAlignment="Stretch"/>
+
+                    <ToggleSwitch x:Name="TglLimitSpeedSingle" Grid.Row="4" Grid.Column="2" HorizontalAlignment="Stretch"/>
+                </Grid>
+            </nickvision:ViewStackPage>
+
+            <nickvision:ViewStackPage PageName="DownloadPlaylist">
+                <Grid RowSpacing="12" ColumnSpacing="12">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition MaxWidth="220"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <ScrollViewer Grid.Column="0" HorizontalAlignment="Stretch" VerticalScrollBarVisibility="Auto">
+                        <StackPanel Orientation="Vertical" Spacing="12">
+                            <ComboBox Header="File Type"/>
+
+                            <Grid HorizontalAlignment="Stretch" ColumnSpacing="6">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <TextBox Grid.Column="0" Header="Save Folder" IsReadOnly="True"/>
+
+                                <Button Grid.Column="1" Margin="0,26,0,0" Style="{ThemeResource AccentButtonStyle}">
+                                    <Button.Content>
+                                        <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" FontSize="16" Glyph="&#xE838;"/>
+                                    </Button.Content>
+                                </Button>
+                            </Grid>
+
+                            <ToggleSwitch Header="Download Subtitles"/>
+
+                            <ToggleSwitch Header="Prefer AV1 Codec"/>
+
+                            <ToggleSwitch Header="Split Video by Chapters"/>
+
+                            <ToggleSwitch Header="Limit Speed"/>
+                        </StackPanel>
+                    </ScrollViewer>
+
+                    <AppBarSeparator Grid.Column="1" VerticalAlignment="Stretch"/>
+
+                    <Grid Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" MinWidth="200" RowSpacing="16">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Grid.Row="0" Text="Playlist Items" Style="{StaticResource NavigationViewItemHeaderTextStyle}"/>
+
+                        <CheckBox Grid.Row="1" Content="Number Titles"/>
+
+                        <MenuFlyoutSeparator Grid.Row="2"/>
+
+                        <ScrollViewer Grid.Row="3" HorizontalAlignment="Stretch" VerticalScrollBarVisibility="Auto">
+                            <StackPanel HorizontalAlignment="Stretch" Orientation="Vertical" Spacing="12">
+                                <CheckBox HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch">
+                                    <CheckBox.Content>
+                                        <TextBox Text="Video1"/>
+                                    </CheckBox.Content>
+                                </CheckBox>
+
+                                <CheckBox HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch">
+                                    <CheckBox.Content>
+                                        <TextBox Text="Video1"/>
+                                    </CheckBox.Content>
+                                </CheckBox>
+                            </StackPanel>
+                        </ScrollViewer>
+                    </Grid>
+                </Grid>
             </nickvision:ViewStackPage>
         </nickvision:ViewStack.Pages>
     </nickvision:ViewStack>

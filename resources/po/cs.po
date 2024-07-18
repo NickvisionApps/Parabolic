@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-07-15 22:30-0400\n"
+"POT-Creation-Date: 2024-07-17 21:21-0400\n"
 "PO-Revision-Date: 2023-12-07 03:34+0000\n"
 "Last-Translator: Fjuro <ifjuro@proton.me>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -18,6 +18,70 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 "X-Generator: Weblate 5.3-dev\n"
+
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:71
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:82
+#, fuzzy
+msgid "MP4 (Video)"
+msgstr "Video"
+
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:72
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:83
+msgid "WEBM (Video)"
+msgstr ""
+
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:74
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:84
+#, fuzzy
+msgid "MP3 (Audio)"
+msgstr "Zvuk"
+
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:75
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:85
+#, fuzzy
+msgid "M4A (Audio)"
+msgstr "Zvuk"
+
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:76
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:86
+msgid "OPUS (Audio)"
+msgstr ""
+
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:77
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:87
+msgid "FLAC (Audio)"
+msgstr ""
+
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:78
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:88
+#, fuzzy
+msgid "WAV (Audio)"
+msgstr "Zvuk"
+
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:111
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:117
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:128
+#: libparabolic/src/models/videoresolution.cpp:21
+#: libparabolic/src/models/videoresolution.cpp:63
+msgid "Best"
+msgstr "Nejlepší"
+
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:112
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:129
+#, fuzzy
+msgid "Good"
+msgstr "Dobrý den!"
+
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:113
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:130
+msgid "Worst"
+msgstr "Nejhorší"
+
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:134
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:152
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:164
+msgid "Default"
+msgstr "Výchozí"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:42
 msgid "Parabolic"
@@ -69,22 +133,22 @@ msgid "Unable to download and install update"
 msgstr "Nepodařilo se stáhnout a nainstalovat aktualizaci."
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:21
-#, fuzzy, c++-format
+#, fuzzy
 msgid "{:.2f} GiB/s"
 msgstr "{0:f1} GiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:25
-#, fuzzy, c++-format
+#, fuzzy
 msgid "{:.2f} MiB/s"
 msgstr "{0:f1} MiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:29
-#, fuzzy, c++-format
+#, fuzzy
 msgid "{:.2f} KiB/s"
 msgstr "{0:f1} KiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:33
-#, fuzzy, c++-format
+#, fuzzy
 msgid "{:.2f} B/s"
 msgstr "{0:f1} B/s"
 
@@ -92,11 +156,6 @@ msgstr "{0:f1} B/s"
 #, fuzzy
 msgid "The file already exists and overwriting is disabled."
 msgstr "Soubor již existuje a přepisování je zakázáno"
-
-#: libparabolic/src/models/videoresolution.cpp:21
-#: libparabolic/src/models/videoresolution.cpp:63
-msgid "Best"
-msgstr "Nejlepší"
 
 #. Localize Strings
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:9
@@ -124,12 +183,12 @@ msgstr "Údaj"
 msgid "Username"
 msgstr "Uživatelské jméno"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:60
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:59
 #: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:32
 msgid "Password"
 msgstr "Heslo"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:67
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:65
 #: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:24
 msgid "Validate"
 msgstr "Ověřit"
@@ -527,7 +586,7 @@ msgid "Don't show this message again"
 msgstr "Tuto zprávu již nezobrazovat"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:177
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:116
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:129
 #: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:245
 #: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:382
 msgid "Close"
@@ -571,7 +630,7 @@ msgid "Search"
 msgstr "Hledat..."
 
 #: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:25
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:121
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:134
 msgid "Cancel"
 msgstr "Zrušit"
 
@@ -594,26 +653,87 @@ msgstr "Zde zadejte uživatelské jméno"
 msgid "Enter password here"
 msgstr "Zde zadejte heslo"
 
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:56
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:34
+msgid "File Type"
+msgstr "Typ souboru"
+
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:35
+msgid "Quality"
+msgstr "Kvalita"
+
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:36
+msgid "Audio Language"
+msgstr "Jazyk zvuku"
+
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:37
+msgid "Download Subtitles"
+msgstr "Stáhnout titulky"
+
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:38
+msgid "Prefer AV1 Codec"
+msgstr "Preferovat kodek AV1"
+
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:39
+#, fuzzy
+msgid "Split Video by Chapters"
+msgstr "Rozdělit kapitoly"
+
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:40
+#, fuzzy
+msgid "Save Folder"
+msgstr "Vybrat složku k uložení"
+
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:41
+msgid "Select Save Folder"
+msgstr "Vybrat složku k uložení"
+
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:42
+#, fuzzy
+msgid "Filename"
+msgstr "Název souboru"
+
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:43
+#, fuzzy
+msgid "Enter filename here"
+msgstr "Zde zadejte název"
+
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:44
+msgid "Revert to Title"
+msgstr ""
+
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:45
+msgid "Start Time"
+msgstr "Čas začátku"
+
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:46
+msgid "End Time"
+msgstr "Čas konce"
+
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:47
+#, fuzzy
+msgid "Limit Download Speed"
+msgstr "Stáhnout média"
+
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:70
 #, fuzzy
 msgid "None"
 msgstr "Žádné"
 
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:57
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:71
 msgid "Use manual credential"
 msgstr "Použít manuální údaje"
 
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:114
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:127
 msgid "Error"
 msgstr "Chyba"
 
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:115
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:128
 msgid ""
 "The url provided is invalid or unable to be reached. Check both the url and "
 "authentication used."
 msgstr ""
 
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:120
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:133
 msgid "Download"
 msgstr "Stáhnout"
 
@@ -666,7 +786,7 @@ msgid "Debug information copied to clipboard."
 msgstr "Protokol stahování byl zkopírován do schránky."
 
 #: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:376
-#, fuzzy, c++-format
+#, fuzzy
 msgid ""
 "Developers:\n"
 "{}\n"
@@ -688,7 +808,7 @@ msgstr ""
 "{3}"
 
 #: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:380
-#, fuzzy, c++-format
+#, fuzzy
 msgid ""
 "Developers:\n"
 "{}\n"
@@ -748,6 +868,14 @@ msgstr "Vypnuto"
 #: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:55
 msgid "Enter proxy URL here"
 msgstr "Zde zadejte adresu URL proxy"
+
+#, fuzzy
+#~ msgid "Enter start time here"
+#~ msgstr "Zde zadejte počáteční čas"
+
+#, fuzzy
+#~ msgid "Enter end time here"
+#~ msgstr "Zde zadejte konečný čas"
 
 #~ msgid "OK"
 #~ msgstr "OK"
@@ -819,9 +947,6 @@ msgstr "Zde zadejte adresu URL proxy"
 #~ msgid "Good Evening!"
 #~ msgstr "Dobrý večer!"
 
-#~ msgid "Good Day!"
-#~ msgstr "Dobrý den!"
-
 #, fuzzy
 #~ msgid "Folder Opened: {}"
 #~ msgstr "Celková rychlost: {0}"
@@ -882,12 +1007,6 @@ msgstr "Zde zadejte adresu URL proxy"
 
 #~ msgid "An application restart is required to change the theme."
 #~ msgstr "Pro změnu motivu je vyžadován restart aplikace."
-
-#~ msgid "Audio"
-#~ msgstr "Zvuk"
-
-#~ msgid "Audio Language"
-#~ msgstr "Jazyk zvuku"
 
 #~ msgid "Back"
 #~ msgstr "Zpět"
@@ -964,9 +1083,6 @@ msgstr "Zde zadejte adresu URL proxy"
 #~ msgid "Download Specific Timeframe"
 #~ msgstr "Stáhnout konkrétní časový úsek"
 
-#~ msgid "Download Subtitles"
-#~ msgstr "Stáhnout titulky"
-
 #, csharp-format
 #~ msgid "Downloading {0:f2}% ({1})"
 #~ msgstr "Stahování {0:f2}% ({1})"
@@ -980,23 +1096,11 @@ msgstr "Zde zadejte adresu URL proxy"
 #~ msgid "Enable"
 #~ msgstr "Povolit"
 
-#~ msgid "End Time"
-#~ msgstr "Čas konce"
-
 #~ msgid "End Time (Invalid)"
 #~ msgstr "Čas konce (neplatný)"
 
 #~ msgid "Ensure credentials are correct."
 #~ msgstr "Ujistěte se, že jsou údaje správné."
-
-#~ msgid "Enter end timeframe here"
-#~ msgstr "Zde zadejte konečný čas"
-
-#~ msgid "Enter name here"
-#~ msgstr "Zde zadejte název"
-
-#~ msgid "Enter start timeframe here"
-#~ msgstr "Zde zadejte počáteční čas"
 
 #~ msgid "Enter URL here"
 #~ msgstr "Zde zadejte adresu URL"
@@ -1006,12 +1110,6 @@ msgstr "Zde zadejte adresu URL proxy"
 
 #~ msgid "Failed to enable keyring."
 #~ msgstr "Nepodařilo se povolit klíčenku."
-
-#~ msgid "File Name"
-#~ msgstr "Název souboru"
-
-#~ msgid "File Type"
-#~ msgstr "Typ souboru"
 
 #~ msgid ""
 #~ "If disabled or if embedding fails, downloaded subtitles will be saved to "
@@ -1118,9 +1216,6 @@ msgstr "Zde zadejte adresu URL proxy"
 #~ msgid "Please wait..."
 #~ msgstr "Čekejte prosím..."
 
-#~ msgid "Prefer AV1 Codec"
-#~ msgstr "Preferovat kodek AV1"
-
 #~ msgid "Preparing..."
 #~ msgstr "Příprava..."
 
@@ -1129,9 +1224,6 @@ msgstr "Zde zadejte adresu URL proxy"
 
 #~ msgid "Processing..."
 #~ msgstr "Zpracovává se..."
-
-#~ msgid "Quality"
-#~ msgstr "Kvalita"
 
 #~ msgid "Reset"
 #~ msgstr "Resetovat"
@@ -1166,9 +1258,6 @@ msgstr "Zde zadejte adresu URL proxy"
 #~ msgid "Select items to download or change file names."
 #~ msgstr "Vyberte položky ke stažení nebo změňte názvy souborů."
 
-#~ msgid "Select Save Folder"
-#~ msgstr "Vybrat složku k uložení"
-
 #~ msgid "Show Window"
 #~ msgstr "Zobrazit okno"
 
@@ -1182,17 +1271,11 @@ msgstr "Zde zadejte adresu URL proxy"
 #~ msgid "Some downloads finished with errors!"
 #~ msgstr "Některá stahování skončila s chybami!"
 
-#~ msgid "Split Chapters"
-#~ msgstr "Rozdělit kapitoly"
-
 #~ msgid "Splits the video into multiple smaller ones based on its chapters."
 #~ msgstr "Rozdělí video do několika menších podle jeho kapitol."
 
 #~ msgid "SponsorBlock Information (opens in a web browser)"
 #~ msgstr "Informace o službě SponsorBlock (otevře se v prohlížeči)"
-
-#~ msgid "Start Time"
-#~ msgstr "Čas začátku"
 
 #~ msgid "Start Time (Invalid)"
 #~ msgstr "Čas začátku (neplatný)"
@@ -1269,17 +1352,11 @@ msgstr "Zde zadejte adresu URL proxy"
 #~ msgid "Validating"
 #~ msgstr "Ověřování"
 
-#~ msgid "Video"
-#~ msgstr "Video"
-
 #~ msgid "View Log"
 #~ msgstr "Zobrazit protokol"
 
 #~ msgid "Waiting..."
 #~ msgstr "Čekání..."
-
-#~ msgid "Worst"
-#~ msgstr "Nejhorší"
 
 #, csharp-format
 #~ msgid ""
@@ -1363,9 +1440,6 @@ msgstr "Zde zadejte adresu URL proxy"
 
 #~ msgid "Show Completed"
 #~ msgstr "Zobrazit dokončené"
-
-#~ msgid "Default"
-#~ msgstr "Výchozí"
 
 #~ msgid "YouTube;Downloader;ytdlp;Nickvision;Tube;Converter;"
 #~ msgstr "YouTube;Stahování;ytdlp;Nickvision;Tube;Converter;"

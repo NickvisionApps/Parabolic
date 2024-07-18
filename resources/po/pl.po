@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-07-15 22:30-0400\n"
+"POT-Creation-Date: 2024-07-17 21:21-0400\n"
 "PO-Revision-Date: 2024-06-03 13:09+0000\n"
 "Last-Translator: Agnieszka Ziora <agaxx02@gmail.com>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -19,6 +19,69 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
 "X-Generator: Weblate 5.6-dev\n"
+
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:71
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:82
+#, fuzzy
+msgid "MP4 (Video)"
+msgstr "Wideo"
+
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:72
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:83
+msgid "WEBM (Video)"
+msgstr ""
+
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:74
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:84
+#, fuzzy
+msgid "MP3 (Audio)"
+msgstr "Audio"
+
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:75
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:85
+#, fuzzy
+msgid "M4A (Audio)"
+msgstr "Audio"
+
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:76
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:86
+msgid "OPUS (Audio)"
+msgstr ""
+
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:77
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:87
+msgid "FLAC (Audio)"
+msgstr ""
+
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:78
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:88
+#, fuzzy
+msgid "WAV (Audio)"
+msgstr "Audio"
+
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:111
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:117
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:128
+#: libparabolic/src/models/videoresolution.cpp:21
+#: libparabolic/src/models/videoresolution.cpp:63
+msgid "Best"
+msgstr "Najlepsza"
+
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:112
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:129
+msgid "Good"
+msgstr ""
+
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:113
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:130
+msgid "Worst"
+msgstr "Najgorsza"
+
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:134
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:152
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:164
+msgid "Default"
+msgstr "Domyślne"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:42
 msgid "Parabolic"
@@ -72,22 +135,22 @@ msgid "Unable to download and install update"
 msgstr ""
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:21
-#, fuzzy, c++-format
+#, fuzzy
 msgid "{:.2f} GiB/s"
 msgstr "{0:f1} GiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:25
-#, fuzzy, c++-format
+#, fuzzy
 msgid "{:.2f} MiB/s"
 msgstr "{0:f1} MiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:29
-#, fuzzy, c++-format
+#, fuzzy
 msgid "{:.2f} KiB/s"
 msgstr "{0:f1} KiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:33
-#, fuzzy, c++-format
+#, fuzzy
 msgid "{:.2f} B/s"
 msgstr "{0:f1} B/s"
 
@@ -95,11 +158,6 @@ msgstr "{0:f1} B/s"
 #, fuzzy
 msgid "The file already exists and overwriting is disabled."
 msgstr "Plik już istnieje, a nadpisywanie istniejących plików jest wyłączone"
-
-#: libparabolic/src/models/videoresolution.cpp:21
-#: libparabolic/src/models/videoresolution.cpp:63
-msgid "Best"
-msgstr "Najlepsza"
 
 #. Localize Strings
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:9
@@ -127,12 +185,12 @@ msgstr "Dane logowania"
 msgid "Username"
 msgstr "Nazwa użytkownika"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:60
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:59
 #: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:32
 msgid "Password"
 msgstr "Hasło"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:67
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:65
 #: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:24
 msgid "Validate"
 msgstr "Sprawdź"
@@ -531,7 +589,7 @@ msgid "Don't show this message again"
 msgstr "Nie pokazuj tej wiadomości ponownie"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:177
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:116
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:129
 #: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:245
 #: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:382
 msgid "Close"
@@ -575,7 +633,7 @@ msgid "Search"
 msgstr "Szukaj..."
 
 #: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:25
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:121
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:134
 msgid "Cancel"
 msgstr "Anuluj"
 
@@ -598,26 +656,87 @@ msgstr "Podaj nazwę użytkownika"
 msgid "Enter password here"
 msgstr "Podaj hasło"
 
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:56
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:34
+msgid "File Type"
+msgstr "Typ pliku"
+
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:35
+msgid "Quality"
+msgstr "Jakość"
+
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:36
+msgid "Audio Language"
+msgstr "Język dźwięku"
+
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:37
+msgid "Download Subtitles"
+msgstr "Pobierz napisy"
+
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:38
+msgid "Prefer AV1 Codec"
+msgstr "Preferuj kodek AV1"
+
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:39
+#, fuzzy
+msgid "Split Video by Chapters"
+msgstr "Podziel według rozdziałów"
+
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:40
+#, fuzzy
+msgid "Save Folder"
+msgstr "Wybierz folder docelowy"
+
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:41
+msgid "Select Save Folder"
+msgstr "Wybierz folder docelowy"
+
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:42
+#, fuzzy
+msgid "Filename"
+msgstr "Nazwa pliku"
+
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:43
+#, fuzzy
+msgid "Enter filename here"
+msgstr "Podaj nazwę"
+
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:44
+msgid "Revert to Title"
+msgstr ""
+
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:45
+msgid "Start Time"
+msgstr "Początek"
+
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:46
+msgid "End Time"
+msgstr "Koniec"
+
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:47
+#, fuzzy
+msgid "Limit Download Speed"
+msgstr "Pobierz"
+
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:70
 #, fuzzy
 msgid "None"
 msgstr "Brak"
 
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:57
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:71
 msgid "Use manual credential"
 msgstr "Wprowadź ręcznie"
 
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:114
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:127
 msgid "Error"
 msgstr "Błąd"
 
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:115
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:128
 msgid ""
 "The url provided is invalid or unable to be reached. Check both the url and "
 "authentication used."
 msgstr ""
 
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:120
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:133
 msgid "Download"
 msgstr "Pobierz"
 
@@ -670,7 +789,7 @@ msgid "Debug information copied to clipboard."
 msgstr "Dziennik pobierania został skopiowany do schowka."
 
 #: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:376
-#, fuzzy, c++-format
+#, fuzzy
 msgid ""
 "Developers:\n"
 "{}\n"
@@ -692,7 +811,7 @@ msgstr ""
 "{3}"
 
 #: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:380
-#, fuzzy, c++-format
+#, fuzzy
 msgid ""
 "Developers:\n"
 "{}\n"
@@ -752,6 +871,14 @@ msgstr "Wyłącz"
 #: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:55
 msgid "Enter proxy URL here"
 msgstr "Podaj adres URL serwera proxy"
+
+#, fuzzy
+#~ msgid "Enter start time here"
+#~ msgstr "Podaj czas rozpoczęcia"
+
+#, fuzzy
+#~ msgid "Enter end time here"
+#~ msgstr "Podaj ramy czasowe"
 
 #~ msgid "OK"
 #~ msgstr "OK"
@@ -862,12 +989,6 @@ msgstr "Podaj adres URL serwera proxy"
 #~ msgid "An application restart is required to change the theme."
 #~ msgstr "Restart aplikacji jest wymagany, aby zmienić motyw."
 
-#~ msgid "Audio"
-#~ msgstr "Audio"
-
-#~ msgid "Audio Language"
-#~ msgstr "Język dźwięku"
-
 #~ msgid "Back"
 #~ msgstr "Wstecz"
 
@@ -942,9 +1063,6 @@ msgstr "Podaj adres URL serwera proxy"
 #~ msgid "Download Specific Timeframe"
 #~ msgstr "Pobierz określony fragment"
 
-#~ msgid "Download Subtitles"
-#~ msgstr "Pobierz napisy"
-
 #, csharp-format
 #~ msgid "Downloading {0:f2}% ({1})"
 #~ msgstr "Pobieranie {0:f2}% ({1})"
@@ -958,23 +1076,11 @@ msgstr "Podaj adres URL serwera proxy"
 #~ msgid "Enable"
 #~ msgstr "Włącz"
 
-#~ msgid "End Time"
-#~ msgstr "Koniec"
-
 #~ msgid "End Time (Invalid)"
 #~ msgstr "Koniec (błędne dane)"
 
 #~ msgid "Ensure credentials are correct."
 #~ msgstr "Upewnij się, że dane logowania są poprawne."
-
-#~ msgid "Enter end timeframe here"
-#~ msgstr "Podaj ramy czasowe"
-
-#~ msgid "Enter name here"
-#~ msgstr "Podaj nazwę"
-
-#~ msgid "Enter start timeframe here"
-#~ msgstr "Podaj czas rozpoczęcia"
 
 #~ msgid "Enter URL here"
 #~ msgstr "Podaj adres URL"
@@ -984,12 +1090,6 @@ msgstr "Podaj adres URL serwera proxy"
 
 #~ msgid "Failed to enable keyring."
 #~ msgstr "Nie można włączyć listy kluczy."
-
-#~ msgid "File Name"
-#~ msgstr "Nazwa pliku"
-
-#~ msgid "File Type"
-#~ msgstr "Typ pliku"
 
 #~ msgid ""
 #~ "If disabled or if embedding fails, downloaded subtitles will be saved to "
@@ -1095,9 +1195,6 @@ msgstr "Podaj adres URL serwera proxy"
 #~ msgid "Please wait..."
 #~ msgstr "Proszę czekać..."
 
-#~ msgid "Prefer AV1 Codec"
-#~ msgstr "Preferuj kodek AV1"
-
 #~ msgid "Preparing..."
 #~ msgstr "Przygotowanie..."
 
@@ -1106,9 +1203,6 @@ msgstr "Podaj adres URL serwera proxy"
 
 #~ msgid "Processing..."
 #~ msgstr "Przetwarzanie..."
-
-#~ msgid "Quality"
-#~ msgstr "Jakość"
 
 #~ msgid "Reset"
 #~ msgstr "Reset"
@@ -1140,9 +1234,6 @@ msgstr "Podaj adres URL serwera proxy"
 #~ msgid "Select items to download or change file names."
 #~ msgstr "Wybierz by pobrać lub zmienić nazwy plików."
 
-#~ msgid "Select Save Folder"
-#~ msgstr "Wybierz folder docelowy"
-
 #~ msgid ""
 #~ "Some downloads are still in progress.\n"
 #~ "Are you sure you want to close Parabolic and stop the running downloads?"
@@ -1153,17 +1244,11 @@ msgstr "Podaj adres URL serwera proxy"
 #~ msgid "Some downloads finished with errors!"
 #~ msgstr "Niektóre procesy pobierania zostały zakończone z błędami!"
 
-#~ msgid "Split Chapters"
-#~ msgstr "Podziel według rozdziałów"
-
 #~ msgid "Splits the video into multiple smaller ones based on its chapters."
 #~ msgstr "Dzieli wideo na mniejsze części według jego rozdziałów."
 
 #~ msgid "SponsorBlock Information (opens in a web browser)"
 #~ msgstr "Informacje o SponsorBlock (otworzą się w przeglądarce internetowej)"
-
-#~ msgid "Start Time"
-#~ msgstr "Początek"
 
 #~ msgid "Start Time (Invalid)"
 #~ msgstr "Początek (błędne dane)"
@@ -1243,17 +1328,11 @@ msgstr "Podaj adres URL serwera proxy"
 #~ msgid "Validating"
 #~ msgstr "Sprawdź"
 
-#~ msgid "Video"
-#~ msgstr "Wideo"
-
 #~ msgid "View Log"
 #~ msgstr "Wyświetl dziennik"
 
 #~ msgid "Waiting..."
 #~ msgstr "Oczekiwanie..."
-
-#~ msgid "Worst"
-#~ msgstr "Najgorsza"
 
 #~ msgid "Yes"
 #~ msgstr "Tak"
@@ -1326,9 +1405,6 @@ msgstr "Podaj adres URL serwera proxy"
 #, fuzzy
 #~ msgid "Show Completed"
 #~ msgstr "Zakończone"
-
-#~ msgid "Default"
-#~ msgstr "Domyślne"
 
 #~ msgid "YouTube;Downloader;ytdlp;Nickvision;Tube;Converter;"
 #~ msgstr "YouTube;pobieranie;pobierz;ytdlp;Nickvision;Tube;Converter;"

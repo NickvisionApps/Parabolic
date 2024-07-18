@@ -31,6 +31,20 @@ namespace winrt::Nickvision::TubeConverter::WinUI::implementation
         TxtUsername().PlaceholderText(winrt::to_hstring(_("Enter username here")));
         TxtPassword().Header(winrt::box_value(winrt::to_hstring(_("Password"))));
         TxtPassword().PlaceholderText(winrt::to_hstring(_("Enter password here")));
+        CmbFileTypeSingle().Header(winrt::box_value(winrt::to_hstring(_("File Type"))));
+        CmbQualitySingle().Header(winrt::box_value(winrt::to_hstring(_("Quality"))));
+        CmbAudioLanguageSingle().Header(winrt::box_value(winrt::to_hstring(_("Audio Language"))));
+        TglDownloadSubtitlesSingle().Header(winrt::box_value(winrt::to_hstring(_("Download Subtitles"))));
+        TglPreferAV1Single().Header(winrt::box_value(winrt::to_hstring(_("Prefer AV1 Codec"))));
+        TglSplitChaptersSingle().Header(winrt::box_value(winrt::to_hstring(_("Split Video by Chapters"))));
+        TxtSaveFolderSingle().Header(winrt::box_value(winrt::to_hstring(_("Save Folder"))));
+        ToolTipService::SetToolTip(BtnSelectSaveFolderSingle(), winrt::box_value(winrt::to_hstring(_("Select Save Folder"))));
+        TxtFilenameSingle().Header(winrt::box_value(winrt::to_hstring(_("Filename"))));
+        TxtFilenameSingle().PlaceholderText(winrt::to_hstring(_("Enter filename here")));
+        ToolTipService::SetToolTip(BtnRevertFilenameSingle(), winrt::box_value(winrt::to_hstring(_("Revert to Title"))));
+        TxtTimeFrameStartSingle().Header(winrt::box_value(winrt::to_hstring(_("Start Time"))));
+        TxtTimeFrameEndSingle().Header(winrt::box_value(winrt::to_hstring(_("End Time"))));
+        TglLimitSpeedSingle().Header(winrt::box_value(winrt::to_hstring(_("Limit Download Speed"))));
     }
 
     void AddDownloadDialog::SetController(const std::shared_ptr<AddDownloadDialogController>& controller, HWND hwnd)
@@ -38,7 +52,7 @@ namespace winrt::Nickvision::TubeConverter::WinUI::implementation
         m_controller = controller;
         m_hwnd = hwnd;
         //Register Events
-        m_controller->urlValidated() += [&](const ParamEventArgs<std::vector<::Nickvision::TubeConverter::Shared::Models::Media>>& args) { DispatcherQueue().TryEnqueue([this, args](){ OnUrlValidated(args); }); };
+        m_controller->urlValidated() += [&](const ParamEventArgs<bool>& args) { DispatcherQueue().TryEnqueue([this, args](){ OnUrlValidated(args); }); };
     }
 
     Windows::Foundation::IAsyncOperation<ContentDialogResult> AddDownloadDialog::ShowAsync()
@@ -102,14 +116,13 @@ namespace winrt::Nickvision::TubeConverter::WinUI::implementation
 
     void AddDownloadDialog::OnCmbAuthenticateChanged(const IInspectable& sender, const SelectionChangedEventArgs& args)
     {
-        Microsoft::UI::Xaml::Visibility visibility{ CmbAuthenticate().SelectedIndex() == 1 ? Visibility::Visible : Visibility::Collapsed };
-        TxtUsername().Visibility(visibility);
-        TxtPassword().Visibility(visibility);
+        TxtUsername().Visibility(CmbAuthenticate().SelectedIndex() == 1 ? Visibility::Visible : Visibility::Collapsed);
+        TxtPassword().Visibility(CmbAuthenticate().SelectedIndex() == 1 ? Visibility::Visible : Visibility::Collapsed);
     }
 
-    void AddDownloadDialog::OnUrlValidated(const ParamEventArgs<std::vector<::Nickvision::TubeConverter::Shared::Models::Media>>& args)
+    void AddDownloadDialog::OnUrlValidated(const ParamEventArgs<bool>& args)
     {
-        if(args.getParam().empty())
+        if(!args.getParam())
         {
             Title(winrt::box_value(winrt::to_hstring(_("Error"))));
             Content(winrt::box_value(winrt::to_hstring(_("The url provided is invalid or unable to be reached. Check both the url and authentication used."))));
@@ -120,8 +133,45 @@ namespace winrt::Nickvision::TubeConverter::WinUI::implementation
         PrimaryButtonText(winrt::to_hstring(_("Download")));
         CloseButtonText(winrt::to_hstring(_("Cancel")));
         DefaultButton(ContentDialogButton::Primary);
-        ViewStack().CurrentPage(L"Download");
         //Load Download Page
         IsPrimaryButtonEnabled(false);
+        if(!m_controller->isUrlPlaylist())
+        {
+            ViewStack().CurrentPage(L"DownloadSingle");
+            for(const std::string& fileType : m_controller->getFileTypeStrings())
+            {
+                CmbFileTypeSingle().Items().Append(winrt::box_value(winrt::to_hstring(fileType)));
+            }
+            CmbFileTypeSingle().SelectedIndex(static_cast<int>(m_controller->getPreviousDownloadOptions().getFileType()));
+            for(const std::string& quality : m_controller->getQualityStrings(static_cast<size_t>(CmbFileTypeSingle().SelectedIndex())))
+            {
+                CmbQualitySingle().Items().Append(winrt::box_value(winrt::to_hstring(quality)));
+            }
+            CmbQualitySingle().SelectedIndex(0);
+            for(const std::string& audioLanguage : m_controller->getAudioLanguageStrings())
+            {
+                CmbAudioLanguageSingle().Items().Append(winrt::box_value(winrt::to_hstring(audioLanguage)));
+            }
+            CmbAudioLanguageSingle().SelectedIndex(0);
+            TglDownloadSubtitlesSingle().IsOn(m_controller->getPreviousDownloadOptions().getDownloadSubtitles());
+            TglPreferAV1Single().IsOn(m_controller->getPreviousDownloadOptions().getPreferAV1());
+            TglSplitChaptersSingle().IsOn(m_controller->getPreviousDownloadOptions().getSplitChapters());
+            TxtSaveFolderSingle().Text(winrt::to_hstring(m_controller->getPreviousDownloadOptions().getSaveFolder().string()));
+            TxtFilenameSingle().Text(winrt::to_hstring(m_controller->getMediaTitle(0)));
+            TxtTimeFrameStartSingle().Text(winrt::to_hstring(m_controller->getMediaTimeFrame(0).startStr()));
+            TxtTimeFrameStartSingle().PlaceholderText(winrt::to_hstring(m_controller->getMediaTimeFrame(0).startStr()));
+            TxtTimeFrameEndSingle().Text(winrt::to_hstring(m_controller->getMediaTimeFrame(0).endStr()));
+            TxtTimeFrameEndSingle().PlaceholderText(winrt::to_hstring(m_controller->getMediaTimeFrame(0).endStr()));
+            TglLimitSpeedSingle().IsOn(m_controller->getPreviousDownloadOptions().getLimitSpeed());
+        }
+        else
+        {
+            //TODO
+        }
+    }
+
+    void AddDownloadDialog::RevertFilenameSingle(const IInspectable& sender, const RoutedEventArgs& args)
+    {
+        TxtFilenameSingle().Text(winrt::to_hstring(m_controller->getMediaTitle(0)));
     }
 }

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-07-15 22:30-0400\n"
+"POT-Creation-Date: 2024-07-17 21:21-0400\n"
 "PO-Revision-Date: 2023-05-30 20:10+0100\n"
 "Last-Translator: Ricardo Simões xmcorporation.com <simplelogin-"
 "newsletter.635e2@aleeas.com>\n"
@@ -18,6 +18,69 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 3.2.2\n"
+
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:71
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:82
+#, fuzzy
+msgid "MP4 (Video)"
+msgstr "Video"
+
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:72
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:83
+msgid "WEBM (Video)"
+msgstr ""
+
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:74
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:84
+#, fuzzy
+msgid "MP3 (Audio)"
+msgstr "Audio"
+
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:75
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:85
+#, fuzzy
+msgid "M4A (Audio)"
+msgstr "Audio"
+
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:76
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:86
+msgid "OPUS (Audio)"
+msgstr ""
+
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:77
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:87
+msgid "FLAC (Audio)"
+msgstr ""
+
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:78
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:88
+#, fuzzy
+msgid "WAV (Audio)"
+msgstr "Audio"
+
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:111
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:117
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:128
+#: libparabolic/src/models/videoresolution.cpp:21
+#: libparabolic/src/models/videoresolution.cpp:63
+msgid "Best"
+msgstr "Melhor"
+
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:112
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:129
+msgid "Good"
+msgstr ""
+
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:113
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:130
+msgid "Worst"
+msgstr "Pior"
+
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:134
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:152
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:164
+msgid "Default"
+msgstr ""
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:42
 msgid "Parabolic"
@@ -71,22 +134,22 @@ msgid "Unable to download and install update"
 msgstr ""
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:21
-#, fuzzy, c++-format
+#, fuzzy
 msgid "{:.2f} GiB/s"
 msgstr "{0:f1} GiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:25
-#, fuzzy, c++-format
+#, fuzzy
 msgid "{:.2f} MiB/s"
 msgstr "{0:f1} MiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:29
-#, fuzzy, c++-format
+#, fuzzy
 msgid "{:.2f} KiB/s"
 msgstr "{0:f1} KiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:33
-#, fuzzy, c++-format
+#, fuzzy
 msgid "{:.2f} B/s"
 msgstr "{0:f1} B/s"
 
@@ -94,11 +157,6 @@ msgstr "{0:f1} B/s"
 #, fuzzy
 msgid "The file already exists and overwriting is disabled."
 msgstr "O ficheiro já existe, e a sobrescrita não é permitida"
-
-#: libparabolic/src/models/videoresolution.cpp:21
-#: libparabolic/src/models/videoresolution.cpp:63
-msgid "Best"
-msgstr "Melhor"
 
 #. Localize Strings
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:9
@@ -128,12 +186,12 @@ msgstr ""
 msgid "Username"
 msgstr "Interface do Utilizador"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:60
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:59
 #: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:32
 msgid "Password"
 msgstr ""
 
-#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:67
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:65
 #: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:24
 msgid "Validate"
 msgstr "Validar"
@@ -529,7 +587,7 @@ msgid "Don't show this message again"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:177
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:116
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:129
 #: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:245
 #: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:382
 msgid "Close"
@@ -573,7 +631,7 @@ msgid "Search"
 msgstr ""
 
 #: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:25
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:121
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:134
 msgid "Cancel"
 msgstr ""
 
@@ -594,26 +652,89 @@ msgstr ""
 msgid "Enter password here"
 msgstr ""
 
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:56
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:34
+msgid "File Type"
+msgstr "Tipo de Ficheiro"
+
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:35
+msgid "Quality"
+msgstr "Qualidade"
+
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:36
+#, fuzzy
+msgid "Audio Language"
+msgstr "Pasta de Destino (Inválida)"
+
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:37
+#, fuzzy
+msgid "Download Subtitles"
+msgstr "Legenda"
+
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:38
+msgid "Prefer AV1 Codec"
+msgstr ""
+
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:39
+msgid "Split Video by Chapters"
+msgstr ""
+
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:40
+#, fuzzy
+msgid "Save Folder"
+msgstr "Selecione Pasta de Destino"
+
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:41
+msgid "Select Save Folder"
+msgstr "Selecione Pasta de Destino"
+
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:42
+#, fuzzy
+msgid "Filename"
+msgstr "Nome do Ficheiro"
+
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:43
+msgid "Enter filename here"
+msgstr ""
+
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:44
+msgid "Revert to Title"
+msgstr ""
+
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:45
+#, fuzzy
+msgid "Start Time"
+msgstr "Pasta de Destino (Inválida)"
+
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:46
+#, fuzzy
+msgid "End Time"
+msgstr "URL da Media (Inválido)"
+
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:47
+#, fuzzy
+msgid "Limit Download Speed"
+msgstr "Transferir Media"
+
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:70
 #, fuzzy
 msgid "None"
 msgstr "Nenhuma"
 
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:57
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:71
 msgid "Use manual credential"
 msgstr ""
 
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:114
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:127
 msgid "Error"
 msgstr "Erro"
 
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:115
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:128
 msgid ""
 "The url provided is invalid or unable to be reached. Check both the url and "
 "authentication used."
 msgstr ""
 
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:120
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:133
 msgid "Download"
 msgstr "Transferência"
 
@@ -667,7 +788,6 @@ msgid "Debug information copied to clipboard."
 msgstr "O Histórico de transferências for copiado para o clipboard."
 
 #: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:376
-#, c++-format
 msgid ""
 "Developers:\n"
 "{}\n"
@@ -678,7 +798,6 @@ msgid ""
 msgstr ""
 
 #: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:380
-#, c++-format
 msgid ""
 "Developers:\n"
 "{}\n"
@@ -802,9 +921,6 @@ msgstr ""
 #~ msgid "Allow Running In Background"
 #~ msgstr "Permitir Correr em Segundo Plano"
 
-#~ msgid "Audio"
-#~ msgstr "Audio"
-
 #~ msgid "Back"
 #~ msgstr "Atrás"
 
@@ -841,16 +957,6 @@ msgstr ""
 
 #~ msgid "Downloads Finished"
 #~ msgstr "Transferências Terminadas"
-
-#, fuzzy
-#~ msgid "End Time (Invalid)"
-#~ msgstr "URL da Media (Inválido)"
-
-#~ msgid "File Name"
-#~ msgstr "Nome do Ficheiro"
-
-#~ msgid "File Type"
-#~ msgstr "Tipo de Ficheiro"
 
 #~ msgid ""
 #~ "In combination with the trigger, completed notifications will only be "
@@ -910,9 +1016,6 @@ msgstr ""
 #~ msgid "Processing..."
 #~ msgstr "A processar..."
 
-#~ msgid "Quality"
-#~ msgstr "Qualidade"
-
 #~ msgid "Reset to default"
 #~ msgstr "Restabelecer para padrão"
 
@@ -933,9 +1036,6 @@ msgstr ""
 #~ msgid "Select items to download or change file names."
 #~ msgstr "Selecione itens para transferir ou altere os nomes dos ficheiros."
 
-#~ msgid "Select Save Folder"
-#~ msgstr "Selecione Pasta de Destino"
-
 #, fuzzy
 #~ msgid ""
 #~ "Some downloads are still in progress.\n"
@@ -952,10 +1052,6 @@ msgstr ""
 #~ msgid "SponsorBlock Information (opens in a web browser)"
 #~ msgstr "Ficheiros de Cookies"
 
-#, fuzzy
-#~ msgid "Start Time (Invalid)"
-#~ msgstr "Pasta de Destino (Inválida)"
-
 #~ msgid "Stop All"
 #~ msgstr "Parar Tudo"
 
@@ -964,10 +1060,6 @@ msgstr ""
 
 #~ msgid "Stopped"
 #~ msgstr "Parado"
-
-#, fuzzy
-#~ msgid "Subtitle Languages"
-#~ msgstr "Pasta de Destino (Inválida)"
 
 #, fuzzy
 #~ msgid "Subtitle Languages (Invalid)"
@@ -999,17 +1091,11 @@ msgstr ""
 #~ msgid "Validating"
 #~ msgstr "Validar"
 
-#~ msgid "Video"
-#~ msgstr "Video"
-
 #~ msgid "View Log"
 #~ msgstr "Ver Histórico"
 
 #~ msgid "Waiting..."
 #~ msgstr "À espera..."
-
-#~ msgid "Worst"
-#~ msgstr "Pior"
 
 #~ msgid "Yes"
 #~ msgstr "Sim"
