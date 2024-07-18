@@ -2,6 +2,8 @@
 #if __has_include("AddDownloadDialog.g.cpp")
 #include "AddDownloadDialog.g.cpp"
 #endif
+#include <format>
+#include <libnick/helpers/codehelpers.h>
 #include <libnick/helpers/stringhelpers.h>
 #include <libnick/localization/gettext.h>
 
@@ -13,6 +15,8 @@ using namespace ::Nickvision::TubeConverter::Shared::Models;
 using namespace winrt::Microsoft::UI::Xaml;
 using namespace winrt::Microsoft::UI::Xaml::Controls;
 using namespace winrt::Windows::ApplicationModel::DataTransfer;
+using namespace winrt::Windows::Storage;
+using namespace winrt::Windows::Storage::Pickers;
 
 namespace winrt::Nickvision::TubeConverter::WinUI::implementation 
 {
@@ -45,6 +49,14 @@ namespace winrt::Nickvision::TubeConverter::WinUI::implementation
         TxtTimeFrameStartSingle().Header(winrt::box_value(winrt::to_hstring(_("Start Time"))));
         TxtTimeFrameEndSingle().Header(winrt::box_value(winrt::to_hstring(_("End Time"))));
         TglLimitSpeedSingle().Header(winrt::box_value(winrt::to_hstring(_("Limit Download Speed"))));
+        CmbFileTypePlaylist().Header(winrt::box_value(winrt::to_hstring(_("File Type"))));
+        TxtSaveFolderPlaylist().Header(winrt::box_value(winrt::to_hstring(_("Save Folder"))));
+        ToolTipService::SetToolTip(BtnSelectSaveFolderPlaylist(), winrt::box_value(winrt::to_hstring(_("Select Save Folder"))));
+        TglDownloadSubtitlesPlaylist().Header(winrt::box_value(winrt::to_hstring(_("Download Subtitles"))));
+        TglPreferAV1Playlist().Header(winrt::box_value(winrt::to_hstring(_("Prefer AV1 Codec"))));
+        TglSplitChaptersPlaylist().Header(winrt::box_value(winrt::to_hstring(_("Split Video by Chapters"))));
+        TglLimitSpeedPlaylist().Header(winrt::box_value(winrt::to_hstring(_("Limit Download Speed"))));
+        TglNumberTitlesPlaylist().Header(winrt::box_value(winrt::to_hstring(_("Number Titles"))));
     }
 
     void AddDownloadDialog::SetController(const std::shared_ptr<AddDownloadDialogController>& controller, HWND hwnd)
@@ -134,7 +146,6 @@ namespace winrt::Nickvision::TubeConverter::WinUI::implementation
         CloseButtonText(winrt::to_hstring(_("Cancel")));
         DefaultButton(ContentDialogButton::Primary);
         //Load Download Page
-        IsPrimaryButtonEnabled(false);
         if(!m_controller->isUrlPlaylist())
         {
             ViewStack().CurrentPage(L"DownloadSingle");
@@ -166,12 +177,72 @@ namespace winrt::Nickvision::TubeConverter::WinUI::implementation
         }
         else
         {
-            //TODO
+            ViewStack().CurrentPage(L"DownloadPlaylist");
+            LblItemsPlaylist().Text(winrt::to_hstring(std::vformat(_("Playlist Items ({})"), std::make_format_args(CodeHelpers::unmove(m_controller->getMediaCount())))));
+            for(const std::string& fileType : m_controller->getFileTypeStrings())
+            {
+                CmbFileTypePlaylist().Items().Append(winrt::box_value(winrt::to_hstring(fileType)));
+            }
+            CmbFileTypePlaylist().SelectedIndex(static_cast<int>(m_controller->getPreviousDownloadOptions().getFileType()));
+            TxtSaveFolderPlaylist().Text(winrt::to_hstring(m_controller->getPreviousDownloadOptions().getSaveFolder().string()));
+            TglDownloadSubtitlesPlaylist().IsOn(m_controller->getPreviousDownloadOptions().getDownloadSubtitles());
+            TglPreferAV1Playlist().IsOn(m_controller->getPreviousDownloadOptions().getPreferAV1());
+            TglSplitChaptersPlaylist().IsOn(m_controller->getPreviousDownloadOptions().getSplitChapters());
+            TglLimitSpeedPlaylist().IsOn(m_controller->getPreviousDownloadOptions().getLimitSpeed());
+            for(int i = 0; i < m_controller->getMediaCount(); i++)
+            {
+                winrt::hstring title{ winrt::to_hstring(m_controller->getMediaTitle(i)) };
+                TextBox txt;
+                txt.Text(title);
+                txt.PlaceholderText(title);
+                CheckBox chk;
+                chk.HorizontalAlignment(HorizontalAlignment::Stretch);
+                chk.HorizontalContentAlignment(HorizontalAlignment::Stretch);
+                chk.IsChecked(true);
+                chk.Content(txt);
+                ListItemsPlaylist().Children().Append(chk);
+            }
+            TglNumberTitlesPlaylist().IsOn(m_controller->getPreviousDownloadOptions().getNumberTitles());
         }
+    }
+
+    Windows::Foundation::IAsyncAction AddDownloadDialog::SelectSaveFolderSingle(const IInspectable& sender, const RoutedEventArgs& args)
+    {
+        FolderPicker picker;
+        picker.as<::IInitializeWithWindow>()->Initialize(m_hwnd);
+        picker.FileTypeFilter().Append(L"*");
+        StorageFolder folder{ co_await picker.PickSingleFolderAsync() };
+        if(folder)
+        {
+            TxtSaveFolderSingle().Text(folder.Path());
+        }   
     }
 
     void AddDownloadDialog::RevertFilenameSingle(const IInspectable& sender, const RoutedEventArgs& args)
     {
         TxtFilenameSingle().Text(winrt::to_hstring(m_controller->getMediaTitle(0)));
+    }
+
+    Windows::Foundation::IAsyncAction AddDownloadDialog::SelectSaveFolderPlaylist(const IInspectable& sender, const RoutedEventArgs& args)
+    {
+        FolderPicker picker;
+        picker.as<::IInitializeWithWindow>()->Initialize(m_hwnd);
+        picker.FileTypeFilter().Append(L"*");
+        StorageFolder folder{ co_await picker.PickSingleFolderAsync() };
+        if(folder)
+        {
+            TxtSaveFolderSingle().Text(folder.Path());
+        }
+    }
+
+    void AddDownloadDialog::OnTglNumberTitlesPlaylistToggled(const IInspectable& sender, const RoutedEventArgs& args)
+    {
+        int i{ 0 };
+        for(const IInspectable& child : ListItemsPlaylist().Children())
+        {
+            TextBox txt{ child.as<CheckBox>().Content().as<TextBox>() };
+            txt.Text(winrt::to_hstring(TglNumberTitlesPlaylist().IsOn() ? std::format("{} - {}", i + 1, m_controller->getMediaTitle(i)) : m_controller->getMediaTitle(i)));
+            i++;
+        }
     }
 }

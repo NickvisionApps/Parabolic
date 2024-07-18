@@ -61,7 +61,7 @@
 
                         <TextBox x:Name="TxtSaveFolderSingle" Grid.Column="0" IsReadOnly="True"/>
 
-                        <Button x:Name="BtnSelectSaveFolderSingle" Grid.Column="1" Margin="0,26,0,0" Style="{ThemeResource AccentButtonStyle}">
+                        <Button x:Name="BtnSelectSaveFolderSingle" Grid.Column="1" Margin="0,26,0,0" Style="{ThemeResource AccentButtonStyle}" Click="SelectSaveFolderSingle">
                             <Button.Content>
                                 <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" FontSize="16" Glyph="&#xE838;"/>
                             </Button.Content>
@@ -93,73 +93,52 @@
 
             <nickvision:ViewStackPage PageName="DownloadPlaylist">
                 <Grid RowSpacing="12" ColumnSpacing="12">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+       
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition MaxWidth="220"/>
-                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
 
-                    <ScrollViewer Grid.Column="0" HorizontalAlignment="Stretch" VerticalScrollBarVisibility="Auto">
-                        <StackPanel Orientation="Vertical" Spacing="12">
-                            <ComboBox Header="File Type"/>
+                    <ComboBox x:Name="CmbFileTypePlaylist" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Stretch"/>
 
-                            <Grid HorizontalAlignment="Stretch" ColumnSpacing="6">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="Auto"/>
-                                </Grid.ColumnDefinitions>
+                    <ToggleSwitch x:Name="TglDownloadSubtitlesPlaylist" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Stretch"/>
 
-                                <TextBox Grid.Column="0" Header="Save Folder" IsReadOnly="True"/>
+                    <ToggleSwitch x:Name="TglPreferAV1Playlist" Grid.Row="0" Grid.Column="2" HorizontalAlignment="Stretch"/>
 
-                                <Button Grid.Column="1" Margin="0,26,0,0" Style="{ThemeResource AccentButtonStyle}">
-                                    <Button.Content>
-                                        <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" FontSize="16" Glyph="&#xE838;"/>
-                                    </Button.Content>
-                                </Button>
-                            </Grid>
+                    <ToggleSwitch x:Name="TglSplitChaptersPlaylist" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Stretch"/>
 
-                            <ToggleSwitch Header="Download Subtitles"/>
+                    <ToggleSwitch x:Name="TglLimitSpeedPlaylist"  Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch"/>
 
-                            <ToggleSwitch Header="Prefer AV1 Codec"/>
+                    <ToggleSwitch x:Name="TglNumberTitlesPlaylist" Grid.Row="1" Grid.Column="2" Toggled="OnTglNumberTitlesPlaylistToggled"/>
 
-                            <ToggleSwitch Header="Split Video by Chapters"/>
+                    <Grid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" HorizontalAlignment="Stretch" ColumnSpacing="6">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
 
-                            <ToggleSwitch Header="Limit Speed"/>
-                        </StackPanel>
-                    </ScrollViewer>
+                        <TextBox x:Name="TxtSaveFolderPlaylist" Grid.Column="0" IsReadOnly="True"/>
 
-                    <AppBarSeparator Grid.Column="1" VerticalAlignment="Stretch"/>
-
-                    <Grid Grid.Column="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" MinWidth="200" RowSpacing="16">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="*"/>
-                        </Grid.RowDefinitions>
-
-                        <TextBlock Grid.Row="0" Text="Playlist Items" Style="{StaticResource NavigationViewItemHeaderTextStyle}"/>
-
-                        <CheckBox Grid.Row="1" Content="Number Titles"/>
-
-                        <MenuFlyoutSeparator Grid.Row="2"/>
-
-                        <ScrollViewer Grid.Row="3" HorizontalAlignment="Stretch" VerticalScrollBarVisibility="Auto">
-                            <StackPanel HorizontalAlignment="Stretch" Orientation="Vertical" Spacing="12">
-                                <CheckBox HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch">
-                                    <CheckBox.Content>
-                                        <TextBox Text="Video1"/>
-                                    </CheckBox.Content>
-                                </CheckBox>
-
-                                <CheckBox HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch">
-                                    <CheckBox.Content>
-                                        <TextBox Text="Video1"/>
-                                    </CheckBox.Content>
-                                </CheckBox>
-                            </StackPanel>
-                        </ScrollViewer>
+                        <Button x:Name="BtnSelectSaveFolderPlaylist" Grid.Column="1" Margin="0,26,0,0" Style="{ThemeResource AccentButtonStyle}">
+                            <Button.Content>
+                                <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" FontSize="16" Glyph="&#xE838;"/>
+                            </Button.Content>
+                        </Button>
                     </Grid>
+
+                    <TextBlock x:Name="LblItemsPlaylist" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" HorizontalAlignment="Stretch" Style="{StaticResource NavigationViewItemHeaderTextStyle}"/>
+
+                    <ScrollViewer Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" VerticalScrollBarVisibility="Auto">
+                        <StackPanel x:Name="ListItemsPlaylist" HorizontalAlignment="Stretch" Margin="0,0,14,0" Orientation="Vertical" Spacing="12"/>
+                    </ScrollViewer>
                 </Grid>
             </nickvision:ViewStackPage>
         </nickvision:ViewStack.Pages>

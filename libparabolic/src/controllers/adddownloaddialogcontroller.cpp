@@ -56,6 +56,15 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         return m_urlInfo.has_value() && m_urlInfo->isPlaylist();
     }
 
+    size_t AddDownloadDialogController::getMediaCount() const
+    {
+        if(m_urlInfo)
+        {
+            return m_urlInfo->count();
+        }
+        return 0;
+    }
+
     std::vector<std::string> AddDownloadDialogController::getFileTypeStrings() const
     {
         std::vector<std::string> fileTypes;

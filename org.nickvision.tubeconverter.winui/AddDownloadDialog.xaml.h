@@ -55,11 +55,29 @@ namespace winrt::Nickvision::TubeConverter::WinUI::implementation
          */
         void OnUrlValidated(const ::Nickvision::Events::ParamEventArgs<bool>& args);
         /**
+         * @brief Prompts the user to select a folder to save a single download.
+         * @param sender IInspectable
+         * @param args RoutedEventArgs
+         */
+        Windows::Foundation::IAsyncAction SelectSaveFolderSingle(const IInspectable& sender, const Microsoft::UI::Xaml::RoutedEventArgs& args);
+        /**
          * @brief Reverts the single download's filename back to its original title.
          * @param sender IInspectable
          * @param args RoutedEventArgs
          */
         void RevertFilenameSingle(const IInspectable& sender, const Microsoft::UI::Xaml::RoutedEventArgs& args);
+        /**
+         * @brief Prompts the user to select a folder to save a playlist download.
+         * @param sender IInspectable
+         * @param args RoutedEventArgs
+         */
+        Windows::Foundation::IAsyncAction SelectSaveFolderPlaylist(const IInspectable& sender, const Microsoft::UI::Xaml::RoutedEventArgs& args);
+        /**
+         * @brief Handles when the playlist number titles toggle is changed.
+         * @param sender IInspectable
+         * @param args RoutedEventArgs
+         */
+        void OnTglNumberTitlesPlaylistToggled(const IInspectable& sender, const Microsoft::UI::Xaml::RoutedEventArgs& args);
 
     private:
         std::shared_ptr<::Nickvision::TubeConverter::Shared::Controllers::AddDownloadDialogController> m_controller;

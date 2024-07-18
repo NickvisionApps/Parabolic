@@ -57,6 +57,11 @@ namespace Nickvision::TubeConverter::Shared::Controllers
          */
         bool isUrlPlaylist() const;
         /**
+         * @brief Gets the count of media found at the url.
+         * @return The count of media found at the url
+         */
+        size_t getMediaCount() const;
+        /**
          * @brief Gets the list of file types as strings.
          * @return The list of file types as strings
          */
