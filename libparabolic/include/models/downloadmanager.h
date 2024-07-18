@@ -2,6 +2,7 @@
 #define DOWNLOADMANAGER_H
 
 #include <memory>
+#include <mutex>
 #include <unordered_map>
 #include <vector>
 #include <libnick/events/event.h>
@@ -159,6 +160,7 @@ namespace Nickvision::TubeConverter::Shared::Models
          * @param args Events::DownloadCompletedEventArgs
          */
         void onDownloadCompleted(const Events::DownloadCompletedEventArgs& args);
+        mutable std::mutex m_mutex;
         DownloaderOptions m_options;
         DownloadHistory& m_history;
         Logging::Logger& m_logger;

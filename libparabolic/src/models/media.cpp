@@ -10,7 +10,7 @@ namespace Nickvision::TubeConverter::Shared::Models
     Media::Media(const std::string& url, const std::string& title, const std::chrono::seconds& duration, MediaType type)
         : m_url{ url },
         m_title{ title },
-        m_duration{ duration },
+        m_timeFrame{ std::chrono::seconds(0), duration },
         m_type{ type },
         m_playlistPosition{ std::nullopt },
         m_hasSubtitles{ false }
@@ -19,7 +19,7 @@ namespace Nickvision::TubeConverter::Shared::Models
     }
 
     Media::Media(const Json::Value& info)
-        : m_duration{ 0 },
+        : m_timeFrame{ std::chrono::seconds(0), std::chrono::seconds(0) },
         m_playlistPosition{ std::nullopt },
         m_hasSubtitles{ false }
     {
@@ -33,7 +33,7 @@ namespace Nickvision::TubeConverter::Shared::Models
         m_title = StringHelpers::normalizeForFilename(m_title, info.get("limit_characters", false).asBool());
         if(info.isMember("duration"))
         {
-            m_duration = std::chrono::seconds{ static_cast<int>(info.get("duration", 0.0).asDouble()) };
+            m_timeFrame = { std::chrono::seconds(0), std::chrono::seconds{ static_cast<int>(info.get("duration", 0.0).asDouble()) } };
         }
         if(info.isMember("language"))
         {
@@ -132,9 +132,9 @@ namespace Nickvision::TubeConverter::Shared::Models
         return m_title;
     }
 
-    const std::chrono::seconds& Media::getDuration() const
+    const TimeFrame& Media::getTimeFrame() const
     {
-        return m_duration;
+        return m_timeFrame;
     }
 
     MediaType Media::getType() const
@@ -187,7 +187,7 @@ namespace Nickvision::TubeConverter::Shared::Models
         os << "===Media===" << std::endl;
         os << "URL: " << media.m_url << std::endl;
         os << "Title: " << media.m_title << std::endl;
-        os << "Duration: " << media.m_duration.count() << " seconds" << std::endl;
+        os << "TimeFrame: " << media.m_timeFrame.str() << std::endl;
         os << "Type: " << (media.m_type == MediaType::Audio ? "Audio" : "Video") << std::endl;
         os << "Audio Languages: ";
         for(const std::string& language : media.m_audioLanguages)

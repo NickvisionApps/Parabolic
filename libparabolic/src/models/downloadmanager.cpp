@@ -51,32 +51,40 @@ namespace Nickvision::TubeConverter::Shared::Models
 
     size_t DownloadManager::getRemainingDownloadsCount() const
     {
+        std::lock_guard<std::mutex> lock{ m_mutex };
         return m_downloading.size() + m_queued.size();
     }
 
     size_t DownloadManager::getDownloadingCount() const
     {
+        std::lock_guard<std::mutex> lock{ m_mutex };
         return m_downloading.size();
     }
 
     size_t DownloadManager::getQueuedCount() const
     {
+        std::lock_guard<std::mutex> lock{ m_mutex };
         return m_queued.size();
     }
 
     size_t DownloadManager::getCompletedCount() const
     {
+        std::lock_guard<std::mutex> lock{ m_mutex };
         return m_completed.size();
     }
 
     void DownloadManager::setDownloaderOptions(const DownloaderOptions& options)
     {
+        std::unique_lock<std::mutex> lock{ m_mutex };
         m_options = options;
+        lock.unlock();
         while(m_downloading.size() < static_cast<size_t>(m_options.getMaxNumberOfActiveDownloads()) && !m_queued.empty())
         {
+            lock.lock();
             std::shared_ptr<Download> firstQueuedDownload{ (*m_queued.begin()).second };
             m_downloading.emplace(firstQueuedDownload->getId(), firstQueuedDownload);
             m_queued.erase(firstQueuedDownload->getId());
+            lock.unlock();
             m_downloadStartedFromQueue.invoke(firstQueuedDownload->getId());
             firstQueuedDownload->start(m_options);
         }
@@ -108,14 +116,17 @@ namespace Nickvision::TubeConverter::Shared::Models
 
     void DownloadManager::addDownload(const DownloadOptions& options)
     {
+        std::unique_lock<std::mutex> lock{ m_mutex };
         std::shared_ptr<Download> download{ std::make_shared<Download>(options) };
         download->progressChanged() += [this](const DownloadProgressChangedEventArgs& e){ onDownloadProgressChanged(e); };
         download->completed() += [this](const DownloadCompletedEventArgs& e){ onDownloadCompleted(e); };
+        lock.unlock();
         addDownload(download);
     }
 
     void DownloadManager::stopDownload(int id)
     {
+        std::unique_lock<std::mutex> lock{ m_mutex };
         bool stopped{ false };
         if(m_downloading.contains(id))
         {
@@ -130,6 +141,7 @@ namespace Nickvision::TubeConverter::Shared::Models
             m_queued.erase(id);
             stopped = true;
         }
+        lock.unlock();
         if(stopped)
         {
             m_logger.log(LogLevel::Info, "Stopped download (" + std::to_string(id) + ").");
@@ -139,10 +151,12 @@ namespace Nickvision::TubeConverter::Shared::Models
 
     void DownloadManager::retryDownload(int id)
     {
+        std::unique_lock<std::mutex> lock{ m_mutex };
         if(m_completed.contains(id))
         {
             std::shared_ptr<Download> download{ m_completed.at(id) };
             m_completed.erase(id);
+            lock.unlock();
             m_downloadRetried.invoke(id);
             addDownload(download);
             m_logger.log(LogLevel::Info, "Retried download (" + std::to_string(id) + ").");
@@ -174,27 +188,32 @@ namespace Nickvision::TubeConverter::Shared::Models
 
     void DownloadManager::clearQueuedDownloads()
     {
+        std::lock_guard<std::mutex> lock{ m_mutex };
         m_queued.clear();
         m_logger.log(LogLevel::Info, "Cleared all downloads from the queue.");
     }
 
     void DownloadManager::clearCompletedDownloads()
     {
+        std::lock_guard<std::mutex> lock{ m_mutex };
         m_completed.clear();
         m_logger.log(LogLevel::Info, "Cleared all completed downloads.");
     }
 
     void DownloadManager::addDownload(const std::shared_ptr<Download>& download)
     {
+        std::unique_lock<std::mutex> lock{ m_mutex };
         if(m_downloading.size() < static_cast<size_t>(m_options.getMaxNumberOfActiveDownloads()))
         {
             m_downloading.emplace(download->getId(), download);
+            lock.unlock();
             m_downloadAdded.invoke({ download->getId(), download->getPath(), DownloadStatus::Running });
             download->start(m_options);
         }
         else
         {
             m_queued.emplace(download->getId(), download);
+            lock.unlock();
             m_downloadAdded.invoke({ download->getId(), download->getPath(), download->getStatus() });
         }
         m_logger.log(LogLevel::Info, "Retried download (" + std::to_string(download->getId()) + ") " + download->getUrl());
@@ -203,6 +222,7 @@ namespace Nickvision::TubeConverter::Shared::Models
 
     void DownloadManager::onDownloadProgressChanged(const DownloadProgressChangedEventArgs& args)
     {
+        std::unique_lock<std::mutex> lock{ m_mutex };
         if(!m_downloading.contains(args.getId()))
         {
             return;
@@ -212,12 +232,14 @@ namespace Nickvision::TubeConverter::Shared::Models
         {
             return;
         }
+        lock.unlock();
         m_logger.log(LogLevel::Info, "Download progress changed (" + std::to_string(args.getId()) + ").");
         m_downloadProgressChanged.invoke(args);
     }
 
     void DownloadManager::onDownloadCompleted(const DownloadCompletedEventArgs& args)
     {
+        std::unique_lock<std::mutex> lock{ m_mutex };
         if(!m_downloading.contains(args.getId()))
         {
             return;
@@ -230,12 +252,15 @@ namespace Nickvision::TubeConverter::Shared::Models
         m_logger.log(LogLevel::Info, "Download completed (" + std::to_string(args.getId()) + ").");
         m_completed.emplace(download->getId(), download);
         m_downloading.erase(download->getId());
+        lock.unlock();
         m_downloadCompleted.invoke(args);
+        lock.lock();
         if(m_downloading.size() < static_cast<size_t>(m_options.getMaxNumberOfActiveDownloads()) && !m_queued.empty())
         {
             std::shared_ptr<Download> firstQueuedDownload{ (*m_queued.begin()).second };
             m_downloading.emplace(firstQueuedDownload->getId(), firstQueuedDownload);
             m_queued.erase(firstQueuedDownload->getId());
+            lock.unlock();
             m_downloadStartedFromQueue.invoke(firstQueuedDownload->getId());
             firstQueuedDownload->start(m_options);
         }

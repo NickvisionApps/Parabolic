@@ -5,7 +5,6 @@
 #include <string>
 #include <libnick/app/datafilebase.h>
 #include "mediafiletype.h"
-#include "videoresolution.h"
 
 namespace Nickvision::TubeConverter::Shared::Models
 {
@@ -42,16 +41,6 @@ namespace Nickvision::TubeConverter::Shared::Models
          */
         void setFileType(const MediaFileType& previousMediaFileType);
         /**
-         * @brief Gets the previous video resolution.
-         * @return The previous video resolution
-         */
-        VideoResolution getVideoResolution() const;
-        /**
-         * @brief Sets the previous video resolution.
-         * @param previousVideoResolution The new previous video resolution
-         */
-        void setVideoResolution(const VideoResolution& previousVideoResolution);
-        /**
          * @brief Gets the previous download subtitles state.
          * @return The previous download subtitles state
          */
@@ -65,12 +54,32 @@ namespace Nickvision::TubeConverter::Shared::Models
          * @brief Gets the previous prefer AV1 state.
          * @return The previous prefer AV1 state
          */
-        bool getPreferAV1State() const;
+        bool getPreferAV1() const;
         /**
          * @brief Sets the previous prefer AV1 state.
          * @param previousPreferAV1State The new previous prefer AV1 state
          */
-        void setPreferAV1State(bool previousPreferAV1State);
+        void setPreferAV1(bool previousPreferAV1State);
+        /**
+         * @brief Gets the previous split chapters state.
+         * @return The previous split chapters state
+         */
+        bool getSplitChapters() const;
+        /**
+         * @brief Sets the previous split chapters state.
+         * @param splitChapters The new previous split chapters state
+         */
+        void setSplitChapters(bool splitChapters);
+        /**
+         * @brief Gets the previous limit speed state.
+         * @return The previous limit speed state
+         */
+        bool getLimitSpeed() const;
+        /**
+         * @brief Sets the previous limit speed state.
+         * @param limitSpeed The new previous limit speed state
+         */
+        void setLimitSpeed(bool limitSpeed);
         /**
          * @brief Gets the previous number titles state.
          * @return The previous number titles state

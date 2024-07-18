@@ -8,7 +8,8 @@
 #include <libnick/events/parameventargs.h>
 #include <libnick/keyring/keyring.h>
 #include "models/downloaderoptions.h"
-#include "models/media.h"
+#include "models/timeframe.h"
+#include "models/urlinfo.h"
 #include "models/previousdownloadoptions.h"
 
 namespace Nickvision::TubeConverter::Shared::Controllers
@@ -34,7 +35,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
          * @brief Gets the event for when a url is validated.
          * @return The url validated event
          */
-        Events::Event<Events::ParamEventArgs<std::vector<Models::Media>>>& urlValidated();
+        Events::Event<Events::ParamEventArgs<bool>>& urlValidated();
         /**
          * @brief Gets the PreviousDownloadOptions.
          * @return The PreviousDownloadOptions
@@ -45,6 +46,44 @@ namespace Nickvision::TubeConverter::Shared::Controllers
          * @return The list of credential names in the keyring
          */
         std::vector<std::string> getKeyringCredentialNames() const;
+        /**
+         * @brief Gets whether or not a valid url has been validated.
+         * @return True if valid url, else false
+         */
+        bool isUrlValid() const;
+        /**
+         * @brief Gets whether or not the url is a playlist.
+         * @return True if playlist, else false
+         */
+        bool isUrlPlaylist() const;
+        /**
+         * @brief Gets the list of file types as strings.
+         * @return The list of file types as strings
+         */
+        std::vector<std::string> getFileTypeStrings() const;
+        /**
+         * @brief Gets the list of qualities as strings.
+         * @param index The index of the selected file type
+         * @return The list of qualities as strings
+         */
+        std::vector<std::string> getQualityStrings(size_t index) const;
+        /**
+         * @brief Gets the list of audio languages as strings.
+         * @return The list of audio languages as strings
+         */
+        std::vector<std::string> getAudioLanguageStrings() const;
+        /**
+         * @brief Gets the title for the media at the specified index.
+         * @param index The index of the media
+         * @return The title of the media
+         */
+        const std::string& getMediaTitle(size_t index) const;
+        /**
+         * @brief Gets the TimeFrame for the media at the specified index.
+         * @param index The index of the media
+         * @return The TimeFrame of the media
+         */
+        const Models::TimeFrame& getMediaTimeFrame(size_t index) const;
         /**
          * @brief Validates a url.
          * @brief This method will invoke the urlValidated event with the list of media found at the url.
@@ -64,7 +103,8 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         Models::DownloaderOptions m_downloaderOptions;
         Models::PreviousDownloadOptions& m_previousOptions;
         std::optional<Keyring::Keyring>& m_keyring;
-        Events::Event<Events::ParamEventArgs<std::vector<Models::Media>>> m_urlValidated;
+        std::optional<Models::UrlInfo> m_urlInfo;
+        Events::Event<Events::ParamEventArgs<bool>> m_urlValidated;
     };
 }
 

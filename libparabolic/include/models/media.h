@@ -8,6 +8,7 @@
 #include <vector>
 #include <json/json.h>
 #include "mediatype.h"
+#include "timeframe.h"
 #include "videoresolution.h"
 
 namespace Nickvision::TubeConverter::Shared::Models
@@ -43,10 +44,10 @@ namespace Nickvision::TubeConverter::Shared::Models
          */
         const std::string& getTitle() const;
         /**
-         * @brief Gets the duration of the media.
-         * @return The duration of the media
+         * @brief Gets the time frame of the media.
+         * @return The time frame of the media
          */
-        const std::chrono::seconds& getDuration() const;
+        const TimeFrame& getTimeFrame() const;
         /**
          * @brief Gets the type of the media.
          * @return The type of the media
@@ -103,7 +104,7 @@ namespace Nickvision::TubeConverter::Shared::Models
     private:
         std::string m_url;
         std::string m_title;
-        std::chrono::seconds m_duration;
+        TimeFrame m_timeFrame;
         MediaType m_type;
         std::vector<std::string> m_audioLanguages;
         std::vector<VideoResolution> m_videoResolutions;

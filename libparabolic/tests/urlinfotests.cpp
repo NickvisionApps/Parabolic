@@ -56,7 +56,7 @@ TEST_F(UrlInfoTest, YouTube4)
     ASSERT_FALSE(info->isPlaylist());
     ASSERT_EQ(info->count(), 1);
     const Media& media{ info->get(0) };
-    ASSERT_EQ(media.getTitle(), "My Wifi is Better than Yours");
+    ASSERT_EQ(media.getTitle(), "I put WiFi 7 in my badminton center");
     ASSERT_EQ(media.getType(), MediaType::Video);
     ASSERT_FALSE(media.hasSubtitles());
     std::cout << *info << std::endl;

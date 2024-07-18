@@ -1,6 +1,8 @@
 #include "models/previousdownloadoptions.h"
+#include <libnick/filesystem/userdirectories.h>
 
 using namespace Nickvision::App;
+using namespace Nickvision::Filesystem;
 
 namespace Nickvision::TubeConverter::Shared::Models
 {
@@ -12,12 +14,12 @@ namespace Nickvision::TubeConverter::Shared::Models
 
     std::filesystem::path PreviousDownloadOptions::getSaveFolder() const
     {
-        std::filesystem::path path{ m_json.get("SaveFolder", "").asString() };
+        std::filesystem::path path{ m_json.get("SaveFolder", UserDirectories::get(UserDirectory::Downloads).string()).asString() };
         if(std::filesystem::exists(path))
         {
             return path;
         }
-        return {};
+        return UserDirectories::get(UserDirectory::Downloads);
     }
 
     void PreviousDownloadOptions::setSaveFolder(const std::filesystem::path& previousSaveFolder)
@@ -28,7 +30,7 @@ namespace Nickvision::TubeConverter::Shared::Models
         }
         else
         {
-            m_json["SaveFolder"] = "";
+            m_json["SaveFolder"] = UserDirectories::get(UserDirectory::Downloads).string();
         }
     }
 
@@ -42,21 +44,6 @@ namespace Nickvision::TubeConverter::Shared::Models
         m_json["FileType"] = static_cast<int>(previousMediaFileType);
     }
 
-    VideoResolution PreviousDownloadOptions::getVideoResolution() const
-    {
-        std::optional<VideoResolution> resolution{ VideoResolution::parse(m_json.get("VideoResolution", "").asString()) };
-        if(resolution)
-        {
-            return resolution.value();
-        }
-        return VideoResolution{ -1, -1 };
-    }
-
-    void PreviousDownloadOptions::setVideoResolution(const VideoResolution& previousVideoResolution)
-    {
-        m_json["VideoResolution"] = previousVideoResolution.str();
-    }
-
     bool PreviousDownloadOptions::getDownloadSubtitles() const
     {
         return m_json.get("DownloadSubtitles", false).asBool();
@@ -67,14 +54,34 @@ namespace Nickvision::TubeConverter::Shared::Models
         m_json["DownloadSubtitles"] = previousSubtitleState;
     }
 
-    bool PreviousDownloadOptions::getPreferAV1State() const
+    bool PreviousDownloadOptions::getPreferAV1() const
     {
         return m_json.get("PreferAV1State", false).asBool();
     }
 
-    void PreviousDownloadOptions::setPreferAV1State(bool previousPreferAV1State)
+    void PreviousDownloadOptions::setPreferAV1(bool previousPreferAV1State)
     {
         m_json["PreferAV1State"] = previousPreferAV1State;
+    }
+
+    bool PreviousDownloadOptions::getSplitChapters() const
+    {
+        return m_json.get("SplitChapters", false).asBool();
+    }
+
+    void PreviousDownloadOptions::setSplitChapters(bool splitChapters)
+    {
+        m_json["SplitChapters"] = splitChapters;
+    }
+
+    bool PreviousDownloadOptions::getLimitSpeed() const
+    {
+        return m_json.get("LimitSpeed", false).asBool();
+    }
+
+    void PreviousDownloadOptions::setLimitSpeed(bool limitSpeed)
+    {
+        m_json["LimitSpeed"] = limitSpeed;
     }
 
     bool PreviousDownloadOptions::getNumberTitles() const

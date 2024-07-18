@@ -45,7 +45,7 @@ jobs:
           choco install innosetup
           wget https://aka.ms/vs/17/release/vc_redist.x64.exe -O vc_redist.x64.exe
           wget https://aka.ms/windowsappsdk/1.5/1.5.240627000/windowsappruntimeinstall-x64.exe -O windowsappruntimeinstall-x64.exe
-          wget https://github.com/yt-dlp/yt-dlp/releases/download/2024.07.09/yt-dlp.exe -O yt-dlp.exe
+          wget https://github.com/yt-dlp/yt-dlp/releases/download/2024.07.16/yt-dlp.exe -O yt-dlp.exe
           wget https://github.com/aria2/aria2/releases/download/release-1.37.0/aria2-1.37.0-win-64bit-build1.zip -o aria2.zip
           wget https://github.com/GyanD/codexffmpeg/releases/download/2024-07-07-git-0619138639/ffmpeg-2024-07-07-git-0619138639-full_build.zip -o ffmpeg.zip
           powershell -command "Expand-Archive -Force 'aria2.zip'"

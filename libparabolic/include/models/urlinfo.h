@@ -16,25 +16,25 @@ namespace Nickvision::TubeConverter::Shared::Models
     {
     public:
         /**
-         * @brief Fetches media information for a URL.
-         * @param url The URL to fetch media information for
+         * @brief Fetches media information for a Url.
+         * @param url The Url to fetch media information for
          * @param options The DownloaderOptions
          * @param credential The credential to use for authentication
          * @return The UrlInfo object on success, else std::nullopt
          */
         static std::optional<UrlInfo> fetch(const std::string& url, const DownloaderOptions& options, const std::optional<Keyring::Credential>& credential = std::nullopt);
         /**
-         * @brief Gets the URL.
-         * @return The URL
+         * @brief Gets the Url.
+         * @return The Url
          */
         const std::string& getUrl() const;
         /**
-         * @brief Gets whether the URL is a playlist.
+         * @brief Gets whether the Url is a playlist.
          * @return True if playlist, false otherwise
          */
         bool isPlaylist() const;
         /**
-         * @brief Gets the number of media belonging to the URL.
+         * @brief Gets the number of media belonging to the Url.
          * @return The number of media
          */
         size_t count() const;
@@ -69,7 +69,7 @@ namespace Nickvision::TubeConverter::Shared::Models
     private:
         /**
          * @brief Constructs a UrlInfo.
-         * @param url The URL
+         * @param url The Url
          * @param info The media information json object from yt-dlp
          */
         UrlInfo(const std::string& url, const Json::Value& info);
