@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-07-21 22:31-0400\n"
+"POT-Creation-Date: 2024-07-21 22:43-0400\n"
 "PO-Revision-Date: 2024-04-08 16:01+0000\n"
 "Last-Translator: Jiri Grönroos <jiri.gronroos@iki.fi>\n"
 "Language-Team: Finnish <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -229,6 +229,7 @@ msgid "Save Folder"
 msgstr "Valitse tallennuskansio"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:132
+#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:145
 #: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:55
 #: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:64
 msgid "Select Save Folder"
@@ -645,6 +646,32 @@ msgstr "Sovellus"
 msgid "Quit"
 msgstr "Lopeta"
 
+#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:41
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:93
+#, fuzzy
+msgid "Use manual credential"
+msgstr "Poistetaanko kirjautumistieto?"
+
+#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:93
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:146
+msgid "Error"
+msgstr "Virhe"
+
+#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:93
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:147
+msgid ""
+"The url provided is invalid or unable to be reached. Check both the url and "
+"authentication used."
+msgstr ""
+
+#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:94
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:177
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:148
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:245
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:382
+msgid "Close"
+msgstr "Sulje"
+
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:140
 #, fuzzy
 msgid "Open"
@@ -659,13 +686,6 @@ msgstr ""
 #: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:232
 msgid "Don't show this message again"
 msgstr "Älä näytä tätä viesti uudelleen"
-
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:177
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:148
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:245
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:382
-msgid "Close"
-msgstr "Sulje"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:210
 #: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:283
@@ -741,25 +761,10 @@ msgstr ""
 msgid "Number Titles"
 msgstr "Upota tekstitykset"
 
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:93
-#, fuzzy
-msgid "Use manual credential"
-msgstr "Poistetaanko kirjautumistieto?"
-
 #: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:94
 #, fuzzy
 msgid "None"
 msgstr "Ei mitään"
-
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:146
-msgid "Error"
-msgstr "Virhe"
-
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:147
-msgid ""
-"The url provided is invalid or unable to be reached. Check both the url and "
-"authentication used."
-msgstr ""
 
 #: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:176
 #, c++-format

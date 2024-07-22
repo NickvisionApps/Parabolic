@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-07-21 22:31-0400\n"
+"POT-Creation-Date: 2024-07-21 22:43-0400\n"
 "PO-Revision-Date: 2023-10-02 18:59+0000\n"
 "Last-Translator: Soumyadeep Ghosh <soumyadeepghosh2004@zohomail.in>\n"
 "Language-Team: Bengali <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -232,6 +232,7 @@ msgid "Save Folder"
 msgstr "সংগ্রাহক তথ্যপথ বাছুন"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:132
+#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:145
 #: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:55
 #: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:64
 msgid "Select Save Folder"
@@ -651,6 +652,32 @@ msgstr ""
 msgid "Quit"
 msgstr "নিস্ক্রমণ"
 
+#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:41
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:93
+#, fuzzy
+msgid "Use manual credential"
+msgstr "গুরুত্বপূর্ণ তথ্য মুছুন?"
+
+#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:93
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:146
+msgid "Error"
+msgstr "বিফল"
+
+#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:93
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:147
+msgid ""
+"The url provided is invalid or unable to be reached. Check both the url and "
+"authentication used."
+msgstr ""
+
+#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:94
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:177
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:148
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:245
+#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:382
+msgid "Close"
+msgstr "বন্ধ"
+
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:140
 #, fuzzy
 msgid "Open"
@@ -665,13 +692,6 @@ msgstr ""
 #: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:232
 msgid "Don't show this message again"
 msgstr ""
-
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:177
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:148
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:245
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:382
-msgid "Close"
-msgstr "বন্ধ"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:210
 #: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:283
@@ -745,25 +765,10 @@ msgstr ""
 msgid "Number Titles"
 msgstr "ভিডিও সংখ্যা"
 
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:93
-#, fuzzy
-msgid "Use manual credential"
-msgstr "গুরুত্বপূর্ণ তথ্য মুছুন?"
-
 #: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:94
 #, fuzzy
 msgid "None"
 msgstr "কোনোটিই নয়"
-
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:146
-msgid "Error"
-msgstr "বিফল"
-
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:147
-msgid ""
-"The url provided is invalid or unable to be reached. Check both the url and "
-"authentication used."
-msgstr ""
 
 #: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:176
 #, c++-format
