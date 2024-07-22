@@ -72,6 +72,11 @@ namespace Nickvision::TubeConverter::Shared::Models
          */
         operator int() const;
         /**
+         * @brief Gets the media file type value as an unsigned int.
+         * @return The media file type value as an unsigned int
+         */
+        operator unsigned int() const;
+        /**
          * @brief Compares two MediaFileTypes via ==.
          * @param other The other MediaFileType
          * @return True if this == other, else false

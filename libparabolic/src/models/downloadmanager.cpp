@@ -73,6 +73,12 @@ namespace Nickvision::TubeConverter::Shared::Models
         return m_completed.size();
     }
 
+    const DownloaderOptions& DownloadManager::getDownloaderOptions() const
+    {
+        std::lock_guard<std::mutex> lock{ m_mutex };
+        return m_options;
+    }
+
     void DownloadManager::setDownloaderOptions(const DownloaderOptions& options)
     {
         std::unique_lock<std::mutex> lock{ m_mutex };

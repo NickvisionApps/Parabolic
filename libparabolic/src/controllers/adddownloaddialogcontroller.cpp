@@ -9,8 +9,8 @@ using namespace Nickvision::TubeConverter::Shared::Models;
 
 namespace Nickvision::TubeConverter::Shared::Controllers
 {
-    AddDownloadDialogController::AddDownloadDialogController(const DownloaderOptions& downloaderOptions, PreviousDownloadOptions& previousOptions, std::optional<Keyring::Keyring>& keyring)
-        : m_downloaderOptions{ downloaderOptions },
+    AddDownloadDialogController::AddDownloadDialogController(DownloadManager& downloadManager, PreviousDownloadOptions& previousOptions, std::optional<Keyring::Keyring>& keyring)
+        : m_downloadManager{ downloadManager },
         m_previousOptions{ previousOptions },
         m_keyring{ keyring },
         m_urlInfo{ std::nullopt }
@@ -199,7 +199,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
     {
         std::thread worker{ [this, url, credential]()
         {
-            m_urlInfo = UrlInfo::fetch(url, m_downloaderOptions, credential);
+            m_urlInfo = UrlInfo::fetch(url, m_downloadManager.getDownloaderOptions(), credential);
             m_urlValidated.invoke({ isUrlValid() });
         } };
         worker.detach();

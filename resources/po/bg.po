@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-07-18 12:31-0400\n"
+"POT-Creation-Date: 2024-07-21 22:31-0400\n"
 "PO-Revision-Date: 2024-04-08 20:37+0000\n"
 "Last-Translator: twlvnn <kraft_werk@tutanota.com>\n"
 "Language-Team: Bulgarian <https://hosted.weblate.org/projects/nickvision-"
@@ -132,22 +132,22 @@ msgid "Unable to download and install update"
 msgstr "Неуспешно изтегляне и инсталиране на обновленията."
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:21
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} GiB/s"
 msgstr "{0:f1} ГБ/с"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:25
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} MiB/s"
 msgstr "{0:f1} МБ/с"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:29
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} KiB/s"
 msgstr "{0:f1} КБ/с"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:33
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} B/s"
 msgstr "{0:f1} Б/с"
 
@@ -157,41 +157,133 @@ msgid "The file already exists and overwriting is disabled."
 msgstr "Файлът вече съществува, и презаписването е забранено"
 
 #. Localize Strings
-#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:9
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:11
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:199
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:27
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:37
 #: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:75
 msgid "Add Download"
 msgstr "Добавяне на ново изтегляне"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:41
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:31
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:18
+msgid "Back"
+msgstr "Назад"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:52
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:41
 msgid "Media URL"
 msgstr "Медия адрес"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:46
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:57
 msgid "Authenticate"
 msgstr "Упълномощаване"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:51
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:62
 #, fuzzy
 msgid "Credential"
 msgstr "Няма данни за идентификация"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:55
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:34
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:66
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:44
 msgid "Username"
 msgstr "Потребителско име"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:59
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:36
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:70
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:46
 msgid "Password"
 msgstr "Парола"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:65
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:28
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:76
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:38
 msgid "Validate"
 msgstr "Проверяване"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:95
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:48
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:62
+msgid "File Type"
+msgstr "Вид файл"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:99
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:49
+msgid "Quality"
+msgstr "Качество"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:103
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:50
+msgid "Audio Language"
+msgstr "Език на песента"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:107
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:51
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:65
+msgid "Download Subtitles"
+msgstr "Изтегляне на субтитрите"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:111
+msgid "Advanced Options"
+msgstr "Допълнителни настройки"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:126
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:54
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:63
+#, fuzzy
+msgid "Save Folder"
+msgstr "Избиране на папка за запазване"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:132
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:55
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:64
+msgid "Select Save Folder"
+msgstr "Избиране на папка за запазване"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:141
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:56
+#, fuzzy
+msgid "File Name"
+msgstr "Име на файл"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:147
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:58
+msgid "Revert to Title"
+msgstr ""
+
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:156
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:152
+msgid "Download"
+msgstr "Изтегляне"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:174
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:52
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:66
+msgid "Prefer AV1 Codec"
+msgstr "Предпочитане на AV1 кодер"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:178
+#, fuzzy
+msgid "Split Videos by Chapters"
+msgstr "Разделяне на главите"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:182
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:61
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:68
+#, fuzzy
+msgid "Limit Download Speed"
+msgstr "Изтегляне на медия"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:186
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:59
+msgid "Start Time"
+msgstr "Начало"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:192
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:205
+msgid "Revert to Original"
+msgstr ""
+
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:199
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:60
+msgid "End Time"
+msgstr "Край"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:5
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:8
@@ -590,7 +682,7 @@ msgid "Don't show this message again"
 msgstr "Това съобщение да не се показва повече"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:177
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:141
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:148
 #: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:245
 #: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:382
 msgid "Close"
@@ -633,125 +725,65 @@ msgstr ""
 msgid "Search"
 msgstr "Търсене в историята"
 
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:29
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:146
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:39
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:153
 msgid "Cancel"
 msgstr "Отказване"
 
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:32
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:42
 #, fuzzy
 msgid "Enter media url here"
 msgstr "Въведете адрес на медия тук"
 
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:33
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:43
 #, fuzzy
 msgid "Authentication"
 msgstr "Упълномощаване"
 
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:35
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:45
 #, fuzzy
 msgid "Enter username here"
 msgstr "Въведете потребителското име тук"
 
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:37
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:47
 msgid "Enter password here"
 msgstr "Въведете паролата тук"
 
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:38
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:52
-msgid "File Type"
-msgstr "Вид файл"
-
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:39
-msgid "Quality"
-msgstr "Качество"
-
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:40
-msgid "Audio Language"
-msgstr "Език на песента"
-
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:41
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:55
-msgid "Download Subtitles"
-msgstr "Изтегляне на субтитрите"
-
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:42
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:56
-msgid "Prefer AV1 Codec"
-msgstr "Предпочитане на AV1 кодер"
-
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:43
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:57
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:53
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:67
 #, fuzzy
 msgid "Split Video by Chapters"
 msgstr "Разделяне на главите"
 
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:44
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:53
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:57
 #, fuzzy
-msgid "Save Folder"
-msgstr "Избиране на папка за запазване"
-
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:45
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:54
-msgid "Select Save Folder"
-msgstr "Избиране на папка за запазване"
-
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:46
-#, fuzzy
-msgid "Filename"
-msgstr "Име на файл"
-
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:47
-#, fuzzy
-msgid "Enter filename here"
+msgid "Enter file name here"
 msgstr "Въведете името тук"
 
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:48
-msgid "Revert to Title"
-msgstr ""
-
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:49
-msgid "Start Time"
-msgstr "Начало"
-
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:50
-msgid "End Time"
-msgstr "Край"
-
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:51
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:58
-#, fuzzy
-msgid "Limit Download Speed"
-msgstr "Изтегляне на медия"
-
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:59
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:69
 msgid "Number Titles"
 msgstr "Номериране на заглавията"
 
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:82
-msgid "None"
-msgstr ""
-
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:83
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:93
 msgid "Use manual credential"
 msgstr "Използване на данни за идентификация ръчно"
 
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:139
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:94
+msgid "None"
+msgstr ""
+
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:146
 msgid "Error"
 msgstr "Грешка"
 
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:140
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:147
 msgid ""
 "The url provided is invalid or unable to be reached. Check both the url and "
 "authentication used."
 msgstr ""
 
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:145
-msgid "Download"
-msgstr "Изтегляне"
-
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:181
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:176
+#, c++-format
 msgid "Playlist Items ({})"
 msgstr ""
 
@@ -804,7 +836,7 @@ msgid "Debug information copied to clipboard."
 msgstr "Журнал за изтегляне е копиран в буфера за обмен."
 
 #: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:376
-#, fuzzy
+#, fuzzy, c++-format
 msgid ""
 "Developers:\n"
 "{}\n"
@@ -826,7 +858,7 @@ msgstr ""
 "{3}"
 
 #: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:380
-#, fuzzy
+#, fuzzy, c++-format
 msgid ""
 "Developers:\n"
 "{}\n"
@@ -994,9 +1026,6 @@ msgstr "Въведете адрес на сървър-посредник тук"
 #~ msgid "Add Login"
 #~ msgstr "Добавяне на профил"
 
-#~ msgid "Advanced Options"
-#~ msgstr "Допълнителни настройки"
-
 #~ msgid "All downloads have finished."
 #~ msgstr "Всичко изтегляния приключиха."
 
@@ -1005,9 +1034,6 @@ msgstr "Въведете адрес на сървър-посредник тук"
 
 #~ msgid "An application restart is required to change the theme."
 #~ msgstr "Необходимо е да рестартирате програмата за да се промени темата."
-
-#~ msgid "Back"
-#~ msgstr "Назад"
 
 #~ msgid "Clear Completed"
 #~ msgstr "Изчистването приключи"

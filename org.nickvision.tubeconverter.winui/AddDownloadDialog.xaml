@@ -41,7 +41,7 @@
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
 
-                    <ComboBox x:Name="CmbFileTypeSingle" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Stretch"/>
+                    <ComboBox x:Name="CmbFileTypeSingle" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Stretch" SelectionChanged="OnCmbFileTypeSingleChanged"/>
 
                     <ComboBox x:Name="CmbQualitySingle" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Stretch"/>
 
@@ -61,7 +61,7 @@
 
                         <TextBox x:Name="TxtSaveFolderSingle" Grid.Column="0" IsReadOnly="True"/>
 
-                        <Button x:Name="BtnSelectSaveFolderSingle" Grid.Column="1" Margin="0,26,0,0" Style="{ThemeResource AccentButtonStyle}" Click="SelectSaveFolderSingle">
+                        <Button x:Name="BtnSelectSaveFolderSingle" Grid.Column="1" Margin="0,26,0,0" Click="SelectSaveFolderSingle">
                             <Button.Content>
                                 <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" FontSize="16" Glyph="&#xE838;"/>
                             </Button.Content>
@@ -127,7 +127,7 @@
 
                         <TextBox x:Name="TxtSaveFolderPlaylist" Grid.Column="0" IsReadOnly="True"/>
 
-                        <Button x:Name="BtnSelectSaveFolderPlaylist" Grid.Column="1" Margin="0,26,0,0" Style="{ThemeResource AccentButtonStyle}">
+                        <Button x:Name="BtnSelectSaveFolderPlaylist" Grid.Column="1" Margin="0,26,0,0" Click="SelectSaveFolderPlaylist">
                             <Button.Content>
                                 <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" FontSize="16" Glyph="&#xE838;"/>
                             </Button.Content>

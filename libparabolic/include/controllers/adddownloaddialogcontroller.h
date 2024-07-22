@@ -7,7 +7,7 @@
 #include <libnick/events/event.h>
 #include <libnick/events/parameventargs.h>
 #include <libnick/keyring/keyring.h>
-#include "models/downloaderoptions.h"
+#include "models/downloadmanager.h"
 #include "models/timeframe.h"
 #include "models/urlinfo.h"
 #include "models/previousdownloadoptions.h"
@@ -22,11 +22,11 @@ namespace Nickvision::TubeConverter::Shared::Controllers
     public:
         /**
          * @brief Constructs an AddDownloadDialogController.
-         * @param downloaderOptions The DownloaderOptions from the configuration
+         * @param downloadManager The DownloadManager to use
          * @param keyring The Keyring to use
          * @param configuration The Configuration to use
          */
-        AddDownloadDialogController(const Models::DownloaderOptions& downloaderOptions, Models::PreviousDownloadOptions& previousOptions, std::optional<Keyring::Keyring>& keyring);
+        AddDownloadDialogController(Models::DownloadManager& downloadManager, Models::PreviousDownloadOptions& previousOptions, std::optional<Keyring::Keyring>& keyring);
         /**
          * @brief Destructs the AddDownloadDialogController.
          */
@@ -35,7 +35,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
          * @brief Gets the event for when a url is validated.
          * @return The url validated event
          */
-        Events::Event<Events::ParamEventArgs<bool>>& urlValidated();
+        Nickvision::Events::Event<Nickvision::Events::ParamEventArgs<bool>>& urlValidated();
         /**
          * @brief Gets the PreviousDownloadOptions.
          * @return The PreviousDownloadOptions
@@ -105,11 +105,11 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         void validateUrl(const std::string& url, size_t credentialNameIndex);
 
     private:
-        Models::DownloaderOptions m_downloaderOptions;
+        Models::DownloadManager& m_downloadManager;
         Models::PreviousDownloadOptions& m_previousOptions;
         std::optional<Keyring::Keyring>& m_keyring;
         std::optional<Models::UrlInfo> m_urlInfo;
-        Events::Event<Events::ParamEventArgs<bool>> m_urlValidated;
+        Nickvision::Events::Event<Nickvision::Events::ParamEventArgs<bool>> m_urlValidated;
     };
 }
 

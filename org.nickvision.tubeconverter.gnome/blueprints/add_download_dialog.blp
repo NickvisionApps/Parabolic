@@ -2,22 +2,33 @@ using Gtk 4.0;
 using Adw 1;
 
 Adw.Dialog root {
+  follows-content-size: true;
+
   child: Adw.ToolbarView {
     [top]
     Adw.HeaderBar {
       title-widget: Adw.WindowTitle {
         title: _("Add Download");
       };
+
+      [start]
+      Gtk.Button backDownloadSingleButton {
+        icon-name: "left-symbolic";
+        visible: false;
+        tooltip-text: _("Back");
+      }
     }
 
     content: Adw.ViewStack viewStack {
+      vhomogeneous: false;
+
       Adw.ViewStackPage {
         name: "spinner";
         child: Gtk.Spinner {
-          margin-start: 12;
-          margin-top: 12;
-          margin-end: 12;
-          margin-bottom: 12;
+          margin-start: 32;
+          margin-top: 32;
+          margin-end: 32;
+          margin-bottom: 32;
           halign: center;
           valign: center;
           width-request: 32;
@@ -71,9 +82,147 @@ Adw.Dialog root {
       }
 
       Adw.ViewStackPage {
-        name: "download";
+        name: "download-single";
         child: Gtk.Box {
+          orientation: vertical;
+          spacing: 16;
+          margin-start: 16;
+          margin-end: 16;
+          margin-bottom: 16;
 
+          Adw.PreferencesGroup {
+            Adw.ComboRow fileTypeSingleRow {
+              title: _("File Type");
+            }
+
+            Adw.ComboRow qualitySingleRow {
+              title: _("Quality");
+            }
+
+            Adw.ComboRow audioLanguageSingleRow {
+              title: _("Audio Language");
+            }
+
+            Adw.SwitchRow downloadSubtitlesSingleRow {
+              title: _("Download Subtitles");
+            }
+
+            Adw.ActionRow advancedOptionsSingleRow {
+              title: _("Advanced Options");
+              activatable-widget: advancedOptionsSingleButton;
+
+              [suffix]
+              Gtk.Button advancedOptionsSingleButton {
+                valign: center;
+                icon-name: "right-symbolic";
+
+                styles ["flat"]
+              }
+            }
+          }
+
+          Adw.PreferencesGroup {
+            Adw.ActionRow saveFolderSingleRow {
+              title: _("Save Folder");
+
+              [suffix]
+              Gtk.Button selectSaveFolderSingleButton {
+                valign: center;
+                icon-name: "folder-open-symbolic";
+                tooltip-text: _("Select Save Folder");
+
+                styles ["flat"]
+              }
+
+              styles ["property"]
+            }
+
+            Adw.EntryRow filenameSingleRow {
+              title: _("File Name");
+
+              [suffix]
+              Gtk.Button revertFilenameSingleButton {
+                valign: center;
+                icon-name: "edit-undo-symbolic";
+                tooltip-text: _("Revert to Title");
+
+                styles ["flat"]
+              }
+            }
+          }
+
+          Gtk.Button downloadSingleButton {
+            halign: center;
+            label: _("Download");
+
+            styles ["pill", "suggested-action"]
+          }
+        };
+      }
+
+      Adw.ViewStackPage {
+        name: "download-single-advanced";
+        child: Gtk.Box {
+          orientation: vertical;
+          spacing: 16;
+          margin-start: 16;
+          margin-end: 16;
+          margin-bottom: 16;
+
+          Adw.PreferencesGroup {
+            Adw.SwitchRow preferAV1SingleRow {
+              title: _("Prefer AV1 Codec");
+            }
+
+            Adw.SwitchRow splitChaptersSingleRow {
+              title: _("Split Videos by Chapters");
+            }
+
+            Adw.SwitchRow limitSpeedSingleRow {
+              title: _("Limit Download Speed");
+            }
+
+            Adw.EntryRow startTimeSingleRow {
+              title: _("Start Time");
+
+              [suffix]
+              Gtk.Button revertStartTimeSingleButton {
+                valign: center;
+                icon-name: "edit-undo-symbolic";
+                tooltip-text: _("Revert to Original");
+
+                styles ["flat"]
+              }
+            }
+
+            Adw.EntryRow endTimeSingleRow {
+              title: _("End Time");
+
+              [suffix]
+              Gtk.Button revertEndTimeSingleButton {
+                valign: center;
+                icon-name: "edit-undo-symbolic";
+                tooltip-text: _("Revert to Original");
+
+                styles ["flat"]
+              }
+            }
+          }
+        };
+      }
+
+      Adw.ViewStackPage {
+        name: "download-playlist";
+        child: Gtk.Box {
+          orientation: vertical;
+          spacing: 16;
+          margin-start: 16;
+          margin-end: 16;
+          margin-bottom: 16;
+
+          Adw.PreferencesGroup {
+            
+          }
         };
       }
     };

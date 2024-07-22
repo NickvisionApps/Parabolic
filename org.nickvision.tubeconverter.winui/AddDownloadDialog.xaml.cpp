@@ -20,6 +20,16 @@ using namespace winrt::Windows::Storage::Pickers;
 
 namespace winrt::Nickvision::TubeConverter::WinUI::implementation 
 {
+    static void SetComboBoxModel(const ComboBox& comboBox, const std::vector<std::string>& strs)
+    {
+        comboBox.Items().Clear();
+        for(const std::string& str : strs)
+        {
+            comboBox.Items().Append(winrt::box_value(winrt::to_hstring(str)));
+        }
+        comboBox.SelectedIndex(0);
+    }
+
     AddDownloadDialog::AddDownloadDialog()
     {
         InitializeComponent();
@@ -43,8 +53,8 @@ namespace winrt::Nickvision::TubeConverter::WinUI::implementation
         TglSplitChaptersSingle().Header(winrt::box_value(winrt::to_hstring(_("Split Video by Chapters"))));
         TxtSaveFolderSingle().Header(winrt::box_value(winrt::to_hstring(_("Save Folder"))));
         ToolTipService::SetToolTip(BtnSelectSaveFolderSingle(), winrt::box_value(winrt::to_hstring(_("Select Save Folder"))));
-        TxtFilenameSingle().Header(winrt::box_value(winrt::to_hstring(_("Filename"))));
-        TxtFilenameSingle().PlaceholderText(winrt::to_hstring(_("Enter filename here")));
+        TxtFilenameSingle().Header(winrt::box_value(winrt::to_hstring(_("File Name"))));
+        TxtFilenameSingle().PlaceholderText(winrt::to_hstring(_("Enter file name here")));
         ToolTipService::SetToolTip(BtnRevertFilenameSingle(), winrt::box_value(winrt::to_hstring(_("Revert to Title"))));
         TxtTimeFrameStartSingle().Header(winrt::box_value(winrt::to_hstring(_("Start Time"))));
         TxtTimeFrameEndSingle().Header(winrt::box_value(winrt::to_hstring(_("End Time"))));
@@ -79,13 +89,10 @@ namespace winrt::Nickvision::TubeConverter::WinUI::implementation
             TxtUrl().Text(winrt::to_hstring(clipboardText));
             IsPrimaryButtonEnabled(true);
         }
-        CmbAuthenticate().Items().Append(winrt::box_value(winrt::to_hstring(_("None"))));
-        CmbAuthenticate().Items().Append(winrt::box_value(winrt::to_hstring(_("Use manual credential"))));
-        for(const std::string& name : m_controller->getKeyringCredentialNames())
-        {
-            CmbAuthenticate().Items().Append(winrt::box_value(winrt::to_hstring(name)));
-        }
-        CmbAuthenticate().SelectedIndex(0);
+        std::vector<std::string> credentialNames{ m_controller->getKeyringCredentialNames() };
+        credentialNames.insert(credentialNames.begin(), _("Use manual credential"));
+        credentialNames.insert(credentialNames.begin(), _("None"));
+        SetComboBoxModel(CmbAuthenticate(), credentialNames);
         result = co_await base_type::ShowAsync();
         //Validate Url
         if(result == ContentDialogResult::Primary)
@@ -145,25 +152,13 @@ namespace winrt::Nickvision::TubeConverter::WinUI::implementation
         PrimaryButtonText(winrt::to_hstring(_("Download")));
         CloseButtonText(winrt::to_hstring(_("Cancel")));
         DefaultButton(ContentDialogButton::Primary);
-        //Load Download Page
         if(!m_controller->isUrlPlaylist())
         {
             ViewStack().CurrentPage(L"DownloadSingle");
-            for(const std::string& fileType : m_controller->getFileTypeStrings())
-            {
-                CmbFileTypeSingle().Items().Append(winrt::box_value(winrt::to_hstring(fileType)));
-            }
+            SetComboBoxModel(CmbFileTypeSingle(), m_controller->getFileTypeStrings());
             CmbFileTypeSingle().SelectedIndex(static_cast<int>(m_controller->getPreviousDownloadOptions().getFileType()));
-            for(const std::string& quality : m_controller->getQualityStrings(static_cast<size_t>(CmbFileTypeSingle().SelectedIndex())))
-            {
-                CmbQualitySingle().Items().Append(winrt::box_value(winrt::to_hstring(quality)));
-            }
-            CmbQualitySingle().SelectedIndex(0);
-            for(const std::string& audioLanguage : m_controller->getAudioLanguageStrings())
-            {
-                CmbAudioLanguageSingle().Items().Append(winrt::box_value(winrt::to_hstring(audioLanguage)));
-            }
-            CmbAudioLanguageSingle().SelectedIndex(0);
+            SetComboBoxModel(CmbQualitySingle(), m_controller->getQualityStrings(static_cast<size_t>(CmbFileTypeSingle().SelectedIndex())));
+            SetComboBoxModel(CmbAudioLanguageSingle(), m_controller->getAudioLanguageStrings());
             TglDownloadSubtitlesSingle().IsOn(m_controller->getPreviousDownloadOptions().getDownloadSubtitles());
             TglPreferAV1Single().IsOn(m_controller->getPreviousDownloadOptions().getPreferAV1());
             TglSplitChaptersSingle().IsOn(m_controller->getPreviousDownloadOptions().getSplitChapters());
@@ -179,10 +174,7 @@ namespace winrt::Nickvision::TubeConverter::WinUI::implementation
         {
             ViewStack().CurrentPage(L"DownloadPlaylist");
             LblItemsPlaylist().Text(winrt::to_hstring(std::vformat(_("Playlist Items ({})"), std::make_format_args(CodeHelpers::unmove(m_controller->getMediaCount())))));
-            for(const std::string& fileType : m_controller->getFileTypeStrings())
-            {
-                CmbFileTypePlaylist().Items().Append(winrt::box_value(winrt::to_hstring(fileType)));
-            }
+            SetComboBoxModel(CmbFileTypePlaylist(), m_controller->getFileTypeStrings());
             CmbFileTypePlaylist().SelectedIndex(static_cast<int>(m_controller->getPreviousDownloadOptions().getFileType()));
             TxtSaveFolderPlaylist().Text(winrt::to_hstring(m_controller->getPreviousDownloadOptions().getSaveFolder().string()));
             TglDownloadSubtitlesPlaylist().IsOn(m_controller->getPreviousDownloadOptions().getDownloadSubtitles());
@@ -204,6 +196,11 @@ namespace winrt::Nickvision::TubeConverter::WinUI::implementation
             }
             TglNumberTitlesPlaylist().IsOn(m_controller->getPreviousDownloadOptions().getNumberTitles());
         }
+    }
+
+    void AddDownloadDialog::OnCmbFileTypeSingleChanged(const IInspectable& sender, const SelectionChangedEventArgs& args)
+    {
+        SetComboBoxModel(CmbQualitySingle(), m_controller->getQualityStrings(static_cast<size_t>(CmbFileTypeSingle().SelectedIndex())));
     }
 
     Windows::Foundation::IAsyncAction AddDownloadDialog::SelectSaveFolderSingle(const IInspectable& sender, const RoutedEventArgs& args)

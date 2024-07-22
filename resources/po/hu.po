@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-07-18 12:31-0400\n"
+"POT-Creation-Date: 2024-07-21 22:31-0400\n"
 "PO-Revision-Date: 2024-01-06 02:07+0000\n"
 "Last-Translator: Kingproone <PlayerGuy@protonmail.com>\n"
 "Language-Team: Hungarian <https://hosted.weblate.org/projects/nickvision-"
@@ -132,22 +132,22 @@ msgid "Unable to download and install update"
 msgstr "A frissítés letöltése és telepítése nem sikerült."
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:21
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} GiB/s"
 msgstr "{0:f1} GiB/mp"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:25
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} MiB/s"
 msgstr "{0:f1} MiB/mp"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:29
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} KiB/s"
 msgstr "{0:f1} KiB/mp"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:33
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} B/s"
 msgstr "{0:f1} B/mp"
 
@@ -157,40 +157,132 @@ msgid "The file already exists and overwriting is disabled."
 msgstr "A fájl már létezik, de felülírás nem engedélyezett"
 
 #. Localize Strings
-#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:9
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:11
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:199
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:27
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:37
 #: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:75
 msgid "Add Download"
 msgstr "Hozzáadás"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:41
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:31
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:18
+msgid "Back"
+msgstr "Vissza"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:52
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:41
 msgid "Media URL"
 msgstr "Hivatkozás"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:46
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:57
 msgid "Authenticate"
 msgstr "Bejelentkezés"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:51
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:62
 msgid "Credential"
 msgstr "Bejelentkezés"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:55
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:34
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:66
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:44
 msgid "Username"
 msgstr "Felhasználónév"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:59
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:36
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:70
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:46
 msgid "Password"
 msgstr "Jelszó"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:65
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:28
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:76
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:38
 msgid "Validate"
 msgstr "Elemzés"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:95
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:48
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:62
+msgid "File Type"
+msgstr "Fájltípus"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:99
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:49
+msgid "Quality"
+msgstr "Felbontás/minőség"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:103
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:50
+msgid "Audio Language"
+msgstr "Hangsáv"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:107
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:51
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:65
+msgid "Download Subtitles"
+msgstr "Feliratok letöltése"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:111
+msgid "Advanced Options"
+msgstr "Haladó beállítások"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:126
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:54
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:63
+#, fuzzy
+msgid "Save Folder"
+msgstr "Letöltés helyének kiválasztása"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:132
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:55
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:64
+msgid "Select Save Folder"
+msgstr "Letöltés helyének kiválasztása"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:141
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:56
+#, fuzzy
+msgid "File Name"
+msgstr "Fájlnév"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:147
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:58
+msgid "Revert to Title"
+msgstr ""
+
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:156
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:152
+msgid "Download"
+msgstr "Letöltés"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:174
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:52
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:66
+msgid "Prefer AV1 Codec"
+msgstr "AV1 kódoló előnyben részesítése"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:178
+#, fuzzy
+msgid "Split Videos by Chapters"
+msgstr "Fejezetek darabolása"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:182
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:61
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:68
+#, fuzzy
+msgid "Limit Download Speed"
+msgstr "Tartalom letöltése"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:186
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:59
+msgid "Start Time"
+msgstr "Részlet kezdete"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:192
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:205
+msgid "Revert to Original"
+msgstr ""
+
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:199
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:60
+msgid "End Time"
+msgstr "Részlet vége"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:5
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:8
@@ -585,7 +677,7 @@ msgid "Don't show this message again"
 msgstr "Ne mutassa újra"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:177
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:141
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:148
 #: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:245
 #: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:382
 msgid "Close"
@@ -628,126 +720,66 @@ msgstr ""
 msgid "Search"
 msgstr "Keresés..."
 
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:29
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:146
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:39
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:153
 msgid "Cancel"
 msgstr "Mégse"
 
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:32
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:42
 #, fuzzy
 msgid "Enter media url here"
 msgstr "Hivatkozás beillesztése"
 
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:33
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:43
 #, fuzzy
 msgid "Authentication"
 msgstr "Bejelentkezés"
 
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:35
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:45
 #, fuzzy
 msgid "Enter username here"
 msgstr "Felhasználónév megadása"
 
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:37
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:47
 msgid "Enter password here"
 msgstr "Jelszó megadása"
 
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:38
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:52
-msgid "File Type"
-msgstr "Fájltípus"
-
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:39
-msgid "Quality"
-msgstr "Felbontás/minőség"
-
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:40
-msgid "Audio Language"
-msgstr "Hangsáv"
-
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:41
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:55
-msgid "Download Subtitles"
-msgstr "Feliratok letöltése"
-
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:42
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:56
-msgid "Prefer AV1 Codec"
-msgstr "AV1 kódoló előnyben részesítése"
-
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:43
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:57
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:53
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:67
 #, fuzzy
 msgid "Split Video by Chapters"
 msgstr "Fejezetek darabolása"
 
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:44
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:53
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:57
 #, fuzzy
-msgid "Save Folder"
-msgstr "Letöltés helyének kiválasztása"
-
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:45
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:54
-msgid "Select Save Folder"
-msgstr "Letöltés helyének kiválasztása"
-
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:46
-#, fuzzy
-msgid "Filename"
-msgstr "Fájlnév"
-
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:47
-#, fuzzy
-msgid "Enter filename here"
+msgid "Enter file name here"
 msgstr "Felhasználónév megadása"
 
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:48
-msgid "Revert to Title"
-msgstr ""
-
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:49
-msgid "Start Time"
-msgstr "Részlet kezdete"
-
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:50
-msgid "End Time"
-msgstr "Részlet vége"
-
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:51
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:58
-#, fuzzy
-msgid "Limit Download Speed"
-msgstr "Tartalom letöltése"
-
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:59
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:69
 msgid "Number Titles"
 msgstr "Címek számozása"
 
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:82
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:93
+msgid "Use manual credential"
+msgstr "Bejelentkezés másként"
+
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:94
 #, fuzzy
 msgid "None"
 msgstr "Nincs"
 
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:83
-msgid "Use manual credential"
-msgstr "Bejelentkezés másként"
-
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:139
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:146
 msgid "Error"
 msgstr "Hiba"
 
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:140
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:147
 msgid ""
 "The url provided is invalid or unable to be reached. Check both the url and "
 "authentication used."
 msgstr ""
 
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:145
-msgid "Download"
-msgstr "Letöltés"
-
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:181
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:176
+#, c++-format
 msgid "Playlist Items ({})"
 msgstr ""
 
@@ -800,7 +832,7 @@ msgid "Debug information copied to clipboard."
 msgstr "Letöltés napló vágólapra másolva."
 
 #: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:376
-#, fuzzy
+#, fuzzy, c++-format
 msgid ""
 "Developers:\n"
 "{}\n"
@@ -822,7 +854,7 @@ msgstr ""
 "{3}"
 
 #: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:380
-#, fuzzy
+#, fuzzy, c++-format
 msgid ""
 "Developers:\n"
 "{}\n"
@@ -988,9 +1020,6 @@ msgstr "Proxy átjáró megadása"
 #~ msgid "Add Login"
 #~ msgstr "Bejelentkezés hozzáadása"
 
-#~ msgid "Advanced Options"
-#~ msgstr "Haladó beállítások"
-
 #~ msgid "All downloads have finished."
 #~ msgstr "Minden letöltés befejeződött."
 
@@ -999,9 +1028,6 @@ msgstr "Proxy átjáró megadása"
 
 #~ msgid "An application restart is required to change the theme."
 #~ msgstr "A téma beállításához az alkalmazás újraindítása szükséges."
-
-#~ msgid "Back"
-#~ msgstr "Vissza"
 
 #~ msgid "Clear Completed"
 #~ msgstr "Befejezett letöltések törlése"

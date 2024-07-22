@@ -87,6 +87,11 @@ namespace Nickvision::TubeConverter::Shared::Models
          */
         size_t getCompletedCount() const;
         /**
+         * @brief Gets the options used for the downloader.
+         * @return The DownloaderOptions
+         */
+        const DownloaderOptions& getDownloaderOptions() const;
+        /**
          * @brief Sets the options to use for the downloader.
          * @param options The DownloaderOptions
          */

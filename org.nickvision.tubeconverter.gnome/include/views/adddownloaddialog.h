@@ -23,10 +23,6 @@ namespace Nickvision::TubeConverter::GNOME::Views
 
     private:
         /**
-         * @brief Handles when the dialog is closed.
-         */
-        void onClosed();
-        /**
          * @brief Handles when the url text is changed.
          */
         void onTxtUrlChanged();
@@ -35,13 +31,41 @@ namespace Nickvision::TubeConverter::GNOME::Views
          */
         void onCmbCredentialChanged();
         /**
-         * @brief Handles when the validate url button is clicked.
+         * @brief Validates the url.
          */
-        void onValidateUrl();
+        void validateUrl();
         /**
          * @brief Handles when a url is validated.
          */
-        void onUrlValidated(const Events::ParamEventArgs<std::vector<Shared::Models::Media>>& args);
+        void onUrlValidated();
+        /**
+         * @brief Handles when the single file type combobox is changed.
+         */
+        void onFileTypeSingleChanged();
+        /**
+         * @brief Goes back to the single download page.
+         */
+        void backSingle();
+        /**
+         * @brief Shows the advanced options for a single download.
+         */
+        void advancedOptionsSingle();
+        /**
+         * @brief Prompts the user to select a folder to save a single download.
+         */
+        void selectSaveFolderSingle();
+        /**
+         * @brief Reverts the filename for a single download to its original title.
+         */
+        void revertFilenameSingle();
+        /**
+         * @brief Reverts the start time for a single download to its original value.
+         */
+        void revertStartTimeSingle();
+        /**
+         * @brief Reverts the end time for a single download to its original value.
+         */
+        void revertEndTimeSingle();
         std::shared_ptr<Shared::Controllers::AddDownloadDialogController> m_controller;
     };
 }

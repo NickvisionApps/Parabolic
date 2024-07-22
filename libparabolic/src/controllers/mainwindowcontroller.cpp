@@ -194,7 +194,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
 
     std::shared_ptr<AddDownloadDialogController> MainWindowController::createAddDownloadDialogController()
     {
-        return std::make_shared<AddDownloadDialogController>(m_dataFileManager.get<Configuration>("config").getDownloaderOptions(), m_dataFileManager.get<PreviousDownloadOptions>("prev"), m_keyring);
+        return std::make_shared<AddDownloadDialogController>(m_downloadManager, m_dataFileManager.get<PreviousDownloadOptions>("prev"), m_keyring);
     }
 
     std::shared_ptr<PreferencesViewController> MainWindowController::createPreferencesViewController()

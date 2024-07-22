@@ -55,13 +55,19 @@ namespace winrt::Nickvision::TubeConverter::WinUI::implementation
          */
         void OnUrlValidated(const ::Nickvision::Events::ParamEventArgs<bool>& args);
         /**
+         * @brief Handles when the single file type combobox is changed.
+         * @param sender IInspectable
+         * @param args SelectionChangedEventArgs
+         */
+        void OnCmbFileTypeSingleChanged(const IInspectable& sender, const Microsoft::UI::Xaml::Controls::SelectionChangedEventArgs& args);
+        /**
          * @brief Prompts the user to select a folder to save a single download.
          * @param sender IInspectable
          * @param args RoutedEventArgs
          */
         Windows::Foundation::IAsyncAction SelectSaveFolderSingle(const IInspectable& sender, const Microsoft::UI::Xaml::RoutedEventArgs& args);
         /**
-         * @brief Reverts the single download's filename back to its original title.
+         * @brief Reverts the filename for a single download to its original title.
          * @param sender IInspectable
          * @param args RoutedEventArgs
          */
