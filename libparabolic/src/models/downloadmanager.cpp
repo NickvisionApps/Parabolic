@@ -11,7 +11,7 @@ namespace Nickvision::TubeConverter::Shared::Models
         m_history{ history },
         m_logger{ logger }
     {
-
+        m_history.saved() += [this](const EventArgs&){ loadHistory(); };
     }
 
     Event<ParamEventArgs<std::vector<HistoricDownload>>>& DownloadManager::historyChanged()

@@ -388,11 +388,11 @@ namespace winrt::Nickvision::TubeConverter::WinUI::implementation
     
     Windows::Foundation::IAsyncAction MainWindow::AddDownload(const IInspectable& sender, const RoutedEventArgs& args)
     {
-        AddDownloadDialog dialog;
+        WinUI::AddDownloadDialog dialog{ winrt::make<AddDownloadDialog>() };
         dialog.RequestedTheme(MainGrid().ActualTheme());
         dialog.XamlRoot(MainGrid().XamlRoot());
-        dialog.SetController(m_controller->createAddDownloadDialogController(), m_hwnd);
-        co_await dialog.ShowAsync();
+        dialog.as<AddDownloadDialog>()->SetController(m_controller->createAddDownloadDialogController(), m_hwnd);
+        co_await dialog.as<AddDownloadDialog>()->ShowAsync();
     }
 
     void MainWindow::ClearHistory(const IInspectable& sender, const RoutedEventArgs& args)

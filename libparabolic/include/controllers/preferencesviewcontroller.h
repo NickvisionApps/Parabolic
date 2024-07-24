@@ -7,6 +7,7 @@
 #include "models/configuration.h"
 #include "models/completednotificationpreference.h"
 #include "models/downloaderoptions.h"
+#include "models/downloadhistory.h"
 #include "models/theme.h"
 
 namespace Nickvision::TubeConverter::Shared::Controllers
@@ -20,8 +21,9 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         /**
          * @brief Constructs a PreferencesViewController.
          * @param configuration The reference to the configuration to use
+         * @param downloadHistory The reference to the download history to use
          */
-        PreferencesViewController(Models::Configuration& configuration);
+        PreferencesViewController(Models::Configuration& configuration, Models::DownloadHistory& downloadHistory);
         /**
          * @brief Gets the cookies extension url for a browser.
          * @param browser The browser
@@ -79,12 +81,23 @@ namespace Nickvision::TubeConverter::Shared::Controllers
          */
         void setDownloaderOptions(const Models::DownloaderOptions& options);
         /**
+         * @brief Gets the index of the selected download history length.
+         * @return The download history length index
+         */
+        size_t getHistoryLengthIndex() const;
+        /**
+         * @brief Sets the index of the selected download history length.
+         * @param length The new download history length index
+         */
+        void setHistoryLengthIndex(size_t length);
+        /**
          * @brief Saves the current configuration to disk.
          */
         void saveConfiguration();
 
     private:
         Models::Configuration& m_configuration;
+        Models::DownloadHistory& m_downloadHistory;
     };
 }
 

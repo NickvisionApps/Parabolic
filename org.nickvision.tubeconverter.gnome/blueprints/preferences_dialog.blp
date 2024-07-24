@@ -43,6 +43,18 @@ Adw.PreferencesDialog root {
           icon-name: "power-symbolic";
         }
       }
+
+      Adw.ComboRow historyLengthRow {
+        title: _("Download History Length");
+        model: Gtk.StringList {
+          strings [_("Never"), _("One Day"), _("One Week"), _("One Month"), _("Three Months"), _("Forever")]
+        };
+
+        [prefix]
+        Gtk.Image {
+          icon-name: "emoji-recent-symbolic";
+        }
+      }
     }
 
     Adw.PreferencesGroup {
@@ -97,8 +109,8 @@ Adw.PreferencesDialog root {
       title: _("Downloader");
 
       Adw.SpinRow speedLimitRow {
-        title: _("Speed Limit");
-        subtitle: _("This limit (in KiB/s) is applied to downloads that have speed limit enabled. Changing the value doesn't affect already running downloads.");
+        title: _("Speed Limit (KiB/s)");
+        subtitle: _("This limit is applied only to downloads that have enabled limiting download speed.");
         numeric: true;
         adjustment: Gtk.Adjustment {
           lower: 512.0;
@@ -133,7 +145,6 @@ Adw.PreferencesDialog root {
 
       Adw.ActionRow cookiesFileRow {
         title: _("Cookies File");
-        tooltip-text: _("A cookies file can be provided to Parabolic to allow downloading media that requires a login.");
 
         [prefix]
         Gtk.Image {
@@ -178,7 +189,7 @@ Adw.PreferencesDialog root {
                 maximum-size: 300;
                 child: Gtk.Label {
                   wrap: true;
-                  label: _("Cookies can be passed to yt-dlp in the form of TXT files. Export cookies from your browser using the following extensions (use at your own risk):");
+                  label: _("Cookies can be passed to yt-dlp in the form of TXT files. Cookies may allow yt-dlp to access media that requires a login. Export cookies from your browser using the following extensions (use at your own risk):");
                 };
               }
 
@@ -259,7 +270,7 @@ Adw.PreferencesDialog root {
 
       Adw.SwitchRow removeSourceDataRow  {
         title: _("Remove Source Data");
-        subtitle: _("If enabled, Parabolic will clear metadata fields containing the URL and other identifying information of a download.");
+        subtitle: _("If enabled, Parabolic will clear metadata fields containing identifying download information.");
         sensitive: bind embedMetadataRow.active;
 
         [prefix]
@@ -274,7 +285,6 @@ Adw.PreferencesDialog root {
 
       Adw.SwitchRow useAriaRow {
         title: _("Use aria2");
-        subtitle: _("Enable to use aria2 downloader. It can be faster, but you will not see download progress.");
 
         [prefix]
         Gtk.Image {

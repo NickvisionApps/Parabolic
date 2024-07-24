@@ -43,6 +43,12 @@
                     </nickvision:SettingsRow.Child>
                 </nickvision:SettingsRow>
 
+                <nickvision:SettingsRow x:Name="RowHistoryLength" Glyph="&#xE81C;">
+                    <nickvision:SettingsRow.Child>
+                        <ComboBox x:Name="CmbHistoryLength" SelectionChanged="OnCmbChanged"/>
+                    </nickvision:SettingsRow.Child>
+                </nickvision:SettingsRow>
+
                 <TextBlock x:Name="LblDownloads" Style="{StaticResource NavigationViewItemHeaderTextStyle}"/>
 
                 <nickvision:SettingsRow x:Name="RowOverwriteExistingFiles" Glyph="&#xE8E5;">

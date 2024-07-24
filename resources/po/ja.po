@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-07-24 18:15-0400\n"
+"POT-Creation-Date: 2024-07-24 19:07-0400\n"
 "PO-Revision-Date: 2024-03-27 08:01+0000\n"
 "Last-Translator: Gnuey56 <gnuey56@proton.me>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -354,9 +354,9 @@ msgid "History"
 msgstr "履歴"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:112
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:49
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:61
 #: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:58
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:38
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:45
 msgid "Downloads"
 msgstr "ダウンロード"
 
@@ -453,7 +453,9 @@ msgid "When all downloads finish"
 msgstr "すべてのダウンロード完了時"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:29
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:50
 #: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:34
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:39
 #, fuzzy
 msgid "Never"
 msgstr "通知しない"
@@ -464,135 +466,161 @@ msgstr "通知しない"
 msgid "Prevent Suspend"
 msgstr "サスペンドを妨げる"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:52
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:39
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:48
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:38
+#, fuzzy
+msgid "Download History Length"
+msgstr "履歴"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:50
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:40
+msgid "One Day"
+msgstr ""
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:50
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:41
+msgid "One Week"
+msgstr ""
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:50
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:42
+msgid "One Month"
+msgstr ""
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:50
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:43
+msgid "Three Months"
+msgstr ""
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:50
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:44
+#, fuzzy
+msgid "Forever"
+msgstr "通知しない"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:64
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:46
 msgid "Overwrite Existing Files"
 msgstr "存在するファイルを上書きする"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:61
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:40
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:73
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:47
 msgid "Max Number of Active Downloads"
 msgstr "同時にダウンロードできる最大数"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:77
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:89
 msgid "Limit Filename Characters"
 msgstr "ファイル名の文字を制限"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:78
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:90
 msgid "Restricts characters in filenames to only those supported by Windows."
 msgstr "ファイル名の文字を Windows がサポートする文字のみに制限する。"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:87
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:45
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:99
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:52
 msgid "Include Auto-Generated Subtitles"
 msgstr "自動生成された字幕を含める"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:97
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:48
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:109
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:55
 msgid "Downloader"
 msgstr "ダウンローダー"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:100
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:49
-msgid "Speed Limit"
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:112
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:56
+#, fuzzy
+msgid "Speed Limit (KiB/s)"
 msgstr "スピード制限"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:101
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:50
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:113
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:57
+#, fuzzy
 msgid ""
-"This limit (in KiB/s) is applied to downloads that have speed limit enabled. "
-"Changing the value doesn't affect already running downloads."
+"This limit is applied only to downloads that have enabled limiting download "
+"speed."
 msgstr ""
 "この制限（KIB/毎秒に制限）は、ダウンロードにスピード制限が設定されている時の"
 "み有効になります。すでに進行中のダウンロードには、設定は適用されません。"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:117
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:51
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:129
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:58
 msgid "Use SponsorBlock for YouTube"
 msgstr "YouTube のダウンロードで SponsorBlock を使用"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:126
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:54
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:138
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:61
 msgid "Proxy URL"
 msgstr "プロキシ URL"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:135
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:56
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:147
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:63
 msgid "Cookies File"
 msgstr "クッキーファイル"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:136
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:57
-#, fuzzy
-msgid ""
-"A cookies file can be provided to Parabolic to allow downloading media that "
-"requires a login."
-msgstr ""
-"ログインが必要なメディアをダウンロードするために yt-dlp にクッキーファイルを"
-"渡すことができます。"
-
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:146
-#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:88
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:58
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:157
+#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:90
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:64
 msgid "Select Cookies File"
 msgstr "クッキーファイルを選択"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:156
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:59
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:167
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:65
 msgid "Clear Cookies File"
 msgstr "クッキーファイルを消去"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:166
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:60
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:177
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:66
 msgid "Cookies File Information"
 msgstr "クッキーファイルの情報"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:181
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:61
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:192
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:67
+#, fuzzy
 msgid ""
-"Cookies can be passed to yt-dlp in the form of TXT files. Export cookies "
-"from your browser using the following extensions (use at your own risk):"
+"Cookies can be passed to yt-dlp in the form of TXT files. Cookies may allow "
+"yt-dlp to access media that requires a login. Export cookies from your "
+"browser using the following extensions (use at your own risk):"
 msgstr ""
 "クッキーは TXT ファイル形式で yt-dlp に渡すことができます。ブラウザの拡張機能"
 "を使ってクッキーをエクスポートできます(自己責任で使用してください):"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:193
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:62
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:204
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:68
 msgid "Chrome/Edge"
 msgstr "Chrome/Edge"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:202
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:63
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:213
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:69
 msgid "Firefox"
 msgstr "Firefox"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:220
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:64
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:231
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:70
 msgid "Converter"
 msgstr "コンバーター"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:223
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:65
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:234
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:71
 msgid "Embed Metadata"
 msgstr "メタデータを埋め込む"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:232
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:71
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:243
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:77
 msgid "Embed Chapters"
 msgstr "チャプター（章）を埋め込む"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:241
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:68
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:252
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:74
 msgid "Embed Subtitles"
 msgstr "字幕を埋め込む"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:250
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:74
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:261
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:80
 msgid "Crop Audio Thumbnails"
 msgstr "オーディオサムネイルを整形"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:251
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:75
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:262
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:81
 #, fuzzy
 msgid ""
 "If enabled, Parabolic will crop the thumbnails of audio files to squares."
@@ -600,51 +628,42 @@ msgstr ""
 "有効であれば、Parabolic はオーディオのダウンロードで自動的にサムネイルを整形"
 "する詳細オプションを有効にします"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:261
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:78
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:272
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:84
 msgid "Remove Source Data"
 msgstr "ダウンロード元のデータを削除"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:262
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:79
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:273
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:85
 #, fuzzy
 msgid ""
-"If enabled, Parabolic will clear metadata fields containing the URL and "
-"other identifying information of a download."
+"If enabled, Parabolic will clear metadata fields containing identifying "
+"download information."
 msgstr "メディアのソースを特定できる URL などのメタデータを削除する"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:273
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:82
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:284
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:88
 #, fuzzy
 msgid "aria2"
 msgstr "aria2 を使用"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:276
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:83
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:287
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:89
 msgid "Use aria2"
 msgstr "aria2 を使用"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:277
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:84
-msgid ""
-"Enable to use aria2 downloader. It can be faster, but you will not see "
-"download progress."
-msgstr ""
-"aria2 をダウンローダーとして使用します。ダウンロードは速くなりますが、ダウン"
-"ロードの進捗を見ることはできません。"
-
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:286
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:87
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:296
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:92
 msgid "Max Connections Per Server (-x)"
 msgstr "サーバーごとの最大接続数（-x）"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:303
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:88
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:313
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:93
 msgid "Minimum Split Size (-k)"
 msgstr "最小分割サイズ"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:304
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:89
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:314
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:94
 msgid "The minimum size of which to split a file (in MiB)."
 msgstr "ファイルあたりの最小分割サイズ（MiB）。"
 
@@ -743,15 +762,15 @@ msgstr "削除"
 msgid "GitHub Repo"
 msgstr "GitHub リポジトリ"
 
-#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:26
-#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:115
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:109
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:165
+#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:27
+#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:117
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:115
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:171
 #, fuzzy
 msgid "No file selected"
 msgstr "ファイルが選択されていません"
 
-#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:90
+#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:92
 msgid "Text File (*.txt)"
 msgstr ""
 
@@ -909,33 +928,48 @@ msgstr "アップデートを自動的にチェックする"
 
 #: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:29
 #: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:36
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:46
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:52
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:66
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:69
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:53
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:59
 #: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:72
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:76
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:80
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:85
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:75
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:78
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:82
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:86
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:90
 msgid "On"
 msgstr "オン"
 
 #: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:30
 #: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:37
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:47
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:53
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:67
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:70
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:54
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:60
 #: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:73
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:77
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:81
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:86
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:76
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:79
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:83
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:87
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:91
 msgid "Off"
 msgstr "オフ"
 
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:55
+#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:62
 msgid "Enter proxy URL here"
 msgstr "プロキシの URL を入力"
+
+#, fuzzy
+#~ msgid ""
+#~ "A cookies file can be provided to Parabolic to allow downloading media "
+#~ "that requires a login."
+#~ msgstr ""
+#~ "ログインが必要なメディアをダウンロードするために yt-dlp にクッキーファイル"
+#~ "を渡すことができます。"
+
+#~ msgid ""
+#~ "Enable to use aria2 downloader. It can be faster, but you will not see "
+#~ "download progress."
+#~ msgstr ""
+#~ "aria2 をダウンローダーとして使用します。ダウンロードは速くなりますが、ダウ"
+#~ "ンロードの進捗を見ることはできません。"
 
 #, fuzzy
 #~ msgid "Enter start time here"

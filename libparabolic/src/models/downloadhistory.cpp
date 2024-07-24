@@ -52,6 +52,10 @@ namespace Nickvision::TubeConverter::Shared::Models
 
     void DownloadHistory::setLength(HistoryLength length)
     {
+        if(m_length == length)
+        {
+            return;
+        }
         m_length = length;
         if(m_length == HistoryLength::Never)
         {

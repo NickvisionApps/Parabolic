@@ -199,7 +199,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
 
     std::shared_ptr<PreferencesViewController> MainWindowController::createPreferencesViewController()
     {
-        return std::make_shared<PreferencesViewController>(m_dataFileManager.get<Configuration>("config"));
+        return std::make_shared<PreferencesViewController>(m_dataFileManager.get<Configuration>("config"), m_dataFileManager.get<DownloadHistory>("history"));
     }
 
 #ifdef _WIN32
