@@ -78,6 +78,12 @@ namespace Nickvision::TubeConverter::Shared::Controllers
          */
         std::vector<std::string> getAudioLanguageStrings() const;
         /**
+         * @brief Gets the url for the media at the specified index.
+         * @param index The index of the media
+         * @return The url of the media
+         */
+        const std::string& getMediaUrl(size_t index) const;
+        /**
          * @brief Gets the title for the media at the specified index.
          * @param index The index of the media
          * @return The title of the media

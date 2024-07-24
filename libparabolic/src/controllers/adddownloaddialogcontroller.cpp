@@ -175,6 +175,16 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         return languages;
     }
 
+    const std::string& AddDownloadDialogController::getMediaUrl(size_t index) const
+    {
+        static std::string empty;
+        if(m_urlInfo && index < m_urlInfo->count())
+        {
+            return m_urlInfo->get(index).getUrl();
+        }
+        return empty;
+    }
+
     const std::string& AddDownloadDialogController::getMediaTitle(size_t index) const
     {
         static std::string empty;

@@ -12,7 +12,7 @@ Adw.Dialog root {
       };
 
       [start]
-      Gtk.Button backDownloadSingleButton {
+      Gtk.Button backButton {
         icon-name: "left-symbolic";
         visible: false;
         tooltip-text: _("Back");
@@ -99,10 +99,6 @@ Adw.Dialog root {
               title: _("Quality");
             }
 
-            Adw.ComboRow audioLanguageSingleRow {
-              title: _("Audio Language");
-            }
-
             Adw.SwitchRow downloadSubtitlesSingleRow {
               title: _("Download Subtitles");
             }
@@ -149,6 +145,10 @@ Adw.Dialog root {
                 styles ["flat"]
               }
             }
+
+            Adw.SwitchRow limitSpeedSingleRow {
+              title: _("Limit Download Speed");
+            }
           }
 
           Gtk.Button downloadSingleButton {
@@ -170,16 +170,16 @@ Adw.Dialog root {
           margin-bottom: 16;
 
           Adw.PreferencesGroup {
+            Adw.ComboRow audioLanguageSingleRow {
+              title: _("Audio Language");
+            }
+
             Adw.SwitchRow preferAV1SingleRow {
               title: _("Prefer AV1 Codec");
             }
 
             Adw.SwitchRow splitChaptersSingleRow {
               title: _("Split Videos by Chapters");
-            }
-
-            Adw.SwitchRow limitSpeedSingleRow {
-              title: _("Limit Download Speed");
             }
 
             Adw.EntryRow startTimeSingleRow {
@@ -221,7 +221,87 @@ Adw.Dialog root {
           margin-bottom: 16;
 
           Adw.PreferencesGroup {
-            
+            Adw.ComboRow fileTypePlaylistRow {
+              title: _("File Type");
+            }
+
+            Adw.SwitchRow downloadSubtitlesPlaylistRow {
+              title: _("Download Subtitles");
+            }
+
+            Adw.SwitchRow preferAV1PlaylistRow {
+              title: _("Prefer AV1 Codec");
+            }
+
+            Adw.SwitchRow splitChaptersPlaylistRow {
+              title: _("Split Videos by Chapters");
+            }
+          }
+
+          Adw.PreferencesGroup {
+            Adw.ActionRow saveFolderPlaylistRow {
+              title: _("Save Folder");
+
+              [suffix]
+              Gtk.Button selectSaveFolderPlaylistButton {
+                valign: center;
+                icon-name: "folder-open-symbolic";
+                tooltip-text: _("Select Save Folder");
+
+                styles ["flat"]
+              }
+
+              styles ["property"]
+            }
+
+            Adw.ActionRow itemsPlaylistRow {
+              title: _("Playlist Items");
+              activatable-widget: itemsPlaylistButton;
+
+              [suffix]
+              Gtk.Button itemsPlaylistButton {
+                valign: center;
+                icon-name: "right-symbolic";
+
+                styles ["flat"]
+              }
+            }
+
+            Adw.SwitchRow limitSpeedPlaylistRow {
+              title: _("Limit Download Speed");
+            }
+          }
+
+          Gtk.Button downloadPlaylistButton {
+            halign: center;
+            label: _("Download");
+
+            styles ["pill", "suggested-action"]
+          }
+        };
+      }
+
+      Adw.ViewStackPage {
+        name: "download-playlist-items";
+        child: Gtk.Box {
+          orientation: vertical;
+          spacing: 16;
+          margin-start: 16;
+          margin-end: 16;
+          margin-bottom: 16;
+
+          Adw.PreferencesGroup {
+            Adw.SwitchRow numberTitlesPlaylistRow {
+              title: _("Number Titles");
+            }
+          }
+
+          Gtk.ScrolledWindow {
+            hexpand: true;
+            vexpand: true;
+            min-content-width: 360;
+            min-content-height: 400;
+            child: Adw.PreferencesGroup itemsPlaylistGroup { };
           }
         };
       }

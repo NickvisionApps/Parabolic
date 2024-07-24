@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-07-21 22:43-0400\n"
+"POT-Creation-Date: 2024-07-24 16:02-0400\n"
 "PO-Revision-Date: 2023-05-30 20:10+0100\n"
 "Last-Translator: Ricardo Simões xmcorporation.com <simplelogin-"
 "newsletter.635e2@aleeas.com>\n"
@@ -201,6 +201,7 @@ msgid "Validate"
 msgstr "Validar"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:95
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:225
 #: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:48
 #: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:62
 msgid "File Type"
@@ -212,68 +213,77 @@ msgid "Quality"
 msgstr "Qualidade"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:103
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:50
-#, fuzzy
-msgid "Audio Language"
-msgstr "Pasta de Destino (Inválida)"
-
-#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:107
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:229
 #: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:51
 #: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:65
 #, fuzzy
 msgid "Download Subtitles"
 msgstr "Legenda"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:111
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:107
 msgid "Advanced Options"
 msgstr "Opções Avançadas"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:126
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:122
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:243
 #: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:54
 #: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:63
 #, fuzzy
 msgid "Save Folder"
 msgstr "Selecione Pasta de Destino"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:132
-#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:145
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:128
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:249
+#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:185
+#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:214
 #: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:55
 #: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:64
 msgid "Select Save Folder"
 msgstr "Selecione Pasta de Destino"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:141
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:137
 #: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:56
 #, fuzzy
 msgid "File Name"
 msgstr "Nome do Ficheiro"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:147
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:143
+#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:143
 #: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:58
 msgid "Revert to Title"
 msgstr ""
 
-#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:156
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:152
-msgid "Download"
-msgstr "Transferência"
-
-#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:174
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:52
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:66
-msgid "Prefer AV1 Codec"
-msgstr ""
-
-#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:178
-msgid "Split Videos by Chapters"
-msgstr ""
-
-#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:182
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:150
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:271
 #: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:61
 #: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:68
 #, fuzzy
 msgid "Limit Download Speed"
 msgstr "Transferir Media"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:156
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:277
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:152
+msgid "Download"
+msgstr "Transferência"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:174
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:50
+#, fuzzy
+msgid "Audio Language"
+msgstr "Pasta de Destino (Inválida)"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:178
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:233
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:52
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:66
+msgid "Prefer AV1 Codec"
+msgstr ""
+
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:182
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:237
+msgid "Split Videos by Chapters"
+msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:186
 #: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:59
@@ -291,6 +301,17 @@ msgstr ""
 #, fuzzy
 msgid "End Time"
 msgstr "URL da Media (Inválido)"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:258
+#, fuzzy
+msgid "Playlist Items"
+msgstr "Playlist"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:295
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:69
+#, fuzzy
+msgid "Number Titles"
+msgstr "Títulos de Números"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:5
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:8
@@ -667,30 +688,35 @@ msgstr "Aplicação"
 msgid "Quit"
 msgstr "Fechar"
 
-#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:41
+#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:43
 #: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:93
 msgid "Use manual credential"
 msgstr ""
 
-#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:93
+#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:98
 #: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:146
 msgid "Error"
 msgstr "Erro"
 
-#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:93
+#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:98
 #: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:147
 msgid ""
 "The url provided is invalid or unable to be reached. Check both the url and "
 "authentication used."
 msgstr ""
 
-#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:94
+#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:99
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:177
 #: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:148
 #: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:245
 #: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:382
 msgid "Close"
 msgstr ""
+
+#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:127
+#, fuzzy, c++-format
+msgid "{} items"
+msgstr "{0} de {1} itens"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:140
 #, fuzzy
@@ -774,11 +800,6 @@ msgstr ""
 #: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:57
 msgid "Enter file name here"
 msgstr ""
-
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:69
-#, fuzzy
-msgid "Number Titles"
-msgstr "Títulos de Números"
 
 #: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:94
 #, fuzzy
@@ -957,12 +978,6 @@ msgstr ""
 #~ msgstr[0] "{0} transferência — {1:f1}% ({2})"
 #~ msgstr[1] "{0} transferências — {1:f1}% ({2})"
 
-#, csharp-format
-#~ msgid "{0} of {1} items"
-#~ msgid_plural "{0} of {1} items"
-#~ msgstr[0] "{0} de {1} itens"
-#~ msgstr[1] "{0} de {1} itens"
-
 #~ msgid "Add"
 #~ msgstr "Adicionar"
 
@@ -1050,9 +1065,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "No Running Downloads"
 #~ msgstr "Limpar Fila de Transferências"
-
-#~ msgid "Playlist"
-#~ msgstr "Playlist"
 
 #~ msgid "Preparing..."
 #~ msgstr "A preparar..."

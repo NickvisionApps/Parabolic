@@ -117,7 +117,7 @@ namespace winrt::Nickvision::TubeConverter::WinUI::implementation
             //Download
             if(result == ContentDialogResult::Primary)
             {
-
+                //TODO
             }
         }
         co_return result;
@@ -181,7 +181,7 @@ namespace winrt::Nickvision::TubeConverter::WinUI::implementation
             TglPreferAV1Playlist().IsOn(m_controller->getPreviousDownloadOptions().getPreferAV1());
             TglSplitChaptersPlaylist().IsOn(m_controller->getPreviousDownloadOptions().getSplitChapters());
             TglLimitSpeedPlaylist().IsOn(m_controller->getPreviousDownloadOptions().getLimitSpeed());
-            for(int i = 0; i < m_controller->getMediaCount(); i++)
+            for(size_t i = 0; i < m_controller->getMediaCount(); i++)
             {
                 winrt::hstring title{ winrt::to_hstring(m_controller->getMediaTitle(i)) };
                 TextBox txt;

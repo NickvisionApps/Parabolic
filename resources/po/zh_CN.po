@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-07-21 22:43-0400\n"
+"POT-Creation-Date: 2024-07-24 16:02-0400\n"
 "PO-Revision-Date: 2024-02-15 17:02+0000\n"
 "Last-Translator: valigarmanda <valigarmanda55@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
@@ -198,6 +198,7 @@ msgid "Validate"
 msgstr "验证"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:95
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:225
 #: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:48
 #: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:62
 msgid "File Type"
@@ -209,67 +210,76 @@ msgid "Quality"
 msgstr "质量"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:103
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:50
-msgid "Audio Language"
-msgstr "音频语言"
-
-#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:107
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:229
 #: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:51
 #: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:65
 msgid "Download Subtitles"
 msgstr "下载字幕"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:111
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:107
 msgid "Advanced Options"
 msgstr "高级选项"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:126
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:122
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:243
 #: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:54
 #: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:63
 #, fuzzy
 msgid "Save Folder"
 msgstr "选择保存文件夹"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:132
-#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:145
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:128
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:249
+#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:185
+#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:214
 #: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:55
 #: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:64
 msgid "Select Save Folder"
 msgstr "选择保存文件夹"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:141
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:137
 #: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:56
 #, fuzzy
 msgid "File Name"
 msgstr "文件名"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:147
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:143
+#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:143
 #: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:58
 msgid "Revert to Title"
 msgstr ""
 
-#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:156
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:152
-msgid "Download"
-msgstr "下载"
-
-#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:174
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:52
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:66
-msgid "Prefer AV1 Codec"
-msgstr "首选 AV1 编解码器"
-
-#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:178
-#, fuzzy
-msgid "Split Videos by Chapters"
-msgstr "拆分章节"
-
-#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:182
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:150
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:271
 #: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:61
 #: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:68
 #, fuzzy
 msgid "Limit Download Speed"
 msgstr "下载媒体"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:156
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:277
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:152
+msgid "Download"
+msgstr "下载"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:174
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:50
+msgid "Audio Language"
+msgstr "音频语言"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:178
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:233
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:52
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:66
+msgid "Prefer AV1 Codec"
+msgstr "首选 AV1 编解码器"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:182
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:237
+#, fuzzy
+msgid "Split Videos by Chapters"
+msgstr "拆分章节"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:186
 #: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:59
@@ -285,6 +295,16 @@ msgstr ""
 #: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:60
 msgid "End Time"
 msgstr "结束时间"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:258
+#, fuzzy
+msgid "Playlist Items"
+msgstr "播放列表"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:295
+#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:69
+msgid "Number Titles"
+msgstr "数字标题"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:5
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:8
@@ -653,30 +673,35 @@ msgstr "应用程序"
 msgid "Quit"
 msgstr "退出"
 
-#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:41
+#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:43
 #: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:93
 msgid "Use manual credential"
 msgstr "使用手动凭据"
 
-#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:93
+#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:98
 #: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:146
 msgid "Error"
 msgstr "错误"
 
-#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:93
+#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:98
 #: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:147
 msgid ""
 "The url provided is invalid or unable to be reached. Check both the url and "
 "authentication used."
 msgstr ""
 
-#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:94
+#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:99
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:177
 #: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:148
 #: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:245
 #: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:382
 msgid "Close"
 msgstr "关闭"
+
+#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:127
+#, fuzzy, c++-format
+msgid "{} items"
+msgstr "{1} 项目中的 {0} 个"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:140
 #, fuzzy
@@ -764,10 +789,6 @@ msgstr "拆分章节"
 #, fuzzy
 msgid "Enter file name here"
 msgstr "在此处输入名称"
-
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:69
-msgid "Number Titles"
-msgstr "数字标题"
 
 #: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:94
 msgid "None"
@@ -994,12 +1015,6 @@ msgstr "在此处输入代理 URL"
 #~ msgstr[1] "{0} 下载 — {1:f1}% ({2})"
 
 #, csharp-format
-#~ msgid "{0} of {1} items"
-#~ msgid_plural "{0} of {1} items"
-#~ msgstr[0] "{1} 项目中的 {0} 个"
-#~ msgstr[1] "{1} 项目中的 {0} 个"
-
-#, csharp-format
 #~ msgid "{0}{1}"
 #~ msgstr "{0}{1}"
 
@@ -1204,9 +1219,6 @@ msgstr "在此处输入代理 URL"
 
 #~ msgid "Password (Empty)"
 #~ msgstr "密码 (空)"
-
-#~ msgid "Playlist"
-#~ msgstr "播放列表"
 
 #~ msgid "Please wait..."
 #~ msgstr "请稍候..."

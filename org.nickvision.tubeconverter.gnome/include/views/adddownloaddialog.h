@@ -2,6 +2,7 @@
 #define ADDDOWNLOADDIALOG_H
 
 #include <memory>
+#include <vector>
 #include <adwaita.h>
 #include "controllers/adddownloaddialogcontroller.h"
 #include "helpers/dialogbase.h"
@@ -39,13 +40,13 @@ namespace Nickvision::TubeConverter::GNOME::Views
          */
         void onUrlValidated();
         /**
+         * @brief Goes back to the single download page.
+         */
+        void back();
+        /**
          * @brief Handles when the single file type combobox is changed.
          */
         void onFileTypeSingleChanged();
-        /**
-         * @brief Goes back to the single download page.
-         */
-        void backSingle();
         /**
          * @brief Shows the advanced options for a single download.
          */
@@ -66,7 +67,21 @@ namespace Nickvision::TubeConverter::GNOME::Views
          * @brief Reverts the end time for a single download to its original value.
          */
         void revertEndTimeSingle();
+        /**
+         * @brief Prompts the user to select a folder to save a playlist download.
+         */
+        void selectSaveFolderPlaylist();
+        /**
+         * @brief Shows the items for a playlist download.
+         */
+        void itemsPlaylist();
+        /**
+         * @brief Handles when the number titles switch is changed.
+         */
+        void onNumberTitlesPlaylistChanged();
         std::shared_ptr<Shared::Controllers::AddDownloadDialogController> m_controller;
+        std::vector<AdwEntryRow*> m_playlistItemRows;
+        std::vector<GtkCheckButton*> m_playlistItemCheckButtons;
     };
 }
 
