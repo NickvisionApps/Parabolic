@@ -86,9 +86,10 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         /**
          * @brief Gets the title for the media at the specified index.
          * @param index The index of the media
+         * @param numbered Whether or not to number the title
          * @return The title of the media
          */
-        const std::string& getMediaTitle(size_t index) const;
+        std::string getMediaTitle(size_t index, bool numbered = false) const;
         /**
          * @brief Gets the TimeFrame for the media at the specified index.
          * @param index The index of the media

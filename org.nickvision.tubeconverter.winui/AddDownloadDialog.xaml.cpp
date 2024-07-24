@@ -181,12 +181,12 @@ namespace winrt::Nickvision::TubeConverter::WinUI::implementation
             TglPreferAV1Playlist().IsOn(m_controller->getPreviousDownloadOptions().getPreferAV1());
             TglSplitChaptersPlaylist().IsOn(m_controller->getPreviousDownloadOptions().getSplitChapters());
             TglLimitSpeedPlaylist().IsOn(m_controller->getPreviousDownloadOptions().getLimitSpeed());
+            TglNumberTitlesPlaylist().IsOn(m_controller->getPreviousDownloadOptions().getNumberTitles());
             for(size_t i = 0; i < m_controller->getMediaCount(); i++)
             {
-                winrt::hstring title{ winrt::to_hstring(m_controller->getMediaTitle(i)) };
                 TextBox txt;
-                txt.Text(title);
-                txt.PlaceholderText(title);
+                txt.Text(winrt::to_hstring(m_controller->getMediaTitle(i, TglNumberTitlesPlaylist().IsOn())));
+                txt.PlaceholderText(winrt::to_hstring(m_controller->getMediaUrl(i)));
                 CheckBox chk;
                 chk.HorizontalAlignment(HorizontalAlignment::Stretch);
                 chk.HorizontalContentAlignment(HorizontalAlignment::Stretch);
@@ -194,7 +194,6 @@ namespace winrt::Nickvision::TubeConverter::WinUI::implementation
                 chk.Content(txt);
                 ListItemsPlaylist().Children().Append(chk);
             }
-            TglNumberTitlesPlaylist().IsOn(m_controller->getPreviousDownloadOptions().getNumberTitles());
         }
     }
 
@@ -238,7 +237,8 @@ namespace winrt::Nickvision::TubeConverter::WinUI::implementation
         for(const IInspectable& child : ListItemsPlaylist().Children())
         {
             TextBox txt{ child.as<CheckBox>().Content().as<TextBox>() };
-            txt.Text(winrt::to_hstring(TglNumberTitlesPlaylist().IsOn() ? std::format("{} - {}", i + 1, m_controller->getMediaTitle(i)) : m_controller->getMediaTitle(i)));
+            txt.Text(winrt::to_hstring(m_controller->getMediaTitle(i, TglNumberTitlesPlaylist().IsOn())));
+
             i++;
         }
     }

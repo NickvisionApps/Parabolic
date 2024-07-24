@@ -1,4 +1,5 @@
 #include "controllers/adddownloaddialogcontroller.h"
+#include <format>
 #include <thread>
 #include <libnick/localization/gettext.h>
 #include "models/urlinfo.h"
@@ -185,12 +186,13 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         return empty;
     }
 
-    const std::string& AddDownloadDialogController::getMediaTitle(size_t index) const
+    std::string AddDownloadDialogController::getMediaTitle(size_t index, bool numbered) const
     {
         static std::string empty;
         if(m_urlInfo && index < m_urlInfo->count())
         {
-            return m_urlInfo->get(index).getTitle();
+            std::string title{ m_urlInfo->get(index).getTitle() };
+            return numbered ? std::format("{} - {}", index + 1, title) : title;
         }
         return empty;
     }

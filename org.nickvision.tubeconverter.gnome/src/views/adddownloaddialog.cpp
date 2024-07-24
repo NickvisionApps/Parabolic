@@ -147,12 +147,12 @@ namespace Nickvision::TubeConverter::GNOME::Views
                 { 
                     AddDownloadDialog* dialog{ reinterpret_cast<AddDownloadDialog*>(data) };
                     size_t index{ std::stoul(gtk_widget_get_name(GTK_WIDGET(btn))) };
-                    gtk_editable_set_text(GTK_EDITABLE(dialog->m_playlistItemRows[index]), dialog->m_controller->getMediaTitle(index).c_str());
+                    gtk_editable_set_text(GTK_EDITABLE(dialog->m_playlistItemRows[index]), dialog->m_controller->getMediaTitle(index, adw_switch_row_get_active(ADW_SWITCH_ROW(gtk_builder_get_object(dialog->m_builder, "numberTitlesPlaylistRow")))).c_str());
                 }), this);
                 AdwEntryRow* row{ ADW_ENTRY_ROW(adw_entry_row_new()) };
                 adw_preferences_row_set_use_markup(ADW_PREFERENCES_ROW(row), false);
                 adw_preferences_row_set_title(ADW_PREFERENCES_ROW(row), m_controller->getMediaUrl(i).c_str());
-                gtk_editable_set_text(GTK_EDITABLE(row), m_controller->getMediaTitle(i).c_str());
+                gtk_editable_set_text(GTK_EDITABLE(row), m_controller->getMediaTitle(i, adw_switch_row_get_active(ADW_SWITCH_ROW(gtk_builder_get_object(m_builder, "numberTitlesPlaylistRow")))).c_str());
                 adw_entry_row_add_prefix(row, GTK_WIDGET(chk));
                 adw_entry_row_add_suffix(row, GTK_WIDGET(undo));
                 adw_preferences_group_add(ADW_PREFERENCES_GROUP(gtk_builder_get_object(m_builder, "itemsPlaylistGroup")), GTK_WIDGET(row));
@@ -233,7 +233,7 @@ namespace Nickvision::TubeConverter::GNOME::Views
         int i{ 0 };
         for(AdwEntryRow* row : m_playlistItemRows)
         {
-            gtk_editable_set_text(GTK_EDITABLE(row), adw_switch_row_get_active(ADW_SWITCH_ROW(gtk_builder_get_object(m_builder, "numberTitlesPlaylistRow"))) ? std::format("{} - {}", i + 1, m_controller->getMediaTitle(i)).c_str() : m_controller->getMediaTitle(i).c_str());
+            gtk_editable_set_text(GTK_EDITABLE(row), m_controller->getMediaTitle(i, adw_switch_row_get_active(ADW_SWITCH_ROW(gtk_builder_get_object(m_builder, "numberTitlesPlaylistRow")))).c_str());
             i++;
         }
     }
