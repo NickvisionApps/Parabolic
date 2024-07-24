@@ -222,7 +222,7 @@ namespace Nickvision::TubeConverter::Shared::Models
             lock.unlock();
             m_downloadAdded.invoke({ download->getId(), download->getPath(), download->getStatus() });
         }
-        m_logger.log(LogLevel::Info, "Retried download (" + std::to_string(download->getId()) + ") " + download->getUrl());
+        m_logger.log(LogLevel::Info, "Added download (" + std::to_string(download->getId()) + ") " + download->getUrl());
         m_history.addDownload({ download->getUrl(), download->getPath().filename().stem().string(), download->getPath() });
     }
 

@@ -116,8 +116,12 @@ namespace Nickvision::TubeConverter::Shared::Models
             std::string videoExt{ info.get("video_ext", "").asString() };
             if(!videoExt.empty() && videoExt != "none")
             {
-                m_videoResolutions.insert(m_videoResolutions.begin(), *VideoResolution::parse("Best"));
+                m_videoResolutions.insert(m_videoResolutions.begin(), VideoResolution{});
             }
+        }
+        else if(!m_videoResolutions.empty())
+        {
+            m_videoResolutions.insert(m_videoResolutions.begin(), VideoResolution{});
         }
         m_type = m_videoResolutions.empty() ? MediaType::Audio : MediaType::Video;
     }

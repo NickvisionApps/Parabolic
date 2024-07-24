@@ -15,6 +15,11 @@ namespace Nickvision::TubeConverter::Shared::Models
     public:
         /**
          * @brief Constructs a VideoResolution.
+         * @brief This will be the "best" resolution.
+         */
+        VideoResolution();
+        /**
+         * @brief Constructs a VideoResolution.
          * @param width The width of the resolution
          * @param height The height of the resolution
          */

@@ -59,14 +59,14 @@ namespace Nickvision::TubeConverter::Shared::Models
         m_fileType = fileType;
     }
 
-    const std::variant<Quality, VideoResolution>& DownloadOptions::getResolution() const
+    const std::variant<Quality, VideoResolution>& DownloadOptions::getQuality() const
     {
-        return m_resolution;
+        return m_quality;
     }
 
-    void DownloadOptions::setResolution(const std::variant<Quality, VideoResolution>& resolution)
+    void DownloadOptions::setQuality(const std::variant<Quality, VideoResolution>& quality)
     {
-        m_resolution = resolution;
+        m_quality = quality;
     }
 
     const std::filesystem::path& DownloadOptions::getSaveFolder() const
@@ -246,10 +246,10 @@ namespace Nickvision::TubeConverter::Shared::Models
             {
                 formatSort += "acodec:flac";
             }
-            if(m_resolution.index() == 0)
+            if(m_quality.index() == 0)
             {
                 arguments.push_back("--audio-quality");
-                switch(std::get<Quality>(m_resolution))
+                switch(std::get<Quality>(m_quality))
                 {
                 case Quality::Best:
                     arguments.push_back("0");
@@ -277,17 +277,31 @@ namespace Nickvision::TubeConverter::Shared::Models
             arguments.push_back("--recode-video");
             arguments.push_back(StringHelpers::lower(m_fileType.str()));
             formatSort += "vext:" + StringHelpers::lower(m_fileType.str());
-            if(m_resolution.index() == 1)
+            if(m_quality.index() == 1)
             {
-                VideoResolution resolution{ std::get<VideoResolution>(m_resolution) };
+                VideoResolution resolution{ std::get<VideoResolution>(m_quality) };
                 arguments.push_back("--format");
-                if(m_audioLanguage.empty())
+                if(!resolution.isBest())
                 {
-                    arguments.push_back("bv[height<=" + std::to_string(resolution.getHeight()) + "][width<=" + std::to_string(resolution.getWidth()) + "]+ba/b");
+                    if(m_audioLanguage.empty())
+                    {
+                        arguments.push_back("bv[height<=" + std::to_string(resolution.getHeight()) + "][width<=" + std::to_string(resolution.getWidth()) + "]+ba/b");
+                    }
+                    else
+                    {
+                        arguments.push_back("bv[height<=" + std::to_string(resolution.getHeight()) + "][width<=" + std::to_string(resolution.getWidth()) + "]+ba[language= " + m_audioLanguage + "]/b");
+                    }
                 }
                 else
                 {
-                    arguments.push_back("bv[height<=" + std::to_string(resolution.getHeight()) + "][width<=" + std::to_string(resolution.getWidth()) + "]+ba[language= " + m_audioLanguage + "]/b");
+                    if(m_audioLanguage.empty())
+                    {
+                        arguments.push_back("bv+ba/b");
+                    }
+                    else
+                    {
+                        arguments.push_back("bv+ba[language= " + m_audioLanguage + "]/b");
+                    }
                 }
                 
             }

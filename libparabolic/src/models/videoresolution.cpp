@@ -7,7 +7,12 @@ using namespace Nickvision::Helpers;
 
 namespace Nickvision::TubeConverter::Shared::Models
 {
-    static VideoResolution best{ std::numeric_limits<int>::max(), std::numeric_limits<int>::max() };
+    VideoResolution::VideoResolution()
+        : m_width{ std::numeric_limits<int>::max() },
+        m_height{ std::numeric_limits<int>::max() }
+    {
+
+    }
 
     VideoResolution::VideoResolution(int width, int height)
         : m_width{ width },
@@ -20,7 +25,7 @@ namespace Nickvision::TubeConverter::Shared::Models
     {
         if(value == "Best" || value == _("Best"))
         {
-            return best;
+            return VideoResolution{};
         }
         const std::vector<std::string> parts{ StringHelpers::split(value, "x") };
         if(parts.size() == 2)
@@ -43,7 +48,7 @@ namespace Nickvision::TubeConverter::Shared::Models
 
     bool VideoResolution::isBest() const
     {
-        return operator==(best);
+        return m_width == std::numeric_limits<int>::max() && m_height == std::numeric_limits<int>::max();
     }
 
     int VideoResolution::getWidth() const
@@ -58,7 +63,7 @@ namespace Nickvision::TubeConverter::Shared::Models
 
     std::string VideoResolution::str() const
     {
-        if(m_width == std::numeric_limits<int>::max() && m_height == std::numeric_limits<int>::max())
+        if(isBest())
         {
             return _("Best");
         }

@@ -61,15 +61,15 @@ namespace Nickvision::TubeConverter::Shared::Models
          */
         void setFileType(const MediaFileType& fileType);
         /**
-         * @brief Gets the resolution of the download.
-         * @return The resolution of the download
+         * @brief Gets the quality of the download.
+         * @return The quality of the download
          */
-        const std::variant<Quality, VideoResolution>& getResolution() const;
+        const std::variant<Quality, VideoResolution>& getQuality() const;
         /**
-         * @brief Sets the resolution of the download.
-         * @param resolution The resolution of the download
+         * @brief Sets the quality of the download.
+         * @param quality The quality of the download
          */
-        void setResolution(const std::variant<Quality, VideoResolution>& resolution);
+        void setQuality(const std::variant<Quality, VideoResolution>& quality);
         /**
          * @brief Gets the save folder of the download.
          * @return The save folder of the download
@@ -163,7 +163,7 @@ namespace Nickvision::TubeConverter::Shared::Models
         std::string m_url;
         std::optional<Keyring::Credential> m_credential;
         MediaFileType m_fileType;
-        std::variant<Quality, VideoResolution> m_resolution;
+        std::variant<Quality, VideoResolution> m_quality;
         std::filesystem::path m_saveFolder;
         std::string m_saveFilename;
         std::string m_audioLanguage;

@@ -117,7 +117,26 @@ namespace winrt::Nickvision::TubeConverter::WinUI::implementation
             //Download
             if(result == ContentDialogResult::Primary)
             {
-                //TODO
+                if(!m_controller->isUrlPlaylist())
+                {
+                    m_controller->addSingleDownload(winrt::to_string(TxtSaveFolderSingle().Text()), winrt::to_string(TxtFilenameSingle().Text()), static_cast<size_t>(CmbFileTypeSingle().SelectedIndex()), static_cast<size_t>(CmbQualitySingle().SelectedIndex()), static_cast<size_t>(CmbAudioLanguageSingle().SelectedIndex()), TglDownloadSubtitlesSingle().IsOn(), TglPreferAV1Single().IsOn(), TglSplitChaptersSingle().IsOn(), TglLimitSpeedSingle().IsOn(), winrt::to_string(TxtTimeFrameStartSingle().Text()), winrt::to_string(TxtTimeFrameEndSingle().Text()));
+                }
+                else
+                {
+                    std::unordered_map<size_t, std::string> filenames;
+                    size_t i{ 0 };
+                    for(const IInspectable& child : ListItemsPlaylist().Children())
+                    {
+                        CheckBox chk{ child.as<CheckBox>() };
+                        TextBox txt{ chk.Content().as<TextBox>() };
+                        if(chk.IsChecked().Value())
+                        {
+                            filenames.emplace(i, winrt::to_string(txt.Text()));
+                        }
+                        i++;
+                    }
+                    m_controller->addPlaylistDownload(winrt::to_string(TxtSaveFolderPlaylist().Text()), filenames, static_cast<size_t>(CmbFileTypePlaylist().SelectedIndex()), TglDownloadSubtitlesPlaylist().IsOn(), TglPreferAV1Playlist().IsOn(), TglSplitChaptersPlaylist().IsOn(), TglLimitSpeedPlaylist().IsOn());
+                }
             }
         }
         co_return result;

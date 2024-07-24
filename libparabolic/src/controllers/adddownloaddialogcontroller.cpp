@@ -14,7 +14,8 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         : m_downloadManager{ downloadManager },
         m_previousOptions{ previousOptions },
         m_keyring{ keyring },
-        m_urlInfo{ std::nullopt }
+        m_urlInfo{ std::nullopt },
+        m_credential{ std::nullopt }
     {
         
     }
@@ -124,7 +125,6 @@ namespace Nickvision::TubeConverter::Shared::Controllers
             }
             else
             {
-                qualities.push_back(_("Best"));
                 for(const VideoResolution& resolution : media.getVideoResolutions())
                 {
                     qualities.push_back(resolution.str());
@@ -141,7 +141,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
             }
             else
             {
-                qualities.push_back(_("Default"));
+                qualities.push_back(_("Best"));
             }
         }
         return qualities;
@@ -192,6 +192,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         if(m_urlInfo && index < m_urlInfo->count())
         {
             std::string title{ m_urlInfo->get(index).getTitle() };
+            m_previousOptions.setNumberTitles(numbered);
             return numbered ? std::format("{} - {}", index + 1, title) : title;
         }
         return empty;
@@ -211,7 +212,8 @@ namespace Nickvision::TubeConverter::Shared::Controllers
     {
         std::thread worker{ [this, url, credential]()
         {
-            m_urlInfo = UrlInfo::fetch(url, m_downloadManager.getDownloaderOptions(), credential);
+            m_credential = credential;
+            m_urlInfo = UrlInfo::fetch(url, m_downloadManager.getDownloaderOptions(), m_credential);
             m_urlValidated.invoke({ isUrlValid() });
         } };
         worker.detach();
@@ -228,5 +230,73 @@ namespace Nickvision::TubeConverter::Shared::Controllers
             }
         }
         validateUrl(url, std::nullopt);
+    }
+
+    void AddDownloadDialogController::addSingleDownload(const std::filesystem::path& saveFolder, const std::string& filename, size_t fileTypeIndex, size_t qualityIndex, size_t audioLanguageIndex, bool downloadSubtitles, bool preferAV1, bool splitChapters, bool limitSpeed, const std::string& startTime, const std::string& endTime)
+    {
+        const Media& media{ m_urlInfo->get(0) };
+        //Create Download Options
+        DownloadOptions options{ media.getUrl() };
+        options.setCredential(m_credential);
+        options.setSaveFolder(std::filesystem::exists(saveFolder) ? saveFolder : m_previousOptions.getSaveFolder());
+        options.setSaveFilename(!filename.empty() ? filename : media.getTitle());
+        if(media.getType() == MediaType::Audio)
+        {
+            fileTypeIndex += 2; 
+        }
+        options.setFileType(static_cast<MediaFileType::MediaFileTypeValue>(fileTypeIndex));
+        if(options.getFileType().isAudio())
+        {
+            options.setQuality(static_cast<Quality>(qualityIndex));
+        }
+        else
+        {
+            options.setQuality(media.getVideoResolutions()[qualityIndex]);
+        }
+        if(media.getAudioLanguages().size() > 1)
+        {
+            options.setAudioLanguage(media.getAudioLanguages()[audioLanguageIndex]);
+        }
+        options.setDownloadSubtitles(downloadSubtitles);
+        options.setPreferAV1(preferAV1);
+        options.setSplitChapters(splitChapters);
+        options.setLimitSpeed(limitSpeed);
+        options.setTimeFrame(TimeFrame::parse(startTime, endTime, media.getTimeFrame().getDuration()));
+        //Save Previous Options
+        m_previousOptions.setSaveFolder(options.getSaveFolder());
+        m_previousOptions.setFileType(options.getFileType());
+        m_previousOptions.setDownloadSubtitles(options.getDownloadSubtitles());
+        m_previousOptions.setPreferAV1(options.getPreferAV1());
+        m_previousOptions.setSplitChapters(options.getSplitChapters());
+        m_previousOptions.setLimitSpeed(options.getLimitSpeed());
+        //Add Download
+        m_downloadManager.addDownload(options);
+    }
+
+    void AddDownloadDialogController::addPlaylistDownload(const std::filesystem::path& saveFolder, const std::unordered_map<size_t, std::string>& filenames, size_t fileTypeIndex, bool downloadSubtitles, bool preferAV1, bool splitChapters, bool limitSpeed)
+    {
+        //Save Previous Options
+        m_previousOptions.setSaveFolder(saveFolder);
+        m_previousOptions.setFileType(static_cast<MediaFileType::MediaFileTypeValue>(fileTypeIndex));
+        m_previousOptions.setDownloadSubtitles(downloadSubtitles);
+        m_previousOptions.setPreferAV1(preferAV1);
+        m_previousOptions.setSplitChapters(splitChapters);
+        m_previousOptions.setLimitSpeed(limitSpeed);
+        for(const std::pair<const size_t, std::string>& pair : filenames)
+        {
+            const Media& media{ m_urlInfo->get(pair.first) };
+            //Create Download Options
+            DownloadOptions options{ media.getUrl() };
+            options.setCredential(m_credential);
+            options.setSaveFolder(std::filesystem::exists(saveFolder) ? saveFolder : m_previousOptions.getSaveFolder());
+            options.setSaveFilename(!pair.second.empty() ? pair.second : media.getTitle());
+            options.setFileType(static_cast<MediaFileType::MediaFileTypeValue>(fileTypeIndex));
+            options.setDownloadSubtitles(downloadSubtitles);
+            options.setPreferAV1(preferAV1);
+            options.setSplitChapters(splitChapters);
+            options.setLimitSpeed(limitSpeed);
+            //Add Download
+            m_downloadManager.addDownload(options);
+        }
     }
 }

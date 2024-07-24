@@ -68,6 +68,10 @@ namespace Nickvision::TubeConverter::GNOME::Views
          */
         void revertEndTimeSingle();
         /**
+         * @brief Adds the single download to the download queue.
+         */
+        void downloadSingle();
+        /**
          * @brief Prompts the user to select a folder to save a playlist download.
          */
         void selectSaveFolderPlaylist();
@@ -79,6 +83,10 @@ namespace Nickvision::TubeConverter::GNOME::Views
          * @brief Handles when the number titles switch is changed.
          */
         void onNumberTitlesPlaylistChanged();
+        /**
+         * @brief Adds the playlist downloads to the download queue.
+         */
+        void downloadPlaylist();
         std::shared_ptr<Shared::Controllers::AddDownloadDialogController> m_controller;
         std::vector<AdwEntryRow*> m_playlistItemRows;
         std::vector<GtkCheckButton*> m_playlistItemCheckButtons;
