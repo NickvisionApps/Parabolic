@@ -39,7 +39,7 @@ jobs:
           cmake -G "Visual Studio 17 2022" .. -DBUILD_TESTING=OFF
           cmake --build . --config Release
       - name: "Create Installer"
-        working-directory: ${{github.workspace}}
+        working-directory: ${{github.workspace}}/inno
         run: |
           choco install wget
           choco install innosetup
@@ -53,7 +53,7 @@ jobs:
           mv ffmpeg/ffmpeg-2024-07-07-git-0619138639-full_build/bin/ffmpeg.exe ffmpeg.exe
           mv ffmpeg/ffmpeg-2024-07-07-git-0619138639-full_build/bin/ffprobe.exe ffprobe.exe
           mv ffmpeg/ffmpeg-2024-07-07-git-0619138639-full_build/bin/ffplay.exe ffplay.exe
-          iscc inno/setup.iss
+          iscc setup.iss
       - name: Upload
         uses: actions/upload-artifact@v4
         with:
