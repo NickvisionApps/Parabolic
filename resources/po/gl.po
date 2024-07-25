@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-07-24 19:07-0400\n"
+"POT-Creation-Date: 2024-07-25 12:00-0400\n"
 "PO-Revision-Date: 2024-06-19 20:09+0000\n"
 "Last-Translator: Xosé Calvo <xosecalvo@gmail.com>\n"
 "Language-Team: Galician <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -221,9 +221,8 @@ msgstr "Opcións avanzadas"
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:243
 #: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:54
 #: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:63
-#, fuzzy
 msgid "Save Folder"
-msgstr "Seleccionar cartafol de destino"
+msgstr "Cartafol de destino"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:128
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:249
@@ -236,7 +235,6 @@ msgstr "Seleccionar cartafol de destino"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:137
 #: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:56
-#, fuzzy
 msgid "File Name"
 msgstr "Nome do ficheiro"
 
@@ -325,9 +323,8 @@ msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:37
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:200
-#, fuzzy
 msgid "Add Download (Ctrl+N)"
-msgstr "Engadir descarga"
+msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:45
 msgid "Main Menu"
@@ -468,7 +465,7 @@ msgstr "Evitar a suspensión"
 #: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:38
 #, fuzzy
 msgid "Download History Length"
-msgstr "Historial"
+msgstr "A descargar"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:50
 #: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:40
@@ -623,13 +620,10 @@ msgstr "Retirar datos da fonte"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:273
 #: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:85
-#, fuzzy
 msgid ""
 "If enabled, Parabolic will clear metadata fields containing identifying "
 "download information."
 msgstr ""
-"Limpar campos de metadatos que conteñan o URL e outra información "
-"identificativa da fonte de recursos multimedia"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:284
 #: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:88
@@ -943,51 +937,6 @@ msgstr "Desactivado"
 msgid "Enter proxy URL here"
 msgstr "Introduza o contrasinal aquí"
 
-#, fuzzy
-#~ msgid ""
-#~ "A cookies file can be provided to Parabolic to allow downloading media "
-#~ "that requires a login."
-#~ msgstr ""
-#~ "Pódese fornecer un ficheiro de cookies a yt-dlp para permitir descargar "
-#~ "recursos que requiran permiso de acceso."
-
-#, fuzzy
-#~ msgid "Enter start time here"
-#~ msgstr "Introduza o nome aquí"
-
-#, fuzzy
-#~ msgid "Enter end time here"
-#~ msgstr "Introduza o nome aquí"
-
-#~ msgid "OK"
-#~ msgstr "Aceptar"
-
-#~ msgid "Keyring Credential"
-#~ msgstr "Credencial do chaveiro"
-
-#, fuzzy
-#~ msgid "Prevent Suspend When Downloading"
-#~ msgstr "Evitar a suspensión"
-
-#~ msgid "Disallow Conversions"
-#~ msgstr "Non permitir conversións"
-
-#, fuzzy
-#~ msgid "Download using aria2 has started."
-#~ msgstr "Comezou a descarga empregando aria2"
-
-#, fuzzy
-#~ msgid "Download using ffmpeg has started."
-#~ msgstr "Comezou a descarga empregando ffmpeg"
-
-#, fuzzy
-#~ msgid "No History"
-#~ msgstr "Historial"
-
-#, fuzzy
-#~ msgid "No network connection"
-#~ msgstr "Sen conexión activa coa Internet"
-
 #, csharp-format
 #~ msgid "\"{0}\" has finished downloading."
 #~ msgstr "Concluíu a descarga de «{0}»."
@@ -1009,6 +958,13 @@ msgstr "Introduza o contrasinal aquí"
 #~ msgid "{0}{1}"
 #~ msgstr "{0}{1}"
 
+#~ msgid ""
+#~ "A cookies file can be provided to yt-dlp to allow downloading media that "
+#~ "requires a login."
+#~ msgstr ""
+#~ "Pódese fornecer un ficheiro de cookies a yt-dlp para permitir descargar "
+#~ "recursos que requiran permiso de acceso."
+
 #~ msgid "About"
 #~ msgstr "Sobre"
 
@@ -1026,6 +982,13 @@ msgstr "Introduza o contrasinal aquí"
 
 #~ msgid "Clear Completed"
 #~ msgstr "Mostrar completadas"
+
+#~ msgid ""
+#~ "Clear metadata fields containing the URL and other identifying "
+#~ "information of the media source"
+#~ msgstr ""
+#~ "Limpar campos de metadatos que conteñan o URL e outra información "
+#~ "identificativa da fonte de recursos multimedia"
 
 #~ msgid "Clear Queued"
 #~ msgstr "Limpar a fila"
@@ -1064,6 +1027,9 @@ msgstr "Introduza o contrasinal aquí"
 #~ "Desactivar o chaveiro eliminará todos os datos almacenados nel. Confirma "
 #~ "que desexa desactivalo?"
 
+#~ msgid "Disallow Conversions"
+#~ msgstr "Non permitir conversións"
+
 #~ msgid "Download Finished"
 #~ msgstr "Descarga rematada"
 
@@ -1072,6 +1038,12 @@ msgstr "Introduza o contrasinal aquí"
 
 #~ msgid "Download Specific Timeframe"
 #~ msgstr "Descargar fragmento específico"
+
+#~ msgid "Download using aria2 has started"
+#~ msgstr "Comezou a descarga empregando aria2"
+
+#~ msgid "Download using ffmpeg has started"
+#~ msgstr "Comezou a descarga empregando ffmpeg"
 
 #, csharp-format
 #~ msgid "Downloading {0:f2}% ({1})"
@@ -1101,6 +1073,9 @@ msgstr "Introduza o contrasinal aquí"
 
 #~ msgid "Failed to enable keyring."
 #~ msgstr "Non foi posíbel activar o chaveiro."
+
+#~ msgid "Keyring Credential"
+#~ msgstr "Credencial do chaveiro"
 
 #~ msgid "Keyring Disabled"
 #~ msgstr "Chaveiro desactivado"
@@ -1154,6 +1129,9 @@ msgstr "Introduza o contrasinal aquí"
 #~ msgid "No"
 #~ msgstr "Non"
 
+#~ msgid "No active internet connection"
+#~ msgstr "Sen conexión activa coa Internet"
+
 #~ msgid "No Completed Downloads"
 #~ msgstr "Non hai descargas completadas"
 
@@ -1166,6 +1144,9 @@ msgstr "Introduza o contrasinal aquí"
 #, fuzzy
 #~ msgid "No Running Downloads"
 #~ msgstr "Non hai descargas na fila"
+
+#~ msgid "OK"
+#~ msgstr "Aceptar"
 
 #~ msgid "Password (Empty)"
 #~ msgstr "Contrasinal (Baleiro)"

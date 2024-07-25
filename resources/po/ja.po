@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-07-24 19:07-0400\n"
+"POT-Creation-Date: 2024-07-25 12:00-0400\n"
 "PO-Revision-Date: 2024-03-27 08:01+0000\n"
 "Last-Translator: Gnuey56 <gnuey56@proton.me>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -223,9 +223,8 @@ msgstr "詳細オプション"
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:243
 #: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:54
 #: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:63
-#, fuzzy
 msgid "Save Folder"
-msgstr "保存するフォルダーを選択"
+msgstr "保存フォルダー"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:128
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:249
@@ -238,7 +237,6 @@ msgstr "保存するフォルダーを選択"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:137
 #: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:56
-#, fuzzy
 msgid "File Name"
 msgstr "ファイル名"
 
@@ -462,7 +460,6 @@ msgstr "通知しない"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:39
 #: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:35
-#, fuzzy
 msgid "Prevent Suspend"
 msgstr "サスペンドを妨げる"
 
@@ -470,7 +467,7 @@ msgstr "サスペンドを妨げる"
 #: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:38
 #, fuzzy
 msgid "Download History Length"
-msgstr "履歴"
+msgstr "ダウンロード中"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:50
 #: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:40
@@ -635,11 +632,10 @@ msgstr "ダウンロード元のデータを削除"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:273
 #: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:85
-#, fuzzy
 msgid ""
 "If enabled, Parabolic will clear metadata fields containing identifying "
 "download information."
-msgstr "メディアのソースを特定できる URL などのメタデータを削除する"
+msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:284
 #: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:88
@@ -956,103 +952,6 @@ msgstr "オフ"
 msgid "Enter proxy URL here"
 msgstr "プロキシの URL を入力"
 
-#, fuzzy
-#~ msgid ""
-#~ "A cookies file can be provided to Parabolic to allow downloading media "
-#~ "that requires a login."
-#~ msgstr ""
-#~ "ログインが必要なメディアをダウンロードするために yt-dlp にクッキーファイル"
-#~ "を渡すことができます。"
-
-#~ msgid ""
-#~ "Enable to use aria2 downloader. It can be faster, but you will not see "
-#~ "download progress."
-#~ msgstr ""
-#~ "aria2 をダウンローダーとして使用します。ダウンロードは速くなりますが、ダウ"
-#~ "ンロードの進捗を見ることはできません。"
-
-#, fuzzy
-#~ msgid "Enter start time here"
-#~ msgstr "初めのタイムフレームをここに入力"
-
-#, fuzzy
-#~ msgid "Enter end time here"
-#~ msgstr "終わりのタイムフレームをここに入力"
-
-#~ msgid "OK"
-#~ msgstr "OK"
-
-#~ msgid "Keyring Credential"
-#~ msgstr "キーリング資格情報"
-
-#, fuzzy
-#~ msgid "Prevent Suspend When Downloading"
-#~ msgstr "サスペンドを妨げる"
-
-#~ msgid "Disallow Conversions"
-#~ msgstr "フォーマット変換を無効化"
-
-#, fuzzy
-#~ msgid ""
-#~ "If enabled, Parabolic will download the appropriate video/audio format "
-#~ "for the selected quality without converting to other formats. (You will "
-#~ "be unable to select a file format)"
-#~ msgstr ""
-#~ "有効であれば、Parabolic は他のフォーマットにファイルを変換することなく、選"
-#~ "択した画質に適した動画フォーマットでダウンロードします。（ファイル形式は選"
-#~ "択できません）"
-
-#, fuzzy
-#~ msgid ""
-#~ "If enabled, Parabolic will download the appropriate video/audio format "
-#~ "for the selected quality without converting to other formats."
-#~ msgstr ""
-#~ "有効であれば、Parabolic は他のフォーマットにファイルを変換することなく、選"
-#~ "択した画質に適した動画フォーマットでダウンロードします。（ファイル形式は選"
-#~ "択できません）"
-
-#, fuzzy
-#~ msgid "Download using aria2 has started."
-#~ msgstr "aria2 を使用したダウンロードが開始"
-
-#, fuzzy
-#~ msgid "Download using ffmpeg has started."
-#~ msgstr "ffmpeg を使用したダウンロードが開始"
-
-#, fuzzy
-#~ msgid "No History"
-#~ msgstr "履歴"
-
-#, fuzzy
-#~ msgid "Network connection restored"
-#~ msgstr "有効なインターネット接続がありません"
-
-#, fuzzy
-#~ msgid "No network connection"
-#~ msgstr "有効なインターネット接続がありません"
-
-#, fuzzy
-#~ msgid "Open Folder (Ctrl+O)"
-#~ msgstr "フォルダーを開く"
-
-#~ msgctxt "Night"
-#~ msgid "Good Morning!"
-#~ msgstr "よい夜をお過ごしください！"
-
-#~ msgctxt "Morning"
-#~ msgid "Good Morning!"
-#~ msgstr "おはようございます！"
-
-#~ msgid "Good Afternoon!"
-#~ msgstr "こんにちは！"
-
-#~ msgid "Good Evening!"
-#~ msgstr "こんばんは！"
-
-#, fuzzy
-#~ msgid "Folder"
-#~ msgstr "フォルダーを開く"
-
 #, csharp-format
 #~ msgid "\"{0}\" has finished downloading."
 #~ msgstr "\"{0}\" はダウンロード完了です。"
@@ -1072,6 +971,13 @@ msgstr "プロキシの URL を入力"
 #, csharp-format
 #~ msgid "{0}{1}"
 #~ msgstr "{0}{1}"
+
+#~ msgid ""
+#~ "A cookies file can be provided to yt-dlp to allow downloading media that "
+#~ "requires a login."
+#~ msgstr ""
+#~ "ログインが必要なメディアをダウンロードするために yt-dlp にクッキーファイル"
+#~ "を渡すことができます。"
 
 #~ msgid "About"
 #~ msgstr "Parabolic について"
@@ -1096,6 +1002,11 @@ msgstr "プロキシの URL を入力"
 
 #~ msgid "Clear Completed"
 #~ msgstr "完了したダウンロードをクリア"
+
+#~ msgid ""
+#~ "Clear metadata fields containing the URL and other identifying "
+#~ "information of the media source"
+#~ msgstr "メディアのソースを特定できる URL などのメタデータを削除する"
 
 #~ msgid "Clear Queued"
 #~ msgstr "一時停止中のダウンロードをクリア"
@@ -1154,6 +1065,9 @@ msgstr "プロキシの URL を入力"
 #~ "キーリングを無効にすると、現在保存されているデータがすべて削除されます。本"
 #~ "当に無効にしますか？"
 
+#~ msgid "Disallow Conversions"
+#~ msgstr "フォーマット変換を無効化"
+
 #~ msgid "Download Finished"
 #~ msgstr "ダウンロードが完了"
 
@@ -1162,6 +1076,12 @@ msgstr "プロキシの URL を入力"
 
 #~ msgid "Download Specific Timeframe"
 #~ msgstr "特定の時間枠をダウンロードする"
+
+#~ msgid "Download using aria2 has started"
+#~ msgstr "aria2 を使用したダウンロードが開始"
+
+#~ msgid "Download using ffmpeg has started"
+#~ msgstr "ffmpeg を使用したダウンロードが開始"
 
 #, csharp-format
 #~ msgid "Downloading {0:f2}% ({1})"
@@ -1176,14 +1096,27 @@ msgstr "プロキシの URL を入力"
 #~ msgid "Enable"
 #~ msgstr "有効化"
 
+#~ msgid ""
+#~ "Enable to use aria2 downloader. It can be faster, but you will not see "
+#~ "download progress."
+#~ msgstr ""
+#~ "aria2 をダウンローダーとして使用します。ダウンロードは速くなりますが、ダウ"
+#~ "ンロードの進捗を見ることはできません。"
+
 #~ msgid "End Time (Invalid)"
 #~ msgstr "終わり (無効)"
 
 #~ msgid "Ensure credentials are correct."
 #~ msgstr "資格情報が正しいか確認します。"
 
+#~ msgid "Enter end timeframe here"
+#~ msgstr "終わりのタイムフレームをここに入力"
+
 #~ msgid "Enter media URL here"
 #~ msgstr "メディアの URL を入力"
+
+#~ msgid "Enter start timeframe here"
+#~ msgstr "初めのタイムフレームをここに入力"
 
 #~ msgid "Enter URL here"
 #~ msgstr "URL をここに入力"
@@ -1202,10 +1135,22 @@ msgstr "プロキシの URL を入力"
 #~ "されます"
 
 #~ msgid ""
+#~ "If enabled, Parabolic will download the appropriate video/audio format "
+#~ "for the selected quality without converting to other formats. (You will "
+#~ "be unable to select a file format)"
+#~ msgstr ""
+#~ "有効であれば、Parabolic は他のフォーマットにファイルを変換することなく、選"
+#~ "択した画質に適した動画フォーマットでダウンロードします。（ファイル形式は選"
+#~ "択できません）"
+
+#~ msgid ""
 #~ "In combination with the trigger, completed notifications will only be "
 #~ "shown if the window is not focused."
 #~ msgstr ""
 #~ "完了時、通知はウィンドウがフォーカス状態でないときにのみ表示されます。"
+
+#~ msgid "Keyring Credential"
+#~ msgstr "キーリング資格情報"
 
 #~ msgid "Keyring Disabled"
 #~ msgstr "キーリングは無効です"
@@ -1268,6 +1213,9 @@ msgstr "プロキシの URL を入力"
 #~ msgid "No"
 #~ msgstr "いいえ"
 
+#~ msgid "No active internet connection"
+#~ msgstr "有効なインターネット接続がありません"
+
 #~ msgid "No Completed Downloads"
 #~ msgstr "完了したダウンロードはありません"
 
@@ -1285,6 +1233,9 @@ msgstr "プロキシの URL を入力"
 
 #~ msgid "No Running Downloads"
 #~ msgstr "進行中のダウンロードはありません"
+
+#~ msgid "OK"
+#~ msgstr "OK"
 
 #~ msgid "Password (Empty)"
 #~ msgstr "パスワード（空）"
@@ -1653,6 +1604,20 @@ msgstr "プロキシの URL を入力"
 
 #~ msgid "If checked, media metadata will be included in the downloaded file."
 #~ msgstr "選択すると、動画のメタデータがダウンロードファイルに含まれます。"
+
+#~ msgctxt "Night"
+#~ msgid "Good Morning!"
+#~ msgstr "よい夜をお過ごしください！"
+
+#~ msgctxt "Morning"
+#~ msgid "Good Morning!"
+#~ msgstr "おはようございます！"
+
+#~ msgid "Good Afternoon!"
+#~ msgstr "こんにちは！"
+
+#~ msgid "Good Evening!"
+#~ msgstr "こんばんは！"
 
 #~ msgid "Version: {0}"
 #~ msgstr "バージョン: {0}"

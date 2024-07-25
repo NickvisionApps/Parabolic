@@ -11,7 +11,7 @@ namespace Nickvision::TubeConverter::Shared::Models
         m_history{ history },
         m_logger{ logger }
     {
-        m_history.saved() += [this](const EventArgs&){ loadHistory(); };
+        m_history.saved() += [this](const EventArgs&){ m_historyChanged.invoke(m_history.getHistory()); };
     }
 
     Event<ParamEventArgs<std::vector<HistoricDownload>>>& DownloadManager::historyChanged()
@@ -107,7 +107,6 @@ namespace Nickvision::TubeConverter::Shared::Models
         if(m_history.clear())
         {
             m_logger.log(LogLevel::Info, "Cleared download history.");
-            m_historyChanged.invoke(m_history.getHistory());
         }
     }
 
@@ -116,7 +115,6 @@ namespace Nickvision::TubeConverter::Shared::Models
         if(m_history.removeDownload(download))
         {
             m_logger.log(LogLevel::Info, "Removed historic download: " + download.getTitle());
-            m_historyChanged.invoke(m_history.getHistory());
         }
     }
 

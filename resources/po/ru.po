@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-07-24 19:07-0400\n"
+"POT-Creation-Date: 2024-07-25 12:00-0400\n"
 "PO-Revision-Date: 2024-01-11 20:05+0000\n"
 "Last-Translator: 0que <0que@users.noreply.hosted.weblate.org>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -224,9 +224,8 @@ msgstr "Дополнительные опции"
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:243
 #: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:54
 #: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:63
-#, fuzzy
 msgid "Save Folder"
-msgstr "Выберите папку загрузки"
+msgstr "Папка сохранения"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:128
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:249
@@ -239,7 +238,6 @@ msgstr "Выберите папку загрузки"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:137
 #: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:56
-#, fuzzy
 msgid "File Name"
 msgstr "Имя файла"
 
@@ -463,7 +461,6 @@ msgstr "Никогда"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:39
 #: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:35
-#, fuzzy
 msgid "Prevent Suspend"
 msgstr "Предотвращать приостановку системы"
 
@@ -471,7 +468,7 @@ msgstr "Предотвращать приостановку системы"
 #: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:38
 #, fuzzy
 msgid "Download History Length"
-msgstr "История"
+msgstr "Загружается"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:50
 #: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:40
@@ -637,13 +634,10 @@ msgstr "Удалить метаданные об источнике"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:273
 #: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:85
-#, fuzzy
 msgid ""
 "If enabled, Parabolic will clear metadata fields containing identifying "
 "download information."
 msgstr ""
-"Очистить поля с URL и прочей информацией, по которой можно было бы "
-"определить источник содержимого"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:284
 #: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:88
@@ -960,107 +954,6 @@ msgstr "Выкл"
 msgid "Enter proxy URL here"
 msgstr "Введите ссылку прокси"
 
-#, fuzzy
-#~ msgid ""
-#~ "A cookies file can be provided to Parabolic to allow downloading media "
-#~ "that requires a login."
-#~ msgstr ""
-#~ "Можно предоставить файл куки для yt-dlp, чтобы скачивать медиа, которые "
-#~ "требуют входа на сайт."
-
-#~ msgid ""
-#~ "Enable to use aria2 downloader. It can be faster, but you will not see "
-#~ "download progress."
-#~ msgstr ""
-#~ "Включите для использования загрузчика aria2. Он может оказаться быстрее, "
-#~ "но вы не увидите прогресс загрузки."
-
-#, fuzzy
-#~ msgid "Enter start time here"
-#~ msgstr "Введите временную метку начала"
-
-#, fuzzy
-#~ msgid "Enter end time here"
-#~ msgstr "Введите временную метку конца"
-
-#~ msgid "OK"
-#~ msgstr "ОК"
-
-#~ msgid "Keyring Credential"
-#~ msgstr "Данные из связки ключей"
-
-#, fuzzy
-#~ msgid "Prevent Suspend When Downloading"
-#~ msgstr "Предотвращать приостановку системы"
-
-#~ msgid "Disallow Conversions"
-#~ msgstr "Отключить конвертирование"
-
-#, fuzzy
-#~ msgid ""
-#~ "If enabled, Parabolic will download the appropriate video/audio format "
-#~ "for the selected quality without converting to other formats. (You will "
-#~ "be unable to select a file format)"
-#~ msgstr ""
-#~ "Если отключить конвертирование, Parabolic будет скачивать видео/аудио в "
-#~ "наиболее подходящем под заданное качество формате без конвертирования. "
-#~ "(Вы не сможете выбрать формат файла)"
-
-#, fuzzy
-#~ msgid ""
-#~ "If enabled, Parabolic will download the appropriate video/audio format "
-#~ "for the selected quality without converting to other formats."
-#~ msgstr ""
-#~ "Если отключить конвертирование, Parabolic будет скачивать видео/аудио в "
-#~ "наиболее подходящем под заданное качество формате без конвертирования. "
-#~ "(Вы не сможете выбрать формат файла)"
-
-#, fuzzy
-#~ msgid "Download using aria2 has started."
-#~ msgstr "Началась загрузка с помощью aria2"
-
-#, fuzzy
-#~ msgid "Download using ffmpeg has started."
-#~ msgstr "Началась загрузка с помощью ffmpeg"
-
-#, fuzzy
-#~ msgid "No History"
-#~ msgstr "История"
-
-#, fuzzy
-#~ msgid "Network connection restored"
-#~ msgstr "Отсутствует подключение к интернету"
-
-#, fuzzy
-#~ msgid "No network connection"
-#~ msgstr "Отсутствует подключение к интернету"
-
-#, fuzzy
-#~ msgid "Open Folder (Ctrl+O)"
-#~ msgstr "Открыть папку"
-
-#~ msgctxt "Night"
-#~ msgid "Good Morning!"
-#~ msgstr "Доброй ночи!"
-
-#~ msgctxt "Morning"
-#~ msgid "Good Morning!"
-#~ msgstr "Доброе утро!"
-
-#~ msgid "Good Afternoon!"
-#~ msgstr "Добрый день!"
-
-#~ msgid "Good Evening!"
-#~ msgstr "Добрый вечер!"
-
-#, fuzzy
-#~ msgid "Folder Opened: {}"
-#~ msgstr "Общая скорость: {0}"
-
-#, fuzzy
-#~ msgid "Folder"
-#~ msgstr "Открыть папку"
-
 #, csharp-format
 #~ msgid "\"{0}\" has finished downloading."
 #~ msgstr "\"{0}\" загружено."
@@ -1082,6 +975,13 @@ msgstr "Введите ссылку прокси"
 #, csharp-format
 #~ msgid "{0}{1}"
 #~ msgstr "{0}{1}"
+
+#~ msgid ""
+#~ "A cookies file can be provided to yt-dlp to allow downloading media that "
+#~ "requires a login."
+#~ msgstr ""
+#~ "Можно предоставить файл куки для yt-dlp, чтобы скачивать медиа, которые "
+#~ "требуют входа на сайт."
 
 #~ msgid "About"
 #~ msgstr "О приложении"
@@ -1106,6 +1006,13 @@ msgstr "Введите ссылку прокси"
 
 #~ msgid "Clear Completed"
 #~ msgstr "Очистить завершённые"
+
+#~ msgid ""
+#~ "Clear metadata fields containing the URL and other identifying "
+#~ "information of the media source"
+#~ msgstr ""
+#~ "Очистить поля с URL и прочей информацией, по которой можно было бы "
+#~ "определить источник содержимого"
 
 #~ msgid "Clear Queued"
 #~ msgstr "Опустошить очередь"
@@ -1167,6 +1074,9 @@ msgstr "Введите ссылку прокси"
 #~ "Отключение связки ключей приведёт к удалению всех данных в ней. Уверены, "
 #~ "что хотите отключить?"
 
+#~ msgid "Disallow Conversions"
+#~ msgstr "Отключить конвертирование"
+
 #~ msgid "Download Finished"
 #~ msgstr "Загрузка завершена"
 
@@ -1175,6 +1085,12 @@ msgstr "Введите ссылку прокси"
 
 #~ msgid "Download Specific Timeframe"
 #~ msgstr "Скачать фрагмент"
+
+#~ msgid "Download using aria2 has started"
+#~ msgstr "Началась загрузка с помощью aria2"
+
+#~ msgid "Download using ffmpeg has started"
+#~ msgstr "Началась загрузка с помощью ffmpeg"
 
 #, csharp-format
 #~ msgid "Downloading {0:f2}% ({1})"
@@ -1189,11 +1105,24 @@ msgstr "Введите ссылку прокси"
 #~ msgid "Enable"
 #~ msgstr "Включить"
 
+#~ msgid ""
+#~ "Enable to use aria2 downloader. It can be faster, but you will not see "
+#~ "download progress."
+#~ msgstr ""
+#~ "Включите для использования загрузчика aria2. Он может оказаться быстрее, "
+#~ "но вы не увидите прогресс загрузки."
+
 #~ msgid "End Time (Invalid)"
 #~ msgstr "Время конца (Некорректное)"
 
 #~ msgid "Ensure credentials are correct."
 #~ msgstr "Убедитесь, что данные корректны."
+
+#~ msgid "Enter end timeframe here"
+#~ msgstr "Введите временную метку конца"
+
+#~ msgid "Enter start timeframe here"
+#~ msgstr "Введите временную метку начала"
 
 #~ msgid "Enter URL here"
 #~ msgstr "Введите ссылку"
@@ -1212,10 +1141,22 @@ msgstr "Введите ссылку прокси"
 #~ "будут сохранены отдельными файлами"
 
 #~ msgid ""
+#~ "If enabled, Parabolic will download the appropriate video/audio format "
+#~ "for the selected quality without converting to other formats. (You will "
+#~ "be unable to select a file format)"
+#~ msgstr ""
+#~ "Если отключить конвертирование, Parabolic будет скачивать видео/аудио в "
+#~ "наиболее подходящем под заданное качество формате без конвертирования. "
+#~ "(Вы не сможете выбрать формат файла)"
+
+#~ msgid ""
 #~ "In combination with the trigger, completed notifications will only be "
 #~ "shown if the window is not focused."
 #~ msgstr ""
 #~ "Уведомления будут показаны при указанном условии, если окно не в фокусе."
+
+#~ msgid "Keyring Credential"
+#~ msgstr "Данные из связки ключей"
 
 #~ msgid "Keyring Disabled"
 #~ msgstr "Связка ключей отключена"
@@ -1277,6 +1218,9 @@ msgstr "Введите ссылку прокси"
 #~ msgid "No"
 #~ msgstr "Нет"
 
+#~ msgid "No active internet connection"
+#~ msgstr "Отсутствует подключение к интернету"
+
 #~ msgid "No Completed Downloads"
 #~ msgstr "Нет завершённых загрузок"
 
@@ -1294,6 +1238,9 @@ msgstr "Введите ссылку прокси"
 
 #~ msgid "No Running Downloads"
 #~ msgstr "Нет текущих загрузок"
+
+#~ msgid "OK"
+#~ msgstr "ОК"
 
 #~ msgid "Password (Empty)"
 #~ msgstr "Пароль (пустой)"
@@ -1719,6 +1666,20 @@ msgstr "Введите ссылку прокси"
 #~ msgid "More options for configuring the download."
 #~ msgstr "Больше опций для настройки загрузки."
 
+#~ msgctxt "Night"
+#~ msgid "Good Morning!"
+#~ msgstr "Доброй ночи!"
+
+#~ msgctxt "Morning"
+#~ msgid "Good Morning!"
+#~ msgstr "Доброе утро!"
+
+#~ msgid "Good Afternoon!"
+#~ msgstr "Добрый день!"
+
+#~ msgid "Good Evening!"
+#~ msgstr "Добрый вечер!"
+
 #~ msgid ""
 #~ "Nicholas Logozzo https://github.com/nlogozzo\n"
 #~ "Contributors on GitHub ❤️ https://github.com/NickvisionApps/Parabolic/"
@@ -1783,6 +1744,9 @@ msgstr "Введите ссылку прокси"
 
 #~ msgid "Downloading required dependencies..."
 #~ msgstr "Скачивание необходимых зависимостей..."
+
+#~ msgid "Total Speed: {0}"
+#~ msgstr "Общая скорость: {0}"
 
 #~ msgid "Stop All Downloads (Ctrl+Shift+C)"
 #~ msgstr "Остановить все загрузки (Ctrl+Shift+C)"

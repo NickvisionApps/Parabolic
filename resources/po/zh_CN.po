@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-07-24 19:07-0400\n"
+"POT-Creation-Date: 2024-07-25 12:00-0400\n"
 "PO-Revision-Date: 2024-02-15 17:02+0000\n"
 "Last-Translator: valigarmanda <valigarmanda55@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
@@ -223,9 +223,8 @@ msgstr "高级选项"
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:243
 #: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:54
 #: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:63
-#, fuzzy
 msgid "Save Folder"
-msgstr "选择保存文件夹"
+msgstr "保存文件夹"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:128
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:249
@@ -238,7 +237,6 @@ msgstr "选择保存文件夹"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:137
 #: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:56
-#, fuzzy
 msgid "File Name"
 msgstr "文件名"
 
@@ -462,7 +460,6 @@ msgstr "从不"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:39
 #: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:35
-#, fuzzy
 msgid "Prevent Suspend"
 msgstr "防止挂起"
 
@@ -470,7 +467,7 @@ msgstr "防止挂起"
 #: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:38
 #, fuzzy
 msgid "Download History Length"
-msgstr "历史"
+msgstr "下载中"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:50
 #: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:40
@@ -633,11 +630,10 @@ msgstr "删除源数据"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:273
 #: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:85
-#, fuzzy
 msgid ""
 "If enabled, Parabolic will clear metadata fields containing identifying "
 "download information."
-msgstr "清除包含媒体源的 URL 和其他标识信息的元数据字段"
+msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:284
 #: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:88
@@ -953,83 +949,6 @@ msgstr "关闭"
 msgid "Enter proxy URL here"
 msgstr "在此处输入代理 URL"
 
-#, fuzzy
-#~ msgid ""
-#~ "A cookies file can be provided to Parabolic to allow downloading media "
-#~ "that requires a login."
-#~ msgstr "向 yt-dlp 提供cookie文件, 以允许下载需要登录的多媒体."
-
-#~ msgid ""
-#~ "Enable to use aria2 downloader. It can be faster, but you will not see "
-#~ "download progress."
-#~ msgstr "启用以使用 aria2 下载程序. 它会更快, 但你看不到下载进度. "
-
-#, fuzzy
-#~ msgid "Enter start time here"
-#~ msgstr "在此处输入开始时间"
-
-#, fuzzy
-#~ msgid "Enter end time here"
-#~ msgstr "在此处输入结束时间"
-
-#~ msgid "OK"
-#~ msgstr "OK"
-
-#~ msgid "Keyring Credential"
-#~ msgstr "密钥环凭证"
-
-#, fuzzy
-#~ msgid "Prevent Suspend When Downloading"
-#~ msgstr "防止挂起"
-
-#~ msgid "Disallow Conversions"
-#~ msgstr "禁用转换"
-
-#, fuzzy
-#~ msgid ""
-#~ "If enabled, Parabolic will download the appropriate video/audio format "
-#~ "for the selected quality without converting to other formats. (You will "
-#~ "be unable to select a file format)"
-#~ msgstr ""
-#~ "如果启用, Parabolic 将下载所选质量的适当视频/音频格式, 而不转换为其他格"
-#~ "式. (您将无法选择文件格式)"
-
-#, fuzzy
-#~ msgid ""
-#~ "If enabled, Parabolic will download the appropriate video/audio format "
-#~ "for the selected quality without converting to other formats."
-#~ msgstr ""
-#~ "如果启用, Parabolic 将下载所选质量的适当视频/音频格式, 而不转换为其他格"
-#~ "式. (您将无法选择文件格式)"
-
-#, fuzzy
-#~ msgid "Download using aria2 has started."
-#~ msgstr "使用 aria2 的下载已开始"
-
-#, fuzzy
-#~ msgid "Download using ffmpeg has started."
-#~ msgstr "使用 ffmpeg 的下载已开始"
-
-#, fuzzy
-#~ msgid "No History"
-#~ msgstr "历史"
-
-#, fuzzy
-#~ msgid "Network connection restored"
-#~ msgstr "没有活动的互联网连接"
-
-#, fuzzy
-#~ msgid "No network connection"
-#~ msgstr "没有活动的互联网连接"
-
-#, fuzzy
-#~ msgid "Open Folder (Ctrl+O)"
-#~ msgstr "打开文件夹"
-
-#, fuzzy
-#~ msgid "Folder"
-#~ msgstr "打开文件夹"
-
 #, csharp-format
 #~ msgid "\"{0}\" has finished downloading."
 #~ msgstr "\"{0}\" 已完成下载."
@@ -1050,6 +969,11 @@ msgstr "在此处输入代理 URL"
 #, csharp-format
 #~ msgid "{0}{1}"
 #~ msgstr "{0}{1}"
+
+#~ msgid ""
+#~ "A cookies file can be provided to yt-dlp to allow downloading media that "
+#~ "requires a login."
+#~ msgstr "向 yt-dlp 提供cookie文件, 以允许下载需要登录的多媒体."
 
 #~ msgid "About"
 #~ msgstr "关于"
@@ -1074,6 +998,11 @@ msgstr "在此处输入代理 URL"
 
 #~ msgid "Clear Completed"
 #~ msgstr "清除已完成的下载"
+
+#~ msgid ""
+#~ "Clear metadata fields containing the URL and other identifying "
+#~ "information of the media source"
+#~ msgstr "清除包含媒体源的 URL 和其他标识信息的元数据字段"
 
 #~ msgid "Clear Queued"
 #~ msgstr "清除队列中的下载"
@@ -1130,6 +1059,9 @@ msgstr "在此处输入代理 URL"
 #~ "you sure you want to disable it?"
 #~ msgstr "禁用密钥环将删除当前存储在其中的所有数据. 你确定要禁用它吗?"
 
+#~ msgid "Disallow Conversions"
+#~ msgstr "禁用转换"
+
 #~ msgid "Download Finished"
 #~ msgstr "下载完成"
 
@@ -1138,6 +1070,12 @@ msgstr "在此处输入代理 URL"
 
 #~ msgid "Download Specific Timeframe"
 #~ msgstr "下载特定时间段"
+
+#~ msgid "Download using aria2 has started"
+#~ msgstr "使用 aria2 的下载已开始"
+
+#~ msgid "Download using ffmpeg has started"
+#~ msgstr "使用 ffmpeg 的下载已开始"
 
 #, csharp-format
 #~ msgid "Downloading {0:f2}% ({1})"
@@ -1152,11 +1090,22 @@ msgstr "在此处输入代理 URL"
 #~ msgid "Enable"
 #~ msgstr "启用"
 
+#~ msgid ""
+#~ "Enable to use aria2 downloader. It can be faster, but you will not see "
+#~ "download progress."
+#~ msgstr "启用以使用 aria2 下载程序. 它会更快, 但你看不到下载进度. "
+
 #~ msgid "End Time (Invalid)"
 #~ msgstr "结束时间 (无效)"
 
 #~ msgid "Ensure credentials are correct."
 #~ msgstr "请确认凭据正确无误"
+
+#~ msgid "Enter end timeframe here"
+#~ msgstr "在此处输入结束时间"
+
+#~ msgid "Enter start timeframe here"
+#~ msgstr "在此处输入开始时间"
 
 #~ msgid "Enter URL here"
 #~ msgstr "在此处输入 URL"
@@ -1173,9 +1122,20 @@ msgstr "在此处输入代理 URL"
 #~ msgstr "如果禁用或嵌入失败, 下载的字幕将保存到单独的文件中"
 
 #~ msgid ""
+#~ "If enabled, Parabolic will download the appropriate video/audio format "
+#~ "for the selected quality without converting to other formats. (You will "
+#~ "be unable to select a file format)"
+#~ msgstr ""
+#~ "如果启用, Parabolic 将下载所选质量的适当视频/音频格式, 而不转换为其他格"
+#~ "式. (您将无法选择文件格式)"
+
+#~ msgid ""
 #~ "In combination with the trigger, completed notifications will only be "
 #~ "shown if the window is not focused."
 #~ msgstr "与触发器结合使用时, 只有在窗口未聚焦时才会显示已完成的通知."
+
+#~ msgid "Keyring Credential"
+#~ msgstr "密钥环凭证"
 
 #~ msgid "Keyring Disabled"
 #~ msgstr "密钥环已禁用"
@@ -1235,6 +1195,9 @@ msgstr "在此处输入代理 URL"
 #~ msgid "No"
 #~ msgstr "否"
 
+#~ msgid "No active internet connection"
+#~ msgstr "没有活动的互联网连接"
+
 #~ msgid "No Completed Downloads"
 #~ msgstr "没有已完成的下载"
 
@@ -1249,6 +1212,9 @@ msgstr "在此处输入代理 URL"
 
 #~ msgid "No Running Downloads"
 #~ msgstr "没有正在运行的下载"
+
+#~ msgid "OK"
+#~ msgstr "OK"
 
 #~ msgid "Password (Empty)"
 #~ msgstr "密码 (空)"

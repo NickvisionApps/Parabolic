@@ -2,7 +2,7 @@
 <page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" id="downloader" its:version="2.0" xml:lang="pt-PT">
 <info>
 	<link type="guide" xref="index"/>
-	<title type="link">Downloader 🌐</title>
+	<title type="link">Descarregador 🌐</title>
 	<credit type="author copyright">
 		<name>Nicholas Logozzo</name>
 		<years its:translate="no">2023</years>
@@ -14,12 +14,12 @@
 	<license href="http://creativecommons.org/licenses/by/4.0/" its:translate="no"><p>Creative Commons Attribution 4.0 International License</p></license>
 </info>
 
-<title>Downloader</title>
+<title>Descarregador</title>
 <p>This page explains all options for configuring the Downloader in Preferences in <app>Parabolic</app>.</p>
 
 <terms>
     <item>
-        <title>Overwrite Existing Files</title>
+        <title>Sobrescrever ficheiros existentes</title>
         <p>If enabled, Parabolic will overwrite existing files.</p>
         <p>
             For example, if a file named <code>movie.mp4</code> exists in the download folder, and a new download is created named <code>movie</code>, <code>movie.mp4</code> will be overwritten with the new download's content.
@@ -57,7 +57,7 @@
         </note>
     </item>
     <item>
-        <title>Use aria2</title>
+        <title>Usar aria2</title>
         <p>If enabled, Parabolic will use aria2c to download media. Although using aria2c can improve download speed, download progress will not be displayed in the UI.</p>
         <note style="advanced">
             <p>Default: Off</p>
@@ -84,18 +84,18 @@
         </note>
     </item>
     <item>
-        <title>Speed Limit</title>
+        <title>Limite de velocidade</title>
         <p>A limit, in Ki/s, that is applied to downloads only if they have the advanced option <code>Speed Limit</code> enabled. Must be an integer value between 512 and 10240.</p>
 		<note style="advanced">
 			<p>Default: 1024</p>
 		</note>
     </item>
     <item>
-        <title>Proxy URL</title>
+        <title>URL da Proxy</title>
         <p>The url of the proxy server to use.</p>
     </item>
     <item>
-        <title>Cookies File</title>
+        <title>Ficheiro de cookies</title>
         <p>A .txt file of cookies to pass to yt-dlp when downloading. This may be useful when downloading media that requires a login, for example: private YouTube videos.</p>
         <p>Use one of the following extensions for getting a cookies file from your browser:</p>
         <p>Chrome: <code>https://chrome.google.com/webstore/detail/get-cookiestxt-locally/cclelndahbckbenkjhflpdbgdldlbecc</code></p>
@@ -108,7 +108,7 @@
 		</note>
     </item>
     <item>
-        <title>Use SponsorBlock for YouTube</title>
+        <title>Usar SponsorBlock para o YouTube</title>
         <p>If enabled, Parabolic will apply the SponsorBlock extension to YouTube downloads.</p>
         <note>
             <p>SponsorBlock only works on YouTube videos. However, leaving this setting on will not affect downloads from other sites (i.e. not cause them to fail).</p>

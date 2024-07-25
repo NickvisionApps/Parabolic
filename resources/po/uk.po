@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-07-24 19:07-0400\n"
-"PO-Revision-Date: 2024-05-14 18:01+0000\n"
+"POT-Creation-Date: 2024-07-25 12:00-0400\n"
+"PO-Revision-Date: 2024-07-17 06:09+0000\n"
 "Last-Translator: Bezruchenko Simon <worcposj44@gmail.com>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/nickvision-"
 "tube-converter/app/uk/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Weblate 5.6-dev\n"
+"X-Generator: Weblate 5.7-dev\n"
 
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:82
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:93
@@ -230,9 +230,8 @@ msgstr "Розширені налаштування"
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:243
 #: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:54
 #: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:63
-#, fuzzy
 msgid "Save Folder"
-msgstr "Обрати теку для збереження"
+msgstr "Зберегти теку"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:128
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:249
@@ -245,7 +244,6 @@ msgstr "Обрати теку для збереження"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:137
 #: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:56
-#, fuzzy
 msgid "File Name"
 msgstr "Ім'я файлу"
 
@@ -471,7 +469,6 @@ msgstr "Ніколи"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:39
 #: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:35
-#, fuzzy
 msgid "Prevent Suspend"
 msgstr "Запобігти призупиненню системи"
 
@@ -479,7 +476,7 @@ msgstr "Запобігти призупиненню системи"
 #: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:38
 #, fuzzy
 msgid "Download History Length"
-msgstr "Історія"
+msgstr "Завантаження"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:50
 #: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:40
@@ -646,13 +643,10 @@ msgstr "Вилучити вихідні дані"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:273
 #: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:85
-#, fuzzy
 msgid ""
 "If enabled, Parabolic will clear metadata fields containing identifying "
 "download information."
 msgstr ""
-"Очистити поля метаданих, що містять URL та іншу ідентифікаційну інформацію "
-"джерела медіа"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:284
 #: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:88
@@ -966,110 +960,8 @@ msgid "Off"
 msgstr "Вимкнено"
 
 #: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:62
-#, fuzzy
 msgid "Enter proxy URL here"
-msgstr "Введіть URL-адресу проксі тут"
-
-#, fuzzy
-#~ msgid ""
-#~ "A cookies file can be provided to Parabolic to allow downloading media "
-#~ "that requires a login."
-#~ msgstr ""
-#~ "Файл cookies може бути наданий yt-dlp, щоб дозволити завантажувати медіа, "
-#~ "які потребують входу."
-
-#~ msgid ""
-#~ "Enable to use aria2 downloader. It can be faster, but you will not see "
-#~ "download progress."
-#~ msgstr ""
-#~ "Увімкніть використання завантажувача aria2. Це може бути швидше, але ви "
-#~ "не побачите прогрес завантаження."
-
-#, fuzzy
-#~ msgid "Enter start time here"
-#~ msgstr "Введіть початкову часову мітку тут"
-
-#, fuzzy
-#~ msgid "Enter end time here"
-#~ msgstr "Введіть кінцеву часову мітку тут"
-
-#~ msgid "OK"
-#~ msgstr "ОК"
-
-#~ msgid "Keyring Credential"
-#~ msgstr "Облікові дані Keyring"
-
-#, fuzzy
-#~ msgid "Prevent Suspend When Downloading"
-#~ msgstr "Запобігти призупиненню системи"
-
-#~ msgid "Disallow Conversions"
-#~ msgstr "Заборонити конвертацію"
-
-#, fuzzy
-#~ msgid ""
-#~ "If enabled, Parabolic will download the appropriate video/audio format "
-#~ "for the selected quality without converting to other formats. (You will "
-#~ "be unable to select a file format)"
-#~ msgstr ""
-#~ "Якщо ввімкнено, Parabolic завантажить відповідний формат відео/аудіо для "
-#~ "вибраної якості без конвертації в інші формати. (Ви не зможете вибрати "
-#~ "формат файлу)"
-
-#, fuzzy
-#~ msgid ""
-#~ "If enabled, Parabolic will download the appropriate video/audio format "
-#~ "for the selected quality without converting to other formats."
-#~ msgstr ""
-#~ "Якщо ввімкнено, Parabolic завантажить відповідний формат відео/аудіо для "
-#~ "вибраної якості без конвертації в інші формати. (Ви не зможете вибрати "
-#~ "формат файлу)"
-
-#, fuzzy
-#~ msgid "Download using aria2 has started."
-#~ msgstr "Розпочато завантаження за допомогою aria2"
-
-#, fuzzy
-#~ msgid "Download using ffmpeg has started."
-#~ msgstr "Розпочато завантаження за допомогою ffmpeg"
-
-#, fuzzy
-#~ msgid "No History"
-#~ msgstr "Історія"
-
-#, fuzzy
-#~ msgid "Network connection restored"
-#~ msgstr "Немає активного з'єднання з Інтернетом"
-
-#, fuzzy
-#~ msgid "No network connection"
-#~ msgstr "Немає активного з'єднання з Інтернетом"
-
-#, fuzzy
-#~ msgid "Open Folder (Ctrl+O)"
-#~ msgstr "Відкрити папку"
-
-#~ msgctxt "Night"
-#~ msgid "Good Morning!"
-#~ msgstr "Доброго ранку!"
-
-#~ msgctxt "Morning"
-#~ msgid "Good Morning!"
-#~ msgstr "Доброго ранку!"
-
-#~ msgid "Good Afternoon!"
-#~ msgstr "Доброго дня!"
-
-#~ msgid "Good Evening!"
-#~ msgstr "Добрий вечір!"
-
-#, fuzzy
-#~ msgid "Folder Opened: {}"
-#~ msgstr "Загальна швидкість: {0}"
-
-#, fuzzy
-#~ msgid "Folder"
-#~ msgstr "Відкрити папку"
+msgstr "Введіть URL-адресу проксі"
 
 #, csharp-format
 #~ msgid "\"{0}\" has finished downloading."
@@ -1092,6 +984,13 @@ msgstr "Введіть URL-адресу проксі тут"
 #, csharp-format
 #~ msgid "{0}{1}"
 #~ msgstr "{0}{1}"
+
+#~ msgid ""
+#~ "A cookies file can be provided to yt-dlp to allow downloading media that "
+#~ "requires a login."
+#~ msgstr ""
+#~ "Файл cookies може бути наданий yt-dlp, щоб дозволити завантажувати медіа, "
+#~ "які потребують входу."
 
 #~ msgid "About"
 #~ msgstr "Про додаток"
@@ -1116,6 +1015,13 @@ msgstr "Введіть URL-адресу проксі тут"
 
 #~ msgid "Clear Completed"
 #~ msgstr "Очистити завершені"
+
+#~ msgid ""
+#~ "Clear metadata fields containing the URL and other identifying "
+#~ "information of the media source"
+#~ msgstr ""
+#~ "Очистити поля метаданих, що містять URL та іншу ідентифікаційну "
+#~ "інформацію джерела медіа"
 
 #~ msgid "Clear Queued"
 #~ msgstr "Очистити чергу"
@@ -1177,6 +1083,9 @@ msgstr "Введіть URL-адресу проксі тут"
 #~ "Вимкнення keyring призведе до видалення всіх даних, що зберігаються в "
 #~ "ньому. Ви впевнені, що хочете його вимкнути?"
 
+#~ msgid "Disallow Conversions"
+#~ msgstr "Заборонити конвертацію"
+
 #~ msgid "Download Finished"
 #~ msgstr "Завантаження завершено"
 
@@ -1185,6 +1094,12 @@ msgstr "Введіть URL-адресу проксі тут"
 
 #~ msgid "Download Specific Timeframe"
 #~ msgstr "Завантажити конкретний часовий проміжок"
+
+#~ msgid "Download using aria2 has started"
+#~ msgstr "Розпочато завантаження за допомогою aria2"
+
+#~ msgid "Download using ffmpeg has started"
+#~ msgstr "Розпочато завантаження за допомогою ffmpeg"
 
 #, csharp-format
 #~ msgid "Downloading {0:f2}% ({1})"
@@ -1199,15 +1114,27 @@ msgstr "Введіть URL-адресу проксі тут"
 #~ msgid "Enable"
 #~ msgstr "Ввімкнути"
 
+#~ msgid ""
+#~ "Enable to use aria2 downloader. It can be faster, but you will not see "
+#~ "download progress."
+#~ msgstr ""
+#~ "Увімкніть використання завантажувача aria2. Це може бути швидше, але ви "
+#~ "не побачите прогрес завантаження."
+
 #~ msgid "End Time (Invalid)"
 #~ msgstr "Час закінчення (неправильний)"
 
 #~ msgid "Ensure credentials are correct."
 #~ msgstr "Переконайтеся, що облікові дані правильні."
 
-#, fuzzy
+#~ msgid "Enter end timeframe here"
+#~ msgstr "Введіть кінцеву часову мітку тут"
+
+#~ msgid "Enter start timeframe here"
+#~ msgstr "Введіть початкову часову мітку тут"
+
 #~ msgid "Enter URL here"
-#~ msgstr "Введіть URL-адресу тут"
+#~ msgstr "Введіть URL-адресу"
 
 #~ msgid "Exit"
 #~ msgstr "Вийти"
@@ -1223,11 +1150,23 @@ msgstr "Введіть URL-адресу проксі тут"
 #~ "будуть збережені в окремий файл"
 
 #~ msgid ""
+#~ "If enabled, Parabolic will download the appropriate video/audio format "
+#~ "for the selected quality without converting to other formats. (You will "
+#~ "be unable to select a file format)"
+#~ msgstr ""
+#~ "Якщо ввімкнено, Parabolic завантажить відповідний формат відео/аудіо для "
+#~ "вибраної якості без конвертації в інші формати. (Ви не зможете вибрати "
+#~ "формат файлу)"
+
+#~ msgid ""
 #~ "In combination with the trigger, completed notifications will only be "
 #~ "shown if the window is not focused."
 #~ msgstr ""
 #~ "У поєднанні з показом сповіщень про завершення будуть показані, тільки "
 #~ "якщо вікно знаходиться у фоновому режимі."
+
+#~ msgid "Keyring Credential"
+#~ msgstr "Облікові дані Keyring"
 
 #~ msgid "Keyring Disabled"
 #~ msgstr "Keyring вимкнено"
@@ -1290,6 +1229,9 @@ msgstr "Введіть URL-адресу проксі тут"
 #~ msgid "No"
 #~ msgstr "Ні"
 
+#~ msgid "No active internet connection"
+#~ msgstr "Немає активного з'єднання з Інтернетом"
+
 #~ msgid "No Completed Downloads"
 #~ msgstr "Немає завершених завантажень"
 
@@ -1308,6 +1250,9 @@ msgstr "Введіть URL-адресу проксі тут"
 #, fuzzy
 #~ msgid "No Running Downloads"
 #~ msgstr "Немає завантажень у черзі"
+
+#~ msgid "OK"
+#~ msgstr "ОК"
 
 #~ msgid "Password (Empty)"
 #~ msgstr "Пароль (Порожньо)"
@@ -1342,9 +1287,8 @@ msgstr "Введіть URL-адресу проксі тут"
 #~ msgid "Retry Download"
 #~ msgstr "Повторити завантаження"
 
-#, fuzzy
 #~ msgid "Retry Failed"
-#~ msgstr "Повторити невдалу спробу завантаження"
+#~ msgstr "Повторити невдалі"
 
 #~ msgid "Save Folder (Invalid)"
 #~ msgstr "Зберегти папку (неправильно)"
@@ -1684,6 +1628,20 @@ msgstr "Введіть URL-адресу проксі тут"
 #~ msgid "More options for configuring the download."
 #~ msgstr "Більше можливостей для налаштування завантаження."
 
+#~ msgctxt "Night"
+#~ msgid "Good Morning!"
+#~ msgstr "Доброго ранку!"
+
+#~ msgctxt "Morning"
+#~ msgid "Good Morning!"
+#~ msgstr "Доброго ранку!"
+
+#~ msgid "Good Afternoon!"
+#~ msgstr "Доброго дня!"
+
+#~ msgid "Good Evening!"
+#~ msgstr "Добрий вечір!"
+
 #~ msgid "New"
 #~ msgstr "Новий"
 
@@ -1757,6 +1715,9 @@ msgstr "Введіть URL-адресу проксі тут"
 
 #~ msgid "Clear Queued Downloads (Ctrl+Delete)"
 #~ msgstr "Очистити завантаження в черзі (Ctrl+Delete)"
+
+#~ msgid "Total Speed: {0}"
+#~ msgstr "Загальна швидкість: {0}"
 
 #~ msgid "Info"
 #~ msgstr "Інформація"

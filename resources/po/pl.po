@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-07-24 19:07-0400\n"
-"PO-Revision-Date: 2024-06-03 13:09+0000\n"
-"Last-Translator: Agnieszka Ziora <agaxx02@gmail.com>\n"
+"POT-Creation-Date: 2024-07-25 12:00-0400\n"
+"PO-Revision-Date: 2024-07-22 13:09+0000\n"
+"Last-Translator: Dominik Gęgotek <ioutora@disroot.org>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/nickvision-tube-"
 "converter/app/pl/>\n"
 "Language: pl\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
-"X-Generator: Weblate 5.6-dev\n"
+"X-Generator: Weblate 5.7-dev\n"
 
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:82
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:93
@@ -130,8 +130,9 @@ msgid "New update available"
 msgstr "Dostępna nowa aktualizacja."
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:307
+#, fuzzy
 msgid "Unable to download and install update"
-msgstr ""
+msgstr "Nie można pobrać i zainstalować aktualizacji."
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:21
 #, fuzzy, c++-format
@@ -225,9 +226,8 @@ msgstr "Opcje zaawansowane"
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:243
 #: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:54
 #: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:63
-#, fuzzy
 msgid "Save Folder"
-msgstr "Wybierz folder docelowy"
+msgstr "Folder docelowy"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:128
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:249
@@ -240,7 +240,6 @@ msgstr "Wybierz folder docelowy"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:137
 #: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:56
-#, fuzzy
 msgid "File Name"
 msgstr "Nazwa pliku"
 
@@ -464,7 +463,6 @@ msgstr "Nigdy"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:39
 #: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:35
-#, fuzzy
 msgid "Prevent Suspend"
 msgstr "Zapobiegaj uśpieniu"
 
@@ -472,7 +470,7 @@ msgstr "Zapobiegaj uśpieniu"
 #: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:38
 #, fuzzy
 msgid "Download History Length"
-msgstr "Historia"
+msgstr "Pobierane"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:50
 #: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:40
@@ -640,13 +638,10 @@ msgstr "Usuń dane źródłowe"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:273
 #: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:85
-#, fuzzy
 msgid ""
 "If enabled, Parabolic will clear metadata fields containing identifying "
 "download information."
 msgstr ""
-"Usuń metadane zawierające adres URL i inne dane, które mogą prowadzić do "
-"źródła multimediów"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:284
 #: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:88
@@ -864,7 +859,7 @@ msgstr "Dokumentacja"
 #: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:72
 #: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:22
 msgid "Settings"
-msgstr ""
+msgstr "Ustawienia"
 
 #: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:95
 msgid "Preview"
@@ -872,7 +867,7 @@ msgstr ""
 
 #: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:195
 msgid "Update"
-msgstr ""
+msgstr "Aktualizacja"
 
 #: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:346
 #, fuzzy
@@ -963,85 +958,6 @@ msgstr "Wyłącz"
 msgid "Enter proxy URL here"
 msgstr "Podaj adres URL serwera proxy"
 
-#, fuzzy
-#~ msgid ""
-#~ "A cookies file can be provided to Parabolic to allow downloading media "
-#~ "that requires a login."
-#~ msgstr ""
-#~ "Ciasteczko może zostać udostępnione yt-dlp, aby umożliwić pobieranie "
-#~ "plików dostępnych po zalogowaniu."
-
-#~ msgid ""
-#~ "Enable to use aria2 downloader. It can be faster, but you will not see "
-#~ "download progress."
-#~ msgstr ""
-#~ "Włącz, aby pobierać za pomocą aria2. Pobieranie może być szybsze, ale "
-#~ "pasek postępu nie będzie widoczny."
-
-#, fuzzy
-#~ msgid "Enter start time here"
-#~ msgstr "Podaj czas rozpoczęcia"
-
-#, fuzzy
-#~ msgid "Enter end time here"
-#~ msgstr "Podaj ramy czasowe"
-
-#~ msgid "OK"
-#~ msgstr "OK"
-
-#~ msgid "Keyring Credential"
-#~ msgstr "Dane logowania"
-
-#, fuzzy
-#~ msgid "Prevent Suspend When Downloading"
-#~ msgstr "Zapobiegaj uśpieniu"
-
-#~ msgid "Disallow Conversions"
-#~ msgstr "Nie zezwalaj na konwersję"
-
-#, fuzzy
-#~ msgid ""
-#~ "If enabled, Parabolic will download the appropriate video/audio format "
-#~ "for the selected quality without converting to other formats. (You will "
-#~ "be unable to select a file format)"
-#~ msgstr ""
-#~ "Po włączeniu, Parabolic pobierze wideo i audio w formacie odpowiednim dla "
-#~ "wybranej jakości bez przeprowadzania konwersji na inne formaty. (Nie "
-#~ "będzie można wybrać formatu pliku)."
-
-#, fuzzy
-#~ msgid ""
-#~ "If enabled, Parabolic will download the appropriate video/audio format "
-#~ "for the selected quality without converting to other formats."
-#~ msgstr ""
-#~ "Po włączeniu, Parabolic pobierze wideo i audio w formacie odpowiednim dla "
-#~ "wybranej jakości bez przeprowadzania konwersji na inne formaty. (Nie "
-#~ "będzie można wybrać formatu pliku)."
-
-#, fuzzy
-#~ msgid "Download using aria2 has started."
-#~ msgstr "Rozpoczęto pobieranie za pomocą aria2"
-
-#, fuzzy
-#~ msgid "Download using ffmpeg has started."
-#~ msgstr "Rozpoczęto pobieranie za pomocą ffmpeg"
-
-#, fuzzy
-#~ msgid "No History"
-#~ msgstr "Historia"
-
-#, fuzzy
-#~ msgid "Network connection restored"
-#~ msgstr "Brak połączenia z internetem"
-
-#, fuzzy
-#~ msgid "No network connection"
-#~ msgstr "Brak połączenia z internetem"
-
-#, fuzzy
-#~ msgid "Open Folder (Ctrl+O)"
-#~ msgstr "Otwórz folder"
-
 #, csharp-format
 #~ msgid "\"{0}\" has finished downloading."
 #~ msgstr "Pobieranie \"{0}\" zostało zakończone."
@@ -1063,6 +979,13 @@ msgstr "Podaj adres URL serwera proxy"
 #, csharp-format
 #~ msgid "{0}{1}"
 #~ msgstr "{0}{1}"
+
+#~ msgid ""
+#~ "A cookies file can be provided to yt-dlp to allow downloading media that "
+#~ "requires a login."
+#~ msgstr ""
+#~ "Ciasteczko może zostać udostępnione yt-dlp, aby umożliwić pobieranie "
+#~ "plików dostępnych po zalogowaniu."
 
 #~ msgid "About"
 #~ msgstr "O programie"
@@ -1087,6 +1010,13 @@ msgstr "Podaj adres URL serwera proxy"
 
 #~ msgid "Clear Completed"
 #~ msgstr "Wyczyść ukończone"
+
+#~ msgid ""
+#~ "Clear metadata fields containing the URL and other identifying "
+#~ "information of the media source"
+#~ msgstr ""
+#~ "Usuń metadane zawierające adres URL i inne dane, które mogą prowadzić do "
+#~ "źródła multimediów"
 
 #~ msgid "Clear Queued"
 #~ msgstr "Wyczyść oczekujące"
@@ -1147,6 +1077,9 @@ msgstr "Podaj adres URL serwera proxy"
 #~ "Wyłączenie listy kluczy spowoduje usunięcie wszystkich przechowywanych na "
 #~ "niej danych. Czy na pewno chcesz ją wyłączyć?"
 
+#~ msgid "Disallow Conversions"
+#~ msgstr "Nie zezwalaj na konwersję"
+
 #~ msgid "Download Finished"
 #~ msgstr "Pobieranie zostało zakończone"
 
@@ -1155,6 +1088,12 @@ msgstr "Podaj adres URL serwera proxy"
 
 #~ msgid "Download Specific Timeframe"
 #~ msgstr "Pobierz określony fragment"
+
+#~ msgid "Download using aria2 has started"
+#~ msgstr "Rozpoczęto pobieranie za pomocą aria2"
+
+#~ msgid "Download using ffmpeg has started"
+#~ msgstr "Rozpoczęto pobieranie za pomocą ffmpeg"
 
 #, csharp-format
 #~ msgid "Downloading {0:f2}% ({1})"
@@ -1169,11 +1108,24 @@ msgstr "Podaj adres URL serwera proxy"
 #~ msgid "Enable"
 #~ msgstr "Włącz"
 
+#~ msgid ""
+#~ "Enable to use aria2 downloader. It can be faster, but you will not see "
+#~ "download progress."
+#~ msgstr ""
+#~ "Włącz, aby pobierać za pomocą aria2. Pobieranie może być szybsze, ale "
+#~ "pasek postępu nie będzie widoczny."
+
 #~ msgid "End Time (Invalid)"
 #~ msgstr "Koniec (błędne dane)"
 
 #~ msgid "Ensure credentials are correct."
 #~ msgstr "Upewnij się, że dane logowania są poprawne."
+
+#~ msgid "Enter end timeframe here"
+#~ msgstr "Podaj ramy czasowe"
+
+#~ msgid "Enter start timeframe here"
+#~ msgstr "Podaj czas rozpoczęcia"
 
 #~ msgid "Enter URL here"
 #~ msgstr "Podaj adres URL"
@@ -1192,11 +1144,23 @@ msgstr "Podaj adres URL serwera proxy"
 #~ "pobrane napisy zostaną zapisane do osobnego pliku"
 
 #~ msgid ""
+#~ "If enabled, Parabolic will download the appropriate video/audio format "
+#~ "for the selected quality without converting to other formats. (You will "
+#~ "be unable to select a file format)"
+#~ msgstr ""
+#~ "Po włączeniu, Parabolic pobierze wideo i audio w formacie odpowiednim dla "
+#~ "wybranej jakości bez przeprowadzania konwersji na inne formaty. (Nie "
+#~ "będzie można wybrać formatu pliku)."
+
+#~ msgid ""
 #~ "In combination with the trigger, completed notifications will only be "
 #~ "shown if the window is not focused."
 #~ msgstr ""
 #~ "Po włączeniu, powiadomienia o ukończeniu pobierania będą widoczne, kiedy "
 #~ "okno programu nie będzie aktywne."
+
+#~ msgid "Keyring Credential"
+#~ msgstr "Dane logowania"
 
 #~ msgid "Keyring Disabled"
 #~ msgstr "Lista kluczy wyłączona"
@@ -1258,6 +1222,9 @@ msgstr "Podaj adres URL serwera proxy"
 #~ msgid "No"
 #~ msgstr "Nie"
 
+#~ msgid "No active internet connection"
+#~ msgstr "Brak połączenia z internetem"
+
 #~ msgid "No Completed Downloads"
 #~ msgstr "Brak zakończonych procesów pobierania"
 
@@ -1275,6 +1242,9 @@ msgstr "Podaj adres URL serwera proxy"
 
 #~ msgid "No Running Downloads"
 #~ msgstr "Brak procesów w trakcie pobierania"
+
+#~ msgid "OK"
+#~ msgstr "OK"
 
 #~ msgid "Password (Empty)"
 #~ msgstr "Hasło (puste)"
@@ -1321,6 +1291,9 @@ msgstr "Podaj adres URL serwera proxy"
 #~ msgid "Select items to download or change file names."
 #~ msgstr "Wybierz by pobrać lub zmienić nazwy plików."
 
+#~ msgid "Show Window"
+#~ msgstr "Pokaż okno"
+
 #~ msgid ""
 #~ "Some downloads are still in progress.\n"
 #~ "Are you sure you want to close Parabolic and stop the running downloads?"
@@ -1349,9 +1322,8 @@ msgstr "Podaj adres URL serwera proxy"
 #~ msgid "Stopped"
 #~ msgstr "Zatrzymano"
 
-#, fuzzy
 #~ msgid "Subtitle Languages"
-#~ msgstr "Języki napisów (błędne dane)"
+#~ msgstr "Języki napisów"
 
 #~ msgid "Subtitle Languages (Comma-Separated)"
 #~ msgstr "Języki napisów (oddzielone przecinkami)"
@@ -1365,6 +1337,12 @@ msgstr "Podaj adres URL serwera proxy"
 #~ msgid "This action is irreversible. Are you sure you want to delete it?"
 #~ msgstr ""
 #~ "To działanie jest nieodwracalne. Czy na pewno chcesz usunąć te dane?"
+
+#~ msgid ""
+#~ "This option's state will be remembered and restored for future downloads."
+#~ msgstr ""
+#~ "To ustawienie zostanie zapamiętane i przywrócone dla przyszłych procesów "
+#~ "pobierania."
 
 #~ msgid ""
 #~ "This will delete the previous keyring removing all passwords with it. "
@@ -1385,9 +1363,8 @@ msgstr "Podaj adres URL serwera proxy"
 #~ msgid "Unlock Keyring"
 #~ msgstr "Odblokuj listę kluczy"
 
-#, fuzzy
 #~ msgid "Unset Cookies File"
-#~ msgstr "Wybierz ciasteczko"
+#~ msgstr "Niepoprawne ciasteczko"
 
 #~ msgid "URL"
 #~ msgstr "Adres URL"
@@ -1395,7 +1372,6 @@ msgstr "Podaj adres URL serwera proxy"
 #~ msgid "URL (Invalid)"
 #~ msgstr "Adres URL (błędne dane)"
 
-#, fuzzy
 #~ msgid ""
 #~ "Use keyring to safely store credentials for sites that require a user "
 #~ "name and password to login."
@@ -1403,23 +1379,28 @@ msgstr "Podaj adres URL serwera proxy"
 #~ "Użyj listy kluczy aby bezpiecznie przechowywać dane logowania do stron, "
 #~ "które wymagają logowania przez podanie nazwy użytkownika i hasła."
 
-#, fuzzy
 #~ msgid "User Name"
 #~ msgstr "Nazwa użytkownika"
 
-#, fuzzy
 #~ msgid "User Name (Empty)"
 #~ msgstr "Nazwa użytkownika (pusta)"
 
-#, fuzzy
 #~ msgid "Validating"
-#~ msgstr "Sprawdź"
+#~ msgstr "Sprawdzanie"
 
 #~ msgid "View Log"
 #~ msgstr "Wyświetl dziennik"
 
 #~ msgid "Waiting..."
 #~ msgstr "Oczekiwanie..."
+
+#, csharp-format
+#~ msgid ""
+#~ "Would you like to restart {0} to apply the new theme?\n"
+#~ "Any unsaved work will be lost."
+#~ msgstr ""
+#~ "Czy chcesz ponownie uruchomić {0}, aby zastosować nowy motyw?\n"
+#~ "Wszelkie niezapisane prace zostaną utracone."
 
 #~ msgid "Yes"
 #~ msgstr "Tak"
@@ -1434,9 +1415,8 @@ msgstr "Podaj adres URL serwera proxy"
 #~ msgid "Manage previously downloaded media."
 #~ msgstr "Zarządzaj pobranymi multimediami."
 
-#, fuzzy
 #~ msgid "Search history"
-#~ msgstr "Wyczyść historię"
+#~ msgstr "Historia wyszukiwania"
 
 #~ msgid "Disable Keyring"
 #~ msgstr "Wyłącz listę kluczy"
