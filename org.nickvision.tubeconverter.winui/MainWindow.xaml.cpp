@@ -73,6 +73,15 @@ namespace winrt::Nickvision::TubeConverter::WinUI::implementation
         StatusPageHome().Title(winrt::to_hstring(_("Download Media")));
         StatusPageHome().Description(winrt::to_hstring(_("Add a video, audio, or playlist URL to start downloading")));
         HomeAddDownloadButtonLabel().Text(winrt::to_hstring(_("Add Download")));
+        LblDownloadingTitle().Text(winrt::to_hstring(_("Downloading")));
+        StatusPageNoDownloading().Title(winrt::to_hstring(_("No downloads running")));
+        DownloadingAddDownloadButtonLabel().Text(winrt::to_hstring(_("Add Download")));
+        LblQueuedTitle().Text(winrt::to_hstring(_("Queued")));
+        StatusPageNoQueued().Title(winrt::to_hstring(_("No downloads queued")));
+        QueuedAddDownloadButtonLabel().Text(winrt::to_hstring(_("Add Download")));
+        LblCompletedTitle().Text(winrt::to_hstring(_("Completed")));
+        StatusPageNoCompleted().Title(winrt::to_hstring(_("No downloads completed")));
+        CompletedAddDownloadButtonLabel().Text(winrt::to_hstring(_("Add Download")));
         LblHistoryTitle().Text(winrt::to_hstring(_("History")));
         StatusPageNoHistory().Title(winrt::to_hstring(_("No history available")));
         LblClearHistory().Text(winrt::to_hstring(_("Clear History")));
@@ -111,6 +120,9 @@ namespace winrt::Nickvision::TubeConverter::WinUI::implementation
         }
         m_controller->startup(m_hwnd).apply(m_hwnd);
         NavViewHome().IsSelected(true);
+        ViewStackDownloading().CurrentPage(L"NoDownloading");
+        ViewStackQueued().CurrentPage(L"NoQueued");
+        ViewStackCompleted().CurrentPage(L"NoCompleted");
         m_opened = true;
     }
 

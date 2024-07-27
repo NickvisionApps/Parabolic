@@ -154,8 +154,16 @@ namespace winrt::Nickvision::TubeConverter::WinUI::implementation
 
     void AddDownloadDialog::OnCmbAuthenticateChanged(const IInspectable& sender, const SelectionChangedEventArgs& args)
     {
-        TxtUsername().Visibility(CmbAuthenticate().SelectedIndex() == 1 ? Visibility::Visible : Visibility::Collapsed);
-        TxtPassword().Visibility(CmbAuthenticate().SelectedIndex() == 1 ? Visibility::Visible : Visibility::Collapsed);
+        if(CmbAuthenticate().SelectedIndex() == 1)
+        {
+            TxtUsername().Visibility(Visibility::Visible);
+            TxtPassword().Visibility(Visibility::Visible);
+        }
+        else
+        {
+            TxtUsername().Visibility(Visibility::Collapsed);
+            TxtPassword().Visibility(Visibility::Collapsed);
+        }
     }
 
     void AddDownloadDialog::OnUrlValidated(const ParamEventArgs<bool>& args)

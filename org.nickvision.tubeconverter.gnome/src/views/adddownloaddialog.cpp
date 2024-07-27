@@ -32,11 +32,16 @@ namespace Nickvision::TubeConverter::GNOME::Views
         adw_view_stack_set_visible_child_name(ADW_VIEW_STACK(gtk_builder_get_object(m_builder, "viewStack")), "validate");
         gdk_clipboard_read_text_async(gdk_display_get_clipboard(gdk_display_get_default()), nullptr, GAsyncReadyCallback(+[](GObject* self, GAsyncResult* res, gpointer data)
         {
-            std::string clipboardText{ gdk_clipboard_read_text_finish(GDK_CLIPBOARD(self), res, nullptr) };
-            if(StringHelpers::isValidUrl(clipboardText))
+            char* clipboardText{ gdk_clipboard_read_text_finish(GDK_CLIPBOARD(self), res, nullptr) };
+            if(clipboardText)
             {
-                gtk_editable_set_text(GTK_EDITABLE(gtk_builder_get_object(GTK_BUILDER(data), "urlRow")), clipboardText.c_str());
-                gtk_widget_set_sensitive(GTK_WIDGET(gtk_builder_get_object(GTK_BUILDER(data), "validateUrlButton")), true);
+                std::string url{ clipboardText };
+                if(StringHelpers::isValidUrl(url))
+                {
+                    gtk_editable_set_text(GTK_EDITABLE(gtk_builder_get_object(GTK_BUILDER(data), "urlRow")), url.c_str());
+                    gtk_widget_set_sensitive(GTK_WIDGET(gtk_builder_get_object(GTK_BUILDER(data), "validateUrlButton")), true);
+                }
+                g_free(clipboardText);
             }
         }), m_builder);
         std::vector<std::string> credentialNames{ m_controller->getKeyringCredentialNames() };
@@ -48,14 +53,14 @@ namespace Nickvision::TubeConverter::GNOME::Views
         g_signal_connect(gtk_builder_get_object(m_builder, "validateUrlButton"), "clicked", G_CALLBACK(+[](GtkButton*, gpointer data){ reinterpret_cast<AddDownloadDialog*>(data)->validateUrl(); }), this);
         g_signal_connect(gtk_builder_get_object(m_builder, "backButton"), "clicked", G_CALLBACK(+[](GtkButton*, gpointer data){ reinterpret_cast<AddDownloadDialog*>(data)->back(); }), this);
         g_signal_connect(gtk_builder_get_object(m_builder, "fileTypeSingleRow"), "notify::selected-item", G_CALLBACK(+[](GObject*, GParamSpec* pspec, gpointer data){ reinterpret_cast<AddDownloadDialog*>(data)->onFileTypeSingleChanged(); }), this);
-        g_signal_connect(gtk_builder_get_object(m_builder, "advancedOptionsSingleButton"), "clicked", G_CALLBACK(+[](GtkButton*, gpointer data){ reinterpret_cast<AddDownloadDialog*>(data)->advancedOptionsSingle(); }), this);
+        g_signal_connect(gtk_builder_get_object(m_builder, "advancedOptionsSingleRow"), "activated", G_CALLBACK(+[](AdwActionRow*, gpointer data){ reinterpret_cast<AddDownloadDialog*>(data)->advancedOptionsSingle(); }), this);
         g_signal_connect(gtk_builder_get_object(m_builder, "selectSaveFolderSingleButton"), "clicked", G_CALLBACK(+[](GtkButton*, gpointer data){ reinterpret_cast<AddDownloadDialog*>(data)->selectSaveFolderSingle(); }), this);
         g_signal_connect(gtk_builder_get_object(m_builder, "revertFilenameSingleButton"), "clicked", G_CALLBACK(+[](GtkButton*, gpointer data){ reinterpret_cast<AddDownloadDialog*>(data)->revertFilenameSingle(); }), this);
         g_signal_connect(gtk_builder_get_object(m_builder, "revertStartTimeSingleButton"), "clicked", G_CALLBACK(+[](GtkButton*, gpointer data){ reinterpret_cast<AddDownloadDialog*>(data)->revertStartTimeSingle(); }), this);
         g_signal_connect(gtk_builder_get_object(m_builder, "revertEndTimeSingleButton"), "clicked", G_CALLBACK(+[](GtkButton*, gpointer data){ reinterpret_cast<AddDownloadDialog*>(data)->revertEndTimeSingle(); }), this);
         g_signal_connect(gtk_builder_get_object(m_builder, "downloadSingleButton"), "clicked", G_CALLBACK(+[](GtkButton*, gpointer data){ reinterpret_cast<AddDownloadDialog*>(data)->downloadSingle(); }), this);
         g_signal_connect(gtk_builder_get_object(m_builder, "selectSaveFolderPlaylistButton"), "clicked", G_CALLBACK(+[](GtkButton*, gpointer data){ reinterpret_cast<AddDownloadDialog*>(data)->selectSaveFolderPlaylist(); }), this);
-        g_signal_connect(gtk_builder_get_object(m_builder, "itemsPlaylistButton"), "clicked", G_CALLBACK(+[](GtkButton*, gpointer data){ reinterpret_cast<AddDownloadDialog*>(data)->itemsPlaylist(); }), this);
+        g_signal_connect(gtk_builder_get_object(m_builder, "itemsPlaylistRow"), "activated", G_CALLBACK(+[](AdwActionRow*, gpointer data){ reinterpret_cast<AddDownloadDialog*>(data)->itemsPlaylist(); }), this);
         g_signal_connect(gtk_builder_get_object(m_builder, "numberTitlesPlaylistRow"), "notify::active", G_CALLBACK(+[](GObject*, GParamSpec* pspec, gpointer data){ reinterpret_cast<AddDownloadDialog*>(data)->onNumberTitlesPlaylistChanged(); }), this);
         g_signal_connect(gtk_builder_get_object(m_builder, "downloadPlaylistButton"), "clicked", G_CALLBACK(+[](GtkButton*, gpointer data){ reinterpret_cast<AddDownloadDialog*>(data)->downloadPlaylist(); }), this);
         m_controller->urlValidated() += [&](const EventArgs& args){ g_main_context_invoke(g_main_context_default(), G_SOURCE_FUNC(+[](gpointer data) -> bool { reinterpret_cast<AddDownloadDialog*>(data)->onUrlValidated(); return false; }), this); };

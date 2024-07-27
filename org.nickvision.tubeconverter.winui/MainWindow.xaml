@@ -191,19 +191,112 @@
 
                         <nickvision:ViewStackPage PageName="Downloading">
                             <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
 
+                                <TextBlock x:Name="LblDownloadingTitle" Grid.Row="0" Margin="40,24,40,0" Style="{ThemeResource NavigationViewItemHeaderTextStyle}" FontSize="26"/>
+
+                                <nickvision:ViewStack x:Name="ViewStackDownloading" Grid.Row="1">
+                                    <nickvision:ViewStack.Pages>
+                                        <nickvision:ViewStackPage PageName="NoDownloading">
+                                            <nickvision:StatusPage x:Name="StatusPageNoDownloading" Glyph="&#xE896;">
+                                                <nickvision:StatusPage.Child>
+                                                    <Button x:Name="DownloadingAddDownloadButton" HorizontalAlignment="Center" Style="{ThemeResource AccentButtonStyle}" Click="AddDownload">
+                                                        <Button.Content>
+                                                            <StackPanel Orientation="Horizontal" Spacing="6">
+                                                                <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" FontSize="16" Glyph="&#xE710;"/>
+
+                                                                <TextBlock x:Name="DownloadingAddDownloadButtonLabel" TextWrapping="WrapWholeWords"/>
+                                                            </StackPanel>
+                                                        </Button.Content>
+                                                    </Button>
+                                                </nickvision:StatusPage.Child>
+                                            </nickvision:StatusPage>
+                                        </nickvision:ViewStackPage>
+
+                                        <nickvision:ViewStackPage PageName="HadDownloading">
+                                            <Grid RowSpacing="12">
+                                                
+                                            </Grid>
+                                        </nickvision:ViewStackPage>
+                                    </nickvision:ViewStack.Pages>
+                                </nickvision:ViewStack>
                             </Grid>
                         </nickvision:ViewStackPage>
 
                         <nickvision:ViewStackPage PageName="Queued">
                             <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
 
+                                <TextBlock x:Name="LblQueuedTitle" Grid.Row="0" Margin="40,24,40,0" Style="{ThemeResource NavigationViewItemHeaderTextStyle}" FontSize="26"/>
+
+                                <nickvision:ViewStack x:Name="ViewStackQueued" Grid.Row="1">
+                                    <nickvision:ViewStack.Pages>
+                                        <nickvision:ViewStackPage PageName="NoQueued">
+                                            <nickvision:StatusPage x:Name="StatusPageNoQueued" Glyph="&#xE8FD;">
+                                                <nickvision:StatusPage.Child>
+                                                    <Button x:Name="QueuedAddDownloadButton" HorizontalAlignment="Center" Style="{ThemeResource AccentButtonStyle}" Click="AddDownload">
+                                                        <Button.Content>
+                                                            <StackPanel Orientation="Horizontal" Spacing="6">
+                                                                <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" FontSize="16" Glyph="&#xE710;"/>
+
+                                                                <TextBlock x:Name="QueuedAddDownloadButtonLabel" TextWrapping="WrapWholeWords"/>
+                                                            </StackPanel>
+                                                        </Button.Content>
+                                                    </Button>
+                                                </nickvision:StatusPage.Child>
+                                            </nickvision:StatusPage>
+                                        </nickvision:ViewStackPage>
+
+                                        <nickvision:ViewStackPage PageName="HasQueued">
+                                            <Grid RowSpacing="12">
+                                                
+                                            </Grid>
+                                        </nickvision:ViewStackPage>
+                                    </nickvision:ViewStack.Pages>
+                                </nickvision:ViewStack>
                             </Grid>
                         </nickvision:ViewStackPage>
 
                         <nickvision:ViewStackPage PageName="Completed">
                             <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
 
+                                <TextBlock x:Name="LblCompletedTitle" Grid.Row="0" Margin="40,24,40,0" Style="{ThemeResource NavigationViewItemHeaderTextStyle}" FontSize="26"/>
+
+                                <nickvision:ViewStack x:Name="ViewStackCompleted" Grid.Row="1">
+                                    <nickvision:ViewStack.Pages>
+                                        <nickvision:ViewStackPage PageName="NoCompleted">
+                                            <nickvision:StatusPage x:Name="StatusPageNoCompleted" Glyph="&#xE930;">
+                                                <nickvision:StatusPage.Child>
+                                                    <Button x:Name="CompletedAddDownloadButton" HorizontalAlignment="Center" Style="{ThemeResource AccentButtonStyle}" Click="AddDownload">
+                                                        <Button.Content>
+                                                            <StackPanel Orientation="Horizontal" Spacing="6">
+                                                                <FontIcon FontFamily="{StaticResource SymbolThemeFontFamily}" FontSize="16" Glyph="&#xE710;"/>
+
+                                                                <TextBlock x:Name="CompletedAddDownloadButtonLabel" TextWrapping="WrapWholeWords"/>
+                                                            </StackPanel>
+                                                        </Button.Content>
+                                                    </Button>
+                                                </nickvision:StatusPage.Child>
+                                            </nickvision:StatusPage>
+                                        </nickvision:ViewStackPage>
+
+                                        <nickvision:ViewStackPage PageName="HasCompleted">
+                                            <Grid RowSpacing="12">
+                                                
+                                            </Grid>
+                                        </nickvision:ViewStackPage>
+                                    </nickvision:ViewStack.Pages>
+                                </nickvision:ViewStack>
                             </Grid>
                         </nickvision:ViewStackPage>
 

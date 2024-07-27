@@ -105,14 +105,12 @@ Adw.Dialog root {
 
             Adw.ActionRow advancedOptionsSingleRow {
               title: _("Advanced Options");
-              activatable-widget: advancedOptionsSingleButton;
+              activatable-widget: advancedOptionsSingleImage;
 
               [suffix]
-              Gtk.Button advancedOptionsSingleButton {
+              Gtk.Image advancedOptionsSingleImage {
                 valign: center;
                 icon-name: "right-symbolic";
-
-                styles ["flat"]
               }
             }
           }
@@ -256,14 +254,12 @@ Adw.Dialog root {
 
             Adw.ActionRow itemsPlaylistRow {
               title: _("Playlist Items");
-              activatable-widget: itemsPlaylistButton;
+              activatable-widget: itemsPlaylistImage;
 
               [suffix]
-              Gtk.Button itemsPlaylistButton {
+              Gtk.Image itemsPlaylistImage {
                 valign: center;
                 icon-name: "right-symbolic";
-
-                styles ["flat"]
               }
             }
 
@@ -299,7 +295,7 @@ Adw.Dialog root {
           Gtk.ScrolledWindow {
             hexpand: true;
             vexpand: true;
-            min-content-width: 360;
+            min-content-width: 328;
             min-content-height: 400;
             child: Adw.PreferencesGroup itemsPlaylistGroup { };
           }

@@ -180,48 +180,45 @@ Adw.ApplicationWindow root {
         Adw.HeaderBar {}
 
         content: Adw.ToastOverlay toastOverlay {
-          child: Gtk.ScrolledWindow {
-            hscrollbar-policy: automatic;
-            vscrollbar-policy: automatic;
+          child: Adw.ViewStack viewStack {
+            hexpand: true;
+            vexpand: true;
 
-            child: Adw.ViewStack viewStack {
-              hexpand: true;
-              vexpand: true;
+            Adw.ViewStackPage {
+              name: "home";
+              child: Adw.StatusPage {
+                icon-name: "org.nickvision.tubeconverter";
+                title: _("Download Media");
+                description: _("Add a video, audio, or playlist URL to start downloading");
+                child: Gtk.Button {
+                  halign: center;
+                  label: _("Add Download");
+                  tooltip-text: _("Add Download (Ctrl+N)");
+                  action-name: "win.addDownload";
 
-              Adw.ViewStackPage {
-                name: "home";
-                child: Adw.StatusPage {
-                  icon-name: "org.nickvision.tubeconverter";
-                  title: _("Download Media");
-                  description: _("Add a video, audio, or playlist URL to start downloading");
-                  child: Gtk.Button {
-                    halign: center;
-                    label: _("Add Download");
-                    tooltip-text: _("Add Download (Ctrl+N)");
-                    action-name: "win.addDownload";
-
-                    styles ["pill", "suggested-action"]
-                  };
-                  
-                  styles ["icon-dropshadow"]
+                  styles ["pill", "suggested-action"]
                 };
-              }
+                
+                styles ["icon-dropshadow"]
+              };
+            }
 
-              Adw.ViewStackPage {
-                name: "history";
-                child: Adw.ViewStack historyViewStack {
-                  Adw.ViewStackPage {
-                    name: "no-history";
-                    child: Adw.StatusPage {
-                       icon-name: "snapshots-alt-symbolic";
-                       title: _("No history available");
+            Adw.ViewStackPage {
+              name: "history";
+              child: Adw.ViewStack historyViewStack {
+                Adw.ViewStackPage {
+                  name: "no-history";
+                  child: Adw.StatusPage {
+                      icon-name: "snapshots-alt-symbolic";
+                      title: _("No history available");
 
-                       styles ["compact"]
-                    };
-                  }
+                      styles ["compact"]
+                  };
+                }
 
-                  Adw.ViewStackPage {
-                    name: "history";
+                Adw.ViewStackPage {
+                  name: "history";
+                  child: Gtk.ScrolledWindow {
                     child: Adw.Clamp {
                       maximum-size: 600;
                       child: Adw.PreferencesGroup historyGroup {
@@ -240,31 +237,31 @@ Adw.ApplicationWindow root {
                         };
                       };
                     };
-                  }
-                };
-              }
+                  };
+                }
+              };
+            }
 
-              Adw.ViewStackPage {
-                name: "downloading";
-                child: Gtk.Box {
+            Adw.ViewStackPage {
+              name: "downloading";
+              child: Gtk.Box {
 
-                };
-              }
+              };
+            }
 
-              Adw.ViewStackPage {
-                name: "queued";
-                child: Gtk.Box {
+            Adw.ViewStackPage {
+              name: "queued";
+              child: Gtk.Box {
 
-                };
-              }
+              };
+            }
 
-              Adw.ViewStackPage {
-                name: "completed";
-                child: Gtk.Box {
+            Adw.ViewStackPage {
+              name: "completed";
+              child: Gtk.Box {
 
-                };
-              }
-            };
+              };
+            }
           };
         };
       };
