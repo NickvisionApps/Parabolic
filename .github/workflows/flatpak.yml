@@ -46,7 +46,7 @@ jobs:
       - uses: flatpak/flatpak-github-actions/flatpak-builder@v6.3
         with:
           bundle: org.nickvision.tubeconverter.qt.flatpak
-          manifest-path: flatpak/org.tubeconverter.application.qt.json
+          manifest-path: flatpak/org.nickvision.tubeconverter.qt.json
           cache-key: flatpak-builder-${{ github.sha }}
           arch: ${{ matrix.arch }}
           restore-cache: true
