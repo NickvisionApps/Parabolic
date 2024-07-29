@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-07-27 09:15-0400\n"
+"POT-Creation-Date: 2024-07-29 14:56-0400\n"
 "PO-Revision-Date: 2023-10-09 05:02+0000\n"
 "Last-Translator: Abdur Rehman Imran <arehmanimran4@gmail.com>\n"
 "Language-Team: Urdu <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -83,6 +83,7 @@ msgid "Default"
 msgstr "طے شدہ"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:42
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:30
 msgid "Parabolic"
 msgstr "پیرابولک"
 
@@ -130,22 +131,22 @@ msgid "Unable to download and install update"
 msgstr ""
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:21
-#, fuzzy, c++-format
+#, fuzzy
 msgid "{:.2f} GiB/s"
 msgstr "{0:f1} GiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:25
-#, fuzzy, c++-format
+#, fuzzy
 msgid "{:.2f} MiB/s"
 msgstr "{0:f1} MiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:29
-#, fuzzy, c++-format
+#, fuzzy
 msgid "{:.2f} KiB/s"
 msgstr "{0:f1} KiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:33
-#, fuzzy, c++-format
+#, fuzzy
 msgid "{:.2f} B/s"
 msgstr "{0:f1} B/s"
 
@@ -154,14 +155,8 @@ msgstr "{0:f1} B/s"
 msgid "The file already exists and overwriting is disabled."
 msgstr "فائل پہلے سے موجود ہے، اور دوبارہ لکھنے کی اجازت نہیں ہے"
 
-#. Localize Strings
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:11
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:195
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:37
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:75
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:78
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:81
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:84
 msgid "Add Download"
 msgstr "نئی ڈاؤن لوڈ کریں"
 
@@ -170,7 +165,6 @@ msgid "Back"
 msgstr "پیچھے"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:52
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:41
 msgid "Media URL"
 msgstr "میڈیا یو-آر-ایل"
 
@@ -184,36 +178,28 @@ msgid "Credential"
 msgstr "کوئی اسناد نہیں"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:66
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:44
 msgid "Username"
 msgstr "صارف کا نام"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:70
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:46
 msgid "Password"
 msgstr "پاس ورڈ"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:76
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:38
 msgid "Validate"
 msgstr "توثیق کریں"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:95
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:223
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:48
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:62
 msgid "File Type"
 msgstr "فائل کی قسم"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:99
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:49
 msgid "Quality"
 msgstr "معیار"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:103
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:227
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:51
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:65
 #, fuzzy
 msgid "Download Subtitles"
 msgstr "سبٹائٹل ڈاون لوڈ کریں"
@@ -224,8 +210,6 @@ msgstr "اعلی درجے کے اختیارات"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:120
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:241
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:54
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:63
 msgid "Save Folder"
 msgstr "فولڈر محفوظ کریں"
 
@@ -233,45 +217,35 @@ msgstr "فولڈر محفوظ کریں"
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:247
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:192
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:227
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:55
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:64
 msgid "Select Save Folder"
 msgstr "مطلوبہ جگہ فراہم کریں"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:135
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:56
 msgid "File Name"
 msgstr "فائل کا نام"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:141
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:150
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:58
 msgid "Revert to Title"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:148
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:267
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:61
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:68
 #, fuzzy
 msgid "Limit Download Speed"
 msgstr "میڈیا ڈاؤن لوڈ کریں"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:154
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:273
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:179
 msgid "Download"
 msgstr "ڈاؤن لوڈ کریں"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:172
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:50
 msgid "Audio Language"
 msgstr "آڈیو کی زبان"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:176
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:231
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:52
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:66
 msgid "Prefer AV1 Codec"
 msgstr ""
 
@@ -282,7 +256,6 @@ msgid "Split Videos by Chapters"
 msgstr "ابواب کی تقسیم کریں"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:184
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:59
 msgid "Start Time"
 msgstr "ابتدائی وقت"
 
@@ -292,7 +265,6 @@ msgid "Revert to Original"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:197
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:60
 msgid "End Time"
 msgstr "اختتامی وقت"
 
@@ -302,7 +274,6 @@ msgid "Playlist Items"
 msgstr "پلے لیٹ"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:291
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:69
 msgid "Number Titles"
 msgstr "نمبر ٹائٹلز"
 
@@ -318,11 +289,13 @@ msgid "Keyboard Shortcuts"
 msgstr "کی بورڈ شارٹ کٹس"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:7
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:62
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:37
 msgid "Help"
 msgstr "مدد"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:8
+#: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:31
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:42
 msgid "About Parabolic"
 msgstr "پیرابولک کے بارے میں"
 
@@ -335,65 +308,52 @@ msgstr "ڈاؤن لوڈ کا اضافہ کریں (Ctrl+N)"
 msgid "Main Menu"
 msgstr "مرکزی فہرست"
 
-#. Localize Strings
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:68
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:148
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:56
 msgid "Home"
 msgstr "ھوم"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:85
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:57
 msgid "Keyring"
 msgstr "کیڑیگ"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:102
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:153
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:71
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:85
 msgid "History"
 msgstr "تاریخ"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:112
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:61
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:58
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:45
 msgid "Downloads"
 msgstr "ڈاؤن لوڈ شدہ"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:131
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:158
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:59
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:76
 msgid "Downloading"
 msgstr "ڈاؤن لوڈینگ ہو رہی ہے"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:148
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:163
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:60
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:79
 msgid "Queued"
 msgstr "قطار میں لگے ہوئے"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:165
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:168
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:61
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:82
 msgid "Completed"
 msgstr "مکمل"
 
+#. Localize Home Page
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:191
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:73
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:44
 msgid "Download Media"
 msgstr "میڈیا ڈاؤن لوڈ کریں"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:192
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:74
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:45
 msgid "Add a video, audio, or playlist URL to start downloading"
 msgstr "ڈاؤن لوڈ شروع کرنے کے لیے ویڈیو، آڈیو یا پلے لسٹ یو-آر-ایل شامل کریں"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:213
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:86
 msgid "No history available"
 msgstr ""
 
@@ -403,7 +363,6 @@ msgid "Past Downloads"
 msgstr "ڈاؤن لوڈ شدہ"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:229
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:87
 msgid "Clear History"
 msgstr "تاریخ کو صاف کریں"
 
@@ -411,102 +370,86 @@ msgstr "تاریخ کو صاف کریں"
 msgid "Clear"
 msgstr "صاف کریں"
 
+#. Localize Strings
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:12
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:18
 msgid "User Interface"
 msgstr "صارف انٹرفیس"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:15
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:24
 msgid "Theme"
 msgstr "تھیم"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:17
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:25
 msgctxt "Theme"
 msgid "Light"
 msgstr "ہلکی تھیم"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:17
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:26
 msgctxt "Theme"
 msgid "Dark"
 msgstr "سیاہ تھیم"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:17
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:27
 msgctxt "Theme"
 msgid "System"
 msgstr "نظام کے مطابق تھیم"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:27
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:31
 msgid "Completed Notification Trigger"
 msgstr "نوٹیفکیشن ٹرگر مکمل ہوا"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:29
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:32
 #, fuzzy
 msgid "For each download"
 msgstr "ہر ڈاؤن لوڈ کرلیے"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:29
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:33
 #, fuzzy
 msgid "When all downloads finish"
 msgstr "جب تمام ڈاؤن لوڈز ختم ہوجائیں"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:29
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:50
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:34
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:39
 #, fuzzy
 msgid "Never"
 msgstr "کبھی نہیں"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:39
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:35
 msgid "Prevent Suspend"
 msgstr "معطلی کو روکیں"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:48
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:38
 #, fuzzy
 msgid "Download History Length"
 msgstr "ڈاؤن لوڈینگ ہو رہی ہے"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:50
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:40
 msgid "One Day"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:50
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:41
 msgid "One Week"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:50
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:42
 msgid "One Month"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:50
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:43
 msgid "Three Months"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:50
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:44
 #, fuzzy
 msgid "Forever"
 msgstr "کبھی نہیں"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:64
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:46
 msgid "Overwrite Existing Files"
 msgstr "موجودہ فائلوں کو دوبارہ لکھیں"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:73
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:47
 msgid "Max Number of Active Downloads"
 msgstr "فعال ڈاؤن لوڈز کی انتہاء"
 
@@ -519,23 +462,19 @@ msgid "Restricts characters in filenames to only those supported by Windows."
 msgstr "فائل کے ناموں میں حروف کو صرف ونڈوز کی سپورٹ تک محدود کریں۔"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:99
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:52
 msgid "Include Auto-Generated Subtitles"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:109
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:55
 msgid "Downloader"
 msgstr "ڈاؤن لوڈر"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:112
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:56
 #, fuzzy
 msgid "Speed Limit (KiB/s)"
 msgstr "رفتار کی حد"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:113
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:57
 #, fuzzy
 msgid ""
 "This limit is applied only to downloads that have enabled limiting download "
@@ -545,38 +484,31 @@ msgstr ""
 "ہے۔ قدر کو تبدیل کرنے سے پہلے سے چل رہے ڈاؤن لوڈز پر کوئی اثر نہیں پڑتا ہے۔"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:129
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:58
 msgid "Use SponsorBlock for YouTube"
 msgstr "یوٹیوب کے لیے سپانسر بلاک کا استعمال کریں"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:138
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:61
 msgid "Proxy URL"
 msgstr "پراکسی یو-آر-ایل"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:147
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:63
 msgid "Cookies File"
 msgstr "کوکیز فائل"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:157
 #: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:90
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:64
 msgid "Select Cookies File"
 msgstr "کوکیز فائل کو منتخب کریں"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:167
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:65
 msgid "Clear Cookies File"
 msgstr "کوکیز فائل کو صاف کریں"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:177
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:66
 msgid "Cookies File Information"
 msgstr "کوکیز فائل کی معلومات"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:192
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:67
 #, fuzzy
 msgid ""
 "Cookies can be passed to yt-dlp in the form of TXT files. Cookies may allow "
@@ -588,43 +520,35 @@ msgstr ""
 "داری پر استعمال کریں):"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:204
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:68
 msgid "Chrome/Edge"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:213
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:69
 msgid "Firefox"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:231
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:70
 msgid "Converter"
 msgstr "تبدیل کرنے والے"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:234
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:71
 msgid "Embed Metadata"
 msgstr "میٹا ڈیٹا شامل کریں"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:243
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:77
 msgid "Embed Chapters"
 msgstr "ابواب کو شامل کریں"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:252
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:74
 #, fuzzy
 msgid "Embed Subtitles"
 msgstr "سب ٹائٹل"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:261
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:80
 msgid "Crop Audio Thumbnails"
 msgstr "آڈیو تھمب نیلز کو تراشیں"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:262
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:81
 #, fuzzy
 msgid ""
 "If enabled, Parabolic will crop the thumbnails of audio files to squares."
@@ -633,40 +557,33 @@ msgstr ""
 "خود بخود آن کر دے گا"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:272
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:84
 msgid "Remove Source Data"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:273
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:85
 msgid ""
 "If enabled, Parabolic will clear metadata fields containing identifying "
 "download information."
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:284
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:88
 #, fuzzy
 msgid "aria2"
 msgstr "aria2 کا استعمال کریں"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:287
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:89
 msgid "Use aria2"
 msgstr "aria2 کا استعمال کریں"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:296
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:92
 msgid "Max Connections Per Server (-x)"
 msgstr "فی سرور زیادہ سے زیادہ کنکشنز (-x)"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:313
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:93
 msgid "Minimum Split Size (-k)"
 msgstr "کم از کم تقسیم کا سائز (-k)"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:314
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:94
 msgid "The minimum size of which to split a file (in MiB)."
 msgstr "فائل کو تقسیم کرنے کے لیے کم از کم سائز (MiB میں)۔"
 
@@ -701,17 +618,14 @@ msgid "Quit"
 msgstr "بند کریں"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:48
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:93
 msgid "Use manual credential"
 msgstr "دستی اسناد کا استعمال کریں"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:105
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:173
 msgid "Error"
 msgstr "خرابی"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:105
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:174
 msgid ""
 "The url provided is invalid or unable to be reached. Check both the url and "
 "authentication used."
@@ -719,56 +633,47 @@ msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:106
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:177
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:175
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:257
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:394
 msgid "Close"
 msgstr "بند کریں"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:134
-#, fuzzy, c++-format
+#, fuzzy
 msgid "{} items"
 msgstr "{0} میں سے {1} چیز"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:140
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:170
 #, fuzzy
 msgid "Open"
 msgstr "فائل کھولیں"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:175
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:255
 msgid "Disclaimer"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:176
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:244
 msgid "Don't show this message again"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:210
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:295
 msgid "Play"
 msgstr "چلاؤ"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:229
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:309
 msgid "Download Again"
 msgstr "دوبارہ ڈاؤن لوڈ کریں"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:241
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:322
 msgid "Delete"
 msgstr "حذف کریں"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:307
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:67
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:39
 msgid "GitHub Repo"
 msgstr "گٹ ہب رجسٹر(ریپوسٹری)"
 
 #: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:27
 #: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:117
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:115
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:171
 msgid "No file selected"
 msgstr ""
 
@@ -776,185 +681,131 @@ msgstr ""
 msgid "Text File (*.txt)"
 msgstr ""
 
-#: org.nickvision.tubeconverter.winui/Controls/TitleBar.xaml.cpp:132
-#, fuzzy
-msgid "Search"
-msgstr "تلاش کریں۔۔۔"
-
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:39
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:180
-msgid "Cancel"
-msgstr "منسوخ"
-
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:42
-#, fuzzy
-msgid "Enter media url here"
-msgstr "میڈیا URL یہاں درج کریں"
-
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:43
-#, fuzzy
-msgid "Authentication"
-msgstr "تصدیق کریں"
-
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:45
-#, fuzzy
-msgid "Enter username here"
-msgstr "میڈیا URL یہاں درج کریں"
-
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:47
-#, fuzzy
-msgid "Enter password here"
-msgstr "میڈیا URL یہاں درج کریں"
-
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:53
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:67
-#, fuzzy
-msgid "Split Video by Chapters"
-msgstr "ابواب کی تقسیم کریں"
-
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:57
-#, fuzzy
-msgid "Enter file name here"
-msgstr "میڈیا URL یہاں درج کریں"
-
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:94
-#, fuzzy
-msgid "None"
-msgstr "کچھ نہیں"
-
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:203
-#, c++-format
-msgid "Playlist Items ({})"
-msgstr ""
-
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:63
-msgid "Check for Updates"
-msgstr ""
-
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:64
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:385
-#, fuzzy
-msgid "Credits"
-msgstr "کریڈٹس(سہرا)"
-
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:65
+#: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:37
 #, fuzzy
 msgid "Copy Debug Information"
 msgstr "کوکیز فائل کی معلومات"
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:66
-msgid "Changelog"
+#: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:38
+#, fuzzy
+msgid "Changelog:"
 msgstr "فہرست رَدّ و بَدَل"
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:68
-msgid "Report a Bug"
-msgstr "خرابی کی اطلاع کریں"
-
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:69
-msgid "Discussions"
-msgstr "بات چیت"
-
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:70
-msgid "Documentation"
+#: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:39
+msgid ""
+"Developers:\n"
+"{}\n"
+"Designers:\n"
+"{}\n"
+"Artists:\n"
+"{}"
 msgstr ""
 
-#. Localize Strings
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:72
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:22
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:30
+#, fuzzy
+msgid "Parabolic (Preview)"
+msgstr "پیرابولک"
+
+#. Localize Menu Strings
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:33
+msgid "File"
+msgstr "فائیل"
+
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:34
+msgid "Exit"
+msgstr "باہر"
+
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:35
+msgid "Edit"
+msgstr "ترمیم کریں"
+
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:36
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:16
 #, fuzzy
 msgid "Settings"
 msgstr "ترتیبات"
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:77
-msgid "No downloads running"
-msgstr "کوئی ڈاؤن لوڈ نہیں چل رہی ہے"
-
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:80
-#, fuzzy
-msgid "No downloads queued"
-msgstr "کوئی ڈاؤن لوڈ نہیں چل رہی ہے"
-
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:83
-#, fuzzy
-msgid "No downloads completed"
-msgstr "کوئی ڈاؤن لوڈ نہیں چل رہی ہے"
-
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:104
-msgid "Preview"
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:38
+msgid "Check for Updates"
 msgstr ""
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:207
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:40
+msgid "Report a Bug"
+msgstr "خرابی کی اطلاع کریں"
+
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:41
+msgid "Discussions"
+msgstr "بات چیت"
+
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:158
 msgid "Update"
 msgstr ""
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:358
-#, fuzzy
-msgid "Debug information copied to clipboard."
-msgstr "ڈاؤن لوڈ لاگ کو کلپ بورڈ پر کاپی کرلیاگیا۔"
-
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:388
-#, c++-format
-msgid ""
-"Developers:\n"
-"{}\n"
-"Designers:\n"
-"{}\n"
-"Artists:\n"
-"{}"
-msgstr ""
-
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:392
-#, c++-format
-msgid ""
-"Developers:\n"
-"{}\n"
-"Designers:\n"
-"{}\n"
-"Artists:\n"
-"{}\n"
-"Translators:\n"
-"{}"
-msgstr ""
-
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:23
-msgid "Appearance & behavior"
-msgstr ""
-
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:28
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:19
 msgid "Automatically Check for Updates"
 msgstr ""
 
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:29
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:36
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:53
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:59
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:72
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:75
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:78
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:82
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:86
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:90
 #, fuzzy
-msgid "On"
-msgstr "کھولیں۔"
+#~ msgid "Search"
+#~ msgstr "تلاش کریں۔۔۔"
 
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:30
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:37
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:54
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:60
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:73
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:76
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:79
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:83
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:87
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:91
-msgid "Off"
-msgstr ""
+#~ msgid "Cancel"
+#~ msgstr "منسوخ"
 
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:62
 #, fuzzy
-msgid "Enter proxy URL here"
-msgstr "میڈیا URL یہاں درج کریں"
+#~ msgid "Enter media url here"
+#~ msgstr "میڈیا URL یہاں درج کریں"
+
+#, fuzzy
+#~ msgid "Authentication"
+#~ msgstr "تصدیق کریں"
+
+#, fuzzy
+#~ msgid "Enter username here"
+#~ msgstr "میڈیا URL یہاں درج کریں"
+
+#, fuzzy
+#~ msgid "Enter password here"
+#~ msgstr "میڈیا URL یہاں درج کریں"
+
+#, fuzzy
+#~ msgid "Split Video by Chapters"
+#~ msgstr "ابواب کی تقسیم کریں"
+
+#, fuzzy
+#~ msgid "Enter file name here"
+#~ msgstr "میڈیا URL یہاں درج کریں"
+
+#, fuzzy
+#~ msgid "None"
+#~ msgstr "کچھ نہیں"
+
+#, fuzzy
+#~ msgid "Credits"
+#~ msgstr "کریڈٹس(سہرا)"
+
+#~ msgid "No downloads running"
+#~ msgstr "کوئی ڈاؤن لوڈ نہیں چل رہی ہے"
+
+#, fuzzy
+#~ msgid "No downloads queued"
+#~ msgstr "کوئی ڈاؤن لوڈ نہیں چل رہی ہے"
+
+#, fuzzy
+#~ msgid "No downloads completed"
+#~ msgstr "کوئی ڈاؤن لوڈ نہیں چل رہی ہے"
+
+#, fuzzy
+#~ msgid "Debug information copied to clipboard."
+#~ msgstr "ڈاؤن لوڈ لاگ کو کلپ بورڈ پر کاپی کرلیاگیا۔"
+
+#, fuzzy
+#~ msgid "On"
+#~ msgstr "کھولیں۔"
+
+#, fuzzy
+#~ msgid "Enter proxy URL here"
+#~ msgstr "میڈیا URL یہاں درج کریں"
 
 #, csharp-format
 #~ msgid "\"{0}\" has finished downloading."
@@ -1114,9 +965,6 @@ msgstr "میڈیا URL یہاں درج کریں"
 #, fuzzy
 #~ msgid "Enter URL here"
 #~ msgstr "میڈیا URL یہاں درج کریں"
-
-#~ msgid "Exit"
-#~ msgstr "باہر"
 
 #, fuzzy
 #~ msgid "Failed to enable keyring."
@@ -1409,12 +1257,6 @@ msgstr "میڈیا URL یہاں درج کریں"
 #, fuzzy
 #~ msgid "Copied debug info to clipboard."
 #~ msgstr "کلپ بورڈ پر کاپی کریں"
-
-#~ msgid "Edit"
-#~ msgstr "ترمیم کریں"
-
-#~ msgid "File"
-#~ msgstr "فائیل"
 
 #, fuzzy
 #~ msgid "No Downloads Running"

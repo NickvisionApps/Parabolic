@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-07-27 09:15-0400\n"
+"POT-Creation-Date: 2024-07-29 14:56-0400\n"
 "PO-Revision-Date: 2023-12-07 03:34+0000\n"
 "Last-Translator: Tomas Andersson <jotakswe@users.noreply.hosted.weblate."
 "org>\n"
@@ -84,6 +84,7 @@ msgid "Default"
 msgstr "Standard"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:42
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:30
 msgid "Parabolic"
 msgstr "Parabolic"
 
@@ -133,22 +134,22 @@ msgid "Unable to download and install update"
 msgstr "Det gick inte att ladda ner och installera uppdateringen."
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:21
-#, fuzzy, c++-format
+#, fuzzy
 msgid "{:.2f} GiB/s"
 msgstr "{0:f1} GiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:25
-#, fuzzy, c++-format
+#, fuzzy
 msgid "{:.2f} MiB/s"
 msgstr "{0:f1} MiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:29
-#, fuzzy, c++-format
+#, fuzzy
 msgid "{:.2f} KiB/s"
 msgstr "{0:f1} KiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:33
-#, fuzzy, c++-format
+#, fuzzy
 msgid "{:.2f} B/s"
 msgstr "{0:f1} B/s"
 
@@ -157,14 +158,8 @@ msgstr "{0:f1} B/s"
 msgid "The file already exists and overwriting is disabled."
 msgstr "Filen finns redan och överskrivning är inte tillåten"
 
-#. Localize Strings
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:11
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:195
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:37
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:75
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:78
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:81
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:84
 msgid "Add Download"
 msgstr "Lägg till nedladdning"
 
@@ -173,7 +168,6 @@ msgid "Back"
 msgstr "Tillbaka"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:52
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:41
 msgid "Media URL"
 msgstr "Media URL"
 
@@ -187,36 +181,28 @@ msgid "Credential"
 msgstr "Inga inloggningsuppgifter"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:66
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:44
 msgid "Username"
 msgstr "Användarnamn"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:70
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:46
 msgid "Password"
 msgstr "Lösenord"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:76
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:38
 msgid "Validate"
 msgstr "Validera"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:95
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:223
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:48
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:62
 msgid "File Type"
 msgstr "Filtyp"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:99
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:49
 msgid "Quality"
 msgstr "Kvalitet"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:103
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:227
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:51
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:65
 msgid "Download Subtitles"
 msgstr "Ladda ner undertexter"
 
@@ -226,8 +212,6 @@ msgstr "Avancerade inställningar"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:120
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:241
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:54
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:63
 msgid "Save Folder"
 msgstr "Lagringsmapp"
 
@@ -235,45 +219,35 @@ msgstr "Lagringsmapp"
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:247
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:192
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:227
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:55
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:64
 msgid "Select Save Folder"
 msgstr "Välj lagringsmapp"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:135
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:56
 msgid "File Name"
 msgstr "Filnamn"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:141
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:150
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:58
 msgid "Revert to Title"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:148
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:267
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:61
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:68
 #, fuzzy
 msgid "Limit Download Speed"
 msgstr "Ladda ned media"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:154
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:273
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:179
 msgid "Download"
 msgstr "Ladda ner"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:172
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:50
 msgid "Audio Language"
 msgstr "Ljudspråk"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:176
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:231
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:52
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:66
 msgid "Prefer AV1 Codec"
 msgstr "Föredrar AV1 Codec"
 
@@ -284,7 +258,6 @@ msgid "Split Videos by Chapters"
 msgstr "Dela upp kapitlen"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:184
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:59
 msgid "Start Time"
 msgstr "Starttid"
 
@@ -294,7 +267,6 @@ msgid "Revert to Original"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:197
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:60
 msgid "End Time"
 msgstr "Sluttid"
 
@@ -304,7 +276,6 @@ msgid "Playlist Items"
 msgstr "Spellista"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:291
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:69
 msgid "Number Titles"
 msgstr "Nummertitlar"
 
@@ -320,11 +291,13 @@ msgid "Keyboard Shortcuts"
 msgstr "Tangentbordsgenvägar"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:7
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:62
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:37
 msgid "Help"
 msgstr "Hjälp"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:8
+#: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:31
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:42
 msgid "About Parabolic"
 msgstr "Om Parabolic"
 
@@ -337,66 +310,53 @@ msgstr "Lägg till nedladdning (Ctrl+N)"
 msgid "Main Menu"
 msgstr "Huvudmeny"
 
-#. Localize Strings
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:68
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:148
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:56
 msgid "Home"
 msgstr "Hem"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:85
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:57
 msgid "Keyring"
 msgstr "Nyckelring"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:102
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:153
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:71
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:85
 msgid "History"
 msgstr "Historik"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:112
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:61
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:58
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:45
 msgid "Downloads"
 msgstr "Nedladdningar"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:131
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:158
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:59
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:76
 msgid "Downloading"
 msgstr "Laddar ned"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:148
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:163
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:60
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:79
 msgid "Queued"
 msgstr "Köas"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:165
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:168
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:61
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:82
 msgid "Completed"
 msgstr "Slutförda"
 
+#. Localize Home Page
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:191
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:73
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:44
 msgid "Download Media"
 msgstr "Ladda ned media"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:192
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:74
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:45
 msgid "Add a video, audio, or playlist URL to start downloading"
 msgstr ""
 "Lägg till en URL för video, ljud eller spellista för att börja ladda ner"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:213
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:86
 #, fuzzy
 msgid "No history available"
 msgstr "Ny uppdatering tillgänglig."
@@ -407,7 +367,6 @@ msgid "Past Downloads"
 msgstr "Nedladdningar"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:229
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:87
 msgid "Clear History"
 msgstr "Rensa historiken"
 
@@ -415,102 +374,86 @@ msgstr "Rensa historiken"
 msgid "Clear"
 msgstr "Rensa"
 
+#. Localize Strings
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:12
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:18
 msgid "User Interface"
 msgstr "Användargränssnitt"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:15
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:24
 msgid "Theme"
 msgstr "Tema"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:17
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:25
 msgctxt "Theme"
 msgid "Light"
 msgstr "Ljus"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:17
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:26
 msgctxt "Theme"
 msgid "Dark"
 msgstr "Mörk"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:17
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:27
 msgctxt "Theme"
 msgid "System"
 msgstr "System"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:27
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:31
 msgid "Completed Notification Trigger"
 msgstr "Avslutad aviseringsutlösare"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:29
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:32
 #, fuzzy
 msgid "For each download"
 msgstr "För varje nedladdning"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:29
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:33
 #, fuzzy
 msgid "When all downloads finish"
 msgstr "När alla nedladdningar är klara"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:29
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:50
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:34
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:39
 #, fuzzy
 msgid "Never"
 msgstr "Aldrig"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:39
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:35
 msgid "Prevent Suspend"
 msgstr "Förhindra Suspend"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:48
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:38
 #, fuzzy
 msgid "Download History Length"
 msgstr "Laddar ned"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:50
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:40
 msgid "One Day"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:50
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:41
 msgid "One Week"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:50
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:42
 msgid "One Month"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:50
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:43
 msgid "Three Months"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:50
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:44
 #, fuzzy
 msgid "Forever"
 msgstr "Aldrig"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:64
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:46
 msgid "Overwrite Existing Files"
 msgstr "Skriv över existerande filer"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:73
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:47
 msgid "Max Number of Active Downloads"
 msgstr "Max antal aktiva nedladdningar"
 
@@ -523,23 +466,19 @@ msgid "Restricts characters in filenames to only those supported by Windows."
 msgstr "Begränsar tecknen i filnamn till endast de som stöds av Windows."
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:99
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:52
 msgid "Include Auto-Generated Subtitles"
 msgstr "Inkludera automatiskt genererade undertexter"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:109
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:55
 msgid "Downloader"
 msgstr "Nedladdare"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:112
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:56
 #, fuzzy
 msgid "Speed Limit (KiB/s)"
 msgstr "Hastighetsgräns"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:113
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:57
 #, fuzzy
 msgid ""
 "This limit is applied only to downloads that have enabled limiting download "
@@ -549,38 +488,31 @@ msgstr ""
 "aktiverad. Att ändra värdet påverkar inte nedladdningar som redan körs."
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:129
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:58
 msgid "Use SponsorBlock for YouTube"
 msgstr "Använd SponsorBlock för YouTube"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:138
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:61
 msgid "Proxy URL"
 msgstr "Proxy URL"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:147
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:63
 msgid "Cookies File"
 msgstr "Cookies fil"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:157
 #: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:90
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:64
 msgid "Select Cookies File"
 msgstr "Välj Cookies fil"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:167
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:65
 msgid "Clear Cookies File"
 msgstr "Rensa Cookies fil"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:177
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:66
 msgid "Cookies File Information"
 msgstr "Cookies Filinformation"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:192
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:67
 #, fuzzy
 msgid ""
 "Cookies can be passed to yt-dlp in the form of TXT files. Cookies may allow "
@@ -591,42 +523,34 @@ msgstr ""
 "din webbläsare med följande tillägg (använd på egen risk):"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:204
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:68
 msgid "Chrome/Edge"
 msgstr "Chrome/Edge"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:213
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:69
 msgid "Firefox"
 msgstr "Firefox"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:231
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:70
 msgid "Converter"
 msgstr "Konverter"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:234
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:71
 msgid "Embed Metadata"
 msgstr "Bädda in metadata"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:243
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:77
 msgid "Embed Chapters"
 msgstr "Bädda in kapitel"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:252
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:74
 msgid "Embed Subtitles"
 msgstr "Bädda in undertexter"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:261
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:80
 msgid "Crop Audio Thumbnails"
 msgstr "Beskär ljudminiatyrbilder"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:262
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:81
 #, fuzzy
 msgid ""
 "If enabled, Parabolic will crop the thumbnails of audio files to squares."
@@ -636,40 +560,33 @@ msgstr ""
 "ljudnedladdningar"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:272
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:84
 msgid "Remove Source Data"
 msgstr "Ta bort källinformation"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:273
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:85
 msgid ""
 "If enabled, Parabolic will clear metadata fields containing identifying "
 "download information."
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:284
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:88
 #, fuzzy
 msgid "aria2"
 msgstr "Använd aria2"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:287
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:89
 msgid "Use aria2"
 msgstr "Använd aria2"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:296
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:92
 msgid "Max Connections Per Server (-x)"
 msgstr "Max anslutningar per server (-x)"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:313
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:93
 msgid "Minimum Split Size (-k)"
 msgstr "Minsta splitstorlek (-k)"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:314
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:94
 msgid "The minimum size of which to split a file (in MiB)."
 msgstr "Minsta storlek för att dela en fil (i MiB)."
 
@@ -704,17 +621,14 @@ msgid "Quit"
 msgstr "Avsluta"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:48
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:93
 msgid "Use manual credential"
 msgstr "Använd manuella inloggningsuppgifter"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:105
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:173
 msgid "Error"
 msgstr "Fel"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:105
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:174
 msgid ""
 "The url provided is invalid or unable to be reached. Check both the url and "
 "authentication used."
@@ -722,56 +636,47 @@ msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:106
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:177
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:175
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:257
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:394
 msgid "Close"
 msgstr "Stäng"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:134
-#, fuzzy, c++-format
+#, fuzzy
 msgid "{} items"
 msgstr "{0} av {1} objektet"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:140
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:170
 #, fuzzy
 msgid "Open"
 msgstr "Öppna fil"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:175
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:255
 msgid "Disclaimer"
 msgstr "Ansvarsfriskrivning"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:176
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:244
 msgid "Don't show this message again"
 msgstr "Visa inte det här meddelandet igen"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:210
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:295
 msgid "Play"
 msgstr "Spela upp"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:229
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:309
 msgid "Download Again"
 msgstr "Ladda ner igen"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:241
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:322
 msgid "Delete"
 msgstr "Radera"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:307
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:67
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:39
 msgid "GitHub Repo"
 msgstr "GitHub Repo"
 
 #: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:27
 #: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:117
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:115
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:171
 #, fuzzy
 msgid "No file selected"
 msgstr "Ingen fil vald"
@@ -780,201 +685,166 @@ msgstr "Ingen fil vald"
 msgid "Text File (*.txt)"
 msgstr ""
 
-#: org.nickvision.tubeconverter.winui/Controls/TitleBar.xaml.cpp:132
-#, fuzzy
-msgid "Search"
-msgstr "Sök..."
-
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:39
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:180
-msgid "Cancel"
-msgstr "Avbryt"
-
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:42
-#, fuzzy
-msgid "Enter media url here"
-msgstr "Ange media URL här"
-
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:43
-#, fuzzy
-msgid "Authentication"
-msgstr "Autentisera"
-
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:45
-#, fuzzy
-msgid "Enter username here"
-msgstr "Ange användarnamn här"
-
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:47
-msgid "Enter password here"
-msgstr "Ange lösenord här"
-
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:53
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:67
-#, fuzzy
-msgid "Split Video by Chapters"
-msgstr "Dela upp kapitlen"
-
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:57
-#, fuzzy
-msgid "Enter file name here"
-msgstr "Ange namn här"
-
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:94
-#, fuzzy
-msgid "None"
-msgstr "Ingen"
-
-#: org.nickvision.tubeconverter.winui/AddDownloadDialog.xaml.cpp:203
-#, c++-format
-msgid "Playlist Items ({})"
-msgstr ""
-
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:63
-msgid "Check for Updates"
-msgstr "Sök efter uppdateringar"
-
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:64
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:385
-msgid "Credits"
-msgstr "krediter"
-
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:65
+#: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:37
 msgid "Copy Debug Information"
 msgstr "Kopiera felsökningsinformation"
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:66
-msgid "Changelog"
+#: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:38
+#, fuzzy
+msgid "Changelog:"
 msgstr "Ändringslogg"
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:68
-msgid "Report a Bug"
-msgstr "Rapportera ett problem"
+#: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:39
+#, fuzzy
+msgid ""
+"Developers:\n"
+"{}\n"
+"Designers:\n"
+"{}\n"
+"Artists:\n"
+"{}"
+msgstr ""
+"Utvecklare:\n"
+"{0}\n"
+"\n"
+"Designers:\n"
+"{1}\n"
+"\n"
+"Artister:\n"
+"{2}\n"
+"\n"
+"Översättare:\n"
+"{3}"
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:69
-msgid "Discussions"
-msgstr "Diskussioner"
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:30
+#, fuzzy
+msgid "Parabolic (Preview)"
+msgstr "Parabolic"
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:70
-msgid "Documentation"
-msgstr "Dokumentation"
+#. Localize Menu Strings
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:33
+msgid "File"
+msgstr "Fil"
 
-#. Localize Strings
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:72
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:22
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:34
+msgid "Exit"
+msgstr "Avsluta"
+
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:35
+msgid "Edit"
+msgstr "Redigera"
+
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:36
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:16
 msgid "Settings"
 msgstr "inställningar"
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:77
-msgid "No downloads running"
-msgstr "Inga nedladdningar körs"
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:38
+msgid "Check for Updates"
+msgstr "Sök efter uppdateringar"
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:80
-#, fuzzy
-msgid "No downloads queued"
-msgstr "Inga nedladdningar körs"
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:40
+msgid "Report a Bug"
+msgstr "Rapportera ett problem"
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:83
-#, fuzzy
-msgid "No downloads completed"
-msgstr "Inga nedladdningar körs"
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:41
+msgid "Discussions"
+msgstr "Diskussioner"
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:104
-msgid "Preview"
-msgstr ""
-
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:207
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:158
 msgid "Update"
 msgstr "Uppdatering"
 
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:358
-#, fuzzy
-msgid "Debug information copied to clipboard."
-msgstr "Nedladdningsloggen kopierades till urklipp."
-
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:388
-#, fuzzy, c++-format
-msgid ""
-"Developers:\n"
-"{}\n"
-"Designers:\n"
-"{}\n"
-"Artists:\n"
-"{}"
-msgstr ""
-"Utvecklare:\n"
-"{0}\n"
-"\n"
-"Designers:\n"
-"{1}\n"
-"\n"
-"Artister:\n"
-"{2}\n"
-"\n"
-"Översättare:\n"
-"{3}"
-
-#: org.nickvision.tubeconverter.winui/MainWindow.xaml.cpp:392
-#, fuzzy, c++-format
-msgid ""
-"Developers:\n"
-"{}\n"
-"Designers:\n"
-"{}\n"
-"Artists:\n"
-"{}\n"
-"Translators:\n"
-"{}"
-msgstr ""
-"Utvecklare:\n"
-"{0}\n"
-"\n"
-"Designers:\n"
-"{1}\n"
-"\n"
-"Artister:\n"
-"{2}\n"
-"\n"
-"Översättare:\n"
-"{3}"
-
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:23
-msgid "Appearance & behavior"
-msgstr ""
-
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:28
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:19
 msgid "Automatically Check for Updates"
 msgstr "Sök automatiskt efter uppdateringar"
 
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:29
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:36
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:53
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:59
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:72
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:75
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:78
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:82
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:86
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:90
-msgid "On"
-msgstr "På"
+#, fuzzy
+#~ msgid "Search"
+#~ msgstr "Sök..."
 
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:30
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:37
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:54
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:60
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:73
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:76
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:79
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:83
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:87
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:91
-msgid "Off"
-msgstr "Av"
+#~ msgid "Cancel"
+#~ msgstr "Avbryt"
 
-#: org.nickvision.tubeconverter.winui/SettingsPage.xaml.cpp:62
-msgid "Enter proxy URL here"
-msgstr "Ange proxy-URL här"
+#, fuzzy
+#~ msgid "Enter media url here"
+#~ msgstr "Ange media URL här"
+
+#, fuzzy
+#~ msgid "Authentication"
+#~ msgstr "Autentisera"
+
+#, fuzzy
+#~ msgid "Enter username here"
+#~ msgstr "Ange användarnamn här"
+
+#~ msgid "Enter password here"
+#~ msgstr "Ange lösenord här"
+
+#, fuzzy
+#~ msgid "Split Video by Chapters"
+#~ msgstr "Dela upp kapitlen"
+
+#, fuzzy
+#~ msgid "Enter file name here"
+#~ msgstr "Ange namn här"
+
+#, fuzzy
+#~ msgid "None"
+#~ msgstr "Ingen"
+
+#~ msgid "Credits"
+#~ msgstr "krediter"
+
+#~ msgid "Documentation"
+#~ msgstr "Dokumentation"
+
+#~ msgid "No downloads running"
+#~ msgstr "Inga nedladdningar körs"
+
+#, fuzzy
+#~ msgid "No downloads queued"
+#~ msgstr "Inga nedladdningar körs"
+
+#, fuzzy
+#~ msgid "No downloads completed"
+#~ msgstr "Inga nedladdningar körs"
+
+#, fuzzy
+#~ msgid "Debug information copied to clipboard."
+#~ msgstr "Nedladdningsloggen kopierades till urklipp."
+
+#, fuzzy
+#~ msgid ""
+#~ "Developers:\n"
+#~ "{}\n"
+#~ "Designers:\n"
+#~ "{}\n"
+#~ "Artists:\n"
+#~ "{}\n"
+#~ "Translators:\n"
+#~ "{}"
+#~ msgstr ""
+#~ "Utvecklare:\n"
+#~ "{0}\n"
+#~ "\n"
+#~ "Designers:\n"
+#~ "{1}\n"
+#~ "\n"
+#~ "Artister:\n"
+#~ "{2}\n"
+#~ "\n"
+#~ "Översättare:\n"
+#~ "{3}"
+
+#~ msgid "On"
+#~ msgstr "På"
+
+#~ msgid "Off"
+#~ msgstr "Av"
+
+#~ msgid "Enter proxy URL here"
+#~ msgstr "Ange proxy-URL här"
 
 #, csharp-format
 #~ msgid "\"{0}\" has finished downloading."
@@ -1146,9 +1016,6 @@ msgstr "Ange proxy-URL här"
 
 #~ msgid "Enter URL here"
 #~ msgstr "Ange URL här"
-
-#~ msgid "Exit"
-#~ msgstr "Avsluta"
 
 #~ msgid "Failed to enable keyring."
 #~ msgstr "Det gick inte att aktivera nyckelringen."
@@ -1471,12 +1338,6 @@ msgstr "Ange proxy-URL här"
 
 #~ msgid "Copied debug info to clipboard."
 #~ msgstr "Kopierade felsökningsinformation till urklipp."
-
-#~ msgid "Edit"
-#~ msgstr "Redigera"
-
-#~ msgid "File"
-#~ msgstr "Fil"
 
 #~ msgid "No Downloads Running"
 #~ msgstr "Inga nedladdningar körs"

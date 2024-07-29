@@ -27,6 +27,7 @@ jobs:
           mkdir build
           choco install ffmpeg
           choco install aria2
+          choco install yt-dlp
       - name: "Vcpkg"
         uses: johnwason/vcpkg-action@v6
         id: vcpkg

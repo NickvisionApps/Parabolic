@@ -1,0 +1,175 @@
+{
+    "app-id" : "org.nickvision.tubeconverter",
+    "runtime" : "org.gnome.Platform",
+    "runtime-version" : "46",
+    "sdk" : "org.gnome.Sdk",
+    "command" : "org.nickvision.tubeconverter",
+    "finish-args":[
+        "--socket=fallback-x11",
+        "--socket=wayland",
+        "--device=dri",
+        "--share=ipc",
+        "--share=network",
+        "--talk-name=com.canonical.Unity",
+        "--talk-name=org.freedesktop.secrets",
+        "--talk-name=org.freedesktop.ScreenSaver",
+        "--filesystem=xdg-download"
+    ],
+    "cleanup":[
+        "/include",
+        "/lib/pkgconfig",
+        "*.a"
+    ],
+    "modules" : [
+        {
+            "name": "boost",
+            "buildsystem": "simple",
+            "build-commands": [
+                "./bootstrap.sh --prefix=/app --with-libraries=system,date_time",
+                "./b2 -j $FLATPAK_BUILDER_N_JOBS install"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://boostorg.jfrog.io/artifactory/main/release/1.85.0/source/boost_1_85_0.tar.bz2",
+                    "sha256": "7009fe1faa1697476bdc7027703a2badb84e849b7b0baad5086b087b971f8617"
+                }
+            ]
+        },
+        {
+            "name": "jsoncpp",
+            "buildsystem": "cmake-ninja",
+            "builddir": true,
+            "config-opts": [
+                "-DCMAKE_BUILD_TYPE=Release"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/open-source-parsers/jsoncpp",
+                    "tag": "1.9.5"
+                }
+            ]
+        },
+        {
+            "name": "maddy",
+            "buildsystem": "simple",
+            "build-commands": [
+                "mkdir -p /app/include/maddy",
+                "mv include/maddy/* /app/include/maddy"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/progsource/maddy",
+                    "tag": "1.3.0"
+                }
+            ]
+        },
+        {
+            "name": "libnick",
+            "buildsystem": "cmake-ninja",
+            "builddir": true,
+            "config-opts": [
+                "-DBUILD_TESTING=OFF",
+                "-DCMAKE_BUILD_TYPE=Release"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/nickvisionapps/libnick",
+                    "tag": "2024.7.3"
+                }
+            ]
+        },
+        "python3-modules.json",
+        {
+            "name": "ffmpeg",
+            "config-opts": [
+                "--disable-debug",
+                "--disable-doc",
+                "--disable-static",
+                "--enable-gpl",
+                "--enable-shared",
+                "--disable-ffplay",
+                "--disable-devices",
+                "--enable-gnutls",
+                "--enable-libmp3lame",
+                "--enable-libopus",
+                "--enable-libvorbis"
+            ],
+            "cleanup": [
+                "/share/ffmpeg"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://ffmpeg.org/releases/ffmpeg-7.0.1.tar.xz",
+                    "sha256": "bce9eeb0f17ef8982390b1f37711a61b4290dc8c2a0c1a37b5857e85bfb0e4ff",
+                    "x-checker-data": {
+                        "type": "html",
+                        "url": "https://ffmpeg.org/releases/",
+                        "pattern": ">(ffmpeg-([\\d.]+)\\.tar\\.xz)<"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "aria2",
+            "config-opts": [
+                "--with-ca-bundle=/etc/ssl/certs/ca-certificates.crt"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://github.com/aria2/aria2/releases/download/release-1.37.0/aria2-1.37.0.tar.xz",
+                    "sha256": "60a420ad7085eb616cb6e2bdf0a7206d68ff3d37fb5a956dc44242eb2f79b66b"
+                }
+            ]
+        },
+        {
+            "name": "blueprint-compiler",
+            "buildsystem": "meson",
+            "cleanup": [
+                "*"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://gitlab.gnome.org/jwestman/blueprint-compiler",
+                    "tag": "v0.12.0"
+                }
+            ]
+        },
+        {
+            "name": "libxmlplusplus",
+            "buildsystem": "meson",
+            "config-opts": [
+                "-Dmaintainer-mode=false"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/libxmlplusplus/libxmlplusplus",
+                    "tag": "5.2.0"
+                }
+            ]
+        },
+        {
+            "name": "org.nickvision.tubeconverter",
+            "buildsystem": "cmake-ninja",
+            "builddir": true,
+            "config-opts": [
+                "-DCMAKE_BUILD_TYPE=Release",
+                "-DBUILD_TESTING=OFF",
+                "-DUI_PLATFORM=gnome"
+            ],
+            "sources": [
+                {
+                    "type": "dir",
+                    "path": ".."
+                }
+            ]
+        }
+    ]
+}

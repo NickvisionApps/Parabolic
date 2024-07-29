@@ -29,7 +29,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for details on how can you help the proje
 </details>
 
 <details>
- <summary>WinUI</summary>
+ <summary>QT</summary>
 </details>
 
 ## Building Manually
@@ -43,10 +43,13 @@ A C++20 compiler is also required to build Parabolic.
 1. Set the `VCPKG_ROOT` environment variable to the path of your vcpkg installation's root directory.
 #### Windows
 1. Set the `VCPKG_DEFAULT_TRIPLET` environment variable to `x64-windows`
-1. Run `vcpkg install boost-date-time libnick pybind11 python3`
-#### Linux
+1. Run `vcpkg install boost-date-time libnick qtbase qtcharts qtmultimedia qtsvg qttools`
+#### Linux (GNOME)
 1. Set the `VCPKG_DEFAULT_TRIPLET` environment variable to `x64-linux`
-1. Run `vcpkg install boost-date-time libnick libxmlpp pybind11 python3`
+1. Run `vcpkg install boost-date-time libnick libxmlpp`
+#### Linux (QT)
+1. Set the `VCPKG_DEFAULT_TRIPLET` environment variable to `x64-linux`
+1. Run `vcpkg install boost-date-time libnick qtbase qtcharts qtmultimedia qtsvg qttools`
 
 ### Building
 1. First, clone/download the repo.
@@ -55,11 +58,15 @@ A C++20 compiler is also required to build Parabolic.
 #### Windows
 1. From the `build` folder, run `cmake .. -G "Visual Studio 17 2022"`.
 1. From the `build` folder, run `cmake --build . --config Release`.
-1. After these commands complete, Parabolic will be successfully built and its binaries can be found in the `org.nickvision.tubeconverter.winui/Release` folder of the `build` folder.
-#### Linux
-1. From the `build` folder, run `cmake .. -DCMAKE_BUILD_TYPE=Release`.
+1. After these commands complete, Parabolic will be successfully built and its binaries can be found in the `org.nickvision.tubeconverter.qt/Release` folder of the `build` folder.
+#### Linux (GNOME)
+1. From the `build` folder, run `cmake .. -DCMAKE_BUILD_TYPE=Release -DUI_PLATFORM=gnome`.
 1. From the `build` folder, run `cmake --build .`.
 1. After these commands complete, Parabolic will be successfully built and its binaries can be found in the `org.nickvision.tubeconverter.gnome` folder of the `build` folder.
+#### Linux (QT)
+1. From the `build` folder, run `cmake .. -DCMAKE_BUILD_TYPE=Release -DUI_PLATFORM=qt`.
+1. From the `build` folder, run `cmake --build .`.
+1. After these commands complete, Parabolic will be successfully built and its binaries can be found in the `org.nickvision.tubeconverter.qt` folder of the `build` folder.
 
 # Code of Conduct
 This project follows the [GNOME Code of Conduct](https://wiki.gnome.org/Foundation/CodeOfConduct).

@@ -25,8 +25,28 @@ jobs:
       - uses: actions/checkout@v4
       - uses: flatpak/flatpak-github-actions/flatpak-builder@v6.3
         with:
-          bundle: org.nickvision.tubeconverter.flatpak
-          manifest-path: flatpak/org.nickvision.tubeconverter.json
+          bundle: org.nickvision.tubeconverter.gnome.flatpak
+          manifest-path: flatpak/org.nickvision.tubeconverter.gnome.json
+          cache-key: flatpak-builder-${{ github.sha }}
+          arch: ${{ matrix.arch }}
+          restore-cache: true
+  qt-flatpak:
+    name: "QT on Flatpak"
+    runs-on: ubuntu-latest
+    if: ${{ github.event.pull_request.user.login != 'weblate' }}
+    container:
+      image: bilelmoussaoui/flatpak-github-actions:kde-6.7
+      options: --privileged
+    strategy:
+      matrix:
+        arch: [x86_64]
+      fail-fast: false
+    steps:
+      - uses: actions/checkout@v4
+      - uses: flatpak/flatpak-github-actions/flatpak-builder@v6.3
+        with:
+          bundle: org.nickvision.tubeconverter.qt.flatpak
+          manifest-path: flatpak/org.tubeconverter.application.qt.json
           cache-key: flatpak-builder-${{ github.sha }}
           arch: ${{ matrix.arch }}
           restore-cache: true

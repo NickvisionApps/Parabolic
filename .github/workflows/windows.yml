@@ -23,14 +23,19 @@ jobs:
         with:
           submodules: recursive
       - name: "Setup Environment"
-        run: mkdir build
+        run: |
+          mkdir build
+          powershell -command "Invoke-WebRequest https://github.com/mlocati/gettext-iconv-windows/releases/download/v0.21-v1.16/gettext0.21-iconv1.16-shared-64.zip -OutFile gettext.zip"
+          powershell -command "Expand-Archive -Force 'gettext.zip'"
+          move gettext\bin\* C:\Windows\System32
+          choco install innosetup
       - name: "Vcpkg"
         uses: johnwason/vcpkg-action@v6
         id: vcpkg
         with:
-          pkgs: boost-date-time libnick
+          pkgs: boost-date-time libnick qtbase qtcharts qtmultimedia qtsvg qttools
           triplet: x64-windows
-          revision: 02d93df47bb4c9b062921b26c77a251490127151
+          revision: cacf5994341f27e9a14a7b8724b0634b138ecb30
           token: ${{ secrets.GITHUB_TOKEN }}
           github-binarycache: true
       - name: "Build"
@@ -41,18 +46,14 @@ jobs:
       - name: "Create Installer"
         working-directory: ${{github.workspace}}/inno
         run: |
-          choco install wget
-          choco install innosetup
-          wget https://aka.ms/vs/17/release/vc_redist.x64.exe -O vc_redist.x64.exe
-          wget https://aka.ms/windowsappsdk/1.5/1.5.240627000/windowsappruntimeinstall-x64.exe -O windowsappruntimeinstall-x64.exe
-          wget https://github.com/yt-dlp/yt-dlp/releases/download/2024.07.16/yt-dlp.exe -O yt-dlp.exe
-          wget https://github.com/aria2/aria2/releases/download/release-1.37.0/aria2-1.37.0-win-64bit-build1.zip -o aria2.zip
-          wget https://github.com/GyanD/codexffmpeg/releases/download/2024-07-07-git-0619138639/ffmpeg-2024-07-07-git-0619138639-full_build.zip -o ffmpeg.zip
+          powershell -command "Invoke-WebRequest https://github.com/yt-dlp/yt-dlp/releases/download/2024.07.25/yt-dlp.exe -OutFile yt-dlp.exe"
+          powershell -command "Invoke-WebRequest https://github.com/aria2/aria2/releases/download/release-1.37.0/aria2-1.37.0-win-64bit-build1.zip -OutFile aria2.zip"
+          powershell -command "Invoke-WebRequest https://github.com/GyanD/codexffmpeg/releases/download/2024-07-07-git-0619138639/ffmpeg-2024-07-07-git-0619138639-full_build.zip -OutFile ffmpeg.zip"
           powershell -command "Expand-Archive -Force 'aria2.zip'"
-          mv aria2/aria2-1.37.0-win-64bit-build1/aria2c.exe aria2c.exe
-          mv ffmpeg/ffmpeg-2024-07-07-git-0619138639-full_build/bin/ffmpeg.exe ffmpeg.exe
-          mv ffmpeg/ffmpeg-2024-07-07-git-0619138639-full_build/bin/ffprobe.exe ffprobe.exe
-          mv ffmpeg/ffmpeg-2024-07-07-git-0619138639-full_build/bin/ffplay.exe ffplay.exe
+          move aria2\aria2-1.37.0-win-64bit-build1\aria2c.exe aria2c.exe
+          move ffmpeg\ffmpeg-2024-07-07-git-0619138639-full_build\bin\ffmpeg.exe ffmpeg.exe
+          move ffmpeg\ffmpeg-2024-07-07-git-0619138639-full_build\bin\ffprobe.exe ffprobe.exe
+          move ffmpeg\ffmpeg-2024-07-07-git-0619138639-full_build\bin\ffplay.exe ffplay.exe
           iscc setup.iss
       - name: Upload
         uses: actions/upload-artifact@v4

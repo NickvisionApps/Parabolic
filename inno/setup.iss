@@ -6,7 +6,7 @@
 #define MyAppVersion "2024.7.0"
 #define MyAppPublisher "Nickvision"
 #define MyAppURL "https://nickvision.org"
-#define MyAppExeName "org.nickvision.tubeconverter.winui.exe"
+#define MyAppExeName "org.nickvision.tubeconverter.qt.exe"
 
 [Setup]
 ; NOTE: The value of AppId uniquely identifies this application. Do not use the same AppId value in installers for other applications.
@@ -46,15 +46,6 @@ begin
     MsgBox('Unable to install VC . Please try again', mbError, MB_OK);
 end;
 
-procedure SetupWinAppSDK();
-var
-  ResultCode: Integer;
-begin
-  if not Exec(ExpandConstant('{app}\deps\windowsappruntimeinstall-x64.exe'), '--quiet', '', SW_HIDE, ewWaitUntilTerminated, ResultCode)
-  then
-    MsgBox('Unable to install Windows App SDK. Please try again', mbError, MB_OK);
-end;
-
 procedure Cleanup();
 begin
   DelTree(ExpandConstant('{app}\deps'), True, True, True);
@@ -67,15 +58,14 @@ Name: "english"; MessagesFile: "compiler:Default.isl"
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 
 [Files]
-Source: "vc_redist.x64.exe"; DestDir: "{app}\deps"; AfterInstall: SetupVC  
-Source: "windowsappruntimeinstall-x64.exe"; DestDir: "{app}\deps"; AfterInstall: SetupWinAppSDK  
+Source: "vc_redist.x64.exe"; DestDir: "{app}\deps"; AfterInstall: SetupVC
 Source: "yt-dlp.exe"; DestDir: "{app}\Release"; Flags: ignoreversion
 Source: "ffmpeg.exe"; DestDir: "{app}\Release"; Flags: ignoreversion
 Source: "ffplay.exe"; DestDir: "{app}\Release"; Flags: ignoreversion
 Source: "ffprobe.exe"; DestDir: "{app}\Release"; Flags: ignoreversion
 Source: "aria2c.exe"; DestDir: "{app}\Release"; Flags: ignoreversion
-Source: "..\build\org.nickvision.tubeconverter.winui\Release\{#MyAppExeName}"; DestDir: "{app}\Release"; Flags: ignoreversion 
-Source: "..\build\org.nickvision.tubeconverter.winui\Release\*"; DestDir: "{app}\Release"; Flags: ignoreversion recursesubdirs createallsubdirs; AfterInstall: Cleanup
+Source: "..\build\org.nickvision.tubeconverter.qt\Release\{#MyAppExeName}"; DestDir: "{app}\Release"; Flags: ignoreversion 
+Source: "..\build\org.nickvision.tubeconverter.qt\Release\*"; DestDir: "{app}\Release"; Flags: ignoreversion recursesubdirs createallsubdirs; AfterInstall: Cleanup
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]

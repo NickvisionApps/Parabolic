@@ -125,12 +125,12 @@ Once all changes to your translated file are made, commit these changes and crea
 
 #### Structure
 
-Parabolic is built using C++20 and platform-native user interface libraries. With these technologies, Parabolic is built for both GNOME (Linux) and Windows.
+Parabolic is built using C++20 and platform-native user interface libraries. With these technologies, Parabolic is built for all desktop platforms.
 
 The project is split up into the following sub-projects:
  - [libapplication](#libapplication)
  - [org.nickvision.tubeconverter.gnome](#org.nickvision.tubeconverter.gnome)
- - [org.nickvision.tubeconverter.winui](org.nickvision.tubeconverter.winui)
+ - [org.nickvision.tubeconverter.qt](org.nickvision.tubeconverter.qt)
 
 The whole project utilizes the [MVC](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller) pattern for separating data models and UI views.
 
@@ -151,21 +151,20 @@ This project contains all of the code used for the GNOME platform version of the
 - `resources` => Extra icons and other files specific for the GNOME platform version of the app.
 - `views` => The views (pages, windows, dialogs, etc...) of the app.
 
-##### org.nickvision.tubeconverter.winui
+##### org.nickvision.tubeconverter.qt
 
-This project contains all of the code used for the Windows platform (WinUI) version of the app, including installer scripts:
-Powered by the [Windows App SDK](https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/)
+This project contains all of the code used for the QT platform (Windows, KDE) version of the app:
 - `controls` => Generic controls for the app.
     - These UI objects are separate from views in that they should not be backed by a controller and should be easily ported to any other app.
-- `helpers` => Useful objects and functions specific for the WinUI platform version of the app.
+- `helpers` => Useful objects and functions specific for the QT platform version of the app.
+- `resources` => Extra icons and other files specific for the QT platform version of the app.
 - `views` => The views (pages, windows, dialogs, etc...) of the app.
-- `installer` => Inno installer scripts.
 
 #### Developing and Testing
 
-Parabolic simply relies on `cmake` to configure and manage the correct projects for the running platform. Meaning, on Linux the `.gnome` variant of the app will be built and on Windows the `.winui` variant.
+Parabolic simply relies on `cmake` to configure and manage the correct projects for the running platform. Meaning, on Linux the `.gnome` variant of the app will be built by default and on Windows the `.qt` variant.
 
-Although the Linux version **will not build** on Windows and the Windows version **will not build** on Linux, we ask that in *contributing new features*, you implement the feature for both the Linux and Windows variants and rely on the app's CI pipeline to confirm and test builds for the platforms that you do not have access to.
+Although on Linux, you can specify the `-DUI_PLATFORM=qt` flag to cmake and build and run the `.qt` variant.
 
 [See the readme](README#building-manually) for instructions on building and running the app locally.
 

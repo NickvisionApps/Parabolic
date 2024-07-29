@@ -34,7 +34,7 @@ parts:
     plugin: python
     source: .
     python-packages:
-      - yt-dlp==2024.07.16
+      - yt-dlp==2024.07.25
     stage:
       - -bin/activate*
       - -bin/Activate.ps1
@@ -100,6 +100,7 @@ parts:
       - -DCMAKE_INSTALL_PREFIX=/snap/tube-converter/current/usr
       - -DCMAKE_BUILD_TYPE=Release
       - -DBUILD_TESTING=OFF
+      - -DUI_PLATFORM=gnome
     build-packages:
       - libboost-dev
       - libboost-date-time1.83-dev
