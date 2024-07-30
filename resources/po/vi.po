@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-07-29 14:56-0400\n"
+"POT-Creation-Date: 2024-07-30 12:48-0400\n"
 "PO-Revision-Date: 2024-02-15 17:02+0000\n"
 "Last-Translator: Kinten Le <kinten108101@protonmail.com>\n"
 "Language-Team: Vietnamese <https://hosted.weblate.org/projects/nickvision-"
@@ -159,6 +159,7 @@ msgstr "Tệp đã tồn tại, ghi đè không được cho phép"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:11
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:195
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:34
 msgid "Add Download"
 msgstr "Thêm lượt tải"
 
@@ -289,13 +290,13 @@ msgid "Keyboard Shortcuts"
 msgstr "Phím tắt"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:7
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:37
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:44
 msgid "Help"
 msgstr "Trợ giúp"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:8
 #: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:31
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:42
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:49
 msgid "About Parabolic"
 msgstr "Giới thiệu Parabolic"
 
@@ -319,11 +320,13 @@ msgstr "Keyring"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:102
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:153
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:37
 msgid "History"
 msgstr "Lịch sử"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:112
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:61
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:22
 #, fuzzy
 msgid "Downloads"
 msgstr "Downloads"
@@ -345,12 +348,12 @@ msgstr "Hoàn tất"
 
 #. Localize Home Page
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:191
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:44
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:51
 msgid "Download Media"
 msgstr "Tải media"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:192
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:45
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:52
 msgid "Add a video, audio, or playlist URL to start downloading"
 msgstr "Thêm một liên kết đến video, audio, hoặc playlist để bắt đầu tải"
 
@@ -374,7 +377,7 @@ msgstr "Xóa"
 
 #. Localize Strings
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:12
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:18
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:21
 msgid "User Interface"
 msgstr "Giao diện"
 
@@ -398,60 +401,74 @@ msgid "System"
 msgstr "Hệ thống"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:27
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:27
 msgid "Completed Notification Trigger"
 msgstr "Điều kiện phát thông báo hoàn tất"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:29
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:28
 #, fuzzy
 msgid "For each download"
 msgstr "Cho từng lượt tải"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:29
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:29
 #, fuzzy
 msgid "When all downloads finish"
 msgstr "Khi đã tải xong tất cả"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:29
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:50
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:30
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:33
 #, fuzzy
 msgid "Never"
 msgstr "Không bao giờ"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:39
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:31
 msgid "Prevent Suspend"
 msgstr "Chống máy rơi vào chế độ tạm dừng"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:48
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:32
 #, fuzzy
 msgid "Download History Length"
 msgstr "Đang tải"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:50
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:34
 msgid "One Day"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:50
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:35
 msgid "One Week"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:50
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:36
 msgid "One Month"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:50
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:37
 msgid "Three Months"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:50
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:38
 #, fuzzy
 msgid "Forever"
 msgstr "Không bao giờ"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:64
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:39
 msgid "Overwrite Existing Files"
 msgstr "Ghi đè tệp đã tồn tại"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:73
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:40
 msgid "Max Number of Active Downloads"
 msgstr "Số lượt tải tối đa dược chạy cùng một lúc"
 
@@ -464,10 +481,13 @@ msgid "Restricts characters in filenames to only those supported by Windows."
 msgstr "Chỉ sử dụng các ký tự dành cho tên tệp tin trong Windows."
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:99
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:45
 msgid "Include Auto-Generated Subtitles"
 msgstr "Bao gồm phụ đề tự động"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:109
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:39
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:23
 msgid "Downloader"
 msgstr "Trình tải"
 
@@ -477,6 +497,8 @@ msgid "Speed Limit (KiB/s)"
 msgstr "Giới hạn tốc độ"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:113
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:47
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:48
 #, fuzzy
 msgid ""
 "This limit is applied only to downloads that have enabled limiting download "
@@ -487,31 +509,40 @@ msgstr ""
 "xuống đang chạy."
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:129
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:49
 msgid "Use SponsorBlock for YouTube"
 msgstr "Sử dụng SponsorBlock đối với YouTube"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:138
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:50
 msgid "Proxy URL"
 msgstr "URL của proxy"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:147
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:52
 msgid "Cookies File"
 msgstr "Tệp cookie"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:157
 #: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:90
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:54
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:138
 msgid "Select Cookies File"
 msgstr "Chọn tệp cookie"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:167
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:55
 msgid "Clear Cookies File"
 msgstr "Xóa tệp cookie"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:177
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:56
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:152
 msgid "Cookies File Information"
 msgstr "Thông tin tệp cookie"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:192
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:152
 #, fuzzy
 msgid ""
 "Cookies can be passed to yt-dlp in the form of TXT files. Cookies may allow "
@@ -522,34 +553,43 @@ msgstr ""
 "cookie từ trình duyệt thông qua các extension sau (không đảm bảo an toàn):"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:204
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:153
 msgid "Chrome/Edge"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:213
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:154
 msgid "Firefox"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:231
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:24
 msgid "Converter"
 msgstr "Bộ chuyển đổi"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:234
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:57
 msgid "Embed Metadata"
 msgstr "Nhúng siêu dữ liệu"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:243
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:59
 msgid "Embed Chapters"
 msgstr "Nhúng chương"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:252
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:58
 msgid "Embed Subtitles"
 msgstr "Nhúng phụ đề"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:261
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:60
 msgid "Crop Audio Thumbnails"
 msgstr "Cắt thumbnail của audio"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:262
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:61
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:62
 #, fuzzy
 msgid ""
 "If enabled, Parabolic will crop the thumbnails of audio files to squares."
@@ -558,33 +598,42 @@ msgstr ""
 "âm thanh"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:272
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:63
 msgid "Remove Source Data"
 msgstr "Xóa dữ liệu nguồn"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:273
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:64
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:65
 msgid ""
 "If enabled, Parabolic will clear metadata fields containing identifying "
 "download information."
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:284
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:25
 #, fuzzy
 msgid "aria2"
 msgstr "Sử dụng aria2"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:287
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:66
 msgid "Use aria2"
 msgstr "Sử dụng aria2"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:296
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:67
 msgid "Max Connections Per Server (-x)"
 msgstr "Số kết nối tối đa đối với mỗi máy chủ (-x)"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:313
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:68
 msgid "Minimum Split Size (-k)"
 msgstr "Kích thước tách tối thiểu (-k)"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:314
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:69
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:70
 msgid "The minimum size of which to split a file (in MiB)."
 msgstr "Kích thước tối thiểu để tách một tệp tin (tính bằng MiB)."
 
@@ -643,7 +692,7 @@ msgid "{} items"
 msgstr "{0} trên {1} lượt"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:140
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:170
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:176
 #, fuzzy
 msgid "Open"
 msgstr "Mở tệp"
@@ -669,7 +718,7 @@ msgid "Delete"
 msgstr "Xóa"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:307
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:39
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:46
 msgid "GitHub Repo"
 msgstr "GitHub Repo"
 
@@ -712,39 +761,74 @@ msgstr ""
 msgid "File"
 msgstr "Tên Tệp"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:34
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:35
 msgid "Exit"
 msgstr "Thoát"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:35
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:36
 msgid "Edit"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:36
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:16
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:38
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:19
 #, fuzzy
 msgid "Settings"
 msgstr "Cài đặt"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:38
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:40
+msgid "Stop All Downloads"
+msgstr "Dừng tất cả mục tải xuống"
+
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:41
+msgid "Retry Failed Downloads"
+msgstr "Thử lại các lượt tải xuống thất bại"
+
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:42
+msgid "Clear Queued Downloads"
+msgstr "Xóa tất cả lượt tải xuống trong hàng đợi"
+
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:43
+msgid "Clear Completed Downloads"
+msgstr "Xóa các lượt tải đã hoàn tất"
+
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:45
 msgid "Check for Updates"
 msgstr "Kiểm tra bản cập nhật"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:40
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:47
 msgid "Report a Bug"
 msgstr "Báo lỗi"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:41
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:48
 msgid "Discussions"
 msgstr "Thảo luận"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:158
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:164
 msgid "Update"
 msgstr "Cập nhật"
 
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:19
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:26
 msgid "Automatically Check for Updates"
 msgstr "Tự động kiểm tra bản cập nhật"
+
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:46
+#, fuzzy
+msgid "Speed Limit"
+msgstr "Giới hạn tốc độ"
+
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:51
+#, fuzzy
+msgid "Enter proxy url here"
+msgstr "Nhập URL của proxy vào đây"
+
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:53
+#, fuzzy
+msgid "Select cookies file"
+msgstr "Chọn tệp cookie"
+
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:138
+msgid "Text files (*.txt)"
+msgstr ""
 
 #, fuzzy
 #~ msgid "Search"
@@ -807,9 +891,6 @@ msgstr "Tự động kiểm tra bản cập nhật"
 
 #~ msgid "Off"
 #~ msgstr "Tắt"
-
-#~ msgid "Enter proxy URL here"
-#~ msgstr "Nhập URL của proxy vào đây"
 
 #, csharp-format
 #~ msgid "\"{0}\" has finished downloading."
@@ -1266,18 +1347,6 @@ msgstr "Tự động kiểm tra bản cập nhật"
 
 #~ msgid "Hide the window instead of quitting if there are downloads running."
 #~ msgstr "Ẩn cửa sổ thay vì thoát nếu Parabolic còn đang tải."
-
-#~ msgid "Stop All Downloads"
-#~ msgstr "Dừng tất cả mục tải xuống"
-
-#~ msgid "Retry Failed Downloads"
-#~ msgstr "Thử lại các lượt tải xuống thất bại"
-
-#~ msgid "Clear Queued Downloads"
-#~ msgstr "Xóa tất cả lượt tải xuống trong hàng đợi"
-
-#~ msgid "Clear Completed Downloads"
-#~ msgstr "Xóa các lượt tải đã hoàn tất"
 
 #~ msgid "Apply"
 #~ msgstr "Áp dụng"

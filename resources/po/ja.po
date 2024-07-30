@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-07-29 14:56-0400\n"
+"POT-Creation-Date: 2024-07-30 12:48-0400\n"
 "PO-Revision-Date: 2024-03-27 08:01+0000\n"
 "Last-Translator: Gnuey56 <gnuey56@proton.me>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -159,6 +159,7 @@ msgstr "すでにファイルが存在しており、ファイルの上書きが
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:11
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:195
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:34
 msgid "Add Download"
 msgstr "ダウンロードを追加"
 
@@ -289,13 +290,13 @@ msgid "Keyboard Shortcuts"
 msgstr "キーボードショートカット"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:7
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:37
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:44
 msgid "Help"
 msgstr "ヘルプ"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:8
 #: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:31
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:42
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:49
 msgid "About Parabolic"
 msgstr "Parabolic について"
 
@@ -319,11 +320,13 @@ msgstr "キーリング"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:102
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:153
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:37
 msgid "History"
 msgstr "履歴"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:112
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:61
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:22
 msgid "Downloads"
 msgstr "ダウンロード"
 
@@ -344,12 +347,12 @@ msgstr "完了済"
 
 #. Localize Home Page
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:191
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:44
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:51
 msgid "Download Media"
 msgstr "メディアをダウンロード"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:192
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:45
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:52
 msgid "Add a video, audio, or playlist URL to start downloading"
 msgstr "動画、音声、再生リストの URL を追加してダウンロードを始めます"
 
@@ -373,7 +376,7 @@ msgstr "クリア"
 
 #. Localize Strings
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:12
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:18
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:21
 msgid "User Interface"
 msgstr "ユーザーインターフェース"
 
@@ -397,60 +400,74 @@ msgid "System"
 msgstr "システムに従う"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:27
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:27
 msgid "Completed Notification Trigger"
 msgstr "完了の通知のタイミング"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:29
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:28
 #, fuzzy
 msgid "For each download"
 msgstr "1 ダウンロード完了時"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:29
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:29
 #, fuzzy
 msgid "When all downloads finish"
 msgstr "すべてのダウンロード完了時"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:29
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:50
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:30
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:33
 #, fuzzy
 msgid "Never"
 msgstr "通知しない"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:39
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:31
 msgid "Prevent Suspend"
 msgstr "サスペンドを妨げる"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:48
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:32
 #, fuzzy
 msgid "Download History Length"
 msgstr "ダウンロード中"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:50
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:34
 msgid "One Day"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:50
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:35
 msgid "One Week"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:50
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:36
 msgid "One Month"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:50
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:37
 msgid "Three Months"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:50
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:38
 #, fuzzy
 msgid "Forever"
 msgstr "通知しない"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:64
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:39
 msgid "Overwrite Existing Files"
 msgstr "存在するファイルを上書きする"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:73
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:40
 msgid "Max Number of Active Downloads"
 msgstr "同時にダウンロードできる最大数"
 
@@ -463,10 +480,13 @@ msgid "Restricts characters in filenames to only those supported by Windows."
 msgstr "ファイル名の文字を Windows がサポートする文字のみに制限する。"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:99
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:45
 msgid "Include Auto-Generated Subtitles"
 msgstr "自動生成された字幕を含める"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:109
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:39
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:23
 msgid "Downloader"
 msgstr "ダウンローダー"
 
@@ -476,6 +496,8 @@ msgid "Speed Limit (KiB/s)"
 msgstr "スピード制限"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:113
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:47
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:48
 #, fuzzy
 msgid ""
 "This limit is applied only to downloads that have enabled limiting download "
@@ -485,31 +507,40 @@ msgstr ""
 "み有効になります。すでに進行中のダウンロードには、設定は適用されません。"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:129
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:49
 msgid "Use SponsorBlock for YouTube"
 msgstr "YouTube のダウンロードで SponsorBlock を使用"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:138
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:50
 msgid "Proxy URL"
 msgstr "プロキシ URL"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:147
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:52
 msgid "Cookies File"
 msgstr "クッキーファイル"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:157
 #: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:90
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:54
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:138
 msgid "Select Cookies File"
 msgstr "クッキーファイルを選択"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:167
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:55
 msgid "Clear Cookies File"
 msgstr "クッキーファイルを消去"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:177
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:56
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:152
 msgid "Cookies File Information"
 msgstr "クッキーファイルの情報"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:192
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:152
 #, fuzzy
 msgid ""
 "Cookies can be passed to yt-dlp in the form of TXT files. Cookies may allow "
@@ -520,34 +551,43 @@ msgstr ""
 "を使ってクッキーをエクスポートできます(自己責任で使用してください):"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:204
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:153
 msgid "Chrome/Edge"
 msgstr "Chrome/Edge"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:213
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:154
 msgid "Firefox"
 msgstr "Firefox"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:231
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:24
 msgid "Converter"
 msgstr "コンバーター"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:234
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:57
 msgid "Embed Metadata"
 msgstr "メタデータを埋め込む"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:243
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:59
 msgid "Embed Chapters"
 msgstr "チャプター（章）を埋め込む"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:252
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:58
 msgid "Embed Subtitles"
 msgstr "字幕を埋め込む"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:261
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:60
 msgid "Crop Audio Thumbnails"
 msgstr "オーディオサムネイルを整形"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:262
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:61
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:62
 #, fuzzy
 msgid ""
 "If enabled, Parabolic will crop the thumbnails of audio files to squares."
@@ -556,33 +596,42 @@ msgstr ""
 "する詳細オプションを有効にします"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:272
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:63
 msgid "Remove Source Data"
 msgstr "ダウンロード元のデータを削除"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:273
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:64
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:65
 msgid ""
 "If enabled, Parabolic will clear metadata fields containing identifying "
 "download information."
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:284
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:25
 #, fuzzy
 msgid "aria2"
 msgstr "aria2 を使用"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:287
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:66
 msgid "Use aria2"
 msgstr "aria2 を使用"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:296
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:67
 msgid "Max Connections Per Server (-x)"
 msgstr "サーバーごとの最大接続数（-x）"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:313
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:68
 msgid "Minimum Split Size (-k)"
 msgstr "最小分割サイズ"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:314
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:69
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:70
 msgid "The minimum size of which to split a file (in MiB)."
 msgstr "ファイルあたりの最小分割サイズ（MiB）。"
 
@@ -641,7 +690,7 @@ msgid "{} items"
 msgstr "{1} 個中 {0} 個のアイテム"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:140
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:170
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:176
 #, fuzzy
 msgid "Open"
 msgstr "ファイルを開く"
@@ -667,7 +716,7 @@ msgid "Delete"
 msgstr "削除"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:307
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:39
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:46
 msgid "GitHub Repo"
 msgstr "GitHub リポジトリ"
 
@@ -722,38 +771,72 @@ msgstr "Parabolic"
 msgid "File"
 msgstr "ファイル"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:34
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:35
 msgid "Exit"
 msgstr "終了"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:35
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:36
 msgid "Edit"
 msgstr "編集"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:36
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:16
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:38
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:19
 msgid "Settings"
 msgstr "設定"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:38
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:40
+msgid "Stop All Downloads"
+msgstr "すべてのダウンロードを停止"
+
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:41
+msgid "Retry Failed Downloads"
+msgstr "失敗したダウンロードを再試行"
+
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:42
+msgid "Clear Queued Downloads"
+msgstr "一時停止中のダウンロードをクリア"
+
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:43
+msgid "Clear Completed Downloads"
+msgstr "完了したダウンロードをクリア"
+
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:45
 msgid "Check for Updates"
 msgstr "アップデートをチェック"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:40
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:47
 msgid "Report a Bug"
 msgstr "バグを報告"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:41
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:48
 msgid "Discussions"
 msgstr "ディスカッション"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:158
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:164
 msgid "Update"
 msgstr "アップデート"
 
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:19
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:26
 msgid "Automatically Check for Updates"
 msgstr "アップデートを自動的にチェックする"
+
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:46
+#, fuzzy
+msgid "Speed Limit"
+msgstr "スピード制限"
+
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:51
+msgid "Enter proxy url here"
+msgstr "プロキシの URL を入力"
+
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:53
+#, fuzzy
+msgid "Select cookies file"
+msgstr "クッキーファイルを選択"
+
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:138
+msgid "Text files (*.txt)"
+msgstr ""
 
 #, fuzzy
 #~ msgid "Search"
@@ -1312,18 +1395,6 @@ msgstr "アップデートを自動的にチェックする"
 #~ msgid "Hide the window instead of quitting if there are downloads running."
 #~ msgstr "ウィンドウが閉じて隠れても、ダウンロードを続けます。"
 
-#~ msgid "Stop All Downloads"
-#~ msgstr "すべてのダウンロードを停止"
-
-#~ msgid "Retry Failed Downloads"
-#~ msgstr "失敗したダウンロードを再試行"
-
-#~ msgid "Clear Queued Downloads"
-#~ msgstr "一時停止中のダウンロードをクリア"
-
-#~ msgid "Clear Completed Downloads"
-#~ msgstr "完了したダウンロードをクリア"
-
 #~ msgid "Apply"
 #~ msgstr "適用"
 
@@ -1346,9 +1417,6 @@ msgstr "アップデートを自動的にチェックする"
 
 #~ msgid "Show Completed"
 #~ msgstr "完了済を表示"
-
-#~ msgid "Enter proxy url here"
-#~ msgstr "プロキシの URL を入力"
 
 #~ msgid "Enter url here"
 #~ msgstr "URL をここに入力"

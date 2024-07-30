@@ -31,22 +31,8 @@
     <item>
      <widget class="QStackedWidget" name="viewStack">
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
-      <widget class="QWidget" name="spinnerPage">
-       <layout class="QVBoxLayout" name="verticalLayout_3">
-        <item>
-         <widget class="QProgressBar" name="progressBar">
-          <property name="maximum">
-           <number>0</number>
-          </property>
-          <property name="textVisible">
-           <bool>false</bool>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </widget>
       <widget class="QWidget" name="homePage">
        <layout class="QHBoxLayout" name="horizontalLayout_2">
         <item>
@@ -156,6 +142,7 @@
     <property name="title">
      <string/>
     </property>
+    <addaction name="actionAddDownload"/>
     <addaction name="separator"/>
     <addaction name="actionExit"/>
    </widget>
@@ -163,7 +150,19 @@
     <property name="title">
      <string/>
     </property>
+    <addaction name="actionHistory"/>
+    <addaction name="separator"/>
     <addaction name="actionSettings"/>
+   </widget>
+   <widget class="QMenu" name="menuDownloader">
+    <property name="title">
+     <string/>
+    </property>
+    <addaction name="actionStopAllDownloads"/>
+    <addaction name="actionRetryFailedDownloads"/>
+    <addaction name="separator"/>
+    <addaction name="actionClearQueuedDownloads"/>
+    <addaction name="actionClearCompletedDownloads"/>
    </widget>
    <widget class="QMenu" name="menuHelp">
     <property name="title">
@@ -179,6 +178,7 @@
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menuEdit"/>
+   <addaction name="menuDownloader"/>
    <addaction name="menuHelp"/>
   </widget>
   <action name="actionCheckForUpdates">
@@ -204,6 +204,48 @@
    </property>
    <property name="shortcut">
     <string>Ctrl+Q</string>
+   </property>
+  </action>
+  <action name="actionAddDownload">
+   <property name="icon">
+    <iconset theme="list-add"/>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+N</string>
+   </property>
+  </action>
+  <action name="actionHistory">
+   <property name="icon">
+    <iconset theme="document-open-recent"/>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+H</string>
+   </property>
+  </action>
+  <action name="actionStopAllDownloads">
+   <property name="icon">
+    <iconset theme="media-playback-stop"/>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+Delete</string>
+   </property>
+  </action>
+  <action name="actionRetryFailedDownloads">
+   <property name="icon">
+    <iconset theme="view-restore"/>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+R</string>
+   </property>
+  </action>
+  <action name="actionClearQueuedDownloads">
+   <property name="icon">
+    <iconset theme="edit-delete"/>
+   </property>
+  </action>
+  <action name="actionClearCompletedDownloads">
+   <property name="icon">
+    <iconset theme="edit-delete"/>
    </property>
   </action>
  </widget>

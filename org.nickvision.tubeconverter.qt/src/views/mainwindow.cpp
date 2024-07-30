@@ -31,9 +31,16 @@ namespace Nickvision::TubeConverter::QT::Views
         setAcceptDrops(true);
         //Localize Menu Strings
         m_ui->menuFile->setTitle(_("File"));
+        m_ui->actionAddDownload->setText(_("Add Download"));
         m_ui->actionExit->setText(_("Exit"));
         m_ui->menuEdit->setTitle(_("Edit"));
+        m_ui->actionHistory->setText(_("History"));
         m_ui->actionSettings->setText(_("Settings"));
+        m_ui->menuDownloader->setTitle(_("Downloader"));
+        m_ui->actionStopAllDownloads->setText(_("Stop All Downloads"));
+        m_ui->actionRetryFailedDownloads->setText(_("Retry Failed Downloads"));
+        m_ui->actionClearQueuedDownloads->setText(_("Clear Queued Downloads"));
+        m_ui->actionClearCompletedDownloads->setText(_("Clear Completed Downloads"));
         m_ui->menuHelp->setTitle(_("Help"));
         m_ui->actionCheckForUpdates->setText(_("Check for Updates"));
         m_ui->actionGitHubRepo->setText(_("GitHub Repo"));
@@ -63,7 +70,7 @@ namespace Nickvision::TubeConverter::QT::Views
     void MainWindow::show()
     {
         QMainWindow::show();
-        m_ui->viewStack->setCurrentIndex(1);
+        m_ui->viewStack->setCurrentIndex(0);
 #ifdef _WIN32
         WindowGeometry geometry{ m_controller->startup(reinterpret_cast<HWND>(winId())) };
 #elif defined(__linux__)
@@ -110,7 +117,6 @@ namespace Nickvision::TubeConverter::QT::Views
 #ifdef _WIN32
     void MainWindow::windowsUpdate()
     {
-        m_ui->viewStack->setCurrentIndex(0);
         m_controller->windowsUpdate();
     }
 #endif

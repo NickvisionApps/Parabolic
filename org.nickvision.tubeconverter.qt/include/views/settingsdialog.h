@@ -42,6 +42,18 @@ namespace Nickvision::TubeConverter::QT::Views
          * @param index The index of the new page
          */
         void onPageChanged(int index);
+        /**
+         * @brief Prompts the user to select a cookies file.
+         */
+        void selectCookiesFile();
+        /**
+         * @brief Clears the selected cookies file.
+         */
+        void clearCookiesFile();
+        /**
+         * @brief Shows information about the cookies files.
+         */
+        void cookiesFileInformation();
 
     private:
         Ui::SettingsDialog* m_ui;
