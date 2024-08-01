@@ -235,7 +235,10 @@ namespace Nickvision::TubeConverter::QT::Views
         for(const HistoricDownload& download : args.getParam())
         {
             m_ui->tblHistory->insertRow(i);
-            m_ui->tblHistory->setItem(i, 1, new QTableWidgetItem(QString::fromStdString(download.getTitle())));
+            //Title
+            QTableWidgetItem* title{ new QTableWidgetItem(QString::fromStdString(download.getTitle())) };
+            title->setFlags(title->flags() ^ Qt::ItemFlag::ItemIsEditable);
+            m_ui->tblHistory->setItem(i, 1, title);
             //Delete Button
             QPushButton* btnDelete{ new QPushButton(QIcon::fromTheme(QIcon::ThemeIcon::EditDelete), {}, m_ui->tblHistory) };
             btnDelete->setToolTip(_("Delete"));
@@ -253,6 +256,12 @@ namespace Nickvision::TubeConverter::QT::Views
                 btnPlay->setToolTip(_("Play"));
                 connect(btnPlay, &QPushButton::clicked, [this, download]() { QDesktopServices::openUrl(QUrl::fromLocalFile(QString::fromStdString(download.getPath().string()))); });
                 m_ui->tblHistory->setCellWidget(i, 3, btnPlay);
+            }
+            else
+            {
+                QTableWidgetItem* blank{ new QTableWidgetItem() };
+                blank->setFlags(blank->flags() ^ Qt::ItemFlag::ItemIsEditable);
+                m_ui->tblHistory->setItem(i, 3, blank);
             }
             i++;
         }
