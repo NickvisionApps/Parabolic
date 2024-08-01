@@ -49,9 +49,11 @@ namespace Nickvision::TubeConverter::QT::Views
         m_ui->lblSplitChaptersSingle->setText(_("Split Video by Chapters"));
         m_ui->lblSaveFolderSingle->setText(_("Save Folder"));
         m_ui->txtSaveFolderSingle->setPlaceholderText(_("Select save folder"));
+        m_ui->btnSelectSaveFolderSingle->setText(_("Select"));
         m_ui->btnSelectSaveFolderSingle->setToolTip(_("Select Save Folder"));
         m_ui->lblFilenameSingle->setText(_("File Name"));
         m_ui->txtFilenameSingle->setPlaceholderText(_("Enter file name here"));
+        m_ui->btnRevertFilenameSingle->setText(_("Revert"));
         m_ui->btnRevertFilenameSingle->setToolTip(_("Revert to Title"));
         m_ui->lblTimeFrameStartSingle->setText(_("Start Time"));
         m_ui->lblTimeFrameEndSingle->setText(_("End Time"));
@@ -65,6 +67,7 @@ namespace Nickvision::TubeConverter::QT::Views
         m_ui->lblNumberTitlesPlaylist->setText(_("Number Titles"));
         m_ui->lblSaveFolderPlaylist->setText(_("Save Folder"));
         m_ui->txtSaveFolderPlaylist->setPlaceholderText(_("Select save folder"));
+        m_ui->btnSelectSaveFolderPlaylist->setText(_("Select"));
         m_ui->btnSelectSaveFolderPlaylist->setToolTip(_("Select Save Folder"));
         m_ui->tblItemsPlaylist->setHorizontalHeaderLabels({ _("Download"), _("File Name"), "" });
         m_ui->btnDownloadPlaylist->setText(_("Download"));
@@ -181,6 +184,7 @@ namespace Nickvision::TubeConverter::QT::Views
                 chk->setChecked(true);
                 QPushButton* btn{ new QPushButton(m_ui->tblItemsPlaylist) };
                 btn->setIcon(QIcon::fromTheme(QIcon::ThemeIcon::EditUndo));
+                btn->setText(_("Revert"));
                 btn->setToolTip(_("Revert to Title"));
                 connect(btn, &QPushButton::clicked, [this, i](){ m_ui->tblItemsPlaylist->item(static_cast<int>(i), 1)->setText(QString::fromStdString(m_controller->getMediaTitle(i))); });
                 m_ui->tblItemsPlaylist->insertRow(static_cast<int>(i));
