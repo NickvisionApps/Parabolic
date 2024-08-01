@@ -9,6 +9,7 @@
 #include <libnick/localization/gettext.h>
 #include <libnick/notifications/shellnotification.h>
 #include "controls/aboutdialog.h"
+#include "views/adddownloaddialog.h"
 #include "views/settingsdialog.h"
 
 using namespace Nickvision::App;
@@ -50,7 +51,9 @@ namespace Nickvision::TubeConverter::QT::Views
         //Localize Home Page
         m_ui->lblHomeGreeting->setText(_("Download Media"));
         m_ui->lblHomeDescription->setText(_("Add a video, audio, or playlist URL to start downloading"));
+        m_ui->btnHomeAddDownload->setText(_("Add Download"));
         //Signals
+        connect(m_ui->actionAddDownload, &QAction::triggered, this, &MainWindow::addDownload);
         connect(m_ui->actionExit, &QAction::triggered, this, &MainWindow::exit);
         connect(m_ui->actionSettings, &QAction::triggered, this, &MainWindow::settings);
         connect(m_ui->actionCheckForUpdates, &QAction::triggered, this, &MainWindow::checkForUpdates);
@@ -58,6 +61,7 @@ namespace Nickvision::TubeConverter::QT::Views
         connect(m_ui->actionReportABug, &QAction::triggered, this, &MainWindow::reportABug);
         connect(m_ui->actionDiscussions, &QAction::triggered, this, &MainWindow::discussions);
         connect(m_ui->actionAbout, &QAction::triggered, this, &MainWindow::about);
+        connect(m_ui->btnHomeAddDownload, &QPushButton::clicked, this, &MainWindow::addDownload);
         m_controller->notificationSent() += [&](const NotificationSentEventArgs& args) { QMetaObject::invokeMethod(this, [this, args]() { onNotificationSent(args); }, Qt::QueuedConnection); };
         m_controller->shellNotificationSent() += [&](const ShellNotificationSentEventArgs& args) { onShellNotificationSent(args); };
     }
@@ -96,6 +100,12 @@ namespace Nickvision::TubeConverter::QT::Views
         }
         m_controller->shutdown({ geometry().width(), geometry().height(), isMaximized() });
         event->accept();
+    }
+
+    void MainWindow::addDownload()
+    {
+        AddDownloadDialog dialog{ m_controller->createAddDownloadDialogController(), this };
+        dialog.exec();
     }
 
     void MainWindow::exit()

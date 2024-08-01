@@ -44,6 +44,10 @@ namespace Nickvision::TubeConverter::QT::Views
 
     private Q_SLOTS:
         /**
+         * @brief Prompts the user to add a download.
+         */
+        void addDownload();
+        /**
          * @brief Exits the application.
          */
         void exit();

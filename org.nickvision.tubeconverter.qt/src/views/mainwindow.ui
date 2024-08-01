@@ -96,6 +96,13 @@
            <widget class="QLabel" name="lblHomeDescription"/>
           </item>
           <item>
+           <widget class="QPushButton" name="btnHomeAddDownload">
+            <property name="icon">
+             <iconset theme="emblem-downloads"/>
+            </property>
+           </widget>
+          </item>
+          <item>
            <spacer name="verticalSpacer_2">
             <property name="orientation">
              <enum>Qt::Orientation::Vertical</enum>
@@ -197,7 +204,11 @@
     <string>F1</string>
    </property>
   </action>
-  <action name="actionSettings"/>
+  <action name="actionSettings">
+   <property name="icon">
+    <iconset theme="document-properties"/>
+   </property>
+  </action>
   <action name="actionExit">
    <property name="icon">
     <iconset theme="edit-clear"/>
@@ -227,7 +238,7 @@
     <iconset theme="media-playback-stop"/>
    </property>
    <property name="shortcut">
-    <string>Ctrl+Shift+Delete</string>
+    <string>Ctrl+Shift+Del</string>
    </property>
   </action>
   <action name="actionRetryFailedDownloads">

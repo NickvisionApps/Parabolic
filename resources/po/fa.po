@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-07-30 12:48-0400\n"
+"POT-Creation-Date: 2024-07-31 22:20-0400\n"
 "PO-Revision-Date: 2024-01-11 20:05+0000\n"
 "Last-Translator: behrooz ramezani <b3hrooz.ram3zani@gmail.com>\n"
 "Language-Team: Persian <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -81,7 +81,7 @@ msgid "Default"
 msgstr ""
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:42
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:30
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:31
 msgid "Parabolic"
 msgstr "Parabolic"
 
@@ -152,7 +152,9 @@ msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:11
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:195
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:34
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:34
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:35
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:54
 msgid "Add Download"
 msgstr "اضافه کردن دانلود"
 
@@ -160,11 +162,14 @@ msgstr "اضافه کردن دانلود"
 msgid "Back"
 msgstr "بارگشت"
 
+#. Localize Strings
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:52
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:36
 msgid "Media URL"
 msgstr "URL رسانه"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:57
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:38
 msgid "Authenticate"
 msgstr "اعتبار دادن"
 
@@ -174,28 +179,36 @@ msgid "Credential"
 msgstr "اعتبارنامه حذف شود؟"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:66
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:39
 msgid "Username"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:70
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:41
 msgid "Password"
 msgstr "کلمه عبور"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:76
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:43
 msgid "Validate"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:95
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:223
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:44
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:60
 msgid "File Type"
 msgstr "نوع فایل"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:99
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:45
 msgid "Quality"
 msgstr "کیفیت"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:103
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:227
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:47
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:61
 msgid "Download Subtitles"
 msgstr "بارگیری زیرنویس"
 
@@ -205,6 +218,8 @@ msgstr "گزینه های پیشرفته"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:120
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:241
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:50
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:66
 msgid "Save Folder"
 msgstr ""
 
@@ -212,35 +227,51 @@ msgstr ""
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:247
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:192
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:227
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:52
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:68
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:205
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:225
 msgid "Select Save Folder"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:135
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:53
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:69
 msgid "File Name"
 msgstr "نام فایل"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:141
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:150
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:55
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:184
 msgid "Revert to Title"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:148
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:267
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:58
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:64
 #, fuzzy
 msgid "Limit Download Speed"
 msgstr "بارگیری رسانه"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:154
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:273
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:59
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:69
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:70
 msgid "Download"
 msgstr "بارگیری"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:172
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:46
 msgid "Audio Language"
 msgstr "زبان صوتی"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:176
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:231
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:48
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:62
 msgid "Prefer AV1 Codec"
 msgstr "کدک AV1 را ترجیح دهید"
 
@@ -250,6 +281,7 @@ msgid "Split Videos by Chapters"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:184
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:56
 msgid "Start Time"
 msgstr ""
 
@@ -259,6 +291,7 @@ msgid "Revert to Original"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:197
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:57
 msgid "End Time"
 msgstr ""
 
@@ -268,6 +301,7 @@ msgid "Playlist Items"
 msgstr "لیست پخش"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:291
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:65
 msgid "Number Titles"
 msgstr "عناوین اعداد"
 
@@ -283,13 +317,13 @@ msgid "Keyboard Shortcuts"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:7
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:44
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:45
 msgid "Help"
 msgstr "کمک"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:8
 #: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:31
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:49
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:50
 msgid "About Parabolic"
 msgstr ""
 
@@ -313,7 +347,7 @@ msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:102
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:153
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:37
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:38
 msgid "History"
 msgstr "تاریخچه"
 
@@ -340,12 +374,12 @@ msgstr "تکمیل شد"
 
 #. Localize Home Page
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:191
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:51
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:52
 msgid "Download Media"
 msgstr "بارگیری رسانه"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:192
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:52
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:53
 msgid "Add a video, audio, or playlist URL to start downloading"
 msgstr "برای شروع دانلود، یک URL ویدیو، صدا یا فهرست پخش اضافه کنید"
 
@@ -476,7 +510,7 @@ msgid "Include Auto-Generated Subtitles"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:109
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:39
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:40
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:23
 msgid "Downloader"
 msgstr "بارگیری کننده"
@@ -651,6 +685,7 @@ msgid "Quit"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:48
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:83
 msgid "Use manual credential"
 msgstr ""
 
@@ -674,7 +709,7 @@ msgid "{} items"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:140
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:176
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:186
 #, fuzzy
 msgid "Open"
 msgstr "فایل را باز کنید"
@@ -700,7 +735,7 @@ msgid "Delete"
 msgstr "حذف"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:307
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:46
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:47
 msgid "GitHub Repo"
 msgstr "مخزن گیت هاب"
 
@@ -733,62 +768,98 @@ msgid ""
 "{}"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:30
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:37
+msgid "Enter media url here"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:40
+msgid "Enter username here"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:42
+msgid "Enter password here"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:49
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:63
+msgid "Split Video by Chapters"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:51
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:67
+#, fuzzy
+msgid "Select save folder"
+msgstr "فایل کوکی ها"
+
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:54
+msgid "Enter file name here"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:84
+msgid "None"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:169
+#, fuzzy
+msgid "Playlist Items ({})"
+msgstr "لیست پخش"
+
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:31
 #, fuzzy
 msgid "Parabolic (Preview)"
 msgstr "Parabolic"
 
 #. Localize Menu Strings
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:33
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:34
 #, fuzzy
 msgid "File"
 msgstr "نوع فایل"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:35
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:36
 msgid "Exit"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:36
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:37
 msgid "Edit"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:38
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:39
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:19
 msgid "Settings"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:40
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:41
 #, fuzzy
 msgid "Stop All Downloads"
 msgstr "بارگیری"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:41
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:42
 #, fuzzy
 msgid "Retry Failed Downloads"
 msgstr "بارگیری را دوباره امتحان کنید"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:42
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:43
 #, fuzzy
 msgid "Clear Queued Downloads"
 msgstr "دانلودهای تکمیل شده را پاک کنید"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:43
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:44
 msgid "Clear Completed Downloads"
 msgstr "دانلودهای تکمیل شده را پاک کنید"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:45
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:46
 msgid "Check for Updates"
 msgstr "به روز رسانی ها را بررسی کنید"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:47
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:48
 msgid "Report a Bug"
 msgstr "گزارش یک اشکال"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:48
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:49
 msgid "Discussions"
 msgstr "بحث ها"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:164
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:174
 msgid "Update"
 msgstr ""
 
@@ -813,6 +884,10 @@ msgstr "فایل کوکی ها"
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:138
 msgid "Text files (*.txt)"
 msgstr ""
+
+#, fuzzy
+#~ msgid "Advanced"
+#~ msgstr "گزینه های پیشرفته"
 
 #~ msgid "Cancel"
 #~ msgstr "لغو"
