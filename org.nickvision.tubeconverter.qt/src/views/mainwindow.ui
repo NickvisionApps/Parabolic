@@ -33,7 +33,7 @@
       <property name="currentIndex">
        <number>0</number>
       </property>
-      <widget class="QWidget" name="homePage">
+      <widget class="QWidget" name="pageHome">
        <layout class="QHBoxLayout" name="horizontalLayout_2">
         <item>
          <spacer name="horizontalSpacer">
@@ -132,6 +132,7 @@
         </item>
        </layout>
       </widget>
+      <widget class="QWidget" name="pageDownloads"/>
      </widget>
     </item>
    </layout>
@@ -157,9 +158,13 @@
     <property name="title">
      <string/>
     </property>
-    <addaction name="actionHistory"/>
-    <addaction name="separator"/>
     <addaction name="actionSettings"/>
+   </widget>
+   <widget class="QMenu" name="menuView">
+    <property name="title">
+     <string/>
+    </property>
+    <addaction name="actionHistory"/>
    </widget>
    <widget class="QMenu" name="menuDownloader">
     <property name="title">
@@ -185,8 +190,109 @@
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menuEdit"/>
+   <addaction name="menuView"/>
    <addaction name="menuDownloader"/>
    <addaction name="menuHelp"/>
+  </widget>
+  <widget class="QDockWidget" name="dockHistory">
+   <property name="minimumSize">
+    <size>
+     <width>400</width>
+     <height>174</height>
+    </size>
+   </property>
+   <property name="autoFillBackground">
+    <bool>false</bool>
+   </property>
+   <property name="floating">
+    <bool>false</bool>
+   </property>
+   <property name="features">
+    <set>QDockWidget::DockWidgetFeature::DockWidgetClosable</set>
+   </property>
+   <property name="allowedAreas">
+    <set>Qt::DockWidgetArea::RightDockWidgetArea</set>
+   </property>
+   <attribute name="dockWidgetArea">
+    <number>2</number>
+   </attribute>
+   <widget class="QWidget" name="dockHistoryContents">
+    <layout class="QVBoxLayout" name="verticalLayout_3">
+     <property name="leftMargin">
+      <number>4</number>
+     </property>
+     <property name="topMargin">
+      <number>4</number>
+     </property>
+     <property name="rightMargin">
+      <number>4</number>
+     </property>
+     <property name="bottomMargin">
+      <number>4</number>
+     </property>
+     <item>
+      <widget class="QLabel" name="lblHistory">
+       <property name="font">
+        <font>
+         <bold>true</bold>
+        </font>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QStackedWidget" name="viewStackHistory">
+       <property name="currentIndex">
+        <number>1</number>
+       </property>
+       <widget class="QWidget" name="pageNoHistory">
+        <layout class="QVBoxLayout" name="verticalLayout_4">
+         <item>
+          <widget class="QLabel" name="lblNoHistory">
+           <property name="alignment">
+            <set>Qt::AlignmentFlag::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QWidget" name="pageHistory">
+        <layout class="QVBoxLayout" name="verticalLayout_2">
+         <property name="leftMargin">
+          <number>0</number>
+         </property>
+         <property name="topMargin">
+          <number>0</number>
+         </property>
+         <property name="rightMargin">
+          <number>0</number>
+         </property>
+         <property name="bottomMargin">
+          <number>0</number>
+         </property>
+         <item>
+          <widget class="QPushButton" name="btnClearHistory">
+           <property name="icon">
+            <iconset theme="edit-delete"/>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QTableWidget" name="tblHistory">
+           <property name="columnCount">
+            <number>4</number>
+           </property>
+           <column/>
+           <column/>
+           <column/>
+           <column/>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </widget>
+     </item>
+    </layout>
+   </widget>
   </widget>
   <action name="actionCheckForUpdates">
    <property name="icon">

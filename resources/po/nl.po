@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-07-31 22:20-0400\n"
+"POT-Creation-Date: 2024-07-31 23:50-0400\n"
 "PO-Revision-Date: 2024-06-12 11:11+0000\n"
 "Last-Translator: Philip Goto <philip.goto@gmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -83,7 +83,7 @@ msgid "Default"
 msgstr "Standaard"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:42
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:31
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:33
 msgid "Parabolic"
 msgstr "Parabolic"
 
@@ -159,8 +159,8 @@ msgstr "Bestand bestaat al en overschrijven is niet toegestaan"
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:11
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:195
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:34
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:35
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:54
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:37
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:57
 msgid "Add Download"
 msgstr "Download toevoegen"
 
@@ -265,6 +265,7 @@ msgstr "Media downloaden"
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:59
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:69
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:70
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:246
 msgid "Download"
 msgstr "Downloaden"
 
@@ -323,13 +324,13 @@ msgid "Keyboard Shortcuts"
 msgstr "Sneltoetsen"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:7
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:45
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:48
 msgid "Help"
 msgstr "Hulp"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:8
 #: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:31
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:50
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:53
 msgid "About Parabolic"
 msgstr "Over Parabolic"
 
@@ -351,9 +352,11 @@ msgstr "Start"
 msgid "Keyring"
 msgstr "Sleutelbos"
 
+#. Localize History Dock
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:102
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:153
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:38
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:42
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:59
 msgid "History"
 msgstr "Geschiedenis"
 
@@ -380,17 +383,18 @@ msgstr "Voltooid"
 
 #. Localize Home Page
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:191
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:52
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:55
 msgid "Download Media"
 msgstr "Media downloaden"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:192
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:53
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:56
 msgid "Add a video, audio, or playlist URL to start downloading"
 msgstr ""
 "Voeg een URL van een video, audio, of een playlist toe om te downloaden"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:213
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:60
 #, fuzzy
 msgid "No history available"
 msgstr "Updates beschikbaar"
@@ -405,6 +409,7 @@ msgid "Clear History"
 msgstr "Geschiedenis wissen"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:233
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:61
 msgid "Clear"
 msgstr "Wissen"
 
@@ -519,7 +524,7 @@ msgid "Include Auto-Generated Subtitles"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:109
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:40
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:43
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:23
 msgid "Downloader"
 msgstr "Downloader"
@@ -720,20 +725,23 @@ msgid "{} items"
 msgstr "{0} van {1} item"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:140
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:186
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:211
 #, fuzzy
 msgid "Open"
 msgstr "Bestand openen"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:175
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:217
 msgid "Disclaimer"
 msgstr "Vrij­waring"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:176
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:218
 msgid "Don't show this message again"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:210
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:253
 msgid "Play"
 msgstr "Afspelen"
 
@@ -742,11 +750,12 @@ msgid "Download Again"
 msgstr "Opnieuw downloaden"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:241
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:241
 msgid "Delete"
 msgstr "Verwijderen"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:307
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:47
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:50
 msgid "GitHub Repo"
 msgstr "GitHub-repo"
 
@@ -821,58 +830,67 @@ msgstr "Geen"
 msgid "Playlist Items ({})"
 msgstr "Afspeellijst"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:31
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:33
 #, fuzzy
 msgid "Parabolic (Preview)"
 msgstr "Parabolic"
 
 #. Localize Menu Strings
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:34
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:36
 msgid "File"
 msgstr "Bestand"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:36
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:38
 msgid "Exit"
 msgstr "Verlaten"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:37
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:39
 msgid "Edit"
 msgstr "Bewerken"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:39
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:40
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:19
 msgid "Settings"
 msgstr "Instellingen"
 
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:41
+#, fuzzy
+msgid "View"
+msgstr "Logboek bekijken"
+
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:44
 msgid "Stop All Downloads"
 msgstr "Alle downloads stoppen"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:42
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:45
 msgid "Retry Failed Downloads"
 msgstr "Mislukte downloads opnieuw proberen"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:43
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:46
 msgid "Clear Queued Downloads"
 msgstr "Download­wachtrij wissen"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:44
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:47
 msgid "Clear Completed Downloads"
 msgstr "Voltooide downloads wissen"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:46
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:49
 msgid "Check for Updates"
 msgstr "Controleren op updates"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:48
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:51
 msgid "Report a Bug"
 msgstr "Fout melden"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:49
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:52
 msgid "Discussions"
 msgstr "Discussies"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:174
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:62
+msgid "Title"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:199
 msgid "Update"
 msgstr "Bij­werken"
 
@@ -1259,9 +1277,6 @@ msgstr ""
 
 #~ msgid "Validating"
 #~ msgstr "Valideren"
-
-#~ msgid "View Log"
-#~ msgstr "Logboek bekijken"
 
 #~ msgid "Waiting..."
 #~ msgstr "Wachten…"

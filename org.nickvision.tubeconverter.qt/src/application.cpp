@@ -9,7 +9,7 @@ namespace Nickvision::TubeConverter::QT
         m_controller{ std::make_shared<MainWindowController>(std::vector<std::string>(argv, argv + argc)) },
         m_mainWindow{ nullptr }
     {
-    
+        
     }
 
     int Application::exec()

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-07-31 22:20-0400\n"
+"POT-Creation-Date: 2024-07-31 23:50-0400\n"
 "PO-Revision-Date: 2023-06-12 02:55+0000\n"
 "Last-Translator: Krindog7337 <igstkrisna2006@gmail.com>\n"
 "Language-Team: Indonesian <https://hosted.weblate.org/projects/nickvision-"
@@ -83,7 +83,7 @@ msgid "Default"
 msgstr "Bawaan"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:42
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:31
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:33
 msgid "Parabolic"
 msgstr ""
 
@@ -161,8 +161,8 @@ msgstr "File sudah ada, dan penimpaan tidak diperbolehkan"
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:11
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:195
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:34
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:35
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:54
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:37
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:57
 msgid "Add Download"
 msgstr "Tambah Unduhan"
 
@@ -269,6 +269,7 @@ msgstr "Unduh"
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:59
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:69
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:70
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:246
 msgid "Download"
 msgstr "Unduh"
 
@@ -326,13 +327,13 @@ msgid "Keyboard Shortcuts"
 msgstr "Pintasan Keyboard"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:7
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:45
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:48
 msgid "Help"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:8
 #: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:31
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:50
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:53
 msgid "About Parabolic"
 msgstr ""
 
@@ -354,9 +355,11 @@ msgstr "Beranda"
 msgid "Keyring"
 msgstr "Keyring"
 
+#. Localize History Dock
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:102
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:153
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:38
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:42
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:59
 msgid "History"
 msgstr ""
 
@@ -383,17 +386,18 @@ msgstr "Selesai"
 
 #. Localize Home Page
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:191
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:52
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:55
 #, fuzzy
 msgid "Download Media"
 msgstr "Unduh"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:192
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:53
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:56
 msgid "Add a video, audio, or playlist URL to start downloading"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:213
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:60
 msgid "No history available"
 msgstr ""
 
@@ -407,6 +411,7 @@ msgid "Clear History"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:233
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:61
 msgid "Clear"
 msgstr ""
 
@@ -521,7 +526,7 @@ msgid "Include Auto-Generated Subtitles"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:109
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:40
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:43
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:23
 msgid "Downloader"
 msgstr "Pengunduh"
@@ -723,20 +728,23 @@ msgid "{} items"
 msgstr "{0} dari {1} item"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:140
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:186
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:211
 #, fuzzy
 msgid "Open"
 msgstr "Buka File"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:175
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:217
 msgid "Disclaimer"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:176
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:218
 msgid "Don't show this message again"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:210
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:253
 #, fuzzy
 msgid "Play"
 msgstr "Daftar Putar"
@@ -747,11 +755,12 @@ msgid "Download Again"
 msgstr "Mengunduh"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:241
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:241
 msgid "Delete"
 msgstr "Hapus"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:307
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:47
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:50
 msgid "GitHub Repo"
 msgstr "Repo GitHub"
 
@@ -825,25 +834,25 @@ msgstr "Tidak Ada"
 msgid "Playlist Items ({})"
 msgstr "Daftar Putar"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:31
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:33
 msgid "Parabolic (Preview)"
 msgstr ""
 
 #. Localize Menu Strings
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:34
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:36
 #, fuzzy
 msgid "File"
 msgstr "Nama File"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:36
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:38
 msgid "Exit"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:37
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:39
 msgid "Edit"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:39
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:40
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:19
 #, fuzzy
 msgid "Settings"
@@ -851,37 +860,46 @@ msgstr "Pengaturan"
 
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:41
 #, fuzzy
+msgid "View"
+msgstr "Lihat Log"
+
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:44
+#, fuzzy
 msgid "Stop All Downloads"
 msgstr "Hentikan Unduhan"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:42
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:45
 #, fuzzy
 msgid "Retry Failed Downloads"
 msgstr "Ulangi Unduhan"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:43
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:46
 #, fuzzy
 msgid "Clear Queued Downloads"
 msgstr "Tutup dan Hentikan Unduhan?"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:44
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:47
 #, fuzzy
 msgid "Clear Completed Downloads"
 msgstr "Tutup dan Hentikan Unduhan?"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:46
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:49
 msgid "Check for Updates"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:48
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:51
 msgid "Report a Bug"
 msgstr "Laporkan Masalah"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:49
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:52
 msgid "Discussions"
 msgstr "Diskusi"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:174
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:62
+msgid "Title"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:199
 msgid "Update"
 msgstr ""
 
@@ -1238,9 +1256,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "Validating"
 #~ msgstr "Memvalidasi"
-
-#~ msgid "View Log"
-#~ msgstr "Lihat Log"
 
 #~ msgid "Waiting..."
 #~ msgstr "Menunggu..."

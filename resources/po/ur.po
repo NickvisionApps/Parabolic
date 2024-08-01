@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-07-31 22:20-0400\n"
+"POT-Creation-Date: 2024-07-31 23:50-0400\n"
 "PO-Revision-Date: 2023-10-09 05:02+0000\n"
 "Last-Translator: Abdur Rehman Imran <arehmanimran4@gmail.com>\n"
 "Language-Team: Urdu <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -83,7 +83,7 @@ msgid "Default"
 msgstr "طے شدہ"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:42
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:31
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:33
 msgid "Parabolic"
 msgstr "پیرابولک"
 
@@ -158,8 +158,8 @@ msgstr "فائل پہلے سے موجود ہے، اور دوبارہ لکھنے 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:11
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:195
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:34
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:35
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:54
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:37
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:57
 msgid "Add Download"
 msgstr "نئی ڈاؤن لوڈ کریں"
 
@@ -266,6 +266,7 @@ msgstr "میڈیا ڈاؤن لوڈ کریں"
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:59
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:69
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:70
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:246
 msgid "Download"
 msgstr "ڈاؤن لوڈ کریں"
 
@@ -324,13 +325,13 @@ msgid "Keyboard Shortcuts"
 msgstr "کی بورڈ شارٹ کٹس"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:7
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:45
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:48
 msgid "Help"
 msgstr "مدد"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:8
 #: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:31
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:50
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:53
 msgid "About Parabolic"
 msgstr "پیرابولک کے بارے میں"
 
@@ -352,9 +353,11 @@ msgstr "ھوم"
 msgid "Keyring"
 msgstr "کیڑیگ"
 
+#. Localize History Dock
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:102
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:153
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:38
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:42
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:59
 msgid "History"
 msgstr "تاریخ"
 
@@ -381,16 +384,17 @@ msgstr "مکمل"
 
 #. Localize Home Page
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:191
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:52
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:55
 msgid "Download Media"
 msgstr "میڈیا ڈاؤن لوڈ کریں"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:192
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:53
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:56
 msgid "Add a video, audio, or playlist URL to start downloading"
 msgstr "ڈاؤن لوڈ شروع کرنے کے لیے ویڈیو، آڈیو یا پلے لسٹ یو-آر-ایل شامل کریں"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:213
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:60
 msgid "No history available"
 msgstr ""
 
@@ -404,6 +408,7 @@ msgid "Clear History"
 msgstr "تاریخ کو صاف کریں"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:233
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:61
 msgid "Clear"
 msgstr "صاف کریں"
 
@@ -518,7 +523,7 @@ msgid "Include Auto-Generated Subtitles"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:109
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:40
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:43
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:23
 msgid "Downloader"
 msgstr "ڈاؤن لوڈر"
@@ -726,20 +731,23 @@ msgid "{} items"
 msgstr "{0} میں سے {1} چیز"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:140
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:186
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:211
 #, fuzzy
 msgid "Open"
 msgstr "فائل کھولیں"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:175
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:217
 msgid "Disclaimer"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:176
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:218
 msgid "Don't show this message again"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:210
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:253
 msgid "Play"
 msgstr "چلاؤ"
 
@@ -748,11 +756,12 @@ msgid "Download Again"
 msgstr "دوبارہ ڈاؤن لوڈ کریں"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:241
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:241
 msgid "Delete"
 msgstr "حذف کریں"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:307
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:47
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:50
 msgid "GitHub Repo"
 msgstr "گٹ ہب رجسٹر(ریپوسٹری)"
 
@@ -827,59 +836,68 @@ msgstr "کچھ نہیں"
 msgid "Playlist Items ({})"
 msgstr "پلے لیٹ"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:31
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:33
 #, fuzzy
 msgid "Parabolic (Preview)"
 msgstr "پیرابولک"
 
 #. Localize Menu Strings
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:34
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:36
 msgid "File"
 msgstr "فائیل"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:36
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:38
 msgid "Exit"
 msgstr "باہر"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:37
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:39
 msgid "Edit"
 msgstr "ترمیم کریں"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:39
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:40
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:19
 #, fuzzy
 msgid "Settings"
 msgstr "ترتیبات"
 
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:41
+#, fuzzy
+msgid "View"
+msgstr "ردوبدل دیکھیں"
+
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:44
 msgid "Stop All Downloads"
 msgstr "تمام ڈاؤن لوڈز کو روکیں"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:42
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:45
 msgid "Retry Failed Downloads"
 msgstr "ناکام ڈاؤن لوڈز کو ڈاؤن لوڈ کرنے کی دوبارہ کوشش کریں"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:43
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:46
 msgid "Clear Queued Downloads"
 msgstr "قطار میں لگے ڈاؤن لوڈز کو ختم کریں"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:44
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:47
 msgid "Clear Completed Downloads"
 msgstr "قطار میں لگے ڈاؤن لوڈز کو صاف کریں"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:46
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:49
 msgid "Check for Updates"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:48
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:51
 msgid "Report a Bug"
 msgstr "خرابی کی اطلاع کریں"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:49
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:52
 msgid "Discussions"
 msgstr "بات چیت"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:174
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:62
+msgid "Title"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:199
 msgid "Update"
 msgstr ""
 
@@ -1334,9 +1352,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "Validating"
 #~ msgstr "توثیق کریں"
-
-#~ msgid "View Log"
-#~ msgstr "ردوبدل دیکھیں"
 
 #~ msgid "Waiting..."
 #~ msgstr "منتظر..."

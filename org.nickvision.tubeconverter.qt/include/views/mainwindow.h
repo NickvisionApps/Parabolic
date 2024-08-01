@@ -56,6 +56,10 @@ namespace Nickvision::TubeConverter::QT::Views
          */
         void settings();
         /**
+         * @brief Displays the history pane.
+         */
+        void history();
+        /**
          * @brief Checks for application updates.
          */
         void checkForUpdates();
@@ -81,10 +85,17 @@ namespace Nickvision::TubeConverter::QT::Views
          * @brief Displays the about dialog.
          */
         void about();
+        /**
+         * @brief Clears the download history.
+         */
+        void clearHistory();
 
     private:
         void onNotificationSent(const Notifications::NotificationSentEventArgs& args);
         void onShellNotificationSent(const Notifications::ShellNotificationSentEventArgs& args);
+        void onDisclaimerTriggered(const Events::ParamEventArgs<std::string>& args);
+        void onDownloadAbilityChanged(const Events::ParamEventArgs<bool>& args);
+        void onHistoryChanged(const Events::ParamEventArgs<std::vector<Shared::Models::HistoricDownload>>& args);
         Ui::MainWindow* m_ui;
         std::shared_ptr<Shared::Controllers::MainWindowController> m_controller;
     };
