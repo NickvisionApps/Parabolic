@@ -33,9 +33,9 @@ jobs:
         uses: johnwason/vcpkg-action@v6
         id: vcpkg
         with:
-          pkgs: boost-date-time libnick qtbase qtcharts qtmultimedia qtsvg qttools
+          pkgs: boost-date-time libnick qtbase qtsvg qttools
           triplet: x64-windows
-          revision: cacf5994341f27e9a14a7b8724b0634b138ecb30
+          revision: b8ac6696e3af59f4f0666ab81a48ae589cde00a8
           token: ${{ secrets.GITHUB_TOKEN }}
           github-binarycache: true
       - name: "Build"
@@ -46,7 +46,7 @@ jobs:
       - name: "Create Installer"
         working-directory: ${{github.workspace}}/inno
         run: |
-          powershell -command "Invoke-WebRequest https://github.com/yt-dlp/yt-dlp/releases/download/2024.07.25/yt-dlp.exe -OutFile yt-dlp.exe"
+          powershell -command "Invoke-WebRequest https://github.com/yt-dlp/yt-dlp/releases/download/2024.08.01/yt-dlp.exe -OutFile yt-dlp.exe"
           powershell -command "Invoke-WebRequest https://github.com/aria2/aria2/releases/download/release-1.37.0/aria2-1.37.0-win-64bit-build1.zip -OutFile aria2.zip"
           powershell -command "Invoke-WebRequest https://github.com/GyanD/codexffmpeg/releases/download/2024-07-07-git-0619138639/ffmpeg-2024-07-07-git-0619138639-full_build.zip -OutFile ffmpeg.zip"
           powershell -command "Expand-Archive -Force 'aria2.zip'"

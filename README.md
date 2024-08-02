@@ -43,13 +43,13 @@ A C++20 compiler is also required to build Parabolic.
 1. Set the `VCPKG_ROOT` environment variable to the path of your vcpkg installation's root directory.
 #### Windows
 1. Set the `VCPKG_DEFAULT_TRIPLET` environment variable to `x64-windows`
-1. Run `vcpkg install boost-date-time gtest libnick qtbase qtcharts qtmultimedia qtsvg qttools`
+1. Run `vcpkg install boost-date-time gtest libnick qtbase qtsvg qttools`
 #### Linux (GNOME)
 1. Set the `VCPKG_DEFAULT_TRIPLET` environment variable to `x64-linux`
 1. Run `vcpkg install boost-date-time gtest libnick libxmlpp`
 #### Linux (QT)
 1. Set the `VCPKG_DEFAULT_TRIPLET` environment variable to `x64-linux`
-1. Run `vcpkg install boost-date-time gtest libnick qtbase qtcharts qtmultimedia qtsvg qttools`
+1. Run `vcpkg install boost-date-time gtest libnick qtbase qtsvg qttools`
 
 ### Building
 1. First, clone/download the repo.
