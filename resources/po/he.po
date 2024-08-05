@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-05 11:21-0400\n"
+"POT-Creation-Date: 2024-08-05 14:37-0400\n"
 "PO-Revision-Date: 2024-02-02 15:04+0000\n"
 "Last-Translator: Yosef Or Boczko <yoseforb@gnome.org>\n"
 "Language-Team: Hebrew <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -402,7 +402,7 @@ msgstr "בהורדה"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:148
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:163
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:33
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:34
 msgid "Queued"
 msgstr "בתור"
 
@@ -739,8 +739,7 @@ msgid "Use manual credential"
 msgstr "שימוש מזהה גישה ידנית"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:105
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:42
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:101
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:95
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:154
 msgid "Error"
 msgstr "שגיאה"
@@ -763,7 +762,7 @@ msgid "{} items"
 msgstr "{0} מתוך {1} פריטים"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:140
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:23
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:25
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:231
 #, fuzzy
 msgid "Open"
@@ -781,7 +780,7 @@ msgid "Don't show this message again"
 msgstr "אין להציג הודעה זו שוב"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:210
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:22
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:24
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:277
 msgid "Play"
 msgstr "ניגון"
@@ -841,40 +840,38 @@ msgstr ""
 "תרגום:\n"
 "{3}"
 
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:17
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:18
 #, fuzzy
 msgid "Starting download..."
 msgstr "עצירת הורדה"
 
 #. Localize Strings
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:21
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:23
 #, fuzzy
 msgid "Stop"
 msgstr "נעצרה"
 
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:24
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:26
 msgid "Retry"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:36
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:83
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:38
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:77
 msgid "Running"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:39
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:96
-msgid "Stopped"
-msgstr "נעצרה"
-
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:45
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:106
-msgid "Success"
-msgstr "הצליחה"
-
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:77
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:71
 #, fuzzy
 msgid "Processing"
 msgstr "בתהליך…"
+
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:90
+msgid "Stopped"
+msgstr "נעצרה"
+
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:100
+msgid "Success"
+msgstr "הצליחה"
 
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:38
 #, fuzzy

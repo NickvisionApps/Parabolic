@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-05 11:21-0400\n"
+"POT-Creation-Date: 2024-08-05 14:37-0400\n"
 "PO-Revision-Date: 2023-12-07 03:34+0000\n"
 "Last-Translator: Tomas Andersson <jotakswe@users.noreply.hosted.weblate."
 "org>\n"
@@ -402,7 +402,7 @@ msgstr "Laddar ned"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:148
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:163
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:33
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:34
 msgid "Queued"
 msgstr "Köas"
 
@@ -741,8 +741,7 @@ msgid "Use manual credential"
 msgstr "Använd manuella inloggningsuppgifter"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:105
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:42
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:101
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:95
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:154
 msgid "Error"
 msgstr "Fel"
@@ -765,7 +764,7 @@ msgid "{} items"
 msgstr "{0} av {1} objektet"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:140
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:23
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:25
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:231
 #, fuzzy
 msgid "Open"
@@ -782,7 +781,7 @@ msgid "Don't show this message again"
 msgstr "Visa inte det här meddelandet igen"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:210
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:22
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:24
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:277
 msgid "Play"
 msgstr "Spela upp"
@@ -842,40 +841,38 @@ msgstr ""
 "Översättare:\n"
 "{3}"
 
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:17
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:18
 #, fuzzy
 msgid "Starting download..."
 msgstr "Stoppa nedladdning"
 
 #. Localize Strings
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:21
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:23
 #, fuzzy
 msgid "Stop"
 msgstr "Stoppad"
 
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:24
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:26
 msgid "Retry"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:36
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:83
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:38
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:77
 msgid "Running"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:39
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:96
-msgid "Stopped"
-msgstr "Stoppad"
-
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:45
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:106
-msgid "Success"
-msgstr "Klar"
-
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:77
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:71
 #, fuzzy
 msgid "Processing"
 msgstr "Bearbetar..."
+
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:90
+msgid "Stopped"
+msgstr "Stoppad"
+
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:100
+msgid "Success"
+msgstr "Klar"
 
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:38
 #, fuzzy

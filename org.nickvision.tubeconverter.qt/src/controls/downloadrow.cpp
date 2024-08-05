@@ -1,6 +1,7 @@
 #include "controls/downloadrow.h"
 #include "ui_downloadrow.h"
 #include <format>
+#include <QDesktopServices>
 #include <libnick/helpers/codehelpers.h>
 #include <libnick/localization/gettext.h>
 
@@ -14,7 +15,8 @@ namespace Nickvision::TubeConverter::QT::Controls
         : QWidget{ parent },
         m_ui{ new Ui::DownloadRow() },
         m_id{ args.getId() },
-        m_log{ _("Starting download...") }
+        m_log{ _("Starting download...") },
+        m_path{ args.getPath() }
     {
         m_ui->setupUi(this);
         //Localize Strings
@@ -23,33 +25,25 @@ namespace Nickvision::TubeConverter::QT::Controls
         m_ui->btnOpenFolder->setText(_("Open"));
         m_ui->btnRetry->setText(_("Retry"));
         //Load
-        m_ui->lblTitle->setText(QString::fromStdString(args.getPath().filename().string()));
+        m_ui->lblTitle->setText(QString::fromStdString(m_path.filename().string()));
         m_ui->lblUrl->setText(QString::fromStdString(args.getUrl()));
-        m_ui->progressBar->setRange(0, 0);
-        m_ui->progressBar->setValue(0);
         switch(args.getStatus())
         {
         case DownloadStatus::Queued:
+            m_ui->progressBar->setRange(0, 1);
             m_ui->lblStatus->setText(_("Queued"));
             break;
         case DownloadStatus::Running:
+            m_ui->progressBar->setRange(0, 0);
             m_ui->lblStatus->setText(_("Running"));
             break;
-        case DownloadStatus::Stopped:
-            m_ui->lblStatus->setText(_("Stopped"));
-            break;
-        case DownloadStatus::Error:
-            m_ui->lblStatus->setText(_("Error"));
-            break;
-        case DownloadStatus::Success:
-            m_ui->lblStatus->setText(_("Success"));
-            break;
         }
+        m_ui->progressBar->setValue(0);
         m_ui->buttonStack->setCurrentIndex(0);
         //Signals
         connect(m_ui->btnStop, &QPushButton::clicked, [this]() { stop(m_id); });
-        connect(m_ui->btnPlay, &QPushButton::clicked, [this]() { play(m_id); });
-        connect(m_ui->btnOpenFolder, &QPushButton::clicked, [this]() { openFolder(m_id); });
+        connect(m_ui->btnPlay, &QPushButton::clicked, this, &DownloadRow::play);
+        connect(m_ui->btnOpenFolder, &QPushButton::clicked, this, &DownloadRow::openFolder);
         connect(m_ui->btnRetry, &QPushButton::clicked, [this]() { retry(m_id); });
     }
 
@@ -107,5 +101,15 @@ namespace Nickvision::TubeConverter::QT::Controls
             m_ui->buttonStack->setCurrentIndex(1);
             break;
         }
+    }
+
+    void DownloadRow::play()
+    {
+        QDesktopServices::openUrl(QUrl::fromLocalFile(QString::fromStdString(m_path.string())));
+    }
+
+    void DownloadRow::openFolder()
+    {
+        QDesktopServices::openUrl(QUrl::fromLocalFile(QString::fromStdString(m_path.parent_path().string())));
     }
 }

@@ -1,6 +1,7 @@
 #ifndef DOWNLOADROW_H
 #define DOWNLOADROW_H
 
+#include <filesystem>
 #include <QString>
 #include <QWidget>
 #include "events/downloadaddedeventargs.h"
@@ -57,25 +58,26 @@ namespace Nickvision::TubeConverter::QT::Controls
          */
         void stop(int id);
         /**
-         * @brief Emitted when the play button is clicked.
-         * @param id The id of the download
-         */
-        void play(int id);
-        /**
-         * @brief Emitted when the open folder button is clicked.
-         * @param id The id of the download
-         */
-        void openFolder(int id);
-        /**
          * @brief Emitted when the retry button is clicked.
          * @param id The id of the download
          */
         void retry(int id);
 
+    private Q_SLOTS:
+        /**
+         * @brief Opens the download in a media player.
+         */
+        void play();
+        /**
+         * @brief Opens the download folder.
+         */
+        void openFolder();
+
     private:
         Ui::DownloadRow* m_ui;
         int m_id;
         QString m_log;
+        std::filesystem::path m_path;
     };
 }
 
