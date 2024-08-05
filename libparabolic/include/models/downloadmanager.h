@@ -32,6 +32,10 @@ namespace Nickvision::TubeConverter::Shared::Models
          */
         DownloadManager(const DownloaderOptions& options, DownloadHistory& history, Logging::Logger& logger);
         /**
+         * @brief Destructs a DownloadManager.
+         */
+        ~DownloadManager();
+        /**
          * @brief Gets the event for when the history is changed.
          * @return The history changed event
          */
@@ -96,6 +100,12 @@ namespace Nickvision::TubeConverter::Shared::Models
          * @param options The DownloaderOptions
          */
         void setDownloaderOptions(const DownloaderOptions& options);
+        /**
+         * @brief Gets the log of a download.
+         * @param id The id of the download
+         * @return The download log
+         */
+        const std::string& getDownloadLog(int id) const;
         /**
          * @brief Loads the download history.
          * @brief This method invokes the historyChanged event.

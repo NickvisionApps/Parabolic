@@ -57,7 +57,7 @@ namespace Nickvision::TubeConverter::Shared::Models
         args.push_back(url);
         Process process{ Environment::findDependency("yt-dlp"), args };
         process.start();
-        if(process.waitForExit() != 0)
+        if(process.waitForExit() != 0 || process.getOutput().empty())
         {
             return std::nullopt;
         }

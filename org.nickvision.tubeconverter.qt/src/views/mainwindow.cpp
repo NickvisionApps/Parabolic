@@ -5,6 +5,7 @@
 #include <QFileDialog>
 #include <QMessageBox>
 #include <QMimeData>
+#include <QProgressBar>
 #include <QPushButton>
 #include <libnick/helpers/codehelpers.h>
 #include <libnick/localization/gettext.h>
@@ -18,6 +19,7 @@ using namespace Nickvision::Events;
 using namespace Nickvision::Helpers;
 using namespace Nickvision::Notifications;
 using namespace Nickvision::TubeConverter::Shared::Controllers;
+using namespace Nickvision::TubeConverter::Shared::Events;
 using namespace Nickvision::TubeConverter::Shared::Models;
 using namespace Nickvision::TubeConverter::QT::Controls;
 using namespace Nickvision::Update;
@@ -60,6 +62,9 @@ namespace Nickvision::TubeConverter::QT::Views
         m_ui->lblNoHistory->setText(_("No history available"));
         m_ui->btnClearHistory->setText(_("Clear"));
         m_ui->tblHistory->setHorizontalHeaderLabels({ "", _("Title"), "", "" });
+        //Localize Downloads Page
+        m_ui->tblDownloads->setHorizontalHeaderLabels({ _("File Name"), _("Progress"), _("Status"), _("Speed"), _("URL") });
+        m_ui->lblLog->setText(_("Log"));
         //Signals
         connect(m_ui->actionAddDownload, &QAction::triggered, this, &MainWindow::addDownload);
         connect(m_ui->actionExit, &QAction::triggered, this, &MainWindow::exit);
@@ -72,11 +77,19 @@ namespace Nickvision::TubeConverter::QT::Views
         connect(m_ui->actionAbout, &QAction::triggered, this, &MainWindow::about);
         connect(m_ui->btnHomeAddDownload, &QPushButton::clicked, this, &MainWindow::addDownload);
         connect(m_ui->btnClearHistory, &QPushButton::clicked, this, &MainWindow::clearHistory);
+        connect(m_ui->tblDownloads, &QTableWidget::itemSelectionChanged, this, &MainWindow::onTblDownloadsSelectionChanged);
+        //Events
         m_controller->notificationSent() += [&](const NotificationSentEventArgs& args) { QMetaObject::invokeMethod(this, [this, args]() { onNotificationSent(args); }, Qt::QueuedConnection); };
         m_controller->shellNotificationSent() += [&](const ShellNotificationSentEventArgs& args) { onShellNotificationSent(args); };
         m_controller->disclaimerTriggered() += [&](const ParamEventArgs<std::string>& args) { QMetaObject::invokeMethod(this, [this, args]() { onDisclaimerTriggered(args); }, Qt::QueuedConnection); };
         m_controller->downloadAbilityChanged() += [&](const ParamEventArgs<bool>& args) { onDownloadAbilityChanged(args); };
         m_controller->historyChanged() += [&](const ParamEventArgs<std::vector<HistoricDownload>>& args) { onHistoryChanged(args); };
+        m_controller->downloadAdded() += [&](const DownloadAddedEventArgs& args) { QMetaObject::invokeMethod(this, [this, args]() { onDownloadAdded(args); }, Qt::QueuedConnection); };
+        m_controller->downloadCompleted() += [&](const DownloadCompletedEventArgs& args) { QMetaObject::invokeMethod(this, [this, args]() { onDownloadCompleted(args); }, Qt::QueuedConnection); };
+        m_controller->downloadProgressChanged() += [&](const DownloadProgressChangedEventArgs& args) { QMetaObject::invokeMethod(this, [this, args]() { onDownloadProgressChanged(args); }, Qt::QueuedConnection); };
+        m_controller->downloadStopped() += [&](const ParamEventArgs<int>& args) { QMetaObject::invokeMethod(this, [this, args]() { onDownloadStopped(args); }, Qt::QueuedConnection); };
+        m_controller->downloadRetried() += [&](const ParamEventArgs<int>& args) { QMetaObject::invokeMethod(this, [this, args]() { onDownloadRetried(args); }, Qt::QueuedConnection); };
+        m_controller->downloadStartedFromQueue() += [&](const ParamEventArgs<int>& args) { QMetaObject::invokeMethod(this, [this, args]() { onDownloadStartedFromQueue(args); }, Qt::QueuedConnection); };
     }
 
     MainWindow::~MainWindow()
@@ -177,6 +190,19 @@ namespace Nickvision::TubeConverter::QT::Views
         m_controller->clearHistory();
     }
 
+    void MainWindow::onTblDownloadsSelectionChanged()
+    {
+        for(const std::pair<const int, int>& pair : m_downloadRowIndexes)
+        {
+            if(pair.second == m_ui->tblDownloads->currentRow())
+            {
+                m_ui->lblDownloadLog->setText(QString::fromStdString(m_controller->getDownloadLog(pair.first)));
+                return;
+            }
+        }
+        m_ui->lblDownloadLog->setText("");
+    }
+
     void MainWindow::onNotificationSent(const NotificationSentEventArgs& args)
     {
         QMessageBox::Icon icon{ QMessageBox::Icon::NoIcon };
@@ -238,6 +264,7 @@ namespace Nickvision::TubeConverter::QT::Views
             //Title
             QTableWidgetItem* title{ new QTableWidgetItem(QString::fromStdString(download.getTitle())) };
             title->setFlags(title->flags() ^ Qt::ItemFlag::ItemIsEditable);
+            title->setToolTip(QString::fromStdString(download.getUrl()));
             m_ui->tblHistory->setItem(i, 1, title);
             //Delete Button
             QPushButton* btnDelete{ new QPushButton(QIcon::fromTheme(QIcon::ThemeIcon::EditDelete), {}, m_ui->tblHistory) };
@@ -268,5 +295,154 @@ namespace Nickvision::TubeConverter::QT::Views
         m_ui->tblHistory->resizeColumnToContents(0);
         m_ui->tblHistory->resizeColumnToContents(2);
         m_ui->tblHistory->resizeColumnToContents(3);
+    }
+
+    void MainWindow::onDownloadAdded(const DownloadAddedEventArgs& args)
+    {
+        m_ui->viewStack->setCurrentIndex(1);
+        if(m_downloadRowIndexes.contains(args.getId()))
+        {
+            return;
+        }
+        //Create Blank Row
+        m_downloadRowIndexes[args.getId()] = m_ui->tblDownloads->rowCount() == 0 ? 0 : m_ui->tblDownloads->rowCount();
+        m_ui->tblDownloads->setRowCount(m_downloadRowIndexes.size());
+        //Create Row Widgets
+        QTableWidgetItem* fileNameItem{ new QTableWidgetItem() };
+        fileNameItem->setFlags(fileNameItem->flags() ^ Qt::ItemFlag::ItemIsEditable);
+        fileNameItem->setText(QString::fromStdString(args.getPath().filename().string()));
+        QProgressBar* progressBar{ new QProgressBar(m_ui->tblDownloads) };
+        progressBar->setMinimumSize(200, -1);
+        progressBar->setRange(0, 0);
+        progressBar->setValue(0);
+        progressBar->setTextVisible(false);
+        QTableWidgetItem* statusItem{ new QTableWidgetItem() };
+        statusItem->setFlags(statusItem->flags() ^ Qt::ItemFlag::ItemIsEditable);
+        switch(args.getStatus())
+        {
+        case DownloadStatus::Queued:
+            statusItem->setText(_("Queued"));
+            break;
+        case DownloadStatus::Running:
+            statusItem->setText(_("Running"));
+            break;
+        case DownloadStatus::Stopped:
+            statusItem->setText(_("Stopped"));
+            break;
+        case DownloadStatus::Error:
+            statusItem->setText(_("Error"));
+            break;
+        case DownloadStatus::Success:
+            statusItem->setText(_("Success"));
+            break;
+        }
+        QTableWidgetItem* speedItem{ new QTableWidgetItem() };
+        speedItem->setFlags(speedItem->flags() ^ Qt::ItemFlag::ItemIsEditable);
+        speedItem->setText(_("N/A"));
+        QTableWidgetItem* urlItem{ new QTableWidgetItem() };
+        urlItem->setFlags(urlItem->flags() ^ Qt::ItemFlag::ItemIsEditable);
+        urlItem->setText(QString::fromStdString(args.getUrl()));
+        //Set Row Widgets
+        m_ui->tblDownloads->setItem(m_downloadRowIndexes[args.getId()], 0, fileNameItem);
+        m_ui->tblDownloads->setCellWidget(m_downloadRowIndexes[args.getId()], 1, progressBar);
+        m_ui->tblDownloads->setItem(m_downloadRowIndexes[args.getId()], 2, statusItem);
+        m_ui->tblDownloads->setItem(m_downloadRowIndexes[args.getId()], 3, speedItem);
+        m_ui->tblDownloads->setItem(m_downloadRowIndexes[args.getId()], 4, urlItem);
+        //Resize Columns
+        m_ui->tblDownloads->resizeColumnToContents(1);
+        m_ui->tblDownloads->resizeColumnToContents(2);
+        m_ui->tblDownloads->resizeColumnToContents(3);
+        m_ui->tblDownloads->resizeColumnToContents(4);
+        m_ui->tblDownloads->setColumnWidth(0, m_ui->tblDownloads->width() - m_ui->tblDownloads->columnWidth(1) - m_ui->tblDownloads->columnWidth(2) - m_ui->tblDownloads->columnWidth(3) -  m_ui->tblDownloads->columnWidth(4) - 40);
+        m_ui->tblDownloads->selectRow(m_downloadRowIndexes[args.getId()]);
+    }
+
+    void MainWindow::onDownloadCompleted(const DownloadCompletedEventArgs& args)
+    {
+        if(m_downloadRowIndexes.contains(args.getId()))
+        {
+            QProgressBar* progressBar{ static_cast<QProgressBar*>(m_ui->tblDownloads->cellWidget(m_downloadRowIndexes[args.getId()], 1)) };
+            progressBar->setRange(0, 1);
+            progressBar->setValue(1);
+            QTableWidgetItem* statusItem{ m_ui->tblDownloads->item(m_downloadRowIndexes[args.getId()], 2) };
+            switch(args.getStatus())
+            {
+            case DownloadStatus::Queued:
+                statusItem->setText(_("Queued"));
+                break;
+            case DownloadStatus::Running:
+                statusItem->setText(_("Running"));
+                break;
+            case DownloadStatus::Stopped:
+                statusItem->setText(_("Stopped"));
+                break;
+            case DownloadStatus::Error:
+                statusItem->setText(_("Error"));
+                break;
+            case DownloadStatus::Success:
+                statusItem->setText(_("Success"));
+                break;
+            }
+            QTableWidgetItem* speedItem{ m_ui->tblDownloads->item(m_downloadRowIndexes[args.getId()], 3) };
+            speedItem->setText(_("N/A"));
+            //Resize Columns
+            m_ui->tblDownloads->resizeColumnToContents(1);
+            m_ui->tblDownloads->resizeColumnToContents(2);
+            m_ui->tblDownloads->resizeColumnToContents(3);
+            m_ui->tblDownloads->resizeColumnToContents(4);
+            m_ui->tblDownloads->setColumnWidth(0, m_ui->tblDownloads->width() - m_ui->tblDownloads->columnWidth(1) - m_ui->tblDownloads->columnWidth(2) - m_ui->tblDownloads->columnWidth(3) -  m_ui->tblDownloads->columnWidth(4) - 40);
+            //Update log
+            if(m_ui->tblDownloads->currentRow() == m_downloadRowIndexes[args.getId()])
+            {
+                m_ui->lblDownloadLog->setText(QString::fromStdString(m_controller->getDownloadLog(args.getId())));
+            }
+        }
+    }
+
+    void MainWindow::onDownloadProgressChanged(const DownloadProgressChangedEventArgs& args)
+    {
+        if(m_downloadRowIndexes.contains(args.getId()))
+        {
+            QProgressBar* progressBar{ static_cast<QProgressBar*>(m_ui->tblDownloads->cellWidget(m_downloadRowIndexes[args.getId()], 1)) };
+            QTableWidgetItem* speedItem{ m_ui->tblDownloads->item(m_downloadRowIndexes[args.getId()], 3) };
+            if(std::isnan(args.getProgress()))
+            {
+                progressBar->setRange(0, 0);
+                progressBar->setValue(0);
+                speedItem->setText(_("N/A"));
+            }
+            else
+            {
+                progressBar->setRange(0, 1);
+                progressBar->setValue(args.getProgress());
+                speedItem->setText(QString::fromStdString(args.getSpeedStr()));
+            }
+            //Resize Columns
+            m_ui->tblDownloads->resizeColumnToContents(1);
+            m_ui->tblDownloads->resizeColumnToContents(2);
+            m_ui->tblDownloads->resizeColumnToContents(3);
+            m_ui->tblDownloads->resizeColumnToContents(4);
+            m_ui->tblDownloads->setColumnWidth(0, m_ui->tblDownloads->width() - m_ui->tblDownloads->columnWidth(1) - m_ui->tblDownloads->columnWidth(2) - m_ui->tblDownloads->columnWidth(3) -  m_ui->tblDownloads->columnWidth(4) - 40);
+            //Update log
+            if(m_ui->tblDownloads->currentRow() == m_downloadRowIndexes[args.getId()])
+            {
+                m_ui->lblDownloadLog->setText(QString::fromStdString(args.getLog()));
+            }
+        }
+    }
+
+    void MainWindow::onDownloadStopped(const ParamEventArgs<int>& args)
+    {
+
+    }
+
+    void MainWindow::onDownloadRetried(const ParamEventArgs<int>& args)
+    {
+
+    }
+
+    void MainWindow::onDownloadStartedFromQueue(const ParamEventArgs<int>& args)
+    {
+
     }
 }

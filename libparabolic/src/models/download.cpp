@@ -12,10 +12,10 @@ using namespace Nickvision::TubeConverter::Shared::Events;
 
 namespace Nickvision::TubeConverter::Shared::Models
 {
-    static int downloadIdCounter{ 0 };
+    static int s_downloadIdCounter{ 0 };
 
     Download::Download(const DownloadOptions& options)
-        : m_id{ ++downloadIdCounter }, 
+        : m_id{ ++s_downloadIdCounter }, 
         m_options{ options },
         m_status{ DownloadStatus::Queued },
         m_path{ options.getSaveFolder() / (options.getSaveFilename() + options.getFileType().getDotExtension()) },
@@ -57,10 +57,21 @@ namespace Nickvision::TubeConverter::Shared::Models
         return m_status;
     }
 
-    std::filesystem::path Download::getPath() const
+    const std::filesystem::path& Download::getPath() const
     {
         std::lock_guard<std::mutex> lock{ m_mutex };
         return m_path;
+    }
+
+    const std::string& Download::getLog() const
+    {
+        std::lock_guard<std::mutex> lock{ m_mutex };
+        if(m_process)
+        {
+            return m_process->getOutput();
+        }
+        static std::string empty;
+        return empty;
     }
 
     void Download::start(const DownloaderOptions& downloaderOptions)
@@ -74,7 +85,7 @@ namespace Nickvision::TubeConverter::Shared::Models
         {
             m_status = DownloadStatus::Error;
             lock.unlock();
-            m_progressChanged.invoke({ m_id, 1.0, 0.0, _("The file already exists and overwriting is disabled.") });
+            m_progressChanged.invoke({ m_id, 1.0, 0.0, _("ERROR: The file already exists and overwriting is disabled.") });
             m_completed.invoke({ m_id, m_path, m_status, false });
             return;
         }
@@ -105,7 +116,6 @@ namespace Nickvision::TubeConverter::Shared::Models
         {
             return;
         }
-        std::string oldLog;
         while(m_process->isRunning())
         {
             std::string log{ m_process->getOutput() };
@@ -127,11 +137,7 @@ namespace Nickvision::TubeConverter::Shared::Models
                     m_progressChanged.invoke({ m_id, std::nan(""), 0.0, log });
                     return;
                 }
-                if(log != oldLog)
-                {
-                    oldLog = log;
-                    m_progressChanged.invoke({ m_id, (progress[2] != "NA" ? std::stod(progress[2]) : 0) / (progress[3] != "NA" ? std::stod(progress[3]) : 1), (progress[4] != "NA" ? std::stod(progress[4]) : 0), log });
-                }
+                m_progressChanged.invoke({ m_id, (progress[2] != "NA" ? std::stod(progress[2]) : 0) / (progress[3] != "NA" ? std::stod(progress[3]) : 1), (progress[4] != "NA" ? std::stod(progress[4]) : 0), log });
                 break;
             }
             std::this_thread::sleep_for(std::chrono::milliseconds(10));

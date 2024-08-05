@@ -35,13 +35,13 @@ jobs:
         with:
           pkgs: boost-date-time libnick qtbase qtsvg qttools
           triplet: x64-windows
-          revision: b8ac6696e3af59f4f0666ab81a48ae589cde00a8
+          revision: ef416f18ebf9ac27c23fdef0b1828468ee55d8d0
           token: ${{ secrets.GITHUB_TOKEN }}
           github-binarycache: true
       - name: "Build"
         working-directory: ${{github.workspace}}/build
         run: |
-          cmake -G "Visual Studio 17 2022" .. -DBUILD_TESTING=OFF
+          cmake -G "Visual Studio 17 2022" ..
           cmake --build . --config Release
       - name: "Create Installer"
         working-directory: ${{github.workspace}}/inno

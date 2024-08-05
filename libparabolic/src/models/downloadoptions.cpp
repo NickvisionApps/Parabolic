@@ -163,13 +163,12 @@ namespace Nickvision::TubeConverter::Shared::Models
         arguments.push_back(m_url);
         arguments.push_back("--xff");
         arguments.push_back("default");
-        arguments.push_back("--ignore-errors");
         arguments.push_back("--no-warnings");
         arguments.push_back("--progress");
-        arguments.push_back("--newline");
-        arguments.push_back("--no-mtime");
+        arguments.push_back("--newline");;
         arguments.push_back("--progress-template");
-        arguments.push_back("download:PROGRESS;%(progress.status)s;%(progress.downloaded_bytes)s;%(progress.total_bytes)s;%(progress.speed)s");
+        arguments.push_back("\"PROGRESS;%(progress.status)s;%(progress.downloaded_bytes)s;%(progress.total_bytes)s;%(progress.speed)s\"");
+        arguments.push_back("--no-mtime");
         arguments.push_back("--ffmpeg-location");
         arguments.push_back(Environment::findDependency("ffmpeg").string());
         if(downloaderOptions.getOverwriteExistingFiles())
@@ -216,7 +215,14 @@ namespace Nickvision::TubeConverter::Shared::Models
         if(downloaderOptions.getEmbedMetadata())
         {
             arguments.push_back("--embed-metadata");
-            arguments.push_back("--embed-thumbnail");
+            if(m_fileType.supportsThumbnails())
+            {
+                arguments.push_back("--embed-thumbnail");
+            }
+            else
+            {
+                arguments.push_back("--write-thumbnail");
+            }
             if(downloaderOptions.getCropAudioThumbnails())
             {
                 arguments.push_back("--postprocessor-args");
@@ -267,14 +273,12 @@ namespace Nickvision::TubeConverter::Shared::Models
             if(!m_audioLanguage.empty())
             {
                 arguments.push_back("--format");
-                arguments.push_back("ba[language= " + m_audioLanguage + "]/b");
+                arguments.push_back("ba[language=" + m_audioLanguage + "]/b");
             }
         }
         else if(m_fileType.isVideo())
         {
             arguments.push_back("--remux-video");
-            arguments.push_back(StringHelpers::lower(m_fileType.str()));
-            arguments.push_back("--recode-video");
             arguments.push_back(StringHelpers::lower(m_fileType.str()));
             formatSort += "vext:" + StringHelpers::lower(m_fileType.str());
             if(m_quality.index() == 1)
@@ -312,7 +316,6 @@ namespace Nickvision::TubeConverter::Shared::Models
         }
         arguments.push_back("--format-sort");
         arguments.push_back(formatSort);
-        arguments.push_back("--format-sort-force");
         if(!std::filesystem::exists(m_saveFolder))
         {
             std::filesystem::create_directories(m_saveFolder);

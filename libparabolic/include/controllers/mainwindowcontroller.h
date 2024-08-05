@@ -73,6 +73,36 @@ namespace Nickvision::TubeConverter::Shared::Controllers
          */
         Nickvision::Events::Event<Nickvision::Events::ParamEventArgs<std::vector<Models::HistoricDownload>>>& historyChanged();
         /**
+         * @brief Gets the event for when a download is added.
+         * @return The download added event
+         */
+        Nickvision::Events::Event<Events::DownloadAddedEventArgs>& downloadAdded();
+        /**
+         * @brief Gets the event for when a download is completed.
+         * @return The download completed event
+         */
+        Nickvision::Events::Event<Events::DownloadCompletedEventArgs>& downloadCompleted();
+        /**
+         * @brief Gets the event for when a download's progress is changed.
+         * @return The download progress changed event
+         */
+        Nickvision::Events::Event<Events::DownloadProgressChangedEventArgs>& downloadProgressChanged();
+        /**
+         * @brief Gets the event for when a download is stopped.
+         * @return The download stopped event
+         */
+        Nickvision::Events::Event<Nickvision::Events::ParamEventArgs<int>>& downloadStopped();
+        /**
+         * @brief Gets the event for when a download is retried.
+         * @return The download retried event
+         */
+        Nickvision::Events::Event<Nickvision::Events::ParamEventArgs<int>>& downloadRetried();
+        /**
+         * @brief Gets the event for when a download is started from the queue.
+         * @return The download started from queue event
+         */
+        Nickvision::Events::Event<Nickvision::Events::ParamEventArgs<int>>& downloadStartedFromQueue();
+        /**
          * @brief Gets the AppInfo object for the application
          * @return The current AppInfo object
          */
@@ -109,6 +139,12 @@ namespace Nickvision::TubeConverter::Shared::Controllers
          * @return True if can download, else false
          */
         bool canDownload() const;
+        /**
+         * @brief Gets the log of a download.
+         * @param id The id of the download
+         * @return The download log
+         */
+        const std::string& getDownloadLog(int id) const;
         /**
          * @brief Gets an AddDownloadDialogController.
          * @return The AddDownloadDialogController

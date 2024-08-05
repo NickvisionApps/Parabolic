@@ -24,6 +24,7 @@ using namespace Nickvision::Network;
 using namespace Nickvision::Localization;
 using namespace Nickvision::Notifications;
 using namespace Nickvision::System;
+using namespace Nickvision::TubeConverter::Shared::Events;
 using namespace Nickvision::TubeConverter::Shared::Models;
 using namespace Nickvision::Update;
 
@@ -38,7 +39,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         m_keyring{ Keyring::Keyring::access(m_appInfo.getId()) },
         m_downloadManager{ m_dataFileManager.get<Configuration>("config").getDownloaderOptions(), m_dataFileManager.get<DownloadHistory>("history"), m_logger }
     {
-        m_appInfo.setVersion({ "2024.7.0-next" });
+        m_appInfo.setVersion({ "2024.8.0-next" });
         m_appInfo.setShortName(_("Parabolic"));
         m_appInfo.setDescription(_("Download web video and audio"));
         m_appInfo.setChangelog("- Parabolic has been rewritten in C++ for faster performance\n- The length of the download history can now be changed\n- Redesigned user interface\n- Updated yt-dlp");
@@ -136,6 +137,36 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         return m_downloadManager.historyChanged();
     }
 
+    Event<DownloadAddedEventArgs>& MainWindowController::downloadAdded()
+    {
+        return m_downloadManager.downloadAdded();
+    }
+
+    Event<DownloadCompletedEventArgs>& MainWindowController::downloadCompleted()
+    {
+        return m_downloadManager.downloadCompleted();
+    }
+
+    Event<DownloadProgressChangedEventArgs>& MainWindowController::downloadProgressChanged()
+    {
+        return m_downloadManager.downloadProgressChanged();
+    }
+
+    Event<ParamEventArgs<int>>& MainWindowController::downloadStopped()
+    {
+        return m_downloadManager.downloadStopped();
+    }
+
+    Event<ParamEventArgs<int>>& MainWindowController::downloadRetried()
+    {
+        return m_downloadManager.downloadRetried();
+    }
+
+    Event<ParamEventArgs<int>>& MainWindowController::downloadStartedFromQueue()
+    {
+        return m_downloadManager.downloadStartedFromQueue();
+    }
+
     std::string MainWindowController::getDebugInformation(const std::string& extraInformation) const
     {
         std::stringstream builder;
@@ -190,6 +221,11 @@ namespace Nickvision::TubeConverter::Shared::Controllers
     bool MainWindowController::canDownload() const
     {
         return m_networkMonitor.getConnectionState() == NetworkState::ConnectedGlobal && !Environment::findDependency("yt-dlp").empty() && !Environment::findDependency("ffmpeg").empty() && !Environment::findDependency("aria2c").empty();
+    }
+
+    const std::string& MainWindowController::getDownloadLog(int id) const
+    {
+        return m_downloadManager.getDownloadLog(id);
     }
 
     std::shared_ptr<AddDownloadDialogController> MainWindowController::createAddDownloadDialogController()

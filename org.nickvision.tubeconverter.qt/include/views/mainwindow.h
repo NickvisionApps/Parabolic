@@ -89,15 +89,70 @@ namespace Nickvision::TubeConverter::QT::Views
          * @brief Clears the download history.
          */
         void clearHistory();
+        /**
+         * @brief Handles when the download table's selection is changed.
+         */
+        void onTblDownloadsSelectionChanged();
 
     private:
+        /**
+         * @brief Handles when a notification is sent.
+         * @param args The NotificationSentEventArgs
+         */
         void onNotificationSent(const Notifications::NotificationSentEventArgs& args);
+        /**
+         * @brief Handles when a shell notification is sent.
+         * @param args The ShellNotificationSentEventArgs
+         */
         void onShellNotificationSent(const Notifications::ShellNotificationSentEventArgs& args);
+        /**
+         * @brief Handles when the disclaimer is triggered.
+         * @param args The ParamEventArgs<std::string>
+         */
         void onDisclaimerTriggered(const Events::ParamEventArgs<std::string>& args);
+        /**
+         * @brief Handles when the download ability is changed.
+         * @param args The ParamEventArgs<bool>
+         */
         void onDownloadAbilityChanged(const Events::ParamEventArgs<bool>& args);
+        /**
+         * @brief Handles when the download history is changed.
+         * @param args The ParamEventArgs<std::vector<Models::HistoricDownload>>
+         */
         void onHistoryChanged(const Events::ParamEventArgs<std::vector<Shared::Models::HistoricDownload>>& args);
+        /**
+         * @brief Handles when a download is added.
+         * @param args The DownloadAddedEventArgs
+         */
+        void onDownloadAdded(const Shared::Events::DownloadAddedEventArgs& args);
+        /**
+         * @brief Handles when a download is completed.
+         * @param args The DownloadCompletedEventArgs
+         */
+        void onDownloadCompleted(const Shared::Events::DownloadCompletedEventArgs& args);
+        /**
+         * @brief Handles when a download's progress is changed.
+         * @param args The DownloadProgressChangedEventArgs
+         */
+        void onDownloadProgressChanged(const Shared::Events::DownloadProgressChangedEventArgs& args);
+        /**
+         * @brief Handles when a download is stopped.
+         * @param args The ParamEventArgs<int>
+         */
+        void onDownloadStopped(const Events::ParamEventArgs<int>& args);
+        /**
+         * @brief Handles when a download is retried.
+         * @param args The ParamEventArgs<int>
+         */
+        void onDownloadRetried(const Events::ParamEventArgs<int>& args);
+        /**
+         * @brief Handles when a download is started from the queue.
+         * @param args The ParamEventArgs<int>
+         */
+        void onDownloadStartedFromQueue(const Events::ParamEventArgs<int>& args);
         Ui::MainWindow* m_ui;
         std::shared_ptr<Shared::Controllers::MainWindowController> m_controller;
+        std::unordered_map<int, int> m_downloadRowIndexes;
     };
 }
 

@@ -19,6 +19,9 @@ namespace Nickvision::TubeConverter::Shared::Models
         {
             MP4 = 0,
             WEBM,
+            MKV,
+            MOV,
+            AVI,
             MP3,
             M4A,
             OPUS,

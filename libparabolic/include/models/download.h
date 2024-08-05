@@ -60,7 +60,12 @@ namespace Nickvision::TubeConverter::Shared::Models
          * @brief Gets the path of the download.
          * @return The path of the download
          */
-        std::filesystem::path getPath() const;
+        const std::filesystem::path& getPath() const;
+        /**
+         * @brief Gets the log of the download.
+         * @return The log of the download
+         */
+        const std::string& getLog() const;
         /**
          * @brief Starts the download.
          * @brief Python must first be started via PythonHelpers::start().

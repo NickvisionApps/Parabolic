@@ -4,6 +4,7 @@
 #include <QApplication>
 #include <QClipboard>
 #include <QFileDialog>
+#include <QMessageBox>
 #include <libnick/helpers/codehelpers.h>
 #include <libnick/helpers/stringhelpers.h>
 #include <libnick/localization/gettext.h>
@@ -97,7 +98,7 @@ namespace Nickvision::TubeConverter::QT::Views
         connect(m_ui->btnSelectSaveFolderPlaylist, &QPushButton::clicked, this, &AddDownloadDialog::selectSaveFolderPlaylist);
         connect(m_ui->chkNumberTitlesPlaylist, &QCheckBox::stateChanged, this, &AddDownloadDialog::onNumberTitlesPlaylistChanged);
         connect(m_ui->btnDownloadPlaylist, &QPushButton::clicked, this, &AddDownloadDialog::downloadPlaylist);
-        m_controller->urlValidated() += [this](const EventArgs& args){ QMetaObject::invokeMethod(this, [this]() { onUrlValidated(); }, Qt::QueuedConnection); };
+        m_controller->urlValidated() += [this](const ParamEventArgs<bool>& args){ QMetaObject::invokeMethod(this, [this]() { onUrlValidated(); }, Qt::QueuedConnection); };
     }
 
     AddDownloadDialog::~AddDownloadDialog()
@@ -148,6 +149,12 @@ namespace Nickvision::TubeConverter::QT::Views
 
     void AddDownloadDialog::onUrlValidated()
     {
+        if(!m_controller->isUrlValid())
+        {
+            QMessageBox::critical(this, _("Error"), _("The url provided is invalid or unable to be reached. Check both the url and authentication used."), QMessageBox::StandardButton::Ok);
+            m_ui->viewStack->setCurrentIndex(0);
+            return;
+        }
         if(!m_controller->isUrlPlaylist())
         {
             m_ui->viewStack->setCurrentIndex(2);

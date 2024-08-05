@@ -23,6 +23,18 @@ namespace Nickvision::TubeConverter::Shared::Models
         {
             return { MediaFileTypeValue::WEBM };
         }
+        else if (value == "mkv")
+        {
+            return { MediaFileTypeValue::MKV };
+        }
+        else if (value == "mov")
+        {
+            return { MediaFileTypeValue::MOV };
+        }
+        else if (value == "avi")
+        {
+            return { MediaFileTypeValue::AVI };
+        }
         else if (value == "mp3")
         {
             return { MediaFileTypeValue::MP3 };
@@ -63,6 +75,9 @@ namespace Nickvision::TubeConverter::Shared::Models
             return true;
         case MediaFileTypeValue::MP4:
         case MediaFileTypeValue::WEBM:
+        case MediaFileTypeValue::MKV:
+        case MediaFileTypeValue::MOV:
+        case MediaFileTypeValue::AVI:
         default:
             return false;
         }
@@ -74,6 +89,9 @@ namespace Nickvision::TubeConverter::Shared::Models
         {
         case MediaFileTypeValue::MP4:
         case MediaFileTypeValue::WEBM:
+        case MediaFileTypeValue::MKV:
+        case MediaFileTypeValue::MOV:
+        case MediaFileTypeValue::AVI:
             return true;
         case MediaFileTypeValue::MP3:
         case MediaFileTypeValue::M4A:
@@ -90,12 +108,15 @@ namespace Nickvision::TubeConverter::Shared::Models
         switch (m_value)
         {
         case MediaFileTypeValue::MP4:
+        case MediaFileTypeValue::MOV:
         case MediaFileTypeValue::MP3:
         case MediaFileTypeValue::M4A:
         case MediaFileTypeValue::OPUS:
         case MediaFileTypeValue::FLAC:
             return true;
         case MediaFileTypeValue::WEBM:
+        case MediaFileTypeValue::MKV:
+        case MediaFileTypeValue::AVI:
         case MediaFileTypeValue::WAV:
         default:
             return false;
@@ -110,6 +131,12 @@ namespace Nickvision::TubeConverter::Shared::Models
             return "MP4";
         case MediaFileTypeValue::WEBM:
             return "WEBM";
+        case MediaFileTypeValue::MKV:
+            return "MKV";
+        case MediaFileTypeValue::MOV:
+            return "MOV";
+        case MediaFileTypeValue::AVI:
+            return "AVI";
         case MediaFileTypeValue::MP3:
             return "MP3";
         case MediaFileTypeValue::M4A:
