@@ -167,7 +167,7 @@ namespace Nickvision::TubeConverter::Shared::Models
         arguments.push_back("--progress");
         arguments.push_back("--newline");;
         arguments.push_back("--progress-template");
-        arguments.push_back("\"PROGRESS;%(progress.status)s;%(progress.downloaded_bytes)s;%(progress.total_bytes)s;%(progress.speed)s\"");
+        arguments.push_back("\"[download] PROGRESS;%(progress.status)s;%(progress.downloaded_bytes)s;%(progress.total_bytes)s;%(progress.speed)s\"");
         arguments.push_back("--no-mtime");
         arguments.push_back("--ffmpeg-location");
         arguments.push_back(Environment::findDependency("ffmpeg").string());
@@ -196,6 +196,11 @@ namespace Nickvision::TubeConverter::Shared::Models
             arguments.push_back(Environment::findDependency("aria2c").string());
             arguments.push_back("--downloader-args");
             arguments.push_back("aria2c:-x " + std::to_string(downloaderOptions.getAriaMaxConnectionsPerServer()) + " -k " + std::to_string(downloaderOptions.getAriaMinSplitSize()));
+        }
+        else
+        {
+            arguments.push_back("--downloader");
+            arguments.push_back("native");
         }
         if(!downloaderOptions.getProxyUrl().empty())
         {

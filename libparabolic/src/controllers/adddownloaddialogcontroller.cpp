@@ -267,7 +267,11 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         options.setPreferAV1(preferAV1);
         options.setSplitChapters(splitChapters);
         options.setLimitSpeed(limitSpeed);
-        options.setTimeFrame(TimeFrame::parse(startTime, endTime, media.getTimeFrame().getDuration()));
+        std::optional<TimeFrame> timeFrame{ TimeFrame::parse(startTime, endTime, media.getTimeFrame().getDuration()) };
+        if(timeFrame && media.getTimeFrame() != *timeFrame)
+        {
+            options.setTimeFrame(timeFrame);
+        }
         //Save Previous Options
         m_previousOptions.setSaveFolder(options.getSaveFolder());
         m_previousOptions.setFileType(options.getFileType());

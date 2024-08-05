@@ -99,4 +99,18 @@ namespace Nickvision::TubeConverter::Shared::Models
     {
         return secondsStr(m_end);
     }
+
+    bool TimeFrame::operator==(const TimeFrame& other) const
+    {
+        if(m_start == other.m_start && m_end == other.m_end)
+        {
+            return true;
+        }
+        return (m_end - m_start) - (other.m_end - other.m_start) < std::chrono::seconds(1);
+    }
+
+    bool TimeFrame::operator!=(const TimeFrame& other) const
+    {
+        return !operator==(other);
+    }
 }

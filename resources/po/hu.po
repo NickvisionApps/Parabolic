@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-05 00:20-0400\n"
+"POT-Creation-Date: 2024-08-05 01:03-0400\n"
 "PO-Revision-Date: 2024-01-06 02:07+0000\n"
 "Last-Translator: Kingproone <PlayerGuy@protonmail.com>\n"
 "Language-Team: Hungarian <https://hosted.weblate.org/projects/nickvision-"
@@ -173,6 +173,14 @@ msgstr "{0:f1} B/mp"
 #, fuzzy
 msgid "ERROR: The file already exists and overwriting is disabled."
 msgstr "A fájl már létezik, de felülírás nem engedélyezett"
+
+#: libparabolic/src/models/download.cpp:100
+msgid "WARNING: Using ffmpeg to download. Progress will not be shown."
+msgstr ""
+
+#: libparabolic/src/models/download.cpp:104
+msgid "WARNING: Using aria2 to download. Progress will not be shown."
+msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:11
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:195
@@ -394,7 +402,7 @@ msgstr "Letöltés folyamatban"
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:148
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:163
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:324
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:371
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:372
 msgid "Queued"
 msgstr "Sorban áll"
 
@@ -736,7 +744,7 @@ msgstr "Bejelentkezés másként"
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:105
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:154
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:333
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:380
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:381
 msgid "Error"
 msgstr "Hiba"
 
@@ -972,25 +980,35 @@ msgid "Update"
 msgstr "Frissítés"
 
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:327
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:374
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:375
 msgid "Running"
 msgstr ""
 
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:330
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:377
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:378
 msgid "Stopped"
 msgstr "Letöltés megszakítva"
 
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:336
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:383
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:384
 msgid "Success"
 msgstr "Letöltés befejeződött"
 
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:341
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:387
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:412
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:388
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:415
 msgid "N/A"
 msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:358
+#, fuzzy
+msgid "Starting download..."
+msgstr "Letöltés megszakítása"
+
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:414
+#, fuzzy
+msgid "Processing"
+msgstr "Feldolgozás..."
 
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:26
 msgid "Automatically Check for Updates"
@@ -1376,9 +1394,6 @@ msgstr ""
 #~ msgid "PREVIEW"
 #~ msgstr "ELŐNÉZET"
 
-#~ msgid "Processing..."
-#~ msgstr "Feldolgozás..."
-
 #~ msgid "Reset"
 #~ msgstr "Visszaállítás"
 
@@ -1435,9 +1450,6 @@ msgstr ""
 
 #~ msgid "Stop All"
 #~ msgstr "Minden folyamat megszakítása"
-
-#~ msgid "Stop Download"
-#~ msgstr "Letöltés megszakítása"
 
 #~ msgid "Subtitle Languages"
 #~ msgstr "Feliratok"

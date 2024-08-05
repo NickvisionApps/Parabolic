@@ -192,15 +192,15 @@ namespace Nickvision::TubeConverter::QT::Views
 
     void MainWindow::onTblDownloadsSelectionChanged()
     {
+        m_ui->lblDownloadLog->setText("");
         for(const std::pair<const int, int>& pair : m_downloadRowIndexes)
         {
             if(pair.second == m_ui->tblDownloads->currentRow())
             {
                 m_ui->lblDownloadLog->setText(QString::fromStdString(m_controller->getDownloadLog(pair.first)));
-                return;
+                break;
             }
         }
-        m_ui->lblDownloadLog->setText("");
     }
 
     void MainWindow::onNotificationSent(const NotificationSentEventArgs& args)
@@ -355,6 +355,7 @@ namespace Nickvision::TubeConverter::QT::Views
         m_ui->tblDownloads->resizeColumnToContents(4);
         m_ui->tblDownloads->setColumnWidth(0, m_ui->tblDownloads->width() - m_ui->tblDownloads->columnWidth(1) - m_ui->tblDownloads->columnWidth(2) - m_ui->tblDownloads->columnWidth(3) -  m_ui->tblDownloads->columnWidth(4) - 40);
         m_ui->tblDownloads->selectRow(m_downloadRowIndexes[args.getId()]);
+        m_ui->lblDownloadLog->setText(_("Starting download..."));
     }
 
     void MainWindow::onDownloadCompleted(const DownloadCompletedEventArgs& args)
@@ -404,11 +405,13 @@ namespace Nickvision::TubeConverter::QT::Views
         if(m_downloadRowIndexes.contains(args.getId()))
         {
             QProgressBar* progressBar{ static_cast<QProgressBar*>(m_ui->tblDownloads->cellWidget(m_downloadRowIndexes[args.getId()], 1)) };
+            QTableWidgetItem* statusItem{ m_ui->tblDownloads->item(m_downloadRowIndexes[args.getId()], 2) };
             QTableWidgetItem* speedItem{ m_ui->tblDownloads->item(m_downloadRowIndexes[args.getId()], 3) };
             if(std::isnan(args.getProgress()))
             {
                 progressBar->setRange(0, 0);
                 progressBar->setValue(0);
+                statusItem->setText(_("Processing"));
                 speedItem->setText(_("N/A"));
             }
             else

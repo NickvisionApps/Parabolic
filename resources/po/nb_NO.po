@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-05 00:20-0400\n"
+"POT-Creation-Date: 2024-08-05 01:03-0400\n"
 "PO-Revision-Date: 2023-06-14 17:48+0000\n"
 "Last-Translator: Allan Nordhøy <epost@anotheragency.no>\n"
 "Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/"
@@ -165,6 +165,14 @@ msgstr "{0:f1} B/s"
 #, fuzzy
 msgid "ERROR: The file already exists and overwriting is disabled."
 msgstr "Filen finnes allerede, og overskriving er ikke tillatt"
+
+#: libparabolic/src/models/download.cpp:100
+msgid "WARNING: Using ffmpeg to download. Progress will not be shown."
+msgstr ""
+
+#: libparabolic/src/models/download.cpp:104
+msgid "WARNING: Using aria2 to download. Progress will not be shown."
+msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:11
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:195
@@ -389,7 +397,7 @@ msgstr "Laster ned"
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:148
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:163
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:324
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:371
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:372
 msgid "Queued"
 msgstr "I kø"
 
@@ -727,7 +735,7 @@ msgstr ""
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:105
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:154
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:333
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:380
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:381
 msgid "Error"
 msgstr "Feil"
 
@@ -949,25 +957,35 @@ msgid "Update"
 msgstr ""
 
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:327
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:374
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:375
 msgid "Running"
 msgstr ""
 
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:330
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:377
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:378
 msgid "Stopped"
 msgstr "Stoppet"
 
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:336
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:383
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:384
 msgid "Success"
 msgstr "Vellykket"
 
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:341
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:387
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:412
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:388
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:415
 msgid "N/A"
 msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:358
+#, fuzzy
+msgid "Starting download..."
+msgstr "Stopp nedlasting"
+
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:414
+#, fuzzy
+msgid "Processing"
+msgstr "Behandler …"
 
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:26
 msgid "Automatically Check for Updates"
@@ -1157,9 +1175,6 @@ msgstr ""
 #~ msgid "Preparing..."
 #~ msgstr "Forbereder …"
 
-#~ msgid "Processing..."
-#~ msgstr "Behandler …"
-
 #~ msgid "Retry Download"
 #~ msgstr "Prøv igjen"
 
@@ -1187,9 +1202,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "Stop All"
 #~ msgstr "Stopp alle nedlastinger"
-
-#~ msgid "Stop Download"
-#~ msgstr "Stopp nedlasting"
 
 #, fuzzy
 #~ msgid "Subtitle Languages"

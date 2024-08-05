@@ -95,6 +95,14 @@ namespace Nickvision::TubeConverter::Shared::Models
         m_status = DownloadStatus::Running;
         std::thread watcher{ &Download::watch, this };
         watcher.detach();
+        if(m_options.getTimeFrame())
+        {
+            m_progressChanged.invoke({ m_id, 0.0, 0.0, _("WARNING: Using ffmpeg to download. Progress will not be shown.") });
+        }
+        if(downloaderOptions.getUseAria())
+        {
+            m_progressChanged.invoke({ m_id, 0.0, 0.0, _("WARNING: Using aria2 to download. Progress will not be shown.") });
+        }
     }
 
     void Download::stop()
@@ -149,7 +157,7 @@ namespace Nickvision::TubeConverter::Shared::Models
         std::unique_lock<std::mutex> lock{ m_mutex };
         if(m_status != DownloadStatus::Stopped)
         {
-            m_status = std::filesystem::exists(m_path) ? DownloadStatus::Success : DownloadStatus::Error;
+            m_status = args.getExitCode() == 0 ? DownloadStatus::Success : DownloadStatus::Error;
         }
         lock.unlock();
         m_progressChanged.invoke({ m_id, 1.0, 0.0, args.getOutput() });

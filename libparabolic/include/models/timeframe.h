@@ -71,6 +71,18 @@ namespace Nickvision::TubeConverter::Shared::Models
          * @return The string representation of the end time
          */
         std::string endStr() const;
+        /**
+         * @brief Compares two TimeFrames via ==.
+         * @param other The other TimeFrame to compare
+         * @return True if this == other, false otherwise
+         */
+        bool operator==(const TimeFrame& other) const;
+        /**
+         * @brief Compares two TimeFrames via !=.
+         * @param other The other TimeFrame to compare
+         * @return True if this != other, false otherwise
+         */
+        bool operator!=(const TimeFrame& other) const;
 
     private:
         std::chrono::seconds m_start;
