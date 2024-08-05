@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-05 01:03-0400\n"
+"POT-Creation-Date: 2024-08-05 11:21-0400\n"
 "PO-Revision-Date: 2023-12-10 17:06+0000\n"
 "Last-Translator: albanobattistella <albano_battistella@hotmail.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -132,7 +132,7 @@ msgstr ""
 "Albano Battistella\n"
 "Davide Ferracin <davide.ferracin@protonmail.com>"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:280
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:275
 msgid ""
 "The authors of Nickvision Parabolic are not responsible/liable for any "
 "misuse of this program that may violate local copyright/DMCA laws. Users use "
@@ -142,12 +142,12 @@ msgstr ""
 "improprio di questo programma che possa violare le leggi locali sul "
 "copyright/DMCA. Gli utenti utilizzano questa applicazione a proprio rischio."
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:311
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:306
 #, fuzzy
 msgid "New update available"
 msgstr "Nuovo aggiornamento disponibile."
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:343
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:338
 #, fuzzy
 msgid "Unable to download and install update"
 msgstr "Impossibile scaricare e installare l'aggiornamento."
@@ -268,11 +268,9 @@ msgstr "Cartella di salvataggio"
 msgid "Select Save Folder"
 msgstr "Seleziona cartella di salvataggio"
 
-#. Localize Downloads Page
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:135
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:55
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:73
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:66
 msgid "File Name"
 msgstr "Nome file"
 
@@ -296,7 +294,7 @@ msgstr "Scarica audio e video"
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:62
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:73
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:74
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:276
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:270
 msgid "Download"
 msgstr "Scarica"
 
@@ -404,8 +402,7 @@ msgstr "In corso"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:148
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:163
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:324
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:372
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:33
 msgid "Queued"
 msgstr "In coda"
 
@@ -746,9 +743,9 @@ msgid "Use manual credential"
 msgstr "Usa un certificato manuale"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:105
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:42
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:101
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:154
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:333
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:381
 msgid "Error"
 msgstr "Errore"
 
@@ -770,23 +767,25 @@ msgid "{} items"
 msgstr "{0} di {1} elemento"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:140
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:237
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:23
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:231
 #, fuzzy
 msgid "Open"
 msgstr "Apri file"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:175
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:243
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:237
 msgid "Disclaimer"
 msgstr "Disclaimer"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:176
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:244
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:238
 msgid "Don't show this message again"
 msgstr "Non mostrare più questo messaggio"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:210
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:283
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:22
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:277
 msgid "Play"
 msgstr "Avvia"
 
@@ -795,7 +794,7 @@ msgid "Download Again"
 msgstr "Scarica di nuovo"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:241
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:271
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:265
 msgid "Delete"
 msgstr "Elimina"
 
@@ -844,6 +843,41 @@ msgstr ""
 "\n"
 "Traduttori:\n"
 "{3}"
+
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:17
+#, fuzzy
+msgid "Starting download..."
+msgstr "Interrompi scaricamento"
+
+#. Localize Strings
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:21
+#, fuzzy
+msgid "Stop"
+msgstr "Fermato"
+
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:24
+msgid "Retry"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:36
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:83
+msgid "Running"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:39
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:96
+msgid "Stopped"
+msgstr "Fermato"
+
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:45
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:106
+msgid "Success"
+msgstr "Completato"
+
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:77
+#, fuzzy
+msgid "Processing"
+msgstr "In lavorazione…"
 
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:38
 #, fuzzy
@@ -958,61 +992,14 @@ msgstr "Discussioni"
 msgid "Title"
 msgstr ""
 
+#. Localize Downloads Page
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:66
-msgid "Progress"
-msgstr ""
-
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:66
-msgid "Status"
-msgstr ""
-
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:66
-#, fuzzy
-msgid "Speed"
-msgstr "Limite di velocità"
-
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:66
-msgid "URL"
-msgstr "URL"
-
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:67
 msgid "Log"
 msgstr "Log"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:225
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:219
 msgid "Update"
 msgstr "Aggiornamento"
-
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:327
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:375
-msgid "Running"
-msgstr ""
-
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:330
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:378
-msgid "Stopped"
-msgstr "Fermato"
-
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:336
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:384
-msgid "Success"
-msgstr "Completato"
-
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:341
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:388
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:415
-msgid "N/A"
-msgstr ""
-
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:358
-#, fuzzy
-msgid "Starting download..."
-msgstr "Interrompi scaricamento"
-
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:414
-#, fuzzy
-msgid "Processing"
-msgstr "In lavorazione…"
 
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:26
 msgid "Automatically Check for Updates"
@@ -1036,6 +1023,13 @@ msgstr "Seleziona file cookie"
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:138
 msgid "Text files (*.txt)"
 msgstr ""
+
+#, fuzzy
+#~ msgid "Speed"
+#~ msgstr "Limite di velocità"
+
+#~ msgid "URL"
+#~ msgstr "URL"
 
 #, fuzzy
 #~ msgid "Information"

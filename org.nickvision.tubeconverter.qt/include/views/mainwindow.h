@@ -6,6 +6,7 @@
 #include <QDragEnterEvent>
 #include <QDropEvent>
 #include <QMainWindow>
+#include "controls/downloadrow.h"
 #include "controllers/mainwindowcontroller.h"
 
 namespace Ui { class MainWindow; }
@@ -90,9 +91,9 @@ namespace Nickvision::TubeConverter::QT::Views
          */
         void clearHistory();
         /**
-         * @brief Handles when the download table's selection is changed.
+         * @brief Handles when the download list's selection is changed.
          */
-        void onTblDownloadsSelectionChanged();
+        void onListDownloadsSelectionChanged();
 
     private:
         /**
@@ -152,7 +153,7 @@ namespace Nickvision::TubeConverter::QT::Views
         void onDownloadStartedFromQueue(const Events::ParamEventArgs<int>& args);
         Ui::MainWindow* m_ui;
         std::shared_ptr<Shared::Controllers::MainWindowController> m_controller;
-        std::unordered_map<int, int> m_downloadRowIndexes;
+        std::unordered_map<int, Controls::DownloadRow*> m_downloadRows;
     };
 }
 

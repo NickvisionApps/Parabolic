@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-05 01:03-0400\n"
+"POT-Creation-Date: 2024-08-05 11:21-0400\n"
 "PO-Revision-Date: 2023-11-03 03:31+0000\n"
 "Last-Translator: \"K.B.Dharun Krishna\" <kbdharunkrishna@gmail.com>\n"
 "Language-Team: Tamil <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -129,7 +129,7 @@ msgstr "டேவிட் லாப்ஷின்"
 msgid "translator-credits"
 msgstr "K.B.Dharun Krishna <kbdharunkrishna@gmail.com>, 2023"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:280
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:275
 msgid ""
 "The authors of Nickvision Parabolic are not responsible/liable for any "
 "misuse of this program that may violate local copyright/DMCA laws. Users use "
@@ -139,11 +139,11 @@ msgstr ""
 "நிக்விஷன் பரபோலிக் இன் ஆசிரியர்கள் பொறுப்பல்ல/பொறுப்பேற்க மாட்டார்கள். பயனர்கள் இந்த "
 "பயன்பாட்டை தங்கள் சொந்த ஆபத்தில் பயன்படுத்துகின்றனர்."
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:311
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:306
 msgid "New update available"
 msgstr ""
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:343
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:338
 msgid "Unable to download and install update"
 msgstr ""
 
@@ -264,11 +264,9 @@ msgstr "கோப்புறையை சேமி"
 msgid "Select Save Folder"
 msgstr "சேமி கோப்புறையை தேர்ந்தெடுக்கவும்"
 
-#. Localize Downloads Page
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:135
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:55
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:73
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:66
 msgid "File Name"
 msgstr "கோப்பு பெயர்"
 
@@ -292,7 +290,7 @@ msgstr "ஊடகத்தைப் பதிவிறக்கவும்"
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:62
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:73
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:74
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:276
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:270
 msgid "Download"
 msgstr "பதிவிறக்கு"
 
@@ -401,8 +399,7 @@ msgstr "பதிவிறக்குகிறது"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:148
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:163
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:324
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:372
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:33
 msgid "Queued"
 msgstr "வரிசையில் நிற்கிறது"
 
@@ -741,9 +738,9 @@ msgid "Use manual credential"
 msgstr "கைமுறை நற்சான்றிதழைப் பயன்படுத்தவும்"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:105
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:42
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:101
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:154
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:333
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:381
 msgid "Error"
 msgstr "பிழை"
 
@@ -765,23 +762,25 @@ msgid "{} items"
 msgstr "{1} இல் {0} உருப்படிகள்"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:140
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:237
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:23
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:231
 #, fuzzy
 msgid "Open"
 msgstr "கோப்பைத் திறக்கவும்"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:175
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:243
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:237
 msgid "Disclaimer"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:176
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:244
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:238
 msgid "Don't show this message again"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:210
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:283
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:22
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:277
 msgid "Play"
 msgstr "தொடங்கு"
 
@@ -790,7 +789,7 @@ msgid "Download Again"
 msgstr "மீண்டும் பதிவிறக்கவும்"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:241
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:271
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:265
 msgid "Delete"
 msgstr "நீக்கு"
 
@@ -826,6 +825,41 @@ msgid ""
 "Artists:\n"
 "{}"
 msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:17
+#, fuzzy
+msgid "Starting download..."
+msgstr "பதிவிறக்கத்தை நிறுத்து"
+
+#. Localize Strings
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:21
+#, fuzzy
+msgid "Stop"
+msgstr "நிறுத்தப்பட்டது"
+
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:24
+msgid "Retry"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:36
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:83
+msgid "Running"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:39
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:96
+msgid "Stopped"
+msgstr "நிறுத்தப்பட்டது"
+
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:45
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:106
+msgid "Success"
+msgstr "வெற்றி"
+
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:77
+#, fuzzy
+msgid "Processing"
+msgstr "செயலாக்குகிறது..."
 
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:38
 msgid "Enter media url here"
@@ -938,62 +972,15 @@ msgstr ""
 msgid "Title"
 msgstr ""
 
+#. Localize Downloads Page
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:66
-msgid "Progress"
-msgstr ""
-
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:66
-msgid "Status"
-msgstr ""
-
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:66
-#, fuzzy
-msgid "Speed"
-msgstr "வேக வரம்பு"
-
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:66
-msgid "URL"
-msgstr "URL"
-
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:67
 #, fuzzy
 msgid "Log"
 msgstr "உள்நுழை"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:225
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:219
 msgid "Update"
 msgstr ""
-
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:327
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:375
-msgid "Running"
-msgstr ""
-
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:330
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:378
-msgid "Stopped"
-msgstr "நிறுத்தப்பட்டது"
-
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:336
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:384
-msgid "Success"
-msgstr "வெற்றி"
-
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:341
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:388
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:415
-msgid "N/A"
-msgstr ""
-
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:358
-#, fuzzy
-msgid "Starting download..."
-msgstr "பதிவிறக்கத்தை நிறுத்து"
-
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:414
-#, fuzzy
-msgid "Processing"
-msgstr "செயலாக்குகிறது..."
 
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:26
 msgid "Automatically Check for Updates"
@@ -1016,6 +1003,13 @@ msgstr "குக்கீகள் கோப்பைத் தேர்ந்�
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:138
 msgid "Text files (*.txt)"
 msgstr ""
+
+#, fuzzy
+#~ msgid "Speed"
+#~ msgstr "வேக வரம்பு"
+
+#~ msgid "URL"
+#~ msgstr "URL"
 
 #, fuzzy
 #~ msgid "Information"

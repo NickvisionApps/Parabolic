@@ -223,11 +223,6 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         return m_networkMonitor.getConnectionState() == NetworkState::ConnectedGlobal && !Environment::findDependency("yt-dlp").empty() && !Environment::findDependency("ffmpeg").empty() && !Environment::findDependency("aria2c").empty();
     }
 
-    const std::string& MainWindowController::getDownloadLog(int id) const
-    {
-        return m_downloadManager.getDownloadLog(id);
-    }
-
     std::shared_ptr<AddDownloadDialogController> MainWindowController::createAddDownloadDialogController()
     {
         return std::make_shared<AddDownloadDialogController>(m_downloadManager, m_dataFileManager.get<PreviousDownloadOptions>("prev"), m_keyring);

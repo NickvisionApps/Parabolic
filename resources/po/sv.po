@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-05 01:03-0400\n"
+"POT-Creation-Date: 2024-08-05 11:21-0400\n"
 "PO-Revision-Date: 2023-12-07 03:34+0000\n"
 "Last-Translator: Tomas Andersson <jotakswe@users.noreply.hosted.weblate."
 "org>\n"
@@ -131,7 +131,7 @@ msgstr "David Lapshin"
 msgid "translator-credits"
 msgstr "översättningskrediter"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:280
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:275
 msgid ""
 "The authors of Nickvision Parabolic are not responsible/liable for any "
 "misuse of this program that may violate local copyright/DMCA laws. Users use "
@@ -141,12 +141,12 @@ msgstr ""
 "detta program, som kan bryta mot lokala upphovsrätts-/DMCA-lagar. Användare "
 "använder denna applikation på egen risk."
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:311
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:306
 #, fuzzy
 msgid "New update available"
 msgstr "Ny uppdatering tillgänglig."
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:343
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:338
 #, fuzzy
 msgid "Unable to download and install update"
 msgstr "Det gick inte att ladda ner och installera uppdateringen."
@@ -268,11 +268,9 @@ msgstr "Lagringsmapp"
 msgid "Select Save Folder"
 msgstr "Välj lagringsmapp"
 
-#. Localize Downloads Page
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:135
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:55
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:73
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:66
 msgid "File Name"
 msgstr "Filnamn"
 
@@ -296,7 +294,7 @@ msgstr "Ladda ned media"
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:62
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:73
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:74
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:276
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:270
 msgid "Download"
 msgstr "Ladda ner"
 
@@ -404,8 +402,7 @@ msgstr "Laddar ned"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:148
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:163
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:324
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:372
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:33
 msgid "Queued"
 msgstr "Köas"
 
@@ -744,9 +741,9 @@ msgid "Use manual credential"
 msgstr "Använd manuella inloggningsuppgifter"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:105
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:42
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:101
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:154
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:333
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:381
 msgid "Error"
 msgstr "Fel"
 
@@ -768,23 +765,25 @@ msgid "{} items"
 msgstr "{0} av {1} objektet"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:140
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:237
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:23
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:231
 #, fuzzy
 msgid "Open"
 msgstr "Öppna fil"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:175
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:243
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:237
 msgid "Disclaimer"
 msgstr "Ansvarsfriskrivning"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:176
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:244
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:238
 msgid "Don't show this message again"
 msgstr "Visa inte det här meddelandet igen"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:210
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:283
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:22
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:277
 msgid "Play"
 msgstr "Spela upp"
 
@@ -793,7 +792,7 @@ msgid "Download Again"
 msgstr "Ladda ner igen"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:241
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:271
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:265
 msgid "Delete"
 msgstr "Radera"
 
@@ -842,6 +841,41 @@ msgstr ""
 "\n"
 "Översättare:\n"
 "{3}"
+
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:17
+#, fuzzy
+msgid "Starting download..."
+msgstr "Stoppa nedladdning"
+
+#. Localize Strings
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:21
+#, fuzzy
+msgid "Stop"
+msgstr "Stoppad"
+
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:24
+msgid "Retry"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:36
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:83
+msgid "Running"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:39
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:96
+msgid "Stopped"
+msgstr "Stoppad"
+
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:45
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:106
+msgid "Success"
+msgstr "Klar"
+
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:77
+#, fuzzy
+msgid "Processing"
+msgstr "Bearbetar..."
 
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:38
 #, fuzzy
@@ -956,61 +990,14 @@ msgstr "Diskussioner"
 msgid "Title"
 msgstr ""
 
+#. Localize Downloads Page
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:66
-msgid "Progress"
-msgstr ""
-
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:66
-msgid "Status"
-msgstr ""
-
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:66
-#, fuzzy
-msgid "Speed"
-msgstr "Hastighetsgräns"
-
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:66
-msgid "URL"
-msgstr "URL"
-
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:67
 msgid "Log"
 msgstr "Logga"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:225
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:219
 msgid "Update"
 msgstr "Uppdatering"
-
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:327
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:375
-msgid "Running"
-msgstr ""
-
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:330
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:378
-msgid "Stopped"
-msgstr "Stoppad"
-
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:336
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:384
-msgid "Success"
-msgstr "Klar"
-
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:341
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:388
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:415
-msgid "N/A"
-msgstr ""
-
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:358
-#, fuzzy
-msgid "Starting download..."
-msgstr "Stoppa nedladdning"
-
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:414
-#, fuzzy
-msgid "Processing"
-msgstr "Bearbetar..."
 
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:26
 msgid "Automatically Check for Updates"
@@ -1034,6 +1021,13 @@ msgstr "Välj Cookies fil"
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:138
 msgid "Text files (*.txt)"
 msgstr ""
+
+#, fuzzy
+#~ msgid "Speed"
+#~ msgstr "Hastighetsgräns"
+
+#~ msgid "URL"
+#~ msgstr "URL"
 
 #, fuzzy
 #~ msgid "Information"

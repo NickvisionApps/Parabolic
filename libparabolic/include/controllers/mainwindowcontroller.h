@@ -140,12 +140,6 @@ namespace Nickvision::TubeConverter::Shared::Controllers
          */
         bool canDownload() const;
         /**
-         * @brief Gets the log of a download.
-         * @param id The id of the download
-         * @return The download log
-         */
-        const std::string& getDownloadLog(int id) const;
-        /**
          * @brief Gets an AddDownloadDialogController.
          * @return The AddDownloadDialogController
          */

@@ -135,25 +135,26 @@
       <widget class="QWidget" name="pageDownloads">
        <layout class="QVBoxLayout" name="verticalLayout_5">
         <item>
-         <widget class="QTableWidget" name="tblDownloads">
-          <property name="selectionMode">
-           <enum>QAbstractItemView::SelectionMode::SingleSelection</enum>
+         <widget class="QListWidget" name="listDownloads">
+          <property name="spacing">
+           <number>6</number>
           </property>
-          <property name="selectionBehavior">
-           <enum>QAbstractItemView::SelectionBehavior::SelectRows</enum>
-          </property>
-          <property name="columnCount">
-           <number>5</number>
-          </property>
-          <column/>
-          <column/>
-          <column/>
-          <column/>
-          <column/>
          </widget>
         </item>
         <item>
          <widget class="QScrollArea" name="scrollLog">
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>300</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>400</height>
+           </size>
+          </property>
           <property name="widgetResizable">
            <bool>true</bool>
           </property>
