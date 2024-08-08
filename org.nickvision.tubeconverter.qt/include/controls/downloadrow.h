@@ -55,10 +55,6 @@ namespace Nickvision::TubeConverter::QT::Controls
          */
         void setStopState();
         /**
-         * @brief Updates the row with the retry download state.
-         */
-        void setRetryState();
-        /**
          * @brief Updates the row with the started from queue state.
          */
         void setStartFromQueueState();

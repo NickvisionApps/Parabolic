@@ -91,6 +91,22 @@ namespace Nickvision::TubeConverter::QT::Views
          */
         void clearHistory();
         /**
+         * @brief Stops all downloads that are queued or in progress.
+         */
+        void stopAllDownloads();
+        /**
+         * @brief Retries all downloads that have failed.
+         */
+        void retryFailedDownloads();
+        /**
+         * @brief Clears all downloads that are queued.
+         */
+        void clearQueuedDownloads();
+        /**
+         * @brief Clears all downloads that have failed.
+         */
+        void clearCompletedDownloads();
+        /**
          * @brief Handles when the download list's selection is changed.
          */
         void onListDownloadsSelectionChanged();

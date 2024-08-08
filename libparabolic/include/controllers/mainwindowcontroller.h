@@ -192,6 +192,34 @@ namespace Nickvision::TubeConverter::Shared::Controllers
          * @param download The download to remove
          */
         void removeHistoricDownload(const Models::HistoricDownload& download);
+        /**
+         * @brief Stops a download.
+         * @param id The id of the download to stop
+         */
+        void stopDownload(int id);
+        /**
+         * @brief Retries a download.
+         * @param id The id of the download to retry
+         */
+        void retryDownload(int id);
+        /**
+         * @brief Stops all downloads that are queued or in progress.
+         */
+        void stopAllDownloads();
+        /**
+         * @brief Retries all downloads that have failed.
+         */
+        void retryFailedDownloads();
+        /**
+         * @brief Clears all downloads that are queued.
+         * @return The ids of the downloads cleared
+         */
+        std::vector<int> clearQueuedDownloads();
+        /**
+         * @brief Clears all downloads that have completed.
+         * @return The ids of the downloads cleared
+         */
+        std::vector<int> clearCompletedDownloads();
 
     private:
         /**

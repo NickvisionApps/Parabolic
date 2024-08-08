@@ -11,6 +11,7 @@ qt_standard_project_setup()
 qt_add_executable(${OUTPUT_NAME}
     "include/controls/aboutdialog.h"
     "include/controls/downloadrow.h"
+    "include/helpers/qthelpers.h"
     "include/views/adddownloaddialog.h"
     "include/views/mainwindow.h"
     "include/views/settingsdialog.h"
@@ -19,6 +20,7 @@ qt_add_executable(${OUTPUT_NAME}
     "src/controls/aboutdialog.cpp"
     "src/controls/downloadrow.ui"
     "src/controls/downloadrow.cpp"
+    "src/helpers/qthelpers.cpp"
     "src/views/adddownloaddialog.ui"
     "src/views/adddownloaddialog.cpp"
     "src/views/mainwindow.ui"

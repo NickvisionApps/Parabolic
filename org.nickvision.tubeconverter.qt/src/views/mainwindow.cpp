@@ -11,6 +11,7 @@
 #include <libnick/localization/gettext.h>
 #include <libnick/notifications/shellnotification.h>
 #include "controls/aboutdialog.h"
+#include "helpers/qthelpers.h"
 #include "views/adddownloaddialog.h"
 #include "views/settingsdialog.h"
 
@@ -18,10 +19,11 @@ using namespace Nickvision::App;
 using namespace Nickvision::Events;
 using namespace Nickvision::Helpers;
 using namespace Nickvision::Notifications;
+using namespace Nickvision::TubeConverter::QT::Controls;
+using namespace Nickvision::TubeConverter::QT::Helpers;
 using namespace Nickvision::TubeConverter::Shared::Controllers;
 using namespace Nickvision::TubeConverter::Shared::Events;
 using namespace Nickvision::TubeConverter::Shared::Models;
-using namespace Nickvision::TubeConverter::QT::Controls;
 using namespace Nickvision::Update;
 
 namespace Nickvision::TubeConverter::QT::Views
@@ -69,6 +71,10 @@ namespace Nickvision::TubeConverter::QT::Views
         connect(m_ui->actionExit, &QAction::triggered, this, &MainWindow::exit);
         connect(m_ui->actionSettings, &QAction::triggered, this, &MainWindow::settings);
         connect(m_ui->actionHistory, &QAction::triggered, this, &MainWindow::history);
+        connect(m_ui->actionStopAllDownloads, &QAction::triggered, this, &MainWindow::stopAllDownloads);
+        connect(m_ui->actionRetryFailedDownloads, &QAction::triggered, this, &MainWindow::retryFailedDownloads);
+        connect(m_ui->actionClearQueuedDownloads, &QAction::triggered, this, &MainWindow::clearQueuedDownloads);
+        connect(m_ui->actionClearCompletedDownloads, &QAction::triggered, this, &MainWindow::clearCompletedDownloads);
         connect(m_ui->actionCheckForUpdates, &QAction::triggered, this, &MainWindow::checkForUpdates);
         connect(m_ui->actionGitHubRepo, &QAction::triggered, this, &MainWindow::gitHubRepo);
         connect(m_ui->actionReportABug, &QAction::triggered, this, &MainWindow::reportABug);
@@ -78,17 +84,17 @@ namespace Nickvision::TubeConverter::QT::Views
         connect(m_ui->btnClearHistory, &QPushButton::clicked, this, &MainWindow::clearHistory);
         connect(m_ui->listDownloads, &QListWidget::itemSelectionChanged, this, &MainWindow::onListDownloadsSelectionChanged);
         //Events
-        m_controller->notificationSent() += [&](const NotificationSentEventArgs& args) { QMetaObject::invokeMethod(this, [this, args]() { onNotificationSent(args); }, Qt::QueuedConnection); };
+        m_controller->notificationSent() += [&](const NotificationSentEventArgs& args) { QTHelpers::dispatchToMainThread([this, args]() { onNotificationSent(args); }); };
         m_controller->shellNotificationSent() += [&](const ShellNotificationSentEventArgs& args) { onShellNotificationSent(args); };
-        m_controller->disclaimerTriggered() += [&](const ParamEventArgs<std::string>& args) { QMetaObject::invokeMethod(this, [this, args]() { onDisclaimerTriggered(args); }, Qt::QueuedConnection); };
+        m_controller->disclaimerTriggered() += [&](const ParamEventArgs<std::string>& args) { QTHelpers::dispatchToMainThread([this, args]() { onDisclaimerTriggered(args); }); };
         m_controller->downloadAbilityChanged() += [&](const ParamEventArgs<bool>& args) { onDownloadAbilityChanged(args); };
         m_controller->historyChanged() += [&](const ParamEventArgs<std::vector<HistoricDownload>>& args) { onHistoryChanged(args); };
-        m_controller->downloadAdded() += [&](const DownloadAddedEventArgs& args) { QMetaObject::invokeMethod(this, [this, args]() { onDownloadAdded(args); }, Qt::QueuedConnection); };
-        m_controller->downloadCompleted() += [&](const DownloadCompletedEventArgs& args) { QMetaObject::invokeMethod(this, [this, args]() { onDownloadCompleted(args); }, Qt::QueuedConnection); };
-        m_controller->downloadProgressChanged() += [&](const DownloadProgressChangedEventArgs& args) { QMetaObject::invokeMethod(this, [this, args]() { onDownloadProgressChanged(args); }, Qt::QueuedConnection); };
-        m_controller->downloadStopped() += [&](const ParamEventArgs<int>& args) { QMetaObject::invokeMethod(this, [this, args]() { onDownloadStopped(args); }, Qt::QueuedConnection); };
-        m_controller->downloadRetried() += [&](const ParamEventArgs<int>& args) { QMetaObject::invokeMethod(this, [this, args]() { onDownloadRetried(args); }, Qt::QueuedConnection); };
-        m_controller->downloadStartedFromQueue() += [&](const ParamEventArgs<int>& args) { QMetaObject::invokeMethod(this, [this, args]() { onDownloadStartedFromQueue(args); }, Qt::QueuedConnection); };
+        m_controller->downloadAdded() += [&](const DownloadAddedEventArgs& args) { QTHelpers::dispatchToMainThread([this, args]() { onDownloadAdded(args); }); };
+        m_controller->downloadCompleted() += [&](const DownloadCompletedEventArgs& args) { QTHelpers::dispatchToMainThread([this, args]() { onDownloadCompleted(args); }); };
+        m_controller->downloadProgressChanged() += [&](const DownloadProgressChangedEventArgs& args) { QTHelpers::dispatchToMainThread([this, args]() { onDownloadProgressChanged(args); }); };
+        m_controller->downloadStopped() += [&](const ParamEventArgs<int>& args) { QTHelpers::dispatchToMainThread([this, args]() { onDownloadStopped(args); }); };
+        m_controller->downloadRetried() += [&](const ParamEventArgs<int>& args) { QTHelpers::dispatchToMainThread([this, args]() { onDownloadRetried(args); }); };
+        m_controller->downloadStartedFromQueue() += [&](const ParamEventArgs<int>& args) { QTHelpers::dispatchToMainThread([this, args]() { onDownloadStartedFromQueue(args); }); };
     }
 
     MainWindow::~MainWindow()
@@ -122,7 +128,14 @@ namespace Nickvision::TubeConverter::QT::Views
     {
         if(!m_controller->canShutdown())
         {
-            return event->ignore();
+            event->ignore();
+            QMessageBox msgBox{ QMessageBox::Icon::Warning, QString::fromStdString(m_controller->getAppInfo().getShortName()), _("There are downloads in progress. Are you sure you want to exit?"), QMessageBox::StandardButton::Yes | QMessageBox::StandardButton::No, this };
+            if(msgBox.exec() == QMessageBox::StandardButton::Yes)
+            {
+                m_controller->stopAllDownloads();
+                close();
+            }
+            return;
         }
         m_controller->shutdown({ geometry().width(), geometry().height(), isMaximized() });
         event->accept();
@@ -189,6 +202,52 @@ namespace Nickvision::TubeConverter::QT::Views
         m_controller->clearHistory();
     }
 
+    void MainWindow::stopAllDownloads()
+    {
+        m_controller->stopAllDownloads();
+    }
+
+    void MainWindow::retryFailedDownloads()
+    {
+        m_controller->retryFailedDownloads();
+    }
+
+    void MainWindow::clearQueuedDownloads()
+    {
+        for(int id : m_controller->clearQueuedDownloads())
+        {
+            for(int i = 0; i < m_ui->listDownloads->count(); i++)
+            {
+                if(m_ui->listDownloads->itemWidget(m_ui->listDownloads->item(i)) == m_downloadRows[id])
+                {
+                    delete m_ui->listDownloads->takeItem(i);
+                    m_downloadRows.erase(id);
+                    break;
+                }
+            }
+        }
+    }
+
+    void MainWindow::clearCompletedDownloads()
+    {
+        for(int id : m_controller->clearCompletedDownloads())
+        {
+            for(int i = 0; i < m_ui->listDownloads->count(); i++)
+            {
+                if(m_ui->listDownloads->itemWidget(m_ui->listDownloads->item(i)) == m_downloadRows[id])
+                {
+                    delete m_ui->listDownloads->takeItem(i);
+                    m_downloadRows.erase(id);
+                    break;
+                }
+            }
+        }
+        if(m_downloadRows.empty())
+        {
+            m_ui->viewStack->setCurrentIndex(0);
+        }
+    }
+
     void MainWindow::onListDownloadsSelectionChanged()
     {
         m_ui->lblDownloadLog->setText("");
@@ -251,24 +310,23 @@ namespace Nickvision::TubeConverter::QT::Views
     {
         m_ui->viewStackHistory->setCurrentIndex(args.getParam().empty() ? 0 : 1);
         m_ui->tblHistory->setRowCount(0);
-        int i{ 0 };
         for(const HistoricDownload& download : args.getParam())
         {
-            m_ui->tblHistory->insertRow(i);
+            m_ui->tblHistory->insertRow(0);
             //Title
             QTableWidgetItem* title{ new QTableWidgetItem(QString::fromStdString(download.getTitle())) };
             title->setFlags(title->flags() ^ Qt::ItemFlag::ItemIsEditable);
             title->setToolTip(QString::fromStdString(download.getUrl()));
-            m_ui->tblHistory->setItem(i, 1, title);
+            m_ui->tblHistory->setItem(0, 1, title);
             //Delete Button
             QPushButton* btnDelete{ new QPushButton(QIcon::fromTheme(QIcon::ThemeIcon::EditDelete), {}, m_ui->tblHistory) };
             btnDelete->setToolTip(_("Delete"));
             connect(btnDelete, &QPushButton::clicked, [this, download]() { m_controller->removeHistoricDownload(download); });
-            m_ui->tblHistory->setCellWidget(i, 0, btnDelete);
+            m_ui->tblHistory->setCellWidget(0, 0, btnDelete);
             //Download Button
             QPushButton* btnDownload{ new QPushButton(QIcon::fromTheme(QIcon::ThemeIcon::GoDown), {}, m_ui->tblHistory) };
             btnDownload->setToolTip(_("Download"));
-            m_ui->tblHistory->setCellWidget(i, 2, btnDownload);
+            m_ui->tblHistory->setCellWidget(0, 2, btnDownload);
             //TODO: Download
             //Play Button
             if(std::filesystem::exists(download.getPath()))
@@ -276,15 +334,14 @@ namespace Nickvision::TubeConverter::QT::Views
                 QPushButton* btnPlay{ new QPushButton(QIcon::fromTheme(QIcon::ThemeIcon::MediaPlaybackStart), {}, m_ui->tblHistory) };
                 btnPlay->setToolTip(_("Play"));
                 connect(btnPlay, &QPushButton::clicked, [this, download]() { QDesktopServices::openUrl(QUrl::fromLocalFile(QString::fromStdString(download.getPath().string()))); });
-                m_ui->tblHistory->setCellWidget(i, 3, btnPlay);
+                m_ui->tblHistory->setCellWidget(0, 3, btnPlay);
             }
             else
             {
                 QTableWidgetItem* blank{ new QTableWidgetItem() };
                 blank->setFlags(blank->flags() ^ Qt::ItemFlag::ItemIsEditable);
-                m_ui->tblHistory->setItem(i, 3, blank);
+                m_ui->tblHistory->setItem(0, 3, blank);
             }
-            i++;
         }
         m_ui->tblHistory->resizeColumnToContents(0);
         m_ui->tblHistory->resizeColumnToContents(2);
@@ -294,58 +351,49 @@ namespace Nickvision::TubeConverter::QT::Views
     void MainWindow::onDownloadAdded(const DownloadAddedEventArgs& args)
     {
         m_ui->viewStack->setCurrentIndex(1);
-        if(m_downloadRows.contains(args.getId()))
-        {
-            return;
-        }
-        DownloadRow* row{ new DownloadRow(args, m_ui->listDownloads) };
+        DownloadRow* row{ new DownloadRow(args) };
+        connect(row, &DownloadRow::stop, [this, id{ args.getId() }]() { m_controller->stopDownload(id); });
+        connect(row, &DownloadRow::retry, [this, id{ args.getId() }]() { m_controller->retryDownload(id); });
         m_downloadRows[args.getId()] = row;
         QListWidgetItem* item{ new QListWidgetItem() };
         item->setSizeHint(row->sizeHint() + QSize(0, 10));
-        m_ui->listDownloads->addItem(item);
+        m_ui->listDownloads->insertItem(0, item);
         m_ui->listDownloads->setItemWidget(item, row);
-        m_ui->listDownloads->setCurrentRow(m_ui->listDownloads->count() - 1);
+        m_ui->listDownloads->setCurrentRow(0);
     }
 
     void MainWindow::onDownloadCompleted(const DownloadCompletedEventArgs& args)
     {
-        if(m_downloadRows.contains(args.getId()))
-        {
-            m_downloadRows[args.getId()]->setCompleteState(args);
-            onListDownloadsSelectionChanged();
-        }
+        m_downloadRows[args.getId()]->setCompleteState(args);
+        onListDownloadsSelectionChanged();
     }
 
     void MainWindow::onDownloadProgressChanged(const DownloadProgressChangedEventArgs& args)
     {
-        if(m_downloadRows.contains(args.getId()))
-        {
-            m_downloadRows[args.getId()]->setProgressState(args);
-            onListDownloadsSelectionChanged();
-        }
+        m_downloadRows[args.getId()]->setProgressState(args);
+        onListDownloadsSelectionChanged();
     }
 
     void MainWindow::onDownloadStopped(const ParamEventArgs<int>& args)
     {
-        if(m_downloadRows.contains(args.getParam()))
-        {
-            m_downloadRows[args.getParam()]->setStopState();
-        }
+        m_downloadRows[args.getParam()]->setStopState();
     }
 
     void MainWindow::onDownloadRetried(const ParamEventArgs<int>& args)
     {
-        if(m_downloadRows.contains(args.getParam()))
+        for(int i = 0; i < m_ui->listDownloads->count(); i++)
         {
-            m_downloadRows[args.getParam()]->setRetryState();
+            if(m_ui->listDownloads->itemWidget(m_ui->listDownloads->item(i)) == m_downloadRows[args.getParam()])
+            {
+                delete m_ui->listDownloads->takeItem(i);
+                m_downloadRows.erase(args.getParam());
+                break;
+            }
         }
     }
 
     void MainWindow::onDownloadStartedFromQueue(const ParamEventArgs<int>& args)
     {
-        if(m_downloadRows.contains(args.getParam()))
-        {
-            m_downloadRows[args.getParam()]->setStartFromQueueState();
-        }
+        m_downloadRows[args.getParam()]->setStartFromQueueState();
     }
 }

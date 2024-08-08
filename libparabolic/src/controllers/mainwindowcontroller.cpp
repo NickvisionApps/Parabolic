@@ -210,7 +210,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
 
     bool MainWindowController::canShutdown() const
     {
-        return true;
+        return m_downloadManager.getRemainingDownloadsCount() == 0;
     }
 
     std::string MainWindowController::getHelpUrl(const std::string& pageName)
@@ -355,6 +355,36 @@ namespace Nickvision::TubeConverter::Shared::Controllers
     void MainWindowController::removeHistoricDownload(const HistoricDownload& download)
     {
         m_downloadManager.removeHistoricDownload(download);
+    }
+
+    void MainWindowController::stopDownload(int id)
+    {
+        m_downloadManager.stopDownload(id);
+    }
+
+    void MainWindowController::retryDownload(int id)
+    {
+        m_downloadManager.retryDownload(id);
+    }
+
+    void MainWindowController::stopAllDownloads()
+    {
+        m_downloadManager.stopAllDownloads();
+    }
+
+    void MainWindowController::retryFailedDownloads()
+    {
+        m_downloadManager.retryFailedDownloads();
+    }
+
+    std::vector<int> MainWindowController::clearQueuedDownloads()
+    {
+        return m_downloadManager.clearQueuedDownloads();
+    }
+
+    std::vector<int> MainWindowController::clearCompletedDownloads()
+    {
+        return m_downloadManager.clearCompletedDownloads();
     }
 
     void MainWindowController::onConfigurationSaved()

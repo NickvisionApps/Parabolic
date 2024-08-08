@@ -85,11 +85,6 @@ namespace Nickvision::TubeConverter::QT::Controls
         m_ui->progressBar->setValue(1);
         switch(args.getStatus())
         {
-        case DownloadStatus::Stopped:
-            m_ui->btnIcon->setIcon(QIcon::fromTheme(QIcon::ThemeIcon::EditClear));
-            m_ui->lblStatus->setText(_("Stopped"));
-            m_ui->buttonStack->setCurrentIndex(2);
-            break;
         case DownloadStatus::Error:
             m_ui->btnIcon->setIcon(QIcon::fromTheme(QIcon::ThemeIcon::EditClear));
             m_ui->lblStatus->setText(_("Error"));
@@ -105,12 +100,11 @@ namespace Nickvision::TubeConverter::QT::Controls
 
     void DownloadRow::setStopState()
     {
-
-    }
-
-    void DownloadRow::setRetryState()
-    {
-        
+        m_ui->progressBar->setRange(0, 1);
+        m_ui->progressBar->setValue(1);
+        m_ui->btnIcon->setIcon(QIcon::fromTheme(QIcon::ThemeIcon::EditClear));
+        m_ui->lblStatus->setText(_("Stopped"));
+        m_ui->buttonStack->setCurrentIndex(2);
     }
 
     void DownloadRow::setStartFromQueueState()

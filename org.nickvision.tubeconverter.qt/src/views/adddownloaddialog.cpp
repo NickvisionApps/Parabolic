@@ -1,6 +1,6 @@
 #include "views/adddownloaddialog.h"
 #include "ui_adddownloaddialog.h"
-#include <format>
+#include <functional>
 #include <QApplication>
 #include <QClipboard>
 #include <QFileDialog>
@@ -8,24 +8,16 @@
 #include <libnick/helpers/codehelpers.h>
 #include <libnick/helpers/stringhelpers.h>
 #include <libnick/localization/gettext.h>
+#include "helpers/qthelpers.h"
 
 using namespace Nickvision::Events;
 using namespace Nickvision::Helpers;
 using namespace Nickvision::Keyring;
+using namespace Nickvision::TubeConverter::QT::Helpers;
 using namespace Nickvision::TubeConverter::Shared::Controllers;
 
 namespace Nickvision::TubeConverter::QT::Views
 {
-    static void setComboBoxItems(QComboBox* comboBox, const std::vector<std::string>& items)
-    {
-        comboBox->clear();
-        for(const std::string& item : items)
-        {
-            comboBox->addItem(QString::fromStdString(item));
-        }
-        comboBox->setCurrentIndex(0);
-    }
-
     AddDownloadDialog::AddDownloadDialog(const std::shared_ptr<AddDownloadDialogController>& controller, QWidget* parent)
         : QDialog{ parent },
         m_ui{ new Ui::AddDownloadDialog() },
@@ -86,7 +78,7 @@ namespace Nickvision::TubeConverter::QT::Views
         std::vector<std::string> credentialNames{ m_controller->getKeyringCredentialNames() };
         credentialNames.insert(credentialNames.begin(), _("Use manual credential"));
         credentialNames.insert(credentialNames.begin(), _("None"));
-        setComboBoxItems(m_ui->cmbAuthenticate, credentialNames);
+        QTHelpers::setComboBoxItems(m_ui->cmbAuthenticate, credentialNames);
         //Signals
         connect(m_ui->txtMediaUrl, &QLineEdit::textChanged, this, &AddDownloadDialog::onTxtUrlChanged);
         connect(m_ui->cmbAuthenticate, &QComboBox::currentIndexChanged, this, &AddDownloadDialog::onCmbAuthenticateChanged);
@@ -98,7 +90,7 @@ namespace Nickvision::TubeConverter::QT::Views
         connect(m_ui->btnSelectSaveFolderPlaylist, &QPushButton::clicked, this, &AddDownloadDialog::selectSaveFolderPlaylist);
         connect(m_ui->chkNumberTitlesPlaylist, &QCheckBox::stateChanged, this, &AddDownloadDialog::onNumberTitlesPlaylistChanged);
         connect(m_ui->btnDownloadPlaylist, &QPushButton::clicked, this, &AddDownloadDialog::downloadPlaylist);
-        m_controller->urlValidated() += [this](const ParamEventArgs<bool>& args){ QMetaObject::invokeMethod(this, [this]() { onUrlValidated(); }, Qt::QueuedConnection); };
+        m_controller->urlValidated() += [this](const ParamEventArgs<bool>& args){ QTHelpers::dispatchToMainThread([this]() { onUrlValidated(); }); };
     }
 
     AddDownloadDialog::~AddDownloadDialog()
@@ -158,10 +150,10 @@ namespace Nickvision::TubeConverter::QT::Views
         if(!m_controller->isUrlPlaylist())
         {
             m_ui->viewStack->setCurrentIndex(2);
-            setComboBoxItems(m_ui->cmbFileTypeSingle, m_controller->getFileTypeStrings());
+            QTHelpers::setComboBoxItems(m_ui->cmbFileTypeSingle, m_controller->getFileTypeStrings());
             m_ui->cmbFileTypeSingle->setCurrentIndex(static_cast<int>(m_controller->getPreviousDownloadOptions().getFileType()));
-            setComboBoxItems(m_ui->cmbQualitySingle, m_controller->getQualityStrings(m_ui->cmbFileTypeSingle->currentIndex()));
-            setComboBoxItems(m_ui->cmbAudioLanguageSingle, m_controller->getAudioLanguageStrings());
+            QTHelpers::setComboBoxItems(m_ui->cmbQualitySingle, m_controller->getQualityStrings(m_ui->cmbFileTypeSingle->currentIndex()));
+            QTHelpers::setComboBoxItems(m_ui->cmbAudioLanguageSingle, m_controller->getAudioLanguageStrings());
             m_ui->chkDownloadSubtitlesSingle->setChecked(m_controller->getPreviousDownloadOptions().getDownloadSubtitles());
             m_ui->chkPreferAV1Single->setChecked(m_controller->getPreviousDownloadOptions().getPreferAV1());
             m_ui->chkSplitChaptersSingle->setChecked(m_controller->getPreviousDownloadOptions().getSplitChapters());
@@ -177,7 +169,7 @@ namespace Nickvision::TubeConverter::QT::Views
         {
             m_ui->viewStack->setCurrentIndex(3);
             m_ui->lblItemsPlaylist->setText(QString::fromStdString(std::vformat(_("Playlist Items ({})"), std::make_format_args(CodeHelpers::unmove(m_controller->getMediaCount())))));
-            setComboBoxItems(m_ui->cmbFileTypePlaylist, m_controller->getFileTypeStrings());
+            QTHelpers::setComboBoxItems(m_ui->cmbFileTypePlaylist, m_controller->getFileTypeStrings());
             m_ui->cmbFileTypePlaylist->setCurrentIndex(static_cast<int>(m_controller->getPreviousDownloadOptions().getFileType()));
             m_ui->chkDownloadSubtitlesPlaylist->setChecked(m_controller->getPreviousDownloadOptions().getDownloadSubtitles());
             m_ui->chkPreferAV1Playlist->setChecked(m_controller->getPreviousDownloadOptions().getPreferAV1());
@@ -208,7 +200,7 @@ namespace Nickvision::TubeConverter::QT::Views
 
     void AddDownloadDialog::onCmbFileTypeSingleChanged(int index)
     {
-        setComboBoxItems(m_ui->cmbQualitySingle, m_controller->getQualityStrings(index));
+        QTHelpers::setComboBoxItems(m_ui->cmbQualitySingle, m_controller->getQualityStrings(index));
     }
 
     void AddDownloadDialog::selectSaveFolderSingle()

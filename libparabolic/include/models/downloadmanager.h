@@ -107,6 +107,12 @@ namespace Nickvision::TubeConverter::Shared::Models
          */
         const std::string& getDownloadLog(int id) const;
         /**
+         * @brief Gets the status of a download.
+         * @param id The id of the download
+         * @return The download status
+         */
+        DownloadStatus getDownloadStatus(int id) const;
+        /**
          * @brief Loads the download history.
          * @brief This method invokes the historyChanged event.
          */
@@ -152,12 +158,14 @@ namespace Nickvision::TubeConverter::Shared::Models
         void retryFailedDownloads();
         /**
          * @brief Clears all downloads from the queue.
+         * @return The ids of the downloads cleared
          */
-        void clearQueuedDownloads();
+        std::vector<int> clearQueuedDownloads();
         /**
          * @brief Clears all completed downloads.
+         * @return The ids of the downloads cleared
          */
-        void clearCompletedDownloads();
+        std::vector<int> clearCompletedDownloads();
 
     private:
         /**

@@ -120,6 +120,24 @@ namespace Nickvision::TubeConverter::Shared::Models
         return empty;
     }
 
+    DownloadStatus DownloadManager::getDownloadStatus(int id) const
+    {
+        std::lock_guard<std::mutex> lock{ m_mutex };
+        if(m_downloading.contains(id))
+        {
+            return m_downloading.at(id)->getStatus();
+        }
+        if(m_queued.contains(id))
+        {
+            return m_queued.at(id)->getStatus();
+        }
+        if(m_completed.contains(id))
+        {
+            return m_completed.at(id)->getStatus();
+        }
+        return DownloadStatus::Queued;
+    }
+
     void DownloadManager::loadHistory()
     {
         m_logger.log(LogLevel::Info, "Loaded " + std::to_string(m_history.getHistory().size()) + " historic downloads.");
@@ -214,18 +232,30 @@ namespace Nickvision::TubeConverter::Shared::Models
         }
     }
 
-    void DownloadManager::clearQueuedDownloads()
+    std::vector<int> DownloadManager::clearQueuedDownloads()
     {
         std::lock_guard<std::mutex> lock{ m_mutex };
+        std::vector<int> cleared;
+        for(const std::pair<const int, std::shared_ptr<Download>>& pair : m_queued)
+        {
+            cleared.push_back(pair.first);
+            m_logger.log(LogLevel::Info, "Cleared download (" + std::to_string(pair.first) + ") from queue.");
+        }
         m_queued.clear();
-        m_logger.log(LogLevel::Info, "Cleared all downloads from the queue.");
+        return cleared;
     }
 
-    void DownloadManager::clearCompletedDownloads()
+    std::vector<int> DownloadManager::clearCompletedDownloads()
     {
         std::lock_guard<std::mutex> lock{ m_mutex };
+        std::vector<int> cleared;
+        for(const std::pair<const int, std::shared_ptr<Download>>& pair : m_completed)
+        {
+            cleared.push_back(pair.first);
+            m_logger.log(LogLevel::Info, "Cleared completed download (" + std::to_string(pair.first) + ").");
+        }
         m_completed.clear();
-        m_logger.log(LogLevel::Info, "Cleared all completed downloads.");
+        return cleared;
     }
 
     void DownloadManager::addDownload(const std::shared_ptr<Download>& download)
