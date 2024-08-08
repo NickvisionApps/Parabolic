@@ -37,25 +37,58 @@ namespace Nickvision::TubeConverter::Shared::Models
 
     std::optional<UrlInfo> UrlInfo::fetch(const std::string& url, const DownloaderOptions& options, const std::optional<Credential>& credential)
     {
-        std::vector<std::string> args{ "--xff", "default", "--dump-single-json", "--skip-download", "--ignore-errors", "--flat-playlist", "--no-warnings" };
+        std::vector<std::string> arguments{ "--xff", "default", "--dump-single-json", "--skip-download", "--ignore-errors", "--flat-playlist", "--no-warnings" };
         if(options.getLimitCharacters())
         {
-            args.push_back("--windows-filenames");
+            arguments.push_back("--windows-filenames");
         }
         if(!options.getProxyUrl().empty())
         {
-            args.push_back("--proxy");
-            args.push_back(options.getProxyUrl());
+            arguments.push_back("--proxy");
+            arguments.push_back(options.getProxyUrl());
         }
         if(credential)
         {
-            args.push_back("--username");
-            args.push_back(credential->getUsername());
-            args.push_back("--password");
-            args.push_back(credential->getPassword());
+            arguments.push_back("--username");
+            arguments.push_back(credential->getUsername());
+            arguments.push_back("--password");
+            arguments.push_back(credential->getPassword());
         }
-        args.push_back(url);
-        Process process{ Environment::findDependency("yt-dlp"), args };
+        if(options.getCookiesBrowser() != Browser::None)
+        {
+            arguments.push_back("--cookies-from-browser");
+            switch(options.getCookiesBrowser())
+            {
+            case Browser::Brave:
+                arguments.push_back("brave");
+                break;
+            case Browser::Chrome:
+                arguments.push_back("chrome");
+                break;
+            case Browser::Chromium:
+                arguments.push_back("chromium");
+                break;
+            case Browser::Edge:
+                arguments.push_back("edge");
+                break;
+            case Browser::Firefox:
+                arguments.push_back("firefox");
+                break;
+            case Browser::Opera:
+                arguments.push_back("opera");
+                break;
+            case Browser::Vivaldi:
+                arguments.push_back("vivaldi");
+                break;
+            case Browser::Whale:
+                arguments.push_back("whale");
+                break;
+            default:
+                break;
+            }
+        }
+        arguments.push_back(url);
+        Process process{ Environment::findDependency("yt-dlp"), arguments };
         process.start();
         if(process.waitForExit() != 0 || process.getOutput().empty())
         {

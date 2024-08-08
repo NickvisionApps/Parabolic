@@ -46,7 +46,7 @@ jobs:
       - name: "Create Installer"
         working-directory: ${{github.workspace}}/inno
         run: |
-          powershell -command "Invoke-WebRequest https://github.com/yt-dlp/yt-dlp/releases/download/2024.08.01/yt-dlp.exe -OutFile yt-dlp.exe"
+          powershell -command "Invoke-WebRequest https://github.com/yt-dlp/yt-dlp/releases/download/2024.08.06/yt-dlp.exe -OutFile yt-dlp.exe"
           powershell -command "Invoke-WebRequest https://github.com/aria2/aria2/releases/download/release-1.37.0/aria2-1.37.0-win-64bit-build1.zip -OutFile aria2.zip"
           powershell -command "Invoke-WebRequest https://github.com/GyanD/codexffmpeg/releases/download/7.0.2/ffmpeg-7.0.2-full_build.zip -OutFile ffmpeg.zip"
           powershell -command "Expand-Archive -Force 'aria2.zip'"

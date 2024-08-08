@@ -143,84 +143,15 @@ Adw.PreferencesDialog root {
         }
       }
 
-      Adw.ActionRow cookiesFileRow {
-        title: _("Cookies File");
+      Adw.ComboRow cookiesBrowserRow {
+        title: _("Cookies from Browser");
+        model: Gtk.StringList {
+          strings [_("None"), _("Brave"), _("Chrome"), _("Chromium"), _("Edge"), _("Firefox"), _("Opera"), _("Safari"), _("Vivaldi"), _("Whale")]
+        };
 
         [prefix]
         Gtk.Image {
           icon-name: "document-properties-symbolic";
-        }
-
-        [suffix]
-        Gtk.Button selectCookiesFileButton {
-          valign: center;
-          tooltip-text: _("Select Cookies File");
-          icon-name: "folder-open-symbolic";
-
-          styles ["flat"]
-        }
-
-        [suffix]
-        Gtk.Button clearCookiesFileButton {
-          valign: center;
-          icon-name: "larger-brush-symbolic";
-          tooltip-text: _("Clear Cookies File");
-
-          styles ["flat"]
-        }
-
-        [suffix]
-        Gtk.MenuButton {
-          valign: center;
-          direction: none;
-          icon-name: "dialog-question-symbolic";
-          tooltip-text: _("Cookies File Information");
-
-          popover: Gtk.Popover cookiesPopover {
-            child: Gtk.Box {
-              orientation: vertical;
-              spacing: 6;
-              margin-start: 6;
-              margin-top: 6;
-              margin-end: 6;
-              margin-bottom: 6;
-
-              Adw.Clamp {
-                maximum-size: 300;
-                child: Gtk.Label {
-                  wrap: true;
-                  label: _("Cookies can be passed to yt-dlp in the form of TXT files. Cookies may allow yt-dlp to access media that requires a login. Export cookies from your browser using the following extensions (use at your own risk):");
-                };
-              }
-
-              Gtk.Box {
-                hexpand: true;
-                orientation: horizontal;
-
-                Gtk.Button chromeCookiesButton {
-                  hexpand: true;
-
-                  child: Adw.ButtonContent {
-                    label: _("Chrome/Edge");
-                    icon-name: "google-chrome-symbolic";
-                  };
-                }
-
-                Gtk.Button firefoxCookiesButton {
-                  hexpand: true;
-
-                  child: Adw.ButtonContent {
-                    label: _("Firefox");
-                    icon-name: "firefox-symbolic";
-                  };
-                }
-
-                styles ["linked"]
-              }
-            };
-          };
-
-          styles ["flat"]
         }
 
         styles ["property"]

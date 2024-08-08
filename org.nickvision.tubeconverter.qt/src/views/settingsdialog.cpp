@@ -49,11 +49,17 @@ namespace Nickvision::TubeConverter::QT::Views
         m_ui->lblSponsorBlock->setText(_("Use SponsorBlock for YouTube"));
         m_ui->lblProxyUrl->setText(_("Proxy URL"));
         m_ui->txtProxyUrl->setPlaceholderText(_("Enter proxy url here"));
-        m_ui->lblCookiesFile->setText(_("Cookies File"));
-        m_ui->txtCookiesFile->setPlaceholderText(_("Select cookies file"));
-        m_ui->btnSelectCookiesFile->setText(_("Select Cookies File"));
-        m_ui->btnClearCookiesFile->setText(_("Clear Cookies File"));
-        m_ui->btnCookiesFileInformation->setText(_("Cookies File Information"));
+        m_ui->lblCookiesBrowser->setText(_("Cookies from Browser"));
+        m_ui->cmbCookiesBrowser->addItem(_("None"));
+        m_ui->cmbCookiesBrowser->addItem(_("Brave"));
+        m_ui->cmbCookiesBrowser->addItem(_("Chrome"));
+        m_ui->cmbCookiesBrowser->addItem(_("Chromium"));
+        m_ui->cmbCookiesBrowser->addItem(_("Edge"));
+        m_ui->cmbCookiesBrowser->addItem(_("Firefox"));
+        m_ui->cmbCookiesBrowser->addItem(_("Opera"));
+        m_ui->cmbCookiesBrowser->addItem(_("Safari"));
+        m_ui->cmbCookiesBrowser->addItem(_("Vivaldi"));
+        m_ui->cmbCookiesBrowser->addItem(_("Whale"));
         m_ui->lblEmbedMetadata->setText(_("Embed Metadata"));
         m_ui->lblEmbedSubtitles->setText(_("Embed Subtitles"));
         m_ui->lblEmbedChapters->setText(_("Embed Chapters"));
@@ -80,7 +86,7 @@ namespace Nickvision::TubeConverter::QT::Views
         m_ui->numSpeedLimit->setValue(options.getSpeedLimit());
         m_ui->chkSponsorBlock->setChecked(options.getYouTubeSponsorBlock());
         m_ui->txtProxyUrl->setText(QString::fromStdString(options.getProxyUrl()));
-        m_ui->txtCookiesFile->setText(QString::fromStdString(options.getCookiesPath().string()));
+        m_ui->cmbCookiesBrowser->setCurrentIndex(static_cast<int>(options.getCookiesBrowser()));
         m_ui->chkEmbedMetadata->setChecked(options.getEmbedMetadata());
         m_ui->chkEmbedSubtitles->setChecked(options.getEmbedSubtitles());
         m_ui->chkEmbedChapters->setChecked(options.getEmbedChapters());
@@ -91,9 +97,6 @@ namespace Nickvision::TubeConverter::QT::Views
         m_ui->numAriaMinSplitSize->setValue(options.getAriaMinSplitSize());
         //Signals
         connect(m_ui->listPages, &QListWidget::currentRowChanged, this, &SettingsDialog::onPageChanged);
-        connect(m_ui->btnSelectCookiesFile, &QPushButton::clicked, this, &SettingsDialog::selectCookiesFile);
-        connect(m_ui->btnClearCookiesFile, &QPushButton::clicked, this, &SettingsDialog::clearCookiesFile);
-        connect(m_ui->btnCookiesFileInformation, &QPushButton::clicked, this, &SettingsDialog::cookiesFileInformation);
         m_ui->listPages->setCurrentRow(0);
     }
     
@@ -115,7 +118,7 @@ namespace Nickvision::TubeConverter::QT::Views
         options.setSpeedLimit(m_ui->numSpeedLimit->value());
         options.setYouTubeSponsorBlock(m_ui->chkSponsorBlock->isChecked());
         options.setProxyUrl(m_ui->txtProxyUrl->text().toStdString());
-        options.setCookiesPath(m_ui->txtCookiesFile->text().toStdString());
+        options.setCookiesBrowser(static_cast<Browser>(m_ui->cmbCookiesBrowser->currentIndex()));
         options.setEmbedMetadata(m_ui->chkEmbedMetadata->isChecked());
         options.setEmbedSubtitles(m_ui->chkEmbedSubtitles->isChecked());
         options.setEmbedChapters(m_ui->chkEmbedChapters->isChecked());
@@ -125,35 +128,12 @@ namespace Nickvision::TubeConverter::QT::Views
         options.setAriaMaxConnectionsPerServer(m_ui->numAriaMaxConnectionsPerServer->value());
         options.setAriaMinSplitSize(m_ui->numAriaMinSplitSize->value());
         m_controller->setDownloaderOptions(options);
+        m_controller->saveConfiguration();
         event->accept();
     }
 
     void SettingsDialog::onPageChanged(int index)
     {
         m_ui->viewStack->setCurrentIndex(index);
-    }
-
-    void SettingsDialog::selectCookiesFile()
-    {
-        QString path{ QFileDialog::getOpenFileName(this, _("Select Cookies File"), {}, _("Text files (*.txt)")) };
-        if(!path.isEmpty())
-        {
-            m_ui->txtCookiesFile->setText(path);
-        }
-    }
-
-    void SettingsDialog::clearCookiesFile()
-    {
-        m_ui->txtCookiesFile->clear();
-    }
-
-    void SettingsDialog::cookiesFileInformation()
-    {
-        QMessageBox box{ QMessageBox::Icon::Information, _("Cookies File Information"), _("Cookies can be passed to yt-dlp in the form of TXT files. Cookies may allow yt-dlp to access media that requires a login. Export cookies from your browser using the following extensions (use at your own risk):"), QMessageBox::StandardButton::Close, this };
-        QPushButton* btnChrome{ box.addButton(_("Chrome/Edge"), QMessageBox::ButtonRole::ActionRole) };
-        QPushButton* btnFirefox{ box.addButton(_("Firefox"), QMessageBox::ButtonRole::ActionRole) };
-        connect(btnChrome, &QPushButton::clicked, [this](){ QDesktopServices::openUrl({ QString::fromStdString(m_controller->getCookiesExtensionUrl(Browsers::Chrome)) }); });
-        connect(btnFirefox, &QPushButton::clicked, [this](){ QDesktopServices::openUrl({ QString::fromStdString(m_controller->getCookiesExtensionUrl(Browsers::Firefox)) }); });
-        box.exec();
     }
 }

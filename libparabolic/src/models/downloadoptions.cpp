@@ -207,10 +207,38 @@ namespace Nickvision::TubeConverter::Shared::Models
             arguments.push_back("--proxy");
             arguments.push_back(downloaderOptions.getProxyUrl());
         }
-        if(std::filesystem::exists(downloaderOptions.getCookiesPath()))
+        if(downloaderOptions.getCookiesBrowser() != Browser::None)
         {
-            arguments.push_back("--cookies");
-            arguments.push_back(downloaderOptions.getCookiesPath().string());
+            arguments.push_back("--cookies-from-browser");
+            switch(downloaderOptions.getCookiesBrowser())
+            {
+            case Browser::Brave:
+                arguments.push_back("brave");
+                break;
+            case Browser::Chrome:
+                arguments.push_back("chrome");
+                break;
+            case Browser::Chromium:
+                arguments.push_back("chromium");
+                break;
+            case Browser::Edge:
+                arguments.push_back("edge");
+                break;
+            case Browser::Firefox:
+                arguments.push_back("firefox");
+                break;
+            case Browser::Opera:
+                arguments.push_back("opera");
+                break;
+            case Browser::Vivaldi:
+                arguments.push_back("vivaldi");
+                break;
+            case Browser::Whale:
+                arguments.push_back("whale");
+                break;
+            default:
+                break;
+            }
         }
         if(downloaderOptions.getYouTubeSponsorBlock())
         {

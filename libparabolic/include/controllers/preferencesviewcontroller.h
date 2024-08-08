@@ -3,7 +3,6 @@
 
 #include <filesystem>
 #include <string>
-#include "models/browsers.h"
 #include "models/configuration.h"
 #include "models/completednotificationpreference.h"
 #include "models/downloaderoptions.h"
@@ -24,12 +23,6 @@ namespace Nickvision::TubeConverter::Shared::Controllers
          * @param downloadHistory The reference to the download history to use
          */
         PreferencesViewController(Models::Configuration& configuration, Models::DownloadHistory& downloadHistory);
-        /**
-         * @brief Gets the cookies extension url for a browser.
-         * @param browser The browser
-         * @return The cookies extension url
-         */
-        const std::string& getCookiesExtensionUrl(Models::Browsers browser) const;
         /**
          * @brief Gets the preferred theme for the application.
          * @return The preferred theme

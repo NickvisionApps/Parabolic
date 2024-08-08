@@ -3,6 +3,7 @@
 
 #include <filesystem>
 #include <string>
+#include "browser.h"
 
 namespace Nickvision::TubeConverter::Shared::Models
 {
@@ -122,15 +123,15 @@ namespace Nickvision::TubeConverter::Shared::Models
          */
         void setProxyUrl(const std::string& proxyUrl);
         /**
-         * @brief Gets the path to the cookies file to pass to the downloader.
-         * @return The path to the cookies file
+         * @brief Gets the browser to fetch cookies from for the downloader.
+         * @return The cookies browser
          */
-        const std::filesystem::path& getCookiesPath() const;
+        Browser getCookiesBrowser() const;
         /**
-         * @brief Sets the path to the cookies file to pass to the downloader.
-         * @param cookiesPath The new path to the cookies file
+         * @brief Sets the browser to fetch cookies from for the downloader.
+         * @param browser The new cookies browser
          */
-        void setCookiesPath(const std::filesystem::path& cookiesPath);
+        void setCookiesBrowser(Browser browser);
         /**
          * @brief Gets whether or not to use the YouTube SponsorBlock extension.
          * @return True to use SponsorBlock, else false
@@ -202,6 +203,7 @@ namespace Nickvision::TubeConverter::Shared::Models
         int m_ariaMinSplitSize;
         unsigned int m_speedLimit;
         std::string m_proxyUrl;
+        Browser m_cookiesBrowser;
         std::filesystem::path m_cookiesPath;
         bool m_youTubeSponsorBlock;
         bool m_embedMetadata;

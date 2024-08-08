@@ -60,6 +60,7 @@ Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{
 [Files]
 Source: "vc_redist.x64.exe"; DestDir: "{app}\deps"; AfterInstall: SetupVC
 Source: "yt-dlp.exe"; DestDir: "{app}\Release"; Flags: ignoreversion
+Source: "..\resources\chrome_cookies_unlock.py"; DestDir: "{app}\Release\yt-dlp-plugins\yt-dlp-ChromeCookieUnlock\yt_dlp_plugins\postprocessor"; Flags: ignoreversion
 Source: "ffmpeg.exe"; DestDir: "{app}\Release"; Flags: ignoreversion
 Source: "ffplay.exe"; DestDir: "{app}\Release"; Flags: ignoreversion
 Source: "ffprobe.exe"; DestDir: "{app}\Release"; Flags: ignoreversion

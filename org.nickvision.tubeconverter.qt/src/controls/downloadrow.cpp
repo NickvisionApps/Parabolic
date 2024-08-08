@@ -62,7 +62,7 @@ namespace Nickvision::TubeConverter::QT::Controls
         return m_log;
     }
 
-    void DownloadRow::update(const DownloadProgressChangedEventArgs& args)
+    void DownloadRow::setProgressState(const DownloadProgressChangedEventArgs& args)
     {
         if(std::isnan(args.getProgress()))
         {
@@ -79,7 +79,7 @@ namespace Nickvision::TubeConverter::QT::Controls
         m_log = QString::fromStdString(args.getLog());
     }
 
-    void DownloadRow::complete(const DownloadCompletedEventArgs& args)
+    void DownloadRow::setCompleteState(const DownloadCompletedEventArgs& args)
     {
         m_ui->progressBar->setRange(0, 1);
         m_ui->progressBar->setValue(1);
@@ -101,6 +101,23 @@ namespace Nickvision::TubeConverter::QT::Controls
             m_ui->buttonStack->setCurrentIndex(1);
             break;
         }
+    }
+
+    void DownloadRow::setStopState()
+    {
+
+    }
+
+    void DownloadRow::setRetryState()
+    {
+        
+    }
+
+    void DownloadRow::setStartFromQueueState()
+    {
+        m_ui->progressBar->setRange(0, 0);
+        m_ui->progressBar->setValue(0);
+        m_ui->lblStatus->setText(_("Running"));
     }
 
     void DownloadRow::play()

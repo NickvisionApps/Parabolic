@@ -44,12 +44,24 @@ namespace Nickvision::TubeConverter::QT::Controls
          * @brief Updates the row with the new download progress.
          * @param args DownloadProgressChangedEventArgs
          */
-        void update(const Shared::Events::DownloadProgressChangedEventArgs& args);
+        void setProgressState(const Shared::Events::DownloadProgressChangedEventArgs& args);
         /**
          * @brief Updates the row with the completed download state.
          * @param args DownloadCompletedEventArgs
          */
-        void complete(const Shared::Events::DownloadCompletedEventArgs& args);
+        void setCompleteState(const Shared::Events::DownloadCompletedEventArgs& args);
+        /**
+         * @brief Updates the row with the stopped download state.
+         */
+        void setStopState();
+        /**
+         * @brief Updates the row with the retry download state.
+         */
+        void setRetryState();
+        /**
+         * @brief Updates the row with the started from queue state.
+         */
+        void setStartFromQueueState();
 
     Q_SIGNALS:
         /**

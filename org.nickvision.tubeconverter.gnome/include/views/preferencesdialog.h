@@ -5,7 +5,6 @@
 #include <adwaita.h>
 #include "controllers/preferencesviewcontroller.h"
 #include "helpers/dialogbase.h"
-#include "models/browsers.h"
 
 namespace Nickvision::TubeConverter::GNOME::Views
 {
@@ -31,19 +30,6 @@ namespace Nickvision::TubeConverter::GNOME::Views
          * @brief Handles when the theme preference is changed.
          */
         void onThemeChanged();
-        /**
-         * @brief Prompts the user to open a cookies file.
-         */
-        void selectCookiesFile();
-        /**
-         * @brief Clears the cookies file.
-         */
-        void clearCookiesFile();
-        /**
-         * @brief Opens the link to the cookies extension for the browser.
-         * @param browser The browser to open the link for
-         */
-        void cookiesExtension(Shared::Models::Browsers browser);
         std::shared_ptr<Shared::Controllers::PreferencesViewController> m_controller;
     };
 }

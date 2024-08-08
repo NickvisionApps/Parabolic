@@ -15,7 +15,7 @@ namespace Nickvision::TubeConverter::Shared::Models
         m_ariaMinSplitSize{ 20 },
         m_speedLimit{ 1024 },
         m_proxyUrl{ "" },
-        m_cookiesPath{ "" },
+        m_cookiesBrowser{ Browser::None },
         m_youTubeSponsorBlock{ false },
         m_embedMetadata{ true },
         m_cropAudioThumbnails{ false },
@@ -132,21 +132,14 @@ namespace Nickvision::TubeConverter::Shared::Models
         m_proxyUrl = proxyUrl;
     }
 
-    const std::filesystem::path& DownloaderOptions::getCookiesPath() const
+    Browser DownloaderOptions::getCookiesBrowser() const
     {
-        return m_cookiesPath;
+        return m_cookiesBrowser;
     }
 
-    void DownloaderOptions::setCookiesPath(const std::filesystem::path& cookiesPath)
+    void DownloaderOptions::setCookiesBrowser(Browser browser)
     {
-        if(std::filesystem::exists(cookiesPath) && std::filesystem::is_regular_file(cookiesPath))
-        {
-            m_cookiesPath = cookiesPath;
-        }
-        else
-        {
-            m_cookiesPath = "";
-        }
+        m_cookiesBrowser = browser;
     }
 
     bool DownloaderOptions::getYouTubeSponsorBlock() const

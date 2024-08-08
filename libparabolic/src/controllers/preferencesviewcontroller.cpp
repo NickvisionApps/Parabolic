@@ -11,22 +11,6 @@ namespace Nickvision::TubeConverter::Shared::Controllers
 
     }
 
-    const std::string& PreferencesViewController::getCookiesExtensionUrl(Browsers browser) const
-    {
-        static std::string none{ "" };
-        static std::string chrome{ "https://chrome.google.com/webstore/detail/get-cookiestxt-locally/cclelndahbckbenkjhflpdbgdldlbecc" };
-        static std::string firefox{ "https://addons.mozilla.org/en-US/firefox/addon/cookies-txt/" };
-        switch(browser)
-        {
-        case Browsers::Chrome:
-            return chrome;
-        case Browsers::Firefox:
-            return firefox;
-        default:
-            return none;
-        }
-    }
-
     Theme PreferencesViewController::getTheme() const
     {
         return m_configuration.getTheme();

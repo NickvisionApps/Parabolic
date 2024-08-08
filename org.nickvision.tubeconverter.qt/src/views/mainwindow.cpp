@@ -311,7 +311,7 @@ namespace Nickvision::TubeConverter::QT::Views
     {
         if(m_downloadRows.contains(args.getId()))
         {
-            m_downloadRows[args.getId()]->complete(args);
+            m_downloadRows[args.getId()]->setCompleteState(args);
             onListDownloadsSelectionChanged();
         }
     }
@@ -320,23 +320,32 @@ namespace Nickvision::TubeConverter::QT::Views
     {
         if(m_downloadRows.contains(args.getId()))
         {
-            m_downloadRows[args.getId()]->update(args);
+            m_downloadRows[args.getId()]->setProgressState(args);
             onListDownloadsSelectionChanged();
         }
     }
 
     void MainWindow::onDownloadStopped(const ParamEventArgs<int>& args)
     {
-
+        if(m_downloadRows.contains(args.getParam()))
+        {
+            m_downloadRows[args.getParam()]->setStopState();
+        }
     }
 
     void MainWindow::onDownloadRetried(const ParamEventArgs<int>& args)
     {
-
+        if(m_downloadRows.contains(args.getParam()))
+        {
+            m_downloadRows[args.getParam()]->setRetryState();
+        }
     }
 
     void MainWindow::onDownloadStartedFromQueue(const ParamEventArgs<int>& args)
     {
-
+        if(m_downloadRows.contains(args.getParam()))
+        {
+            m_downloadRows[args.getParam()]->setStartFromQueueState();
+        }
     }
 }

@@ -151,7 +151,7 @@ namespace Nickvision::TubeConverter::QT::Views
     {
         if(!m_controller->isUrlValid())
         {
-            QMessageBox::critical(this, _("Error"), _("The url provided is invalid or unable to be reached. Check both the url and authentication used."), QMessageBox::StandardButton::Ok);
+            QMessageBox::critical(this, _("Error"), _("The url provided is invalid or unable to be reached. Check the url, the authentication used, and the selected browser for cookies in settings."), QMessageBox::StandardButton::Ok);
             m_ui->viewStack->setCurrentIndex(0);
             return;
         }
