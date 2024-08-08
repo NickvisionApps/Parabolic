@@ -51,7 +51,7 @@ namespace Nickvision::TubeConverter::GNOME::Views
         options.setSpeedLimit(static_cast<int>(adw_spin_row_get_value(ADW_SPIN_ROW(gtk_builder_get_object(m_builder, "speedLimitRow")))));
         options.setYouTubeSponsorBlock(adw_switch_row_get_active(ADW_SWITCH_ROW(gtk_builder_get_object(m_builder, "sponsorBlockRow"))));
         options.setProxyUrl(gtk_editable_get_text(GTK_EDITABLE(gtk_builder_get_object(m_builder, "proxyUrlRow"))));
-        options.setCookiesBrowser(static_cast<CookiesBrowser>(adw_combo_row_get_selected(ADW_COMBO_ROW(gtk_builder_get_object(m_builder, "cookiesBrowserRow")))));
+        options.setCookiesBrowser(static_cast<Browser>(adw_combo_row_get_selected(ADW_COMBO_ROW(gtk_builder_get_object(m_builder, "cookiesBrowserRow")))));
         options.setEmbedMetadata(adw_switch_row_get_active(ADW_SWITCH_ROW(gtk_builder_get_object(m_builder, "embedMetadataRow"))));
         options.setEmbedChapters(adw_switch_row_get_active(ADW_SWITCH_ROW(gtk_builder_get_object(m_builder, "embedChaptersRow"))));
         options.setEmbedSubtitles(adw_switch_row_get_active(ADW_SWITCH_ROW(gtk_builder_get_object(m_builder, "embedSubtitlesRow"))));
