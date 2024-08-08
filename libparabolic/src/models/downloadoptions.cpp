@@ -243,7 +243,7 @@ namespace Nickvision::TubeConverter::Shared::Models
         if(downloaderOptions.getYouTubeSponsorBlock())
         {
             arguments.push_back("--sponsorblock-remove");
-            arguments.push_back("all");
+            arguments.push_back("default");
         }
         if(downloaderOptions.getEmbedMetadata())
         {
