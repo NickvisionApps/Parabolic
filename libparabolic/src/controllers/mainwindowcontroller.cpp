@@ -95,6 +95,11 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         return m_appInfo;
     }
 
+    DownloadManager& MainWindowController::getDownloadManager()
+    {
+        return m_downloadManager;
+    }
+
     Theme MainWindowController::getTheme()
     {
         return m_dataFileManager.get<Configuration>("config").getTheme();
@@ -130,41 +135,6 @@ namespace Nickvision::TubeConverter::Shared::Controllers
     Event<ParamEventArgs<bool>>& MainWindowController::downloadAbilityChanged()
     {
         return m_downloadAbilityChanged;
-    }
-
-    Event<ParamEventArgs<std::vector<HistoricDownload>>>& MainWindowController::historyChanged()
-    {
-        return m_downloadManager.historyChanged();
-    }
-
-    Event<DownloadAddedEventArgs>& MainWindowController::downloadAdded()
-    {
-        return m_downloadManager.downloadAdded();
-    }
-
-    Event<DownloadCompletedEventArgs>& MainWindowController::downloadCompleted()
-    {
-        return m_downloadManager.downloadCompleted();
-    }
-
-    Event<DownloadProgressChangedEventArgs>& MainWindowController::downloadProgressChanged()
-    {
-        return m_downloadManager.downloadProgressChanged();
-    }
-
-    Event<ParamEventArgs<int>>& MainWindowController::downloadStopped()
-    {
-        return m_downloadManager.downloadStopped();
-    }
-
-    Event<ParamEventArgs<int>>& MainWindowController::downloadRetried()
-    {
-        return m_downloadManager.downloadRetried();
-    }
-
-    Event<ParamEventArgs<int>>& MainWindowController::downloadStartedFromQueue()
-    {
-        return m_downloadManager.downloadStartedFromQueue();
     }
 
     std::string MainWindowController::getDebugInformation(const std::string& extraInformation) const
@@ -345,46 +315,6 @@ namespace Nickvision::TubeConverter::Shared::Controllers
     void MainWindowController::log(Logging::LogLevel level, const std::string& message, const std::source_location& source)
     {
         m_logger.log(level, message, source);
-    }
-
-    void MainWindowController::clearHistory()
-    {
-        m_downloadManager.clearHistory();
-    }
-
-    void MainWindowController::removeHistoricDownload(const HistoricDownload& download)
-    {
-        m_downloadManager.removeHistoricDownload(download);
-    }
-
-    void MainWindowController::stopDownload(int id)
-    {
-        m_downloadManager.stopDownload(id);
-    }
-
-    void MainWindowController::retryDownload(int id)
-    {
-        m_downloadManager.retryDownload(id);
-    }
-
-    void MainWindowController::stopAllDownloads()
-    {
-        m_downloadManager.stopAllDownloads();
-    }
-
-    void MainWindowController::retryFailedDownloads()
-    {
-        m_downloadManager.retryFailedDownloads();
-    }
-
-    std::vector<int> MainWindowController::clearQueuedDownloads()
-    {
-        return m_downloadManager.clearQueuedDownloads();
-    }
-
-    std::vector<int> MainWindowController::clearCompletedDownloads()
-    {
-        return m_downloadManager.clearCompletedDownloads();
     }
 
     void MainWindowController::onConfigurationSaved()

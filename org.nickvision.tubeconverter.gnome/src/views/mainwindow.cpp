@@ -56,7 +56,7 @@ namespace Nickvision::TubeConverter::GNOME::Views
         m_controller->shellNotificationSent() += [&](const ShellNotificationSentEventArgs& args) { onShellNotificationSent(args); };
         m_controller->disclaimerTriggered() += [&](const ParamEventArgs<std::string>& args) { onDisclaimerTriggered(args); };
         m_controller->downloadAbilityChanged() += [&](const ParamEventArgs<bool>& args) { g_simple_action_set_enabled(m_actAddDownload, args.getParam()); };
-        m_controller->historyChanged() += [&](const ParamEventArgs<std::vector<HistoricDownload>>& args) { onHistoryChanged(args); };
+        m_controller->getDownloadManager().historyChanged() += [&](const ParamEventArgs<std::vector<HistoricDownload>>& args) { onHistoryChanged(args); };
         //Quit Action
         GSimpleAction* actQuit{ g_simple_action_new("quit", nullptr) };
         g_signal_connect(actQuit, "activate", G_CALLBACK(+[](GSimpleAction*, GVariant*, gpointer data){ reinterpret_cast<MainWindow*>(data)->quit(); }), this);
@@ -243,7 +243,7 @@ namespace Nickvision::TubeConverter::GNOME::Views
             g_signal_connect(deleteButton, "clicked", GCallback(+[](GtkButton*, gpointer data)
             {
                 std::pair<MainWindow*, HistoricDownload>* pair{ reinterpret_cast<std::pair<MainWindow*, HistoricDownload>*>(data) };
-                pair->first->m_controller->removeHistoricDownload(pair->second);
+                pair->first->m_controller->getDownloadManager().removeHistoricDownload(pair->second);
                 delete pair;
             }), deletePair);
             adw_action_row_add_suffix(row, GTK_WIDGET(deleteButton));

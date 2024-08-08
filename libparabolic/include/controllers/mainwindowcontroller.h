@@ -68,45 +68,15 @@ namespace Nickvision::TubeConverter::Shared::Controllers
          */
         Nickvision::Events::Event<Nickvision::Events::ParamEventArgs<bool>>& downloadAbilityChanged();
         /**
-         * @brief Gets the event for when the history is changed.
-         * @return The history changed event
-         */
-        Nickvision::Events::Event<Nickvision::Events::ParamEventArgs<std::vector<Models::HistoricDownload>>>& historyChanged();
-        /**
-         * @brief Gets the event for when a download is added.
-         * @return The download added event
-         */
-        Nickvision::Events::Event<Events::DownloadAddedEventArgs>& downloadAdded();
-        /**
-         * @brief Gets the event for when a download is completed.
-         * @return The download completed event
-         */
-        Nickvision::Events::Event<Events::DownloadCompletedEventArgs>& downloadCompleted();
-        /**
-         * @brief Gets the event for when a download's progress is changed.
-         * @return The download progress changed event
-         */
-        Nickvision::Events::Event<Events::DownloadProgressChangedEventArgs>& downloadProgressChanged();
-        /**
-         * @brief Gets the event for when a download is stopped.
-         * @return The download stopped event
-         */
-        Nickvision::Events::Event<Nickvision::Events::ParamEventArgs<int>>& downloadStopped();
-        /**
-         * @brief Gets the event for when a download is retried.
-         * @return The download retried event
-         */
-        Nickvision::Events::Event<Nickvision::Events::ParamEventArgs<int>>& downloadRetried();
-        /**
-         * @brief Gets the event for when a download is started from the queue.
-         * @return The download started from queue event
-         */
-        Nickvision::Events::Event<Nickvision::Events::ParamEventArgs<int>>& downloadStartedFromQueue();
-        /**
          * @brief Gets the AppInfo object for the application
          * @return The current AppInfo object
          */
         const Nickvision::App::AppInfo& getAppInfo() const;
+        /**
+         * @brief Gets the DownloadManager for the application.
+         * @return The DownloadManager
+         */
+        Models::DownloadManager& getDownloadManager();
         /**
          * @brief Gets the preferred theme for the application.
          * @return The preferred theme
@@ -183,43 +153,6 @@ namespace Nickvision::TubeConverter::Shared::Controllers
          * @param source The source location of the log message
          */
         void log(Logging::LogLevel level, const std::string& message, const std::source_location& source = std::source_location::current());
-        /**
-         * @brief Clears all historic downloads from the history.
-         */
-        void clearHistory();
-        /**
-         * @brief Removes a historic download from the history.
-         * @param download The download to remove
-         */
-        void removeHistoricDownload(const Models::HistoricDownload& download);
-        /**
-         * @brief Stops a download.
-         * @param id The id of the download to stop
-         */
-        void stopDownload(int id);
-        /**
-         * @brief Retries a download.
-         * @param id The id of the download to retry
-         */
-        void retryDownload(int id);
-        /**
-         * @brief Stops all downloads that are queued or in progress.
-         */
-        void stopAllDownloads();
-        /**
-         * @brief Retries all downloads that have failed.
-         */
-        void retryFailedDownloads();
-        /**
-         * @brief Clears all downloads that are queued.
-         * @return The ids of the downloads cleared
-         */
-        std::vector<int> clearQueuedDownloads();
-        /**
-         * @brief Clears all downloads that have completed.
-         * @return The ids of the downloads cleared
-         */
-        std::vector<int> clearCompletedDownloads();
 
     private:
         /**
