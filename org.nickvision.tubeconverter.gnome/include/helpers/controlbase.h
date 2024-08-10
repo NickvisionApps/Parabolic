@@ -21,7 +21,7 @@ namespace Nickvision::TubeConverter::GNOME::Helpers
          */
         ControlBase(const std::string& fileName, const std::string& rootName = "root")
             : m_builder{ BuilderHelpers::fromBlueprint(fileName) },
-            m_control{ T(gtk_builder_get_object(m_builder, rootName.c_str())) }
+            m_control{ reinterpret_cast<T*>(gtk_builder_get_object(m_builder, rootName.c_str())) }
         {
 
         }

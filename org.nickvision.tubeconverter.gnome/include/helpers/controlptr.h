@@ -32,7 +32,7 @@ namespace Nickvision::TubeConverter::GNOME::Helpers
          * @brief The ControlPtr assumes ownership of ptr.
          * @param ptr T*
          */
-        DialogPtr(T* ptr)
+        ControlPtr(T* ptr)
             : m_ptr{ ptr }
         {
             g_signal_connect(m_ptr->get(), "destroy", GCallback(+[](GtkWidget*, gpointer data){ delete reinterpret_cast<T*>(data); }), m_ptr);

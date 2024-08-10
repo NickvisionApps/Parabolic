@@ -3,10 +3,12 @@
 #include <libnick/helpers/codehelpers.h>
 #include <libnick/helpers/stringhelpers.h>
 #include <libnick/localization/gettext.h>
+#include "helpers/gtkhelpers.h"
 
 using namespace Nickvision::Events;
 using namespace Nickvision::Helpers;
 using namespace Nickvision::Keyring;
+using namespace Nickvision::TubeConverter::GNOME::Helpers;
 using namespace Nickvision::TubeConverter::Shared::Controllers;
 using namespace Nickvision::TubeConverter::Shared::Models;
 
@@ -63,7 +65,7 @@ namespace Nickvision::TubeConverter::GNOME::Views
         g_signal_connect(gtk_builder_get_object(m_builder, "itemsPlaylistRow"), "activated", G_CALLBACK(+[](AdwActionRow*, gpointer data){ reinterpret_cast<AddDownloadDialog*>(data)->itemsPlaylist(); }), this);
         g_signal_connect(gtk_builder_get_object(m_builder, "numberTitlesPlaylistRow"), "notify::active", G_CALLBACK(+[](GObject*, GParamSpec* pspec, gpointer data){ reinterpret_cast<AddDownloadDialog*>(data)->onNumberTitlesPlaylistChanged(); }), this);
         g_signal_connect(gtk_builder_get_object(m_builder, "downloadPlaylistButton"), "clicked", G_CALLBACK(+[](GtkButton*, gpointer data){ reinterpret_cast<AddDownloadDialog*>(data)->downloadPlaylist(); }), this);
-        m_controller->urlValidated() += [&](const EventArgs& args){ g_main_context_invoke(g_main_context_default(), G_SOURCE_FUNC(+[](gpointer data) -> bool { reinterpret_cast<AddDownloadDialog*>(data)->onUrlValidated(); return false; }), this); };
+        m_controller->urlValidated() += [this](const EventArgs& args){ GtkHelpers::dispatchToMainThread([this]{ onUrlValidated(); }); };
     }
 
     void AddDownloadDialog::onTxtUrlChanged()

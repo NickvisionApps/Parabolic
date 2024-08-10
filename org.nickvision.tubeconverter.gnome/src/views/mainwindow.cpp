@@ -1,13 +1,15 @@
 #include "views/mainwindow.h"
 #include <filesystem>
 #include <format>
-#include <libnick/app/appinfo.h>
 #include <libnick/helpers/codehelpers.h>
 #include <libnick/notifications/shellnotification.h>
 #include <libnick/localization/gettext.h>
 #include <libnick/system/environment.h>
+#include "controls/downloadrow.h"
 #include "helpers/builder.h"
+#include "helpers/controlptr.h"
 #include "helpers/dialogptr.h"
+#include "helpers/gtkhelpers.h"
 #include "views/adddownloaddialog.h"
 #include "views/preferencesdialog.h"
 
@@ -16,8 +18,10 @@ using namespace Nickvision::Events;
 using namespace Nickvision::Helpers;
 using namespace Nickvision::Notifications;
 using namespace Nickvision::System;
+using namespace Nickvision::TubeConverter::GNOME::Controls;
 using namespace Nickvision::TubeConverter::GNOME::Helpers;
 using namespace Nickvision::TubeConverter::Shared::Controllers;
+using namespace Nickvision::TubeConverter::Shared::Events;
 using namespace Nickvision::TubeConverter::Shared::Models;
 using namespace Nickvision::Update;
 
@@ -52,11 +56,17 @@ namespace Nickvision::TubeConverter::GNOME::Views
         g_signal_connect(m_window, "close_request", G_CALLBACK(+[](GtkWindow*, gpointer data) -> bool { return reinterpret_cast<MainWindow*>(data)->onCloseRequested(); }), this);
         g_signal_connect(gtk_builder_get_object(m_builder, "listNavItems"), "row-activated", G_CALLBACK(+[](GtkListBox*, GtkListBoxRow*, gpointer data) { adw_navigation_split_view_set_show_content(ADW_NAVIGATION_SPLIT_VIEW(gtk_builder_get_object(reinterpret_cast<MainWindow*>(data)->m_builder, "navView")), true); }), this);
         g_signal_connect(gtk_builder_get_object(m_builder, "listNavItems"), "row-selected", G_CALLBACK(+[](GtkListBox* self, GtkListBoxRow* row, gpointer data) { reinterpret_cast<MainWindow*>(data)->onNavItemSelected(self, row); }), this);
-        m_controller->notificationSent() += [&](const NotificationSentEventArgs& args) { onNotificationSent(args); };
-        m_controller->shellNotificationSent() += [&](const ShellNotificationSentEventArgs& args) { onShellNotificationSent(args); };
-        m_controller->disclaimerTriggered() += [&](const ParamEventArgs<std::string>& args) { onDisclaimerTriggered(args); };
-        m_controller->downloadAbilityChanged() += [&](const ParamEventArgs<bool>& args) { g_simple_action_set_enabled(m_actAddDownload, args.getParam()); };
-        m_controller->getDownloadManager().historyChanged() += [&](const ParamEventArgs<std::vector<HistoricDownload>>& args) { onHistoryChanged(args); };
+        m_controller->notificationSent() += [this](const NotificationSentEventArgs& args) { onNotificationSent(args); };
+        m_controller->shellNotificationSent() += [this](const ShellNotificationSentEventArgs& args) { onShellNotificationSent(args); };
+        m_controller->disclaimerTriggered() += [this](const ParamEventArgs<std::string>& args) { onDisclaimerTriggered(args); };
+        m_controller->downloadAbilityChanged() += [this](const ParamEventArgs<bool>& args) { g_simple_action_set_enabled(m_actAddDownload, args.getParam()); };
+        m_controller->getDownloadManager().historyChanged() += [this](const ParamEventArgs<std::vector<HistoricDownload>>& args) { GtkHelpers::dispatchToMainThread([this, args]{ onHistoryChanged(args); }); };
+        m_controller->getDownloadManager().downloadAdded() += [this](const DownloadAddedEventArgs& args) { GtkHelpers::dispatchToMainThread([this, args]{ onDownloadAdded(args); }); };
+        m_controller->getDownloadManager().downloadCompleted() += [this](const DownloadCompletedEventArgs& args) { GtkHelpers::dispatchToMainThread([this, args]{ onDownloadCompleted(args); }); };
+        m_controller->getDownloadManager().downloadProgressChanged() += [this](const DownloadProgressChangedEventArgs& args) { GtkHelpers::dispatchToMainThread([this, args]{ onDownloadProgressChanged(args); }); };
+        m_controller->getDownloadManager().downloadStopped() += [this](const ParamEventArgs<int>& args) { GtkHelpers::dispatchToMainThread([this, args]{ onDownloadStopped(args); }); };
+        m_controller->getDownloadManager().downloadRetried() += [this](const ParamEventArgs<int>& args) { GtkHelpers::dispatchToMainThread([this, args]{ onDownloadRetried(args); }); };
+        m_controller->getDownloadManager().downloadStartedFromQueue() += [this](const ParamEventArgs<int>& args) { GtkHelpers::dispatchToMainThread([this, args]{ onDownloadStartedFromQueue(args); }); };
         //Quit Action
         GSimpleAction* actQuit{ g_simple_action_new("quit", nullptr) };
         g_signal_connect(actQuit, "activate", G_CALLBACK(+[](GSimpleAction*, GVariant*, gpointer data){ reinterpret_cast<MainWindow*>(data)->quit(); }), this);
@@ -231,6 +241,7 @@ namespace Nickvision::TubeConverter::GNOME::Views
             g_signal_connect(downloadButton, "clicked", GCallback(+[](GtkButton*, gpointer data)
             {
                 std::pair<MainWindow*, HistoricDownload>* pair{ reinterpret_cast<std::pair<MainWindow*, HistoricDownload>*>(data) };
+                //TODO
                 delete pair;
             }), downloadPair);
             adw_action_row_add_suffix(row, GTK_WIDGET(downloadButton));
@@ -248,6 +259,36 @@ namespace Nickvision::TubeConverter::GNOME::Views
             }), deletePair);
             adw_action_row_add_suffix(row, GTK_WIDGET(deleteButton));
         }
+    }
+
+    void MainWindow::onDownloadAdded(const DownloadAddedEventArgs& args)
+    {
+
+    }
+
+    void MainWindow::onDownloadCompleted(const DownloadCompletedEventArgs& args)
+    {
+
+    }
+
+    void MainWindow::onDownloadProgressChanged(const DownloadProgressChangedEventArgs& args)
+    {
+
+    }
+
+    void MainWindow::onDownloadStopped(const ParamEventArgs<int>& args)
+    {
+
+    }
+
+    void MainWindow::onDownloadRetried(const ParamEventArgs<int>& args)
+    {
+
+    }
+
+    void MainWindow::onDownloadStartedFromQueue(const ParamEventArgs<int>& args)
+    {
+
     }
 
     void MainWindow::quit()
@@ -345,6 +386,6 @@ namespace Nickvision::TubeConverter::GNOME::Views
 
     void MainWindow::clearHistory()
     {
-        m_controller->clearHistory();
+        m_controller->getDownloadManager().clearHistory();
     }
 }

@@ -47,14 +47,14 @@ namespace Nickvision::TubeConverter::GNOME::Views
         bool onCloseRequested();
         /**
          * @brief Handles when a notification is sent to the window.
-         * @param args Nickvision::Notifications::NotificationSentEventArgs 
+         * @param args NotificationSentEventArgs 
          */
-        void onNotificationSent(const Nickvision::Notifications::NotificationSentEventArgs& args);
+        void onNotificationSent(const Notifications::NotificationSentEventArgs& args);
         /**
          * @brief Handles when a shell notification is sent to the window.
-         * @param args Nickvision::Notifications::ShellNotificationSentEventArgs
+         * @param args ShellNotificationSentEventArgs
          */
-        void onShellNotificationSent(const Nickvision::Notifications::ShellNotificationSentEventArgs& args);
+        void onShellNotificationSent(const Notifications::ShellNotificationSentEventArgs& args);
         /**
          * @brief Handles when a navigation item is selected.
          * @param box The listNavItems box
@@ -63,14 +63,44 @@ namespace Nickvision::TubeConverter::GNOME::Views
         void onNavItemSelected(GtkListBox* box, GtkListBoxRow* row);
         /**
          * @brief Handles when the disclaimer is triggered.
-         * @param args Nickvision::Events::ParamEventArgs<std::string>
+         * @param args ParamEventArgs<std::string>
          */
-        void onDisclaimerTriggered(const Nickvision::Events::ParamEventArgs<std::string>& args);
+        void onDisclaimerTriggered(const Events::ParamEventArgs<std::string>& args);
         /**
          * @brief Handles when the history is changed.
-         * @param args Nickvision::Events::ParamEventArgs<std::vector<Models::HistoricDownload>>
+         * @param args ParamEventArgs<std::vector<Models::HistoricDownload>>
          */
-        void onHistoryChanged(const ::Nickvision::Events::ParamEventArgs<std::vector<::Nickvision::TubeConverter::Shared::Models::HistoricDownload>>& args);
+        void onHistoryChanged(const Events::ParamEventArgs<std::vector<Shared::Models::HistoricDownload>>& args);
+        /**
+         * @brief Handles when a download is added.
+         * @param args DownloadAddedEventArgs
+         */
+        void onDownloadAdded(const Shared::Events::DownloadAddedEventArgs& args);
+        /**
+         * @brief Handles when a download is completed.
+         * @param args DownloadCompletedEventArgs
+         */
+        void onDownloadCompleted(const Shared::Events::DownloadCompletedEventArgs& args);
+        /**
+         * @brief Handles when a download's progress is changed.
+         * @param args DownloadProgressChangedEventArgs
+         */
+        void onDownloadProgressChanged(const Shared::Events::DownloadProgressChangedEventArgs& args);
+        /**
+         * @brief Handles when a download is stopped.
+         * @param args ParamEventArgs<int>
+         */
+        void onDownloadStopped(const Events::ParamEventArgs<int>& args);
+        /**
+         * @brief Handles when a download is retried.
+         * @param args ParamEventArgs<int>
+         */
+        void onDownloadRetried(const Events::ParamEventArgs<int>& args);
+        /**
+         * @brief Handles when a download is started from the queue.
+         * @param args ParamEventArgs<int>
+         */
+        void onDownloadStartedFromQueue(const Events::ParamEventArgs<int>& args);
         /**
          * @brief Quits the application. 
          */

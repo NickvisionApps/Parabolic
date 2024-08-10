@@ -3,8 +3,10 @@ if(LINUX)
     set(STARTUP_NOTIFY true)
 
     add_executable(${OUTPUT_NAME}
+        "src/controls/downloadrow.cpp"
         "src/helpers/builder.cpp"
         "src/helpers/dialogbase.cpp"
+        "src/helpers/gtkhelpers.cpp"
         "src/views/adddownloaddialog.cpp"
         "src/views/mainwindow.cpp"
         "src/views/preferencesdialog.cpp"
