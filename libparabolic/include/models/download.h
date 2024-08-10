@@ -68,13 +68,11 @@ namespace Nickvision::TubeConverter::Shared::Models
         const std::string& getLog() const;
         /**
          * @brief Starts the download.
-         * @brief Python must first be started via PythonHelpers::start().
          * @brief downloaderOptions The DownloaderOptions
          */
         void start(const DownloaderOptions& downloaderOptions);
         /**
          * @brief Stops the download.
-         * @brief Python must first be started via PythonHelpers::start().
          */
         void stop();
 
