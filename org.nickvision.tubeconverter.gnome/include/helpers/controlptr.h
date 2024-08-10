@@ -6,14 +6,11 @@
 
 namespace Nickvision::TubeConverter::GNOME::Helpers
 {
-    template<typename T>
-    concept DerivedControlBase = std::is_base_of_v<ControlBase, T>;
-
     /**
      * @brief A pointer for a custom gtk control.
      * @brief Keeps the pointer alive until the control has been destroyed.
      */
-    template<DerivedControlBase T>
+    template<typename T>
     class ControlPtr
     {
     public:

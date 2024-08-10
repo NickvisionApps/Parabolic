@@ -4,7 +4,9 @@
 #include <memory>
 #include <vector>
 #include <adwaita.h>
+#include "controls/downloadrow.h"
 #include "controllers/mainwindowcontroller.h"
+#include "helpers/controlptr.h"
 
 #define SET_ACCEL_FOR_ACTION(App, Action, Accel) { \
 const char* accels[2] { Accel, nullptr }; \
@@ -135,6 +137,7 @@ namespace Nickvision::TubeConverter::GNOME::Views
         AdwApplicationWindow* m_window;
         GSimpleAction* m_actAddDownload;
         std::vector<AdwActionRow*> m_historyRows;
+        std::unordered_map<int, Helpers::ControlPtr<Controls::DownloadRow>> m_downloadRows;
     };
 }
 

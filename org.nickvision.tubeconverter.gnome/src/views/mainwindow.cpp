@@ -1,13 +1,12 @@
 #include "views/mainwindow.h"
 #include <filesystem>
 #include <format>
+#include <libnick/app/appinfo.h>
 #include <libnick/helpers/codehelpers.h>
 #include <libnick/notifications/shellnotification.h>
 #include <libnick/localization/gettext.h>
 #include <libnick/system/environment.h>
-#include "controls/downloadrow.h"
 #include "helpers/builder.h"
-#include "helpers/controlptr.h"
 #include "helpers/dialogptr.h"
 #include "helpers/gtkhelpers.h"
 #include "views/adddownloaddialog.h"
@@ -129,6 +128,18 @@ namespace Nickvision::TubeConverter::GNOME::Views
     {
         if(!m_controller->canShutdown())
         {
+            AdwAlertDialog* dialog{ ADW_ALERT_DIALOG(adw_alert_dialog_new(_("Exit?"), _("There are downloads in progress. Are you sure you want to exit?"))) };
+            adw_alert_dialog_add_responses(dialog, "yes", _("Yes"), "no", _("No"), nullptr);
+            adw_alert_dialog_set_response_appearance(dialog, "yes", ADW_RESPONSE_DESTRUCTIVE);
+            adw_alert_dialog_set_default_response(dialog, "no");
+            adw_alert_dialog_set_close_response(dialog, "no");
+            g_signal_connect(dialog, "response", G_CALLBACK(+[](AdwAlertDialog* self, const char*, gpointer data)
+            {
+                MainWindow* mainWindow{ reinterpret_cast<MainWindow*>(data) };
+                mainWindow->m_controller->getDownloadManager().stopAllDownloads();
+                gtk_window_close(GTK_WINDOW(mainWindow->m_window));
+            }), this);
+            adw_dialog_present(ADW_DIALOG(dialog), GTK_WIDGET(m_window));
             return true;
         }
         int width;
