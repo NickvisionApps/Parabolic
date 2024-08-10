@@ -31,7 +31,7 @@
     <item>
      <widget class="QStackedWidget" name="viewStack">
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="pageHome">
        <layout class="QHBoxLayout" name="horizontalLayout_2">
@@ -97,6 +97,12 @@
           </item>
           <item>
            <widget class="QPushButton" name="btnHomeAddDownload">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>32</height>
+             </size>
+            </property>
             <property name="icon">
              <iconset theme="emblem-downloads"/>
             </property>
