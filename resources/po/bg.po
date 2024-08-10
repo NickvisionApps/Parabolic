@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-09 23:41-0400\n"
+"POT-Creation-Date: 2024-08-10 08:42-0400\n"
 "PO-Revision-Date: 2024-04-08 20:37+0000\n"
 "Last-Translator: twlvnn <kraft_werk@tutanota.com>\n"
 "Language-Team: Bulgarian <https://hosted.weblate.org/projects/nickvision-"
@@ -339,6 +339,42 @@ msgstr "Списък с песни"
 msgid "Number Titles"
 msgstr "Номериране на заглавията"
 
+#: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:50
+#, fuzzy
+msgid "View Log"
+msgstr "Показване на журнал"
+
+#. Localize Strings
+#: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:65
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:23
+#, fuzzy
+msgid "Stop"
+msgstr "Спряна"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:80
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:231
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:24
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:335
+msgid "Play"
+msgstr "Изпълнение"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:88
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:161
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:25
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:290
+#, fuzzy
+msgid "Open"
+msgstr "Отваряне на файл"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:100
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:26
+msgid "Retry"
+msgstr ""
+
+#: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:141
+msgid "Copy to Clipboard"
+msgstr "Копиране в буфера за обмен"
+
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:5
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:8
 #: org.nickvision.tubeconverter.gnome/blueprints/shortcuts_dialog.blp:30
@@ -371,7 +407,7 @@ msgid "Main Menu"
 msgstr "Основно меню"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:68
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:158
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:169
 msgid "Home"
 msgstr "Начало"
 
@@ -381,7 +417,7 @@ msgstr "Ключодържател"
 
 #. Localize History Dock
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:102
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:163
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:174
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:46
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:63
 msgid "History"
@@ -394,18 +430,19 @@ msgid "Downloads"
 msgstr "Изтегляния"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:131
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:168
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:179
 msgid "Downloading"
 msgstr "Изтегляне"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:148
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:173
+#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:21
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:184
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:34
 msgid "Queued"
 msgstr "В опашката"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:165
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:178
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:189
 msgid "Completed"
 msgstr "Завършено"
 
@@ -749,6 +786,19 @@ msgstr "Приложение"
 msgid "Quit"
 msgstr "Спиране на програмата"
 
+#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:13
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:18
+#, fuzzy
+msgid "Starting download..."
+msgstr "Спиране на изтеглянето"
+
+#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:24
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:38
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:77
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:114
+msgid "Running"
+msgstr ""
+
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:50
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:79
 msgid "Use manual credential"
@@ -767,7 +817,7 @@ msgid ""
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:108
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:187
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:198
 msgid "Close"
 msgstr "Затваряне"
 
@@ -776,39 +826,45 @@ msgstr "Затваряне"
 msgid "{} items"
 msgstr "{0} от {1} елемент"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:150
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:25
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:290
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:131
 #, fuzzy
-msgid "Open"
-msgstr "Отваряне на файл"
+msgid "Exit?"
+msgstr "Спиране на програмата"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:185
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:131
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:132
+#, fuzzy
+msgid "There are downloads in progress. Are you sure you want to exit?"
+msgstr "Това действие е необратимо. Сигурни ли сте, че искате да го изтриете?"
+
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:132
+msgid "Yes"
+msgstr "Да"
+
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:132
+msgid "No"
+msgstr "Не"
+
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:196
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:296
 msgid "Disclaimer"
 msgstr "Отказване от права"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:186
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:197
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:297
 msgid "Don't show this message again"
 msgstr "Това съобщение да не се показва повече"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:220
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:24
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:335
-msgid "Play"
-msgstr "Изпълнение"
-
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:239
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:250
 msgid "Download Again"
 msgstr "Изтегляне отново"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:252
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:263
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:323
 msgid "Delete"
 msgstr "Изтриване"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:348
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:359
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:54
 msgid "GitHub Repo"
 msgstr "GitHub проект"
@@ -843,27 +899,6 @@ msgstr ""
 "\n"
 "Преводачите:\n"
 "{3}"
-
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:18
-#, fuzzy
-msgid "Starting download..."
-msgstr "Спиране на изтеглянето"
-
-#. Localize Strings
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:23
-#, fuzzy
-msgid "Stop"
-msgstr "Спряна"
-
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:26
-msgid "Retry"
-msgstr ""
-
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:38
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:77
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:114
-msgid "Running"
-msgstr ""
 
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:71
 #, fuzzy
@@ -998,11 +1033,6 @@ msgstr ""
 msgid "Log"
 msgstr "Журнал"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:132
-#, fuzzy
-msgid "There are downloads in progress. Are you sure you want to exit?"
-msgstr "Това действие е необратимо. Сигурни ли сте, че искате да го изтриете?"
-
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:278
 msgid "Update"
 msgstr "Обновяване"
@@ -1104,9 +1134,6 @@ msgstr "Въведете адрес на сървър-посредник тук"
 
 #~ msgid "Cookies File Information"
 #~ msgstr "Информация за файла с бисквити"
-
-#~ msgid "Copy to Clipboard"
-#~ msgstr "Копиране в буфера за обмен"
 
 #~ msgid "Credits"
 #~ msgstr "Сътрудници"
@@ -1302,9 +1329,6 @@ msgstr "Въведете адрес на сървър-посредник тук"
 #~ msgid "Nicholas Logozzo"
 #~ msgstr "Nicholas Logozzo"
 
-#~ msgid "No"
-#~ msgstr "Не"
-
 #~ msgid "No active internet connection"
 #~ msgstr "Няма активна връзка към Интернета"
 
@@ -1475,9 +1499,6 @@ msgstr "Въведете адрес на сървър-посредник тук"
 #~ msgstr ""
 #~ "Искате ли да рестартирате {0}, за да приложите новата тема?\n"
 #~ "Незапазената работа ще бъде загубена."
-
-#~ msgid "Yes"
-#~ msgstr "Да"
 
 #~ msgctxt "subtitle"
 #~ msgid "all"

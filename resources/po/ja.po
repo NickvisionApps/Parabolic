@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-09 23:41-0400\n"
+"POT-Creation-Date: 2024-08-10 08:42-0400\n"
 "PO-Revision-Date: 2024-03-27 08:01+0000\n"
 "Last-Translator: Gnuey56 <gnuey56@proton.me>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -339,6 +339,42 @@ msgstr "再生リスト"
 msgid "Number Titles"
 msgstr "動画の数"
 
+#: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:50
+#, fuzzy
+msgid "View Log"
+msgstr "ログを見る"
+
+#. Localize Strings
+#: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:65
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:23
+#, fuzzy
+msgid "Stop"
+msgstr "一時停止中"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:80
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:231
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:24
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:335
+msgid "Play"
+msgstr "再生"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:88
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:161
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:25
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:290
+#, fuzzy
+msgid "Open"
+msgstr "ファイルを開く"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:100
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:26
+msgid "Retry"
+msgstr ""
+
+#: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:141
+msgid "Copy to Clipboard"
+msgstr "クリップボードへコピー"
+
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:5
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:8
 #: org.nickvision.tubeconverter.gnome/blueprints/shortcuts_dialog.blp:30
@@ -371,7 +407,7 @@ msgid "Main Menu"
 msgstr "メインメニュー"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:68
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:158
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:169
 msgid "Home"
 msgstr "ホーム"
 
@@ -381,7 +417,7 @@ msgstr "キーリング"
 
 #. Localize History Dock
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:102
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:163
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:174
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:46
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:63
 msgid "History"
@@ -394,18 +430,19 @@ msgid "Downloads"
 msgstr "ダウンロード"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:131
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:168
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:179
 msgid "Downloading"
 msgstr "ダウンロード中"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:148
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:173
+#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:21
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:184
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:34
 msgid "Queued"
 msgstr "停止中"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:165
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:178
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:189
 msgid "Completed"
 msgstr "完了済"
 
@@ -745,6 +782,19 @@ msgstr "アプリケーション"
 msgid "Quit"
 msgstr "閉じる"
 
+#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:13
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:18
+#, fuzzy
+msgid "Starting download..."
+msgstr "ダウンロードを停止"
+
+#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:24
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:38
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:77
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:114
+msgid "Running"
+msgstr ""
+
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:50
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:79
 msgid "Use manual credential"
@@ -763,7 +813,7 @@ msgid ""
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:108
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:187
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:198
 msgid "Close"
 msgstr "閉じる"
 
@@ -772,39 +822,45 @@ msgstr "閉じる"
 msgid "{} items"
 msgstr "{1} 個中 {0} 個のアイテム"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:150
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:25
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:290
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:131
 #, fuzzy
-msgid "Open"
-msgstr "ファイルを開く"
+msgid "Exit?"
+msgstr "終了"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:185
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:131
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:132
+#, fuzzy
+msgid "There are downloads in progress. Are you sure you want to exit?"
+msgstr "このアクションは取り消せません。本当に削除しますか？"
+
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:132
+msgid "Yes"
+msgstr "はい"
+
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:132
+msgid "No"
+msgstr "いいえ"
+
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:196
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:296
 msgid "Disclaimer"
 msgstr "免責事項"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:186
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:197
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:297
 msgid "Don't show this message again"
 msgstr "このメッセージを表示しない"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:220
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:24
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:335
-msgid "Play"
-msgstr "再生"
-
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:239
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:250
 msgid "Download Again"
 msgstr "もう一度ダウンロード"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:252
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:263
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:323
 msgid "Delete"
 msgstr "削除"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:348
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:359
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:54
 msgid "GitHub Repo"
 msgstr "GitHub リポジトリ"
@@ -839,27 +895,6 @@ msgstr ""
 "\n"
 "翻訳者:\n"
 "{3}"
-
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:18
-#, fuzzy
-msgid "Starting download..."
-msgstr "ダウンロードを停止"
-
-#. Localize Strings
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:23
-#, fuzzy
-msgid "Stop"
-msgstr "一時停止中"
-
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:26
-msgid "Retry"
-msgstr ""
-
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:38
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:77
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:114
-msgid "Running"
-msgstr ""
 
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:71
 #, fuzzy
@@ -993,11 +1028,6 @@ msgstr ""
 msgid "Log"
 msgstr "ログ"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:132
-#, fuzzy
-msgid "There are downloads in progress. Are you sure you want to exit?"
-msgstr "このアクションは取り消せません。本当に削除しますか？"
-
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:278
 msgid "Update"
 msgstr "アップデート"
@@ -1094,9 +1124,6 @@ msgstr "プロキシの URL を入力"
 
 #~ msgid "Cookies File Information"
 #~ msgstr "クッキーファイルの情報"
-
-#~ msgid "Copy to Clipboard"
-#~ msgstr "クリップボードへコピー"
 
 #~ msgid "Credits"
 #~ msgstr "クレジット"
@@ -1294,9 +1321,6 @@ msgstr "プロキシの URL を入力"
 #~ msgid "Nicholas Logozzo"
 #~ msgstr "Nicholas Logozzo"
 
-#~ msgid "No"
-#~ msgstr "いいえ"
-
 #~ msgid "No active internet connection"
 #~ msgstr "有効なインターネット接続がありません"
 
@@ -1468,9 +1492,6 @@ msgstr "プロキシの URL を入力"
 #~ msgstr ""
 #~ "{0} を再起動して新しいテーマを適用しますか？\n"
 #~ "保存されていない作業は失われます。"
-
-#~ msgid "Yes"
-#~ msgstr "はい"
 
 #~ msgctxt "subtitle"
 #~ msgid "all"

@@ -16,11 +16,13 @@ namespace Nickvision::TubeConverter::GNOME::Helpers
     public:
         /**
          * @brief Constructs a ControlBase.
+         * @param parent GtkWindow*
          * @param fileName The file name for the blueprint file of the control
          * @param rootName The name of the control component in the blueprint file
          */
-        ControlBase(const std::string& fileName, const std::string& rootName = "root")
+        ControlBase(GtkWindow* parent, const std::string& fileName, const std::string& rootName = "root")
             : m_builder{ BuilderHelpers::fromBlueprint(fileName) },
+            m_parent{ parent },
             m_control{ reinterpret_cast<T*>(gtk_builder_get_object(m_builder, rootName.c_str())) }
         {
 
@@ -41,8 +43,9 @@ namespace Nickvision::TubeConverter::GNOME::Helpers
             return m_control;
         }
         
-    private:
+    protected:
         GtkBuilder* m_builder;
+        GtkWindow* m_parent;
         T* m_control;
     };
 }
