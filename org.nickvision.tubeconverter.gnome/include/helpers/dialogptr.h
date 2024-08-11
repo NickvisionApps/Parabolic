@@ -19,6 +19,14 @@ namespace Nickvision::TubeConverter::GNOME::Helpers
     public:
         /**
          * @brief Constructs a DialogPtr.
+         */
+        DialogPtr()
+            : m_ptr{ nullptr }
+        {
+
+        }
+        /**
+         * @brief Constructs a DialogPtr.
          * @param args The arguments to pass to T's constructor.
          */
         template<typename... Args>
@@ -56,6 +64,14 @@ namespace Nickvision::TubeConverter::GNOME::Helpers
 
         }
         /**
+         * @brief Gets whether or not the DialogPtr is valid.
+         * @return True if valid, else false
+         */
+        bool isValid() const
+        {
+            return m_ptr != nullptr;
+        }
+        /**
          * @brief Returns the underlying pointer.
          * @return T*
          */
@@ -82,6 +98,14 @@ namespace Nickvision::TubeConverter::GNOME::Helpers
         {
             m_ptr = other.m_ptr;
             return *this;
+        }
+        /**
+         * @brief Gets whether or not the DialogPtr is valid.
+         * @return True if valid, else false
+         */
+        operator bool() const
+        {
+            return isValid();
         }
 
     private:
