@@ -85,6 +85,7 @@ namespace Nickvision::TubeConverter::GNOME::Controls
         std::filesystem::path m_path;
         Events::Event<Events::ParamEventArgs<int>> m_stopped;
         Events::Event<Events::ParamEventArgs<int>> m_retried;
+        bool m_pulseBar;
     };
 }
 

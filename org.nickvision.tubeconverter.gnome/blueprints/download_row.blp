@@ -13,13 +13,12 @@ Adw.Bin root {
       spacing: 6;
 
       Gtk.Image statusIcon {
-        icon-name: "folder-download-symbolic";
         pixel-size: 16;
         margin-start: 12;
         margin-end: 6;
         valign: center;
 
-        styles [ "status-icon", "stopped" ]
+        styles [ "status-icon" ]
       }
 
       Gtk.Box {
@@ -112,13 +111,8 @@ Adw.Bin root {
       margin-bottom: 12;
 
       Adw.ViewStackPage {
-        name: "downloading";
+        name: "running";
         child: Gtk.ProgressBar progBar { };
-      }
-
-      Adw.ViewStackPage {
-        name: "processing";
-        child: Gtk.ProgressBar pulseBar { };
       }
 
       Adw.ViewStackPage {
@@ -146,7 +140,7 @@ Adw.Bin root {
       Gtk.ScrolledWindow {
         height-request: 100;
 
-        child: Gtk.TextView logLabel {
+        child: Gtk.TextView logView {
           left-margin: 12;
           top-margin: 6;
           bottom-margin: 6;

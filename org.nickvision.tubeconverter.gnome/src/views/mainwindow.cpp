@@ -274,32 +274,52 @@ namespace Nickvision::TubeConverter::GNOME::Views
 
     void MainWindow::onDownloadAdded(const DownloadAddedEventArgs& args)
     {
-
+        gtk_list_box_select_row(GTK_LIST_BOX(gtk_builder_get_object(m_builder, "listNavItems")), gtk_list_box_get_row_at_index(GTK_LIST_BOX(gtk_builder_get_object(m_builder, "listNavItems")), Pages::Downloading));
+        ControlPtr<DownloadRow> row{ args, GTK_WINDOW(m_window) };
+        row->stopped() += [this](const ParamEventArgs<int>& args){ m_controller->getDownloadManager().stopDownload(args.getParam()); };
+        row->retried() += [this](const ParamEventArgs<int>& args){ m_controller->getDownloadManager().retryDownload(args.getParam()); };
+        if(args.getStatus() == DownloadStatus::Queued)
+        {
+            gtk_list_box_insert(GTK_LIST_BOX(gtk_builder_get_object(m_builder, "listQueued")), GTK_WIDGET(row->get()), 0);
+        }
+        else
+        {
+            gtk_list_box_insert(GTK_LIST_BOX(gtk_builder_get_object(m_builder, "listDownloading")), GTK_WIDGET(row->get()), 0);
+        }
+        m_downloadRows[args.getId()] = row;
     }
 
     void MainWindow::onDownloadCompleted(const DownloadCompletedEventArgs& args)
     {
-
+        m_downloadRows[args.getId()]->setCompleteState(args);
+        gtk_list_box_remove(GTK_LIST_BOX(gtk_builder_get_object(m_builder, "listDownloading")), GTK_WIDGET(m_downloadRows[args.getId()]->get()));
+        gtk_list_box_insert(GTK_LIST_BOX(gtk_builder_get_object(m_builder, "listCompleted")), GTK_WIDGET(m_downloadRows[args.getId()]->get()), 0);
     }
 
     void MainWindow::onDownloadProgressChanged(const DownloadProgressChangedEventArgs& args)
     {
-
+        m_downloadRows[args.getId()]->setProgressState(args);
     }
 
     void MainWindow::onDownloadStopped(const ParamEventArgs<int>& args)
     {
-
+        m_downloadRows[args.getParam()]->setStopState();
+        gtk_list_box_remove(GTK_LIST_BOX(gtk_builder_get_object(m_builder, "listDownloading")), GTK_WIDGET(m_downloadRows[args.getParam()]->get()));
+        gtk_list_box_insert(GTK_LIST_BOX(gtk_builder_get_object(m_builder, "listCompleted")), GTK_WIDGET(m_downloadRows[args.getParam()]->get()), 0);
     }
 
     void MainWindow::onDownloadRetried(const ParamEventArgs<int>& args)
     {
-
+        m_downloadRows[args.getParam()]->setStartFromQueueState();
+        gtk_list_box_remove(GTK_LIST_BOX(gtk_builder_get_object(m_builder, "listCompleted")), GTK_WIDGET(m_downloadRows[args.getParam()]->get()));
+        gtk_list_box_insert(GTK_LIST_BOX(gtk_builder_get_object(m_builder, "listDownloading")), GTK_WIDGET(m_downloadRows[args.getParam()]->get()), 0);
     }
 
     void MainWindow::onDownloadStartedFromQueue(const ParamEventArgs<int>& args)
     {
-
+        m_downloadRows[args.getParam()]->setStartFromQueueState();
+        gtk_list_box_remove(GTK_LIST_BOX(gtk_builder_get_object(m_builder, "listQueued")), GTK_WIDGET(m_downloadRows[args.getParam()]->get()));
+        gtk_list_box_insert(GTK_LIST_BOX(gtk_builder_get_object(m_builder, "listDownloading")), GTK_WIDGET(m_downloadRows[args.getParam()]->get()), 0);
     }
 
     void MainWindow::quit()

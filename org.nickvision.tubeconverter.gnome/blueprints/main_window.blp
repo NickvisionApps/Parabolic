@@ -244,22 +244,37 @@ Adw.ApplicationWindow root {
 
             Adw.ViewStackPage {
               name: "downloading";
-              child: Gtk.Box {
-
+              child: Adw.Clamp {
+                maximum-size: 600;
+                child: Gtk.Box listDownloading {
+                  orientation: vertical;
+                  
+                  styles [ "card" ]
+                };
               };
             }
 
             Adw.ViewStackPage {
               name: "queued";
-              child: Gtk.Box {
-
+              child: Adw.Clamp {
+                maximum-size: 600;
+                child: Gtk.Box listQueued {
+                  orientation: vertical;
+                  
+                  styles [ "card" ]
+                };
               };
             }
 
             Adw.ViewStackPage {
               name: "completed";
-              child: Gtk.Box {
-
+              child: Adw.Clamp {
+                maximum-size: 600;
+                child: Gtk.Box listCompleted {
+                  orientation: vertical;
+                  
+                  styles [ "card" ]
+                };
               };
             }
           };
