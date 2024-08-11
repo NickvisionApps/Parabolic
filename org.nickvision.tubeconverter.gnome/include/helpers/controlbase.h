@@ -21,30 +21,23 @@ namespace Nickvision::TubeConverter::GNOME::Helpers
          * @param rootName The name of the control component in the blueprint file
          */
         ControlBase(GtkWindow* parent, const std::string& fileName, const std::string& rootName = "root")
-            : m_builder{ BuilderHelpers::fromBlueprint(fileName) },
+            : m_builder{ fileName },
             m_parent{ parent },
-            m_control{ reinterpret_cast<T*>(gtk_builder_get_object(m_builder, rootName.c_str())) }
+            m_control{ m_builder.get<T>(rootName) } 
         {
 
-        }
-        /**
-         * @brief Destructs a ControlBase.
-         */
-        virtual ~ControlBase()
-        {
-            g_object_unref(m_builder);
         }
         /**
          * @brief Gets the underlying control pointer.
          * @return T*
          */
-        T* get()
+        T* gobj()
         {
             return m_control;
         }
         
     protected:
-        GtkBuilder* m_builder;
+        Builder m_builder;
         GtkWindow* m_parent;
         T* m_control;
     };

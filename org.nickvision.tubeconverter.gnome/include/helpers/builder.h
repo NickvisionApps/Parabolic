@@ -4,15 +4,45 @@
 #include <string>
 #include <adwaita.h>
 
-namespace Nickvision::TubeConverter::GNOME::BuilderHelpers
+namespace Nickvision::TubeConverter::GNOME::Helpers
 {
     /**
-     * @brief Gets a GtkBuilder object for a compiled blueprint ui file.
-     * @brief Compiled blueprint ui files (.ui not .blp) should be stored in the path: "Current_Running_Direction/ui/blueprint_file_name.ui".
-     * @param blueprint The name of the blueprint ui file
-     * @return The GtkBiilder object for the blueprint file or nullptr on error
+     * @brief A helper class wrapping GtkBuilder functionality.
      */
-    GtkBuilder* fromBlueprint(const std::string& blueprint);
+    class Builder
+    {
+    public:
+        /**
+         * @brief Constructs a Builder.
+         * @brief Looks for the ui file with the path: "{CURRENT_DIRECTORY}/ui/{uiFileName}.ui"
+         * @param uiFileName The name of the ui file
+         * @throw std::invalid_argument Thrown if the file does not exist
+         * @throw std::runtime_error Thrown if unable to create the GtkBuilder object
+         */
+        Builder(const std::string& uiFileName);
+        /**
+         * @brief Destructs a Builder.
+         */
+        ~Builder();
+        /**
+         * @brief Gets the GtkBuilder object.
+         * @return The GtkBuilder object
+         */
+        GtkBuilder* gobj() const;
+        /**
+         * @brief Gets a widget from the GtkBuilder object.
+         * @param name The name of the widget
+         * @return The widget or nullptr if not found
+         */
+        template<typename T>
+        T* get(const std::string& name) const
+        {
+            return reinterpret_cast<T*>(gtk_builder_get_object(m_builder, name.c_str()));
+        }
+
+    private:
+        GtkBuilder* m_builder;
+    };
 }
 
 #endif //BUILDER_H

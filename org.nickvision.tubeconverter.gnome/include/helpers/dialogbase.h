@@ -5,6 +5,7 @@
 #include <adwaita.h>
 #include <libnick/events/event.h>
 #include <libnick/events/eventargs.h>
+#include "builder.h"
 
 namespace Nickvision::TubeConverter::GNOME::Helpers
 {
@@ -29,7 +30,7 @@ namespace Nickvision::TubeConverter::GNOME::Helpers
          * @brief Gets the underlying AdwDialog pointer.
          * @return AdwDialog*
          */
-        AdwDialog* get();
+        AdwDialog* gobj();
         /**
          * @brief Gets the event for when the dialog is closed.
          * @return The closed event
@@ -41,7 +42,7 @@ namespace Nickvision::TubeConverter::GNOME::Helpers
         void present() const;
 
     protected:
-        GtkBuilder* m_builder;
+        Builder m_builder;
         GtkWindow* m_parent;
         AdwDialog* m_dialog;
         Nickvision::Events::Event<Nickvision::Events::EventArgs> m_closed;

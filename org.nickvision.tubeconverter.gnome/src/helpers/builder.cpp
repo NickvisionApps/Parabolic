@@ -7,14 +7,15 @@
 
 using namespace Nickvision::System;
 
-namespace Nickvision::TubeConverter::GNOME
+namespace Nickvision::TubeConverter::GNOME::Helpers
 {
-    GtkBuilder* BuilderHelpers::fromBlueprint(const std::string& blueprint)
+    Builder::Builder(const std::string& uiFileName)
+        : m_builder{ nullptr }
     {
-        std::filesystem::path path{ Environment::getExecutableDirectory() / "ui" / (blueprint + ".ui") };
+        std::filesystem::path path{ Environment::getExecutableDirectory() / "ui" / (uiFileName + ".ui") };
         if(!std::filesystem::exists(path))
         {
-            throw std::runtime_error("UI file not found: " + path.string());
+            throw std::invalid_argument("UI file not found: " + path.string());
         }
         xmlpp::DomParser xml{ path.string() };
         xmlpp::Element* root{ xml.get_document()->get_root_node() };
@@ -37,6 +38,20 @@ namespace Nickvision::TubeConverter::GNOME
                 }
             }
         }
-        return gtk_builder_new_from_string(xml.get_document()->write_to_string().c_str(), -1);
+        m_builder = gtk_builder_new_from_string(xml.get_document()->write_to_string().c_str(), -1);
+        if(!m_builder)
+        {
+            throw std::runtime_error("Unable to create GtkBuilder object.");
+        }
+    }
+
+    Builder::~Builder()
+    {
+        g_object_unref(m_builder);
+    }
+
+    GtkBuilder* Builder::gobj() const
+    {
+        return m_builder;
     }
 }

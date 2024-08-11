@@ -25,7 +25,7 @@ namespace Nickvision::TubeConverter::GNOME::Helpers
         DialogPtr(Args... args)
             : m_ptr{ new T(args...) }
         {
-            g_signal_connect(m_ptr->get(), "closed", GCallback(+[](AdwDialog*, gpointer data){ delete reinterpret_cast<T*>(data); }), m_ptr);
+            g_signal_connect(m_ptr->gobj(), "closed", GCallback(+[](AdwDialog*, gpointer data){ delete reinterpret_cast<T*>(data); }), m_ptr);
         }
         /**
          * @brief Constructs a DialogPtr.
@@ -35,7 +35,25 @@ namespace Nickvision::TubeConverter::GNOME::Helpers
         DialogPtr(T* ptr)
             : m_ptr{ ptr }
         {
-            g_signal_connect(m_ptr->get(), "closed", GCallback(+[](AdwDialog*, gpointer data){ delete reinterpret_cast<T*>(data); }), m_ptr);
+            g_signal_connect(m_ptr->gobj(), "closed", GCallback(+[](AdwDialog*, gpointer data){ delete reinterpret_cast<T*>(data); }), m_ptr);
+        }
+        /**
+         * @brief Constructs a DialogPtr via copy.
+         * @param other The DialogPtr to copy
+         */
+        DialogPtr(const DialogPtr& other)
+            : m_ptr{ other.m_ptr }
+        {
+
+        }
+        /**
+         * @brief Constructs a DialogPtr via move.
+         * @param other The DialogPtr to move
+         */
+        DialogPtr(DialogPtr&& other)
+            : m_ptr{ other.m_ptr }
+        {
+
         }
         /**
          * @brief Returns the underlying pointer.
@@ -44,6 +62,26 @@ namespace Nickvision::TubeConverter::GNOME::Helpers
         T* operator->()
         {
             return m_ptr;
+        }
+        /**
+         * @brief Assigns a DialogPtr via copy.
+         * @param other The DialogPtr to copy
+         * @return this
+         */
+        DialogPtr& operator=(const DialogPtr& other)
+        {
+            m_ptr = other.m_ptr;
+            return *this;
+        }
+        /**
+         * @brief Assigns a DialogPtr via move.
+         * @param other The DialogPtr to move
+         * @return this
+         */
+        DialogPtr& operator=(DialogPtr&& other)
+        {
+            m_ptr = other.m_ptr;
+            return *this;
         }
 
     private:

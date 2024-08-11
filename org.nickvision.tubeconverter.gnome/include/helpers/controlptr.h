@@ -22,7 +22,7 @@ namespace Nickvision::TubeConverter::GNOME::Helpers
         ControlPtr(Args... args)
             : m_ptr{ new T(args...) }
         {
-            g_signal_connect(m_ptr->get(), "destroy", GCallback(+[](GtkWidget*, gpointer data){ delete reinterpret_cast<T*>(data); }), m_ptr);
+            g_signal_connect(m_ptr->gobj(), "destroy", GCallback(+[](GtkWidget*, gpointer data){ delete reinterpret_cast<T*>(data); }), m_ptr);
         }
         /**
          * @brief Constructs a ControlPtr.
@@ -32,7 +32,25 @@ namespace Nickvision::TubeConverter::GNOME::Helpers
         ControlPtr(T* ptr)
             : m_ptr{ ptr }
         {
-            g_signal_connect(m_ptr->get(), "destroy", GCallback(+[](GtkWidget*, gpointer data){ delete reinterpret_cast<T*>(data); }), m_ptr);
+            g_signal_connect(m_ptr->gobj(), "destroy", GCallback(+[](GtkWidget*, gpointer data){ delete reinterpret_cast<T*>(data); }), m_ptr);
+        }
+        /**
+         * @brief Constructs a ControlPtr via copy.
+         * @param other The ControlPtr to copy
+         */
+        ControlPtr(const ControlPtr& other)
+            : m_ptr{ other.m_ptr }
+        {
+
+        }
+        /**
+         * @brief Constructs a ControlPtr via move.
+         * @param other The ControlPtr to move
+         */
+        ControlPtr(ControlPtr&& other)
+            : m_ptr{ other.m_ptr }
+        {
+
         }
         /**
          * @brief Returns the underlying pointer.
@@ -41,6 +59,26 @@ namespace Nickvision::TubeConverter::GNOME::Helpers
         T* operator->()
         {
             return m_ptr;
+        }
+        /**
+         * @brief Assigns a ControlPtr via copy.
+         * @param other The ControlPtr to copy
+         * @return this
+         */
+        ControlPtr& operator=(const ControlPtr& other)
+        {
+            m_ptr = other.m_ptr;
+            return *this;
+        }
+        /**
+         * @brief Assigns a ControlPtr via move.
+         * @param other The ControlPtr to move
+         * @return this
+         */
+        ControlPtr& operator=(ControlPtr&& other)
+        {
+            m_ptr = other.m_ptr;
+            return *this;
         }
 
     private:

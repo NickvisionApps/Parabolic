@@ -14,24 +14,13 @@ using namespace Nickvision::TubeConverter::Shared::Models;
 
 namespace Nickvision::TubeConverter::GNOME::Views
 {
-    static void setComboRowModel(AdwComboRow* row, const std::vector<std::string>& strs)
-    {
-        GtkStringList* list{ gtk_string_list_new(nullptr) };
-        for(const std::string& str : strs)
-        {
-            gtk_string_list_append(list, str.c_str());
-        }
-        adw_combo_row_set_model(row, G_LIST_MODEL(list));
-        adw_combo_row_set_selected(row, 0);
-    }
-
     AddDownloadDialog::AddDownloadDialog(const std::shared_ptr<AddDownloadDialogController>& controller, GtkWindow* parent)
         : DialogBase{ parent, "add_download_dialog" },
         m_controller{ controller }
     {
         //Load Validate Page
-        gtk_widget_set_sensitive(GTK_WIDGET(gtk_builder_get_object(m_builder, "validateUrlButton")), false);
-        adw_view_stack_set_visible_child_name(ADW_VIEW_STACK(gtk_builder_get_object(m_builder, "viewStack")), "validate");
+        gtk_widget_set_sensitive(m_builder.get<GtkWidget>("validateUrlButton"), false);
+        adw_view_stack_set_visible_child_name(m_builder.get<AdwViewStack>("viewStack"), "validate");
         gdk_clipboard_read_text_async(gdk_display_get_clipboard(gdk_display_get_default()), nullptr, GAsyncReadyCallback(+[](GObject* self, GAsyncResult* res, gpointer data)
         {
             char* clipboardText{ gdk_clipboard_read_text_finish(GDK_CLIPBOARD(self), res, nullptr) };
@@ -40,63 +29,64 @@ namespace Nickvision::TubeConverter::GNOME::Views
                 std::string url{ clipboardText };
                 if(StringHelpers::isValidUrl(url))
                 {
-                    gtk_editable_set_text(GTK_EDITABLE(gtk_builder_get_object(GTK_BUILDER(data), "urlRow")), url.c_str());
-                    gtk_widget_set_sensitive(GTK_WIDGET(gtk_builder_get_object(GTK_BUILDER(data), "validateUrlButton")), true);
+                    Builder* builder{ reinterpret_cast<Builder*>(data) };
+                    gtk_editable_set_text(builder->get<GtkEditable>("urlRow"), url.c_str());
+                    gtk_widget_set_sensitive(builder->get<GtkWidget>("validateUrlButton"), true);
                 }
                 g_free(clipboardText);
             }
-        }), m_builder);
+        }), &m_builder);
         std::vector<std::string> credentialNames{ m_controller->getKeyringCredentialNames() };
         credentialNames.insert(credentialNames.begin(), _("Use manual credential"));
-        setComboRowModel(ADW_COMBO_ROW(gtk_builder_get_object(m_builder, "credentialRow")), credentialNames);
+        GtkHelpers::setComboRowModel(m_builder.get<AdwComboRow>("credentialRow"), credentialNames);
         //Signals
-        g_signal_connect(gtk_builder_get_object(m_builder, "urlRow"), "changed", G_CALLBACK(+[](GtkEditable*, gpointer data){ reinterpret_cast<AddDownloadDialog*>(data)->onTxtUrlChanged(); }), this);
-        g_signal_connect(gtk_builder_get_object(m_builder, "credentialRow"), "notify::selected-item", G_CALLBACK(+[](GObject*, GParamSpec* pspec, gpointer data){ reinterpret_cast<AddDownloadDialog*>(data)->onCmbCredentialChanged(); }), this);
-        g_signal_connect(gtk_builder_get_object(m_builder, "validateUrlButton"), "clicked", G_CALLBACK(+[](GtkButton*, gpointer data){ reinterpret_cast<AddDownloadDialog*>(data)->validateUrl(); }), this);
-        g_signal_connect(gtk_builder_get_object(m_builder, "backButton"), "clicked", G_CALLBACK(+[](GtkButton*, gpointer data){ reinterpret_cast<AddDownloadDialog*>(data)->back(); }), this);
-        g_signal_connect(gtk_builder_get_object(m_builder, "fileTypeSingleRow"), "notify::selected-item", G_CALLBACK(+[](GObject*, GParamSpec* pspec, gpointer data){ reinterpret_cast<AddDownloadDialog*>(data)->onFileTypeSingleChanged(); }), this);
-        g_signal_connect(gtk_builder_get_object(m_builder, "advancedOptionsSingleRow"), "activated", G_CALLBACK(+[](AdwActionRow*, gpointer data){ reinterpret_cast<AddDownloadDialog*>(data)->advancedOptionsSingle(); }), this);
-        g_signal_connect(gtk_builder_get_object(m_builder, "selectSaveFolderSingleButton"), "clicked", G_CALLBACK(+[](GtkButton*, gpointer data){ reinterpret_cast<AddDownloadDialog*>(data)->selectSaveFolderSingle(); }), this);
-        g_signal_connect(gtk_builder_get_object(m_builder, "revertFilenameSingleButton"), "clicked", G_CALLBACK(+[](GtkButton*, gpointer data){ reinterpret_cast<AddDownloadDialog*>(data)->revertFilenameSingle(); }), this);
-        g_signal_connect(gtk_builder_get_object(m_builder, "revertStartTimeSingleButton"), "clicked", G_CALLBACK(+[](GtkButton*, gpointer data){ reinterpret_cast<AddDownloadDialog*>(data)->revertStartTimeSingle(); }), this);
-        g_signal_connect(gtk_builder_get_object(m_builder, "revertEndTimeSingleButton"), "clicked", G_CALLBACK(+[](GtkButton*, gpointer data){ reinterpret_cast<AddDownloadDialog*>(data)->revertEndTimeSingle(); }), this);
-        g_signal_connect(gtk_builder_get_object(m_builder, "downloadSingleButton"), "clicked", G_CALLBACK(+[](GtkButton*, gpointer data){ reinterpret_cast<AddDownloadDialog*>(data)->downloadSingle(); }), this);
-        g_signal_connect(gtk_builder_get_object(m_builder, "selectSaveFolderPlaylistButton"), "clicked", G_CALLBACK(+[](GtkButton*, gpointer data){ reinterpret_cast<AddDownloadDialog*>(data)->selectSaveFolderPlaylist(); }), this);
-        g_signal_connect(gtk_builder_get_object(m_builder, "itemsPlaylistRow"), "activated", G_CALLBACK(+[](AdwActionRow*, gpointer data){ reinterpret_cast<AddDownloadDialog*>(data)->itemsPlaylist(); }), this);
-        g_signal_connect(gtk_builder_get_object(m_builder, "numberTitlesPlaylistRow"), "notify::active", G_CALLBACK(+[](GObject*, GParamSpec* pspec, gpointer data){ reinterpret_cast<AddDownloadDialog*>(data)->onNumberTitlesPlaylistChanged(); }), this);
-        g_signal_connect(gtk_builder_get_object(m_builder, "downloadPlaylistButton"), "clicked", G_CALLBACK(+[](GtkButton*, gpointer data){ reinterpret_cast<AddDownloadDialog*>(data)->downloadPlaylist(); }), this);
+        g_signal_connect(m_builder.get<GObject>("urlRow"), "changed", G_CALLBACK(+[](GtkEditable*, gpointer data){ reinterpret_cast<AddDownloadDialog*>(data)->onTxtUrlChanged(); }), this);
+        g_signal_connect(m_builder.get<GObject>("credentialRow"), "notify::selected-item", G_CALLBACK(+[](GObject*, GParamSpec* pspec, gpointer data){ reinterpret_cast<AddDownloadDialog*>(data)->onCmbCredentialChanged(); }), this);
+        g_signal_connect(m_builder.get<GObject>("validateUrlButton"), "clicked", G_CALLBACK(+[](GtkButton*, gpointer data){ reinterpret_cast<AddDownloadDialog*>(data)->validateUrl(); }), this);
+        g_signal_connect(m_builder.get<GObject>("backButton"), "clicked", G_CALLBACK(+[](GtkButton*, gpointer data){ reinterpret_cast<AddDownloadDialog*>(data)->back(); }), this);
+        g_signal_connect(m_builder.get<GObject>("fileTypeSingleRow"), "notify::selected-item", G_CALLBACK(+[](GObject*, GParamSpec* pspec, gpointer data){ reinterpret_cast<AddDownloadDialog*>(data)->onFileTypeSingleChanged(); }), this);
+        g_signal_connect(m_builder.get<GObject>("advancedOptionsSingleRow"), "activated", G_CALLBACK(+[](AdwActionRow*, gpointer data){ reinterpret_cast<AddDownloadDialog*>(data)->advancedOptionsSingle(); }), this);
+        g_signal_connect(m_builder.get<GObject>("selectSaveFolderSingleButton"), "clicked", G_CALLBACK(+[](GtkButton*, gpointer data){ reinterpret_cast<AddDownloadDialog*>(data)->selectSaveFolderSingle(); }), this);
+        g_signal_connect(m_builder.get<GObject>("revertFilenameSingleButton"), "clicked", G_CALLBACK(+[](GtkButton*, gpointer data){ reinterpret_cast<AddDownloadDialog*>(data)->revertFilenameSingle(); }), this);
+        g_signal_connect(m_builder.get<GObject>("revertStartTimeSingleButton"), "clicked", G_CALLBACK(+[](GtkButton*, gpointer data){ reinterpret_cast<AddDownloadDialog*>(data)->revertStartTimeSingle(); }), this);
+        g_signal_connect(m_builder.get<GObject>("revertEndTimeSingleButton"), "clicked", G_CALLBACK(+[](GtkButton*, gpointer data){ reinterpret_cast<AddDownloadDialog*>(data)->revertEndTimeSingle(); }), this);
+        g_signal_connect(m_builder.get<GObject>("downloadSingleButton"), "clicked", G_CALLBACK(+[](GtkButton*, gpointer data){ reinterpret_cast<AddDownloadDialog*>(data)->downloadSingle(); }), this);
+        g_signal_connect(m_builder.get<GObject>("selectSaveFolderPlaylistButton"), "clicked", G_CALLBACK(+[](GtkButton*, gpointer data){ reinterpret_cast<AddDownloadDialog*>(data)->selectSaveFolderPlaylist(); }), this);
+        g_signal_connect(m_builder.get<GObject>("itemsPlaylistRow"), "activated", G_CALLBACK(+[](AdwActionRow*, gpointer data){ reinterpret_cast<AddDownloadDialog*>(data)->itemsPlaylist(); }), this);
+        g_signal_connect(m_builder.get<GObject>("numberTitlesPlaylistRow"), "notify::active", G_CALLBACK(+[](GObject*, GParamSpec* pspec, gpointer data){ reinterpret_cast<AddDownloadDialog*>(data)->onNumberTitlesPlaylistChanged(); }), this);
+        g_signal_connect(m_builder.get<GObject>("downloadPlaylistButton"), "clicked", G_CALLBACK(+[](GtkButton*, gpointer data){ reinterpret_cast<AddDownloadDialog*>(data)->downloadPlaylist(); }), this);
         m_controller->urlValidated() += [this](const EventArgs& args){ GtkHelpers::dispatchToMainThread([this]{ onUrlValidated(); }); };
     }
 
     void AddDownloadDialog::onTxtUrlChanged()
     {
-        std::string url{ gtk_editable_get_text(GTK_EDITABLE(gtk_builder_get_object(m_builder, "urlRow"))) };
-        gtk_widget_set_sensitive(GTK_WIDGET(gtk_builder_get_object(m_builder, "validateUrlButton")), StringHelpers::isValidUrl(url));
+        std::string url{ gtk_editable_get_text(m_builder.get<GtkEditable>("urlRow")) };
+        gtk_widget_set_sensitive(m_builder.get<GtkWidget>("validateUrlButton"), StringHelpers::isValidUrl(url));
     }
 
     void AddDownloadDialog::onCmbCredentialChanged()
     {
-        bool visible{ adw_combo_row_get_selected(ADW_COMBO_ROW(gtk_builder_get_object(m_builder, "credentialRow"))) == 0 };
-        gtk_widget_set_visible(GTK_WIDGET(gtk_builder_get_object(m_builder, "usernameRow")), visible);
-        gtk_widget_set_visible(GTK_WIDGET(gtk_builder_get_object(m_builder, "passwordRow")), visible);
+        bool visible{ adw_combo_row_get_selected(m_builder.get<AdwComboRow>("credentialRow")) == 0 };
+        gtk_widget_set_visible(m_builder.get<GtkWidget>("usernameRow"), visible);
+        gtk_widget_set_visible(m_builder.get<GtkWidget>("passwordRow"), visible);
     }
 
     void AddDownloadDialog::validateUrl()
     {
         adw_dialog_set_can_close(m_dialog, false);
-        adw_view_stack_set_visible_child_name(ADW_VIEW_STACK(gtk_builder_get_object(m_builder, "viewStack")), "spinner");
+        adw_view_stack_set_visible_child_name(m_builder.get<AdwViewStack>("viewStack"), "spinner");
         std::optional<Credential> credential{ std::nullopt };
-        if(adw_expander_row_get_enable_expansion(ADW_EXPANDER_ROW(gtk_builder_get_object(m_builder, "authenticateRow"))) && adw_combo_row_get_selected(ADW_COMBO_ROW(gtk_builder_get_object(m_builder, "credentialRow"))) == 0)
+        if(adw_expander_row_get_enable_expansion(m_builder.get<AdwExpanderRow>("authenticateRow")) && adw_combo_row_get_selected(m_builder.get<AdwComboRow>("credentialRow")) == 0)
         {
-            credential = Credential{ "", "", gtk_editable_get_text(GTK_EDITABLE(gtk_builder_get_object(m_builder, "usernameRow"))), gtk_editable_get_text(GTK_EDITABLE(gtk_builder_get_object(m_builder, "passwordRow"))) };
+            credential = Credential{ "", "", gtk_editable_get_text(m_builder.get<GtkEditable>("usernameRow")), gtk_editable_get_text(m_builder.get<GtkEditable>("passwordRow")) };
         }
-        if(adw_combo_row_get_selected(ADW_COMBO_ROW(gtk_builder_get_object(m_builder, "credentialRow"))) == 0)
+        if(adw_combo_row_get_selected(m_builder.get<AdwComboRow>("credentialRow")) == 0)
         {
-            m_controller->validateUrl(gtk_editable_get_text(GTK_EDITABLE(gtk_builder_get_object(m_builder, "urlRow"))), credential);
+            m_controller->validateUrl(gtk_editable_get_text(m_builder.get<GtkEditable>("urlRow")), credential);
         }
         else
         {
-            m_controller->validateUrl(gtk_editable_get_text(GTK_EDITABLE(gtk_builder_get_object(m_builder, "urlRow"))), adw_combo_row_get_selected(ADW_COMBO_ROW(gtk_builder_get_object(m_builder, "credentialRow"))) - 1);
+            m_controller->validateUrl(gtk_editable_get_text(m_builder.get<GtkEditable>("urlRow")), adw_combo_row_get_selected(m_builder.get<AdwComboRow>("credentialRow")) - 1);
         }
     }
 
@@ -110,36 +100,38 @@ namespace Nickvision::TubeConverter::GNOME::Views
             adw_alert_dialog_set_default_response(dialog, "close");
             adw_dialog_present(ADW_DIALOG(dialog), GTK_WIDGET(m_parent));
             adw_dialog_set_can_close(m_dialog, true);
-            adw_view_stack_set_visible_child_name(ADW_VIEW_STACK(gtk_builder_get_object(m_builder, "viewStack")), "validate");
+            adw_view_stack_set_visible_child_name(m_builder.get<AdwViewStack>("viewStack"), "validate");
             return;
         }
         adw_dialog_set_can_close(m_dialog, true);
         if(!m_controller->isUrlPlaylist())
         {
-            adw_view_stack_set_visible_child_name(ADW_VIEW_STACK(gtk_builder_get_object(m_builder, "viewStack")), "download-single");
-            setComboRowModel(ADW_COMBO_ROW(gtk_builder_get_object(m_builder, "fileTypeSingleRow")), m_controller->getFileTypeStrings());
-            adw_combo_row_set_selected(ADW_COMBO_ROW(gtk_builder_get_object(m_builder, "fileTypeSingleRow")), static_cast<unsigned int>(m_controller->getPreviousDownloadOptions().getFileType()));
-            setComboRowModel(ADW_COMBO_ROW(gtk_builder_get_object(m_builder, "qualitySingleRow")), m_controller->getQualityStrings(static_cast<size_t>(adw_combo_row_get_selected(ADW_COMBO_ROW(gtk_builder_get_object(m_builder, "fileTypeSingleRow"))))));
-            setComboRowModel(ADW_COMBO_ROW(gtk_builder_get_object(m_builder, "audioLanguageSingleRow")), m_controller->getAudioLanguageStrings());
-            adw_switch_row_set_active(ADW_SWITCH_ROW(gtk_builder_get_object(m_builder, "downloadSubtitlesSingleRow")), m_controller->getPreviousDownloadOptions().getDownloadSubtitles());
-            adw_action_row_set_subtitle(ADW_ACTION_ROW(gtk_builder_get_object(m_builder, "saveFolderSingleRow")), m_controller->getPreviousDownloadOptions().getSaveFolder().string().c_str());
-            gtk_editable_set_text(GTK_EDITABLE(gtk_builder_get_object(m_builder, "filenameSingleRow")), m_controller->getMediaTitle(0).c_str());
-            adw_switch_row_set_active(ADW_SWITCH_ROW(gtk_builder_get_object(m_builder, "preferAV1SingleRow")), m_controller->getPreviousDownloadOptions().getPreferAV1());
-            adw_switch_row_set_active(ADW_SWITCH_ROW(gtk_builder_get_object(m_builder, "splitChaptersSingleRow")), m_controller->getPreviousDownloadOptions().getSplitChapters());
-            adw_switch_row_set_active(ADW_SWITCH_ROW(gtk_builder_get_object(m_builder, "limitSpeedSingleRow")), m_controller->getPreviousDownloadOptions().getLimitSpeed());
-            gtk_editable_set_text(GTK_EDITABLE(gtk_builder_get_object(m_builder, "startTimeSingleRow")), m_controller->getMediaTimeFrame(0).startStr().c_str());
-            gtk_editable_set_text(GTK_EDITABLE(gtk_builder_get_object(m_builder, "endTimeSingleRow")), m_controller->getMediaTimeFrame(0).endStr().c_str());
+            adw_view_stack_set_visible_child_name(m_builder.get<AdwViewStack>("viewStack"), "download-single");
+            GtkHelpers::setComboRowModel(m_builder.get<AdwComboRow>("fileTypeSingleRow"), m_controller->getFileTypeStrings());
+            adw_combo_row_set_selected(m_builder.get<AdwComboRow>("fileTypeSingleRow"), static_cast<unsigned int>(m_controller->getPreviousDownloadOptions().getFileType()));
+            GtkHelpers::setComboRowModel(m_builder.get<AdwComboRow>("qualitySingleRow"), m_controller->getQualityStrings(static_cast<size_t>(adw_combo_row_get_selected(m_builder.get<AdwComboRow>("fileTypeSingleRow")))));
+            GtkHelpers::setComboRowModel(m_builder.get<AdwComboRow>("audioLanguageSingleRow"), m_controller->getAudioLanguageStrings());
+            adw_switch_row_set_active(m_builder.get<AdwSwitchRow>("downloadSubtitlesSingleRow"), m_controller->getPreviousDownloadOptions().getDownloadSubtitles());
+            adw_action_row_set_subtitle(m_builder.get<AdwActionRow>("saveFolderSingleRow"), m_controller->getPreviousDownloadOptions().getSaveFolder().string().c_str());
+            gtk_editable_set_text(m_builder.get<GtkEditable>("filenameSingleRow"), m_controller->getMediaTitle(0).c_str());
+            adw_switch_row_set_active(m_builder.get<AdwSwitchRow>("preferAV1SingleRow"), m_controller->getPreviousDownloadOptions().getPreferAV1());
+            adw_switch_row_set_active(m_builder.get<AdwSwitchRow>("splitChaptersSingleRow"), m_controller->getPreviousDownloadOptions().getSplitChapters());
+            adw_switch_row_set_active(m_builder.get<AdwSwitchRow>("limitSpeedSingleRow"), m_controller->getPreviousDownloadOptions().getLimitSpeed());
+            gtk_editable_set_text(m_builder.get<GtkEditable>("startTimeSingleRow"), m_controller->getMediaTimeFrame(0).startStr().c_str());
+            gtk_editable_set_text(m_builder.get<GtkEditable>("endTimeSingleRow"), m_controller->getMediaTimeFrame(0).endStr().c_str());
         }
         else
         {
-            adw_view_stack_set_visible_child_name(ADW_VIEW_STACK(gtk_builder_get_object(m_builder, "viewStack")), "download-playlist");
-            adw_action_row_set_subtitle(ADW_ACTION_ROW(gtk_builder_get_object(m_builder, "itemsPlaylistRow")), std::vformat(_("{} items"), std::make_format_args(CodeHelpers::unmove(m_controller->getMediaCount()))).c_str());
-            setComboRowModel(ADW_COMBO_ROW(gtk_builder_get_object(m_builder, "fileTypePlaylistRow")), m_controller->getFileTypeStrings());
-            adw_switch_row_set_active(ADW_SWITCH_ROW(gtk_builder_get_object(m_builder, "downloadSubtitlesPlaylistRow")), m_controller->getPreviousDownloadOptions().getDownloadSubtitles());
-            adw_action_row_set_subtitle(ADW_ACTION_ROW(gtk_builder_get_object(m_builder, "saveFolderPlaylistRow")), m_controller->getPreviousDownloadOptions().getSaveFolder().string().c_str());
-            adw_switch_row_set_active(ADW_SWITCH_ROW(gtk_builder_get_object(m_builder, "preferAV1PlaylistRow")), m_controller->getPreviousDownloadOptions().getPreferAV1());
-            adw_switch_row_set_active(ADW_SWITCH_ROW(gtk_builder_get_object(m_builder, "splitChaptersPlaylistRow")), m_controller->getPreviousDownloadOptions().getSplitChapters());
-            adw_switch_row_set_active(ADW_SWITCH_ROW(gtk_builder_get_object(m_builder, "limitSpeedPlaylistRow")), m_controller->getPreviousDownloadOptions().getLimitSpeed());
+            adw_view_stack_set_visible_child_name(m_builder.get<AdwViewStack>("viewStack"), "download-playlist");
+            adw_action_row_set_subtitle(m_builder.get<AdwActionRow>("itemsPlaylistRow"), std::vformat(_("{} items"), std::make_format_args(CodeHelpers::unmove(m_controller->getMediaCount()))).c_str());
+            GtkHelpers::setComboRowModel(m_builder.get<AdwComboRow>("fileTypePlaylistRow"), m_controller->getFileTypeStrings());
+            adw_switch_row_set_active(m_builder.get<AdwSwitchRow>("downloadSubtitlesPlaylistRow"), m_controller->getPreviousDownloadOptions().getDownloadSubtitles());
+            adw_action_row_set_subtitle(m_builder.get<AdwActionRow>("saveFolderPlaylistRow"), m_controller->getPreviousDownloadOptions().getSaveFolder().string().c_str());
+            adw_switch_row_set_active(m_builder.get<AdwSwitchRow>("preferAV1PlaylistRow"), m_controller->getPreviousDownloadOptions().getPreferAV1());
+            adw_switch_row_set_active(m_builder.get<AdwSwitchRow>("splitChaptersPlaylistRow"), m_controller->getPreviousDownloadOptions().getSplitChapters());
+            adw_switch_row_set_active(m_builder.get<AdwSwitchRow>("limitSpeedPlaylistRow"), m_controller->getPreviousDownloadOptions().getLimitSpeed());
+
+
             for(size_t i = 0; i < m_controller->getMediaCount(); i++)
             {
                 GtkCheckButton* chk{ GTK_CHECK_BUTTON(gtk_check_button_new()) };
@@ -156,15 +148,15 @@ namespace Nickvision::TubeConverter::GNOME::Views
                 { 
                     AddDownloadDialog* dialog{ reinterpret_cast<AddDownloadDialog*>(data) };
                     size_t index{ std::stoul(gtk_widget_get_name(GTK_WIDGET(btn))) };
-                    gtk_editable_set_text(GTK_EDITABLE(dialog->m_playlistItemRows[index]), dialog->m_controller->getMediaTitle(index, adw_switch_row_get_active(ADW_SWITCH_ROW(gtk_builder_get_object(dialog->m_builder, "numberTitlesPlaylistRow")))).c_str());
+                    gtk_editable_set_text(GTK_EDITABLE(dialog->m_playlistItemRows[index]), dialog->m_controller->getMediaTitle(index, adw_switch_row_get_active(dialog->m_builder.get<AdwSwitchRow>("numberTitlesPlaylistRow"))).c_str());
                 }), this);
                 AdwEntryRow* row{ ADW_ENTRY_ROW(adw_entry_row_new()) };
                 adw_preferences_row_set_use_markup(ADW_PREFERENCES_ROW(row), false);
                 adw_preferences_row_set_title(ADW_PREFERENCES_ROW(row), m_controller->getMediaUrl(i).c_str());
-                gtk_editable_set_text(GTK_EDITABLE(row), m_controller->getMediaTitle(i, adw_switch_row_get_active(ADW_SWITCH_ROW(gtk_builder_get_object(m_builder, "numberTitlesPlaylistRow")))).c_str());
+                gtk_editable_set_text(GTK_EDITABLE(row), m_controller->getMediaTitle(i, adw_switch_row_get_active(m_builder.get<AdwSwitchRow>("numberTitlesPlaylistRow"))).c_str());
                 adw_entry_row_add_prefix(row, GTK_WIDGET(chk));
                 adw_entry_row_add_suffix(row, GTK_WIDGET(undo));
-                adw_preferences_group_add(ADW_PREFERENCES_GROUP(gtk_builder_get_object(m_builder, "itemsPlaylistGroup")), GTK_WIDGET(row));
+                adw_preferences_group_add(m_builder.get<AdwPreferencesGroup>("itemsPlaylistGroup"), GTK_WIDGET(row));
                 m_playlistItemRows.push_back(row);
                 m_playlistItemCheckButtons.push_back(chk);
             }
@@ -173,19 +165,19 @@ namespace Nickvision::TubeConverter::GNOME::Views
 
     void AddDownloadDialog::back()
     {
-        adw_view_stack_set_visible_child_name(ADW_VIEW_STACK(gtk_builder_get_object(m_builder, "viewStack")), !m_controller->isUrlPlaylist() ? "download-single" : "download-playlist");
-        gtk_widget_set_visible(GTK_WIDGET(gtk_builder_get_object(m_builder, "backButton")), false);
+        adw_view_stack_set_visible_child_name(m_builder.get<AdwViewStack>("viewStack"), !m_controller->isUrlPlaylist() ? "download-single" : "download-playlist");
+        gtk_widget_set_visible(m_builder.get<GtkWidget>("backButton"), false);
     }
 
     void AddDownloadDialog::onFileTypeSingleChanged()
     {
-        setComboRowModel(ADW_COMBO_ROW(gtk_builder_get_object(m_builder, "qualitySingleRow")), m_controller->getQualityStrings(static_cast<size_t>(adw_combo_row_get_selected(ADW_COMBO_ROW(gtk_builder_get_object(m_builder, "fileTypeSingleRow"))))));
+        GtkHelpers::setComboRowModel(m_builder.get<AdwComboRow>("qualitySingleRow"), m_controller->getQualityStrings(static_cast<size_t>(adw_combo_row_get_selected(m_builder.get<AdwComboRow>("fileTypeSingleRow")))));
     }
 
     void AddDownloadDialog::advancedOptionsSingle()
     {
-        adw_view_stack_set_visible_child_name(ADW_VIEW_STACK(gtk_builder_get_object(m_builder, "viewStack")), "download-single-advanced");
-        gtk_widget_set_visible(GTK_WIDGET(gtk_builder_get_object(m_builder, "backButton")), true);
+        adw_view_stack_set_visible_child_name(m_builder.get<AdwViewStack>("viewStack"), "download-single-advanced");
+        gtk_widget_set_visible(m_builder.get<GtkWidget>("backButton"), true);
     }
 
     void AddDownloadDialog::selectSaveFolderSingle()
@@ -197,29 +189,29 @@ namespace Nickvision::TubeConverter::GNOME::Views
             GFile* folder{ gtk_file_dialog_select_folder_finish(GTK_FILE_DIALOG(self), res, nullptr) };
             if(folder)
             {
-                adw_action_row_set_subtitle(ADW_ACTION_ROW(gtk_builder_get_object(reinterpret_cast<AddDownloadDialog*>(data)->m_builder, "saveFolderSingleRow")), g_file_get_path(folder));
+                adw_action_row_set_subtitle(reinterpret_cast<Builder*>(data)->get<AdwActionRow>("saveFolderSingleRow"), g_file_get_path(folder));
             }
-        }), this);
+        }), &m_builder);
     }
 
     void AddDownloadDialog::revertFilenameSingle()
     {
-        gtk_editable_set_text(GTK_EDITABLE(gtk_builder_get_object(m_builder, "filenameSingleRow")), m_controller->getMediaTitle(0).c_str());
+        gtk_editable_set_text(m_builder.get<GtkEditable>("filenameSingleRow"), m_controller->getMediaTitle(0).c_str());
     }
 
     void AddDownloadDialog::revertStartTimeSingle()
     {
-        gtk_editable_set_text(GTK_EDITABLE(gtk_builder_get_object(m_builder, "startTimeSingleRow")), m_controller->getMediaTimeFrame(0).startStr().c_str());
+        gtk_editable_set_text(m_builder.get<GtkEditable>("startTimeSingleRow"), m_controller->getMediaTimeFrame(0).startStr().c_str());
     }
 
     void AddDownloadDialog::revertEndTimeSingle()
     {
-        gtk_editable_set_text(GTK_EDITABLE(gtk_builder_get_object(m_builder, "endTimeSingleRow")), m_controller->getMediaTimeFrame(0).endStr().c_str());
+        gtk_editable_set_text(m_builder.get<GtkEditable>("endTimeSingleRow"), m_controller->getMediaTimeFrame(0).endStr().c_str());
     }
 
     void AddDownloadDialog::downloadSingle()
     {
-        m_controller->addSingleDownload(adw_action_row_get_subtitle(ADW_ACTION_ROW(gtk_builder_get_object(m_builder, "saveFolderSingleRow"))), gtk_editable_get_text(GTK_EDITABLE(gtk_builder_get_object(m_builder, "filenameSingleRow"))), adw_combo_row_get_selected(ADW_COMBO_ROW(gtk_builder_get_object(m_builder, "fileTypeSingleRow"))), adw_combo_row_get_selected(ADW_COMBO_ROW(gtk_builder_get_object(m_builder, "qualitySingleRow"))), adw_combo_row_get_selected(ADW_COMBO_ROW(gtk_builder_get_object(m_builder, "audioLanguageSingleRow"))), adw_switch_row_get_active(ADW_SWITCH_ROW(gtk_builder_get_object(m_builder, "downloadSubtitlesSingleRow"))), adw_switch_row_get_active(ADW_SWITCH_ROW(gtk_builder_get_object(m_builder, "preferAV1SingleRow"))), adw_switch_row_get_active(ADW_SWITCH_ROW(gtk_builder_get_object(m_builder, "splitChaptersSingleRow"))), adw_switch_row_get_active(ADW_SWITCH_ROW(gtk_builder_get_object(m_builder, "limitSpeedSingleRow"))), gtk_editable_get_text(GTK_EDITABLE(gtk_builder_get_object(m_builder, "startTimeSingleRow"))), gtk_editable_get_text(GTK_EDITABLE(gtk_builder_get_object(m_builder, "endTimeSingleRow"))));
+        m_controller->addSingleDownload(adw_action_row_get_subtitle(m_builder.get<AdwActionRow>("saveFolderSingleRow")), gtk_editable_get_text(m_builder.get<GtkEditable>("filenameSingleRow")), adw_combo_row_get_selected(m_builder.get<AdwComboRow>("fileTypeSingleRow")), adw_combo_row_get_selected(m_builder.get<AdwComboRow>("qualitySingleRow")), adw_combo_row_get_selected(m_builder.get<AdwComboRow>("audioLanguageSingleRow")), adw_switch_row_get_active(m_builder.get<AdwSwitchRow>("downloadSubtitlesSingleRow")), adw_switch_row_get_active(m_builder.get<AdwSwitchRow>("preferAV1SingleRow")), adw_switch_row_get_active(m_builder.get<AdwSwitchRow>("splitChaptersSingleRow")), adw_switch_row_get_active(m_builder.get<AdwSwitchRow>("limitSpeedSingleRow")), gtk_editable_get_text(m_builder.get<GtkEditable>("startTimeSingleRow")), gtk_editable_get_text(m_builder.get<GtkEditable>("endTimeSingleRow")));
         adw_dialog_close(m_dialog);
     }
 
@@ -232,15 +224,15 @@ namespace Nickvision::TubeConverter::GNOME::Views
             GFile* folder{ gtk_file_dialog_select_folder_finish(GTK_FILE_DIALOG(self), res, nullptr) };
             if(folder)
             {
-                adw_action_row_set_subtitle(ADW_ACTION_ROW(gtk_builder_get_object(reinterpret_cast<AddDownloadDialog*>(data)->m_builder, "saveFolderPlaylistRow")), g_file_get_path(folder));
+                adw_action_row_set_subtitle(reinterpret_cast<Builder*>(data)->get<AdwActionRow>("saveFolderPlaylistRow"), g_file_get_path(folder));
             }
-        }), this);
+        }), &m_builder);
     }
 
     void AddDownloadDialog::itemsPlaylist()
     {
-        adw_view_stack_set_visible_child_name(ADW_VIEW_STACK(gtk_builder_get_object(m_builder, "viewStack")), "download-playlist-items");
-        gtk_widget_set_visible(GTK_WIDGET(gtk_builder_get_object(m_builder, "backButton")), true);
+        adw_view_stack_set_visible_child_name(m_builder.get<AdwViewStack>("viewStack"), "download-playlist-items");
+        gtk_widget_set_visible(m_builder.get<GtkWidget>("backButton"), true);
     }
 
     void AddDownloadDialog::onNumberTitlesPlaylistChanged()
@@ -248,7 +240,7 @@ namespace Nickvision::TubeConverter::GNOME::Views
         int i{ 0 };
         for(AdwEntryRow* row : m_playlistItemRows)
         {
-            gtk_editable_set_text(GTK_EDITABLE(row), m_controller->getMediaTitle(i, adw_switch_row_get_active(ADW_SWITCH_ROW(gtk_builder_get_object(m_builder, "numberTitlesPlaylistRow")))).c_str());
+            gtk_editable_set_text(GTK_EDITABLE(row), m_controller->getMediaTitle(i, adw_switch_row_get_active(m_builder.get<AdwSwitchRow>("numberTitlesPlaylistRow"))).c_str());
             i++;
         }
     }
@@ -263,7 +255,7 @@ namespace Nickvision::TubeConverter::GNOME::Views
                 filenames.emplace(i, gtk_editable_get_text(GTK_EDITABLE(m_playlistItemRows[i])));
             }
         }
-        m_controller->addPlaylistDownload(adw_action_row_get_subtitle(ADW_ACTION_ROW(gtk_builder_get_object(m_builder, "saveFolderPlaylistRow"))), filenames, adw_combo_row_get_selected(ADW_COMBO_ROW(gtk_builder_get_object(m_builder, "fileTypePlaylistRow"))), adw_switch_row_get_active(ADW_SWITCH_ROW(gtk_builder_get_object(m_builder, "downloadSubtitlesPlaylistRow"))), adw_switch_row_get_active(ADW_SWITCH_ROW(gtk_builder_get_object(m_builder, "preferAV1PlaylistRow"))), adw_switch_row_get_active(ADW_SWITCH_ROW(gtk_builder_get_object(m_builder, "splitChaptersPlaylistRow"))), adw_switch_row_get_active(ADW_SWITCH_ROW(gtk_builder_get_object(m_builder, "limitSpeedPlaylistRow"))));
+        m_controller->addPlaylistDownload(adw_action_row_get_subtitle(m_builder.get<AdwActionRow>("saveFolderPlaylistRow")), filenames, adw_combo_row_get_selected(m_builder.get<AdwComboRow>("fileTypePlaylistRow")), adw_switch_row_get_active(m_builder.get<AdwSwitchRow>("downloadSubtitlesPlaylistRow")), adw_switch_row_get_active(m_builder.get<AdwSwitchRow>("preferAV1PlaylistRow")), adw_switch_row_get_active(m_builder.get<AdwSwitchRow>("splitChaptersPlaylistRow")), adw_switch_row_get_active(m_builder.get<AdwSwitchRow>("limitSpeedPlaylistRow")));
         adw_dialog_close(m_dialog);
     }
 }

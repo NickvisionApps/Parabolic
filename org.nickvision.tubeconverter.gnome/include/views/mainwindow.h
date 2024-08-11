@@ -6,12 +6,8 @@
 #include <adwaita.h>
 #include "controls/downloadrow.h"
 #include "controllers/mainwindowcontroller.h"
+#include "helpers/builder.h"
 #include "helpers/controlptr.h"
-
-#define SET_ACCEL_FOR_ACTION(App, Action, Accel) { \
-const char* accels[2] { Accel, nullptr }; \
-gtk_application_set_accels_for_action(App, Action, accels); \
-}
 
 namespace Nickvision::TubeConverter::GNOME::Views
 {
@@ -31,11 +27,6 @@ namespace Nickvision::TubeConverter::GNOME::Views
          * @brief Destructs the MainWindow. 
          */
         ~MainWindow();
-        /**
-         * @brief Gets the GObject object for the main window.
-         * @return The GObject for the main window 
-         */
-        GObject* gobj() const;
         /**
          * @brief Shows the main window. 
          */
@@ -133,7 +124,7 @@ namespace Nickvision::TubeConverter::GNOME::Views
         void clearHistory();
         std::shared_ptr<Shared::Controllers::MainWindowController> m_controller;
         GtkApplication* m_app;
-        GtkBuilder* m_builder;
+        Helpers::Builder m_builder;
         AdwApplicationWindow* m_window;
         GSimpleAction* m_actAddDownload;
         std::vector<AdwActionRow*> m_historyRows;
