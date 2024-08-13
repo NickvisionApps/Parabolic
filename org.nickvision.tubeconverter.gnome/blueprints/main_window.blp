@@ -248,7 +248,9 @@ Adw.ApplicationWindow root {
                 maximum-size: 600;
                 child: Gtk.Box listDownloading {
                   orientation: vertical;
-                  
+                  hexpand: true;
+                  valign: start;
+
                   styles [ "card" ]
                 };
               };
@@ -260,7 +262,9 @@ Adw.ApplicationWindow root {
                 maximum-size: 600;
                 child: Gtk.Box listQueued {
                   orientation: vertical;
-                  
+                  hexpand: true;
+                  valign: start;
+
                   styles [ "card" ]
                 };
               };
@@ -272,6 +276,8 @@ Adw.ApplicationWindow root {
                 maximum-size: 600;
                 child: Gtk.Box listCompleted {
                   orientation: vertical;
+                  hexpand: true;
+                  valign: start;
                   
                   styles [ "card" ]
                 };
