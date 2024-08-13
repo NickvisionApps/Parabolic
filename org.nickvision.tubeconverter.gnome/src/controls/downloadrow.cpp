@@ -15,7 +15,7 @@ namespace Nickvision::TubeConverter::GNOME::Controls
         m_id{ args.getId() },
         m_log{ _("Starting download...") },
         m_path{ args.getPath() },
-        m_pulseBar{ false }
+        m_pulseBar{ true }
     {
         //Load
         gtk_widget_add_css_class(m_builder.get<GtkWidget>("statusIcon"), "stopped");
@@ -32,7 +32,12 @@ namespace Nickvision::TubeConverter::GNOME::Controls
         }
         adw_view_stack_set_visible_child_name(m_builder.get<AdwViewStack>("buttonsViewStack"), "downloading");
         adw_view_stack_set_visible_child_name(m_builder.get<AdwViewStack>("progViewStack"), "running");
-        gtk_progress_bar_set_fraction(m_builder.get<GtkProgressBar>("progBar"), 0.0);
+        g_timeout_add(30, +[](gpointer data) -> int
+        {
+            DownloadRow* row{ reinterpret_cast<DownloadRow*>(data) };
+            gtk_progress_bar_pulse(row->m_builder.get<GtkProgressBar>("progBar"));
+            return row->m_pulseBar;
+        }, this);
         //Signals
         g_signal_connect(m_builder.get<GObject>("stopButton"), "clicked", G_CALLBACK(+[](GtkButton*, gpointer data){ reinterpret_cast<DownloadRow*>(data)->stop(); }), this);
         g_signal_connect(m_builder.get<GObject>("playButton"), "clicked", G_CALLBACK(+[](GtkButton*, gpointer data){ reinterpret_cast<DownloadRow*>(data)->play(); }), this);

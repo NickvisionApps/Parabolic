@@ -3,6 +3,15 @@
 
 namespace Nickvision::TubeConverter::GNOME::Helpers
 {
+    void GtkHelpers::addToBox(GtkBox* box, GtkWidget* widget, bool addSeparator)
+    {
+        if(addSeparator && gtk_widget_get_first_child(GTK_WIDGET(box)) != nullptr)
+        {
+            gtk_box_append(box, gtk_separator_new(GTK_ORIENTATION_HORIZONTAL));
+        }
+        gtk_box_append(box, widget);
+    }
+
     void GtkHelpers::dispatchToMainThread(const std::function<void()>& func)
     {
         g_main_context_invoke(g_main_context_default(), +[](gpointer data) -> int
@@ -12,6 +21,25 @@ namespace Nickvision::TubeConverter::GNOME::Helpers
             delete function;
             return false;
         }, new std::function<void()>(func));
+    }
+
+    void GtkHelpers::moveFromBox(GtkBox* oldBox, GtkBox* newBox, GtkWidget* widget, bool addSeparator)
+    {
+        GtkWidget* oldSeparator{ gtk_widget_get_prev_sibling(widget) };
+        if(oldSeparator == nullptr)
+        {
+            oldSeparator = gtk_widget_get_next_sibling(widget);
+        }
+        if(oldSeparator && GTK_IS_SEPARATOR(oldSeparator))
+        {
+            gtk_box_remove(oldBox, oldSeparator);
+        }
+        gtk_box_remove(oldBox, widget);
+        if(addSeparator && gtk_widget_get_first_child(GTK_WIDGET(newBox)) != nullptr)
+        {
+            gtk_box_append(newBox, gtk_separator_new(GTK_ORIENTATION_HORIZONTAL));
+        }
+        gtk_box_append(newBox, widget);
     }
 
     void GtkHelpers::setAccelForAction(GtkApplication* app, const char* action, const char* accel)

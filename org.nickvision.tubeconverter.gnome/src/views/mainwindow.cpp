@@ -274,19 +274,11 @@ namespace Nickvision::TubeConverter::GNOME::Views
         row->retried() += [this](const ParamEventArgs<int>& args){ m_controller->getDownloadManager().retryDownload(args.getParam()); };
         if(args.getStatus() == DownloadStatus::Queued)
         {
-            if(gtk_widget_get_first_child(GTK_WIDGET(m_builder.get<GtkBox>("listQueued"))) != nullptr)
-            {
-                gtk_box_append(m_builder.get<GtkBox>("listQueued"), gtk_separator_new(GTK_ORIENTATION_HORIZONTAL));
-            }
-            gtk_box_append(m_builder.get<GtkBox>("listQueued"), GTK_WIDGET(row->gobj()));
+            GtkHelpers::addToBox(m_builder.get<GtkBox>("listQueued"), GTK_WIDGET(row->gobj()), true);
         }
         else
         {
-            if(gtk_widget_get_first_child(GTK_WIDGET(m_builder.get<GtkBox>("listDownloading"))) != nullptr)
-            {
-                gtk_box_append(m_builder.get<GtkBox>("listDownloading"), gtk_separator_new(GTK_ORIENTATION_HORIZONTAL));
-            }
-            gtk_box_append(m_builder.get<GtkBox>("listDownloading"), GTK_WIDGET(row->gobj()));
+            GtkHelpers::addToBox(m_builder.get<GtkBox>("listDownloading"), GTK_WIDGET(row->gobj()), true);
         }
         m_downloadRows[args.getId()] = row;
     }
@@ -294,21 +286,7 @@ namespace Nickvision::TubeConverter::GNOME::Views
     void MainWindow::onDownloadCompleted(const DownloadCompletedEventArgs& args)
     {
         m_downloadRows[args.getId()]->setCompleteState(args);
-        GtkWidget* separator{ gtk_widget_get_prev_sibling(GTK_WIDGET(m_downloadRows[args.getId()]->gobj())) };
-        if(separator == nullptr)
-        {
-            separator = gtk_widget_get_next_sibling(GTK_WIDGET(m_downloadRows[args.getId()]->gobj()));
-        }
-        if(GTK_IS_SEPARATOR(separator))
-        {
-            gtk_box_remove(m_builder.get<GtkBox>("listDownloading"), GTK_WIDGET(separator));
-        }
-        gtk_box_remove(m_builder.get<GtkBox>("listDownloading"), GTK_WIDGET(m_downloadRows[args.getId()]->gobj()));
-        if(gtk_widget_get_first_child(GTK_WIDGET(m_builder.get<GtkBox>("listCompleted"))) != nullptr)
-        {
-            gtk_box_append(m_builder.get<GtkBox>("listCompleted"), gtk_separator_new(GTK_ORIENTATION_HORIZONTAL));
-        }
-        gtk_box_append(m_builder.get<GtkBox>("listCompleted"), GTK_WIDGET(m_downloadRows[args.getId()]->gobj()));
+        GtkHelpers::moveFromBox(m_builder.get<GtkBox>("listDownloading"), m_builder.get<GtkBox>("listCompleted"), GTK_WIDGET(m_downloadRows[args.getId()]->gobj()), true);
     }
 
     void MainWindow::onDownloadProgressChanged(const DownloadProgressChangedEventArgs& args)
@@ -319,61 +297,19 @@ namespace Nickvision::TubeConverter::GNOME::Views
     void MainWindow::onDownloadStopped(const ParamEventArgs<int>& args)
     {
         m_downloadRows[args.getParam()]->setStopState();
-        GtkWidget* separator{ gtk_widget_get_prev_sibling(GTK_WIDGET(m_downloadRows[args.getParam()]->gobj())) };
-        if(separator == nullptr)
-        {
-            separator = gtk_widget_get_next_sibling(GTK_WIDGET(m_downloadRows[args.getParam()]->gobj()));
-        }
-        if(GTK_IS_SEPARATOR(separator))
-        {
-            gtk_box_remove(m_builder.get<GtkBox>("listDownloading"), GTK_WIDGET(separator));
-        }
-        gtk_box_remove(m_builder.get<GtkBox>("listDownloading"), GTK_WIDGET(m_downloadRows[args.getParam()]->gobj()));
-        if(gtk_widget_get_first_child(GTK_WIDGET(m_builder.get<GtkBox>("listCompleted"))) != nullptr)
-        {
-            gtk_box_append(m_builder.get<GtkBox>("listCompleted"), gtk_separator_new(GTK_ORIENTATION_HORIZONTAL));
-        }
-        gtk_box_append(m_builder.get<GtkBox>("listCompleted"), GTK_WIDGET(m_downloadRows[args.getParam()]->gobj()));
+        GtkHelpers::moveFromBox(m_builder.get<GtkBox>("listDownloading"), m_builder.get<GtkBox>("listCompleted"), GTK_WIDGET(m_downloadRows[args.getParam()]->gobj()), true);
     }
 
     void MainWindow::onDownloadRetried(const ParamEventArgs<int>& args)
     {
         m_downloadRows[args.getParam()]->setStartFromQueueState();
-        GtkWidget* separator{ gtk_widget_get_prev_sibling(GTK_WIDGET(m_downloadRows[args.getParam()]->gobj())) };
-        if(separator == nullptr)
-        {
-            separator = gtk_widget_get_next_sibling(GTK_WIDGET(m_downloadRows[args.getParam()]->gobj()));
-        }
-        if(GTK_IS_SEPARATOR(separator))
-        {
-            gtk_box_remove(m_builder.get<GtkBox>("listCompleted"), GTK_WIDGET(separator));
-        }
-        gtk_box_remove(m_builder.get<GtkBox>("listCompleted"), GTK_WIDGET(m_downloadRows[args.getParam()]->gobj()));
-        if(gtk_widget_get_first_child(GTK_WIDGET(m_builder.get<GtkBox>("listDownloading"))) != nullptr)
-        {
-            gtk_box_append(m_builder.get<GtkBox>("listDownloading"), gtk_separator_new(GTK_ORIENTATION_HORIZONTAL));
-        }
-        gtk_box_append(m_builder.get<GtkBox>("listDownloading"), GTK_WIDGET(m_downloadRows[args.getParam()]->gobj()));
+        GtkHelpers::moveFromBox(m_builder.get<GtkBox>("listCompleted"), m_builder.get<GtkBox>("listDownloading"), GTK_WIDGET(m_downloadRows[args.getParam()]->gobj()), true);
     }
 
     void MainWindow::onDownloadStartedFromQueue(const ParamEventArgs<int>& args)
     {
         m_downloadRows[args.getParam()]->setStartFromQueueState();
-        GtkWidget* separator{ gtk_widget_get_prev_sibling(GTK_WIDGET(m_downloadRows[args.getParam()]->gobj())) };
-        if(separator == nullptr)
-        {
-            separator = gtk_widget_get_next_sibling(GTK_WIDGET(m_downloadRows[args.getParam()]->gobj()));
-        }
-        if(GTK_IS_SEPARATOR(separator))
-        {
-            gtk_box_remove(m_builder.get<GtkBox>("listQueued"), GTK_WIDGET(separator));
-        }
-        gtk_box_remove(m_builder.get<GtkBox>("listQueued"), GTK_WIDGET(m_downloadRows[args.getParam()]->gobj()));
-        if(gtk_widget_get_first_child(GTK_WIDGET(m_builder.get<GtkBox>("listDownloading"))) != nullptr)
-        {
-            gtk_box_append(m_builder.get<GtkBox>("listDownloading"), gtk_separator_new(GTK_ORIENTATION_HORIZONTAL));
-        }
-        gtk_box_append(m_builder.get<GtkBox>("listDownloading"), GTK_WIDGET(m_downloadRows[args.getParam()]->gobj()));
+        GtkHelpers::moveFromBox(m_builder.get<GtkBox>("listQueued"), m_builder.get<GtkBox>("listDownloading"), GTK_WIDGET(m_downloadRows[args.getParam()]->gobj()), true);
     }
 
     void MainWindow::quit()
