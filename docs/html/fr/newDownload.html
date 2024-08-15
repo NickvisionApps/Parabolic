@@ -24,9 +24,11 @@ document.addEventListener('DOMContentLoaded', function() {
 <dd class="terms">
 <p class="p">L’URL du média à télécharger. Il doit s’agir d’un lien http ou https valide (i.e.e syntaxiquement correct).</p>
 <div class="note" title="Note">
-<svg width="24" height="24" version="1.1">
- <path class="yelp-svg-fill" d="m4 3h16c0.554 0 1 0.446 1 1v11h-6v6h-11c-0.554 0-1-0.446-1-1v-16c0-0.554 0.446-1 1-1z"></path>
- <path class="yelp-svg-fill" d="m17 16h4l-5 5v-4c0-0.554 0.446-1 1-1z"></path>
+<svg height="24" width="24" version="1.1">
+ <g>
+  <path class="yelp-svg-fill" d="m4 3h16c0.554 0 1 0.446 1 1v11h-6v6h-11c-0.554 0-1-0.446-1-1v-16c0-0.554 0.446-1 1-1z"></path>
+  <path class="yelp-svg-fill" d="m17 16h4l-5 5v-4c0-0.554 0.446-1 1-1z"></path>
+ </g>
 </svg><div class="inner"><div class="region"><div class="contents"><p class="p">Si une URL valide est trouvée dans le presse-papiers au moment de l’ouverture de la fenêtre de dialogue Ajouter, elle sera automatiquement collée dans le champ de saisie.</p></div></div></div>
 </div>
 </dd>
@@ -35,17 +37,19 @@ document.addEventListener('DOMContentLoaded', function() {
 <p class="p">Si cette option est activée, il sera demandé à l’utilisateur de fournir un nom d’utilisateur et/ou un mot de passe à yt-dlp lors du téléchargement.</p>
 <p class="p">Si le trousseau est activé, l’utilisateur devra choisir parmi une liste d’identifiants, ou entrer manuellement un nom d’utilisateur et/ou mot de passe différent.</p>
 <div class="note note-advanced" title="Avancé">
-<svg width="24" height="24" version="1.1">
- <path class="yelp-svg-fill" d="m5.4473 12.572c-2.039 0.957-3.4473 3.019-3.4473 5.428v4h20v-4c0-2.406-1.406-4.466-3.441-5.424a8 8 0 0 1-6.559 3.424 8 8 0 0 1-6.5527-3.428z"></path>
- <path class="yelp-svg-fill" d="m12 3a5 5 0 0 0-5 5 5 5 0 0 0 5 5 5 5 0 0 0 5-5 5 5 0 0 0-5-5zm0 3a2 2 0 0 1 2 2 2 2 0 0 1-2 2 2 2 0 0 1-2-2 2 2 0 0 1 2-2z"></path>
- <path class="yelp-svg-fill" d="m15.312 6 3.688 1v2l-3.4688 1z"></path>
- <path class="yelp-svg-fill" d="m14 11.312-1 3.688h-2l-1-3.469z"></path>
- <path class="yelp-svg-fill" d="m10 4.6875 1-3.6875h2l1 3.4688z"></path>
- <path class="yelp-svg-fill" d="m8.6875 10-3.6875-1v-2l3.4688-1z"></path>
- <path class="yelp-svg-fill" d="m12.928 4.2435 3.3146-1.9003 1.4142 1.4142-1.7457 3.1599z"></path>
- <path class="yelp-svg-fill" d="m15.757 8.9281 1.9003 3.3146-1.4142 1.4142-3.1599-1.7457z"></path>
- <path class="yelp-svg-fill" d="m8.2435 7.0719-1.9004-3.3145 1.4143-1.4143 3.1596 1.7457z"></path>
- <path class="yelp-svg-fill" d="m11.072 11.757-3.3146 1.9-1.4143-1.414 1.7457-3.1602z"></path>
+<svg height="24" width="24" version="1.1">
+ <g>
+  <path class="yelp-svg-fill" d="m5.4473 12.572c-2.039 0.957-3.4473 3.019-3.4473 5.428v4h20v-4c0-2.406-1.406-4.466-3.441-5.424a8 8 0 0 1 -6.559 3.424 8 8 0 0 1 -6.5527 -3.428z"></path>
+  <path class="yelp-svg-fill" d="m12 3a5 5 0 0 0 -5 5 5 5 0 0 0 5 5 5 5 0 0 0 5 -5 5 5 0 0 0 -5 -5zm0 3a2 2 0 0 1 2 2 2 2 0 0 1 -2 2 2 2 0 0 1 -2 -2 2 2 0 0 1 2 -2z"></path>
+  <path class="yelp-svg-fill" d="m15.312 6 3.688 1v2l-3.4688 1z"></path>
+  <path class="yelp-svg-fill" d="m14 11.312-1 3.688h-2l-1-3.469z"></path>
+  <path class="yelp-svg-fill" d="m10 4.6875 1-3.6875h2l1 3.4688z"></path>
+  <path class="yelp-svg-fill" d="m8.6875 10-3.6875-1v-2l3.4688-1z"></path>
+  <path class="yelp-svg-fill" d="m12.928 4.2435 3.3146-1.9003 1.4142 1.4142-1.7457 3.1599z"></path>
+  <path class="yelp-svg-fill" d="m15.757 8.9281 1.9003 3.3146-1.4142 1.4142-3.1599-1.7457z"></path>
+  <path class="yelp-svg-fill" d="m8.2435 7.0719-1.9004-3.3145 1.4143-1.4143 3.1596 1.7457z"></path>
+  <path class="yelp-svg-fill" d="m11.072 11.757-3.3146 1.9-1.4143-1.414 1.7457-3.1602z"></path>
+ </g>
 </svg><div class="inner"><div class="region"><div class="contents">
 <p class="p">Tous les sites web ne prennent pas en charge la fourniture de noms d’utilisateur et mots de passe à yt-dlp. Par exemple, YouTube ne prend PAS en charge cette fonctionnalité.</p>
 <p class="p">Pour les sites qui ne prennent pas en charge la fourniture d’identifiants, il est recommandé de téléverser un fichier de cookies dans les préférences à la place.</p>
@@ -57,9 +61,11 @@ document.addEventListener('DOMContentLoaded', function() {
 <p class="p">Le type de fichier sous lequel enregistrer le média.</p>
 <p class="p">Si l’option <span class="code">Empêcher les conversions</span> est activée, les seules options possibles seront <span class="code">Vidéo</span> (si pris en charge) et <span class="code">Audio</span></p>
 <div class="note" title="Note">
-<svg width="24" height="24" version="1.1">
- <path class="yelp-svg-fill" d="m4 3h16c0.554 0 1 0.446 1 1v11h-6v6h-11c-0.554 0-1-0.446-1-1v-16c0-0.554 0.446-1 1-1z"></path>
- <path class="yelp-svg-fill" d="m17 16h4l-5 5v-4c0-0.554 0.446-1 1-1z"></path>
+<svg height="24" width="24" version="1.1">
+ <g>
+  <path class="yelp-svg-fill" d="m4 3h16c0.554 0 1 0.446 1 1v11h-6v6h-11c-0.554 0-1-0.446-1-1v-16c0-0.554 0.446-1 1-1z"></path>
+  <path class="yelp-svg-fill" d="m17 16h4l-5 5v-4c0-0.554 0.446-1 1-1z"></path>
+ </g>
 </svg><div class="inner"><div class="region"><div class="contents"><p class="p">Le type de fichier sélectionné précédemment sera mémorisé et présélectionné pour le prochain téléchargement.</p></div></div></div>
 </div>
 </dd>
@@ -68,9 +74,11 @@ document.addEventListener('DOMContentLoaded', function() {
 <p class="p">Si le type de fichier est une vidéo, la liste des qualités sera celle des résolutions disponibles pour le média.</p>
 <p class="p">Si le type de fichier est un audio, la liste des qualités sera simplement <span class="code">Meilleure</span> et <span class="code">Basse</span>.</p>
 <div class="note" title="Note">
-<svg width="24" height="24" version="1.1">
- <path class="yelp-svg-fill" d="m4 3h16c0.554 0 1 0.446 1 1v11h-6v6h-11c-0.554 0-1-0.446-1-1v-16c0-0.554 0.446-1 1-1z"></path>
- <path class="yelp-svg-fill" d="m17 16h4l-5 5v-4c0-0.554 0.446-1 1-1z"></path>
+<svg height="24" width="24" version="1.1">
+ <g>
+  <path class="yelp-svg-fill" d="m4 3h16c0.554 0 1 0.446 1 1v11h-6v6h-11c-0.554 0-1-0.446-1-1v-16c0-0.554 0.446-1 1-1z"></path>
+  <path class="yelp-svg-fill" d="m17 16h4l-5 5v-4c0-0.554 0.446-1 1-1z"></path>
+ </g>
 </svg><div class="inner"><div class="region"><div class="contents"><p class="p">La qualité utilisée précédemment sera mémorisée et présélectionnée pour le prochain téléchargement.</p></div></div></div>
 </div>
 </dd>
@@ -78,9 +86,11 @@ document.addEventListener('DOMContentLoaded', function() {
 <dd class="terms">
 <p class="p">Indique s’il faut télécharger et inclure les sous-titres dans le fichier de la vidéo lors de son téléchargement. Les langues des sous-titres peuvent être définies dans les <span class="link"><a href="downloader.html" title="Téléchargeur">Préférences</a></span>.</p>
 <div class="note" title="Note">
-<svg width="24" height="24" version="1.1">
- <path class="yelp-svg-fill" d="m4 3h16c0.554 0 1 0.446 1 1v11h-6v6h-11c-0.554 0-1-0.446-1-1v-16c0-0.554 0.446-1 1-1z"></path>
- <path class="yelp-svg-fill" d="m17 16h4l-5 5v-4c0-0.554 0.446-1 1-1z"></path>
+<svg height="24" width="24" version="1.1">
+ <g>
+  <path class="yelp-svg-fill" d="m4 3h16c0.554 0 1 0.446 1 1v11h-6v6h-11c-0.554 0-1-0.446-1-1v-16c0-0.554 0.446-1 1-1z"></path>
+  <path class="yelp-svg-fill" d="m17 16h4l-5 5v-4c0-0.554 0.446-1 1-1z"></path>
+ </g>
 </svg><div class="inner"><div class="region"><div class="contents"><p class="p">Les paramètres utilisés précédemment seront mémorisés et présélectionnés pour le prochain téléchargement.</p></div></div></div>
 </div>
 </dd>
@@ -89,9 +99,11 @@ document.addEventListener('DOMContentLoaded', function() {
 <p class="p">Le dossier dans lequel enregistrer le téléchargement.</p>
 <p class="p">Si le type de fichier est un audio, la liste des qualités sera simplement <span class="code">Meilleure</span> et <span class="code">Basse</span>.</p>
 <div class="note" title="Note">
-<svg width="24" height="24" version="1.1">
- <path class="yelp-svg-fill" d="m4 3h16c0.554 0 1 0.446 1 1v11h-6v6h-11c-0.554 0-1-0.446-1-1v-16c0-0.554 0.446-1 1-1z"></path>
- <path class="yelp-svg-fill" d="m17 16h4l-5 5v-4c0-0.554 0.446-1 1-1z"></path>
+<svg height="24" width="24" version="1.1">
+ <g>
+  <path class="yelp-svg-fill" d="m4 3h16c0.554 0 1 0.446 1 1v11h-6v6h-11c-0.554 0-1-0.446-1-1v-16c0-0.554 0.446-1 1-1z"></path>
+  <path class="yelp-svg-fill" d="m17 16h4l-5 5v-4c0-0.554 0.446-1 1-1z"></path>
+ </g>
 </svg><div class="inner"><div class="region"><div class="contents"><p class="p">Le dossier sélectionné précédemment sera mémorisé et présélectionné pour le prochain téléchargement.</p></div></div></div>
 </div>
 </dd>
@@ -99,9 +111,11 @@ document.addEventListener('DOMContentLoaded', function() {
 <dd class="terms">
 <p class="p">Si cette option est activée, Parabole limitera la vitesse de téléchargement selon la vitesse indiquée dans les préférences.</p>
 <div class="note" title="Note">
-<svg width="24" height="24" version="1.1">
- <path class="yelp-svg-fill" d="m4 3h16c0.554 0 1 0.446 1 1v11h-6v6h-11c-0.554 0-1-0.446-1-1v-16c0-0.554 0.446-1 1-1z"></path>
- <path class="yelp-svg-fill" d="m17 16h4l-5 5v-4c0-0.554 0.446-1 1-1z"></path>
+<svg height="24" width="24" version="1.1">
+ <g>
+  <path class="yelp-svg-fill" d="m4 3h16c0.554 0 1 0.446 1 1v11h-6v6h-11c-0.554 0-1-0.446-1-1v-16c0-0.554 0.446-1 1-1z"></path>
+  <path class="yelp-svg-fill" d="m17 16h4l-5 5v-4c0-0.554 0.446-1 1-1z"></path>
+ </g>
 </svg><div class="inner"><div class="region"><div class="contents"><p class="p">Disponible dans la section <span class="code">Options avancées</span>.</p></div></div></div>
 </div>
 </dd>
@@ -110,15 +124,19 @@ document.addEventListener('DOMContentLoaded', function() {
 <p class="p">Seulement disponible pour les téléchargements de vidéos (mp4, webm)</p>
 <p class="p">Si cette option est activée, Parabole préférera les vidéos avec le codec av1 lors du téléchargement.</p>
 <div class="note" title="Note">
-<svg width="24" height="24" version="1.1">
- <path class="yelp-svg-fill" d="m4 3h16c0.554 0 1 0.446 1 1v11h-6v6h-11c-0.554 0-1-0.446-1-1v-16c0-0.554 0.446-1 1-1z"></path>
- <path class="yelp-svg-fill" d="m17 16h4l-5 5v-4c0-0.554 0.446-1 1-1z"></path>
+<svg height="24" width="24" version="1.1">
+ <g>
+  <path class="yelp-svg-fill" d="m4 3h16c0.554 0 1 0.446 1 1v11h-6v6h-11c-0.554 0-1-0.446-1-1v-16c0-0.554 0.446-1 1-1z"></path>
+  <path class="yelp-svg-fill" d="m17 16h4l-5 5v-4c0-0.554 0.446-1 1-1z"></path>
+ </g>
 </svg><div class="inner"><div class="region"><div class="contents"><p class="p">Disponible dans la section <span class="code">Options avancées</span>.</p></div></div></div>
 </div>
 <div class="note" title="Note">
-<svg width="24" height="24" version="1.1">
- <path class="yelp-svg-fill" d="m4 3h16c0.554 0 1 0.446 1 1v11h-6v6h-11c-0.554 0-1-0.446-1-1v-16c0-0.554 0.446-1 1-1z"></path>
- <path class="yelp-svg-fill" d="m17 16h4l-5 5v-4c0-0.554 0.446-1 1-1z"></path>
+<svg height="24" width="24" version="1.1">
+ <g>
+  <path class="yelp-svg-fill" d="m4 3h16c0.554 0 1 0.446 1 1v11h-6v6h-11c-0.554 0-1-0.446-1-1v-16c0-0.554 0.446-1 1-1z"></path>
+  <path class="yelp-svg-fill" d="m17 16h4l-5 5v-4c0-0.554 0.446-1 1-1z"></path>
+ </g>
 </svg><div class="inner"><div class="region"><div class="contents"><p class="p">L’état de cette option sera mémorisé et restauré pour les téléchargements futurs.</p></div></div></div>
 </div>
 </dd>
@@ -126,9 +144,11 @@ document.addEventListener('DOMContentLoaded', function() {
 <dd class="terms">
 <p class="p">Si cette option est activée, Parabole séparera la vidéo en plusieurs morceaux correspondant aux chapitres qu’elles contient.</p>
 <div class="note" title="Note">
-<svg width="24" height="24" version="1.1">
- <path class="yelp-svg-fill" d="m4 3h16c0.554 0 1 0.446 1 1v11h-6v6h-11c-0.554 0-1-0.446-1-1v-16c0-0.554 0.446-1 1-1z"></path>
- <path class="yelp-svg-fill" d="m17 16h4l-5 5v-4c0-0.554 0.446-1 1-1z"></path>
+<svg height="24" width="24" version="1.1">
+ <g>
+  <path class="yelp-svg-fill" d="m4 3h16c0.554 0 1 0.446 1 1v11h-6v6h-11c-0.554 0-1-0.446-1-1v-16c0-0.554 0.446-1 1-1z"></path>
+  <path class="yelp-svg-fill" d="m17 16h4l-5 5v-4c0-0.554 0.446-1 1-1z"></path>
+ </g>
 </svg><div class="inner"><div class="region"><div class="contents"><p class="p">Disponible dans la section <span class="code">Options avancées</span>.</p></div></div></div>
 </div>
 </dd>
@@ -137,9 +157,11 @@ document.addEventListener('DOMContentLoaded', function() {
 <p class="p">Seulement disponible si l’<span class="code">inclusion des métadonnées</span> est activée dans les préférences.</p>
 <p class="p">Si cette option est activée, Parabole rognera la vignette d’un téléchargement en forme de carré. Ceci est utile pour le téléchargement de musiques, puisque les illustrations d’albums ont généralement cette forme.</p>
 <div class="note" title="Note">
-<svg width="24" height="24" version="1.1">
- <path class="yelp-svg-fill" d="m4 3h16c0.554 0 1 0.446 1 1v11h-6v6h-11c-0.554 0-1-0.446-1-1v-16c0-0.554 0.446-1 1-1z"></path>
- <path class="yelp-svg-fill" d="m17 16h4l-5 5v-4c0-0.554 0.446-1 1-1z"></path>
+<svg height="24" width="24" version="1.1">
+ <g>
+  <path class="yelp-svg-fill" d="m4 3h16c0.554 0 1 0.446 1 1v11h-6v6h-11c-0.554 0-1-0.446-1-1v-16c0-0.554 0.446-1 1-1z"></path>
+  <path class="yelp-svg-fill" d="m17 16h4l-5 5v-4c0-0.554 0.446-1 1-1z"></path>
+ </g>
 </svg><div class="inner"><div class="region"><div class="contents"><p class="p">Disponible dans la section <span class="code">Options avancées</span>.</p></div></div></div>
 </div>
 </dd>
@@ -147,23 +169,27 @@ document.addEventListener('DOMContentLoaded', function() {
 <dd class="terms">
 <p class="p">Si cette option est activée, l’utilisateur pourra entrer un temps de début et un temps de fin pour une partie du média à télécharger.</p>
 <div class="note" title="Note">
-<svg width="24" height="24" version="1.1">
- <path class="yelp-svg-fill" d="m4 3h16c0.554 0 1 0.446 1 1v11h-6v6h-11c-0.554 0-1-0.446-1-1v-16c0-0.554 0.446-1 1-1z"></path>
- <path class="yelp-svg-fill" d="m17 16h4l-5 5v-4c0-0.554 0.446-1 1-1z"></path>
+<svg height="24" width="24" version="1.1">
+ <g>
+  <path class="yelp-svg-fill" d="m4 3h16c0.554 0 1 0.446 1 1v11h-6v6h-11c-0.554 0-1-0.446-1-1v-16c0-0.554 0.446-1 1-1z"></path>
+  <path class="yelp-svg-fill" d="m17 16h4l-5 5v-4c0-0.554 0.446-1 1-1z"></path>
+ </g>
 </svg><div class="inner"><div class="region"><div class="contents"><p class="p">Disponible dans la section <span class="code">Options avancées</span>.</p></div></div></div>
 </div>
 <div class="note note-advanced" title="Avancé">
-<svg width="24" height="24" version="1.1">
- <path class="yelp-svg-fill" d="m5.4473 12.572c-2.039 0.957-3.4473 3.019-3.4473 5.428v4h20v-4c0-2.406-1.406-4.466-3.441-5.424a8 8 0 0 1-6.559 3.424 8 8 0 0 1-6.5527-3.428z"></path>
- <path class="yelp-svg-fill" d="m12 3a5 5 0 0 0-5 5 5 5 0 0 0 5 5 5 5 0 0 0 5-5 5 5 0 0 0-5-5zm0 3a2 2 0 0 1 2 2 2 2 0 0 1-2 2 2 2 0 0 1-2-2 2 2 0 0 1 2-2z"></path>
- <path class="yelp-svg-fill" d="m15.312 6 3.688 1v2l-3.4688 1z"></path>
- <path class="yelp-svg-fill" d="m14 11.312-1 3.688h-2l-1-3.469z"></path>
- <path class="yelp-svg-fill" d="m10 4.6875 1-3.6875h2l1 3.4688z"></path>
- <path class="yelp-svg-fill" d="m8.6875 10-3.6875-1v-2l3.4688-1z"></path>
- <path class="yelp-svg-fill" d="m12.928 4.2435 3.3146-1.9003 1.4142 1.4142-1.7457 3.1599z"></path>
- <path class="yelp-svg-fill" d="m15.757 8.9281 1.9003 3.3146-1.4142 1.4142-3.1599-1.7457z"></path>
- <path class="yelp-svg-fill" d="m8.2435 7.0719-1.9004-3.3145 1.4143-1.4143 3.1596 1.7457z"></path>
- <path class="yelp-svg-fill" d="m11.072 11.757-3.3146 1.9-1.4143-1.414 1.7457-3.1602z"></path>
+<svg height="24" width="24" version="1.1">
+ <g>
+  <path class="yelp-svg-fill" d="m5.4473 12.572c-2.039 0.957-3.4473 3.019-3.4473 5.428v4h20v-4c0-2.406-1.406-4.466-3.441-5.424a8 8 0 0 1 -6.559 3.424 8 8 0 0 1 -6.5527 -3.428z"></path>
+  <path class="yelp-svg-fill" d="m12 3a5 5 0 0 0 -5 5 5 5 0 0 0 5 5 5 5 0 0 0 5 -5 5 5 0 0 0 -5 -5zm0 3a2 2 0 0 1 2 2 2 2 0 0 1 -2 2 2 2 0 0 1 -2 -2 2 2 0 0 1 2 -2z"></path>
+  <path class="yelp-svg-fill" d="m15.312 6 3.688 1v2l-3.4688 1z"></path>
+  <path class="yelp-svg-fill" d="m14 11.312-1 3.688h-2l-1-3.469z"></path>
+  <path class="yelp-svg-fill" d="m10 4.6875 1-3.6875h2l1 3.4688z"></path>
+  <path class="yelp-svg-fill" d="m8.6875 10-3.6875-1v-2l3.4688-1z"></path>
+  <path class="yelp-svg-fill" d="m12.928 4.2435 3.3146-1.9003 1.4142 1.4142-1.7457 3.1599z"></path>
+  <path class="yelp-svg-fill" d="m15.757 8.9281 1.9003 3.3146-1.4142 1.4142-3.1599-1.7457z"></path>
+  <path class="yelp-svg-fill" d="m8.2435 7.0719-1.9004-3.3145 1.4143-1.4143 3.1596 1.7457z"></path>
+  <path class="yelp-svg-fill" d="m11.072 11.757-3.3146 1.9-1.4143-1.414 1.7457-3.1602z"></path>
+ </g>
 </svg><div class="inner"><div class="region"><div class="contents"><p class="p">L’activation de cette option désactivera l’utilisation de aria2 comme téléchargeur pour ce téléchargement s’il est activé dans les préférences.</p></div></div></div>
 </div>
 </dd>
@@ -171,17 +197,19 @@ document.addEventListener('DOMContentLoaded', function() {
 <dd class="terms">
 <p class="p">Le nom du fichier à utiliser lors de l’enregistrement du téléchargement.</p>
 <div class="note note-advanced" title="Avancé">
-<svg width="24" height="24" version="1.1">
- <path class="yelp-svg-fill" d="m5.4473 12.572c-2.039 0.957-3.4473 3.019-3.4473 5.428v4h20v-4c0-2.406-1.406-4.466-3.441-5.424a8 8 0 0 1-6.559 3.424 8 8 0 0 1-6.5527-3.428z"></path>
- <path class="yelp-svg-fill" d="m12 3a5 5 0 0 0-5 5 5 5 0 0 0 5 5 5 5 0 0 0 5-5 5 5 0 0 0-5-5zm0 3a2 2 0 0 1 2 2 2 2 0 0 1-2 2 2 2 0 0 1-2-2 2 2 0 0 1 2-2z"></path>
- <path class="yelp-svg-fill" d="m15.312 6 3.688 1v2l-3.4688 1z"></path>
- <path class="yelp-svg-fill" d="m14 11.312-1 3.688h-2l-1-3.469z"></path>
- <path class="yelp-svg-fill" d="m10 4.6875 1-3.6875h2l1 3.4688z"></path>
- <path class="yelp-svg-fill" d="m8.6875 10-3.6875-1v-2l3.4688-1z"></path>
- <path class="yelp-svg-fill" d="m12.928 4.2435 3.3146-1.9003 1.4142 1.4142-1.7457 3.1599z"></path>
- <path class="yelp-svg-fill" d="m15.757 8.9281 1.9003 3.3146-1.4142 1.4142-3.1599-1.7457z"></path>
- <path class="yelp-svg-fill" d="m8.2435 7.0719-1.9004-3.3145 1.4143-1.4143 3.1596 1.7457z"></path>
- <path class="yelp-svg-fill" d="m11.072 11.757-3.3146 1.9-1.4143-1.414 1.7457-3.1602z"></path>
+<svg height="24" width="24" version="1.1">
+ <g>
+  <path class="yelp-svg-fill" d="m5.4473 12.572c-2.039 0.957-3.4473 3.019-3.4473 5.428v4h20v-4c0-2.406-1.406-4.466-3.441-5.424a8 8 0 0 1 -6.559 3.424 8 8 0 0 1 -6.5527 -3.428z"></path>
+  <path class="yelp-svg-fill" d="m12 3a5 5 0 0 0 -5 5 5 5 0 0 0 5 5 5 5 0 0 0 5 -5 5 5 0 0 0 -5 -5zm0 3a2 2 0 0 1 2 2 2 2 0 0 1 -2 2 2 2 0 0 1 -2 -2 2 2 0 0 1 2 -2z"></path>
+  <path class="yelp-svg-fill" d="m15.312 6 3.688 1v2l-3.4688 1z"></path>
+  <path class="yelp-svg-fill" d="m14 11.312-1 3.688h-2l-1-3.469z"></path>
+  <path class="yelp-svg-fill" d="m10 4.6875 1-3.6875h2l1 3.4688z"></path>
+  <path class="yelp-svg-fill" d="m8.6875 10-3.6875-1v-2l3.4688-1z"></path>
+  <path class="yelp-svg-fill" d="m12.928 4.2435 3.3146-1.9003 1.4142 1.4142-1.7457 3.1599z"></path>
+  <path class="yelp-svg-fill" d="m15.757 8.9281 1.9003 3.3146-1.4142 1.4142-3.1599-1.7457z"></path>
+  <path class="yelp-svg-fill" d="m8.2435 7.0719-1.9004-3.3145 1.4143-1.4143 3.1596 1.7457z"></path>
+  <path class="yelp-svg-fill" d="m11.072 11.757-3.3146 1.9-1.4143-1.414 1.7457-3.1602z"></path>
+ </g>
 </svg><div class="inner"><div class="region"><div class="contents"><p class="p">Par défaut : le titre du média</p></div></div></div>
 </div>
 </dd>
