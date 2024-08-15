@@ -246,12 +246,25 @@ Adw.ApplicationWindow root {
               name: "downloading";
               child: Adw.Clamp {
                 maximum-size: 600;
-                child: Gtk.Box listDownloading {
-                  orientation: vertical;
-                  hexpand: true;
-                  valign: start;
+                child: Adw.ViewStack downloadingViewStack {
+                  Adw.ViewStackPage {
+                    name: "no-downloading";
+                    child: Adw.StatusPage {
+                      icon-name: "folder-download-symbolic";
+                      title: _("No Downloads Running");
+                    };
+                  }
 
-                  styles [ "card" ]
+                  Adw.ViewStackPage {
+                    name: "downloading";
+                    child: Gtk.Box listDownloading {
+                      orientation: vertical;
+                      hexpand: true;
+                      valign: start;
+
+                      styles [ "card" ]
+                    };
+                  }
                 };
               };
             }
@@ -260,12 +273,25 @@ Adw.ApplicationWindow root {
               name: "queued";
               child: Adw.Clamp {
                 maximum-size: 600;
-                child: Gtk.Box listQueued {
-                  orientation: vertical;
-                  hexpand: true;
-                  valign: start;
+                child: Adw.ViewStack queuedViewStack {
+                  Adw.ViewStackPage {
+                    name: "no-queued";
+                    child: Adw.StatusPage {
+                      icon-name: "hourglass-symbolic";
+                      title: _("No Downloads Queued");
+                    };
+                  }
 
-                  styles [ "card" ]
+                  Adw.ViewStackPage {
+                    name: "queued";
+                    child: Gtk.Box listQueued {
+                      orientation: vertical;
+                      hexpand: true;
+                      valign: start;
+
+                      styles [ "card" ]
+                    };
+                  }
                 };
               };
             }
@@ -274,12 +300,25 @@ Adw.ApplicationWindow root {
               name: "completed";
               child: Adw.Clamp {
                 maximum-size: 600;
-                child: Gtk.Box listCompleted {
-                  orientation: vertical;
-                  hexpand: true;
-                  valign: start;
-                  
-                  styles [ "card" ]
+                child: Adw.ViewStack completedViewStack {
+                  Adw.ViewStackPage {
+                    name: "no-completed";
+                    child: Adw.StatusPage {
+                      icon-name: "check-round-outline-symbolic";
+                      title: _("No Downloads Completed");
+                    };
+                  }
+
+                  Adw.ViewStackPage {
+                    name: "completed";
+                    child: Gtk.Box listCompleted {
+                      orientation: vertical;
+                      hexpand: true;
+                      valign: start;
+
+                      styles [ "card" ]
+                    };
+                  }
                 };
               };
             }
