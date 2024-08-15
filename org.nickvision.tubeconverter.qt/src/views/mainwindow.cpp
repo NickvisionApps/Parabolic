@@ -107,6 +107,7 @@ namespace Nickvision::TubeConverter::QT::Views
         QMainWindow::show();
         m_ui->dockHistory->hide();
         m_ui->viewStack->setCurrentIndex(0);
+        m_ui->toolBar->hide();
 #ifdef _WIN32
         WindowGeometry geometry{ m_controller->startup(reinterpret_cast<HWND>(winId())) };
 #elif defined(__linux__)
@@ -226,6 +227,11 @@ namespace Nickvision::TubeConverter::QT::Views
                 }
             }
         }
+        if(m_downloadRows.empty())
+        {
+            m_ui->viewStack->setCurrentIndex(0);
+            m_ui->toolBar->hide();
+        }
     }
 
     void MainWindow::clearCompletedDownloads()
@@ -245,6 +251,7 @@ namespace Nickvision::TubeConverter::QT::Views
         if(m_downloadRows.empty())
         {
             m_ui->viewStack->setCurrentIndex(0);
+            m_ui->toolBar->hide();
         }
     }
 
@@ -252,6 +259,10 @@ namespace Nickvision::TubeConverter::QT::Views
     {
         m_ui->lblDownloadLog->setText("");
         QListWidgetItem* item{ m_ui->listDownloads->currentItem() };
+        if(!item)
+        {
+            return;
+        }
         DownloadRow* row{ static_cast<DownloadRow*>(m_ui->listDownloads->itemWidget(item)) };
         m_ui->lblDownloadLog->setText(row->getLog());
     }
@@ -351,6 +362,7 @@ namespace Nickvision::TubeConverter::QT::Views
     void MainWindow::onDownloadAdded(const DownloadAddedEventArgs& args)
     {
         m_ui->viewStack->setCurrentIndex(1);
+        m_ui->toolBar->show();
         DownloadRow* row{ new DownloadRow(args) };
         connect(row, &DownloadRow::stop, [this, id{ args.getId() }]() { m_controller->getDownloadManager().stopDownload(id); });
         connect(row, &DownloadRow::retry, [this, id{ args.getId() }]() { m_controller->getDownloadManager().retryDownload(id); });

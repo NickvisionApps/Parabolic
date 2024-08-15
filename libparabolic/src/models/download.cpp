@@ -148,7 +148,7 @@ namespace Nickvision::TubeConverter::Shared::Models
                 m_progressChanged.invoke({ m_id, (progress[2] != "NA" ? std::stod(progress[2]) : 0.0) / (progress[3] != "NA" ? std::stod(progress[3]) : (progress[4] != "NA" ? std::stod(progress[4]) : 0.0)), (progress[5] != "NA" ? std::stod(progress[5]) : 0.0), log });
                 break;
             }
-            std::this_thread::sleep_for(std::chrono::milliseconds(50));
+            std::this_thread::sleep_for(std::chrono::milliseconds(100));
         }
     }
 

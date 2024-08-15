@@ -132,9 +132,12 @@ namespace Nickvision::TubeConverter::GNOME::Views
             adw_alert_dialog_set_close_response(dialog, "no");
             g_signal_connect(dialog, "response", G_CALLBACK(+[](AdwAlertDialog* self, const char*, gpointer data)
             {
-                MainWindow* mainWindow{ reinterpret_cast<MainWindow*>(data) };
-                mainWindow->m_controller->getDownloadManager().stopAllDownloads();
-                gtk_window_close(GTK_WINDOW(mainWindow->m_window));
+                if(response == "yes")
+                {
+                    MainWindow* mainWindow{ reinterpret_cast<MainWindow*>(data) };
+                    mainWindow->m_controller->getDownloadManager().stopAllDownloads();
+                    tk_window_close(GTK_WINDOW(mainWindow->m_window));
+                }
             }), this);
             adw_dialog_present(ADW_DIALOG(dialog), GTK_WIDGET(m_window));
             return true;

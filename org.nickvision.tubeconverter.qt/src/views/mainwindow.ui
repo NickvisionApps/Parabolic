@@ -14,6 +14,9 @@
    <iconset resource="../../org.nickvision.tubeconverter.qt.qrc">
     <normaloff>:/resources/org.nickvision.tubeconverter.ico</normaloff>:/resources/org.nickvision.tubeconverter.ico</iconset>
   </property>
+  <property name="toolButtonStyle">
+   <enum>Qt::ToolButtonStyle::ToolButtonTextBesideIcon</enum>
+  </property>
   <widget class="QWidget" name="mainGrid">
    <layout class="QHBoxLayout" name="horizontalLayout">
     <property name="leftMargin">
@@ -31,7 +34,7 @@
     <item>
      <widget class="QStackedWidget" name="viewStack">
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="pageHome">
        <layout class="QHBoxLayout" name="horizontalLayout_2">
@@ -170,7 +173,7 @@
              <x>0</x>
              <y>0</y>
              <width>745</width>
-             <height>318</height>
+             <height>301</height>
             </rect>
            </property>
            <layout class="QVBoxLayout" name="verticalLayout_6">
@@ -190,6 +193,9 @@
              <widget class="QLabel" name="lblDownloadLog">
               <property name="alignment">
                <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignTop</set>
+              </property>
+              <property name="textInteractionFlags">
+               <set>Qt::TextInteractionFlag::LinksAccessibleByMouse|Qt::TextInteractionFlag::TextSelectableByKeyboard|Qt::TextInteractionFlag::TextSelectableByMouse</set>
               </property>
              </widget>
             </item>
@@ -363,6 +369,28 @@
      </item>
     </layout>
    </widget>
+  </widget>
+  <widget class="QToolBar" name="toolBar">
+   <property name="windowTitle">
+    <string>toolBar</string>
+   </property>
+   <property name="movable">
+    <bool>false</bool>
+   </property>
+   <property name="allowedAreas">
+    <set>Qt::ToolBarArea::TopToolBarArea</set>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="actionAddDownload"/>
+   <addaction name="separator"/>
+   <addaction name="actionStopAllDownloads"/>
+   <addaction name="actionRetryFailedDownloads"/>
+   <addaction name="separator"/>
   </widget>
   <action name="actionCheckForUpdates">
    <property name="icon">
