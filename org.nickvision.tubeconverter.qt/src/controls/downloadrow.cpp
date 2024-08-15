@@ -72,8 +72,8 @@ namespace Nickvision::TubeConverter::QT::Controls
         }
         else
         {
-            m_ui->progressBar->setRange(0, 1);
-            m_ui->progressBar->setValue(args.getProgress());
+            m_ui->progressBar->setRange(0, 100);
+            m_ui->progressBar->setValue(args.getProgress() * 100);
             m_ui->lblStatus->setText(QString::fromStdString(std::vformat("{} | {}", std::make_format_args(CodeHelpers::unmove(_("Running")), args.getSpeedStr()))));
         }
         m_log = QString::fromStdString(args.getLog());
