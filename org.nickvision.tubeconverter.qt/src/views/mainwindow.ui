@@ -243,6 +243,8 @@
     <property name="title">
      <string/>
     </property>
+    <addaction name="actionKeyring"/>
+    <addaction name="separator"/>
     <addaction name="actionSettings"/>
    </widget>
    <widget class="QMenu" name="menuView">
@@ -406,6 +408,11 @@
    </property>
    <property name="shortcut">
     <string>F1</string>
+   </property>
+  </action>
+  <action name="actionKeyring">
+   <property name="icon">
+    <iconset theme="computer"/>
    </property>
   </action>
   <action name="actionSettings">

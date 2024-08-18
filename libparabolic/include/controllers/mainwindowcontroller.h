@@ -24,6 +24,7 @@
 #include <libnick/taskbar/taskbaritem.h>
 #include <libnick/update/updater.h>
 #include "controllers/adddownloaddialogcontroller.h"
+#include "controllers/keyringdialogcontroller.h"
 #include "controllers/preferencesviewcontroller.h"
 #include "models/downloadmanager.h"
 #include "models/historicdownload.h"
@@ -115,6 +116,11 @@ namespace Nickvision::TubeConverter::Shared::Controllers
          */
         std::shared_ptr<AddDownloadDialogController> createAddDownloadDialogController();
         /**
+         * @brief Gets a KeyringDialogController.
+         * @return The KeyringDialogController
+         */
+        std::shared_ptr<KeyringDialogController> createKeyringDialogController();
+        /**
          * @brief Gets a PreferencesViewController.
          * @return The PreferencesViewController
          */
@@ -172,7 +178,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         Nickvision::Taskbar::TaskbarItem m_taskbar;
         Nickvision::Network::NetworkMonitor m_networkMonitor;
         Nickvision::System::SuspendInhibitor m_suspendInhibitor;
-        std::optional<Nickvision::Keyring::Keyring> m_keyring;
+        Nickvision::Keyring::Keyring m_keyring;
         Models::DownloadManager m_downloadManager;
         Nickvision::Events::Event<Nickvision::Notifications::NotificationSentEventArgs> m_notificationSent;
         Nickvision::Events::Event<Nickvision::Notifications::ShellNotificationSentEventArgs> m_shellNotificationSent;

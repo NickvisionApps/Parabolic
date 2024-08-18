@@ -36,7 +36,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         m_appInfo{ "org.nickvision.tubeconverter", "Nickvision Parabolic", "Parabolic" },
         m_dataFileManager{ m_appInfo.getName() },
         m_logger{ UserDirectories::get(ApplicationUserDirectory::LocalData, m_appInfo.getName()) / "log.txt", Logging::LogLevel::Info, false },
-        m_keyring{ Keyring::Keyring::access(m_appInfo.getId()) },
+        m_keyring{ m_appInfo.getId() },
         m_downloadManager{ m_dataFileManager.get<Configuration>("config").getDownloaderOptions(), m_dataFileManager.get<DownloadHistory>("history"), m_logger }
     {
         m_appInfo.setVersion({ "2024.8.0-next" });
@@ -61,9 +61,9 @@ namespace Nickvision::TubeConverter::Shared::Controllers
 #endif
         m_dataFileManager.get<Configuration>("config").saved() += [this](const EventArgs&){ onConfigurationSaved(); };
         m_networkMonitor.stateChanged() += [this](const NetworkStateChangedEventArgs& args){ onNetworkStateChanged(args); };
-        if(!m_keyring)
+        if(!m_keyring.isSavingToDisk())
         {
-            m_logger.log(Logging::LogLevel::Error, "Unable to unlock keyring.");
+            m_logger.log(Logging::LogLevel::Warning, "Keyring not being saved to disk.");
         }
         if(Environment::findDependency("yt-dlp").empty())
         {
@@ -196,6 +196,11 @@ namespace Nickvision::TubeConverter::Shared::Controllers
     std::shared_ptr<AddDownloadDialogController> MainWindowController::createAddDownloadDialogController()
     {
         return std::make_shared<AddDownloadDialogController>(m_downloadManager, m_dataFileManager.get<PreviousDownloadOptions>("prev"), m_keyring);
+    }
+
+    std::shared_ptr<KeyringDialogController> MainWindowController::createKeyringDialogController()
+    {
+        return std::make_shared<KeyringDialogController>(m_keyring);
     }
 
     std::shared_ptr<PreferencesViewController> MainWindowController::createPreferencesViewController()

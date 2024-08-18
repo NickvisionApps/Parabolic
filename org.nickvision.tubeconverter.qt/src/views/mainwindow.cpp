@@ -13,6 +13,7 @@
 #include "controls/aboutdialog.h"
 #include "helpers/qthelpers.h"
 #include "views/adddownloaddialog.h"
+#include "views/keyringdialog.h"
 #include "views/settingsdialog.h"
 
 using namespace Nickvision::App;
@@ -41,6 +42,7 @@ namespace Nickvision::TubeConverter::QT::Views
         m_ui->actionAddDownload->setText(_("Add Download"));
         m_ui->actionExit->setText(_("Exit"));
         m_ui->menuEdit->setTitle(_("Edit"));
+        m_ui->actionKeyring->setText(_("Keyring"));
         m_ui->actionSettings->setText(_("Settings"));
         m_ui->menuView->setTitle(_("View"));
         m_ui->actionHistory->setText(_("History"));
@@ -69,6 +71,7 @@ namespace Nickvision::TubeConverter::QT::Views
         //Signals
         connect(m_ui->actionAddDownload, &QAction::triggered, this, &MainWindow::addDownload);
         connect(m_ui->actionExit, &QAction::triggered, this, &MainWindow::exit);
+        connect(m_ui->actionKeyring, &QAction::triggered, this, &MainWindow::keyring);
         connect(m_ui->actionSettings, &QAction::triggered, this, &MainWindow::settings);
         connect(m_ui->actionHistory, &QAction::triggered, this, &MainWindow::history);
         connect(m_ui->actionStopAllDownloads, &QAction::triggered, this, &MainWindow::stopAllDownloads);
@@ -153,15 +156,21 @@ namespace Nickvision::TubeConverter::QT::Views
         close();
     }
 
-    void MainWindow::history()
+    void MainWindow::keyring()
     {
-        m_ui->dockHistory->show();
+        KeyringDialog dialog{ m_controller->createKeyringDialogController(), this };
+        dialog.exec();
     }
 
     void MainWindow::settings()
     {
         SettingsDialog dialog{ m_controller->createPreferencesViewController(), this };
         dialog.exec();
+    }
+
+    void MainWindow::history()
+    {
+        m_ui->dockHistory->show();
     }
 
     void MainWindow::checkForUpdates()

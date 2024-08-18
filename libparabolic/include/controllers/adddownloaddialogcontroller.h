@@ -27,7 +27,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
          * @param keyring The Keyring to use
          * @param configuration The Configuration to use
          */
-        AddDownloadDialogController(Models::DownloadManager& downloadManager, Models::PreviousDownloadOptions& previousOptions, std::optional<Keyring::Keyring>& keyring);
+        AddDownloadDialogController(Models::DownloadManager& downloadManager, Models::PreviousDownloadOptions& previousOptions, Keyring::Keyring& keyring);
         /**
          * @brief Destructs the AddDownloadDialogController.
          */
@@ -141,7 +141,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
     private:
         Models::DownloadManager& m_downloadManager;
         Models::PreviousDownloadOptions& m_previousOptions;
-        std::optional<Keyring::Keyring>& m_keyring;
+        Keyring::Keyring& m_keyring;
         std::optional<Models::UrlInfo> m_urlInfo;
         std::optional<Keyring::Credential> m_credential;
         Nickvision::Events::Event<Nickvision::Events::ParamEventArgs<bool>> m_urlValidated;

@@ -5,6 +5,7 @@ endif()
 include(CTest)
 add_library(libparabolic
     "src/controllers/adddownloaddialogcontroller.cpp"
+    "src/controllers/keyringdialogcontroller.cpp"
     "src/controllers/mainwindowcontroller.cpp"
     "src/controllers/preferencesviewcontroller.cpp"
     "src/events/downloadaddedeventargs.cpp"

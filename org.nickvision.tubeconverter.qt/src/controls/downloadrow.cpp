@@ -41,10 +41,10 @@ namespace Nickvision::TubeConverter::QT::Controls
         m_ui->progressBar->setValue(0);
         m_ui->buttonStack->setCurrentIndex(0);
         //Signals
-        connect(m_ui->btnStop, &QPushButton::clicked, [this]() { stop(m_id); });
+        connect(m_ui->btnStop, &QPushButton::clicked, [this]() { Q_EMIT stop(m_id); });
         connect(m_ui->btnPlay, &QPushButton::clicked, this, &DownloadRow::play);
         connect(m_ui->btnOpenFolder, &QPushButton::clicked, this, &DownloadRow::openFolder);
-        connect(m_ui->btnRetry, &QPushButton::clicked, [this]() { retry(m_id); });
+        connect(m_ui->btnRetry, &QPushButton::clicked, [this]() { Q_EMIT retry(m_id); });
     }
 
     DownloadRow::~DownloadRow()

@@ -10,7 +10,7 @@ using namespace Nickvision::TubeConverter::Shared::Models;
 
 namespace Nickvision::TubeConverter::Shared::Controllers
 {
-    AddDownloadDialogController::AddDownloadDialogController(DownloadManager& downloadManager, PreviousDownloadOptions& previousOptions, std::optional<Keyring::Keyring>& keyring)
+    AddDownloadDialogController::AddDownloadDialogController(DownloadManager& downloadManager, PreviousDownloadOptions& previousOptions, Keyring::Keyring& keyring)
         : m_downloadManager{ downloadManager },
         m_previousOptions{ previousOptions },
         m_keyring{ keyring },
@@ -38,13 +38,10 @@ namespace Nickvision::TubeConverter::Shared::Controllers
     std::vector<std::string> AddDownloadDialogController::getKeyringCredentialNames() const
     {
         std::vector<std::string> names;
-        if (m_keyring)
+        for(const Credential& credential : m_keyring.getCredentials())
         {
-            for(const Credential& credential : m_keyring->getAllCredentials())
-            {
-                names.push_back(credential.getName());
-            }
-        }   
+            names.push_back(credential.getName());
+        }
         return names;
     }
 
@@ -227,15 +224,14 @@ namespace Nickvision::TubeConverter::Shared::Controllers
 
     void AddDownloadDialogController::validateUrl(const std::string& url, size_t credentialNameIndex)
     {
-        if (m_keyring)
+        if(credentialNameIndex < m_keyring.getCredentials().size())
         {
-            std::vector<Credential> credentials{ m_keyring->getAllCredentials() };
-            if(credentialNameIndex < credentials.size())
-            {
-                validateUrl(url, credentials[credentialNameIndex]);
-            }
+            validateUrl(url, m_keyring.getCredentials()[credentialNameIndex]);
         }
-        validateUrl(url, std::nullopt);
+        else
+        {
+            validateUrl(url, std::nullopt);
+        }
     }
 
     void AddDownloadDialogController::addSingleDownload(const std::filesystem::path& saveFolder, const std::string& filename, size_t fileTypeIndex, size_t qualityIndex, size_t audioLanguageIndex, bool downloadSubtitles, bool preferAV1, bool splitChapters, bool limitSpeed, const std::string& startTime, const std::string& endTime)

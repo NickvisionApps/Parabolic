@@ -53,6 +53,10 @@ namespace Nickvision::TubeConverter::QT::Views
          */
         void exit();
         /**
+         * @brief Displays the keyring dialog.
+         */
+        void keyring();
+        /**
          * @brief Displays the settings dialog.
          */
         void settings();
