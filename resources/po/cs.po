@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-18 10:57-0400\n"
+"POT-Creation-Date: 2024-08-18 23:52-0400\n"
 "PO-Revision-Date: 2023-12-07 03:34+0000\n"
 "Last-Translator: Fjuro <ifjuro@proton.me>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -130,7 +130,7 @@ msgstr "David Lapshin"
 msgid "translator-credits"
 msgstr "Jonáš Loskot <jonas.loskot@pm.me>, 2023"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:250
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:265
 msgid ""
 "The authors of Nickvision Parabolic are not responsible/liable for any "
 "misuse of this program that may violate local copyright/DMCA laws. Users use "
@@ -140,12 +140,12 @@ msgstr ""
 "zneužití tohoto programu, které může porušovat místní zákony o autorských "
 "právech/DMCA. Uživatelé používají tuto aplikaci na vlastní nebezpečí."
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:281
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:296
 #, fuzzy
 msgid "New update available"
 msgstr "Je dostupná nová aktualizace."
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:313
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:328
 #, fuzzy
 msgid "Unable to download and install update"
 msgstr "Nepodařilo se stáhnout a nainstalovat aktualizaci."
@@ -191,7 +191,9 @@ msgstr ""
 msgid "Add Download"
 msgstr "Přidat stahování"
 
+#. Localize the Edit page
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:18
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:27
 msgid "Back"
 msgstr "Zpět"
 
@@ -212,11 +214,13 @@ msgstr "Údaj"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:66
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:32
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:32
 msgid "Username"
 msgstr "Uživatelské jméno"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:70
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:34
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:34
 msgid "Password"
 msgstr "Heslo"
 
@@ -412,7 +416,7 @@ msgid "Home"
 msgstr "Domů"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:85
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:15
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:21
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:45
 msgid "Keyring"
 msgstr "Klíčenka"
@@ -823,6 +827,11 @@ msgstr "Zpracovává se..."
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:97
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:90
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:146
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:119
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:122
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:125
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:128
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:131
 msgid "Error"
 msgstr "Chyba"
 
@@ -886,6 +895,7 @@ msgid "Download Again"
 msgstr "Stáhnout znovu"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:263
+#: org.nickvision.tubeconverter.qt/src/controls/keyringrow.cpp:19
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:343
 msgid "Delete"
 msgstr "Odstranit"
@@ -930,17 +940,24 @@ msgstr ""
 msgid "Stopped"
 msgstr "Zastaveno"
 
+#: org.nickvision.tubeconverter.qt/src/controls/keyringrow.cpp:18
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:44
+msgid "Edit"
+msgstr "Upravit"
+
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:30
 #, fuzzy
 msgid "Enter media url here"
 msgstr "Zde zadejte adresu URL média"
 
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:33
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:33
 #, fuzzy
 msgid "Enter username here"
 msgstr "Zde zadejte uživatelské jméno"
 
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:35
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:35
 msgid "Enter password here"
 msgstr "Zde zadejte heslo"
 
@@ -983,6 +1000,82 @@ msgstr ""
 msgid "Playlist Items ({})"
 msgstr ""
 
+#. Localize the Manage page
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:23
+msgid "Create, save, and manage your credentials for media websites."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:24
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:73
+msgid "Add"
+msgstr "Přidat"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:25
+#, fuzzy
+msgid "No Credentials Found"
+msgstr "Žádné údaje"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:28
+msgid "Name"
+msgstr "Název"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:29
+#, fuzzy
+msgid "Enter name here"
+msgstr "Zde zadejte uživatelské jméno"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:30
+msgid "URL"
+msgstr "Adresa URL"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:31
+#, fuzzy
+msgid "Enter url here"
+msgstr "Zde zadejte adresu URL média"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:55
+msgid "Warning"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:55
+msgid ""
+"The keyring is not saving changes to disk. Any changes made will be lost "
+"when the application closes."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:89
+msgid "Modify"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:94
+msgid "Delete Credential?"
+msgstr "Odstranit údaje?"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:94
+msgid "Are you sure you want to delete this credential?"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:119
+#, fuzzy
+msgid "The credential name cannot be empty."
+msgstr "Ujistěte se, že jsou údaje správné."
+
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:122
+msgid "Both the username and password cannot be empty."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:125
+msgid "The provided url is invalid."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:128
+msgid "A credential with this name already exists."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:131
+msgid "There was an unknown error adding the credential to the keyring."
+msgstr ""
+
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:38
 #, fuzzy
 msgid "Parabolic (Preview)"
@@ -996,10 +1089,6 @@ msgstr "Soubor"
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:43
 msgid "Exit"
 msgstr "Ukončit"
-
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:44
-msgid "Edit"
-msgstr "Upravit"
 
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:46
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:19
@@ -1097,9 +1186,6 @@ msgstr "Zde zadejte adresu URL proxy"
 #~ msgid "About"
 #~ msgstr "O aplikaci"
 
-#~ msgid "Add"
-#~ msgstr "Přidat"
-
 #~ msgid "Add a login to get started."
 #~ msgstr "Začněte tím, že se přihlásíte."
 
@@ -1159,9 +1245,6 @@ msgstr "Zde zadejte adresu URL proxy"
 
 #~ msgid "DaPigGuy"
 #~ msgstr "DaPigGuy"
-
-#~ msgid "Delete Credential?"
-#~ msgstr "Odstranit údaje?"
 
 #~ msgid "Deselect All"
 #~ msgstr "Zrušit výběr"
@@ -1249,9 +1332,6 @@ msgstr "Zde zadejte adresu URL proxy"
 #~ msgid "End Time (Invalid)"
 #~ msgstr "Čas konce (neplatný)"
 
-#~ msgid "Ensure credentials are correct."
-#~ msgstr "Ujistěte se, že jsou údaje správné."
-
 #~ msgid "Enter end timeframe here"
 #~ msgstr "Zde zadejte konečný čas"
 
@@ -1336,9 +1416,6 @@ msgstr "Zde zadejte adresu URL proxy"
 #~ "Místo ukončení aplikace při zavření okna ji minimalizovat do systémové "
 #~ "lišty."
 
-#~ msgid "Name"
-#~ msgstr "Název"
-
 #~ msgid "Name (Empty)"
 #~ msgstr "Název (prázdný)"
 
@@ -1350,9 +1427,6 @@ msgstr "Zde zadejte adresu URL proxy"
 
 #~ msgid "No Completed Downloads"
 #~ msgstr "Žádná dokončená stahování"
-
-#~ msgid "No Credentials"
-#~ msgstr "Žádné údaje"
 
 #~ msgid "No downloads running"
 #~ msgstr "Nejsou spuštěna žádná stahování"
@@ -1482,9 +1556,6 @@ msgstr "Zde zadejte adresu URL proxy"
 
 #~ msgid "Unset Cookies File"
 #~ msgstr "Nenastaven soubor s cookies"
-
-#~ msgid "URL"
-#~ msgstr "Adresa URL"
 
 #~ msgid "URL (Invalid)"
 #~ msgstr "Adresa URL (neplatná)"

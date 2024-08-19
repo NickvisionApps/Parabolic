@@ -140,6 +140,21 @@ namespace Nickvision::TubeConverter::Shared::Controllers
     std::string MainWindowController::getDebugInformation(const std::string& extraInformation) const
     {
         std::stringstream builder;
+        //Network connection
+        builder << "Network: ";
+        switch(m_networkMonitor.getConnectionState())
+        {
+        case NetworkState::Disconnected:
+            builder << "Disconnected" << std::endl;
+            break;
+        case NetworkState::ConnectedLocal:
+            builder << "Local" << std::endl;
+            break;
+        case NetworkState::ConnectedGlobal:
+            builder << "Global" << std::endl;
+            break;
+        }
+        builder << std::endl;
         //yt-dlp
         if(Environment::findDependency("yt-dlp").empty())
         {
@@ -150,7 +165,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
             std::string ytdlpVersion{ Environment::exec(Environment::findDependency("yt-dlp").string() + " --version") };
             builder << "yt-dlp version " << ytdlpVersion;
         }
-        //Ffmpeg
+        //ffmpeg
         if(Environment::findDependency("ffmpeg").empty())
         {
             builder << "ffmpeg not found" << std::endl;
@@ -160,7 +175,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
             std::string ffmpegVersion{ Environment::exec(Environment::findDependency("ffmpeg").string() + " -version") };
             builder << ffmpegVersion.substr(0, ffmpegVersion.find("Copyright")) << std::endl;
         }
-        //Aria2c
+        //aria2c
         if(Environment::findDependency("aria2c").empty())
         {
             builder << "aria2c not found" << std::endl;

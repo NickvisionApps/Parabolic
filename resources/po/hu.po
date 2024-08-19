@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-18 10:57-0400\n"
+"POT-Creation-Date: 2024-08-18 23:52-0400\n"
 "PO-Revision-Date: 2024-01-06 02:07+0000\n"
 "Last-Translator: Kingproone <PlayerGuy@protonmail.com>\n"
 "Language-Team: Hungarian <https://hosted.weblate.org/projects/nickvision-"
@@ -129,7 +129,7 @@ msgstr "David Lapshin"
 msgid "translator-credits"
 msgstr "ViBE <vibe@protonmail.com>"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:250
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:265
 msgid ""
 "The authors of Nickvision Parabolic are not responsible/liable for any "
 "misuse of this program that may violate local copyright/DMCA laws. Users use "
@@ -139,12 +139,12 @@ msgstr ""
 "használatából fakadó esetleges jogsértésekért. A felhasználó saját "
 "felelősségére használja az alkalmazást."
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:281
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:296
 #, fuzzy
 msgid "New update available"
 msgstr "Frissítés érhető el."
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:313
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:328
 #, fuzzy
 msgid "Unable to download and install update"
 msgstr "A frissítés letöltése és telepítése nem sikerült."
@@ -190,7 +190,9 @@ msgstr ""
 msgid "Add Download"
 msgstr "Hozzáadás"
 
+#. Localize the Edit page
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:18
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:27
 msgid "Back"
 msgstr "Vissza"
 
@@ -211,11 +213,13 @@ msgstr "Bejelentkezés"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:66
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:32
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:32
 msgid "Username"
 msgstr "Felhasználónév"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:70
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:34
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:34
 msgid "Password"
 msgstr "Jelszó"
 
@@ -411,7 +415,7 @@ msgid "Home"
 msgstr "Kezdőlap"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:85
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:15
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:21
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:45
 msgid "Keyring"
 msgstr "Jelszókezelő"
@@ -823,6 +827,11 @@ msgstr "Feldolgozás..."
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:97
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:90
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:146
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:119
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:122
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:125
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:128
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:131
 msgid "Error"
 msgstr "Hiba"
 
@@ -887,6 +896,7 @@ msgid "Download Again"
 msgstr "Letöltés ismét"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:263
+#: org.nickvision.tubeconverter.qt/src/controls/keyringrow.cpp:19
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:343
 msgid "Delete"
 msgstr "Törlés"
@@ -931,17 +941,24 @@ msgstr ""
 msgid "Stopped"
 msgstr "Letöltés megszakítva"
 
+#: org.nickvision.tubeconverter.qt/src/controls/keyringrow.cpp:18
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:44
+msgid "Edit"
+msgstr "Szerkesztés"
+
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:30
 #, fuzzy
 msgid "Enter media url here"
 msgstr "Hivatkozás beillesztése"
 
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:33
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:33
 #, fuzzy
 msgid "Enter username here"
 msgstr "Felhasználónév megadása"
 
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:35
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:35
 msgid "Enter password here"
 msgstr "Jelszó megadása"
 
@@ -984,6 +1001,82 @@ msgstr ""
 msgid "Playlist Items ({})"
 msgstr ""
 
+#. Localize the Manage page
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:23
+msgid "Create, save, and manage your credentials for media websites."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:24
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:73
+msgid "Add"
+msgstr "Hozzáadás"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:25
+#, fuzzy
+msgid "No Credentials Found"
+msgstr "Nincs tárolt bejelentkezés"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:28
+msgid "Name"
+msgstr "Megnevezés"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:29
+#, fuzzy
+msgid "Enter name here"
+msgstr "Felhasználónév megadása"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:30
+msgid "URL"
+msgstr "Hivatkozás"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:31
+#, fuzzy
+msgid "Enter url here"
+msgstr "Hivatkozás beillesztése"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:55
+msgid "Warning"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:55
+msgid ""
+"The keyring is not saving changes to disk. Any changes made will be lost "
+"when the application closes."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:89
+msgid "Modify"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:94
+msgid "Delete Credential?"
+msgstr "Bejelentkezés törlése"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:94
+msgid "Are you sure you want to delete this credential?"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:119
+#, fuzzy
+msgid "The credential name cannot be empty."
+msgstr "Győződjön meg arról, hogy az adatok helyesek!"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:122
+msgid "Both the username and password cannot be empty."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:125
+msgid "The provided url is invalid."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:128
+msgid "A credential with this name already exists."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:131
+msgid "There was an unknown error adding the credential to the keyring."
+msgstr ""
+
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:38
 #, fuzzy
 msgid "Parabolic (Preview)"
@@ -997,10 +1090,6 @@ msgstr "Fájl"
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:43
 msgid "Exit"
 msgstr "Kilépés"
-
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:44
-msgid "Edit"
-msgstr "Szerkesztés"
 
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:46
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:19
@@ -1097,9 +1186,6 @@ msgstr "Proxy átjáró megadása"
 #~ msgid "About"
 #~ msgstr "Névjegy"
 
-#~ msgid "Add"
-#~ msgstr "Hozzáadás"
-
 #~ msgid "Add a login to get started."
 #~ msgstr "Kezdéshez adjon hozzá egy fiókot"
 
@@ -1159,9 +1245,6 @@ msgstr "Proxy átjáró megadása"
 
 #~ msgid "DaPigGuy"
 #~ msgstr "DaPigGuy"
-
-#~ msgid "Delete Credential?"
-#~ msgstr "Bejelentkezés törlése"
 
 #~ msgid "Deselect All"
 #~ msgstr "Kijelölés törlése"
@@ -1248,9 +1331,6 @@ msgstr "Proxy átjáró megadása"
 #~ msgid "End Time (Invalid)"
 #~ msgstr "Részlet vége (hibás)"
 
-#~ msgid "Ensure credentials are correct."
-#~ msgstr "Győződjön meg arról, hogy az adatok helyesek!"
-
 #~ msgid "Enter end timeframe here"
 #~ msgstr "Részlet vége"
 
@@ -1336,9 +1416,6 @@ msgstr "Proxy átjáró megadása"
 #~ "Alkalmazás értesítési területre küldése bezáráskor a háttérben történő "
 #~ "futtatáshoz."
 
-#~ msgid "Name"
-#~ msgstr "Megnevezés"
-
 #~ msgid "Name (Empty)"
 #~ msgstr "Megnevezés (üres)"
 
@@ -1350,9 +1427,6 @@ msgstr "Proxy átjáró megadása"
 
 #~ msgid "No Completed Downloads"
 #~ msgstr "Nincs befejezett letöltés"
-
-#~ msgid "No Credentials"
-#~ msgstr "Nincs tárolt bejelentkezés"
 
 #~ msgid "No downloads running"
 #~ msgstr "Nincs folyamatban letöltés"
@@ -1485,9 +1559,6 @@ msgstr "Proxy átjáró megadása"
 
 #~ msgid "Unset Cookies File"
 #~ msgstr "Süti fájl eltávolítása"
-
-#~ msgid "URL"
-#~ msgstr "Hivatkozás"
 
 #~ msgid "URL (Invalid)"
 #~ msgstr "Hivatkozás (hibás)"

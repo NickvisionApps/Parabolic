@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-18 10:57-0400\n"
+"POT-Creation-Date: 2024-08-18 23:52-0400\n"
 "PO-Revision-Date: 2024-04-28 01:07+0000\n"
 "Last-Translator: Murilo Monte <murillomonte086@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
@@ -133,7 +133,7 @@ msgstr ""
 "Tiago Lucas Flach <tiagolucas9830@gmail.com>\n"
 "Murilo Monte <murilomonte086@gmail.com>"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:250
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:265
 msgid ""
 "The authors of Nickvision Parabolic are not responsible/liable for any "
 "misuse of this program that may violate local copyright/DMCA laws. Users use "
@@ -143,12 +143,12 @@ msgstr ""
 "indevido deste programa que possa violar as leis locais de direitos autorais/"
 "DMCA. Os usuários usam este aplicativo por sua própria conta e risco."
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:281
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:296
 #, fuzzy
 msgid "New update available"
 msgstr "Nova atualização disponível."
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:313
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:328
 #, fuzzy
 msgid "Unable to download and install update"
 msgstr "Não foi possível baixar e instalar a atualização."
@@ -194,7 +194,9 @@ msgstr ""
 msgid "Add Download"
 msgstr "Adicionar Download"
 
+#. Localize the Edit page
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:18
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:27
 msgid "Back"
 msgstr "Voltar"
 
@@ -215,11 +217,13 @@ msgstr "Credencial"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:66
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:32
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:32
 msgid "Username"
 msgstr "Nome de usuário"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:70
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:34
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:34
 msgid "Password"
 msgstr "Senha"
 
@@ -416,7 +420,7 @@ msgid "Home"
 msgstr "Início"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:85
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:15
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:21
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:45
 msgid "Keyring"
 msgstr "Chaveiro"
@@ -829,6 +833,11 @@ msgstr "Processando..."
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:97
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:90
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:146
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:119
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:122
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:125
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:128
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:131
 msgid "Error"
 msgstr "Erro"
 
@@ -892,6 +901,7 @@ msgid "Download Again"
 msgstr "Baixar novamente"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:263
+#: org.nickvision.tubeconverter.qt/src/controls/keyringrow.cpp:19
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:343
 msgid "Delete"
 msgstr "Excluir"
@@ -937,17 +947,24 @@ msgstr ""
 msgid "Stopped"
 msgstr "Parado"
 
+#: org.nickvision.tubeconverter.qt/src/controls/keyringrow.cpp:18
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:44
+msgid "Edit"
+msgstr "Editar"
+
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:30
 #, fuzzy
 msgid "Enter media url here"
 msgstr "Insira a URL do vídeo aqui"
 
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:33
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:33
 #, fuzzy
 msgid "Enter username here"
 msgstr "Insira o nome de usuário aqui"
 
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:35
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:35
 msgid "Enter password here"
 msgstr "Digite a senha aqui"
 
@@ -990,6 +1007,82 @@ msgstr ""
 msgid "Playlist Items ({})"
 msgstr ""
 
+#. Localize the Manage page
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:23
+msgid "Create, save, and manage your credentials for media websites."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:24
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:73
+msgid "Add"
+msgstr "Adicionar"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:25
+#, fuzzy
+msgid "No Credentials Found"
+msgstr "Sem credenciais"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:28
+msgid "Name"
+msgstr "Nome"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:29
+#, fuzzy
+msgid "Enter name here"
+msgstr "Insira o nome de usuário aqui"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:30
+msgid "URL"
+msgstr "URL"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:31
+#, fuzzy
+msgid "Enter url here"
+msgstr "Insira a URL do vídeo aqui"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:55
+msgid "Warning"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:55
+msgid ""
+"The keyring is not saving changes to disk. Any changes made will be lost "
+"when the application closes."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:89
+msgid "Modify"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:94
+msgid "Delete Credential?"
+msgstr "Excluir credencial?"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:94
+msgid "Are you sure you want to delete this credential?"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:119
+#, fuzzy
+msgid "The credential name cannot be empty."
+msgstr "Certifique-se de que as credenciais estão corretas."
+
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:122
+msgid "Both the username and password cannot be empty."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:125
+msgid "The provided url is invalid."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:128
+msgid "A credential with this name already exists."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:131
+msgid "There was an unknown error adding the credential to the keyring."
+msgstr ""
+
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:38
 #, fuzzy
 msgid "Parabolic (Preview)"
@@ -1003,10 +1096,6 @@ msgstr "Arquivo"
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:43
 msgid "Exit"
 msgstr "Sair"
-
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:44
-msgid "Edit"
-msgstr "Editar"
 
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:46
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:19
@@ -1104,9 +1193,6 @@ msgstr "Insira a URL do vídeo aqui"
 #~ msgid "About"
 #~ msgstr "Sobre {0}"
 
-#~ msgid "Add"
-#~ msgstr "Adicionar"
-
 #, fuzzy
 #~ msgid "Add a login to get started."
 #~ msgstr "Adicione um download para começar."
@@ -1169,9 +1255,6 @@ msgstr "Insira a URL do vídeo aqui"
 
 #~ msgid "DaPigGuy"
 #~ msgstr "DaPigGuy"
-
-#~ msgid "Delete Credential?"
-#~ msgstr "Excluir credencial?"
 
 #~ msgid "Deselect All"
 #~ msgstr "Desmarcar todos"
@@ -1258,9 +1341,6 @@ msgstr "Insira a URL do vídeo aqui"
 
 #~ msgid "End Time (Invalid)"
 #~ msgstr "Fim (inválido)"
-
-#~ msgid "Ensure credentials are correct."
-#~ msgstr "Certifique-se de que as credenciais estão corretas."
 
 #~ msgid "Enter end timeframe here"
 #~ msgstr "Insira o intervalo de tempo aqui"
@@ -1353,9 +1433,6 @@ msgstr "Insira a URL do vídeo aqui"
 #~ "Minimize para a bandeja do sistema em vez de sair do aplicativo quando a "
 #~ "janela for fechada."
 
-#~ msgid "Name"
-#~ msgstr "Nome"
-
 #~ msgid "Name (Empty)"
 #~ msgstr "Nome (vazio)"
 
@@ -1367,9 +1444,6 @@ msgstr "Insira a URL do vídeo aqui"
 
 #~ msgid "No Completed Downloads"
 #~ msgstr "Downloads não Concluídos"
-
-#~ msgid "No Credentials"
-#~ msgstr "Sem credenciais"
 
 #~ msgid "No downloads running"
 #~ msgstr "Nenhum download em andamento"
@@ -1504,9 +1578,6 @@ msgstr "Insira a URL do vídeo aqui"
 #~ msgid "Unset Cookies File"
 #~ msgstr "Desativar o Arquivo de Cookies"
 
-#~ msgid "URL"
-#~ msgstr "URL"
-
 #~ msgid "URL (Invalid)"
 #~ msgstr "URL (inválida)"
 
@@ -1588,10 +1659,6 @@ msgstr "Insira a URL do vídeo aqui"
 #, csharp-format
 #~ msgid "Remaining Downloads: {0}"
 #~ msgstr "Downloads Restantes: {0}"
-
-#, fuzzy
-#~ msgid "Enter url here"
-#~ msgstr "Insira a URL do vídeo aqui"
 
 #~ msgid "YouTube;Downloader;ytdlp;Nickvision;Tube;Converter;"
 #~ msgstr "YouTube;Downloader;ytdlp;Nickvision;Tube;Converter;Baixar;"

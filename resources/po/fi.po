@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-18 10:57-0400\n"
+"POT-Creation-Date: 2024-08-18 23:52-0400\n"
 "PO-Revision-Date: 2024-04-08 16:01+0000\n"
 "Last-Translator: Jiri Grönroos <jiri.gronroos@iki.fi>\n"
 "Language-Team: Finnish <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -129,19 +129,19 @@ msgstr "David Lapshin"
 msgid "translator-credits"
 msgstr "Jiri Grönroos"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:250
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:265
 msgid ""
 "The authors of Nickvision Parabolic are not responsible/liable for any "
 "misuse of this program that may violate local copyright/DMCA laws. Users use "
 "this application at their own risk."
 msgstr ""
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:281
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:296
 #, fuzzy
 msgid "New update available"
 msgstr "Uusi päivitys saatavilla."
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:313
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:328
 #, fuzzy
 msgid "Unable to download and install update"
 msgstr "Päivityksen lataaminen ja asentaminen ei onnistu."
@@ -187,7 +187,9 @@ msgstr ""
 msgid "Add Download"
 msgstr "Lisää lataus"
 
+#. Localize the Edit page
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:18
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:27
 msgid "Back"
 msgstr "Takaisin"
 
@@ -209,11 +211,13 @@ msgstr "Ei kirjautumistietoja"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:66
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:32
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:32
 msgid "Username"
 msgstr "Käyttäjätunnus"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:70
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:34
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:34
 msgid "Password"
 msgstr "Salasana"
 
@@ -410,7 +414,7 @@ msgid "Home"
 msgstr "Koti"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:85
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:15
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:21
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:45
 msgid "Keyring"
 msgstr "Avainnippu"
@@ -814,6 +818,11 @@ msgstr "Käsitellään..."
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:97
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:90
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:146
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:119
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:122
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:125
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:128
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:131
 msgid "Error"
 msgstr "Virhe"
 
@@ -875,6 +884,7 @@ msgid "Download Again"
 msgstr "Lataa uudelleen"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:263
+#: org.nickvision.tubeconverter.qt/src/controls/keyringrow.cpp:19
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:343
 msgid "Delete"
 msgstr "Poista"
@@ -908,15 +918,22 @@ msgstr ""
 msgid "Stopped"
 msgstr "Pysäytetty"
 
+#: org.nickvision.tubeconverter.qt/src/controls/keyringrow.cpp:18
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:44
+msgid "Edit"
+msgstr ""
+
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:30
 msgid "Enter media url here"
 msgstr ""
 
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:33
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:33
 msgid "Enter username here"
 msgstr ""
 
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:35
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:35
 msgid "Enter password here"
 msgstr ""
 
@@ -958,6 +975,80 @@ msgstr ""
 msgid "Playlist Items ({})"
 msgstr ""
 
+#. Localize the Manage page
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:23
+msgid "Create, save, and manage your credentials for media websites."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:24
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:73
+msgid "Add"
+msgstr "Lisää"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:25
+#, fuzzy
+msgid "No Credentials Found"
+msgstr "Ei kirjautumistietoja"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:28
+msgid "Name"
+msgstr "Nimi"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:29
+msgid "Enter name here"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:30
+msgid "URL"
+msgstr "URL-osoite"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:31
+msgid "Enter url here"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:55
+msgid "Warning"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:55
+msgid ""
+"The keyring is not saving changes to disk. Any changes made will be lost "
+"when the application closes."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:89
+msgid "Modify"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:94
+msgid "Delete Credential?"
+msgstr "Poistetaanko kirjautumistieto?"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:94
+msgid "Are you sure you want to delete this credential?"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:119
+#, fuzzy
+msgid "The credential name cannot be empty."
+msgstr "Varmista, että kirjautumistiedot ovat oikein."
+
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:122
+msgid "Both the username and password cannot be empty."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:125
+msgid "The provided url is invalid."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:128
+msgid "A credential with this name already exists."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:131
+msgid "There was an unknown error adding the credential to the keyring."
+msgstr ""
+
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:38
 #, fuzzy
 msgid "Parabolic (Preview)"
@@ -971,10 +1062,6 @@ msgstr "Tiedoston nimi"
 
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:43
 msgid "Exit"
-msgstr ""
-
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:44
-msgid "Edit"
 msgstr ""
 
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:46
@@ -1061,9 +1148,6 @@ msgstr ""
 #~ msgid "About"
 #~ msgstr "Tietoja"
 
-#~ msgid "Add"
-#~ msgstr "Lisää"
-
 #~ msgid "Add a login to get started."
 #~ msgstr "Lisää kirjautumistiedot aloittaaksesi."
 
@@ -1105,9 +1189,6 @@ msgstr ""
 
 #~ msgid "DaPigGuy"
 #~ msgstr "DaPigGuy"
-
-#~ msgid "Delete Credential?"
-#~ msgstr "Poistetaanko kirjautumistieto?"
 
 #~ msgid "Deselect All"
 #~ msgstr "Älä valitse mitään"
@@ -1152,9 +1233,6 @@ msgstr ""
 #~ msgid "End Time (Invalid)"
 #~ msgstr "Loppuaika (virheellinen)"
 
-#~ msgid "Ensure credentials are correct."
-#~ msgstr "Varmista, että kirjautumistiedot ovat oikein."
-
 #~ msgid "Failed to enable keyring."
 #~ msgstr "Avainnipun käyttöönotto epäonnistui."
 
@@ -1192,9 +1270,6 @@ msgstr ""
 
 #~ msgid "Media URL (Invalid)"
 #~ msgstr "Median URL-osoite (virheellinen)"
-
-#~ msgid "Name"
-#~ msgstr "Nimi"
 
 #~ msgid "Name (Empty)"
 #~ msgstr "Nimi (tyhjä)"
@@ -1310,9 +1385,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "Unset Cookies File"
 #~ msgstr "Valitse evästetiedosto"
-
-#~ msgid "URL"
-#~ msgstr "URL-osoite"
 
 #~ msgid "URL (Invalid)"
 #~ msgstr "URL-osoite (virheellinen)"

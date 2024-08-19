@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-18 10:57-0400\n"
+"POT-Creation-Date: 2024-08-18 23:52-0400\n"
 "PO-Revision-Date: 2024-01-11 20:05+0000\n"
 "Last-Translator: 0que <0que@users.noreply.hosted.weblate.org>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -131,7 +131,7 @@ msgstr "Давид Лапшин"
 msgid "translator-credits"
 msgstr "Фёдор Соболев https://github.com/fsobolev"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:250
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:265
 msgid ""
 "The authors of Nickvision Parabolic are not responsible/liable for any "
 "misuse of this program that may violate local copyright/DMCA laws. Users use "
@@ -141,12 +141,12 @@ msgstr ""
 "использование программы, которое может нарушать местные законы об авторском "
 "праве или DMCA. Пользователи используют это приложение на свой страх и риск."
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:281
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:296
 #, fuzzy
 msgid "New update available"
 msgstr "Доступно новое обновление."
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:313
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:328
 #, fuzzy
 msgid "Unable to download and install update"
 msgstr "Не удалось скачать и установить обновление."
@@ -192,7 +192,9 @@ msgstr ""
 msgid "Add Download"
 msgstr "Добавить загрузку"
 
+#. Localize the Edit page
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:18
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:27
 msgid "Back"
 msgstr "Назад"
 
@@ -213,11 +215,13 @@ msgstr "Учётные данные"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:66
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:32
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:32
 msgid "Username"
 msgstr "Имя пользователя"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:70
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:34
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:34
 msgid "Password"
 msgstr "Пароль"
 
@@ -413,7 +417,7 @@ msgid "Home"
 msgstr "Главная"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:85
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:15
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:21
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:45
 msgid "Keyring"
 msgstr "Связка ключей"
@@ -824,6 +828,11 @@ msgstr "Обработка..."
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:97
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:90
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:146
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:119
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:122
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:125
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:128
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:131
 msgid "Error"
 msgstr "Ошибка"
 
@@ -887,6 +896,7 @@ msgid "Download Again"
 msgstr "Скачать снова"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:263
+#: org.nickvision.tubeconverter.qt/src/controls/keyringrow.cpp:19
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:343
 msgid "Delete"
 msgstr "Удалить"
@@ -931,17 +941,24 @@ msgstr ""
 msgid "Stopped"
 msgstr "Остановлено"
 
+#: org.nickvision.tubeconverter.qt/src/controls/keyringrow.cpp:18
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:44
+msgid "Edit"
+msgstr "Правка"
+
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:30
 #, fuzzy
 msgid "Enter media url here"
 msgstr "Введите ссылку на медиа"
 
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:33
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:33
 #, fuzzy
 msgid "Enter username here"
 msgstr "Введите имя пользователя"
 
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:35
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:35
 msgid "Enter password here"
 msgstr "Введите пароль"
 
@@ -984,6 +1001,82 @@ msgstr ""
 msgid "Playlist Items ({})"
 msgstr ""
 
+#. Localize the Manage page
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:23
+msgid "Create, save, and manage your credentials for media websites."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:24
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:73
+msgid "Add"
+msgstr "Добавить"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:25
+#, fuzzy
+msgid "No Credentials Found"
+msgstr "Нет учётных данных"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:28
+msgid "Name"
+msgstr "Имя"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:29
+#, fuzzy
+msgid "Enter name here"
+msgstr "Введите имя пользователя"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:30
+msgid "URL"
+msgstr "Ссылка"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:31
+#, fuzzy
+msgid "Enter url here"
+msgstr "Введите ссылку на медиа"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:55
+msgid "Warning"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:55
+msgid ""
+"The keyring is not saving changes to disk. Any changes made will be lost "
+"when the application closes."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:89
+msgid "Modify"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:94
+msgid "Delete Credential?"
+msgstr "Удалить учётные данные?"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:94
+msgid "Are you sure you want to delete this credential?"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:119
+#, fuzzy
+msgid "The credential name cannot be empty."
+msgstr "Убедитесь, что данные корректны."
+
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:122
+msgid "Both the username and password cannot be empty."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:125
+msgid "The provided url is invalid."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:128
+msgid "A credential with this name already exists."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:131
+msgid "There was an unknown error adding the credential to the keyring."
+msgstr ""
+
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:38
 #, fuzzy
 msgid "Parabolic (Preview)"
@@ -997,10 +1090,6 @@ msgstr "Файл"
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:43
 msgid "Exit"
 msgstr "Выход"
-
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:44
-msgid "Edit"
-msgstr "Правка"
 
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:46
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:19
@@ -1099,9 +1188,6 @@ msgstr "Введите ссылку прокси"
 #~ msgid "About"
 #~ msgstr "О приложении"
 
-#~ msgid "Add"
-#~ msgstr "Добавить"
-
 #~ msgid "Add a login to get started."
 #~ msgstr "Добавьте учётные данные, чтобы начать."
 
@@ -1160,9 +1246,6 @@ msgstr "Введите ссылку прокси"
 
 #~ msgid "DaPigGuy"
 #~ msgstr "DaPigGuy"
-
-#~ msgid "Delete Credential?"
-#~ msgstr "Удалить учётные данные?"
 
 #~ msgid "Deselect All"
 #~ msgstr "Убрать всё"
@@ -1250,9 +1333,6 @@ msgstr "Введите ссылку прокси"
 #~ msgid "End Time (Invalid)"
 #~ msgstr "Время конца (Некорректное)"
 
-#~ msgid "Ensure credentials are correct."
-#~ msgstr "Убедитесь, что данные корректны."
-
 #~ msgid "Enter end timeframe here"
 #~ msgstr "Введите временную метку конца"
 
@@ -1335,9 +1415,6 @@ msgstr "Введите ссылку прокси"
 #~ "При закрытии окна приложения, сворачивать в область уведомлений вместо "
 #~ "выхода."
 
-#~ msgid "Name"
-#~ msgstr "Имя"
-
 #~ msgid "Name (Empty)"
 #~ msgstr "Имя (пустое)"
 
@@ -1349,9 +1426,6 @@ msgstr "Введите ссылку прокси"
 
 #~ msgid "No Completed Downloads"
 #~ msgstr "Нет завершённых загрузок"
-
-#~ msgid "No Credentials"
-#~ msgstr "Нет учётных данных"
 
 #~ msgid "No downloads running"
 #~ msgstr "Ничего не загружается"
@@ -1481,9 +1555,6 @@ msgstr "Введите ссылку прокси"
 
 #~ msgid "Unset Cookies File"
 #~ msgstr "Сбросить файл куки"
-
-#~ msgid "URL"
-#~ msgstr "Ссылка"
 
 #~ msgid "URL (Invalid)"
 #~ msgstr "Ссылка (Некорректная)"

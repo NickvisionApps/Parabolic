@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-18 10:57-0400\n"
+"POT-Creation-Date: 2024-08-18 23:52-0400\n"
 "PO-Revision-Date: 2024-06-12 11:11+0000\n"
 "Last-Translator: Philip Goto <philip.goto@gmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -130,7 +130,7 @@ msgstr "David Lapshin"
 msgid "translator-credits"
 msgstr "Philip Goto https://philipgoto.nl/"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:250
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:265
 msgid ""
 "The authors of Nickvision Parabolic are not responsible/liable for any "
 "misuse of this program that may violate local copyright/DMCA laws. Users use "
@@ -140,12 +140,12 @@ msgstr ""
 "voor enig misbruik van deze app dat lokale auteursrecht-/DMCA-wetgeving kan "
 "schenden. Gebruikers gebruiken deze app op eigen risico."
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:281
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:296
 #, fuzzy
 msgid "New update available"
 msgstr "Updates beschikbaar"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:313
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:328
 msgid "Unable to download and install update"
 msgstr ""
 
@@ -190,7 +190,9 @@ msgstr ""
 msgid "Add Download"
 msgstr "Download toevoegen"
 
+#. Localize the Edit page
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:18
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:27
 msgid "Back"
 msgstr "Terug"
 
@@ -211,11 +213,13 @@ msgstr "Inloggegevens"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:66
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:32
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:32
 msgid "Username"
 msgstr "Gebruikersnaam"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:70
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:34
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:34
 msgid "Password"
 msgstr "Wachtwoord"
 
@@ -411,7 +415,7 @@ msgid "Home"
 msgstr "Start"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:85
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:15
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:21
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:45
 msgid "Keyring"
 msgstr "Sleutelbos"
@@ -821,6 +825,11 @@ msgstr "Verwerken…"
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:97
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:90
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:146
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:119
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:122
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:125
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:128
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:131
 msgid "Error"
 msgstr "Fout"
 
@@ -884,6 +893,7 @@ msgid "Download Again"
 msgstr "Opnieuw downloaden"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:263
+#: org.nickvision.tubeconverter.qt/src/controls/keyringrow.cpp:19
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:343
 msgid "Delete"
 msgstr "Verwijderen"
@@ -917,17 +927,24 @@ msgstr ""
 msgid "Stopped"
 msgstr "Gestopt"
 
+#: org.nickvision.tubeconverter.qt/src/controls/keyringrow.cpp:18
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:44
+msgid "Edit"
+msgstr "Bewerken"
+
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:30
 #, fuzzy
 msgid "Enter media url here"
 msgstr "Voer media-URL hier in"
 
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:33
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:33
 #, fuzzy
 msgid "Enter username here"
 msgstr "Voer media-URL hier in"
 
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:35
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:35
 msgid "Enter password here"
 msgstr "Voer wacht­woord hier in"
 
@@ -970,6 +987,82 @@ msgstr ""
 msgid "Playlist Items ({})"
 msgstr ""
 
+#. Localize the Manage page
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:23
+msgid "Create, save, and manage your credentials for media websites."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:24
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:73
+msgid "Add"
+msgstr "Toevoegen"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:25
+#, fuzzy
+msgid "No Credentials Found"
+msgstr "Geen inloggegevens"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:28
+msgid "Name"
+msgstr "Naam"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:29
+#, fuzzy
+msgid "Enter name here"
+msgstr "Voer media-URL hier in"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:30
+msgid "URL"
+msgstr "URL"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:31
+#, fuzzy
+msgid "Enter url here"
+msgstr "Voer media-URL hier in"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:55
+msgid "Warning"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:55
+msgid ""
+"The keyring is not saving changes to disk. Any changes made will be lost "
+"when the application closes."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:89
+msgid "Modify"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:94
+msgid "Delete Credential?"
+msgstr "Inloggegevens verwijderen?"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:94
+msgid "Are you sure you want to delete this credential?"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:119
+#, fuzzy
+msgid "The credential name cannot be empty."
+msgstr "Zorg ervoor dat de inloggegevens correct zijn."
+
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:122
+msgid "Both the username and password cannot be empty."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:125
+msgid "The provided url is invalid."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:128
+msgid "A credential with this name already exists."
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:131
+msgid "There was an unknown error adding the credential to the keyring."
+msgstr ""
+
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:38
 #, fuzzy
 msgid "Parabolic (Preview)"
@@ -983,10 +1076,6 @@ msgstr "Bestand"
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:43
 msgid "Exit"
 msgstr "Verlaten"
-
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:44
-msgid "Edit"
-msgstr "Bewerken"
 
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:46
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:19
@@ -1076,9 +1165,6 @@ msgstr "Voer media-URL hier in"
 #~ msgid "About"
 #~ msgstr "Over"
 
-#~ msgid "Add"
-#~ msgstr "Toevoegen"
-
 #, fuzzy
 #~ msgid "Add a login to get started."
 #~ msgstr "Voeg een download toe om te beginnen"
@@ -1121,9 +1207,6 @@ msgstr "Voer media-URL hier in"
 
 #~ msgid "DaPigGuy"
 #~ msgstr "DaPigGuy"
-
-#~ msgid "Delete Credential?"
-#~ msgstr "Inloggegevens verwijderen?"
 
 #~ msgid "Deselect All"
 #~ msgstr "Alles deselecteren"
@@ -1181,9 +1264,6 @@ msgstr "Voer media-URL hier in"
 #~ msgid "End Time (Invalid)"
 #~ msgstr "Eindtijd (ongeldig)"
 
-#~ msgid "Ensure credentials are correct."
-#~ msgstr "Zorg ervoor dat de inloggegevens correct zijn."
-
 #, fuzzy
 #~ msgid "Enter end timeframe here"
 #~ msgstr "Voer media-URL hier in"
@@ -1233,9 +1313,6 @@ msgstr "Voer media-URL hier in"
 #~ msgid "Media URL (Invalid)"
 #~ msgstr "Media-URL (ongeldig)"
 
-#~ msgid "Name"
-#~ msgstr "Naam"
-
 #~ msgid "Name (Empty)"
 #~ msgstr "Naam (leeg)"
 
@@ -1247,9 +1324,6 @@ msgstr "Voer media-URL hier in"
 
 #~ msgid "No Completed Downloads"
 #~ msgstr "Geen voltooide down­loads"
-
-#~ msgid "No Credentials"
-#~ msgstr "Geen inloggegevens"
 
 #~ msgid "No downloads running"
 #~ msgstr "Geen actieve downloads"
@@ -1359,9 +1433,6 @@ msgstr "Voer media-URL hier in"
 #, fuzzy
 #~ msgid "Unset Cookies File"
 #~ msgstr "Cookies-bestand selecteren"
-
-#~ msgid "URL"
-#~ msgstr "URL"
 
 #~ msgid "URL (Invalid)"
 #~ msgstr "URL (ongeldig)"

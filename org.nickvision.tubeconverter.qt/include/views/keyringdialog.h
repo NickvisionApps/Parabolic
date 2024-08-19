@@ -24,10 +24,49 @@ namespace Nickvision::TubeConverter::QT::Views
          * @brief Destructs a KeyringDialog.
          */
         ~KeyringDialog();
+
+    protected:
+        /**
+         * @brief The event for when the KeyringDialog is shown.
+         * @param event QShowEvent
+         */
+        void showEvent(QShowEvent* event) override;
+
+    private Q_SLOTS:
+        /**
+         * @brief Goes back to the manage page.
+         */
+        void backToManage();
+        /**
+         * @brief Prompts the user to add a new credential.
+         */
+        void addNewCredential();
+        /**
+         * @brief Prompts the user to edit a credential.
+         * @param name The name of the credential to edit
+         */
+        void editCredential(const QString& name);
+        /**
+         * @brief Delete a credential.
+         * @param name The name of the credential to delete
+         */
+        void deleteCredential(const QString& name);
+        /**
+         * @brief Confirms a edit to a credential.
+         */
+        void editConfirm();
     
     private:
+        enum class EditMode
+        {
+            None,
+            Add,
+            Modify
+        };
+        void reloadCredentials();
         Ui::KeyringDialog* m_ui;
         std::shared_ptr<Shared::Controllers::KeyringDialogController> m_controller;
+        EditMode m_editMode;
     };
 }
 
