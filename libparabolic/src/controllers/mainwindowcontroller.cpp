@@ -42,7 +42,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         m_appInfo.setVersion({ "2024.8.0-next" });
         m_appInfo.setShortName(_("Parabolic"));
         m_appInfo.setDescription(_("Download web video and audio"));
-        m_appInfo.setChangelog("- Parabolic has been rewritten in C++ for faster performance\n- The length of the download history can now be changed\n- Cookies will now be fetched from a selected browser in Preferences.\nTXT cookies file uploads are no longer supported\n- Redesigned user interface\n- Updated yt-dlp");
+        m_appInfo.setChangelog("- Parabolic has been rewritten in C++ for faster performance\n- The length of the kept download history can now be changed in the app's preferences\n- Cookies will now be fetched from a selected browser in the app's preferences.\nTXT cookies file uploads are no longer supported\n- Parabolic's Keyring module was rewritten.nAs a result, all keyrings have been reset and will need to be reconfigured.\n- Redesigned user interface\n- Updated yt-dlp");
         m_appInfo.setSourceRepo("https://github.com/NickvisionApps/Parabolic");
         m_appInfo.setIssueTracker("https://github.com/NickvisionApps/Parabolic/issues/new");
         m_appInfo.setSupportUrl("https://github.com/NickvisionApps/Parabolic/discussions");
