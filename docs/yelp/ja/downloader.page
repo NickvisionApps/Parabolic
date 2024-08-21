@@ -5,11 +5,11 @@
 	<title type="link">ダウンローダー 🌐</title>
 	<credit type="author copyright">
 		<name>Nicholas Logozzo</name>
-		<years its:translate="no">2023</years>
+		<years its:translate="no">2023-2024</years>
 	</credit>
 	<credit type="publisher copyright">
 		<name>Nicholas Logozzo</name>
-		<years its:translate="no">2023</years>
+		<years its:translate="no">2023-2024</years>
 	</credit>
 	<license href="http://creativecommons.org/licenses/by/4.0/" its:translate="no"><p>Creative Commons Attribution 4.0 International License</p></license>
 
@@ -41,21 +41,10 @@
 		</note>
     </item>
     <item>
-        <title>字幕の言語</title>
-        <p>ダウンロードする字幕の言語を選択できる、二文字、二文字+地域、三文字の言語コードのカンマ区切りリスト。動画と字幕をダウンロードするときのみ適用されます。</p>
-        <note>
-            <p>同じ言語であっても、サイトによって違った言語コードを使用しているかもしれません。2文字、2文字+地域、3文字の３つのパターンが考えられます。例えば、"en"、"en-US"、"eng" は英語の言語コードとして使用されます。より良い結果を得るために、有効な言語コードを全て指定してください。自動生成された字幕が利用可能な場合は、それらもダウンロードされます。</p>
-            <p>"all"を指定することで、すべての字幕がダウンロードできますが、自動生成の字幕はダウンロードされません。</p>
-        </note>
-        <note style="advanced">
-            <p>デフォルト: お住まいの地域の文化の言語コードが指定されています。例えば、en-US のシステムでは <code>en,en-US,eng</code> の言語コードがデフォルトになります</p>
-        </note>
-    </item>
-    <item>
         <title>自動生成された字幕を含める</title>
         <p>要求された字幕の言語の自動翻訳された字幕を含むかどうか。</p>
         <note style="advanced">
-            <p>デフォルト: オン</p>
+            <p>デフォルト: オフ</p>
         </note>
     </item>
     <item>
@@ -93,16 +82,10 @@
         <p>使用するプロキシサーバーの URL。</p>
     </item>
     <item>
-        <title>クッキーファイル</title>
-        <p>ダウンロード時に yt-dlp に渡す、クッキーの .txt ファイル。非公開の YouTube 動画のような、ログインが必要なメディアのダウンロードに役立ちます。</p>
-        <p>拡張機能を使って、ブラウザーからクッキーファイルを入手できます：</p>
-        <p>Chrome: <code>https://chrome.google.com/webstore/detail/get-cookiestxt-locally/cclelndahbckbenkjhflpdbgdldlbecc</code></p>
-        <p>Firefox: <code>https://addons.mozilla.org/ja/firefox/addon/cookies-txt/</code></p>
-        <note>
-            <p>これらの拡張機能は、自己責任で使用してください。</p>
-        </note>
+        <title>Cookies from Browser</title>
+        <p>A browser in which to read cookies from and pass to yt-dlp's download engine.</p>
 		<note style="advanced">
-			<p>デフォルト: ファイル選択なし</p>
+			<p>Default: None</p>
 		</note>
     </item>
     <item>

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2024-08-07 23:19-0400\n"
+"POT-Creation-Date: 2024-08-21 10:13+0200\n"
 "PO-Revision-Date: 2024-01-06 02:07+0000\n"
 "Last-Translator: Gnuey56 <gnuey56@proton.me>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -49,42 +49,11 @@ msgstr ""
 
 #. (itstool) path: item/title
 #: docs/yelp/C/converter.page:25
-msgid "Disallow Conversions"
-msgstr "フォーマット変換を無効化"
-
-#. (itstool) path: item/p
-#: docs/yelp/C/converter.page:26
-msgid ""
-"If enabled, Parabolic will download the appropriate video/audio format for "
-"the selected quality without converting to other formats."
-msgstr ""
-"有効であれば、Parabolic は他のファイル形式への変換をせず、選択した品質に適し"
-"た動画/音声のフォーマットでダウンロードします。"
-
-#. (itstool) path: item/p
-#: docs/yelp/C/converter.page:27
-msgid ""
-"This means that you will be unable to select a file format when downloading "
-"a media. But, you will save time in downloading as the Converter will not be "
-"run."
-msgstr ""
-"つまり、メディアをダウンロードする際にファイルフォーマットを選択できなくなり"
-"ます。しかしコンバーターは実行されないため、ダウンロード時間を短縮できます。"
-
-#. (itstool) path: note/p
-#: docs/yelp/C/converter.page:29 docs/yelp/C/converter.page:45
-#: docs/yelp/C/converter.page:54 docs/yelp/C/converter.page:61
-#: docs/yelp/C/downloader.page:66 docs/yelp/C/downloader.page:120
-msgid "Default: Off"
-msgstr "デフォルト: オフ"
-
-#. (itstool) path: item/title
-#: docs/yelp/C/converter.page:33
 msgid "Embed Metadata"
 msgstr "メタデータを埋め込む"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/converter.page:34
+#: docs/yelp/C/converter.page:26
 msgid ""
 "If enabled, Parabolic will tag a media with its relevant information (title, "
 "genre, etc...) and thumbnail if available."
@@ -93,43 +62,72 @@ msgstr ""
 "サムネイルをファイルにタグ付けします。"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/converter.page:35
+#: docs/yelp/C/converter.page:27
 msgid ""
 "Parabolic will NOT embed the Comment, Description, Synopsis, and Purl fields."
 msgstr "Parabolic は、コメント、説明、概要、PURLフィールドを埋め込みません。"
 
 #. (itstool) path: note/p
-#: docs/yelp/C/converter.page:37 docs/yelp/C/converter.page:68
-#: docs/yelp/C/downloader.page:31 docs/yelp/C/downloader.page:59
+#: docs/yelp/C/converter.page:29 docs/yelp/C/converter.page:36
+#: docs/yelp/C/downloader.page:31
 msgid "Default: On"
 msgstr "デフォルト: オン"
 
 #. (itstool) path: item/title
+#: docs/yelp/C/converter.page:33
+msgid "Embed Subtitles"
+msgstr "字幕を埋め込む"
+
+#. (itstool) path: item/p
+#: docs/yelp/C/converter.page:34
+msgid ""
+"If disabled or if embedding fails, downloaded subtitles will be saved to a "
+"separate file."
+msgstr ""
+"無効化されていたり、埋め込みに失敗したら、ダウンロードされた字幕は、別のファ"
+"イルに保存されます。"
+
+#. (itstool) path: item/title
+#: docs/yelp/C/converter.page:40
+msgid "Embed Chapters"
+msgstr "チャプター（章）を埋め込む"
+
+#. (itstool) path: item/p
 #: docs/yelp/C/converter.page:41
+msgid ""
+"If enabled, Parabolic will tag a media with chapter information if available."
+msgstr ""
+"有効であれば、利用可能であれば、Parabolic はメディアにチャプター（章）をタグ"
+"付けします。"
+
+#. (itstool) path: note/p
+#: docs/yelp/C/converter.page:43 docs/yelp/C/converter.page:50
+#: docs/yelp/C/converter.page:58 docs/yelp/C/downloader.page:46
+#: docs/yelp/C/downloader.page:53 docs/yelp/C/downloader.page:101
+msgid "Default: Off"
+msgstr "デフォルト: オフ"
+
+#. (itstool) path: item/title
+#: docs/yelp/C/converter.page:47
 msgid "Crop Audio Thumbnails"
 msgstr "オーディオサムネイルを整形"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/converter.page:42 docs/yelp/C/converter.page:50
-msgid "Only available if Embed Metadata is enabled."
-msgstr "メタデータを埋め込む設定が有効な時のみ利用可能です。"
-
-#. (itstool) path: item/p
-#: docs/yelp/C/converter.page:43
+#: docs/yelp/C/converter.page:48
+#, fuzzy
 msgid ""
-"If enabled, Parabolic will automatically turn on the advanced option "
-"<code>Crop Thumbnail</code> for audio downloads."
+"If enabled, Parabolic will crop thumbnails for audio files to be a square "
+"resolution."
 msgstr ""
-"有効であれば、Parabolic は自動的に<code>サムネイルを整形</code>する詳細オプ"
-"ションをオーディオダウンロード時に有効にします。"
+"有効であれば、Parabolic は動画を複数の小さなチャプターごとに分割します。"
 
 #. (itstool) path: item/title
-#: docs/yelp/C/converter.page:49
+#: docs/yelp/C/converter.page:54
 msgid "Remove Source Data"
 msgstr "ダウンロード元のデータを削除"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/converter.page:51
+#: docs/yelp/C/converter.page:55
 msgid ""
 "If enabled, Parabolic will clear metadata fields containing the URL and "
 "other identifying information of the media source."
@@ -138,7 +136,7 @@ msgstr ""
 "削除します。"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/converter.page:52
+#: docs/yelp/C/converter.page:56
 msgid ""
 "Fields that are cleared: <code>comment</code>, <code>description</code>, "
 "<code>synopsis</code>, <code>purl</code> and <code>handler_name</code> in "
@@ -147,33 +145,6 @@ msgstr ""
 "これらのメタデータ欄: <code>comment</code>、<code>description</code>、"
 "<code>synopsis</code>、<code>purl</code>、<code>handler_name</code> は初めか"
 "ら埋め込まれません。"
-
-#. (itstool) path: item/title
-#: docs/yelp/C/converter.page:58
-msgid "Embed Chapters"
-msgstr "チャプター（章）を埋め込む"
-
-#. (itstool) path: item/p
-#: docs/yelp/C/converter.page:59
-msgid ""
-"If enabled, Parabolic will tag a media with chapter information if available."
-msgstr ""
-"有効であれば、利用可能であれば、Parabolic はメディアにチャプター（章）をタグ"
-"付けします。"
-
-#. (itstool) path: item/title
-#: docs/yelp/C/converter.page:65
-msgid "Embed Subtitles"
-msgstr "字幕を埋め込む"
-
-#. (itstool) path: item/p
-#: docs/yelp/C/converter.page:66
-msgid ""
-"If disabled or if embedding fails, downloaded subtitles will be saved to a "
-"separate file."
-msgstr ""
-"無効化されていたり、埋め込みに失敗したら、ダウンロードされた字幕は、別のファ"
-"イルに保存されます。"
 
 #. (itstool) path: info/title
 #: docs/yelp/C/downloader.page:8
@@ -246,73 +217,23 @@ msgstr "デフォルト: 5"
 
 #. (itstool) path: item/title
 #: docs/yelp/C/downloader.page:43
-msgid "Subtitles Languages"
-msgstr "字幕の言語"
-
-#. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:44
-msgid ""
-"A comma-separated list of two-letter, two-letter with region, and three-"
-"letter language codes to use when selecting languages of subtitles to "
-"download. Only applies when downloading a video with subtitles."
-msgstr ""
-"ダウンロードする字幕の言語を選択できる、二文字、二文字+地域、三文字の言語コー"
-"ドのカンマ区切りリスト。動画と字幕をダウンロードするときのみ適用されます。"
-
-#. (itstool) path: note/p
-#: docs/yelp/C/downloader.page:46
-msgid ""
-"Different sites can use different language code formats for the same "
-"language. You may encounter one of the following three types: two-letter, "
-"two-letter with region, or three-letter. For example, \"en\", \"en-US\" and "
-"\"eng\" are all used for English. Please specify all valid codes for your "
-"languages for the best results. Auto-generated subtitles will also be "
-"downloaded if available."
-msgstr ""
-"同じ言語であっても、サイトによって違った言語コードを使用しているかもしれませ"
-"ん。2文字、2文字+地域、3文字の３つのパターンが考えられます。例え"
-"ば、\"en\"、\"en-US\"、\"eng\" は英語の言語コードとして使用されます。より良い"
-"結果を得るために、有効な言語コードを全て指定してください。自動生成された字幕"
-"が利用可能な場合は、それらもダウンロードされます。"
-
-#. (itstool) path: note/p
-#: docs/yelp/C/downloader.page:47
-msgid ""
-"You can specify \"all\" instead to download all subtitles, but without auto-"
-"generated ones."
-msgstr ""
-"\"all\"を指定することで、すべての字幕がダウンロードできますが、自動生成の字幕"
-"はダウンロードされません。"
-
-#. (itstool) path: note/p
-#: docs/yelp/C/downloader.page:50
-msgid ""
-"Default: Your culture's language codes. For example, on an en-US system the "
-"default would be <code>en,en-US,eng</code>"
-msgstr ""
-"デフォルト: お住まいの地域の文化の言語コードが指定されています。例えば、en-"
-"US のシステムでは <code>en,en-US,eng</code> の言語コードがデフォルトになりま"
-"す"
-
-#. (itstool) path: item/title
-#: docs/yelp/C/downloader.page:56
 msgid "Included Auto-Generated Subtitles"
 msgstr "自動生成された字幕を含める"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:57
+#: docs/yelp/C/downloader.page:44
 msgid ""
 "Whether or not to included subtitles that are auto-translated to fit the "
 "requested subtitle languages."
 msgstr "要求された字幕の言語の自動翻訳された字幕を含むかどうか。"
 
 #. (itstool) path: item/title
-#: docs/yelp/C/downloader.page:63
+#: docs/yelp/C/downloader.page:50
 msgid "Use aria2"
 msgstr "aria2 を使用"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:64
+#: docs/yelp/C/downloader.page:51
 msgid ""
 "If enabled, Parabolic will use aria2c to download media. Although using "
 "aria2c can improve download speed, download progress will not be displayed "
@@ -323,12 +244,12 @@ msgstr ""
 "示されません。"
 
 #. (itstool) path: item/title
-#: docs/yelp/C/downloader.page:70
+#: docs/yelp/C/downloader.page:57
 msgid "Maximum Connections Per Server"
 msgstr "サーバーごとの最大接続数"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:71
+#: docs/yelp/C/downloader.page:58
 msgid ""
 "This option only applies when using aria2 is enabled. This option is the "
 "same as the <code>-x</code> flag passed to aria2c."
@@ -337,7 +258,7 @@ msgstr ""
 "は、aria2c に <code>-x</code>のフラグを指定するのと同じです。"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:74
+#: docs/yelp/C/downloader.page:61
 msgid ""
 "The maximum number of connection that can be used per server. Must be an "
 "integer value between 1 and 32."
@@ -345,17 +266,17 @@ msgstr ""
 "サーバーごとに使用できる最大接続数。1から32の整数値である必要があります。"
 
 #. (itstool) path: note/p
-#: docs/yelp/C/downloader.page:76
+#: docs/yelp/C/downloader.page:63
 msgid "Default: 16"
 msgstr "デフォルト: 16"
 
 #. (itstool) path: item/title
-#: docs/yelp/C/downloader.page:80
+#: docs/yelp/C/downloader.page:67
 msgid "Minimum Split Size"
 msgstr "最小分割サイズ"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:81
+#: docs/yelp/C/downloader.page:68
 msgid ""
 "This option only applies when using aria2 is enabled. This option is the "
 "same as the <code>-k</code> flag passed to aria2c."
@@ -364,7 +285,7 @@ msgstr ""
 "aria2c に <code>-k</code>のフラグを指定するのと同じです。"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:84
+#: docs/yelp/C/downloader.page:71
 msgid ""
 "The minimum size, in MiB, of which to split a file. Must be an integer value "
 "between 1 and 1024."
@@ -373,17 +294,17 @@ msgstr ""
 "す。"
 
 #. (itstool) path: note/p
-#: docs/yelp/C/downloader.page:86
+#: docs/yelp/C/downloader.page:73
 msgid "Default: 20"
 msgstr "デフォルト: 20"
 
 #. (itstool) path: item/title
-#: docs/yelp/C/downloader.page:90 docs/yelp/C/newDownload.page:72
+#: docs/yelp/C/downloader.page:77 docs/yelp/C/newDownload.page:110
 msgid "Speed Limit"
 msgstr "スピード制限"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:91
+#: docs/yelp/C/downloader.page:78
 msgid ""
 "A limit, in Ki/s, that is applied to downloads only if they have the "
 "advanced option <code>Speed Limit</code> enabled. Must be an integer value "
@@ -393,77 +314,44 @@ msgstr ""
 "ロードにのみ適用されます。数値は512から10240の整数である必要があります。"
 
 #. (itstool) path: note/p
-#: docs/yelp/C/downloader.page:93
+#: docs/yelp/C/downloader.page:80
 msgid "Default: 1024"
 msgstr "デフォルト: 1024"
 
 #. (itstool) path: item/title
-#: docs/yelp/C/downloader.page:97
+#: docs/yelp/C/downloader.page:84
 msgid "Proxy URL"
 msgstr "プロキシ URL"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:98
+#: docs/yelp/C/downloader.page:85
 msgid "The url of the proxy server to use."
 msgstr "使用するプロキシサーバーの URL。"
 
 #. (itstool) path: item/title
-#: docs/yelp/C/downloader.page:101
-msgid "Cookies File"
-msgstr "クッキーファイル"
-
-#. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:102
-msgid ""
-"A .txt file of cookies to pass to yt-dlp when downloading. This may be "
-"useful when downloading media that requires a login, for example: private "
-"YouTube videos."
+#: docs/yelp/C/downloader.page:88
+msgid "Cookies from Browser"
 msgstr ""
-"ダウンロード時に yt-dlp に渡す、クッキーの .txt ファイル。非公開の YouTube 動"
-"画のような、ログインが必要なメディアのダウンロードに役立ちます。"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:103
+#: docs/yelp/C/downloader.page:89
 msgid ""
-"Use one of the following extensions for getting a cookies file from your "
-"browser:"
-msgstr "拡張機能を使って、ブラウザーからクッキーファイルを入手できます："
-
-#. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:104
-msgid ""
-"Chrome: <code>https://chrome.google.com/webstore/detail/get-cookiestxt-"
-"locally/cclelndahbckbenkjhflpdbgdldlbecc</code>"
+"A browser in which to read cookies from and pass to yt-dlp's download engine."
 msgstr ""
-"Chrome: <code>https://chrome.google.com/webstore/detail/get-cookiestxt-"
-"locally/cclelndahbckbenkjhflpdbgdldlbecc</code>"
-
-#. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:105
-msgid ""
-"Firefox: <code>https://addons.mozilla.org/en-US/firefox/addon/cookies-txt/</"
-"code>"
-msgstr ""
-"Firefox: <code>https://addons.mozilla.org/ja/firefox/addon/cookies-txt/</"
-"code>"
 
 #. (itstool) path: note/p
-#: docs/yelp/C/downloader.page:107
-msgid "Use these extensions at your own risk."
-msgstr "これらの拡張機能は、自己責任で使用してください。"
-
-#. (itstool) path: note/p
-#: docs/yelp/C/downloader.page:110
-msgid "Default: No File Selected"
-msgstr "デフォルト: ファイル選択なし"
+#: docs/yelp/C/downloader.page:91
+#, fuzzy
+msgid "Default: None"
+msgstr "デフォルト: オン"
 
 #. (itstool) path: item/title
-#: docs/yelp/C/downloader.page:114
+#: docs/yelp/C/downloader.page:95
 msgid "Use SponsorBlock for YouTube"
 msgstr "YouTube のダウンロードで SponsorBlock を使用"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:115
+#: docs/yelp/C/downloader.page:96
 msgid ""
 "If enabled, Parabolic will apply the SponsorBlock extension to YouTube "
 "downloads."
@@ -472,7 +360,7 @@ msgstr ""
 "有効にします。"
 
 #. (itstool) path: note/p
-#: docs/yelp/C/downloader.page:117
+#: docs/yelp/C/downloader.page:98
 msgid ""
 "SponsorBlock only works on YouTube videos. However, leaving this setting on "
 "will not affect downloads from other sites (i.e. not cause them to fail)."
@@ -558,8 +446,8 @@ msgstr "バックエンド"
 
 #. (itstool) path: section/p
 #: docs/yelp/C/keyring.page:24
-msgid ""
-"The Keyring feature is backed by the <code>Nickvision.Aura</code> library."
+#, fuzzy
+msgid "The Keyring feature is backed by the <code>libnick</code> library."
 msgstr ""
 "キーリング機能には、<code>Nickvision.Aura</code>ライブラリが使用されていま"
 "す。"
@@ -575,10 +463,11 @@ msgstr ""
 
 #. (itstool) path: section/p
 #: docs/yelp/C/keyring.page:26
+#, fuzzy
 msgid ""
 "The library will use you system's credential manager (i.e. DBus secret "
 "service on Linux and Windows Credential Manager on Windows) for securing the "
-"Keyring."
+"Keyring database file."
 msgstr ""
 "このライブラリではシステムの資格情報管理機能(LinuxはDBus secret service、"
 "WindowsではWindows Credential Manager等)を使ってキーリングを保護しています。"
@@ -620,110 +509,6 @@ msgid ""
 msgstr ""
 "<code>パスワード</code>(ユーザー名が空でない場合はオプション): 資格情報のパス"
 "ワード"
-
-#. (itstool) path: section/title
-#: docs/yelp/C/keyring.page:37
-msgid "Migrating from Password-Secured Keyring to Secret-Secured Keyring"
-msgstr "パスワード保護キーリングから秘密鍵保護キーリングへの移行"
-
-#. (itstool) path: section/p
-#: docs/yelp/C/keyring.page:38
-msgid ""
-"This section applies to users who have enabled a Keyring in Parabolic (in "
-"versions before V2023.9.0) and secured it with a password. Starting with "
-"version 2023.9.0, Parabolic uses the system's credential manager to generate "
-"a random password (secret) to secure the Keyring instead of asking for a "
-"user to provide one. By using the system credential manager, Parabolic can "
-"also automatically unlock the Keyring at startup without user interaction."
-msgstr ""
-"この章は、Parabolic（V2023.9.0より前のバージョン）でパスワード保護を使用した"
-"キーリングを有効にしていた方を対象としています。バージョン2023.9.0から "
-"Parabolic は、パスワード要求の代わりとなるキーリング保護のために、システムの"
-"資格情報管理がランダムなパスワード（秘密鍵）を生成するようになりました。シス"
-"テムの資格情報管理を使用することで、Parabolic はユーザーの入力なしで、起動時"
-"にキーリングのロックを解除できるようになりました。"
-
-#. (itstool) path: section/p
-#: docs/yelp/C/keyring.page:39
-msgid ""
-"If you have a password-secured Keyring from before version 2023.9.0, you can "
-"continue to use it in new versions of Parabolic without issue, but you will "
-"still need to provide the password everytime the application starts."
-msgstr ""
-"バージョン2023.9.0 以前のパスワード保護されたキーリングがある場合は、問題なく"
-"新しいバージョンの Parabolic でも引き続き使用できますが、アプリケーションが起"
-"動する度にパスワードを入力する必要があります。"
-
-#. (itstool) path: section/p
-#: docs/yelp/C/keyring.page:40
-msgid ""
-"Follow the rest of this section if you'd like to migrate your existing "
-"credentials and take advantage of the new Keyring where a password is not "
-"required every time."
-msgstr ""
-"依存の資格情報を移行し、毎回パスワード入力する必要がない新しいキーリングを利"
-"用したい場合は、下の章に従ってください。"
-
-#. (itstool) path: note/p
-#: docs/yelp/C/keyring.page:42
-msgid ""
-"You can simply disable the old password-secured Keyring when you update "
-"Parabolic to 2023.9.0 and re-enable the Keyring to get a secret-secured one. "
-"However, this will erase all data from the old Keyring and require you to re-"
-"enter all credentials."
-msgstr ""
-"新しい秘密鍵保護のキーリングを使うために、Parabolic を2023.9.0にアップデート"
-"し、キーリングを再度有効にして、古いパスワード保護のキーリングを無効にできま"
-"す。しかし、古いキーリングのデータは全て削除され、古いキーリングの全ての資格"
-"情報を再度入力する必要があります。"
-
-#. (itstool) path: item/p
-#: docs/yelp/C/keyring.page:45
-msgid ""
-"Install <link href=\"https://flathub.org/apps/org.gnome.seahorse."
-"Application\">Passwords and Keys</link>."
-msgstr ""
-"<link href=\"https://flathub.org/apps/org.gnome.seahorse.Application\">パス"
-"ワードと鍵</link>をインストール。"
-
-#. (itstool) path: item/p
-#: docs/yelp/C/keyring.page:46
-msgid ""
-"Open Parabolic V2023.9.0 or newer at least once. (This will ensure that the "
-"app registers with your system's credential manager)"
-msgstr ""
-"V2023.9.0またはそれ以降のバージョンの Parabolic を開く。（これにより、アプリ"
-"がシステムの資格情報管理に登録することを確実にします）"
-
-#. (itstool) path: item/p
-#: docs/yelp/C/keyring.page:47
-msgid ""
-"Open <code>Passwords and Keys</code> and locate the <code>org.nickvision."
-"tubeconverter</code> entry in the <code>Default Keyring</code>."
-msgstr ""
-"<code>パスワードと鍵</code>を開き、<code>デフォルトのキーリング</code>の"
-"<code>org.nickvision.tubeconverter</code>のエントリをさがす。"
-
-#. (itstool) path: item/p
-#: docs/yelp/C/keyring.page:48
-msgid ""
-"Double click the <code>org.nickvision.tubeconverter</code> entry and edit "
-"the <code>Password</code> field. Enter the password that you created and "
-"used for your Keyring in Parabolic."
-msgstr ""
-"<code>org.nickvision.tubeconverter</code> のエントリをダブルクリックし、"
-"<code>パスワード</code>のフィールドを編集する。Parabolic で作成/使用したキー"
-"リングのパスワードを入力する。"
-
-#. (itstool) path: item/p
-#: docs/yelp/C/keyring.page:49
-msgid ""
-"You can now close <code>Passwords and Keys</code> and restart Parabolic. You "
-"will see that upon application startup, the Keyring will now be "
-"automatically unlocked!"
-msgstr ""
-"<code>パスワードと鍵</code>を閉じ、Parabolic を再起動する。これで、アプリを起"
-"動した時、キーリングのロックが自動的に解除されるはずです！"
 
 #. (itstool) path: info/title
 #: docs/yelp/C/newDownload.page:8
@@ -784,10 +569,10 @@ msgstr ""
 
 #. (itstool) path: item/p
 #: docs/yelp/C/newDownload.page:34
+#, fuzzy
 msgid ""
-"If keyring is enabled, the user will be asked to chose from a list of named "
-"credentials or can chose to enter manually a different username and/or "
-"password."
+"If credentials are found in the keyring, the user can instead chose from a "
+"list of named credentials to use (or continue to manually enter a credential)"
 msgstr ""
 "キーリングが有効であれば、保存された資格情報の選択を要求されますが、別のユー"
 "ザー名と（または）パスワードを手動で入力することもできます。"
@@ -803,9 +588,10 @@ msgstr ""
 
 #. (itstool) path: note/p
 #: docs/yelp/C/newDownload.page:37
+#, fuzzy
 msgid ""
 "For these sites that don't support passing credentials, it is recommended to "
-"upload a Cookies file in Preferences instead."
+"select a browser to use cookies from in Preferences instead."
 msgstr ""
 "これらのサイトに資格情報は対応していない、設定でクッキーファイルをアップロー"
 "ドすることをお勧めします。"
@@ -852,10 +638,11 @@ msgstr ""
 "ファイルの種類が動画の場合、表示される品質はメディアが利用できる解像度です。"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:51 docs/yelp/C/newDownload.page:66
+#: docs/yelp/C/newDownload.page:51
+#, fuzzy
 msgid ""
 "If the file type is an audio type, the listed qualities will be simply "
-"<code>Best</code> and <code>Worst</code>."
+"<code>Best</code>, <code>Good</code>, and <code>Worst</code>."
 msgstr ""
 "ファイルの種類が音声の場合、表示される品質は単純に<code>最高</code>もしくは"
 "<code>最低</code>になります。"
@@ -870,20 +657,25 @@ msgstr ""
 
 #. (itstool) path: item/title
 #: docs/yelp/C/newDownload.page:57
-msgid "Download Subtitle"
-msgstr "字幕をダウンロードする"
+#, fuzzy
+msgid "Audio Language"
+msgstr "字幕の言語"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/newDownload.page:58
-msgid ""
-"Whether to download and embed subtitle when downloading a video. Languages "
-"for subtitles can be defined in <link xref=\"downloader\">preferences</link>."
+msgid "The language of which to use from the audio part of a media download."
 msgstr ""
-"動画のダウンロード時に字幕をダウンロードしてメディアに埋め込むかどうか。字幕"
-"の言語は<link xref=\"downloader\">設定</link>にて指定できます。"
+
+#. (itstool) path: item/p
+#: docs/yelp/C/newDownload.page:59
+msgid ""
+"If no additional languages are available, <code>Default</code> will be the "
+"only option."
+msgstr ""
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:60
+#: docs/yelp/C/newDownload.page:61 docs/yelp/C/newDownload.page:68
+#: docs/yelp/C/newDownload.page:75 docs/yelp/C/newDownload.page:82
 msgid ""
 "The previously used state will be remembered and pre-selected for the next "
 "download."
@@ -891,17 +683,59 @@ msgstr ""
 "最後に使用した状態は、今後のダウンロードのために記憶・事前選択されます。"
 
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:64
+#: docs/yelp/C/newDownload.page:65
+msgid "Download Subtitle"
+msgstr "字幕をダウンロードする"
+
+#. (itstool) path: item/p
+#: docs/yelp/C/newDownload.page:66
+#, fuzzy
+msgid ""
+"Whether to download and embed subtitle when downloading a video. Further "
+"subtitle settings can be configured in <link "
+"xref=\"downloader\">preferences</link>."
+msgstr ""
+"動画のダウンロード時に字幕をダウンロードしてメディアに埋め込むかどうか。字幕"
+"の言語は<link xref=\"downloader\">設定</link>にて指定できます。"
+
+#. (itstool) path: item/title
+#: docs/yelp/C/newDownload.page:72
+msgid "Prefer AV1 Codec"
+msgstr "AV1 コーデックを優先する"
+
+#. (itstool) path: item/p
+#: docs/yelp/C/newDownload.page:73
+msgid ""
+"If enabled, Parabolic will prefer videos with the av1 codec when downloading."
+msgstr ""
+"有効であれば、Parabolic は動画のダウンロード時に av1 コーデックを使用します。"
+
+#. (itstool) path: item/title
+#: docs/yelp/C/newDownload.page:79
+msgid "Split Chapters"
+msgstr "チャプター（章）で分ける"
+
+#. (itstool) path: item/p
+#: docs/yelp/C/newDownload.page:80
+#, fuzzy
+msgid ""
+"If enabled, Parabolic will split a video download into multiple smaller "
+"files based on its chapters."
+msgstr ""
+"有効であれば、Parabolic は動画を複数の小さなチャプターごとに分割します。"
+
+#. (itstool) path: item/title
+#: docs/yelp/C/newDownload.page:86
 msgid "Save Folder"
 msgstr "保存フォルダー"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:65
+#: docs/yelp/C/newDownload.page:87
 msgid "The folder at which to save the download to."
 msgstr "ダウンロードを保存フォルダー。"
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:68
+#: docs/yelp/C/newDownload.page:89
 msgid ""
 "The previously used folder will be remembered and pre-selected for the next "
 "download."
@@ -909,110 +743,276 @@ msgstr ""
 "最後に使用したフォルダーは、次回のダウンロードのために記憶・事前選択されま"
 "す。"
 
+#. (itstool) path: item/title
+#: docs/yelp/C/newDownload.page:93
+msgid "File Name"
+msgstr "ファイル名"
+
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:73
-msgid ""
-"If enabled, Parabolic will limit the download's speed with the speed "
-"configured in Preferences."
-msgstr ""
-"有効であれば、Parabolic は、設定された速度でダウンロードの速度を制限します。"
+#: docs/yelp/C/newDownload.page:94
+msgid "The file name to use when saving the download."
+msgstr "ダウンロードを保存する際に使用するファイル名。"
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:75 docs/yelp/C/newDownload.page:83
-#: docs/yelp/C/newDownload.page:93 docs/yelp/C/newDownload.page:101
-#: docs/yelp/C/newDownload.page:108
-msgid "Available in the <code>Advanced Options</code> section."
-msgstr "<code>詳細オプション</code>で選択可能です。"
+#: docs/yelp/C/newDownload.page:96
+msgid "Default: The title of the media"
+msgstr "デフォルト: メディアのタイトル"
 
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:79
-msgid "Prefer AV1 Codec"
-msgstr "AV1 コーデックを優先する"
-
-#. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:80
-msgid "Only available for video (mp4, webm) downloads"
-msgstr "動画（mp4、webm）のダウンロードのみ利用可能です"
-
-#. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:81
-msgid ""
-"If enabled, Parabolic will prefer videos with the av1 codec when downloading."
+#: docs/yelp/C/newDownload.page:100
+msgid "Time Frame"
 msgstr ""
-"有効であれば、Parabolic は動画のダウンロード時に av1 コーデックを使用します。"
-
-#. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:86
-msgid ""
-"This option's state will be remembered and restored for future downloads."
-msgstr "このオプションの状態は、今後のダウンロードのために記憶・復元されます。"
-
-#. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:90
-msgid "Split Chapters"
-msgstr "チャプター（章）で分ける"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:91
+#: docs/yelp/C/newDownload.page:101
+#, fuzzy
 msgid ""
-"If enabled, Parabolic will split the video into multiple smaller ones based "
-"on its chapters."
-msgstr ""
-"有効であれば、Parabolic は動画を複数の小さなチャプターごとに分割します。"
-
-#. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:97
-msgid "Crop Thumbnail"
-msgstr "サムネイルを整形"
-
-#. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:98
-msgid ""
-"Only available if <code>Embed Metadata</code> is enabled in Preferences."
-msgstr "<code>メタデータを埋め込む</code>が有効な場合のみ利用可能です。"
-
-#. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:99
-msgid ""
-"If enabled, Parabolic will crop a download's embedded thumbnail as square. "
-"This is useful when downloading music who's album images are usually square."
-msgstr ""
-"有効であれば、Parabolic はダウンロードに埋め込まれたサムネイルを正方形に整え"
-"ます。アルバムイメージの音楽をダウンロードするときに便利です。"
-
-#. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:105
-msgid "Download Specific Timeframe"
-msgstr "特定の時間枠をダウンロードする"
-
-#. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:106
-msgid ""
-"If enabled, the user will be able to enter a start timeframe and an end "
-"timeframe for a section of the media to download."
+"The user can enter a start time frame and an end time frame to download a "
+"specific section of the media."
 msgstr ""
 "有効であれば、ダウンロードするメディアの開始と終わりのタイムフレームを入力で"
 "きるようになります。"
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:111
+#: docs/yelp/C/newDownload.page:103
+#, fuzzy
+msgid "Default: The whole media length"
+msgstr "デフォルト: メディアのタイトル"
+
+#. (itstool) path: note/p
+#: docs/yelp/C/newDownload.page:106
+#, fuzzy
 msgid ""
 "Enabling this option will disable the use of aria2 as the downloader for "
-"this download if it is enabled in Preferences."
+"this download, even if it is enabled in Preferences."
 msgstr ""
 "このオプションを有効にすると、aria2 を使用したダウンロードが無効になります。"
 
-#. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:115
-msgid "File Name"
-msgstr "ファイル名"
-
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:116
-msgid "The file name to use when saving the download."
-msgstr "ダウンロードを保存する際に使用するファイル名。"
+#: docs/yelp/C/newDownload.page:111
+#, fuzzy
+msgid ""
+"If enabled, Parabolic will limit the download's speed with the speed "
+"configured in <link xref=\"downloader\">Preferences</link>."
+msgstr ""
+"有効であれば、Parabolic は、設定された速度でダウンロードの速度を制限します。"
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:118
-msgid "Default: The title of the media"
-msgstr "デフォルト: メディアのタイトル"
+#: docs/yelp/C/newDownload.page:113
+msgid "Available in the <code>Advanced Options</code> section."
+msgstr "<code>詳細オプション</code>で選択可能です。"
+
+#~ msgid "Disallow Conversions"
+#~ msgstr "フォーマット変換を無効化"
+
+#~ msgid ""
+#~ "If enabled, Parabolic will download the appropriate video/audio format "
+#~ "for the selected quality without converting to other formats."
+#~ msgstr ""
+#~ "有効であれば、Parabolic は他のファイル形式への変換をせず、選択した品質に適"
+#~ "した動画/音声のフォーマットでダウンロードします。"
+
+#~ msgid ""
+#~ "This means that you will be unable to select a file format when "
+#~ "downloading a media. But, you will save time in downloading as the "
+#~ "Converter will not be run."
+#~ msgstr ""
+#~ "つまり、メディアをダウンロードする際にファイルフォーマットを選択できなくな"
+#~ "ります。しかしコンバーターは実行されないため、ダウンロード時間を短縮できま"
+#~ "す。"
+
+#~ msgid "Only available if Embed Metadata is enabled."
+#~ msgstr "メタデータを埋め込む設定が有効な時のみ利用可能です。"
+
+#~ msgid ""
+#~ "If enabled, Parabolic will automatically turn on the advanced option "
+#~ "<code>Crop Thumbnail</code> for audio downloads."
+#~ msgstr ""
+#~ "有効であれば、Parabolic は自動的に<code>サムネイルを整形</code>する詳細オ"
+#~ "プションをオーディオダウンロード時に有効にします。"
+
+#~ msgid ""
+#~ "A comma-separated list of two-letter, two-letter with region, and three-"
+#~ "letter language codes to use when selecting languages of subtitles to "
+#~ "download. Only applies when downloading a video with subtitles."
+#~ msgstr ""
+#~ "ダウンロードする字幕の言語を選択できる、二文字、二文字+地域、三文字の言語"
+#~ "コードのカンマ区切りリスト。動画と字幕をダウンロードするときのみ適用されま"
+#~ "す。"
+
+#~ msgid ""
+#~ "Different sites can use different language code formats for the same "
+#~ "language. You may encounter one of the following three types: two-letter, "
+#~ "two-letter with region, or three-letter. For example, \"en\", \"en-US\" "
+#~ "and \"eng\" are all used for English. Please specify all valid codes for "
+#~ "your languages for the best results. Auto-generated subtitles will also "
+#~ "be downloaded if available."
+#~ msgstr ""
+#~ "同じ言語であっても、サイトによって違った言語コードを使用しているかもしれま"
+#~ "せん。2文字、2文字+地域、3文字の３つのパターンが考えられます。例え"
+#~ "ば、\"en\"、\"en-US\"、\"eng\" は英語の言語コードとして使用されます。より"
+#~ "良い結果を得るために、有効な言語コードを全て指定してください。自動生成され"
+#~ "た字幕が利用可能な場合は、それらもダウンロードされます。"
+
+#~ msgid ""
+#~ "You can specify \"all\" instead to download all subtitles, but without "
+#~ "auto-generated ones."
+#~ msgstr ""
+#~ "\"all\"を指定することで、すべての字幕がダウンロードできますが、自動生成の"
+#~ "字幕はダウンロードされません。"
+
+#~ msgid ""
+#~ "Default: Your culture's language codes. For example, on an en-US system "
+#~ "the default would be <code>en,en-US,eng</code>"
+#~ msgstr ""
+#~ "デフォルト: お住まいの地域の文化の言語コードが指定されています。例えば、"
+#~ "en-US のシステムでは <code>en,en-US,eng</code> の言語コードがデフォルトに"
+#~ "なります"
+
+#~ msgid "Cookies File"
+#~ msgstr "クッキーファイル"
+
+#~ msgid ""
+#~ "A .txt file of cookies to pass to yt-dlp when downloading. This may be "
+#~ "useful when downloading media that requires a login, for example: private "
+#~ "YouTube videos."
+#~ msgstr ""
+#~ "ダウンロード時に yt-dlp に渡す、クッキーの .txt ファイル。非公開の "
+#~ "YouTube 動画のような、ログインが必要なメディアのダウンロードに役立ちます。"
+
+#~ msgid ""
+#~ "Use one of the following extensions for getting a cookies file from your "
+#~ "browser:"
+#~ msgstr "拡張機能を使って、ブラウザーからクッキーファイルを入手できます："
+
+#~ msgid ""
+#~ "Chrome: <code>https://chrome.google.com/webstore/detail/get-cookiestxt-"
+#~ "locally/cclelndahbckbenkjhflpdbgdldlbecc</code>"
+#~ msgstr ""
+#~ "Chrome: <code>https://chrome.google.com/webstore/detail/get-cookiestxt-"
+#~ "locally/cclelndahbckbenkjhflpdbgdldlbecc</code>"
+
+#~ msgid ""
+#~ "Firefox: <code>https://addons.mozilla.org/en-US/firefox/addon/cookies-txt/"
+#~ "</code>"
+#~ msgstr ""
+#~ "Firefox: <code>https://addons.mozilla.org/ja/firefox/addon/cookies-txt/</"
+#~ "code>"
+
+#~ msgid "Use these extensions at your own risk."
+#~ msgstr "これらの拡張機能は、自己責任で使用してください。"
+
+#~ msgid "Default: No File Selected"
+#~ msgstr "デフォルト: ファイル選択なし"
+
+#~ msgid "Migrating from Password-Secured Keyring to Secret-Secured Keyring"
+#~ msgstr "パスワード保護キーリングから秘密鍵保護キーリングへの移行"
+
+#~ msgid ""
+#~ "This section applies to users who have enabled a Keyring in Parabolic (in "
+#~ "versions before V2023.9.0) and secured it with a password. Starting with "
+#~ "version 2023.9.0, Parabolic uses the system's credential manager to "
+#~ "generate a random password (secret) to secure the Keyring instead of "
+#~ "asking for a user to provide one. By using the system credential manager, "
+#~ "Parabolic can also automatically unlock the Keyring at startup without "
+#~ "user interaction."
+#~ msgstr ""
+#~ "この章は、Parabolic（V2023.9.0より前のバージョン）でパスワード保護を使用し"
+#~ "たキーリングを有効にしていた方を対象としています。バージョン2023.9.0から "
+#~ "Parabolic は、パスワード要求の代わりとなるキーリング保護のために、システム"
+#~ "の資格情報管理がランダムなパスワード（秘密鍵）を生成するようになりました。"
+#~ "システムの資格情報管理を使用することで、Parabolic はユーザーの入力なしで、"
+#~ "起動時にキーリングのロックを解除できるようになりました。"
+
+#~ msgid ""
+#~ "If you have a password-secured Keyring from before version 2023.9.0, you "
+#~ "can continue to use it in new versions of Parabolic without issue, but "
+#~ "you will still need to provide the password everytime the application "
+#~ "starts."
+#~ msgstr ""
+#~ "バージョン2023.9.0 以前のパスワード保護されたキーリングがある場合は、問題"
+#~ "なく新しいバージョンの Parabolic でも引き続き使用できますが、アプリケー"
+#~ "ションが起動する度にパスワードを入力する必要があります。"
+
+#~ msgid ""
+#~ "Follow the rest of this section if you'd like to migrate your existing "
+#~ "credentials and take advantage of the new Keyring where a password is not "
+#~ "required every time."
+#~ msgstr ""
+#~ "依存の資格情報を移行し、毎回パスワード入力する必要がない新しいキーリングを"
+#~ "利用したい場合は、下の章に従ってください。"
+
+#~ msgid ""
+#~ "You can simply disable the old password-secured Keyring when you update "
+#~ "Parabolic to 2023.9.0 and re-enable the Keyring to get a secret-secured "
+#~ "one. However, this will erase all data from the old Keyring and require "
+#~ "you to re-enter all credentials."
+#~ msgstr ""
+#~ "新しい秘密鍵保護のキーリングを使うために、Parabolic を2023.9.0にアップデー"
+#~ "トし、キーリングを再度有効にして、古いパスワード保護のキーリングを無効にで"
+#~ "きます。しかし、古いキーリングのデータは全て削除され、古いキーリングの全て"
+#~ "の資格情報を再度入力する必要があります。"
+
+#~ msgid ""
+#~ "Install <link href=\"https://flathub.org/apps/org.gnome.seahorse."
+#~ "Application\">Passwords and Keys</link>."
+#~ msgstr ""
+#~ "<link href=\"https://flathub.org/apps/org.gnome.seahorse.Application\">パ"
+#~ "スワードと鍵</link>をインストール。"
+
+#~ msgid ""
+#~ "Open Parabolic V2023.9.0 or newer at least once. (This will ensure that "
+#~ "the app registers with your system's credential manager)"
+#~ msgstr ""
+#~ "V2023.9.0またはそれ以降のバージョンの Parabolic を開く。（これにより、アプ"
+#~ "リがシステムの資格情報管理に登録することを確実にします）"
+
+#~ msgid ""
+#~ "Open <code>Passwords and Keys</code> and locate the <code>org.nickvision."
+#~ "tubeconverter</code> entry in the <code>Default Keyring</code>."
+#~ msgstr ""
+#~ "<code>パスワードと鍵</code>を開き、<code>デフォルトのキーリング</code>の"
+#~ "<code>org.nickvision.tubeconverter</code>のエントリをさがす。"
+
+#~ msgid ""
+#~ "Double click the <code>org.nickvision.tubeconverter</code> entry and edit "
+#~ "the <code>Password</code> field. Enter the password that you created and "
+#~ "used for your Keyring in Parabolic."
+#~ msgstr ""
+#~ "<code>org.nickvision.tubeconverter</code> のエントリをダブルクリックし、"
+#~ "<code>パスワード</code>のフィールドを編集する。Parabolic で作成/使用した"
+#~ "キーリングのパスワードを入力する。"
+
+#~ msgid ""
+#~ "You can now close <code>Passwords and Keys</code> and restart Parabolic. "
+#~ "You will see that upon application startup, the Keyring will now be "
+#~ "automatically unlocked!"
+#~ msgstr ""
+#~ "<code>パスワードと鍵</code>を閉じ、Parabolic を再起動する。これで、アプリ"
+#~ "を起動した時、キーリングのロックが自動的に解除されるはずです！"
+
+#~ msgid "Only available for video (mp4, webm) downloads"
+#~ msgstr "動画（mp4、webm）のダウンロードのみ利用可能です"
+
+#~ msgid ""
+#~ "This option's state will be remembered and restored for future downloads."
+#~ msgstr ""
+#~ "このオプションの状態は、今後のダウンロードのために記憶・復元されます。"
+
+#~ msgid "Crop Thumbnail"
+#~ msgstr "サムネイルを整形"
+
+#~ msgid ""
+#~ "Only available if <code>Embed Metadata</code> is enabled in Preferences."
+#~ msgstr "<code>メタデータを埋め込む</code>が有効な場合のみ利用可能です。"
+
+#~ msgid ""
+#~ "If enabled, Parabolic will crop a download's embedded thumbnail as "
+#~ "square. This is useful when downloading music who's album images are "
+#~ "usually square."
+#~ msgstr ""
+#~ "有効であれば、Parabolic はダウンロードに埋め込まれたサムネイルを正方形に整"
+#~ "えます。アルバムイメージの音楽をダウンロードするときに便利です。"
+
+#~ msgid "Download Specific Timeframe"
+#~ msgstr "特定の時間枠をダウンロードする"

@@ -5,11 +5,11 @@
 	<title type="link">மாற்றி ⚒️</title>
 	<credit type="author copyright">
 		<name>நிக்கோலஸ் லோகோசோ</name>
-		<years its:translate="no">2023</years>
+		<years its:translate="no">2023-2024</years>
 	</credit>
 	<credit type="publisher copyright">
 		<name>நிக்கோலஸ் லோகோசோ</name>
-		<years its:translate="no">2023</years>
+		<years its:translate="no">2023-2024</years>
 	</credit>
 	<license href="http://creativecommons.org/licenses/by/4.0/" its:translate="no"><p>Creative Commons Attribution 4.0 International License</p></license>
 
@@ -25,14 +25,6 @@
 
 <terms>
 	<item>
-		<title>மாற்றங்களை அனுமதிக்காதே</title>
-		<p>இயக்கப்பட்டால், மற்ற வடிவங்களுக்கு மாற்றாமல், தேர்ந்தெடுக்கப்பட்ட தரத்திற்கான பொருத்தமான ஒலி அமைவு/காணொளி வடிவமைப்பை பரபோலிக் பதிவிறக்கும்.</p>
-        <p>அதாவது, மீடியாவைப் பதிவிறக்கும் போது, கோப்பு வடிவத்தைத் தேர்ந்தெடுக்க முடியாது. ஆனால், மாற்றி இயக்கப்படாமல் இருப்பதால், பதிவிறக்குவதில் நேரத்தை மிச்சப்படுத்துவீர்கள்.</p>
-		<note style="advanced">
-			<p>இயல்புநிலை: ஆஃப்</p>
-		</note>
-    </item>
-	<item>
 		<title>மெட்டாடேட்டாவை உட்பொதிக்கவும்</title>
 		<p>இயக்கப்பட்டால், பரபோலிக் ஒரு மீடியாவை அதன் தொடர்புடைய தகவல்களுடன் (தலைப்பு, வகை, முதலியன...) மற்றும் சிறுபடம் இருந்தால் குறியிடும்.</p>
         <p>பரபோலிக் கருத்து, விளக்கம், சுருக்கம் மற்றும் பர்ல் புலங்களை உட்பொதிக்காது.</p>
@@ -41,23 +33,13 @@
 		</note>
     </item>
     <item>
-		<title>ஒலி அமைப்பு சிறுபடங்களை செதுக்கு</title>
-		<p>உட்பொதிவு மெட்டாடேட்டா இயக்கப்பட்டால் மட்டுமே கிடைக்கும்.</p>
-		<p>இயக்கப்பட்டால், ஆடியோ பதிவிறக்கங்களுக்கான மேம்பட்ட விருப்பமான <code>Crop Thumbnail</code> பரபோலிக் தானாகவே இயக்கப்படும்.</p>
-		<note style="advanced">
-			<p>இயல்புநிலை: ஆஃப்</p>
-		</note>
+        <title>Embed Subtitles</title>
+        <p>If disabled or if embedding fails, downloaded subtitles will be saved to a separate file.</p>
+        <note style="advanced">
+            <p>இயல்புநிலை: ஆன்</p>
+        </note>
     </item>
     <item>
-		<title>மூலத் தரவை அகற்று</title>
-		<p>உட்பொதிவு மெட்டாடேட்டா இயக்கப்பட்டால் மட்டுமே கிடைக்கும்.</p>
-		<p>இயக்கப்பட்டால், URL மற்றும் மீடியா மூலத்தின் பிற அடையாளம் காணும் தகவலைக் கொண்ட மெட்டாடேட்டா புலங்களை பாரபோலிக் அழிக்கும்.</p>
-        <p>அழிக்கப்பட்ட புலங்கள்: <code>கருத்து</code>, <code>விளக்கம்</code>, <code>சுருக்கம்</code>, <code>purl</code> மற்றும் <code>handler_name</code> ஒவ்வொரு நீரோடையில்.</p>
-		<note style="advanced">
-			<p>இயல்புநிலை: ஆஃப்</p>
-		</note>
-    </item>
-	<item>
 		<title>அத்தியாயங்களை உட்பொதிக்கவும்</title>
 		<p>If enabled, Parabolic will tag a media with chapter information if available.</p>
 		<note style="advanced">
@@ -65,11 +47,19 @@
 		</note>
 	</item>
     <item>
-        <title>Embed Subtitles</title>
-        <p>If disabled or if embedding fails, downloaded subtitles will be saved to a separate file.</p>
-        <note style="advanced">
-            <p>இயல்புநிலை: ஆன்</p>
-        </note>
+		<title>ஒலி அமைப்பு சிறுபடங்களை செதுக்கு</title>
+		<p>If enabled, Parabolic will crop thumbnails for audio files to be a square resolution.</p>
+		<note style="advanced">
+			<p>இயல்புநிலை: ஆஃப்</p>
+		</note>
+    </item>
+    <item>
+		<title>மூலத் தரவை அகற்று</title>
+		<p>இயக்கப்பட்டால், URL மற்றும் மீடியா மூலத்தின் பிற அடையாளம் காணும் தகவலைக் கொண்ட மெட்டாடேட்டா புலங்களை பாரபோலிக் அழிக்கும்.</p>
+        <p>அழிக்கப்பட்ட புலங்கள்: <code>கருத்து</code>, <code>விளக்கம்</code>, <code>சுருக்கம்</code>, <code>purl</code> மற்றும் <code>handler_name</code> ஒவ்வொரு நீரோடையில்.</p>
+		<note style="advanced">
+			<p>இயல்புநிலை: ஆஃப்</p>
+		</note>
     </item>
 </terms>
 </page>

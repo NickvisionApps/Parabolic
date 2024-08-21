@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2024-08-07 23:19-0400\n"
+"POT-Creation-Date: 2024-08-21 10:13+0200\n"
 "PO-Revision-Date: 2024-01-03 15:07+0000\n"
 "Last-Translator: rene-coty <irenee.thirion@e.email>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -49,44 +49,11 @@ msgstr ""
 
 #. (itstool) path: item/title
 #: docs/yelp/C/converter.page:25
-msgid "Disallow Conversions"
-msgstr "Empêcher les conversions"
-
-#. (itstool) path: item/p
-#: docs/yelp/C/converter.page:26
-msgid ""
-"If enabled, Parabolic will download the appropriate video/audio format for "
-"the selected quality without converting to other formats."
-msgstr ""
-"Si cette option est activée, Parabole téléchargera le format audio/vidéo "
-"approprié pour la qualité sélectionnée, sans opérer de conversion dans un "
-"autre format."
-
-#. (itstool) path: item/p
-#: docs/yelp/C/converter.page:27
-msgid ""
-"This means that you will be unable to select a file format when downloading "
-"a media. But, you will save time in downloading as the Converter will not be "
-"run."
-msgstr ""
-"Cela signifie que vous ne pourrez pas spécifier un format de fichier lors du "
-"téléchargement d’un média. En revanche vous gagnerez du temps de "
-"téléchargement puisque aucune opération de conversion n’aura lieu."
-
-#. (itstool) path: note/p
-#: docs/yelp/C/converter.page:29 docs/yelp/C/converter.page:45
-#: docs/yelp/C/converter.page:54 docs/yelp/C/converter.page:61
-#: docs/yelp/C/downloader.page:66 docs/yelp/C/downloader.page:120
-msgid "Default: Off"
-msgstr "Par défaut : Désactivée"
-
-#. (itstool) path: item/title
-#: docs/yelp/C/converter.page:33
 msgid "Embed Metadata"
 msgstr "Inclure les métadonnées"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/converter.page:34
+#: docs/yelp/C/converter.page:26
 msgid ""
 "If enabled, Parabolic will tag a media with its relevant information (title, "
 "genre, etc...) and thumbnail if available."
@@ -95,7 +62,7 @@ msgstr ""
 "données pertinentes (titre, genre, etc…) et sa vignette, si disponibles."
 
 #. (itstool) path: item/p
-#: docs/yelp/C/converter.page:35
+#: docs/yelp/C/converter.page:27
 msgid ""
 "Parabolic will NOT embed the Comment, Description, Synopsis, and Purl fields."
 msgstr ""
@@ -103,38 +70,67 @@ msgstr ""
 "personnalisée."
 
 #. (itstool) path: note/p
-#: docs/yelp/C/converter.page:37 docs/yelp/C/converter.page:68
-#: docs/yelp/C/downloader.page:31 docs/yelp/C/downloader.page:59
+#: docs/yelp/C/converter.page:29 docs/yelp/C/converter.page:36
+#: docs/yelp/C/downloader.page:31
 msgid "Default: On"
 msgstr "Par défaut : Activée"
 
 #. (itstool) path: item/title
+#: docs/yelp/C/converter.page:33
+msgid "Embed Subtitles"
+msgstr "Inclure les sous-titres"
+
+#. (itstool) path: item/p
+#: docs/yelp/C/converter.page:34
+msgid ""
+"If disabled or if embedding fails, downloaded subtitles will be saved to a "
+"separate file."
+msgstr ""
+"Si cette option est désactivée ou si l’inclusion échoue, les sous-titres "
+"téléchargés seront enregistrés dans un fichier séparé."
+
+#. (itstool) path: item/title
+#: docs/yelp/C/converter.page:40
+msgid "Embed Chapters"
+msgstr "Inclure les chapitres"
+
+#. (itstool) path: item/p
 #: docs/yelp/C/converter.page:41
+msgid ""
+"If enabled, Parabolic will tag a media with chapter information if available."
+msgstr ""
+"Si cette option est activée, Parabole inclura dans un média les informations "
+"relatives à ses chapitres, si disponibles."
+
+#. (itstool) path: note/p
+#: docs/yelp/C/converter.page:43 docs/yelp/C/converter.page:50
+#: docs/yelp/C/converter.page:58 docs/yelp/C/downloader.page:46
+#: docs/yelp/C/downloader.page:53 docs/yelp/C/downloader.page:101
+msgid "Default: Off"
+msgstr "Par défaut : Désactivée"
+
+#. (itstool) path: item/title
+#: docs/yelp/C/converter.page:47
 msgid "Crop Audio Thumbnails"
 msgstr "Rogner les vignettes des fichiers audio"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/converter.page:42 docs/yelp/C/converter.page:50
-msgid "Only available if Embed Metadata is enabled."
-msgstr "Uniquement disponible si l’inclusion des métadonnées est activée."
-
-#. (itstool) path: item/p
-#: docs/yelp/C/converter.page:43
+#: docs/yelp/C/converter.page:48
+#, fuzzy
 msgid ""
-"If enabled, Parabolic will automatically turn on the advanced option "
-"<code>Crop Thumbnail</code> for audio downloads."
+"If enabled, Parabolic will crop thumbnails for audio files to be a square "
+"resolution."
 msgstr ""
-"Si cette option est activée, Parabole activera automatiquement l’option "
-"avancée <code>Rogner la vignette</code> pour les téléchargements de fichiers "
-"audio."
+"Si cette option est activée, Parabole séparera la vidéo en plusieurs "
+"morceaux correspondant aux chapitres qu’elles contient."
 
 #. (itstool) path: item/title
-#: docs/yelp/C/converter.page:49
+#: docs/yelp/C/converter.page:54
 msgid "Remove Source Data"
 msgstr "Retirer les données sur la source"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/converter.page:51
+#: docs/yelp/C/converter.page:55
 msgid ""
 "If enabled, Parabolic will clear metadata fields containing the URL and "
 "other identifying information of the media source."
@@ -144,7 +140,7 @@ msgstr ""
 "média."
 
 #. (itstool) path: item/p
-#: docs/yelp/C/converter.page:52
+#: docs/yelp/C/converter.page:56
 msgid ""
 "Fields that are cleared: <code>comment</code>, <code>description</code>, "
 "<code>synopsis</code>, <code>purl</code> and <code>handler_name</code> in "
@@ -153,33 +149,6 @@ msgstr ""
 "Champs effacés : <code>commentaires</code>, <code>description</code>, "
 "<code>synopsis</code>, <code>purl</code> et <code>nom_du_service</code> dans "
 "chaque flux."
-
-#. (itstool) path: item/title
-#: docs/yelp/C/converter.page:58
-msgid "Embed Chapters"
-msgstr "Inclure les chapitres"
-
-#. (itstool) path: item/p
-#: docs/yelp/C/converter.page:59
-msgid ""
-"If enabled, Parabolic will tag a media with chapter information if available."
-msgstr ""
-"Si cette option est activée, Parabole inclura dans un média les informations "
-"relatives à ses chapitres, si disponibles."
-
-#. (itstool) path: item/title
-#: docs/yelp/C/converter.page:65
-msgid "Embed Subtitles"
-msgstr "Inclure les sous-titres"
-
-#. (itstool) path: item/p
-#: docs/yelp/C/converter.page:66
-msgid ""
-"If disabled or if embedding fails, downloaded subtitles will be saved to a "
-"separate file."
-msgstr ""
-"Si cette option est désactivée ou si l’inclusion échoue, les sous-titres "
-"téléchargés seront enregistrés dans un fichier séparé."
 
 #. (itstool) path: info/title
 #: docs/yelp/C/downloader.page:8
@@ -254,64 +223,11 @@ msgstr "Par défaut : 5"
 
 #. (itstool) path: item/title
 #: docs/yelp/C/downloader.page:43
-msgid "Subtitles Languages"
-msgstr "Langues des sous-titres"
-
-#. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:44
-msgid ""
-"A comma-separated list of two-letter, two-letter with region, and three-"
-"letter language codes to use when selecting languages of subtitles to "
-"download. Only applies when downloading a video with subtitles."
-msgstr ""
-"Une liste de codes de langages de deux lettres, deux lettre avec une région, "
-"ou trois lettres, séparés par une virgule, à utiliser pour sélectionner les "
-"langages des sous-titres à télécharger. S’applique uniquement pour "
-"télécharger une vidéo avec des sous-titres."
-
-#. (itstool) path: note/p
-#: docs/yelp/C/downloader.page:46
-msgid ""
-"Different sites can use different language code formats for the same "
-"language. You may encounter one of the following three types: two-letter, "
-"two-letter with region, or three-letter. For example, \"en\", \"en-US\" and "
-"\"eng\" are all used for English. Please specify all valid codes for your "
-"languages for the best results. Auto-generated subtitles will also be "
-"downloaded if available."
-msgstr ""
-"Différents sites peuvent utiliser différents formats de code linguistique "
-"pour la même langue. Vous pouvez rencontrer l’un des trois types suivants : "
-"deux lettres, deux lettres avec région ou trois lettres. Par exemple, "
-"« en », « en-US » et « eng » sont tous trois utilisés pour l’anglais. Pour "
-"obtenir les meilleurs résultats, veuillez spécifier tous les codes valables "
-"pour vos langues. Les sous-titres générés automatiquement seront également "
-"téléchargés si disponibles."
-
-#. (itstool) path: note/p
-#: docs/yelp/C/downloader.page:47
-msgid ""
-"You can specify \"all\" instead to download all subtitles, but without auto-"
-"generated ones."
-msgstr ""
-"Sinon vous pouvez spécifier « tous » pour télécharger tous les sous-titres, "
-"mais sans ceux générés automatiquement."
-
-#. (itstool) path: note/p
-#: docs/yelp/C/downloader.page:50
-msgid ""
-"Default: Your culture's language codes. For example, on an en-US system the "
-"default would be <code>en,en-US,eng</code>"
-msgstr ""
-"Par défaut : les codes à deux et trois lettres de votre langue locale. Par "
-"exemple, <code>en,en-US,eng</code> sur un système en anglais américain"
-
-#. (itstool) path: item/title
-#: docs/yelp/C/downloader.page:56
 msgid "Included Auto-Generated Subtitles"
 msgstr "Inclure les sous-titres générés automatiquement"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:57
+#: docs/yelp/C/downloader.page:44
 msgid ""
 "Whether or not to included subtitles that are auto-translated to fit the "
 "requested subtitle languages."
@@ -320,12 +236,12 @@ msgstr ""
 "correspondre à la langue demandée."
 
 #. (itstool) path: item/title
-#: docs/yelp/C/downloader.page:63
+#: docs/yelp/C/downloader.page:50
 msgid "Use aria2"
 msgstr "Utiliser aria2"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:64
+#: docs/yelp/C/downloader.page:51
 msgid ""
 "If enabled, Parabolic will use aria2c to download media. Although using "
 "aria2c can improve download speed, download progress will not be displayed "
@@ -337,12 +253,12 @@ msgstr ""
 "l’interface."
 
 #. (itstool) path: item/title
-#: docs/yelp/C/downloader.page:70
+#: docs/yelp/C/downloader.page:57
 msgid "Maximum Connections Per Server"
 msgstr "Nombre maximal de connexions par serveur"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:71
+#: docs/yelp/C/downloader.page:58
 msgid ""
 "This option only applies when using aria2 is enabled. This option is the "
 "same as the <code>-x</code> flag passed to aria2c."
@@ -352,7 +268,7 @@ msgstr ""
 "aria2c."
 
 #. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:74
+#: docs/yelp/C/downloader.page:61
 msgid ""
 "The maximum number of connection that can be used per server. Must be an "
 "integer value between 1 and 32."
@@ -361,17 +277,17 @@ msgstr ""
 "doit s’agir d’un nombre entier entre 1 et 32."
 
 #. (itstool) path: note/p
-#: docs/yelp/C/downloader.page:76
+#: docs/yelp/C/downloader.page:63
 msgid "Default: 16"
 msgstr "Par défaut : 16"
 
 #. (itstool) path: item/title
-#: docs/yelp/C/downloader.page:80
+#: docs/yelp/C/downloader.page:67
 msgid "Minimum Split Size"
 msgstr "Taille minimale de division"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:81
+#: docs/yelp/C/downloader.page:68
 msgid ""
 "This option only applies when using aria2 is enabled. This option is the "
 "same as the <code>-k</code> flag passed to aria2c."
@@ -381,7 +297,7 @@ msgstr ""
 "aria2c."
 
 #. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:84
+#: docs/yelp/C/downloader.page:71
 msgid ""
 "The minimum size, in MiB, of which to split a file. Must be an integer value "
 "between 1 and 1024."
@@ -390,17 +306,17 @@ msgstr ""
 "d’un nombre entier compris entre 1 et 1024."
 
 #. (itstool) path: note/p
-#: docs/yelp/C/downloader.page:86
+#: docs/yelp/C/downloader.page:73
 msgid "Default: 20"
 msgstr "Par défaut : 20"
 
 #. (itstool) path: item/title
-#: docs/yelp/C/downloader.page:90 docs/yelp/C/newDownload.page:72
+#: docs/yelp/C/downloader.page:77 docs/yelp/C/newDownload.page:110
 msgid "Speed Limit"
 msgstr "Limitation de vitesse"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:91
+#: docs/yelp/C/downloader.page:78
 msgid ""
 "A limit, in Ki/s, that is applied to downloads only if they have the "
 "advanced option <code>Speed Limit</code> enabled. Must be an integer value "
@@ -411,80 +327,44 @@ msgstr ""
 "s’agit d’un nombre entier compris en 512 et 10240."
 
 #. (itstool) path: note/p
-#: docs/yelp/C/downloader.page:93
+#: docs/yelp/C/downloader.page:80
 msgid "Default: 1024"
 msgstr "Par défaut : 1024"
 
 #. (itstool) path: item/title
-#: docs/yelp/C/downloader.page:97
+#: docs/yelp/C/downloader.page:84
 msgid "Proxy URL"
 msgstr "URL de Proxy"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:98
+#: docs/yelp/C/downloader.page:85
 msgid "The url of the proxy server to use."
 msgstr "L’url du serveur proxy à utiliser."
 
 #. (itstool) path: item/title
-#: docs/yelp/C/downloader.page:101
-msgid "Cookies File"
-msgstr "Fichier de cookies"
+#: docs/yelp/C/downloader.page:88
+msgid "Cookies from Browser"
+msgstr ""
 
 #. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:102
+#: docs/yelp/C/downloader.page:89
 msgid ""
-"A .txt file of cookies to pass to yt-dlp when downloading. This may be "
-"useful when downloading media that requires a login, for example: private "
-"YouTube videos."
+"A browser in which to read cookies from and pass to yt-dlp's download engine."
 msgstr ""
-"Un fichier .txt de cookies à fournir à yt-dlp lors du téléchargement. Cela "
-"peut être utile pour télécharger des médias qui requièrent une connexion, "
-"par exemple : les vidéos YouTube privées."
-
-#. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:103
-msgid ""
-"Use one of the following extensions for getting a cookies file from your "
-"browser:"
-msgstr ""
-"Utilisez l’une des extensions suivantes pour obtenir un fichier de cookies "
-"depuis votre navigateur :"
-
-#. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:104
-msgid ""
-"Chrome: <code>https://chrome.google.com/webstore/detail/get-cookiestxt-"
-"locally/cclelndahbckbenkjhflpdbgdldlbecc</code>"
-msgstr ""
-"Chrome : <code>https://chrome.google.com/webstore/detail/get-cookiestxt-"
-"locally/cclelndahbckbenkjhflpdbgdldlbecc</code>"
-
-#. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:105
-msgid ""
-"Firefox: <code>https://addons.mozilla.org/en-US/firefox/addon/cookies-txt/</"
-"code>"
-msgstr ""
-"Firefox : <code>https://addons.mozilla.org/en-US/firefox/addon/cookies-txt/</"
-"code>"
 
 #. (itstool) path: note/p
-#: docs/yelp/C/downloader.page:107
-msgid "Use these extensions at your own risk."
-msgstr "L’utilisation de ces extensions se fait à vos propres risques."
-
-#. (itstool) path: note/p
-#: docs/yelp/C/downloader.page:110
-msgid "Default: No File Selected"
-msgstr "Par défaut : Aucun fichier sélectionné"
+#: docs/yelp/C/downloader.page:91
+#, fuzzy
+msgid "Default: None"
+msgstr "Par défaut : Activée"
 
 #. (itstool) path: item/title
-#: docs/yelp/C/downloader.page:114
+#: docs/yelp/C/downloader.page:95
 msgid "Use SponsorBlock for YouTube"
 msgstr "Utiliser SponsorBlock pour YouTube"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:115
+#: docs/yelp/C/downloader.page:96
 msgid ""
 "If enabled, Parabolic will apply the SponsorBlock extension to YouTube "
 "downloads."
@@ -493,7 +373,7 @@ msgstr ""
 "pour les téléchargements YouTube."
 
 #. (itstool) path: note/p
-#: docs/yelp/C/downloader.page:117
+#: docs/yelp/C/downloader.page:98
 msgid ""
 "SponsorBlock only works on YouTube videos. However, leaving this setting on "
 "will not affect downloads from other sites (i.e. not cause them to fail)."
@@ -580,8 +460,8 @@ msgstr "Backend"
 
 #. (itstool) path: section/p
 #: docs/yelp/C/keyring.page:24
-msgid ""
-"The Keyring feature is backed by the <code>Nickvision.Aura</code> library."
+#, fuzzy
+msgid "The Keyring feature is backed by the <code>libnick</code> library."
 msgstr ""
 "La fonctionnalité de trousseau est fournie par la bibliothèque "
 "<code>Nickvision.Aura</code>."
@@ -597,10 +477,11 @@ msgstr ""
 
 #. (itstool) path: section/p
 #: docs/yelp/C/keyring.page:26
+#, fuzzy
 msgid ""
 "The library will use you system's credential manager (i.e. DBus secret "
 "service on Linux and Windows Credential Manager on Windows) for securing the "
-"Keyring."
+"Keyring database file."
 msgstr ""
 "La bibliothèque utilisera le gestionnaire d’identifiants de votre système "
 "(par exemple DBus secret service sur Linux et Gestionnaire d’identifiants de "
@@ -643,119 +524,6 @@ msgid ""
 msgstr ""
 "<code>Mot de passe</code> (optionnel si le nom d’utilisateur n’est pas "
 "vide) : Le mot de passe de l’identifiant"
-
-#. (itstool) path: section/title
-#: docs/yelp/C/keyring.page:37
-msgid "Migrating from Password-Secured Keyring to Secret-Secured Keyring"
-msgstr ""
-"Migration depuis un Trousseau sécurisé par mot de passe à un Trousseau "
-"sécurisé par un secret"
-
-#. (itstool) path: section/p
-#: docs/yelp/C/keyring.page:38
-msgid ""
-"This section applies to users who have enabled a Keyring in Parabolic (in "
-"versions before V2023.9.0) and secured it with a password. Starting with "
-"version 2023.9.0, Parabolic uses the system's credential manager to generate "
-"a random password (secret) to secure the Keyring instead of asking for a "
-"user to provide one. By using the system credential manager, Parabolic can "
-"also automatically unlock the Keyring at startup without user interaction."
-msgstr ""
-"Cette section s’applique aux utilisateurs qui ont activé un Trousseau dans "
-"Parabole (dans les versions antérieures à V2023.9.0) et l’ont sécurisé par "
-"un mot de passe. À partir de la version 2023.9.0, Parabolic utilise le "
-"gestionnaire d’identifiants du système pour générer un mot de passe "
-"aléatoire (secret) afin de sécuriser le Trousseau au lieu de demander à "
-"l’utilisateur d’en fournir un. En utilisant le gestionnaire d’identifiants "
-"du système, Parabole peut également déverrouiller automatiquement le porte-"
-"clés au démarrage, sans intervention de l’utilisateur."
-
-#. (itstool) path: section/p
-#: docs/yelp/C/keyring.page:39
-msgid ""
-"If you have a password-secured Keyring from before version 2023.9.0, you can "
-"continue to use it in new versions of Parabolic without issue, but you will "
-"still need to provide the password everytime the application starts."
-msgstr ""
-"Si vous avez un Trousseau sécurisé par un mot de passe datant d’avant la "
-"version 2023.9.0, vous pouvez continuer à l’utiliser dans les nouvelles "
-"versions de Parabole sans problème, mais vous devrez continuer à fournir le "
-"mot de passe à chaque démarrage de l’application."
-
-#. (itstool) path: section/p
-#: docs/yelp/C/keyring.page:40
-msgid ""
-"Follow the rest of this section if you'd like to migrate your existing "
-"credentials and take advantage of the new Keyring where a password is not "
-"required every time."
-msgstr ""
-"Suivez le reste de cette section si vous souhaitez migrer vos identifiants "
-"existants et profiter du nouveau Trousseau où un mot de passe n’est pas "
-"nécessaire à chaque fois."
-
-#. (itstool) path: note/p
-#: docs/yelp/C/keyring.page:42
-msgid ""
-"You can simply disable the old password-secured Keyring when you update "
-"Parabolic to 2023.9.0 and re-enable the Keyring to get a secret-secured one. "
-"However, this will erase all data from the old Keyring and require you to re-"
-"enter all credentials."
-msgstr ""
-"Vous pouvez simplement désactiver l’ancien Trousseau sécurisé par mot de "
-"passe lorsque vous mettez à jour Parabole vers la version 2023.9.0 et "
-"réactiver le Trousseau pour en obtenir un sécurisé par un secret. Cependant, "
-"cela effacera toutes les données de l’ancien trousseau et vous devrez saisir "
-"à nouveau toutes les informations d’identification."
-
-#. (itstool) path: item/p
-#: docs/yelp/C/keyring.page:45
-msgid ""
-"Install <link href=\"https://flathub.org/apps/org.gnome.seahorse."
-"Application\">Passwords and Keys</link>."
-msgstr ""
-"Installez <link href=\"https://flathub.org/apps/org.gnome.seahorse."
-"Application\">Mots de passe et clés</link>."
-
-#. (itstool) path: item/p
-#: docs/yelp/C/keyring.page:46
-msgid ""
-"Open Parabolic V2023.9.0 or newer at least once. (This will ensure that the "
-"app registers with your system's credential manager)"
-msgstr ""
-"Ouvrez Parabole V2023.9.0 ou une version plus récente au moins une fois. "
-"(Cela permettra à l’application de s’enregistrer dans le gestionnaire "
-"d’identifiants de votre système)"
-
-#. (itstool) path: item/p
-#: docs/yelp/C/keyring.page:47
-msgid ""
-"Open <code>Passwords and Keys</code> and locate the <code>org.nickvision."
-"tubeconverter</code> entry in the <code>Default Keyring</code>."
-msgstr ""
-"Ouvres <code>Mots de passe et clés</code> et repérez l’entrée <code>org."
-"nickvision.tubeconverter</code> dans le <code>Trousseau par défaut</code>."
-
-#. (itstool) path: item/p
-#: docs/yelp/C/keyring.page:48
-msgid ""
-"Double click the <code>org.nickvision.tubeconverter</code> entry and edit "
-"the <code>Password</code> field. Enter the password that you created and "
-"used for your Keyring in Parabolic."
-msgstr ""
-"Double-cliquez sur l’entrée <code>org.nickvision.tubeconverter</code> et "
-"modifiez le champ <code>Mot de passe</code>. Entrez le mot de passe que vous "
-"avez créé et utilisé pour votre Trousseau dans Parabole."
-
-#. (itstool) path: item/p
-#: docs/yelp/C/keyring.page:49
-msgid ""
-"You can now close <code>Passwords and Keys</code> and restart Parabolic. You "
-"will see that upon application startup, the Keyring will now be "
-"automatically unlocked!"
-msgstr ""
-"Vous pouvez maintenant fermer <code>Mots de passe et clés</code> et "
-"redémarrer Parabole. Vous verrez qu’au démarrage de l’application, le "
-"Trousseau sera automatiquement déverrouillé !"
 
 #. (itstool) path: info/title
 #: docs/yelp/C/newDownload.page:8
@@ -817,10 +585,10 @@ msgstr ""
 
 #. (itstool) path: item/p
 #: docs/yelp/C/newDownload.page:34
+#, fuzzy
 msgid ""
-"If keyring is enabled, the user will be asked to chose from a list of named "
-"credentials or can chose to enter manually a different username and/or "
-"password."
+"If credentials are found in the keyring, the user can instead chose from a "
+"list of named credentials to use (or continue to manually enter a credential)"
 msgstr ""
 "Si le trousseau est activé, l’utilisateur devra choisir parmi une liste "
 "d’identifiants, ou entrer manuellement un nom d’utilisateur et/ou mot de "
@@ -838,9 +606,10 @@ msgstr ""
 
 #. (itstool) path: note/p
 #: docs/yelp/C/newDownload.page:37
+#, fuzzy
 msgid ""
 "For these sites that don't support passing credentials, it is recommended to "
-"upload a Cookies file in Preferences instead."
+"select a browser to use cookies from in Preferences instead."
 msgstr ""
 "Pour les sites qui ne prennent pas en charge la fourniture d’identifiants, "
 "il est recommandé de téléverser un fichier de cookies dans les préférences à "
@@ -890,10 +659,11 @@ msgstr ""
 "résolutions disponibles pour le média."
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:51 docs/yelp/C/newDownload.page:66
+#: docs/yelp/C/newDownload.page:51
+#, fuzzy
 msgid ""
 "If the file type is an audio type, the listed qualities will be simply "
-"<code>Best</code> and <code>Worst</code>."
+"<code>Best</code>, <code>Good</code>, and <code>Worst</code>."
 msgstr ""
 "Si le type de fichier est un audio, la liste des qualités sera simplement "
 "<code>Meilleure</code> et <code>Basse</code>."
@@ -909,21 +679,25 @@ msgstr ""
 
 #. (itstool) path: item/title
 #: docs/yelp/C/newDownload.page:57
-msgid "Download Subtitle"
-msgstr "Télécharger les sous-titres"
+#, fuzzy
+msgid "Audio Language"
+msgstr "Langues des sous-titres"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/newDownload.page:58
-msgid ""
-"Whether to download and embed subtitle when downloading a video. Languages "
-"for subtitles can be defined in <link xref=\"downloader\">preferences</link>."
+msgid "The language of which to use from the audio part of a media download."
 msgstr ""
-"Indique s’il faut télécharger et inclure les sous-titres dans le fichier de "
-"la vidéo lors de son téléchargement. Les langues des sous-titres peuvent "
-"être définies dans les <link xref=\"downloader\">Préférences</link>."
+
+#. (itstool) path: item/p
+#: docs/yelp/C/newDownload.page:59
+msgid ""
+"If no additional languages are available, <code>Default</code> will be the "
+"only option."
+msgstr ""
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:60
+#: docs/yelp/C/newDownload.page:61 docs/yelp/C/newDownload.page:68
+#: docs/yelp/C/newDownload.page:75 docs/yelp/C/newDownload.page:82
 msgid ""
 "The previously used state will be remembered and pre-selected for the next "
 "download."
@@ -932,17 +706,62 @@ msgstr ""
 "pour le prochain téléchargement."
 
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:64
+#: docs/yelp/C/newDownload.page:65
+msgid "Download Subtitle"
+msgstr "Télécharger les sous-titres"
+
+#. (itstool) path: item/p
+#: docs/yelp/C/newDownload.page:66
+#, fuzzy
+msgid ""
+"Whether to download and embed subtitle when downloading a video. Further "
+"subtitle settings can be configured in <link "
+"xref=\"downloader\">preferences</link>."
+msgstr ""
+"Indique s’il faut télécharger et inclure les sous-titres dans le fichier de "
+"la vidéo lors de son téléchargement. Les langues des sous-titres peuvent "
+"être définies dans les <link xref=\"downloader\">Préférences</link>."
+
+#. (itstool) path: item/title
+#: docs/yelp/C/newDownload.page:72
+msgid "Prefer AV1 Codec"
+msgstr "Préférer le codec AV1"
+
+#. (itstool) path: item/p
+#: docs/yelp/C/newDownload.page:73
+msgid ""
+"If enabled, Parabolic will prefer videos with the av1 codec when downloading."
+msgstr ""
+"Si cette option est activée, Parabole préférera les vidéos avec le codec av1 "
+"lors du téléchargement."
+
+#. (itstool) path: item/title
+#: docs/yelp/C/newDownload.page:79
+msgid "Split Chapters"
+msgstr "Diviser en chapitres"
+
+#. (itstool) path: item/p
+#: docs/yelp/C/newDownload.page:80
+#, fuzzy
+msgid ""
+"If enabled, Parabolic will split a video download into multiple smaller "
+"files based on its chapters."
+msgstr ""
+"Si cette option est activée, Parabole séparera la vidéo en plusieurs "
+"morceaux correspondant aux chapitres qu’elles contient."
+
+#. (itstool) path: item/title
+#: docs/yelp/C/newDownload.page:86
 msgid "Save Folder"
 msgstr "Dossier d’enregistrement"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:65
+#: docs/yelp/C/newDownload.page:87
 msgid "The folder at which to save the download to."
 msgstr "Le dossier dans lequel enregistrer le téléchargement."
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:68
+#: docs/yelp/C/newDownload.page:89
 msgid ""
 "The previously used folder will be remembered and pre-selected for the next "
 "download."
@@ -950,123 +769,304 @@ msgstr ""
 "Le dossier sélectionné précédemment sera mémorisé et présélectionné pour le "
 "prochain téléchargement."
 
-#. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:73
-msgid ""
-"If enabled, Parabolic will limit the download's speed with the speed "
-"configured in Preferences."
-msgstr ""
-"Si cette option est activée, Parabole limitera la vitesse de téléchargement "
-"selon la vitesse indiquée dans les préférences."
-
-#. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:75 docs/yelp/C/newDownload.page:83
-#: docs/yelp/C/newDownload.page:93 docs/yelp/C/newDownload.page:101
-#: docs/yelp/C/newDownload.page:108
-msgid "Available in the <code>Advanced Options</code> section."
-msgstr "Disponible dans la section <code>Options avancées</code>."
-
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:79
-msgid "Prefer AV1 Codec"
-msgstr "Préférer le codec AV1"
-
-#. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:80
-msgid "Only available for video (mp4, webm) downloads"
-msgstr "Seulement disponible pour les téléchargements de vidéos (mp4, webm)"
-
-#. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:81
-msgid ""
-"If enabled, Parabolic will prefer videos with the av1 codec when downloading."
-msgstr ""
-"Si cette option est activée, Parabole préférera les vidéos avec le codec av1 "
-"lors du téléchargement."
-
-#. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:86
-msgid ""
-"This option's state will be remembered and restored for future downloads."
-msgstr ""
-"L’état de cette option sera mémorisé et restauré pour les téléchargements "
-"futurs."
-
-#. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:90
-msgid "Split Chapters"
-msgstr "Diviser en chapitres"
-
-#. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:91
-msgid ""
-"If enabled, Parabolic will split the video into multiple smaller ones based "
-"on its chapters."
-msgstr ""
-"Si cette option est activée, Parabole séparera la vidéo en plusieurs "
-"morceaux correspondant aux chapitres qu’elles contient."
-
-#. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:97
-msgid "Crop Thumbnail"
-msgstr "Rogner la vignette"
-
-#. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:98
-msgid ""
-"Only available if <code>Embed Metadata</code> is enabled in Preferences."
-msgstr ""
-"Seulement disponible si l’<code>inclusion des métadonnées</code> est activée "
-"dans les préférences."
-
-#. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:99
-msgid ""
-"If enabled, Parabolic will crop a download's embedded thumbnail as square. "
-"This is useful when downloading music who's album images are usually square."
-msgstr ""
-"Si cette option est activée, Parabole rognera la vignette d’un "
-"téléchargement en forme de carré. Ceci est utile pour le téléchargement de "
-"musiques, puisque les illustrations d’albums ont généralement cette forme."
-
-#. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:105
-msgid "Download Specific Timeframe"
-msgstr "Télécharger une séquence spécifique"
-
-#. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:106
-msgid ""
-"If enabled, the user will be able to enter a start timeframe and an end "
-"timeframe for a section of the media to download."
-msgstr ""
-"Si cette option est activée, l’utilisateur pourra entrer un temps de début "
-"et un temps de fin pour une partie du média à télécharger."
-
-#. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:111
-msgid ""
-"Enabling this option will disable the use of aria2 as the downloader for "
-"this download if it is enabled in Preferences."
-msgstr ""
-"L’activation de cette option désactivera l’utilisation de aria2 comme "
-"téléchargeur pour ce téléchargement s’il est activé dans les préférences."
-
-#. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:115
+#: docs/yelp/C/newDownload.page:93
 msgid "File Name"
 msgstr "Nom du fichier"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:116
+#: docs/yelp/C/newDownload.page:94
 msgid "The file name to use when saving the download."
 msgstr ""
 "Le nom du fichier à utiliser lors de l’enregistrement du téléchargement."
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:118
+#: docs/yelp/C/newDownload.page:96
 msgid "Default: The title of the media"
 msgstr "Par défaut : le titre du média"
+
+#. (itstool) path: item/title
+#: docs/yelp/C/newDownload.page:100
+msgid "Time Frame"
+msgstr ""
+
+#. (itstool) path: item/p
+#: docs/yelp/C/newDownload.page:101
+#, fuzzy
+msgid ""
+"The user can enter a start time frame and an end time frame to download a "
+"specific section of the media."
+msgstr ""
+"Si cette option est activée, l’utilisateur pourra entrer un temps de début "
+"et un temps de fin pour une partie du média à télécharger."
+
+#. (itstool) path: note/p
+#: docs/yelp/C/newDownload.page:103
+#, fuzzy
+msgid "Default: The whole media length"
+msgstr "Par défaut : le titre du média"
+
+#. (itstool) path: note/p
+#: docs/yelp/C/newDownload.page:106
+#, fuzzy
+msgid ""
+"Enabling this option will disable the use of aria2 as the downloader for "
+"this download, even if it is enabled in Preferences."
+msgstr ""
+"L’activation de cette option désactivera l’utilisation de aria2 comme "
+"téléchargeur pour ce téléchargement s’il est activé dans les préférences."
+
+#. (itstool) path: item/p
+#: docs/yelp/C/newDownload.page:111
+#, fuzzy
+msgid ""
+"If enabled, Parabolic will limit the download's speed with the speed "
+"configured in <link xref=\"downloader\">Preferences</link>."
+msgstr ""
+"Si cette option est activée, Parabole limitera la vitesse de téléchargement "
+"selon la vitesse indiquée dans les préférences."
+
+#. (itstool) path: note/p
+#: docs/yelp/C/newDownload.page:113
+msgid "Available in the <code>Advanced Options</code> section."
+msgstr "Disponible dans la section <code>Options avancées</code>."
+
+#~ msgid "Disallow Conversions"
+#~ msgstr "Empêcher les conversions"
+
+#~ msgid ""
+#~ "If enabled, Parabolic will download the appropriate video/audio format "
+#~ "for the selected quality without converting to other formats."
+#~ msgstr ""
+#~ "Si cette option est activée, Parabole téléchargera le format audio/vidéo "
+#~ "approprié pour la qualité sélectionnée, sans opérer de conversion dans un "
+#~ "autre format."
+
+#~ msgid ""
+#~ "This means that you will be unable to select a file format when "
+#~ "downloading a media. But, you will save time in downloading as the "
+#~ "Converter will not be run."
+#~ msgstr ""
+#~ "Cela signifie que vous ne pourrez pas spécifier un format de fichier lors "
+#~ "du téléchargement d’un média. En revanche vous gagnerez du temps de "
+#~ "téléchargement puisque aucune opération de conversion n’aura lieu."
+
+#~ msgid "Only available if Embed Metadata is enabled."
+#~ msgstr "Uniquement disponible si l’inclusion des métadonnées est activée."
+
+#~ msgid ""
+#~ "If enabled, Parabolic will automatically turn on the advanced option "
+#~ "<code>Crop Thumbnail</code> for audio downloads."
+#~ msgstr ""
+#~ "Si cette option est activée, Parabole activera automatiquement l’option "
+#~ "avancée <code>Rogner la vignette</code> pour les téléchargements de "
+#~ "fichiers audio."
+
+#~ msgid ""
+#~ "A comma-separated list of two-letter, two-letter with region, and three-"
+#~ "letter language codes to use when selecting languages of subtitles to "
+#~ "download. Only applies when downloading a video with subtitles."
+#~ msgstr ""
+#~ "Une liste de codes de langages de deux lettres, deux lettre avec une "
+#~ "région, ou trois lettres, séparés par une virgule, à utiliser pour "
+#~ "sélectionner les langages des sous-titres à télécharger. S’applique "
+#~ "uniquement pour télécharger une vidéo avec des sous-titres."
+
+#~ msgid ""
+#~ "Different sites can use different language code formats for the same "
+#~ "language. You may encounter one of the following three types: two-letter, "
+#~ "two-letter with region, or three-letter. For example, \"en\", \"en-US\" "
+#~ "and \"eng\" are all used for English. Please specify all valid codes for "
+#~ "your languages for the best results. Auto-generated subtitles will also "
+#~ "be downloaded if available."
+#~ msgstr ""
+#~ "Différents sites peuvent utiliser différents formats de code linguistique "
+#~ "pour la même langue. Vous pouvez rencontrer l’un des trois types "
+#~ "suivants : deux lettres, deux lettres avec région ou trois lettres. Par "
+#~ "exemple, « en », « en-US » et « eng » sont tous trois utilisés pour "
+#~ "l’anglais. Pour obtenir les meilleurs résultats, veuillez spécifier tous "
+#~ "les codes valables pour vos langues. Les sous-titres générés "
+#~ "automatiquement seront également téléchargés si disponibles."
+
+#~ msgid ""
+#~ "You can specify \"all\" instead to download all subtitles, but without "
+#~ "auto-generated ones."
+#~ msgstr ""
+#~ "Sinon vous pouvez spécifier « tous » pour télécharger tous les sous-"
+#~ "titres, mais sans ceux générés automatiquement."
+
+#~ msgid ""
+#~ "Default: Your culture's language codes. For example, on an en-US system "
+#~ "the default would be <code>en,en-US,eng</code>"
+#~ msgstr ""
+#~ "Par défaut : les codes à deux et trois lettres de votre langue locale. "
+#~ "Par exemple, <code>en,en-US,eng</code> sur un système en anglais américain"
+
+#~ msgid "Cookies File"
+#~ msgstr "Fichier de cookies"
+
+#~ msgid ""
+#~ "A .txt file of cookies to pass to yt-dlp when downloading. This may be "
+#~ "useful when downloading media that requires a login, for example: private "
+#~ "YouTube videos."
+#~ msgstr ""
+#~ "Un fichier .txt de cookies à fournir à yt-dlp lors du téléchargement. "
+#~ "Cela peut être utile pour télécharger des médias qui requièrent une "
+#~ "connexion, par exemple : les vidéos YouTube privées."
+
+#~ msgid ""
+#~ "Use one of the following extensions for getting a cookies file from your "
+#~ "browser:"
+#~ msgstr ""
+#~ "Utilisez l’une des extensions suivantes pour obtenir un fichier de "
+#~ "cookies depuis votre navigateur :"
+
+#~ msgid ""
+#~ "Chrome: <code>https://chrome.google.com/webstore/detail/get-cookiestxt-"
+#~ "locally/cclelndahbckbenkjhflpdbgdldlbecc</code>"
+#~ msgstr ""
+#~ "Chrome : <code>https://chrome.google.com/webstore/detail/get-cookiestxt-"
+#~ "locally/cclelndahbckbenkjhflpdbgdldlbecc</code>"
+
+#~ msgid ""
+#~ "Firefox: <code>https://addons.mozilla.org/en-US/firefox/addon/cookies-txt/"
+#~ "</code>"
+#~ msgstr ""
+#~ "Firefox : <code>https://addons.mozilla.org/en-US/firefox/addon/cookies-"
+#~ "txt/</code>"
+
+#~ msgid "Use these extensions at your own risk."
+#~ msgstr "L’utilisation de ces extensions se fait à vos propres risques."
+
+#~ msgid "Default: No File Selected"
+#~ msgstr "Par défaut : Aucun fichier sélectionné"
+
+#~ msgid "Migrating from Password-Secured Keyring to Secret-Secured Keyring"
+#~ msgstr ""
+#~ "Migration depuis un Trousseau sécurisé par mot de passe à un Trousseau "
+#~ "sécurisé par un secret"
+
+#~ msgid ""
+#~ "This section applies to users who have enabled a Keyring in Parabolic (in "
+#~ "versions before V2023.9.0) and secured it with a password. Starting with "
+#~ "version 2023.9.0, Parabolic uses the system's credential manager to "
+#~ "generate a random password (secret) to secure the Keyring instead of "
+#~ "asking for a user to provide one. By using the system credential manager, "
+#~ "Parabolic can also automatically unlock the Keyring at startup without "
+#~ "user interaction."
+#~ msgstr ""
+#~ "Cette section s’applique aux utilisateurs qui ont activé un Trousseau "
+#~ "dans Parabole (dans les versions antérieures à V2023.9.0) et l’ont "
+#~ "sécurisé par un mot de passe. À partir de la version 2023.9.0, Parabolic "
+#~ "utilise le gestionnaire d’identifiants du système pour générer un mot de "
+#~ "passe aléatoire (secret) afin de sécuriser le Trousseau au lieu de "
+#~ "demander à l’utilisateur d’en fournir un. En utilisant le gestionnaire "
+#~ "d’identifiants du système, Parabole peut également déverrouiller "
+#~ "automatiquement le porte-clés au démarrage, sans intervention de "
+#~ "l’utilisateur."
+
+#~ msgid ""
+#~ "If you have a password-secured Keyring from before version 2023.9.0, you "
+#~ "can continue to use it in new versions of Parabolic without issue, but "
+#~ "you will still need to provide the password everytime the application "
+#~ "starts."
+#~ msgstr ""
+#~ "Si vous avez un Trousseau sécurisé par un mot de passe datant d’avant la "
+#~ "version 2023.9.0, vous pouvez continuer à l’utiliser dans les nouvelles "
+#~ "versions de Parabole sans problème, mais vous devrez continuer à fournir "
+#~ "le mot de passe à chaque démarrage de l’application."
+
+#~ msgid ""
+#~ "Follow the rest of this section if you'd like to migrate your existing "
+#~ "credentials and take advantage of the new Keyring where a password is not "
+#~ "required every time."
+#~ msgstr ""
+#~ "Suivez le reste de cette section si vous souhaitez migrer vos "
+#~ "identifiants existants et profiter du nouveau Trousseau où un mot de "
+#~ "passe n’est pas nécessaire à chaque fois."
+
+#~ msgid ""
+#~ "You can simply disable the old password-secured Keyring when you update "
+#~ "Parabolic to 2023.9.0 and re-enable the Keyring to get a secret-secured "
+#~ "one. However, this will erase all data from the old Keyring and require "
+#~ "you to re-enter all credentials."
+#~ msgstr ""
+#~ "Vous pouvez simplement désactiver l’ancien Trousseau sécurisé par mot de "
+#~ "passe lorsque vous mettez à jour Parabole vers la version 2023.9.0 et "
+#~ "réactiver le Trousseau pour en obtenir un sécurisé par un secret. "
+#~ "Cependant, cela effacera toutes les données de l’ancien trousseau et vous "
+#~ "devrez saisir à nouveau toutes les informations d’identification."
+
+#~ msgid ""
+#~ "Install <link href=\"https://flathub.org/apps/org.gnome.seahorse."
+#~ "Application\">Passwords and Keys</link>."
+#~ msgstr ""
+#~ "Installez <link href=\"https://flathub.org/apps/org.gnome.seahorse."
+#~ "Application\">Mots de passe et clés</link>."
+
+#~ msgid ""
+#~ "Open Parabolic V2023.9.0 or newer at least once. (This will ensure that "
+#~ "the app registers with your system's credential manager)"
+#~ msgstr ""
+#~ "Ouvrez Parabole V2023.9.0 ou une version plus récente au moins une fois. "
+#~ "(Cela permettra à l’application de s’enregistrer dans le gestionnaire "
+#~ "d’identifiants de votre système)"
+
+#~ msgid ""
+#~ "Open <code>Passwords and Keys</code> and locate the <code>org.nickvision."
+#~ "tubeconverter</code> entry in the <code>Default Keyring</code>."
+#~ msgstr ""
+#~ "Ouvres <code>Mots de passe et clés</code> et repérez l’entrée <code>org."
+#~ "nickvision.tubeconverter</code> dans le <code>Trousseau par défaut</code>."
+
+#~ msgid ""
+#~ "Double click the <code>org.nickvision.tubeconverter</code> entry and edit "
+#~ "the <code>Password</code> field. Enter the password that you created and "
+#~ "used for your Keyring in Parabolic."
+#~ msgstr ""
+#~ "Double-cliquez sur l’entrée <code>org.nickvision.tubeconverter</code> et "
+#~ "modifiez le champ <code>Mot de passe</code>. Entrez le mot de passe que "
+#~ "vous avez créé et utilisé pour votre Trousseau dans Parabole."
+
+#~ msgid ""
+#~ "You can now close <code>Passwords and Keys</code> and restart Parabolic. "
+#~ "You will see that upon application startup, the Keyring will now be "
+#~ "automatically unlocked!"
+#~ msgstr ""
+#~ "Vous pouvez maintenant fermer <code>Mots de passe et clés</code> et "
+#~ "redémarrer Parabole. Vous verrez qu’au démarrage de l’application, le "
+#~ "Trousseau sera automatiquement déverrouillé !"
+
+#~ msgid "Only available for video (mp4, webm) downloads"
+#~ msgstr "Seulement disponible pour les téléchargements de vidéos (mp4, webm)"
+
+#~ msgid ""
+#~ "This option's state will be remembered and restored for future downloads."
+#~ msgstr ""
+#~ "L’état de cette option sera mémorisé et restauré pour les téléchargements "
+#~ "futurs."
+
+#~ msgid "Crop Thumbnail"
+#~ msgstr "Rogner la vignette"
+
+#~ msgid ""
+#~ "Only available if <code>Embed Metadata</code> is enabled in Preferences."
+#~ msgstr ""
+#~ "Seulement disponible si l’<code>inclusion des métadonnées</code> est "
+#~ "activée dans les préférences."
+
+#~ msgid ""
+#~ "If enabled, Parabolic will crop a download's embedded thumbnail as "
+#~ "square. This is useful when downloading music who's album images are "
+#~ "usually square."
+#~ msgstr ""
+#~ "Si cette option est activée, Parabole rognera la vignette d’un "
+#~ "téléchargement en forme de carré. Ceci est utile pour le téléchargement "
+#~ "de musiques, puisque les illustrations d’albums ont généralement cette "
+#~ "forme."
+
+#~ msgid "Download Specific Timeframe"
+#~ msgstr "Télécharger une séquence spécifique"
 
 #~ msgid ""
 #~ "The type of subtitles to download. Can be <code>None</code>, <code>VTT</"

@@ -5,11 +5,11 @@
 	<title type="link">Keyring 🔑</title>
 	<credit type="author copyright">
 		<name>Nicholas Logozzo</name>
-		<years its:translate="no">2023</years>
+		<years its:translate="no">2023-2024</years>
 	</credit>
 	<credit type="publisher copyright">
 		<name>Nicholas Logozzo</name>
-		<years its:translate="no">2023</years>
+		<years its:translate="no">2023-2024</years>
 	</credit>
 	<license href="http://creativecommons.org/licenses/by/4.0/" its:translate="no"><p>Creative Commons Attribution 4.0 International License</p></license>
 </info>
@@ -18,9 +18,9 @@
 <p>Diese Seite erklärt alle Optionen zur Verwendung des Keyrings in <app>Parabolic</app>.</p>
 <section>
     <title>Backend</title>
-    <p>Die Schlüsselring-Funktion wird von der <code>Nickvision.Aura</code>-Bibliothek bereitgestellt.</p>
+    <p>The Keyring feature is backed by the <code>libnick</code> library.</p>
     <p>Diese Bibliothek verwendet SQLCipher, um Anmeldedaten sicher und plattformunabhängig zu speichern.</p>
-    <p>Die Bibliothek verwendet die Anmeldedatenverwaltung deines Systems (d.h. DBus secret service unter Linux und Windows Credential Manager unter Windows) zur Sicherung des Schlüsselrings.</p>
+    <p>The library will use you system's credential manager (i.e. DBus secret service on Linux and Windows Credential Manager on Windows) for securing the Keyring database file.</p>
 </section>
 <section>
     <title>Speichern von Anmeldedaten</title>
@@ -29,21 +29,5 @@
     <p><code>URL</code> (optional): Die URL der Anmeldung</p>
     <p><code>Benutzername</code> (Optional wenn das Passwortfeld nicht leer ist): Der Benutzername der Anmeldung</p>
     <p><code>Passwort</code> (Optional wenn das Benutzernamenfeld nicht leer ist): Das Passwort der Anmeldung</p>
-</section>
-<section>
-    <title>Migration von einem passwortgeschützten Schlüsselring zu einem mit einem Geheimnis gesicherten Schlüsselring</title>
-    <p>Dieser Abschnitt gilt für Benutzer, die einen Schlüsselring in Parabolic (in Versionen vor V2023.9.0) aktiviert und mit einem Passwort gesichert haben. Ab Version 2023.9.0 verwendet Parabolic die Anmeldedatenverwaltung des Systems, um ein zufälliges Passwort (Geheimnis) zu generieren, um den Schlüsselring zu sichern, anstatt den Benutzer zu bitten, ein Passwort anzugeben. Durch die Verwendung der Anmeldedatenverwaltung des Systems kann Parabolic den Schlüsselring auch automatisch beim Start entsperren, ohne dass der Benutzer eingreifen muss.</p>
-    <p>Wenn du einen passwortgesicherten Schlüsselring aus der Zeit vor Version 2023.9.0 hast, kannst diesen in den neuen Versionen von Parabolic problemlos weiterverwenden, aber du musst weiterhin bei jedem Start der Anwendung das Passwort eingeben.</p>
-    <p>Folge dem Rest dieses Abschnitts, wenn du deine bestehenden Anmeldedaten migrieren und die Vorteile des neuen Schlüsselrings nutzen möchten, bei dem nicht jedes Mal ein Passwort erforderlich ist.</p>
-    <note>
-        <p>Du kannst den alten passwortgeschützten Schlüsselring einfach deaktivieren, wenn du Parabolic auf 2023.9.0 aktualisierst und den Schlüsselring erneut aktivierst, um einen geheimen Schlüsselring zu erhalten. Dadurch werden jedoch alle Daten des alten Schlüsselringes gelöscht und du musst alle Anmeldedaten neu eingeben.</p>
-    </note>
-    <steps>
-        <item><p><link href="https://flathub.org/apps/org.gnome.seahorse.Application">Passwords and Keys</link> installieren.</p></item>
-        <item><p>Öffne Parabolic V2023.9.0 oder eine neuere Version mindestens einmal. (Dadurch wird sichergestellt, dass sich die App bei der Anmeldedatenverwaltung deines Systems registriert)</p></item>
-        <item><p>Öffne <code>Passwords and Keys</code> und suche nach dem Eintrag <code>org.nickvision.tubeconverter</code> im <code>Standard-Schlüsselring</code>.</p></item>
-        <item><p>Klicke doppelt auf den Eintrag <code>org.nickvision.tubeconverter</code> und bearbeite das Feld <code>Password</code>. Gib das Passwort ein, das du für deinen Schlüsselring in Parabolic erstellt und verwendet hast.</p></item>
-        <item><p>Du kannst nun <code>Passwords and Keys</code> schließen und Parabolic neu starten. Du wirst sehen, dass beim Start der Anwendung der Schlüsselring jetzt automatisch entsperrt wird!</p></item>
-    </steps>
 </section>
 </page>

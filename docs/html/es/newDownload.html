@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <dt class="terms">Autenticar</dt>
 <dd class="terms">
 <p class="p">Si se activa, se pedirá al usuario que proporcione un nombre de usuario y/o una contraseña para pasárselos a yt-dlp al descargar.</p>
-<p class="p">Si el llavero está activado, se pedirá al usuario que elija de una lista de credenciales con nombre o puede elegir introducir manualmente un nombre de usuario y/o contraseña diferentes.</p>
+<p class="p">If credentials are found in the keyring, the user can instead chose from a list of named credentials to use (or continue to manually enter a credential)</p>
 <div class="note note-advanced" title="Avanzada">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', function() {
  </g>
 </svg><div class="inner"><div class="region"><div class="contents">
 <p class="p">No todos los sitios web admiten la transmisión de nombres de usuario y contraseñas a yt-dlp. Por ejemplo, YouTube NO admite esta función.</p>
-<p class="p">Para estos sitios que no admiten la transmisión de credenciales, se recomienda cargar un archivo de cookies en preferencias.</p>
+<p class="p">For these sites that don't support passing credentials, it is recommended to select a browser to use cookies from in Preferences instead.</p>
 </div></div></div>
 </div>
 </dd>
@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <dt class="terms">Calidad</dt>
 <dd class="terms">
 <p class="p">Si el tipo de archivo es de vídeo, las calidades indicadas serán las resoluciones de los medios disponibles.</p>
-<p class="p">Si el tipo de archivo es de audio, las calidades enumeradas serán simplemente <span class="code">Mejor</span> y <span class="code">Peor</span>.</p>
+<p class="p">If the file type is an audio type, the listed qualities will be simply <span class="code">Best</span>, <span class="code">Good</span>, and <span class="code">Worst</span>.</p>
 <div class="note" title="Nota">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -82,9 +82,46 @@ document.addEventListener('DOMContentLoaded', function() {
 </svg><div class="inner"><div class="region"><div class="contents"><p class="p">La calidad usada anteriormente será recordada y preseleccionada para la siguiente descarga.</p></div></div></div>
 </div>
 </dd>
+<dt class="terms">Audio Language</dt>
+<dd class="terms">
+<p class="p">The language of which to use from the audio part of a media download.</p>
+<p class="p">If no additional languages are available, <span class="code">Default</span> will be the only option.</p>
+<div class="note" title="Nota">
+<svg height="24" width="24" version="1.1">
+ <g>
+  <path class="yelp-svg-fill" d="m4 3h16c0.554 0 1 0.446 1 1v11h-6v6h-11c-0.554 0-1-0.446-1-1v-16c0-0.554 0.446-1 1-1z"></path>
+  <path class="yelp-svg-fill" d="m17 16h4l-5 5v-4c0-0.554 0.446-1 1-1z"></path>
+ </g>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">El estado usado anteriormente será recordado y preseleccionado para la siguiente descarga.</p></div></div></div>
+</div>
+</dd>
 <dt class="terms">Descargar subtítulo</dt>
 <dd class="terms">
-<p class="p">Si descarga e incrusta los subtítulos al descargar un vídeo. Los idiomas de los subtítulos pueden definirse en <span class="link"><a href="downloader.html" title="Descargador">preferencias</a></span>.</p>
+<p class="p">Whether to download and embed subtitle when downloading a video. Further subtitle settings can be configured in <span class="link"><a href="downloader.html" title="Descargador">preferences</a></span>.</p>
+<div class="note" title="Nota">
+<svg height="24" width="24" version="1.1">
+ <g>
+  <path class="yelp-svg-fill" d="m4 3h16c0.554 0 1 0.446 1 1v11h-6v6h-11c-0.554 0-1-0.446-1-1v-16c0-0.554 0.446-1 1-1z"></path>
+  <path class="yelp-svg-fill" d="m17 16h4l-5 5v-4c0-0.554 0.446-1 1-1z"></path>
+ </g>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">El estado usado anteriormente será recordado y preseleccionado para la siguiente descarga.</p></div></div></div>
+</div>
+</dd>
+<dt class="terms">Preferir el códec AV1</dt>
+<dd class="terms">
+<p class="p">Si se activa, Parabolic preferirá los vídeos con el códec av1 al descargarlos.</p>
+<div class="note" title="Nota">
+<svg height="24" width="24" version="1.1">
+ <g>
+  <path class="yelp-svg-fill" d="m4 3h16c0.554 0 1 0.446 1 1v11h-6v6h-11c-0.554 0-1-0.446-1-1v-16c0-0.554 0.446-1 1-1z"></path>
+  <path class="yelp-svg-fill" d="m17 16h4l-5 5v-4c0-0.554 0.446-1 1-1z"></path>
+ </g>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">El estado usado anteriormente será recordado y preseleccionado para la siguiente descarga.</p></div></div></div>
+</div>
+</dd>
+<dt class="terms">Separar los capítulos</dt>
+<dd class="terms">
+<p class="p">If enabled, Parabolic will split a video download into multiple smaller files based on its chapters.</p>
 <div class="note" title="Nota">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -97,7 +134,6 @@ document.addEventListener('DOMContentLoaded', function() {
 <dt class="terms">Guardar carpeta</dt>
 <dd class="terms">
 <p class="p">La carpeta en la que guardar la descarga.</p>
-<p class="p">Si el tipo de archivo es de audio, las calidades enumeradas serán simplemente <span class="code">Mejor</span> y <span class="code">Peor</span>.</p>
 <div class="note" title="Nota">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -105,92 +141,6 @@ document.addEventListener('DOMContentLoaded', function() {
   <path class="yelp-svg-fill" d="m17 16h4l-5 5v-4c0-0.554 0.446-1 1-1z"></path>
  </g>
 </svg><div class="inner"><div class="region"><div class="contents"><p class="p">La carpeta usada anteriormente será recordada y preseleccionada para la siguiente descarga.</p></div></div></div>
-</div>
-</dd>
-<dt class="terms">Límite de velocidad</dt>
-<dd class="terms">
-<p class="p">Si está activada, Parabolic limitará la velocidad de descarga con la velocidad configurada en las preferencias.</p>
-<div class="note" title="Nota">
-<svg height="24" width="24" version="1.1">
- <g>
-  <path class="yelp-svg-fill" d="m4 3h16c0.554 0 1 0.446 1 1v11h-6v6h-11c-0.554 0-1-0.446-1-1v-16c0-0.554 0.446-1 1-1z"></path>
-  <path class="yelp-svg-fill" d="m17 16h4l-5 5v-4c0-0.554 0.446-1 1-1z"></path>
- </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Disponible en la sección <span class="code">Opciones avanzadas</span>.</p></div></div></div>
-</div>
-</dd>
-<dt class="terms">Preferir el códec AV1</dt>
-<dd class="terms">
-<p class="p">Solo disponible para las descargas de vídeo (mp4, webm)</p>
-<p class="p">Si se activa, Parabolic preferirá los vídeos con el códec av1 al descargarlos.</p>
-<div class="note" title="Nota">
-<svg height="24" width="24" version="1.1">
- <g>
-  <path class="yelp-svg-fill" d="m4 3h16c0.554 0 1 0.446 1 1v11h-6v6h-11c-0.554 0-1-0.446-1-1v-16c0-0.554 0.446-1 1-1z"></path>
-  <path class="yelp-svg-fill" d="m17 16h4l-5 5v-4c0-0.554 0.446-1 1-1z"></path>
- </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Disponible en la sección <span class="code">Opciones avanzadas</span>.</p></div></div></div>
-</div>
-<div class="note" title="Nota">
-<svg height="24" width="24" version="1.1">
- <g>
-  <path class="yelp-svg-fill" d="m4 3h16c0.554 0 1 0.446 1 1v11h-6v6h-11c-0.554 0-1-0.446-1-1v-16c0-0.554 0.446-1 1-1z"></path>
-  <path class="yelp-svg-fill" d="m17 16h4l-5 5v-4c0-0.554 0.446-1 1-1z"></path>
- </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">El estado de esta opción será recordado y restaurado para futuras descargas.</p></div></div></div>
-</div>
-</dd>
-<dt class="terms">Separar los capítulos</dt>
-<dd class="terms">
-<p class="p">Si se activa, Parabolic dividirá el vídeo en varios más pequeños en función de sus capítulos.</p>
-<div class="note" title="Nota">
-<svg height="24" width="24" version="1.1">
- <g>
-  <path class="yelp-svg-fill" d="m4 3h16c0.554 0 1 0.446 1 1v11h-6v6h-11c-0.554 0-1-0.446-1-1v-16c0-0.554 0.446-1 1-1z"></path>
-  <path class="yelp-svg-fill" d="m17 16h4l-5 5v-4c0-0.554 0.446-1 1-1z"></path>
- </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Disponible en la sección <span class="code">Opciones avanzadas</span>.</p></div></div></div>
-</div>
-</dd>
-<dt class="terms">Recortar miniatura</dt>
-<dd class="terms">
-<p class="p">Sólo está disponible si <span class="code">Incrustar metadatos</span> está activado en preferencias.</p>
-<p class="p">Si se activa, Parabolic recortará la miniatura incrustada de una descarga como cuadrada. Esto es útil cuando se descarga música cuyas imágenes de álbum suelen ser cuadradas.</p>
-<div class="note" title="Nota">
-<svg height="24" width="24" version="1.1">
- <g>
-  <path class="yelp-svg-fill" d="m4 3h16c0.554 0 1 0.446 1 1v11h-6v6h-11c-0.554 0-1-0.446-1-1v-16c0-0.554 0.446-1 1-1z"></path>
-  <path class="yelp-svg-fill" d="m17 16h4l-5 5v-4c0-0.554 0.446-1 1-1z"></path>
- </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Disponible en la sección <span class="code">Opciones avanzadas</span>.</p></div></div></div>
-</div>
-</dd>
-<dt class="terms">Descargar plazos específicos</dt>
-<dd class="terms">
-<p class="p">Si se activa, el usuario podrá introducir un plazo de inicio y un plazo de finalización para que se descargue una sección de los medios.</p>
-<div class="note" title="Nota">
-<svg height="24" width="24" version="1.1">
- <g>
-  <path class="yelp-svg-fill" d="m4 3h16c0.554 0 1 0.446 1 1v11h-6v6h-11c-0.554 0-1-0.446-1-1v-16c0-0.554 0.446-1 1-1z"></path>
-  <path class="yelp-svg-fill" d="m17 16h4l-5 5v-4c0-0.554 0.446-1 1-1z"></path>
- </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Disponible en la sección <span class="code">Opciones avanzadas</span>.</p></div></div></div>
-</div>
-<div class="note note-advanced" title="Avanzada">
-<svg height="24" width="24" version="1.1">
- <g>
-  <path class="yelp-svg-fill" d="m5.4473 12.572c-2.039 0.957-3.4473 3.019-3.4473 5.428v4h20v-4c0-2.406-1.406-4.466-3.441-5.424a8 8 0 0 1 -6.559 3.424 8 8 0 0 1 -6.5527 -3.428z"></path>
-  <path class="yelp-svg-fill" d="m12 3a5 5 0 0 0 -5 5 5 5 0 0 0 5 5 5 5 0 0 0 5 -5 5 5 0 0 0 -5 -5zm0 3a2 2 0 0 1 2 2 2 2 0 0 1 -2 2 2 2 0 0 1 -2 -2 2 2 0 0 1 2 -2z"></path>
-  <path class="yelp-svg-fill" d="m15.312 6 3.688 1v2l-3.4688 1z"></path>
-  <path class="yelp-svg-fill" d="m14 11.312-1 3.688h-2l-1-3.469z"></path>
-  <path class="yelp-svg-fill" d="m10 4.6875 1-3.6875h2l1 3.4688z"></path>
-  <path class="yelp-svg-fill" d="m8.6875 10-3.6875-1v-2l3.4688-1z"></path>
-  <path class="yelp-svg-fill" d="m12.928 4.2435 3.3146-1.9003 1.4142 1.4142-1.7457 3.1599z"></path>
-  <path class="yelp-svg-fill" d="m15.757 8.9281 1.9003 3.3146-1.4142 1.4142-3.1599-1.7457z"></path>
-  <path class="yelp-svg-fill" d="m8.2435 7.0719-1.9004-3.3145 1.4143-1.4143 3.1596 1.7457z"></path>
-  <path class="yelp-svg-fill" d="m11.072 11.757-3.3146 1.9-1.4143-1.414 1.7457-3.1602z"></path>
- </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Activando esta opción se desactivará el uso de aria2 como descargador para esta descarga si está activado en Preferencias.</p></div></div></div>
 </div>
 </dd>
 <dt class="terms">Nombre del archivo</dt>
@@ -213,6 +163,54 @@ document.addEventListener('DOMContentLoaded', function() {
 </svg><div class="inner"><div class="region"><div class="contents"><p class="p">Predeterminado: El título del medio</p></div></div></div>
 </div>
 </dd>
+<dt class="terms">Time Frame</dt>
+<dd class="terms">
+<p class="p">The user can enter a start time frame and an end time frame to download a specific section of the media.</p>
+<div class="note note-advanced" title="Avanzada">
+<svg height="24" width="24" version="1.1">
+ <g>
+  <path class="yelp-svg-fill" d="m5.4473 12.572c-2.039 0.957-3.4473 3.019-3.4473 5.428v4h20v-4c0-2.406-1.406-4.466-3.441-5.424a8 8 0 0 1 -6.559 3.424 8 8 0 0 1 -6.5527 -3.428z"></path>
+  <path class="yelp-svg-fill" d="m12 3a5 5 0 0 0 -5 5 5 5 0 0 0 5 5 5 5 0 0 0 5 -5 5 5 0 0 0 -5 -5zm0 3a2 2 0 0 1 2 2 2 2 0 0 1 -2 2 2 2 0 0 1 -2 -2 2 2 0 0 1 2 -2z"></path>
+  <path class="yelp-svg-fill" d="m15.312 6 3.688 1v2l-3.4688 1z"></path>
+  <path class="yelp-svg-fill" d="m14 11.312-1 3.688h-2l-1-3.469z"></path>
+  <path class="yelp-svg-fill" d="m10 4.6875 1-3.6875h2l1 3.4688z"></path>
+  <path class="yelp-svg-fill" d="m8.6875 10-3.6875-1v-2l3.4688-1z"></path>
+  <path class="yelp-svg-fill" d="m12.928 4.2435 3.3146-1.9003 1.4142 1.4142-1.7457 3.1599z"></path>
+  <path class="yelp-svg-fill" d="m15.757 8.9281 1.9003 3.3146-1.4142 1.4142-3.1599-1.7457z"></path>
+  <path class="yelp-svg-fill" d="m8.2435 7.0719-1.9004-3.3145 1.4143-1.4143 3.1596 1.7457z"></path>
+  <path class="yelp-svg-fill" d="m11.072 11.757-3.3146 1.9-1.4143-1.414 1.7457-3.1602z"></path>
+ </g>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Default: The whole media length</p></div></div></div>
+</div>
+<div class="note note-advanced" title="Avanzada">
+<svg height="24" width="24" version="1.1">
+ <g>
+  <path class="yelp-svg-fill" d="m5.4473 12.572c-2.039 0.957-3.4473 3.019-3.4473 5.428v4h20v-4c0-2.406-1.406-4.466-3.441-5.424a8 8 0 0 1 -6.559 3.424 8 8 0 0 1 -6.5527 -3.428z"></path>
+  <path class="yelp-svg-fill" d="m12 3a5 5 0 0 0 -5 5 5 5 0 0 0 5 5 5 5 0 0 0 5 -5 5 5 0 0 0 -5 -5zm0 3a2 2 0 0 1 2 2 2 2 0 0 1 -2 2 2 2 0 0 1 -2 -2 2 2 0 0 1 2 -2z"></path>
+  <path class="yelp-svg-fill" d="m15.312 6 3.688 1v2l-3.4688 1z"></path>
+  <path class="yelp-svg-fill" d="m14 11.312-1 3.688h-2l-1-3.469z"></path>
+  <path class="yelp-svg-fill" d="m10 4.6875 1-3.6875h2l1 3.4688z"></path>
+  <path class="yelp-svg-fill" d="m8.6875 10-3.6875-1v-2l3.4688-1z"></path>
+  <path class="yelp-svg-fill" d="m12.928 4.2435 3.3146-1.9003 1.4142 1.4142-1.7457 3.1599z"></path>
+  <path class="yelp-svg-fill" d="m15.757 8.9281 1.9003 3.3146-1.4142 1.4142-3.1599-1.7457z"></path>
+  <path class="yelp-svg-fill" d="m8.2435 7.0719-1.9004-3.3145 1.4143-1.4143 3.1596 1.7457z"></path>
+  <path class="yelp-svg-fill" d="m11.072 11.757-3.3146 1.9-1.4143-1.414 1.7457-3.1602z"></path>
+ </g>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Enabling this option will disable the use of aria2 as the downloader for this download, even if it is enabled in Preferences.</p></div></div></div>
+</div>
+</dd>
+<dt class="terms">Límite de velocidad</dt>
+<dd class="terms">
+<p class="p">If enabled, Parabolic will limit the download's speed with the speed configured in <span class="link"><a href="downloader.html" title="Descargador">Preferences</a></span>.</p>
+<div class="note" title="Nota">
+<svg height="24" width="24" version="1.1">
+ <g>
+  <path class="yelp-svg-fill" d="m4 3h16c0.554 0 1 0.446 1 1v11h-6v6h-11c-0.554 0-1-0.446-1-1v-16c0-0.554 0.446-1 1-1z"></path>
+  <path class="yelp-svg-fill" d="m17 16h4l-5 5v-4c0-0.554 0.446-1 1-1z"></path>
+ </g>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Disponible en la sección <span class="code">Opciones avanzadas</span>.</p></div></div></div>
+</div>
+</dd>
 </dl></div></div></div>
 </div>
 <section class="links" role="navigation"><div class="inner">
@@ -229,8 +227,8 @@ document.addEventListener('DOMContentLoaded', function() {
 <div class="hgroup"><h2><span class="title">Acerca de</span></h2></div>
 <div class="region"><div class="contents">
 <div class="copyrights">
-<div class="copyright">© 2023 Nicholas Logozzo</div>
-<div class="copyright">© 2023 Nicholas Logozzo</div>
+<div class="copyright">© 2023-2024 Nicholas Logozzo</div>
+<div class="copyright">© 2023-2024 Nicholas Logozzo</div>
 <div class="copyright">© 2023 Óscar Fernández Díaz</div>
 </div>
 <div class="credits">

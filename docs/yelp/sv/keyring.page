@@ -5,11 +5,11 @@
 	<title type="link">Nyckelring 🔑</title>
 	<credit type="author copyright">
 		<name>Nicholas Logozzo</name>
-		<years its:translate="no">2023</years>
+		<years its:translate="no">2023-2024</years>
 	</credit>
 	<credit type="publisher copyright">
 		<name>Nicholas Logozzo</name>
-		<years its:translate="no">2023</years>
+		<years its:translate="no">2023-2024</years>
 	</credit>
 	<license href="http://creativecommons.org/licenses/by/4.0/" its:translate="no"><p>Creative Commons Attribution 4.0 International License</p></license>
 </info>
@@ -18,9 +18,9 @@
 <p>Den här sidan förklarar alla alternativ för att använda nyckelringen i <app>Parabolic</app>.</p>
 <section>
     <title>Backend</title>
-    <p>Nyckelringsfunktionen stöds av <code>Nickvision.Aura</code>-biblioteket.</p>
+    <p>The Keyring feature is backed by the <code>libnick</code> library.</p>
     <p>Det här biblioteket använder SQLCipher för att säkert lagra referenser på ett plattformsoberoende sätt.</p>
-    <p>Biblioteket kommer att använda systemets behörighetshanterare (dvs. DBus secret service på Linux och Windows Credential Manager på Windows) för att säkra nyckelringen.</p>
+    <p>The library will use you system's credential manager (i.e. DBus secret service on Linux and Windows Credential Manager on Windows) for securing the Keyring database file.</p>
 </section>
 <section>
     <title>Lagra inloggningsinformation</title>
@@ -29,21 +29,5 @@
     <p><code>URL</code> (valfritt): URL till inloggningsinformationen</p>
     <p><code>Användarnamn</code> (valfritt om lösenordet inte är tomt): Användarnamnet för inloggningsinformationen</p>
     <p><code>Lösenord</code> (valfritt om användarnamnet inte är tomt): Lösenordet för inloggningsinformationen</p>
-</section>
-<section>
-    <title>Migrera från Password-Secured nyckelring till Secret-Secured nyckelring</title>
-    <p>Det här avsnittet gäller användare som har aktiverat en nyckelring i Parabolic (i versioner före V2023.9.0) och säkrat den med ett lösenord. Från och med version 2023.9.0 använder Parabolic systemets behörighetshanterare för att generera ett slumpmässigt lösenord (hemligt) för att säkra nyckelringen istället för att be en användare att tillhandahålla ett. Genom att använda systemets behörighetshanterare kan Parabolic också automatiskt låsa upp nyckelringen vid start utan användarinteraktion.</p>
-    <p>Om du har en Password-Secured nyckelring från före version 2023.9.0 kan du fortsätta att använda den i nya versioner av Parabolic utan problem, men du kommer fortfarande att behöva ange lösenordet varje gång programmet startar.</p>
-    <p>Följ resten av det här avsnittet om du vill migrera din befintliga inloggningsinformation och dra nytta av den nya nyckelringen där ett lösenord inte krävs varje gång.</p>
-    <note>
-        <p>Du kan helt enkelt inaktivera den gamla Password-Secured nyckelringen när du uppdaterar Parabolic till 2023.9.0 och återaktivera nyckelringen för att få en Secret-Secured. Detta kommer dock att radera all data från den gamla nyckelringen och kräver att du anger alla inloggningsuppgifter igen.</p>
-    </note>
-    <steps>
-        <item><p>Installera <link href="https://flathub.org/apps/org.gnome.seahorse.Application">Lösenord och nycklar</link>.</p></item>
-        <item><p>Öppna Parabolic V2023.9.0 eller nyare minst en gång. (Detta säkerställer att appen registreras hos ditt systems inloggningshanterare)</p></item>
-        <item><p>Öppna <code>Lösenord och nycklar</code> och leta reda på <code>org.nickvision.tubeconverter</code>-posten i <code>Standard nyckelring</code>.</p></item>
-        <item><p>Dubbelklicka på posten <code>org.nickvision.tubeconverter</code> och redigera fältet <code>Lösenord</code>. Ange lösenordet som du skapade och använde för din nyckelring i Parabolic.</p></item>
-        <item><p>Du kan nu stänga <code>Lösenord och nycklar</code> och starta om Parabolic. Du kommer att se att när applikationen startar kommer nyckelringen nu att låsas upp automatiskt!</p></item>
-    </steps>
 </section>
 </page>

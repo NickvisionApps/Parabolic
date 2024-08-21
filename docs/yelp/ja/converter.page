@@ -5,11 +5,11 @@
 	<title type="link">コンバーター ⚒️</title>
 	<credit type="author copyright">
 		<name>Nicholas Logozzo</name>
-		<years its:translate="no">2023</years>
+		<years its:translate="no">2023-2024</years>
 	</credit>
 	<credit type="publisher copyright">
 		<name>Nicholas Logozzo</name>
-		<years its:translate="no">2023</years>
+		<years its:translate="no">2023-2024</years>
 	</credit>
 	<license href="http://creativecommons.org/licenses/by/4.0/" its:translate="no"><p>Creative Commons Attribution 4.0 International License</p></license>
 
@@ -25,14 +25,6 @@
 
 <terms>
 	<item>
-		<title>フォーマット変換を無効化</title>
-		<p>有効であれば、Parabolic は他のファイル形式への変換をせず、選択した品質に適した動画/音声のフォーマットでダウンロードします。</p>
-        <p>つまり、メディアをダウンロードする際にファイルフォーマットを選択できなくなります。しかしコンバーターは実行されないため、ダウンロード時間を短縮できます。</p>
-		<note style="advanced">
-			<p>デフォルト: オフ</p>
-		</note>
-    </item>
-	<item>
 		<title>メタデータを埋め込む</title>
 		<p>有効であれば、Parabolic はメディアについての情報（タイトル、ジャンルなど）とサムネイルをファイルにタグ付けします。</p>
         <p>Parabolic は、コメント、説明、概要、PURLフィールドを埋め込みません。</p>
@@ -41,23 +33,13 @@
 		</note>
     </item>
     <item>
-		<title>オーディオサムネイルを整形</title>
-		<p>メタデータを埋め込む設定が有効な時のみ利用可能です。</p>
-		<p>有効であれば、Parabolic は自動的に<code>サムネイルを整形</code>する詳細オプションをオーディオダウンロード時に有効にします。</p>
-		<note style="advanced">
-			<p>デフォルト: オフ</p>
-		</note>
+        <title>字幕を埋め込む</title>
+        <p>無効化されていたり、埋め込みに失敗したら、ダウンロードされた字幕は、別のファイルに保存されます。</p>
+        <note style="advanced">
+            <p>デフォルト: オン</p>
+        </note>
     </item>
     <item>
-		<title>ダウンロード元のデータを削除</title>
-		<p>メタデータを埋め込む設定が有効な時のみ利用可能です。</p>
-		<p>有効であれば、Parabolic はメディアのソースを特定できる URL などのメタデータを削除します。</p>
-        <p>これらのメタデータ欄: <code>comment</code>、<code>description</code>、<code>synopsis</code>、<code>purl</code>、<code>handler_name</code> は初めから埋め込まれません。</p>
-		<note style="advanced">
-			<p>デフォルト: オフ</p>
-		</note>
-    </item>
-	<item>
 		<title>チャプター（章）を埋め込む</title>
 		<p>有効であれば、利用可能であれば、Parabolic はメディアにチャプター（章）をタグ付けします。</p>
 		<note style="advanced">
@@ -65,11 +47,19 @@
 		</note>
 	</item>
     <item>
-        <title>字幕を埋め込む</title>
-        <p>無効化されていたり、埋め込みに失敗したら、ダウンロードされた字幕は、別のファイルに保存されます。</p>
-        <note style="advanced">
-            <p>デフォルト: オン</p>
-        </note>
+		<title>オーディオサムネイルを整形</title>
+		<p>If enabled, Parabolic will crop thumbnails for audio files to be a square resolution.</p>
+		<note style="advanced">
+			<p>デフォルト: オフ</p>
+		</note>
+    </item>
+    <item>
+		<title>ダウンロード元のデータを削除</title>
+		<p>有効であれば、Parabolic はメディアのソースを特定できる URL などのメタデータを削除します。</p>
+        <p>これらのメタデータ欄: <code>comment</code>、<code>description</code>、<code>synopsis</code>、<code>purl</code>、<code>handler_name</code> は初めから埋め込まれません。</p>
+		<note style="advanced">
+			<p>デフォルト: オフ</p>
+		</note>
     </item>
 </terms>
 </page>

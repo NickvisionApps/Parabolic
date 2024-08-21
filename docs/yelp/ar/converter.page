@@ -5,11 +5,11 @@
 	<title type="link">Converter ⚒️</title>
 	<credit type="author copyright">
 		<name>Nicholas Logozzo</name>
-		<years its:translate="no">2023</years>
+		<years its:translate="no">2023-2024</years>
 	</credit>
 	<credit type="publisher copyright">
 		<name>Nicholas Logozzo</name>
-		<years its:translate="no">2023</years>
+		<years its:translate="no">2023-2024</years>
 	</credit>
 	<license href="http://creativecommons.org/licenses/by/4.0/" its:translate="no"><p>Creative Commons Attribution 4.0 International License</p></license>
 </info>
@@ -19,14 +19,6 @@
 
 <terms>
 	<item>
-		<title>Disallow Conversions</title>
-		<p>If enabled, Parabolic will download the appropriate video/audio format for the selected quality without converting to other formats.</p>
-        <p>This means that you will be unable to select a file format when downloading a media. But, you will save time in downloading as the Converter will not be run.</p>
-		<note style="advanced">
-			<p>Default: Off</p>
-		</note>
-    </item>
-	<item>
 		<title>Embed Metadata</title>
 		<p>If enabled, Parabolic will tag a media with its relevant information (title, genre, etc...) and thumbnail if available.</p>
         <p>Parabolic will NOT embed the Comment, Description, Synopsis, and Purl fields.</p>
@@ -35,23 +27,13 @@
 		</note>
     </item>
     <item>
-		<title>قص الصور المصغرة لصوتيات</title>
-		<p>Only available if Embed Metadata is enabled.</p>
-		<p>If enabled, Parabolic will automatically turn on the advanced option <code>Crop Thumbnail</code> for audio downloads.</p>
-		<note style="advanced">
-			<p>Default: Off</p>
-		</note>
+        <title>Embed Subtitles</title>
+        <p>If disabled or if embedding fails, downloaded subtitles will be saved to a separate file.</p>
+        <note style="advanced">
+            <p>Default: On</p>
+        </note>
     </item>
     <item>
-		<title>أزل بيانات المصدر</title>
-		<p>Only available if Embed Metadata is enabled.</p>
-		<p>If enabled, Parabolic will clear metadata fields containing the URL and other identifying information of the media source.</p>
-        <p>Fields that are cleared: <code>comment</code>, <code>description</code>, <code>synopsis</code>, <code>purl</code> and <code>handler_name</code> in each stream.</p>
-		<note style="advanced">
-			<p>Default: Off</p>
-		</note>
-    </item>
-	<item>
 		<title>Embed Chapters</title>
 		<p>If enabled, Parabolic will tag a media with chapter information if available.</p>
 		<note style="advanced">
@@ -59,11 +41,19 @@
 		</note>
 	</item>
     <item>
-        <title>Embed Subtitles</title>
-        <p>If disabled or if embedding fails, downloaded subtitles will be saved to a separate file.</p>
-        <note style="advanced">
-            <p>Default: On</p>
-        </note>
+		<title>قص الصور المصغرة لصوتيات</title>
+		<p>If enabled, Parabolic will crop thumbnails for audio files to be a square resolution.</p>
+		<note style="advanced">
+			<p>Default: Off</p>
+		</note>
+    </item>
+    <item>
+		<title>أزل بيانات المصدر</title>
+		<p>If enabled, Parabolic will clear metadata fields containing the URL and other identifying information of the media source.</p>
+        <p>Fields that are cleared: <code>comment</code>, <code>description</code>, <code>synopsis</code>, <code>purl</code> and <code>handler_name</code> in each stream.</p>
+		<note style="advanced">
+			<p>Default: Off</p>
+		</note>
     </item>
 </terms>
 </page>

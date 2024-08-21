@@ -5,11 +5,11 @@
 	<title type="link">Nedladdare 🌐</title>
 	<credit type="author copyright">
 		<name>Nicholas Logozzo</name>
-		<years its:translate="no">2023</years>
+		<years its:translate="no">2023-2024</years>
 	</credit>
 	<credit type="publisher copyright">
 		<name>Nicholas Logozzo</name>
-		<years its:translate="no">2023</years>
+		<years its:translate="no">2023-2024</years>
 	</credit>
 	<license href="http://creativecommons.org/licenses/by/4.0/" its:translate="no"><p>Creative Commons Attribution 4.0 International License</p></license>
 </info>
@@ -35,21 +35,10 @@
 		</note>
     </item>
     <item>
-        <title>Undertexter Språk</title>
-        <p>En kommaseparerad lista med språkkoder på två bokstäver, två bokstäver med region och tre bokstäver som ska användas när du väljer språk för undertexter att ladda ner. Gäller endast vid nedladdning av en video med undertexter.</p>
-        <note>
-            <p>Olika webbplatser kan använda olika språkkodformat för samma språk. Du kan stöta på en av följande tre typer: två bokstäver, två bokstäver med region eller tre bokstäver. Till exempel, "en", "en-US" och "eng" används alla för engelska. Vänligen ange alla giltiga koder för dina språk för bästa resultat. Auto genererade undertexter kommer också att laddas ner om de är tillgängliga.</p>
-            <p>Du kan ange "alla" istället för att ladda ner alla undertexter, men utan automatiskt genererade.</p>
-        </note>
-        <note style="advanced">
-            <p>Standard: Ditt lands språkkoder. Till exempel, på ett en-US-system skulle standarden vara <code>en,en-US,eng</code></p>
-        </note>
-    </item>
-    <item>
         <title>Inkluderade automatiskt genererade undertexter</title>
         <p>Oavsett om du vill inkludera undertexter eller inte, som är automatiskt översatta för att passa de begärda undertextspråken.</p>
         <note style="advanced">
-            <p>Standard: På</p>
+            <p>Standard: Av</p>
         </note>
     </item>
     <item>
@@ -87,16 +76,10 @@
         <p>URL till proxyservern som ska användas.</p>
     </item>
     <item>
-        <title>Cookies fil</title>
-        <p>En .txt-fil med cookies som ska skickas till yt-dlp vid nedladdning. Detta kan vara användbart när du laddar ner media som kräver inloggning, till exempel: privata YouTube-videor.</p>
-        <p>Använd ett av följande tillägg för att hämta en cookies fil från din webbläsare:</p>
-        <p>Chrome: <code>https://chrome.google.com/webstore/detail/get-cookiestxt-locally/cclelndahbckbenkjhflpdbgdldlbecc</code></p>
-        <p>Firefox: <code>https://addons.mozilla.org/sv-SE/firefox/addon/cookies-txt/</code></p>
-        <note>
-            <p>Använd dessa tillägg på egen risk.</p>
-        </note>
+        <title>Cookies from Browser</title>
+        <p>A browser in which to read cookies from and pass to yt-dlp's download engine.</p>
 		<note style="advanced">
-			<p>Standard: Ingen fil har valts</p>
+			<p>Default: None</p>
 		</note>
     </item>
     <item>

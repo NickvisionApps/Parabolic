@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2024-08-07 23:19-0400\n"
+"POT-Creation-Date: 2024-08-21 10:13+0200\n"
 "PO-Revision-Date: 2024-02-15 17:02+0000\n"
 "Last-Translator: Kinten Le <kinten108101@protonmail.com>\n"
 "Language-Team: Vietnamese <https://hosted.weblate.org/projects/nickvision-"
@@ -47,115 +47,88 @@ msgstr ""
 
 #. (itstool) path: item/title
 #: docs/yelp/C/converter.page:25
-msgid "Disallow Conversions"
-msgstr "Không cho phép chuyển đổi"
-
-#. (itstool) path: item/p
-#: docs/yelp/C/converter.page:26
-msgid ""
-"If enabled, Parabolic will download the appropriate video/audio format for "
-"the selected quality without converting to other formats."
-msgstr ""
-
-#. (itstool) path: item/p
-#: docs/yelp/C/converter.page:27
-msgid ""
-"This means that you will be unable to select a file format when downloading "
-"a media. But, you will save time in downloading as the Converter will not be "
-"run."
-msgstr ""
-
-#. (itstool) path: note/p
-#: docs/yelp/C/converter.page:29 docs/yelp/C/converter.page:45
-#: docs/yelp/C/converter.page:54 docs/yelp/C/converter.page:61
-#: docs/yelp/C/downloader.page:66 docs/yelp/C/downloader.page:120
-msgid "Default: Off"
-msgstr ""
-
-#. (itstool) path: item/title
-#: docs/yelp/C/converter.page:33
 msgid "Embed Metadata"
 msgstr "Nhúng siêu dữ liệu"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/converter.page:34
+#: docs/yelp/C/converter.page:26
 msgid ""
 "If enabled, Parabolic will tag a media with its relevant information (title, "
 "genre, etc...) and thumbnail if available."
 msgstr ""
 
 #. (itstool) path: item/p
-#: docs/yelp/C/converter.page:35
+#: docs/yelp/C/converter.page:27
 msgid ""
 "Parabolic will NOT embed the Comment, Description, Synopsis, and Purl fields."
 msgstr ""
 
 #. (itstool) path: note/p
-#: docs/yelp/C/converter.page:37 docs/yelp/C/converter.page:68
-#: docs/yelp/C/downloader.page:31 docs/yelp/C/downloader.page:59
+#: docs/yelp/C/converter.page:29 docs/yelp/C/converter.page:36
+#: docs/yelp/C/downloader.page:31
 msgid "Default: On"
 msgstr ""
 
 #. (itstool) path: item/title
+#: docs/yelp/C/converter.page:33
+msgid "Embed Subtitles"
+msgstr "Nhúng phụ đề"
+
+#. (itstool) path: item/p
+#: docs/yelp/C/converter.page:34
+msgid ""
+"If disabled or if embedding fails, downloaded subtitles will be saved to a "
+"separate file."
+msgstr ""
+
+#. (itstool) path: item/title
+#: docs/yelp/C/converter.page:40
+msgid "Embed Chapters"
+msgstr "Nhúng chương"
+
+#. (itstool) path: item/p
 #: docs/yelp/C/converter.page:41
+msgid ""
+"If enabled, Parabolic will tag a media with chapter information if available."
+msgstr ""
+
+#. (itstool) path: note/p
+#: docs/yelp/C/converter.page:43 docs/yelp/C/converter.page:50
+#: docs/yelp/C/converter.page:58 docs/yelp/C/downloader.page:46
+#: docs/yelp/C/downloader.page:53 docs/yelp/C/downloader.page:101
+msgid "Default: Off"
+msgstr ""
+
+#. (itstool) path: item/title
+#: docs/yelp/C/converter.page:47
 msgid "Crop Audio Thumbnails"
 msgstr "Cắt thumbnail của audio"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/converter.page:42 docs/yelp/C/converter.page:50
-msgid "Only available if Embed Metadata is enabled."
-msgstr "Chỉ khả dụng nếu lựa chọn \"nhúng siêu dữ liệu\" được bật."
-
-#. (itstool) path: item/p
-#: docs/yelp/C/converter.page:43
+#: docs/yelp/C/converter.page:48
 msgid ""
-"If enabled, Parabolic will automatically turn on the advanced option "
-"<code>Crop Thumbnail</code> for audio downloads."
+"If enabled, Parabolic will crop thumbnails for audio files to be a square "
+"resolution."
 msgstr ""
-"Nếu bật, Parabolic sẽ tự động bật lựa chọn <code>cắt thumbnail</code> khi "
-"tải audio."
 
 #. (itstool) path: item/title
-#: docs/yelp/C/converter.page:49
+#: docs/yelp/C/converter.page:54
 msgid "Remove Source Data"
 msgstr "Xóa dữ liệu nguồn"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/converter.page:51
+#: docs/yelp/C/converter.page:55
 msgid ""
 "If enabled, Parabolic will clear metadata fields containing the URL and "
 "other identifying information of the media source."
 msgstr ""
 
 #. (itstool) path: item/p
-#: docs/yelp/C/converter.page:52
+#: docs/yelp/C/converter.page:56
 msgid ""
 "Fields that are cleared: <code>comment</code>, <code>description</code>, "
 "<code>synopsis</code>, <code>purl</code> and <code>handler_name</code> in "
 "each stream."
-msgstr ""
-
-#. (itstool) path: item/title
-#: docs/yelp/C/converter.page:58
-msgid "Embed Chapters"
-msgstr "Nhúng chương"
-
-#. (itstool) path: item/p
-#: docs/yelp/C/converter.page:59
-msgid ""
-"If enabled, Parabolic will tag a media with chapter information if available."
-msgstr ""
-
-#. (itstool) path: item/title
-#: docs/yelp/C/converter.page:65
-msgid "Embed Subtitles"
-msgstr "Nhúng phụ đề"
-
-#. (itstool) path: item/p
-#: docs/yelp/C/converter.page:66
-msgid ""
-"If disabled or if embedding fails, downloaded subtitles will be saved to a "
-"separate file."
 msgstr ""
 
 #. (itstool) path: info/title
@@ -220,61 +193,23 @@ msgstr ""
 
 #. (itstool) path: item/title
 #: docs/yelp/C/downloader.page:43
-msgid "Subtitles Languages"
-msgstr ""
-
-#. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:44
-msgid ""
-"A comma-separated list of two-letter, two-letter with region, and three-"
-"letter language codes to use when selecting languages of subtitles to "
-"download. Only applies when downloading a video with subtitles."
-msgstr ""
-
-#. (itstool) path: note/p
-#: docs/yelp/C/downloader.page:46
-msgid ""
-"Different sites can use different language code formats for the same "
-"language. You may encounter one of the following three types: two-letter, "
-"two-letter with region, or three-letter. For example, \"en\", \"en-US\" and "
-"\"eng\" are all used for English. Please specify all valid codes for your "
-"languages for the best results. Auto-generated subtitles will also be "
-"downloaded if available."
-msgstr ""
-
-#. (itstool) path: note/p
-#: docs/yelp/C/downloader.page:47
-msgid ""
-"You can specify \"all\" instead to download all subtitles, but without auto-"
-"generated ones."
-msgstr ""
-
-#. (itstool) path: note/p
-#: docs/yelp/C/downloader.page:50
-msgid ""
-"Default: Your culture's language codes. For example, on an en-US system the "
-"default would be <code>en,en-US,eng</code>"
-msgstr ""
-
-#. (itstool) path: item/title
-#: docs/yelp/C/downloader.page:56
 msgid "Included Auto-Generated Subtitles"
 msgstr ""
 
 #. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:57
+#: docs/yelp/C/downloader.page:44
 msgid ""
 "Whether or not to included subtitles that are auto-translated to fit the "
 "requested subtitle languages."
 msgstr ""
 
 #. (itstool) path: item/title
-#: docs/yelp/C/downloader.page:63
+#: docs/yelp/C/downloader.page:50
 msgid "Use aria2"
 msgstr "Sử dụng aria2"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:64
+#: docs/yelp/C/downloader.page:51
 msgid ""
 "If enabled, Parabolic will use aria2c to download media. Although using "
 "aria2c can improve download speed, download progress will not be displayed "
@@ -282,60 +217,60 @@ msgid ""
 msgstr ""
 
 #. (itstool) path: item/title
-#: docs/yelp/C/downloader.page:70
+#: docs/yelp/C/downloader.page:57
 msgid "Maximum Connections Per Server"
 msgstr ""
 
 #. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:71
+#: docs/yelp/C/downloader.page:58
 msgid ""
 "This option only applies when using aria2 is enabled. This option is the "
 "same as the <code>-x</code> flag passed to aria2c."
 msgstr ""
 
 #. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:74
+#: docs/yelp/C/downloader.page:61
 msgid ""
 "The maximum number of connection that can be used per server. Must be an "
 "integer value between 1 and 32."
 msgstr ""
 
 #. (itstool) path: note/p
-#: docs/yelp/C/downloader.page:76
+#: docs/yelp/C/downloader.page:63
 msgid "Default: 16"
 msgstr ""
 
 #. (itstool) path: item/title
-#: docs/yelp/C/downloader.page:80
+#: docs/yelp/C/downloader.page:67
 msgid "Minimum Split Size"
 msgstr ""
 
 #. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:81
+#: docs/yelp/C/downloader.page:68
 msgid ""
 "This option only applies when using aria2 is enabled. This option is the "
 "same as the <code>-k</code> flag passed to aria2c."
 msgstr ""
 
 #. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:84
+#: docs/yelp/C/downloader.page:71
 msgid ""
 "The minimum size, in MiB, of which to split a file. Must be an integer value "
 "between 1 and 1024."
 msgstr ""
 
 #. (itstool) path: note/p
-#: docs/yelp/C/downloader.page:86
+#: docs/yelp/C/downloader.page:73
 msgid "Default: 20"
 msgstr ""
 
 #. (itstool) path: item/title
-#: docs/yelp/C/downloader.page:90 docs/yelp/C/newDownload.page:72
+#: docs/yelp/C/downloader.page:77 docs/yelp/C/newDownload.page:110
 msgid "Speed Limit"
 msgstr "Giới hạn tốc độ"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:91
+#: docs/yelp/C/downloader.page:78
 msgid ""
 "A limit, in Ki/s, that is applied to downloads only if they have the "
 "advanced option <code>Speed Limit</code> enabled. Must be an integer value "
@@ -343,78 +278,50 @@ msgid ""
 msgstr ""
 
 #. (itstool) path: note/p
-#: docs/yelp/C/downloader.page:93
+#: docs/yelp/C/downloader.page:80
 msgid "Default: 1024"
 msgstr ""
 
 #. (itstool) path: item/title
-#: docs/yelp/C/downloader.page:97
+#: docs/yelp/C/downloader.page:84
 msgid "Proxy URL"
 msgstr "URL của proxy"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:98
+#: docs/yelp/C/downloader.page:85
 msgid "The url of the proxy server to use."
 msgstr ""
 
 #. (itstool) path: item/title
-#: docs/yelp/C/downloader.page:101
-msgid "Cookies File"
-msgstr "Tệp cookie"
-
-#. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:102
-msgid ""
-"A .txt file of cookies to pass to yt-dlp when downloading. This may be "
-"useful when downloading media that requires a login, for example: private "
-"YouTube videos."
+#: docs/yelp/C/downloader.page:88
+msgid "Cookies from Browser"
 msgstr ""
 
 #. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:103
+#: docs/yelp/C/downloader.page:89
 msgid ""
-"Use one of the following extensions for getting a cookies file from your "
-"browser:"
-msgstr ""
-
-#. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:104
-msgid ""
-"Chrome: <code>https://chrome.google.com/webstore/detail/get-cookiestxt-"
-"locally/cclelndahbckbenkjhflpdbgdldlbecc</code>"
-msgstr ""
-
-#. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:105
-msgid ""
-"Firefox: <code>https://addons.mozilla.org/en-US/firefox/addon/cookies-txt/</"
-"code>"
+"A browser in which to read cookies from and pass to yt-dlp's download engine."
 msgstr ""
 
 #. (itstool) path: note/p
-#: docs/yelp/C/downloader.page:107
-msgid "Use these extensions at your own risk."
-msgstr ""
-
-#. (itstool) path: note/p
-#: docs/yelp/C/downloader.page:110
-msgid "Default: No File Selected"
+#: docs/yelp/C/downloader.page:91
+msgid "Default: None"
 msgstr ""
 
 #. (itstool) path: item/title
-#: docs/yelp/C/downloader.page:114
+#: docs/yelp/C/downloader.page:95
 msgid "Use SponsorBlock for YouTube"
 msgstr "Sử dụng SponsorBlock đối với YouTube"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:115
+#: docs/yelp/C/downloader.page:96
 msgid ""
 "If enabled, Parabolic will apply the SponsorBlock extension to YouTube "
 "downloads."
 msgstr ""
 
 #. (itstool) path: note/p
-#: docs/yelp/C/downloader.page:117
+#: docs/yelp/C/downloader.page:98
 msgid ""
 "SponsorBlock only works on YouTube videos. However, leaving this setting on "
 "will not affect downloads from other sites (i.e. not cause them to fail)."
@@ -488,8 +395,7 @@ msgstr ""
 
 #. (itstool) path: section/p
 #: docs/yelp/C/keyring.page:24
-msgid ""
-"The Keyring feature is backed by the <code>Nickvision.Aura</code> library."
+msgid "The Keyring feature is backed by the <code>libnick</code> library."
 msgstr ""
 
 #. (itstool) path: section/p
@@ -504,7 +410,7 @@ msgstr ""
 msgid ""
 "The library will use you system's credential manager (i.e. DBus secret "
 "service on Linux and Windows Credential Manager on Windows) for securing the "
-"Keyring."
+"Keyring database file."
 msgstr ""
 
 #. (itstool) path: section/title
@@ -539,84 +445,6 @@ msgstr ""
 msgid ""
 "<code>Password</code> (optional if username is not empty): The password of "
 "the credential"
-msgstr ""
-
-#. (itstool) path: section/title
-#: docs/yelp/C/keyring.page:37
-msgid "Migrating from Password-Secured Keyring to Secret-Secured Keyring"
-msgstr ""
-
-#. (itstool) path: section/p
-#: docs/yelp/C/keyring.page:38
-msgid ""
-"This section applies to users who have enabled a Keyring in Parabolic (in "
-"versions before V2023.9.0) and secured it with a password. Starting with "
-"version 2023.9.0, Parabolic uses the system's credential manager to generate "
-"a random password (secret) to secure the Keyring instead of asking for a "
-"user to provide one. By using the system credential manager, Parabolic can "
-"also automatically unlock the Keyring at startup without user interaction."
-msgstr ""
-
-#. (itstool) path: section/p
-#: docs/yelp/C/keyring.page:39
-msgid ""
-"If you have a password-secured Keyring from before version 2023.9.0, you can "
-"continue to use it in new versions of Parabolic without issue, but you will "
-"still need to provide the password everytime the application starts."
-msgstr ""
-
-#. (itstool) path: section/p
-#: docs/yelp/C/keyring.page:40
-msgid ""
-"Follow the rest of this section if you'd like to migrate your existing "
-"credentials and take advantage of the new Keyring where a password is not "
-"required every time."
-msgstr ""
-
-#. (itstool) path: note/p
-#: docs/yelp/C/keyring.page:42
-msgid ""
-"You can simply disable the old password-secured Keyring when you update "
-"Parabolic to 2023.9.0 and re-enable the Keyring to get a secret-secured one. "
-"However, this will erase all data from the old Keyring and require you to re-"
-"enter all credentials."
-msgstr ""
-
-#. (itstool) path: item/p
-#: docs/yelp/C/keyring.page:45
-msgid ""
-"Install <link href=\"https://flathub.org/apps/org.gnome.seahorse."
-"Application\">Passwords and Keys</link>."
-msgstr ""
-
-#. (itstool) path: item/p
-#: docs/yelp/C/keyring.page:46
-msgid ""
-"Open Parabolic V2023.9.0 or newer at least once. (This will ensure that the "
-"app registers with your system's credential manager)"
-msgstr ""
-
-#. (itstool) path: item/p
-#: docs/yelp/C/keyring.page:47
-msgid ""
-"Open <code>Passwords and Keys</code> and locate the <code>org.nickvision."
-"tubeconverter</code> entry in the <code>Default Keyring</code>."
-msgstr ""
-
-#. (itstool) path: item/p
-#: docs/yelp/C/keyring.page:48
-msgid ""
-"Double click the <code>org.nickvision.tubeconverter</code> entry and edit "
-"the <code>Password</code> field. Enter the password that you created and "
-"used for your Keyring in Parabolic."
-msgstr ""
-
-#. (itstool) path: item/p
-#: docs/yelp/C/keyring.page:49
-msgid ""
-"You can now close <code>Passwords and Keys</code> and restart Parabolic. You "
-"will see that upon application startup, the Keyring will now be "
-"automatically unlocked!"
 msgstr ""
 
 #. (itstool) path: info/title
@@ -671,9 +499,8 @@ msgstr ""
 #. (itstool) path: item/p
 #: docs/yelp/C/newDownload.page:34
 msgid ""
-"If keyring is enabled, the user will be asked to chose from a list of named "
-"credentials or can chose to enter manually a different username and/or "
-"password."
+"If credentials are found in the keyring, the user can instead chose from a "
+"list of named credentials to use (or continue to manually enter a credential)"
 msgstr ""
 
 #. (itstool) path: note/p
@@ -687,7 +514,7 @@ msgstr ""
 #: docs/yelp/C/newDownload.page:37
 msgid ""
 "For these sites that don't support passing credentials, it is recommended to "
-"upload a Cookies file in Preferences instead."
+"select a browser to use cookies from in Preferences instead."
 msgstr ""
 
 #. (itstool) path: item/title
@@ -727,10 +554,10 @@ msgid ""
 msgstr ""
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:51 docs/yelp/C/newDownload.page:66
+#: docs/yelp/C/newDownload.page:51
 msgid ""
 "If the file type is an audio type, the listed qualities will be simply "
-"<code>Best</code> and <code>Worst</code>."
+"<code>Best</code>, <code>Good</code>, and <code>Worst</code>."
 msgstr ""
 
 #. (itstool) path: note/p
@@ -742,138 +569,157 @@ msgstr ""
 
 #. (itstool) path: item/title
 #: docs/yelp/C/newDownload.page:57
-msgid "Download Subtitle"
+msgid "Audio Language"
 msgstr ""
 
 #. (itstool) path: item/p
 #: docs/yelp/C/newDownload.page:58
+msgid "The language of which to use from the audio part of a media download."
+msgstr ""
+
+#. (itstool) path: item/p
+#: docs/yelp/C/newDownload.page:59
 msgid ""
-"Whether to download and embed subtitle when downloading a video. Languages "
-"for subtitles can be defined in <link xref=\"downloader\">preferences</link>."
+"If no additional languages are available, <code>Default</code> will be the "
+"only option."
 msgstr ""
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:60
+#: docs/yelp/C/newDownload.page:61 docs/yelp/C/newDownload.page:68
+#: docs/yelp/C/newDownload.page:75 docs/yelp/C/newDownload.page:82
 msgid ""
 "The previously used state will be remembered and pre-selected for the next "
 "download."
 msgstr ""
 
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:64
+#: docs/yelp/C/newDownload.page:65
+msgid "Download Subtitle"
+msgstr ""
+
+#. (itstool) path: item/p
+#: docs/yelp/C/newDownload.page:66
+msgid ""
+"Whether to download and embed subtitle when downloading a video. Further "
+"subtitle settings can be configured in <link "
+"xref=\"downloader\">preferences</link>."
+msgstr ""
+
+#. (itstool) path: item/title
+#: docs/yelp/C/newDownload.page:72
+msgid "Prefer AV1 Codec"
+msgstr "Ưu tiên codec AV1"
+
+#. (itstool) path: item/p
+#: docs/yelp/C/newDownload.page:73
+msgid ""
+"If enabled, Parabolic will prefer videos with the av1 codec when downloading."
+msgstr ""
+
+#. (itstool) path: item/title
+#: docs/yelp/C/newDownload.page:79
+msgid "Split Chapters"
+msgstr "Tách chương"
+
+#. (itstool) path: item/p
+#: docs/yelp/C/newDownload.page:80
+msgid ""
+"If enabled, Parabolic will split a video download into multiple smaller "
+"files based on its chapters."
+msgstr ""
+
+#. (itstool) path: item/title
+#: docs/yelp/C/newDownload.page:86
 msgid "Save Folder"
 msgstr "Thư mục lưu"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:65
+#: docs/yelp/C/newDownload.page:87
 msgid "The folder at which to save the download to."
 msgstr ""
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:68
+#: docs/yelp/C/newDownload.page:89
 msgid ""
 "The previously used folder will be remembered and pre-selected for the next "
 "download."
 msgstr ""
 
-#. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:73
-msgid ""
-"If enabled, Parabolic will limit the download's speed with the speed "
-"configured in Preferences."
-msgstr ""
-
-#. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:75 docs/yelp/C/newDownload.page:83
-#: docs/yelp/C/newDownload.page:93 docs/yelp/C/newDownload.page:101
-#: docs/yelp/C/newDownload.page:108
-msgid "Available in the <code>Advanced Options</code> section."
-msgstr ""
-
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:79
-msgid "Prefer AV1 Codec"
-msgstr "Ưu tiên codec AV1"
-
-#. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:80
-msgid "Only available for video (mp4, webm) downloads"
-msgstr ""
-
-#. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:81
-msgid ""
-"If enabled, Parabolic will prefer videos with the av1 codec when downloading."
-msgstr ""
-
-#. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:86
-msgid ""
-"This option's state will be remembered and restored for future downloads."
-msgstr ""
-"Lựa chọn này sẽ được ghi nhớ và khôi phục lại cho các lượt tải trong tương "
-"lai."
-
-#. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:90
-msgid "Split Chapters"
-msgstr "Tách chương"
-
-#. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:91
-msgid ""
-"If enabled, Parabolic will split the video into multiple smaller ones based "
-"on its chapters."
-msgstr ""
-
-#. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:97
-msgid "Crop Thumbnail"
-msgstr "Cắt thumbnail"
-
-#. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:98
-msgid ""
-"Only available if <code>Embed Metadata</code> is enabled in Preferences."
-msgstr ""
-
-#. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:99
-msgid ""
-"If enabled, Parabolic will crop a download's embedded thumbnail as square. "
-"This is useful when downloading music who's album images are usually square."
-msgstr ""
-
-#. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:105
-msgid "Download Specific Timeframe"
-msgstr "Tải trong khung thời gian cụ thể"
-
-#. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:106
-msgid ""
-"If enabled, the user will be able to enter a start timeframe and an end "
-"timeframe for a section of the media to download."
-msgstr ""
-
-#. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:111
-msgid ""
-"Enabling this option will disable the use of aria2 as the downloader for "
-"this download if it is enabled in Preferences."
-msgstr ""
-
-#. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:115
+#: docs/yelp/C/newDownload.page:93
 msgid "File Name"
 msgstr "Tên tệp"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:116
+#: docs/yelp/C/newDownload.page:94
 msgid "The file name to use when saving the download."
 msgstr ""
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:118
+#: docs/yelp/C/newDownload.page:96
 msgid "Default: The title of the media"
 msgstr ""
+
+#. (itstool) path: item/title
+#: docs/yelp/C/newDownload.page:100
+msgid "Time Frame"
+msgstr ""
+
+#. (itstool) path: item/p
+#: docs/yelp/C/newDownload.page:101
+msgid ""
+"The user can enter a start time frame and an end time frame to download a "
+"specific section of the media."
+msgstr ""
+
+#. (itstool) path: note/p
+#: docs/yelp/C/newDownload.page:103
+msgid "Default: The whole media length"
+msgstr ""
+
+#. (itstool) path: note/p
+#: docs/yelp/C/newDownload.page:106
+msgid ""
+"Enabling this option will disable the use of aria2 as the downloader for "
+"this download, even if it is enabled in Preferences."
+msgstr ""
+
+#. (itstool) path: item/p
+#: docs/yelp/C/newDownload.page:111
+msgid ""
+"If enabled, Parabolic will limit the download's speed with the speed "
+"configured in <link xref=\"downloader\">Preferences</link>."
+msgstr ""
+
+#. (itstool) path: note/p
+#: docs/yelp/C/newDownload.page:113
+msgid "Available in the <code>Advanced Options</code> section."
+msgstr ""
+
+#~ msgid "Disallow Conversions"
+#~ msgstr "Không cho phép chuyển đổi"
+
+#~ msgid "Only available if Embed Metadata is enabled."
+#~ msgstr "Chỉ khả dụng nếu lựa chọn \"nhúng siêu dữ liệu\" được bật."
+
+#~ msgid ""
+#~ "If enabled, Parabolic will automatically turn on the advanced option "
+#~ "<code>Crop Thumbnail</code> for audio downloads."
+#~ msgstr ""
+#~ "Nếu bật, Parabolic sẽ tự động bật lựa chọn <code>cắt thumbnail</code> khi "
+#~ "tải audio."
+
+#~ msgid "Cookies File"
+#~ msgstr "Tệp cookie"
+
+#~ msgid ""
+#~ "This option's state will be remembered and restored for future downloads."
+#~ msgstr ""
+#~ "Lựa chọn này sẽ được ghi nhớ và khôi phục lại cho các lượt tải trong "
+#~ "tương lai."
+
+#~ msgid "Crop Thumbnail"
+#~ msgstr "Cắt thumbnail"
+
+#~ msgid "Download Specific Timeframe"
+#~ msgstr "Tải trong khung thời gian cụ thể"

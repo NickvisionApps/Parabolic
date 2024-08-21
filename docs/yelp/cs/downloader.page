@@ -5,11 +5,11 @@
 	<title type="link">Stahování 🌐</title>
 	<credit type="author copyright">
 		<name>Nicholas Logozzo</name>
-		<years its:translate="no">2023</years>
+		<years its:translate="no">2023-2024</years>
 	</credit>
 	<credit type="publisher copyright">
 		<name>Nicholas Logozzo</name>
-		<years its:translate="no">2023</years>
+		<years its:translate="no">2023-2024</years>
 	</credit>
 	<license href="http://creativecommons.org/licenses/by/4.0/" its:translate="no"><p>Creative Commons Attribution 4.0 International License</p></license>
 
@@ -41,21 +41,10 @@
 		</note>
     </item>
     <item>
-        <title>Jazyky titulků</title>
-        <p>Seznam dvoupísmenných, dvoupísmenných s čárkou a třípísmenných jazykových kódů oddělených čárkou, které se použijí při výběru jazyků titulků ke stažení. Použije se pouze při stahování videa s titulky.</p>
-        <note>
-            <p>Různé stránky používají různé formáty jazykových kódů pro stejný jazyk. Můžete se setkat s jedním z následujících tří typů: dvoupísmenný, dvoupísmenný s oblastí nebo třípísmenný. Pro angličtinu může být například použito „en“, „en-US“ a „eng“. Pro nejlepší výsledky zadejte všechny platné kódy vašich jazyků. Pokud jsou dostupné, budou staženy i automaticky vygenerované titulky.</p>
-            <p>Pro stažení všech titulků (mimo automaticky generovaných) můžete také zadat „all“.</p>
-        </note>
-        <note style="advanced">
-            <p>Výchozí: jazykové kódy vaší kultury. Například na americkém (en-US) systému budou výchozí kódy <code>en,en-US,eng</code></p>
-        </note>
-    </item>
-    <item>
         <title>Zahrnout automaticky generované titulky</title>
         <p>Zda do požadovaných jazyků titulků zahrnout i automaticky přeložené titulky.</p>
         <note style="advanced">
-            <p>Výchozí: zapnuto</p>
+            <p>Výchozí: vypnuto</p>
         </note>
     </item>
     <item>
@@ -93,16 +82,10 @@
         <p>Adresa URL proxy serveru, který se má použít.</p>
     </item>
     <item>
-        <title>Soubor cookies</title>
-        <p>Soubor .txt se soubory cookie, který se při stahování předá programu yt-dlp. To může být užitečné při stahování médií, která vyžadují přihlášení, například soukromá videa na YouTube.</p>
-        <p>Pro získání cookies použijte jeden z následujících rozšíření prohlížeče:</p>
-        <p>Chrome: <code>https://chrome.google.com/webstore/detail/get-cookiestxt-locally/cclelndahbckbenkjhflpdbgdldlbecc</code></p>
-        <p>Firefox: <code>https://addons.mozilla.org/en-US/firefox/addon/cookies-txt/</code></p>
-        <note>
-            <p>Tato rozšíření používáte na vlastní nebezpečí.</p>
-        </note>
+        <title>Cookies from Browser</title>
+        <p>A browser in which to read cookies from and pass to yt-dlp's download engine.</p>
 		<note style="advanced">
-			<p>Výchozí: žádný vybraný soubor</p>
+			<p>Default: None</p>
 		</note>
     </item>
     <item>

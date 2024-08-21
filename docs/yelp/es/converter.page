@@ -5,11 +5,11 @@
 	<title type="link">Conversor ⚒️</title>
 	<credit type="author copyright">
 		<name>Nicholas Logozzo</name>
-		<years its:translate="no">2023</years>
+		<years its:translate="no">2023-2024</years>
 	</credit>
 	<credit type="publisher copyright">
 		<name>Nicholas Logozzo</name>
-		<years its:translate="no">2023</years>
+		<years its:translate="no">2023-2024</years>
 	</credit>
 	<license href="http://creativecommons.org/licenses/by/4.0/" its:translate="no"><p>Creative Commons Attribution 4.0 International License</p></license>
 
@@ -25,14 +25,6 @@
 
 <terms>
 	<item>
-		<title>No permitir conversiones</title>
-		<p>Si está activada, Parabolic descargará el formato de vídeo/audio apropiado para la calidad seleccionada sin convertir a otros formatos.</p>
-        <p>Esto significa que no podrá seleccionar un formato de archivo al descargar un medio. Sin embargo, ahorrará tiempo en la descarga, ya que no se ejecutará el conversor.</p>
-		<note style="advanced">
-			<p>Predeterminado: Apagado</p>
-		</note>
-    </item>
-	<item>
 		<title>Incrustar metadatos</title>
 		<p>Si está activada, Parabolic etiquetará un medio con su información relevante (título, género, etc...) y una miniatura si está disponible.</p>
         <p>Parabolic NO incrustará los campos comentario, descripción, sinopsis y purl.</p>
@@ -41,23 +33,13 @@
 		</note>
     </item>
     <item>
-		<title>Recortar miniaturas de audio</title>
-		<p>Sólo disponible si está activada la opción Incrustar metadatos.</p>
-		<p>Si está activada, Parabolic activará automáticamente la opción avanzada <code>Recortar miniatura</code> para las descargas de audio.</p>
-		<note style="advanced">
-			<p>Predeterminado: Apagado</p>
-		</note>
+        <title>Incrustar los subtítulos</title>
+        <p>Si se desactiva o si falla la incrustación, los subtítulos descargados se guardarán en un archivo aparte.</p>
+        <note style="advanced">
+            <p>Predeterminado: Encendido</p>
+        </note>
     </item>
     <item>
-		<title>Eliminar los datos de origen</title>
-		<p>Sólo disponible si está activada la opción Incrustar metadatos.</p>
-		<p>Si se activa, Parabolic borrará los campos de los metadatos que contienen una dirección URL y otra información de identificación de la fuente multimedia.</p>
-        <p>Campos que se borran: <code>comment</code>, <code>description</code>, <code>synopsis</code>, <code>purl</code> y <code>handler_name</code> en cada transmisión.</p>
-		<note style="advanced">
-			<p>Predeterminado: Apagado</p>
-		</note>
-    </item>
-	<item>
 		<title>Incrustar capítulos</title>
 		<p>Si está activada, Parabolic etiquetará un multimedia con la información del capítulo si está disponible.</p>
 		<note style="advanced">
@@ -65,11 +47,19 @@
 		</note>
 	</item>
     <item>
-        <title>Incrustar los subtítulos</title>
-        <p>Si se desactiva o si falla la incrustación, los subtítulos descargados se guardarán en un archivo aparte.</p>
-        <note style="advanced">
-            <p>Predeterminado: Encendido</p>
-        </note>
+		<title>Recortar miniaturas de audio</title>
+		<p>If enabled, Parabolic will crop thumbnails for audio files to be a square resolution.</p>
+		<note style="advanced">
+			<p>Predeterminado: Apagado</p>
+		</note>
+    </item>
+    <item>
+		<title>Eliminar los datos de origen</title>
+		<p>Si se activa, Parabolic borrará los campos de los metadatos que contienen una dirección URL y otra información de identificación de la fuente multimedia.</p>
+        <p>Campos que se borran: <code>comment</code>, <code>description</code>, <code>synopsis</code>, <code>purl</code> y <code>handler_name</code> en cada transmisión.</p>
+		<note style="advanced">
+			<p>Predeterminado: Apagado</p>
+		</note>
     </item>
 </terms>
 </page>

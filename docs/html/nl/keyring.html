@@ -21,9 +21,9 @@ document.addEventListener('DOMContentLoaded', function() {
 <section id=""><div class="inner">
 <div class="hgroup pagewide"><h2 class="title"><span class="title">Back-end</span></h2></div>
 <div class="region"><div class="contents pagewide">
-<p class="p">The Keyring feature is backed by the <span class="code">Nickvision.Aura</span> library.</p>
+<p class="p">The Keyring feature is backed by the <span class="code">libnick</span> library.</p>
 <p class="p">This library uses SQLCipher to securely store credentials in a platform independent manner.</p>
-<p class="p">The library will use you system's credential manager (i.e. DBus secret service on Linux and Windows Credential Manager on Windows) for securing the Keyring.</p>
+<p class="p">The library will use you system's credential manager (i.e. DBus secret service on Linux and Windows Credential Manager on Windows) for securing the Keyring database file.</p>
 </div></div>
 </div></section><section id=""><div class="inner">
 <div class="hgroup pagewide"><h2 class="title"><span class="title">Inloggegevens opslaan</span></h2></div>
@@ -33,28 +33,6 @@ document.addEventListener('DOMContentLoaded', function() {
 <p class="p"><span class="code">URL</span> (optional): The URL of the credential</p>
 <p class="p"><span class="code">Username</span> (optional if password is not empty): The username of the credential</p>
 <p class="p"><span class="code">Password</span> (optional if username is not empty): The password of the credential</p>
-</div></div>
-</div></section><section id=""><div class="inner">
-<div class="hgroup pagewide"><h2 class="title"><span class="title">Migrating from Password-Secured Keyring to Secret-Secured Keyring</span></h2></div>
-<div class="region"><div class="contents pagewide">
-<p class="p">This section applies to users who have enabled a Keyring in Parabolic (in versions before V2023.9.0) and secured it with a password. Starting with version 2023.9.0, Parabolic uses the system's credential manager to generate a random password (secret) to secure the Keyring instead of asking for a user to provide one. By using the system credential manager, Parabolic can also automatically unlock the Keyring at startup without user interaction.</p>
-<p class="p">If you have a password-secured Keyring from before version 2023.9.0, you can continue to use it in new versions of Parabolic without issue, but you will still need to provide the password everytime the application starts.</p>
-<p class="p">Follow the rest of this section if you'd like to migrate your existing credentials and take advantage of the new Keyring where a password is not required every time.</p>
-<div class="note" title="Opmerking">
-<svg height="24" width="24" version="1.1">
- <g>
-  <path class="yelp-svg-fill" d="m4 3h16c0.554 0 1 0.446 1 1v11h-6v6h-11c-0.554 0-1-0.446-1-1v-16c0-0.554 0.446-1 1-1z"></path>
-  <path class="yelp-svg-fill" d="m17 16h4l-5 5v-4c0-0.554 0.446-1 1-1z"></path>
- </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">You can simply disable the old password-secured Keyring when you update Parabolic to 2023.9.0 and re-enable the Keyring to get a secret-secured one. However, this will erase all data from the old Keyring and require you to re-enter all credentials.</p></div></div></div>
-</div>
-<div class="steps"><div class="inner"><div class="region"><ol class="steps">
-<li class="steps"><p class="p">Installeer <span class="link"><a href="https://flathub.org/nl/apps/org.gnome.seahorse.Application" title="https://flathub.org/nl/apps/org.gnome.seahorse.Application">Wachtwoorden en sleutels</a></span>.</p></li>
-<li class="steps"><p class="p">Open Parabolic V2023.9.0 or newer at least once. (This will ensure that the app registers with your system's credential manager)</p></li>
-<li class="steps"><p class="p">Open <span class="code">Passwords and Keys</span> and locate the <span class="code">org.nickvision.tubeconverter</span> entry in the <span class="code">Default Keyring</span>.</p></li>
-<li class="steps"><p class="p">Double click the <span class="code">org.nickvision.tubeconverter</span> entry and edit the <span class="code">Password</span> field. Enter the password that you created and used for your Keyring in Parabolic.</p></li>
-<li class="steps"><p class="p">You can now close <span class="code">Passwords and Keys</span> and restart Parabolic. You will see that upon application startup, the Keyring will now be automatically unlocked!</p></li>
-</ol></div></div></div>
 </div></div>
 </div></section><section class="links" role="navigation"><div class="inner">
 <div class="hgroup pagewide"></div>
@@ -70,8 +48,8 @@ document.addEventListener('DOMContentLoaded', function() {
 <div class="hgroup"><h2><span class="title">Info</span></h2></div>
 <div class="region"><div class="contents">
 <div class="copyrights">
-<div class="copyright">© 2023 Nicholas Logozzo</div>
-<div class="copyright">© 2023 Nicholas Logozzo</div>
+<div class="copyright">© 2023-2024 Nicholas Logozzo</div>
+<div class="copyright">© 2023-2024 Nicholas Logozzo</div>
 </div>
 <div class="credits">
 <div class="credits-authors">

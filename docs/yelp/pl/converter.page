@@ -5,11 +5,11 @@
 	<title type="link">Konwersja ⚒️</title>
 	<credit type="author copyright">
 		<name>Nicholas Logozzo</name>
-		<years its:translate="no">2023</years>
+		<years its:translate="no">2023-2024</years>
 	</credit>
 	<credit type="publisher copyright">
 		<name>Nicholas Logozzo</name>
-		<years its:translate="no">2023</years>
+		<years its:translate="no">2023-2024</years>
 	</credit>
 	<license href="http://creativecommons.org/licenses/by/4.0/" its:translate="no"><p>Creative Commons Attribution 4.0 International License</p></license>
 
@@ -25,14 +25,6 @@
 
 <terms>
 	<item>
-		<title>Nie zezwalaj na konwersję</title>
-		<p>Po włączeniu, Parabolic pobierze wideo i audio w formacie odpowiednim dla wybranej jakości bez przeprowadzania konwersji na inne formaty.</p>
-        <p>To oznacza, że nie będzie można wybrać formatu pliku podczas pobierania, ale konwesja nie będzie musiała zostać przeprowadzona co pozwoli zaoszczędzić czas.</p>
-		<note style="advanced">
-			<p>Domyślnie: wyłączone</p>
-		</note>
-    </item>
-	<item>
 		<title>Zapisuj metadane w plikach</title>
 		<p>Po włączeniu, Parabolic będzie oznaczać multimedia odpowiednimi informacjami (tytułem, gatunkiem, itd.) i miniaturą, jeśli jest dostępna.</p>
         <p>Parabolic NIE zapisze w pliku komentarzy, opisu, podsumowania czy purl.</p>
@@ -41,23 +33,13 @@
 		</note>
     </item>
     <item>
-		<title>Przycinaj miniatury plików audio</title>
-		<p>Dostępne wyłącznie, jeśli opcja "Zapisuj metadane w plikach" jest włączona.</p>
-		<p>Po włączeniu, Parabolic automatycznie włączy opcję zaawansowaną <code>Przytnij miniaturę</code> dla plików audio.</p>
-		<note style="advanced">
-			<p>Domyślnie: wyłączone</p>
-		</note>
+        <title>Wbudowane napisy</title>
+        <p>If disabled or if embedding fails, downloaded subtitles will be saved to a separate file.</p>
+        <note style="advanced">
+            <p>Domyślnie: włączone</p>
+        </note>
     </item>
     <item>
-		<title>Usuń dane źródłowe</title>
-		<p>Dostępne wyłącznie, jeśli opcja "Zapisuj metadane w plikach" jest włączona.</p>
-		<p>If enabled, Parabolic will clear metadata fields containing the URL and other identifying information of the media source.</p>
-        <p>Fields that are cleared: <code>comment</code>, <code>description</code>, <code>synopsis</code>, <code>purl</code> and <code>handler_name</code> in each stream.</p>
-		<note style="advanced">
-			<p>Domyślnie: wyłączone</p>
-		</note>
-    </item>
-	<item>
 		<title>Zapisuj rozdziały w plikach</title>
 		<p>If enabled, Parabolic will tag a media with chapter information if available.</p>
 		<note style="advanced">
@@ -65,11 +47,19 @@
 		</note>
 	</item>
     <item>
-        <title>Wbudowane napisy</title>
-        <p>If disabled or if embedding fails, downloaded subtitles will be saved to a separate file.</p>
-        <note style="advanced">
-            <p>Domyślnie: włączone</p>
-        </note>
+		<title>Przycinaj miniatury plików audio</title>
+		<p>If enabled, Parabolic will crop thumbnails for audio files to be a square resolution.</p>
+		<note style="advanced">
+			<p>Domyślnie: wyłączone</p>
+		</note>
+    </item>
+    <item>
+		<title>Usuń dane źródłowe</title>
+		<p>If enabled, Parabolic will clear metadata fields containing the URL and other identifying information of the media source.</p>
+        <p>Fields that are cleared: <code>comment</code>, <code>description</code>, <code>synopsis</code>, <code>purl</code> and <code>handler_name</code> in each stream.</p>
+		<note style="advanced">
+			<p>Domyślnie: wyłączone</p>
+		</note>
     </item>
 </terms>
 </page>

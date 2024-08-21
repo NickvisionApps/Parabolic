@@ -21,9 +21,9 @@ document.addEventListener('DOMContentLoaded', function() {
 <section id=""><div class="inner">
 <div class="hgroup pagewide"><h2 class="title"><span class="title">Backend</span></h2></div>
 <div class="region"><div class="contents pagewide">
-<p class="p">कीरिंग सुविधा <span class="code">Nickvision.Aura</span> लाइब्रेरी द्वारा समर्थित है।</p>
+<p class="p">The Keyring feature is backed by the <span class="code">libnick</span> library.</p>
 <p class="p">यह लाइब्रेरी प्लेटफ़ॉर्म स्वतंत्र तरीके से क्रेडेंशियल्स को सुरक्षित रूप से संग्रहीत करने के लिए SQLCipher का उपयोग करती है।</p>
-<p class="p">कीरिंग को सुरक्षित करने के लिए लाइब्रेरी आपके सिस्टम के क्रेडेंशियल मैनेजर (यानी Linux पर DBus गुप्त सेवा और Windows पर Windows क्रेडेंशियल मैनेजर) का उपयोग करेगी।</p>
+<p class="p">The library will use you system's credential manager (i.e. DBus secret service on Linux and Windows Credential Manager on Windows) for securing the Keyring database file.</p>
 </div></div>
 </div></section><section id=""><div class="inner">
 <div class="hgroup pagewide"><h2 class="title"><span class="title">क्रेडेंशियल संग्रहीत किया जा रहा है</span></h2></div>
@@ -33,28 +33,6 @@ document.addEventListener('DOMContentLoaded', function() {
 <p class="p"><span class="code">URL</span> (वैकल्पिक): क्रेडेंशियल का URL</p>
 <p class="p"><span class="code">उपयोगकर्ता नाम</span> (यदि पासवर्ड खाली नहीं है तो वैकल्पिक): क्रेडेंशियल का उपयोगकर्ता नाम</p>
 <p class="p"><span class="code">पासवर्ड</span> (यदि उपयोगकर्ता नाम खाली नहीं है तो वैकल्पिक): क्रेडेंशियल का पासवर्ड</p>
-</div></div>
-</div></section><section id=""><div class="inner">
-<div class="hgroup pagewide"><h2 class="title"><span class="title">पासवर्ड-सुरक्षित कीरिंग से गुप्त-सुरक्षित कीरिंग में माइग्रेट करना</span></h2></div>
-<div class="region"><div class="contents pagewide">
-<p class="p">यह अनुभाग उन उपयोगकर्ताओं पर लागू होता है जिन्होंने Parabolic में कीरिंग को सक्षम किया है (V2023.9.0 से पहले के वर्शनो में) और इसे पासवर्ड से सुरक्षित किया है। वर्शन 2023.9.0 से शुरू होकर, Parabolic किसी उपयोगकर्ता से पासवर्ड प्रदान करने के लिए कहने के बजाय कीरिंग को सुरक्षित करने के लिए एक यादृच्छिक पासवर्ड (गुप्त) उत्पन्न करने के लिए सिस्टम के क्रेडेंशियल प्रबंधक का उपयोग करता है। सिस्टम क्रेडेंशियल मैनेजर का उपयोग करके, Parabolic उपयोगकर्ता इंटरेक्शन के बिना स्टार्टअप पर कीरिंग को स्वचालित रूप से अनलॉक कर सकता है।</p>
-<p class="p">यदि आपके पास वर्शन 2023.9.0 से पहले का पासवर्ड-सुरक्षित कीरिंग है, तो आप इसे बिना किसी समस्या के Parabolic के नए वर्शनो में उपयोग करना जारी रख सकते हैं, लेकिन आपको एप्लिकेशन शुरू होने पर हर बार पासवर्ड प्रदान करना होगा।</p>
-<p class="p">यदि आप अपने मौजूदा क्रेडेंशियल्स को माइग्रेट करना चाहते हैं और नई कीरिंग का लाभ उठाना चाहते हैं, जहां हर बार पासवर्ड की आवश्यकता नहीं होती है, तो इस अनुभाग के बाकी हिस्सों का पालन करें।</p>
-<div class="note" title="टिप्पणी">
-<svg height="24" width="24" version="1.1">
- <g>
-  <path class="yelp-svg-fill" d="m4 3h16c0.554 0 1 0.446 1 1v11h-6v6h-11c-0.554 0-1-0.446-1-1v-16c0-0.554 0.446-1 1-1z"></path>
-  <path class="yelp-svg-fill" d="m17 16h4l-5 5v-4c0-0.554 0.446-1 1-1z"></path>
- </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">जब आप Parabolic को 2023.9.0 पर अपडेट करते हैं तो आप पुराने पासवर्ड-सुरक्षित कीरिंग को आसानी से अक्षम कर सकते हैं और गुप्त-सुरक्षित कीरिंग प्राप्त करने के लिए कीरिंग को फिर से सक्षम कर सकते हैं। हालाँकि, यह पुराने कीरिंग से सभी डेटा मिटा देगा और आपको सभी क्रेडेंशियल्स को फिर से दर्ज करने की आवश्यकता होगी।</p></div></div></div>
-</div>
-<div class="steps"><div class="inner"><div class="region"><ol class="steps">
-<li class="steps"><p class="p"><span class="link"><a href="https://flathub.org/apps/org.gnome.seahorse.Application" title="https://flathub.org/apps/org.gnome.seahorse.Application">पासवर्ड और कुंजी</a></span> इंस्टॉल करें।</p></li>
-<li class="steps"><p class="p">Parabolic V2023.9.0 या नया कम से कम एक बार खोलें। (यह सुनिश्चित करेगा कि ऐप आपके सिस्टम के क्रेडेंशियल मैनेजर के साथ पंजीकृत हो)</p></li>
-<li class="steps"><p class="p"><span class="code">पासवर्ड और कुंजी</span> खोलें और <span class="code">डिफ़ॉल्ट कीरिंग</span> में <span class="code">org.nickvision.tubeconverter</span> प्रविष्टि का पता लगाएं।</p></li>
-<li class="steps"><p class="p"><span class="code">org.nickvision.tubeconverter</span> प्रविष्टि पर डबल क्लिक करें और <span class="code">Password</span> फ़ील्ड संपादित करें। वह पासवर्ड दर्ज करें जो आपने बनाया था और अपनी कीरिंग के लिए Parabolic में उपयोग किया था।</p></li>
-<li class="steps"><p class="p">अब आप <span class="code">पासवर्ड और कुंजी</span> को बंद कर सकते हैं और Parabolic को पुनरारंभ कर सकते हैं। आप देखेंगे कि एप्लिकेशन स्टार्टअप पर, कीरिंग अब स्वचालित रूप से अनलॉक हो जाएगी!</p></li>
-</ol></div></div></div>
 </div></div>
 </div></section><section class="links" role="navigation"><div class="inner">
 <div class="hgroup pagewide"></div>
@@ -70,8 +48,8 @@ document.addEventListener('DOMContentLoaded', function() {
 <div class="hgroup"><h2><span class="title">के बारे में</span></h2></div>
 <div class="region"><div class="contents">
 <div class="copyrights">
-<div class="copyright">© 2023 निकोलस लोगोज़ो</div>
-<div class="copyright">© 2023 निकोलस लोगोज़ो</div>
+<div class="copyright">© 2023-2024 निकोलस लोगोज़ो</div>
+<div class="copyright">© 2023-2024 निकोलस लोगोज़ो</div>
 </div>
 <div class="credits">
 <div class="credits-authors">

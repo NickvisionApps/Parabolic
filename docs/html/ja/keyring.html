@@ -21,9 +21,9 @@ document.addEventListener('DOMContentLoaded', function() {
 <section id=""><div class="inner">
 <div class="hgroup pagewide"><h2 class="title"><span class="title">バックエンド</span></h2></div>
 <div class="region"><div class="contents pagewide">
-<p class="p">キーリング機能には、<span class="code">Nickvision.Aura</span>ライブラリが使用されています。</p>
+<p class="p">The Keyring feature is backed by the <span class="code">libnick</span> library.</p>
 <p class="p">このライブラリには、資格情報を安全に保管するために隔離されたSQLCipherデータベースを使っています。</p>
-<p class="p">このライブラリではシステムの資格情報管理機能(LinuxはDBus secret service、WindowsではWindows Credential Manager等)を使ってキーリングを保護しています。</p>
+<p class="p">The library will use you system's credential manager (i.e. DBus secret service on Linux and Windows Credential Manager on Windows) for securing the Keyring database file.</p>
 </div></div>
 </div></section><section id=""><div class="inner">
 <div class="hgroup pagewide"><h2 class="title"><span class="title">資格情報を保管する</span></h2></div>
@@ -33,28 +33,6 @@ document.addEventListener('DOMContentLoaded', function() {
 <p class="p"><span class="code">URL</span>(オプション): 資格情報の URL</p>
 <p class="p"><span class="code">ユーザー名</span>(ユーザー名が空でない場合はオプション): 資格情報のユーザー名</p>
 <p class="p"><span class="code">パスワード</span>(ユーザー名が空でない場合はオプション): 資格情報のパスワード</p>
-</div></div>
-</div></section><section id=""><div class="inner">
-<div class="hgroup pagewide"><h2 class="title"><span class="title">パスワード保護キーリングから秘密鍵保護キーリングへの移行</span></h2></div>
-<div class="region"><div class="contents pagewide">
-<p class="p">この章は、Parabolic（V2023.9.0より前のバージョン）でパスワード保護を使用したキーリングを有効にしていた方を対象としています。バージョン2023.9.0から Parabolic は、パスワード要求の代わりとなるキーリング保護のために、システムの資格情報管理がランダムなパスワード（秘密鍵）を生成するようになりました。システムの資格情報管理を使用することで、Parabolic はユーザーの入力なしで、起動時にキーリングのロックを解除できるようになりました。</p>
-<p class="p">バージョン2023.9.0 以前のパスワード保護されたキーリングがある場合は、問題なく新しいバージョンの Parabolic でも引き続き使用できますが、アプリケーションが起動する度にパスワードを入力する必要があります。</p>
-<p class="p">依存の資格情報を移行し、毎回パスワード入力する必要がない新しいキーリングを利用したい場合は、下の章に従ってください。</p>
-<div class="note" title="注記">
-<svg height="24" width="24" version="1.1">
- <g>
-  <path class="yelp-svg-fill" d="m4 3h16c0.554 0 1 0.446 1 1v11h-6v6h-11c-0.554 0-1-0.446-1-1v-16c0-0.554 0.446-1 1-1z"></path>
-  <path class="yelp-svg-fill" d="m17 16h4l-5 5v-4c0-0.554 0.446-1 1-1z"></path>
- </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">新しい秘密鍵保護のキーリングを使うために、Parabolic を2023.9.0にアップデートし、キーリングを再度有効にして、古いパスワード保護のキーリングを無効にできます。しかし、古いキーリングのデータは全て削除され、古いキーリングの全ての資格情報を再度入力する必要があります。</p></div></div></div>
-</div>
-<div class="steps"><div class="inner"><div class="region"><ol class="steps">
-<li class="steps"><p class="p"><span class="link"><a href="https://flathub.org/apps/org.gnome.seahorse.Application" title="https://flathub.org/apps/org.gnome.seahorse.Application">パスワードと鍵</a></span>をインストール。</p></li>
-<li class="steps"><p class="p">V2023.9.0またはそれ以降のバージョンの Parabolic を開く。（これにより、アプリがシステムの資格情報管理に登録することを確実にします）</p></li>
-<li class="steps"><p class="p"><span class="code">パスワードと鍵</span>を開き、<span class="code">デフォルトのキーリング</span>の<span class="code">org.nickvision.tubeconverter</span>のエントリをさがす。</p></li>
-<li class="steps"><p class="p"><span class="code">org.nickvision.tubeconverter</span> のエントリをダブルクリックし、<span class="code">パスワード</span>のフィールドを編集する。Parabolic で作成/使用したキーリングのパスワードを入力する。</p></li>
-<li class="steps"><p class="p"><span class="code">パスワードと鍵</span>を閉じ、Parabolic を再起動する。これで、アプリを起動した時、キーリングのロックが自動的に解除されるはずです！</p></li>
-</ol></div></div></div>
 </div></div>
 </div></section><section class="links" role="navigation"><div class="inner">
 <div class="hgroup pagewide"></div>
@@ -70,8 +48,8 @@ document.addEventListener('DOMContentLoaded', function() {
 <div class="hgroup"><h2><span class="title">このドキュメントについて</span></h2></div>
 <div class="region"><div class="contents">
 <div class="copyrights">
-<div class="copyright">© 2023 Nicholas Logozzo</div>
-<div class="copyright">© 2023 Nicholas Logozzo</div>
+<div class="copyright">© 2023-2024 Nicholas Logozzo</div>
+<div class="copyright">© 2023-2024 Nicholas Logozzo</div>
 <div class="copyright">© 2023 Gnuey56</div>
 </div>
 <div class="credits">

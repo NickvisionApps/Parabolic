@@ -5,11 +5,11 @@
 	<title type="link">Converter ⚒️</title>
 	<credit type="author copyright">
 		<name>Nicholas Logozzo</name>
-		<years its:translate="no">2023</years>
+		<years its:translate="no">2023-2024</years>
 	</credit>
 	<credit type="publisher copyright">
 		<name>Nicholas Logozzo</name>
-		<years its:translate="no">2023</years>
+		<years its:translate="no">2023-2024</years>
 	</credit>
 	<license href="http://creativecommons.org/licenses/by/4.0/" its:translate="no"><p>Creative Commons Attribution 4.0 International License</p></license>
 </info>
@@ -19,14 +19,6 @@
 
 <terms>
 	<item>
-		<title>Não permitir conversões</title>
-		<p>Se ativado, o Parabolic baixará o formato de vídeo/áudio apropriado para a qualidade selecionada sem converter para outros formatos.</p>
-        <p>Isso significa que você não poderá selecionar um formato de arquivo ao baixar uma mídia. Porém, você economizará tempo no download, pois o conversor não será executado.</p>
-		<note style="advanced">
-			<p>Padrão: Desligado</p>
-		</note>
-    </item>
-	<item>
 		<title>Incorporar metadados</title>
 		<p>Se ativado, o Parabolic irá marcar uma mídia com suas informações relevantes (título, gênero, etc...) e miniatura, se disponível.</p>
         <p>Parabolic não irá embutir Comentários, Descrição, Sinopses e campos Purl.</p>
@@ -35,23 +27,13 @@
 		</note>
     </item>
     <item>
-		<title>Cortar miniaturas para áudio</title>
-		<p>Disponível apenas se Incorporar Metadados estiver ativado.</p>
-		<p>Se ativado, o Parabolic ativará automaticamente a opção avançada <code>Cortar Miniatura</code> para downloads de áudio.</p>
-		<note style="advanced">
-			<p>Padrão: Desligado</p>
-		</note>
+        <title>Incorporar Legendas</title>
+        <p>If disabled or if embedding fails, downloaded subtitles will be saved to a separate file.</p>
+        <note style="advanced">
+            <p>Padrão: Ativado</p>
+        </note>
     </item>
     <item>
-		<title>Remover Dados de Origem</title>
-		<p>Disponível apenas se Incorporar Metadados estiver ativado.</p>
-		<p>Se ativado, o Parabolic limpará os campos de metadados que contêm a URL e outras informações de identificação da fonte de mídia.</p>
-        <p>Fields that are cleared: <code>comment</code>, <code>description</code>, <code>synopsis</code>, <code>purl</code> and <code>handler_name</code> in each stream.</p>
-		<note style="advanced">
-			<p>Padrão: Desligado</p>
-		</note>
-    </item>
-	<item>
 		<title>Incorporar capítulos</title>
 		<p>If enabled, Parabolic will tag a media with chapter information if available.</p>
 		<note style="advanced">
@@ -59,11 +41,19 @@
 		</note>
 	</item>
     <item>
-        <title>Incorporar Legendas</title>
-        <p>If disabled or if embedding fails, downloaded subtitles will be saved to a separate file.</p>
-        <note style="advanced">
-            <p>Padrão: Ativado</p>
-        </note>
+		<title>Cortar miniaturas para áudio</title>
+		<p>If enabled, Parabolic will crop thumbnails for audio files to be a square resolution.</p>
+		<note style="advanced">
+			<p>Padrão: Desligado</p>
+		</note>
+    </item>
+    <item>
+		<title>Remover Dados de Origem</title>
+		<p>Se ativado, o Parabolic limpará os campos de metadados que contêm a URL e outras informações de identificação da fonte de mídia.</p>
+        <p>Fields that are cleared: <code>comment</code>, <code>description</code>, <code>synopsis</code>, <code>purl</code> and <code>handler_name</code> in each stream.</p>
+		<note style="advanced">
+			<p>Padrão: Desligado</p>
+		</note>
     </item>
 </terms>
 </page>

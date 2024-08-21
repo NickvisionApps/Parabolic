@@ -21,9 +21,9 @@ document.addEventListener('DOMContentLoaded', function() {
 <section id=""><div class="inner">
 <div class="hgroup pagewide"><h2 class="title"><span class="title">Бэкэнд</span></h2></div>
 <div class="region"><div class="contents pagewide">
-<p class="p">Функция Связки Ключей работает за счёт библиотеки <span class="code">Nickvision.Aura</span>.</p>
+<p class="p">The Keyring feature is backed by the <span class="code">libnick</span> library.</p>
 <p class="p">Эта библиотека использует SQLCipher для безопасного кросс-платформенного хранения учётных данных.</p>
-<p class="p">Библиотека будет использовать системный менеджер учётных данных для безопасного хранения связки ключей: DBus Secret Service в Linux или Диспетчер учетных данных в Windows.</p>
+<p class="p">The library will use you system's credential manager (i.e. DBus secret service on Linux and Windows Credential Manager on Windows) for securing the Keyring database file.</p>
 </div></div>
 </div></section><section id=""><div class="inner">
 <div class="hgroup pagewide"><h2 class="title"><span class="title">Сохранение учётных данных</span></h2></div>
@@ -33,28 +33,6 @@ document.addEventListener('DOMContentLoaded', function() {
 <p class="p"><span class="code">URL</span> (необязательно): ссылка для учётных данных</p>
 <p class="p"><span class="code">Имя пользователя</span> (необязательно, если указан пароль): Имя пользователя учётных данных</p>
 <p class="p"><span class="code">Пароль</span> (необязательно, если указано имя пользователя): пароль учётных данных</p>
-</div></div>
-</div></section><section id=""><div class="inner">
-<div class="hgroup pagewide"><h2 class="title"><span class="title">Перенос связки ключей с парольной защиты на системную</span></h2></div>
-<div class="region"><div class="contents pagewide">
-<p class="p">Этот раздел для пользователей, включивших связку ключей в Parabolic (версий до V2023.9.0) и защитивших её паролем. Начиная с версии V2023.9.0, Parabolic использует системный менеджер учетных данных для генерации случайного пароля (ключа) для защиты связки ключей, вместо того, чтобы запрашивать у пользователя пароль. Используя системный менеджер, Parabolic также может разблокировать связку ключей при запуске автоматически, не требуя от пользователя никаких действий.</p>
-<p class="p">Если вы используете связку ключей с паролем из версии до 2023.9.0, вы можете без проблем продолжать использовать её и в новых версиях, но вам по-прежнему придётся вводить пароль каждый раз при запуске приложения.</p>
-<p class="p">Ниже находится инструкция по переносу ваших учётных данных на новую связку ключей, не требующую постоянного ввода пароля.</p>
-<div class="note" title="Примечание">
-<svg height="24" width="24" version="1.1">
- <g>
-  <path class="yelp-svg-fill" d="m4 3h16c0.554 0 1 0.446 1 1v11h-6v6h-11c-0.554 0-1-0.446-1-1v-16c0-0.554 0.446-1 1-1z"></path>
-  <path class="yelp-svg-fill" d="m17 16h4l-5 5v-4c0-0.554 0.446-1 1-1z"></path>
- </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Вы можете просто выключить старую связку ключей при обновлении Parabolic до 2023.9.0 и затем включить заново, чтобы получить новую (системную). Но таким образом все ваши данные из старой связки будут удалены, и вам потребуется вводить их по-новой.</p></div></div></div>
-</div>
-<div class="steps"><div class="inner"><div class="region"><ol class="steps">
-<li class="steps"><p class="p">Установите <span class="link"><a href="https://flathub.org/apps/org.gnome.seahorse.Application" title="https://flathub.org/apps/org.gnome.seahorse.Application">Пароли и ключи</a></span>.</p></li>
-<li class="steps"><p class="p">Запустите Parabolic V2023.9.0 или новее хотя бы раз. (Чтобы приложение могло зарегистрироваться в системном менеджере учётных данных)</p></li>
-<li class="steps"><p class="p">Откройте <span class="code">Пароли и ключи</span>, найдите в <span class="code">Default keyring</span> (связка ключей по умолчанию) запись <span class="code">org.nickvision.tubeconverter</span>.</p></li>
-<li class="steps"><p class="p">Нажмите два раза по записи <span class="code">org.nickvision.tubeconverter</span> и заполните поле <span class="code">Пароль</span>. Введите пароль, который вы использовали для свой связки ключей в Parabolic.</p></li>
-<li class="steps"><p class="p">Можете закрыть <span class="code">Пароли и ключи</span> и перезапустить Parabolic. Теперь при запуске приложения связка ключей будет разблокирована автоматически!</p></li>
-</ol></div></div></div>
 </div></div>
 </div></section><section class="links" role="navigation"><div class="inner">
 <div class="hgroup pagewide"></div>
@@ -70,8 +48,8 @@ document.addEventListener('DOMContentLoaded', function() {
 <div class="hgroup"><h2><span class="title">Общие сведения</span></h2></div>
 <div class="region"><div class="contents">
 <div class="copyrights">
-<div class="copyright">© 2023 Nicholas Logozzo</div>
-<div class="copyright">© 2023 Nicholas Logozzo</div>
+<div class="copyright">© 2023-2024 Nicholas Logozzo</div>
+<div class="copyright">© 2023-2024 Nicholas Logozzo</div>
 <div class="copyright">© 2023 Фёдор Соболев</div>
 </div>
 <div class="credits">

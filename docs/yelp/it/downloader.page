@@ -5,11 +5,11 @@
 	<title type="link">Downloader 🌐</title>
 	<credit type="author copyright">
 		<name>Nicholas Logozzo</name>
-		<years its:translate="no">2023</years>
+		<years its:translate="no">2023-2024</years>
 	</credit>
 	<credit type="publisher copyright">
 		<name>Nicholas Logozzo</name>
-		<years its:translate="no">2023</years>
+		<years its:translate="no">2023-2024</years>
 	</credit>
 	<license href="http://creativecommons.org/licenses/by/4.0/" its:translate="no"><p>Creative Commons Attribution 4.0 International License</p></license>
 </info>
@@ -35,21 +35,10 @@
 		</note>
     </item>
     <item>
-        <title>Lingue dei Sottotitoli</title>
-        <p>A comma-separated list of two-letter, two-letter with region, and three-letter language codes to use when selecting languages of subtitles to download. Only applies when downloading a video with subtitles.</p>
-        <note>
-            <p>Different sites can use different language code formats for the same language. You may encounter one of the following three types: two-letter, two-letter with region, or three-letter. For example, "en", "en-US" and "eng" are all used for English. Please specify all valid codes for your languages for the best results. Auto-generated subtitles will also be downloaded if available.</p>
-            <p>Puoi invece specificare "tutti" per scaricare tutti i sottotitoli, ma senza quelli generati automaticamente.</p>
-        </note>
-        <note style="advanced">
-            <p>Predefinito: i codici della lingua della tua cultura. Ad esempio, su un sistema en-US il valore predefinito sarebbe <code>en,en-US,eng</code></p>
-        </note>
-    </item>
-    <item>
         <title>Sottotitoli generati automaticamente inclusi</title>
         <p>Se includere o meno i sottotitoli tradotti automaticamente per adattarsi alle lingue dei sottotitoli richieste.</p>
         <note style="advanced">
-            <p>Predefinito: attivato</p>
+            <p>Predefinito: Disattivato</p>
         </note>
     </item>
     <item>
@@ -87,16 +76,10 @@
         <p>L'URL del server proxy da utilizzare.</p>
     </item>
     <item>
-        <title>File di Cookie</title>
-        <p>Un file .txt di cookie da passare a yt-dlp quando si scarica. Questo può essere utile per scaricare file multimediali che richiedono il login, per esempio: video YouTube privati.</p>
-        <p>Usa una delle seguenti estensioni per ottenere un file di cookie dal tuo browser:</p>
-        <p>Chrome: <code>https://chrome.google.com/webstore/detail/get-cookiestxt-locally/cclelndahbckbenkjhflpdbgdldlbecc</code></p>
-        <p>Firefox: <code>https://addons.mozilla.org/it/firefox/addon/cookies-txt/</code></p>
-        <note>
-            <p>Usa queste estensioni a tuo rischio.</p>
-        </note>
+        <title>Cookies from Browser</title>
+        <p>A browser in which to read cookies from and pass to yt-dlp's download engine.</p>
 		<note style="advanced">
-			<p>Predefinito: Nessun File Selezionato</p>
+			<p>Default: None</p>
 		</note>
     </item>
     <item>

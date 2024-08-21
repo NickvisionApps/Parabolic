@@ -5,11 +5,11 @@
 	<title type="link">بارگیری کننده 🌐</title>
 	<credit type="author copyright">
 		<name>Nicholas Logozzo</name>
-		<years its:translate="no">2023</years>
+		<years its:translate="no">2023-2024</years>
 	</credit>
 	<credit type="publisher copyright">
 		<name>Nicholas Logozzo</name>
-		<years its:translate="no">2023</years>
+		<years its:translate="no">2023-2024</years>
 	</credit>
 	<license href="http://creativecommons.org/licenses/by/4.0/" its:translate="no"><p>Creative Commons Attribution 4.0 International License</p></license>
 </info>
@@ -37,23 +37,10 @@
 		</note>
     </item>
     <item>
-        <title>زبان‌های زیرنویس</title>
-        <p>فهرستی از کدهای زبان دو حرفی، دو حرفی با منطقه و سه حرفی جدا شده با کاما برای استفاده هنگام انتخاب زبان زیرنویس‌ها برای دانلود. فقط هنگام بارگیری ویدیو با زیرنویس اعمال می شود.</p>
-        <note>
-            <p>Different sites can use different language code formats for the same language. You may encounter one of the following three types: two-letter, two-letter with region, or three-letter. For example, "en", "en-US" and "eng" are all used for English. Please specify all valid codes for your languages for the best results. Auto-generated subtitles will also be downloaded if available.</p>
-            <p>به جای آن می‌توانید «همه» را برای دانلود همه زیرنویس‌ها، اما بدون زیرنویس‌هایی که به‌طور خودکار تولید می‌شوند، مشخص کنید.</p>
-        </note>
-        <note style="advanced">
-            <p>
-                Default: Your culture's language codes. For example, on an en-US system the default would be <code>en,en-US,eng</code>
-            </p>
-        </note>
-    </item>
-    <item>
         <title>شامل زیرنویس‌های تولید شده خودکار</title>
         <p>این که آیا زیرنویس‌هایی را شامل می‌شود که به صورت خودکار ترجمه می شوند تا متناسب با زبان‌های زیرنویس درخواست شده باشند.</p>
         <note style="advanced">
-            <p>پیش فرض: روشن</p>
+            <p>پیش فرض: خاموش</p>
         </note>
     </item>
     <item>
@@ -95,16 +82,10 @@
         <p>آدرس سرور پروکسی مورد استفاده.</p>
     </item>
     <item>
-        <title>فایل کوکی ها</title>
-        <p>یک فایل txt از کوکی‌ها برای ارسال به yt-dlp در هنگام بارگیری. این ممکن است هنگام بارگیری رسانه ای که نیاز به ورود به سیستم دارد مفید باشد، به عنوان مثال: ویدیوهای خصوصی YouTube.</p>
-        <p>برای دریافت فایل کوکی از مرورگر خود از یکی از پسوندهای زیر استفاده کنید:</p>
-        <p>Chrome: <code>https://chrome.google.com/webstore/detail/get-cookiestxt-locally/cclelndahbckbenkjhflpdbgdldlbecc</code></p>
-        <p>Firefox: <code>https://addons.mozilla.org/en-US/firefox/addon/cookies-txt/</code></p>
-        <note>
-            <p>از این افزونه‌ها با مسئولیت خود استفاده کنید.</p>
-        </note>
+        <title>Cookies from Browser</title>
+        <p>A browser in which to read cookies from and pass to yt-dlp's download engine.</p>
 		<note style="advanced">
-			<p>پیش فرض: هیچ فایلی انتخاب نشده است</p>
+			<p>Default: None</p>
 		</note>
     </item>
     <item>

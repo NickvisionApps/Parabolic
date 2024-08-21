@@ -21,9 +21,9 @@ document.addEventListener('DOMContentLoaded', function() {
 <section id=""><div class="inner">
 <div class="hgroup pagewide"><h2 class="title"><span class="title">Backend</span></h2></div>
 <div class="region"><div class="contents pagewide">
-<p class="p">Die Schlüsselring-Funktion wird von der <span class="code">Nickvision.Aura</span>-Bibliothek bereitgestellt.</p>
+<p class="p">The Keyring feature is backed by the <span class="code">libnick</span> library.</p>
 <p class="p">Diese Bibliothek verwendet SQLCipher, um Anmeldedaten sicher und plattformunabhängig zu speichern.</p>
-<p class="p">Die Bibliothek verwendet die Anmeldedatenverwaltung deines Systems (d.h. DBus secret service unter Linux und Windows Credential Manager unter Windows) zur Sicherung des Schlüsselrings.</p>
+<p class="p">The library will use you system's credential manager (i.e. DBus secret service on Linux and Windows Credential Manager on Windows) for securing the Keyring database file.</p>
 </div></div>
 </div></section><section id=""><div class="inner">
 <div class="hgroup pagewide"><h2 class="title"><span class="title">Speichern von Anmeldedaten</span></h2></div>
@@ -33,28 +33,6 @@ document.addEventListener('DOMContentLoaded', function() {
 <p class="p"><span class="code">URL</span> (optional): Die URL der Anmeldung</p>
 <p class="p"><span class="code">Benutzername</span> (Optional wenn das Passwortfeld nicht leer ist): Der Benutzername der Anmeldung</p>
 <p class="p"><span class="code">Passwort</span> (Optional wenn das Benutzernamenfeld nicht leer ist): Das Passwort der Anmeldung</p>
-</div></div>
-</div></section><section id=""><div class="inner">
-<div class="hgroup pagewide"><h2 class="title"><span class="title">Migration von einem passwortgeschützten Schlüsselring zu einem mit einem Geheimnis gesicherten Schlüsselring</span></h2></div>
-<div class="region"><div class="contents pagewide">
-<p class="p">Dieser Abschnitt gilt für Benutzer, die einen Schlüsselring in Parabolic (in Versionen vor V2023.9.0) aktiviert und mit einem Passwort gesichert haben. Ab Version 2023.9.0 verwendet Parabolic die Anmeldedatenverwaltung des Systems, um ein zufälliges Passwort (Geheimnis) zu generieren, um den Schlüsselring zu sichern, anstatt den Benutzer zu bitten, ein Passwort anzugeben. Durch die Verwendung der Anmeldedatenverwaltung des Systems kann Parabolic den Schlüsselring auch automatisch beim Start entsperren, ohne dass der Benutzer eingreifen muss.</p>
-<p class="p">Wenn du einen passwortgesicherten Schlüsselring aus der Zeit vor Version 2023.9.0 hast, kannst diesen in den neuen Versionen von Parabolic problemlos weiterverwenden, aber du musst weiterhin bei jedem Start der Anwendung das Passwort eingeben.</p>
-<p class="p">Folge dem Rest dieses Abschnitts, wenn du deine bestehenden Anmeldedaten migrieren und die Vorteile des neuen Schlüsselrings nutzen möchten, bei dem nicht jedes Mal ein Passwort erforderlich ist.</p>
-<div class="note" title="Anmerkung">
-<svg height="24" width="24" version="1.1">
- <g>
-  <path class="yelp-svg-fill" d="m4 3h16c0.554 0 1 0.446 1 1v11h-6v6h-11c-0.554 0-1-0.446-1-1v-16c0-0.554 0.446-1 1-1z"></path>
-  <path class="yelp-svg-fill" d="m17 16h4l-5 5v-4c0-0.554 0.446-1 1-1z"></path>
- </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Du kannst den alten passwortgeschützten Schlüsselring einfach deaktivieren, wenn du Parabolic auf 2023.9.0 aktualisierst und den Schlüsselring erneut aktivierst, um einen geheimen Schlüsselring zu erhalten. Dadurch werden jedoch alle Daten des alten Schlüsselringes gelöscht und du musst alle Anmeldedaten neu eingeben.</p></div></div></div>
-</div>
-<div class="steps"><div class="inner"><div class="region"><ol class="steps">
-<li class="steps"><p class="p"><span class="link"><a href="https://flathub.org/apps/org.gnome.seahorse.Application" title="https://flathub.org/apps/org.gnome.seahorse.Application">Passwords and Keys</a></span> installieren.</p></li>
-<li class="steps"><p class="p">Öffne Parabolic V2023.9.0 oder eine neuere Version mindestens einmal. (Dadurch wird sichergestellt, dass sich die App bei der Anmeldedatenverwaltung deines Systems registriert)</p></li>
-<li class="steps"><p class="p">Öffne <span class="code">Passwords and Keys</span> und suche nach dem Eintrag <span class="code">org.nickvision.tubeconverter</span> im <span class="code">Standard-Schlüsselring</span>.</p></li>
-<li class="steps"><p class="p">Klicke doppelt auf den Eintrag <span class="code">org.nickvision.tubeconverter</span> und bearbeite das Feld <span class="code">Password</span>. Gib das Passwort ein, das du für deinen Schlüsselring in Parabolic erstellt und verwendet hast.</p></li>
-<li class="steps"><p class="p">Du kannst nun <span class="code">Passwords and Keys</span> schließen und Parabolic neu starten. Du wirst sehen, dass beim Start der Anwendung der Schlüsselring jetzt automatisch entsperrt wird!</p></li>
-</ol></div></div></div>
 </div></div>
 </div></section><section class="links" role="navigation"><div class="inner">
 <div class="hgroup pagewide"></div>
@@ -70,8 +48,8 @@ document.addEventListener('DOMContentLoaded', function() {
 <div class="hgroup"><h2><span class="title">Info</span></h2></div>
 <div class="region"><div class="contents">
 <div class="copyrights">
-<div class="copyright">© 2023 Nicholas Logozzo</div>
-<div class="copyright">© 2023 Nicholas Logozzo</div>
+<div class="copyright">© 2023-2024 Nicholas Logozzo</div>
+<div class="copyright">© 2023-2024 Nicholas Logozzo</div>
 </div>
 <div class="credits">
 <div class="credits-authors">

@@ -5,11 +5,11 @@
 	<title type="link">Konverter ⚒️</title>
 	<credit type="author copyright">
 		<name>Nicholas Logozzo</name>
-		<years its:translate="no">2023</years>
+		<years its:translate="no">2023-2024</years>
 	</credit>
 	<credit type="publisher copyright">
 		<name>Nicholas Logozzo</name>
-		<years its:translate="no">2023</years>
+		<years its:translate="no">2023-2024</years>
 	</credit>
 	<license href="http://creativecommons.org/licenses/by/4.0/" its:translate="no"><p>Creative Commons Attribution 4.0 International License</p></license>
 </info>
@@ -19,14 +19,6 @@
 
 <terms>
 	<item>
-		<title>Tillåt inte konverteringar</title>
-		<p>Om aktiverat kommer Parabolic att ladda ner lämpligt video-/ljudformat för den valda kvaliteten utan att konvertera till andra format.</p>
-        <p>Det betyder att du inte kommer att kunna välja ett filformat när du laddar ner ett media. Men du kommer att spara tid vid nedladdningen eftersom Konverteraren inte kommer att köras.</p>
-		<note style="advanced">
-			<p>Standard: Av</p>
-		</note>
-    </item>
-	<item>
 		<title>Bädda in metadata</title>
 		<p>Om aktiverat kommer Parabolic att tagga ett media med dess relevanta information (titel, genre, etc...) och miniatyrbild om tillgänglig.</p>
         <p>Parabolic kommer INTE att bädda in fälten Kommentar, Beskrivning, Synopsis och Purl.</p>
@@ -35,23 +27,13 @@
 		</note>
     </item>
     <item>
-		<title>Beskär ljudminiatyrbilder</title>
-		<p>Endast tillgängligt om "Bädda in metadata" är aktiverat.</p>
-		<p>Om aktiverat kommer Parabolic automatiskt att aktivera det avancerade alternativet <code>Beskär miniatyrbild</code> för ljudnedladdningar.</p>
-		<note style="advanced">
-			<p>Standard: Av</p>
-		</note>
+        <title>Bädda in undertexter</title>
+        <p>Om den inaktiveras eller om inbäddningen misslyckas, kommer nedladdade undertexter att sparas i separata filer.</p>
+        <note style="advanced">
+            <p>Standard: På</p>
+        </note>
     </item>
     <item>
-		<title>Ta bort källinformation</title>
-		<p>Endast tillgängligt om "Bädda in metadata" är aktiverat.</p>
-		<p>Om aktiverat kommer Parabolic att rensa metadatafält som innehåller URL och annan identifierande information om mediekällan.</p>
-        <p>Fält som rensas: <code>comment</code>, <code>description</code>, <code>synopsis</code>, <code>purl</code> och <code>handler_name</code> i varje stream.</p>
-		<note style="advanced">
-			<p>Standard: Av</p>
-		</note>
-    </item>
-	<item>
 		<title>Bädda in kapitel</title>
 		<p>Om aktiverat kommer Parabolic att tagga ett media med kapitelinformation om tillgängligt.</p>
 		<note style="advanced">
@@ -59,11 +41,19 @@
 		</note>
 	</item>
     <item>
-        <title>Bädda in undertexter</title>
-        <p>Om den inaktiveras eller om inbäddningen misslyckas, kommer nedladdade undertexter att sparas i separata filer.</p>
-        <note style="advanced">
-            <p>Standard: På</p>
-        </note>
+		<title>Beskär ljudminiatyrbilder</title>
+		<p>If enabled, Parabolic will crop thumbnails for audio files to be a square resolution.</p>
+		<note style="advanced">
+			<p>Standard: Av</p>
+		</note>
+    </item>
+    <item>
+		<title>Ta bort källinformation</title>
+		<p>Om aktiverat kommer Parabolic att rensa metadatafält som innehåller URL och annan identifierande information om mediekällan.</p>
+        <p>Fält som rensas: <code>comment</code>, <code>description</code>, <code>synopsis</code>, <code>purl</code> och <code>handler_name</code> i varje stream.</p>
+		<note style="advanced">
+			<p>Standard: Av</p>
+		</note>
     </item>
 </terms>
 </page>

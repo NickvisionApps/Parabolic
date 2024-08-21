@@ -62,37 +62,6 @@ document.addEventListener('DOMContentLoaded', function() {
 </svg><div class="inner"><div class="region"><div class="contents"><p class="p">デフォルト: 5</p></div></div></div>
 </div>
 </dd>
-<dt class="terms">字幕の言語</dt>
-<dd class="terms">
-<p class="p">ダウンロードする字幕の言語を選択できる、二文字、二文字+地域、三文字の言語コードのカンマ区切りリスト。動画と字幕をダウンロードするときのみ適用されます。</p>
-<div class="note" title="注記">
-<svg height="24" width="24" version="1.1">
- <g>
-  <path class="yelp-svg-fill" d="m4 3h16c0.554 0 1 0.446 1 1v11h-6v6h-11c-0.554 0-1-0.446-1-1v-16c0-0.554 0.446-1 1-1z"></path>
-  <path class="yelp-svg-fill" d="m17 16h4l-5 5v-4c0-0.554 0.446-1 1-1z"></path>
- </g>
-</svg><div class="inner"><div class="region"><div class="contents">
-<p class="p">同じ言語であっても、サイトによって違った言語コードを使用しているかもしれません。2文字、2文字+地域、3文字の３つのパターンが考えられます。例えば、"en"、"en-US"、"eng" は英語の言語コードとして使用されます。より良い結果を得るために、有効な言語コードを全て指定してください。自動生成された字幕が利用可能な場合は、それらもダウンロードされます。</p>
-<p class="p">"all"を指定することで、すべての字幕がダウンロードできますが、自動生成の字幕はダウンロードされません。</p>
-</div></div></div>
-</div>
-<div class="note note-advanced" title="高度">
-<svg height="24" width="24" version="1.1">
- <g>
-  <path class="yelp-svg-fill" d="m5.4473 12.572c-2.039 0.957-3.4473 3.019-3.4473 5.428v4h20v-4c0-2.406-1.406-4.466-3.441-5.424a8 8 0 0 1 -6.559 3.424 8 8 0 0 1 -6.5527 -3.428z"></path>
-  <path class="yelp-svg-fill" d="m12 3a5 5 0 0 0 -5 5 5 5 0 0 0 5 5 5 5 0 0 0 5 -5 5 5 0 0 0 -5 -5zm0 3a2 2 0 0 1 2 2 2 2 0 0 1 -2 2 2 2 0 0 1 -2 -2 2 2 0 0 1 2 -2z"></path>
-  <path class="yelp-svg-fill" d="m15.312 6 3.688 1v2l-3.4688 1z"></path>
-  <path class="yelp-svg-fill" d="m14 11.312-1 3.688h-2l-1-3.469z"></path>
-  <path class="yelp-svg-fill" d="m10 4.6875 1-3.6875h2l1 3.4688z"></path>
-  <path class="yelp-svg-fill" d="m8.6875 10-3.6875-1v-2l3.4688-1z"></path>
-  <path class="yelp-svg-fill" d="m12.928 4.2435 3.3146-1.9003 1.4142 1.4142-1.7457 3.1599z"></path>
-  <path class="yelp-svg-fill" d="m15.757 8.9281 1.9003 3.3146-1.4142 1.4142-3.1599-1.7457z"></path>
-  <path class="yelp-svg-fill" d="m8.2435 7.0719-1.9004-3.3145 1.4143-1.4143 3.1596 1.7457z"></path>
-  <path class="yelp-svg-fill" d="m11.072 11.757-3.3146 1.9-1.4143-1.414 1.7457-3.1602z"></path>
- </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">デフォルト: お住まいの地域の文化の言語コードが指定されています。例えば、en-US のシステムでは <span class="code">en,en-US,eng</span> の言語コードがデフォルトになります</p></div></div></div>
-</div>
-</dd>
 <dt class="terms">自動生成された字幕を含める</dt>
 <dd class="terms">
 <p class="p">要求された字幕の言語の自動翻訳された字幕を含むかどうか。</p>
@@ -110,7 +79,7 @@ document.addEventListener('DOMContentLoaded', function() {
   <path class="yelp-svg-fill" d="m8.2435 7.0719-1.9004-3.3145 1.4143-1.4143 3.1596 1.7457z"></path>
   <path class="yelp-svg-fill" d="m11.072 11.757-3.3146 1.9-1.4143-1.414 1.7457-3.1602z"></path>
  </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">デフォルト: オン</p></div></div></div>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">デフォルト: オフ</p></div></div></div>
 </div>
 </dd>
 <dt class="terms">aria2 を使用</dt>
@@ -197,20 +166,9 @@ document.addEventListener('DOMContentLoaded', function() {
 </dd>
 <dt class="terms">プロキシ URL</dt>
 <dd class="terms"><p class="p">使用するプロキシサーバーの URL。</p></dd>
-<dt class="terms">クッキーファイル</dt>
+<dt class="terms">Cookies from Browser</dt>
 <dd class="terms">
-<p class="p">ダウンロード時に yt-dlp に渡す、クッキーの .txt ファイル。非公開の YouTube 動画のような、ログインが必要なメディアのダウンロードに役立ちます。</p>
-<p class="p">拡張機能を使って、ブラウザーからクッキーファイルを入手できます：</p>
-<p class="p">Chrome: <span class="code">https://chrome.google.com/webstore/detail/get-cookiestxt-locally/cclelndahbckbenkjhflpdbgdldlbecc</span></p>
-<p class="p">Firefox: <span class="code">https://addons.mozilla.org/ja/firefox/addon/cookies-txt/</span></p>
-<div class="note" title="注記">
-<svg height="24" width="24" version="1.1">
- <g>
-  <path class="yelp-svg-fill" d="m4 3h16c0.554 0 1 0.446 1 1v11h-6v6h-11c-0.554 0-1-0.446-1-1v-16c0-0.554 0.446-1 1-1z"></path>
-  <path class="yelp-svg-fill" d="m17 16h4l-5 5v-4c0-0.554 0.446-1 1-1z"></path>
- </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">これらの拡張機能は、自己責任で使用してください。</p></div></div></div>
-</div>
+<p class="p">A browser in which to read cookies from and pass to yt-dlp's download engine.</p>
 <div class="note note-advanced" title="高度">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -225,7 +183,7 @@ document.addEventListener('DOMContentLoaded', function() {
   <path class="yelp-svg-fill" d="m8.2435 7.0719-1.9004-3.3145 1.4143-1.4143 3.1596 1.7457z"></path>
   <path class="yelp-svg-fill" d="m11.072 11.757-3.3146 1.9-1.4143-1.414 1.7457-3.1602z"></path>
  </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">デフォルト: ファイル選択なし</p></div></div></div>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Default: None</p></div></div></div>
 </div>
 </dd>
 <dt class="terms">YouTube のダウンロードで SponsorBlock を使用</dt>
@@ -272,8 +230,8 @@ document.addEventListener('DOMContentLoaded', function() {
 <div class="hgroup"><h2><span class="title">このドキュメントについて</span></h2></div>
 <div class="region"><div class="contents">
 <div class="copyrights">
-<div class="copyright">© 2023 Nicholas Logozzo</div>
-<div class="copyright">© 2023 Nicholas Logozzo</div>
+<div class="copyright">© 2023-2024 Nicholas Logozzo</div>
+<div class="copyright">© 2023-2024 Nicholas Logozzo</div>
 <div class="copyright">© 2023 Gnuey56</div>
 </div>
 <div class="credits">

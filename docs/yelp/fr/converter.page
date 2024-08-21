@@ -5,11 +5,11 @@
 	<title type="link">Convertisseur ⚒️</title>
 	<credit type="author copyright">
 		<name>Nicholas Logozzo</name>
-		<years its:translate="no">2023</years>
+		<years its:translate="no">2023-2024</years>
 	</credit>
 	<credit type="publisher copyright">
 		<name>Nicholas Logozzo</name>
-		<years its:translate="no">2023</years>
+		<years its:translate="no">2023-2024</years>
 	</credit>
 	<license href="http://creativecommons.org/licenses/by/4.0/" its:translate="no"><p>Creative Commons Attribution 4.0 International License</p></license>
 </info>
@@ -19,14 +19,6 @@
 
 <terms>
 	<item>
-		<title>Empêcher les conversions</title>
-		<p>Si cette option est activée, Parabole téléchargera le format audio/vidéo approprié pour la qualité sélectionnée, sans opérer de conversion dans un autre format.</p>
-        <p>Cela signifie que vous ne pourrez pas spécifier un format de fichier lors du téléchargement d’un média. En revanche vous gagnerez du temps de téléchargement puisque aucune opération de conversion n’aura lieu.</p>
-		<note style="advanced">
-			<p>Par défaut : Désactivée</p>
-		</note>
-    </item>
-	<item>
 		<title>Inclure les métadonnées</title>
 		<p>Si cette option est activée, Parabole inclura dans le média téléchargé ses données pertinentes (titre, genre, etc…) et sa vignette, si disponibles.</p>
         <p>Parabole n’inclura PAS les commentaires, descriptions, résumé, et l’URL personnalisée.</p>
@@ -35,23 +27,13 @@
 		</note>
     </item>
     <item>
-		<title>Rogner les vignettes des fichiers audio</title>
-		<p>Uniquement disponible si l’inclusion des métadonnées est activée.</p>
-		<p>Si cette option est activée, Parabole activera automatiquement l’option avancée <code>Rogner la vignette</code> pour les téléchargements de fichiers audio.</p>
-		<note style="advanced">
-			<p>Par défaut : Désactivée</p>
-		</note>
+        <title>Inclure les sous-titres</title>
+        <p>Si cette option est désactivée ou si l’inclusion échoue, les sous-titres téléchargés seront enregistrés dans un fichier séparé.</p>
+        <note style="advanced">
+            <p>Par défaut : Activée</p>
+        </note>
     </item>
     <item>
-		<title>Retirer les données sur la source</title>
-		<p>Uniquement disponible si l’inclusion des métadonnées est activée.</p>
-		<p>Si cette option est activée, Parabole effacera les champs de métadonnées contenant l’URL et d’autres informations d’identification de la source du média.</p>
-        <p>Champs effacés : <code>commentaires</code>, <code>description</code>, <code>synopsis</code>, <code>purl</code> et <code>nom_du_service</code> dans chaque flux.</p>
-		<note style="advanced">
-			<p>Par défaut : Désactivée</p>
-		</note>
-    </item>
-	<item>
 		<title>Inclure les chapitres</title>
 		<p>Si cette option est activée, Parabole inclura dans un média les informations relatives à ses chapitres, si disponibles.</p>
 		<note style="advanced">
@@ -59,11 +41,19 @@
 		</note>
 	</item>
     <item>
-        <title>Inclure les sous-titres</title>
-        <p>Si cette option est désactivée ou si l’inclusion échoue, les sous-titres téléchargés seront enregistrés dans un fichier séparé.</p>
-        <note style="advanced">
-            <p>Par défaut : Activée</p>
-        </note>
+		<title>Rogner les vignettes des fichiers audio</title>
+		<p>If enabled, Parabolic will crop thumbnails for audio files to be a square resolution.</p>
+		<note style="advanced">
+			<p>Par défaut : Désactivée</p>
+		</note>
+    </item>
+    <item>
+		<title>Retirer les données sur la source</title>
+		<p>Si cette option est activée, Parabole effacera les champs de métadonnées contenant l’URL et d’autres informations d’identification de la source du média.</p>
+        <p>Champs effacés : <code>commentaires</code>, <code>description</code>, <code>synopsis</code>, <code>purl</code> et <code>nom_du_service</code> dans chaque flux.</p>
+		<note style="advanced">
+			<p>Par défaut : Désactivée</p>
+		</note>
     </item>
 </terms>
 </page>

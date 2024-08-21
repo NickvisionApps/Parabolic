@@ -5,11 +5,11 @@
 	<title type="link">New Download 🆕</title>
 	<credit type="author copyright">
 		<name>Nicholas Logozzo</name>
-		<years its:translate="no">2023</years>
+		<years its:translate="no">2023-2024</years>
 	</credit>
 	<credit type="publisher copyright">
 		<name>Nicholas Logozzo</name>
-		<years its:translate="no">2023</years>
+		<years its:translate="no">2023-2024</years>
 	</credit>
 	<license href="http://creativecommons.org/licenses/by/4.0/" its:translate="no"><p>Creative Commons Attribution 4.0 International License</p></license>
 </info>
@@ -28,10 +28,10 @@
     <item>
       <title>বৈধতা যাচাই</title>
       <p>If enabled, the user will be asked to provide a username and/or password to pass to yt-dlp when downloading.</p>
-        <p>If keyring is enabled, the user will be asked to chose from a list of named credentials or can chose to enter manually a different username and/or password.</p>
+        <p>If credentials are found in the keyring, the user can instead chose from a list of named credentials to use (or continue to manually enter a credential)</p>
 		<note style="advanced">
 			<p>Not all websites support passing usernames and passwords to yt-dlp. For example, YouTube does NOT support this feature.</p>
-            <p>For these sites that don't support passing credentials, it is recommended to upload a Cookies file in Preferences instead.</p>
+            <p>For these sites that don't support passing credentials, it is recommended to select a browser to use cookies from in Preferences instead.</p>
 		</note>
     </item>
     <item>
@@ -45,14 +45,36 @@
     <item>
 		<title>গুণমান</title>
 		<p>If the file type is a video type, the listed qualities will be the resolutions of the media available.</p>
-        <p>If the file type is an audio type, the listed qualities will be simply <code>Best</code> and <code>Worst</code>.</p>
+        <p>If the file type is an audio type, the listed qualities will be simply <code>Best</code>, <code>Good</code>, and <code>Worst</code>.</p>
         <note>
             <p>The previously used quality will be remembered and pre-selected for the next download.</p>
         </note>
     </item>
     <item>
+		<title>Audio Language</title>
+		<p>The language of which to use from the audio part of a media download.</p>
+        <p>If no additional languages are available, <code>Default</code> will be the only option.</p>
+        <note>
+            <p>The previously used state will be remembered and pre-selected for the next download.</p>
+        </note>
+    </item>
+    <item>
 		<title>উপশীর্ষকের অধঃগ্রহণ</title>
-		<p>Whether to download and embed subtitle when downloading a video. Languages for subtitles can be defined in <link xref="downloader">preferences</link>.</p>
+		<p>Whether to download and embed subtitle when downloading a video. Further subtitle settings can be configured in <link xref="downloader">preferences</link>.</p>
+        <note>
+            <p>The previously used state will be remembered and pre-selected for the next download.</p>
+        </note>
+    </item>
+    <item>
+        <title>Prefer AV1 Codec</title>
+        <p>If enabled, Parabolic will prefer videos with the av1 codec when downloading.</p>
+        <note>
+            <p>The previously used state will be remembered and pre-selected for the next download.</p>
+        </note>
+    </item>
+    <item>
+        <title>Split Chapters</title>
+        <p>If enabled, Parabolic will split a video download into multiple smaller files based on its chapters.</p>
         <note>
             <p>The previously used state will be remembered and pre-selected for the next download.</p>
         </note>
@@ -60,52 +82,8 @@
     <item>
 		<title>অধঃগ্রহণের তথ্যপথ</title>
 		<p>The folder at which to save the download to.</p>
-        <p>If the file type is an audio type, the listed qualities will be simply <code>Best</code> and <code>Worst</code>.</p>
         <note>
             <p>The previously used folder will be remembered and pre-selected for the next download.</p>
-        </note>
-    </item>
-    <item>
-		<title>Speed Limit</title>
-		<p>If enabled, Parabolic will limit the download's speed with the speed configured in Preferences.</p>
-        <note>
-            <p>Available in the <code>Advanced Options</code> section.</p>
-        </note>
-    </item>
-    <item>
-        <title>Prefer AV1 Codec</title>
-        <p>Only available for video (mp4, webm) downloads</p>
-        <p>If enabled, Parabolic will prefer videos with the av1 codec when downloading.</p>
-        <note>
-            <p>Available in the <code>Advanced Options</code> section.</p>
-        </note>
-        <note>
-            <p>This option's state will be remembered and restored for future downloads.</p>
-        </note>
-    </item>
-    <item>
-        <title>Split Chapters</title>
-        <p>If enabled, Parabolic will split the video into multiple smaller ones based on its chapters.</p>
-        <note>
-            <p>Available in the <code>Advanced Options</code> section.</p>
-        </note>
-    </item>
-    <item>
-		<title>Crop Thumbnail</title>
-        <p>Only available if <code>Embed Metadata</code> is enabled in Preferences.</p>
-		<p>If enabled, Parabolic will crop a download's embedded thumbnail as square. This is useful when downloading music who's album images are usually square.</p>
-        <note>
-            <p>Available in the <code>Advanced Options</code> section.</p>
-        </note>
-    </item>
-    <item>
-		<title>Download Specific Timeframe</title>
-		<p>If enabled, the user will be able to enter a start timeframe and an end timeframe for a section of the media to download.</p>
-        <note>
-            <p>Available in the <code>Advanced Options</code> section.</p>
-        </note>
-        <note style="advanced">
-            <p>Enabling this option will disable the use of aria2 as the downloader for this download if it is enabled in Preferences.</p>
         </note>
     </item>
     <item>
@@ -114,6 +92,23 @@
 		<note style="advanced">
 			<p>Default: The title of the media</p>
 		</note>
+    </item>
+    <item>
+		<title>Time Frame</title>
+		<p>The user can enter a start time frame and an end time frame to download a specific section of the media.</p>
+        <note style="advanced">
+			<p>Default: The whole media length</p>
+		</note>
+        <note style="advanced">
+            <p>Enabling this option will disable the use of aria2 as the downloader for this download, even if it is enabled in Preferences.</p>
+        </note>
+    </item>
+    <item>
+		<title>Speed Limit</title>
+		<p>If enabled, Parabolic will limit the download's speed with the speed configured in <link xref="downloader">Preferences</link>.</p>
+        <note>
+            <p>Available in the <code>Advanced Options</code> section.</p>
+        </note>
     </item>
 </terms>
 </page>

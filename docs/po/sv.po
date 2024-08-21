@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2024-08-07 23:19-0400\n"
+"POT-Creation-Date: 2024-08-21 10:13+0200\n"
 "PO-Revision-Date: 2023-12-06 18:45+0000\n"
 "Last-Translator: Tomas Andersson <jotakswe@users.noreply.hosted.weblate."
 "org>\n"
@@ -50,43 +50,11 @@ msgstr ""
 
 #. (itstool) path: item/title
 #: docs/yelp/C/converter.page:25
-msgid "Disallow Conversions"
-msgstr "Tillåt inte konverteringar"
-
-#. (itstool) path: item/p
-#: docs/yelp/C/converter.page:26
-msgid ""
-"If enabled, Parabolic will download the appropriate video/audio format for "
-"the selected quality without converting to other formats."
-msgstr ""
-"Om aktiverat kommer Parabolic att ladda ner lämpligt video-/ljudformat för "
-"den valda kvaliteten utan att konvertera till andra format."
-
-#. (itstool) path: item/p
-#: docs/yelp/C/converter.page:27
-msgid ""
-"This means that you will be unable to select a file format when downloading "
-"a media. But, you will save time in downloading as the Converter will not be "
-"run."
-msgstr ""
-"Det betyder att du inte kommer att kunna välja ett filformat när du laddar "
-"ner ett media. Men du kommer att spara tid vid nedladdningen eftersom "
-"Konverteraren inte kommer att köras."
-
-#. (itstool) path: note/p
-#: docs/yelp/C/converter.page:29 docs/yelp/C/converter.page:45
-#: docs/yelp/C/converter.page:54 docs/yelp/C/converter.page:61
-#: docs/yelp/C/downloader.page:66 docs/yelp/C/downloader.page:120
-msgid "Default: Off"
-msgstr "Standard: Av"
-
-#. (itstool) path: item/title
-#: docs/yelp/C/converter.page:33
 msgid "Embed Metadata"
 msgstr "Bädda in metadata"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/converter.page:34
+#: docs/yelp/C/converter.page:26
 msgid ""
 "If enabled, Parabolic will tag a media with its relevant information (title, "
 "genre, etc...) and thumbnail if available."
@@ -95,7 +63,7 @@ msgstr ""
 "information (titel, genre, etc...) och miniatyrbild om tillgänglig."
 
 #. (itstool) path: item/p
-#: docs/yelp/C/converter.page:35
+#: docs/yelp/C/converter.page:27
 msgid ""
 "Parabolic will NOT embed the Comment, Description, Synopsis, and Purl fields."
 msgstr ""
@@ -103,37 +71,67 @@ msgstr ""
 "och Purl."
 
 #. (itstool) path: note/p
-#: docs/yelp/C/converter.page:37 docs/yelp/C/converter.page:68
-#: docs/yelp/C/downloader.page:31 docs/yelp/C/downloader.page:59
+#: docs/yelp/C/converter.page:29 docs/yelp/C/converter.page:36
+#: docs/yelp/C/downloader.page:31
 msgid "Default: On"
 msgstr "Standard: På"
 
 #. (itstool) path: item/title
+#: docs/yelp/C/converter.page:33
+msgid "Embed Subtitles"
+msgstr "Bädda in undertexter"
+
+#. (itstool) path: item/p
+#: docs/yelp/C/converter.page:34
+msgid ""
+"If disabled or if embedding fails, downloaded subtitles will be saved to a "
+"separate file."
+msgstr ""
+"Om den inaktiveras eller om inbäddningen misslyckas, kommer nedladdade "
+"undertexter att sparas i separata filer."
+
+#. (itstool) path: item/title
+#: docs/yelp/C/converter.page:40
+msgid "Embed Chapters"
+msgstr "Bädda in kapitel"
+
+#. (itstool) path: item/p
 #: docs/yelp/C/converter.page:41
+msgid ""
+"If enabled, Parabolic will tag a media with chapter information if available."
+msgstr ""
+"Om aktiverat kommer Parabolic att tagga ett media med kapitelinformation om "
+"tillgängligt."
+
+#. (itstool) path: note/p
+#: docs/yelp/C/converter.page:43 docs/yelp/C/converter.page:50
+#: docs/yelp/C/converter.page:58 docs/yelp/C/downloader.page:46
+#: docs/yelp/C/downloader.page:53 docs/yelp/C/downloader.page:101
+msgid "Default: Off"
+msgstr "Standard: Av"
+
+#. (itstool) path: item/title
+#: docs/yelp/C/converter.page:47
 msgid "Crop Audio Thumbnails"
 msgstr "Beskär ljudminiatyrbilder"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/converter.page:42 docs/yelp/C/converter.page:50
-msgid "Only available if Embed Metadata is enabled."
-msgstr "Endast tillgängligt om \"Bädda in metadata\" är aktiverat."
-
-#. (itstool) path: item/p
-#: docs/yelp/C/converter.page:43
+#: docs/yelp/C/converter.page:48
+#, fuzzy
 msgid ""
-"If enabled, Parabolic will automatically turn on the advanced option "
-"<code>Crop Thumbnail</code> for audio downloads."
+"If enabled, Parabolic will crop thumbnails for audio files to be a square "
+"resolution."
 msgstr ""
-"Om aktiverat kommer Parabolic automatiskt att aktivera det avancerade "
-"alternativet <code>Beskär miniatyrbild</code> för ljudnedladdningar."
+"Om aktiverat kommer Parabolic att dela upp videon i flera mindre delar "
+"baserat på dess kapitel."
 
 #. (itstool) path: item/title
-#: docs/yelp/C/converter.page:49
+#: docs/yelp/C/converter.page:54
 msgid "Remove Source Data"
 msgstr "Ta bort källinformation"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/converter.page:51
+#: docs/yelp/C/converter.page:55
 msgid ""
 "If enabled, Parabolic will clear metadata fields containing the URL and "
 "other identifying information of the media source."
@@ -142,7 +140,7 @@ msgstr ""
 "annan identifierande information om mediekällan."
 
 #. (itstool) path: item/p
-#: docs/yelp/C/converter.page:52
+#: docs/yelp/C/converter.page:56
 msgid ""
 "Fields that are cleared: <code>comment</code>, <code>description</code>, "
 "<code>synopsis</code>, <code>purl</code> and <code>handler_name</code> in "
@@ -151,33 +149,6 @@ msgstr ""
 "Fält som rensas: <code>comment</code>, <code>description</code>, "
 "<code>synopsis</code>, <code>purl</code> och <code>handler_name</code> i "
 "varje stream."
-
-#. (itstool) path: item/title
-#: docs/yelp/C/converter.page:58
-msgid "Embed Chapters"
-msgstr "Bädda in kapitel"
-
-#. (itstool) path: item/p
-#: docs/yelp/C/converter.page:59
-msgid ""
-"If enabled, Parabolic will tag a media with chapter information if available."
-msgstr ""
-"Om aktiverat kommer Parabolic att tagga ett media med kapitelinformation om "
-"tillgängligt."
-
-#. (itstool) path: item/title
-#: docs/yelp/C/converter.page:65
-msgid "Embed Subtitles"
-msgstr "Bädda in undertexter"
-
-#. (itstool) path: item/p
-#: docs/yelp/C/converter.page:66
-msgid ""
-"If disabled or if embedding fails, downloaded subtitles will be saved to a "
-"separate file."
-msgstr ""
-"Om den inaktiveras eller om inbäddningen misslyckas, kommer nedladdade "
-"undertexter att sparas i separata filer."
 
 #. (itstool) path: info/title
 #: docs/yelp/C/downloader.page:8
@@ -251,63 +222,11 @@ msgstr "Standard: 5"
 
 #. (itstool) path: item/title
 #: docs/yelp/C/downloader.page:43
-msgid "Subtitles Languages"
-msgstr "Undertexter Språk"
-
-#. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:44
-msgid ""
-"A comma-separated list of two-letter, two-letter with region, and three-"
-"letter language codes to use when selecting languages of subtitles to "
-"download. Only applies when downloading a video with subtitles."
-msgstr ""
-"En kommaseparerad lista med språkkoder på två bokstäver, två bokstäver med "
-"region och tre bokstäver som ska användas när du väljer språk för "
-"undertexter att ladda ner. Gäller endast vid nedladdning av en video med "
-"undertexter."
-
-#. (itstool) path: note/p
-#: docs/yelp/C/downloader.page:46
-msgid ""
-"Different sites can use different language code formats for the same "
-"language. You may encounter one of the following three types: two-letter, "
-"two-letter with region, or three-letter. For example, \"en\", \"en-US\" and "
-"\"eng\" are all used for English. Please specify all valid codes for your "
-"languages for the best results. Auto-generated subtitles will also be "
-"downloaded if available."
-msgstr ""
-"Olika webbplatser kan använda olika språkkodformat för samma språk. Du kan "
-"stöta på en av följande tre typer: två bokstäver, två bokstäver med region "
-"eller tre bokstäver. Till exempel, \"en\", \"en-US\" och \"eng\" används "
-"alla för engelska. Vänligen ange alla giltiga koder för dina språk för bästa "
-"resultat. Auto genererade undertexter kommer också att laddas ner om de är "
-"tillgängliga."
-
-#. (itstool) path: note/p
-#: docs/yelp/C/downloader.page:47
-msgid ""
-"You can specify \"all\" instead to download all subtitles, but without auto-"
-"generated ones."
-msgstr ""
-"Du kan ange \"alla\" istället för att ladda ner alla undertexter, men utan "
-"automatiskt genererade."
-
-#. (itstool) path: note/p
-#: docs/yelp/C/downloader.page:50
-msgid ""
-"Default: Your culture's language codes. For example, on an en-US system the "
-"default would be <code>en,en-US,eng</code>"
-msgstr ""
-"Standard: Ditt lands språkkoder. Till exempel, på ett en-US-system skulle "
-"standarden vara <code>en,en-US,eng</code>"
-
-#. (itstool) path: item/title
-#: docs/yelp/C/downloader.page:56
 msgid "Included Auto-Generated Subtitles"
 msgstr "Inkluderade automatiskt genererade undertexter"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:57
+#: docs/yelp/C/downloader.page:44
 msgid ""
 "Whether or not to included subtitles that are auto-translated to fit the "
 "requested subtitle languages."
@@ -316,12 +235,12 @@ msgstr ""
 "översatta för att passa de begärda undertextspråken."
 
 #. (itstool) path: item/title
-#: docs/yelp/C/downloader.page:63
+#: docs/yelp/C/downloader.page:50
 msgid "Use aria2"
 msgstr "Använd aria2"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:64
+#: docs/yelp/C/downloader.page:51
 msgid ""
 "If enabled, Parabolic will use aria2c to download media. Although using "
 "aria2c can improve download speed, download progress will not be displayed "
@@ -332,12 +251,12 @@ msgstr ""
 "inte nedladdningsförloppet att visas i användargränssnittet."
 
 #. (itstool) path: item/title
-#: docs/yelp/C/downloader.page:70
+#: docs/yelp/C/downloader.page:57
 msgid "Maximum Connections Per Server"
 msgstr "Maximalt antal anslutningar per server"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:71
+#: docs/yelp/C/downloader.page:58
 msgid ""
 "This option only applies when using aria2 is enabled. This option is the "
 "same as the <code>-x</code> flag passed to aria2c."
@@ -346,7 +265,7 @@ msgstr ""
 "är detsamma som flaggan <code>-x</code> som skickas till aria2c."
 
 #. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:74
+#: docs/yelp/C/downloader.page:61
 msgid ""
 "The maximum number of connection that can be used per server. Must be an "
 "integer value between 1 and 32."
@@ -355,17 +274,17 @@ msgstr ""
 "ett heltalsvärde mellan 1 och 32."
 
 #. (itstool) path: note/p
-#: docs/yelp/C/downloader.page:76
+#: docs/yelp/C/downloader.page:63
 msgid "Default: 16"
 msgstr "Standard: 16"
 
 #. (itstool) path: item/title
-#: docs/yelp/C/downloader.page:80
+#: docs/yelp/C/downloader.page:67
 msgid "Minimum Split Size"
 msgstr "Minsta splitstorlek"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:81
+#: docs/yelp/C/downloader.page:68
 msgid ""
 "This option only applies when using aria2 is enabled. This option is the "
 "same as the <code>-k</code> flag passed to aria2c."
@@ -374,7 +293,7 @@ msgstr ""
 "är detsamma som flaggan <code>-k</code> som skickas till aria2c."
 
 #. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:84
+#: docs/yelp/C/downloader.page:71
 msgid ""
 "The minimum size, in MiB, of which to split a file. Must be an integer value "
 "between 1 and 1024."
@@ -383,17 +302,17 @@ msgstr ""
 "mellan 1 och 1024."
 
 #. (itstool) path: note/p
-#: docs/yelp/C/downloader.page:86
+#: docs/yelp/C/downloader.page:73
 msgid "Default: 20"
 msgstr "Standard: 20"
 
 #. (itstool) path: item/title
-#: docs/yelp/C/downloader.page:90 docs/yelp/C/newDownload.page:72
+#: docs/yelp/C/downloader.page:77 docs/yelp/C/newDownload.page:110
 msgid "Speed Limit"
 msgstr "Hastighetsgräns"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:91
+#: docs/yelp/C/downloader.page:78
 msgid ""
 "A limit, in Ki/s, that is applied to downloads only if they have the "
 "advanced option <code>Speed Limit</code> enabled. Must be an integer value "
@@ -404,80 +323,44 @@ msgstr ""
 "ett heltalsvärde mellan 512 och 10240."
 
 #. (itstool) path: note/p
-#: docs/yelp/C/downloader.page:93
+#: docs/yelp/C/downloader.page:80
 msgid "Default: 1024"
 msgstr "Standard: 1024"
 
 #. (itstool) path: item/title
-#: docs/yelp/C/downloader.page:97
+#: docs/yelp/C/downloader.page:84
 msgid "Proxy URL"
 msgstr "Proxy URL"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:98
+#: docs/yelp/C/downloader.page:85
 msgid "The url of the proxy server to use."
 msgstr "URL till proxyservern som ska användas."
 
 #. (itstool) path: item/title
-#: docs/yelp/C/downloader.page:101
-msgid "Cookies File"
-msgstr "Cookies fil"
+#: docs/yelp/C/downloader.page:88
+msgid "Cookies from Browser"
+msgstr ""
 
 #. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:102
+#: docs/yelp/C/downloader.page:89
 msgid ""
-"A .txt file of cookies to pass to yt-dlp when downloading. This may be "
-"useful when downloading media that requires a login, for example: private "
-"YouTube videos."
+"A browser in which to read cookies from and pass to yt-dlp's download engine."
 msgstr ""
-"En .txt-fil med cookies som ska skickas till yt-dlp vid nedladdning. Detta "
-"kan vara användbart när du laddar ner media som kräver inloggning, till "
-"exempel: privata YouTube-videor."
-
-#. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:103
-msgid ""
-"Use one of the following extensions for getting a cookies file from your "
-"browser:"
-msgstr ""
-"Använd ett av följande tillägg för att hämta en cookies fil från din "
-"webbläsare:"
-
-#. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:104
-msgid ""
-"Chrome: <code>https://chrome.google.com/webstore/detail/get-cookiestxt-"
-"locally/cclelndahbckbenkjhflpdbgdldlbecc</code>"
-msgstr ""
-"Chrome: <code>https://chrome.google.com/webstore/detail/get-cookiestxt-"
-"locally/cclelndahbckbenkjhflpdbgdldlbecc</code>"
-
-#. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:105
-msgid ""
-"Firefox: <code>https://addons.mozilla.org/en-US/firefox/addon/cookies-txt/</"
-"code>"
-msgstr ""
-"Firefox: <code>https://addons.mozilla.org/sv-SE/firefox/addon/cookies-txt/</"
-"code>"
 
 #. (itstool) path: note/p
-#: docs/yelp/C/downloader.page:107
-msgid "Use these extensions at your own risk."
-msgstr "Använd dessa tillägg på egen risk."
-
-#. (itstool) path: note/p
-#: docs/yelp/C/downloader.page:110
-msgid "Default: No File Selected"
-msgstr "Standard: Ingen fil har valts"
+#: docs/yelp/C/downloader.page:91
+#, fuzzy
+msgid "Default: None"
+msgstr "Standard: På"
 
 #. (itstool) path: item/title
-#: docs/yelp/C/downloader.page:114
+#: docs/yelp/C/downloader.page:95
 msgid "Use SponsorBlock for YouTube"
 msgstr "Använd SponsorBlock för YouTube"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:115
+#: docs/yelp/C/downloader.page:96
 msgid ""
 "If enabled, Parabolic will apply the SponsorBlock extension to YouTube "
 "downloads."
@@ -486,7 +369,7 @@ msgstr ""
 "YouTube-nedladdningar."
 
 #. (itstool) path: note/p
-#: docs/yelp/C/downloader.page:117
+#: docs/yelp/C/downloader.page:98
 msgid ""
 "SponsorBlock only works on YouTube videos. However, leaving this setting on "
 "will not affect downloads from other sites (i.e. not cause them to fail)."
@@ -571,8 +454,8 @@ msgstr "Backend"
 
 #. (itstool) path: section/p
 #: docs/yelp/C/keyring.page:24
-msgid ""
-"The Keyring feature is backed by the <code>Nickvision.Aura</code> library."
+#, fuzzy
+msgid "The Keyring feature is backed by the <code>libnick</code> library."
 msgstr ""
 "Nyckelringsfunktionen stöds av <code>Nickvision.Aura</code>-biblioteket."
 
@@ -587,10 +470,11 @@ msgstr ""
 
 #. (itstool) path: section/p
 #: docs/yelp/C/keyring.page:26
+#, fuzzy
 msgid ""
 "The library will use you system's credential manager (i.e. DBus secret "
 "service on Linux and Windows Credential Manager on Windows) for securing the "
-"Keyring."
+"Keyring database file."
 msgstr ""
 "Biblioteket kommer att använda systemets behörighetshanterare (dvs. DBus "
 "secret service på Linux och Windows Credential Manager på Windows) för att "
@@ -633,114 +517,6 @@ msgid ""
 msgstr ""
 "<code>Lösenord</code> (valfritt om användarnamnet inte är tomt): Lösenordet "
 "för inloggningsinformationen"
-
-#. (itstool) path: section/title
-#: docs/yelp/C/keyring.page:37
-msgid "Migrating from Password-Secured Keyring to Secret-Secured Keyring"
-msgstr ""
-"Migrera från Password-Secured nyckelring till Secret-Secured nyckelring"
-
-#. (itstool) path: section/p
-#: docs/yelp/C/keyring.page:38
-msgid ""
-"This section applies to users who have enabled a Keyring in Parabolic (in "
-"versions before V2023.9.0) and secured it with a password. Starting with "
-"version 2023.9.0, Parabolic uses the system's credential manager to generate "
-"a random password (secret) to secure the Keyring instead of asking for a "
-"user to provide one. By using the system credential manager, Parabolic can "
-"also automatically unlock the Keyring at startup without user interaction."
-msgstr ""
-"Det här avsnittet gäller användare som har aktiverat en nyckelring i "
-"Parabolic (i versioner före V2023.9.0) och säkrat den med ett lösenord. Från "
-"och med version 2023.9.0 använder Parabolic systemets behörighetshanterare "
-"för att generera ett slumpmässigt lösenord (hemligt) för att säkra "
-"nyckelringen istället för att be en användare att tillhandahålla ett. Genom "
-"att använda systemets behörighetshanterare kan Parabolic också automatiskt "
-"låsa upp nyckelringen vid start utan användarinteraktion."
-
-#. (itstool) path: section/p
-#: docs/yelp/C/keyring.page:39
-msgid ""
-"If you have a password-secured Keyring from before version 2023.9.0, you can "
-"continue to use it in new versions of Parabolic without issue, but you will "
-"still need to provide the password everytime the application starts."
-msgstr ""
-"Om du har en Password-Secured nyckelring från före version 2023.9.0 kan du "
-"fortsätta att använda den i nya versioner av Parabolic utan problem, men du "
-"kommer fortfarande att behöva ange lösenordet varje gång programmet startar."
-
-#. (itstool) path: section/p
-#: docs/yelp/C/keyring.page:40
-msgid ""
-"Follow the rest of this section if you'd like to migrate your existing "
-"credentials and take advantage of the new Keyring where a password is not "
-"required every time."
-msgstr ""
-"Följ resten av det här avsnittet om du vill migrera din befintliga "
-"inloggningsinformation och dra nytta av den nya nyckelringen där ett "
-"lösenord inte krävs varje gång."
-
-#. (itstool) path: note/p
-#: docs/yelp/C/keyring.page:42
-msgid ""
-"You can simply disable the old password-secured Keyring when you update "
-"Parabolic to 2023.9.0 and re-enable the Keyring to get a secret-secured one. "
-"However, this will erase all data from the old Keyring and require you to re-"
-"enter all credentials."
-msgstr ""
-"Du kan helt enkelt inaktivera den gamla Password-Secured nyckelringen när du "
-"uppdaterar Parabolic till 2023.9.0 och återaktivera nyckelringen för att få "
-"en Secret-Secured. Detta kommer dock att radera all data från den gamla "
-"nyckelringen och kräver att du anger alla inloggningsuppgifter igen."
-
-#. (itstool) path: item/p
-#: docs/yelp/C/keyring.page:45
-msgid ""
-"Install <link href=\"https://flathub.org/apps/org.gnome.seahorse."
-"Application\">Passwords and Keys</link>."
-msgstr ""
-"Installera <link href=\"https://flathub.org/apps/org.gnome.seahorse."
-"Application\">Lösenord och nycklar</link>."
-
-#. (itstool) path: item/p
-#: docs/yelp/C/keyring.page:46
-msgid ""
-"Open Parabolic V2023.9.0 or newer at least once. (This will ensure that the "
-"app registers with your system's credential manager)"
-msgstr ""
-"Öppna Parabolic V2023.9.0 eller nyare minst en gång. (Detta säkerställer att "
-"appen registreras hos ditt systems inloggningshanterare)"
-
-#. (itstool) path: item/p
-#: docs/yelp/C/keyring.page:47
-msgid ""
-"Open <code>Passwords and Keys</code> and locate the <code>org.nickvision."
-"tubeconverter</code> entry in the <code>Default Keyring</code>."
-msgstr ""
-"Öppna <code>Lösenord och nycklar</code> och leta reda på <code>org."
-"nickvision.tubeconverter</code>-posten i <code>Standard nyckelring</code>."
-
-#. (itstool) path: item/p
-#: docs/yelp/C/keyring.page:48
-msgid ""
-"Double click the <code>org.nickvision.tubeconverter</code> entry and edit "
-"the <code>Password</code> field. Enter the password that you created and "
-"used for your Keyring in Parabolic."
-msgstr ""
-"Dubbelklicka på posten <code>org.nickvision.tubeconverter</code> och "
-"redigera fältet <code>Lösenord</code>. Ange lösenordet som du skapade och "
-"använde för din nyckelring i Parabolic."
-
-#. (itstool) path: item/p
-#: docs/yelp/C/keyring.page:49
-msgid ""
-"You can now close <code>Passwords and Keys</code> and restart Parabolic. You "
-"will see that upon application startup, the Keyring will now be "
-"automatically unlocked!"
-msgstr ""
-"Du kan nu stänga <code>Lösenord och nycklar</code> och starta om Parabolic. "
-"Du kommer att se att när applikationen startar kommer nyckelringen nu att "
-"låsas upp automatiskt!"
 
 #. (itstool) path: info/title
 #: docs/yelp/C/newDownload.page:8
@@ -802,10 +578,10 @@ msgstr ""
 
 #. (itstool) path: item/p
 #: docs/yelp/C/newDownload.page:34
+#, fuzzy
 msgid ""
-"If keyring is enabled, the user will be asked to chose from a list of named "
-"credentials or can chose to enter manually a different username and/or "
-"password."
+"If credentials are found in the keyring, the user can instead chose from a "
+"list of named credentials to use (or continue to manually enter a credential)"
 msgstr ""
 "Om nyckelring är aktiverad, kommer användaren att bli ombedd att välja från "
 "en lista med namngivna inloggningsuppgifter eller kan välja att manuellt "
@@ -822,9 +598,10 @@ msgstr ""
 
 #. (itstool) path: note/p
 #: docs/yelp/C/newDownload.page:37
+#, fuzzy
 msgid ""
 "For these sites that don't support passing credentials, it is recommended to "
-"upload a Cookies file in Preferences instead."
+"select a browser to use cookies from in Preferences instead."
 msgstr ""
 "För dessa webbplatser som inte stöder överföring av inloggningsinformation, "
 "rekommenderas det att ladda upp en Cookies fil i Inställningar istället."
@@ -872,10 +649,11 @@ msgstr ""
 "upplösningarna för det tillgängliga mediet."
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:51 docs/yelp/C/newDownload.page:66
+#: docs/yelp/C/newDownload.page:51
+#, fuzzy
 msgid ""
 "If the file type is an audio type, the listed qualities will be simply "
-"<code>Best</code> and <code>Worst</code>."
+"<code>Best</code>, <code>Good</code>, and <code>Worst</code>."
 msgstr ""
 "Om filtypen är en ljudtyp kommer de listade kvaliteterna helt enkelt vara "
 "<code>Bäst</code> och <code>Sämsta</code>."
@@ -891,21 +669,25 @@ msgstr ""
 
 #. (itstool) path: item/title
 #: docs/yelp/C/newDownload.page:57
-msgid "Download Subtitle"
-msgstr "Ladda ner undertext"
+#, fuzzy
+msgid "Audio Language"
+msgstr "Undertexter Språk"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/newDownload.page:58
-msgid ""
-"Whether to download and embed subtitle when downloading a video. Languages "
-"for subtitles can be defined in <link xref=\"downloader\">preferences</link>."
+msgid "The language of which to use from the audio part of a media download."
 msgstr ""
-"Om du ska ladda ner och bädda in undertexter när du laddar ner en video. "
-"Språk för undertexter kan definieras i <link "
-"xref=\"Nedladdnings\">inställningarna</link>."
+
+#. (itstool) path: item/p
+#: docs/yelp/C/newDownload.page:59
+msgid ""
+"If no additional languages are available, <code>Default</code> will be the "
+"only option."
+msgstr ""
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:60
+#: docs/yelp/C/newDownload.page:61 docs/yelp/C/newDownload.page:68
+#: docs/yelp/C/newDownload.page:75 docs/yelp/C/newDownload.page:82
 msgid ""
 "The previously used state will be remembered and pre-selected for the next "
 "download."
@@ -914,17 +696,62 @@ msgstr ""
 "nästa nedladdning."
 
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:64
+#: docs/yelp/C/newDownload.page:65
+msgid "Download Subtitle"
+msgstr "Ladda ner undertext"
+
+#. (itstool) path: item/p
+#: docs/yelp/C/newDownload.page:66
+#, fuzzy
+msgid ""
+"Whether to download and embed subtitle when downloading a video. Further "
+"subtitle settings can be configured in <link "
+"xref=\"downloader\">preferences</link>."
+msgstr ""
+"Om du ska ladda ner och bädda in undertexter när du laddar ner en video. "
+"Språk för undertexter kan definieras i <link "
+"xref=\"Nedladdnings\">inställningarna</link>."
+
+#. (itstool) path: item/title
+#: docs/yelp/C/newDownload.page:72
+msgid "Prefer AV1 Codec"
+msgstr "Föredrar AV1 Codec"
+
+#. (itstool) path: item/p
+#: docs/yelp/C/newDownload.page:73
+msgid ""
+"If enabled, Parabolic will prefer videos with the av1 codec when downloading."
+msgstr ""
+"Om det är aktiverat kommer Parabolic att föredra videor med AV1-codec vid "
+"nedladdning."
+
+#. (itstool) path: item/title
+#: docs/yelp/C/newDownload.page:79
+msgid "Split Chapters"
+msgstr "Dela upp kapitlen"
+
+#. (itstool) path: item/p
+#: docs/yelp/C/newDownload.page:80
+#, fuzzy
+msgid ""
+"If enabled, Parabolic will split a video download into multiple smaller "
+"files based on its chapters."
+msgstr ""
+"Om aktiverat kommer Parabolic att dela upp videon i flera mindre delar "
+"baserat på dess kapitel."
+
+#. (itstool) path: item/title
+#: docs/yelp/C/newDownload.page:86
 msgid "Save Folder"
 msgstr "Lagringsmapp"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:65
+#: docs/yelp/C/newDownload.page:87
 msgid "The folder at which to save the download to."
 msgstr "Mappen där nedladdningen ska sparas."
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:68
+#: docs/yelp/C/newDownload.page:89
 msgid ""
 "The previously used folder will be remembered and pre-selected for the next "
 "download."
@@ -932,120 +759,293 @@ msgstr ""
 "Den tidigare använda mappen kommer att kommas ihåg och blir förvald för "
 "nästa nedladdning."
 
+#. (itstool) path: item/title
+#: docs/yelp/C/newDownload.page:93
+msgid "File Name"
+msgstr "Filnamn"
+
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:73
-msgid ""
-"If enabled, Parabolic will limit the download's speed with the speed "
-"configured in Preferences."
-msgstr ""
-"Om aktiverat kommer Parabolic att begränsa nedladdningshastigheten med den "
-"hastighet som konfigurerats i Inställningar."
+#: docs/yelp/C/newDownload.page:94
+msgid "The file name to use when saving the download."
+msgstr "Filnamnet som ska användas när nedladdningen sparas."
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:75 docs/yelp/C/newDownload.page:83
-#: docs/yelp/C/newDownload.page:93 docs/yelp/C/newDownload.page:101
-#: docs/yelp/C/newDownload.page:108
-msgid "Available in the <code>Advanced Options</code> section."
-msgstr "Tillgängligt i avsnittet <code>Avancerade alternativ</code>."
+#: docs/yelp/C/newDownload.page:96
+msgid "Default: The title of the media"
+msgstr "Standard: Mediets titel"
 
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:79
-msgid "Prefer AV1 Codec"
-msgstr "Föredrar AV1 Codec"
-
-#. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:80
-msgid "Only available for video (mp4, webm) downloads"
-msgstr "Endast tillgängligt för nedladdning av video (mp4, webm)"
-
-#. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:81
-msgid ""
-"If enabled, Parabolic will prefer videos with the av1 codec when downloading."
+#: docs/yelp/C/newDownload.page:100
+msgid "Time Frame"
 msgstr ""
-"Om det är aktiverat kommer Parabolic att föredra videor med AV1-codec vid "
-"nedladdning."
-
-#. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:86
-msgid ""
-"This option's state will be remembered and restored for future downloads."
-msgstr ""
-"Det här alternativets tillstånd kommer att kommas ihåg och blir återställt "
-"vid framtida nedladdningar."
-
-#. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:90
-msgid "Split Chapters"
-msgstr "Dela upp kapitlen"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:91
+#: docs/yelp/C/newDownload.page:101
+#, fuzzy
 msgid ""
-"If enabled, Parabolic will split the video into multiple smaller ones based "
-"on its chapters."
-msgstr ""
-"Om aktiverat kommer Parabolic att dela upp videon i flera mindre delar "
-"baserat på dess kapitel."
-
-#. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:97
-msgid "Crop Thumbnail"
-msgstr "Beskär miniatyrbild"
-
-#. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:98
-msgid ""
-"Only available if <code>Embed Metadata</code> is enabled in Preferences."
-msgstr ""
-"Endast tillgängligt om <code>Bädda in metadata</code> är aktiverat i "
-"Inställningar."
-
-#. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:99
-msgid ""
-"If enabled, Parabolic will crop a download's embedded thumbnail as square. "
-"This is useful when downloading music who's album images are usually square."
-msgstr ""
-"Om det är aktiverat kommer Parabolic att beskära en nedladdad inbäddad "
-"miniatyr som kvadrat. Detta är användbart när du laddar ner musik vars "
-"albumbilder vanligtvis är fyrkantiga."
-
-#. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:105
-msgid "Download Specific Timeframe"
-msgstr "Ladda ner specifik tidsram"
-
-#. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:106
-msgid ""
-"If enabled, the user will be able to enter a start timeframe and an end "
-"timeframe for a section of the media to download."
+"The user can enter a start time frame and an end time frame to download a "
+"specific section of the media."
 msgstr ""
 "Om aktiverat kommer användaren att kunna ange en tidsram med en starttid och "
 "sluttid för en del av median att ladda ner."
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:111
+#: docs/yelp/C/newDownload.page:103
+#, fuzzy
+msgid "Default: The whole media length"
+msgstr "Standard: Mediets titel"
+
+#. (itstool) path: note/p
+#: docs/yelp/C/newDownload.page:106
+#, fuzzy
 msgid ""
 "Enabling this option will disable the use of aria2 as the downloader for "
-"this download if it is enabled in Preferences."
+"this download, even if it is enabled in Preferences."
 msgstr ""
 "Om du aktiverar det här alternativet inaktiverar du användningen av aria2 "
 "som nedladdningsverktyg för denna nedladdning om det är aktiverat i "
 "Inställningar."
 
-#. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:115
-msgid "File Name"
-msgstr "Filnamn"
-
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:116
-msgid "The file name to use when saving the download."
-msgstr "Filnamnet som ska användas när nedladdningen sparas."
+#: docs/yelp/C/newDownload.page:111
+#, fuzzy
+msgid ""
+"If enabled, Parabolic will limit the download's speed with the speed "
+"configured in <link xref=\"downloader\">Preferences</link>."
+msgstr ""
+"Om aktiverat kommer Parabolic att begränsa nedladdningshastigheten med den "
+"hastighet som konfigurerats i Inställningar."
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:118
-msgid "Default: The title of the media"
-msgstr "Standard: Mediets titel"
+#: docs/yelp/C/newDownload.page:113
+msgid "Available in the <code>Advanced Options</code> section."
+msgstr "Tillgängligt i avsnittet <code>Avancerade alternativ</code>."
+
+#~ msgid "Disallow Conversions"
+#~ msgstr "Tillåt inte konverteringar"
+
+#~ msgid ""
+#~ "If enabled, Parabolic will download the appropriate video/audio format "
+#~ "for the selected quality without converting to other formats."
+#~ msgstr ""
+#~ "Om aktiverat kommer Parabolic att ladda ner lämpligt video-/ljudformat "
+#~ "för den valda kvaliteten utan att konvertera till andra format."
+
+#~ msgid ""
+#~ "This means that you will be unable to select a file format when "
+#~ "downloading a media. But, you will save time in downloading as the "
+#~ "Converter will not be run."
+#~ msgstr ""
+#~ "Det betyder att du inte kommer att kunna välja ett filformat när du "
+#~ "laddar ner ett media. Men du kommer att spara tid vid nedladdningen "
+#~ "eftersom Konverteraren inte kommer att köras."
+
+#~ msgid "Only available if Embed Metadata is enabled."
+#~ msgstr "Endast tillgängligt om \"Bädda in metadata\" är aktiverat."
+
+#~ msgid ""
+#~ "If enabled, Parabolic will automatically turn on the advanced option "
+#~ "<code>Crop Thumbnail</code> for audio downloads."
+#~ msgstr ""
+#~ "Om aktiverat kommer Parabolic automatiskt att aktivera det avancerade "
+#~ "alternativet <code>Beskär miniatyrbild</code> för ljudnedladdningar."
+
+#~ msgid ""
+#~ "A comma-separated list of two-letter, two-letter with region, and three-"
+#~ "letter language codes to use when selecting languages of subtitles to "
+#~ "download. Only applies when downloading a video with subtitles."
+#~ msgstr ""
+#~ "En kommaseparerad lista med språkkoder på två bokstäver, två bokstäver "
+#~ "med region och tre bokstäver som ska användas när du väljer språk för "
+#~ "undertexter att ladda ner. Gäller endast vid nedladdning av en video med "
+#~ "undertexter."
+
+#~ msgid ""
+#~ "Different sites can use different language code formats for the same "
+#~ "language. You may encounter one of the following three types: two-letter, "
+#~ "two-letter with region, or three-letter. For example, \"en\", \"en-US\" "
+#~ "and \"eng\" are all used for English. Please specify all valid codes for "
+#~ "your languages for the best results. Auto-generated subtitles will also "
+#~ "be downloaded if available."
+#~ msgstr ""
+#~ "Olika webbplatser kan använda olika språkkodformat för samma språk. Du "
+#~ "kan stöta på en av följande tre typer: två bokstäver, två bokstäver med "
+#~ "region eller tre bokstäver. Till exempel, \"en\", \"en-US\" och \"eng\" "
+#~ "används alla för engelska. Vänligen ange alla giltiga koder för dina "
+#~ "språk för bästa resultat. Auto genererade undertexter kommer också att "
+#~ "laddas ner om de är tillgängliga."
+
+#~ msgid ""
+#~ "You can specify \"all\" instead to download all subtitles, but without "
+#~ "auto-generated ones."
+#~ msgstr ""
+#~ "Du kan ange \"alla\" istället för att ladda ner alla undertexter, men "
+#~ "utan automatiskt genererade."
+
+#~ msgid ""
+#~ "Default: Your culture's language codes. For example, on an en-US system "
+#~ "the default would be <code>en,en-US,eng</code>"
+#~ msgstr ""
+#~ "Standard: Ditt lands språkkoder. Till exempel, på ett en-US-system skulle "
+#~ "standarden vara <code>en,en-US,eng</code>"
+
+#~ msgid "Cookies File"
+#~ msgstr "Cookies fil"
+
+#~ msgid ""
+#~ "A .txt file of cookies to pass to yt-dlp when downloading. This may be "
+#~ "useful when downloading media that requires a login, for example: private "
+#~ "YouTube videos."
+#~ msgstr ""
+#~ "En .txt-fil med cookies som ska skickas till yt-dlp vid nedladdning. "
+#~ "Detta kan vara användbart när du laddar ner media som kräver inloggning, "
+#~ "till exempel: privata YouTube-videor."
+
+#~ msgid ""
+#~ "Use one of the following extensions for getting a cookies file from your "
+#~ "browser:"
+#~ msgstr ""
+#~ "Använd ett av följande tillägg för att hämta en cookies fil från din "
+#~ "webbläsare:"
+
+#~ msgid ""
+#~ "Chrome: <code>https://chrome.google.com/webstore/detail/get-cookiestxt-"
+#~ "locally/cclelndahbckbenkjhflpdbgdldlbecc</code>"
+#~ msgstr ""
+#~ "Chrome: <code>https://chrome.google.com/webstore/detail/get-cookiestxt-"
+#~ "locally/cclelndahbckbenkjhflpdbgdldlbecc</code>"
+
+#~ msgid ""
+#~ "Firefox: <code>https://addons.mozilla.org/en-US/firefox/addon/cookies-txt/"
+#~ "</code>"
+#~ msgstr ""
+#~ "Firefox: <code>https://addons.mozilla.org/sv-SE/firefox/addon/cookies-txt/"
+#~ "</code>"
+
+#~ msgid "Use these extensions at your own risk."
+#~ msgstr "Använd dessa tillägg på egen risk."
+
+#~ msgid "Default: No File Selected"
+#~ msgstr "Standard: Ingen fil har valts"
+
+#~ msgid "Migrating from Password-Secured Keyring to Secret-Secured Keyring"
+#~ msgstr ""
+#~ "Migrera från Password-Secured nyckelring till Secret-Secured nyckelring"
+
+#~ msgid ""
+#~ "This section applies to users who have enabled a Keyring in Parabolic (in "
+#~ "versions before V2023.9.0) and secured it with a password. Starting with "
+#~ "version 2023.9.0, Parabolic uses the system's credential manager to "
+#~ "generate a random password (secret) to secure the Keyring instead of "
+#~ "asking for a user to provide one. By using the system credential manager, "
+#~ "Parabolic can also automatically unlock the Keyring at startup without "
+#~ "user interaction."
+#~ msgstr ""
+#~ "Det här avsnittet gäller användare som har aktiverat en nyckelring i "
+#~ "Parabolic (i versioner före V2023.9.0) och säkrat den med ett lösenord. "
+#~ "Från och med version 2023.9.0 använder Parabolic systemets "
+#~ "behörighetshanterare för att generera ett slumpmässigt lösenord (hemligt) "
+#~ "för att säkra nyckelringen istället för att be en användare att "
+#~ "tillhandahålla ett. Genom att använda systemets behörighetshanterare kan "
+#~ "Parabolic också automatiskt låsa upp nyckelringen vid start utan "
+#~ "användarinteraktion."
+
+#~ msgid ""
+#~ "If you have a password-secured Keyring from before version 2023.9.0, you "
+#~ "can continue to use it in new versions of Parabolic without issue, but "
+#~ "you will still need to provide the password everytime the application "
+#~ "starts."
+#~ msgstr ""
+#~ "Om du har en Password-Secured nyckelring från före version 2023.9.0 kan "
+#~ "du fortsätta att använda den i nya versioner av Parabolic utan problem, "
+#~ "men du kommer fortfarande att behöva ange lösenordet varje gång "
+#~ "programmet startar."
+
+#~ msgid ""
+#~ "Follow the rest of this section if you'd like to migrate your existing "
+#~ "credentials and take advantage of the new Keyring where a password is not "
+#~ "required every time."
+#~ msgstr ""
+#~ "Följ resten av det här avsnittet om du vill migrera din befintliga "
+#~ "inloggningsinformation och dra nytta av den nya nyckelringen där ett "
+#~ "lösenord inte krävs varje gång."
+
+#~ msgid ""
+#~ "You can simply disable the old password-secured Keyring when you update "
+#~ "Parabolic to 2023.9.0 and re-enable the Keyring to get a secret-secured "
+#~ "one. However, this will erase all data from the old Keyring and require "
+#~ "you to re-enter all credentials."
+#~ msgstr ""
+#~ "Du kan helt enkelt inaktivera den gamla Password-Secured nyckelringen när "
+#~ "du uppdaterar Parabolic till 2023.9.0 och återaktivera nyckelringen för "
+#~ "att få en Secret-Secured. Detta kommer dock att radera all data från den "
+#~ "gamla nyckelringen och kräver att du anger alla inloggningsuppgifter igen."
+
+#~ msgid ""
+#~ "Install <link href=\"https://flathub.org/apps/org.gnome.seahorse."
+#~ "Application\">Passwords and Keys</link>."
+#~ msgstr ""
+#~ "Installera <link href=\"https://flathub.org/apps/org.gnome.seahorse."
+#~ "Application\">Lösenord och nycklar</link>."
+
+#~ msgid ""
+#~ "Open Parabolic V2023.9.0 or newer at least once. (This will ensure that "
+#~ "the app registers with your system's credential manager)"
+#~ msgstr ""
+#~ "Öppna Parabolic V2023.9.0 eller nyare minst en gång. (Detta säkerställer "
+#~ "att appen registreras hos ditt systems inloggningshanterare)"
+
+#~ msgid ""
+#~ "Open <code>Passwords and Keys</code> and locate the <code>org.nickvision."
+#~ "tubeconverter</code> entry in the <code>Default Keyring</code>."
+#~ msgstr ""
+#~ "Öppna <code>Lösenord och nycklar</code> och leta reda på <code>org."
+#~ "nickvision.tubeconverter</code>-posten i <code>Standard nyckelring</code>."
+
+#~ msgid ""
+#~ "Double click the <code>org.nickvision.tubeconverter</code> entry and edit "
+#~ "the <code>Password</code> field. Enter the password that you created and "
+#~ "used for your Keyring in Parabolic."
+#~ msgstr ""
+#~ "Dubbelklicka på posten <code>org.nickvision.tubeconverter</code> och "
+#~ "redigera fältet <code>Lösenord</code>. Ange lösenordet som du skapade och "
+#~ "använde för din nyckelring i Parabolic."
+
+#~ msgid ""
+#~ "You can now close <code>Passwords and Keys</code> and restart Parabolic. "
+#~ "You will see that upon application startup, the Keyring will now be "
+#~ "automatically unlocked!"
+#~ msgstr ""
+#~ "Du kan nu stänga <code>Lösenord och nycklar</code> och starta om "
+#~ "Parabolic. Du kommer att se att när applikationen startar kommer "
+#~ "nyckelringen nu att låsas upp automatiskt!"
+
+#~ msgid "Only available for video (mp4, webm) downloads"
+#~ msgstr "Endast tillgängligt för nedladdning av video (mp4, webm)"
+
+#~ msgid ""
+#~ "This option's state will be remembered and restored for future downloads."
+#~ msgstr ""
+#~ "Det här alternativets tillstånd kommer att kommas ihåg och blir "
+#~ "återställt vid framtida nedladdningar."
+
+#~ msgid "Crop Thumbnail"
+#~ msgstr "Beskär miniatyrbild"
+
+#~ msgid ""
+#~ "Only available if <code>Embed Metadata</code> is enabled in Preferences."
+#~ msgstr ""
+#~ "Endast tillgängligt om <code>Bädda in metadata</code> är aktiverat i "
+#~ "Inställningar."
+
+#~ msgid ""
+#~ "If enabled, Parabolic will crop a download's embedded thumbnail as "
+#~ "square. This is useful when downloading music who's album images are "
+#~ "usually square."
+#~ msgstr ""
+#~ "Om det är aktiverat kommer Parabolic att beskära en nedladdad inbäddad "
+#~ "miniatyr som kvadrat. Detta är användbart när du laddar ner musik vars "
+#~ "albumbilder vanligtvis är fyrkantiga."
+
+#~ msgid "Download Specific Timeframe"
+#~ msgstr "Ladda ner specifik tidsram"

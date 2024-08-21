@@ -21,9 +21,9 @@ document.addEventListener('DOMContentLoaded', function() {
 <section id=""><div class="inner">
 <div class="hgroup pagewide"><h2 class="title"><span class="title">Backend</span></h2></div>
 <div class="region"><div class="contents pagewide">
-<p class="p">La fonctionnalité de trousseau est fournie par la bibliothèque <span class="code">Nickvision.Aura</span>.</p>
+<p class="p">The Keyring feature is backed by the <span class="code">libnick</span> library.</p>
 <p class="p">Cette bibliothèque utilise SQLCipher pour stocker vos identifiants de manière sécurisée et sans dépendance à une plateforme.</p>
-<p class="p">La bibliothèque utilisera le gestionnaire d’identifiants de votre système (par exemple DBus secret service sur Linux et Gestionnaire d’identifiants de Windows sur Windows) pour sécuriser le Trousseau.</p>
+<p class="p">The library will use you system's credential manager (i.e. DBus secret service on Linux and Windows Credential Manager on Windows) for securing the Keyring database file.</p>
 </div></div>
 </div></section><section id=""><div class="inner">
 <div class="hgroup pagewide"><h2 class="title"><span class="title">Enregistrer un identifiant</span></h2></div>
@@ -33,28 +33,6 @@ document.addEventListener('DOMContentLoaded', function() {
 <p class="p"><span class="code">URL</span> (optionnelle) : L’URL de l’identifiant</p>
 <p class="p"><span class="code">Nom d’utilisateur</span> (optionnel si le mot de passe n’est pas vide) : Le nom d’utilisateur de l’identifiant</p>
 <p class="p"><span class="code">Mot de passe</span> (optionnel si le nom d’utilisateur n’est pas vide) : Le mot de passe de l’identifiant</p>
-</div></div>
-</div></section><section id=""><div class="inner">
-<div class="hgroup pagewide"><h2 class="title"><span class="title">Migration depuis un Trousseau sécurisé par mot de passe à un Trousseau sécurisé par un secret</span></h2></div>
-<div class="region"><div class="contents pagewide">
-<p class="p">Cette section s’applique aux utilisateurs qui ont activé un Trousseau dans Parabole (dans les versions antérieures à V2023.9.0) et l’ont sécurisé par un mot de passe. À partir de la version 2023.9.0, Parabolic utilise le gestionnaire d’identifiants du système pour générer un mot de passe aléatoire (secret) afin de sécuriser le Trousseau au lieu de demander à l’utilisateur d’en fournir un. En utilisant le gestionnaire d’identifiants du système, Parabole peut également déverrouiller automatiquement le porte-clés au démarrage, sans intervention de l’utilisateur.</p>
-<p class="p">Si vous avez un Trousseau sécurisé par un mot de passe datant d’avant la version 2023.9.0, vous pouvez continuer à l’utiliser dans les nouvelles versions de Parabole sans problème, mais vous devrez continuer à fournir le mot de passe à chaque démarrage de l’application.</p>
-<p class="p">Suivez le reste de cette section si vous souhaitez migrer vos identifiants existants et profiter du nouveau Trousseau où un mot de passe n’est pas nécessaire à chaque fois.</p>
-<div class="note" title="Note">
-<svg height="24" width="24" version="1.1">
- <g>
-  <path class="yelp-svg-fill" d="m4 3h16c0.554 0 1 0.446 1 1v11h-6v6h-11c-0.554 0-1-0.446-1-1v-16c0-0.554 0.446-1 1-1z"></path>
-  <path class="yelp-svg-fill" d="m17 16h4l-5 5v-4c0-0.554 0.446-1 1-1z"></path>
- </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Vous pouvez simplement désactiver l’ancien Trousseau sécurisé par mot de passe lorsque vous mettez à jour Parabole vers la version 2023.9.0 et réactiver le Trousseau pour en obtenir un sécurisé par un secret. Cependant, cela effacera toutes les données de l’ancien trousseau et vous devrez saisir à nouveau toutes les informations d’identification.</p></div></div></div>
-</div>
-<div class="steps"><div class="inner"><div class="region"><ol class="steps">
-<li class="steps"><p class="p">Installez <span class="link"><a href="https://flathub.org/apps/org.gnome.seahorse.Application" title="https://flathub.org/apps/org.gnome.seahorse.Application">Mots de passe et clés</a></span>.</p></li>
-<li class="steps"><p class="p">Ouvrez Parabole V2023.9.0 ou une version plus récente au moins une fois. (Cela permettra à l’application de s’enregistrer dans le gestionnaire d’identifiants de votre système)</p></li>
-<li class="steps"><p class="p">Ouvres <span class="code">Mots de passe et clés</span> et repérez l’entrée <span class="code">org.nickvision.tubeconverter</span> dans le <span class="code">Trousseau par défaut</span>.</p></li>
-<li class="steps"><p class="p">Double-cliquez sur l’entrée <span class="code">org.nickvision.tubeconverter</span> et modifiez le champ <span class="code">Mot de passe</span>. Entrez le mot de passe que vous avez créé et utilisé pour votre Trousseau dans Parabole.</p></li>
-<li class="steps"><p class="p">Vous pouvez maintenant fermer <span class="code">Mots de passe et clés</span> et redémarrer Parabole. Vous verrez qu’au démarrage de l’application, le Trousseau sera automatiquement déverrouillé !</p></li>
-</ol></div></div></div>
 </div></div>
 </div></section><section class="links" role="navigation"><div class="inner">
 <div class="hgroup pagewide"></div>
@@ -70,8 +48,8 @@ document.addEventListener('DOMContentLoaded', function() {
 <div class="hgroup"><h2><span class="title">À propos</span></h2></div>
 <div class="region"><div class="contents">
 <div class="copyrights">
-<div class="copyright">© 2023 Nicholas Logozzo</div>
-<div class="copyright">© 2023 Nicholas Logozzo</div>
+<div class="copyright">© 2023-2024 Nicholas Logozzo</div>
+<div class="copyright">© 2023-2024 Nicholas Logozzo</div>
 </div>
 <div class="credits">
 <div class="credits-authors">

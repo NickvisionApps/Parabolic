@@ -5,11 +5,11 @@
 	<title type="link">Downloader 🌐</title>
 	<credit type="author copyright">
 		<name>Nicholas Logozzo</name>
-		<years its:translate="no">2023</years>
+		<years its:translate="no">2023-2024</years>
 	</credit>
 	<credit type="publisher copyright">
 		<name>Nicholas Logozzo</name>
-		<years its:translate="no">2023</years>
+		<years its:translate="no">2023-2024</years>
 	</credit>
 	<license href="http://creativecommons.org/licenses/by/4.0/" its:translate="no"><p>Creative Commons Attribution 4.0 International License</p></license>
 </info>
@@ -35,21 +35,10 @@
 		</note>
     </item>
     <item>
-        <title>Untertitelsprachen</title>
-        <p>Eine durch Kommata getrennte Liste von Sprachcodes mit zwei Buchstaben, zwei Buchstaben mit Region oder drei Buchstaben. Die Liste wird bei der Sprachauswahl der herunterzuladenden Untertitel verwendet. Findet nur Anwendung, wenn ein Video mit Untertiteln heruntergeladen wird.</p>
-        <note>
-            <p>Unterschiedliche Webseiten nutzen unterschiedliche Sprachcodeformate für dieselbe Sprache. Verwendet werden beispielsweise Sprachcodes mit zwei Buchstaben, mit zwei Buchstaben und einer Region oder mit drei Buchstaben. Beispielsweise werden "en", "en-US" und "eng" alle für Englisch verwendet. Um die besten Ergebnisse zu erzielen, gib bitte alle gültigen Codes an. Autogenerierte Untertitel werden auch heruntergeladen, wenn diese verfügbar sind.</p>
-            <p>Du kannst "all" angeben um alle nicht-autogenerierten Untertitel herunterzuladen.</p>
-        </note>
-        <note style="advanced">
-            <p>Standardeinstellung: Die Sprachcodes deiner Kultur. Auf einem US-amerkanischen System wäre das beispielsweise <code>en,en-US,eng</code></p>
-        </note>
-    </item>
-    <item>
         <title>Enthaltene automatisch generierte Untertitel</title>
         <p>Whether or not to included subtitles that are auto-translated to fit the requested subtitle languages.</p>
         <note style="advanced">
-            <p>Standardeinstellung: Ein</p>
+            <p>Standardeinstellung: Aus</p>
         </note>
     </item>
     <item>
@@ -87,16 +76,10 @@
         <p>Die URL des zu verwendenden Proxyservers.</p>
     </item>
     <item>
-        <title>Cookie-Datei</title>
-        <p>Eine .txt-Datei mit Cookies, die beim Herunterladen an yt-dlp übergeben werden. Das kann nützlich sein, wenn du Medien herunterlädst, die eine Anmeldung erfordern, z. B. private YouTube-Videos.</p>
-        <p>Du kannst eine der folgenden Erweiterungen nutzen, um von deinem Browser eine Cookie-Datei zu erhalten:</p>
-        <p>Chrome: <code>https://chrome.google.com/webstore/detail/get-cookiestxt-locally/cclelndahbckbenkjhflpdbgdldlbecc</code></p>
-        <p>Firefox: <code>https://addons.mozilla.org/en-US/firefox/addon/cookies-txt/</code></p>
-        <note>
-            <p>Die Nutzung dieser Erweiterungen erfolgt auf eigene Gefahr.</p>
-        </note>
+        <title>Cookies from Browser</title>
+        <p>A browser in which to read cookies from and pass to yt-dlp's download engine.</p>
 		<note style="advanced">
-			<p>Standardeinstellung: Keine Datei ausgewählt</p>
+			<p>Default: None</p>
 		</note>
     </item>
     <item>

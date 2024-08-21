@@ -64,39 +64,6 @@ document.addEventListener('DOMContentLoaded', function() {
 </svg><div class="inner"><div class="region"><div class="contents"><p class="p">پیش فرض: ۵</p></div></div></div>
 </div>
 </dd>
-<dt class="terms">زبان‌های زیرنویس</dt>
-<dd class="terms">
-<p class="p">فهرستی از کدهای زبان دو حرفی، دو حرفی با منطقه و سه حرفی جدا شده با کاما برای استفاده هنگام انتخاب زبان زیرنویس‌ها برای دانلود. فقط هنگام بارگیری ویدیو با زیرنویس اعمال می شود.</p>
-<div class="note" title="نکته">
-<svg height="24" width="24" version="1.1">
- <g>
-  <path class="yelp-svg-fill" d="m4 3h16c0.554 0 1 0.446 1 1v11h-6v6h-11c-0.554 0-1-0.446-1-1v-16c0-0.554 0.446-1 1-1z"></path>
-  <path class="yelp-svg-fill" d="m17 16h4l-5 5v-4c0-0.554 0.446-1 1-1z"></path>
- </g>
-</svg><div class="inner"><div class="region"><div class="contents">
-<p class="p">Different sites can use different language code formats for the same language. You may encounter one of the following three types: two-letter, two-letter with region, or three-letter. For example, "en", "en-US" and "eng" are all used for English. Please specify all valid codes for your languages for the best results. Auto-generated subtitles will also be downloaded if available.</p>
-<p class="p">به جای آن می‌توانید «همه» را برای دانلود همه زیرنویس‌ها، اما بدون زیرنویس‌هایی که به‌طور خودکار تولید می‌شوند، مشخص کنید.</p>
-</div></div></div>
-</div>
-<div class="note note-advanced" title="پیشرفته">
-<svg height="24" width="24" version="1.1">
- <g>
-  <path class="yelp-svg-fill" d="m5.4473 12.572c-2.039 0.957-3.4473 3.019-3.4473 5.428v4h20v-4c0-2.406-1.406-4.466-3.441-5.424a8 8 0 0 1 -6.559 3.424 8 8 0 0 1 -6.5527 -3.428z"></path>
-  <path class="yelp-svg-fill" d="m12 3a5 5 0 0 0 -5 5 5 5 0 0 0 5 5 5 5 0 0 0 5 -5 5 5 0 0 0 -5 -5zm0 3a2 2 0 0 1 2 2 2 2 0 0 1 -2 2 2 2 0 0 1 -2 -2 2 2 0 0 1 2 -2z"></path>
-  <path class="yelp-svg-fill" d="m15.312 6 3.688 1v2l-3.4688 1z"></path>
-  <path class="yelp-svg-fill" d="m14 11.312-1 3.688h-2l-1-3.469z"></path>
-  <path class="yelp-svg-fill" d="m10 4.6875 1-3.6875h2l1 3.4688z"></path>
-  <path class="yelp-svg-fill" d="m8.6875 10-3.6875-1v-2l3.4688-1z"></path>
-  <path class="yelp-svg-fill" d="m12.928 4.2435 3.3146-1.9003 1.4142 1.4142-1.7457 3.1599z"></path>
-  <path class="yelp-svg-fill" d="m15.757 8.9281 1.9003 3.3146-1.4142 1.4142-3.1599-1.7457z"></path>
-  <path class="yelp-svg-fill" d="m8.2435 7.0719-1.9004-3.3145 1.4143-1.4143 3.1596 1.7457z"></path>
-  <path class="yelp-svg-fill" d="m11.072 11.757-3.3146 1.9-1.4143-1.414 1.7457-3.1602z"></path>
- </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">
-                Default: Your culture's language codes. For example, on an en-US system the default would be <span class="code">en,en-US,eng</span>
-            </p></div></div></div>
-</div>
-</dd>
 <dt class="terms">شامل زیرنویس‌های تولید شده خودکار</dt>
 <dd class="terms">
 <p class="p">این که آیا زیرنویس‌هایی را شامل می‌شود که به صورت خودکار ترجمه می شوند تا متناسب با زبان‌های زیرنویس درخواست شده باشند.</p>
@@ -114,7 +81,7 @@ document.addEventListener('DOMContentLoaded', function() {
   <path class="yelp-svg-fill" d="m8.2435 7.0719-1.9004-3.3145 1.4143-1.4143 3.1596 1.7457z"></path>
   <path class="yelp-svg-fill" d="m11.072 11.757-3.3146 1.9-1.4143-1.414 1.7457-3.1602z"></path>
  </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">پیش فرض: روشن</p></div></div></div>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">پیش فرض: خاموش</p></div></div></div>
 </div>
 </dd>
 <dt class="terms">از aria2 استفاده کنید</dt>
@@ -205,20 +172,9 @@ document.addEventListener('DOMContentLoaded', function() {
 </dd>
 <dt class="terms">URL پروکسی</dt>
 <dd class="terms"><p class="p">آدرس سرور پروکسی مورد استفاده.</p></dd>
-<dt class="terms">فایل کوکی ها</dt>
+<dt class="terms">Cookies from Browser</dt>
 <dd class="terms">
-<p class="p">یک فایل txt از کوکی‌ها برای ارسال به yt-dlp در هنگام بارگیری. این ممکن است هنگام بارگیری رسانه ای که نیاز به ورود به سیستم دارد مفید باشد، به عنوان مثال: ویدیوهای خصوصی YouTube.</p>
-<p class="p">برای دریافت فایل کوکی از مرورگر خود از یکی از پسوندهای زیر استفاده کنید:</p>
-<p class="p">Chrome: <span class="code">https://chrome.google.com/webstore/detail/get-cookiestxt-locally/cclelndahbckbenkjhflpdbgdldlbecc</span></p>
-<p class="p">Firefox: <span class="code">https://addons.mozilla.org/en-US/firefox/addon/cookies-txt/</span></p>
-<div class="note" title="نکته">
-<svg height="24" width="24" version="1.1">
- <g>
-  <path class="yelp-svg-fill" d="m4 3h16c0.554 0 1 0.446 1 1v11h-6v6h-11c-0.554 0-1-0.446-1-1v-16c0-0.554 0.446-1 1-1z"></path>
-  <path class="yelp-svg-fill" d="m17 16h4l-5 5v-4c0-0.554 0.446-1 1-1z"></path>
- </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">از این افزونه‌ها با مسئولیت خود استفاده کنید.</p></div></div></div>
-</div>
+<p class="p">A browser in which to read cookies from and pass to yt-dlp's download engine.</p>
 <div class="note note-advanced" title="پیشرفته">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -233,7 +189,7 @@ document.addEventListener('DOMContentLoaded', function() {
   <path class="yelp-svg-fill" d="m8.2435 7.0719-1.9004-3.3145 1.4143-1.4143 3.1596 1.7457z"></path>
   <path class="yelp-svg-fill" d="m11.072 11.757-3.3146 1.9-1.4143-1.414 1.7457-3.1602z"></path>
  </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">پیش فرض: هیچ فایلی انتخاب نشده است</p></div></div></div>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Default: None</p></div></div></div>
 </div>
 </dd>
 <dt class="terms">از SponsorBlock برای YouTube استفاده کنید</dt>
@@ -280,8 +236,8 @@ document.addEventListener('DOMContentLoaded', function() {
 <div class="hgroup"><h2><span class="title">درباره</span></h2></div>
 <div class="region"><div class="contents">
 <div class="copyrights">
-<div class="copyright">© 2023 Nicholas Logozzo</div>
-<div class="copyright">© 2023 Nicholas Logozzo</div>
+<div class="copyright">© 2023-2024 Nicholas Logozzo</div>
+<div class="copyright">© 2023-2024 Nicholas Logozzo</div>
 </div>
 <div class="credits">
 <div class="credits-authors">
