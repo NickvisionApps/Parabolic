@@ -1,5 +1,6 @@
 #include "controls/downloadrow.h"
 #include "ui_downloadrow.h"
+#include <cmath>
 #include <format>
 #include <QDesktopServices>
 #include <libnick/helpers/codehelpers.h>

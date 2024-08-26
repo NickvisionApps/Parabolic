@@ -1,4 +1,5 @@
 #include "controls/downloadrow.h"
+#include <cmath>
 #include <format>
 #include <libnick/helpers/codehelpers.h>
 #include <libnick/localization/gettext.h>
