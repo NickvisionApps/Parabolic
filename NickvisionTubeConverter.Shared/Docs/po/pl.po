@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: 2023-12-06 13:46-0500\n"
-"PO-Revision-Date: 2024-07-22 13:09+0000\n"
-"Last-Translator: Dominik Gęgotek <ioutora@disroot.org>\n"
+"PO-Revision-Date: 2024-08-26 15:09+0000\n"
+"Last-Translator: Jakub Kraus <jakubkraus@proton.me>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/"
 "nickvision-tube-converter/docs/pl/>\n"
 "Language: pl\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
-"X-Generator: Weblate 5.7-dev\n"
+"X-Generator: Weblate 5.7.1-dev\n"
 
 #. Put one translator per line, in the form NAME <EMAIL>, YEAR1, YEAR2
 msgctxt "_"
@@ -133,13 +133,12 @@ msgstr "Usuń dane źródłowe"
 
 #. (itstool) path: item/p
 #: yelp/C/converter.page:51
-#, fuzzy
 msgid ""
 "If enabled, Parabolic will clear metadata fields containing the URL and "
 "other identifying information of the media source."
 msgstr ""
-"Po włączeniu, Parabolic będzie oznaczać multimedia informacjami o "
-"rozdziałach, jeśli są dostępne"
+"Po włączeniu tej opcji, Parabolic usunie pola metadanych zawierające adres "
+"URL i inne informacje identyfikujące źródło multimediów."
 
 #. (itstool) path: item/p
 #: yelp/C/converter.page:52
@@ -148,6 +147,9 @@ msgid ""
 "<code>synopsis</code>, <code>purl</code> and <code>handler_name</code> in "
 "each stream."
 msgstr ""
+"Pola, które są czyszczone: <code>comment</code>, <code>description</code>, "
+"<code>synopsis</code>, <code>purl</code> oraz <code>handler_name</code> w "
+"każdym strumieniu."
 
 #. (itstool) path: item/title
 #: yelp/C/converter.page:58
@@ -156,12 +158,11 @@ msgstr "Zapisuj rozdziały w plikach"
 
 #. (itstool) path: item/p
 #: yelp/C/converter.page:59
-#, fuzzy
 msgid ""
 "If enabled, Parabolic will tag a media with chapter information if available."
 msgstr ""
 "Po włączeniu, Parabolic będzie oznaczać multimedia informacjami o "
-"rozdziałach, jeśli są dostępne"
+"rozdziałach, jeśli są dostępne."
 
 #. (itstool) path: item/title
 #: yelp/C/converter.page:65
@@ -174,6 +175,8 @@ msgid ""
 "If disabled or if embedding fails, downloaded subtitles will be saved to a "
 "separate file."
 msgstr ""
+"Jeśli funkcja jest wyłączona lub osadzanie się nie powiedzie, pobrane napisy "
+"będą zapisane w osobnym pliku."
 
 #. (itstool) path: info/title
 #: yelp/C/downloader.page:8
@@ -284,6 +287,8 @@ msgid ""
 "You can specify \"all\" instead to download all subtitles, but without auto-"
 "generated ones."
 msgstr ""
+"Możesz zaznaczyć\"wszystko\", aby pobrać wszystkie napisy, ale bez "
+"automatycznie wygenerowanych."
 
 #. (itstool) path: note/p
 #: yelp/C/downloader.page:50
@@ -298,7 +303,7 @@ msgstr ""
 #. (itstool) path: item/title
 #: yelp/C/downloader.page:56
 msgid "Included Auto-Generated Subtitles"
-msgstr ""
+msgstr "Zawiera automatycznie generowane napisy"
 
 #. (itstool) path: item/p
 #: yelp/C/downloader.page:57
@@ -910,9 +915,8 @@ msgstr "Preferuj kodek AV1"
 
 #. (itstool) path: item/p
 #: yelp/C/newDownload.page:80
-#, fuzzy
 msgid "Only available for video (mp4, webm) downloads"
-msgstr "Dostępne tylko dla plików wideo."
+msgstr "Dostępne tylko dla plików wideo"
 
 #. (itstool) path: item/p
 #: yelp/C/newDownload.page:81
