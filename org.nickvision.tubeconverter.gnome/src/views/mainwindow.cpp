@@ -99,6 +99,24 @@ namespace Nickvision::TubeConverter::GNOME::Views
         GSimpleAction* actClearHistory{ g_simple_action_new("clearHistory", nullptr) };
         g_signal_connect(actClearHistory, "activate", G_CALLBACK(+[](GSimpleAction*, GVariant*, gpointer data){ reinterpret_cast<MainWindow*>(data)->clearHistory(); }), this);
         g_action_map_add_action(G_ACTION_MAP(m_window), G_ACTION(actClearHistory));
+        //Stop All Downloads Action
+        GSimpleAction* actStopAllDownloads{ g_simple_action_new("stopAllDownloads", nullptr) };
+        g_signal_connect(actStopAllDownloads, "activate", G_CALLBACK(+[](GSimpleAction*, GVariant*, gpointer data){ reinterpret_cast<MainWindow*>(data)->stopAllDownloads(); }), this);
+        g_action_map_add_action(G_ACTION_MAP(m_window), G_ACTION(actStopAllDownloads));
+        GtkHelpers::setAccelForAction(m_app, "win.stopAllDownloads", "<Ctrl><Shift>Delete");
+        //Clear Queued Downloads Action
+        GSimpleAction* actClearQueuedDownloads{ g_simple_action_new("clearQueuedDownloads", nullptr) };
+        g_signal_connect(actClearQueuedDownloads, "activate", G_CALLBACK(+[](GSimpleAction*, GVariant*, gpointer data){ reinterpret_cast<MainWindow*>(data)->clearQueuedDownloads(); }), this);
+        g_action_map_add_action(G_ACTION_MAP(m_window), G_ACTION(actClearQueuedDownloads));
+        //Clear Completed Downloads Action
+        GSimpleAction* actClearCompletedDownloads{ g_simple_action_new("clearCompletedDownloads", nullptr) };
+        g_signal_connect(actClearCompletedDownloads, "activate", G_CALLBACK(+[](GSimpleAction*, GVariant*, gpointer data){ reinterpret_cast<MainWindow*>(data)->clearCompletedDownloads(); }), this);
+        g_action_map_add_action(G_ACTION_MAP(m_window), G_ACTION(actClearCompletedDownloads));
+        //Retry Failed Downloads Action
+        GSimpleAction* actRetryFailedDownloads{ g_simple_action_new("retryFailedDownloads", nullptr) };
+        g_signal_connect(actRetryFailedDownloads, "activate", G_CALLBACK(+[](GSimpleAction*, GVariant*, gpointer data){ reinterpret_cast<MainWindow*>(data)->retryFailedDownloads(); }), this);
+        g_action_map_add_action(G_ACTION_MAP(m_window), G_ACTION(actRetryFailedDownloads));
+        GtkHelpers::setAccelForAction(m_app, "win.retryFailedDownloads", "<Ctrl>R");
     }
 
     MainWindow::~MainWindow()
@@ -423,5 +441,35 @@ namespace Nickvision::TubeConverter::GNOME::Views
     void MainWindow::clearHistory()
     {
         m_controller->getDownloadManager().clearHistory();
+    }
+
+    void MainWindow::stopAllDownloads()
+    {
+        m_controller->getDownloadManager().stopAllDownloads();
+    }
+
+    void MainWindow::clearQueuedDownloads()
+    {
+        for(int id : m_controller->getDownloadManager().clearQueuedDownloads())
+        {
+            gtk_box_remove(m_builder.get<GtkBox>("listQueued"), GTK_WIDGET(m_downloadRows[id]->gobj()));
+            m_downloadRows.erase(id);
+        }
+        adw_view_stack_set_visible_child_name(m_builder.get<AdwViewStack>("queuedViewStack"), "no-queued");
+    }
+
+    void MainWindow::clearCompletedDownloads()
+    {
+        for(int id : m_controller->getDownloadManager().clearCompletedDownloads())
+        {
+            gtk_box_remove(m_builder.get<GtkBox>("listCompleted"), GTK_WIDGET(m_downloadRows[id]->gobj()));
+            m_downloadRows.erase(id);
+        }
+        adw_view_stack_set_visible_child_name(m_builder.get<AdwViewStack>("completedViewStack"), "no-completed");
+    }
+
+    void MainWindow::retryFailedDownloads()
+    {
+        m_controller->getDownloadManager().retryFailedDownloads();
     }
 }

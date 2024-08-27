@@ -122,6 +122,22 @@ namespace Nickvision::TubeConverter::GNOME::Views
          * @brief Clears the download history.
          */
         void clearHistory();
+        /**
+         * @brief Stops all downloads.
+         */
+        void stopAllDownloads();
+        /**
+         * @brief Clears all queued downloads.
+         */
+        void clearQueuedDownloads();
+        /**
+         * @brief Clears all completed downloads.
+         */
+        void clearCompletedDownloads();
+        /**
+         * @brief Retries all failed downloads.
+         */
+        void retryFailedDownloads();
         std::shared_ptr<Shared::Controllers::MainWindowController> m_controller;
         GtkApplication* m_app;
         Helpers::Builder m_builder;

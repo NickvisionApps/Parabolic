@@ -34,7 +34,7 @@ Adw.ApplicationWindow root {
           [start]
           Gtk.Button {
             icon-name: "list-add-symbolic";
-            tooltip-text: _("Add Download (Ctrl+N)");
+            tooltip-text: _("Add Download");
             action-name: "win.addDownload";
           }
 
@@ -193,7 +193,6 @@ Adw.ApplicationWindow root {
                 child: Gtk.Button {
                   halign: center;
                   label: _("Add Download");
-                  tooltip-text: _("Add Download (Ctrl+N)");
                   action-name: "win.addDownload";
 
                   styles ["pill", "suggested-action"]
@@ -229,7 +228,7 @@ Adw.ApplicationWindow root {
                           tooltip-text: _("Clear History");
     
                           Adw.ButtonContent {
-                            icon-name: "larger-brush-symbolic";
+                            icon-name: "user-trash-symbolic";
                             label: _("Clear");
                           }
 
@@ -252,17 +251,42 @@ Adw.ApplicationWindow root {
                     child: Adw.StatusPage {
                       icon-name: "folder-download-symbolic";
                       title: _("No Downloads Running");
+                      child: Gtk.Button {
+                        halign: center;
+                        label: _("Add Download");
+                        action-name: "win.addDownload";
+
+                        styles ["pill", "suggested-action"]
+                      };
                     };
                   }
 
                   Adw.ViewStackPage {
                     name: "downloading";
-                    child: Gtk.Box listDownloading {
+                    child: Gtk.Box {
                       orientation: vertical;
                       hexpand: true;
                       valign: start;
+                      spacing: 6;
 
-                      styles [ "card" ]
+                      Gtk.Button {
+                        halign: end;
+                        tooltip-text: _("Stop All Downloads");
+                        action-name: "win.stopAllDownloads";
+
+                        Adw.ButtonContent {
+                          icon-name: "media-playback-stop-symbolic";
+                          label: _("Stop");
+                        }
+
+                        styles [ "flat" ]
+                      }
+
+                      Gtk.Box listDownloading {
+                        orientation: vertical;
+
+                        styles [ "card" ]
+                      }
                     };
                   }
                 };
@@ -279,17 +303,42 @@ Adw.ApplicationWindow root {
                     child: Adw.StatusPage {
                       icon-name: "hourglass-symbolic";
                       title: _("No Downloads Queued");
+                      child: Gtk.Button {
+                        halign: center;
+                        label: _("Add Download");
+                        action-name: "win.addDownload";
+
+                        styles ["pill", "suggested-action"]
+                      };
                     };
                   }
 
                   Adw.ViewStackPage {
                     name: "queued";
-                    child: Gtk.Box listQueued {
+                    child: Gtk.Box {
                       orientation: vertical;
                       hexpand: true;
                       valign: start;
+                      spacing: 6;
 
-                      styles [ "card" ]
+                      Gtk.Button {
+                        halign: end;
+                        tooltip-text: _("Clear Queued Downloads");
+                        action-name: "win.clearQueuedDownloads";
+
+                        Adw.ButtonContent {
+                          icon-name: "user-trash-symbolic";
+                          label: _("Clear");
+                        }
+
+                        styles [ "flat" ]
+                      }
+
+                      Gtk.Box listQueued {
+                        orientation: vertical;
+
+                        styles [ "card" ]
+                      }
                     };
                   }
                 };
@@ -306,17 +355,55 @@ Adw.ApplicationWindow root {
                     child: Adw.StatusPage {
                       icon-name: "check-round-outline-symbolic";
                       title: _("No Downloads Completed");
+                      child: Gtk.Button {
+                        halign: center;
+                        label: _("Add Download");
+                        action-name: "win.addDownload";
+
+                        styles ["pill", "suggested-action"]
+                      };
                     };
                   }
 
                   Adw.ViewStackPage {
                     name: "completed";
-                    child: Gtk.Box listCompleted {
+                    child: Gtk.Box {
                       orientation: vertical;
                       hexpand: true;
                       valign: start;
+                      spacing: 6;
 
-                      styles [ "card" ]
+                      Gtk.Box {
+                        halign: end;
+                        orientation: horizontal;
+                        spacing: 6;
+
+                        Gtk.Button {
+                          tooltip-text: _("Clear Completed Downloads");
+                          action-name: "win.clearCompletedDownloads";
+
+                          Adw.ButtonContent {
+                            icon-name: "user-trash-symbolic";
+                            label: _("Clear");
+                          }
+
+                          styles [ "flat" ]
+                        }
+
+                        Gtk.Button btnRetryFailedDownloads {
+                          icon-name: "view-refresh-symbolic";
+                          tooltip-text: _("Retry Failed Downloads");
+                          action-name: "win.retryFailedDownloads";
+
+                          styles [ "flat" ]
+                        }
+                      }
+
+                      Gtk.Box listCompleted {
+                        orientation: vertical;
+
+                        styles [ "card" ]
+                      }
                     };
                   }
                 };

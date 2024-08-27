@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-18 23:57-0400\n"
+"POT-Creation-Date: 2024-08-27 10:30+0200\n"
 "PO-Revision-Date: 2024-02-02 15:04+0000\n"
 "Last-Translator: Yosef Or Boczko <yoseforb@gnome.org>\n"
 "Language-Team: Hebrew <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -186,7 +186,12 @@ msgid "WARNING: Using aria2 to download. Progress will not be shown."
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:11
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:37
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:195
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:256
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:308
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:360
+#: org.nickvision.tubeconverter.gnome/blueprints/shortcuts_dialog.blp:40
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:27
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:42
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:63
@@ -352,28 +357,29 @@ msgstr "הצגת יומן"
 
 #. Localize Strings
 #: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:64
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:23
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:279
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:24
 #, fuzzy
 msgid "Stop"
 msgstr "נעצרה"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:79
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:231
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:24
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:249
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:25
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:355
 msgid "Play"
 msgstr "ניגון"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:87
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:161
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:25
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:179
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:26
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:310
 #, fuzzy
 msgid "Open"
 msgstr "פתיחת קובץ"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:99
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:26
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:27
 msgid "Retry"
 msgstr ""
 
@@ -383,16 +389,17 @@ msgstr "העתקה ללוח הגזירים"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:5
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:8
-#: org.nickvision.tubeconverter.gnome/blueprints/shortcuts_dialog.blp:30
+#: org.nickvision.tubeconverter.gnome/blueprints/shortcuts_dialog.blp:16
 msgid "Preferences"
 msgstr "העדפות"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:6
-#: org.nickvision.tubeconverter.gnome/blueprints/shortcuts_dialog.blp:35
+#: org.nickvision.tubeconverter.gnome/blueprints/shortcuts_dialog.blp:21
 msgid "Keyboard Shortcuts"
 msgstr "צירופי מקשים"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:7
+#: org.nickvision.tubeconverter.gnome/blueprints/shortcuts_dialog.blp:26
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:54
 msgid "Help"
 msgstr "עזרה"
@@ -403,17 +410,12 @@ msgstr "עזרה"
 msgid "About Parabolic"
 msgstr "על אודות Parabolic"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:37
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:196
-msgid "Add Download (Ctrl+N)"
-msgstr "הוספת הורדה (Ctrl+N)"
-
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:45
 msgid "Main Menu"
 msgstr "תפריט ראשי"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:68
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:169
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:187
 msgid "Home"
 msgstr "בית"
 
@@ -425,7 +427,7 @@ msgstr "קבוצת מפתחות"
 
 #. Localize History Dock
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:102
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:174
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:192
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:48
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:65
 msgid "History"
@@ -433,24 +435,25 @@ msgstr "היסטוריה"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:112
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:61
+#: org.nickvision.tubeconverter.gnome/blueprints/shortcuts_dialog.blp:37
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:22
 msgid "Downloads"
 msgstr "הורדות"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:131
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:179
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:197
 msgid "Downloading"
 msgstr "בהורדה"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:148
-#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:27
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:184
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:34
+#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:28
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:202
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:35
 msgid "Queued"
 msgstr "בתור"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:165
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:189
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:207
 msgid "Completed"
 msgstr "הושלמו"
 
@@ -465,40 +468,64 @@ msgstr "הורדת מדיה"
 msgid "Add a video, audio, or playlist URL to start downloading"
 msgstr "על מנת להתחיל הורדה יש להוסיף כתובת של סרט, שמע, או רשימת השמעה"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:213
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:212
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:66
 #, fuzzy
 msgid "No history available"
 msgstr "עדכון חדש זמין."
 
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:225
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:224
 #, fuzzy
 msgid "Past Downloads"
 msgstr "הורדות"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:229
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:228
 msgid "Clear History"
 msgstr "ניקוי היסטוריה"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:233
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:232
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:331
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:387
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:67
 msgid "Clear"
 msgstr "ניקוי"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:254
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:253
 #, fuzzy
 msgid "No Downloads Running"
 msgstr "אין הורדות פעילות"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:281
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:274
+#: org.nickvision.tubeconverter.gnome/blueprints/shortcuts_dialog.blp:45
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:50
+msgid "Stop All Downloads"
+msgstr "עצירת כל ההורדות"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:305
 #, fuzzy
 msgid "No Downloads Queued"
 msgstr "אין הורדות פעילות"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:308
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:326
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:52
+msgid "Clear Queued Downloads"
+msgstr "ניקוי תור ההורדות"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:357
 #, fuzzy
 msgid "No Downloads Completed"
 msgstr "הושלמו"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:382
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:53
+msgid "Clear Completed Downloads"
+msgstr "ניקוי הורדות שהושלמו"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:395
+#: org.nickvision.tubeconverter.gnome/blueprints/shortcuts_dialog.blp:50
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:51
+msgid "Retry Failed Downloads"
+msgstr "לנסות שוב להוריד הורדות שכשלו"
 
 #. Localize Strings
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:12
@@ -778,56 +805,36 @@ msgstr "הגודל המזערי לפיצול קובץ (במב״ב)."
 #: org.nickvision.tubeconverter.gnome/blueprints/shortcuts_dialog.blp:13
 #, fuzzy
 msgctxt "Shortcut"
-msgid "Folder"
-msgstr "פתיחת תיקייה"
-
-#: org.nickvision.tubeconverter.gnome/blueprints/shortcuts_dialog.blp:16
-msgid "Open Folder"
-msgstr "פתיחת תיקייה"
-
-#: org.nickvision.tubeconverter.gnome/blueprints/shortcuts_dialog.blp:21
-#, fuzzy
-msgid "Close Folder"
-msgstr "תיקייה שמירה"
-
-#: org.nickvision.tubeconverter.gnome/blueprints/shortcuts_dialog.blp:27
-#, fuzzy
-msgctxt "Shortcut"
 msgid "Application"
 msgstr "יישום"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/shortcuts_dialog.blp:40
-#, fuzzy
-msgid "About Application"
-msgstr "יישום"
-
-#: org.nickvision.tubeconverter.gnome/blueprints/shortcuts_dialog.blp:45
+#: org.nickvision.tubeconverter.gnome/blueprints/shortcuts_dialog.blp:31
 msgid "Quit"
 msgstr "יציאה"
 
-#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:16
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:18
+#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:17
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:19
 #, fuzzy
 msgid "Starting download..."
 msgstr "עצירת הורדה"
 
-#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:30
-#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:86
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:38
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:77
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:114
+#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:31
+#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:87
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:39
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:78
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:115
 msgid "Running"
 msgstr ""
 
-#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:74
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:71
+#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:75
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:72
 #, fuzzy
 msgid "Processing"
 msgstr "בתהליך…"
 
-#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:104
+#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:105
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:97
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:90
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:91
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:146
 #: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:119
 #: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:122
@@ -837,8 +844,8 @@ msgstr "בתהליך…"
 msgid "Error"
 msgstr "שגיאה"
 
-#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:112
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:95
+#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:113
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:96
 msgid "Success"
 msgstr "הצליחה"
 
@@ -854,7 +861,7 @@ msgid ""
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:98
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:198
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:216
 msgid "Close"
 msgstr "סגירה"
 
@@ -863,47 +870,47 @@ msgstr "סגירה"
 msgid "{} items"
 msgstr "{0} מתוך {1} פריטים"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:128
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:146
 #, fuzzy
 msgid "Exit?"
 msgstr "יציאה"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:128
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:146
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:136
 #, fuzzy
 msgid "There are downloads in progress. Are you sure you want to exit?"
 msgstr "פעולה זו בלתי הפיכה. האם אכן ברצונך לבצע את המחיקה?"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:129
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:147
 msgid "Yes"
 msgstr "כן"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:129
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:147
 msgid "No"
 msgstr "לא"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:196
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:214
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:316
 #, fuzzy
 msgid "Disclaimer"
 msgstr "תניית פטור"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:197
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:215
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:317
 msgid "Don't show this message again"
 msgstr "אין להציג הודעה זו שוב"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:250
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:268
 msgid "Download Again"
 msgstr "להוריד שוב"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:263
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:281
 #: org.nickvision.tubeconverter.qt/src/controls/keyringrow.cpp:19
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:343
 msgid "Delete"
 msgstr "מחיקה"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:384
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:402
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:56
 msgid "GitHub Repo"
 msgstr "מאגר GitHub"
@@ -939,7 +946,7 @@ msgstr ""
 "תרגום:\n"
 "{3}"
 
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:106
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:107
 msgid "Stopped"
 msgstr "נעצרה"
 
@@ -1105,22 +1112,6 @@ msgstr "הגדרות"
 msgid "View"
 msgstr "הצגת יומן"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:50
-msgid "Stop All Downloads"
-msgstr "עצירת כל ההורדות"
-
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:51
-msgid "Retry Failed Downloads"
-msgstr "לנסות שוב להוריד הורדות שכשלו"
-
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:52
-msgid "Clear Queued Downloads"
-msgstr "ניקוי תור ההורדות"
-
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:53
-msgid "Clear Completed Downloads"
-msgstr "ניקוי הורדות שהושלמו"
-
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:55
 msgid "Check for Updates"
 msgstr "בדיקת עדכונים"
@@ -1158,6 +1149,25 @@ msgstr "הגבלת מהירות"
 #, fuzzy
 msgid "Enter proxy url here"
 msgstr "יש להזין כאן כתובת מתווך"
+
+#, fuzzy
+#~ msgctxt "Shortcut"
+#~ msgid "Folder"
+#~ msgstr "פתיחת תיקייה"
+
+#~ msgid "Open Folder"
+#~ msgstr "פתיחת תיקייה"
+
+#, fuzzy
+#~ msgid "Close Folder"
+#~ msgstr "תיקייה שמירה"
+
+#, fuzzy
+#~ msgid "About Application"
+#~ msgstr "יישום"
+
+#~ msgid "Add Download (Ctrl+N)"
+#~ msgstr "הוספת הורדה (Ctrl+N)"
 
 #, csharp-format
 #~ msgid "\"{0}\" has finished downloading."

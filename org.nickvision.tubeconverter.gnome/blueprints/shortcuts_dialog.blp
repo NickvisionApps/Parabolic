@@ -10,20 +10,6 @@ Gtk.ShortcutsWindow root {
 
   Gtk.ShortcutsSection {
     Gtk.ShortcutsGroup {
-      title: C_("Shortcut", "Folder");
-
-      Gtk.ShortcutsShortcut {
-        title: _("Open Folder");
-        accelerator: "<Control>O";
-      }
-
-      Gtk.ShortcutsShortcut {
-        title: _("Close Folder");
-        accelerator: "<Control>W";
-      }
-    }
-
-    Gtk.ShortcutsGroup {
       title: C_("Shortcut", "Application");
 
       Gtk.ShortcutsShortcut {
@@ -36,14 +22,33 @@ Gtk.ShortcutsWindow root {
         accelerator: "<Control>question";
       }
 
-      Gtk.ShortcutsShortcut _aboutShortcut {
-        title: _("About Application");
+      Gtk.ShortcutsShortcut {
+        title: _("Help");
         accelerator: "F1";
       }
 
       Gtk.ShortcutsShortcut {
         title: _("Quit");
         accelerator: "<Control>Q";
+      }
+    }
+
+    Gtk.ShortcutsGroup {
+      title: _("Downloads");
+
+      Gtk.ShortcutsShortcut {
+        title: _("Add Download");
+        accelerator: "<Control>N";
+      }
+
+      Gtk.ShortcutsShortcut {
+        title: _("Stop All Downloads");
+        accelerator: "<Control><Shift>Delete";
+      }
+
+      Gtk.ShortcutsShortcut {
+        title: _("Retry Failed Downloads");
+        accelerator: "<Control>R";
       }
     }
   }
