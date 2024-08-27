@@ -8,6 +8,7 @@ if(LINUX)
         "src/helpers/dialogbase.cpp"
         "src/helpers/gtkhelpers.cpp"
         "src/views/adddownloaddialog.cpp"
+        "src/views/keyringpage.cpp"
         "src/views/mainwindow.cpp"
         "src/views/preferencesdialog.cpp"
         "src/application.cpp"

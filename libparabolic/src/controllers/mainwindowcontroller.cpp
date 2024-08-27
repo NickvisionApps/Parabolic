@@ -39,7 +39,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         m_keyring{ m_appInfo.getId() },
         m_downloadManager{ m_dataFileManager.get<Configuration>("config").getDownloaderOptions(), m_dataFileManager.get<DownloadHistory>("history"), m_logger }
     {
-        m_appInfo.setVersion({ "2024.8.0-next" });
+        m_appInfo.setVersion({ "2024.9.0-next" });
         m_appInfo.setShortName(_("Parabolic"));
         m_appInfo.setDescription(_("Download web video and audio"));
         m_appInfo.setChangelog("- Parabolic has been rewritten in C++ for faster performance\n- The length of the kept download history can now be changed in the app's preferences\n- Cookies will now be fetched from a selected browser in the app's preferences.\nTXT cookies file uploads are no longer supported\n- Parabolic's Keyring module was rewritten.\nAs a result, all keyrings have been reset and will need to be reconfigured.\n- Redesigned user interface\n- Updated yt-dlp");

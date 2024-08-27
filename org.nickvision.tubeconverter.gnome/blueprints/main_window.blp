@@ -203,6 +203,14 @@ Adw.ApplicationWindow root {
             }
 
             Adw.ViewStackPage {
+              name: "keyring";
+              child: Adw.Bin binKeyring { 
+                hexpand: true;
+                vexpand: true;
+              };
+            }
+
+            Adw.ViewStackPage {
               name: "history";
               child: Adw.ViewStack historyViewStack {
                 Adw.ViewStackPage {

@@ -10,6 +10,7 @@
 #include "helpers/dialogptr.h"
 #include "helpers/gtkhelpers.h"
 #include "views/adddownloaddialog.h"
+#include "views/keyringpage.h"
 #include "views/preferencesdialog.h"
 
 using namespace Nickvision::App;
@@ -186,6 +187,13 @@ namespace Nickvision::TubeConverter::GNOME::Views
         {
             adw_navigation_page_set_title(m_builder.get<AdwNavigationPage>("navPageContent"), _("Home"));
             adw_view_stack_set_visible_child_name(m_builder.get<AdwViewStack>("viewStack"), "home");
+        }
+        else if(row == gtk_list_box_get_row_at_index(box, Pages::Keyring))
+        {
+            ControlPtr<KeyringPage> keyringPage{ m_controller->createKeyringDialogController(), GTK_WINDOW(m_window) };
+            adw_navigation_page_set_title(m_builder.get<AdwNavigationPage>("navPageContent"), _("Keyring"));
+            adw_view_stack_set_visible_child_name(m_builder.get<AdwViewStack>("viewStack"), "keyring");
+            adw_bin_set_child(m_builder.get<AdwBin>("binKeyring"), GTK_WIDGET(keyringPage->gobj()));
         }
         else if(row == gtk_list_box_get_row_at_index(box, Pages::History))
         {
