@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-27 10:54+0200\n"
-"PO-Revision-Date: 2024-07-22 13:09+0000\n"
-"Last-Translator: Dominik Gęgotek <ioutora@disroot.org>\n"
+"POT-Creation-Date: 2024-08-29 13:46+0200\n"
+"PO-Revision-Date: 2024-08-26 15:09+0000\n"
+"Last-Translator: Jakub Kraus <jakubkraus@proton.me>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/nickvision-tube-"
 "converter/app/pl/>\n"
 "Language: pl\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
-"X-Generator: Weblate 5.7-dev\n"
+"X-Generator: Weblate 5.7.1-dev\n"
 
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:79
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:93
@@ -154,22 +154,22 @@ msgid "Unable to download and install update"
 msgstr "Nie można pobrać i zainstalować aktualizacji."
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:21
-#, fuzzy, c++-format
+#, fuzzy
 msgid "{:.2f} GiB/s"
 msgstr "{0:f1} GiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:25
-#, fuzzy, c++-format
+#, fuzzy
 msgid "{:.2f} MiB/s"
 msgstr "{0:f1} MiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:29
-#, fuzzy, c++-format
+#, fuzzy
 msgid "{:.2f} KiB/s"
 msgstr "{0:f1} KiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:33
-#, fuzzy, c++-format
+#, fuzzy
 msgid "{:.2f} B/s"
 msgstr "{0:f1} B/s"
 
@@ -352,7 +352,6 @@ msgid "Number Titles"
 msgstr "Numeruj tytuły"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:49
-#, fuzzy
 msgid "View Log"
 msgstr "Wyświetl dziennik"
 
@@ -870,7 +869,7 @@ msgid "Close"
 msgstr "Zamknij"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:126
-#, fuzzy, c++-format
+#, fuzzy
 msgid "{} items"
 msgstr "{0} z {1}"
 
@@ -928,7 +927,7 @@ msgid "Changelog:"
 msgstr "Dziennik zmian"
 
 #: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:39
-#, fuzzy, c++-format
+#, fuzzy
 msgid ""
 "Developers:\n"
 "{}\n"
@@ -972,7 +971,7 @@ msgstr "Podaj nazwę użytkownika"
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:35
 #: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:35
 msgid "Enter password here"
-msgstr "Podaj hasło"
+msgstr "Podaj swoje hasło"
 
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:42
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:58
@@ -1010,7 +1009,6 @@ msgid ""
 msgstr ""
 
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:171
-#, c++-format
 msgid "Playlist Items ({})"
 msgstr ""
 
@@ -1034,9 +1032,8 @@ msgid "Name"
 msgstr "Nazwa"
 
 #: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:29
-#, fuzzy
 msgid "Enter name here"
-msgstr "Podaj nazwę użytkownika"
+msgstr "Podaj nazwę"
 
 #: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:30
 msgid "URL"
@@ -1045,7 +1042,7 @@ msgstr "Adres URL"
 #: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:31
 #, fuzzy
 msgid "Enter url here"
-msgstr "Podaj adres URL mediów"
+msgstr "Podaj adres URL"
 
 #: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:55
 msgid "Warning"
@@ -1066,8 +1063,9 @@ msgid "Delete Credential?"
 msgstr "Usunąć dane logowania?"
 
 #: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:94
+#, fuzzy
 msgid "Are you sure you want to delete this credential?"
-msgstr ""
+msgstr "To działanie jest nieodwracalne. Czy na pewno chcesz usunąć te dane?"
 
 #: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:119
 #, fuzzy
@@ -1152,25 +1150,6 @@ msgstr "Limit prędkości pobierania"
 #, fuzzy
 msgid "Enter proxy url here"
 msgstr "Podaj adres URL serwera proxy"
-
-#, fuzzy
-#~ msgctxt "Shortcut"
-#~ msgid "Folder"
-#~ msgstr "Otwórz folder"
-
-#~ msgid "Open Folder"
-#~ msgstr "Otwórz folder"
-
-#, fuzzy
-#~ msgid "Close Folder"
-#~ msgstr "Folder docelowy"
-
-#, fuzzy
-#~ msgid "About Application"
-#~ msgstr "Aplikacja"
-
-#~ msgid "Add Download (Ctrl+N)"
-#~ msgstr "Dodaj (Ctrl+N)"
 
 #, csharp-format
 #~ msgid "\"{0}\" has finished downloading."
@@ -1355,9 +1334,6 @@ msgstr "Podaj adres URL serwera proxy"
 #~ msgid "Enter start timeframe here"
 #~ msgstr "Podaj czas rozpoczęcia"
 
-#~ msgid "Enter URL here"
-#~ msgstr "Podaj adres URL"
-
 #~ msgid "Failed to enable keyring."
 #~ msgstr "Nie można włączyć listy kluczy."
 
@@ -1430,7 +1406,8 @@ msgstr "Podaj adres URL serwera proxy"
 #~ "Minimize to the system tray instead of quitting the application when the "
 #~ "window is closed."
 #~ msgstr ""
-#~ "Zminimalizuj do paska zadań, zamiast zamykać aplikację po zamknięciu okna."
+#~ "Minimalizuj do zasobnika systemowego, zamiast zamykać aplikację po "
+#~ "zamknięciu okna."
 
 #~ msgid "Name (Empty)"
 #~ msgstr "Nazwa (pusta)"
@@ -1468,6 +1445,9 @@ msgstr "Podaj adres URL serwera proxy"
 #~ msgid "On"
 #~ msgstr "Włącz"
 
+#~ msgid "Open Folder"
+#~ msgstr "Otwórz folder"
+
 #~ msgid "Password (Empty)"
 #~ msgstr "Hasło (puste)"
 
@@ -1503,6 +1483,9 @@ msgstr "Podaj adres URL serwera proxy"
 
 #~ msgid "Save Folder (Invalid)"
 #~ msgstr "Folder docelowy (błędne dane)"
+
+#~ msgid "Search for downloads, history, and more"
+#~ msgstr "Wyszukaj pobrane pliki, historię i więcej"
 
 #~ msgid "Select Cookies File"
 #~ msgstr "Wybierz ciasteczko"
@@ -1635,6 +1618,9 @@ msgstr "Podaj adres URL serwera proxy"
 
 #~ msgid "Clear Cookies File"
 #~ msgstr "Wyczyść ciasteczka"
+
+#~ msgid "Add Download (Ctrl+N)"
+#~ msgstr "Dodaj (Ctrl+N)"
 
 #~ msgid "Apply"
 #~ msgstr "Zastosuj"

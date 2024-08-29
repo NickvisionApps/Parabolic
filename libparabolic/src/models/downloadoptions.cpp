@@ -185,10 +185,18 @@ namespace Nickvision::TubeConverter::Shared::Models
         }
         if(m_credential)
         {
-            arguments.push_back("--username");
-            arguments.push_back(m_credential->getUsername());
-            arguments.push_back("--password");
-            arguments.push_back(m_credential->getPassword());
+            if(!m_credential->getUsername().empty() && !m_credential->getPassword().empty())
+            {
+                arguments.push_back("--username");
+                arguments.push_back(m_credential->getUsername());
+                arguments.push_back("--password");
+                arguments.push_back(m_credential->getPassword());
+            }
+            else if(!m_credential->getPassword().empty())
+            {
+                arguments.push_back("--video-password");
+                arguments.push_back(m_credential->getPassword());
+            }
         }
         if(downloaderOptions.getUseAria())
         {
