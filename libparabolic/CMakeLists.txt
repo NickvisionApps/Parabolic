@@ -2,7 +2,13 @@
 	set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)
 endif()
 
-include(CTest)
+file(STRINGS "${CMAKE_SOURCE_DIR}/resources/po/POTFILES" TRANSLATE_FILES)
+file(STRINGS "${CMAKE_SOURCE_DIR}/resources/po/LINGUAS" LINGUAS)
+set(POT_FILE "${CMAKE_SOURCE_DIR}/resources/po/${SHORT_NAME}.pot")
+file(STRINGS "${CMAKE_SOURCE_DIR}/docs/po/LINGUAS" DOC_LINGUAS)
+set(DOC_POT_FILE "${CMAKE_SOURCE_DIR}/docs/po/${SHORT_NAME}.pot")
+set(DOC_FILES "${CMAKE_SOURCE_DIR}/docs/yelp/C/*.page")
+
 add_library(libparabolic
     "src/controllers/adddownloaddialogcontroller.cpp"
     "src/controllers/keyringdialogcontroller.cpp"
@@ -46,26 +52,26 @@ if(HAS_GETTEXT)
 endif()
 
 if(HAS_GETTEXT AND ITSTOOL_EXECUTABLE AND YELP_BUILD_EXECUTABLE)
-    add_custom_command(TARGET shared_commands PRE_BUILD COMMAND "${ITSTOOL_EXECUTABLE}" -o "docs/po/${SHORT_NAME}.pot" "docs/yelp/C/*.page" WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}")
+    add_custom_command(TARGET shared_commands PRE_BUILD COMMAND "${ITSTOOL_EXECUTABLE}" -o "docs/po/${SHORT_NAME}.pot" "docs/yelp/C/*.page" WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}" DEPENDS "${DOC_FILES}")
     foreach(LINGUA IN ITEMS ${DOC_LINGUAS})
         # Update Po
-        add_custom_command(TARGET shared_commands PRE_BUILD COMMAND "${GETTEXT_MSGMERGE_EXECUTABLE}" --backup=off -U "${CMAKE_SOURCE_DIR}/docs/po/${LINGUA}.po" "${DOC_POT_FILE}")
-        add_custom_command(TARGET shared_commands PRE_BUILD COMMAND "${GETTEXT_MSGFMT_EXECUTABLE}" "${CMAKE_SOURCE_DIR}/docs/po/${LINGUA}.po" --output-file="${CMAKE_SOURCE_DIR}/docs/po/${LINGUA}.mo")
+        add_custom_command(TARGET shared_commands PRE_BUILD COMMAND "${GETTEXT_MSGMERGE_EXECUTABLE}" --backup=off -U "${CMAKE_SOURCE_DIR}/docs/po/${LINGUA}.po" "${DOC_POT_FILE}" DEPENDS "${DOC_FILES}")
+        add_custom_command(TARGET shared_commands PRE_BUILD COMMAND "${GETTEXT_MSGFMT_EXECUTABLE}" "${CMAKE_SOURCE_DIR}/docs/po/${LINGUA}.po" --output-file="${CMAKE_SOURCE_DIR}/docs/po/${LINGUA}.mo" DEPENDS "${DOC_FILES}")
         # Generate Yelp Pages
-        add_custom_command(TARGET shared_commands PRE_BUILD COMMAND "${CMAKE_COMMAND}" -E make_directory "${CMAKE_SOURCE_DIR}/docs/yelp/${LINGUA}")
-        add_custom_command(TARGET shared_commands PRE_BUILD COMMAND "${ITSTOOL_EXECUTABLE}" -m "${CMAKE_SOURCE_DIR}/docs/po/${LINGUA}.mo" -o "${CMAKE_SOURCE_DIR}/docs/yelp/${LINGUA}/" "${CMAKE_SOURCE_DIR}/docs/yelp/C/*.page")
-        add_custom_command(TARGET shared_commands PRE_BUILD COMMAND "${CMAKE_COMMAND}" -E rm "${CMAKE_SOURCE_DIR}/docs/po/${LINGUA}.mo")
-        add_custom_command(TARGET shared_commands PRE_BUILD COMMAND "${CMAKE_COMMAND}" -E make_directory "${CMAKE_SOURCE_DIR}/docs/yelp/${LINGUA}/figures")
-        add_custom_command(TARGET shared_commands PRE_BUILD COMMAND "${CMAKE_COMMAND}" -E copy_directory "${CMAKE_SOURCE_DIR}/docs/yelp/C/figures" "${CMAKE_SOURCE_DIR}/docs/yelp/${LINGUA}/figures")
+        add_custom_command(TARGET shared_commands PRE_BUILD COMMAND "${CMAKE_COMMAND}" -E make_directory "${CMAKE_SOURCE_DIR}/docs/yelp/${LINGUA}" DEPENDS "${DOC_FILES}")
+        add_custom_command(TARGET shared_commands PRE_BUILD COMMAND "${ITSTOOL_EXECUTABLE}" -m "${CMAKE_SOURCE_DIR}/docs/po/${LINGUA}.mo" -o "${CMAKE_SOURCE_DIR}/docs/yelp/${LINGUA}/" "${CMAKE_SOURCE_DIR}/docs/yelp/C/*.page" DEPENDS "${DOC_FILES}")
+        add_custom_command(TARGET shared_commands PRE_BUILD COMMAND "${CMAKE_COMMAND}" -E rm "${CMAKE_SOURCE_DIR}/docs/po/${LINGUA}.mo" DEPENDS "${DOC_FILES}")
+        add_custom_command(TARGET shared_commands PRE_BUILD COMMAND "${CMAKE_COMMAND}" -E make_directory "${CMAKE_SOURCE_DIR}/docs/yelp/${LINGUA}/figures" DEPENDS "${DOC_FILES}")
+        add_custom_command(TARGET shared_commands PRE_BUILD COMMAND "${CMAKE_COMMAND}" -E copy_directory "${CMAKE_SOURCE_DIR}/docs/yelp/C/figures" "${CMAKE_SOURCE_DIR}/docs/yelp/${LINGUA}/figures" DEPENDS "${DOC_FILES}")
         # Generate HTML Pages
-        add_custom_command(TARGET shared_commands PRE_BUILD COMMAND "${CMAKE_COMMAND}" -E make_directory "${CMAKE_SOURCE_DIR}/docs/html/${LINGUA}")
-        add_custom_command(TARGET shared_commands PRE_BUILD COMMAND "${CMAKE_COMMAND}" -E make_directory "${CMAKE_SOURCE_DIR}/docs/html/${LINGUA}/figures")
-        add_custom_command(TARGET shared_commands PRE_BUILD COMMAND "${CMAKE_COMMAND}" -E copy_directory "${CMAKE_SOURCE_DIR}/docs/yelp/${LINGUA}/figures" "${CMAKE_SOURCE_DIR}/docs/html/${LINGUA}/figures")
-        add_custom_command(TARGET shared_commands PRE_BUILD COMMAND "${YELP_BUILD_EXECUTABLE}" html -o "${CMAKE_SOURCE_DIR}/docs/html/${LINGUA}/" "${CMAKE_SOURCE_DIR}/docs/yelp/${LINGUA}/")
+        add_custom_command(TARGET shared_commands PRE_BUILD COMMAND "${CMAKE_COMMAND}" -E make_directory "${CMAKE_SOURCE_DIR}/docs/html/${LINGUA}" DEPENDS "${DOC_FILES}")
+        add_custom_command(TARGET shared_commands PRE_BUILD COMMAND "${CMAKE_COMMAND}" -E make_directory "${CMAKE_SOURCE_DIR}/docs/html/${LINGUA}/figures" DEPENDS "${DOC_FILES}")
+        add_custom_command(TARGET shared_commands PRE_BUILD COMMAND "${CMAKE_COMMAND}" -E copy_directory "${CMAKE_SOURCE_DIR}/docs/yelp/${LINGUA}/figures" "${CMAKE_SOURCE_DIR}/docs/html/${LINGUA}/figures" DEPENDS "${DOC_FILES}")
+        add_custom_command(TARGET shared_commands PRE_BUILD COMMAND "${YELP_BUILD_EXECUTABLE}" html -o "${CMAKE_SOURCE_DIR}/docs/html/${LINGUA}/" "${CMAKE_SOURCE_DIR}/docs/yelp/${LINGUA}/" DEPENDS "${DOC_FILES}")
     endforeach()
     # Generate English HTML
-    add_custom_command(TARGET shared_commands PRE_BUILD COMMAND "${CMAKE_COMMAND}" -E make_directory "${CMAKE_SOURCE_DIR}/docs/html/C")
-    add_custom_command(TARGET shared_commands PRE_BUILD COMMAND "${CMAKE_COMMAND}" -E make_directory "${CMAKE_SOURCE_DIR}/docs/html/C/figures")
-    add_custom_command(TARGET shared_commands PRE_BUILD COMMAND "${CMAKE_COMMAND}" -E copy_directory "${CMAKE_SOURCE_DIR}/docs/yelp/C/figures" "${CMAKE_SOURCE_DIR}/docs/html/C/figures")
-    add_custom_command(TARGET shared_commands PRE_BUILD COMMAND "${YELP_BUILD_EXECUTABLE}" html -o "${CMAKE_SOURCE_DIR}/docs/html/C/" "${CMAKE_SOURCE_DIR}/docs/yelp/C/")
+    add_custom_command(TARGET shared_commands PRE_BUILD COMMAND "${CMAKE_COMMAND}" -E make_directory "${CMAKE_SOURCE_DIR}/docs/html/C" DEPENDS "${DOC_FILES}")
+    add_custom_command(TARGET shared_commands PRE_BUILD COMMAND "${CMAKE_COMMAND}" -E make_directory "${CMAKE_SOURCE_DIR}/docs/html/C/figures" DEPENDS "${DOC_FILES}")
+    add_custom_command(TARGET shared_commands PRE_BUILD COMMAND "${CMAKE_COMMAND}" -E copy_directory "${CMAKE_SOURCE_DIR}/docs/yelp/C/figures" "${CMAKE_SOURCE_DIR}/docs/html/C/figures" DEPENDS "${DOC_FILES}")
+    add_custom_command(TARGET shared_commands PRE_BUILD COMMAND "${YELP_BUILD_EXECUTABLE}" html -o "${CMAKE_SOURCE_DIR}/docs/html/C/" "${CMAKE_SOURCE_DIR}/docs/yelp/C/" DEPENDS "${DOC_FILES}")
 endif()

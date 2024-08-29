@@ -2,5 +2,22 @@ using Gtk 4.0;
 using Adw 1;
 
 Adw.Bin root {
-  
+  child: Adw.ViewStack viewStack {
+    hexpand: true;
+    vexpand: true;
+
+    Adw.ViewStackPage {
+      name: "no-credentials";
+      child: Gtk.Box {
+
+      };
+    }
+
+    Adw.ViewStackPage {
+      name: "credentials";
+      child: Gtk.Box {
+
+      };
+    }
+  };
 }
