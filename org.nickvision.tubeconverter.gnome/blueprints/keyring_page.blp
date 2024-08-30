@@ -8,15 +8,34 @@ Adw.Bin root {
 
     Adw.ViewStackPage {
       name: "no-credentials";
-      child: Gtk.Box {
+      child: Adw.StatusPage {
+        icon-name: "password-entry-symbolic";
+        title: _("No Credentials Found");
+        child: Gtk.Button addCredentialNoneButton {
+          halign: center;
+          label: _("Add");
 
+          styles [ "pill", "suggested-action" ]
+        };
       };
     }
 
     Adw.ViewStackPage {
       name: "credentials";
-      child: Gtk.Box {
+      child: Gtk.ScrolledWindow {
+        child: Adw.PreferencesGroup {
+          margin-start: 24;
+          margin-end: 24;
+          title: _("Credentials");
+          header-suffix: Gtk.Button addCredentialButton {
+            Adw.ButtonContent {
+              icon-name: "list-add-symbolic";
+              label: _("Add");
+            }
 
+            styles [ "flat" ]
+          };
+        };
       };
     }
   };

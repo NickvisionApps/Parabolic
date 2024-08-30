@@ -57,12 +57,18 @@ namespace Nickvision::TubeConverter::QT::Views
         void editConfirm();
     
     private:
+        /**
+         * @brief Modes for editing a credential.
+         */
         enum class EditMode
         {
             None,
             Add,
             Modify
         };
+        /**
+         * @brief Reloads the credentials to show in the dialog.
+         */
         void reloadCredentials();
         Ui::KeyringDialog* m_ui;
         std::shared_ptr<Shared::Controllers::KeyringDialogController> m_controller;

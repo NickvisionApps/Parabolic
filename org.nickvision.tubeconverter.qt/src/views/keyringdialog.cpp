@@ -149,6 +149,6 @@ namespace Nickvision::TubeConverter::QT::Views
             m_ui->listCredentials->insertItem(0, item);
             m_ui->listCredentials->setItemWidget(item, row);
         }
-        m_ui->viewStackCredentials->setCurrentIndex(m_controller->getCredentials().size() == 0 ? 0 : 1);
+        m_ui->viewStackCredentials->setCurrentIndex(m_controller->getCredentials().empty() ? 0 : 1);
     }
 }
