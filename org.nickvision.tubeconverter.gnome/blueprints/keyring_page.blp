@@ -13,7 +13,7 @@ Adw.Bin root {
         title: _("No Credentials Found");
         child: Gtk.Button addCredentialNoneButton {
           halign: center;
-          label: _("Add");
+          label: _("Add Credential");
 
           styles [ "pill", "suggested-action" ]
         };
@@ -23,20 +23,67 @@ Adw.Bin root {
     Adw.ViewStackPage {
       name: "credentials";
       child: Gtk.ScrolledWindow {
-        child: Adw.PreferencesGroup {
-          margin-start: 24;
-          margin-end: 24;
-          title: _("Credentials");
-          header-suffix: Gtk.Button addCredentialButton {
-            Adw.ButtonContent {
-              icon-name: "list-add-symbolic";
-              label: _("Add");
-            }
+        child: Adw.Clamp {
+          maximum-size: 600;
+          child: Adw.PreferencesGroup credentialsGroup {
+            margin-start: 24;
+            margin-end: 24;
+            title: _("Credentials");
+            header-suffix: Gtk.Button addCredentialButton {
+              tooltip-text: _("Add Credential");
 
-            styles [ "flat" ]
+              Adw.ButtonContent {
+                icon-name: "list-add-symbolic";
+                label: _("Add");
+              }
+
+              styles [ "flat" ]
+            };
           };
         };
       };
     }
+  };
+}
+
+Adw.Dialog editDialog {
+  title: _("Credential");
+
+  child: Adw.ToolbarView {
+    [top]
+    Adw.HeaderBar { }
+
+    content: Gtk.Box {
+      orientation: vertical;
+      spacing: 12;
+
+      Adw.PreferencesGroup {
+        margin-start: 12;
+        margin-end: 12;
+
+        Adw.EntryRow editNameRow {
+          title: _("Name");
+        }
+
+        Adw.EntryRow editUrlRow {
+          title: _("URL");
+        }
+
+        Adw.EntryRow editUsernameRow {
+          title: _("Username");
+        }
+
+        Adw.PasswordEntryRow editPasswordRow {
+          title: _("Password");
+        }
+      }
+
+      Gtk.Button editConfirmButton {
+        halign: center;
+        margin-bottom: 12;
+
+        styles [ "pill", "suggested-action" ]
+      }
+    };
   };
 }

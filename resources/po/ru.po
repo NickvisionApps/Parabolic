@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-30 13:17+0200\n"
+"POT-Creation-Date: 2024-08-30 16:17+0200\n"
 "PO-Revision-Date: 2024-01-11 20:05+0000\n"
 "Last-Translator: 0que <0que@users.noreply.hosted.weblate.org>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -199,7 +199,7 @@ msgstr "Добавить загрузку"
 
 #. Localize the Edit page
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:18
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:27
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:28
 msgid "Back"
 msgstr "Назад"
 
@@ -215,18 +215,24 @@ msgid "Authenticate"
 msgstr "Аутентификация"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:62
+#: org.nickvision.tubeconverter.gnome/blueprints/keyring_page.blp:50
+#: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:128
 msgid "Credential"
 msgstr "Учётные данные"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:66
+#: org.nickvision.tubeconverter.gnome/blueprints/keyring_page.blp:73
+#: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:133
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:32
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:32
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:33
 msgid "Username"
 msgstr "Имя пользователя"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:70
+#: org.nickvision.tubeconverter.gnome/blueprints/keyring_page.blp:77
+#: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:135
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:34
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:34
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:35
 msgid "Password"
 msgstr "Пароль"
 
@@ -387,22 +393,40 @@ msgid "Copy to Clipboard"
 msgstr "Скопировать в буфер обмена"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/keyring_page.blp:13
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:25
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:26
 #, fuzzy
 msgid "No Credentials Found"
 msgstr "Нет учётных данных"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/keyring_page.blp:16
 #: org.nickvision.tubeconverter.gnome/blueprints/keyring_page.blp:33
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:24
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:73
-msgid "Add"
-msgstr "Добавить"
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:25
+msgid "Add Credential"
+msgstr "Добавить учётные данные"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/keyring_page.blp:29
+#: org.nickvision.tubeconverter.gnome/blueprints/keyring_page.blp:31
 #, fuzzy
 msgid "Credentials"
 msgstr "Учётные данные"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/keyring_page.blp:37
+#: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:84
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:24
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:74
+msgid "Add"
+msgstr "Добавить"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/keyring_page.blp:65
+#: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:129
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:29
+msgid "Name"
+msgstr "Имя"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/keyring_page.blp:69
+#: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:131
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:31
+msgid "URL"
+msgstr "Ссылка"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:5
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:8
@@ -854,11 +878,11 @@ msgstr "Обработка..."
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:97
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:91
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:146
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:119
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:122
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:125
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:128
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:131
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:120
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:123
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:126
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:129
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:132
 msgid "Error"
 msgstr "Ошибка"
 
@@ -888,6 +912,74 @@ msgstr "Закрыть"
 msgid "{} items"
 msgstr "{0} из {1} элемента"
 
+#: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:22
+msgid "Keyring is not saving to disk. Changes will be lost."
+msgstr ""
+
+#: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:40
+#: org.nickvision.tubeconverter.qt/src/controls/keyringrow.cpp:18
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:44
+msgid "Edit"
+msgstr "Правка"
+
+#: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:54
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:293
+#: org.nickvision.tubeconverter.qt/src/controls/keyringrow.cpp:19
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:343
+msgid "Delete"
+msgstr "Удалить"
+
+#: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:100
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:90
+msgid "Modify"
+msgstr ""
+
+#: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:106
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:95
+msgid "Delete Credential?"
+msgstr "Удалить учётные данные?"
+
+#: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:106
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:95
+msgid "Are you sure you want to delete this credential?"
+msgstr ""
+
+#: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:108
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:148
+msgid "Yes"
+msgstr "Да"
+
+#: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:108
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:148
+msgid "No"
+msgstr "Нет"
+
+#: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:151
+msgid "Name (Empty)"
+msgstr "Имя (пустое)"
+
+#: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:155
+#, fuzzy
+msgid "Username (Empty)"
+msgstr "Имя пользователя (пусто)"
+
+#: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:157
+msgid "Password (Empty)"
+msgstr "Пароль (пустой)"
+
+#: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:161
+msgid "URL (Invalid)"
+msgstr "Ссылка (Некорректная)"
+
+#: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:165
+#, fuzzy
+msgid "Name (Exists)"
+msgstr "Имя (пустое)"
+
+#: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:169
+msgid "Credential (Database Error)"
+msgstr ""
+
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:147
 #, fuzzy
 msgid "Exit?"
@@ -899,14 +991,6 @@ msgstr "Выход"
 msgid "There are downloads in progress. Are you sure you want to exit?"
 msgstr "Это действие необратимо. Вы уверены, что хотите удалить?"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:148
-msgid "Yes"
-msgstr "Да"
-
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:148
-msgid "No"
-msgstr "Нет"
-
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:222
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:316
 msgid "Disclaimer"
@@ -917,17 +1001,11 @@ msgstr "Предупреждение"
 msgid "Don't show this message again"
 msgstr "Больше не показывать это сообщение"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:276
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:278
 msgid "Download Again"
 msgstr "Скачать снова"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:289
-#: org.nickvision.tubeconverter.qt/src/controls/keyringrow.cpp:19
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:343
-msgid "Delete"
-msgstr "Удалить"
-
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:410
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:414
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:56
 msgid "GitHub Repo"
 msgstr "Репозиторий GitHub"
@@ -967,24 +1045,19 @@ msgstr ""
 msgid "Stopped"
 msgstr "Остановлено"
 
-#: org.nickvision.tubeconverter.qt/src/controls/keyringrow.cpp:18
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:44
-msgid "Edit"
-msgstr "Правка"
-
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:30
 #, fuzzy
 msgid "Enter media url here"
 msgstr "Введите ссылку на медиа"
 
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:33
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:33
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:34
 #, fuzzy
 msgid "Enter username here"
 msgstr "Введите имя пользователя"
 
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:35
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:35
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:36
 msgid "Enter password here"
 msgstr "Введите пароль"
 
@@ -1033,64 +1106,44 @@ msgstr ""
 msgid "Create, save, and manage your credentials for media websites."
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:28
-msgid "Name"
-msgstr "Имя"
-
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:29
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:30
 #, fuzzy
 msgid "Enter name here"
 msgstr "Введите имя пользователя"
 
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:30
-msgid "URL"
-msgstr "Ссылка"
-
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:31
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:32
 #, fuzzy
 msgid "Enter url here"
 msgstr "Введите ссылку на медиа"
 
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:55
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:56
 msgid "Warning"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:55
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:56
 msgid ""
 "The keyring is not saving changes to disk. Any changes made will be lost "
 "when the application closes."
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:89
-msgid "Modify"
-msgstr ""
-
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:94
-msgid "Delete Credential?"
-msgstr "Удалить учётные данные?"
-
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:94
-msgid "Are you sure you want to delete this credential?"
-msgstr ""
-
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:119
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:120
 #, fuzzy
 msgid "The credential name cannot be empty."
 msgstr "Убедитесь, что данные корректны."
 
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:122
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:123
 msgid "Both the username and password cannot be empty."
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:125
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:126
 msgid "The provided url is invalid."
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:128
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:129
 msgid "A credential with this name already exists."
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:131
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:132
 msgid "There was an unknown error adding the credential to the keyring."
 msgstr ""
 
@@ -1435,9 +1488,6 @@ msgstr "Введите ссылку прокси"
 #~ "При закрытии окна приложения, сворачивать в область уведомлений вместо "
 #~ "выхода."
 
-#~ msgid "Name (Empty)"
-#~ msgstr "Имя (пустое)"
-
 #~ msgid "Nicholas Logozzo"
 #~ msgstr "Nicholas Logozzo"
 
@@ -1470,9 +1520,6 @@ msgstr "Введите ссылку прокси"
 
 #~ msgid "On"
 #~ msgstr "Вкл"
-
-#~ msgid "Password (Empty)"
-#~ msgstr "Пароль (пустой)"
 
 #~ msgid "Please wait..."
 #~ msgstr "Пожалуйста, подождите..."
@@ -1576,9 +1623,6 @@ msgstr "Введите ссылку прокси"
 #~ msgid "Unset Cookies File"
 #~ msgstr "Сбросить файл куки"
 
-#~ msgid "URL (Invalid)"
-#~ msgstr "Ссылка (Некорректная)"
-
 #~ msgid ""
 #~ "Use keyring to safely store credentials for sites that require a user "
 #~ "name and password to login."
@@ -1588,9 +1632,6 @@ msgstr "Введите ссылку прокси"
 
 #~ msgid "User Name"
 #~ msgstr "Имя пользователя"
-
-#~ msgid "User Name (Empty)"
-#~ msgstr "Имя пользователя (пусто)"
 
 #~ msgid "Validating"
 #~ msgstr "Проверка"
@@ -1797,9 +1838,6 @@ msgstr "Введите ссылку прокси"
 
 #~ msgid "Manage credentials in your keyring."
 #~ msgstr "Управляйте данными в связке ключей."
-
-#~ msgid "Add Credential"
-#~ msgstr "Добавить учётные данные"
 
 #~ msgid "youtube"
 #~ msgstr "youtube"

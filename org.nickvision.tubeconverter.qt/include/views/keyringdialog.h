@@ -52,7 +52,7 @@ namespace Nickvision::TubeConverter::QT::Views
          */
         void deleteCredential(const QString& name);
         /**
-         * @brief Confirms a edit to a credential.
+         * @brief Confirms an edit to a credential.
          */
         void editConfirm();
     

@@ -190,7 +190,7 @@ namespace Nickvision::TubeConverter::GNOME::Views
         }
         else if(row == gtk_list_box_get_row_at_index(box, Pages::Keyring))
         {
-            ControlPtr<KeyringPage> keyringPage{ m_controller->createKeyringDialogController(), GTK_WINDOW(m_window) };
+            ControlPtr<KeyringPage> keyringPage{ m_controller->createKeyringDialogController(), m_builder.get<AdwToastOverlay>("toastOverlay"), GTK_WINDOW(m_window) };
             adw_navigation_page_set_title(m_builder.get<AdwNavigationPage>("navPageContent"), _("Keyring"));
             adw_view_stack_set_visible_child_name(m_builder.get<AdwViewStack>("viewStack"), "keyring");
             adw_bin_set_child(m_builder.get<AdwBin>("binKeyring"), GTK_WIDGET(keyringPage->gobj()));
@@ -256,7 +256,7 @@ namespace Nickvision::TubeConverter::GNOME::Views
                 gtk_widget_set_valign(GTK_WIDGET(playButton), GTK_ALIGN_CENTER);
                 gtk_widget_set_tooltip_text(GTK_WIDGET(playButton), _("Play"));
                 gtk_widget_add_css_class(GTK_WIDGET(playButton), "flat");
-                g_signal_connect(playButton, "clicked", G_CALLBACK(+[](GtkButton*, gpointer data)
+                g_signal_connect_data(playButton, "clicked", G_CALLBACK(+[](GtkButton*, gpointer data)
                 {
                     std::filesystem::path* path{ reinterpret_cast<std::filesystem::path*>(data) };
                     GtkFileLauncher* launcher{ gtk_file_launcher_new(g_file_new_for_path(path->string().c_str())) };
@@ -265,8 +265,10 @@ namespace Nickvision::TubeConverter::GNOME::Views
                         gtk_file_launcher_launch_finish(GTK_FILE_LAUNCHER(source), res, nullptr); 
                         g_object_unref(source);
                     }), nullptr);
-                    delete path;
-                }), new std::filesystem::path(download.getPath()));
+                }), new std::filesystem::path(download.getPath()), GClosureNotify(+[](gpointer data, GClosure*)
+                {
+                    delete reinterpret_cast<std::filesystem::path*>(data);
+                }), G_CONNECT_DEFAULT);
                 adw_action_row_add_suffix(row, GTK_WIDGET(playButton));
             }
             //Download button
@@ -275,12 +277,14 @@ namespace Nickvision::TubeConverter::GNOME::Views
             gtk_widget_set_valign(GTK_WIDGET(downloadButton), GTK_ALIGN_CENTER);
             gtk_widget_set_tooltip_text(GTK_WIDGET(downloadButton), _("Download Again"));
             gtk_widget_add_css_class(GTK_WIDGET(downloadButton), "flat");
-            g_signal_connect(downloadButton, "clicked", GCallback(+[](GtkButton*, gpointer data)
+            g_signal_connect_data(downloadButton, "clicked", GCallback(+[](GtkButton*, gpointer data)
             {
                 std::pair<MainWindow*, HistoricDownload>* pair{ reinterpret_cast<std::pair<MainWindow*, HistoricDownload>*>(data) };
                 //TODO
-                delete pair;
-            }), downloadPair);
+            }), downloadPair, GClosureNotify(+[](gpointer data, GClosure*)
+            {
+                delete reinterpret_cast<std::pair<MainWindow*, HistoricDownload>*>(data);
+            }), G_CONNECT_DEFAULT);
             adw_action_row_add_suffix(row, GTK_WIDGET(downloadButton));
             //Delete button
             GtkButton* deleteButton{ GTK_BUTTON(gtk_button_new_from_icon_name("user-trash-symbolic")) };

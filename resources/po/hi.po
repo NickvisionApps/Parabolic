@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-30 13:17+0200\n"
+"POT-Creation-Date: 2024-08-30 16:17+0200\n"
 "PO-Revision-Date: 2024-07-07 17:09+0000\n"
 "Last-Translator: Scrambled777 <weblate.scrambled777@simplelogin.com>\n"
 "Language-Team: Hindi <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -197,7 +197,7 @@ msgstr "डाउनलोड जोड़ें"
 
 #. Localize the Edit page
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:18
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:27
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:28
 msgid "Back"
 msgstr "पीछे"
 
@@ -213,19 +213,25 @@ msgid "Authenticate"
 msgstr "प्रमाणित करें"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:62
+#: org.nickvision.tubeconverter.gnome/blueprints/keyring_page.blp:50
+#: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:128
 #, fuzzy
 msgid "Credential"
 msgstr "कोई क्रेडेंशियल नहीं"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:66
+#: org.nickvision.tubeconverter.gnome/blueprints/keyring_page.blp:73
+#: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:133
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:32
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:32
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:33
 msgid "Username"
 msgstr "उपयोगकर्ता नाम"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:70
+#: org.nickvision.tubeconverter.gnome/blueprints/keyring_page.blp:77
+#: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:135
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:34
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:34
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:35
 msgid "Password"
 msgstr "पासवर्ड"
 
@@ -386,22 +392,41 @@ msgid "Copy to Clipboard"
 msgstr "क्लिपबोर्ड पर कॉपी करें"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/keyring_page.blp:13
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:25
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:26
 #, fuzzy
 msgid "No Credentials Found"
 msgstr "कोई क्रेडेंशियल नहीं"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/keyring_page.blp:16
 #: org.nickvision.tubeconverter.gnome/blueprints/keyring_page.blp:33
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:24
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:73
-msgid "Add"
-msgstr "जोड़ें"
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:25
+#, fuzzy
+msgid "Add Credential"
+msgstr "कोई क्रेडेंशियल नहीं"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/keyring_page.blp:29
+#: org.nickvision.tubeconverter.gnome/blueprints/keyring_page.blp:31
 #, fuzzy
 msgid "Credentials"
 msgstr "कोई क्रेडेंशियल नहीं"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/keyring_page.blp:37
+#: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:84
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:24
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:74
+msgid "Add"
+msgstr "जोड़ें"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/keyring_page.blp:65
+#: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:129
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:29
+msgid "Name"
+msgstr "नाम"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/keyring_page.blp:69
+#: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:131
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:31
+msgid "URL"
+msgstr "URL"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:5
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:8
@@ -852,11 +877,11 @@ msgstr "प्रसंस्करण…"
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:97
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:91
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:146
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:119
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:122
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:125
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:128
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:131
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:120
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:123
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:126
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:129
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:132
 msgid "Error"
 msgstr "त्रुटि"
 
@@ -886,6 +911,74 @@ msgstr "बंद करे"
 msgid "{} items"
 msgstr "{1} में से {0} आइटम"
 
+#: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:22
+msgid "Keyring is not saving to disk. Changes will be lost."
+msgstr ""
+
+#: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:40
+#: org.nickvision.tubeconverter.qt/src/controls/keyringrow.cpp:18
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:44
+msgid "Edit"
+msgstr ""
+
+#: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:54
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:293
+#: org.nickvision.tubeconverter.qt/src/controls/keyringrow.cpp:19
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:343
+msgid "Delete"
+msgstr "मिटाएं"
+
+#: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:100
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:90
+msgid "Modify"
+msgstr ""
+
+#: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:106
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:95
+msgid "Delete Credential?"
+msgstr "क्रेडेंशियल मिटाएं?"
+
+#: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:106
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:95
+msgid "Are you sure you want to delete this credential?"
+msgstr ""
+
+#: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:108
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:148
+msgid "Yes"
+msgstr "हां"
+
+#: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:108
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:148
+msgid "No"
+msgstr "नहीं"
+
+#: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:151
+msgid "Name (Empty)"
+msgstr "नाम (खाली)"
+
+#: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:155
+#, fuzzy
+msgid "Username (Empty)"
+msgstr "उपयोगकर्ता नाम (खाली)"
+
+#: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:157
+msgid "Password (Empty)"
+msgstr "पासवर्ड (खाली)"
+
+#: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:161
+msgid "URL (Invalid)"
+msgstr "URL (अमान्य)"
+
+#: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:165
+#, fuzzy
+msgid "Name (Exists)"
+msgstr "नाम (खाली)"
+
+#: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:169
+msgid "Credential (Database Error)"
+msgstr ""
+
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:147
 #, fuzzy
 msgid "Exit?"
@@ -897,14 +990,6 @@ msgstr "बाहर निकलें"
 msgid "There are downloads in progress. Are you sure you want to exit?"
 msgstr "यह क्रिया अपरिवर्तनीय है। क्या आप इसे मिटाना चाहते हैं?"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:148
-msgid "Yes"
-msgstr "हां"
-
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:148
-msgid "No"
-msgstr "नहीं"
-
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:222
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:316
 msgid "Disclaimer"
@@ -915,17 +1000,11 @@ msgstr "अस्वीकरण"
 msgid "Don't show this message again"
 msgstr "यह संदेश दोबारा न दिखाएं"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:276
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:278
 msgid "Download Again"
 msgstr "पुनः डाउनलोड करें"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:289
-#: org.nickvision.tubeconverter.qt/src/controls/keyringrow.cpp:19
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:343
-msgid "Delete"
-msgstr "मिटाएं"
-
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:410
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:414
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:56
 msgid "GitHub Repo"
 msgstr "गिटहब रेपो"
@@ -965,24 +1044,19 @@ msgstr ""
 msgid "Stopped"
 msgstr "रुका हुआ"
 
-#: org.nickvision.tubeconverter.qt/src/controls/keyringrow.cpp:18
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:44
-msgid "Edit"
-msgstr ""
-
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:30
 #, fuzzy
 msgid "Enter media url here"
 msgstr "यहां मीडिया URL दर्ज करें"
 
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:33
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:33
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:34
 #, fuzzy
 msgid "Enter username here"
 msgstr "यहां उपयोगकर्ता नाम दर्ज करें"
 
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:35
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:35
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:36
 msgid "Enter password here"
 msgstr "यहां पासवर्ड डालें"
 
@@ -1031,64 +1105,44 @@ msgstr ""
 msgid "Create, save, and manage your credentials for media websites."
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:28
-msgid "Name"
-msgstr "नाम"
-
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:29
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:30
 #, fuzzy
 msgid "Enter name here"
 msgstr "यहां उपयोगकर्ता नाम दर्ज करें"
 
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:30
-msgid "URL"
-msgstr "URL"
-
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:31
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:32
 #, fuzzy
 msgid "Enter url here"
 msgstr "यहां मीडिया URL दर्ज करें"
 
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:55
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:56
 msgid "Warning"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:55
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:56
 msgid ""
 "The keyring is not saving changes to disk. Any changes made will be lost "
 "when the application closes."
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:89
-msgid "Modify"
-msgstr ""
-
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:94
-msgid "Delete Credential?"
-msgstr "क्रेडेंशियल मिटाएं?"
-
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:94
-msgid "Are you sure you want to delete this credential?"
-msgstr ""
-
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:119
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:120
 #, fuzzy
 msgid "The credential name cannot be empty."
 msgstr "सुनिश्चित करें कि क्रेडेंशियल सही हैं।"
 
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:122
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:123
 msgid "Both the username and password cannot be empty."
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:125
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:126
 msgid "The provided url is invalid."
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:128
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:129
 msgid "A credential with this name already exists."
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:131
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:132
 msgid "There was an unknown error adding the credential to the keyring."
 msgstr ""
 
@@ -1426,9 +1480,6 @@ msgstr "यहां प्रॉक्सी URL दर्ज करें"
 #~ "window is closed."
 #~ msgstr "विंडो बंद होने पर अनुप्रयोग को छोड़ने के बजाय सिस्टम ट्रे में छोटा करें।"
 
-#~ msgid "Name (Empty)"
-#~ msgstr "नाम (खाली)"
-
 #~ msgid "Nicholas Logozzo"
 #~ msgstr "निकोलस लोगोज़ो"
 
@@ -1458,9 +1509,6 @@ msgstr "यहां प्रॉक्सी URL दर्ज करें"
 
 #~ msgid "On"
 #~ msgstr "चालू"
-
-#~ msgid "Password (Empty)"
-#~ msgstr "पासवर्ड (खाली)"
 
 #~ msgid "Please wait..."
 #~ msgstr "कृपया प्रतीक्षा करें…"
@@ -1565,9 +1613,6 @@ msgstr "यहां प्रॉक्सी URL दर्ज करें"
 #~ msgid "Unset Cookies File"
 #~ msgstr "कुकीज़ फाइल को अनसेट करें"
 
-#~ msgid "URL (Invalid)"
-#~ msgstr "URL (अमान्य)"
-
 #~ msgid ""
 #~ "Use keyring to safely store credentials for sites that require a user "
 #~ "name and password to login."
@@ -1577,9 +1622,6 @@ msgstr "यहां प्रॉक्सी URL दर्ज करें"
 
 #~ msgid "User Name"
 #~ msgstr "उपयोगकर्ता का नाम"
-
-#~ msgid "User Name (Empty)"
-#~ msgstr "उपयोगकर्ता नाम (खाली)"
 
 #~ msgid "Validating"
 #~ msgstr "सत्यापित किया जा रहा"

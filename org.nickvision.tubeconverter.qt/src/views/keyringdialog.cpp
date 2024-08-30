@@ -22,6 +22,7 @@ namespace Nickvision::TubeConverter::QT::Views
         //Localize the Manage page
         m_ui->lblDescription->setText(_("Create, save, and manage your credentials for media websites."));
         m_ui->btnAddNew->setText(_("Add"));
+        m_ui->btnAddNew->setToolTip(_("Add Credential"));
         m_ui->lblNoCredentials->setText(_("No Credentials Found"));
         //Localize the Edit page
         m_ui->btnBack->setText(_("Back"));

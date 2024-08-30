@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-30 13:17+0200\n"
+"POT-Creation-Date: 2024-08-30 16:17+0200\n"
 "PO-Revision-Date: 2023-10-02 18:59+0000\n"
 "Last-Translator: Soumyadeep Ghosh <soumyadeepghosh2004@zohomail.in>\n"
 "Language-Team: Bengali <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -197,7 +197,7 @@ msgstr "অধঃগ্রহণে যোগ করুন"
 
 #. Localize the Edit page
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:18
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:27
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:28
 msgid "Back"
 msgstr "পুর্বে"
 
@@ -213,19 +213,25 @@ msgid "Authenticate"
 msgstr "বৈধতা যাচাই"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:62
+#: org.nickvision.tubeconverter.gnome/blueprints/keyring_page.blp:50
+#: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:128
 #, fuzzy
 msgid "Credential"
 msgstr "গুরুত্বপূর্ণ তথ্য মুছুন?"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:66
+#: org.nickvision.tubeconverter.gnome/blueprints/keyring_page.blp:73
+#: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:133
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:32
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:32
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:33
 msgid "Username"
 msgstr "ব্যবহারকারীর নাম"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:70
+#: org.nickvision.tubeconverter.gnome/blueprints/keyring_page.blp:77
+#: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:135
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:34
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:34
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:35
 msgid "Password"
 msgstr "পাসওয়ার্ড"
 
@@ -387,22 +393,41 @@ msgid "Copy to Clipboard"
 msgstr "লেখনপট্টিকা(ক্লিপবোর্ড)-তে অনুলিপি করুন"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/keyring_page.blp:13
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:25
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:26
 #, fuzzy
 msgid "No Credentials Found"
 msgstr "গুরুত্বপূর্ণ তথ্য মুছুন?"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/keyring_page.blp:16
 #: org.nickvision.tubeconverter.gnome/blueprints/keyring_page.blp:33
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:24
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:73
-msgid "Add"
-msgstr "যোগ"
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:25
+#, fuzzy
+msgid "Add Credential"
+msgstr "গুরুত্বপূর্ণ তথ্য মুছুন?"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/keyring_page.blp:29
+#: org.nickvision.tubeconverter.gnome/blueprints/keyring_page.blp:31
 #, fuzzy
 msgid "Credentials"
 msgstr "গুরুত্বপূর্ণ তথ্য মুছুন?"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/keyring_page.blp:37
+#: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:84
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:24
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:74
+msgid "Add"
+msgstr "যোগ"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/keyring_page.blp:65
+#: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:129
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:29
+msgid "Name"
+msgstr "নাম"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/keyring_page.blp:69
+#: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:131
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:31
+msgid "URL"
+msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:5
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:8
@@ -851,11 +876,11 @@ msgstr "ক্রিয়ান্বয়ন..।"
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:97
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:91
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:146
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:119
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:122
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:125
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:128
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:131
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:120
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:123
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:126
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:129
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:132
 msgid "Error"
 msgstr "বিফল"
 
@@ -885,6 +910,76 @@ msgstr "বন্ধ"
 msgid "{} items"
 msgstr "একটিও নয়"
 
+#: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:22
+msgid "Keyring is not saving to disk. Changes will be lost."
+msgstr ""
+
+#: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:40
+#: org.nickvision.tubeconverter.qt/src/controls/keyringrow.cpp:18
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:44
+msgid "Edit"
+msgstr ""
+
+#: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:54
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:293
+#: org.nickvision.tubeconverter.qt/src/controls/keyringrow.cpp:19
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:343
+msgid "Delete"
+msgstr ""
+
+#: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:100
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:90
+msgid "Modify"
+msgstr ""
+
+#: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:106
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:95
+#, fuzzy
+msgid "Delete Credential?"
+msgstr "গুরুত্বপূর্ণ তথ্য মুছুন?"
+
+#: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:106
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:95
+msgid "Are you sure you want to delete this credential?"
+msgstr ""
+
+#: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:108
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:148
+msgid "Yes"
+msgstr "হ্যাঁ"
+
+#: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:108
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:148
+msgid "No"
+msgstr "না"
+
+#: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:151
+msgid "Name (Empty)"
+msgstr "নাম (খালি)"
+
+#: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:155
+#, fuzzy
+msgid "Username (Empty)"
+msgstr "ব্যবহারকারীর নাম (খালি)"
+
+#: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:157
+msgid "Password (Empty)"
+msgstr "পাসওয়ার্ড (খালি)"
+
+#: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:161
+#, fuzzy
+msgid "URL (Invalid)"
+msgstr "মিডিয়ার URL (অবৈধ)"
+
+#: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:165
+#, fuzzy
+msgid "Name (Exists)"
+msgstr "নাম (খালি)"
+
+#: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:169
+msgid "Credential (Database Error)"
+msgstr ""
+
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:147
 msgid "Exit?"
 msgstr ""
@@ -897,14 +992,6 @@ msgstr ""
 "কিছু অধঃগ্রহণাদি এখনও চলছে।\n"
 "আপনি নিশ্চিতভাবে প্যারাবোলিক বন্ধ করতে ও অধঃগ্রহণাদি থামাতে চান?"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:148
-msgid "Yes"
-msgstr "হ্যাঁ"
-
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:148
-msgid "No"
-msgstr "না"
-
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:222
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:316
 msgid "Disclaimer"
@@ -915,18 +1002,12 @@ msgstr ""
 msgid "Don't show this message again"
 msgstr ""
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:276
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:278
 #, fuzzy
 msgid "Download Again"
 msgstr "অধঃগৃহীত হচ্ছে"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:289
-#: org.nickvision.tubeconverter.qt/src/controls/keyringrow.cpp:19
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:343
-msgid "Delete"
-msgstr ""
-
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:410
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:414
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:56
 msgid "GitHub Repo"
 msgstr "গিটহাবের ভান্ডার"
@@ -955,22 +1036,17 @@ msgstr ""
 msgid "Stopped"
 msgstr "স্তব্ধিত"
 
-#: org.nickvision.tubeconverter.qt/src/controls/keyringrow.cpp:18
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:44
-msgid "Edit"
-msgstr ""
-
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:30
 msgid "Enter media url here"
 msgstr ""
 
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:33
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:33
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:34
 msgid "Enter username here"
 msgstr ""
 
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:35
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:35
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:36
 msgid "Enter password here"
 msgstr ""
 
@@ -1016,63 +1092,42 @@ msgstr ""
 msgid "Create, save, and manage your credentials for media websites."
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:28
-msgid "Name"
-msgstr "নাম"
-
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:29
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:30
 msgid "Enter name here"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:30
-msgid "URL"
-msgstr ""
-
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:31
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:32
 msgid "Enter url here"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:55
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:56
 msgid "Warning"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:55
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:56
 msgid ""
 "The keyring is not saving changes to disk. Any changes made will be lost "
 "when the application closes."
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:89
-msgid "Modify"
-msgstr ""
-
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:94
-#, fuzzy
-msgid "Delete Credential?"
-msgstr "গুরুত্বপূর্ণ তথ্য মুছুন?"
-
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:94
-msgid "Are you sure you want to delete this credential?"
-msgstr ""
-
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:119
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:120
 #, fuzzy
 msgid "The credential name cannot be empty."
 msgstr "তথ্যগুলি সঠিক কিনা যাচাই করে নিন।"
 
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:122
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:123
 msgid "Both the username and password cannot be empty."
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:125
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:126
 msgid "The provided url is invalid."
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:128
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:129
 msgid "A credential with this name already exists."
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:131
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:132
 msgid "There was an unknown error adding the credential to the keyring."
 msgstr ""
 
@@ -1258,12 +1313,6 @@ msgstr ""
 #~ msgid "Maximum Quality"
 #~ msgstr "সর্বোত্তম গুনমান"
 
-#~ msgid "Media URL (Invalid)"
-#~ msgstr "মিডিয়ার URL (অবৈধ)"
-
-#~ msgid "Name (Empty)"
-#~ msgstr "নাম (খালি)"
-
 #~ msgid "Nicholas Logozzo"
 #~ msgstr "Nicholas Logozzo"
 
@@ -1295,9 +1344,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "On"
 #~ msgstr "উদঘাটন"
-
-#~ msgid "Password (Empty)"
-#~ msgstr "পাসওয়ার্ড (খালি)"
 
 #~ msgid "Preparing..."
 #~ msgstr "প্রস্তুতি..।"
@@ -1345,10 +1391,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "User Name"
 #~ msgstr "ব্যবহারকারীর নাম"
-
-#, fuzzy
-#~ msgid "User Name (Empty)"
-#~ msgstr "ব্যবহারকারীর নাম (খালি)"
 
 #, fuzzy
 #~ msgid "Validating"
