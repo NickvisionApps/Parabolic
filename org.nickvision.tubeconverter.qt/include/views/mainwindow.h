@@ -45,10 +45,6 @@ namespace Nickvision::TubeConverter::QT::Views
 
     private Q_SLOTS:
         /**
-         * @brief Prompts the user to add a download.
-         */
-        void addDownload();
-        /**
          * @brief Exits the application.
          */
         void exit();
@@ -116,6 +112,11 @@ namespace Nickvision::TubeConverter::QT::Views
         void onListDownloadsSelectionChanged();
 
     private:
+        /**
+         * @brief Prompts the user to add a download.
+         * @param url url An optional url to start download validation with
+         */
+        void addDownload(const std::string& url = "");
         /**
          * @brief Handles when a notification is sent.
          * @param args The NotificationSentEventArgs

@@ -14,28 +14,36 @@ using namespace Nickvision::TubeConverter::Shared::Models;
 
 namespace Nickvision::TubeConverter::GNOME::Views
 {
-    AddDownloadDialog::AddDownloadDialog(const std::shared_ptr<AddDownloadDialogController>& controller, GtkWindow* parent)
+    AddDownloadDialog::AddDownloadDialog(const std::shared_ptr<AddDownloadDialogController>& controller, const std::string& url, GtkWindow* parent)
         : DialogBase{ parent, "add_download_dialog" },
         m_controller{ controller }
     {
         //Load Validate Page
         gtk_widget_set_sensitive(m_builder.get<GtkWidget>("validateUrlButton"), false);
         adw_view_stack_set_visible_child_name(m_builder.get<AdwViewStack>("viewStack"), "validate");
-        gdk_clipboard_read_text_async(gdk_display_get_clipboard(gdk_display_get_default()), nullptr, GAsyncReadyCallback(+[](GObject* self, GAsyncResult* res, gpointer data)
+        if(StringHelpers::isValidUrl(url))
         {
-            char* clipboardText{ gdk_clipboard_read_text_finish(GDK_CLIPBOARD(self), res, nullptr) };
-            if(clipboardText)
+            gtk_editable_set_text(m_builder.get<GtkEditable>("urlRow"), url.c_str());
+            gtk_widget_set_sensitive(m_builder.get<GtkWidget>("validateUrlButton"), true);
+        }
+        else
+        {
+            gdk_clipboard_read_text_async(gdk_display_get_clipboard(gdk_display_get_default()), nullptr, GAsyncReadyCallback(+[](GObject* self, GAsyncResult* res, gpointer data)
             {
-                std::string url{ clipboardText };
-                if(StringHelpers::isValidUrl(url))
+                char* clipboardText{ gdk_clipboard_read_text_finish(GDK_CLIPBOARD(self), res, nullptr) };
+                if(clipboardText)
                 {
-                    Builder* builder{ reinterpret_cast<Builder*>(data) };
-                    gtk_editable_set_text(builder->get<GtkEditable>("urlRow"), url.c_str());
-                    gtk_widget_set_sensitive(builder->get<GtkWidget>("validateUrlButton"), true);
+                    std::string url{ clipboardText };
+                    if(StringHelpers::isValidUrl(url))
+                    {
+                        Builder* builder{ reinterpret_cast<Builder*>(data) };
+                        gtk_editable_set_text(builder->get<GtkEditable>("urlRow"), url.c_str());
+                        gtk_widget_set_sensitive(builder->get<GtkWidget>("validateUrlButton"), true);
+                    }
+                    g_free(clipboardText);
                 }
-                g_free(clipboardText);
-            }
-        }), &m_builder);
+            }), &m_builder);
+        }
         std::vector<std::string> credentialNames{ m_controller->getKeyringCredentialNames() };
         credentialNames.insert(credentialNames.begin(), _("Use manual credential"));
         GtkHelpers::setComboRowModel(m_builder.get<AdwComboRow>("credentialRow"), credentialNames);

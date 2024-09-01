@@ -116,8 +116,9 @@ namespace Nickvision::TubeConverter::GNOME::Views
         void about();
         /**
          * @brief Opens the application's add download dialog.
+         * @param url An optional url to start download validation with
          */
-        void addDownload();
+        void addDownload(const std::string& url = "");
         /**
          * @brief Clears the download history.
          */

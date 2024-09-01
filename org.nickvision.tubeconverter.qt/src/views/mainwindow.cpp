@@ -69,7 +69,7 @@ namespace Nickvision::TubeConverter::QT::Views
         //Localize Downloads Page
         m_ui->lblLog->setText(_("Log"));
         //Signals
-        connect(m_ui->actionAddDownload, &QAction::triggered, this, &MainWindow::addDownload);
+        connect(m_ui->actionAddDownload, &QAction::triggered, [this]() { addDownload(); });
         connect(m_ui->actionExit, &QAction::triggered, this, &MainWindow::exit);
         connect(m_ui->actionKeyring, &QAction::triggered, this, &MainWindow::keyring);
         connect(m_ui->actionSettings, &QAction::triggered, this, &MainWindow::settings);
@@ -83,7 +83,7 @@ namespace Nickvision::TubeConverter::QT::Views
         connect(m_ui->actionReportABug, &QAction::triggered, this, &MainWindow::reportABug);
         connect(m_ui->actionDiscussions, &QAction::triggered, this, &MainWindow::discussions);
         connect(m_ui->actionAbout, &QAction::triggered, this, &MainWindow::about);
-        connect(m_ui->btnHomeAddDownload, &QPushButton::clicked, this, &MainWindow::addDownload);
+        connect(m_ui->btnHomeAddDownload, &QPushButton::clicked, [this]() { addDownload(); });
         connect(m_ui->btnClearHistory, &QPushButton::clicked, this, &MainWindow::clearHistory);
         connect(m_ui->listDownloads, &QListWidget::itemSelectionChanged, this, &MainWindow::onListDownloadsSelectionChanged);
         //Events
@@ -143,12 +143,6 @@ namespace Nickvision::TubeConverter::QT::Views
         }
         m_controller->shutdown({ geometry().width(), geometry().height(), isMaximized() });
         event->accept();
-    }
-
-    void MainWindow::addDownload()
-    {
-        AddDownloadDialog dialog{ m_controller->createAddDownloadDialogController(), this };
-        dialog.exec();
     }
 
     void MainWindow::exit()
@@ -276,6 +270,12 @@ namespace Nickvision::TubeConverter::QT::Views
         m_ui->lblDownloadLog->setText(row->getLog());
     }
 
+    void MainWindow::addDownload(const std::string& url)
+    {
+        AddDownloadDialog dialog{ m_controller->createAddDownloadDialogController(), url, this };
+        dialog.exec();
+    }
+
     void MainWindow::onNotificationSent(const NotificationSentEventArgs& args)
     {
         QMessageBox::Icon icon{ QMessageBox::Icon::NoIcon };
@@ -347,7 +347,7 @@ namespace Nickvision::TubeConverter::QT::Views
             QPushButton* btnDownload{ new QPushButton(QIcon::fromTheme(QIcon::ThemeIcon::GoDown), {}, m_ui->tblHistory) };
             btnDownload->setToolTip(_("Download"));
             m_ui->tblHistory->setCellWidget(0, 2, btnDownload);
-            //TODO: Download
+            connect(btnDownload, &QPushButton::clicked, [this, download]() { addDownload(download.getUrl()); });
             //Play Button
             if(std::filesystem::exists(download.getPath()))
             {

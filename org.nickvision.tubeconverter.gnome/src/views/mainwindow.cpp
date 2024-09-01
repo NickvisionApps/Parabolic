@@ -280,7 +280,7 @@ namespace Nickvision::TubeConverter::GNOME::Views
             g_signal_connect_data(downloadButton, "clicked", GCallback(+[](GtkButton*, gpointer data)
             {
                 std::pair<MainWindow*, HistoricDownload>* pair{ reinterpret_cast<std::pair<MainWindow*, HistoricDownload>*>(data) };
-                //TODO
+                pair->first->addDownload(pair->second.getUrl());
             }), downloadPair, GClosureNotify(+[](gpointer data, GClosure*)
             {
                 delete reinterpret_cast<std::pair<MainWindow*, HistoricDownload>*>(data);
@@ -444,9 +444,9 @@ namespace Nickvision::TubeConverter::GNOME::Views
         adw_dialog_present(ADW_DIALOG(dialog), GTK_WIDGET(m_window));
     }
 
-    void MainWindow::addDownload()
+    void MainWindow::addDownload(const std::string& url)
     {
-        DialogPtr<AddDownloadDialog> dialog{ m_controller->createAddDownloadDialogController(), GTK_WINDOW(m_window) };
+        DialogPtr<AddDownloadDialog> dialog{ m_controller->createAddDownloadDialogController(), url, GTK_WINDOW(m_window) };
         dialog->present();
     }
 

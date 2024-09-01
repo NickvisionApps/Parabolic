@@ -18,7 +18,7 @@ using namespace Nickvision::TubeConverter::Shared::Controllers;
 
 namespace Nickvision::TubeConverter::QT::Views
 {
-    AddDownloadDialog::AddDownloadDialog(const std::shared_ptr<AddDownloadDialogController>& controller, QWidget* parent)
+    AddDownloadDialog::AddDownloadDialog(const std::shared_ptr<AddDownloadDialogController>& controller, const std::string& url, QWidget* parent)
         : QDialog{ parent },
         m_ui{ new Ui::AddDownloadDialog() },
         m_controller{ controller }
@@ -70,7 +70,12 @@ namespace Nickvision::TubeConverter::QT::Views
         m_ui->txtUsername->hide();
         m_ui->lblPassword->hide();
         m_ui->txtPassword->hide();
-        if(StringHelpers::isValidUrl(QApplication::clipboard()->text().toStdString()))
+        if(StringHelpers::isValidUrl(url))
+        {
+            m_ui->txtMediaUrl->setText(QString::fromStdString(url));
+            m_ui->btnValidate->setEnabled(true);
+        }
+        else if(StringHelpers::isValidUrl(QApplication::clipboard()->text().toStdString()))
         {
             m_ui->txtMediaUrl->setText(QApplication::clipboard()->text());
             m_ui->btnValidate->setEnabled(true);

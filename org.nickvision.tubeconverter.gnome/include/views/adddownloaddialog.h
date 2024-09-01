@@ -19,8 +19,9 @@ namespace Nickvision::TubeConverter::GNOME::Views
          * @brief Constructs a AddDownloadDialog.
          * @param controller The AddDownloadDialogController
          * @param parent The GtkWindow object of the parent window
+         * @param url An optional url to start download validation with
          */
-        AddDownloadDialog(const std::shared_ptr<Shared::Controllers::AddDownloadDialogController>& controller, GtkWindow* parent);
+        AddDownloadDialog(const std::shared_ptr<Shared::Controllers::AddDownloadDialogController>& controller, const std::string& url, GtkWindow* parent);
 
     private:
         /**

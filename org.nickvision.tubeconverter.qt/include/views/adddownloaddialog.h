@@ -20,9 +20,10 @@ namespace Nickvision::TubeConverter::QT::Views
         /**
          * @brief Constructs an AddDownloadDialog.
          * @param controller The AddDownloadDialogController
+         * @param url An optional url to start download validation with
          * @param parent The parent widget
          */
-        AddDownloadDialog(const std::shared_ptr<Shared::Controllers::AddDownloadDialogController>& controller, QWidget* parent = nullptr);
+        AddDownloadDialog(const std::shared_ptr<Shared::Controllers::AddDownloadDialogController>& controller, const std::string& url, QWidget* parent = nullptr);
         /**
          * @brief Destructs an AddDownloadDialog.
          */
