@@ -154,6 +154,36 @@ Adw.PreferencesDialog root {
           icon-name: "document-properties-symbolic";
         }
       }
+
+      Adw.ActionRow cookiesFileRow {
+        title: _("Cookies File");
+        subtitle: _("No file selected");
+
+        [prefix]
+        Gtk.Image {
+          icon-name: "document-properties-symbolic";
+        }
+
+        [suffix]
+        Gtk.Button selectCookiesFileButton {
+          valign: center;
+          icon-name: "document-open-symbolic";
+          tooltip-text: _("Select Cookies File");
+
+          styles [ "flat" ]
+        }
+
+        [suffix]
+        Gtk.Button clearCookiesFileButton {
+          valign: center;
+          icon-name: "user-trash-symbolic";
+          tooltip-text: _("Clear Cookies File");
+
+          styles [ "flat" ]
+        }
+
+        styles [ "property" ]
+      }
     }
 
     Adw.PreferencesGroup {

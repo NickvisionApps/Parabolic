@@ -133,6 +133,16 @@ namespace Nickvision::TubeConverter::Shared::Models
          */
         void setCookiesBrowser(Browser browser);
         /**
+         * @brief Gets the path to the cookies file.
+         * @return The path to the cookies file
+         */
+        const std::filesystem::path& getCookiesPath() const;
+        /**
+         * @brief Sets the path to the cookies file.
+         * @param path The new path to the cookies file
+         */
+        void setCookiesPath(const std::filesystem::path& path);
+        /**
          * @brief Gets whether or not to use the YouTube SponsorBlock extension.
          * @return True to use SponsorBlock, else false
          */

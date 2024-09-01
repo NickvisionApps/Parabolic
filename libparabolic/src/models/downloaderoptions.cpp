@@ -142,6 +142,16 @@ namespace Nickvision::TubeConverter::Shared::Models
         m_cookiesBrowser = browser;
     }
 
+    const std::filesystem::path& DownloaderOptions::getCookiesPath() const
+    {
+        return m_cookiesPath;
+    }
+
+    void DownloaderOptions::setCookiesPath(const std::filesystem::path& path)
+    {
+        m_cookiesPath = path;
+    }
+
     bool DownloaderOptions::getYouTubeSponsorBlock() const
     {
         return m_youTubeSponsorBlock;

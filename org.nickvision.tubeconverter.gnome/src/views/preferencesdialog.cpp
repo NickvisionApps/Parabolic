@@ -1,7 +1,10 @@
 #include "views/preferencesdialog.h"
 #include <libnick/localization/gettext.h>
+#include <libnick/system/environment.h>
 
 using namespace Nickvision::Events;
+using namespace Nickvision::System;
+using namespace Nickvision::TubeConverter::GNOME::Helpers;
 using namespace Nickvision::TubeConverter::Shared::Controllers;
 using namespace Nickvision::TubeConverter::Shared::Models;
 
@@ -25,6 +28,8 @@ namespace Nickvision::TubeConverter::GNOME::Views
         adw_switch_row_set_active(m_builder.get<AdwSwitchRow>("sponsorBlockRow"), options.getYouTubeSponsorBlock());
         gtk_editable_set_text(m_builder.get<GtkEditable>("proxyUrlRow"), options.getProxyUrl().c_str());
         adw_combo_row_set_selected(m_builder.get<AdwComboRow>("cookiesBrowserRow"), static_cast<unsigned int>(options.getCookiesBrowser()));
+        adw_action_row_set_subtitle(m_builder.get<AdwActionRow>("cookiesFileRow"), options.getCookiesPath().filename().string().c_str());
+        gtk_widget_set_tooltip_text(m_builder.get<GtkWidget>("cookiesFileRow"), options.getCookiesPath().string().c_str());
         adw_switch_row_set_active(m_builder.get<AdwSwitchRow>("embedMetadataRow"), options.getEmbedMetadata());
         adw_switch_row_set_active(m_builder.get<AdwSwitchRow>("embedChaptersRow"), options.getEmbedChapters());
         adw_switch_row_set_active(m_builder.get<AdwSwitchRow>("embedSubtitlesRow"), options.getEmbedSubtitles());
@@ -33,9 +38,15 @@ namespace Nickvision::TubeConverter::GNOME::Views
         adw_switch_row_set_active(m_builder.get<AdwSwitchRow>("useAriaRow"), options.getUseAria());
         adw_spin_row_set_value(m_builder.get<AdwSpinRow>("ariaMaxConnectionsPerServerRow"), static_cast<double>(options.getAriaMaxConnectionsPerServer()));
         adw_spin_row_set_value(m_builder.get<AdwSpinRow>("ariaMinSplitSizeRow"), static_cast<double>(options.getAriaMinSplitSize()));
+        if(Environment::getDeploymentMode() != DeploymentMode::Local)
+        {
+            gtk_widget_set_visible(m_builder.get<GtkWidget>("cookiesBrowserRow"), false);
+        }
         //Signals
         m_closed += [&](const EventArgs&) { onClosed(); };
         g_signal_connect(m_builder.get<GObject>("themeRow"), "notify::selected-item", G_CALLBACK(+[](GObject*, GParamSpec* pspec, gpointer data){ reinterpret_cast<PreferencesDialog*>(data)->onThemeChanged(); }), this);
+        g_signal_connect(m_builder.get<GObject>("selectCookiesFileButton"), "clicked", G_CALLBACK(+[](GtkButton*, gpointer data){ reinterpret_cast<PreferencesDialog*>(data)->selectCookiesFile(); }), this);
+        g_signal_connect(m_builder.get<GObject>("clearCookiesFileButton"), "clicked", G_CALLBACK(+[](GtkButton*, gpointer data){ reinterpret_cast<PreferencesDialog*>(data)->clearCookiesFile(); }), this);
     }
 
     void PreferencesDialog::onClosed()
@@ -52,6 +63,7 @@ namespace Nickvision::TubeConverter::GNOME::Views
         options.setYouTubeSponsorBlock(adw_switch_row_get_active(m_builder.get<AdwSwitchRow>("sponsorBlockRow")));
         options.setProxyUrl(gtk_editable_get_text(m_builder.get<GtkEditable>("proxyUrlRow")));
         options.setCookiesBrowser(static_cast<Browser>(adw_combo_row_get_selected(m_builder.get<AdwComboRow>("cookiesBrowserRow"))));
+        options.setCookiesPath(gtk_widget_get_tooltip_text(m_builder.get<GtkWidget>("cookiesFileRow")));
         options.setEmbedMetadata(adw_switch_row_get_active(m_builder.get<AdwSwitchRow>("embedMetadataRow")));
         options.setEmbedChapters(adw_switch_row_get_active(m_builder.get<AdwSwitchRow>("embedChaptersRow")));
         options.setEmbedSubtitles(adw_switch_row_get_active(m_builder.get<AdwSwitchRow>("embedSubtitlesRow")));
@@ -79,5 +91,34 @@ namespace Nickvision::TubeConverter::GNOME::Views
             adw_style_manager_set_color_scheme(adw_style_manager_get_default(), ADW_COLOR_SCHEME_DEFAULT);
             break;
         }
+    }
+
+    void PreferencesDialog::selectCookiesFile()
+    {
+        GtkFileDialog* fileDialog{ gtk_file_dialog_new() };
+        gtk_file_dialog_set_title(fileDialog, _("Select Cookies File"));
+        GtkFileFilter* filter{ gtk_file_filter_new() };
+        gtk_file_filter_set_name(filter, _("TXT Files (*.txt)"));
+        gtk_file_filter_add_pattern(filter, "*.txt");
+        gtk_file_filter_add_pattern(filter, "*.TXT");
+        GListStore* filters{ g_list_store_new(gtk_file_filter_get_type()) };
+        g_list_store_append(filters, G_OBJECT(filter));
+        gtk_file_dialog_set_filters(fileDialog, G_LIST_MODEL(filters));
+        gtk_file_dialog_open(fileDialog, m_parent, nullptr, GAsyncReadyCallback(+[](GObject* self, GAsyncResult* res, gpointer data)
+        {
+            GFile* file{ gtk_file_dialog_open_finish(GTK_FILE_DIALOG(self), res, nullptr) };
+            if(file)
+            {
+                std::filesystem::path path{ g_file_get_path(file) };
+                adw_action_row_set_subtitle(reinterpret_cast<Builder*>(data)->get<AdwActionRow>("cookiesFileRow"), path.filename().string().c_str());
+                gtk_widget_set_tooltip_text(reinterpret_cast<Builder*>(data)->get<GtkWidget>("cookiesFileRow"), path.string().c_str());
+            }
+        }), &m_builder);
+    }
+
+    void PreferencesDialog::clearCookiesFile()
+    {
+        adw_action_row_set_subtitle(m_builder.get<AdwActionRow>("cookiesFileRow"), _("No file selected"));
+        gtk_widget_set_tooltip_text(m_builder.get<GtkWidget>("cookiesFileRow"), "");
     }
 }

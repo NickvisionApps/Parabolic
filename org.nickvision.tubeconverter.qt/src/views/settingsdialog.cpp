@@ -4,7 +4,9 @@
 #include <QFileDialog>
 #include <QMessageBox>
 #include <libnick/localization/gettext.h>
+#include <libnick/system/environment.h>
 
+using namespace Nickvision::System;
 using namespace Nickvision::TubeConverter::Shared::Controllers;
 using namespace Nickvision::TubeConverter::Shared::Models;
 
@@ -60,6 +62,10 @@ namespace Nickvision::TubeConverter::QT::Views
         m_ui->cmbCookiesBrowser->addItem(_("Safari"));
         m_ui->cmbCookiesBrowser->addItem(_("Vivaldi"));
         m_ui->cmbCookiesBrowser->addItem(_("Whale"));
+        m_ui->lblCookiesFile->setText(_("Cookies File"));
+        m_ui->txtCookiesFile->setPlaceholderText(_("No file selected"));
+        m_ui->btnSelectCookiesFile->setText(_("Select Cookies File"));
+        m_ui->btnClearCookiesFile->setText(_("Clear Cookies File"));
         m_ui->lblEmbedMetadata->setText(_("Embed Metadata"));
         m_ui->lblEmbedSubtitles->setText(_("Embed Subtitles"));
         m_ui->lblEmbedChapters->setText(_("Embed Chapters"));
@@ -87,6 +93,8 @@ namespace Nickvision::TubeConverter::QT::Views
         m_ui->chkSponsorBlock->setChecked(options.getYouTubeSponsorBlock());
         m_ui->txtProxyUrl->setText(QString::fromStdString(options.getProxyUrl()));
         m_ui->cmbCookiesBrowser->setCurrentIndex(static_cast<int>(options.getCookiesBrowser()));
+        m_ui->txtCookiesFile->setText(QString::fromStdString(options.getCookiesPath().filename().string()));
+        m_ui->txtCookiesFile->setToolTip(QString::fromStdString(options.getCookiesPath().string()));
         m_ui->chkEmbedMetadata->setChecked(options.getEmbedMetadata());
         m_ui->chkEmbedSubtitles->setChecked(options.getEmbedSubtitles());
         m_ui->chkEmbedChapters->setChecked(options.getEmbedChapters());
@@ -95,8 +103,15 @@ namespace Nickvision::TubeConverter::QT::Views
         m_ui->chkUseAria->setChecked(options.getUseAria());
         m_ui->numAriaMaxConnectionsPerServer->setValue(options.getAriaMaxConnectionsPerServer());
         m_ui->numAriaMinSplitSize->setValue(options.getAriaMinSplitSize());
+        if(Environment::getDeploymentMode() != DeploymentMode::Local)
+        {
+            m_ui->lblCookiesBrowser->setVisible(false);
+            m_ui->cmbCookiesBrowser->setVisible(false);
+        }
         //Signals
         connect(m_ui->listPages, &QListWidget::currentRowChanged, this, &SettingsDialog::onPageChanged);
+        connect(m_ui->btnSelectCookiesFile, &QPushButton::clicked, this, &SettingsDialog::selectCookiesFile);
+        connect(m_ui->btnClearCookiesFile, &QPushButton::clicked, this, &SettingsDialog::clearCookiesFile);
         m_ui->listPages->setCurrentRow(0);
     }
     
@@ -119,6 +134,7 @@ namespace Nickvision::TubeConverter::QT::Views
         options.setYouTubeSponsorBlock(m_ui->chkSponsorBlock->isChecked());
         options.setProxyUrl(m_ui->txtProxyUrl->text().toStdString());
         options.setCookiesBrowser(static_cast<Browser>(m_ui->cmbCookiesBrowser->currentIndex()));
+        options.setCookiesPath(m_ui->txtCookiesFile->toolTip().toStdString());
         options.setEmbedMetadata(m_ui->chkEmbedMetadata->isChecked());
         options.setEmbedSubtitles(m_ui->chkEmbedSubtitles->isChecked());
         options.setEmbedChapters(m_ui->chkEmbedChapters->isChecked());
@@ -135,5 +151,22 @@ namespace Nickvision::TubeConverter::QT::Views
     void SettingsDialog::onPageChanged(int index)
     {
         m_ui->viewStack->setCurrentIndex(index);
+    }
+
+    void SettingsDialog::selectCookiesFile()
+    {
+        QString file{ QFileDialog::getOpenFileName(this, _("Select Cookies File"), {}, _("TXT Files (*.txt)")) };
+        if(!file.isEmpty())
+        {
+            std::filesystem::path path{ file.toStdString() };
+            m_ui->txtCookiesFile->setText(QString::fromStdString(path.filename().string()));
+            m_ui->txtCookiesFile->setToolTip(QString::fromStdString(path.string()));
+        }
+    }
+
+    void SettingsDialog::clearCookiesFile()
+    {
+        m_ui->txtCookiesFile->setText("");
+        m_ui->txtCookiesFile->setToolTip("");
     }
 }

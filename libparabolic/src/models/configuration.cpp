@@ -89,6 +89,7 @@ namespace Nickvision::TubeConverter::Shared::Models
         options.setSpeedLimit(m_json.get("SpeedLimit", 1024).asUInt());
         options.setProxyUrl(m_json.get("ProxyUrl", "").asString());
         options.setCookiesBrowser(static_cast<Browser>(m_json.get("CookiesBrowser", static_cast<int>(Browser::None)).asInt()));
+        options.setCookiesPath(m_json.get("CookiesPath", "").asString());
         options.setYouTubeSponsorBlock(m_json.get("YouTubeSponsorBlock", false).asBool());
         options.setEmbedMetadata(m_json.get("EmbedMetadata", true).asBool());
         options.setCropAudioThumbnails(m_json.get("CropAudioThumbnails", false).asBool());
@@ -110,6 +111,7 @@ namespace Nickvision::TubeConverter::Shared::Models
         m_json["SpeedLimit"] = downloaderOptions.getSpeedLimit();
         m_json["ProxyUrl"] = downloaderOptions.getProxyUrl();
         m_json["CookiesBrowser"] = static_cast<int>(downloaderOptions.getCookiesBrowser());
+        m_json["CookiesPath"] = downloaderOptions.getCookiesPath().string();
         m_json["YouTubeSponsorBlock"] = downloaderOptions.getYouTubeSponsorBlock();
         m_json["EmbedMetadata"] = downloaderOptions.getEmbedMetadata();
         m_json["CropAudioThumbnails"] = downloaderOptions.getCropAudioThumbnails();

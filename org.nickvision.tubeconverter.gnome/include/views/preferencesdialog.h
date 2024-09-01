@@ -30,6 +30,14 @@ namespace Nickvision::TubeConverter::GNOME::Views
          * @brief Handles when the theme preference is changed.
          */
         void onThemeChanged();
+        /**
+         * @brief Prompts the user to select a cookies file.
+         */
+        void selectCookiesFile();
+        /**
+         * @brief Clears the cookies file.
+         */
+        void clearCookiesFile();
         std::shared_ptr<Shared::Controllers::PreferencesViewController> m_controller;
     };
 }

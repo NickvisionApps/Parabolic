@@ -215,7 +215,7 @@ namespace Nickvision::TubeConverter::Shared::Models
             arguments.push_back("--proxy");
             arguments.push_back(downloaderOptions.getProxyUrl());
         }
-        if(downloaderOptions.getCookiesBrowser() != Browser::None)
+        if(downloaderOptions.getCookiesBrowser() != Browser::None && Environment::getDeploymentMode() == DeploymentMode::Local)
         {
             arguments.push_back("--cookies-from-browser");
             switch(downloaderOptions.getCookiesBrowser())
@@ -247,6 +247,11 @@ namespace Nickvision::TubeConverter::Shared::Models
             default:
                 break;
             }
+        }
+        else if(std::filesystem::exists(downloaderOptions.getCookiesPath()))
+        {
+            arguments.push_back("--cookies");
+            arguments.push_back(downloaderOptions.getCookiesPath().string());
         }
         if(downloaderOptions.getYouTubeSponsorBlock())
         {
