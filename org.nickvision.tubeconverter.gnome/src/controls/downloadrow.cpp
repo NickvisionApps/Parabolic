@@ -121,13 +121,20 @@ namespace Nickvision::TubeConverter::GNOME::Controls
     void DownloadRow::setStopState()
     {
         m_pulseBar = false;
-        //TODO
+        gtk_progress_bar_set_fraction(m_builder.get<GtkProgressBar>("progBar"), 1.0);
+        gtk_image_set_from_icon_name(m_builder.get<GtkImage>("statusIcon"), "media-playback-stop-symbolic");
+        gtk_label_set_text(m_builder.get<GtkLabel>("statusLabel"), _("Stopped"));
+        adw_view_stack_set_visible_child_name(m_builder.get<AdwViewStack>("buttonsViewStack"), "error");
+        adw_view_stack_set_visible_child_name(m_builder.get<AdwViewStack>("progViewStack"), "done");
+        gtk_level_bar_set_value(m_builder.get<GtkLevelBar>("levelBar"), 0.0);
     }
 
     void DownloadRow::setStartFromQueueState()
     {
         m_pulseBar = false;
-        //TODO
+        gtk_widget_add_css_class(m_builder.get<GtkWidget>("statusIcon"), "stopped");
+        gtk_image_set_from_icon_name(m_builder.get<GtkImage>("statusIcon"), "folder-download-symbolic");
+        gtk_label_set_text(m_builder.get<GtkLabel>("statusLabel"), _("Running"));
     }
 
     void DownloadRow::stop()
