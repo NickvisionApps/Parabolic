@@ -83,13 +83,10 @@ namespace Nickvision::TubeConverter::Shared::Models
         {
             return false;
         }
-        else if(m_length != HistoryLength::Forever)
+        boost::gregorian::days daysSinceDownload{ boost::posix_time::second_clock::universal_time().date() - download.getDateTime().date() };
+        if(m_length != HistoryLength::Forever && daysSinceDownload > boost::gregorian::days{ static_cast<int>(m_length) })
         {
-            boost::gregorian::days daysSinceDownload{ boost::posix_time::second_clock::universal_time().date() - download.getDateTime().date() };
-            if(daysSinceDownload > boost::gregorian::days{ static_cast<int>(m_length) })
-            {
-                return false;
-            }
+            return false;
         }
         else if(std::find(m_history.begin(), m_history.end(), download) != m_history.end())
         {
@@ -107,17 +104,14 @@ namespace Nickvision::TubeConverter::Shared::Models
             return false;
         }
         std::vector<HistoricDownload>::iterator it{ std::find(m_history.begin(), m_history.end(), download) };
+        boost::gregorian::days daysSinceDownload{ boost::posix_time::second_clock::universal_time().date() - download.getDateTime().date() };
         if(it == m_history.end())
         {
             return false;
         }
-        else if(m_length != HistoryLength::Forever)
+        else if(m_length != HistoryLength::Forever && daysSinceDownload > boost::gregorian::days{ static_cast<int>(m_length) })
         {
-            boost::gregorian::days daysSinceDownload{ boost::posix_time::second_clock::universal_time().date() - download.getDateTime().date() };
-            if(daysSinceDownload > boost::gregorian::days{ static_cast<int>(m_length) })
-            {
-                return false;
-            }
+            return false;
         }
         *it = download;
         updateDisk();
