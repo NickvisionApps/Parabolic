@@ -25,29 +25,14 @@
             "name": "boost",
             "buildsystem": "simple",
             "build-commands": [
-                "./bootstrap.sh --prefix=/app --with-libraries=system,date_time",
+                "./bootstrap.sh --prefix=/app --with-libraries=system,date_time,json",
                 "./b2 -j $FLATPAK_BUILDER_N_JOBS install"
             ],
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://boostorg.jfrog.io/artifactory/main/release/1.85.0/source/boost_1_85_0.tar.bz2",
-                    "sha256": "7009fe1faa1697476bdc7027703a2badb84e849b7b0baad5086b087b971f8617"
-                }
-            ]
-        },
-        {
-            "name": "jsoncpp",
-            "buildsystem": "cmake-ninja",
-            "builddir": true,
-            "config-opts": [
-                "-DCMAKE_BUILD_TYPE=Release"
-            ],
-            "sources": [
-                {
-                    "type": "git",
-                    "url": "https://github.com/open-source-parsers/jsoncpp",
-                    "tag": "1.9.5"
+                    "url": "https://boostorg.jfrog.io/artifactory/main/release/1.86.0/source/boost_1_86_0.tar.bz2",
+                    "sha256": "1bed88e40401b2cb7a1f76d4bab499e352fa4d0c5f31c0dbae64e24d34d7513b"
                 }
             ]
         },
@@ -78,7 +63,7 @@
                 {
                     "type": "git",
                     "url": "https://github.com/nickvisionapps/libnick",
-                    "tag": "2024.8.3"
+                    "tag": "2024.9.0"
                 }
             ]
         },

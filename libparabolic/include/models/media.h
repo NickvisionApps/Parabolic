@@ -6,7 +6,7 @@
 #include <ostream>
 #include <string>
 #include <vector>
-#include <json/json.h>
+#include <boost/json.hpp>
 #include "mediatype.h"
 #include "timeframe.h"
 #include "videoresolution.h"
@@ -32,7 +32,7 @@ namespace Nickvision::TubeConverter::Shared::Models
          * @param info The json object to construct the Media from
          * @throw std::invalid_argument If the info is None
          */
-        Media(const Json::Value& info);
+        Media(boost::json::object info);
         /**
          * @brief Gets the URL of the media.
          * @return The URL of the media

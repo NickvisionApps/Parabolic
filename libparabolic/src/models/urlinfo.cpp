@@ -7,25 +7,24 @@ using namespace Nickvision::System;
 
 namespace Nickvision::TubeConverter::Shared::Models
 {
-    UrlInfo::UrlInfo(const std::string& url, const Json::Value& info)
+    UrlInfo::UrlInfo(const std::string& url, boost::json::object info)
         : m_url{ url },
         m_isPlaylist{ false }
     {
-        Json::Value entries{ info.get("entries", Json::Value()) };
-        if(!entries.isNull() && !entries.empty())
+        boost::json::array entries{ info["entries"].is_array() ? info["entries"].as_array() : boost::json::array() };
+        if(!entries.empty())
         {
             m_isPlaylist = true;
             int i{ 1 };
-            for(Json::Value entry : entries)
+            for(const boost::json::value& entry : entries)
             {
-                if(entry.isNull() || entry.empty())
+                if(!entry.is_object())
                 {
                     continue;
                 }
-                entry["limit_characters"] = info["limit_characters"];
-                Media media{ entry };
-                media.setPlaylistPosition(i);
-                m_media.push_back(media);
+                boost::json::object obj{ entry.as_object() };
+                obj["limit_characters"] = info["limit_characters"];
+                m_media.push_back({ obj });
                 i++;
             }
         }
@@ -94,14 +93,14 @@ namespace Nickvision::TubeConverter::Shared::Models
         {
             return std::nullopt;
         }
-        Json::Value info;
-        Json::Reader reader;
-        if(!reader.parse(process.getOutput(), info))
+        boost::json::value info{ boost::json::parse(process.getOutput()) };
+        if(!info.is_object())
         {
             return std::nullopt;
         }
-        info["limit_characters"] = options.getLimitCharacters();
-        return UrlInfo{ url, info };
+        boost::json::object obj{ info.as_object() };
+        obj["limit_characters"] = options.getLimitCharacters();
+        return UrlInfo{ url, obj };
     }
 
     const std::string& UrlInfo::getUrl() const

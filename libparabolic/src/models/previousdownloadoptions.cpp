@@ -14,7 +14,7 @@ namespace Nickvision::TubeConverter::Shared::Models
 
     std::filesystem::path PreviousDownloadOptions::getSaveFolder() const
     {
-        std::filesystem::path path{ m_json.get("SaveFolder", UserDirectories::get(UserDirectory::Downloads).string()).asString() };
+        std::filesystem::path path{ m_json["SaveFolder"].is_string() ? m_json["SaveFolder"].as_string().c_str() : UserDirectories::get(UserDirectory::Downloads).string() };
         if(std::filesystem::exists(path))
         {
             return path;
@@ -36,7 +36,7 @@ namespace Nickvision::TubeConverter::Shared::Models
 
     MediaFileType PreviousDownloadOptions::getFileType() const
     {
-        return { static_cast<MediaFileType::MediaFileTypeValue>(m_json.get("FileType", static_cast<int>(MediaFileType::MP4)).asInt()) };
+        return { m_json["FileType"].is_int64() ? static_cast<MediaFileType::MediaFileTypeValue>(m_json["FileType"].as_int64()) : MediaFileType::MP4 };
     }
 
     void PreviousDownloadOptions::setFileType(const MediaFileType& previousMediaFileType)
@@ -46,7 +46,7 @@ namespace Nickvision::TubeConverter::Shared::Models
 
     bool PreviousDownloadOptions::getDownloadSubtitles() const
     {
-        return m_json.get("DownloadSubtitles", false).asBool();
+        return m_json["DownloadSubtitles"].is_bool() ? m_json["DownloadSubtitles"].as_bool() : false;
     }
 
     void PreviousDownloadOptions::setDownloadSubtitles(bool previousSubtitleState)
@@ -56,7 +56,7 @@ namespace Nickvision::TubeConverter::Shared::Models
 
     bool PreviousDownloadOptions::getPreferAV1() const
     {
-        return m_json.get("PreferAV1State", false).asBool();
+        return m_json["PreferAV1State"].is_bool() ? m_json["PreferAV1State"].as_bool() : false;
     }
 
     void PreviousDownloadOptions::setPreferAV1(bool previousPreferAV1State)
@@ -66,7 +66,7 @@ namespace Nickvision::TubeConverter::Shared::Models
 
     bool PreviousDownloadOptions::getSplitChapters() const
     {
-        return m_json.get("SplitChapters", false).asBool();
+        return m_json["SplitChapters"].is_bool() ? m_json["SplitChapters"].as_bool() : false;
     }
 
     void PreviousDownloadOptions::setSplitChapters(bool splitChapters)
@@ -76,7 +76,7 @@ namespace Nickvision::TubeConverter::Shared::Models
 
     bool PreviousDownloadOptions::getLimitSpeed() const
     {
-        return m_json.get("LimitSpeed", false).asBool();
+        return m_json["LimitSpeed"].is_bool() ? m_json["LimitSpeed"].as_bool() : false;
     }
 
     void PreviousDownloadOptions::setLimitSpeed(bool limitSpeed)
@@ -86,7 +86,7 @@ namespace Nickvision::TubeConverter::Shared::Models
 
     bool PreviousDownloadOptions::getNumberTitles() const
     {
-        return m_json.get("NumberTitles", false).asBool();
+        return m_json["NumberTitles"].is_bool() ? m_json["NumberTitles"].as_bool() : false;
     }
 
     void PreviousDownloadOptions::setNumberTitles(bool numberTitles)

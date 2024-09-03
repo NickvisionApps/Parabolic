@@ -7,23 +7,27 @@ namespace Nickvision::TubeConverter::Shared::Models
 {
     DownloadHistory::DownloadHistory(const std::string& key, const std::string& appName)
         : DataFileBase{ key, appName },
-        m_length{ static_cast<HistoryLength>(m_json.get("Length", static_cast<int>(HistoryLength::OneWeek)).asInt()) }
+        m_length{ m_json["Length"].is_int64() ? static_cast<HistoryLength>(m_json["Length"].as_int64()) : HistoryLength::OneWeek }
     {
-        if(m_length != HistoryLength::Never)
+        if(m_length != HistoryLength::Never && m_json["History"].is_array())
         {
-            const Json::Value historyJson{ m_json["History"] };
-            for(unsigned int i = 0; i < historyJson.size(); i++)
+            for(const boost::json::value& value : m_json["History"].as_array())
             {
-                HistoricDownload download{ historyJson[i].get("URL", "").asString() };
+                if(!value.is_object())
+                {
+                    continue;
+                }
+                boost::json::object history{ value.as_object() };
+                HistoricDownload download{ history["URL"].is_string() ? history["URL"].as_string().c_str() : "" };
                 if(download.getUrl().empty())
                 {
                     continue;
                 }
-                download.setTitle(historyJson[i].get("Title", "").asString());
-                download.setPath(historyJson[i].get("Path", "").asString());
+                download.setTitle(history["Title"].is_string() ? history["Title"].as_string().c_str() : "");
+                download.setPath(history["Path"].is_string() ? history["Path"].as_string().c_str() : "");
                 try
                 {
-                    download.setDateTime(boost::posix_time::from_iso_string(historyJson[i].get("DateTime", "").asString()));
+                    download.setDateTime(boost::posix_time::from_iso_string(history["DateTime"].is_string() ? history["DateTime"].as_string().c_str() : ""));
                 }
                 catch(...) { }
                 if(m_length != HistoryLength::Forever)
@@ -147,15 +151,17 @@ namespace Nickvision::TubeConverter::Shared::Models
         std::sort(m_history.begin(), m_history.end());
         m_json.clear();
         m_json["Length"] = static_cast<int>(m_length);
-        unsigned int i = 0;
+        boost::json::array arr;
         for(const HistoricDownload& download : m_history)
         {
-            m_json["History"][i]["URL"] = download.getUrl();
-            m_json["History"][i]["Title"] = download.getTitle();
-            m_json["History"][i]["Path"] = download.getPath().string();
-            m_json["History"][i]["DateTime"] = boost::posix_time::to_iso_string(download.getDateTime());
-            i++;
+            boost::json::object obj;
+            obj["URL"] = download.getUrl();
+            obj["Title"] = download.getTitle();
+            obj["Path"] = download.getPath().string();
+            obj["DateTime"] = boost::posix_time::to_iso_string(download.getDateTime());
+            arr.push_back(obj);
         }
+        m_json["History"] = arr;
         save();
     }
 }

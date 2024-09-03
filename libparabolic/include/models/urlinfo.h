@@ -5,7 +5,7 @@
 #include <ostream>
 #include <string>
 #include <vector>
-#include <json/json.h>
+#include <boost/json.hpp>
 #include <libnick/keyring/credential.h>
 #include "downloaderoptions.h"
 #include "media.h"
@@ -72,7 +72,7 @@ namespace Nickvision::TubeConverter::Shared::Models
          * @param url The Url
          * @param info The media information json object from yt-dlp
          */
-        UrlInfo(const std::string& url, const Json::Value& info);
+        UrlInfo(const std::string& url, boost::json::object info);
         std::string m_url;
         bool m_isPlaylist;
         std::vector<Media> m_media;
