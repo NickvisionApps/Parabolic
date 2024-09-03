@@ -17,7 +17,7 @@ namespace Nickvision::TubeConverter::Shared::Models
                 {
                     continue;
                 }
-                boost::json::object history{ value.as_object() };
+                boost::json::object history = value.as_object();
                 HistoricDownload download{ history["URL"].is_string() ? history["URL"].as_string().c_str() : "" };
                 if(download.getUrl().empty())
                 {

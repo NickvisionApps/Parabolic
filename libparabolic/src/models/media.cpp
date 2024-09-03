@@ -61,7 +61,7 @@ namespace Nickvision::TubeConverter::Shared::Models
         }
         if(info.contains("subtitles"))
         {
-            boost::json::object subtitles{ info["subtitles"].is_object() ? info["subtitles"].as_object() : boost::json::object() };
+            boost::json::object subtitles = info["subtitles"].is_object() ? info["subtitles"].as_object() : boost::json::object();
             if(!subtitles.empty())
             {
                 m_hasSubtitles = !(subtitles.size() == 1 && subtitles.contains("live_chat"));
@@ -76,7 +76,7 @@ namespace Nickvision::TubeConverter::Shared::Models
                 {
                     continue;
                 }
-                boost::json::object obj{ format.as_object() };
+                boost::json::object obj = format.as_object();
                 if(obj.contains("language"))
                 {
                     std::string language{ obj["language"].is_string() ? obj["language"].as_string() : "" };

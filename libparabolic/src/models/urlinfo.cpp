@@ -11,7 +11,7 @@ namespace Nickvision::TubeConverter::Shared::Models
         : m_url{ url },
         m_isPlaylist{ false }
     {
-        boost::json::array entries{ info["entries"].is_array() ? info["entries"].as_array() : boost::json::array() };
+        boost::json::array entries = info["entries"].is_array() ? info["entries"].as_array() : boost::json::array();
         if(!entries.empty())
         {
             m_isPlaylist = true;
@@ -22,7 +22,7 @@ namespace Nickvision::TubeConverter::Shared::Models
                 {
                     continue;
                 }
-                boost::json::object obj{ entry.as_object() };
+                boost::json::object obj = entry.as_object();
                 obj["limit_characters"] = info["limit_characters"];
                 m_media.push_back({ obj });
                 i++;
@@ -93,12 +93,12 @@ namespace Nickvision::TubeConverter::Shared::Models
         {
             return std::nullopt;
         }
-        boost::json::value info{ boost::json::parse(process.getOutput()) };
+        boost::json::value info = boost::json::parse(process.getOutput());
         if(!info.is_object())
         {
             return std::nullopt;
         }
-        boost::json::object obj{ info.as_object() };
+        boost::json::object obj = info.as_object();
         obj["limit_characters"] = options.getLimitCharacters();
         return UrlInfo{ url, obj };
     }
