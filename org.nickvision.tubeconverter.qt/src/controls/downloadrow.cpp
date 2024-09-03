@@ -28,16 +28,20 @@ namespace Nickvision::TubeConverter::QT::Controls
         //Load
         m_ui->lblTitle->setText(QString::fromStdString(m_path.filename().string()));
         m_ui->lblUrl->setText(QString::fromStdString(args.getUrl()));
-        switch(args.getStatus())
+        if(args.getStatus() == DownloadStatus::Queued)
         {
-        case DownloadStatus::Queued:
             m_ui->progressBar->setRange(0, 1);
             m_ui->lblStatus->setText(_("Queued"));
-            break;
-        case DownloadStatus::Running:
+        }
+        else if(args.getStatus() == DownloadStatus::Running)
+        {
             m_ui->progressBar->setRange(0, 0);
             m_ui->lblStatus->setText(_("Running"));
-            break;
+        }
+        else
+        {
+            m_ui->progressBar->setRange(0, 0);
+            m_ui->lblStatus->setText(_("Unknown"));
         }
         m_ui->progressBar->setValue(0);
         m_ui->buttonStack->setCurrentIndex(0);
@@ -84,18 +88,17 @@ namespace Nickvision::TubeConverter::QT::Controls
     {
         m_ui->progressBar->setRange(0, 1);
         m_ui->progressBar->setValue(1);
-        switch(args.getStatus())
+        if(args.getStatus() == DownloadStatus::Error)
         {
-        case DownloadStatus::Error:
             m_ui->btnIcon->setIcon(QIcon::fromTheme(QIcon::ThemeIcon::EditClear));
             m_ui->lblStatus->setText(_("Error"));
             m_ui->buttonStack->setCurrentIndex(2);
-            break;
-        case DownloadStatus::Success:
+        }
+        else if(args.getStatus() == DownloadStatus::Success)
+        {
             m_ui->btnIcon->setIcon(QIcon::fromTheme(QIcon::ThemeIcon::DocumentNew));
             m_ui->lblStatus->setText(_("Success"));
             m_ui->buttonStack->setCurrentIndex(1);
-            break;
         }
     }
 

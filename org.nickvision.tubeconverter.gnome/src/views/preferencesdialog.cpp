@@ -63,7 +63,7 @@ namespace Nickvision::TubeConverter::GNOME::Views
         options.setYouTubeSponsorBlock(adw_switch_row_get_active(m_builder.get<AdwSwitchRow>("sponsorBlockRow")));
         options.setProxyUrl(gtk_editable_get_text(m_builder.get<GtkEditable>("proxyUrlRow")));
         options.setCookiesBrowser(static_cast<Browser>(adw_combo_row_get_selected(m_builder.get<AdwComboRow>("cookiesBrowserRow"))));
-        options.setCookiesPath(gtk_widget_get_tooltip_text(m_builder.get<GtkWidget>("cookiesFileRow")));
+        options.setCookiesPath(gtk_widget_get_tooltip_text(m_builder.get<GtkWidget>("cookiesFileRow")) ? gtk_widget_get_tooltip_text(m_builder.get<GtkWidget>("cookiesFileRow")) : "");
         options.setEmbedMetadata(adw_switch_row_get_active(m_builder.get<AdwSwitchRow>("embedMetadataRow")));
         options.setEmbedChapters(adw_switch_row_get_active(m_builder.get<AdwSwitchRow>("embedChaptersRow")));
         options.setEmbedSubtitles(adw_switch_row_get_active(m_builder.get<AdwSwitchRow>("embedSubtitlesRow")));

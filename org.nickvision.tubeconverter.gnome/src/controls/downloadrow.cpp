@@ -22,14 +22,17 @@ namespace Nickvision::TubeConverter::GNOME::Controls
         gtk_widget_add_css_class(m_builder.get<GtkWidget>("statusIcon"), "stopped");
         gtk_image_set_from_icon_name(m_builder.get<GtkImage>("statusIcon"), "folder-download-symbolic");
         gtk_label_set_text(m_builder.get<GtkLabel>("fileNameLabel"), m_path.filename().string().c_str());
-        switch(args.getStatus())
+        if(args.getStatus() == DownloadStatus::Queued)
         {
-        case DownloadStatus::Queued:
             gtk_label_set_text(m_builder.get<GtkLabel>("statusLabel"), _("Queued"));
-            break;
-        case DownloadStatus::Running:
+        }
+        else if(args.getStatus() == DownloadStatus::Running)
+        {
             gtk_label_set_text(m_builder.get<GtkLabel>("statusLabel"), _("Running"));
-            break;
+        }
+        else
+        {
+            gtk_label_set_text(m_builder.get<GtkLabel>("statusLabel"), _("Unknown"));
         }
         adw_view_stack_set_visible_child_name(m_builder.get<AdwViewStack>("buttonsViewStack"), "downloading");
         adw_view_stack_set_visible_child_name(m_builder.get<AdwViewStack>("progViewStack"), "running");
@@ -97,25 +100,23 @@ namespace Nickvision::TubeConverter::GNOME::Controls
         m_pulseBar = false;
         gtk_progress_bar_set_fraction(m_builder.get<GtkProgressBar>("progBar"), 1.0);
         gtk_widget_remove_css_class(m_builder.get<GtkWidget>("statusIcon"), "stopped");
-        switch(args.getStatus())
+        if(args.getStatus() == DownloadStatus::Error)
         {
-        case DownloadStatus::Error:
             gtk_widget_add_css_class(m_builder.get<GtkWidget>("statusIcon"), "error");
             gtk_image_set_from_icon_name(m_builder.get<GtkImage>("statusIcon"), "process-stop-symbolic");
             gtk_label_set_text(m_builder.get<GtkLabel>("statusLabel"), _("Error"));
             adw_view_stack_set_visible_child_name(m_builder.get<AdwViewStack>("buttonsViewStack"), "error");
-            adw_view_stack_set_visible_child_name(m_builder.get<AdwViewStack>("progViewStack"), "done");
             gtk_level_bar_set_value(m_builder.get<GtkLevelBar>("levelBar"), 0.0);
-            break;
-        case DownloadStatus::Success:
+        }
+        else if(args.getStatus() == DownloadStatus::Success)
+        {
             gtk_widget_add_css_class(m_builder.get<GtkWidget>("statusIcon"), "success");
             gtk_image_set_from_icon_name(m_builder.get<GtkImage>("statusIcon"), "emblem-ok-symbolic");
             gtk_label_set_text(m_builder.get<GtkLabel>("statusLabel"), _("Success"));
             adw_view_stack_set_visible_child_name(m_builder.get<AdwViewStack>("buttonsViewStack"), "success");
-            adw_view_stack_set_visible_child_name(m_builder.get<AdwViewStack>("progViewStack"), "done");
             gtk_level_bar_set_value(m_builder.get<GtkLevelBar>("levelBar"), 1.0);
-            break;
         }
+        adw_view_stack_set_visible_child_name(m_builder.get<AdwViewStack>("progViewStack"), "done");
     }
 
     void DownloadRow::setStopState()
