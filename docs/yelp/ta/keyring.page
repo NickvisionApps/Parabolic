@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" id="keyring" its:version="2.0" xml:lang="ta">
+<info>
+	<link type="guide" xref="index"/>
+	<title type="link">சாவி வளையம்🔑</title>
+	<credit type="author copyright">
+		<name>நிக்கோலஸ் லோகோசோ</name>
+		<years its:translate="no">2023-2024</years>
+	</credit>
+	<credit type="publisher copyright">
+		<name>நிக்கோலஸ் லோகோசோ</name>
+		<years its:translate="no">2023-2024</years>
+	</credit>
+	<license href="http://creativecommons.org/licenses/by/4.0/" its:translate="no"><p>Creative Commons Attribution 4.0 International License</p></license>
+
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>K.B.Dharun Krishna</mal:name>
+      <mal:email>kbdharunkrishna@gmail.com</mal:email>
+      <mal:years>2023</mal:years>
+    </mal:credit>
+  </info>
+
+<title>சாவி வளையம்</title>
+<p><app>பரபோலிக்</app> இல் சாவி வளையத்தைப் பயன்படுத்துவதற்கான அனைத்து விருப்பங்களையும் இந்தப் பக்கம் விளக்குகிறது.</p>
+<section>
+    <title>பின்தளம்</title>
+    <p>The Keyring feature is backed by the <code>libnick</code> library.</p>
+    <p>இந்த நூலகம் SQLCipher ஐப் பயன்படுத்தி, நடைமேடை சார்பற்ற முறையில் நற்சான்றிதழ்களைப் பாதுகாப்பாகச் சேமிக்கிறது.</p>
+    <p>The library will use you system's credential manager (i.e. DBus secret service on Linux and Windows Credential Manager on Windows) for securing the Keyring database file.</p>
+</section>
+<section>
+    <title>ஒரு நற்சான்றிதழை சேமித்தல்</title>
+    <p>நற்சான்றிதழில் சேமிக்கக்கூடிய புலங்கள் இங்கே உள்ளன:</p>
+    <p><code>பெயர்</code>: நற்சான்றிதழின் பெயர்</p>
+    <p><code>URL</code> (விரும்பினால்): நற்சான்றிதழின் URL</p>
+    <p><code>பயனர்பெயர்</code> (கடவுச்சொல் காலியாக இல்லாவிட்டால் விருப்பமானது): நற்சான்றிதழின் பயனர்பெயர்</p>
+    <p><code>கடவுச்சொல்</code> (பயனர் பெயர் காலியாக இல்லாவிட்டால் விருப்பமானது): நற்சான்றிதழின் கடவுச்சொல்</p>
+</section>
+</page>

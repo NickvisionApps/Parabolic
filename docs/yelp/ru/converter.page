@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" id="converter" its:version="2.0" xml:lang="ru">
+<info>
+	<link type="guide" xref="index"/>
+	<title type="link">Конвертер ⚒️</title>
+	<credit type="author copyright">
+		<name>Nicholas Logozzo</name>
+		<years its:translate="no">2023-2024</years>
+	</credit>
+	<credit type="publisher copyright">
+		<name>Nicholas Logozzo</name>
+		<years its:translate="no">2023-2024</years>
+	</credit>
+	<license href="http://creativecommons.org/licenses/by/4.0/" its:translate="no"><p>Creative Commons Attribution 4.0 International License</p></license>
+
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Фёдор Соболев</mal:name>
+      <mal:email/>
+      <mal:years>2023</mal:years>
+    </mal:credit>
+  </info>
+
+<title>Конвертер</title>
+<p>Эта страница поясняет все опции по настройке Конвертера в параметрах <app>Parabolic</app>.</p>
+
+<terms>
+	<item>
+		<title>Встраивать метаданные</title>
+		<p>Если включено, Parabolic будет встраивать теги в медиа файл (заголовок, жанр, и т.д.), а также миниатюру, если она доступна.</p>
+        <p>Parabolic НЕ встраивает для тегов: Комментарий (Comment), Описание (Description), Синопсис (Synopsis) и Purl.</p>
+		<note style="advanced">
+			<p>По умолчанию: Включено</p>
+		</note>
+    </item>
+    <item>
+        <title>Встраивать субтитры</title>
+        <p>Если выключено, или если встраивание не удастся, загруженные субтитры будут сохранены отдельными файлами.</p>
+        <note style="advanced">
+            <p>По умолчанию: Включено</p>
+        </note>
+    </item>
+    <item>
+		<title>Встраивать главы</title>
+		<p>Если включено и доступны данные о метках глав, Parabolic будет добавлять их в файл.</p>
+		<note style="advanced">
+			<p>По умолчанию: Выключено</p>
+		</note>
+	</item>
+    <item>
+		<title>Обрезать миниатюры для аудио</title>
+		<p>If enabled, Parabolic will crop thumbnails for audio files to be a square resolution.</p>
+		<note style="advanced">
+			<p>По умолчанию: Выключено</p>
+		</note>
+    </item>
+    <item>
+		<title>Удалить метаданные об источнике</title>
+		<p>Если включено, Parabolic будет очищать метаданные, содержащие URL и другую информацию, по которой можно отследить источник файла.</p>
+        <p>Следующие поля будут удалены: <code>comment</code>, <code>description</code>, <code>synopsis</code>, <code>purl</code> и <code>handler_name</code> в каждой дорожке.</p>
+		<note style="advanced">
+			<p>По умолчанию: Выключено</p>
+		</note>
+    </item>
+</terms>
+</page>

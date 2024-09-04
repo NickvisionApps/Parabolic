@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" id="keyring" its:version="2.0" xml:lang="ru">
+<info>
+	<link type="guide" xref="index"/>
+	<title type="link">Связка ключей 🔑</title>
+	<credit type="author copyright">
+		<name>Nicholas Logozzo</name>
+		<years its:translate="no">2023-2024</years>
+	</credit>
+	<credit type="publisher copyright">
+		<name>Nicholas Logozzo</name>
+		<years its:translate="no">2023-2024</years>
+	</credit>
+	<license href="http://creativecommons.org/licenses/by/4.0/" its:translate="no"><p>Creative Commons Attribution 4.0 International License</p></license>
+
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Фёдор Соболев</mal:name>
+      <mal:email/>
+      <mal:years>2023</mal:years>
+    </mal:credit>
+  </info>
+
+<title>Связка ключей</title>
+<p>Эта страница поясняет все опции для использования Связки Ключей в <app>Parabolic</app>.</p>
+<section>
+    <title>Бэкэнд</title>
+    <p>The Keyring feature is backed by the <code>libnick</code> library.</p>
+    <p>Эта библиотека использует SQLCipher для безопасного кросс-платформенного хранения учётных данных.</p>
+    <p>The library will use you system's credential manager (i.e. DBus secret service on Linux and Windows Credential Manager on Windows) for securing the Keyring database file.</p>
+</section>
+<section>
+    <title>Сохранение учётных данных</title>
+    <p>Учётные данные могут содержать следующие поля:</p>
+    <p><code>Имя</code>: Имя учётных данных</p>
+    <p><code>URL</code> (необязательно): ссылка для учётных данных</p>
+    <p><code>Имя пользователя</code> (необязательно, если указан пароль): Имя пользователя учётных данных</p>
+    <p><code>Пароль</code> (необязательно, если указано имя пользователя): пароль учётных данных</p>
+</section>
+</page>

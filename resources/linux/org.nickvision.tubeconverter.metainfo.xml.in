@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>@PROJECT_NAME@</id>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>MIT</project_license>
+  <name>@SHORT_NAME@</name>
+  <project_group>Nickvision</project_group>
+  <developer_name>Nickvision</developer_name>
+  <summary>Download web video and audio</summary>
+  <description>
+    <p>- A basic yt-dlp frontend</p>
+    <p>- Supports downloading videos in multiple formats (mp4, webm, mp3, opus, flac, and wav)</p>
+    <p>- Run multiple downloads at a time</p>
+    <p>- Supports downloading metadata and video subtitles</p>
+  </description>
+  <launchable type="desktop-id">@PROJECT_NAME@.desktop</launchable>
+  <screenshots>
+    <screenshot type="default">
+      <image>https://raw.githubusercontent.com/NickvisionApps/@SHORT_NAME@/main/@OUTPUT_NAME@/screenshots/downloading.png</image>
+    </screenshot>
+    <screenshot>
+      <image>https://raw.githubusercontent.com/NickvisionApps/@SHORT_NAME@/main/@OUTPUT_NAME@/screenshots/home.png</image>
+    </screenshot>
+    <screenshot>
+      <image>https://raw.githubusercontent.com/NickvisionApps/@SHORT_NAME@/main/@OUTPUT_NAME@/screenshots/dark.png</image>
+    </screenshot>
+    <screenshot>
+      <image>https://raw.githubusercontent.com/NickvisionApps/@SHORT_NAME@/main/@OUTPUT_NAME@/screenshots/add.png</image>
+    </screenshot>
+  </screenshots>
+  <url type="homepage">https://github.com/NickvisionApps/@SHORT_NAME@</url>
+  <url type="bugtracker">https://github.com/NickvisionApps/@SHORT_NAME@/issues</url>
+  <url type="donation">https://github.com/sponsors/nlogozzo</url>
+  <url type="translate">https://github.com/NickvisionApps/@SHORT_NAME@/blob/master/CONTRIBUTING.md#providing-translations</url>
+  <provides>
+    <binary>@PROJECT_NAME@</binary>
+  </provides>
+  <releases>
+    <release version="2024.9.0-next" date="2024-09-01">
+      <description translate="no">
+        <p>- Parabolic has been rewritten in C++ for faster performance</p>
+        <p>- The length of the download history can now be changed</p>
+        <p>- Cookies can now be fetched from a selected browser in Preferences instead of selecting a TXT cookies file</p>
+        <p>- Parabolic's Keyring module was rewritten. As a result, all keyrings have been reset and will need to be reconfigured</p>
+        <p>- Fixed validation issues with various sites</p>
+        <p>- Fixed an issue where a specified video password was not being used</p>
+        <p>- Redesigned user interface</p>
+        <p>- Updated yt-dlp</p>
+      </description>
+    </release>
+  </releases>
+  <content_rating type="oars-1.1" />
+  <supports>
+    <control>pointing</control>
+    <control>keyboard</control>
+    <control>touch</control>
+  </supports>
+  <requires>
+    <display_length compare="ge">360</display_length>
+  </requires>
+  <custom>
+    <value key="Purism::form_factor">mobile</value>
+  </custom>
+</component>

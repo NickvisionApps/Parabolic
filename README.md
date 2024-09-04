@@ -1,6 +1,6 @@
-![](NickvisionTubeConverter.Shared/Resources/banner.png)
+![](resources/banner.png)
 
-  [![Translation status](https://hosted.weblate.org/widgets/nickvision-tube-converter/-/app/svg-badge.svg)](https://hosted.weblate.org/engage/nickvision-tube-converter/) ✨Powered by [Weblate](https://weblate.org/en/)✨
+[![Translation status](https://hosted.weblate.org/widgets/nickvision-tube-converter/-/app/svg-badge.svg)](https://hosted.weblate.org/engage/nickvision-tube-converter/) ✨Powered by [Weblate](https://weblate.org/en/)✨
 
 # Features
 - A basic yt-dlp frontend ([supported sites](https://github.com/yt-dlp/yt-dlp/blob/master/supportedsites.md))
@@ -27,26 +27,56 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for details on how can you help the proje
 <details>
  <summary>GNOME</summary>
 
- ![GNOMEStartScreen](NickvisionTubeConverter.GNOME/Screenshots/StartScreen.png)
- ![GNOMELight](NickvisionTubeConverter.GNOME/Screenshots/Light.png)
- ![GNOMEDark](NickvisionTubeConverter.GNOME/Screenshots/Dark.png)
- ![GNOMEAddDownload](NickvisionTubeConverter.GNOME/Screenshots/AddDownload.png)
+ ![Home Page](org.nickvision.tubeconverter.gnome/screenshots/home.png)
+ ![Downloading](org.nickvision.tubeconverter.gnome/screenshots/downloading.png)
+ ![Dark Mode](org.nickvision.tubeconverter.gnome/screenshots/dark.png)
+ ![Add Download Dialog](org.nickvision.tubeconverter.gnome/screenshots/add.png)
 </details>
 
 <details>
- <summary>WinUI</summary>
+ <summary>QT</summary>
 
- ![WinUIStartScreen](NickvisionTubeConverter.WinUI/Screenshots/StartScreen.png)
- ![WinUILight](NickvisionTubeConverter.WinUI/Screenshots/Light.png)
- ![WinUIDark](NickvisionTubeConverter.WinUI/Screenshots/Dark.png)
- ![WinUIAddDownload](NickvisionTubeConverter.WinUI/Screenshots/AddDownload.png)
+ ![Home Page](org.nickvision.tubeconverter.qt/screenshots/home.png)
+ ![Downloading](org.nickvision.tubeconverter.qt/screenshots/downloading.png)
+ ![Dark Mode](org.nickvision.tubeconverter.qt/screenshots/dark.png)
+ ![Add Download Dialog](org.nickvision.tubeconverter.qt/screenshots/add.png)
 </details>
 
-# Dependencies
-- [.NET 8](https://dotnet.microsoft.com/en-us/)
-- [ffmpeg](https://ffmpeg.org/)
-- [python](https://python.org/)
-- [yt-dlp (As python module)](https://github.com/yt-dlp/yt-dlp)
+## Building Manually
+Parabolic uses `vcpkg` to manage its dependencies and `cmake` as its build system.
+
+Ensure both `vcpkg` and `cmake` are installed on your system before building.
+
+A C++20 compiler is also required to build Parabolic.
+
+### Configuring vcpkg
+1. Set the `VCPKG_ROOT` environment variable to the path of your vcpkg installation's root directory.
+#### Windows
+1. Set the `VCPKG_DEFAULT_TRIPLET` environment variable to `x64-windows`
+1. Run `vcpkg install boost-date-time gtest libnick qtbase qtsvg qttools`
+#### Linux (GNOME)
+1. Set the `VCPKG_DEFAULT_TRIPLET` environment variable to `x64-linux`
+1. Run `vcpkg install boost-date-time gtest libnick libxmlpp`
+#### Linux (QT)
+1. Set the `VCPKG_DEFAULT_TRIPLET` environment variable to `x64-linux`
+1. Run `vcpkg install boost-date-time gtest libnick qtbase qtsvg qttools`
+
+### Building
+1. First, clone/download the repo.
+1. Open a terminal and navigate to the repo's root directory.
+1. Create a new `build` directory and `cd` into it. 
+#### Windows
+1. From the `build` folder, run `cmake .. -G "Visual Studio 17 2022"`.
+1. From the `build` folder, run `cmake --build . --config Release`.
+1. After these commands complete, Parabolic will be successfully built and its binaries can be found in the `org.nickvision.tubeconverter.qt/Release` folder of the `build` folder.
+#### Linux (GNOME)
+1. From the `build` folder, run `cmake .. -DCMAKE_BUILD_TYPE=Release -DUI_PLATFORM=gnome`.
+1. From the `build` folder, run `cmake --build .`.
+1. After these commands complete, Parabolic will be successfully built and its binaries can be found in the `org.nickvision.tubeconverter.gnome` folder of the `build` folder.
+#### Linux (QT)
+1. From the `build` folder, run `cmake .. -DCMAKE_BUILD_TYPE=Release -DUI_PLATFORM=qt`.
+1. From the `build` folder, run `cmake --build .`.
+1. After these commands complete, Parabolic will be successfully built and its binaries can be found in the `org.nickvision.tubeconverter.qt` folder of the `build` folder.
 
 # Code of Conduct
 This project follows the [GNOME Code of Conduct](https://wiki.gnome.org/Foundation/CodeOfConduct).

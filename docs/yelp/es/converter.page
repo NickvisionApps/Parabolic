@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" id="converter" its:version="2.0" xml:lang="es">
+<info>
+	<link type="guide" xref="index"/>
+	<title type="link">Conversor ⚒️</title>
+	<credit type="author copyright">
+		<name>Nicholas Logozzo</name>
+		<years its:translate="no">2023-2024</years>
+	</credit>
+	<credit type="publisher copyright">
+		<name>Nicholas Logozzo</name>
+		<years its:translate="no">2023-2024</years>
+	</credit>
+	<license href="http://creativecommons.org/licenses/by/4.0/" its:translate="no"><p>Creative Commons Attribution 4.0 International License</p></license>
+
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Óscar Fernández Díaz</mal:name>
+      <mal:email>oscfdezdz@tuta.io</mal:email>
+      <mal:years>2023</mal:years>
+    </mal:credit>
+  </info>
+
+<title>Conversor</title>
+<p>Esta página explica todas las opciones para configurar el Converter en las Preferencias de <app>Parabolic</app>.</p>
+
+<terms>
+	<item>
+		<title>Incrustar metadatos</title>
+		<p>Si está activada, Parabolic etiquetará un medio con su información relevante (título, género, etc...) y una miniatura si está disponible.</p>
+        <p>Parabolic NO incrustará los campos comentario, descripción, sinopsis y purl.</p>
+		<note style="advanced">
+			<p>Predeterminado: Encendido</p>
+		</note>
+    </item>
+    <item>
+        <title>Incrustar los subtítulos</title>
+        <p>Si se desactiva o si falla la incrustación, los subtítulos descargados se guardarán en un archivo aparte.</p>
+        <note style="advanced">
+            <p>Predeterminado: Encendido</p>
+        </note>
+    </item>
+    <item>
+		<title>Incrustar capítulos</title>
+		<p>Si está activada, Parabolic etiquetará un multimedia con la información del capítulo si está disponible.</p>
+		<note style="advanced">
+			<p>Predeterminado: Apagado</p>
+		</note>
+	</item>
+    <item>
+		<title>Recortar miniaturas de audio</title>
+		<p>If enabled, Parabolic will crop thumbnails for audio files to be a square resolution.</p>
+		<note style="advanced">
+			<p>Predeterminado: Apagado</p>
+		</note>
+    </item>
+    <item>
+		<title>Eliminar los datos de origen</title>
+		<p>Si se activa, Parabolic borrará los campos de los metadatos que contienen una dirección URL y otra información de identificación de la fuente multimedia.</p>
+        <p>Campos que se borran: <code>comment</code>, <code>description</code>, <code>synopsis</code>, <code>purl</code> y <code>handler_name</code> en cada transmisión.</p>
+		<note style="advanced">
+			<p>Predeterminado: Apagado</p>
+		</note>
+    </item>
+</terms>
+</page>

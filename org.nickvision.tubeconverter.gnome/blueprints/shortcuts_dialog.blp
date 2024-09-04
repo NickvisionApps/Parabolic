@@ -1,0 +1,55 @@
+using Gtk 4.0;
+using Adw 1;
+
+Gtk.ShortcutsWindow root {
+  default-width: 600;
+  default-height: 500;
+  modal: true;
+  resizable: true;
+  destroy-with-parent: false;
+
+  Gtk.ShortcutsSection {
+    Gtk.ShortcutsGroup {
+      title: C_("Shortcut", "Application");
+
+      Gtk.ShortcutsShortcut {
+        title: _("Preferences");
+        accelerator: "<Control>comma";
+      }
+
+      Gtk.ShortcutsShortcut {
+        title: _("Keyboard Shortcuts");
+        accelerator: "<Control>question";
+      }
+
+      Gtk.ShortcutsShortcut {
+        title: _("Help");
+        accelerator: "F1";
+      }
+
+      Gtk.ShortcutsShortcut {
+        title: _("Quit");
+        accelerator: "<Control>Q";
+      }
+    }
+
+    Gtk.ShortcutsGroup {
+      title: _("Downloads");
+
+      Gtk.ShortcutsShortcut {
+        title: _("Add Download");
+        accelerator: "<Control>N";
+      }
+
+      Gtk.ShortcutsShortcut {
+        title: _("Stop All Downloads");
+        accelerator: "<Control><Shift>Delete";
+      }
+
+      Gtk.ShortcutsShortcut {
+        title: _("Retry Failed Downloads");
+        accelerator: "<Control>R";
+      }
+    }
+  }
+}

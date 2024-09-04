@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" id="converter" its:version="2.0" xml:lang="pt-BR">
+<info>
+	<link type="guide" xref="index"/>
+	<title type="link">Converter ⚒️</title>
+	<credit type="author copyright">
+		<name>Nicholas Logozzo</name>
+		<years its:translate="no">2023-2024</years>
+	</credit>
+	<credit type="publisher copyright">
+		<name>Nicholas Logozzo</name>
+		<years its:translate="no">2023-2024</years>
+	</credit>
+	<license href="http://creativecommons.org/licenses/by/4.0/" its:translate="no"><p>Creative Commons Attribution 4.0 International License</p></license>
+</info>
+
+<title>Conversor</title>
+<p>Esta página explica todas as opções para configurar o Conversor em Preferências em <app>Parabolic</app>.</p>
+
+<terms>
+	<item>
+		<title>Incorporar metadados</title>
+		<p>Se ativado, o Parabolic irá marcar uma mídia com suas informações relevantes (título, gênero, etc...) e miniatura, se disponível.</p>
+        <p>Parabolic não irá embutir Comentários, Descrição, Sinopses e campos Purl.</p>
+		<note style="advanced">
+			<p>Padrão: Ativado</p>
+		</note>
+    </item>
+    <item>
+        <title>Incorporar Legendas</title>
+        <p>If disabled or if embedding fails, downloaded subtitles will be saved to a separate file.</p>
+        <note style="advanced">
+            <p>Padrão: Ativado</p>
+        </note>
+    </item>
+    <item>
+		<title>Incorporar capítulos</title>
+		<p>If enabled, Parabolic will tag a media with chapter information if available.</p>
+		<note style="advanced">
+			<p>Padrão: Desligado</p>
+		</note>
+	</item>
+    <item>
+		<title>Cortar miniaturas para áudio</title>
+		<p>If enabled, Parabolic will crop thumbnails for audio files to be a square resolution.</p>
+		<note style="advanced">
+			<p>Padrão: Desligado</p>
+		</note>
+    </item>
+    <item>
+		<title>Remover Dados de Origem</title>
+		<p>Se ativado, o Parabolic limpará os campos de metadados que contêm a URL e outras informações de identificação da fonte de mídia.</p>
+        <p>Fields that are cleared: <code>comment</code>, <code>description</code>, <code>synopsis</code>, <code>purl</code> and <code>handler_name</code> in each stream.</p>
+		<note style="advanced">
+			<p>Padrão: Desligado</p>
+		</note>
+    </item>
+</terms>
+</page>

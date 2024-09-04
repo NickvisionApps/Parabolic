@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" id="converter" its:version="2.0" xml:lang="pl">
+<info>
+	<link type="guide" xref="index"/>
+	<title type="link">Konwersja ⚒️</title>
+	<credit type="author copyright">
+		<name>Nicholas Logozzo</name>
+		<years its:translate="no">2023-2024</years>
+	</credit>
+	<credit type="publisher copyright">
+		<name>Nicholas Logozzo</name>
+		<years its:translate="no">2023-2024</years>
+	</credit>
+	<license href="http://creativecommons.org/licenses/by/4.0/" its:translate="no"><p>Creative Commons Attribution 4.0 International License</p></license>
+
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Dominik Gęgotek</mal:name>
+      <mal:email>ioutora@disroot.org</mal:email>
+      <mal:years>2023</mal:years>
+    </mal:credit>
+  </info>
+
+<title>Konwersja</title>
+<p>Na tej stronie wyjaśniono wszystkie opcje dostępne w sekcji Konwersja w preferencjach w <app>Parabolic</app>.</p>
+
+<terms>
+	<item>
+		<title>Zapisuj metadane w plikach</title>
+		<p>Po włączeniu, Parabolic będzie oznaczać multimedia odpowiednimi informacjami (tytułem, gatunkiem, itd.) i miniaturą, jeśli jest dostępna.</p>
+        <p>Parabolic NIE zapisze w pliku komentarzy, opisu, podsumowania czy purl.</p>
+		<note style="advanced">
+			<p>Domyślnie: włączone</p>
+		</note>
+    </item>
+    <item>
+        <title>Wbudowane napisy</title>
+        <p>Jeśli funkcja jest wyłączona lub osadzanie się nie powiedzie, pobrane napisy będą zapisane w osobnym pliku.</p>
+        <note style="advanced">
+            <p>Domyślnie: włączone</p>
+        </note>
+    </item>
+    <item>
+		<title>Zapisuj rozdziały w plikach</title>
+		<p>Po włączeniu, Parabolic będzie oznaczać multimedia informacjami o rozdziałach, jeśli są dostępne.</p>
+		<note style="advanced">
+			<p>Domyślnie: wyłączone</p>
+		</note>
+	</item>
+    <item>
+		<title>Przycinaj miniatury plików audio</title>
+		<p>If enabled, Parabolic will crop thumbnails for audio files to be a square resolution.</p>
+		<note style="advanced">
+			<p>Domyślnie: wyłączone</p>
+		</note>
+    </item>
+    <item>
+		<title>Usuń dane źródłowe</title>
+		<p>Po włączeniu tej opcji, Parabolic usunie pola metadanych zawierające adres URL i inne informacje identyfikujące źródło multimediów.</p>
+        <p>Pola, które są czyszczone: <code>comment</code>, <code>description</code>, <code>synopsis</code>, <code>purl</code> oraz <code>handler_name</code> w każdym strumieniu.</p>
+		<note style="advanced">
+			<p>Domyślnie: wyłączone</p>
+		</note>
+    </item>
+</terms>
+</page>

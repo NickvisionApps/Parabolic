@@ -1,103 +1,124 @@
 name: tube-converter 
-base: core22 
+base: core24
 adopt-info: tube-converter
-grade: stable 
-confinement: strict 
+grade: stable
+confinement: strict
 compression: lzo
-architectures:
-  - build-on: amd64
-  - build-on: arm64
-  - build-on: armhf
+
+lint:
+  ignore:
+    - classic
+    - library
 
 parts:
-  yt-dlp:
-    plugin: python
-    source: https://github.com/yt-dlp/yt-dlp.git
-    source-depth: 1
-    source-tag: '2024.04.09'
-    build-environment:
-      # WORKAROUND: The python plugin is broken with gnome extension
-      - PATH: ${CRAFT_PART_INSTALL}/bin:${PATH}
-      - PYTHONPATH: ""
-    prime:
-      # WORKAROUND: Skip venv from python plugin
-      - -usr/bin/activate
-      - -usr/bin/activate.csh
-      - -usr/bin/activate.fish
-      - -usr/bin/Activate.ps1
-      - -usr/bin/python
-      - -usr/bin/python3
-      - -usr/bin/python3.10
-      - -usr/bin/pip
-      - -usr/bin/pip3
-      - -usr/bin/pip3.10
-      - -usr/bin/wheel
-      - -usr/lib/python3.10/dist-packages/pip*
-      - -usr/lib/python3.10/dist-packages/pkg_resources
-      - -usr/lib/python3.10/dist-packages/setuptools*
-      - -pyvenv.cfg
-      - -lib
-      - -lib64
-      - -include
-      - -share
-    organize:
-      bin: usr/bin
-      lib/python3.10/site-packages: usr/lib/python3.10/dist-packages
-
-  tube-converter:
-    after: [ yt-dlp ]
-    plugin: nil
-    source: .
-    build-packages:
-      - brotli
-      - blueprint-compiler
-      - wget
-    build-environment:
-      - DOTNET_CLI_TELEMETRY_OPTOUT: '1'
-      - PATH: $PATH:$HOME/.dotnet:$HOME/.dotnet/tools
-      - DOTNET_ROOT: $HOME/.dotnet
-    override-pull: |
-      craftctl default
-      wget https://dot.net/v1/dotnet-install.sh -O dotnet-install.sh
-      chmod +x ./dotnet-install.sh
-      ./dotnet-install.sh --channel 8.0
-      patch -p1 < $CRAFT_PROJECT_DIR/snap/tube-converter.patch
-    override-build: |
-      craftctl default
-      cd $CRAFT_PART_SRC
-      dotnet tool restore
-      dotnet cake --target=Publish --prefix=/snap/tube-converter/current/usr --ui=gnome --self-contained
-      dotnet cake --target=Install --destdir=$CRAFT_PART_INSTALL
-      mkdir -p $CRAFT_PART_INSTALL/meta/gui
-      cp -r $CRAFT_PART_INSTALL/snap/tube-converter/current/usr/share/icons $CRAFT_PART_INSTALL/meta/gui/
-      for i in `find $CRAFT_PART_INSTALL/meta/gui/icons -name "*.svg" -o -name "*.png"`; do
-        mv $i "`dirname $i`/snap.$CRAFT_PROJECT_NAME.`basename $i`"
-      done
-    prime:
-      - -snap/tube-converter
-    organize:
-      snap/tube-converter/current: .
-    parse-info: [usr/share/metainfo/org.nickvision.tubeconverter.metainfo.xml]
   deps:
     plugin: nil
     stage-packages:
+      - libstdc++6
       - aria2
-      - libc-ares2
+      - libcares2
       - libaria2-0
+      - libboost-system1.83.0
+      - libboost-date-time1.83.0
+      - libboost-json1.83.0
     prime:
-      - usr/lib/$CRAFT_ARCH_TRIPLET/libaria2.so.0
-      - usr/lib/$CRAFT_ARCH_TRIPLET/libaria2.so.0.0.0
-      - usr/lib/$CRAFT_ARCH_TRIPLET/libcares.so.2
-      - usr/lib/$CRAFT_ARCH_TRIPLET/libcares.so.2.5.1
+      - usr/lib/${CRAFT_ARCH_TRIPLET_BUILD_FOR}/libstdc++*.so*
+      - usr/lib/${CRAFT_ARCH_TRIPLET_BUILD_FOR}/libaria2.so*
+      - usr/lib/${CRAFT_ARCH_TRIPLET_BUILD_FOR}/libcares.so*
+      - usr/lib/${CRAFT_ARCH_TRIPLET_BUILD_FOR}/libboost_system.so*
+      - usr/lib/${CRAFT_ARCH_TRIPLET_BUILD_FOR}/libboost_date_time.so*
+      - usr/lib/${CRAFT_ARCH_TRIPLET_BUILD_FOR}/libboost_json.so*
       - usr/bin/aria2c
 
+  python-deps:
+    plugin: python
+    source: .
+    python-packages:
+      - yt-dlp==2024.08.06
+    stage:
+      - -bin/activate*
+      - -bin/Activate.ps1
+      - -bin/python*
+      - -bin/pip*
+      - -pyvenv.cfg
+      - -lib/*/*/setup*
+      - -lib/*/*/pkg*
+      - -lib/*/*/pip*
+      - -lib/*/*/_dist*
+      - -share
+      - -include
+    organize:
+      lib/python3.12/site-packages: usr/lib/python3/dist-packages
+
+  maddy:
+    source: https://github.com/progsource/maddy.git
+    source-tag: '1.3.0'
+    plugin: dump
+    source-depth: 1
+    override-prime: '' 
+
+  libnick:
+    after: [maddy]
+    source: https://github.com/nickvisionapps/libnick.git
+    source-tag: "2024.9.1"
+    source-depth: 1
+    plugin: cmake
+    cmake-parameters:
+      - -DCMAKE_INSTALL_PREFIX=/usr
+      - -DBUILD_TESTING=OFF
+      - -DCMAKE_BUILD_TYPE=Release
+    build-environment:
+      - CPLUS_INCLUDE_PATH: ${CRAFT_STAGE}/include
+    build-packages:
+      - libssl-dev
+      - uuid-dev
+      - libboost-dev
+      - libboost-system1.83-dev
+      - libboost-json1.83-dev
+    override-prime: ''
+
+  libxmlplusplus:
+    source: https://github.com/libxmlplusplus/libxmlplusplus.git
+    source-tag: '5.4.0'
+    source-depth: 1
+    plugin: meson
+    build-packages:
+      - libicu-dev
+    meson-parameters:
+      - --prefix=/usr
+      - -Dmaintainer-mode=false
+    prime:
+      - usr/lib/${CRAFT_ARCH_TRIPLET_BUILD_FOR}/libxml++-5.0*.so*
+
+  tube-converter:
+    after: [maddy, libnick, libxmlplusplus]
+    plugin: cmake
+    source: .
+    build-snaps:
+      - cmake
+      - blueprint-compiler/latest/edge
+      - ffmpeg-2404/latest/candidate
+    cmake-parameters:
+      - -DCMAKE_INSTALL_PREFIX=/snap/tube-converter/current/usr
+      - -DCMAKE_BUILD_TYPE=Release
+      - -DUI_PLATFORM=gnome
+    build-packages:
+      - libboost-dev
+      - libboost-date-time1.83-dev
+      - libboost-system1.83-dev
+    build-environment:
+      - CMAKE_PREFIX_PATH: ${CRAFT_STAGE}/usr/lib/${CRAFT_ARCH_TRIPLET_BUILD_FOR}/cmake${CMAKE_PREFIX_PATH:+:$CMAKE_PREFIX_PATH}
+    parse-info: [usr/share/metainfo/org.nickvision.tubeconverter.metainfo.xml]
+    organize:
+      snap/tube-converter/current: .
+
 plugs:
-  ffmpeg-2204:
+  ffmpeg-2404:
     interface: content
     target: ffmpeg-platform
-    default-provider: ffmpeg-2204
+    default-provider: ffmpeg-2404
+
 slots:
-  # for GtkApplication registration
   tube-converter:
     interface: dbus
     bus: session
@@ -110,7 +131,7 @@ apps:
       - gnome
     common-id: org.nickvision.tubeconverter
     environment:
-      PYTHONPATH: $SNAP/usr/lib/python3.10/dist-packages:$PYTHONPATH
+      PYTHONPATH: $SNAP/usr/lib/python3/dist-packages:$PYTHONPATH
       PATH: $SNAP/ffmpeg-platform/usr/bin:$PATH
       LD_LIBRARY_PATH: $SNAP/ffmpeg-platform/usr/lib/$CRAFT_ARCH_TRIPLET:$LD_LIBRARY_PATH
     plugs:

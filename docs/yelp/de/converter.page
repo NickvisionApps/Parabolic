@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" id="converter" its:version="2.0" xml:lang="de">
+<info>
+	<link type="guide" xref="index"/>
+	<title type="link">Konverter ⚒️</title>
+	<credit type="author copyright">
+		<name>Nicholas Logozzo</name>
+		<years its:translate="no">2023-2024</years>
+	</credit>
+	<credit type="publisher copyright">
+		<name>Nicholas Logozzo</name>
+		<years its:translate="no">2023-2024</years>
+	</credit>
+	<license href="http://creativecommons.org/licenses/by/4.0/" its:translate="no"><p>Creative Commons Attribution 4.0 International License</p></license>
+</info>
+
+<title>Konverter</title>
+<p>Diese Seite erklärt alle Optionen zur Konfiguration des Konverters in den Einstellungen in <app>Parabolic</app>.</p>
+
+<terms>
+	<item>
+		<title>Metadaten einbetten</title>
+		<p>Wenn diese Option aktiviert ist, markiert Parabolic Medien mit relevanten Informationen (Titel, Genre, etc...) und einem Thumbnail, falls vorhanden.</p>
+        <p>Parabolic bettet die Felder "Kommentar", "Beschreibung", "Synopsis" und "Purl" NICHT ein.</p>
+		<note style="advanced">
+			<p>Standardeinstellung: Ein</p>
+		</note>
+    </item>
+    <item>
+        <title>Untertitel einbetten</title>
+        <p>If disabled or if embedding fails, downloaded subtitles will be saved to a separate file.</p>
+        <note style="advanced">
+            <p>Standardeinstellung: Ein</p>
+        </note>
+    </item>
+    <item>
+		<title>Kapitel einbetten</title>
+		<p>If enabled, Parabolic will tag a media with chapter information if available.</p>
+		<note style="advanced">
+			<p>Standardeinstellung: Aus</p>
+		</note>
+	</item>
+    <item>
+		<title>Audio-Vorschau Zuschneiden</title>
+		<p>If enabled, Parabolic will crop thumbnails for audio files to be a square resolution.</p>
+		<note style="advanced">
+			<p>Standardeinstellung: Aus</p>
+		</note>
+    </item>
+    <item>
+		<title>Daten zur Quelle entfernen</title>
+		<p>Wenn aktiviert, löscht Parabolic Metadatenfelder, die die URL und andere identifizierende Informationen der Medienquelle enthalten.</p>
+        <p>Felder, die gelöscht werden: <code>Kommentar</code>, <code>Beschreibung</code>, <code>Synopse</code>, <code>Purl</code> und <code>handler_name</code> in jedem Stream.</p>
+		<note style="advanced">
+			<p>Standardeinstellung: Aus</p>
+		</note>
+    </item>
+</terms>
+</page>

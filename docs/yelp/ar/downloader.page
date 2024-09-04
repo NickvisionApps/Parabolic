@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" id="downloader" its:version="2.0" xml:lang="ar">
+<info>
+	<link type="guide" xref="index"/>
+	<title type="link">Downloader 🌐</title>
+	<credit type="author copyright">
+		<name>Nicholas Logozzo</name>
+		<years its:translate="no">2023-2024</years>
+	</credit>
+	<credit type="publisher copyright">
+		<name>Nicholas Logozzo</name>
+		<years its:translate="no">2023-2024</years>
+	</credit>
+	<license href="http://creativecommons.org/licenses/by/4.0/" its:translate="no"><p>Creative Commons Attribution 4.0 International License</p></license>
+</info>
+
+<title>Downloader</title>
+<p>This page explains all options for configuring the Downloader in Preferences in <app>Parabolic</app>.</p>
+
+<terms>
+    <item>
+        <title>اكتب فوق الملفات الموجودة</title>
+        <p>If enabled, Parabolic will overwrite existing files.</p>
+        <p>
+            For example, if a file named <code>movie.mp4</code> exists in the download folder, and a new download is created named <code>movie</code>, <code>movie.mp4</code> will be overwritten with the new download's content.
+        </p>
+        <note style="advanced">
+            <p>Default: On</p>
+        </note>
+    </item>
+	<item>
+		<title>Maximum Number of Active Downloads</title>
+		<p>The number of active downloads allowed to run at a time. Must be an integer value between 1 and 10.</p>
+        <p>If the max number of active downloads is reached, Parabolic will place new downloads in a queue until more downloads are able to be run.</p>
+		<note style="advanced">
+			<p>Default: 5</p>
+		</note>
+    </item>
+    <item>
+        <title>Included Auto-Generated Subtitles</title>
+        <p>Whether or not to included subtitles that are auto-translated to fit the requested subtitle languages.</p>
+        <note style="advanced">
+            <p>Default: Off</p>
+        </note>
+    </item>
+    <item>
+        <title>Use aria2</title>
+        <p>If enabled, Parabolic will use aria2c to download media. Although using aria2c can improve download speed, download progress will not be displayed in the UI.</p>
+        <note style="advanced">
+            <p>Default: Off</p>
+        </note>
+    </item>
+    <item>
+        <title>Maximum Connections Per Server</title>
+        <p>
+            This option only applies when using aria2 is enabled. This option is the same as the <code>-x</code> flag passed to aria2c.
+        </p>
+        <p>The maximum number of connection that can be used per server. Must be an integer value between 1 and 32.</p>
+        <note style="advanced">
+            <p>Default: 16</p>
+        </note>
+    </item>
+    <item>
+        <title>Minimum Split Size</title>
+        <p>
+            This option only applies when using aria2 is enabled. This option is the same as the <code>-k</code> flag passed to aria2c.
+        </p>
+        <p>The minimum size, in MiB, of which to split a file. Must be an integer value between 1 and 1024.</p>
+        <note style="advanced">
+            <p>Default: 20</p>
+        </note>
+    </item>
+    <item>
+        <title>حدُّ السرعة</title>
+        <p>A limit, in Ki/s, that is applied to downloads only if they have the advanced option <code>Speed Limit</code> enabled. Must be an integer value between 512 and 10240.</p>
+		<note style="advanced">
+			<p>Default: 1024</p>
+		</note>
+    </item>
+    <item>
+        <title>رابط الوكيل</title>
+        <p>The url of the proxy server to use.</p>
+    </item>
+    <item>
+        <title>Cookies from Browser</title>
+        <p>A browser in which to read cookies from and pass to yt-dlp's download engine.</p>
+		<note style="advanced">
+			<p>Default: None</p>
+		</note>
+    </item>
+    <item>
+        <title>استخدم SponsorBlock في اليوتيوب</title>
+        <p>If enabled, Parabolic will apply the SponsorBlock extension to YouTube downloads.</p>
+        <note>
+            <p>SponsorBlock only works on YouTube videos. However, leaving this setting on will not affect downloads from other sites (i.e. not cause them to fail).</p>
+        </note>
+        <note style="advanced">
+            <p>Default: Off</p>
+        </note>
+    </item>
+</terms>
+</page>

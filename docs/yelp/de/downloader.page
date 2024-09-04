@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" id="downloader" its:version="2.0" xml:lang="de">
+<info>
+	<link type="guide" xref="index"/>
+	<title type="link">Downloader 🌐</title>
+	<credit type="author copyright">
+		<name>Nicholas Logozzo</name>
+		<years its:translate="no">2023-2024</years>
+	</credit>
+	<credit type="publisher copyright">
+		<name>Nicholas Logozzo</name>
+		<years its:translate="no">2023-2024</years>
+	</credit>
+	<license href="http://creativecommons.org/licenses/by/4.0/" its:translate="no"><p>Creative Commons Attribution 4.0 International License</p></license>
+</info>
+
+<title>Downloader</title>
+<p>Diese Seite erklärt alle Optionen zur Konfiguration des Downloaders in den Einstellungen in <app>Parabolic</app>.</p>
+
+<terms>
+    <item>
+        <title>Vorhandene Dateien überschreiben</title>
+        <p>Wenn diese Option aktiviert ist, überschreibt Parabolic vorhandene Dateien.</p>
+        <p>Wenn zum Beispiel eine Datei mit dem Namen <code>movie.mp4</code> im Download-Ordner vorhanden ist und ein neuer Download mit dem Namen <code>movie</code> erstellt wird, wird <code>movie.mp4</code> mit dem Inhalt des neuen Downloads überschrieben.</p>
+        <note style="advanced">
+            <p>Standardeinstellung: Ein</p>
+        </note>
+    </item>
+	<item>
+		<title>Maximale Anzahl aktiver Downloads</title>
+		<p>Die Anzahl der aktiven Downloads, die gleichzeitig ausgeführt werden dürfen. Muss ein ganzzahliger Wert zwischen 1 und 10 sein.</p>
+        <p>Wenn die maximale Anzahl aktiver Downloads erreicht ist, platziert Parabolic neue Downloads in einer Warteschlange, bis weitere Downloads ausgeführt werden können.</p>
+		<note style="advanced">
+			<p>Standardeinstellung: 5</p>
+		</note>
+    </item>
+    <item>
+        <title>Enthaltene automatisch generierte Untertitel</title>
+        <p>Whether or not to included subtitles that are auto-translated to fit the requested subtitle languages.</p>
+        <note style="advanced">
+            <p>Standardeinstellung: Aus</p>
+        </note>
+    </item>
+    <item>
+        <title>Benutze aria2</title>
+        <p>Wenn diese Option aktiviert ist, verwendet Parabolic aria2c zum Herunterladen von Medien. Die Verwendung von aria2c kann die Download-Geschwindigkeit verbessern, jedoch wird der Download-Fortschritt nicht in der Benutzeroberfläche angezeigt.</p>
+        <note style="advanced">
+            <p>Standardeinstellung: Aus</p>
+        </note>
+    </item>
+    <item>
+        <title>Maximale Verbindungen pro Server</title>
+        <p>Diese Option gilt nur, wenn die Verwendung von aria2 aktiviert ist. Sie entspricht dem <code>-x</code> Flag, das an aria2c übergeben wird.</p>
+        <p>Die maximale Anzahl der Verbindungen, die pro Server verwendet werden können. Muss ein ganzzahliger Wert zwischen 1 und 32 sein.</p>
+        <note style="advanced">
+            <p>Standardeinstellung: 16</p>
+        </note>
+    </item>
+    <item>
+        <title>Minimale Teilungsgröße</title>
+        <p>Diese Option gilt nur, wenn die Verwendung von aria2 aktiviert ist. Sie entspricht dem <code>-k</code> Flag, das an aria2c übergeben wird.</p>
+        <p>Die Mindestgröße in MiB, ab der eine Datei geteilt werden soll. Muss ein ganzzahliger Wert zwischen 1 und 1024 sein.</p>
+        <note style="advanced">
+            <p>Standardeinstellung: 20</p>
+        </note>
+    </item>
+    <item>
+        <title>Geschwindigkeitsbegrenzung</title>
+        <p>Ein Limit in Ki/s, das nur dann auf Downloads angewendet wird, wenn die erweiterte Option <code>Geschwindigkeitsbegrenzung</code> aktiviert ist. Muss ein ganzzahliger Wert zwischen 512 und 10240 sein.</p>
+		<note style="advanced">
+			<p>Standardeinstellung: 1024</p>
+		</note>
+    </item>
+    <item>
+        <title>Proxy-URL</title>
+        <p>Die URL des zu verwendenden Proxyservers.</p>
+    </item>
+    <item>
+        <title>Cookies from Browser</title>
+        <p>A browser in which to read cookies from and pass to yt-dlp's download engine.</p>
+		<note style="advanced">
+			<p>Default: None</p>
+		</note>
+    </item>
+    <item>
+        <title>SponsorBlock für YouTube verwenden</title>
+        <p>Wenn aktiviert, wird Parabolic die SponsorBlock-Erweiterung auf YouTube-Downloads anwenden.</p>
+        <note>
+            <p>SponsorBlock funktioniert nur bei YouTube-Videos. Wenn du diese Einstellung jedoch aktiviert lässt, hat dies keine Auswirkungen auf Downloads von anderen Webseiten (d. h. sie werden nicht fehlschlagen).</p>
+        </note>
+        <note style="advanced">
+            <p>Standardeinstellung: Aus</p>
+        </note>
+    </item>
+</terms>
+</page>

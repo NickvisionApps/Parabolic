@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" id="downloader" its:version="2.0" xml:lang="fa">
+<info>
+	<link type="guide" xref="index"/>
+	<title type="link">بارگیری کننده 🌐</title>
+	<credit type="author copyright">
+		<name>Nicholas Logozzo</name>
+		<years its:translate="no">2023-2024</years>
+	</credit>
+	<credit type="publisher copyright">
+		<name>Nicholas Logozzo</name>
+		<years its:translate="no">2023-2024</years>
+	</credit>
+	<license href="http://creativecommons.org/licenses/by/4.0/" its:translate="no"><p>Creative Commons Attribution 4.0 International License</p></license>
+</info>
+
+<title>بارگیری کننده</title>
+<p>This page explains all options for configuring the Downloader in Preferences in <app>Parabolic</app>.</p>
+
+<terms>
+    <item>
+        <title>بازنویسی فایل های موجود</title>
+        <p>اگر فعال باشد، Parabolic فایل‌های موجود را بازنویسی می‌کند.</p>
+        <p>
+            For example, if a file named <code>movie.mp4</code> exists in the download folder, and a new download is created named <code>movie</code>, <code>movie.mp4</code> will be overwritten with the new download's content.
+        </p>
+        <note style="advanced">
+            <p>پیش فرض: روشن</p>
+        </note>
+    </item>
+	<item>
+		<title>حداکثر تعداد بارگیری‌های فعال</title>
+		<p>تعداد بارگیری‌های فعال مجاز به اجرا در یک زمان. باید یک مقدار صحیح بین 1 و 10 باشد.</p>
+        <p>If the max number of active downloads is reached, Parabolic will place new downloads in a queue until more downloads are able to be run.</p>
+		<note style="advanced">
+			<p>پیش فرض: ۵</p>
+		</note>
+    </item>
+    <item>
+        <title>شامل زیرنویس‌های تولید شده خودکار</title>
+        <p>این که آیا زیرنویس‌هایی را شامل می‌شود که به صورت خودکار ترجمه می شوند تا متناسب با زبان‌های زیرنویس درخواست شده باشند.</p>
+        <note style="advanced">
+            <p>پیش فرض: خاموش</p>
+        </note>
+    </item>
+    <item>
+        <title>از aria2 استفاده کنید</title>
+        <p>اگر فعال باشد، Parabolic از aria2c برای بارگیری رسانه استفاده می کند. اگرچه استفاده از aria2c می‌تواند سرعت دانلود را بهبود بخشد اما پیشرفت بارگیری در رابط کاربری نمایش داده نمی‌شود.</p>
+        <note style="advanced">
+            <p>پیش فرض: خاموش</p>
+        </note>
+    </item>
+    <item>
+        <title>حداکثر اتصالات در هر سرور</title>
+        <p>
+            This option only applies when using aria2 is enabled. This option is the same as the <code>-x</code> flag passed to aria2c.
+        </p>
+        <p>حداکثر تعداد اتصال قابل استفاده در هر سرور. باید یک مقدار صحیح بین ۱ و ۳۲ باشد.</p>
+        <note style="advanced">
+            <p>پیش فرض: ۱۶</p>
+        </note>
+    </item>
+    <item>
+        <title>حداقل اندازه تقسیم</title>
+        <p>
+            This option only applies when using aria2 is enabled. This option is the same as the <code>-k</code> flag passed to aria2c.
+        </p>
+        <p>حداقل اندازه، در مگابایت، که برای تقسیم یک فایل. باید یک مقدار صحیح بین ۱ و ۱۰۲۴ باشد.</p>
+        <note style="advanced">
+            <p>پیش فرض: ۲۰</p>
+        </note>
+    </item>
+    <item>
+        <title>محدودیت سرعت</title>
+        <p>A limit, in Ki/s, that is applied to downloads only if they have the advanced option <code>Speed Limit</code> enabled. Must be an integer value between 512 and 10240.</p>
+		<note style="advanced">
+			<p>پیش فرض: ۱۰۲۴</p>
+		</note>
+    </item>
+    <item>
+        <title>URL پروکسی</title>
+        <p>آدرس سرور پروکسی مورد استفاده.</p>
+    </item>
+    <item>
+        <title>Cookies from Browser</title>
+        <p>A browser in which to read cookies from and pass to yt-dlp's download engine.</p>
+		<note style="advanced">
+			<p>Default: None</p>
+		</note>
+    </item>
+    <item>
+        <title>از SponsorBlock برای YouTube استفاده کنید</title>
+        <p>اگر فعال باشد، Parabolic پسوند SponsorBlock را برای دانلودهای YouTube اعمال می کند.</p>
+        <note>
+            <p>SponsorBlock only works on YouTube videos. However, leaving this setting on will not affect downloads from other sites (i.e. not cause them to fail).</p>
+        </note>
+        <note style="advanced">
+            <p>پیش فرض: خاموش</p>
+        </note>
+    </item>
+</terms>
+</page>

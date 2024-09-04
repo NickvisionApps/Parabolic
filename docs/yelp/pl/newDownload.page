@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" id="newDownload" its:version="2.0" xml:lang="pl">
+<info>
+	<link type="guide" xref="index"/>
+	<title type="link">Nowe pobieranie 🆕</title>
+	<credit type="author copyright">
+		<name>Nicholas Logozzo</name>
+		<years its:translate="no">2023-2024</years>
+	</credit>
+	<credit type="publisher copyright">
+		<name>Nicholas Logozzo</name>
+		<years its:translate="no">2023-2024</years>
+	</credit>
+	<license href="http://creativecommons.org/licenses/by/4.0/" its:translate="no"><p>Creative Commons Attribution 4.0 International License</p></license>
+
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Dominik Gęgotek</mal:name>
+      <mal:email>ioutora@disroot.org</mal:email>
+      <mal:years>2023</mal:years>
+    </mal:credit>
+  </info>
+
+<title>Nowe pobieranie</title>
+<p>Ta strona wyjaśnia wszystkie opcje dostępne w sekcji Pobieranie w preferencjach w <app>Parabolic</app>.</p>
+
+<terms>
+    <item>
+      <title>Adres URL</title>
+      <p>Adres URL multimediów do pobrania. Musi być poprawnym linkiem http lub https.</p>
+      <note>
+            <p>Jeśli poprawny adres URL zostanie znaleziony w schowku po włączeniu okna nowego pobierania, adres URL zostanie automatycznie wklejony w odpowiednie miejsce.</p>
+      </note>
+    </item>
+    <item>
+      <title>Uwierzytelnij</title>
+      <p>Po włączeniu, użytkownik zostanie poproszony o podanie nazwy użytkownika i/lub hasła, które zostanie przekazane yt-dlp.</p>
+        <p>If credentials are found in the keyring, the user can instead chose from a list of named credentials to use (or continue to manually enter a credential)</p>
+		<note style="advanced">
+			<p>Nie wszystkie strony wspierają przesyłanie nazw użytkownika i haseł przez yt-dlp. Na przykład, YouTube NIE wspiera tej funkcji.</p>
+            <p>For these sites that don't support passing credentials, it is recommended to select a browser to use cookies from in Preferences instead.</p>
+		</note>
+    </item>
+    <item>
+		<title>Typ pliku</title>
+		<p>Typ pliku, do którego multimedia mają zostać pobrane.</p>
+            <p>Po włączeniu opcji <code>nie zezwalaj na konwersję</code>, jedynymi opcjami będą <code>wideo</code> (jeśli obsługiwane) i <code>audio</code></p>
+        <note>
+            <p>Poprzednio użyty typ pliku zostanie zapamiętany i wybrany dla następnego procesu pobierania.</p>
+        </note>
+    </item>
+    <item>
+		<title>Jakość</title>
+		<p>Jeśli typ pliku jest typem wideo, w polu "jakość" pojawią się dostępne rozdzielczości multimediów.</p>
+        <p>If the file type is an audio type, the listed qualities will be simply <code>Best</code>, <code>Good</code>, and <code>Worst</code>.</p>
+        <note>
+            <p>Poprzednio użyta jakość zostanie zapamiętana i wybrana dla następnego procesu pobierania.</p>
+        </note>
+    </item>
+    <item>
+		<title>Audio Language</title>
+		<p>The language of which to use from the audio part of a media download.</p>
+        <p>If no additional languages are available, <code>Default</code> will be the only option.</p>
+        <note>
+            <p>The previously used state will be remembered and pre-selected for the next download.</p>
+        </note>
+    </item>
+    <item>
+		<title>Pobierz napisy</title>
+		<p>Whether to download and embed subtitle when downloading a video. Further subtitle settings can be configured in <link xref="downloader">preferences</link>.</p>
+        <note>
+            <p>The previously used state will be remembered and pre-selected for the next download.</p>
+        </note>
+    </item>
+    <item>
+        <title>Preferuj kodek AV1</title>
+        <p>If enabled, Parabolic will prefer videos with the av1 codec when downloading.</p>
+        <note>
+            <p>The previously used state will be remembered and pre-selected for the next download.</p>
+        </note>
+    </item>
+    <item>
+        <title>Podziel według rozdziałów</title>
+        <p>If enabled, Parabolic will split a video download into multiple smaller files based on its chapters.</p>
+        <note>
+            <p>The previously used state will be remembered and pre-selected for the next download.</p>
+        </note>
+    </item>
+    <item>
+		<title>Folder docelowy</title>
+		<p>Folder, w którym ma zostać zapisany pobrany plik.</p>
+        <note>
+            <p>Poprzednio użyty folder zostanie zapamiętany i wybrany dla następnego procesu pobierania.</p>
+        </note>
+    </item>
+    <item>
+		<title>Nazwa pliku</title>
+        <p>Nazwa pliku, która ma zostać użyta do zapisania pobranego pliku.</p>
+		<note style="advanced">
+			<p>Domyślnie: Tytuł multimediów</p>
+		</note>
+    </item>
+    <item>
+		<title>Time Frame</title>
+		<p>The user can enter a start time frame and an end time frame to download a specific section of the media.</p>
+        <note style="advanced">
+			<p>Default: The whole media length</p>
+		</note>
+        <note style="advanced">
+            <p>Enabling this option will disable the use of aria2 as the downloader for this download, even if it is enabled in Preferences.</p>
+        </note>
+    </item>
+    <item>
+		<title>Limit prędkości pobierania</title>
+		<p>If enabled, Parabolic will limit the download's speed with the speed configured in <link xref="downloader">Preferences</link>.</p>
+        <note>
+            <p>Dostępne w sekcji <code>opcje zaawansowane</code>.</p>
+        </note>
+    </item>
+</terms>
+</page>

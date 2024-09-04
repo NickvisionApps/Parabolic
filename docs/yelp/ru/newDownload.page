@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" id="newDownload" its:version="2.0" xml:lang="ru">
+<info>
+	<link type="guide" xref="index"/>
+	<title type="link">Новая загрузка 🆕</title>
+	<credit type="author copyright">
+		<name>Nicholas Logozzo</name>
+		<years its:translate="no">2023-2024</years>
+	</credit>
+	<credit type="publisher copyright">
+		<name>Nicholas Logozzo</name>
+		<years its:translate="no">2023-2024</years>
+	</credit>
+	<license href="http://creativecommons.org/licenses/by/4.0/" its:translate="no"><p>Creative Commons Attribution 4.0 International License</p></license>
+
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Фёдор Соболев</mal:name>
+      <mal:email/>
+      <mal:years>2023</mal:years>
+    </mal:credit>
+  </info>
+
+<title>Новая загрузка</title>
+<p>Эта страница поясняет все опции по настройке новой загрузки в <app>Parabolic</app>.</p>
+
+<terms>
+    <item>
+      <title>Ссылка</title>
+      <p>Ссылка для скачивания медиа. Должна быть корректной ("корректной" в смысле синтаксиса) http или https ссылкой.</p>
+      <note>
+            <p>Если корректная ссылка обнаружена в буфере обмена, она будет автоматически вставлена в поле при открытии диалога добавления новой загрузки.</p>
+      </note>
+    </item>
+    <item>
+      <title>Аутентификация</title>
+      <p>Если включено, пользователь сможет предоставить имя пользователя и/или пароль для передачи yt-dlp при загрузке.</p>
+        <p>If credentials are found in the keyring, the user can instead chose from a list of named credentials to use (or continue to manually enter a credential)</p>
+		<note style="advanced">
+			<p>Не все сайты поддерживают аутентификацию по имени пользователя и паролю. Например, YouTube НЕ поддерживает эту функцию.</p>
+            <p>For these sites that don't support passing credentials, it is recommended to select a browser to use cookies from in Preferences instead.</p>
+		</note>
+    </item>
+    <item>
+		<title>Тип файла</title>
+		<p>Файл какого типа требуется загрузить.</p>
+            <p>Если конвертирование отключено в настройках, можно будет выбрать только <code>Видео</code> (если доступно) и <code>Аудио</code></p>
+        <note>
+            <p>Использованный тип файла будет сохранён и автоматически выбран в следующий раз.</p>
+        </note>
+    </item>
+    <item>
+		<title>Качество</title>
+		<p>Если выбранный тип файла является видео, будут перечислены доступные разрешения видео.</p>
+        <p>If the file type is an audio type, the listed qualities will be simply <code>Best</code>, <code>Good</code>, and <code>Worst</code>.</p>
+        <note>
+            <p>Выбранное качество будет сохранено и автоматически выбрано в следующий раз.</p>
+        </note>
+    </item>
+    <item>
+		<title>Audio Language</title>
+		<p>The language of which to use from the audio part of a media download.</p>
+        <p>If no additional languages are available, <code>Default</code> will be the only option.</p>
+        <note>
+            <p>Выбранное состояние переключателя будет сохранено и автоматически выбрано в следующий раз.</p>
+        </note>
+    </item>
+    <item>
+		<title>Загрузить субтитры</title>
+		<p>Whether to download and embed subtitle when downloading a video. Further subtitle settings can be configured in <link xref="downloader">preferences</link>.</p>
+        <note>
+            <p>Выбранное состояние переключателя будет сохранено и автоматически выбрано в следующий раз.</p>
+        </note>
+    </item>
+    <item>
+        <title>Загружать в AV1</title>
+        <p>Если включено, Parabolic будет скачивать видео в кодеке av1, когда он доступен.</p>
+        <note>
+            <p>Выбранное состояние переключателя будет сохранено и автоматически выбрано в следующий раз.</p>
+        </note>
+    </item>
+    <item>
+        <title>Разделить по главам</title>
+        <p>If enabled, Parabolic will split a video download into multiple smaller files based on its chapters.</p>
+        <note>
+            <p>Выбранное состояние переключателя будет сохранено и автоматически выбрано в следующий раз.</p>
+        </note>
+    </item>
+    <item>
+		<title>Папка сохранения</title>
+		<p>Папка, в которую сохранить загруженный файл.</p>
+        <note>
+            <p>Выбранная папка будет сохранена и автоматически выбрана в следующий раз.</p>
+        </note>
+    </item>
+    <item>
+		<title>Имя файла</title>
+        <p>Имя, под которым сохранить загруженный файл.</p>
+		<note style="advanced">
+			<p>По умолчанию: заголовок медиа</p>
+		</note>
+    </item>
+    <item>
+		<title>Time Frame</title>
+		<p>The user can enter a start time frame and an end time frame to download a specific section of the media.</p>
+        <note style="advanced">
+			<p>Default: The whole media length</p>
+		</note>
+        <note style="advanced">
+            <p>Enabling this option will disable the use of aria2 as the downloader for this download, even if it is enabled in Preferences.</p>
+        </note>
+    </item>
+    <item>
+		<title>Ограничение скорости</title>
+		<p>If enabled, Parabolic will limit the download's speed with the speed configured in <link xref="downloader">Preferences</link>.</p>
+        <note>
+            <p>Доступно в <code>Дополнительных опциях</code>.</p>
+        </note>
+    </item>
+</terms>
+</page>

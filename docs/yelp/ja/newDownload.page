@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" id="newDownload" its:version="2.0" xml:lang="ja">
+<info>
+	<link type="guide" xref="index"/>
+	<title type="link">新規ダウンロード 🆕</title>
+	<credit type="author copyright">
+		<name>Nicholas Logozzo</name>
+		<years its:translate="no">2023-2024</years>
+	</credit>
+	<credit type="publisher copyright">
+		<name>Nicholas Logozzo</name>
+		<years its:translate="no">2023-2024</years>
+	</credit>
+	<license href="http://creativecommons.org/licenses/by/4.0/" its:translate="no"><p>Creative Commons Attribution 4.0 International License</p></license>
+
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Gnuey56</mal:name>
+      <mal:email>gnuey56@proton.me</mal:email>
+      <mal:years>2023</mal:years>
+    </mal:credit>
+  </info>
+
+<title>新規ダウンロード</title>
+<p>このページでは <app>Parabolic</app> の新規ダウンロードを設定するためのすべてのオプションを解説します。</p>
+
+<terms>
+    <item>
+      <title>メディアの URL</title>
+      <p>メディアのダウンロード元の URL。有効な（正しい URL の構文である）http または https リンクである必要があります。</p>
+      <note>
+            <p>"ダウンロードを追加"のダイアログが開いた際に、クリップボードに有効な URL が見つかると、URL は自動的に URL 入力欄にペーストされます。</p>
+      </note>
+    </item>
+    <item>
+      <title>認証</title>
+      <p>有効であれば、ダウンロード時に、 yt-dlp に渡す、ユーザー名と（または）パスワードが要求されます。</p>
+        <p>If credentials are found in the keyring, the user can instead chose from a list of named credentials to use (or continue to manually enter a credential)</p>
+		<note style="advanced">
+			<p>すべてのウェブサイトで yt-dlp がユーザー名とパスワードの入力に対応しているわけではありません。例えば、YouTube はこの機能にサポートしていません。</p>
+            <p>For these sites that don't support passing credentials, it is recommended to select a browser to use cookies from in Preferences instead.</p>
+		</note>
+    </item>
+    <item>
+		<title>ファイルの種類</title>
+		<p>ダウンロードするメディアのファイルのタイプ。</p>
+            <p><code>フォーマット変換を無効化</code>が有効であれば、（サポートされていれば）<code>動画</code>もしくは<code>音声</code>の二択になります</p>
+        <note>
+            <p>最後に使用したファイルの種類は、次回のダウンロードのために記憶・事前選択されます。</p>
+        </note>
+    </item>
+    <item>
+		<title>品質</title>
+		<p>ファイルの種類が動画の場合、表示される品質はメディアが利用できる解像度です。</p>
+        <p>If the file type is an audio type, the listed qualities will be simply <code>Best</code>, <code>Good</code>, and <code>Worst</code>.</p>
+        <note>
+            <p>最後に使用した品質は、次回のダウンロードのために記憶・事前選択されます。</p>
+        </note>
+    </item>
+    <item>
+		<title>Audio Language</title>
+		<p>The language of which to use from the audio part of a media download.</p>
+        <p>If no additional languages are available, <code>Default</code> will be the only option.</p>
+        <note>
+            <p>最後に使用した状態は、今後のダウンロードのために記憶・事前選択されます。</p>
+        </note>
+    </item>
+    <item>
+		<title>字幕をダウンロードする</title>
+		<p>Whether to download and embed subtitle when downloading a video. Further subtitle settings can be configured in <link xref="downloader">preferences</link>.</p>
+        <note>
+            <p>最後に使用した状態は、今後のダウンロードのために記憶・事前選択されます。</p>
+        </note>
+    </item>
+    <item>
+        <title>AV1 コーデックを優先する</title>
+        <p>有効であれば、Parabolic は動画のダウンロード時に av1 コーデックを使用します。</p>
+        <note>
+            <p>最後に使用した状態は、今後のダウンロードのために記憶・事前選択されます。</p>
+        </note>
+    </item>
+    <item>
+        <title>チャプター（章）で分ける</title>
+        <p>If enabled, Parabolic will split a video download into multiple smaller files based on its chapters.</p>
+        <note>
+            <p>最後に使用した状態は、今後のダウンロードのために記憶・事前選択されます。</p>
+        </note>
+    </item>
+    <item>
+		<title>保存フォルダー</title>
+		<p>ダウンロードを保存フォルダー。</p>
+        <note>
+            <p>最後に使用したフォルダーは、次回のダウンロードのために記憶・事前選択されます。</p>
+        </note>
+    </item>
+    <item>
+		<title>ファイル名</title>
+        <p>ダウンロードを保存する際に使用するファイル名。</p>
+		<note style="advanced">
+			<p>デフォルト: メディアのタイトル</p>
+		</note>
+    </item>
+    <item>
+		<title>Time Frame</title>
+		<p>The user can enter a start time frame and an end time frame to download a specific section of the media.</p>
+        <note style="advanced">
+			<p>Default: The whole media length</p>
+		</note>
+        <note style="advanced">
+            <p>Enabling this option will disable the use of aria2 as the downloader for this download, even if it is enabled in Preferences.</p>
+        </note>
+    </item>
+    <item>
+		<title>スピード制限</title>
+		<p>If enabled, Parabolic will limit the download's speed with the speed configured in <link xref="downloader">Preferences</link>.</p>
+        <note>
+            <p><code>詳細オプション</code>で選択可能です。</p>
+        </note>
+    </item>
+</terms>
+</page>

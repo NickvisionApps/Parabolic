@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" id="converter" its:version="2.0" xml:lang="uk">
+<info>
+	<link type="guide" xref="index"/>
+	<title type="link">Конвертер ⚒️</title>
+	<credit type="author copyright">
+		<name>Nicholas Logozzo</name>
+		<years its:translate="no">2023-2024</years>
+	</credit>
+	<credit type="publisher copyright">
+		<name>Nicholas Logozzo</name>
+		<years its:translate="no">2023-2024</years>
+	</credit>
+	<license href="http://creativecommons.org/licenses/by/4.0/" its:translate="no"><p>Creative Commons Attribution 4.0 International License</p></license>
+</info>
+
+<title>Конвертер</title>
+<p>На цій сторінці пояснюються всі параметри налаштування конвертера в Параметрах <app>Parabolic</app>.</p>
+
+<terms>
+	<item>
+		<title>Вставити метадані</title>
+		<p>Якщо ввімкнено, Parabolic позначатиме медіа відповідною інформацією (назва, жанр тощо) та мініатюрою, якщо вона доступна.</p>
+        <p>Parabolic НЕ вставляє поля Коментар, Опис, Синопсис і Виворіт.</p>
+		<note style="advanced">
+			<p>За замовчуванням: Ввімк</p>
+		</note>
+    </item>
+    <item>
+        <title>Вбудовані субтитри</title>
+        <p>Якщо цю функцію вимкнено або якщо вбудовування не вдасться, завантажені субтитри буде збережено в окремому файлі.</p>
+        <note style="advanced">
+            <p>За замовчуванням: Ввімк</p>
+        </note>
+    </item>
+    <item>
+		<title>Вставити розділи</title>
+		<p>Якщо увімкнено, Parabolic позначить медіа інформацією про розділи, якщо така доступна.</p>
+		<note style="advanced">
+			<p>За замовчуванням: Вимк</p>
+		</note>
+	</item>
+    <item>
+		<title>Обрізати мініатюри аудіо</title>
+		<p>If enabled, Parabolic will crop thumbnails for audio files to be a square resolution.</p>
+		<note style="advanced">
+			<p>За замовчуванням: Вимк</p>
+		</note>
+    </item>
+    <item>
+		<title>Вилучити вихідні дані</title>
+		<p>Якщо ввімкнено, Parabolic очистить поля метаданих, що містять URL та іншу ідентифікаційну інформацію джерела медіа.</p>
+        <p>Очищені поля: <code> коментар</code>, <code>опис</code>, <code>синопсис</code>, <code>purl</code> і <code>handler_name</code> в кожному стримі.</p>
+		<note style="advanced">
+			<p>За замовчуванням: Вимк</p>
+		</note>
+    </item>
+</terms>
+</page>
