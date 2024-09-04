@@ -82,6 +82,11 @@ namespace Nickvision::TubeConverter::Shared::Models
                     std::string language{ obj["language"].is_string() ? obj["language"].as_string() : "" };
                     if(!language.empty() && language != "none")
                     {
+                        std::string format_id{ obj["format_id"].is_string() ? obj["format_id"].as_string() : "" };
+                        if(!format_id.empty() && format_id.find("audiodesc") != std::string::npos)
+                        {
+                            language += " (audio_description)";
+                        }
                         if(std::find(m_audioLanguages.begin(), m_audioLanguages.end(), language) == m_audioLanguages.end())
                         {
                             m_audioLanguages.push_back(language);
