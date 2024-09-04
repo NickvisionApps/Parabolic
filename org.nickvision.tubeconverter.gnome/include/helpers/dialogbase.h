@@ -23,10 +23,6 @@ namespace Nickvision::TubeConverter::GNOME::Helpers
          */
         DialogBase(GtkWindow* parent, const std::string& fileName, const std::string& rootName = "root");
         /**
-         * @brief Destructs a DialogBase.
-         */
-        virtual ~DialogBase();
-        /**
          * @brief Gets the underlying AdwDialog pointer.
          * @return AdwDialog*
          */

@@ -33,7 +33,12 @@ namespace Nickvision::TubeConverter::GNOME::Helpers
         DialogPtr(Args... args)
             : m_ptr{ new T(args...) }
         {
-            g_signal_connect(m_ptr->gobj(), "closed", GCallback(+[](AdwDialog*, gpointer data){ delete reinterpret_cast<T*>(data); }), m_ptr);
+            g_signal_connect(m_ptr->gobj(), "closed", GCallback(+[](AdwDialog*, gpointer data)
+            { 
+                T* ptr{ reinterpret_cast<T*>(data) };
+                ptr->closed().invoke({});
+                delete ptr; 
+            }), m_ptr);
         }
         /**
          * @brief Constructs a DialogPtr.
@@ -43,7 +48,12 @@ namespace Nickvision::TubeConverter::GNOME::Helpers
         DialogPtr(T* ptr)
             : m_ptr{ ptr }
         {
-            g_signal_connect(m_ptr->gobj(), "closed", GCallback(+[](AdwDialog*, gpointer data){ delete reinterpret_cast<T*>(data); }), m_ptr);
+            g_signal_connect(m_ptr->gobj(), "closed", GCallback(+[](AdwDialog*, gpointer data)
+            { 
+                T* ptr{ reinterpret_cast<T*>(data) };
+                ptr->closed().invoke({});
+                delete ptr; 
+            }), m_ptr);
         }
         /**
          * @brief Constructs a DialogPtr via copy.
