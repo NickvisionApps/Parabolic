@@ -1,18 +1,18 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2024-08-21 10:13+0200\n"
-"PO-Revision-Date: 2024-08-04 11:09+0000\n"
+"POT-Creation-Date: 2024-09-04 07:01-0400\n"
+"PO-Revision-Date: 2024-09-04 13:03+0000\n"
 "Last-Translator: Bezruchenko Simon <worcposj44@gmail.com>\n"
-"Language-Team: Ukrainian <https://hosted.weblate.org/projects/nickvision-"
-"tube-converter/docs/uk/>\n"
+"Language-Team: Ukrainian <https://hosted.weblate.org/projects/"
+"nickvision-tube-converter/docs/uk/>\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Weblate 5.7-dev\n"
+"X-Generator: Weblate 5.7.2-rc\n"
 
 #. Put one translator per line, in the form NAME <EMAIL>, YEAR1, YEAR2
 msgctxt "_"
@@ -47,8 +47,8 @@ msgid ""
 "This page explains all options for configuring the Converter in Preferences "
 "in <app>Parabolic</app>."
 msgstr ""
-"На цій сторінці пояснюються всі параметри налаштування конвертера в "
-"Параметрах <app>Parabolic</app>."
+"Ця сторінка пояснює всі опції для налаштування конвертера в Параметрах "
+"<app>Parabolic</app>."
 
 #. (itstool) path: item/title
 #: docs/yelp/C/converter.page:25
@@ -117,13 +117,12 @@ msgstr "Обрізати мініатюри аудіо"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/converter.page:48
-#, fuzzy
 msgid ""
 "If enabled, Parabolic will crop thumbnails for audio files to be a square "
 "resolution."
 msgstr ""
-"Якщо ввімкнено, Parabolic розділить відео на кілька менших на основі його "
-"розділів."
+"Якщо ввімкнено, Parabolic обрізає ескізи для аудіофайлів до квадратної "
+"роздільної здатності."
 
 #. (itstool) path: item/title
 #: docs/yelp/C/converter.page:54
@@ -339,19 +338,20 @@ msgstr "URL-адреса проксі-сервера для використан
 #. (itstool) path: item/title
 #: docs/yelp/C/downloader.page:88
 msgid "Cookies from Browser"
-msgstr ""
+msgstr "Файли cookie з браузера"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/downloader.page:89
 msgid ""
 "A browser in which to read cookies from and pass to yt-dlp's download engine."
 msgstr ""
+"Браузер, з якого зчитуються файли cookie і передаються в завантажувальний "
+"движок yt-dlp."
 
 #. (itstool) path: note/p
 #: docs/yelp/C/downloader.page:91
-#, fuzzy
 msgid "Default: None"
-msgstr "За замовчуванням: Ввімк"
+msgstr "За замовчуванням: Відсутній"
 
 #. (itstool) path: item/title
 #: docs/yelp/C/downloader.page:95
@@ -455,10 +455,8 @@ msgstr "Backend"
 
 #. (itstool) path: section/p
 #: docs/yelp/C/keyring.page:24
-#, fuzzy
 msgid "The Keyring feature is backed by the <code>libnick</code> library."
-msgstr ""
-"Функція Keyring підтримується бібліотекою <code>Nickvision.Aura</code>."
+msgstr "Функція Keyring підтримується бібліотекою <code>libnick</code>."
 
 #. (itstool) path: section/p
 #: docs/yelp/C/keyring.page:25
@@ -471,15 +469,14 @@ msgstr ""
 
 #. (itstool) path: section/p
 #: docs/yelp/C/keyring.page:26
-#, fuzzy
 msgid ""
 "The library will use you system's credential manager (i.e. DBus secret "
 "service on Linux and Windows Credential Manager on Windows) for securing the "
 "Keyring database file."
 msgstr ""
-"Бібліотека використовуватиме обліковий менеджер системи (тобто секретну "
-"службу DBus на Linux та Windows Credential Manager на Windows) для "
-"забезпечення захисту Keyring."
+"Бібліотека використовуватиме менеджер облікових даних вашої системи ("
+"наприклад, секретний сервіс DBus на Linux і Менеджер облікових даних Windows "
+"на Windows) для захисту файлу бази даних Keyring."
 
 #. (itstool) path: section/title
 #: docs/yelp/C/keyring.page:29
@@ -579,14 +576,13 @@ msgstr ""
 
 #. (itstool) path: item/p
 #: docs/yelp/C/newDownload.page:34
-#, fuzzy
 msgid ""
 "If credentials are found in the keyring, the user can instead chose from a "
 "list of named credentials to use (or continue to manually enter a credential)"
 msgstr ""
-"Якщо keyring ввімкнено, користувачеві буде запропоновано вибрати зі списку "
-"іменованих облікових даних або ввести вручну інше ім'я користувача та/або "
-"пароль."
+"Якщо облікові дані знайдено в Keyring, користувач може вибрати зі списку "
+"названих облікових даних для використання (або продовжити вводити облікові "
+"дані вручну)."
 
 #. (itstool) path: note/p
 #: docs/yelp/C/newDownload.page:36
@@ -599,13 +595,12 @@ msgstr ""
 
 #. (itstool) path: note/p
 #: docs/yelp/C/newDownload.page:37
-#, fuzzy
 msgid ""
 "For these sites that don't support passing credentials, it is recommended to "
 "select a browser to use cookies from in Preferences instead."
 msgstr ""
 "Для сайтів, які не підтримують передачу облікових даних, рекомендується "
-"завантажити файл Cookies в Параметрах."
+"вибрати браузер для використання файлів cookie у Налаштуваннях."
 
 #. (itstool) path: item/title
 #: docs/yelp/C/newDownload.page:41
@@ -651,13 +646,12 @@ msgstr ""
 
 #. (itstool) path: item/p
 #: docs/yelp/C/newDownload.page:51
-#, fuzzy
 msgid ""
 "If the file type is an audio type, the listed qualities will be simply "
 "<code>Best</code>, <code>Good</code>, and <code>Worst</code>."
 msgstr ""
-"Якщо тип файлу - аудіо, то перелічені якості будуть просто <code>Найліпша</"
-"code> та <code>Найгірша</code>."
+"Якщо тип файлу є аудіо, доступні якості будуть просто <code>Best</code> "
+"(Найкраща), <code>Good</code> (Добра), і <code>Worst</code> (Найгірша)."
 
 #. (itstool) path: note/p
 #: docs/yelp/C/newDownload.page:53
@@ -670,14 +664,13 @@ msgstr ""
 
 #. (itstool) path: item/title
 #: docs/yelp/C/newDownload.page:57
-#, fuzzy
 msgid "Audio Language"
-msgstr "Мови субтитрів"
+msgstr "Мова аудіо"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/newDownload.page:58
 msgid "The language of which to use from the audio part of a media download."
-msgstr ""
+msgstr "Мова, яку слід використовувати з аудіо частини медіа-завантаження."
 
 #. (itstool) path: item/p
 #: docs/yelp/C/newDownload.page:59
@@ -685,6 +678,8 @@ msgid ""
 "If no additional languages are available, <code>Default</code> will be the "
 "only option."
 msgstr ""
+"Якщо додаткові мови недоступні, єдиним варіантом буде <code> За "
+"замовчуванням</code>."
 
 #. (itstool) path: note/p
 #: docs/yelp/C/newDownload.page:61 docs/yelp/C/newDownload.page:68
@@ -703,15 +698,14 @@ msgstr "Завантажити субтитри"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/newDownload.page:66
-#, fuzzy
 msgid ""
 "Whether to download and embed subtitle when downloading a video. Further "
 "subtitle settings can be configured in <link "
 "xref=\"downloader\">preferences</link>."
 msgstr ""
-"Чи потрібно завантажувати та вставляти субтитри під час завантаження відео. "
-"Мови для субтитрів можна визначити в <link xref=\"downloader\">параметрах</"
-"link>."
+"Чи завантажувати і вбудовувати субтитри при завантаженні відео. Додаткові "
+"налаштування субтитрів можна налаштувати в <link xref=\"downloader\""
+">Параметрах</link>."
 
 #. (itstool) path: item/title
 #: docs/yelp/C/newDownload.page:72
@@ -733,13 +727,12 @@ msgstr "Розділити глави"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/newDownload.page:80
-#, fuzzy
 msgid ""
 "If enabled, Parabolic will split a video download into multiple smaller "
 "files based on its chapters."
 msgstr ""
-"Якщо ввімкнено, Parabolic розділить відео на кілька менших на основі його "
-"розділів."
+"Якщо увімкнено, Parabolic розділить завантаження відео на кілька менших "
+"файлів, грунтуючись на його розділах."
 
 #. (itstool) path: item/title
 #: docs/yelp/C/newDownload.page:86
@@ -778,43 +771,39 @@ msgstr "За замовчуванням: назва медіа"
 #. (itstool) path: item/title
 #: docs/yelp/C/newDownload.page:100
 msgid "Time Frame"
-msgstr ""
+msgstr "Часовий проміжок"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/newDownload.page:101
-#, fuzzy
 msgid ""
 "The user can enter a start time frame and an end time frame to download a "
 "specific section of the media."
 msgstr ""
-"Якщо цю параметр ввімкнено, користувач зможе ввести початковий і кінцевий "
-"часовий проміжок для завантаження частини медіафайлу."
+"Користувач може вказати початковий і кінцевий часові проміжки для "
+"завантаження конкретної частини медіа."
 
 #. (itstool) path: note/p
 #: docs/yelp/C/newDownload.page:103
-#, fuzzy
 msgid "Default: The whole media length"
-msgstr "За замовчуванням: назва медіа"
+msgstr "За замовчуванням: вся довжина медіа"
 
 #. (itstool) path: note/p
 #: docs/yelp/C/newDownload.page:106
-#, fuzzy
 msgid ""
 "Enabling this option will disable the use of aria2 as the downloader for "
 "this download, even if it is enabled in Preferences."
 msgstr ""
-"Увімкнення цього параметра вимкне використання aria2 як завантажувача для "
-"цього завантаження, якщо його ввімкнено в налаштуваннях."
+"Увімкнення цієї опції вимкне використання aria2 як завантажувача для цього "
+"завантаження, навіть якщо він увімкнений у Параметрах."
 
 #. (itstool) path: item/p
 #: docs/yelp/C/newDownload.page:111
-#, fuzzy
 msgid ""
 "If enabled, Parabolic will limit the download's speed with the speed "
 "configured in <link xref=\"downloader\">Preferences</link>."
 msgstr ""
-"Якщо ввімкнено, Parabolic обмежуватиме швидкість завантаження швидкістю, "
-"заданою у Параметрах."
+"Якщо увімкнено, Parabolic обмежить швидкість завантаження відповідно до "
+"швидкості, налаштованої в <link xref=\"downloader\">Параметрах</link>."
 
 #. (itstool) path: note/p
 #: docs/yelp/C/newDownload.page:113
