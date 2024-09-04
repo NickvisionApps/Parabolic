@@ -277,7 +277,7 @@ namespace Nickvision::TubeConverter::Shared::Models
             if(downloaderOptions.getRemoveSourceData())
             {
                 arguments.push_back("--parse-metadata");
-                arguments.push_back(":(?P<meta_comment>):(?P<meta_description>):(?P<meta_synopsis>):(?P<meta_purl>):(?P<meta_track>)");
+                arguments.push_back(":(?P<meta_comment>):(?P<meta_description>):(?P<meta_synopsis>):(?P<meta_purl>)");
             }
         }
         if(downloaderOptions.getEmbedChapters())
