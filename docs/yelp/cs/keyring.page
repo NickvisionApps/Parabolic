@@ -16,7 +16,7 @@
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Jonáš Loskot</mal:name>
       <mal:email>osobni@jonasloskot.cz</mal:email>
-      <mal:years>2023</mal:years>
+      <mal:years>2023, 2024</mal:years>
     </mal:credit>
   </info>
 
@@ -24,9 +24,9 @@
 <p>Na této straně najdete vysvětlení všech možností konfigurace klíčenky v předvolbách v aplikaci <app>Parabolic</app>.</p>
 <section>
     <title>Backend</title>
-    <p>The Keyring feature is backed by the <code>libnick</code> library.</p>
+    <p>Funkce klíčenky je provozována pomocí knihovny <code>libnick</code>.</p>
     <p>Tato knihovna používá SQLCipher pro bezpečné ukládání údajů způsobem nezávislým na platformě.</p>
-    <p>The library will use you system's credential manager (i.e. DBus secret service on Linux and Windows Credential Manager on Windows) for securing the Keyring database file.</p>
+    <p>Knihovna použije pro zabezpečení databázového souboru klíčenky správce údajů vašeho systému (např. službu DBus secret na systému Linux a Správce přihlašovacích údajů Windows na systému Windows).</p>
 </section>
 <section>
     <title>Ukládání údajů</title>

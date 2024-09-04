@@ -28,10 +28,10 @@
     <item>
       <title>S’identifier</title>
       <p>Si cette option est activée, il sera demandé à l’utilisateur de fournir un nom d’utilisateur et/ou un mot de passe à yt-dlp lors du téléchargement.</p>
-        <p>If credentials are found in the keyring, the user can instead chose from a list of named credentials to use (or continue to manually enter a credential)</p>
+        <p>Si le trousseau est activé, l’utilisateur pourra choisir parmi une liste d’identifiants, ou entrer manuellement un nom d’utilisateur et/ou mot de passe différent.</p>
 		<note style="advanced">
 			<p>Tous les sites web ne prennent pas en charge la fourniture de noms d’utilisateur et mots de passe à yt-dlp. Par exemple, YouTube ne prend PAS en charge cette fonctionnalité.</p>
-            <p>For these sites that don't support passing credentials, it is recommended to select a browser to use cookies from in Preferences instead.</p>
+            <p>Pour les sites qui ne prennent pas en charge la fourniture d’identifiants, il est recommandé de téléverser un fichier de cookies dans les préférences à la place.</p>
 		</note>
     </item>
     <item>
@@ -74,7 +74,7 @@
     </item>
     <item>
         <title>Diviser en chapitres</title>
-        <p>If enabled, Parabolic will split a video download into multiple smaller files based on its chapters.</p>
+        <p>Si cette option est activée, Parabole séparera la vidéo en plusieurs morceaux correspondant aux chapitres qu’elles contient.</p>
         <note>
             <p>Les paramètres utilisés précédemment seront mémorisés et présélectionnés pour le prochain téléchargement.</p>
         </note>
@@ -95,9 +95,9 @@
     </item>
     <item>
 		<title>Time Frame</title>
-		<p>The user can enter a start time frame and an end time frame to download a specific section of the media.</p>
+		<p>Si cette option est activée, l’utilisateur pourra entrer un temps de début et un temps de fin pour télécharger une partie spécifique du média.</p>
         <note style="advanced">
-			<p>Default: The whole media length</p>
+			<p>Par défaut : la longueur totale du média</p>
 		</note>
         <note style="advanced">
             <p>Enabling this option will disable the use of aria2 as the downloader for this download, even if it is enabled in Preferences.</p>

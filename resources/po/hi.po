@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-03 11:29-0400\n"
+"POT-Creation-Date: 2024-09-04 17:32-0400\n"
 "PO-Revision-Date: 2024-07-07 17:09+0000\n"
 "Last-Translator: Scrambled777 <weblate.scrambled777@simplelogin.com>\n"
 "Language-Team: Hindi <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -100,7 +100,7 @@ msgid "Default"
 msgstr ""
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:43
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:38
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:39
 msgid "Parabolic"
 msgstr "पैराबोलिक"
 
@@ -190,8 +190,8 @@ msgstr ""
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:368
 #: org.nickvision.tubeconverter.gnome/blueprints/shortcuts_dialog.blp:40
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:27
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:42
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:63
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:43
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:64
 msgid "Add Download"
 msgstr "डाउनलोड जोड़ें"
 
@@ -304,10 +304,10 @@ msgstr "मीडिया डाउनलोड करें"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:154
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:273
+#: org.nickvision.tubeconverter.qt/src/controls/historyrow.cpp:18
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:54
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:65
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:66
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:348
 msgid "Download"
 msgstr "डाउनलोड"
 
@@ -367,10 +367,11 @@ msgstr "लॉग देखें"
 msgid "Stop"
 msgstr "रुका हुआ"
 
+#. Localize Strings
 #: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:79
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:257
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:25
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:355
+#: org.nickvision.tubeconverter.qt/src/controls/historyrow.cpp:17
 msgid "Play"
 msgstr "चलाएं"
 
@@ -441,13 +442,13 @@ msgstr "कीबोर्ड शॉर्टकट"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:7
 #: org.nickvision.tubeconverter.gnome/blueprints/shortcuts_dialog.blp:26
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:54
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:55
 msgid "Help"
 msgstr "सहायता"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:8
 #: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:31
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:59
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:60
 msgid "About Parabolic"
 msgstr "पैराबोलिक के बारे में"
 
@@ -463,15 +464,15 @@ msgstr "गृह"
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:85
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:194
 #: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:21
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:45
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:46
 msgid "Keyring"
 msgstr "कीरिंग"
 
 #. Localize History Dock
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:102
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:200
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:48
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:65
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:49
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:66
 msgid "History"
 msgstr "इतिहास"
 
@@ -501,17 +502,17 @@ msgstr "पूर्ण"
 
 #. Localize Home Page
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:191
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:61
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:62
 msgid "Download Media"
 msgstr "मीडिया डाउनलोड करें"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:192
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:62
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:63
 msgid "Add a video, audio, or playlist URL to start downloading"
 msgstr "डाउनलोड करना शुरू करने के लिए एक वीडियो, ऑडियो या प्लेलिस्ट URL जोड़ें"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:220
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:66
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:67
 #, fuzzy
 msgid "No history available"
 msgstr "नया अपडेट उपलब्ध है।"
@@ -528,7 +529,7 @@ msgstr "इतिहास साफ करें"
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:240
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:339
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:395
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:67
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:68
 msgid "Clear"
 msgstr "साफ़ करें"
 
@@ -539,7 +540,7 @@ msgstr "कोई डाउनलोड नहीं चल रहा"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:282
 #: org.nickvision.tubeconverter.gnome/blueprints/shortcuts_dialog.blp:45
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:50
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:51
 msgid "Stop All Downloads"
 msgstr "सभी डाउनलोड बंद करें"
 
@@ -549,7 +550,7 @@ msgid "No Downloads Queued"
 msgstr "मीडिया डाउनलोड करें"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:334
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:52
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:53
 msgid "Clear Queued Downloads"
 msgstr "कतारबद्ध डाउनलोड साफ़ करें"
 
@@ -559,13 +560,13 @@ msgid "No Downloads Completed"
 msgstr "मीडिया डाउनलोड करें"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:390
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:53
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:54
 msgid "Clear Completed Downloads"
 msgstr "पूर्ण डाउनलोड साफ़ करें"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:403
 #: org.nickvision.tubeconverter.gnome/blueprints/shortcuts_dialog.blp:50
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:51
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:52
 msgid "Retry Failed Downloads"
 msgstr "विफल डाउनलोड पुनः प्रयास करें"
 
@@ -680,7 +681,7 @@ msgid "Include Auto-Generated Subtitles"
 msgstr "ऑटो-निर्मित उपशीर्षक शामिल करें"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:109
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:49
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:50
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:25
 msgid "Downloader"
 msgstr "डाउनलोडर"
@@ -952,14 +953,14 @@ msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:40
 #: org.nickvision.tubeconverter.qt/src/controls/keyringrow.cpp:18
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:44
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:45
 msgid "Edit"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:54
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:293
+#: org.nickvision.tubeconverter.qt/src/controls/historyrow.cpp:19
 #: org.nickvision.tubeconverter.qt/src/controls/keyringrow.cpp:19
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:343
 msgid "Delete"
 msgstr "मिटाएं"
 
@@ -1040,7 +1041,7 @@ msgid "Download Again"
 msgstr "पुनः डाउनलोड करें"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:414
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:56
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:57
 msgid "GitHub Repo"
 msgstr "गिटहब रेपो"
 
@@ -1182,46 +1183,42 @@ msgstr ""
 msgid "There was an unknown error adding the credential to the keyring."
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:38
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:39
 #, fuzzy
 msgid "Parabolic (Preview)"
 msgstr "पैराबोलिक"
 
 #. Localize Menu Strings
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:41
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:42
 #, fuzzy
 msgid "File"
 msgstr "फाइल नाम"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:43
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:44
 msgid "Exit"
 msgstr "बाहर निकलें"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:46
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:47
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:21
 msgid "Settings"
 msgstr "सेटिंग्स"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:47
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:48
 #, fuzzy
 msgid "View"
 msgstr "लॉग देखें"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:55
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:56
 msgid "Check for Updates"
 msgstr "अपडेट के लिए जांचें"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:57
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:58
 msgid "Report a Bug"
 msgstr "खराबी की जानकारी दें"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:58
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:59
 msgid "Discussions"
 msgstr "विचार विमर्श"
-
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:68
-msgid "Title"
-msgstr ""
 
 #. Localize Downloads Page
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:70

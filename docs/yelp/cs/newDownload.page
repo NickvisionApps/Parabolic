@@ -16,7 +16,7 @@
     <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
       <mal:name>Jonáš Loskot</mal:name>
       <mal:email>osobni@jonasloskot.cz</mal:email>
-      <mal:years>2023</mal:years>
+      <mal:years>2023, 2024</mal:years>
     </mal:credit>
   </info>
 
@@ -34,10 +34,10 @@
     <item>
       <title>Přihlášení</title>
       <p>Pokud je tato funkce povolena, bude uživatel vyzván k zadání uživatelského jména a/nebo hesla, které bude předáno službě yt-dlp při stahování.</p>
-        <p>If credentials are found in the keyring, the user can instead chose from a list of named credentials to use (or continue to manually enter a credential)</p>
+        <p>Při nalezení údajů v klíčence si může uživatel namísto toho vybrat ze seznamu pojmenovaných údajů k použití (nebo pokračovat k ručnímu zadání údaje)</p>
 		<note style="advanced">
 			<p>Ne všechny webové stránky podporují předávání uživatelských jmen a hesel do yt-dlp. Například YouTube tuto funkci NEpodporuje.</p>
-            <p>For these sites that don't support passing credentials, it is recommended to select a browser to use cookies from in Preferences instead.</p>
+            <p>U těchto webů, které nepodporují předávání přihlašovacích údajů, je doporučeno v předvolbách vybrat prohlížeč, ze kterého mají být použity soubory cookie.</p>
 		</note>
     </item>
     <item>
@@ -51,22 +51,22 @@
     <item>
 		<title>Kvalita</title>
 		<p>Pokud je typem souboru typ videa, budou uvedené kvality odpovídat rozlišení dostupných médií.</p>
-        <p>If the file type is an audio type, the listed qualities will be simply <code>Best</code>, <code>Good</code>, and <code>Worst</code>.</p>
+        <p>Pokud je typem souboru typ zvuku, budou uvedené kvality jednoduše <code>nejlepší</code>, <code>dobrá</code> a <code>nejhorší</code>.</p>
         <note>
             <p>Dříve použitá kvalita bude zapamatována a předvolena pro další stahování.</p>
         </note>
     </item>
     <item>
-		<title>Audio Language</title>
-		<p>The language of which to use from the audio part of a media download.</p>
-        <p>If no additional languages are available, <code>Default</code> will be the only option.</p>
+		<title>Jazyk zvuku</title>
+		<p>Jazyk, ze kterého použít zvuk pro stahování multimédií.</p>
+        <p>Pokud nejsou dostupné žádné další jazyky, bude <code>výchozí</code> jedinou možností.</p>
         <note>
             <p>Dříve použitý stav bude zapamatován a předvolen pro další stahování.</p>
         </note>
     </item>
     <item>
 		<title>Stáhnout titulky</title>
-		<p>Whether to download and embed subtitle when downloading a video. Further subtitle settings can be configured in <link xref="downloader">preferences</link>.</p>
+		<p>Zda stáhnout a vložit titulky při stahování videa. Další nastavení titulků najdete v <link xref="downloader">předvolbách</link>.</p>
         <note>
             <p>Dříve použitý stav bude zapamatován a předvolen pro další stahování.</p>
         </note>
@@ -80,7 +80,7 @@
     </item>
     <item>
         <title>Rozdělit kapitoly</title>
-        <p>If enabled, Parabolic will split a video download into multiple smaller files based on its chapters.</p>
+        <p>Pokud je tato funkce povolena, aplikace Parabolic rozdělí stahované video na několik malých souborů podle jeho kapitol.</p>
         <note>
             <p>Dříve použitý stav bude zapamatován a předvolen pro další stahování.</p>
         </note>
@@ -100,18 +100,18 @@
 		</note>
     </item>
     <item>
-		<title>Time Frame</title>
-		<p>The user can enter a start time frame and an end time frame to download a specific section of the media.</p>
+		<title>Časový rámec</title>
+		<p>Uživatel může zadat počáteční časový rámec a konečný časový rámec pro stažení určité části média.</p>
         <note style="advanced">
-			<p>Default: The whole media length</p>
+			<p>Výchozí: celá délka média</p>
 		</note>
         <note style="advanced">
-            <p>Enabling this option will disable the use of aria2 as the downloader for this download, even if it is enabled in Preferences.</p>
+            <p>Povolením této možnosti bude pro toto stahování zakázáno použití služby aria2, i když je povoleno v předvolbách.</p>
         </note>
     </item>
     <item>
 		<title>Omezení rychlosti</title>
-		<p>If enabled, Parabolic will limit the download's speed with the speed configured in <link xref="downloader">Preferences</link>.</p>
+		<p>Pokud je tato funkce povolena, aplikace Parabolic omezí rychlost stahování na rychlost nastavenou v <link xref="downloader">předvolbách</link>.</p>
         <note>
             <p>Dostupné v sekci <code>Pokročilé možnosti</code>.</p>
         </note>

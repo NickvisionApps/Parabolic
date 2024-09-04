@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <dt class="terms">Přihlášení</dt>
 <dd class="terms">
 <p class="p">Pokud je tato funkce povolena, bude uživatel vyzván k zadání uživatelského jména a/nebo hesla, které bude předáno službě yt-dlp při stahování.</p>
-<p class="p">If credentials are found in the keyring, the user can instead chose from a list of named credentials to use (or continue to manually enter a credential)</p>
+<p class="p">Při nalezení údajů v klíčence si může uživatel namísto toho vybrat ze seznamu pojmenovaných údajů k použití (nebo pokračovat k ručnímu zadání údaje)</p>
 <div class="note note-advanced" title="Pokročilé">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', function() {
  </g>
 </svg><div class="inner"><div class="region"><div class="contents">
 <p class="p">Ne všechny webové stránky podporují předávání uživatelských jmen a hesel do yt-dlp. Například YouTube tuto funkci NEpodporuje.</p>
-<p class="p">For these sites that don't support passing credentials, it is recommended to select a browser to use cookies from in Preferences instead.</p>
+<p class="p">U těchto webů, které nepodporují předávání přihlašovacích údajů, je doporučeno v předvolbách vybrat prohlížeč, ze kterého mají být použity soubory cookie.</p>
 </div></div></div>
 </div>
 </dd>
@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <dt class="terms">Kvalita</dt>
 <dd class="terms">
 <p class="p">Pokud je typem souboru typ videa, budou uvedené kvality odpovídat rozlišení dostupných médií.</p>
-<p class="p">If the file type is an audio type, the listed qualities will be simply <span class="code">Best</span>, <span class="code">Good</span>, and <span class="code">Worst</span>.</p>
+<p class="p">Pokud je typem souboru typ zvuku, budou uvedené kvality jednoduše <span class="code">nejlepší</span>, <span class="code">dobrá</span> a <span class="code">nejhorší</span>.</p>
 <div class="note" title="Upozornění">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -82,10 +82,10 @@ document.addEventListener('DOMContentLoaded', function() {
 </svg><div class="inner"><div class="region"><div class="contents"><p class="p">Dříve použitá kvalita bude zapamatována a předvolena pro další stahování.</p></div></div></div>
 </div>
 </dd>
-<dt class="terms">Audio Language</dt>
+<dt class="terms">Jazyk zvuku</dt>
 <dd class="terms">
-<p class="p">The language of which to use from the audio part of a media download.</p>
-<p class="p">If no additional languages are available, <span class="code">Default</span> will be the only option.</p>
+<p class="p">Jazyk, ze kterého použít zvuk pro stahování multimédií.</p>
+<p class="p">Pokud nejsou dostupné žádné další jazyky, bude <span class="code">výchozí</span> jedinou možností.</p>
 <div class="note" title="Upozornění">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -97,7 +97,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </dd>
 <dt class="terms">Stáhnout titulky</dt>
 <dd class="terms">
-<p class="p">Whether to download and embed subtitle when downloading a video. Further subtitle settings can be configured in <span class="link"><a href="downloader.html" title="Stahování">preferences</a></span>.</p>
+<p class="p">Zda stáhnout a vložit titulky při stahování videa. Další nastavení titulků najdete v <span class="link"><a href="downloader.html" title="Stahování">předvolbách</a></span>.</p>
 <div class="note" title="Upozornění">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -121,7 +121,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </dd>
 <dt class="terms">Rozdělit kapitoly</dt>
 <dd class="terms">
-<p class="p">If enabled, Parabolic will split a video download into multiple smaller files based on its chapters.</p>
+<p class="p">Pokud je tato funkce povolena, aplikace Parabolic rozdělí stahované video na několik malých souborů podle jeho kapitol.</p>
 <div class="note" title="Upozornění">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -163,9 +163,9 @@ document.addEventListener('DOMContentLoaded', function() {
 </svg><div class="inner"><div class="region"><div class="contents"><p class="p">Výchozí: název média</p></div></div></div>
 </div>
 </dd>
-<dt class="terms">Time Frame</dt>
+<dt class="terms">Časový rámec</dt>
 <dd class="terms">
-<p class="p">The user can enter a start time frame and an end time frame to download a specific section of the media.</p>
+<p class="p">Uživatel může zadat počáteční časový rámec a konečný časový rámec pro stažení určité části média.</p>
 <div class="note note-advanced" title="Pokročilé">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -180,7 +180,7 @@ document.addEventListener('DOMContentLoaded', function() {
   <path class="yelp-svg-fill" d="m8.2435 7.0719-1.9004-3.3145 1.4143-1.4143 3.1596 1.7457z"></path>
   <path class="yelp-svg-fill" d="m11.072 11.757-3.3146 1.9-1.4143-1.414 1.7457-3.1602z"></path>
  </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Default: The whole media length</p></div></div></div>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Výchozí: celá délka média</p></div></div></div>
 </div>
 <div class="note note-advanced" title="Pokročilé">
 <svg height="24" width="24" version="1.1">
@@ -196,12 +196,12 @@ document.addEventListener('DOMContentLoaded', function() {
   <path class="yelp-svg-fill" d="m8.2435 7.0719-1.9004-3.3145 1.4143-1.4143 3.1596 1.7457z"></path>
   <path class="yelp-svg-fill" d="m11.072 11.757-3.3146 1.9-1.4143-1.414 1.7457-3.1602z"></path>
  </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Enabling this option will disable the use of aria2 as the downloader for this download, even if it is enabled in Preferences.</p></div></div></div>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Povolením této možnosti bude pro toto stahování zakázáno použití služby aria2, i když je povoleno v předvolbách.</p></div></div></div>
 </div>
 </dd>
 <dt class="terms">Omezení rychlosti</dt>
 <dd class="terms">
-<p class="p">If enabled, Parabolic will limit the download's speed with the speed configured in <span class="link"><a href="downloader.html" title="Stahování">Preferences</a></span>.</p>
+<p class="p">Pokud je tato funkce povolena, aplikace Parabolic omezí rychlost stahování na rychlost nastavenou v <span class="link"><a href="downloader.html" title="Stahování">předvolbách</a></span>.</p>
 <div class="note" title="Upozornění">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -229,7 +229,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <div class="copyrights">
 <div class="copyright">© 2023-2024 Nicholas Logozzo</div>
 <div class="copyright">© 2023-2024 Nicholas Logozzo</div>
-<div class="copyright">© 2023 Jonáš Loskot</div>
+<div class="copyright">© 2023, 2024 Jonáš Loskot</div>
 </div>
 <div class="credits">
 <div class="credits-authors">

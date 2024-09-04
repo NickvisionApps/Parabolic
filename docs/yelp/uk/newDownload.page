@@ -28,10 +28,10 @@
     <item>
       <title>Автентифікація</title>
       <p>Якщо ввімкнено, користувачеві буде запропоновано ввести ім'я користувача та/або пароль для входу до yt-dlp під час завантаження.</p>
-        <p>If credentials are found in the keyring, the user can instead chose from a list of named credentials to use (or continue to manually enter a credential)</p>
+        <p>Якщо облікові дані знайдено в Keyring, користувач може вибрати зі списку названих облікових даних для використання (або продовжити вводити облікові дані вручну).</p>
 		<note style="advanced">
 			<p>Не всі вебсайти підтримують передачу імен користувачів і паролів до yt-dlp. Наприклад, YouTube НЕ підтримує цю функцію.</p>
-            <p>For these sites that don't support passing credentials, it is recommended to select a browser to use cookies from in Preferences instead.</p>
+            <p>Для сайтів, які не підтримують передачу облікових даних, рекомендується вибрати браузер для використання файлів cookie у Налаштуваннях.</p>
 		</note>
     </item>
     <item>
@@ -45,22 +45,22 @@
     <item>
 		<title>Якість</title>
 		<p>Якщо тип файлу - відео, перелічені якості будуть відповідати роздільній здатності доступного носія.</p>
-        <p>If the file type is an audio type, the listed qualities will be simply <code>Best</code>, <code>Good</code>, and <code>Worst</code>.</p>
+        <p>Якщо тип файлу є аудіо, доступні якості будуть просто <code>Best</code> (Найкраща), <code>Good</code> (Добра), і <code>Worst</code> (Найгірша).</p>
         <note>
             <p>Раніше використана якість буде запам'ятовуватися і попередньо вибиратися для наступного завантаження.</p>
         </note>
     </item>
     <item>
-		<title>Audio Language</title>
-		<p>The language of which to use from the audio part of a media download.</p>
-        <p>If no additional languages are available, <code>Default</code> will be the only option.</p>
+		<title>Мова аудіо</title>
+		<p>Мова, яку слід використовувати з аудіо частини медіа-завантаження.</p>
+        <p>Якщо додаткові мови недоступні, єдиним варіантом буде <code> За замовчуванням</code>.</p>
         <note>
             <p>Раніше використаний стан запам'ятовуватиметься та попередньо вибиратиметься для наступного завантаження.</p>
         </note>
     </item>
     <item>
 		<title>Завантажити субтитри</title>
-		<p>Whether to download and embed subtitle when downloading a video. Further subtitle settings can be configured in <link xref="downloader">preferences</link>.</p>
+		<p>Чи завантажувати і вбудовувати субтитри при завантаженні відео. Додаткові налаштування субтитрів можна налаштувати в <link xref="downloader">Параметрах</link>.</p>
         <note>
             <p>Раніше використаний стан запам'ятовуватиметься та попередньо вибиратиметься для наступного завантаження.</p>
         </note>
@@ -74,7 +74,7 @@
     </item>
     <item>
         <title>Розділити глави</title>
-        <p>If enabled, Parabolic will split a video download into multiple smaller files based on its chapters.</p>
+        <p>Якщо увімкнено, Parabolic розділить завантаження відео на кілька менших файлів, грунтуючись на його розділах.</p>
         <note>
             <p>Раніше використаний стан запам'ятовуватиметься та попередньо вибиратиметься для наступного завантаження.</p>
         </note>
@@ -94,18 +94,18 @@
 		</note>
     </item>
     <item>
-		<title>Time Frame</title>
-		<p>The user can enter a start time frame and an end time frame to download a specific section of the media.</p>
+		<title>Часовий проміжок</title>
+		<p>Користувач може вказати початковий і кінцевий часові проміжки для завантаження конкретної частини медіа.</p>
         <note style="advanced">
-			<p>Default: The whole media length</p>
+			<p>За замовчуванням: вся довжина медіа</p>
 		</note>
         <note style="advanced">
-            <p>Enabling this option will disable the use of aria2 as the downloader for this download, even if it is enabled in Preferences.</p>
+            <p>Увімкнення цієї опції вимкне використання aria2 як завантажувача для цього завантаження, навіть якщо він увімкнений у Параметрах.</p>
         </note>
     </item>
     <item>
 		<title>Обмеження швидкості</title>
-		<p>If enabled, Parabolic will limit the download's speed with the speed configured in <link xref="downloader">Preferences</link>.</p>
+		<p>Якщо увімкнено, Parabolic обмежить швидкість завантаження відповідно до швидкості, налаштованої в <link xref="downloader">Параметрах</link>.</p>
         <note>
             <p>Доступно в розділі <code>Додаткові параметри</code>.</p>
         </note>
