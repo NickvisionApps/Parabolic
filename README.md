@@ -26,6 +26,11 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for details on how can you help the proje
 # Screenshots
 <details>
  <summary>GNOME</summary>
+
+ ![Home Page](org.nickvision.tubeconverter.gnome/screenshots/home.png)
+ ![Downloading](org.nickvision.tubeconverter.gnome/screenshots/downloading.png)
+ ![Dark Mode](org.nickvision.tubeconverter.gnome/screenshots/dark.png)
+ ![Add Download Dialog](org.nickvision.tubeconverter.gnome/screenshots/add.png)
 </details>
 
 <details>
