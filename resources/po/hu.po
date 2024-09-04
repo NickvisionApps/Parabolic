@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-03 11:29-0400\n"
+"POT-Creation-Date: 2024-09-04 17:32-0400\n"
 "PO-Revision-Date: 2024-01-06 02:07+0000\n"
 "Last-Translator: Kingproone <PlayerGuy@protonmail.com>\n"
 "Language-Team: Hungarian <https://hosted.weblate.org/projects/nickvision-"
@@ -100,7 +100,7 @@ msgid "Default"
 msgstr "Alapértelmezett"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:43
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:38
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:39
 msgid "Parabolic"
 msgstr "Parabolic"
 
@@ -190,8 +190,8 @@ msgstr ""
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:368
 #: org.nickvision.tubeconverter.gnome/blueprints/shortcuts_dialog.blp:40
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:27
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:42
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:63
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:43
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:64
 msgid "Add Download"
 msgstr "Hozzáadás"
 
@@ -303,10 +303,10 @@ msgstr "Tartalom letöltése"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:154
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:273
+#: org.nickvision.tubeconverter.qt/src/controls/historyrow.cpp:18
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:54
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:65
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:66
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:348
 msgid "Download"
 msgstr "Letöltés"
 
@@ -366,10 +366,11 @@ msgstr "Napló megtekintése"
 msgid "Stop"
 msgstr "Letöltés megszakítva"
 
+#. Localize Strings
 #: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:79
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:257
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:25
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:355
+#: org.nickvision.tubeconverter.qt/src/controls/historyrow.cpp:17
 msgid "Play"
 msgstr "Lejátszás"
 
@@ -439,13 +440,13 @@ msgstr "Gyorsbillentyűk"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:7
 #: org.nickvision.tubeconverter.gnome/blueprints/shortcuts_dialog.blp:26
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:54
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:55
 msgid "Help"
 msgstr "Súgó"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:8
 #: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:31
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:59
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:60
 msgid "About Parabolic"
 msgstr "Névjegy"
 
@@ -461,15 +462,15 @@ msgstr "Kezdőlap"
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:85
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:194
 #: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:21
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:45
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:46
 msgid "Keyring"
 msgstr "Jelszókezelő"
 
 #. Localize History Dock
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:102
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:200
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:48
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:65
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:49
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:66
 msgid "History"
 msgstr "Előzmények"
 
@@ -499,17 +500,17 @@ msgstr "Befejezett letöltések"
 
 #. Localize Home Page
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:191
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:61
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:62
 msgid "Download Media"
 msgstr "Tartalom letöltése"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:192
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:62
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:63
 msgid "Add a video, audio, or playlist URL to start downloading"
 msgstr "Kezdéshez adja hozzá a letölteni kívánt tartalom hivatkozását"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:220
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:66
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:67
 #, fuzzy
 msgid "No history available"
 msgstr "Frissítés érhető el."
@@ -526,7 +527,7 @@ msgstr "Előzmények törlése"
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:240
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:339
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:395
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:67
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:68
 msgid "Clear"
 msgstr "Törlés"
 
@@ -536,7 +537,7 @@ msgstr "Nincs folyamatban letöltés"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:282
 #: org.nickvision.tubeconverter.gnome/blueprints/shortcuts_dialog.blp:45
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:50
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:51
 msgid "Stop All Downloads"
 msgstr "Minden letöltés megszakítása"
 
@@ -546,7 +547,7 @@ msgid "No Downloads Queued"
 msgstr "Nincs folyamatban letöltés"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:334
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:52
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:53
 msgid "Clear Queued Downloads"
 msgstr "Sorban álló letöltések törlése"
 
@@ -556,13 +557,13 @@ msgid "No Downloads Completed"
 msgstr "A befejezettek megjelenítése"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:390
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:53
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:54
 msgid "Clear Completed Downloads"
 msgstr "Befejezett letöltések törlése"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:403
 #: org.nickvision.tubeconverter.gnome/blueprints/shortcuts_dialog.blp:50
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:51
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:52
 msgid "Retry Failed Downloads"
 msgstr "Sikertelen letöltések újrakezdése"
 
@@ -679,7 +680,7 @@ msgid "Include Auto-Generated Subtitles"
 msgstr "Automatikusan létrehozott feliratok letöltése"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:109
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:49
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:50
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:25
 msgid "Downloader"
 msgstr "Letöltő"
@@ -952,14 +953,14 @@ msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:40
 #: org.nickvision.tubeconverter.qt/src/controls/keyringrow.cpp:18
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:44
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:45
 msgid "Edit"
 msgstr "Szerkesztés"
 
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:54
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:293
+#: org.nickvision.tubeconverter.qt/src/controls/historyrow.cpp:19
 #: org.nickvision.tubeconverter.qt/src/controls/keyringrow.cpp:19
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:343
 msgid "Delete"
 msgstr "Törlés"
 
@@ -1041,7 +1042,7 @@ msgid "Download Again"
 msgstr "Letöltés ismét"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:414
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:56
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:57
 msgid "GitHub Repo"
 msgstr "GitHub tároló"
 
@@ -1183,45 +1184,41 @@ msgstr ""
 msgid "There was an unknown error adding the credential to the keyring."
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:38
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:39
 #, fuzzy
 msgid "Parabolic (Preview)"
 msgstr "Parabolic"
 
 #. Localize Menu Strings
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:41
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:42
 msgid "File"
 msgstr "Fájl"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:43
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:44
 msgid "Exit"
 msgstr "Kilépés"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:46
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:47
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:21
 msgid "Settings"
 msgstr "Beállítások"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:47
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:48
 #, fuzzy
 msgid "View"
 msgstr "Napló megtekintése"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:55
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:56
 msgid "Check for Updates"
 msgstr "Frissítések keresése"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:57
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:58
 msgid "Report a Bug"
 msgstr "Hibajelentés"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:58
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:59
 msgid "Discussions"
 msgstr "Kibeszélés"
-
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:68
-msgid "Title"
-msgstr ""
 
 #. Localize Downloads Page
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:70

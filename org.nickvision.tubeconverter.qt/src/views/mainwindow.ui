@@ -172,7 +172,7 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>745</width>
+             <width>445</width>
              <height>301</height>
             </rect>
            </property>
@@ -284,8 +284,8 @@
   <widget class="QDockWidget" name="dockHistory">
    <property name="minimumSize">
     <size>
-     <width>300</width>
-     <height>174</height>
+     <width>600</width>
+     <height>214</height>
     </size>
    </property>
    <property name="autoFillBackground">
@@ -295,7 +295,7 @@
     <bool>false</bool>
    </property>
    <property name="features">
-    <set>QDockWidget::DockWidgetFeature::DockWidgetClosable</set>
+    <set>QDockWidget::DockWidgetFeature::DockWidgetClosable|QDockWidget::DockWidgetFeature::DockWidgetFloatable|QDockWidget::DockWidgetFeature::DockWidgetMovable</set>
    </property>
    <property name="allowedAreas">
     <set>Qt::DockWidgetArea::RightDockWidgetArea</set>
@@ -305,15 +305,6 @@
    </attribute>
    <widget class="QWidget" name="dockHistoryContents">
     <layout class="QVBoxLayout" name="verticalLayout_3">
-     <item>
-      <widget class="QLabel" name="lblHistory">
-       <property name="font">
-        <font>
-         <bold>true</bold>
-        </font>
-       </property>
-      </widget>
-     </item>
      <item>
       <widget class="QStackedWidget" name="viewStackHistory">
        <property name="currentIndex">
@@ -352,17 +343,10 @@
           </widget>
          </item>
          <item>
-          <widget class="QTableWidget" name="tblHistory">
+          <widget class="QListWidget" name="listHistory">
            <property name="selectionMode">
             <enum>QAbstractItemView::SelectionMode::NoSelection</enum>
            </property>
-           <property name="columnCount">
-            <number>4</number>
-           </property>
-           <column/>
-           <column/>
-           <column/>
-           <column/>
           </widget>
          </item>
         </layout>

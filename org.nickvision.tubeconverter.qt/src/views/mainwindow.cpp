@@ -11,6 +11,7 @@
 #include <libnick/localization/gettext.h>
 #include <libnick/notifications/shellnotification.h>
 #include "controls/aboutdialog.h"
+#include "controls/historyrow.h"
 #include "helpers/qthelpers.h"
 #include "views/adddownloaddialog.h"
 #include "views/keyringdialog.h"
@@ -62,10 +63,9 @@ namespace Nickvision::TubeConverter::QT::Views
         m_ui->lblHomeDescription->setText(_("Add a video, audio, or playlist URL to start downloading"));
         m_ui->btnHomeAddDownload->setText(_("Add Download"));
         //Localize History Dock
-        m_ui->lblHistory->setText(_("History"));
+        m_ui->dockHistory->setWindowTitle(_("History"));
         m_ui->lblNoHistory->setText(_("No history available"));
         m_ui->btnClearHistory->setText(_("Clear"));
-        m_ui->tblHistory->setHorizontalHeaderLabels({ "", _("Title"), "", "" });
         //Localize Downloads Page
         m_ui->lblLog->setText(_("Log"));
         //Signals
@@ -329,43 +329,17 @@ namespace Nickvision::TubeConverter::QT::Views
     void MainWindow::onHistoryChanged(const ParamEventArgs<std::vector<HistoricDownload>>& args)
     {
         m_ui->viewStackHistory->setCurrentIndex(args.getParam().empty() ? 0 : 1);
-        m_ui->tblHistory->setRowCount(0);
+        m_ui->listHistory->clear();
         for(const HistoricDownload& download : args.getParam())
         {
-            m_ui->tblHistory->insertRow(0);
-            //Title
-            QTableWidgetItem* title{ new QTableWidgetItem(QString::fromStdString(download.getTitle())) };
-            title->setFlags(title->flags() ^ Qt::ItemFlag::ItemIsEditable);
-            title->setToolTip(QString::fromStdString(download.getUrl()));
-            m_ui->tblHistory->setItem(0, 1, title);
-            //Delete Button
-            QPushButton* btnDelete{ new QPushButton(QIcon::fromTheme(QIcon::ThemeIcon::EditDelete), {}, m_ui->tblHistory) };
-            btnDelete->setToolTip(_("Delete"));
-            connect(btnDelete, &QPushButton::clicked, [this, download]() { m_controller->getDownloadManager().removeHistoricDownload(download); });
-            m_ui->tblHistory->setCellWidget(0, 0, btnDelete);
-            //Download Button
-            QPushButton* btnDownload{ new QPushButton(QIcon::fromTheme(QIcon::ThemeIcon::GoDown), {}, m_ui->tblHistory) };
-            btnDownload->setToolTip(_("Download"));
-            m_ui->tblHistory->setCellWidget(0, 2, btnDownload);
-            connect(btnDownload, &QPushButton::clicked, [this, download]() { addDownload(download.getUrl()); });
-            //Play Button
-            if(std::filesystem::exists(download.getPath()))
-            {
-                QPushButton* btnPlay{ new QPushButton(QIcon::fromTheme(QIcon::ThemeIcon::MediaPlaybackStart), {}, m_ui->tblHistory) };
-                btnPlay->setToolTip(_("Play"));
-                connect(btnPlay, &QPushButton::clicked, [this, download]() { QDesktopServices::openUrl(QUrl::fromLocalFile(QString::fromStdString(download.getPath().string()))); });
-                m_ui->tblHistory->setCellWidget(0, 3, btnPlay);
-            }
-            else
-            {
-                QTableWidgetItem* blank{ new QTableWidgetItem() };
-                blank->setFlags(blank->flags() ^ Qt::ItemFlag::ItemIsEditable);
-                m_ui->tblHistory->setItem(0, 3, blank);
-            }
+            HistoryRow* row{ new HistoryRow(download) };
+            connect(row, &HistoryRow::downloadAgain, [this](const std::string& url) { addDownload(url); });
+            connect(row, &HistoryRow::deleteItem, [this](const HistoricDownload& download) { m_controller->getDownloadManager().removeHistoricDownload(download); });
+            QListWidgetItem* item{ new QListWidgetItem() };
+            item->setSizeHint(row->sizeHint() + QSize(0, 10));
+            m_ui->listHistory->insertItem(0, item);
+            m_ui->listHistory->setItemWidget(item, row);
         }
-        m_ui->tblHistory->resizeColumnToContents(0);
-        m_ui->tblHistory->resizeColumnToContents(2);
-        m_ui->tblHistory->resizeColumnToContents(3);
     }
 
     void MainWindow::onDownloadAdded(const DownloadAddedEventArgs& args)
