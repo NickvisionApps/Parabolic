@@ -1,17 +1,17 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2024-08-21 10:13+0200\n"
-"PO-Revision-Date: 2024-01-03 15:07+0000\n"
-"Last-Translator: rene-coty <irenee.thirion@e.email>\n"
-"Language-Team: French <https://hosted.weblate.org/projects/nickvision-tube-"
-"converter/docs/fr/>\n"
+"POT-Creation-Date: 2024-09-04 07:01-0400\n"
+"PO-Revision-Date: 2024-09-04 15:56+0000\n"
+"Last-Translator: Victor Lamoine <victor.lamoine@gmail.com>\n"
+"Language-Team: French <https://hosted.weblate.org/projects/"
+"nickvision-tube-converter/docs/fr/>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 5.4-dev\n"
+"X-Generator: Weblate 5.7.2-rc\n"
 
 #. Put one translator per line, in the form NAME <EMAIL>, YEAR1, YEAR2
 msgctxt "_"
@@ -121,8 +121,8 @@ msgid ""
 "If enabled, Parabolic will crop thumbnails for audio files to be a square "
 "resolution."
 msgstr ""
-"Si cette option est activée, Parabole séparera la vidéo en plusieurs "
-"morceaux correspondant aux chapitres qu’elles contient."
+"Si cette option est activée, Parabole découpera la vignette des fichiers "
+"audio pour obtenir une résolution carrée"
 
 #. (itstool) path: item/title
 #: docs/yelp/C/converter.page:54
@@ -344,7 +344,7 @@ msgstr "L’url du serveur proxy à utiliser."
 #. (itstool) path: item/title
 #: docs/yelp/C/downloader.page:88
 msgid "Cookies from Browser"
-msgstr ""
+msgstr "Cookies du navigateur"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/downloader.page:89
@@ -354,9 +354,8 @@ msgstr ""
 
 #. (itstool) path: note/p
 #: docs/yelp/C/downloader.page:91
-#, fuzzy
 msgid "Default: None"
-msgstr "Par défaut : Activée"
+msgstr "Par défaut : Aucun"
 
 #. (itstool) path: item/title
 #: docs/yelp/C/downloader.page:95
@@ -460,11 +459,10 @@ msgstr "Backend"
 
 #. (itstool) path: section/p
 #: docs/yelp/C/keyring.page:24
-#, fuzzy
 msgid "The Keyring feature is backed by the <code>libnick</code> library."
 msgstr ""
 "La fonctionnalité de trousseau est fournie par la bibliothèque "
-"<code>Nickvision.Aura</code>."
+"<code>libnick</code>."
 
 #. (itstool) path: section/p
 #: docs/yelp/C/keyring.page:25
@@ -585,14 +583,13 @@ msgstr ""
 
 #. (itstool) path: item/p
 #: docs/yelp/C/newDownload.page:34
-#, fuzzy
 msgid ""
 "If credentials are found in the keyring, the user can instead chose from a "
 "list of named credentials to use (or continue to manually enter a credential)"
 msgstr ""
-"Si le trousseau est activé, l’utilisateur devra choisir parmi une liste "
-"d’identifiants, ou entrer manuellement un nom d’utilisateur et/ou mot de "
-"passe différent."
+"Si le trousseau est activé, l’utilisateur pourra choisir parmi une liste d’"
+"identifiants, ou entrer manuellement un nom d’utilisateur et/ou mot de passe "
+"différent."
 
 #. (itstool) path: note/p
 #: docs/yelp/C/newDownload.page:36
@@ -606,7 +603,6 @@ msgstr ""
 
 #. (itstool) path: note/p
 #: docs/yelp/C/newDownload.page:37
-#, fuzzy
 msgid ""
 "For these sites that don't support passing credentials, it is recommended to "
 "select a browser to use cookies from in Preferences instead."
@@ -666,7 +662,7 @@ msgid ""
 "<code>Best</code>, <code>Good</code>, and <code>Worst</code>."
 msgstr ""
 "Si le type de fichier est un audio, la liste des qualités sera simplement "
-"<code>Meilleure</code> et <code>Basse</code>."
+"<code>Meilleure</code>, <code>Moyenne</code> et <code>Basse</code>."
 
 #. (itstool) path: note/p
 #: docs/yelp/C/newDownload.page:53
@@ -681,7 +677,7 @@ msgstr ""
 #: docs/yelp/C/newDownload.page:57
 #, fuzzy
 msgid "Audio Language"
-msgstr "Langues des sous-titres"
+msgstr "Langue de l'audio"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/newDownload.page:58
@@ -690,10 +686,13 @@ msgstr ""
 
 #. (itstool) path: item/p
 #: docs/yelp/C/newDownload.page:59
+#, fuzzy
 msgid ""
 "If no additional languages are available, <code>Default</code> will be the "
 "only option."
 msgstr ""
+"Si aucune langue additionnelle n'est disponible<code>Défaut</code> sera la "
+"seule option."
 
 #. (itstool) path: note/p
 #: docs/yelp/C/newDownload.page:61 docs/yelp/C/newDownload.page:68
@@ -742,7 +741,6 @@ msgstr "Diviser en chapitres"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/newDownload.page:80
-#, fuzzy
 msgid ""
 "If enabled, Parabolic will split a video download into multiple smaller "
 "files based on its chapters."
@@ -792,19 +790,17 @@ msgstr ""
 
 #. (itstool) path: item/p
 #: docs/yelp/C/newDownload.page:101
-#, fuzzy
 msgid ""
 "The user can enter a start time frame and an end time frame to download a "
 "specific section of the media."
 msgstr ""
 "Si cette option est activée, l’utilisateur pourra entrer un temps de début "
-"et un temps de fin pour une partie du média à télécharger."
+"et un temps de fin pour télécharger une partie spécifique du média."
 
 #. (itstool) path: note/p
 #: docs/yelp/C/newDownload.page:103
-#, fuzzy
 msgid "Default: The whole media length"
-msgstr "Par défaut : le titre du média"
+msgstr "Par défaut : la longueur totale du média"
 
 #. (itstool) path: note/p
 #: docs/yelp/C/newDownload.page:106
