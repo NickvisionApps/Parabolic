@@ -264,10 +264,14 @@ namespace Nickvision::TubeConverter::Shared::Models
             if(m_fileType.supportsThumbnails())
             {
                 arguments.push_back("--embed-thumbnail");
+                arguments.push_back("--convert-thumbnails");
+                arguments.push_back("jpg");
             }
             else
             {
                 arguments.push_back("--write-thumbnail");
+                arguments.push_back("--convert-thumbnails");
+                arguments.push_back("jpg");
             }
             if(downloaderOptions.getCropAudioThumbnails())
             {
