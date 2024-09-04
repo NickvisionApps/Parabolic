@@ -11,6 +11,7 @@ qt_standard_project_setup()
 qt_add_executable(${OUTPUT_NAME}
     "include/controls/aboutdialog.h"
     "include/controls/downloadrow.h"
+    "include/controls/historyrow.h"
     "include/controls/keyringrow.h"
     "include/helpers/qthelpers.h"
     "include/views/adddownloaddialog.h"
@@ -22,6 +23,8 @@ qt_add_executable(${OUTPUT_NAME}
     "src/controls/aboutdialog.cpp"
     "src/controls/downloadrow.ui"
     "src/controls/downloadrow.cpp"
+    "src/controls/historyrow.ui"
+    "src/controls/historyrow.cpp"
     "src/controls/keyringrow.ui"
     "src/controls/keyringrow.cpp"
     "src/helpers/qthelpers.cpp"
