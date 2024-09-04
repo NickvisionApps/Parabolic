@@ -277,7 +277,7 @@ namespace Nickvision::TubeConverter::Shared::Models
             if(downloaderOptions.getRemoveSourceData())
             {
                 arguments.push_back("--parse-metadata");
-                arguments.push_back(":(?P<meta_comment>):(?P<meta_description>):(?P<meta_synopsis>):(?P<meta_purl>):(?P<meta_track>)");
+                arguments.push_back(":(?P<meta_comment>):(?P<meta_description>):(?P<meta_synopsis>):(?P<meta_purl>)");
             }
         }
         if(downloaderOptions.getEmbedChapters())
@@ -319,7 +319,16 @@ namespace Nickvision::TubeConverter::Shared::Models
             if(!m_audioLanguage.empty())
             {
                 arguments.push_back("--format");
-                arguments.push_back("ba[language=" + m_audioLanguage + "]/b");
+                size_t find{ m_audioLanguage.find(" (audio_description)") };
+                if(find == std::string::npos)
+                {
+                    arguments.push_back("(ba[language=" + m_audioLanguage + "]/b)[format_id!*=?audiodesc]");
+                }
+                else
+                {
+                    std::string language{ m_audioLanguage.substr(0, find) };
+                    arguments.push_back("(ba[language=" + language + "]/b)[format_id*=?audiodesc]");
+                }
             }
         }
         else if(m_fileType.isVideo())
@@ -333,24 +342,36 @@ namespace Nickvision::TubeConverter::Shared::Models
                 arguments.push_back("--format");
                 if(!resolution.isBest())
                 {
+                    size_t find{ m_audioLanguage.find(" (audio_description)") };
                     if(m_audioLanguage.empty())
                     {
                         arguments.push_back("bv[height<=" + std::to_string(resolution.getHeight()) + "][width<=" + std::to_string(resolution.getWidth()) + "]+ba/b");
                     }
+                    else if(find == std::string::npos)
+                    {
+                        arguments.push_back("(bv[height<=" + std::to_string(resolution.getHeight()) + "][width<=" + std::to_string(resolution.getWidth()) + "]+ba[language= " + m_audioLanguage + "]/b)[format_id!*=?audiodesc]");
+                    }
                     else
                     {
-                        arguments.push_back("bv[height<=" + std::to_string(resolution.getHeight()) + "][width<=" + std::to_string(resolution.getWidth()) + "]+ba[language= " + m_audioLanguage + "]/b");
+                        std::string language{ m_audioLanguage.substr(0, find) };
+                        arguments.push_back("(bv[height<=" + std::to_string(resolution.getHeight()) + "][width<=" + std::to_string(resolution.getWidth()) + "]+ba[language= " + language + "]/b)[format_id*=?audiodesc]");
                     }
                 }
                 else
                 {
+                    size_t find{ m_audioLanguage.find(" (audio_description)") };
                     if(m_audioLanguage.empty())
                     {
                         arguments.push_back("bv+ba/b");
                     }
+                    else if(find == std::string::npos)
+                    {
+                        arguments.push_back("(bv+ba[language= " + m_audioLanguage + "]/b)[format_id!*=?audiodesc]");
+                    }
                     else
                     {
-                        arguments.push_back("bv+ba[language= " + m_audioLanguage + "]/b");
+                        std::string language{ m_audioLanguage.substr(0, find) };
+                        arguments.push_back("(bv+ba[language= " + language + "]/b)[format_id*=?audiodesc]");
                     }
                 }
                 

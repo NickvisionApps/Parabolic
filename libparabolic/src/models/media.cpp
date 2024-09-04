@@ -12,7 +12,6 @@ namespace Nickvision::TubeConverter::Shared::Models
         m_title{ title },
         m_timeFrame{ std::chrono::seconds(0), duration },
         m_type{ type },
-        m_playlistPosition{ std::nullopt },
         m_hasSubtitles{ false }
     {
 
@@ -20,7 +19,6 @@ namespace Nickvision::TubeConverter::Shared::Models
 
     Media::Media(boost::json::object info)
         : m_timeFrame{ std::chrono::seconds(0), std::chrono::seconds(0) },
-        m_playlistPosition{ std::nullopt },
         m_hasSubtitles{ false }
     {
         if(info.empty())
@@ -82,6 +80,11 @@ namespace Nickvision::TubeConverter::Shared::Models
                     std::string language{ obj["language"].is_string() ? obj["language"].as_string() : "" };
                     if(!language.empty() && language != "none")
                     {
+                        std::string format_id{ obj["format_id"].is_string() ? obj["format_id"].as_string() : "" };
+                        if(!format_id.empty() && format_id.find("audiodesc") != std::string::npos)
+                        {
+                            language += " (audio_description)";
+                        }
                         if(std::find(m_audioLanguages.begin(), m_audioLanguages.end(), language) == m_audioLanguages.end())
                         {
                             m_audioLanguages.push_back(language);
@@ -167,16 +170,6 @@ namespace Nickvision::TubeConverter::Shared::Models
         m_videoResolutions.push_back(resolution);
     }
 
-    const std::optional<unsigned int>& Media::getPlaylistPosition() const
-    {
-        return m_playlistPosition;
-    }
-
-    void Media::setPlaylistPosition(const std::optional<unsigned int>& position)
-    {
-        m_playlistPosition = position;
-    }
-
     bool Media::hasSubtitles() const
     {
         return m_hasSubtitles;
@@ -206,7 +199,6 @@ namespace Nickvision::TubeConverter::Shared::Models
             os << resolution << ", ";
         }
         os << std::endl;
-        os << "Playlist Position: " << media.m_playlistPosition.value_or(0) << std::endl;
         os << "Has Subtitles: " << (media.m_hasSubtitles ? "Yes" : "No");
         return os;
     }

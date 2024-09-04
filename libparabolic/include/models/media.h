@@ -74,16 +74,6 @@ namespace Nickvision::TubeConverter::Shared::Models
          */
         void addVideoResolution(const VideoResolution& resolution);
         /**
-         * @brief Gets the playlist position of the media.
-         * @return The playlist position of the media
-         */
-        const std::optional<unsigned int>& getPlaylistPosition() const;
-        /**
-         * @brief Sets the playlist position of the media.
-         * @param position The playlist position to set
-         */
-        void setPlaylistPosition(const std::optional<unsigned int>& position);
-        /**
          * @brief Gets whether the media has subtitles.
          * @return True if has subtitles, else false
          */
@@ -108,7 +98,6 @@ namespace Nickvision::TubeConverter::Shared::Models
         MediaType m_type;
         std::vector<std::string> m_audioLanguages;
         std::vector<VideoResolution> m_videoResolutions;
-        std::optional<unsigned int> m_playlistPosition;
         bool m_hasSubtitles;
     };
 }
