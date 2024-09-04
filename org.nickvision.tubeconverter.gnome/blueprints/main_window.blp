@@ -128,7 +128,15 @@ Adw.ApplicationWindow root {
               }
 
               Gtk.Label {
+                halign: start;
+                hexpand: true;
                 label: _("Downloading");
+              }
+
+              Gtk.Label downloadingCountLabel {
+                label: "0";
+
+                styles [ "dim-label" ]
               }
             }
 
@@ -145,7 +153,15 @@ Adw.ApplicationWindow root {
               }
 
               Gtk.Label {
+                halign: start;
+                hexpand: true;
                 label: _("Queued");
+              }
+
+              Gtk.Label queuedCountLabel {
+                label: "0";
+
+                styles [ "dim-label" ]
               }
             }
 
@@ -162,7 +178,15 @@ Adw.ApplicationWindow root {
               }
 
               Gtk.Label {
+                halign: start;
+                hexpand: true;
                 label: _("Completed");
+              }
+
+              Gtk.Label completedCountLabel {
+                label: "0";
+
+                styles [ "dim-label" ]
               }
             }
 

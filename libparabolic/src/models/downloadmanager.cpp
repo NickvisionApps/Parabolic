@@ -211,24 +211,43 @@ namespace Nickvision::TubeConverter::Shared::Models
 
     void DownloadManager::stopAllDownloads()
     {
+        std::unique_lock<std::mutex> lock{ m_mutex };
+        //Get m_downloading and m_queued keys
+        std::vector<int> keys;
+        keys.reserve(m_downloading.size() + m_queued.size());
         for(const std::pair<const int, std::shared_ptr<Download>>& pair : m_downloading)
         {
-            stopDownload(pair.first);
+            keys.push_back(pair.first);
         }
         for(const std::pair<const int, std::shared_ptr<Download>>& pair : m_queued)
         {
-            stopDownload(pair.first);
+            keys.push_back(pair.first);
+        }
+        lock.unlock();
+        //Stop downloads
+        for(int key : keys)
+        {
+            stopDownload(key);
         }
     }
 
     void DownloadManager::retryFailedDownloads()
     {
+        std::unique_lock<std::mutex> lock{ m_mutex };
+        //Get m_completed keys
+        std::vector<int> keys;
         for(const std::pair<const int, std::shared_ptr<Download>>& pair : m_completed)
         {
             if(pair.second->getStatus() == DownloadStatus::Error)
             {
-                retryDownload(pair.first);
+                keys.push_back(pair.first);
             }
+        }
+        lock.unlock();
+        //Retry downloads
+        for(int key : keys)
+        {
+            retryDownload(key);
         }
     }
 
