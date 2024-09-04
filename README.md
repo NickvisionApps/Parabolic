@@ -35,6 +35,11 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for details on how can you help the proje
 
 <details>
  <summary>QT</summary>
+
+ ![Home Page](org.nickvision.tubeconverter.qt/screenshots/home.png)
+ ![Downloading](org.nickvision.tubeconverter.qt/screenshots/downloading.png)
+ ![Dark Mode](org.nickvision.tubeconverter.qt/screenshots/dark.png)
+ ![Add Download Dialog](org.nickvision.tubeconverter.qt/screenshots/add.png)
 </details>
 
 ## Building Manually
