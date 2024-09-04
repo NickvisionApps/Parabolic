@@ -288,13 +288,15 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         m_previousOptions.setPreferAV1(preferAV1);
         m_previousOptions.setSplitChapters(splitChapters);
         m_previousOptions.setLimitSpeed(limitSpeed);
+        std::filesystem::path playlistSaveFolder{ (std::filesystem::exists(saveFolder) ? saveFolder : m_previousOptions.getSaveFolder()) / m_urlInfo->getTitle() };
+        std::filesystem::create_directories(playlistSaveFolder);
         for(const std::pair<const size_t, std::string>& pair : filenames)
         {
             const Media& media{ m_urlInfo->get(pair.first) };
             //Create Download Options
             DownloadOptions options{ media.getUrl() };
             options.setCredential(m_credential);
-            options.setSaveFolder(std::filesystem::exists(saveFolder) ? saveFolder : m_previousOptions.getSaveFolder());
+            options.setSaveFolder(playlistSaveFolder);
             options.setSaveFilename(!pair.second.empty() ? pair.second : media.getTitle());
             options.setFileType(static_cast<MediaFileType::MediaFileTypeValue>(fileTypeIndex));
             options.setDownloadSubtitles(downloadSubtitles);

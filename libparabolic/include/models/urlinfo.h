@@ -24,6 +24,11 @@ namespace Nickvision::TubeConverter::Shared::Models
          */
         static std::optional<UrlInfo> fetch(const std::string& url, const DownloaderOptions& options, const std::optional<Keyring::Credential>& credential = std::nullopt);
         /**
+         * @brief Gets the title.
+         * @return The title
+         */
+        const std::string& getTitle() const;
+        /**
          * @brief Gets the Url.
          * @return The Url
          */
@@ -74,6 +79,7 @@ namespace Nickvision::TubeConverter::Shared::Models
          */
         UrlInfo(const std::string& url, boost::json::object info);
         std::string m_url;
+        std::string m_title;
         bool m_isPlaylist;
         std::vector<Media> m_media;
     };
