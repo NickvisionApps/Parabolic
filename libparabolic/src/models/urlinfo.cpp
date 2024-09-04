@@ -15,7 +15,6 @@ namespace Nickvision::TubeConverter::Shared::Models
         if(!entries.empty())
         {
             m_isPlaylist = true;
-            int i{ 1 };
             for(const boost::json::value& entry : entries)
             {
                 if(!entry.is_object())
@@ -25,7 +24,6 @@ namespace Nickvision::TubeConverter::Shared::Models
                 boost::json::object obj = entry.as_object();
                 obj["limit_characters"] = info["limit_characters"];
                 m_media.push_back({ obj });
-                i++;
             }
         }
         else
