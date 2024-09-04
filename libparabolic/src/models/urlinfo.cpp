@@ -35,7 +35,11 @@ namespace Nickvision::TubeConverter::Shared::Models
 
     std::optional<UrlInfo> UrlInfo::fetch(const std::string& url, const DownloaderOptions& options, const std::optional<Credential>& credential)
     {
-        std::vector<std::string> arguments{ "--xff", "default", "--dump-single-json", "--skip-download", "--ignore-errors", "--flat-playlist", "--no-warnings" };
+        std::vector<std::string> arguments{ "--xff", "default", "--dump-single-json", "--skip-download", "--ignore-errors", "--no-warnings" };
+        if(url.find("soundcloud.com") == std::string::npos)
+        {
+            arguments.push_back("--flat-playlist");
+        }
         if(options.getLimitCharacters())
         {
             arguments.push_back("--windows-filenames");
