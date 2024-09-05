@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: 2024-09-04 07:01-0400\n"
-"PO-Revision-Date: 2024-09-04 15:56+0000\n"
-"Last-Translator: Victor Lamoine <victor.lamoine@gmail.com>\n"
+"PO-Revision-Date: 2024-09-05 10:08+0000\n"
+"Last-Translator: rene-coty <irenee.thirion@e.email>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/"
 "nickvision-tube-converter/docs/fr/>\n"
 "Language: fr\n"
@@ -116,13 +116,12 @@ msgstr "Rogner les vignettes des fichiers audio"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/converter.page:48
-#, fuzzy
 msgid ""
 "If enabled, Parabolic will crop thumbnails for audio files to be a square "
 "resolution."
 msgstr ""
 "Si cette option est activée, Parabole découpera la vignette des fichiers "
-"audio pour obtenir une résolution carrée"
+"audio pour obtenir une résolution carrée."
 
 #. (itstool) path: item/title
 #: docs/yelp/C/converter.page:54
@@ -351,6 +350,8 @@ msgstr "Cookies du navigateur"
 msgid ""
 "A browser in which to read cookies from and pass to yt-dlp's download engine."
 msgstr ""
+"Un navigateur dans lequel lire les cookies et passer au moteur de "
+"téléchargement de yt-dlp."
 
 #. (itstool) path: note/p
 #: docs/yelp/C/downloader.page:91
@@ -475,15 +476,15 @@ msgstr ""
 
 #. (itstool) path: section/p
 #: docs/yelp/C/keyring.page:26
-#, fuzzy
 msgid ""
 "The library will use you system's credential manager (i.e. DBus secret "
 "service on Linux and Windows Credential Manager on Windows) for securing the "
 "Keyring database file."
 msgstr ""
-"La bibliothèque utilisera le gestionnaire d’identifiants de votre système "
-"(par exemple DBus secret service sur Linux et Gestionnaire d’identifiants de "
-"Windows sur Windows) pour sécuriser le Trousseau."
+"La bibliothèque utilisera le gestionnaire d’identifiants de votre système ("
+"par exemple DBus secret service sur Linux et Gestionnaire d’identifiants de "
+"Windows sur Windows) pour sécuriser le fichier de base de données du "
+"trousseau."
 
 #. (itstool) path: section/title
 #: docs/yelp/C/keyring.page:29
@@ -587,9 +588,8 @@ msgid ""
 "If credentials are found in the keyring, the user can instead chose from a "
 "list of named credentials to use (or continue to manually enter a credential)"
 msgstr ""
-"Si le trousseau est activé, l’utilisateur pourra choisir parmi une liste d’"
-"identifiants, ou entrer manuellement un nom d’utilisateur et/ou mot de passe "
-"différent."
+"Si des identifiants sont trouvés dans le trousseau, l’utilisateur pourra "
+"choisir parmi une liste d’identifiants, ou entrer manuellement un identifiant"
 
 #. (itstool) path: note/p
 #: docs/yelp/C/newDownload.page:36
@@ -656,7 +656,6 @@ msgstr ""
 
 #. (itstool) path: item/p
 #: docs/yelp/C/newDownload.page:51
-#, fuzzy
 msgid ""
 "If the file type is an audio type, the listed qualities will be simply "
 "<code>Best</code>, <code>Good</code>, and <code>Worst</code>."
@@ -675,24 +674,22 @@ msgstr ""
 
 #. (itstool) path: item/title
 #: docs/yelp/C/newDownload.page:57
-#, fuzzy
 msgid "Audio Language"
-msgstr "Langue de l'audio"
+msgstr "Langue de l’audio"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/newDownload.page:58
 msgid "The language of which to use from the audio part of a media download."
-msgstr ""
+msgstr "Langue dans laquelle utiliser la partie audio d’un média téléchargé."
 
 #. (itstool) path: item/p
 #: docs/yelp/C/newDownload.page:59
-#, fuzzy
 msgid ""
 "If no additional languages are available, <code>Default</code> will be the "
 "only option."
 msgstr ""
-"Si aucune langue additionnelle n'est disponible<code>Défaut</code> sera la "
-"seule option."
+"Si aucune langue additionnelle n’est disponible<code>Par défaut</code> sera "
+"la seule option."
 
 #. (itstool) path: note/p
 #: docs/yelp/C/newDownload.page:61 docs/yelp/C/newDownload.page:68
@@ -711,15 +708,14 @@ msgstr "Télécharger les sous-titres"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/newDownload.page:66
-#, fuzzy
 msgid ""
 "Whether to download and embed subtitle when downloading a video. Further "
 "subtitle settings can be configured in <link "
 "xref=\"downloader\">preferences</link>."
 msgstr ""
 "Indique s’il faut télécharger et inclure les sous-titres dans le fichier de "
-"la vidéo lors de son téléchargement. Les langues des sous-titres peuvent "
-"être définies dans les <link xref=\"downloader\">Préférences</link>."
+"la vidéo lors de son téléchargement. Plus de paramètres des sous-titres "
+"peuvent être définis dans <link xref=\"downloader\">Préférences</link>."
 
 #. (itstool) path: item/title
 #: docs/yelp/C/newDownload.page:72
@@ -786,7 +782,7 @@ msgstr "Par défaut : le titre du média"
 #. (itstool) path: item/title
 #: docs/yelp/C/newDownload.page:100
 msgid "Time Frame"
-msgstr ""
+msgstr "Séquence"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/newDownload.page:101
@@ -804,23 +800,21 @@ msgstr "Par défaut : la longueur totale du média"
 
 #. (itstool) path: note/p
 #: docs/yelp/C/newDownload.page:106
-#, fuzzy
 msgid ""
 "Enabling this option will disable the use of aria2 as the downloader for "
 "this download, even if it is enabled in Preferences."
 msgstr ""
-"L’activation de cette option désactivera l’utilisation de aria2 comme "
-"téléchargeur pour ce téléchargement s’il est activé dans les préférences."
+"Cette option désactivera l’utilisation de aria2 comme téléchargeur pour ce "
+"téléchargement, même s’il est activé dans Préférences."
 
 #. (itstool) path: item/p
 #: docs/yelp/C/newDownload.page:111
-#, fuzzy
 msgid ""
 "If enabled, Parabolic will limit the download's speed with the speed "
 "configured in <link xref=\"downloader\">Preferences</link>."
 msgstr ""
 "Si cette option est activée, Parabole limitera la vitesse de téléchargement "
-"selon la vitesse indiquée dans les préférences."
+"selon la vitesse indiquée dans <link xref=\"downloader\">Préférences</link>."
 
 #. (itstool) path: note/p
 #: docs/yelp/C/newDownload.page:113
