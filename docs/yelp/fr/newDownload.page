@@ -28,7 +28,7 @@
     <item>
       <title>S’identifier</title>
       <p>Si cette option est activée, il sera demandé à l’utilisateur de fournir un nom d’utilisateur et/ou un mot de passe à yt-dlp lors du téléchargement.</p>
-        <p>Si le trousseau est activé, l’utilisateur pourra choisir parmi une liste d’identifiants, ou entrer manuellement un nom d’utilisateur et/ou mot de passe différent.</p>
+        <p>Si des identifiants sont trouvés dans le trousseau, l’utilisateur pourra choisir parmi une liste d’identifiants, ou entrer manuellement un identifiant</p>
 		<note style="advanced">
 			<p>Tous les sites web ne prennent pas en charge la fourniture de noms d’utilisateur et mots de passe à yt-dlp. Par exemple, YouTube ne prend PAS en charge cette fonctionnalité.</p>
             <p>Pour les sites qui ne prennent pas en charge la fourniture d’identifiants, il est recommandé de téléverser un fichier de cookies dans les préférences à la place.</p>
@@ -45,22 +45,22 @@
     <item>
 		<title>Qualité</title>
 		<p>Si le type de fichier est une vidéo, la liste des qualités sera celle des résolutions disponibles pour le média.</p>
-        <p>If the file type is an audio type, the listed qualities will be simply <code>Best</code>, <code>Good</code>, and <code>Worst</code>.</p>
+        <p>Si le type de fichier est un audio, la liste des qualités sera simplement <code>Meilleure</code>, <code>Moyenne</code> et <code>Basse</code>.</p>
         <note>
             <p>La qualité utilisée précédemment sera mémorisée et présélectionnée pour le prochain téléchargement.</p>
         </note>
     </item>
     <item>
-		<title>Audio Language</title>
-		<p>The language of which to use from the audio part of a media download.</p>
-        <p>If no additional languages are available, <code>Default</code> will be the only option.</p>
+		<title>Langue de l’audio</title>
+		<p>Langue dans laquelle utiliser la partie audio d’un média téléchargé.</p>
+        <p>Si aucune langue additionnelle n’est disponible<code>Par défaut</code> sera la seule option.</p>
         <note>
             <p>Les paramètres utilisés précédemment seront mémorisés et présélectionnés pour le prochain téléchargement.</p>
         </note>
     </item>
     <item>
 		<title>Télécharger les sous-titres</title>
-		<p>Whether to download and embed subtitle when downloading a video. Further subtitle settings can be configured in <link xref="downloader">preferences</link>.</p>
+		<p>Indique s’il faut télécharger et inclure les sous-titres dans le fichier de la vidéo lors de son téléchargement. Plus de paramètres des sous-titres peuvent être définis dans <link xref="downloader">Préférences</link>.</p>
         <note>
             <p>Les paramètres utilisés précédemment seront mémorisés et présélectionnés pour le prochain téléchargement.</p>
         </note>
@@ -94,18 +94,18 @@
 		</note>
     </item>
     <item>
-		<title>Time Frame</title>
+		<title>Séquence</title>
 		<p>Si cette option est activée, l’utilisateur pourra entrer un temps de début et un temps de fin pour télécharger une partie spécifique du média.</p>
         <note style="advanced">
 			<p>Par défaut : la longueur totale du média</p>
 		</note>
         <note style="advanced">
-            <p>Enabling this option will disable the use of aria2 as the downloader for this download, even if it is enabled in Preferences.</p>
+            <p>Cette option désactivera l’utilisation de aria2 comme téléchargeur pour ce téléchargement, même s’il est activé dans Préférences.</p>
         </note>
     </item>
     <item>
 		<title>Limitation de vitesse</title>
-		<p>If enabled, Parabolic will limit the download's speed with the speed configured in <link xref="downloader">Preferences</link>.</p>
+		<p>Si cette option est activée, Parabole limitera la vitesse de téléchargement selon la vitesse indiquée dans <link xref="downloader">Préférences</link>.</p>
         <note>
             <p>Disponible dans la section <code>Options avancées</code>.</p>
         </note>

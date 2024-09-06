@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <dt class="terms">S’identifier</dt>
 <dd class="terms">
 <p class="p">Si cette option est activée, il sera demandé à l’utilisateur de fournir un nom d’utilisateur et/ou un mot de passe à yt-dlp lors du téléchargement.</p>
-<p class="p">Si le trousseau est activé, l’utilisateur pourra choisir parmi une liste d’identifiants, ou entrer manuellement un nom d’utilisateur et/ou mot de passe différent.</p>
+<p class="p">Si des identifiants sont trouvés dans le trousseau, l’utilisateur pourra choisir parmi une liste d’identifiants, ou entrer manuellement un identifiant</p>
 <div class="note note-advanced" title="Avancé">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <dt class="terms">Qualité</dt>
 <dd class="terms">
 <p class="p">Si le type de fichier est une vidéo, la liste des qualités sera celle des résolutions disponibles pour le média.</p>
-<p class="p">If the file type is an audio type, the listed qualities will be simply <span class="code">Best</span>, <span class="code">Good</span>, and <span class="code">Worst</span>.</p>
+<p class="p">Si le type de fichier est un audio, la liste des qualités sera simplement <span class="code">Meilleure</span>, <span class="code">Moyenne</span> et <span class="code">Basse</span>.</p>
 <div class="note" title="Note">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -82,10 +82,10 @@ document.addEventListener('DOMContentLoaded', function() {
 </svg><div class="inner"><div class="region"><div class="contents"><p class="p">La qualité utilisée précédemment sera mémorisée et présélectionnée pour le prochain téléchargement.</p></div></div></div>
 </div>
 </dd>
-<dt class="terms">Audio Language</dt>
+<dt class="terms">Langue de l’audio</dt>
 <dd class="terms">
-<p class="p">The language of which to use from the audio part of a media download.</p>
-<p class="p">If no additional languages are available, <span class="code">Default</span> will be the only option.</p>
+<p class="p">Langue dans laquelle utiliser la partie audio d’un média téléchargé.</p>
+<p class="p">Si aucune langue additionnelle n’est disponible<span class="code">Par défaut</span> sera la seule option.</p>
 <div class="note" title="Note">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -97,7 +97,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </dd>
 <dt class="terms">Télécharger les sous-titres</dt>
 <dd class="terms">
-<p class="p">Whether to download and embed subtitle when downloading a video. Further subtitle settings can be configured in <span class="link"><a href="downloader.html" title="Téléchargeur">preferences</a></span>.</p>
+<p class="p">Indique s’il faut télécharger et inclure les sous-titres dans le fichier de la vidéo lors de son téléchargement. Plus de paramètres des sous-titres peuvent être définis dans <span class="link"><a href="downloader.html" title="Téléchargeur">Préférences</a></span>.</p>
 <div class="note" title="Note">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -163,7 +163,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </svg><div class="inner"><div class="region"><div class="contents"><p class="p">Par défaut : le titre du média</p></div></div></div>
 </div>
 </dd>
-<dt class="terms">Time Frame</dt>
+<dt class="terms">Séquence</dt>
 <dd class="terms">
 <p class="p">Si cette option est activée, l’utilisateur pourra entrer un temps de début et un temps de fin pour télécharger une partie spécifique du média.</p>
 <div class="note note-advanced" title="Avancé">
@@ -196,12 +196,12 @@ document.addEventListener('DOMContentLoaded', function() {
   <path class="yelp-svg-fill" d="m8.2435 7.0719-1.9004-3.3145 1.4143-1.4143 3.1596 1.7457z"></path>
   <path class="yelp-svg-fill" d="m11.072 11.757-3.3146 1.9-1.4143-1.414 1.7457-3.1602z"></path>
  </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Enabling this option will disable the use of aria2 as the downloader for this download, even if it is enabled in Preferences.</p></div></div></div>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Cette option désactivera l’utilisation de aria2 comme téléchargeur pour ce téléchargement, même s’il est activé dans Préférences.</p></div></div></div>
 </div>
 </dd>
 <dt class="terms">Limitation de vitesse</dt>
 <dd class="terms">
-<p class="p">If enabled, Parabolic will limit the download's speed with the speed configured in <span class="link"><a href="downloader.html" title="Téléchargeur">Preferences</a></span>.</p>
+<p class="p">Si cette option est activée, Parabole limitera la vitesse de téléchargement selon la vitesse indiquée dans <span class="link"><a href="downloader.html" title="Téléchargeur">Préférences</a></span>.</p>
 <div class="note" title="Note">
 <svg height="24" width="24" version="1.1">
  <g>
