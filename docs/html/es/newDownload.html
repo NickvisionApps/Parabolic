@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <dt class="terms">Autenticar</dt>
 <dd class="terms">
 <p class="p">Si se activa, se pedirá al usuario que proporcione un nombre de usuario y/o una contraseña para pasárselos a yt-dlp al descargar.</p>
-<p class="p">If credentials are found in the keyring, the user can instead chose from a list of named credentials to use (or continue to manually enter a credential)</p>
+<p class="p">Si las credenciales se encuentran en el llavero, el usuario puede elegir entre una lista de credenciales con nombre para usarlas (o continuar introduciendo manualmente una credencial)</p>
 <div class="note note-advanced" title="Avanzada">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', function() {
  </g>
 </svg><div class="inner"><div class="region"><div class="contents">
 <p class="p">No todos los sitios web admiten la transmisión de nombres de usuario y contraseñas a yt-dlp. Por ejemplo, YouTube NO admite esta función.</p>
-<p class="p">For these sites that don't support passing credentials, it is recommended to select a browser to use cookies from in Preferences instead.</p>
+<p class="p">Para estos sitios que no admiten la transmisión de credenciales, se recomienda seleccionar un navegador desde el que usar las cookies en Preferencias.</p>
 </div></div></div>
 </div>
 </dd>
@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <dt class="terms">Calidad</dt>
 <dd class="terms">
 <p class="p">Si el tipo de archivo es de vídeo, las calidades indicadas serán las resoluciones de los medios disponibles.</p>
-<p class="p">If the file type is an audio type, the listed qualities will be simply <span class="code">Best</span>, <span class="code">Good</span>, and <span class="code">Worst</span>.</p>
+<p class="p">Si el tipo de archivo es de audio, las calidades enumeradas serán simplemente <span class="code">Mejor</span>, <span class="code">Buena</span> y <span class="code">Peor</span>.</p>
 <div class="note" title="Nota">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -82,10 +82,10 @@ document.addEventListener('DOMContentLoaded', function() {
 </svg><div class="inner"><div class="region"><div class="contents"><p class="p">La calidad usada anteriormente será recordada y preseleccionada para la siguiente descarga.</p></div></div></div>
 </div>
 </dd>
-<dt class="terms">Audio Language</dt>
+<dt class="terms">Idioma del audio</dt>
 <dd class="terms">
-<p class="p">The language of which to use from the audio part of a media download.</p>
-<p class="p">If no additional languages are available, <span class="code">Default</span> will be the only option.</p>
+<p class="p">El idioma que se usará en la parte de audio de una descarga multimedia.</p>
+<p class="p">Si no hay idiomas adicionales disponibles, <span class="code">Predeterminado</span> será la única opción.</p>
 <div class="note" title="Nota">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -97,7 +97,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </dd>
 <dt class="terms">Descargar subtítulo</dt>
 <dd class="terms">
-<p class="p">Whether to download and embed subtitle when downloading a video. Further subtitle settings can be configured in <span class="link"><a href="downloader.html" title="Descargador">preferences</a></span>.</p>
+<p class="p">Si descargar e incrustar subtítulos al descargar un vídeo. Se pueden configurar más opciones de subtítulos en <span class="link"><a href="downloader.html" title="Descargador">preferencias</a></span>.</p>
 <div class="note" title="Nota">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -121,7 +121,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </dd>
 <dt class="terms">Separar los capítulos</dt>
 <dd class="terms">
-<p class="p">If enabled, Parabolic will split a video download into multiple smaller files based on its chapters.</p>
+<p class="p">Si está activada, Parabolic dividirá una descarga de vídeo en varios archivos más pequeños en función de sus capítulos.</p>
 <div class="note" title="Nota">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -163,9 +163,9 @@ document.addEventListener('DOMContentLoaded', function() {
 </svg><div class="inner"><div class="region"><div class="contents"><p class="p">Predeterminado: El título del medio</p></div></div></div>
 </div>
 </dd>
-<dt class="terms">Time Frame</dt>
+<dt class="terms">Duración</dt>
 <dd class="terms">
-<p class="p">The user can enter a start time frame and an end time frame to download a specific section of the media.</p>
+<p class="p">El usuario puede introducir una franja horaria de inicio y otra de finalización para descargar una sección específica del multimedia.</p>
 <div class="note note-advanced" title="Avanzada">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -180,7 +180,7 @@ document.addEventListener('DOMContentLoaded', function() {
   <path class="yelp-svg-fill" d="m8.2435 7.0719-1.9004-3.3145 1.4143-1.4143 3.1596 1.7457z"></path>
   <path class="yelp-svg-fill" d="m11.072 11.757-3.3146 1.9-1.4143-1.414 1.7457-3.1602z"></path>
  </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Default: The whole media length</p></div></div></div>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Predeterminado: Toda la longitud del multimedia</p></div></div></div>
 </div>
 <div class="note note-advanced" title="Avanzada">
 <svg height="24" width="24" version="1.1">
@@ -196,12 +196,12 @@ document.addEventListener('DOMContentLoaded', function() {
   <path class="yelp-svg-fill" d="m8.2435 7.0719-1.9004-3.3145 1.4143-1.4143 3.1596 1.7457z"></path>
   <path class="yelp-svg-fill" d="m11.072 11.757-3.3146 1.9-1.4143-1.414 1.7457-3.1602z"></path>
  </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Enabling this option will disable the use of aria2 as the downloader for this download, even if it is enabled in Preferences.</p></div></div></div>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Activando esta opción se desactivará el uso de aria2 como descargador para esta descarga, aunque esté activado en Preferencias.</p></div></div></div>
 </div>
 </dd>
 <dt class="terms">Límite de velocidad</dt>
 <dd class="terms">
-<p class="p">If enabled, Parabolic will limit the download's speed with the speed configured in <span class="link"><a href="downloader.html" title="Descargador">Preferences</a></span>.</p>
+<p class="p">Si está activada, Parabolic limitará la velocidad de descarga con la velocidad configurada en <span class="link"><a href="downloader.html" title="Descargador">Preferencias</a></span>.</p>
 <div class="note" title="Nota">
 <svg height="24" width="24" version="1.1">
  <g>

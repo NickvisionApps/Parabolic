@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <dt class="terms">Autentisera</dt>
 <dd class="terms">
 <p class="p">Om det är aktiverat kommer användaren att bli ombedd att ange ett användarnamn och/eller lösenord för att skicka till yt-dlp vid nedladdning.</p>
-<p class="p">If credentials are found in the keyring, the user can instead chose from a list of named credentials to use (or continue to manually enter a credential)</p>
+<p class="p">Om inloggningsuppgifter hittas i nyckelringen kan användaren istället välja från en lista med namngivna inloggningsuppgifter att använda (eller fortsätta att manuellt ange inloggningsuppgifter)</p>
 <div class="note note-advanced" title="Avancerat">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', function() {
  </g>
 </svg><div class="inner"><div class="region"><div class="contents">
 <p class="p">Alla webbplatser stöder inte att skicka användarnamn och lösenord till yt-dlp. Till exempel stöder YouTube INTE den här funktionen.</p>
-<p class="p">For these sites that don't support passing credentials, it is recommended to select a browser to use cookies from in Preferences instead.</p>
+<p class="p">För webbplatser som inte stöder överföring av inloggningsinformation, rekommenderas det att ladda upp en Cookies fil i Inställningar istället.</p>
 </div></div></div>
 </div>
 </dd>
@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <dt class="terms">Kvalitet</dt>
 <dd class="terms">
 <p class="p">Om filtypen är en videotyp kommer de listade kvaliteterna att vara upplösningarna för det tillgängliga mediet.</p>
-<p class="p">If the file type is an audio type, the listed qualities will be simply <span class="code">Best</span>, <span class="code">Good</span>, and <span class="code">Worst</span>.</p>
+<p class="p">Om filtypen är en ljudtyp kommer de listade egenskaperna helt enkelt vara <span class="code">Bäst</span>, <span class="code">Bra</span> och <span class="code">Sämst</span>.</p>
 <div class="note" title="Anteckning">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -82,10 +82,10 @@ document.addEventListener('DOMContentLoaded', function() {
 </svg><div class="inner"><div class="region"><div class="contents"><p class="p">Den tidigare använda kvaliteten kommer att kommas ihåg och blir förvald för nästa nedladdning.</p></div></div></div>
 </div>
 </dd>
-<dt class="terms">Audio Language</dt>
+<dt class="terms">Ljudspråk</dt>
 <dd class="terms">
-<p class="p">The language of which to use from the audio part of a media download.</p>
-<p class="p">If no additional languages are available, <span class="code">Default</span> will be the only option.</p>
+<p class="p">Språket som ska användas från ljuddelen av en medianerladdning.</p>
+<p class="p">Om inga ytterligare språk är tillgängliga är <span class="code">Standard</span> det enda alternativet.</p>
 <div class="note" title="Anteckning">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -97,7 +97,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </dd>
 <dt class="terms">Ladda ner undertext</dt>
 <dd class="terms">
-<p class="p">Whether to download and embed subtitle when downloading a video. Further subtitle settings can be configured in <span class="link"><a href="downloader.html" title="Nedladdare">preferences</a></span>.</p>
+<p class="p">Om du ska ladda ner och bädda in undertexter när du laddar ner en video. Ytterligare undertextinställningar kan konfigureras i <span class="link"><a href="Nerladdning.html" title="Nerladdning">inställningarna</a></span>.</p>
 <div class="note" title="Anteckning">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -121,7 +121,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </dd>
 <dt class="terms">Dela upp kapitlen</dt>
 <dd class="terms">
-<p class="p">If enabled, Parabolic will split a video download into multiple smaller files based on its chapters.</p>
+<p class="p">Om aktiverat kommer Parabolic att dela upp en videonedladdning i flera mindre filer baserat på dess kapitel.</p>
 <div class="note" title="Anteckning">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -163,9 +163,9 @@ document.addEventListener('DOMContentLoaded', function() {
 </svg><div class="inner"><div class="region"><div class="contents"><p class="p">Standard: Mediets titel</p></div></div></div>
 </div>
 </dd>
-<dt class="terms">Time Frame</dt>
+<dt class="terms">Tidsram</dt>
 <dd class="terms">
-<p class="p">The user can enter a start time frame and an end time frame to download a specific section of the media.</p>
+<p class="p">Användaren kan ange en starttid och en sluttid för att ladda ner en specifik del av media.</p>
 <div class="note note-advanced" title="Avancerat">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -180,7 +180,7 @@ document.addEventListener('DOMContentLoaded', function() {
   <path class="yelp-svg-fill" d="m8.2435 7.0719-1.9004-3.3145 1.4143-1.4143 3.1596 1.7457z"></path>
   <path class="yelp-svg-fill" d="m11.072 11.757-3.3146 1.9-1.4143-1.414 1.7457-3.1602z"></path>
  </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Default: The whole media length</p></div></div></div>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Standard: Hela medialängden</p></div></div></div>
 </div>
 <div class="note note-advanced" title="Avancerat">
 <svg height="24" width="24" version="1.1">
@@ -196,12 +196,12 @@ document.addEventListener('DOMContentLoaded', function() {
   <path class="yelp-svg-fill" d="m8.2435 7.0719-1.9004-3.3145 1.4143-1.4143 3.1596 1.7457z"></path>
   <path class="yelp-svg-fill" d="m11.072 11.757-3.3146 1.9-1.4143-1.414 1.7457-3.1602z"></path>
  </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Enabling this option will disable the use of aria2 as the downloader for this download, even if it is enabled in Preferences.</p></div></div></div>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Om du aktiverar det här alternativet, inaktiveras användningen av aria2 som nedladdningsverktyg för denna nedladdning, även om det är aktiverat i Inställningarna.</p></div></div></div>
 </div>
 </dd>
 <dt class="terms">Hastighetsgräns</dt>
 <dd class="terms">
-<p class="p">If enabled, Parabolic will limit the download's speed with the speed configured in <span class="link"><a href="downloader.html" title="Nedladdare">Preferences</a></span>.</p>
+<p class="p">Om aktiverat, kommer Parabolic att begränsa nedladdningshastigheten med hastigheten konfigurerad i <span class="link"><a href="Nedladdare.html" title="Nedladdare">Inställningar</a></span>.</p>
 <div class="note" title="Anteckning">
 <svg height="24" width="24" version="1.1">
  <g>
