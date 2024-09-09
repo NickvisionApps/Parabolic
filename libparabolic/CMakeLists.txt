@@ -2,12 +2,6 @@
 	set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)
 endif()
 
-file(STRINGS "${CMAKE_SOURCE_DIR}/resources/po/POTFILES" TRANSLATE_FILES)
-file(STRINGS "${CMAKE_SOURCE_DIR}/resources/po/LINGUAS" LINGUAS)
-set(POT_FILE "${CMAKE_SOURCE_DIR}/resources/po/${SHORT_NAME}.pot")
-file(STRINGS "${CMAKE_SOURCE_DIR}/docs/po/LINGUAS" DOC_LINGUAS)
-set(DOC_POT_FILE "${CMAKE_SOURCE_DIR}/docs/po/${SHORT_NAME}.pot")
-
 add_library(libparabolic
     "src/controllers/adddownloaddialogcontroller.cpp"
     "src/controllers/keyringdialogcontroller.cpp"
