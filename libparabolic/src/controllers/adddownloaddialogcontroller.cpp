@@ -2,20 +2,23 @@
 #include <format>
 #include <thread>
 #include <libnick/localization/gettext.h>
+#include "models/configuration.h"
 #include "models/urlinfo.h"
 
+using namespace Nickvision::App;
 using namespace Nickvision::Events;
 using namespace Nickvision::Keyring;
 using namespace Nickvision::TubeConverter::Shared::Models;
 
 namespace Nickvision::TubeConverter::Shared::Controllers
 {
-    AddDownloadDialogController::AddDownloadDialogController(DownloadManager& downloadManager, PreviousDownloadOptions& previousOptions, Keyring::Keyring& keyring)
+    AddDownloadDialogController::AddDownloadDialogController(DownloadManager& downloadManager, DataFileManager& dataFileManager, Keyring::Keyring& keyring)
         : m_downloadManager{ downloadManager },
-        m_previousOptions{ previousOptions },
+        m_previousOptions{ dataFileManager.get<PreviousDownloadOptions>("prev") },
         m_keyring{ keyring },
         m_urlInfo{ std::nullopt },
-        m_credential{ std::nullopt }
+        m_credential{ std::nullopt },
+        m_downloadImmediatelyAfterValidation{ dataFileManager.get<Configuration>("config").getDownloadImmediatelyAfterValidation() }
     {
         
     }
@@ -209,6 +212,11 @@ namespace Nickvision::TubeConverter::Shared::Controllers
             return m_urlInfo->get(index).getTimeFrame();
         }
         return empty;
+    }
+
+    bool AddDownloadDialogController::getDownloadImmediatelyAfterValidation() const
+    {
+        return m_downloadImmediatelyAfterValidation;
     }
 
     void AddDownloadDialogController::validateUrl(const std::string& url, const std::optional<Credential>& credential)
