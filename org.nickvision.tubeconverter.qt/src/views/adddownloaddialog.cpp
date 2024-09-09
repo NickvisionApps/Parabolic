@@ -201,6 +201,17 @@ namespace Nickvision::TubeConverter::QT::Views
             m_ui->tblItemsPlaylist->setColumnWidth(1, m_ui->tblItemsPlaylist->width() - m_ui->tblItemsPlaylist->columnWidth(0) - m_ui->tblItemsPlaylist->columnWidth(2) - 40);
         }
         adjustSize();
+        if(m_controller->getDownloadImmediatelyAfterValidation())
+        {
+            if(m_controller->isUrlPlaylist())
+            {
+                downloadPlaylist();
+            }
+            else
+            {
+                downloadSingle();
+            }
+        }
     }
 
     void AddDownloadDialog::onCmbFileTypeSingleChanged(int index)

@@ -19,6 +19,12 @@ project("org.nickvision.tubeconverter" LANGUAGES C CXX VERSION 2024.9.0 DESCRIPT
 set(SHORT_NAME "parabolic")
 include(GNUInstallDirs)
 
+file(STRINGS "${CMAKE_SOURCE_DIR}/resources/po/POTFILES" TRANSLATE_FILES)
+file(STRINGS "${CMAKE_SOURCE_DIR}/resources/po/LINGUAS" LINGUAS)
+set(POT_FILE "${CMAKE_SOURCE_DIR}/resources/po/${SHORT_NAME}.pot")
+file(STRINGS "${CMAKE_SOURCE_DIR}/docs/po/LINGUAS" DOC_LINGUAS)
+set(DOC_POT_FILE "${CMAKE_SOURCE_DIR}/docs/po/${SHORT_NAME}.pot")
+
 find_program(GETTEXT_XGETTEXT_EXECUTABLE xgettext)
 find_program(GETTEXT_MSGMERGE_EXECUTABLE msgmerge)
 find_program(GETTEXT_MSGFMT_EXECUTABLE msgfmt)

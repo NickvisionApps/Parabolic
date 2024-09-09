@@ -5,6 +5,7 @@
 #include <string>
 #include <vector>
 #include <unordered_map>
+#include <libnick/app/datafilemanager.h>
 #include <libnick/events/event.h>
 #include <libnick/events/parameventargs.h>
 #include <libnick/keyring/keyring.h>
@@ -24,10 +25,10 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         /**
          * @brief Constructs an AddDownloadDialogController.
          * @param downloadManager The DownloadManager to use
+         * @param dataFileManager The DataFileManager to use
          * @param keyring The Keyring to use
-         * @param configuration The Configuration to use
          */
-        AddDownloadDialogController(Models::DownloadManager& downloadManager, Models::PreviousDownloadOptions& previousOptions, Keyring::Keyring& keyring);
+        AddDownloadDialogController(Models::DownloadManager& downloadManager, App::DataFileManager& dataFileManager, Keyring::Keyring& keyring);
         /**
          * @brief Destructs the AddDownloadDialogController.
          */
@@ -98,6 +99,11 @@ namespace Nickvision::TubeConverter::Shared::Controllers
          */
         const Models::TimeFrame& getMediaTimeFrame(size_t index) const;
         /**
+         * @brief Gets whether or not to download immediately after validation.
+         * @return True to download immediately after validation, else false
+         */
+        bool getDownloadImmediatelyAfterValidation() const;
+        /**
          * @brief Validates a url.
          * @brief This method will invoke the urlValidated event with the list of media found at the url.
          * @param url The url to validate
@@ -144,6 +150,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         Keyring::Keyring& m_keyring;
         std::optional<Models::UrlInfo> m_urlInfo;
         std::optional<Keyring::Credential> m_credential;
+        bool m_downloadImmediatelyAfterValidation;
         Nickvision::Events::Event<Nickvision::Events::ParamEventArgs<bool>> m_urlValidated;
     };
 }

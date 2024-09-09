@@ -138,4 +138,14 @@ namespace Nickvision::TubeConverter::Shared::Models
     {
         m_json["ShowDisclaimerOnStartup"] = showDisclaimerOnStartup;
     }
+
+    bool Configuration::getDownloadImmediatelyAfterValidation() const
+    {
+        return m_json["DownloadImmediatelyAfterValidation"].is_bool() ? m_json["DownloadImmediatelyAfterValidation"].as_bool() : false;
+    }
+
+    void Configuration::setDownloadImmediatelyAfterValidation(bool downloadImmediatelyAfterValidation)
+    {
+        m_json["DownloadImmediatelyAfterValidation"] = downloadImmediatelyAfterValidation;
+    }
 }

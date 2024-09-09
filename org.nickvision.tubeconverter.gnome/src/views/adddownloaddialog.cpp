@@ -169,6 +169,17 @@ namespace Nickvision::TubeConverter::GNOME::Views
                 m_playlistItemCheckButtons.push_back(chk);
             }
         }
+        if(m_controller->getDownloadImmediatelyAfterValidation())
+        {
+            if(m_controller->isUrlPlaylist())
+            {
+                downloadPlaylist();
+            }
+            else
+            {
+                downloadSingle();
+            }
+        }
     }
 
     void AddDownloadDialog::back()
