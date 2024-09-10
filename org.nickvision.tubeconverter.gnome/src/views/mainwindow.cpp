@@ -478,6 +478,7 @@ namespace Nickvision::TubeConverter::GNOME::Views
             m_downloadRows.erase(id);
         }
         adw_view_stack_set_visible_child_name(m_builder.get<AdwViewStack>("queuedViewStack"), "no-queued");
+        gtk_label_set_label(m_builder.get<GtkLabel>("queuedCountLabel"), std::to_string(m_controller->getDownloadManager().getQueuedCount()).c_str());
     }
 
     void MainWindow::clearCompletedDownloads()
@@ -488,6 +489,7 @@ namespace Nickvision::TubeConverter::GNOME::Views
             m_downloadRows.erase(id);
         }
         adw_view_stack_set_visible_child_name(m_builder.get<AdwViewStack>("completedViewStack"), "no-completed");
+        gtk_label_set_label(m_builder.get<GtkLabel>("completedCountLabel"), std::to_string(m_controller->getDownloadManager().getCompletedCount()).c_str());
     }
 
     void MainWindow::retryFailedDownloads()
