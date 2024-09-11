@@ -80,6 +80,11 @@ namespace Nickvision::TubeConverter::Shared::Controllers
          */
         std::vector<std::string> getAudioLanguageStrings() const;
         /**
+         * @brief Gets the list of video codecs as strings.
+         * @return The list of video codecs as strings
+         */
+        std::vector<std::string> getVideoCodecStrings() const;
+        /**
          * @brief Gets the url for the media at the specified index.
          * @param index The index of the media
          * @return The url of the media

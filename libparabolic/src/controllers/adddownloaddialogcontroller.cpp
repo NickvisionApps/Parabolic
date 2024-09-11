@@ -183,6 +183,15 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         return languages;
     }
 
+    std::vector<std::string> AddDownloadDialogController::getVideoCodecStrings() const
+    {
+        std::vector<std::string> codecs;
+        codecs.push_back("VP9");
+        codecs.push_back("AV1");
+        codecs.push_back("H.264");
+        return codecs;
+    }
+
     const std::string& AddDownloadDialogController::getMediaUrl(size_t index) const
     {
         static std::string empty;
