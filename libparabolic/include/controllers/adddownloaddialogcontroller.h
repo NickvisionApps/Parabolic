@@ -80,6 +80,11 @@ namespace Nickvision::TubeConverter::Shared::Controllers
          */
         std::vector<std::string> getAudioLanguageStrings() const;
         /**
+         * @brief Gets the list of video codecs as strings.
+         * @return The list of video codecs as strings
+         */
+        std::vector<std::string> getVideoCodecStrings() const;
+        /**
          * @brief Gets the url for the media at the specified index.
          * @param index The index of the media
          * @return The url of the media
@@ -125,24 +130,24 @@ namespace Nickvision::TubeConverter::Shared::Controllers
          * @param qualityIndex The index of the selected quality
          * @param audioLanguageIndex The index of the selected audio language
          * @param downloadSubtitles Whether or not to download subtitles
-         * @param preferAV1 Whether or not to the prefer AV1 codec
+         * @param videoCodecIndex The index of the selected video codec
          * @param splitChapters Whether or not to split the video by chapters
          * @param limitSpeed Whether or not to limit the download speed
          * @param startTime The start time of the download
          * @param endTime The end time of the download
          */
-        void addSingleDownload(const std::filesystem::path& saveFolder, const std::string& filename, size_t fileTypeIndex, size_t qualityIndex, size_t audioLanguageIndex, bool downloadSubtitles, bool preferAV1, bool splitChapters, bool limitSpeed, const std::string& startTime, const std::string& endTime);
+        void addSingleDownload(const std::filesystem::path& saveFolder, const std::string& filename, size_t fileTypeIndex, size_t qualityIndex, size_t audioLanguageIndex, bool downloadSubtitles, size_t videoCodecIndex, bool splitChapters, bool limitSpeed, const std::string& startTime, const std::string& endTime);
         /**
          * @brief Adds a playlist download to the download manager.
          * @param saveFolder The folder to save the downloads to
          * @param filenames The filenames to save the downloads as with their respective indices (Excluded indices will not be downloaded)
          * @param fileTypeIndex The index of the selected file type
          * @param downloadSubtitles Whether or not to download subtitles
-         * @param preferAV1 Whether or not to the prefer AV1 codec
+         * @param videoCodecIndex The index of the selected video codec
          * @param splitChapters Whether or not to split the video by chapters
          * @param limitSpeed Whether or not to limit the download speed
          */
-        void addPlaylistDownload(const std::filesystem::path& saveFolder, const std::unordered_map<size_t, std::string>& filenames, size_t fileTypeIndex, bool downloadSubtitles, bool preferAV1, bool splitChapters, bool limitSpeed);
+        void addPlaylistDownload(const std::filesystem::path& saveFolder, const std::unordered_map<size_t, std::string>& filenames, size_t fileTypeIndex, bool downloadSubtitles, size_t videoCodecIndex, bool splitChapters, bool limitSpeed);
 
     private:
         Models::DownloadManager& m_downloadManager;

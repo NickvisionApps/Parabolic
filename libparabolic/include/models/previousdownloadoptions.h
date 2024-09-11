@@ -5,6 +5,7 @@
 #include <string>
 #include <libnick/app/datafilebase.h>
 #include "mediafiletype.h"
+#include "videocodec.h"
 
 namespace Nickvision::TubeConverter::Shared::Models
 {
@@ -51,15 +52,15 @@ namespace Nickvision::TubeConverter::Shared::Models
          */
         void setDownloadSubtitles(bool previousSubtitleState);
         /**
-         * @brief Gets the previous prefer AV1 state.
-         * @return The previous prefer AV1 state
+         * @brief Gets the previously selected video codec.
+         * @return The previously selected video codec
          */
-        bool getPreferAV1() const;
+        VideoCodec getVideoCodec() const;
         /**
-         * @brief Sets the previous prefer AV1 state.
-         * @param previousPreferAV1State The new previous prefer AV1 state
+         * @brief Sets the previously selected video codec.
+         * @param codec The new previously selected video codec
          */
-        void setPreferAV1(bool previousPreferAV1State);
+        void setVideoCodec(VideoCodec codec);
         /**
          * @brief Gets the previous split chapters state.
          * @return The previous split chapters state

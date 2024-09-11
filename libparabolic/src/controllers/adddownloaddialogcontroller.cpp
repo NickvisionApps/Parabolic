@@ -3,6 +3,7 @@
 #include <thread>
 #include <libnick/localization/gettext.h>
 #include "models/configuration.h"
+#include "models/downloadoptions.h"
 #include "models/urlinfo.h"
 
 using namespace Nickvision::App;
@@ -182,6 +183,15 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         return languages;
     }
 
+    std::vector<std::string> AddDownloadDialogController::getVideoCodecStrings() const
+    {
+        std::vector<std::string> codecs;
+        codecs.push_back("VP9");
+        codecs.push_back("AV1");
+        codecs.push_back("H.264");
+        return codecs;
+    }
+
     const std::string& AddDownloadDialogController::getMediaUrl(size_t index) const
     {
         static std::string empty;
@@ -242,7 +252,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         }
     }
 
-    void AddDownloadDialogController::addSingleDownload(const std::filesystem::path& saveFolder, const std::string& filename, size_t fileTypeIndex, size_t qualityIndex, size_t audioLanguageIndex, bool downloadSubtitles, bool preferAV1, bool splitChapters, bool limitSpeed, const std::string& startTime, const std::string& endTime)
+    void AddDownloadDialogController::addSingleDownload(const std::filesystem::path& saveFolder, const std::string& filename, size_t fileTypeIndex, size_t qualityIndex, size_t audioLanguageIndex, bool downloadSubtitles, size_t videoCodecIndex, bool splitChapters, bool limitSpeed, const std::string& startTime, const std::string& endTime)
     {
         const Media& media{ m_urlInfo->get(0) };
         //Create Download Options
@@ -268,7 +278,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
             options.setAudioLanguage(media.getAudioLanguages()[audioLanguageIndex]);
         }
         options.setDownloadSubtitles(downloadSubtitles);
-        options.setPreferAV1(preferAV1);
+        options.setVideoCodec(static_cast<VideoCodec>(videoCodecIndex));
         options.setSplitChapters(splitChapters);
         options.setLimitSpeed(limitSpeed);
         std::optional<TimeFrame> timeFrame{ TimeFrame::parse(startTime, endTime, media.getTimeFrame().getDuration()) };
@@ -280,20 +290,20 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         m_previousOptions.setSaveFolder(options.getSaveFolder());
         m_previousOptions.setFileType(options.getFileType());
         m_previousOptions.setDownloadSubtitles(options.getDownloadSubtitles());
-        m_previousOptions.setPreferAV1(options.getPreferAV1());
+        m_previousOptions.setVideoCodec(options.getVideoCodec());
         m_previousOptions.setSplitChapters(options.getSplitChapters());
         m_previousOptions.setLimitSpeed(options.getLimitSpeed());
         //Add Download
         m_downloadManager.addDownload(options);
     }
 
-    void AddDownloadDialogController::addPlaylistDownload(const std::filesystem::path& saveFolder, const std::unordered_map<size_t, std::string>& filenames, size_t fileTypeIndex, bool downloadSubtitles, bool preferAV1, bool splitChapters, bool limitSpeed)
+    void AddDownloadDialogController::addPlaylistDownload(const std::filesystem::path& saveFolder, const std::unordered_map<size_t, std::string>& filenames, size_t fileTypeIndex, bool downloadSubtitles, size_t videoCodecIndex, bool splitChapters, bool limitSpeed)
     {
         //Save Previous Options
         m_previousOptions.setSaveFolder(saveFolder);
         m_previousOptions.setFileType(static_cast<MediaFileType::MediaFileTypeValue>(fileTypeIndex));
         m_previousOptions.setDownloadSubtitles(downloadSubtitles);
-        m_previousOptions.setPreferAV1(preferAV1);
+        m_previousOptions.setVideoCodec(static_cast<VideoCodec>(videoCodecIndex));
         m_previousOptions.setSplitChapters(splitChapters);
         m_previousOptions.setLimitSpeed(limitSpeed);
         std::filesystem::path playlistSaveFolder{ (std::filesystem::exists(saveFolder) ? saveFolder : m_previousOptions.getSaveFolder()) / m_urlInfo->getTitle() };
@@ -308,7 +318,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
             options.setSaveFilename(!pair.second.empty() ? pair.second : media.getTitle());
             options.setFileType(static_cast<MediaFileType::MediaFileTypeValue>(fileTypeIndex));
             options.setDownloadSubtitles(downloadSubtitles);
-            options.setPreferAV1(preferAV1);
+            options.setVideoCodec(static_cast<VideoCodec>(videoCodecIndex));
             options.setSplitChapters(splitChapters);
             options.setLimitSpeed(limitSpeed);
             //Add Download

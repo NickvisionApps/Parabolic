@@ -38,7 +38,7 @@ namespace Nickvision::TubeConverter::QT::Views
         m_ui->lblQualitySingle->setText(_("Quality"));
         m_ui->lblAudioLanguageSingle->setText(_("Audio Language"));
         m_ui->lblDownloadSubtitlesSingle->setText(_("Download Subtitles"));
-        m_ui->lblPreferAV1Single->setText(_("Prefer AV1 Codec"));
+        m_ui->lblVideoCodecSingle->setText(_("Video Codec"));
         m_ui->lblSplitChaptersSingle->setText(_("Split Video by Chapters"));
         m_ui->lblSaveFolderSingle->setText(_("Save Folder"));
         m_ui->txtSaveFolderSingle->setPlaceholderText(_("Select save folder"));
@@ -54,7 +54,7 @@ namespace Nickvision::TubeConverter::QT::Views
         m_ui->btnDownloadSingle->setText(_("Download"));
         m_ui->lblFileTypePlaylist->setText(_("File Type"));
         m_ui->lblDownloadSubtitlesPlaylist->setText(_("Download Subtitles"));
-        m_ui->lblPreferAV1Playlist->setText(_("Prefer AV1 Codec"));
+        m_ui->lblVideoCodecPlaylist->setText(_("Video Codec"));
         m_ui->lblSplitChaptersPlaylist->setText(_("Split Video by Chapters"));
         m_ui->lblLimitSpeedPlaylist->setText(_("Limit Download Speed"));
         m_ui->lblNumberTitlesPlaylist->setText(_("Number Titles"));
@@ -160,7 +160,8 @@ namespace Nickvision::TubeConverter::QT::Views
             QTHelpers::setComboBoxItems(m_ui->cmbQualitySingle, m_controller->getQualityStrings(m_ui->cmbFileTypeSingle->currentIndex()));
             QTHelpers::setComboBoxItems(m_ui->cmbAudioLanguageSingle, m_controller->getAudioLanguageStrings());
             m_ui->chkDownloadSubtitlesSingle->setChecked(m_controller->getPreviousDownloadOptions().getDownloadSubtitles());
-            m_ui->chkPreferAV1Single->setChecked(m_controller->getPreviousDownloadOptions().getPreferAV1());
+            QTHelpers::setComboBoxItems(m_ui->cmbVideoCodecSingle, m_controller->getVideoCodecStrings());
+            m_ui->cmbVideoCodecSingle->setCurrentIndex(static_cast<int>(m_controller->getPreviousDownloadOptions().getVideoCodec()));
             m_ui->chkSplitChaptersSingle->setChecked(m_controller->getPreviousDownloadOptions().getSplitChapters());
             m_ui->txtSaveFolderSingle->setText(QString::fromStdString(m_controller->getPreviousDownloadOptions().getSaveFolder().string()));
             m_ui->txtFilenameSingle->setText(QString::fromStdString(m_controller->getMediaTitle(0)));
@@ -177,7 +178,8 @@ namespace Nickvision::TubeConverter::QT::Views
             QTHelpers::setComboBoxItems(m_ui->cmbFileTypePlaylist, m_controller->getFileTypeStrings());
             m_ui->cmbFileTypePlaylist->setCurrentIndex(static_cast<int>(m_controller->getPreviousDownloadOptions().getFileType()));
             m_ui->chkDownloadSubtitlesPlaylist->setChecked(m_controller->getPreviousDownloadOptions().getDownloadSubtitles());
-            m_ui->chkPreferAV1Playlist->setChecked(m_controller->getPreviousDownloadOptions().getPreferAV1());
+            QTHelpers::setComboBoxItems(m_ui->cmbVideoCodecPlaylist, m_controller->getVideoCodecStrings());
+            m_ui->cmbVideoCodecPlaylist->setCurrentIndex(static_cast<int>(m_controller->getPreviousDownloadOptions().getVideoCodec()));
             m_ui->chkSplitChaptersPlaylist->setChecked(m_controller->getPreviousDownloadOptions().getSplitChapters());
             m_ui->chkLimitSpeedPlaylist->setChecked(m_controller->getPreviousDownloadOptions().getLimitSpeed());
             m_ui->chkNumberTitlesPlaylist->setChecked(m_controller->getPreviousDownloadOptions().getNumberTitles());
@@ -235,7 +237,7 @@ namespace Nickvision::TubeConverter::QT::Views
     
     void AddDownloadDialog::downloadSingle()
     {
-        m_controller->addSingleDownload(m_ui->txtSaveFolderSingle->text().toStdString(), m_ui->txtFilenameSingle->text().toStdString(), m_ui->cmbFileTypeSingle->currentIndex(), m_ui->cmbQualitySingle->currentIndex(), m_ui->cmbAudioLanguageSingle->currentIndex(), m_ui->chkDownloadSubtitlesSingle->isChecked(), m_ui->chkPreferAV1Single->isChecked(), m_ui->chkSplitChaptersSingle->isChecked(), m_ui->chkLimitSpeedSingle->isChecked(), m_ui->txtTimeFrameStartSingle->text().toStdString(), m_ui->txtTimeFrameEndSingle->text().toStdString());
+        m_controller->addSingleDownload(m_ui->txtSaveFolderSingle->text().toStdString(), m_ui->txtFilenameSingle->text().toStdString(), m_ui->cmbFileTypeSingle->currentIndex(), m_ui->cmbQualitySingle->currentIndex(), m_ui->cmbAudioLanguageSingle->currentIndex(), m_ui->chkDownloadSubtitlesSingle->isChecked(), m_ui->cmbVideoCodecSingle->currentIndex(), m_ui->chkSplitChaptersSingle->isChecked(), m_ui->chkLimitSpeedSingle->isChecked(), m_ui->txtTimeFrameStartSingle->text().toStdString(), m_ui->txtTimeFrameEndSingle->text().toStdString());
         accept();
     }
 
@@ -267,7 +269,7 @@ namespace Nickvision::TubeConverter::QT::Views
                 filenames.emplace(static_cast<size_t>(i), m_ui->tblItemsPlaylist->item(i, 1)->text().toStdString());
             }
         }
-        m_controller->addPlaylistDownload(m_ui->txtSaveFolderPlaylist->text().toStdString(), filenames, m_ui->cmbFileTypePlaylist->currentIndex(), m_ui->chkDownloadSubtitlesPlaylist->isChecked(), m_ui->chkPreferAV1Playlist->isChecked(), m_ui->chkSplitChaptersPlaylist->isChecked(), m_ui->chkLimitSpeedPlaylist->isChecked());
+        m_controller->addPlaylistDownload(m_ui->txtSaveFolderPlaylist->text().toStdString(), filenames, m_ui->cmbFileTypePlaylist->currentIndex(), m_ui->chkDownloadSubtitlesPlaylist->isChecked(), m_ui->cmbVideoCodecPlaylist->currentIndex(), m_ui->chkSplitChaptersPlaylist->isChecked(), m_ui->chkLimitSpeedPlaylist->isChecked());
         accept();
     }
 }

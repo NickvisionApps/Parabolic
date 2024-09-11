@@ -54,14 +54,14 @@ namespace Nickvision::TubeConverter::Shared::Models
         m_json["DownloadSubtitles"] = previousSubtitleState;
     }
 
-    bool PreviousDownloadOptions::getPreferAV1() const
+    VideoCodec PreviousDownloadOptions::getVideoCodec() const
     {
-        return m_json["PreferAV1State"].is_bool() ? m_json["PreferAV1State"].as_bool() : false;
+        return m_json["VideoCodec"].is_int64() ? static_cast<VideoCodec>(m_json["VideoCodec"].as_int64()) : VideoCodec::VP9;
     }
 
-    void PreviousDownloadOptions::setPreferAV1(bool previousPreferAV1State)
+    void PreviousDownloadOptions::setVideoCodec(VideoCodec codec)
     {
-        m_json["PreferAV1State"] = previousPreferAV1State;
+        m_json["VideoCodec"] = static_cast<int>(codec);
     }
 
     bool PreviousDownloadOptions::getSplitChapters() const
