@@ -11,6 +11,7 @@
 #include "mediafiletype.h"
 #include "quality.h"
 #include "timeframe.h"
+#include "videocodec.h"
 #include "videoresolution.h"
 
 namespace Nickvision::TubeConverter::Shared::Models
@@ -122,15 +123,15 @@ namespace Nickvision::TubeConverter::Shared::Models
          */
         void setLimitSpeed(bool limitSpeed);
         /**
-         * @brief Gets whether or not to prefer AV1.
-         * @return True if preferring AV1, else false
+         * @brief Gets the video codec to prefer.
+         * @return The video codec to prefer
          */
-        bool getPreferAV1() const;
+        VideoCodec getVideoCodec() const;
         /**
-         * @brief Sets whether or not to prefer AV1.
-         * @param preferAV1 True if preferring AV1, else false
+         * @brief Sets the video codec to prefer.
+         * @param codec The video codec to prefer
          */
-        void setPreferAV1(bool preferAV1);
+        void setVideoCodec(VideoCodec codec);
         /**
          * @brief Gets whether or not to split chapters.
          * @return True if splitting chapters, else false
@@ -169,7 +170,7 @@ namespace Nickvision::TubeConverter::Shared::Models
         std::string m_audioLanguage;
         bool m_downloadSubtitles;
         bool m_limitSpeed;
-        bool m_preferAV1;
+        VideoCodec m_videoCodec;
         bool m_splitChapters;
         std::optional<TimeFrame> m_timeFrame;
     };

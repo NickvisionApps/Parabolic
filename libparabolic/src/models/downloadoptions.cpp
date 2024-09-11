@@ -12,7 +12,7 @@ namespace Nickvision::TubeConverter::Shared::Models
         : m_fileType{ MediaFileType::MP4 },
         m_downloadSubtitles{ false },
         m_limitSpeed{ false },
-        m_preferAV1{ false },
+        m_videoCodec{ VideoCodec::VP9 },
         m_splitChapters{ false }
     {
 
@@ -23,7 +23,7 @@ namespace Nickvision::TubeConverter::Shared::Models
         m_fileType{ MediaFileType::MP4 },
         m_downloadSubtitles{ false },
         m_limitSpeed{ false },
-        m_preferAV1{ false },
+        m_videoCodec{ VideoCodec::VP9 },
         m_splitChapters{ false }
     {
 
@@ -123,14 +123,14 @@ namespace Nickvision::TubeConverter::Shared::Models
         m_limitSpeed = limitSpeed;
     }
 
-    bool DownloadOptions::getPreferAV1() const
+    VideoCodec DownloadOptions::getVideoCodec() const
     {
-        return m_preferAV1;
+        return m_videoCodec;
     }
 
-    void DownloadOptions::setPreferAV1(bool preferAV1)
+    void DownloadOptions::setVideoCodec(VideoCodec codec)
     {
-        m_preferAV1 = preferAV1;
+        m_videoCodec = codec;
     }
 
     bool DownloadOptions::getSplitChapters() const
@@ -288,20 +288,11 @@ namespace Nickvision::TubeConverter::Shared::Models
         {
             arguments.push_back("--embed-chapters");
         }
-        std::string formatSort;
         if(m_fileType.isAudio())
         {
             arguments.push_back("--extract-audio");
             arguments.push_back("--audio-format");
             arguments.push_back(StringHelpers::lower(m_fileType.str()));
-            if(m_fileType != MediaFileType::FLAC)
-            {
-                formatSort += "aext:" + StringHelpers::lower(m_fileType.str());
-            }
-            else
-            {
-                formatSort += "acodec:flac";
-            }
             if(m_quality.index() == 0)
             {
                 arguments.push_back("--audio-quality");
@@ -337,9 +328,21 @@ namespace Nickvision::TubeConverter::Shared::Models
         }
         else if(m_fileType.isVideo())
         {
+            std::string vcodec;
+            switch(m_videoCodec)
+            {
+            case VideoCodec::VP9:
+                vcodec = "[vcodec=vp9]";
+                break;
+            case VideoCodec::AV01:
+                vcodec = "[vcodec=av01]";
+                break;
+            case VideoCodec::H264:
+                vcodec = "[vcodec=h264]";
+                break;
+            }
             arguments.push_back("--remux-video");
             arguments.push_back(StringHelpers::lower(m_fileType.str()));
-            formatSort += "vext:" + StringHelpers::lower(m_fileType.str());
             if(m_quality.index() == 1)
             {
                 VideoResolution resolution{ std::get<VideoResolution>(m_quality) };
@@ -349,16 +352,16 @@ namespace Nickvision::TubeConverter::Shared::Models
                     size_t find{ m_audioLanguage.find(" (audio_description)") };
                     if(m_audioLanguage.empty())
                     {
-                        arguments.push_back("bv[height<=" + std::to_string(resolution.getHeight()) + "][width<=" + std::to_string(resolution.getWidth()) + "]+ba/b");
+                        arguments.push_back("bv[height<=" + std::to_string(resolution.getHeight()) + "][width<=" + std::to_string(resolution.getWidth()) + "]" + vcodec + "+ba/b");
                     }
                     else if(find == std::string::npos)
                     {
-                        arguments.push_back("(bv[height<=" + std::to_string(resolution.getHeight()) + "][width<=" + std::to_string(resolution.getWidth()) + "]+ba[language= " + m_audioLanguage + "]/b)[format_id!*=?audiodesc]");
+                        arguments.push_back("(bv[height<=" + std::to_string(resolution.getHeight()) + "][width<=" + std::to_string(resolution.getWidth()) + "]" + vcodec + "+ba[language= " + m_audioLanguage + "]/b)[format_id!*=?audiodesc]");
                     }
                     else
                     {
                         std::string language{ m_audioLanguage.substr(0, find) };
-                        arguments.push_back("(bv[height<=" + std::to_string(resolution.getHeight()) + "][width<=" + std::to_string(resolution.getWidth()) + "]+ba[language= " + language + "]/b)[format_id*=?audiodesc]");
+                        arguments.push_back("(bv[height<=" + std::to_string(resolution.getHeight()) + "][width<=" + std::to_string(resolution.getWidth()) + "]" + vcodec + "+ba[language= " + language + "]/b)[format_id*=?audiodesc]");
                     }
                 }
                 else
@@ -366,27 +369,21 @@ namespace Nickvision::TubeConverter::Shared::Models
                     size_t find{ m_audioLanguage.find(" (audio_description)") };
                     if(m_audioLanguage.empty())
                     {
-                        arguments.push_back("bv+ba/b");
+                        arguments.push_back("bv" + vcodec + "+ba/b");
                     }
                     else if(find == std::string::npos)
                     {
-                        arguments.push_back("(bv+ba[language= " + m_audioLanguage + "]/b)[format_id!*=?audiodesc]");
+                        arguments.push_back("(bv" + vcodec + "+ba[language= " + m_audioLanguage + "]/b)[format_id!*=?audiodesc]");
                     }
                     else
                     {
                         std::string language{ m_audioLanguage.substr(0, find) };
-                        arguments.push_back("(bv+ba[language= " + language + "]/b)[format_id*=?audiodesc]");
+                        arguments.push_back("(bv" + vcodec + "+ba[language= " + language + "]/b)[format_id*=?audiodesc]");
                     }
                 }
                 
             }
-        }
-        if(m_preferAV1)
-        {
-            formatSort += ",vcodec:av01";
-        }
-        arguments.push_back("--format-sort");
-        arguments.push_back(formatSort);
+        };
         if(!std::filesystem::exists(m_saveFolder))
         {
             std::filesystem::create_directories(m_saveFolder);
