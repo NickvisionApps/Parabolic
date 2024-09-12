@@ -34,7 +34,23 @@ namespace Nickvision::TubeConverter::Shared::Models
                 {
                     continue;
                 }
-                m_formats.push_back(Format(format.as_object()));
+                m_formats.push_back({ format.as_object() });
+            }
+        }
+        //Parse automatic subtitles
+        if(info.contains("automatic_captions") && info["automatic_captions"].is_object())
+        {
+            for(const boost::json::key_value_pair& caption : info["automatic_captions"].as_object())
+            {
+                m_automaticSubtitles.push_back(caption.key());
+            }
+        }
+        //Parse subtitles
+        if(info.contains("subtitles") && info["subtitles"].is_object())
+        {
+            for(const boost::json::key_value_pair& subtitle : info["subtitles"].as_object())
+            {
+                m_subtitles.push_back(subtitle.key());
             }
         }
         //Type
@@ -77,5 +93,15 @@ namespace Nickvision::TubeConverter::Shared::Models
     const std::vector<Format>& Media::getFormats() const
     {
         return m_formats;
+    }
+
+    const std::vector<std::string>& Media::getAutomaticSubtitles() const
+    {
+        return m_automaticSubtitles;
+    }
+
+    const std::vector<std::string>& Media::getSubtitles() const
+    {
+        return m_subtitles;
     }
 }

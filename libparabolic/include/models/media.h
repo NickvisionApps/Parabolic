@@ -54,6 +54,16 @@ namespace Nickvision::TubeConverter::Shared::Models
          * @return The formats of the media
          */
         const std::vector<Format>& getFormats() const;
+        /**
+         * @brief Gets the automatic subtitles of the media.
+         * @return The automatic subtitles of the media
+         */
+        const std::vector<std::string>& getAutomaticSubtitles() const;
+        /**
+         * @brief Gets the subtitles of the media.
+         * @return The subtitles of the media
+         */
+        const std::vector<std::string>& getSubtitles() const;
 
     private:
         std::string m_url;
@@ -62,6 +72,8 @@ namespace Nickvision::TubeConverter::Shared::Models
         TimeFrame m_timeFrame;
         bool m_hasSubtitles;
         std::vector<Format> m_formats;
+        std::vector<std::string> m_automaticSubtitles;
+        std::vector<std::string> m_subtitles;
     };
 }
 
