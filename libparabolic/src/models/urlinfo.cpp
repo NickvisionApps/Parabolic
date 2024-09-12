@@ -145,17 +145,4 @@ namespace Nickvision::TubeConverter::Shared::Models
     {
         return m_media[index];
     }
-
-    std::ostream& operator<<(std::ostream& os, const UrlInfo& info)
-    {
-        os << "===UrlInfo===" << std::endl;
-        os << "Url: " << info.m_url << std::endl;
-        os << "Is Playlist: " << (info.m_isPlaylist ? "Yes" : "No") << std::endl;
-        os << "Media Count: " << info.m_media.size() << std::endl;
-        for(const Media& media : info.m_media)
-        {
-            os << media << std::endl;
-        }
-        return os;
-    }
 }

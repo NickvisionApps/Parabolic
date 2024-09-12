@@ -63,13 +63,6 @@ namespace Nickvision::TubeConverter::Shared::Models
          * @param index The index
          */
         const Media& operator[](size_t index) const;
-        /**
-         * @brief Outputs the UrlInfo to an output stream.
-         * @param os The output stream
-         * @param info The UrlInfo
-         * @return The output stream
-         */
-        friend std::ostream& operator<<(std::ostream& os, const UrlInfo& info);
 
     private:
         /**

@@ -58,13 +58,4 @@ namespace Nickvision::TubeConverter::Shared::Events
     {
         return m_log;
     }
-
-    std::ostream& operator<<(std::ostream& os, const DownloadProgressChangedEventArgs& args)
-    {
-        os << "===DownloadProgress===" << std::endl;
-        os << "Progress: " << args.m_progress << std::endl;
-        os << "Speed: " << args.getSpeedStr() << std::endl;
-        os << "Log: " << args.m_log;
-        return os;
-    }
 }

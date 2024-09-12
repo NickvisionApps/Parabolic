@@ -9,7 +9,8 @@ namespace Nickvision::TubeConverter::Shared::Models
     enum class MediaType
     {
         Video,
-        Audio
+        Audio,
+        Image
     };
 }
 
