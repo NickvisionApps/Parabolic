@@ -4,12 +4,10 @@
 #include <filesystem>
 #include <optional>
 #include <string>
-#include <variant>
 #include <vector>
 #include <libnick/keyring/credential.h>
 #include "downloaderoptions.h"
 #include "mediafiletype.h"
-#include "quality.h"
 #include "timeframe.h"
 #include "videocodec.h"
 #include "videoresolution.h"
@@ -62,15 +60,25 @@ namespace Nickvision::TubeConverter::Shared::Models
          */
         void setFileType(const MediaFileType& fileType);
         /**
-         * @brief Gets the quality of the download.
-         * @return The quality of the download
+         * @brief Gets the video format ID of the download.
+         * @return The video format ID of the download
          */
-        const std::variant<Quality, VideoResolution>& getQuality() const;
+        const std::string& getVideoFormatId() const;
         /**
-         * @brief Sets the quality of the download.
-         * @param quality The quality of the download
+         * @brief Sets the video format ID of the download.
+         * @param videoFormatId The video format ID of the download
          */
-        void setQuality(const std::variant<Quality, VideoResolution>& quality);
+        void setVideoFormatId(const std::string& videoFormatId);
+        /**
+         * @brief Gets the audio format ID of the download.
+         * @return The audio format ID of the download
+         */
+        const std::string& getAudioFormatId() const;
+        /**
+         * @brief Sets the audio format ID of the download.
+         * @param audioFormatId The audio format ID of the download
+         */
+        void setAudioFormatId(const std::string& audioFormatId);
         /**
          * @brief Gets the save folder of the download.
          * @return The save folder of the download
@@ -92,16 +100,6 @@ namespace Nickvision::TubeConverter::Shared::Models
          */
         void setSaveFilename(const std::string& saveFilename);
         /**
-         * @brief Gets the audio language of the download.
-         * @return The audio language of the download
-         */
-        const std::string& getAudioLanguage() const;
-        /**
-         * @brief Sets the audio language of the download.
-         * @param audioLanguage The audio language of the download
-         */
-        void setAudioLanguage(const std::string& audioLanguage);
-        /**
          * @brief Gets whether or not to download subtitles.
          * @return True if downloading subtitles, else false
          */
@@ -122,16 +120,6 @@ namespace Nickvision::TubeConverter::Shared::Models
          * @param limitSpeed True if limiting the download speed, else false
          */
         void setLimitSpeed(bool limitSpeed);
-        /**
-         * @brief Gets the video codec to prefer.
-         * @return The video codec to prefer
-         */
-        VideoCodec getVideoCodec() const;
-        /**
-         * @brief Sets the video codec to prefer.
-         * @param codec The video codec to prefer
-         */
-        void setVideoCodec(VideoCodec codec);
         /**
          * @brief Gets whether or not to split chapters.
          * @return True if splitting chapters, else false
@@ -164,13 +152,12 @@ namespace Nickvision::TubeConverter::Shared::Models
         std::string m_url;
         std::optional<Keyring::Credential> m_credential;
         MediaFileType m_fileType;
-        std::variant<Quality, VideoResolution> m_quality;
+        std::string m_videoFormatId;
+        std::string m_audioFormatId;
         std::filesystem::path m_saveFolder;
         std::string m_saveFilename;
-        std::string m_audioLanguage;
         bool m_downloadSubtitles;
         bool m_limitSpeed;
-        VideoCodec m_videoCodec;
         bool m_splitChapters;
         std::optional<TimeFrame> m_timeFrame;
     };
