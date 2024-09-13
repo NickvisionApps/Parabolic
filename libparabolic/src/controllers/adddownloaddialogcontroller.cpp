@@ -132,10 +132,10 @@ namespace Nickvision::TubeConverter::Shared::Controllers
             }
             else
             {
-                for(const VideoResolution& resolution : media.getVideoResolutions())
-                {
-                    qualities.push_back(resolution.str());
-                }
+                //for(const VideoResolution& resolution : media.getVideoResolutions())
+                //{
+                //    qualities.push_back(resolution.str());
+                //}
             }
         }
         else
@@ -163,18 +163,18 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         }
         if(!m_urlInfo->isPlaylist())
         {
-            const Media& media{ m_urlInfo->get(0) };
-            if(media.getAudioLanguages().empty())
-            {
-                languages.push_back(_("Default"));
-            }
-            else
-            {
-                for(const std::string& language : media.getAudioLanguages())
-                {
-                    languages.push_back(language);
-                }
-            }
+            //const Media& media{ m_urlInfo->get(0) };
+            //if(media.getAudioLanguages().empty())
+            //{
+            //    languages.push_back(_("Default"));
+            //}
+            //else
+            //{
+            //    for(const std::string& language : media.getAudioLanguages())
+            //    {
+            //        languages.push_back(language);
+            //    }
+            //}
         }
         else
         {
@@ -234,7 +234,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         std::thread worker{ [this, url, credential]()
         {
             m_credential = credential;
-            m_urlInfo = UrlInfo::fetch(url, m_downloadManager.getDownloaderOptions(), m_credential);
+            m_urlInfo = m_downloadManager.fetchUrlInfo(url, m_credential);
             m_urlValidated.invoke({ isUrlValid() });
         } };
         worker.detach();
@@ -269,14 +269,14 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         {
             options.setQuality(static_cast<Quality>(qualityIndex));
         }
-        else
-        {
-            options.setQuality(media.getVideoResolutions()[qualityIndex]);
-        }
-        if(media.getAudioLanguages().size() > 1)
-        {
-            options.setAudioLanguage(media.getAudioLanguages()[audioLanguageIndex]);
-        }
+        //else
+        //{
+        //    options.setQuality(media.getVideoResolutions()[qualityIndex]);
+        //}
+        //if(media.getAudioLanguages().size() > 1)
+        //{
+        //    options.setAudioLanguage(media.getAudioLanguages()[audioLanguageIndex]);
+        //}
         options.setDownloadSubtitles(downloadSubtitles);
         options.setVideoCodec(static_cast<VideoCodec>(videoCodecIndex));
         options.setSplitChapters(splitChapters);

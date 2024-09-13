@@ -3,6 +3,7 @@
 namespace Nickvision::TubeConverter::Shared::Models
 {
     Format::Format(boost::json::object format)
+        : m_hasAudioDescription{ false }
     {
         m_id = format["format_id"].is_string() ? format["format_id"].as_string() : "";
         m_protocol = format["protocol"].is_string() ? format["protocol"].as_string() : "";

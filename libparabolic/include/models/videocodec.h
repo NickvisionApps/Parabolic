@@ -8,9 +8,10 @@ namespace Nickvision::TubeConverter::Shared::Models
      */
     enum class VideoCodec
     {
-        VP9 = 0,
-        AV01 = 1,
-        H264 = 2
+        Any = 0,
+        VP9,
+        AV01,
+        H264
     };
 }
 

@@ -35,6 +35,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         ~AddDownloadDialogController();
         /**
          * @brief Gets the event for when a url is validated.
+         * @brief The boolean parameter is true if the url is valid, else false.
          * @return The url validated event
          */
         Nickvision::Events::Event<Nickvision::Events::ParamEventArgs<bool>>& urlValidated();
