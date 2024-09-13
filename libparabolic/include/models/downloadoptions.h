@@ -7,6 +7,7 @@
 #include <vector>
 #include <libnick/keyring/credential.h>
 #include "downloaderoptions.h"
+#include "format.h"
 #include "mediafiletype.h"
 #include "timeframe.h"
 #include "videocodec.h"
@@ -60,25 +61,25 @@ namespace Nickvision::TubeConverter::Shared::Models
          */
         void setFileType(const MediaFileType& fileType);
         /**
-         * @brief Gets the video format ID of the download.
-         * @return The video format ID of the download
+         * @brief Gets the video format of the download.
+         * @return The video format of the download
          */
-        const std::string& getVideoFormatId() const;
+        const Format& getVideoFormat() const;
         /**
-         * @brief Sets the video format ID of the download.
-         * @param videoFormatId The video format ID of the download
+         * @brief Sets the video format of the download.
+         * @param videoFormat The video format of the download
          */
-        void setVideoFormatId(const std::string& videoFormatId);
+        void setVideoFormat(const Format& videoFormat);
         /**
-         * @brief Gets the audio format ID of the download.
-         * @return The audio format ID of the download
+         * @brief Gets the audio format of the download.
+         * @return The audio format of the download
          */
-        const std::string& getAudioFormatId() const;
+        const Format& getAudioFormat() const;
         /**
-         * @brief Sets the audio format ID of the download.
-         * @param audioFormatId The audio format ID of the download
+         * @brief Sets the audio format of the download.
+         * @param audioFormat The audio format of the download
          */
-        void setAudioFormatId(const std::string& audioFormatId);
+        void setAudioFormat(const Format& audioFormat);
         /**
          * @brief Gets the save folder of the download.
          * @return The save folder of the download
@@ -152,8 +153,8 @@ namespace Nickvision::TubeConverter::Shared::Models
         std::string m_url;
         std::optional<Keyring::Credential> m_credential;
         MediaFileType m_fileType;
-        std::string m_videoFormatId;
-        std::string m_audioFormatId;
+        Format m_videoFormat;
+        Format m_audioFormat;
         std::filesystem::path m_saveFolder;
         std::string m_saveFilename;
         bool m_downloadSubtitles;

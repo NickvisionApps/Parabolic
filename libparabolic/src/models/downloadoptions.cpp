@@ -57,24 +57,24 @@ namespace Nickvision::TubeConverter::Shared::Models
         m_fileType = fileType;
     }
 
-    const std::string& DownloadOptions::getVideoFormatId() const
+    const Format& DownloadOptions::getVideoFormat() const
     {
-        return m_videoFormatId;
+        return m_videoFormat;
     }
 
-    void DownloadOptions::setVideoFormatId(const std::string& videoFormatId)
+    void DownloadOptions::setVideoFormat(const Format& videoFormat)
     {
-        m_videoFormatId = videoFormatId;
+        m_videoFormat = videoFormat;
     }
 
-    const std::string& DownloadOptions::getAudioFormatId() const
+    const Format& DownloadOptions::getAudioFormat() const
     {
-        return m_audioFormatId;
+        return m_audioFormat;
     }
 
-    void DownloadOptions::setAudioFormatId(const std::string& audioFormatId)
+    void DownloadOptions::setAudioFormat(const Format& audioFormat)
     {
-        m_audioFormatId = audioFormatId;
+        m_audioFormat = audioFormat;
     }
 
     const std::filesystem::path& DownloadOptions::getSaveFolder() const
@@ -286,17 +286,17 @@ namespace Nickvision::TubeConverter::Shared::Models
             arguments.push_back(StringHelpers::lower(m_fileType.str()));
         }
         arguments.push_back("--format");
-        if(!m_videoFormatId.empty() && !m_audioFormatId.empty())
+        if(m_videoFormat && m_audioFormat)
         {
-            arguments.push_back(m_videoFormatId + "+" + m_audioFormatId);
+            arguments.push_back(m_videoFormat.getId() + "+" + m_audioFormat.getId());
         }
-        else if(!m_videoFormatId.empty())
+        else if(m_videoFormat)
         {
-            arguments.push_back(m_videoFormatId);
+            arguments.push_back(m_videoFormat.getId());
         }
-        else if(!m_audioFormatId.empty())
+        else if(m_audioFormat)
         {
-            arguments.push_back(m_audioFormatId);
+            arguments.push_back(m_audioFormat.getId());
         }
         else
         {
