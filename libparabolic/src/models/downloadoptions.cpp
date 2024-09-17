@@ -10,7 +10,6 @@ namespace Nickvision::TubeConverter::Shared::Models
 {
     DownloadOptions::DownloadOptions()
         : m_fileType{ MediaFileType::MP4 },
-        m_downloadSubtitles{ false },
         m_limitSpeed{ false },
         m_splitChapters{ false }
     {
@@ -20,7 +19,6 @@ namespace Nickvision::TubeConverter::Shared::Models
     DownloadOptions::DownloadOptions(const std::string& url)
         : m_url{ url },
         m_fileType{ MediaFileType::MP4 },
-        m_downloadSubtitles{ false },
         m_limitSpeed{ false },
         m_splitChapters{ false }
     {
@@ -57,22 +55,22 @@ namespace Nickvision::TubeConverter::Shared::Models
         m_fileType = fileType;
     }
 
-    const Format& DownloadOptions::getVideoFormat() const
+    const std::optional<Format>& DownloadOptions::getVideoFormat() const
     {
         return m_videoFormat;
     }
 
-    void DownloadOptions::setVideoFormat(const Format& videoFormat)
+    void DownloadOptions::setVideoFormat(const std::optional<Format>& videoFormat)
     {
         m_videoFormat = videoFormat;
     }
 
-    const Format& DownloadOptions::getAudioFormat() const
+    const std::optional<Format>& DownloadOptions::getAudioFormat() const
     {
         return m_audioFormat;
     }
 
-    void DownloadOptions::setAudioFormat(const Format& audioFormat)
+    void DownloadOptions::setAudioFormat(const std::optional<Format>& audioFormat)
     {
         m_audioFormat = audioFormat;
     }
@@ -97,14 +95,14 @@ namespace Nickvision::TubeConverter::Shared::Models
         m_saveFilename = saveFilename;
     }
 
-    bool DownloadOptions::getDownloadSubtitles() const
+    const std::vector<std::string>& DownloadOptions::getSubtitleLanguages() const
     {
-        return m_downloadSubtitles;
+        return m_subtitleLanguages;
     }
 
-    void DownloadOptions::setDownloadSubtitles(bool downloadSubtitles)
+    void DownloadOptions::setSubtitleLanguages(const std::vector<std::string>& subtitleLanguages)
     {
-        m_downloadSubtitles = downloadSubtitles;
+        m_subtitleLanguages = subtitleLanguages;
     }
 
     bool DownloadOptions::getLimitSpeed() const
@@ -288,15 +286,15 @@ namespace Nickvision::TubeConverter::Shared::Models
         arguments.push_back("--format");
         if(m_videoFormat && m_audioFormat)
         {
-            arguments.push_back(m_videoFormat.getId() + "+" + m_audioFormat.getId());
+            arguments.push_back(m_videoFormat->getId() + "+" + m_audioFormat->getId());
         }
         else if(m_videoFormat)
         {
-            arguments.push_back(m_videoFormat.getId());
+            arguments.push_back(m_videoFormat->getId() + "+ba/b");
         }
         else if(m_audioFormat)
         {
-            arguments.push_back(m_audioFormat.getId());
+            arguments.push_back("bv+" + m_audioFormat->getId() + "/b");
         }
         else
         {
@@ -312,8 +310,10 @@ namespace Nickvision::TubeConverter::Shared::Models
         arguments.push_back(m_saveFilename + ".%(ext)s");
         arguments.push_back("--output");
         arguments.push_back("chapter:%(section_number)03d - " + m_saveFilename + ".%(ext)s");
-        if(m_downloadSubtitles)
+        if(!m_subtitleLanguages.empty())
         {
+            std::string languages{ StringHelpers::join(m_subtitleLanguages, ",") };
+            languages += ",-live_chat";
             if(downloaderOptions.getEmbedSubtitles())
             {
                 arguments.push_back("--embed-subs");
@@ -324,7 +324,7 @@ namespace Nickvision::TubeConverter::Shared::Models
                 arguments.push_back("--write-auto-subs");
             }
             arguments.push_back("--sub-langs");
-            arguments.push_back("all,-live_chat");
+            arguments.push_back(languages);
         }
         if(m_limitSpeed)
         {

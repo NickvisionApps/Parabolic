@@ -10,6 +10,7 @@
 #include <libnick/events/parameventargs.h>
 #include <libnick/keyring/keyring.h>
 #include "models/downloadmanager.h"
+#include "models/format.h"
 #include "models/timeframe.h"
 #include "models/urlinfo.h"
 #include "models/previousdownloadoptions.h"
@@ -50,6 +51,11 @@ namespace Nickvision::TubeConverter::Shared::Controllers
          */
         std::vector<std::string> getKeyringCredentialNames() const;
         /**
+         * @brief Gets whether or not to download immediately after validation.
+         * @return True to download immediately after validation, else false
+         */
+        bool getDownloadImmediatelyAfterValidation() const;
+        /**
          * @brief Gets whether or not a valid url has been validated.
          * @return True if valid url, else false
          */
@@ -71,20 +77,21 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         std::vector<std::string> getFileTypeStrings() const;
         /**
          * @brief Gets the list of qualities as strings.
-         * @param index The index of the selected file type
+         * @param fileTypeIndex The index of the selected file type
+         * @param audioLanguageIndex The index of the selected audio language
          * @return The list of qualities as strings
          */
-        std::vector<std::string> getQualityStrings(size_t index) const;
+        std::vector<std::string> getQualityStrings(size_t fileTypeIndex, size_t audioLanguageIndex) const;
         /**
          * @brief Gets the list of audio languages as strings.
          * @return The list of audio languages as strings
          */
         std::vector<std::string> getAudioLanguageStrings() const;
         /**
-         * @brief Gets the list of video codecs as strings.
-         * @return The list of video codecs as strings
+         * @brief Gets the list of subtitles languages as strings.
+         * @return The list of subtitles languages as strings
          */
-        std::vector<std::string> getVideoCodecStrings() const;
+        std::vector<std::string> getSubtitleLanguageStrings() const;
         /**
          * @brief Gets the url for the media at the specified index.
          * @param index The index of the media
@@ -104,11 +111,6 @@ namespace Nickvision::TubeConverter::Shared::Controllers
          * @return The TimeFrame of the media
          */
         const Models::TimeFrame& getMediaTimeFrame(size_t index) const;
-        /**
-         * @brief Gets whether or not to download immediately after validation.
-         * @return True to download immediately after validation, else false
-         */
-        bool getDownloadImmediatelyAfterValidation() const;
         /**
          * @brief Validates a url.
          * @brief This method will invoke the urlValidated event with the list of media found at the url.
@@ -130,25 +132,22 @@ namespace Nickvision::TubeConverter::Shared::Controllers
          * @param fileTypeIndex The index of the selected file type
          * @param qualityIndex The index of the selected quality
          * @param audioLanguageIndex The index of the selected audio language
-         * @param downloadSubtitles Whether or not to download subtitles
-         * @param videoCodecIndex The index of the selected video codec
+         * @param subtitleLanguages The list of selected subtitle languages
          * @param splitChapters Whether or not to split the video by chapters
          * @param limitSpeed Whether or not to limit the download speed
          * @param startTime The start time of the download
          * @param endTime The end time of the download
          */
-        void addSingleDownload(const std::filesystem::path& saveFolder, const std::string& filename, size_t fileTypeIndex, size_t qualityIndex, size_t audioLanguageIndex, bool downloadSubtitles, size_t videoCodecIndex, bool splitChapters, bool limitSpeed, const std::string& startTime, const std::string& endTime);
+        void addSingleDownload(const std::filesystem::path& saveFolder, const std::string& filename, size_t fileTypeIndex, size_t qualityIndex, size_t audioLanguageIndex, const std::vector<std::string>& subtitleLanguages, bool splitChapters, bool limitSpeed, const std::string& startTime, const std::string& endTime);
         /**
          * @brief Adds a playlist download to the download manager.
          * @param saveFolder The folder to save the downloads to
          * @param filenames The filenames to save the downloads as with their respective indices (Excluded indices will not be downloaded)
          * @param fileTypeIndex The index of the selected file type
-         * @param downloadSubtitles Whether or not to download subtitles
-         * @param videoCodecIndex The index of the selected video codec
          * @param splitChapters Whether or not to split the video by chapters
          * @param limitSpeed Whether or not to limit the download speed
          */
-        void addPlaylistDownload(const std::filesystem::path& saveFolder, const std::unordered_map<size_t, std::string>& filenames, size_t fileTypeIndex, bool downloadSubtitles, size_t videoCodecIndex, bool splitChapters, bool limitSpeed);
+        void addPlaylistDownload(const std::filesystem::path& saveFolder, const std::unordered_map<size_t, std::string>& filenames, size_t fileTypeIndex, bool splitChapters, bool limitSpeed);
 
     private:
         Models::DownloadManager& m_downloadManager;
@@ -157,6 +156,8 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         std::optional<Models::UrlInfo> m_urlInfo;
         std::optional<Keyring::Credential> m_credential;
         bool m_downloadImmediatelyAfterValidation;
+        mutable std::unordered_map<size_t, Models::Format> m_qualityFormatMap;
+        mutable std::unordered_map<size_t, Models::Format> m_audioLanguageFormatMap;
         Nickvision::Events::Event<Nickvision::Events::ParamEventArgs<bool>> m_urlValidated;
     };
 }

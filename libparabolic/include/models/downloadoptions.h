@@ -64,22 +64,22 @@ namespace Nickvision::TubeConverter::Shared::Models
          * @brief Gets the video format of the download.
          * @return The video format of the download
          */
-        const Format& getVideoFormat() const;
+        const std::optional<Format>& getVideoFormat() const;
         /**
          * @brief Sets the video format of the download.
          * @param videoFormat The video format of the download
          */
-        void setVideoFormat(const Format& videoFormat);
+        void setVideoFormat(const std::optional<Format>& videoFormat);
         /**
          * @brief Gets the audio format of the download.
          * @return The audio format of the download
          */
-        const Format& getAudioFormat() const;
+        const std::optional<Format>& getAudioFormat() const;
         /**
          * @brief Sets the audio format of the download.
          * @param audioFormat The audio format of the download
          */
-        void setAudioFormat(const Format& audioFormat);
+        void setAudioFormat(const std::optional<Format>& audioFormat);
         /**
          * @brief Gets the save folder of the download.
          * @return The save folder of the download
@@ -101,15 +101,15 @@ namespace Nickvision::TubeConverter::Shared::Models
          */
         void setSaveFilename(const std::string& saveFilename);
         /**
-         * @brief Gets whether or not to download subtitles.
-         * @return True if downloading subtitles, else false
+         * @brief Gets the list of subtitle languages to download.
+         * @return The list of subtitle languages to download
          */
-        bool getDownloadSubtitles() const;
+        const std::vector<std::string>& getSubtitleLanguages() const;
         /**
-         * @brief Sets whether or not to download subtitles.
-         * @param downloadSubtitles True if downloading subtitles, else false
+         * @brief Sets the list of subtitle languages to download.
+         * @param downloadSubtitles The list of subtitle languages to download
          */
-        void setDownloadSubtitles(bool downloadSubtitles);
+        void setSubtitleLanguages(const std::vector<std::string>& subtitleLanguages);
         /**
          * @brief Gets whether or not to limit the download speed.
          * @return True if limiting the download speed, else false
@@ -153,11 +153,11 @@ namespace Nickvision::TubeConverter::Shared::Models
         std::string m_url;
         std::optional<Keyring::Credential> m_credential;
         MediaFileType m_fileType;
-        Format m_videoFormat;
-        Format m_audioFormat;
+        std::optional<Format> m_videoFormat;
+        std::optional<Format> m_audioFormat;
         std::filesystem::path m_saveFolder;
         std::string m_saveFilename;
-        bool m_downloadSubtitles;
+        std::vector<std::string> m_subtitleLanguages;
         bool m_limitSpeed;
         bool m_splitChapters;
         std::optional<TimeFrame> m_timeFrame;

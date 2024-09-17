@@ -2,12 +2,6 @@
 
 namespace Nickvision::TubeConverter::Shared::Models
 {
-    Format::Format()
-        : m_hasAudioDescription{ false }
-    {
-
-    }
-
     Format::Format(boost::json::object format)
         : m_hasAudioDescription{ false }
     {
@@ -60,11 +54,6 @@ namespace Nickvision::TubeConverter::Shared::Models
         }
     }
 
-    bool Format::isValid() const
-    {
-        return !m_id.empty();
-    }
-
     const std::string& Format::getId() const
     {
         return m_id;
@@ -103,10 +92,5 @@ namespace Nickvision::TubeConverter::Shared::Models
     const std::optional<double>& Format::getAudioBitrate() const
     {
         return m_audioBitrate;
-    }
-
-    Format::operator bool() const
-    {
-        return isValid();
     }
 }

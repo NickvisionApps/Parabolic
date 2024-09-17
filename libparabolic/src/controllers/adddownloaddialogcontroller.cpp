@@ -49,6 +49,11 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         return names;
     }
 
+    bool AddDownloadDialogController::getDownloadImmediatelyAfterValidation() const
+    {
+        return m_downloadImmediatelyAfterValidation;
+    }
+
     bool AddDownloadDialogController::isUrlValid() const
     {
         return m_urlInfo.has_value() && m_urlInfo->count() > 0;
@@ -61,11 +66,11 @@ namespace Nickvision::TubeConverter::Shared::Controllers
 
     size_t AddDownloadDialogController::getMediaCount() const
     {
-        if(m_urlInfo)
+        if(!m_urlInfo)
         {
-            return m_urlInfo->count();
+            return 0;
         }
-        return 0;
+        return m_urlInfo->count();
     }
 
     std::vector<std::string> AddDownloadDialogController::getFileTypeStrings() const
@@ -108,47 +113,36 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         return fileTypes;
     }
 
-    std::vector<std::string> AddDownloadDialogController::getQualityStrings(size_t index) const
+    std::vector<std::string> AddDownloadDialogController::getQualityStrings(size_t fileTypeIndex, size_t audioLanguageIndex) const
     {
         std::vector<std::string> qualities;
+        m_qualityFormatMap.clear();
         if(!m_urlInfo)
         {
             return qualities;
         }
-        MediaFileType type{ static_cast<MediaFileType::MediaFileTypeValue>(index) };
+        MediaFileType type{ static_cast<MediaFileType::MediaFileTypeValue>(fileTypeIndex) };
+        qualities.push_back(_("Best"));
         if(!m_urlInfo->isPlaylist())
         {
             const Media& media{ m_urlInfo->get(0) };
             if(media.getType() == MediaType::Audio)
             {
-                index += 5;
-                type = static_cast<MediaFileType::MediaFileTypeValue>(index);
+                fileTypeIndex += 5;
+                type = static_cast<MediaFileType::MediaFileTypeValue>(fileTypeIndex);
             }
-            if(type.isAudio())
+            for(const Format& format : media.getFormats())
             {
-                qualities.push_back(_("Best"));
-                qualities.push_back(_("Good"));
-                qualities.push_back(_("Worst"));
-            }
-            else
-            {
-                //for(const VideoResolution& resolution : media.getVideoResolutions())
-                //{
-                //    qualities.push_back(resolution.str());
-                //}
-            }
-        }
-        else
-        {
-            if(type.isAudio())
-            {
-                qualities.push_back(_("Best"));
-                qualities.push_back(_("Good"));
-                qualities.push_back(_("Worst"));
-            }
-            else
-            {
-                qualities.push_back(_("Best"));
+                if(type.isAudio() && format.getAudioBitrate() && audioLanguageIndex == 0)
+                {
+                    m_qualityFormatMap.emplace(qualities.size(), format);
+                    qualities.push_back(std::to_string(format.getAudioBitrate().value()));
+                }
+                else if(type.isVideo() && format.getVideoResolution())
+                {
+                    m_qualityFormatMap.emplace(qualities.size(), format);
+                    qualities.push_back(format.getVideoResolution().value().str());
+                }
             }
         }
         return qualities;
@@ -157,39 +151,55 @@ namespace Nickvision::TubeConverter::Shared::Controllers
     std::vector<std::string> AddDownloadDialogController::getAudioLanguageStrings() const
     {
         std::vector<std::string> languages;
+        m_audioLanguageFormatMap.clear();
+        if(!m_urlInfo)
+        {
+            return languages;
+        }
+        languages.push_back(_("Default"));
+        if(!m_urlInfo->isPlaylist())
+        {
+            const Media& media{ m_urlInfo->get(0) };
+            for(const Format& format : media.getFormats())
+            {
+                if(format.getAudioLanguage())
+                {
+                    if(format.hasAudioDescription())
+                    {
+                        m_audioLanguageFormatMap.emplace(languages.size(), format);
+                        languages.push_back(std::format("{} ({})", format.getAudioLanguage().value(), _("Audio Description")));
+                    }
+                    else
+                    {
+                        m_audioLanguageFormatMap.emplace(languages.size(), format);
+                        languages.push_back(format.getAudioLanguage().value());
+                    }
+                }
+            }
+        }
+        return languages;
+    }
+
+    std::vector<std::string> AddDownloadDialogController::getSubtitleLanguageStrings() const
+    {
+        std::vector<std::string> languages;
         if(!m_urlInfo)
         {
             return languages;
         }
         if(!m_urlInfo->isPlaylist())
         {
-            //const Media& media{ m_urlInfo->get(0) };
-            //if(media.getAudioLanguages().empty())
-            //{
-            //    languages.push_back(_("Default"));
-            //}
-            //else
-            //{
-            //    for(const std::string& language : media.getAudioLanguages())
-            //    {
-            //        languages.push_back(language);
-            //    }
-            //}
-        }
-        else
-        {
-            languages.push_back(_("Default"));
+            const Media& media{ m_urlInfo->get(0) };
+            for(const std::string& language : media.getSubtitles())
+            {
+                languages.push_back(language);
+            }
+            for(const std::string& language : media.getAutomaticSubtitles())
+            {
+                languages.push_back(std::format("{} ({})", language, _("Auto-generated")));
+            }
         }
         return languages;
-    }
-
-    std::vector<std::string> AddDownloadDialogController::getVideoCodecStrings() const
-    {
-        std::vector<std::string> codecs;
-        codecs.push_back("VP9");
-        codecs.push_back("AV1");
-        codecs.push_back("H.264");
-        return codecs;
     }
 
     const std::string& AddDownloadDialogController::getMediaUrl(size_t index) const
@@ -224,11 +234,6 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         return empty;
     }
 
-    bool AddDownloadDialogController::getDownloadImmediatelyAfterValidation() const
-    {
-        return m_downloadImmediatelyAfterValidation;
-    }
-
     void AddDownloadDialogController::validateUrl(const std::string& url, const std::optional<Credential>& credential)
     {
         std::thread worker{ [this, url, credential]()
@@ -252,9 +257,19 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         }
     }
 
-    void AddDownloadDialogController::addSingleDownload(const std::filesystem::path& saveFolder, const std::string& filename, size_t fileTypeIndex, size_t qualityIndex, size_t audioLanguageIndex, bool downloadSubtitles, size_t videoCodecIndex, bool splitChapters, bool limitSpeed, const std::string& startTime, const std::string& endTime)
+    void AddDownloadDialogController::addSingleDownload(const std::filesystem::path& saveFolder, const std::string& filename, size_t fileTypeIndex, size_t qualityIndex, size_t audioLanguageIndex, const std::vector<std::string>& subtitleLanguages, bool splitChapters, bool limitSpeed, const std::string& startTime, const std::string& endTime)
     {
         const Media& media{ m_urlInfo->get(0) };
+        //Get Subtitle Languages
+        std::vector<std::string> subtitles;
+        for(const std::string& language : subtitleLanguages)
+        {
+            std::string l{ language.substr(0, language.find(" ")) };
+            if(std::find(subtitles.begin(), subtitles.end(), l) == subtitles.end())
+            {
+                subtitles.push_back(l);
+            }
+        }
         //Create Download Options
         DownloadOptions options{ media.getUrl() };
         options.setCredential(m_credential);
@@ -265,20 +280,22 @@ namespace Nickvision::TubeConverter::Shared::Controllers
             fileTypeIndex += 5; 
         }
         options.setFileType(static_cast<MediaFileType::MediaFileTypeValue>(fileTypeIndex));
-        if(options.getFileType().isAudio())
+        if(qualityIndex != 0)
         {
-            options.setQuality(static_cast<Quality>(qualityIndex));
+            if(options.getFileType().isVideo())
+            {
+                options.setVideoFormat(m_qualityFormatMap.at(qualityIndex));
+            }
+            else
+            {
+                options.setAudioFormat(m_qualityFormatMap.at(qualityIndex));
+            }
         }
-        //else
-        //{
-        //    options.setQuality(media.getVideoResolutions()[qualityIndex]);
-        //}
-        //if(media.getAudioLanguages().size() > 1)
-        //{
-        //    options.setAudioLanguage(media.getAudioLanguages()[audioLanguageIndex]);
-        //}
-        options.setDownloadSubtitles(downloadSubtitles);
-        options.setVideoCodec(static_cast<VideoCodec>(videoCodecIndex));
+        if(audioLanguageIndex != 0)
+        {
+            options.setAudioFormat(m_audioLanguageFormatMap.at(audioLanguageIndex));
+        }
+        options.setSubtitleLanguages(subtitles);
         options.setSplitChapters(splitChapters);
         options.setLimitSpeed(limitSpeed);
         std::optional<TimeFrame> timeFrame{ TimeFrame::parse(startTime, endTime, media.getTimeFrame().getDuration()) };
@@ -289,21 +306,17 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         //Save Previous Options
         m_previousOptions.setSaveFolder(options.getSaveFolder());
         m_previousOptions.setFileType(options.getFileType());
-        m_previousOptions.setDownloadSubtitles(options.getDownloadSubtitles());
-        m_previousOptions.setVideoCodec(options.getVideoCodec());
         m_previousOptions.setSplitChapters(options.getSplitChapters());
         m_previousOptions.setLimitSpeed(options.getLimitSpeed());
         //Add Download
         m_downloadManager.addDownload(options);
     }
 
-    void AddDownloadDialogController::addPlaylistDownload(const std::filesystem::path& saveFolder, const std::unordered_map<size_t, std::string>& filenames, size_t fileTypeIndex, bool downloadSubtitles, size_t videoCodecIndex, bool splitChapters, bool limitSpeed)
+    void AddDownloadDialogController::addPlaylistDownload(const std::filesystem::path& saveFolder, const std::unordered_map<size_t, std::string>& filenames, size_t fileTypeIndex, bool splitChapters, bool limitSpeed)
     {
         //Save Previous Options
         m_previousOptions.setSaveFolder(saveFolder);
         m_previousOptions.setFileType(static_cast<MediaFileType::MediaFileTypeValue>(fileTypeIndex));
-        m_previousOptions.setDownloadSubtitles(downloadSubtitles);
-        m_previousOptions.setVideoCodec(static_cast<VideoCodec>(videoCodecIndex));
         m_previousOptions.setSplitChapters(splitChapters);
         m_previousOptions.setLimitSpeed(limitSpeed);
         std::filesystem::path playlistSaveFolder{ (std::filesystem::exists(saveFolder) ? saveFolder : m_previousOptions.getSaveFolder()) / m_urlInfo->getTitle() };
@@ -317,8 +330,6 @@ namespace Nickvision::TubeConverter::Shared::Controllers
             options.setSaveFolder(playlistSaveFolder);
             options.setSaveFilename(!pair.second.empty() ? pair.second : media.getTitle());
             options.setFileType(static_cast<MediaFileType::MediaFileTypeValue>(fileTypeIndex));
-            options.setDownloadSubtitles(downloadSubtitles);
-            options.setVideoCodec(static_cast<VideoCodec>(videoCodecIndex));
             options.setSplitChapters(splitChapters);
             options.setLimitSpeed(limitSpeed);
             //Add Download
