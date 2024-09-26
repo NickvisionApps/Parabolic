@@ -10,6 +10,8 @@ using namespace Nickvision::TubeConverter::Shared::Events;
 
 namespace Nickvision::TubeConverter::Shared::Models
 {
+    static std::string s_empty{};
+
     DownloadManager::DownloadManager(const DownloaderOptions& options, DownloadHistory& history, Logger& logger)
         : m_options{ options },
         m_history{ history },
@@ -120,8 +122,25 @@ namespace Nickvision::TubeConverter::Shared::Models
         {
             return m_completed.at(id)->getLog();
         }
-        static std::string empty;
-        return empty;
+        return s_empty;
+    }
+
+    const std::string& DownloadManager::getDownloadCommand(int id) const
+    {
+        std::lock_guard<std::mutex> lock{ m_mutex };
+        if(m_downloading.contains(id))
+        {
+            return m_downloading.at(id)->getCommand();
+        }
+        if(m_queued.contains(id))
+        {
+            return m_queued.at(id)->getCommand();
+        }
+        if(m_completed.contains(id))
+        {
+            return m_completed.at(id)->getCommand();
+        }
+        return s_empty;
     }
 
     DownloadStatus DownloadManager::getDownloadStatus(int id) const

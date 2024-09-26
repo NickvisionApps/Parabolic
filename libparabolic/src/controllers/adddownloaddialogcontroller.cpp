@@ -1,4 +1,5 @@
 #include "controllers/adddownloaddialogcontroller.h"
+#include <algorithm>
 #include <format>
 #include <thread>
 #include <libnick/localization/gettext.h>
@@ -133,12 +134,12 @@ namespace Nickvision::TubeConverter::Shared::Controllers
             }
             for(const Format& format : media.getFormats())
             {
-                if(type.isAudio() && format.getAudioBitrate() && audioLanguageIndex == 0)
+                if(type.isAudio() && format.getAudioBitrate() && audioLanguageIndex == 0 && std::find(qualities.begin(), qualities.end(), std::to_string(format.getAudioBitrate().value())) == qualities.end())
                 {
                     m_qualityFormatMap.emplace(qualities.size(), format);
                     qualities.push_back(std::to_string(format.getAudioBitrate().value()));
                 }
-                else if(type.isVideo() && format.getVideoResolution())
+                else if(type.isVideo() && format.getVideoResolution() && std::find(qualities.begin(), qualities.end(), format.getVideoResolution().value().str()) == qualities.end())
                 {
                     m_qualityFormatMap.emplace(qualities.size(), format);
                     qualities.push_back(format.getVideoResolution().value().str());
@@ -156,7 +157,6 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         {
             return languages;
         }
-        languages.push_back(_("Default"));
         if(!m_urlInfo->isPlaylist())
         {
             const Media& media{ m_urlInfo->get(0) };
@@ -177,6 +177,8 @@ namespace Nickvision::TubeConverter::Shared::Controllers
                 }
             }
         }
+        std::sort(languages.begin(), languages.end());
+        languages.insert(languages.begin(), _("Default"));
         return languages;
     }
 
@@ -199,6 +201,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
                 languages.push_back(std::format("{} ({})", language, _("Auto-generated")));
             }
         }
+        std::sort(languages.begin(), languages.end());
         return languages;
     }
 

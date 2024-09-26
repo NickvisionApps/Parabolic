@@ -43,16 +43,6 @@ namespace Nickvision::TubeConverter::Shared::Models
     {
         m_json["FileType"] = static_cast<int>(previousMediaFileType);
     }
-
-    bool PreviousDownloadOptions::getDownloadSubtitles() const
-    {
-        return m_json["DownloadSubtitles"].is_bool() ? m_json["DownloadSubtitles"].as_bool() : false;
-    }
-
-    void PreviousDownloadOptions::setDownloadSubtitles(bool previousSubtitleState)
-    {
-        m_json["DownloadSubtitles"] = previousSubtitleState;
-    }
     
     bool PreviousDownloadOptions::getSplitChapters() const
     {

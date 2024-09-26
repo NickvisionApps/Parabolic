@@ -110,6 +110,12 @@ namespace Nickvision::TubeConverter::Shared::Models
          */
         const std::string& getDownloadLog(int id) const;
         /**
+         * @brief Gets the command used to start a download.
+         * @param id The id of the download
+         * @return The download command
+         */
+        const std::string& getDownloadCommand(int id) const;
+        /**
          * @brief Gets the status of a download.
          * @param id The id of the download
          * @return The download status

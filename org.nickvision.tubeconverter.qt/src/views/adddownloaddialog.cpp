@@ -152,7 +152,7 @@ namespace Nickvision::TubeConverter::QT::Views
             m_ui->viewStack->setCurrentIndex(0);
             return;
         }
-        if(!m_controller->isUrlPlaylist())
+        if(!m_controller->isUrlPlaylist()) //Single Download
         {
             m_ui->viewStack->setCurrentIndex(2);
             QTHelpers::setComboBoxItems(m_ui->cmbFileTypeSingle, m_controller->getFileTypeStrings());
@@ -171,7 +171,7 @@ namespace Nickvision::TubeConverter::QT::Views
             m_ui->txtTimeFrameEndSingle->setPlaceholderText(QString::fromStdString(m_controller->getMediaTimeFrame(0).endStr()));
             m_ui->chkLimitSpeedSingle->setChecked(m_controller->getPreviousDownloadOptions().getLimitSpeed());
         }
-        else
+        else //Playlist Download
         {
             m_ui->viewStack->setCurrentIndex(3);
             m_ui->lblItemsPlaylist->setText(QString::fromStdString(std::vformat(_("Playlist Items ({})"), std::make_format_args(CodeHelpers::unmove(m_controller->getMediaCount())))));

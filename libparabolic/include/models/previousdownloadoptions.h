@@ -41,16 +41,6 @@ namespace Nickvision::TubeConverter::Shared::Models
          */
         void setFileType(const MediaFileType& previousMediaFileType);
         /**
-         * @brief Gets the previous download subtitles state.
-         * @return The previous download subtitles state
-         */
-        bool getDownloadSubtitles() const;
-        /**
-         * @brief Sets the previous download subtitles state.
-         * @param previousSubtitleState The new previous download subtitles state
-         */
-        void setDownloadSubtitles(bool previousSubtitleState);
-        /**
          * @brief Gets the previous split chapters state.
          * @return The previous split chapters state
          */
