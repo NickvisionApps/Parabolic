@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-09-27 09:43-0400\n"
-"PO-Revision-Date: 2024-09-05 10:08+0000\n"
-"Last-Translator: rene-coty <irenee.thirion@e.email>\n"
-"Language-Team: French <https://hosted.weblate.org/projects/nickvision-tube-"
-"converter/app/fr/>\n"
+"PO-Revision-Date: 2024-09-27 15:24+0000\n"
+"Last-Translator: Victor Lamoine <victor.lamoine@gmail.com>\n"
+"Language-Team: French <https://hosted.weblate.org/projects/"
+"nickvision-tube-converter/app/fr/>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 5.7.2-rc\n"
+"X-Generator: Weblate 5.8-dev\n"
 
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:89
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:103
@@ -76,8 +76,9 @@ msgid "Best"
 msgstr "Meilleure"
 
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:170
+#, fuzzy
 msgid "Audio Description"
-msgstr ""
+msgstr "Description Audio"
 
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:181
 msgid "Default"
@@ -85,7 +86,7 @@ msgstr "Par défaut"
 
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:201
 msgid "Auto-generated"
-msgstr ""
+msgstr "Auto-généré"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:43
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:39
@@ -136,22 +137,18 @@ msgid "Unable to download and install update"
 msgstr "Impossible de télécharger et installer la mise à jour"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:21
-#, c++-format
 msgid "{:.2f} GiB/s"
 msgstr "{:.2f} GiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:25
-#, c++-format
 msgid "{:.2f} MiB/s"
 msgstr "{:.2f} MiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:29
-#, c++-format
 msgid "{:.2f} KiB/s"
 msgstr "{:.2f} KiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:33
-#, c++-format
 msgid "{:.2f} B/s"
 msgstr "{:.2f} B/s"
 
@@ -248,9 +245,8 @@ msgstr "Langue de l’audio"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:107
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:38
-#, fuzzy
 msgid "Subtitles"
-msgstr "Inclure les sous-titres"
+msgstr "Sous-titres"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:118
 msgid "Advanced Options"
@@ -367,12 +363,11 @@ msgstr "Réessayer"
 #: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:140
 #, fuzzy
 msgid "Copy Command to Clipboard"
-msgstr "Copier dans le presse-papier"
+msgstr "Copier la commande dans le presse-papier"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:147
-#, fuzzy
 msgid "Copy Log to Clipboard"
-msgstr "Copier dans le presse-papier"
+msgstr "Copier le journal dans le presse-papier"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/keyring_page.blp:13
 #: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:26
@@ -653,8 +648,9 @@ msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:99
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:50
+#, fuzzy
 msgid "Download Immediately After Validation"
-msgstr ""
+msgstr "Télécharger immédiatement après validation"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:108
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:51
@@ -663,9 +659,8 @@ msgstr "Inclure les sous-titres générés automatiquement"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:117
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:52
-#, fuzzy
 msgid "Preferred Video Codec"
-msgstr "Préférer le codec AV1"
+msgstr "Codec vidéo préféré"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:119
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:53
@@ -932,12 +927,10 @@ msgstr "Fermer"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:146
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:54
-#, fuzzy
 msgid "No Subtitles Available"
-msgstr "Nouvelle mise à jour disponible"
+msgstr "Aucun sous-titre disponible"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:162
-#, c++-format
 msgid "{} items"
 msgstr "{} éléments"
 
@@ -1050,7 +1043,6 @@ msgid "Changelog:"
 msgstr "Journal des changements :"
 
 #: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:39
-#, c++-format
 msgid ""
 "Developers:\n"
 "{}\n"
@@ -1082,8 +1074,9 @@ msgstr "Entrez le mot de passe ici"
 
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:37
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:57
+#, fuzzy
 msgid "General"
-msgstr ""
+msgstr "Général"
 
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:42
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:60
@@ -1115,9 +1108,8 @@ msgid "Language"
 msgstr "Langue de l’audio"
 
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:58
-#, fuzzy
 msgid "Items"
-msgstr "{} éléments"
+msgstr "Éléments"
 
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:154
 msgid ""
@@ -1129,7 +1121,7 @@ msgstr ""
 "les Préférences."
 
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:195
-#, fuzzy, c++-format
+#, fuzzy
 msgid "Items ({})"
 msgstr "Éléments de la liste de lecture ({})"
 
