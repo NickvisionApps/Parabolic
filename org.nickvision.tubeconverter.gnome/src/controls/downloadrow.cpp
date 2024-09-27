@@ -29,6 +29,7 @@ namespace Nickvision::TubeConverter::GNOME::Controls
         else if(args.getStatus() == DownloadStatus::Running)
         {
             gtk_label_set_text(m_builder.get<GtkLabel>("statusLabel"), _("Running"));
+            gtk_widget_set_sensitive(m_builder.get<GtkWidget>("cmdToClipboardButton"), true);
         }
         else
         {
@@ -47,6 +48,8 @@ namespace Nickvision::TubeConverter::GNOME::Controls
         g_signal_connect(m_builder.get<GObject>("playButton"), "clicked", G_CALLBACK(+[](GtkButton*, gpointer data){ reinterpret_cast<DownloadRow*>(data)->play(); }), this);
         g_signal_connect(m_builder.get<GObject>("openButton"), "clicked", G_CALLBACK(+[](GtkButton*, gpointer data){ reinterpret_cast<DownloadRow*>(data)->openFolder(); }), this);
         g_signal_connect(m_builder.get<GObject>("retryButton"), "clicked", G_CALLBACK(+[](GtkButton*, gpointer data){ reinterpret_cast<DownloadRow*>(data)->retry(); }), this);
+        g_signal_connect(m_builder.get<GObject>("cmdToClipboardButton"), "clicked", G_CALLBACK(+[](GtkButton*, gpointer data){ reinterpret_cast<DownloadRow*>(data)->cmdToClipboard(); }), this);
+        g_signal_connect(m_builder.get<GObject>("logToClipboardButton"), "clicked", G_CALLBACK(+[](GtkButton*, gpointer data){ reinterpret_cast<DownloadRow*>(data)->logToClipboard(); }), this);
     }
 
     int DownloadRow::getId()
@@ -67,6 +70,11 @@ namespace Nickvision::TubeConverter::GNOME::Controls
     Event<ParamEventArgs<int>>& DownloadRow::retried()
     {
         return m_retried;
+    }
+
+    Event<ParamEventArgs<int>>& DownloadRow::commandToClipboardRequested()
+    {
+        return m_commandToClipboardRequested;
     }
 
     void DownloadRow::setProgressState(const DownloadProgressChangedEventArgs& args)
@@ -136,6 +144,7 @@ namespace Nickvision::TubeConverter::GNOME::Controls
         gtk_widget_add_css_class(m_builder.get<GtkWidget>("statusIcon"), "stopped");
         gtk_image_set_from_icon_name(m_builder.get<GtkImage>("statusIcon"), "folder-download-symbolic");
         gtk_label_set_text(m_builder.get<GtkLabel>("statusLabel"), _("Running"));
+        gtk_widget_set_sensitive(m_builder.get<GtkWidget>("cmdToClipboardButton"), true);
     }
 
     void DownloadRow::stop()
@@ -166,5 +175,15 @@ namespace Nickvision::TubeConverter::GNOME::Controls
     void DownloadRow::retry()
     {
         m_retried.invoke({ m_id });
+    }
+
+    void DownloadRow::cmdToClipboard()
+    {
+        m_commandToClipboardRequested.invoke({ m_id });
+    }
+
+    void DownloadRow::logToClipboard()
+    {
+        gdk_clipboard_set_text(gdk_display_get_clipboard(gdk_display_get_default()), m_log.c_str());
     }
 }

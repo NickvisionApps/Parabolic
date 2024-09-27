@@ -39,13 +39,14 @@
     <release version="2024.9.0-beta3" date="2024-09-11">
       <description translate="no">
         <p>- Parabolic has been rewritten in C++ for faster performance</p>
-        <p>- The length of the kept download history can now be changed in the app's preferences</p>
-        <p>- Cookies can now be fetched from a selected browser in Preferences instead of selecting a TXT cookies file (on non-sandbox platforms)</p>
-        <p>- Parabolic's Keyring module was rewritten. As a result, all keyrings have been reset and will need to be reconfigured</p>
-        <p>- Parabolic will now correctly recognize audio languages with audio description and handle them separately from audio languages without audio description</p>
-        <p>- Parabolic will now place playlist downloads into a subdirectory with the playlist's title within the chosen save folder</p>
-        <p>- Added the option to allow for immediate download after a URL is validated</p>
-        <p>- Replaced the Prefer AV1 Codec option with a new Video Codec selection option</p>
+        <p>- The Keyring module was rewritten. As a result, all keyrings have been reset and will need to be reconfigured</p>
+        <p>- Audio languages with audio description are now correctly recognized and handled separately from audio languages without audio description</p>
+        <p>- Audio download qualities will now list audio bitrates for the user to choose from</p>
+        <p>- Playlist downloads will now be saved in a subdirectory with the playlist's title within the chosen save folder</p>
+        <p>- The length of the kept download history can now be changed in Preferences</p>
+        <p>- On non-sandbox platforms, a browser can be selected for Parabolic to fetch cookies from instead of selecting a txt file in Preferences</p>
+        <p>- Added an option in Preferences to allow for immediate download after a URL is validated</p>
+        <p>- Added an option in Preferences to pick a preferred video codec for when downloading video media</p>
         <p>- Fixed validation issues with various sites</p>
         <p>- Fixed an issue where a specified video password was not being used</p>
         <p>- Redesigned user interface</p>

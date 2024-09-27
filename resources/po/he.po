@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-26 14:26-0400\n"
+"POT-Creation-Date: 2024-09-27 08:31-0400\n"
 "PO-Revision-Date: 2024-09-16 09:09+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -359,8 +359,14 @@ msgstr "פתיחה"
 msgid "Retry"
 msgstr "ניסיון חוזר"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:135
-msgid "Copy to Clipboard"
+#: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:140
+#, fuzzy
+msgid "Copy Command to Clipboard"
+msgstr "העתקה ללוח הגזירים"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:147
+#, fuzzy
+msgid "Copy Log to Clipboard"
 msgstr "העתקה ללוח הגזירים"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/keyring_page.blp:13
@@ -851,25 +857,25 @@ msgid "Starting download..."
 msgstr "מתחיל הורדה…"
 
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:31
-#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:90
-#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:138
+#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:98
+#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:146
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:39
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:82
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:118
 msgid "Running"
 msgstr "בפעילות"
 
-#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:35
+#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:36
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:44
 msgid "Unknown"
 msgstr "לא ידוע"
 
-#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:78
+#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:86
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:76
 msgid "Processing"
 msgstr "בתהליך"
 
-#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:107
+#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:115
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:107
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:94
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:151
@@ -881,12 +887,12 @@ msgstr "בתהליך"
 msgid "Error"
 msgstr "שגיאה"
 
-#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:115
+#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:123
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:100
 msgid "Success"
 msgstr "הצליחה"
 
-#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:127
+#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:135
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:110
 msgid "Stopped"
 msgstr "נעצרה"
@@ -1008,7 +1014,7 @@ msgstr "אין להציג הודעה זו שוב"
 msgid "Download Again"
 msgstr "להוריד שוב"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:424
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:425
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:57
 msgid "GitHub Repo"
 msgstr "מאגר GitHub"
