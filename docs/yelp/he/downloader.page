@@ -2,13 +2,13 @@
 <page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" id="downloader" its:version="2.0" xml:lang="he">
 <info>
 	<link type="guide" xref="index"/>
-	<title type="link">Downloader 🌐</title>
+	<title type="link">מוריד 🌐</title>
 	<credit type="author copyright">
-		<name>Nicholas Logozzo</name>
+		<name>ניקולס לוגוצו</name>
 		<years its:translate="no">2023-2024</years>
 	</credit>
 	<credit type="publisher copyright">
-		<name>Nicholas Logozzo</name>
+		<name>ניקולס לוגוצו</name>
 		<years its:translate="no">2023-2024</years>
 	</credit>
 	<license href="http://creativecommons.org/licenses/by/4.0/" its:translate="no"><p>Creative Commons Attribution 4.0 International License</p></license>
@@ -20,25 +20,25 @@
 <terms>
     <item>
         <title>דריסת קבצים קיימים</title>
-        <p>If enabled, Parabolic will overwrite existing files.</p>
+        <p>אם האפשרות פעילה, Parabolic ידרוס קבצים קיימים.</p>
         <p>
             For example, if a file named <code>movie.mp4</code> exists in the download folder, and a new download is created named <code>movie</code>, <code>movie.mp4</code> will be overwritten with the new download's content.
         </p>
         <note style="advanced">
-            <p>Default: On</p>
+            <p>ברירת מחדל: פעיל</p>
         </note>
     </item>
 	<item>
-		<title>Maximum Number of Active Downloads</title>
-		<p>The number of active downloads allowed to run at a time. Must be an integer value between 1 and 10.</p>
+		<title>מספר ההורדות הפעילות המרבי</title>
+		<p>מספר ההורדות הפעילות שיכולות לרוץ בו־זמנית. חייב להיות מספר שלם בין 1 ל־10.</p>
         <p>If the max number of active downloads is reached, Parabolic will place new downloads in a queue until more downloads are able to be run.</p>
 		<note style="advanced">
-			<p>Default: 5</p>
+			<p>ברירת מחדל: 5</p>
 		</note>
     </item>
     <item>
-        <title>Included Auto-Generated Subtitles</title>
-        <p>Whether or not to included subtitles that are auto-translated to fit the requested subtitle languages.</p>
+        <title>הכללת כתוביות שנוצרו אוטומטית</title>
+        <p>האם לכלול כתוביות שתורגמו אוטומטית כדי שיתאימו לשפות הכתוביות המבוקשות או שלא.</p>
         <note style="advanced">
             <p>Default: Off</p>
         </note>
@@ -51,41 +51,39 @@
         </note>
     </item>
     <item>
-        <title>Maximum Connections Per Server</title>
-        <p>
-            This option only applies when using aria2 is enabled. This option is the same as the <code>-x</code> flag passed to aria2c.
-        </p>
+        <title>כמות חיבורים מרבית לשרת</title>
+        <p>האפשרות הזאת תקפה רק כש־aria2 פעילה. האפשרות זהה לדגלון <code>-x</code> שמועבר ל־aria2.</p>
         <p>The maximum number of connection that can be used per server. Must be an integer value between 1 and 32.</p>
         <note style="advanced">
-            <p>Default: 16</p>
+            <p>ברירת מחדל: 16</p>
         </note>
     </item>
     <item>
-        <title>Minimum Split Size</title>
+        <title>גודל הפיצול המזערי</title>
         <p>
             This option only applies when using aria2 is enabled. This option is the same as the <code>-k</code> flag passed to aria2c.
         </p>
         <p>The minimum size, in MiB, of which to split a file. Must be an integer value between 1 and 1024.</p>
         <note style="advanced">
-            <p>Default: 20</p>
+            <p>ברירת מחדל: 20</p>
         </note>
     </item>
     <item>
         <title>הגבלת מהירות</title>
         <p>A limit, in Ki/s, that is applied to downloads only if they have the advanced option <code>Speed Limit</code> enabled. Must be an integer value between 512 and 10240.</p>
 		<note style="advanced">
-			<p>Default: 1024</p>
+			<p>ברירת מחדל: 1024</p>
 		</note>
     </item>
     <item>
         <title>כתובת מתווך</title>
-        <p>The url of the proxy server to use.</p>
+        <p>כתובת שרת התיווך לשימוש.</p>
     </item>
     <item>
         <title>עוגיות מדפדפן</title>
-        <p>A browser in which to read cookies from and pass to yt-dlp's download engine.</p>
+        <p>דפדפן לקרוא ממנו עוגיות ולהעביר למנוע ההורדה של yt-dlp.</p>
 		<note style="advanced">
-			<p>Default: None</p>
+			<p>ברירת מחדל: בלי</p>
 		</note>
     </item>
     <item>

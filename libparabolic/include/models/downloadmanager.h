@@ -3,15 +3,18 @@
 
 #include <memory>
 #include <mutex>
+#include <optional>
 #include <unordered_map>
 #include <vector>
 #include <libnick/events/event.h>
 #include <libnick/events/parameventargs.h>
+#include <libnick/keyring/credential.h>
 #include <libnick/logging/logger.h>
 #include "historicdownload.h"
 #include "download.h"
 #include "downloaderoptions.h"
 #include "downloadhistory.h"
+#include "urlinfo.h"
 #include "events/downloadaddedeventargs.h"
 #include "events/downloadcompletedeventargs.h"
 #include "events/downloadprogresschangedeventargs.h"
@@ -107,6 +110,12 @@ namespace Nickvision::TubeConverter::Shared::Models
          */
         const std::string& getDownloadLog(int id) const;
         /**
+         * @brief Gets the command used to start a download.
+         * @param id The id of the download
+         * @return The download command
+         */
+        const std::string& getDownloadCommand(int id) const;
+        /**
          * @brief Gets the status of a download.
          * @param id The id of the download
          * @return The download status
@@ -128,6 +137,13 @@ namespace Nickvision::TubeConverter::Shared::Models
          * @param download The historic download to remove
          */
         void removeHistoricDownload(const HistoricDownload& download);
+        /**
+         * @brief Fetches information about a URL.
+         * @param url The URL to fetch information for
+         * @param credential An optional credential to use for authentication
+         * @return The UrlInfo if successful, else std::nullopt
+         */
+        std::optional<UrlInfo> fetchUrlInfo(const std::string& url, const std::optional<Keyring::Credential>& credential) const;
         /**
          * @brief Adds a download to the queue.
          * @brief This will invoke the downloadAdded event if added successfully.

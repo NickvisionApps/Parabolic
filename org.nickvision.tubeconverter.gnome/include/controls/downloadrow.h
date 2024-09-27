@@ -46,6 +46,11 @@ namespace Nickvision::TubeConverter::GNOME::Controls
          */
         Events::Event<Events::ParamEventArgs<int>>& retried();
         /**
+         * @brief Gets the event for when the request is made to copy the download command to the clipboard.
+         * @return The command to clipboard request event
+         */
+        Events::Event<Events::ParamEventArgs<int>>& commandToClipboardRequested();
+        /**
          * @brief Updates the row with the new download progress.
          * @param args DownloadProgressChangedEventArgs
          */
@@ -80,11 +85,20 @@ namespace Nickvision::TubeConverter::GNOME::Controls
          * @brief Retries the download.
          */
         void retry();
+        /**
+         * @brief Copies the download command to the clipboard.
+         */
+        void cmdToClipboard();
+        /**
+         * @brief Copies the download log to the clipboard.
+         */
+        void logToClipboard();
         int m_id;
         std::string m_log;
         std::filesystem::path m_path;
         Events::Event<Events::ParamEventArgs<int>> m_stopped;
         Events::Event<Events::ParamEventArgs<int>> m_retried;
+        Events::Event<Events::ParamEventArgs<int>> m_commandToClipboardRequested;
         bool m_pulseBar;
     };
 }

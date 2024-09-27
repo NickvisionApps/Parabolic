@@ -47,13 +47,6 @@ namespace Nickvision::TubeConverter::Shared::Events
          * @return The log of the download
          */
         const std::string& getLog() const;
-        /**
-         * @brief Outputs the DownloadProgressChangedEventArgs to an output stream.
-         * @param os The output stream
-         * @param media The DownloadProgressChangedEventArgs
-         * @return The output stream
-         */
-        friend std::ostream& operator<<(std::ostream& os, const DownloadProgressChangedEventArgs& args);
 
     private:
         int m_id;

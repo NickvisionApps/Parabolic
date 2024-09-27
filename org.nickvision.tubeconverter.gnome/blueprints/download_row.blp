@@ -125,16 +125,29 @@ Adw.Bin root {
       visible: bind viewLogButton.active;
 
       [overlay]
-      Gtk.Button logToClipboardButton {
+      Gtk.Box {
+        orientation: horizontal;
+        spacing: 6;
         vexpand: true;
         halign: end;
         valign: end;
         margin-bottom: 7;
         margin-end: 15;
-        icon-name: "edit-copy-symbolic";
-        tooltip-text: _("Copy to Clipboard");
 
-        styles [ "opaque" ]
+        Gtk.Button cmdToClipboardButton {
+          sensitive: false;
+          icon-name: "container-terminal-symbolic";
+          tooltip-text: _("Copy Command to Clipboard");
+
+          styles [ "opaque" ]
+        }
+
+        Gtk.Button logToClipboardButton {
+          icon-name: "edit-copy-symbolic";
+          tooltip-text: _("Copy Log to Clipboard");
+
+          styles [ "opaque" ]
+        }
       }
 
       Gtk.ScrolledWindow {

@@ -16,6 +16,7 @@ add_library(libparabolic
     "src/models/downloadhistory.cpp"
     "src/models/downloadmanager.cpp"
     "src/models/downloadoptions.cpp"
+    "src/models/format.cpp"
     "src/models/historicdownload.cpp"
     "src/models/media.cpp"
     "src/models/mediafiletype.cpp"

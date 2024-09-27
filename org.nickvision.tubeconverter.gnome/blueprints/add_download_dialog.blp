@@ -99,8 +99,19 @@ Adw.Dialog root {
               title: _("Quality");
             }
 
-            Adw.SwitchRow downloadSubtitlesSingleRow {
-              title: _("Download Subtitles");
+            Adw.ComboRow audioLanguageSingleRow {
+              title: _("Audio Language");
+            }
+
+            Adw.ActionRow subtitlesSingleRow {
+              title: _("Subtitles");
+              activatable-widget: subtitlesSingleImage;
+
+              [suffix]
+              Gtk.Image subtitlesSingleImage {
+                valign: center;
+                icon-name: "right-symbolic";
+              }
             }
 
             Adw.ActionRow advancedOptionsSingleRow {
@@ -143,10 +154,6 @@ Adw.Dialog root {
                 styles ["flat"]
               }
             }
-
-            Adw.SwitchRow limitSpeedSingleRow {
-              title: _("Limit Download Speed");
-            }
           }
 
           Gtk.Button downloadSingleButton {
@@ -154,6 +161,25 @@ Adw.Dialog root {
             label: _("Download");
 
             styles ["pill", "suggested-action"]
+          }
+        };
+      }
+
+      Adw.ViewStackPage {
+        name: "download-single-subtitles";
+        child: Gtk.Box {
+          orientation: vertical;
+          spacing: 16;
+          margin-start: 16;
+          margin-end: 16;
+          margin-bottom: 16;
+
+          Gtk.ScrolledWindow {
+            hexpand: true;
+            vexpand: true;
+            min-content-width: 328;
+            min-content-height: 400;
+            child: Adw.PreferencesGroup subtitlesSingleGroup { };
           }
         };
       }
@@ -168,16 +194,12 @@ Adw.Dialog root {
           margin-bottom: 16;
 
           Adw.PreferencesGroup {
-            Adw.ComboRow audioLanguageSingleRow {
-              title: _("Audio Language");
-            }
-
-            Adw.ComboRow videoCodecSingleRow {
-              title: _("Video Codec");
-            }
-
             Adw.SwitchRow splitChaptersSingleRow {
               title: _("Split Videos by Chapters");
+            }
+
+            Adw.SwitchRow limitSpeedSingleRow {
+              title: _("Limit Download Speed");
             }
 
             Adw.EntryRow startTimeSingleRow {
@@ -223,16 +245,12 @@ Adw.Dialog root {
               title: _("File Type");
             }
 
-            Adw.SwitchRow downloadSubtitlesPlaylistRow {
-              title: _("Download Subtitles");
-            }
-
-            Adw.SwitchRow videoCodecPlaylistRow {
-              title: _("Video Codec");
-            }
-
             Adw.SwitchRow splitChaptersPlaylistRow {
               title: _("Split Videos by Chapters");
+            }
+
+            Adw.SwitchRow limitSpeedPlaylistRow {
+              title: _("Limit Download Speed");
             }
           }
 
@@ -261,10 +279,6 @@ Adw.Dialog root {
                 valign: center;
                 icon-name: "right-symbolic";
               }
-            }
-
-            Adw.SwitchRow limitSpeedPlaylistRow {
-              title: _("Limit Download Speed");
             }
           }
 

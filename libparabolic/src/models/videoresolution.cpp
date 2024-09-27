@@ -94,9 +94,4 @@ namespace Nickvision::TubeConverter::Shared::Models
     {
         return isValid();
     }
-
-    std::ostream& operator<<(std::ostream& os, const VideoResolution& resolution)
-    {
-        return os << resolution.str();
-    }
 }

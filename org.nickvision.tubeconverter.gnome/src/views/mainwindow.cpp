@@ -308,6 +308,7 @@ namespace Nickvision::TubeConverter::GNOME::Views
         ControlPtr<DownloadRow> row{ args, GTK_WINDOW(m_window) };
         row->stopped() += [this](const ParamEventArgs<int>& args){ m_controller->getDownloadManager().stopDownload(args.getParam()); };
         row->retried() += [this](const ParamEventArgs<int>& args){ m_controller->getDownloadManager().retryDownload(args.getParam()); };
+        row->commandToClipboardRequested() += [this](const ParamEventArgs<int>& args){ gdk_clipboard_set_text(gdk_display_get_clipboard(gdk_display_get_default()), m_controller->getDownloadManager().getDownloadCommand(args.getParam()).c_str()); };
         if(args.getStatus() == DownloadStatus::Queued)
         {
             GtkHelpers::addToBox(m_builder.get<GtkBox>("listQueued"), GTK_WIDGET(row->gobj()), true);

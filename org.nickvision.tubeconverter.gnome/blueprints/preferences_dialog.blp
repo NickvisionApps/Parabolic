@@ -112,6 +112,18 @@ Adw.PreferencesDialog root {
           icon-name: "brain-augemented-symbolic";
         }
       }
+
+      Adw.ComboRow preferredVideoCodecRow {
+        title: _("Preferred Video Codec");
+        model: Gtk.StringList {
+          strings [_("Any"), "VP9", "AV1", "H.264"]
+        };
+
+        [prefix]
+        Gtk.Image {
+          icon-name: "video-encoder-symbolic";
+        }
+      }
     }
 
     Adw.PreferencesGroup {

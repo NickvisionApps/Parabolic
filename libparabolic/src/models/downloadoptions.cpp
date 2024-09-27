@@ -10,9 +10,7 @@ namespace Nickvision::TubeConverter::Shared::Models
 {
     DownloadOptions::DownloadOptions()
         : m_fileType{ MediaFileType::MP4 },
-        m_downloadSubtitles{ false },
         m_limitSpeed{ false },
-        m_videoCodec{ VideoCodec::VP9 },
         m_splitChapters{ false }
     {
 
@@ -21,9 +19,7 @@ namespace Nickvision::TubeConverter::Shared::Models
     DownloadOptions::DownloadOptions(const std::string& url)
         : m_url{ url },
         m_fileType{ MediaFileType::MP4 },
-        m_downloadSubtitles{ false },
         m_limitSpeed{ false },
-        m_videoCodec{ VideoCodec::VP9 },
         m_splitChapters{ false }
     {
 
@@ -59,14 +55,24 @@ namespace Nickvision::TubeConverter::Shared::Models
         m_fileType = fileType;
     }
 
-    const std::variant<Quality, VideoResolution>& DownloadOptions::getQuality() const
+    const std::optional<Format>& DownloadOptions::getVideoFormat() const
     {
-        return m_quality;
+        return m_videoFormat;
     }
 
-    void DownloadOptions::setQuality(const std::variant<Quality, VideoResolution>& quality)
+    void DownloadOptions::setVideoFormat(const std::optional<Format>& videoFormat)
     {
-        m_quality = quality;
+        m_videoFormat = videoFormat;
+    }
+
+    const std::optional<Format>& DownloadOptions::getAudioFormat() const
+    {
+        return m_audioFormat;
+    }
+
+    void DownloadOptions::setAudioFormat(const std::optional<Format>& audioFormat)
+    {
+        m_audioFormat = audioFormat;
     }
 
     const std::filesystem::path& DownloadOptions::getSaveFolder() const
@@ -89,24 +95,14 @@ namespace Nickvision::TubeConverter::Shared::Models
         m_saveFilename = saveFilename;
     }
 
-    const std::string& DownloadOptions::getAudioLanguage() const
+    const std::vector<std::string>& DownloadOptions::getSubtitleLanguages() const
     {
-        return m_audioLanguage;
+        return m_subtitleLanguages;
     }
 
-    void DownloadOptions::setAudioLanguage(const std::string& audioLanguage)
+    void DownloadOptions::setSubtitleLanguages(const std::vector<std::string>& subtitleLanguages)
     {
-        m_audioLanguage = audioLanguage;
-    }
-
-    bool DownloadOptions::getDownloadSubtitles() const
-    {
-        return m_downloadSubtitles;
-    }
-
-    void DownloadOptions::setDownloadSubtitles(bool downloadSubtitles)
-    {
-        m_downloadSubtitles = downloadSubtitles;
+        m_subtitleLanguages = subtitleLanguages;
     }
 
     bool DownloadOptions::getLimitSpeed() const
@@ -121,16 +117,6 @@ namespace Nickvision::TubeConverter::Shared::Models
             return;
         }
         m_limitSpeed = limitSpeed;
-    }
-
-    VideoCodec DownloadOptions::getVideoCodec() const
-    {
-        return m_videoCodec;
-    }
-
-    void DownloadOptions::setVideoCodec(VideoCodec codec)
-    {
-        m_videoCodec = codec;
     }
 
     bool DownloadOptions::getSplitChapters() const
@@ -167,7 +153,7 @@ namespace Nickvision::TubeConverter::Shared::Models
         arguments.push_back("--progress");
         arguments.push_back("--newline");;
         arguments.push_back("--progress-template");
-        arguments.push_back("\"[download] PROGRESS;%(progress.status)s;%(progress.downloaded_bytes)s;%(progress.total_bytes)s;%(progress.total_bytes_estimate)s;%(progress.speed)s\"");
+        arguments.push_back("[download] PROGRESS;%(progress.status)s;%(progress.downloaded_bytes)s;%(progress.total_bytes)s;%(progress.total_bytes_estimate)s;%(progress.speed)s");
         arguments.push_back("--no-mtime");
         arguments.push_back("--ffmpeg-location");
         arguments.push_back(Environment::findDependency("ffmpeg").string());
@@ -264,15 +250,13 @@ namespace Nickvision::TubeConverter::Shared::Models
             if(m_fileType.supportsThumbnails())
             {
                 arguments.push_back("--embed-thumbnail");
-                arguments.push_back("--convert-thumbnails");
-                arguments.push_back("jpg");
             }
             else
             {
                 arguments.push_back("--write-thumbnail");
-                arguments.push_back("--convert-thumbnails");
-                arguments.push_back("jpg");
             }
+            arguments.push_back("--convert-thumbnails");
+            arguments.push_back("jpg");
             if(downloaderOptions.getCropAudioThumbnails())
             {
                 arguments.push_back("--postprocessor-args");
@@ -293,97 +277,29 @@ namespace Nickvision::TubeConverter::Shared::Models
             arguments.push_back("--extract-audio");
             arguments.push_back("--audio-format");
             arguments.push_back(StringHelpers::lower(m_fileType.str()));
-            if(m_quality.index() == 0)
-            {
-                arguments.push_back("--audio-quality");
-                switch(std::get<Quality>(m_quality))
-                {
-                case Quality::Best:
-                    arguments.push_back("0");
-                    break;
-                case Quality::Good:
-                    arguments.push_back("5");
-                    break;
-                case Quality::Worst:
-                    arguments.push_back("10");
-                    break;
-                default:
-                    break;
-                }
-            }
-            if(!m_audioLanguage.empty())
-            {
-                arguments.push_back("--format");
-                size_t find{ m_audioLanguage.find(" (audio_description)") };
-                if(find == std::string::npos)
-                {
-                    arguments.push_back("(ba[language=" + m_audioLanguage + "]/b)[format_id!*=?audiodesc]");
-                }
-                else
-                {
-                    std::string language{ m_audioLanguage.substr(0, find) };
-                    arguments.push_back("(ba[language=" + language + "]/b)[format_id*=?audiodesc]");
-                }
-            }
         }
         else if(m_fileType.isVideo())
         {
-            std::string vcodec;
-            switch(m_videoCodec)
-            {
-            case VideoCodec::VP9:
-                vcodec = "[vcodec=vp9]";
-                break;
-            case VideoCodec::AV01:
-                vcodec = "[vcodec=av01]";
-                break;
-            case VideoCodec::H264:
-                vcodec = "[vcodec=h264]";
-                break;
-            }
             arguments.push_back("--remux-video");
             arguments.push_back(StringHelpers::lower(m_fileType.str()));
-            if(m_quality.index() == 1)
-            {
-                VideoResolution resolution{ std::get<VideoResolution>(m_quality) };
-                arguments.push_back("--format");
-                if(!resolution.isBest())
-                {
-                    size_t find{ m_audioLanguage.find(" (audio_description)") };
-                    if(m_audioLanguage.empty())
-                    {
-                        arguments.push_back("bv[height<=" + std::to_string(resolution.getHeight()) + "][width<=" + std::to_string(resolution.getWidth()) + "]" + vcodec + "+ba/b");
-                    }
-                    else if(find == std::string::npos)
-                    {
-                        arguments.push_back("(bv[height<=" + std::to_string(resolution.getHeight()) + "][width<=" + std::to_string(resolution.getWidth()) + "]" + vcodec + "+ba[language= " + m_audioLanguage + "]/b)[format_id!*=?audiodesc]");
-                    }
-                    else
-                    {
-                        std::string language{ m_audioLanguage.substr(0, find) };
-                        arguments.push_back("(bv[height<=" + std::to_string(resolution.getHeight()) + "][width<=" + std::to_string(resolution.getWidth()) + "]" + vcodec + "+ba[language= " + language + "]/b)[format_id*=?audiodesc]");
-                    }
-                }
-                else
-                {
-                    size_t find{ m_audioLanguage.find(" (audio_description)") };
-                    if(m_audioLanguage.empty())
-                    {
-                        arguments.push_back("bv" + vcodec + "+ba/b");
-                    }
-                    else if(find == std::string::npos)
-                    {
-                        arguments.push_back("(bv" + vcodec + "+ba[language= " + m_audioLanguage + "]/b)[format_id!*=?audiodesc]");
-                    }
-                    else
-                    {
-                        std::string language{ m_audioLanguage.substr(0, find) };
-                        arguments.push_back("(bv" + vcodec + "+ba[language= " + language + "]/b)[format_id*=?audiodesc]");
-                    }
-                }
-                
-            }
-        };
+        }
+        arguments.push_back("--format");
+        if(m_videoFormat && m_audioFormat)
+        {
+            arguments.push_back(m_videoFormat->getId() + "+" + m_audioFormat->getId());
+        }
+        else if(m_videoFormat)
+        {
+            arguments.push_back(m_videoFormat->getId() + "+ba/b");
+        }
+        else if(m_audioFormat)
+        {
+            arguments.push_back("bv+" + m_audioFormat->getId() + "/b");
+        }
+        else
+        {
+            arguments.push_back("bv+ba/b");
+        }
         if(!std::filesystem::exists(m_saveFolder))
         {
             std::filesystem::create_directories(m_saveFolder);
@@ -394,8 +310,10 @@ namespace Nickvision::TubeConverter::Shared::Models
         arguments.push_back(m_saveFilename + ".%(ext)s");
         arguments.push_back("--output");
         arguments.push_back("chapter:%(section_number)03d - " + m_saveFilename + ".%(ext)s");
-        if(m_downloadSubtitles)
+        if(!m_subtitleLanguages.empty())
         {
+            std::string languages{ StringHelpers::join(m_subtitleLanguages, ",") };
+            languages += ",-live_chat";
             if(downloaderOptions.getEmbedSubtitles())
             {
                 arguments.push_back("--embed-subs");
@@ -406,7 +324,7 @@ namespace Nickvision::TubeConverter::Shared::Models
                 arguments.push_back("--write-auto-subs");
             }
             arguments.push_back("--sub-langs");
-            arguments.push_back("all,-live_chat");
+            arguments.push_back(languages);
         }
         if(m_limitSpeed)
         {

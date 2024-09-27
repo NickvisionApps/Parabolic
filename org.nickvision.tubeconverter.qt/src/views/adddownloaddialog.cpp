@@ -34,12 +34,15 @@ namespace Nickvision::TubeConverter::QT::Views
         m_ui->lblPassword->setText(_("Password"));
         m_ui->txtPassword->setPlaceholderText(_("Enter password here"));
         m_ui->btnValidate->setText(_("Validate"));
+        m_ui->tabsSingle->setTabText(0, _("General"));
+        m_ui->tabsSingle->setTabText(1, _("Subtitles"));
         m_ui->lblFileTypeSingle->setText(_("File Type"));
         m_ui->lblQualitySingle->setText(_("Quality"));
         m_ui->lblAudioLanguageSingle->setText(_("Audio Language"));
-        m_ui->lblDownloadSubtitlesSingle->setText(_("Download Subtitles"));
-        m_ui->lblVideoCodecSingle->setText(_("Video Codec"));
         m_ui->lblSplitChaptersSingle->setText(_("Split Video by Chapters"));
+        m_ui->lblLimitSpeedSingle->setText(_("Limit Download Speed"));
+        m_ui->lblTimeFrameStartSingle->setText(_("Start Time"));
+        m_ui->lblTimeFrameEndSingle->setText(_("End Time"));
         m_ui->lblSaveFolderSingle->setText(_("Save Folder"));
         m_ui->txtSaveFolderSingle->setPlaceholderText(_("Select save folder"));
         m_ui->btnSelectSaveFolderSingle->setText(_("Select"));
@@ -48,20 +51,19 @@ namespace Nickvision::TubeConverter::QT::Views
         m_ui->txtFilenameSingle->setPlaceholderText(_("Enter file name here"));
         m_ui->btnRevertFilenameSingle->setText(_("Revert"));
         m_ui->btnRevertFilenameSingle->setToolTip(_("Revert to Title"));
-        m_ui->lblTimeFrameStartSingle->setText(_("Start Time"));
-        m_ui->lblTimeFrameEndSingle->setText(_("End Time"));
-        m_ui->lblLimitSpeedSingle->setText(_("Limit Download Speed"));
+        m_ui->lblNoSubtitlesSingle->setText(_("No Subtitles Available"));
+        m_ui->tblSubtitlesSingle->setHorizontalHeaderLabels({ _("Download"), _("Language") });
         m_ui->btnDownloadSingle->setText(_("Download"));
+        m_ui->tabsPlaylist->setTabText(0, _("General"));
+        m_ui->tabsPlaylist->setTabText(1, _("Items"));
         m_ui->lblFileTypePlaylist->setText(_("File Type"));
-        m_ui->lblDownloadSubtitlesPlaylist->setText(_("Download Subtitles"));
-        m_ui->lblVideoCodecPlaylist->setText(_("Video Codec"));
         m_ui->lblSplitChaptersPlaylist->setText(_("Split Video by Chapters"));
         m_ui->lblLimitSpeedPlaylist->setText(_("Limit Download Speed"));
-        m_ui->lblNumberTitlesPlaylist->setText(_("Number Titles"));
         m_ui->lblSaveFolderPlaylist->setText(_("Save Folder"));
         m_ui->txtSaveFolderPlaylist->setPlaceholderText(_("Select save folder"));
         m_ui->btnSelectSaveFolderPlaylist->setText(_("Select"));
         m_ui->btnSelectSaveFolderPlaylist->setToolTip(_("Select Save Folder"));
+        m_ui->lblNumberTitlesPlaylist->setText(_("Number Titles"));
         m_ui->tblItemsPlaylist->setHorizontalHeaderLabels({ _("Download"), _("File Name"), "" });
         m_ui->btnDownloadPlaylist->setText(_("Download"));
         //Load Validate Page
@@ -88,7 +90,8 @@ namespace Nickvision::TubeConverter::QT::Views
         connect(m_ui->txtMediaUrl, &QLineEdit::textChanged, this, &AddDownloadDialog::onTxtUrlChanged);
         connect(m_ui->cmbAuthenticate, &QComboBox::currentIndexChanged, this, &AddDownloadDialog::onCmbAuthenticateChanged);
         connect(m_ui->btnValidate, &QPushButton::clicked, this, &AddDownloadDialog::validateUrl);
-        connect(m_ui->cmbFileTypeSingle, &QComboBox::currentIndexChanged, this, &AddDownloadDialog::onCmbFileTypeSingleChanged);
+        connect(m_ui->cmbFileTypeSingle, &QComboBox::currentIndexChanged, this, &AddDownloadDialog::onCmbQualitySingleChanged);
+        connect(m_ui->cmbAudioLanguageSingle, &QComboBox::currentIndexChanged, this, &AddDownloadDialog::onCmbQualitySingleChanged);
         connect(m_ui->btnSelectSaveFolderSingle, &QPushButton::clicked, this, &AddDownloadDialog::selectSaveFolderSingle);
         connect(m_ui->btnRevertFilenameSingle, &QPushButton::clicked, this, &AddDownloadDialog::revertFilenameSingle);
         connect(m_ui->btnDownloadSingle, &QPushButton::clicked, this, &AddDownloadDialog::downloadSingle);
@@ -152,38 +155,50 @@ namespace Nickvision::TubeConverter::QT::Views
             m_ui->viewStack->setCurrentIndex(0);
             return;
         }
-        if(!m_controller->isUrlPlaylist())
+        if(!m_controller->isUrlPlaylist()) //Single Download
         {
             m_ui->viewStack->setCurrentIndex(2);
+            m_ui->tabsSingle->setCurrentIndex(0);
+            //Load Options
             QTHelpers::setComboBoxItems(m_ui->cmbFileTypeSingle, m_controller->getFileTypeStrings());
             m_ui->cmbFileTypeSingle->setCurrentIndex(static_cast<int>(m_controller->getPreviousDownloadOptions().getFileType()));
-            QTHelpers::setComboBoxItems(m_ui->cmbQualitySingle, m_controller->getQualityStrings(m_ui->cmbFileTypeSingle->currentIndex()));
             QTHelpers::setComboBoxItems(m_ui->cmbAudioLanguageSingle, m_controller->getAudioLanguageStrings());
-            m_ui->chkDownloadSubtitlesSingle->setChecked(m_controller->getPreviousDownloadOptions().getDownloadSubtitles());
-            QTHelpers::setComboBoxItems(m_ui->cmbVideoCodecSingle, m_controller->getVideoCodecStrings());
-            m_ui->cmbVideoCodecSingle->setCurrentIndex(static_cast<int>(m_controller->getPreviousDownloadOptions().getVideoCodec()));
+            QTHelpers::setComboBoxItems(m_ui->cmbQualitySingle, m_controller->getQualityStrings(m_ui->cmbFileTypeSingle->currentIndex(), m_ui->cmbAudioLanguageSingle->currentIndex()));
             m_ui->chkSplitChaptersSingle->setChecked(m_controller->getPreviousDownloadOptions().getSplitChapters());
+            m_ui->chkLimitSpeedSingle->setChecked(m_controller->getPreviousDownloadOptions().getLimitSpeed());
             m_ui->txtSaveFolderSingle->setText(QString::fromStdString(m_controller->getPreviousDownloadOptions().getSaveFolder().string()));
             m_ui->txtFilenameSingle->setText(QString::fromStdString(m_controller->getMediaTitle(0)));
             m_ui->txtTimeFrameStartSingle->setText(QString::fromStdString(m_controller->getMediaTimeFrame(0).startStr()));
             m_ui->txtTimeFrameStartSingle->setPlaceholderText(QString::fromStdString(m_controller->getMediaTimeFrame(0).startStr()));
             m_ui->txtTimeFrameEndSingle->setText(QString::fromStdString(m_controller->getMediaTimeFrame(0).endStr()));
             m_ui->txtTimeFrameEndSingle->setPlaceholderText(QString::fromStdString(m_controller->getMediaTimeFrame(0).endStr()));
-            m_ui->chkLimitSpeedSingle->setChecked(m_controller->getPreviousDownloadOptions().getLimitSpeed());
+            //Load Subtitles
+            std::vector<std::string> subtitles{ m_controller->getSubtitleLanguageStrings() };
+            for(size_t i = 0; i < subtitles.size(); i++)
+            {
+                QCheckBox* chk{ new QCheckBox(m_ui->tblSubtitlesSingle) };
+                chk->setChecked(false);
+                QTableWidgetItem* item{ new QTableWidgetItem(QString::fromStdString(subtitles[i])) };
+                item->setFlags(item->flags() ^ Qt::ItemIsEditable);
+                m_ui->tblSubtitlesSingle->insertRow(static_cast<int>(i));
+                m_ui->tblSubtitlesSingle->setCellWidget(static_cast<int>(i), 0, chk);
+                m_ui->tblSubtitlesSingle->setItem(static_cast<int>(i), 1, item);
+            }
+            m_ui->tblSubtitlesSingle->resizeColumnToContents(0);
+            m_ui->tblSubtitlesSingle->setColumnWidth(1, m_ui->tblItemsPlaylist->width() - m_ui->tblItemsPlaylist->columnWidth(0) - 40);
+            m_ui->viewStackSubtitlesSingle->setCurrentIndex(subtitles.empty() ? 0 : 1);
         }
-        else
+        else //Playlist Download
         {
             m_ui->viewStack->setCurrentIndex(3);
-            m_ui->lblItemsPlaylist->setText(QString::fromStdString(std::vformat(_("Playlist Items ({})"), std::make_format_args(CodeHelpers::unmove(m_controller->getMediaCount())))));
+            m_ui->tabsPlaylist->setCurrentIndex(0);
+            m_ui->tabsPlaylist->setTabText(1, QString::fromStdString(std::vformat(_("Items ({})"), std::make_format_args(CodeHelpers::unmove(m_controller->getMediaCount())))));
             QTHelpers::setComboBoxItems(m_ui->cmbFileTypePlaylist, m_controller->getFileTypeStrings());
             m_ui->cmbFileTypePlaylist->setCurrentIndex(static_cast<int>(m_controller->getPreviousDownloadOptions().getFileType()));
-            m_ui->chkDownloadSubtitlesPlaylist->setChecked(m_controller->getPreviousDownloadOptions().getDownloadSubtitles());
-            QTHelpers::setComboBoxItems(m_ui->cmbVideoCodecPlaylist, m_controller->getVideoCodecStrings());
-            m_ui->cmbVideoCodecPlaylist->setCurrentIndex(static_cast<int>(m_controller->getPreviousDownloadOptions().getVideoCodec()));
             m_ui->chkSplitChaptersPlaylist->setChecked(m_controller->getPreviousDownloadOptions().getSplitChapters());
             m_ui->chkLimitSpeedPlaylist->setChecked(m_controller->getPreviousDownloadOptions().getLimitSpeed());
-            m_ui->chkNumberTitlesPlaylist->setChecked(m_controller->getPreviousDownloadOptions().getNumberTitles());
             m_ui->txtSaveFolderPlaylist->setText(QString::fromStdString(m_controller->getPreviousDownloadOptions().getSaveFolder().string()));
+            m_ui->chkNumberTitlesPlaylist->setChecked(m_controller->getPreviousDownloadOptions().getNumberTitles());
             for(size_t i = 0; i < m_controller->getMediaCount(); i++)
             {
                 QCheckBox* chk{ new QCheckBox(m_ui->tblItemsPlaylist) };
@@ -216,9 +231,9 @@ namespace Nickvision::TubeConverter::QT::Views
         }
     }
 
-    void AddDownloadDialog::onCmbFileTypeSingleChanged(int index)
+    void AddDownloadDialog::onCmbQualitySingleChanged(int index)
     {
-        QTHelpers::setComboBoxItems(m_ui->cmbQualitySingle, m_controller->getQualityStrings(index));
+        QTHelpers::setComboBoxItems(m_ui->cmbQualitySingle, m_controller->getQualityStrings(m_ui->cmbFileTypeSingle->currentIndex(), m_ui->cmbAudioLanguageSingle->currentIndex()));
     }
 
     void AddDownloadDialog::selectSaveFolderSingle()
@@ -237,7 +252,16 @@ namespace Nickvision::TubeConverter::QT::Views
     
     void AddDownloadDialog::downloadSingle()
     {
-        m_controller->addSingleDownload(m_ui->txtSaveFolderSingle->text().toStdString(), m_ui->txtFilenameSingle->text().toStdString(), m_ui->cmbFileTypeSingle->currentIndex(), m_ui->cmbQualitySingle->currentIndex(), m_ui->cmbAudioLanguageSingle->currentIndex(), m_ui->chkDownloadSubtitlesSingle->isChecked(), m_ui->cmbVideoCodecSingle->currentIndex(), m_ui->chkSplitChaptersSingle->isChecked(), m_ui->chkLimitSpeedSingle->isChecked(), m_ui->txtTimeFrameStartSingle->text().toStdString(), m_ui->txtTimeFrameEndSingle->text().toStdString());
+        std::vector<std::string> subtitles;
+        for(int i = 0; i < m_ui->tblSubtitlesSingle->rowCount(); i++)
+        {
+            QCheckBox* chk{ static_cast<QCheckBox*>(m_ui->tblSubtitlesSingle->cellWidget(i, 0)) };
+            if(chk->isChecked())
+            {
+                subtitles.push_back(m_ui->tblSubtitlesSingle->item(i, 1)->text().toStdString());
+            }
+        }
+        m_controller->addSingleDownload(m_ui->txtSaveFolderSingle->text().toStdString(), m_ui->txtFilenameSingle->text().toStdString(), m_ui->cmbFileTypeSingle->currentIndex(), m_ui->cmbQualitySingle->currentIndex(), m_ui->cmbAudioLanguageSingle->currentIndex(), subtitles, m_ui->chkSplitChaptersSingle->isChecked(), m_ui->chkLimitSpeedSingle->isChecked(), m_ui->txtTimeFrameStartSingle->text().toStdString(), m_ui->txtTimeFrameEndSingle->text().toStdString());
         accept();
     }
 
@@ -269,7 +293,7 @@ namespace Nickvision::TubeConverter::QT::Views
                 filenames.emplace(static_cast<size_t>(i), m_ui->tblItemsPlaylist->item(i, 1)->text().toStdString());
             }
         }
-        m_controller->addPlaylistDownload(m_ui->txtSaveFolderPlaylist->text().toStdString(), filenames, m_ui->cmbFileTypePlaylist->currentIndex(), m_ui->chkDownloadSubtitlesPlaylist->isChecked(), m_ui->cmbVideoCodecPlaylist->currentIndex(), m_ui->chkSplitChaptersPlaylist->isChecked(), m_ui->chkLimitSpeedPlaylist->isChecked());
+        m_controller->addPlaylistDownload(m_ui->txtSaveFolderPlaylist->text().toStdString(), filenames, m_ui->cmbFileTypePlaylist->currentIndex(), m_ui->chkSplitChaptersPlaylist->isChecked(), m_ui->chkLimitSpeedPlaylist->isChecked());
         accept();
     }
 }

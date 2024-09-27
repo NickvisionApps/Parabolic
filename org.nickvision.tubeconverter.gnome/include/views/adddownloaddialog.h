@@ -45,11 +45,15 @@ namespace Nickvision::TubeConverter::GNOME::Views
          */
         void back();
         /**
-         * @brief Handles when the single file type combobox is changed.
+         * @brief Handles when the single quality comboboxs are changed.
          */
-        void onFileTypeSingleChanged();
+        void onQualitySingleChanged();
         /**
-         * @brief Shows the advanced options for a single download.
+         * @brief Shows the subtitles page for a single download.
+         */
+        void subtitlesSingle();
+        /**
+         * @brief Shows the advanced options page for a single download.
          */
         void advancedOptionsSingle();
         /**
@@ -89,6 +93,8 @@ namespace Nickvision::TubeConverter::GNOME::Views
          */
         void downloadPlaylist();
         std::shared_ptr<Shared::Controllers::AddDownloadDialogController> m_controller;
+        std::vector<AdwActionRow*> m_singleSubtitleRows;
+        std::vector<GtkCheckButton*> m_singleSubtitleCheckButtons;
         std::vector<AdwEntryRow*> m_playlistItemRows;
         std::vector<GtkCheckButton*> m_playlistItemCheckButtons;
     };
