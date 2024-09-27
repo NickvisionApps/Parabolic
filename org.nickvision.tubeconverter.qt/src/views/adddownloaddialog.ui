@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>377</width>
-    <height>430</height>
+    <height>432</height>
    </rect>
   </property>
   <property name="modal">
@@ -124,104 +124,165 @@
         <number>6</number>
        </property>
        <item>
-        <layout class="QGridLayout" name="gridLayout_2">
-         <property name="spacing">
-          <number>8</number>
+        <widget class="QTabWidget" name="tabsSingle">
+         <property name="currentIndex">
+          <number>1</number>
          </property>
-         <item row="7" column="0" colspan="2">
-          <widget class="QLineEdit" name="txtFilenameSingle"/>
-         </item>
-         <item row="0" column="1">
-          <widget class="QLabel" name="lblQualitySingle"/>
-         </item>
-         <item row="0" column="0">
-          <widget class="QLabel" name="lblFileTypeSingle"/>
-         </item>
-         <item row="2" column="1">
-          <widget class="QLabel" name="lblVideoCodecSingle"/>
-         </item>
-         <item row="8" column="1">
-          <widget class="QLabel" name="lblTimeFrameEndSingle"/>
-         </item>
-         <item row="9" column="0">
-          <widget class="QLineEdit" name="txtTimeFrameStartSingle"/>
-         </item>
-         <item row="5" column="2">
-          <widget class="QPushButton" name="btnSelectSaveFolderSingle">
-           <property name="icon">
-            <iconset theme="folder-open"/>
-           </property>
-          </widget>
-         </item>
-         <item row="8" column="2">
-          <widget class="QLabel" name="lblLimitSpeedSingle"/>
-         </item>
-         <item row="1" column="1">
-          <widget class="QComboBox" name="cmbQualitySingle"/>
-         </item>
-         <item row="2" column="0">
-          <widget class="QLabel" name="lblDownloadSubtitlesSingle"/>
-         </item>
-         <item row="9" column="2">
-          <widget class="QCheckBox" name="chkLimitSpeedSingle"/>
-         </item>
-         <item row="5" column="0" colspan="2">
-          <widget class="QLineEdit" name="txtSaveFolderSingle"/>
-         </item>
-         <item row="6" column="0">
-          <widget class="QLabel" name="lblFilenameSingle"/>
-         </item>
-         <item row="1" column="0">
-          <widget class="QComboBox" name="cmbFileTypeSingle"/>
-         </item>
-         <item row="9" column="1">
-          <widget class="QLineEdit" name="txtTimeFrameEndSingle"/>
-         </item>
-         <item row="2" column="2">
-          <widget class="QLabel" name="lblSplitChaptersSingle"/>
-         </item>
-         <item row="3" column="0">
-          <widget class="QCheckBox" name="chkDownloadSubtitlesSingle"/>
-         </item>
-         <item row="10" column="0">
-          <spacer name="verticalSpacer_2">
-           <property name="orientation">
-            <enum>Qt::Orientation::Vertical</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>20</width>
-             <height>40</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
-         <item row="1" column="2">
-          <widget class="QComboBox" name="cmbAudioLanguageSingle"/>
-         </item>
-         <item row="4" column="0">
-          <widget class="QLabel" name="lblSaveFolderSingle"/>
-         </item>
-         <item row="8" column="0">
-          <widget class="QLabel" name="lblTimeFrameStartSingle"/>
-         </item>
-         <item row="7" column="2">
-          <widget class="QPushButton" name="btnRevertFilenameSingle">
-           <property name="icon">
-            <iconset theme="edit-undo"/>
-           </property>
-          </widget>
-         </item>
-         <item row="3" column="2">
-          <widget class="QCheckBox" name="chkSplitChaptersSingle"/>
-         </item>
-         <item row="0" column="2">
-          <widget class="QLabel" name="lblAudioLanguageSingle"/>
-         </item>
-         <item row="3" column="1">
-          <widget class="QComboBox" name="cmbVideoCodecSingle"/>
-         </item>
-        </layout>
+         <widget class="QWidget" name="tabGeneralSingle">
+          <attribute name="title">
+           <string/>
+          </attribute>
+          <layout class="QGridLayout" name="gridLayout_2">
+           <item row="7" column="0" colspan="2">
+            <widget class="QLineEdit" name="txtSaveFolderSingle">
+             <property name="readOnly">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="0">
+            <widget class="QLabel" name="lblSplitChaptersSingle"/>
+           </item>
+           <item row="3" column="1">
+            <widget class="QCheckBox" name="chkLimitSpeedSingle"/>
+           </item>
+           <item row="10" column="0">
+            <spacer name="verticalSpacer_2">
+             <property name="orientation">
+              <enum>Qt::Orientation::Vertical</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>20</width>
+               <height>40</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item row="5" column="1">
+            <widget class="QLineEdit" name="txtTimeFrameEndSingle"/>
+           </item>
+           <item row="5" column="0">
+            <widget class="QLineEdit" name="txtTimeFrameStartSingle"/>
+           </item>
+           <item row="0" column="0">
+            <widget class="QLabel" name="lblFileTypeSingle"/>
+           </item>
+           <item row="1" column="2">
+            <widget class="QComboBox" name="cmbAudioLanguageSingle"/>
+           </item>
+           <item row="1" column="0">
+            <widget class="QComboBox" name="cmbFileTypeSingle"/>
+           </item>
+           <item row="8" column="0">
+            <widget class="QLabel" name="lblFilenameSingle"/>
+           </item>
+           <item row="7" column="2">
+            <widget class="QPushButton" name="btnSelectSaveFolderSingle">
+             <property name="icon">
+              <iconset theme="folder-open"/>
+             </property>
+            </widget>
+           </item>
+           <item row="4" column="1">
+            <widget class="QLabel" name="lblTimeFrameEndSingle"/>
+           </item>
+           <item row="4" column="0">
+            <widget class="QLabel" name="lblTimeFrameStartSingle">
+             <property name="text">
+              <string/>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="1">
+            <widget class="QLabel" name="lblLimitSpeedSingle"/>
+           </item>
+           <item row="1" column="1">
+            <widget class="QComboBox" name="cmbQualitySingle"/>
+           </item>
+           <item row="6" column="0">
+            <widget class="QLabel" name="lblSaveFolderSingle"/>
+           </item>
+           <item row="0" column="1">
+            <widget class="QLabel" name="lblQualitySingle"/>
+           </item>
+           <item row="3" column="0">
+            <widget class="QCheckBox" name="chkSplitChaptersSingle"/>
+           </item>
+           <item row="0" column="2">
+            <widget class="QLabel" name="lblAudioLanguageSingle"/>
+           </item>
+           <item row="9" column="0" colspan="2">
+            <widget class="QLineEdit" name="txtFilenameSingle"/>
+           </item>
+           <item row="9" column="2">
+            <widget class="QPushButton" name="btnRevertFilenameSingle">
+             <property name="icon">
+              <iconset theme="edit-undo"/>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+         <widget class="QWidget" name="tabSubtitlesSingle">
+          <attribute name="title">
+           <string/>
+          </attribute>
+          <layout class="QVBoxLayout" name="verticalLayout_6">
+           <item>
+            <widget class="QStackedWidget" name="viewStackSubtitlesSingle">
+             <property name="currentIndex">
+              <number>1</number>
+             </property>
+             <widget class="QWidget" name="pageNoSubtitlesSingle">
+              <layout class="QVBoxLayout" name="verticalLayout_7">
+               <item>
+                <spacer name="verticalSpacer_4">
+                 <property name="orientation">
+                  <enum>Qt::Orientation::Vertical</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>20</width>
+                   <height>136</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+               <item>
+                <widget class="QLabel" name="lblNoSubtitlesSingle">
+                 <property name="alignment">
+                  <set>Qt::AlignmentFlag::AlignCenter</set>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <spacer name="verticalSpacer_3">
+                 <property name="orientation">
+                  <enum>Qt::Orientation::Vertical</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>20</width>
+                   <height>136</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+              </layout>
+             </widget>
+             <widget class="QWidget" name="pageSubtitlesSingle">
+              <layout class="QVBoxLayout" name="verticalLayout_8">
+               <item>
+                <widget class="QTableWidget" name="tblSubtitlesSingle"/>
+               </item>
+              </layout>
+             </widget>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </widget>
        </item>
        <item>
         <widget class="QPushButton" name="btnDownloadSingle">
@@ -247,77 +308,82 @@
         <number>6</number>
        </property>
        <item>
-        <layout class="QGridLayout" name="gridLayout">
-         <property name="spacing">
-          <number>8</number>
+        <widget class="QTabWidget" name="tabsPlaylist">
+         <property name="currentIndex">
+          <number>0</number>
          </property>
-         <item row="0" column="0">
-          <widget class="QLabel" name="lblFileTypePlaylist"/>
-         </item>
-         <item row="2" column="0">
-          <widget class="QLabel" name="lblSplitChaptersPlaylist"/>
-         </item>
-         <item row="1" column="0">
-          <widget class="QComboBox" name="cmbFileTypePlaylist"/>
-         </item>
-         <item row="6" column="0">
-          <widget class="QLabel" name="lblItemsPlaylist"/>
-         </item>
-         <item row="4" column="0">
-          <widget class="QLabel" name="lblSaveFolderPlaylist"/>
-         </item>
-         <item row="3" column="1">
-          <widget class="QCheckBox" name="chkLimitSpeedPlaylist"/>
-         </item>
-         <item row="1" column="1">
-          <widget class="QCheckBox" name="chkDownloadSubtitlesPlaylist"/>
-         </item>
-         <item row="2" column="1">
-          <widget class="QLabel" name="lblLimitSpeedPlaylist"/>
-         </item>
-         <item row="3" column="2">
-          <widget class="QCheckBox" name="chkNumberTitlesPlaylist"/>
-         </item>
-         <item row="3" column="0">
-          <widget class="QCheckBox" name="chkSplitChaptersPlaylist"/>
-         </item>
-         <item row="5" column="2">
-          <widget class="QPushButton" name="btnSelectSaveFolderPlaylist">
-           <property name="icon">
-            <iconset theme="folder-open"/>
-           </property>
-          </widget>
-         </item>
-         <item row="0" column="1">
-          <widget class="QLabel" name="lblDownloadSubtitlesPlaylist"/>
-         </item>
-         <item row="7" column="0" colspan="3">
-          <widget class="QTableWidget" name="tblItemsPlaylist">
-           <property name="columnCount">
-            <number>3</number>
-           </property>
-           <column/>
-           <column/>
-           <column/>
-          </widget>
-         </item>
-         <item row="2" column="2">
-          <widget class="QLabel" name="lblNumberTitlesPlaylist"/>
-         </item>
-         <item row="0" column="2">
-          <widget class="QLabel" name="lblVideoCodecPlaylist"/>
-         </item>
-         <item row="5" column="0" colspan="2">
-          <widget class="QLineEdit" name="txtSaveFolderPlaylist">
-           <property name="readOnly">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="2">
-          <widget class="QComboBox" name="cmbVideoCodecPlaylist"/>
-         </item>
-        </layout>
+         <widget class="QWidget" name="tabGeneralPlaylist">
+          <attribute name="title">
+           <string/>
+          </attribute>
+          <layout class="QGridLayout" name="gridLayout">
+           <item row="6" column="0">
+            <spacer name="verticalSpacer_5">
+             <property name="orientation">
+              <enum>Qt::Orientation::Vertical</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>20</width>
+               <height>40</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item row="1" column="0">
+            <widget class="QComboBox" name="cmbFileTypePlaylist"/>
+           </item>
+           <item row="3" column="0">
+            <widget class="QCheckBox" name="chkSplitChaptersPlaylist"/>
+           </item>
+           <item row="3" column="1">
+            <widget class="QCheckBox" name="chkLimitSpeedPlaylist"/>
+           </item>
+           <item row="2" column="1">
+            <widget class="QLabel" name="lblLimitSpeedPlaylist"/>
+           </item>
+           <item row="0" column="0">
+            <widget class="QLabel" name="lblFileTypePlaylist"/>
+           </item>
+           <item row="4" column="0">
+            <widget class="QLabel" name="lblSaveFolderPlaylist"/>
+           </item>
+           <item row="2" column="0">
+            <widget class="QLabel" name="lblSplitChaptersPlaylist"/>
+           </item>
+           <item row="5" column="0">
+            <widget class="QLineEdit" name="txtSaveFolderPlaylist">
+             <property name="readOnly">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item row="5" column="1">
+            <widget class="QPushButton" name="btnSelectSaveFolderPlaylist">
+             <property name="icon">
+              <iconset theme="folder-open"/>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+         <widget class="QWidget" name="tabItemsPlaylist">
+          <attribute name="title">
+           <string/>
+          </attribute>
+          <layout class="QVBoxLayout" name="verticalLayout_9">
+           <item>
+            <widget class="QLabel" name="lblNumberTitlesPlaylist"/>
+           </item>
+           <item>
+            <widget class="QCheckBox" name="chkNumberTitlesPlaylist"/>
+           </item>
+           <item>
+            <widget class="QTableWidget" name="tblItemsPlaylist"/>
+           </item>
+          </layout>
+         </widget>
+        </widget>
        </item>
        <item>
         <widget class="QPushButton" name="btnDownloadPlaylist">

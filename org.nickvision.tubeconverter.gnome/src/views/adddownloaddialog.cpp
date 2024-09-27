@@ -120,8 +120,8 @@ namespace Nickvision::TubeConverter::GNOME::Views
             adw_view_stack_set_visible_child_name(m_builder.get<AdwViewStack>("viewStack"), "download-single");
             GtkHelpers::setComboRowModel(m_builder.get<AdwComboRow>("fileTypeSingleRow"), m_controller->getFileTypeStrings());
             adw_combo_row_set_selected(m_builder.get<AdwComboRow>("fileTypeSingleRow"), static_cast<unsigned int>(m_controller->getPreviousDownloadOptions().getFileType()));
-            GtkHelpers::setComboRowModel(m_builder.get<AdwComboRow>("qualitySingleRow"), m_controller->getQualityStrings(static_cast<size_t>(adw_combo_row_get_selected(m_builder.get<AdwComboRow>("fileTypeSingleRow"))), static_cast<size_t>(adw_combo_row_get_selected(m_builder.get<AdwComboRow>("audioLanguageSingleRow")))));
             GtkHelpers::setComboRowModel(m_builder.get<AdwComboRow>("audioLanguageSingleRow"), m_controller->getAudioLanguageStrings());
+            GtkHelpers::setComboRowModel(m_builder.get<AdwComboRow>("qualitySingleRow"), m_controller->getQualityStrings(static_cast<size_t>(adw_combo_row_get_selected(m_builder.get<AdwComboRow>("fileTypeSingleRow"))), static_cast<size_t>(adw_combo_row_get_selected(m_builder.get<AdwComboRow>("audioLanguageSingleRow")))));
             adw_action_row_set_subtitle(m_builder.get<AdwActionRow>("saveFolderSingleRow"), m_controller->getPreviousDownloadOptions().getSaveFolder().string().c_str());
             gtk_editable_set_text(m_builder.get<GtkEditable>("filenameSingleRow"), m_controller->getMediaTitle(0).c_str());
             //Load Subtitles
