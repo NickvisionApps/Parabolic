@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-27 09:43-0400\n"
+"POT-Creation-Date: 2024-09-28 09:15-0400\n"
 "PO-Revision-Date: 2024-09-15 08:09+0000\n"
 "Last-Translator: Tomas Andersson <jotakswe@users.noreply.hosted.weblate."
 "org>\n"
@@ -136,18 +136,22 @@ msgid "Unable to download and install update"
 msgstr "Det gick inte att ladda ner och installera uppdateringen"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:21
+#, c++-format
 msgid "{:.2f} GiB/s"
 msgstr "{:.2f} GiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:25
+#, c++-format
 msgid "{:.2f} MiB/s"
 msgstr "{:.2f} MiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:29
+#, c++-format
 msgid "{:.2f} KiB/s"
 msgstr "{:.2f} KiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:33
+#, c++-format
 msgid "{:.2f} B/s"
 msgstr "{:.2f} B/s"
 
@@ -332,7 +336,6 @@ msgstr "Visa logg"
 
 #. Localize Strings
 #: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:64
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:311
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:24
 msgid "Stop"
 msgstr "Stopp"
@@ -514,6 +517,10 @@ msgstr "Inga nedladdningar körs"
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:51
 msgid "Stop All Downloads"
 msgstr "Stoppa alla nedladdningar"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:311
+msgid "Stop All"
+msgstr "Stoppa allt"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:337
 msgid "No Downloads Queued"
@@ -928,6 +935,7 @@ msgid "No Subtitles Available"
 msgstr "Ny uppdatering tillgänglig"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:162
+#, c++-format
 msgid "{} items"
 msgstr "{} objekt"
 
@@ -1039,6 +1047,7 @@ msgid "Changelog:"
 msgstr "Ändringslogg:"
 
 #: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:39
+#, c++-format
 msgid ""
 "Developers:\n"
 "{}\n"
@@ -1117,7 +1126,7 @@ msgstr ""
 "cookies i inställningarna."
 
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:195
-#, fuzzy
+#, fuzzy, c++-format
 msgid "Items ({})"
 msgstr "Spellistobjekt ({})"
 
@@ -1602,9 +1611,6 @@ msgstr "Ange proxy-URL här"
 
 #~ msgid "Start Time (Invalid)"
 #~ msgstr "Starttid (ogiltig)"
-
-#~ msgid "Stop All"
-#~ msgstr "Stoppa allt"
 
 #~ msgid "Subtitle Languages"
 #~ msgstr "Undertextspråk"

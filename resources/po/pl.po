@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-27 09:43-0400\n"
+"POT-Creation-Date: 2024-09-28 09:15-0400\n"
 "PO-Revision-Date: 2024-09-17 13:09+0000\n"
 "Last-Translator: Dominik Gęgotek <ioutora@disroot.org>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -139,18 +139,22 @@ msgid "Unable to download and install update"
 msgstr "Nie można pobrać i zainstalować aktualizacji"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:21
+#, c++-format
 msgid "{:.2f} GiB/s"
 msgstr "{:.2f} GiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:25
+#, c++-format
 msgid "{:.2f} MiB/s"
 msgstr "{:.2f} MiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:29
+#, c++-format
 msgid "{:.2f} KiB/s"
 msgstr "{:.2f} KiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:33
+#, c++-format
 msgid "{:.2f} B/s"
 msgstr "{:.2f} B/s"
 
@@ -338,7 +342,6 @@ msgstr "Wyświetl dziennik"
 
 #. Localize Strings
 #: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:64
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:311
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:24
 #, fuzzy
 msgid "Stop"
@@ -525,6 +528,10 @@ msgstr "Żadne pobieranie nie jest uruchomione"
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:51
 msgid "Stop All Downloads"
 msgstr "Zatrzymaj wszystkie procesy pobierania"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:311
+msgid "Stop All"
+msgstr "Zatrzymaj wszystko"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:337
 #, fuzzy
@@ -953,7 +960,7 @@ msgid "No Subtitles Available"
 msgstr "Dostępna nowa aktualizacja"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:162
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{} items"
 msgstr "{0} z {1}"
 
@@ -1071,7 +1078,7 @@ msgid "Changelog:"
 msgstr "Dziennik zmian"
 
 #: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:39
-#, fuzzy
+#, fuzzy, c++-format
 msgid ""
 "Developers:\n"
 "{}\n"
@@ -1159,7 +1166,7 @@ msgid ""
 msgstr ""
 
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:195
-#, fuzzy
+#, fuzzy, c++-format
 msgid "Items ({})"
 msgstr "{0} z {1}"
 
@@ -1624,9 +1631,6 @@ msgstr "Podaj adres URL serwera proxy"
 
 #~ msgid "Start Time (Invalid)"
 #~ msgstr "Początek (błędne dane)"
-
-#~ msgid "Stop All"
-#~ msgstr "Zatrzymaj wszystko"
 
 #~ msgid "Subtitle Languages"
 #~ msgstr "Języki napisów"

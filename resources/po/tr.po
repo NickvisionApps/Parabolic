@@ -7,11 +7,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-27 09:43-0400\n"
+"POT-Creation-Date: 2024-09-28 09:15-0400\n"
 "PO-Revision-Date: 2024-09-28 00:09+0000\n"
 "Last-Translator: Sabri Ünal <yakushabb@gmail.com>\n"
-"Language-Team: Turkish <https://hosted.weblate.org/projects/"
-"nickvision-tube-converter/app/tr/>\n"
+"Language-Team: Turkish <https://hosted.weblate.org/projects/nickvision-tube-"
+"converter/app/tr/>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -138,18 +138,22 @@ msgid "Unable to download and install update"
 msgstr "Güncelleme indirilemiyor ve kurulamıyor"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:21
+#, c++-format
 msgid "{:.2f} GiB/s"
 msgstr "{:.2f} GiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:25
+#, c++-format
 msgid "{:.2f} MiB/s"
 msgstr "{:.2f} MiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:29
+#, c++-format
 msgid "{:.2f} KiB/s"
 msgstr "{:.2f} KiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:33
+#, c++-format
 msgid "{:.2f} B/s"
 msgstr "{:.2f} B/s"
 
@@ -336,7 +340,6 @@ msgstr "Günlüğü Görüntüle"
 
 #. Localize Strings
 #: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:64
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:311
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:24
 #, fuzzy
 msgid "Stop"
@@ -523,6 +526,10 @@ msgstr "Çalışan İndirme Yok"
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:51
 msgid "Stop All Downloads"
 msgstr "Tüm İndirmeleri Durdur"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:311
+msgid "Stop All"
+msgstr "Tümünü Durdur"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:337
 #, fuzzy
@@ -952,7 +959,7 @@ msgid "No Subtitles Available"
 msgstr "Yeni güncelleme var."
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:162
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{} items"
 msgstr "{0} / {1} öge"
 
@@ -1069,7 +1076,7 @@ msgid "Changelog:"
 msgstr "Değişiklik Günlüğü"
 
 #: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:39
-#, fuzzy
+#, fuzzy, c++-format
 msgid ""
 "Developers:\n"
 "{}\n"
@@ -1157,7 +1164,7 @@ msgid ""
 msgstr ""
 
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:195
-#, fuzzy
+#, fuzzy, c++-format
 msgid "Items ({})"
 msgstr "{0} / {1} öge"
 
@@ -1645,9 +1652,6 @@ msgstr "Ağ vekili URLʼsini buraya giriniz"
 
 #~ msgid "Start Time (Invalid)"
 #~ msgstr "Başlangıç Zamanı (Geçersiz)"
-
-#~ msgid "Stop All"
-#~ msgstr "Tümünü Durdur"
 
 #~ msgid "Subtitle Languages"
 #~ msgstr "Alt Yazı Dilleri"

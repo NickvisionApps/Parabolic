@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-27 09:43-0400\n"
+"POT-Creation-Date: 2024-09-28 09:15-0400\n"
 "PO-Revision-Date: 2024-06-19 20:09+0000\n"
 "Last-Translator: Xosé Calvo <xosecalvo@gmail.com>\n"
 "Language-Team: Galician <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -143,22 +143,22 @@ msgid "Unable to download and install update"
 msgstr ""
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:21
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} GiB/s"
 msgstr "{0:f1} GiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:25
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} MiB/s"
 msgstr "{0:f1} MiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:29
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} KiB/s"
 msgstr "{0:f1} KiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:33
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} B/s"
 msgstr "{0:f1} B/s"
 
@@ -347,7 +347,6 @@ msgstr "Ver rexistro"
 
 #. Localize Strings
 #: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:64
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:311
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:24
 #, fuzzy
 msgid "Stop"
@@ -535,6 +534,11 @@ msgstr "Non hai descargas en execución"
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:51
 msgid "Stop All Downloads"
 msgstr ""
+
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:311
+#, fuzzy
+msgid "Stop All"
+msgstr "Parado"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:337
 #, fuzzy
@@ -952,7 +956,7 @@ msgid "No Subtitles Available"
 msgstr "Idiomas dos subtítulos"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:162
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{} items"
 msgstr "{0} elemento de {1}"
 
@@ -1069,7 +1073,7 @@ msgid "Changelog:"
 msgstr "Rexistro de cambios"
 
 #: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:39
-#, fuzzy
+#, fuzzy, c++-format
 msgid ""
 "Developers:\n"
 "{}\n"
@@ -1156,7 +1160,7 @@ msgid ""
 msgstr ""
 
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:195
-#, fuzzy
+#, fuzzy, c++-format
 msgid "Items ({})"
 msgstr "{0} elemento de {1}"
 

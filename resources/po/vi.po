@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-27 09:43-0400\n"
+"POT-Creation-Date: 2024-09-28 09:15-0400\n"
 "PO-Revision-Date: 2024-02-15 17:02+0000\n"
 "Last-Translator: Kinten Le <kinten108101@protonmail.com>\n"
 "Language-Team: Vietnamese <https://hosted.weblate.org/projects/nickvision-"
@@ -145,22 +145,22 @@ msgid "Unable to download and install update"
 msgstr "Không thể tải và cài bản cập nhật."
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:21
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} GiB/s"
 msgstr "{0:f1} GiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:25
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} MiB/s"
 msgstr "{0:f1} MiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:29
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} KiB/s"
 msgstr "{0:f1} KiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:33
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} B/s"
 msgstr "{0:f1} B/s"
 
@@ -348,7 +348,6 @@ msgstr "Xem log"
 
 #. Localize Strings
 #: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:64
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:311
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:24
 #, fuzzy
 msgid "Stop"
@@ -536,6 +535,10 @@ msgstr "Không có tải xuống nào đang chạy"
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:51
 msgid "Stop All Downloads"
 msgstr "Dừng tất cả mục tải xuống"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:311
+msgid "Stop All"
+msgstr "Dừng tất cả"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:337
 #, fuzzy
@@ -962,7 +965,7 @@ msgid "No Subtitles Available"
 msgstr "Đã ra bản cập nhật mới."
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:162
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{} items"
 msgstr "{0} trên {1} lượt"
 
@@ -1079,6 +1082,7 @@ msgid "Changelog:"
 msgstr "Changelog"
 
 #: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:39
+#, c++-format
 msgid ""
 "Developers:\n"
 "{}\n"
@@ -1155,7 +1159,7 @@ msgid ""
 msgstr ""
 
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:195
-#, fuzzy
+#, fuzzy, c++-format
 msgid "Items ({})"
 msgstr "{0} trên {1} lượt"
 
@@ -1628,9 +1632,6 @@ msgstr "Nhập URL của proxy vào đây"
 
 #~ msgid "Start Time (Invalid)"
 #~ msgstr "Thời điểm bắt đầu (không hợp lệ)"
-
-#~ msgid "Stop All"
-#~ msgstr "Dừng tất cả"
 
 #~ msgid "Subtitle Languages"
 #~ msgstr "Ngôn ngữ của phụ đề"

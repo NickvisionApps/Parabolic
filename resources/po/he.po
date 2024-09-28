@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-27 09:43-0400\n"
+"POT-Creation-Date: 2024-09-28 09:15-0400\n"
 "PO-Revision-Date: 2024-09-16 09:09+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -138,18 +138,22 @@ msgid "Unable to download and install update"
 msgstr "לא ניתן להוריד ולהתקין את העדכון"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:21
+#, c++-format
 msgid "{:.2f} GiB/s"
 msgstr "‏{:.2f} גיב״ב/שנ׳"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:25
+#, c++-format
 msgid "{:.2f} MiB/s"
 msgstr "‏{:.2f} מבי״ב/שנ׳"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:29
+#, c++-format
 msgid "{:.2f} KiB/s"
 msgstr "‏{:.2f} קי״ב/שנ׳"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:33
+#, c++-format
 msgid "{:.2f} B/s"
 msgstr "‏{:.2f} בית/שנ׳"
 
@@ -332,7 +336,6 @@ msgstr "הצגת יומן"
 
 #. Localize Strings
 #: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:64
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:311
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:24
 msgid "Stop"
 msgstr "עצירה"
@@ -512,6 +515,10 @@ msgstr "אין הורדות פעילות"
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:51
 msgid "Stop All Downloads"
 msgstr "עצירת כל ההורדות"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:311
+msgid "Stop All"
+msgstr "עצירת הכול"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:337
 msgid "No Downloads Queued"
@@ -920,6 +927,7 @@ msgid "No Subtitles Available"
 msgstr "עדכון חדש זמין"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:162
+#, c++-format
 msgid "{} items"
 msgstr "{} פריטים"
 
@@ -1031,6 +1039,7 @@ msgid "Changelog:"
 msgstr "יומן שינויים:"
 
 #: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:39
+#, c++-format
 msgid ""
 "Developers:\n"
 "{}\n"
@@ -1110,7 +1119,7 @@ msgstr ""
 "האישורים שבשימוש ואת הדפדפן שנבחר עבור העוגיות בהגדרות."
 
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:195
-#, fuzzy
+#, fuzzy, c++-format
 msgid "Items ({})"
 msgstr "פריטי רשימת נגינה ({})"
 
@@ -1574,9 +1583,6 @@ msgstr "יש להזין כאן כתובת מתווך"
 
 #~ msgid "Start Time (Invalid)"
 #~ msgstr "זמן התחלה (לא תקין)"
-
-#~ msgid "Stop All"
-#~ msgstr "עצירת הכול"
 
 #~ msgid "Subtitle Languages"
 #~ msgstr "שפות לכתוביות"

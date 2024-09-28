@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <dt class="terms">認証</dt>
 <dd class="terms">
 <p class="p">有効であれば、ダウンロード時に、 yt-dlp に渡す、ユーザー名と（または）パスワードが要求されます。</p>
-<p class="p">If credentials are found in the keyring, the user can instead chose from a list of named credentials to use (or continue to manually enter a credential)</p>
+<p class="p">資格情報がキーリング内で見つかると、ユーザーは使いたい資格情報をリスト内から選択することができます（手動で資格情報を入力することもできます）</p>
 <div class="note note-advanced" title="高度">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', function() {
  </g>
 </svg><div class="inner"><div class="region"><div class="contents">
 <p class="p">すべてのウェブサイトで yt-dlp がユーザー名とパスワードの入力に対応しているわけではありません。例えば、YouTube はこの機能にサポートしていません。</p>
-<p class="p">For these sites that don't support passing credentials, it is recommended to select a browser to use cookies from in Preferences instead.</p>
+<p class="p">これらのサイトでは資格情報の受け渡しに対応していません。代わりに設定でクッキーを使うブラウザを選択することをお勧めします。</p>
 </div></div></div>
 </div>
 </dd>
@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <dt class="terms">品質</dt>
 <dd class="terms">
 <p class="p">ファイルの種類が動画の場合、表示される品質はメディアが利用できる解像度です。</p>
-<p class="p">If the file type is an audio type, the listed qualities will be simply <span class="code">Best</span>, <span class="code">Good</span>, and <span class="code">Worst</span>.</p>
+<p class="p">ファイルの種類が音声の場合、表示される品質は単純に <span class="code">Best</span> (最高)、<span class="code">Good</span> (普通)、<span class="code">Worst</span> (最低)になります。</p>
 <div class="note" title="注記">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -82,7 +82,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </svg><div class="inner"><div class="region"><div class="contents"><p class="p">最後に使用した品質は、次回のダウンロードのために記憶・事前選択されます。</p></div></div></div>
 </div>
 </dd>
-<dt class="terms">Audio Language</dt>
+<dt class="terms">音声の言語</dt>
 <dd class="terms">
 <p class="p">The language of which to use from the audio part of a media download.</p>
 <p class="p">If no additional languages are available, <span class="code">Default</span> will be the only option.</p>

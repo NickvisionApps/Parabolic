@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-27 09:43-0400\n"
+"POT-Creation-Date: 2024-09-28 09:15-0400\n"
 "PO-Revision-Date: 2024-09-11 13:02+0000\n"
 "Last-Translator: Deflector <dhoome1234@gmail.com>\n"
 "Language-Team: Arabic <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -138,20 +138,22 @@ msgid "Unable to download and install update"
 msgstr "لا يمكن تحميل وتنزيل التحديث"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:21
+#, c++-format
 msgid "{:.2f} GiB/s"
 msgstr "{:.2f} جيجابايت/ث"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:25
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} MiB/s"
 msgstr "{0:f1} ميجابايت\\ث"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:29
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} KiB/s"
 msgstr "{0:f1} كيلوبايت\\ث"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:33
+#, c++-format
 msgid "{:.2f} B/s"
 msgstr "{:.2f} بايت/ث"
 
@@ -334,7 +336,6 @@ msgstr "إعرض سجل الأوامر"
 
 #. Localize Strings
 #: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:64
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:311
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:24
 msgid "Stop"
 msgstr "توقف"
@@ -514,6 +515,10 @@ msgstr "لا توجد تحميلات واردة"
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:51
 msgid "Stop All Downloads"
 msgstr "أوقف كل التحميلات"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:311
+msgid "Stop All"
+msgstr "أوقف كلَّ التنزيلات"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:337
 msgid "No Downloads Queued"
@@ -925,6 +930,7 @@ msgid "No Subtitles Available"
 msgstr "لديك تحديث جديد"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:162
+#, c++-format
 msgid "{} items"
 msgstr "{} عنصر/عناصر"
 
@@ -1036,6 +1042,7 @@ msgid "Changelog:"
 msgstr "تغييرات التحديث:"
 
 #: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:39
+#, c++-format
 msgid ""
 "Developers:\n"
 "{}\n"
@@ -1114,7 +1121,7 @@ msgstr ""
 "المستخدم، والمتصفح المستخدم لبيانات تعريف الإرتباط في الإعدادات."
 
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:195
-#, fuzzy
+#, fuzzy, c++-format
 msgid "Items ({})"
 msgstr "وسائط قائمة التشغيل ({})"
 
@@ -1563,9 +1570,6 @@ msgstr "أدخل رابط خادم الوكيل هنا"
 
 #~ msgid "Start Time (Invalid)"
 #~ msgstr "وقت البدء (غير صالح)"
-
-#~ msgid "Stop All"
-#~ msgstr "أوقف كلَّ التنزيلات"
 
 #, fuzzy
 #~ msgid "Subtitle Languages"
