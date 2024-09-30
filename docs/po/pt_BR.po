@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: 2024-09-28 09:15-0400\n"
-"PO-Revision-Date: 2024-09-30 23:22+0000\n"
+"PO-Revision-Date: 2024-09-30 23:27+0000\n"
 "Last-Translator: Tiago Lucas Flach <tiagolucas9830@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
 "nickvision-tube-converter/docs/pt_BR/>\n"
@@ -164,6 +164,8 @@ msgid ""
 "This page explains all options for configuring the Downloader in Preferences "
 "in <app>Parabolic</app>."
 msgstr ""
+"Esta página explica todas as opções para configurar o Baixador em "
+"Preferências no <app>Parabolic</app>."
 
 #. (itstool) path: item/title
 #: docs/yelp/C/downloader.page:25
@@ -173,7 +175,7 @@ msgstr "Sobrescrever arquivos existentes"
 #. (itstool) path: item/p
 #: docs/yelp/C/downloader.page:26
 msgid "If enabled, Parabolic will overwrite existing files."
-msgstr ""
+msgstr "Se ativado, o Parabolic substituirá os arquivos existentes."
 
 #. (itstool) path: item/p
 #: docs/yelp/C/downloader.page:27
@@ -182,11 +184,14 @@ msgid ""
 "folder, and a new download is created named <code>movie</code>, <code>movie."
 "mp4</code> will be overwritten with the new download's content."
 msgstr ""
+"Por exemplo, se um arquivo chamado <code>movie.mp4</code> existir na pasta "
+"de download e um novo download for criado chamado <code>movie</code>, "
+"<code>movie.mp4</code> será substituído pelo conteúdo do novo download."
 
 #. (itstool) path: item/title
 #: docs/yelp/C/downloader.page:35
 msgid "Maximum Number of Active Downloads"
-msgstr ""
+msgstr "Número Máximo de Downloads Ativos"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/downloader.page:36
@@ -194,6 +199,8 @@ msgid ""
 "The number of active downloads allowed to run at a time. Must be an integer "
 "value between 1 and 10."
 msgstr ""
+"O número de downloads ativos permitidos para execução por vez. Deve ser um "
+"valor inteiro entre 1 e 10."
 
 #. (itstool) path: item/p
 #: docs/yelp/C/downloader.page:37
@@ -201,16 +208,18 @@ msgid ""
 "If the max number of active downloads is reached, Parabolic will place new "
 "downloads in a queue until more downloads are able to be run."
 msgstr ""
+"Se o número máximo de downloads ativos for atingido, o Parabolic colocará "
+"novos downloads em uma fila até que mais downloads possam ser executados."
 
 #. (itstool) path: note/p
 #: docs/yelp/C/downloader.page:39
 msgid "Default: 5"
-msgstr ""
+msgstr "Padrão: 5"
 
 #. (itstool) path: item/title
 #: docs/yelp/C/downloader.page:43
 msgid "Included Auto-Generated Subtitles"
-msgstr ""
+msgstr "Legendas Geradas Automaticamente Incluídas"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/downloader.page:44
@@ -218,6 +227,8 @@ msgid ""
 "Whether or not to included subtitles that are auto-translated to fit the "
 "requested subtitle languages."
 msgstr ""
+"Se devem ou não ser incluídas legendas traduzidas automaticamente para se "
+"adequarem aos idiomas de legenda solicitados."
 
 #. (itstool) path: item/title
 #: docs/yelp/C/downloader.page:50
@@ -231,6 +242,9 @@ msgid ""
 "aria2c can improve download speed, download progress will not be displayed "
 "in the UI."
 msgstr ""
+"Se habilitado, o Parabolic usará aria2c para baixar mídia. Embora usar "
+"aria2c possa melhorar a velocidade de download, o progresso do download não "
+"será exibido na UI."
 
 #. (itstool) path: item/title
 #: docs/yelp/C/downloader.page:57
