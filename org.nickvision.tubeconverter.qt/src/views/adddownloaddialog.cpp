@@ -15,6 +15,7 @@ using namespace Nickvision::Helpers;
 using namespace Nickvision::Keyring;
 using namespace Nickvision::TubeConverter::QT::Helpers;
 using namespace Nickvision::TubeConverter::Shared::Controllers;
+using namespace Nickvision::TubeConverter::Shared::Models;
 
 namespace Nickvision::TubeConverter::QT::Views
 {
