@@ -126,16 +126,27 @@ namespace Nickvision::TubeConverter::GNOME::Views
             gtk_editable_set_text(m_builder.get<GtkEditable>("filenameSingleRow"), m_controller->getMediaTitle(0).c_str());
             //Load Subtitles
             std::vector<std::string> subtitles{ m_controller->getSubtitleLanguageStrings() };
+            std::vector<SubtitleLanguage> previousSubtitles{ m_controller->getPreviousDownloadOptions().getSubtitleLanguages() };
             for(const std::string& subtitle : subtitles)
             {
+                bool wasPreviouslySelected{ false };
+                for(const SubtitleLanguage& language : previousSubtitles)
+                {
+                    if(subtitle == language.str())
+                    {
+                        wasPreviouslySelected = true;
+                        break;
+                    }
+                }
                 GtkCheckButton* chk{ GTK_CHECK_BUTTON(gtk_check_button_new()) };
                 gtk_widget_set_valign(GTK_WIDGET(chk), GTK_ALIGN_CENTER);
                 gtk_widget_add_css_class(GTK_WIDGET(chk), "selection-mode");
-                gtk_check_button_set_active(chk, false);
+                gtk_check_button_set_active(chk, wasPreviouslySelected);
                 AdwActionRow* row{ ADW_ACTION_ROW(adw_action_row_new()) };
                 adw_preferences_row_set_use_markup(ADW_PREFERENCES_ROW(row), false);
                 adw_preferences_row_set_title(ADW_PREFERENCES_ROW(row), subtitle.c_str());
                 adw_action_row_add_prefix(row, GTK_WIDGET(chk));
+                adw_action_row_set_activatable_widget(row, GTK_WIDGET(chk));
                 adw_preferences_group_add(m_builder.get<AdwPreferencesGroup>("subtitlesSingleGroup"), GTK_WIDGET(row));
                 m_singleSubtitleRows.push_back(row);
                 m_singleSubtitleCheckButtons.push_back(chk);

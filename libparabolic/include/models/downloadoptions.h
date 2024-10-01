@@ -9,6 +9,7 @@
 #include "downloaderoptions.h"
 #include "format.h"
 #include "mediafiletype.h"
+#include "subtitlelanguage.h"
 #include "timeframe.h"
 #include "videocodec.h"
 #include "videoresolution.h"
@@ -104,12 +105,12 @@ namespace Nickvision::TubeConverter::Shared::Models
          * @brief Gets the list of subtitle languages to download.
          * @return The list of subtitle languages to download
          */
-        const std::vector<std::string>& getSubtitleLanguages() const;
+        const std::vector<SubtitleLanguage>& getSubtitleLanguages() const;
         /**
          * @brief Sets the list of subtitle languages to download.
          * @param downloadSubtitles The list of subtitle languages to download
          */
-        void setSubtitleLanguages(const std::vector<std::string>& subtitleLanguages);
+        void setSubtitleLanguages(const std::vector<SubtitleLanguage>& subtitleLanguages);
         /**
          * @brief Gets whether or not to limit the download speed.
          * @return True if limiting the download speed, else false
@@ -157,7 +158,7 @@ namespace Nickvision::TubeConverter::Shared::Models
         std::optional<Format> m_audioFormat;
         std::filesystem::path m_saveFolder;
         std::string m_saveFilename;
-        std::vector<std::string> m_subtitleLanguages;
+        std::vector<SubtitleLanguage> m_subtitleLanguages;
         bool m_limitSpeed;
         bool m_splitChapters;
         std::optional<TimeFrame> m_timeFrame;

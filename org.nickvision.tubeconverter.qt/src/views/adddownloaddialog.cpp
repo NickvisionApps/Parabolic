@@ -174,10 +174,20 @@ namespace Nickvision::TubeConverter::QT::Views
             m_ui->txtTimeFrameEndSingle->setPlaceholderText(QString::fromStdString(m_controller->getMediaTimeFrame(0).endStr()));
             //Load Subtitles
             std::vector<std::string> subtitles{ m_controller->getSubtitleLanguageStrings() };
+            std::vector<SubtitleLanguage> previousSubtitles{ m_controller->getPreviousDownloadOptions().getSubtitleLanguages() };
             for(size_t i = 0; i < subtitles.size(); i++)
             {
+                bool wasPreviouslySelected{ false };
+                for(const SubtitleLanguage& language : previousSubtitles)
+                {
+                    if(subtitles[i] == language.str())
+                    {
+                        wasPreviouslySelected = true;
+                        break;
+                    }
+                }
                 QCheckBox* chk{ new QCheckBox(m_ui->tblSubtitlesSingle) };
-                chk->setChecked(false);
+                chk->setChecked(wasPreviouslySelected);
                 QTableWidgetItem* item{ new QTableWidgetItem(QString::fromStdString(subtitles[i])) };
                 item->setFlags(item->flags() ^ Qt::ItemIsEditable);
                 m_ui->tblSubtitlesSingle->insertRow(static_cast<int>(i));

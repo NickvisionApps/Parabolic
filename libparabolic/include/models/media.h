@@ -9,6 +9,7 @@
 #include <boost/json.hpp>
 #include "format.h"
 #include "mediatype.h"
+#include "subtitlelanguage.h"
 #include "timeframe.h"
 #include "videocodec.h"
 
@@ -48,35 +49,23 @@ namespace Nickvision::TubeConverter::Shared::Models
          */
         const TimeFrame& getTimeFrame() const;
         /**
-         * @brief Gets whether the media has subtitles.
-         * @return True if has subtitles, else false
-         */
-        bool hasSubtitles() const;
-        /**
          * @brief Gets the formats of the media.
          * @return The formats of the media
          */
         const std::vector<Format>& getFormats() const;
         /**
-         * @brief Gets the automatic subtitles of the media.
-         * @return The automatic subtitles of the media
-         */
-        const std::vector<std::string>& getAutomaticSubtitles() const;
-        /**
          * @brief Gets the subtitles of the media.
          * @return The subtitles of the media
          */
-        const std::vector<std::string>& getSubtitles() const;
+        const std::vector<SubtitleLanguage>& getSubtitles() const;
 
     private:
         std::string m_url;
         std::string m_title;
         MediaType m_type;
         TimeFrame m_timeFrame;
-        bool m_hasSubtitles;
         std::vector<Format> m_formats;
-        std::vector<std::string> m_automaticSubtitles;
-        std::vector<std::string> m_subtitles;
+        std::vector<SubtitleLanguage> m_subtitles;
     };
 }
 

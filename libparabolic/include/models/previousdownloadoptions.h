@@ -3,8 +3,10 @@
 
 #include <filesystem>
 #include <string>
+#include <vector>
 #include <libnick/app/datafilebase.h>
 #include "mediafiletype.h"
+#include "subtitlelanguage.h"
 
 namespace Nickvision::TubeConverter::Shared::Models
 {
@@ -70,6 +72,16 @@ namespace Nickvision::TubeConverter::Shared::Models
          * @param previousNumberTitles The new previous number titles state
          */
         void setNumberTitles(bool numberTitles);
+        /**
+         * @brief Gets the previous subtitle languages.
+         * @return The previous subtitle languages
+         */
+        std::vector<SubtitleLanguage> getSubtitleLanguages() const;
+        /**
+         * @brief Sets the previous subtitle languages.
+         * @param previousSubtitleLanguages The new previous subtitle languages
+         */
+        void setSubtitleLanguages(const std::vector<SubtitleLanguage>& previousSubtitleLanguages);
     };
 }
 

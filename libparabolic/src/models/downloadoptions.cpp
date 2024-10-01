@@ -95,12 +95,12 @@ namespace Nickvision::TubeConverter::Shared::Models
         m_saveFilename = saveFilename;
     }
 
-    const std::vector<std::string>& DownloadOptions::getSubtitleLanguages() const
+    const std::vector<SubtitleLanguage>& DownloadOptions::getSubtitleLanguages() const
     {
         return m_subtitleLanguages;
     }
 
-    void DownloadOptions::setSubtitleLanguages(const std::vector<std::string>& subtitleLanguages)
+    void DownloadOptions::setSubtitleLanguages(const std::vector<SubtitleLanguage>& subtitleLanguages)
     {
         m_subtitleLanguages = subtitleLanguages;
     }
@@ -310,8 +310,12 @@ namespace Nickvision::TubeConverter::Shared::Models
         arguments.push_back("chapter:%(section_number)03d - " + m_saveFilename + ".%(ext)s");
         if(!m_subtitleLanguages.empty())
         {
-            std::string languages{ StringHelpers::join(m_subtitleLanguages, ",") };
-            languages += ",-live_chat";
+            std::string languages;
+            for(const SubtitleLanguage& language : m_subtitleLanguages)
+            {
+                languages += language.getLanguage() + ",";
+            }
+            languages += "-live_chat";
             if(downloaderOptions.getEmbedSubtitles())
             {
                 arguments.push_back("--embed-subs");
