@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-28 09:15-0400\n"
+"POT-Creation-Date: 2024-10-01 13:22-0400\n"
 "PO-Revision-Date: 2024-07-14 12:09+0000\n"
 "Last-Translator: ssantos <ssantos@web.de>\n"
 "Language-Team: Portuguese (Portugal) <https://hosted.weblate.org/projects/"
@@ -86,12 +86,8 @@ msgstr "Melhor"
 msgid "Audio Description"
 msgstr ""
 
-#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:181
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:184
 msgid "Default"
-msgstr ""
-
-#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:201
-msgid "Auto-generated"
 msgstr ""
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:43
@@ -145,22 +141,22 @@ msgid "Unable to download and install update"
 msgstr "Não foi possível descarregar e instalar a atualização."
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:21
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} GiB/s"
 msgstr "{0:f1} GiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:25
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} MiB/s"
 msgstr "{0:f1} MiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:29
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} KiB/s"
 msgstr "{0:f1} KiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:33
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} B/s"
 msgstr "{0:f1} B/s"
 
@@ -175,6 +171,10 @@ msgstr ""
 
 #: libparabolic/src/models/download.cpp:111
 msgid "WARNING: Using aria2 to download. Progress will not be shown."
+msgstr ""
+
+#: libparabolic/src/models/subtitlelanguage.cpp:31
+msgid "Auto-generated"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:11
@@ -271,12 +271,12 @@ msgstr "Pasta de Destino"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:137
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:265
-#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:232
-#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:275
+#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:243
+#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:286
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:49
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:65
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:241
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:270
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:251
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:280
 msgid "Select Save Folder"
 msgstr "Selecione Pasta de Destino"
 
@@ -287,9 +287,9 @@ msgid "File Name"
 msgstr "Nome do Ficheiro"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:152
-#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:172
+#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:183
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:53
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:209
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:219
 msgid "Revert to Title"
 msgstr ""
 
@@ -960,14 +960,14 @@ msgstr ""
 msgid "Close"
 msgstr "Fechar"
 
-#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:146
+#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:157
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:54
 #, fuzzy
 msgid "No Subtitles Available"
 msgstr "Nova atualização disponível."
 
-#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:162
-#, fuzzy
+#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:173
+#, fuzzy, c++-format
 msgid "{} items"
 msgstr "{0} de {1} itens"
 
@@ -1085,7 +1085,7 @@ msgid "Changelog:"
 msgstr "Histório de mudanças"
 
 #: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:39
-#, fuzzy
+#, fuzzy, c++-format
 msgid ""
 "Developers:\n"
 "{}\n"
@@ -1151,7 +1151,7 @@ msgid "Enter file name here"
 msgstr "Digite o nome aqui"
 
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:52
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:208
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:218
 #, fuzzy
 msgid "Revert"
 msgstr "Nunca"
@@ -1172,8 +1172,8 @@ msgid ""
 "authentication used, and the selected browser for cookies in settings."
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:195
-#, fuzzy
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:205
+#, fuzzy, c++-format
 msgid "Items ({})"
 msgstr "{0} de {1} itens"
 

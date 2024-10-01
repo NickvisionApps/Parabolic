@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-28 09:15-0400\n"
+"POT-Creation-Date: 2024-10-01 13:22-0400\n"
 "PO-Revision-Date: 2024-09-28 13:14+0000\n"
 "Last-Translator: Ettore Atalan <atalanttore@googlemail.com>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -79,13 +79,9 @@ msgstr "Am besten"
 msgid "Audio Description"
 msgstr "Audiobeschreibung"
 
-#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:181
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:184
 msgid "Default"
 msgstr "Standard"
-
-#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:201
-msgid "Auto-generated"
-msgstr "Automatisch generiert"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:43
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:39
@@ -138,18 +134,22 @@ msgid "Unable to download and install update"
 msgstr "Aktualisierung kann nicht heruntergeladen und installiert werden"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:21
+#, c++-format
 msgid "{:.2f} GiB/s"
 msgstr "{:.2f} GiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:25
+#, c++-format
 msgid "{:.2f} MiB/s"
 msgstr "{:.2f} MiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:29
+#, c++-format
 msgid "{:.2f} KiB/s"
 msgstr "{:.2f} KiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:33
+#, c++-format
 msgid "{:.2f} B/s"
 msgstr "{:.2f} B/s"
 
@@ -169,6 +169,10 @@ msgid "WARNING: Using aria2 to download. Progress will not be shown."
 msgstr ""
 "WARNUNG: aria2 wird zum Herunterladen verwendet. Der Fortschritt wird nicht "
 "angezeigt."
+
+#: libparabolic/src/models/subtitlelanguage.cpp:31
+msgid "Auto-generated"
+msgstr "Automatisch generiert"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:11
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:37
@@ -262,12 +266,12 @@ msgstr "Speicherordner"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:137
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:265
-#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:232
-#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:275
+#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:243
+#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:286
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:49
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:65
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:241
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:270
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:251
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:280
 msgid "Select Save Folder"
 msgstr "Speicherordner wählen"
 
@@ -278,9 +282,9 @@ msgid "File Name"
 msgstr "Dateiname"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:152
-#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:172
+#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:183
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:53
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:209
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:219
 msgid "Revert to Title"
 msgstr "Auf Titel zurückkehren"
 
@@ -927,12 +931,13 @@ msgstr ""
 msgid "Close"
 msgstr "Schließen"
 
-#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:146
+#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:157
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:54
 msgid "No Subtitles Available"
 msgstr "Keine Untertitel verfügbar"
 
-#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:162
+#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:173
+#, c++-format
 msgid "{} items"
 msgstr "{} Elemente"
 
@@ -1046,6 +1051,7 @@ msgid "Changelog:"
 msgstr "Änderungsprotokoll:"
 
 #: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:39
+#, c++-format
 msgid ""
 "Developers:\n"
 "{}\n"
@@ -1100,7 +1106,7 @@ msgid "Enter file name here"
 msgstr "Dateiname hier eingeben"
 
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:52
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:208
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:218
 msgid "Revert"
 msgstr ""
 
@@ -1121,7 +1127,8 @@ msgstr ""
 "die URL, die verwendete Authentifizierung und den ausgewählten Browser für "
 "Cookies in den Einstellungen."
 
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:195
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:205
+#, c++-format
 msgid "Items ({})"
 msgstr "Elemente ({})"
 

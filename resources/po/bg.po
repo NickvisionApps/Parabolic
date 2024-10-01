@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-28 09:15-0400\n"
+"POT-Creation-Date: 2024-10-01 13:22-0400\n"
 "PO-Revision-Date: 2024-04-08 20:37+0000\n"
 "Last-Translator: twlvnn <kraft_werk@tutanota.com>\n"
 "Language-Team: Bulgarian <https://hosted.weblate.org/projects/nickvision-"
@@ -86,12 +86,8 @@ msgstr "Най-добро"
 msgid "Audio Description"
 msgstr ""
 
-#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:181
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:184
 msgid "Default"
-msgstr ""
-
-#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:201
-msgid "Auto-generated"
 msgstr ""
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:43
@@ -145,22 +141,22 @@ msgid "Unable to download and install update"
 msgstr "Неуспешно изтегляне и инсталиране на обновленията."
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:21
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} GiB/s"
 msgstr "{0:f1} ГБ/с"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:25
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} MiB/s"
 msgstr "{0:f1} МБ/с"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:29
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} KiB/s"
 msgstr "{0:f1} КБ/с"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:33
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} B/s"
 msgstr "{0:f1} Б/с"
 
@@ -175,6 +171,10 @@ msgstr ""
 
 #: libparabolic/src/models/download.cpp:111
 msgid "WARNING: Using aria2 to download. Progress will not be shown."
+msgstr ""
+
+#: libparabolic/src/models/subtitlelanguage.cpp:31
+msgid "Auto-generated"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:11
@@ -271,12 +271,12 @@ msgstr "Папка за запазване"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:137
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:265
-#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:232
-#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:275
+#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:243
+#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:286
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:49
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:65
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:241
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:270
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:251
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:280
 msgid "Select Save Folder"
 msgstr "Избиране на папка за запазване"
 
@@ -287,9 +287,9 @@ msgid "File Name"
 msgstr "Име на файл"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:152
-#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:172
+#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:183
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:53
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:209
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:219
 msgid "Revert to Title"
 msgstr ""
 
@@ -963,14 +963,14 @@ msgstr ""
 msgid "Close"
 msgstr "Затваряне"
 
-#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:146
+#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:157
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:54
 #, fuzzy
 msgid "No Subtitles Available"
 msgstr "Налично е ново обновление."
 
-#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:162
-#, fuzzy
+#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:173
+#, fuzzy, c++-format
 msgid "{} items"
 msgstr "{0} от {1} елемент"
 
@@ -1087,7 +1087,7 @@ msgid "Changelog:"
 msgstr "Дневник на промените"
 
 #: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:39
-#, fuzzy
+#, fuzzy, c++-format
 msgid ""
 "Developers:\n"
 "{}\n"
@@ -1153,7 +1153,7 @@ msgid "Enter file name here"
 msgstr "Въведете името тук"
 
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:52
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:208
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:218
 #, fuzzy
 msgid "Revert"
 msgstr "Никога"
@@ -1174,8 +1174,8 @@ msgid ""
 "authentication used, and the selected browser for cookies in settings."
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:195
-#, fuzzy
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:205
+#, fuzzy, c++-format
 msgid "Items ({})"
 msgstr "{0} от {1} елемент"
 
