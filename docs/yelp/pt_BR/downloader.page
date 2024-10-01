@@ -2,7 +2,7 @@
 <page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" id="downloader" its:version="2.0" xml:lang="pt-BR">
 <info>
 	<link type="guide" xref="index"/>
-	<title type="link">Downloader 🌐</title>
+	<title type="link">Baixador 🌐</title>
 	<credit type="author copyright">
 		<name>Nicholas Logozzo</name>
 		<years its:translate="no">2023-2024</years>
@@ -15,43 +15,41 @@
 </info>
 
 <title>Gerenciador de downloads</title>
-<p>This page explains all options for configuring the Downloader in Preferences in <app>Parabolic</app>.</p>
+<p>Esta página explica todas as opções para configurar o Baixador em Preferências no <app>Parabolic</app>.</p>
 
 <terms>
     <item>
         <title>Sobrescrever arquivos existentes</title>
-        <p>If enabled, Parabolic will overwrite existing files.</p>
-        <p>
-            For example, if a file named <code>movie.mp4</code> exists in the download folder, and a new download is created named <code>movie</code>, <code>movie.mp4</code> will be overwritten with the new download's content.
-        </p>
+        <p>Se ativado, o Parabolic substituirá os arquivos existentes.</p>
+        <p>Por exemplo, se um arquivo chamado <code>movie.mp4</code> existir na pasta de download e um novo download for criado chamado <code>movie</code>, <code>movie.mp4</code> será substituído pelo conteúdo do novo download.</p>
         <note style="advanced">
             <p>Padrão: Ativado</p>
         </note>
     </item>
 	<item>
-		<title>Maximum Number of Active Downloads</title>
-		<p>The number of active downloads allowed to run at a time. Must be an integer value between 1 and 10.</p>
-        <p>If the max number of active downloads is reached, Parabolic will place new downloads in a queue until more downloads are able to be run.</p>
+		<title>Número Máximo de Downloads Ativos</title>
+		<p>O número de downloads ativos permitidos para execução por vez. Deve ser um valor inteiro entre 1 e 10.</p>
+        <p>Se o número máximo de downloads ativos for atingido, o Parabolic colocará novos downloads em uma fila até que mais downloads possam ser executados.</p>
 		<note style="advanced">
-			<p>Default: 5</p>
+			<p>Padrão: 5</p>
 		</note>
     </item>
     <item>
-        <title>Included Auto-Generated Subtitles</title>
-        <p>Whether or not to included subtitles that are auto-translated to fit the requested subtitle languages.</p>
+        <title>Legendas Geradas Automaticamente Incluídas</title>
+        <p>Se devem ou não ser incluídas legendas traduzidas automaticamente para se adequarem aos idiomas de legenda solicitados.</p>
         <note style="advanced">
             <p>Padrão: Desligado</p>
         </note>
     </item>
     <item>
         <title>Usar aria2</title>
-        <p>If enabled, Parabolic will use aria2c to download media. Although using aria2c can improve download speed, download progress will not be displayed in the UI.</p>
+        <p>Se habilitado, o Parabolic usará aria2c para baixar mídia. Embora usar aria2c possa melhorar a velocidade de download, o progresso do download não será exibido na UI.</p>
         <note style="advanced">
             <p>Padrão: Desligado</p>
         </note>
     </item>
     <item>
-        <title>Maximum Connections Per Server</title>
+        <title>Máximo de Conexões por Servidor</title>
         <p>
             This option only applies when using aria2 is enabled. This option is the same as the <code>-x</code> flag passed to aria2c.
         </p>

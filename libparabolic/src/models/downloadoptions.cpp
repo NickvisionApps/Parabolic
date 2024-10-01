@@ -283,22 +283,20 @@ namespace Nickvision::TubeConverter::Shared::Models
             arguments.push_back("--remux-video");
             arguments.push_back(StringHelpers::lower(m_fileType.str()));
         }
-        arguments.push_back("--format");
         if(m_videoFormat && m_audioFormat)
         {
+            arguments.push_back("--format");
             arguments.push_back(m_videoFormat->getId() + "+" + m_audioFormat->getId());
         }
         else if(m_videoFormat)
         {
-            arguments.push_back(m_videoFormat->getId() + "+ba/b");
+            arguments.push_back("--format");
+            arguments.push_back(m_videoFormat->getId() + "*+ba/b");
         }
         else if(m_audioFormat)
         {
-            arguments.push_back("bv+" + m_audioFormat->getId() + "/b");
-        }
-        else
-        {
-            arguments.push_back("bv+ba/b");
+            arguments.push_back("--format");
+            arguments.push_back(m_audioFormat->getId() + "/b");
         }
         if(!std::filesystem::exists(m_saveFolder))
         {

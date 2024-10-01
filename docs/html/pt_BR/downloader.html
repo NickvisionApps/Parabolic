@@ -18,14 +18,12 @@ document.addEventListener('DOMContentLoaded', function() {
 <a class="trail" href="index.html" title="Parabolic Help">Parabolic Help</a> » </div></div></div></header><article><div class="hgroup pagewide"><h1 class="title"><span class="title">Gerenciador de downloads</span></h1></div>
 <div class="region">
 <div class="contents pagewide">
-<p class="p">This page explains all options for configuring the Downloader in Preferences in <span class="app">Parabolic</span>.</p>
+<p class="p">Esta página explica todas as opções para configurar o Baixador em Preferências no <span class="app">Parabolic</span>.</p>
 <div class="terms"><div class="inner"><div class="region"><dl class="terms">
 <dt class="terms">Sobrescrever arquivos existentes</dt>
 <dd class="terms">
-<p class="p">If enabled, Parabolic will overwrite existing files.</p>
-<p class="p">
-            For example, if a file named <span class="code">movie.mp4</span> exists in the download folder, and a new download is created named <span class="code">movie</span>, <span class="code">movie.mp4</span> will be overwritten with the new download's content.
-        </p>
+<p class="p">Se ativado, o Parabolic substituirá os arquivos existentes.</p>
+<p class="p">Por exemplo, se um arquivo chamado <span class="code">movie.mp4</span> existir na pasta de download e um novo download for criado chamado <span class="code">movie</span>, <span class="code">movie.mp4</span> será substituído pelo conteúdo do novo download.</p>
 <div class="note note-advanced" title="Avançado">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -43,10 +41,10 @@ document.addEventListener('DOMContentLoaded', function() {
 </svg><div class="inner"><div class="region"><div class="contents"><p class="p">Padrão: Ativado</p></div></div></div>
 </div>
 </dd>
-<dt class="terms">Maximum Number of Active Downloads</dt>
+<dt class="terms">Número Máximo de Downloads Ativos</dt>
 <dd class="terms">
-<p class="p">The number of active downloads allowed to run at a time. Must be an integer value between 1 and 10.</p>
-<p class="p">If the max number of active downloads is reached, Parabolic will place new downloads in a queue until more downloads are able to be run.</p>
+<p class="p">O número de downloads ativos permitidos para execução por vez. Deve ser um valor inteiro entre 1 e 10.</p>
+<p class="p">Se o número máximo de downloads ativos for atingido, o Parabolic colocará novos downloads em uma fila até que mais downloads possam ser executados.</p>
 <div class="note note-advanced" title="Avançado">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -61,12 +59,12 @@ document.addEventListener('DOMContentLoaded', function() {
   <path class="yelp-svg-fill" d="m8.2435 7.0719-1.9004-3.3145 1.4143-1.4143 3.1596 1.7457z"></path>
   <path class="yelp-svg-fill" d="m11.072 11.757-3.3146 1.9-1.4143-1.414 1.7457-3.1602z"></path>
  </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Default: 5</p></div></div></div>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Padrão: 5</p></div></div></div>
 </div>
 </dd>
-<dt class="terms">Included Auto-Generated Subtitles</dt>
+<dt class="terms">Legendas Geradas Automaticamente Incluídas</dt>
 <dd class="terms">
-<p class="p">Whether or not to included subtitles that are auto-translated to fit the requested subtitle languages.</p>
+<p class="p">Se devem ou não ser incluídas legendas traduzidas automaticamente para se adequarem aos idiomas de legenda solicitados.</p>
 <div class="note note-advanced" title="Avançado">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -86,7 +84,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </dd>
 <dt class="terms">Usar aria2</dt>
 <dd class="terms">
-<p class="p">If enabled, Parabolic will use aria2c to download media. Although using aria2c can improve download speed, download progress will not be displayed in the UI.</p>
+<p class="p">Se habilitado, o Parabolic usará aria2c para baixar mídia. Embora usar aria2c possa melhorar a velocidade de download, o progresso do download não será exibido na UI.</p>
 <div class="note note-advanced" title="Avançado">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -104,7 +102,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </svg><div class="inner"><div class="region"><div class="contents"><p class="p">Padrão: Desligado</p></div></div></div>
 </div>
 </dd>
-<dt class="terms">Maximum Connections Per Server</dt>
+<dt class="terms">Máximo de Conexões por Servidor</dt>
 <dd class="terms">
 <p class="p">
             This option only applies when using aria2 is enabled. This option is the same as the <span class="code">-x</span> flag passed to aria2c.
