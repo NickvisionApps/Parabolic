@@ -164,20 +164,23 @@ namespace Nickvision::TubeConverter::Shared::Controllers
             {
                 if(format.getAudioLanguage())
                 {
+                    std::string language;
                     if(format.hasAudioDescription())
                     {
-                        m_audioLanguageFormatMap.emplace(languages.size(), format);
-                        languages.push_back(std::format("{} ({})", format.getAudioLanguage().value(), _("Audio Description")));
+                        language = std::format("{} ({})", format.getAudioLanguage().value(), _("Audio Description"));
                     }
                     else
                     {
+                        language = format.getAudioLanguage().value();
+                    }
+                    if(std::find(languages.begin(), languages.end(), language) == languages.end())
+                    {
                         m_audioLanguageFormatMap.emplace(languages.size(), format);
-                        languages.push_back(format.getAudioLanguage().value());
+                        languages.push_back(language);
                     }
                 }
             }
         }
-        std::sort(languages.begin(), languages.end());
         languages.insert(languages.begin(), _("Default"));
         return languages;
     }
