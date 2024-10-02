@@ -2,7 +2,7 @@
 <page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" id="converter" its:version="2.0" xml:lang="nb-NO">
 <info>
 	<link type="guide" xref="index"/>
-	<title type="link">Converter ⚒️</title>
+	<title type="link">Konvertering</title>
 	<credit type="author copyright">
 		<name>Nicholas Logozzo</name>
 		<years its:translate="no">2023-2024</years>
@@ -12,47 +12,53 @@
 		<years its:translate="no">2023-2024</years>
 	</credit>
 	<license href="http://creativecommons.org/licenses/by/4.0/" its:translate="no"><p>Creative Commons Attribution 4.0 International License</p></license>
-</info>
 
-<title>Converter</title>
-<p>This page explains all options for configuring the Converter in Preferences in <app>Parabolic</app>.</p>
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Brage Fuglseth</mal:name>
+      <mal:email>bragefuglseth@gnome.org</mal:email>
+      <mal:years>2024</mal:years>
+    </mal:credit>
+  </info>
+
+<title>Konvertering</title>
+<p>Denne seksjonen tar for seg alle innstillingene for konvertering i <app>Parabolic</app>.</p>
 
 <terms>
 	<item>
-		<title>Embed Metadata</title>
-		<p>If enabled, Parabolic will tag a media with its relevant information (title, genre, etc...) and thumbnail if available.</p>
-        <p>Parabolic will NOT embed the Comment, Description, Synopsis, and Purl fields.</p>
+		<title>Bygg inn metadata</title>
+		<p>Hvis dette er på, vil Parabolic forsøke å legge ved relevante data (tittel, sjanger, miniatyrbilde, osv.) i filen.</p>
+        <p>Parabolic vil ikke legge ved kommentarer, beskrivelser, sammendrag eller app-adresser.</p>
 		<note style="advanced">
-			<p>Default: On</p>
+			<p>Standard: på</p>
 		</note>
     </item>
     <item>
-        <title>Embed Subtitles</title>
-        <p>If disabled or if embedding fails, downloaded subtitles will be saved to a separate file.</p>
+        <title>Bygg inn undertekster</title>
+        <p>Hvis dette er av eller innebyggingen mislykkes, vil nedlastede undertekster lagres som en egen fil.</p>
         <note style="advanced">
-            <p>Default: On</p>
+            <p>Standard: på</p>
         </note>
     </item>
     <item>
-		<title>Embed Chapters</title>
-		<p>If enabled, Parabolic will tag a media with chapter information if available.</p>
+		<title>Bygg inn kapitler</title>
+		<p>Hvis dette er på, vil Parabolic forsøke å legge ved informasjon om kapitler i videoen.</p>
 		<note style="advanced">
-			<p>Default: Off</p>
+			<p>Standard: av</p>
 		</note>
 	</item>
     <item>
-		<title>Crop Audio Thumbnails</title>
-		<p>If enabled, Parabolic will crop thumbnails for audio files to be a square resolution.</p>
+		<title>Kvadratiske miniatyrbilder</title>
+		<p>Hvis dette er på, vil Parabolic beskjære miniatyrbilder slik at de blir kvadratiske.</p>
 		<note style="advanced">
-			<p>Default: Off</p>
+			<p>Standard: av</p>
 		</note>
     </item>
     <item>
-		<title>Remove Source Data</title>
-		<p>If enabled, Parabolic will clear metadata fields containing the URL and other identifying information of the media source.</p>
-        <p>Fields that are cleared: <code>comment</code>, <code>description</code>, <code>synopsis</code>, <code>purl</code> and <code>handler_name</code> in each stream.</p>
+		<title>Fjern kildedata</title>
+		<p>Hvis dette er på, vil Parabolic fjerne alle metadata om kilden til videoen, for eksempel nettadresser.</p>
+        <p>Felter som fjernes:<code>comment</code>, <code>description</code>, <code>synopsis</code>, <code>purl</code> og <code>handler_name</code> på hver nedlasting.</p>
 		<note style="advanced">
-			<p>Default: Off</p>
+			<p>Standard: av</p>
 		</note>
     </item>
 </terms>
