@@ -2,7 +2,7 @@
 <page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" id="downloader" its:version="2.0" xml:lang="nb-NO">
 <info>
 	<link type="guide" xref="index"/>
-	<title type="link">Downloader 🌐</title>
+	<title type="link">Nedlasting</title>
 	<credit type="author copyright">
 		<name>Nicholas Logozzo</name>
 		<years its:translate="no">2023-2024</years>
@@ -12,90 +12,90 @@
 		<years its:translate="no">2023-2024</years>
 	</credit>
 	<license href="http://creativecommons.org/licenses/by/4.0/" its:translate="no"><p>Creative Commons Attribution 4.0 International License</p></license>
-</info>
 
-<title>Downloader</title>
-<p>This page explains all options for configuring the Downloader in Preferences in <app>Parabolic</app>.</p>
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Brage Fuglseth</mal:name>
+      <mal:email>bragefuglseth@gnome.org</mal:email>
+      <mal:years>2024</mal:years>
+    </mal:credit>
+  </info>
+
+<title>Nedlasting</title>
+<p>Denne seksjonen tar for seg alle innstillingene for nedlasting i <app>Parabolic</app>.</p>
 
 <terms>
     <item>
-        <title>Overwrite Existing Files</title>
-        <p>If enabled, Parabolic will overwrite existing files.</p>
-        <p>
-            For example, if a file named <code>movie.mp4</code> exists in the download folder, and a new download is created named <code>movie</code>, <code>movie.mp4</code> will be overwritten with the new download's content.
-        </p>
+        <title>Erstatt eksisterende filer</title>
+        <p>Hvis dette er på, vil Parabolic kunne erstatte eksisterende filer ved navnekollisjoner.</p>
+        <p>Hvis en fil som heter <code>video.mp4</code> ligger i nedlastingsmappen, og en ny nedlasting ved navn <code>video</code> blir lagt til, vil <code>video.mp4</code> erstattes med den nye filen.</p>
         <note style="advanced">
-            <p>Default: On</p>
+            <p>Standard: på</p>
         </note>
     </item>
 	<item>
-		<title>Maximum Number of Active Downloads</title>
-		<p>The number of active downloads allowed to run at a time. Must be an integer value between 1 and 10.</p>
-        <p>If the max number of active downloads is reached, Parabolic will place new downloads in a queue until more downloads are able to be run.</p>
+		<title>Høyeste antall aktive nedlastinger</title>
+		<p>Det høyeste antallet nedlastinger som kan gjennomføres samtidig. Må være et tall mellom 1 og 10.</p>
+        <p>Hvis det høyeste antallet aktive nedlastinger nås, vil Parabolic sette resten i en kø til flere nedlastinger kan gjennomføres.</p>
 		<note style="advanced">
-			<p>Default: 5</p>
+			<p>Standard: 5</p>
 		</note>
     </item>
     <item>
-        <title>Included Auto-Generated Subtitles</title>
-        <p>Whether or not to included subtitles that are auto-translated to fit the requested subtitle languages.</p>
+        <title>Inkluder automatiske undertekster</title>
+        <p>Om automatisk genererte undertekster som samsvarer med det valgte språket skal inkluderes i nedlastingen.</p>
         <note style="advanced">
-            <p>Default: Off</p>
+            <p>Standard: av</p>
         </note>
     </item>
     <item>
-        <title>Use aria2</title>
-        <p>If enabled, Parabolic will use aria2c to download media. Although using aria2c can improve download speed, download progress will not be displayed in the UI.</p>
+        <title>Bruk aria2</title>
+        <p>Hvis dette er på, vil Parabolic bruke aria2c til å gjennomføre nedlastinger.</p>
         <note style="advanced">
-            <p>Default: Off</p>
+            <p>Standard: av</p>
         </note>
     </item>
     <item>
-        <title>Maximum Connections Per Server</title>
-        <p>
-            This option only applies when using aria2 is enabled. This option is the same as the <code>-x</code> flag passed to aria2c.
-        </p>
-        <p>The maximum number of connection that can be used per server. Must be an integer value between 1 and 32.</p>
+        <title>Høyeste antall tilkoblinger per tjener</title>
+        <p>Denne innstillingen gjelder bare når aria2 er i bruk. Den tilsvarer å sende verdien <code>-x</code> til ara2c.</p>
+        <p>Det høyeste antallet tilkoblinger som kan brukes per tjener. Må være et tall mellom 1 og 32.</p>
         <note style="advanced">
-            <p>Default: 16</p>
+            <p>Standard: 16</p>
         </note>
     </item>
     <item>
-        <title>Minimum Split Size</title>
-        <p>
-            This option only applies when using aria2 is enabled. This option is the same as the <code>-k</code> flag passed to aria2c.
-        </p>
-        <p>The minimum size, in MiB, of which to split a file. Must be an integer value between 1 and 1024.</p>
+        <title>Minste inndelingsstørrelse</title>
+        <p>Denne innstillingen gjelder bare når aria2 er i bruk. Den tilsvarer å sende verdien <code>-k</code> til aria2c.</p>
+        <p>Den minste størrelsen en fil kan deles inn i, i MiB. Må være et tall mellom 1 og 1024.</p>
         <note style="advanced">
-            <p>Default: 20</p>
+            <p>Standard: 20</p>
         </note>
     </item>
     <item>
-        <title>Speed Limit</title>
-        <p>A limit, in Ki/s, that is applied to downloads only if they have the advanced option <code>Speed Limit</code> enabled. Must be an integer value between 512 and 10240.</p>
+        <title>Hastighetsgrense</title>
+        <p>En øvre grense for nedlastningsfart i KiB/s, som brukes hvis hastighetsgrense også er slått på for den enkelte nedlastingen.</p>
 		<note style="advanced">
-			<p>Default: 1024</p>
+			<p>Standard: 1024</p>
 		</note>
     </item>
     <item>
-        <title>Proxy URL</title>
-        <p>The url of the proxy server to use.</p>
+        <title>Mellomtjeneradresse</title>
+        <p>Adressen til en mellomtjener som skal brukes.</p>
     </item>
     <item>
-        <title>Cookies from Browser</title>
-        <p>A browser in which to read cookies from and pass to yt-dlp's download engine.</p>
+        <title>Informasjonskapsler fra nettleser</title>
+        <p>En nettleser som informasjonskapsler skal hentes fra til autentisering av nedlastinger.</p>
 		<note style="advanced">
-			<p>Default: None</p>
+			<p>Standard: ingen</p>
 		</note>
     </item>
     <item>
-        <title>Use SponsorBlock for YouTube</title>
-        <p>If enabled, Parabolic will apply the SponsorBlock extension to YouTube downloads.</p>
+        <title>Bruk SponsorBlock på Youtube</title>
+        <p>Hvis dette er på, vil Parabolic bruke SponsorBlock-utvidelsen til å kutte ut betalte segmenter fra YouTube-videoer.</p>
         <note>
-            <p>SponsorBlock only works on YouTube videos. However, leaving this setting on will not affect downloads from other sites (i.e. not cause them to fail).</p>
+            <p>SponsorBlock fungerer bare på YouTube. Å ha denne innstillingen på vil ikke påvirke andre nedlastinger på noen som helst måte.</p>
         </note>
         <note style="advanced">
-            <p>Default: Off</p>
+            <p>Standard: av</p>
         </note>
     </item>
 </terms>
