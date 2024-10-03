@@ -71,7 +71,7 @@ namespace Nickvision::TubeConverter::GNOME::Views
         GSimpleAction* actQuit{ g_simple_action_new("quit", nullptr) };
         g_signal_connect(actQuit, "activate", G_CALLBACK(+[](GSimpleAction*, GVariant*, gpointer data){ reinterpret_cast<MainWindow*>(data)->quit(); }), this);
         g_action_map_add_action(G_ACTION_MAP(m_window), G_ACTION(actQuit));
-        GtkHelpers::setAccelForAction(m_app, "app.quit", "<Ctrl>Q");
+        GtkHelpers::setAccelForAction(m_app, "win.quit", "<Ctrl>Q");
         //Preferences Action
         GSimpleAction* actPreferences{ g_simple_action_new("preferences", nullptr) };
         g_signal_connect(actPreferences, "activate", G_CALLBACK(+[](GSimpleAction*, GVariant*, gpointer data){ reinterpret_cast<MainWindow*>(data)->preferences(); }), this);
