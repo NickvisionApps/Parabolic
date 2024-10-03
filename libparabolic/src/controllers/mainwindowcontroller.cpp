@@ -20,7 +20,6 @@ using namespace Nickvision::Events;
 using namespace Nickvision::Filesystem;
 using namespace Nickvision::Helpers;
 using namespace Nickvision::Keyring;
-using namespace Nickvision::Network;
 using namespace Nickvision::Localization;
 using namespace Nickvision::Notifications;
 using namespace Nickvision::System;
@@ -60,7 +59,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         m_updater = std::make_shared<Updater>(m_appInfo.getSourceRepo());
 #endif
         m_dataFileManager.get<Configuration>("config").saved() += [this](const EventArgs&){ onConfigurationSaved(); };
-        m_networkMonitor.stateChanged() += [this](const NetworkStateChangedEventArgs& args){ onNetworkStateChanged(args); };
+        //Log information
         if(!m_keyring.isSavingToDisk())
         {
             m_logger.log(Logging::LogLevel::Warning, "Keyring not being saved to disk.");
@@ -140,21 +139,6 @@ namespace Nickvision::TubeConverter::Shared::Controllers
     std::string MainWindowController::getDebugInformation(const std::string& extraInformation) const
     {
         std::stringstream builder;
-        //Network connection
-        builder << "Network: ";
-        switch(m_networkMonitor.getConnectionState())
-        {
-        case NetworkState::Disconnected:
-            builder << "Disconnected" << std::endl;
-            break;
-        case NetworkState::ConnectedLocal:
-            builder << "Local" << std::endl;
-            break;
-        case NetworkState::ConnectedGlobal:
-            builder << "Global" << std::endl;
-            break;
-        }
-        builder << std::endl;
         //yt-dlp
         if(Environment::findDependency("yt-dlp").empty())
         {
@@ -205,7 +189,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
 
     bool MainWindowController::canDownload() const
     {
-        return m_networkMonitor.getConnectionState() == NetworkState::ConnectedGlobal && !Environment::findDependency("yt-dlp").empty() && !Environment::findDependency("ffmpeg").empty() && !Environment::findDependency("aria2c").empty();
+        return !Environment::findDependency("yt-dlp").empty() && !Environment::findDependency("ffmpeg").empty() && !Environment::findDependency("aria2c").empty();
     }
 
     std::shared_ptr<AddDownloadDialogController> MainWindowController::createAddDownloadDialogController()
@@ -363,18 +347,5 @@ namespace Nickvision::TubeConverter::Shared::Controllers
             }
         }
         m_downloadManager.setDownloaderOptions(m_dataFileManager.get<Configuration>("config").getDownloaderOptions());
-    }
-
-    void MainWindowController::onNetworkStateChanged(const NetworkStateChangedEventArgs& args)
-    {
-        if(args.getState() == NetworkState::ConnectedGlobal)
-        {
-            m_logger.log(Logging::LogLevel::Info, "Network connected.");
-        }
-        else
-        {
-            m_logger.log(Logging::LogLevel::Info, "Network disconnected.");
-        }
-        m_downloadAbilityChanged.invoke(canDownload());
     }
 }

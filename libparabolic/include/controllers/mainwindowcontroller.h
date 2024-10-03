@@ -17,7 +17,6 @@
 #include <libnick/events/parameventargs.h>
 #include <libnick/keyring/keyring.h>
 #include <libnick/logging/logger.h>
-#include <libnick/network/networkmonitor.h>
 #include <libnick/notifications/notificationsenteventargs.h>
 #include <libnick/notifications/shellnotificationsenteventargs.h>
 #include <libnick/system/suspendinhibitor.h>
@@ -165,10 +164,6 @@ namespace Nickvision::TubeConverter::Shared::Controllers
          * @brief Handles when the configuration is saved.
          */
         void onConfigurationSaved();
-        /**
-         * @brief Handles when the network connection state is changed.
-         */
-        void onNetworkStateChanged(const Network::NetworkStateChangedEventArgs& args);
         bool m_started;
         std::vector<std::string> m_args;
         Nickvision::App::AppInfo m_appInfo;
@@ -176,7 +171,6 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         Nickvision::Logging::Logger m_logger;
         std::shared_ptr<Nickvision::Update::Updater> m_updater;
         Nickvision::Taskbar::TaskbarItem m_taskbar;
-        Nickvision::Network::NetworkMonitor m_networkMonitor;
         Nickvision::System::SuspendInhibitor m_suspendInhibitor;
         Nickvision::Keyring::Keyring m_keyring;
         Models::DownloadManager m_downloadManager;
