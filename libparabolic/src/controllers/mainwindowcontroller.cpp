@@ -155,7 +155,10 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         //Extra
         if(!extraInformation.empty())
         {
-            builder << std::endl << extraInformation;
+            builder << std::endl << extraInformation << std::endl;
+#ifdef __linux__
+            builder << Environment::exec("locale");
+#endif
         }
         return Environment::getDebugInformation(m_appInfo, builder.str());
     }
