@@ -7,11 +7,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-01 13:36-0400\n"
+"POT-Creation-Date: 2024-10-04 08:43-0400\n"
 "PO-Revision-Date: 2024-10-02 09:40+0000\n"
 "Last-Translator: Gnuey56 <gnuey56@proton.me>\n"
-"Language-Team: Japanese <https://hosted.weblate.org/projects/"
-"nickvision-tube-converter/app/ja/>\n"
+"Language-Team: Japanese <https://hosted.weblate.org/projects/nickvision-tube-"
+"converter/app/ja/>\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -83,36 +83,36 @@ msgstr "音声の概要"
 msgid "Default"
 msgstr "デフォルト"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:43
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:42
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:39
 msgid "Parabolic"
 msgstr "Parabolic"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:44
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:43
 msgid "Download web video and audio"
 msgstr "ウェブ上のビデオと音声をダウンロード"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:50
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:49
 msgid "Matrix Chat"
 msgstr "Matrix チャット"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:52
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:51
 msgid "Contributors on GitHub"
 msgstr "GitHub での貢献者の皆さん"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:54
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:53
 msgid "Fyodor Sobolev"
 msgstr "Fyodor Sobolev"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:56
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:55
 msgid "David Lapshin"
 msgstr "David Lapshin"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:57
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:56
 msgid "translator-credits"
 msgstr "Gnuey56 <gnuey56@proton.me>"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:265
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:244
 msgid ""
 "The authors of Nickvision Parabolic are not responsible/liable for any "
 "misuse of this program that may violate local copyright/DMCA laws. Users use "
@@ -122,27 +122,31 @@ msgstr ""
 "作権法）に反する可能性のある、このプログラムの誤用について責任を負いません。"
 "ユーザーによるこのアプリケーションの使用は自己責任です。"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:296
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:273
 msgid "New update available"
 msgstr "新しいアップデートが利用可能"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:328
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:305
 msgid "Unable to download and install update"
 msgstr "アップデートをダウンロードしてインストールできません"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:21
+#, c++-format
 msgid "{:.2f} GiB/s"
 msgstr "{:.2f} GiB /毎秒"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:25
+#, c++-format
 msgid "{:.2f} MiB/s"
 msgstr "{:.2f} MiB/毎秒"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:29
+#, c++-format
 msgid "{:.2f} KiB/s"
 msgstr "{:.2f} KiB/毎秒"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:33
+#, c++-format
 msgid "{:.2f} B/s"
 msgstr "{:.2f} B/毎秒"
 
@@ -151,13 +155,13 @@ msgid "ERROR: The file already exists and overwriting is disabled."
 msgstr ""
 "エラー: すでにファイルが存在しており、ファイルの上書きが無効になっています。"
 
-#: libparabolic/src/models/download.cpp:107
+#: libparabolic/src/models/download.cpp:108
 msgid "WARNING: Using ffmpeg to download. Progress will not be shown."
 msgstr ""
 "警告: ffmpeg を使用してダウンロードします。進捗状況を表示することはできませ"
 "ん。"
 
-#: libparabolic/src/models/download.cpp:111
+#: libparabolic/src/models/download.cpp:112
 msgid "WARNING: Using aria2 to download. Progress will not be shown."
 msgstr ""
 "警告: aria2 を使用してダウンロードします。進捗状況を表示することはできませ"
@@ -348,7 +352,7 @@ msgstr "再生"
 #: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:87
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:180
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:26
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:310
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:312
 msgid "Open"
 msgstr "開く"
 
@@ -909,7 +913,8 @@ msgstr "手動で資格情報を入力する"
 msgid ""
 "The url provided is invalid or unable to be reached. Check the url, the "
 "authentication used, and the selected browser for cookies in preferences."
-msgstr "入力した URL が無効であるかアクセスできません。URL、使用される認証、設定で "
+msgstr ""
+"入力した URL が無効であるかアクセスできません。URL、使用される認証、設定で "
 "Cookie 用に選択したブラウザを確認してください。"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:108
@@ -923,6 +928,7 @@ msgid "No Subtitles Available"
 msgstr "利用可能な字幕がありません"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:173
+#, c++-format
 msgid "{} items"
 msgstr "{} 個のアイテム"
 
@@ -997,17 +1003,17 @@ msgid "Exit?"
 msgstr "終了しますか？"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:147
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:136
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:138
 msgid "There are downloads in progress. Are you sure you want to exit?"
 msgstr "進行中のダウンロードがあります。本当に終了しますか？"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:222
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:316
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:318
 msgid "Disclaimer"
 msgstr "免責事項"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:223
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:317
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:319
 msgid "Don't show this message again"
 msgstr "二度とこのメッセージを表示しない"
 
@@ -1034,6 +1040,7 @@ msgid "Changelog:"
 msgstr "変更履歴:"
 
 #: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:39
+#, c++-format
 msgid ""
 "Developers:\n"
 "{}\n"
@@ -1109,6 +1116,7 @@ msgstr ""
 "用に設定したブラウザを確認してみてください。"
 
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:206
+#, c++-format
 msgid "Items ({})"
 msgstr "アイテム ({})"
 
@@ -1196,7 +1204,7 @@ msgstr "ディスカッション"
 msgid "Log"
 msgstr "ログ"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:298
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:300
 msgid "Update"
 msgstr "アップデート"
 

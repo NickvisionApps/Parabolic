@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-01 13:36-0400\n"
+"POT-Creation-Date: 2024-10-04 08:43-0400\n"
 "PO-Revision-Date: 2024-09-28 00:09+0000\n"
 "Last-Translator: rene-coty <irenee.thirion@e.email>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -83,36 +83,36 @@ msgstr "Audio-description"
 msgid "Default"
 msgstr "Par défaut"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:43
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:42
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:39
 msgid "Parabolic"
 msgstr "Parabole"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:44
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:43
 msgid "Download web video and audio"
 msgstr "Téléchargez des vidéos et de l’audio en ligne"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:50
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:49
 msgid "Matrix Chat"
 msgstr "Discussion Matrix"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:52
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:51
 msgid "Contributors on GitHub"
 msgstr "Contributeurs sur GitHub"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:54
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:53
 msgid "Fyodor Sobolev"
 msgstr "Fyodor Sobolev"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:56
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:55
 msgid "David Lapshin"
 msgstr "David Lapshin"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:57
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:56
 msgid "translator-credits"
 msgstr "Irénée Thirion"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:265
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:244
 msgid ""
 "The authors of Nickvision Parabolic are not responsible/liable for any "
 "misuse of this program that may violate local copyright/DMCA laws. Users use "
@@ -123,27 +123,31 @@ msgstr ""
 "le copyright/DMCA. Les utilisateurs se servent de cette application à leurs "
 "propres risques."
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:296
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:273
 msgid "New update available"
 msgstr "Nouvelle mise à jour disponible"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:328
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:305
 msgid "Unable to download and install update"
 msgstr "Impossible de télécharger et installer la mise à jour"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:21
+#, c++-format
 msgid "{:.2f} GiB/s"
 msgstr "{:.2f} GiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:25
+#, c++-format
 msgid "{:.2f} MiB/s"
 msgstr "{:.2f} MiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:29
+#, c++-format
 msgid "{:.2f} KiB/s"
 msgstr "{:.2f} KiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:33
+#, c++-format
 msgid "{:.2f} B/s"
 msgstr "{:.2f} B/s"
 
@@ -152,13 +156,13 @@ msgid "ERROR: The file already exists and overwriting is disabled."
 msgstr ""
 "ERREUR : Le fichier existe déjà, et le remplacement n’a pas été activé."
 
-#: libparabolic/src/models/download.cpp:107
+#: libparabolic/src/models/download.cpp:108
 msgid "WARNING: Using ffmpeg to download. Progress will not be shown."
 msgstr ""
 "AVERTISSEMENT : Utilisation de ffmpeg pour le téléchargement. La progression "
 "ne sera pas affichée."
 
-#: libparabolic/src/models/download.cpp:111
+#: libparabolic/src/models/download.cpp:112
 msgid "WARNING: Using aria2 to download. Progress will not be shown."
 msgstr ""
 "AVERTISSEMENT : Utilisation d'aria2 pour le téléchargement. La progression "
@@ -349,7 +353,7 @@ msgstr "Lire"
 #: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:87
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:180
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:26
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:310
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:312
 msgid "Open"
 msgstr "Ouvrir"
 
@@ -931,6 +935,7 @@ msgid "No Subtitles Available"
 msgstr "Aucun sous-titre disponible"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:173
+#, c++-format
 msgid "{} items"
 msgstr "{} éléments"
 
@@ -1006,17 +1011,17 @@ msgid "Exit?"
 msgstr "Quitter ?"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:147
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:136
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:138
 msgid "There are downloads in progress. Are you sure you want to exit?"
 msgstr "Des téléchargements sont en cours. Êtes-vous sûr de vouloir quitter ?"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:222
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:316
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:318
 msgid "Disclaimer"
 msgstr "Avertissement"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:223
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:317
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:319
 msgid "Don't show this message again"
 msgstr "Ne plus afficher ce message"
 
@@ -1043,6 +1048,7 @@ msgid "Changelog:"
 msgstr "Journal des changements :"
 
 #: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:39
+#, c++-format
 msgid ""
 "Developers:\n"
 "{}\n"
@@ -1119,6 +1125,7 @@ msgstr ""
 "les Préférences."
 
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:206
+#, c++-format
 msgid "Items ({})"
 msgstr "Éléments ({})"
 
@@ -1209,7 +1216,7 @@ msgstr "Discussions"
 msgid "Log"
 msgstr "Journal"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:298
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:300
 msgid "Update"
 msgstr "Mettre à jour"
 
