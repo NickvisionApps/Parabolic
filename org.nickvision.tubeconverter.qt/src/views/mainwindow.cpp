@@ -90,7 +90,6 @@ namespace Nickvision::TubeConverter::QT::Views
         m_controller->notificationSent() += [&](const NotificationSentEventArgs& args) { QTHelpers::dispatchToMainThread([this, args]() { onNotificationSent(args); }); };
         m_controller->shellNotificationSent() += [&](const ShellNotificationSentEventArgs& args) { onShellNotificationSent(args); };
         m_controller->disclaimerTriggered() += [&](const ParamEventArgs<std::string>& args) { onDisclaimerTriggered(args); };
-        m_controller->downloadAbilityChanged() += [&](const ParamEventArgs<bool>& args) { onDownloadAbilityChanged(args); };
         m_controller->getDownloadManager().historyChanged() += [&](const ParamEventArgs<std::vector<HistoricDownload>>& args) { QTHelpers::dispatchToMainThread([this, args]() { onHistoryChanged(args); }); };
         m_controller->getDownloadManager().downloadAdded() += [&](const DownloadAddedEventArgs& args) { QTHelpers::dispatchToMainThread([this, args]() { onDownloadAdded(args); }); };
         m_controller->getDownloadManager().downloadCompleted() += [&](const DownloadCompletedEventArgs& args) { QTHelpers::dispatchToMainThread([this, args]() { onDownloadCompleted(args); }); };
@@ -126,6 +125,9 @@ namespace Nickvision::TubeConverter::QT::Views
         {
             setGeometry(QWidget::geometry().x(), QWidget::geometry().y(), geometry.getWidth(), geometry.getHeight());
         }
+        bool canDownload{ m_controller->canDownload() };
+        m_ui->actionAddDownload->setEnabled(canDownload);
+        m_ui->btnHomeAddDownload->setEnabled(canDownload);
     }
 
     void MainWindow::closeEvent(QCloseEvent* event)
@@ -318,12 +320,6 @@ namespace Nickvision::TubeConverter::QT::Views
         msgBox.setCheckBox(checkBox);
         msgBox.exec();
         m_controller->setShowDisclaimerOnStartup(!checkBox->isChecked());
-    }
-
-    void MainWindow::onDownloadAbilityChanged(const ParamEventArgs<bool>& args)
-    {
-        m_ui->actionAddDownload->setEnabled(args.getParam());
-        m_ui->btnHomeAddDownload->setEnabled(args.getParam());
     }
 
     void MainWindow::onHistoryChanged(const ParamEventArgs<std::vector<HistoricDownload>>& args)

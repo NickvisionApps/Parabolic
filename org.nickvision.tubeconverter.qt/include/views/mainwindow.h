@@ -133,11 +133,6 @@ namespace Nickvision::TubeConverter::QT::Views
          */
         void onDisclaimerTriggered(const Events::ParamEventArgs<std::string>& args);
         /**
-         * @brief Handles when the download ability is changed.
-         * @param args The ParamEventArgs<bool>
-         */
-        void onDownloadAbilityChanged(const Events::ParamEventArgs<bool>& args);
-        /**
          * @brief Handles when the download history is changed.
          * @param args The ParamEventArgs<std::vector<Models::HistoricDownload>>
          */

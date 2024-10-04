@@ -64,18 +64,6 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         {
             m_logger.log(Logging::LogLevel::Warning, "Keyring not being saved to disk.");
         }
-        if(Environment::findDependency("yt-dlp").empty())
-        {
-            m_logger.log(Logging::LogLevel::Error, "yt-dlp not found.");
-        }
-        if(Environment::findDependency("ffmpeg").empty())
-        {
-            m_logger.log(Logging::LogLevel::Error, "ffmpeg not found.");
-        }
-        if(Environment::findDependency("aria2c").empty())
-        {
-            m_logger.log(Logging::LogLevel::Error, "aria2c not found.");
-        }
         if(m_dataFileManager.get<Configuration>("config").getPreventSuspend())
         {
             if(m_suspendInhibitor.inhibit())
@@ -131,11 +119,6 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         return m_disclaimerTriggered;
     }
 
-    Event<ParamEventArgs<bool>>& MainWindowController::downloadAbilityChanged()
-    {
-        return m_downloadAbilityChanged;
-    }
-
     std::string MainWindowController::getDebugInformation(const std::string& extraInformation) const
     {
         std::stringstream builder;
@@ -189,6 +172,18 @@ namespace Nickvision::TubeConverter::Shared::Controllers
 
     bool MainWindowController::canDownload() const
     {
+        if(Environment::findDependency("yt-dlp").empty())
+        {
+            m_logger.log(Logging::LogLevel::Error, "yt-dlp not found.");
+        }
+        if(Environment::findDependency("ffmpeg").empty())
+        {
+            m_logger.log(Logging::LogLevel::Error, "ffmpeg not found.");
+        }
+        if(Environment::findDependency("aria2c").empty())
+        {
+            m_logger.log(Logging::LogLevel::Error, "aria2c not found.");
+        }
         return !Environment::findDependency("yt-dlp").empty() && !Environment::findDependency("ffmpeg").empty() && !Environment::findDependency("aria2c").empty();
     }
 
@@ -248,8 +243,6 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         {
             m_disclaimerTriggered.invoke({ _("The authors of Nickvision Parabolic are not responsible/liable for any misuse of this program that may violate local copyright/DMCA laws. Users use this application at their own risk.") });
         }
-        //Check if downloads can be started
-        m_downloadAbilityChanged.invoke(canDownload());
         m_started = true;
         return m_dataFileManager.get<Configuration>("config").getWindowGeometry();
     }

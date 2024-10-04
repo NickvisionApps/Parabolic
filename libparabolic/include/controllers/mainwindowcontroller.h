@@ -63,11 +63,6 @@ namespace Nickvision::TubeConverter::Shared::Controllers
          */
         Nickvision::Events::Event<Nickvision::Events::ParamEventArgs<std::string>>& disclaimerTriggered();
         /**
-         * @brief Gets the event for when the ability to download is changed.
-         * @return The download ability changed event
-         */
-        Nickvision::Events::Event<Nickvision::Events::ParamEventArgs<bool>>& downloadAbilityChanged();
-        /**
          * @brief Gets the AppInfo object for the application
          * @return The current AppInfo object
          */
@@ -177,7 +172,6 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         Nickvision::Events::Event<Nickvision::Notifications::NotificationSentEventArgs> m_notificationSent;
         Nickvision::Events::Event<Nickvision::Notifications::ShellNotificationSentEventArgs> m_shellNotificationSent;
         Nickvision::Events::Event<Nickvision::Events::ParamEventArgs<std::string>> m_disclaimerTriggered;
-        Nickvision::Events::Event<Nickvision::Events::ParamEventArgs<bool>> m_downloadAbilityChanged;
     };
 }
 
