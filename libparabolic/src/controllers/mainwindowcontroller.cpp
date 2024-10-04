@@ -38,10 +38,10 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         m_keyring{ m_appInfo.getId() },
         m_downloadManager{ m_dataFileManager.get<Configuration>("config").getDownloaderOptions(), m_dataFileManager.get<DownloadHistory>("history"), m_logger }
     {
-        m_appInfo.setVersion({ "2024.10.0" });
+        m_appInfo.setVersion({ "2024.10.1-next" });
         m_appInfo.setShortName(_("Parabolic"));
         m_appInfo.setDescription(_("Download web video and audio"));
-        m_appInfo.setChangelog("- Parabolic has been rewritten in C++ for faster performance\n- The Keyring module was rewritten. As a result, all keyrings have been reset and will need to be reconfigured\n- Audio languages with audio description are now correctly recognized and handled separately from audio languages without audio description\n- Audio download qualities will now list audio bitrates for the user to choose from\n- Playlist downloads will now be saved in a subdirectory with the playlist's title within the chosen save folder\n- When viewing the log of a download, the command used to run the download can now also be copied to the clipboard\n- The length of the kept download history can now be changed in Preferences\n- On non-sandbox platforms, a browser can be selected for Parabolic to fetch cookies from instead of selecting a txt file in Preferences\n- Added an option in Preferences to allow for immediate download after a URL is validated\n- Added an option in Preferences to pick a preferred video codec for when downloading video media\n- Fixed validation issues with various sites\n- Fixed an issue where a specified video password was not being used\n- Redesigned user interface\n- Updated yt-dlp");
+        m_appInfo.setChangelog("- Fixed an issue where the Add Download action was disabled incorrectly\n- Fixed an issue where the app crashed when attempting to use aria2c");
         m_appInfo.setSourceRepo("https://github.com/NickvisionApps/Parabolic");
         m_appInfo.setIssueTracker("https://github.com/NickvisionApps/Parabolic/issues/new");
         m_appInfo.setSupportUrl("https://github.com/NickvisionApps/Parabolic/discussions");

@@ -36,22 +36,10 @@
     <binary>@PROJECT_NAME@</binary>
   </provides>
   <releases>
-    <release version="2024.10.0" date="2024-10-02">
+    <release version="2024.10.1-next" date="2024-10-04">
       <description translate="no">
-        <p>- Parabolic has been rewritten in C++ for faster performance</p>
-        <p>- The Keyring module was rewritten. As a result, all keyrings have been reset and will need to be reconfigured</p>
-        <p>- Audio languages with audio description are now correctly recognized and handled separately from audio languages without audio description</p>
-        <p>- Audio download qualities will now list audio bitrates for the user to choose from</p>
-        <p>- Playlist downloads will now be saved in a subdirectory with the playlist's title within the chosen save folder</p>
-        <p>- When viewing the log of a download, the command used to run the download can now also be copied to the clipboard</p>
-        <p>- The length of the kept download history can now be changed in Preferences</p>
-        <p>- On non-sandbox platforms, a browser can be selected for Parabolic to fetch cookies from instead of selecting a txt file in Preferences</p>
-        <p>- Added an option in Preferences to allow for immediate download after a URL is validated</p>
-        <p>- Added an option in Preferences to pick a preferred video codec for when downloading video media</p>
-        <p>- Fixed validation issues with various sites</p>
-        <p>- Fixed an issue where a specified video password was not being used</p>
-        <p>- Redesigned user interface</p>
-        <p>- Updated yt-dlp</p>
+        <p>- Fixed an issue where the Add Download action was disabled incorrectly</p>
+        <p>- Fixed an issue where the app crashed when attempting to use aria2c</p>
       </description>
     </release>
   </releases>

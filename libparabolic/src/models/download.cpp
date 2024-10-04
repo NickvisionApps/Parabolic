@@ -102,13 +102,14 @@ namespace Nickvision::TubeConverter::Shared::Models
         m_status = DownloadStatus::Running;
         std::thread watcher{ &Download::watch, this };
         watcher.detach();
+        lock.unlock();
         if(m_options.getTimeFrame())
         {
-            m_progressChanged.invoke({ m_id, 0.0, 0.0, _("WARNING: Using ffmpeg to download. Progress will not be shown.") });
+            m_progressChanged.invoke({ m_id, std::nan(""), 0.0, _("WARNING: Using ffmpeg to download. Progress will not be shown.") });
         }
         if(downloaderOptions.getUseAria())
         {
-            m_progressChanged.invoke({ m_id, 0.0, 0.0, _("WARNING: Using aria2 to download. Progress will not be shown.") });
+            m_progressChanged.invoke({ m_id, std::nan(""), 0.0, _("WARNING: Using aria2 to download. Progress will not be shown.") });
         }
     }
 
