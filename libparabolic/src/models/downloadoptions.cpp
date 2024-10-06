@@ -189,7 +189,7 @@ namespace Nickvision::TubeConverter::Shared::Models
             arguments.push_back("--downloader");
             arguments.push_back(Environment::findDependency("aria2c").string());
             arguments.push_back("--downloader-args");
-            arguments.push_back("aria2c:-x " + std::to_string(downloaderOptions.getAriaMaxConnectionsPerServer()) + " -k " + std::to_string(downloaderOptions.getAriaMinSplitSize()));
+            arguments.push_back("aria2c:-x " + std::to_string(downloaderOptions.getAriaMaxConnectionsPerServer()) + " -k " + std::to_string(downloaderOptions.getAriaMinSplitSize()) + "M");
         }
         else
         {

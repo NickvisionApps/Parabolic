@@ -29,7 +29,7 @@
    <item>
     <widget class="QStackedWidget" name="viewStack">
      <property name="currentIndex">
-      <number>2</number>
+      <number>3</number>
      </property>
      <widget class="QWidget" name="pageValidate">
       <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -274,7 +274,13 @@
              <widget class="QWidget" name="pageSubtitlesSingle">
               <layout class="QVBoxLayout" name="verticalLayout_8">
                <item>
-                <widget class="QTableWidget" name="tblSubtitlesSingle"/>
+                <widget class="QTableWidget" name="tblSubtitlesSingle">
+                 <property name="columnCount">
+                  <number>2</number>
+                 </property>
+                 <column/>
+                 <column/>
+                </widget>
                </item>
               </layout>
              </widget>
@@ -310,7 +316,7 @@
        <item>
         <widget class="QTabWidget" name="tabsPlaylist">
          <property name="currentIndex">
-          <number>0</number>
+          <number>1</number>
          </property>
          <widget class="QWidget" name="tabGeneralPlaylist">
           <attribute name="title">
@@ -379,7 +385,14 @@
             <widget class="QCheckBox" name="chkNumberTitlesPlaylist"/>
            </item>
            <item>
-            <widget class="QTableWidget" name="tblItemsPlaylist"/>
+            <widget class="QTableWidget" name="tblItemsPlaylist">
+             <property name="columnCount">
+              <number>3</number>
+             </property>
+             <column/>
+             <column/>
+             <column/>
+            </widget>
            </item>
           </layout>
          </widget>

@@ -27,7 +27,7 @@ jobs:
         with:
           bundle: org.nickvision.tubeconverter.gnome.flatpak
           manifest-path: flatpak/org.nickvision.tubeconverter.gnome.json
-          cache-key: flatpak-builder-${{ github.sha }}
+          cache-key: flatpak-builder-gnome-${{ github.sha }}
           arch: ${{ matrix.arch }}
           restore-cache: true
   qt-flatpak:
@@ -47,6 +47,6 @@ jobs:
         with:
           bundle: org.nickvision.tubeconverter.qt.flatpak
           manifest-path: flatpak/org.nickvision.tubeconverter.qt.json
-          cache-key: flatpak-builder-${{ github.sha }}
+          cache-key: flatpak-builder-qt-${{ github.sha }}
           arch: ${{ matrix.arch }}
           restore-cache: true

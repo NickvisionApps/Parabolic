@@ -17,7 +17,6 @@
 #include <libnick/events/parameventargs.h>
 #include <libnick/keyring/keyring.h>
 #include <libnick/logging/logger.h>
-#include <libnick/network/networkmonitor.h>
 #include <libnick/notifications/notificationsenteventargs.h>
 #include <libnick/notifications/shellnotificationsenteventargs.h>
 #include <libnick/system/suspendinhibitor.h>
@@ -63,11 +62,6 @@ namespace Nickvision::TubeConverter::Shared::Controllers
          * @return The disclaimer triggered event
          */
         Nickvision::Events::Event<Nickvision::Events::ParamEventArgs<std::string>>& disclaimerTriggered();
-        /**
-         * @brief Gets the event for when the ability to download is changed.
-         * @return The download ability changed event
-         */
-        Nickvision::Events::Event<Nickvision::Events::ParamEventArgs<bool>>& downloadAbilityChanged();
         /**
          * @brief Gets the AppInfo object for the application
          * @return The current AppInfo object
@@ -165,10 +159,6 @@ namespace Nickvision::TubeConverter::Shared::Controllers
          * @brief Handles when the configuration is saved.
          */
         void onConfigurationSaved();
-        /**
-         * @brief Handles when the network connection state is changed.
-         */
-        void onNetworkStateChanged(const Network::NetworkStateChangedEventArgs& args);
         bool m_started;
         std::vector<std::string> m_args;
         Nickvision::App::AppInfo m_appInfo;
@@ -176,14 +166,12 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         Nickvision::Logging::Logger m_logger;
         std::shared_ptr<Nickvision::Update::Updater> m_updater;
         Nickvision::Taskbar::TaskbarItem m_taskbar;
-        Nickvision::Network::NetworkMonitor m_networkMonitor;
         Nickvision::System::SuspendInhibitor m_suspendInhibitor;
         Nickvision::Keyring::Keyring m_keyring;
         Models::DownloadManager m_downloadManager;
         Nickvision::Events::Event<Nickvision::Notifications::NotificationSentEventArgs> m_notificationSent;
         Nickvision::Events::Event<Nickvision::Notifications::ShellNotificationSentEventArgs> m_shellNotificationSent;
         Nickvision::Events::Event<Nickvision::Events::ParamEventArgs<std::string>> m_disclaimerTriggered;
-        Nickvision::Events::Event<Nickvision::Events::ParamEventArgs<bool>> m_downloadAbilityChanged;
     };
 }
 
