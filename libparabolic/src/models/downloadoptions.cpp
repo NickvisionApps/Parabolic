@@ -275,7 +275,7 @@ namespace Nickvision::TubeConverter::Shared::Models
         if(!downloaderOptions.getFFmpegArgs().empty())
         {
             arguments.push_back("--postprocessor-args");
-            arguments.push_back("FFmpeg:" + downloaderOptions.getFFmpegArgs());
+            arguments.push_back("ffmpeg_i1:" + downloaderOptions.getFFmpegArgs());
         }
         if(m_fileType.isAudio())
         {
