@@ -17,6 +17,7 @@ endif()
 
 project("org.nickvision.tubeconverter" LANGUAGES C CXX VERSION 2024.10.0 DESCRIPTION "Download web video and audio.")
 set(SHORT_NAME "parabolic")
+set(DISPLAY_NAME "Parabolic")
 include(GNUInstallDirs)
 
 file(STRINGS "${CMAKE_SOURCE_DIR}/resources/po/POTFILES" TRANSLATE_FILES)
