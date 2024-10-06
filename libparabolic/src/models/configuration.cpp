@@ -106,6 +106,7 @@ namespace Nickvision::TubeConverter::Shared::Models
         options.setRemoveSourceData(m_json["RemoveSourceData"].is_bool() ? m_json["RemoveSourceData"].as_bool() : false);
         options.setEmbedChapters(m_json["EmbedChapters"].is_bool() ? m_json["EmbedChapters"].as_bool() : false);
         options.setEmbedSubtitles(m_json["EmbedSubtitle"].is_bool() ? m_json["EmbedSubtitle"].as_bool() : true);
+        options.setFFmpegArgs(m_json["FFmpegArgs"].is_string() ? m_json["FFmpegArgs"].as_string().c_str() : "");
         return options;
     }
 
@@ -129,6 +130,7 @@ namespace Nickvision::TubeConverter::Shared::Models
         m_json["RemoveSourceData"] = downloaderOptions.getRemoveSourceData();
         m_json["EmbedChapters"] = downloaderOptions.getEmbedChapters();
         m_json["EmbedSubtitle"] = downloaderOptions.getEmbedSubtitles();
+        m_json["FFmpegArgs"] = downloaderOptions.getFFmpegArgs();
     }
 
     bool Configuration::getShowDisclaimerOnStartup() const

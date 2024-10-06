@@ -272,6 +272,11 @@ namespace Nickvision::TubeConverter::Shared::Models
         {
             arguments.push_back("--embed-chapters");
         }
+        if(!downloaderOptions.getFFmpegArgs().empty())
+        {
+            arguments.push_back("--postprocessor-args");
+            arguments.push_back("FFmpeg:" + downloaderOptions.getFFmpegArgs());
+        }
         if(m_fileType.isAudio())
         {
             arguments.push_back("--extract-audio");

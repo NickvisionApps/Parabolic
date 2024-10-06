@@ -213,6 +213,16 @@ namespace Nickvision::TubeConverter::Shared::Models
          * @param embedSubtitles True to embed subtitles, else false
          */
         void setEmbedSubtitles(bool embedSubtitles);
+        /**
+         * @brief Gets the ffmpeg arguments to use when converting.
+         * @return The ffmpeg arguments
+         */
+        const std::string& getFFmpegArgs() const;
+        /**
+         * @brief Sets the ffmpeg arguments to use when converting.
+         * @param ffmpegArgs The new ffmpeg arguments
+         */
+        void setFFmpegArgs(const std::string& ffmpegArgs);
 
     private:
         bool m_overwriteExistingFiles;
@@ -233,6 +243,7 @@ namespace Nickvision::TubeConverter::Shared::Models
         bool m_removeSourceData;
         bool m_embedChapters;
         bool m_embedSubtitles;
+        std::string m_ffmpegArgs;
     };
 }
 

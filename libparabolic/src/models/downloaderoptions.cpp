@@ -22,7 +22,8 @@ namespace Nickvision::TubeConverter::Shared::Models
         m_cropAudioThumbnails{ false },
         m_removeSourceData{ false },
         m_embedChapters{ false },
-        m_embedSubtitles{ true }
+        m_embedSubtitles{ true },
+        m_ffmpegArgs{ "" }
     {
         
     }
@@ -221,5 +222,15 @@ namespace Nickvision::TubeConverter::Shared::Models
     void DownloaderOptions::setEmbedSubtitles(bool embedSubtitles)
     {
         m_embedSubtitles = embedSubtitles;
+    }
+    
+    const std::string& DownloaderOptions::getFFmpegArgs() const
+    {
+        return m_ffmpegArgs;
+    }
+
+    void DownloaderOptions::setFFmpegArgs(const std::string& ffmpegArgs)
+    {
+        m_ffmpegArgs = ffmpegArgs;
     }
 }
