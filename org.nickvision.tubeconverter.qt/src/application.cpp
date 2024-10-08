@@ -1,4 +1,5 @@
 #include "application.h"
+#include <QSysInfo>
 
 using namespace Nickvision::TubeConverter::Shared::Controllers;
 
@@ -9,7 +10,11 @@ namespace Nickvision::TubeConverter::QT
         m_controller{ std::make_shared<MainWindowController>(std::vector<std::string>(argv, argv + argc)) },
         m_mainWindow{ nullptr }
     {
-        
+        //Set Fusion style on Windows 10 for dark mode support
+        if (QSysInfo::productType() == "windows" && QSysInfo::productVersion() == "10")
+        {
+            QApplication::setStyle("Fusion");
+        }
     }
 
     int Application::exec()
