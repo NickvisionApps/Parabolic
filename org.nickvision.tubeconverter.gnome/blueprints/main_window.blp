@@ -295,30 +295,32 @@ Adw.ApplicationWindow root {
 
                   Adw.ViewStackPage {
                     name: "downloading";
-                    child: Gtk.Box {
-                      orientation: vertical;
-                      hexpand: true;
-                      valign: start;
-                      spacing: 6;
+                    child: Gtk.ScrolledWindow {
+                      child: Gtk.Box {
+                        orientation: vertical;
+                        hexpand: true;
+                        valign: start;
+                        spacing: 6;
 
-                      Gtk.Button {
-                        halign: end;
-                        tooltip-text: _("Stop All Downloads");
-                        action-name: "win.stopAllDownloads";
+                        Gtk.Button {
+                          halign: end;
+                          tooltip-text: _("Stop All Downloads");
+                          action-name: "win.stopAllDownloads";
 
-                        Adw.ButtonContent {
-                          icon-name: "media-playback-stop-symbolic";
-                          label: _("Stop All");
+                          Adw.ButtonContent {
+                            icon-name: "media-playback-stop-symbolic";
+                            label: _("Stop All");
+                          }
+
+                          styles [ "flat" ]
                         }
 
-                        styles [ "flat" ]
-                      }
+                        Gtk.Box listDownloading {
+                          orientation: vertical;
 
-                      Gtk.Box listDownloading {
-                        orientation: vertical;
-
-                        styles [ "card" ]
-                      }
+                          styles [ "card" ]
+                        }
+                      };
                     };
                   }
                 };
@@ -347,30 +349,32 @@ Adw.ApplicationWindow root {
 
                   Adw.ViewStackPage {
                     name: "queued";
-                    child: Gtk.Box {
-                      orientation: vertical;
-                      hexpand: true;
-                      valign: start;
-                      spacing: 6;
+                    child: Gtk.ScrolledWindow {
+                      child: Gtk.Box {
+                        orientation: vertical;
+                        hexpand: true;
+                        valign: start;
+                        spacing: 6;
 
-                      Gtk.Button {
-                        halign: end;
-                        tooltip-text: _("Clear Queued Downloads");
-                        action-name: "win.clearQueuedDownloads";
+                        Gtk.Button {
+                          halign: end;
+                          tooltip-text: _("Clear Queued Downloads");
+                          action-name: "win.clearQueuedDownloads";
 
-                        Adw.ButtonContent {
-                          icon-name: "user-trash-symbolic";
-                          label: _("Clear");
+                          Adw.ButtonContent {
+                            icon-name: "user-trash-symbolic";
+                            label: _("Clear");
+                          }
+
+                          styles [ "flat" ]
                         }
 
-                        styles [ "flat" ]
-                      }
+                        Gtk.Box listQueued {
+                          orientation: vertical;
 
-                      Gtk.Box listQueued {
-                        orientation: vertical;
-
-                        styles [ "card" ]
-                      }
+                          styles [ "card" ]
+                        }
+                      };
                     };
                   }
                 };
@@ -399,43 +403,45 @@ Adw.ApplicationWindow root {
 
                   Adw.ViewStackPage {
                     name: "completed";
-                    child: Gtk.Box {
-                      orientation: vertical;
-                      hexpand: true;
-                      valign: start;
-                      spacing: 6;
-
-                      Gtk.Box {
-                        halign: end;
-                        orientation: horizontal;
+                    child: Gtk.ScrolledWindow {
+                      child: Gtk.Box {
+                        orientation: vertical;
+                        hexpand: true;
+                        valign: start;
                         spacing: 6;
 
-                        Gtk.Button {
-                          tooltip-text: _("Clear Completed Downloads");
-                          action-name: "win.clearCompletedDownloads";
+                        Gtk.Box {
+                          halign: end;
+                          orientation: horizontal;
+                          spacing: 6;
 
-                          Adw.ButtonContent {
-                            icon-name: "user-trash-symbolic";
-                            label: _("Clear");
+                          Gtk.Button {
+                            tooltip-text: _("Clear Completed Downloads");
+                            action-name: "win.clearCompletedDownloads";
+
+                            Adw.ButtonContent {
+                              icon-name: "user-trash-symbolic";
+                              label: _("Clear");
+                            }
+
+                            styles [ "flat" ]
                           }
 
-                          styles [ "flat" ]
+                          Gtk.Button btnRetryFailedDownloads {
+                            icon-name: "view-refresh-symbolic";
+                            tooltip-text: _("Retry Failed Downloads");
+                            action-name: "win.retryFailedDownloads";
+
+                            styles [ "flat" ]
+                          }
                         }
 
-                        Gtk.Button btnRetryFailedDownloads {
-                          icon-name: "view-refresh-symbolic";
-                          tooltip-text: _("Retry Failed Downloads");
-                          action-name: "win.retryFailedDownloads";
+                        Gtk.Box listCompleted {
+                          orientation: vertical;
 
-                          styles [ "flat" ]
+                          styles [ "card" ]
                         }
-                      }
-
-                      Gtk.Box listCompleted {
-                        orientation: vertical;
-
-                        styles [ "card" ]
-                      }
+                      };
                     };
                   }
                 };
