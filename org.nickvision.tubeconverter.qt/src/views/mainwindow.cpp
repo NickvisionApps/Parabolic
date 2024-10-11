@@ -271,7 +271,7 @@ namespace Nickvision::TubeConverter::QT::Views
             return;
         }
         DownloadRow* row{ static_cast<DownloadRow*>(m_ui->listDownloads->itemWidget(item)) };
-        m_ui->lblDownloadLog->setText(QString::fromStdString(m_controller->getDownloadManager().getDownloadCommand(row->getId())) + row->getLog());
+        m_ui->lblDownloadLog->setText(QString::fromStdString(m_controller->getDownloadManager().getDownloadCommand(row->getId())) + "\n" + row->getLog());
     }
 
     void MainWindow::addDownload(const std::string& url)

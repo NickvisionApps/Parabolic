@@ -111,7 +111,11 @@ namespace Nickvision::TubeConverter::QT::Views
         m_ui->chkEmbedMetadata->setChecked(options.getEmbedMetadata());
         m_ui->chkEmbedSubtitles->setChecked(options.getEmbedSubtitles());
         m_ui->chkEmbedChapters->setChecked(options.getEmbedChapters());
+        m_ui->lblCropAudioThumbnails->setEnabled(options.getEmbedMetadata());
+        m_ui->chkCropAudioThumbnails->setEnabled(options.getEmbedMetadata());
         m_ui->chkCropAudioThumbnails->setChecked(options.getCropAudioThumbnails());
+        m_ui->lblRemoveSourceData->setEnabled(options.getEmbedMetadata());
+        m_ui->chkRemoveSourceData->setEnabled(options.getEmbedMetadata());
         m_ui->chkRemoveSourceData->setChecked(options.getRemoveSourceData());
         m_ui->txtFfmpegArgs->setText(QString::fromStdString(options.getFFmpegArgs()));
         m_ui->chkUseAria->setChecked(options.getUseAria());
@@ -131,6 +135,7 @@ namespace Nickvision::TubeConverter::QT::Views
         connect(m_ui->listPages, &QListWidget::currentRowChanged, this, &SettingsDialog::onPageChanged);
         connect(m_ui->btnSelectCookiesFile, &QPushButton::clicked, this, &SettingsDialog::selectCookiesFile);
         connect(m_ui->btnClearCookiesFile, &QPushButton::clicked, this, &SettingsDialog::clearCookiesFile);
+        connect(m_ui->chkEmbedMetadata, &QCheckBox::toggled, this, &SettingsDialog::onEmbedMetadataChanged);
         m_ui->listPages->setCurrentRow(0);
     }
     
@@ -191,5 +196,13 @@ namespace Nickvision::TubeConverter::QT::Views
     {
         m_ui->txtCookiesFile->setText("");
         m_ui->txtCookiesFile->setToolTip("");
+    }
+
+    void SettingsDialog::onEmbedMetadataChanged(bool checked)
+    {
+        m_ui->lblCropAudioThumbnails->setEnabled(checked);
+        m_ui->chkCropAudioThumbnails->setEnabled(checked);
+        m_ui->lblRemoveSourceData->setEnabled(checked);
+        m_ui->chkRemoveSourceData->setEnabled(checked);
     }
 }
