@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-11 12:50-0400\n"
+"POT-Creation-Date: 2024-10-11 13:06-0400\n"
 "PO-Revision-Date: 2024-10-07 17:33+0000\n"
 "Last-Translator: Fjuro <fjuro@alius.cz>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -750,13 +750,13 @@ msgid "Cookies File"
 msgstr "Soubor cookies"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:181
-#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:127
+#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:133
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:75
 msgid "No file selected"
 msgstr "Není vybrán žádný soubor"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:192
-#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:105
+#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:111
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:76
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:190
 msgid "Select Cookies File"
@@ -817,8 +817,10 @@ msgstr ""
 "obsahující identifikující informace o stahování."
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:263
-msgid "FFmpeg Arguments"
-msgstr "Argumenty FFmpeg"
+#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:87
+#, fuzzy
+msgid "Postprocessing Threads"
+msgstr "Zpracovává se"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:273
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:27
@@ -1022,7 +1024,7 @@ msgstr "Stáhnout znovu"
 msgid "GitHub Repo"
 msgstr "Repozitář GitHub"
 
-#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:107
+#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:113
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:190
 msgid "TXT Files (*.txt)"
 msgstr "Soubory TXT (*.txt)"
@@ -1214,10 +1216,8 @@ msgstr "Omezení rychlosti"
 msgid "Enter proxy url here"
 msgstr "Zde zadejte adresu URL proxy"
 
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:87
-#, fuzzy
-msgid "Postprocessing Threads"
-msgstr "Zpracovává se"
+#~ msgid "FFmpeg Arguments"
+#~ msgstr "Argumenty FFmpeg"
 
 #~ msgid "Download Subtitles"
 #~ msgstr "Stáhnout titulky"

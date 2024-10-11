@@ -1,6 +1,7 @@
 #include "views/preferencesdialog.h"
 #include <libnick/localization/gettext.h>
 #include <libnick/system/environment.h>
+#include "helpers/gtkhelpers.h"
 
 using namespace Nickvision::Events;
 using namespace Nickvision::System;
