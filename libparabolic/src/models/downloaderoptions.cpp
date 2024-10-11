@@ -1,4 +1,5 @@
 #include "models/downloaderoptions.h"
+#include <thread>
 #include <libnick/system/environment.h>
 
 using namespace Nickvision::System;
@@ -23,7 +24,7 @@ namespace Nickvision::TubeConverter::Shared::Models
         m_removeSourceData{ false },
         m_embedChapters{ false },
         m_embedSubtitles{ true },
-        m_ffmpegArgs{ "" }
+        m_postprocessingThreads{ static_cast<int>(std::thread::hardware_concurrency()) }
     {
         
     }
@@ -224,13 +225,17 @@ namespace Nickvision::TubeConverter::Shared::Models
         m_embedSubtitles = embedSubtitles;
     }
     
-    const std::string& DownloaderOptions::getFFmpegArgs() const
+    int DownloaderOptions::getPostprocessingThreads() const
     {
-        return m_ffmpegArgs;
+        return m_postprocessingThreads;
     }
 
-    void DownloaderOptions::setFFmpegArgs(const std::string& ffmpegArgs)
+    void DownloaderOptions::setPostprocessingThreads(int threads)
     {
-        m_ffmpegArgs = ffmpegArgs;
+        if(threads < 1 || threads > std::thread::hardware_concurrency())
+        {
+            threads = static_cast<int>(std::thread::hardware_concurrency());
+        }
+        m_postprocessingThreads = threads;
     }
 }

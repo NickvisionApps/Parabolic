@@ -214,15 +214,15 @@ namespace Nickvision::TubeConverter::Shared::Models
          */
         void setEmbedSubtitles(bool embedSubtitles);
         /**
-         * @brief Gets the ffmpeg arguments to use when converting.
-         * @return The ffmpeg arguments
+         * @brief Gets the number of threads to use for postprocessing operations.
+         * @return The number of threads to use for postprocessing operations
          */
-        const std::string& getFFmpegArgs() const;
+        int getPostprocessingThreads() const;
         /**
-         * @brief Sets the ffmpeg arguments to use when converting.
-         * @param ffmpegArgs The new ffmpeg arguments
+         * @brief Sets the number of threads to use for postprocessing operations.
+         * @param threads The new number of threads to use for postprocessing operations
          */
-        void setFFmpegArgs(const std::string& ffmpegArgs);
+        void setPostprocessingThreads(int threads);
 
     private:
         bool m_overwriteExistingFiles;
@@ -243,7 +243,7 @@ namespace Nickvision::TubeConverter::Shared::Models
         bool m_removeSourceData;
         bool m_embedChapters;
         bool m_embedSubtitles;
-        std::string m_ffmpegArgs;
+        int m_postprocessingThreads;
     };
 }
 

@@ -1,4 +1,5 @@
 #include "models/configuration.h"
+#include <thread>
 
 using namespace Nickvision::App;
 
@@ -106,7 +107,7 @@ namespace Nickvision::TubeConverter::Shared::Models
         options.setRemoveSourceData(m_json["RemoveSourceData"].is_bool() ? m_json["RemoveSourceData"].as_bool() : false);
         options.setEmbedChapters(m_json["EmbedChapters"].is_bool() ? m_json["EmbedChapters"].as_bool() : false);
         options.setEmbedSubtitles(m_json["EmbedSubtitle"].is_bool() ? m_json["EmbedSubtitle"].as_bool() : true);
-        options.setFFmpegArgs(m_json["FFmpegArgs"].is_string() ? m_json["FFmpegArgs"].as_string().c_str() : "");
+        options.setPostprocessingThreads(m_json["PostprocessingThreads"].is_int64() ? static_cast<int>(m_json["PostprocessingThreads"].as_int64()) : static_cast<int>(std::thread::hardware_concurrency()));
         return options;
     }
 
@@ -130,7 +131,7 @@ namespace Nickvision::TubeConverter::Shared::Models
         m_json["RemoveSourceData"] = downloaderOptions.getRemoveSourceData();
         m_json["EmbedChapters"] = downloaderOptions.getEmbedChapters();
         m_json["EmbedSubtitle"] = downloaderOptions.getEmbedSubtitles();
-        m_json["FFmpegArgs"] = downloaderOptions.getFFmpegArgs();
+        m_json["PostprocessingThreads"] = downloaderOptions.getPostprocessingThreads();
     }
 
     bool Configuration::getShowDisclaimerOnStartup() const

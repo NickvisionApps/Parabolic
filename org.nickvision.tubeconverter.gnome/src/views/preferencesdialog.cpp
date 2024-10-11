@@ -37,7 +37,13 @@ namespace Nickvision::TubeConverter::GNOME::Views
         adw_switch_row_set_active(m_builder.get<AdwSwitchRow>("embedSubtitlesRow"), options.getEmbedSubtitles());
         adw_switch_row_set_active(m_builder.get<AdwSwitchRow>("cropAudioThumbnailRow"), options.getCropAudioThumbnails());
         adw_switch_row_set_active(m_builder.get<AdwSwitchRow>("removeSourceDataRow"), options.getRemoveSourceData());
-        gtk_editable_set_text(m_builder.get<GtkEditable>("ffmpegArgsRow"), options.getFFmpegArgs().c_str());
+        std::vector<std::string> postprocessingThreads;
+        for(int i = 1; i <= m_controller->getMaxPostprocessingThreads(); i++)
+        {
+            postprocessingThreads.push_back(std::to_string(i));
+        }
+        GtkHelpers::setComboRowModel(m_builder.get<AdwComboRow>("postprocessingThreadsRow"), postprocessingThreads);
+        adw_combo_row_set_selected(m_builder.get<AdwComboRow>("postprocessingThreadsRow"), options.getPostprocessingThreads() - 1);
         adw_switch_row_set_active(m_builder.get<AdwSwitchRow>("useAriaRow"), options.getUseAria());
         adw_spin_row_set_value(m_builder.get<AdwSpinRow>("ariaMaxConnectionsPerServerRow"), static_cast<double>(options.getAriaMaxConnectionsPerServer()));
         adw_spin_row_set_value(m_builder.get<AdwSpinRow>("ariaMinSplitSizeRow"), static_cast<double>(options.getAriaMinSplitSize()));
@@ -74,7 +80,7 @@ namespace Nickvision::TubeConverter::GNOME::Views
         options.setEmbedSubtitles(adw_switch_row_get_active(m_builder.get<AdwSwitchRow>("embedSubtitlesRow")));
         options.setCropAudioThumbnails(adw_switch_row_get_active(m_builder.get<AdwSwitchRow>("cropAudioThumbnailRow")));
         options.setRemoveSourceData(adw_switch_row_get_active(m_builder.get<AdwSwitchRow>("removeSourceDataRow")));
-        options.setFFmpegArgs(gtk_editable_get_text(m_builder.get<GtkEditable>("ffmpegArgsRow")));
+        options.setPostprocessingThreads(static_cast<int>(adw_combo_row_get_selected(m_builder.get<AdwComboRow>("postprocessingThreadsRow"))) + 1);
         options.setUseAria(adw_switch_row_get_active(m_builder.get<AdwSwitchRow>("useAriaRow")));
         options.setAriaMaxConnectionsPerServer(static_cast<int>(adw_spin_row_get_value(m_builder.get<AdwSpinRow>("ariaMaxConnectionsPerServerRow"))));
         options.setAriaMinSplitSize(static_cast<int>(adw_spin_row_get_value(m_builder.get<AdwSpinRow>("ariaMinSplitSizeRow"))));

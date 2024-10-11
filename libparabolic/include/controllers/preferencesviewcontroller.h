@@ -24,6 +24,11 @@ namespace Nickvision::TubeConverter::Shared::Controllers
          */
         PreferencesViewController(Models::Configuration& configuration, Models::DownloadHistory& downloadHistory);
         /**
+         * @brief Gets the maximum number of postprocessing threads allowed by the system.
+         * @return The maximum number of postprocessing threads
+         */
+        int getMaxPostprocessingThreads() const;
+        /**
          * @brief Gets the preferred theme for the application.
          * @return The preferred theme
          */

@@ -84,7 +84,11 @@ namespace Nickvision::TubeConverter::QT::Views
         m_ui->lblRemoveSourceData->setText(_("Remove Source Data"));
         m_ui->lblRemoveSourceData->setToolTip(_("If enabled, Parabolic will clear metadata fields containing identifying download information."));
         m_ui->chkRemoveSourceData->setToolTip(_("If enabled, Parabolic will clear metadata fields containing identifying download information."));
-        m_ui->lblFfmpegArgs->setText(_("FFmpeg Arguments"));
+        m_ui->lblPostprocessingThreads->setText(_("Postprocessing Threads"));
+        for(int i = 1; i <= m_controller->getMaxPostprocessingThreads(); i++)
+        {
+            m_ui->cmbPostprocessingThreads->addItem(QString::number(i));
+        }
         m_ui->lblUseAria->setText(_("Use aria2"));
         m_ui->lblAriaMaximumConnectionsPerServer->setText(_("Max Connections Per Server (-x)"));
         m_ui->lblAriaMinSplitSize->setText(_("Minimum Split Size (-k)"));
@@ -117,7 +121,7 @@ namespace Nickvision::TubeConverter::QT::Views
         m_ui->lblRemoveSourceData->setEnabled(options.getEmbedMetadata());
         m_ui->chkRemoveSourceData->setEnabled(options.getEmbedMetadata());
         m_ui->chkRemoveSourceData->setChecked(options.getRemoveSourceData());
-        m_ui->txtFfmpegArgs->setText(QString::fromStdString(options.getFFmpegArgs()));
+        m_ui->cmbPostprocessingThreads->setCurrentIndex(options.getPostprocessingThreads() - 1);
         m_ui->chkUseAria->setChecked(options.getUseAria());
         m_ui->numAriaMaxConnectionsPerServer->setValue(options.getAriaMaxConnectionsPerServer());
         m_ui->numAriaMinSplitSize->setValue(options.getAriaMinSplitSize());
@@ -167,7 +171,7 @@ namespace Nickvision::TubeConverter::QT::Views
         options.setEmbedChapters(m_ui->chkEmbedChapters->isChecked());
         options.setCropAudioThumbnails(m_ui->chkCropAudioThumbnails->isChecked());
         options.setRemoveSourceData(m_ui->chkRemoveSourceData->isChecked());
-        options.setFFmpegArgs(m_ui->txtFfmpegArgs->text().toStdString());
+        options.setPostprocessingThreads(m_ui->cmbPostprocessingThreads->currentIndex() + 1);
         options.setUseAria(m_ui->chkUseAria->isChecked());
         options.setAriaMaxConnectionsPerServer(m_ui->numAriaMaxConnectionsPerServer->value());
         options.setAriaMinSplitSize(m_ui->numAriaMinSplitSize->value());

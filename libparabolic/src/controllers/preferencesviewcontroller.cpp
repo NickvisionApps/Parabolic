@@ -1,4 +1,5 @@
 #include "controllers/preferencesviewcontroller.h"
+#include <thread>
 
 using namespace Nickvision::TubeConverter::Shared::Models;
 
@@ -9,6 +10,11 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         m_downloadHistory{ downloadHistory }
     {
 
+    }
+
+    int PreferencesViewController::getMaxPostprocessingThreads() const
+    {
+        return static_cast<int>(std::thread::hardware_concurrency());
     }
 
     Theme PreferencesViewController::getTheme() const

@@ -272,11 +272,6 @@ namespace Nickvision::TubeConverter::Shared::Models
         {
             arguments.push_back("--embed-chapters");
         }
-        if(!downloaderOptions.getFFmpegArgs().empty())
-        {
-            arguments.push_back("--postprocessor-args");
-            arguments.push_back("ffmpeg_i1:" + downloaderOptions.getFFmpegArgs());
-        }
         if(m_fileType.isAudio())
         {
             arguments.push_back("--extract-audio");
@@ -347,6 +342,8 @@ namespace Nickvision::TubeConverter::Shared::Models
             arguments.push_back("--download-sections");
             arguments.push_back("*" + m_timeFrame->str());
         }
+        arguments.push_back("--postprocessor-args");
+        arguments.push_back("-threads " + std::to_string(downloaderOptions.getPostprocessingThreads()));
         return arguments;
     }
 }
