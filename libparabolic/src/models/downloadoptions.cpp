@@ -296,12 +296,12 @@ namespace Nickvision::TubeConverter::Shared::Models
         else if(m_videoFormat)
         {
             arguments.push_back("--format");
-            arguments.push_back(m_videoFormat->getId() + "*+ba/b");
+            arguments.push_back(m_videoFormat->getId() + "+ba");
         }
         else if(m_audioFormat)
         {
             arguments.push_back("--format");
-            arguments.push_back(m_audioFormat->getId() + "/b");
+            arguments.push_back(m_audioFormat->getId());
         }
         if(!std::filesystem::exists(m_saveFolder))
         {
