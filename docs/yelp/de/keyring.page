@@ -18,9 +18,9 @@
 <p>Diese Seite erklärt alle Optionen zur Verwendung des Keyrings in <app>Parabolic</app>.</p>
 <section>
     <title>Backend</title>
-    <p>The Keyring feature is backed by the <code>libnick</code> library.</p>
+    <p>Die Schlüsselbundfunktion wird von der Bibliothek <code>libnick</code> bereitgestellt.</p>
     <p>Diese Bibliothek verwendet SQLCipher, um Anmeldedaten sicher und plattformunabhängig zu speichern.</p>
-    <p>The library will use you system's credential manager (i.e. DBus secret service on Linux and Windows Credential Manager on Windows) for securing the Keyring database file.</p>
+    <p>Die Bibliothek verwendet die Anmeldedatenverwaltung deines Systems (d.h. DBus secret service unter Linux und Windows Credential Manager unter Windows) zur Sicherung der Schlüsselbund-Datenbankdatei.</p>
 </section>
 <section>
     <title>Speichern von Anmeldedaten</title>

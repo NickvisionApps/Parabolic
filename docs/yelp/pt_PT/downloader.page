@@ -15,87 +15,81 @@
 </info>
 
 <title>Descarregador</title>
-<p>This page explains all options for configuring the Downloader in Preferences in <app>Parabolic</app>.</p>
+<p>Esta página explica todas as opções para configurar o Descarregador nas Preferências do <app> Parabolic</app> .</p>
 
 <terms>
     <item>
-        <title>Sobrescrever ficheiros existentes</title>
-        <p>If enabled, Parabolic will overwrite existing files.</p>
-        <p>
-            For example, if a file named <code>movie.mp4</code> exists in the download folder, and a new download is created named <code>movie</code>, <code>movie.mp4</code> will be overwritten with the new download's content.
-        </p>
+        <title>Sobrescrever Ficheiros Existentes</title>
+        <p>Se ativado, o Parabolic substituirá os ficheiros existentes.</p>
+        <p>Por exemplo, se um ficheiro chamado <code>movie.mp4</code> existir na pasta de download e um novo download for criado chamado <code>movie</code> , <code>movie.mp4</code> será substituído pelo conteúdo do novo download.</p>
         <note style="advanced">
-            <p>Default: On</p>
+            <p>Padrão: Ativado</p>
         </note>
     </item>
 	<item>
-		<title>Maximum Number of Active Downloads</title>
-		<p>The number of active downloads allowed to run at a time. Must be an integer value between 1 and 10.</p>
-        <p>If the max number of active downloads is reached, Parabolic will place new downloads in a queue until more downloads are able to be run.</p>
+		<title>Número Máximo de Downloads Ativos</title>
+		<p>O número de downloads ativos permitidos para execução de cada vez. Deve ser um valor inteiro entre 1 e 10.</p>
+        <p>Se o número máximo de downloads ativos for atingido, o Parabolic colocará novos downloads numa fila até que mais downloads possam ser executados.</p>
 		<note style="advanced">
-			<p>Default: 5</p>
+			<p>Padrão: 5</p>
 		</note>
     </item>
     <item>
-        <title>Included Auto-Generated Subtitles</title>
-        <p>Whether or not to included subtitles that are auto-translated to fit the requested subtitle languages.</p>
+        <title>Legendas Geradas Automaticamente Incluídas</title>
+        <p>Se devem ou não ser incluídas legendas traduzidas automaticamente para se adequarem aos idiomas de legenda solicitados.</p>
         <note style="advanced">
-            <p>Default: Off</p>
+            <p>Padrão: Desligado</p>
         </note>
     </item>
     <item>
         <title>Usar aria2</title>
-        <p>If enabled, Parabolic will use aria2c to download media. Although using aria2c can improve download speed, download progress will not be displayed in the UI.</p>
+        <p>Se ativado, o Parabolic usará aria2c para descarregar multimédia. Embora usar aria2c possa melhorar a velocidade de download, o progresso do download não será exibido no UI.</p>
         <note style="advanced">
-            <p>Default: Off</p>
+            <p>Padrão: Desligado</p>
         </note>
     </item>
     <item>
-        <title>Maximum Connections Per Server</title>
-        <p>
-            This option only applies when using aria2 is enabled. This option is the same as the <code>-x</code> flag passed to aria2c.
-        </p>
-        <p>The maximum number of connection that can be used per server. Must be an integer value between 1 and 32.</p>
+        <title>Máximo de Conexões por Servidor</title>
+        <p>Esta opção só se aplica quando o uso de aria2 estiver ativado. Esta opção é a mesma que a flag <code>-x</code> passada para aria2c.</p>
+        <p>O número máximo de conexões que podem ser usadas por servidor. Deve ser um valor inteiro entre 1 e 32.</p>
         <note style="advanced">
-            <p>Default: 16</p>
+            <p>Padrão: 16</p>
         </note>
     </item>
     <item>
-        <title>Minimum Split Size</title>
-        <p>
-            This option only applies when using aria2 is enabled. This option is the same as the <code>-k</code> flag passed to aria2c.
-        </p>
-        <p>The minimum size, in MiB, of which to split a file. Must be an integer value between 1 and 1024.</p>
+        <title>Tamanho Mínimo de Divisão</title>
+        <p>Esta opção só se aplica quando o uso de aria2 estiver ativado. Esta opção é a mesma que a flag <code>-k</code> passada para aria2c.</p>
+        <p>O tamanho mínimo, em MiB, do qual dividir um ficheiro. Deve ser um valor inteiro entre 1 e 1024.</p>
         <note style="advanced">
-            <p>Default: 20</p>
+            <p>Padrão: 20</p>
         </note>
     </item>
     <item>
-        <title>Limite de velocidade</title>
-        <p>A limit, in Ki/s, that is applied to downloads only if they have the advanced option <code>Speed Limit</code> enabled. Must be an integer value between 512 and 10240.</p>
+        <title>Limite de Velocidade</title>
+        <p>Um limite, em Ki/s, que é aplicado a downloads somente se tiverem a opção avançada <code>Limite de Velocidade</code> ativada. Deve ser um valor inteiro entre 512 e 10240.</p>
 		<note style="advanced">
-			<p>Default: 1024</p>
+			<p>Padrão: 1024</p>
 		</note>
     </item>
     <item>
-        <title>URL da Proxy</title>
-        <p>The url of the proxy server to use.</p>
+        <title>URL do Proxy</title>
+        <p>A URL do servidor proxy a ser usado.</p>
     </item>
     <item>
-        <title>Cookies from Browser</title>
-        <p>A browser in which to read cookies from and pass to yt-dlp's download engine.</p>
+        <title>Cookies do Navegador</title>
+        <p>Um navegador para ler cookies e passá-los para o mecanismo de download do yt-dlp.</p>
 		<note style="advanced">
-			<p>Default: None</p>
+			<p>Padrão: Nenhum</p>
 		</note>
     </item>
     <item>
         <title>Usar SponsorBlock para o YouTube</title>
-        <p>If enabled, Parabolic will apply the SponsorBlock extension to YouTube downloads.</p>
+        <p>Se ativado, o Parabolic aplicará a extensão SponsorBlock aos downloads do YouTube.</p>
         <note>
-            <p>SponsorBlock only works on YouTube videos. However, leaving this setting on will not affect downloads from other sites (i.e. not cause them to fail).</p>
+            <p>O SponsorBlock só funciona em vídeos do YouTube. No entanto, deixar essa configuração ativada não afetará os downloads de outros sites (ou seja, não fará com que falhem).</p>
         </note>
         <note style="advanced">
-            <p>Default: Off</p>
+            <p>Padrão: Desligado</p>
         </note>
     </item>
 </terms>

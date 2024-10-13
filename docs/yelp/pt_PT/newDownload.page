@@ -2,7 +2,7 @@
 <page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" id="newDownload" its:version="2.0" xml:lang="pt-PT">
 <info>
 	<link type="guide" xref="index"/>
-	<title type="link">New Download 🆕</title>
+	<title type="link">Novo Download 🆕</title>
 	<credit type="author copyright">
 		<name>Nicholas Logozzo</name>
 		<years its:translate="no">2023-2024</years>
@@ -14,100 +14,100 @@
 	<license href="http://creativecommons.org/licenses/by/4.0/" its:translate="no"><p>Creative Commons Attribution 4.0 International License</p></license>
 </info>
 
-<title>New Download</title>
-<p>This page explains all options for configuring a new download in <app>Parabolic</app>.</p>
+<title>Novo Download</title>
+<p>Esta página explica todas as opções para configurar um novo download no<app> Parabolic</app> .</p>
 
 <terms>
     <item>
       <title>URL da média</title>
-      <p>The URL of the media to download. Must be a valid ("valid" meaning syntactically correct) http or https link.</p>
+      <p>O URL da multimédia para download. Deve ser um link http ou https válido ("válido" significa sintaticamente correto).</p>
       <note>
-            <p>If a valid URL is found inside the clipboard upon opening the Add Download dialog, the URL will be automatically pasted in the URL entry row.</p>
+            <p>Se um URL válido for encontrado na área de transferência ao abrir a caixa de diálogo Adicionar Download, o URL será automaticamente colado na linha de entrada do URL.</p>
       </note>
     </item>
     <item>
       <title>Autenticar</title>
-      <p>If enabled, the user will be asked to provide a username and/or password to pass to yt-dlp when downloading.</p>
-        <p>If credentials are found in the keyring, the user can instead chose from a list of named credentials to use (or continue to manually enter a credential)</p>
+      <p>Se ativado, o utilizador será solicitado a fornecer um nome de utilizador e/ou senha para passar ao yt-dlp durante o download.</p>
+        <p>Se forem encontradas credenciais no keyring, o utilizador pode escolher entre uma lista de credenciais nomeadas para usar (ou continuar a inserir manualmente uma credencial)</p>
 		<note style="advanced">
-			<p>Not all websites support passing usernames and passwords to yt-dlp. For example, YouTube does NOT support this feature.</p>
-            <p>For these sites that don't support passing credentials, it is recommended to select a browser to use cookies from in Preferences instead.</p>
+			<p>Nem todos os sites suportam passar nomes de utilizadores e senhas para yt-dlp. Por exemplo, o YouTube NÃO suporta esse recurso.</p>
+            <p>Para esses sites que não suportam a passagem de credenciais, é recomendável selecionar um navegador para usar cookies nas Preferências.</p>
 		</note>
     </item>
     <item>
-		<title>Tipo de ficheiro</title>
-		<p>The file type of which to download the media as.</p>
-            <p>If <code>Disallow Conversions</code> is enabled, the only options will be <code>Video</code> (if supported) and <code>Audio</code></p>
+		<title>Tipo de Ficheiro</title>
+		<p>O tipo de ficheiro no qual a multimédia será descarregada.</p>
+            <p>Se <code>Desativar Conversões</code> estiver ativada, as únicas opções serão <code>Vídeo</code> (se suportado) e <code>Áudio</code></p>
         <note>
-            <p>The previously used file type will be remembered and pre-selected for the next download.</p>
+            <p>O tipo de ficheiro usado anteriormente será lembrado e pré-selecionado para o próximo download.</p>
         </note>
     </item>
     <item>
 		<title>Qualidade</title>
-		<p>If the file type is a video type, the listed qualities will be the resolutions of the media available.</p>
-        <p>If the file type is an audio type, the listed qualities will be simply <code>Best</code>, <code>Good</code>, and <code>Worst</code>.</p>
+		<p>Se o tipo de ficheiro for um tipo de vídeo, as qualidades listadas serão as resoluções da multimédia disponível.</p>
+        <p>Se o tipo de ficheiro for de áudio, as qualidades listadas serão simplesmente <code>A melhor</code> , <code>Boa</code> e <code>Pior</code> .</p>
         <note>
-            <p>The previously used quality will be remembered and pre-selected for the next download.</p>
+            <p>A qualidade usada anteriormente será lembrada e pré-selecionada para o próximo download.</p>
         </note>
     </item>
     <item>
-		<title>Audio Language</title>
-		<p>The language of which to use from the audio part of a media download.</p>
-        <p>If no additional languages are available, <code>Default</code> will be the only option.</p>
+		<title>Idioma do Áudio</title>
+		<p>O idioma a ser usado na parte de áudio de um download de multimédia.</p>
+        <p>Se não houver idiomas adicionais disponíveis, <code>Padrãot</code> será a única opção.</p>
         <note>
-            <p>The previously used state will be remembered and pre-selected for the next download.</p>
+            <p>O estado usado anteriormente será lembrado e pré-selecionado para o próximo download.</p>
         </note>
     </item>
     <item>
-		<title>Download Subtitle</title>
-		<p>Whether to download and embed subtitle when downloading a video. Further subtitle settings can be configured in <link xref="downloader">preferences</link>.</p>
+		<title>Descarregar Legenda</title>
+		<p>Se deseja descarregar e incorporar legendas ao descarregar um vídeo. Outras configurações de legenda podem ser configuradas em<link xref="downloader"> preferências</link> .</p>
         <note>
-            <p>The previously used state will be remembered and pre-selected for the next download.</p>
+            <p>O estado usado anteriormente será lembrado e pré-selecionado para o próximo download.</p>
         </note>
     </item>
     <item>
-        <title>Video Codec</title>
-        <p>The video codec to prefer when downloading a video.</p>
+        <title>Codec de Vídeo</title>
+        <p>O codec de vídeo preferido ao descarregar um vídeo.</p>
         <note>
-            <p>The previously used codec will be remembered and pre-selected for the next download.</p>
+            <p>O estado desta opção será lembrado e restaurado para descargas futuros.</p>
         </note>
     </item>
     <item>
-        <title>Dividir capítulos</title>
-        <p>If enabled, Parabolic will split a video download into multiple smaller files based on its chapters.</p>
+        <title>Dividir Capítulos</title>
+        <p>Se ativado, o Parabolic dividirá o download de um vídeo em vários ficheiros menores com base nos seus capítulos.</p>
         <note>
-            <p>The previously used state will be remembered and pre-selected for the next download.</p>
+            <p>O estado usado anteriormente será lembrado e pré-selecionado para o próximo download.</p>
         </note>
     </item>
     <item>
-		<title>Pasta de gravação</title>
-		<p>The folder at which to save the download to.</p>
+		<title>Pasta de Destino</title>
+		<p>A pasta onde o download será salvo.</p>
         <note>
-            <p>The previously used folder will be remembered and pre-selected for the next download.</p>
+            <p>A pasta usada anteriormente será lembrada e pré-selecionada para o próximo download.</p>
         </note>
     </item>
     <item>
-		<title>Nome do ficheiro</title>
-        <p>The file name to use when saving the download.</p>
+		<title>Nome do Ficheiro</title>
+        <p>O nome do ficheiro a ser usado ao salvar o download.</p>
 		<note style="advanced">
-			<p>Default: The title of the media</p>
+			<p>Padrão: O título da multimédia</p>
 		</note>
     </item>
     <item>
-		<title>Time Frame</title>
-		<p>The user can enter a start time frame and an end time frame to download a specific section of the media.</p>
+		<title>Período de Tempo</title>
+		<p>O utilizador pode inserir um período de início e um período de término para descarregar uma secção específica da multimédia.</p>
         <note style="advanced">
-			<p>Default: The whole media length</p>
+			<p>Padrão: O comprimento total da multimédia</p>
 		</note>
         <note style="advanced">
-            <p>Enabling this option will disable the use of aria2 as the downloader for this download, even if it is enabled in Preferences.</p>
+            <p>Ativar esta opção desabilitará o uso do aria2 como o downloader para este download, mesmo que esteja ativado nas Preferências.</p>
         </note>
     </item>
     <item>
-		<title>Limite de velocidade</title>
-		<p>If enabled, Parabolic will limit the download's speed with the speed configured in <link xref="downloader">Preferences</link>.</p>
+		<title>Limite de Velocidade</title>
+		<p>Se ativado, o Parabolic limitará a velocidade do download com a velocidade configurada nas<link xref="downloader"> Preferências</link> .</p>
         <note>
-            <p>Available in the <code>Advanced Options</code> section.</p>
+            <p>Disponível na secção <code>Opções Avançadas</code> .</p>
         </note>
     </item>
 </terms>

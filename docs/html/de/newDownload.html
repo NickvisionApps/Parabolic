@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <dt class="terms">Anmelden</dt>
 <dd class="terms">
 <p class="p">Wenn diese Option aktiviert ist, wird der Benutzer aufgefordert, einen Benutzernamen und/oder ein Passwort einzugeben, die beim Herunterladen an yt-dlp weitergegeben werden.</p>
-<p class="p">If credentials are found in the keyring, the user can instead chose from a list of named credentials to use (or continue to manually enter a credential)</p>
+<p class="p">Wenn Anmeldedaten im Schlüsselbund gefunden werden, kann der Benutzer stattdessen aus einer Liste von benannten Anmeldedaten auswählen (oder weiterhin manuell Anmeldedaten eingeben)</p>
 <div class="note note-advanced" title="Erweitert">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', function() {
  </g>
 </svg><div class="inner"><div class="region"><div class="contents">
 <p class="p">Nicht alle Webseiten unstützen die Übergabe von Benutzernamen und Passwörtern an yt-dlp. YouTube zum Beispiel unterstützt diese Funktion NICHT.</p>
-<p class="p">For these sites that don't support passing credentials, it is recommended to select a browser to use cookies from in Preferences instead.</p>
+<p class="p">Für diese Websites, die die Weitergabe von Anmeldedaten nicht unterstützen, wird empfohlen, stattdessen in den Einstellungen einen Browser auszuwählen, der Cookies verwendet.</p>
 </div></div></div>
 </div>
 </dd>
@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <dt class="terms">Qualität</dt>
 <dd class="terms">
 <p class="p">Handelt es sich bei dem Dateityp um einen Videotyp, werden die verfügbaren Auflösungen aufgelistet.</p>
-<p class="p">If the file type is an audio type, the listed qualities will be simply <span class="code">Best</span>, <span class="code">Good</span>, and <span class="code">Worst</span>.</p>
+<p class="p">Handelt es sich bei dem Dateityp um einen Audiotyp, sind die aufgeführten Qualitäten <span class="code">Am besten</span>, <span class="code">Gut</span> und <span class="code">Am schlechtesten</span> verfügbar.</p>
 <div class="note" title="Anmerkung">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -82,10 +82,10 @@ document.addEventListener('DOMContentLoaded', function() {
 </svg><div class="inner"><div class="region"><div class="contents"><p class="p">Die zuvor verwendete Qualität wird gespeichert und für den nächsten Download vorausgewählt.</p></div></div></div>
 </div>
 </dd>
-<dt class="terms">Audio Language</dt>
+<dt class="terms">Audiosprache</dt>
 <dd class="terms">
-<p class="p">The language of which to use from the audio part of a media download.</p>
-<p class="p">If no additional languages are available, <span class="code">Default</span> will be the only option.</p>
+<p class="p">Die Sprache, die aus dem Audioteil eines Mediendownloads verwendet werden soll.</p>
+<p class="p">Wenn keine weiteren Sprachen verfügbar sind, ist die <span class="code">Voreinstellung</span> die einzige Option.</p>
 <div class="note" title="Anmerkung">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -97,7 +97,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </dd>
 <dt class="terms">Untertitel herunterladen</dt>
 <dd class="terms">
-<p class="p">Whether to download and embed subtitle when downloading a video. Further subtitle settings can be configured in <span class="link"><a href="downloader.html" title="Downloader">preferences</a></span>.</p>
+<p class="p">Ob Untertitel heruntergeladen und eingebettet werden sollen, wenn ein Video heruntergeladen wird. Weitere Untertiteleinstellungen können in den <span class="link"><a href="downloader.html" title="Downloader">Einstellungen</a></span> konfiguriert werden.</p>
 <div class="note" title="Anmerkung">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -107,21 +107,21 @@ document.addEventListener('DOMContentLoaded', function() {
 </svg><div class="inner"><div class="region"><div class="contents"><p class="p">Der zuvor verwendete Status wird gespeichert und für den nächsten Download vorausgewählt.</p></div></div></div>
 </div>
 </dd>
-<dt class="terms">Video Codec</dt>
+<dt class="terms">Videocodec</dt>
 <dd class="terms">
-<p class="p">The video codec to prefer when downloading a video.</p>
+<p class="p">Der Videocodec, der beim Herunterladen eines Videos bevorzugt wird.</p>
 <div class="note" title="Anmerkung">
 <svg height="24" width="24" version="1.1">
  <g>
   <path class="yelp-svg-fill" d="m4 3h16c0.554 0 1 0.446 1 1v11h-6v6h-11c-0.554 0-1-0.446-1-1v-16c0-0.554 0.446-1 1-1z"></path>
   <path class="yelp-svg-fill" d="m17 16h4l-5 5v-4c0-0.554 0.446-1 1-1z"></path>
  </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">The previously used codec will be remembered and pre-selected for the next download.</p></div></div></div>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Der zuvor verwendete Codec wird gespeichert und für den nächsten Download vorausgewählt.</p></div></div></div>
 </div>
 </dd>
 <dt class="terms">In Kapitel unterteilen</dt>
 <dd class="terms">
-<p class="p">If enabled, Parabolic will split a video download into multiple smaller files based on its chapters.</p>
+<p class="p">Wenn aktiviert, unterteilt Parabolic ein heruntergeladenes Video anhand seiner Kapitel in mehrere kleinere Dateien.</p>
 <div class="note" title="Anmerkung">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -163,9 +163,9 @@ document.addEventListener('DOMContentLoaded', function() {
 </svg><div class="inner"><div class="region"><div class="contents"><p class="p">Standardeinstellung: Der Titel des Mediums</p></div></div></div>
 </div>
 </dd>
-<dt class="terms">Time Frame</dt>
+<dt class="terms">Zeitrahmen</dt>
 <dd class="terms">
-<p class="p">The user can enter a start time frame and an end time frame to download a specific section of the media.</p>
+<p class="p">Der Benutzer kann einen Start- und einen Endzeitpunkt für das Herunterladen eines bestimmten Abschnitts der Medien eingeben.</p>
 <div class="note note-advanced" title="Erweitert">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -180,7 +180,7 @@ document.addEventListener('DOMContentLoaded', function() {
   <path class="yelp-svg-fill" d="m8.2435 7.0719-1.9004-3.3145 1.4143-1.4143 3.1596 1.7457z"></path>
   <path class="yelp-svg-fill" d="m11.072 11.757-3.3146 1.9-1.4143-1.414 1.7457-3.1602z"></path>
  </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Default: The whole media length</p></div></div></div>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Voreinstellung: Die gesamte Medienlänge</p></div></div></div>
 </div>
 <div class="note note-advanced" title="Erweitert">
 <svg height="24" width="24" version="1.1">
@@ -196,12 +196,12 @@ document.addEventListener('DOMContentLoaded', function() {
   <path class="yelp-svg-fill" d="m8.2435 7.0719-1.9004-3.3145 1.4143-1.4143 3.1596 1.7457z"></path>
   <path class="yelp-svg-fill" d="m11.072 11.757-3.3146 1.9-1.4143-1.414 1.7457-3.1602z"></path>
  </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Enabling this option will disable the use of aria2 as the downloader for this download, even if it is enabled in Preferences.</p></div></div></div>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Wenn diese Option aktiviert ist, wird die Verwendung von aria2 als Downloader für diesen Download deaktiviert, auch wenn er in den Einstellungen aktiviert ist.</p></div></div></div>
 </div>
 </dd>
 <dt class="terms">Geschwindigkeitsbegrenzung</dt>
 <dd class="terms">
-<p class="p">If enabled, Parabolic will limit the download's speed with the speed configured in <span class="link"><a href="downloader.html" title="Downloader">Preferences</a></span>.</p>
+<p class="p">Wenn aktiviert, begrenzt Parabolic die Geschwindigkeit des Downloads mit der in den <span class="link"><a href="downloader.html" title="Downloader">Einstellungen</a></span> konfigurierten Geschwindigkeit.</p>
 <div class="note" title="Anmerkung">
 <svg height="24" width="24" version="1.1">
  <g>

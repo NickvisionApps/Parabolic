@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-11 13:06-0400\n"
+"POT-Creation-Date: 2024-10-13 13:34-0400\n"
 "PO-Revision-Date: 2024-09-11 13:02+0000\n"
 "Last-Translator: Deflector <dhoome1234@gmail.com>\n"
 "Language-Team: Arabic <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -134,20 +134,22 @@ msgid "Unable to download and install update"
 msgstr "لا يمكن تحميل وتنزيل التحديث"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:21
+#, c++-format
 msgid "{:.2f} GiB/s"
 msgstr "{:.2f} جيجابايت/ث"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:25
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} MiB/s"
 msgstr "{0:f1} ميجابايت\\ث"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:29
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} KiB/s"
 msgstr "{0:f1} كيلوبايت\\ث"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:33
+#, c++-format
 msgid "{:.2f} B/s"
 msgstr "{:.2f} بايت/ث"
 
@@ -758,13 +760,13 @@ msgid "Cookies File"
 msgstr "مِلَفّ تعريف الارتباط"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:181
-#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:133
+#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:134
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:75
 msgid "No file selected"
 msgstr "لا يوجد ملف"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:192
-#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:111
+#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:112
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:76
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:190
 msgid "Select Cookies File"
@@ -934,6 +936,7 @@ msgid "No Subtitles Available"
 msgstr "لديك تحديث جديد"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:173
+#, c++-format
 msgid "{} items"
 msgstr "{} عنصر/عناصر"
 
@@ -1031,7 +1034,7 @@ msgstr "حمّل مجدداً"
 msgid "GitHub Repo"
 msgstr "مستودع \"قيت-هاب\""
 
-#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:113
+#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:114
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:190
 msgid "TXT Files (*.txt)"
 msgstr "ملفات نصية (*.txt)"
@@ -1045,6 +1048,7 @@ msgid "Changelog:"
 msgstr "تغييرات التحديث:"
 
 #: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:39
+#, c++-format
 msgid ""
 "Developers:\n"
 "{}\n"
@@ -1123,7 +1127,7 @@ msgstr ""
 "المستخدم، والمتصفح المستخدم لبيانات تعريف الإرتباط في الإعدادات."
 
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:206
-#, fuzzy
+#, fuzzy, c++-format
 msgid "Items ({})"
 msgstr "وسائط قائمة التشغيل ({})"
 
