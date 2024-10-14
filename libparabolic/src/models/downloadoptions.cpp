@@ -157,13 +157,9 @@ namespace Nickvision::TubeConverter::Shared::Models
         arguments.push_back("--no-mtime");
         arguments.push_back("--ffmpeg-location");
         arguments.push_back(Environment::findDependency("ffmpeg").string());
-        if(downloaderOptions.getOverwriteExistingFiles())
+        if(downloaderOptions.getOverwriteExistingFiles() && !std::filesystem::exists(m_saveFilename + ".part"))
         {
             arguments.push_back("--force-overwrites");
-        }
-        else
-        {
-            arguments.push_back("--no-overwrites");
         }
         if(downloaderOptions.getLimitCharacters())
         {

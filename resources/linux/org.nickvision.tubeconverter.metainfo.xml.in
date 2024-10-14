@@ -58,7 +58,8 @@
     <release version="2024.10.2-next" date="2024-10-13">
       <description translate="no">
         <p>- The user's preferred video codec will now be used in playlist downloads where individual quality/format selection is not available</p>
-        <p>- Fixed an issue where some websites failed in 403 forbidden error</p>
+        <p>- Partially downloaded media will now correctly resume when retrying the failed download instead of restarting the download from scratch</p>
+        <p>- Fixed an issue where some websites failed in a 403 forbidden error</p>
       </description>
     </release>
   </releases>
