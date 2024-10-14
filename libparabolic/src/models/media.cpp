@@ -9,7 +9,14 @@ namespace Nickvision::TubeConverter::Shared::Models
         : m_timeFrame{ std::chrono::seconds(0), std::chrono::seconds(0) }
     {
         //Parse base information
-        m_url = info.contains("url") ? (info["url"].is_string() ? info["url"].as_string() : "") : (info["webpage_url"].is_string() ? info["webpage_url"].as_string().c_str() : "");
+        if(info.contains("is_part_of_playlist"))
+        {
+            m_url = info.contains("url") ? (info["url"].is_string() ? info["url"].as_string() : "") : (info["webpage_url"].is_string() ? info["webpage_url"].as_string().c_str() : "");
+        }
+        else
+        {
+            m_url = info.contains("webpage_url") ? (info["webpage_url"].is_string() ? info["webpage_url"].as_string() : "") : (info["url"].is_string() ? info["url"].as_string() : "");
+        }
         m_title = info["title"].is_string() ? info["title"].as_string() : "Media";
         m_title = StringHelpers::normalizeForFilename(m_title, info["limit_characters"].is_bool() ? info["limit_characters"].as_bool() : false);
         if(info.contains("duration"))

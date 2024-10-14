@@ -232,9 +232,10 @@ namespace Nickvision::TubeConverter::Shared::Models
 
     void DownloaderOptions::setPostprocessingThreads(int threads)
     {
-        if(threads < 1 || threads > std::thread::hardware_concurrency())
+        int hardwareThreads = static_cast<int>(std::thread::hardware_concurrency());
+        if(threads < 1 || threads > hardwareThreads)
         {
-            threads = static_cast<int>(std::thread::hardware_concurrency());
+            threads = hardwareThreads;
         }
         m_postprocessingThreads = threads;
     }

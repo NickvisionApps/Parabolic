@@ -38,10 +38,10 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         m_keyring{ m_appInfo.getId() },
         m_downloadManager{ m_dataFileManager.get<Configuration>("config").getDownloaderOptions(), m_dataFileManager.get<DownloadHistory>("history"), m_logger }
     {
-        m_appInfo.setVersion({ "2024.10.1" });
+        m_appInfo.setVersion({ "2024.10.2-next" });
         m_appInfo.setShortName(_("Parabolic"));
         m_appInfo.setDescription(_("Download web video and audio"));
-        m_appInfo.setChangelog("- Added the ability to specify the number of threads to use for postprocessing operations\n- Fixed an issue where the Add Download action was disabled incorrectly\n- Fixed an issue where a selected video resolution was ignored when downloading\n- Fixed an issue where the app crashed when attempting to use aria2c\n- Fixed an issue where the GNOME version of the app did not allow for scrolling on the download pages\n- Fixed an issue where the Qt version of the app did not display subtitle and playlist item rows correctly\n- Fixed an issue where the Qt version of the app did not respect dark mode on Windows 10\n- Updated yt-dlp to 2024.10.07");
+        m_appInfo.setChangelog("- Fixed an issue where some websites failed in 403 forbidden error");
         m_appInfo.setSourceRepo("https://github.com/NickvisionApps/Parabolic");
         m_appInfo.setIssueTracker("https://github.com/NickvisionApps/Parabolic/issues/new");
         m_appInfo.setSupportUrl("https://github.com/NickvisionApps/Parabolic/discussions");
