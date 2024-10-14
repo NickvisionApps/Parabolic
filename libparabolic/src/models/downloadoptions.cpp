@@ -283,6 +283,26 @@ namespace Nickvision::TubeConverter::Shared::Models
             arguments.push_back("--remux-video");
             arguments.push_back(StringHelpers::lower(m_fileType.str()));
         }
+        //Force preferred video codec sorting for playlist downloads to use as format selection is not available
+        if(downloaderOptions.getPreferredVideoCodec() != VideoCodec::Any)
+        {
+            std::string vcodec{ "vcodec:" };
+            switch (downloaderOptions.getPreferredVideoCodec())
+            {
+            case VideoCodec::VP9:
+                vcodec += "vp9";
+                break;
+            case VideoCodec::AV01:
+                vcodec += "av01";
+                break;
+            case VideoCodec::H264:
+                vcodec += "h264";
+                break;            
+            }
+            arguments.push_back("--format-sort");
+            arguments.push_back(vcodec);
+            arguments.push_back("--format-sort-force");
+        }
         if(m_videoFormat && m_audioFormat)
         {
             arguments.push_back("--format");
