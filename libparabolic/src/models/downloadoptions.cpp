@@ -55,6 +55,16 @@ namespace Nickvision::TubeConverter::Shared::Models
         m_fileType = fileType;
     }
 
+    const std::vector<Format>& DownloadOptions::getAvailableFormats() const
+    {
+        return m_availableFormats;
+    }
+
+    void DownloadOptions::setAvailableFormats(const std::vector<Format>& availableFormats)
+    {
+        m_availableFormats = availableFormats;
+    }
+
     const std::optional<Format>& DownloadOptions::getVideoFormat() const
     {
         return m_videoFormat;
@@ -157,7 +167,7 @@ namespace Nickvision::TubeConverter::Shared::Models
         arguments.push_back("--no-mtime");
         arguments.push_back("--ffmpeg-location");
         arguments.push_back(Environment::findDependency("ffmpeg").string());
-        if(downloaderOptions.getOverwriteExistingFiles() && !std::filesystem::exists(m_saveFilename + ".part"))
+        if(downloaderOptions.getOverwriteExistingFiles() && !shouldDownloadResume())
         {
             arguments.push_back("--force-overwrites");
         }
@@ -361,5 +371,21 @@ namespace Nickvision::TubeConverter::Shared::Models
         arguments.push_back("--postprocessor-args");
         arguments.push_back("-threads " + std::to_string(downloaderOptions.getPostprocessingThreads()));
         return arguments;
+    }
+
+    bool DownloadOptions::shouldDownloadResume() const
+    {
+        if(std::filesystem::exists(m_saveFolder / (m_saveFilename + ".part")))
+        {
+            return true;
+        }
+        for(const Format& format : m_availableFormats)
+        {
+            if(std::filesystem::exists(m_saveFolder / (m_saveFilename + ".f" + format.getId() + "." + format.getExtension() + ".part")))
+            {
+                return true;
+            }
+        }
+        return false;
     }
 }

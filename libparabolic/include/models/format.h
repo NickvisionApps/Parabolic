@@ -32,6 +32,11 @@ namespace Nickvision::TubeConverter::Shared::Models
          */
         const std::string& getProtocol() const;
         /**
+         * @brief Gets the extension of the format.
+         * @return The extension of the format
+         */
+        const std::string& getExtension() const;
+        /**
          * @brief Gets the type of the format.
          * @return The type of the format
          */
@@ -65,6 +70,7 @@ namespace Nickvision::TubeConverter::Shared::Models
     private:
         std::string m_id;
         std::string m_protocol;
+        std::string m_extension;
         MediaType m_type;
         std::optional<std::string> m_audioLanguage;
         bool m_hasAudioDescription;

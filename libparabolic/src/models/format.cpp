@@ -7,6 +7,7 @@ namespace Nickvision::TubeConverter::Shared::Models
     {
         m_id = format["format_id"].is_string() ? format["format_id"].as_string() : "";
         m_protocol = format["protocol"].is_string() ? format["protocol"].as_string() : "";
+        m_extension = format["ext"].is_string() ? format["ext"].as_string() : "";
         std::string note{ format["format_note"].is_string() ? format["format_note"].as_string() : "" };
         std::string resolution{ format["resolution"].is_string() ? format["resolution"].as_string() : "" };
         if(resolution == "audio only")
@@ -62,6 +63,11 @@ namespace Nickvision::TubeConverter::Shared::Models
     const std::string& Format::getProtocol() const
     {
         return m_protocol;
+    }
+
+    const std::string& Format::getExtension() const
+    {
+        return m_extension;
     }
 
     MediaType Format::getType() const

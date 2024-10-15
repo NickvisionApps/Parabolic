@@ -62,6 +62,16 @@ namespace Nickvision::TubeConverter::Shared::Models
          */
         void setFileType(const MediaFileType& fileType);
         /**
+         * @brief Gets the available formats of the download.
+         * @return The available formats of the download
+         */
+        const std::vector<Format>& getAvailableFormats() const;
+        /**
+         * @brief Sets the available formats of the download.
+         * @param availableFormats The available formats of the download
+         */
+        void setAvailableFormats(const std::vector<Format>& availableFormats);
+        /**
          * @brief Gets the video format of the download.
          * @return The video format of the download
          */
@@ -151,9 +161,16 @@ namespace Nickvision::TubeConverter::Shared::Models
         std::vector<std::string> toArgumentVector(const DownloaderOptions& downloaderOptions) const;
 
     private:
+        /**
+         * @brief Gets whether or not the download should resume.
+         * @brief Checks for existing part files in the save folder.
+         * @return True if the download should resume, else false
+         */
+        bool shouldDownloadResume() const;
         std::string m_url;
         std::optional<Keyring::Credential> m_credential;
         MediaFileType m_fileType;
+        std::vector<Format> m_availableFormats;
         std::optional<Format> m_videoFormat;
         std::optional<Format> m_audioFormat;
         std::filesystem::path m_saveFolder;
