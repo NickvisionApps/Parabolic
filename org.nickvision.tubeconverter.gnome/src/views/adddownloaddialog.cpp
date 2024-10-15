@@ -58,12 +58,16 @@ namespace Nickvision::TubeConverter::GNOME::Views
         g_signal_connect(m_builder.get<GObject>("advancedOptionsSingleRow"), "activated", G_CALLBACK(+[](AdwActionRow*, gpointer data){ reinterpret_cast<AddDownloadDialog*>(data)->advancedOptionsSingle(); }), this);
         g_signal_connect(m_builder.get<GObject>("selectSaveFolderSingleButton"), "clicked", G_CALLBACK(+[](GtkButton*, gpointer data){ reinterpret_cast<AddDownloadDialog*>(data)->selectSaveFolderSingle(); }), this);
         g_signal_connect(m_builder.get<GObject>("revertFilenameSingleButton"), "clicked", G_CALLBACK(+[](GtkButton*, gpointer data){ reinterpret_cast<AddDownloadDialog*>(data)->revertFilenameSingle(); }), this);
+        g_signal_connect(m_builder.get<GObject>("selectAllSubtitlesSingleButton"), "clicked", G_CALLBACK(+[](GtkButton*, gpointer data){ reinterpret_cast<AddDownloadDialog*>(data)->selectAllSubtitlesSingle(); }), this);
+        g_signal_connect(m_builder.get<GObject>("deselectAllSubtitlesSingleButton"), "clicked", G_CALLBACK(+[](GtkButton*, gpointer data){ reinterpret_cast<AddDownloadDialog*>(data)->deselectAllSubtitlesSingle(); }), this);
         g_signal_connect(m_builder.get<GObject>("revertStartTimeSingleButton"), "clicked", G_CALLBACK(+[](GtkButton*, gpointer data){ reinterpret_cast<AddDownloadDialog*>(data)->revertStartTimeSingle(); }), this);
         g_signal_connect(m_builder.get<GObject>("revertEndTimeSingleButton"), "clicked", G_CALLBACK(+[](GtkButton*, gpointer data){ reinterpret_cast<AddDownloadDialog*>(data)->revertEndTimeSingle(); }), this);
         g_signal_connect(m_builder.get<GObject>("downloadSingleButton"), "clicked", G_CALLBACK(+[](GtkButton*, gpointer data){ reinterpret_cast<AddDownloadDialog*>(data)->downloadSingle(); }), this);
         g_signal_connect(m_builder.get<GObject>("selectSaveFolderPlaylistButton"), "clicked", G_CALLBACK(+[](GtkButton*, gpointer data){ reinterpret_cast<AddDownloadDialog*>(data)->selectSaveFolderPlaylist(); }), this);
         g_signal_connect(m_builder.get<GObject>("itemsPlaylistRow"), "activated", G_CALLBACK(+[](AdwActionRow*, gpointer data){ reinterpret_cast<AddDownloadDialog*>(data)->itemsPlaylist(); }), this);
         g_signal_connect(m_builder.get<GObject>("numberTitlesPlaylistRow"), "notify::active", G_CALLBACK(+[](GObject*, GParamSpec* pspec, gpointer data){ reinterpret_cast<AddDownloadDialog*>(data)->onNumberTitlesPlaylistChanged(); }), this);
+        g_signal_connect(m_builder.get<GObject>("selectAllPlaylistButton"), "clicked", G_CALLBACK(+[](GtkButton*, gpointer data){ reinterpret_cast<AddDownloadDialog*>(data)->selectAllPlaylist(); }), this);
+        g_signal_connect(m_builder.get<GObject>("deselectAllPlaylistButton"), "clicked", G_CALLBACK(+[](GtkButton*, gpointer data){ reinterpret_cast<AddDownloadDialog*>(data)->deselectAllPlaylist(); }), this);
         g_signal_connect(m_builder.get<GObject>("downloadPlaylistButton"), "clicked", G_CALLBACK(+[](GtkButton*, gpointer data){ reinterpret_cast<AddDownloadDialog*>(data)->downloadPlaylist(); }), this);
         m_controller->urlValidated() += [this](const EventArgs& args){ GtkHelpers::dispatchToMainThread([this]{ onUrlValidated(); }); };
     }
@@ -256,6 +260,22 @@ namespace Nickvision::TubeConverter::GNOME::Views
         gtk_editable_set_text(m_builder.get<GtkEditable>("filenameSingleRow"), m_controller->getMediaTitle(0).c_str());
     }
 
+    void AddDownloadDialog::selectAllSubtitlesSingle()
+    {
+        for(GtkCheckButton* chk : m_singleSubtitleCheckButtons)
+        {
+            gtk_check_button_set_active(chk, true);
+        }
+    }
+
+    void AddDownloadDialog::deselectAllSubtitlesSingle()
+    {
+        for(GtkCheckButton* chk : m_singleSubtitleCheckButtons)
+        {
+            gtk_check_button_set_active(chk, false);
+        }
+    }
+
     void AddDownloadDialog::revertStartTimeSingle()
     {
         gtk_editable_set_text(m_builder.get<GtkEditable>("startTimeSingleRow"), m_controller->getMediaTimeFrame(0).startStr().c_str());
@@ -307,6 +327,22 @@ namespace Nickvision::TubeConverter::GNOME::Views
         {
             gtk_editable_set_text(GTK_EDITABLE(row), m_controller->getMediaTitle(i, adw_switch_row_get_active(m_builder.get<AdwSwitchRow>("numberTitlesPlaylistRow"))).c_str());
             i++;
+        }
+    }
+
+    void AddDownloadDialog::selectAllPlaylist()
+    {
+        for(GtkCheckButton* chk : m_playlistItemCheckButtons)
+        {
+            gtk_check_button_set_active(chk, true);
+        }
+    }
+
+    void AddDownloadDialog::deselectAllPlaylist()
+    {
+        for(GtkCheckButton* chk : m_playlistItemCheckButtons)
+        {
+            gtk_check_button_set_active(chk, false);
         }
     }
 

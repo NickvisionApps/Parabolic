@@ -53,6 +53,8 @@ namespace Nickvision::TubeConverter::QT::Views
         m_ui->btnRevertFilenameSingle->setText(_("Revert"));
         m_ui->btnRevertFilenameSingle->setToolTip(_("Revert to Title"));
         m_ui->lblNoSubtitlesSingle->setText(_("No Subtitles Available"));
+        m_ui->btnSelectAllSubtitlesSingle->setText(_("Select All"));
+        m_ui->btnDeselectAllSubtitlesSingle->setText(_("Deselect All"));
         m_ui->tblSubtitlesSingle->setHorizontalHeaderLabels({ _("Download"), _("Language") });
         m_ui->btnDownloadSingle->setText(_("Download"));
         m_ui->tabsPlaylist->setTabText(0, _("General"));
@@ -65,6 +67,8 @@ namespace Nickvision::TubeConverter::QT::Views
         m_ui->btnSelectSaveFolderPlaylist->setText(_("Select"));
         m_ui->btnSelectSaveFolderPlaylist->setToolTip(_("Select Save Folder"));
         m_ui->lblNumberTitlesPlaylist->setText(_("Number Titles"));
+        m_ui->btnSelectAllPlaylist->setText(_("Select All"));
+        m_ui->btnDeselectAllPlaylist->setText(_("Deselect All"));
         m_ui->tblItemsPlaylist->setHorizontalHeaderLabels({ _("Download"), _("File Name"), "" });
         m_ui->btnDownloadPlaylist->setText(_("Download"));
         //Load Validate Page
@@ -95,9 +99,13 @@ namespace Nickvision::TubeConverter::QT::Views
         connect(m_ui->cmbAudioLanguageSingle, &QComboBox::currentIndexChanged, this, &AddDownloadDialog::onCmbQualitySingleChanged);
         connect(m_ui->btnSelectSaveFolderSingle, &QPushButton::clicked, this, &AddDownloadDialog::selectSaveFolderSingle);
         connect(m_ui->btnRevertFilenameSingle, &QPushButton::clicked, this, &AddDownloadDialog::revertFilenameSingle);
+        connect(m_ui->btnSelectAllSubtitlesSingle, &QPushButton::clicked, this, &AddDownloadDialog::selectAllSubtitlesSingle);
+        connect(m_ui->btnDeselectAllSubtitlesSingle, &QPushButton::clicked, this, &AddDownloadDialog::deselectAllSubtitlesSingle);
         connect(m_ui->btnDownloadSingle, &QPushButton::clicked, this, &AddDownloadDialog::downloadSingle);
         connect(m_ui->btnSelectSaveFolderPlaylist, &QPushButton::clicked, this, &AddDownloadDialog::selectSaveFolderPlaylist);
         connect(m_ui->chkNumberTitlesPlaylist, &QCheckBox::stateChanged, this, &AddDownloadDialog::onNumberTitlesPlaylistChanged);
+        connect(m_ui->btnSelectAllPlaylist, &QPushButton::clicked, this, &AddDownloadDialog::selectAllPlaylist);
+        connect(m_ui->btnDeselectAllPlaylist, &QPushButton::clicked, this, &AddDownloadDialog::deselectAllPlaylist);
         connect(m_ui->btnDownloadPlaylist, &QPushButton::clicked, this, &AddDownloadDialog::downloadPlaylist);
         m_controller->urlValidated() += [this](const ParamEventArgs<bool>& args){ QTHelpers::dispatchToMainThread([this]() { onUrlValidated(); }); };
     }
@@ -260,6 +268,24 @@ namespace Nickvision::TubeConverter::QT::Views
     {
         m_ui->txtFilenameSingle->setText(QString::fromStdString(m_controller->getMediaTitle(0)));
     }
+
+    void AddDownloadDialog::selectAllSubtitlesSingle()
+    {
+        for(int i = 0; i < m_ui->tblSubtitlesSingle->rowCount(); i++)
+        {
+            QCheckBox* chk{ static_cast<QCheckBox*>(m_ui->tblSubtitlesSingle->cellWidget(i, 0)) };
+            chk->setChecked(true);
+        }
+    }
+
+    void AddDownloadDialog::deselectAllSubtitlesSingle()
+    {
+        for(int i = 0; i < m_ui->tblSubtitlesSingle->rowCount(); i++)
+        {
+            QCheckBox* chk{ static_cast<QCheckBox*>(m_ui->tblSubtitlesSingle->cellWidget(i, 0)) };
+            chk->setChecked(false);
+        }
+    }
     
     void AddDownloadDialog::downloadSingle()
     {
@@ -290,6 +316,24 @@ namespace Nickvision::TubeConverter::QT::Views
         for(int i = 0; i < m_ui->tblItemsPlaylist->rowCount(); i++)
         {
             m_ui->tblItemsPlaylist->item(i, 1)->setText(QString::fromStdString(m_controller->getMediaTitle(i, state == Qt::Checked)));
+        }
+    }
+
+    void AddDownloadDialog::selectAllPlaylist()
+    {
+        for(int i = 0; i < m_ui->tblItemsPlaylist->rowCount(); i++)
+        {
+            QCheckBox* chk{ static_cast<QCheckBox*>(m_ui->tblItemsPlaylist->cellWidget(i, 0)) };
+            chk->setChecked(true);
+        }
+    }
+
+    void AddDownloadDialog::deselectAllPlaylist()
+    {
+        for(int i = 0; i < m_ui->tblItemsPlaylist->rowCount(); i++)
+        {
+            QCheckBox* chk{ static_cast<QCheckBox*>(m_ui->tblItemsPlaylist->cellWidget(i, 0)) };
+            chk->setChecked(false);
         }
     }
 

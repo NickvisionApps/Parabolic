@@ -58,6 +58,14 @@ namespace Nickvision::TubeConverter::QT::Views
          */
         void revertFilenameSingle();
         /**
+         * @brief Selects all subtitles for a single download.
+         */
+        void selectAllSubtitlesSingle();
+        /**
+         * @brief Deselects all subtitles for a single download.
+         */
+        void deselectAllSubtitlesSingle();
+        /**
          * @brief Downloads a single media.
          */
         void downloadSingle();
@@ -70,6 +78,14 @@ namespace Nickvision::TubeConverter::QT::Views
          * @param state The new state
          */
         void onNumberTitlesPlaylistChanged(int state);
+        /**
+         * @brief Selects all items for a playlist download.
+         */
+        void selectAllPlaylist();
+        /**
+         * @brief Deselects all items for a playlist download.
+         */
+        void deselectAllPlaylist();
         /**
          * @brief Downloads a playlist.
          */

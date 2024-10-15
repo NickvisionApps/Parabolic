@@ -29,7 +29,7 @@
    <item>
     <widget class="QStackedWidget" name="viewStack">
      <property name="currentIndex">
-      <number>3</number>
+      <number>2</number>
      </property>
      <widget class="QWidget" name="pageValidate">
       <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -274,6 +274,24 @@
              <widget class="QWidget" name="pageSubtitlesSingle">
               <layout class="QVBoxLayout" name="verticalLayout_8">
                <item>
+                <layout class="QHBoxLayout" name="horizontalLayout_2">
+                 <item>
+                  <widget class="QPushButton" name="btnSelectAllSubtitlesSingle">
+                   <property name="icon">
+                    <iconset theme="edit-select-all"/>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="btnDeselectAllSubtitlesSingle">
+                   <property name="icon">
+                    <iconset theme="edit-clear"/>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+               <item>
                 <widget class="QTableWidget" name="tblSubtitlesSingle">
                  <property name="columnCount">
                   <number>2</number>
@@ -383,6 +401,24 @@
            </item>
            <item>
             <widget class="QCheckBox" name="chkNumberTitlesPlaylist"/>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout">
+             <item>
+              <widget class="QPushButton" name="btnSelectAllPlaylist">
+               <property name="icon">
+                <iconset theme="edit-select-all"/>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="btnDeselectAllPlaylist">
+               <property name="icon">
+                <iconset theme="edit-clear"/>
+               </property>
+              </widget>
+             </item>
+            </layout>
            </item>
            <item>
             <widget class="QTableWidget" name="tblItemsPlaylist">
