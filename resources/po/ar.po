@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-13 13:34-0400\n"
+"POT-Creation-Date: 2024-10-15 10:47-0400\n"
 "PO-Revision-Date: 2024-09-11 13:02+0000\n"
 "Last-Translator: Deflector <dhoome1234@gmail.com>\n"
 "Language-Team: Arabic <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -76,13 +76,13 @@ msgstr "صوت (بصيغة WAV)"
 msgid "Best"
 msgstr "الأفضل"
 
-#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:170
-msgid "Audio Description"
-msgstr ""
-
-#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:184
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:160
 msgid "Default"
 msgstr "جودة افتراضية"
+
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:171
+msgid "Audio Description"
+msgstr ""
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:42
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:39
@@ -134,22 +134,20 @@ msgid "Unable to download and install update"
 msgstr "لا يمكن تحميل وتنزيل التحديث"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:21
-#, c++-format
 msgid "{:.2f} GiB/s"
 msgstr "{:.2f} جيجابايت/ث"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:25
-#, fuzzy, c++-format
+#, fuzzy
 msgid "{:.2f} MiB/s"
 msgstr "{0:f1} ميجابايت\\ث"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:29
-#, fuzzy, c++-format
+#, fuzzy
 msgid "{:.2f} KiB/s"
 msgstr "{0:f1} كيلوبايت\\ث"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:33
-#, c++-format
 msgid "{:.2f} B/s"
 msgstr "{:.2f} بايت/ث"
 
@@ -936,7 +934,6 @@ msgid "No Subtitles Available"
 msgstr "لديك تحديث جديد"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:173
-#, c++-format
 msgid "{} items"
 msgstr "{} عنصر/عناصر"
 
@@ -1048,7 +1045,6 @@ msgid "Changelog:"
 msgstr "تغييرات التحديث:"
 
 #: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:39
-#, c++-format
 msgid ""
 "Developers:\n"
 "{}\n"
@@ -1127,7 +1123,7 @@ msgstr ""
 "المستخدم، والمتصفح المستخدم لبيانات تعريف الإرتباط في الإعدادات."
 
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:206
-#, fuzzy, c++-format
+#, fuzzy
 msgid "Items ({})"
 msgstr "وسائط قائمة التشغيل ({})"
 

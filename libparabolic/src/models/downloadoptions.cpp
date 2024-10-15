@@ -322,7 +322,14 @@ namespace Nickvision::TubeConverter::Shared::Models
         else if(m_audioFormat)
         {
             arguments.push_back("--format");
-            arguments.push_back(m_audioFormat->getId());
+            if(m_fileType.isVideo())
+            {
+                arguments.push_back("bv+" + m_audioFormat->getId());
+            }
+            else
+            {
+                arguments.push_back(m_audioFormat->getId());
+            }
         }
         if(!std::filesystem::exists(m_saveFolder))
         {

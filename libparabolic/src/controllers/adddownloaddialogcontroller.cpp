@@ -157,6 +157,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         {
             return languages;
         }
+        languages.push_back(_("Default"));
         if(!m_urlInfo->isPlaylist())
         {
             const Media& media{ m_urlInfo->get(0) };
@@ -181,7 +182,6 @@ namespace Nickvision::TubeConverter::Shared::Controllers
                 }
             }
         }
-        languages.insert(languages.begin(), _("Default"));
         return languages;
     }
 
