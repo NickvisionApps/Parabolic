@@ -65,6 +65,14 @@ namespace Nickvision::TubeConverter::GNOME::Views
          */
         void revertFilenameSingle();
         /**
+         * @brief Selects all subtitles for a single download.
+         */
+        void selectAllSubtitlesSingle();
+        /**
+         * @brief Deselects all subtitles for a single download.
+         */
+        void deselectAllSubtitlesSingle();
+        /**
          * @brief Reverts the start time for a single download to its original value.
          */
         void revertStartTimeSingle();
@@ -88,6 +96,14 @@ namespace Nickvision::TubeConverter::GNOME::Views
          * @brief Handles when the number titles switch is changed.
          */
         void onNumberTitlesPlaylistChanged();
+        /**
+         * @brief Selects all items for a playlist download.
+         */
+        void selectAllPlaylist();
+        /**
+         * @brief Deselects all items for a playlist download.
+         */
+        void deselectAllPlaylist();
         /**
          * @brief Adds the playlist downloads to the download queue.
          */

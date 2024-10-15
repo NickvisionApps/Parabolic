@@ -169,10 +169,31 @@ Adw.Dialog root {
         name: "download-single-subtitles";
         child: Gtk.Box {
           orientation: vertical;
-          spacing: 16;
+          spacing: 12;
           margin-start: 16;
           margin-end: 16;
           margin-bottom: 16;
+
+          Gtk.Box {
+            orientation: horizontal;
+            halign: center;
+
+            Gtk.Button selectAllSubtitlesSingleButton {
+              Adw.ButtonContent {
+                icon-name: "edit-select-all-symbolic";
+                label: _("Select All");
+              }
+            }
+
+            Gtk.Button deselectAllSubtitlesSingleButton {
+              Adw.ButtonContent {
+                icon-name: "edit-select-none-symbolic";
+                label: _("Deselect All");
+              }
+            }
+
+            styles [ "linked" ]
+          }
 
           Gtk.ScrolledWindow {
             hexpand: true;
@@ -295,7 +316,7 @@ Adw.Dialog root {
         name: "download-playlist-items";
         child: Gtk.Box {
           orientation: vertical;
-          spacing: 16;
+          spacing: 12;
           margin-start: 16;
           margin-end: 16;
           margin-bottom: 16;
@@ -304,6 +325,27 @@ Adw.Dialog root {
             Adw.SwitchRow numberTitlesPlaylistRow {
               title: _("Number Titles");
             }
+          }
+
+          Gtk.Box {
+            orientation: horizontal;
+            halign: center;
+
+            Gtk.Button selectAllPlaylistButton {
+              Adw.ButtonContent {
+                icon-name: "edit-select-all-symbolic";
+                label: _("Select All");
+              }
+            }
+
+            Gtk.Button deselectAllPlaylistButton {
+              Adw.ButtonContent {
+                icon-name: "edit-select-none-symbolic";
+                label: _("Deselect All");
+              }
+            }
+
+            styles [ "linked" ]
           }
 
           Gtk.ScrolledWindow {
