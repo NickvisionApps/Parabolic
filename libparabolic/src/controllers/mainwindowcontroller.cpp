@@ -38,7 +38,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         m_keyring{ m_appInfo.getId() },
         m_downloadManager{ m_dataFileManager.get<Configuration>("config").getDownloaderOptions(), m_dataFileManager.get<DownloadHistory>("history"), m_logger }
     {
-        m_appInfo.setVersion({ "2024.10.2-next" });
+        m_appInfo.setVersion({ "2024.10.2" });
         m_appInfo.setShortName(_("Parabolic"));
         m_appInfo.setDescription(_("Download web video and audio"));
         m_appInfo.setChangelog("- Added Select All and Deselect All buttons to the Subtitles and Playlist Items pages\n- The user's preferred video codec will now be used in playlist downloads where individual quality/format selection is not available\n- Partially downloaded media will now correctly resume when retrying the failed download instead of restarting the download from scratch\n- Fixed an issue where some websites failed in a 403 forbidden error\n- Fixed an issue where some videos would download as audio only after selecting an audio language\n- Fixed an issue where the incorrect audio language was downloaded");
