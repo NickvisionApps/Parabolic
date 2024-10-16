@@ -9,5 +9,5 @@ jobs:
       - uses: vedantmgoyal9/winget-releaser@main
         with:
           identifier: Nickvision.Parabolic
-          max-versions-to-keep: 5 # keep only latest 5 versions
+          installers-regex: '\.exe$' # Only .exe files
           token: ${{ secrets.WINGET_TOKEN }}
