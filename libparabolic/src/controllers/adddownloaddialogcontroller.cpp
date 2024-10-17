@@ -2,6 +2,7 @@
 #include <algorithm>
 #include <format>
 #include <thread>
+#include <libnick/helpers/stringhelpers.h>
 #include <libnick/localization/gettext.h>
 #include "models/configuration.h"
 #include "models/downloadoptions.h"
@@ -9,6 +10,7 @@
 
 using namespace Nickvision::App;
 using namespace Nickvision::Events;
+using namespace Nickvision::Helpers;
 using namespace Nickvision::Keyring;
 using namespace Nickvision::TubeConverter::Shared::Models;
 
@@ -319,7 +321,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         m_previousOptions.setFileType(static_cast<MediaFileType::MediaFileTypeValue>(fileTypeIndex));
         m_previousOptions.setSplitChapters(splitChapters);
         m_previousOptions.setLimitSpeed(limitSpeed);
-        std::filesystem::path playlistSaveFolder{ (std::filesystem::exists(saveFolder) ? saveFolder : m_previousOptions.getSaveFolder()) / m_urlInfo->getTitle() };
+        std::filesystem::path playlistSaveFolder{ (std::filesystem::exists(saveFolder) ? saveFolder : m_previousOptions.getSaveFolder()) / StringHelpers::normalizeForFilename(m_urlInfo->getTitle(), m_downloadManager.getDownloaderOptions().getLimitCharacters()) };
         std::filesystem::create_directories(playlistSaveFolder);
         for(const std::pair<const size_t, std::string>& pair : filenames)
         {
