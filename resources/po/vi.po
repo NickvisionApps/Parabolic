@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-17 13:59-0400\n"
+"POT-Creation-Date: 2024-10-17 15:16-0400\n"
 "PO-Revision-Date: 2024-02-15 17:02+0000\n"
 "Last-Translator: Kinten Le <kinten108101@protonmail.com>\n"
 "Language-Team: Vietnamese <https://hosted.weblate.org/projects/nickvision-"
@@ -141,22 +141,22 @@ msgid "Unable to download and install update"
 msgstr "Không thể tải và cài bản cập nhật."
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:21
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} GiB/s"
 msgstr "{0:f1} GiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:25
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} MiB/s"
 msgstr "{0:f1} MiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:29
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} KiB/s"
 msgstr "{0:f1} KiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:33
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} B/s"
 msgstr "{0:f1} B/s"
 
@@ -928,26 +928,30 @@ msgid "Starting download..."
 msgstr "Dừng tải"
 
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:31
-#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:98
-#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:146
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:39
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:82
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:118
-msgid "Running"
-msgstr ""
+#, fuzzy
+msgid "Starting"
+msgstr "Cài đặt"
 
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:36
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:44
 msgid "Unknown"
 msgstr ""
 
-#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:86
+#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:80
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:76
 #, fuzzy
 msgid "Processing"
 msgstr "Đang xử lý..."
 
-#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:115
+#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:92
+#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:140
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:39
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:82
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:118
+msgid "Running"
+msgstr ""
+
+#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:109
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:134
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:94
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:176
@@ -959,12 +963,12 @@ msgstr "Đang xử lý..."
 msgid "Error"
 msgstr "Lỗi"
 
-#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:123
+#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:117
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:100
 msgid "Success"
 msgstr "Thành công"
 
-#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:135
+#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:129
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:110
 msgid "Stopped"
 msgstr "Đã dừng"
@@ -1005,7 +1009,7 @@ msgid "No Subtitles Available"
 msgstr "Đã ra bản cập nhật mới."
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:200
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{} items"
 msgstr "{0} trên {1} lượt"
 
@@ -1117,6 +1121,7 @@ msgid "Changelog:"
 msgstr "Changelog"
 
 #: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:39
+#, c++-format
 msgid ""
 "Developers:\n"
 "{}\n"
@@ -1193,7 +1198,7 @@ msgid ""
 msgstr ""
 
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:227
-#, fuzzy
+#, fuzzy, c++-format
 msgid "Items ({})"
 msgstr "{0} trên {1} lượt"
 

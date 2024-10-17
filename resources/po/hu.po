@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-17 13:59-0400\n"
+"POT-Creation-Date: 2024-10-17 15:16-0400\n"
 "PO-Revision-Date: 2024-10-01 16:51+0000\n"
 "Last-Translator: ViBE <vibe@protonmail.com>\n"
 "Language-Team: Hungarian <https://hosted.weblate.org/projects/nickvision-"
@@ -131,18 +131,22 @@ msgid "Unable to download and install update"
 msgstr "A frissítés letöltése és telepítése nem sikerült"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:21
+#, c++-format
 msgid "{:.2f} GiB/s"
 msgstr "{:.2f} GiB/mp"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:25
+#, c++-format
 msgid "{:.2f} MiB/s"
 msgstr "{:.2f} MiB/mp"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:29
+#, c++-format
 msgid "{:.2f} KiB/s"
 msgstr "{:.2f} KiB/mp"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:33
+#, c++-format
 msgid "{:.2f} B/s"
 msgstr "{:.2f} B/mp"
 
@@ -885,25 +889,29 @@ msgid "Starting download..."
 msgstr "Letöltés megkezdése..."
 
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:31
-#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:98
-#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:146
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:39
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:82
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:118
-msgid "Running"
-msgstr "Fut"
+#, fuzzy
+msgid "Starting"
+msgstr "Beállítások"
 
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:36
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:44
 msgid "Unknown"
 msgstr "Ismeretlen"
 
-#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:86
+#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:80
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:76
 msgid "Processing"
 msgstr "Feldolgozás..."
 
-#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:115
+#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:92
+#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:140
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:39
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:82
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:118
+msgid "Running"
+msgstr "Fut"
+
+#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:109
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:134
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:94
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:176
@@ -915,12 +923,12 @@ msgstr "Feldolgozás..."
 msgid "Error"
 msgstr "Hiba"
 
-#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:123
+#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:117
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:100
 msgid "Success"
 msgstr "Letöltés befejeződött"
 
-#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:135
+#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:129
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:110
 msgid "Stopped"
 msgstr "Letöltés megszakítva"
@@ -962,6 +970,7 @@ msgid "No Subtitles Available"
 msgstr "Nincs felirat"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:200
+#, c++-format
 msgid "{} items"
 msgstr "{} elem"
 
@@ -1069,6 +1078,7 @@ msgid "Changelog:"
 msgstr "Kiadási jegyzék:"
 
 #: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:39
+#, c++-format
 msgid ""
 "Developers:\n"
 "{}\n"
@@ -1144,6 +1154,7 @@ msgstr ""
 "vagy a bejelentkezési adatokat, valamint sütikre vonatkozó beállításokat!"
 
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:227
+#, c++-format
 msgid "Items ({})"
 msgstr "elem ({})"
 

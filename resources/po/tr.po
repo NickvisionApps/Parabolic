@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-17 13:59-0400\n"
+"POT-Creation-Date: 2024-10-17 15:16-0400\n"
 "PO-Revision-Date: 2024-09-28 00:09+0000\n"
 "Last-Translator: Sabri Ünal <yakushabb@gmail.com>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -134,18 +134,22 @@ msgid "Unable to download and install update"
 msgstr "Güncelleme indirilemiyor ve kurulamıyor"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:21
+#, c++-format
 msgid "{:.2f} GiB/s"
 msgstr "{:.2f} GiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:25
+#, c++-format
 msgid "{:.2f} MiB/s"
 msgstr "{:.2f} MiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:29
+#, c++-format
 msgid "{:.2f} KiB/s"
 msgstr "{:.2f} KiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:33
+#, c++-format
 msgid "{:.2f} B/s"
 msgstr "{:.2f} B/s"
 
@@ -918,26 +922,30 @@ msgid "Starting download..."
 msgstr "İndirmeyi Durdur"
 
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:31
-#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:98
-#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:146
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:39
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:82
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:118
-msgid "Running"
-msgstr ""
+#, fuzzy
+msgid "Starting"
+msgstr "Ayarlar"
 
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:36
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:44
 msgid "Unknown"
 msgstr ""
 
-#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:86
+#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:80
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:76
 #, fuzzy
 msgid "Processing"
 msgstr "İşleniyor..."
 
-#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:115
+#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:92
+#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:140
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:39
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:82
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:118
+msgid "Running"
+msgstr ""
+
+#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:109
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:134
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:94
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:176
@@ -949,12 +957,12 @@ msgstr "İşleniyor..."
 msgid "Error"
 msgstr "Hata"
 
-#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:123
+#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:117
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:100
 msgid "Success"
 msgstr "Başarılı"
 
-#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:135
+#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:129
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:110
 msgid "Stopped"
 msgstr "Durduruldu"
@@ -995,7 +1003,7 @@ msgid "No Subtitles Available"
 msgstr "Yeni güncelleme var."
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:200
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{} items"
 msgstr "{0} / {1} öge"
 
@@ -1107,7 +1115,7 @@ msgid "Changelog:"
 msgstr "Değişiklik Günlüğü"
 
 #: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:39
-#, fuzzy
+#, fuzzy, c++-format
 msgid ""
 "Developers:\n"
 "{}\n"
@@ -1195,7 +1203,7 @@ msgid ""
 msgstr ""
 
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:227
-#, fuzzy
+#, fuzzy, c++-format
 msgid "Items ({})"
 msgstr "{0} / {1} öge"
 
@@ -1431,8 +1439,8 @@ msgstr "Ağ vekili URLʼsini buraya giriniz"
 #~ msgstr ""
 #~ "Farklı siteler aynı dil için farklı dil kodu biçimini kullanabilir. "
 #~ "Aşağıdaki üç türden biriyle karşılaşabilirsiniz: iki harfli, bölgeli iki "
-#~ "harfli ya da üç harfli. Örneğin İngilizce için \"en\", \"en-US\" ve \"eng"
-#~ "\" kelimelerinin tümü kullanılır.\n"
+#~ "harfli ya da üç harfli. Örneğin İngilizce için \"en\", \"en-US\" ve "
+#~ "\"eng\" kelimelerinin tümü kullanılır.\n"
 #~ "En iyi sonuçları elde etmek için lütfen dilleriniz için geçerli tüm "
 #~ "kodları belirtin. Varsa, otomatik oluşturulan alt yazılar da "
 #~ "indirilecektir.\n"

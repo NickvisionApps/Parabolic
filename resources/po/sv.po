@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-17 13:59-0400\n"
+"POT-Creation-Date: 2024-10-17 15:16-0400\n"
 "PO-Revision-Date: 2024-10-15 17:25+0000\n"
 "Last-Translator: Tomas Andersson <jotakswe@users.noreply.hosted.weblate."
 "org>\n"
@@ -132,18 +132,22 @@ msgid "Unable to download and install update"
 msgstr "Det gick inte att ladda ner och installera uppdateringen"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:21
+#, c++-format
 msgid "{:.2f} GiB/s"
 msgstr "{:.2f} GiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:25
+#, c++-format
 msgid "{:.2f} MiB/s"
 msgstr "{:.2f} MiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:29
+#, c++-format
 msgid "{:.2f} KiB/s"
 msgstr "{:.2f} KiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:33
+#, c++-format
 msgid "{:.2f} B/s"
 msgstr "{:.2f} B/s"
 
@@ -886,25 +890,29 @@ msgid "Starting download..."
 msgstr "Börjar ladda ner..."
 
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:31
-#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:98
-#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:146
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:39
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:82
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:118
-msgid "Running"
-msgstr "Körs"
+#, fuzzy
+msgid "Starting"
+msgstr "Inställningar"
 
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:36
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:44
 msgid "Unknown"
 msgstr "Okänd"
 
-#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:86
+#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:80
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:76
 msgid "Processing"
 msgstr "Bearbetar"
 
-#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:115
+#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:92
+#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:140
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:39
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:82
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:118
+msgid "Running"
+msgstr "Körs"
+
+#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:109
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:134
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:94
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:176
@@ -916,12 +924,12 @@ msgstr "Bearbetar"
 msgid "Error"
 msgstr "Fel"
 
-#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:123
+#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:117
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:100
 msgid "Success"
 msgstr "Klar"
 
-#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:135
+#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:129
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:110
 msgid "Stopped"
 msgstr "Stoppad"
@@ -964,6 +972,7 @@ msgid "No Subtitles Available"
 msgstr "Inga undertexter tillgängliga"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:200
+#, c++-format
 msgid "{} items"
 msgstr "{} objekt"
 
@@ -1070,6 +1079,7 @@ msgid "Changelog:"
 msgstr "Ändringslogg:"
 
 #: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:39
+#, c++-format
 msgid ""
 "Developers:\n"
 "{}\n"
@@ -1146,6 +1156,7 @@ msgstr ""
 "cookies i inställningarna."
 
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:227
+#, c++-format
 msgid "Items ({})"
 msgstr "Objekt ({})"
 

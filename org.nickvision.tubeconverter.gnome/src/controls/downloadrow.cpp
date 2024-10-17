@@ -16,7 +16,7 @@ namespace Nickvision::TubeConverter::GNOME::Controls
         m_id{ args.getId() },
         m_log{ _("Starting download...") },
         m_path{ args.getPath() },
-        m_pulseBar{ true }
+        m_pulseBar{ false }
     {
         //Load
         gtk_widget_add_css_class(m_builder.get<GtkWidget>("statusIcon"), "stopped");
@@ -28,7 +28,7 @@ namespace Nickvision::TubeConverter::GNOME::Controls
         }
         else if(args.getStatus() == DownloadStatus::Running)
         {
-            gtk_label_set_text(m_builder.get<GtkLabel>("statusLabel"), _("Running"));
+            gtk_label_set_text(m_builder.get<GtkLabel>("statusLabel"), _("Starting"));
             gtk_widget_set_sensitive(m_builder.get<GtkWidget>("cmdToClipboardButton"), true);
         }
         else
@@ -37,12 +37,6 @@ namespace Nickvision::TubeConverter::GNOME::Controls
         }
         adw_view_stack_set_visible_child_name(m_builder.get<AdwViewStack>("buttonsViewStack"), "downloading");
         adw_view_stack_set_visible_child_name(m_builder.get<AdwViewStack>("progViewStack"), "running");
-        g_timeout_add(30, +[](gpointer data) -> int
-        {
-            DownloadRow* row{ reinterpret_cast<DownloadRow*>(data) };
-            gtk_progress_bar_pulse(row->m_builder.get<GtkProgressBar>("progBar"));
-            return row->m_pulseBar;
-        }, this);
         //Signals
         g_signal_connect(m_builder.get<GObject>("stopButton"), "clicked", G_CALLBACK(+[](GtkButton*, gpointer data){ reinterpret_cast<DownloadRow*>(data)->stop(); }), this);
         g_signal_connect(m_builder.get<GObject>("playButton"), "clicked", G_CALLBACK(+[](GtkButton*, gpointer data){ reinterpret_cast<DownloadRow*>(data)->play(); }), this);
@@ -88,7 +82,7 @@ namespace Nickvision::TubeConverter::GNOME::Controls
             {
                 DownloadRow* row{ reinterpret_cast<DownloadRow*>(data) };
                 gtk_progress_bar_pulse(row->m_builder.get<GtkProgressBar>("progBar"));
-                return row->m_pulseBar;
+                return row->m_pulseBar ? G_SOURCE_CONTINUE : G_SOURCE_REMOVE;
             }, this);
         }
         else
