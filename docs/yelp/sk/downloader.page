@@ -2,7 +2,7 @@
 <page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" id="downloader" its:version="2.0" xml:lang="sk">
 <info>
 	<link type="guide" xref="index"/>
-	<title type="link">Downloader 🌐</title>
+	<title type="link">Sťahovač 🌐</title>
 	<credit type="author copyright">
 		<name>Nicholas Logozzo</name>
 		<years its:translate="no">2023-2024</years>
@@ -12,90 +12,90 @@
 		<years its:translate="no">2023-2024</years>
 	</credit>
 	<license href="http://creativecommons.org/licenses/by/4.0/" its:translate="no"><p>Creative Commons Attribution 4.0 International License</p></license>
-</info>
 
-<title>Downloader</title>
-<p>This page explains all options for configuring the Downloader in Preferences in <app>Parabolic</app>.</p>
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Jozef Gaal</mal:name>
+      <mal:email>preklady@mayday.sk</mal:email>
+      <mal:years>2024</mal:years>
+    </mal:credit>
+  </info>
+
+<title>Sťahovač</title>
+<p>Na tejto stránke sú vysvetlené všetky možnosti nastavenia Sťahovača v časti Nastavenia v aplikácii <app>Parabolic</app>.</p>
 
 <terms>
     <item>
-        <title>Overwrite Existing Files</title>
-        <p>If enabled, Parabolic will overwrite existing files.</p>
-        <p>
-            For example, if a file named <code>movie.mp4</code> exists in the download folder, and a new download is created named <code>movie</code>, <code>movie.mp4</code> will be overwritten with the new download's content.
-        </p>
+        <title>Prepísať existujúce súbory</title>
+        <p>Ak je to povolené, Parabolic prepíše existujúce súbory.</p>
+        <p>Napríklad, ak súbor s názvom <code>movie.mp4</code> existuje v priečinku na stiahnutie a nový vytvorený stiahnutý súbor je pomenovaný <code>movie</code>, <code>movie.mp4</code> bude prepísaný s novým obsahom sťahovania.</p>
         <note style="advanced">
-            <p>Default: On</p>
+            <p>Predvolené: Zapnuté</p>
         </note>
     </item>
 	<item>
-		<title>Maximum Number of Active Downloads</title>
-		<p>The number of active downloads allowed to run at a time. Must be an integer value between 1 and 10.</p>
-        <p>If the max number of active downloads is reached, Parabolic will place new downloads in a queue until more downloads are able to be run.</p>
+		<title>Maximálny počet aktívnych stiahnutí</title>
+		<p>Počet aktívnych sťahovaní, ktoré môžu byť spustené v danom čase. Musí to byť celočíselná hodnota od 1 do 10.</p>
+        <p>Ak sa dosiahne maximálny počet aktívnych sťahovaní, Parabolic zaradí nové sťahovania do poradia, kým nebude možné spustiť ďalšie sťahovania.</p>
 		<note style="advanced">
-			<p>Default: 5</p>
+			<p>Predvolené: 5</p>
 		</note>
     </item>
     <item>
-        <title>Included Auto-Generated Subtitles</title>
-        <p>Whether or not to included subtitles that are auto-translated to fit the requested subtitle languages.</p>
+        <title>Zahrnuté automaticky generované titulky</title>
+        <p>Či majú byť zahrnuté titulky, ktoré sú automaticky preložené tak, aby zodpovedali požadovanému jazyku tituliek, alebo nie.</p>
         <note style="advanced">
-            <p>Default: Off</p>
+            <p>Predvolené: Vypnuté</p>
         </note>
     </item>
     <item>
-        <title>Use aria2</title>
-        <p>If enabled, Parabolic will use aria2c to download media. Although using aria2c can improve download speed, download progress will not be displayed in the UI.</p>
+        <title>Použiť aria2</title>
+        <p>Ak je táto možnosť povolená, Parabolic bude na sťahovanie médií používať aria2c. Hoci používanie aria2c môže zvýšiť rýchlosť sťahovania, priebeh sťahovania sa v používateľskom rozhraní nezobrazí.</p>
         <note style="advanced">
-            <p>Default: Off</p>
+            <p>Predvolené: Vypnuté</p>
         </note>
     </item>
     <item>
-        <title>Maximum Connections Per Server</title>
-        <p>
-            This option only applies when using aria2 is enabled. This option is the same as the <code>-x</code> flag passed to aria2c.
-        </p>
-        <p>The maximum number of connection that can be used per server. Must be an integer value between 1 and 32.</p>
+        <title>Maximálny počet pripojení na server</title>
+        <p>Táto možnosť platí len vtedy, keď je povolené používanie aria2. Táto možnosť je rovnaká ako príznak <code>x</code> odovzdaný aria2c.</p>
+        <p>Maximálny počet pripojení, ktoré možno použiť na jeden server. Musí to byť celočíselná hodnota od 1 do 32.</p>
         <note style="advanced">
-            <p>Default: 16</p>
+            <p>Predvolené: 16</p>
         </note>
     </item>
     <item>
-        <title>Minimum Split Size</title>
-        <p>
-            This option only applies when using aria2 is enabled. This option is the same as the <code>-k</code> flag passed to aria2c.
-        </p>
-        <p>The minimum size, in MiB, of which to split a file. Must be an integer value between 1 and 1024.</p>
+        <title>Minimálna veľkosť rozdelenia</title>
+        <p>Táto možnosť platí len vtedy, keď je povolené používanie aria2. Táto možnosť je rovnaká ako príznak <code>k</code> odovzdaný aria2c.</p>
+        <p>Minimálna veľkosť v MiB, na ktorú sa má súbor rozdeliť. Musí to byť celé číslo v rozsahu od 1 do 1024.</p>
         <note style="advanced">
-            <p>Default: 20</p>
+            <p>Predvolené: 20</p>
         </note>
     </item>
     <item>
-        <title>Speed Limit</title>
-        <p>A limit, in Ki/s, that is applied to downloads only if they have the advanced option <code>Speed Limit</code> enabled. Must be an integer value between 512 and 10240.</p>
+        <title>Obmedzenie rýchlosti</title>
+        <p>Obmedzenie v Ki/s, ktoré sa použije na sťahovanie iba vtedy, ak je povolená rozšírená možnosť <code>Omedzenie rýchlosti</code>. Musí to byť celočíselná hodnota medzi 512 a 10240.</p>
 		<note style="advanced">
-			<p>Default: 1024</p>
+			<p>Predvolené: 1024</p>
 		</note>
     </item>
     <item>
-        <title>Proxy URL</title>
-        <p>The url of the proxy server to use.</p>
+        <title>URL adresa proxy servera</title>
+        <p>URL adresa proxy servera, ktorý sa má použiť.</p>
     </item>
     <item>
-        <title>Cookies from Browser</title>
-        <p>A browser in which to read cookies from and pass to yt-dlp's download engine.</p>
+        <title>Súbory cookie z prehliadača</title>
+        <p>Prehliadač, z ktorého sa načítajú súbory cookie a odovzdávajú sa do nástroja na sťahovanie yt-dlp.</p>
 		<note style="advanced">
-			<p>Default: None</p>
+			<p>Predvolené: Žiadne</p>
 		</note>
     </item>
     <item>
-        <title>Use SponsorBlock for YouTube</title>
-        <p>If enabled, Parabolic will apply the SponsorBlock extension to YouTube downloads.</p>
+        <title>Použiť SponsorBlock pre YouTube</title>
+        <p>Ak je táto funkcia povolená, aplikácia Parabolic použije rozšírenie SponsorBlock na sťahovanie z YouTube.</p>
         <note>
-            <p>SponsorBlock only works on YouTube videos. However, leaving this setting on will not affect downloads from other sites (i.e. not cause them to fail).</p>
+            <p>SponsorBlock funguje len na videá v službe YouTube. Ponechanie tohto nastavenia však neovplyvní sťahovanie z iných stránok (t. j. nespôsobí ich zlyhanie).</p>
         </note>
         <note style="advanced">
-            <p>Default: Off</p>
+            <p>Predvolené: Vypnuté</p>
         </note>
     </item>
 </terms>

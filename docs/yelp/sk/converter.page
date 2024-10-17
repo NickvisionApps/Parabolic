@@ -2,7 +2,7 @@
 <page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" id="converter" its:version="2.0" xml:lang="sk">
 <info>
 	<link type="guide" xref="index"/>
-	<title type="link">Converter ⚒️</title>
+	<title type="link">Konvertor ⚒️</title>
 	<credit type="author copyright">
 		<name>Nicholas Logozzo</name>
 		<years its:translate="no">2023-2024</years>
@@ -12,47 +12,53 @@
 		<years its:translate="no">2023-2024</years>
 	</credit>
 	<license href="http://creativecommons.org/licenses/by/4.0/" its:translate="no"><p>Creative Commons Attribution 4.0 International License</p></license>
-</info>
 
-<title>Converter</title>
-<p>This page explains all options for configuring the Converter in Preferences in <app>Parabolic</app>.</p>
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Jozef Gaal</mal:name>
+      <mal:email>preklady@mayday.sk</mal:email>
+      <mal:years>2024</mal:years>
+    </mal:credit>
+  </info>
+
+<title>Konvertor</title>
+<p>Na tejto stránke sú vysvetlené všetky možnosti nastavenia konvertora v Nastaveniach v aplikácii <app>Parabolic</app>.</p>
 
 <terms>
 	<item>
-		<title>Embed Metadata</title>
-		<p>If enabled, Parabolic will tag a media with its relevant information (title, genre, etc...) and thumbnail if available.</p>
-        <p>Parabolic will NOT embed the Comment, Description, Synopsis, and Purl fields.</p>
+		<title>Vložiť metaúdaje</title>
+		<p>Ak je táto funkcia zapnutá, Parabolic označí médium príslušnými informáciami (názov, žáner atď...) a miniatúrou, ak je k dispozícii.</p>
+        <p>Parabolic NEVKLADÁ polia Komentár, Popis, Súhrn a Purl.</p>
 		<note style="advanced">
-			<p>Default: On</p>
+			<p>Predvolené: Zapnuté</p>
 		</note>
     </item>
     <item>
-        <title>Embed Subtitles</title>
-        <p>If disabled or if embedding fails, downloaded subtitles will be saved to a separate file.</p>
+        <title>Vložiť titulky</title>
+        <p>Ak je vypnuté alebo ak sa vloženie nepodarí, stiahnuté titulky sa uložia do samostatného súboru.</p>
         <note style="advanced">
-            <p>Default: On</p>
+            <p>Predvolené: Zapnuté</p>
         </note>
     </item>
     <item>
-		<title>Embed Chapters</title>
-		<p>If enabled, Parabolic will tag a media with chapter information if available.</p>
+		<title>Vložiť kapitoly</title>
+		<p>Ak je táto funkcia zapnutá, Parabolic označí médium informáciami o kapitole, ak sú k dispozícii.</p>
 		<note style="advanced">
-			<p>Default: Off</p>
+			<p>Predvolené: Vypnuté</p>
 		</note>
 	</item>
     <item>
-		<title>Crop Audio Thumbnails</title>
-		<p>If enabled, Parabolic will crop thumbnails for audio files to be a square resolution.</p>
+		<title>Orezať obrázkové náhľady zvuku</title>
+		<p>Ak je táto funkcia zapnutá, aplikácia Parabolic oreže náhľady obrázkov zvukových súborov tak, aby mali štvorcové rozlíšenie.</p>
 		<note style="advanced">
-			<p>Default: Off</p>
+			<p>Predvolené: Vypnuté</p>
 		</note>
     </item>
     <item>
-		<title>Remove Source Data</title>
-		<p>If enabled, Parabolic will clear metadata fields containing the URL and other identifying information of the media source.</p>
-        <p>Fields that are cleared: <code>comment</code>, <code>description</code>, <code>synopsis</code>, <code>purl</code> and <code>handler_name</code> in each stream.</p>
+		<title>Odstrániť zdrojové údaje</title>
+		<p>Ak je táto funkcia povolená, Parabolic vymaže polia metadát obsahujúce adresu URL a ďalšie identifikačné informácie o zdroji média.</p>
+        <p>Polia, ktoré sú vyčistené:: <code>komentár</code>, <code>popis</code>, <code>súhrn</code>, <code>purl</code> a <code>handler_name</code> v každom dátovom toku.</p>
 		<note style="advanced">
-			<p>Default: Off</p>
+			<p>Predvolené: Vypnuté</p>
 		</note>
     </item>
 </terms>
