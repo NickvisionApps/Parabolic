@@ -49,6 +49,7 @@ namespace Nickvision::TubeConverter::GNOME::Views
         GtkHelpers::setComboRowModel(m_builder.get<AdwComboRow>("credentialRow"), credentialNames);
         //Signals
         g_signal_connect(m_builder.get<GObject>("urlRow"), "changed", G_CALLBACK(+[](GtkEditable*, gpointer data){ reinterpret_cast<AddDownloadDialog*>(data)->onTxtUrlChanged(); }), this);
+        g_signal_connect(m_builder.get<GObject>("batchFileButton"), "clicked", G_CALLBACK(+[](GtkButton*, gpointer data){ reinterpret_cast<AddDownloadDialog*>(data)->useBatchFile(); }), this);
         g_signal_connect(m_builder.get<GObject>("credentialRow"), "notify::selected-item", G_CALLBACK(+[](GObject*, GParamSpec* pspec, gpointer data){ reinterpret_cast<AddDownloadDialog*>(data)->onCmbCredentialChanged(); }), this);
         g_signal_connect(m_builder.get<GObject>("validateUrlButton"), "clicked", G_CALLBACK(+[](GtkButton*, gpointer data){ reinterpret_cast<AddDownloadDialog*>(data)->validateUrl(); }), this);
         g_signal_connect(m_builder.get<GObject>("backButton"), "clicked", G_CALLBACK(+[](GtkButton*, gpointer data){ reinterpret_cast<AddDownloadDialog*>(data)->back(); }), this);
@@ -76,6 +77,28 @@ namespace Nickvision::TubeConverter::GNOME::Views
     {
         std::string url{ gtk_editable_get_text(m_builder.get<GtkEditable>("urlRow")) };
         gtk_widget_set_sensitive(m_builder.get<GtkWidget>("validateUrlButton"), StringHelpers::isValidUrl(url));
+    }
+
+    void AddDownloadDialog::useBatchFile()
+    {
+        GtkFileDialog* fileDialog{ gtk_file_dialog_new() };
+        gtk_file_dialog_set_title(fileDialog, _("Select Batch File"));
+        GtkFileFilter* filter{ gtk_file_filter_new() };
+        gtk_file_filter_set_name(filter, _("TXT Files (*.txt)"));
+        gtk_file_filter_add_pattern(filter, "*.txt");
+        gtk_file_filter_add_pattern(filter, "*.TXT");
+        GListStore* filters{ g_list_store_new(gtk_file_filter_get_type()) };
+        g_list_store_append(filters, G_OBJECT(filter));
+        gtk_file_dialog_set_filters(fileDialog, G_LIST_MODEL(filters));
+        gtk_file_dialog_open(fileDialog, m_parent, nullptr, GAsyncReadyCallback(+[](GObject* self, GAsyncResult* res, gpointer data)
+        {
+            GFile* file{ gtk_file_dialog_open_finish(GTK_FILE_DIALOG(self), res, nullptr) };
+            if(file)
+            {
+                std::filesystem::path path{ g_file_get_path(file) };
+                //TODO
+            }
+        }), &m_builder);
     }
 
     void AddDownloadDialog::onCmbCredentialChanged()

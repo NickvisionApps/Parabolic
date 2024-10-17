@@ -51,6 +51,15 @@ Adw.Dialog root {
             Adw.EntryRow urlRow {
               title: _("Media URL");
               activates-default: true;
+
+              [suffix]
+              Gtk.Button batchFileButton {
+                valign: center;
+                icon-name: "document-open-symbolic";
+                tooltip-text: _("Use Batch File");
+
+                styles [ "flat" ]
+              }
             }
 
             Adw.ExpanderRow authenticateRow {
