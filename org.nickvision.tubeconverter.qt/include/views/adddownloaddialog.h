@@ -36,6 +36,10 @@ namespace Nickvision::TubeConverter::QT::Views
          */
         void onTxtUrlChanged(const QString& text);
         /**
+         * @brief Prompts the user to select a batch file to use instead of a url.
+         */
+        void useBatchFile();
+        /**
          * @brief Handles when the cmbAuthenticate's index has changed.
          * @param index The new index
          */
