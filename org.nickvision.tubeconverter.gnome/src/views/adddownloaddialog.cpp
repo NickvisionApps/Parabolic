@@ -49,6 +49,7 @@ namespace Nickvision::TubeConverter::GNOME::Views
         GtkHelpers::setComboRowModel(m_builder.get<AdwComboRow>("credentialRow"), credentialNames);
         //Signals
         g_signal_connect(m_builder.get<GObject>("urlRow"), "changed", G_CALLBACK(+[](GtkEditable*, gpointer data){ reinterpret_cast<AddDownloadDialog*>(data)->onTxtUrlChanged(); }), this);
+        g_signal_connect(m_builder.get<GObject>("batchFileButton"), "clicked", G_CALLBACK(+[](GtkButton*, gpointer data){ reinterpret_cast<AddDownloadDialog*>(data)->useBatchFile(); }), this);
         g_signal_connect(m_builder.get<GObject>("credentialRow"), "notify::selected-item", G_CALLBACK(+[](GObject*, GParamSpec* pspec, gpointer data){ reinterpret_cast<AddDownloadDialog*>(data)->onCmbCredentialChanged(); }), this);
         g_signal_connect(m_builder.get<GObject>("validateUrlButton"), "clicked", G_CALLBACK(+[](GtkButton*, gpointer data){ reinterpret_cast<AddDownloadDialog*>(data)->validateUrl(); }), this);
         g_signal_connect(m_builder.get<GObject>("backButton"), "clicked", G_CALLBACK(+[](GtkButton*, gpointer data){ reinterpret_cast<AddDownloadDialog*>(data)->back(); }), this);
@@ -76,6 +77,42 @@ namespace Nickvision::TubeConverter::GNOME::Views
     {
         std::string url{ gtk_editable_get_text(m_builder.get<GtkEditable>("urlRow")) };
         gtk_widget_set_sensitive(m_builder.get<GtkWidget>("validateUrlButton"), StringHelpers::isValidUrl(url));
+    }
+
+    void AddDownloadDialog::useBatchFile()
+    {
+        GtkFileDialog* fileDialog{ gtk_file_dialog_new() };
+        gtk_file_dialog_set_title(fileDialog, _("Select Batch File"));
+        GtkFileFilter* filter{ gtk_file_filter_new() };
+        gtk_file_filter_set_name(filter, _("TXT Files (*.txt)"));
+        gtk_file_filter_add_pattern(filter, "*.txt");
+        gtk_file_filter_add_pattern(filter, "*.TXT");
+        GListStore* filters{ g_list_store_new(gtk_file_filter_get_type()) };
+        g_list_store_append(filters, G_OBJECT(filter));
+        gtk_file_dialog_set_filters(fileDialog, G_LIST_MODEL(filters));
+        gtk_file_dialog_open(fileDialog, m_parent, nullptr, GAsyncReadyCallback(+[](GObject* self, GAsyncResult* res, gpointer data)
+        {
+            GFile* file{ gtk_file_dialog_open_finish(GTK_FILE_DIALOG(self), res, nullptr) };
+            if(file)
+            {
+                AddDownloadDialog* dialog{ reinterpret_cast<AddDownloadDialog*>(data) };
+                adw_dialog_set_can_close(dialog->m_dialog, false);
+                adw_view_stack_set_visible_child_name(dialog->m_builder.get<AdwViewStack>("viewStack"), "spinner");
+                std::optional<Credential> credential{ std::nullopt };
+                if(adw_expander_row_get_enable_expansion(dialog->m_builder.get<AdwExpanderRow>("authenticateRow")) && adw_combo_row_get_selected(dialog->m_builder.get<AdwComboRow>("credentialRow")) == 0)
+                {
+                    credential = Credential{ "", "", gtk_editable_get_text(dialog->m_builder.get<GtkEditable>("usernameRow")), gtk_editable_get_text(dialog->m_builder.get<GtkEditable>("passwordRow")) };
+                }
+                if(adw_combo_row_get_selected(dialog->m_builder.get<AdwComboRow>("credentialRow")) == 0)
+                {
+                    dialog->m_controller->validateBatchFile(g_file_get_path(file), credential);
+                }
+                else
+                {
+                    dialog->m_controller->validateBatchFile(g_file_get_path(file), adw_combo_row_get_selected(dialog->m_builder.get<AdwComboRow>("credentialRow")) - 1);
+                }
+            }
+        }), this);
     }
 
     void AddDownloadDialog::onCmbCredentialChanged()
@@ -171,6 +208,7 @@ namespace Nickvision::TubeConverter::GNOME::Views
         {
             adw_view_stack_set_visible_child_name(m_builder.get<AdwViewStack>("viewStack"), "download-playlist");
             GtkHelpers::setComboRowModel(m_builder.get<AdwComboRow>("fileTypePlaylistRow"), m_controller->getFileTypeStrings());
+            adw_combo_row_set_selected(m_builder.get<AdwComboRow>("fileTypePlaylistRow"), static_cast<unsigned int>(m_controller->getPreviousDownloadOptions().getFileType()));
             adw_switch_row_set_active(m_builder.get<AdwSwitchRow>("splitChaptersPlaylistRow"), m_controller->getPreviousDownloadOptions().getSplitChapters());
             adw_switch_row_set_active(m_builder.get<AdwSwitchRow>("limitSpeedPlaylistRow"), m_controller->getPreviousDownloadOptions().getLimitSpeed());
             adw_action_row_set_subtitle(m_builder.get<AdwActionRow>("saveFolderPlaylistRow"), m_controller->getPreviousDownloadOptions().getSaveFolder().string().c_str());
