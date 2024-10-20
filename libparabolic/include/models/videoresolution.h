@@ -2,7 +2,6 @@
 #define VIDEORESOLUTION_H
 
 #include <optional>
-#include <ostream>
 #include <string>
 
 namespace Nickvision::TubeConverter::Shared::Models

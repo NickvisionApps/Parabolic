@@ -128,8 +128,20 @@ namespace Nickvision::TubeConverter::QT::Views
         QString file{ QFileDialog::getOpenFileName(this, _("Select Batch File"), {}, _("TXT Files (*.txt)")) };
         if(!file.isEmpty())
         {
-            std::filesystem::path path{ file.toStdString() };
-            //TODO
+            m_ui->viewStack->setCurrentIndex(1);
+            std::optional<Credential> credential{ std::nullopt };
+            if(m_ui->cmbAuthenticate->currentIndex() == 1)
+            {
+                credential = Credential{ "", "", m_ui->txtUsername->text().toStdString(), m_ui->txtPassword->text().toStdString() };
+            }
+            if(m_ui->cmbAuthenticate->currentIndex() < 2)
+            {
+                m_controller->validateBatchFile(file.toStdString(), credential);
+            }
+            else
+            {
+                m_controller->validateBatchFile(file.toStdString(), m_ui->cmbAuthenticate->currentIndex() - 2);
+            }
         }
     }
 

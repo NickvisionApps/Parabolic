@@ -260,6 +260,29 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         }
     }
 
+    void AddDownloadDialogController::validateBatchFile(const std::filesystem::path& batchFile, const std::optional<Credential>& credential)
+    {
+        std::thread worker{ [this, batchFile, credential]()
+        {
+            m_credential = credential;
+            m_urlInfo = m_downloadManager.fetchUrlInfoFromBatchFile(batchFile, m_credential);
+            m_urlValidated.invoke({ isUrlValid() });
+        } };
+        worker.detach();
+    }
+
+    void AddDownloadDialogController::validateBatchFile(const std::filesystem::path& batchFile, size_t credentialNameIndex)
+    {
+        if(credentialNameIndex < m_keyring.getCredentials().size())
+        {
+            validateBatchFile(batchFile, m_keyring.getCredentials()[credentialNameIndex]);
+        }
+        else
+        {
+            validateBatchFile(batchFile, std::nullopt);
+        }
+    }
+
     void AddDownloadDialogController::addSingleDownload(const std::filesystem::path& saveFolder, const std::string& filename, size_t fileTypeIndex, size_t qualityIndex, size_t audioLanguageIndex, const std::vector<std::string>& subtitleLanguages, bool splitChapters, bool limitSpeed, const std::string& startTime, const std::string& endTime)
     {
         const Media& media{ m_urlInfo->get(0) };

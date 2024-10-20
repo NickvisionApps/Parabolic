@@ -95,10 +95,24 @@ namespace Nickvision::TubeConverter::GNOME::Views
             GFile* file{ gtk_file_dialog_open_finish(GTK_FILE_DIALOG(self), res, nullptr) };
             if(file)
             {
-                std::filesystem::path path{ g_file_get_path(file) };
-                //TODO
+                AddDownloadDialog* dialog{ reinterpret_cast<AddDownloadDialog*>(data) };
+                adw_dialog_set_can_close(dialog->m_dialog, false);
+                adw_view_stack_set_visible_child_name(dialog->m_builder.get<AdwViewStack>("viewStack"), "spinner");
+                std::optional<Credential> credential{ std::nullopt };
+                if(adw_expander_row_get_enable_expansion(dialog->m_builder.get<AdwExpanderRow>("authenticateRow")) && adw_combo_row_get_selected(dialog->m_builder.get<AdwComboRow>("credentialRow")) == 0)
+                {
+                    credential = Credential{ "", "", gtk_editable_get_text(dialog->m_builder.get<GtkEditable>("usernameRow")), gtk_editable_get_text(dialog->m_builder.get<GtkEditable>("passwordRow")) };
+                }
+                if(adw_combo_row_get_selected(dialog->m_builder.get<AdwComboRow>("credentialRow")) == 0)
+                {
+                    dialog->m_controller->validateBatchFile(g_file_get_path(file), credential);
+                }
+                else
+                {
+                    dialog->m_controller->validateBatchFile(g_file_get_path(file), adw_combo_row_get_selected(dialog->m_builder.get<AdwComboRow>("credentialRow")) - 1);
+                }
             }
-        }), &m_builder);
+        }), this);
     }
 
     void AddDownloadDialog::onCmbCredentialChanged()

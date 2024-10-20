@@ -145,6 +145,13 @@ namespace Nickvision::TubeConverter::Shared::Models
          */
         std::optional<UrlInfo> fetchUrlInfo(const std::string& url, const std::optional<Keyring::Credential>& credential) const;
         /**
+         * @brief Fetches information about a set of URLs from a batch file.
+         * @param batchFile The batch file with listed URLs
+         * @param credential An optional credential to use for authentication
+         * @return The UrlInfo if successful, else std::nullopt
+         */
+        std::optional<UrlInfo> fetchUrlInfoFromBatchFile(const std::filesystem::path& batchFile, const std::optional<Keyring::Credential>& credential) const;
+        /**
          * @brief Adds a download to the queue.
          * @brief This will invoke the downloadAdded event if added successfully.
          * @param options The options for the download
