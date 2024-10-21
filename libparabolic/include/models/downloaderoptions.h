@@ -3,6 +3,7 @@
 
 #include <filesystem>
 #include <string>
+#include <boost/json.hpp>
 #include "browser.h"
 #include "videocodec.h"
 
@@ -18,6 +19,11 @@ namespace Nickvision::TubeConverter::Shared::Models
          * @brief Construct a DownloaderOptions.
          */
         DownloaderOptions();
+        /**
+         * @brief Construct a DownloaderOptions.
+         * @param json The JSON object to construct the DownloaderOptions from
+         */
+        DownloaderOptions(boost::json::object json);
         /**
          * @brief Gets whether or not to overwrite existing files.
          * @return True to overwrite existing files, else false
@@ -223,6 +229,11 @@ namespace Nickvision::TubeConverter::Shared::Models
          * @param threads The new number of threads to use for postprocessing operations
          */
         void setPostprocessingThreads(int threads);
+        /**
+         * @brief Converts the DownloaderOptions to a JSON object.
+         * @return The JSON object
+         */
+        boost::json::object toJson() const;
 
     private:
         bool m_overwriteExistingFiles;

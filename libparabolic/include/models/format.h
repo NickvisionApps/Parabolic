@@ -18,9 +18,10 @@ namespace Nickvision::TubeConverter::Shared::Models
     public:
         /**
          * @brief Constructs a Format.
-         * @param format The yt-dlp format json object
+         * @param json The JSON object to construct the Format from
+         * @param isYtdlpJson Whether or not the json object is in yt-dlp json format
          */
-        Format(boost::json::object format);
+        Format(boost::json::object json, bool isYtdlpJson = true);
         /**
          * @brief Gets the id of the format.
          * @return The id of the format
@@ -66,6 +67,12 @@ namespace Nickvision::TubeConverter::Shared::Models
          * @return The audio bitrate of the format
          */
         const std::optional<double>& getAudioBitrate() const;
+        /**
+         * @brief Converts the Format to a JSON object.
+         * @brief The json object will not be in yt-dlp json format.
+         * @return The JSON object
+         */
+        boost::json::object toJson() const;
 
     private:
         std::string m_id;

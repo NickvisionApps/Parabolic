@@ -10,6 +10,7 @@
 #include <libnick/system/environment.h>
 #include "models/configuration.h"
 #include "models/downloadhistory.h"
+#include "models/downloadrecoveryqueue.h"
 #include "models/previousdownloadoptions.h"
 #ifdef _WIN32
 #include <windows.h>
@@ -36,7 +37,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         m_dataFileManager{ m_appInfo.getName() },
         m_logger{ UserDirectories::get(ApplicationUserDirectory::LocalData, m_appInfo.getName()) / "log.txt", Logging::LogLevel::Info, false },
         m_keyring{ m_appInfo.getId() },
-        m_downloadManager{ m_dataFileManager.get<Configuration>("config").getDownloaderOptions(), m_dataFileManager.get<DownloadHistory>("history"), m_logger }
+        m_downloadManager{ m_dataFileManager.get<Configuration>("config").getDownloaderOptions(), m_dataFileManager.get<DownloadHistory>("history"), m_dataFileManager.get<DownloadRecoveryQueue>("recovery"), m_logger }
     {
         m_appInfo.setVersion({ "2024.10.3-next" });
         m_appInfo.setShortName(_("Parabolic"));

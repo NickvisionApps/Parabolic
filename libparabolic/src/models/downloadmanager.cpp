@@ -15,9 +15,10 @@ namespace Nickvision::TubeConverter::Shared::Models
 {
     static std::string s_empty{};
 
-    DownloadManager::DownloadManager(const DownloaderOptions& options, DownloadHistory& history, Logger& logger)
+    DownloadManager::DownloadManager(const DownloaderOptions& options, DownloadHistory& history, DownloadRecoveryQueue& recoveryQueue, Logger& logger)
         : m_options{ options },
         m_history{ history },
+        m_recoveryQueue{ recoveryQueue },
         m_logger{ logger }
     {
         m_history.saved() += [this](const EventArgs&){ m_historyChanged.invoke(m_history.getHistory()); };

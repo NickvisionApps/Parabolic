@@ -21,6 +21,13 @@ namespace Nickvision::TubeConverter::Shared::Models
 
     }
 
+    VideoResolution::VideoResolution(boost::json::object json)
+        : m_width{ json["Width"].is_int64() ? static_cast<int>(json["Width"].as_int64()) : std::numeric_limits<int>::max() },
+        m_height{ json["Height"].is_int64() ? static_cast<int>(json["Height"].as_int64()) : std::numeric_limits<int>::max() }
+    {
+
+    }
+
     std::optional<VideoResolution> VideoResolution::parse(const std::string& value)
     {
         if(value == "Best" || value == _("Best"))
@@ -68,6 +75,14 @@ namespace Nickvision::TubeConverter::Shared::Models
             return _("Best");
         }
         return std::to_string(m_width) + "x" + std::to_string(m_height);
+    }
+
+    boost::json::object VideoResolution::toJson() const
+    {
+        boost::json::object json;
+        json["Width"] = m_width;
+        json["Height"] = m_height;
+        return json;
     }
 
     bool VideoResolution::operator==(const VideoResolution& other) const
