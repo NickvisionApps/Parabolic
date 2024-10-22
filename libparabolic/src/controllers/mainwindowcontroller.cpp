@@ -240,8 +240,8 @@ namespace Nickvision::TubeConverter::Shared::Controllers
             m_logger.log(Logging::LogLevel::Error, "Unable to connect to Linux taskbar.");
         }
 #endif
-        //Load history
-        m_downloadManager.loadHistory();
+        //Load DownloadManager
+        m_downloadManager.startup();
         //Check if disclaimer should be shown
         if(m_dataFileManager.get<Configuration>("config").getShowDisclaimerOnStartup())
         {
