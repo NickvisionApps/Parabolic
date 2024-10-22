@@ -165,19 +165,20 @@ namespace Nickvision::TubeConverter::Shared::Models
         return DownloadStatus::Queued;
     }
 
-    void DownloadManager::startup()
+    size_t DownloadManager::startup()
     {
         //Load Historic Downloads
-        m_logger.log(LogLevel::Info, "Loaded " + std::to_string(m_history.getHistory().size()) + " historic downloads.");
+        m_logger.log(LogLevel::Info, "Loaded " + std::to_string(m_history.getHistory().size()) + " historic download(s).");
         m_historyChanged.invoke(m_history.getHistory());
         //Recover Crashed Downloads
         std::unordered_map<int, DownloadOptions> recoverableDownloads{ m_recoveryQueue.getRecoverableDownloads() };
-        m_logger.log(LogLevel::Info, "Found " + std::to_string(recoverableDownloads.size()) + " recoverable downloads.");
+        m_logger.log(LogLevel::Info, "Found " + std::to_string(recoverableDownloads.size()) + " recoverable download(s).");
         m_recoveryQueue.clear();
         for(const std::pair<const int, DownloadOptions>& pair : recoverableDownloads)
         {
             addDownload(pair.second);
         }
+        return recoverableDownloads.size();
     }
 
     void DownloadManager::clearHistory()
@@ -192,7 +193,7 @@ namespace Nickvision::TubeConverter::Shared::Models
     {
         if(m_history.removeDownload(download))
         {
-            m_logger.log(LogLevel::Info, "Removed historic download: " + download.getTitle());
+            m_logger.log(LogLevel::Info, "Removed historic download (" + download.getTitle() + ").");
         }
     }
 
@@ -438,7 +439,7 @@ namespace Nickvision::TubeConverter::Shared::Models
             m_downloadAdded.invoke({ download->getId(), download->getPath(), download->getUrl(), download->getStatus() });
         }
         m_history.addDownload({ download->getUrl(), download->getPath().filename().stem().string(), download->getPath() });
-        m_logger.log(LogLevel::Info, "Added download (" + std::to_string(download->getId()) + ") " + download->getUrl());
+        m_logger.log(LogLevel::Info, "Added download (" + std::to_string(download->getId()) + " - " + download->getUrl() + ").");
     }
 
     void DownloadManager::onDownloadProgressChanged(const DownloadProgressChangedEventArgs& args)

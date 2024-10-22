@@ -3,7 +3,6 @@
 #include <sstream>
 #include <thread>
 #include <libnick/filesystem/userdirectories.h>
-#include <libnick/helpers/codehelpers.h>
 #include <libnick/helpers/stringhelpers.h>
 #include <libnick/localization/documentation.h>
 #include <libnick/localization/gettext.h>
@@ -241,7 +240,11 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         }
 #endif
         //Load DownloadManager
-        m_downloadManager.startup();
+        size_t recoveredDownloads{ m_downloadManager.startup() };
+        if(recoveredDownloads > 0)
+        {
+            m_notificationSent.invoke({ std::vformat(_n("Recovered {} download", "Recovered {} downloads", recoveredDownloads), std::make_format_args(recoveredDownloads)), NotificationSeverity::Informational });
+        }
         //Check if disclaimer should be shown
         if(m_dataFileManager.get<Configuration>("config").getShowDisclaimerOnStartup())
         {
