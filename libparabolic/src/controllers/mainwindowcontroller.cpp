@@ -3,13 +3,13 @@
 #include <sstream>
 #include <thread>
 #include <libnick/filesystem/userdirectories.h>
-#include <libnick/helpers/codehelpers.h>
 #include <libnick/helpers/stringhelpers.h>
 #include <libnick/localization/documentation.h>
 #include <libnick/localization/gettext.h>
 #include <libnick/system/environment.h>
 #include "models/configuration.h"
 #include "models/downloadhistory.h"
+#include "models/downloadrecoveryqueue.h"
 #include "models/previousdownloadoptions.h"
 #ifdef _WIN32
 #include <windows.h>
@@ -36,12 +36,12 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         m_dataFileManager{ m_appInfo.getName() },
         m_logger{ UserDirectories::get(ApplicationUserDirectory::LocalData, m_appInfo.getName()) / "log.txt", Logging::LogLevel::Info, false },
         m_keyring{ m_appInfo.getId() },
-        m_downloadManager{ m_dataFileManager.get<Configuration>("config").getDownloaderOptions(), m_dataFileManager.get<DownloadHistory>("history"), m_logger }
+        m_downloadManager{ m_dataFileManager.get<Configuration>("config").getDownloaderOptions(), m_dataFileManager.get<DownloadHistory>("history"), m_dataFileManager.get<DownloadRecoveryQueue>("recovery"), m_logger }
     {
         m_appInfo.setVersion({ "2024.10.3-next" });
         m_appInfo.setShortName(_("Parabolic"));
         m_appInfo.setDescription(_("Download web video and audio"));
-        m_appInfo.setChangelog("- Added support for selecting a batch file with multiple URLs to validate instead of validating a single URL at a time\n- Fixed an issue where UTF-8 characters were not displayed correctly on Windows\n- Fixed an issue where playlist names were not normalized on Windows\n- Fixed an issue where the row animations were choppy using aria2c on Linux\n- Fixed an issue where the app would crash when stopping all downloads on Linux");
+        m_appInfo.setChangelog("- Added support for selecting a batch file with multiple URLs to validate instead of validating a single URL at a time\n- Added a recovery mode where downloads that were running/queued will be restored when the application is restarted after a crash\n- Fixed an issue where UTF-8 characters were not displayed correctly on Windows\n- Fixed an issue where playlist names were not normalized on Windows\n- Fixed an issue where the row animations were choppy using aria2c on Linux\n- Fixed an issue where the app would crash when stopping all downloads on Linux");
         m_appInfo.setSourceRepo("https://github.com/NickvisionApps/Parabolic");
         m_appInfo.setIssueTracker("https://github.com/NickvisionApps/Parabolic/issues/new");
         m_appInfo.setSupportUrl("https://github.com/NickvisionApps/Parabolic/discussions");
@@ -239,8 +239,12 @@ namespace Nickvision::TubeConverter::Shared::Controllers
             m_logger.log(Logging::LogLevel::Error, "Unable to connect to Linux taskbar.");
         }
 #endif
-        //Load history
-        m_downloadManager.loadHistory();
+        //Load DownloadManager
+        size_t recoveredDownloads{ m_downloadManager.startup() };
+        if(recoveredDownloads > 0)
+        {
+            m_notificationSent.invoke({ std::vformat(_n("Recovered {} download", "Recovered {} downloads", recoveredDownloads), std::make_format_args(recoveredDownloads)), NotificationSeverity::Informational });
+        }
         //Check if disclaimer should be shown
         if(m_dataFileManager.get<Configuration>("config").getShowDisclaimerOnStartup())
         {

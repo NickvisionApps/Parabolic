@@ -4,6 +4,7 @@
 #include <chrono>
 #include <optional>
 #include <string>
+#include <boost/json.hpp>
 
 namespace Nickvision::TubeConverter::Shared::Models
 {
@@ -20,6 +21,11 @@ namespace Nickvision::TubeConverter::Shared::Models
          * @throw std::invalid_argument Thrown if the end time is before the start time
          */
         TimeFrame(const std::chrono::seconds& start, const std::chrono::seconds& end);
+        /**
+         * @brief Constructs a TimeFrame.
+         * @param json The JSON object to construct the TimeFrame from
+         */
+        TimeFrame(boost::json::object json);
         /**
          * @brief Parses a TimeFrame from start and end time strings.
          * @param start The start time string in the format "HH:MM:SS"
@@ -71,6 +77,11 @@ namespace Nickvision::TubeConverter::Shared::Models
          * @return The string representation of the end time
          */
         std::string endStr() const;
+        /**
+         * @brief Converts the TimeFrame to a JSON object.
+         * @return The JSON object representation of the TimeFrame
+         */
+        boost::json::object toJson() const;
         /**
          * @brief Compares two TimeFrames via ==.
          * @param other The other TimeFrame to compare

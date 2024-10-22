@@ -25,6 +25,49 @@ namespace Nickvision::TubeConverter::Shared::Models
 
     }
 
+    DownloadOptions::DownloadOptions(boost::json::object json)
+        : m_url{ json["Url"].is_string() ? json["Url"].as_string().c_str() : "" },
+        m_fileType{ json["FileType"].is_int64() ? static_cast<MediaFileType::MediaFileTypeValue>(json["FileType"].as_int64()) : MediaFileType::MP4 },
+        m_saveFolder{ json["SaveFolder"].is_string() ? json["SaveFolder"].as_string().c_str() : "" },
+        m_saveFilename{ json["SaveFilename"].is_string() ? json["SaveFilename"].as_string().c_str() : "" },
+        m_limitSpeed{ json["LimitSpeed"].is_bool() ? json["LimitSpeed"].as_bool() : false },
+        m_splitChapters{ json["SplitChapters"].is_bool() ? json["SplitChapters"].as_bool() : false }
+    {
+        if(json["Credential"].is_object())
+        {
+            boost::json::object credential = json["Credential"].as_object();
+            m_credential = Credential{ "", "", credential["Username"].is_string() ? credential["Username"].as_string().c_str() : "", credential["Password"].is_string() ? credential["Password"].as_string().c_str() : "" };
+        }
+        if(json["AvailableFormats"].is_array())
+        {
+            boost::json::array availableFormats = json["AvailableFormats"].as_array();
+            for(const boost::json::value& value : availableFormats)
+            {
+                m_availableFormats.push_back(Format(value.as_object(), false));
+            }
+        }
+        if(json["VideoFormat"].is_object())
+        {
+            m_videoFormat = Format(json["VideoFormat"].as_object(), false);
+        }
+        if(json["AudioFormat"].is_object())
+        {
+            m_audioFormat = Format(json["AudioFormat"].as_object(), false);
+        }
+        if(json["SubtitleLanguages"].is_array())
+        {
+            boost::json::array subtitleLanguages = json["SubtitleLanguages"].as_array();
+            for(const boost::json::value& value : subtitleLanguages)
+            {
+                m_subtitleLanguages.push_back(SubtitleLanguage(value.as_object()));
+            }
+        }
+        if(json["TimeFrame"].is_object())
+        {
+            m_timeFrame = TimeFrame(json["TimeFrame"].as_object());
+        }
+    }
+
     const std::string& DownloadOptions::getUrl() const
     {
         return m_url;
@@ -378,6 +421,49 @@ namespace Nickvision::TubeConverter::Shared::Models
         arguments.push_back("--postprocessor-args");
         arguments.push_back("-threads " + std::to_string(downloaderOptions.getPostprocessingThreads()));
         return arguments;
+    }
+
+    boost::json::object DownloadOptions::toJson() const
+    {
+        boost::json::object json;
+        json["Url"] = m_url;
+        if(m_credential)
+        {
+            boost::json::object credential;
+            credential["Username"] = m_credential->getUsername();
+            credential["Password"] = m_credential->getPassword();
+            json["Credential"] = credential;
+        }
+        json["FileType"] = static_cast<int>(m_fileType);
+        boost::json::array availableFormats;
+        for(const Format& format : m_availableFormats)
+        {
+            availableFormats.push_back(format.toJson());
+        }
+        json["AvailableFormats"] = availableFormats;
+        if(m_videoFormat)
+        {
+            json["VideoFormat"] = m_videoFormat->toJson();
+        }
+        if(m_audioFormat)
+        {
+            json["AudioFormat"] = m_audioFormat->toJson();
+        }
+        json["SaveFolder"] = m_saveFolder.string();
+        json["SaveFilename"] = m_saveFilename;
+        boost::json::array subtitleLanguages;
+        for(const SubtitleLanguage& language : m_subtitleLanguages)
+        {
+            subtitleLanguages.push_back(language.toJson());
+        }
+        json["SubtitleLanguages"] = subtitleLanguages;
+        json["LimitSpeed"] = m_limitSpeed;
+        json["SplitChapters"] = m_splitChapters;
+        if(m_timeFrame)
+        {
+            json["TimeFrame"] = m_timeFrame->toJson();
+        }
+        return json;
     }
 
     bool DownloadOptions::shouldDownloadResume() const

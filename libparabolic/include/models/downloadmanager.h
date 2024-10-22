@@ -14,6 +14,7 @@
 #include "download.h"
 #include "downloaderoptions.h"
 #include "downloadhistory.h"
+#include "downloadrecoveryqueue.h"
 #include "urlinfo.h"
 #include "events/downloadaddedeventargs.h"
 #include "events/downloadcompletedeventargs.h"
@@ -33,7 +34,7 @@ namespace Nickvision::TubeConverter::Shared::Models
          * @param history The DownloadHistory
          * @param logger The Logger
          */
-        DownloadManager(const DownloaderOptions& options, DownloadHistory& history, Logging::Logger& logger);
+        DownloadManager(const DownloaderOptions& options, DownloadHistory& history, DownloadRecoveryQueue& recoveryQueue, Logging::Logger& logger);
         /**
          * @brief Destructs a DownloadManager.
          */
@@ -124,8 +125,10 @@ namespace Nickvision::TubeConverter::Shared::Models
         /**
          * @brief Loads the download history.
          * @brief This method invokes the historyChanged event.
+         * @brief This method will recover previous downloads that were interrupted by a crash.
+         * @brief Returns the number of downloads recovered.
          */
-        void loadHistory();
+        size_t startup();
         /**
          * @brief Clears the download history.
          * @brief This method invokes the historyChanged event.
@@ -209,6 +212,7 @@ namespace Nickvision::TubeConverter::Shared::Models
         mutable std::mutex m_mutex;
         DownloaderOptions m_options;
         DownloadHistory& m_history;
+        DownloadRecoveryQueue& m_recoveryQueue;
         Logging::Logger& m_logger;
         std::unordered_map<int, std::shared_ptr<Download>> m_downloading;
         std::unordered_map<int, std::shared_ptr<Download>> m_queued;

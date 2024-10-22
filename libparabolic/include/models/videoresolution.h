@@ -3,6 +3,7 @@
 
 #include <optional>
 #include <string>
+#include <boost/json.hpp>
 
 namespace Nickvision::TubeConverter::Shared::Models
 {
@@ -23,6 +24,11 @@ namespace Nickvision::TubeConverter::Shared::Models
          * @param height The height of the resolution
          */
         VideoResolution(int width, int height);
+        /**
+         * @brief Constructs a VideoResolution.
+         * @param json The JSON object to construct the VideoResolution from
+         */
+        VideoResolution(boost::json::object json);
         /**
          * @brief Parses a VideoResolution from a string.
          * @param value The string to parse (Format: "WidthxHeight")
@@ -54,6 +60,11 @@ namespace Nickvision::TubeConverter::Shared::Models
          * @return The string representation of the resolution
          */
         std::string str() const;
+        /**
+         * @brief Converts the VideoResolution to a JSON object.
+         * @return The JSON object
+         */
+        boost::json::object toJson() const;
         /**
          * @brief Compares two VideoResolutions via ==.
          * @param other The other VideoResolution to compare

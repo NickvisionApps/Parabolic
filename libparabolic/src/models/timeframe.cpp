@@ -21,13 +21,20 @@ namespace Nickvision::TubeConverter::Shared::Models
     }
 
     TimeFrame::TimeFrame(const std::chrono::seconds& start, const std::chrono::seconds& end)
-        : m_start(start), 
-        m_end(end)
+        : m_start{ start }, 
+        m_end{ end }
     {
         if(m_end < m_start)
         {
             throw std::invalid_argument("The end time must be after the start time");
         }
+    }
+
+    TimeFrame::TimeFrame(boost::json::object json)
+        : m_start{ json["Start"].is_int64() ? std::chrono::seconds(json["Start"].as_int64()) : std::chrono::seconds(0) },
+        m_end{ json["End"].is_int64() ? std::chrono::seconds(json["End"].as_int64()) : std::chrono::seconds(0) }
+    {
+
     }
 
     std::optional<TimeFrame> TimeFrame::parse(const std::string& start, const std::string& end, const std::chrono::seconds& duration)
@@ -98,6 +105,14 @@ namespace Nickvision::TubeConverter::Shared::Models
     std::string TimeFrame::endStr() const
     {
         return secondsStr(m_end);
+    }
+
+    boost::json::object TimeFrame::toJson() const
+    {
+        boost::json::object json;
+        json["Start"] = m_start.count();
+        json["End"] = m_end.count();
+        return json;
     }
 
     bool TimeFrame::operator==(const TimeFrame& other) const

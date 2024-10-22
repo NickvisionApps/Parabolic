@@ -15,9 +15,10 @@ namespace Nickvision::TubeConverter::Shared::Models
 {
     static std::string s_empty{};
 
-    DownloadManager::DownloadManager(const DownloaderOptions& options, DownloadHistory& history, Logger& logger)
+    DownloadManager::DownloadManager(const DownloaderOptions& options, DownloadHistory& history, DownloadRecoveryQueue& recoveryQueue, Logger& logger)
         : m_options{ options },
         m_history{ history },
+        m_recoveryQueue{ recoveryQueue },
         m_logger{ logger }
     {
         m_history.saved() += [this](const EventArgs&){ m_historyChanged.invoke(m_history.getHistory()); };
@@ -164,10 +165,25 @@ namespace Nickvision::TubeConverter::Shared::Models
         return DownloadStatus::Queued;
     }
 
-    void DownloadManager::loadHistory()
+    size_t DownloadManager::startup()
     {
-        m_logger.log(LogLevel::Info, "Loaded " + std::to_string(m_history.getHistory().size()) + " historic downloads.");
+        //Load Historic Downloads
+        m_logger.log(LogLevel::Info, "Loaded " + std::to_string(m_history.getHistory().size()) + " historic download(s).");
         m_historyChanged.invoke(m_history.getHistory());
+        //Recover Crashed Downloads
+        if(!m_options.getRecoverCrashedDownloads())
+        {
+            m_recoveryQueue.clear();
+            return 0;
+        }
+        std::unordered_map<int, DownloadOptions> recoverableDownloads{ m_recoveryQueue.getRecoverableDownloads() };
+        m_logger.log(LogLevel::Info, "Found " + std::to_string(recoverableDownloads.size()) + " recoverable download(s).");
+        m_recoveryQueue.clear();
+        for(const std::pair<const int, DownloadOptions>& pair : recoverableDownloads)
+        {
+            addDownload(pair.second);
+        }
+        return recoverableDownloads.size();
     }
 
     void DownloadManager::clearHistory()
@@ -182,7 +198,7 @@ namespace Nickvision::TubeConverter::Shared::Models
     {
         if(m_history.removeDownload(download))
         {
-            m_logger.log(LogLevel::Info, "Removed historic download: " + download.getTitle());
+            m_logger.log(LogLevel::Info, "Removed historic download (" + download.getTitle() + ").");
         }
     }
 
@@ -293,10 +309,12 @@ namespace Nickvision::TubeConverter::Shared::Models
     void DownloadManager::addDownload(const DownloadOptions& options)
     {
         std::unique_lock<std::mutex> lock{ m_mutex };
+        //Build a Download object
         std::shared_ptr<Download> download{ std::make_shared<Download>(options) };
         download->progressChanged() += [this](const DownloadProgressChangedEventArgs& args){ onDownloadProgressChanged(args); };
         download->completed() += [this](const DownloadCompletedEventArgs& args){ onDownloadCompleted(args); };
         lock.unlock();
+        //Add the download
         addDownload(download);
     }
 
@@ -317,11 +335,12 @@ namespace Nickvision::TubeConverter::Shared::Models
             m_queued.erase(id);
             stopped = true;
         }
-        lock.unlock();
         if(stopped)
         {
-            m_logger.log(LogLevel::Info, "Stopped download (" + std::to_string(id) + ").");
+            m_recoveryQueue.removeDownload(id);
+            lock.unlock();
             m_downloadStopped.invoke(id);
+            m_logger.log(LogLevel::Info, "Stopped download (" + std::to_string(id) + ").");
         }
     }
 
@@ -342,7 +361,7 @@ namespace Nickvision::TubeConverter::Shared::Models
     void DownloadManager::stopAllDownloads()
     {
         std::unique_lock<std::mutex> lock{ m_mutex };
-        //Get m_downloading and m_queued keys
+        //Get Downloading and Queued keys
         std::vector<int> keys;
         keys.reserve(m_downloading.size() + m_queued.size());
         for(const std::pair<const int, std::shared_ptr<Download>>& pair : m_downloading)
@@ -364,7 +383,7 @@ namespace Nickvision::TubeConverter::Shared::Models
     void DownloadManager::retryFailedDownloads()
     {
         std::unique_lock<std::mutex> lock{ m_mutex };
-        //Get m_completed keys
+        //Get Completed keys
         std::vector<int> keys;
         for(const std::pair<const int, std::shared_ptr<Download>>& pair : m_completed)
         {
@@ -410,6 +429,7 @@ namespace Nickvision::TubeConverter::Shared::Models
     void DownloadManager::addDownload(const std::shared_ptr<Download>& download)
     {
         std::unique_lock<std::mutex> lock{ m_mutex };
+        m_recoveryQueue.addDownload(download->getId(), download->getOptions());
         if(m_downloading.size() < static_cast<size_t>(m_options.getMaxNumberOfActiveDownloads()))
         {
             m_downloading.emplace(download->getId(), download);
@@ -423,8 +443,8 @@ namespace Nickvision::TubeConverter::Shared::Models
             lock.unlock();
             m_downloadAdded.invoke({ download->getId(), download->getPath(), download->getUrl(), download->getStatus() });
         }
-        m_logger.log(LogLevel::Info, "Added download (" + std::to_string(download->getId()) + ") " + download->getUrl());
         m_history.addDownload({ download->getUrl(), download->getPath().filename().stem().string(), download->getPath() });
+        m_logger.log(LogLevel::Info, "Added download (" + std::to_string(download->getId()) + " - " + download->getUrl() + ").");
     }
 
     void DownloadManager::onDownloadProgressChanged(const DownloadProgressChangedEventArgs& args)
@@ -440,8 +460,8 @@ namespace Nickvision::TubeConverter::Shared::Models
             return;
         }
         lock.unlock();
-        m_logger.log(LogLevel::Info, "Download progress changed (" + std::to_string(args.getId()) + ").");
         m_downloadProgressChanged.invoke(args);
+        m_logger.log(LogLevel::Info, "Download progress changed (" + std::to_string(args.getId()) + ").");
     }
 
     void DownloadManager::onDownloadCompleted(const DownloadCompletedEventArgs& args)
@@ -456,12 +476,14 @@ namespace Nickvision::TubeConverter::Shared::Models
         {
             return;
         }
-        m_logger.log(LogLevel::Info, "Download completed (" + std::to_string(args.getId()) + ").");
         m_completed.emplace(download->getId(), download);
         m_downloading.erase(download->getId());
+        m_recoveryQueue.removeDownload(download->getId());
         lock.unlock();
         m_downloadCompleted.invoke(args);
+        m_logger.log(LogLevel::Info, "Download completed (" + std::to_string(args.getId()) + ").");
         lock.lock();
+        //Start Download from Queue if There is Space
         if(m_downloading.size() < static_cast<size_t>(m_options.getMaxNumberOfActiveDownloads()) && !m_queued.empty())
         {
             std::shared_ptr<Download> firstQueuedDownload{ (*m_queued.begin()).second };
@@ -470,6 +492,7 @@ namespace Nickvision::TubeConverter::Shared::Models
             lock.unlock();
             m_downloadStartedFromQueue.invoke(firstQueuedDownload->getId());
             firstQueuedDownload->start(m_options);
+            m_logger.log(LogLevel::Info, "Download started from queue (" + std::to_string(firstQueuedDownload->getId()) + ").");
         }
     }
 }
