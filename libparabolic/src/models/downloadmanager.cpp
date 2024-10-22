@@ -171,6 +171,11 @@ namespace Nickvision::TubeConverter::Shared::Models
         m_logger.log(LogLevel::Info, "Loaded " + std::to_string(m_history.getHistory().size()) + " historic download(s).");
         m_historyChanged.invoke(m_history.getHistory());
         //Recover Crashed Downloads
+        if(!m_options.getRecoverCrashedDownloads())
+        {
+            m_recoveryQueue.clear();
+            return 0;
+        }
         std::unordered_map<int, DownloadOptions> recoverableDownloads{ m_recoveryQueue.getRecoverableDownloads() };
         m_logger.log(LogLevel::Info, "Found " + std::to_string(recoverableDownloads.size()) + " recoverable download(s).");
         m_recoveryQueue.clear();
