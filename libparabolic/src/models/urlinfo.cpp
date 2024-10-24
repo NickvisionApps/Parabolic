@@ -32,7 +32,7 @@ namespace Nickvision::TubeConverter::Shared::Models
     UrlInfo::UrlInfo(const std::filesystem::path& batchFile, const std::vector<std::optional<UrlInfo>>& urlInfos)
         : m_url{ batchFile.string() },
         m_title{ batchFile.filename().stem().string() },
-        m_isPlaylist{ true }
+        m_isPlaylist{ urlInfos.size() > 1 ? true : urlInfos[0]->isPlaylist() }
     {
         for(const std::optional<UrlInfo>& urlInfo : urlInfos)
         {
