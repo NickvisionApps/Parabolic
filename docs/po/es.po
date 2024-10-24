@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2024-10-24 08:50-0400\n"
+"POT-Creation-Date: 2024-10-24 08:55-0400\n"
 "PO-Revision-Date: 2024-09-15 08:09+0000\n"
 "Last-Translator: gallegonovato <fran-carro@hotmail.es>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -437,7 +437,7 @@ msgstr ""
 "preferencias de <app>Parabolic</app>."
 
 #. (itstool) path: item/title
-#: docs/yelp/C/downloads.page:25 docs/yelp/C/newDownload.page:110
+#: docs/yelp/C/downloads.page:25 docs/yelp/C/newDownload.page:103
 msgid "Speed Limit"
 msgstr "Límite de velocidad"
 
@@ -889,7 +889,7 @@ msgstr ""
 
 #. (itstool) path: note/p
 #: docs/yelp/C/newDownload.page:61 docs/yelp/C/newDownload.page:68
-#: docs/yelp/C/newDownload.page:82
+#: docs/yelp/C/newDownload.page:75
 msgid ""
 "The previously used state will be remembered and pre-selected for the next "
 "download."
@@ -915,30 +915,11 @@ msgstr ""
 
 #. (itstool) path: item/title
 #: docs/yelp/C/newDownload.page:72
-msgid "Video Codec"
-msgstr "Códec de vídeo"
-
-#. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:73
-msgid "The video codec to prefer when downloading a video."
-msgstr "El códec de vídeo preferido para descargar un vídeo."
-
-#. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:75
-msgid ""
-"The previously used codec will be remembered and pre-selected for the next "
-"download."
-msgstr ""
-"El códec utilizado anteriormente será recordado y preseleccionado para la "
-"siguiente descarga."
-
-#. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:79
 msgid "Split Chapters"
 msgstr "Separar los capítulos"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:80
+#: docs/yelp/C/newDownload.page:73
 msgid ""
 "If enabled, Parabolic will split a video download into multiple smaller "
 "files based on its chapters."
@@ -947,17 +928,17 @@ msgstr ""
 "archivos más pequeños en función de sus capítulos."
 
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:86
+#: docs/yelp/C/newDownload.page:79
 msgid "Save Folder"
 msgstr "Guardar carpeta"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:87
+#: docs/yelp/C/newDownload.page:80
 msgid "The folder at which to save the download to."
 msgstr "La carpeta en la que guardar la descarga."
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:89
+#: docs/yelp/C/newDownload.page:82
 msgid ""
 "The previously used folder will be remembered and pre-selected for the next "
 "download."
@@ -966,27 +947,27 @@ msgstr ""
 "siguiente descarga."
 
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:93
+#: docs/yelp/C/newDownload.page:86
 msgid "File Name"
 msgstr "Nombre del archivo"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:94
+#: docs/yelp/C/newDownload.page:87
 msgid "The file name to use when saving the download."
 msgstr "El nombre de archivo que se usará al guardar la descarga."
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:96
+#: docs/yelp/C/newDownload.page:89
 msgid "Default: The title of the media"
 msgstr "Predeterminado: El título del medio"
 
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:100
+#: docs/yelp/C/newDownload.page:93
 msgid "Time Frame"
 msgstr "Duración"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:101
+#: docs/yelp/C/newDownload.page:94
 msgid ""
 "The user can enter a start time frame and an end time frame to download a "
 "specific section of the media."
@@ -995,12 +976,12 @@ msgstr ""
 "finalización para descargar una sección específica del multimedia."
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:103
+#: docs/yelp/C/newDownload.page:96
 msgid "Default: The whole media length"
 msgstr "Predeterminado: Toda la longitud del multimedia"
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:106
+#: docs/yelp/C/newDownload.page:99
 msgid ""
 "Enabling this option will disable the use of aria2 as the downloader for "
 "this download, even if it is enabled in Preferences."
@@ -1009,7 +990,7 @@ msgstr ""
 "esta descarga, aunque esté activado en Preferencias."
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:111
+#: docs/yelp/C/newDownload.page:104
 msgid ""
 "If enabled, Parabolic will limit the download's speed with the speed "
 "configured in <link xref=\"downloader\">Preferences</link>."
@@ -1018,9 +999,22 @@ msgstr ""
 "velocidad configurada en <link xref=\"downloader\">Preferencias</link>."
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:113
+#: docs/yelp/C/newDownload.page:106
 msgid "Available in the <code>Advanced Options</code> section."
 msgstr "Disponible en la sección <code>Opciones avanzadas</code>."
+
+#~ msgid "Video Codec"
+#~ msgstr "Códec de vídeo"
+
+#~ msgid "The video codec to prefer when downloading a video."
+#~ msgstr "El códec de vídeo preferido para descargar un vídeo."
+
+#~ msgid ""
+#~ "The previously used codec will be remembered and pre-selected for the "
+#~ "next download."
+#~ msgstr ""
+#~ "El códec utilizado anteriormente será recordado y preseleccionado para la "
+#~ "siguiente descarga."
 
 #~ msgid ""
 #~ "Parabolic will NOT embed the Comment, Description, Synopsis, and Purl "

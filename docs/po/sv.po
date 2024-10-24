@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2024-10-24 08:50-0400\n"
+"POT-Creation-Date: 2024-10-24 08:55-0400\n"
 "PO-Revision-Date: 2024-09-15 08:09+0000\n"
 "Last-Translator: Tomas Andersson <jotakswe@users.noreply.hosted.weblate."
 "org>\n"
@@ -437,7 +437,7 @@ msgstr ""
 "Inställningar i <app>Parabolic</app>."
 
 #. (itstool) path: item/title
-#: docs/yelp/C/downloads.page:25 docs/yelp/C/newDownload.page:110
+#: docs/yelp/C/downloads.page:25 docs/yelp/C/newDownload.page:103
 msgid "Speed Limit"
 msgstr "Hastighetsgräns"
 
@@ -886,7 +886,7 @@ msgstr ""
 
 #. (itstool) path: note/p
 #: docs/yelp/C/newDownload.page:61 docs/yelp/C/newDownload.page:68
-#: docs/yelp/C/newDownload.page:82
+#: docs/yelp/C/newDownload.page:75
 msgid ""
 "The previously used state will be remembered and pre-selected for the next "
 "download."
@@ -912,30 +912,11 @@ msgstr ""
 
 #. (itstool) path: item/title
 #: docs/yelp/C/newDownload.page:72
-msgid "Video Codec"
-msgstr "Video Codec"
-
-#. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:73
-msgid "The video codec to prefer when downloading a video."
-msgstr "Video-codec att föredra när du laddar ned en video."
-
-#. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:75
-msgid ""
-"The previously used codec will be remembered and pre-selected for the next "
-"download."
-msgstr ""
-"Den tidigare använda codecen kommer att kommas ihåg och blir förvald vid "
-"nästa nedladdning."
-
-#. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:79
 msgid "Split Chapters"
 msgstr "Dela upp kapitlen"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:80
+#: docs/yelp/C/newDownload.page:73
 msgid ""
 "If enabled, Parabolic will split a video download into multiple smaller "
 "files based on its chapters."
@@ -944,17 +925,17 @@ msgstr ""
 "mindre filer baserat på dess kapitel."
 
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:86
+#: docs/yelp/C/newDownload.page:79
 msgid "Save Folder"
 msgstr "Lagringsmapp"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:87
+#: docs/yelp/C/newDownload.page:80
 msgid "The folder at which to save the download to."
 msgstr "Mappen där nedladdningen ska sparas."
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:89
+#: docs/yelp/C/newDownload.page:82
 msgid ""
 "The previously used folder will be remembered and pre-selected for the next "
 "download."
@@ -963,27 +944,27 @@ msgstr ""
 "nästa nedladdning."
 
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:93
+#: docs/yelp/C/newDownload.page:86
 msgid "File Name"
 msgstr "Filnamn"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:94
+#: docs/yelp/C/newDownload.page:87
 msgid "The file name to use when saving the download."
 msgstr "Filnamnet som ska användas när nedladdningen sparas."
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:96
+#: docs/yelp/C/newDownload.page:89
 msgid "Default: The title of the media"
 msgstr "Standard: Mediets titel"
 
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:100
+#: docs/yelp/C/newDownload.page:93
 msgid "Time Frame"
 msgstr "Tidsram"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:101
+#: docs/yelp/C/newDownload.page:94
 msgid ""
 "The user can enter a start time frame and an end time frame to download a "
 "specific section of the media."
@@ -992,12 +973,12 @@ msgstr ""
 "del av media."
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:103
+#: docs/yelp/C/newDownload.page:96
 msgid "Default: The whole media length"
 msgstr "Standard: Hela medialängden"
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:106
+#: docs/yelp/C/newDownload.page:99
 msgid ""
 "Enabling this option will disable the use of aria2 as the downloader for "
 "this download, even if it is enabled in Preferences."
@@ -1007,7 +988,7 @@ msgstr ""
 "Inställningarna."
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:111
+#: docs/yelp/C/newDownload.page:104
 msgid ""
 "If enabled, Parabolic will limit the download's speed with the speed "
 "configured in <link xref=\"downloader\">Preferences</link>."
@@ -1016,9 +997,22 @@ msgstr ""
 "hastigheten konfigurerad i <link xref=\"Nedladdare\">Inställningar</link>."
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:113
+#: docs/yelp/C/newDownload.page:106
 msgid "Available in the <code>Advanced Options</code> section."
 msgstr "Tillgängligt i avsnittet <code>Avancerade alternativ</code>."
+
+#~ msgid "Video Codec"
+#~ msgstr "Video Codec"
+
+#~ msgid "The video codec to prefer when downloading a video."
+#~ msgstr "Video-codec att föredra när du laddar ned en video."
+
+#~ msgid ""
+#~ "The previously used codec will be remembered and pre-selected for the "
+#~ "next download."
+#~ msgstr ""
+#~ "Den tidigare använda codecen kommer att kommas ihåg och blir förvald vid "
+#~ "nästa nedladdning."
 
 #~ msgid ""
 #~ "Parabolic will NOT embed the Comment, Description, Synopsis, and Purl "
