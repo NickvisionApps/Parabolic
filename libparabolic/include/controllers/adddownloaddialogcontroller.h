@@ -1,6 +1,7 @@
 #ifndef ADDDOWNLOADDIALOGCONTROLLER_H
 #define ADDDOWNLOADDIALOGCONTROLLER_H
 
+#include <filesystem>
 #include <optional>
 #include <string>
 #include <vector>
@@ -125,6 +126,20 @@ namespace Nickvision::TubeConverter::Shared::Controllers
          * @param credentialNameIndex The index of the name of the credential to use when accessing the url
          */
         void validateUrl(const std::string& url, size_t credentialNameIndex);
+        /**
+         * @brief Validates a batch file.
+         * @brief This method will invoke the urlValidated event with the list of media found from the batch file.
+         * @param batchFile The path to the batch file to validate
+         * @param credential An optional credential to use when accessing the urls in the batch file
+         */
+        void validateBatchFile(const std::filesystem::path& batchFile, const std::optional<Keyring::Credential>& credential);
+        /**
+         * @brief Validates a batch file.
+         * @brief This method will invoke the urlValidated event with the list of media found from the batch file.
+         * @param batchFile The path to the batch file to validate
+         * @param credentialNameIndex The index of the name of the credential to use when accessing the urls in the batch file
+         */
+        void validateBatchFile(const std::filesystem::path& batchFile, size_t credentialNameIndex);
         /**
          * @brief Adds a single download to the download manager.
          * @param saveFolder The folder to save the download to

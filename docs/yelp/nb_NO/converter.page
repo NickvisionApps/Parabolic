@@ -27,17 +27,9 @@
 	<item>
 		<title>Bygg inn metadata</title>
 		<p>Hvis dette er på, vil Parabolic forsøke å legge ved relevante data (tittel, sjanger, miniatyrbilde, osv.) i filen.</p>
-        <p>Parabolic vil ikke legge ved kommentarer, beskrivelser, sammendrag eller app-adresser.</p>
 		<note style="advanced">
 			<p>Standard: på</p>
 		</note>
-    </item>
-    <item>
-        <title>Bygg inn undertekster</title>
-        <p>Hvis dette er av eller innebyggingen mislykkes, vil nedlastede undertekster lagres som en egen fil.</p>
-        <note style="advanced">
-            <p>Standard: på</p>
-        </note>
     </item>
     <item>
 		<title>Bygg inn kapitler</title>
@@ -47,8 +39,16 @@
 		</note>
 	</item>
     <item>
+        <title>Bygg inn undertekster</title>
+        <p>Hvis dette er av eller innebyggingen mislykkes, vil nedlastede undertekster lagres som en egen fil.</p>
+        <note style="advanced">
+            <p>Standard: på</p>
+        </note>
+    </item>
+    <item>
 		<title>Kvadratiske miniatyrbilder</title>
 		<p>Hvis dette er på, vil Parabolic beskjære miniatyrbilder slik at de blir kvadratiske.</p>
+        <p>This option is only configurable if <code>Embed Metadata</code> is on.</p>
 		<note style="advanced">
 			<p>Standard: av</p>
 		</note>
@@ -57,9 +57,17 @@
 		<title>Fjern kildedata</title>
 		<p>Hvis dette er på, vil Parabolic fjerne alle metadata om kilden til videoen, for eksempel nettadresser.</p>
         <p>Felter som fjernes:<code>comment</code>, <code>description</code>, <code>synopsis</code>, <code>purl</code> og <code>handler_name</code> på hver nedlasting.</p>
+        <p>This option is only configurable if <code>Embed Metadata</code> is on.</p>
 		<note style="advanced">
 			<p>Standard: av</p>
 		</note>
+    </item>
+    <item>
+        <title>Postprocessing Threads</title>
+        <p>The number of threads to allow the postprocessor (<code>FFmpeg</code>) to use for each download.</p>
+        <note style="advanced">
+            <p>Default: The max number of threads available on the system</p>
+        </note>
     </item>
 </terms>
 </page>

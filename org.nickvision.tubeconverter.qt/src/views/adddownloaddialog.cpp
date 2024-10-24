@@ -29,6 +29,8 @@ namespace Nickvision::TubeConverter::QT::Views
         //Localize Strings
         m_ui->lblMediaUrl->setText(_("Media URL"));
         m_ui->txtMediaUrl->setPlaceholderText(_("Enter media url here"));
+        m_ui->btnUseBatchFile->setText(_("Open"));
+        m_ui->btnUseBatchFile->setToolTip(_("Use Batch File"));
         m_ui->lblAuthenticate->setText(_("Authenticate"));
         m_ui->lblUsername->setText(_("Username"));
         m_ui->txtUsername->setPlaceholderText(_("Enter username here"));
@@ -93,6 +95,7 @@ namespace Nickvision::TubeConverter::QT::Views
         QTHelpers::setComboBoxItems(m_ui->cmbAuthenticate, credentialNames);
         //Signals
         connect(m_ui->txtMediaUrl, &QLineEdit::textChanged, this, &AddDownloadDialog::onTxtUrlChanged);
+        connect(m_ui->btnUseBatchFile, &QPushButton::clicked, this, &AddDownloadDialog::useBatchFile);
         connect(m_ui->cmbAuthenticate, &QComboBox::currentIndexChanged, this, &AddDownloadDialog::onCmbAuthenticateChanged);
         connect(m_ui->btnValidate, &QPushButton::clicked, this, &AddDownloadDialog::validateUrl);
         connect(m_ui->cmbFileTypeSingle, &QComboBox::currentIndexChanged, this, &AddDownloadDialog::onCmbQualitySingleChanged);
@@ -118,6 +121,28 @@ namespace Nickvision::TubeConverter::QT::Views
     void AddDownloadDialog::onTxtUrlChanged(const QString& text)
     {
         m_ui->btnValidate->setEnabled(StringHelpers::isValidUrl(text.toStdString()));
+    }
+
+    void AddDownloadDialog::useBatchFile()
+    {
+        QString file{ QFileDialog::getOpenFileName(this, _("Select Batch File"), {}, _("TXT Files (*.txt)")) };
+        if(!file.isEmpty())
+        {
+            m_ui->viewStack->setCurrentIndex(1);
+            std::optional<Credential> credential{ std::nullopt };
+            if(m_ui->cmbAuthenticate->currentIndex() == 1)
+            {
+                credential = Credential{ "", "", m_ui->txtUsername->text().toStdString(), m_ui->txtPassword->text().toStdString() };
+            }
+            if(m_ui->cmbAuthenticate->currentIndex() < 2)
+            {
+                m_controller->validateBatchFile(file.toStdString(), credential);
+            }
+            else
+            {
+                m_controller->validateBatchFile(file.toStdString(), m_ui->cmbAuthenticate->currentIndex() - 2);
+            }
+        }
     }
 
     void AddDownloadDialog::onCmbAuthenticateChanged(int index)

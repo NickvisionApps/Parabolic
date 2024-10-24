@@ -26,7 +26,7 @@
     <title>Backend</title>
     <p>Funkcia zväzku kľúčov je podporovaná knižnicou <code>libnick</code>.</p>
     <p>Táto knižnica používa SQLCipher na bezpečné ukladanie poverení spôsobom nezávislým od platformy.</p>
-    <p>Knižnica použije správcu poverení vášho systému (t. j. Tajnú službu DBus v systéme Linux a Správcu poverení systému Windows v systéme Windows) na zabezpečenie súboru databázy zväzku kľúčov.</p>
+    <p>The library will use your system's credential manager (i.e. DBus secret service on Linux and Windows Credential Manager on Windows) for securing the Keyring database file.</p>
 </section>
 <section>
     <title>Ukladanie poverenia</title>

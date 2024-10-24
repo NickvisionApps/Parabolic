@@ -2,7 +2,7 @@
 <page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" id="downloader" its:version="2.0" xml:lang="pt-PT">
 <info>
 	<link type="guide" xref="index"/>
-	<title type="link">Descarregador 🌐</title>
+	<title type="link">Downloader 🛠️</title>
 	<credit type="author copyright">
 		<name>Nicholas Logozzo</name>
 		<years its:translate="no">2023-2024</years>
@@ -35,6 +35,21 @@
 		</note>
     </item>
     <item>
+		<title>Limit Filename Characters</title>
+		<p>Restricts characters in filenames to only those supported by Windows.</p>
+        <p>This option is only available on Linux.</p>
+		<note style="advanced">
+			<p>Padrão: Desligado</p>
+		</note>
+    </item>
+    <item>
+		<title>Download Immediately After Validation</title>
+		<p>Bypasses the download options selection in the Add Download dialog and immediately downloads a validated media using previously selected options.</p>
+		<note style="advanced">
+			<p>Padrão: Desligado</p>
+		</note>
+    </item>
+    <item>
         <title>Legendas Geradas Automaticamente Incluídas</title>
         <p>Se devem ou não ser incluídas legendas traduzidas automaticamente para se adequarem aos idiomas de legenda solicitados.</p>
         <note style="advanced">
@@ -42,54 +57,17 @@
         </note>
     </item>
     <item>
-        <title>Usar aria2</title>
-        <p>Se ativado, o Parabolic usará aria2c para descarregar multimédia. Embora usar aria2c possa melhorar a velocidade de download, o progresso do download não será exibido no UI.</p>
+        <title>Preferred Video Codec</title>
+        <p>The video codec Parabolic should prefer when selecting media formats to download.</p>
         <note style="advanced">
-            <p>Padrão: Desligado</p>
+            <p>Default: Any</p>
         </note>
     </item>
     <item>
-        <title>Máximo de Conexões por Servidor</title>
-        <p>Esta opção só se aplica quando o uso de aria2 estiver ativado. Esta opção é a mesma que a flag <code>-x</code> passada para aria2c.</p>
-        <p>O número máximo de conexões que podem ser usadas por servidor. Deve ser um valor inteiro entre 1 e 32.</p>
+        <title>Recover Crashed Downloads</title>
+        <p>If enabled, Parabolic will track the running and queued downloads and restart them if necessary if the application crashes and is restarted.</p>
         <note style="advanced">
-            <p>Padrão: 16</p>
-        </note>
-    </item>
-    <item>
-        <title>Tamanho Mínimo de Divisão</title>
-        <p>Esta opção só se aplica quando o uso de aria2 estiver ativado. Esta opção é a mesma que a flag <code>-k</code> passada para aria2c.</p>
-        <p>O tamanho mínimo, em MiB, do qual dividir um ficheiro. Deve ser um valor inteiro entre 1 e 1024.</p>
-        <note style="advanced">
-            <p>Padrão: 20</p>
-        </note>
-    </item>
-    <item>
-        <title>Limite de Velocidade</title>
-        <p>Um limite, em Ki/s, que é aplicado a downloads somente se tiverem a opção avançada <code>Limite de Velocidade</code> ativada. Deve ser um valor inteiro entre 512 e 10240.</p>
-		<note style="advanced">
-			<p>Padrão: 1024</p>
-		</note>
-    </item>
-    <item>
-        <title>URL do Proxy</title>
-        <p>A URL do servidor proxy a ser usado.</p>
-    </item>
-    <item>
-        <title>Cookies do Navegador</title>
-        <p>Um navegador para ler cookies e passá-los para o mecanismo de download do yt-dlp.</p>
-		<note style="advanced">
-			<p>Padrão: Nenhum</p>
-		</note>
-    </item>
-    <item>
-        <title>Usar SponsorBlock para o YouTube</title>
-        <p>Se ativado, o Parabolic aplicará a extensão SponsorBlock aos downloads do YouTube.</p>
-        <note>
-            <p>O SponsorBlock só funciona em vídeos do YouTube. No entanto, deixar essa configuração ativada não afetará os downloads de outros sites (ou seja, não fará com que falhem).</p>
-        </note>
-        <note style="advanced">
-            <p>Padrão: Desligado</p>
+            <p>Padrão: Ativado</p>
         </note>
     </item>
 </terms>

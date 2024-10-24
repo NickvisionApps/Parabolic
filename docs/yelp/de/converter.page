@@ -21,17 +21,9 @@
 	<item>
 		<title>Metadaten einbetten</title>
 		<p>Wenn diese Option aktiviert ist, markiert Parabolic Medien mit relevanten Informationen (Titel, Genre, etc...) und einem Thumbnail, falls vorhanden.</p>
-        <p>Parabolic bettet die Felder "Kommentar", "Beschreibung", "Synopsis" und "Purl" NICHT ein.</p>
 		<note style="advanced">
 			<p>Standardeinstellung: Ein</p>
 		</note>
-    </item>
-    <item>
-        <title>Untertitel einbetten</title>
-        <p>Wenn deaktiviert oder wenn das Einbetten fehlschlägt, werden die heruntergeladenen Untertitel in einer separaten Datei gespeichert.</p>
-        <note style="advanced">
-            <p>Standardeinstellung: Ein</p>
-        </note>
     </item>
     <item>
 		<title>Kapitel einbetten</title>
@@ -41,8 +33,16 @@
 		</note>
 	</item>
     <item>
+        <title>Untertitel einbetten</title>
+        <p>Wenn deaktiviert oder wenn das Einbetten fehlschlägt, werden die heruntergeladenen Untertitel in einer separaten Datei gespeichert.</p>
+        <note style="advanced">
+            <p>Standardeinstellung: Ein</p>
+        </note>
+    </item>
+    <item>
 		<title>Audio-Miniaturbilder zuschneiden</title>
 		<p>Wenn aktiviert, beschneidet Parabolic die Miniaturansichten für Audiodateien auf eine quadratische Auflösung.</p>
+        <p>This option is only configurable if <code>Embed Metadata</code> is on.</p>
 		<note style="advanced">
 			<p>Standardeinstellung: Aus</p>
 		</note>
@@ -51,9 +51,17 @@
 		<title>Quelldaten entfernen</title>
 		<p>Wenn aktiviert, löscht Parabolic Metadatenfelder, die die URL und andere identifizierende Informationen der Medienquelle enthalten.</p>
         <p>Felder, die gelöscht werden: <code>Kommentar</code>, <code>Beschreibung</code>, <code>Synopse</code>, <code>Purl</code> und <code>handler_name</code> in jedem Stream.</p>
+        <p>This option is only configurable if <code>Embed Metadata</code> is on.</p>
 		<note style="advanced">
 			<p>Standardeinstellung: Aus</p>
 		</note>
+    </item>
+    <item>
+        <title>Postprocessing Threads</title>
+        <p>The number of threads to allow the postprocessor (<code>FFmpeg</code>) to use for each download.</p>
+        <note style="advanced">
+            <p>Default: The max number of threads available on the system</p>
+        </note>
     </item>
 </terms>
 </page>

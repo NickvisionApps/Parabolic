@@ -1,7 +1,6 @@
 #ifndef DOWNLOADPROGRESSCHANGEDEVENTARGS_H
 #define DOWNLOADPROGRESSCHANGEDEVENTARGS_H
 
-#include <ostream>
 #include <string>
 #include <libnick/events/eventargs.h>
 

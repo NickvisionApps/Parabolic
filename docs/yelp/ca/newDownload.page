@@ -12,7 +12,13 @@
 		<years its:translate="no">2023-2024</years>
 	</credit>
 	<license href="http://creativecommons.org/licenses/by/4.0/" its:translate="no"><p>Creative Commons Attribution 4.0 International License</p></license>
-</info>
+
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Adolfo Jayme Barrientos</mal:name>
+      <mal:email>fitojb@ubuntu.com</mal:email>
+      <mal:years>2024</mal:years>
+    </mal:credit>
+  </info>
 
 <title>New Download</title>
 <p>This page explains all options for configuring a new download in <app>Parabolic</app>.</p>
@@ -51,7 +57,7 @@
         </note>
     </item>
     <item>
-		<title>Audio Language</title>
+		<title>Llengua de l’àudio</title>
 		<p>The language of which to use from the audio part of a media download.</p>
         <p>If no additional languages are available, <code>Default</code> will be the only option.</p>
         <note>
@@ -63,13 +69,6 @@
 		<p>Whether to download and embed subtitle when downloading a video. Further subtitle settings can be configured in <link xref="downloader">preferences</link>.</p>
         <note>
             <p>The previously used state will be remembered and pre-selected for the next download.</p>
-        </note>
-    </item>
-    <item>
-        <title>Video Codec</title>
-        <p>The video codec to prefer when downloading a video.</p>
-        <note>
-            <p>The previously used codec will be remembered and pre-selected for the next download.</p>
         </note>
     </item>
     <item>
@@ -88,7 +87,7 @@
     </item>
     <item>
 		<title>Nom del fitxer</title>
-        <p>The file name to use when saving the download.</p>
+        <p>El nom de fitxer que s’usarà en desar la baixada.</p>
 		<note style="advanced">
 			<p>Default: The title of the media</p>
 		</note>

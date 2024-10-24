@@ -2,7 +2,7 @@
 <page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" id="downloader" its:version="2.0" xml:lang="de">
 <info>
 	<link type="guide" xref="index"/>
-	<title type="link">Downloader 🌐</title>
+	<title type="link">Downloader 🛠️</title>
 	<credit type="author copyright">
 		<name>Nicholas Logozzo</name>
 		<years its:translate="no">2023-2024</years>
@@ -35,6 +35,21 @@
 		</note>
     </item>
     <item>
+		<title>Limit Filename Characters</title>
+		<p>Restricts characters in filenames to only those supported by Windows.</p>
+        <p>This option is only available on Linux.</p>
+		<note style="advanced">
+			<p>Standardeinstellung: Aus</p>
+		</note>
+    </item>
+    <item>
+		<title>Download Immediately After Validation</title>
+		<p>Bypasses the download options selection in the Add Download dialog and immediately downloads a validated media using previously selected options.</p>
+		<note style="advanced">
+			<p>Standardeinstellung: Aus</p>
+		</note>
+    </item>
+    <item>
         <title>Enthaltene automatisch generierte Untertitel</title>
         <p>Ob Untertitel eingefügt werden sollen oder nicht, die automatisch übersetzt werden, um den gewünschten Untertitelsprachen zu entsprechen.</p>
         <note style="advanced">
@@ -42,54 +57,17 @@
         </note>
     </item>
     <item>
-        <title>aria2 verwenden</title>
-        <p>Wenn diese Option aktiviert ist, verwendet Parabolic aria2c zum Herunterladen von Medien. Die Verwendung von aria2c kann die Download-Geschwindigkeit verbessern, jedoch wird der Download-Fortschritt nicht in der Benutzeroberfläche angezeigt.</p>
+        <title>Preferred Video Codec</title>
+        <p>The video codec Parabolic should prefer when selecting media formats to download.</p>
         <note style="advanced">
-            <p>Standardeinstellung: Aus</p>
+            <p>Default: Any</p>
         </note>
     </item>
     <item>
-        <title>Maximale Verbindungen pro Server</title>
-        <p>Diese Option gilt nur, wenn die Verwendung von aria2 aktiviert ist. Sie entspricht dem <code>-x</code> Flag, das an aria2c übergeben wird.</p>
-        <p>Die maximale Anzahl der Verbindungen, die pro Server verwendet werden können. Muss ein ganzzahliger Wert zwischen 1 und 32 sein.</p>
+        <title>Recover Crashed Downloads</title>
+        <p>If enabled, Parabolic will track the running and queued downloads and restart them if necessary if the application crashes and is restarted.</p>
         <note style="advanced">
-            <p>Standardeinstellung: 16</p>
-        </note>
-    </item>
-    <item>
-        <title>Minimale Teilungsgröße</title>
-        <p>Diese Option gilt nur, wenn die Verwendung von aria2 aktiviert ist. Sie entspricht dem <code>-k</code> Flag, das an aria2c übergeben wird.</p>
-        <p>Die Mindestgröße in MiB, ab der eine Datei geteilt werden soll. Muss ein ganzzahliger Wert zwischen 1 und 1024 sein.</p>
-        <note style="advanced">
-            <p>Standardeinstellung: 20</p>
-        </note>
-    </item>
-    <item>
-        <title>Geschwindigkeitsbegrenzung</title>
-        <p>Ein Limit in Ki/s, das nur dann auf Downloads angewendet wird, wenn die erweiterte Option <code>Geschwindigkeitsbegrenzung</code> aktiviert ist. Muss ein ganzzahliger Wert zwischen 512 und 10240 sein.</p>
-		<note style="advanced">
-			<p>Standardeinstellung: 1024</p>
-		</note>
-    </item>
-    <item>
-        <title>Proxy-URL</title>
-        <p>Die URL des zu verwendenden Proxyservers.</p>
-    </item>
-    <item>
-        <title>Cookies vom Browser</title>
-        <p>Ein Browser, der Cookies ausliest und an die Download-Engine von yt-dlp weitergibt.</p>
-		<note style="advanced">
-			<p>Voreinstellung: Keine</p>
-		</note>
-    </item>
-    <item>
-        <title>SponsorBlock für YouTube verwenden</title>
-        <p>Wenn aktiviert, wird Parabolic die SponsorBlock-Erweiterung auf YouTube-Downloads anwenden.</p>
-        <note>
-            <p>SponsorBlock funktioniert nur bei YouTube-Videos. Wenn du diese Einstellung jedoch aktiviert lässt, hat dies keine Auswirkungen auf Downloads von anderen Webseiten (d. h. sie werden nicht fehlschlagen).</p>
-        </note>
-        <note style="advanced">
-            <p>Standardeinstellung: Aus</p>
+            <p>Standardeinstellung: Ein</p>
         </note>
     </item>
 </terms>

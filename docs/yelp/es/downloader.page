@@ -2,7 +2,7 @@
 <page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" id="downloader" its:version="2.0" xml:lang="es">
 <info>
 	<link type="guide" xref="index"/>
-	<title type="link">Descargador 🌐</title>
+	<title type="link">Downloader 🛠️</title>
 	<credit type="author copyright">
 		<name>Nicholas Logozzo</name>
 		<years its:translate="no">2023-2024</years>
@@ -41,6 +41,21 @@
 		</note>
     </item>
     <item>
+		<title>Limit Filename Characters</title>
+		<p>Restricts characters in filenames to only those supported by Windows.</p>
+        <p>This option is only available on Linux.</p>
+		<note style="advanced">
+			<p>Predeterminado: Apagado</p>
+		</note>
+    </item>
+    <item>
+		<title>Download Immediately After Validation</title>
+		<p>Bypasses the download options selection in the Add Download dialog and immediately downloads a validated media using previously selected options.</p>
+		<note style="advanced">
+			<p>Predeterminado: Apagado</p>
+		</note>
+    </item>
+    <item>
         <title>Subtítulos generados automáticamente</title>
         <p>Incluir o no subtítulos que se traducen automáticamente para ajustarse a los idiomas de los subtítulos solicitados.</p>
         <note style="advanced">
@@ -48,54 +63,17 @@
         </note>
     </item>
     <item>
-        <title>Usar aria2</title>
-        <p>Si se activa, Parabolic usará aria2c para descargar los archivos multimedia. Aunque el uso de aria2c puede mejorar la velocidad de descarga, el progreso de la descarga no se mostrará en la interfaz del usuario.</p>
+        <title>Preferred Video Codec</title>
+        <p>The video codec Parabolic should prefer when selecting media formats to download.</p>
         <note style="advanced">
-            <p>Predeterminado: Apagado</p>
+            <p>Default: Any</p>
         </note>
     </item>
     <item>
-        <title>Máximo de conexiones por servidor</title>
-        <p>Esta opción sólo se aplica cuando está activado el uso de aria2. Esta opción es la misma que la opción <code>-x</code> que se pasa a aria2c.</p>
-        <p>El número máximo de conexiones que se pueden usar por servidor. Debe ser un valor entero entre 1 y 32.</p>
+        <title>Recover Crashed Downloads</title>
+        <p>If enabled, Parabolic will track the running and queued downloads and restart them if necessary if the application crashes and is restarted.</p>
         <note style="advanced">
-            <p>Predeterminado: 16</p>
-        </note>
-    </item>
-    <item>
-        <title>Tamaño mínimo de división</title>
-        <p>Esta opción sólo se aplica cuando está activado el uso de aria2. Esta opción es la misma que la opción <code>-k</code> que se pasa a aria2c.</p>
-        <p>El tamaño mínimo, en MiB, del que dividir un archivo. Debe ser un valor entero entre 1 y 1024.</p>
-        <note style="advanced">
-            <p>Predeterminado: 20</p>
-        </note>
-    </item>
-    <item>
-        <title>Límite de velocidad</title>
-        <p>Un límite, en Ki/s, que se aplica a las descargas sólo si tienen activada la opción avanzada <code>Límite de velocidad</code>. Debe ser un valor entero entre 512 y 10240.</p>
-		<note style="advanced">
-			<p>Predeterminado: 1024</p>
-		</note>
-    </item>
-    <item>
-        <title>URL del proxy</title>
-        <p>La url del servidor proxy para usar.</p>
-    </item>
-    <item>
-        <title>Cookies del navegador</title>
-        <p>Un navegador en el que leer las cookies y pasarlas al motor de descargas de yt-dlp.</p>
-		<note style="advanced">
-			<p>Predeterminado: Ninguna</p>
-		</note>
-    </item>
-    <item>
-        <title>Usar SponsorBlock para YouTube</title>
-        <p>Si se activa, Parabolic aplicará la extensión SponsorBlock a las descargas de YouTube.</p>
-        <note>
-            <p>SponsorBlock solo funciona en vídeos de YouTube. Sin embargo, dejar esta opción activada no afectará a las descargas de otros sitios (es decir, no hará que fallen).</p>
-        </note>
-        <note style="advanced">
-            <p>Predeterminado: Apagado</p>
+            <p>Predeterminado: Encendido</p>
         </note>
     </item>
 </terms>

@@ -21,17 +21,9 @@
 	<item>
 		<title>Inclure les métadonnées</title>
 		<p>Si cette option est activée, Parabole inclura dans le média téléchargé ses données pertinentes (titre, genre, etc…) et sa vignette, si disponibles.</p>
-        <p>Parabole n’inclura PAS les commentaires, descriptions, résumé, et l’URL personnalisée.</p>
 		<note style="advanced">
 			<p>Par défaut : Activée</p>
 		</note>
-    </item>
-    <item>
-        <title>Inclure les sous-titres</title>
-        <p>Si cette option est désactivée ou si l’inclusion échoue, les sous-titres téléchargés seront enregistrés dans un fichier séparé.</p>
-        <note style="advanced">
-            <p>Par défaut : Activée</p>
-        </note>
     </item>
     <item>
 		<title>Inclure les chapitres</title>
@@ -41,8 +33,16 @@
 		</note>
 	</item>
     <item>
+        <title>Inclure les sous-titres</title>
+        <p>Si cette option est désactivée ou si l’inclusion échoue, les sous-titres téléchargés seront enregistrés dans un fichier séparé.</p>
+        <note style="advanced">
+            <p>Par défaut : Activée</p>
+        </note>
+    </item>
+    <item>
 		<title>Rogner les vignettes des fichiers audio</title>
 		<p>Si cette option est activée, Parabole découpera la vignette des fichiers audio pour obtenir une résolution carrée.</p>
+        <p>This option is only configurable if <code>Embed Metadata</code> is on.</p>
 		<note style="advanced">
 			<p>Par défaut : Désactivée</p>
 		</note>
@@ -51,9 +51,17 @@
 		<title>Retirer les données sur la source</title>
 		<p>Si cette option est activée, Parabole effacera les champs de métadonnées contenant l’URL et d’autres informations d’identification de la source du média.</p>
         <p>Champs effacés : <code>commentaires</code>, <code>description</code>, <code>synopsis</code>, <code>purl</code> et <code>nom_du_service</code> dans chaque flux.</p>
+        <p>This option is only configurable if <code>Embed Metadata</code> is on.</p>
 		<note style="advanced">
 			<p>Par défaut : Désactivée</p>
 		</note>
+    </item>
+    <item>
+        <title>Postprocessing Threads</title>
+        <p>The number of threads to allow the postprocessor (<code>FFmpeg</code>) to use for each download.</p>
+        <note style="advanced">
+            <p>Default: The max number of threads available on the system</p>
+        </note>
     </item>
 </terms>
 </page>

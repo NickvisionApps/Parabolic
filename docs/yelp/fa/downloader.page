@@ -2,7 +2,7 @@
 <page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" id="downloader" its:version="2.0" xml:lang="fa">
 <info>
 	<link type="guide" xref="index"/>
-	<title type="link">بارگیری کننده 🌐</title>
+	<title type="link">Downloader 🛠️</title>
 	<credit type="author copyright">
 		<name>Nicholas Logozzo</name>
 		<years its:translate="no">2023-2024</years>
@@ -37,6 +37,21 @@
 		</note>
     </item>
     <item>
+		<title>Limit Filename Characters</title>
+		<p>Restricts characters in filenames to only those supported by Windows.</p>
+        <p>This option is only available on Linux.</p>
+		<note style="advanced">
+			<p>پیش فرض: خاموش</p>
+		</note>
+    </item>
+    <item>
+		<title>Download Immediately After Validation</title>
+		<p>Bypasses the download options selection in the Add Download dialog and immediately downloads a validated media using previously selected options.</p>
+		<note style="advanced">
+			<p>پیش فرض: خاموش</p>
+		</note>
+    </item>
+    <item>
         <title>شامل زیرنویس‌های تولید شده خودکار</title>
         <p>این که آیا زیرنویس‌هایی را شامل می‌شود که به صورت خودکار ترجمه می شوند تا متناسب با زبان‌های زیرنویس درخواست شده باشند.</p>
         <note style="advanced">
@@ -44,58 +59,17 @@
         </note>
     </item>
     <item>
-        <title>از aria2 استفاده کنید</title>
-        <p>اگر فعال باشد، Parabolic از aria2c برای بارگیری رسانه استفاده می کند. اگرچه استفاده از aria2c می‌تواند سرعت دانلود را بهبود بخشد اما پیشرفت بارگیری در رابط کاربری نمایش داده نمی‌شود.</p>
+        <title>Preferred Video Codec</title>
+        <p>The video codec Parabolic should prefer when selecting media formats to download.</p>
         <note style="advanced">
-            <p>پیش فرض: خاموش</p>
+            <p>Default: Any</p>
         </note>
     </item>
     <item>
-        <title>حداکثر اتصالات در هر سرور</title>
-        <p>
-            This option only applies when using aria2 is enabled. This option is the same as the <code>-x</code> flag passed to aria2c.
-        </p>
-        <p>حداکثر تعداد اتصال قابل استفاده در هر سرور. باید یک مقدار صحیح بین ۱ و ۳۲ باشد.</p>
+        <title>Recover Crashed Downloads</title>
+        <p>If enabled, Parabolic will track the running and queued downloads and restart them if necessary if the application crashes and is restarted.</p>
         <note style="advanced">
-            <p>پیش فرض: ۱۶</p>
-        </note>
-    </item>
-    <item>
-        <title>حداقل اندازه تقسیم</title>
-        <p>
-            This option only applies when using aria2 is enabled. This option is the same as the <code>-k</code> flag passed to aria2c.
-        </p>
-        <p>حداقل اندازه، در مگابایت، که برای تقسیم یک فایل. باید یک مقدار صحیح بین ۱ و ۱۰۲۴ باشد.</p>
-        <note style="advanced">
-            <p>پیش فرض: ۲۰</p>
-        </note>
-    </item>
-    <item>
-        <title>محدودیت سرعت</title>
-        <p>A limit, in Ki/s, that is applied to downloads only if they have the advanced option <code>Speed Limit</code> enabled. Must be an integer value between 512 and 10240.</p>
-		<note style="advanced">
-			<p>پیش فرض: ۱۰۲۴</p>
-		</note>
-    </item>
-    <item>
-        <title>URL پروکسی</title>
-        <p>آدرس سرور پروکسی مورد استفاده.</p>
-    </item>
-    <item>
-        <title>Cookies from Browser</title>
-        <p>A browser in which to read cookies from and pass to yt-dlp's download engine.</p>
-		<note style="advanced">
-			<p>Default: None</p>
-		</note>
-    </item>
-    <item>
-        <title>از SponsorBlock برای YouTube استفاده کنید</title>
-        <p>اگر فعال باشد، Parabolic پسوند SponsorBlock را برای دانلودهای YouTube اعمال می کند.</p>
-        <note>
-            <p>SponsorBlock only works on YouTube videos. However, leaving this setting on will not affect downloads from other sites (i.e. not cause them to fail).</p>
-        </note>
-        <note style="advanced">
-            <p>پیش فرض: خاموش</p>
+            <p>پیش فرض: روشن</p>
         </note>
     </item>
 </terms>

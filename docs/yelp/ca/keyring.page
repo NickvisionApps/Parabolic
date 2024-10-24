@@ -12,7 +12,13 @@
 		<years its:translate="no">2023-2024</years>
 	</credit>
 	<license href="http://creativecommons.org/licenses/by/4.0/" its:translate="no"><p>Creative Commons Attribution 4.0 International License</p></license>
-</info>
+
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Adolfo Jayme Barrientos</mal:name>
+      <mal:email>fitojb@ubuntu.com</mal:email>
+      <mal:years>2024</mal:years>
+    </mal:credit>
+  </info>
 
 <title>Clauer</title>
 <p>This page explains all options for using the Keyring in <app>Parabolic</app>.</p>
@@ -20,7 +26,7 @@
     <title>Backend</title>
     <p>The Keyring feature is backed by the <code>libnick</code> library.</p>
     <p>This library uses SQLCipher to securely store credentials in a platform independent manner.</p>
-    <p>The library will use you system's credential manager (i.e. DBus secret service on Linux and Windows Credential Manager on Windows) for securing the Keyring database file.</p>
+    <p>The library will use your system's credential manager (i.e. DBus secret service on Linux and Windows Credential Manager on Windows) for securing the Keyring database file.</p>
 </section>
 <section>
     <title>Storing a Credential</title>

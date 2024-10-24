@@ -52,6 +52,11 @@ namespace Nickvision::TubeConverter::Shared::Models
          */
         const std::string& getUrl() const;
         /**
+         * @brief Gets the options of the download.
+         * @return The options of the download
+         */
+        const DownloadOptions& getOptions() const;
+        /**
          * @brief Gets the status of the download.
          * @return The status of the download
          */

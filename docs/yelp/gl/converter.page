@@ -21,17 +21,9 @@
 	<item>
 		<title>Incorporar metadatos</title>
 		<p>Se está activado, Parabolic etiqueta un recurso con información relevante (título, xénero, etc.), así como unha miniatura se a houber.</p>
-        <p>Parabolic NON incorpora os campos Comentario, Descrición, Sinopse e PURL.</p>
 		<note style="advanced">
 			<p>Predeterminado: Activado</p>
 		</note>
-    </item>
-    <item>
-        <title>Incorporar subtítulos</title>
-        <p>If disabled or if embedding fails, downloaded subtitles will be saved to a separate file.</p>
-        <note style="advanced">
-            <p>Predeterminado: Activado</p>
-        </note>
     </item>
     <item>
 		<title>Incorporar capítulos</title>
@@ -41,8 +33,16 @@
 		</note>
 	</item>
     <item>
+        <title>Incorporar subtítulos</title>
+        <p>If disabled or if embedding fails, downloaded subtitles will be saved to a separate file.</p>
+        <note style="advanced">
+            <p>Predeterminado: Activado</p>
+        </note>
+    </item>
+    <item>
 		<title>Recortar miniaturas de son</title>
 		<p>If enabled, Parabolic will crop thumbnails for audio files to be a square resolution.</p>
+        <p>This option is only configurable if <code>Embed Metadata</code> is on.</p>
 		<note style="advanced">
 			<p>Predeterminado: Desactivado</p>
 		</note>
@@ -51,9 +51,17 @@
 		<title>Retirar datos da fonte</title>
 		<p>Se está activado, Parabolic limpa os campos de metadatos que conteñen o URL e outra información identificativa do recurso multimedia.</p>
         <p>Campos que se limpan: <code>comentario</code>, <code>descrición</code>, <code>sinopse</code>, <code>purl</code> e <code>nome_do_xestor</code> de cada fluxo.</p>
+        <p>This option is only configurable if <code>Embed Metadata</code> is on.</p>
 		<note style="advanced">
 			<p>Predeterminado: Desactivado</p>
 		</note>
+    </item>
+    <item>
+        <title>Postprocessing Threads</title>
+        <p>The number of threads to allow the postprocessor (<code>FFmpeg</code>) to use for each download.</p>
+        <note style="advanced">
+            <p>Default: The max number of threads available on the system</p>
+        </note>
     </item>
 </terms>
 </page>

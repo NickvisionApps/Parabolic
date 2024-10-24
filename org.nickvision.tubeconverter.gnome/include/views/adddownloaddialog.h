@@ -29,6 +29,10 @@ namespace Nickvision::TubeConverter::GNOME::Views
          */
         void onTxtUrlChanged();
         /**
+         * @brief Prompts the user to select a batch file to use instead of a url.
+         */
+        void useBatchFile();
+        /**
          * @brief Handles when the credential combobox is changed.
          */
         void onCmbCredentialChanged();

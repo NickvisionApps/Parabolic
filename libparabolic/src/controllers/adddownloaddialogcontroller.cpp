@@ -2,6 +2,7 @@
 #include <algorithm>
 #include <format>
 #include <thread>
+#include <libnick/helpers/stringhelpers.h>
 #include <libnick/localization/gettext.h>
 #include "models/configuration.h"
 #include "models/downloadoptions.h"
@@ -9,6 +10,7 @@
 
 using namespace Nickvision::App;
 using namespace Nickvision::Events;
+using namespace Nickvision::Helpers;
 using namespace Nickvision::Keyring;
 using namespace Nickvision::TubeConverter::Shared::Models;
 
@@ -258,6 +260,29 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         }
     }
 
+    void AddDownloadDialogController::validateBatchFile(const std::filesystem::path& batchFile, const std::optional<Credential>& credential)
+    {
+        std::thread worker{ [this, batchFile, credential]()
+        {
+            m_credential = credential;
+            m_urlInfo = m_downloadManager.fetchUrlInfoFromBatchFile(batchFile, m_credential);
+            m_urlValidated.invoke({ isUrlValid() });
+        } };
+        worker.detach();
+    }
+
+    void AddDownloadDialogController::validateBatchFile(const std::filesystem::path& batchFile, size_t credentialNameIndex)
+    {
+        if(credentialNameIndex < m_keyring.getCredentials().size())
+        {
+            validateBatchFile(batchFile, m_keyring.getCredentials()[credentialNameIndex]);
+        }
+        else
+        {
+            validateBatchFile(batchFile, std::nullopt);
+        }
+    }
+
     void AddDownloadDialogController::addSingleDownload(const std::filesystem::path& saveFolder, const std::string& filename, size_t fileTypeIndex, size_t qualityIndex, size_t audioLanguageIndex, const std::vector<std::string>& subtitleLanguages, bool splitChapters, bool limitSpeed, const std::string& startTime, const std::string& endTime)
     {
         const Media& media{ m_urlInfo->get(0) };
@@ -319,7 +344,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         m_previousOptions.setFileType(static_cast<MediaFileType::MediaFileTypeValue>(fileTypeIndex));
         m_previousOptions.setSplitChapters(splitChapters);
         m_previousOptions.setLimitSpeed(limitSpeed);
-        std::filesystem::path playlistSaveFolder{ (std::filesystem::exists(saveFolder) ? saveFolder : m_previousOptions.getSaveFolder()) / m_urlInfo->getTitle() };
+        std::filesystem::path playlistSaveFolder{ (std::filesystem::exists(saveFolder) ? saveFolder : m_previousOptions.getSaveFolder()) / StringHelpers::normalizeForFilename(m_urlInfo->getTitle(), m_downloadManager.getDownloaderOptions().getLimitCharacters()) };
         std::filesystem::create_directories(playlistSaveFolder);
         for(const std::pair<const size_t, std::string>& pair : filenames)
         {

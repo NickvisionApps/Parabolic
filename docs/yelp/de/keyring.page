@@ -20,7 +20,7 @@
     <title>Backend</title>
     <p>Die Schlüsselbundfunktion wird von der Bibliothek <code>libnick</code> bereitgestellt.</p>
     <p>Diese Bibliothek verwendet SQLCipher, um Anmeldedaten sicher und plattformunabhängig zu speichern.</p>
-    <p>Die Bibliothek verwendet die Anmeldedatenverwaltung deines Systems (d.h. DBus secret service unter Linux und Windows Credential Manager unter Windows) zur Sicherung der Schlüsselbund-Datenbankdatei.</p>
+    <p>The library will use your system's credential manager (i.e. DBus secret service on Linux and Windows Credential Manager on Windows) for securing the Keyring database file.</p>
 </section>
 <section>
     <title>Speichern von Anmeldedaten</title>

@@ -124,6 +124,15 @@ Adw.PreferencesDialog root {
           icon-name: "video-encoder-symbolic";
         }
       }
+
+      Adw.SwitchRow recoverCrashedDownloadsRow {
+        title: _("Recover Crashed Downloads");
+
+        [prefix]
+        Gtk.Image {
+          icon-name: "shield-warning-symbolic";
+        }
+      }
     }
 
     Adw.PreferencesGroup {

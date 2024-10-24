@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" id="downloads" its:version="2.0" xml:lang="ru">
+<info>
+	<link type="guide" xref="index"/>
+	<title type="link">Downloads 🌐</title>
+	<credit type="author copyright">
+		<name>Николас Логоццо</name>
+		<years its:translate="no">2023-2024</years>
+	</credit>
+	<credit type="publisher copyright">
+		<name>Николас Логоццо</name>
+		<years its:translate="no">2023-2024</years>
+	</credit>
+	<license href="http://creativecommons.org/licenses/by/4.0/" its:translate="no"><p>Creative Commons Attribution 4.0 International License</p></license>
+
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Фёдор Соболев</mal:name>
+      <mal:email/>
+      <mal:years>2023</mal:years>
+    </mal:credit>
+  </info>
+
+<title>Downloads</title>
+<p>This page explains all options for configuring Downloads in Preferences in <app>Parabolic</app>.</p>
+
+<terms>
+    <item>
+        <title>Ограничение скорости</title>
+        <p>Этот лимит (в КиБ/с) применяется к загрузкам, у которых включена опция <code>Ограничения скорости</code>. Целое число от 512 до 10240.</p>
+		<note style="advanced">
+			<p>По умолчанию: 1024</p>
+		</note>
+    </item>
+    <item>
+        <title>Использовать SponsorBlock для YouTube</title>
+        <p>Если включено, Parabolic будет применять расширение SponsorBlock для загрузок с YouTube.</p>
+        <note>
+            <p>SponsorBlock работает только для видео с YouTube. Однако включение этой настройки не повлияет на загрузки с других сайтов (т.е. не приведёт к их неудаче).</p>
+        </note>
+        <note style="advanced">
+            <p>По умолчанию: Выключено</p>
+        </note>
+    </item>
+    <item>
+        <title>Адрес прокси-сервера</title>
+        <p>Ссылка на прокси-сервер, который будет использоваться при загрузке.</p>
+        <note style="advanced">
+			<p>Default: No URL</p>
+		</note>
+    </item>
+    <item>
+        <title>Куки браузера</title>
+        <p>A browser in which to read cookies from and pass to yt-dlp's download engine.</p>
+        <p>This may be useful when downloading media that requires a login, for example: private YouTube videos.</p>
+        <p>This option is on available on non sandboxed platforms.</p>
+		<note style="advanced">
+			<p>Default: None</p>
+		</note>
+    </item>
+    <item>
+        <title>Файл куки</title>
+        <p>A .txt file of cookies to pass to yt-dlp when download engine.</p>
+        <p>This may be useful when downloading media that requires a login, for example: private YouTube videos.</p>
+        <p>Используйте одно из следующих расширений для получения файла куки из вашего браузера:</p>
+        <p>Chrome: <code>https://chrome.google.com/webstore/detail/get-cookiestxt-locally/cclelndahbckbenkjhflpdbgdldlbecc</code></p>
+        <p>Firefox: <code>https://addons.mozilla.org/en-US/firefox/addon/cookies-txt/</code></p>
+        <note>
+            <p>Используйте эти расширения на свой страх и риск.</p>
+        </note>
+		<note style="advanced">
+			<p>По умолчанию: файл не выбран</p>
+		</note>
+    </item>
+</terms>
+</page>

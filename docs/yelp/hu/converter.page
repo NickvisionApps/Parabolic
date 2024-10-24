@@ -21,17 +21,9 @@
 	<item>
 		<title>Címke/adatok beágyazása</title>
 		<p>If enabled, Parabolic will tag a media with its relevant information (title, genre, etc...) and thumbnail if available.</p>
-        <p>Parabolic will NOT embed the Comment, Description, Synopsis, and Purl fields.</p>
 		<note style="advanced">
 			<p>Default: On</p>
 		</note>
-    </item>
-    <item>
-        <title>Feliratok beágyazása</title>
-        <p>If disabled or if embedding fails, downloaded subtitles will be saved to a separate file.</p>
-        <note style="advanced">
-            <p>Default: On</p>
-        </note>
     </item>
     <item>
 		<title>Fejezetek beágyazása</title>
@@ -41,8 +33,16 @@
 		</note>
 	</item>
     <item>
+        <title>Feliratok beágyazása</title>
+        <p>If disabled or if embedding fails, downloaded subtitles will be saved to a separate file.</p>
+        <note style="advanced">
+            <p>Default: On</p>
+        </note>
+    </item>
+    <item>
 		<title>Borítókép igazítása</title>
 		<p>If enabled, Parabolic will crop thumbnails for audio files to be a square resolution.</p>
+        <p>This option is only configurable if <code>Embed Metadata</code> is on.</p>
 		<note style="advanced">
 			<p>Default: Off</p>
 		</note>
@@ -51,9 +51,17 @@
 		<title>Metaadatok törlése</title>
 		<p>If enabled, Parabolic will clear metadata fields containing the URL and other identifying information of the media source.</p>
         <p>Fields that are cleared: <code>comment</code>, <code>description</code>, <code>synopsis</code>, <code>purl</code> and <code>handler_name</code> in each stream.</p>
+        <p>This option is only configurable if <code>Embed Metadata</code> is on.</p>
 		<note style="advanced">
 			<p>Default: Off</p>
 		</note>
+    </item>
+    <item>
+        <title>Postprocessing Threads</title>
+        <p>The number of threads to allow the postprocessor (<code>FFmpeg</code>) to use for each download.</p>
+        <note style="advanced">
+            <p>Default: The max number of threads available on the system</p>
+        </note>
     </item>
 </terms>
 </page>

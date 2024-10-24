@@ -21,17 +21,9 @@
 	<item>
 		<title>Bädda in metadata</title>
 		<p>Om aktiverat kommer Parabolic att tagga ett media med dess relevanta information (titel, genre, etc...) och miniatyrbild om tillgänglig.</p>
-        <p>Parabolic kommer INTE att bädda in fälten Kommentar, Beskrivning, Synopsis och Purl.</p>
 		<note style="advanced">
 			<p>Standard: På</p>
 		</note>
-    </item>
-    <item>
-        <title>Bädda in undertexter</title>
-        <p>Om den inaktiveras eller om inbäddningen misslyckas, kommer nedladdade undertexter att sparas i separata filer.</p>
-        <note style="advanced">
-            <p>Standard: På</p>
-        </note>
     </item>
     <item>
 		<title>Bädda in kapitel</title>
@@ -41,8 +33,16 @@
 		</note>
 	</item>
     <item>
+        <title>Bädda in undertexter</title>
+        <p>Om den inaktiveras eller om inbäddningen misslyckas, kommer nedladdade undertexter att sparas i separata filer.</p>
+        <note style="advanced">
+            <p>Standard: På</p>
+        </note>
+    </item>
+    <item>
 		<title>Beskär ljudminiatyrbilder</title>
 		<p>Om aktiverat kommer Parabolic att beskära miniatyrbilder för ljudfiler till en kvadratisk upplösning.</p>
+        <p>This option is only configurable if <code>Embed Metadata</code> is on.</p>
 		<note style="advanced">
 			<p>Standard: Av</p>
 		</note>
@@ -51,9 +51,17 @@
 		<title>Ta bort källinformation</title>
 		<p>Om aktiverat kommer Parabolic att rensa metadatafält som innehåller URL och annan identifierande information om mediekällan.</p>
         <p>Fält som rensas: <code>comment</code>, <code>description</code>, <code>synopsis</code>, <code>purl</code> och <code>handler_name</code> i varje stream.</p>
+        <p>This option is only configurable if <code>Embed Metadata</code> is on.</p>
 		<note style="advanced">
 			<p>Standard: Av</p>
 		</note>
+    </item>
+    <item>
+        <title>Postprocessing Threads</title>
+        <p>The number of threads to allow the postprocessor (<code>FFmpeg</code>) to use for each download.</p>
+        <note style="advanced">
+            <p>Default: The max number of threads available on the system</p>
+        </note>
     </item>
 </terms>
 </page>
