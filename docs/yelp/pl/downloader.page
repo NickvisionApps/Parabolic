@@ -2,7 +2,7 @@
 <page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" id="downloader" its:version="2.0" xml:lang="pl">
 <info>
 	<link type="guide" xref="index"/>
-	<title type="link">Pobieranie 🌐</title>
+	<title type="link">Downloader 🛠️</title>
 	<credit type="author copyright">
 		<name>Nicholas Logozzo</name>
 		<years its:translate="no">2023-2024</years>
@@ -41,6 +41,21 @@
 		</note>
     </item>
     <item>
+		<title>Limit Filename Characters</title>
+		<p>Restricts characters in filenames to only those supported by Windows.</p>
+        <p>This option is only available on Linux.</p>
+		<note style="advanced">
+			<p>Domyślnie: wyłączone</p>
+		</note>
+    </item>
+    <item>
+		<title>Download Immediately After Validation</title>
+		<p>Bypasses the download options selection in the Add Download dialog and immediately downloads a validated media using previously selected options.</p>
+		<note style="advanced">
+			<p>Domyślnie: wyłączone</p>
+		</note>
+    </item>
+    <item>
         <title>Zawiera automatycznie generowane napisy</title>
         <p>Whether or not to included subtitles that are auto-translated to fit the requested subtitle languages.</p>
         <note style="advanced">
@@ -48,54 +63,17 @@
         </note>
     </item>
     <item>
-        <title>Używaj aria2</title>
-        <p>Po włączeniu, Parabolic będzie używał aria2c do pobierania multimediów. Pobieranie za pomocą aria2c może być szybsze, ale pasek postępu nie będzie widoczny.</p>
+        <title>Preferred Video Codec</title>
+        <p>The video codec Parabolic should prefer when selecting media formats to download.</p>
         <note style="advanced">
-            <p>Domyślnie: wyłączone</p>
+            <p>Default: Any</p>
         </note>
     </item>
     <item>
-        <title>Maksymalna ilość połączeń na serwer</title>
-        <p>Ta ustawienie działa jeśli opcja "Używaj aria2" jest włączona. To ustawienie działa tak samo jak flaga <code>-x</code> w programie aria2c.</p>
-        <p>Maksymalna ilość połączeń na serwer. Musi być liczbą całkowitą od 1 do 32.</p>
+        <title>Recover Crashed Downloads</title>
+        <p>If enabled, Parabolic will track the running and queued downloads and restart them if necessary if the application crashes and is restarted.</p>
         <note style="advanced">
-            <p>Domyślnie: 16</p>
-        </note>
-    </item>
-    <item>
-        <title>Minimalny rozmiar podziału</title>
-        <p>To ustawienie działa jeśli opcja "Używaj aria2" jest włączona. To ustawienie działa tak samo jak flaga <code>-k</code> w programie aria2c.</p>
-        <p>Minimalny rozmiar (w MiB), na jaki ma zostać podzielony plik. Musi być liczbą całkowitą od 1 do 1024.</p>
-        <note style="advanced">
-            <p>Domyślnie: 20</p>
-        </note>
-    </item>
-    <item>
-        <title>Limit prędkości pobierania</title>
-        <p>Limit prędkości w KiB/s, który dotyczy tylko procesów pobierania z włączoną opcją zaawansowaną <code>Limit prędkości pobierania</code> . Musi być liczbą całkowitą od 512 do 10240.</p>
-		<note style="advanced">
-			<p>Domyślnie: 1024</p>
-		</note>
-    </item>
-    <item>
-        <title>Adres URL serwera proxy</title>
-        <p>Adres URL wybranego serwera proxy.</p>
-    </item>
-    <item>
-        <title>Ciasteczka z przeglądarki</title>
-        <p>A browser in which to read cookies from and pass to yt-dlp's download engine.</p>
-		<note style="advanced">
-			<p>Default: None</p>
-		</note>
-    </item>
-    <item>
-        <title>Użyj SponsorBlock dla YouTube</title>
-        <p>If enabled, Parabolic will apply the SponsorBlock extension to YouTube downloads.</p>
-        <note>
-            <p>SponsorBlock only works on YouTube videos. However, leaving this setting on will not affect downloads from other sites (i.e. not cause them to fail).</p>
-        </note>
-        <note style="advanced">
-            <p>Domyślnie: wyłączone</p>
+            <p>Domyślnie: włączone</p>
         </note>
     </item>
 </terms>

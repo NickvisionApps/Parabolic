@@ -27,17 +27,9 @@
 	<item>
 		<title>Vložit metadata</title>
 		<p>Pokud je tato funkce povolena, aplikace Parabolic označí médium příslušnými informacemi (název, žánr atd.) a miniaturou, pokud je k dispozici.</p>
-        <p>Parabolic NEvkládá pole komentářů, popisu, synopse a Purl.</p>
 		<note style="advanced">
 			<p>Výchozí: zapnuto</p>
 		</note>
-    </item>
-    <item>
-        <title>Vložit titulky</title>
-        <p>Pokud je zakázáno nebo vložení selže, budou stažené titulky uloženy do odděleného souboru.</p>
-        <note style="advanced">
-            <p>Výchozí: zapnuto</p>
-        </note>
     </item>
     <item>
 		<title>Vložit kapitoly</title>
@@ -47,8 +39,16 @@
 		</note>
 	</item>
     <item>
+        <title>Vložit titulky</title>
+        <p>Pokud je zakázáno nebo vložení selže, budou stažené titulky uloženy do odděleného souboru.</p>
+        <note style="advanced">
+            <p>Výchozí: zapnuto</p>
+        </note>
+    </item>
+    <item>
 		<title>Oříznout miniatury zvuku</title>
 		<p>Pokud je tato funkce povolena, aplikace Parabolic ořízne miniatury zvukových souborů tak, aby měly čtvercové rozlišení.</p>
+        <p>This option is only configurable if <code>Embed Metadata</code> is on.</p>
 		<note style="advanced">
 			<p>Výchozí: vypnuto</p>
 		</note>
@@ -57,9 +57,17 @@
 		<title>Odebrat zdrojová data</title>
 		<p>Pokud je tato funkce povolena, aplikace Parabolic vymaže pole s metadaty obsahující URL a další identifikující informace o zdroji média.</p>
         <p>Pole, která budou vymazána: <code>comment</code>, <code>description</code>, <code>synopsis</code>, <code>purl</code> a <code>handler_name</code> v každém streamu.</p>
+        <p>This option is only configurable if <code>Embed Metadata</code> is on.</p>
 		<note style="advanced">
 			<p>Výchozí: vypnuto</p>
 		</note>
+    </item>
+    <item>
+        <title>Postprocessing Threads</title>
+        <p>The number of threads to allow the postprocessor (<code>FFmpeg</code>) to use for each download.</p>
+        <note style="advanced">
+            <p>Default: The max number of threads available on the system</p>
+        </note>
     </item>
 </terms>
 </page>

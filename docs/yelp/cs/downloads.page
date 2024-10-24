@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" id="downloader" its:version="2.0" xml:lang="cs">
+<info>
+	<link type="guide" xref="index"/>
+	<title type="link">Downloads 🌐</title>
+	<credit type="author copyright">
+		<name>Nicholas Logozzo</name>
+		<years its:translate="no">2023-2024</years>
+	</credit>
+	<credit type="publisher copyright">
+		<name>Nicholas Logozzo</name>
+		<years its:translate="no">2023-2024</years>
+	</credit>
+	<license href="http://creativecommons.org/licenses/by/4.0/" its:translate="no"><p>Creative Commons Attribution 4.0 International License</p></license>
+
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Jonáš Loskot</mal:name>
+      <mal:email>osobni@jonasloskot.cz</mal:email>
+      <mal:years>2023, 2024</mal:years>
+    </mal:credit>
+  </info>
+
+<title>Downloads</title>
+<p>This page explains all options for configuring Downloads in Preferences in <app>Parabolic</app>.</p>
+
+<terms>
+    <item>
+        <title>Omezení rychlosti</title>
+        <p>Limit, v Ki/s, který bude použit na stahování pouze pokud mají povolenou pokročilou možnost <code>Omezení rychlosti</code>. Musí to být celočíselná hodnota mezi 512 a 10 240.</p>
+		<note style="advanced">
+			<p>Výchozí: 1024</p>
+		</note>
+    </item>
+    <item>
+        <title>Použít SponsorBlock pro YouTube</title>
+        <p>Pokud je tato funkce povolena, aplikace Parabolic automaticky zapne rozšíření SponsorBlock pro stahování z YouTube.</p>
+        <note>
+            <p>SponsorBlock funguje pouze s videi na YouTube. Zapnutí tohoto nastavení nicméně neovlivní stahování z ostatních webů (např. se nestane, že by se kvůli tomu nestáhly).</p>
+        </note>
+        <note style="advanced">
+            <p>Výchozí: vypnuto</p>
+        </note>
+    </item>
+    <item>
+        <title>URL proxy</title>
+        <p>Adresa URL proxy serveru, který se má použít.</p>
+        <note style="advanced">
+			<p>Default: No URL</p>
+		</note>
+    </item>
+    <item>
+        <title>Soubory cookie z prohlížeče</title>
+        <p>Prohlížeč, ze kterého číst soubory cookie a které odeslat do stahovací služby yt-dlp.</p>
+        <p>This may be useful when downloading media that requires a login, for example: private YouTube videos.</p>
+        <p>This option is on available on non sandboxed platforms.</p>
+		<note style="advanced">
+			<p>Výchozí: žádné</p>
+		</note>
+    </item>
+    <item>
+        <title>Soubor cookies</title>
+        <p>A .txt file of cookies to pass to yt-dlp when download engine.</p>
+        <p>This may be useful when downloading media that requires a login, for example: private YouTube videos.</p>
+        <p>Pro získání cookies použijte jeden z následujících rozšíření prohlížeče:</p>
+        <p>Chrome: <code>https://chrome.google.com/webstore/detail/get-cookiestxt-locally/cclelndahbckbenkjhflpdbgdldlbecc</code></p>
+        <p>Firefox: <code>https://addons.mozilla.org/en-US/firefox/addon/cookies-txt/</code></p>
+        <note>
+            <p>Tato rozšíření používáte na vlastní nebezpečí.</p>
+        </note>
+		<note style="advanced">
+			<p>Výchozí: žádný vybraný soubor</p>
+		</note>
+    </item>
+</terms>
+</page>

@@ -27,17 +27,9 @@
 	<item>
 		<title>Zapisuj metadane w plikach</title>
 		<p>Po włączeniu, Parabolic będzie oznaczać multimedia odpowiednimi informacjami (tytułem, gatunkiem, itd.) i miniaturą, jeśli jest dostępna.</p>
-        <p>Parabolic NIE zapisze w pliku komentarzy, opisu, podsumowania czy purl.</p>
 		<note style="advanced">
 			<p>Domyślnie: włączone</p>
 		</note>
-    </item>
-    <item>
-        <title>Wbudowane napisy</title>
-        <p>Jeśli funkcja jest wyłączona lub osadzanie się nie powiedzie, pobrane napisy będą zapisane w osobnym pliku.</p>
-        <note style="advanced">
-            <p>Domyślnie: włączone</p>
-        </note>
     </item>
     <item>
 		<title>Zapisuj rozdziały w plikach</title>
@@ -47,8 +39,16 @@
 		</note>
 	</item>
     <item>
+        <title>Wbudowane napisy</title>
+        <p>Jeśli funkcja jest wyłączona lub osadzanie się nie powiedzie, pobrane napisy będą zapisane w osobnym pliku.</p>
+        <note style="advanced">
+            <p>Domyślnie: włączone</p>
+        </note>
+    </item>
+    <item>
 		<title>Przycinaj miniatury plików audio</title>
 		<p>If enabled, Parabolic will crop thumbnails for audio files to be a square resolution.</p>
+        <p>This option is only configurable if <code>Embed Metadata</code> is on.</p>
 		<note style="advanced">
 			<p>Domyślnie: wyłączone</p>
 		</note>
@@ -57,9 +57,17 @@
 		<title>Usuń dane źródłowe</title>
 		<p>Po włączeniu tej opcji, Parabolic usunie pola metadanych zawierające adres URL i inne informacje identyfikujące źródło multimediów.</p>
         <p>Pola, które są czyszczone: <code>comment</code>, <code>description</code>, <code>synopsis</code>, <code>purl</code> oraz <code>handler_name</code> w każdym strumieniu.</p>
+        <p>This option is only configurable if <code>Embed Metadata</code> is on.</p>
 		<note style="advanced">
 			<p>Domyślnie: wyłączone</p>
 		</note>
+    </item>
+    <item>
+        <title>Postprocessing Threads</title>
+        <p>The number of threads to allow the postprocessor (<code>FFmpeg</code>) to use for each download.</p>
+        <note style="advanced">
+            <p>Default: The max number of threads available on the system</p>
+        </note>
     </item>
 </terms>
 </page>

@@ -2,7 +2,7 @@
 <page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" id="downloader" its:version="2.0" xml:lang="ja">
 <info>
 	<link type="guide" xref="index"/>
-	<title type="link">ダウンローダー 🌐</title>
+	<title type="link">Downloader 🛠️</title>
 	<credit type="author copyright">
 		<name>Nicholas Logozzo</name>
 		<years its:translate="no">2023-2024</years>
@@ -41,6 +41,21 @@
 		</note>
     </item>
     <item>
+		<title>Limit Filename Characters</title>
+		<p>Restricts characters in filenames to only those supported by Windows.</p>
+        <p>This option is only available on Linux.</p>
+		<note style="advanced">
+			<p>デフォルト: オフ</p>
+		</note>
+    </item>
+    <item>
+		<title>Download Immediately After Validation</title>
+		<p>Bypasses the download options selection in the Add Download dialog and immediately downloads a validated media using previously selected options.</p>
+		<note style="advanced">
+			<p>デフォルト: オフ</p>
+		</note>
+    </item>
+    <item>
         <title>自動生成された字幕を含める</title>
         <p>要求された字幕の言語の自動翻訳された字幕を含むかどうか。</p>
         <note style="advanced">
@@ -48,54 +63,17 @@
         </note>
     </item>
     <item>
-        <title>aria2 を使用</title>
-        <p>有効であれば、Parabolic は aria2c を使用してメディアをダウンロードします。aria2c を使用するとダウンロード速度は向上しますが、UI にダウンロード進捗は表示されません。</p>
+        <title>Preferred Video Codec</title>
+        <p>The video codec Parabolic should prefer when selecting media formats to download.</p>
         <note style="advanced">
-            <p>デフォルト: オフ</p>
+            <p>Default: Any</p>
         </note>
     </item>
     <item>
-        <title>サーバーごとの最大接続数</title>
-        <p>このオプションは、aria2 の使用が有効な場合のみ適用されます。このオプションは、aria2c に <code>-x</code>のフラグを指定するのと同じです。</p>
-        <p>サーバーごとに使用できる最大接続数。1から32の整数値である必要があります。</p>
+        <title>Recover Crashed Downloads</title>
+        <p>If enabled, Parabolic will track the running and queued downloads and restart them if necessary if the application crashes and is restarted.</p>
         <note style="advanced">
-            <p>デフォルト: 16</p>
-        </note>
-    </item>
-    <item>
-        <title>最小分割サイズ</title>
-        <p>このオプションは、aria2 が有効な場合のみ適用されます。このオプションは、aria2c に <code>-k</code>のフラグを指定するのと同じです。</p>
-        <p>1ファイルを分割する最小サイズ（MiB 単位）。1から1024の整数である必要があります。</p>
-        <note style="advanced">
-            <p>デフォルト: 20</p>
-        </note>
-    </item>
-    <item>
-        <title>スピード制限</title>
-        <p>制限は、Ki/s 単位で、<code>スピード制限</code>の詳細オプションが有効なダウンロードにのみ適用されます。数値は512から10240の整数である必要があります。</p>
-		<note style="advanced">
-			<p>デフォルト: 1024</p>
-		</note>
-    </item>
-    <item>
-        <title>プロキシ URL</title>
-        <p>使用するプロキシサーバーの URL。</p>
-    </item>
-    <item>
-        <title>ブラウザのクッキー</title>
-        <p>Cookie を読み取り yt-dlp のダウンロードエンジンに渡すためのブラウザ。</p>
-		<note style="advanced">
-			<p>デフォルト: なし</p>
-		</note>
-    </item>
-    <item>
-        <title>YouTube のダウンロードで SponsorBlock を使用</title>
-        <p>有効であれば、Parabolic は SponsorBlock の拡張機能を YouTube のダウンロードで有効にします。</p>
-        <note>
-            <p>SponsorBlock は、YouTube の動画でのみ動作します。しかし、この設定をオンにしても、他のサイトからのダウンロードには影響しません（つまり、このオプションが原因で失敗することはありません）。</p>
-        </note>
-        <note style="advanced">
-            <p>デフォルト: オフ</p>
+            <p>デフォルト: オン</p>
         </note>
     </item>
 </terms>

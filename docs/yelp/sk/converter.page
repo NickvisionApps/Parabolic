@@ -27,17 +27,9 @@
 	<item>
 		<title>Vložiť metaúdaje</title>
 		<p>Ak je táto funkcia zapnutá, Parabolic označí médium príslušnými informáciami (názov, žáner atď...) a miniatúrou, ak je k dispozícii.</p>
-        <p>Parabolic NEVKLADÁ polia Komentár, Popis, Súhrn a Purl.</p>
 		<note style="advanced">
 			<p>Predvolené: Zapnuté</p>
 		</note>
-    </item>
-    <item>
-        <title>Vložiť titulky</title>
-        <p>Ak je vypnuté alebo ak sa vloženie nepodarí, stiahnuté titulky sa uložia do samostatného súboru.</p>
-        <note style="advanced">
-            <p>Predvolené: Zapnuté</p>
-        </note>
     </item>
     <item>
 		<title>Vložiť kapitoly</title>
@@ -47,8 +39,16 @@
 		</note>
 	</item>
     <item>
+        <title>Vložiť titulky</title>
+        <p>Ak je vypnuté alebo ak sa vloženie nepodarí, stiahnuté titulky sa uložia do samostatného súboru.</p>
+        <note style="advanced">
+            <p>Predvolené: Zapnuté</p>
+        </note>
+    </item>
+    <item>
 		<title>Orezať obrázkové náhľady zvuku</title>
 		<p>Ak je táto funkcia zapnutá, aplikácia Parabolic oreže náhľady obrázkov zvukových súborov tak, aby mali štvorcové rozlíšenie.</p>
+        <p>This option is only configurable if <code>Embed Metadata</code> is on.</p>
 		<note style="advanced">
 			<p>Predvolené: Vypnuté</p>
 		</note>
@@ -57,9 +57,17 @@
 		<title>Odstrániť zdrojové údaje</title>
 		<p>Ak je táto funkcia povolená, Parabolic vymaže polia metadát obsahujúce adresu URL a ďalšie identifikačné informácie o zdroji média.</p>
         <p>Polia, ktoré sú vyčistené:: <code>komentár</code>, <code>popis</code>, <code>súhrn</code>, <code>purl</code> a <code>handler_name</code> v každom dátovom toku.</p>
+        <p>This option is only configurable if <code>Embed Metadata</code> is on.</p>
 		<note style="advanced">
 			<p>Predvolené: Vypnuté</p>
 		</note>
+    </item>
+    <item>
+        <title>Postprocessing Threads</title>
+        <p>The number of threads to allow the postprocessor (<code>FFmpeg</code>) to use for each download.</p>
+        <note style="advanced">
+            <p>Default: The max number of threads available on the system</p>
+        </note>
     </item>
 </terms>
 </page>

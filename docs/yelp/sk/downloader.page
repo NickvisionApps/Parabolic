@@ -2,7 +2,7 @@
 <page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" id="downloader" its:version="2.0" xml:lang="sk">
 <info>
 	<link type="guide" xref="index"/>
-	<title type="link">Sťahovač 🌐</title>
+	<title type="link">Downloader 🛠️</title>
 	<credit type="author copyright">
 		<name>Nicholas Logozzo</name>
 		<years its:translate="no">2023-2024</years>
@@ -41,6 +41,21 @@
 		</note>
     </item>
     <item>
+		<title>Limit Filename Characters</title>
+		<p>Restricts characters in filenames to only those supported by Windows.</p>
+        <p>This option is only available on Linux.</p>
+		<note style="advanced">
+			<p>Predvolené: Vypnuté</p>
+		</note>
+    </item>
+    <item>
+		<title>Download Immediately After Validation</title>
+		<p>Bypasses the download options selection in the Add Download dialog and immediately downloads a validated media using previously selected options.</p>
+		<note style="advanced">
+			<p>Predvolené: Vypnuté</p>
+		</note>
+    </item>
+    <item>
         <title>Zahrnuté automaticky generované titulky</title>
         <p>Či majú byť zahrnuté titulky, ktoré sú automaticky preložené tak, aby zodpovedali požadovanému jazyku tituliek, alebo nie.</p>
         <note style="advanced">
@@ -48,54 +63,17 @@
         </note>
     </item>
     <item>
-        <title>Použiť aria2</title>
-        <p>Ak je táto možnosť povolená, Parabolic bude na sťahovanie médií používať aria2c. Hoci používanie aria2c môže zvýšiť rýchlosť sťahovania, priebeh sťahovania sa v používateľskom rozhraní nezobrazí.</p>
+        <title>Preferred Video Codec</title>
+        <p>The video codec Parabolic should prefer when selecting media formats to download.</p>
         <note style="advanced">
-            <p>Predvolené: Vypnuté</p>
+            <p>Default: Any</p>
         </note>
     </item>
     <item>
-        <title>Maximálny počet pripojení na server</title>
-        <p>Táto možnosť platí len vtedy, keď je povolené používanie aria2. Táto možnosť je rovnaká ako príznak <code>x</code> odovzdaný aria2c.</p>
-        <p>Maximálny počet pripojení, ktoré možno použiť na jeden server. Musí to byť celočíselná hodnota od 1 do 32.</p>
+        <title>Recover Crashed Downloads</title>
+        <p>If enabled, Parabolic will track the running and queued downloads and restart them if necessary if the application crashes and is restarted.</p>
         <note style="advanced">
-            <p>Predvolené: 16</p>
-        </note>
-    </item>
-    <item>
-        <title>Minimálna veľkosť rozdelenia</title>
-        <p>Táto možnosť platí len vtedy, keď je povolené používanie aria2. Táto možnosť je rovnaká ako príznak <code>k</code> odovzdaný aria2c.</p>
-        <p>Minimálna veľkosť v MiB, na ktorú sa má súbor rozdeliť. Musí to byť celé číslo v rozsahu od 1 do 1024.</p>
-        <note style="advanced">
-            <p>Predvolené: 20</p>
-        </note>
-    </item>
-    <item>
-        <title>Obmedzenie rýchlosti</title>
-        <p>Obmedzenie v Ki/s, ktoré sa použije na sťahovanie iba vtedy, ak je povolená rozšírená možnosť <code>Omedzenie rýchlosti</code>. Musí to byť celočíselná hodnota medzi 512 a 10240.</p>
-		<note style="advanced">
-			<p>Predvolené: 1024</p>
-		</note>
-    </item>
-    <item>
-        <title>URL adresa proxy servera</title>
-        <p>URL adresa proxy servera, ktorý sa má použiť.</p>
-    </item>
-    <item>
-        <title>Súbory cookie z prehliadača</title>
-        <p>Prehliadač, z ktorého sa načítajú súbory cookie a odovzdávajú sa do nástroja na sťahovanie yt-dlp.</p>
-		<note style="advanced">
-			<p>Predvolené: Žiadne</p>
-		</note>
-    </item>
-    <item>
-        <title>Použiť SponsorBlock pre YouTube</title>
-        <p>Ak je táto funkcia povolená, aplikácia Parabolic použije rozšírenie SponsorBlock na sťahovanie z YouTube.</p>
-        <note>
-            <p>SponsorBlock funguje len na videá v službe YouTube. Ponechanie tohto nastavenia však neovplyvní sťahovanie z iných stránok (t. j. nespôsobí ich zlyhanie).</p>
-        </note>
-        <note style="advanced">
-            <p>Predvolené: Vypnuté</p>
+            <p>Predvolené: Zapnuté</p>
         </note>
     </item>
 </terms>

@@ -2,7 +2,7 @@
 <page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" id="downloader" its:version="2.0" xml:lang="sv">
 <info>
 	<link type="guide" xref="index"/>
-	<title type="link">Nedladdare 🌐</title>
+	<title type="link">Downloader 🛠️</title>
 	<credit type="author copyright">
 		<name>Nicholas Logozzo</name>
 		<years its:translate="no">2023-2024</years>
@@ -35,6 +35,21 @@
 		</note>
     </item>
     <item>
+		<title>Limit Filename Characters</title>
+		<p>Restricts characters in filenames to only those supported by Windows.</p>
+        <p>This option is only available on Linux.</p>
+		<note style="advanced">
+			<p>Standard: Av</p>
+		</note>
+    </item>
+    <item>
+		<title>Download Immediately After Validation</title>
+		<p>Bypasses the download options selection in the Add Download dialog and immediately downloads a validated media using previously selected options.</p>
+		<note style="advanced">
+			<p>Standard: Av</p>
+		</note>
+    </item>
+    <item>
         <title>Inkluderade automatiskt genererade undertexter</title>
         <p>Oavsett om du vill inkludera undertexter eller inte, som är automatiskt översatta för att passa de begärda undertextspråken.</p>
         <note style="advanced">
@@ -42,54 +57,17 @@
         </note>
     </item>
     <item>
-        <title>Använd aria2</title>
-        <p>Om aktiverat kommer Parabolic att använda aria2c för att ladda ner media. Även om användning av aria2c kan förbättra nedladdningshastigheten, kommer inte nedladdningsförloppet att visas i användargränssnittet.</p>
+        <title>Preferred Video Codec</title>
+        <p>The video codec Parabolic should prefer when selecting media formats to download.</p>
         <note style="advanced">
-            <p>Standard: Av</p>
+            <p>Default: Any</p>
         </note>
     </item>
     <item>
-        <title>Maximalt antal anslutningar per server</title>
-        <p>Det här alternativet gäller endast när aria2 är aktiverat. Detta alternativ är detsamma som flaggan <code>-x</code> som skickas till aria2c.</p>
-        <p>Det maximala antalet anslutningar som kan användas per server. Måste vara ett heltalsvärde mellan 1 och 32.</p>
+        <title>Recover Crashed Downloads</title>
+        <p>If enabled, Parabolic will track the running and queued downloads and restart them if necessary if the application crashes and is restarted.</p>
         <note style="advanced">
-            <p>Standard: 16</p>
-        </note>
-    </item>
-    <item>
-        <title>Minsta splitstorlek</title>
-        <p>Det här alternativet gäller endast när aria2 är aktiverat. Detta alternativ är detsamma som flaggan <code>-k</code> som skickas till aria2c.</p>
-        <p>Minsta storlek, i MiB, för att dela en fil. Måste vara ett heltalsvärde mellan 1 och 1024.</p>
-        <note style="advanced">
-            <p>Standard: 20</p>
-        </note>
-    </item>
-    <item>
-        <title>Hastighetsgräns</title>
-        <p>En gräns, i Ki/s, som endast tillämpas på nedladdningar om de har det avancerade alternativet <code>Hastighetsgräns</code> aktiverat. Måste vara ett heltalsvärde mellan 512 och 10240.</p>
-		<note style="advanced">
-			<p>Standard: 1024</p>
-		</note>
-    </item>
-    <item>
-        <title>Proxy URL</title>
-        <p>URL till proxyservern som ska användas.</p>
-    </item>
-    <item>
-        <title>Cookies från webbläsaren</title>
-        <p>En webbläsare där man kan läsa cookies från och skicka till yt-dlp:s nedladdningsmotor.</p>
-		<note style="advanced">
-			<p>Standard: Ingen</p>
-		</note>
-    </item>
-    <item>
-        <title>Använd SponsorBlock för YouTube</title>
-        <p>Om det är aktiverat kommer Parabolic att tillämpa SponsorBlock-tillägget på YouTube-nedladdningar.</p>
-        <note>
-            <p>SponsorBlock fungerar bara på YouTube-videor. Om du låter den här inställningen vara aktiverad kommer det dock inte att påverka nedladdningar från andra webbplatser (dvs. att de inte misslyckas).</p>
-        </note>
-        <note style="advanced">
-            <p>Standard: Av</p>
+            <p>Standard: På</p>
         </note>
     </item>
 </terms>

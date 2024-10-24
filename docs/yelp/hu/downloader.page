@@ -2,7 +2,7 @@
 <page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" id="downloader" its:version="2.0" xml:lang="hu">
 <info>
 	<link type="guide" xref="index"/>
-	<title type="link">Downloader 🌐</title>
+	<title type="link">Downloader 🛠️</title>
 	<credit type="author copyright">
 		<name>Nicholas Logozzo</name>
 		<years its:translate="no">2023-2024</years>
@@ -37,6 +37,21 @@
 		</note>
     </item>
     <item>
+		<title>Limit Filename Characters</title>
+		<p>Restricts characters in filenames to only those supported by Windows.</p>
+        <p>This option is only available on Linux.</p>
+		<note style="advanced">
+			<p>Default: Off</p>
+		</note>
+    </item>
+    <item>
+		<title>Download Immediately After Validation</title>
+		<p>Bypasses the download options selection in the Add Download dialog and immediately downloads a validated media using previously selected options.</p>
+		<note style="advanced">
+			<p>Default: Off</p>
+		</note>
+    </item>
+    <item>
         <title>Included Auto-Generated Subtitles</title>
         <p>Whether or not to included subtitles that are auto-translated to fit the requested subtitle languages.</p>
         <note style="advanced">
@@ -44,58 +59,17 @@
         </note>
     </item>
     <item>
-        <title>aria2 letöltő használata</title>
-        <p>If enabled, Parabolic will use aria2c to download media. Although using aria2c can improve download speed, download progress will not be displayed in the UI.</p>
+        <title>Preferred Video Codec</title>
+        <p>The video codec Parabolic should prefer when selecting media formats to download.</p>
         <note style="advanced">
-            <p>Default: Off</p>
+            <p>Default: Any</p>
         </note>
     </item>
     <item>
-        <title>Maximum Connections Per Server</title>
-        <p>
-            This option only applies when using aria2 is enabled. This option is the same as the <code>-x</code> flag passed to aria2c.
-        </p>
-        <p>The maximum number of connection that can be used per server. Must be an integer value between 1 and 32.</p>
+        <title>Recover Crashed Downloads</title>
+        <p>If enabled, Parabolic will track the running and queued downloads and restart them if necessary if the application crashes and is restarted.</p>
         <note style="advanced">
-            <p>Alapértelmezett: 16</p>
-        </note>
-    </item>
-    <item>
-        <title>Minimum Split Size</title>
-        <p>
-            This option only applies when using aria2 is enabled. This option is the same as the <code>-k</code> flag passed to aria2c.
-        </p>
-        <p>The minimum size, in MiB, of which to split a file. Must be an integer value between 1 and 1024.</p>
-        <note style="advanced">
-            <p>Alapértelmezett: 20</p>
-        </note>
-    </item>
-    <item>
-        <title>Sávszélesség korlátozása</title>
-        <p>A limit, in Ki/s, that is applied to downloads only if they have the advanced option <code>Speed Limit</code> enabled. Must be an integer value between 512 and 10240.</p>
-		<note style="advanced">
-			<p>Alapértelmezett: 1024</p>
-		</note>
-    </item>
-    <item>
-        <title>Proxy átjáró címe</title>
-        <p>The url of the proxy server to use.</p>
-    </item>
-    <item>
-        <title>Süti fájl betöltése böngészőből</title>
-        <p>A browser in which to read cookies from and pass to yt-dlp's download engine.</p>
-		<note style="advanced">
-			<p>Default: None</p>
-		</note>
-    </item>
-    <item>
-        <title>Szponzoráció eltávolítása YouTube videókból</title>
-        <p>If enabled, Parabolic will apply the SponsorBlock extension to YouTube downloads.</p>
-        <note>
-            <p>SponsorBlock only works on YouTube videos. However, leaving this setting on will not affect downloads from other sites (i.e. not cause them to fail).</p>
-        </note>
-        <note style="advanced">
-            <p>Default: Off</p>
+            <p>Default: On</p>
         </note>
     </item>
 </terms>

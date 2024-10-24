@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" id="downloader" its:version="2.0" xml:lang="sv">
+<info>
+	<link type="guide" xref="index"/>
+	<title type="link">Downloads 🌐</title>
+	<credit type="author copyright">
+		<name>Nicholas Logozzo</name>
+		<years its:translate="no">2023-2024</years>
+	</credit>
+	<credit type="publisher copyright">
+		<name>Nicholas Logozzo</name>
+		<years its:translate="no">2023-2024</years>
+	</credit>
+	<license href="http://creativecommons.org/licenses/by/4.0/" its:translate="no"><p>Creative Commons Attribution 4.0 International License</p></license>
+</info>
+
+<title>Downloads</title>
+<p>This page explains all options for configuring Downloads in Preferences in <app>Parabolic</app>.</p>
+
+<terms>
+    <item>
+        <title>Hastighetsgräns</title>
+        <p>En gräns, i Ki/s, som endast tillämpas på nedladdningar om de har det avancerade alternativet <code>Hastighetsgräns</code> aktiverat. Måste vara ett heltalsvärde mellan 512 och 10240.</p>
+		<note style="advanced">
+			<p>Standard: 1024</p>
+		</note>
+    </item>
+    <item>
+        <title>Använd SponsorBlock för YouTube</title>
+        <p>Om det är aktiverat kommer Parabolic att tillämpa SponsorBlock-tillägget på YouTube-nedladdningar.</p>
+        <note>
+            <p>SponsorBlock fungerar bara på YouTube-videor. Om du låter den här inställningen vara aktiverad kommer det dock inte att påverka nedladdningar från andra webbplatser (dvs. att de inte misslyckas).</p>
+        </note>
+        <note style="advanced">
+            <p>Standard: Av</p>
+        </note>
+    </item>
+    <item>
+        <title>Proxy URL</title>
+        <p>URL till proxyservern som ska användas.</p>
+        <note style="advanced">
+			<p>Default: No URL</p>
+		</note>
+    </item>
+    <item>
+        <title>Cookies från webbläsaren</title>
+        <p>En webbläsare där man kan läsa cookies från och skicka till yt-dlp:s nedladdningsmotor.</p>
+        <p>This may be useful when downloading media that requires a login, for example: private YouTube videos.</p>
+        <p>This option is on available on non sandboxed platforms.</p>
+		<note style="advanced">
+			<p>Standard: Ingen</p>
+		</note>
+    </item>
+    <item>
+        <title>Cookies fil</title>
+        <p>A .txt file of cookies to pass to yt-dlp when download engine.</p>
+        <p>This may be useful when downloading media that requires a login, for example: private YouTube videos.</p>
+        <p>Använd ett av följande tillägg för att hämta en cookies fil från din webbläsare:</p>
+        <p>Chrome: <code>https://chrome.google.com/webstore/detail/get-cookiestxt-locally/cclelndahbckbenkjhflpdbgdldlbecc</code></p>
+        <p>Firefox: <code>https://addons.mozilla.org/sv-SE/firefox/addon/cookies-txt/</code></p>
+        <note>
+            <p>Använd dessa tillägg på egen risk.</p>
+        </note>
+		<note style="advanced">
+			<p>Standard: Ingen fil har valts</p>
+		</note>
+    </item>
+</terms>
+</page>

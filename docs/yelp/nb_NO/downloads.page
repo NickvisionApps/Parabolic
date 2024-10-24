@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" id="downloader" its:version="2.0" xml:lang="nb-NO">
+<info>
+	<link type="guide" xref="index"/>
+	<title type="link">Downloads 🌐</title>
+	<credit type="author copyright">
+		<name>Nicholas Logozzo</name>
+		<years its:translate="no">2023-2024</years>
+	</credit>
+	<credit type="publisher copyright">
+		<name>Nicholas Logozzo</name>
+		<years its:translate="no">2023-2024</years>
+	</credit>
+	<license href="http://creativecommons.org/licenses/by/4.0/" its:translate="no"><p>Creative Commons Attribution 4.0 International License</p></license>
+
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Brage Fuglseth</mal:name>
+      <mal:email>bragefuglseth@gnome.org</mal:email>
+      <mal:years>2024</mal:years>
+    </mal:credit>
+  </info>
+
+<title>Downloads</title>
+<p>This page explains all options for configuring Downloads in Preferences in <app>Parabolic</app>.</p>
+
+<terms>
+    <item>
+        <title>Hastighetsgrense</title>
+        <p>En øvre grense for nedlastningsfart i KiB/s, som brukes hvis hastighetsgrense også er slått på for den enkelte nedlastingen.</p>
+		<note style="advanced">
+			<p>Standard: 1024</p>
+		</note>
+    </item>
+    <item>
+        <title>Bruk SponsorBlock på Youtube</title>
+        <p>Hvis dette er på, vil Parabolic bruke SponsorBlock-utvidelsen til å kutte ut betalte segmenter fra YouTube-videoer.</p>
+        <note>
+            <p>SponsorBlock fungerer bare på YouTube. Å ha denne innstillingen på vil ikke påvirke andre nedlastinger på noen som helst måte.</p>
+        </note>
+        <note style="advanced">
+            <p>Standard: av</p>
+        </note>
+    </item>
+    <item>
+        <title>Mellomtjeneradresse</title>
+        <p>Adressen til en mellomtjener som skal brukes.</p>
+        <note style="advanced">
+			<p>Default: No URL</p>
+		</note>
+    </item>
+    <item>
+        <title>Informasjonskapsler fra nettleser</title>
+        <p>En nettleser som informasjonskapsler skal hentes fra til autentisering av nedlastinger.</p>
+        <p>This may be useful when downloading media that requires a login, for example: private YouTube videos.</p>
+        <p>This option is on available on non sandboxed platforms.</p>
+		<note style="advanced">
+			<p>Standard: ingen</p>
+		</note>
+    </item>
+    <item>
+        <title>Cookies File</title>
+        <p>A .txt file of cookies to pass to yt-dlp when download engine.</p>
+        <p>This may be useful when downloading media that requires a login, for example: private YouTube videos.</p>
+        <p>Use one of the following extensions for getting a cookies file from your browser:</p>
+        <p>Chrome: <code>https://chrome.google.com/webstore/detail/get-cookiestxt-locally/cclelndahbckbenkjhflpdbgdldlbecc</code></p>
+        <p>Firefox: <code>https://addons.mozilla.org/en-US/firefox/addon/cookies-txt/</code></p>
+        <note>
+            <p>Use these extensions at your own risk.</p>
+        </note>
+		<note style="advanced">
+			<p>Default: No File Selected</p>
+		</note>
+    </item>
+</terms>
+</page>

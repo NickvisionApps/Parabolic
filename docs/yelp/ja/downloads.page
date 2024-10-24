@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" id="downloader" its:version="2.0" xml:lang="ja">
+<info>
+	<link type="guide" xref="index"/>
+	<title type="link">Downloads 🌐</title>
+	<credit type="author copyright">
+		<name>Nicholas Logozzo</name>
+		<years its:translate="no">2023-2024</years>
+	</credit>
+	<credit type="publisher copyright">
+		<name>Nicholas Logozzo</name>
+		<years its:translate="no">2023-2024</years>
+	</credit>
+	<license href="http://creativecommons.org/licenses/by/4.0/" its:translate="no"><p>Creative Commons Attribution 4.0 International License</p></license>
+
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Gnuey56</mal:name>
+      <mal:email>gnuey56@proton.me</mal:email>
+      <mal:years>2023</mal:years>
+    </mal:credit>
+  </info>
+
+<title>Downloads</title>
+<p>This page explains all options for configuring Downloads in Preferences in <app>Parabolic</app>.</p>
+
+<terms>
+    <item>
+        <title>スピード制限</title>
+        <p>制限は、Ki/s 単位で、<code>スピード制限</code>の詳細オプションが有効なダウンロードにのみ適用されます。数値は512から10240の整数である必要があります。</p>
+		<note style="advanced">
+			<p>デフォルト: 1024</p>
+		</note>
+    </item>
+    <item>
+        <title>YouTube のダウンロードで SponsorBlock を使用</title>
+        <p>有効であれば、Parabolic は SponsorBlock の拡張機能を YouTube のダウンロードで有効にします。</p>
+        <note>
+            <p>SponsorBlock は、YouTube の動画でのみ動作します。しかし、この設定をオンにしても、他のサイトからのダウンロードには影響しません（つまり、このオプションが原因で失敗することはありません）。</p>
+        </note>
+        <note style="advanced">
+            <p>デフォルト: オフ</p>
+        </note>
+    </item>
+    <item>
+        <title>プロキシ URL</title>
+        <p>使用するプロキシサーバーの URL。</p>
+        <note style="advanced">
+			<p>Default: No URL</p>
+		</note>
+    </item>
+    <item>
+        <title>ブラウザのクッキー</title>
+        <p>Cookie を読み取り yt-dlp のダウンロードエンジンに渡すためのブラウザ。</p>
+        <p>This may be useful when downloading media that requires a login, for example: private YouTube videos.</p>
+        <p>This option is on available on non sandboxed platforms.</p>
+		<note style="advanced">
+			<p>デフォルト: なし</p>
+		</note>
+    </item>
+    <item>
+        <title>クッキーファイル</title>
+        <p>A .txt file of cookies to pass to yt-dlp when download engine.</p>
+        <p>This may be useful when downloading media that requires a login, for example: private YouTube videos.</p>
+        <p>拡張機能を使って、ブラウザーからクッキーファイルを入手できます：</p>
+        <p>Chrome: <code>https://chrome.google.com/webstore/detail/get-cookiestxt-locally/cclelndahbckbenkjhflpdbgdldlbecc</code></p>
+        <p>Firefox: <code>https://addons.mozilla.org/ja/firefox/addon/cookies-txt/</code></p>
+        <note>
+            <p>これらの拡張機能は、自己責任で使用してください。</p>
+        </note>
+		<note style="advanced">
+			<p>デフォルト: ファイル選択なし</p>
+		</note>
+    </item>
+</terms>
+</page>

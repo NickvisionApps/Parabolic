@@ -2,7 +2,7 @@
 <page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" id="downloader" its:version="2.0" xml:lang="nb-NO">
 <info>
 	<link type="guide" xref="index"/>
-	<title type="link">Nedlasting</title>
+	<title type="link">Downloader 🛠️</title>
 	<credit type="author copyright">
 		<name>Nicholas Logozzo</name>
 		<years its:translate="no">2023-2024</years>
@@ -41,6 +41,21 @@
 		</note>
     </item>
     <item>
+		<title>Limit Filename Characters</title>
+		<p>Restricts characters in filenames to only those supported by Windows.</p>
+        <p>This option is only available on Linux.</p>
+		<note style="advanced">
+			<p>Standard: av</p>
+		</note>
+    </item>
+    <item>
+		<title>Download Immediately After Validation</title>
+		<p>Bypasses the download options selection in the Add Download dialog and immediately downloads a validated media using previously selected options.</p>
+		<note style="advanced">
+			<p>Standard: av</p>
+		</note>
+    </item>
+    <item>
         <title>Inkluder automatiske undertekster</title>
         <p>Om automatisk genererte undertekster som samsvarer med det valgte språket skal inkluderes i nedlastingen.</p>
         <note style="advanced">
@@ -48,54 +63,17 @@
         </note>
     </item>
     <item>
-        <title>Bruk aria2</title>
-        <p>Hvis dette er på, vil Parabolic bruke aria2c til å gjennomføre nedlastinger.</p>
+        <title>Preferred Video Codec</title>
+        <p>The video codec Parabolic should prefer when selecting media formats to download.</p>
         <note style="advanced">
-            <p>Standard: av</p>
+            <p>Default: Any</p>
         </note>
     </item>
     <item>
-        <title>Høyeste antall tilkoblinger per tjener</title>
-        <p>Denne innstillingen gjelder bare når aria2 er i bruk. Den tilsvarer å sende verdien <code>-x</code> til ara2c.</p>
-        <p>Det høyeste antallet tilkoblinger som kan brukes per tjener. Må være et tall mellom 1 og 32.</p>
+        <title>Recover Crashed Downloads</title>
+        <p>If enabled, Parabolic will track the running and queued downloads and restart them if necessary if the application crashes and is restarted.</p>
         <note style="advanced">
-            <p>Standard: 16</p>
-        </note>
-    </item>
-    <item>
-        <title>Minste inndelingsstørrelse</title>
-        <p>Denne innstillingen gjelder bare når aria2 er i bruk. Den tilsvarer å sende verdien <code>-k</code> til aria2c.</p>
-        <p>Den minste størrelsen en fil kan deles inn i, i MiB. Må være et tall mellom 1 og 1024.</p>
-        <note style="advanced">
-            <p>Standard: 20</p>
-        </note>
-    </item>
-    <item>
-        <title>Hastighetsgrense</title>
-        <p>En øvre grense for nedlastningsfart i KiB/s, som brukes hvis hastighetsgrense også er slått på for den enkelte nedlastingen.</p>
-		<note style="advanced">
-			<p>Standard: 1024</p>
-		</note>
-    </item>
-    <item>
-        <title>Mellomtjeneradresse</title>
-        <p>Adressen til en mellomtjener som skal brukes.</p>
-    </item>
-    <item>
-        <title>Informasjonskapsler fra nettleser</title>
-        <p>En nettleser som informasjonskapsler skal hentes fra til autentisering av nedlastinger.</p>
-		<note style="advanced">
-			<p>Standard: ingen</p>
-		</note>
-    </item>
-    <item>
-        <title>Bruk SponsorBlock på Youtube</title>
-        <p>Hvis dette er på, vil Parabolic bruke SponsorBlock-utvidelsen til å kutte ut betalte segmenter fra YouTube-videoer.</p>
-        <note>
-            <p>SponsorBlock fungerer bare på YouTube. Å ha denne innstillingen på vil ikke påvirke andre nedlastinger på noen som helst måte.</p>
-        </note>
-        <note style="advanced">
-            <p>Standard: av</p>
+            <p>Standard: på</p>
         </note>
     </item>
 </terms>

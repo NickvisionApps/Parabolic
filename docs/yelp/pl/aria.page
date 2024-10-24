@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" id="downloader" its:version="2.0" xml:lang="pl">
+<info>
+	<link type="guide" xref="index"/>
+	<title type="link">aria2 🖥️</title>
+	<credit type="author copyright">
+		<name>Nicholas Logozzo</name>
+		<years its:translate="no">2023-2024</years>
+	</credit>
+	<credit type="publisher copyright">
+		<name>Nicholas Logozzo</name>
+		<years its:translate="no">2023-2024</years>
+	</credit>
+	<license href="http://creativecommons.org/licenses/by/4.0/" its:translate="no"><p>Creative Commons Attribution 4.0 International License</p></license>
+
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Dominik Gęgotek</mal:name>
+      <mal:email>ioutora@disroot.org</mal:email>
+      <mal:years>2023</mal:years>
+    </mal:credit>
+  </info>
+
+<title>aria2</title>
+<p>This page explains all options for configuring aria2 in Preferences in <app>Parabolic</app>.</p>
+
+<terms>
+    <item>
+        <title>Używaj aria2</title>
+        <p>If enabled, Parabolic will use aria2c to download media.</p>
+        <p>Although using aria2c can improve download speed, download progress will not be displayed in the UI.</p>
+        <note style="advanced">
+            <p>Domyślnie: wyłączone</p>
+        </note>
+    </item>
+    <item>
+        <title>Maksymalna ilość połączeń na serwer</title>
+        <p>Ta ustawienie działa jeśli opcja "Używaj aria2" jest włączona. To ustawienie działa tak samo jak flaga <code>-x</code> w programie aria2c.</p>
+        <p>Maksymalna ilość połączeń na serwer. Musi być liczbą całkowitą od 1 do 32.</p>
+        <note style="advanced">
+            <p>Domyślnie: 16</p>
+        </note>
+    </item>
+    <item>
+        <title>Minimalny rozmiar podziału</title>
+        <p>To ustawienie działa jeśli opcja "Używaj aria2" jest włączona. To ustawienie działa tak samo jak flaga <code>-k</code> w programie aria2c.</p>
+        <p>Minimalny rozmiar (w MiB), na jaki ma zostać podzielony plik. Musi być liczbą całkowitą od 1 do 1024.</p>
+        <note style="advanced">
+            <p>Domyślnie: 20</p>
+        </note>
+    </item>
+</terms>
+</page>
