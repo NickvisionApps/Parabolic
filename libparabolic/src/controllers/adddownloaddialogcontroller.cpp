@@ -297,7 +297,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         DownloadOptions options{ media.getUrl() };
         options.setCredential(m_credential);
         options.setSaveFolder(std::filesystem::exists(saveFolder) ? saveFolder : m_previousOptions.getSaveFolder());
-        options.setSaveFilename(!filename.empty() ? filename : media.getTitle());
+        options.setSaveFilename(!filename.empty() ? StringHelpers::normalizeForFilename(std::filesystem::path(filename).filename().stem().string(), m_downloadManager.getDownloaderOptions().getLimitCharacters()) : media.getTitle());
         if(media.getType() == MediaType::Audio)
         {
             fileTypeIndex += 5; 
@@ -353,7 +353,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
             DownloadOptions options{ media.getUrl() };
             options.setCredential(m_credential);
             options.setSaveFolder(playlistSaveFolder);
-            options.setSaveFilename(!pair.second.empty() ? pair.second : media.getTitle());
+            options.setSaveFilename(!pair.second.empty() ? StringHelpers::normalizeForFilename(std::filesystem::path(pair.second).filename().stem().string(), m_downloadManager.getDownloaderOptions().getLimitCharacters())  : media.getTitle());
             options.setFileType(static_cast<MediaFileType::MediaFileTypeValue>(fileTypeIndex));
             options.setSplitChapters(splitChapters);
             options.setLimitSpeed(limitSpeed);
