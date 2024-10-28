@@ -14,12 +14,14 @@
 #include "controls/historyrow.h"
 #include "helpers/qthelpers.h"
 #include "views/adddownloaddialog.h"
+#include "views/credentialdialog.h"
 #include "views/keyringdialog.h"
 #include "views/settingsdialog.h"
 
 using namespace Nickvision::App;
 using namespace Nickvision::Events;
 using namespace Nickvision::Helpers;
+using namespace Nickvision::Keyring;
 using namespace Nickvision::Notifications;
 using namespace Nickvision::TubeConverter::QT::Controls;
 using namespace Nickvision::TubeConverter::QT::Helpers;
@@ -93,6 +95,7 @@ namespace Nickvision::TubeConverter::QT::Views
         m_controller->shellNotificationSent() += [&](const ShellNotificationSentEventArgs& args) { onShellNotificationSent(args); };
         m_controller->disclaimerTriggered() += [&](const ParamEventArgs<std::string>& args) { onDisclaimerTriggered(args); };
         m_controller->getDownloadManager().historyChanged() += [&](const ParamEventArgs<std::vector<HistoricDownload>>& args) { QTHelpers::dispatchToMainThread([this, args]() { onHistoryChanged(args); }); };
+        m_controller->getDownloadManager().downloadCredentialNeeded() += [&](const DownloadCredentialNeededEventArgs& args) { onDownloadCredentialNeeded(args); };
         m_controller->getDownloadManager().downloadAdded() += [&](const DownloadAddedEventArgs& args) { QTHelpers::dispatchToMainThread([this, args]() { onDownloadAdded(args); }); };
         m_controller->getDownloadManager().downloadCompleted() += [&](const DownloadCompletedEventArgs& args) { QTHelpers::dispatchToMainThread([this, args]() { onDownloadCompleted(args); }); };
         m_controller->getDownloadManager().downloadProgressChanged() += [&](const DownloadProgressChangedEventArgs& args) { QTHelpers::dispatchToMainThread([this, args]() { onDownloadProgressChanged(args); }); };
@@ -345,6 +348,12 @@ namespace Nickvision::TubeConverter::QT::Views
             m_ui->listHistory->insertItem(0, item);
             m_ui->listHistory->setItemWidget(item, row);
         }
+    }
+
+    void MainWindow::onDownloadCredentialNeeded(const DownloadCredentialNeededEventArgs& args)
+    {
+        CredentialDialog dialog{ m_controller->createCredentialDialogController(args), this };
+        dialog.exec();
     }
 
     void MainWindow::onDownloadAdded(const DownloadAddedEventArgs& args)

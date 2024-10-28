@@ -147,20 +147,13 @@ namespace Nickvision::TubeConverter::QT::Views
 
     void AddDownloadDialog::onCmbAuthenticateChanged(int index)
     {
-        if(index == 1)
-        {
-            m_ui->lblUsername->show();
-            m_ui->txtUsername->show();
-            m_ui->lblPassword->show();
-            m_ui->txtPassword->show();
-        }
-        else
-        {
-            m_ui->lblUsername->hide();
-            m_ui->txtUsername->hide();
-            m_ui->lblPassword->hide();
-            m_ui->txtPassword->hide();
-        }
+        bool show{ index == 1 };
+        m_ui->lblUsername->setVisible(show);
+        m_ui->txtUsername->setVisible(show);
+        m_ui->txtUsername->clear();
+        m_ui->lblPassword->setVisible(show);
+        m_ui->txtPassword->setVisible(show);
+        m_ui->txtPassword->clear();
     }
 
     void AddDownloadDialog::validateUrl()

@@ -34,4 +34,4 @@ namespace Nickvision::TubeConverter::QT::Controls
     };
 }
 
-#endif // ABOUTDIALOG_H
+#endif //ABOUTDIALOG_H
