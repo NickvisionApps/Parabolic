@@ -41,11 +41,11 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         m_appInfo.setVersion({ "2024.10.3-next" });
         m_appInfo.setShortName(_("Parabolic"));
         m_appInfo.setDescription(_("Download web video and audio"));
-        m_appInfo.setChangelog("- Added support for selecting a batch file with multiple URLs to validate instead of validating a single URL at a time\n- Added a recovery mode where downloads that were running/queued will be restored when the application is restarted after a crash\n- Fixed an issue where YouTube tabs were not correctly validated\n- Fixed an issue where UTF-8 characters were not displayed correctly on Windows\n- Fixed an issue where playlist names were not normalized on Windows\n- Fixed an issue where the row animations were choppy using aria2c on Linux\n- Fixed an issue where the app would crash when stopping all downloads on Linux\n- Updated yt-dlp to 2024.10.22");
+        m_appInfo.setChangelog("- Added support for selecting a batch file with multiple URLs to validate instead of validating a single URL at a time\n- Added a recovery mode where downloads that were running/queued will be restored when the application is restarted after a crash\n- User entered file names will now be correctly normalized and validated in the Add Download dialog\n- Fixed an issue where YouTube tabs were not correctly validated\n- Fixed an issue where the app's documentation was not accessible\n- Fixed an issue where UTF-8 characters were not displayed correctly on Windows\n- Fixed an issue where playlist names were not normalized on Windows\n- Fixed an issue where the row animations were choppy using aria2c on Linux\n- Fixed an issue where the app would crash when stopping all downloads on Linux\n- Updated yt-dlp to 2024.10.22");
         m_appInfo.setSourceRepo("https://github.com/NickvisionApps/Parabolic");
         m_appInfo.setIssueTracker("https://github.com/NickvisionApps/Parabolic/issues/new");
         m_appInfo.setSupportUrl("https://github.com/NickvisionApps/Parabolic/discussions");
-        m_appInfo.setHtmlDocsStore("https://github.com/NickvisionApps/Parabolic/blob/main/NickvisionTubeConverter.Shared/Docs/html");
+        m_appInfo.setHtmlDocsStore(m_appInfo.getVersion().getVersionType() == VersionType::Stable ? "https://github.com/NickvisionApps/Parabolic/blob/" + m_appInfo.getVersion().str() + "/docs/html" : "https://github.com/NickvisionApps/Parabolic/blob/main/docs/html");
         m_appInfo.getExtraLinks()[_("Matrix Chat")] = "https://matrix.to/#/#nickvision:matrix.org";
         m_appInfo.getDevelopers()["Nicholas Logozzo"] = "https://github.com/nlogozzo";
         m_appInfo.getDevelopers()[_("Contributors on GitHub")] = "https://github.com/NickvisionApps/Parabolic/graphs/contributors";

@@ -54,6 +54,7 @@ namespace Nickvision::TubeConverter::QT::Views
         m_ui->actionClearCompletedDownloads->setText(_("Clear Completed Downloads"));
         m_ui->menuHelp->setTitle(_("Help"));
         m_ui->actionCheckForUpdates->setText(_("Check for Updates"));
+        m_ui->actionDocumentation->setText(_("Documentation"));
         m_ui->actionGitHubRepo->setText(_("GitHub Repo"));
         m_ui->actionReportABug->setText(_("Report a Bug"));
         m_ui->actionDiscussions->setText(_("Discussions"));
@@ -79,6 +80,7 @@ namespace Nickvision::TubeConverter::QT::Views
         connect(m_ui->actionClearQueuedDownloads, &QAction::triggered, this, &MainWindow::clearQueuedDownloads);
         connect(m_ui->actionClearCompletedDownloads, &QAction::triggered, this, &MainWindow::clearCompletedDownloads);
         connect(m_ui->actionCheckForUpdates, &QAction::triggered, this, &MainWindow::checkForUpdates);
+        connect(m_ui->actionDocumentation, &QAction::triggered, this, &MainWindow::documentation);
         connect(m_ui->actionGitHubRepo, &QAction::triggered, this, &MainWindow::gitHubRepo);
         connect(m_ui->actionReportABug, &QAction::triggered, this, &MainWindow::reportABug);
         connect(m_ui->actionDiscussions, &QAction::triggered, this, &MainWindow::discussions);
@@ -180,6 +182,11 @@ namespace Nickvision::TubeConverter::QT::Views
         m_controller->windowsUpdate();
     }
 #endif
+
+    void MainWindow::documentation()
+    {
+        QDesktopServices::openUrl(QString::fromStdString(m_controller->getHelpUrl()));
+    }
 
     void MainWindow::gitHubRepo()
     {

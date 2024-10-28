@@ -71,6 +71,10 @@ namespace Nickvision::TubeConverter::QT::Views
         void windowsUpdate();
 #endif
         /**
+         * @brief Opens the application's documentation in the browser.
+         */
+        void documentation();
+        /**
          * @brief Opens the application's GitHub repo in the browser.
          */
         void gitHubRepo();

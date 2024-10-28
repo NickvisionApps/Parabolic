@@ -395,13 +395,16 @@ namespace Nickvision::TubeConverter::GNOME::Views
 
     void MainWindow::help()
     {
-        std::string helpUrl{ m_controller->getHelpUrl("index") };
+        std::string helpUrl{ m_controller->getHelpUrl() };
+        gtk_show_uri(GTK_WINDOW(m_window), helpUrl.c_str(), GDK_CURRENT_TIME);
+        /*
         GtkUriLauncher* launcher{ gtk_uri_launcher_new(helpUrl.c_str()) };
         gtk_uri_launcher_launch(launcher, GTK_WINDOW(m_window), nullptr, GAsyncReadyCallback(+[](GObject* source, GAsyncResult* res, gpointer)
         { 
             gtk_uri_launcher_launch_finish(GTK_URI_LAUNCHER(source), res, nullptr); 
             g_object_unref(source);
         }), nullptr);
+        */
     }
 
     void MainWindow::about()

@@ -98,7 +98,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
          * @param pageName The name of the page to get the help url for
          * @return The help url for the page
          */
-        std::string getHelpUrl(const std::string& pageName);
+        std::string getHelpUrl(const std::string& pageName = "index");
         /**
          * @brief Gets whether or not a download can be started.
          * @return True if can download, else false

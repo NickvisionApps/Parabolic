@@ -269,6 +269,7 @@
     </property>
     <addaction name="actionCheckForUpdates"/>
     <addaction name="separator"/>
+    <addaction name="actionDocumentation"/>
     <addaction name="actionGitHubRepo"/>
     <addaction name="actionReportABug"/>
     <addaction name="actionDiscussions"/>
@@ -383,15 +384,17 @@
     <iconset theme="sync-synchronizing"/>
    </property>
   </action>
+  <action name="actionDocumentation">
+   <property name="shortcut">
+    <string>F1</string>
+   </property>
+  </action>
   <action name="actionGitHubRepo"/>
   <action name="actionReportABug"/>
   <action name="actionDiscussions"/>
   <action name="actionAbout">
    <property name="icon">
     <iconset theme="help-faq"/>
-   </property>
-   <property name="shortcut">
-    <string>F1</string>
    </property>
   </action>
   <action name="actionKeyring">
