@@ -15,6 +15,7 @@
 using namespace Nickvision::App;
 using namespace Nickvision::Events;
 using namespace Nickvision::Helpers;
+using namespace Nickvision::Keyring;
 using namespace Nickvision::Notifications;
 using namespace Nickvision::TubeConverter::GNOME::Controls;
 using namespace Nickvision::TubeConverter::GNOME::Helpers;
@@ -58,6 +59,7 @@ namespace Nickvision::TubeConverter::GNOME::Views
         m_controller->shellNotificationSent() += [this](const ShellNotificationSentEventArgs& args) { onShellNotificationSent(args); };
         m_controller->disclaimerTriggered() += [this](const ParamEventArgs<std::string>& args) { onDisclaimerTriggered(args); };
         m_controller->getDownloadManager().historyChanged() += [this](const ParamEventArgs<std::vector<HistoricDownload>>& args) { GtkHelpers::dispatchToMainThread([this, args]{ onHistoryChanged(args); }); };
+        m_controller->getDownloadManager().downloadCredentialNeeded() += [this](const DownloadCredentialNeededEventArgs& args) { onDownloadCredentialNeeded(args); };
         m_controller->getDownloadManager().downloadAdded() += [this](const DownloadAddedEventArgs& args) { GtkHelpers::dispatchToMainThread([this, args]{ onDownloadAdded(args); }); };
         m_controller->getDownloadManager().downloadCompleted() += [this](const DownloadCompletedEventArgs& args) { GtkHelpers::dispatchToMainThread([this, args]{ onDownloadCompleted(args); }); };
         m_controller->getDownloadManager().downloadProgressChanged() += [this](const DownloadProgressChangedEventArgs& args) { GtkHelpers::dispatchToMainThread([this, args]{ onDownloadProgressChanged(args); }); };
@@ -300,6 +302,11 @@ namespace Nickvision::TubeConverter::GNOME::Views
         }
     }
 
+    void MainWindow::onDownloadCredentialNeeded(const DownloadCredentialNeededEventArgs& args)
+    {
+        
+    }
+
     void MainWindow::onDownloadAdded(const DownloadAddedEventArgs& args)
     {
         gtk_list_box_select_row(m_builder.get<GtkListBox>("listNavItems"), gtk_list_box_get_row_at_index(m_builder.get<GtkListBox>("listNavItems"), Pages::Downloading));
@@ -397,14 +404,6 @@ namespace Nickvision::TubeConverter::GNOME::Views
     {
         std::string helpUrl{ m_controller->getHelpUrl() };
         gtk_show_uri(GTK_WINDOW(m_window), helpUrl.c_str(), GDK_CURRENT_TIME);
-        /*
-        GtkUriLauncher* launcher{ gtk_uri_launcher_new(helpUrl.c_str()) };
-        gtk_uri_launcher_launch(launcher, GTK_WINDOW(m_window), nullptr, GAsyncReadyCallback(+[](GObject* source, GAsyncResult* res, gpointer)
-        { 
-            gtk_uri_launcher_launch_finish(GTK_URI_LAUNCHER(source), res, nullptr); 
-            g_object_unref(source);
-        }), nullptr);
-        */
     }
 
     void MainWindow::about()
