@@ -11,6 +11,7 @@ namespace Nickvision::TubeConverter::Shared::Models
     {
         if(m_length != HistoryLength::Never && m_json["History"].is_array())
         {
+            m_history.reserve(m_json["History"].as_array().size());
             for(const boost::json::value& value : m_json["History"].as_array())
             {
                 if(!value.is_object())

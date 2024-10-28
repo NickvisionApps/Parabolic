@@ -64,6 +64,11 @@ namespace Nickvision::TubeConverter::Shared::Models
         return m_downloadStartedFromQueue;
     }
 
+    Event<ParamEventArgs<std::pair<std::string, std::shared_ptr<Credential>>>>& DownloadManager::downloadCredentialNeeded()
+    {
+        return m_downloadCredentialNeeded;
+    }
+
     size_t DownloadManager::getRemainingDownloadsCount() const
     {
         std::lock_guard<std::mutex> lock{ m_mutex };
@@ -179,8 +184,17 @@ namespace Nickvision::TubeConverter::Shared::Models
         std::unordered_map<int, DownloadOptions> recoverableDownloads{ m_recoveryQueue.getRecoverableDownloads() };
         m_logger.log(LogLevel::Info, "Found " + std::to_string(recoverableDownloads.size()) + " recoverable download(s).");
         m_recoveryQueue.clear();
-        for(const std::pair<const int, DownloadOptions>& pair : recoverableDownloads)
+        for(std::pair<const int, DownloadOptions>& pair : recoverableDownloads)
         {
+            if(m_recoveryQueue.needsCredential(pair.first))
+            {
+                std::shared_ptr<Credential> c{ std::make_shared<Credential>("", "", "", "") };
+                while(c->getUsername().empty() && c->getPassword().empty())
+                {
+                    m_downloadCredentialNeeded.invoke({ std::make_pair(pair.second.getUrl(), c) });
+                }
+                pair.second.setCredential(*c);
+            }
             addDownload(pair.second);
         }
         return recoverableDownloads.size();

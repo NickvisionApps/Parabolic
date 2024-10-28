@@ -423,16 +423,23 @@ namespace Nickvision::TubeConverter::Shared::Models
         return arguments;
     }
 
-    boost::json::object DownloadOptions::toJson() const
+    boost::json::object DownloadOptions::toJson(bool includeCredential) const
     {
         boost::json::object json;
         json["Url"] = m_url;
         if(m_credential)
         {
-            boost::json::object credential;
-            credential["Username"] = m_credential->getUsername();
-            credential["Password"] = m_credential->getPassword();
-            json["Credential"] = credential;
+            if(includeCredential)
+            {
+                boost::json::object credential;
+                credential["Username"] = m_credential->getUsername();
+                credential["Password"] = m_credential->getPassword();
+                json["Credential"] = credential;
+            }
+            else
+            {
+                json["Credential"] = "Hidden";
+            }
         }
         json["FileType"] = static_cast<int>(m_fileType);
         boost::json::array availableFormats;

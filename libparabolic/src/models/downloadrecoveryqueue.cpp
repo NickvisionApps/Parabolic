@@ -9,19 +9,22 @@ namespace Nickvision::TubeConverter::Shared::Models
     {
         if(m_json["RecoverableDownloads"].is_array())
         {
+            m_recoverableDownloads.reserve(m_json["RecoverableDownloads"].as_array().size());
+            m_needsCredentials.reserve(m_json["RecoverableDownloads"].as_array().size());
             for(const boost::json::value& value : m_json["RecoverableDownloads"].as_array())
             {
                 if(!value.is_object())
                 {
                     continue;
                 }
-                boost::json::object download = value.as_object();
-                int id{ download["Id"].is_int64() ? static_cast<int>(download["Id"].as_int64()) : -1 };
+                boost::json::object recoverableDownload = value.as_object();
+                int id{ recoverableDownload["Id"].is_int64() ? static_cast<int>(recoverableDownload["Id"].as_int64()) : -1 };
                 if(id == -1)
                 {
                     continue;
                 }
-                m_recoverableDownloads[id] = DownloadOptions(download["Download"].is_object() ? download["Download"].as_object() : boost::json::object());
+                m_recoverableDownloads[id] = DownloadOptions(recoverableDownload["Download"].is_object() ? recoverableDownload["Download"].as_object() : boost::json::object());
+                m_needsCredentials[id] = recoverableDownload["NeedsCredentials"].is_bool() ? recoverableDownload["NeedsCredentials"].as_bool() : false;
             }
         }
     }
@@ -29,6 +32,15 @@ namespace Nickvision::TubeConverter::Shared::Models
     const std::unordered_map<int, DownloadOptions>& DownloadRecoveryQueue::getRecoverableDownloads() const
     {
         return m_recoverableDownloads;
+    }
+
+    bool DownloadRecoveryQueue::needsCredential(int id) const
+    {
+        if(!m_needsCredentials.contains(id))
+        {
+            return false;
+        }
+        return m_needsCredentials.at(id);
     }
 
     bool DownloadRecoveryQueue::addDownload(int id, const DownloadOptions& downloadOptions)
@@ -69,7 +81,8 @@ namespace Nickvision::TubeConverter::Shared::Models
         {
             boost::json::object obj;
             obj["Id"] = pair.first;
-            obj["Download"] = pair.second.toJson();
+            obj["Download"] = pair.second.toJson(false);
+            obj["NeedsCredentials"] = pair.second.getCredential().has_value();
             arr.push_back(obj);
         }
         m_json["RecoverableDownloads"] = arr;

@@ -2,11 +2,15 @@
 #define DOWNLOADRECOVERYQUEUE_H
 
 #include <unordered_map>
+#include <utility>
 #include <libnick/app/datafilebase.h>
 #include "downloadoptions.h"
 
 namespace Nickvision::TubeConverter::Shared::Models
 {
+    /**
+     * @brief A model of a queue of downloads that can be recovered.
+     */
     class DownloadRecoveryQueue : public Nickvision::App::DataFileBase
     {
     public:
@@ -22,6 +26,12 @@ namespace Nickvision::TubeConverter::Shared::Models
          * @returns A list of DownloadOptions
          */
         const std::unordered_map<int, DownloadOptions>& getRecoverableDownloads() const;
+        /**
+         * @brief Gets whether or not a download needs a credential to be downloaded again.
+         * @param id The ID of the download
+         * @returns True if a credential is needed, else false
+         */
+        bool needsCredential(int id) const;
         /**
          * @brief Adds a download to the recovery queue.
          * @param id The ID of the download
@@ -47,6 +57,7 @@ namespace Nickvision::TubeConverter::Shared::Models
          */
         void updateDisk();
         std::unordered_map<int, DownloadOptions> m_recoverableDownloads;
+        std::unordered_map<int, bool> m_needsCredentials;
     };
 }
 

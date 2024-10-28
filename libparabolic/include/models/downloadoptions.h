@@ -167,9 +167,10 @@ namespace Nickvision::TubeConverter::Shared::Models
         std::vector<std::string> toArgumentVector(const DownloaderOptions& downloaderOptions) const;
         /**
          * @brief Converts the DownloadOptions to a JSON object.
+         * @param includeCredential Whether or not to include the credential in the JSON object
          * @return The JSON object
          */
-        boost::json::object toJson() const;
+        boost::json::object toJson(bool includeCredential = true) const;
 
     private:
         /**
