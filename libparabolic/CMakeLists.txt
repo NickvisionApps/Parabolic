@@ -10,7 +10,7 @@ add_library(libparabolic
     "src/controllers/preferencesviewcontroller.cpp"
     "src/events/downloadaddedeventargs.cpp"
     "src/events/downloadcompletedeventargs.cpp"
-    "Src/events/downloadcredentialneededeventargs.cpp"
+    "src/events/downloadcredentialneededeventargs.cpp"
     "src/events/downloadprogresschangedeventargs.cpp"
     "src/models/configuration.cpp"
     "src/models/download.cpp"
