@@ -5,7 +5,6 @@
 #include <mutex>
 #include <optional>
 #include <unordered_map>
-#include <utility>
 #include <vector>
 #include <libnick/events/event.h>
 #include <libnick/events/parameventargs.h>
@@ -19,6 +18,7 @@
 #include "urlinfo.h"
 #include "events/downloadaddedeventargs.h"
 #include "events/downloadcompletedeventargs.h"
+#include "events/downloadcredentialneededeventargs.h"
 #include "events/downloadprogresschangedeventargs.h"
 
 namespace Nickvision::TubeConverter::Shared::Models
@@ -77,11 +77,9 @@ namespace Nickvision::TubeConverter::Shared::Models
         Nickvision::Events::Event<Nickvision::Events::ParamEventArgs<int>>& downloadStartedFromQueue();
         /**
          * @brief Gets the event for when a credential is needed for a download.
-         * @brief The first parameter is the URL that requires the credential.
-         * @brief The second parameter is the credential object to fill
          * @return The download credential needed event
          */
-        Nickvision::Events::Event<Nickvision::Events::ParamEventArgs<std::pair<std::string, std::shared_ptr<Keyring::Credential>>>>& downloadCredentialNeeded();
+        Nickvision::Events::Event<Events::DownloadCredentialNeededEventArgs>& downloadCredentialNeeded();
         /**
          * @brief Gets the remaining downloads count.
          * @return The remaining downloads count
@@ -232,7 +230,7 @@ namespace Nickvision::TubeConverter::Shared::Models
         Nickvision::Events::Event<Nickvision::Events::ParamEventArgs<int>> m_downloadStopped;
         Nickvision::Events::Event<Nickvision::Events::ParamEventArgs<int>> m_downloadRetried;
         Nickvision::Events::Event<Nickvision::Events::ParamEventArgs<int>> m_downloadStartedFromQueue;
-        Nickvision::Events::Event<Nickvision::Events::ParamEventArgs<std::pair<std::string, std::shared_ptr<Keyring::Credential>>>> m_downloadCredentialNeeded;
+        Nickvision::Events::Event<Events::DownloadCredentialNeededEventArgs> m_downloadCredentialNeeded;
     };
 }
 

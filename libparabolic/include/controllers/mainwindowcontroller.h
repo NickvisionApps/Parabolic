@@ -23,6 +23,7 @@
 #include <libnick/taskbar/taskbaritem.h>
 #include <libnick/update/updater.h>
 #include "controllers/adddownloaddialogcontroller.h"
+#include "controllers/credentialdialogcontroller.h"
 #include "controllers/keyringdialogcontroller.h"
 #include "controllers/preferencesviewcontroller.h"
 #include "models/downloadmanager.h"
@@ -109,6 +110,12 @@ namespace Nickvision::TubeConverter::Shared::Controllers
          * @return The AddDownloadDialogController
          */
         std::shared_ptr<AddDownloadDialogController> createAddDownloadDialogController();
+        /**
+         * @brief Gets a CredentialDialogController.
+         * @param args The DownloadCredentialNeededEventArgs
+         * @return The CredentialDialogController
+         */
+        std::shared_ptr<CredentialDialogController> createCredentialDialogController(const Events::DownloadCredentialNeededEventArgs& args);
         /**
          * @brief Gets a KeyringDialogController.
          * @return The KeyringDialogController

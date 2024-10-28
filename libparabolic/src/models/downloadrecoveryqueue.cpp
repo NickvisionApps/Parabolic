@@ -24,7 +24,7 @@ namespace Nickvision::TubeConverter::Shared::Models
                     continue;
                 }
                 m_recoverableDownloads[id] = DownloadOptions(recoverableDownload["Download"].is_object() ? recoverableDownload["Download"].as_object() : boost::json::object());
-                m_needsCredentials[id] = recoverableDownload["NeedsCredentials"].is_bool() ? recoverableDownload["NeedsCredentials"].as_bool() : false;
+                m_needsCredentials[id] = recoverableDownload["NeedsCredential"].is_bool() ? recoverableDownload["NeedsCredential"].as_bool() : false;
             }
         }
     }
@@ -82,7 +82,7 @@ namespace Nickvision::TubeConverter::Shared::Models
             boost::json::object obj;
             obj["Id"] = pair.first;
             obj["Download"] = pair.second.toJson(false);
-            obj["NeedsCredentials"] = pair.second.getCredential().has_value();
+            obj["NeedsCredential"] = pair.second.getCredential().has_value();
             arr.push_back(obj);
         }
         m_json["RecoverableDownloads"] = arr;

@@ -195,6 +195,11 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         return std::make_shared<AddDownloadDialogController>(m_downloadManager, m_dataFileManager, m_keyring);
     }
 
+    std::shared_ptr<CredentialDialogController> MainWindowController::createCredentialDialogController(const DownloadCredentialNeededEventArgs& args)
+    {
+        return std::make_shared<CredentialDialogController>(args, m_keyring);
+    }
+
     std::shared_ptr<KeyringDialogController> MainWindowController::createKeyringDialogController()
     {
         return std::make_shared<KeyringDialogController>(m_keyring);

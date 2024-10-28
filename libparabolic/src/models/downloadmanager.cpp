@@ -64,7 +64,7 @@ namespace Nickvision::TubeConverter::Shared::Models
         return m_downloadStartedFromQueue;
     }
 
-    Event<ParamEventArgs<std::pair<std::string, std::shared_ptr<Credential>>>>& DownloadManager::downloadCredentialNeeded()
+    Event<DownloadCredentialNeededEventArgs>& DownloadManager::downloadCredentialNeeded()
     {
         return m_downloadCredentialNeeded;
     }
@@ -188,12 +188,12 @@ namespace Nickvision::TubeConverter::Shared::Models
         {
             if(m_recoveryQueue.needsCredential(pair.first))
             {
-                std::shared_ptr<Credential> c{ std::make_shared<Credential>("", "", "", "") };
-                while(c->getUsername().empty() && c->getPassword().empty())
+                std::shared_ptr<Credential> credential{ std::make_shared<Credential>("", "", "", "") };
+                while(credential->getUsername().empty() && credential->getPassword().empty())
                 {
-                    m_downloadCredentialNeeded.invoke({ std::make_pair(pair.second.getUrl(), c) });
+                    m_downloadCredentialNeeded.invoke({ pair.first, pair.second.getUrl(), credential });
                 }
-                pair.second.setCredential(*c);
+                pair.second.setCredential(*credential);
             }
             addDownload(pair.second);
         }
