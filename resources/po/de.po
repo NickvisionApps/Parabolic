@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-28 15:26-0400\n"
+"POT-Creation-Date: 2024-10-29 10:20-0400\n"
 "PO-Revision-Date: 2024-10-20 01:16+0000\n"
 "Last-Translator: Ettore Atalan <atalanttore@googlemail.com>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -179,11 +179,11 @@ msgid "Auto-generated"
 msgstr "Automatisch generiert"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:11
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:37
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:219
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:288
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:342
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:396
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:39
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:221
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:290
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:344
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:398
 #: org.nickvision.tubeconverter.gnome/blueprints/shortcuts_dialog.blp:39
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:28
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:45
@@ -214,6 +214,7 @@ msgid "Authenticate"
 msgstr "Anmelden"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:71
+#: org.nickvision.tubeconverter.gnome/blueprints/credential_dialog.blp:30
 #: org.nickvision.tubeconverter.gnome/blueprints/keyring_page.blp:50
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:128
 #: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:21
@@ -221,6 +222,7 @@ msgid "Credential"
 msgstr "Anmeldeinformation"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:75
+#: org.nickvision.tubeconverter.gnome/blueprints/credential_dialog.blp:34
 #: org.nickvision.tubeconverter.gnome/blueprints/keyring_page.blp:73
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:133
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:35
@@ -230,6 +232,7 @@ msgid "Username"
 msgstr "Nutzername"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:79
+#: org.nickvision.tubeconverter.gnome/blueprints/credential_dialog.blp:38
 #: org.nickvision.tubeconverter.gnome/blueprints/keyring_page.blp:77
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:135
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:37
@@ -360,6 +363,17 @@ msgstr "Wiedergabelistenelemente"
 msgid "Number Titles"
 msgstr "Titelnummern"
 
+#: org.nickvision.tubeconverter.gnome/blueprints/credential_dialog.blp:11
+#: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:18
+#, fuzzy
+msgid "Credential Needed"
+msgstr "Anmeldeinformation"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/credential_dialog.blp:43
+#: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:26
+msgid "Use"
+msgstr ""
+
 #: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:49
 msgid "View Log"
 msgstr "Protokoll ansehen"
@@ -372,14 +386,14 @@ msgstr "Stopp"
 
 #. Localize Strings
 #: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:79
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:257
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:259
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:25
 #: org.nickvision.tubeconverter.qt/src/controls/historyrow.cpp:17
 msgid "Play"
 msgstr "Abspielen"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:87
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:180
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:182
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:26
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:32
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:324
@@ -456,120 +470,120 @@ msgstr "Hilfe"
 msgid "About Parabolic"
 msgstr "Info zu Parabolic"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:45
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:47
 msgid "Main Menu"
 msgstr "Hauptmenü"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:68
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:188
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:70
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:190
 msgid "Home"
 msgstr "Startseite"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:85
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:194
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:87
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:196
 #: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:21
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:48
 msgid "Keyring"
 msgstr "Schlüsselring"
 
 #. Localize History Dock
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:102
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:200
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:104
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:202
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:51
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:69
 msgid "History"
 msgstr "Verlauf"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:112
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:114
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:61
 #: org.nickvision.tubeconverter.gnome/blueprints/shortcuts_dialog.blp:36
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:24
 msgid "Downloads"
 msgstr "Downloads"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:133
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:205
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:135
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:207
 msgid "Downloading"
 msgstr "Wird heruntergeladen"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:158
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:160
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:27
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:210
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:212
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:34
 msgid "Queued"
 msgstr "Warteschlange"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:183
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:215
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:185
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:217
 msgid "Completed"
 msgstr "Abgeschlossen"
 
 #. Localize Home Page
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:215
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:217
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:65
 msgid "Download Media"
 msgstr "Medien herunterladen"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:216
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:218
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:66
 msgid "Add a video, audio, or playlist URL to start downloading"
 msgstr ""
 "Fügen Sie eine URL zu einem Video, Audio oder einer Wiedergabeliste hinzu, "
 "um den Download zu starten"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:244
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:246
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:70
 msgid "No history available"
 msgstr "Kein Verlauf verfügbar"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:256
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:258
 msgid "Past Downloads"
 msgstr "Vergangene Downloads"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:260
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:262
 msgid "Clear History"
 msgstr "Verlauf leeren"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:264
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:366
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:424
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:266
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:368
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:426
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:71
 msgid "Clear"
 msgstr "Leeren"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:285
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:287
 msgid "No Downloads Running"
 msgstr "Keine laufenden Downloads"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:307
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:309
 #: org.nickvision.tubeconverter.gnome/blueprints/shortcuts_dialog.blp:44
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:53
 msgid "Stop All Downloads"
 msgstr "Alle Downloads anhalten"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:312
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:314
 msgid "Stop All"
 msgstr "Alle anhalten"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:339
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:341
 msgid "No Downloads Queued"
 msgstr "Keine Downloads in der Warteschlange"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:361
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:363
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:55
 msgid "Clear Queued Downloads"
 msgstr "Warteschlange leeren"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:393
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:395
 msgid "No Downloads Completed"
 msgstr "Keine Downloads abgeschlossen"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:419
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:421
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:56
 msgid "Clear Completed Downloads"
 msgstr "Abgeschlossene Downloads leeren"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:432
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:434
 #: org.nickvision.tubeconverter.gnome/blueprints/shortcuts_dialog.blp:49
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:54
 msgid "Retry Failed Downloads"
@@ -934,6 +948,7 @@ msgstr "Läuft"
 
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:109
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:148
+#: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:40
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:94
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:181
 #: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:58
@@ -956,6 +971,7 @@ msgid "Stopped"
 msgstr "Angehalten"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:48
+#: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:21
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:93
 #: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:32
 msgid "Use manual credential"
@@ -984,7 +1000,8 @@ msgstr ""
 "ausgewählten Browser auf Cookies in den Einstellungen."
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:149
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:224
+#: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:41
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:226
 msgid "Close"
 msgstr "Schließen"
 
@@ -996,6 +1013,18 @@ msgstr "Keine Untertitel verfügbar"
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:215
 msgid "{} items"
 msgstr "{} Elemente"
+
+#: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:15
+msgid ""
+"{} needs a credential to download.\n"
+"Please select or enter one to use."
+msgstr ""
+
+#: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:40
+#: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:58
+#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:123
+msgid "Both the username and password cannot be empty."
+msgstr "Sowohl der Benutzername als auch das Passwort dürfen nicht leer sein."
 
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:22
 msgid "Keyring is not saving to disk. Changes will be lost."
@@ -1010,7 +1039,7 @@ msgid "Edit"
 msgstr "Bearbeiten"
 
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:54
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:293
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:295
 #: org.nickvision.tubeconverter.qt/src/controls/historyrow.cpp:19
 #: org.nickvision.tubeconverter.qt/src/controls/keyringrow.cpp:19
 msgid "Delete"
@@ -1032,12 +1061,12 @@ msgid "Are you sure you want to delete this credential?"
 msgstr "Sind Sie sicher, dass Sie diese Anmeldeinformation löschen möchten?"
 
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:108
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:148
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:150
 msgid "Yes"
 msgstr "Ja"
 
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:108
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:148
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:150
 msgid "No"
 msgstr "Nein"
 
@@ -1065,32 +1094,32 @@ msgstr "Name (existiert)"
 msgid "Credential (Database Error)"
 msgstr "Anmeldeinformation (Datenbankfehler)"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:147
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:149
 msgid "Exit?"
 msgstr "Beenden?"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:147
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:149
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:143
 msgid "There are downloads in progress. Are you sure you want to exit?"
 msgstr ""
 "Es sind Downloads im Gange. Sind Sie sicher, dass Sie das Programm beenden "
 "möchten?"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:222
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:224
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:330
 msgid "Disclaimer"
 msgstr "Haftungsausschluss"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:223
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:225
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:331
 msgid "Don't show this message again"
 msgstr "Diese Meldung nicht erneut anzeigen"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:278
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:280
 msgid "Download Again"
 msgstr "Erneut herunterladen"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:427
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:437
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:60
 msgid "GitHub Repo"
 msgstr "GitHub-Repository"
@@ -1185,24 +1214,10 @@ msgstr ""
 msgid "Items ({})"
 msgstr "Elemente ({})"
 
-#: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:18
-#, fuzzy
-msgid "Credential Needed"
-msgstr "Anmeldeinformation"
-
 #. Localize Strings
 #: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:20
 msgid "{} needs a credential to download. Please select or enter one to use."
 msgstr ""
-
-#: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:26
-msgid "Use"
-msgstr ""
-
-#: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:58
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:123
-msgid "Both the username and password cannot be empty."
-msgstr "Sowohl der Benutzername als auch das Passwort dürfen nicht leer sein."
 
 #. Localize the Manage page
 #: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:23
