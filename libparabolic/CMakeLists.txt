@@ -4,11 +4,13 @@ endif()
 
 add_library(libparabolic
     "src/controllers/adddownloaddialogcontroller.cpp"
+    "src/controllers/credentialdialogcontroller.cpp"
     "src/controllers/keyringdialogcontroller.cpp"
     "src/controllers/mainwindowcontroller.cpp"
     "src/controllers/preferencesviewcontroller.cpp"
     "src/events/downloadaddedeventargs.cpp"
     "src/events/downloadcompletedeventargs.cpp"
+    "src/events/downloadcredentialneededeventargs.cpp"
     "src/events/downloadprogresschangedeventargs.cpp"
     "src/models/configuration.cpp"
     "src/models/download.cpp"
@@ -16,6 +18,7 @@ add_library(libparabolic
     "src/models/downloadhistory.cpp"
     "src/models/downloadmanager.cpp"
     "src/models/downloadoptions.cpp"
+    "src/models/downloadrecoveryqueue.cpp"
     "src/models/format.cpp"
     "src/models/historicdownload.cpp"
     "src/models/media.cpp"

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" id="downloads" its:version="2.0" xml:lang="ta">
+<info>
+	<link type="guide" xref="index"/>
+	<title type="link">Downloads 🌐</title>
+	<credit type="author copyright">
+		<name>நிக்கோலஸ் லோகோசோ</name>
+		<years its:translate="no">2023-2024</years>
+	</credit>
+	<credit type="publisher copyright">
+		<name>நிக்கோலஸ் லோகோசோ</name>
+		<years its:translate="no">2023-2024</years>
+	</credit>
+	<license href="http://creativecommons.org/licenses/by/4.0/" its:translate="no"><p>Creative Commons Attribution 4.0 International License</p></license>
+
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>K.B.Dharun Krishna</mal:name>
+      <mal:email>kbdharunkrishna@gmail.com</mal:email>
+      <mal:years>2023</mal:years>
+    </mal:credit>
+  </info>
+
+<title>Downloads</title>
+<p>This page explains all options for configuring Downloads in Preferences in <app>Parabolic</app>.</p>
+
+<terms>
+    <item>
+        <title>வேக வரம்பு</title>
+        <p>Ki/s இல், மேம்பட்ட விருப்பம் <code>Speed Limit</code> இயக்கப்பட்டிருந்தால் மட்டுமே பதிவிறக்கங்களுக்கு ஒரு வரம்பு பொருந்தும். 512 மற்றும் 10240 க்கு இடையில் ஒரு முழு எண்ணாக இருக்க வேண்டும்.</p>
+		<note style="advanced">
+			<p>இயல்புநிலை: 1024</p>
+		</note>
+    </item>
+    <item>
+        <title>YouTubeக்கு SponsorBlock ஐப் பயன்படுத்தவும்</title>
+        <p>இயக்கப்பட்டால், YouTube பதிவிறக்கங்களுக்கு பரபோலிக் SponsorBlock நீட்டிப்பைப் பயன்படுத்தும்.</p>
+        <note>
+            <p>YouTube வீடியோக்களில் மட்டுமே SponsorBlock வேலை செய்யும். இருப்பினும், இந்த அமைப்பை ஆன் செய்வதால் பிற தளங்களில் இருந்து பதிவிறக்கம் பாதிக்கப்படாது (அதாவது அவை தோல்வியடையாது).</p>
+        </note>
+        <note style="advanced">
+            <p>இயல்புநிலை: ஆஃப்</p>
+        </note>
+    </item>
+    <item>
+        <title>ப்ராக்ஸி URL</title>
+        <p>பயன்படுத்த வேண்டிய ப்ராக்ஸி சேவையகத்தின் url.</p>
+        <note style="advanced">
+			<p>Default: No URL</p>
+		</note>
+    </item>
+    <item>
+        <title>Cookies from Browser</title>
+        <p>A browser in which to read cookies from and pass to yt-dlp's download engine.</p>
+        <p>This may be useful when downloading media that requires a login, for example: private YouTube videos.</p>
+        <p>This option is on available on non sandboxed platforms.</p>
+		<note style="advanced">
+			<p>Default: None</p>
+		</note>
+    </item>
+    <item>
+        <title>குக்கீகள் கோப்பு</title>
+        <p>A .txt file of cookies to pass to yt-dlp when download engine.</p>
+        <p>This may be useful when downloading media that requires a login, for example: private YouTube videos.</p>
+        <p>உங்கள் உலாவியில் இருந்து குக்கீகள் கோப்பைப் பெற, பின்வரும் நீட்டிப்புகளில் ஒன்றைப் பயன்படுத்தவும்:</p>
+        <p>குரோம்: <code>https://chrome.google.com/webstore/detail/get-cookiestxt-locally/cclelndahbckbenkjhflpdbgdldlbecc</code></p>
+        <p>பயர்பாக்ஸ்: <code>https://addons.mozilla.org/en-US/firefox/addon/cookies-txt/</code></p>
+        <note>
+            <p>இந்த நீட்டிப்புகளை உங்கள் சொந்த ஆபத்தில் பயன்படுத்தவும்.</p>
+        </note>
+		<note style="advanced">
+			<p>இயல்புநிலை: கோப்பு எதுவும் தேர்ந்தெடுக்கப்படவில்லை</p>
+		</note>
+    </item>
+</terms>
+</page>

@@ -51,6 +51,12 @@ namespace Nickvision::TubeConverter::Shared::Models
         return m_options.getUrl();
     }
 
+    const DownloadOptions& Download::getOptions() const
+    {
+        std::lock_guard<std::mutex> lock{ m_mutex };
+        return m_options;
+    }
+
     DownloadStatus Download::getStatus() const
     {
         std::lock_guard<std::mutex> lock{ m_mutex };

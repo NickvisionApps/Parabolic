@@ -5,6 +5,7 @@
 #include <optional>
 #include <string>
 #include <vector>
+#include <boost/json.hpp>
 #include <libnick/keyring/credential.h>
 #include "downloaderoptions.h"
 #include "format.h"
@@ -31,6 +32,11 @@ namespace Nickvision::TubeConverter::Shared::Models
          * @param url The URL of the download
          */
         DownloadOptions(const std::string& url);
+        /**
+         * @brief Construct a DownloadOptions.
+         * @param json The JSON object to construct the DownloadOptions from
+         */
+        DownloadOptions(boost::json::object json);
         /**
          * @brief Gets the URL of the download.
          * @return The URL of the download
@@ -159,6 +165,12 @@ namespace Nickvision::TubeConverter::Shared::Models
          * @return The vector of yt-dlp arguments
          */
         std::vector<std::string> toArgumentVector(const DownloaderOptions& downloaderOptions) const;
+        /**
+         * @brief Converts the DownloadOptions to a JSON object.
+         * @param includeCredential Whether or not to include the credential in the JSON object
+         * @return The JSON object
+         */
+        boost::json::object toJson(bool includeCredential = true) const;
 
     private:
         /**

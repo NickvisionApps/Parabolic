@@ -14,12 +14,14 @@
 #include "controls/historyrow.h"
 #include "helpers/qthelpers.h"
 #include "views/adddownloaddialog.h"
+#include "views/credentialdialog.h"
 #include "views/keyringdialog.h"
 #include "views/settingsdialog.h"
 
 using namespace Nickvision::App;
 using namespace Nickvision::Events;
 using namespace Nickvision::Helpers;
+using namespace Nickvision::Keyring;
 using namespace Nickvision::Notifications;
 using namespace Nickvision::TubeConverter::QT::Controls;
 using namespace Nickvision::TubeConverter::QT::Helpers;
@@ -54,6 +56,7 @@ namespace Nickvision::TubeConverter::QT::Views
         m_ui->actionClearCompletedDownloads->setText(_("Clear Completed Downloads"));
         m_ui->menuHelp->setTitle(_("Help"));
         m_ui->actionCheckForUpdates->setText(_("Check for Updates"));
+        m_ui->actionDocumentation->setText(_("Documentation"));
         m_ui->actionGitHubRepo->setText(_("GitHub Repo"));
         m_ui->actionReportABug->setText(_("Report a Bug"));
         m_ui->actionDiscussions->setText(_("Discussions"));
@@ -79,6 +82,7 @@ namespace Nickvision::TubeConverter::QT::Views
         connect(m_ui->actionClearQueuedDownloads, &QAction::triggered, this, &MainWindow::clearQueuedDownloads);
         connect(m_ui->actionClearCompletedDownloads, &QAction::triggered, this, &MainWindow::clearCompletedDownloads);
         connect(m_ui->actionCheckForUpdates, &QAction::triggered, this, &MainWindow::checkForUpdates);
+        connect(m_ui->actionDocumentation, &QAction::triggered, this, &MainWindow::documentation);
         connect(m_ui->actionGitHubRepo, &QAction::triggered, this, &MainWindow::gitHubRepo);
         connect(m_ui->actionReportABug, &QAction::triggered, this, &MainWindow::reportABug);
         connect(m_ui->actionDiscussions, &QAction::triggered, this, &MainWindow::discussions);
@@ -91,6 +95,7 @@ namespace Nickvision::TubeConverter::QT::Views
         m_controller->shellNotificationSent() += [&](const ShellNotificationSentEventArgs& args) { onShellNotificationSent(args); };
         m_controller->disclaimerTriggered() += [&](const ParamEventArgs<std::string>& args) { onDisclaimerTriggered(args); };
         m_controller->getDownloadManager().historyChanged() += [&](const ParamEventArgs<std::vector<HistoricDownload>>& args) { QTHelpers::dispatchToMainThread([this, args]() { onHistoryChanged(args); }); };
+        m_controller->getDownloadManager().downloadCredentialNeeded() += [&](const DownloadCredentialNeededEventArgs& args) { onDownloadCredentialNeeded(args); };
         m_controller->getDownloadManager().downloadAdded() += [&](const DownloadAddedEventArgs& args) { QTHelpers::dispatchToMainThread([this, args]() { onDownloadAdded(args); }); };
         m_controller->getDownloadManager().downloadCompleted() += [&](const DownloadCompletedEventArgs& args) { QTHelpers::dispatchToMainThread([this, args]() { onDownloadCompleted(args); }); };
         m_controller->getDownloadManager().downloadProgressChanged() += [&](const DownloadProgressChangedEventArgs& args) { QTHelpers::dispatchToMainThread([this, args]() { onDownloadProgressChanged(args); }); };
@@ -180,6 +185,11 @@ namespace Nickvision::TubeConverter::QT::Views
         m_controller->windowsUpdate();
     }
 #endif
+
+    void MainWindow::documentation()
+    {
+        QDesktopServices::openUrl(QString::fromStdString(m_controller->getHelpUrl()));
+    }
 
     void MainWindow::gitHubRepo()
     {
@@ -338,6 +348,12 @@ namespace Nickvision::TubeConverter::QT::Views
             m_ui->listHistory->insertItem(0, item);
             m_ui->listHistory->setItemWidget(item, row);
         }
+    }
+
+    void MainWindow::onDownloadCredentialNeeded(const DownloadCredentialNeededEventArgs& args)
+    {
+        CredentialDialog dialog{ m_controller->createCredentialDialogController(args), this };
+        dialog.exec();
     }
 
     void MainWindow::onDownloadAdded(const DownloadAddedEventArgs& args)

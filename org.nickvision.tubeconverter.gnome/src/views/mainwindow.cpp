@@ -1,6 +1,7 @@
 #include "views/mainwindow.h"
 #include <filesystem>
 #include <format>
+#include <thread>
 #include <libnick/app/appinfo.h>
 #include <libnick/helpers/codehelpers.h>
 #include <libnick/notifications/shellnotification.h>
@@ -9,12 +10,14 @@
 #include "helpers/dialogptr.h"
 #include "helpers/gtkhelpers.h"
 #include "views/adddownloaddialog.h"
+#include "views/credentialdialog.h"
 #include "views/keyringpage.h"
 #include "views/preferencesdialog.h"
 
 using namespace Nickvision::App;
 using namespace Nickvision::Events;
 using namespace Nickvision::Helpers;
+using namespace Nickvision::Keyring;
 using namespace Nickvision::Notifications;
 using namespace Nickvision::TubeConverter::GNOME::Controls;
 using namespace Nickvision::TubeConverter::GNOME::Helpers;
@@ -58,6 +61,7 @@ namespace Nickvision::TubeConverter::GNOME::Views
         m_controller->shellNotificationSent() += [this](const ShellNotificationSentEventArgs& args) { onShellNotificationSent(args); };
         m_controller->disclaimerTriggered() += [this](const ParamEventArgs<std::string>& args) { onDisclaimerTriggered(args); };
         m_controller->getDownloadManager().historyChanged() += [this](const ParamEventArgs<std::vector<HistoricDownload>>& args) { GtkHelpers::dispatchToMainThread([this, args]{ onHistoryChanged(args); }); };
+        m_controller->getDownloadManager().downloadCredentialNeeded() += [this](const DownloadCredentialNeededEventArgs& args) { onDownloadCredentialNeeded(args); };
         m_controller->getDownloadManager().downloadAdded() += [this](const DownloadAddedEventArgs& args) { GtkHelpers::dispatchToMainThread([this, args]{ onDownloadAdded(args); }); };
         m_controller->getDownloadManager().downloadCompleted() += [this](const DownloadCompletedEventArgs& args) { GtkHelpers::dispatchToMainThread([this, args]{ onDownloadCompleted(args); }); };
         m_controller->getDownloadManager().downloadProgressChanged() += [this](const DownloadProgressChangedEventArgs& args) { GtkHelpers::dispatchToMainThread([this, args]{ onDownloadProgressChanged(args); }); };
@@ -300,6 +304,19 @@ namespace Nickvision::TubeConverter::GNOME::Views
         }
     }
 
+    void MainWindow::onDownloadCredentialNeeded(const DownloadCredentialNeededEventArgs& args)
+    {
+        bool closed;
+        DialogPtr<CredentialDialog> dialog{ m_controller->createCredentialDialogController(args), GTK_WINDOW(m_window) };
+        dialog->closed() += [&closed](const EventArgs&){ closed = true; };
+        dialog->present();
+        while(!closed)
+        {
+            g_main_context_iteration(g_main_context_default(), true);
+            std::this_thread::sleep_for(std::chrono::microseconds(1));
+        }
+    }
+
     void MainWindow::onDownloadAdded(const DownloadAddedEventArgs& args)
     {
         gtk_list_box_select_row(m_builder.get<GtkListBox>("listNavItems"), gtk_list_box_get_row_at_index(m_builder.get<GtkListBox>("listNavItems"), Pages::Downloading));
@@ -341,9 +358,12 @@ namespace Nickvision::TubeConverter::GNOME::Views
     {
         m_downloadRows[args.getParam()]->setStopState();
         GtkHelpers::moveFromBox(m_builder.get<GtkBox>("listDownloading"), m_builder.get<GtkBox>("listCompleted"), GTK_WIDGET(m_downloadRows[args.getParam()]->gobj()), true);
+        GtkHelpers::moveFromBox(m_builder.get<GtkBox>("listQueued"), m_builder.get<GtkBox>("listCompleted"), GTK_WIDGET(m_downloadRows[args.getParam()]->gobj()), true);
         adw_view_stack_set_visible_child_name(m_builder.get<AdwViewStack>("downloadingViewStack"), m_controller->getDownloadManager().getDownloadingCount() > 0 ? "downloading" : "no-downloading");
+        adw_view_stack_set_visible_child_name(m_builder.get<AdwViewStack>("queuedViewStack"), m_controller->getDownloadManager().getQueuedCount() > 0 ? "queued" : "no-queued");
         adw_view_stack_set_visible_child_name(m_builder.get<AdwViewStack>("completedViewStack"), "completed");
         gtk_label_set_label(m_builder.get<GtkLabel>("downloadingCountLabel"), std::to_string(m_controller->getDownloadManager().getDownloadingCount()).c_str());
+        gtk_label_set_label(m_builder.get<GtkLabel>("queuedCountLabel"), std::to_string(m_controller->getDownloadManager().getQueuedCount()).c_str());
         gtk_label_set_label(m_builder.get<GtkLabel>("completedCountLabel"), std::to_string(m_controller->getDownloadManager().getCompletedCount()).c_str());
     }
 
@@ -392,13 +412,8 @@ namespace Nickvision::TubeConverter::GNOME::Views
 
     void MainWindow::help()
     {
-        std::string helpUrl{ m_controller->getHelpUrl("index") };
-        GtkUriLauncher* launcher{ gtk_uri_launcher_new(helpUrl.c_str()) };
-        gtk_uri_launcher_launch(launcher, GTK_WINDOW(m_window), nullptr, GAsyncReadyCallback(+[](GObject* source, GAsyncResult* res, gpointer)
-        { 
-            gtk_uri_launcher_launch_finish(GTK_URI_LAUNCHER(source), res, nullptr); 
-            g_object_unref(source);
-        }), nullptr);
+        std::string helpUrl{ m_controller->getHelpUrl() };
+        gtk_show_uri(GTK_WINDOW(m_window), helpUrl.c_str(), GDK_CURRENT_TIME);
     }
 
     void MainWindow::about()

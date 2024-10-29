@@ -21,17 +21,9 @@
 	<item>
 		<title>הטמעת נתוני על</title>
 		<p>אם האפשרות פעילה, Parabolic יתייג מדיה עם הפרטים המתאימים (כותרת, סגנון וכו׳) ויוסיף תמונות ממוזערות אם יש.</p>
-        <p>Parabolic לא יטמיע את שדות ההערות, התיאור, העלילה והתפירה.</p>
 		<note style="advanced">
 			<p>ברירת מחדל: פעיל</p>
 		</note>
-    </item>
-    <item>
-        <title>הטמעת כתוביות</title>
-        <p>אם האפשרות מושבתת או שההטמעה נכשלה, הורדת הכתוביות תישמר לקובץ נפרד.</p>
-        <note style="advanced">
-            <p>ברירת מחדל: פעיל</p>
-        </note>
     </item>
     <item>
 		<title>הטמעת פרקים</title>
@@ -41,8 +33,16 @@
 		</note>
 	</item>
     <item>
+        <title>הטמעת כתוביות</title>
+        <p>אם האפשרות מושבתת או שההטמעה נכשלה, הורדת הכתוביות תישמר לקובץ נפרד.</p>
+        <note style="advanced">
+            <p>ברירת מחדל: פעיל</p>
+        </note>
+    </item>
+    <item>
 		<title>חיתוך תמונה ממוזערה לשמע</title>
 		<p>If enabled, Parabolic will crop thumbnails for audio files to be a square resolution.</p>
+        <p>This option is only configurable if <code>Embed Metadata</code> is on.</p>
 		<note style="advanced">
 			<p>Default: Off</p>
 		</note>
@@ -51,9 +51,17 @@
 		<title>הסרת נתוני מקור</title>
 		<p>If enabled, Parabolic will clear metadata fields containing the URL and other identifying information of the media source.</p>
         <p>Fields that are cleared: <code>comment</code>, <code>description</code>, <code>synopsis</code>, <code>purl</code> and <code>handler_name</code> in each stream.</p>
+        <p>This option is only configurable if <code>Embed Metadata</code> is on.</p>
 		<note style="advanced">
 			<p>Default: Off</p>
 		</note>
+    </item>
+    <item>
+        <title>Postprocessing Threads</title>
+        <p>The number of threads to allow the postprocessor (<code>FFmpeg</code>) to use for each download.</p>
+        <note style="advanced">
+            <p>Default: The max number of threads available on the system</p>
+        </note>
     </item>
 </terms>
 </page>

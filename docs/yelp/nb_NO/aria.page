@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" id="aria" its:version="2.0" xml:lang="nb-NO">
+<info>
+	<link type="guide" xref="index"/>
+	<title type="link">aria2 🖥️</title>
+	<credit type="author copyright">
+		<name>Nicholas Logozzo</name>
+		<years its:translate="no">2023-2024</years>
+	</credit>
+	<credit type="publisher copyright">
+		<name>Nicholas Logozzo</name>
+		<years its:translate="no">2023-2024</years>
+	</credit>
+	<license href="http://creativecommons.org/licenses/by/4.0/" its:translate="no"><p>Creative Commons Attribution 4.0 International License</p></license>
+
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Brage Fuglseth</mal:name>
+      <mal:email>bragefuglseth@gnome.org</mal:email>
+      <mal:years>2024</mal:years>
+    </mal:credit>
+  </info>
+
+<title>aria2</title>
+<p>This page explains all options for configuring aria2 in Preferences in <app>Parabolic</app>.</p>
+
+<terms>
+    <item>
+        <title>Bruk aria2</title>
+        <p>If enabled, Parabolic will use aria2c to download media.</p>
+        <p>Although using aria2c can improve download speed, download progress will not be displayed in the UI.</p>
+        <note style="advanced">
+            <p>Standard: av</p>
+        </note>
+    </item>
+    <item>
+        <title>Høyeste antall tilkoblinger per tjener</title>
+        <p>Denne innstillingen gjelder bare når aria2 er i bruk. Den tilsvarer å sende verdien <code>-x</code> til ara2c.</p>
+        <p>Det høyeste antallet tilkoblinger som kan brukes per tjener. Må være et tall mellom 1 og 32.</p>
+        <note style="advanced">
+            <p>Standard: 16</p>
+        </note>
+    </item>
+    <item>
+        <title>Minste inndelingsstørrelse</title>
+        <p>Denne innstillingen gjelder bare når aria2 er i bruk. Den tilsvarer å sende verdien <code>-k</code> til aria2c.</p>
+        <p>Den minste størrelsen en fil kan deles inn i, i MiB. Må være et tall mellom 1 og 1024.</p>
+        <note style="advanced">
+            <p>Standard: 20</p>
+        </note>
+    </item>
+</terms>
+</page>

@@ -21,17 +21,9 @@
 	<item>
 		<title>تعبیه فراداده</title>
 		<p>اگر فعال باشد، Parabolic یک رسانه را با اطلاعات مرتبط آن (عنوان، ژانر، و غیره...) و در صورت وجود تصویر کوچک برچسب گذاری می کند.</p>
-        <p>Parabolic will NOT embed the Comment, Description, Synopsis, and Purl fields.</p>
 		<note style="advanced">
 			<p>پیش فرض: روشن</p>
 		</note>
-    </item>
-    <item>
-        <title>تعبیه زیرنویس</title>
-        <p>اگر غیرفعال باشد یا اگر جاسازی نشد، زیرنویس‌های دانلود شده در یک فایل جداگانه ذخیره می‌شوند.</p>
-        <note style="advanced">
-            <p>پیش فرض: روشن</p>
-        </note>
     </item>
     <item>
 		<title>Embed Chapters</title>
@@ -41,8 +33,16 @@
 		</note>
 	</item>
     <item>
+        <title>تعبیه زیرنویس</title>
+        <p>اگر غیرفعال باشد یا اگر جاسازی نشد، زیرنویس‌های دانلود شده در یک فایل جداگانه ذخیره می‌شوند.</p>
+        <note style="advanced">
+            <p>پیش فرض: روشن</p>
+        </note>
+    </item>
+    <item>
 		<title>Crop Audio Thumbnails</title>
 		<p>If enabled, Parabolic will crop thumbnails for audio files to be a square resolution.</p>
+        <p>This option is only configurable if <code>Embed Metadata</code> is on.</p>
 		<note style="advanced">
 			<p>پیش فرض: خاموش</p>
 		</note>
@@ -51,9 +51,17 @@
 		<title>اطلاعات منبع را حذف کنید</title>
 		<p>اگر فعال باشد، Parabolic فیلدهای فراداده حاوی URL و سایر اطلاعات شناسایی منبع رسانه را پاک می کند.</p>
         <p>Fields that are cleared: <code>comment</code>, <code>description</code>, <code>synopsis</code>, <code>purl</code> and <code>handler_name</code> in each stream.</p>
+        <p>This option is only configurable if <code>Embed Metadata</code> is on.</p>
 		<note style="advanced">
 			<p>پیش فرض: خاموش</p>
 		</note>
+    </item>
+    <item>
+        <title>Postprocessing Threads</title>
+        <p>The number of threads to allow the postprocessor (<code>FFmpeg</code>) to use for each download.</p>
+        <note style="advanced">
+            <p>Default: The max number of threads available on the system</p>
+        </note>
     </item>
 </terms>
 </page>

@@ -65,6 +65,11 @@ namespace Nickvision::TubeConverter::GNOME::Views
          */
         void onHistoryChanged(const Events::ParamEventArgs<std::vector<Shared::Models::HistoricDownload>>& args);
         /**
+         * @brief Handles when a recovered download needs a credential. 
+         * @param args DownloadCredentialNeededEventArgs
+         */
+        void onDownloadCredentialNeeded(const Shared::Events::DownloadCredentialNeededEventArgs& args);
+        /**
          * @brief Handles when a download is added.
          * @param args DownloadAddedEventArgs
          */

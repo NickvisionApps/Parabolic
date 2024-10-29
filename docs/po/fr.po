@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2024-10-17 13:26-0400\n"
+"POT-Creation-Date: 2024-10-24 08:55-0400\n"
 "PO-Revision-Date: 2024-10-07 17:33+0000\n"
 "Last-Translator: rene-coty <irenee.thirion@e.email>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -19,19 +19,132 @@ msgid "translator-credits"
 msgstr "Irénée Thirion <irenee.thirion@e.email>"
 
 #. (itstool) path: info/title
-#: docs/yelp/C/converter.page:8
+#: docs/yelp/C/aria.page:8
 msgctxt "link"
-msgid "Converter ⚒️"
-msgstr "Convertisseur ⚒️"
+msgid "aria2 🖥️"
+msgstr ""
 
 #. (itstool) path: credit/name
+#: docs/yelp/C/aria.page:10 docs/yelp/C/aria.page:14
 #: docs/yelp/C/converter.page:10 docs/yelp/C/converter.page:14
 #: docs/yelp/C/downloader.page:10 docs/yelp/C/downloader.page:14
+#: docs/yelp/C/downloads.page:10 docs/yelp/C/downloads.page:14
 #: docs/yelp/C/index.page:10 docs/yelp/C/index.page:14
 #: docs/yelp/C/keyring.page:10 docs/yelp/C/keyring.page:14
 #: docs/yelp/C/newDownload.page:10 docs/yelp/C/newDownload.page:14
 msgid "Nicholas Logozzo"
 msgstr "Nicholas Logozzo"
+
+#. (itstool) path: page/title
+#: docs/yelp/C/aria.page:20
+#, fuzzy
+msgid "aria2"
+msgstr "Utiliser aria2"
+
+#. (itstool) path: page/p
+#: docs/yelp/C/aria.page:21
+#, fuzzy
+msgid ""
+"This page explains all options for configuring aria2 in Preferences in "
+"<app>Parabolic</app>."
+msgstr ""
+"Cette page explique toutes les options pour configurer le téléchargeur dans "
+"les préférences de <app>Parabole</app>."
+
+#. (itstool) path: item/title
+#: docs/yelp/C/aria.page:25
+msgid "Use aria2"
+msgstr "Utiliser aria2"
+
+#. (itstool) path: item/p
+#: docs/yelp/C/aria.page:26
+#, fuzzy
+msgid "If enabled, Parabolic will use aria2c to download media."
+msgstr "Si cette option est activée, Parabole écrasera les fichiers existants."
+
+#. (itstool) path: item/p
+#: docs/yelp/C/aria.page:27
+#, fuzzy
+msgid ""
+"Although using aria2c can improve download speed, download progress will not "
+"be displayed in the UI."
+msgstr ""
+"Si cette option est activée, Parabole utilisera aria2c pour télécharger les "
+"médias. Bien que l’utilisation de aria2c puisse améliorer la vitesse de "
+"votre téléchargement, la progression de celui-ci ne sera pas affichée dans "
+"l’interface."
+
+#. (itstool) path: note/p
+#: docs/yelp/C/aria.page:29 docs/yelp/C/converter.page:35
+#: docs/yelp/C/converter.page:50 docs/yelp/C/converter.page:59
+#: docs/yelp/C/downloader.page:47 docs/yelp/C/downloader.page:54
+#: docs/yelp/C/downloader.page:61 docs/yelp/C/downloads.page:38
+msgid "Default: Off"
+msgstr "Par défaut : Désactivée"
+
+#. (itstool) path: item/title
+#: docs/yelp/C/aria.page:33
+msgid "Maximum Connections Per Server"
+msgstr "Nombre maximal de connexions par serveur"
+
+#. (itstool) path: item/p
+#: docs/yelp/C/aria.page:34
+msgid ""
+"This option only applies when using aria2 is enabled. This option is the "
+"same as the <code>-x</code> flag passed to aria2c."
+msgstr ""
+"Cette option est disponible uniquement quand l’utilisation de aria2 est "
+"activée. Cette option est la même que la balise <code>-x</code> passée à "
+"aria2c."
+
+#. (itstool) path: item/p
+#: docs/yelp/C/aria.page:37
+msgid ""
+"The maximum number of connection that can be used per server. Must be an "
+"integer value between 1 and 32."
+msgstr ""
+"Le nombre maximal de connexions qui peuvent être utilisées par serveur. Il "
+"doit s’agir d’un nombre entier entre 1 et 32."
+
+#. (itstool) path: note/p
+#: docs/yelp/C/aria.page:39
+msgid "Default: 16"
+msgstr "Par défaut : 16"
+
+#. (itstool) path: item/title
+#: docs/yelp/C/aria.page:43
+msgid "Minimum Split Size"
+msgstr "Taille minimale de division"
+
+#. (itstool) path: item/p
+#: docs/yelp/C/aria.page:44
+msgid ""
+"This option only applies when using aria2 is enabled. This option is the "
+"same as the <code>-k</code> flag passed to aria2c."
+msgstr ""
+"Cette option s’applique uniquement lorsque l’utilisation de aria2 est "
+"activée. Cette option est la même que la balise <code>-k</code> passée à "
+"aria2c."
+
+#. (itstool) path: item/p
+#: docs/yelp/C/aria.page:47
+msgid ""
+"The minimum size, in MiB, of which to split a file. Must be an integer value "
+"between 1 and 1024."
+msgstr ""
+"La taille minimale, en MiB, dans laquelle diviser un fichier. Il doit s’agir "
+"d’un nombre entier compris entre 1 et 1024."
+
+#. (itstool) path: note/p
+#: docs/yelp/C/aria.page:49
+msgid "Default: 20"
+msgstr "Par défaut : 20"
+
+#. (itstool) path: info/title
+#: docs/yelp/C/converter.page:8
+msgctxt "link"
+msgid "Converter ⚒️"
+msgstr "Convertisseur ⚒️"
 
 #. (itstool) path: page/title
 #: docs/yelp/C/converter.page:20
@@ -61,27 +174,32 @@ msgstr ""
 "Si cette option est activée, Parabole inclura dans le média téléchargé ses "
 "données pertinentes (titre, genre, etc…) et sa vignette, si disponibles."
 
-#. (itstool) path: item/p
-#: docs/yelp/C/converter.page:27
-msgid ""
-"Parabolic will NOT embed the Comment, Description, Synopsis, and Purl fields."
-msgstr ""
-"Parabole n’inclura PAS les commentaires, descriptions, résumé, et l’URL "
-"personnalisée."
-
 #. (itstool) path: note/p
-#: docs/yelp/C/converter.page:29 docs/yelp/C/converter.page:36
-#: docs/yelp/C/downloader.page:31
+#: docs/yelp/C/converter.page:28 docs/yelp/C/converter.page:42
+#: docs/yelp/C/downloader.page:31 docs/yelp/C/downloader.page:75
 msgid "Default: On"
 msgstr "Par défaut : Activée"
 
 #. (itstool) path: item/title
+#: docs/yelp/C/converter.page:32
+msgid "Embed Chapters"
+msgstr "Inclure les chapitres"
+
+#. (itstool) path: item/p
 #: docs/yelp/C/converter.page:33
+msgid ""
+"If enabled, Parabolic will tag a media with chapter information if available."
+msgstr ""
+"Si cette option est activée, Parabole inclura dans un média les informations "
+"relatives à ses chapitres, si disponibles."
+
+#. (itstool) path: item/title
+#: docs/yelp/C/converter.page:39
 msgid "Embed Subtitles"
 msgstr "Inclure les sous-titres"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/converter.page:34
+#: docs/yelp/C/converter.page:40
 msgid ""
 "If disabled or if embedding fails, downloaded subtitles will be saved to a "
 "separate file."
@@ -90,38 +208,26 @@ msgstr ""
 "téléchargés seront enregistrés dans un fichier séparé."
 
 #. (itstool) path: item/title
-#: docs/yelp/C/converter.page:40
-msgid "Embed Chapters"
-msgstr "Inclure les chapitres"
-
-#. (itstool) path: item/p
-#: docs/yelp/C/converter.page:41
-msgid ""
-"If enabled, Parabolic will tag a media with chapter information if available."
-msgstr ""
-"Si cette option est activée, Parabole inclura dans un média les informations "
-"relatives à ses chapitres, si disponibles."
-
-#. (itstool) path: note/p
-#: docs/yelp/C/converter.page:43 docs/yelp/C/converter.page:50
-#: docs/yelp/C/converter.page:58 docs/yelp/C/downloader.page:46
-#: docs/yelp/C/downloader.page:53 docs/yelp/C/downloader.page:101
-msgid "Default: Off"
-msgstr "Par défaut : Désactivée"
-
-#. (itstool) path: item/title
-#: docs/yelp/C/converter.page:47
+#: docs/yelp/C/converter.page:46
 msgid "Crop Audio Thumbnails"
 msgstr "Rogner les vignettes des fichiers audio"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/converter.page:48
+#: docs/yelp/C/converter.page:47
 msgid ""
 "If enabled, Parabolic will crop thumbnails for audio files to be a square "
 "resolution."
 msgstr ""
 "Si cette option est activée, Parabole découpera la vignette des fichiers "
 "audio pour obtenir une résolution carrée."
+
+#. (itstool) path: item/p
+#: docs/yelp/C/converter.page:48 docs/yelp/C/converter.page:57
+#, fuzzy
+msgid "This option is only configurable if <code>Embed Metadata</code> is on."
+msgstr ""
+"Seulement disponible si l’<code>inclusion des métadonnées</code> est activée "
+"dans les préférences."
 
 #. (itstool) path: item/title
 #: docs/yelp/C/converter.page:54
@@ -149,10 +255,28 @@ msgstr ""
 "<code>synopsis</code>, <code>purl</code> et <code>nom_du_service</code> dans "
 "chaque flux."
 
+#. (itstool) path: item/title
+#: docs/yelp/C/converter.page:63
+msgid "Postprocessing Threads"
+msgstr ""
+
+#. (itstool) path: item/p
+#: docs/yelp/C/converter.page:64
+msgid ""
+"The number of threads to allow the postprocessor (<code>FFmpeg</code>) to "
+"use for each download."
+msgstr ""
+
+#. (itstool) path: note/p
+#: docs/yelp/C/converter.page:66
+msgid "Default: The max number of threads available on the system"
+msgstr ""
+
 #. (itstool) path: info/title
 #: docs/yelp/C/downloader.page:8
+#, fuzzy
 msgctxt "link"
-msgid "Downloader 🌐"
+msgid "Downloader 🛠️"
 msgstr "Téléchargeur 🌐"
 
 #. (itstool) path: page/title
@@ -222,11 +346,38 @@ msgstr "Par défaut : 5"
 
 #. (itstool) path: item/title
 #: docs/yelp/C/downloader.page:43
+msgid "Limit Filename Characters"
+msgstr ""
+
+#. (itstool) path: item/p
+#: docs/yelp/C/downloader.page:44
+msgid "Restricts characters in filenames to only those supported by Windows."
+msgstr ""
+
+#. (itstool) path: item/p
+#: docs/yelp/C/downloader.page:45
+msgid "This option is only available on Linux."
+msgstr ""
+
+#. (itstool) path: item/title
+#: docs/yelp/C/downloader.page:51
+msgid "Download Immediately After Validation"
+msgstr ""
+
+#. (itstool) path: item/p
+#: docs/yelp/C/downloader.page:52
+msgid ""
+"Bypasses the download options selection in the Add Download dialog and "
+"immediately downloads a validated media using previously selected options."
+msgstr ""
+
+#. (itstool) path: item/title
+#: docs/yelp/C/downloader.page:58
 msgid "Included Auto-Generated Subtitles"
 msgstr "Inclure les sous-titres générés automatiquement"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:44
+#: docs/yelp/C/downloader.page:59
 msgid ""
 "Whether or not to included subtitles that are auto-translated to fit the "
 "requested subtitle languages."
@@ -235,87 +386,67 @@ msgstr ""
 "correspondre à la langue demandée."
 
 #. (itstool) path: item/title
-#: docs/yelp/C/downloader.page:50
-msgid "Use aria2"
-msgstr "Utiliser aria2"
+#: docs/yelp/C/downloader.page:65
+#, fuzzy
+msgid "Preferred Video Codec"
+msgstr "Préférer le codec AV1"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:51
+#: docs/yelp/C/downloader.page:66
+#, fuzzy
 msgid ""
-"If enabled, Parabolic will use aria2c to download media. Although using "
-"aria2c can improve download speed, download progress will not be displayed "
-"in the UI."
-msgstr ""
-"Si cette option est activée, Parabole utilisera aria2c pour télécharger les "
-"médias. Bien que l’utilisation de aria2c puisse améliorer la vitesse de "
-"votre téléchargement, la progression de celui-ci ne sera pas affichée dans "
-"l’interface."
-
-#. (itstool) path: item/title
-#: docs/yelp/C/downloader.page:57
-msgid "Maximum Connections Per Server"
-msgstr "Nombre maximal de connexions par serveur"
-
-#. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:58
-msgid ""
-"This option only applies when using aria2 is enabled. This option is the "
-"same as the <code>-x</code> flag passed to aria2c."
-msgstr ""
-"Cette option est disponible uniquement quand l’utilisation de aria2 est "
-"activée. Cette option est la même que la balise <code>-x</code> passée à "
-"aria2c."
-
-#. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:61
-msgid ""
-"The maximum number of connection that can be used per server. Must be an "
-"integer value between 1 and 32."
-msgstr ""
-"Le nombre maximal de connexions qui peuvent être utilisées par serveur. Il "
-"doit s’agir d’un nombre entier entre 1 et 32."
+"The video codec Parabolic should prefer when selecting media formats to "
+"download."
+msgstr "Codec vidéo par défaut pour le téléchargement de vidéos."
 
 #. (itstool) path: note/p
-#: docs/yelp/C/downloader.page:63
-msgid "Default: 16"
-msgstr "Par défaut : 16"
-
-#. (itstool) path: item/title
-#: docs/yelp/C/downloader.page:67
-msgid "Minimum Split Size"
-msgstr "Taille minimale de division"
-
-#. (itstool) path: item/p
 #: docs/yelp/C/downloader.page:68
-msgid ""
-"This option only applies when using aria2 is enabled. This option is the "
-"same as the <code>-k</code> flag passed to aria2c."
-msgstr ""
-"Cette option s’applique uniquement lorsque l’utilisation de aria2 est "
-"activée. Cette option est la même que la balise <code>-k</code> passée à "
-"aria2c."
-
-#. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:71
-msgid ""
-"The minimum size, in MiB, of which to split a file. Must be an integer value "
-"between 1 and 1024."
-msgstr ""
-"La taille minimale, en MiB, dans laquelle diviser un fichier. Il doit s’agir "
-"d’un nombre entier compris entre 1 et 1024."
-
-#. (itstool) path: note/p
-#: docs/yelp/C/downloader.page:73
-msgid "Default: 20"
-msgstr "Par défaut : 20"
+#, fuzzy
+msgid "Default: Any"
+msgstr "Par défaut : Activée"
 
 #. (itstool) path: item/title
-#: docs/yelp/C/downloader.page:77 docs/yelp/C/newDownload.page:110
+#: docs/yelp/C/downloader.page:72
+msgid "Recover Crashed Downloads"
+msgstr ""
+
+#. (itstool) path: item/p
+#: docs/yelp/C/downloader.page:73
+msgid ""
+"If enabled, Parabolic will track the running and queued downloads and "
+"restart them if necessary if the application crashes and is restarted."
+msgstr ""
+
+#. (itstool) path: info/title
+#: docs/yelp/C/downloads.page:8
+#, fuzzy
+msgctxt "link"
+msgid "Downloads 🌐"
+msgstr "Téléchargeur 🌐"
+
+#. (itstool) path: page/title
+#: docs/yelp/C/downloads.page:20
+#, fuzzy
+msgid "Downloads"
+msgstr "Téléchargeur"
+
+#. (itstool) path: page/p
+#: docs/yelp/C/downloads.page:21
+#, fuzzy
+msgid ""
+"This page explains all options for configuring Downloads in Preferences in "
+"<app>Parabolic</app>."
+msgstr ""
+"Cette page explique toutes les options pour configurer le téléchargeur dans "
+"les préférences de <app>Parabole</app>."
+
+#. (itstool) path: item/title
+#: docs/yelp/C/downloads.page:25 docs/yelp/C/newDownload.page:103
 msgid "Speed Limit"
 msgstr "Limitation de vitesse"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:78
+#: docs/yelp/C/downloads.page:26
 msgid ""
 "A limit, in Ki/s, that is applied to downloads only if they have the "
 "advanced option <code>Speed Limit</code> enabled. Must be an integer value "
@@ -326,45 +457,17 @@ msgstr ""
 "s’agit d’un nombre entier compris en 512 et 10240."
 
 #. (itstool) path: note/p
-#: docs/yelp/C/downloader.page:80
+#: docs/yelp/C/downloads.page:28
 msgid "Default: 1024"
 msgstr "Par défaut : 1024"
 
 #. (itstool) path: item/title
-#: docs/yelp/C/downloader.page:84
-msgid "Proxy URL"
-msgstr "URL de Proxy"
-
-#. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:85
-msgid "The url of the proxy server to use."
-msgstr "L’url du serveur proxy à utiliser."
-
-#. (itstool) path: item/title
-#: docs/yelp/C/downloader.page:88
-msgid "Cookies from Browser"
-msgstr "Cookies du navigateur"
-
-#. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:89
-msgid ""
-"A browser in which to read cookies from and pass to yt-dlp's download engine."
-msgstr ""
-"Un navigateur dans lequel lire les cookies et passer au moteur de "
-"téléchargement de yt-dlp."
-
-#. (itstool) path: note/p
-#: docs/yelp/C/downloader.page:91
-msgid "Default: None"
-msgstr "Par défaut : Aucun"
-
-#. (itstool) path: item/title
-#: docs/yelp/C/downloader.page:95
+#: docs/yelp/C/downloads.page:32
 msgid "Use SponsorBlock for YouTube"
 msgstr "Utiliser SponsorBlock pour YouTube"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:96
+#: docs/yelp/C/downloads.page:33
 msgid ""
 "If enabled, Parabolic will apply the SponsorBlock extension to YouTube "
 "downloads."
@@ -373,7 +476,7 @@ msgstr ""
 "pour les téléchargements YouTube."
 
 #. (itstool) path: note/p
-#: docs/yelp/C/downloader.page:98
+#: docs/yelp/C/downloads.page:35
 msgid ""
 "SponsorBlock only works on YouTube videos. However, leaving this setting on "
 "will not affect downloads from other sites (i.e. not cause them to fail)."
@@ -381,6 +484,106 @@ msgstr ""
 "SponsorBlock ne fonctionne que pour les vidéos YouTube. Cependant, garder ce "
 "paramètre activé n’affectera pas les téléchargements depuis les autres sites "
 "(i.e. ils ne seront pas perturbés)."
+
+#. (itstool) path: item/title
+#: docs/yelp/C/downloads.page:42
+msgid "Proxy URL"
+msgstr "URL de Proxy"
+
+#. (itstool) path: item/p
+#: docs/yelp/C/downloads.page:43
+msgid "The url of the proxy server to use."
+msgstr "L’url du serveur proxy à utiliser."
+
+#. (itstool) path: note/p
+#: docs/yelp/C/downloads.page:45
+#, fuzzy
+msgid "Default: No URL"
+msgstr "Par défaut : Aucun"
+
+#. (itstool) path: item/title
+#: docs/yelp/C/downloads.page:49
+msgid "Cookies from Browser"
+msgstr "Cookies du navigateur"
+
+#. (itstool) path: item/p
+#: docs/yelp/C/downloads.page:50
+msgid ""
+"A browser in which to read cookies from and pass to yt-dlp's download engine."
+msgstr ""
+"Un navigateur dans lequel lire les cookies et passer au moteur de "
+"téléchargement de yt-dlp."
+
+#. (itstool) path: item/p
+#: docs/yelp/C/downloads.page:51 docs/yelp/C/downloads.page:60
+#, fuzzy
+msgid ""
+"This may be useful when downloading media that requires a login, for "
+"example: private YouTube videos."
+msgstr ""
+"Un fichier .txt de cookies à fournir à yt-dlp lors du téléchargement. Cela "
+"peut être utile pour télécharger des médias qui requièrent une connexion, "
+"par exemple : les vidéos YouTube privées."
+
+#. (itstool) path: item/p
+#: docs/yelp/C/downloads.page:52
+msgid "This option is on available on non sandboxed platforms."
+msgstr ""
+
+#. (itstool) path: note/p
+#: docs/yelp/C/downloads.page:54
+msgid "Default: None"
+msgstr "Par défaut : Aucun"
+
+#. (itstool) path: item/title
+#: docs/yelp/C/downloads.page:58
+msgid "Cookies File"
+msgstr "Fichier de cookies"
+
+#. (itstool) path: item/p
+#: docs/yelp/C/downloads.page:59
+#, fuzzy
+msgid "A .txt file of cookies to pass to yt-dlp when download engine."
+msgstr ""
+"Un navigateur dans lequel lire les cookies et passer au moteur de "
+"téléchargement de yt-dlp."
+
+#. (itstool) path: item/p
+#: docs/yelp/C/downloads.page:61
+msgid ""
+"Use one of the following extensions for getting a cookies file from your "
+"browser:"
+msgstr ""
+"Utilisez l’une des extensions suivantes pour obtenir un fichier de cookies "
+"depuis votre navigateur :"
+
+#. (itstool) path: item/p
+#: docs/yelp/C/downloads.page:62
+msgid ""
+"Chrome: <code>https://chrome.google.com/webstore/detail/get-cookiestxt-"
+"locally/cclelndahbckbenkjhflpdbgdldlbecc</code>"
+msgstr ""
+"Chrome : <code>https://chrome.google.com/webstore/detail/get-cookiestxt-"
+"locally/cclelndahbckbenkjhflpdbgdldlbecc</code>"
+
+#. (itstool) path: item/p
+#: docs/yelp/C/downloads.page:63
+msgid ""
+"Firefox: <code>https://addons.mozilla.org/en-US/firefox/addon/cookies-txt/</"
+"code>"
+msgstr ""
+"Firefox : <code>https://addons.mozilla.org/en-US/firefox/addon/cookies-txt/</"
+"code>"
+
+#. (itstool) path: note/p
+#: docs/yelp/C/downloads.page:65
+msgid "Use these extensions at your own risk."
+msgstr "L’utilisation de ces extensions se fait à vos propres risques."
+
+#. (itstool) path: note/p
+#: docs/yelp/C/downloads.page:68
+msgid "Default: No File Selected"
+msgstr "Par défaut : Aucun fichier sélectionné"
 
 #. (itstool) path: info/title
 #: docs/yelp/C/index.page:7
@@ -476,8 +679,9 @@ msgstr ""
 
 #. (itstool) path: section/p
 #: docs/yelp/C/keyring.page:26
+#, fuzzy
 msgid ""
-"The library will use you system's credential manager (i.e. DBus secret "
+"The library will use your system's credential manager (i.e. DBus secret "
 "service on Linux and Windows Credential Manager on Windows) for securing the "
 "Keyring database file."
 msgstr ""
@@ -693,7 +897,7 @@ msgstr ""
 
 #. (itstool) path: note/p
 #: docs/yelp/C/newDownload.page:61 docs/yelp/C/newDownload.page:68
-#: docs/yelp/C/newDownload.page:82
+#: docs/yelp/C/newDownload.page:75
 msgid ""
 "The previously used state will be remembered and pre-selected for the next "
 "download."
@@ -719,30 +923,11 @@ msgstr ""
 
 #. (itstool) path: item/title
 #: docs/yelp/C/newDownload.page:72
-msgid "Video Codec"
-msgstr "Codec vidéo"
-
-#. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:73
-msgid "The video codec to prefer when downloading a video."
-msgstr "Codec vidéo par défaut pour le téléchargement de vidéos."
-
-#. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:75
-msgid ""
-"The previously used codec will be remembered and pre-selected for the next "
-"download."
-msgstr ""
-"Le codec sélectionné précédemment sera mémorisé et présélectionné pour le "
-"prochain téléchargement."
-
-#. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:79
 msgid "Split Chapters"
 msgstr "Diviser en chapitres"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:80
+#: docs/yelp/C/newDownload.page:73
 msgid ""
 "If enabled, Parabolic will split a video download into multiple smaller "
 "files based on its chapters."
@@ -751,17 +936,17 @@ msgstr ""
 "morceaux correspondant aux chapitres qu’elles contient."
 
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:86
+#: docs/yelp/C/newDownload.page:79
 msgid "Save Folder"
 msgstr "Dossier d’enregistrement"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:87
+#: docs/yelp/C/newDownload.page:80
 msgid "The folder at which to save the download to."
 msgstr "Le dossier dans lequel enregistrer le téléchargement."
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:89
+#: docs/yelp/C/newDownload.page:82
 msgid ""
 "The previously used folder will be remembered and pre-selected for the next "
 "download."
@@ -770,28 +955,28 @@ msgstr ""
 "prochain téléchargement."
 
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:93
+#: docs/yelp/C/newDownload.page:86
 msgid "File Name"
 msgstr "Nom du fichier"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:94
+#: docs/yelp/C/newDownload.page:87
 msgid "The file name to use when saving the download."
 msgstr ""
 "Le nom du fichier à utiliser lors de l’enregistrement du téléchargement."
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:96
+#: docs/yelp/C/newDownload.page:89
 msgid "Default: The title of the media"
 msgstr "Par défaut : le titre du média"
 
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:100
+#: docs/yelp/C/newDownload.page:93
 msgid "Time Frame"
 msgstr "Séquence"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:101
+#: docs/yelp/C/newDownload.page:94
 msgid ""
 "The user can enter a start time frame and an end time frame to download a "
 "specific section of the media."
@@ -800,12 +985,12 @@ msgstr ""
 "et un temps de fin pour télécharger une partie spécifique du média."
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:103
+#: docs/yelp/C/newDownload.page:96
 msgid "Default: The whole media length"
 msgstr "Par défaut : la longueur totale du média"
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:106
+#: docs/yelp/C/newDownload.page:99
 msgid ""
 "Enabling this option will disable the use of aria2 as the downloader for "
 "this download, even if it is enabled in Preferences."
@@ -814,7 +999,7 @@ msgstr ""
 "téléchargement, même s’il est activé dans Préférences."
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:111
+#: docs/yelp/C/newDownload.page:104
 msgid ""
 "If enabled, Parabolic will limit the download's speed with the speed "
 "configured in <link xref=\"downloader\">Preferences</link>."
@@ -823,12 +1008,29 @@ msgstr ""
 "selon la vitesse indiquée dans <link xref=\"downloader\">Préférences</link>."
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:113
+#: docs/yelp/C/newDownload.page:106
 msgid "Available in the <code>Advanced Options</code> section."
 msgstr "Disponible dans la section <code>Options avancées</code>."
 
-#~ msgid "Prefer AV1 Codec"
-#~ msgstr "Préférer le codec AV1"
+#~ msgid "Video Codec"
+#~ msgstr "Codec vidéo"
+
+#~ msgid "The video codec to prefer when downloading a video."
+#~ msgstr "Codec vidéo par défaut pour le téléchargement de vidéos."
+
+#~ msgid ""
+#~ "The previously used codec will be remembered and pre-selected for the "
+#~ "next download."
+#~ msgstr ""
+#~ "Le codec sélectionné précédemment sera mémorisé et présélectionné pour le "
+#~ "prochain téléchargement."
+
+#~ msgid ""
+#~ "Parabolic will NOT embed the Comment, Description, Synopsis, and Purl "
+#~ "fields."
+#~ msgstr ""
+#~ "Parabole n’inclura PAS les commentaires, descriptions, résumé, et l’URL "
+#~ "personnalisée."
 
 #~ msgid ""
 #~ "If enabled, Parabolic will prefer videos with the av1 codec when "
@@ -907,45 +1109,6 @@ msgstr "Disponible dans la section <code>Options avancées</code>."
 #~ msgstr ""
 #~ "Par défaut : les codes à deux et trois lettres de votre langue locale. "
 #~ "Par exemple, <code>en,en-US,eng</code> sur un système en anglais américain"
-
-#~ msgid "Cookies File"
-#~ msgstr "Fichier de cookies"
-
-#~ msgid ""
-#~ "A .txt file of cookies to pass to yt-dlp when downloading. This may be "
-#~ "useful when downloading media that requires a login, for example: private "
-#~ "YouTube videos."
-#~ msgstr ""
-#~ "Un fichier .txt de cookies à fournir à yt-dlp lors du téléchargement. "
-#~ "Cela peut être utile pour télécharger des médias qui requièrent une "
-#~ "connexion, par exemple : les vidéos YouTube privées."
-
-#~ msgid ""
-#~ "Use one of the following extensions for getting a cookies file from your "
-#~ "browser:"
-#~ msgstr ""
-#~ "Utilisez l’une des extensions suivantes pour obtenir un fichier de "
-#~ "cookies depuis votre navigateur :"
-
-#~ msgid ""
-#~ "Chrome: <code>https://chrome.google.com/webstore/detail/get-cookiestxt-"
-#~ "locally/cclelndahbckbenkjhflpdbgdldlbecc</code>"
-#~ msgstr ""
-#~ "Chrome : <code>https://chrome.google.com/webstore/detail/get-cookiestxt-"
-#~ "locally/cclelndahbckbenkjhflpdbgdldlbecc</code>"
-
-#~ msgid ""
-#~ "Firefox: <code>https://addons.mozilla.org/en-US/firefox/addon/cookies-txt/"
-#~ "</code>"
-#~ msgstr ""
-#~ "Firefox : <code>https://addons.mozilla.org/en-US/firefox/addon/cookies-"
-#~ "txt/</code>"
-
-#~ msgid "Use these extensions at your own risk."
-#~ msgstr "L’utilisation de ces extensions se fait à vos propres risques."
-
-#~ msgid "Default: No File Selected"
-#~ msgstr "Par défaut : Aucun fichier sélectionné"
 
 #~ msgid "Migrating from Password-Secured Keyring to Secret-Secured Keyring"
 #~ msgstr ""
@@ -1054,12 +1217,6 @@ msgstr "Disponible dans la section <code>Options avancées</code>."
 
 #~ msgid "Crop Thumbnail"
 #~ msgstr "Rogner la vignette"
-
-#~ msgid ""
-#~ "Only available if <code>Embed Metadata</code> is enabled in Preferences."
-#~ msgstr ""
-#~ "Seulement disponible si l’<code>inclusion des métadonnées</code> est "
-#~ "activée dans les préférences."
 
 #~ msgid ""
 #~ "If enabled, Parabolic will crop a download's embedded thumbnail as "

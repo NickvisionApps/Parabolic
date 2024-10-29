@@ -3,13 +3,13 @@
 #include <sstream>
 #include <thread>
 #include <libnick/filesystem/userdirectories.h>
-#include <libnick/helpers/codehelpers.h>
 #include <libnick/helpers/stringhelpers.h>
 #include <libnick/localization/documentation.h>
 #include <libnick/localization/gettext.h>
 #include <libnick/system/environment.h>
 #include "models/configuration.h"
 #include "models/downloadhistory.h"
+#include "models/downloadrecoveryqueue.h"
 #include "models/previousdownloadoptions.h"
 #ifdef _WIN32
 #include <windows.h>
@@ -36,16 +36,16 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         m_dataFileManager{ m_appInfo.getName() },
         m_logger{ UserDirectories::get(ApplicationUserDirectory::LocalData, m_appInfo.getName()) / "log.txt", Logging::LogLevel::Info, false },
         m_keyring{ m_appInfo.getId() },
-        m_downloadManager{ m_dataFileManager.get<Configuration>("config").getDownloaderOptions(), m_dataFileManager.get<DownloadHistory>("history"), m_logger }
+        m_downloadManager{ m_dataFileManager.get<Configuration>("config").getDownloaderOptions(), m_dataFileManager.get<DownloadHistory>("history"), m_dataFileManager.get<DownloadRecoveryQueue>("recovery"), m_logger }
     {
-        m_appInfo.setVersion({ "2024.10.2" });
+        m_appInfo.setVersion({ "2024.10.3-next" });
         m_appInfo.setShortName(_("Parabolic"));
         m_appInfo.setDescription(_("Download web video and audio"));
-        m_appInfo.setChangelog("- Added Select All and Deselect All buttons to the Subtitles and Playlist Items pages\n- The user's preferred video codec will now be used in playlist downloads where individual quality/format selection is not available\n- Partially downloaded media will now correctly resume when retrying the failed download instead of restarting the download from scratch\n- Fixed an issue where some websites failed in a 403 forbidden error\n- Fixed an issue where some videos would download as audio only after selecting an audio language\n- Fixed an issue where the incorrect audio language was downloaded");
+        m_appInfo.setChangelog("- Added support for selecting a batch file with multiple URLs to validate instead of validating a single URL at a time\n- Added a recovery mode where downloads that were running/queued will be restored when the application is restarted after a crash\n- User entered file names will now be correctly normalized and validated in the Add Download dialog\n- Fixed an issue where YouTube tabs were not correctly validated\n- Fixed an issue where the app's documentation was not accessible\n- Fixed an issue where UTF-8 characters were not displayed correctly on Windows\n- Fixed an issue where playlist names were not normalized on Windows\n- Fixed an issue where the row animations were choppy using aria2c on Linux\n- Fixed an issue where the app would crash when stopping all downloads on Linux\n- Updated yt-dlp to 2024.10.22");
         m_appInfo.setSourceRepo("https://github.com/NickvisionApps/Parabolic");
         m_appInfo.setIssueTracker("https://github.com/NickvisionApps/Parabolic/issues/new");
         m_appInfo.setSupportUrl("https://github.com/NickvisionApps/Parabolic/discussions");
-        m_appInfo.setHtmlDocsStore("https://github.com/NickvisionApps/Parabolic/blob/main/NickvisionTubeConverter.Shared/Docs/html");
+        m_appInfo.setHtmlDocsStore(m_appInfo.getVersion().getVersionType() == VersionType::Stable ? "https://github.com/NickvisionApps/Parabolic/blob/" + m_appInfo.getVersion().str() + "/docs/html" : "https://github.com/NickvisionApps/Parabolic/blob/main/docs/html");
         m_appInfo.getExtraLinks()[_("Matrix Chat")] = "https://matrix.to/#/#nickvision:matrix.org";
         m_appInfo.getDevelopers()["Nicholas Logozzo"] = "https://github.com/nlogozzo";
         m_appInfo.getDevelopers()[_("Contributors on GitHub")] = "https://github.com/NickvisionApps/Parabolic/graphs/contributors";
@@ -195,6 +195,11 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         return std::make_shared<AddDownloadDialogController>(m_downloadManager, m_dataFileManager, m_keyring);
     }
 
+    std::shared_ptr<CredentialDialogController> MainWindowController::createCredentialDialogController(const DownloadCredentialNeededEventArgs& args)
+    {
+        return std::make_shared<CredentialDialogController>(args, m_keyring);
+    }
+
     std::shared_ptr<KeyringDialogController> MainWindowController::createKeyringDialogController()
     {
         return std::make_shared<KeyringDialogController>(m_keyring);
@@ -239,8 +244,12 @@ namespace Nickvision::TubeConverter::Shared::Controllers
             m_logger.log(Logging::LogLevel::Error, "Unable to connect to Linux taskbar.");
         }
 #endif
-        //Load history
-        m_downloadManager.loadHistory();
+        //Load DownloadManager
+        size_t recoveredDownloads{ m_downloadManager.startup() };
+        if(recoveredDownloads > 0)
+        {
+            m_notificationSent.invoke({ std::vformat(_n("Recovered {} download", "Recovered {} downloads", recoveredDownloads), std::make_format_args(recoveredDownloads)), NotificationSeverity::Informational });
+        }
         //Check if disclaimer should be shown
         if(m_dataFileManager.get<Configuration>("config").getShowDisclaimerOnStartup())
         {

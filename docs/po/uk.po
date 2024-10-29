@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2024-10-17 13:26-0400\n"
+"POT-Creation-Date: 2024-10-24 08:55-0400\n"
 "PO-Revision-Date: 2024-09-17 13:09+0000\n"
 "Last-Translator: Bezruchenko Simon <worcposj44@gmail.com>\n"
 "Language-Team: Ukrainian <https://hosted.weblate.org/projects/nickvision-"
@@ -20,19 +20,129 @@ msgid "translator-credits"
 msgstr "Jon Weblin <jonweblin2205@protonmail.com>, 2023"
 
 #. (itstool) path: info/title
-#: docs/yelp/C/converter.page:8
+#: docs/yelp/C/aria.page:8
 msgctxt "link"
-msgid "Converter ⚒️"
-msgstr "Конвертер ⚒️"
+msgid "aria2 🖥️"
+msgstr ""
 
 #. (itstool) path: credit/name
+#: docs/yelp/C/aria.page:10 docs/yelp/C/aria.page:14
 #: docs/yelp/C/converter.page:10 docs/yelp/C/converter.page:14
 #: docs/yelp/C/downloader.page:10 docs/yelp/C/downloader.page:14
+#: docs/yelp/C/downloads.page:10 docs/yelp/C/downloads.page:14
 #: docs/yelp/C/index.page:10 docs/yelp/C/index.page:14
 #: docs/yelp/C/keyring.page:10 docs/yelp/C/keyring.page:14
 #: docs/yelp/C/newDownload.page:10 docs/yelp/C/newDownload.page:14
 msgid "Nicholas Logozzo"
 msgstr "Nicholas Logozzo"
+
+#. (itstool) path: page/title
+#: docs/yelp/C/aria.page:20
+#, fuzzy
+msgid "aria2"
+msgstr "Використовувати aria2"
+
+#. (itstool) path: page/p
+#: docs/yelp/C/aria.page:21
+#, fuzzy
+msgid ""
+"This page explains all options for configuring aria2 in Preferences in "
+"<app>Parabolic</app>."
+msgstr ""
+"На цій сторінці описано всі параметри налаштування завантажувача у "
+"параметрах <app>Parabolic</app>."
+
+#. (itstool) path: item/title
+#: docs/yelp/C/aria.page:25
+msgid "Use aria2"
+msgstr "Використовувати aria2"
+
+#. (itstool) path: item/p
+#: docs/yelp/C/aria.page:26
+#, fuzzy
+msgid "If enabled, Parabolic will use aria2c to download media."
+msgstr "Якщо ввімкнено, Parabolic перезапише наявні файли."
+
+#. (itstool) path: item/p
+#: docs/yelp/C/aria.page:27
+#, fuzzy
+msgid ""
+"Although using aria2c can improve download speed, download progress will not "
+"be displayed in the UI."
+msgstr ""
+"Якщо ввімкнено, Parabolic використовуватиме aria2c для завантаження "
+"медіафайлів. Хоча використання aria2c може покращити швидкість завантаження, "
+"хід завантаження не відображатиметься у користувацькому інтерфейсі."
+
+#. (itstool) path: note/p
+#: docs/yelp/C/aria.page:29 docs/yelp/C/converter.page:35
+#: docs/yelp/C/converter.page:50 docs/yelp/C/converter.page:59
+#: docs/yelp/C/downloader.page:47 docs/yelp/C/downloader.page:54
+#: docs/yelp/C/downloader.page:61 docs/yelp/C/downloads.page:38
+msgid "Default: Off"
+msgstr "За замовчуванням: Вимк"
+
+#. (itstool) path: item/title
+#: docs/yelp/C/aria.page:33
+msgid "Maximum Connections Per Server"
+msgstr "Максимальна кількість з'єднань на сервер"
+
+#. (itstool) path: item/p
+#: docs/yelp/C/aria.page:34
+msgid ""
+"This option only applies when using aria2 is enabled. This option is the "
+"same as the <code>-x</code> flag passed to aria2c."
+msgstr ""
+"Цей параметр застосовується лише тоді, коли ввімкнено використання aria2. "
+"Цей параметр є аналогом прапорця <code>-x</code>, переданого до aria2c."
+
+#. (itstool) path: item/p
+#: docs/yelp/C/aria.page:37
+msgid ""
+"The maximum number of connection that can be used per server. Must be an "
+"integer value between 1 and 32."
+msgstr ""
+"Максимальна кількість з'єднань, яку можна використовувати для одного "
+"сервера. Має бути цілим числом від 1 до 32."
+
+#. (itstool) path: note/p
+#: docs/yelp/C/aria.page:39
+msgid "Default: 16"
+msgstr "За замовчуванням: 16"
+
+#. (itstool) path: item/title
+#: docs/yelp/C/aria.page:43
+msgid "Minimum Split Size"
+msgstr "Мінімальний розмір розділення"
+
+#. (itstool) path: item/p
+#: docs/yelp/C/aria.page:44
+msgid ""
+"This option only applies when using aria2 is enabled. This option is the "
+"same as the <code>-k</code> flag passed to aria2c."
+msgstr ""
+"Цей параметр застосовується лише тоді, коли ввімкнено використання aria2. "
+"Цей параметр є аналогом прапорця <code>-k</code>, переданого до aria2c."
+
+#. (itstool) path: item/p
+#: docs/yelp/C/aria.page:47
+msgid ""
+"The minimum size, in MiB, of which to split a file. Must be an integer value "
+"between 1 and 1024."
+msgstr ""
+"Мінімальний розмір, у МБ, на який можна розбити файл. Має бути цілим числом "
+"від 1 до 1024."
+
+#. (itstool) path: note/p
+#: docs/yelp/C/aria.page:49
+msgid "Default: 20"
+msgstr "За замовчуванням: 20"
+
+#. (itstool) path: info/title
+#: docs/yelp/C/converter.page:8
+msgctxt "link"
+msgid "Converter ⚒️"
+msgstr "Конвертер ⚒️"
 
 #. (itstool) path: page/title
 #: docs/yelp/C/converter.page:20
@@ -62,25 +172,32 @@ msgstr ""
 "Якщо ввімкнено, Parabolic позначатиме медіа відповідною інформацією (назва, "
 "жанр тощо) та мініатюрою, якщо вона доступна."
 
-#. (itstool) path: item/p
-#: docs/yelp/C/converter.page:27
-msgid ""
-"Parabolic will NOT embed the Comment, Description, Synopsis, and Purl fields."
-msgstr "Parabolic НЕ вставляє поля Коментар, Опис, Синопсис і Виворіт."
-
 #. (itstool) path: note/p
-#: docs/yelp/C/converter.page:29 docs/yelp/C/converter.page:36
-#: docs/yelp/C/downloader.page:31
+#: docs/yelp/C/converter.page:28 docs/yelp/C/converter.page:42
+#: docs/yelp/C/downloader.page:31 docs/yelp/C/downloader.page:75
 msgid "Default: On"
 msgstr "За замовчуванням: Ввімк"
 
 #. (itstool) path: item/title
+#: docs/yelp/C/converter.page:32
+msgid "Embed Chapters"
+msgstr "Вставити розділи"
+
+#. (itstool) path: item/p
 #: docs/yelp/C/converter.page:33
+msgid ""
+"If enabled, Parabolic will tag a media with chapter information if available."
+msgstr ""
+"Якщо увімкнено, Parabolic позначить медіа інформацією про розділи, якщо така "
+"доступна."
+
+#. (itstool) path: item/title
+#: docs/yelp/C/converter.page:39
 msgid "Embed Subtitles"
 msgstr "Вбудовані субтитри"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/converter.page:34
+#: docs/yelp/C/converter.page:40
 msgid ""
 "If disabled or if embedding fails, downloaded subtitles will be saved to a "
 "separate file."
@@ -89,38 +206,25 @@ msgstr ""
 "субтитри буде збережено в окремому файлі."
 
 #. (itstool) path: item/title
-#: docs/yelp/C/converter.page:40
-msgid "Embed Chapters"
-msgstr "Вставити розділи"
-
-#. (itstool) path: item/p
-#: docs/yelp/C/converter.page:41
-msgid ""
-"If enabled, Parabolic will tag a media with chapter information if available."
-msgstr ""
-"Якщо увімкнено, Parabolic позначить медіа інформацією про розділи, якщо така "
-"доступна."
-
-#. (itstool) path: note/p
-#: docs/yelp/C/converter.page:43 docs/yelp/C/converter.page:50
-#: docs/yelp/C/converter.page:58 docs/yelp/C/downloader.page:46
-#: docs/yelp/C/downloader.page:53 docs/yelp/C/downloader.page:101
-msgid "Default: Off"
-msgstr "За замовчуванням: Вимк"
-
-#. (itstool) path: item/title
-#: docs/yelp/C/converter.page:47
+#: docs/yelp/C/converter.page:46
 msgid "Crop Audio Thumbnails"
 msgstr "Обрізати мініатюри аудіо"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/converter.page:48
+#: docs/yelp/C/converter.page:47
 msgid ""
 "If enabled, Parabolic will crop thumbnails for audio files to be a square "
 "resolution."
 msgstr ""
 "Якщо ввімкнено, Parabolic обрізає ескізи для аудіофайлів до квадратної "
 "роздільної здатності."
+
+#. (itstool) path: item/p
+#: docs/yelp/C/converter.page:48 docs/yelp/C/converter.page:57
+#, fuzzy
+msgid "This option is only configurable if <code>Embed Metadata</code> is on."
+msgstr ""
+"Доступно, якщо у Параметрах ввімкнено опцію <code>Вставити метадані</code>."
 
 #. (itstool) path: item/title
 #: docs/yelp/C/converter.page:54
@@ -146,10 +250,28 @@ msgstr ""
 "Очищені поля: <code> коментар</code>, <code>опис</code>, <code>синопсис</"
 "code>, <code>purl</code> і <code>handler_name</code> в кожному стримі."
 
+#. (itstool) path: item/title
+#: docs/yelp/C/converter.page:63
+msgid "Postprocessing Threads"
+msgstr ""
+
+#. (itstool) path: item/p
+#: docs/yelp/C/converter.page:64
+msgid ""
+"The number of threads to allow the postprocessor (<code>FFmpeg</code>) to "
+"use for each download."
+msgstr ""
+
+#. (itstool) path: note/p
+#: docs/yelp/C/converter.page:66
+msgid "Default: The max number of threads available on the system"
+msgstr ""
+
 #. (itstool) path: info/title
 #: docs/yelp/C/downloader.page:8
+#, fuzzy
 msgctxt "link"
-msgid "Downloader 🌐"
+msgid "Downloader 🛠️"
 msgstr "Завантажувач 🌐"
 
 #. (itstool) path: page/title
@@ -218,11 +340,38 @@ msgstr "За замовчуванням: 5"
 
 #. (itstool) path: item/title
 #: docs/yelp/C/downloader.page:43
+msgid "Limit Filename Characters"
+msgstr ""
+
+#. (itstool) path: item/p
+#: docs/yelp/C/downloader.page:44
+msgid "Restricts characters in filenames to only those supported by Windows."
+msgstr ""
+
+#. (itstool) path: item/p
+#: docs/yelp/C/downloader.page:45
+msgid "This option is only available on Linux."
+msgstr ""
+
+#. (itstool) path: item/title
+#: docs/yelp/C/downloader.page:51
+msgid "Download Immediately After Validation"
+msgstr ""
+
+#. (itstool) path: item/p
+#: docs/yelp/C/downloader.page:52
+msgid ""
+"Bypasses the download options selection in the Add Download dialog and "
+"immediately downloads a validated media using previously selected options."
+msgstr ""
+
+#. (itstool) path: item/title
+#: docs/yelp/C/downloader.page:58
 msgid "Included Auto-Generated Subtitles"
 msgstr "Вмикати автоматично згенеровані субтитри"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:44
+#: docs/yelp/C/downloader.page:59
 msgid ""
 "Whether or not to included subtitles that are auto-translated to fit the "
 "requested subtitle languages."
@@ -231,84 +380,67 @@ msgstr ""
 "обраних мов субтитрів."
 
 #. (itstool) path: item/title
-#: docs/yelp/C/downloader.page:50
-msgid "Use aria2"
-msgstr "Використовувати aria2"
+#: docs/yelp/C/downloader.page:65
+#, fuzzy
+msgid "Preferred Video Codec"
+msgstr "Надавати перевагу кодеку AV1"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:51
+#: docs/yelp/C/downloader.page:66
+#, fuzzy
 msgid ""
-"If enabled, Parabolic will use aria2c to download media. Although using "
-"aria2c can improve download speed, download progress will not be displayed "
-"in the UI."
-msgstr ""
-"Якщо ввімкнено, Parabolic використовуватиме aria2c для завантаження "
-"медіафайлів. Хоча використання aria2c може покращити швидкість завантаження, "
-"хід завантаження не відображатиметься у користувацькому інтерфейсі."
-
-#. (itstool) path: item/title
-#: docs/yelp/C/downloader.page:57
-msgid "Maximum Connections Per Server"
-msgstr "Максимальна кількість з'єднань на сервер"
-
-#. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:58
-msgid ""
-"This option only applies when using aria2 is enabled. This option is the "
-"same as the <code>-x</code> flag passed to aria2c."
-msgstr ""
-"Цей параметр застосовується лише тоді, коли ввімкнено використання aria2. "
-"Цей параметр є аналогом прапорця <code>-x</code>, переданого до aria2c."
-
-#. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:61
-msgid ""
-"The maximum number of connection that can be used per server. Must be an "
-"integer value between 1 and 32."
-msgstr ""
-"Максимальна кількість з'єднань, яку можна використовувати для одного "
-"сервера. Має бути цілим числом від 1 до 32."
+"The video codec Parabolic should prefer when selecting media formats to "
+"download."
+msgstr "Відеокодек, який слід надавати перевагу при завантаженні відео."
 
 #. (itstool) path: note/p
-#: docs/yelp/C/downloader.page:63
-msgid "Default: 16"
-msgstr "За замовчуванням: 16"
-
-#. (itstool) path: item/title
-#: docs/yelp/C/downloader.page:67
-msgid "Minimum Split Size"
-msgstr "Мінімальний розмір розділення"
-
-#. (itstool) path: item/p
 #: docs/yelp/C/downloader.page:68
-msgid ""
-"This option only applies when using aria2 is enabled. This option is the "
-"same as the <code>-k</code> flag passed to aria2c."
-msgstr ""
-"Цей параметр застосовується лише тоді, коли ввімкнено використання aria2. "
-"Цей параметр є аналогом прапорця <code>-k</code>, переданого до aria2c."
-
-#. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:71
-msgid ""
-"The minimum size, in MiB, of which to split a file. Must be an integer value "
-"between 1 and 1024."
-msgstr ""
-"Мінімальний розмір, у МБ, на який можна розбити файл. Має бути цілим числом "
-"від 1 до 1024."
-
-#. (itstool) path: note/p
-#: docs/yelp/C/downloader.page:73
-msgid "Default: 20"
-msgstr "За замовчуванням: 20"
+#, fuzzy
+msgid "Default: Any"
+msgstr "За замовчуванням: Ввімк"
 
 #. (itstool) path: item/title
-#: docs/yelp/C/downloader.page:77 docs/yelp/C/newDownload.page:110
+#: docs/yelp/C/downloader.page:72
+msgid "Recover Crashed Downloads"
+msgstr ""
+
+#. (itstool) path: item/p
+#: docs/yelp/C/downloader.page:73
+msgid ""
+"If enabled, Parabolic will track the running and queued downloads and "
+"restart them if necessary if the application crashes and is restarted."
+msgstr ""
+
+#. (itstool) path: info/title
+#: docs/yelp/C/downloads.page:8
+#, fuzzy
+msgctxt "link"
+msgid "Downloads 🌐"
+msgstr "Завантажувач 🌐"
+
+#. (itstool) path: page/title
+#: docs/yelp/C/downloads.page:20
+#, fuzzy
+msgid "Downloads"
+msgstr "Завантажувач"
+
+#. (itstool) path: page/p
+#: docs/yelp/C/downloads.page:21
+#, fuzzy
+msgid ""
+"This page explains all options for configuring Downloads in Preferences in "
+"<app>Parabolic</app>."
+msgstr ""
+"На цій сторінці описано всі параметри налаштування завантажувача у "
+"параметрах <app>Parabolic</app>."
+
+#. (itstool) path: item/title
+#: docs/yelp/C/downloads.page:25 docs/yelp/C/newDownload.page:103
 msgid "Speed Limit"
 msgstr "Обмеження швидкості"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:78
+#: docs/yelp/C/downloads.page:26
 msgid ""
 "A limit, in Ki/s, that is applied to downloads only if they have the "
 "advanced option <code>Speed Limit</code> enabled. Must be an integer value "
@@ -319,45 +451,17 @@ msgstr ""
 "цілим числом від 512 до 10240."
 
 #. (itstool) path: note/p
-#: docs/yelp/C/downloader.page:80
+#: docs/yelp/C/downloads.page:28
 msgid "Default: 1024"
 msgstr "За замовчуванням: 1024"
 
 #. (itstool) path: item/title
-#: docs/yelp/C/downloader.page:84
-msgid "Proxy URL"
-msgstr "Проксі URL"
-
-#. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:85
-msgid "The url of the proxy server to use."
-msgstr "URL-адреса проксі-сервера для використання."
-
-#. (itstool) path: item/title
-#: docs/yelp/C/downloader.page:88
-msgid "Cookies from Browser"
-msgstr "Файли cookie з браузера"
-
-#. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:89
-msgid ""
-"A browser in which to read cookies from and pass to yt-dlp's download engine."
-msgstr ""
-"Браузер, з якого зчитуються файли cookie і передаються в завантажувальний "
-"движок yt-dlp."
-
-#. (itstool) path: note/p
-#: docs/yelp/C/downloader.page:91
-msgid "Default: None"
-msgstr "За замовчуванням: Відсутній"
-
-#. (itstool) path: item/title
-#: docs/yelp/C/downloader.page:95
+#: docs/yelp/C/downloads.page:32
 msgid "Use SponsorBlock for YouTube"
 msgstr "Використовувати SponsorBlock для YouTube"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:96
+#: docs/yelp/C/downloads.page:33
 msgid ""
 "If enabled, Parabolic will apply the SponsorBlock extension to YouTube "
 "downloads."
@@ -366,7 +470,7 @@ msgstr ""
 "YouTube."
 
 #. (itstool) path: note/p
-#: docs/yelp/C/downloader.page:98
+#: docs/yelp/C/downloads.page:35
 msgid ""
 "SponsorBlock only works on YouTube videos. However, leaving this setting on "
 "will not affect downloads from other sites (i.e. not cause them to fail)."
@@ -374,6 +478,106 @@ msgstr ""
 "SponsorBlock працює лише на відео YouTube. Однак залишення цього "
 "налаштування ввімкненим не вплине на завантаження з інших сайтів (тобто не "
 "призведе до їх невдачі)."
+
+#. (itstool) path: item/title
+#: docs/yelp/C/downloads.page:42
+msgid "Proxy URL"
+msgstr "Проксі URL"
+
+#. (itstool) path: item/p
+#: docs/yelp/C/downloads.page:43
+msgid "The url of the proxy server to use."
+msgstr "URL-адреса проксі-сервера для використання."
+
+#. (itstool) path: note/p
+#: docs/yelp/C/downloads.page:45
+#, fuzzy
+msgid "Default: No URL"
+msgstr "За замовчуванням: Відсутній"
+
+#. (itstool) path: item/title
+#: docs/yelp/C/downloads.page:49
+msgid "Cookies from Browser"
+msgstr "Файли cookie з браузера"
+
+#. (itstool) path: item/p
+#: docs/yelp/C/downloads.page:50
+msgid ""
+"A browser in which to read cookies from and pass to yt-dlp's download engine."
+msgstr ""
+"Браузер, з якого зчитуються файли cookie і передаються в завантажувальний "
+"движок yt-dlp."
+
+#. (itstool) path: item/p
+#: docs/yelp/C/downloads.page:51 docs/yelp/C/downloads.page:60
+#, fuzzy
+msgid ""
+"This may be useful when downloading media that requires a login, for "
+"example: private YouTube videos."
+msgstr ""
+"Файл .txt з файлами cookie для передачі yt-dlp під час завантаження. Це може "
+"бути корисно при завантаженні медіа, які вимагають входу, наприклад: "
+"приватні відео на YouTube."
+
+#. (itstool) path: item/p
+#: docs/yelp/C/downloads.page:52
+msgid "This option is on available on non sandboxed platforms."
+msgstr ""
+
+#. (itstool) path: note/p
+#: docs/yelp/C/downloads.page:54
+msgid "Default: None"
+msgstr "За замовчуванням: Відсутній"
+
+#. (itstool) path: item/title
+#: docs/yelp/C/downloads.page:58
+msgid "Cookies File"
+msgstr "Файл cookie"
+
+#. (itstool) path: item/p
+#: docs/yelp/C/downloads.page:59
+#, fuzzy
+msgid "A .txt file of cookies to pass to yt-dlp when download engine."
+msgstr ""
+"Браузер, з якого зчитуються файли cookie і передаються в завантажувальний "
+"движок yt-dlp."
+
+#. (itstool) path: item/p
+#: docs/yelp/C/downloads.page:61
+msgid ""
+"Use one of the following extensions for getting a cookies file from your "
+"browser:"
+msgstr ""
+"Використовуйте одне з наступних розширень для отримання файлів cookie з "
+"вашого браузера:"
+
+#. (itstool) path: item/p
+#: docs/yelp/C/downloads.page:62
+msgid ""
+"Chrome: <code>https://chrome.google.com/webstore/detail/get-cookiestxt-"
+"locally/cclelndahbckbenkjhflpdbgdldlbecc</code>"
+msgstr ""
+"Chrome: <code>https://chrome.google.com/webstore/detail/get-cookiestxt-"
+"locally/cclelndahbckbenkjhflpdbgdldlbecc</code>"
+
+#. (itstool) path: item/p
+#: docs/yelp/C/downloads.page:63
+msgid ""
+"Firefox: <code>https://addons.mozilla.org/en-US/firefox/addon/cookies-txt/</"
+"code>"
+msgstr ""
+"Firefox: <code>https://addons.mozilla.org/en-US/firefox/addon/cookies-txt/</"
+"code>"
+
+#. (itstool) path: note/p
+#: docs/yelp/C/downloads.page:65
+msgid "Use these extensions at your own risk."
+msgstr "Використовуйте ці розширення на свій страх і ризик."
+
+#. (itstool) path: note/p
+#: docs/yelp/C/downloads.page:68
+msgid "Default: No File Selected"
+msgstr "За замовчуванням: Файл не вибрано"
 
 #. (itstool) path: info/title
 #: docs/yelp/C/index.page:7
@@ -467,8 +671,9 @@ msgstr ""
 
 #. (itstool) path: section/p
 #: docs/yelp/C/keyring.page:26
+#, fuzzy
 msgid ""
-"The library will use you system's credential manager (i.e. DBus secret "
+"The library will use your system's credential manager (i.e. DBus secret "
 "service on Linux and Windows Credential Manager on Windows) for securing the "
 "Keyring database file."
 msgstr ""
@@ -681,7 +886,7 @@ msgstr ""
 
 #. (itstool) path: note/p
 #: docs/yelp/C/newDownload.page:61 docs/yelp/C/newDownload.page:68
-#: docs/yelp/C/newDownload.page:82
+#: docs/yelp/C/newDownload.page:75
 msgid ""
 "The previously used state will be remembered and pre-selected for the next "
 "download."
@@ -707,30 +912,11 @@ msgstr ""
 
 #. (itstool) path: item/title
 #: docs/yelp/C/newDownload.page:72
-msgid "Video Codec"
-msgstr "Відеокодек"
-
-#. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:73
-msgid "The video codec to prefer when downloading a video."
-msgstr "Відеокодек, який слід надавати перевагу при завантаженні відео."
-
-#. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:75
-msgid ""
-"The previously used codec will be remembered and pre-selected for the next "
-"download."
-msgstr ""
-"Раніше використаний кодек буде збережено і автоматично вибрано для "
-"наступного завантаження."
-
-#. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:79
 msgid "Split Chapters"
 msgstr "Розділити глави"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:80
+#: docs/yelp/C/newDownload.page:73
 msgid ""
 "If enabled, Parabolic will split a video download into multiple smaller "
 "files based on its chapters."
@@ -739,17 +925,17 @@ msgstr ""
 "файлів, грунтуючись на його розділах."
 
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:86
+#: docs/yelp/C/newDownload.page:79
 msgid "Save Folder"
 msgstr "Зберегти теку"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:87
+#: docs/yelp/C/newDownload.page:80
 msgid "The folder at which to save the download to."
 msgstr "Тека, в яку буде збережено завантаження."
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:89
+#: docs/yelp/C/newDownload.page:82
 msgid ""
 "The previously used folder will be remembered and pre-selected for the next "
 "download."
@@ -758,27 +944,27 @@ msgstr ""
 "наступного завантаження."
 
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:93
+#: docs/yelp/C/newDownload.page:86
 msgid "File Name"
 msgstr "Ім'я файлу"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:94
+#: docs/yelp/C/newDownload.page:87
 msgid "The file name to use when saving the download."
 msgstr "Ім'я файлу, яке буде використано при збереженні завантаження."
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:96
+#: docs/yelp/C/newDownload.page:89
 msgid "Default: The title of the media"
 msgstr "За замовчуванням: назва медіа"
 
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:100
+#: docs/yelp/C/newDownload.page:93
 msgid "Time Frame"
 msgstr "Часовий проміжок"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:101
+#: docs/yelp/C/newDownload.page:94
 msgid ""
 "The user can enter a start time frame and an end time frame to download a "
 "specific section of the media."
@@ -787,12 +973,12 @@ msgstr ""
 "завантаження конкретної частини медіа."
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:103
+#: docs/yelp/C/newDownload.page:96
 msgid "Default: The whole media length"
 msgstr "За замовчуванням: вся довжина медіа"
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:106
+#: docs/yelp/C/newDownload.page:99
 msgid ""
 "Enabling this option will disable the use of aria2 as the downloader for "
 "this download, even if it is enabled in Preferences."
@@ -801,7 +987,7 @@ msgstr ""
 "завантаження, навіть якщо він увімкнений у Параметрах."
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:111
+#: docs/yelp/C/newDownload.page:104
 msgid ""
 "If enabled, Parabolic will limit the download's speed with the speed "
 "configured in <link xref=\"downloader\">Preferences</link>."
@@ -810,12 +996,27 @@ msgstr ""
 "швидкості, налаштованої в <link xref=\"downloader\">Параметрах</link>."
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:113
+#: docs/yelp/C/newDownload.page:106
 msgid "Available in the <code>Advanced Options</code> section."
 msgstr "Доступно в розділі <code>Додаткові параметри</code>."
 
-#~ msgid "Prefer AV1 Codec"
-#~ msgstr "Надавати перевагу кодеку AV1"
+#~ msgid "Video Codec"
+#~ msgstr "Відеокодек"
+
+#~ msgid "The video codec to prefer when downloading a video."
+#~ msgstr "Відеокодек, який слід надавати перевагу при завантаженні відео."
+
+#~ msgid ""
+#~ "The previously used codec will be remembered and pre-selected for the "
+#~ "next download."
+#~ msgstr ""
+#~ "Раніше використаний кодек буде збережено і автоматично вибрано для "
+#~ "наступного завантаження."
+
+#~ msgid ""
+#~ "Parabolic will NOT embed the Comment, Description, Synopsis, and Purl "
+#~ "fields."
+#~ msgstr "Parabolic НЕ вставляє поля Коментар, Опис, Синопсис і Виворіт."
 
 #~ msgid ""
 #~ "If enabled, Parabolic will prefer videos with the av1 codec when "
@@ -891,45 +1092,6 @@ msgstr "Доступно в розділі <code>Додаткові параме
 #~ msgstr ""
 #~ "За замовчуванням: коди мови вашої культури. Наприклад, в системі en-US за "
 #~ "замовчуванням буде <code>en,en-US,eng</code>"
-
-#~ msgid "Cookies File"
-#~ msgstr "Файл cookie"
-
-#~ msgid ""
-#~ "A .txt file of cookies to pass to yt-dlp when downloading. This may be "
-#~ "useful when downloading media that requires a login, for example: private "
-#~ "YouTube videos."
-#~ msgstr ""
-#~ "Файл .txt з файлами cookie для передачі yt-dlp під час завантаження. Це "
-#~ "може бути корисно при завантаженні медіа, які вимагають входу, наприклад: "
-#~ "приватні відео на YouTube."
-
-#~ msgid ""
-#~ "Use one of the following extensions for getting a cookies file from your "
-#~ "browser:"
-#~ msgstr ""
-#~ "Використовуйте одне з наступних розширень для отримання файлів cookie з "
-#~ "вашого браузера:"
-
-#~ msgid ""
-#~ "Chrome: <code>https://chrome.google.com/webstore/detail/get-cookiestxt-"
-#~ "locally/cclelndahbckbenkjhflpdbgdldlbecc</code>"
-#~ msgstr ""
-#~ "Chrome: <code>https://chrome.google.com/webstore/detail/get-cookiestxt-"
-#~ "locally/cclelndahbckbenkjhflpdbgdldlbecc</code>"
-
-#~ msgid ""
-#~ "Firefox: <code>https://addons.mozilla.org/en-US/firefox/addon/cookies-txt/"
-#~ "</code>"
-#~ msgstr ""
-#~ "Firefox: <code>https://addons.mozilla.org/en-US/firefox/addon/cookies-txt/"
-#~ "</code>"
-
-#~ msgid "Use these extensions at your own risk."
-#~ msgstr "Використовуйте ці розширення на свій страх і ризик."
-
-#~ msgid "Default: No File Selected"
-#~ msgstr "За замовчуванням: Файл не вибрано"
 
 #~ msgid "Migrating from Password-Secured Keyring to Secret-Secured Keyring"
 #~ msgstr ""
@@ -1031,12 +1193,6 @@ msgstr "Доступно в розділі <code>Додаткові параме
 
 #~ msgid "Crop Thumbnail"
 #~ msgstr "Обрізати мініатюру"
-
-#~ msgid ""
-#~ "Only available if <code>Embed Metadata</code> is enabled in Preferences."
-#~ msgstr ""
-#~ "Доступно, якщо у Параметрах ввімкнено опцію <code>Вставити метадані</"
-#~ "code>."
 
 #~ msgid ""
 #~ "If enabled, Parabolic will crop a download's embedded thumbnail as "

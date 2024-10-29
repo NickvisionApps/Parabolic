@@ -14,9 +14,11 @@
 #include "download.h"
 #include "downloaderoptions.h"
 #include "downloadhistory.h"
+#include "downloadrecoveryqueue.h"
 #include "urlinfo.h"
 #include "events/downloadaddedeventargs.h"
 #include "events/downloadcompletedeventargs.h"
+#include "events/downloadcredentialneededeventargs.h"
 #include "events/downloadprogresschangedeventargs.h"
 
 namespace Nickvision::TubeConverter::Shared::Models
@@ -33,7 +35,7 @@ namespace Nickvision::TubeConverter::Shared::Models
          * @param history The DownloadHistory
          * @param logger The Logger
          */
-        DownloadManager(const DownloaderOptions& options, DownloadHistory& history, Logging::Logger& logger);
+        DownloadManager(const DownloaderOptions& options, DownloadHistory& history, DownloadRecoveryQueue& recoveryQueue, Logging::Logger& logger);
         /**
          * @brief Destructs a DownloadManager.
          */
@@ -73,6 +75,11 @@ namespace Nickvision::TubeConverter::Shared::Models
          * @return The download started from queue event
          */
         Nickvision::Events::Event<Nickvision::Events::ParamEventArgs<int>>& downloadStartedFromQueue();
+        /**
+         * @brief Gets the event for when a credential is needed for a download.
+         * @return The download credential needed event
+         */
+        Nickvision::Events::Event<Events::DownloadCredentialNeededEventArgs>& downloadCredentialNeeded();
         /**
          * @brief Gets the remaining downloads count.
          * @return The remaining downloads count
@@ -124,8 +131,10 @@ namespace Nickvision::TubeConverter::Shared::Models
         /**
          * @brief Loads the download history.
          * @brief This method invokes the historyChanged event.
+         * @brief This method will recover previous downloads that were interrupted by a crash.
+         * @brief Returns the number of downloads recovered.
          */
-        void loadHistory();
+        size_t startup();
         /**
          * @brief Clears the download history.
          * @brief This method invokes the historyChanged event.
@@ -144,6 +153,13 @@ namespace Nickvision::TubeConverter::Shared::Models
          * @return The UrlInfo if successful, else std::nullopt
          */
         std::optional<UrlInfo> fetchUrlInfo(const std::string& url, const std::optional<Keyring::Credential>& credential) const;
+        /**
+         * @brief Fetches information about a set of URLs from a batch file.
+         * @param batchFile The batch file with listed URLs
+         * @param credential An optional credential to use for authentication
+         * @return The UrlInfo if successful, else std::nullopt
+         */
+        std::optional<UrlInfo> fetchUrlInfoFromBatchFile(const std::filesystem::path& batchFile, const std::optional<Keyring::Credential>& credential) const;
         /**
          * @brief Adds a download to the queue.
          * @brief This will invoke the downloadAdded event if added successfully.
@@ -202,6 +218,7 @@ namespace Nickvision::TubeConverter::Shared::Models
         mutable std::mutex m_mutex;
         DownloaderOptions m_options;
         DownloadHistory& m_history;
+        DownloadRecoveryQueue& m_recoveryQueue;
         Logging::Logger& m_logger;
         std::unordered_map<int, std::shared_ptr<Download>> m_downloading;
         std::unordered_map<int, std::shared_ptr<Download>> m_queued;
@@ -213,6 +230,7 @@ namespace Nickvision::TubeConverter::Shared::Models
         Nickvision::Events::Event<Nickvision::Events::ParamEventArgs<int>> m_downloadStopped;
         Nickvision::Events::Event<Nickvision::Events::ParamEventArgs<int>> m_downloadRetried;
         Nickvision::Events::Event<Nickvision::Events::ParamEventArgs<int>> m_downloadStartedFromQueue;
+        Nickvision::Events::Event<Events::DownloadCredentialNeededEventArgs> m_downloadCredentialNeeded;
     };
 }
 

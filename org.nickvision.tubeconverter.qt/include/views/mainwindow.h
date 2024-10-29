@@ -71,6 +71,10 @@ namespace Nickvision::TubeConverter::QT::Views
         void windowsUpdate();
 #endif
         /**
+         * @brief Opens the application's documentation in the browser.
+         */
+        void documentation();
+        /**
          * @brief Opens the application's GitHub repo in the browser.
          */
         void gitHubRepo();
@@ -137,6 +141,11 @@ namespace Nickvision::TubeConverter::QT::Views
          * @param args The ParamEventArgs<std::vector<Models::HistoricDownload>>
          */
         void onHistoryChanged(const Events::ParamEventArgs<std::vector<Shared::Models::HistoricDownload>>& args);
+        /**
+         * @brief Handles when a recovered download needs a credential. 
+         * @param args The DownloadCredentialNeededEventArgs
+         */
+        void onDownloadCredentialNeeded(const Shared::Events::DownloadCredentialNeededEventArgs& args);
         /**
          * @brief Handles when a download is added.
          * @param args The DownloadAddedEventArgs

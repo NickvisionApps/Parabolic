@@ -12,48 +12,62 @@
 		<years its:translate="no">2023-2024</years>
 	</credit>
 	<license href="http://creativecommons.org/licenses/by/4.0/" its:translate="no"><p>Creative Commons Attribution 4.0 International License</p></license>
-</info>
+
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Adolfo Jayme Barrientos</mal:name>
+      <mal:email>fitojb@ubuntu.com</mal:email>
+      <mal:years>2024</mal:years>
+    </mal:credit>
+  </info>
 
 <title>Convertidor</title>
 <p>This page explains all options for configuring the Converter in Preferences in <app>Parabolic</app>.</p>
 
 <terms>
 	<item>
-		<title>Incrustar metadades</title>
+		<title>Incrusta metadades</title>
 		<p>If enabled, Parabolic will tag a media with its relevant information (title, genre, etc...) and thumbnail if available.</p>
-        <p>Parabolic will NOT embed the Comment, Description, Synopsis, and Purl fields.</p>
 		<note style="advanced">
-			<p>Default: On</p>
+			<p>Valor per defecte: activat</p>
 		</note>
     </item>
     <item>
-        <title>Embed Subtitles</title>
-        <p>If disabled or if embedding fails, downloaded subtitles will be saved to a separate file.</p>
-        <note style="advanced">
-            <p>Default: On</p>
-        </note>
-    </item>
-    <item>
-		<title>Incrustar Capítols</title>
+		<title>Incrusta capítols</title>
 		<p>If enabled, Parabolic will tag a media with chapter information if available.</p>
 		<note style="advanced">
-			<p>Default: Off</p>
+			<p>Valor per defecte: desactivat</p>
 		</note>
 	</item>
     <item>
-		<title>Retallar miniatures d'àudio</title>
+        <title>Incrusta subtítols</title>
+        <p>If disabled or if embedding fails, downloaded subtitles will be saved to a separate file.</p>
+        <note style="advanced">
+            <p>Valor per defecte: activat</p>
+        </note>
+    </item>
+    <item>
+		<title>Retalla les miniatures d’àudio</title>
 		<p>If enabled, Parabolic will crop thumbnails for audio files to be a square resolution.</p>
+        <p>This option is only configurable if <code>Embed Metadata</code> is on.</p>
 		<note style="advanced">
-			<p>Default: Off</p>
+			<p>Valor per defecte: desactivat</p>
 		</note>
     </item>
     <item>
 		<title>Eliminar dades de font</title>
 		<p>If enabled, Parabolic will clear metadata fields containing the URL and other identifying information of the media source.</p>
         <p>Fields that are cleared: <code>comment</code>, <code>description</code>, <code>synopsis</code>, <code>purl</code> and <code>handler_name</code> in each stream.</p>
+        <p>This option is only configurable if <code>Embed Metadata</code> is on.</p>
 		<note style="advanced">
-			<p>Default: Off</p>
+			<p>Valor per defecte: desactivat</p>
 		</note>
+    </item>
+    <item>
+        <title>Postprocessing Threads</title>
+        <p>The number of threads to allow the postprocessor (<code>FFmpeg</code>) to use for each download.</p>
+        <note style="advanced">
+            <p>Default: The max number of threads available on the system</p>
+        </note>
     </item>
 </terms>
 </page>

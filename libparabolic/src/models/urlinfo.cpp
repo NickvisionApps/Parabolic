@@ -29,6 +29,23 @@ namespace Nickvision::TubeConverter::Shared::Models
         }
     }
 
+    UrlInfo::UrlInfo(const std::filesystem::path& batchFile, const std::vector<std::optional<UrlInfo>>& urlInfos)
+        : m_url{ batchFile.string() },
+        m_title{ batchFile.filename().stem().string() },
+        m_isPlaylist{ urlInfos.size() > 1 ? true : urlInfos[0]->isPlaylist() }
+    {
+        for(const std::optional<UrlInfo>& urlInfo : urlInfos)
+        {
+            if(urlInfo)
+            {
+                for(size_t i = 0; i < urlInfo->count(); i++)
+                {
+                    m_media.push_back(urlInfo->get(i));
+                }
+            }
+        }
+    }
+
     const std::string& UrlInfo::getUrl() const
     {
         return m_url;

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" id="aria" its:version="2.0" xml:lang="sk">
+<info>
+	<link type="guide" xref="index"/>
+	<title type="link">aria2 🖥️</title>
+	<credit type="author copyright">
+		<name>Nicholas Logozzo</name>
+		<years its:translate="no">2023-2024</years>
+	</credit>
+	<credit type="publisher copyright">
+		<name>Nicholas Logozzo</name>
+		<years its:translate="no">2023-2024</years>
+	</credit>
+	<license href="http://creativecommons.org/licenses/by/4.0/" its:translate="no"><p>Creative Commons Attribution 4.0 International License</p></license>
+
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Jozef Gaal</mal:name>
+      <mal:email>preklady@mayday.sk</mal:email>
+      <mal:years>2024</mal:years>
+    </mal:credit>
+  </info>
+
+<title>aria2</title>
+<p>This page explains all options for configuring aria2 in Preferences in <app>Parabolic</app>.</p>
+
+<terms>
+    <item>
+        <title>Použiť aria2</title>
+        <p>If enabled, Parabolic will use aria2c to download media.</p>
+        <p>Although using aria2c can improve download speed, download progress will not be displayed in the UI.</p>
+        <note style="advanced">
+            <p>Predvolené: Vypnuté</p>
+        </note>
+    </item>
+    <item>
+        <title>Maximálny počet pripojení na server</title>
+        <p>Táto možnosť platí len vtedy, keď je povolené používanie aria2. Táto možnosť je rovnaká ako príznak <code>x</code> odovzdaný aria2c.</p>
+        <p>Maximálny počet pripojení, ktoré možno použiť na jeden server. Musí to byť celočíselná hodnota od 1 do 32.</p>
+        <note style="advanced">
+            <p>Predvolené: 16</p>
+        </note>
+    </item>
+    <item>
+        <title>Minimálna veľkosť rozdelenia</title>
+        <p>Táto možnosť platí len vtedy, keď je povolené používanie aria2. Táto možnosť je rovnaká ako príznak <code>k</code> odovzdaný aria2c.</p>
+        <p>Minimálna veľkosť v MiB, na ktorú sa má súbor rozdeliť. Musí to byť celé číslo v rozsahu od 1 do 1024.</p>
+        <note style="advanced">
+            <p>Predvolené: 20</p>
+        </note>
+    </item>
+</terms>
+</page>

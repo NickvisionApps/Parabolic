@@ -62,6 +62,47 @@ document.addEventListener('DOMContentLoaded', function() {
 </svg><div class="inner"><div class="region"><div class="contents"><p class="p">डिफ़ॉल्ट: 5</p></div></div></div>
 </div>
 </dd>
+<dt class="terms">Limit Filename Characters</dt>
+<dd class="terms">
+<p class="p">Restricts characters in filenames to only those supported by Windows.</p>
+<p class="p">This option is only available on Linux.</p>
+<div class="note note-advanced" title="विस्तृत">
+<svg height="24" width="24" version="1.1">
+ <g>
+  <path class="yelp-svg-fill" d="m5.4473 12.572c-2.039 0.957-3.4473 3.019-3.4473 5.428v4h20v-4c0-2.406-1.406-4.466-3.441-5.424a8 8 0 0 1 -6.559 3.424 8 8 0 0 1 -6.5527 -3.428z"></path>
+  <path class="yelp-svg-fill" d="m12 3a5 5 0 0 0 -5 5 5 5 0 0 0 5 5 5 5 0 0 0 5 -5 5 5 0 0 0 -5 -5zm0 3a2 2 0 0 1 2 2 2 2 0 0 1 -2 2 2 2 0 0 1 -2 -2 2 2 0 0 1 2 -2z"></path>
+  <path class="yelp-svg-fill" d="m15.312 6 3.688 1v2l-3.4688 1z"></path>
+  <path class="yelp-svg-fill" d="m14 11.312-1 3.688h-2l-1-3.469z"></path>
+  <path class="yelp-svg-fill" d="m10 4.6875 1-3.6875h2l1 3.4688z"></path>
+  <path class="yelp-svg-fill" d="m8.6875 10-3.6875-1v-2l3.4688-1z"></path>
+  <path class="yelp-svg-fill" d="m12.928 4.2435 3.3146-1.9003 1.4142 1.4142-1.7457 3.1599z"></path>
+  <path class="yelp-svg-fill" d="m15.757 8.9281 1.9003 3.3146-1.4142 1.4142-3.1599-1.7457z"></path>
+  <path class="yelp-svg-fill" d="m8.2435 7.0719-1.9004-3.3145 1.4143-1.4143 3.1596 1.7457z"></path>
+  <path class="yelp-svg-fill" d="m11.072 11.757-3.3146 1.9-1.4143-1.414 1.7457-3.1602z"></path>
+ </g>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">डिफ़ॉल्ट: बंद</p></div></div></div>
+</div>
+</dd>
+<dt class="terms">Download Immediately After Validation</dt>
+<dd class="terms">
+<p class="p">Bypasses the download options selection in the Add Download dialog and immediately downloads a validated media using previously selected options.</p>
+<div class="note note-advanced" title="विस्तृत">
+<svg height="24" width="24" version="1.1">
+ <g>
+  <path class="yelp-svg-fill" d="m5.4473 12.572c-2.039 0.957-3.4473 3.019-3.4473 5.428v4h20v-4c0-2.406-1.406-4.466-3.441-5.424a8 8 0 0 1 -6.559 3.424 8 8 0 0 1 -6.5527 -3.428z"></path>
+  <path class="yelp-svg-fill" d="m12 3a5 5 0 0 0 -5 5 5 5 0 0 0 5 5 5 5 0 0 0 5 -5 5 5 0 0 0 -5 -5zm0 3a2 2 0 0 1 2 2 2 2 0 0 1 -2 2 2 2 0 0 1 -2 -2 2 2 0 0 1 2 -2z"></path>
+  <path class="yelp-svg-fill" d="m15.312 6 3.688 1v2l-3.4688 1z"></path>
+  <path class="yelp-svg-fill" d="m14 11.312-1 3.688h-2l-1-3.469z"></path>
+  <path class="yelp-svg-fill" d="m10 4.6875 1-3.6875h2l1 3.4688z"></path>
+  <path class="yelp-svg-fill" d="m8.6875 10-3.6875-1v-2l3.4688-1z"></path>
+  <path class="yelp-svg-fill" d="m12.928 4.2435 3.3146-1.9003 1.4142 1.4142-1.7457 3.1599z"></path>
+  <path class="yelp-svg-fill" d="m15.757 8.9281 1.9003 3.3146-1.4142 1.4142-3.1599-1.7457z"></path>
+  <path class="yelp-svg-fill" d="m8.2435 7.0719-1.9004-3.3145 1.4143-1.4143 3.1596 1.7457z"></path>
+  <path class="yelp-svg-fill" d="m11.072 11.757-3.3146 1.9-1.4143-1.414 1.7457-3.1602z"></path>
+ </g>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">डिफ़ॉल्ट: बंद</p></div></div></div>
+</div>
+</dd>
 <dt class="terms">ऑटो-निर्मित उपशीर्षक शामिल हैं</dt>
 <dd class="terms">
 <p class="p">क्या उन उपशीर्षकों को शामिल किया जाना चाहिए जो अनुरोधित उपशीर्षक भाषाओं में फिट होने के लिए स्वचालित रूप से अनुवादित हैं।</p>
@@ -82,9 +123,9 @@ document.addEventListener('DOMContentLoaded', function() {
 </svg><div class="inner"><div class="region"><div class="contents"><p class="p">डिफ़ॉल्ट: बंद</p></div></div></div>
 </div>
 </dd>
-<dt class="terms">aria2 का प्रयोग करें</dt>
+<dt class="terms">Preferred Video Codec</dt>
 <dd class="terms">
-<p class="p">यदि सक्षम किया गया है, तो मीडिया डाउनलोड करने के लिए Parabolic aria2c का उपयोग करेगा। हालाँकि aria2c का उपयोग करने से डाउनलोड गति में सुधार हो सकता है, डाउनलोड प्रगति UI में प्रदर्शित नहीं होगी।</p>
+<p class="p">The video codec Parabolic should prefer when selecting media formats to download.</p>
 <div class="note note-advanced" title="विस्तृत">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -99,13 +140,12 @@ document.addEventListener('DOMContentLoaded', function() {
   <path class="yelp-svg-fill" d="m8.2435 7.0719-1.9004-3.3145 1.4143-1.4143 3.1596 1.7457z"></path>
   <path class="yelp-svg-fill" d="m11.072 11.757-3.3146 1.9-1.4143-1.414 1.7457-3.1602z"></path>
  </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">डिफ़ॉल्ट: बंद</p></div></div></div>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Default: Any</p></div></div></div>
 </div>
 </dd>
-<dt class="terms">प्रति सर्वर अधिकतम कनेक्शन</dt>
+<dt class="terms">Recover Crashed Downloads</dt>
 <dd class="terms">
-<p class="p">यह विकल्प केवल तभी लागू होता है जब aria2 का उपयोग सक्षम हो। यह विकल्प aria2c को दिए गए <span class="code">-x</span> ध्वज के समान है।</p>
-<p class="p">प्रति सर्वर उपयोग किए जा सकने वाले कनेक्शन की अधिकतम संख्या. 1 और 32 के बीच एक पूर्णांक मान होना चाहिए।</p>
+<p class="p">If enabled, Parabolic will track the running and queued downloads and restart them if necessary if the application crashes and is restarted.</p>
 <div class="note note-advanced" title="विस्तृत">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -120,98 +160,7 @@ document.addEventListener('DOMContentLoaded', function() {
   <path class="yelp-svg-fill" d="m8.2435 7.0719-1.9004-3.3145 1.4143-1.4143 3.1596 1.7457z"></path>
   <path class="yelp-svg-fill" d="m11.072 11.757-3.3146 1.9-1.4143-1.414 1.7457-3.1602z"></path>
  </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">डिफ़ॉल्ट: 16</p></div></div></div>
-</div>
-</dd>
-<dt class="terms">न्यूनतम विभाजन आकार</dt>
-<dd class="terms">
-<p class="p">यह विकल्प केवल तभी लागू होता है जब aria2 का उपयोग सक्षम हो। यह विकल्प aria2c को दिए गए <span class="code">-k</span> ध्वज के समान है।</p>
-<p class="p">किसी फाइल को विभाजित करने के लिए MiB में न्यूनतम आकार। 1 और 1024 के बीच एक पूर्णांक मान होना चाहिए।</p>
-<div class="note note-advanced" title="विस्तृत">
-<svg height="24" width="24" version="1.1">
- <g>
-  <path class="yelp-svg-fill" d="m5.4473 12.572c-2.039 0.957-3.4473 3.019-3.4473 5.428v4h20v-4c0-2.406-1.406-4.466-3.441-5.424a8 8 0 0 1 -6.559 3.424 8 8 0 0 1 -6.5527 -3.428z"></path>
-  <path class="yelp-svg-fill" d="m12 3a5 5 0 0 0 -5 5 5 5 0 0 0 5 5 5 5 0 0 0 5 -5 5 5 0 0 0 -5 -5zm0 3a2 2 0 0 1 2 2 2 2 0 0 1 -2 2 2 2 0 0 1 -2 -2 2 2 0 0 1 2 -2z"></path>
-  <path class="yelp-svg-fill" d="m15.312 6 3.688 1v2l-3.4688 1z"></path>
-  <path class="yelp-svg-fill" d="m14 11.312-1 3.688h-2l-1-3.469z"></path>
-  <path class="yelp-svg-fill" d="m10 4.6875 1-3.6875h2l1 3.4688z"></path>
-  <path class="yelp-svg-fill" d="m8.6875 10-3.6875-1v-2l3.4688-1z"></path>
-  <path class="yelp-svg-fill" d="m12.928 4.2435 3.3146-1.9003 1.4142 1.4142-1.7457 3.1599z"></path>
-  <path class="yelp-svg-fill" d="m15.757 8.9281 1.9003 3.3146-1.4142 1.4142-3.1599-1.7457z"></path>
-  <path class="yelp-svg-fill" d="m8.2435 7.0719-1.9004-3.3145 1.4143-1.4143 3.1596 1.7457z"></path>
-  <path class="yelp-svg-fill" d="m11.072 11.757-3.3146 1.9-1.4143-1.414 1.7457-3.1602z"></path>
- </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">डिफ़ॉल्ट: 20</p></div></div></div>
-</div>
-</dd>
-<dt class="terms">गति सीमा</dt>
-<dd class="terms">
-<p class="p">Ki/s में एक सीमा, जो डाउनलोड पर केवल तभी लागू होती है जब उनके पास उन्नत विकल्प <span class="code">स्पीड लिमिट</span> सक्षम हो। 512 और 10240 के बीच एक पूर्णांक मान होना चाहिए।</p>
-<div class="note note-advanced" title="विस्तृत">
-<svg height="24" width="24" version="1.1">
- <g>
-  <path class="yelp-svg-fill" d="m5.4473 12.572c-2.039 0.957-3.4473 3.019-3.4473 5.428v4h20v-4c0-2.406-1.406-4.466-3.441-5.424a8 8 0 0 1 -6.559 3.424 8 8 0 0 1 -6.5527 -3.428z"></path>
-  <path class="yelp-svg-fill" d="m12 3a5 5 0 0 0 -5 5 5 5 0 0 0 5 5 5 5 0 0 0 5 -5 5 5 0 0 0 -5 -5zm0 3a2 2 0 0 1 2 2 2 2 0 0 1 -2 2 2 2 0 0 1 -2 -2 2 2 0 0 1 2 -2z"></path>
-  <path class="yelp-svg-fill" d="m15.312 6 3.688 1v2l-3.4688 1z"></path>
-  <path class="yelp-svg-fill" d="m14 11.312-1 3.688h-2l-1-3.469z"></path>
-  <path class="yelp-svg-fill" d="m10 4.6875 1-3.6875h2l1 3.4688z"></path>
-  <path class="yelp-svg-fill" d="m8.6875 10-3.6875-1v-2l3.4688-1z"></path>
-  <path class="yelp-svg-fill" d="m12.928 4.2435 3.3146-1.9003 1.4142 1.4142-1.7457 3.1599z"></path>
-  <path class="yelp-svg-fill" d="m15.757 8.9281 1.9003 3.3146-1.4142 1.4142-3.1599-1.7457z"></path>
-  <path class="yelp-svg-fill" d="m8.2435 7.0719-1.9004-3.3145 1.4143-1.4143 3.1596 1.7457z"></path>
-  <path class="yelp-svg-fill" d="m11.072 11.757-3.3146 1.9-1.4143-1.414 1.7457-3.1602z"></path>
- </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">डिफ़ॉल्ट: 1024</p></div></div></div>
-</div>
-</dd>
-<dt class="terms">प्रॉक्सी URL</dt>
-<dd class="terms"><p class="p">उपयोग करने के लिए प्रॉक्सी सर्वर का URL।</p></dd>
-<dt class="terms">Cookies from Browser</dt>
-<dd class="terms">
-<p class="p">A browser in which to read cookies from and pass to yt-dlp's download engine.</p>
-<div class="note note-advanced" title="विस्तृत">
-<svg height="24" width="24" version="1.1">
- <g>
-  <path class="yelp-svg-fill" d="m5.4473 12.572c-2.039 0.957-3.4473 3.019-3.4473 5.428v4h20v-4c0-2.406-1.406-4.466-3.441-5.424a8 8 0 0 1 -6.559 3.424 8 8 0 0 1 -6.5527 -3.428z"></path>
-  <path class="yelp-svg-fill" d="m12 3a5 5 0 0 0 -5 5 5 5 0 0 0 5 5 5 5 0 0 0 5 -5 5 5 0 0 0 -5 -5zm0 3a2 2 0 0 1 2 2 2 2 0 0 1 -2 2 2 2 0 0 1 -2 -2 2 2 0 0 1 2 -2z"></path>
-  <path class="yelp-svg-fill" d="m15.312 6 3.688 1v2l-3.4688 1z"></path>
-  <path class="yelp-svg-fill" d="m14 11.312-1 3.688h-2l-1-3.469z"></path>
-  <path class="yelp-svg-fill" d="m10 4.6875 1-3.6875h2l1 3.4688z"></path>
-  <path class="yelp-svg-fill" d="m8.6875 10-3.6875-1v-2l3.4688-1z"></path>
-  <path class="yelp-svg-fill" d="m12.928 4.2435 3.3146-1.9003 1.4142 1.4142-1.7457 3.1599z"></path>
-  <path class="yelp-svg-fill" d="m15.757 8.9281 1.9003 3.3146-1.4142 1.4142-3.1599-1.7457z"></path>
-  <path class="yelp-svg-fill" d="m8.2435 7.0719-1.9004-3.3145 1.4143-1.4143 3.1596 1.7457z"></path>
-  <path class="yelp-svg-fill" d="m11.072 11.757-3.3146 1.9-1.4143-1.414 1.7457-3.1602z"></path>
- </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Default: None</p></div></div></div>
-</div>
-</dd>
-<dt class="terms">YouTube के लिए स्पॉन्सरब्लॉक का उपयोग करें</dt>
-<dd class="terms">
-<p class="p">सक्षम होने पर, Parabolic YouTube डाउनलोड पर स्पॉन्सरब्लॉक एक्सटेंशन लागू करेगा।</p>
-<div class="note" title="टिप्पणी">
-<svg height="24" width="24" version="1.1">
- <g>
-  <path class="yelp-svg-fill" d="m4 3h16c0.554 0 1 0.446 1 1v11h-6v6h-11c-0.554 0-1-0.446-1-1v-16c0-0.554 0.446-1 1-1z"></path>
-  <path class="yelp-svg-fill" d="m17 16h4l-5 5v-4c0-0.554 0.446-1 1-1z"></path>
- </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">स्पॉन्सरब्लॉक केवल YouTube वीडियो पर काम करता है। हालाँकि, इस सेटिंग को चालू रखने से अन्य साइटों से डाउनलोड प्रभावित नहीं होंगे (अर्थात वे विफल नहीं होंगे)।</p></div></div></div>
-</div>
-<div class="note note-advanced" title="विस्तृत">
-<svg height="24" width="24" version="1.1">
- <g>
-  <path class="yelp-svg-fill" d="m5.4473 12.572c-2.039 0.957-3.4473 3.019-3.4473 5.428v4h20v-4c0-2.406-1.406-4.466-3.441-5.424a8 8 0 0 1 -6.559 3.424 8 8 0 0 1 -6.5527 -3.428z"></path>
-  <path class="yelp-svg-fill" d="m12 3a5 5 0 0 0 -5 5 5 5 0 0 0 5 5 5 5 0 0 0 5 -5 5 5 0 0 0 -5 -5zm0 3a2 2 0 0 1 2 2 2 2 0 0 1 -2 2 2 2 0 0 1 -2 -2 2 2 0 0 1 2 -2z"></path>
-  <path class="yelp-svg-fill" d="m15.312 6 3.688 1v2l-3.4688 1z"></path>
-  <path class="yelp-svg-fill" d="m14 11.312-1 3.688h-2l-1-3.469z"></path>
-  <path class="yelp-svg-fill" d="m10 4.6875 1-3.6875h2l1 3.4688z"></path>
-  <path class="yelp-svg-fill" d="m8.6875 10-3.6875-1v-2l3.4688-1z"></path>
-  <path class="yelp-svg-fill" d="m12.928 4.2435 3.3146-1.9003 1.4142 1.4142-1.7457 3.1599z"></path>
-  <path class="yelp-svg-fill" d="m15.757 8.9281 1.9003 3.3146-1.4142 1.4142-3.1599-1.7457z"></path>
-  <path class="yelp-svg-fill" d="m8.2435 7.0719-1.9004-3.3145 1.4143-1.4143 3.1596 1.7457z"></path>
-  <path class="yelp-svg-fill" d="m11.072 11.757-3.3146 1.9-1.4143-1.414 1.7457-3.1602z"></path>
- </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">डिफ़ॉल्ट: बंद</p></div></div></div>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">डिफ़ॉल्ट: चालू</p></div></div></div>
 </div>
 </dd>
 </dl></div></div></div>

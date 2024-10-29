@@ -55,14 +55,18 @@
     <binary>@PROJECT_NAME@</binary>
   </provides>
   <releases>
-    <release version="2024.10.2" date="2024-10-15">
+    <release version="2024.10.3-next" date="2024-10-15">
       <description translate="no">
-        <p>- Added Select All and Deselect All buttons to the Subtitles and Playlist Items pages</p>
-        <p>- The user's preferred video codec will now be used in playlist downloads where individual quality/format selection is not available</p>
-        <p>- Partially downloaded media will now correctly resume when retrying the failed download instead of restarting the download from scratch</p>
-        <p>- Fixed an issue where some websites failed in a 403 forbidden error</p>
-        <p>- Fixed an issue where some videos would download as audio only after selecting an audio language</p>
-        <p>- Fixed an issue where the incorrect audio language was downloaded</p>
+        <p>- Added support for selecting a batch file with multiple URLs to validate instead of validating a single URL at a time</p>
+        <p>- Added a recovery mode where downloads that were running/queued will be restored when the application is restarted after a crash</p>
+        <p>- User entered file names will now be correctly normalized and validated in the Add Download dialog</p>
+        <p>- Fixed an issue where YouTube tabs were not correctly validated</p>
+        <p>- Fixed an issue where the app's documentation was not accessible</p>
+        <p>- Fixed an issue where UTF-8 characters were not displayed correctly on Windows</p>
+        <p>- Fixed an issue where playlist names were not normalized on Windows</p>
+        <p>- Fixed an issue where the row animations were choppy using aria2c on Linux</p>
+        <p>- Fixed an issue where the app would crash when stopping all downloads on Linux</p>
+        <p>- Updated yt-dlp to 2024.10.22</p>
       </description>
     </release>
   </releases>

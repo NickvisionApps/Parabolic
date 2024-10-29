@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2024-10-17 13:26-0400\n"
+"POT-Creation-Date: 2024-10-24 08:55-0400\n"
 "PO-Revision-Date: 2024-07-07 17:09+0000\n"
 "Last-Translator: Scrambled777 <weblate.scrambled777@simplelogin.com>\n"
 "Language-Team: Hindi <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -19,19 +19,129 @@ msgid "translator-credits"
 msgstr "Scrambled777 <weblate.scrambled777@simplelogin.com>"
 
 #. (itstool) path: info/title
-#: docs/yelp/C/converter.page:8
+#: docs/yelp/C/aria.page:8
 msgctxt "link"
-msgid "Converter ⚒️"
-msgstr "परिवर्तक ⚒️"
+msgid "aria2 🖥️"
+msgstr ""
 
 #. (itstool) path: credit/name
+#: docs/yelp/C/aria.page:10 docs/yelp/C/aria.page:14
 #: docs/yelp/C/converter.page:10 docs/yelp/C/converter.page:14
 #: docs/yelp/C/downloader.page:10 docs/yelp/C/downloader.page:14
+#: docs/yelp/C/downloads.page:10 docs/yelp/C/downloads.page:14
 #: docs/yelp/C/index.page:10 docs/yelp/C/index.page:14
 #: docs/yelp/C/keyring.page:10 docs/yelp/C/keyring.page:14
 #: docs/yelp/C/newDownload.page:10 docs/yelp/C/newDownload.page:14
 msgid "Nicholas Logozzo"
 msgstr "निकोलस लोगोज़ो"
+
+#. (itstool) path: page/title
+#: docs/yelp/C/aria.page:20
+#, fuzzy
+msgid "aria2"
+msgstr "aria2 का प्रयोग करें"
+
+#. (itstool) path: page/p
+#: docs/yelp/C/aria.page:21
+#, fuzzy
+msgid ""
+"This page explains all options for configuring aria2 in Preferences in "
+"<app>Parabolic</app>."
+msgstr ""
+"यह पृष्ठ <app>Parabolic</app> में प्राथमिकता में डाउनलोडर को कॉन्फ़िगर करने के सभी "
+"विकल्पों की व्याख्या करता है।"
+
+#. (itstool) path: item/title
+#: docs/yelp/C/aria.page:25
+msgid "Use aria2"
+msgstr "aria2 का प्रयोग करें"
+
+#. (itstool) path: item/p
+#: docs/yelp/C/aria.page:26
+#, fuzzy
+msgid "If enabled, Parabolic will use aria2c to download media."
+msgstr "यदि सक्षम किया गया है, तो Parabolic मौजूदा फाइलों को अधिलेखित कर देगा।"
+
+#. (itstool) path: item/p
+#: docs/yelp/C/aria.page:27
+#, fuzzy
+msgid ""
+"Although using aria2c can improve download speed, download progress will not "
+"be displayed in the UI."
+msgstr ""
+"यदि सक्षम किया गया है, तो मीडिया डाउनलोड करने के लिए Parabolic aria2c का उपयोग "
+"करेगा। हालाँकि aria2c का उपयोग करने से डाउनलोड गति में सुधार हो सकता है, डाउनलोड "
+"प्रगति UI में प्रदर्शित नहीं होगी।"
+
+#. (itstool) path: note/p
+#: docs/yelp/C/aria.page:29 docs/yelp/C/converter.page:35
+#: docs/yelp/C/converter.page:50 docs/yelp/C/converter.page:59
+#: docs/yelp/C/downloader.page:47 docs/yelp/C/downloader.page:54
+#: docs/yelp/C/downloader.page:61 docs/yelp/C/downloads.page:38
+msgid "Default: Off"
+msgstr "डिफ़ॉल्ट: बंद"
+
+#. (itstool) path: item/title
+#: docs/yelp/C/aria.page:33
+msgid "Maximum Connections Per Server"
+msgstr "प्रति सर्वर अधिकतम कनेक्शन"
+
+#. (itstool) path: item/p
+#: docs/yelp/C/aria.page:34
+msgid ""
+"This option only applies when using aria2 is enabled. This option is the "
+"same as the <code>-x</code> flag passed to aria2c."
+msgstr ""
+"यह विकल्प केवल तभी लागू होता है जब aria2 का उपयोग सक्षम हो। यह विकल्प aria2c को "
+"दिए गए <code>-x</code> ध्वज के समान है।"
+
+#. (itstool) path: item/p
+#: docs/yelp/C/aria.page:37
+msgid ""
+"The maximum number of connection that can be used per server. Must be an "
+"integer value between 1 and 32."
+msgstr ""
+"प्रति सर्वर उपयोग किए जा सकने वाले कनेक्शन की अधिकतम संख्या. 1 और 32 के बीच एक पूर्णांक "
+"मान होना चाहिए।"
+
+#. (itstool) path: note/p
+#: docs/yelp/C/aria.page:39
+msgid "Default: 16"
+msgstr "डिफ़ॉल्ट: 16"
+
+#. (itstool) path: item/title
+#: docs/yelp/C/aria.page:43
+msgid "Minimum Split Size"
+msgstr "न्यूनतम विभाजन आकार"
+
+#. (itstool) path: item/p
+#: docs/yelp/C/aria.page:44
+msgid ""
+"This option only applies when using aria2 is enabled. This option is the "
+"same as the <code>-k</code> flag passed to aria2c."
+msgstr ""
+"यह विकल्प केवल तभी लागू होता है जब aria2 का उपयोग सक्षम हो। यह विकल्प aria2c को "
+"दिए गए <code>-k</code> ध्वज के समान है।"
+
+#. (itstool) path: item/p
+#: docs/yelp/C/aria.page:47
+msgid ""
+"The minimum size, in MiB, of which to split a file. Must be an integer value "
+"between 1 and 1024."
+msgstr ""
+"किसी फाइल को विभाजित करने के लिए MiB में न्यूनतम आकार। 1 और 1024 के बीच एक पूर्णांक "
+"मान होना चाहिए।"
+
+#. (itstool) path: note/p
+#: docs/yelp/C/aria.page:49
+msgid "Default: 20"
+msgstr "डिफ़ॉल्ट: 20"
+
+#. (itstool) path: info/title
+#: docs/yelp/C/converter.page:8
+msgctxt "link"
+msgid "Converter ⚒️"
+msgstr "परिवर्तक ⚒️"
 
 #. (itstool) path: page/title
 #: docs/yelp/C/converter.page:20
@@ -61,25 +171,32 @@ msgstr ""
 "यदि सक्षम किया गया है, तो Parabolic किसी मीडिया को उसकी प्रासंगिक जानकारी "
 "(शीर्षक, शैली, आदि...) और यदि उपलब्ध हो तो थंबनेल के साथ टैग करेगा।"
 
-#. (itstool) path: item/p
-#: docs/yelp/C/converter.page:27
-msgid ""
-"Parabolic will NOT embed the Comment, Description, Synopsis, and Purl fields."
-msgstr "Parabolic टिप्पणी, विवरण, सारांश और पर्ल फ़ील्ड को एम्बेड नहीं करेगा।"
-
 #. (itstool) path: note/p
-#: docs/yelp/C/converter.page:29 docs/yelp/C/converter.page:36
-#: docs/yelp/C/downloader.page:31
+#: docs/yelp/C/converter.page:28 docs/yelp/C/converter.page:42
+#: docs/yelp/C/downloader.page:31 docs/yelp/C/downloader.page:75
 msgid "Default: On"
 msgstr "डिफ़ॉल्ट: चालू"
 
 #. (itstool) path: item/title
+#: docs/yelp/C/converter.page:32
+msgid "Embed Chapters"
+msgstr "अध्याय सन्निहित करें"
+
+#. (itstool) path: item/p
 #: docs/yelp/C/converter.page:33
+msgid ""
+"If enabled, Parabolic will tag a media with chapter information if available."
+msgstr ""
+"यदि सक्षम किया गया है, तो Parabolic उपलब्ध होने पर अध्याय की जानकारी के साथ मीडिया "
+"को टैग करेगा।"
+
+#. (itstool) path: item/title
+#: docs/yelp/C/converter.page:39
 msgid "Embed Subtitles"
 msgstr "उपशीर्षक सन्निहित करें"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/converter.page:34
+#: docs/yelp/C/converter.page:40
 msgid ""
 "If disabled or if embedding fails, downloaded subtitles will be saved to a "
 "separate file."
@@ -88,32 +205,12 @@ msgstr ""
 "एक अलग फाइल में सहेजे जाएंगे।"
 
 #. (itstool) path: item/title
-#: docs/yelp/C/converter.page:40
-msgid "Embed Chapters"
-msgstr "अध्याय सन्निहित करें"
-
-#. (itstool) path: item/p
-#: docs/yelp/C/converter.page:41
-msgid ""
-"If enabled, Parabolic will tag a media with chapter information if available."
-msgstr ""
-"यदि सक्षम किया गया है, तो Parabolic उपलब्ध होने पर अध्याय की जानकारी के साथ मीडिया "
-"को टैग करेगा।"
-
-#. (itstool) path: note/p
-#: docs/yelp/C/converter.page:43 docs/yelp/C/converter.page:50
-#: docs/yelp/C/converter.page:58 docs/yelp/C/downloader.page:46
-#: docs/yelp/C/downloader.page:53 docs/yelp/C/downloader.page:101
-msgid "Default: Off"
-msgstr "डिफ़ॉल्ट: बंद"
-
-#. (itstool) path: item/title
-#: docs/yelp/C/converter.page:47
+#: docs/yelp/C/converter.page:46
 msgid "Crop Audio Thumbnails"
 msgstr "ऑडियो थंबनेल काटें"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/converter.page:48
+#: docs/yelp/C/converter.page:47
 #, fuzzy
 msgid ""
 "If enabled, Parabolic will crop thumbnails for audio files to be a square "
@@ -121,6 +218,12 @@ msgid ""
 msgstr ""
 "यदि सक्षम किया गया है, तो Parabolic वीडियो को उसके अध्यायों के आधार पर कई छोटे "
 "हिस्सों में विभाजित कर देगा।"
+
+#. (itstool) path: item/p
+#: docs/yelp/C/converter.page:48 docs/yelp/C/converter.page:57
+#, fuzzy
+msgid "This option is only configurable if <code>Embed Metadata</code> is on."
+msgstr "केवल तभी उपलब्ध है जब प्राथमिकता में <code>एम्बेड मेटाडेटा</code> सक्षम हो।"
 
 #. (itstool) path: item/title
 #: docs/yelp/C/converter.page:54
@@ -146,10 +249,28 @@ msgstr ""
 "साफ़ किए गए फ़ील्ड: <code>टिप्पणी</code>, <code>विवरण</code>, <code>सारांश</"
 "code>, <code>पर्ल</code> और <code>हैंडलर_नाम</code> प्रत्येक धारा।"
 
+#. (itstool) path: item/title
+#: docs/yelp/C/converter.page:63
+msgid "Postprocessing Threads"
+msgstr ""
+
+#. (itstool) path: item/p
+#: docs/yelp/C/converter.page:64
+msgid ""
+"The number of threads to allow the postprocessor (<code>FFmpeg</code>) to "
+"use for each download."
+msgstr ""
+
+#. (itstool) path: note/p
+#: docs/yelp/C/converter.page:66
+msgid "Default: The max number of threads available on the system"
+msgstr ""
+
 #. (itstool) path: info/title
 #: docs/yelp/C/downloader.page:8
+#, fuzzy
 msgctxt "link"
-msgid "Downloader 🌐"
+msgid "Downloader 🛠️"
 msgstr "डाउनलोडर 🌐"
 
 #. (itstool) path: page/title
@@ -217,11 +338,38 @@ msgstr "डिफ़ॉल्ट: 5"
 
 #. (itstool) path: item/title
 #: docs/yelp/C/downloader.page:43
+msgid "Limit Filename Characters"
+msgstr ""
+
+#. (itstool) path: item/p
+#: docs/yelp/C/downloader.page:44
+msgid "Restricts characters in filenames to only those supported by Windows."
+msgstr ""
+
+#. (itstool) path: item/p
+#: docs/yelp/C/downloader.page:45
+msgid "This option is only available on Linux."
+msgstr ""
+
+#. (itstool) path: item/title
+#: docs/yelp/C/downloader.page:51
+msgid "Download Immediately After Validation"
+msgstr ""
+
+#. (itstool) path: item/p
+#: docs/yelp/C/downloader.page:52
+msgid ""
+"Bypasses the download options selection in the Add Download dialog and "
+"immediately downloads a validated media using previously selected options."
+msgstr ""
+
+#. (itstool) path: item/title
+#: docs/yelp/C/downloader.page:58
 msgid "Included Auto-Generated Subtitles"
 msgstr "ऑटो-निर्मित उपशीर्षक शामिल हैं"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:44
+#: docs/yelp/C/downloader.page:59
 msgid ""
 "Whether or not to included subtitles that are auto-translated to fit the "
 "requested subtitle languages."
@@ -230,84 +378,66 @@ msgstr ""
 "के लिए स्वचालित रूप से अनुवादित हैं।"
 
 #. (itstool) path: item/title
-#: docs/yelp/C/downloader.page:50
-msgid "Use aria2"
-msgstr "aria2 का प्रयोग करें"
+#: docs/yelp/C/downloader.page:65
+#, fuzzy
+msgid "Preferred Video Codec"
+msgstr "AV1 कोडेक को प्राथमिकता दें"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:51
+#: docs/yelp/C/downloader.page:66
 msgid ""
-"If enabled, Parabolic will use aria2c to download media. Although using "
-"aria2c can improve download speed, download progress will not be displayed "
-"in the UI."
+"The video codec Parabolic should prefer when selecting media formats to "
+"download."
 msgstr ""
-"यदि सक्षम किया गया है, तो मीडिया डाउनलोड करने के लिए Parabolic aria2c का उपयोग "
-"करेगा। हालाँकि aria2c का उपयोग करने से डाउनलोड गति में सुधार हो सकता है, डाउनलोड "
-"प्रगति UI में प्रदर्शित नहीं होगी।"
-
-#. (itstool) path: item/title
-#: docs/yelp/C/downloader.page:57
-msgid "Maximum Connections Per Server"
-msgstr "प्रति सर्वर अधिकतम कनेक्शन"
-
-#. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:58
-msgid ""
-"This option only applies when using aria2 is enabled. This option is the "
-"same as the <code>-x</code> flag passed to aria2c."
-msgstr ""
-"यह विकल्प केवल तभी लागू होता है जब aria2 का उपयोग सक्षम हो। यह विकल्प aria2c को "
-"दिए गए <code>-x</code> ध्वज के समान है।"
-
-#. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:61
-msgid ""
-"The maximum number of connection that can be used per server. Must be an "
-"integer value between 1 and 32."
-msgstr ""
-"प्रति सर्वर उपयोग किए जा सकने वाले कनेक्शन की अधिकतम संख्या. 1 और 32 के बीच एक पूर्णांक "
-"मान होना चाहिए।"
 
 #. (itstool) path: note/p
-#: docs/yelp/C/downloader.page:63
-msgid "Default: 16"
-msgstr "डिफ़ॉल्ट: 16"
-
-#. (itstool) path: item/title
-#: docs/yelp/C/downloader.page:67
-msgid "Minimum Split Size"
-msgstr "न्यूनतम विभाजन आकार"
-
-#. (itstool) path: item/p
 #: docs/yelp/C/downloader.page:68
-msgid ""
-"This option only applies when using aria2 is enabled. This option is the "
-"same as the <code>-k</code> flag passed to aria2c."
-msgstr ""
-"यह विकल्प केवल तभी लागू होता है जब aria2 का उपयोग सक्षम हो। यह विकल्प aria2c को "
-"दिए गए <code>-k</code> ध्वज के समान है।"
-
-#. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:71
-msgid ""
-"The minimum size, in MiB, of which to split a file. Must be an integer value "
-"between 1 and 1024."
-msgstr ""
-"किसी फाइल को विभाजित करने के लिए MiB में न्यूनतम आकार। 1 और 1024 के बीच एक पूर्णांक "
-"मान होना चाहिए।"
-
-#. (itstool) path: note/p
-#: docs/yelp/C/downloader.page:73
-msgid "Default: 20"
-msgstr "डिफ़ॉल्ट: 20"
+#, fuzzy
+msgid "Default: Any"
+msgstr "डिफ़ॉल्ट: चालू"
 
 #. (itstool) path: item/title
-#: docs/yelp/C/downloader.page:77 docs/yelp/C/newDownload.page:110
+#: docs/yelp/C/downloader.page:72
+msgid "Recover Crashed Downloads"
+msgstr ""
+
+#. (itstool) path: item/p
+#: docs/yelp/C/downloader.page:73
+msgid ""
+"If enabled, Parabolic will track the running and queued downloads and "
+"restart them if necessary if the application crashes and is restarted."
+msgstr ""
+
+#. (itstool) path: info/title
+#: docs/yelp/C/downloads.page:8
+#, fuzzy
+msgctxt "link"
+msgid "Downloads 🌐"
+msgstr "डाउनलोडर 🌐"
+
+#. (itstool) path: page/title
+#: docs/yelp/C/downloads.page:20
+#, fuzzy
+msgid "Downloads"
+msgstr "डाउनलोडर"
+
+#. (itstool) path: page/p
+#: docs/yelp/C/downloads.page:21
+#, fuzzy
+msgid ""
+"This page explains all options for configuring Downloads in Preferences in "
+"<app>Parabolic</app>."
+msgstr ""
+"यह पृष्ठ <app>Parabolic</app> में प्राथमिकता में डाउनलोडर को कॉन्फ़िगर करने के सभी "
+"विकल्पों की व्याख्या करता है।"
+
+#. (itstool) path: item/title
+#: docs/yelp/C/downloads.page:25 docs/yelp/C/newDownload.page:103
 msgid "Speed Limit"
 msgstr "गति सीमा"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:78
+#: docs/yelp/C/downloads.page:26
 msgid ""
 "A limit, in Ki/s, that is applied to downloads only if they have the "
 "advanced option <code>Speed Limit</code> enabled. Must be an integer value "
@@ -317,57 +447,126 @@ msgstr ""
 "<code>स्पीड लिमिट</code> सक्षम हो। 512 और 10240 के बीच एक पूर्णांक मान होना चाहिए।"
 
 #. (itstool) path: note/p
-#: docs/yelp/C/downloader.page:80
+#: docs/yelp/C/downloads.page:28
 msgid "Default: 1024"
 msgstr "डिफ़ॉल्ट: 1024"
 
 #. (itstool) path: item/title
-#: docs/yelp/C/downloader.page:84
-msgid "Proxy URL"
-msgstr "प्रॉक्सी URL"
-
-#. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:85
-msgid "The url of the proxy server to use."
-msgstr "उपयोग करने के लिए प्रॉक्सी सर्वर का URL।"
-
-#. (itstool) path: item/title
-#: docs/yelp/C/downloader.page:88
-msgid "Cookies from Browser"
-msgstr ""
-
-#. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:89
-msgid ""
-"A browser in which to read cookies from and pass to yt-dlp's download engine."
-msgstr ""
-
-#. (itstool) path: note/p
-#: docs/yelp/C/downloader.page:91
-#, fuzzy
-msgid "Default: None"
-msgstr "डिफ़ॉल्ट: चालू"
-
-#. (itstool) path: item/title
-#: docs/yelp/C/downloader.page:95
+#: docs/yelp/C/downloads.page:32
 msgid "Use SponsorBlock for YouTube"
 msgstr "YouTube के लिए स्पॉन्सरब्लॉक का उपयोग करें"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:96
+#: docs/yelp/C/downloads.page:33
 msgid ""
 "If enabled, Parabolic will apply the SponsorBlock extension to YouTube "
 "downloads."
 msgstr "सक्षम होने पर, Parabolic YouTube डाउनलोड पर स्पॉन्सरब्लॉक एक्सटेंशन लागू करेगा।"
 
 #. (itstool) path: note/p
-#: docs/yelp/C/downloader.page:98
+#: docs/yelp/C/downloads.page:35
 msgid ""
 "SponsorBlock only works on YouTube videos. However, leaving this setting on "
 "will not affect downloads from other sites (i.e. not cause them to fail)."
 msgstr ""
 "स्पॉन्सरब्लॉक केवल YouTube वीडियो पर काम करता है। हालाँकि, इस सेटिंग को चालू रखने से "
 "अन्य साइटों से डाउनलोड प्रभावित नहीं होंगे (अर्थात वे विफल नहीं होंगे)।"
+
+#. (itstool) path: item/title
+#: docs/yelp/C/downloads.page:42
+msgid "Proxy URL"
+msgstr "प्रॉक्सी URL"
+
+#. (itstool) path: item/p
+#: docs/yelp/C/downloads.page:43
+msgid "The url of the proxy server to use."
+msgstr "उपयोग करने के लिए प्रॉक्सी सर्वर का URL।"
+
+#. (itstool) path: note/p
+#: docs/yelp/C/downloads.page:45
+#, fuzzy
+msgid "Default: No URL"
+msgstr "डिफ़ॉल्ट: चालू"
+
+#. (itstool) path: item/title
+#: docs/yelp/C/downloads.page:49
+msgid "Cookies from Browser"
+msgstr ""
+
+#. (itstool) path: item/p
+#: docs/yelp/C/downloads.page:50
+msgid ""
+"A browser in which to read cookies from and pass to yt-dlp's download engine."
+msgstr ""
+
+#. (itstool) path: item/p
+#: docs/yelp/C/downloads.page:51 docs/yelp/C/downloads.page:60
+#, fuzzy
+msgid ""
+"This may be useful when downloading media that requires a login, for "
+"example: private YouTube videos."
+msgstr ""
+"डाउनलोड करते समय yt-dlp को पास करने के लिए कुकीज़ की एक .txt फाइल। यह उस मीडिया "
+"को डाउनलोड करते समय उपयोगी हो सकता है जिसके लिए लॉगिन की आवश्यकता होती है, उदाहरण "
+"के लिए: निजी YouTube वीडियो।"
+
+#. (itstool) path: item/p
+#: docs/yelp/C/downloads.page:52
+msgid "This option is on available on non sandboxed platforms."
+msgstr ""
+
+#. (itstool) path: note/p
+#: docs/yelp/C/downloads.page:54
+#, fuzzy
+msgid "Default: None"
+msgstr "डिफ़ॉल्ट: चालू"
+
+#. (itstool) path: item/title
+#: docs/yelp/C/downloads.page:58
+msgid "Cookies File"
+msgstr "कुकीज़ फाइल"
+
+#. (itstool) path: item/p
+#: docs/yelp/C/downloads.page:59
+msgid "A .txt file of cookies to pass to yt-dlp when download engine."
+msgstr ""
+
+#. (itstool) path: item/p
+#: docs/yelp/C/downloads.page:61
+msgid ""
+"Use one of the following extensions for getting a cookies file from your "
+"browser:"
+msgstr ""
+"अपने ब्राउज़र से कुकीज़ फाइल प्राप्त करने के लिए निम्नलिखित एक्सटेंशन में से किसी एक का उपयोग "
+"करें:"
+
+#. (itstool) path: item/p
+#: docs/yelp/C/downloads.page:62
+msgid ""
+"Chrome: <code>https://chrome.google.com/webstore/detail/get-cookiestxt-"
+"locally/cclelndahbckbenkjhflpdbgdldlbecc</code>"
+msgstr ""
+"Chrome: <code>https://chrome.google.com/webstore/detail/get-cookiestxt-"
+"locally/cclelndahbckbenkjhflpdbgdldlbecc</code>"
+
+#. (itstool) path: item/p
+#: docs/yelp/C/downloads.page:63
+msgid ""
+"Firefox: <code>https://addons.mozilla.org/en-US/firefox/addon/cookies-txt/</"
+"code>"
+msgstr ""
+"Firefox: <code>https://addons.mozilla.org/en-US/firefox/addon/cookies-txt/</"
+"code>"
+
+#. (itstool) path: note/p
+#: docs/yelp/C/downloads.page:65
+msgid "Use these extensions at your own risk."
+msgstr "इन एक्सटेंशन का उपयोग अपने जोखिम पर करें।"
+
+#. (itstool) path: note/p
+#: docs/yelp/C/downloads.page:68
+msgid "Default: No File Selected"
+msgstr "डिफ़ॉल्ट: कोई फाइल चयनित नहीं"
 
 #. (itstool) path: info/title
 #: docs/yelp/C/index.page:7
@@ -462,7 +661,7 @@ msgstr ""
 #: docs/yelp/C/keyring.page:26
 #, fuzzy
 msgid ""
-"The library will use you system's credential manager (i.e. DBus secret "
+"The library will use your system's credential manager (i.e. DBus secret "
 "service on Linux and Windows Credential Manager on Windows) for securing the "
 "Keyring database file."
 msgstr ""
@@ -674,7 +873,7 @@ msgstr ""
 
 #. (itstool) path: note/p
 #: docs/yelp/C/newDownload.page:61 docs/yelp/C/newDownload.page:68
-#: docs/yelp/C/newDownload.page:82
+#: docs/yelp/C/newDownload.page:75
 msgid ""
 "The previously used state will be remembered and pre-selected for the next "
 "download."
@@ -701,31 +900,11 @@ msgstr ""
 
 #. (itstool) path: item/title
 #: docs/yelp/C/newDownload.page:72
-msgid "Video Codec"
-msgstr ""
-
-#. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:73
-msgid "The video codec to prefer when downloading a video."
-msgstr ""
-
-#. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:75
-#, fuzzy
-msgid ""
-"The previously used codec will be remembered and pre-selected for the next "
-"download."
-msgstr ""
-"पहले उपयोग किए गए फोल्डर को याद रखा जाएगा और अगले डाउनलोड के लिए पूर्व-चयनित किया "
-"जाएगा।"
-
-#. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:79
 msgid "Split Chapters"
 msgstr "अध्याय विभाजित करें"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:80
+#: docs/yelp/C/newDownload.page:73
 #, fuzzy
 msgid ""
 "If enabled, Parabolic will split a video download into multiple smaller "
@@ -735,17 +914,17 @@ msgstr ""
 "हिस्सों में विभाजित कर देगा।"
 
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:86
+#: docs/yelp/C/newDownload.page:79
 msgid "Save Folder"
 msgstr "फोल्डर सहेजें"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:87
+#: docs/yelp/C/newDownload.page:80
 msgid "The folder at which to save the download to."
 msgstr "वह फोल्डर जिसमें डाउनलोड को सहेजना है।"
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:89
+#: docs/yelp/C/newDownload.page:82
 msgid ""
 "The previously used folder will be remembered and pre-selected for the next "
 "download."
@@ -754,27 +933,27 @@ msgstr ""
 "जाएगा।"
 
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:93
+#: docs/yelp/C/newDownload.page:86
 msgid "File Name"
 msgstr "फाइल नाम"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:94
+#: docs/yelp/C/newDownload.page:87
 msgid "The file name to use when saving the download."
 msgstr "डाउनलोड को सहेजते समय उपयोग किया जाने वाला फाइल नाम।"
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:96
+#: docs/yelp/C/newDownload.page:89
 msgid "Default: The title of the media"
 msgstr "डिफ़ॉल्ट: मीडिया का शीर्षक"
 
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:100
+#: docs/yelp/C/newDownload.page:93
 msgid "Time Frame"
 msgstr ""
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:101
+#: docs/yelp/C/newDownload.page:94
 #, fuzzy
 msgid ""
 "The user can enter a start time frame and an end time frame to download a "
@@ -784,13 +963,13 @@ msgstr ""
 "प्रारंभ समय सीमा और समाप्ति समय सीमा दर्ज करने में सक्षम होगा।"
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:103
+#: docs/yelp/C/newDownload.page:96
 #, fuzzy
 msgid "Default: The whole media length"
 msgstr "डिफ़ॉल्ट: मीडिया का शीर्षक"
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:106
+#: docs/yelp/C/newDownload.page:99
 #, fuzzy
 msgid ""
 "Enabling this option will disable the use of aria2 as the downloader for "
@@ -800,7 +979,7 @@ msgstr ""
 "हो जाएगा यदि यह प्राथमिकता में सक्षम है।"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:111
+#: docs/yelp/C/newDownload.page:104
 #, fuzzy
 msgid ""
 "If enabled, Parabolic will limit the download's speed with the speed "
@@ -810,12 +989,22 @@ msgstr ""
 "डाउनलोड की गति को सीमित कर देगा।"
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:113
+#: docs/yelp/C/newDownload.page:106
 msgid "Available in the <code>Advanced Options</code> section."
 msgstr "<code>उन्नत विकल्प</code> अनुभाग में उपलब्ध है।"
 
-#~ msgid "Prefer AV1 Codec"
-#~ msgstr "AV1 कोडेक को प्राथमिकता दें"
+#, fuzzy
+#~ msgid ""
+#~ "The previously used codec will be remembered and pre-selected for the "
+#~ "next download."
+#~ msgstr ""
+#~ "पहले उपयोग किए गए फोल्डर को याद रखा जाएगा और अगले डाउनलोड के लिए पूर्व-चयनित "
+#~ "किया जाएगा।"
+
+#~ msgid ""
+#~ "Parabolic will NOT embed the Comment, Description, Synopsis, and Purl "
+#~ "fields."
+#~ msgstr "Parabolic टिप्पणी, विवरण, सारांश और पर्ल फ़ील्ड को एम्बेड नहीं करेगा।"
 
 #~ msgid ""
 #~ "If enabled, Parabolic will prefer videos with the av1 codec when "
@@ -889,45 +1078,6 @@ msgstr "<code>उन्नत विकल्प</code> अनुभाग म�
 #~ msgstr ""
 #~ "डिफ़ॉल्ट: आपकी संस्कृति के भाषा कोड। उदाहरण के लिए, en-US सिस्टम पर डिफ़ॉल्ट "
 #~ "<code>en,en-US,eng</code> होगा"
-
-#~ msgid "Cookies File"
-#~ msgstr "कुकीज़ फाइल"
-
-#~ msgid ""
-#~ "A .txt file of cookies to pass to yt-dlp when downloading. This may be "
-#~ "useful when downloading media that requires a login, for example: private "
-#~ "YouTube videos."
-#~ msgstr ""
-#~ "डाउनलोड करते समय yt-dlp को पास करने के लिए कुकीज़ की एक .txt फाइल। यह उस "
-#~ "मीडिया को डाउनलोड करते समय उपयोगी हो सकता है जिसके लिए लॉगिन की आवश्यकता होती "
-#~ "है, उदाहरण के लिए: निजी YouTube वीडियो।"
-
-#~ msgid ""
-#~ "Use one of the following extensions for getting a cookies file from your "
-#~ "browser:"
-#~ msgstr ""
-#~ "अपने ब्राउज़र से कुकीज़ फाइल प्राप्त करने के लिए निम्नलिखित एक्सटेंशन में से किसी एक का "
-#~ "उपयोग करें:"
-
-#~ msgid ""
-#~ "Chrome: <code>https://chrome.google.com/webstore/detail/get-cookiestxt-"
-#~ "locally/cclelndahbckbenkjhflpdbgdldlbecc</code>"
-#~ msgstr ""
-#~ "Chrome: <code>https://chrome.google.com/webstore/detail/get-cookiestxt-"
-#~ "locally/cclelndahbckbenkjhflpdbgdldlbecc</code>"
-
-#~ msgid ""
-#~ "Firefox: <code>https://addons.mozilla.org/en-US/firefox/addon/cookies-txt/"
-#~ "</code>"
-#~ msgstr ""
-#~ "Firefox: <code>https://addons.mozilla.org/en-US/firefox/addon/cookies-txt/"
-#~ "</code>"
-
-#~ msgid "Use these extensions at your own risk."
-#~ msgstr "इन एक्सटेंशन का उपयोग अपने जोखिम पर करें।"
-
-#~ msgid "Default: No File Selected"
-#~ msgstr "डिफ़ॉल्ट: कोई फाइल चयनित नहीं"
 
 #~ msgid "Migrating from Password-Secured Keyring to Secret-Secured Keyring"
 #~ msgstr "पासवर्ड-सुरक्षित कीरिंग से गुप्त-सुरक्षित कीरिंग में माइग्रेट करना"
@@ -1028,10 +1178,6 @@ msgstr "<code>उन्नत विकल्प</code> अनुभाग म�
 
 #~ msgid "Crop Thumbnail"
 #~ msgstr "थंबनेल काटें"
-
-#~ msgid ""
-#~ "Only available if <code>Embed Metadata</code> is enabled in Preferences."
-#~ msgstr "केवल तभी उपलब्ध है जब प्राथमिकता में <code>एम्बेड मेटाडेटा</code> सक्षम हो।"
 
 #~ msgid ""
 #~ "If enabled, Parabolic will crop a download's embedded thumbnail as "

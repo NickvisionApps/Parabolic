@@ -26,7 +26,7 @@
     <title>バックエンド</title>
     <p>キーリング機能には、<code>libnick</code> ライブラリが使用されています。</p>
     <p>このライブラリには、資格情報を安全に保管するために隔離されたSQLCipherデータベースを使っています。</p>
-    <p>このライブラリではシステムの資格情報管理機能( Linux は DBus secret service、Windows では Windows Credential Manager 等)を使ってキーリングのデータベースファイルを保護しています。</p>
+    <p>The library will use your system's credential manager (i.e. DBus secret service on Linux and Windows Credential Manager on Windows) for securing the Keyring database file.</p>
 </section>
 <section>
     <title>資格情報を保管する</title>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" id="downloads" its:version="2.0" xml:lang="it">
+<info>
+	<link type="guide" xref="index"/>
+	<title type="link">Downloads 🌐</title>
+	<credit type="author copyright">
+		<name>Nicholas Logozzo</name>
+		<years its:translate="no">2023-2024</years>
+	</credit>
+	<credit type="publisher copyright">
+		<name>Nicholas Logozzo</name>
+		<years its:translate="no">2023-2024</years>
+	</credit>
+	<license href="http://creativecommons.org/licenses/by/4.0/" its:translate="no"><p>Creative Commons Attribution 4.0 International License</p></license>
+</info>
+
+<title>Downloads</title>
+<p>This page explains all options for configuring Downloads in Preferences in <app>Parabolic</app>.</p>
+
+<terms>
+    <item>
+        <title>Limite di velocità</title>
+        <p>Un limite, in Ki/s, che viene applicato ai download solo se hanno l'opzione avanzata <code>Limite di velocità</code> abilitata. Deve essere un valore intero compreso tra 512 e 10240.</p>
+		<note style="advanced">
+			<p>Predefinito: 1024</p>
+		</note>
+    </item>
+    <item>
+        <title>Usa SponsorBlock per YouTube</title>
+        <p>Se abilitato, Parabolic applicherà l'estensione SponsorBlock ai download di YouTube.</p>
+        <note>
+            <p>SponsorBlock funziona solo sui video di YouTube. Tuttavia, lasciare attiva questa impostazione non influirà sui download da altri siti (ovvero non ne causerà il fallimento).</p>
+        </note>
+        <note style="advanced">
+            <p>Predefinito: Disattivato</p>
+        </note>
+    </item>
+    <item>
+        <title>URL proxy</title>
+        <p>L'URL del server proxy da utilizzare.</p>
+        <note style="advanced">
+			<p>Default: No URL</p>
+		</note>
+    </item>
+    <item>
+        <title>Cookies from Browser</title>
+        <p>A browser in which to read cookies from and pass to yt-dlp's download engine.</p>
+        <p>This may be useful when downloading media that requires a login, for example: private YouTube videos.</p>
+        <p>This option is on available on non sandboxed platforms.</p>
+		<note style="advanced">
+			<p>Default: None</p>
+		</note>
+    </item>
+    <item>
+        <title>File di Cookie</title>
+        <p>A .txt file of cookies to pass to yt-dlp when download engine.</p>
+        <p>This may be useful when downloading media that requires a login, for example: private YouTube videos.</p>
+        <p>Usa una delle seguenti estensioni per ottenere un file di cookie dal tuo browser:</p>
+        <p>Chrome: <code>https://chrome.google.com/webstore/detail/get-cookiestxt-locally/cclelndahbckbenkjhflpdbgdldlbecc</code></p>
+        <p>Firefox: <code>https://addons.mozilla.org/it/firefox/addon/cookies-txt/</code></p>
+        <note>
+            <p>Usa queste estensioni a tuo rischio.</p>
+        </note>
+		<note style="advanced">
+			<p>Default: No File Selected</p>
+		</note>
+    </item>
+</terms>
+</page>

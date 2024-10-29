@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" id="aria" its:version="2.0" xml:lang="uk">
+<info>
+	<link type="guide" xref="index"/>
+	<title type="link">aria2 🖥️</title>
+	<credit type="author copyright">
+		<name>Nicholas Logozzo</name>
+		<years its:translate="no">2023-2024</years>
+	</credit>
+	<credit type="publisher copyright">
+		<name>Nicholas Logozzo</name>
+		<years its:translate="no">2023-2024</years>
+	</credit>
+	<license href="http://creativecommons.org/licenses/by/4.0/" its:translate="no"><p>Creative Commons Attribution 4.0 International License</p></license>
+
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Jon Weblin</mal:name>
+      <mal:email>jonweblin2205@protonmail.com</mal:email>
+      <mal:years>2023</mal:years>
+    </mal:credit>
+  </info>
+
+<title>aria2</title>
+<p>This page explains all options for configuring aria2 in Preferences in <app>Parabolic</app>.</p>
+
+<terms>
+    <item>
+        <title>Використовувати aria2</title>
+        <p>If enabled, Parabolic will use aria2c to download media.</p>
+        <p>Although using aria2c can improve download speed, download progress will not be displayed in the UI.</p>
+        <note style="advanced">
+            <p>За замовчуванням: Вимк</p>
+        </note>
+    </item>
+    <item>
+        <title>Максимальна кількість з'єднань на сервер</title>
+        <p>Цей параметр застосовується лише тоді, коли ввімкнено використання aria2. Цей параметр є аналогом прапорця <code>-x</code>, переданого до aria2c.</p>
+        <p>Максимальна кількість з'єднань, яку можна використовувати для одного сервера. Має бути цілим числом від 1 до 32.</p>
+        <note style="advanced">
+            <p>За замовчуванням: 16</p>
+        </note>
+    </item>
+    <item>
+        <title>Мінімальний розмір розділення</title>
+        <p>Цей параметр застосовується лише тоді, коли ввімкнено використання aria2. Цей параметр є аналогом прапорця <code>-k</code>, переданого до aria2c.</p>
+        <p>Мінімальний розмір, у МБ, на який можна розбити файл. Має бути цілим числом від 1 до 1024.</p>
+        <note style="advanced">
+            <p>За замовчуванням: 20</p>
+        </note>
+    </item>
+</terms>
+</page>
