@@ -1,6 +1,7 @@
 #include "views/mainwindow.h"
 #include <filesystem>
 #include <format>
+#include <thread>
 #include <libnick/app/appinfo.h>
 #include <libnick/helpers/codehelpers.h>
 #include <libnick/notifications/shellnotification.h>
@@ -9,6 +10,7 @@
 #include "helpers/dialogptr.h"
 #include "helpers/gtkhelpers.h"
 #include "views/adddownloaddialog.h"
+#include "views/credentialdialog.h"
 #include "views/keyringpage.h"
 #include "views/preferencesdialog.h"
 
@@ -304,7 +306,15 @@ namespace Nickvision::TubeConverter::GNOME::Views
 
     void MainWindow::onDownloadCredentialNeeded(const DownloadCredentialNeededEventArgs& args)
     {
-        
+        bool closed;
+        DialogPtr<CredentialDialog> dialog{ m_controller->createCredentialDialogController(args), GTK_WINDOW(m_window) };
+        dialog->closed() += [&closed](const EventArgs&){ closed = true; };
+        dialog->present();
+        while(!closed)
+        {
+            g_main_context_iteration(g_main_context_default(), true);
+            std::this_thread::sleep_for(std::chrono::microseconds(1));
+        }
     }
 
     void MainWindow::onDownloadAdded(const DownloadAddedEventArgs& args)
