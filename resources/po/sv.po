@@ -8,17 +8,17 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-10-29 10:20-0400\n"
-"PO-Revision-Date: 2024-10-15 17:25+0000\n"
-"Last-Translator: Tomas Andersson <jotakswe@users.noreply.hosted.weblate."
-"org>\n"
-"Language-Team: Swedish <https://hosted.weblate.org/projects/nickvision-tube-"
-"converter/app/sv/>\n"
+"PO-Revision-Date: 2024-10-29 15:23+0000\n"
+"Last-Translator: Tomas Andersson <jotakswe@users.noreply.hosted.weblate.org>"
+"\n"
+"Language-Team: Swedish <https://hosted.weblate.org/projects/"
+"nickvision-tube-converter/app/sv/>\n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.8-rc\n"
+"X-Generator: Weblate 5.8.2-dev\n"
 
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:91
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:105
@@ -114,11 +114,10 @@ msgid "translator-credits"
 msgstr "översättningskrediter"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:251
-#, fuzzy
 msgid "Recovered {} download"
 msgid_plural "Recovered {} downloads"
-msgstr[0] "Ladda ner misslyckade nedladdningar igen"
-msgstr[1] "Ladda ner misslyckade nedladdningar igen"
+msgstr[0] "Återställd {} nedladdning"
+msgstr[1] "Återställda {} nedladdningar"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:256
 msgid ""
@@ -200,7 +199,7 @@ msgstr "Media URL"
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:59
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:33
 msgid "Use Batch File"
-msgstr ""
+msgstr "Använd batchfil"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:66
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:34
@@ -359,14 +358,13 @@ msgstr "Nummertitlar"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/credential_dialog.blp:11
 #: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:18
-#, fuzzy
 msgid "Credential Needed"
-msgstr "Inloggningsuppgifter"
+msgstr "Inloggningsuppgifter behövs"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/credential_dialog.blp:43
 #: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:26
 msgid "Use"
-msgstr ""
+msgstr "Använda"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:49
 msgid "View Log"
@@ -708,9 +706,8 @@ msgstr "Någon"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:129
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:57
-#, fuzzy
 msgid "Recover Crashed Downloads"
-msgstr "Ladda ner misslyckade nedladdningar igen"
+msgstr "Återställ kraschade nedladdningar"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:139
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:52
@@ -916,9 +913,8 @@ msgid "Starting download..."
 msgstr "Börjar ladda ner..."
 
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:31
-#, fuzzy
 msgid "Starting"
-msgstr "Inställningar"
+msgstr "Börjar"
 
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:36
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:44
@@ -971,9 +967,8 @@ msgstr "Använd manuella inloggningsuppgifter"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:85
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:128
-#, fuzzy
 msgid "Select Batch File"
-msgstr "Välj lagringsmapp"
+msgstr "Välj Batch-fil"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:87
 #: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:116
@@ -1011,6 +1006,8 @@ msgid ""
 "{} needs a credential to download.\n"
 "Please select or enter one to use."
 msgstr ""
+"{} behöver inloggningsuppgift för att ladda ned.\n"
+"Välj eller ange en att använda."
 
 #: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:40
 #: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:58
@@ -1206,6 +1203,8 @@ msgstr "Objekt ({})"
 #: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:20
 msgid "{} needs a credential to download. Please select or enter one to use."
 msgstr ""
+"{} behöver inloggningsuppgift för att ladda ned. Välj eller ange en att "
+"använda."
 
 #. Localize the Manage page
 #: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:23

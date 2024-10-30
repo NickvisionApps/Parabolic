@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: Parabolic 2024.10.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-10-29 10:20-0400\n"
-"PO-Revision-Date: 2024-10-17 11:58+0000\n"
+"PO-Revision-Date: 2024-10-30 00:14+0000\n"
 "Last-Translator: Jozef Gaal <preklady@mayday.sk>\n"
-"Language-Team: Slovak <https://hosted.weblate.org/projects/nickvision-tube-"
-"converter/app/sk/>\n"
+"Language-Team: Slovak <https://hosted.weblate.org/projects/"
+"nickvision-tube-converter/app/sk/>\n"
 "Language: sk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=((n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2);\n"
-"X-Generator: Weblate 5.8-rc\n"
+"X-Generator: Weblate 5.8.2-dev\n"
 
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:91
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:105
@@ -113,12 +113,11 @@ msgid "translator-credits"
 msgstr "Jozef Gaál <preklady@mayday.sk>"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:251
-#, fuzzy
 msgid "Recovered {} download"
 msgid_plural "Recovered {} downloads"
-msgstr[0] "Opakovať neúspešné stiahnutia"
-msgstr[1] "Opakovať neúspešné stiahnutia"
-msgstr[2] "Opakovať neúspešné stiahnutia"
+msgstr[0] "Obnovené {} stiahnutie"
+msgstr[1] "Obnovené {} stiahnutia"
+msgstr[2] "Obnovených {} stiahnutí"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:256
 msgid ""
@@ -198,7 +197,7 @@ msgstr "URL adresa média"
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:59
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:33
 msgid "Use Batch File"
-msgstr ""
+msgstr "Použiť dávkový súbor"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:66
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:34
@@ -357,14 +356,13 @@ msgstr "Názvy čísel"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/credential_dialog.blp:11
 #: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:18
-#, fuzzy
 msgid "Credential Needed"
-msgstr "Poverenie"
+msgstr "Požadované poverenie"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/credential_dialog.blp:43
 #: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:26
 msgid "Use"
-msgstr ""
+msgstr "Použiť"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:49
 msgid "View Log"
@@ -706,9 +704,8 @@ msgstr "Akýkoľvek"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:129
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:57
-#, fuzzy
 msgid "Recover Crashed Downloads"
-msgstr "Opakovať neúspešné stiahnutia"
+msgstr "Obnoviť zlyhané stiahnutia"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:139
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:52
@@ -914,9 +911,8 @@ msgid "Starting download..."
 msgstr "Začína sa sťahovanie..."
 
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:31
-#, fuzzy
 msgid "Starting"
-msgstr "Nastavenia"
+msgstr "Spúšťanie"
 
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:36
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:44
@@ -969,9 +965,8 @@ msgstr "Použiť manuálne poverenie"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:85
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:128
-#, fuzzy
 msgid "Select Batch File"
-msgstr "Vybrať priečinok na uloženie"
+msgstr "Vybrať dávkový súbor"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:87
 #: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:116
@@ -1008,6 +1003,8 @@ msgid ""
 "{} needs a credential to download.\n"
 "Please select or enter one to use."
 msgstr ""
+"{} potrebuje poverenie na stiahnutie.\n"
+"Prosím, vyberte alebo zadajte také, ktoré chcete použiť."
 
 #: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:40
 #: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:58
@@ -1202,6 +1199,8 @@ msgstr "Položky ({})"
 #: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:20
 msgid "{} needs a credential to download. Please select or enter one to use."
 msgstr ""
+"{} potrebuje poverenie na stiahnutie. Prosím, vyberte alebo zadajte také, "
+"ktoré chcete použiť."
 
 #. Localize the Manage page
 #: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:23
@@ -1274,7 +1273,7 @@ msgstr "Skontrolovať aktualizácie"
 
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:59
 msgid "Documentation"
-msgstr ""
+msgstr "Dokumentácia"
 
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:61
 msgid "Report a Bug"
@@ -1299,7 +1298,7 @@ msgstr "Automatická kontrola aktualizácií"
 
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:58
 msgid "Speed Limit"
-msgstr "Limit rýchlosti"
+msgstr "Obmedzenie rýchlosti"
 
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:63
 msgid "Enter proxy url here"
