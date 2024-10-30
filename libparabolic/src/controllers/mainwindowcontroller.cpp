@@ -38,7 +38,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         m_keyring{ m_appInfo.getId() },
         m_downloadManager{ m_dataFileManager.get<Configuration>("config").getDownloaderOptions(), m_dataFileManager.get<DownloadHistory>("history"), m_dataFileManager.get<DownloadRecoveryQueue>("recovery"), m_logger }
     {
-        m_appInfo.setVersion({ "2024.10.3-next" });
+        m_appInfo.setVersion({ "2024.10.3" });
         m_appInfo.setShortName(_("Parabolic"));
         m_appInfo.setDescription(_("Download web video and audio"));
         m_appInfo.setChangelog("- Added support for selecting a batch file with multiple URLs to validate instead of validating a single URL at a time\n- Added a recovery mode where downloads that were running/queued will be restored when the application is restarted after a crash\n- User entered file names will now be correctly normalized and validated in the Add Download dialog\n- Fixed an issue where YouTube tabs were not correctly validated\n- Fixed an issue where the app's documentation was not accessible\n- Fixed an issue where UTF-8 characters were not displayed correctly on Windows\n- Fixed an issue where playlist names were not normalized on Windows\n- Fixed an issue where the row animations were choppy using aria2c on Linux\n- Fixed an issue where the app would crash when stopping all downloads on Linux\n- Updated yt-dlp to 2024.10.22");

@@ -14,7 +14,6 @@ The authors of Nickvision Parabolic are not responsible/liable for any misuse of
 # Installation
 <p><a href='https://flathub.org/apps/details/org.nickvision.tubeconverter'><img width='150' alt='Download on Flathub' src='https://flathub.org/api/badge?locale=en'/></a></p>
 <p><a href="https://snapcraft.io/tube-converter"><img width='150' alt="Get it from the Snap Store" src="https://snapcraft.io/static/images/badges/en/snap-store-black.svg" /></a></p>
-<p><a href="https://aur.archlinux.org/packages/parabolic"><img width='140' alt="Download from AUR" src="https://aur.archlinux.org/static/css/archnavbar/aurlogo.png"/></a></p>
 <p><a href="https://github.com/NickvisionApps/Parabolic/releases"><img width='140' alt="Download from Releases" src="https://upload.wikimedia.org/wikipedia/commons/e/e2/Windows_logo_and_wordmark_-_2021.svg"/></a></p>
 
 # Chat
