@@ -55,18 +55,9 @@
     <binary>@PROJECT_NAME@</binary>
   </provides>
   <releases>
-    <release version="2024.10.3" date="2024-10-29">
+    <release version="2024.11.0-next" date="2024-11-01">
       <description translate="no">
-        <p>- Added support for selecting a batch file with multiple URLs to validate instead of validating a single URL at a time</p>
-        <p>- Added a recovery mode where downloads that were running/queued will be restored when the application is restarted after a crash</p>
-        <p>- User entered file names will now be correctly normalized and validated in the Add Download dialog</p>
-        <p>- Fixed an issue where YouTube tabs were not correctly validated</p>
-        <p>- Fixed an issue where the app's documentation was not accessible</p>
-        <p>- Fixed an issue where UTF-8 characters were not displayed correctly on Windows</p>
-        <p>- Fixed an issue where playlist names were not normalized on Windows</p>
-        <p>- Fixed an issue where the row animations were choppy using aria2c on Linux</p>
-        <p>- Fixed an issue where the app would crash when stopping all downloads on Linux</p>
-        <p>- Updated yt-dlp to 2024.10.22</p>
+        <p>- Fixed an issue where the app did not self update on Windows</p>
       </description>
     </release>
   </releases>
