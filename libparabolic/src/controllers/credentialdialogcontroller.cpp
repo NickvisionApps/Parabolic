@@ -35,7 +35,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
 
     void CredentialDialogController::use(int index)
     {
-        if(index >= m_keyring.getCredentials().size())
+        if(index >= static_cast<int>(m_keyring.getCredentials().size()))
         {
             return;
         }
