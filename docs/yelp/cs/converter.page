@@ -48,7 +48,7 @@
     <item>
 		<title>Oříznout miniatury zvuku</title>
 		<p>Pokud je tato funkce povolena, aplikace Parabolic ořízne miniatury zvukových souborů tak, aby měly čtvercové rozlišení.</p>
-        <p>This option is only configurable if <code>Embed Metadata</code> is on.</p>
+        <p>Tato možnost je nastavitelná pouze při zapnutém nastavení <code>Vložit metadata</code>.</p>
 		<note style="advanced">
 			<p>Výchozí: vypnuto</p>
 		</note>
@@ -57,16 +57,16 @@
 		<title>Odebrat zdrojová data</title>
 		<p>Pokud je tato funkce povolena, aplikace Parabolic vymaže pole s metadaty obsahující URL a další identifikující informace o zdroji média.</p>
         <p>Pole, která budou vymazána: <code>comment</code>, <code>description</code>, <code>synopsis</code>, <code>purl</code> a <code>handler_name</code> v každém streamu.</p>
-        <p>This option is only configurable if <code>Embed Metadata</code> is on.</p>
+        <p>Tato možnost je nastavitelná pouze při zapnutém nastavení <code>Vložit metadata</code>.</p>
 		<note style="advanced">
 			<p>Výchozí: vypnuto</p>
 		</note>
     </item>
     <item>
-        <title>Postprocessing Threads</title>
-        <p>The number of threads to allow the postprocessor (<code>FFmpeg</code>) to use for each download.</p>
+        <title>Zpracovávání vláken</title>
+        <p>Počet vláken, která má postprocesor (<code>FFmpeg</code>) použít pro každé stahování.</p>
         <note style="advanced">
-            <p>Default: The max number of threads available on the system</p>
+            <p>Výchozí: maximální počet vláken dostupných v systému</p>
         </note>
     </item>
 </terms>
