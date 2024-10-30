@@ -2,16 +2,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: 2024-10-24 08:55-0400\n"
-"PO-Revision-Date: 2024-09-15 08:09+0000\n"
+"PO-Revision-Date: 2024-10-30 11:13+0000\n"
 "Last-Translator: Fjuro <fjuro@alius.cz>\n"
-"Language-Team: Czech <https://hosted.weblate.org/projects/nickvision-tube-"
-"converter/docs/cs/>\n"
+"Language-Team: Czech <https://hosted.weblate.org/projects/"
+"nickvision-tube-converter/docs/cs/>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=((n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2);\n"
-"X-Generator: Weblate 5.8-dev\n"
+"X-Generator: Weblate 5.8.2-dev\n"
 
 #. Put one translator per line, in the form NAME <EMAIL>, YEAR1, YEAR2
 msgctxt "_"
@@ -22,7 +22,7 @@ msgstr "Jonáš Loskot <osobni@jonasloskot.cz>, 2023, 2024"
 #: docs/yelp/C/aria.page:8
 msgctxt "link"
 msgid "aria2 🖥️"
-msgstr ""
+msgstr "aria2 🖥️"
 
 #. (itstool) path: credit/name
 #: docs/yelp/C/aria.page:10 docs/yelp/C/aria.page:14
@@ -37,18 +37,16 @@ msgstr "Nicholas Logozzo"
 
 #. (itstool) path: page/title
 #: docs/yelp/C/aria.page:20
-#, fuzzy
 msgid "aria2"
-msgstr "Použít aria2"
+msgstr "aria2"
 
 #. (itstool) path: page/p
 #: docs/yelp/C/aria.page:21
-#, fuzzy
 msgid ""
 "This page explains all options for configuring aria2 in Preferences in "
 "<app>Parabolic</app>."
 msgstr ""
-"Na této straně najdete vysvětlení všech možností konfigurace stahování v "
+"Na této stránce najdete vysvětlení všech možností konfigurace aria2 v "
 "předvolbách v aplikaci <app>Parabolic</app>."
 
 #. (itstool) path: item/title
@@ -58,21 +56,19 @@ msgstr "Použít aria2"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/aria.page:26
-#, fuzzy
 msgid "If enabled, Parabolic will use aria2c to download media."
 msgstr ""
-"Pokud je tato funkce povolena, aplikace Parabolic přepíše existující soubory."
+"Pokud je tato funkce povolena, aplikace Parabolic použije aria2 ke stahování "
+"médií."
 
 #. (itstool) path: item/p
 #: docs/yelp/C/aria.page:27
-#, fuzzy
 msgid ""
 "Although using aria2c can improve download speed, download progress will not "
 "be displayed in the UI."
 msgstr ""
-"Pokud je tato funkce povolena, použije aplikace Parabolic funkci aria2c pro "
-"stahování médií. Aria2c může zvýšit rychlost stahování, v rozhraní ale "
-"neuvidíte jeho průběh."
+"Použitím aria2c se může zvýšit rychlost stahování, v uživatelském rozhraní "
+"ale nebude zobrazen jeho průběh."
 
 #. (itstool) path: note/p
 #: docs/yelp/C/aria.page:29 docs/yelp/C/converter.page:35
@@ -221,11 +217,10 @@ msgstr ""
 
 #. (itstool) path: item/p
 #: docs/yelp/C/converter.page:48 docs/yelp/C/converter.page:57
-#, fuzzy
 msgid "This option is only configurable if <code>Embed Metadata</code> is on."
 msgstr ""
-"Dostupné pouze při povolené možnosti <code>Vložit metadata</code> v "
-"předvolbách."
+"Tato možnost je nastavitelná pouze při zapnutém nastavení <code>Vložit "
+"metadata</code>."
 
 #. (itstool) path: item/title
 #: docs/yelp/C/converter.page:54
@@ -255,7 +250,7 @@ msgstr ""
 #. (itstool) path: item/title
 #: docs/yelp/C/converter.page:63
 msgid "Postprocessing Threads"
-msgstr ""
+msgstr "Zpracovávání vláken"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/converter.page:64
@@ -263,23 +258,24 @@ msgid ""
 "The number of threads to allow the postprocessor (<code>FFmpeg</code>) to "
 "use for each download."
 msgstr ""
+"Počet vláken, která má postprocesor (<code>FFmpeg</code>) použít pro každé "
+"stahování."
 
 #. (itstool) path: note/p
 #: docs/yelp/C/converter.page:66
 msgid "Default: The max number of threads available on the system"
-msgstr ""
+msgstr "Výchozí: maximální počet vláken dostupných v systému"
 
 #. (itstool) path: info/title
 #: docs/yelp/C/downloader.page:8
-#, fuzzy
 msgctxt "link"
 msgid "Downloader 🛠️"
-msgstr "Stahování 🌐"
+msgstr "Služba stahování 🛠️"
 
 #. (itstool) path: page/title
 #: docs/yelp/C/downloader.page:20
 msgid "Downloader"
-msgstr "Stahování"
+msgstr "Služba stahování"
 
 #. (itstool) path: page/p
 #: docs/yelp/C/downloader.page:21
@@ -344,22 +340,23 @@ msgstr "Výchozí: 5"
 #. (itstool) path: item/title
 #: docs/yelp/C/downloader.page:43
 msgid "Limit Filename Characters"
-msgstr ""
+msgstr "Omezení znaků v názvu souboru"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/downloader.page:44
 msgid "Restricts characters in filenames to only those supported by Windows."
 msgstr ""
+"Omezí znaky v názvech souborů pouze na znaky podporované sytémem Windows."
 
 #. (itstool) path: item/p
 #: docs/yelp/C/downloader.page:45
 msgid "This option is only available on Linux."
-msgstr ""
+msgstr "Tato možnost je dostupná pouze na systému Linux."
 
 #. (itstool) path: item/title
 #: docs/yelp/C/downloader.page:51
 msgid "Download Immediately After Validation"
-msgstr ""
+msgstr "Stáhnout ihned po ověření"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/downloader.page:52
@@ -367,6 +364,8 @@ msgid ""
 "Bypasses the download options selection in the Add Download dialog and "
 "immediately downloads a validated media using previously selected options."
 msgstr ""
+"Obejde výběr možností stahování v dialogovém okně Přidat stahování a "
+"okamžitě stáhne ověřená média pomocí dříve vybraných možností."
 
 #. (itstool) path: item/title
 #: docs/yelp/C/downloader.page:58
@@ -383,28 +382,27 @@ msgstr ""
 
 #. (itstool) path: item/title
 #: docs/yelp/C/downloader.page:65
-#, fuzzy
 msgid "Preferred Video Codec"
-msgstr "Preferovat kodek AV1"
+msgstr "Preferovaný video kodek"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/downloader.page:66
-#, fuzzy
 msgid ""
 "The video codec Parabolic should prefer when selecting media formats to "
 "download."
-msgstr "Preferovaný video kodek při stahování videa."
+msgstr ""
+"Kodek videa, který by měla aplikace Parabolic preferovat při výběru formátů "
+"médií ke stažení."
 
 #. (itstool) path: note/p
 #: docs/yelp/C/downloader.page:68
-#, fuzzy
 msgid "Default: Any"
-msgstr "Výchozí: zapnuto"
+msgstr "Výchozí: jakýkoli"
 
 #. (itstool) path: item/title
 #: docs/yelp/C/downloader.page:72
 msgid "Recover Crashed Downloads"
-msgstr ""
+msgstr "Obnovit selhaná stahování"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/downloader.page:73
@@ -412,28 +410,28 @@ msgid ""
 "If enabled, Parabolic will track the running and queued downloads and "
 "restart them if necessary if the application crashes and is restarted."
 msgstr ""
+"Pokud je tato funkce povolena, bude aplikace Parabolic sledovat probíhající "
+"stahování a stahování ve frontě a v případě potřeby je znovu spustí, pokud "
+"aplikace spadne a je restartována."
 
 #. (itstool) path: info/title
 #: docs/yelp/C/downloads.page:8
-#, fuzzy
 msgctxt "link"
 msgid "Downloads 🌐"
 msgstr "Stahování 🌐"
 
 #. (itstool) path: page/title
 #: docs/yelp/C/downloads.page:20
-#, fuzzy
 msgid "Downloads"
 msgstr "Stahování"
 
 #. (itstool) path: page/p
 #: docs/yelp/C/downloads.page:21
-#, fuzzy
 msgid ""
 "This page explains all options for configuring Downloads in Preferences in "
 "<app>Parabolic</app>."
 msgstr ""
-"Na této straně najdete vysvětlení všech možností konfigurace stahování v "
+"Na této stránce najdete vysvětlení všech možností konfigurace stahování v "
 "předvolbách v aplikaci <app>Parabolic</app>."
 
 #. (itstool) path: item/title
@@ -493,9 +491,8 @@ msgstr "Adresa URL proxy serveru, který se má použít."
 
 #. (itstool) path: note/p
 #: docs/yelp/C/downloads.page:45
-#, fuzzy
 msgid "Default: No URL"
-msgstr "Výchozí: žádné"
+msgstr "Výchozí: žádná adresa URL"
 
 #. (itstool) path: item/title
 #: docs/yelp/C/downloads.page:49
@@ -512,19 +509,17 @@ msgstr ""
 
 #. (itstool) path: item/p
 #: docs/yelp/C/downloads.page:51 docs/yelp/C/downloads.page:60
-#, fuzzy
 msgid ""
 "This may be useful when downloading media that requires a login, for "
 "example: private YouTube videos."
 msgstr ""
-"Soubor .txt se soubory cookie, který se při stahování předá programu yt-dlp. "
-"To může být užitečné při stahování médií, která vyžadují přihlášení, "
-"například soukromá videa na YouTube."
+"Může být užitečné při stahování médií, která vyžadují přihlášení, například "
+"soukromých videí na YouTube."
 
 #. (itstool) path: item/p
 #: docs/yelp/C/downloads.page:52
 msgid "This option is on available on non sandboxed platforms."
-msgstr ""
+msgstr "Tato možnost je k dispozici na platformách bez sandboxu."
 
 #. (itstool) path: note/p
 #: docs/yelp/C/downloads.page:54
@@ -538,11 +533,9 @@ msgstr "Soubor cookies"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/downloads.page:59
-#, fuzzy
 msgid "A .txt file of cookies to pass to yt-dlp when download engine."
 msgstr ""
-"Prohlížeč, ze kterého číst soubory cookie a které odeslat do stahovací "
-"služby yt-dlp."
+"Soubor .txt se soubory cookie, který se předá službě yt-dlp při stahování."
 
 #. (itstool) path: item/p
 #: docs/yelp/C/downloads.page:61
@@ -567,8 +560,8 @@ msgid ""
 "Firefox: <code>https://addons.mozilla.org/en-US/firefox/addon/cookies-txt/</"
 "code>"
 msgstr ""
-"Firefox: <code>https://addons.mozilla.org/en-US/firefox/addon/cookies-txt/</"
-"code>"
+"Firefox: <code>https://addons.mozilla.org/cs/firefox/addon/cookies-txt/"
+"</code>"
 
 #. (itstool) path: note/p
 #: docs/yelp/C/downloads.page:65
@@ -671,15 +664,14 @@ msgstr ""
 
 #. (itstool) path: section/p
 #: docs/yelp/C/keyring.page:26
-#, fuzzy
 msgid ""
 "The library will use your system's credential manager (i.e. DBus secret "
 "service on Linux and Windows Credential Manager on Windows) for securing the "
 "Keyring database file."
 msgstr ""
-"Knihovna použije pro zabezpečení databázového souboru klíčenky správce údajů "
-"vašeho systému (např. službu DBus secret na systému Linux a Správce "
-"přihlašovacích údajů Windows na systému Windows)."
+"Knihovna použije správce pověření vašeho systému (tj. službu DBus secret v "
+"systému Linux a Správce přihlašovacích údajů Windows v systému Windows) pro "
+"zabezpečení souboru databáze klíčenky."
 
 #. (itstool) path: section/title
 #: docs/yelp/C/keyring.page:29
