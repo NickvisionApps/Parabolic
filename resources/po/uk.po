@@ -8,17 +8,17 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-10-29 10:20-0400\n"
-"PO-Revision-Date: 2024-10-17 11:58+0000\n"
+"PO-Revision-Date: 2024-10-31 14:00+0000\n"
 "Last-Translator: Bezruchenko Simon <worcposj44@gmail.com>\n"
-"Language-Team: Ukrainian <https://hosted.weblate.org/projects/nickvision-"
-"tube-converter/app/uk/>\n"
+"Language-Team: Ukrainian <https://hosted.weblate.org/projects/"
+"nickvision-tube-converter/app/uk/>\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Weblate 5.8-rc\n"
+"X-Generator: Weblate 5.8.2-dev\n"
 
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:91
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:105
@@ -117,12 +117,11 @@ msgstr ""
 "volkov <volkovissocool@gmail.com>"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:251
-#, fuzzy
 msgid "Recovered {} download"
 msgid_plural "Recovered {} downloads"
-msgstr[0] "Повторити невдалу спробу завантаження"
-msgstr[1] "Повторити невдалу спробу завантаження"
-msgstr[2] "Повторити невдалу спробу завантаження"
+msgstr[0] "Відновлено {} завантаження"
+msgstr[1] "Відновлено {} завантажень"
+msgstr[2] "Відновлено {} завантажень"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:256
 msgid ""
@@ -205,7 +204,7 @@ msgstr "URL-адреса медіа"
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:59
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:33
 msgid "Use Batch File"
-msgstr ""
+msgstr "Використовувати пакетний файл"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:66
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:34
@@ -364,14 +363,13 @@ msgstr "Пронумерувати заголовки"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/credential_dialog.blp:11
 #: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:18
-#, fuzzy
 msgid "Credential Needed"
-msgstr "Облікові дані"
+msgstr "Необхідні облікові дані"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/credential_dialog.blp:43
 #: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:26
 msgid "Use"
-msgstr ""
+msgstr "Використовувати"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:49
 msgid "View Log"
@@ -683,14 +681,13 @@ msgstr "Максимальна кількість активних завант�
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:89
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:47
 msgid "Limit Filename Characters"
-msgstr "Обмеження символів у назві файлу"
+msgstr "Обмежити символи у іменах файлів"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:90
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:48
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:49
 msgid "Restricts characters in filenames to only those supported by Windows."
-msgstr ""
-"Обмежує символи у назвах файлів лише тими, які підтримуються в Windows."
+msgstr "Обмежує символи в іменах файлів лише тими, що підтримуються Windows."
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:99
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:50
@@ -705,7 +702,7 @@ msgstr "Включати автоматично сгенеровані субт�
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:117
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:52
 msgid "Preferred Video Codec"
-msgstr "Бажаний відеокодек"
+msgstr "Переважний відеокодек"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:119
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:53
@@ -714,9 +711,8 @@ msgstr "Будь-який"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:129
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:57
-#, fuzzy
 msgid "Recover Crashed Downloads"
-msgstr "Повторити невдалу спробу завантаження"
+msgstr "Відновити невдалі завантаження"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:139
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:52
@@ -921,9 +917,8 @@ msgid "Starting download..."
 msgstr "Розпочато завантаження..."
 
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:31
-#, fuzzy
 msgid "Starting"
-msgstr "Налаштування"
+msgstr "Початок"
 
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:36
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:44
@@ -976,9 +971,8 @@ msgstr "Використання облікових даних вручну"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:85
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:128
-#, fuzzy
 msgid "Select Batch File"
-msgstr "Обрати теку для збереження"
+msgstr "Вибрати пакетний файл"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:87
 #: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:116
@@ -1015,6 +1009,8 @@ msgid ""
 "{} needs a credential to download.\n"
 "Please select or enter one to use."
 msgstr ""
+"{} потребує облікових даних для завантаження. \n"
+"Будь ласка, виберіть або введіть їх для використання."
 
 #: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:40
 #: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:58
@@ -1209,6 +1205,8 @@ msgstr "Елементи ({})"
 #: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:20
 msgid "{} needs a credential to download. Please select or enter one to use."
 msgstr ""
+"{} потребує облікових даних для завантаження. Будь ласка, виберіть або "
+"введіть їх для використання."
 
 #. Localize the Manage page
 #: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:23
