@@ -487,7 +487,11 @@ namespace Nickvision::TubeConverter::Shared::Models
         size_t maxExtensionLength{ 5 };
         for(const Format& format : m_availableFormats)
         {
-            maxExtensionLength = std::max(maxExtensionLength, std::string(".f" + format.getId() + "." + format.getExtension() + ".part").size());
+            size_t formatSize{ std::string(".f" + format.getId() + "." + format.getExtension() + ".part").size() };
+            if(formatSize > maxExtensionLength)
+            {
+                maxExtensionLength = formatSize;
+            }
         }
         //Check filename length
 #ifdef _WIN32
