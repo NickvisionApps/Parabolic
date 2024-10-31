@@ -18,10 +18,10 @@ namespace Nickvision::TubeConverter::Shared::Models
         : m_id{ ++s_downloadIdCounter }, 
         m_options{ options },
         m_status{ DownloadStatus::Queued },
-        m_path{ options.getSaveFolder() / (options.getSaveFilename() + options.getFileType().getDotExtension()) },
+        m_path{ m_options.getSaveFolder() / (m_options.getSaveFilename() + m_options.getFileType().getDotExtension()) },
         m_process{ nullptr }
     {
-        
+
     }
 
     Download::~Download()

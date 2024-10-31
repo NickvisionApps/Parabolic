@@ -1,6 +1,11 @@
 #include "models/downloadoptions.h"
 #include <libnick/helpers/stringhelpers.h>
 #include <libnick/system/environment.h>
+#ifdef _WIN32
+#include <windows.h>
+#else
+#include <linux/limits.h>
+#endif
 
 using namespace Nickvision::Helpers;
 using namespace Nickvision::Keyring;
@@ -66,6 +71,7 @@ namespace Nickvision::TubeConverter::Shared::Models
         {
             m_timeFrame = TimeFrame(json["TimeFrame"].as_object());
         }
+        ensureFileNameAndPathLengths();
     }
 
     const std::string& DownloadOptions::getUrl() const
@@ -136,6 +142,7 @@ namespace Nickvision::TubeConverter::Shared::Models
     void DownloadOptions::setSaveFolder(const std::filesystem::path& saveFolder)
     {
         m_saveFolder = saveFolder;
+        ensureFileNameAndPathLengths();
     }
 
     const std::string& DownloadOptions::getSaveFilename() const
@@ -146,6 +153,7 @@ namespace Nickvision::TubeConverter::Shared::Models
     void DownloadOptions::setSaveFilename(const std::string& saveFilename)
     {
         m_saveFilename = saveFilename;
+        ensureFileNameAndPathLengths();
     }
 
     const std::vector<SubtitleLanguage>& DownloadOptions::getSubtitleLanguages() const
@@ -471,6 +479,36 @@ namespace Nickvision::TubeConverter::Shared::Models
             json["TimeFrame"] = m_timeFrame->toJson();
         }
         return json;
+    }
+
+    void DownloadOptions::ensureFileNameAndPathLengths()
+    {
+        //Find max extension length
+        size_t maxExtensionLength{ 5 };
+        for(const Format& format : m_availableFormats)
+        {
+            maxExtensionLength = std::max(maxExtensionLength, std::string(".f" + format.getId() + "." + format.getExtension() + ".part").size());
+        }
+        //Check filename length
+#ifdef _WIN32
+        size_t maxFileNameLength{ MAX_PATH - 12 };
+#else
+        size_t maxFileNameLength{ NAME_MAX };
+#endif
+        if(m_saveFilename.size() + maxExtensionLength > maxFileNameLength)
+        {
+            m_saveFilename = m_saveFilename.substr(0, maxFileNameLength - maxExtensionLength);
+        }
+        //Check path length
+#ifdef _WIN32
+        size_t maxPathLength{ MAX_PATH };
+#else
+        size_t maxPathLength{ PATH_MAX };
+#endif
+        if((m_saveFolder / m_saveFilename).string().size() + maxExtensionLength > maxPathLength)
+        {
+            m_saveFilename = m_saveFilename.substr(0, maxPathLength - m_saveFolder.string().size() - maxExtensionLength);
+        }
     }
 
     bool DownloadOptions::shouldDownloadResume() const

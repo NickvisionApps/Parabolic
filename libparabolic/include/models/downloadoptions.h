@@ -174,6 +174,11 @@ namespace Nickvision::TubeConverter::Shared::Models
 
     private:
         /**
+         * @brief Ensures that the save filename and path lengths are within the limits.
+         * @brief If the lengths are not within the limits, they will be truncated.
+         */
+        void ensureFileNameAndPathLengths();
+        /**
          * @brief Gets whether or not the download should resume.
          * @brief Checks for existing part files in the save folder.
          * @return True if the download should resume, else false
