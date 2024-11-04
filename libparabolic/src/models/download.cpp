@@ -145,7 +145,7 @@ namespace Nickvision::TubeConverter::Shared::Models
             for(size_t i = logLines.size(); i > 0; i--)
             {
                 const std::string& line{ logLines[i - 1] };
-                if(line.find("PROGRESS;") == std::string::npos)
+                if(line.find("PROGRESS;") == std::string::npos || line.find("[debug]") != std::string::npos)
                 {
                     continue;
                 }
