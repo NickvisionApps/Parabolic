@@ -411,6 +411,41 @@ namespace Nickvision::TubeConverter::Shared::Models
             }
             arguments.push_back("--sub-langs");
             arguments.push_back(languages);
+            if(downloaderOptions.getPreferredSubtitleFormat() != SubtitleFormat::Any)
+            {
+                arguments.push_back("--sub-format");
+                switch(downloaderOptions.getPreferredSubtitleFormat())
+                {
+                case SubtitleFormat::VTT:
+                    arguments.push_back("vtt/best");
+                    break;
+                case SubtitleFormat::SRT:
+                    arguments.push_back("srt/best");
+                    break;
+                case SubtitleFormat::ASS:
+                    arguments.push_back("ass/best");
+                    break;
+                case SubtitleFormat::LRC:
+                    arguments.push_back("lrc/best");
+                    break;
+                }
+                arguments.push_back("--convert-subs");
+                switch(downloaderOptions.getPreferredSubtitleFormat())
+                {
+                case SubtitleFormat::VTT:
+                    arguments.push_back("vtt");
+                    break;
+                case SubtitleFormat::SRT:
+                    arguments.push_back("srt");
+                    break;
+                case SubtitleFormat::ASS:
+                    arguments.push_back("ass");
+                    break;
+                case SubtitleFormat::LRC:
+                    arguments.push_back("lrc");
+                    break;
+                }
+            }
         }
         if(m_limitSpeed)
         {
@@ -495,9 +530,9 @@ namespace Nickvision::TubeConverter::Shared::Models
         }
         //Check filename length
 #ifdef _WIN32
-        size_t maxFileNameLength{ MAX_PATH - 12 };
+        static size_t maxFileNameLength{ MAX_PATH - 12 };
 #else
-        size_t maxFileNameLength{ NAME_MAX };
+        static size_t maxFileNameLength{ NAME_MAX };
 #endif
         if(m_saveFilename.size() + maxExtensionLength > maxFileNameLength)
         {
@@ -505,9 +540,9 @@ namespace Nickvision::TubeConverter::Shared::Models
         }
         //Check path length
 #ifdef _WIN32
-        size_t maxPathLength{ MAX_PATH };
+        static size_t maxPathLength{ MAX_PATH };
 #else
-        size_t maxPathLength{ PATH_MAX };
+        static size_t maxPathLength{ PATH_MAX };
 #endif
         if((m_saveFolder / m_saveFilename).string().size() + maxExtensionLength > maxPathLength)
         {
@@ -517,6 +552,7 @@ namespace Nickvision::TubeConverter::Shared::Models
 
     bool DownloadOptions::shouldDownloadResume() const
     {
+        //Check for part files
         if(std::filesystem::exists(m_saveFolder / (m_saveFilename + ".part")))
         {
             return true;
@@ -524,6 +560,14 @@ namespace Nickvision::TubeConverter::Shared::Models
         for(const Format& format : m_availableFormats)
         {
             if(std::filesystem::exists(m_saveFolder / (m_saveFilename + ".f" + format.getId() + "." + format.getExtension() + ".part")))
+            {
+                return true;
+            }
+        }
+        //Check for already downloaded subtitles
+        for(const SubtitleLanguage& language : m_subtitleLanguages)
+        {
+            if(std::filesystem::exists(m_saveFolder / (m_saveFilename + "." + language.getLanguage() + ".vtt")))
             {
                 return true;
             }

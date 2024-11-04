@@ -125,6 +125,18 @@ Adw.PreferencesDialog root {
         }
       }
 
+      Adw.ComboRow preferredSubtitleFormatRow {
+        title: _("Preferred Subtitle Format");
+        model: Gtk.StringList {
+          strings [_("Any"), "VTT", "SRT", "ASS", "LRC"]
+        };
+
+        [prefix]
+        Gtk.Image {
+          icon-name: "subtitles-symbolic";
+        }
+      }
+
       Adw.SwitchRow recoverCrashedDownloadsRow {
         title: _("Recover Crashed Downloads");
 
