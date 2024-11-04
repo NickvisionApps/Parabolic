@@ -17,6 +17,7 @@ namespace Nickvision::TubeConverter::Shared::Models
         m_useAria{ false },
         m_ariaMaxConnectionsPerServer{ 16 },
         m_ariaMinSplitSize{ 20 },
+        m_verboseLogging{ true },
         m_speedLimit{ 1024 },
         m_proxyUrl{ "" },
         m_cookiesBrowser{ Browser::None },
@@ -141,6 +142,16 @@ namespace Nickvision::TubeConverter::Shared::Models
             minSplitSize = 20;
         }
         m_ariaMinSplitSize = minSplitSize;
+    }
+
+    bool DownloaderOptions::getVerboseLogging() const
+    {
+        return m_verboseLogging;
+    }
+
+    void DownloaderOptions::setVerboseLogging(bool verbose)
+    {
+        m_verboseLogging = verbose;
     }
 
     unsigned int DownloaderOptions::getSpeedLimit() const

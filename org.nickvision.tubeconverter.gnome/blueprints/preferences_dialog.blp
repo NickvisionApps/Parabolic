@@ -150,6 +150,15 @@ Adw.PreferencesDialog root {
     Adw.PreferencesGroup {
       title: _("Downloader");
 
+      Adw.SwitchRow verboseLoggingRow {
+        title: _("Verbose Logging");
+
+        [prefix]
+        Gtk.Image {
+          icon-name: "document-text-symbolic";
+        }
+      }
+
       Adw.SpinRow speedLimitRow {
         title: _("Speed Limit (KiB/s)");
         subtitle: _("This limit is applied only to downloads that have enabled limiting download speed.");

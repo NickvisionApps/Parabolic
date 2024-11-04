@@ -50,7 +50,7 @@
       <item>
        <widget class="QStackedWidget" name="viewStack">
         <property name="currentIndex">
-         <number>1</number>
+         <number>2</number>
         </property>
         <widget class="QWidget" name="pageAppearance">
          <property name="autoFillBackground">
@@ -184,10 +184,10 @@
           <property name="verticalSpacing">
            <number>8</number>
           </property>
-          <item row="0" column="0">
+          <item row="1" column="0">
            <widget class="QLabel" name="lblSpeedLimit"/>
           </item>
-          <item row="0" column="1">
+          <item row="1" column="1">
            <widget class="QSpinBox" name="numSpeedLimit">
             <property name="minimum">
              <number>512</number>
@@ -200,49 +200,49 @@
             </property>
            </widget>
           </item>
-          <item row="1" column="0">
+          <item row="2" column="0">
            <widget class="QLabel" name="lblSponsorBlock"/>
           </item>
-          <item row="1" column="1">
+          <item row="2" column="1">
            <widget class="QCheckBox" name="chkSponsorBlock"/>
           </item>
-          <item row="2" column="0">
+          <item row="3" column="0">
            <widget class="QLabel" name="lblProxyUrl"/>
           </item>
-          <item row="2" column="1">
+          <item row="3" column="1">
            <widget class="QLineEdit" name="txtProxyUrl"/>
           </item>
-          <item row="3" column="0">
+          <item row="4" column="0">
            <widget class="QLabel" name="lblCookiesBrowser"/>
           </item>
-          <item row="3" column="1">
+          <item row="4" column="1">
            <widget class="QComboBox" name="cmbCookiesBrowser"/>
           </item>
-          <item row="4" column="0">
+          <item row="5" column="0">
            <widget class="QLabel" name="lblCookiesFile"/>
           </item>
-          <item row="4" column="1">
+          <item row="5" column="1">
            <widget class="QLineEdit" name="txtCookiesFile">
             <property name="readOnly">
              <bool>true</bool>
             </property>
            </widget>
           </item>
-          <item row="5" column="1">
+          <item row="6" column="1">
            <widget class="QPushButton" name="btnSelectCookiesFile">
             <property name="icon">
              <iconset theme="document-open"/>
             </property>
            </widget>
           </item>
-          <item row="6" column="1">
+          <item row="7" column="1">
            <widget class="QPushButton" name="btnClearCookiesFile">
             <property name="icon">
              <iconset theme="edit-clear"/>
             </property>
            </widget>
           </item>
-          <item row="7" column="1">
+          <item row="8" column="1">
            <spacer name="verticalSpacer_3">
             <property name="orientation">
              <enum>Qt::Orientation::Vertical</enum>
@@ -254,6 +254,12 @@
              </size>
             </property>
            </spacer>
+          </item>
+          <item row="0" column="0">
+           <widget class="QLabel" name="lblVerboseLogging"/>
+          </item>
+          <item row="0" column="1">
+           <widget class="QCheckBox" name="chkVerboseLogging"/>
           </item>
          </layout>
         </widget>

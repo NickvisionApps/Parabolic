@@ -92,6 +92,7 @@ namespace Nickvision::TubeConverter::Shared::Models
         options.setUseAria(m_json["UseAria"].is_bool() ? m_json["UseAria"].as_bool() : false);
         options.setAriaMaxConnectionsPerServer(m_json["AriaMaxConnectionsPerServer"].is_int64() ? static_cast<int>(m_json["AriaMaxConnectionsPerServer"].as_int64()) : 16);
         options.setAriaMinSplitSize(m_json["AriaMinSplitSize"].is_int64() ? static_cast<int>(m_json["AriaMinSplitSize"].as_int64()) : 20);
+        options.setVerboseLogging(m_json["VerboseLogging"].is_bool() ? m_json["VerboseLogging"].as_bool() : true);
         options.setSpeedLimit(m_json["SpeedLimit"].is_int64() ? static_cast<unsigned int>(m_json["SpeedLimit"].as_int64()) : 1024);
         options.setProxyUrl(m_json["ProxyUrl"].is_string() ? m_json["ProxyUrl"].as_string().c_str() : "");
         options.setCookiesBrowser(m_json["CookiesBrowser"].is_int64() ? static_cast<Browser>(m_json["CookiesBrowser"].as_int64()) : Browser::None);
@@ -118,6 +119,7 @@ namespace Nickvision::TubeConverter::Shared::Models
         m_json["UseAria"] = downloaderOptions.getUseAria();
         m_json["AriaMaxConnectionsPerServer"] = downloaderOptions.getAriaMaxConnectionsPerServer();
         m_json["AriaMinSplitSize"] = downloaderOptions.getAriaMinSplitSize();
+        m_json["VerboseLogging"] = downloaderOptions.getVerboseLogging();
         m_json["SpeedLimit"] = downloaderOptions.getSpeedLimit();
         m_json["ProxyUrl"] = downloaderOptions.getProxyUrl();
         m_json["CookiesBrowser"] = static_cast<int>(downloaderOptions.getCookiesBrowser());

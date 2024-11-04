@@ -61,6 +61,7 @@ namespace Nickvision::TubeConverter::QT::Views
         m_ui->cmbPreferredSubtitleFormat->addItem("ASS");
         m_ui->cmbPreferredSubtitleFormat->addItem("LRC");
         m_ui->lblRecoverCrashedDownloads->setText(_("Recover Crashed Downloads"));
+        m_ui->lblVerboseLogging->setText(_("Verbose Logging"));
         m_ui->lblSpeedLimit->setText(_("Speed Limit"));
         m_ui->lblSpeedLimit->setToolTip(_("This limit is applied only to downloads that have enabled limiting download speed."));
         m_ui->numSpeedLimit->setToolTip(_("This limit is applied only to downloads that have enabled limiting download speed."));
@@ -115,6 +116,7 @@ namespace Nickvision::TubeConverter::QT::Views
         m_ui->cmbPreferredVideoCodec->setCurrentIndex(static_cast<int>(options.getPreferredVideoCodec()));
         m_ui->cmbPreferredSubtitleFormat->setCurrentIndex(static_cast<int>(options.getPreferredSubtitleFormat()));
         m_ui->chkRecoverCrashedDownloads->setChecked(options.getRecoverCrashedDownloads());
+        m_ui->chkVerboseLogging->setChecked(options.getVerboseLogging());
         m_ui->numSpeedLimit->setValue(options.getSpeedLimit());
         m_ui->chkSponsorBlock->setChecked(options.getYouTubeSponsorBlock());
         m_ui->txtProxyUrl->setText(QString::fromStdString(options.getProxyUrl()));
@@ -172,6 +174,7 @@ namespace Nickvision::TubeConverter::QT::Views
         options.setPreferredVideoCodec(static_cast<VideoCodec>(m_ui->cmbPreferredVideoCodec->currentIndex()));
         options.setPreferredSubtitleFormat(static_cast<SubtitleFormat>(m_ui->cmbPreferredSubtitleFormat->currentIndex()));
         options.setRecoverCrashedDownloads(m_ui->chkRecoverCrashedDownloads->isChecked());
+        options.setVerboseLogging(m_ui->chkVerboseLogging->isChecked());
         options.setSpeedLimit(m_ui->numSpeedLimit->value());
         options.setYouTubeSponsorBlock(m_ui->chkSponsorBlock->isChecked());
         options.setProxyUrl(m_ui->txtProxyUrl->text().toStdString());

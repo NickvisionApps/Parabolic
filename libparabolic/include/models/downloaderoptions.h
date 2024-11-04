@@ -132,6 +132,16 @@ namespace Nickvision::TubeConverter::Shared::Models
          */
         void setAriaMinSplitSize(int minSplitSize);
         /**
+         * @brief Gets whether or not to log verbose output.
+         * @return True to log verbose output, else false
+         */
+        bool getVerboseLogging() const;
+        /**
+         * @brief Sets whether or not to log verbose output.
+         * @param verbose True to log verbose output, else false
+         */
+        void setVerboseLogging(bool verbose);
+        /**
          * @brief Gets the speed limit for each download.
          * @brief Should be in KiB/s.
          * @brief Should be between 512 and 10240.
@@ -257,6 +267,7 @@ namespace Nickvision::TubeConverter::Shared::Models
         bool m_useAria;
         int m_ariaMaxConnectionsPerServer;
         int m_ariaMinSplitSize;
+        bool m_verboseLogging;
         unsigned int m_speedLimit;
         std::string m_proxyUrl;
         Browser m_cookiesBrowser;

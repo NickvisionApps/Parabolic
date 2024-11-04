@@ -226,6 +226,10 @@ namespace Nickvision::TubeConverter::Shared::Models
         {
             arguments.push_back("--windows-filenames");
         }
+        if(downloaderOptions.getVerboseLogging())
+        {
+            arguments.push_back("--verbose");
+        }
         if(m_credential)
         {
             if(!m_credential->getUsername().empty() && !m_credential->getPassword().empty())
