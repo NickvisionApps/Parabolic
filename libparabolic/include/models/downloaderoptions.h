@@ -147,14 +147,14 @@ namespace Nickvision::TubeConverter::Shared::Models
          * @brief Should be between 512 and 10240.
          * @return The speed limit
          */
-        unsigned int getSpeedLimit() const;
+        int getSpeedLimit() const;
         /**
          * @brief Sets the speed limit for each download.
          * @brief Should be in KiB/s.
          * @brief Should be between 512 and 10240.
          * @param speedLimit The new speed limit
          */
-        void setSpeedLimit(unsigned int speedLimit);
+        void setSpeedLimit(int speedLimit);
         /**
          * @brief Gets the proxy server url to use for downloading.
          * @return The proxy server url
@@ -268,7 +268,7 @@ namespace Nickvision::TubeConverter::Shared::Models
         int m_ariaMaxConnectionsPerServer;
         int m_ariaMinSplitSize;
         bool m_verboseLogging;
-        unsigned int m_speedLimit;
+        int m_speedLimit;
         std::string m_proxyUrl;
         Browser m_cookiesBrowser;
         std::filesystem::path m_cookiesPath;

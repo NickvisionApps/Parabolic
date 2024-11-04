@@ -154,12 +154,12 @@ namespace Nickvision::TubeConverter::Shared::Models
         m_verboseLogging = verbose;
     }
 
-    unsigned int DownloaderOptions::getSpeedLimit() const
+    int DownloaderOptions::getSpeedLimit() const
     {
         return m_speedLimit;
     }
 
-    void DownloaderOptions::setSpeedLimit(unsigned int speedLimit)
+    void DownloaderOptions::setSpeedLimit(int speedLimit)
     {
         if(speedLimit < 512 || speedLimit > 10240)
         {
