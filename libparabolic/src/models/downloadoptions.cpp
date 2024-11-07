@@ -343,6 +343,11 @@ namespace Nickvision::TubeConverter::Shared::Models
         {
             arguments.push_back("--remux-video");
             arguments.push_back(StringHelpers::lower(m_fileType.str()));
+            if(m_fileType == MediaFileType::WEBM)
+            {
+                arguments.push_back("--recode-video");
+                arguments.push_back(StringHelpers::lower(m_fileType.str()));
+            }
         }
         //Force preferred video codec sorting for playlist downloads to use as format selection is not available
         if(downloaderOptions.getPreferredVideoCodec() != VideoCodec::Any)
