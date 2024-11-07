@@ -580,6 +580,18 @@ namespace Nickvision::TubeConverter::Shared::Models
             {
                 return true;
             }
+            else if(std::filesystem::exists(m_saveFolder / (m_saveFilename + "." + language.getLanguage() + ".srt")))
+            {
+                return true;
+            }
+            else if(std::filesystem::exists(m_saveFolder / (m_saveFilename + "." + language.getLanguage() + ".ass")))
+            {
+                return true;
+            }
+            else if(std::filesystem::exists(m_saveFolder / (m_saveFilename + "." + language.getLanguage() + ".lrc")))
+            {
+                return true;
+            }
         }
         return false;
     }
