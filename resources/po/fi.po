@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-11-04 09:57-0500\n"
+"POT-Creation-Date: 2024-11-10 19:40-0500\n"
 "PO-Revision-Date: 2024-10-20 18:04+0000\n"
 "Last-Translator: Jiri Grönroos <jiri.gronroos@iki.fi>\n"
 "Language-Team: Finnish <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -113,7 +113,7 @@ msgid "translator-credits"
 msgstr "Jiri Grönroos"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:251
-#, fuzzy
+#, fuzzy, c++-format
 msgid "Recovered {} download"
 msgid_plural "Recovered {} downloads"
 msgstr[0] "Yritä ladata uudelleen epäonnistuneet lataukset"
@@ -139,18 +139,22 @@ msgid "Unable to download and install update"
 msgstr "Päivityksen lataaminen ja asentaminen ei onnistu"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:21
+#, c++-format
 msgid "{:.2f} GiB/s"
 msgstr "{:.2f} GiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:25
+#, c++-format
 msgid "{:.2f} MiB/s"
 msgstr "{:.2f} MiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:29
+#, c++-format
 msgid "{:.2f} KiB/s"
 msgstr "{:.2f} KiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:33
+#, c++-format
 msgid "{:.2f} B/s"
 msgstr "{:.2f} t/s"
 
@@ -1016,10 +1020,12 @@ msgid "No Subtitles Available"
 msgstr "Tekstityksiä ei saatavilla"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:215
+#, c++-format
 msgid "{} items"
 msgstr "{} kohteet"
 
 #: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:15
+#, c++-format
 msgid ""
 "{} needs a credential to download.\n"
 "Please select or enter one to use."
@@ -1134,6 +1140,7 @@ msgid "Changelog:"
 msgstr "Muutoskirjaukset:"
 
 #: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:39
+#, c++-format
 msgid ""
 "Developers:\n"
 "{}\n"
@@ -1211,11 +1218,13 @@ msgstr ""
 "osoite, mitä todennusta käytetään, ja kyseisen selaimen evästeasetukset."
 
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:232
+#, c++-format
 msgid "Items ({})"
 msgstr "Kohteet ({})"
 
 #. Localize Strings
 #: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:20
+#, c++-format
 msgid "{} needs a credential to download. Please select or enter one to use."
 msgstr ""
 
