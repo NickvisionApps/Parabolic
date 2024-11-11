@@ -17,11 +17,13 @@ namespace Nickvision::TubeConverter::Shared::Models
          */
         enum MediaFileTypeValue
         {
-            MP4 = 0,
+            Video,
+            MP4,
             WEBM,
             MKV,
             MOV,
             AVI,
+            Audio,
             MP3,
             M4A,
             OPUS,
@@ -54,6 +56,11 @@ namespace Nickvision::TubeConverter::Shared::Models
          * @return True if video file type, else false
          */
         bool isVideo() const;
+        /**
+         * @brief Gets whether or not the file type is a generic file type.
+         * @return True if generic file type, else false
+         */
+        bool isGeneric() const;
         /**
          * @brief Gets whether or not the file type supports thumbnails.
          * @return True if supports thumbnails, else false

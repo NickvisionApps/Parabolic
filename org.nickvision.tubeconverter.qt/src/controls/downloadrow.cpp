@@ -99,6 +99,7 @@ namespace Nickvision::TubeConverter::QT::Controls
             m_ui->btnIcon->setIcon(QIcon::fromTheme(QIcon::ThemeIcon::DocumentNew));
             m_ui->lblStatus->setText(_("Success"));
             m_ui->buttonStack->setCurrentIndex(1);
+            m_ui->btnPlay->setVisible(std::filesystem::exists(m_path));
         }
     }
 

@@ -336,10 +336,13 @@ namespace Nickvision::TubeConverter::Shared::Models
         if(m_fileType.isAudio())
         {
             arguments.push_back("--extract-audio");
-            arguments.push_back("--audio-format");
-            arguments.push_back(StringHelpers::lower(m_fileType.str()));
+            if(!m_fileType.isGeneric())
+            {
+                arguments.push_back("--audio-format");
+                arguments.push_back(StringHelpers::lower(m_fileType.str()));   
+            }
         }
-        else if(m_fileType.isVideo())
+        else if(m_fileType.isVideo() && !m_fileType.isGeneric())
         {
             arguments.push_back("--remux-video");
             arguments.push_back(StringHelpers::lower(m_fileType.str()));

@@ -88,12 +88,14 @@ namespace Nickvision::TubeConverter::Shared::Controllers
             const Media& media{ m_urlInfo->get(0) };
             if(media.getType() == MediaType::Video)
             {
+                fileTypes.push_back(_("Video (Generic)"));
                 fileTypes.push_back(_("MP4 (Video)"));
                 fileTypes.push_back(_("WEBM (Video)"));
                 fileTypes.push_back(_("MKV (Video)"));
                 fileTypes.push_back(_("MOV (Video)"));
                 fileTypes.push_back(_("AVI (Video)"));
             }
+            fileTypes.push_back(_("Audio (Generic)"));
             fileTypes.push_back(_("MP3 (Audio)"));
             fileTypes.push_back(_("M4A (Audio)"));
             fileTypes.push_back(_("OPUS (Audio)"));
@@ -102,11 +104,13 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         }
         else
         {
+            fileTypes.push_back(_("Video (Generic)"));
             fileTypes.push_back(_("MP4 (Video)"));
             fileTypes.push_back(_("WEBM (Video)"));
             fileTypes.push_back(_("MKV (Video)"));
             fileTypes.push_back(_("MOV (Video)"));
             fileTypes.push_back(_("AVI (Video)"));
+            fileTypes.push_back(_("Audio (Generic)"));
             fileTypes.push_back(_("MP3 (Audio)"));
             fileTypes.push_back(_("M4A (Audio)"));
             fileTypes.push_back(_("OPUS (Audio)"));

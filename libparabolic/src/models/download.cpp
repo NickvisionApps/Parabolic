@@ -97,7 +97,7 @@ namespace Nickvision::TubeConverter::Shared::Models
             m_status = DownloadStatus::Error;
             lock.unlock();
             m_progressChanged.invoke({ m_id, 1.0, 0.0, _("ERROR: The file already exists and overwriting is disabled.") });
-            m_completed.invoke({ m_id, m_path, m_status, false });
+            m_completed.invoke({ m_id, m_status, false });
             return;
         }
         std::vector<std::string> arguments{ m_options.toArgumentVector(downloaderOptions) };
@@ -175,6 +175,6 @@ namespace Nickvision::TubeConverter::Shared::Models
         }
         lock.unlock();
         m_progressChanged.invoke({ m_id, 1.0, 0.0, args.getOutput() });
-        m_completed.invoke({ m_id, m_path, m_status, true });
+        m_completed.invoke({ m_id, m_status, true });
     }
 }

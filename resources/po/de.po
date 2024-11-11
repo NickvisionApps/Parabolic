@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-11-10 19:40-0500\n"
+"POT-Creation-Date: 2024-11-11 11:21-0500\n"
 "PO-Revision-Date: 2024-10-20 01:16+0000\n"
 "Last-Translator: Ettore Atalan <atalanttore@googlemail.com>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -20,66 +20,76 @@ msgstr ""
 "X-Generator: Weblate 5.8-rc\n"
 
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:91
-#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:105
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:107
+msgid "Video (Generic)"
+msgstr ""
+
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:92
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:108
 msgid "MP4 (Video)"
 msgstr "MP4 (Video)"
 
-#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:92
-#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:106
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:93
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:109
 msgid "WEBM (Video)"
 msgstr "WEBM (Video)"
 
-#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:93
-#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:107
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:94
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:110
 msgid "MKV (Video)"
 msgstr "MKV (Video)"
 
-#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:94
-#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:108
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:95
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:111
 msgid "MOV (Video)"
 msgstr "MOV (Video)"
 
-#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:95
-#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:109
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:96
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:112
 msgid "AVI (Video)"
 msgstr "AVI (Video)"
 
-#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:97
-#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:110
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:98
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:113
+msgid "Audio (Generic)"
+msgstr ""
+
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:99
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:114
 msgid "MP3 (Audio)"
 msgstr "MP3 (Audio)"
 
-#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:98
-#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:111
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:100
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:115
 msgid "M4A (Audio)"
 msgstr "M4A (Audio)"
 
-#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:99
-#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:112
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:101
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:116
 msgid "OPUS (Audio)"
 msgstr "OPUS (Audio)"
 
-#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:100
-#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:113
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:102
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:117
 msgid "FLAC (Audio)"
 msgstr "FLAC (Audio)"
 
-#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:101
-#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:114
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:103
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:118
 msgid "WAV (Audio)"
 msgstr "WAV (Audio)"
 
-#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:128
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:132
 #: libparabolic/src/models/videoresolution.cpp:33
 #: libparabolic/src/models/videoresolution.cpp:75
 msgid "Best"
 msgstr "Am besten"
 
-#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:162
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:166
 msgid "Default"
 msgstr "Standard"
 
-#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:173
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:177
 msgid "Audio Description"
 msgstr "Audiobeschreibung"
 
@@ -116,7 +126,7 @@ msgstr ""
 "Philipp Kiemle <l10n@prly.mozmail.com>"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:251
-#, fuzzy, c++-format
+#, fuzzy
 msgid "Recovered {} download"
 msgid_plural "Recovered {} downloads"
 msgstr[0] "Fehlgeschlagene Downloads wiederholen"
@@ -142,22 +152,18 @@ msgid "Unable to download and install update"
 msgstr "Aktualisierung kann nicht heruntergeladen und installiert werden"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:21
-#, c++-format
 msgid "{:.2f} GiB/s"
 msgstr "{:.2f} GiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:25
-#, c++-format
 msgid "{:.2f} MiB/s"
 msgstr "{:.2f} MiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:29
-#, c++-format
 msgid "{:.2f} KiB/s"
 msgstr "{:.2f} KiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:33
-#, c++-format
 msgid "{:.2f} B/s"
 msgstr "{:.2f} B/s"
 
@@ -956,10 +962,10 @@ msgid "Processing"
 msgstr "Wird verarbeitet"
 
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:92
-#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:140
+#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:141
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:39
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:82
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:118
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:119
 msgid "Running"
 msgstr "Läuft"
 
@@ -982,8 +988,8 @@ msgstr "Fehler"
 msgid "Success"
 msgstr "Erfolg"
 
-#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:129
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:110
+#: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:130
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:111
 msgid "Stopped"
 msgstr "Angehalten"
 
@@ -1028,12 +1034,10 @@ msgid "No Subtitles Available"
 msgstr "Keine Untertitel verfügbar"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:215
-#, c++-format
 msgid "{} items"
 msgstr "{} Elemente"
 
 #: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:15
-#, c++-format
 msgid ""
 "{} needs a credential to download.\n"
 "Please select or enter one to use."
@@ -1152,7 +1156,6 @@ msgid "Changelog:"
 msgstr "Änderungsprotokoll:"
 
 #: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:39
-#, c++-format
 msgid ""
 "Developers:\n"
 "{}\n"
@@ -1231,13 +1234,11 @@ msgstr ""
 "ausgewählten Browser für Cookies in den Einstellungen."
 
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:232
-#, c++-format
 msgid "Items ({})"
 msgstr "Elemente ({})"
 
 #. Localize Strings
 #: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:20
-#, c++-format
 msgid "{} needs a credential to download. Please select or enter one to use."
 msgstr ""
 
