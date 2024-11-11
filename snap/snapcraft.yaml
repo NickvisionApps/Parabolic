@@ -34,7 +34,7 @@ parts:
     plugin: python
     source: .
     python-packages:
-      - yt-dlp==2024.10.22
+      - yt-dlp==2024.11.04
     stage:
       - -bin/activate*
       - -bin/Activate.ps1
@@ -98,6 +98,7 @@ parts:
       - cmake
       - blueprint-compiler/latest/edge
       - ffmpeg-2404/latest/candidate
+      - gnome-46-2404-sdk/latest/edge
     cmake-parameters:
       - -DCMAKE_INSTALL_PREFIX=/snap/tube-converter/current/usr
       - -DCMAKE_BUILD_TYPE=Release

@@ -15,19 +15,19 @@
 </info>
 
 <title>Convertisseur</title>
-<p>Cette page explique toutes les options permettant de configurer le convertisseur dans les préférences de <app>Parabole</app>.</p>
+<p>Cette page explique toutes les options permettant de configurer le convertisseur dans les préférences de <app>Parabolic</app>.</p>
 
 <terms>
 	<item>
 		<title>Inclure les métadonnées</title>
-		<p>Si cette option est activée, Parabole inclura dans le média téléchargé ses données pertinentes (titre, genre, etc…) et sa vignette, si disponibles.</p>
+		<p>Si cette option est activée, Parabolic inclura dans le média téléchargé ses données pertinentes (titre, genre, etc…) et sa vignette, si disponibles.</p>
 		<note style="advanced">
 			<p>Par défaut : Activée</p>
 		</note>
     </item>
     <item>
 		<title>Inclure les chapitres</title>
-		<p>Si cette option est activée, Parabole inclura dans un média les informations relatives à ses chapitres, si disponibles.</p>
+		<p>Si cette option est activée, Parabolic inclura dans un média les informations relatives à ses chapitres, si disponibles.</p>
 		<note style="advanced">
 			<p>Par défaut : Désactivée</p>
 		</note>
@@ -41,26 +41,26 @@
     </item>
     <item>
 		<title>Rogner les vignettes des fichiers audio</title>
-		<p>Si cette option est activée, Parabole découpera la vignette des fichiers audio pour obtenir une résolution carrée.</p>
-        <p>This option is only configurable if <code>Embed Metadata</code> is on.</p>
+		<p>Si cette option est activée, Parabolic découpera la vignette des fichiers audio pour obtenir une résolution carrée.</p>
+        <p>Cette option est configurable uniquement si l’<code>inclusion des métadonnées</code> est activée.</p>
 		<note style="advanced">
 			<p>Par défaut : Désactivée</p>
 		</note>
     </item>
     <item>
 		<title>Retirer les données sur la source</title>
-		<p>Si cette option est activée, Parabole effacera les champs de métadonnées contenant l’URL et d’autres informations d’identification de la source du média.</p>
+		<p>Si cette option est activée, Parabolic effacera les champs de métadonnées contenant l’URL et d’autres informations d’identification de la source du média.</p>
         <p>Champs effacés : <code>commentaires</code>, <code>description</code>, <code>synopsis</code>, <code>purl</code> et <code>nom_du_service</code> dans chaque flux.</p>
-        <p>This option is only configurable if <code>Embed Metadata</code> is on.</p>
+        <p>Cette option est configurable uniquement si l’<code>inclusion des métadonnées</code> est activée.</p>
 		<note style="advanced">
 			<p>Par défaut : Désactivée</p>
 		</note>
     </item>
     <item>
-        <title>Postprocessing Threads</title>
-        <p>The number of threads to allow the postprocessor (<code>FFmpeg</code>) to use for each download.</p>
+        <title>Fils de post-traitement</title>
+        <p>Le nombre de fils que le postprocesseur (<code>FFmpeg</code>) peut utiliser pour chaque téléchargement.</p>
         <note style="advanced">
-            <p>Default: The max number of threads available on the system</p>
+            <p>Par défaut : le nombre maximal de fils disponibles sur le système</p>
         </note>
     </item>
 </terms>

@@ -2,7 +2,7 @@
 <page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" id="downloader" its:version="2.0" xml:lang="fr">
 <info>
 	<link type="guide" xref="index"/>
-	<title type="link">Downloader 🛠️</title>
+	<title type="link">Téléchargeur 🛠️</title>
 	<credit type="author copyright">
 		<name>Nicholas Logozzo</name>
 		<years its:translate="no">2023-2024</years>
@@ -15,12 +15,12 @@
 </info>
 
 <title>Téléchargeur</title>
-<p>Cette page explique toutes les options pour configurer le téléchargeur dans les préférences de <app>Parabole</app>.</p>
+<p>Cette page explique toutes les options pour configurer le téléchargeur dans les préférences de <app>Parabolic</app>.</p>
 
 <terms>
     <item>
         <title>Remplacer les fichiers existants</title>
-        <p>Si cette option est activée, Parabole écrasera les fichiers existants.</p>
+        <p>Si cette option est activée, Parabolic écrasera les fichiers existants.</p>
         <p>Par exemple, si un fichier intitulé <code>film.mp4</code> existe dans le dossier de téléchargement et qu’un nouveau téléchargement est créé avec le titre <code>film</code>, <code>film.mp4</code> sera remplacé par le contenu du nouveau téléchargement.</p>
         <note style="advanced">
             <p>Par défaut : Activée</p>
@@ -29,22 +29,22 @@
 	<item>
 		<title>Nombre maximum de téléchargements actifs</title>
 		<p>Indique le nombre de téléchargements actifs autorisés à s’exécuter en même temps. Il doit s’agir d’un nombre entier compris entre 1 et 10.</p>
-        <p>Si le maximum de téléchargements actifs est atteint, Parabole placera les nouveaux téléchargements dans une file d’attente jusqu’à ce que des téléchargements supplémentaires soient autorisés à s’exécuter.</p>
+        <p>Si le maximum de téléchargements actifs est atteint, Parabolic placera les nouveaux téléchargements dans une file d’attente jusqu’à ce que des téléchargements supplémentaires soient autorisés à s’exécuter.</p>
 		<note style="advanced">
 			<p>Par défaut : 5</p>
 		</note>
     </item>
     <item>
-		<title>Limit Filename Characters</title>
-		<p>Restricts characters in filenames to only those supported by Windows.</p>
-        <p>This option is only available on Linux.</p>
+		<title>Limiter le caractères des noms des fichiers</title>
+		<p>Restreint les caractères dans les noms de fichiers à ceux uniquement pris en charge par Windows.</p>
+        <p>Option disponible uniquement sur Linux.</p>
 		<note style="advanced">
 			<p>Par défaut : Désactivée</p>
 		</note>
     </item>
     <item>
-		<title>Download Immediately After Validation</title>
-		<p>Bypasses the download options selection in the Add Download dialog and immediately downloads a validated media using previously selected options.</p>
+		<title>Télécharger immédiatement après validation</title>
+		<p>Contourne la sélection des options de téléchargement dans la boîte de dialogue « Ajouter un téléchargement » et télécharge immédiatement un média validé en utilisant les options précédemment sélectionnées.</p>
 		<note style="advanced">
 			<p>Par défaut : Désactivée</p>
 		</note>
@@ -57,15 +57,15 @@
         </note>
     </item>
     <item>
-        <title>Preferred Video Codec</title>
-        <p>The video codec Parabolic should prefer when selecting media formats to download.</p>
+        <title>Codec vidéo préféré</title>
+        <p>Le codec vidéo que Parabolic devrait préférer lors de la sélection de formats de médias à télécharger.</p>
         <note style="advanced">
-            <p>Default: Any</p>
+            <p>Par défaut : N’importe lequel</p>
         </note>
     </item>
     <item>
-        <title>Recover Crashed Downloads</title>
-        <p>If enabled, Parabolic will track the running and queued downloads and restart them if necessary if the application crashes and is restarted.</p>
+        <title>Récupérer les téléchargements échoués</title>
+        <p>Si cette option est activée, Parabolic suivra les téléchargements en cours et en file d’attente et les relancera si nécessaire, après un redémarrage de l’application en cas de plantage.</p>
         <note style="advanced">
             <p>Par défaut : Activée</p>
         </note>

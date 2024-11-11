@@ -125,6 +125,18 @@ Adw.PreferencesDialog root {
         }
       }
 
+      Adw.ComboRow preferredSubtitleFormatRow {
+        title: _("Preferred Subtitle Format");
+        model: Gtk.StringList {
+          strings [_("Any"), "VTT", "SRT", "ASS", "LRC"]
+        };
+
+        [prefix]
+        Gtk.Image {
+          icon-name: "subtitles-symbolic";
+        }
+      }
+
       Adw.SwitchRow recoverCrashedDownloadsRow {
         title: _("Recover Crashed Downloads");
 
@@ -137,6 +149,15 @@ Adw.PreferencesDialog root {
 
     Adw.PreferencesGroup {
       title: _("Downloader");
+
+      Adw.SwitchRow verboseLoggingRow {
+        title: _("Verbose Logging");
+
+        [prefix]
+        Gtk.Image {
+          icon-name: "document-text-symbolic";
+        }
+      }
 
       Adw.SpinRow speedLimitRow {
         title: _("Speed Limit (KiB/s)");

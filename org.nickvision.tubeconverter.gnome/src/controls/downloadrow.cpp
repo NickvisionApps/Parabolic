@@ -116,6 +116,7 @@ namespace Nickvision::TubeConverter::GNOME::Controls
             gtk_image_set_from_icon_name(m_builder.get<GtkImage>("statusIcon"), "emblem-ok-symbolic");
             gtk_label_set_text(m_builder.get<GtkLabel>("statusLabel"), _("Success"));
             adw_view_stack_set_visible_child_name(m_builder.get<AdwViewStack>("buttonsViewStack"), "success");
+            gtk_widget_set_visible(m_builder.get<GtkWidget>("playButton"), std::filesystem::exists(m_path));
             gtk_level_bar_set_value(m_builder.get<GtkLevelBar>("levelBar"), 1.0);
         }
         adw_view_stack_set_visible_child_name(m_builder.get<AdwViewStack>("progViewStack"), "done");

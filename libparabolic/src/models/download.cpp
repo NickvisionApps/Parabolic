@@ -18,10 +18,10 @@ namespace Nickvision::TubeConverter::Shared::Models
         : m_id{ ++s_downloadIdCounter }, 
         m_options{ options },
         m_status{ DownloadStatus::Queued },
-        m_path{ options.getSaveFolder() / (options.getSaveFilename() + options.getFileType().getDotExtension()) },
+        m_path{ m_options.getSaveFolder() / (m_options.getSaveFilename() + m_options.getFileType().getDotExtension()) },
         m_process{ nullptr }
     {
-        
+
     }
 
     Download::~Download()
@@ -97,7 +97,7 @@ namespace Nickvision::TubeConverter::Shared::Models
             m_status = DownloadStatus::Error;
             lock.unlock();
             m_progressChanged.invoke({ m_id, 1.0, 0.0, _("ERROR: The file already exists and overwriting is disabled.") });
-            m_completed.invoke({ m_id, m_path, m_status, false });
+            m_completed.invoke({ m_id, m_status, false });
             return;
         }
         std::vector<std::string> arguments{ m_options.toArgumentVector(downloaderOptions) };
@@ -145,7 +145,7 @@ namespace Nickvision::TubeConverter::Shared::Models
             for(size_t i = logLines.size(); i > 0; i--)
             {
                 const std::string& line{ logLines[i - 1] };
-                if(line.find("PROGRESS;") == std::string::npos)
+                if(line.find("PROGRESS;") == std::string::npos || line.find("[debug]") != std::string::npos)
                 {
                     continue;
                 }
@@ -175,6 +175,6 @@ namespace Nickvision::TubeConverter::Shared::Models
         }
         lock.unlock();
         m_progressChanged.invoke({ m_id, 1.0, 0.0, args.getOutput() });
-        m_completed.invoke({ m_id, m_path, m_status, true });
+        m_completed.invoke({ m_id, m_status, true });
     }
 }

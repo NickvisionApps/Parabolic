@@ -1,6 +1,11 @@
 #include "models/downloadoptions.h"
 #include <libnick/helpers/stringhelpers.h>
 #include <libnick/system/environment.h>
+#ifdef _WIN32
+#include <windows.h>
+#else
+#include <linux/limits.h>
+#endif
 
 using namespace Nickvision::Helpers;
 using namespace Nickvision::Keyring;
@@ -66,6 +71,7 @@ namespace Nickvision::TubeConverter::Shared::Models
         {
             m_timeFrame = TimeFrame(json["TimeFrame"].as_object());
         }
+        ensureFileNameAndPathLengths();
     }
 
     const std::string& DownloadOptions::getUrl() const
@@ -136,6 +142,7 @@ namespace Nickvision::TubeConverter::Shared::Models
     void DownloadOptions::setSaveFolder(const std::filesystem::path& saveFolder)
     {
         m_saveFolder = saveFolder;
+        ensureFileNameAndPathLengths();
     }
 
     const std::string& DownloadOptions::getSaveFilename() const
@@ -146,6 +153,7 @@ namespace Nickvision::TubeConverter::Shared::Models
     void DownloadOptions::setSaveFilename(const std::string& saveFilename)
     {
         m_saveFilename = saveFilename;
+        ensureFileNameAndPathLengths();
     }
 
     const std::vector<SubtitleLanguage>& DownloadOptions::getSubtitleLanguages() const
@@ -214,9 +222,17 @@ namespace Nickvision::TubeConverter::Shared::Models
         {
             arguments.push_back("--force-overwrites");
         }
+        else
+        {
+            arguments.push_back("--no-overwrites");
+        }
         if(downloaderOptions.getLimitCharacters())
         {
             arguments.push_back("--windows-filenames");
+        }
+        if(downloaderOptions.getVerboseLogging())
+        {
+            arguments.push_back("--verbose");
         }
         if(m_credential)
         {
@@ -324,13 +340,21 @@ namespace Nickvision::TubeConverter::Shared::Models
         if(m_fileType.isAudio())
         {
             arguments.push_back("--extract-audio");
-            arguments.push_back("--audio-format");
-            arguments.push_back(StringHelpers::lower(m_fileType.str()));
+            if(!m_fileType.isGeneric())
+            {
+                arguments.push_back("--audio-format");
+                arguments.push_back(StringHelpers::lower(m_fileType.str()));   
+            }
         }
-        else if(m_fileType.isVideo())
+        else if(m_fileType.isVideo() && !m_fileType.isGeneric())
         {
             arguments.push_back("--remux-video");
             arguments.push_back(StringHelpers::lower(m_fileType.str()));
+            if(m_fileType == MediaFileType::WEBM)
+            {
+                arguments.push_back("--recode-video");
+                arguments.push_back(StringHelpers::lower(m_fileType.str()));
+            }
         }
         //Force preferred video codec sorting for playlist downloads to use as format selection is not available
         if(downloaderOptions.getPreferredVideoCodec() != VideoCodec::Any)
@@ -403,6 +427,41 @@ namespace Nickvision::TubeConverter::Shared::Models
             }
             arguments.push_back("--sub-langs");
             arguments.push_back(languages);
+            if(downloaderOptions.getPreferredSubtitleFormat() != SubtitleFormat::Any)
+            {
+                arguments.push_back("--sub-format");
+                switch(downloaderOptions.getPreferredSubtitleFormat())
+                {
+                case SubtitleFormat::VTT:
+                    arguments.push_back("vtt/best");
+                    break;
+                case SubtitleFormat::SRT:
+                    arguments.push_back("srt/best");
+                    break;
+                case SubtitleFormat::ASS:
+                    arguments.push_back("ass/best");
+                    break;
+                case SubtitleFormat::LRC:
+                    arguments.push_back("lrc/best");
+                    break;
+                }
+                arguments.push_back("--convert-subs");
+                switch(downloaderOptions.getPreferredSubtitleFormat())
+                {
+                case SubtitleFormat::VTT:
+                    arguments.push_back("vtt");
+                    break;
+                case SubtitleFormat::SRT:
+                    arguments.push_back("srt");
+                    break;
+                case SubtitleFormat::ASS:
+                    arguments.push_back("ass");
+                    break;
+                case SubtitleFormat::LRC:
+                    arguments.push_back("lrc");
+                    break;
+                }
+            }
         }
         if(m_limitSpeed)
         {
@@ -473,8 +532,43 @@ namespace Nickvision::TubeConverter::Shared::Models
         return json;
     }
 
+    void DownloadOptions::ensureFileNameAndPathLengths()
+    {
+        //Find max extension length
+        size_t maxExtensionLength{ 5 };
+        for(const Format& format : m_availableFormats)
+        {
+            size_t formatSize{ std::string(".f" + format.getId() + "." + format.getExtension() + ".part").size() };
+            if(formatSize > maxExtensionLength)
+            {
+                maxExtensionLength = formatSize;
+            }
+        }
+        //Check filename length
+#ifdef _WIN32
+        static size_t maxFileNameLength{ MAX_PATH - 12 };
+#else
+        static size_t maxFileNameLength{ NAME_MAX };
+#endif
+        if(m_saveFilename.size() + maxExtensionLength > maxFileNameLength)
+        {
+            m_saveFilename = m_saveFilename.substr(0, maxFileNameLength - maxExtensionLength);
+        }
+        //Check path length
+#ifdef _WIN32
+        static size_t maxPathLength{ MAX_PATH };
+#else
+        static size_t maxPathLength{ PATH_MAX };
+#endif
+        if((m_saveFolder / m_saveFilename).string().size() + maxExtensionLength > maxPathLength)
+        {
+            m_saveFilename = m_saveFilename.substr(0, maxPathLength - m_saveFolder.string().size() - maxExtensionLength);
+        }
+    }
+
     bool DownloadOptions::shouldDownloadResume() const
     {
+        //Check for part files
         if(std::filesystem::exists(m_saveFolder / (m_saveFilename + ".part")))
         {
             return true;
@@ -482,6 +576,26 @@ namespace Nickvision::TubeConverter::Shared::Models
         for(const Format& format : m_availableFormats)
         {
             if(std::filesystem::exists(m_saveFolder / (m_saveFilename + ".f" + format.getId() + "." + format.getExtension() + ".part")))
+            {
+                return true;
+            }
+        }
+        //Check for already downloaded subtitles
+        for(const SubtitleLanguage& language : m_subtitleLanguages)
+        {
+            if(std::filesystem::exists(m_saveFolder / (m_saveFilename + "." + language.getLanguage() + ".vtt")))
+            {
+                return true;
+            }
+            else if(std::filesystem::exists(m_saveFolder / (m_saveFilename + "." + language.getLanguage() + ".srt")))
+            {
+                return true;
+            }
+            else if(std::filesystem::exists(m_saveFolder / (m_saveFilename + "." + language.getLanguage() + ".ass")))
+            {
+                return true;
+            }
+            else if(std::filesystem::exists(m_saveFolder / (m_saveFilename + "." + language.getLanguage() + ".lrc")))
             {
                 return true;
             }

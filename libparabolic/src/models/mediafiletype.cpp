@@ -15,43 +15,51 @@ namespace Nickvision::TubeConverter::Shared::Models
     {
         value = StringHelpers::replace(value, ".", "");
         value = StringHelpers::lower(value);
-        if (value == "mp4")
+        if(value == "video")
+        {
+            return { MediaFileTypeValue::Video };
+        }
+        else if(value == "mp4")
         {
             return { MediaFileTypeValue::MP4 };
         }
-        else if (value == "webm")
+        else if(value == "webm")
         {
             return { MediaFileTypeValue::WEBM };
         }
-        else if (value == "mkv")
+        else if(value == "mkv")
         {
             return { MediaFileTypeValue::MKV };
         }
-        else if (value == "mov")
+        else if(value == "mov")
         {
             return { MediaFileTypeValue::MOV };
         }
-        else if (value == "avi")
+        else if(value == "avi")
         {
             return { MediaFileTypeValue::AVI };
         }
-        else if (value == "mp3")
+        else if(value == "audio")
+        {
+            return { MediaFileTypeValue::Audio };
+        }
+        else if(value == "mp3")
         {
             return { MediaFileTypeValue::MP3 };
         }
-        else if (value == "m4a")
+        else if(value == "m4a")
         {
             return { MediaFileTypeValue::M4A };
         }
-        else if (value == "opus")
+        else if(value == "opus")
         {
             return { MediaFileTypeValue::OPUS };
         }
-        else if (value == "flac")
+        else if(value == "flac")
         {
             return { MediaFileTypeValue::FLAC };
         }
-        else if (value == "wav")
+        else if(value == "wav")
         {
             return { MediaFileTypeValue::WAV };
         }
@@ -60,6 +68,10 @@ namespace Nickvision::TubeConverter::Shared::Models
 
     std::string MediaFileType::getDotExtension() const
     {
+        if(m_value == MediaFileTypeValue::Video || m_value == MediaFileTypeValue::Audio)
+        {
+            return "";
+        }
         return "." + StringHelpers::lower(str());
     }
 
@@ -67,17 +79,13 @@ namespace Nickvision::TubeConverter::Shared::Models
     {
         switch (m_value)
         {
+        case MediaFileTypeValue::Audio:
         case MediaFileTypeValue::MP3:
         case MediaFileTypeValue::M4A:
         case MediaFileTypeValue::OPUS:
         case MediaFileTypeValue::FLAC:
         case MediaFileTypeValue::WAV:
             return true;
-        case MediaFileTypeValue::MP4:
-        case MediaFileTypeValue::WEBM:
-        case MediaFileTypeValue::MKV:
-        case MediaFileTypeValue::MOV:
-        case MediaFileTypeValue::AVI:
         default:
             return false;
         }
@@ -87,17 +95,25 @@ namespace Nickvision::TubeConverter::Shared::Models
     {
         switch (m_value)
         {
+        case MediaFileTypeValue::Video:
         case MediaFileTypeValue::MP4:
         case MediaFileTypeValue::WEBM:
         case MediaFileTypeValue::MKV:
         case MediaFileTypeValue::MOV:
         case MediaFileTypeValue::AVI:
             return true;
-        case MediaFileTypeValue::MP3:
-        case MediaFileTypeValue::M4A:
-        case MediaFileTypeValue::OPUS:
-        case MediaFileTypeValue::FLAC:
-        case MediaFileTypeValue::WAV:
+        default:
+            return false;
+        }
+    }
+
+    bool MediaFileType::isGeneric() const
+    {
+        switch (m_value)
+        {
+        case MediaFileType::Video:
+        case MediaFileType::Audio:
+            return true;
         default:
             return false;
         }
@@ -107,17 +123,15 @@ namespace Nickvision::TubeConverter::Shared::Models
     {
         switch (m_value)
         {
+        case MediaFileTypeValue::Video:
         case MediaFileTypeValue::MP4:
         case MediaFileTypeValue::MOV:
+        case MediaFileTypeValue::Audio:
         case MediaFileTypeValue::MP3:
         case MediaFileTypeValue::M4A:
         case MediaFileTypeValue::OPUS:
         case MediaFileTypeValue::FLAC:
             return true;
-        case MediaFileTypeValue::WEBM:
-        case MediaFileTypeValue::MKV:
-        case MediaFileTypeValue::AVI:
-        case MediaFileTypeValue::WAV:
         default:
             return false;
         }
@@ -127,6 +141,8 @@ namespace Nickvision::TubeConverter::Shared::Models
     {
         switch (m_value)
         {
+        case MediaFileTypeValue::Video:
+            return "Video";
         case MediaFileTypeValue::MP4:
             return "MP4";
         case MediaFileTypeValue::WEBM:
@@ -137,6 +153,8 @@ namespace Nickvision::TubeConverter::Shared::Models
             return "MOV";
         case MediaFileTypeValue::AVI:
             return "AVI";
+        case MediaFileTypeValue::Audio:
+            return "Audio";
         case MediaFileTypeValue::MP3:
             return "MP3";
         case MediaFileTypeValue::M4A:

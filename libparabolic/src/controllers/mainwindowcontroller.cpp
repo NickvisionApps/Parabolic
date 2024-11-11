@@ -38,10 +38,10 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         m_keyring{ m_appInfo.getId() },
         m_downloadManager{ m_dataFileManager.get<Configuration>("config").getDownloaderOptions(), m_dataFileManager.get<DownloadHistory>("history"), m_dataFileManager.get<DownloadRecoveryQueue>("recovery"), m_logger }
     {
-        m_appInfo.setVersion({ "2024.10.3" });
+        m_appInfo.setVersion({ "2024.11.0-next" });
         m_appInfo.setShortName(_("Parabolic"));
         m_appInfo.setDescription(_("Download web video and audio"));
-        m_appInfo.setChangelog("- Added support for selecting a batch file with multiple URLs to validate instead of validating a single URL at a time\n- Added a recovery mode where downloads that were running/queued will be restored when the application is restarted after a crash\n- User entered file names will now be correctly normalized and validated in the Add Download dialog\n- Fixed an issue where YouTube tabs were not correctly validated\n- Fixed an issue where the app's documentation was not accessible\n- Fixed an issue where UTF-8 characters were not displayed correctly on Windows\n- Fixed an issue where playlist names were not normalized on Windows\n- Fixed an issue where the row animations were choppy using aria2c on Linux\n- Fixed an issue where the app would crash when stopping all downloads on Linux\n- Updated yt-dlp to 2024.10.22");
+        m_appInfo.setChangelog("- Added the ability to turn on and off yt-dlp's verbose logging in the app's settings\n- Added the ability to select a preferred subtitle file format in the app's settings\n- Added the ability to select a generic file type that will prevent conversions of media files\n- Fixed an issue where some webm conversions failed\n- Fixed an issue where some files related to a download were being overwritten when they should not have been\n- Fixed an issue where the app crashed when handling too long file names\n- Fixed an issue where the app would not open due to infinitely attempting to recover downloads\n- Fixed an issue where the speed limit option was not configurable\n- Fixed an issue where the app did not self update on Windows\n- Updated yt-dlp to 2024.11.04");
         m_appInfo.setSourceRepo("https://github.com/NickvisionApps/Parabolic");
         m_appInfo.setIssueTracker("https://github.com/NickvisionApps/Parabolic/issues/new");
         m_appInfo.setSupportUrl("https://github.com/NickvisionApps/Parabolic/discussions");

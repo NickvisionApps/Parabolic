@@ -307,11 +307,13 @@ namespace Nickvision::TubeConverter::QT::Views
             break;
         }
         QMessageBox msgBox{ icon, QString::fromStdString(m_controller->getAppInfo().getShortName()), QString::fromStdString(args.getMessage()), QMessageBox::StandardButton::Ok, this };
+#ifdef _WIN32
         if(args.getAction() == "update")
         {
             QPushButton* updateButton{ msgBox.addButton(_("Update"), QMessageBox::ButtonRole::ActionRole) };
-            connect(updateButton, &QPushButton::clicked, this, &MainWindow::checkForUpdates);
+            connect(updateButton, &QPushButton::clicked, this, &MainWindow::windowsUpdate);
         }
+#endif
         msgBox.exec();
     }
 
