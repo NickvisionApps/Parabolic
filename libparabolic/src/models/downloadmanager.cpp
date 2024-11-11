@@ -178,6 +178,7 @@ namespace Nickvision::TubeConverter::Shared::Models
         //Recover Crashed Downloads
         if(!m_options.getRecoverCrashedDownloads())
         {
+            m_logger.log(LogLevel::Info, "Skipping recoverable downloads.");
             m_recoveryQueue.clear();
             return 0;
         }
@@ -195,7 +196,7 @@ namespace Nickvision::TubeConverter::Shared::Models
                 }
                 pair.second.setCredential(*credential);
             }
-            addDownload(pair.second);
+            addDownload(pair.second, true);
         }
         return recoverableDownloads.size();
     }
@@ -345,7 +346,7 @@ namespace Nickvision::TubeConverter::Shared::Models
         return UrlInfo{ batchFile, urlInfos };
     }
 
-    void DownloadManager::addDownload(const DownloadOptions& options)
+    void DownloadManager::addDownload(const DownloadOptions& options, bool recovered)
     {
         std::unique_lock<std::mutex> lock{ m_mutex };
         //Build a Download object
@@ -354,7 +355,7 @@ namespace Nickvision::TubeConverter::Shared::Models
         download->completed() += [this](const DownloadCompletedEventArgs& args){ onDownloadCompleted(args); };
         lock.unlock();
         //Add the download
-        addDownload(download);
+        addDownload(download, recovered);
     }
 
     void DownloadManager::stopDownload(int id)
@@ -465,10 +466,13 @@ namespace Nickvision::TubeConverter::Shared::Models
         return cleared;
     }
 
-    void DownloadManager::addDownload(const std::shared_ptr<Download>& download)
+    void DownloadManager::addDownload(const std::shared_ptr<Download>& download, bool recovered)
     {
         std::unique_lock<std::mutex> lock{ m_mutex };
-        m_recoveryQueue.addDownload(download->getId(), download->getOptions());
+        if(!recovered)
+        {
+            m_recoveryQueue.addDownload(download->getId(), download->getOptions());
+        }
         if(m_downloading.size() < static_cast<size_t>(m_options.getMaxNumberOfActiveDownloads()))
         {
             m_downloading.emplace(download->getId(), download);

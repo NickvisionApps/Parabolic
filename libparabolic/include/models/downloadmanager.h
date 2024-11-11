@@ -164,8 +164,9 @@ namespace Nickvision::TubeConverter::Shared::Models
          * @brief Adds a download to the queue.
          * @brief This will invoke the downloadAdded event if added successfully.
          * @param options The options for the download
+         * @param recovered Whether or not the download was previously recovered
          */
-        void addDownload(const DownloadOptions& options);
+        void addDownload(const DownloadOptions& options, bool recovered = false);
         /**
          * @brief Requests that a download be stopped.
          * @brief This will invoke the downloadStopped event if stopped successfully.
@@ -203,8 +204,9 @@ namespace Nickvision::TubeConverter::Shared::Models
         /**
          * @brief Adds a download to the queue.
          * @param download The download to add
+         * @param recovered Whether or not the download was previously recovered
          */
-        void addDownload(const std::shared_ptr<Download>& download);
+        void addDownload(const std::shared_ptr<Download>& download, bool recovered = false);
         /**
          * @brief Handles when a download's progress is changed.
          * @param args Events::DownloadProgressChangedEventArgs
