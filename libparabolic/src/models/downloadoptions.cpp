@@ -222,6 +222,10 @@ namespace Nickvision::TubeConverter::Shared::Models
         {
             arguments.push_back("--force-overwrites");
         }
+        else
+        {
+            arguments.push_back("--no-overwrites");
+        }
         if(downloaderOptions.getLimitCharacters())
         {
             arguments.push_back("--windows-filenames");
