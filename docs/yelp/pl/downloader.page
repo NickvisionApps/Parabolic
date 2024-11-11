@@ -25,56 +25,58 @@
 
 <terms>
     <item>
-        <title>Nadpisuj istniejące pliki</title>
-        <p>Po włączeniu, Parabolic będzie nadpisywał istniejące pliki.</p>
-        <p>Na przykład, jeśli plik o nazwie <code>film.mp4</code> istnieje w folderze docelowym i nowe pobieranie o nazwie <code>film</code> zostanie rozpoczęte, to <code>film.mp4</code> zostanie zastąpiony nowo pobraną treścią.</p>
+        <title>Verbose Logging</title>
+        <p>If enabled, more verbose logs will be provided by <code>yt-dlp</code> for each download.</p>
         <note style="advanced">
             <p>Domyślnie: włączone</p>
         </note>
     </item>
-	<item>
-		<title>Maksymalna ilość aktywnych procesów pobierania</title>
-		<p>Ilość procesów pobierania, które mogą być aktywne w tym samym czasie. Musi być liczbą całkowitą od 1 do 10.</p>
-        <p>Jeśli maksymalna ilość aktywnych procesów pobierania zostanie osiągnięta nowe procesy będą oczekiwały w kolejce.</p>
+    <item>
+        <title>Limit prędkości pobierania</title>
+        <p>Limit prędkości w KiB/s, który dotyczy tylko procesów pobierania z włączoną opcją zaawansowaną <code>Limit prędkości pobierania</code> . Musi być liczbą całkowitą od 512 do 10240.</p>
 		<note style="advanced">
-			<p>Domyślnie: 5</p>
+			<p>Domyślnie: 1024</p>
 		</note>
     </item>
     <item>
-		<title>Limit Filename Characters</title>
-		<p>Restricts characters in filenames to only those supported by Windows.</p>
-        <p>This option is only available on Linux.</p>
-		<note style="advanced">
-			<p>Domyślnie: wyłączone</p>
-		</note>
-    </item>
-    <item>
-		<title>Download Immediately After Validation</title>
-		<p>Bypasses the download options selection in the Add Download dialog and immediately downloads a validated media using previously selected options.</p>
-		<note style="advanced">
-			<p>Domyślnie: wyłączone</p>
-		</note>
-    </item>
-    <item>
-        <title>Zawiera automatycznie generowane napisy</title>
-        <p>Whether or not to included subtitles that are auto-translated to fit the requested subtitle languages.</p>
+        <title>Użyj SponsorBlock dla YouTube</title>
+        <p>If enabled, Parabolic will apply the SponsorBlock extension to YouTube downloads.</p>
+        <note>
+            <p>SponsorBlock only works on YouTube videos. However, leaving this setting on will not affect downloads from other sites (i.e. not cause them to fail).</p>
+        </note>
         <note style="advanced">
             <p>Domyślnie: wyłączone</p>
         </note>
     </item>
     <item>
-        <title>Preferred Video Codec</title>
-        <p>The video codec Parabolic should prefer when selecting media formats to download.</p>
+        <title>Adres URL serwera proxy</title>
+        <p>Adres URL wybranego serwera proxy.</p>
         <note style="advanced">
-            <p>Default: Any</p>
-        </note>
+			<p>Default: No URL</p>
+		</note>
     </item>
     <item>
-        <title>Recover Crashed Downloads</title>
-        <p>If enabled, Parabolic will track the running and queued downloads and restart them if necessary if the application crashes and is restarted.</p>
-        <note style="advanced">
-            <p>Domyślnie: włączone</p>
+        <title>Ciasteczka z przeglądarki</title>
+        <p>A browser in which to read cookies from and pass to yt-dlp's download engine.</p>
+        <p>This may be useful when downloading media that requires a login, for example: private YouTube videos.</p>
+        <p>This option is on available on non sandboxed platforms.</p>
+		<note style="advanced">
+			<p>Default: None</p>
+		</note>
+    </item>
+    <item>
+        <title>Ciasteczka</title>
+        <p>A .txt file of cookies to pass to yt-dlp when download engine.</p>
+        <p>This may be useful when downloading media that requires a login, for example: private YouTube videos.</p>
+        <p>Wyeksportuj ciasteczka (pliki cookie) z przeglądarki za pomocą następujących rozszerzeń:</p>
+        <p>Chrome: <code>https://chrome.google.com/webstore/detail/get-cookiestxt-locally/cclelndahbckbenkjhflpdbgdldlbecc</code></p>
+        <p>Firefox: <code>https://addons.mozilla.org/en-US/firefox/addon/cookies-txt/</code></p>
+        <note>
+            <p>Używasz tych rozszerzeń na własne ryzyko.</p>
         </note>
+		<note style="advanced">
+			<p>Domyślnie: Brak wybranego pliku</p>
+		</note>
     </item>
 </terms>
 </page>

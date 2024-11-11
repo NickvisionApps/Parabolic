@@ -37,15 +37,17 @@
     <item>
 		<title>Type de fichier</title>
 		<p>Le type de fichier sous lequel enregistrer le média.</p>
-            <p>Si l’option <code>Empêcher les conversions</code> est activée, les seules options possibles seront <code>Vidéo</code> (si pris en charge) et <code>Audio</code></p>
         <note>
             <p>Le type de fichier sélectionné précédemment sera mémorisé et présélectionné pour le prochain téléchargement.</p>
+        </note>
+        <note style="advanced">
+            <p>Selecting the <code>Video (Generic)</code> or <code>Audio (Generic)</code> file types will cause Parabolic to download the media in the original file type of the media without performing any conversions.</p>
         </note>
     </item>
     <item>
 		<title>Qualité</title>
 		<p>Si le type de fichier est une vidéo, la liste des qualités sera celle des résolutions disponibles pour le média.</p>
-        <p>Si le type de fichier est un audio, la liste des qualités sera simplement <code>Meilleure</code>, <code>Moyenne</code> et <code>Basse</code>.</p>
+        <p>If the file type is an audio type, the listed qualities will be the audio bitrates of the media available.</p>
         <note>
             <p>La qualité utilisée précédemment sera mémorisée et présélectionnée pour le prochain téléchargement.</p>
         </note>
@@ -59,10 +61,10 @@
         </note>
     </item>
     <item>
-		<title>Télécharger les sous-titres</title>
-		<p>Indique s’il faut télécharger et inclure les sous-titres dans le fichier de la vidéo lors de son téléchargement. Plus de paramètres des sous-titres peuvent être définis dans <link xref="downloader">Préférences</link>.</p>
+		<title>Subtitles</title>
+		<p>The list of subtitles available by the media that can be selected for download by the user. Further subtitle settings can be configured in <link xref="downloads">preferences</link>.</p>
         <note>
-            <p>Les paramètres utilisés précédemment seront mémorisés et présélectionnés pour le prochain téléchargement.</p>
+            <p>The previously selected subtitles will be remembered and pre-selected for the next download.</p>
         </note>
     </item>
     <item>
@@ -71,6 +73,17 @@
         <note>
             <p>Les paramètres utilisés précédemment seront mémorisés et présélectionnés pour le prochain téléchargement.</p>
         </note>
+    </item>
+    <item>
+		<title>Limitation de vitesse</title>
+		<p>Si cette option est activée, Parabolic limitera la vitesse de téléchargement selon la vitesse indiquée dans <link xref="downloader">Préférences</link>.</p>
+    </item>
+    <item>
+		<title>Séquence</title>
+		<p>Si cette option est activée, l’utilisateur pourra entrer un temps de début et un temps de fin pour télécharger une partie spécifique du média.</p>
+        <note style="advanced">
+			<p>Par défaut : la longueur totale du média</p>
+		</note>
     </item>
     <item>
 		<title>Dossier d’enregistrement</title>
@@ -85,23 +98,6 @@
 		<note style="advanced">
 			<p>Par défaut : le titre du média</p>
 		</note>
-    </item>
-    <item>
-		<title>Séquence</title>
-		<p>Si cette option est activée, l’utilisateur pourra entrer un temps de début et un temps de fin pour télécharger une partie spécifique du média.</p>
-        <note style="advanced">
-			<p>Par défaut : la longueur totale du média</p>
-		</note>
-        <note style="advanced">
-            <p>Cette option désactivera l’utilisation de aria2 comme téléchargeur pour ce téléchargement, même s’il est activé dans Préférences.</p>
-        </note>
-    </item>
-    <item>
-		<title>Limitation de vitesse</title>
-		<p>Si cette option est activée, Parabolic limitera la vitesse de téléchargement selon la vitesse indiquée dans <link xref="downloader">Préférences</link>.</p>
-        <note>
-            <p>Disponible dans la section <code>Options avancées</code>.</p>
-        </note>
     </item>
 </terms>
 </page>

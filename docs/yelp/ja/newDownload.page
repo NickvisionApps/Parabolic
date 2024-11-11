@@ -43,15 +43,17 @@
     <item>
 		<title>ファイルの種類</title>
 		<p>ダウンロードするメディアのファイルのタイプ。</p>
-            <p><code>フォーマット変換を無効化</code>が有効であれば、（サポートされていれば）<code>動画</code>もしくは<code>音声</code>の二択になります</p>
         <note>
             <p>最後に使用したファイルの種類は、次回のダウンロードのために記憶・事前選択されます。</p>
+        </note>
+        <note style="advanced">
+            <p>Selecting the <code>Video (Generic)</code> or <code>Audio (Generic)</code> file types will cause Parabolic to download the media in the original file type of the media without performing any conversions.</p>
         </note>
     </item>
     <item>
 		<title>品質</title>
 		<p>ファイルの種類が動画の場合、表示される品質はメディアが利用できる解像度です。</p>
-        <p>ファイルの種類が音声の場合、表示される品質は単純に <code>Best</code> (最高)、<code>Good</code> (普通)、<code>Worst</code> (最低)になります。</p>
+        <p>If the file type is an audio type, the listed qualities will be the audio bitrates of the media available.</p>
         <note>
             <p>最後に使用した品質は、次回のダウンロードのために記憶・事前選択されます。</p>
         </note>
@@ -65,10 +67,10 @@
         </note>
     </item>
     <item>
-		<title>字幕をダウンロードする</title>
-		<p>動画のダウンロード時に字幕をダウンロードしてメディアに埋め込むかどうか。字幕の細かな設定は <link xref="downloader">設定</link> にて変更できます。</p>
+		<title>Subtitles</title>
+		<p>The list of subtitles available by the media that can be selected for download by the user. Further subtitle settings can be configured in <link xref="downloads">preferences</link>.</p>
         <note>
-            <p>最後に使用した状態は、今後のダウンロードのために記憶・事前選択されます。</p>
+            <p>The previously selected subtitles will be remembered and pre-selected for the next download.</p>
         </note>
     </item>
     <item>
@@ -77,6 +79,17 @@
         <note>
             <p>最後に使用した状態は、今後のダウンロードのために記憶・事前選択されます。</p>
         </note>
+    </item>
+    <item>
+		<title>スピード制限</title>
+		<p>有効であれば、Parabolic は、<link xref="downloader">設定</link> で指定された速度でダウンロードの速度を制限します。</p>
+    </item>
+    <item>
+		<title>タイムフレーム</title>
+		<p>ダウンロードメディアの開始と終わりのタイムフレームを入力することで、メディアの特定部分をダウンロードできるようになります。</p>
+        <note style="advanced">
+			<p>デフォルト: メディア全体の(時間の)長さ</p>
+		</note>
     </item>
     <item>
 		<title>保存フォルダー</title>
@@ -91,23 +104,6 @@
 		<note style="advanced">
 			<p>デフォルト: メディアのタイトル</p>
 		</note>
-    </item>
-    <item>
-		<title>タイムフレーム</title>
-		<p>ダウンロードメディアの開始と終わりのタイムフレームを入力することで、メディアの特定部分をダウンロードできるようになります。</p>
-        <note style="advanced">
-			<p>デフォルト: メディア全体の(時間の)長さ</p>
-		</note>
-        <note style="advanced">
-            <p>このオプションが有効な場合のダウンロードでは、設定で aria2 の使用が有効になっていても、ダウンローダーとして aria2 を使用しません。</p>
-        </note>
-    </item>
-    <item>
-		<title>スピード制限</title>
-		<p>有効であれば、Parabolic は、<link xref="downloader">設定</link> で指定された速度でダウンロードの速度を制限します。</p>
-        <note>
-            <p><code>詳細オプション</code>で選択可能です。</p>
-        </note>
     </item>
 </terms>
 </page>

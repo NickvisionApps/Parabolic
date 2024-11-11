@@ -25,56 +25,58 @@
 
 <terms>
     <item>
-        <title>Prepísať existujúce súbory</title>
-        <p>Ak je to povolené, Parabolic prepíše existujúce súbory.</p>
-        <p>Napríklad, ak súbor s názvom <code>movie.mp4</code> existuje v priečinku na stiahnutie a nový vytvorený stiahnutý súbor je pomenovaný <code>movie</code>, <code>movie.mp4</code> bude prepísaný s novým obsahom sťahovania.</p>
+        <title>Verbose Logging</title>
+        <p>If enabled, more verbose logs will be provided by <code>yt-dlp</code> for each download.</p>
         <note style="advanced">
             <p>Predvolené: Zapnuté</p>
         </note>
     </item>
-	<item>
-		<title>Maximálny počet aktívnych stiahnutí</title>
-		<p>Počet aktívnych sťahovaní, ktoré môžu byť spustené v danom čase. Musí to byť celočíselná hodnota od 1 do 10.</p>
-        <p>Ak sa dosiahne maximálny počet aktívnych sťahovaní, Parabolic zaradí nové sťahovania do poradia, kým nebude možné spustiť ďalšie sťahovania.</p>
+    <item>
+        <title>Obmedzenie rýchlosti</title>
+        <p>Obmedzenie v Ki/s, ktoré sa použije na sťahovanie iba vtedy, ak je povolená rozšírená možnosť <code>Omedzenie rýchlosti</code>. Musí to byť celočíselná hodnota medzi 512 a 10240.</p>
 		<note style="advanced">
-			<p>Predvolené: 5</p>
+			<p>Predvolené: 1024</p>
 		</note>
     </item>
     <item>
-		<title>Limitné znaky</title>
-		<p>Obmedziť znaky v názvy súborov iba tie podporované systémom Windows.</p>
-        <p>Táto možnosť je dostupná len na Linuxe.</p>
-		<note style="advanced">
-			<p>Predvolené: Vypnuté</p>
-		</note>
-    </item>
-    <item>
-		<title>Na stiahnutie Ihneď po potvrdení</title>
-		<p>Prechádza výber možností sťahovania v dialógovom okne Add Download a okamžite stiahne overené médiá pomocou predtým vybraných možností.</p>
-		<note style="advanced">
-			<p>Predvolené: Vypnuté</p>
-		</note>
-    </item>
-    <item>
-        <title>Zahrnuté automaticky generované titulky</title>
-        <p>Či majú byť zahrnuté titulky, ktoré sú automaticky preložené tak, aby zodpovedali požadovanému jazyku tituliek, alebo nie.</p>
+        <title>Použiť SponsorBlock pre YouTube</title>
+        <p>Ak je táto funkcia povolená, aplikácia Parabolic použije rozšírenie SponsorBlock na sťahovanie z YouTube.</p>
+        <note>
+            <p>SponsorBlock funguje len na videá v službe YouTube. Ponechanie tohto nastavenia však neovplyvní sťahovanie z iných stránok (t. j. nespôsobí ich zlyhanie).</p>
+        </note>
         <note style="advanced">
             <p>Predvolené: Vypnuté</p>
         </note>
     </item>
     <item>
-        <title>Uprednostňovaný video kodek</title>
-        <p>Video kódc Parabolic by mal radšej pri výbere formátov médií na stiahnutie.</p>
+        <title>URL adresa proxy servera</title>
+        <p>URL adresa proxy servera, ktorý sa má použiť.</p>
         <note style="advanced">
-            <p>Default: Akékoľvek</p>
-        </note>
+			<p>Default: Žiadne URL</p>
+		</note>
     </item>
     <item>
-        <title>Obnoviť zlyhané stiahnutia</title>
-        <p>Ak je to povolené, Parabolic bude sledovať beh a frontd downloads a reštartovať ich, ak je to potrebné, ak sa aplikácia zrúti a reštartuje.</p>
-        <note style="advanced">
-            <p>Predvolené: Zapnuté</p>
+        <title>Súbory Cookie z prehliadača</title>
+        <p>Prehliadač, z ktorého sa načítajú súbory cookie a odovzdávajú sa do nástroja na sťahovanie yt-dlp.</p>
+        <p>To môže byť užitočné pri sťahovaní médií, ktoré vyžaduje prihlásenie, napríklad: súkromné videá YouTube.</p>
+        <p>Táto možnosť je k dispozícii na non Sandboxed platformách.</p>
+		<note style="advanced">
+			<p>Predvolené: Žiadne</p>
+		</note>
+    </item>
+    <item>
+        <title>Súbor s cookie</title>
+        <p>.txt súbor cookies prejsť na yt-dlp pri sťahovaní motora.</p>
+        <p>To môže byť užitočné pri sťahovaní médií, ktoré vyžaduje prihlásenie, napríklad: súkromné videá YouTube.</p>
+        <p>Použite jeden z nasledujúcich rozšírení pre získanie súborov cookie z vášho prehliadača:</p>
+        <p>Chrome: <code>https://chrome.google.com/webstore/detail/get-cookiestxt-locally/cclelndahbckbenkjhflpdbgdlbecc</code></p>
+        <p>Firefox: <code>https://addons.mozilla.org/en-US/firefox/addon/cookies-txt/</code></p>
+        <note>
+            <p>Použite tieto rozšírenia na vlastné riziko.</p>
         </note>
+		<note style="advanced">
+			<p>Default: Žiadny súbor Vybrané</p>
+		</note>
     </item>
 </terms>
 </page>

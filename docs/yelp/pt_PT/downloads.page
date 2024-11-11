@@ -17,53 +17,69 @@
 <title>Downloads</title>
 <p>This page explains all options for configuring Downloads in Preferences in <app>Parabolic</app>.</p>
 
+
 <terms>
     <item>
-        <title>Limite de Velocidade</title>
-        <p>Um limite, em Ki/s, que é aplicado a downloads somente se tiverem a opção avançada <code>Limite de Velocidade</code> ativada. Deve ser um valor inteiro entre 512 e 10240.</p>
+        <title>Sobrescrever Ficheiros Existentes</title>
+        <p>Se ativado, o Parabolic substituirá os ficheiros existentes.</p>
+        <p>Por exemplo, se um ficheiro chamado <code>movie.mp4</code> existir na pasta de download e um novo download for criado chamado <code>movie</code> , <code>movie.mp4</code> será substituído pelo conteúdo do novo download.</p>
+        <note>
+            <p>Parabolic will detect downloads that should be resumed and avoid this setting when recovering or retrying failed downloads</p>
+        </note>
+        <note style="advanced">
+            <p>Padrão: Ativado</p>
+        </note>
+    </item>
+	<item>
+		<title>Número Máximo de Downloads Ativos</title>
+		<p>O número de downloads ativos permitidos para execução de cada vez. Deve ser um valor inteiro entre 1 e 10.</p>
+        <p>Se o número máximo de downloads ativos for atingido, o Parabolic colocará novos downloads numa fila até que mais downloads possam ser executados.</p>
 		<note style="advanced">
-			<p>Padrão: 1024</p>
+			<p>Padrão: 5</p>
 		</note>
     </item>
     <item>
-        <title>Usar SponsorBlock para o YouTube</title>
-        <p>Se ativado, o Parabolic aplicará a extensão SponsorBlock aos downloads do YouTube.</p>
-        <note>
-            <p>O SponsorBlock só funciona em vídeos do YouTube. No entanto, deixar essa configuração ativada não afetará os downloads de outros sites (ou seja, não fará com que falhem).</p>
-        </note>
+		<title>Limitar Caracteres do Nome de Ficheiro</title>
+		<p>Restringe caracteres no nome dos ficheiros para apenas os suportados pelo Windows.</p>
+        <p>Esta opção está apenas disponível em Linux.</p>
+		<note style="advanced">
+			<p>Padrão: Desligado</p>
+		</note>
+    </item>
+    <item>
+		<title>Descarregar Imediatamente Após Validação</title>
+		<p>Ignora a seleção das opções de transferência na caixa de diálogo Adicionar Transferência e transfere imediatamente multimédia validada utilizando as opções previamente selecionadas.</p>
+		<note style="advanced">
+			<p>Padrão: Desligado</p>
+		</note>
+    </item>
+    <item>
+        <title>Legendas Geradas Automaticamente Incluídas</title>
+        <p>Se devem ou não ser incluídas legendas traduzidas automaticamente para se adequarem aos idiomas de legenda solicitados.</p>
         <note style="advanced">
             <p>Padrão: Desligado</p>
         </note>
     </item>
     <item>
-        <title>URL do Proxy</title>
-        <p>A URL do servidor proxy a ser usado.</p>
+        <title>Preferred Video Codec</title>
+        <p>The video codec Parabolic should prefer when selecting media formats to download.</p>
         <note style="advanced">
-			<p>Default: No URL</p>
-		</note>
-    </item>
-    <item>
-        <title>Cookies do Navegador</title>
-        <p>Um navegador para ler cookies e passá-los para o mecanismo de download do yt-dlp.</p>
-        <p>Isto pode ser útil quando se descarrega multimédia que requer um início de sessão, por exemplo: vídeos privados do YouTube.</p>
-        <p>Esta opção está apenas disponível em plataformas sem sandbox.</p>
-		<note style="advanced">
-			<p>Padrão: Nenhum</p>
-		</note>
-    </item>
-    <item>
-        <title>Ficheiro de cookies</title>
-        <p>A .txt file of cookies to pass to yt-dlp when download engine.</p>
-        <p>Isto pode ser útil quando se descarrega multimédia que requer um início de sessão, por exemplo: vídeos privados do YouTube.</p>
-        <p>Use uma das seguintes extensões para obter um ficheiros de cookies do seu navegador:</p>
-        <p>Chrome: <code>https://chrome.google.com/webstore/detail/get-cookiestxt-locally/cclelndahbckbenkjhflpdbgdldlbecc</code></p>
-        <p>Firefox: <code>https://addons.mozilla.org/pt-PT/firefox/addon/cookies-txt/</code></p>
-        <note>
-            <p>Use estas extensões por sua própria conta e risco.</p>
+            <p>Default: Any</p>
         </note>
-		<note style="advanced">
-			<p>Default: No File Selected</p>
-		</note>
+    </item>
+    <item>
+        <title>Preferred Subtitle Format</title>
+        <p>The file format Parabolic should ensure all downloaded subtitles are downloaded as.</p>
+        <note style="advanced">
+            <p>Default: Any</p>
+        </note>
+    </item>
+    <item>
+        <title>Recuperar Transferências com Problemas</title>
+        <p>Se ativado, o Parabolic irá monitorizar as transferências em curso e em fila de espera e reiniciá-las se necessário, se a aplicação falhar e for reiniciada.</p>
+        <note style="advanced">
+            <p>Padrão: Ativado</p>
+        </note>
     </item>
 </terms>
 </page>

@@ -37,15 +37,17 @@
     <item>
 		<title>फाइल प्रकार</title>
 		<p>वह फाइल प्रकार जिसके रूप में मीडिया को डाउनलोड करना है।</p>
-            <p>यदि <code>रूपांतरण अस्वीकार करें</code> सक्षम है, तो एकमात्र विकल्प <code>वीडियो</code> (यदि समर्थित हो) और <code>ऑडियो</code> होंगे</p>
         <note>
             <p>पहले उपयोग की गई फाइल प्रकार को याद रखा जाएगा और अगले डाउनलोड के लिए पूर्व-चयनित किया जाएगा।</p>
+        </note>
+        <note style="advanced">
+            <p>Selecting the <code>Video (Generic)</code> or <code>Audio (Generic)</code> file types will cause Parabolic to download the media in the original file type of the media without performing any conversions.</p>
         </note>
     </item>
     <item>
 		<title>गुणवत्ता</title>
 		<p>यदि फाइल प्रकार एक वीडियो प्रकार है, तो सूचीबद्ध गुण उपलब्ध मीडिया के रिज़ॉल्यूशन होंगे।</p>
-        <p>If the file type is an audio type, the listed qualities will be simply <code>Best</code>, <code>Good</code>, and <code>Worst</code>.</p>
+        <p>If the file type is an audio type, the listed qualities will be the audio bitrates of the media available.</p>
         <note>
             <p>पहले उपयोग की गई गुणवत्ता को याद रखा जाएगा और अगले डाउनलोड के लिए पूर्व-चयनित किया जाएगा।</p>
         </note>
@@ -59,10 +61,10 @@
         </note>
     </item>
     <item>
-		<title>उपशीर्षक डाउनलोड करें</title>
-		<p>Whether to download and embed subtitle when downloading a video. Further subtitle settings can be configured in <link xref="downloader">preferences</link>.</p>
+		<title>Subtitles</title>
+		<p>The list of subtitles available by the media that can be selected for download by the user. Further subtitle settings can be configured in <link xref="downloads">preferences</link>.</p>
         <note>
-            <p>पहले उपयोग की गई स्थिति को याद रखा जाएगा और अगले डाउनलोड के लिए पूर्व-चयनित किया जाएगा।</p>
+            <p>The previously selected subtitles will be remembered and pre-selected for the next download.</p>
         </note>
     </item>
     <item>
@@ -71,6 +73,17 @@
         <note>
             <p>पहले उपयोग की गई स्थिति को याद रखा जाएगा और अगले डाउनलोड के लिए पूर्व-चयनित किया जाएगा।</p>
         </note>
+    </item>
+    <item>
+		<title>गति सीमा</title>
+		<p>If enabled, Parabolic will limit the download's speed with the speed configured in <link xref="downloader">Preferences</link>.</p>
+    </item>
+    <item>
+		<title>Time Frame</title>
+		<p>The user can enter a start time frame and an end time frame to download a specific section of the media.</p>
+        <note style="advanced">
+			<p>Default: The whole media length</p>
+		</note>
     </item>
     <item>
 		<title>फोल्डर सहेजें</title>
@@ -85,23 +98,6 @@
 		<note style="advanced">
 			<p>डिफ़ॉल्ट: मीडिया का शीर्षक</p>
 		</note>
-    </item>
-    <item>
-		<title>Time Frame</title>
-		<p>The user can enter a start time frame and an end time frame to download a specific section of the media.</p>
-        <note style="advanced">
-			<p>Default: The whole media length</p>
-		</note>
-        <note style="advanced">
-            <p>Enabling this option will disable the use of aria2 as the downloader for this download, even if it is enabled in Preferences.</p>
-        </note>
-    </item>
-    <item>
-		<title>गति सीमा</title>
-		<p>If enabled, Parabolic will limit the download's speed with the speed configured in <link xref="downloader">Preferences</link>.</p>
-        <note>
-            <p><code>उन्नत विकल्प</code> अनुभाग में उपलब्ध है।</p>
-        </note>
     </item>
 </terms>
 </page>

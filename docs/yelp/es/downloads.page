@@ -23,53 +23,69 @@
 <title>Descargas</title>
 <p>Esta página explica todas las opciones para configurar descargas en Preferencias en <app>Parabolic</app>.</p>
 
+
 <terms>
     <item>
-        <title>Límite de velocidad</title>
-        <p>Un límite, en Ki/s, que se aplica a las descargas sólo si tienen activada la opción avanzada <code>Límite de velocidad</code>. Debe ser un valor entero entre 512 y 10240.</p>
+        <title>Sobreescribir archivos existentes</title>
+        <p>Si se activa, Parabolic sobrescribirá los archivos existentes.</p>
+        <p>Por ejemplo, si un archivo llamado <code>pelicula.mp4</code> existe en la carpeta de descargas, y se crea una descarga nueva llamada <code>pelicula</code>, <code>pelicula.mp4</code> se sobrescribirá con el contenido de la descarga nueva.</p>
+        <note>
+            <p>Parabolic will detect downloads that should be resumed and avoid this setting when recovering or retrying failed downloads</p>
+        </note>
+        <note style="advanced">
+            <p>Predeterminado: Encendido</p>
+        </note>
+    </item>
+	<item>
+		<title>Máximo número de descargas activas</title>
+		<p>El número de descargas activas que se pueden ejecutar a la vez. Debe ser un valor entero entre 1 y 10.</p>
+        <p>Si se alcanza el número máximo de descargas activas, Parabolic colocará las descargas nuevas en una cola hasta que se puedan ejecutar más descargas.</p>
 		<note style="advanced">
-			<p>Predeterminado: 1024</p>
+			<p>Predeterminado: 5</p>
 		</note>
     </item>
     <item>
-        <title>Usar SponsorBlock para YouTube</title>
-        <p>Si se activa, Parabolic aplicará la extensión SponsorBlock a las descargas de YouTube.</p>
-        <note>
-            <p>SponsorBlock solo funciona en vídeos de YouTube. Sin embargo, dejar esta opción activada no afectará a las descargas de otros sitios (es decir, no hará que fallen).</p>
-        </note>
+		<title>Limitar los caracteres del nombre del archivo</title>
+		<p>Restringe los caracteres de los nombres de los archivos al soportado por Windows.</p>
+        <p>Esta opción solo está disponible en Linux.</p>
+		<note style="advanced">
+			<p>Predeterminado: Apagado</p>
+		</note>
+    </item>
+    <item>
+		<title>Descargar inmediatamente después de la validación</title>
+		<p>Evita la selección de opciones de descarga en el cuadro de diálogo Agregar descarga e inmediatamente descarga un medio validado utilizando las opciones previamente seleccionadas.</p>
+		<note style="advanced">
+			<p>Predeterminado: Apagado</p>
+		</note>
+    </item>
+    <item>
+        <title>Subtítulos generados automáticamente</title>
+        <p>Incluir o no subtítulos que se traducen automáticamente para ajustarse a los idiomas de los subtítulos solicitados.</p>
         <note style="advanced">
             <p>Predeterminado: Apagado</p>
         </note>
     </item>
     <item>
-        <title>URL del proxy</title>
-        <p>La url del servidor proxy para usar.</p>
+        <title>Códec de vídeo preferido</title>
+        <p>El códec de vídeo que Parabolic debe usar al seleccionar los formatos multimedia para descargar.</p>
         <note style="advanced">
-			<p>Por defecto: Sin URL</p>
-		</note>
-    </item>
-    <item>
-        <title>Cookies del navegador</title>
-        <p>Un navegador en el que leer las cookies y pasarlas al motor de descargas de yt-dlp.</p>
-        <p>Esto puede ser útil cuando se descargan archivos que requieren un inicio de sesión, por ejemplo: vídeos privados de YouTube.</p>
-        <p>Esta opción solo está disponible en plataformas sin sandbox.</p>
-		<note style="advanced">
-			<p>Predeterminado: Ninguna</p>
-		</note>
-    </item>
-    <item>
-        <title>Archivo de cookies</title>
-        <p>Un archivo .txt con cookies que se enviará a yt-dlp a través del motor de descarga.</p>
-        <p>Esto puede ser útil cuando se descargan archivos que requieren un inicio de sesión, por ejemplo: vídeos privados de YouTube.</p>
-        <p>Use una de las siguientes extensiones para obtener un archivo de cookies de su navegador:</p>
-        <p>Chrome: <code>https://chrome.google.com/webstore/detail/get-cookiestxt-locally/cclelndahbckbenkjhflpdbgdldlbecc</code></p>
-        <p>Firefox: <code>https://addons.mozilla.org/es/firefox/addon/cookies-txt/</code></p>
-        <note>
-            <p>Use estas extensiones bajo su propia responsabilidad.</p>
+            <p>Por defecto: Cualquiera</p>
         </note>
-		<note style="advanced">
-			<p>Predeterminado: Ningún archivo seleccionado</p>
-		</note>
+    </item>
+    <item>
+        <title>Preferred Subtitle Format</title>
+        <p>The file format Parabolic should ensure all downloaded subtitles are downloaded as.</p>
+        <note style="advanced">
+            <p>Por defecto: Cualquiera</p>
+        </note>
+    </item>
+    <item>
+        <title>Recuperar descargas fallidas</title>
+        <p>Si está habilitado, Parabolic rastreará las descargas en ejecución y en cola y las reiniciará si es necesario, si la aplicación se bloquea y se reinicia.</p>
+        <note style="advanced">
+            <p>Predeterminado: Encendido</p>
+        </note>
     </item>
 </terms>
 </page>

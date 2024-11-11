@@ -20,10 +20,9 @@ document.addEventListener('DOMContentLoaded', function() {
 <div class="contents pagewide">
 <p class="p">Esta página explica todas as opções para configurar o Descarregador nas Preferências do <span class="app"> Parabolic</span> .</p>
 <div class="terms"><div class="inner"><div class="region"><dl class="terms">
-<dt class="terms">Sobrescrever Ficheiros Existentes</dt>
+<dt class="terms">Verbose Logging</dt>
 <dd class="terms">
-<p class="p">Se ativado, o Parabolic substituirá os ficheiros existentes.</p>
-<p class="p">Por exemplo, se um ficheiro chamado <span class="code">movie.mp4</span> existir na pasta de download e um novo download for criado chamado <span class="code">movie</span> , <span class="code">movie.mp4</span> será substituído pelo conteúdo do novo download.</p>
+<p class="p">If enabled, more verbose logs will be provided by <span class="code">yt-dlp</span> for each download.</p>
 <div class="note note-advanced" title="Avançado">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -41,10 +40,9 @@ document.addEventListener('DOMContentLoaded', function() {
 </svg><div class="inner"><div class="region"><div class="contents"><p class="p">Padrão: Ativado</p></div></div></div>
 </div>
 </dd>
-<dt class="terms">Número Máximo de Downloads Ativos</dt>
+<dt class="terms">Limite de Velocidade</dt>
 <dd class="terms">
-<p class="p">O número de downloads ativos permitidos para execução de cada vez. Deve ser um valor inteiro entre 1 e 10.</p>
-<p class="p">Se o número máximo de downloads ativos for atingido, o Parabolic colocará novos downloads numa fila até que mais downloads possam ser executados.</p>
+<p class="p">Um limite, em Ki/s, que é aplicado a downloads somente se tiverem a opção avançada <span class="code">Limite de Velocidade</span> ativada. Deve ser um valor inteiro entre 512 e 10240.</p>
 <div class="note note-advanced" title="Avançado">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -59,13 +57,20 @@ document.addEventListener('DOMContentLoaded', function() {
   <path class="yelp-svg-fill" d="m8.2435 7.0719-1.9004-3.3145 1.4143-1.4143 3.1596 1.7457z"></path>
   <path class="yelp-svg-fill" d="m11.072 11.757-3.3146 1.9-1.4143-1.414 1.7457-3.1602z"></path>
  </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Padrão: 5</p></div></div></div>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Padrão: 1024</p></div></div></div>
 </div>
 </dd>
-<dt class="terms">Limitar Caracteres do Nome de Ficheiro</dt>
+<dt class="terms">Usar SponsorBlock para o YouTube</dt>
 <dd class="terms">
-<p class="p">Restringe caracteres no nome dos ficheiros para apenas os suportados pelo Windows.</p>
-<p class="p">Esta opção está apenas disponível em Linux.</p>
+<p class="p">Se ativado, o Parabolic aplicará a extensão SponsorBlock aos downloads do YouTube.</p>
+<div class="note" title="Nota">
+<svg height="24" width="24" version="1.1">
+ <g>
+  <path class="yelp-svg-fill" d="m4 3h16c0.554 0 1 0.446 1 1v11h-6v6h-11c-0.554 0-1-0.446-1-1v-16c0-0.554 0.446-1 1-1z"></path>
+  <path class="yelp-svg-fill" d="m17 16h4l-5 5v-4c0-0.554 0.446-1 1-1z"></path>
+ </g>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">O SponsorBlock só funciona em vídeos do YouTube. No entanto, deixar essa configuração ativada não afetará os downloads de outros sites (ou seja, não fará com que falhem).</p></div></div></div>
+</div>
 <div class="note note-advanced" title="Avançado">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -83,9 +88,9 @@ document.addEventListener('DOMContentLoaded', function() {
 </svg><div class="inner"><div class="region"><div class="contents"><p class="p">Padrão: Desligado</p></div></div></div>
 </div>
 </dd>
-<dt class="terms">Descarregar Imediatamente Após Validação</dt>
+<dt class="terms">URL do Proxy</dt>
 <dd class="terms">
-<p class="p">Ignora a seleção das opções de transferência na caixa de diálogo Adicionar Transferência e transfere imediatamente multimédia validada utilizando as opções previamente selecionadas.</p>
+<p class="p">A URL do servidor proxy a ser usado.</p>
 <div class="note note-advanced" title="Avançado">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -100,12 +105,14 @@ document.addEventListener('DOMContentLoaded', function() {
   <path class="yelp-svg-fill" d="m8.2435 7.0719-1.9004-3.3145 1.4143-1.4143 3.1596 1.7457z"></path>
   <path class="yelp-svg-fill" d="m11.072 11.757-3.3146 1.9-1.4143-1.414 1.7457-3.1602z"></path>
  </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Padrão: Desligado</p></div></div></div>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Default: No URL</p></div></div></div>
 </div>
 </dd>
-<dt class="terms">Legendas Geradas Automaticamente Incluídas</dt>
+<dt class="terms">Cookies do Navegador</dt>
 <dd class="terms">
-<p class="p">Se devem ou não ser incluídas legendas traduzidas automaticamente para se adequarem aos idiomas de legenda solicitados.</p>
+<p class="p">Um navegador para ler cookies e passá-los para o mecanismo de download do yt-dlp.</p>
+<p class="p">Isto pode ser útil quando se descarrega multimédia que requer um início de sessão, por exemplo: vídeos privados do YouTube.</p>
+<p class="p">Esta opção está apenas disponível em plataformas sem sandbox.</p>
 <div class="note note-advanced" title="Avançado">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -120,32 +127,24 @@ document.addEventListener('DOMContentLoaded', function() {
   <path class="yelp-svg-fill" d="m8.2435 7.0719-1.9004-3.3145 1.4143-1.4143 3.1596 1.7457z"></path>
   <path class="yelp-svg-fill" d="m11.072 11.757-3.3146 1.9-1.4143-1.414 1.7457-3.1602z"></path>
  </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Padrão: Desligado</p></div></div></div>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Padrão: Nenhum</p></div></div></div>
 </div>
 </dd>
-<dt class="terms">Preferred Video Codec</dt>
+<dt class="terms">Ficheiro de cookies</dt>
 <dd class="terms">
-<p class="p">The video codec Parabolic should prefer when selecting media formats to download.</p>
-<div class="note note-advanced" title="Avançado">
+<p class="p">A .txt file of cookies to pass to yt-dlp when download engine.</p>
+<p class="p">Isto pode ser útil quando se descarrega multimédia que requer um início de sessão, por exemplo: vídeos privados do YouTube.</p>
+<p class="p">Use uma das seguintes extensões para obter um ficheiros de cookies do seu navegador:</p>
+<p class="p">Chrome: <span class="code">https://chrome.google.com/webstore/detail/get-cookiestxt-locally/cclelndahbckbenkjhflpdbgdldlbecc</span></p>
+<p class="p">Firefox: <span class="code">https://addons.mozilla.org/pt-PT/firefox/addon/cookies-txt/</span></p>
+<div class="note" title="Nota">
 <svg height="24" width="24" version="1.1">
  <g>
-  <path class="yelp-svg-fill" d="m5.4473 12.572c-2.039 0.957-3.4473 3.019-3.4473 5.428v4h20v-4c0-2.406-1.406-4.466-3.441-5.424a8 8 0 0 1 -6.559 3.424 8 8 0 0 1 -6.5527 -3.428z"></path>
-  <path class="yelp-svg-fill" d="m12 3a5 5 0 0 0 -5 5 5 5 0 0 0 5 5 5 5 0 0 0 5 -5 5 5 0 0 0 -5 -5zm0 3a2 2 0 0 1 2 2 2 2 0 0 1 -2 2 2 2 0 0 1 -2 -2 2 2 0 0 1 2 -2z"></path>
-  <path class="yelp-svg-fill" d="m15.312 6 3.688 1v2l-3.4688 1z"></path>
-  <path class="yelp-svg-fill" d="m14 11.312-1 3.688h-2l-1-3.469z"></path>
-  <path class="yelp-svg-fill" d="m10 4.6875 1-3.6875h2l1 3.4688z"></path>
-  <path class="yelp-svg-fill" d="m8.6875 10-3.6875-1v-2l3.4688-1z"></path>
-  <path class="yelp-svg-fill" d="m12.928 4.2435 3.3146-1.9003 1.4142 1.4142-1.7457 3.1599z"></path>
-  <path class="yelp-svg-fill" d="m15.757 8.9281 1.9003 3.3146-1.4142 1.4142-3.1599-1.7457z"></path>
-  <path class="yelp-svg-fill" d="m8.2435 7.0719-1.9004-3.3145 1.4143-1.4143 3.1596 1.7457z"></path>
-  <path class="yelp-svg-fill" d="m11.072 11.757-3.3146 1.9-1.4143-1.414 1.7457-3.1602z"></path>
+  <path class="yelp-svg-fill" d="m4 3h16c0.554 0 1 0.446 1 1v11h-6v6h-11c-0.554 0-1-0.446-1-1v-16c0-0.554 0.446-1 1-1z"></path>
+  <path class="yelp-svg-fill" d="m17 16h4l-5 5v-4c0-0.554 0.446-1 1-1z"></path>
  </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Default: Any</p></div></div></div>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Use estas extensões por sua própria conta e risco.</p></div></div></div>
 </div>
-</dd>
-<dt class="terms">Recuperar Transferências com Problemas</dt>
-<dd class="terms">
-<p class="p">Se ativado, o Parabolic irá monitorizar as transferências em curso e em fila de espera e reiniciá-las se necessário, se a aplicação falhar e for reiniciada.</p>
 <div class="note note-advanced" title="Avançado">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -160,7 +159,7 @@ document.addEventListener('DOMContentLoaded', function() {
   <path class="yelp-svg-fill" d="m8.2435 7.0719-1.9004-3.3145 1.4143-1.4143 3.1596 1.7457z"></path>
   <path class="yelp-svg-fill" d="m11.072 11.757-3.3146 1.9-1.4143-1.414 1.7457-3.1602z"></path>
  </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Padrão: Ativado</p></div></div></div>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Default: No File Selected</p></div></div></div>
 </div>
 </dd>
 </dl></div></div></div>

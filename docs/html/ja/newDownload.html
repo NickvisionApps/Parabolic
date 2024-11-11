@@ -59,7 +59,6 @@ document.addEventListener('DOMContentLoaded', function() {
 <dt class="terms">ファイルの種類</dt>
 <dd class="terms">
 <p class="p">ダウンロードするメディアのファイルのタイプ。</p>
-<p class="p"><span class="code">フォーマット変換を無効化</span>が有効であれば、（サポートされていれば）<span class="code">動画</span>もしくは<span class="code">音声</span>の二択になります</p>
 <div class="note" title="注記">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -68,11 +67,27 @@ document.addEventListener('DOMContentLoaded', function() {
  </g>
 </svg><div class="inner"><div class="region"><div class="contents"><p class="p">最後に使用したファイルの種類は、次回のダウンロードのために記憶・事前選択されます。</p></div></div></div>
 </div>
+<div class="note note-advanced" title="高度">
+<svg height="24" width="24" version="1.1">
+ <g>
+  <path class="yelp-svg-fill" d="m5.4473 12.572c-2.039 0.957-3.4473 3.019-3.4473 5.428v4h20v-4c0-2.406-1.406-4.466-3.441-5.424a8 8 0 0 1 -6.559 3.424 8 8 0 0 1 -6.5527 -3.428z"></path>
+  <path class="yelp-svg-fill" d="m12 3a5 5 0 0 0 -5 5 5 5 0 0 0 5 5 5 5 0 0 0 5 -5 5 5 0 0 0 -5 -5zm0 3a2 2 0 0 1 2 2 2 2 0 0 1 -2 2 2 2 0 0 1 -2 -2 2 2 0 0 1 2 -2z"></path>
+  <path class="yelp-svg-fill" d="m15.312 6 3.688 1v2l-3.4688 1z"></path>
+  <path class="yelp-svg-fill" d="m14 11.312-1 3.688h-2l-1-3.469z"></path>
+  <path class="yelp-svg-fill" d="m10 4.6875 1-3.6875h2l1 3.4688z"></path>
+  <path class="yelp-svg-fill" d="m8.6875 10-3.6875-1v-2l3.4688-1z"></path>
+  <path class="yelp-svg-fill" d="m12.928 4.2435 3.3146-1.9003 1.4142 1.4142-1.7457 3.1599z"></path>
+  <path class="yelp-svg-fill" d="m15.757 8.9281 1.9003 3.3146-1.4142 1.4142-3.1599-1.7457z"></path>
+  <path class="yelp-svg-fill" d="m8.2435 7.0719-1.9004-3.3145 1.4143-1.4143 3.1596 1.7457z"></path>
+  <path class="yelp-svg-fill" d="m11.072 11.757-3.3146 1.9-1.4143-1.414 1.7457-3.1602z"></path>
+ </g>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Selecting the <span class="code">Video (Generic)</span> or <span class="code">Audio (Generic)</span> file types will cause Parabolic to download the media in the original file type of the media without performing any conversions.</p></div></div></div>
+</div>
 </dd>
 <dt class="terms">品質</dt>
 <dd class="terms">
 <p class="p">ファイルの種類が動画の場合、表示される品質はメディアが利用できる解像度です。</p>
-<p class="p">ファイルの種類が音声の場合、表示される品質は単純に <span class="code">Best</span> (最高)、<span class="code">Good</span> (普通)、<span class="code">Worst</span> (最低)になります。</p>
+<p class="p">If the file type is an audio type, the listed qualities will be the audio bitrates of the media available.</p>
 <div class="note" title="注記">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -95,16 +110,16 @@ document.addEventListener('DOMContentLoaded', function() {
 </svg><div class="inner"><div class="region"><div class="contents"><p class="p">最後に使用した状態は、今後のダウンロードのために記憶・事前選択されます。</p></div></div></div>
 </div>
 </dd>
-<dt class="terms">字幕をダウンロードする</dt>
+<dt class="terms">Subtitles</dt>
 <dd class="terms">
-<p class="p">動画のダウンロード時に字幕をダウンロードしてメディアに埋め込むかどうか。字幕の細かな設定は <span class="link"><a href="downloader.html" title="ダウンローダー">設定</a></span> にて変更できます。</p>
+<p class="p">The list of subtitles available by the media that can be selected for download by the user. Further subtitle settings can be configured in <span class="link"><a href="downloads.html" title="Downloads">preferences</a></span>.</p>
 <div class="note" title="注記">
 <svg height="24" width="24" version="1.1">
  <g>
   <path class="yelp-svg-fill" d="m4 3h16c0.554 0 1 0.446 1 1v11h-6v6h-11c-0.554 0-1-0.446-1-1v-16c0-0.554 0.446-1 1-1z"></path>
   <path class="yelp-svg-fill" d="m17 16h4l-5 5v-4c0-0.554 0.446-1 1-1z"></path>
  </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">最後に使用した状態は、今後のダウンロードのために記憶・事前選択されます。</p></div></div></div>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">The previously selected subtitles will be remembered and pre-selected for the next download.</p></div></div></div>
 </div>
 </dd>
 <dt class="terms">チャプター（章）で分ける</dt>
@@ -117,6 +132,28 @@ document.addEventListener('DOMContentLoaded', function() {
   <path class="yelp-svg-fill" d="m17 16h4l-5 5v-4c0-0.554 0.446-1 1-1z"></path>
  </g>
 </svg><div class="inner"><div class="region"><div class="contents"><p class="p">最後に使用した状態は、今後のダウンロードのために記憶・事前選択されます。</p></div></div></div>
+</div>
+</dd>
+<dt class="terms">スピード制限</dt>
+<dd class="terms"><p class="p">有効であれば、Parabolic は、<span class="link"><a href="downloader.html" title="ダウンローダー">設定</a></span> で指定された速度でダウンロードの速度を制限します。</p></dd>
+<dt class="terms">タイムフレーム</dt>
+<dd class="terms">
+<p class="p">ダウンロードメディアの開始と終わりのタイムフレームを入力することで、メディアの特定部分をダウンロードできるようになります。</p>
+<div class="note note-advanced" title="高度">
+<svg height="24" width="24" version="1.1">
+ <g>
+  <path class="yelp-svg-fill" d="m5.4473 12.572c-2.039 0.957-3.4473 3.019-3.4473 5.428v4h20v-4c0-2.406-1.406-4.466-3.441-5.424a8 8 0 0 1 -6.559 3.424 8 8 0 0 1 -6.5527 -3.428z"></path>
+  <path class="yelp-svg-fill" d="m12 3a5 5 0 0 0 -5 5 5 5 0 0 0 5 5 5 5 0 0 0 5 -5 5 5 0 0 0 -5 -5zm0 3a2 2 0 0 1 2 2 2 2 0 0 1 -2 2 2 2 0 0 1 -2 -2 2 2 0 0 1 2 -2z"></path>
+  <path class="yelp-svg-fill" d="m15.312 6 3.688 1v2l-3.4688 1z"></path>
+  <path class="yelp-svg-fill" d="m14 11.312-1 3.688h-2l-1-3.469z"></path>
+  <path class="yelp-svg-fill" d="m10 4.6875 1-3.6875h2l1 3.4688z"></path>
+  <path class="yelp-svg-fill" d="m8.6875 10-3.6875-1v-2l3.4688-1z"></path>
+  <path class="yelp-svg-fill" d="m12.928 4.2435 3.3146-1.9003 1.4142 1.4142-1.7457 3.1599z"></path>
+  <path class="yelp-svg-fill" d="m15.757 8.9281 1.9003 3.3146-1.4142 1.4142-3.1599-1.7457z"></path>
+  <path class="yelp-svg-fill" d="m8.2435 7.0719-1.9004-3.3145 1.4143-1.4143 3.1596 1.7457z"></path>
+  <path class="yelp-svg-fill" d="m11.072 11.757-3.3146 1.9-1.4143-1.414 1.7457-3.1602z"></path>
+ </g>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">デフォルト: メディア全体の(時間の)長さ</p></div></div></div>
 </div>
 </dd>
 <dt class="terms">保存フォルダー</dt>
@@ -149,54 +186,6 @@ document.addEventListener('DOMContentLoaded', function() {
   <path class="yelp-svg-fill" d="m11.072 11.757-3.3146 1.9-1.4143-1.414 1.7457-3.1602z"></path>
  </g>
 </svg><div class="inner"><div class="region"><div class="contents"><p class="p">デフォルト: メディアのタイトル</p></div></div></div>
-</div>
-</dd>
-<dt class="terms">タイムフレーム</dt>
-<dd class="terms">
-<p class="p">ダウンロードメディアの開始と終わりのタイムフレームを入力することで、メディアの特定部分をダウンロードできるようになります。</p>
-<div class="note note-advanced" title="高度">
-<svg height="24" width="24" version="1.1">
- <g>
-  <path class="yelp-svg-fill" d="m5.4473 12.572c-2.039 0.957-3.4473 3.019-3.4473 5.428v4h20v-4c0-2.406-1.406-4.466-3.441-5.424a8 8 0 0 1 -6.559 3.424 8 8 0 0 1 -6.5527 -3.428z"></path>
-  <path class="yelp-svg-fill" d="m12 3a5 5 0 0 0 -5 5 5 5 0 0 0 5 5 5 5 0 0 0 5 -5 5 5 0 0 0 -5 -5zm0 3a2 2 0 0 1 2 2 2 2 0 0 1 -2 2 2 2 0 0 1 -2 -2 2 2 0 0 1 2 -2z"></path>
-  <path class="yelp-svg-fill" d="m15.312 6 3.688 1v2l-3.4688 1z"></path>
-  <path class="yelp-svg-fill" d="m14 11.312-1 3.688h-2l-1-3.469z"></path>
-  <path class="yelp-svg-fill" d="m10 4.6875 1-3.6875h2l1 3.4688z"></path>
-  <path class="yelp-svg-fill" d="m8.6875 10-3.6875-1v-2l3.4688-1z"></path>
-  <path class="yelp-svg-fill" d="m12.928 4.2435 3.3146-1.9003 1.4142 1.4142-1.7457 3.1599z"></path>
-  <path class="yelp-svg-fill" d="m15.757 8.9281 1.9003 3.3146-1.4142 1.4142-3.1599-1.7457z"></path>
-  <path class="yelp-svg-fill" d="m8.2435 7.0719-1.9004-3.3145 1.4143-1.4143 3.1596 1.7457z"></path>
-  <path class="yelp-svg-fill" d="m11.072 11.757-3.3146 1.9-1.4143-1.414 1.7457-3.1602z"></path>
- </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">デフォルト: メディア全体の(時間の)長さ</p></div></div></div>
-</div>
-<div class="note note-advanced" title="高度">
-<svg height="24" width="24" version="1.1">
- <g>
-  <path class="yelp-svg-fill" d="m5.4473 12.572c-2.039 0.957-3.4473 3.019-3.4473 5.428v4h20v-4c0-2.406-1.406-4.466-3.441-5.424a8 8 0 0 1 -6.559 3.424 8 8 0 0 1 -6.5527 -3.428z"></path>
-  <path class="yelp-svg-fill" d="m12 3a5 5 0 0 0 -5 5 5 5 0 0 0 5 5 5 5 0 0 0 5 -5 5 5 0 0 0 -5 -5zm0 3a2 2 0 0 1 2 2 2 2 0 0 1 -2 2 2 2 0 0 1 -2 -2 2 2 0 0 1 2 -2z"></path>
-  <path class="yelp-svg-fill" d="m15.312 6 3.688 1v2l-3.4688 1z"></path>
-  <path class="yelp-svg-fill" d="m14 11.312-1 3.688h-2l-1-3.469z"></path>
-  <path class="yelp-svg-fill" d="m10 4.6875 1-3.6875h2l1 3.4688z"></path>
-  <path class="yelp-svg-fill" d="m8.6875 10-3.6875-1v-2l3.4688-1z"></path>
-  <path class="yelp-svg-fill" d="m12.928 4.2435 3.3146-1.9003 1.4142 1.4142-1.7457 3.1599z"></path>
-  <path class="yelp-svg-fill" d="m15.757 8.9281 1.9003 3.3146-1.4142 1.4142-3.1599-1.7457z"></path>
-  <path class="yelp-svg-fill" d="m8.2435 7.0719-1.9004-3.3145 1.4143-1.4143 3.1596 1.7457z"></path>
-  <path class="yelp-svg-fill" d="m11.072 11.757-3.3146 1.9-1.4143-1.414 1.7457-3.1602z"></path>
- </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">このオプションが有効な場合のダウンロードでは、設定で aria2 の使用が有効になっていても、ダウンローダーとして aria2 を使用しません。</p></div></div></div>
-</div>
-</dd>
-<dt class="terms">スピード制限</dt>
-<dd class="terms">
-<p class="p">有効であれば、Parabolic は、<span class="link"><a href="downloader.html" title="ダウンローダー">設定</a></span> で指定された速度でダウンロードの速度を制限します。</p>
-<div class="note" title="注記">
-<svg height="24" width="24" version="1.1">
- <g>
-  <path class="yelp-svg-fill" d="m4 3h16c0.554 0 1 0.446 1 1v11h-6v6h-11c-0.554 0-1-0.446-1-1v-16c0-0.554 0.446-1 1-1z"></path>
-  <path class="yelp-svg-fill" d="m17 16h4l-5 5v-4c0-0.554 0.446-1 1-1z"></path>
- </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p"><span class="code">詳細オプション</span>で選択可能です。</p></div></div></div>
 </div>
 </dd>
 </dl></div></div></div>

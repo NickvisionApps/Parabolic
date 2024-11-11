@@ -37,15 +37,17 @@
     <item>
 		<title>Filtyp</title>
 		<p>Den filtyp som mediet ska laddas ner som.</p>
-            <p>Om <code>Tillåt inte konverteringar</code> är aktiverat, är de enda alternativen <code>Video</code> (om stöds) och <code>Ljud</code></p>
         <note>
             <p>Den tidigare använda filtypen kommer att kommas ihåg och blir förvald för nästa nedladdning.</p>
+        </note>
+        <note style="advanced">
+            <p>Selecting the <code>Video (Generic)</code> or <code>Audio (Generic)</code> file types will cause Parabolic to download the media in the original file type of the media without performing any conversions.</p>
         </note>
     </item>
     <item>
 		<title>Kvalitet</title>
 		<p>Om filtypen är en videotyp kommer de listade kvaliteterna att vara upplösningarna för det tillgängliga mediet.</p>
-        <p>Om filtypen är en ljudtyp kommer de listade egenskaperna helt enkelt vara <code>Bäst</code>, <code>Bra</code> och <code>Sämst</code>.</p>
+        <p>If the file type is an audio type, the listed qualities will be the audio bitrates of the media available.</p>
         <note>
             <p>Den tidigare använda kvaliteten kommer att kommas ihåg och blir förvald för nästa nedladdning.</p>
         </note>
@@ -59,10 +61,10 @@
         </note>
     </item>
     <item>
-		<title>Ladda ner undertext</title>
-		<p>Om du ska ladda ner och bädda in undertexter när du laddar ner en video. Ytterligare undertextinställningar kan konfigureras i <link xref="Nerladdning">inställningarna</link>.</p>
+		<title>Subtitles</title>
+		<p>The list of subtitles available by the media that can be selected for download by the user. Further subtitle settings can be configured in <link xref="downloads">preferences</link>.</p>
         <note>
-            <p>Det tidigare använda tillståndet kommer att kommas ihåg och blir förvalt för nästa nedladdning.</p>
+            <p>The previously selected subtitles will be remembered and pre-selected for the next download.</p>
         </note>
     </item>
     <item>
@@ -71,6 +73,17 @@
         <note>
             <p>Det tidigare använda tillståndet kommer att kommas ihåg och blir förvalt för nästa nedladdning.</p>
         </note>
+    </item>
+    <item>
+		<title>Hastighetsgräns</title>
+		<p>Om aktiverat, kommer Parabolic att begränsa nedladdningshastigheten med hastigheten konfigurerad i <link xref="Nedladdare">Inställningar</link>.</p>
+    </item>
+    <item>
+		<title>Tidsram</title>
+		<p>Användaren kan ange en starttid och en sluttid för att ladda ner en specifik del av media.</p>
+        <note style="advanced">
+			<p>Standard: Hela medialängden</p>
+		</note>
     </item>
     <item>
 		<title>Lagringsmapp</title>
@@ -85,23 +98,6 @@
 		<note style="advanced">
 			<p>Standard: Mediets titel</p>
 		</note>
-    </item>
-    <item>
-		<title>Tidsram</title>
-		<p>Användaren kan ange en starttid och en sluttid för att ladda ner en specifik del av media.</p>
-        <note style="advanced">
-			<p>Standard: Hela medialängden</p>
-		</note>
-        <note style="advanced">
-            <p>Om du aktiverar det här alternativet, inaktiveras användningen av aria2 som nedladdningsverktyg för denna nedladdning, även om det är aktiverat i Inställningarna.</p>
-        </note>
-    </item>
-    <item>
-		<title>Hastighetsgräns</title>
-		<p>Om aktiverat, kommer Parabolic att begränsa nedladdningshastigheten med hastigheten konfigurerad i <link xref="Nedladdare">Inställningar</link>.</p>
-        <note>
-            <p>Tillgängligt i avsnittet <code>Avancerade alternativ</code>.</p>
-        </note>
     </item>
 </terms>
 </page>

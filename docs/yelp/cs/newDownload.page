@@ -43,15 +43,17 @@
     <item>
 		<title>Typ souboru</title>
 		<p>Typ souboru, jako který se má médium stáhnout.</p>
-            <p>Při povolení funkce <code>Zakázat převody</code> budou jedinými možnostmi <code>video</code> (pokud je podporováno) a <code>zvuk</code></p>
         <note>
             <p>Dříve použitý typ souboru bude zapamatován a předvolen pro další stahování.</p>
+        </note>
+        <note style="advanced">
+            <p>Selecting the <code>Video (Generic)</code> or <code>Audio (Generic)</code> file types will cause Parabolic to download the media in the original file type of the media without performing any conversions.</p>
         </note>
     </item>
     <item>
 		<title>Kvalita</title>
 		<p>Pokud je typem souboru typ videa, budou uvedené kvality odpovídat rozlišení dostupných médií.</p>
-        <p>Pokud je typem souboru typ zvuku, budou uvedené kvality jednoduše <code>nejlepší</code>, <code>dobrá</code> a <code>nejhorší</code>.</p>
+        <p>If the file type is an audio type, the listed qualities will be the audio bitrates of the media available.</p>
         <note>
             <p>Dříve použitá kvalita bude zapamatována a předvolena pro další stahování.</p>
         </note>
@@ -65,10 +67,10 @@
         </note>
     </item>
     <item>
-		<title>Stáhnout titulky</title>
-		<p>Zda stáhnout a vložit titulky při stahování videa. Další nastavení titulků najdete v <link xref="downloader">předvolbách</link>.</p>
+		<title>Subtitles</title>
+		<p>The list of subtitles available by the media that can be selected for download by the user. Further subtitle settings can be configured in <link xref="downloads">preferences</link>.</p>
         <note>
-            <p>Dříve použitý stav bude zapamatován a předvolen pro další stahování.</p>
+            <p>The previously selected subtitles will be remembered and pre-selected for the next download.</p>
         </note>
     </item>
     <item>
@@ -77,6 +79,17 @@
         <note>
             <p>Dříve použitý stav bude zapamatován a předvolen pro další stahování.</p>
         </note>
+    </item>
+    <item>
+		<title>Omezení rychlosti</title>
+		<p>Pokud je tato funkce povolena, aplikace Parabolic omezí rychlost stahování na rychlost nastavenou v <link xref="downloader">předvolbách</link>.</p>
+    </item>
+    <item>
+		<title>Časový rámec</title>
+		<p>Uživatel může zadat počáteční časový rámec a konečný časový rámec pro stažení určité části média.</p>
+        <note style="advanced">
+			<p>Výchozí: celá délka média</p>
+		</note>
     </item>
     <item>
 		<title>Složka k uložení</title>
@@ -91,23 +104,6 @@
 		<note style="advanced">
 			<p>Výchozí: název média</p>
 		</note>
-    </item>
-    <item>
-		<title>Časový rámec</title>
-		<p>Uživatel může zadat počáteční časový rámec a konečný časový rámec pro stažení určité části média.</p>
-        <note style="advanced">
-			<p>Výchozí: celá délka média</p>
-		</note>
-        <note style="advanced">
-            <p>Povolením této možnosti bude pro toto stahování zakázáno použití služby aria2, i když je povoleno v předvolbách.</p>
-        </note>
-    </item>
-    <item>
-		<title>Omezení rychlosti</title>
-		<p>Pokud je tato funkce povolena, aplikace Parabolic omezí rychlost stahování na rychlost nastavenou v <link xref="downloader">předvolbách</link>.</p>
-        <note>
-            <p>Dostupné v sekci <code>Pokročilé možnosti</code>.</p>
-        </note>
     </item>
 </terms>
 </page>

@@ -19,56 +19,58 @@
 
 <terms>
     <item>
-        <title>Remplacer les fichiers existants</title>
-        <p>Si cette option est activée, Parabolic écrasera les fichiers existants.</p>
-        <p>Par exemple, si un fichier intitulé <code>film.mp4</code> existe dans le dossier de téléchargement et qu’un nouveau téléchargement est créé avec le titre <code>film</code>, <code>film.mp4</code> sera remplacé par le contenu du nouveau téléchargement.</p>
+        <title>Verbose Logging</title>
+        <p>If enabled, more verbose logs will be provided by <code>yt-dlp</code> for each download.</p>
         <note style="advanced">
             <p>Par défaut : Activée</p>
         </note>
     </item>
-	<item>
-		<title>Nombre maximum de téléchargements actifs</title>
-		<p>Indique le nombre de téléchargements actifs autorisés à s’exécuter en même temps. Il doit s’agir d’un nombre entier compris entre 1 et 10.</p>
-        <p>Si le maximum de téléchargements actifs est atteint, Parabolic placera les nouveaux téléchargements dans une file d’attente jusqu’à ce que des téléchargements supplémentaires soient autorisés à s’exécuter.</p>
+    <item>
+        <title>Limitation de vitesse</title>
+        <p>Une limite en KiB/s qui est appliquée aux téléchargements, uniquement s’ils ont l’option avancée <code>Limitation de vitesse</code> activée. Il doit s’agit d’un nombre entier compris en 512 et 10240.</p>
 		<note style="advanced">
-			<p>Par défaut : 5</p>
+			<p>Par défaut : 1024</p>
 		</note>
     </item>
     <item>
-		<title>Limiter le caractères des noms des fichiers</title>
-		<p>Restreint les caractères dans les noms de fichiers à ceux uniquement pris en charge par Windows.</p>
-        <p>Option disponible uniquement sur Linux.</p>
-		<note style="advanced">
-			<p>Par défaut : Désactivée</p>
-		</note>
-    </item>
-    <item>
-		<title>Télécharger immédiatement après validation</title>
-		<p>Contourne la sélection des options de téléchargement dans la boîte de dialogue « Ajouter un téléchargement » et télécharge immédiatement un média validé en utilisant les options précédemment sélectionnées.</p>
-		<note style="advanced">
-			<p>Par défaut : Désactivée</p>
-		</note>
-    </item>
-    <item>
-        <title>Inclure les sous-titres générés automatiquement</title>
-        <p>Indique s’il faut inclure les sous-titres traduits automatiquement pour correspondre à la langue demandée.</p>
+        <title>Utiliser SponsorBlock pour YouTube</title>
+        <p>Si cette option est activée, Parabolic appliquera l’extension SponsorBlock pour les téléchargements YouTube.</p>
+        <note>
+            <p>SponsorBlock ne fonctionne que pour les vidéos YouTube. Cependant, garder ce paramètre activé n’affectera pas les téléchargements depuis les autres sites (i.e. ils ne seront pas perturbés).</p>
+        </note>
         <note style="advanced">
             <p>Par défaut : Désactivée</p>
         </note>
     </item>
     <item>
-        <title>Codec vidéo préféré</title>
-        <p>Le codec vidéo que Parabolic devrait préférer lors de la sélection de formats de médias à télécharger.</p>
+        <title>URL de Proxy</title>
+        <p>L’url du serveur proxy à utiliser.</p>
         <note style="advanced">
-            <p>Par défaut : N’importe lequel</p>
-        </note>
+			<p>Par défaut : Aucune URL</p>
+		</note>
     </item>
     <item>
-        <title>Récupérer les téléchargements échoués</title>
-        <p>Si cette option est activée, Parabolic suivra les téléchargements en cours et en file d’attente et les relancera si nécessaire, après un redémarrage de l’application en cas de plantage.</p>
-        <note style="advanced">
-            <p>Par défaut : Activée</p>
+        <title>Cookies du navigateur</title>
+        <p>Un navigateur dans lequel lire les cookies et passer au moteur de téléchargement de yt-dlp.</p>
+        <p>Cela peut être utile pour télécharger des médias qui requièrent une connexion, par exemple : les vidéos YouTube privées.</p>
+        <p>Cette option est disponible sur les plateformes non « sandboxées ».</p>
+		<note style="advanced">
+			<p>Par défaut : Aucun</p>
+		</note>
+    </item>
+    <item>
+        <title>Fichier de cookies</title>
+        <p>Un fichier .txt de cookies à fournir à yt-dlp quand il s’agit du moteur de téléchargement.</p>
+        <p>Cela peut être utile pour télécharger des médias qui requièrent une connexion, par exemple : les vidéos YouTube privées.</p>
+        <p>Utilisez l’une des extensions suivantes pour obtenir un fichier de cookies depuis votre navigateur :</p>
+        <p>Chrome : <code>https://chrome.google.com/webstore/detail/get-cookiestxt-locally/cclelndahbckbenkjhflpdbgdldlbecc</code></p>
+        <p>Firefox : <code>https://addons.mozilla.org/en-US/firefox/addon/cookies-txt/</code></p>
+        <note>
+            <p>L’utilisation de ces extensions se fait à vos propres risques.</p>
         </note>
+		<note style="advanced">
+			<p>Par défaut : Aucun fichier sélectionné</p>
+		</note>
     </item>
 </terms>
 </page>

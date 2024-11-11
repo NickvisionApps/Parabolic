@@ -43,15 +43,17 @@
     <item>
 		<title>Filtype</title>
 		<p>Filtypen innholdet skal lastes ned som.</p>
-            <p>Hvis konvertering er slått av, vil de eneste mulige alternativene være «Lyd» og eventuelt «Video».</p>
         <note>
             <p>Den sist brukte filtypen vil huskes og forhåndsvelges ved neste nedlasting.</p>
+        </note>
+        <note style="advanced">
+            <p>Selecting the <code>Video (Generic)</code> or <code>Audio (Generic)</code> file types will cause Parabolic to download the media in the original file type of the media without performing any conversions.</p>
         </note>
     </item>
     <item>
 		<title>Oppløsning</title>
 		<p>Hvis filen er en video, vil de tilgjengelige oppløsningene på videoen listes opp.</p>
-        <p>Hvis filen er et lydklipp, vil de tilgjengelige kvalitetene være «Høy», «Middels» og «Lav».</p>
+        <p>If the file type is an audio type, the listed qualities will be the audio bitrates of the media available.</p>
         <note>
             <p>Den sist brukte oppløsningen vil huskes og forhåndsvelges ved neste nedlasting.</p>
         </note>
@@ -65,10 +67,10 @@
         </note>
     </item>
     <item>
-		<title>Undertekster</title>
-		<p>Om undertekster skal lastes ned og bygges inn i videofilen. Andre innstillinger for undertekster kan endres i <link xref="downloader">innstillingene</link>.</p>
+		<title>Subtitles</title>
+		<p>The list of subtitles available by the media that can be selected for download by the user. Further subtitle settings can be configured in <link xref="downloads">preferences</link>.</p>
         <note>
-            <p>Det sist brukte valget vil huskes og forhåndsvelges ved neste nedlasting.</p>
+            <p>The previously selected subtitles will be remembered and pre-selected for the next download.</p>
         </note>
     </item>
     <item>
@@ -77,6 +79,17 @@
         <note>
             <p>Det sist brukte valget vil huskes og forhåndsvelges ved neste nedlasting.</p>
         </note>
+    </item>
+    <item>
+		<title>Hastighetsgrense</title>
+		<p>Hvis dette er på, vil Parabolic begrense nedlastingshastigheten til det som er angitt i <link xref="downloader">innstillingene</link>.</p>
+    </item>
+    <item>
+		<title>Tidsrom</title>
+		<p>Det er mulig å oppgi en start- og sluttid for å laste ned en spesifikk del av innholdet.</p>
+        <note style="advanced">
+			<p>Standard: den fulle lengden på innholdet</p>
+		</note>
     </item>
     <item>
 		<title>Lagringsmappe</title>
@@ -91,23 +104,6 @@
 		<note style="advanced">
 			<p>Standard: tittelen på innholdet</p>
 		</note>
-    </item>
-    <item>
-		<title>Tidsrom</title>
-		<p>Det er mulig å oppgi en start- og sluttid for å laste ned en spesifikk del av innholdet.</p>
-        <note style="advanced">
-			<p>Standard: den fulle lengden på innholdet</p>
-		</note>
-        <note style="advanced">
-            <p>Å slå på dette vil gjøre at aria2 ikke brukes til nedlastingen, selv hvis aria2 er slått på i innstillingene.</p>
-        </note>
-    </item>
-    <item>
-		<title>Hastighetsgrense</title>
-		<p>Hvis dette er på, vil Parabolic begrense nedlastingshastigheten til det som er angitt i <link xref="downloader">innstillingene</link>.</p>
-        <note>
-            <p>Tilgjengelig i «Avansert»-seksjonen.</p>
-        </note>
     </item>
 </terms>
 </page>

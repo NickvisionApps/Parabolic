@@ -22,58 +22,58 @@
 
 <terms>
     <item>
-        <title>Overwrite Existing Files</title>
-        <p>If enabled, Parabolic will overwrite existing files.</p>
-        <p>
-            For example, if a file named <code>movie.mp4</code> exists in the download folder, and a new download is created named <code>movie</code>, <code>movie.mp4</code> will be overwritten with the new download's content.
-        </p>
+        <title>Verbose Logging</title>
+        <p>If enabled, more verbose logs will be provided by <code>yt-dlp</code> for each download.</p>
         <note style="advanced">
             <p>Default: On</p>
         </note>
     </item>
-	<item>
-		<title>Maximum Number of Active Downloads</title>
-		<p>The number of active downloads allowed to run at a time. Must be an integer value between 1 and 10.</p>
-        <p>If the max number of active downloads is reached, Parabolic will place new downloads in a queue until more downloads are able to be run.</p>
+    <item>
+        <title>Speed Limit</title>
+        <p>A limit, in Ki/s, that is applied to downloads only if they have the advanced option <code>Speed Limit</code> enabled. Must be an integer value between 512 and 10240.</p>
 		<note style="advanced">
-			<p>Default: 5</p>
+			<p>Default: 1024</p>
 		</note>
     </item>
     <item>
-		<title>Limit Filename Characters</title>
-		<p>Restricts characters in filenames to only those supported by Windows.</p>
-        <p>This option is only available on Linux.</p>
-		<note style="advanced">
-			<p>Default: Off</p>
-		</note>
-    </item>
-    <item>
-		<title>Download Immediately After Validation</title>
-		<p>Bypasses the download options selection in the Add Download dialog and immediately downloads a validated media using previously selected options.</p>
-		<note style="advanced">
-			<p>Default: Off</p>
-		</note>
-    </item>
-    <item>
-        <title>Included Auto-Generated Subtitles</title>
-        <p>Whether or not to included subtitles that are auto-translated to fit the requested subtitle languages.</p>
+        <title>Use SponsorBlock for YouTube</title>
+        <p>If enabled, Parabolic will apply the SponsorBlock extension to YouTube downloads.</p>
+        <note>
+            <p>SponsorBlock only works on YouTube videos. However, leaving this setting on will not affect downloads from other sites (i.e. not cause them to fail).</p>
+        </note>
         <note style="advanced">
             <p>Default: Off</p>
         </note>
     </item>
     <item>
-        <title>Preferred Video Codec</title>
-        <p>The video codec Parabolic should prefer when selecting media formats to download.</p>
+        <title>Proxy URL</title>
+        <p>The url of the proxy server to use.</p>
         <note style="advanced">
-            <p>Default: Any</p>
-        </note>
+			<p>Default: No URL</p>
+		</note>
     </item>
     <item>
-        <title>Recover Crashed Downloads</title>
-        <p>If enabled, Parabolic will track the running and queued downloads and restart them if necessary if the application crashes and is restarted.</p>
-        <note style="advanced">
-            <p>Default: On</p>
+        <title>Cookies from Browser</title>
+        <p>A browser in which to read cookies from and pass to yt-dlp's download engine.</p>
+        <p>This may be useful when downloading media that requires a login, for example: private YouTube videos.</p>
+        <p>This option is on available on non sandboxed platforms.</p>
+		<note style="advanced">
+			<p>Default: None</p>
+		</note>
+    </item>
+    <item>
+        <title>Cookies File</title>
+        <p>A .txt file of cookies to pass to yt-dlp when download engine.</p>
+        <p>This may be useful when downloading media that requires a login, for example: private YouTube videos.</p>
+        <p>Use one of the following extensions for getting a cookies file from your browser:</p>
+        <p>Chrome: <code>https://chrome.google.com/webstore/detail/get-cookiestxt-locally/cclelndahbckbenkjhflpdbgdldlbecc</code></p>
+        <p>Firefox: <code>https://addons.mozilla.org/en-US/firefox/addon/cookies-txt/</code></p>
+        <note>
+            <p>Use these extensions at your own risk.</p>
         </note>
+		<note style="advanced">
+			<p>Default: No File Selected</p>
+		</note>
     </item>
 </terms>
 </page>

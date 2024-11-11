@@ -20,9 +20,18 @@ document.addEventListener('DOMContentLoaded', function() {
 <div class="contents pagewide">
 <p class="p">This page explains all options for configuring Downloads in Preferences in <span class="app">Parabolic</span>.</p>
 <div class="terms"><div class="inner"><div class="region"><dl class="terms">
-<dt class="terms">Ограничение скорости</dt>
+<dt class="terms">Перезаписывать существующие файлы</dt>
 <dd class="terms">
-<p class="p">Этот лимит (в КиБ/с) применяется к загрузкам, у которых включена опция <span class="code">Ограничения скорости</span>. Целое число от 512 до 10240.</p>
+<p class="p">Если включено, Parabolic будет перезаписывать существующие файлы.</p>
+<p class="p">Например, если файл с именем <span class="code">movie.mp4</span> существует в папке сохранения, а новый файл создаётся с именем <span class="code">movie</span>, в файл <span class="code">movie.mp4</span> будет записано новое содержимое.</p>
+<div class="note" title="Примечание">
+<svg height="24" width="24" version="1.1">
+ <g>
+  <path class="yelp-svg-fill" d="m4 3h16c0.554 0 1 0.446 1 1v11h-6v6h-11c-0.554 0-1-0.446-1-1v-16c0-0.554 0.446-1 1-1z"></path>
+  <path class="yelp-svg-fill" d="m17 16h4l-5 5v-4c0-0.554 0.446-1 1-1z"></path>
+ </g>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Parabolic will detect downloads that should be resumed and avoid this setting when recovering or retrying failed downloads</p></div></div></div>
+</div>
 <div class="note note-advanced" title="Подробности">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -37,20 +46,34 @@ document.addEventListener('DOMContentLoaded', function() {
   <path class="yelp-svg-fill" d="m8.2435 7.0719-1.9004-3.3145 1.4143-1.4143 3.1596 1.7457z"></path>
   <path class="yelp-svg-fill" d="m11.072 11.757-3.3146 1.9-1.4143-1.414 1.7457-3.1602z"></path>
  </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">По умолчанию: 1024</p></div></div></div>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">По умолчанию: Включено</p></div></div></div>
 </div>
 </dd>
-<dt class="terms">Использовать SponsorBlock для YouTube</dt>
+<dt class="terms">Максимальное число активных загрузок</dt>
 <dd class="terms">
-<p class="p">Если включено, Parabolic будет применять расширение SponsorBlock для загрузок с YouTube.</p>
-<div class="note" title="Примечание">
+<p class="p">Число активных загрузок, которые могут быть запущены одновременно. Целое число от 1 до 10.</p>
+<p class="p">Если достигнут максимум активных загрузок, новые загрузки будут помещаться в очередь, пока не появится место для запуска новых загрузок.</p>
+<div class="note note-advanced" title="Подробности">
 <svg height="24" width="24" version="1.1">
  <g>
-  <path class="yelp-svg-fill" d="m4 3h16c0.554 0 1 0.446 1 1v11h-6v6h-11c-0.554 0-1-0.446-1-1v-16c0-0.554 0.446-1 1-1z"></path>
-  <path class="yelp-svg-fill" d="m17 16h4l-5 5v-4c0-0.554 0.446-1 1-1z"></path>
+  <path class="yelp-svg-fill" d="m5.4473 12.572c-2.039 0.957-3.4473 3.019-3.4473 5.428v4h20v-4c0-2.406-1.406-4.466-3.441-5.424a8 8 0 0 1 -6.559 3.424 8 8 0 0 1 -6.5527 -3.428z"></path>
+  <path class="yelp-svg-fill" d="m12 3a5 5 0 0 0 -5 5 5 5 0 0 0 5 5 5 5 0 0 0 5 -5 5 5 0 0 0 -5 -5zm0 3a2 2 0 0 1 2 2 2 2 0 0 1 -2 2 2 2 0 0 1 -2 -2 2 2 0 0 1 2 -2z"></path>
+  <path class="yelp-svg-fill" d="m15.312 6 3.688 1v2l-3.4688 1z"></path>
+  <path class="yelp-svg-fill" d="m14 11.312-1 3.688h-2l-1-3.469z"></path>
+  <path class="yelp-svg-fill" d="m10 4.6875 1-3.6875h2l1 3.4688z"></path>
+  <path class="yelp-svg-fill" d="m8.6875 10-3.6875-1v-2l3.4688-1z"></path>
+  <path class="yelp-svg-fill" d="m12.928 4.2435 3.3146-1.9003 1.4142 1.4142-1.7457 3.1599z"></path>
+  <path class="yelp-svg-fill" d="m15.757 8.9281 1.9003 3.3146-1.4142 1.4142-3.1599-1.7457z"></path>
+  <path class="yelp-svg-fill" d="m8.2435 7.0719-1.9004-3.3145 1.4143-1.4143 3.1596 1.7457z"></path>
+  <path class="yelp-svg-fill" d="m11.072 11.757-3.3146 1.9-1.4143-1.414 1.7457-3.1602z"></path>
  </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">SponsorBlock работает только для видео с YouTube. Однако включение этой настройки не повлияет на загрузки с других сайтов (т.е. не приведёт к их неудаче).</p></div></div></div>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">По умолчанию: 5</p></div></div></div>
 </div>
+</dd>
+<dt class="terms">Limit Filename Characters</dt>
+<dd class="terms">
+<p class="p">Restricts characters in filenames to only those supported by Windows.</p>
+<p class="p">This option is only available on Linux.</p>
 <div class="note note-advanced" title="Подробности">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -68,9 +91,9 @@ document.addEventListener('DOMContentLoaded', function() {
 </svg><div class="inner"><div class="region"><div class="contents"><p class="p">По умолчанию: Выключено</p></div></div></div>
 </div>
 </dd>
-<dt class="terms">Адрес прокси-сервера</dt>
+<dt class="terms">Download Immediately After Validation</dt>
 <dd class="terms">
-<p class="p">Ссылка на прокси-сервер, который будет использоваться при загрузке.</p>
+<p class="p">Bypasses the download options selection in the Add Download dialog and immediately downloads a validated media using previously selected options.</p>
 <div class="note note-advanced" title="Подробности">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -85,14 +108,12 @@ document.addEventListener('DOMContentLoaded', function() {
   <path class="yelp-svg-fill" d="m8.2435 7.0719-1.9004-3.3145 1.4143-1.4143 3.1596 1.7457z"></path>
   <path class="yelp-svg-fill" d="m11.072 11.757-3.3146 1.9-1.4143-1.414 1.7457-3.1602z"></path>
  </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Default: No URL</p></div></div></div>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">По умолчанию: Выключено</p></div></div></div>
 </div>
 </dd>
-<dt class="terms">Куки браузера</dt>
+<dt class="terms">Включать автоматически сгенерированные субтитры</dt>
 <dd class="terms">
-<p class="p">A browser in which to read cookies from and pass to yt-dlp's download engine.</p>
-<p class="p">This may be useful when downloading media that requires a login, for example: private YouTube videos.</p>
-<p class="p">This option is on available on non sandboxed platforms.</p>
+<p class="p">Надо ли включать субтитры, созданные YouTube автоматически, для покрытия выбранных языков субтитров.</p>
 <div class="note note-advanced" title="Подробности">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -107,24 +128,12 @@ document.addEventListener('DOMContentLoaded', function() {
   <path class="yelp-svg-fill" d="m8.2435 7.0719-1.9004-3.3145 1.4143-1.4143 3.1596 1.7457z"></path>
   <path class="yelp-svg-fill" d="m11.072 11.757-3.3146 1.9-1.4143-1.414 1.7457-3.1602z"></path>
  </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Default: None</p></div></div></div>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">По умолчанию: Выключено</p></div></div></div>
 </div>
 </dd>
-<dt class="terms">Файл куки</dt>
+<dt class="terms">Preferred Video Codec</dt>
 <dd class="terms">
-<p class="p">A .txt file of cookies to pass to yt-dlp when download engine.</p>
-<p class="p">This may be useful when downloading media that requires a login, for example: private YouTube videos.</p>
-<p class="p">Используйте одно из следующих расширений для получения файла куки из вашего браузера:</p>
-<p class="p">Chrome: <span class="code">https://chrome.google.com/webstore/detail/get-cookiestxt-locally/cclelndahbckbenkjhflpdbgdldlbecc</span></p>
-<p class="p">Firefox: <span class="code">https://addons.mozilla.org/en-US/firefox/addon/cookies-txt/</span></p>
-<div class="note" title="Примечание">
-<svg height="24" width="24" version="1.1">
- <g>
-  <path class="yelp-svg-fill" d="m4 3h16c0.554 0 1 0.446 1 1v11h-6v6h-11c-0.554 0-1-0.446-1-1v-16c0-0.554 0.446-1 1-1z"></path>
-  <path class="yelp-svg-fill" d="m17 16h4l-5 5v-4c0-0.554 0.446-1 1-1z"></path>
- </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Используйте эти расширения на свой страх и риск.</p></div></div></div>
-</div>
+<p class="p">The video codec Parabolic should prefer when selecting media formats to download.</p>
 <div class="note note-advanced" title="Подробности">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -139,7 +148,47 @@ document.addEventListener('DOMContentLoaded', function() {
   <path class="yelp-svg-fill" d="m8.2435 7.0719-1.9004-3.3145 1.4143-1.4143 3.1596 1.7457z"></path>
   <path class="yelp-svg-fill" d="m11.072 11.757-3.3146 1.9-1.4143-1.414 1.7457-3.1602z"></path>
  </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">По умолчанию: файл не выбран</p></div></div></div>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Default: Any</p></div></div></div>
+</div>
+</dd>
+<dt class="terms">Preferred Subtitle Format</dt>
+<dd class="terms">
+<p class="p">The file format Parabolic should ensure all downloaded subtitles are downloaded as.</p>
+<div class="note note-advanced" title="Подробности">
+<svg height="24" width="24" version="1.1">
+ <g>
+  <path class="yelp-svg-fill" d="m5.4473 12.572c-2.039 0.957-3.4473 3.019-3.4473 5.428v4h20v-4c0-2.406-1.406-4.466-3.441-5.424a8 8 0 0 1 -6.559 3.424 8 8 0 0 1 -6.5527 -3.428z"></path>
+  <path class="yelp-svg-fill" d="m12 3a5 5 0 0 0 -5 5 5 5 0 0 0 5 5 5 5 0 0 0 5 -5 5 5 0 0 0 -5 -5zm0 3a2 2 0 0 1 2 2 2 2 0 0 1 -2 2 2 2 0 0 1 -2 -2 2 2 0 0 1 2 -2z"></path>
+  <path class="yelp-svg-fill" d="m15.312 6 3.688 1v2l-3.4688 1z"></path>
+  <path class="yelp-svg-fill" d="m14 11.312-1 3.688h-2l-1-3.469z"></path>
+  <path class="yelp-svg-fill" d="m10 4.6875 1-3.6875h2l1 3.4688z"></path>
+  <path class="yelp-svg-fill" d="m8.6875 10-3.6875-1v-2l3.4688-1z"></path>
+  <path class="yelp-svg-fill" d="m12.928 4.2435 3.3146-1.9003 1.4142 1.4142-1.7457 3.1599z"></path>
+  <path class="yelp-svg-fill" d="m15.757 8.9281 1.9003 3.3146-1.4142 1.4142-3.1599-1.7457z"></path>
+  <path class="yelp-svg-fill" d="m8.2435 7.0719-1.9004-3.3145 1.4143-1.4143 3.1596 1.7457z"></path>
+  <path class="yelp-svg-fill" d="m11.072 11.757-3.3146 1.9-1.4143-1.414 1.7457-3.1602z"></path>
+ </g>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Default: Any</p></div></div></div>
+</div>
+</dd>
+<dt class="terms">Recover Crashed Downloads</dt>
+<dd class="terms">
+<p class="p">If enabled, Parabolic will track the running and queued downloads and restart them if necessary if the application crashes and is restarted.</p>
+<div class="note note-advanced" title="Подробности">
+<svg height="24" width="24" version="1.1">
+ <g>
+  <path class="yelp-svg-fill" d="m5.4473 12.572c-2.039 0.957-3.4473 3.019-3.4473 5.428v4h20v-4c0-2.406-1.406-4.466-3.441-5.424a8 8 0 0 1 -6.559 3.424 8 8 0 0 1 -6.5527 -3.428z"></path>
+  <path class="yelp-svg-fill" d="m12 3a5 5 0 0 0 -5 5 5 5 0 0 0 5 5 5 5 0 0 0 5 -5 5 5 0 0 0 -5 -5zm0 3a2 2 0 0 1 2 2 2 2 0 0 1 -2 2 2 2 0 0 1 -2 -2 2 2 0 0 1 2 -2z"></path>
+  <path class="yelp-svg-fill" d="m15.312 6 3.688 1v2l-3.4688 1z"></path>
+  <path class="yelp-svg-fill" d="m14 11.312-1 3.688h-2l-1-3.469z"></path>
+  <path class="yelp-svg-fill" d="m10 4.6875 1-3.6875h2l1 3.4688z"></path>
+  <path class="yelp-svg-fill" d="m8.6875 10-3.6875-1v-2l3.4688-1z"></path>
+  <path class="yelp-svg-fill" d="m12.928 4.2435 3.3146-1.9003 1.4142 1.4142-1.7457 3.1599z"></path>
+  <path class="yelp-svg-fill" d="m15.757 8.9281 1.9003 3.3146-1.4142 1.4142-3.1599-1.7457z"></path>
+  <path class="yelp-svg-fill" d="m8.2435 7.0719-1.9004-3.3145 1.4143-1.4143 3.1596 1.7457z"></path>
+  <path class="yelp-svg-fill" d="m11.072 11.757-3.3146 1.9-1.4143-1.414 1.7457-3.1602z"></path>
+ </g>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">По умолчанию: Включено</p></div></div></div>
 </div>
 </dd>
 </dl></div></div></div>

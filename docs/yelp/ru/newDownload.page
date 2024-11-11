@@ -43,15 +43,17 @@
     <item>
 		<title>Тип файла</title>
 		<p>Файл какого типа требуется загрузить.</p>
-            <p>Если <code>конвертирование отключено</code> в настройках, можно будет выбрать только <code>Видео</code> (если доступно) и <code>Аудио</code></p>
         <note>
             <p>Использованный тип файла будет сохранён и автоматически выбран в следующий раз.</p>
+        </note>
+        <note style="advanced">
+            <p>Selecting the <code>Video (Generic)</code> or <code>Audio (Generic)</code> file types will cause Parabolic to download the media in the original file type of the media without performing any conversions.</p>
         </note>
     </item>
     <item>
 		<title>Качество</title>
 		<p>Если выбранный тип файла является видео, будут перечислены доступные разрешения видео.</p>
-        <p>Если выбранный тип файла является аудио, выбор качества будет ограничен до <code>лучшего</code>, <code>хорошего</code> и <code>худшего</code>.</p>
+        <p>If the file type is an audio type, the listed qualities will be the audio bitrates of the media available.</p>
         <note>
             <p>Выбранное качество будет сохранено и автоматически выбрано в следующий раз.</p>
         </note>
@@ -65,10 +67,10 @@
         </note>
     </item>
     <item>
-		<title>Загрузить субтитры</title>
-		<p>Whether to download and embed subtitle when downloading a video. Further subtitle settings can be configured in <link xref="downloader">preferences</link>.</p>
+		<title>Subtitles</title>
+		<p>The list of subtitles available by the media that can be selected for download by the user. Further subtitle settings can be configured in <link xref="downloads">preferences</link>.</p>
         <note>
-            <p>Выбранное состояние переключателя будет сохранено и автоматически выбрано в следующий раз.</p>
+            <p>The previously selected subtitles will be remembered and pre-selected for the next download.</p>
         </note>
     </item>
     <item>
@@ -77,6 +79,17 @@
         <note>
             <p>Выбранное состояние переключателя будет сохранено и автоматически выбрано в следующий раз.</p>
         </note>
+    </item>
+    <item>
+		<title>Ограничение скорости</title>
+		<p>Если включено, Parabolic ограничит скорость загрузки в соответствии с выбранным в <link xref="downloader">Настройках</link> ограничением.</p>
+    </item>
+    <item>
+		<title>Time Frame</title>
+		<p>The user can enter a start time frame and an end time frame to download a specific section of the media.</p>
+        <note style="advanced">
+			<p>Default: The whole media length</p>
+		</note>
     </item>
     <item>
 		<title>Папка сохранения</title>
@@ -91,23 +104,6 @@
 		<note style="advanced">
 			<p>По умолчанию: заголовок медиа</p>
 		</note>
-    </item>
-    <item>
-		<title>Time Frame</title>
-		<p>The user can enter a start time frame and an end time frame to download a specific section of the media.</p>
-        <note style="advanced">
-			<p>Default: The whole media length</p>
-		</note>
-        <note style="advanced">
-            <p>Enabling this option will disable the use of aria2 as the downloader for this download, even if it is enabled in Preferences.</p>
-        </note>
-    </item>
-    <item>
-		<title>Ограничение скорости</title>
-		<p>Если включено, Parabolic ограничит скорость загрузки в соответствии с выбранным в <link xref="downloader">Настройках</link> ограничением.</p>
-        <note>
-            <p>Доступно в <code>Дополнительных опциях</code>.</p>
-        </note>
     </item>
 </terms>
 </page>

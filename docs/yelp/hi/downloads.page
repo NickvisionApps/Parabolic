@@ -17,53 +17,69 @@
 <title>Downloads</title>
 <p>This page explains all options for configuring Downloads in Preferences in <app>Parabolic</app>.</p>
 
+
 <terms>
     <item>
-        <title>गति सीमा</title>
-        <p>Ki/s में एक सीमा, जो डाउनलोड पर केवल तभी लागू होती है जब उनके पास उन्नत विकल्प <code>स्पीड लिमिट</code> सक्षम हो। 512 और 10240 के बीच एक पूर्णांक मान होना चाहिए।</p>
+        <title>मौजूदा फाइलें अधिलेखित करें</title>
+        <p>यदि सक्षम किया गया है, तो Parabolic मौजूदा फाइलों को अधिलेखित कर देगा।</p>
+        <p>उदाहरण के लिए, यदि <code>movie.mp4</code> नामक फाइल डाउनलोड फोल्डर में मौजूद है, और <code>movie</code> नामक एक नया डाउनलोड बनाया जाता है, तो <code>movie.mp4</code> होगा नए डाउनलोड की सामग्री के साथ अधिलेखित किया जाए।</p>
+        <note>
+            <p>Parabolic will detect downloads that should be resumed and avoid this setting when recovering or retrying failed downloads</p>
+        </note>
+        <note style="advanced">
+            <p>डिफ़ॉल्ट: चालू</p>
+        </note>
+    </item>
+	<item>
+		<title>सक्रिय डाउनलोड की अधिकतम संख्या</title>
+		<p>एक समय में चलने की अनुमति वाले सक्रिय डाउनलोड की संख्या। 1 और 10 के बीच पूर्णांक मान होना चाहिए।</p>
+        <p>यदि सक्रिय डाउनलोड की अधिकतम संख्या पहुंच जाती है, तो Parabolic नए डाउनलोड को एक कतार में रखेगा जब तक कि अधिक डाउनलोड चलाने में सक्षम न हो जाएं।</p>
 		<note style="advanced">
-			<p>डिफ़ॉल्ट: 1024</p>
+			<p>डिफ़ॉल्ट: 5</p>
 		</note>
     </item>
     <item>
-        <title>YouTube के लिए स्पॉन्सरब्लॉक का उपयोग करें</title>
-        <p>सक्षम होने पर, Parabolic YouTube डाउनलोड पर स्पॉन्सरब्लॉक एक्सटेंशन लागू करेगा।</p>
-        <note>
-            <p>स्पॉन्सरब्लॉक केवल YouTube वीडियो पर काम करता है। हालाँकि, इस सेटिंग को चालू रखने से अन्य साइटों से डाउनलोड प्रभावित नहीं होंगे (अर्थात वे विफल नहीं होंगे)।</p>
-        </note>
+		<title>Limit Filename Characters</title>
+		<p>Restricts characters in filenames to only those supported by Windows.</p>
+        <p>This option is only available on Linux.</p>
+		<note style="advanced">
+			<p>डिफ़ॉल्ट: बंद</p>
+		</note>
+    </item>
+    <item>
+		<title>Download Immediately After Validation</title>
+		<p>Bypasses the download options selection in the Add Download dialog and immediately downloads a validated media using previously selected options.</p>
+		<note style="advanced">
+			<p>डिफ़ॉल्ट: बंद</p>
+		</note>
+    </item>
+    <item>
+        <title>ऑटो-निर्मित उपशीर्षक शामिल हैं</title>
+        <p>क्या उन उपशीर्षकों को शामिल किया जाना चाहिए जो अनुरोधित उपशीर्षक भाषाओं में फिट होने के लिए स्वचालित रूप से अनुवादित हैं।</p>
         <note style="advanced">
             <p>डिफ़ॉल्ट: बंद</p>
         </note>
     </item>
     <item>
-        <title>प्रॉक्सी URL</title>
-        <p>उपयोग करने के लिए प्रॉक्सी सर्वर का URL।</p>
+        <title>Preferred Video Codec</title>
+        <p>The video codec Parabolic should prefer when selecting media formats to download.</p>
         <note style="advanced">
-			<p>Default: No URL</p>
-		</note>
-    </item>
-    <item>
-        <title>Cookies from Browser</title>
-        <p>A browser in which to read cookies from and pass to yt-dlp's download engine.</p>
-        <p>This may be useful when downloading media that requires a login, for example: private YouTube videos.</p>
-        <p>This option is on available on non sandboxed platforms.</p>
-		<note style="advanced">
-			<p>Default: None</p>
-		</note>
-    </item>
-    <item>
-        <title>कुकीज़ फाइल</title>
-        <p>A .txt file of cookies to pass to yt-dlp when download engine.</p>
-        <p>This may be useful when downloading media that requires a login, for example: private YouTube videos.</p>
-        <p>अपने ब्राउज़र से कुकीज़ फाइल प्राप्त करने के लिए निम्नलिखित एक्सटेंशन में से किसी एक का उपयोग करें:</p>
-        <p>Chrome: <code>https://chrome.google.com/webstore/detail/get-cookiestxt-locally/cclelndahbckbenkjhflpdbgdldlbecc</code></p>
-        <p>Firefox: <code>https://addons.mozilla.org/en-US/firefox/addon/cookies-txt/</code></p>
-        <note>
-            <p>इन एक्सटेंशन का उपयोग अपने जोखिम पर करें।</p>
+            <p>Default: Any</p>
         </note>
-		<note style="advanced">
-			<p>डिफ़ॉल्ट: कोई फाइल चयनित नहीं</p>
-		</note>
+    </item>
+    <item>
+        <title>Preferred Subtitle Format</title>
+        <p>The file format Parabolic should ensure all downloaded subtitles are downloaded as.</p>
+        <note style="advanced">
+            <p>Default: Any</p>
+        </note>
+    </item>
+    <item>
+        <title>Recover Crashed Downloads</title>
+        <p>If enabled, Parabolic will track the running and queued downloads and restart them if necessary if the application crashes and is restarted.</p>
+        <note style="advanced">
+            <p>डिफ़ॉल्ट: चालू</p>
+        </note>
     </item>
 </terms>
 </page>

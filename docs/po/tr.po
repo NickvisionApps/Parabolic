@@ -1,11 +1,11 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2024-10-24 08:55-0400\n"
+"POT-Creation-Date: 2024-11-11 17:34-0500\n"
 "PO-Revision-Date: 2024-11-03 12:00+0000\n"
 "Last-Translator: Sabri Ünal <yakushabb@gmail.com>\n"
-"Language-Team: Turkish <https://hosted.weblate.org/projects/"
-"nickvision-tube-converter/docs/tr/>\n"
+"Language-Team: Turkish <https://hosted.weblate.org/projects/nickvision-tube-"
+"converter/docs/tr/>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -67,8 +67,8 @@ msgstr ""
 #. (itstool) path: note/p
 #: docs/yelp/C/aria.page:29 docs/yelp/C/converter.page:35
 #: docs/yelp/C/converter.page:50 docs/yelp/C/converter.page:59
-#: docs/yelp/C/downloader.page:47 docs/yelp/C/downloader.page:54
-#: docs/yelp/C/downloader.page:61 docs/yelp/C/downloads.page:38
+#: docs/yelp/C/downloader.page:45 docs/yelp/C/downloads.page:49
+#: docs/yelp/C/downloads.page:56 docs/yelp/C/downloads.page:63
 msgid "Default: Off"
 msgstr "Öntanımlı: Kapalı"
 
@@ -152,7 +152,8 @@ msgstr ""
 
 #. (itstool) path: note/p
 #: docs/yelp/C/converter.page:28 docs/yelp/C/converter.page:42
-#: docs/yelp/C/downloader.page:31 docs/yelp/C/downloader.page:75
+#: docs/yelp/C/downloader.page:28 docs/yelp/C/downloads.page:33
+#: docs/yelp/C/downloads.page:84
 msgid "Default: On"
 msgstr "Öntanımlı: Açık"
 
@@ -254,114 +255,139 @@ msgstr ""
 
 #. (itstool) path: item/title
 #: docs/yelp/C/downloader.page:25
-msgid "Overwrite Existing Files"
-msgstr "Varolan Dosyaların Üzerine Yaz"
+msgid "Verbose Logging"
+msgstr ""
 
 #. (itstool) path: item/p
 #: docs/yelp/C/downloader.page:26
-msgid "If enabled, Parabolic will overwrite existing files."
-msgstr ""
-
-#. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:27
 msgid ""
-"For example, if a file named <code>movie.mp4</code> exists in the download "
-"folder, and a new download is created named <code>movie</code>, <code>movie."
-"mp4</code> will be overwritten with the new download's content."
+"If enabled, more verbose logs will be provided by <code>yt-dlp</code> for "
+"each download."
 msgstr ""
 
 #. (itstool) path: item/title
-#: docs/yelp/C/downloader.page:35
-msgid "Maximum Number of Active Downloads"
-msgstr ""
+#: docs/yelp/C/downloader.page:32 docs/yelp/C/newDownload.page:81
+msgid "Speed Limit"
+msgstr "Hız Sınırı"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:36
+#: docs/yelp/C/downloader.page:33
 msgid ""
-"The number of active downloads allowed to run at a time. Must be an integer "
-"value between 1 and 10."
-msgstr ""
-
-#. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:37
-msgid ""
-"If the max number of active downloads is reached, Parabolic will place new "
-"downloads in a queue until more downloads are able to be run."
+"A limit, in Ki/s, that is applied to downloads only if they have the "
+"advanced option <code>Speed Limit</code> enabled. Must be an integer value "
+"between 512 and 10240."
 msgstr ""
 
 #. (itstool) path: note/p
+#: docs/yelp/C/downloader.page:35
+msgid "Default: 1024"
+msgstr ""
+
+#. (itstool) path: item/title
 #: docs/yelp/C/downloader.page:39
-msgid "Default: 5"
-msgstr "Öntanımlı: 5"
-
-#. (itstool) path: item/title
-#: docs/yelp/C/downloader.page:43
-msgid "Limit Filename Characters"
-msgstr ""
+msgid "Use SponsorBlock for YouTube"
+msgstr "YouTube için SponsorBlock kullan"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:44
-msgid "Restricts characters in filenames to only those supported by Windows."
-msgstr ""
-
-#. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:45
-msgid "This option is only available on Linux."
-msgstr ""
-
-#. (itstool) path: item/title
-#: docs/yelp/C/downloader.page:51
-msgid "Download Immediately After Validation"
-msgstr "Doğrulamadan Hemen Sonra İndir"
-
-#. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:52
+#: docs/yelp/C/downloader.page:40
 msgid ""
-"Bypasses the download options selection in the Add Download dialog and "
-"immediately downloads a validated media using previously selected options."
+"If enabled, Parabolic will apply the SponsorBlock extension to YouTube "
+"downloads."
+msgstr ""
+
+#. (itstool) path: note/p
+#: docs/yelp/C/downloader.page:42
+msgid ""
+"SponsorBlock only works on YouTube videos. However, leaving this setting on "
+"will not affect downloads from other sites (i.e. not cause them to fail)."
 msgstr ""
 
 #. (itstool) path: item/title
-#: docs/yelp/C/downloader.page:58
-msgid "Included Auto-Generated Subtitles"
-msgstr "Kendiliğinden Oluşturulmuş Alt Yazıları İçer"
+#: docs/yelp/C/downloader.page:49
+msgid "Proxy URL"
+msgstr "Proxy URLʼsi"
+
+#. (itstool) path: item/p
+#: docs/yelp/C/downloader.page:50
+msgid "The url of the proxy server to use."
+msgstr ""
+
+#. (itstool) path: note/p
+#: docs/yelp/C/downloader.page:52
+#, fuzzy
+msgid "Default: No URL"
+msgstr "Öntanımlı: Kapalı"
+
+#. (itstool) path: item/title
+#: docs/yelp/C/downloader.page:56
+msgid "Cookies from Browser"
+msgstr "Tarayıcıdan Çerezler"
+
+#. (itstool) path: item/p
+#: docs/yelp/C/downloader.page:57
+msgid ""
+"A browser in which to read cookies from and pass to yt-dlp's download engine."
+msgstr ""
+
+#. (itstool) path: item/p
+#: docs/yelp/C/downloader.page:58 docs/yelp/C/downloader.page:67
+msgid ""
+"This may be useful when downloading media that requires a login, for "
+"example: private YouTube videos."
+msgstr ""
 
 #. (itstool) path: item/p
 #: docs/yelp/C/downloader.page:59
-msgid ""
-"Whether or not to included subtitles that are auto-translated to fit the "
-"requested subtitle languages."
-msgstr ""
-
-#. (itstool) path: item/title
-#: docs/yelp/C/downloader.page:65
-msgid "Preferred Video Codec"
-msgstr "Yeğlenen Kod Çözücü"
-
-#. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:66
-msgid ""
-"The video codec Parabolic should prefer when selecting media formats to "
-"download."
+msgid "This option is on available on non sandboxed platforms."
 msgstr ""
 
 #. (itstool) path: note/p
-#: docs/yelp/C/downloader.page:68
+#: docs/yelp/C/downloader.page:61
 #, fuzzy
-msgid "Default: Any"
-msgstr "Öntanımlı: Açık"
+msgid "Default: None"
+msgstr "Öntanımlı: Kapalı"
 
 #. (itstool) path: item/title
-#: docs/yelp/C/downloader.page:72
-msgid "Recover Crashed Downloads"
-msgstr "Çöken İndirmeleri Kurtar"
+#: docs/yelp/C/downloader.page:65
+msgid "Cookies File"
+msgstr "Çerez Dosyası"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:73
-msgid ""
-"If enabled, Parabolic will track the running and queued downloads and "
-"restart them if necessary if the application crashes and is restarted."
+#: docs/yelp/C/downloader.page:66
+msgid "A .txt file of cookies to pass to yt-dlp when download engine."
 msgstr ""
+
+#. (itstool) path: item/p
+#: docs/yelp/C/downloader.page:68
+msgid ""
+"Use one of the following extensions for getting a cookies file from your "
+"browser:"
+msgstr ""
+
+#. (itstool) path: item/p
+#: docs/yelp/C/downloader.page:69
+msgid ""
+"Chrome: <code>https://chrome.google.com/webstore/detail/get-cookiestxt-"
+"locally/cclelndahbckbenkjhflpdbgdldlbecc</code>"
+msgstr ""
+
+#. (itstool) path: item/p
+#: docs/yelp/C/downloader.page:70
+msgid ""
+"Firefox: <code>https://addons.mozilla.org/en-US/firefox/addon/cookies-txt/</"
+"code>"
+msgstr ""
+
+#. (itstool) path: note/p
+#: docs/yelp/C/downloader.page:72
+msgid "Use these extensions at your own risk."
+msgstr ""
+
+#. (itstool) path: note/p
+#: docs/yelp/C/downloader.page:75
+#, fuzzy
+msgid "Default: No File Selected"
+msgstr "Öntanımlı: Kapalı"
 
 #. (itstool) path: info/title
 #: docs/yelp/C/downloads.page:8
@@ -384,128 +410,135 @@ msgid ""
 msgstr ""
 
 #. (itstool) path: item/title
-#: docs/yelp/C/downloads.page:25 docs/yelp/C/newDownload.page:103
-msgid "Speed Limit"
-msgstr "Hız Sınırı"
-
-#. (itstool) path: item/p
 #: docs/yelp/C/downloads.page:26
-msgid ""
-"A limit, in Ki/s, that is applied to downloads only if they have the "
-"advanced option <code>Speed Limit</code> enabled. Must be an integer value "
-"between 512 and 10240."
+msgid "Overwrite Existing Files"
+msgstr "Varolan Dosyaların Üzerine Yaz"
+
+#. (itstool) path: item/p
+#: docs/yelp/C/downloads.page:27
+msgid "If enabled, Parabolic will overwrite existing files."
 msgstr ""
 
-#. (itstool) path: note/p
+#. (itstool) path: item/p
 #: docs/yelp/C/downloads.page:28
-msgid "Default: 1024"
-msgstr ""
-
-#. (itstool) path: item/title
-#: docs/yelp/C/downloads.page:32
-msgid "Use SponsorBlock for YouTube"
-msgstr "YouTube için SponsorBlock kullan"
-
-#. (itstool) path: item/p
-#: docs/yelp/C/downloads.page:33
 msgid ""
-"If enabled, Parabolic will apply the SponsorBlock extension to YouTube "
-"downloads."
+"For example, if a file named <code>movie.mp4</code> exists in the download "
+"folder, and a new download is created named <code>movie</code>, <code>movie."
+"mp4</code> will be overwritten with the new download's content."
 msgstr ""
 
 #. (itstool) path: note/p
-#: docs/yelp/C/downloads.page:35
+#: docs/yelp/C/downloads.page:30
 msgid ""
-"SponsorBlock only works on YouTube videos. However, leaving this setting on "
-"will not affect downloads from other sites (i.e. not cause them to fail)."
+"Parabolic will detect downloads that should be resumed and avoid this "
+"setting when recovering or retrying failed downloads"
 msgstr ""
 
 #. (itstool) path: item/title
-#: docs/yelp/C/downloads.page:42
-msgid "Proxy URL"
-msgstr "Proxy URLʼsi"
+#: docs/yelp/C/downloads.page:37
+msgid "Maximum Number of Active Downloads"
+msgstr ""
 
 #. (itstool) path: item/p
-#: docs/yelp/C/downloads.page:43
-msgid "The url of the proxy server to use."
+#: docs/yelp/C/downloads.page:38
+msgid ""
+"The number of active downloads allowed to run at a time. Must be an integer "
+"value between 1 and 10."
+msgstr ""
+
+#. (itstool) path: item/p
+#: docs/yelp/C/downloads.page:39
+msgid ""
+"If the max number of active downloads is reached, Parabolic will place new "
+"downloads in a queue until more downloads are able to be run."
 msgstr ""
 
 #. (itstool) path: note/p
+#: docs/yelp/C/downloads.page:41
+msgid "Default: 5"
+msgstr "Öntanımlı: 5"
+
+#. (itstool) path: item/title
 #: docs/yelp/C/downloads.page:45
-#, fuzzy
-msgid "Default: No URL"
-msgstr "Öntanımlı: Kapalı"
+msgid "Limit Filename Characters"
+msgstr ""
+
+#. (itstool) path: item/p
+#: docs/yelp/C/downloads.page:46
+msgid "Restricts characters in filenames to only those supported by Windows."
+msgstr ""
+
+#. (itstool) path: item/p
+#: docs/yelp/C/downloads.page:47
+msgid "This option is only available on Linux."
+msgstr ""
 
 #. (itstool) path: item/title
-#: docs/yelp/C/downloads.page:49
-msgid "Cookies from Browser"
-msgstr "Tarayıcıdan Çerezler"
+#: docs/yelp/C/downloads.page:53
+msgid "Download Immediately After Validation"
+msgstr "Doğrulamadan Hemen Sonra İndir"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/downloads.page:50
-msgid ""
-"A browser in which to read cookies from and pass to yt-dlp's download engine."
-msgstr ""
-
-#. (itstool) path: item/p
-#: docs/yelp/C/downloads.page:51 docs/yelp/C/downloads.page:60
-msgid ""
-"This may be useful when downloading media that requires a login, for "
-"example: private YouTube videos."
-msgstr ""
-
-#. (itstool) path: item/p
-#: docs/yelp/C/downloads.page:52
-msgid "This option is on available on non sandboxed platforms."
-msgstr ""
-
-#. (itstool) path: note/p
 #: docs/yelp/C/downloads.page:54
-#, fuzzy
-msgid "Default: None"
-msgstr "Öntanımlı: Kapalı"
+msgid ""
+"Bypasses the download options selection in the Add Download dialog and "
+"immediately downloads a validated media using previously selected options."
+msgstr ""
 
 #. (itstool) path: item/title
-#: docs/yelp/C/downloads.page:58
-msgid "Cookies File"
-msgstr "Çerez Dosyası"
-
-#. (itstool) path: item/p
-#: docs/yelp/C/downloads.page:59
-msgid "A .txt file of cookies to pass to yt-dlp when download engine."
-msgstr ""
+#: docs/yelp/C/downloads.page:60
+msgid "Included Auto-Generated Subtitles"
+msgstr "Kendiliğinden Oluşturulmuş Alt Yazıları İçer"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/downloads.page:61
 msgid ""
-"Use one of the following extensions for getting a cookies file from your "
-"browser:"
+"Whether or not to included subtitles that are auto-translated to fit the "
+"requested subtitle languages."
 msgstr ""
+
+#. (itstool) path: item/title
+#: docs/yelp/C/downloads.page:67
+msgid "Preferred Video Codec"
+msgstr "Yeğlenen Kod Çözücü"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/downloads.page:62
-msgid ""
-"Chrome: <code>https://chrome.google.com/webstore/detail/get-cookiestxt-"
-"locally/cclelndahbckbenkjhflpdbgdldlbecc</code>"
-msgstr ""
-
-#. (itstool) path: item/p
-#: docs/yelp/C/downloads.page:63
-msgid ""
-"Firefox: <code>https://addons.mozilla.org/en-US/firefox/addon/cookies-txt/</"
-"code>"
-msgstr ""
-
-#. (itstool) path: note/p
-#: docs/yelp/C/downloads.page:65
-msgid "Use these extensions at your own risk."
-msgstr ""
-
-#. (itstool) path: note/p
 #: docs/yelp/C/downloads.page:68
+msgid ""
+"The video codec Parabolic should prefer when selecting media formats to "
+"download."
+msgstr ""
+
+#. (itstool) path: note/p
+#: docs/yelp/C/downloads.page:70 docs/yelp/C/downloads.page:77
 #, fuzzy
-msgid "Default: No File Selected"
-msgstr "Öntanımlı: Kapalı"
+msgid "Default: Any"
+msgstr "Öntanımlı: Açık"
+
+#. (itstool) path: item/title
+#: docs/yelp/C/downloads.page:74
+#, fuzzy
+msgid "Preferred Subtitle Format"
+msgstr "Yeğlenen Kod Çözücü"
+
+#. (itstool) path: item/p
+#: docs/yelp/C/downloads.page:75
+msgid ""
+"The file format Parabolic should ensure all downloaded subtitles are "
+"downloaded as."
+msgstr ""
+
+#. (itstool) path: item/title
+#: docs/yelp/C/downloads.page:81
+msgid "Recover Crashed Downloads"
+msgstr "Çöken İndirmeleri Kurtar"
+
+#. (itstool) path: item/p
+#: docs/yelp/C/downloads.page:82
+msgid ""
+"If enabled, Parabolic will track the running and queued downloads and "
+"restart them if necessary if the application crashes and is restarted."
+msgstr ""
 
 #. (itstool) path: info/title
 #: docs/yelp/C/index.page:7
@@ -708,171 +741,165 @@ msgstr "Dosya Türü"
 msgid "The file type of which to download the media as."
 msgstr ""
 
-#. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:43
-msgid ""
-"If <code>Disallow Conversions</code> is enabled, the only options will be "
-"<code>Video</code> (if supported) and <code>Audio</code>"
-msgstr ""
-
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:45
+#: docs/yelp/C/newDownload.page:44
 msgid ""
 "The previously used file type will be remembered and pre-selected for the "
 "next download."
 msgstr ""
 
+#. (itstool) path: note/p
+#: docs/yelp/C/newDownload.page:47
+msgid ""
+"Selecting the <code>Video (Generic)</code> or <code>Audio (Generic)</code> "
+"file types will cause Parabolic to download the media in the original file "
+"type of the media without performing any conversions."
+msgstr ""
+
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:49
+#: docs/yelp/C/newDownload.page:51
 msgid "Quality"
 msgstr "Kalite"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:50
+#: docs/yelp/C/newDownload.page:52
 msgid ""
 "If the file type is a video type, the listed qualities will be the "
 "resolutions of the media available."
 msgstr ""
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:51
+#: docs/yelp/C/newDownload.page:53
 msgid ""
-"If the file type is an audio type, the listed qualities will be simply "
-"<code>Best</code>, <code>Good</code>, and <code>Worst</code>."
+"If the file type is an audio type, the listed qualities will be the audio "
+"bitrates of the media available."
 msgstr ""
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:53
+#: docs/yelp/C/newDownload.page:55
 msgid ""
 "The previously used quality will be remembered and pre-selected for the next "
 "download."
 msgstr ""
 
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:57
+#: docs/yelp/C/newDownload.page:59
 msgid "Audio Language"
 msgstr ""
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:58
+#: docs/yelp/C/newDownload.page:60
 msgid "The language of which to use from the audio part of a media download."
 msgstr ""
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:59
+#: docs/yelp/C/newDownload.page:61
 msgid ""
 "If no additional languages are available, <code>Default</code> will be the "
 "only option."
 msgstr ""
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:61 docs/yelp/C/newDownload.page:68
-#: docs/yelp/C/newDownload.page:75
+#: docs/yelp/C/newDownload.page:63 docs/yelp/C/newDownload.page:77
 msgid ""
 "The previously used state will be remembered and pre-selected for the next "
 "download."
 msgstr ""
 
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:65
-msgid "Download Subtitle"
-msgstr "Alt Yazı İndir"
+#: docs/yelp/C/newDownload.page:67
+#, fuzzy
+msgid "Subtitles"
+msgstr "Alt Yazıları Göm"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:66
+#: docs/yelp/C/newDownload.page:68
 msgid ""
-"Whether to download and embed subtitle when downloading a video. Further "
-"subtitle settings can be configured in <link "
-"xref=\"downloader\">preferences</link>."
+"The list of subtitles available by the media that can be selected for "
+"download by the user. Further subtitle settings can be configured in <link "
+"xref=\"downloads\">preferences</link>."
 msgstr ""
 
+#. (itstool) path: note/p
+#: docs/yelp/C/newDownload.page:70
+#, fuzzy
+msgid ""
+"The previously selected subtitles will be remembered and pre-selected for "
+"the next download."
+msgstr ""
+"Bu seçeneğin durumu hatırlanacak ve gelecekteki indirmeler için geri "
+"yüklenecek."
+
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:72
+#: docs/yelp/C/newDownload.page:74
 msgid "Split Chapters"
 msgstr "Bölümleri Ayır"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:73
+#: docs/yelp/C/newDownload.page:75
 msgid ""
 "If enabled, Parabolic will split a video download into multiple smaller "
 "files based on its chapters."
 msgstr ""
 
-#. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:79
-msgid "Save Folder"
-msgstr "Kayıt Klasörü"
-
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:80
-msgid "The folder at which to save the download to."
-msgstr ""
-
-#. (itstool) path: note/p
 #: docs/yelp/C/newDownload.page:82
 msgid ""
-"The previously used folder will be remembered and pre-selected for the next "
-"download."
+"If enabled, Parabolic will limit the download's speed with the speed "
+"configured in <link xref=\"downloader\">Preferences</link>."
 msgstr ""
 
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:86
-msgid "File Name"
-msgstr "Dosya Adı"
-
-#. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:87
-msgid "The file name to use when saving the download."
-msgstr ""
-
-#. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:89
-msgid "Default: The title of the media"
-msgstr ""
-
-#. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:93
+#: docs/yelp/C/newDownload.page:85
 msgid "Time Frame"
 msgstr ""
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:94
+#: docs/yelp/C/newDownload.page:86
 msgid ""
 "The user can enter a start time frame and an end time frame to download a "
 "specific section of the media."
 msgstr ""
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:96
+#: docs/yelp/C/newDownload.page:88
 msgid "Default: The whole media length"
 msgstr ""
 
-#. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:99
-msgid ""
-"Enabling this option will disable the use of aria2 as the downloader for "
-"this download, even if it is enabled in Preferences."
-msgstr ""
+#. (itstool) path: item/title
+#: docs/yelp/C/newDownload.page:92
+msgid "Save Folder"
+msgstr "Kayıt Klasörü"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:104
-msgid ""
-"If enabled, Parabolic will limit the download's speed with the speed "
-"configured in <link xref=\"downloader\">Preferences</link>."
+#: docs/yelp/C/newDownload.page:93
+msgid "The folder at which to save the download to."
 msgstr ""
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:106
-msgid "Available in the <code>Advanced Options</code> section."
+#: docs/yelp/C/newDownload.page:95
+msgid ""
+"The previously used folder will be remembered and pre-selected for the next "
+"download."
 msgstr ""
 
-#, fuzzy
-#~ msgid ""
-#~ "The previously used codec will be remembered and pre-selected for the "
-#~ "next download."
-#~ msgstr ""
-#~ "Bu seçeneğin durumu hatırlanacak ve gelecekteki indirmeler için geri "
-#~ "yüklenecek."
+#. (itstool) path: item/title
+#: docs/yelp/C/newDownload.page:99
+msgid "File Name"
+msgstr "Dosya Adı"
+
+#. (itstool) path: item/p
+#: docs/yelp/C/newDownload.page:100
+msgid "The file name to use when saving the download."
+msgstr ""
+
+#. (itstool) path: note/p
+#: docs/yelp/C/newDownload.page:102
+msgid "Default: The title of the media"
+msgstr ""
+
+#~ msgid "Download Subtitle"
+#~ msgstr "Alt Yazı İndir"
 
 #~ msgid "Disallow Conversions"
 #~ msgstr "Dönüşümlere İzin Verme"

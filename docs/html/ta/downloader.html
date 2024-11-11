@@ -20,10 +20,9 @@ document.addEventListener('DOMContentLoaded', function() {
 <div class="contents pagewide">
 <p class="p"><span class="app">பரபோலிக்</span> இல் உள்ள விருப்பங்களில் பதிவிறக்குபவரை உள்ளமைப்பதற்கான அனைத்து விருப்பங்களையும் இந்தப் பக்கம் விளக்குகிறது.</p>
 <div class="terms"><div class="inner"><div class="region"><dl class="terms">
-<dt class="terms">ஏற்கனவே உள்ள கோப்புகளை மேலெழுதவும்</dt>
+<dt class="terms">Verbose Logging</dt>
 <dd class="terms">
-<p class="p">இயக்கப்பட்டால், பாரபோலிக் ஏற்கனவே உள்ள கோப்புகளை மேலெழுதும்.</p>
-<p class="p">எடுத்துக்காட்டாக, பதிவிறக்கக் கோப்புறையில் <span class="code">movie.mp4</span> என்ற கோப்பு இருந்தால், <span class="code">movie</span> என்ற பெயரில் புதிய பதிவிறக்கம் உருவாக்கப்பட்டால், <span class="code">movie.mp4</span> புதிய பதிவிறக்கத்தின் உள்ளடக்கத்துடன் மேலெழுதப்படும்.</p>
+<p class="p">If enabled, more verbose logs will be provided by <span class="code">yt-dlp</span> for each download.</p>
 <div class="note note-advanced" title="மேம்பட்ட">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -41,10 +40,9 @@ document.addEventListener('DOMContentLoaded', function() {
 </svg><div class="inner"><div class="region"><div class="contents"><p class="p">இயல்புநிலை: ஆன்</p></div></div></div>
 </div>
 </dd>
-<dt class="terms">செயலில் உள்ள பதிவிறக்கங்களின் அதிகபட்ச எண்ணிக்கை</dt>
+<dt class="terms">வேக வரம்பு</dt>
 <dd class="terms">
-<p class="p">ஒரே நேரத்தில் இயக்க அனுமதிக்கப்பட்ட செயலில் உள்ள பதிவிறக்கங்களின் எண்ணிக்கை. 1 மற்றும் 10 க்கு இடையில் ஒரு முழு எண் மதிப்பு இருக்க வேண்டும்.</p>
-<p class="p">செயலில் உள்ள பதிவிறக்கங்களின் அதிகபட்ச எண்ணிக்கையை அடைந்தால், அதிகமான பதிவிறக்கங்களை இயக்க முடியும் வரை, பரபோலிக் புதிய பதிவிறக்கங்களை வரிசையில் வைக்கும்.</p>
+<p class="p">Ki/s இல், மேம்பட்ட விருப்பம் <span class="code">Speed Limit</span> இயக்கப்பட்டிருந்தால் மட்டுமே பதிவிறக்கங்களுக்கு ஒரு வரம்பு பொருந்தும். 512 மற்றும் 10240 க்கு இடையில் ஒரு முழு எண்ணாக இருக்க வேண்டும்.</p>
 <div class="note note-advanced" title="மேம்பட்ட">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -59,13 +57,20 @@ document.addEventListener('DOMContentLoaded', function() {
   <path class="yelp-svg-fill" d="m8.2435 7.0719-1.9004-3.3145 1.4143-1.4143 3.1596 1.7457z"></path>
   <path class="yelp-svg-fill" d="m11.072 11.757-3.3146 1.9-1.4143-1.414 1.7457-3.1602z"></path>
  </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">இயல்புநிலை: 5</p></div></div></div>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">இயல்புநிலை: 1024</p></div></div></div>
 </div>
 </dd>
-<dt class="terms">Limit Filename Characters</dt>
+<dt class="terms">YouTubeக்கு SponsorBlock ஐப் பயன்படுத்தவும்</dt>
 <dd class="terms">
-<p class="p">Restricts characters in filenames to only those supported by Windows.</p>
-<p class="p">This option is only available on Linux.</p>
+<p class="p">இயக்கப்பட்டால், YouTube பதிவிறக்கங்களுக்கு பரபோலிக் SponsorBlock நீட்டிப்பைப் பயன்படுத்தும்.</p>
+<div class="note" title="குறிப்பு">
+<svg height="24" width="24" version="1.1">
+ <g>
+  <path class="yelp-svg-fill" d="m4 3h16c0.554 0 1 0.446 1 1v11h-6v6h-11c-0.554 0-1-0.446-1-1v-16c0-0.554 0.446-1 1-1z"></path>
+  <path class="yelp-svg-fill" d="m17 16h4l-5 5v-4c0-0.554 0.446-1 1-1z"></path>
+ </g>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">YouTube வீடியோக்களில் மட்டுமே SponsorBlock வேலை செய்யும். இருப்பினும், இந்த அமைப்பை ஆன் செய்வதால் பிற தளங்களில் இருந்து பதிவிறக்கம் பாதிக்கப்படாது (அதாவது அவை தோல்வியடையாது).</p></div></div></div>
+</div>
 <div class="note note-advanced" title="மேம்பட்ட">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -83,9 +88,9 @@ document.addEventListener('DOMContentLoaded', function() {
 </svg><div class="inner"><div class="region"><div class="contents"><p class="p">இயல்புநிலை: ஆஃப்</p></div></div></div>
 </div>
 </dd>
-<dt class="terms">Download Immediately After Validation</dt>
+<dt class="terms">ப்ராக்ஸி URL</dt>
 <dd class="terms">
-<p class="p">Bypasses the download options selection in the Add Download dialog and immediately downloads a validated media using previously selected options.</p>
+<p class="p">பயன்படுத்த வேண்டிய ப்ராக்ஸி சேவையகத்தின் url.</p>
 <div class="note note-advanced" title="மேம்பட்ட">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -100,12 +105,14 @@ document.addEventListener('DOMContentLoaded', function() {
   <path class="yelp-svg-fill" d="m8.2435 7.0719-1.9004-3.3145 1.4143-1.4143 3.1596 1.7457z"></path>
   <path class="yelp-svg-fill" d="m11.072 11.757-3.3146 1.9-1.4143-1.414 1.7457-3.1602z"></path>
  </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">இயல்புநிலை: ஆஃப்</p></div></div></div>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Default: No URL</p></div></div></div>
 </div>
 </dd>
-<dt class="terms">Included Auto-Generated Subtitles</dt>
+<dt class="terms">Cookies from Browser</dt>
 <dd class="terms">
-<p class="p">Whether or not to included subtitles that are auto-translated to fit the requested subtitle languages.</p>
+<p class="p">A browser in which to read cookies from and pass to yt-dlp's download engine.</p>
+<p class="p">This may be useful when downloading media that requires a login, for example: private YouTube videos.</p>
+<p class="p">This option is on available on non sandboxed platforms.</p>
 <div class="note note-advanced" title="மேம்பட்ட">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -120,32 +127,24 @@ document.addEventListener('DOMContentLoaded', function() {
   <path class="yelp-svg-fill" d="m8.2435 7.0719-1.9004-3.3145 1.4143-1.4143 3.1596 1.7457z"></path>
   <path class="yelp-svg-fill" d="m11.072 11.757-3.3146 1.9-1.4143-1.414 1.7457-3.1602z"></path>
  </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">இயல்புநிலை: ஆஃப்</p></div></div></div>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Default: None</p></div></div></div>
 </div>
 </dd>
-<dt class="terms">Preferred Video Codec</dt>
+<dt class="terms">குக்கீகள் கோப்பு</dt>
 <dd class="terms">
-<p class="p">The video codec Parabolic should prefer when selecting media formats to download.</p>
-<div class="note note-advanced" title="மேம்பட்ட">
+<p class="p">A .txt file of cookies to pass to yt-dlp when download engine.</p>
+<p class="p">This may be useful when downloading media that requires a login, for example: private YouTube videos.</p>
+<p class="p">உங்கள் உலாவியில் இருந்து குக்கீகள் கோப்பைப் பெற, பின்வரும் நீட்டிப்புகளில் ஒன்றைப் பயன்படுத்தவும்:</p>
+<p class="p">குரோம்: <span class="code">https://chrome.google.com/webstore/detail/get-cookiestxt-locally/cclelndahbckbenkjhflpdbgdldlbecc</span></p>
+<p class="p">பயர்பாக்ஸ்: <span class="code">https://addons.mozilla.org/en-US/firefox/addon/cookies-txt/</span></p>
+<div class="note" title="குறிப்பு">
 <svg height="24" width="24" version="1.1">
  <g>
-  <path class="yelp-svg-fill" d="m5.4473 12.572c-2.039 0.957-3.4473 3.019-3.4473 5.428v4h20v-4c0-2.406-1.406-4.466-3.441-5.424a8 8 0 0 1 -6.559 3.424 8 8 0 0 1 -6.5527 -3.428z"></path>
-  <path class="yelp-svg-fill" d="m12 3a5 5 0 0 0 -5 5 5 5 0 0 0 5 5 5 5 0 0 0 5 -5 5 5 0 0 0 -5 -5zm0 3a2 2 0 0 1 2 2 2 2 0 0 1 -2 2 2 2 0 0 1 -2 -2 2 2 0 0 1 2 -2z"></path>
-  <path class="yelp-svg-fill" d="m15.312 6 3.688 1v2l-3.4688 1z"></path>
-  <path class="yelp-svg-fill" d="m14 11.312-1 3.688h-2l-1-3.469z"></path>
-  <path class="yelp-svg-fill" d="m10 4.6875 1-3.6875h2l1 3.4688z"></path>
-  <path class="yelp-svg-fill" d="m8.6875 10-3.6875-1v-2l3.4688-1z"></path>
-  <path class="yelp-svg-fill" d="m12.928 4.2435 3.3146-1.9003 1.4142 1.4142-1.7457 3.1599z"></path>
-  <path class="yelp-svg-fill" d="m15.757 8.9281 1.9003 3.3146-1.4142 1.4142-3.1599-1.7457z"></path>
-  <path class="yelp-svg-fill" d="m8.2435 7.0719-1.9004-3.3145 1.4143-1.4143 3.1596 1.7457z"></path>
-  <path class="yelp-svg-fill" d="m11.072 11.757-3.3146 1.9-1.4143-1.414 1.7457-3.1602z"></path>
+  <path class="yelp-svg-fill" d="m4 3h16c0.554 0 1 0.446 1 1v11h-6v6h-11c-0.554 0-1-0.446-1-1v-16c0-0.554 0.446-1 1-1z"></path>
+  <path class="yelp-svg-fill" d="m17 16h4l-5 5v-4c0-0.554 0.446-1 1-1z"></path>
  </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Default: Any</p></div></div></div>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">இந்த நீட்டிப்புகளை உங்கள் சொந்த ஆபத்தில் பயன்படுத்தவும்.</p></div></div></div>
 </div>
-</dd>
-<dt class="terms">Recover Crashed Downloads</dt>
-<dd class="terms">
-<p class="p">If enabled, Parabolic will track the running and queued downloads and restart them if necessary if the application crashes and is restarted.</p>
 <div class="note note-advanced" title="மேம்பட்ட">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -160,7 +159,7 @@ document.addEventListener('DOMContentLoaded', function() {
   <path class="yelp-svg-fill" d="m8.2435 7.0719-1.9004-3.3145 1.4143-1.4143 3.1596 1.7457z"></path>
   <path class="yelp-svg-fill" d="m11.072 11.757-3.3146 1.9-1.4143-1.414 1.7457-3.1602z"></path>
  </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">இயல்புநிலை: ஆன்</p></div></div></div>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">இயல்புநிலை: கோப்பு எதுவும் தேர்ந்தெடுக்கப்படவில்லை</p></div></div></div>
 </div>
 </dd>
 </dl></div></div></div>

@@ -19,58 +19,58 @@
 
 <terms>
     <item>
-        <title>بازنویسی فایل های موجود</title>
-        <p>اگر فعال باشد، Parabolic فایل‌های موجود را بازنویسی می‌کند.</p>
-        <p>
-            For example, if a file named <code>movie.mp4</code> exists in the download folder, and a new download is created named <code>movie</code>, <code>movie.mp4</code> will be overwritten with the new download's content.
-        </p>
+        <title>Verbose Logging</title>
+        <p>If enabled, more verbose logs will be provided by <code>yt-dlp</code> for each download.</p>
         <note style="advanced">
             <p>پیش فرض: روشن</p>
         </note>
     </item>
-	<item>
-		<title>حداکثر تعداد بارگیری‌های فعال</title>
-		<p>تعداد بارگیری‌های فعال مجاز به اجرا در یک زمان. باید یک مقدار صحیح بین 1 و 10 باشد.</p>
-        <p>If the max number of active downloads is reached, Parabolic will place new downloads in a queue until more downloads are able to be run.</p>
+    <item>
+        <title>محدودیت سرعت</title>
+        <p>A limit, in Ki/s, that is applied to downloads only if they have the advanced option <code>Speed Limit</code> enabled. Must be an integer value between 512 and 10240.</p>
 		<note style="advanced">
-			<p>پیش فرض: ۵</p>
+			<p>پیش فرض: ۱۰۲۴</p>
 		</note>
     </item>
     <item>
-		<title>Limit Filename Characters</title>
-		<p>Restricts characters in filenames to only those supported by Windows.</p>
-        <p>This option is only available on Linux.</p>
-		<note style="advanced">
-			<p>پیش فرض: خاموش</p>
-		</note>
-    </item>
-    <item>
-		<title>Download Immediately After Validation</title>
-		<p>Bypasses the download options selection in the Add Download dialog and immediately downloads a validated media using previously selected options.</p>
-		<note style="advanced">
-			<p>پیش فرض: خاموش</p>
-		</note>
-    </item>
-    <item>
-        <title>شامل زیرنویس‌های تولید شده خودکار</title>
-        <p>این که آیا زیرنویس‌هایی را شامل می‌شود که به صورت خودکار ترجمه می شوند تا متناسب با زبان‌های زیرنویس درخواست شده باشند.</p>
+        <title>از SponsorBlock برای YouTube استفاده کنید</title>
+        <p>اگر فعال باشد، Parabolic پسوند SponsorBlock را برای دانلودهای YouTube اعمال می کند.</p>
+        <note>
+            <p>SponsorBlock only works on YouTube videos. However, leaving this setting on will not affect downloads from other sites (i.e. not cause them to fail).</p>
+        </note>
         <note style="advanced">
             <p>پیش فرض: خاموش</p>
         </note>
     </item>
     <item>
-        <title>Preferred Video Codec</title>
-        <p>The video codec Parabolic should prefer when selecting media formats to download.</p>
+        <title>URL پروکسی</title>
+        <p>آدرس سرور پروکسی مورد استفاده.</p>
         <note style="advanced">
-            <p>Default: Any</p>
-        </note>
+			<p>Default: No URL</p>
+		</note>
     </item>
     <item>
-        <title>Recover Crashed Downloads</title>
-        <p>If enabled, Parabolic will track the running and queued downloads and restart them if necessary if the application crashes and is restarted.</p>
-        <note style="advanced">
-            <p>پیش فرض: روشن</p>
+        <title>Cookies from Browser</title>
+        <p>A browser in which to read cookies from and pass to yt-dlp's download engine.</p>
+        <p>This may be useful when downloading media that requires a login, for example: private YouTube videos.</p>
+        <p>This option is on available on non sandboxed platforms.</p>
+		<note style="advanced">
+			<p>Default: None</p>
+		</note>
+    </item>
+    <item>
+        <title>فایل کوکی ها</title>
+        <p>A .txt file of cookies to pass to yt-dlp when download engine.</p>
+        <p>This may be useful when downloading media that requires a login, for example: private YouTube videos.</p>
+        <p>برای دریافت فایل کوکی از مرورگر خود از یکی از پسوندهای زیر استفاده کنید:</p>
+        <p>Chrome: <code>https://chrome.google.com/webstore/detail/get-cookiestxt-locally/cclelndahbckbenkjhflpdbgdldlbecc</code></p>
+        <p>Firefox: <code>https://addons.mozilla.org/en-US/firefox/addon/cookies-txt/</code></p>
+        <note>
+            <p>از این افزونه‌ها با مسئولیت خود استفاده کنید.</p>
         </note>
+		<note style="advanced">
+			<p>Default: No File Selected</p>
+		</note>
     </item>
 </terms>
 </page>

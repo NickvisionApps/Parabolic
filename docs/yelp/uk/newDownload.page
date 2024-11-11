@@ -43,15 +43,17 @@
     <item>
 		<title>Тип файлу</title>
 		<p>Тип файлу, у якому потрібно завантажити медіафайл.</p>
-            <p>Якщо ввімкнено <code>Заборонити конвертацію</code>, єдиними варіантами будуть <code>Відео</code> (якщо підтримується) та <code>Аудіо</code></p>
         <note>
             <p>Раніше використаний тип файлу буде запам'ятовуватися і попередньо вибиратися для наступного завантаження.</p>
+        </note>
+        <note style="advanced">
+            <p>Selecting the <code>Video (Generic)</code> or <code>Audio (Generic)</code> file types will cause Parabolic to download the media in the original file type of the media without performing any conversions.</p>
         </note>
     </item>
     <item>
 		<title>Якість</title>
 		<p>Якщо тип файлу - відео, перелічені якості будуть відповідати роздільній здатності доступного носія.</p>
-        <p>Якщо тип файлу є аудіо, доступні якості будуть просто <code>Best</code> (Найкраща), <code>Good</code> (Добра), і <code>Worst</code> (Найгірша).</p>
+        <p>If the file type is an audio type, the listed qualities will be the audio bitrates of the media available.</p>
         <note>
             <p>Раніше використана якість буде запам'ятовуватися і попередньо вибиратися для наступного завантаження.</p>
         </note>
@@ -65,10 +67,10 @@
         </note>
     </item>
     <item>
-		<title>Завантажити субтитри</title>
-		<p>Чи завантажувати і вбудовувати субтитри при завантаженні відео. Додаткові налаштування субтитрів можна налаштувати в <link xref="downloader">Параметрах</link>.</p>
+		<title>Subtitles</title>
+		<p>The list of subtitles available by the media that can be selected for download by the user. Further subtitle settings can be configured in <link xref="downloads">preferences</link>.</p>
         <note>
-            <p>Раніше використаний стан запам'ятовуватиметься та попередньо вибиратиметься для наступного завантаження.</p>
+            <p>The previously selected subtitles will be remembered and pre-selected for the next download.</p>
         </note>
     </item>
     <item>
@@ -77,6 +79,17 @@
         <note>
             <p>Раніше використаний стан запам'ятовуватиметься та попередньо вибиратиметься для наступного завантаження.</p>
         </note>
+    </item>
+    <item>
+		<title>Обмеження швидкості</title>
+		<p>Якщо увімкнено, Parabolic обмежить швидкість завантаження відповідно до швидкості, налаштованої в <link xref="downloader">Параметрах</link>.</p>
+    </item>
+    <item>
+		<title>Часовий проміжок</title>
+		<p>Користувач може вказати початковий і кінцевий часові проміжки для завантаження конкретної частини медіа.</p>
+        <note style="advanced">
+			<p>За замовчуванням: вся довжина медіа</p>
+		</note>
     </item>
     <item>
 		<title>Зберегти теку</title>
@@ -91,23 +104,6 @@
 		<note style="advanced">
 			<p>За замовчуванням: назва медіа</p>
 		</note>
-    </item>
-    <item>
-		<title>Часовий проміжок</title>
-		<p>Користувач може вказати початковий і кінцевий часові проміжки для завантаження конкретної частини медіа.</p>
-        <note style="advanced">
-			<p>За замовчуванням: вся довжина медіа</p>
-		</note>
-        <note style="advanced">
-            <p>Увімкнення цієї опції вимкне використання aria2 як завантажувача для цього завантаження, навіть якщо він увімкнений у Параметрах.</p>
-        </note>
-    </item>
-    <item>
-		<title>Обмеження швидкості</title>
-		<p>Якщо увімкнено, Parabolic обмежить швидкість завантаження відповідно до швидкості, налаштованої в <link xref="downloader">Параметрах</link>.</p>
-        <note>
-            <p>Доступно в розділі <code>Додаткові параметри</code>.</p>
-        </note>
     </item>
 </terms>
 </page>

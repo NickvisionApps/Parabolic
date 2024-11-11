@@ -20,9 +20,18 @@ document.addEventListener('DOMContentLoaded', function() {
 <div class="contents pagewide">
 <p class="p">Táto stránka vysvetľuje všetky možnosti pre konfiguráciu Prenosov v Preferences v <span class="app">Parabolic</span>.</p>
 <div class="terms"><div class="inner"><div class="region"><dl class="terms">
-<dt class="terms">Obmedzenie rýchlosti</dt>
+<dt class="terms">Prepísať existujúce súbory</dt>
 <dd class="terms">
-<p class="p">Obmedzenie v Ki/s, ktoré sa použije na sťahovanie iba vtedy, ak je povolená rozšírená možnosť <span class="code">Omedzenie rýchlosti</span>. Musí to byť celočíselná hodnota medzi 512 a 10240.</p>
+<p class="p">Ak je to povolené, Parabolic prepíše existujúce súbory.</p>
+<p class="p">Napríklad, ak súbor s názvom <span class="code">movie.mp4</span> existuje v priečinku na stiahnutie a nový vytvorený stiahnutý súbor je pomenovaný <span class="code">movie</span>, <span class="code">movie.mp4</span> bude prepísaný s novým obsahom sťahovania.</p>
+<div class="note" title="Poznámka">
+<svg height="24" width="24" version="1.1">
+ <g>
+  <path class="yelp-svg-fill" d="m4 3h16c0.554 0 1 0.446 1 1v11h-6v6h-11c-0.554 0-1-0.446-1-1v-16c0-0.554 0.446-1 1-1z"></path>
+  <path class="yelp-svg-fill" d="m17 16h4l-5 5v-4c0-0.554 0.446-1 1-1z"></path>
+ </g>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Parabolic will detect downloads that should be resumed and avoid this setting when recovering or retrying failed downloads</p></div></div></div>
+</div>
 <div class="note note-advanced" title="Pokročilé">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -37,20 +46,34 @@ document.addEventListener('DOMContentLoaded', function() {
   <path class="yelp-svg-fill" d="m8.2435 7.0719-1.9004-3.3145 1.4143-1.4143 3.1596 1.7457z"></path>
   <path class="yelp-svg-fill" d="m11.072 11.757-3.3146 1.9-1.4143-1.414 1.7457-3.1602z"></path>
  </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Predvolené: 1024</p></div></div></div>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Predvolené: Zapnuté</p></div></div></div>
 </div>
 </dd>
-<dt class="terms">Použiť SponsorBlock pre YouTube</dt>
+<dt class="terms">Maximálny počet aktívnych stiahnutí</dt>
 <dd class="terms">
-<p class="p">Ak je táto funkcia povolená, aplikácia Parabolic použije rozšírenie SponsorBlock na sťahovanie z YouTube.</p>
-<div class="note" title="Poznámka">
+<p class="p">Počet aktívnych sťahovaní, ktoré môžu byť spustené v danom čase. Musí to byť celočíselná hodnota od 1 do 10.</p>
+<p class="p">Ak sa dosiahne maximálny počet aktívnych sťahovaní, Parabolic zaradí nové sťahovania do poradia, kým nebude možné spustiť ďalšie sťahovania.</p>
+<div class="note note-advanced" title="Pokročilé">
 <svg height="24" width="24" version="1.1">
  <g>
-  <path class="yelp-svg-fill" d="m4 3h16c0.554 0 1 0.446 1 1v11h-6v6h-11c-0.554 0-1-0.446-1-1v-16c0-0.554 0.446-1 1-1z"></path>
-  <path class="yelp-svg-fill" d="m17 16h4l-5 5v-4c0-0.554 0.446-1 1-1z"></path>
+  <path class="yelp-svg-fill" d="m5.4473 12.572c-2.039 0.957-3.4473 3.019-3.4473 5.428v4h20v-4c0-2.406-1.406-4.466-3.441-5.424a8 8 0 0 1 -6.559 3.424 8 8 0 0 1 -6.5527 -3.428z"></path>
+  <path class="yelp-svg-fill" d="m12 3a5 5 0 0 0 -5 5 5 5 0 0 0 5 5 5 5 0 0 0 5 -5 5 5 0 0 0 -5 -5zm0 3a2 2 0 0 1 2 2 2 2 0 0 1 -2 2 2 2 0 0 1 -2 -2 2 2 0 0 1 2 -2z"></path>
+  <path class="yelp-svg-fill" d="m15.312 6 3.688 1v2l-3.4688 1z"></path>
+  <path class="yelp-svg-fill" d="m14 11.312-1 3.688h-2l-1-3.469z"></path>
+  <path class="yelp-svg-fill" d="m10 4.6875 1-3.6875h2l1 3.4688z"></path>
+  <path class="yelp-svg-fill" d="m8.6875 10-3.6875-1v-2l3.4688-1z"></path>
+  <path class="yelp-svg-fill" d="m12.928 4.2435 3.3146-1.9003 1.4142 1.4142-1.7457 3.1599z"></path>
+  <path class="yelp-svg-fill" d="m15.757 8.9281 1.9003 3.3146-1.4142 1.4142-3.1599-1.7457z"></path>
+  <path class="yelp-svg-fill" d="m8.2435 7.0719-1.9004-3.3145 1.4143-1.4143 3.1596 1.7457z"></path>
+  <path class="yelp-svg-fill" d="m11.072 11.757-3.3146 1.9-1.4143-1.414 1.7457-3.1602z"></path>
  </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">SponsorBlock funguje len na videá v službe YouTube. Ponechanie tohto nastavenia však neovplyvní sťahovanie z iných stránok (t. j. nespôsobí ich zlyhanie).</p></div></div></div>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Predvolené: 5</p></div></div></div>
 </div>
+</dd>
+<dt class="terms">Limitné znaky</dt>
+<dd class="terms">
+<p class="p">Obmedziť znaky v názvy súborov iba tie podporované systémom Windows.</p>
+<p class="p">Táto možnosť je dostupná len na Linuxe.</p>
 <div class="note note-advanced" title="Pokročilé">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -68,9 +91,9 @@ document.addEventListener('DOMContentLoaded', function() {
 </svg><div class="inner"><div class="region"><div class="contents"><p class="p">Predvolené: Vypnuté</p></div></div></div>
 </div>
 </dd>
-<dt class="terms">URL adresa proxy servera</dt>
+<dt class="terms">Na stiahnutie Ihneď po potvrdení</dt>
 <dd class="terms">
-<p class="p">URL adresa proxy servera, ktorý sa má použiť.</p>
+<p class="p">Prechádza výber možností sťahovania v dialógovom okne Add Download a okamžite stiahne overené médiá pomocou predtým vybraných možností.</p>
 <div class="note note-advanced" title="Pokročilé">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -85,14 +108,12 @@ document.addEventListener('DOMContentLoaded', function() {
   <path class="yelp-svg-fill" d="m8.2435 7.0719-1.9004-3.3145 1.4143-1.4143 3.1596 1.7457z"></path>
   <path class="yelp-svg-fill" d="m11.072 11.757-3.3146 1.9-1.4143-1.414 1.7457-3.1602z"></path>
  </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Default: Žiadne URL</p></div></div></div>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Predvolené: Vypnuté</p></div></div></div>
 </div>
 </dd>
-<dt class="terms">Súbory Cookie z prehliadača</dt>
+<dt class="terms">Zahrnuté automaticky generované titulky</dt>
 <dd class="terms">
-<p class="p">Prehliadač, z ktorého sa načítajú súbory cookie a odovzdávajú sa do nástroja na sťahovanie yt-dlp.</p>
-<p class="p">To môže byť užitočné pri sťahovaní médií, ktoré vyžaduje prihlásenie, napríklad: súkromné videá YouTube.</p>
-<p class="p">Táto možnosť je k dispozícii na non Sandboxed platformách.</p>
+<p class="p">Či majú byť zahrnuté titulky, ktoré sú automaticky preložené tak, aby zodpovedali požadovanému jazyku tituliek, alebo nie.</p>
 <div class="note note-advanced" title="Pokročilé">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -107,24 +128,12 @@ document.addEventListener('DOMContentLoaded', function() {
   <path class="yelp-svg-fill" d="m8.2435 7.0719-1.9004-3.3145 1.4143-1.4143 3.1596 1.7457z"></path>
   <path class="yelp-svg-fill" d="m11.072 11.757-3.3146 1.9-1.4143-1.414 1.7457-3.1602z"></path>
  </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Predvolené: Žiadne</p></div></div></div>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Predvolené: Vypnuté</p></div></div></div>
 </div>
 </dd>
-<dt class="terms">Súbor s cookie</dt>
+<dt class="terms">Uprednostňovaný video kodek</dt>
 <dd class="terms">
-<p class="p">.txt súbor cookies prejsť na yt-dlp pri sťahovaní motora.</p>
-<p class="p">To môže byť užitočné pri sťahovaní médií, ktoré vyžaduje prihlásenie, napríklad: súkromné videá YouTube.</p>
-<p class="p">Použite jeden z nasledujúcich rozšírení pre získanie súborov cookie z vášho prehliadača:</p>
-<p class="p">Chrome: <span class="code">https://chrome.google.com/webstore/detail/get-cookiestxt-locally/cclelndahbckbenkjhflpdbgdlbecc</span></p>
-<p class="p">Firefox: <span class="code">https://addons.mozilla.org/en-US/firefox/addon/cookies-txt/</span></p>
-<div class="note" title="Poznámka">
-<svg height="24" width="24" version="1.1">
- <g>
-  <path class="yelp-svg-fill" d="m4 3h16c0.554 0 1 0.446 1 1v11h-6v6h-11c-0.554 0-1-0.446-1-1v-16c0-0.554 0.446-1 1-1z"></path>
-  <path class="yelp-svg-fill" d="m17 16h4l-5 5v-4c0-0.554 0.446-1 1-1z"></path>
- </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Použite tieto rozšírenia na vlastné riziko.</p></div></div></div>
-</div>
+<p class="p">Video kódc Parabolic by mal radšej pri výbere formátov médií na stiahnutie.</p>
 <div class="note note-advanced" title="Pokročilé">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -139,7 +148,47 @@ document.addEventListener('DOMContentLoaded', function() {
   <path class="yelp-svg-fill" d="m8.2435 7.0719-1.9004-3.3145 1.4143-1.4143 3.1596 1.7457z"></path>
   <path class="yelp-svg-fill" d="m11.072 11.757-3.3146 1.9-1.4143-1.414 1.7457-3.1602z"></path>
  </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Default: Žiadny súbor Vybrané</p></div></div></div>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Default: Akékoľvek</p></div></div></div>
+</div>
+</dd>
+<dt class="terms">Preferred Subtitle Format</dt>
+<dd class="terms">
+<p class="p">The file format Parabolic should ensure all downloaded subtitles are downloaded as.</p>
+<div class="note note-advanced" title="Pokročilé">
+<svg height="24" width="24" version="1.1">
+ <g>
+  <path class="yelp-svg-fill" d="m5.4473 12.572c-2.039 0.957-3.4473 3.019-3.4473 5.428v4h20v-4c0-2.406-1.406-4.466-3.441-5.424a8 8 0 0 1 -6.559 3.424 8 8 0 0 1 -6.5527 -3.428z"></path>
+  <path class="yelp-svg-fill" d="m12 3a5 5 0 0 0 -5 5 5 5 0 0 0 5 5 5 5 0 0 0 5 -5 5 5 0 0 0 -5 -5zm0 3a2 2 0 0 1 2 2 2 2 0 0 1 -2 2 2 2 0 0 1 -2 -2 2 2 0 0 1 2 -2z"></path>
+  <path class="yelp-svg-fill" d="m15.312 6 3.688 1v2l-3.4688 1z"></path>
+  <path class="yelp-svg-fill" d="m14 11.312-1 3.688h-2l-1-3.469z"></path>
+  <path class="yelp-svg-fill" d="m10 4.6875 1-3.6875h2l1 3.4688z"></path>
+  <path class="yelp-svg-fill" d="m8.6875 10-3.6875-1v-2l3.4688-1z"></path>
+  <path class="yelp-svg-fill" d="m12.928 4.2435 3.3146-1.9003 1.4142 1.4142-1.7457 3.1599z"></path>
+  <path class="yelp-svg-fill" d="m15.757 8.9281 1.9003 3.3146-1.4142 1.4142-3.1599-1.7457z"></path>
+  <path class="yelp-svg-fill" d="m8.2435 7.0719-1.9004-3.3145 1.4143-1.4143 3.1596 1.7457z"></path>
+  <path class="yelp-svg-fill" d="m11.072 11.757-3.3146 1.9-1.4143-1.414 1.7457-3.1602z"></path>
+ </g>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Default: Akékoľvek</p></div></div></div>
+</div>
+</dd>
+<dt class="terms">Obnoviť zlyhané stiahnutia</dt>
+<dd class="terms">
+<p class="p">Ak je to povolené, Parabolic bude sledovať beh a frontd downloads a reštartovať ich, ak je to potrebné, ak sa aplikácia zrúti a reštartuje.</p>
+<div class="note note-advanced" title="Pokročilé">
+<svg height="24" width="24" version="1.1">
+ <g>
+  <path class="yelp-svg-fill" d="m5.4473 12.572c-2.039 0.957-3.4473 3.019-3.4473 5.428v4h20v-4c0-2.406-1.406-4.466-3.441-5.424a8 8 0 0 1 -6.559 3.424 8 8 0 0 1 -6.5527 -3.428z"></path>
+  <path class="yelp-svg-fill" d="m12 3a5 5 0 0 0 -5 5 5 5 0 0 0 5 5 5 5 0 0 0 5 -5 5 5 0 0 0 -5 -5zm0 3a2 2 0 0 1 2 2 2 2 0 0 1 -2 2 2 2 0 0 1 -2 -2 2 2 0 0 1 2 -2z"></path>
+  <path class="yelp-svg-fill" d="m15.312 6 3.688 1v2l-3.4688 1z"></path>
+  <path class="yelp-svg-fill" d="m14 11.312-1 3.688h-2l-1-3.469z"></path>
+  <path class="yelp-svg-fill" d="m10 4.6875 1-3.6875h2l1 3.4688z"></path>
+  <path class="yelp-svg-fill" d="m8.6875 10-3.6875-1v-2l3.4688-1z"></path>
+  <path class="yelp-svg-fill" d="m12.928 4.2435 3.3146-1.9003 1.4142 1.4142-1.7457 3.1599z"></path>
+  <path class="yelp-svg-fill" d="m15.757 8.9281 1.9003 3.3146-1.4142 1.4142-3.1599-1.7457z"></path>
+  <path class="yelp-svg-fill" d="m8.2435 7.0719-1.9004-3.3145 1.4143-1.4143 3.1596 1.7457z"></path>
+  <path class="yelp-svg-fill" d="m11.072 11.757-3.3146 1.9-1.4143-1.414 1.7457-3.1602z"></path>
+ </g>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Predvolené: Zapnuté</p></div></div></div>
 </div>
 </dd>
 </dl></div></div></div>

@@ -43,15 +43,17 @@
     <item>
 		<title>Tipo de archivo</title>
 		<p>El tipo de archivo con el que se descargarán los archivos multimedia.</p>
-            <p>Si <code>No permitir conversiones</code> está activada, las únicas opciones serán <code>Vídeo</code> (si se admite) y <code>Audio</code></p>
         <note>
             <p>El tipo de archivo usado anteriormente será recordado y preseleccionado para la siguiente descarga.</p>
+        </note>
+        <note style="advanced">
+            <p>Selecting the <code>Video (Generic)</code> or <code>Audio (Generic)</code> file types will cause Parabolic to download the media in the original file type of the media without performing any conversions.</p>
         </note>
     </item>
     <item>
 		<title>Calidad</title>
 		<p>Si el tipo de archivo es de vídeo, las calidades indicadas serán las resoluciones de los medios disponibles.</p>
-        <p>Si el tipo de archivo es de audio, las calidades enumeradas serán simplemente <code>Mejor</code>, <code>Buena</code> y <code>Peor</code>.</p>
+        <p>If the file type is an audio type, the listed qualities will be the audio bitrates of the media available.</p>
         <note>
             <p>La calidad usada anteriormente será recordada y preseleccionada para la siguiente descarga.</p>
         </note>
@@ -65,10 +67,10 @@
         </note>
     </item>
     <item>
-		<title>Descargar subtítulo</title>
-		<p>Si descargar e incrustar subtítulos al descargar un vídeo. Se pueden configurar más opciones de subtítulos en <link xref="downloader">preferencias</link>.</p>
+		<title>Subtitles</title>
+		<p>The list of subtitles available by the media that can be selected for download by the user. Further subtitle settings can be configured in <link xref="downloads">preferences</link>.</p>
         <note>
-            <p>El estado usado anteriormente será recordado y preseleccionado para la siguiente descarga.</p>
+            <p>The previously selected subtitles will be remembered and pre-selected for the next download.</p>
         </note>
     </item>
     <item>
@@ -77,6 +79,17 @@
         <note>
             <p>El estado usado anteriormente será recordado y preseleccionado para la siguiente descarga.</p>
         </note>
+    </item>
+    <item>
+		<title>Límite de velocidad</title>
+		<p>Si está activada, Parabolic limitará la velocidad de descarga con la velocidad configurada en <link xref="downloader">Preferencias</link>.</p>
+    </item>
+    <item>
+		<title>Duración</title>
+		<p>El usuario puede introducir una franja horaria de inicio y otra de finalización para descargar una sección específica del multimedia.</p>
+        <note style="advanced">
+			<p>Predeterminado: Toda la longitud del multimedia</p>
+		</note>
     </item>
     <item>
 		<title>Guardar carpeta</title>
@@ -91,23 +104,6 @@
 		<note style="advanced">
 			<p>Predeterminado: El título del medio</p>
 		</note>
-    </item>
-    <item>
-		<title>Duración</title>
-		<p>El usuario puede introducir una franja horaria de inicio y otra de finalización para descargar una sección específica del multimedia.</p>
-        <note style="advanced">
-			<p>Predeterminado: Toda la longitud del multimedia</p>
-		</note>
-        <note style="advanced">
-            <p>Activando esta opción se desactivará el uso de aria2 como descargador para esta descarga, aunque esté activado en Preferencias.</p>
-        </note>
-    </item>
-    <item>
-		<title>Límite de velocidad</title>
-		<p>Si está activada, Parabolic limitará la velocidad de descarga con la velocidad configurada en <link xref="downloader">Preferencias</link>.</p>
-        <note>
-            <p>Disponible en la sección <code>Opciones avanzadas</code>.</p>
-        </note>
     </item>
 </terms>
 </page>

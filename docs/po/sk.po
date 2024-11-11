@@ -1,11 +1,11 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2024-10-24 08:55-0400\n"
+"POT-Creation-Date: 2024-11-11 17:34-0500\n"
 "PO-Revision-Date: 2024-11-03 12:00+0000\n"
 "Last-Translator: Milan Šalka <salka.milan@googlemail.com>\n"
-"Language-Team: Slovak <https://hosted.weblate.org/projects/"
-"nickvision-tube-converter/docs/sk/>\n"
+"Language-Team: Slovak <https://hosted.weblate.org/projects/nickvision-tube-"
+"converter/docs/sk/>\n"
 "Language: sk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -71,8 +71,8 @@ msgstr ""
 #. (itstool) path: note/p
 #: docs/yelp/C/aria.page:29 docs/yelp/C/converter.page:35
 #: docs/yelp/C/converter.page:50 docs/yelp/C/converter.page:59
-#: docs/yelp/C/downloader.page:47 docs/yelp/C/downloader.page:54
-#: docs/yelp/C/downloader.page:61 docs/yelp/C/downloads.page:38
+#: docs/yelp/C/downloader.page:45 docs/yelp/C/downloads.page:49
+#: docs/yelp/C/downloads.page:56 docs/yelp/C/downloads.page:63
 msgid "Default: Off"
 msgstr "Predvolené: Vypnuté"
 
@@ -168,7 +168,8 @@ msgstr ""
 
 #. (itstool) path: note/p
 #: docs/yelp/C/converter.page:28 docs/yelp/C/converter.page:42
-#: docs/yelp/C/downloader.page:31 docs/yelp/C/downloader.page:75
+#: docs/yelp/C/downloader.page:28 docs/yelp/C/downloads.page:33
+#: docs/yelp/C/downloads.page:84
 msgid "Default: On"
 msgstr "Predvolené: Zapnuté"
 
@@ -286,127 +287,154 @@ msgstr ""
 
 #. (itstool) path: item/title
 #: docs/yelp/C/downloader.page:25
-msgid "Overwrite Existing Files"
-msgstr "Prepísať existujúce súbory"
+msgid "Verbose Logging"
+msgstr ""
 
 #. (itstool) path: item/p
 #: docs/yelp/C/downloader.page:26
-msgid "If enabled, Parabolic will overwrite existing files."
-msgstr "Ak je to povolené, Parabolic prepíše existujúce súbory."
-
-#. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:27
 msgid ""
-"For example, if a file named <code>movie.mp4</code> exists in the download "
-"folder, and a new download is created named <code>movie</code>, <code>movie."
-"mp4</code> will be overwritten with the new download's content."
+"If enabled, more verbose logs will be provided by <code>yt-dlp</code> for "
+"each download."
 msgstr ""
-"Napríklad, ak súbor s názvom <code>movie.mp4</code> existuje v priečinku na "
-"stiahnutie a nový vytvorený stiahnutý súbor je pomenovaný <code>movie</"
-"code>, <code>movie.mp4</code> bude prepísaný s novým obsahom sťahovania."
 
 #. (itstool) path: item/title
-#: docs/yelp/C/downloader.page:35
-msgid "Maximum Number of Active Downloads"
-msgstr "Maximálny počet aktívnych stiahnutí"
+#: docs/yelp/C/downloader.page:32 docs/yelp/C/newDownload.page:81
+msgid "Speed Limit"
+msgstr "Obmedzenie rýchlosti"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:36
+#: docs/yelp/C/downloader.page:33
 msgid ""
-"The number of active downloads allowed to run at a time. Must be an integer "
-"value between 1 and 10."
+"A limit, in Ki/s, that is applied to downloads only if they have the "
+"advanced option <code>Speed Limit</code> enabled. Must be an integer value "
+"between 512 and 10240."
 msgstr ""
-"Počet aktívnych sťahovaní, ktoré môžu byť spustené v danom čase. Musí to byť "
-"celočíselná hodnota od 1 do 10."
-
-#. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:37
-msgid ""
-"If the max number of active downloads is reached, Parabolic will place new "
-"downloads in a queue until more downloads are able to be run."
-msgstr ""
-"Ak sa dosiahne maximálny počet aktívnych sťahovaní, Parabolic zaradí nové "
-"sťahovania do poradia, kým nebude možné spustiť ďalšie sťahovania."
+"Obmedzenie v Ki/s, ktoré sa použije na sťahovanie iba vtedy, ak je povolená "
+"rozšírená možnosť <code>Omedzenie rýchlosti</code>. Musí to byť celočíselná "
+"hodnota medzi 512 a 10240."
 
 #. (itstool) path: note/p
+#: docs/yelp/C/downloader.page:35
+msgid "Default: 1024"
+msgstr "Predvolené: 1024"
+
+#. (itstool) path: item/title
 #: docs/yelp/C/downloader.page:39
-msgid "Default: 5"
-msgstr "Predvolené: 5"
-
-#. (itstool) path: item/title
-#: docs/yelp/C/downloader.page:43
-msgid "Limit Filename Characters"
-msgstr "Limitné znaky"
+msgid "Use SponsorBlock for YouTube"
+msgstr "Použiť SponsorBlock pre YouTube"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:44
-msgid "Restricts characters in filenames to only those supported by Windows."
-msgstr "Obmedziť znaky v názvy súborov iba tie podporované systémom Windows."
-
-#. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:45
-msgid "This option is only available on Linux."
-msgstr "Táto možnosť je dostupná len na Linuxe."
-
-#. (itstool) path: item/title
-#: docs/yelp/C/downloader.page:51
-msgid "Download Immediately After Validation"
-msgstr "Na stiahnutie Ihneď po potvrdení"
-
-#. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:52
+#: docs/yelp/C/downloader.page:40
 msgid ""
-"Bypasses the download options selection in the Add Download dialog and "
-"immediately downloads a validated media using previously selected options."
+"If enabled, Parabolic will apply the SponsorBlock extension to YouTube "
+"downloads."
 msgstr ""
-"Prechádza výber možností sťahovania v dialógovom okne Add Download a "
-"okamžite stiahne overené médiá pomocou predtým vybraných možností."
+"Ak je táto funkcia povolená, aplikácia Parabolic použije rozšírenie "
+"SponsorBlock na sťahovanie z YouTube."
+
+#. (itstool) path: note/p
+#: docs/yelp/C/downloader.page:42
+msgid ""
+"SponsorBlock only works on YouTube videos. However, leaving this setting on "
+"will not affect downloads from other sites (i.e. not cause them to fail)."
+msgstr ""
+"SponsorBlock funguje len na videá v službe YouTube. Ponechanie tohto "
+"nastavenia však neovplyvní sťahovanie z iných stránok (t. j. nespôsobí ich "
+"zlyhanie)."
 
 #. (itstool) path: item/title
-#: docs/yelp/C/downloader.page:58
-msgid "Included Auto-Generated Subtitles"
-msgstr "Zahrnuté automaticky generované titulky"
+#: docs/yelp/C/downloader.page:49
+msgid "Proxy URL"
+msgstr "URL adresa proxy servera"
+
+#. (itstool) path: item/p
+#: docs/yelp/C/downloader.page:50
+msgid "The url of the proxy server to use."
+msgstr "URL adresa proxy servera, ktorý sa má použiť."
+
+#. (itstool) path: note/p
+#: docs/yelp/C/downloader.page:52
+msgid "Default: No URL"
+msgstr "Default: Žiadne URL"
+
+#. (itstool) path: item/title
+#: docs/yelp/C/downloader.page:56
+msgid "Cookies from Browser"
+msgstr "Súbory Cookie z prehliadača"
+
+#. (itstool) path: item/p
+#: docs/yelp/C/downloader.page:57
+msgid ""
+"A browser in which to read cookies from and pass to yt-dlp's download engine."
+msgstr ""
+"Prehliadač, z ktorého sa načítajú súbory cookie a odovzdávajú sa do nástroja "
+"na sťahovanie yt-dlp."
+
+#. (itstool) path: item/p
+#: docs/yelp/C/downloader.page:58 docs/yelp/C/downloader.page:67
+msgid ""
+"This may be useful when downloading media that requires a login, for "
+"example: private YouTube videos."
+msgstr ""
+"To môže byť užitočné pri sťahovaní médií, ktoré vyžaduje prihlásenie, "
+"napríklad: súkromné videá YouTube."
 
 #. (itstool) path: item/p
 #: docs/yelp/C/downloader.page:59
-msgid ""
-"Whether or not to included subtitles that are auto-translated to fit the "
-"requested subtitle languages."
-msgstr ""
-"Či majú byť zahrnuté titulky, ktoré sú automaticky preložené tak, aby "
-"zodpovedali požadovanému jazyku tituliek, alebo nie."
+msgid "This option is on available on non sandboxed platforms."
+msgstr "Táto možnosť je k dispozícii na non Sandboxed platformách."
+
+#. (itstool) path: note/p
+#: docs/yelp/C/downloader.page:61
+msgid "Default: None"
+msgstr "Predvolené: Žiadne"
 
 #. (itstool) path: item/title
 #: docs/yelp/C/downloader.page:65
-msgid "Preferred Video Codec"
-msgstr "Uprednostňovaný video kodek"
+msgid "Cookies File"
+msgstr "Súbor s cookie"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/downloader.page:66
-msgid ""
-"The video codec Parabolic should prefer when selecting media formats to "
-"download."
-msgstr ""
-"Video kódc Parabolic by mal radšej pri výbere formátov médií na stiahnutie."
-
-#. (itstool) path: note/p
-#: docs/yelp/C/downloader.page:68
-msgid "Default: Any"
-msgstr "Default: Akékoľvek"
-
-#. (itstool) path: item/title
-#: docs/yelp/C/downloader.page:72
-msgid "Recover Crashed Downloads"
-msgstr "Obnoviť zlyhané stiahnutia"
+msgid "A .txt file of cookies to pass to yt-dlp when download engine."
+msgstr ".txt súbor cookies prejsť na yt-dlp pri sťahovaní motora."
 
 #. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:73
+#: docs/yelp/C/downloader.page:68
 msgid ""
-"If enabled, Parabolic will track the running and queued downloads and "
-"restart them if necessary if the application crashes and is restarted."
+"Use one of the following extensions for getting a cookies file from your "
+"browser:"
 msgstr ""
-"Ak je to povolené, Parabolic bude sledovať beh a frontd downloads a "
-"reštartovať ich, ak je to potrebné, ak sa aplikácia zrúti a reštartuje."
+"Použite jeden z nasledujúcich rozšírení pre získanie súborov cookie z vášho "
+"prehliadača:"
+
+#. (itstool) path: item/p
+#: docs/yelp/C/downloader.page:69
+msgid ""
+"Chrome: <code>https://chrome.google.com/webstore/detail/get-cookiestxt-"
+"locally/cclelndahbckbenkjhflpdbgdldlbecc</code>"
+msgstr ""
+"Chrome: <code>https://chrome.google.com/webstore/detail/get-cookiestxt-"
+"locally/cclelndahbckbenkjhflpdbgdlbecc</code>"
+
+#. (itstool) path: item/p
+#: docs/yelp/C/downloader.page:70
+msgid ""
+"Firefox: <code>https://addons.mozilla.org/en-US/firefox/addon/cookies-txt/</"
+"code>"
+msgstr ""
+"Firefox: <code>https://addons.mozilla.org/en-US/firefox/addon/cookies-txt/</"
+"code>"
+
+#. (itstool) path: note/p
+#: docs/yelp/C/downloader.page:72
+msgid "Use these extensions at your own risk."
+msgstr "Použite tieto rozšírenia na vlastné riziko."
+
+#. (itstool) path: note/p
+#: docs/yelp/C/downloader.page:75
+msgid "Default: No File Selected"
+msgstr "Default: Žiadny súbor Vybrané"
 
 #. (itstool) path: info/title
 #: docs/yelp/C/downloads.page:8
@@ -429,143 +457,148 @@ msgstr ""
 "Preferences v <app>Parabolic</app>."
 
 #. (itstool) path: item/title
-#: docs/yelp/C/downloads.page:25 docs/yelp/C/newDownload.page:103
-msgid "Speed Limit"
-msgstr "Obmedzenie rýchlosti"
-
-#. (itstool) path: item/p
 #: docs/yelp/C/downloads.page:26
-msgid ""
-"A limit, in Ki/s, that is applied to downloads only if they have the "
-"advanced option <code>Speed Limit</code> enabled. Must be an integer value "
-"between 512 and 10240."
-msgstr ""
-"Obmedzenie v Ki/s, ktoré sa použije na sťahovanie iba vtedy, ak je povolená "
-"rozšírená možnosť <code>Omedzenie rýchlosti</code>. Musí to byť celočíselná "
-"hodnota medzi 512 a 10240."
+msgid "Overwrite Existing Files"
+msgstr "Prepísať existujúce súbory"
 
-#. (itstool) path: note/p
+#. (itstool) path: item/p
+#: docs/yelp/C/downloads.page:27
+msgid "If enabled, Parabolic will overwrite existing files."
+msgstr "Ak je to povolené, Parabolic prepíše existujúce súbory."
+
+#. (itstool) path: item/p
 #: docs/yelp/C/downloads.page:28
-msgid "Default: 1024"
-msgstr "Predvolené: 1024"
-
-#. (itstool) path: item/title
-#: docs/yelp/C/downloads.page:32
-msgid "Use SponsorBlock for YouTube"
-msgstr "Použiť SponsorBlock pre YouTube"
-
-#. (itstool) path: item/p
-#: docs/yelp/C/downloads.page:33
 msgid ""
-"If enabled, Parabolic will apply the SponsorBlock extension to YouTube "
-"downloads."
+"For example, if a file named <code>movie.mp4</code> exists in the download "
+"folder, and a new download is created named <code>movie</code>, <code>movie."
+"mp4</code> will be overwritten with the new download's content."
 msgstr ""
-"Ak je táto funkcia povolená, aplikácia Parabolic použije rozšírenie "
-"SponsorBlock na sťahovanie z YouTube."
+"Napríklad, ak súbor s názvom <code>movie.mp4</code> existuje v priečinku na "
+"stiahnutie a nový vytvorený stiahnutý súbor je pomenovaný <code>movie</"
+"code>, <code>movie.mp4</code> bude prepísaný s novým obsahom sťahovania."
 
 #. (itstool) path: note/p
-#: docs/yelp/C/downloads.page:35
+#: docs/yelp/C/downloads.page:30
 msgid ""
-"SponsorBlock only works on YouTube videos. However, leaving this setting on "
-"will not affect downloads from other sites (i.e. not cause them to fail)."
+"Parabolic will detect downloads that should be resumed and avoid this "
+"setting when recovering or retrying failed downloads"
 msgstr ""
-"SponsorBlock funguje len na videá v službe YouTube. Ponechanie tohto "
-"nastavenia však neovplyvní sťahovanie z iných stránok (t. j. nespôsobí ich "
-"zlyhanie)."
 
 #. (itstool) path: item/title
-#: docs/yelp/C/downloads.page:42
-msgid "Proxy URL"
-msgstr "URL adresa proxy servera"
+#: docs/yelp/C/downloads.page:37
+msgid "Maximum Number of Active Downloads"
+msgstr "Maximálny počet aktívnych stiahnutí"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/downloads.page:43
-msgid "The url of the proxy server to use."
-msgstr "URL adresa proxy servera, ktorý sa má použiť."
+#: docs/yelp/C/downloads.page:38
+msgid ""
+"The number of active downloads allowed to run at a time. Must be an integer "
+"value between 1 and 10."
+msgstr ""
+"Počet aktívnych sťahovaní, ktoré môžu byť spustené v danom čase. Musí to byť "
+"celočíselná hodnota od 1 do 10."
+
+#. (itstool) path: item/p
+#: docs/yelp/C/downloads.page:39
+msgid ""
+"If the max number of active downloads is reached, Parabolic will place new "
+"downloads in a queue until more downloads are able to be run."
+msgstr ""
+"Ak sa dosiahne maximálny počet aktívnych sťahovaní, Parabolic zaradí nové "
+"sťahovania do poradia, kým nebude možné spustiť ďalšie sťahovania."
 
 #. (itstool) path: note/p
+#: docs/yelp/C/downloads.page:41
+msgid "Default: 5"
+msgstr "Predvolené: 5"
+
+#. (itstool) path: item/title
 #: docs/yelp/C/downloads.page:45
-msgid "Default: No URL"
-msgstr "Default: Žiadne URL"
+msgid "Limit Filename Characters"
+msgstr "Limitné znaky"
+
+#. (itstool) path: item/p
+#: docs/yelp/C/downloads.page:46
+msgid "Restricts characters in filenames to only those supported by Windows."
+msgstr "Obmedziť znaky v názvy súborov iba tie podporované systémom Windows."
+
+#. (itstool) path: item/p
+#: docs/yelp/C/downloads.page:47
+msgid "This option is only available on Linux."
+msgstr "Táto možnosť je dostupná len na Linuxe."
 
 #. (itstool) path: item/title
-#: docs/yelp/C/downloads.page:49
-msgid "Cookies from Browser"
-msgstr "Súbory Cookie z prehliadača"
+#: docs/yelp/C/downloads.page:53
+msgid "Download Immediately After Validation"
+msgstr "Na stiahnutie Ihneď po potvrdení"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/downloads.page:50
-msgid ""
-"A browser in which to read cookies from and pass to yt-dlp's download engine."
-msgstr ""
-"Prehliadač, z ktorého sa načítajú súbory cookie a odovzdávajú sa do nástroja "
-"na sťahovanie yt-dlp."
-
-#. (itstool) path: item/p
-#: docs/yelp/C/downloads.page:51 docs/yelp/C/downloads.page:60
-msgid ""
-"This may be useful when downloading media that requires a login, for "
-"example: private YouTube videos."
-msgstr ""
-"To môže byť užitočné pri sťahovaní médií, ktoré vyžaduje prihlásenie, "
-"napríklad: súkromné videá YouTube."
-
-#. (itstool) path: item/p
-#: docs/yelp/C/downloads.page:52
-msgid "This option is on available on non sandboxed platforms."
-msgstr "Táto možnosť je k dispozícii na non Sandboxed platformách."
-
-#. (itstool) path: note/p
 #: docs/yelp/C/downloads.page:54
-msgid "Default: None"
-msgstr "Predvolené: Žiadne"
+msgid ""
+"Bypasses the download options selection in the Add Download dialog and "
+"immediately downloads a validated media using previously selected options."
+msgstr ""
+"Prechádza výber možností sťahovania v dialógovom okne Add Download a "
+"okamžite stiahne overené médiá pomocou predtým vybraných možností."
 
 #. (itstool) path: item/title
-#: docs/yelp/C/downloads.page:58
-msgid "Cookies File"
-msgstr "Súbor s cookie"
-
-#. (itstool) path: item/p
-#: docs/yelp/C/downloads.page:59
-msgid "A .txt file of cookies to pass to yt-dlp when download engine."
-msgstr ".txt súbor cookies prejsť na yt-dlp pri sťahovaní motora."
+#: docs/yelp/C/downloads.page:60
+msgid "Included Auto-Generated Subtitles"
+msgstr "Zahrnuté automaticky generované titulky"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/downloads.page:61
 msgid ""
-"Use one of the following extensions for getting a cookies file from your "
-"browser:"
+"Whether or not to included subtitles that are auto-translated to fit the "
+"requested subtitle languages."
 msgstr ""
-"Použite jeden z nasledujúcich rozšírení pre získanie súborov cookie z vášho "
-"prehliadača:"
+"Či majú byť zahrnuté titulky, ktoré sú automaticky preložené tak, aby "
+"zodpovedali požadovanému jazyku tituliek, alebo nie."
+
+#. (itstool) path: item/title
+#: docs/yelp/C/downloads.page:67
+msgid "Preferred Video Codec"
+msgstr "Uprednostňovaný video kodek"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/downloads.page:62
-msgid ""
-"Chrome: <code>https://chrome.google.com/webstore/detail/get-cookiestxt-"
-"locally/cclelndahbckbenkjhflpdbgdldlbecc</code>"
-msgstr ""
-"Chrome: <code>https://chrome.google.com/webstore/detail/"
-"get-cookiestxt-locally/cclelndahbckbenkjhflpdbgdlbecc</code>"
-
-#. (itstool) path: item/p
-#: docs/yelp/C/downloads.page:63
-msgid ""
-"Firefox: <code>https://addons.mozilla.org/en-US/firefox/addon/cookies-txt/</"
-"code>"
-msgstr ""
-"Firefox: <code>https://addons.mozilla.org/en-US/firefox/addon/cookies-txt/"
-"</code>"
-
-#. (itstool) path: note/p
-#: docs/yelp/C/downloads.page:65
-msgid "Use these extensions at your own risk."
-msgstr "Použite tieto rozšírenia na vlastné riziko."
-
-#. (itstool) path: note/p
 #: docs/yelp/C/downloads.page:68
-msgid "Default: No File Selected"
-msgstr "Default: Žiadny súbor Vybrané"
+msgid ""
+"The video codec Parabolic should prefer when selecting media formats to "
+"download."
+msgstr ""
+"Video kódc Parabolic by mal radšej pri výbere formátov médií na stiahnutie."
+
+#. (itstool) path: note/p
+#: docs/yelp/C/downloads.page:70 docs/yelp/C/downloads.page:77
+msgid "Default: Any"
+msgstr "Default: Akékoľvek"
+
+#. (itstool) path: item/title
+#: docs/yelp/C/downloads.page:74
+#, fuzzy
+msgid "Preferred Subtitle Format"
+msgstr "Uprednostňovaný video kodek"
+
+#. (itstool) path: item/p
+#: docs/yelp/C/downloads.page:75
+msgid ""
+"The file format Parabolic should ensure all downloaded subtitles are "
+"downloaded as."
+msgstr ""
+
+#. (itstool) path: item/title
+#: docs/yelp/C/downloads.page:81
+msgid "Recover Crashed Downloads"
+msgstr "Obnoviť zlyhané stiahnutia"
+
+#. (itstool) path: item/p
+#: docs/yelp/C/downloads.page:82
+msgid ""
+"If enabled, Parabolic will track the running and queued downloads and "
+"restart them if necessary if the application crashes and is restarted."
+msgstr ""
+"Ak je to povolené, Parabolic bude sledovať beh a frontd downloads a "
+"reštartovať ich, ak je to potrebné, ak sa aplikácia zrúti a reštartuje."
 
 #. (itstool) path: info/title
 #: docs/yelp/C/index.page:7
@@ -802,17 +835,8 @@ msgstr "Typ súboru"
 msgid "The file type of which to download the media as."
 msgstr "Typ súboru, ako ktorý sa má médium stiahnuť."
 
-#. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:43
-msgid ""
-"If <code>Disallow Conversions</code> is enabled, the only options will be "
-"<code>Video</code> (if supported) and <code>Audio</code>"
-msgstr ""
-"Ak je povolená možnosť <code>Zakázať konverzie</code>, jedinými možnosťami "
-"budú <code>Video</code> (ak je podporované) a <code>Zvuk</code>"
-
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:45
+#: docs/yelp/C/newDownload.page:44
 msgid ""
 "The previously used file type will be remembered and pre-selected for the "
 "next download."
@@ -820,13 +844,21 @@ msgstr ""
 "Predtým použitý typ súboru sa zapamätá a vopred sa vyberie pre ďalšie "
 "sťahovanie."
 
+#. (itstool) path: note/p
+#: docs/yelp/C/newDownload.page:47
+msgid ""
+"Selecting the <code>Video (Generic)</code> or <code>Audio (Generic)</code> "
+"file types will cause Parabolic to download the media in the original file "
+"type of the media without performing any conversions."
+msgstr ""
+
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:49
+#: docs/yelp/C/newDownload.page:51
 msgid "Quality"
 msgstr "Kvalita"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:50
+#: docs/yelp/C/newDownload.page:52
 msgid ""
 "If the file type is a video type, the listed qualities will be the "
 "resolutions of the media available."
@@ -835,16 +867,17 @@ msgstr ""
 "dostupných médií."
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:51
+#: docs/yelp/C/newDownload.page:53
+#, fuzzy
 msgid ""
-"If the file type is an audio type, the listed qualities will be simply "
-"<code>Best</code>, <code>Good</code>, and <code>Worst</code>."
+"If the file type is an audio type, the listed qualities will be the audio "
+"bitrates of the media available."
 msgstr ""
-"Ak je typom súboru typ zvuku, uvedené vlastnosti budú jednoducho "
-"<code>Najlepšia</code>, <code>Dobrá</code>, a <code>Zlá</code>."
+"Ak je typom súboru typ videa, uvedené kvality budú predstavovať rozlíšenia "
+"dostupných médií."
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:53
+#: docs/yelp/C/newDownload.page:55
 msgid ""
 "The previously used quality will be remembered and pre-selected for the next "
 "download."
@@ -852,17 +885,17 @@ msgstr ""
 "Predtým použitá kvalita sa zapamätá a predvolí sa pre ďalšie sťahovanie."
 
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:57
+#: docs/yelp/C/newDownload.page:59
 msgid "Audio Language"
 msgstr "Jazyk zvuku"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:58
+#: docs/yelp/C/newDownload.page:60
 msgid "The language of which to use from the audio part of a media download."
 msgstr "Jazyk, ktorý sa má použiť zo zvukovej časti stiahnutého média."
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:59
+#: docs/yelp/C/newDownload.page:61
 msgid ""
 "If no additional languages are available, <code>Default</code> will be the "
 "only option."
@@ -871,35 +904,44 @@ msgstr ""
 "<code>Predvolená</code>."
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:61 docs/yelp/C/newDownload.page:68
-#: docs/yelp/C/newDownload.page:75
+#: docs/yelp/C/newDownload.page:63 docs/yelp/C/newDownload.page:77
 msgid ""
 "The previously used state will be remembered and pre-selected for the next "
 "download."
 msgstr "Predtým použitý stav sa zapamätá a predvolí sa pre ďalšie sťahovanie."
 
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:65
-msgid "Download Subtitle"
-msgstr "Stiahnuť titulky"
+#: docs/yelp/C/newDownload.page:67
+#, fuzzy
+msgid "Subtitles"
+msgstr "Vložiť titulky"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:66
+#: docs/yelp/C/newDownload.page:68
+#, fuzzy
 msgid ""
-"Whether to download and embed subtitle when downloading a video. Further "
-"subtitle settings can be configured in <link "
-"xref=\"downloader\">preferences</link>."
+"The list of subtitles available by the media that can be selected for "
+"download by the user. Further subtitle settings can be configured in <link "
+"xref=\"downloads\">preferences</link>."
 msgstr ""
 "Či sa majú pri preberaní videa stiahnuť a vložiť titulky. Ďalšie nastavenia "
 "titulkov môžete nastaviť v <link xref=\"downloader\">nastavenia</link>."
 
+#. (itstool) path: note/p
+#: docs/yelp/C/newDownload.page:70
+#, fuzzy
+msgid ""
+"The previously selected subtitles will be remembered and pre-selected for "
+"the next download."
+msgstr "Predtým použitý stav sa zapamätá a predvolí sa pre ďalšie sťahovanie."
+
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:72
+#: docs/yelp/C/newDownload.page:74
 msgid "Split Chapters"
 msgstr "Rozdeliť kapitoly"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:73
+#: docs/yelp/C/newDownload.page:75
 msgid ""
 "If enabled, Parabolic will split a video download into multiple smaller "
 "files based on its chapters."
@@ -907,46 +949,22 @@ msgstr ""
 "Ak je táto funkcia zapnutá, aplikácia Parabolic rozdelí stiahnuté video na "
 "viacero menších súborov na základe jeho kapitol."
 
-#. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:79
-msgid "Save Folder"
-msgstr "Priečinok na uloženie"
-
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:80
-msgid "The folder at which to save the download to."
-msgstr "Priečinok, do ktorého sa má stiahnutie uložiť."
-
-#. (itstool) path: note/p
 #: docs/yelp/C/newDownload.page:82
 msgid ""
-"The previously used folder will be remembered and pre-selected for the next "
-"download."
+"If enabled, Parabolic will limit the download's speed with the speed "
+"configured in <link xref=\"downloader\">Preferences</link>."
 msgstr ""
-"Predtým použitý priečinok sa zapamätá a vopred vyberie pre ďalšie sťahovanie."
+"Ak je táto funkcia zapnutá, Parabolic obmedzí rýchlosť sťahovania pomocou "
+"rýchlosti nastavenej v<link xref=\"downloader\">Nastavenia</link>."
 
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:86
-msgid "File Name"
-msgstr "Názov súboru"
-
-#. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:87
-msgid "The file name to use when saving the download."
-msgstr "Názov súboru, ktorý sa má použiť pri ukladaní sťahovania."
-
-#. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:89
-msgid "Default: The title of the media"
-msgstr "Predvolené: Názov média"
-
-#. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:93
+#: docs/yelp/C/newDownload.page:85
 msgid "Time Frame"
 msgstr "Časový rozsah"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:94
+#: docs/yelp/C/newDownload.page:86
 msgid ""
 "The user can enter a start time frame and an end time frame to download a "
 "specific section of the media."
@@ -955,32 +973,69 @@ msgstr ""
 "časti média."
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:96
+#: docs/yelp/C/newDownload.page:88
 msgid "Default: The whole media length"
 msgstr "Predvolené: Celá dĺžka média"
 
-#. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:99
-msgid ""
-"Enabling this option will disable the use of aria2 as the downloader for "
-"this download, even if it is enabled in Preferences."
-msgstr ""
-"Povolením tejto možnosti sa zakáže používanie aplikácie aria2 ako sťahovača "
-"pre toto sťahovanie, aj keď je povolené v Nastaveniach."
+#. (itstool) path: item/title
+#: docs/yelp/C/newDownload.page:92
+msgid "Save Folder"
+msgstr "Priečinok na uloženie"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:104
-msgid ""
-"If enabled, Parabolic will limit the download's speed with the speed "
-"configured in <link xref=\"downloader\">Preferences</link>."
-msgstr ""
-"Ak je táto funkcia zapnutá, Parabolic obmedzí rýchlosť sťahovania pomocou "
-"rýchlosti nastavenej v<link xref=\"downloader\">Nastavenia</link>."
+#: docs/yelp/C/newDownload.page:93
+msgid "The folder at which to save the download to."
+msgstr "Priečinok, do ktorého sa má stiahnutie uložiť."
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:106
-msgid "Available in the <code>Advanced Options</code> section."
-msgstr "Dostupné v časti <code>Rozšírené možnosti</code>."
+#: docs/yelp/C/newDownload.page:95
+msgid ""
+"The previously used folder will be remembered and pre-selected for the next "
+"download."
+msgstr ""
+"Predtým použitý priečinok sa zapamätá a vopred vyberie pre ďalšie sťahovanie."
+
+#. (itstool) path: item/title
+#: docs/yelp/C/newDownload.page:99
+msgid "File Name"
+msgstr "Názov súboru"
+
+#. (itstool) path: item/p
+#: docs/yelp/C/newDownload.page:100
+msgid "The file name to use when saving the download."
+msgstr "Názov súboru, ktorý sa má použiť pri ukladaní sťahovania."
+
+#. (itstool) path: note/p
+#: docs/yelp/C/newDownload.page:102
+msgid "Default: The title of the media"
+msgstr "Predvolené: Názov média"
+
+#~ msgid ""
+#~ "If <code>Disallow Conversions</code> is enabled, the only options will be "
+#~ "<code>Video</code> (if supported) and <code>Audio</code>"
+#~ msgstr ""
+#~ "Ak je povolená možnosť <code>Zakázať konverzie</code>, jedinými "
+#~ "možnosťami budú <code>Video</code> (ak je podporované) a <code>Zvuk</code>"
+
+#~ msgid ""
+#~ "If the file type is an audio type, the listed qualities will be simply "
+#~ "<code>Best</code>, <code>Good</code>, and <code>Worst</code>."
+#~ msgstr ""
+#~ "Ak je typom súboru typ zvuku, uvedené vlastnosti budú jednoducho "
+#~ "<code>Najlepšia</code>, <code>Dobrá</code>, a <code>Zlá</code>."
+
+#~ msgid "Download Subtitle"
+#~ msgstr "Stiahnuť titulky"
+
+#~ msgid ""
+#~ "Enabling this option will disable the use of aria2 as the downloader for "
+#~ "this download, even if it is enabled in Preferences."
+#~ msgstr ""
+#~ "Povolením tejto možnosti sa zakáže používanie aplikácie aria2 ako "
+#~ "sťahovača pre toto sťahovanie, aj keď je povolené v Nastaveniach."
+
+#~ msgid "Available in the <code>Advanced Options</code> section."
+#~ msgstr "Dostupné v časti <code>Rozšírené možnosti</code>."
 
 #~ msgid "Video Codec"
 #~ msgstr "Video kodek"

@@ -17,53 +17,69 @@
 <title>Nedladdningar</title>
 <p>Den här sidan förklarar alla alternativ för att konfigurera nedladdningar i Inställningar i <app>Parabolic</app>.</p>
 
+
 <terms>
     <item>
-        <title>Hastighetsgräns</title>
-        <p>En gräns, i Ki/s, som endast tillämpas på nedladdningar om de har det avancerade alternativet <code>Hastighetsgräns</code> aktiverat. Måste vara ett heltalsvärde mellan 512 och 10240.</p>
+        <title>Skriv över existerande filer</title>
+        <p>Om aktiverat kommer Parabolic att skriva över befintliga filer.</p>
+        <p>Till exempel, om en fil med namnet <code>movie.mp4</code> finns i nedladdningsmappen, och en ny nedladdning skapas med namnet <code>movie</code>, kommer <code>movie.mp4</code> skrivas över med den nya nedladdningens innehåll.</p>
+        <note>
+            <p>Parabolic will detect downloads that should be resumed and avoid this setting when recovering or retrying failed downloads</p>
+        </note>
+        <note style="advanced">
+            <p>Standard: På</p>
+        </note>
+    </item>
+	<item>
+		<title>Maximalt antal aktiva nedladdningar</title>
+		<p>Antalet aktiva nedladdningar som får köras åt gången. Måste vara ett heltalsvärde mellan 1 och 10.</p>
+        <p>Om det maximala antalet aktiva nedladdningar uppnås kommer Parabolic att placera nya nedladdningar i en kö tills fler nedladdningar kan köras.</p>
 		<note style="advanced">
-			<p>Standard: 1024</p>
+			<p>Standard: 5</p>
 		</note>
     </item>
     <item>
-        <title>Använd SponsorBlock för YouTube</title>
-        <p>Om det är aktiverat kommer Parabolic att tillämpa SponsorBlock-tillägget på YouTube-nedladdningar.</p>
-        <note>
-            <p>SponsorBlock fungerar bara på YouTube-videor. Om du låter den här inställningen vara aktiverad kommer det dock inte att påverka nedladdningar från andra webbplatser (dvs. att de inte misslyckas).</p>
-        </note>
+		<title>Begränsa tecken för filnamn</title>
+		<p>Begränsar tecken i filnamn till endast de som stöds av Windows.</p>
+        <p>Det här alternativet är endast tillgängligt på Linux.</p>
+		<note style="advanced">
+			<p>Standard: Av</p>
+		</note>
+    </item>
+    <item>
+		<title>Ladda ner direkt efter validering</title>
+		<p>Åsidosätter valet av nedladdningsalternativ i dialogrutan Lägg till nedladdning och laddar omedelbart ned ett validerat media med tidigare valda alternativ.</p>
+		<note style="advanced">
+			<p>Standard: Av</p>
+		</note>
+    </item>
+    <item>
+        <title>Inkluderade automatiskt genererade undertexter</title>
+        <p>Oavsett om du vill inkludera undertexter eller inte, som är automatiskt översatta för att passa de begärda undertextspråken.</p>
         <note style="advanced">
             <p>Standard: Av</p>
         </note>
     </item>
     <item>
-        <title>Proxy URL</title>
-        <p>URL till proxyservern som ska användas.</p>
+        <title>Föredragen videocodec</title>
+        <p>Videocodeken Parabolic ska föredra när du väljer mediaformat att ladda ner.</p>
         <note style="advanced">
-			<p>Standard: Ingen URL</p>
-		</note>
-    </item>
-    <item>
-        <title>Cookies från webbläsaren</title>
-        <p>En webbläsare där man kan läsa cookies från och skicka till yt-dlp:s nedladdningsmotor.</p>
-        <p>Detta kan vara användbart när du laddar ner media som kräver inloggning, till exempel: privata YouTube-videor.</p>
-        <p>Det här alternativet är tillgängligt på plattformar som inte körs i en sandlåda.</p>
-		<note style="advanced">
-			<p>Standard: Ingen</p>
-		</note>
-    </item>
-    <item>
-        <title>Cookies fil</title>
-        <p>En .txt-fil med cookies som ska skickas till yt-dlp via nedladdningsmotorn.</p>
-        <p>Detta kan vara användbart när du laddar ner media som kräver inloggning, till exempel: privata YouTube-videor.</p>
-        <p>Använd ett av följande tillägg för att hämta en cookies fil från din webbläsare:</p>
-        <p>Chrome: <code>https://chrome.google.com/webstore/detail/get-cookiestxt-locally/cclelndahbckbenkjhflpdbgdldlbecc</code></p>
-        <p>Firefox: <code>https://addons.mozilla.org/sv-SE/firefox/addon/cookies-txt/</code></p>
-        <note>
-            <p>Använd dessa tillägg på egen risk.</p>
+            <p>Standard: Vilket som helst</p>
         </note>
-		<note style="advanced">
-			<p>Standard: Ingen fil har valts</p>
-		</note>
+    </item>
+    <item>
+        <title>Preferred Subtitle Format</title>
+        <p>The file format Parabolic should ensure all downloaded subtitles are downloaded as.</p>
+        <note style="advanced">
+            <p>Standard: Vilket som helst</p>
+        </note>
+    </item>
+    <item>
+        <title>Återställ kraschade nedladdningar</title>
+        <p>Om aktiverat kommer Parabolic att spåra de nedladdningar som körs och som står i kö och starta om dem vid behov om programmet kraschar och startas om.</p>
+        <note style="advanced">
+            <p>Standard: På</p>
+        </note>
     </item>
 </terms>
 </page>

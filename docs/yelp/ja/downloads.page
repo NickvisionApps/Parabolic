@@ -23,53 +23,69 @@
 <title>Downloads</title>
 <p>This page explains all options for configuring Downloads in Preferences in <app>Parabolic</app>.</p>
 
+
 <terms>
     <item>
-        <title>スピード制限</title>
-        <p>制限は、Ki/s 単位で、<code>スピード制限</code>の詳細オプションが有効なダウンロードにのみ適用されます。数値は512から10240の整数である必要があります。</p>
+        <title>存在するファイルを上書きする</title>
+        <p>有効であれば、Parabolic は存在するファイルを上書きします。</p>
+        <p>例えば、<code>movie.mp4</code>という名前のファイルがダウンロードフォルダーに存在し、<code>movie</code>という名前のダウンロードが作成されると、<code>movie.mp4</code>は新しいダウンロードの内容で上書きされます。</p>
+        <note>
+            <p>Parabolic will detect downloads that should be resumed and avoid this setting when recovering or retrying failed downloads</p>
+        </note>
+        <note style="advanced">
+            <p>デフォルト: オン</p>
+        </note>
+    </item>
+	<item>
+		<title>アクティブダウンロードの最大数</title>
+		<p>平行して進行できるアクティブダウンロード数。数値は1から10の整数である必要があります。</p>
+        <p>アクティブダウンロードが最大数に達すると、Parabolic は新しいダウンロードをダウンロードが可能になるまでキューに入れます。</p>
 		<note style="advanced">
-			<p>デフォルト: 1024</p>
+			<p>デフォルト: 5</p>
 		</note>
     </item>
     <item>
-        <title>YouTube のダウンロードで SponsorBlock を使用</title>
-        <p>有効であれば、Parabolic は SponsorBlock の拡張機能を YouTube のダウンロードで有効にします。</p>
-        <note>
-            <p>SponsorBlock は、YouTube の動画でのみ動作します。しかし、この設定をオンにしても、他のサイトからのダウンロードには影響しません（つまり、このオプションが原因で失敗することはありません）。</p>
-        </note>
+		<title>Limit Filename Characters</title>
+		<p>Restricts characters in filenames to only those supported by Windows.</p>
+        <p>This option is only available on Linux.</p>
+		<note style="advanced">
+			<p>デフォルト: オフ</p>
+		</note>
+    </item>
+    <item>
+		<title>Download Immediately After Validation</title>
+		<p>Bypasses the download options selection in the Add Download dialog and immediately downloads a validated media using previously selected options.</p>
+		<note style="advanced">
+			<p>デフォルト: オフ</p>
+		</note>
+    </item>
+    <item>
+        <title>自動生成された字幕を含める</title>
+        <p>要求された字幕の言語の自動翻訳された字幕を含むかどうか。</p>
         <note style="advanced">
             <p>デフォルト: オフ</p>
         </note>
     </item>
     <item>
-        <title>プロキシ URL</title>
-        <p>使用するプロキシサーバーの URL。</p>
+        <title>Preferred Video Codec</title>
+        <p>The video codec Parabolic should prefer when selecting media formats to download.</p>
         <note style="advanced">
-			<p>Default: No URL</p>
-		</note>
-    </item>
-    <item>
-        <title>ブラウザのクッキー</title>
-        <p>Cookie を読み取り yt-dlp のダウンロードエンジンに渡すためのブラウザ。</p>
-        <p>This may be useful when downloading media that requires a login, for example: private YouTube videos.</p>
-        <p>This option is on available on non sandboxed platforms.</p>
-		<note style="advanced">
-			<p>デフォルト: なし</p>
-		</note>
-    </item>
-    <item>
-        <title>クッキーファイル</title>
-        <p>A .txt file of cookies to pass to yt-dlp when download engine.</p>
-        <p>This may be useful when downloading media that requires a login, for example: private YouTube videos.</p>
-        <p>拡張機能を使って、ブラウザーからクッキーファイルを入手できます：</p>
-        <p>Chrome: <code>https://chrome.google.com/webstore/detail/get-cookiestxt-locally/cclelndahbckbenkjhflpdbgdldlbecc</code></p>
-        <p>Firefox: <code>https://addons.mozilla.org/ja/firefox/addon/cookies-txt/</code></p>
-        <note>
-            <p>これらの拡張機能は、自己責任で使用してください。</p>
+            <p>Default: Any</p>
         </note>
-		<note style="advanced">
-			<p>デフォルト: ファイル選択なし</p>
-		</note>
+    </item>
+    <item>
+        <title>Preferred Subtitle Format</title>
+        <p>The file format Parabolic should ensure all downloaded subtitles are downloaded as.</p>
+        <note style="advanced">
+            <p>Default: Any</p>
+        </note>
+    </item>
+    <item>
+        <title>Recover Crashed Downloads</title>
+        <p>If enabled, Parabolic will track the running and queued downloads and restart them if necessary if the application crashes and is restarted.</p>
+        <note style="advanced">
+            <p>デフォルト: オン</p>
+        </note>
     </item>
 </terms>
 </page>
