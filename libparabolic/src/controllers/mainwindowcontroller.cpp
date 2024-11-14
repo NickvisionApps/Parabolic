@@ -214,6 +214,8 @@ namespace Nickvision::TubeConverter::Shared::Controllers
     Nickvision::App::WindowGeometry MainWindowController::startup(HWND hwnd)
 #elif defined(__linux__)
     Nickvision::App::WindowGeometry MainWindowController::startup(const std::string& desktopFile)
+#else
+    Nickvision::App::WindowGeometry MainWindowController::startup()
 #endif
     {
         if (m_started)

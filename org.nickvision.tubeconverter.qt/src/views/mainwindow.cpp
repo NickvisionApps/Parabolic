@@ -324,6 +324,8 @@ namespace Nickvision::TubeConverter::QT::Views
         ShellNotification::send(args, reinterpret_cast<HWND>(winId()));
 #elif defined(__linux__)
         ShellNotification::send(args, m_controller->getAppInfo().getId(), _("Open"));
+#else
+        ShellNotification::send(args);
 #endif
     }
 

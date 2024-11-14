@@ -135,6 +135,8 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         Nickvision::App::WindowGeometry startup(HWND hwnd);
 #elif defined(__linux__)
         Nickvision::App::WindowGeometry startup(const std::string& desktopFile);
+#else
+        Nickvision::App::WindowGeometry startup();
 #endif
         /**
          * @brief Shuts down the application.

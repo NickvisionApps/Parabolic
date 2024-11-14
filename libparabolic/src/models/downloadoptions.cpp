@@ -3,8 +3,10 @@
 #include <libnick/system/environment.h>
 #ifdef _WIN32
 #include <windows.h>
-#else
+#elif defined(__linux__)
 #include <linux/limits.h>
+#else
+#include <sys/syslimits.h>
 #endif
 
 using namespace Nickvision::Helpers;
