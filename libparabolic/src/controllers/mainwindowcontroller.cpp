@@ -38,10 +38,10 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         m_keyring{ m_appInfo.getId() },
         m_downloadManager{ m_dataFileManager.get<Configuration>("config").getDownloaderOptions(), m_dataFileManager.get<DownloadHistory>("history"), m_dataFileManager.get<DownloadRecoveryQueue>("recovery"), m_logger }
     {
-        m_appInfo.setVersion({ "2024.11.0" });
+        m_appInfo.setVersion({ "2024.11.1-next" });
         m_appInfo.setShortName(_("Parabolic"));
         m_appInfo.setDescription(_("Download web video and audio"));
-        m_appInfo.setChangelog("- Added the ability to turn on and off yt-dlp's verbose logging in the app's settings\n- Added the ability to select a preferred subtitle file format in the app's settings\n- Added the ability to select a generic file type that will prevent conversions of media files\n- Fixed an issue where some webm conversions failed\n- Fixed an issue where some files related to a download were being overwritten when they should not have been\n- Fixed an issue where the app crashed when handling too long file names\n- Fixed an issue where the app would not open due to infinitely attempting to recover downloads\n- Fixed an issue where the speed limit option was not configurable\n- Fixed an issue where the app did not self update on Windows\n- Updated yt-dlp to 2024.11.04");
+        m_appInfo.setChangelog("-");
         m_appInfo.setSourceRepo("https://github.com/NickvisionApps/Parabolic");
         m_appInfo.setIssueTracker("https://github.com/NickvisionApps/Parabolic/issues/new");
         m_appInfo.setSupportUrl("https://github.com/NickvisionApps/Parabolic/discussions");
