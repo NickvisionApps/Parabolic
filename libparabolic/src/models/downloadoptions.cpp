@@ -73,7 +73,7 @@ namespace Nickvision::TubeConverter::Shared::Models
         {
             m_timeFrame = TimeFrame(json["TimeFrame"].as_object());
         }
-        ensureFileNameAndPathLengths();
+        validateFileNamesAndPaths();
     }
 
     const std::string& DownloadOptions::getUrl() const
@@ -104,6 +104,7 @@ namespace Nickvision::TubeConverter::Shared::Models
     void DownloadOptions::setFileType(const MediaFileType& fileType)
     {
         m_fileType = fileType;
+        validateFileNamesAndPaths();
     }
 
     const std::vector<Format>& DownloadOptions::getAvailableFormats() const
@@ -144,7 +145,7 @@ namespace Nickvision::TubeConverter::Shared::Models
     void DownloadOptions::setSaveFolder(const std::filesystem::path& saveFolder)
     {
         m_saveFolder = saveFolder;
-        ensureFileNameAndPathLengths();
+        validateFileNamesAndPaths();
     }
 
     const std::string& DownloadOptions::getSaveFilename() const
@@ -155,7 +156,7 @@ namespace Nickvision::TubeConverter::Shared::Models
     void DownloadOptions::setSaveFilename(const std::string& saveFilename)
     {
         m_saveFilename = saveFilename;
-        ensureFileNameAndPathLengths();
+        validateFileNamesAndPaths();
     }
 
     const std::vector<SubtitleLanguage>& DownloadOptions::getSubtitleLanguages() const
@@ -534,8 +535,14 @@ namespace Nickvision::TubeConverter::Shared::Models
         return json;
     }
 
-    void DownloadOptions::ensureFileNameAndPathLengths()
+    void DownloadOptions::validateFileNamesAndPaths()
     {
+        //Check filename extension
+        std::filesystem::path filenamePath{ m_saveFilename };
+        if(filenamePath.extension().string() == m_fileType.getDotExtension())
+        {
+            m_saveFilename = filenamePath.stem().string();
+        }
         //Find max extension length
         size_t maxExtensionLength{ 5 };
         for(const Format& format : m_availableFormats)
