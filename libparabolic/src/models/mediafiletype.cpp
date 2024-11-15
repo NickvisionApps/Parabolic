@@ -137,6 +137,20 @@ namespace Nickvision::TubeConverter::Shared::Models
         }
     }
 
+    bool MediaFileType::supportsSubtitles() const
+    {
+        switch(m_value)
+        {
+        case MediaFileTypeValue::Video:
+        case MediaFileTypeValue::MP4:
+        case MediaFileTypeValue::WEBM:
+        case MediaFileTypeValue::MKV:
+            return true;
+        default:
+            return false;
+        }
+    }
+
     std::string MediaFileType::str() const
     {
         switch (m_value)
