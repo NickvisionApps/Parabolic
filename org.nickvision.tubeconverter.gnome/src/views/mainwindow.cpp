@@ -186,7 +186,7 @@ namespace Nickvision::TubeConverter::GNOME::Views
 #ifdef __linux__
         ShellNotification::send(args, m_controller->getAppInfo().getId(), _("Open"));
 #else
-        ShellNotification::send(args)
+        ShellNotification::send(args);
 #endif
     }
 
