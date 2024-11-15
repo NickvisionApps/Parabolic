@@ -24,7 +24,7 @@ Adw.Dialog root {
 
       Adw.ViewStackPage {
         name: "spinner";
-        child: Adw.Spinner {
+        child: Gtk.Spinner {
           margin-start: 32;
           margin-top: 32;
           margin-end: 32;
@@ -33,6 +33,7 @@ Adw.Dialog root {
           valign: center;
           width-request: 32;
           height-request: 32;
+          spinning: true;
         };
       }
       
