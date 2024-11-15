@@ -20,6 +20,10 @@ set(SHORT_NAME "parabolic")
 set(DISPLAY_NAME "Parabolic")
 include(GNUInstallDirs)
 
+if(APPLE)
+    option(USE_LIBSECRET "Use libsecret on macOS instead of Apple keychain" OFF)
+endif()
+
 file(STRINGS "${CMAKE_SOURCE_DIR}/resources/po/POTFILES" TRANSLATE_FILES)
 file(STRINGS "${CMAKE_SOURCE_DIR}/resources/po/LINGUAS" LINGUAS)
 set(POT_FILE "${CMAKE_SOURCE_DIR}/resources/po/${SHORT_NAME}.pot")

@@ -38,6 +38,9 @@ endif()
 
 find_package(libnick CONFIG REQUIRED)
 find_package(Boost REQUIRED COMPONENTS date_time)
+if(USE_LIBSECRET)
+    pkg_check_modules(libsecret REQUIRED IMPORTED_TARGET libsecret-1)
+endif()
 target_link_libraries(libparabolic PUBLIC libnick::libnick Boost::boost Boost::date_time)
 
 add_custom_target(shared_commands ALL DEPENDS "${CMAKE_CURRENT_BINARY_DIR}/__shared.h")
