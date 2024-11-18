@@ -79,10 +79,9 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         /**
          * @brief Gets the list of qualities as strings.
          * @param fileTypeIndex The index of the selected file type
-         * @param audioLanguageIndex The index of the selected audio language
          * @return The list of qualities as strings
          */
-        std::vector<std::string> getQualityStrings(size_t fileTypeIndex, size_t audioLanguageIndex) const;
+        std::vector<std::string> getQualityStrings(size_t fileTypeIndex) const;
         /**
          * @brief Gets the list of audio languages as strings.
          * @return The list of audio languages as strings

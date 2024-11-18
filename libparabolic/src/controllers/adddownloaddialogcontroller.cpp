@@ -120,7 +120,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         return fileTypes;
     }
 
-    std::vector<std::string> AddDownloadDialogController::getQualityStrings(size_t fileTypeIndex, size_t audioLanguageIndex) const
+    std::vector<std::string> AddDownloadDialogController::getQualityStrings(size_t fileTypeIndex) const
     {
         std::vector<std::string> qualities;
         m_qualityFormatMap.clear();
@@ -140,7 +140,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
             }
             for(const Format& format : media.getFormats())
             {
-                if(type.isAudio() && format.getAudioBitrate() && audioLanguageIndex == 0 && std::find(qualities.begin(), qualities.end(), std::to_string(format.getAudioBitrate().value())) == qualities.end())
+                if(type.isAudio() && format.getAudioBitrate() && std::find(qualities.begin(), qualities.end(), std::to_string(format.getAudioBitrate().value())) == qualities.end())
                 {
                     m_qualityFormatMap.emplace(qualities.size(), format);
                     qualities.push_back(std::to_string(format.getAudioBitrate().value()));
