@@ -305,9 +305,9 @@ namespace Nickvision::TubeConverter::Shared::Controllers
             fileTypeIndex += 5; 
         }
         options.setFileType(static_cast<MediaFileType::MediaFileTypeValue>(fileTypeIndex));
+        options.setAvailableFormats(m_urlInfo->get(0).getFormats());
         options.setSaveFolder(std::filesystem::exists(saveFolder) ? saveFolder : m_previousOptions.getSaveFolder());
         options.setSaveFilename(!filename.empty() ? StringHelpers::normalizeForFilename(filename, m_downloadManager.getDownloaderOptions().getLimitCharacters()) : media.getTitle());
-        options.setAvailableFormats(m_urlInfo->get(0).getFormats());
         if(qualityIndex != 0)
         {
             if(options.getFileType().isVideo())

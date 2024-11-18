@@ -41,7 +41,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         m_appInfo.setVersion({ "2024.11.1-next" });
         m_appInfo.setShortName(_("Parabolic"));
         m_appInfo.setDescription(_("Download web video and audio"));
-        m_appInfo.setChangelog("- Fixed an issue where file names that included a period were truncated\n- Fixed an issue where external subtitle files were created although embedding was supported\n- Fixed an issue where generic downloads were unable to be opened upon completion\n- Updated yt-dlp to 2024.11.18");
+        m_appInfo.setChangelog("- Fixed an issue where file names that included a period were truncated\n- Fixed an issue where long file names caused the application to crash\n- Fixed an issue where external subtitle files were created although embedding was supported\n- Fixed an issue where generic downloads were unable to be opened upon completion\n- Updated yt-dlp to 2024.11.18");
         m_appInfo.setSourceRepo("https://github.com/NickvisionApps/Parabolic");
         m_appInfo.setIssueTracker("https://github.com/NickvisionApps/Parabolic/issues/new");
         m_appInfo.setSupportUrl("https://github.com/NickvisionApps/Parabolic/discussions");

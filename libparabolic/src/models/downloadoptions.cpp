@@ -115,6 +115,7 @@ namespace Nickvision::TubeConverter::Shared::Models
     void DownloadOptions::setAvailableFormats(const std::vector<Format>& availableFormats)
     {
         m_availableFormats = availableFormats;
+        validateFileNamesAndPaths();
     }
 
     const std::optional<Format>& DownloadOptions::getVideoFormat() const
