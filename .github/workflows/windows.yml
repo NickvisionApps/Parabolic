@@ -35,7 +35,7 @@ jobs:
         with:
           pkgs: boost-date-time libnick qtbase qtsvg qttools
           triplet: x64-windows
-          revision: a54c4ba3aef5fe56cf11192f4476aaf057876551
+          revision: d9e76826d9fd74df19b7855d8abd509cc401ba6e
           token: ${{ secrets.GITHUB_TOKEN }}
           github-binarycache: true
       - name: "Build"
@@ -47,7 +47,7 @@ jobs:
         working-directory: ${{github.workspace}}/inno
         run: |
           powershell -command "Invoke-WebRequest https://aka.ms/vs/17/release/vc_redist.x64.exe -OutFile vc_redist.x64.exe"
-          powershell -command "Invoke-WebRequest https://github.com/yt-dlp/yt-dlp/releases/download/2024.11.04/yt-dlp.exe -OutFile yt-dlp.exe"
+          powershell -command "Invoke-WebRequest https://github.com/yt-dlp/yt-dlp/releases/download/2024.11.18/yt-dlp.exe -OutFile yt-dlp.exe"
           powershell -command "Invoke-WebRequest https://github.com/aria2/aria2/releases/download/release-1.37.0/aria2-1.37.0-win-64bit-build1.zip -OutFile aria2.zip"
           powershell -command "Invoke-WebRequest https://github.com/GyanD/codexffmpeg/releases/download/7.1/ffmpeg-7.1-full_build.zip -OutFile ffmpeg.zip"
           powershell -command "Expand-Archive -Force 'aria2.zip'"
