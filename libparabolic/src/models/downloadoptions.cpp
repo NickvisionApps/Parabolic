@@ -485,6 +485,8 @@ namespace Nickvision::TubeConverter::Shared::Models
         }
         arguments.push_back("--postprocessor-args");
         arguments.push_back("-threads " + std::to_string(downloaderOptions.getPostprocessingThreads()));
+        arguments.push_back("--print");
+        arguments.push_back("after_move:filepath");
         return arguments;
     }
 

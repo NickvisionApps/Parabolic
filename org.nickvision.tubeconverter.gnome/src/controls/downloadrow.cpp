@@ -100,6 +100,8 @@ namespace Nickvision::TubeConverter::GNOME::Controls
     void DownloadRow::setCompleteState(const DownloadCompletedEventArgs& args)
     {
         m_pulseBar = false;
+        m_path = args.getPath();
+        gtk_label_set_text(m_builder.get<GtkLabel>("fileNameLabel"), m_path.filename().string().c_str());
         gtk_progress_bar_set_fraction(m_builder.get<GtkProgressBar>("progBar"), 1.0);
         gtk_widget_remove_css_class(m_builder.get<GtkWidget>("statusIcon"), "stopped");
         if(args.getStatus() == DownloadStatus::Error)
@@ -116,7 +118,6 @@ namespace Nickvision::TubeConverter::GNOME::Controls
             gtk_image_set_from_icon_name(m_builder.get<GtkImage>("statusIcon"), "emblem-ok-symbolic");
             gtk_label_set_text(m_builder.get<GtkLabel>("statusLabel"), _("Success"));
             adw_view_stack_set_visible_child_name(m_builder.get<AdwViewStack>("buttonsViewStack"), "success");
-            gtk_widget_set_visible(m_builder.get<GtkWidget>("playButton"), std::filesystem::exists(m_path));
             gtk_level_bar_set_value(m_builder.get<GtkLevelBar>("levelBar"), 1.0);
         }
         adw_view_stack_set_visible_child_name(m_builder.get<AdwViewStack>("progViewStack"), "done");
