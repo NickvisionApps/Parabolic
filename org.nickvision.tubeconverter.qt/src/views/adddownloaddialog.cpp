@@ -99,7 +99,6 @@ namespace Nickvision::TubeConverter::QT::Views
         connect(m_ui->cmbAuthenticate, &QComboBox::currentIndexChanged, this, &AddDownloadDialog::onCmbAuthenticateChanged);
         connect(m_ui->btnValidate, &QPushButton::clicked, this, &AddDownloadDialog::validateUrl);
         connect(m_ui->cmbFileTypeSingle, &QComboBox::currentIndexChanged, this, &AddDownloadDialog::onCmbQualitySingleChanged);
-        connect(m_ui->cmbAudioLanguageSingle, &QComboBox::currentIndexChanged, this, &AddDownloadDialog::onCmbQualitySingleChanged);
         connect(m_ui->btnSelectSaveFolderSingle, &QPushButton::clicked, this, &AddDownloadDialog::selectSaveFolderSingle);
         connect(m_ui->btnRevertFilenameSingle, &QPushButton::clicked, this, &AddDownloadDialog::revertFilenameSingle);
         connect(m_ui->btnSelectAllSubtitlesSingle, &QPushButton::clicked, this, &AddDownloadDialog::selectAllSubtitlesSingle);
@@ -190,7 +189,7 @@ namespace Nickvision::TubeConverter::QT::Views
             QTHelpers::setComboBoxItems(m_ui->cmbFileTypeSingle, m_controller->getFileTypeStrings());
             m_ui->cmbFileTypeSingle->setCurrentIndex(static_cast<int>(m_controller->getPreviousDownloadOptions().getFileType()));
             QTHelpers::setComboBoxItems(m_ui->cmbAudioLanguageSingle, m_controller->getAudioLanguageStrings());
-            QTHelpers::setComboBoxItems(m_ui->cmbQualitySingle, m_controller->getQualityStrings(m_ui->cmbFileTypeSingle->currentIndex(), m_ui->cmbAudioLanguageSingle->currentIndex()));
+            QTHelpers::setComboBoxItems(m_ui->cmbQualitySingle, m_controller->getQualityStrings(m_ui->cmbFileTypeSingle->currentIndex()));
             m_ui->chkSplitChaptersSingle->setChecked(m_controller->getPreviousDownloadOptions().getSplitChapters());
             m_ui->chkLimitSpeedSingle->setChecked(m_controller->getPreviousDownloadOptions().getLimitSpeed());
             m_ui->txtSaveFolderSingle->setText(QString::fromStdString(m_controller->getPreviousDownloadOptions().getSaveFolder().string()));
@@ -270,7 +269,7 @@ namespace Nickvision::TubeConverter::QT::Views
 
     void AddDownloadDialog::onCmbQualitySingleChanged(int index)
     {
-        QTHelpers::setComboBoxItems(m_ui->cmbQualitySingle, m_controller->getQualityStrings(m_ui->cmbFileTypeSingle->currentIndex(), m_ui->cmbAudioLanguageSingle->currentIndex()));
+        QTHelpers::setComboBoxItems(m_ui->cmbQualitySingle, m_controller->getQualityStrings(m_ui->cmbFileTypeSingle->currentIndex()));
     }
 
     void AddDownloadDialog::selectSaveFolderSingle()

@@ -34,7 +34,7 @@ parts:
     plugin: python
     source: .
     python-packages:
-      - yt-dlp==2024.11.04
+      - yt-dlp==2024.11.18
     stage:
       - -bin/activate*
       - -bin/Activate.ps1
@@ -60,7 +60,7 @@ parts:
   libnick:
     after: [maddy]
     source: https://github.com/nickvisionapps/libnick.git
-    source-tag: "2024.10.0"
+    source-tag: "2024.11.1"
     source-depth: 1
     plugin: cmake
     cmake-parameters:
@@ -98,7 +98,6 @@ parts:
       - cmake
       - blueprint-compiler/latest/edge
       - ffmpeg-2404/latest/candidate
-      - gnome-46-2404-sdk/latest/edge
     cmake-parameters:
       - -DCMAKE_INSTALL_PREFIX=/snap/tube-converter/current/usr
       - -DCMAKE_BUILD_TYPE=Release

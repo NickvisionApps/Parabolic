@@ -54,7 +54,6 @@ namespace Nickvision::TubeConverter::GNOME::Views
         g_signal_connect(m_builder.get<GObject>("validateUrlButton"), "clicked", G_CALLBACK(+[](GtkButton*, gpointer data){ reinterpret_cast<AddDownloadDialog*>(data)->validateUrl(); }), this);
         g_signal_connect(m_builder.get<GObject>("backButton"), "clicked", G_CALLBACK(+[](GtkButton*, gpointer data){ reinterpret_cast<AddDownloadDialog*>(data)->back(); }), this);
         g_signal_connect(m_builder.get<GObject>("fileTypeSingleRow"), "notify::selected-item", G_CALLBACK(+[](GObject*, GParamSpec* pspec, gpointer data){ reinterpret_cast<AddDownloadDialog*>(data)->onQualitySingleChanged(); }), this);
-        g_signal_connect(m_builder.get<GObject>("audioLanguageSingleRow"), "notify::selected-item", G_CALLBACK(+[](GObject*, GParamSpec* pspec, gpointer data){ reinterpret_cast<AddDownloadDialog*>(data)->onQualitySingleChanged(); }), this);
         g_signal_connect(m_builder.get<GObject>("subtitlesSingleRow"), "activated", G_CALLBACK(+[](AdwActionRow*, gpointer data){ reinterpret_cast<AddDownloadDialog*>(data)->subtitlesSingle(); }), this);
         g_signal_connect(m_builder.get<GObject>("advancedOptionsSingleRow"), "activated", G_CALLBACK(+[](AdwActionRow*, gpointer data){ reinterpret_cast<AddDownloadDialog*>(data)->advancedOptionsSingle(); }), this);
         g_signal_connect(m_builder.get<GObject>("selectSaveFolderSingleButton"), "clicked", G_CALLBACK(+[](GtkButton*, gpointer data){ reinterpret_cast<AddDownloadDialog*>(data)->selectSaveFolderSingle(); }), this);
@@ -162,7 +161,7 @@ namespace Nickvision::TubeConverter::GNOME::Views
             GtkHelpers::setComboRowModel(m_builder.get<AdwComboRow>("fileTypeSingleRow"), m_controller->getFileTypeStrings());
             adw_combo_row_set_selected(m_builder.get<AdwComboRow>("fileTypeSingleRow"), static_cast<unsigned int>(m_controller->getPreviousDownloadOptions().getFileType()));
             GtkHelpers::setComboRowModel(m_builder.get<AdwComboRow>("audioLanguageSingleRow"), m_controller->getAudioLanguageStrings());
-            GtkHelpers::setComboRowModel(m_builder.get<AdwComboRow>("qualitySingleRow"), m_controller->getQualityStrings(static_cast<size_t>(adw_combo_row_get_selected(m_builder.get<AdwComboRow>("fileTypeSingleRow"))), static_cast<size_t>(adw_combo_row_get_selected(m_builder.get<AdwComboRow>("audioLanguageSingleRow")))));
+            GtkHelpers::setComboRowModel(m_builder.get<AdwComboRow>("qualitySingleRow"), m_controller->getQualityStrings(static_cast<size_t>(adw_combo_row_get_selected(m_builder.get<AdwComboRow>("fileTypeSingleRow")))));
             adw_action_row_set_subtitle(m_builder.get<AdwActionRow>("saveFolderSingleRow"), m_controller->getPreviousDownloadOptions().getSaveFolder().string().c_str());
             gtk_editable_set_text(m_builder.get<GtkEditable>("filenameSingleRow"), m_controller->getMediaTitle(0).c_str());
             //Load Subtitles
@@ -264,7 +263,7 @@ namespace Nickvision::TubeConverter::GNOME::Views
 
     void AddDownloadDialog::onQualitySingleChanged()
     {
-        GtkHelpers::setComboRowModel(m_builder.get<AdwComboRow>("qualitySingleRow"), m_controller->getQualityStrings(static_cast<size_t>(adw_combo_row_get_selected(m_builder.get<AdwComboRow>("fileTypeSingleRow"))), static_cast<size_t>(adw_combo_row_get_selected(m_builder.get<AdwComboRow>("audioLanguageSingleRow")))));
+        GtkHelpers::setComboRowModel(m_builder.get<AdwComboRow>("qualitySingleRow"), m_controller->getQualityStrings(static_cast<size_t>(adw_combo_row_get_selected(m_builder.get<AdwComboRow>("fileTypeSingleRow")))));
     }
 
     void AddDownloadDialog::subtitlesSingle()

@@ -120,7 +120,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         return fileTypes;
     }
 
-    std::vector<std::string> AddDownloadDialogController::getQualityStrings(size_t fileTypeIndex, size_t audioLanguageIndex) const
+    std::vector<std::string> AddDownloadDialogController::getQualityStrings(size_t fileTypeIndex) const
     {
         std::vector<std::string> qualities;
         m_qualityFormatMap.clear();
@@ -140,7 +140,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
             }
             for(const Format& format : media.getFormats())
             {
-                if(type.isAudio() && format.getAudioBitrate() && audioLanguageIndex == 0 && std::find(qualities.begin(), qualities.end(), std::to_string(format.getAudioBitrate().value())) == qualities.end())
+                if(type.isAudio() && format.getAudioBitrate() && std::find(qualities.begin(), qualities.end(), std::to_string(format.getAudioBitrate().value())) == qualities.end())
                 {
                     m_qualityFormatMap.emplace(qualities.size(), format);
                     qualities.push_back(std::to_string(format.getAudioBitrate().value()));
@@ -300,14 +300,14 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         //Create Download Options
         DownloadOptions options{ media.getUrl() };
         options.setCredential(m_credential);
-        options.setSaveFolder(std::filesystem::exists(saveFolder) ? saveFolder : m_previousOptions.getSaveFolder());
-        options.setSaveFilename(!filename.empty() ? StringHelpers::normalizeForFilename(std::filesystem::path(filename).filename().stem().string(), m_downloadManager.getDownloaderOptions().getLimitCharacters()) : media.getTitle());
         if(media.getType() == MediaType::Audio)
         {
             fileTypeIndex += 5; 
         }
         options.setFileType(static_cast<MediaFileType::MediaFileTypeValue>(fileTypeIndex));
         options.setAvailableFormats(m_urlInfo->get(0).getFormats());
+        options.setSaveFolder(std::filesystem::exists(saveFolder) ? saveFolder : m_previousOptions.getSaveFolder());
+        options.setSaveFilename(!filename.empty() ? StringHelpers::normalizeForFilename(filename, m_downloadManager.getDownloaderOptions().getLimitCharacters()) : media.getTitle());
         if(qualityIndex != 0)
         {
             if(options.getFileType().isVideo())
@@ -356,9 +356,9 @@ namespace Nickvision::TubeConverter::Shared::Controllers
             //Create Download Options
             DownloadOptions options{ media.getUrl() };
             options.setCredential(m_credential);
-            options.setSaveFolder(playlistSaveFolder);
-            options.setSaveFilename(!pair.second.empty() ? StringHelpers::normalizeForFilename(std::filesystem::path(pair.second).filename().stem().string(), m_downloadManager.getDownloaderOptions().getLimitCharacters())  : media.getTitle());
             options.setFileType(static_cast<MediaFileType::MediaFileTypeValue>(fileTypeIndex));
+            options.setSaveFolder(playlistSaveFolder);
+            options.setSaveFilename(!pair.second.empty() ? StringHelpers::normalizeForFilename(pair.second, m_downloadManager.getDownloaderOptions().getLimitCharacters()) : media.getTitle());
             options.setSplitChapters(splitChapters);
             options.setLimitSpeed(limitSpeed);
             //Add Download

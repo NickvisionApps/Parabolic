@@ -86,6 +86,8 @@ namespace Nickvision::TubeConverter::QT::Controls
 
     void DownloadRow::setCompleteState(const DownloadCompletedEventArgs& args)
     {
+        m_path = args.getPath();
+        m_ui->lblTitle->setText(QString::fromStdString(m_path.filename().string()));
         m_ui->progressBar->setRange(0, 1);
         m_ui->progressBar->setValue(1);
         if(args.getStatus() == DownloadStatus::Error)
@@ -99,7 +101,6 @@ namespace Nickvision::TubeConverter::QT::Controls
             m_ui->btnIcon->setIcon(QIcon::fromTheme(QIcon::ThemeIcon::DocumentNew));
             m_ui->lblStatus->setText(_("Success"));
             m_ui->buttonStack->setCurrentIndex(1);
-            m_ui->btnPlay->setVisible(std::filesystem::exists(m_path));
         }
     }
 

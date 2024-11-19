@@ -62,10 +62,15 @@ namespace Nickvision::TubeConverter::Shared::Models
          */
         bool isGeneric() const;
         /**
-         * @brief Gets whether or not the file type supports thumbnails.
-         * @return True if supports thumbnails, else false
+         * @brief Gets whether or not the file type supports embedding thumbnails.
+         * @return True if supports embedding thumbnails, else false
          */
         bool supportsThumbnails() const;
+        /**
+         * @brief Gets whether or not the file type supports embedding subtitles.
+         * @return True if supports embedding subtitles, else false
+         */
+        bool supportsSubtitles() const;
         /**
          * @brief Gets the string representation of the media file type.
          * @return The string representation of the media file type
