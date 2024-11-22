@@ -8,21 +8,21 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-11-18 15:04-0500\n"
-"PO-Revision-Date: 2024-10-20 01:16+0000\n"
+"PO-Revision-Date: 2024-11-21 17:53+0000\n"
 "Last-Translator: Gnuey56 <gnuey56@proton.me>\n"
-"Language-Team: Japanese <https://hosted.weblate.org/projects/nickvision-tube-"
-"converter/app/ja/>\n"
+"Language-Team: Japanese <https://hosted.weblate.org/projects/"
+"nickvision-tube-converter/app/ja/>\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.8-rc\n"
+"X-Generator: Weblate 5.9-dev\n"
 
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:91
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:107
 msgid "Video (Generic)"
-msgstr "ビデオ (ジェネリック)"
+msgstr "動画 (全般)"
 
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:92
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:108
@@ -52,7 +52,7 @@ msgstr "AVI (動画)"
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:98
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:113
 msgid "Audio (Generic)"
-msgstr ""
+msgstr "音声 (全般)"
 
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:99
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:114
@@ -123,10 +123,9 @@ msgid "translator-credits"
 msgstr "Gnuey56 <gnuey56@proton.me>"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:253
-#, fuzzy
 msgid "Recovered {} download"
 msgid_plural "Recovered {} downloads"
-msgstr[0] "失敗したダウンロードを再試行"
+msgstr[0] "再試行された {} 個のダウンロード"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:258
 msgid ""
@@ -211,7 +210,7 @@ msgstr "メディアの URL"
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:59
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:33
 msgid "Use Batch File"
-msgstr ""
+msgstr "バッチファイルを使う"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:66
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:34
@@ -370,14 +369,13 @@ msgstr "動画の数"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/credential_dialog.blp:11
 #: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:18
-#, fuzzy
 msgid "Credential Needed"
-msgstr "資格情報"
+msgstr "資格情報が必要です"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/credential_dialog.blp:43
 #: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:26
 msgid "Use"
-msgstr ""
+msgstr "使用する"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:49
 msgid "View Log"
@@ -719,15 +717,13 @@ msgstr "すべて"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:129
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:57
-#, fuzzy
 msgid "Preferred Subtitle Format"
-msgstr "優先するビデオコーデック"
+msgstr "優先する字幕のフォーマット"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:141
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:63
-#, fuzzy
 msgid "Recover Crashed Downloads"
-msgstr "失敗したダウンロードを再試行"
+msgstr "クラッシュしたダウンロードを再開"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:151
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:52
@@ -738,7 +734,7 @@ msgstr "ダウンローダー"
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:154
 #: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:64
 msgid "Verbose Logging"
-msgstr ""
+msgstr "詳細なログ (Verbose)"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:163
 msgid "Speed Limit (KiB/s)"
@@ -937,9 +933,8 @@ msgid "Starting download..."
 msgstr "ダウンロードを開始しています..."
 
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:31
-#, fuzzy
 msgid "Starting"
-msgstr "設定"
+msgstr "開始中"
 
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:36
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:44
@@ -992,9 +987,8 @@ msgstr "手動で資格情報を入力する"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:84
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:127
-#, fuzzy
 msgid "Select Batch File"
-msgstr "保存するフォルダーを選択"
+msgstr "バッチファイルを選択"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:86
 #: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:120
@@ -1031,6 +1025,8 @@ msgid ""
 "{} needs a credential to download.\n"
 "Please select or enter one to use."
 msgstr ""
+"{} はダウンロードに資格情報を必要とします。\n"
+"使用する資格情報を選択、または入力して下さい。"
 
 #: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:40
 #: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:58
@@ -1224,7 +1220,8 @@ msgstr "アイテム ({})"
 #. Localize Strings
 #: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:20
 msgid "{} needs a credential to download. Please select or enter one to use."
-msgstr ""
+msgstr "{} はダウンロードに資格情報を必要とします。使用する資格情報を選択、または入力"
+"して下さい。"
 
 #. Localize the Manage page
 #: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:23
