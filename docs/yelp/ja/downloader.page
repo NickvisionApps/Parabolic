@@ -2,7 +2,7 @@
 <page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" id="downloader" its:version="2.0" xml:lang="ja">
 <info>
 	<link type="guide" xref="index"/>
-	<title type="link">Downloader 🛠️</title>
+	<title type="link">ダウンローダー 🛠️</title>
 	<credit type="author copyright">
 		<name>Nicholas Logozzo</name>
 		<years its:translate="no">2023-2024</years>
@@ -25,8 +25,8 @@
 
 <terms>
     <item>
-        <title>Verbose Logging</title>
-        <p>If enabled, more verbose logs will be provided by <code>yt-dlp</code> for each download.</p>
+        <title>詳細なログ (Verbose)</title>
+        <p>有効であれば、各ダウンロードで、より詳細なログが <code>yt-dlp</code> から出力されます。</p>
         <note style="advanced">
             <p>デフォルト: オン</p>
         </note>
@@ -52,22 +52,22 @@
         <title>プロキシ URL</title>
         <p>使用するプロキシサーバーの URL。</p>
         <note style="advanced">
-			<p>Default: No URL</p>
+			<p>デフォルト: URL なし</p>
 		</note>
     </item>
     <item>
         <title>ブラウザのクッキー</title>
         <p>Cookie を読み取り yt-dlp のダウンロードエンジンに渡すためのブラウザ。</p>
-        <p>This may be useful when downloading media that requires a login, for example: private YouTube videos.</p>
-        <p>This option is on available on non sandboxed platforms.</p>
+        <p>YouTube の非公開の動画のような、ログインが必要なメディアのダウンロードに役立ちます。</p>
+        <p>このオプションは、サンドボックス化されていないプラットフォームで利用可能です。</p>
 		<note style="advanced">
 			<p>デフォルト: なし</p>
 		</note>
     </item>
     <item>
         <title>クッキーファイル</title>
-        <p>A .txt file of cookies to pass to yt-dlp when download engine.</p>
-        <p>This may be useful when downloading media that requires a login, for example: private YouTube videos.</p>
+        <p>yt-dlp のダウンロードエンジンへ渡すためのクッキーの .txt ファイル。</p>
+        <p>YouTube の非公開の動画のような、ログインが必要なメディアのダウンロードに役立ちます。</p>
         <p>拡張機能を使って、ブラウザーからクッキーファイルを入手できます：</p>
         <p>Chrome: <code>https://chrome.google.com/webstore/detail/get-cookiestxt-locally/cclelndahbckbenkjhflpdbgdldlbecc</code></p>
         <p>Firefox: <code>https://addons.mozilla.org/ja/firefox/addon/cookies-txt/</code></p>

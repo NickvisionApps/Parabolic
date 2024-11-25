@@ -48,7 +48,7 @@
     <item>
 		<title>オーディオサムネイルを整形</title>
 		<p>有効であれば、Parabolic はオーディオファイルのサムネイル画像を正方形に切り抜きます。</p>
-        <p>This option is only configurable if <code>Embed Metadata</code> is on.</p>
+        <p>このオプションは <code>メタデータを埋め込む</code> が有効な場合のみ設定可能です。</p>
 		<note style="advanced">
 			<p>デフォルト: オフ</p>
 		</note>
@@ -57,16 +57,16 @@
 		<title>ダウンロード元のデータを削除</title>
 		<p>有効であれば、Parabolic はメディアのソースを特定できる URL などのメタデータを削除します。</p>
         <p>これらのメタデータ欄: <code>comment</code>、<code>description</code>、<code>synopsis</code>、<code>purl</code>、<code>handler_name</code> は初めから埋め込まれません。</p>
-        <p>This option is only configurable if <code>Embed Metadata</code> is on.</p>
+        <p>このオプションは <code>メタデータを埋め込む</code> が有効な場合のみ設定可能です。</p>
 		<note style="advanced">
 			<p>デフォルト: オフ</p>
 		</note>
     </item>
     <item>
-        <title>Postprocessing Threads</title>
-        <p>The number of threads to allow the postprocessor (<code>FFmpeg</code>) to use for each download.</p>
+        <title>ポストプロセッサのスレッド</title>
+        <p>各ダウンロードで使用するポストプロセッサ（<code>FFmpeg</code>）に許可するスレッドの数。</p>
         <note style="advanced">
-            <p>Default: The max number of threads available on the system</p>
+            <p>デフォルト: システムで利用できるスレッドの最大値</p>
         </note>
     </item>
 </terms>

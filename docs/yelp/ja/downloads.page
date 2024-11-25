@@ -2,7 +2,7 @@
 <page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" id="downloads" its:version="2.0" xml:lang="ja">
 <info>
 	<link type="guide" xref="index"/>
-	<title type="link">Downloads 🌐</title>
+	<title type="link">ダウンロード 🌐</title>
 	<credit type="author copyright">
 		<name>Nicholas Logozzo</name>
 		<years its:translate="no">2023-2024</years>
@@ -20,8 +20,8 @@
     </mal:credit>
   </info>
 
-<title>Downloads</title>
-<p>This page explains all options for configuring Downloads in Preferences in <app>Parabolic</app>.</p>
+<title>ダウンロード</title>
+<p>このページでは <app>Parabolic</app> でダウンロードを設定するためのすべてオプションについて説明します。</p>
 
 
 <terms>
@@ -30,7 +30,7 @@
         <p>有効であれば、Parabolic は存在するファイルを上書きします。</p>
         <p>例えば、<code>movie.mp4</code>という名前のファイルがダウンロードフォルダーに存在し、<code>movie</code>という名前のダウンロードが作成されると、<code>movie.mp4</code>は新しいダウンロードの内容で上書きされます。</p>
         <note>
-            <p>Parabolic will detect downloads that should be resumed and avoid this setting when recovering or retrying failed downloads</p>
+            <p>Parabolic は、再開する必要のあるダウンロードを検知し、失敗したダウンロードの再開時または再試行時にこの設定を無視します</p>
         </note>
         <note style="advanced">
             <p>デフォルト: オン</p>
@@ -45,16 +45,16 @@
 		</note>
     </item>
     <item>
-		<title>Limit Filename Characters</title>
-		<p>Restricts characters in filenames to only those supported by Windows.</p>
-        <p>This option is only available on Linux.</p>
+		<title>ファイル名の文字を制限</title>
+		<p>ファイル名の文字を Windows がサポートする文字のみに制限する。</p>
+        <p>このオプションは Linux でのみ利用できます。</p>
 		<note style="advanced">
 			<p>デフォルト: オフ</p>
 		</note>
     </item>
     <item>
-		<title>Download Immediately After Validation</title>
-		<p>Bypasses the download options selection in the Add Download dialog and immediately downloads a validated media using previously selected options.</p>
+		<title>検証終了後に直ちにダウンロードを行う</title>
+		<p>「ダウンロードを追加」のダイアログでダウンロードオプションの選択を省略し、以前に選択したオプションを使って検証したメディアを直ちにダウンロードします。</p>
 		<note style="advanced">
 			<p>デフォルト: オフ</p>
 		</note>
@@ -67,22 +67,22 @@
         </note>
     </item>
     <item>
-        <title>Preferred Video Codec</title>
-        <p>The video codec Parabolic should prefer when selecting media formats to download.</p>
+        <title>優先するビデオコーデック</title>
+        <p>ダウンロードするメディアのフォーマットの選択時に、Parabolic が使用するビデオコーデック。</p>
         <note style="advanced">
-            <p>Default: Any</p>
+            <p>デフォルト: すべて</p>
         </note>
     </item>
     <item>
-        <title>Preferred Subtitle Format</title>
+        <title>優先する字幕のフォーマット</title>
         <p>The file format Parabolic should ensure all downloaded subtitles are downloaded as.</p>
         <note style="advanced">
-            <p>Default: Any</p>
+            <p>デフォルト: すべて</p>
         </note>
     </item>
     <item>
-        <title>Recover Crashed Downloads</title>
-        <p>If enabled, Parabolic will track the running and queued downloads and restart them if necessary if the application crashes and is restarted.</p>
+        <title>クラッシュしたダウンロードを再開</title>
+        <p>有効であれば、Parabolic は進行中または停止中のダウンロードを追跡し、アプリケーションがクラッシュし再起動された場合は、必要に応じてダウンロードを再開します。</p>
         <note style="advanced">
             <p>デフォルト: オン</p>
         </note>

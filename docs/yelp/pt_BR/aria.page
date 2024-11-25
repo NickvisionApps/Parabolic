@@ -15,35 +15,33 @@
 </info>
 
 <title>aria2</title>
-<p>This page explains all options for configuring aria2 in Preferences in <app>Parabolic</app>.</p>
+<p>Esta página explica todas as opções para configurar o aria2 em Preferências no <app>Parabolic</app>.</p>
 
 <terms>
     <item>
         <title>Usar aria2</title>
-        <p>If enabled, Parabolic will use aria2c to download media.</p>
-        <p>Although using aria2c can improve download speed, download progress will not be displayed in the UI.</p>
+        <p>Se habilitado, o Parabolic usará aria2c para baixar mídia.</p>
+        <p>Embora usar aria2c possa melhorar a velocidade de download, o progresso do download não será exibido na UI.</p>
         <note style="advanced">
             <p>Padrão: Desligado</p>
         </note>
     </item>
     <item>
-        <title>Máximo de Conexões por Servidor</title>
+        <title>Máximo de conexões por servidor</title>
         <p>
             This option only applies when using aria2 is enabled. This option is the same as the <code>-x</code> flag passed to aria2c.
         </p>
-        <p>The maximum number of connection that can be used per server. Must be an integer value between 1 and 32.</p>
+        <p>O número máximo de conexões que podem ser usadas por servidor. Deve ser um valor inteiro entre 1 e 32.</p>
         <note style="advanced">
-            <p>Default: 16</p>
+            <p>Padrão: 16</p>
         </note>
     </item>
     <item>
-        <title>Minimum Split Size</title>
-        <p>
-            This option only applies when using aria2 is enabled. This option is the same as the <code>-k</code> flag passed to aria2c.
-        </p>
-        <p>The minimum size, in MiB, of which to split a file. Must be an integer value between 1 and 1024.</p>
+        <title>Tamanho mínimo de divisão</title>
+        <p>Esta opção só se aplica quando o uso de aria2 está habilitado. Esta opção é o mesmo que o sinalizador <code>-k</code> passado para aria2c.</p>
+        <p>O tamanho mínimo, em MiB, para dividir um arquivo. Deve ser um valor inteiro entre 1 e 1024.</p>
         <note style="advanced">
-            <p>Default: 20</p>
+            <p>Padrão: 20</p>
         </note>
     </item>
 </terms>
