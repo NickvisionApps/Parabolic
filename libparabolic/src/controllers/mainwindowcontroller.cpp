@@ -38,7 +38,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         m_keyring{ m_appInfo.getId() },
         m_downloadManager{ m_dataFileManager.get<Configuration>("config").getDownloaderOptions(), m_dataFileManager.get<DownloadHistory>("history"), m_dataFileManager.get<DownloadRecoveryQueue>("recovery"), m_logger }
     {
-        m_appInfo.setVersion({ "2024.11.2-next" });
+        m_appInfo.setVersion({ "2024.12.0-next" });
         m_appInfo.setShortName(_("Parabolic"));
         m_appInfo.setDescription(_("Download web video and audio"));
         m_appInfo.setChangelog("- Added the ability to toggle the inclusion of a media's id in its title when validated in the app's settings\n- Fixed an issue where auto-generated subtitles were not being embed in a media file");
