@@ -6,8 +6,9 @@
 #include <QDragEnterEvent>
 #include <QDropEvent>
 #include <QMainWindow>
-#include "controls/downloadrow.h"
 #include "controllers/mainwindowcontroller.h"
+#include "controls/downloadrow.h"
+#include "controls/navigationbar.h"
 
 namespace Ui { class MainWindow; }
 
@@ -45,9 +46,9 @@ namespace Nickvision::TubeConverter::QT::Views
 
     private Q_SLOTS:
         /**
-         * @brief Exits the application.
+         * @brief Handles when a navigation item is selected.
          */
-        void exit();
+        void onNavigationItemSelected(const QString& id);
         /**
          * @brief Displays the keyring dialog.
          */
@@ -177,6 +178,7 @@ namespace Nickvision::TubeConverter::QT::Views
          */
         void onDownloadStartedFromQueue(const Events::ParamEventArgs<int>& args);
         Ui::MainWindow* m_ui;
+        Controls::NavigationBar* m_navigationBar;
         std::shared_ptr<Shared::Controllers::MainWindowController> m_controller;
         std::unordered_map<int, Controls::DownloadRow*> m_downloadRows;
     };
