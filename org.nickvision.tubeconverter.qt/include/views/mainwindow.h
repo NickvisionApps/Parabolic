@@ -54,10 +54,6 @@ namespace Nickvision::TubeConverter::QT::Views
          */
         void keyring();
         /**
-         * @brief Displays the history pane.
-         */
-        void history();
-        /**
          * @brief Checks for application updates.
          */
         void checkForUpdates();

@@ -34,7 +34,7 @@
     <item>
      <widget class="QStackedWidget" name="viewStack">
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="pageHome">
        <layout class="QHBoxLayout" name="horizontalLayout_2">
@@ -141,6 +141,58 @@
         </item>
        </layout>
       </widget>
+      <widget class="QWidget" name="pageHistory">
+       <layout class="QVBoxLayout" name="verticalLayout_7">
+        <item>
+         <widget class="QStackedWidget" name="viewStackHistory">
+          <property name="currentIndex">
+           <number>1</number>
+          </property>
+          <widget class="QWidget" name="pageNoHistory">
+           <layout class="QVBoxLayout" name="verticalLayout_4">
+            <item>
+             <widget class="QLabel" name="lblNoHistory">
+              <property name="alignment">
+               <set>Qt::AlignmentFlag::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+          <widget class="QWidget" name="pageHasHistory">
+           <layout class="QVBoxLayout" name="verticalLayout_2">
+            <property name="leftMargin">
+             <number>0</number>
+            </property>
+            <property name="topMargin">
+             <number>0</number>
+            </property>
+            <property name="rightMargin">
+             <number>0</number>
+            </property>
+            <property name="bottomMargin">
+             <number>0</number>
+            </property>
+            <item>
+             <widget class="QPushButton" name="btnClearHistory">
+              <property name="icon">
+               <iconset theme="edit-delete"/>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QListWidget" name="listHistory">
+              <property name="selectionMode">
+               <enum>QAbstractItemView::SelectionMode::NoSelection</enum>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </widget>
+        </item>
+       </layout>
+      </widget>
       <widget class="QWidget" name="pageDownloads">
        <layout class="QVBoxLayout" name="verticalLayout_5">
         <item>
@@ -221,81 +273,6 @@
      </widget>
     </item>
    </layout>
-  </widget>
-  <widget class="QDockWidget" name="dockHistory">
-   <property name="minimumSize">
-    <size>
-     <width>600</width>
-     <height>214</height>
-    </size>
-   </property>
-   <property name="autoFillBackground">
-    <bool>false</bool>
-   </property>
-   <property name="floating">
-    <bool>false</bool>
-   </property>
-   <property name="features">
-    <set>QDockWidget::DockWidgetFeature::DockWidgetClosable|QDockWidget::DockWidgetFeature::DockWidgetFloatable|QDockWidget::DockWidgetFeature::DockWidgetMovable</set>
-   </property>
-   <property name="allowedAreas">
-    <set>Qt::DockWidgetArea::RightDockWidgetArea</set>
-   </property>
-   <attribute name="dockWidgetArea">
-    <number>2</number>
-   </attribute>
-   <widget class="QWidget" name="dockHistoryContents">
-    <layout class="QVBoxLayout" name="verticalLayout_3">
-     <item>
-      <widget class="QStackedWidget" name="viewStackHistory">
-       <property name="currentIndex">
-        <number>1</number>
-       </property>
-       <widget class="QWidget" name="pageNoHistory">
-        <layout class="QVBoxLayout" name="verticalLayout_4">
-         <item>
-          <widget class="QLabel" name="lblNoHistory">
-           <property name="alignment">
-            <set>Qt::AlignmentFlag::AlignCenter</set>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </widget>
-       <widget class="QWidget" name="pageHistory">
-        <layout class="QVBoxLayout" name="verticalLayout_2">
-         <property name="leftMargin">
-          <number>0</number>
-         </property>
-         <property name="topMargin">
-          <number>0</number>
-         </property>
-         <property name="rightMargin">
-          <number>0</number>
-         </property>
-         <property name="bottomMargin">
-          <number>0</number>
-         </property>
-         <item>
-          <widget class="QPushButton" name="btnClearHistory">
-           <property name="icon">
-            <iconset theme="edit-delete"/>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QListWidget" name="listHistory">
-           <property name="selectionMode">
-            <enum>QAbstractItemView::SelectionMode::NoSelection</enum>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </widget>
-      </widget>
-     </item>
-    </layout>
-   </widget>
   </widget>
  </widget>
  <resources>

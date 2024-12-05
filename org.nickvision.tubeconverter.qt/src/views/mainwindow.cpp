@@ -35,6 +35,7 @@ namespace Nickvision::TubeConverter::QT::Views
     enum Page
     {
         Home = 0,
+        History,
         Downloading,
         Settings
     };
@@ -60,19 +61,22 @@ namespace Nickvision::TubeConverter::QT::Views
         helpMenu->addSeparator();
         helpMenu->addAction(_("About"), this, &MainWindow::about);
         m_navigationBar->addTopItem("home", _("Home"), QIcon::fromTheme(QIcon::ThemeIcon::GoHome));
-        m_navigationBar->addTopItem("keyring", _("Keyring"), QIcon::fromTheme(QIcon::ThemeIcon::FolderNew));
-        m_navigationBar->addTopItem("history", _("History"), QIcon::fromTheme(QIcon::ThemeIcon::FolderNew));
+        m_navigationBar->addTopItem("keyring", _("Keyring"), QIcon::fromTheme(QIcon::ThemeIcon::DialogPassword));
+        m_navigationBar->addTopItem("history", _("History"), QIcon::fromTheme(QIcon::ThemeIcon::EditFind));
         m_navigationBar->addTopItem("downloading", _("Downloading"), QIcon::fromTheme("emblem-downloads"));
-        m_navigationBar->addTopItem("queued", _("Queued"), QIcon::fromTheme(QIcon::ThemeIcon::FolderNew));
-        m_navigationBar->addTopItem("completed", _("Completed"), QIcon::fromTheme(QIcon::ThemeIcon::FolderNew));
+        m_navigationBar->addTopItem("queued", _("Queued"), QIcon::fromTheme(QIcon::ThemeIcon::ListAdd));
+        m_navigationBar->addTopItem("completed", _("Completed"), QIcon::fromTheme(QIcon::ThemeIcon::DocumentSave));
         m_navigationBar->addBottomItem("help", _("Help"), QIcon::fromTheme(QIcon::ThemeIcon::HelpAbout), helpMenu);
+#ifdef _WIN32
         m_navigationBar->addBottomItem("settings", _("Settings"), QIcon::fromTheme("document-properties"));
+#else
+        m_navigationBar->addBottomItem("settings", _("Settings"), QIcon::fromTheme(QIcon::ThemeIcon::DocumentProperties));
+#endif
         //Localize Home Page
         m_ui->lblHomeGreeting->setText(_("Download Media"));
         m_ui->lblHomeDescription->setText(_("Add a video, audio, or playlist URL to start downloading"));
         m_ui->btnHomeAddDownload->setText(_("Add Download"));
-        //Localize History Dock
-        m_ui->dockHistory->setWindowTitle(_("History"));
+        //Localize History Page
         m_ui->lblNoHistory->setText(_("No history available"));
         m_ui->btnClearHistory->setText(_("Clear"));
         //Localize Downloads Page
@@ -104,7 +108,6 @@ namespace Nickvision::TubeConverter::QT::Views
     void MainWindow::show()
     {
         QMainWindow::show();
-        m_ui->dockHistory->hide();
 #ifdef _WIN32
         WindowGeometry geometry{ m_controller->startup(reinterpret_cast<HWND>(winId())) };
 #elif defined(__linux__)
@@ -163,7 +166,7 @@ namespace Nickvision::TubeConverter::QT::Views
         }
         else if(id == "history")
         {
-            
+            m_ui->viewStack->setCurrentIndex(Page::History);
         }
         else if(id == "downloading")
         {
@@ -188,11 +191,6 @@ namespace Nickvision::TubeConverter::QT::Views
     {
         KeyringDialog dialog{ m_controller->createKeyringDialogController(), this };
         dialog.exec();
-    }
-
-    void MainWindow::history()
-    {
-        m_ui->dockHistory->show();
     }
 
     void MainWindow::checkForUpdates()
@@ -237,7 +235,6 @@ namespace Nickvision::TubeConverter::QT::Views
 
     void MainWindow::clearHistory()
     {
-        m_ui->dockHistory->hide();
         m_controller->getDownloadManager().clearHistory();
     }
 
