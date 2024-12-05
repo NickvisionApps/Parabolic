@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-11-18 15:04-0500\n"
-"PO-Revision-Date: 2024-12-01 23:00+0000\n"
+"PO-Revision-Date: 2024-12-03 20:38+0000\n"
 "Last-Translator: Priit Jõerüüt <hwlate@joeruut.com>\n"
 "Language-Team: Estonian <https://hosted.weblate.org/projects/"
 "nickvision-tube-converter/app/et/>\n"
@@ -125,8 +125,8 @@ msgstr "Priit Jõerüüt"
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:253
 msgid "Recovered {} download"
 msgid_plural "Recovered {} downloads"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Taastasime {} allalaadimise"
+msgstr[1] "Taastasime {} allalaadimist"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:258
 msgid ""
@@ -134,46 +134,53 @@ msgid ""
 "of this program that may violate local copyright/DMCA laws. Users use this "
 "application at their own risk."
 msgstr ""
+"Nickvision Parabolicu loojad ei vastuta selle programmi võimalike "
+"väärkasutuste ja neist johtuvate autoriõiguste rikkumiste eest. Kasutajad "
+"kasutavad seda rakendust omal vastutusel."
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:287
 msgid "New update available"
-msgstr ""
+msgstr "Rakenduse uuendus on saadaval"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:319
 msgid "Unable to download and install update"
-msgstr ""
+msgstr "Uuenduse allalaadimine ja paigaldamine ei õnnestunud"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:21
 msgid "{:.2f} GiB/s"
-msgstr ""
+msgstr "{:.2f} GiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:25
 msgid "{:.2f} MiB/s"
-msgstr ""
+msgstr "{:.2f} MiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:29
 msgid "{:.2f} KiB/s"
-msgstr ""
+msgstr "{:.2f} KiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:33
 msgid "{:.2f} B/s"
-msgstr ""
+msgstr "{:.2f} B/s"
 
 #: libparabolic/src/models/download.cpp:99
 msgid "ERROR: The file already exists and overwriting is disabled."
-msgstr ""
+msgstr "VIGA: See fail on juba olemas ja ülekirjutamine on keelatud."
 
 #: libparabolic/src/models/download.cpp:114
 msgid "WARNING: Using ffmpeg to download. Progress will not be shown."
 msgstr ""
+"HOIATUS: Allalaadimiseks on kasutusel ffmpeg. Allalaadimise edenemist ei ole "
+"võimalik kuvada."
 
 #: libparabolic/src/models/download.cpp:118
 msgid "WARNING: Using aria2 to download. Progress will not be shown."
 msgstr ""
+"HOIATUS: Allalaadimiseks on kasutusel aria2. Allalaadimise edenemist ei ole "
+"võimalik kuvada."
 
 #: libparabolic/src/models/subtitlelanguage.cpp:38
 msgid "Auto-generated"
-msgstr ""
+msgstr "Loodud automaatselt"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:11
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:39
@@ -186,7 +193,7 @@ msgstr ""
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:45
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:67
 msgid "Add Download"
-msgstr ""
+msgstr "Lisa allalaadimine"
 
 #. Localize the Edit page
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:18
@@ -203,12 +210,12 @@ msgstr "Meedia võrguaadress"
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:59
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:33
 msgid "Use Batch File"
-msgstr ""
+msgstr "Kasuta pakktöötluse faili"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:66
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:34
 msgid "Authenticate"
-msgstr ""
+msgstr "Autentimine on vajalik"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:71
 #: org.nickvision.tubeconverter.gnome/blueprints/credential_dialog.blp:30
@@ -524,6 +531,8 @@ msgstr ""
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:66
 msgid "Add a video, audio, or playlist URL to start downloading"
 msgstr ""
+"Allalaadimise alustamiseks lisa video, helifaili või esitusloendi "
+"võrguaadress"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:246
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:70
