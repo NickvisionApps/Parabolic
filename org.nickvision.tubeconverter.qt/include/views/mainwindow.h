@@ -54,10 +54,6 @@ namespace Nickvision::TubeConverter::QT::Views
          */
         void keyring();
         /**
-         * @brief Displays the settings dialog.
-         */
-        void settings();
-        /**
          * @brief Displays the history pane.
          */
         void history();

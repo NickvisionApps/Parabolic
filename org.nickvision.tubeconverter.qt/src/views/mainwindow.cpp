@@ -16,7 +16,7 @@
 #include "views/adddownloaddialog.h"
 #include "views/credentialdialog.h"
 #include "views/keyringdialog.h"
-#include "views/settingsdialog.h"
+#include "views/settingspage.h"
 
 using namespace Nickvision::App;
 using namespace Nickvision::Events;
@@ -35,12 +35,8 @@ namespace Nickvision::TubeConverter::QT::Views
     enum Page
     {
         Home = 0,
-        Keyring = 1,
-        History = 2,
-        Downloading = 3,
-        Queued = 4,
-        Completed = 5,
-        Settings = 6
+        Downloading,
+        Settings
     };
 
     MainWindow::MainWindow(const std::shared_ptr<MainWindowController>& controller, QWidget* parent) 
@@ -109,7 +105,6 @@ namespace Nickvision::TubeConverter::QT::Views
     {
         QMainWindow::show();
         m_ui->dockHistory->hide();
-        m_ui->viewStack->setCurrentIndex(0);
 #ifdef _WIN32
         WindowGeometry geometry{ m_controller->startup(reinterpret_cast<HWND>(winId())) };
 #elif defined(__linux__)
@@ -150,13 +145,13 @@ namespace Nickvision::TubeConverter::QT::Views
     void MainWindow::onNavigationItemSelected(const QString& id)
     {
         //Cleanup and save settings
-        //if(m_ui->viewStack->widget(Page::Settings))
-        //{
-        //    SettingsPage* oldSettings{ qobject_cast<SettingsPage*>(m_ui->viewStack->widget(2)) };
-        //    oldSettings->close();
-        //    m_ui->viewStack->removeWidget(oldSettings);
-        //    delete oldSettings;
-        //}
+        if(m_ui->viewStack->widget(Page::Settings))
+        {
+            SettingsPage* oldSettings{ qobject_cast<SettingsPage*>(m_ui->viewStack->widget(Page::Settings)) };
+            oldSettings->close();
+            m_ui->viewStack->removeWidget(oldSettings);
+            delete oldSettings;
+        }
         //Navigate to new page
         if(id == "home")
         {
@@ -172,32 +167,26 @@ namespace Nickvision::TubeConverter::QT::Views
         }
         else if(id == "downloading")
         {
-            
+            m_ui->viewStack->setCurrentIndex(Page::Downloading);
         }
         else if(id == "queued")
         {
-            
+            m_ui->viewStack->setCurrentIndex(Page::Downloading);
         }
         else if(id == "completed")
         {
-            
+            m_ui->viewStack->setCurrentIndex(Page::Downloading);
         }
         else if(id == "settings")
         {
-            //m_ui->viewStack->addWidget(new SettingsPage(m_controller->createPreferencesViewController(), this));
-            //m_ui->viewStack->setCurrentIndex(Page::Settings);
+            m_ui->viewStack->addWidget(new SettingsPage(m_controller->createPreferencesViewController(), this));
+            m_ui->viewStack->setCurrentIndex(Page::Settings);
         }
     }
 
     void MainWindow::keyring()
     {
         KeyringDialog dialog{ m_controller->createKeyringDialogController(), this };
-        dialog.exec();
-    }
-
-    void MainWindow::settings()
-    {
-        SettingsDialog dialog{ m_controller->createPreferencesViewController(), this };
         dialog.exec();
     }
 
@@ -278,7 +267,7 @@ namespace Nickvision::TubeConverter::QT::Views
         }
         if(m_downloadRows.empty())
         {
-            m_ui->viewStack->setCurrentIndex(0);
+            m_navigationBar->selectItem("home");
         }
     }
 
@@ -298,7 +287,7 @@ namespace Nickvision::TubeConverter::QT::Views
         }
         if(m_downloadRows.empty())
         {
-            m_ui->viewStack->setCurrentIndex(0);
+            m_navigationBar->selectItem("home");
         }
     }
 
@@ -392,7 +381,7 @@ namespace Nickvision::TubeConverter::QT::Views
 
     void MainWindow::onDownloadAdded(const DownloadAddedEventArgs& args)
     {
-        m_ui->viewStack->setCurrentIndex(1);
+        m_navigationBar->selectItem("downloading");
         DownloadRow* row{ new DownloadRow(args) };
         connect(row, &DownloadRow::stop, [this, id{ args.getId() }]() { m_controller->getDownloadManager().stopDownload(id); });
         connect(row, &DownloadRow::retry, [this, id{ args.getId() }]() { m_controller->getDownloadManager().retryDownload(id); });

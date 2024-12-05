@@ -1,8 +1,10 @@
-#include "views/settingsdialog.h"
-#include "ui_settingsdialog.h"
+#include "views/settingspage.h"
+#include "ui_settingspage.h"
+#include <QApplication>
 #include <QDesktopServices>
 #include <QFileDialog>
 #include <QMessageBox>
+#include <QStyleHints>
 #include <libnick/localization/gettext.h>
 #include <libnick/system/environment.h>
 
@@ -12,19 +14,22 @@ using namespace Nickvision::TubeConverter::Shared::Models;
 
 namespace Nickvision::TubeConverter::QT::Views
 {
-    SettingsDialog::SettingsDialog(const std::shared_ptr<PreferencesViewController>& controller, QWidget* parent)
-        : QDialog{ parent },
-        m_ui{ new Ui::SettingsDialog() },
+    SettingsPage::SettingsPage(const std::shared_ptr<PreferencesViewController>& controller, QWidget* parent)
+        : QWidget{ parent },
+        m_ui{ new Ui::SettingsPage() },
         m_controller{ controller }
     {
         m_ui->setupUi(this);
-        setWindowTitle(_("Settings"));
         //Localize Strings
-        m_ui->listPages->addItem(_("User Interface"));
-        m_ui->listPages->addItem(_("Downloads"));
-        m_ui->listPages->addItem(_("Downloader"));
-        m_ui->listPages->addItem(_("Converter"));
-        m_ui->listPages->addItem(_("aria2"));
+        m_ui->tabs->setTabText(0, _("User Interface"));
+        m_ui->tabs->setTabText(1, _("Downloads"));
+        m_ui->tabs->setTabText(2, _("Downloader"));
+        m_ui->tabs->setTabText(3, _("Converter"));
+        m_ui->tabs->setTabText(4, _("aria2"));
+        m_ui->lblTheme->setText(_("Theme"));
+        m_ui->cmbTheme->addItem(_("Light"));
+        m_ui->cmbTheme->addItem(_("Dark"));
+        m_ui->cmbTheme->addItem(_("System"));
         m_ui->lblUpdates->setText(_("Automatically Check for Updates"));
         m_ui->lblCompletedNotificationTrigger->setText(_("Completed Notification Trigger"));
         m_ui->cmbCompletedNotificationTrigger->addItem(_("For each download"));
@@ -99,12 +104,13 @@ namespace Nickvision::TubeConverter::QT::Views
             m_ui->cmbPostprocessingThreads->addItem(QString::number(i));
         }
         m_ui->lblUseAria->setText(_("Use aria2"));
-        m_ui->lblAriaMaximumConnectionsPerServer->setText(_("Max Connections Per Server (-x)"));
+        m_ui->lblAriaMaxConnectionsPerServer->setText(_("Max Connections Per Server (-x)"));
         m_ui->lblAriaMinSplitSize->setText(_("Minimum Split Size (-k)"));
         m_ui->lblAriaMinSplitSize->setToolTip(_("The minimum size of which to split a file (in MiB)."));
         m_ui->numAriaMinSplitSize->setToolTip(_("The minimum size of which to split a file (in MiB)."));
         //Load Settings
         DownloaderOptions options{ m_controller->getDownloaderOptions() };
+        m_ui->cmbTheme->setCurrentIndex(static_cast<int>(m_controller->getTheme()));
         m_ui->chkUpdates->setChecked(m_controller->getAutomaticallyCheckForUpdates());
         m_ui->cmbCompletedNotificationTrigger->setCurrentIndex(static_cast<int>(m_controller->getCompletedNotificationPreference()));
         m_ui->chkPreventSuspend->setChecked(m_controller->getPreventSuspend());
@@ -149,21 +155,38 @@ namespace Nickvision::TubeConverter::QT::Views
             m_ui->chkLimitCharacters->setVisible(false);
         }
         //Signals
-        connect(m_ui->listPages, &QListWidget::currentRowChanged, this, &SettingsDialog::onPageChanged);
-        connect(m_ui->btnSelectCookiesFile, &QPushButton::clicked, this, &SettingsDialog::selectCookiesFile);
-        connect(m_ui->btnClearCookiesFile, &QPushButton::clicked, this, &SettingsDialog::clearCookiesFile);
-        connect(m_ui->chkEmbedMetadata, &QCheckBox::toggled, this, &SettingsDialog::onEmbedMetadataChanged);
-        m_ui->listPages->setCurrentRow(0);
+        connect(m_ui->cmbTheme, &QComboBox::currentIndexChanged, this, &SettingsPage::onThemeChanged);
+        connect(m_ui->btnSelectCookiesFile, &QPushButton::clicked, this, &SettingsPage::selectCookiesFile);
+        connect(m_ui->btnClearCookiesFile, &QPushButton::clicked, this, &SettingsPage::clearCookiesFile);
+        connect(m_ui->chkEmbedMetadata, &QCheckBox::toggled, this, &SettingsPage::onEmbedMetadataChanged);
+        m_ui->tabs->setCurrentIndex(0);
     }
     
-    SettingsDialog::~SettingsDialog()
+    SettingsPage::~SettingsPage()
     {
         delete m_ui;
     }
 
-    void SettingsDialog::closeEvent(QCloseEvent* event)
+    void SettingsPage::onThemeChanged(int index)
+    {
+        switch (static_cast<Theme>(m_ui->cmbTheme->currentIndex()))
+        {
+        case Theme::Light:
+            QApplication::styleHints()->setColorScheme(Qt::ColorScheme::Light);
+            break;
+        case Theme::Dark:
+            QApplication::styleHints()->setColorScheme(Qt::ColorScheme::Dark);
+            break;
+        default:
+            QApplication::styleHints()->setColorScheme(Qt::ColorScheme::Unknown);
+            break;
+        }
+    }
+
+    void SettingsPage::closeEvent(QCloseEvent* event)
     {
         DownloaderOptions options{ m_controller->getDownloaderOptions() };
+        m_controller->setTheme(static_cast<Theme>(m_ui->cmbTheme->currentIndex()));
         m_controller->setAutomaticallyCheckForUpdates(m_ui->chkUpdates->isChecked());
         m_controller->setCompletedNotificationPreference(static_cast<CompletedNotificationPreference>(m_ui->cmbCompletedNotificationTrigger->currentIndex()));
         m_controller->setPreventSuspend(m_ui->chkPreventSuspend->isChecked());
@@ -197,12 +220,7 @@ namespace Nickvision::TubeConverter::QT::Views
         event->accept();
     }
 
-    void SettingsDialog::onPageChanged(int index)
-    {
-        m_ui->viewStack->setCurrentIndex(index);
-    }
-
-    void SettingsDialog::selectCookiesFile()
+    void SettingsPage::selectCookiesFile()
     {
         QString file{ QFileDialog::getOpenFileName(this, _("Select Cookies File"), {}, _("TXT Files (*.txt)")) };
         if(!file.isEmpty())
@@ -213,13 +231,13 @@ namespace Nickvision::TubeConverter::QT::Views
         }
     }
 
-    void SettingsDialog::clearCookiesFile()
+    void SettingsPage::clearCookiesFile()
     {
         m_ui->txtCookiesFile->setText("");
         m_ui->txtCookiesFile->setToolTip("");
     }
 
-    void SettingsDialog::onEmbedMetadataChanged(bool checked)
+    void SettingsPage::onEmbedMetadataChanged(bool checked)
     {
         m_ui->lblCropAudioThumbnails->setEnabled(checked);
         m_ui->chkCropAudioThumbnails->setEnabled(checked);
