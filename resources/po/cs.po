@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-12-05 12:01-0500\n"
+"POT-Creation-Date: 2024-12-08 13:48-0500\n"
 "PO-Revision-Date: 2024-11-12 11:30+0000\n"
 "Last-Translator: Fjuro <fjuro@alius.cz>\n"
 "Language-Team: Czech <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -94,7 +94,7 @@ msgid "Audio Description"
 msgstr "Popis zvuku"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:42
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:51
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:52
 msgid "Parabolic"
 msgstr "Parabolic"
 
@@ -192,13 +192,11 @@ msgstr "Automaticky generovaný"
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:402
 #: org.nickvision.tubeconverter.gnome/blueprints/shortcuts_dialog.blp:39
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:28
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:78
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:79
 msgid "Add Download"
 msgstr "Přidat stahování"
 
-#. Localize the Edit page
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:18
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:28
 msgid "Back"
 msgstr "Zpět"
 
@@ -232,7 +230,6 @@ msgstr "Údaj"
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:133
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:35
 #: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:22
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:33
 msgid "Username"
 msgstr "Uživatelské jméno"
 
@@ -242,7 +239,6 @@ msgstr "Uživatelské jméno"
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:135
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:37
 #: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:24
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:35
 msgid "Password"
 msgstr "Heslo"
 
@@ -400,7 +396,7 @@ msgstr "Přehrát"
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:187
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:26
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:32
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:342
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:348
 msgid "Open"
 msgstr "Otevřít"
 
@@ -418,13 +414,13 @@ msgid "Copy Log to Clipboard"
 msgstr "Kopírovat protokol do schránky"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/keyring_page.blp:13
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:26
+#: org.nickvision.tubeconverter.qt/src/views/keyringpage.cpp:23
 msgid "No Credentials Found"
 msgstr "Nenalezeny žádné údaje"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/keyring_page.blp:16
 #: org.nickvision.tubeconverter.gnome/blueprints/keyring_page.blp:33
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:25
+#: org.nickvision.tubeconverter.qt/src/views/keyringpage.cpp:24
 msgid "Add Credential"
 msgstr "Přidat údaje"
 
@@ -434,20 +430,16 @@ msgstr "Údaje"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/keyring_page.blp:37
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:84
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:24
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:74
 msgid "Add"
 msgstr "Přidat"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/keyring_page.blp:65
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:129
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:29
 msgid "Name"
 msgstr "Název"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/keyring_page.blp:69
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:131
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:31
 msgid "URL"
 msgstr "Adresa URL"
 
@@ -464,7 +456,7 @@ msgstr "Klávesové zkratky"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:7
 #: org.nickvision.tubeconverter.gnome/blueprints/shortcuts_dialog.blp:25
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:69
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:70
 msgid "Help"
 msgstr "Nápověda"
 
@@ -479,20 +471,19 @@ msgstr "Hlavní nabídka"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:70
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:198
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:63
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:64
 msgid "Home"
 msgstr "Domů"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:87
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:204
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:21
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:64
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:65
 msgid "Keyring"
 msgstr "Klíčenka"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:104
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:210
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:65
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:66
 msgid "History"
 msgstr "Historie"
 
@@ -505,7 +496,7 @@ msgstr "Stahování"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:135
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:215
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:66
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:67
 msgid "Downloading"
 msgstr "Stahování"
 
@@ -513,30 +504,30 @@ msgstr "Stahování"
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:27
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:220
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:34
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:67
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:68
 msgid "Queued"
 msgstr "Ve frontě"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:185
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:225
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:68
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:69
 msgid "Completed"
 msgstr "Dokončeno"
 
 #. Localize Home Page
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:217
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:76
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:77
 msgid "Download Media"
 msgstr "Stáhnout média"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:218
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:77
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:78
 msgid "Add a video, audio, or playlist URL to start downloading"
 msgstr "Pro spuštění stahování přidejte adresu URL videa, zvuku nebo playlistu"
 
 #. Localize History Page
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:246
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:80
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:81
 msgid "No history available"
 msgstr "Není dostupná žádná historie"
 
@@ -551,7 +542,7 @@ msgstr "Vymazat historii"
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:266
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:372
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:432
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:81
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:82
 msgid "Clear"
 msgstr "Vymazat"
 
@@ -967,11 +958,6 @@ msgstr "Běží"
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:96
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:180
 #: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:58
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:120
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:123
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:126
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:129
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:132
 msgid "Error"
 msgstr "Chyba"
 
@@ -1039,7 +1025,6 @@ msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:40
 #: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:58
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:123
 msgid "Both the username and password cannot be empty."
 msgstr "Uživatelské jméno ani heslo nesmí být prázdné."
 
@@ -1060,17 +1045,14 @@ msgid "Delete"
 msgstr "Odstranit"
 
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:100
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:90
 msgid "Modify"
 msgstr "Upravit"
 
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:106
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:95
 msgid "Delete Credential?"
 msgstr "Odstranit údaje?"
 
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:106
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:95
 msgid "Are you sure you want to delete this credential?"
 msgstr "Opravdu chcete odstranit tento údaj?"
 
@@ -1113,17 +1095,17 @@ msgid "Exit?"
 msgstr "Ukončit?"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:153
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:136
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:137
 msgid "There are downloads in progress. Are you sure you want to exit?"
 msgstr "Probíhá stahování. Opravdu chcete aplikaci ukončit?"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:232
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:350
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:356
 msgid "Disclaimer"
 msgstr "Upozornění"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:233
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:351
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:357
 msgid "Don't show this message again"
 msgstr "Tuto zprávu již nezobrazovat"
 
@@ -1132,7 +1114,7 @@ msgid "Download Again"
 msgstr "Stáhnout znovu"
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:445
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:58
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:59
 msgid "GitHub Repo"
 msgstr "Repozitář GitHub"
 
@@ -1167,13 +1149,11 @@ msgstr "Zde zadejte adresu URL média"
 
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:36
 #: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:23
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:34
 msgid "Enter username here"
 msgstr "Zde zadejte uživatelské jméno"
 
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:38
 #: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:25
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:36
 msgid "Enter password here"
 msgstr "Zde zadejte heslo"
 
@@ -1233,24 +1213,11 @@ msgstr "Položky ({})"
 msgid "{} needs a credential to download. Please select or enter one to use."
 msgstr "{} potřebuje údaj ke stahování. Vyberte jej nebo jej zadejte."
 
-#. Localize the Manage page
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:23
-msgid "Create, save, and manage your credentials for media websites."
-msgstr "Vytvořte, uložte a spravujte své údaje pro multimediální weby."
-
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:30
-msgid "Enter name here"
-msgstr "Zde zadejte název"
-
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:32
-msgid "Enter url here"
-msgstr "Zde zadejte adresu URL"
-
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:56
+#: org.nickvision.tubeconverter.qt/src/views/keyringpage.cpp:37
 msgid "Warning"
 msgstr "Varování"
 
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:56
+#: org.nickvision.tubeconverter.qt/src/views/keyringpage.cpp:37
 msgid ""
 "The keyring is not saving changes to disk. Any changes made will be lost "
 "when the application closes."
@@ -1258,57 +1225,41 @@ msgstr ""
 "Klíčenka neukládá změny na disk. Všechny provedené změny budou po ukončení "
 "aplikace ztraceny."
 
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:120
-msgid "The credential name cannot be empty."
-msgstr "Název údaje nesmí být prázdný."
-
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:126
-msgid "The provided url is invalid."
-msgstr "Zadaná adresa URL je neplatná."
-
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:129
-msgid "A credential with this name already exists."
-msgstr "Údaj s tímto názvem již existuje."
-
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:132
-msgid "There was an unknown error adding the credential to the keyring."
-msgstr "Při přidávání údaje do klíčenka se vyskytla neznámá chyba."
-
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:51
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:52
 msgid "Parabolic (Preview)"
 msgstr "Parabolic (náhled)"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:55
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:56
 msgid "Check for Updates"
 msgstr "Zkontrolovat aktualizace"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:57
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:58
 msgid "Documentation"
 msgstr "Dokumentace"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:59
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:60
 msgid "Report a Bug"
 msgstr "Nahlásit chybu"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:60
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:61
 msgid "Discussions"
 msgstr "Diskuze"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:62
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:63
 msgid "About"
 msgstr "O aplikaci"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:71
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:73
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:72
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:74
 msgid "Settings"
 msgstr "Nastavení"
 
 #. Localize Downloads Page
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:83
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:84
 msgid "Log"
 msgstr "Protokol"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:329
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:335
 msgid "Update"
 msgstr "Aktualizovat"
 
@@ -1338,6 +1289,27 @@ msgstr "Omezení rychlosti"
 #: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:76
 msgid "Enter proxy url here"
 msgstr "Zde zadejte adresu URL proxy"
+
+#~ msgid "Create, save, and manage your credentials for media websites."
+#~ msgstr "Vytvořte, uložte a spravujte své údaje pro multimediální weby."
+
+#~ msgid "Enter name here"
+#~ msgstr "Zde zadejte název"
+
+#~ msgid "Enter url here"
+#~ msgstr "Zde zadejte adresu URL"
+
+#~ msgid "The credential name cannot be empty."
+#~ msgstr "Název údaje nesmí být prázdný."
+
+#~ msgid "The provided url is invalid."
+#~ msgstr "Zadaná adresa URL je neplatná."
+
+#~ msgid "A credential with this name already exists."
+#~ msgstr "Údaj s tímto názvem již existuje."
+
+#~ msgid "There was an unknown error adding the credential to the keyring."
+#~ msgstr "Při přidávání údaje do klíčenka se vyskytla neznámá chyba."
 
 #~ msgid "File"
 #~ msgstr "Soubor"

@@ -50,10 +50,6 @@ namespace Nickvision::TubeConverter::QT::Views
          */
         void onNavigationItemSelected(const QString& id);
         /**
-         * @brief Displays the keyring dialog.
-         */
-        void keyring();
-        /**
          * @brief Checks for application updates.
          */
         void checkForUpdates();

@@ -15,7 +15,7 @@
 #include "helpers/qthelpers.h"
 #include "views/adddownloaddialog.h"
 #include "views/credentialdialog.h"
-#include "views/keyringdialog.h"
+#include "views/keyringpage.h"
 #include "views/settingspage.h"
 
 using namespace Nickvision::App;
@@ -35,6 +35,7 @@ namespace Nickvision::TubeConverter::QT::Views
     enum Page
     {
         Home = 0,
+        Keyring,
         History,
         Downloading,
         Settings
@@ -147,6 +148,16 @@ namespace Nickvision::TubeConverter::QT::Views
 
     void MainWindow::onNavigationItemSelected(const QString& id)
     {
+        //Cleanup old KeyringPage
+        if(m_ui->viewStack->widget(Page::Keyring))
+        {
+            KeyringPage* oldKeyring{ qobject_cast<KeyringPage*>(m_ui->viewStack->widget(Page::Keyring)) };
+            if(oldKeyring)
+            {
+                m_ui->viewStack->removeWidget(oldKeyring);
+                delete oldKeyring;
+            }
+        }
         //Cleanup and save settings
         if(m_ui->viewStack->widget(Page::Settings))
         {
@@ -162,7 +173,8 @@ namespace Nickvision::TubeConverter::QT::Views
         }
         else if(id == "keyring")
         {
-            
+            m_ui->viewStack->insertWidget(Page::Keyring, new KeyringPage(m_controller->createKeyringDialogController(), this));
+            m_ui->viewStack->setCurrentIndex(Page::Keyring);
         }
         else if(id == "history")
         {
@@ -182,15 +194,9 @@ namespace Nickvision::TubeConverter::QT::Views
         }
         else if(id == "settings")
         {
-            m_ui->viewStack->addWidget(new SettingsPage(m_controller->createPreferencesViewController(), this));
+            m_ui->viewStack->insertWidget(Page::Settings, new SettingsPage(m_controller->createPreferencesViewController(), this));
             m_ui->viewStack->setCurrentIndex(Page::Settings);
         }
-    }
-
-    void MainWindow::keyring()
-    {
-        KeyringDialog dialog{ m_controller->createKeyringDialogController(), this };
-        dialog.exec();
     }
 
     void MainWindow::checkForUpdates()
