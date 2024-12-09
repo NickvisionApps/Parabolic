@@ -57,6 +57,16 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         m_configuration.setPreventSuspend(prevent);
     }
 
+    bool PreferencesViewController::getRecoverCrashedDownloads() const
+    {
+        return m_configuration.getRecoverCrashedDownloads();
+    }
+
+    void PreferencesViewController::setRecoverCrashedDownloads(bool recover)
+    {
+        m_configuration.setRecoverCrashedDownloads(recover);
+    }
+
     DownloaderOptions PreferencesViewController::getDownloaderOptions() const
     {
         return m_configuration.getDownloaderOptions();

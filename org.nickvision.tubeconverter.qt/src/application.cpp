@@ -1,7 +1,8 @@
 #include "application.h"
-#include <QSysInfo>
+#include <QStyleHints>
 
 using namespace Nickvision::TubeConverter::Shared::Controllers;
+using namespace Nickvision::TubeConverter::Shared::Models;
 
 namespace Nickvision::TubeConverter::QT
 {
@@ -20,6 +21,18 @@ namespace Nickvision::TubeConverter::QT
     int Application::exec()
     {
         m_controller->log(Logging::LogLevel::Info, "Started QT application.");
+        switch (m_controller->getTheme())
+        {
+        case Theme::Light:
+            QApplication::styleHints()->setColorScheme(Qt::ColorScheme::Light);
+            break;
+        case Theme::Dark:
+            QApplication::styleHints()->setColorScheme(Qt::ColorScheme::Dark);
+            break;
+        default:
+            QApplication::styleHints()->setColorScheme(Qt::ColorScheme::Unknown);
+            break;
+        }
         m_mainWindow = std::make_shared<Views::MainWindow>(m_controller);
         m_mainWindow->show();
         return QApplication::exec();

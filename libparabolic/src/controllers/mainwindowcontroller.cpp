@@ -38,10 +38,10 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         m_keyring{ m_appInfo.getId() },
         m_downloadManager{ m_dataFileManager.get<Configuration>("config").getDownloaderOptions(), m_dataFileManager.get<DownloadHistory>("history"), m_dataFileManager.get<DownloadRecoveryQueue>("recovery"), m_logger }
     {
-        m_appInfo.setVersion({ "2024.11.1" });
+        m_appInfo.setVersion({ "2024.12.0-next" });
         m_appInfo.setShortName(_("Parabolic"));
         m_appInfo.setDescription(_("Download web video and audio"));
-        m_appInfo.setChangelog("- Fixed an issue where file names that included a period were truncated\n- Fixed an issue where long file names caused the application to crash\n- Fixed an issue where external subtitle files were created although embedding was supported\n- Fixed an issue where generic downloads were unable to be opened upon completion\n- Updated yt-dlp to 2024.11.18");
+        m_appInfo.setChangelog("- Added the ability to toggle the inclusion of a media's id in its title when validated in the app's settings\n- Fixed an issue where auto-generated subtitles were not being embed in a media file\n- Redesigned the Qt version's user interface with a more modern style\n- Updated yt-dlp to 2024.12.06");
         m_appInfo.setSourceRepo("https://github.com/NickvisionApps/Parabolic");
         m_appInfo.setIssueTracker("https://github.com/NickvisionApps/Parabolic/issues/new");
         m_appInfo.setSupportUrl("https://github.com/NickvisionApps/Parabolic/discussions");
@@ -247,7 +247,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         }
 #endif
         //Load DownloadManager
-        size_t recoveredDownloads{ m_downloadManager.startup() };
+        size_t recoveredDownloads{ m_downloadManager.startup(m_dataFileManager.get<Configuration>("config").getRecoverCrashedDownloads()) };
         if(recoveredDownloads > 0)
         {
             m_notificationSent.invoke({ std::vformat(_n("Recovered {} download", "Recovered {} downloads", recoveredDownloads), std::make_format_args(recoveredDownloads)), NotificationSeverity::Informational });
