@@ -148,7 +148,7 @@ namespace Nickvision::TubeConverter::QT::Views
 
     void MainWindow::onNavigationItemSelected(const QString& id)
     {
-        //Cleanup old KeyringPage
+        //Ensure new KeyringPage
         if(m_ui->viewStack->widget(Page::Keyring))
         {
             KeyringPage* oldKeyring{ qobject_cast<KeyringPage*>(m_ui->viewStack->widget(Page::Keyring)) };
@@ -158,7 +158,8 @@ namespace Nickvision::TubeConverter::QT::Views
                 delete oldKeyring;
             }
         }
-        //Cleanup and save settings
+        m_ui->viewStack->insertWidget(Page::Keyring, new KeyringPage(m_controller->createKeyringDialogController(), this));
+        //Save and ensure new SettingsPage
         if(m_ui->viewStack->widget(Page::Settings))
         {
             SettingsPage* oldSettings{ qobject_cast<SettingsPage*>(m_ui->viewStack->widget(Page::Settings)) };
@@ -166,6 +167,7 @@ namespace Nickvision::TubeConverter::QT::Views
             m_ui->viewStack->removeWidget(oldSettings);
             delete oldSettings;
         }
+        m_ui->viewStack->insertWidget(Page::Settings, new SettingsPage(m_controller->createPreferencesViewController(), this));
         //Navigate to new page
         if(id == "home")
         {
@@ -173,7 +175,6 @@ namespace Nickvision::TubeConverter::QT::Views
         }
         else if(id == "keyring")
         {
-            m_ui->viewStack->insertWidget(Page::Keyring, new KeyringPage(m_controller->createKeyringDialogController(), this));
             m_ui->viewStack->setCurrentIndex(Page::Keyring);
         }
         else if(id == "history")
@@ -194,7 +195,6 @@ namespace Nickvision::TubeConverter::QT::Views
         }
         else if(id == "settings")
         {
-            m_ui->viewStack->insertWidget(Page::Settings, new SettingsPage(m_controller->createPreferencesViewController(), this));
             m_ui->viewStack->setCurrentIndex(Page::Settings);
         }
     }

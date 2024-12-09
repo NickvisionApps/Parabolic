@@ -17,7 +17,7 @@
    <item>
     <widget class="QStackedWidget" name="viewStack">
      <property name="currentIndex">
-      <number>0</number>
+      <number>2</number>
      </property>
      <widget class="QWidget" name="pageNoCredentials">
       <layout class="QHBoxLayout" name="horizontalLayout">
@@ -111,8 +111,90 @@
        </item>
       </layout>
      </widget>
-     <widget class="QWidget" name="pageCredentials"/>
-     <widget class="QWidget" name="pageEditCredential"/>
+     <widget class="QWidget" name="pageCredentials">
+      <layout class="QVBoxLayout" name="verticalLayout_3">
+       <item>
+        <widget class="QPushButton" name="btnAddCredential">
+         <property name="icon">
+          <iconset theme="list-add"/>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QListWidget" name="listCredentials"/>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="pageEditCredential">
+      <layout class="QFormLayout" name="formLayout">
+       <property name="horizontalSpacing">
+        <number>8</number>
+       </property>
+       <property name="verticalSpacing">
+        <number>8</number>
+       </property>
+       <item row="0" column="0">
+        <widget class="QPushButton" name="btnEditBack">
+         <property name="icon">
+          <iconset theme="go-previous"/>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QLabel" name="lblEditDescription">
+         <property name="font">
+          <font>
+           <bold>true</bold>
+          </font>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QLabel" name="lblEditName"/>
+       </item>
+       <item row="1" column="1">
+        <widget class="QLineEdit" name="txtEditName"/>
+       </item>
+       <item row="2" column="0">
+        <widget class="QLabel" name="lblEditUrl"/>
+       </item>
+       <item row="2" column="1">
+        <widget class="QLineEdit" name="txtEditUrl"/>
+       </item>
+       <item row="3" column="0">
+        <widget class="QLabel" name="lblEditUsername"/>
+       </item>
+       <item row="3" column="1">
+        <widget class="QLineEdit" name="txtEditUsername"/>
+       </item>
+       <item row="4" column="0">
+        <widget class="QLabel" name="lblEditPassword"/>
+       </item>
+       <item row="4" column="1">
+        <widget class="QLineEdit" name="txtEditPassword">
+         <property name="echoMode">
+          <enum>QLineEdit::EchoMode::Password</enum>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="0" colspan="2">
+        <widget class="QPushButton" name="btnEditSave"/>
+       </item>
+       <item row="6" column="1">
+        <spacer name="verticalSpacer_3">
+         <property name="orientation">
+          <enum>Qt::Orientation::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </widget>
     </widget>
    </item>
   </layout>

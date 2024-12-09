@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-12-08 13:48-0500\n"
+"POT-Creation-Date: 2024-12-09 10:56-0500\n"
 "PO-Revision-Date: 2024-11-03 12:00+0000\n"
 "Last-Translator: Sabri Ünal <yakushabb@gmail.com>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -199,6 +199,7 @@ msgid "Add Download"
 msgstr "İndirme Ekle"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:18
+#: org.nickvision.tubeconverter.qt/src/views/keyringpage.cpp:33
 msgid "Back"
 msgstr "Geri"
 
@@ -232,6 +233,7 @@ msgstr "Kimlik Bilgileri"
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:133
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:35
 #: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:22
+#: org.nickvision.tubeconverter.qt/src/views/keyringpage.cpp:38
 msgid "Username"
 msgstr "Kullanıcı adı"
 
@@ -241,6 +243,7 @@ msgstr "Kullanıcı adı"
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:135
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:37
 #: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:24
+#: org.nickvision.tubeconverter.qt/src/views/keyringpage.cpp:40
 msgid "Password"
 msgstr "Parola"
 
@@ -416,13 +419,14 @@ msgid "Copy Log to Clipboard"
 msgstr "Günlüğü Panoya Kopyala"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/keyring_page.blp:13
-#: org.nickvision.tubeconverter.qt/src/views/keyringpage.cpp:23
+#: org.nickvision.tubeconverter.qt/src/views/keyringpage.cpp:30
 msgid "No Credentials Found"
 msgstr "Kimlik Bilgisi Yok"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/keyring_page.blp:16
 #: org.nickvision.tubeconverter.gnome/blueprints/keyring_page.blp:33
-#: org.nickvision.tubeconverter.qt/src/views/keyringpage.cpp:24
+#: org.nickvision.tubeconverter.qt/src/views/keyringpage.cpp:31
+#: org.nickvision.tubeconverter.qt/src/views/keyringpage.cpp:32
 msgid "Add Credential"
 msgstr "Kimlik Bilgisi Ekle"
 
@@ -432,16 +436,19 @@ msgstr "Kimlik Bilgileri"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/keyring_page.blp:37
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:84
+#: org.nickvision.tubeconverter.qt/src/views/keyringpage.cpp:75
 msgid "Add"
 msgstr "Ekle"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/keyring_page.blp:65
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:129
+#: org.nickvision.tubeconverter.qt/src/views/keyringpage.cpp:34
 msgid "Name"
 msgstr "Ad"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/keyring_page.blp:69
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:131
+#: org.nickvision.tubeconverter.qt/src/views/keyringpage.cpp:36
 msgid "URL"
 msgstr "URL"
 
@@ -962,6 +969,11 @@ msgstr "Çalışıyor"
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:96
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:180
 #: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:58
+#: org.nickvision.tubeconverter.qt/src/views/keyringpage.cpp:130
+#: org.nickvision.tubeconverter.qt/src/views/keyringpage.cpp:133
+#: org.nickvision.tubeconverter.qt/src/views/keyringpage.cpp:136
+#: org.nickvision.tubeconverter.qt/src/views/keyringpage.cpp:139
+#: org.nickvision.tubeconverter.qt/src/views/keyringpage.cpp:142
 msgid "Error"
 msgstr "Hata"
 
@@ -1029,6 +1041,7 @@ msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:40
 #: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:58
+#: org.nickvision.tubeconverter.qt/src/views/keyringpage.cpp:133
 msgid "Both the username and password cannot be empty."
 msgstr "Kullanıcı adı ve parola boş olamaz."
 
@@ -1053,10 +1066,12 @@ msgid "Modify"
 msgstr "Değiştir"
 
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:106
+#: org.nickvision.tubeconverter.qt/src/views/keyringpage.cpp:99
 msgid "Delete Credential?"
 msgstr "Kimlik Bilgileri Silinsin mi?"
 
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:106
+#: org.nickvision.tubeconverter.qt/src/views/keyringpage.cpp:99
 msgid "Are you sure you want to delete this credential?"
 msgstr "Bu kimlik bilgilerini silmek istediğinizden emin misiniz?"
 
@@ -1153,11 +1168,13 @@ msgstr "Ortam URLʼsini buraya girin"
 
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:36
 #: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:23
+#: org.nickvision.tubeconverter.qt/src/views/keyringpage.cpp:39
 msgid "Enter username here"
 msgstr "Kullanıcı adını buraya girin"
 
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:38
 #: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:25
+#: org.nickvision.tubeconverter.qt/src/views/keyringpage.cpp:41
 msgid "Enter password here"
 msgstr "Parolayı buraya giriniz"
 
@@ -1219,17 +1236,56 @@ msgstr ""
 "{} indirmek için kimlik bilgisi gerekli. Lütfen kullanmak için bir tane "
 "seçin ya da girin."
 
+#: org.nickvision.tubeconverter.qt/src/views/keyringpage.cpp:35
+msgid "Enter name here"
+msgstr "Adı buraya girin"
+
 #: org.nickvision.tubeconverter.qt/src/views/keyringpage.cpp:37
+msgid "Enter url here"
+msgstr "URLʼyi buraya giriniz"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyringpage.cpp:42
+#: org.nickvision.tubeconverter.qt/src/views/keyringpage.cpp:93
+msgid "Save"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/keyringpage.cpp:62
 msgid "Warning"
 msgstr "Uyarı"
 
-#: org.nickvision.tubeconverter.qt/src/views/keyringpage.cpp:37
+#: org.nickvision.tubeconverter.qt/src/views/keyringpage.cpp:62
 msgid ""
 "The keyring is not saving changes to disk. Any changes made will be lost "
 "when the application closes."
 msgstr ""
 "Anahtarlık değişiklikleri diske kaydetmiyor. Uygulama kapandığında yapılan "
 "tüm değişiklikler yitecek."
+
+#: org.nickvision.tubeconverter.qt/src/views/keyringpage.cpp:70
+#, fuzzy
+msgid "New Credential"
+msgstr "Kimlik Bilgileri"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyringpage.cpp:88
+#, fuzzy
+msgid "Edit Credential"
+msgstr "Kimlik Bilgisi Ekle"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyringpage.cpp:130
+msgid "The credential name cannot be empty."
+msgstr "Kimlik bilgileri adı boş olamaz."
+
+#: org.nickvision.tubeconverter.qt/src/views/keyringpage.cpp:136
+msgid "The provided url is invalid."
+msgstr "Sağlanan url geçersiz."
+
+#: org.nickvision.tubeconverter.qt/src/views/keyringpage.cpp:139
+msgid "A credential with this name already exists."
+msgstr "Bu adla bir kimlik bilgisi zaten var."
+
+#: org.nickvision.tubeconverter.qt/src/views/keyringpage.cpp:142
+msgid "There was an unknown error adding the credential to the keyring."
+msgstr "Kimlik bilgisini anahtarlığa eklerken bilinmeyen hata oluştu."
 
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:52
 msgid "Parabolic (Preview)"
@@ -1300,24 +1356,6 @@ msgstr "Ağ vekili URLʼsini buraya giriniz"
 #~ msgstr ""
 #~ "Medya web siteleri için kimlik bilgilerinizi oluşturun, kaydedin ve "
 #~ "yönetin."
-
-#~ msgid "Enter name here"
-#~ msgstr "Adı buraya girin"
-
-#~ msgid "Enter url here"
-#~ msgstr "URLʼyi buraya giriniz"
-
-#~ msgid "The credential name cannot be empty."
-#~ msgstr "Kimlik bilgileri adı boş olamaz."
-
-#~ msgid "The provided url is invalid."
-#~ msgstr "Sağlanan url geçersiz."
-
-#~ msgid "A credential with this name already exists."
-#~ msgstr "Bu adla bir kimlik bilgisi zaten var."
-
-#~ msgid "There was an unknown error adding the credential to the keyring."
-#~ msgstr "Kimlik bilgisini anahtarlığa eklerken bilinmeyen hata oluştu."
 
 #~ msgid "File"
 #~ msgstr "Dosya"

@@ -31,6 +31,28 @@ namespace Nickvision::TubeConverter::QT::Views
          * @param event QShowEvent
          */
         void showEvent(QShowEvent* event) override;
+        /**
+         * @brief Prompts the user to add a new credential.
+         */
+        void addNewCredential();
+        /**
+         * @brief Prompts the user to edit a credential.
+         * @param name The name of the credential to edit
+         */
+        void editCredential(const QString& name);
+        /**
+         * @brief Delete a credential.
+         * @param name The name of the credential to delete
+         */
+        void deleteCredential(const QString& name);
+        /**
+         * @brief Discards the changes being made to a credential.
+         */
+        void discard();
+        /**
+         * @brief Saves a credential being edited.
+         */
+        void save();
 
     private:
         /**
@@ -42,6 +64,10 @@ namespace Nickvision::TubeConverter::QT::Views
             Add,
             Modify
         };
+        /**
+         * @brief Reloads the credentials to show on the page.
+         */
+        void reloadCredentials();
         Ui::KeyringPage* m_ui;
         std::shared_ptr<Shared::Controllers::KeyringDialogController> m_controller;
         EditMode m_editMode;
