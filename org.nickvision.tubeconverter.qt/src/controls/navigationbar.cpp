@@ -122,6 +122,26 @@ namespace Nickvision::TubeConverter::QT::Controls
         return true;
     }
 
+    bool NavigationBar::changeItemText(const QString& id, const QString& text)
+    {
+        if(!m_buttons.contains(id))
+        {
+            return false;
+        }
+        m_buttons[id]->setText(text);
+        return true;
+    }
+
+    bool NavigationBar::changeItemIcon(const QString& id, const QIcon& icon)
+    {
+        if(!m_buttons.contains(id))
+        {
+            return false;
+        }
+        m_buttons[id]->setIcon(icon);
+        return true;
+    }
+
     void NavigationBar::onItemClicked()
     {
         QCommandLinkButton* button{ qobject_cast<QCommandLinkButton*>(sender()) };

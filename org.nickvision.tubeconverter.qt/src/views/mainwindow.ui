@@ -34,7 +34,7 @@
     <item>
      <widget class="QStackedWidget" name="viewStack">
       <property name="currentIndex">
-       <number>1</number>
+       <number>3</number>
       </property>
       <widget class="QWidget" name="pageHome">
        <layout class="QHBoxLayout" name="horizontalLayout_2">
@@ -109,6 +109,12 @@
             <property name="icon">
              <iconset theme="emblem-downloads"/>
             </property>
+            <property name="autoDefault">
+             <bool>false</bool>
+            </property>
+            <property name="default">
+             <bool>true</bool>
+            </property>
            </widget>
           </item>
           <item>
@@ -146,7 +152,7 @@
         <item>
          <widget class="QStackedWidget" name="viewStackHistory">
           <property name="currentIndex">
-           <number>0</number>
+           <number>1</number>
           </property>
           <widget class="QWidget" name="pageNoHistory">
            <layout class="QVBoxLayout" name="verticalLayout_4">
@@ -199,79 +205,114 @@
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="pageDownloads">
+      <widget class="QWidget" name="pageDownloading">
        <layout class="QVBoxLayout" name="verticalLayout_5">
         <item>
-         <widget class="QListWidget" name="listDownloads">
+         <layout class="QHBoxLayout" name="horizontalLayout">
+          <item>
+           <widget class="QPushButton" name="btnStopAllDownloads">
+            <property name="icon">
+             <iconset theme="media-playback-stop"/>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_3">
+            <property name="orientation">
+             <enum>Qt::Orientation::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <widget class="QListWidget" name="listDownloading">
           <property name="spacing">
            <number>6</number>
           </property>
          </widget>
         </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="pageQueued">
+       <layout class="QVBoxLayout" name="verticalLayout_3">
         <item>
-         <widget class="QScrollArea" name="scrollLog">
-          <property name="minimumSize">
-           <size>
-            <width>0</width>
-            <height>300</height>
-           </size>
+         <layout class="QHBoxLayout" name="horizontalLayout_3">
+          <item>
+           <widget class="QPushButton" name="btnClearQueuedDownloads">
+            <property name="icon">
+             <iconset theme="edit-clear"/>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_4">
+            <property name="orientation">
+             <enum>Qt::Orientation::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <widget class="QListWidget" name="listQueued">
+          <property name="spacing">
+           <number>6</number>
           </property>
-          <property name="maximumSize">
-           <size>
-            <width>16777215</width>
-            <height>400</height>
-           </size>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="pageCompleted">
+       <layout class="QVBoxLayout" name="verticalLayout_6">
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_4">
+          <item>
+           <widget class="QPushButton" name="btnRetryFailedDownloads">
+            <property name="icon">
+             <iconset theme="view-refresh"/>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btnClearCompletedDownloads">
+            <property name="icon">
+             <iconset theme="edit-clear"/>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_5">
+            <property name="orientation">
+             <enum>Qt::Orientation::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <widget class="QListWidget" name="listCompleted">
+          <property name="spacing">
+           <number>6</number>
           </property>
-          <property name="widgetResizable">
-           <bool>true</bool>
-          </property>
-          <widget class="QWidget" name="scrollLogWidgetContents">
-           <property name="geometry">
-            <rect>
-             <x>0</x>
-             <y>0</y>
-             <width>98</width>
-             <height>298</height>
-            </rect>
-           </property>
-           <layout class="QVBoxLayout" name="verticalLayout_6">
-            <item>
-             <widget class="QLabel" name="lblLog">
-              <property name="font">
-               <font>
-                <bold>true</bold>
-               </font>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignTop</set>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QLabel" name="lblDownloadLog">
-              <property name="alignment">
-               <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignTop</set>
-              </property>
-              <property name="textInteractionFlags">
-               <set>Qt::TextInteractionFlag::LinksAccessibleByMouse|Qt::TextInteractionFlag::TextSelectableByKeyboard|Qt::TextInteractionFlag::TextSelectableByMouse</set>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <spacer name="verticalSpacer_3">
-              <property name="orientation">
-               <enum>Qt::Orientation::Vertical</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>20</width>
-                <height>40</height>
-               </size>
-              </property>
-             </spacer>
-            </item>
-           </layout>
-          </widget>
          </widget>
         </item>
        </layout>

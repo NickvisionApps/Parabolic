@@ -88,13 +88,13 @@ namespace Nickvision::TubeConverter::QT::Views
          */
         void stopAllDownloads();
         /**
-         * @brief Retries all downloads that have failed.
-         */
-        void retryFailedDownloads();
-        /**
          * @brief Clears all downloads that are queued.
          */
         void clearQueuedDownloads();
+        /**
+         * @brief Retries all downloads that have failed.
+         */
+        void retryFailedDownloads();
         /**
          * @brief Clears all downloads that have failed.
          */

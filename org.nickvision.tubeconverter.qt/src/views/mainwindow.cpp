@@ -38,6 +38,8 @@ namespace Nickvision::TubeConverter::QT::Views
         Keyring,
         History,
         Downloading,
+        Queued,
+        Completed,
         Settings
     };
 
@@ -80,13 +82,26 @@ namespace Nickvision::TubeConverter::QT::Views
         //Localize History Page
         m_ui->lblNoHistory->setText(_("No history available"));
         m_ui->btnClearHistory->setText(_("Clear"));
-        //Localize Downloads Page
-        m_ui->lblLog->setText(_("Log"));
+        //Localize Downloading Page
+        m_ui->btnStopAllDownloads->setText(_("Stop All"));
+        m_ui->btnStopAllDownloads->setToolTip(_("Stop All Downloads"));
+        //Localize Queued Page
+        m_ui->btnClearQueuedDownloads->setText(_("Clear"));
+        m_ui->btnClearQueuedDownloads->setToolTip(_("Clear Queued Downloads"));
+        //Localize Completed Page
+        m_ui->btnRetryFailedDownloads->setText(_("Retry Failed"));
+        m_ui->btnRetryFailedDownloads->setToolTip(_("Retry Failed Downloads"));
+        m_ui->btnClearCompletedDownloads->setText(_("Clear"));
+        m_ui->btnClearCompletedDownloads->setToolTip(_("Clear Completed Downloads"));
         //Signals
         connect(m_navigationBar, &NavigationBar::itemSelected, this, &MainWindow::onNavigationItemSelected);
         connect(m_ui->btnHomeAddDownload, &QPushButton::clicked, [this]() { addDownload(); });
         connect(m_ui->btnClearHistory, &QPushButton::clicked, this, &MainWindow::clearHistory);
-        connect(m_ui->listDownloads, &QListWidget::itemSelectionChanged, this, &MainWindow::onListDownloadsSelectionChanged);
+        connect(m_ui->btnStopAllDownloads, &QPushButton::clicked, this, &MainWindow::stopAllDownloads);
+        connect(m_ui->btnClearQueuedDownloads, &QPushButton::clicked, this, &MainWindow::clearQueuedDownloads);
+        connect(m_ui->btnRetryFailedDownloads, &QPushButton::clicked, this, &MainWindow::retryFailedDownloads);
+        connect(m_ui->btnClearCompletedDownloads, &QPushButton::clicked, this, &MainWindow::clearCompletedDownloads);
+        connect(m_ui->listDownloading, &QListWidget::itemSelectionChanged, this, &MainWindow::onListDownloadsSelectionChanged);
         //Events
         m_controller->notificationSent() += [&](const NotificationSentEventArgs& args) { QTHelpers::dispatchToMainThread([this, args]() { onNotificationSent(args); }); };
         m_controller->shellNotificationSent() += [&](const ShellNotificationSentEventArgs& args) { onShellNotificationSent(args); };
@@ -187,11 +202,11 @@ namespace Nickvision::TubeConverter::QT::Views
         }
         else if(id == "queued")
         {
-            m_ui->viewStack->setCurrentIndex(Page::Downloading);
+            m_ui->viewStack->setCurrentIndex(Page::Queued);
         }
         else if(id == "completed")
         {
-            m_ui->viewStack->setCurrentIndex(Page::Downloading);
+            m_ui->viewStack->setCurrentIndex(Page::Completed);
         }
         else if(id == "settings")
         {
@@ -249,61 +264,56 @@ namespace Nickvision::TubeConverter::QT::Views
         m_controller->getDownloadManager().stopAllDownloads();
     }
 
+    void MainWindow::clearQueuedDownloads()
+    {
+        for(int id : m_controller->getDownloadManager().clearQueuedDownloads())
+        {
+            for(int i = 0; i < m_ui->listQueued->count(); i++)
+            {
+                if(m_ui->listQueued->itemWidget(m_ui->listQueued->item(i)) == m_downloadRows[id])
+                {
+                    delete m_ui->listQueued->takeItem(i);
+                    m_downloadRows.erase(id);
+                    break;
+                }
+            }
+        }
+        m_navigationBar->selectItem("home");
+    }
+
     void MainWindow::retryFailedDownloads()
     {
         m_controller->getDownloadManager().retryFailedDownloads();
     }
 
-    void MainWindow::clearQueuedDownloads()
-    {
-        for(int id : m_controller->getDownloadManager().clearQueuedDownloads())
-        {
-            for(int i = 0; i < m_ui->listDownloads->count(); i++)
-            {
-                if(m_ui->listDownloads->itemWidget(m_ui->listDownloads->item(i)) == m_downloadRows[id])
-                {
-                    delete m_ui->listDownloads->takeItem(i);
-                    m_downloadRows.erase(id);
-                    break;
-                }
-            }
-        }
-        if(m_downloadRows.empty())
-        {
-            m_navigationBar->selectItem("home");
-        }
-    }
 
     void MainWindow::clearCompletedDownloads()
     {
         for(int id : m_controller->getDownloadManager().clearCompletedDownloads())
         {
-            for(int i = 0; i < m_ui->listDownloads->count(); i++)
+            for(int i = 0; i < m_ui->listCompleted->count(); i++)
             {
-                if(m_ui->listDownloads->itemWidget(m_ui->listDownloads->item(i)) == m_downloadRows[id])
+                if(m_ui->listCompleted->itemWidget(m_ui->listCompleted->item(i)) == m_downloadRows[id])
                 {
-                    delete m_ui->listDownloads->takeItem(i);
+                    delete m_ui->listCompleted->takeItem(i);
                     m_downloadRows.erase(id);
                     break;
                 }
             }
         }
-        if(m_downloadRows.empty())
-        {
-            m_navigationBar->selectItem("home");
-        }
+        m_navigationBar->selectItem("home");
     }
 
     void MainWindow::onListDownloadsSelectionChanged()
     {
-        m_ui->lblDownloadLog->setText("");
-        QListWidgetItem* item{ m_ui->listDownloads->currentItem() };
+        //m_ui->lblDownloadLog->setText("");
+        QListWidgetItem* item{ m_ui->listDownloading->currentItem() };
         if(!item)
         {
             return;
         }
-        DownloadRow* row{ static_cast<DownloadRow*>(m_ui->listDownloads->itemWidget(item)) };
-        m_ui->lblDownloadLog->setText(QString::fromStdString(m_controller->getDownloadManager().getDownloadCommand(row->getId())) + "\n" + row->getLog());
+        DownloadRow* row{ static_cast<DownloadRow*>(m_ui->listDownloading->itemWidget(item)) };
+        //m_ui->lblDownloadLog->setText(QString::fromStdString(m_controller->getDownloadManager().getDownloadCommand(row->getId())) + "\n" + row->getLog());
     }
 
     void MainWindow::addDownload(const std::string& url)
@@ -391,14 +401,22 @@ namespace Nickvision::TubeConverter::QT::Views
         m_downloadRows[args.getId()] = row;
         QListWidgetItem* item{ new QListWidgetItem() };
         item->setSizeHint(row->sizeHint() + QSize(0, 10));
-        m_ui->listDownloads->insertItem(0, item);
-        m_ui->listDownloads->setItemWidget(item, row);
-        m_ui->listDownloads->setCurrentRow(0);
+        m_ui->listDownloading->insertItem(0, item);
+        m_ui->listDownloading->setItemWidget(item, row);
+        m_ui->listDownloading->setCurrentRow(0);
     }
 
     void MainWindow::onDownloadCompleted(const DownloadCompletedEventArgs& args)
     {
         m_downloadRows[args.getId()]->setCompleteState(args);
+        for(int i = 0; i < m_ui->listDownloading->count(); i++)
+        {
+            if(m_ui->listDownloading->itemWidget(m_ui->listDownloading->item(i)) == m_downloadRows[args.getId()])
+            {
+                m_ui->listCompleted->insertItem(0, m_ui->listDownloading->takeItem(i));
+                break;
+            }
+        }
         onListDownloadsSelectionChanged();
     }
 
@@ -411,15 +429,23 @@ namespace Nickvision::TubeConverter::QT::Views
     void MainWindow::onDownloadStopped(const ParamEventArgs<int>& args)
     {
         m_downloadRows[args.getParam()]->setStopState();
+        for(int i = 0; i < m_ui->listDownloading->count(); i++)
+        {
+            if(m_ui->listDownloading->itemWidget(m_ui->listDownloading->item(i)) == m_downloadRows[args.getParam()])
+            {
+                m_ui->listCompleted->insertItem(0, m_ui->listDownloading->takeItem(i));
+                break;
+            }
+        }
     }
 
     void MainWindow::onDownloadRetried(const ParamEventArgs<int>& args)
     {
-        for(int i = 0; i < m_ui->listDownloads->count(); i++)
+        for(int i = 0; i < m_ui->listCompleted->count(); i++)
         {
-            if(m_ui->listDownloads->itemWidget(m_ui->listDownloads->item(i)) == m_downloadRows[args.getParam()])
+            if(m_ui->listCompleted->itemWidget(m_ui->listCompleted->item(i)) == m_downloadRows[args.getParam()])
             {
-                delete m_ui->listDownloads->takeItem(i);
+                delete m_ui->listCompleted->takeItem(i);
                 m_downloadRows.erase(args.getParam());
                 break;
             }
@@ -429,5 +455,13 @@ namespace Nickvision::TubeConverter::QT::Views
     void MainWindow::onDownloadStartedFromQueue(const ParamEventArgs<int>& args)
     {
         m_downloadRows[args.getParam()]->setStartFromQueueState();
+        for(int i = 0; i < m_ui->listQueued->count(); i++)
+        {
+            if(m_ui->listQueued->itemWidget(m_ui->listQueued->item(i)) == m_downloadRows[args.getParam()])
+            {
+                m_ui->listDownloading->insertItem(0, m_ui->listQueued->takeItem(i));
+                break;
+            }
+        }
     }
 }

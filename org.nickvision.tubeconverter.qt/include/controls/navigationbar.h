@@ -68,6 +68,18 @@ namespace Nickvision::TubeConverter::QT::Controls
          * @param id The id of the item
          */
         bool selectItem(const QString& id);
+        /**
+         * @brief Changes the text of an item.
+         * @param id The id of the item
+         * @param text The new text of the item
+         */
+        bool changeItemText(const QString& id, const QString& text);
+        /**
+         * @brief Changes the icon of an item.
+         * @param id The id of the item
+         * @param icon The new icon of the item
+         */
+        bool changeItemIcon(const QString& id, const QIcon& icon);
 
     Q_SIGNALS:
         /**
