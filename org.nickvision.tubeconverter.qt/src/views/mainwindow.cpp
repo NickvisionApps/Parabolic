@@ -5,8 +5,6 @@
 #include <QFileDialog>
 #include <QMessageBox>
 #include <QMimeData>
-#include <QProgressBar>
-#include <QPushButton>
 #include <libnick/helpers/codehelpers.h>
 #include <libnick/localization/gettext.h>
 #include <libnick/notifications/shellnotification.h>
@@ -396,47 +394,30 @@ namespace Nickvision::TubeConverter::QT::Views
     {
         m_navigationBar->selectItem("downloading");
         DownloadRow* row{ new DownloadRow(args) };
-        connect(row, &DownloadRow::stop, [this, id{ args.getId() }]() { m_controller->getDownloadManager().stopDownload(id); });
-        connect(row, &DownloadRow::retry, [this, id{ args.getId() }]() { m_controller->getDownloadManager().retryDownload(id); });
+        connect(row, &DownloadRow::stop, [this, args]() { m_controller->getDownloadManager().stopDownload(args.getId()); });
+        connect(row, &DownloadRow::retry, [this, args]() { m_controller->getDownloadManager().retryDownload(args.getId()); });
         m_downloadRows[args.getId()] = row;
         QListWidgetItem* item{ new QListWidgetItem() };
         item->setSizeHint(row->sizeHint() + QSize(0, 10));
         m_ui->listDownloading->insertItem(0, item);
         m_ui->listDownloading->setItemWidget(item, row);
-        m_ui->listDownloading->setCurrentRow(0);
     }
 
     void MainWindow::onDownloadCompleted(const DownloadCompletedEventArgs& args)
     {
         m_downloadRows[args.getId()]->setCompleteState(args);
-        for(int i = 0; i < m_ui->listDownloading->count(); i++)
-        {
-            if(m_ui->listDownloading->itemWidget(m_ui->listDownloading->item(i)) == m_downloadRows[args.getId()])
-            {
-                m_ui->listCompleted->insertItem(0, m_ui->listDownloading->takeItem(i));
-                break;
-            }
-        }
-        onListDownloadsSelectionChanged();
+        moveDownloadRow(args.getId(), m_ui->listDownloading, m_ui->listCompleted);
     }
 
     void MainWindow::onDownloadProgressChanged(const DownloadProgressChangedEventArgs& args)
     {
         m_downloadRows[args.getId()]->setProgressState(args);
-        onListDownloadsSelectionChanged();
     }
 
     void MainWindow::onDownloadStopped(const ParamEventArgs<int>& args)
     {
         m_downloadRows[args.getParam()]->setStopState();
-        for(int i = 0; i < m_ui->listDownloading->count(); i++)
-        {
-            if(m_ui->listDownloading->itemWidget(m_ui->listDownloading->item(i)) == m_downloadRows[args.getParam()])
-            {
-                m_ui->listCompleted->insertItem(0, m_ui->listDownloading->takeItem(i));
-                break;
-            }
-        }
+        moveDownloadRow(args.getParam(), m_ui->listDownloading, m_ui->listCompleted);
     }
 
     void MainWindow::onDownloadRetried(const ParamEventArgs<int>& args)
@@ -455,11 +436,22 @@ namespace Nickvision::TubeConverter::QT::Views
     void MainWindow::onDownloadStartedFromQueue(const ParamEventArgs<int>& args)
     {
         m_downloadRows[args.getParam()]->setStartFromQueueState();
-        for(int i = 0; i < m_ui->listQueued->count(); i++)
+        moveDownloadRow(args.getParam(), m_ui->listQueued, m_ui->listDownloading);
+    }
+
+    void MainWindow::moveDownloadRow(int id, QListWidget* from, QListWidget* to)
+    {
+        for(int i = 0; i < from->count(); i++)
         {
-            if(m_ui->listQueued->itemWidget(m_ui->listQueued->item(i)) == m_downloadRows[args.getParam()])
+            if(from->itemWidget(from->item(i)) == m_downloadRows[id])
             {
-                m_ui->listDownloading->insertItem(0, m_ui->listQueued->takeItem(i));
+                QListWidgetItem* item{ from->takeItem(i) };
+                DownloadRow* clone{ new DownloadRow(*m_downloadRows[id]) };
+                connect(clone, &DownloadRow::stop, [this, id]() { m_controller->getDownloadManager().stopDownload(id); });
+                connect(clone, &DownloadRow::retry, [this, id]() { m_controller->getDownloadManager().retryDownload(id); });
+                m_downloadRows[id] = clone;
+                to->insertItem(0, item);
+                to->setItemWidget(item, clone);
                 break;
             }
         }

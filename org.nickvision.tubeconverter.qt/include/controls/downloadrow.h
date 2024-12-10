@@ -27,6 +27,11 @@ namespace Nickvision::TubeConverter::QT::Controls
          */
         DownloadRow(const Shared::Events::DownloadAddedEventArgs& args, QWidget* parent = nullptr);
         /**
+         * @brief Constructs a DownloadRow.
+         * @param row A DownloadRow to copy from
+         */
+        DownloadRow(const DownloadRow& row);
+        /**
          * @brief Destructs a DownloadRow.
          */
         ~DownloadRow();
