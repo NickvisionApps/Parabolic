@@ -449,6 +449,7 @@ namespace Nickvision::TubeConverter::QT::Views
                 DownloadRow* clone{ new DownloadRow(*m_downloadRows[id]) };
                 connect(clone, &DownloadRow::stop, [this, id]() { m_controller->getDownloadManager().stopDownload(id); });
                 connect(clone, &DownloadRow::retry, [this, id]() { m_controller->getDownloadManager().retryDownload(id); });
+                delete m_downloadRows[id];
                 m_downloadRows[id] = clone;
                 to->insertItem(0, item);
                 to->setItemWidget(item, clone);
