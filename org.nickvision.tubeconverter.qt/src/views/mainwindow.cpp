@@ -38,6 +38,9 @@ namespace Nickvision::TubeConverter::QT::Views
         Downloading,
         Queued,
         Completed,
+        NoDownloading,
+        NoQueued,
+        NoCompleted,
         Settings
     };
 
@@ -78,15 +81,22 @@ namespace Nickvision::TubeConverter::QT::Views
         m_ui->lblHomeDescription->setText(_("Add a video, audio, or playlist URL to start downloading"));
         m_ui->btnHomeAddDownload->setText(_("Add Download"));
         //Localize History Page
+        m_ui->lblNoHIstoryIcon->setPixmap(QIcon::fromTheme(QIcon::ThemeIcon::EditFind).pixmap(64, 64));
         m_ui->lblNoHistory->setText(_("No history available"));
         m_ui->btnClearHistory->setText(_("Clear"));
         //Localize Downloading Page
+        m_ui->lblNoDownloading->setText(_("No Downloads Running"));
+        m_ui->lblNoDownloadingIcon->setPixmap(QIcon::fromTheme("emblem-downloads").pixmap(64, 64));
         m_ui->btnStopAllDownloads->setText(_("Stop All"));
         m_ui->btnStopAllDownloads->setToolTip(_("Stop All Downloads"));
         //Localize Queued Page
+        m_ui->lblNoQueued->setText(_("No Downloads Queued"));
+        m_ui->lblNoQueuedIcon->setPixmap(QIcon::fromTheme(QIcon::ThemeIcon::ListAdd).pixmap(64, 64));
         m_ui->btnClearQueuedDownloads->setText(_("Clear"));
         m_ui->btnClearQueuedDownloads->setToolTip(_("Clear Queued Downloads"));
         //Localize Completed Page
+        m_ui->lblNoCompleted->setText(_("No Downloads Completed"));
+        m_ui->lblNoCompletedIcon->setPixmap(QIcon::fromTheme(QIcon::ThemeIcon::DocumentSave).pixmap(64, 64));
         m_ui->btnRetryFailedDownloads->setText(_("Retry Failed"));
         m_ui->btnRetryFailedDownloads->setToolTip(_("Retry Failed Downloads"));
         m_ui->btnClearCompletedDownloads->setText(_("Clear"));
@@ -196,15 +206,15 @@ namespace Nickvision::TubeConverter::QT::Views
         }
         else if(id == "downloading")
         {
-            m_ui->viewStack->setCurrentIndex(Page::Downloading);
+            m_ui->viewStack->setCurrentIndex(m_controller->getDownloadManager().getDownloadingCount() > 0 ? Page::Downloading : Page::NoDownloading);
         }
         else if(id == "queued")
         {
-            m_ui->viewStack->setCurrentIndex(Page::Queued);
+            m_ui->viewStack->setCurrentIndex(m_controller->getDownloadManager().getQueuedCount() > 0 ? Page::Queued : Page::NoQueued);
         }
         else if(id == "completed")
         {
-            m_ui->viewStack->setCurrentIndex(Page::Completed);
+            m_ui->viewStack->setCurrentIndex(m_controller->getDownloadManager().getCompletedCount() > 0 ? Page::Completed : Page::NoCompleted);
         }
         else if(id == "settings")
         {
