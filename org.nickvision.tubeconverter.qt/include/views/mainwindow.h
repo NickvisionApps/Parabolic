@@ -5,9 +5,11 @@
 #include <QCloseEvent>
 #include <QDragEnterEvent>
 #include <QDropEvent>
+#include <QListWidget>
 #include <QMainWindow>
-#include "controls/downloadrow.h"
 #include "controllers/mainwindowcontroller.h"
+#include "controls/downloadrow.h"
+#include "controls/navigationbar.h"
 
 namespace Ui { class MainWindow; }
 
@@ -45,21 +47,9 @@ namespace Nickvision::TubeConverter::QT::Views
 
     private Q_SLOTS:
         /**
-         * @brief Exits the application.
+         * @brief Handles when a navigation item is selected.
          */
-        void exit();
-        /**
-         * @brief Displays the keyring dialog.
-         */
-        void keyring();
-        /**
-         * @brief Displays the settings dialog.
-         */
-        void settings();
-        /**
-         * @brief Displays the history pane.
-         */
-        void history();
+        void onNavigationItemSelected(const QString& id);
         /**
          * @brief Checks for application updates.
          */
@@ -99,13 +89,13 @@ namespace Nickvision::TubeConverter::QT::Views
          */
         void stopAllDownloads();
         /**
-         * @brief Retries all downloads that have failed.
-         */
-        void retryFailedDownloads();
-        /**
          * @brief Clears all downloads that are queued.
          */
         void clearQueuedDownloads();
+        /**
+         * @brief Retries all downloads that have failed.
+         */
+        void retryFailedDownloads();
         /**
          * @brief Clears all downloads that have failed.
          */
@@ -176,7 +166,15 @@ namespace Nickvision::TubeConverter::QT::Views
          * @param args The ParamEventArgs<int>
          */
         void onDownloadStartedFromQueue(const Events::ParamEventArgs<int>& args);
+        /**
+         * @brief Moves a download row from one list to another.
+         * @param id The id of the download
+         * @param from The list to move from
+         * @param to The list to move to
+         */
+        void moveDownloadRow(int id, QListWidget* from, QListWidget* to);
         Ui::MainWindow* m_ui;
+        Controls::NavigationBar* m_navigationBar;
         std::shared_ptr<Shared::Controllers::MainWindowController> m_controller;
         std::unordered_map<int, Controls::DownloadRow*> m_downloadRows;
     };
