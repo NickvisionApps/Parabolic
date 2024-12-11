@@ -260,11 +260,6 @@ namespace Nickvision::TubeConverter::Shared::Models
             arguments.push_back("--downloader-args");
             arguments.push_back("aria2c:-x " + std::to_string(downloaderOptions.getAriaMaxConnectionsPerServer()) + " -k " + std::to_string(downloaderOptions.getAriaMinSplitSize()) + "M");
         }
-        else
-        {
-            arguments.push_back("--downloader");
-            arguments.push_back("native");
-        }
         if(!downloaderOptions.getProxyUrl().empty())
         {
             arguments.push_back("--proxy");
@@ -483,6 +478,7 @@ namespace Nickvision::TubeConverter::Shared::Models
         {
             arguments.push_back("--download-sections");
             arguments.push_back("*" + m_timeFrame->str());
+            arguments.push_back("--force-keyframes-at-cuts");
         }
         arguments.push_back("--postprocessor-args");
         arguments.push_back("-threads " + std::to_string(downloaderOptions.getPostprocessingThreads()));
