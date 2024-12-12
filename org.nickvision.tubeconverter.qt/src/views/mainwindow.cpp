@@ -75,7 +75,6 @@ namespace Nickvision::TubeConverter::QT::Views
 #else
         m_navigationBar->addBottomItem("settings", _("Settings"), QIcon::fromTheme(QIcon::ThemeIcon::DocumentProperties));
 #endif
-        m_ui->dockLog->setWindowTitle(_("Log"));
         //Localize Home Page
         m_ui->lblHomeGreeting->setText(_("Download Media"));
         m_ui->lblHomeDescription->setText(_("Add a video, audio, or playlist URL to start downloading"));
@@ -101,6 +100,10 @@ namespace Nickvision::TubeConverter::QT::Views
         m_ui->btnRetryFailedDownloads->setToolTip(_("Retry Failed Downloads"));
         m_ui->btnClearCompletedDownloads->setText(_("Clear"));
         m_ui->btnClearCompletedDownloads->setToolTip(_("Clear Completed Downloads"));
+        //Localize Log Dock
+        m_dockLogCloseEventFilter = new CloseEventFilter(m_ui->dockLog);
+        m_ui->dockLog->installEventFilter(m_dockLogCloseEventFilter);
+        m_ui->dockLog->setWindowTitle(_("Log"));
         //Signals
         connect(m_navigationBar, &NavigationBar::itemSelected, this, &MainWindow::onNavigationItemSelected);
         connect(m_ui->btnHomeAddDownload, &QPushButton::clicked, [this]() { addDownload(); });
@@ -112,6 +115,7 @@ namespace Nickvision::TubeConverter::QT::Views
         connect(m_ui->listDownloading, &QListWidget::itemSelectionChanged, this, &MainWindow::onDownloadListSelectionChanged);
         connect(m_ui->listQueued, &QListWidget::itemSelectionChanged, this, &MainWindow::onDownloadListSelectionChanged);
         connect(m_ui->listCompleted, &QListWidget::itemSelectionChanged, this, &MainWindow::onDownloadListSelectionChanged);
+        connect(m_dockLogCloseEventFilter, &CloseEventFilter::closed, this, &MainWindow::onDockLogClosed);
         //Events
         m_controller->notificationSent() += [&](const NotificationSentEventArgs& args) { QTHelpers::dispatchToMainThread([this, args]() { onNotificationSent(args); }); };
         m_controller->shellNotificationSent() += [&](const ShellNotificationSentEventArgs& args) { onShellNotificationSent(args); };
@@ -210,14 +214,17 @@ namespace Nickvision::TubeConverter::QT::Views
         else if(id == "downloading")
         {
             m_ui->viewStack->setCurrentIndex(m_controller->getDownloadManager().getDownloadingCount() > 0 ? Page::Downloading : Page::NoDownloading);
+            m_ui->listDownloading->setCurrentItem(nullptr);
         }
         else if(id == "queued")
         {
             m_ui->viewStack->setCurrentIndex(m_controller->getDownloadManager().getQueuedCount() > 0 ? Page::Queued : Page::NoQueued);
+            m_ui->listQueued->setCurrentItem(nullptr);
         }
         else if(id == "completed")
         {
             m_ui->viewStack->setCurrentIndex(m_controller->getDownloadManager().getCompletedCount() > 0 ? Page::Completed : Page::NoCompleted);
+            m_ui->listCompleted->setCurrentItem(nullptr);
         }
         else if(id == "settings")
         {
@@ -332,6 +339,17 @@ namespace Nickvision::TubeConverter::QT::Views
         DownloadRow* row{ static_cast<DownloadRow*>(list->itemWidget(item)) };
         m_ui->dockLog->show();
         m_ui->lblLog->setText(QString::fromStdString(m_controller->getDownloadManager().getDownloadCommand(row->getId())) + "\n" + row->getLog());
+    }
+
+    void MainWindow::onDockLogClosed(QObject* obj)
+    {
+        if(obj != m_ui->dockLog)
+        {
+            return;
+        }
+        m_ui->listDownloading->setCurrentItem(nullptr);
+        m_ui->listQueued->setCurrentItem(nullptr);
+        m_ui->listCompleted->setCurrentItem(nullptr);
     }
 
     void MainWindow::addDownload(const std::string& url)

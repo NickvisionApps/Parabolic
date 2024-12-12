@@ -10,6 +10,7 @@
 #include "controllers/mainwindowcontroller.h"
 #include "controls/downloadrow.h"
 #include "controls/navigationbar.h"
+#include "helpers/closeeventfilter.h"
 
 namespace Ui { class MainWindow; }
 
@@ -104,6 +105,10 @@ namespace Nickvision::TubeConverter::QT::Views
          * @brief Handles when a download list's selection is changed.
          */
         void onDownloadListSelectionChanged();
+        /**
+         * @brief Handles when the log dock is closed.
+         */
+        void onDockLogClosed(QObject* obj);
 
     private:
         /**
@@ -175,6 +180,7 @@ namespace Nickvision::TubeConverter::QT::Views
         void moveDownloadRow(int id, QListWidget* from, QListWidget* to);
         Ui::MainWindow* m_ui;
         Controls::NavigationBar* m_navigationBar;
+        Helpers::CloseEventFilter* m_dockLogCloseEventFilter;
         std::shared_ptr<Shared::Controllers::MainWindowController> m_controller;
         std::unordered_map<int, Controls::DownloadRow*> m_downloadRows;
     };
