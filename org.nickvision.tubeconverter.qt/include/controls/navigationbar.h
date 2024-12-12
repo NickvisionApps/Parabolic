@@ -27,6 +27,11 @@ namespace Nickvision::TubeConverter::QT::Controls
          */
         NavigationBar(QWidget* parent = nullptr);
         /**
+         * @brief Gets the id of the selected item.
+         * @return The id of the selected item
+         */
+        const QString& getSelectedItem() const;
+        /**
          * @brief Adds an item to the top of the list.
          * @param id The id of the item
          * @param text The text of the item

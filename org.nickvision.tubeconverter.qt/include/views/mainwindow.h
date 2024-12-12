@@ -101,9 +101,9 @@ namespace Nickvision::TubeConverter::QT::Views
          */
         void clearCompletedDownloads();
         /**
-         * @brief Handles when the download list's selection is changed.
+         * @brief Handles when a download list's selection is changed.
          */
-        void onListDownloadsSelectionChanged();
+        void onDownloadListSelectionChanged();
 
     private:
         /**

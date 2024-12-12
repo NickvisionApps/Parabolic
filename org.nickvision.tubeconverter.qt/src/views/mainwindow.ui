@@ -10,12 +10,12 @@
     <height>697</height>
    </rect>
   </property>
+  <property name="acceptDrops">
+   <bool>false</bool>
+  </property>
   <property name="windowIcon">
    <iconset resource="../../org.nickvision.tubeconverter.qt.qrc">
     <normaloff>:/resources/org.nickvision.tubeconverter.ico</normaloff>:/resources/org.nickvision.tubeconverter.ico</iconset>
-  </property>
-  <property name="toolButtonStyle">
-   <enum>Qt::ToolButtonStyle::ToolButtonTextBesideIcon</enum>
   </property>
   <widget class="QWidget" name="mainGrid">
    <layout class="QHBoxLayout" name="mainLayout">
@@ -34,7 +34,7 @@
     <item>
      <widget class="QStackedWidget" name="viewStack">
       <property name="currentIndex">
-       <number>7</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="pageHome">
        <layout class="QHBoxLayout" name="horizontalLayout_2">
@@ -100,12 +100,6 @@
           </item>
           <item>
            <widget class="QPushButton" name="btnHomeAddDownload">
-            <property name="minimumSize">
-             <size>
-              <width>0</width>
-              <height>32</height>
-             </size>
-            </property>
             <property name="icon">
              <iconset theme="emblem-downloads"/>
             </property>
@@ -503,6 +497,74 @@
      </widget>
     </item>
    </layout>
+  </widget>
+  <widget class="QDockWidget" name="dockLog">
+   <property name="minimumSize">
+    <size>
+     <width>70</width>
+     <height>200</height>
+    </size>
+   </property>
+   <property name="floating">
+    <bool>false</bool>
+   </property>
+   <property name="allowedAreas">
+    <set>Qt::DockWidgetArea::BottomDockWidgetArea</set>
+   </property>
+   <attribute name="dockWidgetArea">
+    <number>8</number>
+   </attribute>
+   <widget class="QWidget" name="dockLogContents">
+    <layout class="QVBoxLayout" name="verticalLayout_11">
+     <property name="leftMargin">
+      <number>0</number>
+     </property>
+     <property name="topMargin">
+      <number>0</number>
+     </property>
+     <property name="rightMargin">
+      <number>0</number>
+     </property>
+     <property name="bottomMargin">
+      <number>0</number>
+     </property>
+     <item>
+      <widget class="QScrollArea" name="scrollLog">
+       <property name="widgetResizable">
+        <bool>true</bool>
+       </property>
+       <widget class="QWidget" name="scrollLogContents">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>1067</width>
+          <height>178</height>
+         </rect>
+        </property>
+        <layout class="QVBoxLayout" name="verticalLayout_12">
+         <item>
+          <widget class="QLabel" name="lblLog"/>
+         </item>
+         <item>
+          <spacer name="verticalSpacer_11">
+           <property name="orientation">
+            <enum>Qt::Orientation::Vertical</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>40</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </widget>
+      </widget>
+     </item>
+    </layout>
+   </widget>
   </widget>
  </widget>
  <resources>

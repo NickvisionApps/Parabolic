@@ -23,6 +23,19 @@ namespace Nickvision::TubeConverter::QT::Controls
         addWidget(m_line);
     }
 
+    const QString& NavigationBar::getSelectedItem() const
+    {
+        for(const std::pair<const QString, QCommandLinkButton*>& pair : m_buttons)
+        {
+            if(pair.second->isChecked())
+            {
+                return pair.first;
+            }
+        }
+        static QString empty;
+        return empty;
+    }
+
     bool NavigationBar::addTopItem(const QString& id, const QString& text, const QIcon& icon)
     {
         if(m_buttons.contains(id))
