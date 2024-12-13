@@ -149,10 +149,11 @@ namespace Nickvision::TubeConverter::Shared::Controllers
          * @param subtitleLanguages The list of selected subtitle languages
          * @param splitChapters Whether or not to split the video by chapters
          * @param limitSpeed Whether or not to limit the download speed
+         * @param exportDescription Whether or not to export the media description to a file
          * @param startTime The start time of the download
          * @param endTime The end time of the download
          */
-        void addSingleDownload(const std::filesystem::path& saveFolder, const std::string& filename, size_t fileTypeIndex, size_t qualityIndex, size_t audioLanguageIndex, const std::vector<std::string>& subtitleLanguages, bool splitChapters, bool limitSpeed, const std::string& startTime, const std::string& endTime);
+        void addSingleDownload(const std::filesystem::path& saveFolder, const std::string& filename, size_t fileTypeIndex, size_t qualityIndex, size_t audioLanguageIndex, const std::vector<std::string>& subtitleLanguages, bool splitChapters, bool limitSpeed, bool exportDescription, const std::string& startTime, const std::string& endTime);
         /**
          * @brief Adds a playlist download to the download manager.
          * @param saveFolder The folder to save the downloads to
@@ -160,8 +161,9 @@ namespace Nickvision::TubeConverter::Shared::Controllers
          * @param fileTypeIndex The index of the selected file type
          * @param splitChapters Whether or not to split the video by chapters
          * @param limitSpeed Whether or not to limit the download speed
+         * @param exportDescription Whether or not to export the media description to a file
          */
-        void addPlaylistDownload(const std::filesystem::path& saveFolder, const std::unordered_map<size_t, std::string>& filenames, size_t fileTypeIndex, bool splitChapters, bool limitSpeed);
+        void addPlaylistDownload(const std::filesystem::path& saveFolder, const std::unordered_map<size_t, std::string>& filenames, size_t fileTypeIndex, bool splitChapters, bool limitSpeed, bool exportDescription);
 
     private:
         Models::DownloadManager& m_downloadManager;

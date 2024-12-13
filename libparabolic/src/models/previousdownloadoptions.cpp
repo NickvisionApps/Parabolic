@@ -64,6 +64,16 @@ namespace Nickvision::TubeConverter::Shared::Models
         m_json["LimitSpeed"] = limitSpeed;
     }
 
+    bool PreviousDownloadOptions::getExportDescription() const
+    {
+        return m_json["ExportDescription"].is_bool() ? m_json["ExportDescription"].as_bool() : false;
+    }
+
+    void PreviousDownloadOptions::setExportDescription(bool exportDescription)
+    {
+        m_json["ExportDescription"] = exportDescription;
+    }
+
     bool PreviousDownloadOptions::getNumberTitles() const
     {
         return m_json["NumberTitles"].is_bool() ? m_json["NumberTitles"].as_bool() : false;

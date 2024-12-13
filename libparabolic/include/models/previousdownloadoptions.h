@@ -63,6 +63,16 @@ namespace Nickvision::TubeConverter::Shared::Models
          */
         void setLimitSpeed(bool limitSpeed);
         /**
+         * @brief Gets the previous export description state.
+         * @return The previous export description state
+         */
+        bool getExportDescription() const;
+        /**
+         * @brief Sets the previous export description state.
+         * @param exportDescription The new previous export description state
+         */
+        void setExportDescription(bool exportDescription);
+        /**
          * @brief Gets the previous number titles state.
          * @return The previous number titles state
          */

@@ -17,8 +17,9 @@ namespace Nickvision::TubeConverter::Shared::Models
 {
     DownloadOptions::DownloadOptions()
         : m_fileType{ MediaFileType::MP4 },
+        m_splitChapters{ false },
         m_limitSpeed{ false },
-        m_splitChapters{ false }
+        m_exportDescription{ false }
     {
 
     }
@@ -26,8 +27,9 @@ namespace Nickvision::TubeConverter::Shared::Models
     DownloadOptions::DownloadOptions(const std::string& url)
         : m_url{ url },
         m_fileType{ MediaFileType::MP4 },
+        m_splitChapters{ false },
         m_limitSpeed{ false },
-        m_splitChapters{ false }
+        m_exportDescription{ false }
     {
 
     }
@@ -37,8 +39,9 @@ namespace Nickvision::TubeConverter::Shared::Models
         m_fileType{ json["FileType"].is_int64() ? static_cast<MediaFileType::MediaFileTypeValue>(json["FileType"].as_int64()) : MediaFileType::MP4 },
         m_saveFolder{ json["SaveFolder"].is_string() ? json["SaveFolder"].as_string().c_str() : "" },
         m_saveFilename{ json["SaveFilename"].is_string() ? json["SaveFilename"].as_string().c_str() : "" },
+        m_splitChapters{ json["SplitChapters"].is_bool() ? json["SplitChapters"].as_bool() : false },
         m_limitSpeed{ json["LimitSpeed"].is_bool() ? json["LimitSpeed"].as_bool() : false },
-        m_splitChapters{ json["SplitChapters"].is_bool() ? json["SplitChapters"].as_bool() : false }
+        m_exportDescription{ json["ExportDescription"].is_bool() ? json["ExportDescription"].as_bool() : false }
     {
         if(json["Credential"].is_object())
         {
@@ -170,6 +173,16 @@ namespace Nickvision::TubeConverter::Shared::Models
         m_subtitleLanguages = subtitleLanguages;
     }
 
+    bool DownloadOptions::getSplitChapters() const
+    {
+        return m_splitChapters;
+    }
+
+    void DownloadOptions::setSplitChapters(bool splitChapters)
+    {
+        m_splitChapters = splitChapters;
+    }
+
     bool DownloadOptions::getLimitSpeed() const
     {
         return m_limitSpeed;
@@ -184,14 +197,14 @@ namespace Nickvision::TubeConverter::Shared::Models
         m_limitSpeed = limitSpeed;
     }
 
-    bool DownloadOptions::getSplitChapters() const
+    bool DownloadOptions::getExportDescription() const
     {
-        return m_splitChapters;
+        return m_exportDescription;
     }
 
-    void DownloadOptions::setSplitChapters(bool splitChapters)
+    void DownloadOptions::setExportDescription(bool exportDescription)
     {
-        m_splitChapters = splitChapters;
+        m_exportDescription = exportDescription;
     }
 
     const std::optional<TimeFrame>& DownloadOptions::getTimeFrame() const
@@ -465,14 +478,18 @@ namespace Nickvision::TubeConverter::Shared::Models
                 }
             }
         }
+        if(m_splitChapters)
+        {
+            arguments.push_back("--split-chapters");
+        }
         if(m_limitSpeed)
         {
             arguments.push_back("--limit-rate");
             arguments.push_back(std::to_string(downloaderOptions.getSpeedLimit()) + "K");
         }
-        if(m_splitChapters)
+        if(m_exportDescription)
         {
-            arguments.push_back("--split-chapters");
+            arguments.push_back("--write-description");
         }
         if(m_timeFrame.has_value())
         {
@@ -528,8 +545,9 @@ namespace Nickvision::TubeConverter::Shared::Models
             subtitleLanguages.push_back(language.toJson());
         }
         json["SubtitleLanguages"] = subtitleLanguages;
-        json["LimitSpeed"] = m_limitSpeed;
         json["SplitChapters"] = m_splitChapters;
+        json["LimitSpeed"] = m_limitSpeed;
+        json["ExportDescription"] = m_exportDescription;
         if(m_timeFrame)
         {
             json["TimeFrame"] = m_timeFrame->toJson();
