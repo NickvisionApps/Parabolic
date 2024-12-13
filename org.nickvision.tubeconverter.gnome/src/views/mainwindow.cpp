@@ -163,6 +163,12 @@ namespace Nickvision::TubeConverter::GNOME::Views
         }
     }
 
+    void MainWindow::addDownload(const std::string& url)
+    {
+        DialogPtr<AddDownloadDialog> dialog{ m_controller->createAddDownloadDialogController(), url, GTK_WINDOW(m_window) };
+        dialog->present();
+    }
+
     bool MainWindow::onCloseRequested()
     {
         if(!m_controller->canShutdown())
@@ -475,12 +481,6 @@ namespace Nickvision::TubeConverter::GNOME::Views
         adw_about_dialog_set_artists(dialog, &urls[0]);
         adw_about_dialog_set_translator_credits(dialog, m_controller->getAppInfo().getTranslatorCredits().c_str());
         adw_dialog_present(ADW_DIALOG(dialog), GTK_WIDGET(m_window));
-    }
-
-    void MainWindow::addDownload(const std::string& url)
-    {
-        DialogPtr<AddDownloadDialog> dialog{ m_controller->createAddDownloadDialogController(), url, GTK_WINDOW(m_window) };
-        dialog->present();
     }
 
     void MainWindow::clearHistory()

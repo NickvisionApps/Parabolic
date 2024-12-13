@@ -3,6 +3,7 @@ set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTORCC ON)
 set(STARTUP_NOTIFY false)
+set(DBUS_ACTIVATABLE false)
 add_definitions(-DQT_NO_KEYWORDS)
 
 find_package(Qt6 REQUIRED COMPONENTS Core Gui Widgets Svg)
