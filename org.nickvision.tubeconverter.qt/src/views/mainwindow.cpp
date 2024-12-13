@@ -86,16 +86,19 @@ namespace Nickvision::TubeConverter::QT::Views
         //Localize Downloading Page
         m_ui->lblNoDownloading->setText(_("No Downloads Running"));
         m_ui->lblNoDownloadingIcon->setPixmap(QIcon::fromTheme("emblem-downloads").pixmap(64, 64));
+        m_ui->btnNoDownloadingAddDownload->setText(_("Add Download"));
         m_ui->btnStopAllDownloads->setText(_("Stop All"));
         m_ui->btnStopAllDownloads->setToolTip(_("Stop All Downloads"));
         //Localize Queued Page
         m_ui->lblNoQueued->setText(_("No Downloads Queued"));
         m_ui->lblNoQueuedIcon->setPixmap(QIcon::fromTheme(QIcon::ThemeIcon::ListAdd).pixmap(64, 64));
+        m_ui->btnNoQueuedAddDownload->setText(_("Add Download"));
         m_ui->btnClearQueuedDownloads->setText(_("Clear"));
         m_ui->btnClearQueuedDownloads->setToolTip(_("Clear Queued Downloads"));
         //Localize Completed Page
         m_ui->lblNoCompleted->setText(_("No Downloads Completed"));
         m_ui->lblNoCompletedIcon->setPixmap(QIcon::fromTheme(QIcon::ThemeIcon::DocumentSave).pixmap(64, 64));
+        m_ui->btnNoCompletedAddDownload->setText(_("Add Download"));
         m_ui->btnRetryFailedDownloads->setText(_("Retry Failed"));
         m_ui->btnRetryFailedDownloads->setToolTip(_("Retry Failed Downloads"));
         m_ui->btnClearCompletedDownloads->setText(_("Clear"));
@@ -109,12 +112,15 @@ namespace Nickvision::TubeConverter::QT::Views
         connect(m_ui->btnHomeAddDownload, &QPushButton::clicked, [this]() { addDownload(); });
         connect(m_ui->btnClearHistory, &QPushButton::clicked, this, &MainWindow::clearHistory);
         connect(m_ui->btnStopAllDownloads, &QPushButton::clicked, this, &MainWindow::stopAllDownloads);
+        connect(m_ui->listDownloading, &QListWidget::itemSelectionChanged, this, &MainWindow::onDownloadListSelectionChanged);
+        connect(m_ui->btnNoDownloadingAddDownload, &QPushButton::clicked, [this]() { addDownload(); });
         connect(m_ui->btnClearQueuedDownloads, &QPushButton::clicked, this, &MainWindow::clearQueuedDownloads);
+        connect(m_ui->listQueued, &QListWidget::itemSelectionChanged, this, &MainWindow::onDownloadListSelectionChanged);
+        connect(m_ui->btnNoQueuedAddDownload, &QPushButton::clicked, [this]() { addDownload(); });
         connect(m_ui->btnRetryFailedDownloads, &QPushButton::clicked, this, &MainWindow::retryFailedDownloads);
         connect(m_ui->btnClearCompletedDownloads, &QPushButton::clicked, this, &MainWindow::clearCompletedDownloads);
-        connect(m_ui->listDownloading, &QListWidget::itemSelectionChanged, this, &MainWindow::onDownloadListSelectionChanged);
-        connect(m_ui->listQueued, &QListWidget::itemSelectionChanged, this, &MainWindow::onDownloadListSelectionChanged);
         connect(m_ui->listCompleted, &QListWidget::itemSelectionChanged, this, &MainWindow::onDownloadListSelectionChanged);
+        connect(m_ui->btnNoCompletedAddDownload, &QPushButton::clicked, [this]() { addDownload(); });
         connect(m_dockLogCloseEventFilter, &CloseEventFilter::closed, this, &MainWindow::onDockLogClosed);
         //Events
         m_controller->notificationSent() += [&](const NotificationSentEventArgs& args) { QTHelpers::dispatchToMainThread([this, args]() { onNotificationSent(args); }); };
