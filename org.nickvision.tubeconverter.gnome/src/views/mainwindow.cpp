@@ -157,6 +157,10 @@ namespace Nickvision::TubeConverter::GNOME::Views
             }), this);
             adw_dialog_present(ADW_DIALOG(dialog), GTK_WIDGET(m_window));
         }
+        if(!info.getUrlToValidate().empty())
+        {
+            addDownload(info.getUrlToValidate());
+        }
     }
 
     bool MainWindow::onCloseRequested()

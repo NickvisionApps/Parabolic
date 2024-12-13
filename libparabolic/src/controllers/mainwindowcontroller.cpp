@@ -243,6 +243,14 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         info.setCanDownload(!Environment::findDependency("yt-dlp").empty() && !Environment::findDependency("ffmpeg").empty() && !Environment::findDependency("aria2c").empty());
         //Check if disclaimer should be shown
         info.setShowDisclaimer(m_dataFileManager.get<Configuration>("config").getShowDisclaimerOnStartup());
+        //Get URL to validate from args
+        if(m_args.size() > 1)
+        {
+            if(StringHelpers::isValidUrl(m_args[1]))
+            {
+                info.setUrlToValidate(m_args[1]);
+            }
+        }
         //Load DownloadManager
         size_t recoveredDownloads{ m_downloadManager.startup(m_dataFileManager.get<Configuration>("config").getRecoverCrashedDownloads()) };
         if(recoveredDownloads > 0)

@@ -172,6 +172,10 @@ namespace Nickvision::TubeConverter::QT::Views
             msgBox.exec();
             m_controller->setShowDisclaimerOnStartup(!checkBox->isChecked());
         }
+        if(!info.getUrlToValidate().empty())
+        {
+            addDownload(info.getUrlToValidate());
+        }
     }
 
     void MainWindow::closeEvent(QCloseEvent* event)

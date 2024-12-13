@@ -14,7 +14,6 @@
 #include <libnick/app/datafilemanager.h>
 #include <libnick/app/windowgeometry.h>
 #include <libnick/events/event.h>
-#include <libnick/events/parameventargs.h>
 #include <libnick/keyring/keyring.h>
 #include <libnick/logging/logger.h>
 #include <libnick/notifications/notificationsenteventargs.h>
