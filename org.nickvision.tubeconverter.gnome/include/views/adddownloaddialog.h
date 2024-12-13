@@ -49,9 +49,9 @@ namespace Nickvision::TubeConverter::GNOME::Views
          */
         void back();
         /**
-         * @brief Handles when the single quality comboboxs are changed.
+         * @brief Handles when the single file type combobox is changed.
          */
-        void onQualitySingleChanged();
+        void onFileTypeSingleChanged();
         /**
          * @brief Shows the subtitles page for a single download.
          */

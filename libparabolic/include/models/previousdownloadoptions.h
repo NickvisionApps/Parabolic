@@ -43,6 +43,16 @@ namespace Nickvision::TubeConverter::Shared::Models
          */
         void setFileType(const MediaFileType& previousMediaFileType);
         /**
+         * @brief Gets the previous quality.
+         * @return The previous quality
+         */
+        std::string getQuality() const;
+        /**
+         * @brief Sets the previous quality.
+         * @param quality The new previous quality
+         */
+        void setQuality(const std::string& quality);
+        /**
          * @brief Gets the previous split chapters state.
          * @return The previous split chapters state
          */

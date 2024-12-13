@@ -43,6 +43,16 @@ namespace Nickvision::TubeConverter::Shared::Models
     {
         m_json["FileType"] = static_cast<int>(previousMediaFileType);
     }
+
+    std::string PreviousDownloadOptions::getQuality() const
+    {
+        return m_json["Quality"].is_string() ? m_json["Quality"].as_string().c_str() : "";
+    }
+
+    void PreviousDownloadOptions::setQuality(const std::string& quality)
+    {
+        m_json["Quality"] = quality;
+    }
     
     bool PreviousDownloadOptions::getSplitChapters() const
     {

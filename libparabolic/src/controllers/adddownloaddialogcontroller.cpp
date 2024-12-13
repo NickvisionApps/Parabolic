@@ -335,6 +335,14 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         //Save Previous Options
         m_previousOptions.setSaveFolder(options.getSaveFolder());
         m_previousOptions.setFileType(options.getFileType());
+        if(qualityIndex != 0)
+        {
+            m_previousOptions.setQuality(options.getFileType().isVideo() ? m_qualityFormatMap.at(qualityIndex).getVideoResolution().value().str() : std::to_string(m_qualityFormatMap.at(qualityIndex).getAudioBitrate().value()));
+        }
+        else
+        {
+            m_previousOptions.setQuality(_("Best"));
+        }
         m_previousOptions.setSplitChapters(options.getSplitChapters());
         m_previousOptions.setLimitSpeed(options.getLimitSpeed());
         m_previousOptions.setExportDescription(exportDescription);

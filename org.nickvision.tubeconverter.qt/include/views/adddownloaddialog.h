@@ -49,10 +49,10 @@ namespace Nickvision::TubeConverter::QT::Views
          */
         void validateUrl();
         /**
-         * @brief Handles when the cmbFileTypeSingle's or cmbAudioLanguageSingle's index has changed.
+         * @brief Handles when the cmbFileTypeSingle's index has changed.
          * @param index The new index
          */
-        void onCmbQualitySingleChanged(int index);
+        void onCmbFileTypeSingleChanged(int index);
         /**
          * @brief Prompts the user to select a save folder for a single download.
          */
