@@ -58,7 +58,8 @@ namespace Nickvision::TubeConverter::GNOME
         g_application_activate(G_APPLICATION(app));
         if(n > 0)
         {
-            m_mainWindow->addDownload(g_file_get_uri(reinterpret_cast<GFile*>(files)));
+            GFile** files{ reinterpret_cast<GFile**>(files) };
+            m_mainWindow->addDownload(g_file_get_uri(files[0]));
         }
     }
 }
