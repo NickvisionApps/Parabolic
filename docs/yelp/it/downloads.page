@@ -20,6 +20,14 @@
 
 <terms>
     <item>
+		<title>Numero massimo di download attivi</title>
+		<p>Il numero di download attivi che è possibile eseguire contemporaneamente. Deve essere un valore intero compreso tra 1 e 10.</p>
+        <p>Se viene raggiunto il numero massimo di download attivi, Parabolic metterà i nuovi download in coda finché non sarà possibile eseguirne altri.</p>
+		<note style="advanced">
+			<p>Predefinito: 5</p>
+		</note>
+    </item>
+    <item>
         <title>Sovrascrivi file esistenti</title>
         <p>Se abilitato, Parabolic sovrascriverà i file esistenti.</p>
         <p>Ad esempio, se nella cartella dei download esiste un file denominato <code>movie.mp4</code> e viene creato un nuovo download denominato <code>movie</code>, <code>movie.mp4</code> verrà sovrascritto con il contenuto del nuovo download.</p>
@@ -30,14 +38,6 @@
             <p>Predefinito: attivato</p>
         </note>
     </item>
-	<item>
-		<title>Numero massimo di download attivi</title>
-		<p>Il numero di download attivi che è possibile eseguire contemporaneamente. Deve essere un valore intero compreso tra 1 e 10.</p>
-        <p>Se viene raggiunto il numero massimo di download attivi, Parabolic metterà i nuovi download in coda finché non sarà possibile eseguirne altri.</p>
-		<note style="advanced">
-			<p>Predefinito: 5</p>
-		</note>
-    </item>
     <item>
 		<title>Limit Filename Characters</title>
 		<p>Restricts characters in filenames to only those supported by Windows.</p>
@@ -47,17 +47,17 @@
 		</note>
     </item>
     <item>
-		<title>Download Immediately After Validation</title>
-		<p>Bypasses the download options selection in the Add Download dialog and immediately downloads a validated media using previously selected options.</p>
-		<note style="advanced">
-			<p>Predefinito: Disattivato</p>
-		</note>
+        <title>Included Media Id in Title After Validation</title>
+        <p>Whether or not to included the media's id in the title (file name) when validated.</p>
+        <note style="advanced">
+            <p>Predefinito: attivato</p>
+        </note>
     </item>
     <item>
         <title>Sottotitoli generati automaticamente inclusi</title>
         <p>Se includere o meno i sottotitoli tradotti automaticamente per adattarsi alle lingue dei sottotitoli richieste.</p>
         <note style="advanced">
-            <p>Predefinito: Disattivato</p>
+            <p>Predefinito: attivato</p>
         </note>
     </item>
     <item>
@@ -72,13 +72,6 @@
         <p>The file format Parabolic should ensure all downloaded subtitles are downloaded as.</p>
         <note style="advanced">
             <p>Default: Any</p>
-        </note>
-    </item>
-    <item>
-        <title>Recover Crashed Downloads</title>
-        <p>If enabled, Parabolic will track the running and queued downloads and restart them if necessary if the application crashes and is restarted.</p>
-        <note style="advanced">
-            <p>Predefinito: attivato</p>
         </note>
     </item>
 </terms>

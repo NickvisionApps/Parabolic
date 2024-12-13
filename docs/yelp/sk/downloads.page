@@ -26,6 +26,14 @@
 
 <terms>
     <item>
+		<title>Maximálny počet aktívnych stiahnutí</title>
+		<p>Počet aktívnych sťahovaní, ktoré môžu byť spustené v danom čase. Musí to byť celočíselná hodnota od 1 do 10.</p>
+        <p>Ak sa dosiahne maximálny počet aktívnych sťahovaní, Parabolic zaradí nové sťahovania do poradia, kým nebude možné spustiť ďalšie sťahovania.</p>
+		<note style="advanced">
+			<p>Predvolené: 5</p>
+		</note>
+    </item>
+    <item>
         <title>Prepísať existujúce súbory</title>
         <p>Ak je to povolené, Parabolic prepíše existujúce súbory.</p>
         <p>Napríklad, ak súbor s názvom <code>movie.mp4</code> existuje v priečinku na stiahnutie a nový vytvorený stiahnutý súbor je pomenovaný <code>movie</code>, <code>movie.mp4</code> bude prepísaný s novým obsahom sťahovania.</p>
@@ -36,14 +44,6 @@
             <p>Predvolené: Zapnuté</p>
         </note>
     </item>
-	<item>
-		<title>Maximálny počet aktívnych stiahnutí</title>
-		<p>Počet aktívnych sťahovaní, ktoré môžu byť spustené v danom čase. Musí to byť celočíselná hodnota od 1 do 10.</p>
-        <p>Ak sa dosiahne maximálny počet aktívnych sťahovaní, Parabolic zaradí nové sťahovania do poradia, kým nebude možné spustiť ďalšie sťahovania.</p>
-		<note style="advanced">
-			<p>Predvolené: 5</p>
-		</note>
-    </item>
     <item>
 		<title>Limitné znaky</title>
 		<p>Obmedziť znaky v názvy súborov iba tie podporované systémom Windows.</p>
@@ -53,17 +53,17 @@
 		</note>
     </item>
     <item>
-		<title>Na stiahnutie Ihneď po potvrdení</title>
-		<p>Prechádza výber možností sťahovania v dialógovom okne Add Download a okamžite stiahne overené médiá pomocou predtým vybraných možností.</p>
-		<note style="advanced">
-			<p>Predvolené: Vypnuté</p>
-		</note>
+        <title>Included Media Id in Title After Validation</title>
+        <p>Whether or not to included the media's id in the title (file name) when validated.</p>
+        <note style="advanced">
+            <p>Predvolené: Zapnuté</p>
+        </note>
     </item>
     <item>
         <title>Zahrnuté automaticky generované titulky</title>
         <p>Či majú byť zahrnuté titulky, ktoré sú automaticky preložené tak, aby zodpovedali požadovanému jazyku tituliek, alebo nie.</p>
         <note style="advanced">
-            <p>Predvolené: Vypnuté</p>
+            <p>Predvolené: Zapnuté</p>
         </note>
     </item>
     <item>
@@ -78,13 +78,6 @@
         <p>Formát súboru, v ktorom majú byť stiahnuté titulky v aplikácii Parabolic.</p>
         <note style="advanced">
             <p>Default: Akékoľvek</p>
-        </note>
-    </item>
-    <item>
-        <title>Obnoviť zlyhané stiahnutia</title>
-        <p>Ak je to povolené, Parabolic bude sledovať beh a frontd downloads a reštartovať ich, ak je to potrebné, ak sa aplikácia zrúti a reštartuje.</p>
-        <note style="advanced">
-            <p>Predvolené: Zapnuté</p>
         </note>
     </item>
 </terms>

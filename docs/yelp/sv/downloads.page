@@ -20,6 +20,14 @@
 
 <terms>
     <item>
+		<title>Maximalt antal aktiva nedladdningar</title>
+		<p>Antalet aktiva nedladdningar som får köras åt gången. Måste vara ett heltalsvärde mellan 1 och 10.</p>
+        <p>Om det maximala antalet aktiva nedladdningar uppnås kommer Parabolic att placera nya nedladdningar i en kö tills fler nedladdningar kan köras.</p>
+		<note style="advanced">
+			<p>Standard: 5</p>
+		</note>
+    </item>
+    <item>
         <title>Skriv över existerande filer</title>
         <p>Om aktiverat kommer Parabolic att skriva över befintliga filer.</p>
         <p>Till exempel, om en fil med namnet <code>movie.mp4</code> finns i nedladdningsmappen, och en ny nedladdning skapas med namnet <code>movie</code>, kommer <code>movie.mp4</code> skrivas över med den nya nedladdningens innehåll.</p>
@@ -30,14 +38,6 @@
             <p>Standard: På</p>
         </note>
     </item>
-	<item>
-		<title>Maximalt antal aktiva nedladdningar</title>
-		<p>Antalet aktiva nedladdningar som får köras åt gången. Måste vara ett heltalsvärde mellan 1 och 10.</p>
-        <p>Om det maximala antalet aktiva nedladdningar uppnås kommer Parabolic att placera nya nedladdningar i en kö tills fler nedladdningar kan köras.</p>
-		<note style="advanced">
-			<p>Standard: 5</p>
-		</note>
-    </item>
     <item>
 		<title>Begränsa tecken för filnamn</title>
 		<p>Begränsar tecken i filnamn till endast de som stöds av Windows.</p>
@@ -47,17 +47,17 @@
 		</note>
     </item>
     <item>
-		<title>Ladda ner direkt efter validering</title>
-		<p>Åsidosätter valet av nedladdningsalternativ i dialogrutan Lägg till nedladdning och laddar omedelbart ned ett validerat media med tidigare valda alternativ.</p>
-		<note style="advanced">
-			<p>Standard: Av</p>
-		</note>
+        <title>Included Media Id in Title After Validation</title>
+        <p>Whether or not to included the media's id in the title (file name) when validated.</p>
+        <note style="advanced">
+            <p>Standard: På</p>
+        </note>
     </item>
     <item>
         <title>Inkluderade automatiskt genererade undertexter</title>
         <p>Oavsett om du vill inkludera undertexter eller inte, som är automatiskt översatta för att passa de begärda undertextspråken.</p>
         <note style="advanced">
-            <p>Standard: Av</p>
+            <p>Standard: På</p>
         </note>
     </item>
     <item>
@@ -72,13 +72,6 @@
         <p>Filformatet Parabolic bör säkerställa att alla nedladdade undertexter laddas ner som.</p>
         <note style="advanced">
             <p>Standard: Vilket som helst</p>
-        </note>
-    </item>
-    <item>
-        <title>Återställ kraschade nedladdningar</title>
-        <p>Om aktiverat kommer Parabolic att spåra de nedladdningar som körs och som står i kö och starta om dem vid behov om programmet kraschar och startas om.</p>
-        <note style="advanced">
-            <p>Standard: På</p>
         </note>
     </item>
 </terms>

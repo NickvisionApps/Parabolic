@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" id="interface" its:version="2.0" xml:lang="uk">
+<info>
+	<link type="guide" xref="index"/>
+	<title type="link">User Interface 🖥️</title>
+	<credit type="author copyright">
+		<name>Nicholas Logozzo</name>
+		<years its:translate="no">2023-2024</years>
+	</credit>
+	<credit type="publisher copyright">
+		<name>Nicholas Logozzo</name>
+		<years its:translate="no">2023-2024</years>
+	</credit>
+	<license href="http://creativecommons.org/licenses/by/4.0/" its:translate="no"><p>Creative Commons Attribution 4.0 International License</p></license>
+
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Jon Weblin</mal:name>
+      <mal:email>jonweblin2205@protonmail.com</mal:email>
+      <mal:years>2023</mal:years>
+    </mal:credit>
+  </info>
+
+<title>User Interface</title>
+<p>This page explains all options for configuring the User Interface in Preferences in <app>Parabolic</app>.</p>
+
+<terms>
+    <item>
+        <title>Theme</title>
+        <p>The theme for the user interface.</p>
+        <note style="advanced">
+            <p>Default: System</p>
+        </note>
+    </item>
+    <item>
+        <title>Completed Notification Trigger</title>
+        <p>The trigger used for showing completed download notifications when the application is not active.</p>
+        <note style="advanced">
+            <p>Default: For each download</p>
+        </note>
+    </item>
+    <item>
+        <title>Prevent Suspend</title>
+        <p>If enabled, the system while be prevented from suspending while Parabolic is running.</p>
+        <note style="advanced">
+            <p>За замовчуванням: Вимк</p>
+        </note>
+    </item>
+    <item>
+        <title>Відновити невдалі завантаження</title>
+        <p>Якщо ввімкнено, Parabolic буде відслідковувати активні та поставлені в чергу завантаження і перезапускати їх у разі необхідності після збою програми та її повторного запуску.</p>
+        <note style="advanced">
+            <p>За замовчуванням: Ввімк</p>
+        </note>
+    </item>
+    <item>
+        <title>Завантажити одразу після перевірки</title>
+		<p>Обминає вибір параметрів завантаження в діалоговому вікні «Додати завантаження» та одразу завантажує перевірене медіа, використовуючи раніше вибрані параметри.</p>
+        <note style="advanced">
+            <p>За замовчуванням: Вимк</p>
+        </note>
+    </item>
+    <item>
+        <title>Download History Length</title>
+        <p>The amount of time to keep download history saved.</p>
+        <note style="advanced">
+            <p>Default: One Week</p>
+        </note>
+    </item>
+</terms>
+</page>

@@ -20,6 +20,14 @@
 
 <terms>
     <item>
+		<title>Nombre maximum de téléchargements actifs</title>
+		<p>Indique le nombre de téléchargements actifs autorisés à s’exécuter en même temps. Il doit s’agir d’un nombre entier compris entre 1 et 10.</p>
+        <p>Si le maximum de téléchargements actifs est atteint, Parabolic placera les nouveaux téléchargements dans une file d’attente jusqu’à ce que des téléchargements supplémentaires soient autorisés à s’exécuter.</p>
+		<note style="advanced">
+			<p>Par défaut : 5</p>
+		</note>
+    </item>
+    <item>
         <title>Remplacer les fichiers existants</title>
         <p>Si cette option est activée, Parabolic écrasera les fichiers existants.</p>
         <p>Par exemple, si un fichier intitulé <code>film.mp4</code> existe dans le dossier de téléchargement et qu’un nouveau téléchargement est créé avec le titre <code>film</code>, <code>film.mp4</code> sera remplacé par le contenu du nouveau téléchargement.</p>
@@ -30,14 +38,6 @@
             <p>Par défaut : Activée</p>
         </note>
     </item>
-	<item>
-		<title>Nombre maximum de téléchargements actifs</title>
-		<p>Indique le nombre de téléchargements actifs autorisés à s’exécuter en même temps. Il doit s’agir d’un nombre entier compris entre 1 et 10.</p>
-        <p>Si le maximum de téléchargements actifs est atteint, Parabolic placera les nouveaux téléchargements dans une file d’attente jusqu’à ce que des téléchargements supplémentaires soient autorisés à s’exécuter.</p>
-		<note style="advanced">
-			<p>Par défaut : 5</p>
-		</note>
-    </item>
     <item>
 		<title>Limiter le caractères des noms des fichiers</title>
 		<p>Restreint les caractères dans les noms de fichiers à ceux uniquement pris en charge par Windows.</p>
@@ -47,17 +47,17 @@
 		</note>
     </item>
     <item>
-		<title>Télécharger immédiatement après validation</title>
-		<p>Contourne la sélection des options de téléchargement dans la boîte de dialogue « Ajouter un téléchargement » et télécharge immédiatement un média validé en utilisant les options précédemment sélectionnées.</p>
-		<note style="advanced">
-			<p>Par défaut : Désactivée</p>
-		</note>
+        <title>Included Media Id in Title After Validation</title>
+        <p>Whether or not to included the media's id in the title (file name) when validated.</p>
+        <note style="advanced">
+            <p>Par défaut : Activée</p>
+        </note>
     </item>
     <item>
         <title>Inclure les sous-titres générés automatiquement</title>
         <p>Indique s’il faut inclure les sous-titres traduits automatiquement pour correspondre à la langue demandée.</p>
         <note style="advanced">
-            <p>Par défaut : Désactivée</p>
+            <p>Par défaut : Activée</p>
         </note>
     </item>
     <item>
@@ -72,13 +72,6 @@
         <p>Le format de fichier que tous les sous-titres téléchargés devraient adopter.</p>
         <note style="advanced">
             <p>Par défaut : N’importe lequel</p>
-        </note>
-    </item>
-    <item>
-        <title>Récupérer les téléchargements échoués</title>
-        <p>Si cette option est activée, Parabolic suivra les téléchargements en cours et en file d’attente et les relancera si nécessaire, après un redémarrage de l’application en cas de plantage.</p>
-        <note style="advanced">
-            <p>Par défaut : Activée</p>
         </note>
     </item>
 </terms>

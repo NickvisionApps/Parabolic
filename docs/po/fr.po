@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2024-11-15 13:29-0500\n"
+"POT-Creation-Date: 2024-12-13 13:51-0500\n"
 "PO-Revision-Date: 2024-11-14 01:00+0000\n"
 "Last-Translator: rene-coty <irenee.thirion@e.email>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -20,8 +20,9 @@ msgstr "Irénée Thirion <irenee.thirion@e.email>"
 
 #. (itstool) path: info/title
 #: docs/yelp/C/aria.page:8
+#, fuzzy
 msgctxt "link"
-msgid "aria2 🖥️"
+msgid "aria2 🛠️"
 msgstr "aria2 🖥️"
 
 #. (itstool) path: credit/name
@@ -30,6 +31,7 @@ msgstr "aria2 🖥️"
 #: docs/yelp/C/downloader.page:10 docs/yelp/C/downloader.page:14
 #: docs/yelp/C/downloads.page:10 docs/yelp/C/downloads.page:14
 #: docs/yelp/C/index.page:10 docs/yelp/C/index.page:14
+#: docs/yelp/C/interface.page:10 docs/yelp/C/interface.page:14
 #: docs/yelp/C/keyring.page:10 docs/yelp/C/keyring.page:14
 #: docs/yelp/C/newDownload.page:10 docs/yelp/C/newDownload.page:14
 msgid "Nicholas Logozzo"
@@ -73,8 +75,8 @@ msgstr ""
 #. (itstool) path: note/p
 #: docs/yelp/C/aria.page:29 docs/yelp/C/converter.page:35
 #: docs/yelp/C/converter.page:50 docs/yelp/C/converter.page:59
-#: docs/yelp/C/downloader.page:45 docs/yelp/C/downloads.page:49
-#: docs/yelp/C/downloads.page:56 docs/yelp/C/downloads.page:63
+#: docs/yelp/C/downloader.page:38 docs/yelp/C/downloads.page:49
+#: docs/yelp/C/interface.page:42 docs/yelp/C/interface.page:56
 msgid "Default: Off"
 msgstr "Par défaut : Désactivée"
 
@@ -172,8 +174,9 @@ msgstr ""
 
 #. (itstool) path: note/p
 #: docs/yelp/C/converter.page:28 docs/yelp/C/converter.page:42
-#: docs/yelp/C/downloader.page:28 docs/yelp/C/downloads.page:33
-#: docs/yelp/C/downloads.page:84
+#: docs/yelp/C/downloader.page:28 docs/yelp/C/downloads.page:41
+#: docs/yelp/C/downloads.page:56 docs/yelp/C/downloads.page:63
+#: docs/yelp/C/interface.page:49
 msgid "Default: On"
 msgstr "Par défaut : Activée"
 
@@ -305,12 +308,36 @@ msgstr ""
 "<code>yt-dlp</code> pour chaque téléchargement."
 
 #. (itstool) path: item/title
-#: docs/yelp/C/downloader.page:32 docs/yelp/C/newDownload.page:81
+#: docs/yelp/C/downloader.page:32
+msgid "Use SponsorBlock for YouTube"
+msgstr "Utiliser SponsorBlock pour YouTube"
+
+#. (itstool) path: item/p
+#: docs/yelp/C/downloader.page:33
+msgid ""
+"If enabled, Parabolic will apply the SponsorBlock extension to YouTube "
+"downloads."
+msgstr ""
+"Si cette option est activée, Parabolic appliquera l’extension SponsorBlock "
+"pour les téléchargements YouTube."
+
+#. (itstool) path: note/p
+#: docs/yelp/C/downloader.page:35
+msgid ""
+"SponsorBlock only works on YouTube videos. However, leaving this setting on "
+"will not affect downloads from other sites (i.e. not cause them to fail)."
+msgstr ""
+"SponsorBlock ne fonctionne que pour les vidéos YouTube. Cependant, garder ce "
+"paramètre activé n’affectera pas les téléchargements depuis les autres sites "
+"(i.e. ils ne seront pas perturbés)."
+
+#. (itstool) path: item/title
+#: docs/yelp/C/downloader.page:42
 msgid "Speed Limit"
 msgstr "Limitation de vitesse"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:33
+#: docs/yelp/C/downloader.page:43
 msgid ""
 "A limit, in Ki/s, that is applied to downloads only if they have the "
 "advanced option <code>Speed Limit</code> enabled. Must be an integer value "
@@ -321,33 +348,9 @@ msgstr ""
 "s’agit d’un nombre entier compris en 512 et 10240."
 
 #. (itstool) path: note/p
-#: docs/yelp/C/downloader.page:35
+#: docs/yelp/C/downloader.page:45
 msgid "Default: 1024"
 msgstr "Par défaut : 1024"
-
-#. (itstool) path: item/title
-#: docs/yelp/C/downloader.page:39
-msgid "Use SponsorBlock for YouTube"
-msgstr "Utiliser SponsorBlock pour YouTube"
-
-#. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:40
-msgid ""
-"If enabled, Parabolic will apply the SponsorBlock extension to YouTube "
-"downloads."
-msgstr ""
-"Si cette option est activée, Parabolic appliquera l’extension SponsorBlock "
-"pour les téléchargements YouTube."
-
-#. (itstool) path: note/p
-#: docs/yelp/C/downloader.page:42
-msgid ""
-"SponsorBlock only works on YouTube videos. However, leaving this setting on "
-"will not affect downloads from other sites (i.e. not cause them to fail)."
-msgstr ""
-"SponsorBlock ne fonctionne que pour les vidéos YouTube. Cependant, garder ce "
-"paramètre activé n’affectera pas les téléchargements depuis les autres sites "
-"(i.e. ils ne seront pas perturbés)."
 
 #. (itstool) path: item/title
 #: docs/yelp/C/downloader.page:49
@@ -467,17 +470,46 @@ msgstr ""
 
 #. (itstool) path: item/title
 #: docs/yelp/C/downloads.page:26
+msgid "Maximum Number of Active Downloads"
+msgstr "Nombre maximum de téléchargements actifs"
+
+#. (itstool) path: item/p
+#: docs/yelp/C/downloads.page:27
+msgid ""
+"The number of active downloads allowed to run at a time. Must be an integer "
+"value between 1 and 10."
+msgstr ""
+"Indique le nombre de téléchargements actifs autorisés à s’exécuter en même "
+"temps. Il doit s’agir d’un nombre entier compris entre 1 et 10."
+
+#. (itstool) path: item/p
+#: docs/yelp/C/downloads.page:28
+msgid ""
+"If the max number of active downloads is reached, Parabolic will place new "
+"downloads in a queue until more downloads are able to be run."
+msgstr ""
+"Si le maximum de téléchargements actifs est atteint, Parabolic placera les "
+"nouveaux téléchargements dans une file d’attente jusqu’à ce que des "
+"téléchargements supplémentaires soient autorisés à s’exécuter."
+
+#. (itstool) path: note/p
+#: docs/yelp/C/downloads.page:30
+msgid "Default: 5"
+msgstr "Par défaut : 5"
+
+#. (itstool) path: item/title
+#: docs/yelp/C/downloads.page:34
 msgid "Overwrite Existing Files"
 msgstr "Remplacer les fichiers existants"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/downloads.page:27
+#: docs/yelp/C/downloads.page:35
 msgid "If enabled, Parabolic will overwrite existing files."
 msgstr ""
 "Si cette option est activée, Parabolic écrasera les fichiers existants."
 
 #. (itstool) path: item/p
-#: docs/yelp/C/downloads.page:28
+#: docs/yelp/C/downloads.page:36
 msgid ""
 "For example, if a file named <code>movie.mp4</code> exists in the download "
 "folder, and a new download is created named <code>movie</code>, <code>movie."
@@ -489,7 +521,7 @@ msgstr ""
 "du nouveau téléchargement."
 
 #. (itstool) path: note/p
-#: docs/yelp/C/downloads.page:30
+#: docs/yelp/C/downloads.page:38
 msgid ""
 "Parabolic will detect downloads that should be resumed and avoid this "
 "setting when recovering or retrying failed downloads"
@@ -497,35 +529,6 @@ msgstr ""
 "Parabolic détectera les téléchargements qui devraient être repris et évitera "
 "ce paramètre lors de la récupération ou de la nouvelle tentative de "
 "téléchargement ayant échoué"
-
-#. (itstool) path: item/title
-#: docs/yelp/C/downloads.page:37
-msgid "Maximum Number of Active Downloads"
-msgstr "Nombre maximum de téléchargements actifs"
-
-#. (itstool) path: item/p
-#: docs/yelp/C/downloads.page:38
-msgid ""
-"The number of active downloads allowed to run at a time. Must be an integer "
-"value between 1 and 10."
-msgstr ""
-"Indique le nombre de téléchargements actifs autorisés à s’exécuter en même "
-"temps. Il doit s’agir d’un nombre entier compris entre 1 et 10."
-
-#. (itstool) path: item/p
-#: docs/yelp/C/downloads.page:39
-msgid ""
-"If the max number of active downloads is reached, Parabolic will place new "
-"downloads in a queue until more downloads are able to be run."
-msgstr ""
-"Si le maximum de téléchargements actifs est atteint, Parabolic placera les "
-"nouveaux téléchargements dans une file d’attente jusqu’à ce que des "
-"téléchargements supplémentaires soient autorisés à s’exécuter."
-
-#. (itstool) path: note/p
-#: docs/yelp/C/downloads.page:41
-msgid "Default: 5"
-msgstr "Par défaut : 5"
 
 #. (itstool) path: item/title
 #: docs/yelp/C/downloads.page:45
@@ -546,18 +549,16 @@ msgstr "Option disponible uniquement sur Linux."
 
 #. (itstool) path: item/title
 #: docs/yelp/C/downloads.page:53
-msgid "Download Immediately After Validation"
+#, fuzzy
+msgid "Included Media Id in Title After Validation"
 msgstr "Télécharger immédiatement après validation"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/downloads.page:54
 msgid ""
-"Bypasses the download options selection in the Add Download dialog and "
-"immediately downloads a validated media using previously selected options."
+"Whether or not to included the media's id in the title (file name) when "
+"validated."
 msgstr ""
-"Contourne la sélection des options de téléchargement dans la boîte de "
-"dialogue « Ajouter un téléchargement » et télécharge immédiatement un média "
-"validé en utilisant les options précédemment sélectionnées."
 
 #. (itstool) path: item/title
 #: docs/yelp/C/downloads.page:60
@@ -604,21 +605,6 @@ msgid ""
 "downloaded as."
 msgstr ""
 "Le format de fichier que tous les sous-titres téléchargés devraient adopter."
-
-#. (itstool) path: item/title
-#: docs/yelp/C/downloads.page:81
-msgid "Recover Crashed Downloads"
-msgstr "Récupérer les téléchargements échoués"
-
-#. (itstool) path: item/p
-#: docs/yelp/C/downloads.page:82
-msgid ""
-"If enabled, Parabolic will track the running and queued downloads and "
-"restart them if necessary if the application crashes and is restarted."
-msgstr ""
-"Si cette option est activée, Parabolic suivra les téléchargements en cours "
-"et en file d’attente et les relancera si nécessaire, après un redémarrage de "
-"l’application en cas de plantage."
 
 #. (itstool) path: info/title
 #: docs/yelp/C/index.page:7
@@ -671,6 +657,119 @@ msgstr ""
 "utilisation abusive de ce programme qui pourrait violer les lois locales sur "
 "le copyright/DMCA. Les utilisateurs se servent de cette application à leurs "
 "propres risques."
+
+#. (itstool) path: info/title
+#: docs/yelp/C/interface.page:8
+msgctxt "link"
+msgid "User Interface 🖥️"
+msgstr ""
+
+#. (itstool) path: page/title
+#: docs/yelp/C/interface.page:20
+msgid "User Interface"
+msgstr ""
+
+#. (itstool) path: page/p
+#: docs/yelp/C/interface.page:21
+#, fuzzy
+msgid ""
+"This page explains all options for configuring the User Interface in "
+"Preferences in <app>Parabolic</app>."
+msgstr ""
+"Cette page explique toutes les options permettant de configurer le "
+"convertisseur dans les préférences de <app>Parabolic</app>."
+
+#. (itstool) path: item/title
+#: docs/yelp/C/interface.page:25
+msgid "Theme"
+msgstr ""
+
+#. (itstool) path: item/p
+#: docs/yelp/C/interface.page:26
+msgid "The theme for the user interface."
+msgstr ""
+
+#. (itstool) path: note/p
+#: docs/yelp/C/interface.page:28
+#, fuzzy
+msgid "Default: System"
+msgstr "Par défaut : N’importe lequel"
+
+#. (itstool) path: item/title
+#: docs/yelp/C/interface.page:32
+msgid "Completed Notification Trigger"
+msgstr ""
+
+#. (itstool) path: item/p
+#: docs/yelp/C/interface.page:33
+msgid ""
+"The trigger used for showing completed download notifications when the "
+"application is not active."
+msgstr ""
+
+#. (itstool) path: note/p
+#: docs/yelp/C/interface.page:35
+msgid "Default: For each download"
+msgstr ""
+
+#. (itstool) path: item/title
+#: docs/yelp/C/interface.page:39
+msgid "Prevent Suspend"
+msgstr ""
+
+#. (itstool) path: item/p
+#: docs/yelp/C/interface.page:40
+msgid ""
+"If enabled, the system while be prevented from suspending while Parabolic is "
+"running."
+msgstr ""
+
+#. (itstool) path: item/title
+#: docs/yelp/C/interface.page:46
+msgid "Recover Crashed Downloads"
+msgstr "Récupérer les téléchargements échoués"
+
+#. (itstool) path: item/p
+#: docs/yelp/C/interface.page:47
+msgid ""
+"If enabled, Parabolic will track the running and queued downloads and "
+"restart them if necessary if the application crashes and is restarted."
+msgstr ""
+"Si cette option est activée, Parabolic suivra les téléchargements en cours "
+"et en file d’attente et les relancera si nécessaire, après un redémarrage de "
+"l’application en cas de plantage."
+
+#. (itstool) path: item/title
+#: docs/yelp/C/interface.page:53
+msgid "Download Immediately After Validation"
+msgstr "Télécharger immédiatement après validation"
+
+#. (itstool) path: item/p
+#: docs/yelp/C/interface.page:54
+msgid ""
+"Bypasses the download options selection in the Add Download dialog and "
+"immediately downloads a validated media using previously selected options."
+msgstr ""
+"Contourne la sélection des options de téléchargement dans la boîte de "
+"dialogue « Ajouter un téléchargement » et télécharge immédiatement un média "
+"validé en utilisant les options précédemment sélectionnées."
+
+#. (itstool) path: item/title
+#: docs/yelp/C/interface.page:60
+#, fuzzy
+msgid "Download History Length"
+msgstr "Télécharger les sous-titres"
+
+#. (itstool) path: item/p
+#: docs/yelp/C/interface.page:61
+msgid "The amount of time to keep download history saved."
+msgstr ""
+
+#. (itstool) path: note/p
+#: docs/yelp/C/interface.page:63
+#, fuzzy
+msgid "Default: One Week"
+msgstr "Par défaut : Activée"
 
 #. (itstool) path: info/title
 #: docs/yelp/C/keyring.page:8
@@ -932,6 +1031,7 @@ msgstr ""
 
 #. (itstool) path: note/p
 #: docs/yelp/C/newDownload.page:63 docs/yelp/C/newDownload.page:77
+#: docs/yelp/C/newDownload.page:84 docs/yelp/C/newDownload.page:91
 msgid ""
 "The previously used state will be remembered and pre-selected for the next "
 "download."
@@ -979,6 +1079,12 @@ msgstr ""
 "Si cette option est activée, Parabolic séparera la vidéo en plusieurs "
 "morceaux correspondant aux chapitres qu’elles contient."
 
+#. (itstool) path: item/title
+#: docs/yelp/C/newDownload.page:81
+#, fuzzy
+msgid "Limit Download Speed"
+msgstr "Téléchargeur"
+
 #. (itstool) path: item/p
 #: docs/yelp/C/newDownload.page:82
 msgid ""
@@ -989,12 +1095,28 @@ msgstr ""
 "selon la vitesse indiquée dans <link xref=\"downloader\">Préférences</link>."
 
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:85
+#: docs/yelp/C/newDownload.page:88
+msgid "Export Description"
+msgstr ""
+
+#. (itstool) path: item/p
+#: docs/yelp/C/newDownload.page:89
+#, fuzzy
+msgid ""
+"If enabled, Parabolic will export the media's description to a <code>."
+"description</code> file alongside the downloaded file."
+msgstr ""
+"Si cette option est activée, Parabole activera automatiquement l’option "
+"avancée <code>Rogner la vignette</code> pour les téléchargements de fichiers "
+"audio."
+
+#. (itstool) path: item/title
+#: docs/yelp/C/newDownload.page:95
 msgid "Time Frame"
 msgstr "Séquence"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:86
+#: docs/yelp/C/newDownload.page:96
 msgid ""
 "The user can enter a start time frame and an end time frame to download a "
 "specific section of the media."
@@ -1003,22 +1125,22 @@ msgstr ""
 "et un temps de fin pour télécharger une partie spécifique du média."
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:88
+#: docs/yelp/C/newDownload.page:98
 msgid "Default: The whole media length"
 msgstr "Par défaut : la longueur totale du média"
 
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:92
+#: docs/yelp/C/newDownload.page:102
 msgid "Save Folder"
 msgstr "Dossier d’enregistrement"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:93
+#: docs/yelp/C/newDownload.page:103
 msgid "The folder at which to save the download to."
 msgstr "Le dossier dans lequel enregistrer le téléchargement."
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:95
+#: docs/yelp/C/newDownload.page:105
 msgid ""
 "The previously used folder will be remembered and pre-selected for the next "
 "download."
@@ -1027,18 +1149,18 @@ msgstr ""
 "prochain téléchargement."
 
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:99
+#: docs/yelp/C/newDownload.page:109
 msgid "File Name"
 msgstr "Nom du fichier"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:100
+#: docs/yelp/C/newDownload.page:110
 msgid "The file name to use when saving the download."
 msgstr ""
 "Le nom du fichier à utiliser lors de l’enregistrement du téléchargement."
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:102
+#: docs/yelp/C/newDownload.page:112
 msgid "Default: The title of the media"
 msgstr "Par défaut : le titre du média"
 
@@ -1056,9 +1178,6 @@ msgstr "Par défaut : le titre du média"
 #~ msgstr ""
 #~ "Si le type de fichier est un audio, la liste des qualités sera simplement "
 #~ "<code>Meilleure</code>, <code>Moyenne</code> et <code>Basse</code>."
-
-#~ msgid "Download Subtitle"
-#~ msgstr "Télécharger les sous-titres"
 
 #~ msgid ""
 #~ "Enabling this option will disable the use of aria2 as the downloader for "
@@ -1119,14 +1238,6 @@ msgstr "Par défaut : le titre du média"
 
 #~ msgid "Only available if Embed Metadata is enabled."
 #~ msgstr "Uniquement disponible si l’inclusion des métadonnées est activée."
-
-#~ msgid ""
-#~ "If enabled, Parabolic will automatically turn on the advanced option "
-#~ "<code>Crop Thumbnail</code> for audio downloads."
-#~ msgstr ""
-#~ "Si cette option est activée, Parabole activera automatiquement l’option "
-#~ "avancée <code>Rogner la vignette</code> pour les téléchargements de "
-#~ "fichiers audio."
 
 #~ msgid ""
 #~ "A comma-separated list of two-letter, two-letter with region, and three-"

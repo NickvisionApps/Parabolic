@@ -26,6 +26,14 @@
 
 <terms>
     <item>
+		<title>Максимальное число активных загрузок</title>
+		<p>Число активных загрузок, которые могут быть запущены одновременно. Целое число от 1 до 10.</p>
+        <p>Если достигнут максимум активных загрузок, новые загрузки будут помещаться в очередь, пока не появится место для запуска новых загрузок.</p>
+		<note style="advanced">
+			<p>По умолчанию: 5</p>
+		</note>
+    </item>
+    <item>
         <title>Перезаписывать существующие файлы</title>
         <p>Если включено, Parabolic будет перезаписывать существующие файлы.</p>
         <p>Например, если файл с именем <code>movie.mp4</code> существует в папке сохранения, а новый файл создаётся с именем <code>movie</code>, в файл <code>movie.mp4</code> будет записано новое содержимое.</p>
@@ -36,14 +44,6 @@
             <p>По умолчанию: Включено</p>
         </note>
     </item>
-	<item>
-		<title>Максимальное число активных загрузок</title>
-		<p>Число активных загрузок, которые могут быть запущены одновременно. Целое число от 1 до 10.</p>
-        <p>Если достигнут максимум активных загрузок, новые загрузки будут помещаться в очередь, пока не появится место для запуска новых загрузок.</p>
-		<note style="advanced">
-			<p>По умолчанию: 5</p>
-		</note>
-    </item>
     <item>
 		<title>Limit Filename Characters</title>
 		<p>Restricts characters in filenames to only those supported by Windows.</p>
@@ -53,17 +53,17 @@
 		</note>
     </item>
     <item>
-		<title>Download Immediately After Validation</title>
-		<p>Bypasses the download options selection in the Add Download dialog and immediately downloads a validated media using previously selected options.</p>
-		<note style="advanced">
-			<p>По умолчанию: Выключено</p>
-		</note>
+        <title>Included Media Id in Title After Validation</title>
+        <p>Whether or not to included the media's id in the title (file name) when validated.</p>
+        <note style="advanced">
+            <p>По умолчанию: Включено</p>
+        </note>
     </item>
     <item>
         <title>Включать автоматически сгенерированные субтитры</title>
         <p>Надо ли включать субтитры, созданные YouTube автоматически, для покрытия выбранных языков субтитров.</p>
         <note style="advanced">
-            <p>По умолчанию: Выключено</p>
+            <p>По умолчанию: Включено</p>
         </note>
     </item>
     <item>
@@ -78,13 +78,6 @@
         <p>The file format Parabolic should ensure all downloaded subtitles are downloaded as.</p>
         <note style="advanced">
             <p>Default: Any</p>
-        </note>
-    </item>
-    <item>
-        <title>Recover Crashed Downloads</title>
-        <p>If enabled, Parabolic will track the running and queued downloads and restart them if necessary if the application crashes and is restarted.</p>
-        <note style="advanced">
-            <p>По умолчанию: Включено</p>
         </note>
     </item>
 </terms>

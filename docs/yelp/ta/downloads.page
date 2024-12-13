@@ -26,6 +26,14 @@
 
 <terms>
     <item>
+		<title>செயலில் உள்ள பதிவிறக்கங்களின் அதிகபட்ச எண்ணிக்கை</title>
+		<p>ஒரே நேரத்தில் இயக்க அனுமதிக்கப்பட்ட செயலில் உள்ள பதிவிறக்கங்களின் எண்ணிக்கை. 1 மற்றும் 10 க்கு இடையில் ஒரு முழு எண் மதிப்பு இருக்க வேண்டும்.</p>
+        <p>செயலில் உள்ள பதிவிறக்கங்களின் அதிகபட்ச எண்ணிக்கையை அடைந்தால், அதிகமான பதிவிறக்கங்களை இயக்க முடியும் வரை, பரபோலிக் புதிய பதிவிறக்கங்களை வரிசையில் வைக்கும்.</p>
+		<note style="advanced">
+			<p>இயல்புநிலை: 5</p>
+		</note>
+    </item>
+    <item>
         <title>ஏற்கனவே உள்ள கோப்புகளை மேலெழுதவும்</title>
         <p>இயக்கப்பட்டால், பாரபோலிக் ஏற்கனவே உள்ள கோப்புகளை மேலெழுதும்.</p>
         <p>எடுத்துக்காட்டாக, பதிவிறக்கக் கோப்புறையில் <code>movie.mp4</code> என்ற கோப்பு இருந்தால், <code>movie</code> என்ற பெயரில் புதிய பதிவிறக்கம் உருவாக்கப்பட்டால், <code>movie.mp4</code> புதிய பதிவிறக்கத்தின் உள்ளடக்கத்துடன் மேலெழுதப்படும்.</p>
@@ -36,14 +44,6 @@
             <p>இயல்புநிலை: ஆன்</p>
         </note>
     </item>
-	<item>
-		<title>செயலில் உள்ள பதிவிறக்கங்களின் அதிகபட்ச எண்ணிக்கை</title>
-		<p>ஒரே நேரத்தில் இயக்க அனுமதிக்கப்பட்ட செயலில் உள்ள பதிவிறக்கங்களின் எண்ணிக்கை. 1 மற்றும் 10 க்கு இடையில் ஒரு முழு எண் மதிப்பு இருக்க வேண்டும்.</p>
-        <p>செயலில் உள்ள பதிவிறக்கங்களின் அதிகபட்ச எண்ணிக்கையை அடைந்தால், அதிகமான பதிவிறக்கங்களை இயக்க முடியும் வரை, பரபோலிக் புதிய பதிவிறக்கங்களை வரிசையில் வைக்கும்.</p>
-		<note style="advanced">
-			<p>இயல்புநிலை: 5</p>
-		</note>
-    </item>
     <item>
 		<title>Limit Filename Characters</title>
 		<p>Restricts characters in filenames to only those supported by Windows.</p>
@@ -53,17 +53,17 @@
 		</note>
     </item>
     <item>
-		<title>Download Immediately After Validation</title>
-		<p>Bypasses the download options selection in the Add Download dialog and immediately downloads a validated media using previously selected options.</p>
-		<note style="advanced">
-			<p>இயல்புநிலை: ஆஃப்</p>
-		</note>
+        <title>Included Media Id in Title After Validation</title>
+        <p>Whether or not to included the media's id in the title (file name) when validated.</p>
+        <note style="advanced">
+            <p>இயல்புநிலை: ஆன்</p>
+        </note>
     </item>
     <item>
         <title>Included Auto-Generated Subtitles</title>
         <p>Whether or not to included subtitles that are auto-translated to fit the requested subtitle languages.</p>
         <note style="advanced">
-            <p>இயல்புநிலை: ஆஃப்</p>
+            <p>இயல்புநிலை: ஆன்</p>
         </note>
     </item>
     <item>
@@ -78,13 +78,6 @@
         <p>The file format Parabolic should ensure all downloaded subtitles are downloaded as.</p>
         <note style="advanced">
             <p>Default: Any</p>
-        </note>
-    </item>
-    <item>
-        <title>Recover Crashed Downloads</title>
-        <p>If enabled, Parabolic will track the running and queued downloads and restart them if necessary if the application crashes and is restarted.</p>
-        <note style="advanced">
-            <p>இயல்புநிலை: ஆன்</p>
         </note>
     </item>
 </terms>

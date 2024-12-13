@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2024-11-15 13:29-0500\n"
+"POT-Creation-Date: 2024-12-13 13:51-0500\n"
 "PO-Revision-Date: 2024-11-14 14:51+0000\n"
 "Last-Translator: bittin1ddc447d824349b2 <bittin@reimu.nl>\n"
 "Language-Team: Swedish <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -20,8 +20,9 @@ msgstr "översättningskrediter"
 
 #. (itstool) path: info/title
 #: docs/yelp/C/aria.page:8
+#, fuzzy
 msgctxt "link"
-msgid "aria2 🖥️"
+msgid "aria2 🛠️"
 msgstr "aria2 🖥️"
 
 #. (itstool) path: credit/name
@@ -30,6 +31,7 @@ msgstr "aria2 🖥️"
 #: docs/yelp/C/downloader.page:10 docs/yelp/C/downloader.page:14
 #: docs/yelp/C/downloads.page:10 docs/yelp/C/downloads.page:14
 #: docs/yelp/C/index.page:10 docs/yelp/C/index.page:14
+#: docs/yelp/C/interface.page:10 docs/yelp/C/interface.page:14
 #: docs/yelp/C/keyring.page:10 docs/yelp/C/keyring.page:14
 #: docs/yelp/C/newDownload.page:10 docs/yelp/C/newDownload.page:14
 msgid "Nicholas Logozzo"
@@ -72,8 +74,8 @@ msgstr ""
 #. (itstool) path: note/p
 #: docs/yelp/C/aria.page:29 docs/yelp/C/converter.page:35
 #: docs/yelp/C/converter.page:50 docs/yelp/C/converter.page:59
-#: docs/yelp/C/downloader.page:45 docs/yelp/C/downloads.page:49
-#: docs/yelp/C/downloads.page:56 docs/yelp/C/downloads.page:63
+#: docs/yelp/C/downloader.page:38 docs/yelp/C/downloads.page:49
+#: docs/yelp/C/interface.page:42 docs/yelp/C/interface.page:56
 msgid "Default: Off"
 msgstr "Standard: Av"
 
@@ -169,8 +171,9 @@ msgstr ""
 
 #. (itstool) path: note/p
 #: docs/yelp/C/converter.page:28 docs/yelp/C/converter.page:42
-#: docs/yelp/C/downloader.page:28 docs/yelp/C/downloads.page:33
-#: docs/yelp/C/downloads.page:84
+#: docs/yelp/C/downloader.page:28 docs/yelp/C/downloads.page:41
+#: docs/yelp/C/downloads.page:56 docs/yelp/C/downloads.page:63
+#: docs/yelp/C/interface.page:49
 msgid "Default: On"
 msgstr "Standard: På"
 
@@ -301,12 +304,36 @@ msgstr ""
 "<code>yt-dlp</code> för varje nedladdning."
 
 #. (itstool) path: item/title
-#: docs/yelp/C/downloader.page:32 docs/yelp/C/newDownload.page:81
+#: docs/yelp/C/downloader.page:32
+msgid "Use SponsorBlock for YouTube"
+msgstr "Använd SponsorBlock för YouTube"
+
+#. (itstool) path: item/p
+#: docs/yelp/C/downloader.page:33
+msgid ""
+"If enabled, Parabolic will apply the SponsorBlock extension to YouTube "
+"downloads."
+msgstr ""
+"Om det är aktiverat kommer Parabolic att tillämpa SponsorBlock-tillägget på "
+"YouTube-nedladdningar."
+
+#. (itstool) path: note/p
+#: docs/yelp/C/downloader.page:35
+msgid ""
+"SponsorBlock only works on YouTube videos. However, leaving this setting on "
+"will not affect downloads from other sites (i.e. not cause them to fail)."
+msgstr ""
+"SponsorBlock fungerar bara på YouTube-videor. Om du låter den här "
+"inställningen vara aktiverad kommer det dock inte att påverka nedladdningar "
+"från andra webbplatser (dvs. att de inte misslyckas)."
+
+#. (itstool) path: item/title
+#: docs/yelp/C/downloader.page:42
 msgid "Speed Limit"
 msgstr "Hastighetsgräns"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:33
+#: docs/yelp/C/downloader.page:43
 msgid ""
 "A limit, in Ki/s, that is applied to downloads only if they have the "
 "advanced option <code>Speed Limit</code> enabled. Must be an integer value "
@@ -317,33 +344,9 @@ msgstr ""
 "ett heltalsvärde mellan 512 och 10240."
 
 #. (itstool) path: note/p
-#: docs/yelp/C/downloader.page:35
+#: docs/yelp/C/downloader.page:45
 msgid "Default: 1024"
 msgstr "Standard: 1024"
-
-#. (itstool) path: item/title
-#: docs/yelp/C/downloader.page:39
-msgid "Use SponsorBlock for YouTube"
-msgstr "Använd SponsorBlock för YouTube"
-
-#. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:40
-msgid ""
-"If enabled, Parabolic will apply the SponsorBlock extension to YouTube "
-"downloads."
-msgstr ""
-"Om det är aktiverat kommer Parabolic att tillämpa SponsorBlock-tillägget på "
-"YouTube-nedladdningar."
-
-#. (itstool) path: note/p
-#: docs/yelp/C/downloader.page:42
-msgid ""
-"SponsorBlock only works on YouTube videos. However, leaving this setting on "
-"will not affect downloads from other sites (i.e. not cause them to fail)."
-msgstr ""
-"SponsorBlock fungerar bara på YouTube-videor. Om du låter den här "
-"inställningen vara aktiverad kommer det dock inte att påverka nedladdningar "
-"från andra webbplatser (dvs. att de inte misslyckas)."
 
 #. (itstool) path: item/title
 #: docs/yelp/C/downloader.page:49
@@ -464,16 +467,44 @@ msgstr ""
 
 #. (itstool) path: item/title
 #: docs/yelp/C/downloads.page:26
+msgid "Maximum Number of Active Downloads"
+msgstr "Maximalt antal aktiva nedladdningar"
+
+#. (itstool) path: item/p
+#: docs/yelp/C/downloads.page:27
+msgid ""
+"The number of active downloads allowed to run at a time. Must be an integer "
+"value between 1 and 10."
+msgstr ""
+"Antalet aktiva nedladdningar som får köras åt gången. Måste vara ett "
+"heltalsvärde mellan 1 och 10."
+
+#. (itstool) path: item/p
+#: docs/yelp/C/downloads.page:28
+msgid ""
+"If the max number of active downloads is reached, Parabolic will place new "
+"downloads in a queue until more downloads are able to be run."
+msgstr ""
+"Om det maximala antalet aktiva nedladdningar uppnås kommer Parabolic att "
+"placera nya nedladdningar i en kö tills fler nedladdningar kan köras."
+
+#. (itstool) path: note/p
+#: docs/yelp/C/downloads.page:30
+msgid "Default: 5"
+msgstr "Standard: 5"
+
+#. (itstool) path: item/title
+#: docs/yelp/C/downloads.page:34
 msgid "Overwrite Existing Files"
 msgstr "Skriv över existerande filer"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/downloads.page:27
+#: docs/yelp/C/downloads.page:35
 msgid "If enabled, Parabolic will overwrite existing files."
 msgstr "Om aktiverat kommer Parabolic att skriva över befintliga filer."
 
 #. (itstool) path: item/p
-#: docs/yelp/C/downloads.page:28
+#: docs/yelp/C/downloads.page:36
 msgid ""
 "For example, if a file named <code>movie.mp4</code> exists in the download "
 "folder, and a new download is created named <code>movie</code>, <code>movie."
@@ -485,7 +516,7 @@ msgstr ""
 "innehåll."
 
 #. (itstool) path: note/p
-#: docs/yelp/C/downloads.page:30
+#: docs/yelp/C/downloads.page:38
 msgid ""
 "Parabolic will detect downloads that should be resumed and avoid this "
 "setting when recovering or retrying failed downloads"
@@ -493,34 +524,6 @@ msgstr ""
 "Parabolic kommer att upptäcka nedladdningar som bör återupptas och undvika "
 "den här inställningen när du återställer eller försöker igen misslyckade "
 "nedladdningar"
-
-#. (itstool) path: item/title
-#: docs/yelp/C/downloads.page:37
-msgid "Maximum Number of Active Downloads"
-msgstr "Maximalt antal aktiva nedladdningar"
-
-#. (itstool) path: item/p
-#: docs/yelp/C/downloads.page:38
-msgid ""
-"The number of active downloads allowed to run at a time. Must be an integer "
-"value between 1 and 10."
-msgstr ""
-"Antalet aktiva nedladdningar som får köras åt gången. Måste vara ett "
-"heltalsvärde mellan 1 och 10."
-
-#. (itstool) path: item/p
-#: docs/yelp/C/downloads.page:39
-msgid ""
-"If the max number of active downloads is reached, Parabolic will place new "
-"downloads in a queue until more downloads are able to be run."
-msgstr ""
-"Om det maximala antalet aktiva nedladdningar uppnås kommer Parabolic att "
-"placera nya nedladdningar i en kö tills fler nedladdningar kan köras."
-
-#. (itstool) path: note/p
-#: docs/yelp/C/downloads.page:41
-msgid "Default: 5"
-msgstr "Standard: 5"
 
 #. (itstool) path: item/title
 #: docs/yelp/C/downloads.page:45
@@ -539,18 +542,16 @@ msgstr "Det här alternativet är endast tillgängligt på Linux."
 
 #. (itstool) path: item/title
 #: docs/yelp/C/downloads.page:53
-msgid "Download Immediately After Validation"
+#, fuzzy
+msgid "Included Media Id in Title After Validation"
 msgstr "Ladda ner direkt efter validering"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/downloads.page:54
 msgid ""
-"Bypasses the download options selection in the Add Download dialog and "
-"immediately downloads a validated media using previously selected options."
+"Whether or not to included the media's id in the title (file name) when "
+"validated."
 msgstr ""
-"Åsidosätter valet av nedladdningsalternativ i dialogrutan Lägg till "
-"nedladdning och laddar omedelbart ned ett validerat media med tidigare valda "
-"alternativ."
 
 #. (itstool) path: item/title
 #: docs/yelp/C/downloads.page:60
@@ -597,20 +598,6 @@ msgid ""
 msgstr ""
 "Filformatet Parabolic bör säkerställa att alla nedladdade undertexter laddas "
 "ner som."
-
-#. (itstool) path: item/title
-#: docs/yelp/C/downloads.page:81
-msgid "Recover Crashed Downloads"
-msgstr "Återställ kraschade nedladdningar"
-
-#. (itstool) path: item/p
-#: docs/yelp/C/downloads.page:82
-msgid ""
-"If enabled, Parabolic will track the running and queued downloads and "
-"restart them if necessary if the application crashes and is restarted."
-msgstr ""
-"Om aktiverat kommer Parabolic att spåra de nedladdningar som körs och som "
-"står i kö och starta om dem vid behov om programmet kraschar och startas om."
 
 #. (itstool) path: info/title
 #: docs/yelp/C/index.page:7
@@ -661,6 +648,118 @@ msgstr ""
 "Författarna till Nickvision Parabolic är inte ansvariga för missbruk av "
 "detta program, som kan bryta mot lokala upphovsrätts-/DMCA-lagar. Användare "
 "använder denna applikation på egen risk."
+
+#. (itstool) path: info/title
+#: docs/yelp/C/interface.page:8
+msgctxt "link"
+msgid "User Interface 🖥️"
+msgstr ""
+
+#. (itstool) path: page/title
+#: docs/yelp/C/interface.page:20
+msgid "User Interface"
+msgstr ""
+
+#. (itstool) path: page/p
+#: docs/yelp/C/interface.page:21
+#, fuzzy
+msgid ""
+"This page explains all options for configuring the User Interface in "
+"Preferences in <app>Parabolic</app>."
+msgstr ""
+"Den här sidan förklarar alla alternativ för att konfigurera Konverteraren i "
+"Inställningar i <app>Parabolic</app>."
+
+#. (itstool) path: item/title
+#: docs/yelp/C/interface.page:25
+msgid "Theme"
+msgstr ""
+
+#. (itstool) path: item/p
+#: docs/yelp/C/interface.page:26
+msgid "The theme for the user interface."
+msgstr ""
+
+#. (itstool) path: note/p
+#: docs/yelp/C/interface.page:28
+#, fuzzy
+msgid "Default: System"
+msgstr "Standard: Vilket som helst"
+
+#. (itstool) path: item/title
+#: docs/yelp/C/interface.page:32
+msgid "Completed Notification Trigger"
+msgstr ""
+
+#. (itstool) path: item/p
+#: docs/yelp/C/interface.page:33
+msgid ""
+"The trigger used for showing completed download notifications when the "
+"application is not active."
+msgstr ""
+
+#. (itstool) path: note/p
+#: docs/yelp/C/interface.page:35
+msgid "Default: For each download"
+msgstr ""
+
+#. (itstool) path: item/title
+#: docs/yelp/C/interface.page:39
+msgid "Prevent Suspend"
+msgstr ""
+
+#. (itstool) path: item/p
+#: docs/yelp/C/interface.page:40
+msgid ""
+"If enabled, the system while be prevented from suspending while Parabolic is "
+"running."
+msgstr ""
+
+#. (itstool) path: item/title
+#: docs/yelp/C/interface.page:46
+msgid "Recover Crashed Downloads"
+msgstr "Återställ kraschade nedladdningar"
+
+#. (itstool) path: item/p
+#: docs/yelp/C/interface.page:47
+msgid ""
+"If enabled, Parabolic will track the running and queued downloads and "
+"restart them if necessary if the application crashes and is restarted."
+msgstr ""
+"Om aktiverat kommer Parabolic att spåra de nedladdningar som körs och som "
+"står i kö och starta om dem vid behov om programmet kraschar och startas om."
+
+#. (itstool) path: item/title
+#: docs/yelp/C/interface.page:53
+msgid "Download Immediately After Validation"
+msgstr "Ladda ner direkt efter validering"
+
+#. (itstool) path: item/p
+#: docs/yelp/C/interface.page:54
+msgid ""
+"Bypasses the download options selection in the Add Download dialog and "
+"immediately downloads a validated media using previously selected options."
+msgstr ""
+"Åsidosätter valet av nedladdningsalternativ i dialogrutan Lägg till "
+"nedladdning och laddar omedelbart ned ett validerat media med tidigare valda "
+"alternativ."
+
+#. (itstool) path: item/title
+#: docs/yelp/C/interface.page:60
+#, fuzzy
+msgid "Download History Length"
+msgstr "Ladda ner undertext"
+
+#. (itstool) path: item/p
+#: docs/yelp/C/interface.page:61
+msgid "The amount of time to keep download history saved."
+msgstr ""
+
+#. (itstool) path: note/p
+#: docs/yelp/C/interface.page:63
+#, fuzzy
+msgid "Default: One Week"
+msgstr "Standard: På"
 
 #. (itstool) path: info/title
 #: docs/yelp/C/keyring.page:8
@@ -918,6 +1017,7 @@ msgstr ""
 
 #. (itstool) path: note/p
 #: docs/yelp/C/newDownload.page:63 docs/yelp/C/newDownload.page:77
+#: docs/yelp/C/newDownload.page:84 docs/yelp/C/newDownload.page:91
 msgid ""
 "The previously used state will be remembered and pre-selected for the next "
 "download."
@@ -964,6 +1064,12 @@ msgstr ""
 "Om aktiverat kommer Parabolic att dela upp en videonedladdning i flera "
 "mindre filer baserat på dess kapitel."
 
+#. (itstool) path: item/title
+#: docs/yelp/C/newDownload.page:81
+#, fuzzy
+msgid "Limit Download Speed"
+msgstr "Nedladdare"
+
 #. (itstool) path: item/p
 #: docs/yelp/C/newDownload.page:82
 msgid ""
@@ -974,12 +1080,27 @@ msgstr ""
 "hastigheten konfigurerad i <link xref=\"Nedladdare\">Inställningar</link>."
 
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:85
+#: docs/yelp/C/newDownload.page:88
+msgid "Export Description"
+msgstr ""
+
+#. (itstool) path: item/p
+#: docs/yelp/C/newDownload.page:89
+#, fuzzy
+msgid ""
+"If enabled, Parabolic will export the media's description to a <code>."
+"description</code> file alongside the downloaded file."
+msgstr ""
+"Om aktiverat kommer Parabolic automatiskt att aktivera det avancerade "
+"alternativet <code>Beskär miniatyrbild</code> för ljudnedladdningar."
+
+#. (itstool) path: item/title
+#: docs/yelp/C/newDownload.page:95
 msgid "Time Frame"
 msgstr "Tidsram"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:86
+#: docs/yelp/C/newDownload.page:96
 msgid ""
 "The user can enter a start time frame and an end time frame to download a "
 "specific section of the media."
@@ -988,22 +1109,22 @@ msgstr ""
 "del av media."
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:88
+#: docs/yelp/C/newDownload.page:98
 msgid "Default: The whole media length"
 msgstr "Standard: Hela medialängden"
 
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:92
+#: docs/yelp/C/newDownload.page:102
 msgid "Save Folder"
 msgstr "Lagringsmapp"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:93
+#: docs/yelp/C/newDownload.page:103
 msgid "The folder at which to save the download to."
 msgstr "Mappen där nedladdningen ska sparas."
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:95
+#: docs/yelp/C/newDownload.page:105
 msgid ""
 "The previously used folder will be remembered and pre-selected for the next "
 "download."
@@ -1012,17 +1133,17 @@ msgstr ""
 "nästa nedladdning."
 
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:99
+#: docs/yelp/C/newDownload.page:109
 msgid "File Name"
 msgstr "Filnamn"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:100
+#: docs/yelp/C/newDownload.page:110
 msgid "The file name to use when saving the download."
 msgstr "Filnamnet som ska användas när nedladdningen sparas."
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:102
+#: docs/yelp/C/newDownload.page:112
 msgid "Default: The title of the media"
 msgstr "Standard: Mediets titel"
 
@@ -1039,9 +1160,6 @@ msgstr "Standard: Mediets titel"
 #~ msgstr ""
 #~ "Om filtypen är en ljudtyp kommer de listade egenskaperna helt enkelt vara "
 #~ "<code>Bäst</code>, <code>Bra</code> och <code>Sämst</code>."
-
-#~ msgid "Download Subtitle"
-#~ msgstr "Ladda ner undertext"
 
 #~ msgid ""
 #~ "Enabling this option will disable the use of aria2 as the downloader for "
@@ -1102,13 +1220,6 @@ msgstr "Standard: Mediets titel"
 
 #~ msgid "Only available if Embed Metadata is enabled."
 #~ msgstr "Endast tillgängligt om \"Bädda in metadata\" är aktiverat."
-
-#~ msgid ""
-#~ "If enabled, Parabolic will automatically turn on the advanced option "
-#~ "<code>Crop Thumbnail</code> for audio downloads."
-#~ msgstr ""
-#~ "Om aktiverat kommer Parabolic automatiskt att aktivera det avancerade "
-#~ "alternativet <code>Beskär miniatyrbild</code> för ljudnedladdningar."
 
 #~ msgid ""
 #~ "A comma-separated list of two-letter, two-letter with region, and three-"

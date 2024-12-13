@@ -26,6 +26,14 @@
 
 <terms>
     <item>
+		<title>Maximální počet aktivních stahování</title>
+		<p>Počet aktivních stahování, které mohou v jednu chvíli běžet. Musí to být celočíselná hodnota mezi 1 a 10.</p>
+        <p>Při dosažení maximálního počtu aktivních stahování, aplikace Parabolic umístí nová stahování do fronty, dokud nebude moct být spuštěno více stahování.</p>
+		<note style="advanced">
+			<p>Výchozí: 5</p>
+		</note>
+    </item>
+    <item>
         <title>Přepsat existující soubory</title>
         <p>Pokud je tato funkce povolena, aplikace Parabolic přepíše existující soubory.</p>
         <p>Pokud již například ve složce stahování existuje soubor <code>film.mp4</code> a bude vytvořeno nové stahování s názvem <code>film</code>, bude soubor <code>film.mp4</code> přepsán novým obsahem stahování.</p>
@@ -36,14 +44,6 @@
             <p>Výchozí: zapnuto</p>
         </note>
     </item>
-	<item>
-		<title>Maximální počet aktivních stahování</title>
-		<p>Počet aktivních stahování, které mohou v jednu chvíli běžet. Musí to být celočíselná hodnota mezi 1 a 10.</p>
-        <p>Při dosažení maximálního počtu aktivních stahování, aplikace Parabolic umístí nová stahování do fronty, dokud nebude moct být spuštěno více stahování.</p>
-		<note style="advanced">
-			<p>Výchozí: 5</p>
-		</note>
-    </item>
     <item>
 		<title>Omezení znaků v názvu souboru</title>
 		<p>Omezí znaky v názvech souborů pouze na znaky podporované sytémem Windows.</p>
@@ -53,17 +53,17 @@
 		</note>
     </item>
     <item>
-		<title>Stáhnout ihned po ověření</title>
-		<p>Obejde výběr možností stahování v dialogovém okně Přidat stahování a okamžitě stáhne ověřená média pomocí dříve vybraných možností.</p>
-		<note style="advanced">
-			<p>Výchozí: vypnuto</p>
-		</note>
+        <title>Included Media Id in Title After Validation</title>
+        <p>Whether or not to included the media's id in the title (file name) when validated.</p>
+        <note style="advanced">
+            <p>Výchozí: zapnuto</p>
+        </note>
     </item>
     <item>
         <title>Zahrnout automaticky generované titulky</title>
         <p>Zda do požadovaných jazyků titulků zahrnout i automaticky přeložené titulky.</p>
         <note style="advanced">
-            <p>Výchozí: vypnuto</p>
+            <p>Výchozí: zapnuto</p>
         </note>
     </item>
     <item>
@@ -78,13 +78,6 @@
         <p>Formát souboru, ve kterém má aplikace Parabolic zajistit stahování všech titulků.</p>
         <note style="advanced">
             <p>Výchozí: jakýkoli</p>
-        </note>
-    </item>
-    <item>
-        <title>Obnovit selhaná stahování</title>
-        <p>Pokud je tato funkce povolena, bude aplikace Parabolic sledovat probíhající stahování a stahování ve frontě a v případě potřeby je znovu spustí, pokud aplikace spadne a je restartována.</p>
-        <note style="advanced">
-            <p>Výchozí: zapnuto</p>
         </note>
     </item>
 </terms>

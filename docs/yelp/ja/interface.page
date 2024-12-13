@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" id="interface" its:version="2.0" xml:lang="ja">
+<info>
+	<link type="guide" xref="index"/>
+	<title type="link">User Interface 🖥️</title>
+	<credit type="author copyright">
+		<name>Nicholas Logozzo</name>
+		<years its:translate="no">2023-2024</years>
+	</credit>
+	<credit type="publisher copyright">
+		<name>Nicholas Logozzo</name>
+		<years its:translate="no">2023-2024</years>
+	</credit>
+	<license href="http://creativecommons.org/licenses/by/4.0/" its:translate="no"><p>Creative Commons Attribution 4.0 International License</p></license>
+
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Gnuey56</mal:name>
+      <mal:email>gnuey56@proton.me</mal:email>
+      <mal:years>2023</mal:years>
+    </mal:credit>
+  </info>
+
+<title>User Interface</title>
+<p>This page explains all options for configuring the User Interface in Preferences in <app>Parabolic</app>.</p>
+
+<terms>
+    <item>
+        <title>Theme</title>
+        <p>The theme for the user interface.</p>
+        <note style="advanced">
+            <p>Default: System</p>
+        </note>
+    </item>
+    <item>
+        <title>Completed Notification Trigger</title>
+        <p>The trigger used for showing completed download notifications when the application is not active.</p>
+        <note style="advanced">
+            <p>Default: For each download</p>
+        </note>
+    </item>
+    <item>
+        <title>Prevent Suspend</title>
+        <p>If enabled, the system while be prevented from suspending while Parabolic is running.</p>
+        <note style="advanced">
+            <p>デフォルト: オフ</p>
+        </note>
+    </item>
+    <item>
+        <title>クラッシュしたダウンロードを再開</title>
+        <p>有効であれば、Parabolic は進行中または停止中のダウンロードを追跡し、アプリケーションがクラッシュし再起動された場合は、必要に応じてダウンロードを再開します。</p>
+        <note style="advanced">
+            <p>デフォルト: オン</p>
+        </note>
+    </item>
+    <item>
+        <title>検証終了後に直ちにダウンロードを行う</title>
+		<p>「ダウンロードを追加」のダイアログでダウンロードオプションの選択を省略し、以前に選択したオプションを使って検証したメディアを直ちにダウンロードします。</p>
+        <note style="advanced">
+            <p>デフォルト: オフ</p>
+        </note>
+    </item>
+    <item>
+        <title>Download History Length</title>
+        <p>The amount of time to keep download history saved.</p>
+        <note style="advanced">
+            <p>Default: One Week</p>
+        </note>
+    </item>
+</terms>
+</page>
