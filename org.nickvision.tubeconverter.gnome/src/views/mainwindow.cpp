@@ -59,7 +59,6 @@ namespace Nickvision::TubeConverter::GNOME::Views
         g_signal_connect(m_builder.get<GObject>("listNavItems"), "row-selected", G_CALLBACK(+[](GtkListBox* self, GtkListBoxRow* row, gpointer data) { reinterpret_cast<MainWindow*>(data)->onNavItemSelected(self, row); }), this);
         m_controller->notificationSent() += [this](const NotificationSentEventArgs& args) { GtkHelpers::dispatchToMainThread([this, args]{ onNotificationSent(args); }); };
         m_controller->shellNotificationSent() += [this](const ShellNotificationSentEventArgs& args) { onShellNotificationSent(args); };
-        m_controller->disclaimerTriggered() += [this](const ParamEventArgs<std::string>& args) { onDisclaimerTriggered(args); };
         m_controller->getDownloadManager().historyChanged() += [this](const ParamEventArgs<std::vector<HistoricDownload>>& args) { GtkHelpers::dispatchToMainThread([this, args]{ onHistoryChanged(args); }); };
         m_controller->getDownloadManager().downloadCredentialNeeded() += [this](const DownloadCredentialNeededEventArgs& args) { onDownloadCredentialNeeded(args); };
         m_controller->getDownloadManager().downloadAdded() += [this](const DownloadAddedEventArgs& args) { GtkHelpers::dispatchToMainThread([this, args]{ onDownloadAdded(args); }); };
@@ -130,12 +129,12 @@ namespace Nickvision::TubeConverter::GNOME::Views
     {
         gtk_window_present(GTK_WINDOW(m_window));
 #ifdef __linux__
-        WindowGeometry geometry{ m_controller->startup(m_controller->getAppInfo().getId() + ".desktop") };
+        const StartupInformation& info{ m_controller->startup(m_controller->getAppInfo().getId() + ".desktop") };
 #else
-        WindowGeometry geometry{ m_controller->startup() };
+        const StartupInformation& info{ m_controller->startup() };
 #endif
-        gtk_window_set_default_size(GTK_WINDOW(m_window), static_cast<int>(geometry.getWidth()), static_cast<int>(geometry.getHeight()));
-        if(geometry.isMaximized())
+        gtk_window_set_default_size(GTK_WINDOW(m_window), static_cast<int>(info.getWindowGeometry().getWidth()), static_cast<int>(info.getWindowGeometry().getHeight()));
+        if(info.getWindowGeometry().isMaximized())
         {
             gtk_window_maximize(GTK_WINDOW(m_window));
         }
@@ -143,13 +142,21 @@ namespace Nickvision::TubeConverter::GNOME::Views
         adw_view_stack_set_visible_child_name(m_builder.get<AdwViewStack>("downloadingViewStack"), "no-downloading");
         adw_view_stack_set_visible_child_name(m_builder.get<AdwViewStack>("queuedViewStack"), "no-queued");
         adw_view_stack_set_visible_child_name(m_builder.get<AdwViewStack>("completedViewStack"), "no-completed");
-        g_simple_action_set_enabled(m_actAddDownload, m_controller->canDownload());
-    }
-
-    void MainWindow::addDownload(const std::string& url)
-    {
-        DialogPtr<AddDownloadDialog> dialog{ m_controller->createAddDownloadDialogController(), url, GTK_WINDOW(m_window) };
-        dialog->present();
+        g_simple_action_set_enabled(m_actAddDownload, info.canDownload());
+        if(info.showDisclaimer())
+        {
+            AdwAlertDialog* dialog{ ADW_ALERT_DIALOG(adw_alert_dialog_new(_("Disclaimer"), _("The authors of Nickvision Parabolic are not responsible/liable for any misuse of this program that may violate local copyright/DMCA laws. Users use this application at their own risk."))) };
+            adw_alert_dialog_set_extra_child(dialog, gtk_check_button_new_with_label(_("Don't show this message again")));
+            adw_alert_dialog_add_responses(dialog, "close", _("Close"), nullptr);
+            adw_alert_dialog_set_default_response(dialog, "close");
+            adw_alert_dialog_set_close_response(dialog, "close");
+            g_signal_connect(dialog, "response", G_CALLBACK(+[](AdwAlertDialog* self, const char*, gpointer data)
+            {
+                MainWindow* mainWindow{ reinterpret_cast<MainWindow*>(data) };
+                mainWindow->m_controller->setShowDisclaimerOnStartup(!gtk_check_button_get_active(GTK_CHECK_BUTTON(adw_alert_dialog_get_extra_child(self))));
+            }), this);
+            adw_dialog_present(ADW_DIALOG(dialog), GTK_WIDGET(m_window));
+        }
     }
 
     bool MainWindow::onCloseRequested()
@@ -231,21 +238,6 @@ namespace Nickvision::TubeConverter::GNOME::Views
             adw_navigation_page_set_title(m_builder.get<AdwNavigationPage>("navPageContent"), _("Completed"));
             adw_view_stack_set_visible_child_name(m_builder.get<AdwViewStack>("viewStack"), "completed");
         }
-    }
-
-    void MainWindow::onDisclaimerTriggered(const ParamEventArgs<std::string>& args)
-    {
-        AdwAlertDialog* dialog{ ADW_ALERT_DIALOG(adw_alert_dialog_new(_("Disclaimer"), args.getParam().c_str())) };
-        adw_alert_dialog_set_extra_child(dialog, gtk_check_button_new_with_label(_("Don't show this message again")));
-        adw_alert_dialog_add_responses(dialog, "close", _("Close"), nullptr);
-        adw_alert_dialog_set_default_response(dialog, "close");
-        adw_alert_dialog_set_close_response(dialog, "close");
-        g_signal_connect(dialog, "response", G_CALLBACK(+[](AdwAlertDialog* self, const char*, gpointer data)
-        {
-            MainWindow* mainWindow{ reinterpret_cast<MainWindow*>(data) };
-            mainWindow->m_controller->setShowDisclaimerOnStartup(!gtk_check_button_get_active(GTK_CHECK_BUTTON(adw_alert_dialog_get_extra_child(self))));
-        }), this);
-        adw_dialog_present(ADW_DIALOG(dialog), GTK_WIDGET(m_window));
     }
 
     void MainWindow::onHistoryChanged(const ParamEventArgs<std::vector<HistoricDownload>>& args)
@@ -479,6 +471,12 @@ namespace Nickvision::TubeConverter::GNOME::Views
         adw_about_dialog_set_artists(dialog, &urls[0]);
         adw_about_dialog_set_translator_credits(dialog, m_controller->getAppInfo().getTranslatorCredits().c_str());
         adw_dialog_present(ADW_DIALOG(dialog), GTK_WIDGET(m_window));
+    }
+
+    void MainWindow::addDownload(const std::string& url)
+    {
+        DialogPtr<AddDownloadDialog> dialog{ m_controller->createAddDownloadDialogController(), url, GTK_WINDOW(m_window) };
+        dialog->present();
     }
 
     void MainWindow::clearHistory()

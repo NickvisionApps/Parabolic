@@ -24,6 +24,7 @@ add_library(libparabolic
     "src/models/media.cpp"
     "src/models/mediafiletype.cpp"
     "src/models/previousdownloadoptions.cpp"
+    "src/models/startupinformation.cpp"
     "src/models/subtitlelanguage.cpp"
     "src/models/timeframe.cpp"
     "src/models/urlinfo.cpp"

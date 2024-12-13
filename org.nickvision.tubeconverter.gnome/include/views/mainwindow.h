@@ -31,11 +31,6 @@ namespace Nickvision::TubeConverter::GNOME::Views
          * @brief Shows the main window. 
          */
         void show();
-        /**
-         * @brief Opens the application's add download dialog.
-         * @param url An optional url to start download validation with
-         */
-        void addDownload(const std::string& url = "");
 
     private:
         /**
@@ -59,11 +54,6 @@ namespace Nickvision::TubeConverter::GNOME::Views
          * @param row The selected row
          */
         void onNavItemSelected(GtkListBox* box, GtkListBoxRow* row);
-        /**
-         * @brief Handles when the disclaimer is triggered.
-         * @param args ParamEventArgs<std::string>
-         */
-        void onDisclaimerTriggered(const Events::ParamEventArgs<std::string>& args);
         /**
          * @brief Handles when the history is changed.
          * @param args ParamEventArgs<std::vector<Models::HistoricDownload>>
@@ -124,6 +114,11 @@ namespace Nickvision::TubeConverter::GNOME::Views
          * @brief Opens the application's about dialog. 
          */
         void about();
+        /**
+         * @brief Opens the application's add download dialog.
+         * @param url An optional url to start download validation with
+         */
+        void addDownload(const std::string& url = "");
         /**
          * @brief Clears the download history.
          */

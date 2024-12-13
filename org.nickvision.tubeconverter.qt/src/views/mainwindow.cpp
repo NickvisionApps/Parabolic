@@ -125,7 +125,6 @@ namespace Nickvision::TubeConverter::QT::Views
         //Events
         m_controller->notificationSent() += [&](const NotificationSentEventArgs& args) { QTHelpers::dispatchToMainThread([this, args]() { onNotificationSent(args); }); };
         m_controller->shellNotificationSent() += [&](const ShellNotificationSentEventArgs& args) { onShellNotificationSent(args); };
-        m_controller->disclaimerTriggered() += [&](const ParamEventArgs<std::string>& args) { onDisclaimerTriggered(args); };
         m_controller->getDownloadManager().historyChanged() += [&](const ParamEventArgs<std::vector<HistoricDownload>>& args) { QTHelpers::dispatchToMainThread([this, args]() { onHistoryChanged(args); }); };
         m_controller->getDownloadManager().downloadCredentialNeeded() += [&](const DownloadCredentialNeededEventArgs& args) { onDownloadCredentialNeeded(args); };
         m_controller->getDownloadManager().downloadAdded() += [&](const DownloadAddedEventArgs& args) { QTHelpers::dispatchToMainThread([this, args]() { onDownloadAdded(args); }); };
@@ -146,23 +145,33 @@ namespace Nickvision::TubeConverter::QT::Views
         QMainWindow::show();
         m_ui->dockLog->hide();
 #ifdef _WIN32
-        WindowGeometry geometry{ m_controller->startup(reinterpret_cast<HWND>(winId())) };
+        const StartupInformation& info{ m_controller->startup(reinterpret_cast<HWND>(winId())) };
 #elif defined(__linux__)
-        WindowGeometry geometry{ m_controller->startup(m_controller->getAppInfo().getId() + ".desktop") };
+        const StartupInformation& info{ m_controller->startup(m_controller->getAppInfo().getId() + ".desktop") };
 #else
-        WindowGeometry geometry{ m_controller->startup() };
+        const StartupInformation& info{ m_controller->startup() };
 #endif
-        if(geometry.isMaximized())
+        if(info.getWindowGeometry().isMaximized())
         {
             showMaximized();
         }
         else
         {
-            setGeometry(QWidget::geometry().x(), QWidget::geometry().y(), geometry.getWidth(), geometry.getHeight());
+            setGeometry(QWidget::geometry().x(), QWidget::geometry().y(), info.getWindowGeometry().getWidth(), info.getWindowGeometry().getHeight());
         }
         m_navigationBar->selectItem("home");
-        bool canDownload{ m_controller->canDownload() };
-        m_ui->btnHomeAddDownload->setEnabled(canDownload);
+        m_ui->btnHomeAddDownload->setEnabled(info.canDownload());
+        m_ui->btnNoDownloadingAddDownload->setEnabled(info.canDownload());
+        m_ui->btnNoQueuedAddDownload->setEnabled(info.canDownload());
+        m_ui->btnNoCompletedAddDownload->setEnabled(info.canDownload());
+        if(info.showDisclaimer())
+        {
+            QMessageBox msgBox{ QMessageBox::Icon::Information, _("Disclaimer"), _("The authors of Nickvision Parabolic are not responsible/liable for any misuse of this program that may violate local copyright/DMCA laws. Users use this application at their own risk."), QMessageBox::StandardButton::Ok, this };
+            QCheckBox* checkBox{ new QCheckBox(_("Don't show this message again"), &msgBox) };
+            msgBox.setCheckBox(checkBox);
+            msgBox.exec();
+            m_controller->setShowDisclaimerOnStartup(!checkBox->isChecked());
+        }
     }
 
     void MainWindow::closeEvent(QCloseEvent* event)
@@ -401,15 +410,6 @@ namespace Nickvision::TubeConverter::QT::Views
 #else
         ShellNotification::send(args);
 #endif
-    }
-
-    void MainWindow::onDisclaimerTriggered(const ParamEventArgs<std::string>& args)
-    {
-        QMessageBox msgBox{ QMessageBox::Icon::Information, _("Disclaimer"), QString::fromStdString(args.getParam()), QMessageBox::StandardButton::Ok, this };
-        QCheckBox* checkBox{ new QCheckBox(_("Don't show this message again"), &msgBox) };
-        msgBox.setCheckBox(checkBox);
-        msgBox.exec();
-        m_controller->setShowDisclaimerOnStartup(!checkBox->isChecked());
     }
 
     void MainWindow::onHistoryChanged(const ParamEventArgs<std::vector<HistoricDownload>>& args)

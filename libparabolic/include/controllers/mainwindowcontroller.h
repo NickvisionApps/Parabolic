@@ -28,6 +28,7 @@
 #include "controllers/preferencesviewcontroller.h"
 #include "models/downloadmanager.h"
 #include "models/historicdownload.h"
+#include "models/startupinformation.h"
 #include "models/theme.h"
 
 namespace Nickvision::TubeConverter::Shared::Controllers
@@ -58,11 +59,6 @@ namespace Nickvision::TubeConverter::Shared::Controllers
          * @return The shell notification sent event
          */
         Nickvision::Events::Event<Nickvision::Notifications::ShellNotificationSentEventArgs>& shellNotificationSent();
-        /**
-         * @brief Gets the event for when the disclaimer is triggered.
-         * @return The disclaimer triggered event
-         */
-        Nickvision::Events::Event<Nickvision::Events::ParamEventArgs<std::string>>& disclaimerTriggered();
         /**
          * @brief Gets the AppInfo object for the application
          * @return The current AppInfo object
@@ -101,11 +97,6 @@ namespace Nickvision::TubeConverter::Shared::Controllers
          */
         std::string getHelpUrl(const std::string& pageName = "index");
         /**
-         * @brief Gets whether or not a download can be started.
-         * @return True if can download, else false
-         */
-        bool canDownload() const;
-        /**
          * @brief Gets an AddDownloadDialogController.
          * @return The AddDownloadDialogController
          */
@@ -132,11 +123,11 @@ namespace Nickvision::TubeConverter::Shared::Controllers
          * @return The WindowGeometry to use for the application window at startup
          */
 #ifdef _WIN32
-        Nickvision::App::WindowGeometry startup(HWND hwnd);
+        const Models::StartupInformation& startup(HWND hwnd);
 #elif defined(__linux__)
-        Nickvision::App::WindowGeometry startup(const std::string& desktopFile);
+        const Models::StartupInformation& startup(const std::string& desktopFile);
 #else
-        Nickvision::App::WindowGeometry startup();
+        const Models::StartupInformation& startup();
 #endif
         /**
          * @brief Shuts down the application.
@@ -180,7 +171,6 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         Models::DownloadManager m_downloadManager;
         Nickvision::Events::Event<Nickvision::Notifications::NotificationSentEventArgs> m_notificationSent;
         Nickvision::Events::Event<Nickvision::Notifications::ShellNotificationSentEventArgs> m_shellNotificationSent;
-        Nickvision::Events::Event<Nickvision::Events::ParamEventArgs<std::string>> m_disclaimerTriggered;
     };
 }
 

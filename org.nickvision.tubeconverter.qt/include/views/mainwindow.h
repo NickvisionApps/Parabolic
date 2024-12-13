@@ -127,11 +127,6 @@ namespace Nickvision::TubeConverter::QT::Views
          */
         void onShellNotificationSent(const Notifications::ShellNotificationSentEventArgs& args);
         /**
-         * @brief Handles when the disclaimer is triggered.
-         * @param args The ParamEventArgs<std::string>
-         */
-        void onDisclaimerTriggered(const Events::ParamEventArgs<std::string>& args);
-        /**
          * @brief Handles when the download history is changed.
          * @param args The ParamEventArgs<std::vector<Models::HistoricDownload>>
          */

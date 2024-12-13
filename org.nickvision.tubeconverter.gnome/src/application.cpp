@@ -10,7 +10,7 @@ namespace Nickvision::TubeConverter::GNOME
 {
     Application::Application(int argc, char* argv[])
         : m_controller{ std::make_shared<MainWindowController>(std::vector<std::string>(argv, argv + argc)) },
-        m_adw{ adw_application_new(m_controller->getAppInfo().getId().c_str(), G_APPLICATION_HANDLES_OPEN) },
+        m_adw{ adw_application_new(m_controller->getAppInfo().getId().c_str(), G_APPLICATION_DEFAULT_FLAGS) },
         m_mainWindow{ nullptr }
     {
         std::filesystem::path resources{ Environment::getExecutableDirectory() / (m_controller->getAppInfo().getId() + ".gresource") };
@@ -23,7 +23,6 @@ namespace Nickvision::TubeConverter::GNOME
         }
         g_resources_register(resource);
         g_signal_connect(m_adw, "activate", G_CALLBACK(+[](GtkApplication* app, gpointer data){ reinterpret_cast<Application*>(data)->onActivate(app); }), this);
-        g_signal_connect(m_adw, "open", G_CALLBACK(+[](GtkApplication* app, gpointer files, int n, const char* hint, gpointer data){ reinterpret_cast<Application*>(data)->onOpen(app, files, n, hint); }), this);
     }
 
     int Application::run()
@@ -51,14 +50,5 @@ namespace Nickvision::TubeConverter::GNOME
             m_mainWindow = std::make_shared<Views::MainWindow>(m_controller, app);
         }
         m_mainWindow->show();
-    }
-
-    void Application::onOpen(GtkApplication* app, void* files, int n, const char* hint)
-    {
-        g_application_activate(G_APPLICATION(app));
-        if(n > 0)
-        {
-            m_mainWindow->addDownload(g_file_get_uri(reinterpret_cast<GFile*>(files)));
-        }
     }
 }
