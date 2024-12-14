@@ -35,7 +35,7 @@ jobs:
         with:
           pkgs: boost-date-time libnick qtbase qtsvg qttools
           triplet: x64-windows
-          revision: a345bbdc68cdfda65603e24413b21afb28f110fb
+          revision: 3b57fb2e1ff55613db14d2aaf0a30529289c7050
           token: ${{ secrets.GITHUB_TOKEN }}
           github-binarycache: true
       - name: "Build"
