@@ -9,7 +9,9 @@ using namespace Nickvision::TubeConverter::Shared::Models;
 namespace Nickvision::TubeConverter::GNOME
 {
     Application::Application(int argc, char* argv[])
-        : m_controller{ std::make_shared<MainWindowController>(std::vector<std::string>(argv, argv + argc)) },
+        : m_argc{ argc },
+        m_argv{ argv }, 
+        m_controller{ std::make_shared<MainWindowController>(std::vector<std::string>(argv, argv + argc)) },
         m_adw{ adw_application_new(m_controller->getAppInfo().getId().c_str(), G_APPLICATION_HANDLES_OPEN) },
         m_mainWindow{ nullptr }
     {
@@ -28,7 +30,7 @@ namespace Nickvision::TubeConverter::GNOME
 
     int Application::run()
     {
-        return g_application_run(G_APPLICATION(m_adw), 0, nullptr);
+        return g_application_run(G_APPLICATION(m_adw), m_argc, m_argv);
     }
 
     void Application::onStartup(GtkApplication* app)

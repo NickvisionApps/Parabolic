@@ -42,6 +42,8 @@ namespace Nickvision::TubeConverter::GNOME
          * @param hint The hint for opening the files 
          */
         void onOpen(GtkApplication* app, void* files, int n, const char* hint);
+        int m_argc;
+        char** m_argv;
         std::shared_ptr<Shared::Controllers::MainWindowController> m_controller;
         AdwApplication* m_adw;
         std::shared_ptr<Views::MainWindow> m_mainWindow;
