@@ -25,6 +25,7 @@ namespace Nickvision::TubeConverter::GNOME
         }
         g_resources_register(resource);
         g_signal_connect(m_adw, "startup", G_CALLBACK(+[](GtkApplication* app, gpointer data){ reinterpret_cast<Application*>(data)->onStartup(app); }), this);
+        g_signal_connect(m_adw, "activate", G_CALLBACK(+[](GtkApplication* app, gpointer data){ reinterpret_cast<Application*>(data)->onActivate(app); }), this);
         g_signal_connect(m_adw, "open", G_CALLBACK(+[](GtkApplication* app, void* files, int n, const char* hint, gpointer data){ reinterpret_cast<Application*>(data)->onOpen(app, files, n, hint); }), this);
     }
 
@@ -52,15 +53,17 @@ namespace Nickvision::TubeConverter::GNOME
         {
             m_mainWindow = std::make_shared<Views::MainWindow>(m_controller, app);
         }
+    }
+
+    void Application::onActivate(GtkApplication* app)
+    {
         m_mainWindow->show();
     }
 
     void Application::onOpen(GtkApplication* app, void* files, int n, const char* hint)
     {
-        if(n > 0)
-        {
-            GFile** files{ reinterpret_cast<GFile**>(files) };
-            m_mainWindow->addDownload(g_file_get_uri(files[0]));
-        }
+        GFile** arr{ reinterpret_cast<GFile**>(files) };
+        m_mainWindow->show();
+        m_mainWindow->addDownload(g_file_get_uri(arr[0]));
     }
 }

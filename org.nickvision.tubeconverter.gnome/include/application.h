@@ -35,6 +35,11 @@ namespace Nickvision::TubeConverter::GNOME
          */
         void onStartup(GtkApplication* app);
         /**
+         * @brief Handles activating the application.
+         * @param app The GtkApplication for the running app
+         */
+        void onActivate(GtkApplication* app);
+        /**
          * @brief Handles opening files.
          * @param app The GtkApplication for the running app
          * @param files The files to open
