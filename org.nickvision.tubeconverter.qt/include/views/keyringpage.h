@@ -1,42 +1,36 @@
-#ifndef KEYRINGDIALOG_H
-#define KEYRINGDIALOG_H
+#ifndef KEYRINGPAGE_H
+#define KEYRINGPAGE_H
 
 #include <memory>
-#include <QDialog>
 #include <QShowEvent>
+#include <QWidget>
 #include "controllers/keyringdialogcontroller.h"
 
-namespace Ui { class KeyringDialog; }
+namespace Ui { class KeyringPage; }
 
 namespace Nickvision::TubeConverter::QT::Views
 {
-    class KeyringDialog : public QDialog
+    class KeyringPage : public QWidget
     {
     Q_OBJECT
 
     public:
         /**
-         * @brief Constructs a KeyringDialog.
+         * @brief Constructs a KeyringPage.
          * @param parent The parent widget
          */
-        KeyringDialog(const std::shared_ptr<Shared::Controllers::KeyringDialogController>& controller, QWidget* parent = nullptr);
+        KeyringPage(const std::shared_ptr<Shared::Controllers::KeyringDialogController>& controller, QWidget* parent = nullptr);
         /**
-         * @brief Destructs a KeyringDialog.
+         * @brief Destructs a KeyringPage.
          */
-        ~KeyringDialog();
+        ~KeyringPage();
 
     protected:
         /**
-         * @brief The event for when the KeyringDialog is shown.
+         * @brief The event for when the KeyringPage is shown.
          * @param event QShowEvent
          */
         void showEvent(QShowEvent* event) override;
-
-    private Q_SLOTS:
-        /**
-         * @brief Goes back to the manage page.
-         */
-        void backToManage();
         /**
          * @brief Prompts the user to add a new credential.
          */
@@ -52,10 +46,14 @@ namespace Nickvision::TubeConverter::QT::Views
          */
         void deleteCredential(const QString& name);
         /**
-         * @brief Confirms an edit to a credential.
+         * @brief Discards the changes being made to a credential.
          */
-        void editConfirm();
-    
+        void discard();
+        /**
+         * @brief Saves a credential being edited.
+         */
+        void save();
+
     private:
         /**
          * @brief Modes for editing a credential.
@@ -67,13 +65,13 @@ namespace Nickvision::TubeConverter::QT::Views
             Modify
         };
         /**
-         * @brief Reloads the credentials to show in the dialog.
+         * @brief Reloads the credentials to show on the page.
          */
         void reloadCredentials();
-        Ui::KeyringDialog* m_ui;
+        Ui::KeyringPage* m_ui;
         std::shared_ptr<Shared::Controllers::KeyringDialogController> m_controller;
         EditMode m_editMode;
     };
 }
 
-#endif //KEYRINGDIALOG_H
+#endif //KEYRINGPAGE_H

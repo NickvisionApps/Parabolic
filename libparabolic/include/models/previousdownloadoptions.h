@@ -43,6 +43,16 @@ namespace Nickvision::TubeConverter::Shared::Models
          */
         void setFileType(const MediaFileType& previousMediaFileType);
         /**
+         * @brief Gets the previous quality.
+         * @return The previous quality
+         */
+        std::string getQuality() const;
+        /**
+         * @brief Sets the previous quality.
+         * @param quality The new previous quality
+         */
+        void setQuality(const std::string& quality);
+        /**
          * @brief Gets the previous split chapters state.
          * @return The previous split chapters state
          */
@@ -62,6 +72,16 @@ namespace Nickvision::TubeConverter::Shared::Models
          * @param limitSpeed The new previous limit speed state
          */
         void setLimitSpeed(bool limitSpeed);
+        /**
+         * @brief Gets the previous export description state.
+         * @return The previous export description state
+         */
+        bool getExportDescription() const;
+        /**
+         * @brief Sets the previous export description state.
+         * @param exportDescription The new previous export description state
+         */
+        void setExportDescription(bool exportDescription);
         /**
          * @brief Gets the previous number titles state.
          * @return The previous number titles state

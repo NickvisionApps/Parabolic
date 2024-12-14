@@ -3,6 +3,7 @@ set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTORCC ON)
 set(STARTUP_NOTIFY false)
+set(DBUS_ACTIVATABLE false)
 add_definitions(-DQT_NO_KEYWORDS)
 
 find_package(Qt6 REQUIRED COMPONENTS Core Gui Widgets Svg)
@@ -13,12 +14,14 @@ qt_add_executable(${OUTPUT_NAME}
     "include/controls/downloadrow.h"
     "include/controls/historyrow.h"
     "include/controls/keyringrow.h"
+    "include/controls/navigationbar.h"
+    "include/helpers/closeeventfilter.h"
     "include/helpers/qthelpers.h"
     "include/views/adddownloaddialog.h"
     "include/views/credentialdialog.h"
-    "include/views/keyringdialog.h"
+    "include/views/keyringpage.h"
     "include/views/mainwindow.h"
-    "include/views/settingsdialog.h"
+    "include/views/settingspage.h"
     "include/application.h"
     "src/controls/aboutdialog.ui"
     "src/controls/aboutdialog.cpp"
@@ -28,17 +31,19 @@ qt_add_executable(${OUTPUT_NAME}
     "src/controls/historyrow.cpp"
     "src/controls/keyringrow.ui"
     "src/controls/keyringrow.cpp"
+    "src/controls/navigationbar.cpp"
+    "src/helpers/closeeventfilter.cpp"
     "src/helpers/qthelpers.cpp"
     "src/views/adddownloaddialog.ui"
     "src/views/adddownloaddialog.cpp"
     "src/views/credentialdialog.ui"
     "src/views/credentialdialog.cpp"
-    "src/views/keyringdialog.ui"
-    "src/views/keyringdialog.cpp"
+    "src/views/keyringpage.ui"
+    "src/views/keyringpage.cpp"
     "src/views/mainwindow.ui"
     "src/views/mainwindow.cpp"
-    "src/views/settingsdialog.ui"
-    "src/views/settingsdialog.cpp"
+    "src/views/settingspage.ui"
+    "src/views/settingspage.cpp"
     "src/application.cpp"
     "src/main.cpp"
     "${OUTPUT_NAME}.qrc"

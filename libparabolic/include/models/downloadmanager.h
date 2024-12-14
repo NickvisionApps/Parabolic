@@ -132,9 +132,10 @@ namespace Nickvision::TubeConverter::Shared::Models
          * @brief Loads the download history.
          * @brief This method invokes the historyChanged event.
          * @brief This method will recover previous downloads that were interrupted by a crash.
-         * @brief Returns the number of downloads recovered.
+         * @param recoverDownloads Whether or not to recover downloads
+         * @return The number of downloads recovered
          */
-        size_t startup();
+        size_t startup(bool recoverDownloads);
         /**
          * @brief Clears the download history.
          * @brief This method invokes the historyChanged event.

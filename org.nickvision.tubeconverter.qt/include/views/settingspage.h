@@ -1,33 +1,33 @@
-#ifndef SETTINGSDIALOG_H
-#define SETTINGSDIALOG_H
+#ifndef SETTINGSPAGE_H
+#define SETTINGSPAGE_H
 
 #include <memory>
 #include <QCloseEvent>
-#include <QDialog>
+#include <QWidget>
 #include "controllers/preferencesviewcontroller.h"
 
-namespace Ui { class SettingsDialog; }
+namespace Ui { class SettingsPage; }
 
 namespace Nickvision::TubeConverter::QT::Views
 {
     /**
-     * @brief The settings dialog for the application.
+     * @brief The settings page for the application.
      */
-    class SettingsDialog : public QDialog
+    class SettingsPage : public QWidget
     {
     Q_OBJECT
 
     public:
         /**
-         * @brief Constructs a SettingsDialog.
+         * @brief Constructs a SettingsPage.
          * @param controller The PreferencesViewController
          * @param parent The parent widget
          */
-        SettingsDialog(const std::shared_ptr<Shared::Controllers::PreferencesViewController>& controller, QWidget* parent = nullptr);
+        SettingsPage(const std::shared_ptr<Shared::Controllers::PreferencesViewController>& controller, QWidget* parent = nullptr);
         /**
-         * @brief Destructs a SettingsDialog.
+         * @brief Destructs a SettingsPage.
          */
-        ~SettingsDialog();
+        ~SettingsPage();
 
     protected:
        /**
@@ -36,12 +36,11 @@ namespace Nickvision::TubeConverter::QT::Views
          */
         void closeEvent(QCloseEvent* event) override;
 
-    private Q_SLOTS:
+    private Q_SLOT:
         /**
-         * @brief Handles when the page is changed.
-         * @param index The index of the new page
+         * @brief Handles when the theme is changed.
          */
-        void onPageChanged(int index);
+        void onThemeChanged(int index);
         /**
          * @brief Prompts the user to select a cookies file.
          */
@@ -57,9 +56,9 @@ namespace Nickvision::TubeConverter::QT::Views
         void onEmbedMetadataChanged(bool checked);
 
     private:
-        Ui::SettingsDialog* m_ui;
+        Ui::SettingsPage* m_ui;
         std::shared_ptr<Shared::Controllers::PreferencesViewController> m_controller;
     };
 }
 
-#endif //SETTINGSDIALOG_H
+#endif //SETTINGSPAGE_H

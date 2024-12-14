@@ -20,6 +20,14 @@
 
 <terms>
     <item>
+		<title>Número Máximo de Downloads Ativos</title>
+		<p>O número de downloads ativos permitidos para execução de cada vez. Deve ser um valor inteiro entre 1 e 10.</p>
+        <p>Se o número máximo de downloads ativos for atingido, o Parabolic colocará novos downloads numa fila até que mais downloads possam ser executados.</p>
+		<note style="advanced">
+			<p>Padrão: 5</p>
+		</note>
+    </item>
+    <item>
         <title>Sobrescrever Ficheiros Existentes</title>
         <p>Se ativado, o Parabolic substituirá os ficheiros existentes.</p>
         <p>Por exemplo, se um ficheiro chamado <code>movie.mp4</code> existir na pasta de download e um novo download for criado chamado <code>movie</code> , <code>movie.mp4</code> será substituído pelo conteúdo do novo download.</p>
@@ -30,14 +38,6 @@
             <p>Padrão: Ativado</p>
         </note>
     </item>
-	<item>
-		<title>Número Máximo de Downloads Ativos</title>
-		<p>O número de downloads ativos permitidos para execução de cada vez. Deve ser um valor inteiro entre 1 e 10.</p>
-        <p>Se o número máximo de downloads ativos for atingido, o Parabolic colocará novos downloads numa fila até que mais downloads possam ser executados.</p>
-		<note style="advanced">
-			<p>Padrão: 5</p>
-		</note>
-    </item>
     <item>
 		<title>Limitar Caracteres do Nome de Ficheiro</title>
 		<p>Restringe caracteres no nome dos ficheiros para apenas os suportados pelo Windows.</p>
@@ -47,17 +47,17 @@
 		</note>
     </item>
     <item>
-		<title>Descarregar Imediatamente Após Validação</title>
-		<p>Ignora a seleção das opções de transferência na caixa de diálogo Adicionar Transferência e transfere imediatamente multimédia validada utilizando as opções previamente selecionadas.</p>
-		<note style="advanced">
-			<p>Padrão: Desligado</p>
-		</note>
+        <title>Included Media Id in Title After Validation</title>
+        <p>Whether or not to included the media's id in the title (file name) when validated.</p>
+        <note style="advanced">
+            <p>Padrão: Ativado</p>
+        </note>
     </item>
     <item>
         <title>Legendas Geradas Automaticamente Incluídas</title>
         <p>Se devem ou não ser incluídas legendas traduzidas automaticamente para se adequarem aos idiomas de legenda solicitados.</p>
         <note style="advanced">
-            <p>Padrão: Desligado</p>
+            <p>Padrão: Ativado</p>
         </note>
     </item>
     <item>
@@ -72,13 +72,6 @@
         <p>The file format Parabolic should ensure all downloaded subtitles are downloaded as.</p>
         <note style="advanced">
             <p>Default: Any</p>
-        </note>
-    </item>
-    <item>
-        <title>Recuperar Transferências com Problemas</title>
-        <p>Se ativado, o Parabolic irá monitorizar as transferências em curso e em fila de espera e reiniciá-las se necessário, se a aplicação falhar e for reiniciada.</p>
-        <note style="advanced">
-            <p>Padrão: Ativado</p>
         </note>
     </item>
 </terms>

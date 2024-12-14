@@ -33,7 +33,7 @@
     </item>
     <item>
       <title>認証</title>
-      <p>有効であれば、ダウンロード時に、 yt-dlp に渡す、ユーザー名と（または）パスワードが要求されます。</p>
+      <p>有効であれば、ダウンロード時に yt-dlp に渡す、ユーザー名と（または）パスワードが要求されます。</p>
         <p>資格情報がキーリング内で見つかると、ユーザーは使いたい資格情報をリスト内から選択することができます（手動で資格情報を入力することもできます）</p>
 		<note style="advanced">
 			<p>すべてのウェブサイトで yt-dlp がユーザー名とパスワードの入力に対応しているわけではありません。例えば、YouTube はこの機能にサポートしていません。</p>
@@ -47,13 +47,13 @@
             <p>最後に使用したファイルの種類は、次回のダウンロードのために記憶・事前選択されます。</p>
         </note>
         <note style="advanced">
-            <p>Selecting the <code>Video (Generic)</code> or <code>Audio (Generic)</code> file types will cause Parabolic to download the media in the original file type of the media without performing any conversions.</p>
+            <p><code>動画 (全般)</code> または <code>音声 (全般)</code> のファイル形式を選択すると、Parabolic はメディアのオリジナルのファイル形式で、何のファイル変換も行わずにメディアをダウンロードします。</p>
         </note>
     </item>
     <item>
 		<title>品質</title>
 		<p>ファイルの種類が動画の場合、表示される品質はメディアが利用できる解像度です。</p>
-        <p>If the file type is an audio type, the listed qualities will be the audio bitrates of the media available.</p>
+        <p>ファイルの種類が音声の場合、表示される品質はメディアが利用できる音声ビットレートです。</p>
         <note>
             <p>最後に使用した品質は、次回のダウンロードのために記憶・事前選択されます。</p>
         </note>
@@ -67,10 +67,10 @@
         </note>
     </item>
     <item>
-		<title>Subtitles</title>
-		<p>The list of subtitles available by the media that can be selected for download by the user. Further subtitle settings can be configured in <link xref="downloads">preferences</link>.</p>
+		<title>字幕</title>
+		<p>ユーザーがダウンロードのために選択できる、メディアが利用できる字幕の一覧。字幕の細かな設定は <link xref="downloads">設定</link> にて変更できます。</p>
         <note>
-            <p>The previously selected subtitles will be remembered and pre-selected for the next download.</p>
+            <p>最後に使用した字幕は、今後のダウンロードのために記憶・事前選択されます。</p>
         </note>
     </item>
     <item>
@@ -81,8 +81,18 @@
         </note>
     </item>
     <item>
-		<title>スピード制限</title>
+		<title>Limit Download Speed</title>
 		<p>有効であれば、Parabolic は、<link xref="downloader">設定</link> で指定された速度でダウンロードの速度を制限します。</p>
+        <note>
+            <p>最後に使用した状態は、今後のダウンロードのために記憶・事前選択されます。</p>
+        </note>
+    </item>
+    <item>
+		<title>Export Description</title>
+		<p>If enabled, Parabolic will export the media's description to a <code>.description</code> file alongside the downloaded file.</p>
+        <note>
+            <p>最後に使用した状態は、今後のダウンロードのために記憶・事前選択されます。</p>
+        </note>
     </item>
     <item>
 		<title>タイムフレーム</title>

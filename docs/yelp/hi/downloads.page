@@ -20,6 +20,14 @@
 
 <terms>
     <item>
+		<title>सक्रिय डाउनलोड की अधिकतम संख्या</title>
+		<p>एक समय में चलने की अनुमति वाले सक्रिय डाउनलोड की संख्या। 1 और 10 के बीच पूर्णांक मान होना चाहिए।</p>
+        <p>यदि सक्रिय डाउनलोड की अधिकतम संख्या पहुंच जाती है, तो Parabolic नए डाउनलोड को एक कतार में रखेगा जब तक कि अधिक डाउनलोड चलाने में सक्षम न हो जाएं।</p>
+		<note style="advanced">
+			<p>डिफ़ॉल्ट: 5</p>
+		</note>
+    </item>
+    <item>
         <title>मौजूदा फाइलें अधिलेखित करें</title>
         <p>यदि सक्षम किया गया है, तो Parabolic मौजूदा फाइलों को अधिलेखित कर देगा।</p>
         <p>उदाहरण के लिए, यदि <code>movie.mp4</code> नामक फाइल डाउनलोड फोल्डर में मौजूद है, और <code>movie</code> नामक एक नया डाउनलोड बनाया जाता है, तो <code>movie.mp4</code> होगा नए डाउनलोड की सामग्री के साथ अधिलेखित किया जाए।</p>
@@ -30,14 +38,6 @@
             <p>डिफ़ॉल्ट: चालू</p>
         </note>
     </item>
-	<item>
-		<title>सक्रिय डाउनलोड की अधिकतम संख्या</title>
-		<p>एक समय में चलने की अनुमति वाले सक्रिय डाउनलोड की संख्या। 1 और 10 के बीच पूर्णांक मान होना चाहिए।</p>
-        <p>यदि सक्रिय डाउनलोड की अधिकतम संख्या पहुंच जाती है, तो Parabolic नए डाउनलोड को एक कतार में रखेगा जब तक कि अधिक डाउनलोड चलाने में सक्षम न हो जाएं।</p>
-		<note style="advanced">
-			<p>डिफ़ॉल्ट: 5</p>
-		</note>
-    </item>
     <item>
 		<title>Limit Filename Characters</title>
 		<p>Restricts characters in filenames to only those supported by Windows.</p>
@@ -47,17 +47,17 @@
 		</note>
     </item>
     <item>
-		<title>Download Immediately After Validation</title>
-		<p>Bypasses the download options selection in the Add Download dialog and immediately downloads a validated media using previously selected options.</p>
-		<note style="advanced">
-			<p>डिफ़ॉल्ट: बंद</p>
-		</note>
+        <title>Included Media Id in Title After Validation</title>
+        <p>Whether or not to included the media's id in the title (file name) when validated.</p>
+        <note style="advanced">
+            <p>डिफ़ॉल्ट: चालू</p>
+        </note>
     </item>
     <item>
         <title>ऑटो-निर्मित उपशीर्षक शामिल हैं</title>
         <p>क्या उन उपशीर्षकों को शामिल किया जाना चाहिए जो अनुरोधित उपशीर्षक भाषाओं में फिट होने के लिए स्वचालित रूप से अनुवादित हैं।</p>
         <note style="advanced">
-            <p>डिफ़ॉल्ट: बंद</p>
+            <p>डिफ़ॉल्ट: चालू</p>
         </note>
     </item>
     <item>
@@ -72,13 +72,6 @@
         <p>The file format Parabolic should ensure all downloaded subtitles are downloaded as.</p>
         <note style="advanced">
             <p>Default: Any</p>
-        </note>
-    </item>
-    <item>
-        <title>Recover Crashed Downloads</title>
-        <p>If enabled, Parabolic will track the running and queued downloads and restart them if necessary if the application crashes and is restarted.</p>
-        <note style="advanced">
-            <p>डिफ़ॉल्ट: चालू</p>
         </note>
     </item>
 </terms>

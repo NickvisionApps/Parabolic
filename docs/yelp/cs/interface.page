@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" id="interface" its:version="2.0" xml:lang="cs">
+<info>
+	<link type="guide" xref="index"/>
+	<title type="link">User Interface 🖥️</title>
+	<credit type="author copyright">
+		<name>Nicholas Logozzo</name>
+		<years its:translate="no">2023-2024</years>
+	</credit>
+	<credit type="publisher copyright">
+		<name>Nicholas Logozzo</name>
+		<years its:translate="no">2023-2024</years>
+	</credit>
+	<license href="http://creativecommons.org/licenses/by/4.0/" its:translate="no"><p>Creative Commons Attribution 4.0 International License</p></license>
+
+    <mal:credit xmlns:mal="http://projectmallard.org/1.0/" type="translator copyright">
+      <mal:name>Jonáš Loskot</mal:name>
+      <mal:email>osobni@jonasloskot.cz</mal:email>
+      <mal:years>2023, 2024</mal:years>
+    </mal:credit>
+  </info>
+
+<title>User Interface</title>
+<p>This page explains all options for configuring the User Interface in Preferences in <app>Parabolic</app>.</p>
+
+<terms>
+    <item>
+        <title>Theme</title>
+        <p>The theme for the user interface.</p>
+        <note style="advanced">
+            <p>Default: System</p>
+        </note>
+    </item>
+    <item>
+        <title>Completed Notification Trigger</title>
+        <p>The trigger used for showing completed download notifications when the application is not active.</p>
+        <note style="advanced">
+            <p>Default: For each download</p>
+        </note>
+    </item>
+    <item>
+        <title>Prevent Suspend</title>
+        <p>If enabled, the system while be prevented from suspending while Parabolic is running.</p>
+        <note style="advanced">
+            <p>Výchozí: vypnuto</p>
+        </note>
+    </item>
+    <item>
+        <title>Obnovit selhaná stahování</title>
+        <p>Pokud je tato funkce povolena, bude aplikace Parabolic sledovat probíhající stahování a stahování ve frontě a v případě potřeby je znovu spustí, pokud aplikace spadne a je restartována.</p>
+        <note style="advanced">
+            <p>Výchozí: zapnuto</p>
+        </note>
+    </item>
+    <item>
+        <title>Stáhnout ihned po ověření</title>
+		<p>Obejde výběr možností stahování v dialogovém okně Přidat stahování a okamžitě stáhne ověřená média pomocí dříve vybraných možností.</p>
+        <note style="advanced">
+            <p>Výchozí: vypnuto</p>
+        </note>
+    </item>
+    <item>
+        <title>Download History Length</title>
+        <p>The amount of time to keep download history saved.</p>
+        <note style="advanced">
+            <p>Default: One Week</p>
+        </note>
+    </item>
+</terms>
+</page>

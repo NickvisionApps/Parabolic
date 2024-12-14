@@ -3,7 +3,7 @@ using Adw 1;
 
 Adw.PreferencesDialog root {
   content-width: 600;
-  content-height: 400;
+  content-height: 600;
   search-enabled: true;
   title: _("Preferences");
 
@@ -44,6 +44,24 @@ Adw.PreferencesDialog root {
         }
       }
 
+      Adw.SwitchRow recoverCrashedDownloadsRow {
+        title: _("Recover Crashed Downloads");
+
+        [prefix]
+        Gtk.Image {
+          icon-name: "shield-warning-symbolic";
+        }
+      }
+
+      Adw.SwitchRow downloadImmediatelyRow {
+        title: _("Download Immediately After Validation");
+
+        [prefix]
+        Gtk.Image {
+          icon-name: "snapshots-alt-symbolic";
+        }
+      }
+
       Adw.ComboRow historyLengthRow {
         title: _("Download History Length");
         model: Gtk.StringList {
@@ -59,15 +77,6 @@ Adw.PreferencesDialog root {
 
     Adw.PreferencesGroup {
       title: _("Downloads");
-
-      Adw.SwitchRow overwriteExistingFilesRow {
-        title: _("Overwrite Existing Files");
-
-        [prefix]
-        Gtk.Image {
-          icon-name: "document-new-symbolic";
-        }
-      }
 
       Adw.SpinRow maxNumberOfActiveDownloadsRow {
         title: _("Max Number of Active Downloads");
@@ -85,6 +94,15 @@ Adw.PreferencesDialog root {
         }
       }
 
+      Adw.SwitchRow overwriteExistingFilesRow {
+        title: _("Overwrite Existing Files");
+
+        [prefix]
+        Gtk.Image {
+          icon-name: "document-new-symbolic";
+        }
+      }
+
       Adw.SwitchRow limitCharactersRow {
         title: _("Limit Filename Characters");
         subtitle: _("Restricts characters in filenames to only those supported by Windows.");
@@ -95,12 +113,12 @@ Adw.PreferencesDialog root {
         }
       }
 
-      Adw.SwitchRow downloadImmediatelyRow {
-        title: _("Download Immediately After Validation");
+      Adw.SwitchRow includeMediaIdRow {
+        title: _("Include Media Id in Title After Validation");
 
         [prefix]
         Gtk.Image {
-          icon-name: "snapshots-alt-symbolic";
+          icon-name: "insert-object-symbolic";
         }
       }
 
@@ -136,15 +154,6 @@ Adw.PreferencesDialog root {
           icon-name: "subtitles-symbolic";
         }
       }
-
-      Adw.SwitchRow recoverCrashedDownloadsRow {
-        title: _("Recover Crashed Downloads");
-
-        [prefix]
-        Gtk.Image {
-          icon-name: "shield-warning-symbolic";
-        }
-      }
     }
 
     Adw.PreferencesGroup {
@@ -156,6 +165,15 @@ Adw.PreferencesDialog root {
         [prefix]
         Gtk.Image {
           icon-name: "document-text-symbolic";
+        }
+      }
+
+      Adw.SwitchRow sponsorBlockRow {
+        title: _("Use SponsorBlock for YouTube");
+
+        [prefix]
+        Gtk.Image {
+          icon-name: "permissions-advertising-symbolic";
         }
       }
 
@@ -173,15 +191,6 @@ Adw.PreferencesDialog root {
         [prefix]
         Gtk.Image {
           icon-name: "speedometer-symbolic";
-        }
-      }
-
-      Adw.SwitchRow sponsorBlockRow {
-        title: _("Use SponsorBlock for YouTube");
-
-        [prefix]
-        Gtk.Image {
-          icon-name: "permissions-advertising-symbolic";
         }
       }
 

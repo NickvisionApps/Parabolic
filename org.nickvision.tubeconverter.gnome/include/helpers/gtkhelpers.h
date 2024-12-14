@@ -39,8 +39,9 @@ namespace Nickvision::TubeConverter::GNOME::Helpers::GtkHelpers
      * @brief Sets the model for a combo row.
      * @param row The combo row
      * @param strs The strings to set
+     * @param selected An option string that should be selected
      */
-    void setComboRowModel(AdwComboRow* row, const std::vector<std::string>& strs);
+    void setComboRowModel(AdwComboRow* row, const std::vector<std::string>& strs, const std::string& selected = "");
 }
 
 #endif //GTKHELPERS_H

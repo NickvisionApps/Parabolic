@@ -128,6 +128,16 @@ namespace Nickvision::TubeConverter::Shared::Models
          */
         void setSubtitleLanguages(const std::vector<SubtitleLanguage>& subtitleLanguages);
         /**
+         * @brief Gets whether or not to split chapters.
+         * @return True if splitting chapters, else false
+         */
+        bool getSplitChapters() const;
+        /**
+         * @brief Sets whether or not to split chapters.
+         * @param splitChapters True if splitting chapters, else false
+         */
+        void setSplitChapters(bool splitChapters);
+        /**
          * @brief Gets whether or not to limit the download speed.
          * @return True if limiting the download speed, else false
          */
@@ -139,15 +149,15 @@ namespace Nickvision::TubeConverter::Shared::Models
          */
         void setLimitSpeed(bool limitSpeed);
         /**
-         * @brief Gets whether or not to split chapters.
-         * @return True if splitting chapters, else false
+         * @brief Gets whether or not to export the media description to a file.
+         * @return True to export the media description, else false
          */
-        bool getSplitChapters() const;
+        bool getExportDescription() const;
         /**
-         * @brief Sets whether or not to split chapters.
-         * @param splitChapters True if splitting chapters, else false
+         * @brief Sets whether or not to export the media description to a file.
+         * @param exportDescription True to export the media description, else false
          */
-        void setSplitChapters(bool splitChapters);
+        void setExportDescription(bool exportDescription);
         /**
          * @brief Gets the time frame of the download.
          * @return The time frame of the download
@@ -193,8 +203,9 @@ namespace Nickvision::TubeConverter::Shared::Models
         std::filesystem::path m_saveFolder;
         std::string m_saveFilename;
         std::vector<SubtitleLanguage> m_subtitleLanguages;
-        bool m_limitSpeed;
         bool m_splitChapters;
+        bool m_limitSpeed;
+        bool m_exportDescription;
         std::optional<TimeFrame> m_timeFrame;
     };
 }

@@ -20,6 +20,14 @@
 
 <terms>
     <item>
+		<title>حداکثر تعداد بارگیری‌های فعال</title>
+		<p>تعداد بارگیری‌های فعال مجاز به اجرا در یک زمان. باید یک مقدار صحیح بین 1 و 10 باشد.</p>
+        <p>If the max number of active downloads is reached, Parabolic will place new downloads in a queue until more downloads are able to be run.</p>
+		<note style="advanced">
+			<p>پیش فرض: ۵</p>
+		</note>
+    </item>
+    <item>
         <title>بازنویسی فایل های موجود</title>
         <p>اگر فعال باشد، Parabolic فایل‌های موجود را بازنویسی می‌کند.</p>
         <p>For example, if a file named <code>movie.mp4</code> exists in the download folder, and a new download is created named <code>movie</code>, <code>movie.mp4</code> will be overwritten with the new download's content.</p>
@@ -30,14 +38,6 @@
             <p>پیش فرض: روشن</p>
         </note>
     </item>
-	<item>
-		<title>حداکثر تعداد بارگیری‌های فعال</title>
-		<p>تعداد بارگیری‌های فعال مجاز به اجرا در یک زمان. باید یک مقدار صحیح بین 1 و 10 باشد.</p>
-        <p>If the max number of active downloads is reached, Parabolic will place new downloads in a queue until more downloads are able to be run.</p>
-		<note style="advanced">
-			<p>پیش فرض: ۵</p>
-		</note>
-    </item>
     <item>
 		<title>Limit Filename Characters</title>
 		<p>Restricts characters in filenames to only those supported by Windows.</p>
@@ -47,17 +47,17 @@
 		</note>
     </item>
     <item>
-		<title>Download Immediately After Validation</title>
-		<p>Bypasses the download options selection in the Add Download dialog and immediately downloads a validated media using previously selected options.</p>
-		<note style="advanced">
-			<p>پیش فرض: خاموش</p>
-		</note>
+        <title>Included Media Id in Title After Validation</title>
+        <p>Whether or not to included the media's id in the title (file name) when validated.</p>
+        <note style="advanced">
+            <p>پیش فرض: روشن</p>
+        </note>
     </item>
     <item>
         <title>شامل زیرنویس‌های تولید شده خودکار</title>
         <p>این که آیا زیرنویس‌هایی را شامل می‌شود که به صورت خودکار ترجمه می شوند تا متناسب با زبان‌های زیرنویس درخواست شده باشند.</p>
         <note style="advanced">
-            <p>پیش فرض: خاموش</p>
+            <p>پیش فرض: روشن</p>
         </note>
     </item>
     <item>
@@ -72,13 +72,6 @@
         <p>The file format Parabolic should ensure all downloaded subtitles are downloaded as.</p>
         <note style="advanced">
             <p>Default: Any</p>
-        </note>
-    </item>
-    <item>
-        <title>Recover Crashed Downloads</title>
-        <p>If enabled, Parabolic will track the running and queued downloads and restart them if necessary if the application crashes and is restarted.</p>
-        <note style="advanced">
-            <p>پیش فرض: روشن</p>
         </note>
     </item>
 </terms>

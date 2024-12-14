@@ -52,6 +52,34 @@ namespace Nickvision::TubeConverter::QT::Controls
         connect(m_ui->btnRetry, &QPushButton::clicked, [this]() { Q_EMIT retry(m_id); });
     }
 
+    DownloadRow::DownloadRow(const DownloadRow& row)
+        : QWidget{ row.parentWidget() },
+        m_ui{ new Ui::DownloadRow() },
+        m_id{ row.m_id },
+        m_log{ row.m_log },
+        m_path{ row.m_path }
+    {
+        m_ui->setupUi(this);
+        //Localize Strings
+        m_ui->btnStop->setText(_("Stop"));
+        m_ui->btnPlay->setText(_("Play"));
+        m_ui->btnOpenFolder->setText(_("Open"));
+        m_ui->btnRetry->setText(_("Retry"));
+        //Copy UI
+        m_ui->btnIcon->setIcon(row.m_ui->btnIcon->icon());
+        m_ui->lblTitle->setText(row.m_ui->lblTitle->text());
+        m_ui->lblUrl->setText(row.m_ui->lblUrl->text());
+        m_ui->progressBar->setRange(row.m_ui->progressBar->minimum(), row.m_ui->progressBar->maximum());
+        m_ui->progressBar->setValue(row.m_ui->progressBar->value());
+        m_ui->lblStatus->setText(row.m_ui->lblStatus->text());
+        m_ui->buttonStack->setCurrentIndex(row.m_ui->buttonStack->currentIndex());
+        //Signals
+        connect(m_ui->btnStop, &QPushButton::clicked, [this]() { Q_EMIT stop(m_id); });
+        connect(m_ui->btnPlay, &QPushButton::clicked, this, &DownloadRow::play);
+        connect(m_ui->btnOpenFolder, &QPushButton::clicked, this, &DownloadRow::openFolder);
+        connect(m_ui->btnRetry, &QPushButton::clicked, [this]() { Q_EMIT retry(m_id); });
+    }
+
     DownloadRow::~DownloadRow()
     {
         delete m_ui;

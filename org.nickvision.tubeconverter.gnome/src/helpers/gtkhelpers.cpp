@@ -48,14 +48,20 @@ namespace Nickvision::TubeConverter::GNOME::Helpers
         gtk_application_set_accels_for_action(app, action, accels);
     }
 
-    void GtkHelpers::setComboRowModel(AdwComboRow* row, const std::vector<std::string>& strs)
+    void GtkHelpers::setComboRowModel(AdwComboRow* row, const std::vector<std::string>& strs, const std::string& selected)
     {
+        size_t selectedIndex{ 0 };
         GtkStringList* list{ gtk_string_list_new(nullptr) };
-        for(const std::string& str : strs)
+        for(size_t i = 0; i < strs.size(); i++)
         {
+            const std::string str{ strs[i] };
             gtk_string_list_append(list, str.c_str());
+            if(str == selected)
+            {
+                selectedIndex = i;
+            }
         }
         adw_combo_row_set_model(row, G_LIST_MODEL(list));
-        adw_combo_row_set_selected(row, 0);
+        adw_combo_row_set_selected(row, selectedIndex);
     }
 }

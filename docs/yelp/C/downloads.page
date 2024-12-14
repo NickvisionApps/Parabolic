@@ -23,6 +23,14 @@
 
 <terms>
     <item>
+		<title>Maximum Number of Active Downloads</title>
+		<p>The number of active downloads allowed to run at a time. Must be an integer value between 1 and 10.</p>
+        <p>If the max number of active downloads is reached, Parabolic will place new downloads in a queue until more downloads are able to be run.</p>
+		<note style="advanced">
+			<p>Default: 5</p>
+		</note>
+    </item>
+    <item>
         <title>Overwrite Existing Files</title>
         <p>If enabled, Parabolic will overwrite existing files.</p>
         <p>For example, if a file named <code>movie.mp4</code> exists in the download folder, and a new download is created named <code>movie</code>, <code>movie.mp4</code> will be overwritten with the new download's content.</p>
@@ -33,14 +41,6 @@
             <p>Default: On</p>
         </note>
     </item>
-	<item>
-		<title>Maximum Number of Active Downloads</title>
-		<p>The number of active downloads allowed to run at a time. Must be an integer value between 1 and 10.</p>
-        <p>If the max number of active downloads is reached, Parabolic will place new downloads in a queue until more downloads are able to be run.</p>
-		<note style="advanced">
-			<p>Default: 5</p>
-		</note>
-    </item>
     <item>
 		<title>Limit Filename Characters</title>
 		<p>Restricts characters in filenames to only those supported by Windows.</p>
@@ -50,17 +50,17 @@
 		</note>
     </item>
     <item>
-		<title>Download Immediately After Validation</title>
-		<p>Bypasses the download options selection in the Add Download dialog and immediately downloads a validated media using previously selected options.</p>
-		<note style="advanced">
-			<p>Default: Off</p>
-		</note>
+        <title>Included Media Id in Title After Validation</title>
+        <p>Whether or not to included the media's id in the title (file name) when validated.</p>
+        <note style="advanced">
+            <p>Default: On</p>
+        </note>
     </item>
     <item>
         <title>Included Auto-Generated Subtitles</title>
         <p>Whether or not to included subtitles that are auto-translated to fit the requested subtitle languages.</p>
         <note style="advanced">
-            <p>Default: Off</p>
+            <p>Default: On</p>
         </note>
     </item>
     <item>
@@ -75,13 +75,6 @@
         <p>The file format Parabolic should ensure all downloaded subtitles are downloaded as.</p>
         <note style="advanced">
             <p>Default: Any</p>
-        </note>
-    </item>
-    <item>
-        <title>Recover Crashed Downloads</title>
-        <p>If enabled, Parabolic will track the running and queued downloads and restart them if necessary if the application crashes and is restarted.</p>
-        <note style="advanced">
-            <p>Default: On</p>
         </note>
     </item>
 </terms>

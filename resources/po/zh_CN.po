@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-11-18 15:04-0500\n"
+"POT-Creation-Date: 2024-12-13 13:35-0500\n"
 "PO-Revision-Date: 2024-02-15 17:02+0000\n"
 "Last-Translator: valigarmanda <valigarmanda55@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
@@ -88,6 +88,7 @@ msgid "WAV (Audio)"
 msgstr "音频"
 
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:132
+#: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:344
 #: libparabolic/src/models/videoresolution.cpp:33
 #: libparabolic/src/models/videoresolution.cpp:75
 msgid "Best"
@@ -102,7 +103,7 @@ msgid "Audio Description"
 msgstr ""
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:42
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:41
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:55
 msgid "Parabolic"
 msgstr "Parabolic"
 
@@ -131,21 +132,12 @@ msgstr "David Lapshin"
 msgid "translator-credits"
 msgstr "感谢翻译者"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:253
-#, fuzzy
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:258
+#, fuzzy, c++-format
 msgid "Recovered {} download"
 msgid_plural "Recovered {} downloads"
 msgstr[0] "重试失败的下载"
 msgstr[1] "重试失败的下载"
-
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:258
-msgid ""
-"The authors of Nickvision Parabolic are not responsible/liable for any "
-"misuse of this program that may violate local copyright/DMCA laws. Users use "
-"this application at their own risk."
-msgstr ""
-"Nickvision Parabolic 的作者不对任何可能违反当地版权/DMCA法律的滥用本程序的行"
-"为负责. 用户使用此应用程序的风险自负."
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:287
 #, fuzzy
@@ -158,22 +150,22 @@ msgid "Unable to download and install update"
 msgstr "无法下载和安装更新."
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:21
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} GiB/s"
 msgstr "{0:f1} GiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:25
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} MiB/s"
 msgstr "{0:f1} MiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:29
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} KiB/s"
 msgstr "{0:f1} KiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:33
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} B/s"
 msgstr "{0:f1} B/s"
 
@@ -197,19 +189,20 @@ msgstr ""
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:11
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:39
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:221
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:290
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:346
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:402
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:288
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:344
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:400
 #: org.nickvision.tubeconverter.gnome/blueprints/shortcuts_dialog.blp:39
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:28
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:45
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:67
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:81
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:89
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:95
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:101
 msgid "Add Download"
 msgstr "添加下载"
 
-#. Localize the Edit page
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:18
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:28
+#: org.nickvision.tubeconverter.qt/src/views/keyringpage.cpp:33
 msgid "Back"
 msgstr "后退"
 
@@ -244,7 +237,7 @@ msgstr "没有凭据"
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:133
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:35
 #: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:22
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:33
+#: org.nickvision.tubeconverter.qt/src/views/keyringpage.cpp:38
 msgid "Username"
 msgstr "用户名"
 
@@ -254,7 +247,7 @@ msgstr "用户名"
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:135
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:37
 #: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:24
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:35
+#: org.nickvision.tubeconverter.qt/src/views/keyringpage.cpp:40
 msgid "Password"
 msgstr "密码"
 
@@ -264,9 +257,9 @@ msgid "Validate"
 msgstr "验证"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:104
-#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:275
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:279
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:42
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:64
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:65
 msgid "File Type"
 msgstr "文件类型"
 
@@ -291,97 +284,104 @@ msgid "Advanced Options"
 msgstr "高级选项"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:140
-#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:289
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:49
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:67
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:297
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:50
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:69
 msgid "Save Folder"
 msgstr "保存文件夹"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:146
-#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:295
-#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:284
-#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:343
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:52
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:70
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:277
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:324
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:303
+#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:286
+#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:345
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:53
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:72
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:281
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:328
 msgid "Select Save Folder"
 msgstr "选择保存文件夹"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:155
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:53
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:74
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:54
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:76
 msgid "File Name"
 msgstr "文件名"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:161
-#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:224
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:56
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:245
+#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:226
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:57
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:249
 msgid "Revert to Title"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:170
-#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:317
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:325
 #: org.nickvision.tubeconverter.qt/src/controls/historyrow.cpp:18
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:60
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:61
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:74
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:75
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:62
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:76
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:77
 msgid "Download"
 msgstr "下载"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:193
-#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:346
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:58
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:72
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:354
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:59
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:74
 #, fuzzy
 msgid "Select All"
 msgstr "取消全选"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:200
-#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:353
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:59
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:73
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:361
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:60
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:75
 msgid "Deselect All"
 msgstr "取消全选"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:228
-#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:279
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:283
 #, fuzzy
 msgid "Split Videos by Chapters"
 msgstr "拆分章节"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:232
-#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:283
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:287
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:46
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:66
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:67
 #, fuzzy
 msgid "Limit Download Speed"
 msgstr "下载媒体"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:236
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:291
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:47
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:68
+msgid "Export Description"
+msgstr ""
+
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:240
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:48
 msgid "Start Time"
 msgstr "开始时间"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:242
-#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:255
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:246
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:259
 msgid "Revert to Original"
 msgstr ""
 
-#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:249
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:48
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:253
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:49
 msgid "End Time"
 msgstr "结束时间"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:304
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:312
 #, fuzzy
 msgid "Playlist Items"
 msgstr "播放列表"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:335
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:71
+#: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:343
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:73
 msgid "Number Titles"
 msgstr "数字标题"
 
@@ -404,29 +404,33 @@ msgstr "查看日志"
 #. Localize Strings
 #: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:64
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:24
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:64
 #, fuzzy
 msgid "Stop"
 msgstr "已停止"
 
 #. Localize Strings
 #: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:79
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:267
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:275
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:25
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:65
 #: org.nickvision.tubeconverter.qt/src/controls/historyrow.cpp:17
 msgid "Play"
 msgstr "播放"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:87
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:187
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:210
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:26
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:66
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:32
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:326
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:413
 #, fuzzy
 msgid "Open"
 msgstr "打开文件"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:99
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:27
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:67
 msgid "Retry"
 msgstr ""
 
@@ -441,14 +445,15 @@ msgid "Copy Log to Clipboard"
 msgstr "复制到剪贴板"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/keyring_page.blp:13
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:26
+#: org.nickvision.tubeconverter.qt/src/views/keyringpage.cpp:30
 #, fuzzy
 msgid "No Credentials Found"
 msgstr "没有凭据"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/keyring_page.blp:16
 #: org.nickvision.tubeconverter.gnome/blueprints/keyring_page.blp:33
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:25
+#: org.nickvision.tubeconverter.qt/src/views/keyringpage.cpp:31
+#: org.nickvision.tubeconverter.qt/src/views/keyringpage.cpp:32
 #, fuzzy
 msgid "Add Credential"
 msgstr "没有凭据"
@@ -460,20 +465,19 @@ msgstr "没有凭据"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/keyring_page.blp:37
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:84
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:24
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:74
+#: org.nickvision.tubeconverter.qt/src/views/keyringpage.cpp:75
 msgid "Add"
 msgstr "添加"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/keyring_page.blp:65
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:129
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:29
+#: org.nickvision.tubeconverter.qt/src/views/keyringpage.cpp:34
 msgid "Name"
 msgstr "名称"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/keyring_page.blp:69
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:131
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:31
+#: org.nickvision.tubeconverter.qt/src/views/keyringpage.cpp:36
 msgid "URL"
 msgstr "URL"
 
@@ -490,13 +494,12 @@ msgstr "快捷键"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:7
 #: org.nickvision.tubeconverter.gnome/blueprints/shortcuts_dialog.blp:25
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:57
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:72
 msgid "Help"
 msgstr "帮助"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:8
 #: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:31
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:63
 msgid "About Parabolic"
 msgstr "关于 Parabolic"
 
@@ -505,130 +508,141 @@ msgid "Main Menu"
 msgstr "主菜单"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:70
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:198
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:221
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:66
 msgid "Home"
 msgstr "主页"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:87
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:204
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:21
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:48
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:227
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:67
 msgid "Keyring"
 msgstr "密钥环"
 
-#. Localize History Dock
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:104
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:210
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:51
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:69
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:233
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:68
 msgid "History"
 msgstr "历史"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:114
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:61
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:79
 #: org.nickvision.tubeconverter.gnome/blueprints/shortcuts_dialog.blp:36
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:24
+#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:25
 msgid "Downloads"
 msgstr "下载"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:135
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:215
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:238
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:69
 msgid "Downloading"
 msgstr "下载中"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:160
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:27
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:220
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:243
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:34
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:70
 msgid "Queued"
 msgstr "已加入队列"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:185
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:225
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:248
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:71
 msgid "Completed"
 msgstr "已完成"
 
 #. Localize Home Page
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:217
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:65
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:79
 msgid "Download Media"
 msgstr "下载媒体"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:218
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:66
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:80
 msgid "Add a video, audio, or playlist URL to start downloading"
 msgstr "添加视频, 音频或播放列表 URL 以开始下载"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:246
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:70
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:84
 #, fuzzy
 msgid "No history available"
 msgstr "有新的版本可更新"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:258
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:256
 #, fuzzy
 msgid "Past Downloads"
 msgstr "下载"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:262
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:260
 msgid "Clear History"
 msgstr "清除历史记录"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:266
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:372
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:432
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:71
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:264
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:370
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:430
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:85
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:96
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:104
 msgid "Clear"
 msgstr "清除"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:287
+#. Localize Downloading Page
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:285
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:87
 #, fuzzy
 msgid "No Downloads Running"
 msgstr "没有正在运行的下载"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:311
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:309
 #: org.nickvision.tubeconverter.gnome/blueprints/shortcuts_dialog.blp:44
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:53
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:91
 msgid "Stop All Downloads"
 msgstr "停止所有下载"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:316
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:314
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:90
 msgid "Stop All"
 msgstr "停止所有"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:343
+#. Localize Queued Page
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:341
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:93
 #, fuzzy
 msgid "No Downloads Queued"
 msgstr "下载媒体"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:367
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:55
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:365
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:97
 msgid "Clear Queued Downloads"
 msgstr "清除队列中的下载"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:399
+#. Localize Completed Page
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:397
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:99
 #, fuzzy
 msgid "No Downloads Completed"
 msgstr "下载媒体"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:427
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:56
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:425
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:105
 msgid "Clear Completed Downloads"
 msgstr "清除已完成的下载"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:440
+#: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:438
 #: org.nickvision.tubeconverter.gnome/blueprints/shortcuts_dialog.blp:49
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:54
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:103
 msgid "Retry Failed Downloads"
 msgstr "重试失败的下载"
 
 #. Localize Strings
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:12
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:23
+#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:24
 msgid "User Interface"
 msgstr "界面"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:15
+#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:29
 msgid "Theme"
 msgstr "主题"
 
@@ -648,142 +662,151 @@ msgid "System"
 msgstr "系统"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:27
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:29
+#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:34
 msgid "Completed Notification Trigger"
 msgstr "已完成通知触发器"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:29
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:30
+#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:35
 #, fuzzy
 msgid "For each download"
 msgstr "每个下载"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:29
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:31
+#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:36
 #, fuzzy
 msgid "When all downloads finish"
 msgstr "全部下载完成"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:29
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:50
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:32
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:35
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:68
+#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:37
+#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:42
 #, fuzzy
 msgid "Never"
 msgstr "从不"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:39
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:33
+#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:38
 msgid "Prevent Suspend"
 msgstr "防止挂起"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:48
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:34
-#, fuzzy
-msgid "Download History Length"
-msgstr "下载中"
-
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:50
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:36
-msgid "One Day"
-msgstr ""
-
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:50
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:37
-msgid "One Week"
-msgstr ""
-
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:50
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:38
-msgid "One Month"
-msgstr ""
-
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:50
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:39
-msgid "Three Months"
-msgstr ""
-
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:50
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:40
-#, fuzzy
-msgid "Forever"
-msgstr "从不"
-
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:64
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:41
-msgid "Overwrite Existing Files"
-msgstr "覆盖现有文件"
-
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:73
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:42
-msgid "Max Number of Active Downloads"
-msgstr "活动下载的最大数量"
-
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:89
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:47
-msgid "Limit Filename Characters"
-msgstr "限制文件名字符"
-
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:90
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:48
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:49
-msgid "Restricts characters in filenames to only those supported by Windows."
-msgstr "将文件名中的字符限制为仅 Windows 支持的字符."
-
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:99
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:50
-msgid "Download Immediately After Validation"
-msgstr ""
-
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:108
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:51
-msgid "Include Auto-Generated Subtitles"
-msgstr "包括自动生成的字幕"
-
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:117
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:52
-#, fuzzy
-msgid "Preferred Video Codec"
-msgstr "首选 AV1 编解码器"
-
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:119
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:131
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:53
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:58
-msgid "Any"
-msgstr ""
-
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:129
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:57
-#, fuzzy
-msgid "Preferred Subtitle Format"
-msgstr "首选 AV1 编解码器"
-
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:141
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:63
+#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:39
 #, fuzzy
 msgid "Recover Crashed Downloads"
 msgstr "重试失败的下载"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:151
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:52
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:25
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:57
+#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:40
+msgid "Download Immediately After Validation"
+msgstr ""
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:66
+#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:41
+#, fuzzy
+msgid "Download History Length"
+msgstr "下载中"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:68
+#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:43
+msgid "One Day"
+msgstr ""
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:68
+#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:44
+msgid "One Week"
+msgstr ""
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:68
+#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:45
+msgid "One Month"
+msgstr ""
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:68
+#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:46
+msgid "Three Months"
+msgstr ""
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:68
+#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:47
+#, fuzzy
+msgid "Forever"
+msgstr "从不"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:82
+#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:49
+msgid "Max Number of Active Downloads"
+msgstr "活动下载的最大数量"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:98
+#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:48
+msgid "Overwrite Existing Files"
+msgstr "覆盖现有文件"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:107
+#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:54
+msgid "Limit Filename Characters"
+msgstr "限制文件名字符"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:108
+#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:55
+#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:56
+msgid "Restricts characters in filenames to only those supported by Windows."
+msgstr "将文件名中的字符限制为仅 Windows 支持的字符."
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:117
+#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:57
+msgid "Include Media Id in Title After Validation"
+msgstr ""
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:126
+#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:58
+msgid "Include Auto-Generated Subtitles"
+msgstr "包括自动生成的字幕"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:135
+#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:59
+#, fuzzy
+msgid "Preferred Video Codec"
+msgstr "首选 AV1 编解码器"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:137
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:149
+#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:60
+#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:65
+msgid "Any"
+msgstr ""
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:147
+#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:64
+#, fuzzy
+msgid "Preferred Subtitle Format"
+msgstr "首选 AV1 编解码器"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:160
+#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:26
 msgid "Downloader"
 msgstr "下载器"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:154
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:64
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:163
+#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:70
 msgid "Verbose Logging"
 msgstr ""
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:163
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:172
+#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:71
+msgid "Use SponsorBlock for YouTube"
+msgstr "为 YouTube 使用 SponsorBlock"
+
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:181
 #, fuzzy
 msgid "Speed Limit (KiB/s)"
 msgstr "速度限制"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:164
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:66
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:67
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:182
+#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:73
+#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:74
 #, fuzzy
 msgid ""
 "This limit is applied only to downloads that have enabled limiting download "
@@ -792,173 +815,168 @@ msgstr ""
 "此限制 (以KiB/s为单位) 适用于启用了速度限制的下载. 更改该值不会影响已在运行的"
 "下载."
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:180
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:68
-msgid "Use SponsorBlock for YouTube"
-msgstr "为 YouTube 使用 SponsorBlock"
-
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:189
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:69
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:198
+#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:75
 msgid "Proxy URL"
 msgstr "代理 URL"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:198
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:71
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:207
+#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:77
 msgid "Cookies from Browser"
 msgstr ""
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:200
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:94
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:72
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:209
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:96
+#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:78
 msgid "None"
 msgstr ""
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:200
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:73
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:209
+#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:79
 msgid "Brave"
 msgstr ""
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:200
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:74
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:209
+#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:80
 #, fuzzy
 msgid "Chrome"
 msgstr "Chrome/Edge"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:200
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:75
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:209
+#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:81
 msgid "Chromium"
 msgstr ""
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:200
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:76
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:209
+#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:82
 msgid "Edge"
 msgstr ""
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:200
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:77
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:209
+#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:83
 msgid "Firefox"
 msgstr "Firefox"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:200
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:78
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:209
+#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:84
 msgid "Opera"
 msgstr ""
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:200
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:79
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:209
+#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:85
 msgid "Safari"
 msgstr ""
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:200
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:80
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:209
+#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:86
 msgid "Vivaldi"
 msgstr ""
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:200
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:81
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:209
+#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:87
 msgid "Whale"
 msgstr ""
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:210
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:82
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:219
+#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:88
 msgid "Cookies File"
 msgstr "Cookies 文件"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:211
-#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:140
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:83
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:220
+#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:142
+#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:89
 #, fuzzy
 msgid "No file selected"
 msgstr "未选择任何文件"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:222
-#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:118
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:84
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:204
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:231
+#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:120
+#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:90
+#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:225
 msgid "Select Cookies File"
 msgstr "选择 Cookies 文件"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:231
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:85
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:240
+#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:91
 msgid "Clear Cookies File"
 msgstr "清除 Cookie 文件"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:241
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:26
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:250
+#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:27
 msgid "Converter"
 msgstr "转换器"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:244
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:86
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:253
+#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:92
 msgid "Embed Metadata"
 msgstr "嵌入元数据"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:253
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:88
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:262
+#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:94
 msgid "Embed Chapters"
 msgstr "嵌入章节"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:262
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:87
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:271
+#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:93
 msgid "Embed Subtitles"
 msgstr "嵌入字幕"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:271
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:89
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:280
+#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:95
 msgid "Crop Audio Thumbnails"
 msgstr "裁剪音频缩略图"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:272
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:90
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:91
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:281
+#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:96
+#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:97
 #, fuzzy
 msgid ""
 "If enabled, Parabolic will crop the thumbnails of audio files to squares."
 msgstr "如果启用, Parabolic 将自动打开音频下载的裁剪缩略图高级选项"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:282
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:92
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:291
+#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:98
 msgid "Remove Source Data"
 msgstr "删除源数据"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:283
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:93
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:94
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:292
+#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:99
+#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:100
 msgid ""
 "If enabled, Parabolic will clear metadata fields containing identifying "
 "download information."
 msgstr ""
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:293
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:95
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:302
+#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:101
 #, fuzzy
 msgid "Postprocessing Threads"
 msgstr "处理中..."
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:303
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:27
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:312
+#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:28
 #, fuzzy
 msgid "aria2"
 msgstr "使用 aria2"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:306
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:100
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:315
+#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:106
 msgid "Use aria2"
 msgstr "使用 aria2"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:315
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:101
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:324
+#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:107
 msgid "Max Connections Per Server (-x)"
 msgstr "每台服务器的最大连接数 (-x)"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:332
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:102
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:341
+#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:108
 msgid "Minimum Split Size (-k)"
 msgstr "最小拆分大小 (-k)"
 
-#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:333
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:103
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:104
+#: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:342
+#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:109
+#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:110
 msgid "The minimum size of which to split a file (in MiB)."
 msgstr "要拆分文件的最小大小 (以MiB为单位)."
 
@@ -989,7 +1007,7 @@ msgid "Unknown"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:80
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:76
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:104
 #, fuzzy
 msgid "Processing"
 msgstr "处理中..."
@@ -997,52 +1015,52 @@ msgstr "处理中..."
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:92
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:142
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:39
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:82
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:120
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:110
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:148
 msgid "Running"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:111
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:147
 #: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:40
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:96
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:180
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:124
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:182
 #: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:58
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:120
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:123
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:126
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:129
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:132
+#: org.nickvision.tubeconverter.qt/src/views/keyringpage.cpp:130
+#: org.nickvision.tubeconverter.qt/src/views/keyringpage.cpp:133
+#: org.nickvision.tubeconverter.qt/src/views/keyringpage.cpp:136
+#: org.nickvision.tubeconverter.qt/src/views/keyringpage.cpp:139
+#: org.nickvision.tubeconverter.qt/src/views/keyringpage.cpp:142
 msgid "Error"
 msgstr "错误"
 
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:119
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:102
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:130
 msgid "Success"
 msgstr "成功"
 
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:131
-#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:112
+#: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:140
 msgid "Stopped"
 msgstr "已停止"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:48
 #: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:21
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:93
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:95
 #: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:32
 msgid "Use manual credential"
 msgstr "使用手动凭据"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:84
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:127
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:129
 #, fuzzy
 msgid "Select Batch File"
 msgstr "选择保存文件夹"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:86
-#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:120
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:127
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:204
+#: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:122
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:129
+#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:225
 msgid "TXT Files (*.txt)"
 msgstr ""
 
@@ -1054,22 +1072,23 @@ msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:148
 #: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:41
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:234
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:150
 msgid "Close"
 msgstr "关闭"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:197
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:57
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:58
 #, fuzzy
 msgid "No Subtitles Available"
 msgstr "有新的版本可更新"
 
-#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:214
-#, fuzzy
+#: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:216
+#, fuzzy, c++-format
 msgid "{} items"
 msgstr "{1} 项目中的 {0} 个"
 
 #: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:15
+#, c++-format
 msgid ""
 "{} needs a credential to download.\n"
 "Please select or enter one to use."
@@ -1077,7 +1096,7 @@ msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:40
 #: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:58
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:123
+#: org.nickvision.tubeconverter.qt/src/views/keyringpage.cpp:133
 msgid "Both the username and password cannot be empty."
 msgstr ""
 
@@ -1087,39 +1106,37 @@ msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:40
 #: org.nickvision.tubeconverter.qt/src/controls/keyringrow.cpp:18
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:47
 msgid "Edit"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:54
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:303
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:311
 #: org.nickvision.tubeconverter.qt/src/controls/historyrow.cpp:19
 #: org.nickvision.tubeconverter.qt/src/controls/keyringrow.cpp:19
 msgid "Delete"
 msgstr "删除"
 
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:100
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:90
 msgid "Modify"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:106
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:95
+#: org.nickvision.tubeconverter.qt/src/views/keyringpage.cpp:99
 msgid "Delete Credential?"
 msgstr "是否删除凭据?"
 
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:106
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:95
+#: org.nickvision.tubeconverter.qt/src/views/keyringpage.cpp:99
 msgid "Are you sure you want to delete this credential?"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:108
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:154
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:177
 msgid "Yes"
 msgstr "是"
 
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:108
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:154
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:177
 msgid "No"
 msgstr "否"
 
@@ -1149,33 +1166,43 @@ msgstr "名称 (空)"
 msgid "Credential (Database Error)"
 msgstr ""
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:153
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:148
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:169
+msgid "Disclaimer"
+msgstr "免责声明"
+
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:148
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:169
+msgid ""
+"The authors of Nickvision Parabolic are not responsible/liable for any "
+"misuse of this program that may violate local copyright/DMCA laws. Users use "
+"this application at their own risk."
+msgstr ""
+"Nickvision Parabolic 的作者不对任何可能违反当地版权/DMCA法律的滥用本程序的行"
+"为负责. 用户使用此应用程序的风险自负."
+
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:149
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:170
+msgid "Don't show this message again"
+msgstr "不再显示此消息"
+
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:176
 #, fuzzy
 msgid "Exit?"
 msgstr "退出"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:153
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:143
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:176
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:186
 #, fuzzy
 msgid "There are downloads in progress. Are you sure you want to exit?"
 msgstr "这种行为是不可逆转的. 你确定要删除它吗?"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:232
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:334
-msgid "Disclaimer"
-msgstr "免责声明"
-
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:233
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:335
-msgid "Don't show this message again"
-msgstr "不再显示此消息"
-
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:288
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:296
 msgid "Download Again"
 msgstr "重新下载"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:445
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:60
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:453
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:61
 msgid "GitHub Repo"
 msgstr "GitHub 仓库"
 
@@ -1189,7 +1216,7 @@ msgid "Changelog:"
 msgstr "更新日志"
 
 #: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:39
-#, fuzzy
+#, fuzzy, c++-format
 msgid ""
 "Developers:\n"
 "{}\n"
@@ -1217,181 +1244,210 @@ msgstr "在此处输入媒体URL"
 
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:36
 #: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:23
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:34
+#: org.nickvision.tubeconverter.qt/src/views/keyringpage.cpp:39
 #, fuzzy
 msgid "Enter username here"
 msgstr "在此处输入用户名"
 
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:38
 #: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:25
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:36
+#: org.nickvision.tubeconverter.qt/src/views/keyringpage.cpp:41
 msgid "Enter password here"
 msgstr "在此处输入密码"
 
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:40
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:62
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:63
 msgid "General"
 msgstr ""
 
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:45
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:65
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:66
 #, fuzzy
 msgid "Split Video by Chapters"
 msgstr "拆分章节"
 
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:50
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:68
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:51
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:70
 #, fuzzy
 msgid "Select save folder"
 msgstr "选择保存文件夹"
 
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:51
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:69
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:52
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:71
 #, fuzzy
 msgid "Select"
 msgstr "全选"
 
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:54
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:55
 #, fuzzy
 msgid "Enter file name here"
 msgstr "在此处输入名称"
 
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:55
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:244
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:56
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:248
 #, fuzzy
 msgid "Revert"
 msgstr "从不"
 
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:60
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:61
 #, fuzzy
 msgid "Language"
 msgstr "音频语言"
 
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:63
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:64
 #, fuzzy
 msgid "Items"
 msgstr "{1} 项目中的 {0} 个"
 
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:180
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:182
 msgid ""
 "The url provided is invalid or unable to be reached. Check the url, the "
 "authentication used, and the selected browser for cookies in settings."
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:231
-#, fuzzy
+#: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:234
+#, fuzzy, c++-format
 msgid "Items ({})"
 msgstr "{1} 项目中的 {0} 个"
 
 #. Localize Strings
 #: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:20
+#, c++-format
 msgid "{} needs a credential to download. Please select or enter one to use."
 msgstr ""
 
-#. Localize the Manage page
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:23
-msgid "Create, save, and manage your credentials for media websites."
-msgstr ""
-
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:30
+#: org.nickvision.tubeconverter.qt/src/views/keyringpage.cpp:35
 #, fuzzy
 msgid "Enter name here"
 msgstr "在此处输入用户名"
 
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:32
+#: org.nickvision.tubeconverter.qt/src/views/keyringpage.cpp:37
 #, fuzzy
 msgid "Enter url here"
 msgstr "在此处输入媒体URL"
 
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:56
+#: org.nickvision.tubeconverter.qt/src/views/keyringpage.cpp:42
+#: org.nickvision.tubeconverter.qt/src/views/keyringpage.cpp:93
+msgid "Save"
+msgstr ""
+
+#: org.nickvision.tubeconverter.qt/src/views/keyringpage.cpp:62
 msgid "Warning"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:56
+#: org.nickvision.tubeconverter.qt/src/views/keyringpage.cpp:62
 msgid ""
 "The keyring is not saving changes to disk. Any changes made will be lost "
 "when the application closes."
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:120
+#: org.nickvision.tubeconverter.qt/src/views/keyringpage.cpp:70
+#, fuzzy
+msgid "New Credential"
+msgstr "没有凭据"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyringpage.cpp:88
+#, fuzzy
+msgid "Edit Credential"
+msgstr "没有凭据"
+
+#: org.nickvision.tubeconverter.qt/src/views/keyringpage.cpp:130
 #, fuzzy
 msgid "The credential name cannot be empty."
 msgstr "请确认凭据正确无误"
 
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:126
+#: org.nickvision.tubeconverter.qt/src/views/keyringpage.cpp:136
 msgid "The provided url is invalid."
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:129
+#: org.nickvision.tubeconverter.qt/src/views/keyringpage.cpp:139
 msgid "A credential with this name already exists."
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/keyringdialog.cpp:132
+#: org.nickvision.tubeconverter.qt/src/views/keyringpage.cpp:142
 msgid "There was an unknown error adding the credential to the keyring."
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:41
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:55
 #, fuzzy
 msgid "Parabolic (Preview)"
 msgstr "Parabolic"
-
-#. Localize Menu Strings
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:44
-#, fuzzy
-msgid "File"
-msgstr "文件名"
-
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:46
-msgid "Exit"
-msgstr "退出"
-
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:49
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:21
-msgid "Settings"
-msgstr "设置"
-
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:50
-#, fuzzy
-msgid "View"
-msgstr "查看日志"
 
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:58
 msgid "Check for Updates"
 msgstr "检查更新"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:59
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:60
 msgid "Documentation"
 msgstr "文档"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:61
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:62
 msgid "Report a Bug"
 msgstr "报告问题"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:62
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:63
 msgid "Discussions"
 msgstr "讨论"
 
-#. Localize Downloads Page
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:73
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:65
+msgid "About"
+msgstr "关于"
+
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:74
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:76
+msgid "Settings"
+msgstr "设置"
+
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:102
+msgid "Retry Failed"
+msgstr "重试失败"
+
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:109
 msgid "Log"
 msgstr "日志"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:313
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:400
 msgid "Update"
 msgstr "更新"
 
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:28
+#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:30
+#, fuzzy
+msgid "Light"
+msgstr "亮色"
+
+#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:31
+#, fuzzy
+msgid "Dark"
+msgstr "暗色"
+
+#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:32
+#, fuzzy
+msgid "System"
+msgstr "系统"
+
+#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:33
 msgid "Automatically Check for Updates"
 msgstr "自动检查更新"
 
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:65
+#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:72
 msgid "Speed Limit"
 msgstr "速度限制"
 
-#: org.nickvision.tubeconverter.qt/src/views/settingsdialog.cpp:70
+#: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:76
 #, fuzzy
 msgid "Enter proxy url here"
 msgstr "在此处输入代理 URL"
+
+#, fuzzy
+#~ msgid "File"
+#~ msgstr "文件名"
+
+#~ msgid "Exit"
+#~ msgstr "退出"
+
+#, fuzzy
+#~ msgid "View"
+#~ msgstr "查看日志"
 
 #~ msgid "Download Subtitles"
 #~ msgstr "下载字幕"
@@ -1443,9 +1499,6 @@ msgstr "在此处输入代理 URL"
 #~ "A cookies file can be provided to yt-dlp to allow downloading media that "
 #~ "requires a login."
 #~ msgstr "向 yt-dlp 提供cookie文件, 以允许下载需要登录的多媒体."
-
-#~ msgid "About"
-#~ msgstr "关于"
 
 #~ msgid "Add a login to get started."
 #~ msgstr "添加登录即可开始."
@@ -1703,9 +1756,6 @@ msgstr "在此处输入代理 URL"
 
 #~ msgid "Retry Download"
 #~ msgstr "重试下载"
-
-#~ msgid "Retry Failed"
-#~ msgstr "重试失败"
 
 #~ msgid "Save Folder (Invalid)"
 #~ msgstr "保存文件夹 (无效)"

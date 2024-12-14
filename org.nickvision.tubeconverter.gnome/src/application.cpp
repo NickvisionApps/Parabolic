@@ -9,8 +9,10 @@ using namespace Nickvision::TubeConverter::Shared::Models;
 namespace Nickvision::TubeConverter::GNOME
 {
     Application::Application(int argc, char* argv[])
-        : m_controller{ std::make_shared<MainWindowController>(std::vector<std::string>(argv, argv + argc)) },
-        m_adw{ adw_application_new(m_controller->getAppInfo().getId().c_str(), G_APPLICATION_DEFAULT_FLAGS) },
+        : m_argc{ argc },
+        m_argv{ argv }, 
+        m_controller{ std::make_shared<MainWindowController>(std::vector<std::string>(argv, argv + argc)) },
+        m_adw{ adw_application_new(m_controller->getAppInfo().getId().c_str(), G_APPLICATION_HANDLES_OPEN) },
         m_mainWindow{ nullptr }
     {
         std::filesystem::path resources{ Environment::getExecutableDirectory() / (m_controller->getAppInfo().getId() + ".gresource") };
@@ -22,17 +24,19 @@ namespace Nickvision::TubeConverter::GNOME
             throw std::runtime_error(resourceLoadError->message);
         }
         g_resources_register(resource);
+        g_signal_connect(m_adw, "startup", G_CALLBACK(+[](GtkApplication* app, gpointer data){ reinterpret_cast<Application*>(data)->onStartup(app); }), this);
         g_signal_connect(m_adw, "activate", G_CALLBACK(+[](GtkApplication* app, gpointer data){ reinterpret_cast<Application*>(data)->onActivate(app); }), this);
+        g_signal_connect(m_adw, "open", G_CALLBACK(+[](GtkApplication* app, void* files, int n, const char* hint, gpointer data){ reinterpret_cast<Application*>(data)->onOpen(app, files, n, hint); }), this);
     }
 
     int Application::run()
     {
-        m_controller->log(Logging::LogLevel::Info, "Started GTK application.");
-        return g_application_run(G_APPLICATION(m_adw), 0, nullptr);
+        return g_application_run(G_APPLICATION(m_adw), m_argc, m_argv);
     }
 
-    void Application::onActivate(GtkApplication* app)
+    void Application::onStartup(GtkApplication* app)
     {
+        m_controller->log(Logging::LogLevel::Info, "Started GTK application.");
         switch (m_controller->getTheme())
         {
         case Theme::Light:
@@ -49,6 +53,17 @@ namespace Nickvision::TubeConverter::GNOME
         {
             m_mainWindow = std::make_shared<Views::MainWindow>(m_controller, app);
         }
+    }
+
+    void Application::onActivate(GtkApplication* app)
+    {
         m_mainWindow->show();
+    }
+
+    void Application::onOpen(GtkApplication* app, void* files, int n, const char* hint)
+    {
+        GFile** arr{ reinterpret_cast<GFile**>(files) };
+        m_mainWindow->show();
+        m_mainWindow->addDownload(g_file_get_uri(arr[0]));
     }
 }

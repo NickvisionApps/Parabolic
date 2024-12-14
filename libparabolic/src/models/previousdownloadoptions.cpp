@@ -43,6 +43,16 @@ namespace Nickvision::TubeConverter::Shared::Models
     {
         m_json["FileType"] = static_cast<int>(previousMediaFileType);
     }
+
+    std::string PreviousDownloadOptions::getQuality() const
+    {
+        return m_json["Quality"].is_string() ? m_json["Quality"].as_string().c_str() : "";
+    }
+
+    void PreviousDownloadOptions::setQuality(const std::string& quality)
+    {
+        m_json["Quality"] = quality;
+    }
     
     bool PreviousDownloadOptions::getSplitChapters() const
     {
@@ -62,6 +72,16 @@ namespace Nickvision::TubeConverter::Shared::Models
     void PreviousDownloadOptions::setLimitSpeed(bool limitSpeed)
     {
         m_json["LimitSpeed"] = limitSpeed;
+    }
+
+    bool PreviousDownloadOptions::getExportDescription() const
+    {
+        return m_json["ExportDescription"].is_bool() ? m_json["ExportDescription"].as_bool() : false;
+    }
+
+    void PreviousDownloadOptions::setExportDescription(bool exportDescription)
+    {
+        m_json["ExportDescription"] = exportDescription;
     }
 
     bool PreviousDownloadOptions::getNumberTitles() const

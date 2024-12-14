@@ -26,6 +26,14 @@
 
 <terms>
     <item>
+		<title>Máximo número de descargas activas</title>
+		<p>El número de descargas activas que se pueden ejecutar a la vez. Debe ser un valor entero entre 1 y 10.</p>
+        <p>Si se alcanza el número máximo de descargas activas, Parabolic colocará las descargas nuevas en una cola hasta que se puedan ejecutar más descargas.</p>
+		<note style="advanced">
+			<p>Predeterminado: 5</p>
+		</note>
+    </item>
+    <item>
         <title>Sobreescribir archivos existentes</title>
         <p>Si se activa, Parabolic sobrescribirá los archivos existentes.</p>
         <p>Por ejemplo, si un archivo llamado <code>pelicula.mp4</code> existe en la carpeta de descargas, y se crea una descarga nueva llamada <code>pelicula</code>, <code>pelicula.mp4</code> se sobrescribirá con el contenido de la descarga nueva.</p>
@@ -36,14 +44,6 @@
             <p>Predeterminado: Encendido</p>
         </note>
     </item>
-	<item>
-		<title>Máximo número de descargas activas</title>
-		<p>El número de descargas activas que se pueden ejecutar a la vez. Debe ser un valor entero entre 1 y 10.</p>
-        <p>Si se alcanza el número máximo de descargas activas, Parabolic colocará las descargas nuevas en una cola hasta que se puedan ejecutar más descargas.</p>
-		<note style="advanced">
-			<p>Predeterminado: 5</p>
-		</note>
-    </item>
     <item>
 		<title>Limitar los caracteres del nombre del archivo</title>
 		<p>Restringe los caracteres de los nombres de los archivos al soportado por Windows.</p>
@@ -53,17 +53,17 @@
 		</note>
     </item>
     <item>
-		<title>Descargar inmediatamente después de la validación</title>
-		<p>Evita la selección de opciones de descarga en el cuadro de diálogo Agregar descarga e inmediatamente descarga un medio validado utilizando las opciones previamente seleccionadas.</p>
-		<note style="advanced">
-			<p>Predeterminado: Apagado</p>
-		</note>
+        <title>Included Media Id in Title After Validation</title>
+        <p>Whether or not to included the media's id in the title (file name) when validated.</p>
+        <note style="advanced">
+            <p>Predeterminado: Encendido</p>
+        </note>
     </item>
     <item>
         <title>Subtítulos generados automáticamente</title>
         <p>Incluir o no subtítulos que se traducen automáticamente para ajustarse a los idiomas de los subtítulos solicitados.</p>
         <note style="advanced">
-            <p>Predeterminado: Apagado</p>
+            <p>Predeterminado: Encendido</p>
         </note>
     </item>
     <item>
@@ -78,13 +78,6 @@
         <p>El formato de archivo en el que se supone que Parabolic debe descargar todos los subtítulos.</p>
         <note style="advanced">
             <p>Por defecto: Cualquiera</p>
-        </note>
-    </item>
-    <item>
-        <title>Recuperar descargas fallidas</title>
-        <p>Si está habilitado, Parabolic rastreará las descargas en ejecución y en cola y las reiniciará si es necesario, si la aplicación se bloquea y se reinicia.</p>
-        <note style="advanced">
-            <p>Predeterminado: Encendido</p>
         </note>
     </item>
 </terms>

@@ -38,10 +38,10 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         m_keyring{ m_appInfo.getId() },
         m_downloadManager{ m_dataFileManager.get<Configuration>("config").getDownloaderOptions(), m_dataFileManager.get<DownloadHistory>("history"), m_dataFileManager.get<DownloadRecoveryQueue>("recovery"), m_logger }
     {
-        m_appInfo.setVersion({ "2024.11.1" });
+        m_appInfo.setVersion({ "2024.12.0-next" });
         m_appInfo.setShortName(_("Parabolic"));
         m_appInfo.setDescription(_("Download web video and audio"));
-        m_appInfo.setChangelog("- Fixed an issue where file names that included a period were truncated\n- Fixed an issue where long file names caused the application to crash\n- Fixed an issue where external subtitle files were created although embedding was supported\n- Fixed an issue where generic downloads were unable to be opened upon completion\n- Updated yt-dlp to 2024.11.18");
+        m_appInfo.setChangelog("- Added the ability to toggle the inclusion of a media's id in its title when validated in the app's settings\n- Added the option to export a download's media description to a separate file\n- Restored the ability for Parabolic to accept a URL to validate via command line arguments\n- Fixed an issue where auto-generated subtitles were not being embed in a media file\n- Fixed an issue where downloading media at certain time frames were not respected\n- Fixed an issue where video medias' thumbnails were also cropped when crop audio thumbnails was enabled\n- Fixed an issue where the previously used download quality was not remembered\n- Redesigned the Qt version's user interface with a more modern style\n- Updated yt-dlp to 2024.12.06");
         m_appInfo.setSourceRepo("https://github.com/NickvisionApps/Parabolic");
         m_appInfo.setIssueTracker("https://github.com/NickvisionApps/Parabolic/issues/new");
         m_appInfo.setSupportUrl("https://github.com/NickvisionApps/Parabolic/discussions");
@@ -114,11 +114,6 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         return m_shellNotificationSent;
     }
 
-    Event<ParamEventArgs<std::string>>& MainWindowController::disclaimerTriggered()
-    {
-        return m_disclaimerTriggered;
-    }
-
     std::string MainWindowController::getDebugInformation(const std::string& extraInformation) const
     {
         std::stringstream builder;
@@ -173,23 +168,6 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         return Documentation::getHelpUrl(m_appInfo.getEnglishShortName(), m_appInfo.getHtmlDocsStore(), pageName);
     }
 
-    bool MainWindowController::canDownload() const
-    {
-        if(Environment::findDependency("yt-dlp").empty())
-        {
-            m_logger.log(Logging::LogLevel::Error, "yt-dlp not found.");
-        }
-        if(Environment::findDependency("ffmpeg").empty())
-        {
-            m_logger.log(Logging::LogLevel::Error, "ffmpeg not found.");
-        }
-        if(Environment::findDependency("aria2c").empty())
-        {
-            m_logger.log(Logging::LogLevel::Error, "aria2c not found.");
-        }
-        return !Environment::findDependency("yt-dlp").empty() && !Environment::findDependency("ffmpeg").empty() && !Environment::findDependency("aria2c").empty();
-    }
-
     std::shared_ptr<AddDownloadDialogController> MainWindowController::createAddDownloadDialogController()
     {
         return std::make_shared<AddDownloadDialogController>(m_downloadManager, m_dataFileManager, m_keyring);
@@ -211,17 +189,20 @@ namespace Nickvision::TubeConverter::Shared::Controllers
     }
 
 #ifdef _WIN32
-    Nickvision::App::WindowGeometry MainWindowController::startup(HWND hwnd)
+    const StartupInformation& MainWindowController::startup(HWND hwnd)
 #elif defined(__linux__)
-    Nickvision::App::WindowGeometry MainWindowController::startup(const std::string& desktopFile)
+    const StartupInformation& MainWindowController::startup(const std::string& desktopFile)
 #else
-    Nickvision::App::WindowGeometry MainWindowController::startup()
+    const StartupInformation& MainWindowController::startup()
 #endif
     {
+        static StartupInformation info;
         if (m_started)
         {
-            return m_dataFileManager.get<Configuration>("config").getWindowGeometry();
+            return info;
         }
+        //Load configuration
+        info.setWindowGeometry(m_dataFileManager.get<Configuration>("config").getWindowGeometry());
         //Load taskbar item
 #ifdef _WIN32
         if(m_taskbar.connect(hwnd))
@@ -246,19 +227,38 @@ namespace Nickvision::TubeConverter::Shared::Controllers
             m_logger.log(Logging::LogLevel::Error, "Unable to connect to Linux taskbar.");
         }
 #endif
+        //Check if can download
+        if(Environment::findDependency("yt-dlp").empty())
+        {
+            m_logger.log(Logging::LogLevel::Error, "yt-dlp not found.");
+        }
+        if(Environment::findDependency("ffmpeg").empty())
+        {
+            m_logger.log(Logging::LogLevel::Error, "ffmpeg not found.");
+        }
+        if(Environment::findDependency("aria2c").empty())
+        {
+            m_logger.log(Logging::LogLevel::Error, "aria2c not found.");
+        }
+        info.setCanDownload(!Environment::findDependency("yt-dlp").empty() && !Environment::findDependency("ffmpeg").empty() && !Environment::findDependency("aria2c").empty());
+        //Check if disclaimer should be shown
+        info.setShowDisclaimer(m_dataFileManager.get<Configuration>("config").getShowDisclaimerOnStartup());
+        //Get URL to validate from args
+        if(m_args.size() > 1)
+        {
+            if(StringHelpers::isValidUrl(m_args[1]))
+            {
+                info.setUrlToValidate(m_args[1]);
+            }
+        }
         //Load DownloadManager
-        size_t recoveredDownloads{ m_downloadManager.startup() };
+        size_t recoveredDownloads{ m_downloadManager.startup(m_dataFileManager.get<Configuration>("config").getRecoverCrashedDownloads()) };
         if(recoveredDownloads > 0)
         {
             m_notificationSent.invoke({ std::vformat(_n("Recovered {} download", "Recovered {} downloads", recoveredDownloads), std::make_format_args(recoveredDownloads)), NotificationSeverity::Informational });
         }
-        //Check if disclaimer should be shown
-        if(m_dataFileManager.get<Configuration>("config").getShowDisclaimerOnStartup())
-        {
-            m_disclaimerTriggered.invoke({ _("The authors of Nickvision Parabolic are not responsible/liable for any misuse of this program that may violate local copyright/DMCA laws. Users use this application at their own risk.") });
-        }
         m_started = true;
-        return m_dataFileManager.get<Configuration>("config").getWindowGeometry();
+        return info;
     }
 
     void MainWindowController::shutdown(const WindowGeometry& geometry)

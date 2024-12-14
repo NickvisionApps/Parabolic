@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </dd>
 <dt class="terms">認証</dt>
 <dd class="terms">
-<p class="p">有効であれば、ダウンロード時に、 yt-dlp に渡す、ユーザー名と（または）パスワードが要求されます。</p>
+<p class="p">有効であれば、ダウンロード時に yt-dlp に渡す、ユーザー名と（または）パスワードが要求されます。</p>
 <p class="p">資格情報がキーリング内で見つかると、ユーザーは使いたい資格情報をリスト内から選択することができます（手動で資格情報を入力することもできます）</p>
 <div class="note note-advanced" title="高度">
 <svg height="24" width="24" version="1.1">
@@ -81,13 +81,13 @@ document.addEventListener('DOMContentLoaded', function() {
   <path class="yelp-svg-fill" d="m8.2435 7.0719-1.9004-3.3145 1.4143-1.4143 3.1596 1.7457z"></path>
   <path class="yelp-svg-fill" d="m11.072 11.757-3.3146 1.9-1.4143-1.414 1.7457-3.1602z"></path>
  </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Selecting the <span class="code">Video (Generic)</span> or <span class="code">Audio (Generic)</span> file types will cause Parabolic to download the media in the original file type of the media without performing any conversions.</p></div></div></div>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p"><span class="code">動画 (全般)</span> または <span class="code">音声 (全般)</span> のファイル形式を選択すると、Parabolic はメディアのオリジナルのファイル形式で、何のファイル変換も行わずにメディアをダウンロードします。</p></div></div></div>
 </div>
 </dd>
 <dt class="terms">品質</dt>
 <dd class="terms">
 <p class="p">ファイルの種類が動画の場合、表示される品質はメディアが利用できる解像度です。</p>
-<p class="p">If the file type is an audio type, the listed qualities will be the audio bitrates of the media available.</p>
+<p class="p">ファイルの種類が音声の場合、表示される品質はメディアが利用できる音声ビットレートです。</p>
 <div class="note" title="注記">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -110,16 +110,16 @@ document.addEventListener('DOMContentLoaded', function() {
 </svg><div class="inner"><div class="region"><div class="contents"><p class="p">最後に使用した状態は、今後のダウンロードのために記憶・事前選択されます。</p></div></div></div>
 </div>
 </dd>
-<dt class="terms">Subtitles</dt>
+<dt class="terms">字幕</dt>
 <dd class="terms">
-<p class="p">The list of subtitles available by the media that can be selected for download by the user. Further subtitle settings can be configured in <span class="link"><a href="downloads.html" title="Downloads">preferences</a></span>.</p>
+<p class="p">ユーザーがダウンロードのために選択できる、メディアが利用できる字幕の一覧。字幕の細かな設定は <span class="link"><a href="downloads.html" title="ダウンロード">設定</a></span> にて変更できます。</p>
 <div class="note" title="注記">
 <svg height="24" width="24" version="1.1">
  <g>
   <path class="yelp-svg-fill" d="m4 3h16c0.554 0 1 0.446 1 1v11h-6v6h-11c-0.554 0-1-0.446-1-1v-16c0-0.554 0.446-1 1-1z"></path>
   <path class="yelp-svg-fill" d="m17 16h4l-5 5v-4c0-0.554 0.446-1 1-1z"></path>
  </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">The previously selected subtitles will be remembered and pre-selected for the next download.</p></div></div></div>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">最後に使用した字幕は、今後のダウンロードのために記憶・事前選択されます。</p></div></div></div>
 </div>
 </dd>
 <dt class="terms">チャプター（章）で分ける</dt>
@@ -134,8 +134,30 @@ document.addEventListener('DOMContentLoaded', function() {
 </svg><div class="inner"><div class="region"><div class="contents"><p class="p">最後に使用した状態は、今後のダウンロードのために記憶・事前選択されます。</p></div></div></div>
 </div>
 </dd>
-<dt class="terms">スピード制限</dt>
-<dd class="terms"><p class="p">有効であれば、Parabolic は、<span class="link"><a href="downloader.html" title="ダウンローダー">設定</a></span> で指定された速度でダウンロードの速度を制限します。</p></dd>
+<dt class="terms">Limit Download Speed</dt>
+<dd class="terms">
+<p class="p">有効であれば、Parabolic は、<span class="link"><a href="downloader.html" title="ダウンローダー">設定</a></span> で指定された速度でダウンロードの速度を制限します。</p>
+<div class="note" title="注記">
+<svg height="24" width="24" version="1.1">
+ <g>
+  <path class="yelp-svg-fill" d="m4 3h16c0.554 0 1 0.446 1 1v11h-6v6h-11c-0.554 0-1-0.446-1-1v-16c0-0.554 0.446-1 1-1z"></path>
+  <path class="yelp-svg-fill" d="m17 16h4l-5 5v-4c0-0.554 0.446-1 1-1z"></path>
+ </g>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">最後に使用した状態は、今後のダウンロードのために記憶・事前選択されます。</p></div></div></div>
+</div>
+</dd>
+<dt class="terms">Export Description</dt>
+<dd class="terms">
+<p class="p">If enabled, Parabolic will export the media's description to a <span class="code">.description</span> file alongside the downloaded file.</p>
+<div class="note" title="注記">
+<svg height="24" width="24" version="1.1">
+ <g>
+  <path class="yelp-svg-fill" d="m4 3h16c0.554 0 1 0.446 1 1v11h-6v6h-11c-0.554 0-1-0.446-1-1v-16c0-0.554 0.446-1 1-1z"></path>
+  <path class="yelp-svg-fill" d="m17 16h4l-5 5v-4c0-0.554 0.446-1 1-1z"></path>
+ </g>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">最後に使用した状態は、今後のダウンロードのために記憶・事前選択されます。</p></div></div></div>
+</div>
+</dd>
 <dt class="terms">タイムフレーム</dt>
 <dd class="terms">
 <p class="p">ダウンロードメディアの開始と終わりのタイムフレームを入力することで、メディアの特定部分をダウンロードできるようになります。</p>

@@ -1,11 +1,11 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2024-11-15 13:29-0500\n"
+"POT-Creation-Date: 2024-12-13 13:51-0500\n"
 "PO-Revision-Date: 2024-11-26 11:00+0000\n"
 "Last-Translator: Gnuey56 <gnuey56@proton.me>\n"
-"Language-Team: Japanese <https://hosted.weblate.org/projects/"
-"nickvision-tube-converter/docs/ja/>\n"
+"Language-Team: Japanese <https://hosted.weblate.org/projects/nickvision-tube-"
+"converter/docs/ja/>\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,8 +20,9 @@ msgstr "Gnuey56 <gnuey56@proton.me>, 2023"
 
 #. (itstool) path: info/title
 #: docs/yelp/C/aria.page:8
+#, fuzzy
 msgctxt "link"
-msgid "aria2 🖥️"
+msgid "aria2 🛠️"
 msgstr "aria2 🖥️"
 
 #. (itstool) path: credit/name
@@ -30,6 +31,7 @@ msgstr "aria2 🖥️"
 #: docs/yelp/C/downloader.page:10 docs/yelp/C/downloader.page:14
 #: docs/yelp/C/downloads.page:10 docs/yelp/C/downloads.page:14
 #: docs/yelp/C/index.page:10 docs/yelp/C/index.page:14
+#: docs/yelp/C/interface.page:10 docs/yelp/C/interface.page:14
 #: docs/yelp/C/keyring.page:10 docs/yelp/C/keyring.page:14
 #: docs/yelp/C/newDownload.page:10 docs/yelp/C/newDownload.page:14
 msgid "Nicholas Logozzo"
@@ -45,8 +47,9 @@ msgstr "aria2"
 msgid ""
 "This page explains all options for configuring aria2 in Preferences in "
 "<app>Parabolic</app>."
-msgstr "このページでは <app>Parabolic</app> で aria2 "
-"を設定するためのすべてオプションについて説明します。"
+msgstr ""
+"このページでは <app>Parabolic</app> で aria2 を設定するためのすべてオプション"
+"について説明します。"
 
 #. (itstool) path: item/title
 #: docs/yelp/C/aria.page:25
@@ -56,21 +59,23 @@ msgstr "aria2 を使用"
 #. (itstool) path: item/p
 #: docs/yelp/C/aria.page:26
 msgid "If enabled, Parabolic will use aria2c to download media."
-msgstr "有効であれば、Parabolic は aria2 をメディアのダウンロードに使用します。"
+msgstr ""
+"有効であれば、Parabolic は aria2 をメディアのダウンロードに使用します。"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/aria.page:27
 msgid ""
 "Although using aria2c can improve download speed, download progress will not "
 "be displayed in the UI."
-msgstr "aria2c を使用するとダウンロード速度は向上しますが、UI "
-"にダウンロード進捗は表示されません。"
+msgstr ""
+"aria2c を使用するとダウンロード速度は向上しますが、UI にダウンロード進捗は表"
+"示されません。"
 
 #. (itstool) path: note/p
 #: docs/yelp/C/aria.page:29 docs/yelp/C/converter.page:35
 #: docs/yelp/C/converter.page:50 docs/yelp/C/converter.page:59
-#: docs/yelp/C/downloader.page:45 docs/yelp/C/downloads.page:49
-#: docs/yelp/C/downloads.page:56 docs/yelp/C/downloads.page:63
+#: docs/yelp/C/downloader.page:38 docs/yelp/C/downloads.page:49
+#: docs/yelp/C/interface.page:42 docs/yelp/C/interface.page:56
 msgid "Default: Off"
 msgstr "デフォルト: オフ"
 
@@ -165,8 +170,9 @@ msgstr ""
 
 #. (itstool) path: note/p
 #: docs/yelp/C/converter.page:28 docs/yelp/C/converter.page:42
-#: docs/yelp/C/downloader.page:28 docs/yelp/C/downloads.page:33
-#: docs/yelp/C/downloads.page:84
+#: docs/yelp/C/downloader.page:28 docs/yelp/C/downloads.page:41
+#: docs/yelp/C/downloads.page:56 docs/yelp/C/downloads.page:63
+#: docs/yelp/C/interface.page:49
 msgid "Default: On"
 msgstr "デフォルト: オン"
 
@@ -214,8 +220,9 @@ msgstr ""
 #. (itstool) path: item/p
 #: docs/yelp/C/converter.page:48 docs/yelp/C/converter.page:57
 msgid "This option is only configurable if <code>Embed Metadata</code> is on."
-msgstr "このオプションは <code>メタデータを埋め込む</code> "
-"が有効な場合のみ設定可能です。"
+msgstr ""
+"このオプションは <code>メタデータを埋め込む</code> が有効な場合のみ設定可能で"
+"す。"
 
 #. (itstool) path: item/title
 #: docs/yelp/C/converter.page:54
@@ -252,8 +259,9 @@ msgstr "ポストプロセッサのスレッド"
 msgid ""
 "The number of threads to allow the postprocessor (<code>FFmpeg</code>) to "
 "use for each download."
-msgstr "各ダウンロードで使用するポストプロセッサ (<code>FFmpeg</code>) "
-"に許可するスレッドの数。"
+msgstr ""
+"各ダウンロードで使用するポストプロセッサ (<code>FFmpeg</code>) に許可するス"
+"レッドの数。"
 
 #. (itstool) path: note/p
 #: docs/yelp/C/converter.page:66
@@ -290,16 +298,41 @@ msgstr "詳細なログ (Verbose)"
 msgid ""
 "If enabled, more verbose logs will be provided by <code>yt-dlp</code> for "
 "each download."
-msgstr "有効であれば、各ダウンロードで、より詳細なログが <code>yt-dlp</code> "
-"から出力されます。"
+msgstr ""
+"有効であれば、各ダウンロードで、より詳細なログが <code>yt-dlp</code> から出力"
+"されます。"
 
 #. (itstool) path: item/title
-#: docs/yelp/C/downloader.page:32 docs/yelp/C/newDownload.page:81
+#: docs/yelp/C/downloader.page:32
+msgid "Use SponsorBlock for YouTube"
+msgstr "YouTube のダウンロードで SponsorBlock を使用"
+
+#. (itstool) path: item/p
+#: docs/yelp/C/downloader.page:33
+msgid ""
+"If enabled, Parabolic will apply the SponsorBlock extension to YouTube "
+"downloads."
+msgstr ""
+"有効であれば、Parabolic は SponsorBlock の拡張機能を YouTube のダウンロードで"
+"有効にします。"
+
+#. (itstool) path: note/p
+#: docs/yelp/C/downloader.page:35
+msgid ""
+"SponsorBlock only works on YouTube videos. However, leaving this setting on "
+"will not affect downloads from other sites (i.e. not cause them to fail)."
+msgstr ""
+"SponsorBlock は、YouTube の動画のみに動作します。しかし、この設定をオンにして"
+"も、他のサイトからのダウンロードには影響しません（つまり、このオプションが原"
+"因で失敗することはありません）。"
+
+#. (itstool) path: item/title
+#: docs/yelp/C/downloader.page:42
 msgid "Speed Limit"
 msgstr "スピード制限"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:33
+#: docs/yelp/C/downloader.page:43
 msgid ""
 "A limit, in Ki/s, that is applied to downloads only if they have the "
 "advanced option <code>Speed Limit</code> enabled. Must be an integer value "
@@ -309,33 +342,9 @@ msgstr ""
 "ロードにのみ適用されます。数値は512から10240の整数である必要があります。"
 
 #. (itstool) path: note/p
-#: docs/yelp/C/downloader.page:35
+#: docs/yelp/C/downloader.page:45
 msgid "Default: 1024"
 msgstr "デフォルト: 1024"
-
-#. (itstool) path: item/title
-#: docs/yelp/C/downloader.page:39
-msgid "Use SponsorBlock for YouTube"
-msgstr "YouTube のダウンロードで SponsorBlock を使用"
-
-#. (itstool) path: item/p
-#: docs/yelp/C/downloader.page:40
-msgid ""
-"If enabled, Parabolic will apply the SponsorBlock extension to YouTube "
-"downloads."
-msgstr ""
-"有効であれば、Parabolic は SponsorBlock の拡張機能を YouTube のダウンロードで"
-"有効にします。"
-
-#. (itstool) path: note/p
-#: docs/yelp/C/downloader.page:42
-msgid ""
-"SponsorBlock only works on YouTube videos. However, leaving this setting on "
-"will not affect downloads from other sites (i.e. not cause them to fail)."
-msgstr ""
-"SponsorBlock は、YouTube の動画のみに動作します。しかし、この設定をオンにして"
-"も、他のサイトからのダウンロードには影響しません（つまり、このオプションが原"
-"因で失敗することはありません）。"
 
 #. (itstool) path: item/title
 #: docs/yelp/C/downloader.page:49
@@ -368,14 +377,16 @@ msgstr "Cookie を読み取り yt-dlp のダウンロードエンジンに渡す
 msgid ""
 "This may be useful when downloading media that requires a login, for "
 "example: private YouTube videos."
-msgstr "YouTube "
-"の非公開の動画のような、ログインが必要なメディアのダウンロードに役立ちます。"
+msgstr ""
+"YouTube の非公開の動画のような、ログインが必要なメディアのダウンロードに役立"
+"ちます。"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/downloader.page:59
 msgid "This option is on available on non sandboxed platforms."
-msgstr "このオプションは、サンドボックス化されていないプラットフォームで利用可能です"
-"。"
+msgstr ""
+"このオプションは、サンドボックス化されていないプラットフォームで利用可能で"
+"す。"
 
 #. (itstool) path: note/p
 #: docs/yelp/C/downloader.page:61
@@ -443,21 +454,50 @@ msgstr "ダウンロード"
 msgid ""
 "This page explains all options for configuring Downloads in Preferences in "
 "<app>Parabolic</app>."
-msgstr "このページでは <app>Parabolic</app> "
-"でダウンロードを設定するためのすべてオプションについて説明します。"
+msgstr ""
+"このページでは <app>Parabolic</app> でダウンロードを設定するためのすべてオプ"
+"ションについて説明します。"
 
 #. (itstool) path: item/title
 #: docs/yelp/C/downloads.page:26
+msgid "Maximum Number of Active Downloads"
+msgstr "アクティブダウンロードの最大数"
+
+#. (itstool) path: item/p
+#: docs/yelp/C/downloads.page:27
+msgid ""
+"The number of active downloads allowed to run at a time. Must be an integer "
+"value between 1 and 10."
+msgstr ""
+"平行して進行できるアクティブダウンロード数。数値は1から10の整数である必要があ"
+"ります。"
+
+#. (itstool) path: item/p
+#: docs/yelp/C/downloads.page:28
+msgid ""
+"If the max number of active downloads is reached, Parabolic will place new "
+"downloads in a queue until more downloads are able to be run."
+msgstr ""
+"アクティブダウンロードが最大数に達すると、Parabolic は新しいダウンロードをダ"
+"ウンロードが可能になるまでキューに入れます。"
+
+#. (itstool) path: note/p
+#: docs/yelp/C/downloads.page:30
+msgid "Default: 5"
+msgstr "デフォルト: 5"
+
+#. (itstool) path: item/title
+#: docs/yelp/C/downloads.page:34
 msgid "Overwrite Existing Files"
 msgstr "存在するファイルを上書きする"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/downloads.page:27
+#: docs/yelp/C/downloads.page:35
 msgid "If enabled, Parabolic will overwrite existing files."
 msgstr "有効であれば、Parabolic は存在するファイルを上書きします。"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/downloads.page:28
+#: docs/yelp/C/downloads.page:36
 msgid ""
 "For example, if a file named <code>movie.mp4</code> exists in the download "
 "folder, and a new download is created named <code>movie</code>, <code>movie."
@@ -468,40 +508,13 @@ msgstr ""
 "<code>movie.mp4</code>は新しいダウンロードの内容で上書きされます。"
 
 #. (itstool) path: note/p
-#: docs/yelp/C/downloads.page:30
+#: docs/yelp/C/downloads.page:38
 msgid ""
 "Parabolic will detect downloads that should be resumed and avoid this "
 "setting when recovering or retrying failed downloads"
-msgstr "Parabolic は、再開する必要のあるダウンロードを検知し、失敗したダウンロードの"
+msgstr ""
+"Parabolic は、再開する必要のあるダウンロードを検知し、失敗したダウンロードの"
 "再開時または再試行時にこの設定を無視します"
-
-#. (itstool) path: item/title
-#: docs/yelp/C/downloads.page:37
-msgid "Maximum Number of Active Downloads"
-msgstr "アクティブダウンロードの最大数"
-
-#. (itstool) path: item/p
-#: docs/yelp/C/downloads.page:38
-msgid ""
-"The number of active downloads allowed to run at a time. Must be an integer "
-"value between 1 and 10."
-msgstr ""
-"平行して進行できるアクティブダウンロード数。数値は1から10の整数である必要があ"
-"ります。"
-
-#. (itstool) path: item/p
-#: docs/yelp/C/downloads.page:39
-msgid ""
-"If the max number of active downloads is reached, Parabolic will place new "
-"downloads in a queue until more downloads are able to be run."
-msgstr ""
-"アクティブダウンロードが最大数に達すると、Parabolic は新しいダウンロードをダ"
-"ウンロードが可能になるまでキューに入れます。"
-
-#. (itstool) path: note/p
-#: docs/yelp/C/downloads.page:41
-msgid "Default: 5"
-msgstr "デフォルト: 5"
 
 #. (itstool) path: item/title
 #: docs/yelp/C/downloads.page:45
@@ -520,17 +533,16 @@ msgstr "このオプションは Linux でのみ利用できます。"
 
 #. (itstool) path: item/title
 #: docs/yelp/C/downloads.page:53
-msgid "Download Immediately After Validation"
+#, fuzzy
+msgid "Included Media Id in Title After Validation"
 msgstr "検証終了後に直ちにダウンロードを行う"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/downloads.page:54
 msgid ""
-"Bypasses the download options selection in the Add Download dialog and "
-"immediately downloads a validated media using previously selected options."
+"Whether or not to included the media's id in the title (file name) when "
+"validated."
 msgstr ""
-"「ダウンロードを追加」のダイアログでダウンロードオプションの選択を省略し、以"
-"前に選択したオプションを使って検証したメディアを直ちにダウンロードします。"
 
 #. (itstool) path: item/title
 #: docs/yelp/C/downloads.page:60
@@ -554,8 +566,9 @@ msgstr "優先するビデオコーデック"
 msgid ""
 "The video codec Parabolic should prefer when selecting media formats to "
 "download."
-msgstr "ダウンロードするメディアのフォーマットの選択時に、Parabolic "
-"が使用するビデオコーデック。"
+msgstr ""
+"ダウンロードするメディアのフォーマットの選択時に、Parabolic が使用するビデオ"
+"コーデック。"
 
 #. (itstool) path: note/p
 #: docs/yelp/C/downloads.page:70 docs/yelp/C/downloads.page:77
@@ -573,21 +586,6 @@ msgid ""
 "The file format Parabolic should ensure all downloaded subtitles are "
 "downloaded as."
 msgstr "Parabolic がダウンロードするすべての字幕のファイル形式。"
-
-#. (itstool) path: item/title
-#: docs/yelp/C/downloads.page:81
-msgid "Recover Crashed Downloads"
-msgstr "クラッシュしたダウンロードを再開"
-
-#. (itstool) path: item/p
-#: docs/yelp/C/downloads.page:82
-msgid ""
-"If enabled, Parabolic will track the running and queued downloads and "
-"restart them if necessary if the application crashes and is restarted."
-msgstr ""
-"有効であれば、Parabolic は進行中または停止中のダウンロードを追跡し、アプリケ"
-"ーションがクラッシュし再起動された場合は、必要に応じてダウンロードを再開しま"
-"す。"
 
 #. (itstool) path: info/title
 #: docs/yelp/C/index.page:7
@@ -624,10 +622,10 @@ msgid ""
 "href=\"https://bit.ly/3GrfEid\">join our Matrix channel</link>."
 msgstr ""
 "サポートを求める場合は、GitHub の<link href=\"https://github.com/"
-"NickvisionApps/Parabolic/issues\">イシュー</link>または<link href=\"https"
-"://github.com/NickvisionApps/Parabolic/discussions\""
-">ディスカッション</link>を利用するか、<link href=\"https://bit.ly/3GrfEid\""
-">Matrix チャンネルへご参加</link>ください。"
+"NickvisionApps/Parabolic/issues\">イシュー</link>または<link href=\"https://"
+"github.com/NickvisionApps/Parabolic/discussions\">ディスカッション</link>を利"
+"用するか、<link href=\"https://bit.ly/3GrfEid\">Matrix チャンネルへご参加</"
+"link>ください。"
 
 #. (itstool) path: page/p
 #: docs/yelp/C/index.page:23
@@ -639,6 +637,118 @@ msgstr ""
 "Nickvision Parabolic の製作者は、地域の著作権法 / DMCA （デジタルミレニアム著"
 "作権法）に反する可能性のある、このプログラムの誤用について責任を負いません。"
 "ユーザーによるこのアプリケーションの使用は自己責任です。"
+
+#. (itstool) path: info/title
+#: docs/yelp/C/interface.page:8
+msgctxt "link"
+msgid "User Interface 🖥️"
+msgstr ""
+
+#. (itstool) path: page/title
+#: docs/yelp/C/interface.page:20
+msgid "User Interface"
+msgstr ""
+
+#. (itstool) path: page/p
+#: docs/yelp/C/interface.page:21
+#, fuzzy
+msgid ""
+"This page explains all options for configuring the User Interface in "
+"Preferences in <app>Parabolic</app>."
+msgstr ""
+"このページでは <app>Parabolic</app> でコンバーターを設定するためのすべてオプ"
+"ションについて説明します。"
+
+#. (itstool) path: item/title
+#: docs/yelp/C/interface.page:25
+msgid "Theme"
+msgstr ""
+
+#. (itstool) path: item/p
+#: docs/yelp/C/interface.page:26
+msgid "The theme for the user interface."
+msgstr ""
+
+#. (itstool) path: note/p
+#: docs/yelp/C/interface.page:28
+#, fuzzy
+msgid "Default: System"
+msgstr "デフォルト: すべて"
+
+#. (itstool) path: item/title
+#: docs/yelp/C/interface.page:32
+msgid "Completed Notification Trigger"
+msgstr ""
+
+#. (itstool) path: item/p
+#: docs/yelp/C/interface.page:33
+msgid ""
+"The trigger used for showing completed download notifications when the "
+"application is not active."
+msgstr ""
+
+#. (itstool) path: note/p
+#: docs/yelp/C/interface.page:35
+msgid "Default: For each download"
+msgstr ""
+
+#. (itstool) path: item/title
+#: docs/yelp/C/interface.page:39
+msgid "Prevent Suspend"
+msgstr ""
+
+#. (itstool) path: item/p
+#: docs/yelp/C/interface.page:40
+msgid ""
+"If enabled, the system while be prevented from suspending while Parabolic is "
+"running."
+msgstr ""
+
+#. (itstool) path: item/title
+#: docs/yelp/C/interface.page:46
+msgid "Recover Crashed Downloads"
+msgstr "クラッシュしたダウンロードを再開"
+
+#. (itstool) path: item/p
+#: docs/yelp/C/interface.page:47
+msgid ""
+"If enabled, Parabolic will track the running and queued downloads and "
+"restart them if necessary if the application crashes and is restarted."
+msgstr ""
+"有効であれば、Parabolic は進行中または停止中のダウンロードを追跡し、アプリ"
+"ケーションがクラッシュし再起動された場合は、必要に応じてダウンロードを再開し"
+"ます。"
+
+#. (itstool) path: item/title
+#: docs/yelp/C/interface.page:53
+msgid "Download Immediately After Validation"
+msgstr "検証終了後に直ちにダウンロードを行う"
+
+#. (itstool) path: item/p
+#: docs/yelp/C/interface.page:54
+msgid ""
+"Bypasses the download options selection in the Add Download dialog and "
+"immediately downloads a validated media using previously selected options."
+msgstr ""
+"「ダウンロードを追加」のダイアログでダウンロードオプションの選択を省略し、以"
+"前に選択したオプションを使って検証したメディアを直ちにダウンロードします。"
+
+#. (itstool) path: item/title
+#: docs/yelp/C/interface.page:60
+#, fuzzy
+msgid "Download History Length"
+msgstr "字幕をダウンロードする"
+
+#. (itstool) path: item/p
+#: docs/yelp/C/interface.page:61
+msgid "The amount of time to keep download history saved."
+msgstr ""
+
+#. (itstool) path: note/p
+#: docs/yelp/C/interface.page:63
+#, fuzzy
+msgid "Default: One Week"
+msgstr "デフォルト: オン"
 
 #. (itstool) path: info/title
 #: docs/yelp/C/keyring.page:8
@@ -687,8 +797,8 @@ msgid ""
 "Keyring database file."
 msgstr ""
 "このライブラリでは、システムの資格情報管理機能( Linux は DBus secret "
-"service、Windows では Windows Credential Manager "
-"等)を使ってキーリングのデータベースファイルを保護しています。"
+"service、Windows では Windows Credential Manager 等)を使ってキーリングのデー"
+"タベースファイルを保護しています。"
 
 #. (itstool) path: section/title
 #: docs/yelp/C/keyring.page:29
@@ -715,8 +825,9 @@ msgstr "<code>URL</code>(オプション): 資格情報の URL"
 msgid ""
 "<code>Username</code> (optional if password is not empty): The username of "
 "the credential"
-msgstr "<code>ユーザー名</code>(パスワードが空でない場合はオプション): "
-"資格情報のユーザー名"
+msgstr ""
+"<code>ユーザー名</code>(パスワードが空でない場合はオプション): 資格情報のユー"
+"ザー名"
 
 #. (itstool) path: section/p
 #: docs/yelp/C/keyring.page:34
@@ -780,8 +891,9 @@ msgstr "認証"
 msgid ""
 "If enabled, the user will be asked to provide a username and/or password to "
 "pass to yt-dlp when downloading."
-msgstr "有効であれば、ダウンロード時に yt-dlp "
-"に渡す、ユーザー名と（または）パスワードが要求されます。"
+msgstr ""
+"有効であれば、ダウンロード時に yt-dlp に渡す、ユーザー名と（または）パスワー"
+"ドが要求されます。"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/newDownload.page:34
@@ -836,9 +948,9 @@ msgid ""
 "file types will cause Parabolic to download the media in the original file "
 "type of the media without performing any conversions."
 msgstr ""
-"<code>動画 (全般)</code> または <code>音声 (全般)</code> "
-"のファイル形式を選択すると、Parabolic はメディアのオリジナルのファイル形式で"
-"、何のファイル変換も行わずにメディアをダウンロードします。"
+"<code>動画 (全般)</code> または <code>音声 (全般)</code> のファイル形式を選択"
+"すると、Parabolic はメディアのオリジナルのファイル形式で、何のファイル変換も"
+"行わずにメディアをダウンロードします。"
 
 #. (itstool) path: item/title
 #: docs/yelp/C/newDownload.page:51
@@ -858,8 +970,9 @@ msgstr ""
 msgid ""
 "If the file type is an audio type, the listed qualities will be the audio "
 "bitrates of the media available."
-msgstr "ファイルの種類が音声の場合、表示される品質はメディアが利用できる音声ビットレ"
-"ートです。"
+msgstr ""
+"ファイルの種類が音声の場合、表示される品質はメディアが利用できる音声ビット"
+"レートです。"
 
 #. (itstool) path: note/p
 #: docs/yelp/C/newDownload.page:55
@@ -890,6 +1003,7 @@ msgstr ""
 
 #. (itstool) path: note/p
 #: docs/yelp/C/newDownload.page:63 docs/yelp/C/newDownload.page:77
+#: docs/yelp/C/newDownload.page:84 docs/yelp/C/newDownload.page:91
 msgid ""
 "The previously used state will be remembered and pre-selected for the next "
 "download."
@@ -908,15 +1022,16 @@ msgid ""
 "download by the user. Further subtitle settings can be configured in <link "
 "xref=\"downloads\">preferences</link>."
 msgstr ""
-"ユーザーがダウンロードのために選択できる、メディアが利用できる字幕の一覧。"
-"字幕の細かな設定は <link xref=\"downloads\">設定</link> にて変更できます。"
+"ユーザーがダウンロードのために選択できる、メディアが利用できる字幕の一覧。字"
+"幕の細かな設定は <link xref=\"downloads\">設定</link> にて変更できます。"
 
 #. (itstool) path: note/p
 #: docs/yelp/C/newDownload.page:70
 msgid ""
 "The previously selected subtitles will be remembered and pre-selected for "
 "the next download."
-msgstr "最後に使用した字幕は、今後のダウンロードのために記憶・事前選択されます。"
+msgstr ""
+"最後に使用した字幕は、今後のダウンロードのために記憶・事前選択されます。"
 
 #. (itstool) path: item/title
 #: docs/yelp/C/newDownload.page:74
@@ -932,6 +1047,12 @@ msgstr ""
 "有効であれば、Parabolic はダウンロードする動画を、動画のチャプターごとに複数"
 "のファイルに分割します。"
 
+#. (itstool) path: item/title
+#: docs/yelp/C/newDownload.page:81
+#, fuzzy
+msgid "Limit Download Speed"
+msgstr "ダウンローダー"
+
 #. (itstool) path: item/p
 #: docs/yelp/C/newDownload.page:82
 msgid ""
@@ -942,12 +1063,27 @@ msgstr ""
 "た速度でダウンロードの速度を制限します。"
 
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:85
+#: docs/yelp/C/newDownload.page:88
+msgid "Export Description"
+msgstr ""
+
+#. (itstool) path: item/p
+#: docs/yelp/C/newDownload.page:89
+#, fuzzy
+msgid ""
+"If enabled, Parabolic will export the media's description to a <code>."
+"description</code> file alongside the downloaded file."
+msgstr ""
+"有効であれば、Parabolic は自動的に<code>サムネイルを整形</code>する詳細オプ"
+"ションをオーディオダウンロード時に有効にします。"
+
+#. (itstool) path: item/title
+#: docs/yelp/C/newDownload.page:95
 msgid "Time Frame"
 msgstr "タイムフレーム"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:86
+#: docs/yelp/C/newDownload.page:96
 msgid ""
 "The user can enter a start time frame and an end time frame to download a "
 "specific section of the media."
@@ -956,22 +1092,22 @@ msgstr ""
 "の特定部分をダウンロードできるようになります。"
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:88
+#: docs/yelp/C/newDownload.page:98
 msgid "Default: The whole media length"
 msgstr "デフォルト: メディア全体の(時間の)長さ"
 
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:92
+#: docs/yelp/C/newDownload.page:102
 msgid "Save Folder"
 msgstr "保存フォルダー"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:93
+#: docs/yelp/C/newDownload.page:103
 msgid "The folder at which to save the download to."
 msgstr "ダウンロードを保存フォルダー。"
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:95
+#: docs/yelp/C/newDownload.page:105
 msgid ""
 "The previously used folder will be remembered and pre-selected for the next "
 "download."
@@ -980,17 +1116,17 @@ msgstr ""
 "す。"
 
 #. (itstool) path: item/title
-#: docs/yelp/C/newDownload.page:99
+#: docs/yelp/C/newDownload.page:109
 msgid "File Name"
 msgstr "ファイル名"
 
 #. (itstool) path: item/p
-#: docs/yelp/C/newDownload.page:100
+#: docs/yelp/C/newDownload.page:110
 msgid "The file name to use when saving the download."
 msgstr "ダウンロードを保存する際に使用するファイル名。"
 
 #. (itstool) path: note/p
-#: docs/yelp/C/newDownload.page:102
+#: docs/yelp/C/newDownload.page:112
 msgid "Default: The title of the media"
 msgstr "デフォルト: メディアのタイトル"
 
@@ -1007,9 +1143,6 @@ msgstr "デフォルト: メディアのタイトル"
 #~ msgstr ""
 #~ "ファイルの種類が音声の場合、表示される品質は単純に <code>Best</code> (最"
 #~ "高)、<code>Good</code> (普通)、<code>Worst</code> (最低)になります。"
-
-#~ msgid "Download Subtitle"
-#~ msgstr "字幕をダウンロードする"
 
 #~ msgid ""
 #~ "Enabling this option will disable the use of aria2 as the downloader for "
@@ -1068,13 +1201,6 @@ msgstr "デフォルト: メディアのタイトル"
 
 #~ msgid "Only available if Embed Metadata is enabled."
 #~ msgstr "メタデータを埋め込む設定が有効な時のみ利用可能です。"
-
-#~ msgid ""
-#~ "If enabled, Parabolic will automatically turn on the advanced option "
-#~ "<code>Crop Thumbnail</code> for audio downloads."
-#~ msgstr ""
-#~ "有効であれば、Parabolic は自動的に<code>サムネイルを整形</code>する詳細オ"
-#~ "プションをオーディオダウンロード時に有効にします。"
 
 #~ msgid ""
 #~ "A comma-separated list of two-letter, two-letter with region, and three-"
