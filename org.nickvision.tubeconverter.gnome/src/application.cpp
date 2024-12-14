@@ -22,18 +22,18 @@ namespace Nickvision::TubeConverter::GNOME
             throw std::runtime_error(resourceLoadError->message);
         }
         g_resources_register(resource);
-        g_signal_connect(m_adw, "activate", G_CALLBACK(+[](GtkApplication* app, gpointer data){ reinterpret_cast<Application*>(data)->onActivate(app); }), this);
+        g_signal_connect(m_adw, "startup", G_CALLBACK(+[](GtkApplication* app, gpointer data){ reinterpret_cast<Application*>(data)->onStartup(app); }), this);
         g_signal_connect(m_adw, "open", G_CALLBACK(+[](GtkApplication* app, void* files, int n, const char* hint, gpointer data){ reinterpret_cast<Application*>(data)->onOpen(app, files, n, hint); }), this);
     }
 
     int Application::run()
     {
-        m_controller->log(Logging::LogLevel::Info, "Started GTK application.");
         return g_application_run(G_APPLICATION(m_adw), 0, nullptr);
     }
 
-    void Application::onActivate(GtkApplication* app)
+    void Application::onStartup(GtkApplication* app)
     {
+        m_controller->log(Logging::LogLevel::Info, "Started GTK application.");
         switch (m_controller->getTheme())
         {
         case Theme::Light:
@@ -55,7 +55,6 @@ namespace Nickvision::TubeConverter::GNOME
 
     void Application::onOpen(GtkApplication* app, void* files, int n, const char* hint)
     {
-        g_application_activate(G_APPLICATION(app));
         if(n > 0)
         {
             GFile** files{ reinterpret_cast<GFile**>(files) };
