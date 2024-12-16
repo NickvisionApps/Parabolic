@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: Parabolic 2024.10.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-12-13 13:51-0500\n"
-"PO-Revision-Date: 2024-11-14 01:00+0000\n"
-"Last-Translator: Jozef Gaal <preklady@mayday.sk>\n"
-"Language-Team: Slovak <https://hosted.weblate.org/projects/nickvision-tube-"
-"converter/app/sk/>\n"
+"PO-Revision-Date: 2024-12-16 11:01+0000\n"
+"Last-Translator: Peter Vančo <petervanco347@gmail.com>\n"
+"Language-Team: Slovak <https://hosted.weblate.org/projects/"
+"nickvision-tube-converter/app/sk/>\n"
 "Language: sk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=((n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2);\n"
-"X-Generator: Weblate 5.9-dev\n"
+"X-Generator: Weblate 5.9-rc\n"
 
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:91
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:107
@@ -156,7 +156,7 @@ msgstr "{:.2f} B/s"
 
 #: libparabolic/src/models/download.cpp:99
 msgid "ERROR: The file already exists and overwriting is disabled."
-msgstr "ERROR: Súbor už existuje a prepisovanie je zakázané."
+msgstr "CHYBA: Súbor už existuje a prepisovanie je zakázané."
 
 #: libparabolic/src/models/download.cpp:114
 msgid "WARNING: Using ffmpeg to download. Progress will not be shown."
@@ -336,9 +336,8 @@ msgstr "Obmedziť rýchlosť sťahovania"
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:291
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:47
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:68
-#, fuzzy
 msgid "Export Description"
-msgstr "Popis zvuku"
+msgstr "Popis exportu"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:240
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:48
@@ -717,9 +716,8 @@ msgstr "Obmedziť znaky v názvy súborov iba tie podporované systémom Windows
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:117
 #: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:57
-#, fuzzy
 msgid "Include Media Id in Title After Validation"
-msgstr "Na stiahnutie Ihneď po potvrdení"
+msgstr "Po overení pridať k názvu ID média"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:126
 #: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:58
@@ -908,7 +906,7 @@ msgstr ""
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:302
 #: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:101
 msgid "Postprocessing Threads"
-msgstr "Spracovanie vlákien"
+msgstr "Spracovávanie vlákien"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:312
 #: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:28
@@ -1262,7 +1260,7 @@ msgstr "Tu zadajte adresu"
 #: org.nickvision.tubeconverter.qt/src/views/keyringpage.cpp:42
 #: org.nickvision.tubeconverter.qt/src/views/keyringpage.cpp:93
 msgid "Save"
-msgstr ""
+msgstr "Uložiť"
 
 #: org.nickvision.tubeconverter.qt/src/views/keyringpage.cpp:62
 msgid "Warning"
@@ -1277,14 +1275,12 @@ msgstr ""
 "aplikácie stratia."
 
 #: org.nickvision.tubeconverter.qt/src/views/keyringpage.cpp:70
-#, fuzzy
 msgid "New Credential"
-msgstr "Poverenie"
+msgstr "Nové poverenie"
 
 #: org.nickvision.tubeconverter.qt/src/views/keyringpage.cpp:88
-#, fuzzy
 msgid "Edit Credential"
-msgstr "Pridať poverenie"
+msgstr "Upraviť poverenie"
 
 #: org.nickvision.tubeconverter.qt/src/views/keyringpage.cpp:130
 msgid "The credential name cannot be empty."
@@ -1324,7 +1320,7 @@ msgstr "Diskusie"
 
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:65
 msgid "About"
-msgstr ""
+msgstr "O aplikácii"
 
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:74
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:76
@@ -1332,9 +1328,8 @@ msgid "Settings"
 msgstr "Nastavenia"
 
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:102
-#, fuzzy
 msgid "Retry Failed"
-msgstr "Opakovať neúspešné stiahnutia"
+msgstr "Opakovanie zlyhalo"
 
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:109
 msgid "Log"
@@ -1345,17 +1340,14 @@ msgid "Update"
 msgstr "Aktualizovať"
 
 #: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:30
-#, fuzzy
 msgid "Light"
 msgstr "Svetlá"
 
 #: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:31
-#, fuzzy
 msgid "Dark"
 msgstr "Tmavá"
 
 #: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:32
-#, fuzzy
 msgid "System"
 msgstr "Systémová"
 
