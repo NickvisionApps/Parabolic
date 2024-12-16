@@ -38,10 +38,10 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         m_keyring{ m_appInfo.getId() },
         m_downloadManager{ m_dataFileManager.get<Configuration>("config").getDownloaderOptions(), m_dataFileManager.get<DownloadHistory>("history"), m_dataFileManager.get<DownloadRecoveryQueue>("recovery"), m_logger }
     {
-        m_appInfo.setVersion({ "2024.12.0" });
+        m_appInfo.setVersion({ "2024.12.1-next" });
         m_appInfo.setShortName(_("Parabolic"));
         m_appInfo.setDescription(_("Download web video and audio"));
-        m_appInfo.setChangelog("- Added the ability to toggle the inclusion of a media's id in its title when validated in the app's settings\n- Added the option to export a download's media description to a separate file\n- Restored the ability for Parabolic to accept a URL to validate via command line arguments\n- Fixed an issue where auto-generated subtitles were not being embed in a media file\n- Fixed an issue where downloading media at certain time frames were not respected\n- Fixed an issue where video medias' thumbnails were also cropped when crop audio thumbnails was enabled\n- Fixed an issue where the previously used download quality was not remembered\n- Redesigned the Qt version's user interface with a more modern style\n- Updated yt-dlp to 2024.12.13");
+        m_appInfo.setChangelog("- Fixed an issue where subtitles were not downloaded properly");
         m_appInfo.setSourceRepo("https://github.com/NickvisionApps/Parabolic");
         m_appInfo.setIssueTracker("https://github.com/NickvisionApps/Parabolic/issues/new");
         m_appInfo.setSupportUrl("https://github.com/NickvisionApps/Parabolic/discussions");
