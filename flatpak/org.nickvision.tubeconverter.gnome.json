@@ -11,8 +11,9 @@
         "--share=ipc",
         "--share=network",
         "--talk-name=com.canonical.Unity",
-        "--talk-name=org.freedesktop.secrets",
+        "--talk-name=org.freedesktop.Notifications",
         "--talk-name=org.freedesktop.ScreenSaver",
+        "--talk-name=org.freedesktop.secrets",
         "--filesystem=xdg-download"
     ],
     "cleanup":[
@@ -63,7 +64,7 @@
                 {
                     "type": "git",
                     "url": "https://github.com/nickvisionapps/libnick",
-                    "tag": "2024.11.1"
+                    "tag": "2024.12.0"
                 }
             ]
         },
