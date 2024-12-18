@@ -48,25 +48,25 @@
     <item>
 		<title>Orezať obrázkové náhľady zvuku</title>
 		<p>Ak je táto funkcia zapnutá, aplikácia Parabolic oreže náhľady obrázkov zvukových súborov tak, aby mali štvorcové rozlíšenie.</p>
-        <p>Táto možnosť je len konfigurovateľný, ak <code>Embed Metadata</code> je zapnutá.</p>
+        <p>Táto možnosť je nastaviteľná iba pri zapnutom nastavení <code>Vložiť metaúdaje</code>.</p>
 		<note style="advanced">
 			<p>Predvolené: Vypnuté</p>
 		</note>
     </item>
     <item>
 		<title>Odstrániť zdrojové údaje</title>
-		<p>Ak je táto funkcia povolená, Parabolic vymaže polia metadát obsahujúce adresu URL a ďalšie identifikačné informácie o zdroji média.</p>
-        <p>Polia, ktoré sú vyčistené:: <code>komentár</code>, <code>popis</code>, <code>súhrn</code>, <code>purl</code> a <code>handler_name</code> v každom dátovom toku.</p>
-        <p>Táto možnosť je len konfigurovateľný, ak <code>Embed Metadata</code> je zapnutá.</p>
+		<p>Ak je táto funkcia zapnutá, aplikácia Parabolic vymaže polia metadát obsahujúce adresu URL a ďalšie identifikačné informácie o zdroji média.</p>
+        <p>Polia, ktoré sú vyčistené: <code>komentár</code>, <code>popis</code>, <code>súhrn</code>, <code>purl</code> a <code>handler_name</code> v každom dátovom toku.</p>
+        <p>Táto možnosť je nastaviteľná iba pri zapnutom nastavení <code>Vložiť metaúdaje</code>.</p>
 		<note style="advanced">
 			<p>Predvolené: Vypnuté</p>
 		</note>
     </item>
     <item>
-        <title>Spracovanie vlákien</title>
-        <p>Počet vlákien, ktoré umožňujú postprocesor (<code>FFmpeg</code>) používať pre každý download.</p>
+        <title>Spracovávanie vlákien</title>
+        <p>Počet vlákien, ktoré má postprocesor (<code>FFmpeg</code>) použiť pre každé sťahovanie.</p>
         <note style="advanced">
-            <p>Default: Maximálny počet vlákien k dispozícii v systéme</p>
+            <p>Predvolené: Maximálny počet vlákien k dispozícii v systéme</p>
         </note>
     </item>
 </terms>

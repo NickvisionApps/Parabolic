@@ -79,6 +79,11 @@ namespace Nickvision::TubeConverter::Shared::Controllers
          */
         void setShowDisclaimerOnStartup(bool showDisclaimerOnStartup);
         /**
+         * @brief Sets whether or not the MainWindow is active.
+         * @param isWindowActive True if the MainWindow is active, else false
+         */
+        void setIsWindowActive(bool isWindowActive);
+        /**
          * @brief Gets the debugging information for the application.
          * @param extraInformation Extra, ui-specific, information to include in the debug info statement
          * @return The application's debug information
@@ -158,6 +163,11 @@ namespace Nickvision::TubeConverter::Shared::Controllers
          * @brief Handles when the configuration is saved.
          */
         void onConfigurationSaved();
+        /**
+         * @brief Handles when a download is completed.
+         * @param args DownloadCompletedEventArgs
+         */
+        void onDownloadCompleted(const Events::DownloadCompletedEventArgs& args);
         bool m_started;
         std::vector<std::string> m_args;
         Nickvision::App::AppInfo m_appInfo;
@@ -168,6 +178,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         Nickvision::System::SuspendInhibitor m_suspendInhibitor;
         Nickvision::Keyring::Keyring m_keyring;
         Models::DownloadManager m_downloadManager;
+        bool m_isWindowActive;
         Nickvision::Events::Event<Nickvision::Notifications::NotificationSentEventArgs> m_notificationSent;
         Nickvision::Events::Event<Nickvision::Notifications::ShellNotificationSentEventArgs> m_shellNotificationSent;
     };

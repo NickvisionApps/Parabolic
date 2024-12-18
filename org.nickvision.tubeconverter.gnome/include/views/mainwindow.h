@@ -44,6 +44,10 @@ namespace Nickvision::TubeConverter::GNOME::Views
          */
         bool onCloseRequested();
         /**
+         * @brief Handles when the window's visibility is changed.
+         */
+        void onVisibilityChanged();
+        /**
          * @brief Handles when a notification is sent to the window.
          * @param args NotificationSentEventArgs 
          */

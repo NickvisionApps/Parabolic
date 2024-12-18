@@ -45,6 +45,11 @@ namespace Nickvision::TubeConverter::QT::Views
          * @param event QCloseEvent
          */
         void closeEvent(QCloseEvent* event) override;
+        /**
+         * @brief Handles when the widget changes.
+         * @param event QEvent
+         */
+        void changeEvent(QEvent* event) override;
 
     private Q_SLOTS:
         /**

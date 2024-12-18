@@ -2,7 +2,7 @@
 <page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" id="downloads" its:version="2.0" xml:lang="sk">
 <info>
 	<link type="guide" xref="index"/>
-	<title type="link">Prenosov 🌐</title>
+	<title type="link">Sťahovanie 🌐</title>
 	<credit type="author copyright">
 		<name>Nicholas Logozzo</name>
 		<years its:translate="no">2023-2024</years>
@@ -21,21 +21,21 @@
   </info>
 
 <title>Stiahnutia</title>
-<p>Táto stránka vysvetľuje všetky možnosti pre konfiguráciu Prenosov v Preferences v <app>Parabolic</app>.</p>
+<p>Na tejto stránke nájdete vysvetlenie všetkých možností konfigurácie sťahovania v nastaveniach v aplikácii <app>Parabolic</app>.</p>
 
 
 <terms>
     <item>
 		<title>Maximálny počet aktívnych stiahnutí</title>
 		<p>Počet aktívnych sťahovaní, ktoré môžu byť spustené v danom čase. Musí to byť celočíselná hodnota od 1 do 10.</p>
-        <p>Ak sa dosiahne maximálny počet aktívnych sťahovaní, Parabolic zaradí nové sťahovania do poradia, kým nebude možné spustiť ďalšie sťahovania.</p>
+        <p>Ak sa dosiahne maximálny počet aktívnych sťahovaní, aplikácia Parabolic zaradí nové sťahovania do poradia, kým nebude možné spustiť ďalšie sťahovania.</p>
 		<note style="advanced">
 			<p>Predvolené: 5</p>
 		</note>
     </item>
     <item>
         <title>Prepísať existujúce súbory</title>
-        <p>Ak je to povolené, Parabolic prepíše existujúce súbory.</p>
+        <p>Ak je táto funkcia zapnutá, aplikácia Parabolic prepíše existujúce súbory.</p>
         <p>Napríklad, ak súbor s názvom <code>movie.mp4</code> existuje v priečinku na stiahnutie a nový vytvorený stiahnutý súbor je pomenovaný <code>movie</code>, <code>movie.mp4</code> bude prepísaný s novým obsahom sťahovania.</p>
         <note>
             <p>Parabolic zistí sťahovania, ktoré by mali znovu pokračovať, a vyhne sa tomuto nastaveniu pri obnove alebo opakovaní neúspešných sťahovaní</p>
@@ -45,16 +45,16 @@
         </note>
     </item>
     <item>
-		<title>Limitné znaky</title>
-		<p>Obmedziť znaky v názvy súborov iba tie podporované systémom Windows.</p>
-        <p>Táto možnosť je dostupná len na Linuxe.</p>
+		<title>Limit znakov v názve súboru</title>
+		<p>Obmedzí znaky v názvoch súborov iba na znaky podporované systémom Windows.</p>
+        <p>Táto možnosť je dostupná iba na systéme Linux.</p>
 		<note style="advanced">
 			<p>Predvolené: Vypnuté</p>
 		</note>
     </item>
     <item>
-        <title>Included Media Id in Title After Validation</title>
-        <p>Whether or not to included the media's id in the title (file name) when validated.</p>
+        <title>Pridanie ID média do názvu po overení</title>
+        <p>Či sa má alebo nemá zahrnúť ID média do názvu (názov súboru) pri overení.</p>
         <note style="advanced">
             <p>Predvolené: Zapnuté</p>
         </note>
@@ -68,16 +68,16 @@
     </item>
     <item>
         <title>Uprednostňovaný video kodek</title>
-        <p>Video kódc Parabolic by mal radšej pri výbere formátov médií na stiahnutie.</p>
+        <p>Kodek videa, ktorý by mala aplikácia Parabolic preferovať pri výbere formátov médií na stiahnutie.</p>
         <note style="advanced">
-            <p>Default: Akékoľvek</p>
+            <p>Predvolené: Akýkoľvek</p>
         </note>
     </item>
     <item>
         <title>Uprednostňovaný formát tituliek</title>
         <p>Formát súboru, v ktorom majú byť stiahnuté titulky v aplikácii Parabolic.</p>
         <note style="advanced">
-            <p>Default: Akékoľvek</p>
+            <p>Predvolené: Akýkoľvek</p>
         </note>
     </item>
 </terms>

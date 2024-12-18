@@ -55,6 +55,8 @@ namespace Nickvision::TubeConverter::GNOME::Views
         adw_window_title_set_title(m_builder.get<AdwWindowTitle>("title"), m_controller->getAppInfo().getShortName().c_str());
         //Register Events
         g_signal_connect(m_window, "close_request", G_CALLBACK(+[](GtkWindow*, gpointer data) -> bool { return reinterpret_cast<MainWindow*>(data)->onCloseRequested(); }), this);
+        g_signal_connect(m_window, "notify::is-active", G_CALLBACK(+[](GObject*, GParamSpec* pspec, gpointer data){ reinterpret_cast<MainWindow*>(data)->onVisibilityChanged(); }), this);
+        g_signal_connect(m_window, "notify::visible", G_CALLBACK(+[](GObject*, GParamSpec* pspec, gpointer data){ reinterpret_cast<MainWindow*>(data)->onVisibilityChanged(); }), this);
         g_signal_connect(m_builder.get<GObject>("listNavItems"), "row-activated", G_CALLBACK(+[](GtkListBox*, GtkListBoxRow*, gpointer data) { adw_navigation_split_view_set_show_content(reinterpret_cast<MainWindow*>(data)->m_builder.get<AdwNavigationSplitView>("navView"), true); }), this);
         g_signal_connect(m_builder.get<GObject>("listNavItems"), "row-selected", G_CALLBACK(+[](GtkListBox* self, GtkListBoxRow* row, gpointer data) { reinterpret_cast<MainWindow*>(data)->onNavItemSelected(self, row); }), this);
         m_controller->notificationSent() += [this](const NotificationSentEventArgs& args) { GtkHelpers::dispatchToMainThread([this, args]{ onNotificationSent(args); }); };
@@ -195,6 +197,11 @@ namespace Nickvision::TubeConverter::GNOME::Views
         gtk_window_get_default_size(GTK_WINDOW(m_window), &width, &height);
         m_controller->shutdown({ width, height, static_cast<bool>(gtk_window_is_maximized(GTK_WINDOW(m_window))) });
         return false;
+    }
+
+    void MainWindow::onVisibilityChanged()
+    {
+        m_controller->setIsWindowActive(gtk_window_is_active(GTK_WINDOW(m_window)) && gtk_widget_is_visible(GTK_WIDGET(m_window)));
     }
 
     void MainWindow::onNotificationSent(const NotificationSentEventArgs& args)
