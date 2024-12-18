@@ -3,6 +3,7 @@
 #include <sstream>
 #include <thread>
 #include <libnick/filesystem/userdirectories.h>
+#include <libnick/helpers/codehelpers.h>
 #include <libnick/helpers/stringhelpers.h>
 #include <libnick/localization/documentation.h>
 #include <libnick/localization/gettext.h>
@@ -36,12 +37,13 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         m_dataFileManager{ m_appInfo.getName() },
         m_logger{ UserDirectories::get(ApplicationUserDirectory::LocalData, m_appInfo.getName()) / "log.txt", Logging::LogLevel::Info, false },
         m_keyring{ m_appInfo.getId() },
-        m_downloadManager{ m_dataFileManager.get<Configuration>("config").getDownloaderOptions(), m_dataFileManager.get<DownloadHistory>("history"), m_dataFileManager.get<DownloadRecoveryQueue>("recovery"), m_logger }
+        m_downloadManager{ m_dataFileManager.get<Configuration>("config").getDownloaderOptions(), m_dataFileManager.get<DownloadHistory>("history"), m_dataFileManager.get<DownloadRecoveryQueue>("recovery"), m_logger },
+        m_isWindowActive{ false }
     {
         m_appInfo.setVersion({ "2024.12.1-next" });
         m_appInfo.setShortName(_("Parabolic"));
         m_appInfo.setDescription(_("Download web video and audio"));
-        m_appInfo.setChangelog("- Fixed an issue where subtitles were not downloaded properly");
+        m_appInfo.setChangelog("- Fixed an issue where subtitles were not downloaded properly\n- Fixed an issue where notifications were not displayed");
         m_appInfo.setSourceRepo("https://github.com/NickvisionApps/Parabolic");
         m_appInfo.setIssueTracker("https://github.com/NickvisionApps/Parabolic/issues/new");
         m_appInfo.setSupportUrl("https://github.com/NickvisionApps/Parabolic/discussions");
@@ -59,6 +61,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         m_updater = std::make_shared<Updater>(m_appInfo.getSourceRepo());
 #endif
         m_dataFileManager.get<Configuration>("config").saved() += [this](const EventArgs&){ onConfigurationSaved(); };
+        m_downloadManager.downloadCompleted() += [this](const DownloadCompletedEventArgs& args) { onDownloadCompleted(args); };
         //Log information
         if(!m_keyring.isSavingToDisk())
         {
@@ -97,6 +100,11 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         Configuration& config{ m_dataFileManager.get<Configuration>("config") };
         config.setShowDisclaimerOnStartup(showDisclaimerOnStartup);
         config.save();
+    }
+
+    void MainWindowController::setIsWindowActive(bool isWindowActive)
+    {
+        m_isWindowActive = isWindowActive;
     }
 
     Event<EventArgs>& MainWindowController::configurationSaved()
@@ -354,5 +362,25 @@ namespace Nickvision::TubeConverter::Shared::Controllers
             }
         }
         m_downloadManager.setDownloaderOptions(m_dataFileManager.get<Configuration>("config").getDownloaderOptions());
+    }
+
+    void MainWindowController::onDownloadCompleted(const DownloadCompletedEventArgs& args)
+    {
+        CompletedNotificationPreference preference{ m_dataFileManager.get<Configuration>("config").getCompletedNotificationPreference() };
+        if(preference == CompletedNotificationPreference::ForEach)
+        {
+            if(args.getStatus() == DownloadStatus::Success)
+            {
+                m_shellNotificationSent.invoke({ _("Download Finished"), std::vformat(_("{} has finished downloading"), std::make_format_args(CodeHelpers::unmove(args.getPath().filename().string()))), NotificationSeverity::Success });
+            }
+            else
+            {
+                m_shellNotificationSent.invoke({ _("Download Finished With Error"), std::vformat(_("{} has finished with an error"), std::make_format_args(CodeHelpers::unmove(args.getPath().filename().string()))), NotificationSeverity::Error });
+            }
+        }
+        else if(preference == CompletedNotificationPreference::AllCompleted && m_downloadManager.getRemainingDownloadsCount() == 0)
+        {
+            m_shellNotificationSent.invoke({ _("Downloads Finished"), _("All downloads have finished"), NotificationSeverity::Informational });
+        }
     }
 }

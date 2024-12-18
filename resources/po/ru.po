@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-12-16 15:53-0500\n"
+"POT-Creation-Date: 2024-12-18 09:33-0500\n"
 "PO-Revision-Date: 2024-09-28 13:14+0000\n"
 "Last-Translator: qtm <qtm@users.noreply.hosted.weblate.org>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -95,36 +95,36 @@ msgstr "По умолчанию"
 msgid "Audio Description"
 msgstr "Описание аудио"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:42
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:44
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:55
 msgid "Parabolic"
 msgstr "Parabolic"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:43
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:45
 msgid "Download web video and audio"
 msgstr "Загружайте веб-видео и аудио"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:49
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:51
 msgid "Matrix Chat"
 msgstr "Чат Matrix"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:51
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:53
 msgid "Contributors on GitHub"
 msgstr "Соавторы на GitHub"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:53
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:55
 msgid "Fyodor Sobolev"
 msgstr "Фёдор Соболев"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:55
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:57
 msgid "David Lapshin"
 msgstr "Давид Лапшин"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:56
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:58
 msgid "translator-credits"
 msgstr "Фёдор Соболев https://github.com/fsobolev"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:258
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:266
 #, fuzzy, c++-format
 msgid "Recovered {} download"
 msgid_plural "Recovered {} downloads"
@@ -132,13 +132,40 @@ msgstr[0] "Перезапустить неудавшиеся загрузки"
 msgstr[1] "Перезапустить неудавшиеся загрузки"
 msgstr[2] "Перезапустить неудавшиеся загрузки"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:287
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:295
 msgid "New update available"
 msgstr "Доступно новое обновление"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:319
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:327
 msgid "Unable to download and install update"
 msgstr "Не удалось скачать и установить обновление"
+
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:374
+msgid "Download Finished"
+msgstr "Загрузка завершена"
+
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:374
+#, fuzzy, c++-format
+msgid "{} has finished downloading"
+msgstr "\"{0}\" загружено."
+
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:378
+msgid "Download Finished With Error"
+msgstr "Загрузка завершилась с ошибкой"
+
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:378
+#, fuzzy, c++-format
+msgid "{} has finished with an error"
+msgstr "\"{0}\" завершилось с ошибкой!"
+
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:383
+msgid "Downloads Finished"
+msgstr "Загрузки завершены"
+
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:383
+#, fuzzy
+msgid "All downloads have finished"
+msgstr "Все загрузки завершены."
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:21
 #, fuzzy, c++-format
@@ -396,7 +423,7 @@ msgstr "Остановлена"
 
 #. Localize Strings
 #: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:79
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:275
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:282
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:25
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:65
 #: org.nickvision.tubeconverter.qt/src/controls/historyrow.cpp:17
@@ -404,11 +431,11 @@ msgid "Play"
 msgstr "Играть"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:87
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:210
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:217
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:26
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:66
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:32
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:413
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:422
 msgid "Open"
 msgstr "Открыть"
 
@@ -489,19 +516,19 @@ msgid "Main Menu"
 msgstr "Главное меню"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:70
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:221
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:228
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:66
 msgid "Home"
 msgstr "Главная"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:87
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:227
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:234
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:67
 msgid "Keyring"
 msgstr "Связка ключей"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:104
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:233
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:240
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:68
 msgid "History"
 msgstr "История"
@@ -514,21 +541,21 @@ msgid "Downloads"
 msgstr "Загрузки"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:135
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:238
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:245
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:69
 msgid "Downloading"
 msgstr "Загружается"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:160
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:27
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:243
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:250
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:34
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:70
 msgid "Queued"
 msgstr "В очереди"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:185
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:248
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:255
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:71
 msgid "Completed"
 msgstr "Завершено"
@@ -1038,7 +1065,7 @@ msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:148
 #: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:41
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:150
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:152
 msgid "Close"
 msgstr "Закрыть"
 
@@ -1075,7 +1102,7 @@ msgid "Edit"
 msgstr "Правка"
 
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:54
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:311
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:318
 #: org.nickvision.tubeconverter.qt/src/controls/historyrow.cpp:19
 #: org.nickvision.tubeconverter.qt/src/controls/keyringrow.cpp:19
 msgid "Delete"
@@ -1096,12 +1123,12 @@ msgid "Are you sure you want to delete this credential?"
 msgstr "Вы точно хотите удалить эти учётные данные?"
 
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:108
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:177
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:179
 msgid "Yes"
 msgstr "Да"
 
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:108
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:177
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:179
 msgid "No"
 msgstr "Нет"
 
@@ -1129,12 +1156,12 @@ msgstr "Имя (существует)"
 msgid "Credential (Database Error)"
 msgstr "Учётные данные (ошибка базы данных)"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:148
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:150
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:169
 msgid "Disclaimer"
 msgstr "Предупреждение"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:148
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:150
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:169
 msgid ""
 "The authors of Nickvision Parabolic are not responsible/liable for any "
@@ -1145,25 +1172,25 @@ msgstr ""
 "использование программы, которое может нарушать местные законы об авторском "
 "праве или DMCA. Пользователи используют это приложение на свой страх и риск."
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:149
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:151
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:170
 msgid "Don't show this message again"
 msgstr "Больше не показывать это сообщение"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:176
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:178
 msgid "Exit?"
 msgstr "Закрыть?"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:176
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:178
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:186
 msgid "There are downloads in progress. Are you sure you want to exit?"
 msgstr "Имеются незавершённые скачивания. Вы точно хотите закрыть Parabolic?"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:296
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:303
 msgid "Download Again"
 msgstr "Скачать снова"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:453
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:460
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:61
 msgid "GitHub Repo"
 msgstr "Репозиторий GitHub"
@@ -1356,7 +1383,7 @@ msgstr "Перезапустить неудавшиеся"
 msgid "Log"
 msgstr "Журнал"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:400
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:409
 msgid "Update"
 msgstr "Обновить"
 
@@ -1432,14 +1459,6 @@ msgstr "Введите ссылку прокси"
 #~ msgid "Add Download (Ctrl+N)"
 #~ msgstr "Добавить загрузку (Ctrl+N)"
 
-#, csharp-format
-#~ msgid "\"{0}\" has finished downloading."
-#~ msgstr "\"{0}\" загружено."
-
-#, csharp-format
-#~ msgid "\"{0}\" has finished with an error!"
-#~ msgstr "\"{0}\" завершилось с ошибкой!"
-
 #~ msgid "(Configurable in preferences)"
 #~ msgstr "(Изменяется в настройках)"
 
@@ -1466,9 +1485,6 @@ msgstr "Введите ссылку прокси"
 
 #~ msgid "Add Login"
 #~ msgstr "Добавить учётные данные"
-
-#~ msgid "All downloads have finished."
-#~ msgstr "Все загрузки завершены."
 
 #~ msgid "Allow Running In Background"
 #~ msgstr "Разрешить работу в фоновом режиме"
@@ -1556,12 +1572,6 @@ msgstr "Введите ссылку прокси"
 #~ msgid "Disallow Conversions"
 #~ msgstr "Отключить конвертирование"
 
-#~ msgid "Download Finished"
-#~ msgstr "Загрузка завершена"
-
-#~ msgid "Download Finished With Error"
-#~ msgstr "Загрузка завершилась с ошибкой"
-
 #~ msgid "Download log was copied to clipboard."
 #~ msgstr "Журнал загрузки скопирован в буфер обмена."
 
@@ -1580,9 +1590,6 @@ msgstr "Введите ссылку прокси"
 
 #~ msgid "Downloading..."
 #~ msgstr "Скачивание..."
-
-#~ msgid "Downloads Finished"
-#~ msgstr "Загрузки завершены"
 
 #~ msgid "Enable"
 #~ msgstr "Включить"

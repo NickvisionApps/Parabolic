@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-12-16 15:53-0500\n"
+"POT-Creation-Date: 2024-12-18 09:33-0500\n"
 "PO-Revision-Date: 2023-06-12 02:55+0000\n"
 "Last-Translator: Krindog7337 <igstkrisna2006@gmail.com>\n"
 "Language-Team: Indonesian <https://hosted.weblate.org/projects/nickvision-"
@@ -101,51 +101,78 @@ msgstr "Bawaan"
 msgid "Audio Description"
 msgstr ""
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:42
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:44
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:55
 msgid "Parabolic"
 msgstr ""
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:43
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:45
 msgid "Download web video and audio"
 msgstr "Unduh video web dan audio"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:49
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:51
 msgid "Matrix Chat"
 msgstr "Obrolan Matriks"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:51
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:53
 #, fuzzy
 msgid "Contributors on GitHub"
 msgstr ""
 "Nicholas Logozzo {0}\n"
 "Kontributor di GitHub ❤️ {1}"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:53
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:55
 msgid "Fyodor Sobolev"
 msgstr ""
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:55
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:57
 msgid "David Lapshin"
 msgstr ""
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:56
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:58
 msgid "translator-credits"
 msgstr "kredit penerjemah"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:258
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:266
 #, fuzzy, c++-format
 msgid "Recovered {} download"
 msgid_plural "Recovered {} downloads"
 msgstr[0] "Ulangi Unduhan"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:287
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:295
 msgid "New update available"
 msgstr ""
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:319
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:327
 msgid "Unable to download and install update"
 msgstr ""
+
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:374
+msgid "Download Finished"
+msgstr "Unduhan Selesai"
+
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:374
+#, fuzzy, c++-format
+msgid "{} has finished downloading"
+msgstr "\"{0}\" telah selesai diunduh."
+
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:378
+msgid "Download Finished With Error"
+msgstr "Unduh Selesai Dengan Error"
+
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:378
+#, fuzzy, c++-format
+msgid "{} has finished with an error"
+msgstr "\"{0}\" telah selesai dengan kesalahan!"
+
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:383
+msgid "Downloads Finished"
+msgstr "Unduhan Selesai"
+
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:383
+#, fuzzy
+msgid "All downloads have finished"
+msgstr "Semua unduhan selesai."
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:21
 #, fuzzy, c++-format
@@ -408,7 +435,7 @@ msgstr "Dihentikan"
 
 #. Localize Strings
 #: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:79
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:275
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:282
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:25
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:65
 #: org.nickvision.tubeconverter.qt/src/controls/historyrow.cpp:17
@@ -417,11 +444,11 @@ msgid "Play"
 msgstr "Daftar Putar"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:87
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:210
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:217
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:26
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:66
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:32
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:413
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:422
 #, fuzzy
 msgid "Open"
 msgstr "Buka File"
@@ -505,19 +532,19 @@ msgid "Main Menu"
 msgstr "Menu Utama"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:70
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:221
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:228
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:66
 msgid "Home"
 msgstr "Beranda"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:87
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:227
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:234
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:67
 msgid "Keyring"
 msgstr "Keyring"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:104
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:233
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:240
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:68
 msgid "History"
 msgstr ""
@@ -530,21 +557,21 @@ msgid "Downloads"
 msgstr "Unduhan"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:135
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:238
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:245
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:69
 msgid "Downloading"
 msgstr "Mengunduh"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:160
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:27
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:243
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:250
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:34
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:70
 msgid "Queued"
 msgstr "Antrian"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:185
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:248
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:255
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:71
 msgid "Completed"
 msgstr "Selesai"
@@ -1072,7 +1099,7 @@ msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:148
 #: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:41
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:150
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:152
 msgid "Close"
 msgstr "Tutup"
 
@@ -1110,7 +1137,7 @@ msgid "Edit"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:54
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:311
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:318
 #: org.nickvision.tubeconverter.qt/src/controls/historyrow.cpp:19
 #: org.nickvision.tubeconverter.qt/src/controls/keyringrow.cpp:19
 msgid "Delete"
@@ -1131,12 +1158,12 @@ msgid "Are you sure you want to delete this credential?"
 msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:108
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:177
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:179
 msgid "Yes"
 msgstr "Iya"
 
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:108
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:177
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:179
 msgid "No"
 msgstr "Tidak"
 
@@ -1166,12 +1193,12 @@ msgstr "Nama (Kosong)"
 msgid "Credential (Database Error)"
 msgstr ""
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:148
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:150
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:169
 msgid "Disclaimer"
 msgstr ""
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:148
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:150
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:169
 #, fuzzy
 msgid ""
@@ -1183,27 +1210,27 @@ msgstr ""
 "penyalahgunaan program ini yang mungkin melanggar hak cipta lokal/hukum "
 "DMCA. Pengguna menggunakan aplikasi ini dengan risiko mereka sendiri."
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:149
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:151
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:170
 msgid "Don't show this message again"
 msgstr ""
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:176
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:178
 msgid "Exit?"
 msgstr ""
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:176
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:178
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:186
 #, fuzzy
 msgid "There are downloads in progress. Are you sure you want to exit?"
 msgstr "Aksi ini tidak dapat diurungkan. Apakah anda yakin untuk menghapusnya?"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:296
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:303
 #, fuzzy
 msgid "Download Again"
 msgstr "Mengunduh"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:453
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:460
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:61
 msgid "GitHub Repo"
 msgstr "Repo GitHub"
@@ -1399,7 +1426,7 @@ msgstr "Ulangi Unduhan"
 msgid "Log"
 msgstr ""
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:400
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:409
 msgid "Update"
 msgstr ""
 
@@ -1469,14 +1496,6 @@ msgstr "Masukkan URL media disini"
 #~ msgid "Add Download (Ctrl+N)"
 #~ msgstr "Tambah Unduhan (Ctrl+N)"
 
-#, csharp-format
-#~ msgid "\"{0}\" has finished downloading."
-#~ msgstr "\"{0}\" telah selesai diunduh."
-
-#, csharp-format
-#~ msgid "\"{0}\" has finished with an error!"
-#~ msgstr "\"{0}\" telah selesai dengan kesalahan!"
-
 #~ msgid "(Configurable in preferences)"
 #~ msgstr "(Dapat dikonfigurasi di preferensi)"
 
@@ -1488,9 +1507,6 @@ msgstr "Masukkan URL media disini"
 #, fuzzy
 #~ msgid "Add a login to get started."
 #~ msgstr "Tambahkan unduhan untuk memulai."
-
-#~ msgid "All downloads have finished."
-#~ msgstr "Semua unduhan selesai."
 
 #~ msgid "Allow Running In Background"
 #~ msgstr "Izinkan Berjalan di Latar Belakang"
@@ -1534,12 +1550,6 @@ msgstr "Masukkan URL media disini"
 #~ "Menonaktifkan keyring akan menghapus semua data yang disimpan didalamnya. "
 #~ "Apakah anda yakin untuk menonaktifkannya?"
 
-#~ msgid "Download Finished"
-#~ msgstr "Unduhan Selesai"
-
-#~ msgid "Download Finished With Error"
-#~ msgstr "Unduh Selesai Dengan Error"
-
 #~ msgid "Download log was copied to clipboard."
 #~ msgstr "Log unduhan disalin ke papan klip."
 
@@ -1557,9 +1567,6 @@ msgstr "Masukkan URL media disini"
 #, fuzzy
 #~ msgid "Downloading..."
 #~ msgstr "Mengunduh"
-
-#~ msgid "Downloads Finished"
-#~ msgstr "Unduhan Selesai"
 
 #~ msgid "Enable"
 #~ msgstr "Aktifkan"
