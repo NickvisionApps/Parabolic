@@ -7,11 +7,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-12-13 13:51-0500\n"
+"POT-Creation-Date: 2024-12-19 13:25-0500\n"
 "PO-Revision-Date: 2024-12-19 18:24+0000\n"
 "Last-Translator: Gnuey56 <gnuey56@proton.me>\n"
-"Language-Team: Japanese <https://hosted.weblate.org/projects/"
-"nickvision-tube-converter/app/ja/>\n"
+"Language-Team: Japanese <https://hosted.weblate.org/projects/nickvision-tube-"
+"converter/app/ja/>\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -94,61 +94,93 @@ msgstr "デフォルト"
 msgid "Audio Description"
 msgstr "音声の概要"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:42
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:44
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:55
 msgid "Parabolic"
 msgstr "Parabolic"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:43
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:45
 msgid "Download web video and audio"
 msgstr "ウェブ上のビデオと音声をダウンロード"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:49
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:51
 msgid "Matrix Chat"
 msgstr "Matrix チャット"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:51
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:53
 msgid "Contributors on GitHub"
 msgstr "GitHub での貢献者の皆さん"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:53
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:55
 msgid "Fyodor Sobolev"
 msgstr "Fyodor Sobolev"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:55
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:57
 msgid "David Lapshin"
 msgstr "David Lapshin"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:56
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:58
 msgid "translator-credits"
 msgstr "Gnuey56 <gnuey56@proton.me>"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:258
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:266
+#, c++-format
 msgid "Recovered {} download"
 msgid_plural "Recovered {} downloads"
 msgstr[0] "再試行された {} 個のダウンロード"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:287
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:295
 msgid "New update available"
 msgstr "新しいアップデートが利用可能"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:319
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:327
 msgid "Unable to download and install update"
 msgstr "アップデートをダウンロードしてインストールできません"
 
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:378
+msgid "Download Finished"
+msgstr "ダウンロードが完了"
+
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:378
+#, fuzzy, c++-format
+msgid "{} has finished downloading"
+msgstr "\"{0}\" はダウンロード完了です。"
+
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:382
+msgid "Download Finished With Error"
+msgstr "ダウンロードはエラーで終了"
+
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:382
+#, fuzzy, c++-format
+msgid "{} has finished with an error"
+msgstr "\"{0}\" のダウンロードはエラーで終了しました！"
+
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:387
+msgid "Downloads Finished"
+msgstr "ダウンロード完了"
+
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:387
+#, fuzzy
+msgid "All downloads have finished"
+msgstr "すべてのダウンロードが完了しました。"
+
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:21
+#, c++-format
 msgid "{:.2f} GiB/s"
 msgstr "{:.2f} GiB /毎秒"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:25
+#, c++-format
 msgid "{:.2f} MiB/s"
 msgstr "{:.2f} MiB/毎秒"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:29
+#, c++-format
 msgid "{:.2f} KiB/s"
 msgstr "{:.2f} KiB/毎秒"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:33
+#, c++-format
 msgid "{:.2f} B/s"
 msgstr "{:.2f} B/毎秒"
 
@@ -389,7 +421,7 @@ msgstr "一時停止"
 
 #. Localize Strings
 #: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:79
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:275
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:282
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:25
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:65
 #: org.nickvision.tubeconverter.qt/src/controls/historyrow.cpp:17
@@ -397,11 +429,11 @@ msgid "Play"
 msgstr "再生"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:87
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:210
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:217
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:26
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:66
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:32
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:413
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:422
 msgid "Open"
 msgstr "開く"
 
@@ -480,19 +512,19 @@ msgid "Main Menu"
 msgstr "メインメニュー"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:70
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:221
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:228
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:66
 msgid "Home"
 msgstr "ホーム"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:87
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:227
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:234
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:67
 msgid "Keyring"
 msgstr "キーリング"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:104
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:233
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:240
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:68
 msgid "History"
 msgstr "履歴"
@@ -505,21 +537,21 @@ msgid "Downloads"
 msgstr "ダウンロード"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:135
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:238
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:245
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:69
 msgid "Downloading"
 msgstr "ダウンロード中"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:160
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:27
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:243
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:250
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:34
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:70
 msgid "Queued"
 msgstr "停止中"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:185
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:248
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:255
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:71
 msgid "Completed"
 msgstr "完了済"
@@ -1024,7 +1056,7 @@ msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:148
 #: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:41
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:150
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:152
 msgid "Close"
 msgstr "閉じる"
 
@@ -1034,10 +1066,12 @@ msgid "No Subtitles Available"
 msgstr "利用可能な字幕がありません"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:216
+#, c++-format
 msgid "{} items"
 msgstr "{} 個のアイテム"
 
 #: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:15
+#, c++-format
 msgid ""
 "{} needs a credential to download.\n"
 "Please select or enter one to use."
@@ -1061,7 +1095,7 @@ msgid "Edit"
 msgstr "編集"
 
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:54
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:311
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:318
 #: org.nickvision.tubeconverter.qt/src/controls/historyrow.cpp:19
 #: org.nickvision.tubeconverter.qt/src/controls/keyringrow.cpp:19
 msgid "Delete"
@@ -1082,12 +1116,12 @@ msgid "Are you sure you want to delete this credential?"
 msgstr "本当にこの資格情報を削除しますか？"
 
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:108
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:177
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:179
 msgid "Yes"
 msgstr "はい"
 
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:108
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:177
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:179
 msgid "No"
 msgstr "いいえ"
 
@@ -1115,12 +1149,12 @@ msgstr "名前（すでに存在）"
 msgid "Credential (Database Error)"
 msgstr "資格情報（データベースエラー）"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:148
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:150
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:169
 msgid "Disclaimer"
 msgstr "免責事項"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:148
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:150
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:169
 msgid ""
 "The authors of Nickvision Parabolic are not responsible/liable for any "
@@ -1131,25 +1165,25 @@ msgstr ""
 "作権法）に反する可能性のある、このプログラムの誤用について責任を負いません。"
 "ユーザーによるこのアプリケーションの使用は自己責任です。"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:149
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:151
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:170
 msgid "Don't show this message again"
 msgstr "二度とこのメッセージを表示しない"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:176
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:178
 msgid "Exit?"
 msgstr "終了しますか？"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:176
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:178
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:186
 msgid "There are downloads in progress. Are you sure you want to exit?"
 msgstr "進行中のダウンロードがあります。本当に終了しますか？"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:296
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:303
 msgid "Download Again"
 msgstr "もう一度ダウンロード"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:453
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:460
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:61
 msgid "GitHub Repo"
 msgstr "GitHub リポジトリ"
@@ -1163,6 +1197,7 @@ msgid "Changelog:"
 msgstr "変更履歴:"
 
 #: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:39
+#, c++-format
 msgid ""
 "Developers:\n"
 "{}\n"
@@ -1240,11 +1275,13 @@ msgstr ""
 "用に設定したブラウザを確認してみてください。"
 
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:234
+#, c++-format
 msgid "Items ({})"
 msgstr "アイテム ({})"
 
 #. Localize Strings
 #: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:20
+#, c++-format
 msgid "{} needs a credential to download. Please select or enter one to use."
 msgstr ""
 "{} はダウンロードに資格情報を必要とします。使用する資格情報を選択、または入力"
@@ -1336,7 +1373,7 @@ msgstr "失敗したダウンロードを再試行"
 msgid "Log"
 msgstr "ログ"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:400
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:409
 msgid "Update"
 msgstr "アップデート"
 
@@ -1404,14 +1441,6 @@ msgstr "プロキシの URL を入力"
 #~ msgid "Add Download (Ctrl+N)"
 #~ msgstr "ダウンロードを追加 (Ctrl+N)"
 
-#, csharp-format
-#~ msgid "\"{0}\" has finished downloading."
-#~ msgstr "\"{0}\" はダウンロード完了です。"
-
-#, csharp-format
-#~ msgid "\"{0}\" has finished with an error!"
-#~ msgstr "\"{0}\" のダウンロードはエラーで終了しました！"
-
 #~ msgid "(Configurable in preferences)"
 #~ msgstr "（後で再設定できます）"
 
@@ -1436,9 +1465,6 @@ msgstr "プロキシの URL を入力"
 
 #~ msgid "Add Login"
 #~ msgstr "ログインを追加"
-
-#~ msgid "All downloads have finished."
-#~ msgstr "すべてのダウンロードが完了しました。"
 
 #~ msgid "Allow Running In Background"
 #~ msgstr "バックグラウンドでの動作を許可"
@@ -1521,12 +1547,6 @@ msgstr "プロキシの URL を入力"
 #~ msgid "Disallow Conversions"
 #~ msgstr "フォーマット変換を無効化"
 
-#~ msgid "Download Finished"
-#~ msgstr "ダウンロードが完了"
-
-#~ msgid "Download Finished With Error"
-#~ msgstr "ダウンロードはエラーで終了"
-
 #~ msgid "Download log was copied to clipboard."
 #~ msgstr "ダウンロードログがクリップボードにコピーされました。"
 
@@ -1545,9 +1565,6 @@ msgstr "プロキシの URL を入力"
 
 #~ msgid "Downloading..."
 #~ msgstr "ダウンロード中..."
-
-#~ msgid "Downloads Finished"
-#~ msgstr "ダウンロード完了"
 
 #~ msgid "Enable"
 #~ msgstr "有効化"
