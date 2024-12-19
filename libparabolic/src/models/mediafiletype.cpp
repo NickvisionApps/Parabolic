@@ -123,10 +123,9 @@ namespace Nickvision::TubeConverter::Shared::Models
     {
         switch (m_value)
         {
-        case MediaFileTypeValue::Video:
         case MediaFileTypeValue::MP4:
+        case MediaFileTypeValue::MKV:
         case MediaFileTypeValue::MOV:
-        case MediaFileTypeValue::Audio:
         case MediaFileTypeValue::MP3:
         case MediaFileTypeValue::M4A:
         case MediaFileTypeValue::OPUS:
@@ -141,7 +140,6 @@ namespace Nickvision::TubeConverter::Shared::Models
     {
         switch(m_value)
         {
-        case MediaFileTypeValue::Video:
         case MediaFileTypeValue::MP4:
         case MediaFileTypeValue::WEBM:
         case MediaFileTypeValue::MKV:
