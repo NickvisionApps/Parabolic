@@ -366,6 +366,10 @@ namespace Nickvision::TubeConverter::Shared::Controllers
 
     void MainWindowController::onDownloadCompleted(const DownloadCompletedEventArgs& args)
     {
+        if(m_isWindowActive)
+        {
+            return;
+        }
         CompletedNotificationPreference preference{ m_dataFileManager.get<Configuration>("config").getCompletedNotificationPreference() };
         if(preference == CompletedNotificationPreference::ForEach)
         {
