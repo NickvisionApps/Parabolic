@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-12-13 13:51-0500\n"
+"POT-Creation-Date: 2024-12-19 12:40-0500\n"
 "PO-Revision-Date: 2024-11-24 01:00+0000\n"
 "Last-Translator: Rafael Fontenelle <rafaelff@gnome.org>\n"
 "Language-Team: Portuguese (Brazil) <https://hosted.weblate.org/projects/"
@@ -94,32 +94,32 @@ msgstr "Padrão"
 msgid "Audio Description"
 msgstr "Descrição do áudio"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:42
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:44
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:55
 msgid "Parabolic"
 msgstr "Parabolic"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:43
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:45
 msgid "Download web video and audio"
 msgstr "Fazer download do áudio e vídeo"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:49
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:51
 msgid "Matrix Chat"
 msgstr "Matrix Chat"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:51
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:53
 msgid "Contributors on GitHub"
 msgstr "Colaboradores no GitHub"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:53
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:55
 msgid "Fyodor Sobolev"
 msgstr "Fyodor Sobolev"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:55
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:57
 msgid "David Lapshin"
 msgstr "David Lapshin"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:56
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:58
 msgid "translator-credits"
 msgstr ""
 "Lun3wi <lun3witch@gmail.com>\n"
@@ -127,33 +127,65 @@ msgstr ""
 "Murilo Monte <murilomonte086@gmail.com>\n"
 "Rafael Fontenelle <rafaelff@gnome.org>"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:258
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:266
+#, c++-format
 msgid "Recovered {} download"
 msgid_plural "Recovered {} downloads"
 msgstr[0] "{} download recuperado"
 msgstr[1] "{} downloads recuperados"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:287
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:295
 msgid "New update available"
 msgstr "Nova atualização disponível"
 
-#: libparabolic/src/controllers/mainwindowcontroller.cpp:319
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:327
 msgid "Unable to download and install update"
 msgstr "Não foi possível baixar e instalar a atualização"
 
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:378
+msgid "Download Finished"
+msgstr "Download finalizado"
+
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:378
+#, fuzzy, c++-format
+msgid "{} has finished downloading"
+msgstr "\"{0}\" teve o seu download concluído."
+
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:382
+msgid "Download Finished With Error"
+msgstr "Download finalizado com erro"
+
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:382
+#, fuzzy, c++-format
+msgid "{} has finished with an error"
+msgstr "\"{0}\" finalizou com um erro!"
+
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:387
+msgid "Downloads Finished"
+msgstr "Downloads concluídos"
+
+#: libparabolic/src/controllers/mainwindowcontroller.cpp:387
+#, fuzzy
+msgid "All downloads have finished"
+msgstr "Todos os downloads foram finalizados."
+
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:21
+#, c++-format
 msgid "{:.2f} GiB/s"
 msgstr "{:.2f} GiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:25
+#, c++-format
 msgid "{:.2f} MiB/s"
 msgstr "{:.2f} MiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:29
+#, c++-format
 msgid "{:.2f} KiB/s"
 msgstr "{:.2f} KiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:33
+#, c++-format
 msgid "{:.2f} B/s"
 msgstr "{:.2f} B/s"
 
@@ -392,7 +424,7 @@ msgstr "Parar"
 
 #. Localize Strings
 #: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:79
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:275
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:282
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:25
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:65
 #: org.nickvision.tubeconverter.qt/src/controls/historyrow.cpp:17
@@ -400,11 +432,11 @@ msgid "Play"
 msgstr "Reproduzir"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:87
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:210
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:217
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:26
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:66
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:32
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:413
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:422
 msgid "Open"
 msgstr "Abrir"
 
@@ -483,19 +515,19 @@ msgid "Main Menu"
 msgstr "Menu principal"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:70
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:221
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:228
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:66
 msgid "Home"
 msgstr "Início"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:87
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:227
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:234
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:67
 msgid "Keyring"
 msgstr "Chaveiro"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:104
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:233
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:240
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:68
 msgid "History"
 msgstr "Histórico"
@@ -508,21 +540,21 @@ msgid "Downloads"
 msgstr "Downloads"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:135
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:238
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:245
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:69
 msgid "Downloading"
 msgstr "Baixando"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:160
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:27
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:243
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:250
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:34
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:70
 msgid "Queued"
 msgstr "Em fila"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/main_window.blp:185
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:248
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:255
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:71
 msgid "Completed"
 msgstr "Concluído"
@@ -1031,7 +1063,7 @@ msgstr ""
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:148
 #: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:41
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:150
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:152
 msgid "Close"
 msgstr "Fechar"
 
@@ -1041,10 +1073,12 @@ msgid "No Subtitles Available"
 msgstr "Nenhuma legenda disponível"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:216
+#, c++-format
 msgid "{} items"
 msgstr "{} itens"
 
 #: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:15
+#, c++-format
 msgid ""
 "{} needs a credential to download.\n"
 "Please select or enter one to use."
@@ -1068,7 +1102,7 @@ msgid "Edit"
 msgstr "Editar"
 
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:54
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:311
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:318
 #: org.nickvision.tubeconverter.qt/src/controls/historyrow.cpp:19
 #: org.nickvision.tubeconverter.qt/src/controls/keyringrow.cpp:19
 msgid "Delete"
@@ -1089,12 +1123,12 @@ msgid "Are you sure you want to delete this credential?"
 msgstr "Tem certeza que deseja apagar essa credencial?"
 
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:108
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:177
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:179
 msgid "Yes"
 msgstr "Sim"
 
 #: org.nickvision.tubeconverter.gnome/src/views/keyringpage.cpp:108
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:177
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:179
 msgid "No"
 msgstr "Não"
 
@@ -1122,12 +1156,12 @@ msgstr "Nome (Existe)"
 msgid "Credential (Database Error)"
 msgstr "Credencial (Erro de banco de dados)"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:148
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:150
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:169
 msgid "Disclaimer"
 msgstr "Aviso Legal"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:148
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:150
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:169
 msgid ""
 "The authors of Nickvision Parabolic are not responsible/liable for any "
@@ -1138,25 +1172,25 @@ msgstr ""
 "indevido deste programa que possa violar as leis locais de direitos autorais/"
 "DMCA. Os usuários usam este aplicativo por sua própria conta e risco."
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:149
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:151
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:170
 msgid "Don't show this message again"
 msgstr "Não mostrar esta mensagem novamente"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:176
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:178
 msgid "Exit?"
 msgstr "Sair?"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:176
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:178
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:186
 msgid "There are downloads in progress. Are you sure you want to exit?"
 msgstr "Há downloads em andamento. Tem certeza de que deseja sair?"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:296
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:303
 msgid "Download Again"
 msgstr "Baixar novamente"
 
-#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:453
+#: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:460
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:61
 msgid "GitHub Repo"
 msgstr "Repositório do GitHub"
@@ -1170,6 +1204,7 @@ msgid "Changelog:"
 msgstr "Histórico de mudanças:"
 
 #: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:39
+#, c++-format
 msgid ""
 "Developers:\n"
 "{}\n"
@@ -1248,11 +1283,13 @@ msgstr ""
 "configurações."
 
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:234
+#, c++-format
 msgid "Items ({})"
 msgstr "Itens ({})"
 
 #. Localize Strings
 #: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:20
+#, c++-format
 msgid "{} needs a credential to download. Please select or enter one to use."
 msgstr ""
 "{} precisa de uma credencial para ser baixado. Por favor, selecione ou "
@@ -1348,7 +1385,7 @@ msgstr "Repetir downloads com falha"
 msgid "Log"
 msgstr "Registro"
 
-#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:400
+#: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:409
 msgid "Update"
 msgstr "Atualizar"
 
@@ -1419,14 +1456,6 @@ msgstr "Insira a URL do proxy aqui"
 #~ msgid "Add Download (Ctrl+N)"
 #~ msgstr "Adicionar download (Ctrl+N)"
 
-#, csharp-format
-#~ msgid "\"{0}\" has finished downloading."
-#~ msgstr "\"{0}\" teve o seu download concluído."
-
-#, csharp-format
-#~ msgid "\"{0}\" has finished with an error!"
-#~ msgstr "\"{0}\" finalizou com um erro!"
-
 #~ msgid "(Configurable in preferences)"
 #~ msgstr "(Pode ser alterado nas preferências)"
 
@@ -1453,9 +1482,6 @@ msgstr "Insira a URL do proxy aqui"
 
 #~ msgid "Add Login"
 #~ msgstr "Adicionar login"
-
-#~ msgid "All downloads have finished."
-#~ msgstr "Todos os downloads foram finalizados."
 
 #~ msgid "Allow Running In Background"
 #~ msgstr "Permitir execução em segundo plano"
@@ -1546,12 +1572,6 @@ msgstr "Insira a URL do proxy aqui"
 #~ msgid "Disallow Conversions"
 #~ msgstr "Não permitir conversões"
 
-#~ msgid "Download Finished"
-#~ msgstr "Download finalizado"
-
-#~ msgid "Download Finished With Error"
-#~ msgstr "Download finalizado com erro"
-
 #~ msgid "Download log was copied to clipboard."
 #~ msgstr "O registro de download foi copiado para a área de transferência."
 
@@ -1570,9 +1590,6 @@ msgstr "Insira a URL do proxy aqui"
 
 #~ msgid "Downloading..."
 #~ msgstr "Baixando…"
-
-#~ msgid "Downloads Finished"
-#~ msgstr "Downloads concluídos"
 
 #~ msgid "Enable"
 #~ msgstr "Ativar"

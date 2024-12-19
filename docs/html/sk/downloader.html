@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>Sťahovač</title>
+<title>Služba sťahovania</title>
 <link rel="stylesheet" type="text/css" href="sk.css">
 <script type="text/javascript" src="highlight.pack.js"></script><script>
 document.addEventListener('DOMContentLoaded', function() {
@@ -15,14 +15,14 @@ document.addEventListener('DOMContentLoaded', function() {
 </head>
 <body lang="sk" dir="ltr"><main><div class="page">
 <header><div class="inner pagewide"><div class="trails" role="navigation"><div class="trail">
-<a class="trail" href="index.html" title="Pomoc Parabolic">Pomoc Parabolic</a> » </div></div></div></header><article><div class="hgroup pagewide"><h1 class="title"><span class="title">Sťahovač</span></h1></div>
+<a class="trail" href="index.html" title="Pomoc Parabolic">Pomoc Parabolic</a> » </div></div></div></header><article><div class="hgroup pagewide"><h1 class="title"><span class="title">Služba sťahovania</span></h1></div>
 <div class="region">
 <div class="contents pagewide">
-<p class="p">Na tejto stránke sú vysvetlené všetky možnosti nastavenia Sťahovača v časti Nastavenia v aplikácii <span class="app">Parabolic</span>.</p>
+<p class="p">Na tejto stránke sú vysvetlené všetky možnosti nastavenia sťahovania v časti Nastavenia v aplikácii <span class="app">Parabolic</span>.</p>
 <div class="terms"><div class="inner"><div class="region"><dl class="terms">
 <dt class="terms">Podrobné zaznamenávanie</dt>
 <dd class="terms">
-<p class="p">Ak je táto možnosť povolená, <span class="code">yt-dlp</span> bude pri každom sťahovaní poskytovať viac podrobných záznamov.</p>
+<p class="p">Ak je táto funkcia zapnutá, <span class="code">yt-dlp</span> bude pri každom sťahovaní poskytovať viac podrobných záznamov.</p>
 <div class="note note-advanced" title="Pokročilé">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </dd>
 <dt class="terms">Použiť SponsorBlock pre YouTube</dt>
 <dd class="terms">
-<p class="p">Ak je táto funkcia povolená, aplikácia Parabolic použije rozšírenie SponsorBlock na sťahovanie z YouTube.</p>
+<p class="p">Ak je táto funkcia zapnutá, aplikácia Parabolic použije rozšírenie SponsorBlock na sťahovanie z YouTube.</p>
 <div class="note" title="Poznámka">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </dd>
 <dt class="terms">Obmedzenie rýchlosti</dt>
 <dd class="terms">
-<p class="p">Obmedzenie v Ki/s, ktoré sa použije na sťahovanie iba vtedy, ak je povolená rozšírená možnosť <span class="code">Omedzenie rýchlosti</span>. Musí to byť celočíselná hodnota medzi 512 a 10240.</p>
+<p class="p">Obmedzenie v Ki/s, ktoré sa použije na sťahovanie iba vtedy, ak je zapnutá rozšírená možnosť <span class="code">Obmedzenie rýchlosti</span>. Musí to byť celočíselná hodnota medzi 512 a 10240.</p>
 <div class="note note-advanced" title="Pokročilé">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -105,14 +105,14 @@ document.addEventListener('DOMContentLoaded', function() {
   <path class="yelp-svg-fill" d="m8.2435 7.0719-1.9004-3.3145 1.4143-1.4143 3.1596 1.7457z"></path>
   <path class="yelp-svg-fill" d="m11.072 11.757-3.3146 1.9-1.4143-1.414 1.7457-3.1602z"></path>
  </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Default: Žiadne URL</p></div></div></div>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Predvolené: Žiadna URL</p></div></div></div>
 </div>
 </dd>
-<dt class="terms">Súbory Cookie z prehliadača</dt>
+<dt class="terms">Súbory cookie z prehliadača</dt>
 <dd class="terms">
 <p class="p">Prehliadač, z ktorého sa načítajú súbory cookie a odovzdávajú sa do nástroja na sťahovanie yt-dlp.</p>
-<p class="p">To môže byť užitočné pri sťahovaní médií, ktoré vyžaduje prihlásenie, napríklad: súkromné videá YouTube.</p>
-<p class="p">Táto možnosť je k dispozícii na non Sandboxed platformách.</p>
+<p class="p">To môže byť užitočné pri sťahovaní médií, ktoré vyžadujú prihlásenie, napríklad: súkromné videá YouTube.</p>
+<p class="p">Táto možnosť je k dispozícii na platformách bez sandboxu.</p>
 <div class="note note-advanced" title="Pokročilé">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -132,8 +132,8 @@ document.addEventListener('DOMContentLoaded', function() {
 </dd>
 <dt class="terms">Súbor s cookie</dt>
 <dd class="terms">
-<p class="p">.txt súbor cookies prejsť na yt-dlp pri sťahovaní motora.</p>
-<p class="p">To môže byť užitočné pri sťahovaní médií, ktoré vyžaduje prihlásenie, napríklad: súkromné videá YouTube.</p>
+<p class="p">Súbor .txt so súbormi cookie, ktorý sa odovzdá službe yt-dlp pri sťahovaní.</p>
+<p class="p">To môže byť užitočné pri sťahovaní médií, ktoré vyžadujú prihlásenie, napríklad: súkromné videá YouTube.</p>
 <p class="p">Použite jeden z nasledujúcich rozšírení pre získanie súborov cookie z vášho prehliadača:</p>
 <p class="p">Chrome: <span class="code">https://chrome.google.com/webstore/detail/get-cookiestxt-locally/cclelndahbckbenkjhflpdbgdlbecc</span></p>
 <p class="p">Firefox: <span class="code">https://addons.mozilla.org/en-US/firefox/addon/cookies-txt/</span></p>
@@ -143,7 +143,7 @@ document.addEventListener('DOMContentLoaded', function() {
   <path class="yelp-svg-fill" d="m4 3h16c0.554 0 1 0.446 1 1v11h-6v6h-11c-0.554 0-1-0.446-1-1v-16c0-0.554 0.446-1 1-1z"></path>
   <path class="yelp-svg-fill" d="m17 16h4l-5 5v-4c0-0.554 0.446-1 1-1z"></path>
  </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Použite tieto rozšírenia na vlastné riziko.</p></div></div></div>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Tieto rozšírenia používate na vlastné riziko.</p></div></div></div>
 </div>
 <div class="note note-advanced" title="Pokročilé">
 <svg height="24" width="24" version="1.1">
@@ -159,7 +159,7 @@ document.addEventListener('DOMContentLoaded', function() {
   <path class="yelp-svg-fill" d="m8.2435 7.0719-1.9004-3.3145 1.4143-1.4143 3.1596 1.7457z"></path>
   <path class="yelp-svg-fill" d="m11.072 11.757-3.3146 1.9-1.4143-1.414 1.7457-3.1602z"></path>
  </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Default: Žiadny súbor Vybrané</p></div></div></div>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Predvolené: Žiadny vybraný súbor</p></div></div></div>
 </div>
 </dd>
 </dl></div></div></div>

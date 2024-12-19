@@ -76,7 +76,7 @@ namespace Nickvision::TubeConverter::Shared::Models
                     it = m_history.erase(it);
                     continue;
                 }
-                it++;
+                ++it;
             }
         }
         updateDisk();

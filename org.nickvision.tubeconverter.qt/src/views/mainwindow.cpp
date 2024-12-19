@@ -195,6 +195,15 @@ namespace Nickvision::TubeConverter::QT::Views
         event->accept();
     }
 
+    void MainWindow::changeEvent(QEvent* event)
+    {
+        if(event->type() == QEvent::WindowStateChange)
+        {
+            m_controller->setIsWindowActive(isActiveWindow());
+        }
+        QMainWindow::changeEvent(event);
+    }
+
     void MainWindow::onNavigationItemSelected(const QString& id)
     {
         //Ensure new KeyringPage

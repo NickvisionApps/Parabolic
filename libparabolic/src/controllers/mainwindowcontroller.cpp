@@ -3,6 +3,7 @@
 #include <sstream>
 #include <thread>
 #include <libnick/filesystem/userdirectories.h>
+#include <libnick/helpers/codehelpers.h>
 #include <libnick/helpers/stringhelpers.h>
 #include <libnick/localization/documentation.h>
 #include <libnick/localization/gettext.h>
@@ -36,12 +37,13 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         m_dataFileManager{ m_appInfo.getName() },
         m_logger{ UserDirectories::get(ApplicationUserDirectory::LocalData, m_appInfo.getName()) / "log.txt", Logging::LogLevel::Info, false },
         m_keyring{ m_appInfo.getId() },
-        m_downloadManager{ m_dataFileManager.get<Configuration>("config").getDownloaderOptions(), m_dataFileManager.get<DownloadHistory>("history"), m_dataFileManager.get<DownloadRecoveryQueue>("recovery"), m_logger }
+        m_downloadManager{ m_dataFileManager.get<Configuration>("config").getDownloaderOptions(), m_dataFileManager.get<DownloadHistory>("history"), m_dataFileManager.get<DownloadRecoveryQueue>("recovery"), m_logger },
+        m_isWindowActive{ false }
     {
-        m_appInfo.setVersion({ "2024.12.0" });
+        m_appInfo.setVersion({ "2024.12.1-next" });
         m_appInfo.setShortName(_("Parabolic"));
         m_appInfo.setDescription(_("Download web video and audio"));
-        m_appInfo.setChangelog("- Added the ability to toggle the inclusion of a media's id in its title when validated in the app's settings\n- Added the option to export a download's media description to a separate file\n- Restored the ability for Parabolic to accept a URL to validate via command line arguments\n- Fixed an issue where auto-generated subtitles were not being embed in a media file\n- Fixed an issue where downloading media at certain time frames were not respected\n- Fixed an issue where video medias' thumbnails were also cropped when crop audio thumbnails was enabled\n- Fixed an issue where the previously used download quality was not remembered\n- Redesigned the Qt version's user interface with a more modern style\n- Updated yt-dlp to 2024.12.13");
+        m_appInfo.setChangelog("- Fixed an issue where generic video downloads would sometimes incorrectly convert to another file type\n- Fixed an issue where subtitles were not downloaded properly\n- Fixed an issue where desktop notifications were not displayed");
         m_appInfo.setSourceRepo("https://github.com/NickvisionApps/Parabolic");
         m_appInfo.setIssueTracker("https://github.com/NickvisionApps/Parabolic/issues/new");
         m_appInfo.setSupportUrl("https://github.com/NickvisionApps/Parabolic/discussions");
@@ -59,6 +61,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         m_updater = std::make_shared<Updater>(m_appInfo.getSourceRepo());
 #endif
         m_dataFileManager.get<Configuration>("config").saved() += [this](const EventArgs&){ onConfigurationSaved(); };
+        m_downloadManager.downloadCompleted() += [this](const DownloadCompletedEventArgs& args) { onDownloadCompleted(args); };
         //Log information
         if(!m_keyring.isSavingToDisk())
         {
@@ -97,6 +100,11 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         Configuration& config{ m_dataFileManager.get<Configuration>("config") };
         config.setShowDisclaimerOnStartup(showDisclaimerOnStartup);
         config.save();
+    }
+
+    void MainWindowController::setIsWindowActive(bool isWindowActive)
+    {
+        m_isWindowActive = isWindowActive;
     }
 
     Event<EventArgs>& MainWindowController::configurationSaved()
@@ -354,5 +362,29 @@ namespace Nickvision::TubeConverter::Shared::Controllers
             }
         }
         m_downloadManager.setDownloaderOptions(m_dataFileManager.get<Configuration>("config").getDownloaderOptions());
+    }
+
+    void MainWindowController::onDownloadCompleted(const DownloadCompletedEventArgs& args)
+    {
+        if(m_isWindowActive)
+        {
+            return;
+        }
+        CompletedNotificationPreference preference{ m_dataFileManager.get<Configuration>("config").getCompletedNotificationPreference() };
+        if(preference == CompletedNotificationPreference::ForEach)
+        {
+            if(args.getStatus() == DownloadStatus::Success)
+            {
+                m_shellNotificationSent.invoke({ _("Download Finished"), std::vformat(_("{} has finished downloading"), std::make_format_args(CodeHelpers::unmove(args.getPath().filename().string()))), NotificationSeverity::Success });
+            }
+            else
+            {
+                m_shellNotificationSent.invoke({ _("Download Finished With Error"), std::vformat(_("{} has finished with an error"), std::make_format_args(CodeHelpers::unmove(args.getPath().filename().string()))), NotificationSeverity::Error });
+            }
+        }
+        else if(preference == CompletedNotificationPreference::AllCompleted && m_downloadManager.getRemainingDownloadsCount() == 0)
+        {
+            m_shellNotificationSent.invoke({ _("Downloads Finished"), _("All downloads have finished"), NotificationSeverity::Informational });
+        }
     }
 }

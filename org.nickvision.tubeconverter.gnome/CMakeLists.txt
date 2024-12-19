@@ -1,5 +1,6 @@
 if(NOT WIN32)
     set(OUTPUT_NAME "${PROJECT_NAME}.gnome")
+    set(GNOME_NOTIFICATIONS true)
     set(STARTUP_NOTIFY true)
     set(DBUS_ACTIVATABLE true)
 
