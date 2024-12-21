@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2024-12-13 13:51-0500\n"
-"PO-Revision-Date: 2024-12-17 12:00+0000\n"
+"POT-Creation-Date: 2024-12-19 13:18-0500\n"
+"PO-Revision-Date: 2024-12-21 16:04+0000\n"
 "Last-Translator: Peter Vančo <petervanco347@gmail.com>\n"
 "Language-Team: Slovak <https://hosted.weblate.org/projects/"
 "nickvision-tube-converter/docs/sk/>\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=((n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2);\n"
-"X-Generator: Weblate 5.9\n"
+"X-Generator: Weblate 5.10-dev\n"
 
 #. Put one translator per line, in the form NAME <EMAIL>, YEAR1, YEAR2
 msgctxt "_"
@@ -47,7 +47,7 @@ msgid ""
 "This page explains all options for configuring aria2 in Preferences in "
 "<app>Parabolic</app>."
 msgstr ""
-"Na tejto stránke sú vysvetlené všetky možnosti nastavenia aria2 v časti "
+"Na tejto stránke sú vysvetlené všetky možnosti konfigurácie aria2 v časti "
 "Nastavenia v aplikácii <app>Parabolic</app>."
 
 #. (itstool) path: item/title
@@ -69,7 +69,7 @@ msgid ""
 "be displayed in the UI."
 msgstr ""
 "Použitím aria2c sa môže zvýšiť rýchlosť sťahovania, v používateľskom "
-"rozhraní ale nebude zobrazený jeho priebeh."
+"rozhraní ale nebude zobrazený jej priebeh."
 
 #. (itstool) path: note/p
 #: docs/yelp/C/aria.page:29 docs/yelp/C/converter.page:35
@@ -90,8 +90,8 @@ msgid ""
 "This option only applies when using aria2 is enabled. This option is the "
 "same as the <code>-x</code> flag passed to aria2c."
 msgstr ""
-"Táto funkcia platí len vtedy, keď je zapnuté používanie aria2. Táto možnosť "
-"je rovnaká ako príznak <code>x</code> odovzdaný aria2c."
+"Táto funkcia sa používa iba vtedy, keď je zapnuté používanie aria2. Táto "
+"možnosť je rovnaká ako príznak <code>x</code> odovzdaný do aria2c."
 
 #. (itstool) path: item/p
 #: docs/yelp/C/aria.page:37
@@ -118,8 +118,8 @@ msgid ""
 "This option only applies when using aria2 is enabled. This option is the "
 "same as the <code>-k</code> flag passed to aria2c."
 msgstr ""
-"Táto funkcia platí len vtedy, keď je zapnuté používanie aria2. Táto možnosť "
-"je rovnaká ako príznak <code>k</code> odovzdaný aria2c."
+"Táto funkcia sa používa iba vtedy, keď je zapnuté používanie aria2. Táto "
+"možnosť je rovnaká ako príznak <code>k</code> odovzdaný do aria2c."
 
 #. (itstool) path: item/p
 #: docs/yelp/C/aria.page:47
@@ -127,8 +127,8 @@ msgid ""
 "The minimum size, in MiB, of which to split a file. Must be an integer value "
 "between 1 and 1024."
 msgstr ""
-"Minimálna veľkosť v MiB, na ktorú sa má súbor rozdeliť. Musí to byť celé "
-"číslo v rozsahu od 1 do 1024."
+"Minimálna veľkosť v MiB, na ktorú sa má súbor rozdeliť. Musí to byť "
+"celočíselná hodnota od 1 do 1024."
 
 #. (itstool) path: note/p
 #: docs/yelp/C/aria.page:49
@@ -152,8 +152,8 @@ msgid ""
 "This page explains all options for configuring the Converter in Preferences "
 "in <app>Parabolic</app>."
 msgstr ""
-"Na tejto stránke sú vysvetlené všetky možnosti nastavenia konvertora v "
-"Nastaveniach v aplikácii <app>Parabolic</app>."
+"Na tejto stránke sú vysvetlené všetky možnosti konfigurácie konvertora v "
+"časti Nastavenia v aplikácii <app>Parabolic</app>."
 
 #. (itstool) path: item/title
 #: docs/yelp/C/converter.page:25
@@ -166,8 +166,8 @@ msgid ""
 "If enabled, Parabolic will tag a media with its relevant information (title, "
 "genre, etc...) and thumbnail if available."
 msgstr ""
-"Ak je táto funkcia zapnutá, Parabolic označí médium príslušnými informáciami "
-"(názov, žáner atď...) a miniatúrou, ak je k dispozícii."
+"Ak je táto funkcia zapnutá, aplikácia Parabolic priradí médiám príslušné "
+"informácie (názov, žáner atď.) a miniatúru, ak sú k dispozícii."
 
 #. (itstool) path: note/p
 #: docs/yelp/C/converter.page:28 docs/yelp/C/converter.page:42
@@ -187,8 +187,8 @@ msgstr "Vložiť kapitoly"
 msgid ""
 "If enabled, Parabolic will tag a media with chapter information if available."
 msgstr ""
-"Ak je táto funkcia zapnutá, Parabolic označí médium informáciami o kapitole, "
-"ak sú k dispozícii."
+"Ak je táto funkcia zapnutá, aplikácia Parabolic priradí médiám informácie o "
+"kapitolách, ak sú k dostupné."
 
 #. (itstool) path: item/title
 #: docs/yelp/C/converter.page:39
@@ -201,8 +201,8 @@ msgid ""
 "If disabled or if embedding fails, downloaded subtitles will be saved to a "
 "separate file."
 msgstr ""
-"Ak je vypnuté alebo ak sa vloženie nepodarí, stiahnuté titulky sa uložia do "
-"samostatného súboru."
+"Ak je táto funkcia vypnutá alebo ak sa vloženie nepodarí, stiahnuté titulky "
+"sa uložia do samostatného súboru."
 
 #. (itstool) path: item/title
 #: docs/yelp/C/converter.page:46
@@ -222,7 +222,7 @@ msgstr ""
 #: docs/yelp/C/converter.page:48 docs/yelp/C/converter.page:57
 msgid "This option is only configurable if <code>Embed Metadata</code> is on."
 msgstr ""
-"Táto možnosť je nastaviteľná iba pri zapnutom nastavení <code>Vložiť "
+"Táto možnosť je konfigurovateľná iba pri zapnutom nastavení <code>Vložiť "
 "metaúdaje</code>."
 
 #. (itstool) path: item/title
@@ -236,7 +236,7 @@ msgid ""
 "If enabled, Parabolic will clear metadata fields containing the URL and "
 "other identifying information of the media source."
 msgstr ""
-"Ak je táto funkcia zapnutá, aplikácia Parabolic vymaže polia metadát "
+"Ak je táto funkcia zapnutá, aplikácia Parabolic odstráni polia metadát "
 "obsahujúce adresu URL a ďalšie identifikačné informácie o zdroji média."
 
 #. (itstool) path: item/p
@@ -246,7 +246,7 @@ msgid ""
 "<code>synopsis</code>, <code>purl</code> and <code>handler_name</code> in "
 "each stream."
 msgstr ""
-"Polia, ktoré sú vyčistené: <code>komentár</code>, <code>popis</code>, "
+"Polia, ktoré budú odstránené: <code>komentár</code>, <code>popis</code>, "
 "<code>súhrn</code>, <code>purl</code> a <code>handler_name</code> v každom "
 "dátovom toku."
 
@@ -286,8 +286,8 @@ msgid ""
 "This page explains all options for configuring the Downloader in Preferences "
 "in <app>Parabolic</app>."
 msgstr ""
-"Na tejto stránke sú vysvetlené všetky možnosti nastavenia sťahovania v časti "
-"Nastavenia v aplikácii <app>Parabolic</app>."
+"Na tejto stránke sú vysvetlené všetky možnosti konfigurácie sťahovania v "
+"časti Nastavenia v aplikácii <app>Parabolic</app>."
 
 #. (itstool) path: item/title
 #: docs/yelp/C/downloader.page:25
@@ -412,7 +412,7 @@ msgid ""
 "Use one of the following extensions for getting a cookies file from your "
 "browser:"
 msgstr ""
-"Použite jeden z nasledujúcich rozšírení pre získanie súborov cookie z vášho "
+"Na získanie súborov cookie použite jedno z nasledujúcich rozšírení "
 "prehliadača:"
 
 #. (itstool) path: item/p
@@ -421,8 +421,8 @@ msgid ""
 "Chrome: <code>https://chrome.google.com/webstore/detail/get-cookiestxt-"
 "locally/cclelndahbckbenkjhflpdbgdldlbecc</code>"
 msgstr ""
-"Chrome: <code>https://chrome.google.com/webstore/detail/get-cookiestxt-"
-"locally/cclelndahbckbenkjhflpdbgdlbecc</code>"
+"Chrome: <code>https://chrome.google.com/webstore/detail/"
+"get-cookiestxt-locally/cclelndahbckbenkjhflpdbgdldlbecc</code>"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/downloader.page:70
@@ -430,8 +430,8 @@ msgid ""
 "Firefox: <code>https://addons.mozilla.org/en-US/firefox/addon/cookies-txt/</"
 "code>"
 msgstr ""
-"Firefox: <code>https://addons.mozilla.org/en-US/firefox/addon/cookies-txt/</"
-"code>"
+"Firefox: <code>https://addons.mozilla.org/sk/firefox/addon/cookies-txt/"
+"</code>"
 
 #. (itstool) path: note/p
 #: docs/yelp/C/downloader.page:72
@@ -461,7 +461,7 @@ msgid ""
 "<app>Parabolic</app>."
 msgstr ""
 "Na tejto stránke nájdete vysvetlenie všetkých možností konfigurácie "
-"sťahovania v nastaveniach v aplikácii <app>Parabolic</app>."
+"sťahovania v časti Nastavenia v aplikácii <app>Parabolic</app>."
 
 #. (itstool) path: item/title
 #: docs/yelp/C/downloads.page:26
@@ -682,7 +682,7 @@ msgstr "Téma pre používateľské rozhranie."
 #. (itstool) path: note/p
 #: docs/yelp/C/interface.page:28
 msgid "Default: System"
-msgstr "Predvolené: Systém"
+msgstr "Predvolené: Systémová"
 
 #. (itstool) path: item/title
 #: docs/yelp/C/interface.page:32
@@ -729,8 +729,8 @@ msgid ""
 "restart them if necessary if the application crashes and is restarted."
 msgstr ""
 "Ak je táto funkcia zapnutá, bude aplikácia Parabolic sledovať prebiehajúce "
-"sťahovanie a sťahovanie v poradí a v prípade potreby ich znova spustí, ak "
-"aplikácia zlyhá a reštartuje sa."
+"sťahovanie a sťahovania čakajúce v poradí a v prípade potreby ich znova "
+"spustí, ak aplikácia zlyhá a reštartuje sa."
 
 #. (itstool) path: item/title
 #: docs/yelp/C/interface.page:53
@@ -865,7 +865,7 @@ msgid ""
 "This page explains all options for configuring a new download in "
 "<app>Parabolic</app>."
 msgstr ""
-"Táto stránka vysvetľuje všetky možnosti nastavenia nového sťahovania v "
+"Táto stránka vysvetľuje všetky možnosti konfigurácie nového sťahovania v "
 "aplikácii <app>Parabolic</app>."
 
 #. (itstool) path: item/title
@@ -1035,9 +1035,9 @@ msgid ""
 "download by the user. Further subtitle settings can be configured in <link "
 "xref=\"downloads\">preferences</link>."
 msgstr ""
-"Zoznam tituliek, ktoré sú k dispozícii pri médiu a ktoré si môže používateľ "
-"vybrať na stiahnutie. Ďalšie nastavenia tituliek možno nastaviť v <link "
-"xref=\"downloads\">predvoľby</link>."
+"Zoznam titulkov v médiách, ktoré má používateľ k dispozícii na stiahnutie. "
+"Ďalšie konfigurácie titulkov nájdete v <link xref=\"downloads\""
+">nastaveniach</link>."
 
 #. (itstool) path: note/p
 #: docs/yelp/C/newDownload.page:70
@@ -1073,13 +1073,13 @@ msgid ""
 "If enabled, Parabolic will limit the download's speed with the speed "
 "configured in <link xref=\"downloader\">Preferences</link>."
 msgstr ""
-"Ak je táto funkcia zapnutá, Parabolic obmedzí rýchlosť sťahovania pomocou "
-"rýchlosti nastavenej v<link xref=\"downloader\">Nastavenia</link>."
+"Ak je táto funkcia zapnutá, aplikácia Parabolic obmedzí rýchlosť sťahovania "
+"na rýchlosť nastavenú v <link xref=\"downloader\">Nastaveniach</link>."
 
 #. (itstool) path: item/title
 #: docs/yelp/C/newDownload.page:88
 msgid "Export Description"
-msgstr ""
+msgstr "Popis exportu"
 
 #. (itstool) path: item/p
 #: docs/yelp/C/newDownload.page:89
