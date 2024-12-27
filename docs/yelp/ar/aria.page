@@ -4,46 +4,42 @@
 	<link type="guide" xref="index"/>
 	<title type="link">aria2 🛠️</title>
 	<credit type="author copyright">
-		<name>Nicholas Logozzo</name>
+		<name>نيكولاس لوجوزو</name>
 		<years its:translate="no">2023-2024</years>
 	</credit>
 	<credit type="publisher copyright">
-		<name>Nicholas Logozzo</name>
+		<name>نيكولاس لوجوزو</name>
 		<years its:translate="no">2023-2024</years>
 	</credit>
 	<license href="http://creativecommons.org/licenses/by/4.0/" its:translate="no"><p>Creative Commons Attribution 4.0 International License</p></license>
 </info>
 
 <title>aria2</title>
-<p>This page explains all options for configuring aria2 in Preferences in <app>Parabolic</app>.</p>
+<p>توضح هذه الصفحة جميع الخيارات لتكوين aria2 في التفضيلات في <app>Parabolic</app>.</p>
 
 <terms>
     <item>
         <title>إستخدم آريا٢</title>
-        <p>If enabled, Parabolic will use aria2c to download media.</p>
-        <p>Although using aria2c can improve download speed, download progress will not be displayed in the UI.</p>
+        <p>إذا تم التفعيل، سيستخدم Parabolic aria2c لتنزيل الوسائط.</p>
+        <p>على الرغم من أن استخدام aria2c يمكن أن يحسن سرعة التنزيل، إلا أن تقدم التنزيل لن يتم عرضه في واجهة المستخدم.</p>
         <note style="advanced">
-            <p>Default: Off</p>
+            <p>الافتراضي: إيقاف</p>
         </note>
     </item>
     <item>
-        <title>Maximum Connections Per Server</title>
-        <p>
-            This option only applies when using aria2 is enabled. This option is the same as the <code>-x</code> flag passed to aria2c.
-        </p>
-        <p>The maximum number of connection that can be used per server. Must be an integer value between 1 and 32.</p>
+        <title>أقصى عدد من الاتصالات لكل خادم</title>
+        <p>ينطبق هذا الخيار فقط عندما يكون استخدام aria2 مفعلًا. هذا الخيار هو نفسه العلم <code>-x</code> المرسل إلى aria2c.</p>
+        <p>أقصى عدد من الاتصالات التي يمكن استخدامها لكل خادم. يجب أن يكون قيمة عددية صحيحة بين 1 و 32.</p>
         <note style="advanced">
-            <p>Default: 16</p>
+            <p>الافتراضي: 16</p>
         </note>
     </item>
     <item>
-        <title>Minimum Split Size</title>
-        <p>
-            This option only applies when using aria2 is enabled. This option is the same as the <code>-k</code> flag passed to aria2c.
-        </p>
-        <p>The minimum size, in MiB, of which to split a file. Must be an integer value between 1 and 1024.</p>
+        <title>أقل حجم للتقسيم</title>
+        <p>ينطبق هذا الخيار فقط عندما يكون استخدام aria2 مفعلًا. هذا الخيار هو نفسه العلم <code>-k</code> المرسل إلى aria2c.</p>
+        <p>أقل حجم، بوحدات ميجابايت (MiB)، الذي يتم تقسيم الملف عليه. يجب أن يكون قيمة عددية صحيحة بين 1 و 1024.</p>
         <note style="advanced">
-            <p>Default: 20</p>
+            <p>الافتراضي: 20</p>
         </note>
     </item>
 </terms>

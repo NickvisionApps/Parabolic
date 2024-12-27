@@ -2,65 +2,67 @@
 <page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" id="converter" its:version="2.0" xml:lang="ar">
 <info>
 	<link type="guide" xref="index"/>
-	<title type="link">Converter ⚒️</title>
+	<title type="link">محوّل الصيغة ⚒️</title>
 	<credit type="author copyright">
-		<name>Nicholas Logozzo</name>
+		<name>نيكولاس لوجوزو</name>
 		<years its:translate="no">2023-2024</years>
 	</credit>
 	<credit type="publisher copyright">
-		<name>Nicholas Logozzo</name>
+		<name>نيكولاس لوجوزو</name>
 		<years its:translate="no">2023-2024</years>
 	</credit>
 	<license href="http://creativecommons.org/licenses/by/4.0/" its:translate="no"><p>Creative Commons Attribution 4.0 International License</p></license>
 </info>
 
 <title>محوّل الصيغة</title>
-<p>This page explains all options for configuring the Converter in Preferences in <app>Parabolic</app>.</p>
+<p>توضح هذه الصفحة جميع الخيارات لتكوين المحول في التفضيلات في <app>Parabolic</app>.</p>
 
 <terms>
 	<item>
 		<title>دمج بيانات الوصف</title>
-		<p>If enabled, Parabolic will tag a media with its relevant information (title, genre, etc...) and thumbnail if available.</p>
+		<p>إذا تم التفعيل، سيقوم Parabolic بإضافة الوسم للوسائط مع معلوماتها ذات الصلة (العنوان، النوع، إلخ...) والصورة المصغرة إذا كانت متوفرة.</p>
 		<note style="advanced">
-			<p>Default: On</p>
+			<p>الإفتراضي: مفعل</p>
 		</note>
     </item>
     <item>
 		<title>دمج الفصول</title>
-		<p>If enabled, Parabolic will tag a media with chapter information if available.</p>
+		<p>عند التفعيل، بارابولِك سيقوم بوضع علامة للمحتوى بمعلومات القسم ان وجدت.</p>
 		<note style="advanced">
-			<p>Default: Off</p>
+			<p>الافتراضي: إيقاف</p>
 		</note>
 	</item>
     <item>
         <title>دمج الترجمة</title>
-        <p>If disabled or if embedding fails, downloaded subtitles will be saved to a separate file.</p>
+        <p>عند الإيقاف او عند فشل التضمين، الترجمة المُحملة ستُحفظ في ملف منفصل.</p>
         <note style="advanced">
-            <p>Default: On</p>
+            <p>الإفتراضي: مفعل</p>
         </note>
     </item>
     <item>
 		<title>قص صور الصوتيات المصغرة</title>
-		<p>If enabled, Parabolic will crop thumbnails for audio files to be a square resolution.</p>
-        <p>This option is only configurable if <code>Embed Metadata</code> is on.</p>
+		<p>عند التفعيل، بارابولِك سيقوم بقص الصور المصغرة لملفات الصوت لجعلها ذات ابعاد مربعة.</p>
+        <p>هذا الخيار قابل للتعديل عندما يكون 
+<code>Embed Metadata</code>مفعل.</p>
 		<note style="advanced">
-			<p>Default: Off</p>
+			<p>الافتراضي: إيقاف</p>
 		</note>
     </item>
     <item>
 		<title>أزل بيانات المصدر</title>
-		<p>If enabled, Parabolic will clear metadata fields containing the URL and other identifying information of the media source.</p>
-        <p>Fields that are cleared: <code>comment</code>, <code>description</code>, <code>synopsis</code>, <code>purl</code> and <code>handler_name</code> in each stream.</p>
-        <p>This option is only configurable if <code>Embed Metadata</code> is on.</p>
+		<p>عند التفعيل، بارابولِك سيتم مسح حقول البيانات الوصفية التي تحتوي على عنوان URL والمعلومات التعريفية الأخرى للوسائط.</p>
+        <p>الحقول اللي تم مسحها: <code>التعليق</code>، <code>الوصف</code>، <code>الملخص</code>، <code>الرابط</code>، و<code>اسم المعالج</code> في كل تدفق.</p>
+        <p>هذا الخيار قابل للتعديل عندما يكون 
+<code>Embed Metadata</code>مفعل.</p>
 		<note style="advanced">
-			<p>Default: Off</p>
+			<p>الافتراضي: إيقاف</p>
 		</note>
     </item>
     <item>
         <title>مسارات مابعد المعالجة</title>
-        <p>The number of threads to allow the postprocessor (<code>FFmpeg</code>) to use for each download.</p>
+        <p>عدد مؤشرات الترابط (threads) المسموح للمعالج اللاحق (<code>FFmpeg</code>) باستخدامها لكل عملية تنزيل.</p>
         <note style="advanced">
-            <p>Default: The max number of threads available on the system</p>
+            <p>الافتراضي: الحد الأقصى لعدد مؤشرات الترابط المتاحة في النظام</p>
         </note>
     </item>
 </terms>

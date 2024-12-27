@@ -15,35 +15,31 @@
 </info>
 
 <title>aria2</title>
-<p>This page explains all options for configuring aria2 in Preferences in <app>Parabolic</app>.</p>
+<p>이 페이지는 <app>Parabolic</app>의 설정에서 aria2를 구성하는 모든 옵션에 대해 설명합니다.</p>
 
 <terms>
     <item>
         <title>Use aria2</title>
-        <p>If enabled, Parabolic will use aria2c to download media.</p>
-        <p>Although using aria2c can improve download speed, download progress will not be displayed in the UI.</p>
+        <p>활성화되면, Parabolic은 aria2c를 사용하여 미디어를 다운로드합니다.</p>
+        <p>aria2c를 사용하면 다운로드 속도가 향상될 수 있지만, 다운로드 진행 상황은 UI에 표시되지 않습니다.</p>
         <note style="advanced">
-            <p>Default: Off</p>
+            <p>기본값: 꺼짐</p>
         </note>
     </item>
     <item>
-        <title>Maximum Connections Per Server</title>
-        <p>
-            This option only applies when using aria2 is enabled. This option is the same as the <code>-x</code> flag passed to aria2c.
-        </p>
-        <p>The maximum number of connection that can be used per server. Must be an integer value between 1 and 32.</p>
+        <title>서버당 최대 연결 수</title>
+        <p>이 옵션은 aria2 사용이 활성화된 경우에만 적용됩니다. 이 옵션은 aria2c에 전달되는 <code>-x</code> 플래그와 동일합니다.</p>
+        <p>서버당 사용할 수 있는 최대 연결 수입니다. 1과 32 사이의 정수 값이어야 합니다.</p>
         <note style="advanced">
-            <p>Default: 16</p>
+            <p>기본값: 16</p>
         </note>
     </item>
     <item>
-        <title>Minimum Split Size</title>
-        <p>
-            This option only applies when using aria2 is enabled. This option is the same as the <code>-k</code> flag passed to aria2c.
-        </p>
-        <p>The minimum size, in MiB, of which to split a file. Must be an integer value between 1 and 1024.</p>
+        <title>최소 분할 크기</title>
+        <p>이 옵션은 aria2 사용이 활성화된 경우에만 적용됩니다. 이 옵션은 aria2c에 전달되는 <code>-k</code> 플래그와 동일합니다.</p>
+        <p>파일을 분할할 최소 크기(단위: MiB)입니다. 1과 1024 사이의 정수 값이어야 합니다.</p>
         <note style="advanced">
-            <p>Default: 20</p>
+            <p>기본값: 20</p>
         </note>
     </item>
 </terms>

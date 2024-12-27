@@ -2,74 +2,74 @@
 <page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" id="downloader" its:version="2.0" xml:lang="ar">
 <info>
 	<link type="guide" xref="index"/>
-	<title type="link">Downloader 🛠️</title>
+	<title type="link">المحمّل🛠️</title>
 	<credit type="author copyright">
-		<name>Nicholas Logozzo</name>
+		<name>نيكولاس لوجوزو</name>
 		<years its:translate="no">2023-2024</years>
 	</credit>
 	<credit type="publisher copyright">
-		<name>Nicholas Logozzo</name>
+		<name>نيكولاس لوجوزو</name>
 		<years its:translate="no">2023-2024</years>
 	</credit>
 	<license href="http://creativecommons.org/licenses/by/4.0/" its:translate="no"><p>Creative Commons Attribution 4.0 International License</p></license>
 </info>
 
 <title>المحمّل</title>
-<p>This page explains all options for configuring the Downloader in Preferences in <app>Parabolic</app>.</p>
+<p>توضح هذه الصفحة جميع الخيارات لإعداد برنامج التنزيل في التفضيلات داخل تطبيق <app>Parabolic</app>.</p>
 
 <terms>
     <item>
         <title>Verbose Logging</title>
-        <p>If enabled, more verbose logs will be provided by <code>yt-dlp</code> for each download.</p>
+        <p>إذا تم التفعيل، سيتم توفير سجلات أكثر تفصيلاً بواسطة <code>yt-dlp</code> لكل عملية تنزيل.</p>
         <note style="advanced">
-            <p>Default: On</p>
+            <p>الإفتراضي: مفعل</p>
         </note>
     </item>
     <item>
         <title>استخدم "مانع الإعلان لليوتيوب"</title>
-        <p>If enabled, Parabolic will apply the SponsorBlock extension to YouTube downloads.</p>
+        <p>إذا تم التفعيل، سيقوم تطبيق Parabolic بتطبيق إضافة SponsorBlock على تنزيلات YouTube.</p>
         <note>
-            <p>SponsorBlock only works on YouTube videos. However, leaving this setting on will not affect downloads from other sites (i.e. not cause them to fail).</p>
+            <p>ميزة SponsorBlock تعمل فقط على مقاطع فيديو YouTube. ومع ذلك، ترك هذا الإعداد مفعلاً لن يؤثر على التنزيلات من المواقع الأخرى (أي لن يتسبب في فشلها).</p>
         </note>
         <note style="advanced">
-            <p>Default: Off</p>
+            <p>الافتراضي: إيقاف</p>
         </note>
     </item>
     <item>
         <title>حدُّ السرعة</title>
-        <p>A limit, in Ki/s, that is applied to downloads only if they have the advanced option <code>Speed Limit</code> enabled. Must be an integer value between 512 and 10240.</p>
+        <p>حد السرعة، بوحدة Ki/s، يُطبّق على التنزيلات فقط إذا كان الخيار المتقدم <code>حد السرعة</code> مفعلاً. يجب أن تكون القيمة عددًا صحيحًا بين 512 و10240.</p>
 		<note style="advanced">
-			<p>Default: 1024</p>
+			<p>افتراضي:1024</p>
 		</note>
     </item>
     <item>
         <title>رابط الوكيل</title>
-        <p>The url of the proxy server to use.</p>
+        <p>عنوان URL الخاص بخادم الوكيل لاستخدامه.</p>
         <note style="advanced">
-			<p>Default: No URL</p>
+			<p>الافتراضي: بلا رابط</p>
 		</note>
     </item>
     <item>
         <title>معرّفات الإرتباط من المتصفح</title>
-        <p>A browser in which to read cookies from and pass to yt-dlp's download engine.</p>
-        <p>This may be useful when downloading media that requires a login, for example: private YouTube videos.</p>
-        <p>This option is on available on non sandboxed platforms.</p>
+        <p>متصفح يتم استخدامه لقراءة ملفات تعريف الارتباط (Cookies) وتمريرها إلى محرك التنزيل الخاص بـ <code>yt-dlp</code>.</p>
+        <p>قد يكون هذا مفيد عند تحميل محتوى يتطلب تسجيل الدخول،مثال:فديوهات اليوتوب الخاصة</p>
+        <p>هذا الخيار متاح فقط على الأنظمة غير المعزولة (non-sandboxed).</p>
 		<note style="advanced">
-			<p>Default: None</p>
+			<p>الافتراضي: لا شيء</p>
 		</note>
     </item>
     <item>
         <title>مِلَفّ تعريف الارتباط</title>
-        <p>A .txt file of cookies to pass to yt-dlp when download engine.</p>
-        <p>This may be useful when downloading media that requires a login, for example: private YouTube videos.</p>
-        <p>Use one of the following extensions for getting a cookies file from your browser:</p>
-        <p>Chrome: <code>https://chrome.google.com/webstore/detail/get-cookiestxt-locally/cclelndahbckbenkjhflpdbgdldlbecc</code></p>
+        <p>ملف نصي يحتوي على ملفات تعريف الارتباط لتمريرها إلى yt-dlp عند تشغيل محرك التنزيل.</p>
+        <p>قد يكون هذا مفيد عند تحميل محتوى يتطلب تسجيل الدخول،مثال:فديوهات اليوتوب الخاصة</p>
+        <p>استخدم أحد الامتدادات التالية للحصول على ملف تعريف الارتباط من متصفحك:</p>
+        <p>كروم: https://chrome.google.com/webstore/detail/get-cookiestxt-locally/cclelndahbckbenkjhflpdbgdldlbecc</p>
         <p>Firefox: <code>https://addons.mozilla.org/en-US/firefox/addon/cookies-txt/</code></p>
         <note>
-            <p>Use these extensions at your own risk.</p>
+            <p>استخدم هذه الإضافات على مسؤوليتك الخاصة.</p>
         </note>
 		<note style="advanced">
-			<p>Default: No File Selected</p>
+			<p>الافتراضي: لم يتم تحديد ملف</p>
 		</note>
     </item>
 </terms>

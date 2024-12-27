@@ -47,8 +47,8 @@
     </item>
     <item>
 		<title>Обрезать миниатюры для аудио</title>
-		<p>If enabled, Parabolic will crop thumbnails for audio files to be a square resolution.</p>
-        <p>This option is only configurable if <code>Embed Metadata</code> is on.</p>
+		<p>Если этот параметр включен, Parabolic будет обрезать миниатюры аудиофайлов до квадратного разрешения.</p>
+        <p>Доступно только если <code>Встраивание метаданных</code> включено.</p>
 		<note style="advanced">
 			<p>По умолчанию: Выключено</p>
 		</note>
@@ -57,16 +57,16 @@
 		<title>Удалить метаданные об источнике</title>
 		<p>Если включено, Parabolic будет очищать метаданные, содержащие URL и другую информацию, по которой можно отследить источник файла.</p>
         <p>Следующие поля будут удалены: <code>comment</code>, <code>description</code>, <code>synopsis</code>, <code>purl</code> и <code>handler_name</code> в каждой дорожке.</p>
-        <p>This option is only configurable if <code>Embed Metadata</code> is on.</p>
+        <p>Доступно только если <code>Встраивание метаданных</code> включено.</p>
 		<note style="advanced">
 			<p>По умолчанию: Выключено</p>
 		</note>
     </item>
     <item>
-        <title>Postprocessing Threads</title>
-        <p>The number of threads to allow the postprocessor (<code>FFmpeg</code>) to use for each download.</p>
+        <title>Потоки постобработки</title>
+        <p>Количество потоков, которое постпроцессор (<code>FFmpeg</code>) может использовать для каждой загрузки.</p>
         <note style="advanced">
-            <p>Default: The max number of threads available on the system</p>
+            <p>По умолчанию: максимальное количество потоков, доступных в системе</p>
         </note>
     </item>
 </terms>
