@@ -42,6 +42,16 @@ namespace Nickvision::TubeConverter::Shared::Models
          */
         static std::optional<MediaFileType> parse(std::string value);
         /**
+         * @brief Gets the number of supported video file types.
+         * @return The number of video file types
+         */
+        static int getVideoFileTypeCount();
+        /**
+         * @brief Gets the number of supported audio file types.
+         * @return The number of audio file types
+         */
+        static int getAudioFileTypeCount();
+        /**
          * @brief Gets the file extension (with the .) of the media file type.
          * @return The dot extension of the media file type
          */

@@ -66,6 +66,16 @@ namespace Nickvision::TubeConverter::Shared::Models
         return std::nullopt;
     }
 
+    int MediaFileType::getVideoFileTypeCount()
+    {
+        return 6;
+    }
+
+    int MediaFileType::getAudioFileTypeCount()
+    {
+        return 6;
+    }
+
     std::string MediaFileType::getDotExtension() const
     {
         if(m_value == MediaFileTypeValue::Video || m_value == MediaFileTypeValue::Audio)

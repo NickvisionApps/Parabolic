@@ -2,7 +2,7 @@
 <page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" id="downloads" its:version="2.0" xml:lang="ru">
 <info>
 	<link type="guide" xref="index"/>
-	<title type="link">Downloads 🌐</title>
+	<title type="link">Загрузки 🌐</title>
 	<credit type="author copyright">
 		<name>Николас Логоццо</name>
 		<years its:translate="no">2023-2024</years>
@@ -20,8 +20,8 @@
     </mal:credit>
   </info>
 
-<title>Downloads</title>
-<p>This page explains all options for configuring Downloads in Preferences in <app>Parabolic</app>.</p>
+<title>Загрузки</title>
+<p>Эта страница объясняет все опции по настройке загрузок в параметрах <app>Parabolic</app>.</p>
 
 
 <terms>
@@ -38,23 +38,23 @@
         <p>Если включено, Parabolic будет перезаписывать существующие файлы.</p>
         <p>Например, если файл с именем <code>movie.mp4</code> существует в папке сохранения, а новый файл создаётся с именем <code>movie</code>, в файл <code>movie.mp4</code> будет записано новое содержимое.</p>
         <note>
-            <p>Parabolic will detect downloads that should be resumed and avoid this setting when recovering or retrying failed downloads</p>
+            <p>Parabolic обнаружит загрузки, которые следует возобновить, и избегает этой настройки при восстановлении или повторной попытке неудачных загрузок</p>
         </note>
         <note style="advanced">
             <p>По умолчанию: Включено</p>
         </note>
     </item>
     <item>
-		<title>Limit Filename Characters</title>
-		<p>Restricts characters in filenames to only those supported by Windows.</p>
-        <p>This option is only available on Linux.</p>
+		<title>Ограничение количества символов в имени файла</title>
+		<p>Ограничивает символы в именах файлов только теми, которые поддерживаются Windows.</p>
+        <p>Эта опция доступна только в Linux.</p>
 		<note style="advanced">
 			<p>По умолчанию: Выключено</p>
 		</note>
     </item>
     <item>
-        <title>Included Media Id in Title After Validation</title>
-        <p>Whether or not to included the media's id in the title (file name) when validated.</p>
+        <title>Включенный идентификатор носителя в заголовок после проверки</title>
+        <p>Включать ли идентификатор носителя в заголовок (имя файла) при проверке.</p>
         <note style="advanced">
             <p>По умолчанию: Включено</p>
         </note>
@@ -68,16 +68,16 @@
     </item>
     <item>
         <title>Preferred Video Codec</title>
-        <p>The video codec Parabolic should prefer when selecting media formats to download.</p>
+        <p>Видеокодек Parabolic следует отдавать предпочтение при выборе медиаформатов для загрузки.</p>
         <note style="advanced">
-            <p>Default: Any</p>
+            <p>По умолчанию: Любой</p>
         </note>
     </item>
     <item>
         <title>Preferred Subtitle Format</title>
-        <p>The file format Parabolic should ensure all downloaded subtitles are downloaded as.</p>
+        <p>Формат файла Parabolic должен гарантировать загрузку всех загруженных субтитров в формате.</p>
         <note style="advanced">
-            <p>Default: Any</p>
+            <p>По умолчанию: Любой</p>
         </note>
     </item>
 </terms>

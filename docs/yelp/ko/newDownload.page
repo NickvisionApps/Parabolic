@@ -2,7 +2,7 @@
 <page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" id="newDownload" its:version="2.0" xml:lang="ko">
 <info>
 	<link type="guide" xref="index"/>
-	<title type="link">New Download 🆕</title>
+	<title type="link">새 다운로드 🆕</title>
 	<credit type="author copyright">
 		<name>Nicholas Logozzo</name>
 		<years its:translate="no">2023-2024</years>
@@ -14,99 +14,99 @@
 	<license href="http://creativecommons.org/licenses/by/4.0/" its:translate="no"><p>Creative Commons Attribution 4.0 International License</p></license>
 </info>
 
-<title>New Download</title>
-<p>This page explains all options for configuring a new download in <app>Parabolic</app>.</p>
+<title>새 다운로드</title>
+<p>이 페이지는 <app>Parabolic</app>에서 새 다운로드를 구성하는 모든 옵션에 대해 설명합니다.</p>
 
 <terms>
     <item>
       <title>Media URL</title>
-      <p>The URL of the media to download. Must be a valid ("valid" meaning syntactically correct) http or https link.</p>
+      <p>다운로드할 미디어의 URL입니다. 유효한("유효"는 구문적으로 올바른) http 또는 https 링크여야 합니다.</p>
       <note>
-            <p>If a valid URL is found inside the clipboard upon opening the Add Download dialog, the URL will be automatically pasted in the URL entry row.</p>
+            <p>유효한 URL이 클립보드에 복사된 상태로 "다운로드 추가" 대화 상자를 열면, URL이 자동으로 URL 입력란에 붙여넣기됩니다.</p>
       </note>
     </item>
     <item>
       <title>Authenticate</title>
-      <p>If enabled, the user will be asked to provide a username and/or password to pass to yt-dlp when downloading.</p>
-        <p>If credentials are found in the keyring, the user can instead chose from a list of named credentials to use (or continue to manually enter a credential)</p>
+      <p>활성화되면, 사용자는 다운로드할 때 yt-dlp에 전달할 사용자 이름과/또는 비밀번호를 제공하라는 요청을 받게 됩니다.</p>
+        <p>키링에 자격 증명이 저장되어 있으면, 사용자는 자격 증명을 수동으로 입력하는 대신 저장된 자격 증명 목록에서 선택할 수 있습니다</p>
 		<note style="advanced">
-			<p>Not all websites support passing usernames and passwords to yt-dlp. For example, YouTube does NOT support this feature.</p>
-            <p>For these sites that don't support passing credentials, it is recommended to select a browser to use cookies from in Preferences instead.</p>
+			<p>모든 웹사이트가 사용자 이름과 비밀번호를 yt-dlp에 전달하는 기능을 지원하는 것은 아닙니다. 예를 들어, YouTube는 이 기능을 지원하지 않습니다.</p>
+            <p>이러한 자격 증명 전달을 지원하지 않는 사이트의 경우, 대신 환경 설정에서 쿠키를 사용할 브라우저를 선택하는 것이 권장됩니다.</p>
 		</note>
     </item>
     <item>
 		<title>File Type</title>
-		<p>The file type of which to download the media as.</p>
+		<p>미디어를 다운로드할 파일 형식입니다.</p>
         <note>
-            <p>The previously used file type will be remembered and pre-selected for the next download.</p>
+            <p>이전에 사용한 파일 형식은 기억되어 다음 다운로드에서 자동으로 선택됩니다.</p>
         </note>
         <note style="advanced">
-            <p>Selecting the <code>Video (Generic)</code> or <code>Audio (Generic)</code> file types will cause Parabolic to download the media in the original file type of the media without performing any conversions.</p>
+            <p><code>Video (Generic)</code> 또는 <code>Audio (Generic)</code> 파일 형식을 선택하면, Parabolic은 미디어의 원본 파일 형식으로 미디어를 다운로드하며, 변환을 수행하지 않습니다.</p>
         </note>
     </item>
     <item>
 		<title>Quality</title>
-		<p>If the file type is a video type, the listed qualities will be the resolutions of the media available.</p>
-        <p>If the file type is an audio type, the listed qualities will be the audio bitrates of the media available.</p>
+		<p>파일 형식이 비디오일 경우, 나열된 품질은 사용 가능한 미디어의 해상도입니다.</p>
+        <p>파일 형식이 오디오인 경우, 나열된 품질은 사용 가능한 미디어의 오디오 비트레이트입니다.</p>
         <note>
-            <p>The previously used quality will be remembered and pre-selected for the next download.</p>
+            <p>이전에 사용한 품질은 기억되어 다음 다운로드에서 자동으로 선택됩니다.</p>
         </note>
     </item>
     <item>
 		<title>Audio Language</title>
-		<p>The language of which to use from the audio part of a media download.</p>
-        <p>If no additional languages are available, <code>Default</code> will be the only option.</p>
+		<p>미디어 다운로드에서 오디오 부분에 사용할 언어입니다.</p>
+        <p>추가 언어가 없으면, <code>기본값</code>만 선택할 수 있는 옵션이 됩니다.</p>
         <note>
-            <p>The previously used state will be remembered and pre-selected for the next download.</p>
+            <p>이전에 사용한 상태는 기억되어 다음 다운로드에서 자동으로 선택됩니다.</p>
         </note>
     </item>
     <item>
 		<title>Subtitles</title>
-		<p>The list of subtitles available by the media that can be selected for download by the user. Further subtitle settings can be configured in <link xref="downloads">preferences</link>.</p>
+		<p>미디어에서 사용할 수 있는 자막 목록으로, 사용자가 다운로드할 자막을 선택할 수 있습니다. 추가적인 자막 설정은 <link xref="downloads">환경 설정</link>에서 구성할 수 있습니다.</p>
         <note>
-            <p>The previously selected subtitles will be remembered and pre-selected for the next download.</p>
+            <p>이전에 선택한 자막은 기억되어 다음 다운로드에서 자동으로 선택됩니다.</p>
         </note>
     </item>
     <item>
-        <title>Split Chapters</title>
-        <p>If enabled, Parabolic will split a video download into multiple smaller files based on its chapters.</p>
+        <title>챕터 분할</title>
+        <p>활성화되면, Parabolic은 비디오 다운로드를 챕터를 기준으로 여러 개의 작은 파일로 분할합니다.</p>
         <note>
-            <p>The previously used state will be remembered and pre-selected for the next download.</p>
+            <p>이전에 사용한 상태는 기억되어 다음 다운로드에서 자동으로 선택됩니다.</p>
         </note>
     </item>
     <item>
 		<title>Limit Download Speed</title>
-		<p>If enabled, Parabolic will limit the download's speed with the speed configured in <link xref="downloader">Preferences</link>.</p>
+		<p>활성화되면, Parabolic은 <link xref="downloader">환경 설정</link>에서 구성된 속도로 다운로드 속도를 제한합니다.</p>
         <note>
-            <p>The previously used state will be remembered and pre-selected for the next download.</p>
+            <p>이전에 사용한 상태는 기억되어 다음 다운로드에서 자동으로 선택됩니다.</p>
         </note>
     </item>
     <item>
 		<title>Export Description</title>
-		<p>If enabled, Parabolic will export the media's description to a <code>.description</code> file alongside the downloaded file.</p>
+		<p>활성화되면, Parabolic은 미디어의 설명을 <code>.description</code> 파일로 다운로드한 파일과 함께 내보냅니다.</p>
         <note>
-            <p>The previously used state will be remembered and pre-selected for the next download.</p>
+            <p>이전에 사용한 상태는 기억되어 다음 다운로드에서 자동으로 선택됩니다.</p>
         </note>
     </item>
     <item>
-		<title>Time Frame</title>
-		<p>The user can enter a start time frame and an end time frame to download a specific section of the media.</p>
+		<title>시간 범위</title>
+		<p>사용자는 시작 시간 범위와 종료 시간 범위를 입력하여 미디어의 특정 부분을 다운로드할 수 있습니다.</p>
         <note style="advanced">
-			<p>Default: The whole media length</p>
+			<p>기본값: 전체 미디어 길이</p>
 		</note>
     </item>
     <item>
 		<title>Save Folder</title>
-		<p>The folder at which to save the download to.</p>
+		<p>다운로드를 저장할 폴더입니다.</p>
         <note>
-            <p>The previously used folder will be remembered and pre-selected for the next download.</p>
+            <p>이전에 사용한 폴더는 기억되어 다음 다운로드에서 자동으로 선택됩니다.</p>
         </note>
     </item>
     <item>
 		<title>File Name</title>
-        <p>The file name to use when saving the download.</p>
+        <p>다운로드를 저장할 때 사용할 파일 이름입니다.</p>
 		<note style="advanced">
-			<p>Default: The title of the media</p>
+			<p>기본값: 미디어의 제목</p>
 		</note>
     </item>
 </terms>

@@ -7,11 +7,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-12-19 13:18-0500\n"
+"POT-Creation-Date: 2024-12-27 11:34-0500\n"
 "PO-Revision-Date: 2024-12-22 11:11+0000\n"
 "Last-Translator: 이우인 <uin5951@naver.com>\n"
-"Language-Team: Korean <https://hosted.weblate.org/projects/"
-"nickvision-tube-converter/app/ko/>\n"
+"Language-Team: Korean <https://hosted.weblate.org/projects/nickvision-tube-"
+"converter/app/ko/>\n"
 "Language: ko\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -124,6 +124,7 @@ msgid "translator-credits"
 msgstr "번역자 크레딧"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:266
+#, fuzzy, c++-format
 msgid "Recovered {} download"
 msgid_plural "Recovered {} downloads"
 msgstr[0] ""
@@ -145,6 +146,7 @@ msgid "Download Finished"
 msgstr "다운로드 완료"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:378
+#, c++-format
 msgid "{} has finished downloading"
 msgstr "{}의 다운로드가 완료되었습니다"
 
@@ -153,6 +155,7 @@ msgid "Download Finished With Error"
 msgstr "다운로드가 실패했습니다"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:382
+#, c++-format
 msgid "{} has finished with an error"
 msgstr "{}의 작업이 오류로 종료되었습니다"
 
@@ -165,18 +168,22 @@ msgid "All downloads have finished"
 msgstr "모든 다운로드가 완료되었습니다"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:21
+#, c++-format
 msgid "{:.2f} GiB/s"
 msgstr "{:.2f} GiB/초"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:25
+#, c++-format
 msgid "{:.2f} MiB/s"
 msgstr "{:.2f} MiB/초"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:29
+#, c++-format
 msgid "{:.2f} KiB/s"
 msgstr "{:.2f} KiB/초"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:33
+#, c++-format
 msgid "{:.2f} B/s"
 msgstr "{:.2f} B/초"
 
@@ -186,11 +193,13 @@ msgstr "오류: 파일이 이미 존재하며 덮어쓰기가 비활성화되어
 
 #: libparabolic/src/models/download.cpp:114
 msgid "WARNING: Using ffmpeg to download. Progress will not be shown."
-msgstr "경고: ffmpeg를 사용하여 다운로드 중입니다. 진행 상황이 표시되지 않습니다."
+msgstr ""
+"경고: ffmpeg를 사용하여 다운로드 중입니다. 진행 상황이 표시되지 않습니다."
 
 #: libparabolic/src/models/download.cpp:118
 msgid "WARNING: Using aria2 to download. Progress will not be shown."
-msgstr "경고: aria2를 사용하여 다운로드 중입니다. 진행 상황이 표시되지 않습니다."
+msgstr ""
+"경고: aria2를 사용하여 다운로드 중입니다. 진행 상황이 표시되지 않습니다."
 
 #: libparabolic/src/models/subtitlelanguage.cpp:38
 msgid "Auto-generated"
@@ -920,8 +929,9 @@ msgstr "소스 데이터 제거"
 msgid ""
 "If enabled, Parabolic will clear metadata fields containing identifying "
 "download information."
-msgstr "활성화되면, Parabolic은 다운로드 정보를 포함하는 메타데이터 필드를 "
-"삭제합니다."
+msgstr ""
+"활성화되면, Parabolic은 다운로드 정보를 포함하는 메타데이터 필드를 삭제합니"
+"다."
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:302
 #: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:101
@@ -1053,10 +1063,12 @@ msgid "No Subtitles Available"
 msgstr "사용 가능한 자막이 없습니다"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:216
+#, c++-format
 msgid "{} items"
 msgstr "{} 항목"
 
 #: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:15
+#, c++-format
 msgid ""
 "{} needs a credential to download.\n"
 "Please select or enter one to use."
@@ -1146,9 +1158,9 @@ msgid ""
 "misuse of this program that may violate local copyright/DMCA laws. Users use "
 "this application at their own risk."
 msgstr ""
-"Nickvision Parabolic의 저자는 이 프로그램의 오용으로 인해 발생할 수 있는 "
-"지역 저작권/DMCA 법률 위반에 대해 책임을 지지 않습니다. 사용자는 이 "
-"애플리케이션을 자신의 책임 하에 사용합니다."
+"Nickvision Parabolic의 저자는 이 프로그램의 오용으로 인해 발생할 수 있는 지"
+"역 저작권/DMCA 법률 위반에 대해 책임을 지지 않습니다. 사용자는 이 애플리케이"
+"션을 자신의 책임 하에 사용합니다."
 
 #: org.nickvision.tubeconverter.gnome/src/views/mainwindow.cpp:151
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:170
@@ -1182,6 +1194,7 @@ msgid "Changelog:"
 msgstr "변경 사항:"
 
 #: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:39
+#, c++-format
 msgid ""
 "Developers:\n"
 "{}\n"
@@ -1254,18 +1267,22 @@ msgstr "항목"
 msgid ""
 "The url provided is invalid or unable to be reached. Check the url, the "
 "authentication used, and the selected browser for cookies in settings."
-msgstr "제공된 URL이 유효하지 않거나 접근할 수 없습니다. URL, 사용된 인증 정보, "
-"설정에서 선택한 브라우저의 쿠키를 확인하세요."
+msgstr ""
+"제공된 URL이 유효하지 않거나 접근할 수 없습니다. URL, 사용된 인증 정보, 설정"
+"에서 선택한 브라우저의 쿠키를 확인하세요."
 
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:234
+#, c++-format
 msgid "Items ({})"
 msgstr "항목 ({})"
 
 #. Localize Strings
 #: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:20
+#, c++-format
 msgid "{} needs a credential to download. Please select or enter one to use."
-msgstr "{}는 다운로드를 위한 자격 증명이 필요합니다. 사용할 자격 증명을 선택하거나 "
-"입력하세요."
+msgstr ""
+"{}는 다운로드를 위한 자격 증명이 필요합니다. 사용할 자격 증명을 선택하거나 입"
+"력하세요."
 
 #: org.nickvision.tubeconverter.qt/src/views/keyringpage.cpp:35
 msgid "Enter name here"
@@ -1288,7 +1305,8 @@ msgstr "경고"
 msgid ""
 "The keyring is not saving changes to disk. Any changes made will be lost "
 "when the application closes."
-msgstr "키링이 변경 사항을 디스크에 저장하지 않습니다. 애플리케이션을 종료하면 변경 "
+msgstr ""
+"키링이 변경 사항을 디스크에 저장하지 않습니다. 애플리케이션을 종료하면 변경 "
 "사항이 손실됩니다."
 
 #: org.nickvision.tubeconverter.qt/src/views/keyringpage.cpp:70

@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <dt class="terms">Аутентификация</dt>
 <dd class="terms">
 <p class="p">Если включено, пользователь сможет предоставить имя пользователя и/или пароль для передачи yt-dlp при загрузке.</p>
-<p class="p">If credentials are found in the keyring, the user can instead chose from a list of named credentials to use (or continue to manually enter a credential)</p>
+<p class="p">Если учетные данные найдены в связке ключей, пользователь может выбрать учётные данные из списка (или продолжить ввод учетных данных вручную)</p>
 <div class="note note-advanced" title="Подробности">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', function() {
  </g>
 </svg><div class="inner"><div class="region"><div class="contents">
 <p class="p">Не все сайты поддерживают аутентификацию по имени пользователя и паролю. Например, YouTube НЕ поддерживает эту функцию.</p>
-<p class="p">For these sites that don't support passing credentials, it is recommended to select a browser to use cookies from in Preferences instead.</p>
+<p class="p">Для сайтов, которые не поддерживают передачу учетных данных, рекомендуется выбрать браузер для использования файлов cookie в приложениях.</p>
 </div></div></div>
 </div>
 </dd>
@@ -81,13 +81,13 @@ document.addEventListener('DOMContentLoaded', function() {
   <path class="yelp-svg-fill" d="m8.2435 7.0719-1.9004-3.3145 1.4143-1.4143 3.1596 1.7457z"></path>
   <path class="yelp-svg-fill" d="m11.072 11.757-3.3146 1.9-1.4143-1.414 1.7457-3.1602z"></path>
  </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Selecting the <span class="code">Video (Generic)</span> or <span class="code">Audio (Generic)</span> file types will cause Parabolic to download the media in the original file type of the media without performing any conversions.</p></div></div></div>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Выбор типов файлов <span class="code">Видео (общее)</span> или <span class="code">Аудио (общее)</span> приведет к тому, что Parabolic загрузит медиафайл в исходном типе файла мультимедиа без выполнения каких-либо преобразований.</p></div></div></div>
 </div>
 </dd>
 <dt class="terms">Качество</dt>
 <dd class="terms">
 <p class="p">Если выбранный тип файла является видео, будут перечислены доступные разрешения видео.</p>
-<p class="p">If the file type is an audio type, the listed qualities will be the audio bitrates of the media available.</p>
+<p class="p">Если выбранный тип файла является аудио, будут перечислены доступные битрейты.</p>
 <div class="note" title="Примечание">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -99,8 +99,8 @@ document.addEventListener('DOMContentLoaded', function() {
 </dd>
 <dt class="terms">Язык аудио</dt>
 <dd class="terms">
-<p class="p">The language of which to use from the audio part of a media download.</p>
-<p class="p">If no additional languages are available, <span class="code">Default</span> will be the only option.</p>
+<p class="p">Язык, который будет использоваться в аудиочасти загрузки мультимедиа.</p>
+<p class="p">Если дополнительные языки недоступны, единственным вариантом будет <span class="code">По умолчанию</span>.</p>
 <div class="note" title="Примечание">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -112,19 +112,19 @@ document.addEventListener('DOMContentLoaded', function() {
 </dd>
 <dt class="terms">Subtitles</dt>
 <dd class="terms">
-<p class="p">The list of subtitles available by the media that can be selected for download by the user. Further subtitle settings can be configured in <span class="link"><a href="downloads.html" title="Downloads">preferences</a></span>.</p>
+<p class="p">Список доступных субтитров, которые пользователь может выбрать для загрузки. Дополнительные настройки субтитров можно настроить в <span class="link"><a href="downloads.html" title="Загрузки">настройках</a></span>.</p>
 <div class="note" title="Примечание">
 <svg height="24" width="24" version="1.1">
  <g>
   <path class="yelp-svg-fill" d="m4 3h16c0.554 0 1 0.446 1 1v11h-6v6h-11c-0.554 0-1-0.446-1-1v-16c0-0.554 0.446-1 1-1z"></path>
   <path class="yelp-svg-fill" d="m17 16h4l-5 5v-4c0-0.554 0.446-1 1-1z"></path>
  </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">The previously selected subtitles will be remembered and pre-selected for the next download.</p></div></div></div>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Ранее выбранные субтитры будут запоминаться и предварительно выбраны для следующей загрузки.</p></div></div></div>
 </div>
 </dd>
 <dt class="terms">Разделить по главам</dt>
 <dd class="terms">
-<p class="p">If enabled, Parabolic will split a video download into multiple smaller files based on its chapters.</p>
+<p class="p">Если включено, Parabolic разделит видео на части в соответствии с его оглавлением.</p>
 <div class="note" title="Примечание">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -134,7 +134,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </svg><div class="inner"><div class="region"><div class="contents"><p class="p">Выбранное состояние переключателя будет сохранено и автоматически выбрано в следующий раз.</p></div></div></div>
 </div>
 </dd>
-<dt class="terms">Limit Download Speed</dt>
+<dt class="terms">Ограничение скорости скачивания</dt>
 <dd class="terms">
 <p class="p">Если включено, Parabolic ограничит скорость загрузки в соответствии с выбранным в <span class="link"><a href="downloader.html" title="Загрузчик">Настройках</a></span> ограничением.</p>
 <div class="note" title="Примечание">
@@ -146,9 +146,9 @@ document.addEventListener('DOMContentLoaded', function() {
 </svg><div class="inner"><div class="region"><div class="contents"><p class="p">Выбранное состояние переключателя будет сохранено и автоматически выбрано в следующий раз.</p></div></div></div>
 </div>
 </dd>
-<dt class="terms">Export Description</dt>
+<dt class="terms">Экспортирование описания</dt>
 <dd class="terms">
-<p class="p">If enabled, Parabolic will export the media's description to a <span class="code">.description</span> file alongside the downloaded file.</p>
+<p class="p">Если этот параметр включен, Parabolic экспортирует описание мультимедиа в файл <span class="code">.description</span> рядом с загруженным файлом.</p>
 <div class="note" title="Примечание">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -158,9 +158,9 @@ document.addEventListener('DOMContentLoaded', function() {
 </svg><div class="inner"><div class="region"><div class="contents"><p class="p">Выбранное состояние переключателя будет сохранено и автоматически выбрано в следующий раз.</p></div></div></div>
 </div>
 </dd>
-<dt class="terms">Time Frame</dt>
+<dt class="terms">Временные рамки</dt>
 <dd class="terms">
-<p class="p">The user can enter a start time frame and an end time frame to download a specific section of the media.</p>
+<p class="p">Пользователь может ввести временные рамки начала и окончания, чтобы загрузить определенную часть мультимедиа.</p>
 <div class="note note-advanced" title="Подробности">
 <svg height="24" width="24" version="1.1">
  <g>
@@ -175,7 +175,7 @@ document.addEventListener('DOMContentLoaded', function() {
   <path class="yelp-svg-fill" d="m8.2435 7.0719-1.9004-3.3145 1.4143-1.4143 3.1596 1.7457z"></path>
   <path class="yelp-svg-fill" d="m11.072 11.757-3.3146 1.9-1.4143-1.414 1.7457-3.1602z"></path>
  </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Default: The whole media length</p></div></div></div>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">По умолчанию: Целиком</p></div></div></div>
 </div>
 </dd>
 <dt class="terms">Папка сохранения</dt>
