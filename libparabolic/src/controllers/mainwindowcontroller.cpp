@@ -40,10 +40,10 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         m_downloadManager{ m_dataFileManager.get<Configuration>("config").getDownloaderOptions(), m_dataFileManager.get<DownloadHistory>("history"), m_dataFileManager.get<DownloadRecoveryQueue>("recovery"), m_logger },
         m_isWindowActive{ false }
     {
-        m_appInfo.setVersion({ "2024.12.1" });
+        m_appInfo.setVersion({ "2024.12.2-next" });
         m_appInfo.setShortName(_("Parabolic"));
         m_appInfo.setDescription(_("Download web video and audio"));
-        m_appInfo.setChangelog("- Fixed an issue where generic video downloads would sometimes incorrectly convert to another file type\n- Fixed an issue where subtitles were not downloaded properly\n- Fixed an issue where desktop notifications were not displayed");
+        m_appInfo.setChangelog("- Updated yt-dlp to 2024.12.23");
         m_appInfo.setSourceRepo("https://github.com/NickvisionApps/Parabolic");
         m_appInfo.setIssueTracker("https://github.com/NickvisionApps/Parabolic/issues/new");
         m_appInfo.setSupportUrl("https://github.com/NickvisionApps/Parabolic/discussions");
