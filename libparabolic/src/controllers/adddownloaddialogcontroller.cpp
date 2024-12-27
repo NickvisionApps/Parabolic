@@ -135,7 +135,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
             const Media& media{ m_urlInfo->get(0) };
             if(media.getType() == MediaType::Audio)
             {
-                fileTypeIndex += 5;
+                fileTypeIndex += MediaFileType::getVideoFileTypeCount();
                 type = static_cast<MediaFileType::MediaFileTypeValue>(fileTypeIndex);
             }
             for(const Format& format : media.getFormats())
@@ -302,7 +302,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         options.setCredential(m_credential);
         if(media.getType() == MediaType::Audio)
         {
-            fileTypeIndex += 5; 
+            fileTypeIndex += MediaFileType::getVideoFileTypeCount();
         }
         options.setFileType(static_cast<MediaFileType::MediaFileTypeValue>(fileTypeIndex));
         options.setAvailableFormats(m_urlInfo->get(0).getFormats());
