@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-12-27 11:34-0500\n"
+"POT-Creation-Date: 2024-12-27 12:06-0500\n"
 "PO-Revision-Date: 2024-10-03 18:11+0000\n"
 "Last-Translator: Brage Fuglseth <brage.fuglseth@gmail.com>\n"
 "Language-Team: Norwegian Bokmål <https://hosted.weblate.org/projects/"
@@ -22,7 +22,7 @@ msgstr ""
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:91
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:107
 msgid "Video (Generic)"
-msgstr ""
+msgstr "Video (generisk)"
 
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:92
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:108
@@ -52,7 +52,7 @@ msgstr "AVI (video)"
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:98
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:113
 msgid "Audio (Generic)"
-msgstr ""
+msgstr "Lyd (generisk)"
 
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:99
 #: libparabolic/src/controllers/adddownloaddialogcontroller.cpp:114
@@ -124,11 +124,10 @@ msgid "translator-credits"
 msgstr "Brage Fuglseth https://bragefuglseth.dev"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:266
-#, fuzzy, c++-format
 msgid "Recovered {} download"
 msgid_plural "Recovered {} downloads"
-msgstr[0] "Prøv igjen"
-msgstr[1] "Prøv igjen"
+msgstr[0] "Gjenopprettet {} nedlasting"
+msgstr[1] "Gjenopprettet {} nedlastinger"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:295
 msgid "New update available"
@@ -143,46 +142,38 @@ msgid "Download Finished"
 msgstr "Nedlasting fullført"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:378
-#, fuzzy, c++-format
 msgid "{} has finished downloading"
-msgstr "{0} er nedlastet."
+msgstr "Nedlasting av {} fullført"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:382
 msgid "Download Finished With Error"
 msgstr "Nedlasting fullført med feil"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:382
-#, fuzzy, c++-format
 msgid "{} has finished with an error"
-msgstr "{0} fullført med feil."
+msgstr "{} fullført med feil"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:387
-#, fuzzy
 msgid "Downloads Finished"
-msgstr "Nedlasting fullført"
+msgstr "Nedlastinger fullført"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:387
-#, fuzzy
 msgid "All downloads have finished"
-msgstr "Nedlasting fullført"
+msgstr "Alle nedlastinger fullført"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:21
-#, c++-format
 msgid "{:.2f} GiB/s"
 msgstr "{:.2f} GiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:25
-#, c++-format
 msgid "{:.2f} MiB/s"
 msgstr "{:.2f} MiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:29
-#, c++-format
 msgid "{:.2f} KiB/s"
 msgstr "{:.2f} KiB/s"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:33
-#, c++-format
 msgid "{:.2f} B/s"
 msgstr "{:.2f} B/s"
 
@@ -231,7 +222,7 @@ msgstr "Nettadresse"
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:59
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:33
 msgid "Use Batch File"
-msgstr ""
+msgstr "Bruk buntfil"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:66
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:34
@@ -342,16 +333,15 @@ msgstr "Last ned"
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:354
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:59
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:74
-#, fuzzy
 msgid "Select All"
-msgstr "Velg"
+msgstr "Marker alt"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:200
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:361
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:60
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:75
 msgid "Deselect All"
-msgstr ""
+msgstr "Fjern markering"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:228
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:283
@@ -369,9 +359,8 @@ msgstr "Hastighetsgrense"
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:291
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:47
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:68
-#, fuzzy
 msgid "Export Description"
-msgstr "Lydbeskrivelse"
+msgstr "Eksporter beskrivelse"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/add_download_dialog.blp:240
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:48
@@ -399,14 +388,13 @@ msgstr "Nummerering"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/credential_dialog.blp:11
 #: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:18
-#, fuzzy
 msgid "Credential Needed"
-msgstr "Innlogging"
+msgstr "Innlogging kreves"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/credential_dialog.blp:43
 #: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:26
 msgid "Use"
-msgstr ""
+msgstr "Bruk"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/download_row.blp:49
 msgid "View Log"
@@ -691,9 +679,8 @@ msgstr "Hold enheten på"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:48
 #: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:39
-#, fuzzy
 msgid "Recover Crashed Downloads"
-msgstr "Prøv igjen"
+msgstr "Gjenopprett avbrutte nedlastinger"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:57
 #: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:40
@@ -703,7 +690,7 @@ msgstr "Umiddelbar nedlasting etter kontroll"
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:66
 #: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:41
 msgid "Download History Length"
-msgstr "Lengde på nedlastingslogg"
+msgstr "Varighet på nedlastingslogg"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:68
 #: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:43
@@ -753,9 +740,8 @@ msgstr "Begrens filnavn til å bruke tegn som støttes av Microsoft Windows."
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:117
 #: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:57
-#, fuzzy
 msgid "Include Media Id in Title After Validation"
-msgstr "Umiddelbar nedlasting etter kontroll"
+msgstr "Inkluder ID i tittel etter validering"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:126
 #: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:58
@@ -776,9 +762,8 @@ msgstr "Hvilken som helst"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:147
 #: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:64
-#, fuzzy
 msgid "Preferred Subtitle Format"
-msgstr "Foretrukken videokodek"
+msgstr "Foretrukken undertekstkodek"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:160
 #: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:26
@@ -788,7 +773,7 @@ msgstr "Nedlasting"
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:163
 #: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:70
 msgid "Verbose Logging"
-msgstr ""
+msgstr "Full logging"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:172
 #: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:71
@@ -939,9 +924,8 @@ msgstr "Fjern data om nedlastingen fra filen."
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:302
 #: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:101
-#, fuzzy
 msgid "Postprocessing Threads"
-msgstr "Behandler"
+msgstr "Behandlingstråder"
 
 #: org.nickvision.tubeconverter.gnome/blueprints/preferences_dialog.blp:312
 #: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:28
@@ -984,9 +968,8 @@ msgid "Starting download..."
 msgstr "Starter nedlasting…"
 
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:31
-#, fuzzy
 msgid "Starting"
-msgstr "Innstillinger"
+msgstr "Starter"
 
 #: org.nickvision.tubeconverter.gnome/src/controls/downloadrow.cpp:36
 #: org.nickvision.tubeconverter.qt/src/controls/downloadrow.cpp:44
@@ -1039,9 +1022,8 @@ msgstr "Manuelt"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:84
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:129
-#, fuzzy
 msgid "Select Batch File"
-msgstr "Velg lagringsmappe"
+msgstr "Velg buntfil"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:86
 #: org.nickvision.tubeconverter.gnome/src/views/preferencesdialog.cpp:122
@@ -1070,16 +1052,16 @@ msgid "No Subtitles Available"
 msgstr "Ingen undertekster tilgjengelig"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:216
-#, c++-format
 msgid "{} items"
 msgstr "{} elementer"
 
 #: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:15
-#, c++-format
 msgid ""
 "{} needs a credential to download.\n"
 "Please select or enter one to use."
 msgstr ""
+"{} krever innlogging for å lastes ned.\n"
+"Logg inn for å fortsette."
 
 #: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:40
 #: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:58
@@ -1200,7 +1182,6 @@ msgid "Changelog:"
 msgstr "Endringslogg:"
 
 #: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:39
-#, c++-format
 msgid ""
 "Developers:\n"
 "{}\n"
@@ -1278,15 +1259,15 @@ msgstr ""
 "innloggingen og informasjonskapslene angitt i innstillingene."
 
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:234
-#, c++-format
 msgid "Items ({})"
 msgstr "Elementer ({})"
 
 #. Localize Strings
 #: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:20
-#, c++-format
 msgid "{} needs a credential to download. Please select or enter one to use."
 msgstr ""
+"{} krever innlogging for å lastes ned.\n"
+"Logg inn for å fortsette."
 
 #: org.nickvision.tubeconverter.qt/src/views/keyringpage.cpp:35
 msgid "Enter name here"
@@ -1299,7 +1280,7 @@ msgstr "Skriv inn nettadresse her"
 #: org.nickvision.tubeconverter.qt/src/views/keyringpage.cpp:42
 #: org.nickvision.tubeconverter.qt/src/views/keyringpage.cpp:93
 msgid "Save"
-msgstr ""
+msgstr "Lagre"
 
 #: org.nickvision.tubeconverter.qt/src/views/keyringpage.cpp:62
 msgid "Warning"
@@ -1314,14 +1295,12 @@ msgstr ""
 "appen lukkes."
 
 #: org.nickvision.tubeconverter.qt/src/views/keyringpage.cpp:70
-#, fuzzy
 msgid "New Credential"
-msgstr "Innlogging"
+msgstr "Ny innlogging"
 
 #: org.nickvision.tubeconverter.qt/src/views/keyringpage.cpp:88
-#, fuzzy
 msgid "Edit Credential"
-msgstr "Legg til innlogging"
+msgstr "Rediger innlogging"
 
 #: org.nickvision.tubeconverter.qt/src/views/keyringpage.cpp:130
 msgid "The credential name cannot be empty."
@@ -1349,7 +1328,7 @@ msgstr "Se etter oppdateringer"
 
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:60
 msgid "Documentation"
-msgstr ""
+msgstr "Veiledning"
 
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:62
 msgid "Report a Bug"
@@ -1360,9 +1339,8 @@ msgid "Discussions"
 msgstr "Diskusjon"
 
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:65
-#, fuzzy
 msgid "About"
-msgstr "Om {0}"
+msgstr "Om appen"
 
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:74
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:76
@@ -1370,9 +1348,8 @@ msgid "Settings"
 msgstr "Innstillinger"
 
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:102
-#, fuzzy
 msgid "Retry Failed"
-msgstr "Prøv å laste ned mislykkede nedlastinger igjen"
+msgstr "Nytt forsøk mislyktes"
 
 #: org.nickvision.tubeconverter.qt/src/views/mainwindow.cpp:109
 msgid "Log"
@@ -1383,17 +1360,14 @@ msgid "Update"
 msgstr "Oppdater"
 
 #: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:30
-#, fuzzy
 msgid "Light"
 msgstr "Lys"
 
 #: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:31
-#, fuzzy
 msgid "Dark"
 msgstr "Mørk"
 
 #: org.nickvision.tubeconverter.qt/src/views/settingspage.cpp:32
-#, fuzzy
 msgid "System"
 msgstr "Følg systemet"
 
