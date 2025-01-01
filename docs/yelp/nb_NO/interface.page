@@ -2,7 +2,7 @@
 <page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" id="interface" its:version="2.0" xml:lang="nb-NO">
 <info>
 	<link type="guide" xref="index"/>
-	<title type="link">User Interface 🖥️</title>
+	<title type="link">Utseende</title>
 	<credit type="author copyright">
 		<name>Nicholas Logozzo</name>
 		<years its:translate="no">2023-2024</years>
@@ -20,50 +20,50 @@
     </mal:credit>
   </info>
 
-<title>User Interface</title>
-<p>This page explains all options for configuring the User Interface in Preferences in <app>Parabolic</app>.</p>
+<title>Utseende</title>
+<p>Denne seksjonen tar for seg alle innstillingene for utseende i <app>Parabolic</app>.</p>
 
 <terms>
     <item>
-        <title>Theme</title>
-        <p>The theme for the user interface.</p>
+        <title>Stil</title>
+        <p>Stilen til appen.</p>
         <note style="advanced">
-            <p>Default: System</p>
+            <p>Standard: følg systemet</p>
         </note>
     </item>
     <item>
-        <title>Completed Notification Trigger</title>
-        <p>The trigger used for showing completed download notifications when the application is not active.</p>
+        <title>Nedlastingsvarslinger</title>
+        <p>Når varslinger om fullførte nedlastinger skal vises i tilfeller hvor appen ikke er aktiv.</p>
         <note style="advanced">
-            <p>Default: For each download</p>
+            <p>Standard: ved hver nedlasting</p>
         </note>
     </item>
     <item>
-        <title>Prevent Suspend</title>
-        <p>If enabled, the system while be prevented from suspending while Parabolic is running.</p>
+        <title>Hold enheten på</title>
+        <p>Hvis denne innstillingen er på, vil enheten holdes påslått mens Parabolic er i aktivitet.</p>
         <note style="advanced">
             <p>Standard: av</p>
         </note>
     </item>
     <item>
-        <title>Recover Crashed Downloads</title>
-        <p>If enabled, Parabolic will track the running and queued downloads and restart them if necessary if the application crashes and is restarted.</p>
+        <title>Gjenopprett avbrutte nedlastinger</title>
+        <p>Hvis denne innstillingen er på, vil Parabolic holde styr på aktive og ventende nedlastinger, og gjenopprette dem hvis appen avsluttes uventes og åpnes på nytt.</p>
         <note style="advanced">
             <p>Standard: på</p>
         </note>
     </item>
     <item>
-        <title>Download Immediately After Validation</title>
-		<p>Bypasses the download options selection in the Add Download dialog and immediately downloads a validated media using previously selected options.</p>
+        <title>Umiddelbar nedlasting etter kontroll</title>
+		<p>Hopp over nedlastingsoppsettet og legg til en nedlasting umiddelbart med en gang den har blitt kontrollert.</p>
         <note style="advanced">
             <p>Standard: av</p>
         </note>
     </item>
     <item>
-        <title>Download History Length</title>
-        <p>The amount of time to keep download history saved.</p>
+        <title>Varighet på nedlastingslogg</title>
+        <p>Hvor lenge loggføring av tidligere nedlastinger skal lagres.</p>
         <note style="advanced">
-            <p>Default: One Week</p>
+            <p>Standard: en uke</p>
         </note>
     </item>
 </terms>

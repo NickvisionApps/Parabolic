@@ -2,7 +2,7 @@
 <page xmlns="http://projectmallard.org/1.0/" xmlns:its="http://www.w3.org/2005/11/its" type="topic" id="downloader" its:version="2.0" xml:lang="nb-NO">
 <info>
 	<link type="guide" xref="index"/>
-	<title type="link">Downloader 🛠️</title>
+	<title type="link">Nedlasting</title>
 	<credit type="author copyright">
 		<name>Nicholas Logozzo</name>
 		<years its:translate="no">2023-2024</years>
@@ -25,8 +25,8 @@
 
 <terms>
     <item>
-        <title>Verbose Logging</title>
-        <p>If enabled, more verbose logs will be provided by <code>yt-dlp</code> for each download.</p>
+        <title>Full logging</title>
+        <p>Hvis denne innstillingen er på, vil yt-dlp gi mer utfyllende informasjon om hver nedlasting.</p>
         <note style="advanced">
             <p>Standard: på</p>
         </note>
@@ -52,30 +52,30 @@
         <title>Mellomtjeneradresse</title>
         <p>Adressen til en mellomtjener som skal brukes.</p>
         <note style="advanced">
-			<p>Default: No URL</p>
+			<p>Standard: ingen</p>
 		</note>
     </item>
     <item>
         <title>Informasjonskapsler fra nettleser</title>
         <p>En nettleser som informasjonskapsler skal hentes fra til autentisering av nedlastinger.</p>
-        <p>This may be useful when downloading media that requires a login, for example: private YouTube videos.</p>
-        <p>This option is on available on non sandboxed platforms.</p>
+        <p>Dette kan være nyttig ved nedlasting av innhold som krever innlogging, som private YouTube-videoer.</p>
+        <p>Denne innstillingen er kun tilgjengelig på plattformer som ikke innhegner appen for økt sikkerhet.</p>
 		<note style="advanced">
 			<p>Standard: ingen</p>
 		</note>
     </item>
     <item>
-        <title>Cookies File</title>
-        <p>A .txt file of cookies to pass to yt-dlp when download engine.</p>
-        <p>This may be useful when downloading media that requires a login, for example: private YouTube videos.</p>
-        <p>Use one of the following extensions for getting a cookies file from your browser:</p>
+        <title>Informasjonskapsler</title>
+        <p>En tekstfil med informasjonskapsler som skal sendes til yt-dlp ved nedlasting.</p>
+        <p>Dette kan være nyttig ved nedlasting av innhold som krever innlogging, som private YouTube-videoer.</p>
+        <p>Bruk en av disse utvidelsene til å hente ut en kapselfil fra nettleseren din:</p>
         <p>Chrome: <code>https://chrome.google.com/webstore/detail/get-cookiestxt-locally/cclelndahbckbenkjhflpdbgdldlbecc</code></p>
         <p>Firefox: <code>https://addons.mozilla.org/en-US/firefox/addon/cookies-txt/</code></p>
         <note>
-            <p>Use these extensions at your own risk.</p>
+            <p>Bruk disse utvidelsene på eget ansvar.</p>
         </note>
 		<note style="advanced">
-			<p>Default: No File Selected</p>
+			<p>Standard: ingen</p>
 		</note>
     </item>
 </terms>

@@ -48,7 +48,7 @@
     <item>
 		<title>Kvadratiske miniatyrbilder</title>
 		<p>Hvis dette er på, vil Parabolic beskjære miniatyrbilder slik at de blir kvadratiske.</p>
-        <p>This option is only configurable if <code>Embed Metadata</code> is on.</p>
+        <p>Denne innstillingen kan bare endres hvis «Bygg inn metadata» er på.</p>
 		<note style="advanced">
 			<p>Standard: av</p>
 		</note>
@@ -57,16 +57,16 @@
 		<title>Fjern kildedata</title>
 		<p>Hvis dette er på, vil Parabolic fjerne alle metadata om kilden til videoen, for eksempel nettadresser.</p>
         <p>Felter som fjernes:<code>comment</code>, <code>description</code>, <code>synopsis</code>, <code>purl</code> og <code>handler_name</code> på hver nedlasting.</p>
-        <p>This option is only configurable if <code>Embed Metadata</code> is on.</p>
+        <p>Denne innstillingen kan bare endres hvis «Bygg inn metadata» er på.</p>
 		<note style="advanced">
 			<p>Standard: av</p>
 		</note>
     </item>
     <item>
-        <title>Postprocessing Threads</title>
-        <p>The number of threads to allow the postprocessor (<code>FFmpeg</code>) to use for each download.</p>
+        <title>Behandlingstråder</title>
+        <p>Antall tråder som kan brukes til etterbehandling av hver nedlasting (med FFmpeg).</p>
         <note style="advanced">
-            <p>Default: The max number of threads available on the system</p>
+            <p>Standard: Det maksimale antallet tråder som er tilgjengelig på systemet</p>
         </note>
     </item>
 </terms>
