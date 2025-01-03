@@ -128,6 +128,7 @@ namespace Nickvision::TubeConverter::Shared::Models
         }
         if(m_process->kill())
         {
+            m_process->waitForExit();
             m_status = DownloadStatus::Stopped;
         }
     }
