@@ -33,7 +33,7 @@
     </item>
     <item>
       <title>Overiť</title>
-      <p>Ak je táto funkcia zapnutá, používateľ bude požiadaný o zadanie používateľského mena a/alebo hesla, ktoré sa má odovzdať yt-dlp pri sťahovaní.</p>
+      <p>Ak je táto možnosť zapnutá, používateľ bude požiadaný o zadanie používateľského mena a/alebo hesla, ktoré sa má odovzdať yt-dlp pri sťahovaní.</p>
         <p>Ak sa poverenia nachádzajú v zväzku kľúčov, používateľ si namiesto toho môže vybrať zo zoznamu pomenovaných poverení, ktoré chce použiť (alebo pokračovať v ručnom zadávaní poverenia)</p>
 		<note style="advanced">
 			<p>Nie všetky webové stránky podporujú odovzdávanie používateľských mien a hesiel do yt-dlp. Napríklad YouTube túto funkciu NEpodporuje.</p>
@@ -42,20 +42,20 @@
     </item>
     <item>
 		<title>Typ súboru</title>
-		<p>Typ súboru, ako ktorý sa má médium stiahnuť.</p>
+		<p>Formát súboru, v ktorom sa má médium stiahnuť.</p>
         <note>
-            <p>Predtým použitý typ súboru sa zapamätá a vopred sa vyberie pre ďalšie sťahovanie.</p>
+            <p>Predtým vybraný formát súboru sa uloží a automaticky sa vyberie pre ďalšie sťahovanie.</p>
         </note>
         <note style="advanced">
-            <p>Výberom typov súborov <code>Video (všeobecné)</code> alebo <code>Zvuk (všeobecný)</code> spôsobí, že aplikácia Parabolic stiahne médiá v pôvodnom type súboru bez vykonania konverzie.</p>
+            <p>Ak vyberiete typ súboru <code>Video (všeobecné)</code> alebo <code>Zvuk (všeobecný)</code>, aplikácia Parabolic stiahne médiá v pôvodnom formáte bez vykonania konverzie.</p>
         </note>
     </item>
     <item>
 		<title>Kvalita</title>
-		<p>Ak je typom súboru typ videa, uvedené kvality budú predstavovať rozlíšenia dostupných médií.</p>
-        <p>Ak je typom súboru typ zvuku, uvedené kvality budú bitové rýchlosti zvuku dostupného média.</p>
+		<p>Ak je typom súboru video, uvedené kvality budú predstavovať rozlíšenia dostupného obrazového média.</p>
+        <p>Ak je typom súboru audio, uvedené kvality budú predstavovať bitové rýchlosti dostupného zvukového média.</p>
         <note>
-            <p>Predtým použitá kvalita sa zapamätá a predvolí sa pre ďalšie sťahovanie.</p>
+            <p>Predtým zvolená kvalita sa uloží a automaticky sa predvolí pri ďalšom sťahovaní.</p>
         </note>
     </item>
     <item>
@@ -63,35 +63,35 @@
 		<p>Jazyk, ktorý sa má použiť zo zvukovej časti stiahnutého média.</p>
         <p>Ak nie sú k dispozícii žiadne ďalšie jazyky, jedinou možnosťou bude <code>Predvolená</code>.</p>
         <note>
-            <p>Predtým použitý stav sa zapamätá a predvolí sa pre ďalšie sťahovanie.</p>
+            <p>Predtým použitý stav sa uloží a automaticky sa vyberie pri ďalšom sťahovaní.</p>
         </note>
     </item>
     <item>
 		<title>Titulky</title>
 		<p>Zoznam titulkov v médiách, ktoré má používateľ k dispozícii na stiahnutie. Ďalšie konfigurácie titulkov nájdete v <link xref="downloads">nastaveniach</link>.</p>
         <note>
-            <p>Predtým vybrané titulky sa zapamätajú a vopred sa vyberú pre ďalšie sťahovanie.</p>
+            <p>Predtým vybrané titulky sa uložia a automaticky sa vyberú pri ďalšom sťahovaní.</p>
         </note>
     </item>
     <item>
         <title>Rozdeliť kapitoly</title>
-        <p>Ak je táto funkcia zapnutá, aplikácia Parabolic rozdelí stiahnuté video na viacero menších súborov na základe jeho kapitol.</p>
+        <p>Ak je táto možnosť zapnutá, aplikácia Parabolic rozdelí stiahnuté video na viacero menších súborov na základe jeho kapitol.</p>
         <note>
-            <p>Predtým použitý stav sa zapamätá a predvolí sa pre ďalšie sťahovanie.</p>
+            <p>Predtým použitý stav sa uloží a automaticky sa vyberie pri ďalšom sťahovaní.</p>
         </note>
     </item>
     <item>
 		<title>Obmedzenie rýchlosti sťahovania</title>
-		<p>Ak je táto funkcia zapnutá, aplikácia Parabolic obmedzí rýchlosť sťahovania na rýchlosť nastavenú v <link xref="downloader">nastaveniach</link>.</p>
+		<p>Ak je táto možnosť zapnutá, aplikácia Parabolic obmedzí rýchlosť sťahovania na rýchlosť nastavenú v <link xref="downloader">nastaveniach</link>.</p>
         <note>
-            <p>Predtým použitý stav sa zapamätá a predvolí sa pre ďalšie sťahovanie.</p>
+            <p>Predtým použitý stav sa uloží a automaticky sa vyberie pri ďalšom sťahovaní.</p>
         </note>
     </item>
     <item>
 		<title>Popis exportu</title>
-		<p>Ak je táto funkcia zapnutá, aplikácia Parabolic automaticky exportuje popis média do súboru <code>.description</code> vedľa stiahnutého súboru.</p>
+		<p>Ak je táto možnosť zapnutá, aplikácia Parabolic automaticky exportuje popis média do súboru <code>.description</code> vedľa stiahnutého súboru.</p>
         <note>
-            <p>Predtým použitý stav sa zapamätá a predvolí sa pre ďalšie sťahovanie.</p>
+            <p>Predtým použitý stav sa uloží a automaticky sa vyberie pri ďalšom sťahovaní.</p>
         </note>
     </item>
     <item>
@@ -105,7 +105,7 @@
 		<title>Priečinok na uloženie</title>
 		<p>Priečinok, do ktorého sa má stiahnutie uložiť.</p>
         <note>
-            <p>Predtým použitý priečinok sa zapamätá a vopred vyberie pre ďalšie sťahovanie.</p>
+            <p>Predtým vybratý priečinok sa uloží a automaticky sa predvolí pre ďalšie sťahovanie.</p>
         </note>
     </item>
     <item>

@@ -396,7 +396,7 @@ namespace Nickvision::TubeConverter::Shared::Models
         else if(m_videoFormat)
         {
             arguments.push_back("--format");
-            arguments.push_back(m_videoFormat->getId() + "+ba*");
+            arguments.push_back(m_videoFormat->getId() + "+ba/b");
         }
         else if(m_audioFormat)
         {
