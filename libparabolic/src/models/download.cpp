@@ -178,7 +178,11 @@ namespace Nickvision::TubeConverter::Shared::Models
         if(m_status == DownloadStatus::Success)
         {
             std::vector<std::string> logLines{ StringHelpers::split(args.getOutput(), "\n") };
-            m_path = logLines[logLines.size() - 1];
+            try
+            {
+                m_path = logLines[logLines.size() - 1];
+            }
+            catch(...) { }
         }
         lock.unlock();
         m_progressChanged.invoke({ m_id, 1.0, 0.0, args.getOutput() });
