@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-12-27 12:06-0500\n"
+"POT-Creation-Date: 2025-01-03 09:43-0500\n"
 "PO-Revision-Date: 2023-11-03 03:31+0000\n"
 "Last-Translator: \"K.B.Dharun Krishna\" <kbdharunkrishna@gmail.com>\n"
 "Language-Team: Tamil <https://hosted.weblate.org/projects/nickvision-tube-"
@@ -132,7 +132,7 @@ msgid "translator-credits"
 msgstr "K.B.Dharun Krishna <kbdharunkrishna@gmail.com>, 2023"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:266
-#, fuzzy
+#, fuzzy, c++-format
 msgid "Recovered {} download"
 msgid_plural "Recovered {} downloads"
 msgstr[0] "தோல்வியடைந்த பதிவிறக்கங்களை மீண்டும் முயற்சிக்கவும்"
@@ -151,7 +151,7 @@ msgid "Download Finished"
 msgstr "பதிவிறக்கம் முடிந்தது"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:378
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{} has finished downloading"
 msgstr "\"{0}\" வின் பதிவிறக்கம் முடிந்தது."
 
@@ -160,7 +160,7 @@ msgid "Download Finished With Error"
 msgstr "பதிவிறக்கம் பிழையுடன் முடிந்தது"
 
 #: libparabolic/src/controllers/mainwindowcontroller.cpp:382
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{} has finished with an error"
 msgstr "\"{0}\" பிழையுடன் முடிந்தது!"
 
@@ -174,22 +174,22 @@ msgid "All downloads have finished"
 msgstr "அனைத்து பதிவிறக்கங்களும் முடிந்துவிட்டன."
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:21
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} GiB/s"
 msgstr "{0:f1} ஜிபிபைட்/வினாடி (GiB/s)"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:25
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} MiB/s"
 msgstr "{0:f1} மெபிபைட்/வினாடி (MiB/s)"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:29
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} KiB/s"
 msgstr "{0:f1} கிலோபிட்/வினாடி (KiB/s)"
 
 #: libparabolic/src/events/downloadprogresschangedeventargs.cpp:33
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{:.2f} B/s"
 msgstr "{0:f1} பைட்டுகள்/வினாடி (B/s)"
 
@@ -1106,11 +1106,12 @@ msgid "No Subtitles Available"
 msgstr "வசன மொழிகள் (செல்லாதது)"
 
 #: org.nickvision.tubeconverter.gnome/src/views/adddownloaddialog.cpp:216
-#, fuzzy
+#, fuzzy, c++-format
 msgid "{} items"
 msgstr "{1} இல் {0} உருப்படிகள்"
 
 #: org.nickvision.tubeconverter.gnome/src/views/credentialdialog.cpp:15
+#, c++-format
 msgid ""
 "{} needs a credential to download.\n"
 "Please select or enter one to use."
@@ -1238,6 +1239,7 @@ msgid "Changelog:"
 msgstr ""
 
 #: org.nickvision.tubeconverter.qt/src/controls/aboutdialog.cpp:39
+#, c++-format
 msgid ""
 "Developers:\n"
 "{}\n"
@@ -1313,12 +1315,13 @@ msgid ""
 msgstr ""
 
 #: org.nickvision.tubeconverter.qt/src/views/adddownloaddialog.cpp:234
-#, fuzzy
+#, fuzzy, c++-format
 msgid "Items ({})"
 msgstr "{1} இல் {0} உருப்படிகள்"
 
 #. Localize Strings
 #: org.nickvision.tubeconverter.qt/src/views/credentialdialog.cpp:20
+#, c++-format
 msgid "{} needs a credential to download. Please select or enter one to use."
 msgstr ""
 

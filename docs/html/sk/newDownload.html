@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </dd>
 <dt class="terms">Overiť</dt>
 <dd class="terms">
-<p class="p">Ak je táto funkcia zapnutá, používateľ bude požiadaný o zadanie používateľského mena a/alebo hesla, ktoré sa má odovzdať yt-dlp pri sťahovaní.</p>
+<p class="p">Ak je táto možnosť zapnutá, používateľ bude požiadaný o zadanie používateľského mena a/alebo hesla, ktoré sa má odovzdať yt-dlp pri sťahovaní.</p>
 <p class="p">Ak sa poverenia nachádzajú v zväzku kľúčov, používateľ si namiesto toho môže vybrať zo zoznamu pomenovaných poverení, ktoré chce použiť (alebo pokračovať v ručnom zadávaní poverenia)</p>
 <div class="note note-advanced" title="Pokročilé">
 <svg height="24" width="24" version="1.1">
@@ -58,14 +58,14 @@ document.addEventListener('DOMContentLoaded', function() {
 </dd>
 <dt class="terms">Typ súboru</dt>
 <dd class="terms">
-<p class="p">Typ súboru, ako ktorý sa má médium stiahnuť.</p>
+<p class="p">Formát súboru, v ktorom sa má médium stiahnuť.</p>
 <div class="note" title="Poznámka">
 <svg height="24" width="24" version="1.1">
  <g>
   <path class="yelp-svg-fill" d="m4 3h16c0.554 0 1 0.446 1 1v11h-6v6h-11c-0.554 0-1-0.446-1-1v-16c0-0.554 0.446-1 1-1z"></path>
   <path class="yelp-svg-fill" d="m17 16h4l-5 5v-4c0-0.554 0.446-1 1-1z"></path>
  </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Predtým použitý typ súboru sa zapamätá a vopred sa vyberie pre ďalšie sťahovanie.</p></div></div></div>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Predtým vybraný formát súboru sa uloží a automaticky sa vyberie pre ďalšie sťahovanie.</p></div></div></div>
 </div>
 <div class="note note-advanced" title="Pokročilé">
 <svg height="24" width="24" version="1.1">
@@ -81,20 +81,20 @@ document.addEventListener('DOMContentLoaded', function() {
   <path class="yelp-svg-fill" d="m8.2435 7.0719-1.9004-3.3145 1.4143-1.4143 3.1596 1.7457z"></path>
   <path class="yelp-svg-fill" d="m11.072 11.757-3.3146 1.9-1.4143-1.414 1.7457-3.1602z"></path>
  </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Výberom typov súborov <span class="code">Video (všeobecné)</span> alebo <span class="code">Zvuk (všeobecný)</span> spôsobí, že aplikácia Parabolic stiahne médiá v pôvodnom type súboru bez vykonania konverzie.</p></div></div></div>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Ak vyberiete typ súboru <span class="code">Video (všeobecné)</span> alebo <span class="code">Zvuk (všeobecný)</span>, aplikácia Parabolic stiahne médiá v pôvodnom formáte bez vykonania konverzie.</p></div></div></div>
 </div>
 </dd>
 <dt class="terms">Kvalita</dt>
 <dd class="terms">
-<p class="p">Ak je typom súboru typ videa, uvedené kvality budú predstavovať rozlíšenia dostupných médií.</p>
-<p class="p">Ak je typom súboru typ zvuku, uvedené kvality budú bitové rýchlosti zvuku dostupného média.</p>
+<p class="p">Ak je typom súboru video, uvedené kvality budú predstavovať rozlíšenia dostupného obrazového média.</p>
+<p class="p">Ak je typom súboru audio, uvedené kvality budú predstavovať bitové rýchlosti dostupného zvukového média.</p>
 <div class="note" title="Poznámka">
 <svg height="24" width="24" version="1.1">
  <g>
   <path class="yelp-svg-fill" d="m4 3h16c0.554 0 1 0.446 1 1v11h-6v6h-11c-0.554 0-1-0.446-1-1v-16c0-0.554 0.446-1 1-1z"></path>
   <path class="yelp-svg-fill" d="m17 16h4l-5 5v-4c0-0.554 0.446-1 1-1z"></path>
  </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Predtým použitá kvalita sa zapamätá a predvolí sa pre ďalšie sťahovanie.</p></div></div></div>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Predtým zvolená kvalita sa uloží a automaticky sa predvolí pri ďalšom sťahovaní.</p></div></div></div>
 </div>
 </dd>
 <dt class="terms">Jazyk zvuku</dt>
@@ -107,55 +107,55 @@ document.addEventListener('DOMContentLoaded', function() {
   <path class="yelp-svg-fill" d="m4 3h16c0.554 0 1 0.446 1 1v11h-6v6h-11c-0.554 0-1-0.446-1-1v-16c0-0.554 0.446-1 1-1z"></path>
   <path class="yelp-svg-fill" d="m17 16h4l-5 5v-4c0-0.554 0.446-1 1-1z"></path>
  </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Predtým použitý stav sa zapamätá a predvolí sa pre ďalšie sťahovanie.</p></div></div></div>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Predtým použitý stav sa uloží a automaticky sa vyberie pri ďalšom sťahovaní.</p></div></div></div>
 </div>
 </dd>
 <dt class="terms">Titulky</dt>
 <dd class="terms">
-<p class="p">Zoznam titulkov v médiách, ktoré má používateľ k dispozícii na stiahnutie. Ďalšie konfigurácie titulkov nájdete v <span class="link"><a href="downloads.html" title="Stiahnutia">nastaveniach</a></span>.</p>
+<p class="p">Zoznam titulkov v médiách, ktoré má používateľ k dispozícii na stiahnutie. Ďalšie konfigurácie titulkov nájdete v <span class="link"><a href="downloads.html" title="Sťahovanie">nastaveniach</a></span>.</p>
 <div class="note" title="Poznámka">
 <svg height="24" width="24" version="1.1">
  <g>
   <path class="yelp-svg-fill" d="m4 3h16c0.554 0 1 0.446 1 1v11h-6v6h-11c-0.554 0-1-0.446-1-1v-16c0-0.554 0.446-1 1-1z"></path>
   <path class="yelp-svg-fill" d="m17 16h4l-5 5v-4c0-0.554 0.446-1 1-1z"></path>
  </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Predtým vybrané titulky sa zapamätajú a vopred sa vyberú pre ďalšie sťahovanie.</p></div></div></div>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Predtým vybrané titulky sa uložia a automaticky sa vyberú pri ďalšom sťahovaní.</p></div></div></div>
 </div>
 </dd>
 <dt class="terms">Rozdeliť kapitoly</dt>
 <dd class="terms">
-<p class="p">Ak je táto funkcia zapnutá, aplikácia Parabolic rozdelí stiahnuté video na viacero menších súborov na základe jeho kapitol.</p>
+<p class="p">Ak je táto možnosť zapnutá, aplikácia Parabolic rozdelí stiahnuté video na viacero menších súborov na základe jeho kapitol.</p>
 <div class="note" title="Poznámka">
 <svg height="24" width="24" version="1.1">
  <g>
   <path class="yelp-svg-fill" d="m4 3h16c0.554 0 1 0.446 1 1v11h-6v6h-11c-0.554 0-1-0.446-1-1v-16c0-0.554 0.446-1 1-1z"></path>
   <path class="yelp-svg-fill" d="m17 16h4l-5 5v-4c0-0.554 0.446-1 1-1z"></path>
  </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Predtým použitý stav sa zapamätá a predvolí sa pre ďalšie sťahovanie.</p></div></div></div>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Predtým použitý stav sa uloží a automaticky sa vyberie pri ďalšom sťahovaní.</p></div></div></div>
 </div>
 </dd>
 <dt class="terms">Obmedzenie rýchlosti sťahovania</dt>
 <dd class="terms">
-<p class="p">Ak je táto funkcia zapnutá, aplikácia Parabolic obmedzí rýchlosť sťahovania na rýchlosť nastavenú v <span class="link"><a href="downloader.html" title="Služba sťahovania">nastaveniach</a></span>.</p>
+<p class="p">Ak je táto možnosť zapnutá, aplikácia Parabolic obmedzí rýchlosť sťahovania na rýchlosť nastavenú v <span class="link"><a href="downloader.html" title="Služba sťahovania">nastaveniach</a></span>.</p>
 <div class="note" title="Poznámka">
 <svg height="24" width="24" version="1.1">
  <g>
   <path class="yelp-svg-fill" d="m4 3h16c0.554 0 1 0.446 1 1v11h-6v6h-11c-0.554 0-1-0.446-1-1v-16c0-0.554 0.446-1 1-1z"></path>
   <path class="yelp-svg-fill" d="m17 16h4l-5 5v-4c0-0.554 0.446-1 1-1z"></path>
  </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Predtým použitý stav sa zapamätá a predvolí sa pre ďalšie sťahovanie.</p></div></div></div>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Predtým použitý stav sa uloží a automaticky sa vyberie pri ďalšom sťahovaní.</p></div></div></div>
 </div>
 </dd>
 <dt class="terms">Popis exportu</dt>
 <dd class="terms">
-<p class="p">Ak je táto funkcia zapnutá, aplikácia Parabolic automaticky exportuje popis média do súboru <span class="code">.description</span> vedľa stiahnutého súboru.</p>
+<p class="p">Ak je táto možnosť zapnutá, aplikácia Parabolic automaticky exportuje popis média do súboru <span class="code">.description</span> vedľa stiahnutého súboru.</p>
 <div class="note" title="Poznámka">
 <svg height="24" width="24" version="1.1">
  <g>
   <path class="yelp-svg-fill" d="m4 3h16c0.554 0 1 0.446 1 1v11h-6v6h-11c-0.554 0-1-0.446-1-1v-16c0-0.554 0.446-1 1-1z"></path>
   <path class="yelp-svg-fill" d="m17 16h4l-5 5v-4c0-0.554 0.446-1 1-1z"></path>
  </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Predtým použitý stav sa zapamätá a predvolí sa pre ďalšie sťahovanie.</p></div></div></div>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Predtým použitý stav sa uloží a automaticky sa vyberie pri ďalšom sťahovaní.</p></div></div></div>
 </div>
 </dd>
 <dt class="terms">Časový rozsah</dt>
@@ -187,7 +187,7 @@ document.addEventListener('DOMContentLoaded', function() {
   <path class="yelp-svg-fill" d="m4 3h16c0.554 0 1 0.446 1 1v11h-6v6h-11c-0.554 0-1-0.446-1-1v-16c0-0.554 0.446-1 1-1z"></path>
   <path class="yelp-svg-fill" d="m17 16h4l-5 5v-4c0-0.554 0.446-1 1-1z"></path>
  </g>
-</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Predtým použitý priečinok sa zapamätá a vopred vyberie pre ďalšie sťahovanie.</p></div></div></div>
+</svg><div class="inner"><div class="region"><div class="contents"><p class="p">Predtým vybratý priečinok sa uloží a automaticky sa predvolí pre ďalšie sťahovanie.</p></div></div></div>
 </div>
 </dd>
 <dt class="terms">Názov súboru</dt>
