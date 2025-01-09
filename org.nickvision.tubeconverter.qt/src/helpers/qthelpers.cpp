@@ -3,9 +3,9 @@
 #include <QString>
 #include <QTimer>
 
-namespace Nickvision::TubeConverter::QT::Helpers
+namespace Nickvision::TubeConverter::Qt::Helpers
 {
-    void QTHelpers::dispatchToMainThread(const std::function<void()>& function)
+    void QtHelpers::dispatchToMainThread(const std::function<void()>& function)
     {
         QTimer* timer{ new QTimer() };
         timer->moveToThread(QApplication::instance()->thread());
@@ -15,10 +15,10 @@ namespace Nickvision::TubeConverter::QT::Helpers
             function();
             timer->deleteLater();
         });
-        QMetaObject::invokeMethod(timer, "start", Qt::ConnectionType::AutoConnection, Q_ARG(int, 0));
+        QMetaObject::invokeMethod(timer, "start", ::Qt::ConnectionType::AutoConnection, Q_ARG(int, 0));
     }
 
-    void QTHelpers::setComboBoxItems(QComboBox* comboBox, const std::vector<std::string>& items, const std::string& selected)
+    void QtHelpers::setComboBoxItems(QComboBox* comboBox, const std::vector<std::string>& items, const std::string& selected)
     {
         size_t selectedIndex{ 0 };
         comboBox->clear();

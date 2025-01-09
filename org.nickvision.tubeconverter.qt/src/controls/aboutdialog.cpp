@@ -11,7 +11,7 @@ using namespace Nickvision::App;
 using namespace Nickvision::Helpers;
 using namespace Nickvision::Update;
 
-namespace Nickvision::TubeConverter::QT::Controls
+namespace Nickvision::TubeConverter::Qt::Controls
 {
     static std::vector<std::string> keys(const std::unordered_map<std::string, std::string>& m)
     {

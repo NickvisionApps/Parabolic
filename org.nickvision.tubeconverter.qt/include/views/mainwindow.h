@@ -14,7 +14,7 @@
 
 namespace Ui { class MainWindow; }
 
-namespace Nickvision::TubeConverter::QT::Views
+namespace Nickvision::TubeConverter::Qt::Views
 {
     /**
      * @brief The main window for the application.

@@ -1,6 +1,6 @@
 #include "helpers/closeeventfilter.h"
 
-namespace Nickvision::TubeConverter::QT::Helpers
+namespace Nickvision::TubeConverter::Qt::Helpers
 {
     CloseEventFilter::CloseEventFilter(QObject* parent)
         : QObject{ parent }

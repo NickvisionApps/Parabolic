@@ -21,14 +21,14 @@ using namespace Nickvision::Events;
 using namespace Nickvision::Helpers;
 using namespace Nickvision::Keyring;
 using namespace Nickvision::Notifications;
-using namespace Nickvision::TubeConverter::QT::Controls;
-using namespace Nickvision::TubeConverter::QT::Helpers;
+using namespace Nickvision::TubeConverter::Qt::Controls;
+using namespace Nickvision::TubeConverter::Qt::Helpers;
 using namespace Nickvision::TubeConverter::Shared::Controllers;
 using namespace Nickvision::TubeConverter::Shared::Events;
 using namespace Nickvision::TubeConverter::Shared::Models;
 using namespace Nickvision::Update;
 
-namespace Nickvision::TubeConverter::QT::Views
+namespace Nickvision::TubeConverter::Qt::Views
 {
     enum Page
     {
@@ -123,16 +123,16 @@ namespace Nickvision::TubeConverter::QT::Views
         connect(m_ui->btnNoCompletedAddDownload, &QPushButton::clicked, [this]() { addDownload(); });
         connect(m_dockLogCloseEventFilter, &CloseEventFilter::closed, this, &MainWindow::onDockLogClosed);
         //Events
-        m_controller->notificationSent() += [&](const NotificationSentEventArgs& args) { QTHelpers::dispatchToMainThread([this, args]() { onNotificationSent(args); }); };
+        m_controller->notificationSent() += [&](const NotificationSentEventArgs& args) { QtHelpers::dispatchToMainThread([this, args]() { onNotificationSent(args); }); };
         m_controller->shellNotificationSent() += [&](const ShellNotificationSentEventArgs& args) { onShellNotificationSent(args); };
-        m_controller->getDownloadManager().historyChanged() += [&](const ParamEventArgs<std::vector<HistoricDownload>>& args) { QTHelpers::dispatchToMainThread([this, args]() { onHistoryChanged(args); }); };
+        m_controller->getDownloadManager().historyChanged() += [&](const ParamEventArgs<std::vector<HistoricDownload>>& args) { QtHelpers::dispatchToMainThread([this, args]() { onHistoryChanged(args); }); };
         m_controller->getDownloadManager().downloadCredentialNeeded() += [&](const DownloadCredentialNeededEventArgs& args) { onDownloadCredentialNeeded(args); };
-        m_controller->getDownloadManager().downloadAdded() += [&](const DownloadAddedEventArgs& args) { QTHelpers::dispatchToMainThread([this, args]() { onDownloadAdded(args); }); };
-        m_controller->getDownloadManager().downloadCompleted() += [&](const DownloadCompletedEventArgs& args) { QTHelpers::dispatchToMainThread([this, args]() { onDownloadCompleted(args); }); };
-        m_controller->getDownloadManager().downloadProgressChanged() += [&](const DownloadProgressChangedEventArgs& args) { QTHelpers::dispatchToMainThread([this, args]() { onDownloadProgressChanged(args); }); };
-        m_controller->getDownloadManager().downloadStopped() += [&](const ParamEventArgs<int>& args) { QTHelpers::dispatchToMainThread([this, args]() { onDownloadStopped(args); }); };
-        m_controller->getDownloadManager().downloadRetried() += [&](const ParamEventArgs<int>& args) { QTHelpers::dispatchToMainThread([this, args]() { onDownloadRetried(args); }); };
-        m_controller->getDownloadManager().downloadStartedFromQueue() += [&](const ParamEventArgs<int>& args) { QTHelpers::dispatchToMainThread([this, args]() { onDownloadStartedFromQueue(args); }); };
+        m_controller->getDownloadManager().downloadAdded() += [&](const DownloadAddedEventArgs& args) { QtHelpers::dispatchToMainThread([this, args]() { onDownloadAdded(args); }); };
+        m_controller->getDownloadManager().downloadCompleted() += [&](const DownloadCompletedEventArgs& args) { QtHelpers::dispatchToMainThread([this, args]() { onDownloadCompleted(args); }); };
+        m_controller->getDownloadManager().downloadProgressChanged() += [&](const DownloadProgressChangedEventArgs& args) { QtHelpers::dispatchToMainThread([this, args]() { onDownloadProgressChanged(args); }); };
+        m_controller->getDownloadManager().downloadStopped() += [&](const ParamEventArgs<int>& args) { QtHelpers::dispatchToMainThread([this, args]() { onDownloadStopped(args); }); };
+        m_controller->getDownloadManager().downloadRetried() += [&](const ParamEventArgs<int>& args) { QtHelpers::dispatchToMainThread([this, args]() { onDownloadRetried(args); }); };
+        m_controller->getDownloadManager().downloadStartedFromQueue() += [&](const ParamEventArgs<int>& args) { QtHelpers::dispatchToMainThread([this, args]() { onDownloadStartedFromQueue(args); }); };
     }
 
     MainWindow::~MainWindow()

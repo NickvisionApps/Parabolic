@@ -7,7 +7,7 @@
 
 namespace Ui { class KeyringRow; }
 
-namespace Nickvision::TubeConverter::QT::Controls
+namespace Nickvision::TubeConverter::Qt::Controls
 {
     /**
      * @brief A row that displays a credential.

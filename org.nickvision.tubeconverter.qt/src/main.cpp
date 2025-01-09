@@ -1,6 +1,6 @@
 #include "application.h"
 
-using namespace Nickvision::TubeConverter::QT;
+using namespace Nickvision::TubeConverter::Qt;
 
 int main(int argc, char *argv[]) 
 {

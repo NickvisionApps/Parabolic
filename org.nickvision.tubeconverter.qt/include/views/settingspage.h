@@ -8,7 +8,7 @@
 
 namespace Ui { class SettingsPage; }
 
-namespace Nickvision::TubeConverter::QT::Views
+namespace Nickvision::TubeConverter::Qt::Views
 {
     /**
      * @brief The settings page for the application.

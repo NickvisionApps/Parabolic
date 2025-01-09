@@ -10,7 +10,7 @@
 
 namespace Ui { class DownloadRow; }
 
-namespace Nickvision::TubeConverter::QT::Controls
+namespace Nickvision::TubeConverter::Qt::Controls
 {
     /**
      * @brief A row that displays and manages a download.

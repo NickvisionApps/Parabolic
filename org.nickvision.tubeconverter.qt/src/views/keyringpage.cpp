@@ -5,11 +5,11 @@
 #include "controls/keyringrow.h"
 
 using namespace Nickvision::Keyring;
-using namespace Nickvision::TubeConverter::QT::Controls;
+using namespace Nickvision::TubeConverter::Qt::Controls;
 using namespace Nickvision::TubeConverter::Shared::Controllers;
 using namespace Nickvision::TubeConverter::Shared::Models;
 
-namespace Nickvision::TubeConverter::QT::Views
+namespace Nickvision::TubeConverter::Qt::Views
 {
     enum Pages
     {

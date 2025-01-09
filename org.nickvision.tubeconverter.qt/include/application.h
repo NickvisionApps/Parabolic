@@ -6,10 +6,10 @@
 #include "controllers/mainwindowcontroller.h"
 #include "views/mainwindow.h"
 
-namespace Nickvision::TubeConverter::QT
+namespace Nickvision::TubeConverter::Qt
 {
     /**
-     * @brief The main QT application point.
+     * @brief The main Qt application point.
      */
     class Application : public QApplication
     {

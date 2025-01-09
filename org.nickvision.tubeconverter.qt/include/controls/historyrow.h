@@ -6,7 +6,7 @@
 
 namespace Ui { class HistoryRow; }
 
-namespace Nickvision::TubeConverter::QT::Controls
+namespace Nickvision::TubeConverter::Qt::Controls
 {
     /**
      * @brief A row that displays and manages a historic download.

@@ -6,7 +6,7 @@
 #include <vector>
 #include <QComboBox>
 
-namespace Nickvision::TubeConverter::QT::Helpers::QTHelpers
+namespace Nickvision::TubeConverter::Qt::Helpers::QtHelpers
 {
     /**
      * @brief Runs the function on the main UI thread.

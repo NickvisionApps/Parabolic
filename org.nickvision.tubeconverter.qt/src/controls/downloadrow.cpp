@@ -10,7 +10,7 @@ using namespace Nickvision::Helpers;
 using namespace Nickvision::TubeConverter::Shared::Events;
 using namespace Nickvision::TubeConverter::Shared::Models;
 
-namespace Nickvision::TubeConverter::QT::Controls
+namespace Nickvision::TubeConverter::Qt::Controls
 {
     DownloadRow::DownloadRow(const DownloadAddedEventArgs& args, QWidget* parent)
         : QWidget{ parent },

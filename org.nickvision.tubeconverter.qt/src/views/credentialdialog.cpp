@@ -6,9 +6,9 @@
 #include "helpers/qthelpers.h"
 
 using namespace Nickvision::TubeConverter::Shared::Controllers;
-using namespace Nickvision::TubeConverter::QT::Helpers;
+using namespace Nickvision::TubeConverter::Qt::Helpers;
 
-namespace Nickvision::TubeConverter::QT::Views
+namespace Nickvision::TubeConverter::Qt::Views
 {
     CredentialDialog::CredentialDialog(const std::shared_ptr<CredentialDialogController>& controller, QWidget* parent)
         : m_controller{ controller },
@@ -30,7 +30,7 @@ namespace Nickvision::TubeConverter::QT::Views
         //Load
         std::vector<std::string> credentialNames{ m_controller->getKeyringCredentialNames() };
         credentialNames.insert(credentialNames.begin(), _("Use manual credential"));
-        QTHelpers::setComboBoxItems(m_ui->cmbCredential, credentialNames);
+        QtHelpers::setComboBoxItems(m_ui->cmbCredential, credentialNames);
     }
 
     CredentialDialog::~CredentialDialog()

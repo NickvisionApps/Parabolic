@@ -4,7 +4,7 @@
 
 using namespace Nickvision::Keyring;
 
-namespace Nickvision::TubeConverter::QT::Controls
+namespace Nickvision::TubeConverter::Qt::Controls
 {
     KeyringRow::KeyringRow(const Credential& credential, QWidget* parent)
         : QWidget{ parent },

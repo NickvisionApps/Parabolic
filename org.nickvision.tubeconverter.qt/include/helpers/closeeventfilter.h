@@ -4,10 +4,10 @@
 #include <QEvent>
 #include <QObject>
 
-namespace Nickvision::TubeConverter::QT::Helpers
+namespace Nickvision::TubeConverter::Qt::Helpers
 {
     /**
-     * @brief A filter for close events on QT objects.
+     * @brief A filter for close events on Qt objects.
      */
     class CloseEventFilter : public QObject
     {

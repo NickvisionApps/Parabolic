@@ -1,6 +1,6 @@
 #include "controls/navigationbar.h"
 
-namespace Nickvision::TubeConverter::QT::Controls
+namespace Nickvision::TubeConverter::Qt::Controls
 {
     NavigationBar::NavigationBar(QWidget* parent)
         : QHBoxLayout{ parent },

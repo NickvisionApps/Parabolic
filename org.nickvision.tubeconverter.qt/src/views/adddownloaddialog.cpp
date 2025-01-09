@@ -13,11 +13,11 @@
 using namespace Nickvision::Events;
 using namespace Nickvision::Helpers;
 using namespace Nickvision::Keyring;
-using namespace Nickvision::TubeConverter::QT::Helpers;
+using namespace Nickvision::TubeConverter::Qt::Helpers;
 using namespace Nickvision::TubeConverter::Shared::Controllers;
 using namespace Nickvision::TubeConverter::Shared::Models;
 
-namespace Nickvision::TubeConverter::QT::Views
+namespace Nickvision::TubeConverter::Qt::Views
 {
     AddDownloadDialog::AddDownloadDialog(const std::shared_ptr<AddDownloadDialogController>& controller, const std::string& url, QWidget* parent)
         : QDialog{ parent },
@@ -94,7 +94,7 @@ namespace Nickvision::TubeConverter::QT::Views
         std::vector<std::string> credentialNames{ m_controller->getKeyringCredentialNames() };
         credentialNames.insert(credentialNames.begin(), _("Use manual credential"));
         credentialNames.insert(credentialNames.begin(), _("None"));
-        QTHelpers::setComboBoxItems(m_ui->cmbAuthenticate, credentialNames);
+        QtHelpers::setComboBoxItems(m_ui->cmbAuthenticate, credentialNames);
         //Signals
         connect(m_ui->txtMediaUrl, &QLineEdit::textChanged, this, &AddDownloadDialog::onTxtUrlChanged);
         connect(m_ui->btnUseBatchFile, &QPushButton::clicked, this, &AddDownloadDialog::useBatchFile);
@@ -111,7 +111,7 @@ namespace Nickvision::TubeConverter::QT::Views
         connect(m_ui->btnSelectAllPlaylist, &QPushButton::clicked, this, &AddDownloadDialog::selectAllPlaylist);
         connect(m_ui->btnDeselectAllPlaylist, &QPushButton::clicked, this, &AddDownloadDialog::deselectAllPlaylist);
         connect(m_ui->btnDownloadPlaylist, &QPushButton::clicked, this, &AddDownloadDialog::downloadPlaylist);
-        m_controller->urlValidated() += [this](const ParamEventArgs<bool>& args){ QTHelpers::dispatchToMainThread([this]() { onUrlValidated(); }); };
+        m_controller->urlValidated() += [this](const ParamEventArgs<bool>& args){ QtHelpers::dispatchToMainThread([this]() { onUrlValidated(); }); };
     }
 
     AddDownloadDialog::~AddDownloadDialog()
@@ -189,11 +189,11 @@ namespace Nickvision::TubeConverter::QT::Views
             m_ui->tabsSingle->setCurrentIndex(0);
             //Load Options
             size_t previous;
-            QTHelpers::setComboBoxItems(m_ui->cmbFileTypeSingle, m_controller->getFileTypeStrings());
+            QtHelpers::setComboBoxItems(m_ui->cmbFileTypeSingle, m_controller->getFileTypeStrings());
             m_ui->cmbFileTypeSingle->setCurrentIndex(static_cast<int>(m_controller->getPreviousDownloadOptions().getFileType()));
-            QTHelpers::setComboBoxItems(m_ui->cmbVideoFormatSingle, m_controller->getVideoFormatStrings(&previous));
+            QtHelpers::setComboBoxItems(m_ui->cmbVideoFormatSingle, m_controller->getVideoFormatStrings(&previous));
             m_ui->cmbVideoFormatSingle->setCurrentIndex(previous);
-            QTHelpers::setComboBoxItems(m_ui->cmbAudioFormatSingle, m_controller->getAudioFormatStrings(&previous));
+            QtHelpers::setComboBoxItems(m_ui->cmbAudioFormatSingle, m_controller->getAudioFormatStrings(&previous));
             m_ui->cmbAudioFormatSingle->setCurrentIndex(previous);
             m_ui->chkSplitChaptersSingle->setChecked(m_controller->getPreviousDownloadOptions().getSplitChapters());
             m_ui->chkLimitSpeedSingle->setChecked(m_controller->getPreviousDownloadOptions().getLimitSpeed());
@@ -221,7 +221,7 @@ namespace Nickvision::TubeConverter::QT::Views
                 QCheckBox* chk{ new QCheckBox(m_ui->tblSubtitlesSingle) };
                 chk->setChecked(wasPreviouslySelected);
                 QTableWidgetItem* item{ new QTableWidgetItem(QString::fromStdString(subtitles[i])) };
-                item->setFlags(item->flags() ^ Qt::ItemIsEditable);
+                item->setFlags(item->flags() ^ ::Qt::ItemIsEditable);
                 m_ui->tblSubtitlesSingle->insertRow(static_cast<int>(i));
                 m_ui->tblSubtitlesSingle->setCellWidget(static_cast<int>(i), 0, chk);
                 m_ui->tblSubtitlesSingle->setItem(static_cast<int>(i), 1, item);
@@ -235,7 +235,7 @@ namespace Nickvision::TubeConverter::QT::Views
             m_ui->viewStack->setCurrentIndex(3);
             m_ui->tabsPlaylist->setCurrentIndex(0);
             m_ui->tabsPlaylist->setTabText(1, QString::fromStdString(std::vformat(_("Items ({})"), std::make_format_args(CodeHelpers::unmove(m_controller->getMediaCount())))));
-            QTHelpers::setComboBoxItems(m_ui->cmbFileTypePlaylist, m_controller->getFileTypeStrings());
+            QtHelpers::setComboBoxItems(m_ui->cmbFileTypePlaylist, m_controller->getFileTypeStrings());
             m_ui->cmbFileTypePlaylist->setCurrentIndex(static_cast<int>(m_controller->getPreviousDownloadOptions().getFileType()));
             m_ui->chkSplitChaptersPlaylist->setChecked(m_controller->getPreviousDownloadOptions().getSplitChapters());
             m_ui->chkLimitSpeedPlaylist->setChecked(m_controller->getPreviousDownloadOptions().getLimitSpeed());
@@ -345,7 +345,7 @@ namespace Nickvision::TubeConverter::QT::Views
     {
         for(int i = 0; i < m_ui->tblItemsPlaylist->rowCount(); i++)
         {
-            m_ui->tblItemsPlaylist->item(i, 1)->setText(QString::fromStdString(m_controller->getMediaTitle(i, state == Qt::Checked)));
+            m_ui->tblItemsPlaylist->item(i, 1)->setText(QString::fromStdString(m_controller->getMediaTitle(i, state == ::Qt::Checked)));
         }
     }
 

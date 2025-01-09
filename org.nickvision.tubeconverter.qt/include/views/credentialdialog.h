@@ -7,7 +7,7 @@
 
 namespace Ui { class CredentialDialog; }
 
-namespace Nickvision::TubeConverter::QT::Views
+namespace Nickvision::TubeConverter::Qt::Views
 {
     /**
      * @brief A dialog for entering credentials.

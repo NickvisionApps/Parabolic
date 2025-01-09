@@ -7,7 +7,7 @@
 
 namespace Ui { class AddDownloadDialog; }
 
-namespace Nickvision::TubeConverter::QT::Views
+namespace Nickvision::TubeConverter::Qt::Views
 {
     /**
      * @brief The add download dialog for the application.

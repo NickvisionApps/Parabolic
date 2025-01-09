@@ -11,7 +11,7 @@
 #include <QString>
 #include <QVBoxLayout>
 
-namespace Nickvision::TubeConverter::QT::Controls
+namespace Nickvision::TubeConverter::Qt::Controls
 {
     /**
      * @brief A navigation side bar that can be used to display a list of items to navigate to.

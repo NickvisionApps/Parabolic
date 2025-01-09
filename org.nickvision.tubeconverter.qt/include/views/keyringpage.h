@@ -8,7 +8,7 @@
 
 namespace Ui { class KeyringPage; }
 
-namespace Nickvision::TubeConverter::QT::Views
+namespace Nickvision::TubeConverter::Qt::Views
 {
     class KeyringPage : public QWidget
     {

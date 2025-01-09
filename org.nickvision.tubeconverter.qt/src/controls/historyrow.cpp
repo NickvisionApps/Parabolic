@@ -5,7 +5,7 @@
 
 using namespace Nickvision::TubeConverter::Shared::Models;
 
-namespace Nickvision::TubeConverter::QT::Controls
+namespace Nickvision::TubeConverter::Qt::Controls
 {
     HistoryRow::HistoryRow(const HistoricDownload& download, QWidget* parent)
         : QWidget{ parent },

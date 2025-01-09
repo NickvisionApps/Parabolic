@@ -7,7 +7,7 @@
 
 namespace Ui { class AboutDialog; }
 
-namespace Nickvision::TubeConverter::QT::Controls
+namespace Nickvision::TubeConverter::Qt::Controls
 {
     /**
      * @brief A dialog for displaying information about the application.
