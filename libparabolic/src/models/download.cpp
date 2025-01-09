@@ -106,16 +106,19 @@ namespace Nickvision::TubeConverter::Shared::Models
         m_process->exited() += [this](const ProcessExitedEventArgs& args) { onProcessExit(args); };
         m_process->start();
         m_status = DownloadStatus::Running;
-        std::thread watcher{ &Download::watch, this };
-        watcher.detach();
         lock.unlock();
         if(m_options.getTimeFrame())
         {
             m_progressChanged.invoke({ m_id, std::nan(""), 0.0, _("WARNING: Using ffmpeg to download. Progress will not be shown.") });
         }
-        if(downloaderOptions.getUseAria())
+        else if(downloaderOptions.getUseAria())
         {
             m_progressChanged.invoke({ m_id, std::nan(""), 0.0, _("WARNING: Using aria2 to download. Progress will not be shown.") });
+        }
+        else
+        {
+            std::thread watcher{ &Download::watch, this };
+            watcher.detach();
         }
     }
 

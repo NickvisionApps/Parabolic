@@ -40,8 +40,8 @@ namespace Nickvision::TubeConverter::QT::Views
         m_ui->tabsSingle->setTabText(0, _("General"));
         m_ui->tabsSingle->setTabText(1, _("Subtitles"));
         m_ui->lblFileTypeSingle->setText(_("File Type"));
-        m_ui->lblQualitySingle->setText(_("Quality"));
-        m_ui->lblAudioLanguageSingle->setText(_("Audio Language"));
+        m_ui->lblVideoFormatSingle->setText(_("Video Format"));
+        m_ui->lblAudioFormatSingle->setText(_("Audio Format"));
         m_ui->lblSplitChaptersSingle->setText(_("Split Video by Chapters"));
         m_ui->lblLimitSpeedSingle->setText(_("Limit Download Speed"));
         m_ui->lblExportDescriptionSingle->setText(_("Export Description"));
@@ -188,10 +188,13 @@ namespace Nickvision::TubeConverter::QT::Views
             m_ui->viewStack->setCurrentIndex(2);
             m_ui->tabsSingle->setCurrentIndex(0);
             //Load Options
+            size_t previous;
             QTHelpers::setComboBoxItems(m_ui->cmbFileTypeSingle, m_controller->getFileTypeStrings());
             m_ui->cmbFileTypeSingle->setCurrentIndex(static_cast<int>(m_controller->getPreviousDownloadOptions().getFileType()));
-            QTHelpers::setComboBoxItems(m_ui->cmbAudioLanguageSingle, m_controller->getAudioLanguageStrings());
-            QTHelpers::setComboBoxItems(m_ui->cmbQualitySingle, m_controller->getQualityStrings(m_ui->cmbFileTypeSingle->currentIndex()), m_controller->getPreviousDownloadOptions().getQuality());
+            QTHelpers::setComboBoxItems(m_ui->cmbVideoFormatSingle, m_controller->getVideoFormatStrings(&previous));
+            m_ui->cmbVideoFormatSingle->setCurrentIndex(previous);
+            QTHelpers::setComboBoxItems(m_ui->cmbAudioFormatSingle, m_controller->getAudioFormatStrings(&previous));
+            m_ui->cmbAudioFormatSingle->setCurrentIndex(previous);
             m_ui->chkSplitChaptersSingle->setChecked(m_controller->getPreviousDownloadOptions().getSplitChapters());
             m_ui->chkLimitSpeedSingle->setChecked(m_controller->getPreviousDownloadOptions().getLimitSpeed());
             m_ui->chkExportDescriptionSingle->setChecked(m_controller->getPreviousDownloadOptions().getExportDescription());
@@ -273,7 +276,13 @@ namespace Nickvision::TubeConverter::QT::Views
 
     void AddDownloadDialog::onCmbFileTypeSingleChanged(int index)
     {
-        QTHelpers::setComboBoxItems(m_ui->cmbQualitySingle, m_controller->getQualityStrings(m_ui->cmbFileTypeSingle->currentIndex()), m_controller->getPreviousDownloadOptions().getQuality());
+        int fileTypeIndex{ m_ui->cmbFileTypeSingle->currentIndex() };
+        if(m_controller->getFileTypeStrings().size() == MediaFileType::getAudioFileTypeCount())
+        {
+            fileTypeIndex += MediaFileType::getVideoFileTypeCount();
+        }
+        MediaFileType type{ static_cast<MediaFileType::MediaFileTypeValue>(fileTypeIndex) };
+        m_ui->cmbVideoFormatSingle->setEnabled(!type.isAudio());
     }
 
     void AddDownloadDialog::selectSaveFolderSingle()
@@ -319,7 +328,7 @@ namespace Nickvision::TubeConverter::QT::Views
                 subtitles.push_back(m_ui->tblSubtitlesSingle->item(i, 1)->text().toStdString());
             }
         }
-        m_controller->addSingleDownload(m_ui->txtSaveFolderSingle->text().toStdString(), m_ui->txtFilenameSingle->text().toStdString(), m_ui->cmbFileTypeSingle->currentIndex(), m_ui->cmbQualitySingle->currentIndex(), m_ui->cmbAudioLanguageSingle->currentIndex(), subtitles, m_ui->chkSplitChaptersSingle->isChecked(), m_ui->chkLimitSpeedSingle->isChecked(), m_ui->chkExportDescriptionSingle->isChecked(), m_ui->txtTimeFrameStartSingle->text().toStdString(), m_ui->txtTimeFrameEndSingle->text().toStdString());
+        m_controller->addSingleDownload(m_ui->txtSaveFolderSingle->text().toStdString(), m_ui->txtFilenameSingle->text().toStdString(), m_ui->cmbFileTypeSingle->currentIndex(), m_ui->cmbVideoFormatSingle->currentIndex(), m_ui->cmbAudioFormatSingle->currentIndex(), subtitles, m_ui->chkSplitChaptersSingle->isChecked(), m_ui->chkLimitSpeedSingle->isChecked(), m_ui->chkExportDescriptionSingle->isChecked(), m_ui->txtTimeFrameStartSingle->text().toStdString(), m_ui->txtTimeFrameEndSingle->text().toStdString());
         accept();
     }
 

@@ -43,15 +43,25 @@ namespace Nickvision::TubeConverter::Shared::Models
          */
         void setFileType(const MediaFileType& previousMediaFileType);
         /**
-         * @brief Gets the previous quality.
-         * @return The previous quality
+         * @brief Gets the previous video format id.
+         * @return The previous video format id
          */
-        std::string getQuality() const;
+        std::string getVideoFormatId() const;
         /**
-         * @brief Sets the previous quality.
-         * @param quality The new previous quality
+         * @brief Sets the previous video format id.
+         * @param videoFormatId The new previous video format id
          */
-        void setQuality(const std::string& quality);
+        void setVideoFormatId(const std::string& videoFormatId);
+        /**
+         * @brief Gets the previous audio format id.
+         * @return The previous audio format id
+         */
+        std::string getAudioFormatId() const;
+        /**
+         * @brief Sets the previous audio format id.
+         * @param audioFormatId The new previous audio format id
+         */
+        void setAudioFormatId(const std::string& audioFormatId);
         /**
          * @brief Gets the previous split chapters state.
          * @return The previous split chapters state

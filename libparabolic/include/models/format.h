@@ -43,6 +43,11 @@ namespace Nickvision::TubeConverter::Shared::Models
          */
         MediaType getType() const;
         /**
+         * @brief Gets the bitrate of the format in kbps.
+         * @return The bitrate bitrate of the format in kbps
+         */
+        const std::optional<double>& getBitrate() const;
+        /**
          * @brief Gets the audio language of the format.
          * @return The audio language of the format
          */
@@ -63,27 +68,51 @@ namespace Nickvision::TubeConverter::Shared::Models
          */
         const std::optional<VideoResolution>& getVideoResolution() const;
         /**
-         * @brief Gets the audio bitrate of the format.
-         * @return The audio bitrate of the format
+         * @brief Gets the string representation of the format.
+         * @return The string representation of the format
          */
-        const std::optional<double>& getAudioBitrate() const;
+        std::string str() const;
         /**
          * @brief Converts the Format to a JSON object.
          * @brief The json object will not be in yt-dlp json format.
          * @return The JSON object
          */
         boost::json::object toJson() const;
+        /**
+         * @brief Compares two Format via ==.
+         * @param other The other Format to compare
+         * @return True if this == other
+         */
+        bool operator==(const Format& other) const;
+        /**
+         * @brief Compares two Format via !=.
+         * @param other The other Format to compare
+         * @return True if this != other
+         */
+        bool operator!=(const Format& other) const;
+        /**
+         * @brief Compares two Format via <.
+         * @param other The other Format to compare
+         * @return True if this < other
+         */
+        bool operator<(const Format& other) const;
+        /**
+         * @brief Compares two Format via >.
+         * @param other The other Format to compare
+         * @return True if this > other
+         */
+        bool operator>(const Format& other) const;
 
     private:
         std::string m_id;
         std::string m_protocol;
         std::string m_extension;
         MediaType m_type;
+        std::optional<double> m_bitrate;
         std::optional<std::string> m_audioLanguage;
         bool m_hasAudioDescription;
         std::optional<VideoCodec> m_videoCodec;
         std::optional<VideoResolution> m_videoResolution;
-        std::optional<double> m_audioBitrate;
     };
 }
 

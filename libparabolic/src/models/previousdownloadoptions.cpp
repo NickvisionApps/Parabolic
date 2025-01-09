@@ -44,14 +44,24 @@ namespace Nickvision::TubeConverter::Shared::Models
         m_json["FileType"] = static_cast<int>(previousMediaFileType);
     }
 
-    std::string PreviousDownloadOptions::getQuality() const
+    std::string PreviousDownloadOptions::getVideoFormatId() const
     {
-        return m_json["Quality"].is_string() ? m_json["Quality"].as_string().c_str() : "";
+        return m_json["VideoFormatId"].is_string() ? m_json["VideoFormatId"].as_string().c_str() : "";
     }
 
-    void PreviousDownloadOptions::setQuality(const std::string& quality)
+    void PreviousDownloadOptions::setVideoFormatId(const std::string& videoFormatId)
     {
-        m_json["Quality"] = quality;
+        m_json["VideoFormatId"] = videoFormatId;
+    }
+
+    std::string PreviousDownloadOptions::getAudioFormatId() const
+    {
+        return m_json["AudioFormatId"].is_string() ? m_json["AudioFormatId"].as_string().c_str() : "";
+    }
+
+    void PreviousDownloadOptions::setAudioFormatId(const std::string& audioFormatId)
+    {
+        m_json["AudioFormatId"] = audioFormatId;
     }
     
     bool PreviousDownloadOptions::getSplitChapters() const

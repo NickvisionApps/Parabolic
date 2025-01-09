@@ -77,16 +77,17 @@ namespace Nickvision::TubeConverter::Shared::Controllers
          */
         std::vector<std::string> getFileTypeStrings() const;
         /**
-         * @brief Gets the list of qualities as strings.
-         * @param fileTypeIndex The index of the selected file type
-         * @return The list of qualities as strings
+         * @brief Gets the list of video formats as strings.
+         * @param previousIndex An optional out parameter that will contain the previous selected video format index if available, else index will be 0
+         * @return The list of video formats as strings
          */
-        std::vector<std::string> getQualityStrings(size_t fileTypeIndex) const;
+        std::vector<std::string> getVideoFormatStrings(size_t* previousIndex = nullptr) const;
         /**
-         * @brief Gets the list of audio languages as strings.
-         * @return The list of audio languages as strings
+         * @brief Gets the list of audio formats as strings.
+         * @param previousIndex An optional out parameter that will contain the previous selected audio format index if available, else index will be 0
+         * @return The list of audio formats as strings
          */
-        std::vector<std::string> getAudioLanguageStrings() const;
+        std::vector<std::string> getAudioFormatStrings(size_t* previousIndex = nullptr) const;
         /**
          * @brief Gets the list of subtitles languages as strings.
          * @return The list of subtitles languages as strings
@@ -144,8 +145,8 @@ namespace Nickvision::TubeConverter::Shared::Controllers
          * @param saveFolder The folder to save the download to
          * @param filename The filename to save the download as
          * @param fileTypeIndex The index of the selected file type
-         * @param qualityIndex The index of the selected quality
-         * @param audioLanguageIndex The index of the selected audio language
+         * @param videoFormatIndex The index of the selected video format
+         * @param audioFormatIndex The index of the selected audio format
          * @param subtitleLanguages The list of selected subtitle languages
          * @param splitChapters Whether or not to split the video by chapters
          * @param limitSpeed Whether or not to limit the download speed
@@ -153,7 +154,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
          * @param startTime The start time of the download
          * @param endTime The end time of the download
          */
-        void addSingleDownload(const std::filesystem::path& saveFolder, const std::string& filename, size_t fileTypeIndex, size_t qualityIndex, size_t audioLanguageIndex, const std::vector<std::string>& subtitleLanguages, bool splitChapters, bool limitSpeed, bool exportDescription, const std::string& startTime, const std::string& endTime);
+        void addSingleDownload(const std::filesystem::path& saveFolder, const std::string& filename, size_t fileTypeIndex, size_t videoFormatIndex, size_t audioFormatIndex, const std::vector<std::string>& subtitleLanguages, bool splitChapters, bool limitSpeed, bool exportDescription, const std::string& startTime, const std::string& endTime);
         /**
          * @brief Adds a playlist download to the download manager.
          * @param saveFolder The folder to save the downloads to
@@ -172,8 +173,8 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         std::optional<Models::UrlInfo> m_urlInfo;
         std::optional<Keyring::Credential> m_credential;
         bool m_downloadImmediatelyAfterValidation;
-        mutable std::unordered_map<size_t, Models::Format> m_qualityFormatMap;
-        mutable std::unordered_map<size_t, Models::Format> m_audioLanguageFormatMap;
+        mutable std::unordered_map<size_t, size_t> m_videoFormatMap;
+        mutable std::unordered_map<size_t, size_t> m_audioFormatMap;
         Nickvision::Events::Event<Nickvision::Events::ParamEventArgs<bool>> m_urlValidated;
     };
 }
