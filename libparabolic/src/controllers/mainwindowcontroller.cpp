@@ -40,7 +40,7 @@ namespace Nickvision::TubeConverter::Shared::Controllers
         m_downloadManager{ m_dataFileManager.get<Configuration>("config").getDownloaderOptions(), m_dataFileManager.get<DownloadHistory>("history"), m_dataFileManager.get<DownloadRecoveryQueue>("recovery"), m_logger },
         m_isWindowActive{ false }
     {
-        m_appInfo.setVersion({ "2025.1.0-next" });
+        m_appInfo.setVersion({ "2025.1.0" });
         m_appInfo.setShortName(_("Parabolic"));
         m_appInfo.setDescription(_("Download web video and audio"));
         m_appInfo.setChangelog("- Parabolic will now display all available video and audio formats for selection by the user when downloading a single media\n- Fixed an issue where some video downloads contained no audio\n- Fixed an issue where progress was incorrectly reported for some downloads\n- Fixed an issue where downloads would not stop on Windows\n- Fixed an issue where paths with accent marks were not handled correctly on Windows\n- Fixed an issue where the bundled ffmpeg did not work correctly on some Windows systems");
