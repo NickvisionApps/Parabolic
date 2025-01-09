@@ -14,33 +14,33 @@
 	<license href="http://creativecommons.org/licenses/by/4.0/" its:translate="no"><p>Creative Commons Attribution 4.0 International License</p></license>
 </info>
 
-<title>Converter</title>
+<title>변환기</title>
 <p>이 페이지는 <app>Parabolic</app>의 설정에서 변환기를 구성하는 모든 옵션에 대해 설명합니다.</p>
 
 <terms>
 	<item>
-		<title>Embed Metadata</title>
+		<title>메타데이터 삽입</title>
 		<p>활성화되면, Parabolic은 미디어에 관련 정보를 (제목, 장르 등)과 사용 가능한 경우 썸네일을 태그합니다.</p>
 		<note style="advanced">
 			<p>기본값: 켬</p>
 		</note>
     </item>
     <item>
-		<title>Embed Chapters</title>
+		<title>챕터 포함</title>
 		<p>활성화되면, Parabolic은 사용 가능한 경우 미디어에 챕터 정보를 태그합니다.</p>
 		<note style="advanced">
 			<p>기본값: 꺼짐</p>
 		</note>
 	</item>
     <item>
-        <title>Embed Subtitles</title>
+        <title>자막 삽입</title>
         <p>비활성화되거나 포함에 실패하면, 다운로드한 자막은 별도의 파일로 저장됩니다.</p>
         <note style="advanced">
             <p>기본값: 켬</p>
         </note>
     </item>
     <item>
-		<title>Crop Audio Thumbnails</title>
+		<title>오디오 썸네일 자르기</title>
 		<p>활성화되면, Parabolic은 오디오 파일의 썸네일을 정사각형 해상도로 자릅니다.</p>
         <p>이 옵션은 <code>메타데이터 포함</code>이 활성화된 경우에만 설정할 수 있습니다.</p>
 		<note style="advanced">
@@ -48,7 +48,7 @@
 		</note>
     </item>
     <item>
-		<title>Remove Source Data</title>
+		<title>원본 데이터 제거</title>
 		<p>활성화되면, Parabolic은 미디어 소스의 URL 및 기타 식별 정보를 포함하는 메타데이터 필드를 지웁니다.</p>
         <p>지워지는 필드: 각 스트림에서 <code>comment</code>, <code>description</code>, <code>synopsis</code>, <code>purl</code> 및 <code>handler_name</code>입니다.</p>
         <p>이 옵션은 <code>메타데이터 포함</code>이 활성화된 경우에만 설정할 수 있습니다.</p>
@@ -57,7 +57,7 @@
 		</note>
     </item>
     <item>
-        <title>Postprocessing Threads</title>
+        <title>후처리 스레드</title>
         <p>각 다운로드에 대해 후처리기(<code>FFmpeg</code>)가 사용할 수 있는 스레드 수입니다.</p>
         <note style="advanced">
             <p>기본값: 시스템에서 사용 가능한 최대 스레드 수</p>

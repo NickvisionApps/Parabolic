@@ -158,9 +158,11 @@ namespace Nickvision::TubeConverter::Shared::Models
                 if(progress[1] == "finished" || progress[1] == "processing")
                 {
                     m_progressChanged.invoke({ m_id, std::nan(""), 0.0, log });
-                    return;
                 }
-                m_progressChanged.invoke({ m_id, (progress[2] != "NA" ? std::stod(progress[2]) : 0.0) / (progress[3] != "NA" ? std::stod(progress[3]) : (progress[4] != "NA" ? std::stod(progress[4]) : 0.0)), (progress[5] != "NA" ? std::stod(progress[5]) : 0.0), log });
+                else
+                {
+                    m_progressChanged.invoke({ m_id, (progress[2] != "NA" ? std::stod(progress[2]) : 0.0) / (progress[3] != "NA" ? std::stod(progress[3]) : (progress[4] != "NA" ? std::stod(progress[4]) : 0.0)), (progress[5] != "NA" ? std::stod(progress[5]) : 0.0), log });
+                }
                 break;
             }
             std::this_thread::sleep_for(std::chrono::milliseconds(100));
